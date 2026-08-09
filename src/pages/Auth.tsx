@@ -187,7 +187,7 @@ const Auth = () => {
                     >
                       Şifremi unuttum / şifre belirle
                     </button>
-                    <p className="mt-2 text-[11px] text-muted-foreground">
+                    <p className="mt-2 text-micro text-muted-foreground">
                       Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
                       belirleyebilir veya Google ile giriş yapabilirsiniz.
                     </p>
@@ -220,7 +220,7 @@ const Auth = () => {
               şartları okuyabilmeli. Ayarlar'daki bağlantıların aynısı
               (bkz. src/pages/Settings.tsx). */}
           <div className="border-t border-border/60 pt-4 text-center">
-            <p className="text-[11px] leading-relaxed text-muted-foreground">
+            <p className="text-micro leading-relaxed text-muted-foreground">
               Kayıt olarak veya giriş yaparak{" "}
               <a
                 href={termsOfUseUrl}

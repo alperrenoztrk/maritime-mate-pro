@@ -132,10 +132,10 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
                 className="h-9"
               />
               {inp.help && !fieldErrors[inp.key] && (
-                <p id={`${entry.id}-${inp.key}-help`} className="text-[11px] text-muted-foreground">{inp.help}</p>
+                <p id={`${entry.id}-${inp.key}-help`} className="text-micro text-muted-foreground">{inp.help}</p>
               )}
               {fieldErrors[inp.key] && (
-                <p id={`${entry.id}-${inp.key}-error`} className="flex items-center gap-1 text-[11px] text-destructive">
+                <p id={`${entry.id}-${inp.key}-error`} className="flex items-center gap-1 text-micro text-destructive">
                   <AlertCircle className="h-3 w-3 shrink-0" /> {fieldErrors[inp.key]}
                 </p>
               )}
@@ -172,7 +172,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
           </>
         )}
         {entry.source && (
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-micro text-muted-foreground">
             Kaynak: {entry.source.code}
             {entry.source.detail ? ` — ${entry.source.detail}` : ""}
           </p>

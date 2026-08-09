@@ -84,7 +84,7 @@ export default function LessonTopicDetailPage() {
             {content.title}
           </h1>
           {content.level && (
-            <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-primary">
+            <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-semibold uppercase text-primary">
               {levelLabel(content.level)}
             </span>
           )}

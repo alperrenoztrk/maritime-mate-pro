@@ -206,7 +206,7 @@ function SystemCard({ system }: { system: MachineSystem }) {
       </div>
       <div className="flex flex-wrap gap-1.5">
         {system.specs.map((spec) => (
-          <span key={spec} className="rounded-md bg-muted/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+          <span key={spec} className="rounded-md bg-muted/60 px-2 py-0.5 text-micro font-medium text-muted-foreground">
             {spec}
           </span>
         ))}
@@ -227,7 +227,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
         </span>
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-bold text-foreground">{engine.title}</h3>
-          <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
+          <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-micro text-muted-foreground">
             <span className="flex items-center gap-1"><Zap className="h-3 w-3" aria-hidden /> {engine.powerRange}</span>
             <span className="flex items-center gap-1"><Gauge className="h-3 w-3" aria-hidden /> {engine.efficiency}</span>
             <span className="flex items-center gap-1"><Fuel className="h-3 w-3" aria-hidden /> {engine.fuel}</span>
@@ -250,20 +250,20 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="rounded-lg bg-emerald-500/10 p-3">
-                  <h4 className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Avantajlar</h4>
+                  <h4 className="mb-1.5 text-micro font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Avantajlar</h4>
                   <ul className="space-y-1">
                     {engine.advantages.map((a) => (
-                      <li key={a} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
+                      <li key={a} className="flex items-start gap-1.5 text-micro text-foreground/80">
                         <span className="mt-0.5 text-emerald-500">✓</span>{a}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="rounded-lg bg-red-500/10 p-3">
-                  <h4 className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">Dezavantajlar</h4>
+                  <h4 className="mb-1.5 text-micro font-bold uppercase tracking-wider text-red-600 dark:text-red-400">Dezavantajlar</h4>
                   <ul className="space-y-1">
                     {engine.disadvantages.map((d) => (
-                      <li key={d} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
+                      <li key={d} className="flex items-start gap-1.5 text-micro text-foreground/80">
                         <span className="mt-0.5 text-red-500">✗</span>{d}
                       </li>
                     ))}
@@ -273,7 +273,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
 
               <div className="flex items-center gap-1.5 rounded-lg bg-muted/40 px-3 py-2">
                 <Ship className="h-3.5 w-3.5 text-primary" />
-                <span className="text-[11px] text-muted-foreground">
+                <span className="text-micro text-muted-foreground">
                   <strong className="text-foreground">Kullanım:</strong> {engine.usage}
                 </span>
               </div>
@@ -289,7 +289,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
 function ComparisonTable() {
   return (
     <div className="overflow-x-auto rounded-xl border border-border/50 bg-card/80 shadow-sm backdrop-blur">
-      <table className="w-full text-[11px]">
+      <table className="w-full text-micro">
         <thead>
           <tr className="border-b border-border/50 bg-muted/30">
             <th className="px-3 py-2.5 text-left font-bold text-foreground">Makine Tipi</th>
@@ -343,7 +343,7 @@ export default function MachineryHubPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-micro font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
               <Cog className="h-3 w-3" /> Makine Bölümü
             </div>
             <h1 className="text-2xl font-bold text-white drop-shadow-lg sm:text-3xl">

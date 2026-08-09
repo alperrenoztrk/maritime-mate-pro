@@ -158,7 +158,7 @@ export default function BetaPscChecklist() {
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <div className="flex flex-wrap gap-3 pt-1 text-[11px] font-medium">
+            <div className="flex flex-wrap gap-3 pt-1 text-micro font-medium">
               <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
                 <Check className="h-3.5 w-3.5" /> Uygun: {summary.ok}
               </span>
@@ -212,7 +212,7 @@ export default function BetaPscChecklist() {
                 <h2 className="text-base font-semibold text-foreground">
                   {cat.title}
                 </h2>
-                <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
+                <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
                   {catDone}/{catTotal}
                 </span>
               </div>
@@ -231,7 +231,7 @@ export default function BetaPscChecklist() {
                           <p className="text-sm font-medium text-foreground">
                             {item.title}
                           </p>
-                          <p className="mt-0.5 text-[11px] uppercase tracking-wide text-muted-foreground">
+                          <p className="mt-0.5 text-micro uppercase tracking-wide text-muted-foreground">
                             {item.ref}
                           </p>
                         </div>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Vibrate } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { getHapticsEnabled, setHapticsEnabled, hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -34,6 +36,8 @@ const Settings = () => {
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  // Read once on mount; the haptics module owns the persisted value.
+  const [hapticsOn, setHapticsOn] = useState(() => getHapticsEnabled());
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
@@ -335,6 +339,36 @@ const Settings = () => {
                       </SelectContent>
                     </Select>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Haptic feedback */}
+            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Vibrate className="w-5 h-5" />
+                  <span data-translatable>Dokunsal Geri Bildirim</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between gap-4">
+                  <Label htmlFor="haptics-toggle" className="flex-1">
+                    <span data-translatable>Dokunmalarda titreşim</span>
+                    <span className="mt-1 block text-caption font-normal text-muted-foreground" data-translatable>
+                      Yalnızca telefon uygulamasında çalışır.
+                    </span>
+                  </Label>
+                  <Switch
+                    id="haptics-toggle"
+                    checked={hapticsOn}
+                    onCheckedChange={(checked) => {
+                      setHapticsEnabled(checked);
+                      setHapticsOn(checked);
+                      // Confirm the new state with the thing being toggled.
+                      if (checked) hapticImpact("light");
+                    }}
+                  />
                 </div>
               </CardContent>
             </Card>

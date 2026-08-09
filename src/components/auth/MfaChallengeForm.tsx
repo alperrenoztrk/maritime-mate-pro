@@ -92,7 +92,7 @@ export const MfaChallengeForm = ({
           Vazgeç ve çıkış yap
         </button>
       )}
-      <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
+      <p className="text-center text-micro leading-relaxed text-muted-foreground">
         Doğrulayıcınıza erişiminizi kaybettiyseniz destek için bize yazın;
         kimliğinizi doğruladıktan sonra 2FA'yı kaldırabiliriz.
       </p>

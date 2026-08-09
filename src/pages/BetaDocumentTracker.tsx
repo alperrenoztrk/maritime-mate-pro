@@ -281,7 +281,7 @@ export default function BetaDocumentTracker() {
         <header className="space-y-2">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-500/35 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-500/35 bg-amber-500/10 px-3 py-1 text-micro font-bold uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
                 <Sparkles className="h-3 w-3" /> Beta · Yapay zekâ
               </div>
               <h1 className="text-2xl font-bold text-foreground">Belge ve Sertifika Takibi</h1>
@@ -310,7 +310,7 @@ export default function BetaDocumentTracker() {
           >
             <CalendarClock className="h-5 w-5 text-amber-500" />
             <div className="mt-2 text-xl font-bold">{counts.attention}</div>
-            <div className="text-[10px] text-muted-foreground sm:text-xs">Yaklaşan / dolan</div>
+            <div className="text-micro text-muted-foreground sm:text-xs">Yaklaşan / dolan</div>
           </button>
           <button
             type="button"
@@ -319,7 +319,7 @@ export default function BetaDocumentTracker() {
           >
             <CheckCircle2 className="h-5 w-5 text-emerald-500" />
             <div className="mt-2 text-xl font-bold">{counts.valid}</div>
-            <div className="text-[10px] text-muted-foreground sm:text-xs">Geçerli</div>
+            <div className="text-micro text-muted-foreground sm:text-xs">Geçerli</div>
           </button>
           <button
             type="button"
@@ -328,7 +328,7 @@ export default function BetaDocumentTracker() {
           >
             <AlertTriangle className="h-5 w-5 text-slate-500" />
             <div className="mt-2 text-xl font-bold">{counts.unknown}</div>
-            <div className="text-[10px] text-muted-foreground sm:text-xs">Kontrol gerekli</div>
+            <div className="text-micro text-muted-foreground sm:text-xs">Kontrol gerekli</div>
           </button>
         </section>
 
@@ -385,7 +385,7 @@ export default function BetaDocumentTracker() {
             />
           </div>
 
-          <div className="mt-3 flex items-start gap-2 rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 text-[11px] text-muted-foreground">
+          <div className="mt-3 flex items-start gap-2 rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 text-micro text-muted-foreground">
             <ShieldCheck className="mt-0.5 h-4 w-4 flex-none text-blue-500" />
             <p>
               Fotoğraf yapay zekâ ile tarih çıkarımı için işlenir ve özel hesap arşivinizde saklanır. Sonuçlar resmi belge yerine geçmez; düşük güvenli okumalar açıkça işaretlenir.
@@ -414,7 +414,7 @@ export default function BetaDocumentTracker() {
                 )}
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-xs font-medium">{job.fileName}</p>
-                  <p className={`text-[11px] ${job.state === "error" ? "text-red-500" : "text-muted-foreground"}`}>
+                  <p className={`text-micro ${job.state === "error" ? "text-red-500" : "text-muted-foreground"}`}>
                     {job.message || STAGE_LABELS[job.state]}
                   </p>
                 </div>
@@ -439,7 +439,7 @@ export default function BetaDocumentTracker() {
                   key={key}
                   type="button"
                   onClick={() => setFilter(key)}
-                  className={`rounded-full px-3 py-1 text-[11px] font-semibold transition ${
+                  className={`rounded-full px-3 py-1 text-micro font-semibold transition ${
                     filter === key ? "bg-amber-500 text-white" : "bg-card text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -473,17 +473,17 @@ export default function BetaDocumentTracker() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="mb-2 flex flex-wrap items-center gap-1.5">
-                          <span className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${style.badge}`}>
+                          <span className={`rounded-full border px-2 py-0.5 text-micro font-bold uppercase tracking-wide ${style.badge}`}>
                             {style.label}
                           </span>
                           {document.review_required && (
-                            <span className="rounded-full border border-slate-500/30 bg-slate-500/10 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-300">
+                            <span className="rounded-full border border-slate-500/30 bg-slate-500/10 px-2 py-0.5 text-micro font-medium text-slate-600 dark:text-slate-300">
                               AI sonucunu kontrol edin
                             </span>
                           )}
                         </div>
                         <h3 className="line-clamp-2 text-sm font-bold text-foreground notranslate" translate="no" data-no-translate>{document.title}</h3>
-                        <p className="mt-0.5 text-[11px] text-muted-foreground">{document.document_type}</p>
+                        <p className="mt-0.5 text-micro text-muted-foreground">{document.document_type}</p>
                       </div>
                       <div className="rounded-xl bg-amber-500/10 p-2 text-amber-600 dark:text-amber-300">
                         <FileCheck2 className="h-5 w-5" />
@@ -492,16 +492,16 @@ export default function BetaDocumentTracker() {
 
                     <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
                       <div className="rounded-xl bg-background/50 p-2.5">
-                        <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Son geçerlilik</div>
+                        <div className="text-micro uppercase tracking-wide text-muted-foreground">Son geçerlilik</div>
                         <div className="mt-1 font-semibold">{document.no_expiry ? "Süresiz" : formatDate(document.expiry_date)}</div>
                       </div>
                       <div className="rounded-xl bg-background/50 p-2.5">
-                        <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Durum</div>
+                        <div className="text-micro uppercase tracking-wide text-muted-foreground">Durum</div>
                         <div className="mt-1 font-semibold">{state.label}</div>
                       </div>
                     </div>
 
-                    <dl className="mt-3 space-y-1.5 text-[11px]">
+                    <dl className="mt-3 space-y-1.5 text-micro">
                       {document.document_number && (
                         <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge no.</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.document_number}</dd></div>
                       )}
@@ -515,7 +515,7 @@ export default function BetaDocumentTracker() {
                     </dl>
 
                     {(document.warnings?.length > 0 || document.review_required) && (
-                      <div className="mt-3 rounded-xl border border-amber-500/20 bg-amber-500/5 p-2.5 text-[10px] text-amber-800 dark:text-amber-200">
+                      <div className="mt-3 rounded-xl border border-amber-500/20 bg-amber-500/5 p-2.5 text-micro text-amber-800 dark:text-amber-200">
                         {document.warnings?.[0] || "Belgedeki tarihi özgün fotoğrafla karşılaştırın."}
                       </div>
                     )}
@@ -543,7 +543,7 @@ export default function BetaDocumentTracker() {
           )}
         </section>
 
-        <footer className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3 text-[11px] text-muted-foreground">
+        <footer className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3 text-micro text-muted-foreground">
           Hatırlatmalar 180, 90, 30, 7 ve 1 günlük aralıklara girildiğinde; ayrıca son gün ve süre dolduğunda bir kez gösterilir. Resmî geçerlilik kontrolünde daima belgenin aslını esas alın.
         </footer>
       </div>

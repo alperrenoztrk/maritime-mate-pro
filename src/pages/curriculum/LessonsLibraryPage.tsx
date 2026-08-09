@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
 import { ArrowLeft, Ship, Wrench } from "lucide-react";
@@ -21,11 +20,6 @@ const LESSONS_JSONLD = {
 type LibraryView = "deck" | "machine";
 
 export default function LessonsLibraryPage() {
-  const highRefreshRateStyles: CSSProperties = {
-    ["--frame-rate" as string]: "120",
-    ["--animation-duration" as string]: "8.33ms",
-    ["--transition-duration" as string]: "16.67ms",
-  };
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedView = searchParams.get("library");
   const activeView: LibraryView | null =
@@ -57,7 +51,6 @@ export default function LessonsLibraryPage() {
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 pb-24 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-      style={highRefreshRateStyles}
     >
       <SEO
         title="Mariner's Book — Denizcilik Dersleri"

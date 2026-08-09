@@ -54,13 +54,36 @@ const hideSplash = () => {
   }
 };
 
-// Let the splash sequence play through before fading: book cover opens, the
-// ship drawing appears on the page, pops into 3D and sails off (~4.2s).
 const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const splashHideDelay = prefersReducedMotion ? 1100 : 4200;
+
+// The full sequence — book cover opens, the ship drawing appears, pops into
+// 3D and sails off — runs ~4.2s. That is a fine first impression and a long
+// wait on the fiftieth launch, so only the first launch pays for it. Everyone
+// else gets a brief brand beat.
+const SEEN_KEY = 'maritime-splash-seen';
+let hasSeenSplash = false;
+try {
+  hasSeenSplash = safeLocalStorage.getItem(SEEN_KEY) === '1';
+  safeLocalStorage.setItem(SEEN_KEY, '1');
+} catch {
+  /* storage unavailable — fall back to the full sequence */
+}
+
+const splashHideDelay = prefersReducedMotion ? 1100 : hasSeenSplash ? 700 : 4200;
+
+// Shortened runs get a class so index.html's delay cascade can compress to
+// match instead of being cut off mid-animation.
+if (splashHideDelay < 4200) {
+  document.getElementById('splash-root')?.classList.add('splash-brief');
+}
+
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
+
+// A tap should never be ignored: let people skip straight into the app.
+const splashEl = document.getElementById('splash-root');
+splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
 
 // Hard safety net in case the rAF callback never fires.
 setTimeout(hideSplash, splashHideDelay + 1200);

@@ -153,8 +153,10 @@ export default defineConfig(({ mode }) => ({
         name: "Mariner's Book",
         short_name: "Mariner's Book",
         description: "Professional tools for all mariners — calculators, lessons and references that work offline.",
-        theme_color: "#0b3d91",
-        background_color: "#020a14",
+        // Must match index.html theme-color and capacitor.config.ts StatusBar —
+        // all three describe the same surface (top of the shell gradient).
+        theme_color: "#031226",
+        background_color: "#031226",
         display: "standalone",
         orientation: "portrait",
         start_url: "/",

@@ -176,7 +176,7 @@ export const Ship3DVisualization = () => {
           </SimErrorBoundary>
 
           {/* Legend overlay */}
-          <div className="absolute bottom-2 left-2 space-y-0.5 rounded bg-background/80 px-2 py-1 text-[10px] backdrop-blur-sm">
+          <div className="absolute bottom-2 left-2 space-y-0.5 rounded bg-background/80 px-2 py-1 text-micro backdrop-blur-sm">
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-red-500" />
               <span>G - Ağırlık Merkezi</span>
@@ -192,7 +192,7 @@ export const Ship3DVisualization = () => {
           </div>
 
           {/* Angle display */}
-          <div className="absolute right-2 top-2 rounded bg-background/80 px-2 py-1 font-mono text-[10px] backdrop-blur-sm">
+          <div className="absolute right-2 top-2 rounded bg-background/80 px-2 py-1 font-mono text-micro backdrop-blur-sm">
             <div>Meyil: {heelAngle}°</div>
             <div>Trim: {trimAngle}°</div>
           </div>
@@ -206,7 +206,7 @@ export const Ship3DVisualization = () => {
               <span className="font-mono">{heelAngle}°</span>
             </Label>
             <Slider value={[heelAngle]} onValueChange={(v) => setHeelAngle(v[0])} min={-45} max={45} step={1} />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
+            <div className="flex justify-between text-micro text-muted-foreground">
               <span>İskele -45°</span>
               <span>Sancak +45°</span>
             </div>
@@ -218,7 +218,7 @@ export const Ship3DVisualization = () => {
               <span className="font-mono">{trimAngle}°</span>
             </Label>
             <Slider value={[trimAngle]} onValueChange={(v) => setTrimAngle(v[0])} min={-10} max={10} step={0.5} />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
+            <div className="flex justify-between text-micro text-muted-foreground">
               <span>Kıç Trim -10°</span>
               <span>Baş Trim +10°</span>
             </div>

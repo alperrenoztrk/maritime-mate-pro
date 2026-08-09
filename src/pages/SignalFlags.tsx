@@ -45,7 +45,7 @@ function FlagCard({ flag }: { flag: SignalFlag }) {
       <div className="flex min-w-0 flex-1 flex-col gap-1.5">
         {flag.phonetic ? (
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+            <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-medium text-muted-foreground">
               {flag.phonetic}
             </span>
             {flag.morse ? (
@@ -184,7 +184,7 @@ export default function SignalFlagsPage() {
                 <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-[11px] text-muted-foreground">
+                    <span className="shrink-0 text-micro text-muted-foreground">
                       {flags.length} adet
                     </span>
                   </div>

@@ -107,7 +107,7 @@ const SOLASSafetyEquipmentPage = () => {
                           <p className="font-medium text-foreground">{item.label}</p>
                           <p className="text-xs text-muted-foreground">{item.qty}</p>
                         </div>
-                        <Badge variant="secondary" className="text-[10px] tracking-wide">{item.status}</Badge>
+                        <Badge variant="secondary" className="text-micro tracking-wide">{item.status}</Badge>
                       </div>
                     ))}
                   </div>

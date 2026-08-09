@@ -28,7 +28,11 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
+				// -apple-system first so iOS renders in San Francisco — the
+				// system face is what makes native chrome and app text look
+				// like they belong together. Inter stays as the cross-platform
+				// fallback (and is what Android/web get).
+				sans: ['-apple-system', 'BlinkMacSystemFont', 'Inter', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
 				// Kitap kapağı yaldız baskısı; yazı tipi index.css'te self-host edilir.
 				book: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
@@ -97,7 +101,38 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				// rounded-xl (219 uses) and rounded-2xl (133) were previously
+				// Tailwind defaults, so changing --radius reached barely a third
+				// of the app's corners. They now derive from the same scale.
+				xl: 'var(--radius-xl)',
+				'2xl': 'var(--radius-2xl)',
+				'3xl': 'var(--radius-3xl)',
+				// App-icon squircle, was hard-coded as rounded-[22px].
+				ios: 'var(--radius-ios)'
+			},
+			fontSize: {
+				// rem-based so they follow the user's text-size setting
+				// (--font-scale), unlike the text-[9px]/[10px]/[11px] classes
+				// they replace.
+				micro: ['var(--text-micro)', { lineHeight: '1.35' }],
+				caption: ['var(--text-caption)', { lineHeight: '1.4' }]
+			},
+			boxShadow: {
+				'elev-1': 'var(--shadow-1)',
+				'elev-2': 'var(--shadow-2)',
+				'elev-3': 'var(--shadow-3)'
+			},
+			transitionDuration: {
+				press: 'var(--motion-press)',
+				control: 'var(--motion-control)',
+				page: 'var(--motion-page)',
+				sheet: 'var(--motion-sheet)'
+			},
+			transitionTimingFunction: {
+				'out-ios': 'var(--ease-out-ios)',
+				'in-out-ios': 'var(--ease-in-out-ios)',
+				spring: 'var(--ease-spring)'
 			},
 			keyframes: {
 				'accordion-down': {

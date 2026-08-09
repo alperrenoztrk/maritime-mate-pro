@@ -34,7 +34,7 @@ export function SystemArchitectureDiagram({ title, stages }: Props) {
     <figure className="overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background/80 to-cyan-500/5 p-3">
       <div className="mb-2 flex items-center justify-between gap-3">
         <figcaption className="text-xs font-semibold text-foreground">The system's actual workflow</figcaption>
-        <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Input → safety/evidence</span>
+        <span className="text-micro uppercase tracking-wide text-muted-foreground">Input → safety/evidence</span>
       </div>
 
       <div className="grid gap-2 sm:hidden">
@@ -43,16 +43,16 @@ export function SystemArchitectureDiagram({ title, stages }: Props) {
             {index < Math.min(stages.length, 5) - 1 && (
               <span className="absolute left-[22px] top-[42px] h-[calc(100%+9px)] border-l border-dashed border-primary/35" aria-hidden="true" />
             )}
-            <span className="relative z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+            <span className="relative z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-micro font-bold text-primary">
               {index + 1}
             </span>
             <div>
-              <p className="text-[11px] font-semibold text-foreground">{stage.label}</p>
-              <p className="mt-0.5 text-[11px] leading-relaxed text-foreground/75">{stage.detail}</p>
+              <p className="text-micro font-semibold text-foreground">{stage.label}</p>
+              <p className="mt-0.5 text-micro leading-relaxed text-foreground/75">{stage.detail}</p>
             </div>
           </div>
         ))}
-        <p className="px-1 text-[10px] leading-relaxed text-muted-foreground">
+        <p className="px-1 text-micro leading-relaxed text-muted-foreground">
           Emniyet, alarm ve kayıt sonucu kontrol kararına geri beslenir.
         </p>
       </div>

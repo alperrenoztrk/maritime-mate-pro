@@ -182,7 +182,7 @@ export default function ShipTasksLibraryPage() {
                   {categoryIndex + 1}
                 </span>
                 <span className="min-w-0 flex-1 font-semibold leading-snug text-foreground">{category.title}</span>
-                <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
                   {category.tasks.length}
                 </span>
                 <ChevronDown className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`} />
@@ -198,7 +198,7 @@ export default function ShipTasksLibraryPage() {
                     >
                       <span className="min-w-0 flex-1">
                         <span className="block text-sm font-semibold leading-snug text-foreground">{task.task}</span>
-                        <span className="mt-1 block text-[11px] text-muted-foreground">
+                        <span className="mt-1 block text-micro text-muted-foreground">
                           {task.responsible}{task.worker ? ` · ${task.worker}` : ""}
                         </span>
                       </span>

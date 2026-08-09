@@ -1,0 +1,145 @@
+/* ================================================================
+   DESIGN TOKENS — Maritime iOS
+   Single source of truth for motion, radius, surface and type.
+   Imported at the very top of index.css.
+
+   Why this file exists: the app previously had no shared motion or
+   surface vocabulary. Durations were hard-coded per component, radii
+   came from Tailwind defaults that `--radius` could not reach, and
+   "glass" was applied to every content card by a global patch rather
+   than to the navigation chrome. These tokens give one place to change
+   the feel of the whole app.
+   ================================================================ */
+
+:root {
+  /* ── Motion ────────────────────────────────────────────────────
+     Four speeds, matched to what is moving. Anything faster than
+     ~100ms reads as an instant jump; anything past ~400ms feels slow
+     on a phone.
+
+     NOTE: these replace the old `--animation-duration: 8.33ms` /
+     `--transition-duration: 16.67ms` pair, which came from
+     useFrameRate mistaking a 120Hz *frame budget* for a transition
+     duration. That hook has been removed. */
+  --motion-press: 120ms;    /* button/icon press feedback          */
+  --motion-control: 200ms;  /* toggles, chips, small reveals       */
+  --motion-page: 300ms;     /* route push/pop                      */
+  --motion-sheet: 380ms;    /* bottom sheets, modals               */
+
+  /* iOS-flavoured easings. `--ease-out-ios` is the standard
+     decelerate curve; `--ease-spring` overshoots slightly for
+     controls that should feel physical. */
+  --ease-out-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-in-out-ios: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Convenience composites. */
+  --transition-control: all var(--motion-control) var(--ease-out-ios);
+  --transition-press: transform var(--motion-press) var(--ease-out-ios);
+
+  /* ── Radius ────────────────────────────────────────────────────
+     `--radius` (0.75rem) already fed rounded-sm/md/lg. These extend
+     the same scale up so rounded-xl / rounded-2xl / rounded-3xl —
+     by far the most used radii in this codebase — derive from it too
+     instead of Tailwind's fixed defaults. */
+  --radius-xl: calc(var(--radius) + 0.25rem);   /* 1rem    */
+  --radius-2xl: calc(var(--radius) + 0.5rem);   /* 1.25rem */
+  --radius-3xl: calc(var(--radius) + 1rem);     /* 1.75rem */
+  /* App-icon squircle. Used by AppIconGrid and calculation-grid, which
+     both hard-coded rounded-[22px]. */
+  --radius-ios: 22px;
+
+  /* ── Surfaces ──────────────────────────────────────────────────
+     Tuned against the surface the app ACTUALLY paints — the ocean
+     gradient in GlobalMaritimeBackground, hsl(214 84% 8%) →
+     hsl(200 80% 18%) — not the `.dark` palette, which no full-screen
+     element ever renders.
+
+     These are translucent fills WITHOUT backdrop-filter, the same
+     approach iOS uses for systemFill colours. They read as layered
+     material over the gradient but cost nothing to composite, unlike
+     the blur that used to be forced onto every content card. */
+  --surface-1: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --surface-3: rgba(255, 255, 255, 0.12);
+  --surface-border: rgba(255, 255, 255, 0.10);
+  --surface-border-strong: rgba(255, 255, 255, 0.18);
+
+  /* ── Glass (chrome only) ───────────────────────────────────────
+     Reserved for elements that float OVER content: navigation bars,
+     the search pill, the floating back control, sheet handles.
+     Never on a content card, and never stacked on itself. */
+  --glass-bg: rgba(10, 26, 47, 0.72);
+  --glass-blur: 20px;
+  --glass-border: rgba(255, 255, 255, 0.14);
+
+  /* ── Elevation ─────────────────────────────────────────────────
+     Cool-toned to sit correctly on the deep blue shell; neutral black
+     shadows go muddy against it. */
+  --shadow-1: 0 1px 2px rgba(2, 10, 20, 0.28);
+  --shadow-2: 0 4px 16px -2px rgba(2, 10, 20, 0.40);
+  --shadow-3: 0 12px 32px -6px rgba(2, 10, 20, 0.52);
+
+  /* ── Type ──────────────────────────────────────────────────────
+     Expressed in rem so they inherit `--font-scale` through the root
+     font-size. The ~196 hard-coded text-[9px]/[10px]/[11px] classes
+     they replace were frozen in px and ignored the user's text-size
+     setting entirely. */
+  --text-micro: 0.6875rem;  /* 11px at the 16px root */
+  --text-caption: 0.75rem;  /* 12px                  */
+
+  /* ── Safe area ─────────────────────────────────────────────────
+     Real values only once viewport-fit=cover is set (see index.html).
+     Exposed as tokens so components stop repeating the env() fallback
+     dance inline. */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* ================================================================
+   MATERIAL UTILITIES
+   ================================================================ */
+
+/* The ONLY blur in the app. Chrome layers exclusively. */
+.surface-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border-color: var(--glass-border);
+}
+
+/* Content surfaces. No blur — see the --surface-* note above. */
+.surface-1 { background: var(--surface-1); border-color: var(--surface-border); }
+.surface-2 { background: var(--surface-2); border-color: var(--surface-border); }
+.surface-3 { background: var(--surface-3); border-color: var(--surface-border-strong); }
+
+/* ================================================================
+   REDUCED MOTION
+   The app previously honoured prefers-reduced-motion only for the
+   splash screen: the drifting waves, the title shine and every
+   `infinite` keyframe kept running. This is the global policy.
+
+   Transforms are neutralised rather than merely shortened, so nothing
+   is left frozen mid-animation at an offset position.
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Opt-in marker for purely decorative, infinitely looping motion (drifting
+     waves, the title shine). `animation: none` drops them to their static
+     first frame, which is a perfectly good picture — unlike the blanket
+     `animation-duration: 0.01ms` above, which would race a loop to its end
+     state and could leave an element parked somewhere odd. */
+  .motion-ambient {
+    animation: none !important;
+  }
+}

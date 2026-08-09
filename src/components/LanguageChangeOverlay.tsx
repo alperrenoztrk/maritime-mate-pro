@@ -28,7 +28,7 @@ export function LanguageChangeOverlay() {
         <Loader2 className="h-9 w-9 animate-spin text-sky-300" strokeWidth={2.25} />
         <div className="text-center">
           <p className="text-base font-semibold text-white">{title}</p>
-          <p className="mt-1 text-[12px] text-white/60">{subtitle}</p>
+          <p className="mt-1 text-caption text-white/60">{subtitle}</p>
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
           <div
@@ -36,7 +36,7 @@ export function LanguageChangeOverlay() {
             style={{ width: `${pct}%` }}
           />
         </div>
-        <p className="text-[11px] tabular-nums text-white/55">%{pct}</p>
+        <p className="text-micro tabular-nums text-white/55">%{pct}</p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { BookOpen, Users, Ship, ClipboardList, FlaskConical, BookA, Settings, Sparkles, StickyNote, type LucideIcon } from "lucide-react";
+import { hapticImpact } from "@/lib/haptics";
 
 interface AppIcon {
   label: string;
@@ -28,11 +29,14 @@ export function AppIconGrid() {
         <Link
           key={to}
           to={to}
-          className="group flex flex-col items-center gap-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded-[22px]"
+          className="group flex flex-col items-center gap-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded-ios"
           aria-label={label}
+          // Launching an app is the single most-repeated gesture on this
+          // screen; a light tick is what makes it feel like it registered.
+          onClick={() => hapticImpact("light")}
         >
           <div
-            className="relative flex aspect-square w-full items-center justify-center rounded-[22px] transition-transform duration-150 group-active:scale-90"
+            className="relative flex aspect-square w-full items-center justify-center rounded-ios transition-transform duration-150 group-active:scale-90"
             style={{
               background: gradient,
               boxShadow:
@@ -41,13 +45,13 @@ export function AppIconGrid() {
           >
             <Icon className="h-1/2 w-1/2 text-white drop-shadow-md" strokeWidth={1.8} />
             <div
-              className="pointer-events-none absolute inset-0 rounded-[22px]"
+              className="pointer-events-none absolute inset-0 rounded-ios"
               style={{
                 background: "linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 45%)",
               }}
             />
           </div>
-          <span className="text-[11px] font-medium text-white/90 drop-shadow-md leading-tight text-center">
+          <span className="text-micro font-medium text-white/90 drop-shadow-md leading-tight text-center">
             {label}
           </span>
         </Link>

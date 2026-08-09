@@ -98,7 +98,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
             <div className="min-w-0 flex-1">
               <h3 className="text-base font-black leading-snug text-foreground sm:text-xl">{entry.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{entry.introduction}</p>
-              <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
+              <p className="mt-2 text-micro font-bold uppercase tracking-[0.14em] text-primary">
                 {entry.sections.length} alt konu · Açmak/kapatmak için dokunun
               </p>
             </div>
@@ -131,7 +131,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                     {narrativeSection.references.map((reference) => (
                       <span
                         key={reference}
-                        className="rounded-full border border-sky-500/20 bg-sky-500/[0.07] px-2.5 py-1 text-[10px] font-bold text-sky-600 dark:text-sky-400"
+                        className="rounded-full border border-sky-500/20 bg-sky-500/[0.07] px-2.5 py-1 text-micro font-bold text-sky-600 dark:text-sky-400"
                       >
                         {reference}
                       </span>
@@ -169,22 +169,22 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                 {narrativeSection.scenario && (
                   <div className="mt-4 overflow-hidden rounded-xl border border-violet-500/25 bg-violet-500/[0.05]">
                     <div className="border-b border-violet-500/15 bg-violet-500/[0.08] px-4 py-3">
-                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-violet-600 dark:text-violet-400">
+                      <p className="text-micro font-black uppercase tracking-[0.16em] text-violet-600 dark:text-violet-400">
                         Vaka analizi
                       </p>
                       <h5 className="mt-1 font-black text-foreground">{narrativeSection.scenario.title}</h5>
                     </div>
                     <div className="grid gap-3 p-4 lg:grid-cols-3">
                       <div>
-                        <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-muted-foreground">Durum</p>
+                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-muted-foreground">Durum</p>
                         <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.situation}</p>
                       </div>
                       <div>
-                        <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-violet-600 dark:text-violet-400">Kural analizi</p>
+                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-violet-600 dark:text-violet-400">Kural analizi</p>
                         <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.analysis}</p>
                       </div>
                       <div>
-                        <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Doğru yaklaşım</p>
+                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Doğru yaklaşım</p>
                         <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.correctApproach}</p>
                       </div>
                     </div>
@@ -228,7 +228,7 @@ const DetailedSections = ({ sections }: { sections: RegulationDetailedSection[] 
       {sections.map((section, index) => (
         <article key={section.heading} className="rounded-xl border border-border/40 bg-background/50 p-4 sm:p-5">
           <h3 className="mb-3 flex items-start gap-2 text-sm font-bold text-primary sm:text-base">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-bold text-primary">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-micro font-bold text-primary">
               {index + 1}
             </span>
             <span>{section.heading}</span>
@@ -287,7 +287,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {entry.responsibleRoles.map((role) => (
-                  <span key={role} className="rounded-full border border-border/60 bg-background/60 px-2.5 py-1 text-[10px] font-semibold text-muted-foreground">
+                  <span key={role} className="rounded-full border border-border/60 bg-background/60 px-2.5 py-1 text-micro font-semibold text-muted-foreground">
                     {role}
                   </span>
                 ))}
@@ -328,7 +328,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
                 <ol className="space-y-2 text-sm text-muted-foreground">
                   {entry.verification.map((step, stepIndex) => (
                     <li key={step} className="flex gap-2">
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-[10px] font-black text-sky-500">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-micro font-black text-sky-500">
                         {stepIndex + 1}
                       </span>
                       <span>{step}</span>
@@ -379,7 +379,7 @@ const ComplianceCycle = ({ stages }: { stages: RegulationComplianceStage[] }) =>
             ))}
           </ul>
           <div className="rounded-lg bg-emerald-500/[0.08] p-3">
-            <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+            <p className="mb-1 text-micro font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
               Çıktı
             </p>
             <p className="text-xs leading-relaxed text-muted-foreground">{stage.outputs.join(" · ")}</p>
@@ -453,7 +453,7 @@ const KeyArticlesTable = ({ articles }: { articles: RegulationKeyArticle[] }) =>
       {articles.map((article) => (
         <article key={`${article.id}-${article.title}`} className="rounded-lg border border-border/40 bg-background/50 p-3">
           <div className="flex items-start gap-2">
-            <span className="shrink-0 rounded bg-primary/15 px-2 py-0.5 text-[10px] font-bold text-primary">{article.id}</span>
+            <span className="shrink-0 rounded bg-primary/15 px-2 py-0.5 text-micro font-bold text-primary">{article.id}</span>
             <h3 className="text-xs font-semibold text-foreground sm:text-sm">{article.title}</h3>
           </div>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{article.summary}</p>
@@ -534,7 +534,7 @@ const SourceStatus = ({ status }: { status: RegulationSourceStatus }) => (
         <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-500">Kaynak ve güncellik</p>
         <h2 className="mt-1 text-lg font-black text-foreground">Son kaynak kontrolü: {status.reviewedThrough}</h2>
       </div>
-      <span className="rounded-full border border-sky-500/25 bg-sky-500/10 px-3 py-1 text-[10px] font-bold text-sky-500">
+      <span className="rounded-full border border-sky-500/25 bg-sky-500/10 px-3 py-1 text-micro font-bold text-sky-500">
         Resmî metin ayrıca doğrulanmalı
       </span>
     </div>
@@ -603,7 +603,7 @@ export default function RegulationDetailPage() {
               </div>
             </div>
             <p className="max-w-5xl text-sm leading-7 text-muted-foreground sm:text-base">{regulation.overview}</p>
-            <div className="flex flex-wrap gap-2 text-[11px] font-semibold text-muted-foreground">
+            <div className="flex flex-wrap gap-2 text-micro font-semibold text-muted-foreground">
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
                 {regulation.narrativeChapters?.length || 0} kapsamlı ders bölümü
               </span>
@@ -623,12 +623,12 @@ export default function RegulationDetailPage() {
         <div className="grid items-start gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
           <aside className="hidden lg:sticky lg:top-5 lg:block">
             <nav className="rounded-2xl border border-border/60 bg-card/75 p-3 shadow-sm backdrop-blur-md" aria-label="İçerik haritası">
-              <p className="px-2 pb-2 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">İçerik haritası</p>
+              <p className="px-2 pb-2 text-micro font-black uppercase tracking-[0.2em] text-muted-foreground">İçerik haritası</p>
               <ul className="space-y-1">
                 {toc.map(([id, label], index) => (
                   <li key={id}>
                     <a href={`#${id}`} className="flex items-center gap-2 rounded-lg px-2 py-2 text-xs font-semibold text-muted-foreground transition hover:bg-primary/10 hover:text-primary">
-                      <span className="text-[10px] text-primary">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="text-micro text-primary">{String(index + 1).padStart(2, "0")}</span>
                       <span>{label}</span>
                     </a>
                   </li>

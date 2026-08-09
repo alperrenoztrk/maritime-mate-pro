@@ -65,7 +65,7 @@ export default function BridgeDeviceDetailPage() {
         <div className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80">Örnek görseller</p>
+              <p className="text-micro font-semibold uppercase tracking-[0.2em] text-primary/80">Örnek görseller</p>
               <h2 className="text-lg font-bold text-foreground">{device.name} köprüüstü perspektifleri</h2>
             </div>
             <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
@@ -89,7 +89,7 @@ export default function BridgeDeviceDetailPage() {
                 </div>
                 <figcaption className="flex items-center justify-between px-3 py-2 text-xs text-muted-foreground">
                   <span className="font-medium text-foreground">Köprüüstü detayı</span>
-                  <span className="rounded-md bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                  <span className="rounded-md bg-primary/10 px-2 py-1 text-micro font-semibold uppercase tracking-wide text-primary">
                     {device.name}
                   </span>
                 </figcaption>

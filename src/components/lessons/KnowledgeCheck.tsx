@@ -36,7 +36,7 @@ export function KnowledgeCheck({
       }
     >
       {!compact && (
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+        <p className="text-micro font-bold uppercase tracking-[0.2em] text-primary">
           Bilgi Kontrolü
         </p>
       )}
