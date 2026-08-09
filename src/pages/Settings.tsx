@@ -259,32 +259,6 @@ const Settings = () => {
             {/* Hesap güvenliği: isteğe bağlı 2FA (bkz. src/lib/mfa.ts) */}
             <TwoFactorCard />
 
-            {/* Pro membership */}
-            <Card
-              className="shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:border-amber-400/60 transition-colors"
-              onClick={() => navigate("/pro")}
-            >
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Crown className="w-5 h-5 text-amber-400" />
-                  <span data-translatable>Mariner's Book Pro</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-sm text-muted-foreground">
-                    <span data-translatable>Paketiniz</span>:{" "}
-                    <span className={hasProAccess ? "text-amber-400 font-medium" : ""} data-translatable>
-                      {tierLabels[tier] ?? tier}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-amber-400">
-                    <span data-translatable>{hasProAccess ? "Yönet" : "Pro'ya geç"}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Ads & privacy — free tier on native only */}
             {adsRelevant && (
