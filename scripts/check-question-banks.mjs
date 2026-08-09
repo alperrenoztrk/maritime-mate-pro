@@ -118,7 +118,7 @@ const LENGTH_RULES = {
  * Dengelenmiş bankalar: tam kural uygulanır. Bir dersin şıkları dengelendiğinde
  * bankası buraya taşınır ve LENGTH_BUDGET satırı silinir.
  */
-const BALANCED_BANKS = new Set(["economics", "seamanship"]);
+const BALANCED_BANKS = new Set(["economics", "seamanship", "machine"]);
 
 /**
  * Henüz dengelenmemiş bankaların tavanı (tam sayı yüzde): doğru şıkkın tek
@@ -135,7 +135,6 @@ const LENGTH_BUDGET = {
   safety: 79,
   environment: 74,
   communication: 79,
-  machine: 92,
   "machine/thermodynamics": 56,
   "machine/auxiliary": 91,
   "machine/electrical": 84,
