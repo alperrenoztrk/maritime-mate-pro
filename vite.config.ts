@@ -26,15 +26,18 @@ const PRODUCTION_CSP = [
   "form-action 'self'",
   `script-src 'self' 'wasm-unsafe-eval' ${cspHashes.map((h) => `'sha256-${h}'`).join(" ")}`,
   // Splash ekranı inline <style> + runtime CSS-in-JS için unsafe-inline gerekli.
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' data: https://fonts.gstatic.com",
+  // Google Fonts kaynakları kaldırıldı: Inter ve JetBrains Mono artık
+  // public/fonts altından self-host ediliyor, uygulama hiçbir yazı tipini
+  // üçüncü taraftan çekmiyor.
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self' data:",
   // Ders içerikleri onlarca farklı eğitim sitesinden görsel gösteriyor;
   // görseller pasif içerik olduğundan https: genelinde serbest bırakıldı.
   "img-src 'self' data: blob: https:",
   "media-src 'self' blob: https:",
   // translate.googleapis.com: RouteTranslationGate'in çalışma zamanı makine
   // çevirisi (eksik sözlük girdileri) istemciden bu uca gider.
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://oauth.lovable.app https://*.lovable.app https://*.lovable.dev https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://api.bigdatacloud.net https://translate.googleapis.com https://fonts.googleapis.com https://fonts.gstatic.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://oauth.lovable.app https://*.lovable.app https://*.lovable.dev https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://api.bigdatacloud.net https://translate.googleapis.com",
   "frame-src https://accounts.google.com https://www.youtube-nocookie.com https://www.youtube.com https://www.openstreetmap.org",
   "worker-src 'self' blob:",
   "manifest-src 'self'",

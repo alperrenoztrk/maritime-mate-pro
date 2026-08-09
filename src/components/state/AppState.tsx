@@ -52,8 +52,10 @@ export const RouteSkeleton = () => (
 );
 
 interface StateProps {
-  title: string;
-  description?: string;
+  // ReactNode rather than string: the i18n layer translates by walking the
+  // DOM, and several call sites wrap their copy in <span data-translatable>.
+  title: ReactNode;
+  description?: ReactNode;
   icon?: LucideIcon;
   action?: ReactNode;
   className?: string;

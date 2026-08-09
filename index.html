@@ -17,12 +17,11 @@
     <meta name="description" content="Mariner&#39;s Book delivers interactive maritime lessons, stability and cargo calculators, COLREG references, and animated tools for sailors and maritime students.">
     <meta name="author" content="Mariner's Book" />
     <link rel="canonical" href="https://nauticalleap.com/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Doğrudan stylesheet: önceki preload+onload hilesi inline event handler
-         gerektirdiğinden üretim CSP'si ile uyumsuzdu (display=swap zaten
-         yazı tipi yüklenirken metni engellemiyor). -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <!-- Inter ve JetBrains Mono artık self-host (bkz. src/index.css @font-face
+         blokları ve public/fonts). Google Fonts'a giden stylesheet ve iki
+         preconnect kaldırıldı: ilk açılış artık üçüncü taraf bir isteğe
+         bağlı değil ve Capacitor paketi çevrimdışı ilk açılışta da doğru
+         yazı tipiyle çiziyor. -->
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nauticalleap.com/" />

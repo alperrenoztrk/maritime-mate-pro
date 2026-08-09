@@ -35,6 +35,7 @@ import {
   type MaritimeDocumentRecord,
 } from "@/services/documentTracker";
 import { toast } from "sonner";
+import { EmptyState } from "@/components/state/AppState";
 
 type FilterKey = "all" | "attention" | "valid" | "unknown";
 type JobState = "queued" | DocumentProcessingStage | "done" | "error";
@@ -454,15 +455,11 @@ export default function BetaDocumentTracker() {
               <Loader2 className="h-6 w-6 animate-spin text-amber-500" />
             </div>
           ) : visibleDocuments.length === 0 ? (
-            <div className="flex min-h-44 flex-col items-center justify-center rounded-2xl border border-dashed border-border/60 bg-card/70 p-6 text-center">
-              <FileImage className="h-9 w-9 text-muted-foreground/60" />
-              <p className="mt-3 text-sm font-medium">
-                {documents.length ? "Bu filtrede belge yok" : "Henüz belge eklenmedi"}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Bir fotoğraf yüklediğinizde AI tarihleri otomatik çıkarır.
-              </p>
-            </div>
+            <EmptyState
+              icon={FileImage}
+              title={documents.length ? "Bu filtrede belge yok" : "Henüz belge eklenmedi"}
+              description="Bir fotoğraf yüklediğinizde AI tarihleri otomatik çıkarır."
+            />
           ) : (
             <div className="grid gap-3 sm:grid-cols-2">
               {visibleDocuments.map((document) => {
