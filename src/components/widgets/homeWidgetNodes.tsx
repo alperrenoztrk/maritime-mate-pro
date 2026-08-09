@@ -200,5 +200,5 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     sun: <SunArcWidget sunrise={sunrise} sunset={sunset} progress={sunProgress} />,
   };
 
-  return { nodes, conditions };
+  return { nodes };
 }
