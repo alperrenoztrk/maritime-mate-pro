@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Leaf, CheckCircle, XCircle, RotateCcw, Trophy } from "lucide-react";
+import { Leaf, CheckCircle, XCircle, RotateCcw, Trophy } from "lucide-react";
 import { toast } from "sonner";
 
 interface Question {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { ArrowLeft, CheckCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
+import { CheckCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
 import { hapticNotify } from "@/lib/haptics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

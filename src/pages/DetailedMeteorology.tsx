@@ -7,35 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { MobileLayout } from "@/components/MobileLayout";
-import { 
-  Cloud, 
-  Wind, 
-  Thermometer, 
-  Droplets, 
-  Eye, 
-  Compass, 
-  AlertTriangle, 
-  Info, 
-  Navigation,
-  BarChart3,
-  Map,
-  Satellite,
-  Waves,
-  Sun,
-  Moon,
-  CloudRain,
-  Zap,
-  Activity,
-  TrendingUp,
-  Globe,
-  Clock,
-  Target,
-  Shield,
-  BookOpen,
-  ChevronDown,
-  ChevronUp,
-  ArrowLeft
-} from "lucide-react";
+import { Cloud, Wind, Thermometer, Droplets, Eye, Compass, AlertTriangle, Info, Navigation, BarChart3, Map, Satellite, Waves, Sun, Moon, CloudRain, Zap, Activity, TrendingUp, Globe, Clock, Target, Shield, BookOpen, ChevronDown, ChevronUp } from "lucide-react";
 import { CloudCard } from "@/components/ui/cloud-card";
 import { cloudTypesByLevel } from "@/components/calculations/cloud-types";
 import { SatelliteImageryViewer } from "@/components/SatelliteImageryViewer";

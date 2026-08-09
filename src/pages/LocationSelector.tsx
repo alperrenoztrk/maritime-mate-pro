@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowLeft, Search, MapPin, Users, Clock } from 'lucide-react';
+import { Search, MapPin, Users, Clock } from "lucide-react";
 import { useLocationSearch, type LocationResult } from '@/hooks/useLocationSearch';
 import { useWeatherForecast } from '@/hooks/useWeatherForecast';
 import { useCurrentWeather } from '@/hooks/useCurrentWeather';

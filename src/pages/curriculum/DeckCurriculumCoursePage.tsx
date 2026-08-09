@@ -7,7 +7,7 @@ import {
   type CurriculumSectionId,
 } from "@/components/curriculum/CourseSectionTabs";
 import { CurriculumModuleAccordion } from "@/components/curriculum/CurriculumModuleAccordion";
-import { ArrowLeft } from "lucide-react";
+
 
 export default function DeckCurriculumCoursePage() {
   const { categoryId } = useParams<{ categoryId: string }>();

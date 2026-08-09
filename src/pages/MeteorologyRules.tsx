@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Scale, FileText, Shield, CloudSun } from "lucide-react";
+import { Scale, FileText, Shield, CloudSun } from "lucide-react";
 
 const meteorologyRules = [
   {

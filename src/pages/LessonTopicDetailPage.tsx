@@ -1,4 +1,4 @@
-import { ArrowLeft, Lightbulb } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { stripMarkdown } from "@/utils/cleanText";
 import { getBetaCategories, getBetaTopic, type BetaTopic } from "@/data/betaLessons";

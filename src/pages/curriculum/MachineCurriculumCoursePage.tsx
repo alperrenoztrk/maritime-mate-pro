@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { CurriculumModuleAccordion } from "@/components/curriculum/CurriculumModuleAccordion";
-import { ArrowLeft } from "lucide-react";
+
 
 export default function MachineCurriculumCoursePage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, ListChecks, Shuffle } from "lucide-react";
+import { ListChecks, Shuffle } from "lucide-react";
 
 import { StabilityQuiz as Quiz } from "@/components/stability/StabilityQuiz";
 import { cargoQuestions } from "@/data/cargoQuestions";

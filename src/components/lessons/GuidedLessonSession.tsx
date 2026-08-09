@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";

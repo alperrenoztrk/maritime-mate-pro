@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { LessonImage } from "@/components/ui/LessonImage";
 import { bridgeDeviceMap, type BridgeDeviceId } from "@/data/bridgeDevices";
 

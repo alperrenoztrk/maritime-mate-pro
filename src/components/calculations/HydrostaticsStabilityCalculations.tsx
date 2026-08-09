@@ -27,7 +27,6 @@ import {
   CrossCurves
 } from "../../types/hydrostatic";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { BackButton } from "@/components/BackButton";
 
 
 type StabilitySection = 'hydrostatic' | 'stability' | 'trimlist' | 'analysis' | 'bonjean' | 'draft' | 'damage' | 'practical';
