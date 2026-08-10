@@ -26,7 +26,7 @@ const px = (deg: number, r: number) => C + r * Math.cos(rad(deg));
 const py = (deg: number, r: number) => C + r * Math.sin(rad(deg));
 
 /** Ana yönler — gerçek cihazdaki FORE/RIGHT/AFTER/LEFT'in karşılığı. */
-const CARDINAL: Record<number, string> = { 0: "K", 90: "D", 180: "G", 270: "B" };
+const CARDINAL: Record<number, string> = { 0: "N", 90: "E", 180: "S", 270: "W" };
 
 const FaceBody = memo(function FaceBody() {
   const ticks = [];
