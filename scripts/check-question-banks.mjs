@@ -144,6 +144,7 @@ const BALANCED_BANKS = new Set([
   "machine/engine-room-ops",
   "machine/automation",
   "machine/engine-room-safety",
+  "machine/erm",
 ]);
 
 /**
@@ -154,7 +155,6 @@ const BALANCED_BANKS = new Set([
  * böylece yeni bankalar dengeli doğar. Bütçeler yalnızca düşürülür.
  */
 const LENGTH_BUDGET = {
-  "machine/erm": 99,
   "beta/navigation": 74,
   "beta/meteorology": 81,
   "beta/machine": 86,
