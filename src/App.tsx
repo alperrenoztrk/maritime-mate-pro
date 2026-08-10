@@ -526,7 +526,6 @@ const App = () => {
                           the previous page's scroll offset is never carried
                           over. Must sit inside the router. */}
                       <ScrollToTop />
-                      <RouteTranslationGate />
                       {/* AdMob orchestration: free tier only, never on the home
                           page / auth flow / paywall. Renders nothing — the
                           banner is a native view (see src/services/ads.ts). */}
@@ -536,6 +535,10 @@ const App = () => {
                           itself for /notes outside <Routes>, so it has to sit
                           inside the gate too. */}
                       <RequireAuth>
+                        {/* Keep the translation blocker inside the auth gate.
+                            Auth loading/MFA screens do not mount PageTransition,
+                            so a gate outside RequireAuth could never be released. */}
+                        <RouteTranslationGate />
                         <AnimatedRoutes />
                         <Suspense fallback={null}>
                           <NotesRouteOverlay />

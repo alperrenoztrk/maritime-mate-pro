@@ -17,6 +17,7 @@ const META_PREFIX = '__';
 
 const loadedDictionaries: Record<string, StaticDictionary> = {};
 const inFlightLoads: Record<string, Promise<StaticDictionary>> = {};
+const DICTIONARY_FETCH_TIMEOUT_MS = 8_000;
 
 const baseUrl = (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/';
 
@@ -37,8 +38,15 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
   if (inFlight) return inFlight;
 
   const request = (async (): Promise<StaticDictionary> => {
+    const controller = typeof AbortController === 'undefined' ? null : new AbortController();
+    const timeout = controller
+      ? globalThis.setTimeout(() => controller.abort(), DICTIONARY_FETCH_TIMEOUT_MS)
+      : null;
     try {
-      const response = await fetch(dictionaryUrl(languageCode), { cache: 'force-cache' });
+      const response = await fetch(dictionaryUrl(languageCode), {
+        cache: 'force-cache',
+        signal: controller?.signal,
+      });
       if (!response.ok) {
         loadedDictionaries[languageCode] = {};
         return {};
@@ -56,6 +64,7 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
       loadedDictionaries[languageCode] = {};
       return {};
     } finally {
+      if (timeout !== null) globalThis.clearTimeout(timeout);
       delete inFlightLoads[languageCode];
     }
   })();

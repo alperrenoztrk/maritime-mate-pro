@@ -1,41 +1,67 @@
 const MAX_PREVIEWS = 3;
+const PREVIEW_LINE_COUNT = 5;
 
 type RoutePreview = {
   pathname: string;
-  surface: HTMLElement;
+  title: string;
 };
 
 const previews = new Map<string, RoutePreview>();
 
-const makeInert = (root: HTMLElement) => {
-  root.setAttribute("aria-hidden", "true");
-  root.setAttribute("inert", "");
-  root.querySelectorAll<HTMLElement>("[id]").forEach((element) => element.removeAttribute("id"));
-  root
-    .querySelectorAll<HTMLElement>("a, button, input, select, textarea, [tabindex]")
-    .forEach((element) => element.setAttribute("tabindex", "-1"));
-  root.querySelectorAll("script, iframe, video, audio").forEach((element) => element.remove());
+const fallbackTitle = (pathname: string) => {
+  if (pathname === "/") return "Mariner's Book";
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[segments.length - 1] ?? "";
+  try {
+    return decodeURIComponent(segment).replace(/[-_]+/g, " ");
+  } catch {
+    return segment.replace(/[-_]+/g, " ");
+  }
+};
+
+const readTitle = (pathname: string, surface: HTMLElement) => {
+  const heading = surface.querySelector<HTMLElement>("[data-page-title], h1:not(.sr-only)");
+  return heading?.textContent?.replace(/\s+/g, " ").trim().slice(0, 80) || fallbackTitle(pathname);
+};
+
+const createPreviewSurface = (preview: RoutePreview) => {
+  const surface = document.createElement("div");
+  surface.className = "edge-swipe-preview__surface";
+  surface.setAttribute("aria-hidden", "true");
+  surface.setAttribute("inert", "");
+  surface.setAttribute("data-no-translate", "");
+  surface.setAttribute("translate", "no");
+
+  const title = document.createElement("div");
+  title.className = "edge-swipe-preview__title";
+  title.textContent = preview.title;
+  surface.appendChild(title);
+
+  const card = document.createElement("div");
+  card.className = "edge-swipe-preview__card";
+  for (let index = 0; index < PREVIEW_LINE_COUNT; index += 1) {
+    const line = document.createElement("span");
+    line.className = "edge-swipe-preview__line";
+    line.style.width = `${86 - index * 8}%`;
+    card.appendChild(line);
+  }
+  surface.appendChild(card);
+  return surface;
 };
 
 /**
- * Keeps a small, inert DOM snapshot of recently visited route surfaces.
+ * Keeps a tiny semantic description of recently visited route surfaces.
  *
- * A detached clone is intentionally used instead of a bitmap capture: it is
- * synchronous, does not pull html2canvas into the entry bundle, stays sharp at
- * every display scale and continues to use the active light/dark theme tokens.
+ * Large lesson pages can contain thousands of nodes. Retaining deep DOM clones
+ * for multiple routes exhausted mobile WebView memory after a few taps. A title
+ * plus a fixed-size skeleton preserves the interactive-pop depth cue with a
+ * constant memory/DOM budget.
  */
 export const captureRoutePreview = (pathname: string, surface: HTMLElement | null) => {
   if (!surface || !pathname) return;
 
-  const clone = surface.cloneNode(true) as HTMLElement;
-  clone.classList.remove("edge-swipe-page", "edge-swipe-committing");
-  clone.style.removeProperty("transform");
-  clone.style.removeProperty("transition");
-  clone.style.removeProperty("will-change");
-  makeInert(clone);
-
   previews.delete(pathname);
-  previews.set(pathname, { pathname, surface: clone });
+  previews.set(pathname, { pathname, title: readTitle(pathname, surface) });
   while (previews.size > MAX_PREVIEWS) {
     const oldest = previews.keys().next().value as string | undefined;
     if (!oldest) break;
@@ -50,9 +76,7 @@ export const mountRoutePreview = (pathname: string, host: HTMLElement | null): b
   const preview = previews.get(pathname);
   if (!preview) return false;
 
-  const clone = preview.surface.cloneNode(true) as HTMLElement;
-  makeInert(clone);
-  host.appendChild(clone);
+  host.appendChild(createPreviewSurface(preview));
   return true;
 };
 
