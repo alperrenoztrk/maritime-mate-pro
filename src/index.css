@@ -1389,6 +1389,16 @@ body {
   top: 0 !important;
 }
 
+/*
+ * Text is authored in Turkish and translated after React commits it. A
+ * MutationObserver adds this attribute before the browser's next paint and the
+ * translation engine removes it only when that subtree is ready, preventing
+ * async data/dialog/toast content from flashing in the source language.
+ */
+[data-mt-translation-pending] {
+  visibility: hidden !important;
+}
+
 /* Hide all Google Translate UI elements (widget icon, tooltip, balloon) */
 .goog-te-gadget,
 .goog-te-gadget-icon,
@@ -1527,4 +1537,3 @@ body.marine-global :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep
   background: var(--surface-2) !important;
   border-color: var(--surface-border) !important;
 }
-

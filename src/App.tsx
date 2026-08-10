@@ -395,10 +395,10 @@ const AnimatedRoutes = () => {
         <Route path="/regulations/:slug" element={<PageTransition><RegulationDetailPage /></PageTransition>} />
         <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
-        <Route path="/auth/callback" element={<AuthCallbackPage />} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/auth/callback" element={<PageTransition><AuthCallbackPage /></PageTransition>} />
+        <Route path="/reset-password" element={<PageTransition><ResetPasswordPage /></PageTransition>} />
 
-        <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
+        <Route path="/.lovable/oauth/consent" element={<PageTransition><OAuthConsent /></PageTransition>} />
         <Route path="/weather-forecast" element={<PageTransition><WeatherForecast /></PageTransition>} />
         <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
         <Route path="/sunrise-times" element={<PageTransition><SunriseTimes /></PageTransition>} />

@@ -55,6 +55,7 @@
     "i18n:fix": "npx tsx scripts/i18n/apply-contextual-fixes.mjs",
     "i18n:check": "node scripts/i18n/check-coverage.mjs",
     "i18n:audit": "npx tsx scripts/i18n/audit-rendered.mjs",
+    "test:i18n-barrier": "node --import tsx --test src/utils/routeTranslation.test.ts",
     "i18n:all": "npm run i18n:extract && npm run i18n:generate && npm run i18n:check -- --strict",
     "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict",
     "check:design-system": "node scripts/check-design-system.mjs"
