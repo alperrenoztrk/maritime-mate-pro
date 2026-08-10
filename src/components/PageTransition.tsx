@@ -1,12 +1,14 @@
-import { ReactNode, useLayoutEffect, useMemo, useRef } from "react";
+import { ReactNode, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { scrollToTop } from "@/lib/scrollToTop";
 import { useLanguage } from "@/contexts/useLanguage";
 import {
   createRouteTranslationToken,
   isRouteTranslationReady,
+  ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS,
 } from "@/utils/routeTranslation";
 import { isAppPageImmersive } from "@/lib/appChrome";
+
 
 interface PageTransitionProps {
   children: ReactNode;
