@@ -3,7 +3,6 @@ import { type HomeWidgetId, useHomeWidgets } from "@/hooks/useHomeWidgets";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 import { InstrumentStyles } from "@/components/widgets/instruments/InstrumentStyles";
 import { InstrumentDefs } from "@/components/widgets/instruments/InstrumentDefs";
-import { InstrumentCredits } from "@/components/widgets/instruments/InstrumentCredits";
 import { useHomeWidgetNodes } from "@/components/widgets/homeWidgetNodes";
 
 /**
@@ -29,7 +28,6 @@ export function HomeWidgetGrid() {
         </div>
       </div>
 
-      <InstrumentCredits />
       <ManualLocationDialog open={manualOpen} onOpenChange={setManualOpen} />
     </>
   );
