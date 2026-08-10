@@ -98,7 +98,7 @@ const Glossary = () => {
               <button
                 type="button"
                 onClick={() => updateCategory(null)}
-                className="rounded-xl border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
+                className="surface-1 min-h-11 rounded-xl border px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-control hover:text-foreground"
               >
                 Kategoriler
               </button>
@@ -110,7 +110,7 @@ const Glossary = () => {
               {filteredTerms.map((term) => (
                 <article
                   key={term.title}
-                  className="rounded-2xl border border-border/50 bg-card/75 p-4 shadow-sm backdrop-blur"
+                  className="surface-2 rounded-2xl border p-4"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <h2 className="text-sm font-bold text-foreground">{term.title}</h2>

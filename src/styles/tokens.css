@@ -23,7 +23,7 @@
      duration. That hook has been removed. */
   --motion-press: 120ms;    /* button/icon press feedback          */
   --motion-control: 200ms;  /* toggles, chips, small reveals       */
-  --motion-page: 300ms;     /* route push/pop                      */
+  --motion-page: 360ms;     /* route push/pop                      */
   --motion-sheet: 380ms;    /* bottom sheets, modals               */
 
   /* iOS-flavoured easings. `--ease-out-ios` is the standard
@@ -49,36 +49,8 @@
      both hard-coded rounded-[22px]. */
   --radius-ios: 22px;
 
-  /* ── Surfaces ──────────────────────────────────────────────────
-     Tuned against the surface the app ACTUALLY paints — the ocean
-     gradient in GlobalMaritimeBackground, hsl(214 84% 8%) →
-     hsl(200 80% 18%) — not the `.dark` palette, which no full-screen
-     element ever renders.
-
-     These are translucent fills WITHOUT backdrop-filter, the same
-     approach iOS uses for systemFill colours. They read as layered
-     material over the gradient but cost nothing to composite, unlike
-     the blur that used to be forced onto every content card. */
-  --surface-1: rgba(255, 255, 255, 0.05);
-  --surface-2: rgba(255, 255, 255, 0.08);
-  --surface-3: rgba(255, 255, 255, 0.12);
-  --surface-border: rgba(255, 255, 255, 0.10);
-  --surface-border-strong: rgba(255, 255, 255, 0.18);
-
-  /* ── Glass (chrome only) ───────────────────────────────────────
-     Reserved for elements that float OVER content: navigation bars,
-     the search pill, the floating back control, sheet handles.
-     Never on a content card, and never stacked on itself. */
-  --glass-bg: rgba(10, 26, 47, 0.72);
-  --glass-blur: 20px;
-  --glass-border: rgba(255, 255, 255, 0.14);
-
-  /* ── Elevation ─────────────────────────────────────────────────
-     Cool-toned to sit correctly on the deep blue shell; neutral black
-     shadows go muddy against it. */
-  --shadow-1: 0 1px 2px rgba(2, 10, 20, 0.28);
-  --shadow-2: 0 4px 16px -2px rgba(2, 10, 20, 0.40);
-  --shadow-3: 0 12px 32px -6px rgba(2, 10, 20, 0.52);
+  /* Surface, glass and elevation values live beside the safe-area tokens
+     below so both light and dark appearances share one vocabulary. */
 
   /* ── Type ──────────────────────────────────────────────────────
      Expressed in rem so they inherit `--font-scale` through the root
@@ -88,6 +60,11 @@
   --text-micro: 0.6875rem;  /* 11px at the 16px root */
   --text-caption: 0.75rem;  /* 12px                  */
 
+  /* ── App chrome geometry ──────────────────────────────────── */
+  --app-tabbar-height: 4.125rem;
+  --app-tabbar-reserve: calc(var(--app-tabbar-height) + max(0.75rem, var(--safe-bottom)) + var(--ad-banner-height, 0px));
+  --app-sidebar-reserve: 0px;
+
   /* ── Safe area ─────────────────────────────────────────────────
      Real values only once viewport-fit=cover is set (see index.html).
      Exposed as tokens so components stop repeating the env() fallback
@@ -96,6 +73,36 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Light appearance. Dark values are overridden below. */
+  --surface-1: rgba(255, 255, 255, 0.48);
+  --surface-2: rgba(255, 255, 255, 0.68);
+  --surface-3: rgba(255, 255, 255, 0.84);
+  --surface-border: rgba(15, 42, 68, 0.10);
+  --surface-border-strong: rgba(15, 42, 68, 0.18);
+  --glass-bg: rgba(247, 251, 255, 0.78);
+  --glass-blur: 20px;
+  --glass-border: rgba(15, 42, 68, 0.12);
+  --shadow-1: 0 1px 2px rgba(21, 50, 76, 0.10);
+  --shadow-2: 0 6px 20px -4px rgba(21, 50, 76, 0.18);
+  --shadow-3: 0 18px 40px -10px rgba(21, 50, 76, 0.24);
+  --maritime-shell-background: linear-gradient(180deg, hsl(204 58% 96%) 0%, hsl(205 54% 92%) 52%, hsl(195 48% 88%) 100%);
+  --maritime-shell-glow: radial-gradient(ellipse at 50% 0%, rgba(14, 165, 233, 0.14) 0%, transparent 58%);
+}
+
+.dark {
+  --surface-1: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --surface-3: rgba(255, 255, 255, 0.12);
+  --surface-border: rgba(255, 255, 255, 0.10);
+  --surface-border-strong: rgba(255, 255, 255, 0.18);
+  --glass-bg: rgba(10, 26, 47, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --shadow-1: 0 1px 2px rgba(2, 10, 20, 0.28);
+  --shadow-2: 0 4px 16px -2px rgba(2, 10, 20, 0.40);
+  --shadow-3: 0 12px 32px -6px rgba(2, 10, 20, 0.52);
+  --maritime-shell-background: linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%);
+  --maritime-shell-glow: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.14) 0%, transparent 55%);
 }
 
 /* ================================================================
@@ -114,6 +121,127 @@
 .surface-1 { background: var(--surface-1); border-color: var(--surface-border); }
 .surface-2 { background: var(--surface-2); border-color: var(--surface-border); }
 .surface-3 { background: var(--surface-3); border-color: var(--surface-border-strong); }
+
+/* ================================================================
+   GLOBAL APP CHROME
+   ================================================================ */
+
+.app-navbar {
+  left: 0;
+  height: calc(var(--safe-top) + 3.5rem);
+}
+
+.app-tabbar {
+  position: fixed;
+  z-index: 45;
+  left: max(0.625rem, var(--safe-left));
+  right: max(0.625rem, var(--safe-right));
+  bottom: calc(var(--ad-banner-height, 0px) + max(0.5rem, var(--safe-bottom)));
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-3);
+}
+
+.app-tabbar__items {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-height: var(--app-tabbar-height);
+  padding: 0.25rem;
+}
+
+.app-tabbar__item {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.125rem;
+  border-radius: 1.125rem;
+  color: hsl(var(--muted-foreground));
+  transition: color var(--motion-control) var(--ease-out-ios), background-color var(--motion-control) var(--ease-out-ios), transform var(--motion-press) var(--ease-out-ios);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-tabbar__item:active { transform: scale(0.94); }
+.app-tabbar__item:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: -2px; }
+.app-tabbar__item--active { color: hsl(var(--primary)); }
+.app-tabbar__item--active .app-tabbar__icon { background: hsl(var(--primary) / 0.14); }
+
+.app-tabbar__icon {
+  display: grid;
+  width: 2.25rem;
+  height: 1.75rem;
+  place-items: center;
+  border-radius: 999px;
+  transition: background-color var(--motion-control) var(--ease-out-ios);
+}
+
+.app-tabbar__icon svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
+.app-tabbar__label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: var(--text-micro); font-weight: 600; line-height: 1.15; white-space: nowrap; }
+.app-tabbar__search { margin-left: 0.2rem; border-left: 1px solid var(--surface-border-strong); border-radius: 0 1.125rem 1.125rem 0; }
+
+.app-tabbar-visible .page-transition-shell {
+  padding-bottom: var(--app-tabbar-reserve);
+}
+
+.route-presence-frame[data-app-navbar="true"] .interactive-page-surface {
+  padding-top: var(--floating-nav-reserve);
+}
+
+.route-presence-frame[data-app-navbar="false"] .route-skeleton {
+  padding-top: calc(var(--safe-top) + 1rem);
+}
+
+.interactive-page-surface {
+  transform-origin: right center;
+  background: transparent;
+}
+
+.edge-swipe-page {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --app-tabbar-reserve: 0px;
+    --app-sidebar-reserve: 6.5rem;
+  }
+
+  .app-tabbar {
+    left: calc(var(--safe-left) + 0.75rem);
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: 5.25rem;
+    transform: translateY(-50%);
+  }
+
+  .app-tabbar__items { grid-template-columns: 1fr; padding: 0.35rem; }
+  .app-tabbar__item { min-height: 4rem; }
+  .app-tabbar__search { margin: 0.2rem 0 0; border-top: 1px solid var(--surface-border-strong); border-left: 0; border-radius: 0 0 1.125rem 1.125rem; }
+  .app-tabbar-visible .route-presence-frame { padding-left: var(--app-sidebar-reserve); }
+  .app-tabbar-visible .app-navbar { left: var(--app-sidebar-reserve); }
+  .app-tabbar-visible .app-edge-swipe { left: var(--app-sidebar-reserve); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .surface-glass {
+    background: hsl(var(--popover));
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root { --surface-border: rgba(15, 42, 68, 0.3); --surface-border-strong: rgba(15, 42, 68, 0.48); }
+  .dark { --surface-border: rgba(255, 255, 255, 0.3); --surface-border-strong: rgba(255, 255, 255, 0.5); }
+  .app-tabbar__item--active { text-decoration: underline; text-underline-offset: 0.2rem; }
+}
 
 /* ================================================================
    REDUCED MOTION

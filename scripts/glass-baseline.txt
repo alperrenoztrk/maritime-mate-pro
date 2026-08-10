@@ -1,6 +1,5 @@
 src/components/AskAIPopup.tsx
 src/components/AssistantInterface.tsx
-src/components/GlobalSearch.tsx
 src/components/LanguageChangeOverlay.tsx
 src/components/PhotoGallery.tsx
 src/components/courseContent/CalculatorCard.tsx
@@ -12,7 +11,6 @@ src/components/curriculum/CurriculumModuleAccordion.tsx
 src/components/layout/CalculationLayout.tsx
 src/components/lessons/GuidedLessonSession.tsx
 src/components/lessons/LessonEnhancementBlock.tsx
-src/components/library/LibraryInterface.tsx
 src/components/stability/Ship3DVisualization.tsx
 src/components/stability/Stability3DSim.tsx
 src/components/ui/ImageViewerModal.tsx
@@ -33,8 +31,6 @@ src/pages/EnvironmentTopicsPage.tsx
 src/pages/ExamPreparationPage.tsx
 src/pages/ExerciseTopicDetailPage.tsx
 src/pages/FluidMechanicsTopicsPage.tsx
-src/pages/Glossary.tsx
-src/pages/Index.tsx
 src/pages/LessonTopicDetailPage.tsx
 src/pages/MachineFormulas.tsx
 src/pages/MachineRules.tsx

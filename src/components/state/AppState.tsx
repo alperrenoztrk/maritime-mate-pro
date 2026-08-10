@@ -41,8 +41,7 @@ export const AppSkeleton = ({
 /** Full-screen route placeholder while a lazy chunk downloads. */
 export const RouteSkeleton = () => (
   <div
-    className="flex min-h-[100svh] w-full flex-col gap-4 px-4"
-    style={{ paddingTop: "var(--floating-nav-reserve)" }}
+    className="route-skeleton flex min-h-[100svh] w-full flex-col gap-4 px-4 pt-4"
     role="status"
     aria-label="Yükleniyor"
   >

@@ -17,18 +17,14 @@ export const GlobalMaritimeBackground = () => {
       className="pointer-events-none fixed inset-0 overflow-hidden"
       style={{
         zIndex: -1,
-        // Top stop is the app's canonical shell colour — mirrored by
-        // index.html theme-color, the PWA manifest and the native status bar.
-        background:
-          "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
+        background: "var(--maritime-shell-background)",
       }}
     >
       {/* Top radial glow */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.14) 0%, transparent 55%)",
+          background: "var(--maritime-shell-glow)",
         }}
       />
 

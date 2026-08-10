@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Vibrate } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Vibrate, Monitor, Moon, Sun } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { getHapticsEnabled, setHapticsEnabled, hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
@@ -25,9 +25,11 @@ import {
   openPrivacyOptionsForm,
 } from "@/services/ads";
 import { toast } from "sonner";
+import { useTheme, type Theme } from "@/hooks/useTheme";
 
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
+  const { theme, setTheme } = useTheme();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
   // RequireAuth already keeps anonymous visitors out of this page and carries
   // the return path, so no local redirect is needed here.
@@ -95,6 +97,12 @@ const Settings = () => {
     xlarge: "Çok Büyük",
   };
 
+  const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Monitor }> = [
+    { value: "system", label: "Sistem", icon: Monitor },
+    { value: "light", label: "Açık", icon: Sun },
+    { value: "dark", label: "Koyu", icon: Moon },
+  ];
+
   const handleFontSizeChange = (value: string) => {
     setFontSize(value as FontSizeKey);
     toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
@@ -132,14 +140,16 @@ const Settings = () => {
 
   return (
     <MobileLayout>
-      <div className="min-h-screen bg-background text-foreground p-4">
+      <div className="min-h-screen py-2 text-foreground sm:py-4">
         <div className="max-w-4xl mx-auto space-y-6">
 
           {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-3">
-              <SettingsIcon className="h-12 w-12 text-blue-600 dark:text-blue-400 nature-icon" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent nature-title">
+          <div className="space-y-1 pb-1">
+            <div className="flex items-center gap-3">
+              <span className="surface-2 inline-flex h-10 w-10 items-center justify-center rounded-xl border">
+                <SettingsIcon className="h-5 w-5 text-primary" />
+              </span>
+              <h1 data-page-title className="text-3xl font-bold tracking-[-0.025em] text-foreground">
                 <span data-translatable>Ayarlar</span>
               </h1>
             </div>
@@ -147,7 +157,7 @@ const Settings = () => {
 
           <div className="grid gap-6">
             {/* Account */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card>
               <CardHeader>
                 <CardTitle>
                   <span data-translatable>Hesap</span>
@@ -256,7 +266,7 @@ const Settings = () => {
 
             {/* Ads & privacy — free tier on native only */}
             {adsRelevant && (
-              <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Megaphone className="w-5 h-5" />
@@ -278,8 +288,45 @@ const Settings = () => {
               </Card>
             )}
 
+            {/* Appearance */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Sun className="h-5 w-5" />
+                  <span data-translatable>Görünüm</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="surface-1 grid grid-cols-3 gap-1 rounded-xl border p-1" role="radiogroup" aria-label="Görünüm">
+                  {appearanceOptions.map(({ value, label, icon: Icon }) => {
+                    const selected = theme === value;
+                    return (
+                      <button
+                        key={value}
+                        type="button"
+                        role="radio"
+                        aria-checked={selected}
+                        onClick={() => {
+                          setTheme(value);
+                          hapticImpact("light");
+                        }}
+                        className={`inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-2 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
+                          selected
+                            ? "bg-background text-foreground shadow-elev-1"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span data-translatable>{label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Font Size Settings */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Type className="w-5 h-5" />
@@ -312,7 +359,7 @@ const Settings = () => {
             </Card>
 
             {/* Haptic feedback */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Vibrate className="w-5 h-5" />
@@ -342,7 +389,7 @@ const Settings = () => {
             </Card>
 
             {/* Language Settings */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="w-5 h-5" />

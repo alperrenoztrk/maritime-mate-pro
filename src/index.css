@@ -164,7 +164,7 @@ All colors MUST be HSL.
        when a page's own <h1> is rendered. Pages that draw their own heading
        add this to their top padding so the title is never covered.
        Keep in sync with AppNavBar's offset and scrim height. */
-    --floating-nav-reserve: calc(max(0.75rem, env(safe-area-inset-top, 0px)) + 2.75rem);
+    --floating-nav-reserve: calc(env(safe-area-inset-top, 0px) + 3.5rem);
 
     /* Maritime color palette */
     --background: 210 20% 98%;
@@ -213,11 +213,11 @@ All colors MUST be HSL.
 
 
     /* Control sizing tokens */
-    --control-height-base: 2.5rem; /* corresponds to h-10 */
+    --control-height-base: 2.75rem; /* iOS minimum touch target: 44px */
     --control-padding-x-base: 1rem; /* px-4 */
     --control-padding-y-base: 0.5rem; /* py-2 */
     --card-padding-base: 1.5rem; /* p-6 */
-    --tabs-list-height-base: 2.5rem; /* h-10 */
+    --tabs-list-height-base: 2.75rem;
 
     --control-height: var(--control-height-base);
     --control-padding-x: var(--control-padding-x-base);
@@ -1453,13 +1453,13 @@ body.marine-global { background: transparent !important; }
    (anything with a min-h-screen / min-h-[100svh]-style class).
    Inner cards/components keep their own backgrounds — we only target
    the page root by combining min-h with a bg- class on the same element. */
-body.marine-global :where(.min-h-screen, [class*="min-h-[100"], [class*="min-h-[100svh]"], [class*="min-h-[100vh]"]):not(.marine-keep):not(.marine-shell) {
+html.dark body.marine-global :where(.min-h-screen, [class*="min-h-[100"], [class*="min-h-[100svh]"], [class*="min-h-[100vh]"]):not(.marine-keep):not(.marine-shell) {
   background: transparent !important;
 }
 
 /* Strip gradient-to-* and bg-{color}-{50..200} on those page roots too,
    covering the light-tinted layouts (blue-50, amber-50, rose-50, etc.). */
-body.marine-global
+html.dark body.marine-global
   :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep):not(.marine-shell)
   :where(
     [class*="bg-gradient-to"],
@@ -1485,7 +1485,7 @@ body.marine-global
 
 /* Same neutralization applied directly to the page root itself when it
    carries a gradient/light bg AND a min-h class. */
-body.marine-global
+html.dark body.marine-global
   :where(.min-h-screen, [class*="min-h-[100"]):where(
     [class*="bg-gradient-to"],
     .bg-white, .bg-slate-50, .bg-slate-100,
@@ -1501,7 +1501,7 @@ body.marine-global
 
 /* Readable text on the dark maritime gradient.
    Mirrors MobileLayout's per-page overrides so legacy pages stay legible. */
-body.marine-global :where(
+html.dark body.marine-global :where(
     .text-slate-900,.text-slate-800,.text-slate-700,
     .text-gray-900,.text-gray-800,.text-gray-700,
     .text-zinc-900,.text-zinc-800,.text-zinc-700,
@@ -1511,7 +1511,7 @@ body.marine-global :where(
   ) {
   color: rgb(241 245 249) !important;
 }
-body.marine-global :where(
+html.dark body.marine-global :where(
     .text-slate-600,.text-slate-500,
     .text-gray-600,.text-gray-500,
     .text-zinc-600,.text-zinc-500,
@@ -1519,7 +1519,7 @@ body.marine-global :where(
   ) {
   color: rgb(203 213 225) !important;
 }
-body.marine-global :where(.text-slate-400,.text-gray-400,.text-zinc-400) {
+html.dark body.marine-global :where(.text-slate-400,.text-gray-400,.text-zinc-400) {
   color: rgb(148 163 184) !important;
 }
 
@@ -1532,7 +1532,7 @@ body.marine-global :where(.text-slate-400,.text-gray-400,.text-zinc-400) {
    blur belongs to chrome floating over content, never to the content itself.
    It also cost a compositing pass per card. Blur now lives only in
    `.surface-glass` (see src/styles/tokens.css), used by navigation surfaces. */
-body.marine-global :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep)
+html.dark body.marine-global :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep)
   :where(.bg-white, .bg-slate-50, .bg-gray-50):not(.marine-keep) {
   background: var(--surface-2) !important;
   border-color: var(--surface-border) !important;

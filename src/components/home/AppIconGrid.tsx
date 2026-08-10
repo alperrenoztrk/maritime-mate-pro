@@ -1,61 +1,70 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Users, Ship, ClipboardList, FlaskConical, BookA, Settings, Sparkles, StickyNote, type LucideIcon } from "lucide-react";
+import {
+  BookA,
+  BookOpen,
+  ChevronRight,
+  ClipboardList,
+  FlaskConical,
+  Settings,
+  Ship,
+  Sparkles,
+  StickyNote,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 import { hapticImpact } from "@/lib/haptics";
 
-interface AppIcon {
+interface AppShortcut {
   label: string;
+  description: string;
   to: string;
-  Icon: LucideIcon;
-  gradient: string;
+  icon: LucideIcon;
 }
 
-const APPS: AppIcon[] = [
-  { label: "Dersler", to: "/lessons", Icon: BookOpen, gradient: "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)" },
-  { label: "Alıştırmalar", to: "/exercises", Icon: Sparkles, gradient: "linear-gradient(135deg, #a855f7 0%, #4f46e5 100%)" },
-  { label: "Personnel", to: "/crew", Icon: Users, gradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)" },
-  { label: "Gemi Sistemleri", to: "/ship-systems", Icon: Ship, gradient: "linear-gradient(135deg, #f59e0b 0%, #b45309 100%)" },
-  { label: "Operasyonlar", to: "/ship-operations", Icon: ClipboardList, gradient: "linear-gradient(135deg, #ec4899 0%, #be185d 100%)" },
-  { label: "Sözlük", to: "/glossary", Icon: BookA, gradient: "linear-gradient(135deg, #0891b2 0%, #1e3a8a 100%)" },
-  { label: "Beta", to: "/beta", Icon: FlaskConical, gradient: "linear-gradient(135deg, #a855f7 0%, #6d28d9 100%)" },
-  { label: "Notlar", to: "/notes", Icon: StickyNote, gradient: "linear-gradient(135deg, #facc15 0%, #ca8a04 100%)" },
-  { label: "Ayarlar", to: "/settings", Icon: Settings, gradient: "linear-gradient(135deg, #64748b 0%, #334155 100%)" },
+const APPS: AppShortcut[] = [
+  { label: "Dersler", description: "Güverte ve makine", to: "/lessons", icon: BookOpen },
+  { label: "Alıştırmalar", description: "Bilgini pekiştir", to: "/exercises", icon: Sparkles },
+  { label: "Personel", description: "Roller ve görevler", to: "/crew", icon: Users },
+  { label: "Gemi Sistemleri", description: "Sistem başvuruları", to: "/ship-systems", icon: Ship },
+  { label: "Operasyonlar", description: "Gemi operasyonları", to: "/ship-operations", icon: ClipboardList },
+  { label: "Sözlük", description: "Denizcilik terimleri", to: "/glossary", icon: BookA },
+  { label: "Beta", description: "Yeni özellikler", to: "/beta", icon: FlaskConical },
+  { label: "Notlar", description: "Kişisel notların", to: "/notes", icon: StickyNote },
+  { label: "Ayarlar", description: "Uygulama tercihleri", to: "/settings", icon: Settings },
 ];
-
 
 export function AppIconGrid() {
   return (
-    <div className="grid grid-cols-3 gap-x-4 gap-y-6 px-4 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-7">
-      {APPS.map(({ label, to, Icon, gradient }) => (
-        <Link
-          key={to}
-          to={to}
-          className="group flex flex-col items-center gap-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded-ios"
-          aria-label={label}
-          // Launching an app is the single most-repeated gesture on this
-          // screen; a light tick is what makes it feel like it registered.
-          onClick={() => hapticImpact("light")}
-        >
-          <div
-            className="relative flex aspect-square w-full items-center justify-center rounded-ios transition-transform duration-150 group-active:scale-90"
-            style={{
-              background: gradient,
-              boxShadow:
-                "0 8px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.2)",
-            }}
+    <section aria-labelledby="quick-access-title" className="space-y-3">
+      <div className="flex items-end justify-between gap-3 px-1">
+        <div>
+          <h2 id="quick-access-title" className="text-xl font-semibold tracking-[-0.02em] text-foreground">
+            Hızlı Erişim
+          </h2>
+          <p className="mt-0.5 text-caption text-muted-foreground">Sık kullanılan bölümler</p>
+        </div>
+      </div>
+
+      <div className="grid gap-2 sm:grid-cols-2">
+        {APPS.map(({ label, description, to, icon: Icon }) => (
+          <Link
+            key={to}
+            to={to}
+            aria-label={label}
+            onClick={() => hapticImpact("light")}
+            className="surface-2 group flex min-h-[4.75rem] items-center gap-3 rounded-2xl border px-3.5 py-3 outline-none transition-[background-color,border-color,transform] duration-control hover:border-primary/25 focus-visible:ring-2 focus-visible:ring-primary active:scale-[0.99]"
           >
-            <Icon className="h-1/2 w-1/2 text-white drop-shadow-md" strokeWidth={1.8} />
-            <div
-              className="pointer-events-none absolute inset-0 rounded-ios"
-              style={{
-                background: "linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 45%)",
-              }}
-            />
-          </div>
-          <span className="text-micro font-medium text-white/90 drop-shadow-md leading-tight text-center">
-            {label}
-          </span>
-        </Link>
-      ))}
-    </div>
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Icon className="h-5 w-5" strokeWidth={2} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-sm font-semibold text-foreground">{label}</span>
+              <span className="mt-0.5 block truncate text-caption text-muted-foreground">{description}</span>
+            </span>
+            <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-control group-hover:translate-x-0.5" />
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }

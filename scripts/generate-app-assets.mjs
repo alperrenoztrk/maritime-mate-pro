@@ -11,20 +11,58 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const iconSvg = readFileSync(join(root, 'resources/icon.svg'), 'utf8');
+const ogSvgPath = join(root, 'resources/og-image.svg');
 
-const BG_TOP = '#0f3a7d';
-const BG_BOTTOM = '#071c3f';
+const BG_TOP = '#0e5f91';
+const BG_BOTTOM = '#061d3d';
 
 // Arka plan karesi ve dalga dokusu olmadan yalnızca dümen simidi logosu.
 // (Dalga path'leri 1024 kutusuna kırpıldığı için şeffaf/degrade zeminlerde
 // dikdörtgen artefakt oluşturur.)
 const logoOnly = iconSvg
-  .replace(/<rect width="1024" height="1024"[^/]*\/>/, '')
+  .replace(/<rect width="1024" height="1024"[^/]*\/>/g, '')
   .replace(/<path d="M0 8[^/]*\/>/g, '')
   .replace(/<\/?svg[^>]*>/g, '');
 
+function recolorSvg(svg, palette) {
+  return svg.replace(/#[0-9a-f]{6}/gi, color => palette[color.toLowerCase()] ?? color);
+}
+
+const darkIconSvg = recolorSvg(iconSvg, {
+  '#0e5f91': '#082f58',
+  '#0b3768': '#061d3d',
+  '#061d3d': '#020b18',
+  '#38bdf8': '#0ea5e9',
+  '#e0f2fe': '#7dd3fc',
+  '#08264d': '#03152d',
+});
+
+// iOS uses the luminance of this grayscale artwork when the user chooses a
+// tinted Home Screen. Broad, high-contrast shapes survive system tinting far
+// better than feeding the full-colour icon into that mode.
+const tintedIconSvg = recolorSvg(iconSvg, {
+  '#0e5f91': '#e2e2e7',
+  '#0b3768': '#c7c7cc',
+  '#061d3d': '#aeaeb2',
+  '#ffffff': '#1c1c1e',
+  '#f8fafc': '#242426',
+  '#dbeafe': '#2c2c2e',
+  '#bfdbfe': '#3a3a3c',
+  '#7dd3fc': '#636366',
+  '#38bdf8': '#f2f2f7',
+  '#e0f2fe': '#ffffff',
+  '#08264d': '#f2f2f7',
+  '#fde68a': '#57575a',
+  '#e7a62b': '#3a3a3c',
+  '#020617': '#000000',
+});
+
 function renderIcon(size) {
   return new Resvg(iconSvg, { fitTo: { mode: 'width', value: size } }).render().asPng();
+}
+
+function renderIconVariant(svg, size) {
+  return new Resvg(svg, { fitTo: { mode: 'width', value: size } }).render().asPng();
 }
 
 // Adaptif ikon foreground'u: içerik, Android'in %66 güvenli alanına sığacak
@@ -94,6 +132,8 @@ if (existsSync(join(root, androidRes))) {
 const iosAssets = 'ios/App/App/Assets.xcassets';
 if (existsSync(join(root, iosAssets))) {
   write(`${iosAssets}/AppIcon.appiconset/AppIcon-512@2x.png`, renderIcon(1024));
+  write(`${iosAssets}/AppIcon.appiconset/AppIcon-512@2x-dark.png`, renderIconVariant(darkIconSvg, 1024));
+  write(`${iosAssets}/AppIcon.appiconset/AppIcon-512@2x-tinted.png`, renderIconVariant(tintedIconSvg, 1024));
   const splash = renderSplash(2732, 2732);
   write(`${iosAssets}/Splash.imageset/splash-2732x2732.png`, splash);
   write(`${iosAssets}/Splash.imageset/splash-2732x2732-1.png`, splash);
@@ -104,5 +144,21 @@ if (existsSync(join(root, iosAssets))) {
 write('resources/store/play-icon-512.png', renderIcon(512));
 write('resources/store/play-feature-graphic-1024x500.png', renderSplash(1024, 500));
 write('resources/store/app-store-icon-1024.png', renderIcon(1024));
+write('public/favicon.png', renderIcon(64));
+write('public/apple-touch-icon.png', renderIcon(180));
+write('public/app-icon-192.png', renderIcon(192));
+write('public/app-icon-512.png', renderIcon(512));
+write(
+  'public/maritime-logo.svg',
+  iconSvg.replace(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">',
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Mariner\'s Book">',
+  ),
+);
+
+if (existsSync(ogSvgPath)) {
+  const ogSvg = readFileSync(ogSvgPath, 'utf8');
+  write('public/og-image.png', new Resvg(ogSvg).render().asPng());
+}
 
 console.log('\nTamamlandı. Android res/, iOS Assets.xcassets ve resources/store güncellendi.');

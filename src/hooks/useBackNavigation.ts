@@ -19,10 +19,10 @@ export const useBackNavigation = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const goBack = useCallback(() => {
+  const goBack = useCallback((options?: { haptic?: boolean }) => {
     // Home is the root of the hierarchy: back is a no-op, never an app exit.
     if (pathname === "/") return;
-    hapticImpact("light");
+    if (options?.haptic !== false) hapticImpact("light");
     const parent = findParentPath(pathname);
     navigate(!parent || parent === pathname ? "/" : parent, { replace: true });
   }, [pathname, navigate]);

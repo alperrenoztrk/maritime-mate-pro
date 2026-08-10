@@ -33,7 +33,7 @@ export function LibraryPageShell({
       type="button"
       onClick={onBack}
       aria-label={backLabel}
-      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-card/80 text-muted-foreground shadow-sm transition hover:border-primary/40 hover:text-foreground"
+      className="surface-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border text-muted-foreground transition-colors duration-control hover:text-foreground active:bg-primary/10"
     >
       <ArrowLeft className="h-5 w-5" />
     </button>
@@ -41,22 +41,18 @@ export function LibraryPageShell({
 
   return (
     <div
-      // Top padding reserves the strip AppNavBar occupies. It used to be
-      // max(2rem, safe-top) — 32px against a 56px control, so the global
-      // "Geri" pill sat on top of this header's icon and <h1>.
-      className="relative min-h-[100svh] overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-[max(1rem,env(safe-area-inset-left))] pb-[calc(max(6rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))] pt-[var(--floating-nav-reserve)] dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-[100svh] px-[max(1rem,var(--safe-left))] pb-8 pt-3 sm:px-[max(1.25rem,var(--safe-left))]"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute right-10 top-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-      </div>
-
-      <div className={`relative z-10 mx-auto flex ${maxWidth} flex-col gap-7`}>
-        <header className="flex min-h-10 items-center gap-3">
+      <div className={`relative mx-auto flex ${maxWidth} flex-col gap-6`}>
+        <header className="flex min-h-11 items-center gap-3 pb-1">
           {backControl}
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            {HeaderIcon && <HeaderIcon className="h-6 w-6 shrink-0 text-primary" />}
-            <h1 className="min-w-0 text-2xl font-bold leading-tight text-foreground">{title}</h1>
+            {HeaderIcon && (
+              <span className="surface-2 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border">
+                <HeaderIcon className="h-5 w-5 text-primary" />
+              </span>
+            )}
+            <h1 data-page-title className="min-w-0 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground">{title}</h1>
           </div>
           {headerAside}
         </header>
@@ -83,28 +79,23 @@ export function LibraryEntryCard({
   badge?: string | number;
 }) {
   const className =
-    "group relative min-h-44 overflow-hidden rounded-3xl border border-white/20 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl";
+    "surface-2 group flex min-h-[5.75rem] w-full items-center rounded-2xl border p-4 text-left transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/25 active:scale-[0.985]";
   const content = (
-    <>
-      <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg")} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_45%)]" />
-      <div className="relative flex h-full min-h-44 flex-col justify-between p-5 text-white">
-        <span className="flex items-start justify-between gap-3">
-          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-            <Icon className="h-6 w-6" />
-          </span>
-          {badge !== undefined && (
-            <span className="rounded-full bg-black/20 px-2.5 py-1 text-xs font-semibold backdrop-blur">
-              {badge}
-            </span>
-          )}
+    <span className="flex w-full items-center gap-3">
+      <span
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${accent} text-white`}
+        style={accentGradient("145deg")}
+      >
+        <Icon className="h-5 w-5" />
+      </span>
+      <span className="min-w-0 flex-1 whitespace-pre-line text-base font-semibold leading-snug text-foreground">{title}</span>
+      {badge !== undefined && (
+        <span className="rounded-full bg-muted px-2.5 py-1 text-caption font-semibold text-muted-foreground">
+          {badge}
         </span>
-        <span className="flex items-end justify-between gap-3">
-          <span className="whitespace-pre-line text-lg font-bold leading-tight">{title}</span>
-          <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
-        </span>
-      </div>
-    </>
+      )}
+      <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-control group-hover:translate-x-0.5" />
+    </span>
   );
 
   return to ? (
@@ -331,10 +322,10 @@ export function LibraryCompactCard({
   return (
     <Link
       to={to}
-      className="group flex min-h-16 items-center gap-3 rounded-xl border border-border/40 bg-card/70 px-3 py-2.5 shadow-sm transition hover:border-primary/40 hover:bg-card"
+      className="surface-2 group flex min-h-[4.5rem] items-center gap-3 rounded-2xl border px-3.5 py-3 transition-[background-color,border-color,transform] duration-control hover:border-primary/25 active:scale-[0.99]"
     >
       <span
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${accent} text-white shadow`}
+        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${accent} text-white`}
         style={accentGradient("145deg")}
       >
         <Icon className="h-4 w-4" />
@@ -345,7 +336,7 @@ export function LibraryCompactCard({
           {badge}
         </span>
       )}
-      <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
+      <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-[color,transform] duration-control group-hover:translate-x-0.5 group-hover:text-primary" />
     </Link>
   );
 }
@@ -370,7 +361,7 @@ export function LibrarySearchField({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        className="h-11 w-full rounded-2xl border border-border/60 bg-card/80 pl-10 pr-4 text-sm text-foreground shadow-sm outline-none backdrop-blur transition placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+        className="surface-2 h-11 w-full rounded-xl border pl-10 pr-4 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-control placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
       />
     </div>
   );

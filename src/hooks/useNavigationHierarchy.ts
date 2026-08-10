@@ -34,25 +34,29 @@ const navigationRules: NavigationRule[] = [
     parent: (match) => `/exercises/${match[1]}/topics`,
   },
   { pattern: /^\/exercises\/([^/]+)\/topics$/, parent: () => '/exercises' },
-  { pattern: /^\/exercises$/, parent: () => '/' },
+  { pattern: /^\/exercises$/, parent: () => '/lessons' },
 
   // ── Crew & Bridge ──────────────────────────────────────────
+  { pattern: /^\/crew\/([^/]+)\/task\/([^/]+)$/, parent: (match) => `/crew/${match[1]}` },
+  { pattern: /^\/crew\/muster-list$/, parent: () => '/crew' },
   { pattern: /^\/crew\/([^/]+)$/, parent: () => '/crew' },
-  { pattern: /^\/crew$/, parent: () => '/' },
+  { pattern: /^\/crew$/, parent: () => '/library' },
   { pattern: /^\/bridge\/([^/]+)$/, parent: () => '/bridge' },
-  { pattern: /^\/bridge$/, parent: () => '/' },
+  { pattern: /^\/bridge$/, parent: () => '/library' },
 
   // ── Ship Systems ───────────────────────────────────────────
+  { pattern: /^\/ship-systems\/([^/]+)\/([^/]+)$/, parent: (match) => `/ship-systems/${match[1]}` },
   { pattern: /^\/ship-systems\/([^/]+)$/, parent: () => '/ship-systems' },
-  { pattern: /^\/ship-systems$/, parent: () => '/' },
+  { pattern: /^\/ship-systems$/, parent: () => '/library' },
 
   // ── Ship Tasks ─────────────────────────────────────────────
   { pattern: /^\/ship-tasks\/([^/]+)$/, parent: () => '/ship-tasks' },
-  { pattern: /^\/ship-tasks$/, parent: () => '/' },
+  { pattern: /^\/ship-tasks$/, parent: () => '/library' },
 
   // ── Ship Operations ────────────────────────────────────────
+  { pattern: /^\/ship-operations\/([^/]+)\/([^/]+)\/([^/]+)$/, parent: (match) => `/ship-operations/${match[1]}` },
   { pattern: /^\/ship-operations\/([^/]+)$/, parent: () => '/ship-operations' },
-  { pattern: /^\/ship-operations$/, parent: () => '/' },
+  { pattern: /^\/ship-operations$/, parent: () => '/library' },
 
   // ── Machine: topic detayları ───────────────────────────────
   // /machine/<topic>/topics/<sub> → /machine/<topic>/topics
@@ -72,7 +76,7 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/calculations',
   },
   { pattern: /^\/machine-calculations$/, parent: () => '/calculations' },
-  { pattern: /^\/machinery$/, parent: () => '/' },
+  { pattern: /^\/machinery$/, parent: () => '/library' },
 
   // ── Calculations hub ───────────────────────────────────────
   // /calculations/<cat>/<sec> → /calculations
@@ -155,7 +159,11 @@ const navigationRules: NavigationRule[] = [
 
   // ── Regulations ────────────────────────────────────────────
   { pattern: /^\/regulations\/([^/]+)$/, parent: () => '/regulations' },
-  { pattern: /^\/regulations$/, parent: () => '/' },
+  { pattern: /^\/regulations$/, parent: () => '/library' },
+
+  // ── Library hub ────────────────────────────────────────────
+  { pattern: /^\/communication\/(flags|morse)$/, parent: () => '/library' },
+  { pattern: /^\/library$/, parent: () => '/' },
 
   // ── Diğer hesaplama sayfaları ──────────────────────────────
   { pattern: /^\/ballast$/, parent: () => '/calculations' },
@@ -182,8 +190,8 @@ const navigationRules: NavigationRule[] = [
   // ── Genel üst seviye ───────────────────────────────────────
   { pattern: /^\/settings$/, parent: () => '/' },
   { pattern: /^\/maritime-news$/, parent: () => '/' },
-  { pattern: /^\/passage-plan$/, parent: () => '/' },
-  { pattern: /^\/glossary$/, parent: () => '/' },
+  { pattern: /^\/passage-plan$/, parent: () => '/library' },
+  { pattern: /^\/glossary$/, parent: () => '/library' },
   { pattern: /^\/exam-preparation$/, parent: () => '/' },
   { pattern: /^\/formulas$/, parent: () => '/' },
   { pattern: /^\/empty-page$/, parent: () => '/' },
@@ -385,6 +393,5 @@ export const useNavigationHierarchy = () => {
     [showExitDialog, closeExitDialog, confirmExit],
   );
 };
-
 
 
