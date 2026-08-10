@@ -18,6 +18,7 @@
  * Usage:
  *   node scripts/i18n/audit-terms.mjs               # report
  *   node scripts/i18n/audit-terms.mjs --strict      # non-zero exit on findings
+ *   node scripts/i18n/audit-terms.mjs --max-errors=N  # allow a known residue
  *   node scripts/i18n/audit-terms.mjs --json        # repair queue on stdout
  *   node scripts/i18n/audit-terms.mjs --lang=de,fr  # limit the scan
  *   node scripts/i18n/audit-terms.mjs --samples=5   # examples per finding
@@ -36,6 +37,12 @@ const args = Object.fromEntries(
   })
 );
 const strict = !!args.strict;
+// The corpus has a small irreducible residue (see the README): abbreviations
+// that Arabic and Japanese legitimately transliterate, and Turkish suffixed
+// forms of glossary terms that the mask cannot match. --max-errors keeps the
+// guard useful by failing on anything ABOVE that known count instead of
+// demanding a zero that today's engines cannot deliver.
+const maxErrors = args['max-errors'] !== undefined ? parseInt(args['max-errors'], 10) : 0;
 const asJson = !!args.json;
 const sampleCount = args.samples ? parseInt(args.samples, 10) : 2;
 const onlyLangs = args.lang ? String(args.lang).split(',').map((s) => s.trim()) : null;
@@ -107,7 +114,7 @@ for (const file of files) {
 
 if (asJson) {
   process.stdout.write(JSON.stringify(repairQueue));
-  process.exit(strict && grandErrors > 0 ? 1 : 0);
+  process.exit(strict && grandErrors > maxErrors ? 1 : 0);
 }
 
 console.log('🔎 Terminology audit of public/locales\n');
@@ -146,8 +153,11 @@ if (grandTotal > 0) {
 // Only hard failures gate the build. A partial loss is worth repairing but a
 // long paragraph may legitimately reword a second mention away, and that must
 // not wedge CI permanently.
-if (strict && grandErrors > 0) {
-  console.error(`\n❌ Terminology audit failed: ${grandErrors} terms lost in translation`);
+if (strict && grandErrors > maxErrors) {
+  console.error(
+    `\n❌ Terminology audit failed: ${grandErrors} terms lost in translation` +
+    (maxErrors ? ` (allowed: ${maxErrors})` : '')
+  );
   process.exit(1);
 }
 console.log('\n✅ Terminology audit complete');

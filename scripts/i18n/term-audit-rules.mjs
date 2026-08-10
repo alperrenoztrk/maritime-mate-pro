@@ -12,7 +12,7 @@ import { findMissingProtectedTokens } from '../../src/utils/protectedTerms.ts';
 // false positives out: an English "iron" is only suspect when the Turkish said
 // "demir", and a "head" only when the Turkish said "baş".
 export const SENSE_RULES = [
-  ['baş = heading, not head', /\bbaş\s+(kontrol|açı|yön|tut)/i, {
+  ['baş = heading, not head', /\bbaş\s+(kontrol|açı|yön|tut)|otomatik\s+baş|mevki\s+ve\s+baş/i, {
     en: /\bhead\b/i, de: /\bKopf/i, fr: /\bt[êe]te\b/i, es: /\bcabeza\b/i,
     it: /\btesta\b/i, pt: /\bcabeça\b/i, nl: /\bhoofd\b/i,
   }],
