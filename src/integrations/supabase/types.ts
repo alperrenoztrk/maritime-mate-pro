@@ -382,6 +382,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      acceptable_aal_levels: { Args: never; Returns: string[] }
       consume_ai_credit: {
         Args: { p_limit: number; p_period: string; p_user_id: string }
         Returns: {
@@ -396,6 +397,7 @@ export type Database = {
           retry_after_sec: number
         }[]
       }
+      has_sufficient_aal: { Args: never; Returns: boolean }
       prune_rate_limits: { Args: { p_older_than?: string }; Returns: number }
     }
     Enums: {
