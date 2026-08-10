@@ -13,6 +13,7 @@ type WeatherResponse = {
     wind_speed_10m?: number;
     wind_direction_10m?: number;
     weather_code?: number;
+    cloud_cover?: number;
   };
   daily?: {
     time?: string[];
@@ -43,6 +44,7 @@ export type PreloadedWeatherData = {
   windSpeedKt: number;
   windDirectionDeg: number;
   weatherCode: number;
+  cloudCoverPct: number;
   timeIso?: string;
   latitude: number;
   longitude: number;
@@ -186,6 +188,7 @@ class WeatherPreloader {
         "wind_speed_10m",
         "wind_direction_10m",
         "weather_code",
+          "cloud_cover",
       ].join(",")
     );
     weatherUrl.searchParams.set(
@@ -213,6 +216,7 @@ class WeatherPreloader {
       windSpeedKt: cur.wind_speed_10m ?? NaN,
       windDirectionDeg: cur.wind_direction_10m ?? NaN,
       weatherCode: cur.weather_code ?? -1,
+      cloudCoverPct: cur.cloud_cover ?? NaN,
       timeIso: cur.time,
       // The API echoes its forecast grid-cell centre, not the requested
       // device position. Preserve the original coordinates for the widget.
