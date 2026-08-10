@@ -253,6 +253,15 @@ const AnimatedRoutes = () => {
   // animation in this same commit. useMemo keeps it to one call per route.
   useMemo(() => recordNavigation(location.pathname), [location.pathname]);
 
+  // Let document-level services discard work owned by the route that just
+  // unmounted. The language provider intentionally lives above BrowserRouter,
+  // so this small event is its route lifecycle boundary.
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("app-route-committed", {
+      detail: { pathname: location.pathname },
+    }));
+  }, [location.pathname]);
+
   // Keep an inert snapshot of the settled route. EdgeSwipeBack reveals this
   // exact previous screen while the current route follows the user's finger.
   // The delay avoids cloning loading skeletons and route-enter transforms.
