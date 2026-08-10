@@ -25,11 +25,20 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
+    // A crash during navigation can leave the translation gate / pending
+    // visibility markers behind. They are full-screen, input-blocking layers,
+    // so clear them before rendering the fallback.
+    if (typeof document !== 'undefined') {
+      document
+        .querySelectorAll('[data-mt-route-pending], [aria-label="Loading translated page"]')
+        .forEach((el) => el.remove());
+    }
     this.setState({
       error,
       errorInfo
     });
   }
+
 
   private handleReload = () => {
     window.location.reload();
