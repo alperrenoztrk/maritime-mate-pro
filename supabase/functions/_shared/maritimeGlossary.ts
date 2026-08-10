@@ -1929,6 +1929,129 @@ export const maritimeTerms: MaritimeTerm[] = [
       bg: 'Открито море', uk: 'Відкрите море',
     },
   },
+
+  // ── "Baş" = heading / bow, never the anatomical "head" ─────────────────────
+  // Bare "baş" is far too common in ordinary Turkish to list on its own, so only
+  // the unambiguous nautical compounds are here. Every rendering below was
+  // confirmed wrong in the shipped dictionaries first ("baş kontrolü" → "head
+  // control", "baş tutma" → "do not rebel").
+  {
+    tr: 'Baş kontrolü',
+    aliases: ['Baş Kontrolü', 'baş kontrolü'],
+    translations: {
+      en: 'Heading control', de: 'Kurskontrolle', fr: 'Contrôle de cap',
+      es: 'Control de rumbo', it: 'Controllo di prua', pt: 'Controlo de rumo',
+      nl: 'Koersregeling',
+    },
+  },
+  {
+    tr: 'Otomatik baş',
+    aliases: ['Otomatik Baş', 'otomatik baş'],
+    translations: {
+      en: 'Automatic heading', de: 'Automatischer Kurs', fr: 'Cap automatique',
+      es: 'Rumbo automático', it: 'Prua automatica', pt: 'Rumo automático',
+      nl: 'Automatische koers',
+    },
+  },
+  {
+    tr: 'Baş açısı',
+    aliases: ['Baş Açısı', 'baş açısı'],
+    translations: {
+      en: 'Heading angle', de: 'Kurswinkel', fr: 'Angle de cap',
+      es: 'Ángulo de rumbo', it: 'Angolo di prua', pt: 'Ângulo de rumo',
+      nl: 'Koershoek',
+    },
+  },
+  {
+    tr: 'Baş yönü',
+    aliases: ['Baş Yönü', 'baş yönü'],
+    translations: {
+      en: 'Heading', de: 'Kurs', fr: 'Cap', es: 'Rumbo', it: 'Prua',
+      pt: 'Rumo', nl: 'Koers',
+    },
+  },
+  {
+    tr: 'Baş tutma',
+    aliases: ['Baş Tutma', 'baş tutma'],
+    translations: {
+      en: 'Heading keeping', de: 'Kurshaltung', fr: 'Tenue de cap',
+      es: 'Mantenimiento de rumbo', it: 'Tenuta di prua',
+      pt: 'Manutenção de rumo', nl: 'Koershouden',
+    },
+  },
+
+  // ── Hull sectors and decks ─────────────────────────────────────────────────
+  // "Omuzluk" is the shoulder of the hull, not a shoulder pad; "kıç kasara" is
+  // the poop deck, not an "aft forecastle". ("Baş üstü" is deliberately absent:
+  // it is the forecastle head on deck but the zenith in the celestial lessons.)
+  {
+    tr: 'Baş omuzluk',
+    aliases: ['Baş Omuzluk', 'baş omuzluk', 'baş omuzluktan', 'Baş omuzlukta'],
+    translations: {
+      en: 'Bow quarter', de: 'Bug', fr: 'Hanche avant', es: 'Amura',
+      it: 'Mascone', pt: 'Amura', nl: 'Boeg',
+    },
+  },
+  {
+    tr: 'Kıç omuzluk',
+    aliases: ['Kıç Omuzluk', 'kıç omuzluk', 'kıç omuzluktan'],
+    translations: {
+      en: 'Stern quarter', de: 'Achterschiff', fr: 'Hanche arrière',
+      es: 'Aleta', it: 'Giardinetto', pt: 'Alheta', nl: 'Achterschip',
+    },
+  },
+  {
+    tr: 'Kıç kasara',
+    aliases: ['Kıç Kasara', 'kıç kasara'],
+    translations: {
+      en: 'Poop deck', de: 'Poopdeck', fr: 'Dunette', es: 'Toldilla',
+      it: 'Cassero di poppa', pt: 'Tombadilho', nl: 'Kampanjedek',
+    },
+  },
+
+  // ── Helm and engine orders ─────────────────────────────────────────────────
+  // "Alabanda" is the hard-over helm order; the engines untranslated it as the
+  // Turkish place name, or as "astern to starboard".
+  {
+    tr: 'Sancağa alabanda',
+    aliases: ['Sancağa Alabanda', 'sancağa alabanda'],
+    translations: {
+      en: 'Hard to starboard', de: 'Hart Steuerbord', fr: 'Toute à tribord',
+      es: 'Todo a estribor', it: 'Tutta a dritta', pt: 'Todo a estibordo',
+      nl: 'Hard stuurboord',
+    },
+  },
+  {
+    tr: 'İskeleye alabanda',
+    aliases: ['İskeleye Alabanda', 'iskeleye alabanda'],
+    translations: {
+      en: 'Hard to port', de: 'Hart Backbord', fr: 'Toute à bâbord',
+      es: 'Todo a babor', it: 'Tutta a sinistra', pt: 'Todo a bombordo',
+      nl: 'Hard bakboord',
+    },
+  },
+  {
+    tr: 'Alabanda',
+    aliases: ['alabanda'],
+    translations: { en: 'Hard over' },
+  },
+  {
+    tr: 'Makine hazır',
+    aliases: ['Makine Hazır', 'makine hazır'],
+    translations: {
+      en: 'Engine on stand-by', de: 'Maschine auf Stand-by',
+      fr: 'Machine parée', es: 'Máquina lista', it: 'Macchina pronta',
+      pt: 'Máquina pronta', nl: 'Machine gereed',
+    },
+  },
+  {
+    tr: 'Tornistan',
+    aliases: ['tornistan'],
+    translations: {
+      en: 'Astern', de: 'Rückwärts', fr: 'En arrière', es: 'Atrás',
+      it: 'Indietro', pt: 'Atrás', nl: 'Achteruit',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.

@@ -20,12 +20,26 @@ const repoRoot = process.cwd();
 const OUT_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
 
 // Property names whose string values are user-visible content (not ids/enums).
+//
+// The longform lesson fields (`lead`, `bullets`, `headers`, `rows`, `sources` —
+// see src/data/shipOperations/longform/types.ts) are included because that is
+// where the app's short strings live: table cells, bullet items and chapter
+// leads. Short strings are exactly where generic MT breaks down, so they belong
+// in the reviewable dictionary rather than on the live path.
+//
+// `paragraphs` is deliberately NOT here. It is 11k strings averaging ~175
+// characters — roughly 4 MB per language on dictionaries that already sit near
+// 10 MB — and long prose is the one place where the engine holds up: measured
+// on this corpus, abbreviations survived every full sentence and failed only in
+// short fragments. Long paragraphs stay on the live path, which now applies the
+// same protection (src/utils/protectedTerms.ts).
 const ALLOWED_PROPS = new Set([
   'title', 'subtitle', 'description', 'content', 'introduction', 'keyPoints',
   'bulletPoints', 'question', 'options', 'explanation', 'label', 'desc', 'name',
   'purpose', 'summary', 'text', 'caption', 'answer', 'hint', 'note', 'warning',
   'tip', 'heading', 'subheading', 'intro', 'body', 'definition', 'term',
   'category', 'message', 'placeholder',
+  'lead', 'bullets', 'headers', 'rows', 'sources',
 ]);
 
 // Properties rendered through ReactMarkdown (see
@@ -112,6 +126,15 @@ function consider(value, propName) {
 function stringLiteralText(node) {
   if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) return node.text;
   return null;
+}
+
+// Collects string literals from an array of any depth (`string[]`, `string[][]`).
+function collectFromArray(node, propName) {
+  for (const el of node.elements) {
+    const lit = stringLiteralText(el);
+    if (lit !== null) consider(lit, propName);
+    else if (ts.isArrayLiteralExpression(el)) collectFromArray(el, propName);
+  }
 }
 
 function listFiles(dir, exts, out = []) {
@@ -220,12 +243,9 @@ for (const file of files) {
         const init = node.initializer;
         const lit = stringLiteralText(init);
         if (lit !== null) consider(lit, name);
-        else if (ts.isArrayLiteralExpression(init)) {
-          for (const el of init.elements) {
-            const elLit = stringLiteralText(el);
-            if (elLit !== null) consider(elLit, name);
-          }
-        }
+        // Arrays are walked recursively: longform tables hold their body as
+        // `rows: string[][]`, so a single level would collect nothing at all.
+        else if (ts.isArrayLiteralExpression(init)) collectFromArray(init, name);
       }
     }
     // JSX attributes the runtime translator also translates (see

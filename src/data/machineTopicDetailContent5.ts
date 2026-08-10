@@ -690,7 +690,7 @@ const content5: ContentMap = {
       title: "Özel Deniz Alanları ve Deşarj Kuralları",
       introduction: "MARPOL çeşitli ekleri kapsamında ekolojik açıdan hassas deniz bölgelerini 'Özel Alan' olarak tanımlar ve daha sıkı deşarj kuralları uygular.",
       sections: [
-        { heading: "Özel Alanlar", paragraphs: [], table: { headers: ["Ek", "Özel Alanlar"], rows: [["Annex I (Yağ)", "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika, KB Avrupa"], ["Annex IV (Pis su)", "Baltık Denizi"], ["Annex V (Çöp)", "Annex I ile aynı + Wider Caribbean, Güney Afrika"], ["Annex VI (SOx ECA)", "Baltık, Kuzey Denizi, K. Amerika, ABD Karayip"]] } }
+        { heading: "Özel Alanlar", paragraphs: [], table: { headers: ["Ek", "Özel Alanlar"], rows: [["Annex I (Yağ)", "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika, Kuzeybatı Avrupa"], ["Annex IV (Pis su)", "Baltık Denizi"], ["Annex V (Çöp)", "Annex I ile aynı + Wider Caribbean, Güney Afrika"], ["Annex VI (SOx ECA)", "Baltık, Kuzey Denizi, K. Amerika, ABD Karayip"]] } }
       ],
       keyPoints: ["Özel alanlarda deşarj kuralları standard kurallardan çok daha sıkıdır.", "PSSA (Particularly Sensitive Sea Area) ek koruma tedbirleri gerektirir.", "Rota planlamasında özel alan kuralları dikkate alınmalıdır."]
     },

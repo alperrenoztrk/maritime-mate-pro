@@ -96,17 +96,22 @@ export const unmaskTechnicalTokens = (translated: string, slots: string[]): stri
 // SOURCE is a calculation heading we rewrite the banking sense out of the
 // translation.
 
-const CALCULATION_SOURCE_RE = /hesab[ıi]|hesaplamas[ıi]|hesaplama|hesab[ıi]n[ıi]|hesaplar[ıi]/i;
+// Bare "Hesap" is included because it heads calculation content throughout the
+// corpus ("Hesap Formülü", "Hesap Adımları", "GM ve KG Hesap Örnekleri"); the
+// account senses it also has are excluded by ACCOUNT_SOURCE_RE below.
+const CALCULATION_SOURCE_RE =
+  /hesab[ıi]|hesaplamas[ıi]|hesaplama|hesab[ıi]n[ıi]|hesaplar[ıi]|hesap\b/i;
 
 // [wrong "account" word(s), correct "calculation" word] per language.
 const ACCOUNT_TO_CALCULATION: Record<string, [RegExp, string]> = {
-  en: [/\bAccounts?\b/g, 'Calculation'],
+  // Case-insensitive where the noun is lower-case mid-string ("KG account").
+  en: [/\bAccounts?\b/gi, 'Calculation'],
   de: [/\bKont(o|en)\b/g, 'Berechnung'],
   fr: [/\bComptes?\b/gi, 'Calcul'],
   es: [/\bCuentas?\b/gi, 'Cálculo'],
   it: [/\bCont(o|i)\b/gi, 'Calcolo'],
   pt: [/\bContas?\b/gi, 'Cálculo'],
-  nl: [/\b(Rekening|Account)s?\b/g, 'Berekening'],
+  nl: [/\b(Rekening|Account)s?\b/gi, 'Berekening'],
   pl: [/\bKont(o|a)\b/gi, 'Obliczenie'],
   cs: [/\bÚč(et|ty)\b/gi, 'Výpočet'],
   sv: [/\bKont(o|on)\b/gi, 'Beräkning'],
@@ -119,6 +124,24 @@ const ACCOUNT_TO_CALCULATION: Record<string, [RegExp, string]> = {
   ko: [/계정/g, '계산'],
   'zh-CN': [/[帐账]户|账号/g, '计算'],
 };
+
+// Sources where "hesap" really is the user's account: the sign-in and
+// account-deletion screens ("Hesabımı sil", "Hesap ve Veri Silme", "banka
+// hesabı"). These keep the banking sense.
+const ACCOUNT_SOURCE_RE = new RegExp(
+  [
+    // The account keyword leads: "banka hesabı", "kullanıcı hesabı".
+    String.raw`\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab`,
+    // …or trails: "Bu hesabı Google ile oluşturduysanız".
+    String.raw`hesab[^.!?]{0,40}\b(google|apple|e-?posta|şifre|parola|oturum)\b`,
+    // Possessives and the deletion flow.
+    String.raw`hesab[ıi]m`,
+    String.raw`hesab[ıi]n[ıi]z`,
+    String.raw`hesap\s+(ve\s+veri\s+)?silme`,
+    String.raw`hesab[ıi]\s*(kalıcı olarak\s*)?sil`,
+  ].join('|'),
+  'i'
+);
 
 /**
  * Rewrites the banking sense of "hesap" when the Turkish source is clearly a
@@ -135,10 +158,7 @@ export const fixCalculationNoun = (
   const rule = ACCOUNT_TO_CALCULATION[languageCode];
   if (!rule) return translated;
   if (!CALCULATION_SOURCE_RE.test(source)) return translated;
-  // "banka hesabı", "kullanıcı hesabı", "hesap silme" really are accounts.
-  if (/\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab/i.test(source)) {
-    return translated;
-  }
+  if (ACCOUNT_SOURCE_RE.test(source)) return translated;
   const [pattern, replacement] = rule;
   pattern.lastIndex = 0;
   return translated.replace(pattern, (match) =>

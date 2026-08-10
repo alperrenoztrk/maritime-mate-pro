@@ -384,10 +384,14 @@ export const CONTEXTUAL_CORRECTIONS = {
     ko: '15인치 팔걸이 디스플레이, DP 1/DP 2 운전자 스테이션 옵션 및 콘솔 보완/교체 기능은 MT Bridge Mate DP Chair 브로셔(MT-SAL-0096 v1.0)에 지정되어 있습니다.',
     'zh-CN': 'MT Bridge Mate DP Chair 手册 (MT-SAL-0096 v1.0) 中指定了 15 英寸扶手显示屏、DP 1/DP 2 操作员站选件和控制台补充/替换功能。',
   },
+  // The engine renders the abbreviation "DP" as "XP" in short strings, and that
+  // machine output was captured here as if it were a correction. "DP" (dynamic
+  // positioning) is a product name here and never changes in any language.
+  // src/utils/protectedTerms.ts now stops this class of damage at the source.
   'Marine Technologies Bridge Mate DP': {
-    es: 'Marine Technologies Bridge Mate XP', it: 'Marine Technologies Bridge Mate XP',
-    pt: 'Marine Technologies Bridge MateXP', ja: 'Marine Technologies Bridge Mate XP',
-    ko: 'Marine Technologies Bridge Mate XP', 'zh-CN': 'Marine Technologies Bridge Mate XP',
+    es: 'Marine Technologies Bridge Mate DP', it: 'Marine Technologies Bridge Mate DP',
+    pt: 'Marine Technologies Bridge Mate DP', ja: 'Marine Technologies Bridge Mate DP',
+    ko: 'Marine Technologies Bridge Mate DP', 'zh-CN': 'Marine Technologies Bridge Mate DP',
   },
   'DP vardiyasının kalitesi, DPO\'nun oturduğu yerden ne gördüğü ve neye ne kadar hızlı ulaşabildiğiyle doğrudan ilgilidir. Bridge Mate ailesi bu noktada üç farklı fiziksel çözüm sunar: klasik konsol, kompakt operatör istasyonu ve kol dayamasına gömülü ekranıyla DP Chair. Bu bölüm, istasyon tipinin vardiya düzenine, kontrol devrine ve gözcülüğe etkisini ele alır.': {
 

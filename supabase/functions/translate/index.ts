@@ -13,6 +13,7 @@ import {
   fixCalculationNoun,
   isTechnicalString,
 } from "../_shared/technicalText.ts";
+import { maskProtectedTokens, unmaskProtectedTokens } from "../_shared/protectedTerms.ts";
 
 // Google Cloud Translation API v2
 // Docs: https://cloud.google.com/translate/docs/reference/rest/v2/translate
@@ -38,6 +39,10 @@ interface TranslationJob {
   q: string;
   /** Curated glossary terms to substitute back into the masked result. */
   slots: string[] | null;
+  /** Target-language abbreviations to substitute back, one per sentinel. */
+  termSlots: string[] | null;
+  /** Math function names to substitute back, one per sentinel. */
+  mathSlots: string[] | null;
 }
 
 async function googleTranslate(
@@ -112,15 +117,30 @@ serve(async (req) => {
       const source = texts[i];
       // Pure formulas are language independent — return them untouched.
       if (isTechnicalString(source)) { results[i] = source; continue; }
+      // Maritime abbreviations are hidden first: the engine "corrects" the ones
+      // it does not know ("DP" → "XP"), and the sentinels survive both the
+      // glossary HTML masking below and plain-text requests.
+      const termMask = glossaryActive ? maskProtectedTokens(source, targetLanguage) : null;
+      const working = termMask?.masked ?? source;
+      const termSlots = termMask?.slots ?? null;
       if (glossaryActive) {
         const override = getMaritimeTranslationOverride(source, targetLanguage);
         if (override) { results[i] = override; continue; }
-        const mask = maskGlossaryTerms(source, targetLanguage);
-        if (mask) { maskedJobs.push({ index: i, q: mask.masked, slots: mask.slots }); continue; }
+        const mask = maskGlossaryTerms(working, targetLanguage);
+        if (mask) {
+          maskedJobs.push({ index: i, q: mask.masked, slots: mask.slots, termSlots, mathSlots: null });
+          continue;
+        }
       }
       // Protect math function names inside mixed prose.
-      const mathMask = maskTechnicalTokens(source);
-      plainJobs.push({ index: i, q: mathMask?.masked ?? source, slots: null });
+      const mathMask = maskTechnicalTokens(working);
+      plainJobs.push({
+        index: i,
+        q: mathMask?.masked ?? working,
+        slots: null,
+        termSlots,
+        mathSlots: mathMask?.slots ?? null,
+      });
     }
 
     // Masked texts must go as format=html for <span translate="no"> to be
@@ -137,6 +157,9 @@ serve(async (req) => {
         }
         return errorResponse(corsHeaders, 500, GENERIC_ERRORS.SERVICE_ERROR);
       }
+      // Jobs whose abbreviation sentinels did not survive; retried below without
+      // protection rather than leaking "TKN0" to the client.
+      const unresolved: TranslationJob[] = [];
       jobs.forEach((job, j) => {
         const raw = translated[j];
         if (raw === undefined || raw === '') {
@@ -146,12 +169,35 @@ serve(async (req) => {
         }
         const originalSource = texts[job.index];
         let out = job.slots ? unmaskGlossaryTerms(raw, job.slots) : raw;
-        const mathMask = maskTechnicalTokens(originalSource);
-        if (mathMask) out = unmaskTechnicalTokens(out, mathMask.slots);
+        if (job.mathSlots) out = unmaskTechnicalTokens(out, job.mathSlots);
+        if (job.termSlots) {
+          const restored = unmaskProtectedTokens(out, job.termSlots);
+          if (restored === null) { unresolved.push(job); return; }
+          out = restored;
+        }
         if (glossaryActive) out = applyMaritimeCorrections(out, targetLanguage);
         out = fixCalculationNoun(originalSource, out, targetLanguage);
         results[job.index] = out;
       });
+
+      if (unresolved.length > 0) {
+        const retryJobs: TranslationJob[] = unresolved.map((job) => ({
+          index: job.index,
+          q: texts[job.index],
+          slots: null,
+          termSlots: null,
+          mathSlots: null,
+        }));
+        const retried = await googleTranslate(apiKey, retryJobs, sourceLanguage, targetLanguage, 'text');
+        retryJobs.forEach((job, j) => {
+          const raw = retried instanceof Response ? '' : retried[j];
+          const originalSource = texts[job.index];
+          if (!raw) { results[job.index] = originalSource; return; }
+          let out = glossaryActive ? applyMaritimeCorrections(raw, targetLanguage) : raw;
+          out = fixCalculationNoun(originalSource, out, targetLanguage);
+          results[job.index] = out;
+        });
+      }
     }
 
     // Return same shape as input: string in -> string out; array in -> array out.
