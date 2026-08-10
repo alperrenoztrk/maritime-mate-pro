@@ -5,7 +5,7 @@ const content: CrewTaskLongForm = {
   roleSlug: "birinci-zabit",
   taskIndex: 3,
   estimatedPages: 25,
-  intro: `Birinci Zabit, gemideki tüm LSA (Life-Saving Appliances) ve FFE (Fire-Fighting Equipment) ekipmanlarının envanter kontrolü, bakım takibi, servis tarihlerinin izlenmesi ve kayıtlarının tutulmasından nihai olarak sorumludur. Fiili yürütmeyi çoğu zaman 3. veya 4. Zabite devretse de, can salları, filikalar, can yelekleri, yangın söndürme sistemleri, muster list güncellemeleri ve drill organizasyonu Birinci Zabit'in koordinasyonundadır. Bu bölüm, SOLAS ile LSA/FSS Code çerçevesinde emniyet ekipmanı yönetimini sistematik olarak ele alır.`,
+  intro: `Birinci Zabit, gemideki tüm LSA (Life-Saving Appliances) ve FFE (Fire-Fighting Equipment) ekipmanlarının envanter kontrolü, bakım takibi, servis tarihlerinin izlenmesi ve kayıtlarının tutulmasından nihai olarak sorumludur. Fiili yürütmeyi çoğu zaman 3. Zabite devretse de, can salları, filikalar, can yelekleri, yangın söndürme sistemleri, muster list güncellemeleri ve drill organizasyonu Birinci Zabit'in koordinasyonundadır. Bu bölüm, SOLAS ile LSA/FSS Code çerçevesinde emniyet ekipmanı yönetimini sistematik olarak ele alır.`,
   sources: [
     "SOLAS Chapter III — Life-Saving Appliances and Arrangements",
     "LSA Code (International Life-Saving Appliance Code)",

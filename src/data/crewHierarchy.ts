@@ -92,23 +92,6 @@ export const crewHierarchy: CrewGroup[] = [
         ],
       },
       {
-        slug: "dorduncu-zabit",
-        rank: "Dördüncü Zabit (Fourth Officer / 4/O)",
-        responsibility:
-          "Güverte departmanındaki en kıdemsiz zabit; temel seyir vardiyaları ve emniyet görevlerini yerine getirir. (Her gemide bulunması zorunlu değildir.)",
-        reportsTo: "Kaptan veya Birinci Zabit",
-        alwaysDuties: [
-          "00–04 / 12–16 vardiyalarında kaptan veya C/O gözetiminde vardiya tutma; radar/ECDIS/ARPA kullanımı ve logbook kaydı",
-          "COLREG'e uygun seyir, kritik durumda üst zabiti çağırma ve basit rota/pozisyon kontrolleri",
-          "Lifejacket, lifebuoy, yangın dolapları, hortumlar ve portatif tüplerin haftalık kontrolleri; muster list uygulamalarına destek",
-        ],
-        generalTasks: [
-          "Harita ve yayın düzeltmelerine, Notices to Mariners takibine ve ECDIS güncelleme kontrollerine destek",
-          "Limanda güverte nöbeti (gangway watch) ve yük operasyonlarında Birinci Zabite destek",
-          "Sistemleri öğrenerek tecrübe kazanma, disiplin ve köprüüstü prosedürlerini pekiştirme",
-        ],
-      },
-      {
         slug: "reis-bosun",
         rank: "Reis / Bosun",
         responsibility: "Güverte tayfalarının lideri; bakım planlarının uygulanması ve güverte operasyonlarının koordinasyonu.",

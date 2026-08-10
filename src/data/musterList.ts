@@ -560,96 +560,6 @@ export const musterAssignments: MusterAssignment[] = [
     },
   },
   {
-    id: "fourth-officer",
-    roleSlug: "dorduncu-zabit",
-    rank: "Dördüncü Zabit (Fourth Officer / 4/O)",
-    billet: "Muster, BA Control & LSA/FFA Support",
-    initialStation: "Muster Kontrol / Atanmış Ekipman İstasyonu",
-    roleNote: "Her gemide bulunmaz; yoksa görevler isimli yedeklere dağıtılır.",
-    substitute: "Kaptanın cetvelde belirlediği zabit veya eğitimli personel.",
-    readinessResponsibility:
-      "SMS ile atanmışsa LSA/FFA'nın mevcudiyet, servis/son kullanım tarihi, mühür, erişim ve kayıt takibini yapar; teknik tamir yetkisi değildir.",
-    duties: {
-      general: {
-        station: "Muster kontrol noktası",
-        team: "Güverte Acil Müdahale",
-        reportsTo: "Birinci Zabit",
-        actions: [
-          "İsim bazlı yoklamayı yapar; eksik kişinin son bilinen yeri ve vardiyasını doğrular.",
-          "Alarm saati, ekip hazır oluşu ve kritik raporları zaman damgalı kaydeder.",
-          "LSA/FFA donanım eksik veya arızalarını saha komutanına derhal bildirir.",
-        ],
-        equipment: ["Güncel isimli muster list", "UHF", "Kontrol/olay kayıt formu"],
-      },
-      fire: {
-        station: "BA kontrol noktası",
-        team: "BA Kontrol ve Lojistik",
-        reportsTo: "Üçüncü Zabit / Birinci Zabit",
-        actions: [
-          "BA girişçilerin isim, tüp basıncı, giriş saati ve beklenen dönüş süresini kaydeder.",
-          "Yedek BA ekibi ve dolu tüp durumunu takip eder; düşük süreyi ekip liderine bildirir.",
-          "Giriş ekibiyle irtibat kesilirse acil prosedürü başlatır; izinsiz kişiyi giriş sınırından geçirmez.",
-        ],
-        equipment: ["BA control board", "UHF", "Yedek SCBA tüpleri"],
-      },
-      abandon: {
-        station: "Atanmış survival craft istasyonu",
-        team: "Survival Craft ve Muster",
-        reportsTo: "Craft amiri / Birinci Zabit",
-        actions: [
-          "İsimli kişi hesabını ve can yeleği/immersion suit giyimini kontrol eder.",
-          "Taşınabilir VHF, SART/AIS-SART ve ilave LSA malzemelerinin atanmış kişide olduğunu doğrular.",
-          "Eksik kişi veya ekipman durumunu craft amirine bildirir; indirme kaydını tutar.",
-        ],
-        equipment: ["Muster list", "LSA inventory", "Taşınabilir UHF"],
-      },
-      mob: {
-        station: "Köprüüstü kanadı / yüksek ve emniyetli gözcü noktası",
-        team: "Sudan Kişi Kurtarma",
-        reportsTo: "Kaptan / Birinci Zabit",
-        actions: [
-          "Kazazedeyi kesintisiz işaret eder; taraf, mesafe ve görünürlüğü kısa raporlarla verir.",
-          "Can simidi/ışık/duman ve recovery equipment durumunu kontrol eder.",
-          "Kurtarma ve ilk temas saatlerini olay kaydına işler.",
-        ],
-        equipment: ["Dürbün", "UHF", "Işıklı/dumanlı can simidi kontrolü"],
-      },
-      flooding: {
-        station: "Muster kontrol / damage control plot",
-        team: "Komuta, Stabilite ve Kayıt",
-        reportsTo: "Birinci Zabit",
-        actions: [
-          "Sounding, seviye ve pompa raporlarını mahal ve saat bazında kaydeder.",
-          "Personel hesabını güncel tutar; kapatılan açıklık ve izole edilen sistemleri işaretler.",
-          "Hasar kontrol ekibine taşınabilir ışık, telsiz ve ekipman lojistiği sağlar.",
-        ],
-        equipment: ["Damage Control Plan", "UHF", "Kayıt formu"],
-      },
-      "enclosed-space": {
-        station: "Giriş kontrol / kurtarma kayıt noktası",
-        team: "BA Kurtarma ve Giriş Kontrol",
-        reportsTo: "Birinci Zabit / kurtarma ekip lideri",
-        actions: [
-          "Girişçi, yedek girişçi, dış gözcü, tüp basıncı ve giriş süresini kayıt altına alır.",
-          "Gaz ölçüm trendini ve havalandırma durumunu giriş kontrol formunda izler.",
-          "Kurtarılan kazazedenin ilk yardım ekibine kontrollü devrini ve zamanlarını kaydeder.",
-        ],
-        equipment: ["Entry control board", "UHF", "Gaz ölçüm kayıt formu"],
-      },
-      pollution: {
-        station: "SOPEP kontrol noktası",
-        team: "SOPEP Komuta, Haberleşme ve Kayıt",
-        reportsTo: "Birinci Zabit",
-        actions: [
-          "SOPEP malzeme çıkışı, kullanılan PPE ve atık kaplarını kaydeder.",
-          "Döküntü alanı fotoğraf/zaman kaydını emniyetli noktadan toplar.",
-          "Eksilen SOPEP stoklarını ve yeniden tedarik ihtiyacını raporlar.",
-        ],
-        equipment: ["SOPEP inventory", "UHF", "Kayıt/etiket malzemesi"],
-      },
-    },
-  },
-  {
     id: "bosun",
     roleSlug: "reis-bosun",
     rank: "Reis / Bosun",
@@ -835,7 +745,7 @@ export const musterAssignments: MusterAssignment[] = [
       general: {
         station: "Atanmış muster / haberci noktası",
         team: "Güverte Acil Müdahale",
-        reportsTo: "Dördüncü Zabit / Birinci Zabit",
+        reportsTo: "Üçüncü Zabit / Birinci Zabit",
         actions: [
           "Yoklamasını verir ve yalnızca atanmış haberci/lojistik görevini alır.",
           "Telsiz dışı yedek iletişimde yazılı mesajı doğru kişiye taşır.",
@@ -846,7 +756,7 @@ export const musterAssignments: MusterAssignment[] = [
       fire: {
         station: "Yangın kontrol istasyonu güvenli tarafı",
         team: "BA Kontrol ve Lojistik",
-        reportsTo: "Dördüncü/Üçüncü Zabit",
+        reportsTo: "Üçüncü Zabit",
         actions: [
           "Yedek hortum, tüp, ışık ve su/ilk yardım malzemesini güvenli sınıra taşır.",
           "BA giriş alanına izinsiz yaklaşmaz ve bağımsız yangın girişi yapmaz.",
@@ -857,7 +767,7 @@ export const musterAssignments: MusterAssignment[] = [
       abandon: {
         station: "Atanmış survival craft istasyonu",
         team: "Survival Craft ve Muster",
-        reportsTo: "Craft amiri / Dördüncü Zabit",
+        reportsTo: "Craft amiri / Üçüncü Zabit",
         actions: [
           "İlave su, battaniye veya atanmış abandon-ship malzemesini istasyona getirir.",
           "Kişi akışında ve can yeleği kontrolünde zabite yardım eder.",
@@ -868,7 +778,7 @@ export const musterAssignments: MusterAssignment[] = [
       mob: {
         station: "Atanmış gözcü / kurtarma lojistik noktası",
         team: "Sudan Kişi Kurtarma",
-        reportsTo: "Dördüncü Zabit / Reis",
+        reportsTo: "Üçüncü Zabit / Reis",
         actions: [
           "Atandıysa ikinci gözcü olarak kazazedenin yönünü işaret eder.",
           "Battaniye, sedye, ışık ve recovery equipment lojistiğini sağlar.",
@@ -879,7 +789,7 @@ export const musterAssignments: MusterAssignment[] = [
       flooding: {
         station: "Hasar kontrol lojistik noktası",
         team: "Hasar Kontrol",
-        reportsTo: "Dördüncü Zabit / Reis",
+        reportsTo: "Üçüncü Zabit / Reis",
         actions: [
           "Sounding kayıtlarını zabit gözetiminde zaman ve mahal bazında tutar.",
           "Pompa hortumu, ışık ve shoring malzemesini güvenli sınıra taşır.",
@@ -890,7 +800,7 @@ export const musterAssignments: MusterAssignment[] = [
       "enclosed-space": {
         station: "Kurtarma staging alanı",
         team: "BA Kurtarma ve Giriş Kontrol",
-        reportsTo: "Dördüncü Zabit / Reis",
+        reportsTo: "Üçüncü Zabit / Reis",
         actions: [
           "Kapalı mahale hiçbir koşulda bağımsız girmez.",
           "Sedye, yedek tüp, ilk yardım ve aydınlatma lojistiğini sağlar.",
@@ -901,7 +811,7 @@ export const musterAssignments: MusterAssignment[] = [
       pollution: {
         station: "SOPEP lojistik noktası",
         team: "SOPEP Güverte Müdahale",
-        reportsTo: "Dördüncü Zabit / Reis",
+        reportsTo: "Üçüncü Zabit / Reis",
         actions: [
           "Emici, atık torbası, işaretleme ve temiz PPE malzemesi getirir.",
           "Kirli/temiz bölge ayrımını korur; kontamine malzemeyi etiketli alana taşır.",
@@ -1447,7 +1357,7 @@ export const musterAssignments: MusterAssignment[] = [
       general: {
         station: "Atanmış muster istasyonu",
         team: "İlk Yardım ve Yaşam Mahalli",
-        reportsTo: "Dördüncü Zabit / Birinci Zabit",
+        reportsTo: "Üçüncü Zabit / Birinci Zabit",
         actions: [
           "Ocak, elektrikli pişirme ve gaz/yakıt kaynağını emniyete alır.",
           "Yoklamasını verir ve ilk yardım/erzak destek görevine geçer.",
@@ -1533,7 +1443,7 @@ export const musterAssignments: MusterAssignment[] = [
       general: {
         station: "Yaşam mahalli sweep rotası, ardından muster",
         team: "İlk Yardım ve Yaşam Mahalli",
-        reportsTo: "Dördüncü Zabit / Birinci Zabit",
+        reportsTo: "Üçüncü Zabit / Birinci Zabit",
         actions: [
           "Yalnızca emniyetliyse atanmış kamara/ortak alan sweep rotasını kontrol eder.",
           "Bulunan, eksik veya yardıma ihtiyaç duyan kişileri muster görevlisine bildirir.",
@@ -1555,7 +1465,7 @@ export const musterAssignments: MusterAssignment[] = [
       abandon: {
         station: "Atanmış survival craft istasyonu",
         team: "Yaşam Desteği ve Muster",
-        reportsTo: "Craft amiri / Dördüncü Zabit",
+        reportsTo: "Craft amiri / Üçüncü Zabit",
         actions: [
           "Atanmış kamara/ortak alanın boşaltıldığını bildirir.",
           "İlave can yeleği, battaniye ve ilk yardım çantasını istasyona getirir.",
