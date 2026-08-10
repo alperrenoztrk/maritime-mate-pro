@@ -41,6 +41,13 @@ interface ScoringContext {
  */
 const CAPACITY_SPREAD = 2;
 
+/**
+ * Konu başına ulaşılmaya çalışılan asgari soru sayısı. Havuz yetmiyorsa eşit
+ * paylaşım tavanı (floor(soru/konu)) uygulanır; yani hedef, havuzun izin
+ * verdiği ölçüde geçerlidir.
+ */
+const MIN_QUESTIONS_PER_TOPIC = 8;
+
 const distributionCache = new Map<string, ExerciseQuestionDistribution>();
 
 const STOP_WORDS = new Set([
@@ -288,29 +295,55 @@ const assignQuestionsToTopics = (
   const assignment = new Array<number>(questions.length).fill(-1);
   const counts = new Array<number>(topics.length).fill(0);
 
-  // 1. aşama: her konu, henüz atanmamış sorular arasından en iyi eşleşenini alır.
-  if (questions.length >= topics.length) {
-    for (let topicIndex = 0; topicIndex < topics.length; topicIndex += 1) {
-      let bestQuestion = -1;
-      let bestScore = -Infinity;
+  /** Konuya, henüz atanmamış sorular arasından en iyi eşleşeni verir. */
+  const claimBestQuestion = (topicIndex: number) => {
+    let bestQuestion = -1;
+    let bestScore = -Infinity;
 
-      for (let questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
-        if (assignment[questionIndex] !== -1) continue;
-        if (scores[questionIndex][topicIndex] > bestScore) {
-          bestScore = scores[questionIndex][topicIndex];
-          bestQuestion = questionIndex;
-        }
+    for (let questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
+      if (assignment[questionIndex] !== -1) continue;
+      if (scores[questionIndex][topicIndex] > bestScore) {
+        bestScore = scores[questionIndex][topicIndex];
+        bestQuestion = questionIndex;
       }
+    }
 
-      if (bestQuestion !== -1) {
-        assignment[bestQuestion] = topicIndex;
-        counts[topicIndex] += 1;
+    if (bestQuestion === -1) return false;
+
+    assignment[bestQuestion] = topicIndex;
+    counts[topicIndex] += 1;
+    return true;
+  };
+
+  // Havuzun izin verdiği asgari pay. Tek tur yeterli değil: sözcük örtüşmesi
+  // zayıf konular tek soruda kalırken güçlü konular 2. aşamada kapasiteye
+  // dayanıyordu. Turu bu sayıya kadar tekrarlamak minimumu yukarı çeker.
+  const minPerTopic =
+    topics.length > 0
+      ? Math.min(MIN_QUESTIONS_PER_TOPIC, Math.floor(questions.length / topics.length))
+      : 0;
+
+  // 1. aşama: her konu sırayla en iyi eşleşen soruyu alır; tur, konu başına
+  // asgari pay dolana kadar tekrarlanır. Soru kalmadığında turlar sonlanır.
+  let exhausted = false;
+  for (let round = 0; round < minPerTopic && !exhausted; round += 1) {
+    for (let topicIndex = 0; topicIndex < topics.length; topicIndex += 1) {
+      if (counts[topicIndex] > round) continue;
+      if (!claimBestQuestion(topicIndex)) {
+        exhausted = true;
+        break;
       }
     }
   }
 
   // 2. aşama: kalan sorular, kapasitesi dolmamış en iyi konuya yerleşir.
-  const capacity = Math.max(1, Math.ceil((questions.length / topics.length) * CAPACITY_SPREAD));
+  // Kapasite asgari payın altına inemez, yoksa 1. aşamada dolan konular
+  // 2. aşamada baştan dolu sayılırdı.
+  const capacity = Math.max(
+    1,
+    minPerTopic,
+    Math.ceil((questions.length / topics.length) * CAPACITY_SPREAD),
+  );
   const topicOrder = topics.map((_, index) => index);
 
   for (let questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
