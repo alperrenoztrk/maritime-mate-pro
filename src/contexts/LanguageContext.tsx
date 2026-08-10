@@ -53,6 +53,10 @@ const IS_HARVEST_FRAME =
 const DEFAULT_LANGUAGE = 'en';
 const TRANSLATION_PENDING_ATTR = 'data-mt-translation-pending';
 const ROUTE_TRANSLATION_PENDING_SELECTOR = '[data-mt-route-pending]';
+// The persistent app chrome (nav bar, tab bar). It is translated by the
+// provider's own global pass and is the user's only way out of a route that is
+// still settling, so it must never be hidden by the pending-visibility rule.
+const GLOBAL_TRANSLATION_ROOT_SELECTOR = '[data-mt-global-root]';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
@@ -157,7 +161,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     roots: Node[],
     languageCode: string,
     runId: number,
-    options?: { allowLive?: boolean },
+    options?: { allowLive?: boolean; onLocalPass?: () => void },
   ) => Promise<void>>(async () => undefined);
   const routeTranslationPromisesRef = useRef<Map<string, RouteTranslationTask>>(new Map());
   const liveTranslationPausedUntilRef = useRef(0);
@@ -399,16 +403,20 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     units: TranslationUnit[],
     languageCode: string,
     runId: number,
-    options: { allowLive?: boolean } = {}
+    options: { allowLive?: boolean; onLocalPass?: () => void } = {}
   ) => {
-    if (units.length === 0) return;
-
-    if (languageCode === SOURCE_LANGUAGE) {
-      writeWithoutObserving(() => units.forEach((unit) => unit.apply(unit.source)));
+    if (units.length === 0) {
+      options.onLocalPass?.();
       return;
     }
 
-    const { allowLive = true } = options;
+    if (languageCode === SOURCE_LANGUAGE) {
+      writeWithoutObserving(() => units.forEach((unit) => unit.apply(unit.source)));
+      options.onLocalPass?.();
+      return;
+    }
+
+    const { allowLive = true, onLocalPass } = options;
     if (translationRunIdRef.current !== runId) return;
 
     const bySource = new Map<string, Array<(t: string) => void>>();
@@ -447,6 +455,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       // else: leave in source language (cache-only mode after a bulk pass).
     }
     applyTranslations(localTranslations);
+    // Everything the device can translate offline is now on screen. A route
+    // waiting on this pass is released HERE, before the live fallback below:
+    // blocking a route's reveal on a network round-trip put an opaque gate over
+    // the app for the fetch's whole timeout budget on every single navigation.
+    // The remaining strings are patched in place a moment later.
+    onLocalPass?.();
 
     // 2) Translate the remainder in as few batched requests as possible.
     if (networkSources.length > 0) {
@@ -464,7 +478,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     roots: Node[],
     languageCode: string,
     runId: number,
-    options: { allowLive?: boolean } = {}
+    options: { allowLive?: boolean; onLocalPass?: () => void } = {}
   ) => {
     if (typeof document === 'undefined' || !document.body) return;
     // Load the complete packaged dictionary before collecting the DOM. This
@@ -520,7 +534,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         // dictionary is loading. Read it afterwards so this route joins the
         // latest pass instead of being discarded as stale.
         const runId = translationRunIdRef.current;
-        await translateRootsRef.current([root], languageCode, runId, { allowLive: true });
+        await translateRootsRef.current([root], languageCode, runId, {
+          allowLive: true,
+          // Reveal the screen the moment the offline pass has been applied. The
+          // packaged pack covers the authored corpus, so this is the fully
+          // translated page in all but a handful of dynamic strings — and it
+          // costs no network. Waiting for the live fallback instead meant the
+          // gate sat over the app for the fetch timeout on every navigation.
+          onLocalPass: () => completeRouteTranslation(routeToken),
+        });
       })();
       const outcome = await settleWithDeadline(
         translationWork,
@@ -575,6 +597,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       !element ||
       element.id === 'root' ||
       element === document.body ||
+      // `[data-mt-translation-pending]` is `visibility: hidden !important`.
+      // Applying it to the nav bar / tab bar made the navigation controls
+      // disappear for up to PENDING_VISIBILITY_MAX_MS every time they
+      // re-rendered (which is on every route change, for the active-tab and
+      // back-label updates) — the app looked frozen with no way to leave the
+      // screen. Chrome may flash a source-language label; it must never vanish.
+      element.closest(GLOBAL_TRANSLATION_ROOT_SELECTOR) ||
       shouldIgnoreObservedNode(node)
     ) {
       return;

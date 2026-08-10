@@ -198,6 +198,28 @@ assert(
   "AppNavBar must route back through useBackNavigation so it agrees with the hardware button and the edge swipe",
 );
 
+// The navigation chrome must stay reachable while a route is still settling.
+// Both rules below have failed in production as "the app freezes when I press
+// the navigation buttons": the gate swallowed every tap, and the translation
+// engine hid the nav bar outright. Neither is detectable from a stack trace —
+// the app is perfectly healthy, it just cannot be operated.
+const translationGate = read("src/components/RouteTranslationGate.tsx");
+assert(
+  translationGate.includes("pointer-events-none") &&
+    !/pointerEvents:\s*["']auto["']/.test(translationGate),
+  "RouteTranslationGate must never take pointer events — it is a visual cover, and an input-blocking gate makes every navigation tap disappear",
+);
+assert(
+  /className="[^"]*\bz-(?:[0-3]?\d)\b/.test(translationGate),
+  "RouteTranslationGate must render below the nav bar (z-50) and tab bar (z-45) so the navigation chrome stays visible while a route settles",
+);
+
+const languageContext = read("src/contexts/LanguageContext.tsx");
+assert(
+  languageContext.includes("GLOBAL_TRANSLATION_ROOT_SELECTOR"),
+  "LanguageContext must skip [data-mt-global-root] when hiding not-yet-translated elements, or the nav bar and tab bar disappear on every route change",
+);
+
 if (failures.length) {
   console.error(failures.map((failure) => `- ${failure}`).join("\n"));
   process.exit(1);

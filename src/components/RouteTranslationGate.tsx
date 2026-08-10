@@ -84,15 +84,24 @@ export const RouteTranslationGate = () => {
     <AnimatePresence>
       {showGate && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
+          // HARD RULE: this is a *visual* cover, never an input blocker.
+          //
+          //  - `pointer-events: none` — it used to animate to `auto`, which made
+          //    every route change mount a full-screen tap sink for as long as the
+          //    translation pass ran. Taps on the tab bar simply vanished, which
+          //    is indistinguishable from a frozen app.
+          //  - `z-30` — below the nav bar (z-50), the tab bar (z-45) and the edge
+          //    swipe strip (z-40), so the persistent navigation chrome stays
+          //    visible and usable while a route settles. Only the route content
+          //    underneath is covered, which is all this gate was ever for.
+          className="pointer-events-none fixed inset-0 z-30 flex items-center justify-center bg-background"
           data-no-translate
           translate="no"
           role="status"
           aria-label="Loading translated page"
           initial={{ opacity: 1 }}
-          animate={{ opacity: 1, pointerEvents: "auto" }}
-          // A stalled exit animation must never keep swallowing taps.
-          exit={{ opacity: 0, pointerEvents: "none" }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: MOTION_SECONDS.press }}
         >
           <motion.div
