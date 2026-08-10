@@ -141,6 +141,7 @@ const BALANCED_BANKS = new Set([
   "machine/diesel-engines",
   "machine/ship-systems",
   "machine/maintenance",
+  "machine/engine-room-ops",
 ]);
 
 /**
@@ -153,7 +154,6 @@ const BALANCED_BANKS = new Set([
 const LENGTH_BUDGET = {
   "machine/automation": 97,
   "machine/erm": 99,
-  "machine/engine-room-ops": 97,
   "machine/engine-room-safety": 99,
   "beta/navigation": 74,
   "beta/meteorology": 81,
