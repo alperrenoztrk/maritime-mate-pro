@@ -125,7 +125,7 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const sourceLabel =
     effectiveSource === "gps" ? "GPS" :
     effectiveSource === "ip" ? "IP" :
-    effectiveSource === "manual" ? "MANUAL" : "—";
+    effectiveSource === "manual" ? "Manuel" : "—";
   const accuracyLabel =
     effectiveAccuracy == null ? "—" :
     effectiveAccuracy < 1000 ? `±${Math.round(effectiveAccuracy)} m` :
