@@ -380,14 +380,19 @@ export const findMissingProtectedTokens = (
   // "DP" three times and comes back with two has lost one to the engine, and
   // presence alone would call that clean.
   //
-  // An inflected abbreviation still counts: English plurals ("EPIRBs"), German
-  // genitives ("IMOs"). Only lower-case letters may follow, so "GM" is not
-  // counted inside "GMDSS". A digit may lead, because engines sometimes swallow
-  // the space in "2.1 DSC" → "2.1DSC" — a spacing slip, not a lost abbreviation.
+  // Boundaries are Latin-only on purpose. Japanese, Chinese, Korean, Greek and
+  // Cyrillic text runs straight up against a Latin abbreviation with no space
+  // ("2.1 トルクとKG", "IMO硫黄分規制"), and treating the neighbouring script as
+  // part of the word would report every CJK entry as damaged. Merging with
+  // LATIN letters is the real failure ("GM" inside "GMDSS"), so only those
+  // count. A digit may lead, because engines sometimes swallow the space in
+  // "2.1 DSC" → "2.1DSC" — a spacing slip, not a lost abbreviation. A short
+  // lower-case tail is an inflection: English plurals ("EPIRBs"), German
+  // genitives ("IMOs").
   const countIn = (haystack: string, needle: string): number =>
     (haystack.match(
       new RegExp(
-        `(?<!\\p{L})${escapeRegExp(needle)}(?:['’]?\\p{Ll}{1,3})?(?![\\p{L}\\p{N}])`,
+        `(?<![A-Za-z])${escapeRegExp(needle)}(?:['’]?[a-z]{1,3})?(?![A-Za-z0-9])`,
         'gu'
       )
     ) ?? []).length;

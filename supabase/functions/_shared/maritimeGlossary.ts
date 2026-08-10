@@ -1955,7 +1955,7 @@ export const maritimeTerms: MaritimeTerm[] = [
   },
   {
     tr: 'Baş açısı',
-    aliases: ['Baş Açısı', 'baş açısı'],
+    aliases: ['Baş Açısı', 'baş açısı', 'Baş açısını', 'baş açısını', 'Baş açısı', 'baş açıları'],
     translations: {
       en: 'Heading angle', de: 'Kurswinkel', fr: 'Angle de cap',
       es: 'Ángulo de rumbo', it: 'Angolo di prua', pt: 'Ângulo de rumo',
@@ -1968,6 +1968,28 @@ export const maritimeTerms: MaritimeTerm[] = [
     translations: {
       en: 'Heading', de: 'Kurs', fr: 'Cap', es: 'Rumbo', it: 'Prua',
       pt: 'Rumo', nl: 'Koers',
+    },
+  },
+  {
+    // "Mevki" (position) makes the pairing unambiguous, so this is safe where a
+    // bare "baş" would not be.
+    tr: 'Mevki ve baş',
+    aliases: ['Mevki ve Baş', 'mevki ve baş'],
+    translations: {
+      en: 'position and heading', de: 'Position und Kurs',
+      fr: 'position et cap', es: 'situación y rumbo',
+      it: 'posizione e prua', pt: 'posição e rumo',
+      nl: 'positie en koers',
+    },
+  },
+  {
+    tr: 'Otomatik mevki ve baş',
+    aliases: ['Otomatik Mevki ve Baş', 'otomatik mevki ve baş'],
+    translations: {
+      en: 'Automatic position and heading', de: 'Automatische Position und Kurs',
+      fr: 'Position et cap automatiques', es: 'Situación y rumbo automáticos',
+      it: 'Posizione e prua automatiche', pt: 'Posição e rumo automáticos',
+      nl: 'Automatische positie en koers',
     },
   },
   {
@@ -1986,15 +2008,41 @@ export const maritimeTerms: MaritimeTerm[] = [
   // it is the forecastle head on deck but the zenith in the celestial lessons.)
   {
     tr: 'Baş omuzluk',
-    aliases: ['Baş Omuzluk', 'baş omuzluk', 'baş omuzluktan', 'Baş omuzlukta'],
+    // The corpus also writes it as one word ("başomuzluk").
+    aliases: [
+      'Baş Omuzluk', 'baş omuzluk', 'baş omuzluktan', 'Baş omuzlukta',
+      'Başomuzluk', 'başomuzluk', 'başomuzluktan',
+    ],
     translations: {
       en: 'Bow quarter', de: 'Bug', fr: 'Hanche avant', es: 'Amura',
       it: 'Mascone', pt: 'Amura', nl: 'Boeg',
     },
   },
   {
+    // Written as one word in parts of the corpus. Only the canonical `tr` form
+    // takes part in inline masking, so the one-word spelling needs its own entry
+    // rather than an alias.
+    tr: 'Başomuzluk',
+    aliases: ['başomuzluk', 'Başomuzlukta', 'başomuzluktan'],
+    translations: {
+      en: 'Bow quarter', de: 'Bug', fr: 'Hanche avant', es: 'Amura',
+      it: 'Mascone', pt: 'Amura', nl: 'Boeg',
+    },
+  },
+  {
+    tr: 'Kıçomuzluk',
+    aliases: ['kıçomuzluk', 'Kıçomuzlukta', 'kıçomuzluktan'],
+    translations: {
+      en: 'Stern quarter', de: 'Achterschiff', fr: 'Hanche arrière',
+      es: 'Aleta', it: 'Giardinetto', pt: 'Alheta', nl: 'Achterschip',
+    },
+  },
+  {
     tr: 'Kıç omuzluk',
-    aliases: ['Kıç Omuzluk', 'kıç omuzluk', 'kıç omuzluktan'],
+    aliases: [
+      'Kıç Omuzluk', 'kıç omuzluk', 'kıç omuzluktan',
+      'Kıçomuzluk', 'kıçomuzluk', 'kıçomuzluktan',
+    ],
     translations: {
       en: 'Stern quarter', de: 'Achterschiff', fr: 'Hanche arrière',
       es: 'Aleta', it: 'Giardinetto', pt: 'Alheta', nl: 'Achterschip',
