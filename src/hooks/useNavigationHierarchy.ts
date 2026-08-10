@@ -275,6 +275,7 @@ export const useNavigationHierarchy = () => {
   // finished committing the 1st navigate, reading a stale path. A short
   // cooldown (~250 ms) collapses bursts into a single climb-one-level.
   const lastBackAtRef = useRef(0);
+  const webBackInFlightRef = useRef(false);
   const BACK_COOLDOWN_MS = 250;
 
   const handleBack = useCallback((event?: { preventDefault?: () => void }) => {
@@ -298,10 +299,11 @@ export const useNavigationHierarchy = () => {
     }
     lastBackAtRef.current = now;
 
-    const path =
-      typeof window !== 'undefined'
-        ? window.location.pathname
-        : pathnameRef.current;
+    // During `popstate`, window.location already points at the history entry
+    // that was exposed by the browser. React Router has not committed it yet,
+    // so the ref is the only reliable identity of the screen the user is
+    // actually leaving.
+    const path = pathnameRef.current;
     // HARD RULE: the back button MUST NEVER exit the app, no matter how many
     // times it is pressed. On the home route we deliberately do nothing.
     if (path === '/') {
@@ -348,16 +350,9 @@ export const useNavigationHierarchy = () => {
     if (Capacitor.isNativePlatform()) return;
 
     const handlePopState = () => {
+      if (webBackInFlightRef.current) return;
+      webBackInFlightRef.current = true;
       handleBack();
-      try {
-        window.history.pushState(
-          { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
-          '',
-          window.location.pathname + window.location.search,
-        );
-      } catch {
-        /* pushState can throw in rare iframe contexts; ignore. */
-      }
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -366,16 +361,19 @@ export const useNavigationHierarchy = () => {
     };
   }, [handleBack]);
 
-  // Sentinel push — runs on every pathname change so back is intercepted
-  // from the very first render. Now ALSO active on native: if Android's
-  // WebView ever falls through to its default goBack() (plugin race during
-  // cold start), the sentinel entry is consumed instead of the app being
-  // minimized.
+  // Sentinel push — runs after React Router has committed the destination.
+  // Never push from inside `popstate`: doing both a Router replace and a
+  // synchronous push there races two owners of the same history entry.
+  // Native hardware back is already owned by Capacitor and must not share the
+  // browser sentinel stack.
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || Capacitor.isNativePlatform()) return;
 
     const state = window.history.state as Record<string, unknown> | null;
-    if (state?.[SENTINEL_KEY] === true) return;
+    if (state?.[SENTINEL_KEY] === true) {
+      webBackInFlightRef.current = false;
+      return;
+    }
 
     try {
       window.history.pushState(
@@ -385,8 +383,10 @@ export const useNavigationHierarchy = () => {
       );
     } catch {
       /* pushState can throw in rare iframe/security contexts; ignore. */
+    } finally {
+      webBackInFlightRef.current = false;
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
 
   return useMemo(
     () => ({ showExitDialog, closeExitDialog, confirmExit }),

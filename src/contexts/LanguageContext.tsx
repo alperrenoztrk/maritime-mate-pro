@@ -117,6 +117,7 @@ const SEEN_STRINGS_MAX = 8000;
 const BULK_CONCURRENCY = 4;
 const LIVE_TRANSLATION_TIMEOUT_MS = 2_000;
 const LIVE_TRANSLATION_FAILURE_COOLDOWN_MS = 30_000;
+const PENDING_VISIBILITY_MAX_MS = 2_500;
 const MAX_SINGLE_REQUEST_FALLBACKS = 6;
 const MAX_LIVE_SOURCES_PER_PASS = 96;
 
@@ -137,6 +138,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const observerRef = useRef<MutationObserver | null>(null);
   const pendingNodesRef = useRef<Set<Node>>(new Set());
   const pendingVisibilityRef = useRef<Map<HTMLElement, number>>(new Map());
+  const pendingVisibilityTimersRef = useRef<Map<HTMLElement, number>>(new Map());
   const pendingVisibilityVersionRef = useRef(0);
   const flushHandleRef = useRef<number | null>(null);
   const persistHandleRef = useRef<number | null>(null);
@@ -569,9 +571,22 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const version = ++pendingVisibilityVersionRef.current;
     pendingVisibilityRef.current.set(element, version);
     element.setAttribute(TRANSLATION_PENDING_ATTR, '');
+    const existingTimer = pendingVisibilityTimersRef.current.get(element);
+    if (existingTimer !== undefined) window.clearTimeout(existingTimer);
+    const timer = window.setTimeout(() => {
+      if (pendingVisibilityRef.current.get(element) !== version) return;
+      element.removeAttribute(TRANSLATION_PENDING_ATTR);
+      pendingVisibilityRef.current.delete(element);
+      pendingVisibilityTimersRef.current.delete(element);
+    }, PENDING_VISIBILITY_MAX_MS);
+    pendingVisibilityTimersRef.current.set(element, timer);
   };
 
   const clearPendingVisibility = useCallback(() => {
+    for (const timer of pendingVisibilityTimersRef.current.values()) {
+      window.clearTimeout(timer);
+    }
+    pendingVisibilityTimersRef.current.clear();
     for (const element of pendingVisibilityRef.current.keys()) {
       element.removeAttribute(TRANSLATION_PENDING_ATTR);
     }
