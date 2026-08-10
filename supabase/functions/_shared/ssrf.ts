@@ -74,3 +74,40 @@ export async function assertSafeUrl(raw: string): Promise<URL> {
   }
   return parsed;
 }
+
+/**
+ * Fetch that follows redirects MANUALLY, re-validating every hop with
+ * assertSafeUrl(). `redirect: "follow"` would let an attacker-controlled site
+ * 302 the request into private/loopback/metadata addresses after the initial
+ * check passed.
+ */
+export async function safeFetch(
+  target: string,
+  init: RequestInit = {},
+  opts: { maxRedirects?: number; timeoutMs?: number } = {},
+): Promise<Response> {
+  const maxRedirects = opts.maxRedirects ?? 3;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), opts.timeoutMs ?? 15000);
+  try {
+    let current = (await assertSafeUrl(target)).toString();
+    for (let hop = 0; ; hop++) {
+      const response = await fetch(current, {
+        ...init,
+        signal: controller.signal,
+        redirect: "manual",
+      });
+      const location = response.headers.get("location");
+      if (response.status < 300 || response.status >= 400 || !location) {
+        return response;
+      }
+      await response.body?.cancel().catch(() => {});
+      if (hop >= maxRedirects) throw new Error("Too many redirects");
+      const next = new URL(location, current).toString();
+      await assertSafeUrl(next);
+      current = next;
+    }
+  } finally {
+    clearTimeout(timeout);
+  }
+}

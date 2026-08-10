@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
-import { assertSafeUrl } from "../_shared/ssrf.ts";
+import { assertSafeUrl, safeFetch } from "../_shared/ssrf.ts";
 
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
@@ -26,18 +26,19 @@ serve(async (req) => {
       );
     }
 
-    // SSRF protection: only allow http(s) URLs on public hosts
+    // SSRF protection: only allow http(s) URLs on public hosts, and follow
+    // redirects manually so every hop is re-validated.
+    let fileResponse: Response;
     try {
       await assertSafeUrl(fileUrl);
+      fileResponse = await safeFetch(fileUrl, {}, { maxRedirects: 3, timeoutMs: 15000 });
     } catch {
       return errorResponse(corsHeaders, 400, 'Geçersiz veya izin verilmeyen dosya URL');
     }
-
-    // Fetch the file content
-    const fileResponse = await fetch(fileUrl);
     if (!fileResponse.ok) {
       return errorResponse(corsHeaders, 400, 'Dosya indirilemedi');
     }
+
 
     let extractedContent = '';
     let extractedData: Record<string, unknown> | null = null;
