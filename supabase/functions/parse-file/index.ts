@@ -26,18 +26,19 @@ serve(async (req) => {
       );
     }
 
-    // SSRF protection: only allow http(s) URLs on public hosts
+    // SSRF protection: only allow http(s) URLs on public hosts, and follow
+    // redirects manually so every hop is re-validated.
+    let fileResponse: Response;
     try {
       await assertSafeUrl(fileUrl);
+      fileResponse = await safeFetch(fileUrl, {}, { maxRedirects: 3, timeoutMs: 15000 });
     } catch {
       return errorResponse(corsHeaders, 400, 'Geçersiz veya izin verilmeyen dosya URL');
     }
-
-    // Fetch the file content
-    const fileResponse = await fetch(fileUrl);
     if (!fileResponse.ok) {
       return errorResponse(corsHeaders, 400, 'Dosya indirilemedi');
     }
+
 
     let extractedContent = '';
     let extractedData: Record<string, unknown> | null = null;
