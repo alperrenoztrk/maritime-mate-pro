@@ -128,7 +128,7 @@ export default function MusterListPage() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 pb-24 print:bg-white print:px-0 print:py-0 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-screen overflow-hidden px-4 py-8 pb-24 print:bg-white print:px-0 print:py-0"
     >
       <div className="pointer-events-none absolute inset-0 print:hidden">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
@@ -180,7 +180,7 @@ export default function MusterListPage() {
           })}
         </nav>
 
-        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm backdrop-blur print:bg-white print:shadow-none sm:p-5">
+        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm print:bg-white print:shadow-none sm:p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="space-y-1">
               <div className="flex flex-wrap items-center gap-2">
@@ -236,7 +236,7 @@ export default function MusterListPage() {
           </div>
         </section>
 
-        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm backdrop-blur print:bg-white print:shadow-none sm:p-5">
+        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm print:bg-white print:shadow-none sm:p-5">
           <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
             <div className="flex items-start gap-3">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -318,7 +318,7 @@ export default function MusterListPage() {
             {groups.map((group) => (
               <section
                 key={group.team}
-                className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur print:border-slate-300 print:bg-white print:shadow-none sm:p-5"
+                className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm print:border-slate-300 print:bg-white print:shadow-none sm:p-5"
               >
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
                   <div className="flex items-center gap-2">

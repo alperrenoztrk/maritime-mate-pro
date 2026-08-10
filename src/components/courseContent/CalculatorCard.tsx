@@ -107,7 +107,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
   };
 
   return (
-    <Card className="bg-card/80 backdrop-blur border-border/40">
+    <Card className="bg-card/80 border-border/40">
       <CardHeader className="pb-2">
         <CardTitle className="text-base">{entry.name}</CardTitle>
         <div className="mt-1 rounded-lg bg-background p-2 text-center font-mono text-sm text-primary">

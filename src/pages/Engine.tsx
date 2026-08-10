@@ -91,7 +91,7 @@ const Engine = () => {
               seawaterInletTemp: 32,
             }}
             diagramType="engine"
-            className="shadow-lg border-0 bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm"
+            className="shadow-lg border-0 bg-white/80 dark:bg-slate-900/50"
           />
 
           <div className="text-center text-sm text-muted-foreground">

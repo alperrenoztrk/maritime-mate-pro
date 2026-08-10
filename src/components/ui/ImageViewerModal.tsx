@@ -2,6 +2,7 @@ import { X, ZoomIn, ZoomOut, RotateCw, ImageOff } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { withImageProxy } from "./imageProxy";
+import { MOTION_SECONDS } from "@/hooks/useAppMotion";
 
 interface ImageViewerModalProps {
   src: string;
@@ -50,8 +51,8 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          transition={{ duration: MOTION_SECONDS.control }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90"
           onClick={handleBackdropClick}
         >
           {/* Controls */}
@@ -107,12 +108,12 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
               className="max-h-[90vh] max-w-[90vw] object-contain select-none"
               style={{
                 transform: `scale(${scale}) rotate(${rotation}deg)`,
-                transition: "transform 0.2s ease-out",
+                transition: "transform var(--motion-control) var(--ease-out-ios)",
               }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: MOTION_SECONDS.control }}
               draggable={false}
             />
           )}

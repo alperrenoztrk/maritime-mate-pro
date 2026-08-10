@@ -157,7 +157,7 @@ const warnings = [
 
 export default function EmissionRules() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 -left-32 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
@@ -211,7 +211,7 @@ export default function EmissionRules() {
           {rules.map((rule, index) => (
             <Card 
               key={index} 
-              className="border-border/60 bg-card/85 backdrop-blur-sm animate-fade-in"
+              className="border-border/60 bg-card/85 animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <CardHeader>

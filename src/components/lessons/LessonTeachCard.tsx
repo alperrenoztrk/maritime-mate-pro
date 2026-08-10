@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import type { BetaSection } from "@/data/betaLessons";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
+import { LessonImage } from "@/components/ui/LessonImage";
 
 /**
  * Tek bir normalize ders bölümünün (BetaSection) anlatım kartı.
@@ -46,11 +47,10 @@ export function LessonTeachCard({
 
       {sectionImage && (
         <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-          <img
+          <LessonImage
             src={sectionImage}
             alt={section.imageAlt || section.title}
-            className="h-48 w-full bg-muted/30 object-contain"
-            loading="lazy"
+            className="mx-auto h-auto max-h-80 w-full bg-muted/30 object-contain"
           />
         </div>
       )}
@@ -59,16 +59,15 @@ export function LessonTeachCard({
         <ReactMarkdown
           components={{
             p: ({ children }) => (
-              <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
+              <p className="text-base leading-relaxed text-foreground/85">{children}</p>
             ),
             img: ({ src, alt }) =>
               src ? (
                 <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                  <img
+                  <LessonImage
                     src={src}
                     alt={alt || section.title}
-                    className="h-48 w-full bg-muted/30 object-contain"
-                    loading="lazy"
+                    className="mx-auto h-auto max-h-80 w-full bg-muted/30 object-contain"
                   />
                 </div>
               ) : null,
@@ -83,7 +82,7 @@ export function LessonTeachCard({
           {section.bulletPoints.map((point, pointIndex) => (
             <li
               key={`${section.title}-point-${pointIndex}`}
-              className="flex items-start gap-3 text-sm text-foreground/80"
+              className="flex items-start gap-3 text-base text-foreground/85"
             >
               <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
               <span>{stripMarkdown(point)}</span>

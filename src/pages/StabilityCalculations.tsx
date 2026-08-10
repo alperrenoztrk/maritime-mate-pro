@@ -13,7 +13,7 @@ export default function StabilityCalculationsPage() {
       >
         <div className="space-y-8">
           <StabilityCalculations />
-          <section className="rounded-2xl border border-border/50 bg-card/80 p-5 backdrop-blur">
+          <section className="rounded-2xl border border-border/50 bg-card/80 p-5">
             <div className="mb-3 flex items-center gap-2">
               <Calculator className="h-5 w-5 text-primary" />
               <h2 className="text-lg font-semibold text-foreground">İnteraktif Stabilite Hesaplamaları</h2>

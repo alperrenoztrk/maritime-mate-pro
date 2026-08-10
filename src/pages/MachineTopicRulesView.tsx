@@ -20,7 +20,7 @@ export default function MachineTopicRulesView() {
   const TopicIcon = topic.icon;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="min-h-screen">
       <div className="container mx-auto max-w-4xl p-4 space-y-6">
         <header className="space-y-3">
           <div className="flex items-center gap-3">
@@ -49,7 +49,7 @@ export default function MachineTopicRulesView() {
               </p>
             )}
             {category.rules.map((rule, ruleIndex) => (
-              <Card key={ruleIndex} className="bg-card/80 backdrop-blur border-border/40">
+              <Card key={ruleIndex} className="bg-card/80 border-border/40">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-semibold">{rule.subtitle}</CardTitle>
                 </CardHeader>

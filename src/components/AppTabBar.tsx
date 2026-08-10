@@ -25,8 +25,18 @@ const TABS: AppTab[] = [
   { id: "home", label: "Ana Sayfa", to: "/", icon: House },
   { id: "learn", label: "Öğren", to: "/lessons", icon: BookOpenText },
   { id: "tools", label: "Araçlar", to: "/calculations", icon: Calculator },
-  { id: "library", label: "Kitaplık", to: "/library", icon: LibraryBig },
+  { id: "library", label: "Kütüphane", to: "/library", icon: LibraryBig },
 ];
+
+// Each top-level area owns its most recent route for the current app session,
+// matching iOS tab-controller behaviour. Switching away and back no longer
+// throws the user out of a lesson/calculation hierarchy.
+const lastRouteByTab: Record<TabId, string> = {
+  home: "/",
+  learn: "/lessons",
+  tools: "/calculations",
+  library: "/library",
+};
 
 const LEARN_ROUTES = [/^\/lessons(?:\/|$)/, /^\/exercises(?:\/|$)/, /^\/machine\/[^/]+\/topics(?:\/|$)/];
 const TOOL_ROUTES = [
@@ -55,6 +65,10 @@ export function AppTabBar() {
   const activeTab = activeTabForPath(pathname);
 
   useEffect(() => {
+    lastRouteByTab[activeTab] = pathname;
+  }, [activeTab, pathname]);
+
+  useEffect(() => {
     if (typeof document === "undefined") return;
     document.body.classList.toggle("app-tabbar-visible", !hidden);
     return () => document.body.classList.remove("app-tabbar-visible");
@@ -71,14 +85,21 @@ export function AppTabBar() {
       <div className="app-tabbar__items">
         {TABS.map(({ id, label, to, icon: Icon }) => {
           const active = activeTab === id;
+          const destination = active ? to : lastRouteByTab[id] || to;
           return (
             <NavLink
               key={id}
-              to={to}
-              end={to === "/"}
+              to={destination}
+              end={destination === "/"}
               aria-current={active ? "page" : undefined}
               aria-label={label}
-              onClick={() => hapticSelection()}
+              onClick={(event) => {
+                hapticSelection();
+                if (active && pathname === to) {
+                  event.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className={cn("app-tabbar__item", active && "app-tabbar__item--active")}
             >
               <span className="app-tabbar__icon" aria-hidden>

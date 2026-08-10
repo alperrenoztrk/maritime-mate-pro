@@ -181,11 +181,11 @@ function LibraryBookCase({
       {/* Kitabın zemine düşen gölgesi. */}
       <div
         aria-hidden
-        className="absolute inset-x-[7%] -bottom-1 h-[5%] rounded-[50%] bg-slate-900/45 blur-[7px] transition-all duration-500 group-hover:inset-x-[4%] group-hover:blur-[11px] motion-reduce:transition-none dark:bg-black/75"
+        className="absolute inset-x-[7%] -bottom-1 h-[5%] rounded-[50%] bg-slate-900/45 blur-[7px] transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-sheet group-hover:inset-x-[4%] group-hover:blur-[11px] motion-reduce:transition-none dark:bg-black/75"
       />
 
       <div
-        className={`relative h-full w-full [transform-style:preserve-3d] [transform:rotateY(13deg)] transition-transform duration-500 ease-out motion-reduce:transition-none ${
+        className={`relative h-full w-full [transform-style:preserve-3d] [transform:rotateY(13deg)] transition-transform duration-sheet ease-out motion-reduce:transition-none ${
           muted
             ? ""
             : "group-hover:[transform:rotateY(20deg)_translateY(-6px)] group-focus-visible:[transform:rotateY(20deg)_translateY(-6px)]"
@@ -212,7 +212,7 @@ function LibraryBookCase({
         </div>
 
         {/* Ön kapak. */}
-        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_14px_26px_rgba(15,23,42,0.32)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-500 group-hover:shadow-[0_22px_38px_rgba(15,23,42,0.42)] motion-reduce:transition-none">
+        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_14px_26px_rgba(15,23,42,0.32)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-sheet group-hover:shadow-[0_22px_38px_rgba(15,23,42,0.42)] motion-reduce:transition-none">
           <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg")} />
           {/* Boyanın mat, koyu cilt bezine çekilmesi (parlak plastik görünümü kırar). */}
           <div

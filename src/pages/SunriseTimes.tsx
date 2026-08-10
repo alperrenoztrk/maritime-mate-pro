@@ -115,7 +115,7 @@ export default function SunriseTimes() {
   const headerLocation = (selectedLocationName ? decodeURIComponent(selectedLocationName) : null) || locationLabel || (typeof latitude === "number" && typeof longitude === "number" ? `${latitude.toFixed(4)}°, ${longitude.toFixed(4)}°` : null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-card p-4">
+    <div className="min-h-screen p-4">
       <div className="max-w-3xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">

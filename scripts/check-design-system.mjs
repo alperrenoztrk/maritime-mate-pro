@@ -76,6 +76,20 @@ assert(
   app.includes("<AppTabBar />") && app.includes('path="/library"'),
   "src/App.tsx: the persistent tab bar and its discoverable /library destination must remain mounted",
 );
+assert(
+  read("src/components/AppTabBar.tsx").includes("lastRouteByTab"),
+  "AppTabBar: each top-level tab must preserve its most recent route during the session",
+);
+for (const label of ["Ana Sayfa", "Öğren", "Araçlar", "Kütüphane", "Ara"]) {
+  assert(
+    read("src/components/AppTabBar.tsx").includes(label),
+    `AppTabBar: primary navigation label must remain ${label}`,
+  );
+}
+assert(
+  read("src/components/PageTransition.tsx").includes("app-page-shell--${shellMode}"),
+  "PageTransition: every route must use the shared standard/immersive AppPageShell boundary",
+);
 
 // ── 4. Motion tokens ─────────────────────────────────────────────────
 // useFrameRate wrote a 120Hz frame budget into --animation-duration /
@@ -88,6 +102,14 @@ for (const file of sourceFiles) {
     `${rel(file)}: reintroduces the frame-rate duration hack; use the motion tokens in src/styles/tokens.css instead`,
   );
 }
+const stickyTopOwners = sourceFiles
+  .filter((file) => /sticky\s+top-0/.test(fs.readFileSync(file, "utf8")))
+  .map(rel)
+  .sort();
+assert(
+  JSON.stringify(stickyTopOwners) === JSON.stringify(["src/components/lessons/GuidedLessonSession.tsx"]),
+  `only the chromeless guided lesson may own a top-0 header (found: ${stickyTopOwners.join(", ") || "none"})`,
+);
 
 // ── 5. Glass belongs to chrome ───────────────────────────────────────
 // backdrop-filter used to be applied to every content card by a global patch
@@ -95,11 +117,8 @@ for (const file of sourceFiles) {
 // Those systemic sources are fixed; blur is now the exclusive property of
 // .surface-glass, used by floating chrome.
 //
-// 63 pages still carry their own inline backdrop-blur. Migrating them is
-// per-page work (Phase 2), so this is a RATCHET rather than a clean rule:
-// the baseline file lists today's offenders, and the check fails only when a
-// file that was clean starts using blur. Shrink glass-baseline.txt as pages
-// are migrated; never add to it.
+// The legacy baseline is intentionally empty. A checked-in file prevents a
+// future migration from quietly weakening the rule to allow known offenders.
 const glassBaseline = new Set(
   read("scripts/glass-baseline.txt").split("\n").map((line) => line.trim()).filter(Boolean),
 );
@@ -130,6 +149,18 @@ assert(
   staleBaseline.length === 0,
   `scripts/glass-baseline.txt lists files that no longer use blur — delete these lines: ${staleBaseline.join(", ")}`,
 );
+assert(
+  glassBaseline.size === 0,
+  "scripts/glass-baseline.txt must stay empty; legacy content blur migration is complete",
+);
+assert(
+  !/^\s*(?:-webkit-)?backdrop-filter\s*:/m.test(read("src/index.css")),
+  "src/index.css: content utilities must not define backdrop blur; use .surface-glass for floating chrome",
+);
+assert(
+  !/\bglass-widget\b|animate-neon-glow|animate-float/.test(read("src/index.css")),
+  "src/index.css: legacy glass/neon/continuous-float widget styling must stay removed",
+);
 
 // ── 6. Text that ignores the user's size setting ─────────────────────
 // Hard-coded px text does not scale with --font-scale, so the Settings
@@ -145,6 +176,10 @@ for (const file of sourceFiles) {
     );
   }
 }
+assert(
+  !/transition\s*:\s*all\b/.test(read("src/index.css")),
+  "src/index.css: transition: all bypasses the shared motion vocabulary",
+);
 
 // ── 7. One wave implementation ───────────────────────────────────────
 // The drifting waves existed as three identical copies with three keyframe
@@ -175,6 +210,44 @@ assert(
   read("src/components/EdgeSwipeBack.tsx").includes("moveSurface(next)"),
   "EdgeSwipeBack: the page itself must track the finger; an icon-only gesture is not interactive navigation",
 );
+assert(
+  read("src/components/EdgeSwipeBack.tsx").includes("velocity.current") &&
+    read("src/components/EdgeSwipeBack.tsx").includes("mountRoutePreview"),
+  "EdgeSwipeBack: interactive pop must reveal the previous route and consider gesture velocity",
+);
+
+const main = read("src/main.tsx");
+assert(
+  !main.includes("4200") && main.includes("760"),
+  "src/main.tsx: launch branding must stay below the 1.2 s first-use budget",
+);
+const fontContext = read("src/contexts/font-size-context.ts");
+assert(
+  /max:\s*2\b/.test(fontContext),
+  "font-size context: accessibility settings must support 200% text scaling",
+);
+assert(
+  !read("src/index.css").includes("Neon Billboard Effect Styles"),
+  "src/index.css: removed Neon/Cyberpunk presentation CSS must not return",
+);
+const rootGradientOwners = sourceFiles
+  .filter((file) => rel(file).startsWith("src/pages/"))
+  .filter((file) => /min-h-(?:screen|\[100[^\]]+\]).*bg-gradient|bg-gradient.*min-h-(?:screen|\[100[^\]]+\])/.test(fs.readFileSync(file, "utf8")))
+  .map(rel)
+  .sort();
+assert(
+  JSON.stringify(rootGradientOwners) === JSON.stringify([
+    "src/pages/BetaShipSimulator.tsx",
+    "src/pages/MoonPhases.tsx",
+  ]),
+  `full-screen gradients are reserved for documented immersive routes (found: ${rootGradientOwners.join(", ") || "none"})`,
+);
+for (const file of sourceFiles) {
+  assert(
+    !read(rel(file)).includes("transition-all"),
+    `${rel(file)}: transition-all bypasses the shared motion vocabulary`,
+  );
+}
 for (const file of [
   "src/components/GlobalSearch.tsx",
   "src/components/library/LibraryInterface.tsx",

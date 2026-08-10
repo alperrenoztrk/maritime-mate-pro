@@ -26,7 +26,7 @@ export default function BridgeDeviceDetailPage() {
 
   if (!device) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-12 text-center dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 py-12 text-center">
         <p className="text-lg font-semibold text-foreground">Cihaz bulunamadı</p>
       </div>
     );
@@ -35,7 +35,7 @@ export default function BridgeDeviceDetailPage() {
   const DeviceIcon = device.icon;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+    <div className="relative min-h-screen overflow-hidden px-4 py-10">
       <div className="pointer-events-none absolute inset-0">
         <div className={`absolute -top-20 left-1/3 h-56 w-56 rounded-full bg-gradient-to-br ${device.accent} opacity-20 blur-3xl`} />
         <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
@@ -83,7 +83,7 @@ export default function BridgeDeviceDetailPage() {
                   <LessonImage
                     src={url}
                     alt={`${device.name} örnek görsel ${index + 1}`}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition duration-sheet group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60" />
                 </div>

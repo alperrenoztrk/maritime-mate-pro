@@ -105,14 +105,14 @@ const roleTable = [
 
 export default function PassagePlanPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-foreground">
+    <div className="min-h-screen text-foreground">
       <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Anchor className="h-4 w-4" />
           Seyir & Köprüüstü İşleri
         </div>
 
-        <header className="space-y-3 rounded-2xl border border-border/60 bg-card/90 p-6 shadow-lg backdrop-blur">
+        <header className="space-y-3 rounded-2xl border border-border/60 bg-card/90 p-6 shadow-lg">
           <div className="flex items-center gap-3">
             <FileText className="h-6 w-6 text-primary" />
             <div>

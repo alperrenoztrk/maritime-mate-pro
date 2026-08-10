@@ -189,7 +189,10 @@ export default defineConfig(({ mode }) => ({
         // longer viable. Only the default language's pack (en) is precached;
         // any other language is fetched once on first selection and then kept
         // for offline use by the translation-locales runtime cache below.
-        globIgnores: ["locales/!(en).json"],
+        // Locale packs are route-independent 8–10 MB dictionaries. None may
+        // block service-worker installation; each chosen language is cached by
+        // the runtime rule below after the app shell is interactive.
+        globIgnores: ["locales/**/*.json"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,
@@ -299,6 +302,16 @@ export default defineConfig(({ mode }) => ({
         chunkFileNames: "assets/chunk-[hash].js",
         entryFileNames: "assets/entry-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("three") || id.includes("@react-three")) return "vendor-three";
+          if (id.includes("recharts") || id.includes("d3-")) return "vendor-charts";
+          if (id.includes("pdf-lib") || id.includes("exceljs") || id.includes("html2canvas")) return "vendor-export";
+          if (id.includes("@supabase") || id.includes("@lovable.dev/cloud-auth")) return "vendor-data";
+          if (id.includes("framer-motion")) return "vendor-motion";
+          if (id.includes("react") || id.includes("scheduler")) return "vendor-react";
+          return undefined;
+        },
       },
     },
   },

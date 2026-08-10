@@ -57,7 +57,7 @@ export function KnowledgeCheck({
               type="button"
               onClick={() => handleAnswer(index)}
               disabled={answered}
-              className={`w-full rounded-xl p-3.5 text-left transition-all ${
+              className={`w-full rounded-xl p-3.5 text-left transition-[background-color,color,border-color,box-shadow,opacity,transform,width] ${
                 answered
                   ? isCorrect
                     ? "border-2 border-emerald-500 bg-emerald-100 dark:bg-emerald-900/30"

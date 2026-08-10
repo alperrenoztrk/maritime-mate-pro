@@ -46,7 +46,7 @@ export function CourseSectionTabs({
   return (
     <nav
       aria-label="Ders bölümleri"
-      className="overflow-x-auto rounded-2xl border border-border/60 bg-card/80 p-1.5 shadow-sm backdrop-blur"
+      className="overflow-x-auto rounded-2xl border border-border/60 bg-card/80 p-1.5 shadow-sm"
     >
       <div className="flex min-w-max gap-1.5">
         {tabDefinitions.map((tab) => {

@@ -33,8 +33,7 @@
   --ease-in-out-ios: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Convenience composites. */
-  --transition-control: all var(--motion-control) var(--ease-out-ios);
+  /* Convenience composite for press feedback. */
   --transition-press: transform var(--motion-press) var(--ease-out-ios);
 
   /* ── Radius ────────────────────────────────────────────────────
@@ -200,30 +199,130 @@
   background: transparent;
 }
 
+/* Every standard route participates in one semantic content plane. Individual
+   page components can keep layout-specific spacing, but may not repaint a
+   competing full-screen gradient behind the shared app chrome. */
+.app-page-shell {
+  min-height: 100svh;
+  color: hsl(var(--foreground));
+}
+
+.app-page-shell--standard > :where(
+  .min-h-screen,
+  [class*="min-h-[100svh]"],
+  [class*="min-h-[100vh]"]
+) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.app-page-shell :where(a, button, [role="button"], [role="tab"], [role="menuitem"]):focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.app-page-shell :where(button, [role="button"], [role="tab"], [role="menuitem"]),
+.app-page-shell a[href] {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+/* Text/action links frequently sit in settings and reference lists. Give them
+   a full iOS-size hit region without forcing inline links inside prose into
+   block-level controls. */
+.app-page-shell :where(a, button)[data-tap-target="true"] {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+}
+
+/* At the two accessibility sizes, single-line truncation must not hide the
+   very text the user enlarged. These modes deliberately trade density for
+   complete content and vertical reflow. */
+html[data-font-size="accessibility"] .app-page-shell :where(.truncate, .line-clamp-1),
+html[data-font-size="max"] .app-page-shell :where(.truncate, .line-clamp-1, .line-clamp-2, .line-clamp-3) {
+  display: block;
+  overflow: visible;
+  white-space: normal;
+  text-overflow: clip;
+  -webkit-line-clamp: unset;
+}
+
+html[data-font-size="accessibility"] .app-page-shell :where(.grid-cols-3, .grid-cols-4),
+html[data-font-size="max"] .app-page-shell :where(.grid-cols-2, .grid-cols-3, .grid-cols-4) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .edge-swipe-page {
   position: relative;
   z-index: 3;
   overflow: hidden;
+  background: var(--maritime-shell-background);
+}
+
+.edge-swipe-preview {
+  visibility: hidden;
+  background: var(--maritime-shell-background);
+  opacity: 0;
+  transform: translate3d(-18px, 0, 0);
+  transition: opacity var(--motion-press) linear;
+}
+
+.edge-swipe-preview--active {
+  visibility: visible;
+}
+
+.edge-swipe-preview > .interactive-page-surface {
+  min-height: 100%;
+  background: var(--maritime-shell-background);
+}
+
+.edge-swipe-preview:empty::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--safe-top) + 5rem) 1rem auto;
+  height: min(56svh, 32rem);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-2xl);
+  background:
+    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+    linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.06), transparent) border-box;
 }
 
 @media (min-width: 1024px) {
   :root {
     --app-tabbar-reserve: 0px;
-    --app-sidebar-reserve: 6.5rem;
+    --app-sidebar-reserve: 15.5rem;
   }
 
   .app-tabbar {
-    left: calc(var(--safe-left) + 0.75rem);
+    left: 0;
     right: auto;
-    top: 50%;
-    bottom: auto;
-    width: 5.25rem;
-    transform: translateY(-50%);
+    top: 0;
+    bottom: 0;
+    width: var(--app-sidebar-reserve);
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 0;
+    transform: none;
   }
 
-  .app-tabbar__items { grid-template-columns: 1fr; padding: 0.35rem; }
-  .app-tabbar__item { min-height: 4rem; }
-  .app-tabbar__search { margin: 0.2rem 0 0; border-top: 1px solid var(--surface-border-strong); border-left: 0; border-radius: 0 0 1.125rem 1.125rem; }
+  .app-tabbar__items {
+    align-content: center;
+    grid-template-columns: 1fr;
+    min-height: 100%;
+    padding: calc(var(--safe-top) + 1rem) 0.75rem calc(var(--safe-bottom) + 1rem) calc(var(--safe-left) + 0.75rem);
+  }
+  .app-tabbar__item {
+    min-height: 3.5rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding-inline: 0.75rem;
+  }
+  .app-tabbar__icon { width: 2.25rem; flex: 0 0 2.25rem; }
+  .app-tabbar__label { font-size: 0.9375rem; }
+  .app-tabbar__search { margin: 0.35rem 0 0; border-top: 1px solid var(--surface-border-strong); border-left: 0; border-radius: 0 0 1.125rem 1.125rem; }
   .app-tabbar-visible .route-presence-frame { padding-left: var(--app-sidebar-reserve); }
   .app-tabbar-visible .app-navbar { left: var(--app-sidebar-reserve); }
   .app-tabbar-visible .app-edge-swipe { left: var(--app-sidebar-reserve); }

@@ -202,7 +202,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                 onClick={() => !showResults && handleOptionSelect(index)}
                 disabled={showResults}
                 className={cn(
-                  "w-full text-left p-4 rounded-lg border-2 transition-all",
+                  "w-full text-left p-4 rounded-lg border-2 transition-[background-color,color,border-color,box-shadow,opacity,transform,width]",
                   "hover:bg-muted/50 disabled:cursor-not-allowed",
                   isSelected && !showResults && "border-primary bg-primary/10",
                   shouldHighlightCorrect && "border-green-500 bg-green-50 text-green-800",

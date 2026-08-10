@@ -28,7 +28,7 @@ export function CurriculumModuleAccordion({
         return (
           <article
             key={module.id}
-            className="overflow-hidden rounded-2xl border border-border/60 bg-card/80 shadow-sm backdrop-blur"
+            className="overflow-hidden rounded-2xl border border-border/60 bg-card/80 shadow-sm"
           >
             <button
               type="button"

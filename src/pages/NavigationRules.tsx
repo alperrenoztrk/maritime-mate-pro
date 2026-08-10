@@ -124,7 +124,7 @@ export default function NavigationRulesPage() {
 
           <div className="space-y-2.5">
             {sections.map((section, idx) => (
-              <Card key={idx} className="border-border/30 bg-card/60 backdrop-blur-sm overflow-hidden">
+              <Card key={idx} className="border-border/30 bg-card/60 overflow-hidden">
                 <button
                   onClick={() => toggle(idx)}
                   className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-accent/10"
@@ -147,7 +147,7 @@ export default function NavigationRulesPage() {
                   <CardContent className="border-t border-border/20 pt-3 pb-4">
                     <ul className="space-y-2">
                       {section.rules.map((rule, ri) => (
-                        <li key={ri} className="flex gap-2 text-[13px] leading-relaxed text-foreground/90">
+                        <li key={ri} className="flex gap-2 text-sm leading-relaxed text-foreground/90">
                           <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
                           <span>{rule}</span>
                         </li>

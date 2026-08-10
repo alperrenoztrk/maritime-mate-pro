@@ -5,6 +5,9 @@ import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { hapticImpact } from "@/lib/haptics";
 import { useLocation } from "react-router-dom";
 import { isAppChromeHidden } from "@/lib/appChrome";
+import { findParentPath } from "@/hooks/useNavigationHierarchy";
+import { clearRoutePreviewHost, mountRoutePreview } from "@/lib/navigationPreview";
+import { MOTION_SECONDS } from "@/hooks/useAppMotion";
 
 const EDGE_WIDTH = 24;
 
@@ -16,12 +19,16 @@ export const EdgeSwipeBack = () => {
   const [active, setActive] = useState(false);
   const startX = useRef(0);
   const startY = useRef(0);
+  const lastX = useRef(0);
+  const lastMoveAt = useRef(0);
+  const velocity = useRef(0);
   const pointerId = useRef<number | null>(null);
   const pullRef = useRef(0);
   const commitDistance = useRef(88);
   const activeSurface = useRef<HTMLElement | null>(null);
   const cleanupTimer = useRef<number | null>(null);
   const thresholdFeedbackSent = useRef(false);
+  const previewHost = useRef<HTMLDivElement | null>(null);
 
   const clearSurface = () => {
     if (cleanupTimer.current !== null) {
@@ -38,6 +45,7 @@ export const EdgeSwipeBack = () => {
       surface.style.removeProperty("box-shadow");
     }
     activeSurface.current = null;
+    clearRoutePreviewHost(previewHost.current);
   };
 
   useEffect(() => {
@@ -58,6 +66,10 @@ export const EdgeSwipeBack = () => {
     surface.style.transform = `translate3d(${distance}px, 0, 0)`;
     surface.style.borderRadius = `${progress * 14}px`;
     surface.style.boxShadow = `-${Math.round(8 + progress * 12)}px 0 ${Math.round(24 + progress * 20)}px rgba(2, 10, 20, ${0.18 + progress * 0.18})`;
+    if (previewHost.current) {
+      previewHost.current.style.transform = `translate3d(${-18 + progress * 18}px, 0, 0)`;
+      previewHost.current.style.opacity = String(0.72 + progress * 0.28);
+    }
   };
 
   const finish = (commit: boolean) => {
@@ -73,16 +85,24 @@ export const EdgeSwipeBack = () => {
       goBack({ haptic: false });
       cleanupTimer.current = window.setTimeout(clearSurface, 440);
     } else if (surface) {
-      surface.style.transition = "transform 220ms var(--ease-out-ios), border-radius 220ms var(--ease-out-ios), box-shadow 220ms var(--ease-out-ios)";
+      surface.style.transition = "transform var(--motion-control) var(--ease-out-ios), border-radius var(--motion-control) var(--ease-out-ios), box-shadow var(--motion-control) var(--ease-out-ios)";
       moveSurface(0);
       cleanupTimer.current = window.setTimeout(clearSurface, 240);
     }
 
     pullRef.current = 0;
+    velocity.current = 0;
   };
 
   return (
     <>
+      <div
+        ref={previewHost}
+        aria-hidden
+        className={`edge-swipe-preview fixed inset-0 z-0 overflow-hidden pointer-events-none ${
+          active ? "edge-swipe-preview--active" : ""
+        }`}
+      />
       <div
         className="app-edge-swipe fixed top-0 z-40 h-full touch-pan-y"
         style={{ width: `calc(${EDGE_WIDTH}px + var(--safe-left))` }}
@@ -101,9 +121,13 @@ export const EdgeSwipeBack = () => {
           pointerId.current = event.pointerId;
           startX.current = event.clientX;
           startY.current = event.clientY;
+          lastX.current = event.clientX;
+          lastMoveAt.current = event.timeStamp;
+          velocity.current = 0;
           pullRef.current = 0;
           thresholdFeedbackSent.current = false;
           commitDistance.current = Math.min(140, Math.max(78, window.innerWidth * 0.28));
+          mountRoutePreview(findParentPath(pathname), previewHost.current);
           setActive(true);
 
           try {
@@ -122,6 +146,11 @@ export const EdgeSwipeBack = () => {
           }
 
           const next = Math.max(0, Math.min(dx, window.innerWidth));
+          const elapsed = Math.max(1, event.timeStamp - lastMoveAt.current);
+          const instantaneousVelocity = (event.clientX - lastX.current) / elapsed;
+          velocity.current = velocity.current * 0.65 + instantaneousVelocity * 0.35;
+          lastX.current = event.clientX;
+          lastMoveAt.current = event.timeStamp;
           if (next >= commitDistance.current && !thresholdFeedbackSent.current) {
             thresholdFeedbackSent.current = true;
             hapticImpact("light");
@@ -134,7 +163,8 @@ export const EdgeSwipeBack = () => {
         }}
         onPointerUp={(event) => {
           if (pointerId.current !== event.pointerId) return;
-          finish(pullRef.current >= commitDistance.current);
+          const fastIntent = pullRef.current >= 28 && velocity.current >= 0.55;
+          finish(pullRef.current >= commitDistance.current || fastIntent);
         }}
         onPointerCancel={() => finish(false)}
       />
@@ -145,7 +175,7 @@ export const EdgeSwipeBack = () => {
             key="edge-swipe-affordance"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.12 } }}
+            exit={{ opacity: 0, transition: { duration: MOTION_SECONDS.press } }}
             className="surface-glass pointer-events-none fixed top-1/2 z-40 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border shadow-elev-2"
             style={{
               left: Math.max(4, Math.min(pull - 22, 66)),

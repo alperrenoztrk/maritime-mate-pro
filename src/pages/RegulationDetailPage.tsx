@@ -120,7 +120,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                   </h4>
                 </div>
 
-                <div className="space-y-3 text-sm leading-7 text-muted-foreground sm:text-[15px] sm:leading-8">
+                <div className="space-y-3 text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
                   {narrativeSection.paragraphs.map((paragraph, paragraphIndex) => (
                     <p key={`${narrativeSection.heading}-paragraph-${paragraphIndex}`}>{paragraph}</p>
                   ))}
@@ -565,7 +565,7 @@ export default function RegulationDetailPage() {
 
   if (!regulation) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-12 text-center dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 py-12 text-center">
         <p className="text-lg font-semibold text-foreground">Regülasyon bilgisi bulunamadı</p>
       </div>
     );
@@ -584,14 +584,14 @@ export default function RegulationDetailPage() {
   ].filter(Boolean) as string[][];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-8 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 sm:py-10">
+    <div className="relative min-h-screen overflow-hidden px-4 py-8 sm:py-10">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-20 left-1/3 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <header className="mb-6 rounded-2xl border border-border/50 bg-card/65 p-4 shadow-sm backdrop-blur-md sm:p-6">
+        <header className="mb-6 rounded-2xl border border-border/50 bg-card/65 p-4 shadow-sm sm:p-6">
           <div className="flex flex-col gap-4">
             <div className="flex items-start gap-3">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-blue-500 text-white shadow-lg">
@@ -622,7 +622,7 @@ export default function RegulationDetailPage() {
 
         <div className="grid items-start gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
           <aside className="hidden lg:sticky lg:top-5 lg:block">
-            <nav className="rounded-2xl border border-border/60 bg-card/75 p-3 shadow-sm backdrop-blur-md" aria-label="İçerik haritası">
+            <nav className="rounded-2xl border border-border/60 bg-card/75 p-3 shadow-sm" aria-label="İçerik haritası">
               <p className="px-2 pb-2 text-micro font-black uppercase tracking-[0.2em] text-muted-foreground">İçerik haritası</p>
               <ul className="space-y-1">
                 {toc.map(([id, label], index) => (

@@ -7,6 +7,9 @@ import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
+import { MobileLayout } from "@/components/MobileLayout";
+import { PageHeader } from "@/components/layout/PageHeader";
+import { LessonImage } from "@/components/ui/LessonImage";
 
 export default function MachineTopicDetailPage() {
   const [viewerImage, setViewerImage] = useState<string | null>(null);
@@ -25,25 +28,30 @@ export default function MachineTopicDetailPage() {
 
   if (!topicConfig || !content) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
+      <MobileLayout>
+      <div className="flex min-h-[60svh] items-center justify-center">
         <div className="space-y-3 text-center">
           <p className="text-muted-foreground">{decodedTitleOrId || "Konu detayı"}</p>
         </div>
       </div>
+      </MobileLayout>
     );
   }
 
   const TopicIcon = topicConfig.icon;
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
-        <h1 className="line-clamp-1 text-sm font-bold text-foreground sm:text-base">
-          {content.title}
-        </h1>
-      </div>
-
-      <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
+    <MobileLayout>
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 pb-24">
+        <PageHeader
+          title={content.title}
+          icon={TopicIcon}
+          actions={content.level ? (
+            <span className="surface-2 inline-flex min-h-8 items-center rounded-full border px-3 text-caption font-semibold uppercase tracking-wide text-primary">
+              {content.level === "foundation" ? "Temel" : content.level === "operational" ? "Operasyonel" : "İleri"}
+            </span>
+          ) : undefined}
+        />
         <div className="flex items-center gap-2">
           <div
             className={`flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${topicConfig.accent} text-white`}
@@ -69,7 +77,7 @@ export default function MachineTopicDetailPage() {
         )}
 
         {content.sections.map((section, index) => (
-          <section key={section.id ?? `${section.title}-${index}`} className="space-y-4">
+          <section key={section.id ?? `${section.title}-${index}`} className="surface-2 space-y-4 rounded-2xl border p-5 shadow-elev-1">
             <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
             <StructuredLessonText text={section.content} />
@@ -150,11 +158,10 @@ export default function MachineTopicDetailPage() {
             {section.image && (
               <figure className="space-y-2">
                 <div className="overflow-hidden rounded-xl border border-border/40 bg-muted/30">
-                  <img
+                  <LessonImage
                     src={section.image}
                     alt={section.imageAlt ?? section.title}
                     className="mx-auto h-auto w-full max-w-2xl cursor-pointer object-contain p-2"
-                    loading="lazy"
                     onClick={() => {
                       setViewerImage(section.image!);
                       setViewerAlt(section.imageAlt ?? section.title);
@@ -194,6 +201,6 @@ export default function MachineTopicDetailPage() {
         isOpen={Boolean(viewerImage)}
         onClose={() => setViewerImage(null)}
       />
-    </div>
+    </MobileLayout>
   );
 }

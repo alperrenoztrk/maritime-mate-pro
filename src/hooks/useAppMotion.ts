@@ -12,6 +12,16 @@ import { useSyncExternalStore } from "react";
 
 const QUERY = "(prefers-reduced-motion: reduce)";
 
+/** JS equivalents of the CSS --motion-* tokens (Framer uses seconds). */
+export const MOTION_SECONDS = {
+  press: 0.12,
+  control: 0.2,
+  page: 0.36,
+  sheet: 0.38,
+} as const;
+
+export const MOTION_EASE_OUT: [number, number, number, number] = [0.32, 0.72, 0, 1];
+
 const getMediaQuery = (): MediaQueryList | null => {
   if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
     return null;
