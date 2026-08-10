@@ -397,7 +397,6 @@ export type Database = {
           retry_after_sec: number
         }[]
       }
-      has_sufficient_aal: { Args: never; Returns: boolean }
       prune_rate_limits: { Args: { p_older_than?: string }; Returns: number }
     }
     Enums: {
