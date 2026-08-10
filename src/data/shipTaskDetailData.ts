@@ -755,7 +755,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
       { step: 4, title: "Kayıt tutma", description: "Cargo watch log tutulur: saatlik durum, olaylar, hasar tespiti." },
     ],
     responsibilities: [
-      { role: "3/O – 4/O", duties: "Cargo watch nöbeti tutar." },
+      { role: "3/O", duties: "Cargo watch nöbeti tutar." },
       { role: "C/O", duties: "Cargo watch düzenini belirler, denetler." },
     ],
     regulations: [
@@ -1119,7 +1119,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
     responsibilities: [
       { role: "Master (CSO görevlisi)", duties: "Gemide güvenliğin nihai sorumlusu." },
       { role: "SSO (Ship Security Officer)", duties: "ISPS uygulamalarını koordine eder. Genellikle bir zabit görevlendirilir." },
-      { role: "3/O – 4/O", duties: "Gangway güvenlik nöbeti." },
+      { role: "3/O", duties: "Gangway güvenlik nöbeti." },
     ],
     regulations: [
       "SOLAS Bölüm XI-2 – Deniz güvenliği",
@@ -1149,7 +1149,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
       { step: 4, title: "Şüpheli durum", description: "Şüpheli kişi, paket veya davranış tespit edildiğinde SSO ve Master bilgilendirilir." },
     ],
     responsibilities: [
-      { role: "3/O – 4/O", duties: "Security watch nöbeti tutar." },
+      { role: "3/O", duties: "Security watch nöbeti tutar." },
       { role: "AB", duties: "Gangway nöbeti." },
       { role: "SSO", duties: "Nöbet düzenini planlar ve denetler." },
     ],

@@ -251,9 +251,6 @@ export const CONTEXTUAL_CORRECTIONS = {
   'İkinci Zabit (Second Officer / Navigation Officer), gemideki seyir planlamasının (passage planning / voyage planning) baş sorumlusudur. Berth-to-berth mantığıyla; appraisal, planning, execution ve monitoring olmak üzere dört aşamadan oluşan planı hazırlar, kaptan onayına sunar ve köprüüstü ekibinin uygulamasını izler. Bu bölüm; rota seçimi, waypoint belirleme, UKC (Under Keel Clearance) hesabı, no-go area tespiti, contingency anchorage ve abort point belirleme, parallel indexing ve squat gibi unsurları IMO Resolution A.893(21) çerçevesinde adım adım açıklar.': {
     en: "The Second Officer (Navigation Officer) is the officer primarily in charge of passage planning / voyage planning on the ship. With berth-to-berth logic, he prepares the plan consisting of four stages — appraisal, planning, execution and monitoring — submits it for the master's approval and monitors the bridge team's implementation. This section explains step by step elements such as route selection, waypoint determination, UKC (Under Keel Clearance) calculation, no-go area identification, contingency anchorage and abort point determination, parallel indexing and squat within the framework of IMO Resolution A.893(21).",
   },
-  "1.2 Dördüncü Zabit'in gözetim altındaki rolü": {
-    en: "1.2 The Fourth Officer's supervised role",
-  },
 
   // ── Crew ratings: Silici = Wiper (not "Eraser") ────────────────────────────
   "1.2 Silici'nin sorumluluk alanı": { en: "1.2 The Wiper's area of responsibility" },

@@ -33,7 +33,7 @@ interface CategorySection {
 
 const bridgeNavigationTasks: TaskRow[] = [
   { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O", href: "/passage-plan" },
-  { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O – 4/O", slug: "vardiya-tutma" },
+  { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O", slug: "vardiya-tutma" },
   { task: "Radar / ARPA takibi", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "radar-arpa-takibi" },
   { task: "COLREG uygulama", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "colreg-uygulama" },
   { task: "Kaptanı çağırma kararı", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "kaptani-cagirma-karari" },
@@ -60,7 +60,7 @@ const cargoTasks: TaskRow[] = [
   { task: "Loading / Discharging", responsible: "Chief Officer", worker: "3/O", slug: "loading-discharging" },
   { task: "Draft survey", responsible: "C/O", worker: "3/O", slug: "draft-survey" },
   { task: "Tank sounding", responsible: "C/O", worker: "3/O", slug: "tank-sounding" },
-  { task: "Cargo watch", responsible: "3/O – 4/O", worker: "3/O", slug: "cargo-watch" },
+  { task: "Cargo watch", responsible: "C/O", worker: "3/O", slug: "cargo-watch" },
   { task: "Mooring / unmooring", responsible: "Master", worker: "2/O–3/O", slug: "mooring-unmooring" },
   { task: "Hatch cover operasyonu", responsible: "C/O", worker: "Bosun", slug: "hatch-cover-operasyonu" },
   { task: "Cargo damage takibi", responsible: "C/O", worker: "3/O", slug: "cargo-damage-takibi" },
@@ -75,7 +75,7 @@ const safetyTasks: TaskRow[] = [
   { task: "Muster list", responsible: "Master", slug: "muster-list" },
   { task: "ISM kayıtları", responsible: "Master + C/O", slug: "ism-kayitlari" },
   { task: "ISPS (güvenlik)", responsible: "Master", slug: "isps-guvenlik" },
-  { task: "Security watch", responsible: "3/O – 4/O", slug: "security-watch" },
+  { task: "Security watch", responsible: "3/O", slug: "security-watch" },
 ];
 
 const maintenanceTasks: TaskRow[] = [

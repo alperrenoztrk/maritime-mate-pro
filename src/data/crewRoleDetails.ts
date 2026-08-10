@@ -212,7 +212,7 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       },
       {
         title: "Emniyet ekipmanlarının yönetimi",
-        description: `LSA (can kurtarma) ve FFE (yangınla mücadele) ekipmanlarının envanter kontrolü, bakım takibi, servis tarihlerinin izlenmesi ve kayıtların tutulması. Fiili sorumluluğu bazen 3. veya 4. Zabite devreder ancak nihayetinde tüm emniyet ekipmanlarından Birinci Zabit sorumludur. Drill organizasyonu, muster list güncellemeleri ve familiarization bu paketin parçasıdır.`
+        description: `LSA (can kurtarma) ve FFE (yangınla mücadele) ekipmanlarının envanter kontrolü, bakım takibi, servis tarihlerinin izlenmesi ve kayıtların tutulması. Fiili sorumluluğu bazen 3. Zabite devreder ancak nihayetinde tüm emniyet ekipmanlarından Birinci Zabit sorumludur. Drill organizasyonu, muster list güncellemeleri ve familiarization bu paketin parçasıdır.`
       },
       {
         title: "Çalışma izinleri (PTW) ve iş güvenliği",
@@ -800,116 +800,6 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       "Fixed CO2 sisteminde eksik bilgi, yanlış salım kadar tehlikelidir — remote shutdown ve ventilation stop prosedürleri bilinmelidir.",
       "Fire door wedge ile açık tutulması 'ufak kusur' gibi görünür ama yangında duman yayılmasını engelleyen sistemi devre dışı bırakır.",
       "Hydrant dolabı pasla kilitlenmiş olabilir — yaşlı gemilerde bu çok yaygındır ve acil durumda dakikalar kaybettirir."
-    ]
-  },
-
-  "dorduncu-zabit": {
-    slug: "dorduncu-zabit",
-    intro: `Dördüncü Zabit, güverte departmanının en kıdemsiz zabiti olup her gemide bulunması zorunlu değildir; ancak bulunduğu gemilerde köprüüstü vardiyası, emniyet ekipman kontrolleri ve yük operasyonlarına destek görevlerini üstlenir. Eğitim sürecinin tamamlanması ve tecrübe kazanılması açısından kritik bir dönemdir. STCW kapsamında bağımsız vardiya tutabilmek için gerekli yetkinlik sertifikasına sahip olmalıdır.`,
-    tasks: [
-      {
-        title: "Köprüüstü vardiyası (00-04 / 12-16)",
-        description: `Kaptan veya C/O gözetiminde bağımsız vardiya tutar. Radar, ECDIS ve ARPA kullanarak trafik değerlendirmesi yapar, pozisyon doğrulaması gerçekleştirir ve logbook kayıtlarını tutar. COLREG'e uygun seyir sürdürür; kritik durumlarda (yakın mesafe, sınırlı görüş, yoğun trafik) üst zabiti derhal çağırır. Vardiya teslim-devir prosedürlerini eksiksiz uygular.`
-      },
-      {
-        title: "Emniyet ekipman kontrolleri (LSA/FFE destek)",
-        description: `Üçüncü Zabit'e (Safety Officer) destek olarak lifejacket, lifebuoy, yangın dolapları, hortumlar ve portatif yangın söndürücülerin haftalık görsel kontrollerini yapar. Kontrol sonuçlarını kayıt altına alır, eksik veya arızalı ekipmanı raporlar. Muster list uygulamalarına ve drill hazırlıklarına aktif katılım sağlar.`
-      },
-      {
-        title: "Harita ve yayın düzeltmelerine destek",
-        description: `İkinci Zabit gözetiminde Notices to Mariners takibi, harita düzeltmeleri ve ECDIS güncelleme kontrollerine destek verir. T&P Notice'ların işlenmesi, folio listelerinin hazırlanması ve yayın envanterinin güncellenmesi görevlerine katkıda bulunur.`
-      },
-      {
-        title: "Limanda güverte nöbeti (gangway watch)",
-        description: `Limanda gemiye giriş-çıkış kontrolü, ISPS güvenlik seviyesi gerekliliklerinin uygulanması, ziyaretçi kaydı, yük operasyonu sırasında güverte gözetimi ve acil duruma hazırlık. Gangway watchman olarak geminin güvenliğinden sorumludur.`
-      },
-      {
-        title: "Yük operasyonlarında destek",
-        description: `Birinci Zabit koordinasyonunda yükleme/boşaltma gözetimi, tank sounding'leri, draft okuma ve cargo tally tutma. Hatch cover açma/kapama operasyonlarına katılım ve lashing/securing kontrollerine destek.`
-      },
-      {
-        title: "Bağlama ve manevra operasyonlarına katılım",
-        description: `Yanaşma ve kalkma operasyonlarında belirlenen istasyonda (forward veya aft) görev alır. Halat/tel kullanımı, winch operasyonu ve güvenli çalışma pratiklerini öğrenir. Snap-back zone bilinci ve ekip koordinasyonu pratiği kazanır.`
-      },
-      {
-        title: "Sistem ve prosedür öğrenimi",
-        description: `Köprüüstü cihazları (ECDIS, radar, AIS, GMDSS), emniyet prosedürleri (ISM, ISPS, SOPEP), yük operasyon prosedürleri ve güverte bakım sistemleri hakkında pratik bilgi kazanır. Training record book'unu güncel tutar.`
-      },
-      {
-        title: "Kayıt ve dokümantasyon desteği",
-        description: `Deck logbook girişlerine destek, seyir kayıtlarının düzenlenmesi, emniyet kontrol formlarının doldurulması ve drill raporlarının hazırlanmasına katkı. Doğru kayıt tutma alışkanlığını bu dönemde kazanır.`
-      },
-      {
-        title: "Cargo hold inspection ve hazırlık desteği",
-        description: `Yükleme öncesi cargo hold inspection'a katılır: hold cleanliness, bilge well temizliği, hatch coaming/cover bütünlüğü, hold ladder güvenliği ve light fixture kontrolleri. Hold preparation standartlarına (washed, swept, hospital clean, grain clean) göre temizlik düzeyinin doğrulanmasına destek verir. Önceki yük artığı (taint risk) ve kötü koku riskinin raporlanması.`
-      },
-      {
-        title: "GMDSS distress drill ve haberleşme testlerine katılım",
-        description: `İkinci Zabit'in liderliğinde haftalık VHF DSC test, aylık MF/HF DSC test ve abandon ship drill'inde portable VHF kullanımına katılım. Pyrotechnics tatbikat (expired flare) atışlarında güvenlik perimetresi kurulumu. EPIRB ve SART self-test gözlemi ve eğitim alımı.`
-      },
-      {
-        title: "Loglogbook ve seyir kayıtlarına eksiksiz katılım",
-        description: `Bridge logbook girdileri (saat başı pozisyon, hava verisi, traffic, vessel movements), compass error observation, course alteration ve özel olayların doğru ve okunaklı kaydedilmesi. Vardiya devir-teslimde önceki/sonraki zabitle kontrol listesi paylaşımı ve eksiksiz handover.`
-      }
-    ],
-    equipment: [
-      {
-        title: "Köprüüstü seyir cihazları (kullanım ve öğrenim)",
-        checkpoints: [
-          "ECDIS — temel operasyon, route monitoring, alarm ayarları",
-          "Radar/ARPA — target tracking, guard zone, rain/sea clutter ayarı",
-          "AIS — target bilgi okuma, CPA/TCPA değerlendirmesi",
-          "Gyro ve magnetic compass — error kontrolü, heading karşılaştırması",
-          "VHF — Ch 16 dinleme, trafik iletişimi",
-          "Echo sounder ve speed log — okuma ve doğrulama"
-        ]
-      },
-      {
-        title: "Haftalık kontrol sorumluluğundaki emniyet ekipmanları",
-        checkpoints: [
-          "Can yelekleri — konum, sayı, ışık ve düdük kontrolü",
-          "Can simitleri — ışık, duman işareti, retro tape durumu",
-          "Portatif yangın söndürücüler — basınç, pin/seal, korozyon",
-          "Yangın hortum dolapları — hortum, nozzle, hydrant durumu",
-          "Kaçış yolu aydınlatması ve işaretlemeleri"
-        ]
-      },
-      {
-        title: "Yük operasyon destek ekipmanları",
-        checkpoints: [
-          "Sounding tape (UTI/MMC) — tape durumu, paste",
-          "Draft mark spotting — dürbün, ışık, gözlem konumu",
-          "Cargo hold ladder ve light — güvenli erişim",
-          "Hatch cover greasing pompası ve gres stokları",
-          "Tally counter ve cargo notebook"
-        ]
-      },
-      {
-        title: "Yangın & emniyet ekipmanları (haftalık tur)",
-        checkpoints: [
-          "Fire station signage ve photoluminescent markings",
-          "Escape route — engelleyici malzeme yok",
-          "EEBD lockerları — mühür, expiry",
-          "Lifebuoy light/smoke — bracket release",
-          "Muster list okunaklığı ve last update tarihi"
-        ]
-      },
-      {
-        title: "GMDSS ve haberleşme (öğrenim odaklı)",
-        checkpoints: [
-          "Portable VHF (3 adet) — battery şarj seviyesi",
-          "EPIRB float-free arrangement görsel kontrolü",
-          "SART konum ve grab bag içeriği",
-          "Distress button bracket ve cover bütünlüğü"
-        ]
-      }
-    ],
-    coreSummary: "Dördüncü Zabitin ana görevi, gözetim altında bağımsız vardiya tutarak seyir ve emniyet yetkinliğini geliştirmek, emniyet ekipman kontrollerine destek vermek ve güverte operasyonlarını pratik olarak öğrenmektir.",
-    criticalNotes: [
-      "En kıdemsiz zabit olarak en önemli beceri 'ne zaman üst zabiti çağıracağını bilmek'tir — geç kalınan bir çağrı, erken yapılan bir çağrıdan çok daha tehlikelidir.",
-      "Vardiya teslim-devir sırasında eksik veya yanlış bilgi aktarımı, bir sonraki vardiyada kazaya zemin hazırlar.",
-      "Gangway watch sırasında ISPS güvenlik ihlali (yetkisiz giriş, kontrol edilmemiş ziyaretçi) doğrudan ciddi bulgudur.",
-      "Training record book güncel tutulmazsa sertifika yenileme sürecinde sorun yaşanır."
     ]
   },
 
