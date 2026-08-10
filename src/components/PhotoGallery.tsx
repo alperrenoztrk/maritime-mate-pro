@@ -91,10 +91,10 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
                 loading="lazy"
                 width={1024}
                 height={576}
-                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-48 w-full object-cover transition-transform duration-sheet group-hover:scale-105"
               />
               <span
-                className="pointer-events-none absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1 text-micro font-medium text-foreground opacity-0 backdrop-blur transition-opacity group-hover:opacity-100"
+                className="pointer-events-none absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1 text-micro font-medium text-foreground opacity-0 transition-opacity group-hover:opacity-100"
                 aria-hidden="true"
               >
                 <ZoomIn className="h-3 w-3" /> Büyüt
@@ -121,7 +121,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
           role="dialog"
           aria-modal="true"
           aria-label={active.title}
-          className="fixed inset-0 z-[100] flex flex-col bg-background/95 backdrop-blur"
+          className="fixed inset-0 z-[100] flex flex-col bg-background/95"
           onClick={close}
         >
           <div className="flex items-center justify-between border-b border-border/40 px-4 py-3">

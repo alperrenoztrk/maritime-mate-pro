@@ -154,7 +154,7 @@ const MoonPhases = () => {
         </div>
 
         {/* Moon Phase Display */}
-        <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border-2 border-white/20 shadow-2xl max-w-md w-full">
+        <div className="bg-white/10 rounded-3xl p-12 border-2 border-white/20 shadow-2xl max-w-md w-full">
           <div className="mb-6">
             <MoonPhaseVisual phasePosition={moonPhase.position} />
           </div>
@@ -172,7 +172,7 @@ const MoonPhases = () => {
           {/* Progress bar */}
           <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
             <div
-              className="bg-gradient-to-r from-blue-400 to-purple-500 h-full rounded-full transition-all duration-1000"
+              className="bg-gradient-to-r from-blue-400 to-purple-500 h-full rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-page"
               style={{ width: `${moonPhase.percentage}%` }}
             />
           </div>

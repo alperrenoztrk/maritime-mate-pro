@@ -85,7 +85,7 @@ const meteorologyFormulas = [
 
 export default function MeteorologyFormulasPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="min-h-screen">
       <div className="container mx-auto p-6 space-y-6">
         <div className="flex items-center justify-end">
           <div className="text-sm text-muted-foreground flex items-center gap-2">

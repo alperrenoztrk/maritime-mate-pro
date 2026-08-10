@@ -24,38 +24,38 @@ export function PageHeader({
   return (
     <div
       className={cn(
-        "flex items-start justify-between gap-4",
-        isCompact ? "py-2" : "py-1",
+        "flex items-center justify-between gap-4",
+        isCompact ? "py-1" : "py-2",
         className
       )}
     >
-      <div className="flex items-start gap-3">
-        <div className={cn("space-y-1", isCompact ? "" : "pt-1")}>
-          <div className="flex items-center gap-3">
-            {Icon ? (
-              <Icon
-                className={cn(
-                  isCompact ? "h-6 w-6" : "h-10 w-10",
-                  "text-sky-600 dark:text-sky-400",
-                  iconClassName
-                )}
-              />
-            ) : null}
+      <div className="flex min-w-0 items-center gap-3">
+        {Icon ? (
+          <span
+            aria-hidden
+            className={cn(
+              "surface-2 grid shrink-0 place-items-center rounded-xl border text-primary",
+              isCompact ? "h-10 w-10" : "h-11 w-11",
+            )}
+          >
+            <Icon
+              className={cn(isCompact ? "h-5 w-5" : "h-6 w-6", iconClassName)}
+            />
+          </span>
+        ) : null}
 
-            <h1
-              className={cn(
-                isCompact ? "text-lg" : "text-3xl sm:text-4xl",
-                "font-bold bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent"
-              )}
-            >
-              {title}
-            </h1>
-          </div>
-        </div>
+        <h1
+          data-page-title
+          className={cn(
+            isCompact ? "text-lg" : "text-3xl sm:text-4xl",
+            "min-w-0 text-balance font-bold leading-tight tracking-[-0.025em] text-foreground",
+          )}
+        >
+          {title}
+        </h1>
       </div>
 
-      {actions ? <div className="shrink-0">{actions}</div> : null}
+      {actions ? <div className="flex min-h-11 shrink-0 items-center">{actions}</div> : null}
     </div>
   );
 }
-

@@ -42,7 +42,7 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
           <Icon className="h-7 w-7" strokeWidth={2} />
         </div>
         <div className="flex-1">
-          <p className="text-[17px] font-semibold leading-snug text-slate-100">{title}</p>
+          <p className="text-lg font-semibold leading-snug text-slate-100">{title}</p>
         </div>
       </div>
       {formulaMeta && (
@@ -74,7 +74,7 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
   );
 
   const sharedClassName = cn(
-    "group block w-full max-w-[26rem] rounded-ios border border-slate-800/70 bg-slate-950/70 p-4 shadow-[0_14px_40px_rgba(47,91,255,0.18)] transition-all duration-200 backdrop-blur",
+    "group block w-full max-w-[26rem] rounded-ios border border-slate-800/70 bg-slate-950/70 p-4 shadow-[0_14px_40px_rgba(47,91,255,0.18)] transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-control",
     disabled
       ? "pointer-events-none opacity-60"
       : "hover:-translate-y-0.5 hover:shadow-[0_18px_46px_rgba(47,91,255,0.22)]",
@@ -124,7 +124,7 @@ export function CalculationGridScreen({ title, eyebrow, items, children }: Calcu
           {eyebrow && (
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-400/80">{eyebrow}</p>
           )}
-          <h1 className="text-3xl font-black leading-tight text-slate-50 sm:text-4xl md:text-[34px]">{title}</h1>
+          <h1 className="text-3xl font-black leading-tight text-slate-50 sm:text-4xl md:text-4xl">{title}</h1>
         </header>
 
         {children ?? <CalculationGrid items={items ?? []} />}

@@ -102,7 +102,7 @@ export default function BetaPscChecklist() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-24 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))] dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]"
+      className="relative min-h-screen overflow-hidden px-4 pb-24 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))]"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-amber-500/10 blur-3xl" />
@@ -154,7 +154,7 @@ export default function BetaPscChecklist() {
             </div>
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-muted">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-600 transition-all"
+                className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-600 transition-[background-color,color,border-color,box-shadow,opacity,transform,width]"
                 style={{ width: `${progressPct}%` }}
               />
             </div>

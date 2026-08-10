@@ -261,7 +261,7 @@ export default function BetaDocumentTracker() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 py-12 dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]">
+      <div className="min-h-screen px-4 py-12">
         <div className="mx-auto max-w-md rounded-3xl border border-border/60 bg-card/95 p-7 text-center shadow-xl">
           <LockKeyhole className="mx-auto h-11 w-11 text-amber-500" />
           <h1 className="mt-4 text-xl font-bold">Kişisel belge kasası</h1>
@@ -277,7 +277,7 @@ export default function BetaDocumentTracker() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-28 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))] dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]">
+    <div className="min-h-screen px-4 pb-28 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))]">
       <div className="mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-2">
           <div className="flex flex-wrap items-start justify-between gap-3">

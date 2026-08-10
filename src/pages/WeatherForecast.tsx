@@ -87,7 +87,7 @@ export default function WeatherForecast() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-card p-4">
+    <div className="min-h-screen p-4">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -144,7 +144,7 @@ export default function WeatherForecast() {
           <div className="grid gap-4">
             {data.daily.map((day, index) => (
               <div key={day.date}>
-                <Card className={`border-border/20 shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer ${index === 0 ? 'ring-2 ring-primary/20' : ''}`}>
+                <Card className={`border-border/20 shadow-lg transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-page hover:shadow-xl cursor-pointer ${index === 0 ? 'ring-2 ring-primary/20' : ''}`}>
                   <CardContent className="p-6" onClick={() => handleDayClick(day.date)}>
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
                       {/* Date & Weather */}
@@ -226,7 +226,7 @@ export default function WeatherForecast() {
 
                 {/* Hourly Forecast */}
                 {expandedDay === day.date && (
-                  <Card className="border-border/20 shadow-lg mt-2 animate-in slide-in-from-top-5 duration-300">
+                  <Card className="border-border/20 shadow-lg mt-2 animate-in slide-in-from-top-5 duration-page">
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center gap-2 text-lg">
                         <Clock className="h-5 w-5 text-primary" />

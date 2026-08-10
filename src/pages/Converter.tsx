@@ -107,7 +107,7 @@ function ConverterSection({ cat }: { cat: typeof CATEGORIES[0] }) {
   };
 
   return (
-    <Card className="border-border/30 bg-card/60 backdrop-blur-sm">
+    <Card className="border-border/30 bg-card/60">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <cat.icon className="h-4 w-4 text-primary" />

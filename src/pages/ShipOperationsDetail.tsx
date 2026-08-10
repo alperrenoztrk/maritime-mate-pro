@@ -28,7 +28,7 @@ export default function ShipOperationsDetail() {
       backLabel="Gemi operasyonları kitaplığına dön"
       maxWidth="max-w-5xl"
     >
-      <section className="overflow-hidden rounded-3xl border border-white/20 bg-card/75 shadow-lg backdrop-blur">
+      <section className="overflow-hidden rounded-3xl border border-white/20 bg-card/75 shadow-lg">
         <div className="grid grid-cols-2 gap-1 p-1.5">
           {ship.departments.map((department) => {
             const active = department.id === activeDepartment;
@@ -61,7 +61,7 @@ export default function ShipOperationsDetail() {
             <Link
               key={`${activeDepartment}-${operation.title}`}
               to={`/ship-operations/${shipType}/${activeDepartment}/${index}`}
-              className="flex items-center gap-3 overflow-hidden rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:bg-muted/40"
+              className="flex items-center gap-3 overflow-hidden rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm transition hover:bg-muted/40"
             >
               <span
                 className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${ship.color} text-sm font-bold text-white`}

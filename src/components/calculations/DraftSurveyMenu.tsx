@@ -80,7 +80,7 @@ const DraftSurveyMenu = () => {
           return (
             <Card 
               key={index} 
-              className={`${calc.color} border-0 transition-all duration-200 hover:scale-105 cursor-pointer`}
+              className={`${calc.color} border-0 transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-control hover:scale-105 cursor-pointer`}
               onClick={() => navigate(calc.path)}
             >
               <CardHeader className="pb-3">

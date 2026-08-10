@@ -24,6 +24,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import engineRoomImg from "@/assets/maritime/engine-room.jpg";
+import { MOTION_SECONDS } from "@/hooks/useAppMotion";
 
 /* ───── types ───── */
 interface MachineSystem {
@@ -194,7 +195,7 @@ function SystemCard({ system }: { system: MachineSystem }) {
   return (
     <motion.div
       whileHover={{ y: -4 }}
-      className="group relative flex flex-col gap-3 rounded-xl border border-border/50 bg-card/80 p-4 shadow-sm backdrop-blur transition-colors hover:border-primary/40 hover:shadow-md"
+      className="group relative flex flex-col gap-3 rounded-xl border border-border/50 bg-card/80 p-4 shadow-sm transition-colors hover:border-primary/40 hover:shadow-md"
     >
       <div className="flex items-center gap-3">
         <span className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${system.color} text-white shadow-md`}>
@@ -217,7 +218,7 @@ function SystemCard({ system }: { system: MachineSystem }) {
 
 function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div className="rounded-xl border border-border/50 bg-card/80 shadow-sm backdrop-blur transition-colors hover:border-primary/30">
+    <div className="rounded-xl border border-border/50 bg-card/80 shadow-sm transition-colors hover:border-primary/30">
       <button
         onClick={onToggle}
         className="flex w-full items-center gap-3 p-4 text-left"
@@ -233,7 +234,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
             <span className="flex items-center gap-1"><Fuel className="h-3 w-3" aria-hidden /> {engine.fuel}</span>
           </div>
         </div>
-        <ChevronDown className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+        <ChevronDown className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-page ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       <AnimatePresence>
@@ -242,7 +243,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: MOTION_SECONDS.page }}
             className="overflow-hidden"
           >
             <div className="border-t border-border/40 px-4 pb-4 pt-3 space-y-3">
@@ -288,7 +289,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
 /* ───── comparison table ───── */
 function ComparisonTable() {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border/50 bg-card/80 shadow-sm backdrop-blur">
+    <div className="overflow-x-auto rounded-xl border border-border/50 bg-card/80 shadow-sm">
       <table className="w-full text-micro">
         <thead>
           <tr className="border-b border-border/50 bg-muted/30">
@@ -328,7 +329,7 @@ export default function MachineryHubPage() {
   const [openEngine, setOpenEngine] = useState<number | null>(null);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,5%)] dark:via-[hsl(220,50%,7%)] dark:to-[hsl(220,50%,9%)]">
+    <div className="relative min-h-screen">
       {/* ── Hero ── */}
       <div className="relative h-56 sm:h-64 overflow-hidden">
         <img
@@ -341,9 +342,9 @@ export default function MachineryHubPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: MOTION_SECONDS.page }}
           >
-            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-micro font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-micro font-bold uppercase tracking-[0.2em] text-white">
               <Cog className="h-3 w-3" /> Makine Bölümü
             </div>
             <h1 className="text-2xl font-bold text-white drop-shadow-lg sm:text-3xl">
@@ -411,7 +412,7 @@ export default function MachineryHubPage() {
             <Link
               key={link.to}
               to={link.to}
-              className="group flex items-center gap-3 rounded-xl border border-border/50 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+              className="group flex items-center gap-3 rounded-xl border border-border/50 bg-card/80 p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <link.icon className="h-5 w-5" />

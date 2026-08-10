@@ -432,7 +432,7 @@ const MaritimeNews = () => {
                             {illustrated.has(it.link) ? (
                               <PrintedPhoto item={it} size="small" className="mb-1.5 block aspect-[3/2] w-full" />
                             ) : null}
-                            <h3 className="gz-headline text-[13px] leading-[1.16]">{it.title}</h3>
+                            <h3 className="gz-headline text-sm leading-[1.16]">{it.title}</h3>
                             {stripHtml(it.summary) ? (
                               <p
                                 className="gz-just mt-1 line-clamp-4 text-micro leading-[1.45]"

@@ -27,7 +27,7 @@ export default function CrewRoleDetailPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 pb-24 py-10 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
+    <div className="relative min-h-screen px-4 pb-24 py-10">
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute left-10 top-10 h-36 w-36 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-20 right-16 h-44 w-44 rounded-full bg-indigo-500/10 blur-3xl" />
@@ -35,7 +35,7 @@ export default function CrewRoleDetailPage() {
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
         {/* Header Card */}
-        <div className="rounded-2xl border border-border/60 bg-card/80 p-6 shadow-xl backdrop-blur dark:border-border/40 dark:bg-slate-900/70">
+        <div className="rounded-2xl border border-border/60 bg-card/80 p-6 shadow-xl dark:border-border/40 dark:bg-slate-900/70">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Rol Detayı</p>
@@ -68,7 +68,7 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
   return (
     <>
       {/* Intro Card */}
-      <div className="rounded-2xl border border-border/50 bg-card/80 p-5 shadow-md backdrop-blur dark:bg-slate-900/60">
+      <div className="rounded-2xl border border-border/50 bg-card/80 p-5 shadow-md dark:bg-slate-900/60">
         <div className="mb-3 flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow">
             <Anchor className="h-4.5 w-4.5" />
@@ -116,7 +116,7 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
 
       {/* Tasks Section */}
       {activeTab === "tasks" && (
-        <div className="rounded-2xl border border-border/50 bg-card/80 p-4 shadow-md backdrop-blur dark:bg-slate-900/60">
+        <div className="rounded-2xl border border-border/50 bg-card/80 p-4 shadow-md dark:bg-slate-900/60">
           <div className="mb-4 flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow">
               <ShieldCheck className="h-5 w-5" />
@@ -160,7 +160,7 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
 
       {/* Equipment Section */}
       {activeTab === "equipment" && (
-        <div className="rounded-2xl border border-border/50 bg-card/80 p-4 shadow-md backdrop-blur dark:bg-slate-900/60">
+        <div className="rounded-2xl border border-border/50 bg-card/80 p-4 shadow-md dark:bg-slate-900/60">
           <div className="mb-4 flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow">
               <Wrench className="h-5 w-5" />

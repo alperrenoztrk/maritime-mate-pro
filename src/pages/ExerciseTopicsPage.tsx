@@ -23,7 +23,7 @@ export default function ExerciseTopicsPage() {
     `/exercises/${categoryId}/topics/${encodeURIComponent(topicId)}`;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 py-8 pb-24 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="relative min-h-screen overflow-hidden px-4 py-8 pb-24">
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
         <header className="text-center">
           <div className="flex items-center justify-center gap-3">

@@ -105,7 +105,7 @@ export function CourseQuiz({
         </header>
 
         {!finished ? (
-          <Card className="border-border/60 bg-card/85 backdrop-blur-sm">
+          <Card className="border-border/60 bg-card/85">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg">Soru</CardTitle>
@@ -121,7 +121,7 @@ export function CourseQuiz({
                     key={index}
                     onClick={() => handleAnswer(index)}
                     disabled={answered}
-                    className={`w-full rounded-xl p-4 text-left transition-all ${
+                    className={`w-full rounded-xl p-4 text-left transition-[background-color,color,border-color,box-shadow,opacity,transform,width] ${
                       answered
                         ? index === question.correctAnswer
                           ? "border-2 border-emerald-500 bg-emerald-100 dark:bg-emerald-900/30"
@@ -165,7 +165,7 @@ export function CourseQuiz({
             </CardContent>
           </Card>
         ) : (
-          <Card className="border-border/60 bg-card/85 text-center backdrop-blur-sm">
+          <Card className="border-border/60 bg-card/85 text-center">
             <CardContent className="space-y-6 pb-8 pt-8">
               <Trophy className="mx-auto h-16 w-16 text-amber-500" />
               <h2 className="text-2xl font-bold text-foreground">Alıştırma Tamamlandı</h2>

@@ -157,7 +157,7 @@ function ArticleRenderer({ content }: { content: string }) {
           return (
             <h3
               key={i}
-              className="mb-1.5 mt-5 border-b pb-1 text-[13px] font-bold uppercase tracking-[.12em]"
+              className="mb-1.5 mt-5 border-b pb-1 text-sm font-bold uppercase tracking-[.12em]"
               style={{
                 color: "var(--gz-ink)",
                 borderColor: "var(--gz-rule)",
@@ -256,7 +256,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
               >
                 <span>Sayfa {innerPageNo(item?.link)}</span>
                 <span
-                  className="notranslate text-[17px] leading-none"
+                  className="notranslate text-lg leading-none"
                   translate="no"
                   lang="en"
                   style={{ color: "var(--gz-ink)", fontFamily: "var(--gz-face-mast)" }}

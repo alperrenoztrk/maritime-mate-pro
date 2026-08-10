@@ -31,7 +31,7 @@ export function CourseRulesList({ groups }: { groups: RuleGroup[] }) {
             </p>
           )}
           {category.rules.map((rule, rIdx) => (
-            <Card key={rIdx} className="bg-card/80 backdrop-blur border-border/40">
+            <Card key={rIdx} className="bg-card/80 border-border/40">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-semibold">{rule.subtitle}</CardTitle>
               </CardHeader>

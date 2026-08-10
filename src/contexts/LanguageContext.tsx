@@ -363,12 +363,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     const { allowLive = true } = options;
 
-    // Make sure the language's static pack is in memory BEFORE resolving.
-    // Route-change mutations can fire before the pack finishes loading on a
-    // fresh boot; without this await those strings would fall through to the
-    // live translator (wasted requests) and the generic result could then be
-    // cached over the curated pack translation.
-    await loadStaticDictionary(languageCode);
+    // Warm the full offline dictionary without making the current route wait
+    // for an 8–10 MB download + JSON parse. Already-cached entries apply below;
+    // missing strings are translated as one small page batch and persisted.
+    // The dictionary continues loading for later routes/offline use.
+    void loadStaticDictionary(languageCode);
     if (translationRunIdRef.current !== runId) return;
 
     const bySource = new Map<string, Array<(t: string) => void>>();
@@ -459,7 +458,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         return;
       }
 
-      await loadStaticDictionary(languageCode);
+      void loadStaticDictionary(languageCode);
       if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
 
       // Read the run id after the dictionary await. The provider's initial page
@@ -830,13 +829,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const runId = ++translationRunIdRef.current;
     const language = currentLanguage;
     ensureObserver();
-    void (async () => {
-      await loadStaticDictionary(language);
-      if (translationRunIdRef.current !== runId) return;
-      // Always allow live fetches so the full page (body content included) is
-      // translated, not just the strings present in the small static pack.
-      void translatePage(language, runId, { allowLive: true });
-    })();
+    // Start the large offline pack in parallel; first paint depends only on the
+    // current route's compact batched translation, never the whole-app JSON.
+    void loadStaticDictionary(language);
+    void translatePage(language, runId, { allowLive: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLanguage, isLoading]);
 

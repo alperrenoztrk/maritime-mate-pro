@@ -158,7 +158,7 @@ export default function MachineTopicQuizPage() {
   const selectableCounts = Array.from(new Set([5, maxCount].filter(n => n <= maxCount))).sort((a, b) => a - b);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="min-h-screen">
       <div className="container mx-auto p-4 space-y-4 max-w-4xl">
         <Card>
           <CardHeader>

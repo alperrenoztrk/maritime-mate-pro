@@ -3301,7 +3301,7 @@ export default function StabilityTopicsPage() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-screen overflow-hidden"
     >
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">
@@ -3312,7 +3312,7 @@ export default function StabilityTopicsPage() {
 
       <div className="relative z-10">
         {/* Header */}
-        <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
+        <div className="relative z-40 bg-background/95 border-b border-border">
           <div className="px-4 py-4">
             <div className="flex items-center gap-3 max-w-4xl mx-auto">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
@@ -3334,7 +3334,7 @@ export default function StabilityTopicsPage() {
                   <AccordionItem
                     key={topic.id}
                     value={topic.id}
-                    className="border border-border/40 rounded-xl overflow-hidden bg-card/80 backdrop-blur"
+                    className="border border-border/40 rounded-xl overflow-hidden bg-card/80"
                   >
                     <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
                       <div className="flex items-center gap-3 text-left">
@@ -3373,7 +3373,7 @@ export default function StabilityTopicsPage() {
             </Accordion>
 
             {/* Quick Links */}
-            <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur mt-6">
+            <section className="rounded-2xl border border-border/40 bg-card/80 p-6 mt-6">
               <div className="mb-4 flex items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-primary" />
                 <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
@@ -3386,7 +3386,7 @@ export default function StabilityTopicsPage() {
                   <Link
                     key={index}
                     to={resource.href}
-                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
+                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-[background-color,color,border-color,box-shadow,opacity,transform,width] hover:border-primary/40 hover:bg-background"
                   >
                     <div className="flex items-center gap-2">
                       <FileText className="h-4 w-4 text-muted-foreground" />
@@ -3411,7 +3411,7 @@ export default function StabilityTopicsPage() {
             className="fixed inset-0 z-50 bg-background"
           >
             {/* Modal Header */}
-            <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border">
+            <div className="relative z-10 bg-background/95 border-b border-border">
               <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto">
                 <h2 className="text-lg font-bold text-foreground truncate pr-4">
                   {currentContent.title}

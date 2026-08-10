@@ -6,8 +6,10 @@ import {
   createRouteTranslationToken,
   isRouteTranslationReady,
 } from "@/utils/routeTranslation";
+import { MOTION_SECONDS, useReducedMotion } from "@/hooks/useAppMotion";
 
 export const RouteTranslationGate = () => {
+  const reducedMotion = useReducedMotion();
   const location = useLocation();
   const { currentLanguage, readyRouteTranslation } = useLanguage();
   const routeToken = createRouteTranslationToken(
@@ -35,11 +37,11 @@ export const RouteTranslationGate = () => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.08 }}
+          transition={{ duration: MOTION_SECONDS.press }}
         >
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 2.5 }}
+            animate={reducedMotion ? undefined : { rotate: 360 }}
+            transition={reducedMotion ? undefined : { repeat: Infinity, ease: "linear", duration: 2.5 }}
           >
             <ShipWheel className="h-12 w-12 text-primary" />
           </motion.div>

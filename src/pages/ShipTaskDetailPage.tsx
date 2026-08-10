@@ -17,7 +17,7 @@ export default function ShipTaskDetailPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="relative min-h-screen overflow-hidden px-4 py-8">
       {/* Background blurs */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
@@ -28,14 +28,14 @@ export default function ShipTaskDetailPage() {
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-6">
         {/* Header */}
         <header className="space-y-3 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground backdrop-blur">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
             {task.categoryIcon} {task.category}
           </div>
           <h1 className="text-2xl font-bold text-foreground">{task.title}</h1>
         </header>
 
         {/* Definition & Importance */}
-        <section className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm backdrop-blur">
+        <section className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm font-bold text-foreground">
               <BookOpen className="h-4 w-4 text-primary" />
@@ -53,7 +53,7 @@ export default function ShipTaskDetailPage() {
         </section>
 
         {/* Procedures */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm backdrop-blur">
+        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <ClipboardCheck className="h-4 w-4 text-primary" />
             Prosedür Adımları
@@ -74,7 +74,7 @@ export default function ShipTaskDetailPage() {
         </section>
 
         {/* Responsibility Matrix */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm backdrop-blur">
+        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <Users className="h-4 w-4 text-primary" />
             Sorumluluk Matrisi
@@ -100,7 +100,7 @@ export default function ShipTaskDetailPage() {
         </section>
 
         {/* Regulations */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm backdrop-blur">
+        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <Scale className="h-4 w-4 text-primary" />
             İlgili Mevzuat
@@ -116,7 +116,7 @@ export default function ShipTaskDetailPage() {
         </section>
 
         {/* Checklist */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm backdrop-blur">
+        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <ClipboardCheck className="h-4 w-4 text-primary" />
             Kontrol Listesi
@@ -142,7 +142,7 @@ export default function ShipTaskDetailPage() {
         </section>
 
         {/* Practical Tip */}
-        <section className="rounded-2xl border border-amber-500/30 bg-amber-50/50 p-5 shadow-sm backdrop-blur dark:border-amber-500/20 dark:bg-amber-950/20">
+        <section className="rounded-2xl border border-amber-500/30 bg-amber-50/50 p-5 shadow-sm dark:border-amber-500/20 dark:bg-amber-950/20">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground mb-2">
             <Lightbulb className="h-4 w-4 text-amber-500" />
             Pratik İpucu

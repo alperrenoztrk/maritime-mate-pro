@@ -29,7 +29,7 @@ export function FormulaList({
             {items.map((f) => {
               const hasCalc = typeof f.calculate === "function";
               return (
-                <Card key={f.id} className="bg-card/80 backdrop-blur border-border/40">
+                <Card key={f.id} className="bg-card/80 border-border/40">
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between gap-2">
                       <CardTitle className="text-sm font-semibold">{f.name}</CardTitle>

@@ -6,6 +6,7 @@ import {
   createRouteTranslationToken,
   isRouteTranslationReady,
 } from "@/utils/routeTranslation";
+import { isAppPageImmersive } from "@/lib/appChrome";
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -43,6 +44,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
     routeTranslationToken,
     readyRouteTranslation,
   );
+  const shellMode = isAppPageImmersive(location.pathname) ? "immersive" : "standard";
 
   // <ScrollToTop> already resets the offset the moment the route changes, but
   // AnimatePresence runs in "wait" mode: the incoming page only mounts once
@@ -68,8 +70,9 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
   return (
     <div
       ref={rootRef}
-      className={`page-transition-shell w-full ${translationReady ? "" : "invisible"}`}
+      className={`page-transition-shell app-page-shell app-page-shell--${shellMode} w-full ${translationReady ? "" : "invisible"}`}
       data-page-path={location.pathname}
+      data-page-shell={shellMode}
       data-mt-route-pending={translationReady ? undefined : ""}
       aria-busy={!translationReady}
     >

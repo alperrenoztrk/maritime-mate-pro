@@ -28,8 +28,9 @@ import { RouteSkeleton } from "@/components/state/AppState";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { AdsController } from "@/components/ads/AdsController";
-import { prefersReducedMotion } from "@/hooks/useAppMotion";
+import { MOTION_EASE_OUT, MOTION_SECONDS, prefersReducedMotion } from "@/hooks/useAppMotion";
 import { isAppChromeHidden } from "@/lib/appChrome";
+import { captureRoutePreview } from "@/lib/navigationPreview";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -252,6 +253,22 @@ const AnimatedRoutes = () => {
   // animation in this same commit. useMemo keeps it to one call per route.
   useMemo(() => recordNavigation(location.pathname), [location.pathname]);
 
+  // Keep an inert snapshot of the settled route. EdgeSwipeBack reveals this
+  // exact previous screen while the current route follows the user's finger.
+  // The delay avoids cloning loading skeletons and route-enter transforms.
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const frame = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-route-path]"),
+      ).find((element) => element.dataset.routePath === location.pathname);
+      captureRoutePreview(
+        location.pathname,
+        frame?.querySelector<HTMLElement>(".interactive-page-surface") ?? null,
+      );
+    }, 480);
+    return () => window.clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
     <>
     <AppNavBar />
@@ -272,6 +289,7 @@ const AnimatedRoutes = () => {
       <motion.div
         key={location.pathname}
         className="route-presence-frame min-h-[100svh] w-full"
+        data-route-path={location.pathname}
         data-app-navbar={location.pathname !== "/" && !isAppChromeHidden(location.pathname)}
         initial="initial"
         animate="animate"
@@ -279,8 +297,8 @@ const AnimatedRoutes = () => {
         variants={routeFrameVariants}
         transition={
           prefersReducedMotion()
-            ? { duration: 0.12, ease: "linear" }
-            : { duration: 0.36, ease: [0.32, 0.72, 0, 1] }
+            ? { duration: MOTION_SECONDS.press, ease: "linear" }
+            : { duration: MOTION_SECONDS.page, ease: MOTION_EASE_OUT }
         }
       >
         <div className="interactive-page-surface min-h-[100svh] w-full">

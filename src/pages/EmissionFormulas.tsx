@@ -123,7 +123,7 @@ const formulas = [
 
 export default function EmissionFormulas() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 -left-32 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
@@ -148,7 +148,7 @@ export default function EmissionFormulas() {
               </h2>
               <div className="grid gap-4">
                 {category.items.map((item, iIndex) => (
-                  <Card key={iIndex} className="border-border/60 bg-card/85 backdrop-blur-sm">
+                  <Card key={iIndex} className="border-border/60 bg-card/85">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-lg text-foreground">{item.name}</CardTitle>
                     </CardHeader>

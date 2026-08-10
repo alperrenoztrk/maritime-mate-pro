@@ -128,7 +128,7 @@ function ToolBook({
           event.stopPropagation();
           onFavorite();
         }}
-        className="absolute right-3 top-3 z-20 rounded-full bg-black/30 p-2 text-white backdrop-blur transition hover:bg-black/50"
+        className="absolute right-3 top-3 z-20 rounded-full bg-black/30 p-2 text-white transition hover:bg-black/50"
       >
         <Star className={`h-4 w-4 ${favorite ? "fill-amber-400 text-amber-400" : "text-white"}`} />
       </button>
