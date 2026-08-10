@@ -77,7 +77,11 @@ test('sentinels survive engine reshaping and transliteration', () => {
   // Case drift, an inserted space, and the Cyrillic transliteration Ukrainian returns.
   assert.equal(unmaskProtectedTokens('Manövern och Tkn0 backup', slots), 'Manövern och DP backup');
   assert.equal(unmaskProtectedTokens('Backup TKN 0', slots), 'Backup DP');
+  // The engine has returned the index as the letter O rather than a zero.
+  assert.equal(unmaskProtectedTokens('KM = TKNO + BM', slots), 'KM = DP + BM');
   assert.equal(unmaskProtectedTokens('Маневр і ТКН0', slots), 'Маневр і DP');
+  // Hindi spells the sentinel's letters out in Devanagari.
+  assert.equal(unmaskProtectedTokens('1.1 सर्वेक्षण, टीकेएन0, ध्वज', slots), '1.1 सर्वेक्षण, DP, ध्वज');
 });
 
 test('an unresolvable result is rejected so no sentinel can leak into the UI', () => {

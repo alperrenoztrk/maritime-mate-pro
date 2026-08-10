@@ -160,6 +160,7 @@ export const PROTECTED_TOKENS: ProtectedToken[] = [
   // so the symbol reading is unambiguous here — keep it that way when authoring.
   { token: 'KB' },
   { token: 'BM' },
+  { token: 'KM' },
   { token: 'LCG' },
   { token: 'VCG' },
   { token: 'TCG' },
@@ -219,18 +220,35 @@ const sentinel = (index: number): string => `${SENTINEL_PREFIX}${index}`;
 /**
  * Restoration is deliberately lenient about what came back: some engines change
  * the sentinel's case, insert a space before the index, or transliterate the
- * letters into the target script (Ukrainian returns "ТКН0" in Cyrillic). Any of
- * those still identifies the slot unambiguously.
+ * letters into the target script — Ukrainian returns "ТКН0" in Cyrillic and
+ * Hindi spells the letters out in Devanagari as "टीकेएन0". Any of those still
+ * identifies the slot unambiguously.
+ *
+ * Missing a transliteration is not a correctness bug but it is expensive: the
+ * caller then re-translates the string unprotected, which is exactly how "PSC"
+ * became "पीएससी" across 567 Hindi entries before this form was covered.
  */
-const SENTINEL_RE =
-  /[TtТтΤτ]\s?[KkКкΚκ]\s?[NnНнΝν]\s?([0-9٠-٩۰-۹]{1,3})/gu;
+const SENTINEL_RE = new RegExp(
+  '(?:' +
+    [
+      // Latin, Cyrillic and Greek letters that look like T-K-N.
+      String.raw`[TtТтΤτ]\s?[KkКкΚκ]\s?[NnНнΝν]`,
+      // Devanagari spelling of the letter names ("ṭī-ke-en").
+      String.raw`टी\s?के\s?एन`,
+    ].join('|') +
+    ')' +
+    // The index tolerates the letters engines confuse with digits — "TKN0" has
+    // come back as "TKNO" — and the Arabic-Indic digit forms.
+    String.raw`\s?([0-9OolI٠-٩۰-۹]{1,3})`,
+  'gu'
+);
 
-// Arabic-Indic digits, should the engine localise the index.
-const toLatinDigits = (value: string): string =>
-  value.replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660)).replace(
-    /[۰-۹]/g,
-    (d) => String(d.charCodeAt(0) - 0x06f0)
-  );
+const normalizeIndex = (value: string): string =>
+  value
+    .replace(/[Oo]/g, '0')
+    .replace(/[lI]/g, '1')
+    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+    .replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0));
 
 const escapeRegExp = (value: string): string =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -434,7 +452,7 @@ export const unmaskProtectedTokens = (
 
   SENTINEL_RE.lastIndex = 0;
   const out = translated.replace(SENTINEL_RE, (whole: string, rawIndex: string) => {
-    const index = Number(toLatinDigits(rawIndex));
+    const index = Number(normalizeIndex(rawIndex));
     const slot = slots[index];
     if (slot === undefined) {
       failed = true;

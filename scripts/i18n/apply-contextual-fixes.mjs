@@ -13,6 +13,7 @@
  *
  * Run whenever the glossary or the corrections file changes:
  *   npm run i18n:fix
+ *   npm run i18n:fix -- --lang=de,fr    # limit to some languages
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -30,7 +31,12 @@ import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 const repoRoot = process.cwd();
 const OUT_DIR = path.join(repoRoot, 'public/locales');
 
-const files = fs.readdirSync(OUT_DIR).filter((f) => f.endsWith('.json'));
+const langArg = process.argv.slice(2).find((a) => a.startsWith('--lang='));
+const onlyLangs = langArg ? langArg.slice('--lang='.length).split(',').map((s) => s.trim()) : null;
+const files = fs
+  .readdirSync(OUT_DIR)
+  .filter((f) => f.endsWith('.json'))
+  .filter((f) => !onlyLangs || onlyLangs.includes(f.replace(/\.json$/, '')));
 let grandTotal = 0;
 
 for (const file of files) {
