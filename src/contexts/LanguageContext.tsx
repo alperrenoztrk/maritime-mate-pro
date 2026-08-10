@@ -518,9 +518,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         console.warn('Route translation exceeded its responsiveness budget.');
       }
 
-      if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
+      // Never leave a route unresolved: PageTransition keeps the subtree
+      // invisible and RouteTranslationGate keeps a full-screen blocker on top
+      // until this token is marked ready. A disconnected root or a language
+      // switch mid-flight is not a reason to freeze the UI — as long as this
+      // is still the route the user is looking at, release it.
       if (latestRouteTranslationTokenRef.current !== routeToken) return;
       completeRouteTranslation(routeToken);
+
     })();
 
     routeTranslationPromisesRef.current.set(routeToken, { root, promise: task });
