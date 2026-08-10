@@ -25,7 +25,6 @@ import { AppNavBar } from "@/components/AppNavBar";
 import { EdgeSwipeBack } from "@/components/EdgeSwipeBack";
 import { RouteSkeleton } from "@/components/state/AppState";
 import { GlobalSearch } from "@/components/GlobalSearch";
-import { ProRoute } from "@/components/pro/ProRoute";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { AdsController } from "@/components/ads/AdsController";
 
@@ -253,7 +252,7 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/:topicKey/formulas" element={<PageTransition><CourseFormulasPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/calculations" element={<PageTransition><CourseCalculationsPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/rules" element={<Navigate to="../topics" relative="path" replace />} />
-        <Route path="/lessons/:topicKey/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><CourseQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/lessons/:topicKey/quiz" element={<PageTransition><CourseQuizPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
         {/* Alıştırmalar — orijinal /lessons route'larına dokunulmadan eklendi */}
@@ -274,9 +273,9 @@ const AnimatedRoutes = () => {
         <Route path="/crew/:roleSlug/task/:taskIndex" element={<PageTransition><CrewTaskDeepDive /></PageTransition>} />
         <Route path="/bridge/:deviceId" element={<PageTransition><BridgeDeviceDetailPage /></PageTransition>} />
         <Route path="/passage-plan" element={<PageTransition><PassagePlanPage /></PageTransition>} />
-        <Route path="/ship-systems" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemsPage /></PageTransition></ProRoute>} />
-        <Route path="/ship-systems/:sectionId" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemDetailPage /></PageTransition></ProRoute>} />
-        <Route path="/ship-systems/:sectionId/:topicIndex" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemDeepDive /></PageTransition></ProRoute>} />
+        <Route path="/ship-systems" element={<PageTransition><ShipSystemsPage /></PageTransition>} />
+        <Route path="/ship-systems/:sectionId" element={<PageTransition><ShipSystemDetailPage /></PageTransition>} />
+        <Route path="/ship-systems/:sectionId/:topicIndex" element={<PageTransition><ShipSystemDeepDive /></PageTransition>} />
 
         <Route path="/calculations/:categoryId/:sectionId" element={<PageTransition><CalculationSectionPage /></PageTransition>} />
         {/* Stability sub-routes */}
@@ -298,7 +297,7 @@ const AnimatedRoutes = () => {
         <Route path="/stability/practical/fwa" element={<PageTransition><StabilityPracticalFWAPage /></PageTransition>} />
         <Route path="/stability/practical/ghm" element={<PageTransition><StabilityPracticalGHMPage /></PageTransition>} />
 
-        <Route path="/stability/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><StabilityQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/stability/quiz" element={<PageTransition><StabilityQuizPage /></PageTransition>} />
         <Route path="/stability/shearing-bending" element={<PageTransition><StabilityShearingBendingPage /></PageTransition>} />
         <Route path="/stability/grain-calculation" element={<PageTransition><StabilityGrainCalculationPage /></PageTransition>} />
         <Route path="/stability/gz-curve" element={<PageTransition><StabilityGZCurvePage /></PageTransition>} />
@@ -320,11 +319,11 @@ const AnimatedRoutes = () => {
 
         <Route path="/cargo/rules" element={<Navigate to="/lessons/cargo/topics" replace />} />
         <Route path="/cargo/assistant" element={<PageTransition><CargoAssistantPage /></PageTransition>} />
-        <Route path="/cargo/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><CargoQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/cargo/quiz" element={<PageTransition><CargoQuizPage /></PageTransition>} />
         <Route path="/meteorology/formulas" element={<PageTransition><MeteorologyFormulasPage /></PageTransition>} />
         <Route path="/meteorology/rules" element={<Navigate to="/lessons/meteorology/topics" replace />} />
         <Route path="/meteorology/assistant" element={<PageTransition><MeteorologyAssistantPage /></PageTransition>} />
-        <Route path="/meteorology/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MeteorologyQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/meteorology/quiz" element={<PageTransition><MeteorologyQuizPage /></PageTransition>} />
         <Route path="/communication/assistant" element={<PageTransition><CommunicationAssistantPage /></PageTransition>} />
         <Route path="/communication/flags" element={<PageTransition><SignalFlagsPage /></PageTransition>} />
         <Route path="/communication/morse" element={<PageTransition><MorseCodePage /></PageTransition>} />
@@ -339,7 +338,7 @@ const AnimatedRoutes = () => {
         <Route path="/environment/formulas" element={<PageTransition><EmissionFormulas /></PageTransition>} />
         <Route path="/environment/rules" element={<Navigate to="/lessons/environment/topics" replace />} />
         <Route path="/environment/assistant" element={<PageTransition><EmissionAssistant /></PageTransition>} />
-        <Route path="/environment/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><EmissionQuiz /></PageTransition></ProRoute>} />
+        <Route path="/environment/quiz" element={<PageTransition><EmissionQuiz /></PageTransition>} />
         <Route path="/solas/regulations" element={<PageTransition><SOLASRegulationsPage /></PageTransition>} />
         <Route path="/solas/certificates" element={<PageTransition><SOLASCertificatesPage /></PageTransition>} />
         <Route path="/solas/ship-requirements" element={<PageTransition><SOLASShipRequirementsPage /></PageTransition>} />
@@ -353,18 +352,18 @@ const AnimatedRoutes = () => {
         <Route path="/seamanship/formulas" element={<PageTransition><SeamanshipFormulasPage /></PageTransition>} />
         <Route path="/seamanship/rules" element={<Navigate to="/lessons/seamanship/topics" replace />} />
         <Route path="/seamanship/assistant" element={<PageTransition><SeamanshipAssistantPage /></PageTransition>} />
-        <Route path="/seamanship/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><SeamanshipQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/seamanship/quiz" element={<PageTransition><SeamanshipQuizPage /></PageTransition>} />
 
         <Route path="/safety/formulas" element={<PageTransition><SafetyFormulasPage /></PageTransition>} />
         <Route path="/safety/rules" element={<Navigate to="/lessons/safety/topics" replace />} />
         <Route path="/safety/assistant" element={<PageTransition><SafetyAssistantPage /></PageTransition>} />
-        <Route path="/safety/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><SafetyQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/safety/quiz" element={<PageTransition><SafetyQuizPage /></PageTransition>} />
 
         <Route path="/machine/calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
         <Route path="/machine/formulas" element={<PageTransition><MachineFormulasPage /></PageTransition>} />
         <Route path="/machine/rules" element={<Navigate to="/lessons?library=machine" replace />} />
         <Route path="/machine/assistant" element={<PageTransition><MachineAssistantPage /></PageTransition>} />
-        <Route path="/machine/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MachineQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/machine/quiz" element={<PageTransition><MachineQuizPage /></PageTransition>} />
         {/* Machine topic sub-routes */}
         <Route path="/machine/:topicSlug/topics" element={<PageTransition><MachineTopicLessonsPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/calculations" element={<PageTransition><MachineTopicCalculationsPage /></PageTransition>} />
@@ -372,7 +371,7 @@ const AnimatedRoutes = () => {
         <Route path="/machine/:topicSlug/rules" element={<Navigate to="../topics" relative="path" replace />} />
         <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/topics/:subTopicTitle" element={<PageTransition><MachineTopicDetailPage /></PageTransition>} />
-        <Route path="/machine/:topicSlug/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MachineTopicQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/machine/:topicSlug/quiz" element={<PageTransition><MachineTopicQuizPage /></PageTransition>} />
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />
         <Route path="/navigation/tide-tutorial" element={<PageTransition><TideCalculationTutorial /></PageTransition>} />
@@ -384,10 +383,10 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
         
         <Route path="/navigation/assistant" element={<PageTransition><NavigationAssistantPage /></PageTransition>} />
-        <Route path="/navigation/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><NavigationQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/navigation/quiz" element={<PageTransition><NavigationQuizPage /></PageTransition>} />
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
         <Route path="/economics/assistant" element={<PageTransition><EconomicsAssistantPage /></PageTransition>} />
-        <Route path="/economics/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><EconomicsQuizPage /></PageTransition></ProRoute>} />
+        <Route path="/economics/quiz" element={<PageTransition><EconomicsQuizPage /></PageTransition>} />
         <Route path="/empty-page" element={<PageTransition><EmptyPage /></PageTransition>} />
         <Route path="/moon-phases" element={<PageTransition><MoonPhases /></PageTransition>} />
         <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
