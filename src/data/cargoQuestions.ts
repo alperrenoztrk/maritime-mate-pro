@@ -14,12 +14,12 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 2,
     question: "IMSBC Koduna göre TML (Transportable Moisture Limit) ne anlama gelir?",
     options: [
-      "Kargonun maksimum taşıma sıcaklığı",
       "Kargonun güvenli taşınabilir nem limiti",
       "Kargonun toplam ağırlık limiti",
-      "Kargonun yoğunluk sınırı"
+      "Kargonun yoğunluk sınırı",
+      "Kargonun maksimum taşıma sıcaklığı"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "TML, sıvılaşma (liquefaction) riski olmadan güvenle taşınabilecek azami nem içeriğidir.",
     category: "IMSBC"
   },
@@ -35,20 +35,20 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 4,
     question: "Draft survey'de birinci trim düzeltmesi (First Trim Correction) ne için yapılır?",
     options: [
-      "Yoğunluk farkını düzeltmek için",
-      "LCF konumundan dolayı orta draft/deplasman farkını düzeltmek için",
-      "Sıcaklık etkisini düzeltmek için",
-      "Rüzgar etkisini düzeltmek için"
+      "LCF konumundan doğan deplasman farkı için",
+      "Ambar sıcaklık etkisini düzeltmek için",
+      "Güverte rüzgâr etkisini düzeltmek için",
+      "Deniz suyu yoğunluk farkını düzeltmek için"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Trim varken LCF nedeniyle AP/FP draftlarından elde edilen orta draft doğrudan LCF draftını temsil etmez; birinci düzeltme bunu ele alır.",
     category: "Draft Survey"
   },
   {
     id: 5,
     question: "VGM (Verified Gross Mass) hangi tür yükler için zorunludur?",
-    options: ["Sadece tehlikeli maddeler", "Tüm konteynerler", "Sadece dökme yükler", "Sadece sıvı kargolar"],
-    correctAnswer: 1,
+    options: ["Tüm konteynerler", "Sadece dökme yükler", "Sadece sıvı kargolar", "Sadece tehlikeli maddeler"],
+    correctAnswer: 0,
     explanation: "SOLAS gereği gemiye yüklenen tüm konteynerler için VGM beyanı zorunludur.",
     category: "Konteyner"
   },
@@ -76,8 +76,8 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 8,
     question: "IMSBC Kodundaki Grup A kargolar için en önemli risk nedir?",
-    options: ["Patlama riski", "Sıvılaşma riski", "Zehirlenme riski", "Yanma riski"],
-    correctAnswer: 1,
+    options: ["Sıvılaşma riski", "Zehirlenme riski", "Yanma riski", "Patlama riski"],
+    correctAnswer: 0,
     explanation: "Grup A kargolar sıvılaşabilir; TML/FMP kontrolleri bu yüzden kritiktir.",
     category: "IMSBC"
   },
@@ -92,8 +92,8 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 10,
     question: "Konteyner elleçlemede 'twist-lock' temel olarak ne işe yarar?",
-    options: ["Yükün soğutulması", "Konteynerlerin birbirine/şasiye kilitlenmesi", "Konteyner tartımı", "Kapı mühürleme"],
-    correctAnswer: 1,
+    options: ["Konteynerlerin birbirine kilitlenmesi", "Konteynerin brüt ağırlığının tartılması", "Konteyner kapılarının mühürlenmesi", "Konteyner içindeki yükün soğutulması"],
+    correctAnswer: 0,
     explanation: "Twist-lock, konteyner köşe dökümlerini kilitleyerek istif emniyetini sağlar.",
     category: "Konteyner"
   },
@@ -108,8 +108,8 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 12,
     question: "IMDG Code'a göre Sınıf 8 aşağıdakilerden hangisidir?",
-    options: ["Zehirli maddeler", "Aşındırıcı maddeler", "Organik peroksitler", "Oksitleyiciler"],
-    correctAnswer: 1,
+    options: ["Oksitleyiciler", "Zehirli maddeler", "Aşındırıcı maddeler", "Organik peroksitler"],
+    correctAnswer: 2,
     explanation: "IMDG Class 8: Corrosives.",
     category: "IMDG"
   },
@@ -117,9 +117,9 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 13,
     question: "Draft survey'de 'mark correction' (işaret düzeltmesi) neden yapılır?",
     options: [
-      "Draft marklarının gemi boyuna göre konumundan kaynaklı düzeltme için",
+      "Draft marklarının konumundan doğan düzeltme",
       "Deniz suyu sıcaklığını düzeltmek için",
-      "Rüzgâr basıncını düzeltmek için",
+      "Güverteye gelen rüzgâr basıncını düzeltmek için",
       "Kargonun yoğunluğunu düzeltmek için"
     ],
     correctAnswer: 0,
@@ -145,15 +145,15 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 16,
     question: "Bilge suyu (bilge) discharge'ında OWS (15 ppm) alarmı devreye girerse doğru aksiyon hangisidir?",
-    options: ["Deşarja devam etmek", "Deşarjı durdurmak ve sistemi kontrol etmek", "OWS'i bypass etmek", "Sadece kaydı silmek"],
-    correctAnswer: 1,
+    options: ["Deşarjı durdurup sistemi kontrol etmek", "OWS'yi geçici olarak bypass etmek", "Alarm kaydını jurnalden silmek", "Deşarja aynı debiyle devam etmek"],
+    correctAnswer: 0,
     explanation: "15 ppm üstü alarmda deşarj durdurulur; ekipman arızası/yanlış işletim araştırılır.",
     category: "Operasyon"
   },
   {
     id: 17,
     question: "Bulk kargolarda 'angle of repose' neyi etkiler?",
-    options: ["Kargonun gemide kayma eğilimi/istif stabilitesi", "Kargonun pH değeri", "Kargonun ısıl iletkenliği", "Kargonun konteyner ihtiyacı"],
+    options: ["Kargonun kayma eğilimi ve istif emniyeti", "Kargonun pH değeri ve asitliği", "Kargonun ısıl iletkenlik katsayısı", "Kargonun konteyner ihtiyacı miktarı"],
     correctAnswer: 0,
     explanation: "Angle of repose, dökme kargonun eğimde ne kadar kaymadan durabildiğini gösterir; kayma riskini etkiler.",
     category: "IMSBC"
@@ -161,64 +161,64 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 18,
     question: "Tahıl taşımada 'shifting board' temel amacı nedir?",
-    options: ["Havalandırma", "Kargonun yanlara kaymasını sınırlamak", "Ambar kapak sızdırmazlığı", "Yükleme hızını artırmak"],
-    correctAnswer: 1,
+    options: ["Yükleme hızını belirgin biçimde artırmak", "Ambar içi havalandırmayı sağlamak", "Kargonun yanlara kaymasını sınırlamak", "Ambar kapağı sızdırmazlığını artırmak"],
+    correctAnswer: 2,
     explanation: "Shifting board, grain shift riskini azaltmak için ambar içinde bölme/engel görevi görür.",
     category: "Grain"
   },
   {
     id: 19,
     question: "Konteynerlerin SOLAS VGM doğrulamasında iki yaygın yöntem hangileridir?",
-    options: ["Sıcaklık ölçümü + hacim ölçümü", "Tartım + kalibrasyon", "Yöntem 1 (brüt tartım) + Yöntem 2 (bileşen hesap) ", "Sadece liman beyanı"],
-    correctAnswer: 2,
+    options: ["Yöntem 1 brüt tartım, Yöntem 2 hesap", "Kalibrasyonlu kantar ile göz kararı ölçüm", "Yalnızca liman idaresinin beyanı", "Sıcaklık ölçümü ile hacim ölçümü"],
+    correctAnswer: 0,
     explanation: "Method 1: konteynerin brüt tartımı; Method 2: içerik/ambalaj/tara üzerinden hesap.",
     category: "Konteyner"
   },
   {
     id: 20,
     question: "Hatch cover cleat/locking kontrolü en kritik olarak neyi azaltır?",
-    options: ["Trim", "Su girişi ve yük hasarı riskini", "Yakıt tüketimini", "Kargo sıcaklığını"],
-    correctAnswer: 1,
+    options: ["Ambar içindeki kargonun sıcaklığını azaltır", "Trim ve draft farkını azaltır", "Su girişi ve yük hasarı riskini azaltır", "Sefer yakıt tüketimini azaltır"],
+    correctAnswer: 2,
     explanation: "Ambar kapak emniyeti, heavy weather'da su girişini ve cargo wetting riskini azaltır.",
     category: "Operasyon"
   },
   {
     id: 21,
     question: "Bill of Lading (B/L) için en doğru ifade hangisidir?",
-    options: ["Sadece sigorta poliçesidir", "Taşıma sözleşmesi kanıtı ve makbuz/temsil belgesidir", "Sadece gümrük beyannamesidir", "Kaptanın şahsi notudur"],
-    correctAnswer: 1,
+    options: ["Taşıma sözleşmesi kanıtı ve makbuzdur", "Yalnızca bir gümrük beyannamesi belgesidir", "Kaptanın şahsi seyir notudur", "Yalnızca bir sigorta poliçesidir"],
+    correctAnswer: 0,
     explanation: "B/L: receipt + evidence of contract + document of title (çoğu durumda).",
     category: "Dokümantasyon"
   },
   {
     id: 22,
     question: "IMSBC Koduna göre Group B kargoların genel özelliği nedir?",
-    options: ["Sıvılaşabilir", "Kimyasal tehlike taşır", "Hiç risk taşımaz", "Sadece tahıldır"],
-    correctAnswer: 1,
+    options: ["Sadece tahıldır", "Sıvılaşabilir", "Kimyasal tehlike taşır", "Hiç risk taşımaz"],
+    correctAnswer: 2,
     explanation: "Group B: chemical hazards (toxic, corrosive, etc.).",
     category: "IMSBC"
   },
   {
     id: 23,
     question: "Kargo planlamasında 'segregation' ilkeleri en çok ne için kullanılır?",
-    options: ["Kargonun hızını artırmak", "Uyuşmayan kargoları ayırarak tehlikeyi azaltmak", "Draftı düşürmek", "Yakıt tasarrufu"],
-    correctAnswer: 1,
+    options: ["Uyuşmayan kargoları ayırmak için", "Geminin draftını düşürmek için", "Sefer yakıt tüketimini azaltmak için", "Kargo elleçleme hızını artırmak için"],
+    correctAnswer: 0,
     explanation: "Özellikle IMDG/tehlikeli yüklerde, uyumsuzlukları ayırmak reaksiyon/yangın riskini azaltır.",
     category: "Planlama"
   },
   {
     id: 24,
     question: "Reefer konteynerlerde en sık kritik kontrol hangisidir?",
-    options: ["Kapı rengi", "Setpoint ve havalandırma/airflow ayarları", "Konteyner numarası uzunluğu", "Twist-lock markası"],
-    correctAnswer: 1,
+    options: ["Twist-lock üreticisinin marka bilgisi", "Konteyner kapı rengi ve etiketi", "Setpoint ve havalandırma ayarları", "Konteyner numarasının uzunluğu"],
+    correctAnswer: 2,
     explanation: "Reefer setpoint, pulp temperature, ventilation ve power bağlantısı kargonun bozulmasını önler.",
     category: "Konteyner"
   },
   {
     id: 25,
     question: "Dökme yükte 'trimming' işlemi neden yapılır?",
-    options: ["Kargoyu tek tarafa yığmak için", "Kargo yüzeyini düzleyerek stabilite ve yük emniyetini artırmak için", "Kargoyu ıslatmak için", "Sadece fotoğraf için"],
-    correctAnswer: 1,
+    options: ["Yüzeyi düzleyip stabiliteyi artırmak", "Kargo yüzeyini ıslatmak için", "Yalnızca kayıt fotoğrafı için", "Kargoyu tek tarafa yığmak için"],
+    correctAnswer: 0,
     explanation: "Trimming, boşlukları azaltır, kayma riskini düşürür ve ambar içi yük dağılımını iyileştirir.",
     category: "Operasyon"
   },
@@ -226,20 +226,20 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 26,
     question: "Broken stowage (kayıp istif) terimi neyi ifade eder?",
     options: [
-      "Kargonun bozulması",
-      "Kargo aralarında kullanılamayan, boşa giden hacim",
-      "Hasarlı kargo miktarı",
-      "Yanlış manifesto"
+      "Yanlış düzenlenmiş yük manifestosu",
+      "Kargonun sefer sırasında bozulması",
+      "Kargo aralarında boşa giden hacim",
+      "Hasar görmüş kargonun miktarı"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Broken stowage, ambar şekli ve kargo biçimi nedeniyle dolu sayılamayan, kullanılamayan boş hacimdir; SF bu kayıpla artar.",
     category: "Stowage"
   },
   {
     id: 27,
     question: "Stowage factor 1.4 m³/t olan bir kargodan, broken stowage %10 ise 7000 m³'lük ambara yaklaşık kaç ton yüklenebilir?",
-    options: ["3500 ton", "4500 ton", "5000 ton", "5500 ton"],
-    correctAnswer: 1,
+    options: ["4500 ton", "5000 ton", "5500 ton", "3500 ton"],
+    correctAnswer: 0,
     explanation: "Kullanılabilir hacim = 7000 × 0.90 = 6300 m³; ağırlık = 6300 / 1.4 = 4500 ton.",
     category: "Stowage"
   },
@@ -247,20 +247,20 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 28,
     question: "CSS Code (Cargo Stowage and Securing) temel olarak neyi düzenler?",
     options: [
-      "Kargonun gümrük işlemlerini",
-      "Konteyner dışı kargoların emniyetli istif ve bağlanmasını",
-      "Yakıt ikmalini",
-      "Mürettebat vardiyalarını"
+      "Mürettebat vardiya ve dinlenme düzenini",
+      "Kargonun gümrük ve beyan işlemlerini",
+      "Konteyner dışı kargonun bağlanmasını",
+      "Gemide yakıt ikmali usul ve kayıtlarını"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "CSS Code, konteyner dışı/standart dışı kargoların güvenli istif ve lashing prensiplerini belirler.",
     category: "Lashing/CSS"
   },
   {
     id: 29,
     question: "Lashing hesaplarında MSL (Maximum Securing Load) genellikle bağlama elemanının BS'sinin (Breaking Strength) ne kadarıdır?",
-    options: ["%25", "%50", "%80", "%100"],
-    correctAnswer: 1,
+    options: ["%80", "%100", "%25", "%50"],
+    correctAnswer: 3,
     explanation: "CSS Code'a göre çoğu bağlama elemanı için MSL = BS'nin %50'si alınır.",
     category: "Lashing/CSS"
   },
@@ -268,12 +268,12 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 30,
     question: "Güverte kargolarına etki eden ağırlık ve kuvvet hesaplarında en kritik dinamik etkiler hangileridir?",
     options: [
-      "Sadece statik ağırlık",
-      "Geminin rolling, pitching ve heaving hareketlerinden doğan ivme kuvvetleri",
-      "Sadece rüzgar basıncı",
-      "Sadece gelgit"
+      "Rolling, pitching ve heaving ivmeleri",
+      "Yalnızca güverteye gelen rüzgâr basıncı",
+      "Yalnızca gelgit kaynaklı seviye değişimi",
+      "Yalnızca kargonun statik ağırlığı"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "CSS Code, rolling/pitching/heaving kaynaklı boyuna, enine ve düşey ivme kuvvetlerini lashing hesabına katar.",
     category: "Lashing/CSS"
   },
@@ -281,12 +281,12 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 31,
     question: "Draft survey'de net yük (cargo) miktarı nasıl bulunur?",
     options: [
-      "Sadece son deplasmandan",
-      "Yükleme sonrası ve öncesi deplasman farkından, constant ve sıvıların (ballast, yakıt, su) değişimi düzeltilerek",
-      "TPC × draft ile",
-      "Sadece trim ölçümünden"
+      "Yalnızca trim ölçümü üzerinden",
+      "Yalnızca son deplasman değerinden",
+      "Deplasman farkından, sıvı düzeltmesiyle",
+      "TPC ile draft çarpımı üzerinden"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Net kargo = (son net deplasman) − (ilk net deplasman); deplasmandan ballast, yakıt, su ve constant düşülür.",
     category: "Draft Survey"
   },
@@ -294,12 +294,12 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 32,
     question: "Draft survey'de okunan altı draft (forward, mid, aft / her iki bordo) ortalamasıyla bulunan 'mean of means' hesabında ortadaki drafta neden ağırlık verilir?",
     options: [
-      "Pusula hatası için",
-      "Geminin hogging/sagging deformasyonunu hesaba katmak için",
-      "Rüzgar için",
-      "Tuzluluk için"
+      "Güverte rüzgâr etkisini gidermek için",
+      "Su tuzluluk farkını gidermek için",
+      "Pusula sapma hatasını gidermek için",
+      "Hogging/sagging deformasyonu için"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Mean of means (quarter mean) yöntemi, tekne hogging/sagging eğilmesini düzelterek daha doğru orta draft verir.",
     category: "Draft Survey"
   },
@@ -307,10 +307,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 33,
     question: "IMSBC Koduna göre Grup C kargoların özelliği nedir?",
     options: [
-      "Sıvılaşabilen kargolar",
+      "Sıvılaşma eğilimi gösteren kargolar",
       "Kimyasal tehlike taşıyan kargolar",
-      "Ne sıvılaşan ne de kimyasal tehlike taşıyan kargolar",
-      "Sadece tahıl"
+      "Ne sıvılaşan ne kimyasal tehlikeli",
+      "Yalnızca tahıl grubu kargolar"
     ],
     correctAnswer: 2,
     explanation: "Grup C kargolar sıvılaşmaz ve kimyasal tehlike taşımaz (ör. demir cevheri parçaları, kömür hariç bazı mineraller).",
@@ -320,12 +320,12 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 34,
     question: "Grup A kargoda gerçek nem içeriği TML'i aşarsa ne yapılmalıdır?",
     options: [
-      "Kargo yüklenebilir",
-      "Kargo yüklenmemeli (özel olarak inşa edilmiş gemiler hariç)",
-      "Sadece daha hızlı yüklenmeli",
-      "Kargo sıcaklığı ölçülmeli"
+      "Yüklenmemeli; özel gemiler hariç",
+      "Yükleme hızı artırılarak sürdürülür",
+      "Yalnızca kargo sıcaklığı ölçülür",
+      "Kargo olağan biçimde yüklenebilir"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Nem > TML ise sıvılaşma riski yüksektir; standart gemilere yükleme yapılmamalıdır.",
     category: "IMSBC"
   },
@@ -333,12 +333,12 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 35,
     question: "Kömürün dökme taşınmasında IMSBC'ye göre başlıca iki tehlike nedir?",
     options: [
-      "Sıvılaşma ve radyasyon",
-      "Metan gazı çıkışı ve kendiliğinden ısınma/oksitlenme",
-      "Sadece koku",
-      "Sadece toz patlaması yok"
+      "Yalnızca ambar içinde toz birikmesi olması",
+      "Sıvılaşma ve radyasyon salımı",
+      "Metan çıkışı ve kendiliğinden ısınma",
+      "Yalnızca yoğun koku oluşması"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Kömür metan (yanıcı/patlayıcı) salabilir ve self-heating/oksijen tüketimi riski taşır; bazı kömürler ayrıca sıvılaşabilir.",
     category: "IMSBC"
   },
@@ -353,8 +353,8 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 37,
     question: "IMDG Code'da Sınıf 7 hangi maddeleri kapsar?",
-    options: ["Aşındırıcılar", "Radyoaktif maddeler", "Zehirli maddeler", "Yanıcı gazlar"],
-    correctAnswer: 1,
+    options: ["Zehirli maddeler", "Yanıcı gazlar", "Aşındırıcılar", "Radyoaktif maddeler"],
+    correctAnswer: 3,
     explanation: "IMDG Class 7: Radioactive material (radyoaktif maddeler).",
     category: "IMDG"
   },
@@ -362,10 +362,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 38,
     question: "IMDG tehlikeli yük taşımalarında her sevkiyatla birlikte hazırlanması gereken temel belge hangisidir?",
     options: [
-      "Charter party",
-      "Dangerous Goods Declaration (DGD) / Multimodal form",
-      "Sadece B/L",
-      "Sadece sigorta"
+      "Charter party sözleşme nüshası",
+      "Dangerous Goods Declaration formu",
+      "Yalnızca konşimento (B/L) nüshası",
+      "Yalnızca yük sigorta poliçesi"
     ],
     correctAnswer: 1,
     explanation: "IMDG, gönderici tarafından imzalanan Dangerous Goods Declaration düzenlenmesini şart koşar.",
@@ -375,10 +375,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 39,
     question: "International Grain Code'a göre 'filled compartment, trimmed' bir ambarda volumetric heeling moment hesabı neden gereklidir?",
     options: [
-      "Yakıt tüketimi için",
-      "Tahıl yüzeyinin olası kayması sonucu oluşacak heeling momentini değerlendirmek için",
-      "Draftı bulmak için",
-      "Hız hesabı için"
+      "Sefer yakıt tüketimini hesaplamak için",
+      "Tahıl kaymasından doğan momenti bulmak",
+      "Ambar draft değerini bulmak için",
+      "Sefer hız hesabını yapmak için"
     ],
     correctAnswer: 1,
     explanation: "Grain Code, ambar boşluklarındaki tahıl kayması (grain shift) kaynaklı heeling momentine karşı stabilite kriterlerini kontrol eder.",
@@ -396,10 +396,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 41,
     question: "Load line (yük hattı) markasının temel amacı nedir?",
     options: [
-      "Geminin hızını göstermek",
-      "Asgari friborda (minimum freeboard) uyarak emniyetli yükleme limitini belirlemek",
-      "Kargo türünü belirtmek",
-      "Bayrak devletini göstermek"
+      "Geminin servis hızını göstermek",
+      "Asgari friborda uyarak yükleme sınırı",
+      "Taşınan kargo türünü belirtmek",
+      "Geminin bayrak devletini ve sicilini göstermek"
     ],
     correctAnswer: 1,
     explanation: "Load Line, geminin bölge/mevsime göre izin verilen azami draftını (minimum freeboard) işaretler.",
@@ -408,7 +408,7 @@ const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 42,
     question: "Load line markasında 'TF' harfleri neyi ifade eder?",
-    options: ["Tropical Fresh water", "Total Freeboard", "Tank Full", "Trim Forward"],
+    options: ["Tropical Fresh water yük hattı", "Total Freeboard toplam fribord hattı", "Tank Full doluluk işareti", "Trim Forward denge işareti"],
     correctAnswer: 0,
     explanation: "TF: Tropical Fresh water; tropikal bölgede tatlı suda izin verilen en derin yük hattıdır.",
     category: "Load Line"
@@ -417,10 +417,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 43,
     question: "FWA (Fresh Water Allowance) neyi ifade eder?",
     options: [
-      "Tatlı sudan tuzlu suya geçişte draftta oluşan değişim miktarı",
-      "Yakıt rezervi",
-      "Ballast miktarı",
-      "Kargo nem oranı"
+      "Tatlı sudan tuzlu suya draft değişimi",
+      "Sefer için ayrılan yakıt rezervi",
+      "Alınması gereken balast miktarı",
+      "Kargodaki izin verilen nem oranı"
     ],
     correctAnswer: 0,
     explanation: "FWA, geminin tatlı su (1.000) ile deniz suyu (1.025) arasında summer draftında batma/çıkma farkıdır.",
@@ -430,10 +430,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 44,
     question: "Ro-Ro gemilerinde araçların güvertede emniyete alınmasında en kritik husus nedir?",
     options: [
-      "Araçların rengi",
-      "Lashing/bağlama noktaları ve uygun gerginlikte sabitleme",
-      "Sadece el freni",
-      "Araçların yakıt seviyesi"
+      "Araçların dış boya ve renk düzeni",
+      "Bağlama noktaları ve uygun gerginlik",
+      "Yalnızca araçların el freni konumu",
+      "Araçların depolarındaki yakıt seviyesi"
     ],
     correctAnswer: 1,
     explanation: "Ro-Ro'da araçlar deniz hareketlerine karşı uygun lashing noktalarından, yeterli sayı ve gerginlikte bağlanmalıdır.",
@@ -443,10 +443,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 45,
     question: "Tankerlerde 'ullage' ölçümü neyi ifade eder?",
     options: [
-      "Tanktaki sıvı yüksekliği",
-      "Sıvı yüzeyi ile tank tavanı arasındaki boş mesafe",
-      "Kargo sıcaklığı",
-      "Kargo yoğunluğu"
+      "Tank içindeki sıvının yüksekliği",
+      "Sıvı yüzeyi ile tank tavanı arası boşluk",
+      "Kargonun ölçülen sıcaklık değeri",
+      "Kargonun ölçülen yoğunluk değeri"
     ],
     correctAnswer: 1,
     explanation: "Ullage, tank referans noktasından sıvı yüzeyine kadar olan boş mesafedir; sounding'in tersidir.",
@@ -456,10 +456,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 46,
     question: "Ham petrol tankerlerinde Inert Gas System (IGS) ile tank atmosferi neden inertize edilir?",
     options: [
-      "Kargoyu ısıtmak için",
-      "Oksijen seviyesini düşürerek yanma/patlama riskini ortadan kaldırmak için",
-      "Kargoyu soğutmak için",
-      "Tankı temizlemek için"
+      "Yük tankındaki kargoyu ısıtmak için",
+      "Oksijeni düşürüp patlamayı önlemek için",
+      "Yük tankındaki kargoyu soğutmak için",
+      "Yük tankının iç yüzeyini temizlemek için"
     ],
     correctAnswer: 1,
     explanation: "IGS oksijeni genelde %8 (hacimce) altına indirerek tutuşmaya elverişli ortamı engeller.",
@@ -469,10 +469,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 47,
     question: "Konteyner istifinde 'reefer plug' bağlantısı yapılırken en sık atlanan kontrol hangisidir?",
     options: [
-      "Konteyner numarası",
-      "Güç beslemesinin verilmesi ve set sıcaklığının doğru girilmesi",
-      "Twist-lock markası",
-      "Kapı mührü rengi"
+      "Konteyner numarasının okunması",
+      "Güç beslemesi ve set sıcaklığı girişi",
+      "Twist-lock üreticisinin markası",
+      "Kapı mührünün rengi ve numarası"
     ],
     correctAnswer: 1,
     explanation: "Reefer'ın güce bağlanmaması veya yanlış setpoint girilmesi kargonun bozulmasına yol açar.",
@@ -482,10 +482,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 48,
     question: "Konteyner istif planında ağır konteynerlerin yerleşimi için genel kural nedir?",
     options: [
-      "En üst sıralara konur",
-      "Altta/daha aşağı sıralarda ve ağırlık merkezi düşük olacak şekilde istiflenir",
-      "Sadece baş tarafa konur",
-      "Rastgele yerleştirilir"
+      "En üst sıralara ve dış bordoya konur",
+      "Altta ve ağırlık merkezi düşük istiflenir",
+      "Yalnızca baş taraf bölmelerine konur",
+      "İstif planı gözetilmeden rastgele yerleştirilir"
     ],
     correctAnswer: 1,
     explanation: "Ağır konteynerler aşağıya konarak GM ve istif emniyeti korunur, üst sıra ağırlık limitleri aşılmaz.",
@@ -495,10 +495,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 49,
     question: "Dökme yük gemilerinde ardışık (alternate hold) yükleme planı uygulanırken en büyük risk nedir?",
     options: [
-      "Yakıt kaybı",
-      "Aşırı yerel gerilmeler (shear force/bending moment) nedeniyle tekne yapısal zorlanması",
-      "Kargo kokusu",
-      "Görüş kaybı"
+      "Sefer boyunca yakıt kaybı artışı",
+      "Aşırı yerel gerilme ve yapısal zorlanma",
+      "Ambarda yoğun kargo kokusu oluşması",
+      "Köprüüstünden ileri görüş açısının kapanması"
     ],
     correctAnswer: 1,
     explanation: "Alternatif ambar yüklemesi yüksek yoğunluklu kargoda istenir ama shear force ve bending moment limitleri dikkatle izlenmelidir.",
@@ -508,10 +508,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 50,
     question: "Tanker yüklemelerinde 'topping off' aşamasında neden çok dikkatli olunmalıdır?",
     options: [
-      "Hız artar",
-      "Aşırı dolum ve taşma (overflow/spill) riski en yüksek olduğundan akış azaltılarak kontrol edilir",
-      "Kargo soğur",
-      "Trim düzelir"
+      "Kargo pompasının debisi kendiliğinden artar",
+      "Aşırı dolum ve taşma riski en yüksektir",
+      "Kargo sıcaklığı hızla düşmeye başlar",
+      "Geminin trimi kendiliğinden düzelir"
     ],
     correctAnswer: 1,
     explanation: "Topping off'ta tank dolmak üzeredir; taşma riskini önlemek için debi düşürülür ve yakından izlenir.",
@@ -521,10 +521,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 51,
     question: "Tahıl yüklemesinde 'untrimmed ends' (trimlenmemiş uçlar) için Grain Code ne öngörür?",
     options: [
-      "Hiçbir önlem gerekmez",
-      "Boşluk açısı nedeniyle ek heeling momenti hesaba katılır",
-      "Sadece havalandırma",
-      "Sadece ek yakıt"
+      "Herhangi bir ek önlem gerekmemektedir",
+      "Boşluk açısı için ek heeling momenti",
+      "Yalnızca ek havalandırma öngörülür",
+      "Yalnızca ek yakıt rezervi öngörülür"
     ],
     correctAnswer: 1,
     explanation: "Trimlenemeyen uç bölmeler daha büyük tahıl kayma boşluğu yaratır; Grain Code bunlara artırılmış heeling momenti uygular.",
@@ -534,10 +534,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 52,
     question: "Stowage factor neden hiçbir zaman tam %100 ambar dolumunu temsil etmez?",
     options: [
-      "Çünkü kargo her zaman ıslaktır",
-      "Broken stowage (kullanılamayan boşluklar) nedeniyle gerçek dolum daima daha azdır",
-      "Çünkü TPC değişir",
-      "Çünkü gemi her zaman trimlidir"
+      "Kargo her zaman nemli olduğu için",
+      "Broken stowage nedeniyle boşluk kalır",
+      "TPC değeri drafta göre değiştiği için",
+      "Gemi her zaman trimli olduğu için"
     ],
     correctAnswer: 1,
     explanation: "Ambar şekli, kargo biçimi, dunnage ve istif düzensizlikleri broken stowage yaratır; bu yüzden teorik SF kadar tam dolum elde edilmez.",
@@ -547,10 +547,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 53,
     question: "Çuvallı (bagged) kargolarda broken stowage tipik olarak balya/sandık kargolara göre nasıldır?",
     options: [
-      "Daha yüksektir",
-      "Genellikle daha düşüktür çünkü çuvallar boşlukları doldurur",
-      "Tam olarak aynıdır",
-      "Her zaman sıfırdır"
+      "Balya ve sandığa göre daha yüksektir",
+      "Genellikle daha düşüktür; boşluk dolar",
+      "Balya ve sandıkla tam olarak aynıdır",
+      "Her koşulda sıfır olarak kabul edilmektedir"
     ],
     correctAnswer: 1,
     explanation: "Çuvallar esnek olduğundan boşluklara oturup şekil alır; bu nedenle düzgün kutulara kıyasla broken stowage daha azdır.",
@@ -560,10 +560,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 54,
     question: "CSS Code'a göre lashing hesabında kullanılan CS (Calculated Strength) kavramı nedir?",
     options: [
-      "Bağlamanın gerçek kopma yükü",
-      "MSL'ye bir güvenlik faktörü uygulanarak elde edilen, hesapta kullanılan bağlama dayanımı",
-      "Kargonun ağırlığı",
-      "Geminin GM değeri"
+      "Bağlama donanımının ölçülmüş gerçek kopma yükü",
+      "MSL'ye emniyet katsayısı uygulanmış değer",
+      "Bağlanan kargonun toplam ağırlığı",
+      "Geminin o andaki GM değeri"
     ],
     correctAnswer: 1,
     explanation: "Advanced calculation method'da CS = MSL / güvenlik faktörü (genelde 1.5) olarak alınır.",
@@ -573,10 +573,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 55,
     question: "Lashing açısı dikeyden yataya doğru arttıkça (yere yaklaştıkça) bağlamanın yana kaymaya karşı etkinliği nasıl değişir?",
     options: [
-      "Etkisiz hale gelir",
-      "Yatay (kayma önleyici) bileşeni artar, düşey bastırma bileşeni azalır",
-      "Hiç değişmez",
-      "Sadece düşey bileşeni artar"
+      "Bağlama tümüyle etkisiz hâle gelir",
+      "Yatay bileşen artar, düşey bastırma azalır",
+      "Etkinliği hiçbir biçimde değişmez",
+      "Yalnızca düşey bastırma bileşeni artar"
     ],
     correctAnswer: 1,
     explanation: "Düşük açılı bağlamalar yana kaymayı daha iyi önler; dik bağlamalar ise devrilmeye karşı düşey bastırma sağlar.",
@@ -594,10 +594,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 57,
     question: "Draft survey'de 'constant' (sabit) terimi neyi ifade eder?",
     options: [
-      "Geminin boş ağırlığı (lightship)",
-      "Lightship'e ek olarak gemide bulunan, deplasmana giren ama yük/yakıt/su olarak ölçülemeyen kalıcı ağırlıklar",
-      "Yakıt miktarı",
-      "Ballast suyu"
+      "Geminin boş tekne ağırlığı, yani lightship",
+      "Ölçülemeyen kalıcı ek ağırlıklar toplamı",
+      "Tanklardaki toplam yakıt miktarı",
+      "Tanklardaki toplam balast suyu"
     ],
     correctAnswer: 1,
     explanation: "Constant; çamur, artık, kuru gıda, kumanya gibi ölçülemeyen ek ağırlıkların toplamıdır ve hesaba katılır.",
@@ -607,10 +607,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 58,
     question: "Draft survey'de düzeltmeler için tipik uygulama sırası aşağıdakilerden hangisidir?",
     options: [
-      "Yoğunluk → trim → constant",
-      "Apparent trim/mean draft hesabı → birinci ve ikinci trim düzeltmesi → yoğunluk düzeltmesi → deplasman",
-      "Sadece yoğunluk düzeltmesi yeterlidir",
-      "Önce constant sonra draft okuması"
+      "Yoğunluk, sonra trim, sonra constant",
+      "Trim düzeltmeleri, sonra yoğunluk",
+      "Yalnızca yoğunluk düzeltmesi yeterlidir",
+      "Önce constant, sonra draft okuması"
     ],
     correctAnswer: 1,
     explanation: "Önce ortalama draftlar bulunur, trim düzeltmeleri (1. ve 2.) ve yoğunluk düzeltmesi uygulanıp net deplasmana ulaşılır.",
@@ -620,10 +620,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 59,
     question: "IMSBC Koduna göre 'can test' (kutu testi) hangi amaçla yapılır?",
     options: [
-      "Kargonun pH'ını ölçmek",
-      "Group A kargoda olası sıvılaşma eğilimini gemi üzerinde basitçe değerlendirmek",
-      "Kargonun sıcaklığını ölçmek",
-      "Kargonun renk testini yapmak"
+      "Kargonun pH ve asitliğini ölçmek",
+      "Gemide sıvılaşma eğilimini değerlendirmek",
+      "Kargonun iç sıcaklığını ölçmek",
+      "Kargonun renk ve tane testini yapmak"
     ],
     correctAnswer: 1,
     explanation: "Can test, numune kaba konup vurularak yapılır; yüzeyde su/akışkan görünmesi sıvılaşma riskine işaret eder.",
@@ -633,10 +633,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 60,
     question: "IMSBC Koduna göre nikel cevheri (nickel ore) hangi açıdan yüksek riskli kabul edilir?",
     options: [
-      "Patlayıcı olması",
-      "Group A olarak sıvılaşma (liquefaction) eğilimi",
-      "Radyoaktif olması",
-      "Aşındırıcı olması"
+      "Patlayıcı özellik taşıması nedeniyle",
+      "Group A sıvılaşma eğilimi nedeniyle",
+      "Radyoaktif özellik taşıması nedeniyle",
+      "Aşındırıcı özellik taşıması nedeniyle"
     ],
     correctAnswer: 1,
     explanation: "Nikel cevheri yüksek nemde sıvılaşabilen Group A kargodur; geçmişte ciddi kazalara yol açmıştır.",
@@ -667,10 +667,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 63,
     question: "IMDG Code'da bir maddenin EmS numarası neyi gösterir?",
     options: [
-      "Maddenin fiyatını",
-      "Acil durum müdahale (yangın ve döküntü) prosedür kodunu",
-      "Maddenin yoğunluğunu",
-      "Liman kodunu"
+      "Maddenin birim piyasa fiyatını",
+      "Acil durum müdahale prosedür kodunu",
+      "Maddenin ölçülen yoğunluk ve viskozitesini",
+      "Yükleme limanının resmî kodunu"
     ],
     correctAnswer: 1,
     explanation: "EmS (Emergency Schedules), o madde için yangın (F-) ve döküntü (S-) acil müdahale şemalarını belirtir.",
@@ -680,10 +680,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 64,
     question: "IMDG'de iki tehlikeli madde için 'segregation table' (ayrım tablosu) ne sağlar?",
     options: [
-      "Fiyat karşılaştırması",
-      "Birlikte istiflenebilirlik veya gereken ayrım derecesinin belirlenmesi",
-      "Konteyner numaralandırma",
-      "Liman sırası"
+      "İki madde arasında fiyat kıyaslaması",
+      "Birlikte istif veya gerekli ayrım derecesi",
+      "Konteyner numaralandırma düzeni",
+      "Limanlara uğrama sırasının önceden belirlenmesi"
     ],
     correctAnswer: 1,
     explanation: "Ayrım tablosu sınıflar arası 'away from', 'separated from' gibi gereken minimum ayrımı verir.",
@@ -693,10 +693,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 65,
     question: "International Grain Code kapsamına hangi kargolar girer?",
     options: [
-      "Sadece buğday",
-      "Buğday, mısır, yulaf, çavdar, arpa, pirinç, baklagiller, tohumlar ve bunların işlenmiş benzer ürünleri",
-      "Tüm dökme mineraller",
-      "Sadece pirinç ve mısır"
+      "Yalnızca buğday ve unlu mamuller",
+      "Tahıllar, baklagiller ve tohumlar",
+      "Dökme halde taşınan tüm mineral yükler",
+      "Yalnızca pirinç ve mısır grubu"
     ],
     correctAnswer: 1,
     explanation: "Grain Code tahıl tanımı; buğday, mısır, arpa, yulaf, çavdar, pirinç, baklagiller ve davranışı benzer işlenmiş ürünleri kapsar.",
@@ -706,10 +706,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 66,
     question: "Tahıl yüklü gemide stabilite belgesi (grain loading manual/document of authorization) bulunmuyorsa ne yapılır?",
     options: [
-      "Sınırsız tahıl yüklenebilir",
-      "Tahıl taşıması yapılamaz veya idarenin özel onayı gerekir",
-      "Sadece yarım ambar yüklenir",
-      "Sadece tatlı suda yüklenir"
+      "Sınırsız biçimde tahıl yüklenebilir",
+      "Tahıl taşınamaz; idare onayı gerekir",
+      "Yalnızca yarım ambar tahıl yüklenir",
+      "Yalnızca tatlı su limanında yüklenir"
     ],
     correctAnswer: 1,
     explanation: "Grain Code, tahıl taşıyacak geminin onaylı doküman/manual bulundurmasını şart koşar; aksi halde özel izin gerekir.",
@@ -719,10 +719,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 67,
     question: "Tankerlerde 'COW' (Crude Oil Washing) işleminin temel amacı nedir?",
     options: [
-      "Tankı su ile yıkamak",
-      "Ham petrolün kendisiyle tank içi tortuyu/sediment'i çözüp boşaltma verimini artırmak ve atığı azaltmak",
-      "Kargoyu ısıtmak",
-      "Tankı inertize etmek"
+      "Tank içini deniz suyuyla yıkamak",
+      "Tortuyu çözüp boşaltma verimini artırmak",
+      "Yük tankındaki kargoyu ısıtmak",
+      "Yük tankı atmosferini inertize etmek"
     ],
     correctAnswer: 1,
     explanation: "COW, ham petrol jetleriyle tank duvarındaki tortuyu çözer; ROB ve deniz kirliliğini azaltır, MARPOL Annex I ile ilişkilidir.",
@@ -732,10 +732,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 68,
     question: "Tanker kargo hesaplarında 'VCF' (Volume Correction Factor) ne için kullanılır?",
     options: [
-      "Hacmi standart referans sıcaklığa (örn. 15°C) düzeltmek için",
-      "Yoğunluğu ölçmek için",
-      "Trim düzeltmesi için",
-      "Tank kalibrasyonu için"
+      "Hacmi 15 °C referans sıcaklığa düzeltmek",
+      "Kargonun yoğunluğunu ölçmek için",
+      "Trim kaynaklı farkı düzeltmek için",
+      "Tank kalibrasyonunu doğrulamak için"
     ],
     correctAnswer: 0,
     explanation: "Petrol hacmi sıcaklıkla değişir; VCF ile gözlenen hacim standart sıcaklıktaki hacme indirgenir.",
@@ -745,10 +745,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 69,
     question: "Ro-Ro gemilerinde su geçirmez ve hava koşullarına dayanıklı bow/stern kapılar neden kritiktir?",
     options: [
-      "Sadece estetik",
-      "Su girişini önleyerek araç güvertesinin (free surface) sular altında kalmasını ve stabilite kaybını engellemek için",
-      "Yakıt tasarrufu için",
-      "Hız artışı için"
+      "Yalnızca dış görünüm ve estetik için",
+      "Su girişini ve stabilite kaybını önlemek",
+      "Sefer yakıt tüketimini azaltmak için",
+      "Servis hızını bir miktar yükseltmek için"
     ],
     correctAnswer: 1,
     explanation: "Ro-Ro araç güvertesine su girişi büyük serbest yüzey etkisi ve hızlı stabilite kaybı yaratır; kapı bütünlüğü hayatidir.",
@@ -758,10 +758,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 70,
     question: "Konteyner gemilerinde 'lashing bridge' temel olarak ne sağlar?",
     options: [
-      "Daha yüksek seviyelerden bağlama yapılarak üst sıra konteynerlerin emniyetli istiflenmesi",
-      "Konteyner soğutması",
-      "Yakıt aktarımı",
-      "Gemi hızını ölçme"
+      "Yüksek seviyeden bağlama imkânı sağlar",
+      "Üst sıra konteynerleri soğutmaya yarar",
+      "Güverteye yakıt aktarımını kolaylaştırır",
+      "Gemi hızının ölçülmesini kolaylaştırır"
     ],
     correctAnswer: 0,
     explanation: "Lashing bridge, daha yüksekten bağlama imkânı vererek daha fazla sıra konteynerin emniyetle istiflenmesini sağlar.",
@@ -771,10 +771,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 71,
     question: "Load Line markasında yaz yük hattı (S) ile kış yük hattı (W) arasındaki ilişki için doğru ifade hangisidir?",
     options: [
-      "W, S'ten daha derindir",
-      "W, S'ten daha sığdır (daha az draft); kışın daha fazla freeboard gerekir",
-      "W ve S aynıdır",
-      "W sadece tatlı su içindir"
+      "W, S'ten daha derin bir hatta çizilir",
+      "W, S'ten daha sığdır; fribord artar",
+      "W ile S aynı hizada çizilmektedir",
+      "W yalnızca tatlı su limanları içindir"
     ],
     correctAnswer: 1,
     explanation: "Kışın daha kötü hava nedeniyle ek freeboard istenir; bu yüzden W hattına kadar yüklemede izin verilen draft daha azdır (W işareti bordada S'in altında yer alır).",
@@ -784,10 +784,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 72,
     question: "DWA (Dock Water Allowance) ne için hesaplanır?",
     options: [
-      "Yakıt rezervi için",
-      "Limandaki yoğunluğu deniz suyundan farklı (acı/karışık) suda izin verilen draft düzeltmesi için",
-      "Kargo sıcaklığı için",
-      "Ballast değişimi için"
+      "Sefer yakıt rezervini hesaplamak için",
+      "Acı suda izin verilen draft düzeltmesi",
+      "Kargo sıcaklık düzeltmesini yapmak için",
+      "Balast değişim planını yapmak için"
     ],
     correctAnswer: 1,
     explanation: "DWA, FWA'dan türetilir ve liman suyu yoğunluğunun 1.000–1.025 arasında olduğu durumlarda izin verilen ek draft batmasını verir.",
@@ -797,10 +797,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 73,
     question: "Kömür taşımasında ambar atmosferinde metan ölçümü ve havalandırma rejimi neden önemlidir?",
     options: [
-      "Kokuyu azaltmak için",
-      "Patlayıcı metan birikimini önlemek ve self-heating'i izlemek için",
-      "Kargoyu nemlendirmek için",
-      "Sadece estetik"
+      "Ambar içi kokuyu azaltmak için",
+      "Metan birikimi ve self-heating izlemi",
+      "Kargo nemini korumak amacıyla",
+      "Ambar görünümünü korumak amacıyla"
     ],
     correctAnswer: 1,
     explanation: "Kömür metan salar; yüzey havalandırması metan birikimini engeller, ancak self-heating riski varsa havalandırma kısıtlanır ve O2/CO/temperature izlenir.",
@@ -810,10 +810,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 74,
     question: "Dökme yük gemisinde yükleme/boşaltma sırasında yükleme bilgisayarındaki shear force ve bending moment limitlerinin aşılmaması neden zorunludur?",
     options: [
-      "Yakıt tasarrufu için",
-      "Tekne yapısal hasarını (deformasyon/çatlak) önlemek için",
-      "Hız için",
-      "Sadece kayıt için"
+      "Sefer yakıt tüketimini azaltmak için",
+      "Tekne yapısal hasarını önlemek için",
+      "Servis hızını korumak amacıyla",
+      "Yalnızca kayıt tutmak amacıyla"
     ],
     correctAnswer: 1,
     explanation: "Aşırı kesme kuvveti ve eğilme momenti gövdede kalıcı deformasyon veya kırılmaya yol açabilir; limitler her aşamada izlenmelidir.",
@@ -823,10 +823,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 75,
     question: "Mate's Receipt (kaptan makbuzu) üzerine konan 'clause' (çekince/remark) ne anlama gelir?",
     options: [
-      "Kargonun fiyatını",
-      "Teslim alınan kargonun görünür hasar/eksiklik/ambalaj kusuru içerdiğine dair kayıt",
-      "Geminin rotasını",
-      "Liman ücretini"
+      "Teslim alınan kargonun birim fiyatını",
+      "Görünür hasar veya eksiklik kaydını",
+      "Geminin izleyeceği sefer rotasını",
+      "Limanda ödenecek hizmet ücretini"
     ],
     correctAnswer: 1,
     explanation: "Çekinceli (claused) makbuz/konşimento, kargonun görünür kusurla teslim alındığını belgeler; temiz (clean) değildir.",
@@ -836,10 +836,10 @@ const baseCargoQuestions: QuizQuestion[] = [
     id: 76,
     question: "Tehlikeli yük istifinde 'on deck' (güvertede) taşıma bazı sınıflar için neden zorunlu olabilir?",
     options: [
-      "Daha ucuz olduğu için",
-      "Acil durumda denize atma (jettison) ve havalandırma/erişim kolaylığı için",
-      "Daha hızlı olduğu için",
-      "Sadece estetik"
+      "Güverte taşımasının daha ucuz olması",
+      "Jettison ve havalandırma kolaylığı",
+      "Güverte taşımasının daha hızlı olması",
+      "Yalnızca görünüm ve düzen kaygısı"
     ],
     correctAnswer: 1,
     explanation: "Bazı tehlikeli maddeler güvertede taşınır; acil müdahale, havalandırma ve gerekirse denize atma imkânı için.",
