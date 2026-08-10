@@ -25,14 +25,22 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
-    // A crash during navigation can leave the translation gate / pending
-    // visibility markers behind. They are full-screen, input-blocking layers,
-    // so clear them before rendering the fallback.
+    // A crash during navigation can leave the translation gate behind. It is a
+    // full-screen, input-blocking layer, so neutralise it before rendering the
+    // fallback. (Attributes only — removing nodes React still owns would throw
+    // during the fallback commit.)
     if (typeof document !== 'undefined') {
       document
-        .querySelectorAll('[data-mt-route-pending], [aria-label="Loading translated page"]')
-        .forEach((el) => el.remove());
+        .querySelectorAll<HTMLElement>('[aria-label="Loading translated page"]')
+        .forEach((el) => {
+          el.style.pointerEvents = 'none';
+          el.style.display = 'none';
+        });
+      document
+        .querySelectorAll<HTMLElement>('[data-mt-route-pending]')
+        .forEach((el) => el.classList.remove('invisible'));
     }
+
     this.setState({
       error,
       errorInfo

@@ -16,6 +16,23 @@ if (window.location.hostname === 'www.nauticalleap.com') {
 
 console.log('[Main] Starting Maritime Calculator App v2...');
 
+// Freeze detector: a 1s heartbeat that reports how late it actually fired.
+// If the user reports a frozen screen, this tells us whether the main thread
+// was genuinely blocked (long gap) or whether an overlay was swallowing input
+// (no gap at all).
+{
+  let lastBeat = Date.now();
+  setInterval(() => {
+    const now = Date.now();
+    const drift = now - lastBeat - 1000;
+    lastBeat = now;
+    if (drift > 4000) {
+      console.warn(`[Heartbeat] Main thread blocked for ~${Math.round(drift)}ms`);
+    }
+  }, 1000);
+}
+
+
 // Apply the saved font-size scale before first paint to avoid a flash of
 // unscaled text. The FontSizeProvider keeps it in sync afterwards.
 try {
