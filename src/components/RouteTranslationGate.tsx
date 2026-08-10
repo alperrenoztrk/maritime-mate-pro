@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ShipWheel } from "lucide-react";
@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import {
   createRouteTranslationToken,
   isRouteTranslationReady,
+  ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS,
   ROUTE_TRANSLATION_MAX_WAIT_MS,
 } from "@/utils/routeTranslation";
 import { MOTION_SECONDS, useReducedMotion } from "@/hooks/useAppMotion";
@@ -15,6 +16,14 @@ export const RouteTranslationGate = () => {
   const location = useLocation();
   const { currentLanguage, readyRouteTranslation } = useLanguage();
   const [releasedToken, setReleasedToken] = useState<string | null>(null);
+  // Absolute release: once the gate has been continuously visible for the hard
+  // limit it stays down until translation settles, even if the route token
+  // keeps changing. Without this, rapid navigation restarts the per-token
+  // timer over and over and the opaque blocker can sit on top of a perfectly
+  // healthy app — which reads to the user as a completely frozen screen.
+  const [hardReleased, setHardReleased] = useState(false);
+  const [gateOpenedAt, setGateOpenedAt] = useState<number | null>(null);
+  const warnedRef = useRef(false);
   const routeToken = createRouteTranslationToken(
     currentLanguage,
     location.key,
@@ -27,7 +36,7 @@ export const RouteTranslationGate = () => {
     routeToken,
     readyRouteTranslation,
   );
-  const showGate = translating && releasedToken !== routeToken;
+  const showGate = translating && !hardReleased && releasedToken !== routeToken;
 
   // Independent safety net: this component mounts before a lazy page does. If
   // a route chunk, auth boundary or translation request stalls, release the
@@ -43,6 +52,34 @@ export const RouteTranslationGate = () => {
     return () => window.clearTimeout(timer);
   }, [routeToken, translating]);
 
+  useEffect(() => {
+    if (!translating) {
+      setGateOpenedAt(null);
+      setHardReleased(false);
+      warnedRef.current = false;
+      return;
+    }
+    if (gateOpenedAt === null) setGateOpenedAt(Date.now());
+  }, [gateOpenedAt, translating]);
+
+  useEffect(() => {
+    if (gateOpenedAt === null || hardReleased) return;
+    const remaining = Math.max(
+      0,
+      ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS - (Date.now() - gateOpenedAt),
+    );
+    const timer = window.setTimeout(() => {
+      if (!warnedRef.current) {
+        warnedRef.current = true;
+        console.warn(
+          `[RouteTranslationGate] Hard-released after ${ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS}ms at ${location.pathname}`,
+        );
+      }
+      setHardReleased(true);
+    }, remaining);
+    return () => window.clearTimeout(timer);
+  }, [gateOpenedAt, hardReleased, location.pathname]);
+
   return (
     <AnimatePresence>
       {showGate && (
@@ -53,8 +90,9 @@ export const RouteTranslationGate = () => {
           role="status"
           aria-label="Loading translated page"
           initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          animate={{ opacity: 1, pointerEvents: "auto" }}
+          // A stalled exit animation must never keep swallowing taps.
+          exit={{ opacity: 0, pointerEvents: "none" }}
           transition={{ duration: MOTION_SECONDS.press }}
         >
           <motion.div

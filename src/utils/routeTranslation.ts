@@ -26,6 +26,15 @@ export const isRouteTranslationReady = (
  */
 export const ROUTE_TRANSLATION_MAX_WAIT_MS = 2_500;
 
+/**
+ * Absolute ceiling for the full-screen translation gate and for the
+ * "hide until translated" state of a route subtree. Whatever happens upstream,
+ * the user must get an interactive screen back within this budget — showing
+ * source-language copy for a moment is always better than a frozen app.
+ */
+export const ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS = 3_000;
+
+
 export type DeadlineResult<T> =
   | { status: 'completed'; value: T }
   | { status: 'failed'; error: unknown }
