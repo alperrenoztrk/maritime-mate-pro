@@ -13,11 +13,53 @@ export const createRouteTranslationToken = (
   hash = '',
 ): string => JSON.stringify([language, locationKey, pathname, search, hash]);
 
+/**
+ * Readiness is tracked as a SET of tokens, never as a single "last ready" one.
+ *
+ * A route transition keeps two `PageTransition` subtrees mounted at once (the
+ * outgoing screen animates out while the incoming screen animates in), and each
+ * one renders under its own `<Routes location>` — so they hold DIFFERENT
+ * tokens. With a single shared token only one of them could ever be ready: the
+ * loser re-ran its translation layout effect, marked itself ready, and thereby
+ * un-readied the winner, which re-ran and un-readied it back. That ping-pong
+ * re-rendered both subtrees thousands of times per navigation and locked up the
+ * main thread. Independent per-token readiness makes both settle.
+ */
 export const isRouteTranslationReady = (
   language: string,
   routeToken: string,
-  readyRoute: string | null,
-): boolean => language === 'tr' || readyRoute === routeToken;
+  readyRoutes: ReadonlySet<string> | null,
+): boolean => language === 'tr' || !!readyRoutes?.has(routeToken);
+
+/**
+ * How many route tokens stay marked ready. Only the screens currently mounted
+ * matter (outgoing + incoming, plus a little slack for rapid navigation), and
+ * every navigation mints a fresh `location.key`, so old tokens are dead weight.
+ */
+export const READY_ROUTE_TOKEN_LIMIT = 8;
+
+/**
+ * Adds a token to the ready set, bounded and copy-on-write.
+ *
+ * Returns the SAME set instance when the token is already present, so callers
+ * can skip a pointless state update (and the re-render it would cause).
+ */
+export const withReadyRouteToken = (
+  readyRoutes: ReadonlySet<string>,
+  routeToken: string,
+  limit = READY_ROUTE_TOKEN_LIMIT,
+): ReadonlySet<string> => {
+  if (readyRoutes.has(routeToken)) return readyRoutes;
+  const next = new Set(readyRoutes);
+  next.add(routeToken);
+  // Sets preserve insertion order — drop the oldest tokens first.
+  while (next.size > limit) {
+    const oldest = next.values().next().value as string | undefined;
+    if (oldest === undefined) break;
+    next.delete(oldest);
+  }
+  return next;
+};
 
 /**
  * A route may wait briefly for its local dictionary/live fallback, but it must

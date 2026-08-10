@@ -56,24 +56,53 @@ export function AppNavBar() {
   useEffect(() => {
     setCollapsed(false);
     setTitle(knownTitle(pathname));
+    if (!canGoBack || isAppChromeHidden(pathname)) return;
+
     let frame = 0;
+    let observed: HTMLElement | null = null;
+    const observer = new MutationObserver(() => refreshTitle());
+
+    const findRouteRoot = () =>
+      Array.from(document.querySelectorAll<HTMLElement>("[data-page-path]")).find(
+        (element) => element.dataset.pagePath === pathname,
+      ) ?? null;
+
+    // Watch the smallest subtree that can answer "what is this route's
+    // heading?". Observing all of document.body with `characterData` woke this
+    // observer once per text node the translation engine touched — hundreds of
+    // wake-ups per navigation, each one a DOM read plus a React state update.
+    // Until this route's frame mounts there is nothing to read, so we only
+    // listen for it being added.
+    const retarget = () => {
+      const root = findRouteRoot();
+      if (root === observed) return;
+      observer.disconnect();
+      observed = root;
+      observer.observe(
+        root ?? document.body,
+        root
+          ? { childList: true, subtree: true, characterData: true }
+          : { childList: true, subtree: true },
+      );
+    };
 
     const refreshTitle = () => {
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
+        retarget();
         const detected = readRouteHeading(pathname);
         if (detected) setTitle(detected);
       });
     };
 
+    retarget();
     refreshTitle();
-    const observer = new MutationObserver(refreshTitle);
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+
     return () => {
       observer.disconnect();
       window.cancelAnimationFrame(frame);
     };
-  }, [pathname]);
+  }, [canGoBack, pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
