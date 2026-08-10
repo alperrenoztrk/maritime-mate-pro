@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo } from "react";
-import { recordNavigation } from "@/lib/navigationDirection";
+import { getNavigationDirection, recordNavigation } from "@/lib/navigationDirection";
 import { GlobalMaritimeBackground } from "@/components/GlobalMaritimeBackground";
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
@@ -15,24 +15,28 @@ import { EntitlementProvider } from "@/contexts/EntitlementContext";
 import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
 import { FontSizeProvider } from "@/contexts/FontSizeContext";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { AppNavBar } from "@/components/AppNavBar";
+import { AppTabBar } from "@/components/AppTabBar";
 import { EdgeSwipeBack } from "@/components/EdgeSwipeBack";
 import { RouteSkeleton } from "@/components/state/AppState";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { AdsController } from "@/components/ads/AdsController";
+import { prefersReducedMotion } from "@/hooks/useAppMotion";
+import { isAppChromeHidden } from "@/lib/appChrome";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
 const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
+const LibraryHubPage = lazy(() => import("./pages/LibraryHubPage"));
 const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
 const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
 const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
@@ -198,6 +202,44 @@ const queryClient = new QueryClient();
 // with a ring in the middle.
 const RouteFallback = () => <RouteSkeleton />;
 
+const routeFrameVariants = {
+  initial: () => {
+    if (prefersReducedMotion()) return { opacity: 0, x: 0, zIndex: 1 };
+    const forward = getNavigationDirection() === "forward";
+    return {
+      opacity: 1,
+      x: forward ? "100%" : "-28%",
+      zIndex: forward ? 2 : 0,
+      position: "relative" as const,
+    };
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    zIndex: 1,
+    position: "relative" as const,
+  },
+  exit: () => {
+    if (prefersReducedMotion()) {
+      return {
+        opacity: 0,
+        x: 0,
+        zIndex: 0,
+        position: "absolute" as const,
+        inset: 0,
+      };
+    }
+    const forward = getNavigationDirection() === "forward";
+    return {
+      opacity: 1,
+      x: forward ? "-28%" : "100%",
+      zIndex: forward ? 0 : 2,
+      position: "absolute" as const,
+      inset: 0,
+    };
+  },
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
@@ -213,6 +255,7 @@ const AnimatedRoutes = () => {
   return (
     <>
     <AppNavBar />
+    <AppTabBar />
     {/* iOS edge-swipe back. Shares useBackNavigation with the floating
         control and the hardware button, so all three land in the same place. */}
     <EdgeSwipeBack />
@@ -222,19 +265,32 @@ const AnimatedRoutes = () => {
     <div className="hidden">
       <GlobalSearch />
     </div>
-    {/* The key MUST sit on AnimatePresence's direct child. It used to be on
-        <Routes>, one level below <Suspense>, so AnimatePresence only ever saw
-        a single unchanging child: no page ever ran its exit animation and
-        mode="wait" had nothing to wait for. Keying the Suspense boundary
-        instead keeps lazy routes working — the outgoing subtree is already
-        resolved, so it can animate out while the incoming one loads. */}
-    <AnimatePresence mode="wait" initial={false}>
-        <Suspense key={location.pathname} fallback={<RouteFallback />}>
+    {/* A keyed motion frame is AnimatePresence's direct child. `sync` keeps
+        the outgoing and incoming screens in one continuous iOS push/pop;
+        the exiting frame becomes absolute while the new frame owns layout. */}
+    <AnimatePresence mode="sync" initial={false}>
+      <motion.div
+        key={location.pathname}
+        className="route-presence-frame min-h-[100svh] w-full"
+        data-app-navbar={location.pathname !== "/" && !isAppChromeHidden(location.pathname)}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={routeFrameVariants}
+        transition={
+          prefersReducedMotion()
+            ? { duration: 0.12, ease: "linear" }
+            : { duration: 0.36, ease: [0.32, 0.72, 0, 1] }
+        }
+      >
+        <div className="interactive-page-surface min-h-[100svh] w-full">
+        <Suspense fallback={<RouteFallback />}>
         <Routes location={location}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
+        <Route path="/library" element={<PageTransition><LibraryHubPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
@@ -410,6 +466,8 @@ const AnimatedRoutes = () => {
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
         </Routes>
         </Suspense>
+        </div>
+      </motion.div>
       </AnimatePresence>
     </>
   );

@@ -7,25 +7,6 @@ import { searchIndex, type SearchItem } from "@/data/searchIndex";
 import { loadDeepSearchIndex, getDeepSearchIndex } from "@/data/deepSearchIndex";
 import { cn } from "@/lib/utils";
 
-const CATEGORY_COLORS: Record<string, string> = {
-  "Seyir": "bg-blue-500/15 text-blue-400",
-  "Stabilite": "bg-emerald-500/15 text-emerald-400",
-  "Meteoroloji": "bg-amber-500/15 text-amber-400",
-  "Kargo": "bg-orange-500/15 text-orange-400",
-  "Güvenlik": "bg-red-500/15 text-red-400",
-  "Makine": "bg-slate-500/15 text-slate-400",
-  "Çevre": "bg-green-500/15 text-green-400",
-  "Hesaplamalar": "bg-purple-500/15 text-purple-400",
-  "Dersler": "bg-cyan-500/15 text-cyan-400",
-  "Operasyonlar": "bg-pink-500/15 text-pink-400",
-  "Sözlük": "bg-indigo-500/15 text-indigo-400",
-  "Gemicilik": "bg-teal-500/15 text-teal-400",
-  "Personel": "bg-rose-500/15 text-rose-400",
-  "İletişim": "bg-sky-500/15 text-sky-400",
-  "Ekonomi": "bg-lime-500/15 text-lime-400",
-  "Genel": "bg-muted text-muted-foreground",
-};
-
 const RECENT_KEY = "maritime-global-search-recent";
 const RECENT_LIMIT = 6;
 const RESULT_LIMIT = 20;
@@ -259,10 +240,7 @@ export function GlobalSearch() {
           </span>
         )}
       </span>
-      <span className={cn(
-        "shrink-0 rounded-full px-2 py-0.5 text-micro font-medium",
-        CATEGORY_COLORS[item.category] || CATEGORY_COLORS["Genel"]
-      )}>
+      <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary">
         {item.category}
       </span>
     </button>
@@ -273,7 +251,7 @@ export function GlobalSearch() {
       {/* Search trigger button */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 transition-colors w-full"
+        className="surface-2 flex min-h-11 w-full items-center gap-2 rounded-xl border px-3 py-2 text-sm text-muted-foreground transition-colors duration-control hover:text-foreground"
       >
         <Search className="h-4 w-4 shrink-0" />
         <span className="flex-1 text-left truncate">Sayfa, hesaplama veya konu ara…</span>
@@ -283,7 +261,7 @@ export function GlobalSearch() {
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="p-0 gap-0 max-w-lg overflow-hidden bg-card/95 backdrop-blur-xl border-border/50">
+        <DialogContent className="max-w-lg gap-0 overflow-hidden border-border/60 bg-background p-0">
           <div className="flex items-center border-b border-border/30 px-3">
             <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
             <Input

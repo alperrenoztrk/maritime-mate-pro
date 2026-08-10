@@ -14,6 +14,7 @@ const forbidText = (source, text, label) => {
 };
 
 const shared = read("src/components/library/LibraryInterface.tsx");
+const tokens = read("src/styles/tokens.css");
 const lessons = read("src/pages/curriculum/LessonsLibraryPage.tsx");
 const operations = read("src/pages/ShipOperationsPage.tsx");
 const operationDetail = read("src/pages/ShipOperationsDetail.tsx");
@@ -44,8 +45,9 @@ for (const primitive of [
 // reserves the notch AND the global back control, which a bare
 // env(safe-area-inset-top) did not — the "Geri" pill used to sit on this
 // shell's header.
-requireText(shared, "--floating-nav-reserve", "mobil güvenli alan + navigasyon şeridi");
-requireText(shared, "--ad-banner-height", "reklam bandı güvenli alanı");
+requireText(tokens, "--floating-nav-reserve", "mobil güvenli alan + navigasyon şeridi");
+requireText(tokens, "--app-tabbar-reserve", "alt sekme çubuğu güvenli alanı");
+requireText(tokens, "var(--ad-banner-height", "reklam bandı güvenli alanı");
 requireText(shared, "repeating-linear-gradient", "kitap bez cilt dokusu");
 requireText(shared, "[perspective:1200px]", "kitap derinlik görünümü");
 requireText(shared, "[transform-style:preserve-3d]", "kitabın 3B gövdesi");

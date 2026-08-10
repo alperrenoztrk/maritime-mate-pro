@@ -1,9 +1,6 @@
-import { motion } from "framer-motion";
 import { ReactNode, useLayoutEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { scrollToTop } from "@/lib/scrollToTop";
-import { getNavigationDirection } from "@/lib/navigationDirection";
-import { prefersReducedMotion } from "@/hooks/useAppMotion";
 import { useLanguage } from "@/contexts/useLanguage";
 import {
   createRouteTranslationToken,
@@ -15,23 +12,14 @@ interface PageTransitionProps {
 }
 
 /**
- * iOS-style push/pop for route changes.
+ * Route content boundary.
  *
- * The offsets are percentages so the slide scales with the viewport; the app
- * shell in App.tsx is `overflow-x-hidden`, so nothing can leak a horizontal
- * scrollbar. The outgoing page travels a shorter distance than the incoming
- * one — that parallax is what makes a push read as "the new screen covers
- * the old one" rather than a pair of sliding panels.
- *
- * Direction is NOT a prop. See src/lib/navigationDirection.ts: with
- * AnimatePresence in `mode="wait"` the exiting page cannot receive fresh
- * props, so these variants are declared as functions and read the recorded
- * direction when framer-motion evaluates them — which happens after the
- * navigation, for both the exit and the following enter.
+ * App.tsx owns the keyed iOS push/pop frame so AnimatePresence can animate
+ * both screens simultaneously. This inner boundary owns scroll reset and the
+ * no-source-language-flash translation gate. Keeping those responsibilities
+ * separate also gives EdgeSwipeBack a transform-free surface to move directly
+ * under the user's finger.
  */
-const ENTER_OFFSET = 18; // % of width the incoming page travels
-const EXIT_OFFSET = 7; // % the outgoing page drifts (parallax)
-
 export const PageTransition = ({ children }: PageTransitionProps) => {
   const location = useLocation();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -77,40 +65,15 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
     });
   }, [currentLanguage, routeTranslationToken, translateRouteRoot, translationReady]);
 
-  const variants = {
-    initial: () => {
-      if (prefersReducedMotion()) return { opacity: 0, x: 0 };
-      const forward = getNavigationDirection() === "forward";
-      return { opacity: 0, x: forward ? `${ENTER_OFFSET}%` : `-${ENTER_OFFSET}%` };
-    },
-    animate: { opacity: 1, x: 0 },
-    exit: () => {
-      if (prefersReducedMotion()) return { opacity: 0, x: 0 };
-      const forward = getNavigationDirection() === "forward";
-      return { opacity: 0, x: forward ? `-${EXIT_OFFSET}%` : `${EXIT_OFFSET}%` };
-    },
-  };
-
   return (
-    <motion.div
+    <div
       ref={rootRef}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={variants}
-      transition={
-        prefersReducedMotion()
-          ? { duration: 0.01 }
-          : // Matches --motion-page / --ease-out-ios from tokens.css. Expressed
-            // numerically because framer-motion cannot read CSS custom
-            // properties for tween timing.
-            { duration: 0.3, ease: [0.32, 0.72, 0, 1] }
-      }
-      className={`w-full ${translationReady ? "" : "invisible"}`}
+      className={`page-transition-shell w-full ${translationReady ? "" : "invisible"}`}
+      data-page-path={location.pathname}
       data-mt-route-pending={translationReady ? undefined : ""}
       aria-busy={!translationReady}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };

@@ -94,7 +94,7 @@ export default function BuoyagePage() {
   const totalMatches = grouped.reduce((n, section) => n + section.marks.length, 0);
 
   return (
-    <div className="min-h-screen px-4 pb-4 pt-[var(--floating-nav-reserve)] md:px-8 md:pb-8">
+    <div className="min-h-screen px-4 py-4 md:px-8 md:py-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-2 flex items-center gap-2">
           <LifeBuoy className="h-7 w-7 text-emerald-500" />

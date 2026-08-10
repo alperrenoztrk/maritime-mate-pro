@@ -4,6 +4,7 @@ import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog"
 import { InstrumentStyles } from "@/components/widgets/instruments/InstrumentStyles";
 import { InstrumentDefs } from "@/components/widgets/instruments/InstrumentDefs";
 import { useHomeWidgetNodes } from "@/components/widgets/homeWidgetNodes";
+import { Gauge } from "lucide-react";
 
 /**
  * Ana sayfanın widget sayfası: canlı enstrümanlar düz ızgarada gösterilir.
@@ -20,13 +21,20 @@ export function HomeWidgetGrid() {
       <InstrumentStyles />
       <InstrumentDefs />
 
-      <div className="px-4">
+      <section aria-labelledby="home-widgets-title" className="space-y-3">
+        <div className="px-1">
+          <h2 id="home-widgets-title" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em] text-foreground">
+            <Gauge className="h-5 w-5 text-primary" />
+            Canlı Widget&rsquo;lar
+          </h2>
+          <p className="mt-0.5 text-caption text-muted-foreground">Günlük seyir ve çevre bilgileri</p>
+        </div>
         <div className="grid grid-cols-2 items-start gap-3 sm:grid-cols-4">
           {enabled.map((id: HomeWidgetId) => (
             <Fragment key={id}>{nodes[id]}</Fragment>
           ))}
         </div>
-      </div>
+      </section>
 
       <ManualLocationDialog open={manualOpen} onOpenChange={setManualOpen} />
     </>

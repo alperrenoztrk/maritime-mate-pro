@@ -5,17 +5,16 @@ import { findParentPath } from "@/hooks/useNavigationHierarchy";
  *
  * Why a module singleton rather than a prop:
  *
- * `AnimatePresence` runs in `mode="wait"`, so the OUTGOING page animates out
- * before the incoming one mounts. An outgoing component no longer receives
- * props — it renders from the snapshot it had when the route changed. A
- * `direction` prop would therefore always be one navigation stale on exit,
- * and the two halves of a single transition would disagree about which way
- * the app is moving.
+ * `AnimatePresence` retains the outgoing keyed frame while the incoming frame
+ * mounts. The outgoing component no longer receives route props — it renders
+ * from the snapshot it had when navigation started. A direction prop would
+ * therefore be one navigation stale on exit, and the two halves of the
+ * simultaneous transition could disagree about which way the app is moving.
  *
  * Instead the direction is recorded here, synchronously, at the moment the
- * pathname changes. `PageTransition` reads it through *variant functions*,
- * which framer-motion evaluates when each animation starts — after the
- * navigation has been recorded, for both the exit and the subsequent enter.
+ * pathname changes. The keyed motion frame in App.tsx reads it through
+ * *variant functions*, which framer-motion evaluates after navigation is
+ * recorded for both the exit and the simultaneous enter.
  * One value, read twice, always current.
  *
  * The bonus is that no route declaration has to pass anything: all 160

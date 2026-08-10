@@ -1,115 +1,142 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { hapticImpact } from "@/lib/haptics";
+import { useLocation } from "react-router-dom";
+import { isAppChromeHidden } from "@/lib/appChrome";
 
-/**
- * iOS-style interactive back gesture: drag in from the left edge to go back.
- *
- * The app had no swipe-back at all — on iOS that is one of the first things
- * a user tries, and its absence is a large part of why the app read as a web
- * page in a shell.
- *
- * Why an affordance rather than dragging the page itself: the outgoing page
- * is owned by framer-motion inside AnimatePresence (see PageTransition).
- * Fighting it for the same transform would mean two animation systems
- * writing one element. Instead the gesture shows a chevron that tracks the
- * finger and commits past a threshold, then hands off to the normal pop
- * transition — which already animates in the correct direction because
- * useBackNavigation climbs the hierarchy and navigationDirection records it
- * as a pop.
- */
-
-const EDGE_WIDTH = 24; // px of screen edge that starts the gesture
-const COMMIT_DISTANCE = 72; // px of travel that commits the back navigation
-const MAX_PULL = 96; // px the affordance can travel
+const EDGE_WIDTH = 24;
 
 export const EdgeSwipeBack = () => {
   const { goBack, canGoBack } = useBackNavigation();
+  const { pathname } = useLocation();
+  const enabled = canGoBack && !isAppChromeHidden(pathname);
   const [pull, setPull] = useState(0);
   const [active, setActive] = useState(false);
   const startX = useRef(0);
   const startY = useRef(0);
   const pointerId = useRef<number | null>(null);
-  const committed = useRef(false);
-  // The commit decision must NOT read `pull` state: a fast flick can deliver
-  // pointermove and pointerup in the same frame, before React has re-rendered,
-  // and the gesture would silently do nothing. The ref is updated
-  // synchronously; the state exists only to drive the affordance.
   const pullRef = useRef(0);
+  const commitDistance = useRef(88);
+  const activeSurface = useRef<HTMLElement | null>(null);
+  const cleanupTimer = useRef<number | null>(null);
+  const thresholdFeedbackSent = useRef(false);
 
-  // A route change while a drag is in flight must not leave the affordance
-  // stuck on screen.
+  const clearSurface = () => {
+    if (cleanupTimer.current !== null) {
+      window.clearTimeout(cleanupTimer.current);
+      cleanupTimer.current = null;
+    }
+    const surface = activeSurface.current;
+    if (surface) {
+      surface.classList.remove("edge-swipe-page", "edge-swipe-committing");
+      surface.style.removeProperty("transform");
+      surface.style.removeProperty("transition");
+      surface.style.removeProperty("will-change");
+      surface.style.removeProperty("border-radius");
+      surface.style.removeProperty("box-shadow");
+    }
+    activeSurface.current = null;
+  };
+
   useEffect(() => {
-    if (!canGoBack) {
+    if (!enabled) {
       setActive(false);
       setPull(0);
+      clearSurface();
     }
-  }, [canGoBack]);
+    return () => clearSurface();
+  }, [enabled]);
 
-  if (!canGoBack) return null;
+  if (!enabled) return null;
 
-  const end = (commit: boolean) => {
-    if (commit && !committed.current) {
-      committed.current = true;
-      goBack();
-    }
+  const moveSurface = (distance: number) => {
+    const surface = activeSurface.current;
+    if (!surface) return;
+    const progress = Math.min(distance / commitDistance.current, 1);
+    surface.style.transform = `translate3d(${distance}px, 0, 0)`;
+    surface.style.borderRadius = `${progress * 14}px`;
+    surface.style.boxShadow = `-${Math.round(8 + progress * 12)}px 0 ${Math.round(24 + progress * 20)}px rgba(2, 10, 20, ${0.18 + progress * 0.18})`;
+  };
+
+  const finish = (commit: boolean) => {
+    const surface = activeSurface.current;
+    pointerId.current = null;
     setActive(false);
     setPull(0);
+
+    if (commit && surface) {
+      surface.classList.add("edge-swipe-committing");
+      // Leave the page at the finger's current position. The route's pop
+      // frame continues from there while the destination slides underneath.
+      goBack({ haptic: false });
+      cleanupTimer.current = window.setTimeout(clearSurface, 440);
+    } else if (surface) {
+      surface.style.transition = "transform 220ms var(--ease-out-ios), border-radius 220ms var(--ease-out-ios), box-shadow 220ms var(--ease-out-ios)";
+      moveSurface(0);
+      cleanupTimer.current = window.setTimeout(clearSurface, 240);
+    }
+
     pullRef.current = 0;
-    pointerId.current = null;
   };
 
   return (
     <>
       <div
-        // Invisible capture strip pinned to the left edge, below the modal
-        // layer so dialogs keep their own gestures.
-        className="fixed left-0 top-0 z-40 h-full touch-pan-y"
-        style={{
-          width: EDGE_WIDTH,
-          // Never sit under the notch cutout in landscape.
-          paddingLeft: "var(--safe-left)",
-        }}
-        onPointerDown={(e) => {
-          if (e.pointerType === "mouse") return; // touch/pen only
-          pointerId.current = e.pointerId;
-          startX.current = e.clientX;
-          startY.current = e.clientY;
-          committed.current = false;
+        className="app-edge-swipe fixed top-0 z-40 h-full touch-pan-y"
+        style={{ width: `calc(${EDGE_WIDTH}px + var(--safe-left))` }}
+        aria-hidden
+        onPointerDown={(event) => {
+          if (event.pointerType === "mouse") return;
+          const surfaces = document.querySelectorAll<HTMLElement>(".interactive-page-surface");
+          const surface = surfaces[surfaces.length - 1];
+          if (!surface) return;
+
+          clearSurface();
+          activeSurface.current = surface;
+          surface.classList.add("edge-swipe-page");
+          surface.style.willChange = "transform, border-radius";
+          surface.style.transition = "none";
+          pointerId.current = event.pointerId;
+          startX.current = event.clientX;
+          startY.current = event.clientY;
           pullRef.current = 0;
+          thresholdFeedbackSent.current = false;
+          commitDistance.current = Math.min(140, Math.max(78, window.innerWidth * 0.28));
           setActive(true);
+
           try {
-            e.currentTarget.setPointerCapture(e.pointerId);
+            event.currentTarget.setPointerCapture(event.pointerId);
           } catch {
-            // Capture is an optimisation, not a requirement — some engines
-            // reject it for pointers they no longer consider active.
+            // Some WebViews release a pointer before capture is requested.
           }
         }}
-        onPointerMove={(e) => {
-          if (pointerId.current !== e.pointerId) return;
-          const dx = e.clientX - startX.current;
-          const dy = Math.abs(e.clientY - startY.current);
-          // Vertical intent wins — this must never hijack a scroll.
+        onPointerMove={(event) => {
+          if (pointerId.current !== event.pointerId) return;
+          const dx = event.clientX - startX.current;
+          const dy = Math.abs(event.clientY - startY.current);
           if (dy > Math.abs(dx) && dy > 12) {
-            end(false);
+            finish(false);
             return;
           }
-          const next = Math.max(0, Math.min(dx, MAX_PULL));
-          // One tick of feedback the moment the gesture becomes committing,
-          // exactly like iOS.
-          if (next >= COMMIT_DISTANCE && pullRef.current < COMMIT_DISTANCE) {
+
+          const next = Math.max(0, Math.min(dx, window.innerWidth));
+          if (next >= commitDistance.current && !thresholdFeedbackSent.current) {
+            thresholdFeedbackSent.current = true;
             hapticImpact("light");
+          } else if (next < commitDistance.current) {
+            thresholdFeedbackSent.current = false;
           }
           pullRef.current = next;
           setPull(next);
+          moveSurface(next);
         }}
-        onPointerUp={(e) => {
-          if (pointerId.current !== e.pointerId) return;
-          end(pullRef.current >= COMMIT_DISTANCE);
+        onPointerUp={(event) => {
+          if (pointerId.current !== event.pointerId) return;
+          finish(pullRef.current >= commitDistance.current);
         }}
-        onPointerCancel={() => end(false)}
+        onPointerCancel={() => finish(false)}
       />
 
       <AnimatePresence>
@@ -118,17 +145,16 @@ export const EdgeSwipeBack = () => {
             key="edge-swipe-affordance"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.15 } }}
-            className="surface-glass pointer-events-none fixed top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border shadow-elev-2"
+            exit={{ opacity: 0, transition: { duration: 0.12 } }}
+            className="surface-glass pointer-events-none fixed top-1/2 z-40 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border shadow-elev-2"
             style={{
-              left: Math.min(pull, MAX_PULL) - 24,
-              // Firms up as the gesture approaches the commit threshold.
-              scale: 0.8 + Math.min(pull / COMMIT_DISTANCE, 1) * 0.2,
+              left: Math.max(4, Math.min(pull - 22, 66)),
+              scale: 0.84 + Math.min(pull / commitDistance.current, 1) * 0.16,
             }}
           >
             <ChevronLeft
-              className="h-6 w-6 text-white transition-opacity duration-control"
-              style={{ opacity: 0.5 + Math.min(pull / COMMIT_DISTANCE, 1) * 0.5 }}
+              className="h-6 w-6 text-foreground"
+              style={{ opacity: 0.55 + Math.min(pull / commitDistance.current, 1) * 0.45 }}
             />
           </motion.div>
         )}

@@ -63,14 +63,18 @@ assert(
 );
 
 // ── 3. Route transitions ─────────────────────────────────────────────
-// AnimatePresence only tracks its DIRECT children by key. The key used to sit
-// on <Routes>, one level below <Suspense>, so no page ever ran its exit
-// animation and mode="wait" had nothing to wait for.
+// AnimatePresence only tracks its DIRECT children by key. The direct child is
+// now a motion frame, and sync mode is deliberate: outgoing and incoming
+// screens must move together rather than adding two serial 300ms waits.
 const app = read("src/App.tsx");
-const presence = app.match(/<AnimatePresence[^>]*>\s*<Suspense([^>]*)>/);
+const presence = app.match(/<AnimatePresence[^>]*mode=["']sync["'][^>]*>\s*<motion\.div([^>]*)>/);
 assert(
   presence && /\bkey=/.test(presence[1]),
-  "src/App.tsx: AnimatePresence's direct child must carry the route key, otherwise page exit animations never run",
+  "src/App.tsx: sync AnimatePresence's direct motion child must carry the route key, otherwise the simultaneous push/pop breaks",
+);
+assert(
+  app.includes("<AppTabBar />") && app.includes('path="/library"'),
+  "src/App.tsx: the persistent tab bar and its discoverable /library destination must remain mounted",
 );
 
 // ── 4. Motion tokens ─────────────────────────────────────────────────
@@ -101,6 +105,7 @@ const glassBaseline = new Set(
 );
 const GLASS_ALLOWED = new Set([
   "src/components/AppNavBar.tsx",
+  "src/components/AppTabBar.tsx",
   "src/components/EdgeSwipeBack.tsx",
 ]);
 const newGlass = [];
@@ -161,11 +166,31 @@ for (const file of ["src/components/AppNavBar.tsx", "src/components/EdgeSwipeBac
   );
 }
 
+// ── 9. Appearance + interactive navigation ─────────────────────────
+const theme = read("src/hooks/useTheme.tsx");
+for (const appearance of ['"system"', '"light"', '"dark"']) {
+  assert(theme.includes(appearance), `src/hooks/useTheme.tsx: missing ${appearance} appearance`);
+}
+assert(
+  read("src/components/EdgeSwipeBack.tsx").includes("moveSurface(next)"),
+  "EdgeSwipeBack: the page itself must track the finger; an icon-only gesture is not interactive navigation",
+);
+for (const file of [
+  "src/components/GlobalSearch.tsx",
+  "src/components/library/LibraryInterface.tsx",
+  "src/pages/Index.tsx",
+]) {
+  assert(
+    !/backdrop-blur|backdropFilter|backdrop-filter/.test(read(file)),
+    `${file}: content surfaces must remain blur-free; glass is navigation chrome only`,
+  );
+}
+
 if (failures.length) {
   console.error(failures.map((failure) => `- ${failure}`).join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Design system checks passed: ${sourceFiles.length} source files, safe-area + shell colour + transition key + motion tokens + glass policy + text scaling verified.`,
+  `Design system checks passed: ${sourceFiles.length} source files, safe areas + simultaneous route frame + tab navigation + appearance + interactive swipe + glass policy verified.`,
 );

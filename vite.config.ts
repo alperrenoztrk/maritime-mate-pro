@@ -145,7 +145,10 @@ export default defineConfig(({ mode }) => ({
         enabled: false,
       },
       includeAssets: [
-        "favicon.ico",
+        "favicon.png",
+        "apple-touch-icon.png",
+        "app-icon-192.png",
+        "app-icon-512.png",
         "robots.txt",
         "maritime-logo.svg",
         "maritime-background.svg",
@@ -166,16 +169,21 @@ export default defineConfig(({ mode }) => ({
         scope: "/",
         icons: [
           { src: "/maritime-logo.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
-          { src: "/lovable-uploads/6600febe-17ab-46d7-b124-c43116e375e6.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
+          { src: "/app-icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+          { src: "/app-icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
         ],
       },
       workbox: {
         navigateFallback: "/index.html",
         // Don't cache OAuth/auth routes — they must always hit network
         navigateFallbackDenylist: [/^\/auth\//, /^\/api\//],
-        // Allow large assets (diagrams, PDFs, images)
+        // The default English locale is large; keep enough headroom for it.
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
-        globPatterns: ["**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,woff2,json,hdr}"],
+        // Precache the executable shell, not the entire media library. The old
+        // pattern eagerly downloaded every diagram, store graphic and HDR at
+        // service-worker install (2k+ files / ~80 MB). Images, diagrams, PDFs
+        // and HDR environments are cached on first use by runtime rules below.
+        globPatterns: ["**/*.{js,css,html,ico,woff2,json}"],
         // Every language now ships a FULL translation dictionary (~8 MB each,
         // 24 languages ≈ 190 MB total), so precaching them all at install is no
         // longer viable. Only the default language's pack (en) is precached;
@@ -229,6 +237,16 @@ export default defineConfig(({ mode }) => ({
             options: {
               cacheName: "pdf-cache",
               expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 90 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // 3D simulator environment maps are large and optional.
+            urlPattern: /\.hdr$/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "environment-map-cache",
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 90 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },
