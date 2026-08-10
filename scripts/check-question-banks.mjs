@@ -131,6 +131,7 @@ const BALANCED_BANKS = new Set([
   "communication",
   "machine/thermodynamics",
   "machine/auxiliary",
+  "machine/electrical",
 ]);
 
 /**
@@ -141,7 +142,6 @@ const BALANCED_BANKS = new Set([
  * böylece yeni bankalar dengeli doğar. Bütçeler yalnızca düşürülür.
  */
 const LENGTH_BUDGET = {
-  "machine/electrical": 84,
   "machine/automation": 97,
   "machine/maintenance": 97,
   "machine/erm": 99,
