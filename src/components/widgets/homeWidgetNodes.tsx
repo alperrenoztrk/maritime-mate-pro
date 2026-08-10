@@ -36,8 +36,10 @@ function decimalToDMS(dec: number, isLat: boolean): string {
 function wmoText(code?: number): string {
   if (code === undefined) return "—";
   if (code === 0) return "Açık";
-  if (code <= 3) return "Az Bulutlu";
-  if (code <= 48) return "Bulutlu";
+  if (code === 1) return "Az Bulutlu";
+  if (code === 2) return "Parçalı Bulutlu";
+  if (code === 3) return "Kapalı";
+  if (code <= 48) return "Puslu";
   if (code <= 67) return "Yağmurlu";
   if (code <= 77) return "Karlı";
   if (code <= 82) return "Sağanak";
@@ -197,7 +199,7 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
         onEdit={onEditLocation}
       />
     ),
-    sun: <SunArcWidget sunrise={sunrise} sunset={sunset} progress={sunProgress} />,
+    sun: <SunArcWidget sunrise={sunrise} sunset={sunset} progress={sunProgress} cloudCoverPct={data?.cloudCoverPct} />,
   };
 
   return { nodes };

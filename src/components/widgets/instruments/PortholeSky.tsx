@@ -81,11 +81,11 @@ export function PortholeSky({ look }: { look: SkyLook | null }) {
               ))
             : null}
 
-          {look.sun ? (
+          {look.sun && (look.cloud === null || look.cloud < 0.85) ? (
             <>
               <g style={{ mixBlendMode: "screen" }}>
                 {/* Hâle */}
-                <circle cx={look.sun.x} cy={look.sun.y} r={27} fill="url(#iwd-sunglow)" />
+                <circle cx={look.sun.x} cy={look.sun.y} r={27} fill="url(#iwd-sunglow)" opacity={look.cloud !== null ? 1 - look.cloud * 0.75 : 1} />
                 {/* Alçak güneşin suya düşen ışık yolu */}
                 {look.elevation < 0.45 ? (
                   <ellipse
@@ -102,7 +102,7 @@ export function PortholeSky({ look }: { look: SkyLook | null }) {
                 Kursun kendisi normal modda: fotoğraf zaten parlak olduğu için
                 "screen" ile çizilen bir güneş beyaz zeminde kaybolurdu.
               */}
-              <circle cx={look.sun.x} cy={look.sun.y} r={6.2} fill="url(#iwd-sundisc)" />
+              <circle cx={look.sun.x} cy={look.sun.y} r={6.2} fill="url(#iwd-sundisc)" opacity={look.cloud !== null ? 1 - look.cloud * 0.9 : 1} />
             </>
           ) : null}
 
