@@ -161,6 +161,40 @@ export const crewHierarchy: CrewGroup[] = [
           "Kaptan veya zabit tarafından verilen eğitim modüllerini tamamlamak",
         ],
       },
+      {
+        slug: "asci",
+        rank: "Aşçı (Cook)",
+        responsibility: "Gemi kumanyasının yönetimi, yemeklerin hazırlanması ve gıda hijyeninin sağlanması.",
+        reportsTo: "Kaptan",
+        alwaysDuties: [
+          "Gıda güvenliği, soğuk zincir ve temizlik standartlarının korunması",
+          "Alerjen listelerinin ve özel diyetlerin gözetilmesi",
+          "Mutfak yangın emniyeti ve ekipmanlarının çalışır durumda tutulması",
+        ],
+        generalTasks: [
+          "Kumanya stok takibi, günlük/haftalık menü planlaması ve tedarik taleplerinin hazırlanması",
+          "Mutfak ve kuru erzak depolarının düzeninin sağlanması",
+          "Gemi doktoru veya sorumlu zabit ile sağlık-hijyen kontrollerinin yürütülmesi",
+          "Atık gıda ve yağların çevre prosedürlerine uygun bertarafının organize edilmesi",
+        ],
+      },
+      {
+        slug: "kamarot",
+        rank: "Kamarot / Steward",
+        responsibility: "Yaşam mahalli düzeni, kumanya servisleri, vardiya ve temizlik planlarının uygulanması.",
+        reportsTo: "Aşçı",
+        alwaysDuties: [
+          "Hijyen ve temizlik kurallarına uymak, kayma/düşme risklerini azaltmak",
+          "Yangın, acil çıkış ve güvenlik ekipman yollarının açık tutulması",
+          "Servis sırasında sıcaklık ve gıda güvenliği kurallarının izlenmesi",
+        ],
+        generalTasks: [
+          "Kamaralar, ortak alanlar ve ofislerin günlük temizlik ve çarşaf değişimlerinin yapılması",
+          "Yemek servisi hazırlıkları, bulaşık ve depo düzeninin sağlanması",
+          "Çamaşırhane ve sarf malzeme stok takibinin yapılması",
+          "Tatbikatlarda muster istasyonlarına katılım ve misafir yönetiminde destek",
+        ],
+      },
     ],
   },
   {
