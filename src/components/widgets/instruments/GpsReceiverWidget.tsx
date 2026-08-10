@@ -51,7 +51,7 @@ export function GpsReceiverWidget({
             onEdit();
           }}
           className="iw-btn"
-          aria-label="Konumu manuel gir"
+          aria-label="Enter location manually"
         >
           <Pencil className="h-3 w-3" />
         </button>
@@ -69,7 +69,7 @@ export function GpsReceiverWidget({
             <span className={"iw-lcd-val" + (sourceKind === "ip" ? " iw-lcd-warn" : "")}>{sourceLabel}</span>
           </div>
           <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">SAPMA</span>
+            <span className="iw-lcd-key">ACC</span>
             <span className="iw-lcd-val">{accuracyLabel}</span>
           </div>
           <div className="iw-lcd-cell">
@@ -85,11 +85,11 @@ export function GpsReceiverWidget({
 
         <div className="iw-lcd-cells">
           <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">ENLEM</span>
+            <span className="iw-lcd-key">LAT</span>
             <span className="iw-lcd-val iw-lcd-small">{latDec || "—"}</span>
           </div>
           <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">BOYLAM</span>
+            <span className="iw-lcd-key">LON</span>
             <span className="iw-lcd-val iw-lcd-small">{lonDec || "—"}</span>
           </div>
           <div className="iw-lcd-cell">
