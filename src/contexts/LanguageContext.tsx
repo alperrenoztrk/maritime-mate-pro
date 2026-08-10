@@ -609,6 +609,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     } finally {
       for (const [element, version] of visibilityBatch) {
         if (pendingVisibilityRef.current.get(element) !== version) continue;
+        const timer = pendingVisibilityTimersRef.current.get(element);
+        if (timer !== undefined) window.clearTimeout(timer);
+        pendingVisibilityTimersRef.current.delete(element);
         element.removeAttribute(TRANSLATION_PENDING_ATTR);
         pendingVisibilityRef.current.delete(element);
       }
@@ -920,6 +923,26 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     if (currentLanguage === SOURCE_LANGUAGE) clearPendingVisibility();
   }, [clearPendingVisibility, currentLanguage, isRTL]);
+
+  useEffect(() => {
+    if (IS_HARVEST_FRAME || typeof window === 'undefined') return;
+    const handleRouteCommitted = () => {
+      // A route must never inherit queued DOM mutations or hidden nodes from
+      // the screen that just unmounted. Invalidate those async writes and let
+      // PageTransition translate the newly committed subtree exactly once.
+      translationRunIdRef.current += 1;
+      pendingNodesRef.current.clear();
+      clearPendingVisibility();
+      routeTranslationPromisesRef.current.clear();
+      if (flushHandleRef.current !== null) {
+        window.cancelAnimationFrame?.(flushHandleRef.current);
+        window.clearTimeout(flushHandleRef.current);
+        flushHandleRef.current = null;
+      }
+    };
+    window.addEventListener('app-route-committed', handleRouteCommitted);
+    return () => window.removeEventListener('app-route-committed', handleRouteCommitted);
+  }, [clearPendingVisibility]);
 
   useEffect(() => {
     if (IS_HARVEST_FRAME) return;
