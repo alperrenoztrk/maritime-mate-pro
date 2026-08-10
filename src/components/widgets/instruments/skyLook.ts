@@ -23,6 +23,8 @@ export interface SkyLook {
   glowColor: string;
   /** 0 gündüz, 1 tam karanlık — yıldızların görünürlüğü buradan. */
   night: number;
+  /** Gerçek bulutluluk 0-1 (veri yoksa null): 0 açık, 1 kapalı. */
+  cloud: number | null;
 }
 
 interface Keyframe {
@@ -60,8 +62,12 @@ const mix = (a: string, b: string, t: number) => {
  * Yükseklik sinüs eğrisiyle yaklaşıklanır — gerçek güneş yüksekliği de gün
  * boyunca böyle davranır.
  */
-export function skyLook(progress: number | null): SkyLook | null {
+export function skyLook(progress: number | null, cloudCoverPct?: number): SkyLook | null {
   if (progress === null || Number.isNaN(progress)) return null;
+  const cloud =
+    cloudCoverPct === undefined || Number.isNaN(cloudCoverPct)
+      ? null
+      : Math.min(1, Math.max(0, cloudCoverPct / 100));
   const p = Math.min(1.35, Math.max(-0.35, progress));
   const elevation = Math.sin(Math.PI * p);
 
@@ -79,13 +85,32 @@ export function skyLook(progress: number | null): SkyLook | null {
       : null;
 
   const warm = Math.min(1, Math.max(0, 1 - elevation * 2.6));
+
+  let topColor = mix(a.top, b.top, t);
+  let bottomColor = mix(a.bottom, b.bottom, t);
+  let tintAlpha = a.alpha + (b.alpha - a.alpha) * t;
+  let blend = near.blend;
+
+  // Fotoğraf puslu, gri bir günde çekildi. Gerçek bulutluluk verisi varsa
+  // gündüz camın ardındaki ışığı ona göre boyuyoruz: açık havada doygun mavi,
+  // kapalı havada kurşuni. Böylece widget dışarıdaki gökyüzüyle örtüşür.
+  if (cloud !== null && elevation > 0.06) {
+    const day = Math.min(1, (elevation - 0.06) / 0.24);
+    const clear = 1 - cloud;
+    topColor = mix(topColor, cloud < 0.5 ? "#1a6fc6" : "#78828d", day * (cloud < 0.5 ? clear * 0.85 : (cloud - 0.5) * 1.4));
+    bottomColor = mix(bottomColor, cloud < 0.5 ? "#a8d8f5" : "#aab3ba", day * (cloud < 0.5 ? clear * 0.7 : (cloud - 0.5) * 1.2));
+    tintAlpha = Math.min(0.82, tintAlpha + day * (cloud < 0.5 ? clear * 0.5 : 0.16));
+    blend = "multiply";
+  }
+
   return {
     sun,
     elevation,
-    topColor: mix(a.top, b.top, t),
-    bottomColor: mix(a.bottom, b.bottom, t),
-    tintAlpha: a.alpha + (b.alpha - a.alpha) * t,
-    blend: near.blend,
+    topColor,
+    bottomColor,
+    tintAlpha,
+    blend,
+    cloud,
     sunColor: mix("#ffe07d", "#ff8a34", warm),
     glowColor: mix("#ffeeb8", "#ff7a2e", warm),
     night: Math.min(1, Math.max(0, -elevation * 3)),

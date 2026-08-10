@@ -17,6 +17,7 @@ type WeatherResponse = {
     wind_speed_10m?: number;
     wind_direction_10m?: number;
     weather_code?: number;
+    cloud_cover?: number;
   };
   daily?: {
     time?: string[];
@@ -32,6 +33,7 @@ export type WeatherData = {
   windSpeedKt: number;
   windDirectionDeg: number;
   weatherCode: number;
+  cloudCoverPct: number;
   timeIso?: string;
   latitude: number;
   longitude: number;
@@ -114,6 +116,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
           "wind_speed_10m",
           "wind_direction_10m",
           "weather_code",
+          "cloud_cover",
         ].join(",")
       );
       weatherUrl.searchParams.set(
@@ -143,6 +146,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         windSpeedKt: cur.wind_speed_10m ?? NaN,
         windDirectionDeg: cur.wind_direction_10m ?? NaN,
         weatherCode: cur.weather_code ?? -1,
+      cloudCoverPct: cur.cloud_cover ?? NaN,
         timeIso: cur.time,
         latitude: lat,
         longitude: lon,
@@ -254,6 +258,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         windSpeedKt: preloadedData.windSpeedKt,
         windDirectionDeg: preloadedData.windDirectionDeg,
         weatherCode: preloadedData.weatherCode,
+        cloudCoverPct: preloadedData.cloudCoverPct,
         timeIso: preloadedData.timeIso,
         latitude: preloadedData.latitude,
         longitude: preloadedData.longitude,

@@ -13,6 +13,8 @@ interface SunArcWidgetProps {
    * null.
    */
   progress: number | null;
+  /** Gerçek bulutluluk yüzdesi (0-100); yoksa undefined. */
+  cloudCoverPct?: number;
 }
 
 /**
@@ -20,15 +22,15 @@ interface SunArcWidgetProps {
  * ışığı değiştirir (bkz. PortholeSky). Işık camın dışına, madeni çerçeveye de
  * vurur — bu yüzden hâlenin bir kopyası cam maskesinin dışında ayrı katman.
  */
-export function SunArcWidget({ sunrise, sunset, progress }: SunArcWidgetProps) {
-  const look = skyLook(progress);
+export function SunArcWidget({ sunrise, sunset, progress, cloudCoverPct }: SunArcWidgetProps) {
+  const look = skyLook(progress, cloudCoverPct);
 
   const spill =
     look?.sun != null
       ? {
           left: `${(PORTHOLE_GLASS.cx + ((look.sun.x - 50) / 50) * PORTHOLE_GLASS.rx) * 100}%`,
           top: `${(PORTHOLE_GLASS.cy + ((look.sun.y - 50) / 50) * PORTHOLE_GLASS.ry) * 100}%`,
-          opacity: Math.max(0.16, 0.5 - look.elevation * 0.34),
+          opacity: Math.max(0.16, 0.5 - look.elevation * 0.34) * (look.cloud !== null ? 1 - look.cloud * 0.8 : 1),
           background: `radial-gradient(circle, ${look.glowColor} 0%, transparent 64%)`,
         }
       : null;
