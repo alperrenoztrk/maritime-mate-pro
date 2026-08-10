@@ -5,7 +5,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "SOLAS'a göre yolcu gemilerinde haftalık olarak yapılması zorunlu tatbikatlar hangileridir?",
-    options: ["Yalnızca yangın tatbikatı", "Yalnızca can salı tatbikatı", "Gemiyi terk (abandon ship) ve yangın tatbikatı", "ISPS güvenlik tatbikatı"],
+    options: ["Yalnızca yangın tatbikatı yapılır", "Yalnızca can salı tatbikatı yapılır", "Gemiyi terk ve yangın tatbikatı", "ISPS güvenlik tatbikatı yapılır"],
     correctAnswer: 2,
     explanation: "SOLAS III/19.3.2: yolcu gemilerinde her hafta bir gemiyi terk (abandon ship) tatbikatı ve bir yangın tatbikatı yapılmalıdır. Ayrıca yeni binen yolcular için kalkıştan önceki 24 saat içinde toplanma (muster) düzenlenir.",
     category: "SOLAS/LSA"
@@ -13,16 +13,16 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 2,
     question: "ISM Kodu kapsamında DPA (Designated Person Ashore) kim tarafından atanır?",
-    options: ["Kaptan", "Şirket yönetimi", "Baş mühendis", "Liman otoritesi"],
-    correctAnswer: 1,
+    options: ["Şirket yönetimi", "Baş mühendis", "Liman otoritesi", "Kaptan"],
+    correctAnswer: 0,
     explanation: "DPA şirket tarafından atanır ve gemi-kıyı arasında emniyet bağlantısını sağlar.",
     category: "ISM"
   },
   {
     id: 3,
     question: "ISPS Kodu kaç güvenlik seviyesi tanımlar?",
-    options: ["2", "3", "4", "5"],
-    correctAnswer: 1,
+    options: ["3", "4", "5", "2"],
+    correctAnswer: 0,
     explanation: "ISPS: 3 güvenlik seviyesi (1/2/3).",
     category: "ISPS"
   },
@@ -37,8 +37,8 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 5,
     question: "EPIRB genellikle hangi koşulda otomatik olarak aktive olur?",
-    options: ["Yangın alarmıyla", "HRU ile 1–4 m derinlikte serbest kalınca", "Kaptan emriyle", "Makine arızasında"],
-    correctAnswer: 1,
+    options: ["HRU ile 1-4 m derinlikte serbest kalınca", "Köprüüstünden kaptan emriyle", "Ana makine arızası sinyaliyle", "Köprüüstü yangın alarmının çalmasıyla birlikte"],
+    correctAnswer: 0,
     explanation: "Hidrostatik serbest bırakma (HRU) EPIRB'i 1–4 m derinlikte serbest bırakır; cihaz suyla temasla aktive olur.",
     category: "GMDSS"
   },
@@ -53,223 +53,223 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 7,
     question: "Hot Work (Sıcak İş) izni hangi işler için gereklidir?",
-    options: ["Temizlik işleri", "Kaynak/kesme/taşlama", "Boya işleri", "Elektrik ölçüm işleri"],
-    correctAnswer: 1,
+    options: ["Kaynak/kesme/taşlama", "Boya işleri", "Elektrik ölçüm işleri", "Temizlik işleri"],
+    correctAnswer: 0,
     explanation: "Isı ve kıvılcım üreten tüm işler Hot Work kapsamındadır.",
     category: "PTW"
   },
   {
     id: 8,
     question: "Can sallarının servis aralığı en fazla ne kadardır?",
-    options: ["6 ay", "12 ay", "18 ay", "24 ay"],
-    correctAnswer: 1,
+    options: ["12 ay", "18 ay", "24 ay", "6 ay"],
+    correctAnswer: 0,
     explanation: "Liferaft bakımı genellikle en geç 12 ayda bir yetkili istasyonda yapılır.",
     category: "SOLAS/LSA"
   },
   {
     id: 9,
     question: "Enclosed space entry için en kritik ölçümlerden biri hangisidir?",
-    options: ["Deniz suyu tuzluluğu", "O2 ve LEL (patlayıcı) ölçümü", "Barometre", "Rüzgâr yönü"],
-    correctAnswer: 1,
+    options: ["Oksijen (O2) ve LEL patlayıcı ölçümü", "Barometrik basınç ölçümü", "Güverte rüzgâr yönü ölçümü", "Deniz suyunun tuzluluk oranının ölçümü"],
+    correctAnswer: 0,
     explanation: "Kapalı mahallerde oksijen eksikliği ve patlayıcı/toksik gaz riski vardır; ölçüm şarttır.",
     category: "PTW"
   },
   {
     id: 10,
     question: "Yangın sınıflarında 'Class B' neyi ifade eder?",
-    options: ["Katı maddeler", "Yanıcı sıvılar", "Metal yangınları", "Elektrik yangınları"],
-    correctAnswer: 1,
+    options: ["Yanıcı sıvılar", "Metal yangınları", "Elektrik yangınları", "Katı maddeler"],
+    correctAnswer: 0,
     explanation: "Class B: flammable liquids (benzin, solvent vb.).",
     category: "FFA"
   },
   {
     id: 11,
     question: "CO2 sabit yangın söndürme sistemini devreye almadan önce en kritik adım hangisidir?",
-    options: ["Kapıları açmak", "Personeli tahliye edip mahalı kapatmak", "Havalandırmayı artırmak", "Yangına su vermek"],
-    correctAnswer: 1,
+    options: ["Personeli tahliye edip mahali kapatmak", "Mahal havalandırmasını artırmak", "Yangına önce yangın hortumuyla su vermek", "Mahal kapılarını tamamen açmak"],
+    correctAnswer: 0,
     explanation: "CO2 boğucu etkili gazdır; personel tahliyesi + mahal sızdırmazlığı şarttır.",
     category: "FFA"
   },
   {
     id: 12,
     question: "Can yeleğinde (lifejacket) temel amaç hangisidir?",
-    options: ["Isıyı artırmak", "Kişiyi su üstünde ve yüzü yukarıda tutmak", "Hızlandırmak", "Sadece görünürlük"],
-    correctAnswer: 1,
+    options: ["Su üstünde ve yüzü yukarıda tutmak", "Suda yüzme hızını artırmak", "Yalnızca gece görünürlüğü sağlamak", "Vücut ısısını bir miktar yükseltmek"],
+    correctAnswer: 0,
     explanation: "Lifejacket, bilinç kaybında bile kişiyi yüzü yukarı pozisyona getirip afloat tutmayı hedefler.",
     category: "SOLAS/LSA"
   },
   {
     id: 13,
     question: "SART (Search and Rescue Transponder) temel olarak hangi cihazla etkileşir?",
-    options: ["GPS", "Radar", "Echosounder", "AIS"],
-    correctAnswer: 1,
+    options: ["Radar", "Echosounder", "AIS", "GPS"],
+    correctAnswer: 0,
     explanation: "SART, X-band radar sinyaline cevap vererek ekran üzerinde işaretler üretir.",
     category: "GMDSS"
   },
   {
     id: 14,
     question: "Bir iş kazasında 'near miss' neyi ifade eder?",
-    options: ["Kesin yaralanma", "Yaralanma/hasar olmadan atlatılan olay", "Planlı tatbikat", "Yetkisiz giriş"],
-    correctAnswer: 1,
+    options: ["Yaralanma/hasar olmadan atlatılan olay", "Önceden planlanmış tatbikat", "Yetkisiz kişinin gemiye girişi", "Kesin olarak yaralanmayla sonuçlanan olay"],
+    correctAnswer: 0,
     explanation: "Near miss, kaza olabilirdi ama zarar oluşmadan atlatıldı; raporlama ile önlem geliştirilir.",
     category: "SMS"
   },
   {
     id: 15,
     question: "PPE hiyerarşisinde (kontrol önlemleri) en etkili yaklaşım hangisidir?",
-    options: ["Sadece PPE kullanmak", "Tehlikeyi ortadan kaldırmak (elimination)", "Uyarı levhası", "Eldiven takmak"],
-    correctAnswer: 1,
+    options: ["Tehlikeyi ortadan kaldırmak", "Uyarı levhası asmak", "Koruyucu eldiven takmak", "Yalnızca KKD kullanmakla yetinmek"],
+    correctAnswer: 0,
     explanation: "Kontrol hiyerarşisinde elimination/substitution en üsttedir; PPE en son bariyerdir.",
     category: "İş Güvenliği"
   },
   {
     id: 16,
     question: "Muster list (alarm rol listesi) neyi düzenler?",
-    options: ["Kargo planını", "Acil durum görev dağılımını", "Yakıt tüketimini", "Radar ayarlarını"],
-    correctAnswer: 1,
+    options: ["Acil durum görev dağılımını düzenler", "Yakıt tüketim kaydını düzenler", "Radar ayarlarını düzenler", "Yük istif planını düzenler"],
+    correctAnswer: 0,
     explanation: "Muster list, acil durumda herkesin görevini ve toplanma yerini tanımlar.",
     category: "SOLAS/LSA"
   },
   {
     id: 17,
     question: "Foam (köpük) özellikle hangi yangınlarda etkilidir?",
-    options: ["Metal", "Yanıcı sıvı", "Kağıt/odun", "Elektrik panosu"],
-    correctAnswer: 1,
+    options: ["Yanıcı sıvı", "Kağıt/odun", "Elektrik panosu", "Metal"],
+    correctAnswer: 0,
     explanation: "Köpük, Class B'de yüzeyi örter ve buharlaşmayı/oksijen temasını azaltır.",
     category: "FFA"
   },
   {
     id: 18,
     question: "Lifeboat/liferaft 'embarkation' sırasında en kritik risklerden biri hangisidir?",
-    options: ["Güneş yanığı", "Düşme ve sıkışma", "Uyku", "Yüksek tuzluluk"],
-    correctAnswer: 1,
+    options: ["Düşme ve sıkışma", "Uyku", "Yüksek tuzluluk oranı", "Güneş yanığı"],
+    correctAnswer: 0,
     explanation: "Embarkation, düşme/sıkışma ve kontrolsüz hareket riskleri taşır; talimatlara uyulmalı.",
     category: "SOLAS/LSA"
   },
   {
     id: 19,
     question: "Gemi üzerinde 'lock-out/tag-out' (LOTO) sistemi neyi hedefler?",
-    options: ["Güverteyi boyamak", "Enerji izolasyonu ile kazara çalıştırmayı önlemek", "GPS güncellemek", "Kargo ısıtmak"],
-    correctAnswer: 1,
+    options: ["Enerji izolasyonuyla kazara çalıştırmayı önler", "Elektronik harita güncellemesini düzenler", "Kargo ısıtma sistemini devreye alır", "Güverte boyama işini planlayıp düzenler"],
+    correctAnswer: 0,
     explanation: "LOTO, bakım/onarımda ekipman enerjisinin izole edilmesini ve yanlışlıkla devreye alınmamasını sağlar.",
     category: "İş Güvenliği"
   },
   {
     id: 20,
     question: "SOLAS'ta yangın kapılarının (fire doors) temel amacı hangisidir?",
-    options: ["Hava sirkülasyonu", "Yangın ve dumanın yayılımını sınırlamak", "Dekorasyon", "Ses yalıtımı"],
-    correctAnswer: 1,
+    options: ["Yangın ve dumanın yayılımını sınırlamak", "İç mekân dekorasyonunu tamamlamak", "Kamaralarda ses yalıtımını iyileştirmek", "Koridorda hava sirkülasyonunu sağlamak"],
+    correctAnswer: 0,
     explanation: "Fire doors, bölmeler arası yangın/duman geçişini geciktirir ve kaçış için zaman kazandırır.",
     category: "SOLAS/FFA"
   },
   {
     id: 21,
     question: "Bir yangın alarmında, dumanı tahliye etmek için kontrolsüz kapı açmak neden risklidir?",
-    options: ["Risk değildir", "Oksijen sağlayarak yangını büyütebilir", "Suyu artırır", "Sesi azaltır"],
-    correctAnswer: 1,
+    options: ["Oksijen sağlayarak yangını büyütebilir", "Kullanılan söndürme suyunu artırır", "Alarm sesinin duyulmasını azaltır", "Uygulamada herhangi bir risk oluşturmaz"],
+    correctAnswer: 0,
     explanation: "Kapı açmak hava/oksijen sağlayıp 'flashover/backdraft' riskini artırabilir.",
     category: "FFA"
   },
   {
     id: 22,
     question: "İlk yardımda ciddi kanamada en doğru ilk müdahale hangisidir?",
-    options: ["Yarayı yıkamak", "Doğrudan basınç uygulamak", "Bandajı gevşek bırakmak", "Kişiyi yürütmek"],
-    correctAnswer: 1,
+    options: ["Kişiyi yürütmek", "Yarayı yıkamak", "Doğrudan basınç uygulamak", "Bandajı gevşek biçimde bırakmak"],
+    correctAnswer: 2,
     explanation: "Masif kanamada doğrudan basınç, yükseltme ve gerekiyorsa turnike prosedürü uygulanır.",
     category: "İlk Yardım"
   },
   {
     id: 23,
     question: "Gemi üzerinde 'safety induction' (oryantasyon) en çok neyi sağlar?",
-    options: ["Daha hızlı internet", "Temel emniyet kuralları ve prosedürlere aşinalık", "Yakıt tasarrufu", "Harita düzeltmesi"],
-    correctAnswer: 1,
+    options: ["Temel emniyet kural ve usullerini tanıtır", "Sefer yakıt tasarrufu sağlar", "Harita düzeltmelerini tamamlar", "Gemide daha hızlı internet sağlar"],
+    correctAnswer: 0,
     explanation: "Yeni katılan personelin acil durumlar, PPE, PTW, toplanma yerleri gibi kritik konuları öğrenmesini sağlar.",
     category: "SMS"
   },
   {
     id: 24,
     question: "SCBA (self-contained breathing apparatus) en çok hangi durumda gereklidir?",
-    options: ["Açık güvertede", "Dumanlı/oksijeni belirsiz ortamda", "Kamarada", "Köprüüstünde"],
-    correctAnswer: 1,
+    options: ["Köprüüstü vardiyası sırasında", "Açık güvertede rutin çalışmada", "Dumanlı veya oksijeni belirsiz ortamda", "Kamarada dinlenme sırasında"],
+    correctAnswer: 2,
     explanation: "Duman/oksijen eksikliği/toksik gaz ihtimali olan alanlarda SCBA şarttır.",
     category: "PPE"
   },
   {
     id: 25,
     question: "Güvertede kayma/düşmeyi azaltmak için en temel önlem hangisidir?",
-    options: ["Koşmak", "Housekeeping ve uygun ayakkabı", "Işıkları kapatmak", "Rüzgârı ölçmek"],
-    correctAnswer: 1,
+    options: ["Düzenli housekeeping ve uygun ayakkabı", "Çalışma alanı ışıklarını kapatmak", "Güvertede rüzgâr hızını ölçmek", "Güvertede hızlı hareket edip aceleyle koşmak"],
+    correctAnswer: 0,
     explanation: "Düzenli güverte, döküntülerin temizlenmesi ve uygun ayakkabı kayma/düşmeyi ciddi azaltır.",
     category: "İş Güvenliği"
   },
   {
     id: 26,
     question: "SOLAS'a göre yük gemilerinde gemiyi terk (abandon ship) ve yangın tatbikatları hangi sıklıkta yapılmalıdır?",
-    options: ["Haftada bir", "Ayda bir", "Üç ayda bir", "Yılda bir"],
-    correctAnswer: 1,
+    options: ["Yılda bir", "Haftada bir", "Ayda bir", "Üç ayda bir"],
+    correctAnswer: 2,
     explanation: "SOLAS III/19.3.2: yük gemilerinde her bir gemiyi terk ve yangın tatbikatı ayda en az bir kez yapılır. Mürettebatın %25'inden fazlası değiştiyse kalkıştan sonraki 24 saat içinde tatbikat yapılır.",
     category: "SOLAS/LSA"
   },
   {
     id: 27,
     question: "SOLAS'a göre can filikalarının (lifeboat) suya indirilerek yapılan tatbikatı hangi azami aralıkta gerçekleştirilmelidir?",
-    options: ["1 ay", "3 ay", "6 ay", "12 ay"],
-    correctAnswer: 1,
+    options: ["3 ay", "6 ay", "12 ay", "1 ay"],
+    correctAnswer: 0,
     explanation: "SOLAS III/19.3.3.3: her can filikası mümkünse her ay yüzdürülmeli ve manevra yaptırılmalıdır; ancak en az 3 ayda bir indirilip suda kullanılmalıdır.",
     category: "SOLAS/LSA"
   },
   {
     id: 28,
     question: "Yangın üçgeni (fire triangle) hangi üç bileşenden oluşur?",
-    options: ["Yakıt, oksijen, su", "Yakıt, oksijen, ısı", "Isı, duman, basınç", "Oksijen, ısı, karbondioksit"],
-    correctAnswer: 1,
+    options: ["Oksijen, ısı, karbondioksit", "Yakıt, oksijen, su", "Yakıt, oksijen, ısı", "Isı, duman, basınç"],
+    correctAnswer: 2,
     explanation: "Yangın için yakıt, oksijen ve ısı (tutuşma kaynağı) gereklidir. Söndürme bu bileşenlerden en az birini ortadan kaldırarak yapılır.",
     category: "FFA"
   },
   {
     id: 29,
     question: "Yangın sınıflarında 'Class A' neyi ifade eder?",
-    options: ["Yanıcı sıvılar", "Katı yanıcı maddeler (odun, kağıt, kumaş)", "Yanıcı gazlar", "Metal yangınları"],
-    correctAnswer: 1,
+    options: ["Katı yanıcılar (odun, kâğıt, kumaş)", "Yanıcı gazlar (LPG, metan, asetilen)", "Yanıcı metaller (sodyum, magnezyum)", "Yanıcı sıvılar (benzin, tiner, boya)"],
+    correctAnswer: 0,
     explanation: "Class A: kül bırakan katı yanıcı maddeler (odun, kağıt, tekstil). Su ve köpük ile söndürülür.",
     category: "FFA"
   },
   {
     id: 30,
     question: "Yangın sınıflarında 'Class D' hangi yangınları kapsar?",
-    options: ["Elektrik yangınları", "Yanıcı metaller (sodyum, magnezyum)", "Mutfak yağ yangınları", "Gaz yangınları"],
-    correctAnswer: 1,
+    options: ["Basınçlı yanıcı gaz yangınları", "Elektrik panosu ve kablo yangınları", "Yanıcı metaller (sodyum, magnezyum)", "Mutfakta fritöz yağı yangınları"],
+    correctAnswer: 2,
     explanation: "Class D: yanıcı metal yangınları (magnezyum, sodyum, alüminyum tozu). Özel kuru toz söndürücü gerekir; su tehlikelidir.",
     category: "FFA"
   },
   {
     id: 31,
     question: "Immersion suit (dalış/hayatta kalma elbisesi) temel olarak hangi tehlikeye karşı koruma sağlar?",
-    options: ["Yangın", "Hipotermi (soğuk su)", "Boğulma sesi", "Güneş yanığı"],
-    correctAnswer: 1,
+    options: ["Hipotermi, yani soğuk su etkisi", "Su altında oluşan basınç", "Uzun süreli güneş yanığı", "Güverte yangını ve sıcak yüzeyler"],
+    correctAnswer: 0,
     explanation: "Immersion suit, soğuk suda vücut ısı kaybını yavaşlatarak hipotermi riskini azaltır (SOLAS III/32 ve LSA Code).",
     category: "SOLAS/LSA"
   },
   {
     id: 32,
     question: "Bir kişi denize düştüğünde (Man Overboard) köprüüstünde atılması gereken ilk manevra eylemlerinden biri hangisidir?",
-    options: ["Makineyi durdurmak", "Dümeni MOB tarafına basıp can simidi/MOB işareti atmak", "Demir atmak", "Telsizi kapatmak"],
-    correctAnswer: 1,
+    options: ["Telsiz cihazını kapatıp sessizlik almak", "Ana makineyi hemen tamamen durdurmak", "Dümeni MOB tarafına basıp simit atmak", "Bulunulan yerde derhâl demir atmak"],
+    correctAnswer: 2,
     explanation: "MOB anında dümen kazazedenin düştüğü tarafa basılır (pervaneyi uzaklaştırmak için), can simidi/duman işareti atılır ve gözcü atanır.",
     category: "MOB"
   },
   {
     id: 33,
     question: "Williamson dönüşü (Williamson turn) hangi durumda tercih edilir?",
-    options: ["Yüksek hızda seyirde", "Denize adam düştüğünde, özellikle düşme anı belirsizse veya gece/sis koşulunda", "Demirleme manevrasında", "Yanaşma manevrasında"],
-    correctAnswer: 1,
+    options: ["Düşme anı belirsizse veya gece/siste", "Demirleme manevrası sırasında", "Rıhtıma yanaşma manevrasında", "Yüksek hızda açık deniz seyrinde"],
+    correctAnswer: 0,
     explanation: "Williamson dönüşü gemiyi ters rotaya, yani izi (track) üzerine getirir; MOB pozisyonu belirsiz olduğunda veya görüş kısıtlıyken etkilidir.",
     category: "MOB"
   },
   {
     id: 34,
     question: "Lifebuoy (can simidi) sayısı ve donanımı SOLAS'a göre nasıl olmalıdır? Köprüüstü kanatlarındaki simitlerde hangisi bulunur?",
-    options: ["Sadece ışık", "Otomatik ışık ve duman işareti (self-igniting light + smoke signal)", "Sadece halat", "Hiçbir donanım"],
+    options: ["Yalnızca otomatik yanan ışık", "Otomatik ışık ve duman işareti", "Yalnızca can halatı bulunur", "Üzerinde herhangi bir donanım bulunmaz"],
     correctAnswer: 1,
     explanation: "SOLAS III/7.1: köprüüstü kanatlarındaki en az iki can simidi hem otomatik ışık hem de kendiliğinden duman çıkaran işaretle ve hızlı bırakma düzeniyle donatılır.",
     category: "SOLAS/LSA"
@@ -277,7 +277,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 35,
     question: "Pyrotechnic (işaret fişeği) türlerinden 'rocket parachute flare' hangi renkte yanar ve ne süre görünür kalır?",
-    options: ["Yeşil, 10 sn", "Kırmızı, yaklaşık 40 saniye paraşütle iner", "Beyaz, 5 sn", "Mavi, 2 dk"],
+    options: ["Yeşil renkte, yaklaşık 10 saniye", "Kırmızı, yaklaşık 40 saniye paraşütle", "Beyaz renkte, yaklaşık 5 saniye", "Mavi renkte, yaklaşık 2 dakika"],
     correctAnswer: 1,
     explanation: "LSA Code: paraşütlü işaret fişeği kırmızı yanar, en az 300 m yükseğe çıkar ve paraşütle en az 40 saniye süreyle yanarak iner.",
     category: "SOLAS/LSA"
@@ -285,7 +285,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 36,
     question: "ISM Kodunun (International Safety Management) temel amacı hangisidir?",
-    options: ["Yakıt tasarrufu", "Denizde emniyetli işletim ve kirliliğin önlenmesi için yönetim sistemi kurmak", "Kargo hızını artırmak", "Liman ücretlerini düşürmek"],
+    options: ["Sefer yakıt tasarrufunu düzenli sağlamak", "Emniyetli işletme ve kirlilik önleme sistemi", "Kargo elleçleme hızını belirgin artırmak", "Limanda ödenen ücretleri düşürmek"],
     correctAnswer: 1,
     explanation: "ISM Kodu (SOLAS Bölüm IX), emniyetli gemi işletimi ve deniz kirliliğinin önlenmesi için Emniyetli Yönetim Sistemi (SMS) kurulmasını zorunlu kılar.",
     category: "ISM"
@@ -293,7 +293,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 37,
     question: "ISM Kodu kapsamında gemide bulunması gereken temel doküman hangisidir?",
-    options: ["Sadece B/L", "Safety Management Certificate (SMC) ve şirkette DOC", "Sadece sigorta poliçesi", "Sadece yük manifestosu"],
+    options: ["Yalnızca konişmento nüshası", "Gemide SMC, şirkette DOC belgesi", "Yalnızca sigorta poliçesi", "Yalnızca yük manifestosu"],
     correctAnswer: 1,
     explanation: "Şirkete Document of Compliance (DOC), gemiye ise Safety Management Certificate (SMC) düzenlenir; ISM uyumunun kanıtıdır.",
     category: "ISM"
@@ -301,7 +301,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 38,
     question: "ISPS Kodu kapsamında gemide güvenlikten sorumlu görevli kimdir?",
-    options: ["Baş mühendis", "Ship Security Officer (SSO)", "Lostromo", "Aşçı"],
+    options: ["Baş mühendis (Chief Engineer)", "Gemi Güvenlik Zabiti (SSO)", "Güverte lostromosu (Bosun)", "Gemi aşçıbaşı (Cook)"],
     correctAnswer: 1,
     explanation: "ISPS: gemi güvenlik planının uygulanmasından Ship Security Officer (SSO) sorumludur; kıyıda CSO, limanda PFSO bulunur.",
     category: "ISPS"
@@ -309,7 +309,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 39,
     question: "ISPS güvenlik seviyesi 2 (Security Level 2) neyi ifade eder?",
-    options: ["Normal/rutin durum", "Yükselmiş risk; ek koruyucu önlemler bir süre uygulanır", "Olası/yakın tehdit; en yüksek önlemler", "Güvenlik yok"],
+    options: ["Normal ve rutin işletme durumu", "Yükselmiş risk; ek önlemler uygulanır", "Yakın tehdit; en yüksek önlemler", "Güvenlik önlemi uygulanmaz"],
     correctAnswer: 1,
     explanation: "Seviye 1 normal, Seviye 2 güvenlik olayı riskinin arttığı ve ek tedbirlerin alındığı, Seviye 3 ise olayın olası/yakın olduğu en yüksek seviyedir.",
     category: "ISPS"
@@ -317,7 +317,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 40,
     question: "Sabit CO2 sistemi bir mahale boşaltıldıktan sonra mahale yeniden girişte en kritik kural hangisidir?",
-    options: ["Hemen girmek", "Yeterli havalandırma ve gaz ölçümü yapılmadan, SCBA olmadan girmemek", "Sadece ışıkları açmak", "Kapıyı kapalı tutmak"],
+    options: ["Söndürme biter bitmez mahale hemen içeri girmek", "Havalandırma ve gaz ölçümü olmadan girmemek", "Yalnızca aydınlatmayı açıp içeri girmek", "Kapıyı kapalı tutup sonucu beklemek"],
     correctAnswer: 1,
     explanation: "CO2 oksijeni uzaklaştırır ve boğucudur. Yangın söndükten sonra mahal iyice havalandırılmadan ve atmosfer kontrol edilmeden, SCBA olmadan girilmez.",
     category: "FFA"
@@ -325,7 +325,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 41,
     question: "Sprinkler sisteminde algılayıcı bulbların farklı renkleri neyi gösterir?",
-    options: ["Üreticiyi", "Aktivasyon sıcaklığını", "Su basıncını", "Boru çapını"],
+    options: ["Bulbu üreten firmanın markasını gösterir", "Aktivasyon sıcaklığını gösterir", "Hat su basıncını gösterir", "Boru çapını gösterir"],
     correctAnswer: 1,
     explanation: "Cam bulb renkleri (örn. kırmızı 68°C, sarı 79°C, yeşil 93°C) sprinkler kafasının patlayıp suyu boşaltacağı sıcaklığı belirtir.",
     category: "FFA"
@@ -333,7 +333,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 42,
     question: "Fireman's outfit (yangıncı teçhizatı) içinde aşağıdakilerden hangisi bulunur?",
-    options: ["Sadece eldiven", "Koruyucu giysi, çizme, eldiven, baret, emniyet lambası, balta ve SCBA", "Sadece can yeleği", "Sadece düdük"],
+    options: ["Yalnızca koruyucu eldiven ve baret", "Giysi, çizme, eldiven, lamba, balta, SCBA", "Yalnızca can yeleği ve düdük", "Yalnızca emniyet lambası ve halat"],
     correctAnswer: 1,
     explanation: "SOLAS II-2/10 ve FSS Code: yangıncı teçhizatı koruyucu kıyafet, bot, eldiven, baret, emniyet lambası, yangıncı baltası ve solunum cihazından (SCBA) oluşur.",
     category: "FFA"
@@ -341,7 +341,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 43,
     question: "EEBD (Emergency Escape Breathing Device) ne amaçla kullanılır?",
-    options: ["Yangınla mücadele", "Dumanlı ortamdan kaçış için kısa süreli solunum (yaklaşık 10-15 dk)", "Dalış", "Kargo gazı ölçümü"],
+    options: ["Yangınla aktif mücadele amacıyla kullanılır", "Dumanlı ortamdan kaçış için 10-15 dakika", "Su altı dalış işlerinde kullanılır", "Kargo gazı ölçümünde kullanılır"],
     correctAnswer: 1,
     explanation: "EEBD yalnızca tehlikeli atmosferden kaçış içindir; en az 10 dakika kullanım süresi sağlar. Yangınla mücadele veya kapalı mahalle giriş için kullanılmaz.",
     category: "FFA"
@@ -349,7 +349,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 44,
     question: "GMDSS'te DSC (Digital Selective Calling) ile gönderilen tehlike çağrısının ardından telsiz haberleşmesi (distress traffic) tipik olarak hangi kanalda yapılır?",
-    options: ["VHF Kanal 16 / 2182 kHz", "VHF Kanal 6", "VHF Kanal 13", "VHF Kanal 70"],
+    options: ["VHF Kanal 16 veya 2182 kHz", "VHF Kanal 6 çalışma kanalı", "VHF Kanal 13 köprü kanalı", "VHF Kanal 70 DSC kanalı"],
     correctAnswer: 0,
     explanation: "VHF Kanal 70 DSC uyarısı içindir; sesli tehlike trafiği VHF Kanal 16 (156.8 MHz) veya MF'te 2182 kHz üzerinden yürütülür.",
     category: "GMDSS"
@@ -357,7 +357,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 45,
     question: "Free-fall (serbest düşmeli) can filikalarında temel avantaj nedir?",
-    options: ["Daha ucuz olması", "Gemiden hızlı ve güvenilir ayrılma; vinç/halat arızasından bağımsız iniş", "Daha az yer kaplaması", "Sadece görünürlük"],
+    options: ["Satın alma maliyetinin daha düşük olması", "Vinç arızasından bağımsız hızlı iniş", "Güvertede az yer kaplaması", "Uzaktan daha görünür olması"],
     correctAnswer: 1,
     explanation: "Serbest düşmeli filika kıçtan suya bırakılır; davit/vinç bağımlılığı olmadan hızla gemiden uzaklaşır, özellikle tankerlerde tercih edilir.",
     category: "SOLAS/LSA"
@@ -365,7 +365,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 46,
     question: "Risk değerlendirmesinde (risk assessment) risk skoru genellikle nasıl hesaplanır?",
-    options: ["Olasılık + Şiddet", "Olasılık × Şiddet (sonuç)", "Sadece şiddet", "Maliyet × Süre"],
+    options: ["Olasılık ile şiddetin toplanması", "Olasılık ile şiddetin çarpılması", "Yalnızca şiddetin alınması", "Maliyet ile sürenin çarpımı"],
     correctAnswer: 1,
     explanation: "Risk genellikle olayın olma olasılığı (probability) ile sonucun şiddetinin (severity) çarpımı olarak değerlendirilir.",
     category: "SMS"
@@ -373,7 +373,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 47,
     question: "Kapalı mahalle (enclosed space) girişte güvenli kabul edilen minimum oksijen seviyesi yaklaşık kaçtır?",
-    options: ["%15", "%18", "%20.9 (normal atmosfer)", "%25"],
+    options: ["%15, kısa süreli girişe uygun", "%18, maske ile girişe uygun", "%20.9, normal atmosfer değeri", "%25, oksijence zengin ortam"],
     correctAnswer: 2,
     explanation: "Güvenli giriş için atmosfer hacimce yaklaşık %20.9 oksijen içermelidir (normal atmosfer). Düşük oksijen (örn. <%19.5) tehlikelidir; IMO Resolution A.1050(27).",
     category: "PTW"
@@ -381,7 +381,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 48,
     question: "MARPOL kapsamında değil ama emniyet kapsamında: yağmurda/buzlu güvertede çalışan personel için 'permit to work' yanında en kritik unsur hangisidir?",
-    options: ["Hava durumu raporu", "Tehlike değerlendirmesi, uygun PPE ve gerektiğinde emniyet kemeri/harness", "Yüksek hız", "Telsiz susturma"],
+    options: ["Ayrıntılı hava durumu raporu almak", "Risk değerlendirmesi, KKD ve emniyet kemeri", "Çalışma hızını mümkünce artırmak", "Telsiz haberleşmesini susturmak"],
     correctAnswer: 1,
     explanation: "Yüksekte/açık güvertede çalışmada düşme önleme (fall protection), uygun PPE ve risk değerlendirmesi esastır; emniyet kemeri/harness sabit bir noktaya bağlanır.",
     category: "İş Güvenliği"
@@ -389,7 +389,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 49,
     question: "Davit ile indirilen can filikalarında 'on-load release gear' bakımı neden kritiktir?",
-    options: ["Estetik için", "Yük altında kazara açılma kazalarını önlemek için", "Boya korumak için", "Hız için"],
+    options: ["Filikanın dış görünümü için", "Yük altında kazara açılmayı önlemek", "Boya kaplamasını korumak için", "İndirme hızını artırmak için"],
     correctAnswer: 1,
     explanation: "On-load release mekanizmasının hatalı bakımı/kullanımı, filika asılıyken kazara serbest kalmasına ve ölümcül kazalara yol açabilir; SOLAS III/1.5 ve MSC.1/Circ.1392 sıkı kontrol ister.",
     category: "SOLAS/LSA"
@@ -397,7 +397,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 50,
     question: "Hidrostatik serbest bırakma ünitesi (HRU) bağlı bir can salının (liferaft), gemi battığında otomatik yüzeye çıkması için 'weak link' (zayıf halka) ne işe yarar?",
-    options: ["Salı gemiye sabit tutmak", "Salı şişirip belirli bir gerilimde kopanarak gemiden ayırmak", "Salı ağırlaştırmak", "Işık vermek"],
+    options: ["Salı gemiye sürekli sabit bağlı tutar", "Salı şişirip belirli gerilimde kopar", "Salı ağırlaştırıp suda dengeler", "Sala otomatik konum ışığı verir"],
     correctAnswer: 1,
     explanation: "Weak link, salın painter halatını gemiye bağlı tutar; sal şişer, gemi batıp belirli yük aşılınca zayıf halka kopar ve sal yüzeyde serbest kalır.",
     category: "SOLAS/LSA"
@@ -405,7 +405,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 51,
     question: "SOLAS II-2'ye göre bir geminin yangın kontrol planlarının (fire control plan) bir kopyası nerede bulundurulmalıdır?",
-    options: ["Sadece kaptan kamarasında", "Güverte üzerinde, su geçirmez bir muhafaza içinde, dışarıdan gelen itfaiye için", "Makine kontrol odasında", "Köprüüstü çekmecesinde gizli"],
+    options: ["Yalnızca kaptanın kamarasında saklanır", "Güvertede su geçirmez muhafaza içinde", "Yalnızca makine kontrol odasında", "Köprüüstü çekmecesinde kilitli"],
     correctAnswer: 1,
     explanation: "SOLAS II-2/15.2.4: yangın kontrol planlarının bir nüshası, sürekli güverte üzerinde su geçirmez bir kapta, kıyıdan gelen itfaiye personelinin ulaşabilmesi için bulundurulur.",
     category: "SOLAS/FFA"
@@ -413,7 +413,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 52,
     question: "Yangın söndürmede 'cooling' (soğutma) yöntemi yangın üçgeninin hangi bileşenini hedef alır?",
-    options: ["Yakıt", "Oksijen", "Isı", "Zincirleme reaksiyon"],
+    options: ["Yangın üçgeninin yakıt bileşenini", "Yangın üçgeninin oksijen bileşenini", "Yangın üçgeninin ısı bileşenini", "Zincirleme reaksiyon bileşenini"],
     correctAnswer: 2,
     explanation: "Su ile soğutma, yanan maddeyi tutuşma sıcaklığının altına indirir; bu yöntem yangın üçgeninin ısı bileşenini ortadan kaldırır.",
     category: "FFA"
@@ -429,7 +429,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 54,
     question: "Mutfak fritöz/yağ yangınları (cooking oils/fats) hangi yangın sınıfına girer?",
-    options: ["Class A", "Class B", "Class F (veya K)", "Class D"],
+    options: ["Class A, katı yanıcı maddeler", "Class B, yanıcı sıvı maddeler", "Class F (veya K), mutfak yağları", "Class D, yanıcı metal yangınları"],
     correctAnswer: 2,
     explanation: "Pişirme yağ ve katı yağları Class F (Avrupa) / Class K (ABD) sınıfındadır; wet chemical söndürücü kullanılır, su kullanılmaz.",
     category: "FFA"
@@ -437,7 +437,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 55,
     question: "SOLAS'a göre acil yangın pompasının (emergency fire pump) ana yangın pompasından temel farkı nedir?",
-    options: ["Daha büyük olması", "Ana makine dairesi dışında, bağımsız güç kaynağıyla çalışması", "Sadece limanda kullanılması", "Tatlı su basması"],
+    options: ["Ana pompadan daha büyük kapasiteli", "Makine dairesi dışında, bağımsız güçle", "Yalnızca limanda kullanılabilmesi", "Deniz suyu yerine tatlı su basması"],
     correctAnswer: 1,
     explanation: "Acil yangın pompası, ana makine dairesindeki yangın bu daireyi kullanılmaz kılsa bile su sağlayabilmek için makine dairesi dışına, ayrı bir güç kaynağıyla yerleştirilir (SOLAS II-2/10).",
     category: "FFA"
@@ -445,7 +445,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 56,
     question: "Uluslararası kıyı bağlantısı (International Shore Connection) ne işe yarar?",
-    options: ["Elektrik almak", "Kıyıdan veya başka gemiden yangın suyu hattına bağlanmak", "Yakıt almak", "Balast basmak"],
+    options: ["Kıyıdan elektrik enerjisi almak", "Kıyıdan yangın suyu hattına bağlanmak", "Kıyıdan yakıt ikmali yapmak", "Kıyıdan balast suyu basmak"],
     correctAnswer: 1,
     explanation: "International Shore Connection, geminin yangın ana hattının kıyı tesisinin veya başka bir geminin su kaynağına bağlanmasını sağlayan standart flanştır (SOLAS II-2/10.2.1.7).",
     category: "FFA"
@@ -453,15 +453,15 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 57,
     question: "Kuru kimyevi toz (dry powder) söndürücü hangi yangınlarda kullanılmamalıdır (etkinlik/temizlik açısından sakıncalı)?",
-    options: ["Sıvı yakıt", "Gaz yangını", "Hassas elektronik ekipmanlar (kalıntı bırakır)", "Çöp yangını"],
-    correctAnswer: 2,
+    options: ["Sıvı yakıt kaynaklı yangınlarda kullanılmaz", "Hassas elektronik ekipmanda kullanılmaz", "Gaz yangınlarında kullanılmaz", "Çöp yangınlarında kullanılmaz"],
+    correctAnswer: 1,
     explanation: "Kuru kimyevi toz aşındırıcı/iletken olabilen kalıntı bırakır ve hassas elektronik/elektrik ekipmanına zarar verir; bu tür yerlerde CO2 tercih edilir.",
     category: "FFA"
   },
   {
     id: 58,
     question: "SOLAS III/19'a göre her mürettebat üyesinin can salı/filika tatbikatlarına en geç ne kadar süre içinde katılmış olması gerekir?",
-    options: ["Gemiye katıldıktan sonraki ilk hafta", "Gemiye katıldıktan sonraki ilk ay", "İlk üç ay", "İlk altı ay"],
+    options: ["Gemiye katıldıktan sonraki ilk hafta", "Gemiye katıldıktan sonraki ilk ay", "Gemiye katıldıktan sonraki üç ay", "Gemiye katıldıktan sonraki altı ay"],
     correctAnswer: 1,
     explanation: "SOLAS III/19.3.2: bir mürettebat üyesi son tatbikata katılmamışsa, gemiye katılmasını izleyen 24 saat içinde gemiyle tanıştırılmalı ve tatbikatlara katılmalıdır; her üye ayda bir tatbikata katılır.",
     category: "SOLAS/LSA"
@@ -469,7 +469,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 59,
     question: "Can filikası motoru, soğuk havalarda dahil olmak üzere ne kadar süre çalışabilecek yakıta sahip olmalı ve hangi hızı sağlamalıdır?",
-    options: ["6 saat / 3 knot", "24 saat / en az 6 knot (tam yükle sakin suda)", "12 saat / 4 knot", "48 saat / 10 knot"],
+    options: ["6 saat yeterli, en az 3 knot hız", "24 saat yeterli, en az 6 knot hız", "12 saat yeterli, en az 4 knot hız", "48 saat yeterli, en az 10 knot hız"],
     correctAnswer: 1,
     explanation: "LSA Code 4.4: can filikası motoru en az 24 saat çalışacak yakıta sahip olmalı ve tam yüklü filikayı sakin suda en az 6 knot hızla yürütebilmelidir.",
     category: "SOLAS/LSA"
@@ -477,7 +477,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 60,
     question: "Quick Closing Valve (hızlı kapama valfi) yakıt/yağ tanklarında hangi acil durumda kullanılır?",
-    options: ["Yakıt almak için", "Makine dairesi yangınında uzaktan yakıt beslemesini kesmek için", "Tank temizlemek için", "Balast basmak için"],
+    options: ["Yakıt ikmali sırasında hattı açar", "Makine yangınında yakıtı uzaktan keser", "Tank temizliğinde hattı izole eder", "Balast basmada hattı yönlendirir"],
     correctAnswer: 1,
     explanation: "Hızlı kapama valfleri, makine dairesi yangınında yakıt/yağ tanklarından beslemeyi makine dairesi dışından uzaktan kapatarak yangına yakıt gitmesini engeller (SOLAS II-2).",
     category: "FFA"
@@ -485,7 +485,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 61,
     question: "Çift gaz tüplü olmayan bir SCBA'da hava şişesinin tipik nominal kullanım süresi yaklaşık ne kadardır?",
-    options: ["5 dakika", "30 dakika (tipik 1200 L / 6 L 200 bar tüp)", "2 saat", "10 saat"],
+    options: ["Yaklaşık 5 dakikalık kullanım süresi", "Yaklaşık 30 dakika kullanım süresi", "Yaklaşık 2 saat kullanım süresi", "Yaklaşık 10 saat kullanım süresi"],
     correctAnswer: 1,
     explanation: "Tipik yangıncı SCBA tüpü yaklaşık 1200 litre hava içerir ve normal nefes alımıyla yaklaşık 30 dakika kullanım sağlar; ağır eforla bu süre kısalır.",
     category: "PPE"
@@ -493,7 +493,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 62,
     question: "Acil durumda 'General Emergency Alarm' sinyali nasıldır?",
-    options: ["Bir uzun düdük", "Yedi veya daha fazla kısa ardından bir uzun düdük/zil", "İki kısa düdük", "Sürekli ışık"],
+    options: ["Tek bir uzun düdük sesi", "Yedi kısa ardından bir uzun düdük", "Arka arkaya iki kısa düdük", "Sürekli yanan kırmızı ışık"],
     correctAnswer: 1,
     explanation: "Genel acil durum alarmı, gemi düdüğü/zili ile en az yedi kısa ve ardından bir uzun ses olarak verilir (SOLAS III/6.4.2).",
     category: "SOLAS/LSA"
@@ -501,7 +501,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 63,
     question: "Hidrostatik serbest bırakma ünitesinin (HRU) genel değiştirme/servis aralığı tipik olarak nedir?",
-    options: ["Her sefer", "Üreticiye göre genellikle 2 yılda bir (disposable tipte)", "10 yıl", "Hiç değişmez"],
+    options: ["Her seferde yenilenmesi gerekir", "Genellikle iki yılda bir yenilenir", "On yılda bir yenilenmesi gerekir", "Hiçbir zaman yenilenmesi gerekmemektedir"],
     correctAnswer: 1,
     explanation: "Çoğu tek kullanımlık (disposable) HRU üreticileri 2 yılda bir değiştirilmesini ister; üzerinde son kullanma tarihi yazar.",
     category: "SOLAS/LSA"
@@ -509,7 +509,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 64,
     question: "İki kişiyle gerçekleştirilen kapalı mahal kurtarma operasyonunda dışarıda bekleyen kişinin (standby man) görevi nedir?",
-    options: ["Mahale girip yardım etmek", "Girişte kalıp iletişimi sürdürmek ve gerektiğinde alarm vermek/yardım çağırmak", "Kapıyı kapatmak", "Pompa çalıştırmak"],
+    options: ["Mahale girip doğrudan yardım etmek", "Girişte kalıp iletişimi sürdürmek", "Giriş kapağını kapalı tutmak", "Tahliye pompasını çalıştırmak"],
     correctAnswer: 1,
     explanation: "Standby man giriş ağzında kalır; içerideki kişiyle sürekli iletişim kurar, acil durumda alarm verir ve eğitimli kurtarma ekibini çağırır, kendisi içeri dalmaz.",
     category: "PTW"
@@ -517,7 +517,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 65,
     question: "ISPS Kodunda 'Declaration of Security' (DoS) ne zaman düzenlenir?",
-    options: ["Her yük operasyonunda", "Gemi-liman veya gemi-gemi etkileşiminde güvenlik sorumluluklarının paylaşılması gerektiğinde", "Sadece seviye 3'te", "Hiçbir zaman"],
+    options: ["Her yük operasyonunun başlangıcında düzenlenir", "Güvenlik sorumluluğu paylaşımı gerektiğinde", "Yalnızca güvenlik seviyesi 3 durumunda", "Hiçbir koşulda düzenlenmesi gerekmez"],
     correctAnswer: 1,
     explanation: "DoS, gemi ile liman tesisi (veya başka gemi) arasında güvenlik önlemleri ve sorumlulukların açıkça belirlenmesi gerektiğinde, özellikle farklı güvenlik seviyeleri veya yüksek risk durumunda düzenlenir.",
     category: "ISPS"
@@ -525,7 +525,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 66,
     question: "ISM Kodu kapsamında 'non-conformity' (uygunsuzluk) nedir?",
-    options: ["Kaza", "Belirlenmiş bir gereğin karşılanmadığını gösteren gözlemlenen durum", "Yangın tatbikatı", "Liman denetimi"],
+    options: ["Yaralanmayla sonuçlanan iş kazası", "Belirlenmiş bir gereğin karşılanmaması", "Planlı yangın tatbikatı kaydı", "Liman devleti denetim ziyareti"],
     correctAnswer: 1,
     explanation: "ISM 1.1.9: uygunsuzluk, belirtilen bir gerekliliğin yerine getirilmediğine dair objektif kanıtla saptanan durumdur; 'major non-conformity' ise ciddi tehdit oluşturan sapmadır.",
     category: "ISM"
@@ -549,7 +549,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 69,
     question: "Lifeboat davit fren testi ve halat (fall) yenilenmesi konusunda doğru olan hangisidir?",
-    options: ["Halatlar hiç değişmez", "Halatlar gerektiğinde, en geç 5 yılda bir uçtan uca çevrilir/yenilenir", "Frenler test edilmez", "Sadece kuru dokta kontrol edilir"],
+    options: ["Halatlar hiçbir zaman değiştirilmemektedir", "Halatlar en geç 5 yılda bir yenilenir", "Fren testi hiç yapılmaz", "Yalnızca kuru dokta kontrol edilir"],
     correctAnswer: 1,
     explanation: "SOLAS III/20.4: filika halatları (falls) bozulduğunda veya en geç 5 yılda bir ters çevrilir; yıpranma durumunda yenilenir. Davit frenleri düzenli test edilir.",
     category: "SOLAS/LSA"
@@ -557,7 +557,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 70,
     question: "Yangınla mücadelede 'boundary cooling' (sınır soğutma) ne amaçla yapılır?",
-    options: ["Yangını söndürmek", "Yangının komşu bölmelere yayılmasını engellemek için bitişik bölme yüzeylerini soğutmak", "Dumanı atmak", "Su biriktirmek"],
+    options: ["Yangını doğrudan söndürüp bitirmek için", "Bitişik bölme yüzeylerini soğutmak", "Mahaldeki dumanı dışarı atmak", "Güvertede su biriktirmek için"],
     correctAnswer: 1,
     explanation: "Boundary cooling, yanan mahalle bitişik perde/güverte yüzeylerine su tutarak ısı iletimini ve yangının komşu bölmelere sıçramasını önler.",
     category: "FFA"
@@ -565,7 +565,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 71,
     question: "Köprüüstünde 'abandon ship' kararını kim verir?",
-    options: ["Lostromo", "Sadece kaptan (master)", "Baş mühendis", "DPA"],
+    options: ["Güverte lostromosu karar verir", "Yalnızca kaptan karar verir", "Baş mühendis karar verir", "Şirket DPA'sı karar verir"],
     correctAnswer: 1,
     explanation: "Gemiyi terk etme kararı yalnızca kaptana aittir; erken terk genellikle daha tehlikelidir çünkü gemi en iyi can salıdır prensibi geçerlidir.",
     category: "Abandon Ship"
@@ -573,7 +573,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 72,
     question: "Can salına bindikten sonra hayatta kalmada öncelik sıralamasında ('protection-location-water-food') ilk öncelik genellikle hangisidir?",
-    options: ["Yiyecek", "Korunma (hipotermi/güneşten korunma) ve salın güvenliği", "Balık tutmak", "Yüzmek"],
+    options: ["Yiyecek temini ilk sıradadır", "Korunma ve salın emniyeti önce gelir", "Balık tutmak ilk sıradadır", "Yüzerek kıyıya ulaşmak öncedir"],
     correctAnswer: 1,
     explanation: "Hayatta kalma sıralaması Protection-Location-Water-Food'dur; önce çevre/hipotermiden korunma ve sal emniyeti (sea anchor, kapama), sonra konum bildirme gelir.",
     category: "Abandon Ship"
@@ -581,7 +581,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 73,
     question: "Lifejacket üzerindeki ışık (lifejacket light) SOLAS'a göre ne özellikte olmalıdır?",
-    options: ["Renkli yanıp sönen", "En az 8 saat süreyle yanan beyaz ışık", "Sadece 1 saat", "Kırmızı sürekli"],
+    options: ["Renkli ve sürekli yanıp sönen ışık olmalı", "En az 8 saat yanan beyaz ışık olmalı", "En çok 1 saat yanan ışık olmalı", "Kırmızı ve sürekli ışık olmalı"],
     correctAnswer: 1,
     explanation: "LSA Code 2.2.3: can yeleği ışığı en az 0.75 cd şiddetinde, en az 8 saat süreyle çalışan beyaz ışık olmalıdır; otomatik ışıklar yanıp sönebilir.",
     category: "SOLAS/LSA"
@@ -589,7 +589,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 74,
     question: "Tankerlerde 'Inert Gas System (IGS)' temel emniyet amacı nedir?",
-    options: ["Kargoyu ısıtmak", "Tank atmosferindeki oksijeni düşürerek patlayıcı ortam oluşmasını önlemek", "Kargo pompalamak", "Tankı yıkamak"],
+    options: ["Yük tankındaki kargoyu ısıtıp akıtmak", "Oksijeni düşürüp patlayıcı ortamı önlemek", "Yükü tanktan pompayla boşaltmak", "Yük tankının iç yüzeyini yıkayıp temizlemek"],
     correctAnswer: 1,
     explanation: "IGS, kargo tanklarına oksijeni %8'in (genellikle ≤%5) altına düşüren inert gaz basarak yanma için gerekli oksijen oranının altına iner ve patlama riskini ortadan kaldırır (SOLAS II-2).",
     category: "FFA"
@@ -597,7 +597,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 75,
     question: "MOB durumunda 'Anderson turn' (single turn) hangi durumda en uygundur?",
-    options: ["MOB pozisyonu belirsizken", "Adamın düştüğü hemen fark edildiğinde, en hızlı geri dönüş gerektiğinde", "Dar sularda demirlerken", "Sisli havada izi takip ederken"],
+    options: ["MOB pozisyonu belirsiz kaldığında", "Düşme hemen fark edildiğinde, en hızlı dönüş", "Dar sularda demirleme yapılırken", "Sisli havada gemi izi takip edilirken"],
     correctAnswer: 1,
     explanation: "Anderson (tek) dönüş en hızlı geri dönüş manevrasıdır ve düşme anının hemen fark edildiği, manevra alanının yeterli olduğu durumlarda kullanılır; ancak yaklaşma hassasiyeti düşüktür.",
     category: "MOB"
