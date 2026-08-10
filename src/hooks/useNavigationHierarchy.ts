@@ -276,7 +276,12 @@ export const useNavigationHierarchy = () => {
   // cooldown (~250 ms) collapses bursts into a single climb-one-level.
   const lastBackAtRef = useRef(0);
   const webBackInFlightRef = useRef(false);
+  const guardDepthRef = useRef(0);
+  const pushTimestampsRef = useRef<number[]>([]);
   const BACK_COOLDOWN_MS = 250;
+  const PUSH_WINDOW_MS = 30_000;
+  const MAX_PUSHES_PER_WINDOW = 40;
+
 
   const handleBack = useCallback((event?: { preventDefault?: () => void }) => {
     // Defensive: tell Capacitor we own this event. No-op in Cap 7 where
