@@ -271,9 +271,41 @@ html[data-font-size="max"] .app-page-shell :where(.grid-cols-2, .grid-cols-3, .g
   visibility: visible;
 }
 
-.edge-swipe-preview > .interactive-page-surface {
+.edge-swipe-preview__surface {
   min-height: 100%;
+  padding: calc(var(--safe-top) + 5rem) 1rem calc(var(--safe-bottom) + 2rem);
   background: var(--maritime-shell-background);
+}
+
+.edge-swipe-preview__title {
+  max-width: 22rem;
+  overflow: hidden;
+  color: hsl(var(--foreground));
+  font-size: var(--text-title-2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.edge-swipe-preview__card {
+  display: flex;
+  min-height: min(42svh, 24rem);
+  margin-top: 1rem;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-2xl);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-1);
+}
+
+.edge-swipe-preview__line {
+  display: block;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: hsl(var(--foreground) / 0.1);
 }
 
 .edge-swipe-preview:empty::after {

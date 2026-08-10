@@ -88,7 +88,10 @@ export function AppNavBar() {
   if (!canGoBack || isAppChromeHidden(pathname)) return null;
 
   return (
-    <header className="app-navbar pointer-events-none fixed right-0 top-0 z-50">
+    <header
+      className="app-navbar pointer-events-none fixed right-0 top-0 z-50"
+      data-mt-global-root
+    >
       <motion.div
         aria-hidden
         className="surface-glass absolute inset-0 border-b"

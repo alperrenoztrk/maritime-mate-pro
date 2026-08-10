@@ -81,6 +81,7 @@ export function AppTabBar() {
       aria-label="Ana bölümler"
       className="app-tabbar surface-glass"
       data-app-tabbar
+      data-mt-global-root
     >
       <div className="app-tabbar__items">
         {TABS.map(({ id, label, to, icon: Icon }) => {

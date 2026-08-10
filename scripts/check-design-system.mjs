@@ -90,6 +90,11 @@ assert(
   read("src/components/PageTransition.tsx").includes("app-page-shell--${shellMode}"),
   "PageTransition: every route must use the shared standard/immersive AppPageShell boundary",
 );
+assert(
+  app.indexOf("<RequireAuth>") < app.indexOf("<RouteTranslationGate />") &&
+    read("src/components/RouteTranslationGate.tsx").includes("ROUTE_TRANSLATION_MAX_WAIT_MS"),
+  "RouteTranslationGate: keep the blocker inside auth and enforce a finite responsiveness budget",
+);
 
 // ── 4. Motion tokens ─────────────────────────────────────────────────
 // useFrameRate wrote a 120Hz frame budget into --animation-duration /
@@ -213,7 +218,14 @@ assert(
 assert(
   read("src/components/EdgeSwipeBack.tsx").includes("velocity.current") &&
     read("src/components/EdgeSwipeBack.tsx").includes("mountRoutePreview"),
-  "EdgeSwipeBack: interactive pop must reveal the previous route and consider gesture velocity",
+  "EdgeSwipeBack: interactive pop must reveal a bounded previous-route preview and consider gesture velocity",
+);
+const navigationPreview = read("src/lib/navigationPreview.ts");
+assert(
+  navigationPreview.includes("MAX_PREVIEWS") &&
+    navigationPreview.includes("PREVIEW_LINE_COUNT") &&
+    !navigationPreview.includes("cloneNode"),
+  "navigationPreview: previews must keep a constant-size semantic model; deep DOM clones can freeze mobile WebViews",
 );
 
 const main = read("src/main.tsx");
