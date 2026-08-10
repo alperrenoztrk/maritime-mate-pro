@@ -16,7 +16,7 @@ import { SunArcWidget } from "@/components/widgets/instruments/SunArcWidget";
 
 
 function degreesToCompass(degrees: number): string {
-  const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
+  const dirs = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
   return dirs[Math.round(degrees / 22.5) % 16];
 }
 
