@@ -29,7 +29,7 @@ function decimalToDMS(dec: number, isLat: boolean): string {
   remainingSeconds -= d * 3600;
   const m = Math.floor(remainingSeconds / 60);
   const s = (remainingSeconds - m * 60).toFixed(2);
-  const dir = isLat ? (dec >= 0 ? "K" : "G") : (dec >= 0 ? "D" : "B");
+  const dir = isLat ? (dec >= 0 ? "N" : "S") : (dec >= 0 ? "E" : "W");
   return `${d}° ${m}′ ${s}″ ${dir}`;
 }
 
@@ -125,7 +125,7 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const sourceLabel =
     effectiveSource === "gps" ? "GPS" :
     effectiveSource === "ip" ? "IP" :
-    effectiveSource === "manual" ? "Manuel" : "—";
+    effectiveSource === "manual" ? "MANUAL" : "—";
   const accuracyLabel =
     effectiveAccuracy == null ? "—" :
     effectiveAccuracy < 1000 ? `±${Math.round(effectiveAccuracy)} m` :
