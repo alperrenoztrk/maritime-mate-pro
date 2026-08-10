@@ -46,7 +46,26 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
     routeTranslationToken,
     readyRouteTranslation,
   );
+  // Safety valve: never keep a mounted route invisible forever. If the
+  // translation pass stalls, reveal the source copy instead of leaving a blank
+  // (and therefore unusable) screen behind the chrome.
+  const [revealForced, setRevealForced] = useState(false);
+  const visible = translationReady || revealForced;
   const shellMode = isAppPageImmersive(location.pathname) ? "immersive" : "standard";
+
+  useEffect(() => {
+    if (translationReady) {
+      setRevealForced(false);
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      console.warn(
+        `[PageTransition] Revealing ${location.pathname} untranslated after ${ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS}ms`,
+      );
+      setRevealForced(true);
+    }, ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS);
+    return () => window.clearTimeout(timer);
+  }, [location.pathname, routeTranslationToken, translationReady]);
 
   // <ScrollToTop> already resets the offset the moment the route changes, but
   // AnimatePresence runs in "wait" mode: the incoming page only mounts once
@@ -72,12 +91,13 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
   return (
     <div
       ref={rootRef}
-      className={`page-transition-shell app-page-shell app-page-shell--${shellMode} w-full ${translationReady ? "" : "invisible"}`}
+      className={`page-transition-shell app-page-shell app-page-shell--${shellMode} w-full ${visible ? "" : "invisible"}`}
       data-page-path={location.pathname}
       data-page-shell={shellMode}
       data-mt-route-pending={translationReady ? undefined : ""}
-      aria-busy={!translationReady}
+      aria-busy={!visible}
     >
+
       {children}
     </div>
   );
