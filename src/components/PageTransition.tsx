@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
-import { ReactNode, useLayoutEffect } from "react";
+import { ReactNode, useLayoutEffect, useMemo, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { scrollToTop } from "@/lib/scrollToTop";
 import { getNavigationDirection } from "@/lib/navigationDirection";
 import { prefersReducedMotion } from "@/hooks/useAppMotion";
+import { useLanguage } from "@/contexts/useLanguage";
+import {
+  createRouteTranslationToken,
+  isRouteTranslationReady,
+} from "@/utils/routeTranslation";
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -27,6 +33,29 @@ const ENTER_OFFSET = 18; // % of width the incoming page travels
 const EXIT_OFFSET = 7; // % the outgoing page drifts (parallax)
 
 export const PageTransition = ({ children }: PageTransitionProps) => {
+  const location = useLocation();
+  const rootRef = useRef<HTMLDivElement>(null);
+  const {
+    currentLanguage,
+    readyRouteTranslation,
+    translateRouteRoot,
+  } = useLanguage();
+  const routeTranslationToken = useMemo(
+    () => createRouteTranslationToken(
+      currentLanguage,
+      location.key,
+      location.pathname,
+      location.search,
+      location.hash,
+    ),
+    [currentLanguage, location.hash, location.key, location.pathname, location.search],
+  );
+  const translationReady = isRouteTranslationReady(
+    currentLanguage,
+    routeTranslationToken,
+    readyRouteTranslation,
+  );
+
   // <ScrollToTop> already resets the offset the moment the route changes, but
   // AnimatePresence runs in "wait" mode: the incoming page only mounts once
   // the outgoing one has finished animating out. Resetting again here — before
@@ -36,6 +65,17 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
     if (typeof window !== "undefined" && window.location.hash) return;
     scrollToTop();
   }, []);
+
+  // The route subtree is committed but kept invisible on its very first frame.
+  // Translate that exact subtree, then reveal it and let the entrance animation
+  // run. Because this is a layout effect, authored Turkish copy can never be
+  // painted between the lazy route mount and the translation pass.
+  useLayoutEffect(() => {
+    if (currentLanguage === "tr" || translationReady || !rootRef.current) return;
+    void translateRouteRoot(rootRef.current, routeTranslationToken).catch((error) => {
+      console.error("Route translation failed:", error);
+    });
+  }, [currentLanguage, routeTranslationToken, translateRouteRoot, translationReady]);
 
   const variants = {
     initial: () => {
@@ -53,6 +93,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
 
   return (
     <motion.div
+      ref={rootRef}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -65,7 +106,9 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
             // properties for tween timing.
             { duration: 0.3, ease: [0.32, 0.72, 0, 1] }
       }
-      className="w-full"
+      className={`w-full ${translationReady ? "" : "invisible"}`}
+      data-mt-route-pending={translationReady ? undefined : ""}
+      aria-busy={!translationReady}
     >
       {children}
     </motion.div>

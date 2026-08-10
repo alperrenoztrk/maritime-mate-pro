@@ -15,6 +15,7 @@ import {
   buildTranslationBatches,
   splitBatchResult,
   BATCH_SEPARATOR,
+  isNoTranslateZone,
 } from '@/utils/pageTranslator';
 import {
   loadStaticDictionary,
@@ -45,6 +46,7 @@ const IS_HARVEST_FRAME =
   /[?&]_mtHarvest=1\b/.test(window.location.search);
 
 const DEFAULT_LANGUAGE = 'en';
+const TRANSLATION_PENDING_ATTR = 'data-mt-translation-pending';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
@@ -82,6 +84,23 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
+interface RouteTranslationTask {
+  root: HTMLElement;
+  promise: Promise<void>;
+}
+
+const getSavedLanguage = (): string => {
+  if (IS_HARVEST_FRAME) return SOURCE_LANGUAGE;
+  try {
+    const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
+    return BASE_SUPPORTED_LANGUAGES.some((lang) => lang.language === savedLanguage)
+      ? savedLanguage
+      : DEFAULT_LANGUAGE;
+  } catch {
+    return DEFAULT_LANGUAGE;
+  }
+};
+
 // ── Translation engine configuration ─────────────────────────────────────────
 // v2: cache version bumped when the contextual glossary/correction layer was
 // activated, so clients drop previously cached mistranslations (e.g. "Üstü:"
@@ -93,21 +112,35 @@ const SEEN_STRINGS_MAX = 8000;
 const BULK_CONCURRENCY = 8;
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState<string>(DEFAULT_LANGUAGE);
+  // Resolve the persisted language during the first render. Waiting for an
+  // effect used to render one frame in the default language before switching,
+  // which also started the wrong dictionary load on slower mobile devices.
+  const [currentLanguage, setCurrentLanguage] = useState<string>(getSavedLanguage);
   const [isLoading, setIsLoading] = useState(true);
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [changeProgress, setChangeProgress] = useState(0);
   const [changePhase, setChangePhase] = useState<LanguageChangePhase>('idle');
+  const [readyRouteTranslation, setReadyRouteTranslation] = useState<string | null>(null);
   const { toast } = useToast();
 
   const translationCacheRef = useRef<Map<string, string>>(new Map());
   const translationRunIdRef = useRef(0);
   const observerRef = useRef<MutationObserver | null>(null);
   const pendingNodesRef = useRef<Set<Node>>(new Set());
+  const pendingVisibilityRef = useRef<Map<HTMLElement, number>>(new Map());
+  const pendingVisibilityVersionRef = useRef(0);
   const flushHandleRef = useRef<number | null>(null);
   const persistHandleRef = useRef<number | null>(null);
   const originalTextRef = useRef<WeakMap<Text, string>>(new WeakMap());
-  const currentLanguageRef = useRef<string>(DEFAULT_LANGUAGE);
+  const currentLanguageRef = useRef<string>(currentLanguage);
+  const translateRootsRef = useRef<(
+    roots: Node[],
+    languageCode: string,
+    runId: number,
+    options?: { allowLive?: boolean },
+  ) => Promise<void>>(async () => undefined);
+  const routeTranslationPromisesRef = useRef<Map<string, RouteTranslationTask>>(new Map());
+  const latestRouteTranslationTokenRef = useRef<string | null>(null);
   // Tracks languages whose upfront bulk pass has already run. NOTE: this no
   // longer gates live translation. The shipped static packs only cover ~40 UI
   // strings (menus/buttons/labels), NOT the app's body content (lessons,
@@ -404,18 +437,95 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     options: { allowLive?: boolean } = {}
   ) => translateRoots([document.body], languageCode, runId, options);
 
+  // PageTransition calls this before an incoming route is allowed to become
+  // visible. The promise resolves only after that route's actual DOM subtree
+  // has completed its local/live translation pass. This replaces the old
+  // fixed 150 ms guess, which routinely expired before a lazy route mounted or
+  // a large locale dictionary finished parsing on mobile.
+  translateRootsRef.current = translateRoots;
+  const markRouteTranslationReady = useCallback((routeToken: string) => {
+    setReadyRouteTranslation(routeToken);
+  }, []);
+
+  const translateRouteRoot = useCallback((root: HTMLElement, routeToken: string): Promise<void> => {
+    latestRouteTranslationTokenRef.current = routeToken;
+    const existing = routeTranslationPromisesRef.current.get(routeToken);
+    if (existing?.root === root) return existing.promise;
+
+    const task = (async () => {
+      const languageCode = currentLanguageRef.current;
+      if (languageCode === SOURCE_LANGUAGE) {
+        markRouteTranslationReady(routeToken);
+        return;
+      }
+
+      await loadStaticDictionary(languageCode);
+      if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
+
+      // Read the run id after the dictionary await. The provider's initial page
+      // effect may start the same dictionary request in parallel; taking the id
+      // here keeps both passes in the same current generation.
+      const runId = translationRunIdRef.current;
+      await translateRootsRef.current([root], languageCode, runId, { allowLive: true });
+      if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
+      if (latestRouteTranslationTokenRef.current !== routeToken) return;
+      if (routeTranslationPromisesRef.current.get(routeToken)?.root !== root) return;
+      markRouteTranslationReady(routeToken);
+    })();
+
+    routeTranslationPromisesRef.current.set(routeToken, { root, promise: task });
+    const clearInFlight = () => {
+      if (routeTranslationPromisesRef.current.get(routeToken)?.promise === task) {
+        routeTranslationPromisesRef.current.delete(routeToken);
+      }
+    };
+    void task.then(clearInFlight, clearInFlight);
+    return task;
+  }, [markRouteTranslationReady]);
+
   // ── Mutation observer ──────────────────────────────────────────────────────
-  const flushPending = () => {
+  const markPendingVisibility = (node: Node) => {
+    if (currentLanguageRef.current === SOURCE_LANGUAGE) return;
+    const element =
+      node.nodeType === Node.ELEMENT_NODE
+        ? node as HTMLElement
+        : node.parentElement;
+    if (!element || element.id === 'root' || element === document.body || isNoTranslateZone(element)) {
+      return;
+    }
+
+    const version = ++pendingVisibilityVersionRef.current;
+    pendingVisibilityRef.current.set(element, version);
+    element.setAttribute(TRANSLATION_PENDING_ATTR, '');
+  };
+
+  const clearPendingVisibility = useCallback(() => {
+    for (const element of pendingVisibilityRef.current.keys()) {
+      element.removeAttribute(TRANSLATION_PENDING_ATTR);
+    }
+    pendingVisibilityRef.current.clear();
+  }, []);
+
+  const flushPending = async () => {
     flushHandleRef.current = null;
     const pending = pendingNodesRef.current;
     if (pending.size === 0) return;
     const roots = Array.from(pending);
     pending.clear();
+    const visibilityBatch = new Map(pendingVisibilityRef.current);
     // Route-change / newly-rendered DOM is translated live: dictionary + cache
     // hits apply synchronously (no flicker), and anything new (body content,
     // article text, dynamic strings) is fetched and cached so the entire app
     // ends up translated, not just the packaged UI labels.
-    void translateRoots(roots, currentLanguageRef.current, translationRunIdRef.current, { allowLive: true });
+    try {
+      await translateRoots(roots, currentLanguageRef.current, translationRunIdRef.current, { allowLive: true });
+    } finally {
+      for (const [element, version] of visibilityBatch) {
+        if (pendingVisibilityRef.current.get(element) !== version) continue;
+        element.removeAttribute(TRANSLATION_PENDING_ATTR);
+        pendingVisibilityRef.current.delete(element);
+      }
+    }
   };
 
   const scheduleFlush = () => {
@@ -424,7 +534,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function'
         ? window.requestAnimationFrame(cb)
         : window.setTimeout(() => cb(performance.now()), 50);
-    flushHandleRef.current = schedule(() => flushPending());
+    flushHandleRef.current = schedule(() => void flushPending());
   };
 
   const ensureObserver = () => {
@@ -435,9 +545,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         if (mutation.type === 'characterData' && mutation.target.nodeType === Node.TEXT_NODE) {
           const textNode = mutation.target as Text;
           originalTextRef.current.set(textNode, textNode.nodeValue ?? '');
+          markPendingVisibility(textNode);
           pending.add(textNode);
         } else if (mutation.type === 'childList') {
-          mutation.addedNodes.forEach((added) => pending.add(added));
+          mutation.addedNodes.forEach((added) => {
+            markPendingVisibility(added);
+            pending.add(added);
+          });
         }
       }
       if (pending.size > 0) scheduleFlush();
@@ -707,7 +821,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     if (typeof document === 'undefined') return;
     document.documentElement.lang = currentLanguage;
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-  }, [currentLanguage, isRTL]);
+    if (currentLanguage === SOURCE_LANGUAGE) clearPendingVisibility();
+  }, [clearPendingVisibility, currentLanguage, isRTL]);
 
   useEffect(() => {
     if (IS_HARVEST_FRAME) return;
@@ -726,9 +841,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   }, [currentLanguage, isLoading]);
 
   useEffect(() => {
+    const routeTranslationPromises = routeTranslationPromisesRef.current;
     return () => {
       observerRef.current?.disconnect();
       observerRef.current = null;
+      clearPendingVisibility();
+      routeTranslationPromises.clear();
       if (typeof window !== 'undefined') {
         if (flushHandleRef.current !== null) {
           window.cancelAnimationFrame?.(flushHandleRef.current);
@@ -738,7 +856,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         if (seenPersistHandleRef.current !== null) window.clearTimeout(seenPersistHandleRef.current);
       }
     };
-  }, []);
+  }, [clearPendingVisibility]);
 
   const contextValue: LanguageContextValue = {
     currentLanguage,
@@ -751,6 +869,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     isChangingLanguage,
     changeProgress,
     changePhase,
+    readyRouteTranslation,
+    translateRouteRoot,
   };
 
   return (
