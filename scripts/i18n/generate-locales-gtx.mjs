@@ -27,7 +27,12 @@ import {
 } from '../../src/utils/pageTranslator.ts';
 import { normalizeMachineTranslation } from '../../src/utils/translationQuality.ts';
 import { maskTechnicalTokens, unmaskTechnicalTokens } from '../../src/utils/technicalText.ts';
-import { maskProtectedTokens, unmaskProtectedTokens } from '../../src/utils/protectedTerms.ts';
+import {
+  isAbbreviationOnly,
+  maskProtectedTokens,
+  renderAbbreviationOnly,
+  unmaskProtectedTokens,
+} from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
@@ -240,6 +245,13 @@ async function translateLanguage(langCode, sources) {
     if (ALL_CORRECTIONS[source]?.[langCode]) { overrideCount++; continue; }
     const override = getMaritimeTranslationOverride(source, langCode);
     if (override) { cache[source] = override; overrideCount++; continue; }
+    // "SOLAS V", "MF/HF", "DP 1" — nothing to translate once the abbreviation
+    // is protected, and a round-trip only risks damage.
+    if (isAbbreviationOnly(source)) {
+      cache[source] = renderAbbreviationOnly(source, langCode);
+      overrideCount++;
+      continue;
+    }
     if (cache[source] !== undefined) { skipCount++; continue; }
     const enCorrection = ALL_CORRECTIONS[source]?.en;
     if (enCorrection && langCode !== 'en') {

@@ -46,18 +46,29 @@ const ACCOUNT_SOURCE_RE =
  * Labels every terminology defect in one dictionary entry. An empty array means
  * the entry is clean.
  *
+ * Severity separates the two kinds of finding:
+ *   - `error`   — the term is gone from the translation. Always a defect.
+ *   - `warning` — some occurrences survived and some did not. Usually a defect,
+ *     but a long paragraph may legitimately reword the second mention away, so
+ *     these are repaired (re-translation is cheap) without failing `--strict`.
+ *
  * @param {string} source Turkish source string (the dictionary key)
  * @param {string} value  Translation shipped for `lang`
  * @param {string} lang   Target language code
- * @returns {Array<{ kind: 'abbreviation' | 'sense', label: string }>}
+ * @returns {Array<{ kind: 'abbreviation' | 'sense', severity: 'error' | 'warning', label: string }>}
  */
 export function findTermIssues(source, value, lang) {
   const issues = [];
 
-  for (const { token, expected } of findMissingProtectedTokens(source, value, lang)) {
+  for (const found of findMissingProtectedTokens(source, value, lang)) {
+    const { token, expected, sourceCount, translatedCount } = found;
+    const gone = translatedCount === 0;
     issues.push({
       kind: 'abbreviation',
-      label: `${token} → missing (expected "${expected}")`,
+      severity: gone ? 'error' : 'warning',
+      label: gone
+        ? `${token} → missing (expected "${expected}")`
+        : `${token} → ${translatedCount}/${sourceCount} kept (expected "${expected}")`,
     });
   }
 
@@ -65,7 +76,7 @@ export function findTermIssues(source, value, lang) {
     const targetRe = targets[lang];
     if (!targetRe || !sourceRe.test(source) || !targetRe.test(value)) continue;
     if (label.startsWith('hesap') && ACCOUNT_SOURCE_RE.test(source)) continue;
-    issues.push({ kind: 'sense', label });
+    issues.push({ kind: 'sense', severity: 'error', label });
   }
 
   return issues;

@@ -35,6 +35,11 @@
 // "TKN0'ye geçiş" and translates to "transition to TKN0" with the grammar
 // intact, whereas swallowing the suffix loses the case relationship.
 
+import {
+  getGlossaryMaskMatcher,
+  getGlossaryMaskRules,
+} from './maritimeGlossary.ts';
+
 export interface ProtectedToken {
   /** The abbreviation exactly as authored in the Turkish source. */
   token: string;
@@ -264,21 +269,79 @@ export interface ProtectedMask {
 }
 
 /**
- * Replaces protected abbreviations with sentinels. Returns null when the source
- * contains none (the common case), so callers can skip the extra work and send
- * the string unchanged.
+ * Renders an abbreviation-only string directly, without an engine round-trip:
+ * every abbreviation becomes the language's established form and the rest of the
+ * string is left alone ("VHF + MF" → "UKW + MF" in German).
+ */
+export const renderAbbreviationOnly = (source: string, languageCode: string): string => {
+  TOKEN_PATTERN.lastIndex = 0;
+  return source.replace(TOKEN_PATTERN, (token: string) =>
+    renderProtectedToken(token, languageCode)
+  );
+};
+
+/**
+ * True when a string carries no translatable words once its abbreviations are
+ * removed — "SOLAS V", "STCW II/1", "MF/HF", "DP 1", "ARPA". These read the same
+ * in every language, and sending them to an engine only invites damage: with the
+ * abbreviation masked there is nothing left to translate, and the engine tends to
+ * glue the remains together ("TKN0 V" → "TKN0V" → "SOLASV"). Render them with
+ * renderAbbreviationOnly instead.
+ */
+export const isAbbreviationOnly = (source: string): boolean => {
+  const text = source.trim();
+  if (!text) return false;
+  TOKEN_PATTERN.lastIndex = 0;
+  if (!TOKEN_PATTERN.test(text)) return false;
+  TOKEN_PATTERN.lastIndex = 0;
+  const rest = text.replace(TOKEN_PATTERN, ' ');
+  // Roman numerals and single letters are section markers, not words.
+  const words = (rest.match(/\p{L}+/gu) ?? []).filter(
+    (word) => word.length > 1 && !/^[IVXLCDM]+$/.test(word)
+  );
+  return words.length === 0;
+};
+
+/**
+ * Replaces protected abbreviations AND curated maritime glossary terms with
+ * sentinels. Returns null when the source contains neither (the common case),
+ * so callers can skip the extra work and send the string unchanged.
+ *
+ * The glossary half is what makes curated terminology reach the output at all on
+ * the plain-text paths. `getMaritimeTranslationOverride` only matches a whole
+ * string and `applyMaritimeCorrections` only rescues Turkish words the engine
+ * left untranslated — neither helps when the engine confidently translates a
+ * term wrongly, which is the usual case: "baş kontrolü" inside "DP — baş
+ * kontrolü" comes back as "head control". Masking forces the curated term
+ * whatever the engine produced, exactly as the Supabase translate function
+ * already does with its HTML no-translate spans.
  */
 export const maskProtectedTokens = (
   source: string,
   languageCode: string
 ): ProtectedMask | null => {
   if (!source || !languageCode || languageCode === 'tr') return null;
+
   const slots: string[] = [];
   TOKEN_PATTERN.lastIndex = 0;
-  const masked = source.replace(TOKEN_PATTERN, (token: string) => {
+  let masked = source.replace(TOKEN_PATTERN, (token: string) => {
     slots.push(renderProtectedToken(token, languageCode));
     return sentinel(slots.length - 1);
   });
+
+  // Most strings hold no glossary term, so test the one combined pattern before
+  // running several hundred individual rules.
+  const matcher = getGlossaryMaskMatcher(languageCode);
+  if (matcher?.test(masked)) {
+    for (const { pattern, replacement } of getGlossaryMaskRules(languageCode)) {
+      pattern.lastIndex = 0;
+      masked = masked.replace(pattern, () => {
+        slots.push(replacement);
+        return sentinel(slots.length - 1);
+      });
+    }
+  }
+
   return slots.length ? { masked, slots } : null;
 };
 
@@ -288,6 +351,10 @@ export interface MissingProtectedToken {
   token: string;
   /** How it should have been rendered in the target language. */
   expected: string;
+  /** Times the source used it. */
+  sourceCount: number;
+  /** Times the translation carries it (verbatim or as `expected`). */
+  translatedCount: number;
 }
 
 /**
@@ -307,26 +374,42 @@ export const findMissingProtectedTokens = (
   if (!source || !translated || !languageCode || languageCode === 'tr') return [];
 
   const missing: MissingProtectedToken[] = [];
-  const reported = new Set<string>();
   TOKEN_PATTERN.lastIndex = 0;
 
-  // An inflected abbreviation still counts as present: English plurals
-  // ("EPIRBs"), German genitives ("IMOs"). Only lower-case letters may follow,
-  // so "GM" is still not considered present inside "GMDSS". A digit may lead,
-  // because engines sometimes swallow the space in "2.1 DSC" → "2.1DSC" — that
-  // is a spacing slip, not a lost abbreviation.
-  const occurs = (needle: string): boolean =>
-    new RegExp(
-      `(?<!\\p{L})${escapeRegExp(needle)}(?:['’]?\\p{Ll}{1,3})?(?![\\p{L}\\p{N}])`,
-      'u'
-    ).test(translated);
+  // Occurrences are counted rather than merely detected: a paragraph that uses
+  // "DP" three times and comes back with two has lost one to the engine, and
+  // presence alone would call that clean.
+  //
+  // An inflected abbreviation still counts: English plurals ("EPIRBs"), German
+  // genitives ("IMOs"). Only lower-case letters may follow, so "GM" is not
+  // counted inside "GMDSS". A digit may lead, because engines sometimes swallow
+  // the space in "2.1 DSC" → "2.1DSC" — a spacing slip, not a lost abbreviation.
+  const countIn = (haystack: string, needle: string): number =>
+    (haystack.match(
+      new RegExp(
+        `(?<!\\p{L})${escapeRegExp(needle)}(?:['’]?\\p{Ll}{1,3})?(?![\\p{L}\\p{N}])`,
+        'gu'
+      )
+    ) ?? []).length;
 
-  for (const match of source.matchAll(TOKEN_PATTERN)) {
-    const token = match[1];
-    if (reported.has(token)) continue;
-    reported.add(token);
+  // Occurrences inside parentheses are not counted: the source often glosses a
+  // term with itself ("Başlangıç GM (Initial GM)") and normalizeMachineTranslation
+  // deliberately collapses that duplicate away.
+  const outsideParens = source.replace(/\([^)]*\)/g, ' ');
+  const sourceCounts = new Map<string, number>();
+  for (const match of outsideParens.matchAll(TOKEN_PATTERN)) {
+    sourceCounts.set(match[1], (sourceCounts.get(match[1]) ?? 0) + 1);
+  }
+
+  for (const [token, sourceCount] of sourceCounts) {
     const expected = renderProtectedToken(token, languageCode);
-    if (!occurs(expected) && !occurs(token)) missing.push({ token, expected });
+    const translatedCount =
+      expected === token
+        ? countIn(translated, token)
+        : countIn(translated, expected) + countIn(translated, token);
+    if (translatedCount < sourceCount) {
+      missing.push({ token, expected, sourceCount, translatedCount });
+    }
   }
 
   return missing;

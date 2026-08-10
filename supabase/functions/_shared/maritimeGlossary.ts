@@ -2327,7 +2327,24 @@ const decodeHtmlEntities = (value: string): string =>
 // (those match the engine's OUTPUT language, not the source).
 const maskRulesCache = new Map<string, MaritimeCorrectionRule[]>();
 
-const getGlossaryMaskRules = (languageCode: string): MaritimeCorrectionRule[] => {
+const maskMatcherCache = new Map<string, RegExp | null>();
+
+/**
+ * Single combined (non-global) regex over the glossary mask rules, used as a
+ * cheap pre-check: most strings contain no glossary term at all, and this skips
+ * running several hundred individual patterns over them.
+ */
+export const getGlossaryMaskMatcher = (languageCode: string): RegExp | null => {
+  if (maskMatcherCache.has(languageCode)) return maskMatcherCache.get(languageCode) ?? null;
+  const rules = getGlossaryMaskRules(languageCode);
+  const matcher = rules.length
+    ? new RegExp(rules.map((rule) => rule.pattern.source).join('|'), 'iu')
+    : null;
+  maskMatcherCache.set(languageCode, matcher);
+  return matcher;
+};
+
+export const getGlossaryMaskRules = (languageCode: string): MaritimeCorrectionRule[] => {
   if (!languageCode || languageCode === 'tr') return [];
   const cached = maskRulesCache.get(languageCode);
   if (cached) return cached;

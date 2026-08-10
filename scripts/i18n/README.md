@@ -26,9 +26,39 @@ npm run i18n:check            # or: npm run i18n:check -- --strict
 # 4. Apply the contextual correction layer to the shipped dictionaries
 #    (run after changing the maritime glossary or contextual-corrections.mjs)
 npm run i18n:fix
+
+# 5. Audit the terminology of the shipped dictionaries
+npm run i18n:audit-terms                  # report
+npm run i18n:audit-terms -- --strict      # fail on findings (part of i18n:verify)
 ```
 
 Then commit the generated `public/locales/*.json`.
+
+## Protected abbreviations
+
+Generic engines treat an abbreviation they do not know as a typo and "correct"
+it. On this corpus that produced `DP → XP`, `KB → NW`, `ARPA → Barley`,
+`COW → KUH` (de) and `IMO → Meiner Meinung nach` (de). The damage lands almost
+entirely in SHORT strings — labels, table cells, headings — because there is too
+little context for the engine to recognise the term.
+
+`src/utils/protectedTerms.ts` holds the abbreviations that occur in `src/data`
+and masks them with a sentinel the engine leaves alone, then restores them —
+verbatim, or as the language's established equivalent (`IMO` = `OMI` in French,
+`PPE` = `PSA` in German). Every translation path applies it: the runtime
+translator, this generator, the AI pre-translation and the Supabase `translate`
+function. Add new abbreviations to `PROTECTED_TOKENS`; matching is
+case-sensitive, so the stability symbol `KG` is protected while the unit `kg`
+is not.
+
+To repair dictionaries generated before this layer existed:
+
+```bash
+npm run i18n:audit-terms      # what is damaged, and where
+npm run i18n:repair           # drop those entries (dictionary + cache)
+npm run i18n:generate         # re-translate exactly those strings, protected
+npm run i18n:fix
+```
 
 ## Contextual corrections
 
@@ -59,6 +89,12 @@ context-dependent Turkish gets mistranslated ("Demir" → "iron" instead of
 - **Key parity:** dictionary keys use the same `normalizeSource` (trim) as the
   runtime. Markdown-rendered fields (`content`) are emitted as their rendered
   text segments to match the runtime DOM text nodes.
+- **What is extracted:** every user-visible property in `ALLOWED_PROPS`,
+  including the longform `lead` / `bullets` / `headers` / `rows` / `sources`
+  fields (arrays are walked recursively — a table body is `string[][]`).
+  `paragraphs` is intentionally excluded: 11k strings of ~175 characters would
+  add ~4 MB per language, and long prose is where the engine holds up. Those
+  paragraphs are translated live, with the same protection applied.
 - **Delivery:** locale JSONs are excluded from the PWA precache
   (`globIgnores`) and cached on demand (`runtimeCaching`), so only the selected
   language is downloaded.

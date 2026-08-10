@@ -3,18 +3,30 @@ import test from 'node:test';
 import {
   PROTECTED_TOKENS,
   findMissingProtectedTokens,
+  isAbbreviationOnly,
   maskProtectedTokens,
+  renderAbbreviationOnly,
   renderProtectedToken,
   unmaskProtectedTokens,
 } from './protectedTerms';
 
 test('abbreviations are masked and restored verbatim', () => {
-  const mask = maskProtectedTokens('Manevra ve DP yedeği', 'en');
+  const mask = maskProtectedTokens('DP yedeği', 'en');
   assert.ok(mask);
-  assert.equal(mask.masked, 'Manevra ve TKN0 yedeği');
+  assert.equal(mask.masked, 'TKN0 yedeği');
   assert.deepEqual(mask.slots, ['DP']);
   // The engine translates around the sentinel; the abbreviation comes back intact.
-  assert.equal(unmaskProtectedTokens('Maneuver and TKN0 backup', mask.slots), 'Maneuver and DP backup');
+  assert.equal(unmaskProtectedTokens('TKN0 backup', mask.slots), 'DP backup');
+});
+
+test('curated glossary terms are masked alongside the abbreviations', () => {
+  // Without this the curated term never reaches the output: the engine
+  // confidently renders "baş kontrolü" as "head control", and neither the
+  // whole-string override nor applyMaritimeCorrections can undo that.
+  const mask = maskProtectedTokens('DP — baş kontrolü', 'en');
+  assert.ok(mask);
+  assert.deepEqual(mask.slots, ['DP', 'Heading control']);
+  assert.equal(unmaskProtectedTokens('TKN0 — TKN1', mask.slots), 'DP — Heading control');
 });
 
 test('every slot of a multi-abbreviation string is tracked independently', () => {
@@ -80,21 +92,41 @@ test('an unresolvable result is rejected so no sentinel can leak into the UI', (
 test('missing abbreviations are detected in a finished translation', () => {
   // The real defect this whole layer exists for.
   assert.deepEqual(findMissingProtectedTokens('Manevra ve DP yedeği', 'Maneuver and XP reserve', 'en'), [
-    { token: 'DP', expected: 'DP' },
+    { token: 'DP', expected: 'DP', sourceCount: 1, translatedCount: 0 },
   ]);
   assert.deepEqual(findMissingProtectedTokens('Manevra ve DP yedeği', 'Maneuver and DP backup', 'en'), []);
   // Either the verbatim token or the established equivalent counts as intact.
   assert.deepEqual(findMissingProtectedTokens('IMO kuralları', 'Règles OMI', 'fr'), []);
   assert.deepEqual(findMissingProtectedTokens('IMO kuralları', 'Règles IMO', 'fr'), []);
   assert.deepEqual(findMissingProtectedTokens('IMO kuralları', 'Les règles', 'fr'), [
-    { token: 'IMO', expected: 'OMI' },
+    { token: 'IMO', expected: 'OMI', sourceCount: 1, translatedCount: 0 },
   ]);
   // A token swallowed by a longer word does not count as present.
   assert.deepEqual(findMissingProtectedTokens('GM değeri', 'GMDSS value', 'en'), [
-    { token: 'GM', expected: 'GM' },
+    { token: 'GM', expected: 'GM', sourceCount: 1, translatedCount: 0 },
   ]);
+  // Partial loss: three uses in, two out — presence alone would call this clean.
+  assert.deepEqual(
+    findMissingProtectedTokens('DP alarmı, DP kaybı, DP testi', 'DP alarm, XP loss, DP test', 'en'),
+    [{ token: 'DP', expected: 'DP', sourceCount: 3, translatedCount: 2 }],
+  );
   // Turkish source is never checked against itself.
   assert.deepEqual(findMissingProtectedTokens('DP yedeği', 'DP yedeği', 'tr'), []);
+});
+
+test('strings that are only abbreviations skip the engine', () => {
+  // Nothing here survives translation as a word, and the engine glues the
+  // remains together ("TKN0 V" came back as "TKN0V" → "SOLASV").
+  for (const source of ['SOLAS V', 'STCW II/1', 'MF/HF', 'DP 1', 'ARPA', '2.2 DP 1']) {
+    assert.equal(isAbbreviationOnly(source), true, source);
+  }
+  for (const source of ['Manevra ve DP yedeği', 'DP kaybı', 'Kontrol yolu', '']) {
+    assert.equal(isAbbreviationOnly(source), false, source);
+  }
+  // They still pick up the language's established form.
+  assert.equal(renderAbbreviationOnly('VHF + MF', 'de'), 'UKW + MF');
+  assert.equal(renderAbbreviationOnly('VHF + MF', 'en'), 'VHF + MF');
+  assert.equal(renderAbbreviationOnly('SOLAS V', 'fr'), 'SOLAS V');
 });
 
 test('the token table stays unambiguous', () => {

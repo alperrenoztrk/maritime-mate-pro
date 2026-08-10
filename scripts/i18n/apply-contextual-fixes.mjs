@@ -21,6 +21,10 @@ import {
   applyMaritimeCorrections,
 } from '../../src/utils/maritimeGlossary.ts';
 import { normalizeMachineTranslation } from '../../src/utils/translationQuality.ts';
+import {
+  isAbbreviationOnly,
+  renderAbbreviationOnly,
+} from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
@@ -42,6 +46,11 @@ for (const file of files) {
     const correction = CONTEXTUAL_CORRECTIONS[key]?.[lang];
     if (correction !== undefined) {
       next = correction;
+    } else if (isAbbreviationOnly(key)) {
+      // "SOLAS V", "MF/HF", "DP 1" — no translatable words, so the entry is the
+      // abbreviations themselves in this language's established form. Fixed in
+      // place; these need no engine round-trip.
+      next = renderAbbreviationOnly(key, lang);
     } else {
       const override = getMaritimeTranslationOverride(key, lang);
       if (override) {

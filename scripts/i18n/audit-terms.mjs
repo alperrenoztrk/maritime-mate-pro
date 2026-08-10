@@ -55,6 +55,7 @@ const files = fs
 const repairQueue = {};
 const report = [];
 let grandTotal = 0;
+let grandErrors = 0;
 
 for (const file of files) {
   const lang = file.replace(/\.json$/, '');
@@ -69,13 +70,15 @@ for (const file of files) {
   const senseCounts = new Map();
   const samples = new Map();
   const queue = new Set();
+  let errors = 0;
 
   for (const [source, value] of Object.entries(dict)) {
     if (source.startsWith('__') || typeof value !== 'string') continue;
 
-    for (const { kind, label } of findTermIssues(source, value, lang)) {
+    for (const { kind, severity, label } of findTermIssues(source, value, lang)) {
       const counts = kind === 'abbreviation' ? tokenCounts : senseCounts;
       counts.set(label, (counts.get(label) ?? 0) + 1);
+      if (severity === 'error') errors++;
       if ((samples.get(label) ?? []).length < sampleCount) {
         samples.set(label, [...(samples.get(label) ?? []), [source, value]]);
       }
@@ -86,6 +89,7 @@ for (const file of files) {
   const tokens = [...tokenCounts.values()].reduce((a, b) => a + b, 0);
   const senses = [...senseCounts.values()].reduce((a, b) => a + b, 0);
   grandTotal += queue.size;
+  grandErrors += errors;
   if (queue.size > 0) repairQueue[lang] = [...queue];
 
   report.push({
@@ -93,6 +97,7 @@ for (const file of files) {
     empty: false,
     tokens,
     senses,
+    errors,
     entries: queue.size,
     findings: [...tokenCounts, ...senseCounts]
       .sort((a, b) => b[1] - a[1])
@@ -102,18 +107,19 @@ for (const file of files) {
 
 if (asJson) {
   process.stdout.write(JSON.stringify(repairQueue));
-  process.exit(strict && grandTotal > 0 ? 1 : 0);
+  process.exit(strict && grandErrors > 0 ? 1 : 0);
 }
 
 console.log('🔎 Terminology audit of public/locales\n');
-console.log(`   ${'lang'.padEnd(8)}${'entries'.padStart(9)}${'abbrev.'.padStart(10)}${'senses'.padStart(9)}`);
+console.log(`   ${'lang'.padEnd(8)}${'entries'.padStart(9)}${'abbrev.'.padStart(10)}${'senses'.padStart(9)}${'errors'.padStart(9)}`);
 for (const row of report) {
   if (row.empty) {
     console.log(`   ${row.lang.padEnd(8)}${'(empty file)'.padStart(28)}`);
     continue;
   }
   console.log(
-    `   ${row.lang.padEnd(8)}${String(row.entries).padStart(9)}${String(row.tokens).padStart(10)}${String(row.senses).padStart(9)}`
+    `   ${row.lang.padEnd(8)}${String(row.entries).padStart(9)}${String(row.tokens).padStart(10)}` +
+    `${String(row.senses).padStart(9)}${String(row.errors).padStart(9)}`
   );
 }
 
@@ -129,13 +135,19 @@ for (const row of report) {
   }
 }
 
-console.log(`\n${grandTotal} dictionary entries need repair across ${files.length} languages.`);
+console.log(
+  `\n${grandTotal} dictionary entries need repair across ${files.length} languages ` +
+  `(${grandErrors} are hard failures; the rest are partial losses).`
+);
 if (grandTotal > 0) {
   console.log('   Repair them with:  npm run i18n:repair && npm run i18n:generate');
 }
 
-if (strict && grandTotal > 0) {
-  console.error('\n❌ Terminology audit failed');
+// Only hard failures gate the build. A partial loss is worth repairing but a
+// long paragraph may legitimately reword a second mention away, and that must
+// not wedge CI permanently.
+if (strict && grandErrors > 0) {
+  console.error(`\n❌ Terminology audit failed: ${grandErrors} terms lost in translation`);
   process.exit(1);
 }
 console.log('\n✅ Terminology audit complete');

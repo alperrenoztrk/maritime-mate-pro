@@ -6,7 +6,12 @@ import {
 } from '@/utils/maritimeGlossary';
 import { normalizeMachineTranslation } from '@/utils/translationQuality';
 import { maskTechnicalTokens, unmaskTechnicalTokens } from '@/utils/technicalText';
-import { maskProtectedTokens, unmaskProtectedTokens } from '@/utils/protectedTerms';
+import {
+  isAbbreviationOnly,
+  maskProtectedTokens,
+  renderAbbreviationOnly,
+  unmaskProtectedTokens,
+} from '@/utils/protectedTerms';
 import {
   SOURCE_LANGUAGE,
   TranslationUnit,
@@ -251,6 +256,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // must never shadow the curated result.
   const resolveLocally = (normalizedText: string, languageCode: string): string | undefined => {
     const cacheKey = `${languageCode}:${normalizedText}`;
+
+    // "SOLAS V", "MF/HF", "DP 1" carry no translatable words; render the
+    // abbreviations directly rather than risking an engine round-trip.
+    if (isAbbreviationOnly(normalizedText)) {
+      const rendered = renderAbbreviationOnly(normalizedText, languageCode);
+      translationCacheRef.current.set(cacheKey, rendered);
+      return rendered;
+    }
 
     const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
     if (maritimeOverride) {
