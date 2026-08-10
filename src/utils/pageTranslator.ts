@@ -164,7 +164,17 @@ const pushTextUnit = (node: Text, originals: WeakMap<Text, string>, units: Trans
   units.push({
     source: core,
     apply: (translated) => {
-      if (node.isConnected) node.nodeValue = `${lead}${translated}${trail}`;
+      if (!node.isConnected) return;
+      const next = `${lead}${translated}${trail}`;
+      // HARD RULE: never assign a value the node already holds. Assigning to
+      // `nodeValue` queues a characterData MutationRecord even when the string
+      // is identical, so an idempotent re-translation pass used to wake every
+      // MutationObserver in the app (see AppNavBar) once per text node. Those
+      // observers re-render, which mutates the DOM, which schedules another
+      // pass — a self-feeding loop that saturated the main thread for tens of
+      // seconds. A settled page must produce zero writes.
+      if (node.nodeValue === next) return;
+      node.nodeValue = next;
     },
   });
 };
@@ -184,7 +194,11 @@ const pushAttributeUnits = (el: HTMLElement, units: TranslationUnit[]) => {
     units.push({
       source: core,
       apply: (translated) => {
-        if (el.isConnected) el.setAttribute(attr, translated);
+        if (!el.isConnected) return;
+        // Same idempotency rule as text nodes: `setAttribute` queues a record
+        // even when the value is unchanged.
+        if (el.getAttribute(attr) === translated) return;
+        el.setAttribute(attr, translated);
       },
     });
   }

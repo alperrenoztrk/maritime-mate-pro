@@ -3,8 +3,10 @@ import test from 'node:test';
 import {
   createRouteTranslationToken,
   isRouteTranslationReady,
+  READY_ROUTE_TOKEN_LIMIT,
   ROUTE_TRANSLATION_MAX_WAIT_MS,
   settleWithDeadline,
+  withReadyRouteToken,
 } from './routeTranslation';
 
 test('route translation tokens include language and the complete location identity', () => {
@@ -23,9 +25,44 @@ test('non-source routes stay gated until their exact translation token is ready'
   const current = createRouteTranslationToken('en', 'current', '/calculations');
   const previous = createRouteTranslationToken('en', 'previous', '/');
 
-  assert.equal(isRouteTranslationReady('en', current, previous), false);
-  assert.equal(isRouteTranslationReady('en', current, current), true);
+  assert.equal(isRouteTranslationReady('en', current, new Set([previous])), false);
+  assert.equal(isRouteTranslationReady('en', current, new Set([current])), true);
   assert.equal(isRouteTranslationReady('tr', current, null), true);
+  assert.equal(isRouteTranslationReady('en', current, new Set()), false);
+});
+
+test('readying the outgoing screen never un-readies the incoming one', () => {
+  // Both screens are mounted during a route transition and hold different
+  // tokens. When readiness was a single token they took turns invalidating
+  // each other, which re-rendered both subtrees without bound and froze the
+  // app. Both must be able to hold "ready" at the same time.
+  const outgoing = createRouteTranslationToken('en', 'outgoing', '/library');
+  const incoming = createRouteTranslationToken('en', 'incoming', '/');
+
+  let ready = withReadyRouteToken(new Set<string>(), incoming);
+  ready = withReadyRouteToken(ready, outgoing);
+
+  assert.equal(isRouteTranslationReady('en', incoming, ready), true);
+  assert.equal(isRouteTranslationReady('en', outgoing, ready), true);
+});
+
+test('re-readying a known token returns the same set so React can bail out', () => {
+  const token = createRouteTranslationToken('en', 'key', '/lessons');
+  const ready = withReadyRouteToken(new Set<string>(), token);
+
+  assert.equal(withReadyRouteToken(ready, token), ready);
+});
+
+test('the ready-token set stays bounded and evicts the oldest tokens', () => {
+  let ready: ReadonlySet<string> = new Set<string>();
+  const total = READY_ROUTE_TOKEN_LIMIT + 3;
+  for (let i = 0; i < total; i += 1) {
+    ready = withReadyRouteToken(ready, createRouteTranslationToken('en', `k${i}`, '/lessons'));
+  }
+
+  assert.equal(ready.size, READY_ROUTE_TOKEN_LIMIT);
+  assert.equal(ready.has(createRouteTranslationToken('en', 'k0', '/lessons')), false);
+  assert.equal(ready.has(createRouteTranslationToken('en', `k${total - 1}`, '/lessons')), true);
 });
 
 test('route translation has a short, finite responsiveness budget', () => {

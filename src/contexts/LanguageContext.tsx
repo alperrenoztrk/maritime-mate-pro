@@ -33,6 +33,7 @@ import { HARVEST_VERSION } from '@/utils/routeManifest';
 import {
   ROUTE_TRANSLATION_MAX_WAIT_MS,
   settleWithDeadline,
+  withReadyRouteToken,
 } from '@/utils/routeTranslation';
 import {
   LanguageContext,
@@ -130,15 +131,23 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [changeProgress, setChangeProgress] = useState(0);
   const [changePhase, setChangePhase] = useState<LanguageChangePhase>('idle');
-  const [readyRouteTranslation, setReadyRouteTranslation] = useState<string | null>(null);
+  const [readyRouteTranslation, setReadyRouteTranslation] = useState<ReadonlySet<string>>(
+    () => new Set<string>(),
+  );
   const { toast } = useToast();
 
   const translationCacheRef = useRef<Map<string, string>>(new Map());
   const translationRunIdRef = useRef(0);
   const observerRef = useRef<MutationObserver | null>(null);
   const pendingNodesRef = useRef<Set<Node>>(new Set());
-  const pendingVisibilityRef = useRef<Map<HTMLElement, number>>(new Map());
-  const pendingVisibilityTimersRef = useRef<Map<HTMLElement, number>>(new Map());
+  // Elements hidden until their translation lands, each with the deadline at
+  // which they are revealed anyway. Entries are kept in expiry order so ONE
+  // shared sweep timer can retire them — a timer per element meant a burst of
+  // DOM mutations created a timer per mutated element.
+  const pendingVisibilityRef = useRef<Map<HTMLElement, { version: number; expiresAt: number }>>(
+    new Map(),
+  );
+  const pendingVisibilitySweepRef = useRef<number | null>(null);
   const pendingVisibilityVersionRef = useRef(0);
   const flushHandleRef = useRef<number | null>(null);
   const persistHandleRef = useRef<number | null>(null);
@@ -151,7 +160,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     options?: { allowLive?: boolean },
   ) => Promise<void>>(async () => undefined);
   const routeTranslationPromisesRef = useRef<Map<string, RouteTranslationTask>>(new Map());
-  const latestRouteTranslationTokenRef = useRef<string | null>(null);
   const liveTranslationPausedUntilRef = useRef(0);
   // Tracks languages whose upfront bulk pass has already run. Shipped locale
   // packs contain the authored application corpus (UI + lessons/articles), so
@@ -484,12 +492,16 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // fixed 150 ms guess, which routinely expired before a lazy route mounted or
   // a large locale dictionary finished parsing on mobile.
   translateRootsRef.current = translateRoots;
+  // Marking a route ready must never un-ready another one: both the outgoing
+  // and the incoming screen are mounted during a transition and each waits on
+  // its own token. `withReadyRouteToken` returns the identical set when the
+  // token is already known, so React bails out instead of re-rendering every
+  // consumer.
   const completeRouteTranslation = useCallback((routeToken: string) => {
-    setReadyRouteTranslation(routeToken);
+    setReadyRouteTranslation((current) => withReadyRouteToken(current, routeToken));
   }, []);
 
   const translateRouteRoot = useCallback((root: HTMLElement, routeToken: string): Promise<void> => {
-    latestRouteTranslationTokenRef.current = routeToken;
     const existing = routeTranslationPromisesRef.current.get(routeToken);
     if (existing?.root === root) return existing.promise;
 
@@ -523,9 +535,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       // Never leave a route unresolved: PageTransition keeps the subtree
       // invisible and RouteTranslationGate keeps a full-screen blocker on top
       // until this token is marked ready. A disconnected root or a language
-      // switch mid-flight is not a reason to freeze the UI — as long as this
-      // is still the route the user is looking at, release it.
-      if (latestRouteTranslationTokenRef.current !== routeToken) return;
+      // switch mid-flight is not a reason to freeze the UI — release it either
+      // way. Readiness is per token, so releasing the screen that is animating
+      // out cannot disturb the one animating in.
       completeRouteTranslation(routeToken);
 
     })();
@@ -569,24 +581,49 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
 
     const version = ++pendingVisibilityVersionRef.current;
-    pendingVisibilityRef.current.set(element, version);
+    // Re-insert so the map stays ordered by expiry: the sweep can then stop at
+    // the first entry that is still in date.
+    pendingVisibilityRef.current.delete(element);
+    pendingVisibilityRef.current.set(element, {
+      version,
+      expiresAt: Date.now() + PENDING_VISIBILITY_MAX_MS,
+    });
     element.setAttribute(TRANSLATION_PENDING_ATTR, '');
-    const existingTimer = pendingVisibilityTimersRef.current.get(element);
-    if (existingTimer !== undefined) window.clearTimeout(existingTimer);
-    const timer = window.setTimeout(() => {
-      if (pendingVisibilityRef.current.get(element) !== version) return;
+    schedulePendingVisibilitySweep();
+  };
+
+  // Reveals every element whose deadline has passed, then re-arms itself for
+  // the next one still waiting. One timer serves the whole map.
+  const sweepPendingVisibility = () => {
+    pendingVisibilitySweepRef.current = null;
+    const now = Date.now();
+    let nextDueIn: number | null = null;
+    for (const [element, entry] of pendingVisibilityRef.current) {
+      if (entry.expiresAt > now) {
+        nextDueIn = entry.expiresAt - now;
+        break;
+      }
       element.removeAttribute(TRANSLATION_PENDING_ATTR);
       pendingVisibilityRef.current.delete(element);
-      pendingVisibilityTimersRef.current.delete(element);
-    }, PENDING_VISIBILITY_MAX_MS);
-    pendingVisibilityTimersRef.current.set(element, timer);
+    }
+    if (nextDueIn !== null) {
+      pendingVisibilitySweepRef.current = window.setTimeout(sweepPendingVisibility, nextDueIn);
+    }
+  };
+
+  const schedulePendingVisibilitySweep = () => {
+    if (pendingVisibilitySweepRef.current !== null) return;
+    pendingVisibilitySweepRef.current = window.setTimeout(
+      sweepPendingVisibility,
+      PENDING_VISIBILITY_MAX_MS,
+    );
   };
 
   const clearPendingVisibility = useCallback(() => {
-    for (const timer of pendingVisibilityTimersRef.current.values()) {
-      window.clearTimeout(timer);
+    if (pendingVisibilitySweepRef.current !== null) {
+      window.clearTimeout(pendingVisibilitySweepRef.current);
+      pendingVisibilitySweepRef.current = null;
     }
-    pendingVisibilityTimersRef.current.clear();
     for (const element of pendingVisibilityRef.current.keys()) {
       element.removeAttribute(TRANSLATION_PENDING_ATTR);
     }
@@ -607,11 +644,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     try {
       await translateRoots(roots, currentLanguageRef.current, translationRunIdRef.current, { allowLive: true });
     } finally {
-      for (const [element, version] of visibilityBatch) {
-        if (pendingVisibilityRef.current.get(element) !== version) continue;
-        const timer = pendingVisibilityTimersRef.current.get(element);
-        if (timer !== undefined) window.clearTimeout(timer);
-        pendingVisibilityTimersRef.current.delete(element);
+      for (const [element, entry] of visibilityBatch) {
+        if (pendingVisibilityRef.current.get(element)?.version !== entry.version) continue;
         element.removeAttribute(TRANSLATION_PENDING_ATTR);
         pendingVisibilityRef.current.delete(element);
       }
