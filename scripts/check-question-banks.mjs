@@ -133,6 +133,7 @@ const BALANCED_BANKS = new Set([
   "machine/auxiliary",
   "machine/electrical",
   "machine/fluid-mechanics",
+  "machine/energy-efficiency",
 ]);
 
 /**
@@ -152,7 +153,6 @@ const LENGTH_BUDGET = {
   "machine/engine-room-ops": 97,
   "machine/engine-room-safety": 99,
   "machine/environment-machine": 84,
-  "machine/energy-efficiency": 79,
   "machine/fuel-technology": 88,
   "machine/cooling-hvac": 90,
   "beta/navigation": 74,
