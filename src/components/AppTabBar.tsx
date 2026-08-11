@@ -13,11 +13,10 @@ import { hapticSelection } from "@/lib/haptics";
 import { isAppChromeHidden } from "@/lib/appChrome";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getCoreUiTranslation } from "@/i18n/coreUiTranslations";
-
-type TabId = "home" | "learn" | "tools" | "library";
+import { APP_TAB_ROOTS, appTabForPath, type AppTabId } from "@/lib/appNavigation";
 
 type AppTab = {
-  id: TabId;
+  id: AppTabId;
   label: string;
   to: string;
   icon: LucideIcon;
@@ -28,44 +27,19 @@ const TABS: AppTab[] = [
   { id: "learn", label: "Öğren", to: "/lessons", icon: BookOpenText },
   { id: "tools", label: "Araçlar", to: "/calculations", icon: Calculator },
   { id: "library", label: "Kütüphane", to: "/library", icon: LibraryBig },
+  { id: "search", label: "Ara", to: "/search", icon: Search },
 ];
 
 // Each top-level area owns its most recent route for the current app session,
 // matching iOS tab-controller behaviour. Switching away and back no longer
 // throws the user out of a lesson/calculation hierarchy.
-const lastRouteByTab: Record<TabId, string> = {
-  home: "/",
-  learn: "/lessons",
-  tools: "/calculations",
-  library: "/library",
-};
-
-const LEARN_ROUTES = [/^\/lessons(?:\/|$)/, /^\/exercises(?:\/|$)/, /^\/machine\/[^/]+\/topics(?:\/|$)/];
-const TOOL_ROUTES = [
-  /^\/calculations(?:\/|$)/,
-  /^\/(?:stability|cargo|meteorology|navigation|economics|safety|seamanship|environment)(?:\/|$)/,
-  /^\/(?:ballast|tank|engine|structural|special-ships|emissions|converter|hydrodynamics|machine-calculations)$/,
-  /^\/machine\/(?:calculations|formulas|rules|assistant|quiz)$/,
-  /^\/solas(?:\/|$)/,
-];
-const LIBRARY_ROUTES = [
-  /^\/library$/,
-  /^\/(?:crew|bridge|machinery|ship-systems|ship-tasks|ship-operations|glossary|regulations|passage-plan)(?:\/|$)/,
-  /^\/communication(?:\/|$)/,
-];
-
-const activeTabForPath = (pathname: string): TabId => {
-  if (LEARN_ROUTES.some((pattern) => pattern.test(pathname))) return "learn";
-  if (TOOL_ROUTES.some((pattern) => pattern.test(pathname))) return "tools";
-  if (LIBRARY_ROUTES.some((pattern) => pattern.test(pathname))) return "library";
-  return "home";
-};
+const lastRouteByTab: Record<AppTabId, string> = { ...APP_TAB_ROOTS };
 
 export function AppTabBar() {
   const { pathname } = useLocation();
   const { currentLanguage } = useLanguage();
   const hidden = isAppChromeHidden(pathname);
-  const activeTab = activeTabForPath(pathname);
+  const activeTab = appTabForPath(pathname);
   const localize = (source: string) => getCoreUiTranslation(source, currentLanguage) ?? source;
 
   useEffect(() => {
@@ -104,7 +78,11 @@ export function AppTabBar() {
                 hapticSelection();
                 if (active && pathname === to) {
                   event.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  if (id === "search") {
+                    window.dispatchEvent(new Event("focus-app-search"));
+                  } else {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
                 }
               }}
               className={cn("app-tabbar__item", active && "app-tabbar__item--active")}
@@ -117,20 +95,6 @@ export function AppTabBar() {
           );
         })}
 
-        <button
-          type="button"
-          aria-label={localize("Uygulamada ara")}
-          className="app-tabbar__item app-tabbar__search"
-          onClick={() => {
-            hapticSelection();
-            window.dispatchEvent(new Event("open-global-search"));
-          }}
-        >
-          <span className="app-tabbar__icon" aria-hidden>
-            <Search />
-          </span>
-          <span className="app-tabbar__label">{localize("Ara")}</span>
-        </button>
       </div>
     </nav>
   );

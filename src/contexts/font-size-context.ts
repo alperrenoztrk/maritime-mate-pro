@@ -1,8 +1,9 @@
 import { createContext } from "react";
 
-export type FontSizeKey = "small" | "normal" | "large" | "xlarge" | "accessibility" | "max";
+export type FontSizeKey = "system" | "small" | "normal" | "large" | "xlarge" | "accessibility" | "max";
 
 export const FONT_SCALES: Record<FontSizeKey, number> = {
+  system: 1,
   small: 0.875,
   normal: 1,
   large: 1.15,
@@ -12,6 +13,7 @@ export const FONT_SCALES: Record<FontSizeKey, number> = {
 };
 
 export const FONT_SIZE_OPTIONS: { key: FontSizeKey; labelTr: string }[] = [
+  { key: "system", labelTr: "Sistem (Dynamic Type)" },
   { key: "small", labelTr: "Küçük" },
   { key: "normal", labelTr: "Normal" },
   { key: "large", labelTr: "Büyük" },
@@ -26,7 +28,7 @@ export interface FontSizeContextValue {
 }
 
 const initialState: FontSizeContextValue = {
-  fontSize: "normal",
+  fontSize: "system",
   setFontSize: () => null,
 };
 

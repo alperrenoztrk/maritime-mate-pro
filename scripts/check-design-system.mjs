@@ -45,11 +45,15 @@ assert(
 // ── 2. One shell colour ──────────────────────────────────────────────
 // index.html, the native status bar and the PWA manifest all describe the
 // same surface; they drifted to three different colours once before.
-const SHELL_COLOR = "#031226";
+const SHELL_COLOR = "#111318";
 const themeColor = html.match(/<meta[^>]+name=["']theme-color["'][^>]+content=["']([^"']+)["']/);
 assert(
   themeColor && themeColor[1].toLowerCase() === SHELL_COLOR,
   `index.html: theme-color must be ${SHELL_COLOR} (the top stop of the shell gradient)`,
+);
+assert(
+  html.includes('/theme-prepaint.js') && read("public/theme-prepaint.js").includes('prefers-color-scheme: dark'),
+  "appearance: saved/system theme must be resolved before the first visible frame",
 );
 const capacitor = read("capacitor.config.ts");
 assert(
@@ -73,13 +77,18 @@ assert(
   "src/App.tsx: sync AnimatePresence's direct motion child must carry the route key, otherwise the simultaneous push/pop breaks",
 );
 assert(
-  app.includes("<AppTabBar />") && app.includes('path="/library"'),
-  "src/App.tsx: the persistent tab bar and its discoverable /library destination must remain mounted",
+  app.includes("<AppTabBar />") && app.includes('path="/library"') && app.includes('path="/search"'),
+  "src/App.tsx: the persistent tab bar and its discoverable /library + /search destinations must remain mounted",
 );
 const appTabBar = read("src/components/AppTabBar.tsx");
 assert(
   appTabBar.includes("lastRouteByTab"),
   "AppTabBar: each top-level tab must preserve its most recent route during the session",
+);
+assert(
+  appTabBar.includes('id: "search"') && appTabBar.includes('to: "/search"') &&
+    appTabBar.includes("appTabForPath"),
+  "AppTabBar: search must be a real top-level route with an active tab state",
 );
 for (const label of ["Ana Sayfa", "Öğren", "Araçlar", "Kütüphane", "Ara"]) {
   assert(
@@ -223,6 +232,17 @@ for (const appearance of ['"system"', '"light"', '"dark"']) {
   assert(theme.includes(appearance), `src/hooks/useTheme.tsx: missing ${appearance} appearance`);
 }
 assert(
+  /defaultTheme\s*=\s*"system"/.test(theme) && app.includes('defaultTheme="system"'),
+  "appearance: first launch must follow the operating-system appearance",
+);
+const appNavigation = read("src/lib/appNavigation.ts");
+assert(
+  appNavigation.includes('search: "/search"') &&
+    read("src/hooks/useBackNavigation.ts").includes("hasHierarchicalBack") &&
+    read("src/hooks/useNavigationHierarchy.ts").includes("hasHierarchicalBack"),
+  "navigation: all tab roots, including Search, must be independent stacks without a fake back-to-Home action",
+);
+assert(
   read("src/components/EdgeSwipeBack.tsx").includes("moveSurface(next)"),
   "EdgeSwipeBack: the page itself must track the finger; an icon-only gesture is not interactive navigation",
 );
@@ -241,13 +261,24 @@ assert(
 
 const main = read("src/main.tsx");
 assert(
-  !main.includes("4200") && main.includes("760"),
-  "src/main.tsx: launch branding must stay below the 1.2 s first-use budget",
+  !main.includes("4200") && /splashHideDelay\s*=\s*prefersReducedMotion\s*\?\s*0\s*:\s*120/.test(main),
+  "src/main.tsx: launch branding must stay within the native-style 120 ms budget",
 );
 const fontContext = read("src/contexts/font-size-context.ts");
 assert(
   /max:\s*2\b/.test(fontContext),
   "font-size context: accessibility settings must support 200% text scaling",
+);
+assert(
+  fontContext.includes('"system"') &&
+    read("src/contexts/FontSizeContext.tsx").includes("ContentSize.getCurrent") &&
+    read("ios/App/App/ContentSizePlugin.swift").includes("UIContentSizeCategory.didChangeNotification"),
+  "font-size context: iOS Dynamic Type must drive the default system text scale",
+);
+assert(
+  vite.includes('globPatterns: ["**/*.{css,html,ico,woff2}", "assets/entry-*.js"]') &&
+    vite.includes('cacheName: "app-route-chunks"'),
+  "vite.config.ts: lazy route chunks must be runtime-cached instead of blocking PWA install in the full precache",
 );
 assert(
   !read("src/index.css").includes("Neon Billboard Effect Styles"),

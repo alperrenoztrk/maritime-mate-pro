@@ -24,6 +24,8 @@ const walk = (directory, out = []) => {
 const indexPath = path.join(dist, "index.html");
 assert(fs.existsSync(indexPath), "dist/index.html is missing; run npm run build:native first");
 const html = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, "utf8") : "";
+const iosProject = fs.readFileSync(path.join(root, "ios/App/App.xcodeproj/project.pbxproj"), "utf8");
+const contentSizePlugin = fs.readFileSync(path.join(root, "ios/App/App/ContentSizePlugin.swift"), "utf8");
 
 assert(
   !/nomodule|systemjs/i.test(html),
@@ -36,6 +38,11 @@ assert(
 assert(
   !fs.existsSync(path.join(dist, "manifest.webmanifest")),
   "native output contains a PWA manifest; Capacitor does not need the PWA install layer",
+);
+assert(
+  iosProject.includes("ContentSizePlugin.swift in Sources") &&
+    contentSizePlugin.includes("UIContentSizeCategory.didChangeNotification"),
+  "iOS Dynamic Type bridge is missing from the Xcode Sources phase",
 );
 
 const jsFiles = walk(dist).filter((file) => file.endsWith(".js"));

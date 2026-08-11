@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
 import { isArticleOpen } from './useArticleBackGuard';
+import { hasHierarchicalBack } from '@/lib/appNavigation';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -164,6 +165,7 @@ const navigationRules: NavigationRule[] = [
   // ── Library hub ────────────────────────────────────────────
   { pattern: /^\/communication\/(flags|morse)$/, parent: () => '/library' },
   { pattern: /^\/library$/, parent: () => '/' },
+  { pattern: /^\/search$/, parent: () => '/' },
 
   // ── Diğer hesaplama sayfaları ──────────────────────────────
   { pattern: /^\/ballast$/, parent: () => '/calculations' },
@@ -309,9 +311,9 @@ export const useNavigationHierarchy = () => {
     // so the ref is the only reliable identity of the screen the user is
     // actually leaving.
     const path = pathnameRef.current;
-    // HARD RULE: the back button MUST NEVER exit the app, no matter how many
-    // times it is pressed. On the home route we deliberately do nothing.
-    if (path === '/') {
+    // HARD RULE: a tab root is the base of its own stack. Back must not jump
+    // sideways to Home (and must never exit the app).
+    if (!hasHierarchicalBack(path)) {
       return;
     }
     const parent = findParentPath(path);
@@ -421,5 +423,3 @@ export const useNavigationHierarchy = () => {
     [showExitDialog, closeExitDialog, confirmExit],
   );
 };
-
-

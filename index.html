@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <!-- viewport-fit=cover is REQUIRED for env(safe-area-inset-*) to report real
@@ -7,10 +7,10 @@
          resolves to 0 and the notch/home-indicator padding never applies. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <!-- Single source of truth for the shell colour: hsl(214 84% 8%), the top
-         stop of the ocean gradient in GlobalMaritimeBackground. Kept in sync with
-         capacitor.config.ts (StatusBar) and vite.config.ts (PWA manifest). -->
-    <meta name="theme-color" content="#031226" />
+    <!-- Dark fallback for browser chrome; theme-prepaint.js resolves the saved
+         or system appearance before the first visible frame. -->
+    <meta name="theme-color" content="#111318" />
+    <script src="/theme-prepaint.js"></script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title translate="no">Mariner&#39;s Book — Interactive Maritime Learning &amp; Calculations</title>
@@ -183,7 +183,7 @@
       <div class="splash-tag" translate="no" lang="en">
 </div>
       <style>
-        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:-apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif;transition:opacity .24s cubic-bezier(.32,.72,0,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
+        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:-apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif;transition:opacity .16s cubic-bezier(.32,.72,0,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
         .splash-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #0a2a55 0%, #041530 55%, #020a14 100%);}
         .splash-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(218,165,32,0.10), transparent 62%);opacity:0;animation:splash-glow 1.4s cubic-bezier(.4,0,.2,1) .5s forwards;}
         .splash-sea{position:absolute;left:0;right:0;bottom:0;height:47%;opacity:0;background:linear-gradient(180deg, rgba(9,38,74,0) 0%, rgba(18,64,118,.38) 30%, rgba(15,56,105,.55) 55%, rgba(5,22,46,.85) 100%);animation:sea-in .7s ease 2.5s forwards;}
@@ -268,10 +268,14 @@
           .ship-lift{animation:none !important;transform:scale(1.7) translate(-20%,-8%);}
           .ship-wake{animation:none !important;opacity:.7;}
         }
-        .splash-brief .splash-stage,.splash-brief .book-cover,.splash-brief .splash-title,.splash-brief .splash-tag,.splash-brief .splash-bg::after{animation-duration:.3s !important;animation-delay:0s !important;}
-        .splash-brief .book{animation:none !important;transform:translateX(0);}
-        .splash-brief .ship-stage,.splash-brief .ship-track,.splash-brief .ship-bob,.splash-brief .ship-lift,.splash-brief .ship-wake,.splash-brief .splash-sea,.splash-brief .cover-emblem{animation:none !important;}
-        .splash-brief .ship-stage{opacity:0;}
+        .splash-brief .splash-stage,.splash-brief .splash-tag,.splash-brief .splash-sea{display:none;}
+        .splash-brief .splash-bg{background:#f2f2f7;}
+        .splash-brief .splash-bg::after{display:none;}
+        .splash-brief .splash-title{animation:none;opacity:1;transform:none;background:none;color:#111114;-webkit-text-fill-color:currentColor;font-size:1rem;letter-spacing:.14em;}
+        @media (prefers-color-scheme:dark){
+          .splash-brief .splash-bg{background:#0b0b0f;}
+          .splash-brief .splash-title{color:#f5f5f7;}
+        }
 
       </style>
     </div>

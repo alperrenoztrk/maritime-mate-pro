@@ -33,13 +33,14 @@ console.log('[Main] Starting Maritime Calculator App v2...');
 }
 
 
-// Apply the saved font-size scale before first paint to avoid a flash of
-// unscaled text. The FontSizeProvider keeps it in sync afterwards.
+// Apply a manual saved font size before first paint. Dynamic Type is read from
+// the native iOS bridge as soon as FontSizeProvider mounts.
 try {
   const storedFontSize = safeLocalStorage.getItem('maritime-ui-font-size') as FontSizeKey | null;
   if (storedFontSize && storedFontSize in FONT_SCALES) {
     document.documentElement.style.setProperty('--font-scale', String(FONT_SCALES[storedFontSize]));
     document.documentElement.setAttribute('data-font-size', storedFontSize);
+    document.documentElement.setAttribute('data-font-size-source', storedFontSize === 'system' ? 'system' : 'manual');
   }
 } catch (e) {
   console.warn('[Main] Yazı boyutu uygulanamadı:', e);
@@ -66,8 +67,8 @@ const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     splash.classList.add('splash-hide');
-    // The fade-out transition is .24s — remove only after it has finished.
-    setTimeout(() => splash.remove(), 280);
+    // The native-style fade is .16s — remove only after it has finished.
+    setTimeout(() => splash.remove(), 180);
   }
 };
 
@@ -75,19 +76,10 @@ const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Keep launch as a quiet brand beat. Native LaunchScreen already provides the
-// static first frame, so an additional four-second narrative only delays the
-// user's first useful interaction.
-const SEEN_KEY = 'maritime-splash-seen';
-let hasSeenSplash = false;
-try {
-  hasSeenSplash = safeLocalStorage.getItem(SEEN_KEY) === '1';
-  safeLocalStorage.setItem(SEEN_KEY, '1');
-} catch {
-  /* storage unavailable — use the same short, safe launch */
-}
-
-const splashHideDelay = prefersReducedMotion ? 220 : hasSeenSplash ? 420 : 760;
+// Keep the launch surface only through the first committed React frame. iOS
+// already supplies a native LaunchScreen, so the web layer must not replay a
+// second narrative or block the first useful interaction.
+const splashHideDelay = prefersReducedMotion ? 0 : 120;
 
 document.getElementById('splash-root')?.classList.add('splash-brief');
 
@@ -98,4 +90,4 @@ const splashEl = document.getElementById('splash-root');
 splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, splashHideDelay + 600);
+setTimeout(hideSplash, splashHideDelay + 400);

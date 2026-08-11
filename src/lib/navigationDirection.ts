@@ -1,4 +1,5 @@
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
+import { isTabSwitch } from "@/lib/appNavigation";
 
 /**
  * Push/pop direction for route transitions.
@@ -20,7 +21,7 @@ import { findParentPath } from "@/hooks/useNavigationHierarchy";
  * The bonus is that no route declaration has to pass anything: all 160
  * `<PageTransition>` usages in App.tsx stay untouched.
  */
-export type NavDirection = "forward" | "backward";
+export type NavDirection = "forward" | "backward" | "tab";
 
 let currentDirection: NavDirection = "forward";
 
@@ -51,6 +52,16 @@ export const recordNavigation = (pathname: string): NavDirection => {
   const previous = visited[visited.length - 1];
 
   if (previous === pathname) return currentDirection;
+
+  // Switching tab-controller stacks is not a hierarchical push/pop. iOS
+  // keeps the chrome still and crossfades the content instead of sliding a
+  // sibling tab in from the right.
+  if (isTabSwitch(previous, pathname)) {
+    visited.push(pathname);
+    if (visited.length > MAX_STACK) visited = visited.slice(-MAX_STACK);
+    currentDirection = "tab";
+    return currentDirection;
+  }
 
   const seenAt = visited.lastIndexOf(pathname);
   if (seenAt !== -1) {
