@@ -14,10 +14,10 @@ import {
 test('only the pending route boundary is owned by the route pass', () => {
   const boundary = {
     matches: (selector: string) => selector === ROUTE_TRANSLATION_PENDING_SELECTOR,
-  } as Pick<Element, 'matches'>;
+  } as unknown as Pick<Element, 'matches'>;
   const asyncDescendant = {
     matches: () => false,
-  } as Pick<Element, 'matches'>;
+  } as unknown as Pick<Element, 'matches'>;
 
   assert.equal(isRouteTranslationBoundary(boundary), true);
   assert.equal(isRouteTranslationBoundary(asyncDescendant), false);
