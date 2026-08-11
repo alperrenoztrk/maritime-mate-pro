@@ -139,8 +139,9 @@ const Settings = () => {
 
   return (
     <MobileLayout>
-      <div className="min-h-screen py-2 text-foreground sm:py-4">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden py-2 text-foreground sm:py-4 [overflow-wrap:anywhere]">
         <div className="max-w-4xl mx-auto space-y-6">
+
 
           {/* Header */}
           <div className="space-y-1 pb-1">
@@ -163,7 +164,7 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
                     {avatarUrl ? (
                       <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
@@ -171,7 +172,7 @@ const Settings = () => {
                       <span className="text-lg font-semibold text-primary">{initials}</span>
                     )}
                   </div>
-                  <div className="flex-1 min-w-0 space-y-1">
+                  <div className="min-w-0 flex-1 basis-40 space-y-1">
                     {displayName ? (
                       <div className="font-medium truncate">{displayName}</div>
                     ) : null}
@@ -189,6 +190,7 @@ const Settings = () => {
                       <span data-translatable>Sağlayıcı</span>: {providerLabel}
                     </div>
                   </div>
+
 
                   <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
                     <LogOut className="w-4 h-4" />
