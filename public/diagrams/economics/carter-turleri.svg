@@ -1,0 +1,63 @@
+<svg width="720" height="400" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .rw{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .cell{font:11px sans-serif;font-weight:700}
+      .grid{stroke:#e2e8f0;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="720" height="400" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Charter Types — Who Pays What</text>
+
+  <g transform="translate(20 44)">
+    <rect width="680" height="336" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+
+    <!-- column headers -->
+    <text x="318" y="30" text-anchor="middle" class="hd">Voyage Charter</text>
+    <text x="462" y="30" text-anchor="middle" class="hd">Time Charter</text>
+    <text x="606" y="30" text-anchor="middle" class="hd">Bareboat</text>
+    <path d="M16,42 H664" class="grid"/>
+
+    <!-- row 1: capital -->
+    <text x="16" y="72" class="rw">Capital cost (the ship itself)</text>
+    <text x="318" y="72" text-anchor="middle" class="cell" style="fill:#1d4ed8">Owner</text>
+    <text x="462" y="72" text-anchor="middle" class="cell" style="fill:#1d4ed8">Owner</text>
+    <text x="606" y="72" text-anchor="middle" class="cell" style="fill:#1d4ed8">Owner</text>
+    <path d="M16,88 H664" class="grid"/>
+
+    <!-- row 2: operating -->
+    <text x="16" y="118" class="rw">Operating cost</text>
+    <text x="16" y="134" class="sm">crew, stores, maintenance, insurance</text>
+    <text x="318" y="122" text-anchor="middle" class="cell" style="fill:#1d4ed8">Owner</text>
+    <text x="462" y="122" text-anchor="middle" class="cell" style="fill:#1d4ed8">Owner</text>
+    <text x="606" y="122" text-anchor="middle" class="cell" style="fill:#b45309">Charterer</text>
+    <path d="M16,146 H664" class="grid"/>
+
+    <!-- row 3: voyage -->
+    <text x="16" y="176" class="rw">Voyage cost</text>
+    <text x="16" y="192" class="sm">bunkers, port dues, canal transit</text>
+    <text x="318" y="180" text-anchor="middle" class="cell" style="fill:#1d4ed8">Owner</text>
+    <text x="462" y="180" text-anchor="middle" class="cell" style="fill:#b45309">Charterer</text>
+    <text x="606" y="180" text-anchor="middle" class="cell" style="fill:#b45309">Charterer</text>
+    <path d="M16,204 H664" class="grid"/>
+
+    <!-- row 4: cargo handling -->
+    <text x="16" y="234" class="rw">Cargo handling</text>
+    <text x="16" y="250" class="sm">loading, stowing, trimming, discharge</text>
+    <text x="318" y="242" text-anchor="middle" class="cell" style="fill:#475569">Per C/P terms</text>
+    <text x="462" y="242" text-anchor="middle" class="cell" style="fill:#b45309">Charterer</text>
+    <text x="606" y="242" text-anchor="middle" class="cell" style="fill:#b45309">Charterer</text>
+    <path d="M16,262 H664" class="grid"/>
+
+    <!-- row 5: what the owner earns -->
+    <text x="16" y="292" class="rw">Owner is paid</text>
+    <text x="318" y="292" text-anchor="middle" class="cell" style="fill:#15803d">Freight</text>
+    <text x="462" y="292" text-anchor="middle" class="cell" style="fill:#15803d">Hire</text>
+    <text x="606" y="292" text-anchor="middle" class="cell" style="fill:#15803d">Hire</text>
+
+    <text x="16" y="322" class="sm">The further right, the more commercial and operational risk sits with the charterer.</text>
+  </g>
+</svg>

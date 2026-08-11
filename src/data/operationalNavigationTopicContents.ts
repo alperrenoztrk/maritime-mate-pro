@@ -5,6 +5,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * Bu içerikler klasik teori anlatımını, vardiya zabitinin gerçek karar ve işlem sırasıyla tamamlar.
  */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import heavyWeatherImage from "@/assets/lessons/heavy-weather.jpg";
 import bridgeOverviewImage from "@/assets/bridge/ship-bridge-overview.jpg";
 import gyroCompassImage from "@/assets/bridge/gyro-compass.jpg";
 import ecdisImage from "@/assets/bridge/ecdis-display.jpg";
@@ -205,6 +206,8 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         title: "Ağır Hava Öncesi Hazırlık",
         content:
           "Güncel hava haritaları ve rota tahminleri değerlendirilir; kaptan ve makine dairesi bilgilendirilir. Hatch coverlar, kapılar, ventilatörler, güverte yükleri, demirler, pilot merdiveni donanımı ve hareketli malzemeler sea-secure yapılır. Tank seviyeleri ve serbest yüzey etkisi kontrol edilir, balast planı hazırlanır, sintine ve scupperlar kontrol edilir. Dümen ve makine hazır tutulur; personel güverteye çıkışları sınırlandırılır.",
+        image: heavyWeatherImage,
+        imageAlt: "View aft from a ship's deck in heavy seas",
       },
       {
         title: "Rota ve Hız Seçimi",

@@ -142,6 +142,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "İlk Dakikalar",
         content:
           "Genel alarm verilir, kaptan ve makine dairesi çağrılır, yaralılar ve yangın kontrol edilir. Gemi mevkii, başı, hızı ve trafik durumu belirlenir; gerekiyorsa makine/dümenle ikinci çatışma önlenir. Çarpan gemiler plansız biçimde ayrılmaz; ayrılma su girişini artırabilir. Watertight kapılar ve ilgili açıklıklar kapatılır.",
+        image: "/diagrams/stability/yara-stabilitesi.svg",
+        imageAlt: "Damage stability after hull breach and flooding",
       },
       {
         title: "Hasar ve Stabilite Değerlendirmesi",
@@ -176,6 +178,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "İlk Eylemler",
         content:
           "Makine durdurulur veya kaptan talimatına göre sınırlanır, genel alarm ve gerekli acil çağrı yapılır. Mevki, heading, oturma zamanı ve gelgit safhası kaydedilir. Tüm tank/ambar/void soundingleri, draftlar ve sintineler kontrol edilir. Yakıt transferi, ballast ve pompalama plansız yapılmaz.",
+        image: "/diagrams/seamanship/squat-etkisi.svg",
+        imageAlt: "Squat in shallow water, which reduces under-keel clearance",
       },
       {
         title: "Ground Reaction ve Stabilite",

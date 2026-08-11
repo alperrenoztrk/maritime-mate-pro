@@ -8,6 +8,8 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * değerleri lessonFlow/seamanship.ts içindeki `sectionRef`/`sectionTitles` ile eşleşir.
  */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import tugImage from "@/assets/lessons/tug-assisting.jpg";
+import pilotLadderImage from "@/assets/lessons/pilot-ladder.jpg";
 import knotsImage from "@/assets/seamanship/knots-display.jpg";
 import hatchCoversImage from "@/assets/seamanship/hatch-covers.jpg";
 import bridgeWatchImage from "@/assets/seamanship/bridge-watch.jpg";
@@ -135,6 +137,8 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Römorkör Yardımı ve Bağlanma",
         content:
           "Liman manevralarında römorkörler gemiye iter (push) veya çeker (pull). Bağlantı, geminin yedek halatı (gemi tarafından verilen) veya römorkörün kendi halatı ile yapılır; bağlantı noktası uygun mukavemette baba/fairlead olmalıdır. Komut zinciri nettir: kılavuz kaptan (pilot) römorköre talimat verir, gemi köprüüstü koordine eder. Römorkörün gemiye fazla yaklaşması, baş/kıç dalgası ve etkileşim (interaction) nedeniyle tehlikelidir; girrt (girting/capsizing) riskine karşı römorkör daima kaçış serbestliğini korur.",
+        image: tugImage,
+        imageAlt: "Tug towing a ship through a port",
       },
       {
         title: "Yedek Donanımı ve Bağlantı",
@@ -241,6 +245,8 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Pilot Merdiveni (Pilot Ladder) Gereklilikleri",
         content:
           "Pilot merdiveni, belirli standartlara uygun basamaklar (ahşap/uygun malzeme, yatay, kaymaz), yan halatlar ve yayılma çıtaları (spreaders) içerir. Merdiven sağlam, hasarsız ve doğru kurulmuş olmalı; basamaklar eşit aralıklı ve yatay olmalıdır. Merdiven gemiye, onaylı sağlam bağlantı noktalarından emniyete alınır; geçici/uygunsuz bağlama (örn. yalnızca halatla babaya) kabul edilmez. Tek pilot merdiveni ile çıkış mesafesi sınırlıdır; daha yüksek fribordda kombinasyon düzeni gerekir.",
+        image: pilotLadderImage,
+        imageAlt: "Pilot ladder rigged over the ship's side",
       },
       {
         title: "Kombinasyon Düzeni (Pilot/Accommodation Ladder)",

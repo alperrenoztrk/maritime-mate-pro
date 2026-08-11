@@ -15,7 +15,7 @@
   <!-- panel A: wave anatomy -->
   <g transform="translate(20 44)">
     <rect width="680" height="210" rx="10" fill="#f0f9ff" stroke="#bae6fd"/>
-    <text x="18" y="26" class="hd" fill="#0369a1">Anatomy of a Wave</text>
+    <text x="18" y="26" class="hd" style="fill:#0369a1">Anatomy of a Wave</text>
 
     <!-- still water level -->
     <path d="M40,120 H420" class="guide"/>

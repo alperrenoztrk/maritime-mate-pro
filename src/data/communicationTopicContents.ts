@@ -1,6 +1,8 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import epirbSartImage from "@/assets/lessons/epirb-sart.jpg";
+import signalFlagsImage from "@/assets/lessons/signal-flags-chart.png";
 import dscPanelImage from "@/assets/bridge/dsc-panel.jpg";
 import vhfRadioImage from "@/assets/bridge/vhf-radio.jpg";
 import navtexImage from "@/assets/bridge/navtex-receiver.jpg";
@@ -195,6 +197,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "EPIRB Çalışma Prensibi",
         content:
           "406 MHz EPIRB, COSPAS-SARSAT uydu sistemi üzerinden tehlike sinyali iletir. Sinyal, geminin kimliğini (MMSI veya kayıt numarası), GPS pozisyonunu (GPS modüllü ise) ve tehlike durumunu içerir. COSPAS-SARSAT uyduları bu sinyali alarak ilgili MRCC'ye (Maritime Rescue Coordination Centre) ileten LUT (Local User Terminal) istasyonlarına aktarır. GPS entegreli EPIRB ile konum doğruluğu yaklaşık 100 m'ye iner; GPS'siz modellerde Doppler etkisiyle konum belirlenir, bu daha yavaş ve daha az doğrudur (2–5 km). EPIRB, ek olarak 121.5 MHz homing sinyali yayarak uçak ve helikopterlerin yakın mesafede yönlenmesini sağlar.",
+        image: epirbSartImage,
+        imageAlt: "Emergency beacons used to raise and home in on a distress alert",
       },
       {
         title: "EPIRB Montajı, Bakımı ve Kayıt",
@@ -349,6 +353,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Uluslararası Fonetik Alfabe",
         content:
           "Harfler tek tek söylenmek yerine standart kelimelerle kodlanır: A-Alfa, B-Bravo, C-Charlie, D-Delta, E-Echo, F-Foxtrot, G-Golf, H-Hotel, I-India, J-Juliett, K-Kilo, L-Lima, M-Mike, N-November, O-Oscar, P-Papa, Q-Quebec, R-Romeo, S-Sierra, T-Tango, U-Uniform, V-Victor, W-Whiskey, X-X-ray, Y-Yankee, Z-Zulu. Bu alfabe çağrı işaretleri (call sign), gemi adları ve kritik kelimelerin hecelenmesinde kullanılır. Örnek: 'TCA' çağrı işareti 'Tango Charlie Alfa' olarak okunur.",
+        image: signalFlagsImage,
+        imageAlt: "International Code of Signals flags with their phonetic alphabet names",
       },
       {
         title: "Sayıların ve Ondalıkların Okunması",
@@ -472,6 +478,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Uluslararası İşaret Kodu (ICS)",
         content:
           "International Code of Signals (ICS), dil engelini aşmak için tasarlanmış, özellikle emniyet ve seyir konularını kapsayan standart bir koddur. 26 harf bayrağı, 10 rakam flaması ve yardımcı flamalar ile tek harfli, iki harfli ve üç harfli kodlanmış anlamlar iletilir. Mesajlar bayrakla (flag hoist), mors lambasıyla veya sesle iletilebilir.",
+        image: signalFlagsImage,
+        imageAlt: "International Code of Signals alphabet flags, numeral pennants and substitutes",
       },
       {
         title: "Tek Harfli İşaretlerin Tamamı (A-Z)",
@@ -576,6 +584,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "ITU Radyo Tüzüğü ve Frekans Yönetimi",
         content:
           "ITU (Uluslararası Telekomünikasyon Birliği) Radyo Tüzüğü, deniz hizmetine ayrılan frekans bantlarını, tehlike/çağrı frekanslarını ve kullanım kurallarını belirler. Gemi telsizi yalnızca tahsis edilen frekans/kanallarda ve izin verilen güçte yayın yapabilir. Tehlike frekanslarında (Ch.16, Ch.70, 2182/2187.5 kHz vb.) gereksiz yayın yasaktır. Yanlış/kötü niyetli tehlike çağrısı (false distress) ciddi yaptırımlara tabidir.",
+        image: "/diagrams/communication/gmdss-deniz-alanlari.svg",
+        imageAlt: "GMDSS sea areas, which determine the required equipment and operator certificate",
       },
       {
         title: "Gemi İstasyon Ruhsatı ve Kimlikler",
@@ -668,6 +678,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "MF ve HF Bantları, Tehlike Frekansları",
         content:
           "MF bandı 300 kHz – 3 MHz arasıdır; deniz haberleşmesinde 2 MHz civarı kullanılır. MF telsiz telefon tehlike/çağrı frekansı 2182 kHz, MF-DSC tehlike frekansı ise 2187.5 kHz'tir. HF bandı 3 – 30 MHz arasıdır ve deniz hizmetine 4, 6, 8, 12 ve 16 MHz dolaylarında bantlar ayrılmıştır; her bantta ayrı bir DSC tehlike frekansı vardır (örn. 8414.5 kHz). HF, dünya çapında uzun menzil sağlayabildiğinden A4 (kutup) dahil tüm alanlarda temel uzun menzil haberleşme aracıdır. NBDP (Narrow-Band Direct Printing / teleks) de MF/HF bantlarında çalışır.",
+        image: vhfRadioImage,
+        imageAlt: "Ship's radio installation carrying the MF/HF and VHF sets",
         bulletPoints: [
           "MF telsiz telefon tehlike/çağrı: 2182 kHz; MF-DSC: 2187.5 kHz.",
           "HF deniz bantları: ~4/6/8/12/16 MHz; her birinde ayrı DSC frekansı.",
@@ -807,6 +819,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "SAR Organizasyonu ve MRCC",
         content:
           "Dünya denizleri SAR sorumluluk bölgelerine ayrılmıştır; her bölgeyi bir MRCC (Maritime Rescue Coordination Centre) yönetir. Bir tehlike alarmı (DSC, EPIRB, telsiz telefon vb.) MRCC'ye ulaştığında, SAR Görev Koordinatörü (SMC – SAR Mission Coordinator) operasyonu planlar ve yönetir. Tehlike durumu üç aşamada değerlendirilir: belirsizlik (INCERFA – uncertainty), alarm (ALERFA – alert) ve tehlike (DETRESFA – distress). MRCC, bölgedeki gemilere yardım çağrısı yapabilir; SOLAS ve denizcilik geleneği gereği tehlikedeki kişilere yardım, kaptanın temel bir yükümlülüğüdür.",
+        image: epirbSartImage,
+        imageAlt: "Beacons that mark the distress position for on-scene coordination",
         bulletPoints: [
           "MRCC, SAR bölgesini yönetir; SMC operasyonu koordine eder.",
           "Tehlike aşamaları: INCERFA (belirsizlik), ALERFA (alarm), DETRESFA (tehlike).",
@@ -858,6 +872,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Sistem Mimarisi: LEOSAR, GEOSAR ve MEOSAR",
         content:
           "Cospas-Sarsat üç uydu katmanı kullanır. LEOSAR, alçak kutupsal yörüngedeki uydularla çalışır; Doppler kayması üzerinden konum hesaplar ancak uydu o anda kapsama alanında değilse beklemek (gecikme) gerekir. GEOSAR, sabit (jeostasyoner) uydularla anında alarm sağlar fakat tek başına konum üretemez (vericide GNSS yoksa). MEOSAR (Medium Earth Orbit), GPS/Galileo/GLONASS gibi navigasyon uydularına yerleştirilen SAR yükleriyle çalışır; geniş, sürekli kapsama ve birden çok uydudan eşzamanlı alımla hızlı ve hassas konumlandırma sunar. Modern sistemde GEOSAR'ın anlık alarmı ile MEOSAR'ın hızlı bağımsız konumlandırması birlikte kullanılır.",
+        image: epirbSartImage,
+        imageAlt: "406 MHz beacons detected by the Cospas-Sarsat satellite system",
         bulletPoints: [
           "LEOSAR: kutupsal yörünge, Doppler konumu, olası bekleme süresi.",
           "GEOSAR: anlık alarm, tek başına konum üretemez.",
@@ -912,6 +928,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Modernizasyonun Gerekçesi ve Kapsamı",
         content:
           "GMDSS modernizasyonu; eskiyen teknolojileri güncellemeyi, sistemin yeni uydu sağlayıcılarına açılmasını, dijital veri yayınını yaygınlaştırmayı ve gereksiz çakışan zorunlulukları sadeleştirmeyi amaçlar. SOLAS Bölüm IV ve ilgili performans standartları bu doğrultuda revize edilmektedir. Hedef; tehlike ve emniyet haberleşmesinin güvenilirliğini korurken modern ekipmanın getirdiği hız, kapasite ve esneklikten yararlanmaktır. Modernizasyon kademeli yürür; gemiler ve idareler için geçiş takvimleri ve uyum gereklilikleri belirlenir.",
+        image: "/diagrams/communication/gmdss-deniz-alanlari.svg",
+        imageAlt: "GMDSS sea areas A1 to A4 and their carriage requirements",
         bulletPoints: [
           "Amaç: eskiyen teknolojiyi güncellemek ve sistemi yeni sağlayıcılara açmak.",
           "SOLAS Bölüm IV ve performans standartları revize edilmektedir.",
@@ -966,6 +984,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Amaç ve ISPS Çerçevesi",
         content:
           "SSAS, 11 Eylül sonrası getirilen SOLAS Bölüm XI-2 ve ISPS Kodu kapsamında, çoğu uluslararası sefer yapan gemi için zorunlu hâle getirilmiştir. Amaç, geminin güvenliği ihlal edildiğinde veya tehdit altındayken kıyıdaki idareye sessiz bir uyarı iletmektir. Tehlike alarmından (GMDSS) farkı: SSAS, çevredeki gemilere veya saldırganlara açık bir alarm vermez; yalnızca önceden tanımlanmış kara muhataplarına gizli bildirim gönderir. Böylece kaçırma veya korsanlık girişimi sırasında müdahale planları güvenlik içinde başlatılabilir.",
+        image: dscPanelImage,
+        imageAlt: "Ship security alarm activated from the bridge console",
         bulletPoints: [
           "SOLAS XI-2 / ISPS Kodu kapsamında zorunludur.",
           "Geminin güvenlik ihlali/tehdidini kıyıya GİZLİCE bildirir.",
@@ -1020,6 +1040,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Amaç ve Yasal Dayanak",
         content:
           "LRIT, SOLAS Bölüm V (Seyir Güvenliği) kapsamında, çoğu uluslararası sefer yapan yolcu gemisi, yüksek hızlı tekne, 300 GT ve üzeri yük gemisi ile mobil açıkdeniz sondaj birimleri için zorunludur. Amaç; emniyet, güvenlik (security) ve deniz çevresinin korunması maksadıyla devletlerin kendi bayraklı, kıyılarına yaklaşan veya limanlarına gelecek gemileri izleyebilmesidir. LRIT bir 'izleme' (tracking) sistemidir; çatışmadan kaçınma gibi anlık seyir amaçlı değildir. Veriler yetkili merkezler arasında kontrollü biçimde paylaşılır.",
+        image: aisDisplayImage,
+        imageAlt: "Vessel tracking display of the kind LRIT reporting feeds",
         bulletPoints: [
           "SOLAS Bölüm V kapsamında belirli gemi türleri için zorunludur.",
           "Amaç: emniyet, güvenlik ve çevre koruma için uzaktan izleme.",
@@ -1074,6 +1096,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Anten Türleri ve Frekansa Göre Tasarım",
         content:
           "Anten boyutu ve tipi, çalıştığı frekans bandıyla doğrudan ilişkilidir. VHF için kısa, çubuk (whip) tipi anteni yeterlidir; tipik olarak direk veya köprüüstü üstünde, mümkün olan en yüksek ve açık konuma yerleştirilir (telsiz ufku yükseklikle artar). MF/HF için çok daha uzun teller veya kamçı antenler ve bir anten tuneri (ATU – Antenna Tuning Unit) gerekir; bu antenler genellikle gemi gövdesini topraklama düzlemi olarak kullanır. Uydu (Inmarsat/diğer) terminalleri ise yönlü/sabit kubbe antenler kullanır; bazı sistemler uyduyu sürekli takip eden stabilize antene ihtiyaç duyarken, alçak yörünge takımyıldızları daha basit antenlerle çalışabilir.",
+        image: inmarsatImage,
+        imageAlt: "Satellite antenna radomes and the mast carrying the radio aerials",
         bulletPoints: [
           "VHF: kısa whip anten, mümkün olan en yüksek konum.",
           "MF/HF: uzun tel/kamçı + ATU; gövde topraklama düzlemi.",

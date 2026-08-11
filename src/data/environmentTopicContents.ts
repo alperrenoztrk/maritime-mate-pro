@@ -8,6 +8,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * lessonFlow/environment.ts içindeki `sectionRef`/`sectionTitles` ile eşleşir.
  */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import oilSpillImage from "@/assets/lessons/oil-spill-response.jpg";
 import tankerShipImage from "@/assets/ships/tanker-ship.jpg";
 
 export const environmentTopicContents: Record<string, TopicDetailContent> = {
@@ -20,6 +21,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Altı Ekin Genel Görünümü",
         content:
           "MARPOL'ün altı eki şunları düzenler: Ek I — Petrol kirliliği (oil); Ek II — Dökme zararlı sıvı maddeler (Noxious Liquid Substances); Ek III — Paketli zararlı maddeler (denizde taşınan deniz kirleticileri); Ek IV — Gemilerden kaynaklanan pis su (sewage); Ek V — Çöp (garbage); Ek VI — Gemilerden kaynaklanan hava kirliliği (SOx, NOx, partikül, sera gazları). Ek I ve II zorunlu (taraf devletler için bağlayıcı), Ek III–VI ise kabul edilmiş ve yürürlüktedir. Her ek, gemi tipi ve tonajına göre uygulanır.",
+        image: "/diagrams/environment/marpol-ekleri.svg",
+        imageAlt: "The six MARPOL annexes and the discharge stream each one covers",
       },
       {
         title: "Özel Alanlar ve Emisyon Kontrol Alanları",
@@ -54,6 +57,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Makine Dairesi Sintine Suyu ve 15 ppm Kuralı",
         content:
           "Makine dairesinde biriken yağlı sintine suyu, denize verilmeden önce yağlı su ayırıcısından (Oil/Water Separator, OWS) geçirilir. Tahliye için temel koşullar: gemi rota üzerindeyken (en route), petrol içeriği 15 ppm'i (milyonda parça) aşmamalı ve sistem 15 ppm alarmlı bir izleme cihazıyla (oil content monitor) donatılmış olmalıdır. Konsantrasyon 15 ppm'i aşarsa otomatik durdurma valfi tahliyeyi keser ve suyu sintineye/slop tankına geri gönderir. Özel alanlarda kurallar daha katıdır.",
+        image: oilSpillImage,
+        imageAlt: "Oil spill response exercise with containment boom",
         formula: {
           text: "Tahliye: ≤ 15 ppm + en route + 15 ppm alarmlı OWS/monitor",
           description: "Makine dairesi sintine suyu için MARPOL Ek I asgari tahliye koşulları",
@@ -168,6 +173,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Pis Su Tanımı ve Kapsam",
         content:
           "Pis su; tuvaletlerden, pisuvarlardan, revir/hastane lavabo ve drenajlarından, canlı hayvan bulunan mahallerden gelen atık sudur. Ek IV genellikle 400 GT ve üzeri gemilere veya 15'ten fazla kişi taşıyan gemilere uygulanır. Geminin pis su arıtma tesisi (sewage treatment plant), parçalama/dezenfeksiyon sistemi veya toplama (holding) tankı bulundurması gerekir. Uyum, Uluslararası Pis Su Kirliliğini Önleme Sertifikası (ISPP) ile belgelenir.",
+        image: "/diagrams/environment/marpol-ekleri.svg",
+        imageAlt: "MARPOL Annex IV in the context of the other annexes",
       },
       {
         title: "Tahliye Koşulları",
@@ -206,6 +213,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Plastik Yasağı ve Genel Yaklaşım",
         content:
           "Ek V'in en temel kuralı, her türlü plastiğin (sentetik halat, ağ, çöp poşeti, plastik ambalaj dâhil) denize atılmasının kesinlikle yasak olmasıdır. Genel felsefe değişmiştir: artık 'neyin atılabileceği' değil, 'çok sınırlı istisnalar dışında hiçbir şeyin atılamayacağı' esas alınır. Çöp kaynağında ayrıştırılır, mümkün olduğunca azaltılır, gemide depolanır ve limanda alım tesislerine verilir.",
+        image: "/diagrams/environment/marpol-ekleri.svg",
+        imageAlt: "MARPOL Annex V in the context of the other annexes",
       },
       {
         title: "Sınırlı Tahliye İstisnaları",
@@ -244,6 +253,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Kükürt (SOx) Limitleri ve ECA",
         content:
           "Yakıttaki kükürt oranı SOx emisyonunu doğrudan belirler. 2020'den itibaren küresel kükürt sınırı kütlece %0.50'dir (önceki %3.50'den düşürülmüştür). Emisyon Kontrol Alanlarında (ECA — örn. Baltık, Kuzey Denizi, Kuzey Amerika) sınır %0.10'dur. Uyum, düşük kükürtlü yakıt (VLSFO/MGO) kullanarak veya eşdeğer bir önlemle (egzoz gazı temizleme sistemi — 'scrubber') sağlanır. Yakıt değişimleri (fuel changeover) ve scrubber çalışması kayıt altına alınır; Bunker Delivery Note yakıt kükürt oranını belgeler.",
+        image: "/diagrams/environment/marpol-ekleri.svg",
+        imageAlt: "MARPOL Annex VI in the context of the other annexes",
         formula: {
           text: "Küresel kükürt sınırı %0.50 · ECA içinde %0.10",
           description: "MARPOL Ek VI yakıt kükürt limitleri (kütlece); scrubber eşdeğer önlem sayılır",

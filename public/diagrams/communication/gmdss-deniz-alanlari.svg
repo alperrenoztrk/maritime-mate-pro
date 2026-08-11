@@ -1,0 +1,68 @@
+<svg width="720" height="460" viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .band{font:13px sans-serif;font-weight:700;fill:#0f172a}
+    </style>
+  </defs>
+  <rect width="720" height="460" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">GMDSS Sea Areas A1 – A4</text>
+
+  <!-- band map -->
+  <g transform="translate(20 46)">
+    <rect width="680" height="200" rx="10" fill="#f0f9ff" stroke="#bae6fd"/>
+
+    <!-- coast -->
+    <rect x="16" y="16" width="46" height="148" rx="6" fill="#d6d3d1"/>
+    <text x="39" y="94" text-anchor="middle" class="sm" transform="rotate(-90 39 94)">Coast</text>
+
+    <!-- A1 -->
+    <rect x="62" y="16" width="120" height="148" fill="#bfdbfe"/>
+    <text x="122" y="80" text-anchor="middle" class="band">A1</text>
+    <text x="122" y="102" text-anchor="middle" class="sm">VHF-DSC</text>
+    <text x="122" y="118" text-anchor="middle" class="sm">~20–30 NM</text>
+
+    <!-- A2 -->
+    <rect x="182" y="16" width="140" height="148" fill="#93c5fd"/>
+    <text x="252" y="80" text-anchor="middle" class="band">A2</text>
+    <text x="252" y="102" text-anchor="middle" class="sm">MF-DSC</text>
+    <text x="252" y="118" text-anchor="middle" class="sm">~100–150 NM</text>
+
+    <!-- A3 -->
+    <rect x="322" y="16" width="220" height="148" fill="#60a5fa"/>
+    <text x="432" y="80" text-anchor="middle" class="band">A3</text>
+    <text x="432" y="102" text-anchor="middle" class="sm">Satellite (Inmarsat / Iridium)</text>
+    <text x="432" y="118" text-anchor="middle" class="sm">roughly 76°N – 76°S</text>
+
+    <!-- A4 -->
+    <rect x="542" y="16" width="122" height="148" fill="#1d4ed8"/>
+    <text x="603" y="80" text-anchor="middle" class="band" style="fill:#ffffff">A4</text>
+    <text x="603" y="102" text-anchor="middle" class="sm" style="fill:#dbeafe">Polar regions</text>
+    <text x="603" y="118" text-anchor="middle" class="sm" style="fill:#dbeafe">HF only</text>
+
+    <text x="340" y="188" text-anchor="middle" class="sm">Each area is defined by the coverage actually available, not by distance alone.</text>
+  </g>
+
+  <!-- carriage requirements -->
+  <g transform="translate(20 262)">
+    <rect width="680" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">The areas are cumulative — a ship trading in A3 must still carry the A1 and A2 equipment</text>
+
+    <text x="18" y="58" class="it">A1</text>
+    <text x="70" y="58" class="sm">VHF with DSC, NAVTEX, EPIRB, SART, portable VHF for survival craft</text>
+
+    <text x="18" y="86" class="it">A2</text>
+    <text x="70" y="86" class="sm">Adds MF with DSC and the associated radiotelephone watch</text>
+
+    <text x="18" y="114" class="it">A3</text>
+    <text x="70" y="114" class="sm">Adds a satellite terminal, or HF with DSC as the alternative fit</text>
+
+    <text x="18" y="142" class="it">A4</text>
+    <text x="70" y="142" class="sm">HF with DSC is mandatory; geostationary satellites do not reach the poles</text>
+
+    <text x="18" y="168" class="sm">Distress alerting must always be possible by at least two independent means.</text>
+  </g>
+</svg>

@@ -31,8 +31,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const OUT_DIR = path.join(root, "src/assets/meteorology");
-const CREDITS = path.join(OUT_DIR, "CREDITS.md");
+/** Manifestte `dir` verilmezse görsel bu klasöre yazılır. */
+const DEFAULT_DIR = "meteorology";
+const assetDir = (dir) => path.join(root, "src/assets", dir);
 
 const UA =
   "MaritimeMateProBot/1.0 (https://github.com/alperrenoztrk/maritime-mate-pro; nauticalleapapps@gmail.com)";
@@ -93,6 +94,41 @@ const MANIFEST = [
     file: "world-surface-currents.jpg",
     // Detaylı bir seyir haritası; okunabilirlik için diğerlerinden geniş.
     thumbWidth: 1100,
+  },
+
+  // ══ Diğer dersler → src/assets/lessons/ ═══════════════════════════════════
+  // Haberleşme
+  { dir: "lessons", commons: "Sbeacons.jpg", file: "epirb-sart.jpg", thumbWidth: 720 },
+  { dir: "lessons", commons: "ICS-flags.png", file: "signal-flags-chart.png", thumbWidth: 540 },
+  // Gemicilik
+  {
+    dir: "lessons",
+    commons: "Jakobsleiter IMG 3508.JPG",
+    file: "pilot-ladder.jpg",
+    thumbWidth: 800,
+  },
+  {
+    dir: "lessons",
+    commons: "42 (tugboat, 2012) towing Genius Star through the Port of Antwerp pic1.JPG",
+    file: "tug-assisting.jpg",
+    thumbWidth: 1000,
+  },
+  // Yük
+  { dir: "lessons", commons: "LNG-carrier.Galea.wmt.jpg", file: "lng-carrier.jpg", thumbWidth: 1000 },
+  // Çevre
+  {
+    dir: "lessons",
+    commons: "Oil spill drill 140408-N-WF272-031.jpg",
+    file: "oil-spill-response.jpg",
+    thumbWidth: 1000,
+  },
+  // Seyir
+  {
+    dir: "lessons",
+    commons:
+      "The view aft from a Royal Navy destroyer on an escort patrol in heavy seas in the Atlantic, October 1941. A5677.jpg",
+    file: "heavy-weather.jpg",
+    thumbWidth: 1000,
   },
 ];
 
@@ -298,12 +334,15 @@ async function download(url, dest) {
 
 async function main() {
   const force = process.argv.includes("--force");
-  fs.mkdirSync(OUT_DIR, { recursive: true });
+  for (const dir of new Set(MANIFEST.map((e) => e.dir ?? DEFAULT_DIR))) {
+    fs.mkdirSync(assetDir(dir), { recursive: true });
+  }
 
-  console.log(`Commons'tan ${MANIFEST.length} görsel alınıyor → src/assets/meteorology/\n`);
+  console.log(`Commons'tan ${MANIFEST.length} görsel alınıyor → src/assets/\n`);
   const info = await fetchInfo(MANIFEST);
 
-  const credits = [];
+  /** @type {Record<string, object[]>} klasör -> kredi satırları */
+  const creditsByDir = {};
   const failures = [];
 
   for (const entry of MANIFEST) {
@@ -322,7 +361,8 @@ async function main() {
     // SVG için thumburl bir PNG render'ıdır; vektörü korumak adına orijinal alınır.
     const isSvg = meta.mime === "image/svg+xml";
     const url = isSvg || !entry.thumbWidth ? meta.url : meta.thumburl || meta.url;
-    const dest = path.join(OUT_DIR, entry.file);
+    const dir = entry.dir ?? DEFAULT_DIR;
+    const dest = path.join(assetDir(dir), entry.file);
 
     let size = fs.existsSync(dest) ? fs.statSync(dest).size : 0;
     let translated = 0;
@@ -339,7 +379,7 @@ async function main() {
     }
 
     const artist = strip(meta.extmetadata?.Artist?.value) || "—";
-    credits.push({
+    (creditsByDir[dir] ??= []).push({
       file: entry.file,
       commons: entry.commons,
       artist: artist.length > 60 ? `${artist.slice(0, 57)}…` : artist,
@@ -347,11 +387,16 @@ async function main() {
     });
     const note = translated ? `  (${translated} etiket İngilizce'ye çevrildi)` : "";
     console.log(
-      `  ✓ ${entry.file.padEnd(34)} ${String(Math.round(size / 1024)).padStart(5)} KB  ${license}${note}`,
+      `  ✓ ${`${dir}/${entry.file}`.padEnd(44)} ${String(Math.round(size / 1024)).padStart(5)} KB  ${license}${note}`,
     );
   }
 
-  writeCredits(credits);
+  let total = 0;
+  for (const [dir, rows] of Object.entries(creditsByDir)) {
+    writeCredits(dir, rows);
+    total += rows.length;
+    console.log(`  · krediler yazıldı: src/assets/${dir}/CREDITS.md`);
+  }
 
   if (failures.length) {
     console.error(`\n${failures.length} dosya alınamadı:`);
@@ -359,35 +404,12 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  console.log(`\n${credits.length} görsel hazır. Krediler: src/assets/meteorology/CREDITS.md`);
+  console.log(`\n${total} görsel hazır.`);
 }
 
-function writeCredits(rows) {
-  const lines = [
-    "# Meteoroloji Görselleri — Kaynaklar ve Lisanslar",
-    "",
-    "Bu klasördeki görseller Wikimedia Commons'tan `scripts/fetch-meteorology-images.mjs`",
-    "ile indirilmiştir. Script yalnızca Public Domain / CC0 / CC BY / CC BY-SA lisanslı",
-    "dosyaları kabul eder; başka bir lisans görürse hata verip durur.",
-    "",
-    "CC BY / CC BY-SA lisanslı görsellerde atıf zorunludur; kaynak sayfa",
-    "bağlantıları üzerinden lisans metinlerine ulaşılabilir.",
-    "",
-    "Yeniden üretmek için:",
-    "",
-    "```bash",
-    "NODE_USE_ENV_PROXY=1 node scripts/fetch-meteorology-images.mjs",
-    "```",
-    "",
-    "| Dosya | Kaynak (Wikimedia Commons) | Yükleyen / Fotoğrafçı | Lisans |",
-    "| --- | --- | --- | --- |",
-  ];
-  for (const r of rows) {
-    const url = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(r.commons.replace(/ /g, "_"))}`;
-    lines.push(`| \`${r.file}\` | [${r.commons}](${url}) | ${r.artist} | ${r.license} |`);
-  }
-  lines.push(
-    "",
+/** Klasör başına ek açıklama (elle çizilen diyagramlar vb.). */
+const CREDITS_FOOTER = {
+  meteorology: [
     "## Elle çizilen diyagramlar",
     "",
     "Serbest lisanslı uygun bir karşılığı bulunmayan konular için diyagramlar",
@@ -398,9 +420,42 @@ function writeCredits(rows) {
     "| `sinoptik-sembol-lejanti.svg` | İzobar, alçak/yüksek merkez, dört cephe tipi, trough ve ridge sembolleri (NWS sembol geometrisi esas alındı) |",
     "| `tehlikeli-yarim-daire.svg` | Tropik siklonun tehlikeli ve seyredilebilir yarım daireleri |",
     "| `dalga-parametreleri.svg` | Dalga yüksekliği/boyu/periyodu ve wind sea – swell ayrımı |",
+  ],
+};
+
+const CREDITS_TITLE = {
+  meteorology: "Meteoroloji Görselleri",
+  lessons: "Ders Görselleri (Yük, Emniyet, Gemicilik, Haberleşme, Çevre)",
+};
+
+function writeCredits(dir, rows) {
+  const lines = [
+    `# ${CREDITS_TITLE[dir] ?? dir} — Kaynaklar ve Lisanslar`,
     "",
-  );
-  fs.writeFileSync(CREDITS, lines.join("\n"));
+    "Bu klasördeki görseller Wikimedia Commons'tan `scripts/fetch-lesson-images.mjs`",
+    "ile indirilmiştir. Script yalnızca Public Domain / CC0 / CC BY / CC BY-SA lisanslı",
+    "dosyaları kabul eder; başka bir lisans görürse hata verip durur.",
+    "",
+    "CC BY / CC BY-SA lisanslı görsellerde atıf zorunludur; kaynak sayfa",
+    "bağlantıları üzerinden lisans metinlerine ulaşılabilir.",
+    "",
+    "Yeniden üretmek için:",
+    "",
+    "```bash",
+    "NODE_USE_ENV_PROXY=1 node scripts/fetch-lesson-images.mjs",
+    "```",
+    "",
+    "| Dosya | Kaynak (Wikimedia Commons) | Yükleyen / Fotoğrafçı | Lisans |",
+    "| --- | --- | --- | --- |",
+  ];
+  for (const r of rows) {
+    const url = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(r.commons.replace(/ /g, "_"))}`;
+    lines.push(`| \`${r.file}\` | [${r.commons}](${url}) | ${r.artist} | ${r.license} |`);
+  }
+  const footer = CREDITS_FOOTER[dir];
+  if (footer) lines.push("", ...footer);
+  lines.push("");
+  fs.writeFileSync(path.join(assetDir(dir), "CREDITS.md"), lines.join("\n"));
 }
 
 main().catch((err) => {

@@ -2,6 +2,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 /** İleri gemicilik, manevra, demirleme, bağlama ve gemi yapısı içerikleri. */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import tugImage from "@/assets/lessons/tug-assisting.jpg";
 import rudderPropellerImage from "@/assets/seamanship/rudder-propeller.jpg";
 import anchorChainImage from "@/assets/seamanship/anchor-chain.jpg";
 import mooringEquipmentImage from "@/assets/seamanship/mooring-equipment.jpg";
@@ -57,6 +58,8 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Tug Type ve Bollard Pull",
         content:
           "Conventional, ASD ve tractor tugların çekme noktası ve manevra karakteri farklıdır. Bollard pull statik maksimum çekme kuvvetidir; gerçek deniz ve hız koşullarında kullanılabilir kuvvet daha düşük olabilir. Gerekli tug sayısı rüzgâr alanı, draft, akıntı, rıhtım, thruster ve acil durdurma ihtiyacına göre belirlenir.",
+        image: tugImage,
+        imageAlt: "Tug made fast and assisting a ship in a port approach",
       },
       {
         title: "Push, Pull, Braking ve Escort Mode",

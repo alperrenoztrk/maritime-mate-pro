@@ -1,0 +1,73 @@
+<svg width="720" height="480" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:14px sans-serif;fill:#0f172a;font-weight:700}
+      .rn{font:17px sans-serif;fill:#ffffff;font-weight:700}
+      .it{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .sm{font:11px sans-serif;fill:#475569}
+      .dt{font:11px sans-serif;fill:#64748b}
+    </style>
+  </defs>
+  <rect width="720" height="480" fill="#ffffff"/>
+  <text x="360" y="30" text-anchor="middle" class="ttl">MARPOL 73/78 — The Six Annexes</text>
+
+  <g transform="translate(20 48)">
+    <rect width="680" height="412" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="26" class="hd">Each annex covers one discharge stream</text>
+
+    <!-- Annex I -->
+    <g transform="translate(18 40)">
+      <rect width="54" height="40" rx="8" fill="#1f2937"/>
+      <text x="27" y="26" text-anchor="middle" class="rn">I</text>
+      <text x="70" y="18" class="it">Oil</text>
+      <text x="70" y="36" class="sm">Machinery space and cargo oil; ORB, ODME, 15 ppm separator</text>
+      <text x="644" y="18" text-anchor="end" class="dt">1983</text>
+    </g>
+
+    <!-- Annex II -->
+    <g transform="translate(18 100)">
+      <rect width="54" height="40" rx="8" fill="#7c3aed"/>
+      <text x="27" y="26" text-anchor="middle" class="rn">II</text>
+      <text x="70" y="18" class="it">Noxious Liquid Substances in Bulk</text>
+      <text x="70" y="36" class="sm">Chemical cargoes in categories X, Y, Z and OS; Cargo Record Book</text>
+      <text x="644" y="18" text-anchor="end" class="dt">1987</text>
+    </g>
+
+    <!-- Annex III -->
+    <g transform="translate(18 160)">
+      <rect width="54" height="40" rx="8" fill="#b45309"/>
+      <text x="27" y="26" text-anchor="middle" class="rn">III</text>
+      <text x="70" y="18" class="it">Harmful Substances in Packaged Form</text>
+      <text x="70" y="36" class="sm">Marine pollutants carried as packaged goods; applied through the IMDG Code</text>
+      <text x="644" y="18" text-anchor="end" class="dt">1992</text>
+    </g>
+
+    <!-- Annex IV -->
+    <g transform="translate(18 220)">
+      <rect width="54" height="40" rx="8" fill="#0369a1"/>
+      <text x="27" y="26" text-anchor="middle" class="rn">IV</text>
+      <text x="70" y="18" class="it">Sewage</text>
+      <text x="70" y="36" class="sm">Treatment plant, holding tank and the distance-from-land discharge rules</text>
+      <text x="644" y="18" text-anchor="end" class="dt">2003</text>
+    </g>
+
+    <!-- Annex V -->
+    <g transform="translate(18 280)">
+      <rect width="54" height="40" rx="8" fill="#15803d"/>
+      <text x="27" y="26" text-anchor="middle" class="rn">V</text>
+      <text x="70" y="18" class="it">Garbage</text>
+      <text x="70" y="36" class="sm">Discharge of plastics is banned everywhere; Garbage Record Book and plan</text>
+      <text x="644" y="18" text-anchor="end" class="dt">1988</text>
+    </g>
+
+    <!-- Annex VI -->
+    <g transform="translate(18 340)">
+      <rect width="54" height="40" rx="8" fill="#b91c1c"/>
+      <text x="27" y="26" text-anchor="middle" class="rn">VI</text>
+      <text x="70" y="18" class="it">Air Pollution and Energy Efficiency</text>
+      <text x="70" y="36" class="sm">SOx and NOx limits, ECA areas, ozone-depleting substances, EEDI/EEXI, SEEMP, CII</text>
+      <text x="644" y="18" text-anchor="end" class="dt">2005</text>
+    </g>
+  </g>
+</svg>

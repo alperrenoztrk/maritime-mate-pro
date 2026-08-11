@@ -1,0 +1,76 @@
+<svg width="720" height="420" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .tick{stroke:#475569;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="720" height="420" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Laytime, Demurrage and Despatch</text>
+
+  <g transform="translate(20 46)">
+    <rect width="680" height="352" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+
+    <!-- timeline -->
+    <text x="18" y="30" class="hd">The clock starts once the NOR is tendered and the notice time has run</text>
+
+    <!-- axis -->
+    <path d="M40,120 H640" stroke="#0f172a" stroke-width="2"/>
+
+    <!-- NOR marker -->
+    <path d="M40,104 V136" class="tick"/>
+    <text x="40" y="96" text-anchor="middle" class="sm">NOR</text>
+    <text x="40" y="154" text-anchor="middle" class="sm">tendered</text>
+
+    <!-- laytime commences -->
+    <path d="M170,104 V136" class="tick"/>
+    <text x="170" y="96" text-anchor="middle" class="sm">Laytime</text>
+    <text x="170" y="154" text-anchor="middle" class="sm">commences</text>
+
+    <!-- laytime expires -->
+    <path d="M420,104 V136" class="tick"/>
+    <text x="420" y="96" text-anchor="middle" class="sm">Laytime</text>
+    <text x="420" y="154" text-anchor="middle" class="sm">expires</text>
+
+    <!-- completion -->
+    <path d="M580,104 V136" class="tick"/>
+    <text x="580" y="96" text-anchor="middle" class="sm">Cargo work</text>
+    <text x="580" y="154" text-anchor="middle" class="sm">completed</text>
+
+    <!-- notice time band -->
+    <rect x="40" y="112" width="130" height="16" fill="#cbd5e1"/>
+    <text x="105" y="124" text-anchor="middle" class="sm" style="fill:#0f172a">notice</text>
+
+    <!-- laytime band -->
+    <rect x="170" y="112" width="250" height="16" fill="#93c5fd"/>
+    <text x="295" y="124" text-anchor="middle" class="sm" style="fill:#0f172a">laytime allowed</text>
+
+    <!-- demurrage band -->
+    <rect x="420" y="112" width="160" height="16" fill="#fca5a5"/>
+    <text x="500" y="124" text-anchor="middle" class="sm" style="fill:#0f172a">demurrage</text>
+
+    <!-- outcomes -->
+    <g transform="translate(18 190)">
+      <rect width="316" height="140" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+      <text x="16" y="28" class="hd" style="fill:#b91c1c">Finished late — Demurrage</text>
+      <text x="16" y="52" class="it">Charterer pays the owner</text>
+      <text x="16" y="74" class="sm">Agreed daily rate for every day the ship is</text>
+      <text x="16" y="90" class="sm">detained beyond the laytime allowed.</text>
+      <text x="16" y="114" class="sm">"Once on demurrage, always on demurrage" —</text>
+      <text x="16" y="130" class="sm">laytime exceptions no longer stop the clock.</text>
+    </g>
+
+    <g transform="translate(346 190)">
+      <rect width="316" height="140" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+      <text x="16" y="28" class="hd" style="fill:#15803d">Finished early — Despatch</text>
+      <text x="16" y="52" class="it">Owner pays the charterer</text>
+      <text x="16" y="74" class="sm">Usually half the demurrage rate, for the time</text>
+      <text x="16" y="90" class="sm">saved against the laytime allowed.</text>
+      <text x="16" y="114" class="sm">Payable only if the charter party provides</text>
+      <text x="16" y="130" class="sm">for it; not every fixture does.</text>
+    </g>
+  </g>
+</svg>

@@ -2,6 +2,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 /** Tanker, özel yük, cargo-care ve liman belge operasyonları. */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import lngCarrierImage from "@/assets/lessons/lng-carrier.jpg";
 import tankerShipImage from "@/assets/ships/tanker-ship.jpg";
 import roroShipImage from "@/assets/ships/roro-ship.jpg";
 import hatchCoversImage from "@/assets/seamanship/hatch-covers.jpg";
@@ -114,6 +115,8 @@ export const operationalCargoTopicContents: Record<string, TopicDetailContent> =
         title: "Containment ve Yük Özellikleri",
         content:
           "Independent tank, membrane veya diğer containment sisteminin tasarım basıncı/sıcaklık limitleri bilinmelidir. LNG kriyojenik sıcaklıkta, LPG ise ürüne göre basınçlı veya soğutulmuş taşınabilir. Malzeme kırılganlığı, yoğunluk, rollover, boil-off gas ve sıvı genleşmesi operasyon planında dikkate alınır.",
+        image: lngCarrierImage,
+        imageAlt: "LNG carrier with spherical containment tanks",
       },
       {
         title: "Cooldown ve Gassing-up",

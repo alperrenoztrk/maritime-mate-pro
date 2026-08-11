@@ -277,6 +277,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlikenin Doğası",
         content:
           "Kapalı mahalde atmosfer üç şekilde ölümcül olabilir: (1) oksijen azlığı — paslanma, yük oksidasyonu (örn. çelik, kömür, ahşap, tarımsal ürün) veya inert gaz oksijeni tüketir; %21 olması gereken oksijen kritik düzeye iner; (2) zehirli gaz — hidrojen sülfür (H₂S), karbon monoksit (CO), yük/kimyasal buharları; (3) yanıcı gaz/buhar — patlama riski. Bu gazlar genellikle renksiz/kokusuz olabilir veya koku alma duyusunu felç edebilir (H₂S). Hiçbir mahale 'sadece bir dakika' güveniyle test edilmeden girilmez.",
+        image: "/diagrams/safety/kapali-mahal-girisi.svg",
+        imageAlt: "Order of work for enclosed space entry and the atmosphere criteria",
       },
       {
         title: "Giriş İzni ve Atmosfer Testi",
@@ -311,6 +313,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Risk Değerlendirme ve İş İzni",
         content:
           "Riskli işler öncesi risk değerlendirmesi (risk assessment) yapılır: tehlikeler belirlenir, olasılık ve şiddet değerlendirilir, kontrol önlemleri tanımlanır (önce ortadan kaldırma/azaltma, sonra KKD). Yüksek riskli işler iş izni (permit to work) gerektirir: sıcak iş (kaynak/taşlama), kapalı mahal girişi, elektrik kesme/kilitleme (LOTO), yüksekte ve bordada çalışma. İzin; işi, tehlikeleri, önlemleri ve sorumluları belgeler ve yetkili kişi onaylar. İş öncesi kısa toolbox toplantısıyla ekip bilgilendirilir.",
+        image: "/diagrams/safety/kapali-mahal-girisi.svg",
+        imageAlt: "Permit to work and the controls that make a hazardous job safe",
       },
       {
         title: "Kişisel Koruyucu Donanım (KKD)",

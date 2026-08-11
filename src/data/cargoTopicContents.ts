@@ -189,6 +189,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Tahıl Kayması ve Heeling Moment",
         content:
           "Tahıl yüzeyi başlangıçta ambarın üst kısmında boşluk bırakır (settling sonrası ~%2-3 oturma). Gemi yalpaladığında tahıl yüzeyi yaklaşık 15°'ye kadar kayar ve dolu ambarlarda da yüzey kayması (assumed volumetric heeling moment) hesaba alınır. Bu kayma, geminin bir tarafına ek ağırlık etkisi yaratarak yatırıcı moment (heeling moment) doğurur. Grain Code, dolu ve kısmen dolu (slack) ambarlar için varsayılan hacimsel kayma momentlerini tablolar hâlinde verir; gerçek kayma değil, standart bir varsayım kullanılır.",
+        image: bulkCarrierImage,
+        imageAlt: "Bulk carrier of the type that loads grain in bulk",
       },
       {
         title: "Grain Code Stabilite Kriterleri",

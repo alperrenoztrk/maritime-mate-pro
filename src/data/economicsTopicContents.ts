@@ -17,6 +17,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         title: "Sefer Çarteri (Voyage Charter)",
         content:
           "Sefer çarterinde armatör, belirli bir yükü bir limandan diğerine taşımayı taahhüt eder ve karşılığında navlun (freight) alır. Geminin tüm işletme ve sefer maliyetleri (yakıt, liman, kanal, mürettebat) armatöre aittir; kiracı yalnızca taşıma hizmetini satın alır. Yükleme/boşaltma için tanınan süre (laytime) ve aşımında ödenecek demurrage sözleşmede yer alır. Sefer çarteri, tek seferlik veya belirli yük hareketleri için yaygındır; armatör operasyonel kontrolü elinde tutar.",
+        image: "/diagrams/economics/carter-turleri.svg",
+        imageAlt: "Voyage, time and bareboat charters compared by who bears which cost",
       },
       {
         title: "Zaman Çarteri (Time Charter)",
@@ -51,6 +53,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         title: "Navlun Hesabı: Ton Başına ve Lumpsum",
         content:
           "Navlun iki temel biçimde belirlenir. Ton başına navlunda toplam gelir, taşınan yük miktarı ile birim navlun oranının çarpımıdır: Navlun = Yük (ton) × Oran ($/ton). Lumpsum (götürü) navlunda ise, taşınan miktardan bağımsız olarak geminin tamamı veya belirli bir kapasite için sabit bir tutar ödenir; bu, yük miktarının belirsiz olduğu veya geminin tam kapasite kullanılamadığı durumlarda armatörü korur. Sözleşme, hangi miktarın (yüklenen mi, boşaltılan mı) esas alınacağını ve toleransları belirtir.",
+        image: "/diagrams/economics/carter-turleri.svg",
+        imageAlt: "How the owner is paid under each charter type: freight against hire",
         formula: {
           text: "Navlun = Yük (ton) × Oran ($/ton)  ·  veya  Lumpsum (sabit tutar)",
           description: "Ton başına navlun yük miktarına bağlıdır; lumpsum miktardan bağımsız sabittir",
@@ -89,6 +93,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         title: "Laytime Kavramı ve Başlangıcı",
         content:
           "Laytime, kiracının yükleme/boşaltmayı demurrage'a girmeden tamamlaması için sözleşmede belirlenen süredir (örn. 72 saat veya günlük belirli ton). Laytime, geminin hazır olduğunu bildiren 'Notice of Readiness' (NOR) geçerli şekilde verildikten ve sözleşmedeki bekleme süresi (örn. 'NOR'dan 6 saat sonra') geçtikten sonra işlemeye başlar. NOR'un geçerliliği için geminin her bakımdan hazır (yanaşmış veya 'whether in berth or not' koşuluyla) ve gerekli serbestlik/onayları almış olması gerekir.",
+        image: "/diagrams/economics/laytime-demurrage.svg",
+        imageAlt: "Laytime timeline from NOR to completion, with demurrage and despatch",
       },
       {
         title: "Laytime Sayımı ve İstisnalar",
@@ -127,6 +133,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         title: "Sefer Süresi ve Mesafe",
         content:
           "Sefer ekonomisinin temeli, sefer süresinin doğru tahminidir. Seyir süresi, mesafenin hıza bölünmesiyle bulunur: Süre (gün) = Mesafe (nm) / (Hız (kn) × 24). Buna yükleme, boşaltma, bekleme, kanal geçişi ve hava payları eklenerek toplam sefer süresi elde edilir. Hız seçimi kritiktir: yüksek hız süreyi kısaltır ama yakıt tüketimini (yaklaşık hızın küpüyle) artırır; bu 'speed-fuel' dengesi, optimum ekonomik hızı (ve 'slow steaming' kararlarını) belirler.",
+        image: "/diagrams/economics/maliyet-yapisi-tce.svg",
+        imageAlt: "Time charter equivalent formula and the cost layers it does and does not include",
         formula: {
           text: "Süre (gün) = Mesafe (nm) / (Hız (kn) × 24)",
           description: "Seyir süresi; toplam sefer süresi için liman/bekleme/kanal süreleri eklenir",
@@ -169,6 +177,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         title: "Sermaye Maliyetleri (Capital Costs)",
         content:
           "Sermaye maliyetleri, geminin satın alınması veya inşasının finansman yüküdür: kredi faizi ve anapara geri ödemesi, öz sermayenin getiri beklentisi ve amortisman (geminin değer kaybının zamana yayılması). Bunlar gemi henüz hiç çalışmasa bile oluşan, büyük ölçüde sabit maliyetlerdir. Geminin alış zamanlaması ve finansman yapısı, sermaye maliyetini ve dolayısıyla rekabet gücünü doğrudan etkiler; piyasa zirvesinde pahalı alınan gemi, yüksek sermaye yüküyle dezavantajlıdır.",
+        image: "/diagrams/economics/maliyet-yapisi-tce.svg",
+        imageAlt: "The four layers of ship cost: capital, operating, voyage and cargo handling",
       },
       {
         title: "İşletme Maliyetleri (Operating Costs / OPEX)",
@@ -203,6 +213,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         title: "Bunker Maliyetinin Hesabı",
         content:
           "Bir seferin bunker maliyeti, tüketilen yakıt miktarı ile birim fiyatın çarpımıdır: Bunker maliyeti = Tüketim (ton) × Fiyat ($/ton). Tüketim, geminin günlük sarfiyatı (seyirde ve limanda farklı) ile süreden hesaplanır. Modern gemilerde farklı yakıt tipleri (VLSFO, MGO) ve farklı bölgelerde (ECA içi/dışı) farklı tüketim ve fiyatlar dikkate alınır. Yakıt fiyatları büyük ölçüde dalgalandığından, sefer öncesi maliyet tahmini güncel bunker fiyatlarıyla yapılır.",
+        image: "/diagrams/economics/maliyet-yapisi-tce.svg",
+        imageAlt: "Bunkers as the largest single item of voyage cost",
         formula: {
           text: "Bunker maliyeti = Tüketim (ton) × Fiyat ($/ton)",
           description: "Tüketim = günlük sarfiyat × gün; ECA içi/dışı ve yakıt tipine göre ayrı hesaplanır",

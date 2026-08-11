@@ -11,6 +11,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
         title: "Kapalı Döngü Haberleşme",
         content:
           "Emir veren kişi açık komut verir, alan kişi aynen tekrar eder, emir veren doğru tekrar edildiğini teyit eder ve uygulama sonucu raporlanır. Dümen, makine, römorkör, mooring ve cargo rate değişikliklerinde bu döngü kullanılmalıdır. 'Okay' gibi belirsiz cevaplar yerine komutun içeriği tekrar edilir.",
+        image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
+        imageAlt: "SMCP message markers used to keep bridge communication unambiguous",
         bulletPoints: [
           "Order: 'Starboard ten.'",
           "Read-back: 'Starboard ten.'",
@@ -95,6 +97,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
         title: "MAYDAY ve PAN-PAN Sonrası Güncelleme",
         content:
           "İlk distress/urgency mesajından sonra durum değiştikçe kısa SITREP verilir: current position, nature of distress, damage/flooding/fire status, persons on board/injured/missing, assistance required ve master's intentions. Aynı bilgiler çelişkili rakamlarla tekrarlanmaz; her güncelleme zamanı belirtilir.",
+        image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
+        imageAlt: "Standard message markers used in distress and urgency traffic",
       },
       {
         title: "Fire Party Raporları",

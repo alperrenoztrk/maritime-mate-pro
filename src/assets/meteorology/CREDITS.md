@@ -1,6 +1,6 @@
 # Meteoroloji Görselleri — Kaynaklar ve Lisanslar
 
-Bu klasördeki görseller Wikimedia Commons'tan `scripts/fetch-meteorology-images.mjs`
+Bu klasördeki görseller Wikimedia Commons'tan `scripts/fetch-lesson-images.mjs`
 ile indirilmiştir. Script yalnızca Public Domain / CC0 / CC BY / CC BY-SA lisanslı
 dosyaları kabul eder; başka bir lisans görürse hata verip durur.
 
@@ -10,7 +10,7 @@ bağlantıları üzerinden lisans metinlerine ulaşılabilir.
 Yeniden üretmek için:
 
 ```bash
-NODE_USE_ENV_PROXY=1 node scripts/fetch-meteorology-images.mjs
+NODE_USE_ENV_PROXY=1 node scripts/fetch-lesson-images.mjs
 ```
 
 | Dosya | Kaynak (Wikimedia Commons) | Yükleyen / Fotoğrafçı | Lisans |

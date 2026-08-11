@@ -42,10 +42,10 @@
     <path d="M-8,7 L0,-8 L8,7 z" fill="#0f172a" transform="translate(230 96)"/>
     <text x="248" y="104" class="hd">Track</text>
 
-    <text x="330" y="150" class="hd" fill="#b91c1c">Dangerous</text>
-    <text x="330" y="168" class="hd" fill="#b91c1c">semicircle</text>
-    <text x="130" y="150" text-anchor="end" class="hd" fill="#15803d">Navigable</text>
-    <text x="130" y="168" text-anchor="end" class="hd" fill="#15803d">semicircle</text>
+    <text x="330" y="150" class="hd" style="fill:#b91c1c">Dangerous</text>
+    <text x="330" y="168" class="hd" style="fill:#b91c1c">semicircle</text>
+    <text x="130" y="150" text-anchor="end" class="hd" style="fill:#15803d">Navigable</text>
+    <text x="130" y="168" text-anchor="end" class="hd" style="fill:#15803d">semicircle</text>
     <text x="230" y="452" text-anchor="middle" class="sm">Wind circulates anticlockwise around the centre.</text>
   </g>
 
@@ -54,13 +54,13 @@
     <rect width="250" height="300" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
     <text x="16" y="30" class="hd">Why it matters</text>
 
-    <text x="16" y="60" class="it" fill="#b91c1c">Right of the track</text>
+    <text x="16" y="60" class="it" style="fill:#b91c1c">Right of the track</text>
     <text x="16" y="80" class="sm">Wind speed and the forward speed</text>
     <text x="16" y="96" class="sm">of the storm add together, so the</text>
     <text x="16" y="112" class="sm">wind is stronger. The wind also</text>
     <text x="16" y="128" class="sm">sets a ship into the storm path.</text>
 
-    <text x="16" y="162" class="it" fill="#15803d">Left of the track</text>
+    <text x="16" y="162" class="it" style="fill:#15803d">Left of the track</text>
     <text x="16" y="182" class="sm">The two speeds oppose, so the</text>
     <text x="16" y="198" class="sm">wind is weaker and a ship is set</text>
     <text x="16" y="214" class="sm">away from the path.</text>
