@@ -389,7 +389,7 @@ MANDATORY FORMAT RULES:
         </div>
 
         <div className="space-y-6">
-          <Card className="border-border/60 bg-card/85 backdrop-blur-sm">
+          <Card className="border-border/60 bg-card/85">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Lightbulb className="h-5 w-5 text-amber-500" />
@@ -417,7 +417,7 @@ MANDATORY FORMAT RULES:
             </CardContent>
           </Card>
 
-          <Card className="border-border/60 bg-card/85 backdrop-blur-sm">
+          <Card className="border-border/60 bg-card/85">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg">{ui.writeQuestion}</CardTitle>
             </CardHeader>
@@ -448,7 +448,7 @@ MANDATORY FORMAT RULES:
           </Card>
 
           {response && (
-            <Card className="border-border/60 bg-card/85 backdrop-blur-sm animate-fade-in">
+            <Card className="border-border/60 bg-card/85 animate-fade-in">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <Lightbulb className="h-5 w-5 text-emerald-600" />

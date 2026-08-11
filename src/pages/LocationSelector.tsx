@@ -14,7 +14,7 @@ import { toast } from 'sonner';
 function LocationCard({ location, onSelect }: { location: LocationResult; onSelect: (location: LocationResult) => void }) {
   return (
     <Card 
-      className="cursor-pointer border-border/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] group"
+      className="cursor-pointer border-border/20 shadow-lg hover:shadow-xl transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-page hover:scale-[1.02] group"
       onClick={() => onSelect(location)}
     >
       <CardContent className="p-4">
@@ -100,7 +100,7 @@ export default function LocationSelector() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-card p-4">
+    <div className="min-h-screen p-4">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-center">

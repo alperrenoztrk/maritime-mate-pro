@@ -19,7 +19,8 @@ export interface LanguageContextValue {
   isChangingLanguage: boolean;
   changeProgress: number;
   changePhase: LanguageChangePhase;
-  readyRouteTranslation: string | null;
+  /** Tokens of the route subtrees whose translation pass has settled. */
+  readyRouteTranslation: ReadonlySet<string>;
   translateRouteRoot: (root: HTMLElement, routeToken: string) => Promise<void>;
 }
 

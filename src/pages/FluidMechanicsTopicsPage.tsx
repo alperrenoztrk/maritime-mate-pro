@@ -141,7 +141,7 @@ export default function FluidMechanicsTopicsPage() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-screen overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
@@ -150,7 +150,7 @@ export default function FluidMechanicsTopicsPage() {
       </div>
 
       <div className="relative z-10">
-        <div className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
+        <div className="relative z-40 border-b border-border bg-background/95">
           <div className="px-4 py-4">
             <div className="mx-auto flex max-w-4xl items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
@@ -171,7 +171,7 @@ export default function FluidMechanicsTopicsPage() {
                   <AccordionItem
                     key={topic.id}
                     value={topic.id}
-                    className="overflow-hidden rounded-xl border border-border/40 bg-card/80 backdrop-blur"
+                    className="overflow-hidden rounded-xl border border-border/40 bg-card/80"
                   >
                     <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
                       <div className="flex items-center gap-3 text-left">
@@ -209,7 +209,7 @@ export default function FluidMechanicsTopicsPage() {
               })}
             </Accordion>
 
-            <section className="mt-6 rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur">
+            <section className="mt-6 rounded-2xl border border-border/40 bg-card/80 p-6">
               <div className="mb-4 flex items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-primary" />
                 <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
@@ -222,7 +222,7 @@ export default function FluidMechanicsTopicsPage() {
                   <Link
                     key={resource.href}
                     to={resource.href}
-                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
+                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-[background-color,color,border-color,box-shadow,opacity,transform,width] hover:border-primary/40 hover:bg-background"
                   >
                     <div className="flex items-center gap-2">
                       <FileText className="h-4 w-4 text-muted-foreground" />
@@ -237,7 +237,7 @@ export default function FluidMechanicsTopicsPage() {
             <div className="flex justify-center pt-2">
               <Link
                 to="/lessons"
-                className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
+                className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-card hover:text-foreground"
               >
                 <BookOpen className="h-4 w-4" />
                 Tüm Derslere Dön
@@ -255,7 +255,7 @@ export default function FluidMechanicsTopicsPage() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-background"
           >
-            <div className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur-sm">
+            <div className="relative z-10 border-b border-border bg-background/95">
               <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
                 <h2 className="truncate pr-4 text-lg font-bold text-foreground">
                   {currentContent.title}

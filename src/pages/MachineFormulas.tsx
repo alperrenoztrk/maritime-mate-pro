@@ -200,7 +200,7 @@ const formulaCategories = [
 
 export default function MachineFormulas() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="min-h-screen">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 -left-32 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl" />
@@ -216,7 +216,7 @@ export default function MachineFormulas() {
 
         <div className="space-y-8">
           {formulaCategories.map((category) => (
-            <Card key={category.title} className="bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm">
+            <Card key={category.title} className="bg-white/80 dark:bg-slate-900/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <div className={`p-2 ${category.bgColor} rounded-lg`}>

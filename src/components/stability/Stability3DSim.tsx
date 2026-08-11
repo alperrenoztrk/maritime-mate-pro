@@ -194,12 +194,12 @@ export const Stability3DSim = () => {
           </SimErrorBoundary>
 
           {/* Interaction hint */}
-          <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-micro text-muted-foreground shadow-sm backdrop-blur-sm">
+          <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-micro text-muted-foreground shadow-sm">
             Sürükle: döndür · Kaydır: yakınlaş
           </div>
 
           {/* Live readout - top left */}
-          <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-micro shadow-md backdrop-blur-sm">
+          <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-micro shadow-md">
             <div className="space-y-0.5">
               <Row label="KM" value={`${stability.km.toFixed(2)} m`} />
               <Row label="KG" value={`${kgInput.toFixed(2)} m`} />
@@ -217,7 +217,7 @@ export const Stability3DSim = () => {
           </div>
 
           {/* Hydrostatic data - bottom right */}
-          <div className="absolute bottom-2.5 right-2.5 rounded-lg bg-background/85 px-3 py-2 text-micro text-muted-foreground shadow-md backdrop-blur-sm">
+          <div className="absolute bottom-2.5 right-2.5 rounded-lg bg-background/85 px-3 py-2 text-micro text-muted-foreground shadow-md">
             <div>KB: {stability.kb.toFixed(2)} m</div>
             <div>BM: {stability.bm.toFixed(2)} m</div>
             <div>Δ: {Math.round(stability.displacement)} t</div>
@@ -226,7 +226,7 @@ export const Stability3DSim = () => {
 
           {/* GM danger warning */}
           {stability.gm < 0.15 && (
-            <div className="absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg bg-red-500/90 px-3 py-1.5 text-micro font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5">
+            <div className="absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg bg-red-500/90 px-3 py-1.5 text-micro font-semibold text-white shadow-lg flex items-center gap-1.5">
               <AlertTriangle className="h-3.5 w-3.5" />
               TEHLİKE: GM &lt; 0.15 m — Yetersiz stabilite!
             </div>
@@ -235,7 +235,7 @@ export const Stability3DSim = () => {
           {/* Heel / deck-immersion warning (only when GM is otherwise OK) */}
           {stability.gm >= 0.15 && (nearCapsize || deckImmersed) && (
             <div
-              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-micro font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5 ${
+              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-micro font-semibold text-white shadow-lg flex items-center gap-1.5 ${
                 nearCapsize ? "bg-red-500/90" : "bg-amber-500/90"
               }`}
             >

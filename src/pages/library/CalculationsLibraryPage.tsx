@@ -39,11 +39,11 @@ interface CalcTool {
 type Category = "navigation" | "stability" | "machine" | "ship-systems" | "converter";
 
 const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent: string }> = {
-  navigation: { title: "Navigasyon ve Seyir", icon: Compass, accent: "from-blue-500 via-indigo-600 to-blue-800" },
-  stability: { title: "Yük ve Stabilite", icon: Scale, accent: "from-cyan-500 via-blue-600 to-indigo-800" },
-  machine: { title: "Makine ve Tüketim", icon: Wrench, accent: "from-slate-600 via-zinc-700 to-slate-900" },
-  "ship-systems": { title: "Gemi Sistemleri", icon: Anchor, accent: "from-amber-500 via-orange-600 to-red-700" },
-  converter: { title: "Formüller ve Dönüştürücüler", icon: Zap, accent: "from-violet-500 via-purple-600 to-indigo-800" },
+  navigation: { title: "Navigasyon ve Seyir", icon: Compass, accent: "accent-ocean" },
+  stability: { title: "Yük ve Stabilite", icon: Scale, accent: "accent-teal" },
+  machine: { title: "Makine ve Tüketim", icon: Wrench, accent: "accent-slate" },
+  "ship-systems": { title: "Gemi Sistemleri", icon: Anchor, accent: "accent-amber" },
+  converter: { title: "Formüller ve Dönüştürücüler", icon: Zap, accent: "accent-deep" },
 };
 
 const QUICK_TOOLS: CalcTool[] = [
@@ -128,7 +128,7 @@ function ToolBook({
           event.stopPropagation();
           onFavorite();
         }}
-        className="absolute right-3 top-3 z-20 rounded-full bg-black/30 p-2 text-white backdrop-blur transition hover:bg-black/50"
+        className="absolute right-3 top-3 z-20 rounded-full bg-black/30 p-2 text-white transition hover:bg-black/50"
       >
         <Star className={`h-4 w-4 ${favorite ? "fill-amber-400 text-amber-400" : "text-white"}`} />
       </button>

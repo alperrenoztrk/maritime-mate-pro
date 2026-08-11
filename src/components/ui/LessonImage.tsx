@@ -23,9 +23,11 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
     !src.startsWith("blob:");
 
   const [stage, setStage] = useState<Stage>(isExternal ? "proxy" : "direct");
+  const [displayLimit, setDisplayLimit] = useState<number | null>(null);
 
   useEffect(() => {
     setStage(isExternal ? "proxy" : "direct");
+    setDisplayLimit(null);
   }, [src, isExternal]);
 
   const currentSrc =
@@ -58,10 +60,22 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
       src={currentSrc}
       alt={alt || "Görsel"}
       onError={handleError}
+      onLoad={(event) => {
+        if (bare) return;
+        const image = event.currentTarget;
+        // Small source images are kept near their 2x CSS size instead of being
+        // stretched across a Retina screen and advertising every source pixel.
+        if (image.naturalWidth < 800 || image.naturalHeight < 600) {
+          setDisplayLimit(Math.max(160, Math.round(image.naturalWidth / 2)));
+        }
+      }}
       onClick={onClick}
       loading="lazy"
+      decoding="async"
       referrerPolicy="no-referrer"
       className={className}
+      data-low-resolution={displayLimit ? "true" : undefined}
+      style={displayLimit ? { maxWidth: `${displayLimit}px` } : undefined}
       draggable={false}
     />
   );

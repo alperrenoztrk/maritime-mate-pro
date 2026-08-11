@@ -11,6 +11,8 @@ import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { LessonAITutor } from "@/components/lessons/LessonAITutor";
 import { TopicExerciseQuestionSet } from "@/components/lessons/TopicExerciseQuestionSet";
+import { MobileLayout } from "@/components/MobileLayout";
+import { PageHeader } from "@/components/layout/PageHeader";
 
 /**
  * Alıştırmalar konu detayı.
@@ -32,9 +34,11 @@ export default function ExerciseTopicDetailPage() {
 
   if (!categoryId || !decodedTitleOrId || !content) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Konu bulunamadı</p>
-      </div>
+      <MobileLayout>
+        <div className="flex min-h-[60svh] items-center justify-center">
+          <p className="text-muted-foreground">Konu bulunamadı</p>
+        </div>
+      </MobileLayout>
     );
   }
 
@@ -70,17 +74,12 @@ export default function ExerciseTopicDetailPage() {
   ].join("\n");
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
-        <div className="flex items-center gap-2">
-          <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
-        </div>
-      </div>
-
-      <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
+    <MobileLayout>
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 pb-24">
+        <PageHeader title={content.title} icon={Play} />
         {content.introduction && (
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-            <p className="text-sm leading-relaxed text-foreground/90">
+          <div className="surface-1 rounded-xl border border-primary/20 p-5">
+            <p className="text-base leading-relaxed text-foreground/90">
               {stripMarkdown(content.introduction)}
             </p>
           </div>
@@ -88,7 +87,7 @@ export default function ExerciseTopicDetailPage() {
 
         <Link
           to={`/exercises/${categoryId}/topics/${encodeURIComponent(sourceTopicTitle)}/learn`}
-          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+          className="flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3 text-base font-semibold text-primary-foreground shadow-elev-1 transition-[background-color,transform] duration-control ease-out-ios hover:bg-primary/90 active:scale-[0.98]"
         >
           <Play className="h-4 w-4" />
           {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
@@ -97,7 +96,7 @@ export default function ExerciseTopicDetailPage() {
         {content.sections.map((section, index) => {
           const sourceSectionTitle = section.sourceTitle ?? section.title;
           return (
-            <div key={section.id ?? `${sourceSectionTitle}-${index}`} className="space-y-6">
+            <div key={section.id ?? `${sourceSectionTitle}-${index}`} className="surface-2 space-y-6 rounded-2xl border p-5 shadow-elev-1">
               <LessonTeachCard
                 section={section}
                 categoryId={categoryId}
@@ -122,7 +121,7 @@ export default function ExerciseTopicDetailPage() {
               {content.keyPoints.map((point, index) => (
                 <li
                   key={`key-point-${index}`}
-                  className="flex items-start gap-3 text-sm text-foreground/80"
+                  className="flex items-start gap-3 text-base text-foreground/80"
                 >
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
                     {index + 1}
@@ -138,6 +137,6 @@ export default function ExerciseTopicDetailPage() {
 
         <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
       </div>
-    </div>
+    </MobileLayout>
   );
 }

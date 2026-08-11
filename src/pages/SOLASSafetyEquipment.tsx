@@ -56,7 +56,7 @@ const equipmentSets = [
 
 const SOLASSafetyEquipmentPage = () => {
   return (
-          <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)] p-6">
+          <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-3">

@@ -176,7 +176,7 @@ export const Ship3DVisualization = () => {
           </SimErrorBoundary>
 
           {/* Legend overlay */}
-          <div className="absolute bottom-2 left-2 space-y-0.5 rounded bg-background/80 px-2 py-1 text-micro backdrop-blur-sm">
+          <div className="absolute bottom-2 left-2 space-y-0.5 rounded bg-background/80 px-2 py-1 text-micro">
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-red-500" />
               <span>G - Ağırlık Merkezi</span>
@@ -192,7 +192,7 @@ export const Ship3DVisualization = () => {
           </div>
 
           {/* Angle display */}
-          <div className="absolute right-2 top-2 rounded bg-background/80 px-2 py-1 font-mono text-micro backdrop-blur-sm">
+          <div className="absolute right-2 top-2 rounded bg-background/80 px-2 py-1 font-mono text-micro">
             <div>Meyil: {heelAngle}°</div>
             <div>Trim: {trimAngle}°</div>
           </div>

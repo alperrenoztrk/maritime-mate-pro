@@ -603,7 +603,7 @@ export const ShipVisualization = () => {
               
               {/* Ship */}
               <div 
-                className="relative transition-transform duration-300"
+                className="relative transition-transform duration-page"
                 style={{ 
                   transform: `rotate(${heelAngle}deg) skewY(${trimAngle}deg)`,
                 }}

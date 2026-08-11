@@ -18,25 +18,24 @@ export function LanguageChangeOverlay() {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center backdrop-blur-xl"
-      style={{ background: "rgba(7, 18, 38, 0.78)" }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/70 p-6"
       role="dialog"
       aria-modal="true"
       aria-live="polite"
     >
-      <div className="mx-6 flex w-full max-w-xs flex-col items-center gap-4 rounded-3xl border border-white/15 bg-white/[0.06] p-7 shadow-2xl">
-        <Loader2 className="h-9 w-9 animate-spin text-sky-300" strokeWidth={2.25} />
+      <div className="surface-3 flex w-full max-w-sm flex-col items-center gap-4 rounded-3xl border p-7 shadow-elev-3">
+        <Loader2 className="h-9 w-9 animate-spin text-primary" strokeWidth={2.25} />
         <div className="text-center">
-          <p className="text-base font-semibold text-white">{title}</p>
-          <p className="mt-1 text-caption text-white/60">{subtitle}</p>
+          <p className="text-base font-semibold text-foreground">{title}</p>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{subtitle}</p>
         </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300 transition-[width] duration-200 ease-out"
+            className="h-full rounded-full bg-primary transition-[width] duration-control ease-out-ios"
             style={{ width: `${pct}%` }}
           />
         </div>
-        <p className="text-micro tabular-nums text-white/55">%{pct}</p>
+        <p className="text-caption tabular-nums text-muted-foreground">%{pct}</p>
       </div>
     </div>
   );

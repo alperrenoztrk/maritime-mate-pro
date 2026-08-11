@@ -70,7 +70,7 @@ const ResetPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-background text-foreground">
-      <Card className="w-full max-w-md shadow-2xl border-border/50 backdrop-blur">
+      <Card className="w-full max-w-md shadow-2xl border-border/50">
         <CardHeader className="text-center space-y-3">
           <div className="flex justify-center">
             <div className="p-3 rounded-2xl bg-primary/10 border border-primary/20">

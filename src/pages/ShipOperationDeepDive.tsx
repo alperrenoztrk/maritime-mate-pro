@@ -76,9 +76,9 @@ export default function ShipOperationDeepDive() {
 
   return (
     <MobileLayout>
-      <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 pb-32 py-8 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
+      <div className="relative min-h-screen px-4 pb-32 py-8">
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-5">
-          <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md backdrop-blur dark:bg-slate-900/60">
+          <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">
               <BookOpen className="h-4 w-4" /> Detaylı Anlatım
             </div>
@@ -98,7 +98,7 @@ export default function ShipOperationDeepDive() {
             <>
               {/* Chapter chips */}
               {chapters.length > 0 && (
-                <nav className="sticky top-2 z-20 -mx-1 overflow-x-auto rounded-xl border border-border/40 bg-card/80 p-2 backdrop-blur">
+                <nav className="sticky top-2 z-20 -mx-1 overflow-x-auto rounded-xl border border-border/40 bg-card/80 p-2">
                   <div className="flex gap-1.5">
                     {["Özet", ...chapters.map((ch) => ch.heading.replace(/^\d+\.\s*/, ""))].map((label, i) => (
                       <button
@@ -117,7 +117,7 @@ export default function ShipOperationDeepDive() {
                 </nav>
               )}
 
-              <article className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md backdrop-blur dark:bg-slate-900/60">
+              <article className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
                 {chapter ? (
                   <>
                     <h2 className="mb-3 text-xl font-bold text-foreground">{chapter.heading}</h2>

@@ -16,6 +16,23 @@ if (window.location.hostname === 'www.nauticalleap.com') {
 
 console.log('[Main] Starting Maritime Calculator App v2...');
 
+// Freeze detector: a 1s heartbeat that reports how late it actually fired.
+// If the user reports a frozen screen, this tells us whether the main thread
+// was genuinely blocked (long gap) or whether an overlay was swallowing input
+// (no gap at all).
+{
+  let lastBeat = Date.now();
+  setInterval(() => {
+    const now = Date.now();
+    const drift = now - lastBeat - 1000;
+    lastBeat = now;
+    if (drift > 4000) {
+      console.warn(`[Heartbeat] Main thread blocked for ~${Math.round(drift)}ms`);
+    }
+  }, 1000);
+}
+
+
 // Apply the saved font-size scale before first paint to avoid a flash of
 // unscaled text. The FontSizeProvider keeps it in sync afterwards.
 try {
@@ -49,8 +66,8 @@ const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     splash.classList.add('splash-hide');
-    // The fade-out transition is .6s — remove only after it has finished.
-    setTimeout(() => splash.remove(), 650);
+    // The fade-out transition is .24s — remove only after it has finished.
+    setTimeout(() => splash.remove(), 280);
   }
 };
 
@@ -58,26 +75,21 @@ const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// The full sequence — book cover opens, the ship drawing appears, pops into
-// 3D and sails off — runs ~4.2s. That is a fine first impression and a long
-// wait on the fiftieth launch, so only the first launch pays for it. Everyone
-// else gets a brief brand beat.
+// Keep launch as a quiet brand beat. Native LaunchScreen already provides the
+// static first frame, so an additional four-second narrative only delays the
+// user's first useful interaction.
 const SEEN_KEY = 'maritime-splash-seen';
 let hasSeenSplash = false;
 try {
   hasSeenSplash = safeLocalStorage.getItem(SEEN_KEY) === '1';
   safeLocalStorage.setItem(SEEN_KEY, '1');
 } catch {
-  /* storage unavailable — fall back to the full sequence */
+  /* storage unavailable — use the same short, safe launch */
 }
 
-const splashHideDelay = prefersReducedMotion ? 1100 : hasSeenSplash ? 700 : 4200;
+const splashHideDelay = prefersReducedMotion ? 220 : hasSeenSplash ? 420 : 760;
 
-// Shortened runs get a class so index.html's delay cascade can compress to
-// match instead of being cut off mid-animation.
-if (splashHideDelay < 4200) {
-  document.getElementById('splash-root')?.classList.add('splash-brief');
-}
+document.getElementById('splash-root')?.classList.add('splash-brief');
 
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
 
@@ -86,4 +98,4 @@ const splashEl = document.getElementById('splash-root');
 splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, splashHideDelay + 1200);
+setTimeout(hideSplash, splashHideDelay + 600);

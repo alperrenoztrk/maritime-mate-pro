@@ -136,7 +136,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' && componentTagger(),
     cspPlugin(),
     mcpPlugin(),
-    VitePWA({
+    mode !== "native" && VitePWA({
       registerType: "autoUpdate",
       injectRegister: false,
       // CRITICAL: Disabled in dev to avoid breaking the Lovable preview iframe.
@@ -189,7 +189,10 @@ export default defineConfig(({ mode }) => ({
         // longer viable. Only the default language's pack (en) is precached;
         // any other language is fetched once on first selection and then kept
         // for offline use by the translation-locales runtime cache below.
-        globIgnores: ["locales/!(en).json"],
+        // Locale packs are route-independent 8–10 MB dictionaries. None may
+        // block service-worker installation; each chosen language is cached by
+        // the runtime rule below after the app shell is interactive.
+        globIgnores: ["locales/**/*.json"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,
@@ -261,7 +264,7 @@ export default defineConfig(({ mode }) => ({
     //  - modern paket için eksik API'leri polyfill'ler (modernPolyfills),
     //  - modül desteği olmayan çok eski WebView'ler için ES5 + SystemJS legacy paket
     //    üretir (nomodule), böylece uygulama "çoğu Android sürümünde" açılır.
-    legacy({
+    mode !== "native" && legacy({
       // package.json "browserslist" ile hizalı en düşük hedefler.
       targets: [
         "Android >= 6",
@@ -278,7 +281,7 @@ export default defineConfig(({ mode }) => ({
       additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
     }),
     // VitePWA sw.js'i closeBundle'da ürettiği için doğrulama en sonda durmalı.
-    verifyPrecachePlugin(),
+    mode !== "native" && verifyPrecachePlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -286,6 +289,11 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    // Capacitor bundles run in current WKWebView/Android WebView and already
+    // package every asset locally. A dedicated native profile avoids shipping
+    // the duplicate ES5/nomodule tree and a service worker that a WebView does
+    // not need. The default web build keeps the existing legacy + PWA support.
+    target: mode === "native" ? "es2020" : undefined,
     // NOT: Modern paketin hedefini (build.target) @vitejs/plugin-legacy yönetir
     // (modül + dynamic import destekleyen WebView tabanı, ~Chrome 64). Modülü
     // olup dynamic import'u olmayan "arada kalan" eski WebView'ler (Chrome 61-63)
@@ -299,6 +307,16 @@ export default defineConfig(({ mode }) => ({
         chunkFileNames: "assets/chunk-[hash].js",
         entryFileNames: "assets/entry-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("three") || id.includes("@react-three")) return "vendor-three";
+          if (id.includes("recharts") || id.includes("d3-")) return "vendor-charts";
+          if (id.includes("pdf-lib") || id.includes("exceljs") || id.includes("html2canvas")) return "vendor-export";
+          if (id.includes("@supabase") || id.includes("@lovable.dev/cloud-auth")) return "vendor-data";
+          if (id.includes("framer-motion")) return "vendor-motion";
+          if (id.includes("react") || id.includes("scheduler")) return "vendor-react";
+          return undefined;
+        },
       },
     },
   },

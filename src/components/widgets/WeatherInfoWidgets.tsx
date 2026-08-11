@@ -78,16 +78,16 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
       <div className="space-y-4" data-widget-container>
         {/* Weather Condition Card - Clickable */}
         <Card 
-          className="glass-widget glass-widget-hover weather-widget-clickable relative overflow-hidden rounded-2xl p-6 shadow-2xl cursor-pointer group"
+          className="surface-widget surface-widget-hover weather-widget-clickable relative overflow-hidden rounded-2xl p-6 cursor-pointer group"
           onClick={() => setForecastOpen(true)}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative text-center space-y-2">
             <div className="relative inline-block">
-              <div className="animate-float">
+              <div>
                 <WeatherIcon code={weatherCode} ranged className="h-20 w-20" />
               </div>
-              <div className="absolute inset-0 blur-2xl opacity-40 animate-float" style={{ animationDelay: '0.5s' }}>
+              <div className="absolute inset-0 blur-2xl opacity-40">
                 <WeatherIcon code={weatherCode} ranged className="h-20 w-20" />
               </div>
             </div>
@@ -102,8 +102,8 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
 
       {/* Weather Stats Grid */}
       <div className="grid grid-cols-2 gap-3">
-        <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg group">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 group">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Sıcaklık</div>
@@ -112,7 +112,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               </div>
             </div>
             <div className="relative">
-              <Thermometer className="w-10 h-10 text-red-500 animate-float" />
+              <Thermometer className="w-10 h-10 text-red-500" />
               <div className="absolute inset-0 blur-lg opacity-40">
                 <Thermometer className="w-10 h-10 text-red-500" />
               </div>
@@ -120,14 +120,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           </div>
           <div className="mt-2 w-full bg-muted/30 rounded-full h-1.5 overflow-hidden">
             <div 
-              className="bg-gradient-to-r from-red-500 to-orange-500 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-red-500 to-orange-500 h-full rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-sheet"
               style={{ width: `${Math.min(100, Math.max(0, ((temperature || 0) + 10) / 50 * 100))}%` }}
             />
           </div>
         </Card>
 
-        <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg group">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Nem</div>
@@ -136,7 +136,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               </div>
             </div>
             <div className="relative">
-              <Droplets className="w-10 h-10 text-blue-500 animate-float" style={{ animationDelay: '0.5s' }} />
+              <Droplets className="w-10 h-10 text-blue-500" />
               <div className="absolute inset-0 blur-lg opacity-40">
                 <Droplets className="w-10 h-10 text-blue-500" />
               </div>
@@ -144,14 +144,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           </div>
           <div className="mt-2 w-full bg-muted/30 rounded-full h-1.5 overflow-hidden">
             <div 
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 h-full rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-sheet"
               style={{ width: `${humidity}%` }}
             />
           </div>
         </Card>
 
-        <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg group">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 group">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Basınç</div>
@@ -160,7 +160,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               </div>
             </div>
             <div className="relative">
-              <Gauge className="w-10 h-10 text-purple-500 animate-float" style={{ animationDelay: '1s' }} />
+              <Gauge className="w-10 h-10 text-purple-500" />
               <div className="absolute inset-0 blur-lg opacity-40">
                 <Gauge className="w-10 h-10 text-purple-500" />
               </div>
@@ -168,14 +168,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           </div>
           <div className="mt-2 w-full bg-muted/30 rounded-full h-1.5 overflow-hidden">
             <div 
-              className="bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-sheet"
               style={{ width: `${Math.min(100, Math.max(0, ((pressure || 1013) - 980) / 50 * 100))}%` }}
             />
           </div>
         </Card>
 
-        <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg group">
-          <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 group">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Rüzgar</div>
@@ -188,7 +188,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
             </div>
             <div className="relative">
               <Wind 
-                className="w-10 h-10 text-green-500 transition-transform duration-300" 
+                className="w-10 h-10 text-green-500 transition-transform duration-page"
                 style={{ transform: `rotate(${windDirection}deg)` }}
               />
               <div className="absolute inset-0 blur-lg opacity-40">
@@ -198,7 +198,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           </div>
           <div className="mt-2 w-full bg-muted/30 rounded-full h-1.5 overflow-hidden">
             <div 
-              className="bg-gradient-to-r from-green-500 to-emerald-500 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-green-500 to-emerald-500 h-full rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-sheet"
               style={{ width: `${Math.min(100, (windSpeed || 0) / 50 * 100)}%` }}
             />
           </div>

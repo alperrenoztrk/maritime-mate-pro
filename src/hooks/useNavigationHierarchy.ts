@@ -275,7 +275,13 @@ export const useNavigationHierarchy = () => {
   // finished committing the 1st navigate, reading a stale path. A short
   // cooldown (~250 ms) collapses bursts into a single climb-one-level.
   const lastBackAtRef = useRef(0);
+  const webBackInFlightRef = useRef(false);
+  const guardDepthRef = useRef(0);
+  const pushTimestampsRef = useRef<number[]>([]);
   const BACK_COOLDOWN_MS = 250;
+  const PUSH_WINDOW_MS = 30_000;
+  const MAX_PUSHES_PER_WINDOW = 40;
+
 
   const handleBack = useCallback((event?: { preventDefault?: () => void }) => {
     // Defensive: tell Capacitor we own this event. No-op in Cap 7 where
@@ -298,10 +304,11 @@ export const useNavigationHierarchy = () => {
     }
     lastBackAtRef.current = now;
 
-    const path =
-      typeof window !== 'undefined'
-        ? window.location.pathname
-        : pathnameRef.current;
+    // During `popstate`, window.location already points at the history entry
+    // that was exposed by the browser. React Router has not committed it yet,
+    // so the ref is the only reliable identity of the screen the user is
+    // actually leaving.
+    const path = pathnameRef.current;
     // HARD RULE: the back button MUST NEVER exit the app, no matter how many
     // times it is pressed. On the home route we deliberately do nothing.
     if (path === '/') {
@@ -344,20 +351,23 @@ export const useNavigationHierarchy = () => {
   }, [handleBack]);
 
   // Web/PWA browser back button — register popstate ONCE.
+  //
+  // The in-flight flag is ALWAYS released on a timer, never only on a route
+  // commit: a swallowed press (home route, open article, cooldown) performs no
+  // navigation, and a flag that is only cleared by the sentinel effect would
+  // stay latched forever, killing every later back press.
   useEffect(() => {
     if (Capacitor.isNativePlatform()) return;
 
     const handlePopState = () => {
+      // The entry the browser just left was ours; one guard fewer is standing.
+      guardDepthRef.current = Math.max(0, guardDepthRef.current - 1);
+      if (webBackInFlightRef.current) return;
+      webBackInFlightRef.current = true;
+      window.setTimeout(() => {
+        webBackInFlightRef.current = false;
+      }, BACK_COOLDOWN_MS);
       handleBack();
-      try {
-        window.history.pushState(
-          { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
-          '',
-          window.location.pathname + window.location.search,
-        );
-      } catch {
-        /* pushState can throw in rare iframe contexts; ignore. */
-      }
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -366,27 +376,45 @@ export const useNavigationHierarchy = () => {
     };
   }, [handleBack]);
 
-  // Sentinel push — runs on every pathname change so back is intercepted
-  // from the very first render. Now ALSO active on native: if Android's
-  // WebView ever falls through to its default goBack() (plugin race during
-  // cold start), the sentinel entry is consumed instead of the app being
-  // minimized.
+  // Guard entry — keeps the browser back button from ever leaving the app.
+  //
+  // Two rules keep this cheap:
+  //  1. The committed router entry is only *tagged* (replaceState), never
+  //     duplicated, so history does not grow twice per navigation.
+  //  2. At most one guard entry is pushed, and pushes are rate limited.
+  //     WebKit throttles `pushState` (~100 calls / 30 s) and starts rejecting
+  //     or stalling once the budget is gone — which is exactly the "app locks
+  //     up after about half a minute of tapping" symptom.
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || Capacitor.isNativePlatform()) return;
 
-    const state = window.history.state as Record<string, unknown> | null;
-    if (state?.[SENTINEL_KEY] === true) return;
+    const url = pathnameRef.current + searchRef.current;
+    const state = (window.history.state ?? {}) as Record<string, unknown>;
 
     try {
-      window.history.pushState(
-        { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
-        '',
-        pathnameRef.current + searchRef.current,
-      );
+      if (state[SENTINEL_KEY] !== true) {
+        window.history.replaceState({ ...state, [SENTINEL_KEY]: true }, '', url);
+      }
+    } catch {
+      /* replaceState can throw in rare iframe/security contexts; ignore. */
+    }
+
+    if (guardDepthRef.current > 0) return;
+
+    const now = Date.now();
+    pushTimestampsRef.current = pushTimestampsRef.current.filter((t) => now - t < PUSH_WINDOW_MS);
+    if (pushTimestampsRef.current.length >= MAX_PUSHES_PER_WINDOW) return;
+
+    try {
+      window.history.pushState({ [SENTINEL_KEY]: true, guard: true }, '', url);
+      pushTimestampsRef.current.push(now);
+      guardDepthRef.current = 1;
     } catch {
       /* pushState can throw in rare iframe/security contexts; ignore. */
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
+
+
 
   return useMemo(
     () => ({ showExitDialog, closeExitDialog, confirmExit }),

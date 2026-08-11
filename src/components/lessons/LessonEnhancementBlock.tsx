@@ -26,7 +26,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
       </div>
 
       {data.deepDive && (
-        <div className="rounded-2xl border border-border/50 bg-card/80 p-5 shadow-md backdrop-blur">
+        <div className="rounded-2xl border border-border/50 bg-card/80 p-5 shadow-md">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
             Kavramsal Çerçeve
           </p>
@@ -51,7 +51,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
       )}
 
       {data.steps && data.steps.length > 0 && (
-        <div className="rounded-2xl border border-border/50 bg-card/80 p-4 shadow-md backdrop-blur">
+        <div className="rounded-2xl border border-border/50 bg-card/80 p-4 shadow-md">
           <div className="mb-3 flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow">
               <CheckCircle2 className="h-4 w-4" />

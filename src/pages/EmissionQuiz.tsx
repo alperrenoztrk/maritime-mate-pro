@@ -178,7 +178,7 @@ export default function EmissionQuiz() {
   const question = questions[currentQuestion];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 -left-32 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
@@ -196,7 +196,7 @@ export default function EmissionQuiz() {
         </div>
 
         {!showResult ? (
-          <Card className="border-border/60 bg-card/85 backdrop-blur-sm animate-fade-in">
+          <Card className="border-border/60 bg-card/85 animate-fade-in">
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg">Soru {currentQuestion + 1}/{questions.length}</CardTitle>
@@ -204,7 +204,7 @@ export default function EmissionQuiz() {
               </div>
               <div className="w-full bg-muted rounded-full h-2 mt-2">
                 <div 
-                  className="bg-emerald-500 h-2 rounded-full transition-all"
+                  className="bg-emerald-500 h-2 rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width]"
                   style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
                 />
               </div>
@@ -218,7 +218,7 @@ export default function EmissionQuiz() {
                     key={index}
                     onClick={() => handleAnswer(index)}
                     disabled={answered}
-                    className={`w-full p-4 rounded-xl text-left transition-all ${
+                    className={`w-full p-4 rounded-xl text-left transition-[background-color,color,border-color,box-shadow,opacity,transform,width] ${
                       answered
                         ? index === question.correctAnswer
                           ? "bg-emerald-100 dark:bg-emerald-900/30 border-2 border-emerald-500"
@@ -260,7 +260,7 @@ export default function EmissionQuiz() {
             </CardContent>
           </Card>
         ) : (
-          <Card className="border-border/60 bg-card/85 backdrop-blur-sm animate-fade-in text-center">
+          <Card className="border-border/60 bg-card/85 animate-fade-in text-center">
             <CardContent className="pt-8 pb-8 space-y-6">
               <Trophy className="h-16 w-16 mx-auto text-amber-500" />
               <div>

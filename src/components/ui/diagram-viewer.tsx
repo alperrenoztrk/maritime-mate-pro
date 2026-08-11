@@ -207,7 +207,7 @@ export const DiagramViewer = ({
 
           {!diagram && !isLoading && !error && (
             <div className="flex flex-col items-center justify-center py-12 space-y-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center cyberpunk:bg-gray-800">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
                 <BarChart3 className="h-8 w-8 text-blue-600" aria-hidden />
               </div>
               <div className="text-center">

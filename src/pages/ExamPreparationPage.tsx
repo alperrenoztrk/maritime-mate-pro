@@ -363,7 +363,7 @@ export default function ExamPreparationPage() {
           : "Quiz";
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 p-4">
+      <div className="min-h-screen p-4">
         <div className="max-w-4xl mx-auto space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -387,9 +387,9 @@ export default function ExamPreparationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 z-10 backdrop-blur-xl bg-background/80 border-b">
+      <div className="relative z-10 bg-background/80 border-b">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -484,7 +484,7 @@ export default function ExamPreparationPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
                   >
-                    <Card className={`relative overflow-hidden hover:shadow-lg transition-all ${module.borderColor} ${module.bgColor}`}>
+                    <Card className={`relative overflow-hidden hover:shadow-lg transition-[background-color,color,border-color,box-shadow,opacity,transform,width] ${module.borderColor} ${module.bgColor}`}>
                       <div className={`absolute inset-0 bg-gradient-to-br ${module.color} opacity-5`} />
                       <CardHeader className="pb-2">
                         <div className="flex items-start justify-between">
@@ -553,7 +553,7 @@ export default function ExamPreparationPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="relative overflow-hidden hover:shadow-lg transition-all cursor-pointer group"
+                    <Card className="relative overflow-hidden hover:shadow-lg transition-[background-color,color,border-color,box-shadow,opacity,transform,width] cursor-pointer group"
                       onClick={() => startPresetExam(preset.id)}
                     >
                       <div className={`absolute inset-0 bg-gradient-to-br ${preset.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
@@ -620,7 +620,7 @@ export default function ExamPreparationPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="relative overflow-hidden hover:shadow-lg transition-all">
+                    <Card className="relative overflow-hidden hover:shadow-lg transition-[background-color,color,border-color,box-shadow,opacity,transform,width]">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-primary/60">

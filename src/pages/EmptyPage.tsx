@@ -291,7 +291,7 @@ const EmptyPage = () => {
 
   return (
     <div 
-      className={`min-h-screen ${oceanTheme.background} px-6 py-8 touch-auto cursor-pointer relative transition-colors duration-500`}
+      className={`min-h-screen ${oceanTheme.background} px-6 py-8 touch-auto cursor-pointer relative transition-colors duration-sheet`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -407,11 +407,11 @@ const EmptyPage = () => {
         
         {/* Sayfa göstergeleri - Sadece noktalar */}
         <div className="fixed bottom-4 left-0 right-0 flex justify-center pointer-events-none z-20">
-          <div className={`${oceanTheme.cardBg} backdrop-blur-sm rounded-full px-4 py-2 border border-white/30 shadow-lg flex items-center gap-1.5`}>
+          <div className={`${oceanTheme.cardBg} rounded-full px-4 py-2 border border-white/30 shadow-lg flex items-center gap-1.5`}>
             {tabs.map((tab, idx) => (
               <div
                 key={tab}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-[background-color,color,border-color,box-shadow,opacity,transform,width] duration-page ${
                   tabs.indexOf(activeTab) === idx
                     ? `w-6 ${oceanTheme.indicatorColor}`
                     : `w-1.5 ${oceanTheme.textColor} opacity-30`

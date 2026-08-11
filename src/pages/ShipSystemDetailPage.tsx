@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BookOpen, ChevronRight } from "lucide-react";
+import { PageHeader } from "@/components/layout/PageHeader";
 
 
 export default function ShipSystemDetailPage() {
@@ -37,12 +38,9 @@ export default function ShipSystemDetailPage() {
 
   return (
     <MobileLayout>
-      <div className="min-h-screen bg-background pb-24">
-        <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur">
-          <h1 className="text-lg font-bold text-foreground">{section.title}</h1>
-        </div>
-
-        <div className="mx-auto max-w-2xl px-4 py-4 space-y-3">
+      <div className="mx-auto min-h-screen max-w-2xl space-y-4 pb-24">
+        <PageHeader title={section.title} icon={BookOpen} />
+        <div className="space-y-3">
           {/* Liste yalnız başlık taşır: tanım, sistem zinciri, izleme, arıza ve
               kayıt blokları konunun detaylı anlatımındaki "Özet" bölümünde
               tek kaynaktan okunur. */}
@@ -51,7 +49,7 @@ export default function ShipSystemDetailPage() {
               key={idx}
               id={`ship-topic-${idx}`}
               to={`/ship-systems/${sectionId}/${idx}`}
-              className="flex w-full scroll-mt-20 items-center gap-3 rounded-xl border border-border/30 bg-card/60 p-4 text-left transition hover:bg-card/80"
+              className="surface-2 flex min-h-14 w-full scroll-mt-20 items-center gap-3 rounded-xl border p-4 text-left transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/30 active:scale-[0.99]"
             >
               <BookOpen className="h-4 w-4 shrink-0 text-primary" />
               <span className="flex-1 text-sm font-semibold text-foreground">{topic.title}</span>

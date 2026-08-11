@@ -69,17 +69,17 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
     <>
       <div className="space-y-4" data-widget-container>
         {/* Location Card */}
-        <Card className="glass-widget relative overflow-hidden rounded-xl shadow-lg group">
-          <div className="absolute inset-0 bg-gradient-to-r from-destructive/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <Card className="surface-widget relative overflow-hidden rounded-xl group">
+          <div className="absolute inset-0 bg-gradient-to-r from-destructive/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           
           {/* Header with location info */}
           <div
-            className="relative p-5 cursor-pointer glass-widget-hover weather-widget-clickable"
+            className="relative p-5 cursor-pointer surface-widget-hover weather-widget-clickable"
             onClick={() => navigate("/location-selector")}
           >
             <div className="flex items-start gap-4">
               <div className="relative mt-1">
-                <MapPin className="h-8 w-8 text-destructive animate-float flex-shrink-0" />
+                <MapPin className="h-8 w-8 text-destructive flex-shrink-0" />
                 <div className="absolute inset-0 blur-xl opacity-50">
                   <MapPin className="h-8 w-8 text-destructive" />
                 </div>
@@ -98,11 +98,11 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="glass-widget rounded-lg p-2 space-y-0.5">
+                  <div className="surface-widget rounded-lg p-2 space-y-0.5">
                     <div className="text-muted-foreground uppercase tracking-wide">Enlem</div>
                     <div className="font-mono font-semibold text-foreground">{latitudeDMS}</div>
                   </div>
-                  <div className="glass-widget rounded-lg p-2 space-y-0.5">
+                  <div className="surface-widget rounded-lg p-2 space-y-0.5">
                     <div className="text-muted-foreground uppercase tracking-wide">Boylam</div>
                     <div className="font-mono font-semibold text-foreground">{longitudeDMS}</div>
                   </div>
@@ -130,7 +130,7 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
                   e.stopPropagation();
                   setMapDialogOpen(true);
                 }}
-                className="absolute bottom-6 right-8 glass-widget glass-widget-hover weather-widget-clickable p-2 rounded-lg group/btn"
+                className="absolute bottom-6 right-8 surface-widget surface-widget-hover weather-widget-clickable p-2 rounded-lg group/btn"
               >
                 <Maximize2 className="h-4 w-4 text-primary group-hover/btn:scale-110 transition-transform" />
               </button>

@@ -25,20 +25,20 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
   return (
     <div className="grid grid-cols-2 gap-4" data-widget-container>
       {/* National / Local Time Card */}
-      <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 aspect-square flex flex-col items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
-          <Clock className="h-6 w-6 text-primary mx-auto animate-pulse" />
+          <Clock className="h-6 w-6 text-primary mx-auto" />
           <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">ULUSAL</div>
-          <div className="font-mono text-3xl font-bold tracking-tight text-foreground animate-neon-glow">
+          <div className="font-mono text-3xl font-bold tracking-tight text-foreground">
             {nationalTime}
           </div>
         </div>
       </Card>
 
       {/* GMT Card */}
-      <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 aspect-square flex flex-col items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
           <Clock className="h-6 w-6 text-primary mx-auto" />
           <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">GMT</div>
@@ -49,8 +49,8 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
       </Card>
 
       {/* LMT Card */}
-      <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 aspect-square flex flex-col items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
           <Clock className="h-6 w-6 text-primary mx-auto" />
           <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">LMT</div>
@@ -61,8 +61,8 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
       </Card>
 
       {/* ZT Card */}
-      <Card className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <Card className="surface-widget surface-widget-hover relative overflow-hidden rounded-xl p-4 aspect-square flex flex-col items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
           <Clock className="h-6 w-6 text-primary mx-auto" />
           <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">ZT</div>
@@ -74,13 +74,13 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
 
       {/* Sunrise Card */}
       <Card
-        className="glass-widget glass-widget-hover weather-widget-clickable relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center cursor-pointer group"
+        className="surface-widget surface-widget-hover weather-widget-clickable relative overflow-hidden rounded-xl p-4 aspect-square flex flex-col items-center justify-center cursor-pointer group"
         onClick={() => navigate("/sunrise-times")}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
           <div className="relative mx-auto w-fit">
-            <Sunrise className="h-8 w-8 text-orange-500 animate-float" />
+            <Sunrise className="h-8 w-8 text-orange-500" />
             <div className="absolute inset-0 blur-lg opacity-40">
               <Sunrise className="h-8 w-8 text-orange-500" />
             </div>
@@ -92,13 +92,13 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
 
       {/* Sunset Card */}
       <Card
-        className="glass-widget glass-widget-hover weather-widget-clickable relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center cursor-pointer group"
+        className="surface-widget surface-widget-hover weather-widget-clickable relative overflow-hidden rounded-xl p-4 aspect-square flex flex-col items-center justify-center cursor-pointer group"
         onClick={() => navigate("/sunset-times")}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
           <div className="relative mx-auto w-fit">
-            <Sunset className="h-8 w-8 text-indigo-500 animate-float" style={{ animationDelay: '1s' }} />
+            <Sunset className="h-8 w-8 text-indigo-500" />
             <div className="absolute inset-0 blur-lg opacity-40">
               <Sunset className="h-8 w-8 text-indigo-500" />
             </div>

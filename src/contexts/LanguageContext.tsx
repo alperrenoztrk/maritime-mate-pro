@@ -37,11 +37,17 @@ import {
 } from '@/utils/routeHarvester';
 import { HARVEST_VERSION } from '@/utils/routeManifest';
 import {
+  ROUTE_TRANSLATION_MAX_WAIT_MS,
+  settleWithDeadline,
+  withReadyRouteToken,
+} from '@/utils/routeTranslation';
+import {
   LanguageContext,
   type LanguageChangePhase,
   type LanguageContextValue,
   type SupportedLanguage,
 } from './language-context';
+import { getCoreUiTranslation } from '@/i18n/coreUiTranslations';
 
 // True when this window is the hidden harvester iframe. In that case the
 // LanguageProvider must stay in source language and skip all translation work
@@ -53,6 +59,7 @@ const IS_HARVEST_FRAME =
 
 const DEFAULT_LANGUAGE = 'en';
 const TRANSLATION_PENDING_ATTR = 'data-mt-translation-pending';
+const ROUTE_TRANSLATION_PENDING_SELECTOR = '[data-mt-route-pending]';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
@@ -115,7 +122,12 @@ const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v2';
 const SEEN_STRINGS_KEY = 'mt-seen-strings-v1';
 const TRANSLATION_CACHE_MAX = 12000;
 const SEEN_STRINGS_MAX = 8000;
-const BULK_CONCURRENCY = 8;
+const BULK_CONCURRENCY = 4;
+const LIVE_TRANSLATION_TIMEOUT_MS = 2_000;
+const LIVE_TRANSLATION_FAILURE_COOLDOWN_MS = 30_000;
+const PENDING_VISIBILITY_MAX_MS = 2_500;
+const MAX_SINGLE_REQUEST_FALLBACKS = 6;
+const MAX_LIVE_SOURCES_PER_PASS = 96;
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   // Resolve the persisted language during the first render. Waiting for an
@@ -126,14 +138,23 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [changeProgress, setChangeProgress] = useState(0);
   const [changePhase, setChangePhase] = useState<LanguageChangePhase>('idle');
-  const [readyRouteTranslation, setReadyRouteTranslation] = useState<string | null>(null);
+  const [readyRouteTranslation, setReadyRouteTranslation] = useState<ReadonlySet<string>>(
+    () => new Set<string>(),
+  );
   const { toast } = useToast();
 
   const translationCacheRef = useRef<Map<string, string>>(new Map());
   const translationRunIdRef = useRef(0);
   const observerRef = useRef<MutationObserver | null>(null);
   const pendingNodesRef = useRef<Set<Node>>(new Set());
-  const pendingVisibilityRef = useRef<Map<HTMLElement, number>>(new Map());
+  // Elements hidden until their translation lands, each with the deadline at
+  // which they are revealed anyway. Entries are kept in expiry order so ONE
+  // shared sweep timer can retire them — a timer per element meant a burst of
+  // DOM mutations created a timer per mutated element.
+  const pendingVisibilityRef = useRef<Map<HTMLElement, { version: number; expiresAt: number }>>(
+    new Map(),
+  );
+  const pendingVisibilitySweepRef = useRef<number | null>(null);
   const pendingVisibilityVersionRef = useRef(0);
   const flushHandleRef = useRef<number | null>(null);
   const persistHandleRef = useRef<number | null>(null);
@@ -146,15 +167,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     options?: { allowLive?: boolean },
   ) => Promise<void>>(async () => undefined);
   const routeTranslationPromisesRef = useRef<Map<string, RouteTranslationTask>>(new Map());
-  const latestRouteTranslationTokenRef = useRef<string | null>(null);
-  // Tracks languages whose upfront bulk pass has already run. NOTE: this no
-  // longer gates live translation. The shipped static packs only cover ~40 UI
-  // strings (menus/buttons/labels), NOT the app's body content (lessons,
-  // longform articles, dynamic text), so live translation must stay enabled at
-  // route time — otherwise everything outside those few labels would render in
-  // the source language ("interface-only" translation). The static pack + the
-  // persistent cache keep already-seen strings instant; anything new is
-  // live-translated on view and then cached for next time.
+  const liveTranslationPausedUntilRef = useRef(0);
+  // Tracks languages whose upfront bulk pass has already run. Shipped locale
+  // packs contain the authored application corpus (UI + lessons/articles), so
+  // route translation resolves locally after the selected pack loads. Live
+  // translation remains a bounded fallback only for genuinely dynamic strings.
   const bulkCompletedLanguagesRef = useRef<Set<string>>(new Set());
   // Persistent registry of every source string the app has ever rendered.
   const seenStringsRef = useRef<Set<string>>(new Set());
@@ -175,7 +192,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         const parsed = JSON.parse(raw) as Record<string, unknown>;
         if (parsed && typeof parsed === 'object') {
           for (const [key, value] of Object.entries(parsed)) {
-            if (typeof value === 'string') translationCacheRef.current.set(key, value);
+            if (typeof value === 'string') rememberRuntimeTranslation(key, value);
           }
         }
       }
@@ -187,7 +204,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       if (rawSeen) {
         const arr = JSON.parse(rawSeen) as unknown;
         if (Array.isArray(arr)) {
-          for (const item of arr) if (typeof item === 'string') seenStringsRef.current.add(item);
+          for (const item of arr) {
+            if (seenStringsRef.current.size >= SEEN_STRINGS_MAX) break;
+            if (typeof item === 'string') seenStringsRef.current.add(item);
+          }
         }
       }
     } catch {
@@ -235,16 +255,29 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const recordSeen = (source: string) => {
     if (!source) return;
     if (seenStringsRef.current.has(source)) return;
+    if (seenStringsRef.current.size >= SEEN_STRINGS_MAX) return;
     seenStringsRef.current.add(source);
     seenDirtyRef.current = true;
     persistSeenSoon();
   };
 
+  const rememberRuntimeTranslation = (key: string, value: string) => {
+    const cache = translationCacheRef.current;
+    if (cache.has(key)) cache.delete(key);
+    cache.set(key, value);
+    while (cache.size > TRANSLATION_CACHE_MAX) {
+      const oldest = cache.keys().next().value as string | undefined;
+      if (!oldest) break;
+      cache.delete(oldest);
+    }
+  };
+
   // ── Core string translator (glossary-aware) ────────────────────────────────
   // Resolves a source string without any network access: curated
   // contextual/maritime override → static dictionary → cache. Returns undefined
-  // when only a live fetch could translate it. Caches static/override hits for
-  // next time.
+  // when only a live fetch could translate it. Static/override values are not
+  // copied into the runtime map: those stores already cache them, and duplicating
+  // thousands of large lesson strings was a major source of mobile heap growth.
   //
   // The curated override is consulted BEFORE the shipped dictionary (matching
   // the build-time precedence documented in scripts/i18n/README.md) so that a
@@ -256,6 +289,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // must never shadow the curated result.
   const resolveLocally = (normalizedText: string, languageCode: string): string | undefined => {
     const cacheKey = `${languageCode}:${normalizedText}`;
+
+    // Persistent chrome and recently-added iOS library screens use a small,
+    // reviewed overlay. Those strings must resolve synchronously and offline:
+    // they are visible before the multi-megabyte route dictionary settles and
+    // were the source of the Turkish/English mixture found in the UI audit.
+    const coreUiTranslation = getCoreUiTranslation(normalizedText, languageCode);
+    if (coreUiTranslation) return coreUiTranslation;
 
     // "SOLAS V", "MF/HF", "DP 1" carry no translatable words; render the
     // abbreviations directly rather than risking an engine round-trip.
@@ -274,23 +314,23 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         /:$/.test(normalizedText) && !/:$/.test(maritimeOverride)
           ? `${maritimeOverride}:`
           : maritimeOverride;
-      translationCacheRef.current.set(cacheKey, withPunctuation);
       return withPunctuation;
     }
 
     const staticTranslation = getStaticTranslation(normalizedText, languageCode);
     if (staticTranslation !== null) {
-      translationCacheRef.current.set(cacheKey, staticTranslation);
       return staticTranslation;
     }
 
     return translationCacheRef.current.get(cacheKey);
   };
 
-  // Translates a batch of source strings in a single network round-trip. On any
-  // failure (or a response that can't be split back to the batch shape) it falls
-  // back to translating each source on its own so a single bad string never
-  // poisons the whole batch.
+  // Translates a batch of source strings in one bounded network round-trip.
+  // Network/HTTP failures open a short circuit breaker: without it, every
+  // route, the MutationObserver and the route gate could all retry the same
+  // unavailable service and build an ever-growing request queue. A malformed
+  // multi-result may use a small per-string fallback, but never an unbounded
+  // fan-out across a large lesson page.
   const fetchTranslationBatch = async (
     batch: string[],
     languageCode: string,
@@ -298,6 +338,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   ): Promise<Map<string, string>> => {
     const { protectTerms = true } = options;
     const out = new Map<string, string>();
+    if (Date.now() < liveTranslationPausedUntilRef.current) return out;
+
     // Two protection layers stand between the source and the engine, because it
     // "corrects" what it does not recognise: maritime abbreviations ("DP" → "XP",
     // "KB" → "NW") and math function names ("atan2", "cosφ"). Both are swapped
@@ -311,47 +353,59 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const query = batch
       .map((source, i) => mathMasks[i]?.masked ?? termMasks[i]?.masked ?? source)
       .join(BATCH_SEPARATOR);
+    const controller = typeof AbortController === 'undefined' ? null : new AbortController();
+    const timeout = controller
+      ? globalThis.setTimeout(() => controller.abort(), LIVE_TRANSLATION_TIMEOUT_MS)
+      : null;
+    let parts: string[] | null = null;
     try {
       const response = await fetch(
-        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`,
+        { signal: controller?.signal },
       );
+      if (!response.ok) throw new Error(`translation HTTP ${response.status}`);
       const data = await response.json();
       if (!Array.isArray(data?.[0])) throw new Error('unexpected response');
       const joined = data[0].map((item: [string]) => item[0] ?? '').join('');
-      const parts = splitBatchResult(joined, batch.length);
-      if (parts) {
-        // Strings whose abbreviation sentinels came back unrecoverable; they are
-        // re-translated unprotected rather than leaking "TKN0" into the UI.
-        const unresolved: string[] = [];
-        batch.forEach((source, i) => {
-          let raw = parts[i].trim();
-          const mathSlots = mathMasks[i]?.slots;
-          if (mathSlots) raw = unmaskTechnicalTokens(raw, mathSlots);
-          const termSlots = termMasks[i]?.slots;
-          if (termSlots) {
-            const restored = unmaskProtectedTokens(raw, termSlots);
-            if (restored === null) {
-              unresolved.push(source);
-              return;
-            }
-            raw = restored;
-          }
-          const corrected = applyMaritimeCorrections(raw, languageCode);
-          out.set(source, normalizeMachineTranslation(source, corrected, languageCode));
-        });
-        if (unresolved.length > 0) {
-          const retried = await fetchTranslationBatch(unresolved, languageCode, {
-            protectTerms: false,
-          });
-          for (const [source, value] of retried) out.set(source, value);
-        }
-        return out;
-      }
+      parts = splitBatchResult(joined, batch.length);
     } catch {
-      // fall through to per-string fallback below
+      liveTranslationPausedUntilRef.current = Date.now() + LIVE_TRANSLATION_FAILURE_COOLDOWN_MS;
+      return out;
+    } finally {
+      if (timeout !== null) globalThis.clearTimeout(timeout);
     }
 
-    if (batch.length === 1) return out; // single failed → leave unset (keep source)
+    if (parts) {
+      // Strings whose abbreviation sentinels came back unrecoverable; they are
+      // re-translated unprotected rather than leaking "TKN0" into the UI.
+      const unresolved: string[] = [];
+      batch.forEach((source, i) => {
+        let raw = parts![i].trim();
+        const mathSlots = mathMasks[i]?.slots;
+        if (mathSlots) raw = unmaskTechnicalTokens(raw, mathSlots);
+        const termSlots = termMasks[i]?.slots;
+        if (termSlots) {
+          const restored = unmaskProtectedTokens(raw, termSlots);
+          if (restored === null) {
+            unresolved.push(source);
+            return;
+          }
+          raw = restored;
+        }
+        const corrected = applyMaritimeCorrections(raw, languageCode);
+        out.set(source, normalizeMachineTranslation(source, corrected, languageCode));
+      });
+      if (unresolved.length > 0) {
+        const retried = await fetchTranslationBatch(unresolved, languageCode, {
+          ...options,
+          protectTerms: false,
+        });
+        for (const [source, value] of retried) out.set(source, value);
+      }
+      return out;
+    }
+
+    if (batch.length === 1 || batch.length > MAX_SINGLE_REQUEST_FALLBACKS) return out;
 
     await runWithConcurrency(batch, BULK_CONCURRENCY, async (source) => {
       const single = await fetchTranslationBatch([source], languageCode, options);
@@ -366,10 +420,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const networkTranslateMany = async (
     sources: string[],
     languageCode: string,
-    onResolved?: (count: number) => void
+    onResolved?: (count: number) => void,
+    maxSources = MAX_LIVE_SOURCES_PER_PASS,
   ): Promise<Map<string, string>> => {
     const result = new Map<string, string>();
-    const unique = Array.from(new Set(sources));
+    if (Date.now() < liveTranslationPausedUntilRef.current) return result;
+    const unique = Array.from(new Set(sources)).slice(0, maxSources);
     const batches = buildTranslationBatches(unique);
     await runWithConcurrency(batches, BULK_CONCURRENCY, async (batch) => {
       const translated = await fetchTranslationBatch(batch, languageCode);
@@ -406,13 +462,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
 
     const { allowLive = true } = options;
-
-    // Make sure the language's static pack is in memory BEFORE resolving.
-    // Route-change mutations can fire before the pack finishes loading on a
-    // fresh boot; without this await those strings would fall through to the
-    // live translator (wasted requests) and the generic result could then be
-    // cached over the curated pack translation.
-    await loadStaticDictionary(languageCode);
     if (translationRunIdRef.current !== runId) return;
 
     const bySource = new Map<string, Array<(t: string) => void>>();
@@ -423,11 +472,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       else bySource.set(unit.source, [unit.apply]);
     }
 
-    const applyTranslation = (source: string, translated: string) => {
-      if (translated === source) return;
-      const appliers = bySource.get(source);
-      if (!appliers) return;
-      writeWithoutObserving(() => appliers.forEach((apply) => apply(translated)));
+    const applyTranslations = (translations: Iterable<[string, string]>) => {
+      writeWithoutObserving(() => {
+        for (const [source, translated] of translations) {
+          if (translated === source) continue;
+          bySource.get(source)?.forEach((apply) => apply(translated));
+        }
+      });
     };
 
     // 1) Apply everything we can resolve without the network right away. This is
@@ -438,27 +489,28 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // are cached + persisted below, so the next time the same string is seen it
     // resolves instantly with no network.
     const canLiveFetch = allowLive;
+    const localTranslations = new Map<string, string>();
     for (const source of bySource.keys()) {
       const local = resolveLocally(source, languageCode);
       if (local !== undefined) {
-        applyTranslation(source, local);
+        localTranslations.set(source, local);
       } else if (canLiveFetch) {
         networkSources.push(source);
       }
       // else: leave in source language (cache-only mode after a bulk pass).
     }
+    applyTranslations(localTranslations);
 
     // 2) Translate the remainder in as few batched requests as possible.
     if (networkSources.length > 0) {
       const translations = await networkTranslateMany(networkSources, languageCode);
       if (translationRunIdRef.current !== runId) return;
       for (const [source, translated] of translations) {
-        translationCacheRef.current.set(`${languageCode}:${source}`, translated);
-        applyTranslation(source, translated);
+        rememberRuntimeTranslation(`${languageCode}:${source}`, translated);
       }
+      applyTranslations(translations);
+      if (translations.size > 0) persistCacheSoon();
     }
-
-    persistCacheSoon();
   };
 
   const translateRoots = async (
@@ -468,6 +520,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     options: { allowLive?: boolean } = {}
   ) => {
     if (typeof document === 'undefined' || !document.body) return;
+    // Load the complete packaged dictionary before collecting the DOM. This
+    // avoids both live-request storms and stale snapshots: nodes added while
+    // the 8–10 MB pack is loading are included in the subsequent sweep.
+    if (languageCode !== SOURCE_LANGUAGE) await loadStaticDictionary(languageCode);
+    if (translationRunIdRef.current !== runId) return;
+
     const units: TranslationUnit[] = [];
     for (const root of roots) {
       if (root.isConnected) units.push(...collectTranslationUnits(root, originalTextRef.current));
@@ -487,34 +545,54 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // fixed 150 ms guess, which routinely expired before a lazy route mounted or
   // a large locale dictionary finished parsing on mobile.
   translateRootsRef.current = translateRoots;
-  const markRouteTranslationReady = useCallback((routeToken: string) => {
-    setReadyRouteTranslation(routeToken);
+  // Marking a route ready must never un-ready another one: both the outgoing
+  // and the incoming screen are mounted during a transition and each waits on
+  // its own token. `withReadyRouteToken` returns the identical set when the
+  // token is already known, so React bails out instead of re-rendering every
+  // consumer.
+  const completeRouteTranslation = useCallback((routeToken: string) => {
+    setReadyRouteTranslation((current) => withReadyRouteToken(current, routeToken));
   }, []);
 
   const translateRouteRoot = useCallback((root: HTMLElement, routeToken: string): Promise<void> => {
-    latestRouteTranslationTokenRef.current = routeToken;
     const existing = routeTranslationPromisesRef.current.get(routeToken);
     if (existing?.root === root) return existing.promise;
 
     const task = (async () => {
       const languageCode = currentLanguageRef.current;
       if (languageCode === SOURCE_LANGUAGE) {
-        markRouteTranslationReady(routeToken);
+        completeRouteTranslation(routeToken);
         return;
       }
 
-      await loadStaticDictionary(languageCode);
-      if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
+      const translationWork = (async () => {
+        await loadStaticDictionary(languageCode);
+        if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
 
-      // Read the run id after the dictionary await. The provider's initial page
-      // effect may start the same dictionary request in parallel; taking the id
-      // here keeps both passes in the same current generation.
-      const runId = translationRunIdRef.current;
-      await translateRootsRef.current([root], languageCode, runId, { allowLive: true });
-      if (currentLanguageRef.current !== languageCode || !root.isConnected) return;
-      if (latestRouteTranslationTokenRef.current !== routeToken) return;
-      if (routeTranslationPromisesRef.current.get(routeToken)?.root !== root) return;
-      markRouteTranslationReady(routeToken);
+        // The provider's initial effect can advance the generation while the
+        // dictionary is loading. Read it afterwards so this route joins the
+        // latest pass instead of being discarded as stale.
+        const runId = translationRunIdRef.current;
+        await translateRootsRef.current([root], languageCode, runId, { allowLive: true });
+      })();
+      const outcome = await settleWithDeadline(
+        translationWork,
+        ROUTE_TRANSLATION_MAX_WAIT_MS,
+      );
+      if (outcome.status === 'failed') {
+        console.error('Route translation failed:', outcome.error);
+      } else if (outcome.status === 'timed-out') {
+        console.warn('Route translation exceeded its responsiveness budget.');
+      }
+
+      // Never leave a route unresolved: PageTransition keeps the subtree
+      // invisible and RouteTranslationGate keeps a full-screen blocker on top
+      // until this token is marked ready. A disconnected root or a language
+      // switch mid-flight is not a reason to freeze the UI — release it either
+      // way. Readiness is per token, so releasing the screen that is animating
+      // out cannot disturb the one animating in.
+      completeRouteTranslation(routeToken);
+
     })();
 
     routeTranslationPromisesRef.current.set(routeToken, { root, promise: task });
@@ -525,25 +603,80 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     };
     void task.then(clearInFlight, clearInFlight);
     return task;
-  }, [markRouteTranslationReady]);
+  }, [completeRouteTranslation]);
 
   // ── Mutation observer ──────────────────────────────────────────────────────
+  const elementForNode = (node: Node): HTMLElement | null =>
+    node.nodeType === Node.ELEMENT_NODE
+      ? node as HTMLElement
+      : node.parentElement;
+
+  const isOwnedByPendingRoute = (node: Node) => {
+    const element = elementForNode(node);
+    return !!element?.closest(ROUTE_TRANSLATION_PENDING_SELECTOR);
+  };
+
+  const shouldIgnoreObservedNode = (node: Node) => {
+    const element = elementForNode(node);
+    return !element || isOwnedByPendingRoute(node) || isNoTranslateZone(element);
+  };
+
   const markPendingVisibility = (node: Node) => {
     if (currentLanguageRef.current === SOURCE_LANGUAGE) return;
-    const element =
-      node.nodeType === Node.ELEMENT_NODE
-        ? node as HTMLElement
-        : node.parentElement;
-    if (!element || element.id === 'root' || element === document.body || isNoTranslateZone(element)) {
+    const element = elementForNode(node);
+    if (
+      !element ||
+      element.id === 'root' ||
+      element === document.body ||
+      shouldIgnoreObservedNode(node)
+    ) {
       return;
     }
 
     const version = ++pendingVisibilityVersionRef.current;
-    pendingVisibilityRef.current.set(element, version);
+    // Re-insert so the map stays ordered by expiry: the sweep can then stop at
+    // the first entry that is still in date.
+    pendingVisibilityRef.current.delete(element);
+    pendingVisibilityRef.current.set(element, {
+      version,
+      expiresAt: Date.now() + PENDING_VISIBILITY_MAX_MS,
+    });
     element.setAttribute(TRANSLATION_PENDING_ATTR, '');
+    schedulePendingVisibilitySweep();
+  };
+
+  // Reveals every element whose deadline has passed, then re-arms itself for
+  // the next one still waiting. One timer serves the whole map.
+  const sweepPendingVisibility = () => {
+    pendingVisibilitySweepRef.current = null;
+    const now = Date.now();
+    let nextDueIn: number | null = null;
+    for (const [element, entry] of pendingVisibilityRef.current) {
+      if (entry.expiresAt > now) {
+        nextDueIn = entry.expiresAt - now;
+        break;
+      }
+      element.removeAttribute(TRANSLATION_PENDING_ATTR);
+      pendingVisibilityRef.current.delete(element);
+    }
+    if (nextDueIn !== null) {
+      pendingVisibilitySweepRef.current = window.setTimeout(sweepPendingVisibility, nextDueIn);
+    }
+  };
+
+  const schedulePendingVisibilitySweep = () => {
+    if (pendingVisibilitySweepRef.current !== null) return;
+    pendingVisibilitySweepRef.current = window.setTimeout(
+      sweepPendingVisibility,
+      PENDING_VISIBILITY_MAX_MS,
+    );
   };
 
   const clearPendingVisibility = useCallback(() => {
+    if (pendingVisibilitySweepRef.current !== null) {
+      window.clearTimeout(pendingVisibilitySweepRef.current);
+      pendingVisibilitySweepRef.current = null;
+    }
     for (const element of pendingVisibilityRef.current.keys()) {
       element.removeAttribute(TRANSLATION_PENDING_ATTR);
     }
@@ -564,8 +697,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     try {
       await translateRoots(roots, currentLanguageRef.current, translationRunIdRef.current, { allowLive: true });
     } finally {
-      for (const [element, version] of visibilityBatch) {
-        if (pendingVisibilityRef.current.get(element) !== version) continue;
+      for (const [element, entry] of visibilityBatch) {
+        if (pendingVisibilityRef.current.get(element)?.version !== entry.version) continue;
         element.removeAttribute(TRANSLATION_PENDING_ATTR);
         pendingVisibilityRef.current.delete(element);
       }
@@ -588,11 +721,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       for (const mutation of mutations) {
         if (mutation.type === 'characterData' && mutation.target.nodeType === Node.TEXT_NODE) {
           const textNode = mutation.target as Text;
+          if (shouldIgnoreObservedNode(textNode)) continue;
           originalTextRef.current.set(textNode, textNode.nodeValue ?? '');
           markPendingVisibility(textNode);
           pending.add(textNode);
         } else if (mutation.type === 'childList') {
           mutation.addedNodes.forEach((added) => {
+            if (shouldIgnoreObservedNode(added)) return;
             markPendingVisibility(added);
             pending.add(added);
           });
@@ -670,7 +805,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     // 1) Seed cache from whatever partial static dictionary loaded above.
     for (const [src, dst] of Object.entries(dict)) {
-      translationCacheRef.current.set(`${languageCode}:${src}`, dst);
+      rememberRuntimeTranslation(`${languageCode}:${src}`, dst);
     }
 
     // 2) Also harvest the strings currently visible in the DOM.
@@ -703,14 +838,19 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // progress as each batch resolves. Strings left untranslated (network
     // failures) stay uncached and fall back to source on render.
     let done = 0;
-    const translations = await networkTranslateMany(pool, languageCode, (count) => {
-      done += count;
-      setChangeProgress(
-        Math.min(99, progressFloor + Math.round((done / total) * progressSpan)),
-      );
-    });
+    const translations = await networkTranslateMany(
+      pool,
+      languageCode,
+      (count) => {
+        done += count;
+        setChangeProgress(
+          Math.min(99, progressFloor + Math.round((done / total) * progressSpan)),
+        );
+      },
+      Number.POSITIVE_INFINITY,
+    );
     for (const [source, value] of translations) {
-      translationCacheRef.current.set(`${languageCode}:${source}`, value);
+      rememberRuntimeTranslation(`${languageCode}:${source}`, value);
     }
 
     persistCacheSoon();
@@ -787,6 +927,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     setCurrentLanguage(validLanguage);
     setIsLoading(false);
+    // Storage hydration is intentionally mount-only; the functions above use
+    // refs and must not replay after provider state updates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Inside the harvest iframe: wait until the DOM has been quiet for a short
@@ -869,17 +1012,42 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   }, [clearPendingVisibility, currentLanguage, isRTL]);
 
   useEffect(() => {
+    if (IS_HARVEST_FRAME || typeof window === 'undefined') return;
+    const handleRouteCommitted = () => {
+      // A route must never inherit queued DOM mutations or hidden nodes from
+      // the screen that just unmounted. Invalidate those async writes and let
+      // PageTransition translate the newly committed subtree exactly once.
+      translationRunIdRef.current += 1;
+      pendingNodesRef.current.clear();
+      clearPendingVisibility();
+      routeTranslationPromisesRef.current.clear();
+      if (flushHandleRef.current !== null) {
+        window.cancelAnimationFrame?.(flushHandleRef.current);
+        window.clearTimeout(flushHandleRef.current);
+        flushHandleRef.current = null;
+      }
+    };
+    window.addEventListener('app-route-committed', handleRouteCommitted);
+    return () => window.removeEventListener('app-route-committed', handleRouteCommitted);
+  }, [clearPendingVisibility]);
+
+  useEffect(() => {
     if (IS_HARVEST_FRAME) return;
     if (typeof document === 'undefined' || isLoading) return;
     const runId = ++translationRunIdRef.current;
     const language = currentLanguage;
     ensureObserver();
+    // PageTransition owns the route subtree. Translate only persistent chrome
+    // here so the provider and route gate cannot launch duplicate work for the
+    // same large lesson page. Portals/toasts mounted later are handled by the
+    // observer.
     void (async () => {
       await loadStaticDictionary(language);
       if (translationRunIdRef.current !== runId) return;
-      // Always allow live fetches so the full page (body content included) is
-      // translated, not just the strings present in the small static pack.
-      void translatePage(language, runId, { allowLive: true });
+      const globalRoots = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-mt-global-root]'),
+      );
+      await translateRoots(globalRoots, language, runId, { allowLive: true });
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLanguage, isLoading]);

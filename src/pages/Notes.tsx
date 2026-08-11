@@ -115,7 +115,7 @@ const Notes = () => {
                     {categoryNotes.map((note) => (
                       <Card
                         key={note.id}
-                        className="border-white/10 bg-white/5 backdrop-blur-sm"
+                        className="border-white/10 bg-white/5"
                       >
                         <CardContent className="space-y-3 p-4">
                           <p className="text-sm italic leading-relaxed text-white/90 line-clamp-4">

@@ -95,6 +95,8 @@ const Settings = () => {
     normal: "Normal",
     large: "Büyük",
     xlarge: "Çok Büyük",
+    accessibility: "Erişilebilir",
+    max: "En Büyük (%200)",
   };
 
   const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Monitor }> = [
@@ -205,7 +207,8 @@ const Settings = () => {
                     href={getPrivacyPolicyUrl(currentLanguage)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                    data-tap-target="true"
+                    className="flex items-center gap-2 rounded-lg px-2 text-sm text-primary hover:bg-primary/10"
                   >
                     <ShieldCheck className="w-4 h-4" />
                     <span data-translatable>Gizlilik Politikası</span>
@@ -216,7 +219,8 @@ const Settings = () => {
                     href={getTermsOfUseUrl(currentLanguage)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                    data-tap-target="true"
+                    className="flex items-center gap-2 rounded-lg px-2 text-sm text-primary hover:bg-primary/10"
                   >
                     <FileText className="w-4 h-4" />
                     <span data-translatable>Kullanım Şartları</span>
