@@ -565,10 +565,11 @@ const App = () => {
                           page / auth flow / paywall. Renders nothing — the
                           banner is a native view (see src/services/ads.ts). */}
                       <AdsController />
-                      {/* Login wall: only the home page and the auth screens are
-                          open to anonymous visitors. NotesRouteOverlay renders
-                          itself for /notes outside <Routes>, so it has to sit
-                          inside the gate too. */}
+                      {/* Login wall: only the auth screens are open to anonymous
+                          visitors — every other route, the home page included,
+                          requires a session (see AUTH_ROUTES in lib/authFlow).
+                          NotesRouteOverlay renders itself for /notes outside
+                          <Routes>, so it has to sit inside the gate too. */}
                       <RequireAuth>
                         {/* Keep the translation blocker inside the auth gate.
                             Auth loading/MFA screens do not mount PageTransition,

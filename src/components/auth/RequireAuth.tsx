@@ -7,10 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MfaChallengeForm } from "@/components/auth/MfaChallengeForm";
 
 /**
- * Uygulama geneli giriş kapısı. Ana sayfa ve oturum akışının kendi sayfaları
- * dışındaki her rota oturum ister; giriş yapmamış ziyaretçi /auth ekranına
- * gider ve `next` parametresi sayesinde girişten sonra gitmek istediği sayfaya
- * döner (bkz. Auth.tsx ve AuthCallback.tsx).
+ * Uygulama geneli giriş kapısı. Yalnızca oturum akışının kendi sayfaları
+ * oturumsuz açılır; ana sayfa dahil diğer her rota oturum ister. Giriş yapmamış
+ * ziyaretçi /auth ekranına gider ve `next` parametresi sayesinde girişten sonra
+ * gitmek istediği sayfaya döner (bkz. Auth.tsx ve AuthCallback.tsx).
  *
  * Kapı <Routes> ağacının dışında durduğu için korumalı sayfa hiç mount olmaz:
  * ne içerik bir kare görünür, ne de sayfanın veri çekme effect'leri çalışır.
