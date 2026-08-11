@@ -199,7 +199,7 @@ export default defineConfig(({ mode }) => ({
             // a user opens a route it remains available offline without
             // blocking service-worker installation with every unused route.
             urlPattern: ({ request, url }) =>
-              url.origin === self.location.origin && request.destination === "script",
+              url.origin === location.origin && request.destination === "script",
             handler: "CacheFirst",
             options: {
               cacheName: "app-route-chunks",
