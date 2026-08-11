@@ -2,7 +2,9 @@ import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, ChevronRight, Search } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { accentGradient } from "./libraryAccent";
+import { AppSymbol } from "@/components/ui/AppSymbol";
+import { hapticImpact, hapticSelection } from "@/lib/haptics";
+import { accentGradient, accentTone } from "./libraryAccent";
 import { hasHierarchicalBack } from "@/lib/appNavigation";
 
 
@@ -36,11 +38,14 @@ export function LibraryPageShell({
   const backControl = !backHref && onBack ? (
     <button
       type="button"
-      onClick={onBack}
+      onClick={() => {
+        hapticSelection();
+        onBack?.();
+      }}
       aria-label={backLabel}
       className="surface-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border text-muted-foreground transition-colors duration-control hover:text-foreground active:bg-primary/10"
     >
-      <ArrowLeft className="h-5 w-5" />
+      <AppSymbol name="arrow.left" fallback={ArrowLeft} className="h-5 w-5" />
     </button>
   ) : null;
 
@@ -57,7 +62,7 @@ export function LibraryPageShell({
                 <HeaderIcon className="h-5 w-5 text-primary" />
               </span>
             )}
-            <h1 data-page-title className="min-w-0 text-[2.125rem] font-bold leading-[1.08] tracking-[-0.035em] text-foreground">{title}</h1>
+            <h1 data-page-title className="library-page-title min-w-0 font-bold leading-[1.08] tracking-[-0.035em] text-foreground">{title}</h1>
           </div>
           {headerAside}
         </header>
@@ -86,36 +91,43 @@ export function LibraryEntryCard({
   description?: string;
 }) {
   const className =
-    "surface-3 group flex min-h-[5rem] w-full items-center rounded-xl border px-4 py-3.5 text-left shadow-elev-1 transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/20 active:scale-[0.985]";
+    "ios-list-row surface-2 group flex min-h-[4.75rem] w-full items-center rounded-xl border px-4 py-3 text-left transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/20 active:scale-[0.985]";
   const content = (
-    <span className="flex w-full items-center gap-3">
+    <span className="library-entry-content flex w-full items-center gap-3">
       <span
-        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.625rem] ${accent} text-white shadow-elev-1`}
-        style={accentGradient("145deg", accent)}
+        className="library-symbol-tile flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.625rem]"
+        style={accentTone(accent)}
       >
-        <Icon className="h-5 w-5" />
+        <Icon className="h-5 w-5" aria-hidden />
       </span>
-      <span className="min-w-0 flex-1">
+      <span className="library-entry-text min-w-0 flex-1">
         <span className="block whitespace-pre-line text-base font-semibold leading-snug text-foreground">{title}</span>
         {description && (
           <span className="mt-1 block text-caption leading-relaxed text-muted-foreground">{description}</span>
         )}
       </span>
       {badge !== undefined && (
-        <span className="rounded-full bg-muted px-2.5 py-1 text-caption font-semibold text-muted-foreground">
+        <span className="library-entry-badge rounded-full bg-muted px-2.5 py-1 text-caption font-semibold text-muted-foreground">
           {badge}
         </span>
       )}
-      <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" />
+      <AppSymbol name="chevron.right" fallback={ChevronRight} className="library-row-chevron h-5 w-5 shrink-0 text-muted-foreground" />
     </span>
   );
 
   return to ? (
-    <Link to={to} className={className}>
+    <Link to={to} className={className} onClick={() => hapticImpact("light")}>
       {content}
     </Link>
   ) : (
-    <button type="button" onClick={onClick} className={className}>
+    <button
+      type="button"
+      onClick={() => {
+        hapticSelection();
+        onClick?.();
+      }}
+      className={className}
+    >
       {content}
     </button>
   );
@@ -339,21 +351,22 @@ export function LibraryCompactCard({
   return (
     <Link
       to={to}
-      className="surface-2 group flex min-h-[4.25rem] items-center gap-3 rounded-xl border px-3.5 py-2.5 transition-[background-color,border-color,transform] duration-control hover:border-primary/20 active:scale-[0.99]"
+      onClick={() => hapticImpact("light")}
+      className="ios-list-row library-compact-row surface-2 group flex min-h-[4.25rem] items-center gap-3 rounded-xl border px-3.5 py-2.5 transition-[background-color,border-color,transform] duration-control hover:border-primary/20 active:scale-[0.99]"
     >
       <span
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[0.625rem] ${accent} text-white`}
-        style={accentGradient("145deg", accent)}
+        className="library-symbol-tile flex h-9 w-9 shrink-0 items-center justify-center rounded-[0.625rem]"
+        style={accentTone(accent)}
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4" aria-hidden />
       </span>
-      <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-foreground">{title}</span>
+      <span className="library-compact-title min-w-0 flex-1 text-sm font-semibold leading-snug text-foreground">{title}</span>
       {badge !== undefined && (
-        <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
+        <span className="library-compact-badge rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
           {badge}
         </span>
       )}
-      <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors duration-control group-hover:text-primary" />
+      <AppSymbol name="chevron.right" fallback={ChevronRight} className="library-row-chevron h-4 w-4 shrink-0 text-muted-foreground transition-colors duration-control group-hover:text-primary" />
     </Link>
   );
 }
@@ -370,8 +383,12 @@ export function LibrarySearchField({
   ariaLabel: string;
 }) {
   return (
-    <div className="relative">
-      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+    <div className="library-search-field relative">
+      <AppSymbol
+        name="magnifyingglass"
+        fallback={Search}
+        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+      />
       <input
         type="search"
         value={value}

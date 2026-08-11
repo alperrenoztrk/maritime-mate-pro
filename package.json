@@ -63,6 +63,7 @@
     "test:i18n-barrier": "node --import tsx --test src/utils/routeTranslation.test.ts",
     "test:ui-copy": "node --import tsx --test src/i18n/coreUiTranslations.test.ts",
     "test:navigation-ui": "node --import tsx --test src/lib/appNavigation.test.ts",
+    "test:search-ui": "node --import tsx --test src/lib/appSearch.test.ts",
     "i18n:all": "npm run i18n:extract && npm run i18n:generate && npm run i18n:check -- --strict",
     "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict && npm run i18n:audit-terms -- --strict --max-errors=135",
     "check:design-system": "node scripts/check-design-system.mjs",

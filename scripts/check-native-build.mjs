@@ -26,10 +26,17 @@ assert(fs.existsSync(indexPath), "dist/index.html is missing; run npm run build:
 const html = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, "utf8") : "";
 const iosProject = fs.readFileSync(path.join(root, "ios/App/App.xcodeproj/project.pbxproj"), "utf8");
 const contentSizePlugin = fs.readFileSync(path.join(root, "ios/App/App/ContentSizePlugin.swift"), "utf8");
+const systemSymbolsPlugin = fs.readFileSync(path.join(root, "ios/App/App/SystemSymbolsPlugin.swift"), "utf8");
 
 assert(
   !/nomodule|systemjs/i.test(html),
   "native index contains the legacy/SystemJS loader; Capacitor must ship the modern tree only",
+);
+assert(
+  iosProject.includes("SystemSymbolsPlugin.swift in Sources") &&
+    systemSymbolsPlugin.includes("UIImage(systemName:") &&
+    systemSymbolsPlugin.includes("withTintColor(.black"),
+  "genuine SF Symbols bridge is missing from the Xcode Sources phase",
 );
 assert(
   !fs.existsSync(path.join(dist, "sw.js")),

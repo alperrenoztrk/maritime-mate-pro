@@ -10,6 +10,7 @@ import {
   LibrarySearchField,
   LibrarySectionHeading,
 } from "@/components/library/LibraryInterface";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 
 const CATEGORY_ACCENTS = [
   "accent-ocean",
@@ -74,7 +75,7 @@ const Glossary = () => {
       />
 
       {showCategoryLibrary ? (
-        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <InsetGroupedList columns={2}>
           {glossaryCategories.map((category, index) => (
             <LibraryEntryCard
               key={category}
@@ -85,7 +86,7 @@ const Glossary = () => {
               onClick={() => updateCategory(category)}
             />
           ))}
-        </section>
+        </InsetGroupedList>
       ) : (
         <section className="space-y-4">
           <div className="flex items-center gap-3">

@@ -90,6 +90,12 @@ assert(
     appTabBar.includes("appTabForPath"),
   "AppTabBar: search must be a real top-level route with an active tab state",
 );
+assert(
+  appTabBar.includes("AppSymbol") &&
+    appTabBar.includes('selectedSymbol: "house.fill"') &&
+    read("src/components/ui/AppSymbol.tsx").includes("SystemSymbols.render"),
+  "AppTabBar: iOS must use genuine SF Symbols with filled selected variants and a safe fallback",
+);
 for (const label of ["Ana Sayfa", "Öğren", "Araçlar", "Kütüphane", "Ara"]) {
   assert(
     appTabBar.includes(label),
@@ -181,6 +187,12 @@ assert(
 assert(
   !/^\s*(?:-webkit-)?backdrop-filter\s*:/m.test(read("src/index.css")),
   "src/index.css: content utilities must not define backdrop blur; use .surface-glass for floating chrome",
+);
+assert(
+  read("src/components/ui/InsetGroupedList.tsx").includes("inset-grouped-list") &&
+    read("src/pages/LibraryHubPage.tsx").includes("InsetGroupedList") &&
+    read("src/pages/library/CalculationsLibraryPage.tsx").includes("InsetGroupedList"),
+  "primary library/tool surfaces must keep the shared inset-grouped list treatment",
 );
 assert(
   !/\bglass-widget\b|animate-neon-glow|animate-float/.test(read("src/index.css")),

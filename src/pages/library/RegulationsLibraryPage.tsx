@@ -17,18 +17,19 @@ import {
   LibrarySearchField,
   LibrarySectionHeading,
 } from "@/components/library/LibraryInterface";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 
 const categories: Array<{
   category: RegulationCategory;
   icon: LucideIcon;
   accent: string;
 }> = [
-  { category: "IMO Sözleşmeleri", icon: Globe, accent: "from-blue-500 via-indigo-600 to-blue-800" },
-  { category: "Emniyet Kodları", icon: Shield, accent: "from-amber-500 via-orange-600 to-red-700" },
-  { category: "Çevresel Düzenlemeler", icon: Leaf, accent: "from-emerald-500 via-teal-600 to-cyan-800" },
-  { category: "Denetim & Sörvey", icon: Search, accent: "from-sky-500 via-blue-600 to-indigo-800" },
-  { category: "Gemi Sertifikaları", icon: ClipboardList, accent: "from-violet-500 via-purple-600 to-indigo-800" },
-  { category: "Bölgesel Düzenlemeler", icon: MapIcon, accent: "from-rose-500 via-red-600 to-orange-700" },
+  { category: "IMO Sözleşmeleri", icon: Globe, accent: "accent-ocean" },
+  { category: "Emniyet Kodları", icon: Shield, accent: "accent-amber" },
+  { category: "Çevresel Düzenlemeler", icon: Leaf, accent: "accent-teal" },
+  { category: "Denetim & Sörvey", icon: Search, accent: "accent-ocean" },
+  { category: "Gemi Sertifikaları", icon: ClipboardList, accent: "accent-deep" },
+  { category: "Bölgesel Düzenlemeler", icon: MapIcon, accent: "accent-slate" },
 ];
 
 const normalize = (value: string) =>
@@ -91,7 +92,7 @@ export default function RegulationsLibraryPage() {
       />
 
       {showCategoryLibrary ? (
-        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <InsetGroupedList columns={2}>
           {categories.map((entry) => (
             <LibraryEntryCard
               key={entry.category}
@@ -102,7 +103,7 @@ export default function RegulationsLibraryPage() {
               onClick={() => setActiveCategory(entry.category)}
             />
           ))}
-        </section>
+        </InsetGroupedList>
       ) : (
         <section className="space-y-4">
           <div className="flex items-center gap-3">

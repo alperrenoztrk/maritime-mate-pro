@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { AppSymbol } from "@/components/ui/AppSymbol";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
 import { isAppChromeHidden } from "@/lib/appChrome";
@@ -155,7 +156,12 @@ export function AppNavBar() {
           data-no-translate
           className="pointer-events-auto relative z-10 inline-flex h-11 max-w-[42%] items-center gap-0.5 rounded-xl px-1.5 text-sm font-medium text-primary transition-colors duration-control hover:bg-primary/10 active:bg-primary/15"
         >
-          <ChevronLeft className="h-6 w-6 shrink-0" strokeWidth={2.25} />
+          <AppSymbol
+            name="chevron.left"
+            fallback={ChevronLeft}
+            className="h-6 w-6 shrink-0"
+            pointSize={24}
+          />
           <span className="truncate" lang={currentLanguage}>{backLabel}</span>
         </button>
 

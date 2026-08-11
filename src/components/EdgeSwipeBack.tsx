@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { AppSymbol } from "@/components/ui/AppSymbol";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { hapticImpact } from "@/lib/haptics";
 import { useLocation } from "react-router-dom";
@@ -182,8 +183,11 @@ export const EdgeSwipeBack = () => {
               scale: 0.84 + Math.min(pull / commitDistance.current, 1) * 0.16,
             }}
           >
-            <ChevronLeft
+            <AppSymbol
+              name="chevron.left"
+              fallback={ChevronLeft}
               className="h-6 w-6 text-foreground"
+              pointSize={24}
               style={{ opacity: 0.55 + Math.min(pull / commitDistance.current, 1) * 0.45 }}
             />
           </motion.div>
