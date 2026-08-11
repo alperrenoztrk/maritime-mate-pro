@@ -8,4 +8,8 @@ export const APP_VERSION = "2.5.70";
 export const BUILD_NUMBER = 20570;
 export const PACKAGE_ID = "com.marinersbook.app";
 export const MIN_SDK = 23;
-export const TARGET_SDK = 35;
+// android/variables.gradle ile eşleşmeli. Play, 31 Ağustos 2026'dan itibaren
+// yeni sürümlerden API 36 hedeflemesini istiyor; gradle tarafı 36'ya çekildiği
+// hâlde burası 35'te kalmıştı ve uygulama içi Sürüm Kontrol Listesi yanlış
+// değer gösteriyordu.
+export const TARGET_SDK = 36;

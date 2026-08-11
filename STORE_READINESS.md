@@ -60,28 +60,31 @@ Repoda artık LFS işaretçisi kalmadı; taze clone/CI build'i tüm görselleri 
 ## 📏 Uygulama boyutu
 
 Play'in app bundle indirme boyutu üst sınırı **200 MB**; aşan AAB yüklenemez.
-Her dosya tek tek gzip'lenerek ölçüldü (Play'in hesabına yakın bir vekil):
+Aşağıdaki tablo `npm run build:native` sonrası `dist/` üzerinde, her dosya tek
+tek gzip'lenerek **yeniden ölçüldü** (Play'in hesabına yakın bir vekil):
 
-| | Ham | Sıkıştırılmış |
+| Bölüm | Ham | Sıkıştırılmış |
 |---|---|---|
-| `public/locales` (18 dil) | 155 MB | 56.5 MB |
-| `dist/assets` (JS/CSS/görsel) | 61 MB | 35.0 MB |
-| `public/navigation` (MEB PDF) | 30 MB | 28.6 MB |
-| `passage-plan` + COLREG PDF | 18 MB | 15.7 MB |
-| ~~`public/videos` (ölü mp4)~~ | ~~43 MB~~ | ~~42.5 MB~~ → silindi |
-| **`dist` toplamı (temizlik sonrası, ölçülen)** | **276.7 MB** | **141.1 MB** |
+| `public/locales` (**24 dil**) | 326.8 MB | **111.6 MB** |
+| `dist/assets` (JS/CSS/görsel) | 38.5 MB | 26.9 MB |
+| `passage-plan` (44 sayfa JPEG) | 8.8 MB | 7.6 MB |
+| `env` (sky_1k.hdr) | 1.4 MB | 0.9 MB |
+| diğer (navigation, fonts, knots, kök…) | 2.3 MB | 2.1 MB |
+| **`dist` toplamı (ölçülen)** | **377.8 MB** | **149.1 MB** |
 
-Temizlikten önce `dist` 310.1 MB / sıkıştırılmış **180.7 MB** idi; yani sınırın
-yalnızca 20 MB altında. `public/videos/gemici/*.mp4` (15 dosya, 42.7 MB)
-hiçbir yerden referanslı değildi — knot videoları `KnotVideo.tsx` üzerinden
-YouTube'dan geliyor — ve silindi.
+**Marj: ~51 MB.** Sınır aşılmıyor, yani boyut yayını bloklamıyor — ama trend
+yanlış yönde: bir önceki ölçümde toplam 141.1 MB idi ve locale paketleri
+18 dil / 56.5 MB olarak kayıtlıydı. Diller 24'e çıkıp içerik korpusu da
+çevrildiği için locale'ler tek başına **sıkıştırılmış boyutun %75'i**
+(dil başına ~92.000 anahtar, dosya başına 13–21 MB).
 
-Marj artık ~59 MB. Sınıra tekrar yaklaşılırsa sıradaki adaylar: 29 MB'lık MEB ders PDF'i,
-8.8 MB'lık COLREG sunumu, ve locale paketleri. Locale'ler için kod zaten
-fetch tabanlı (`src/utils/staticTranslations.ts`) ama **uzağa taşımak
-çevrimdışı dil değiştirmeyi bozar**: service worker `injectRegister: false`
-ile devre dışı, yani dosyaları APK'da tutmak dışında bir çevrimdışı önbellek
-yok. Taşımadan önce runtime cache kurulmalı.
+Pratik sonuç: **yeni dil eklemek artık ~4–5 MB sıkıştırılmış maliyet
+demek.** Bu hızla 10–12 dil daha eklenirse sınıra dayanılır. Sınıra
+yaklaşılırsa ilk aday locale paketleridir; kod zaten fetch tabanlı
+(`src/utils/staticTranslations.ts`) ama **uzağa taşımak çevrimdışı dil
+değiştirmeyi bozar**: native profilde service worker üretilmiyor, yani
+dosyaları pakette tutmak dışında bir çevrimdışı önbellek yok. Taşımadan önce
+runtime cache kurulmalı.
 
 Kesin rakam ilk AAB yüklendiğinde Play Console'da görünür; oradaki değeri
 esas alın.
@@ -90,18 +93,36 @@ esas alın.
 
 ## ⚠️ Karar bekleyen: üçüncü taraf içerik telifi
 
-Pakette iki büyük üçüncü taraf doküman var:
+**Güncelleme:** Bu bölümde daha önce listelenen iki PDF
+(`public/navigation/pdfs/DN2025SES1112.pdf` ve `public/COLREG-Ders-Sunumu.pdf`)
+artık pakette **yok** — `dist/` içinde tek bir PDF kalmadı ve bunlara atıf
+yapan `src/data/dn2025ses1112.ts` de silinmiş durumda. Bu iki kalem kapandı.
 
-| Dosya | Boyut | Kaynak |
-|---|---|---|
-| `public/navigation/pdfs/DN2025SES1112.pdf` | 29 MB | MEB ders materyali (`src/data/dn2025ses1112.ts:13` → meslek.meb.gov.tr) |
-| `public/COLREG-Ders-Sunumu.pdf` | 8.8 MB | Kaynağı belirsiz ders sunumu |
+Yerine bakılması gereken **tek** kalem kaldı:
 
-Uygulamanın ücretli bir Pro katmanı olduğu için bunları yeniden dağıtmak,
-Play'in Fikri Mülkiyet politikası kapsamında şikâyet ve kaldırma sebebi
-olabilir. Yazılı kullanım izniniz yoksa: dosyayı paketten çıkarıp kaynağa
-link verin. Ders içeriğindeki görseller için `InstrumentCredits` benzeri bir
-atıf mekanizması var, bu PDF'ler için yok.
+| İçerik | Boyut | Kaynak | Durum |
+|---|---|---|---|
+| `public/passage-plan/page_1…44.jpg` | 8.8 MB (44 sayfa) | Great Lakes Pilotage Authority (Kanada Hükümeti), District No. 2 — "Upbound Port Weller to Port Huron" | Sayfada kaynak yazılı, izin bilinmiyor |
+
+Bu, resmî bir Kanada hükümeti yayınının **birebir taranmış tam metni**;
+`PassagePlanPage.tsx` içinde 44 sayfa olarak gömülü gösteriliyor. Sayfada
+kaynak adı ("Great Lakes Pilotage Authority - District No. 2") ve
+"Navigasyon için kullanılmaz" notu var — yani silinen PDF'lerin aksine
+atıf mevcut. Ancak Kanada'da hükümet yayınları **Crown copyright** kapsamında:
+ticari olmayan çoğaltma serbest, **ticari yeniden dağıtım izin ister** ve
+uygulamanın ücretli bir Pro katmanı var.
+
+Bu Play tarafında otomatik yakalanan bir şey değildir; risk, hak sahibinin
+şikâyeti üzerine kaldırma bildirimidir. Üç seçenek: (a) Great Lakes Pilotage
+Authority'den yazılı izin alın, (b) 44 sayfayı paketten çıkarıp kaynağa link
+verin, (c) örnek planı kendi çiziminizle yeniden üretin. İlk sürümü bu haliyle
+çıkarmak savunulabilir bir risk — ama bilinçli alınmış bir karar olmalı.
+
+**Ayrıca depo hijyeni:** `tmp/DN2025SES1112.pdf` (29 MB MEB ders materyali)
+hâlâ git'te **takipli**. Uygulama paketine girmiyor (yalnızca `public/`
+paketlenir), o yüzden Play açısından sorun değil; ama depoyu 29 MB şişiriyor
+ve `.gitignore` yalnızca `tmp/validation-test/` satırını içeriyor. Silinmesi
+ve `tmp/` tamamen yok sayılması önerilir.
 
 ---
 
