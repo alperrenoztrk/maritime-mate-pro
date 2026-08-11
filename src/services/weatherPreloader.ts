@@ -1,3 +1,9 @@
+import {
+  LAST_POSITION_MAX_AGE_MS,
+  readCachedPosition,
+  shouldRequestLocation,
+  writeCachedPosition,
+} from "@/lib/geolocationPermission";
 type WeatherResponse = {
   latitude: number;
   longitude: number;
@@ -99,6 +105,11 @@ class WeatherPreloader {
       let isFallbackLocation = false;
       
       try {
+        // İzin reddedilmişse hiç sorma: kullanıcı her açılışta izin diyaloğu
+        // görmesin (bkz. src/lib/geolocationPermission.ts).
+        if (!(await shouldRequestLocation())) {
+          throw new Error("Konum izni verilmemiş");
+        }
         const position = await new Promise<GeolocationPosition>((resolve, reject) => {
           console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
           if (!("geolocation" in navigator)) {
@@ -123,12 +134,24 @@ class WeatherPreloader {
         
         lat = position.coords.latitude;
         lon = position.coords.longitude;
+        writeCachedPosition({
+          latitude: lat,
+          longitude: lon,
+          accuracyMeters: typeof position.coords.accuracy === "number" ? position.coords.accuracy : null,
+        });
       } catch {
-        // Use fallback coordinates if geolocation fails
-        console.log("📍 [Preloader] Fallback koordinatlar kullanılıyor (İstanbul)");
-        lat = this.defaultCoords.latitude;
-        lon = this.defaultCoords.longitude;
-        isFallbackLocation = true;
+        const cached = readCachedPosition();
+        if (cached && Date.now() - cached.timestamp < LAST_POSITION_MAX_AGE_MS) {
+          console.log("📍 [Preloader] Son bilinen konum kullanılıyor");
+          lat = cached.latitude;
+          lon = cached.longitude;
+        } else {
+          // Use fallback coordinates if geolocation fails
+          console.log("📍 [Preloader] Fallback koordinatlar kullanılıyor (İstanbul)");
+          lat = this.defaultCoords.latitude;
+          lon = this.defaultCoords.longitude;
+          isFallbackLocation = true;
+        }
       }
 
       console.log("🌤️ [Preloader] Hava durumu ve konum verisi paralel olarak alınıyor...");
