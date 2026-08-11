@@ -1,6 +1,9 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 /** Operasyonel emniyet, güvenlik, tıbbi müdahale ve hasar kontrolü içerikleri. */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import shipBridgeImage from "@/assets/maritime/ship-bridge.jpg";
+
 export const operationalSafetyTopicContents: Record<string, TopicDetailContent> = {
   "Gemide Tıbbi İlk Yardım ve TMAS": {
     title: "Gemide Tıbbi İlk Yardım ve TMAS",
@@ -207,6 +210,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "Flooding Kaynağının Belirlenmesi",
         content:
           "Yüksek seviye alarmı, sintine pompasının sık çalışması, draft/list değişimi veya kapalı mahalde su sesi ilk işaret olabilir. Güvenli ekip sounding, tank seviye, CCTV ve bölme kontrolüyle kaynağı arar. Kapalı mahal ve elektrik tehlikesi değerlendirilmeden personel gönderilmez.",
+        image: "/diagrams/stability/yara-stabilitesi.svg",
+        imageAlt: "Damage stability: flooding of a compartment and the resulting loss of stability",
       },
       {
         title: "Watertight Boundary ve Progressive Flooding",
@@ -246,6 +251,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "Komuta Zinciri ve Ortak Durum Resmi",
         content:
           "Kaptan komuta eder; köprüüstü, makine kontrol ve olay yeri ekipleri belirlenmiş kanallarda rapor verir. Raporlar kısa ve standarttır: yer, olay, tehlike, personel durumu, yapılan işlem, ihtiyaç. Söylenti ve tahmin doğrulanmış bilgi gibi aktarılmaz. Köprüüstünde olay çizelgesi ve personel sayımı tutulur.",
+        image: shipBridgeImage,
+        imageAlt: "Bridge acting as the emergency command centre",
       },
       {
         title: "Dış Bildirim Önceliği",

@@ -1,6 +1,11 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 /** Tanker, özel yük, cargo-care ve liman belge operasyonları. */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import tankerShipImage from "@/assets/ships/tanker-ship.jpg";
+import roroShipImage from "@/assets/ships/roro-ship.jpg";
+import hatchCoversImage from "@/assets/seamanship/hatch-covers.jpg";
+
 export const operationalCargoTopicContents: Record<string, TopicDetailContent> = {
   "Petrol Tankeri Yük Operasyonları": {
     title: "Petrol Tankeri Yük Operasyonları",
@@ -11,6 +16,8 @@ export const operationalCargoTopicContents: Record<string, TopicDetailContent> =
         title: "Yükleme Öncesi Plan ve Ship/Shore Toplantısı",
         content:
           "Yük cinsi, miktar, yoğunluk, sıcaklık, flash point, tank dağılımı, maksimum yükleme oranı, topping-off sırası, trim/stabilite, stress ve draft limitleri planlanır. Ship/Shore Safety Checklist karşılıklı tamamlanır; acil durdurma işareti, haberleşme kanalı, ESD düzeni, manifold basıncı, vapour return, tank havalandırması ve döküntü müdahalesi teyit edilir. Operasyon başlamadan önce tüm kritik valfler ikinci kişiyle çapraz kontrol edilir.",
+        image: tankerShipImage,
+        imageAlt: "Oil tanker during cargo operations",
       },
       {
         title: "Line-up, Manifold ve Basınç Kontrolü",
@@ -61,6 +68,8 @@ export const operationalCargoTopicContents: Record<string, TopicDetailContent> =
         title: "Ürün Bilgisi ve Uyumluluk",
         content:
           "IBC Code, SDS, Certificate of Fitness, P&A Manual ve charterer talimatından ürünün kategori, toksisite, flash point, vapour pressure, reaktivite, ısıtma, inertleme, inhibitör ve özel ekipman şartları doğrulanır. Tank coating compatibility listesi kontrol edilir. Birbirine reaktif ürünler yalnız tankta değil; ortak hat, vent, slop ve tank cleaning sistemlerinde de ayrılır.",
+        image: tankerShipImage,
+        imageAlt: "Tanker of the type used for chemical cargoes",
       },
       {
         title: "Segregation ve Dedicated Systems",
@@ -144,6 +153,8 @@ export const operationalCargoTopicContents: Record<string, TopicDetailContent> =
         title: "Cargo Sweat ve Ship Sweat",
         content:
           "Cargo sweat, sıcak nemli hava soğuk yük yüzeyine temas ettiğinde yük üzerinde yoğuşmadır. Ship sweat ise sıcak nemli hava soğuk gemi sacına temas ettiğinde iç yüzeyde oluşup yüke damlar. Risk, dış hava ve ambar havasının dew point değerleri ile yük/sac sıcaklığı karşılaştırılarak değerlendirilir. Yanlış havalandırma hasarı artırabilir.",
+        image: hatchCoversImage,
+        imageAlt: "Closed hatch covers over a cargo hold that must be ventilated",
       },
       {
         title: "Dew Point ve 3-Degree Rule",
@@ -187,6 +198,8 @@ export const operationalCargoTopicContents: Record<string, TopicDetailContent> =
         title: "Steel Coil ve Çelik Yükler",
         content:
           "Coiller güçlü dunnage/cradle üzerine eye-to-sky veya eye-to-side planına göre istiflenir; tank top point load ve sıra geometrisi kontrol edilir. Coillerin yuvarlanma yönüne karşı chocking ve lashing uygulanır. Islak çelikte pas iddiası sık olduğundan yük öncesi durum, yağmur, ambar dryness ve rust scale fotoğraflanır; mate's receipt'e doğru remark yazılır.",
+        image: roroShipImage,
+        imageAlt: "Ro-Ro vessel used for rolling and heavy cargo",
       },
       {
         title: "Timber Deck Cargo",

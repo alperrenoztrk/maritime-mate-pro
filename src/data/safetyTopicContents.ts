@@ -7,6 +7,14 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * IAMSAR, STCW). `TopicSection.title` değerleri lessonFlow/safety.ts içindeki
  * `sectionRef`/`sectionTitles` ile birebir eşleşir.
  */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import lifeboatImage from "@/assets/seamanship/lifeboat-enclosed.jpg";
+import lsaPersonalImage from "@/assets/seamanship/lsa-personal.jpg";
+import co2SystemImage from "@/assets/seamanship/co2-system.jpg";
+import fireExtinguishersImage from "@/assets/seamanship/fire-extinguishers.jpg";
+import liferaftImage from "@/assets/seamanship/liferaft-canister.jpg";
+import shipBridgeImage from "@/assets/maritime/ship-bridge.jpg";
+
 export const safetyTopicContents: Record<string, TopicDetailContent> = {
   "SOLAS ve Emniyet Yönetimi (ISM)": {
     title: "SOLAS ve Emniyet Yönetimi (ISM)",
@@ -17,6 +25,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "SOLAS'ın Kapsamı ve Bölümleri",
         content:
           "SOLAS, gemiyi baştan sona emniyet açısından düzenleyen bölümlerden oluşur. Öne çıkanlar: Bölüm II-1 (yapı, bölmeleme, makine ve elektrik), Bölüm II-2 (yangın koruma, algılama ve söndürme), Bölüm III (can kurtarma araçları ve düzenlemeleri), Bölüm IV (telsiz haberleşmesi/GMDSS), Bölüm V (seyir emniyeti), Bölüm VI ve VII (yüklerin ve tehlikeli yüklerin taşınması), Bölüm IX (ISM ile emniyetli işletme), Bölüm XI-1/XI-2 (emniyet ve güvenlik tedbirleri/ISPS). Her bölüm, gemi tipi ve tonajına göre asgari gereklilikleri ve bunların belgelenmesini (sertifikalar) belirler.",
+        image: shipBridgeImage,
+        imageAlt: "Ship's bridge, where the safety management system is put into practice",
       },
       {
         title: "ISM Code ve Emniyet Yönetim Sistemi (SMS)",
@@ -51,6 +61,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Filikalar (Lifeboats) ve Kapasite",
         content:
           "Filikalar, gemi terkinde toplu tahliye için kullanılan, motorlu ve genellikle tam kapalı (totally enclosed) teknelerdir. SOLAS, gemideki toplam kişi sayısını karşılayacak filika kapasitesi ister; yük gemilerinde tipik düzen, her iki bordada toplam kişiyi alacak filika ya da bir tarafta serbest düşmeli (free-fall) filikadır. Her filika; motor, içme suyu, gıda rasyonu, ilk yardım, işaret fişekleri, kürek ve seyir ekipmanı ile donatılır. Free-fall filikalar baştan kıça eğimli bir rampadan suya bırakılır ve hızlı tahliye sağlar.",
+        image: lifeboatImage,
+        imageAlt: "Totally enclosed lifeboat in its davits",
       },
       {
         title: "Can Salları (Liferafts)",
@@ -85,6 +97,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Can Yelekleri (Lifejackets)",
         content:
           "Can yeleği, suya düşen kişiyi yüzdürür ve baygın bir kişide dahi yüzü suyun üstünde tutacak biçimde tasarlanır. Gemide her kişi için bir adet, ayrıca vardiya yerleri ve toplanma istasyonları için ek yelekler bulunur. Yelekler; düdük, ışık (otomatik su ile aktive olan), retro-reflektif bantlar ve yolcu gemilerinde çocuk/bebek boyları ile donatılır. Giyilme süresi ve doğru bağlama tekniği talimlerle pekiştirilir; yanlış giyilen yelek su içinde kişiyi yüzüstü çevirebilir.",
+        image: lsaPersonalImage,
+        imageAlt: "Lifejackets stowed ready for use",
       },
       {
         title: "Dalış Elbiseleri ve Termal Koruma",
@@ -119,6 +133,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yangın Üçgeni ve Önleme",
         content:
           "Yangın için üç unsur gerekir: yakıt, ısı (tutuşma kaynağı) ve oksijen. Bu üçgenin herhangi bir kenarının ortadan kaldırılması yangını önler veya söndürür. Önleme; yakıt sızıntılarının kontrolü, sıcak yüzeylerin yalıtımı (örn. egzoz manifoldları), yağlı bez/atıkların düzgün depolanması, elektrik bakımının düzenli yapılması ve sıcak iş (kaynak/taşlama) için izin sistemiyle sağlanır. Makine dairesi, en yüksek yangın riski taşıyan bölge olarak özel önlemlere tabidir.",
+        image: "/diagrams/seamanship/yangin-sinifi.svg",
+        imageAlt: "Fire classes and the extinguishing agent suited to each",
       },
       {
         title: "Yapısal Yangın Koruması (A/B/C Sınıfı Bölmeler)",
@@ -153,6 +169,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yangın Algılama Sistemleri",
         content:
           "Sabit yangın algılama; duman (smoke), ısı (heat) ve alev (flame) dedektörleriyle yangını erken aşamada tespit eder ve köprüüstündeki yangın alarm panelinde mahali (zone) gösterir. Yaşam mahalleri ve koridorlarda duman dedektörleri, makine dairesinde ısı/alev dedektörleri yaygındır. Manuel alarm butonları (call points) personelin yangını elle bildirmesini sağlar. Sistem, arıza durumunda (fault) da uyarı verir; düzenli test ve dedektör temizliği yanlış alarmları ve algılama kaybını önler.",
+        image: co2SystemImage,
+        imageAlt: "Fixed CO2 fire-extinguishing installation",
       },
       {
         title: "CO₂ ve Gazlı Söndürme Sistemleri",
@@ -187,6 +205,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yangın Sınıfları",
         content:
           "Yangınlar yakıt türüne göre sınıflandırılır: A sınıfı katı yanıcılar (ahşap, kâğıt, tekstil), B sınıfı yanıcı sıvılar (yakıt, yağ, boya), C sınıfı yanıcı gazlar (bazı sistemlerde elektrik), D sınıfı yanıcı metaller, F (veya K) sınıfı mutfak yağ/donyağı yangınları. Elektrik yangınları (gerilim altındaki ekipman), iletken olmayan söndürücü gerektirir (CO₂, kuru kimyevi toz). Yanlış söndürücü kullanımı tehlikelidir: örneğin yağ yangınına su atmak yangını yayar; gerilim altındaki ekipmana su iletkenlik riski yaratır.",
+        image: fireExtinguishersImage,
+        imageAlt: "Portable fire extinguishers and a fire hose at their station",
       },
       {
         title: "Taşınabilir Söndürücü Tipleri",
@@ -221,6 +241,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
         title: "Toplanma Listesi (Muster List) ve Görevler",
         content:
           "Muster list, her mürettebat üyesinin acil durumdaki toplanma istasyonunu ve özel görevini (filika indirme, yangın ekibi, yolcu yönlendirme, telsiz, ilk yardım vb.) gösteren resmî belgedir. Gemide görünür yerlere (köprüüstü, makine kontrol, yaşam mahalli) asılır. Acil durum alarm işaretlerini, gemi terk komutunu ve yolculara verilecek talimatları da içerir. Her kişi kendi görevini ve istasyonunu bilmek zorundadır; kabinlerde kişiye özel görev kartları bulunur.",
+        image: liferaftImage,
+        imageAlt: "Liferaft canister in its cradle, ready for launching",
       },
       {
         title: "Alarm İşaretleri",

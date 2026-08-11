@@ -7,6 +7,9 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * AFS Convention, Hong Kong Convention). `TopicSection.title` değerleri
  * lessonFlow/environment.ts içindeki `sectionRef`/`sectionTitles` ile eşleşir.
  */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import tankerShipImage from "@/assets/ships/tanker-ship.jpg";
+
 export const environmentTopicContents: Record<string, TopicDetailContent> = {
   "MARPOL Genel Yapısı ve Ekler": {
     title: "MARPOL Genel Yapısı ve Ekler",
@@ -89,6 +92,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Kategoriler: X, Y, Z ve OS",
         content:
           "NLS dört gruba ayrılır. Kategori X: deniz çevresine büyük zarar; tahliyesi yasak, tank önyıkaması (prewash) ve atığın karaya verilmesi zorunlu. Kategori Y: önemli zarar; sınırlı koşullarla tahliyeye izin var, bazı durumlarda prewash gerekir. Kategori Z: küçük zarar; en az kısıtlama. OS (Other Substances): zararsız sayılan, MARPOL Ek II kapsamı dışı maddeler. Maddenin kategorisi, IBC Code ve ilgili kataloglarda tanımlıdır ve taşıma öncesi netleştirilir.",
+        image: tankerShipImage,
+        imageAlt: "Tanker carrying noxious liquid substances in bulk",
       },
       {
         title: "Tahliye Koşulları",
@@ -127,6 +132,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         title: "Deniz Kirletici (Marine Pollutant) Kavramı",
         content:
           "Bazı paketli maddeler, deniz ortamına döküldüğünde sucul yaşam için toksiktir, birikir (bioaccumulation) veya uzun süre bozunmaz. Bunlar 'marine pollutant' olarak tanımlanır ve IMDG Code'da işaretlenir. Bir madde tek başına başka bir tehlike sınıfına girmese bile (örn. yalnızca çevresel tehlike taşıyan sınıf 9 maddeleri) deniz kirletici olarak ek kurallara tabi olabilir. Sınıflandırma, maddenin sucul toksisite verilerine dayanır.",
+        image: "/diagrams/seamanship/imdg-ayrim.svg",
+        imageAlt: "Segregation of packaged harmful substances under the IMDG Code",
       },
       {
         title: "Ambalajlama, İşaretleme ve Etiketleme",

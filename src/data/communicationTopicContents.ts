@@ -1,5 +1,14 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import dscPanelImage from "@/assets/bridge/dsc-panel.jpg";
+import vhfRadioImage from "@/assets/bridge/vhf-radio.jpg";
+import navtexImage from "@/assets/bridge/navtex-receiver.jpg";
+import inmarsatImage from "@/assets/bridge/inmarsat-terminal.jpg";
+import aisDisplayImage from "@/assets/bridge/ais-display.jpg";
+import dscDistressImage from "@/assets/navigation/dsc-distress.svg";
+import bridgeOverviewImage from "@/assets/bridge/ship-bridge-overview.jpg";
+
 export const communicationTopicContents: Record<string, TopicDetailContent> = {
   "GMDSS Mimarisi ve Deniz Alanları": {
     title: "GMDSS Mimarisi ve Deniz Alanları",
@@ -10,6 +19,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Deniz Alanları (Sea Area) Sınıflandırması",
         content:
           "GMDSS dört deniz alanı tanımlar ve her alan, kapsama sağlayan altyapı teknolojisine göre belirlenir. A1 alanı, en az bir VHF kıyı istasyonunun DSC (Digital Selective Calling) kapsaması altındaki bölgedir; tipik menzili 20–30 deniz milidir. A2 alanı, A1 dışında kalan ancak bir MF (Medium Frequency) kıyı istasyonunun DSC kapsaması altındaki bölgedir; menzili tipik olarak yaklaşık 100–150 deniz miline kadar uzanır. A3 alanı, A1 ve A2 dışında kalan ancak Inmarsat uydu kapsaması altındaki bölgedir; bu kapsama yaklaşık 70°K – 70°G enlemleri arasını içerir. A4 alanı, A1, A2 ve A3 dışında kalan bölgeleri kapsar; esas olarak kutup bölgeleridir ve burada HF (High Frequency) radyo haberleşmesi temel iletişim aracıdır.",
+        image: dscPanelImage,
+        imageAlt: "GMDSS console carrying the required radio installations",
       },
       {
         title: "Ekipman Gereklilikleri",
@@ -44,6 +55,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "DSC Çağrı Mekanizması",
         content:
           "DSC, belirli bir frekans üzerinden (VHF Ch.70) dijital çağrı yapılmasını sağlayan otomatik bir sistemdir. Her geminin benzersiz bir MMSI (Maritime Mobile Service Identity) numarası vardır ve DSC çağrısı bu numara üzerinden gerçekleşir. DSC çağrı tipleri: tehlike (distress), aciliyet (urgency), emniyet (safety) ve rutin (routine). Bir DSC çağrısında çağrı tipi, MMSI, mevki (GPS bağlantılıysa otomatik eklenir), çağrılan istasyon ve iletişimin sürdürüleceği çalışma kanalı bilgileri dijital olarak iletilir. Karşı tarafın DSC alıcısı bu bilgileri otomatik olarak çözer, ekranda gösterir ve alarm verir.",
+        image: vhfRadioImage,
+        imageAlt: "VHF radiotelephone with DSC controller",
       },
       {
         title: "VHF Kanalları ve Kullanım Disiplini",
@@ -109,6 +122,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlike Haberleşmesi (MAYDAY)",
         content:
           "MAYDAY, geminin veya gemideki kişilerin ciddi ve yakın tehlike altında olduğu ve acil yardım gerektiği durumlarda kullanılır. Batma, kontrolsüz yangın, terk-i gemi, çarpışma sonrası su alma gibi durumlar MAYDAY gerektirir. MAYDAY mesajı tüm diğer haberleşmenin önüne geçer; MAYDAY yayını yapıldığında, bu yayınla ilgisi olmayan tüm istasyonlar sessizliğe geçer (SEELONCE MAYDAY). MAYDAY mesaj formatı standart ve kısadır: gemi kimliği, mevki, tehlike türü, yardım talebi ve gemideki kişi sayısı bilgilerini içerir. MAYDAY RELAY, tehlikedeki gemi adına başka bir geminin veya kıyı istasyonunun alarm yayması durumunda kullanılır.",
+        image: dscDistressImage,
+        imageAlt: "Structure of a DSC distress alert and its follow-up call",
       },
       {
         title: "Aciliyet Haberleşmesi (PAN PAN)",
@@ -143,6 +158,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "NAVTEX Sistemi",
         content:
           "NAVTEX, 518 kHz (uluslararası NAVTEX) ve 490 kHz (ulusal NAVTEX) frekanslarında otomatik olarak metin mesajları ileten bir radyo teleks sistemidir. Menzili yaklaşık 200–400 deniz milidir; bu nedenle esas olarak kıyıya yakın bölgelerde (A1/A2 alanları) hizmet verir. NAVTEX mesajları dört karakterli bir tanımlayıcıyla kodlanır: ilk harf istasyonu, ikinci harf mesaj türünü (A: seyir uyarısı, B: meteoroloji, D: SAR bilgisi vb.), son iki rakam sıra numarasını gösterir. Alıcı, daha önce alınmış mesajları otomatik olarak filtreler ve tekrar yazdırmaz. Mesaj türleri seçilebilir ancak A (seyir uyarısı), B (meteoroloji), D (SAR) ve L (NAVAREA uyarıları) her zaman açık tutulmalıdır — bunlar devre dışı bırakılamaz.",
+        image: navtexImage,
+        imageAlt: "NAVTEX receiver printing maritime safety information",
       },
       {
         title: "SafetyNET Sistemi",
@@ -212,6 +229,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Mesaj İşaretleri (Message Markers)",
         content:
           "Yanlış anlamayı önlemek için, özellikle VTS haberleşmesinde, bir mesajın türü baştan belirtilir. SMCP sekiz mesaj işareti tanımlar. İşaret, mesajın amacını net biçimde ortaya koyar ve alıcının doğru tepki vermesini sağlar.",
+        image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
+        imageAlt: "SMCP message markers and their use",
         image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
         imageAlt: "The eight SMCP message markers: Instruction, Advice, Warning, Information, Question, Answer, Request, Intention",
         bulletPoints: [
@@ -370,6 +389,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Sürekli Nöbet (Continuous Watch) Yükümlülükleri",
         content:
           "SOLAS Bölüm IV gereği gemi, seyir halindeyken şu nöbetleri sürekli tutar: VHF Ch.70 DSC otomatik izleme; sefer alanına göre MF Ch.2187.5 kHz DSC ve/veya HF DSC tehlike frekansları; NAVTEX (518 kHz) otomatik alım; ve uygun olduğunda Inmarsat MSI alımı. Ch.16 sesli dinleme, DSC'ye geçişten sonra da pek çok gemide sürdürülür. Nöbet, ekipmanın açık ve doğru ayarlı tutulmasıyla otomatik olarak sağlanır; operatör alarmlara tepki vermekle yükümlüdür.",
+        image: vhfRadioImage,
+        imageAlt: "Radio installation on which the listening watch is kept",
       },
       {
         title: "Radyo Log Defteri (Radio Log)",
@@ -410,6 +431,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Inmarsat Sistemi ve Kapsama",
         content:
           "Inmarsat, jeostatik (yer-sabit) uydularla yaklaşık 70°K – 70°G enlemleri arasını (A3 alanı) kapsar; kutuplar (A4) kapsama dışıdır. Jeostatik yörünge nedeniyle çok yüksek enlemlerde uydu ufka çok alçaldığından bağlantı zorlaşır. GMDSS kapsamında Inmarsat-C, tehlike alarmı, MSI alımı ve mesajlaşma için tanınan bir hizmettir.",
+        image: inmarsatImage,
+        imageAlt: "Inmarsat satellite terminal antenna radomes",
       },
       {
         title: "Inmarsat-C ve Fleet/FleetBroadband",
@@ -592,6 +615,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Çalışma Prensibi ve Kanallar",
         content:
           "AIS, iki özel VHF deniz kanalında çalışır: AIS 1 (Ch.87B, 161.975 MHz) ve AIS 2 (Ch.88B, 162.025 MHz). Class A transponderler SOTDMA (Self-Organizing Time Division Multiple Access) tekniğiyle zaman dilimlerini kendi aralarında otomatik paylaşır; böylece merkezî bir kontrole gerek kalmadan yüzlerce gemi aynı kanalı çakışmadan kullanabilir. Cihaz GPS/GNSS'ten aldığı mevkiyi ve gemi sensörlerinden (cayro, hız logu) aldığı verileri belirli aralıklarla yayınlar. Yayın aralığı gemi durumuna göre değişir: demirdeyken veya yavaşken birkaç dakikada bir, yüksek hızda veya manevrada birkaç saniyede bir güncellenir.",
+        image: aisDisplayImage,
+        imageAlt: "AIS display listing nearby vessels and their data",
         bulletPoints: [
           "AIS 1 = Ch.87B (161.975 MHz), AIS 2 = Ch.88B (162.025 MHz).",
           "Class A: SOTDMA, 12.5 W — SOLAS gemileri için zorunlu.",
@@ -688,6 +713,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "VTS Hizmet Türleri",
         content:
           "VTS, IMO A.857(20) kararı çerçevesinde üç temel hizmet sunar. Bilgi Hizmeti (INS – Information Service): trafik, hava, seyir engelleri gibi emniyet için gerekli bilgilerin belirli zamanlarda veya talep üzerine yayınlanması. Trafik Düzenleme Hizmeti (TOS – Traffic Organization Service): trafiğin akışını düzenlemek için geçiş sırası, hız, bekleme noktaları gibi düzenlemeler. Seyir Yardım Hizmeti (NAS – Navigational Assistance Service): zor seyir veya meteorolojik koşullarda, gemi talebi veya VTS'nin gerekli görmesi hâlinde mevki ve seyir konusunda yardım. VTS talimatları geminin kaptanının seyir sorumluluğunu ortadan kaldırmaz; nihai sorumluluk kaptandadır.",
+        image: bridgeOverviewImage,
+        imageAlt: "Bridge from which VTS reporting is carried out",
         bulletPoints: [
           "INS: emniyet bilgisi yayını (trafik, hava, engeller).",
           "TOS: trafik akışının düzenlenmesi (sıra, hız, bekleme).",
@@ -733,6 +760,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Köprüüstü–Makine Haberleşmesi ve Telgraf",
         content:
           "Köprüüstü ile makine dairesi arasındaki ana komut bağlantısı makine telgrafıdır (engine telegraph); modern gemilerde elektronik telgraf, istenen makine komutunu (örn. Half Ahead, Stop, Full Astern) hem köprüüstünde hem makine kontrol odasında eşzamanlı gösterir ve onaylar. Telgrafın yanında köprüüstü ile makine kontrol odası arasında telefon ve interkom bağlantısı bulunur. Köprü-makine komutlarının kapalı döngüyle (komutun makine tarafından tekrar edilip onaylanması) yürütülmesi yanlış manevrayı önler. Manevra sırasında verilen tüm makine komutları otomatik kaydedici (engine movement recorder / bell book) ile kayıt altına alınır.",
+        image: bridgeOverviewImage,
+        imageAlt: "Bridge console carrying the internal communication equipment",
       },
       {
         title: "Ses-Güçlü Telefonlar ve İnterkom",
