@@ -46,87 +46,87 @@ export const StabilityReportGenerator = () => {
       const results = StableTalesEngine.kapsamliHesaplama(input);
       
       const report = `
-STABILITE RAPORU
+STABILITY REPORT
 ================
 
-GEMİ BİLGİLERİ
---------------
-Gemi Adı           : ${reportData.gemi_adi}
-IMO Numarası       : ${vesselData.imo_no}
-Çağrı İşareti      : ${vesselData.call_sign}
+VESSEL PARTICULARS
+------------------
+Vessel Name        : ${reportData.gemi_adi}
+IMO Number         : ${vesselData.imo_no}
+Call Sign          : ${vesselData.call_sign}
 MMSI              : ${vesselData.mmsi}
 LOA               : ${vesselData.loa} m
 BOA               : ${vesselData.boa} m
 
-OPERASYONEL BİLGİLER
+OPERATIONAL DETAILS
 -------------------
-Kaptan            : ${reportData.kaptan_adi}
-Liman             : ${reportData.liman}
-Tarih             : ${reportData.tarih}
-Sefer No          : ${reportData.voyage_no}
-Rapor Tipi        : ${reportData.rapor_tipi === 'departure' ? 'Hareket Öncesi' : reportData.rapor_tipi === 'arrival' ? 'Varış Sonrası' : 'Operasyonel'}
+Master            : ${reportData.kaptan_adi}
+Port              : ${reportData.liman}
+Date              : ${reportData.tarih}
+Voyage No         : ${reportData.voyage_no}
+Report Type       : ${reportData.rapor_tipi === 'departure' ? 'Pre-departure' : reportData.rapor_tipi === 'arrival' ? 'Post-arrival' : 'Operational'}
 
-YÜKLEME DURUMU
---------------
-Deplasman         : ${vesselData.deplasman.toLocaleString()} ton
-Ortalama Draft    : ${vesselData.draft} m
+LOADING CONDITION
+-----------------
+Displacement      : ${vesselData.deplasman.toLocaleString()} tonnes
+Mean Draft        : ${vesselData.draft} m
 KM                : ${vesselData.km.toFixed(3)} m
 KG                : ${vesselData.kg.toFixed(3)} m
 GM                : ${results.gm.toFixed(3)} m
 
-STABİLİTE ANALİZİ
-----------------
-İlk Stabilite     : ${results.gm >= 0.15 ? 'UYGUN' : 'UYGUN DEĞİL'} (GM = ${results.gm.toFixed(3)} m)
-Serbest Yüzey Etkisi : ${results.fsm.toFixed(3)} m
-Düzeltilmiş GM    : ${(results.gm - results.fsm).toFixed(3)} m
+STABILITY ANALYSIS
+------------------
+Initial Stability : ${results.gm >= 0.15 ? 'COMPLIANT' : 'NOT COMPLIANT'} (GM = ${results.gm.toFixed(3)} m)
+Free Surface Effect  : ${results.fsm.toFixed(3)} m
+Corrected GM      : ${(results.gm - results.fsm).toFixed(3)} m
 GZ (15°)          : ${results.gz.toFixed(3)} m
-Yalpa Periyodu    : ${results.yalpa_periyodu.toFixed(1)} saniye
+Rolling Period    : ${results.yalpa_periyodu.toFixed(1)} seconds
 
-SOLAS KRİTERLERİ KONTROLÜ
-------------------------
+SOLAS CRITERIA CHECK
+--------------------
 Area 0-30°        : ${results.solas_uygunluk.alan_0_30.deger.toFixed(4)} m.rad (Min: ${results.solas_uygunluk.alan_0_30.kriter.toFixed(3)}) ${results.solas_uygunluk.alan_0_30.uygun ? '✓' : '✗'}
 Area 0-40°        : ${results.solas_uygunluk.alan_0_40.deger.toFixed(4)} m.rad (Min: ${results.solas_uygunluk.alan_0_40.kriter.toFixed(3)}) ${results.solas_uygunluk.alan_0_40.uygun ? '✓' : '✗'}
 Area 30-40°       : ${results.solas_uygunluk.alan_30_40.deger.toFixed(4)} m.rad (Min: ${results.solas_uygunluk.alan_30_40.kriter.toFixed(3)}) ${results.solas_uygunluk.alan_30_40.uygun ? '✓' : '✗'}
 Max GZ            : ${results.solas_uygunluk.max_gz.deger.toFixed(3)} m (Min: ${results.solas_uygunluk.max_gz.kriter.toFixed(3)}) ${results.solas_uygunluk.max_gz.uygun ? '✓' : '✗'}
-İlk GM            : ${results.solas_uygunluk.gm.deger.toFixed(3)} m (Min: ${results.solas_uygunluk.gm.kriter.toFixed(3)}) ${results.solas_uygunluk.gm.uygun ? '✓' : '✗'}
+Initial GM        : ${results.solas_uygunluk.gm.deger.toFixed(3)} m (Min: ${results.solas_uygunluk.gm.kriter.toFixed(3)}) ${results.solas_uygunluk.gm.uygun ? '✓' : '✗'}
 
-GENEL UYGUNLUK    : ${results.solas_uygunluk.genel_uygunluk ? 'UYGUN - TÜM KRİTERLER SAĞLANDI' : 'UYGUN DEĞİL - KRİTERLER BAŞARISIZ'}
+OVERALL COMPLIANCE: ${results.solas_uygunluk.genel_uygunluk ? 'COMPLIANT - ALL CRITERIA MET' : 'NOT COMPLIANT - CRITERIA FAILED'}
 
-DİNAMİK STABİLİTE
+DYNAMIC STABILITY
 -----------------
-Dinamik Stabilite Alanı : ${results.dinamik_stabilite.toFixed(4)} m.rad
+Dynamic Stability Area  : ${results.dinamik_stabilite.toFixed(4)} m.rad
 
-GÜVENLİK DEĞERLENDİRMESİ
-------------------------
+SAFETY ASSESSMENT
+-----------------
 ${results.gm >= 1.0 ? 
-  '• Mükemmel stabilite durumu - Tüm deniz koşullarında güvenli' :
+  '• Excellent stability condition - safe in all sea states' :
   results.gm >= 0.5 ? 
-  '• İyi stabilite durumu - Normal operasyonlar için uygun' :
+  '• Good stability condition - suitable for normal operations' :
   results.gm >= 0.15 ?
-  '• Kabul edilebilir stabilite - Dikkatli seyir gerekli' :
-  '• TEHLİKELİ DURUM - Derhal ballast ayarlaması yapın!'
+  '• Acceptable stability - navigate with caution' :
+  '• DANGEROUS CONDITION - adjust ballast immediately!'
 }
 
 ${!results.solas_uygunluk.genel_uygunluk ? 
-  '• UYARI: SOLAS kriterleri sağlanmadı - Port State Control riski' : 
-  '• SOLAS kriterleri tam uygunluk'
+  '• WARNING: SOLAS criteria not met - Port State Control risk' : 
+  '• Full compliance with the SOLAS criteria'
 }
 
-EK NOTLAR
----------
-${reportData.ek_notlar || 'Ek not bulunmamaktadır.'}
+ADDITIONAL NOTES
+----------------
+${reportData.ek_notlar || 'No additional notes.'}
 
-SORUMLU PERSONEL
----------------
-Kaptan            : ${reportData.kaptan_adi}
-Baş Makinist      : [İsim girilmemiş]
-Güverte Zabitlik  : [İsim girilmemiş]
+RESPONSIBLE PERSONNEL
+---------------------
+Master            : ${reportData.kaptan_adi}
+Chief Engineer    : [Name not entered]
+Deck Officer      : [Name not entered]
 
-Bu rapor Stable Tales Stabilite Analiz Sistemi ile ${new Date().toLocaleString('tr-TR')} tarihinde otomatik olarak oluşturulmuştur.
+This report was generated automatically by the Stable Tales Stability Analysis System on ${new Date().toLocaleString('en-GB')}.
 
-İMZA VE ONAY
------------
-Kaptan İmzası: _________________    Tarih: ${reportData.tarih}
+SIGNATURE AND APPROVAL
+----------------------
+Master's Signature: _____________    Date: ${reportData.tarih}
 
 
 ==========================================
@@ -137,11 +137,11 @@ Stable Tales - Maritime Stability System
       setGeneratedReport(report);
       setReportGenerated(true);
       
-      toast.success("Stabilite raporu başarıyla oluşturuldu!");
+      toast.success("The stability report was generated successfully!");
       
     } catch (error) {
       console.error("Report generation error:", error);
-      toast.error("Rapor oluşturma sırasında bir hata oluştu!");
+      toast.error("An error occurred while generating the report!");
     }
   };
 
@@ -170,7 +170,7 @@ Stable Tales - Maritime Stability System
       printWindow.document.write(`
         <html>
           <head>
-            <title>Stabilite Raporu</title>
+            <title>Stability Report</title>
             <style>
               body { font-family: 'Courier New', monospace; margin: 20px; }
               pre { white-space: pre-wrap; }
@@ -183,7 +183,7 @@ Stable Tales - Maritime Stability System
       `);
       printWindow.document.close();
       printWindow.print();
-      toast.success("Rapor yazdırılıyor...");
+      toast.success("Printing the report...");
     }
   };
 
@@ -193,7 +193,7 @@ Stable Tales - Maritime Stability System
     const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
     
     window.location.href = mailtoLink;
-    toast.success("E-posta istemciniz açılıyor...");
+    toast.success("Opening your email client...");
   };
 
   return (

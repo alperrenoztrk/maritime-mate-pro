@@ -18,13 +18,17 @@ test('extractor covers settings components, conditional labels and notifications
     'Etkinleştir',
     'Kapat',
     'Onayla',
-    'İki adımlı doğrulama açıldı',
-    'Kod doğrulanamadı. Uygulamadaki güncel kodu girin.',
     'Geri',
-    'Dil Değiştirildi',
-    'Uygulama dili başarıyla değiştirildi',
-    'Ayarlar Sıfırlandı',
-    'Dil ayarları varsayılan değerlere döndürüldü',
+    // Notification copy is authored in English (see the language-removal work
+    // in src/contexts/LanguageContext.tsx and the toast call sites): a toast is
+    // portalled outside the translated route subtree and can expire before a
+    // live translation lands, so it must read correctly with no lookup at all.
+    'Two-factor authentication enabled',
+    'The code could not be verified. Enter the current code from the app.',
+    'Language Changed',
+    'The app language was changed successfully',
+    'Settings Reset',
+    'Language settings were restored to their defaults',
   ];
 
   for (const source of expected) {

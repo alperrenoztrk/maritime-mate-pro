@@ -7,14 +7,17 @@ export function LanguageChangeOverlay() {
 
   const pct = Math.max(0, Math.min(100, Math.round(changeProgress)));
 
+  // Authored in English: this overlay is painted during a language switch,
+  // before the incoming dictionary is resolved, so it can never be translated
+  // at runtime.
   const title =
     changePhase === 'harvest'
-      ? 'Sayfalar taranıyor…'
-      : 'Çeviriler hazırlanıyor…';
+      ? 'Scanning pages…'
+      : 'Preparing translations…';
   const subtitle =
     changePhase === 'harvest'
-      ? 'Uygulamanın tüm sayfaları taranıyor (tek seferlik, 1–3 dk)'
-      : 'Tüm metinler önbelleğe alınıyor — sonraki gezinmelerde bekleme olmayacak';
+      ? 'Scanning every page of the app (one-off, 1–3 min)'
+      : 'Caching all text — later navigation will not have to wait';
 
   return (
     <div
@@ -35,7 +38,7 @@ export function LanguageChangeOverlay() {
             style={{ width: `${pct}%` }}
           />
         </div>
-        <p className="text-caption tabular-nums text-muted-foreground">%{pct}</p>
+        <p className="text-caption tabular-nums text-muted-foreground">{pct}%</p>
       </div>
     </div>
   );

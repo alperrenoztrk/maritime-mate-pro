@@ -10,7 +10,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import { stripMarkdown } from "@/utils/cleanText";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 
-// UI string translations for all 25 supported languages
+// UI string translations for all 24 supported interface languages
 const UI_TRANSLATIONS: Record<string, {
   quickQuestions: string;
   writeQuestion: string;
@@ -22,17 +22,6 @@ const UI_TRANSLATIONS: Record<string, {
   errorOccurred: string;
   defaultPlaceholder: string;
 }> = {
-  tr: {
-    quickQuestions: "Hızlı Sorular",
-    writeQuestion: "Sorunuzu Yazın",
-    send: "Gönder",
-    preparing: "Yanıt hazırlanıyor...",
-    response: "Yanıt",
-    pleaseWrite: "Lütfen bir soru yazın",
-    noResponse: "Yanıt alınamadı",
-    errorOccurred: "Yanıt alınırken bir hata oluştu",
-    defaultPlaceholder: "Sorunuzu yazın...",
-  },
   en: {
     quickQuestions: "Quick Questions",
     writeQuestion: "Write Your Question",

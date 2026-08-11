@@ -94,14 +94,14 @@ export const CraneBoomCalculations = () => {
       setCraneData(prev => ({ ...prev, gm_degisimi }));
 
       if (yeni_gm > 0.15) {
-        toast.success(`Kren operasyonu güvenli: GM = ${yeni_gm.toFixed(3)}m`);
+        toast.success(`Crane operation is safe: GM = ${yeni_gm.toFixed(3)}m`);
       } else {
         toast.error(`Tehlikeli GM: ${yeni_gm.toFixed(3)}m - Operasyonu durdurun!`);
       }
 
     } catch (error) {
       console.error("Crane calculation error:", error);
-      toast.error("Kren hesaplaması sırasında bir hata oluştu!");
+      toast.error("An error occurred during the crane calculation!");
     }
   };
 

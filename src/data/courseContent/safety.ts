@@ -189,9 +189,9 @@ export const safety: CourseTopic = {
         const total = boatTotal + raftTotal;
         const uygun = total >= v.pob ? "UYGUN" : "UYGUN DEĞİL";
         return [
-          { label: "Toplam Can Botu Kapasitesi", value: `${boatTotal.toFixed(0)} kişi` },
-          { label: "Toplam Can Salı Kapasitesi", value: `${raftTotal.toFixed(0)} kişi` },
-          { label: "Toplam LSA Kapasitesi", value: `${total.toFixed(0)} kişi` },
+          { label: "Toplam Can Botu Kapasitesi", value: `${boatTotal.toFixed(0)} persons` },
+          { label: "Toplam Can Salı Kapasitesi", value: `${raftTotal.toFixed(0)} persons` },
+          { label: "Toplam LSA Kapasitesi", value: `${total.toFixed(0)} persons` },
           { label: "SOLAS Uygunluğu", value: uygun },
         ];
       },

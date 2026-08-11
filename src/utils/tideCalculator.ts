@@ -239,7 +239,7 @@ export function getNextTideEvent(fromDate: Date = new Date()): TideEvent | null 
 
 // Format time as HH:MM
 export function formatTideTime(date: Date): string {
-  return date.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 }
 
 // Get tidal strength description

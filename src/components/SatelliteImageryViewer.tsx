@@ -21,7 +21,6 @@ import {
 interface SatelliteChannel {
   id: string;
   name: string;
-  nameTr: string;
   description: string;
   uses: string[];
   wavelength: string;
@@ -38,7 +37,6 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'rgb',
       name: 'Natural Color (RGB)',
-      nameTr: 'Doğal Renk (RGB)',
       description: 'True color composite showing clouds and surface as they appear to the eye',
       uses: ['Daytime cloud identification', 'Surface features', 'Dust storms', 'Snow cover'],
       wavelength: 'VIS + NIR composite',
@@ -48,7 +46,6 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'vis',
       name: 'Visible (VIS 0.6)',
-      nameTr: 'Görünür Işık (VIS 0.6)',
       description: 'Visible light channel showing cloud reflectivity',
       uses: ['Cloud detection', 'Fog identification', 'Cloud thickness', 'Daytime only'],
       wavelength: '0.635 μm',
@@ -58,7 +55,6 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'ir108',
       name: 'Infrared (IR 10.8)',
-      nameTr: 'Kızılötesi (IR 10.8)',
       description: 'Thermal infrared showing cloud top temperature',
       uses: ['24/7 cloud detection', 'Cloud height', 'Fog detection', 'Storm intensity'],
       wavelength: '10.8 μm',
@@ -68,7 +64,6 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'wv',
       name: 'Water Vapor (WV 6.2)',
-      nameTr: 'Su Buharı (WV 6.2)',
       description: 'Upper level moisture and jet stream patterns',
       uses: ['Upper level winds', 'Jet stream location', 'Moisture tracking', 'Storm development'],
       wavelength: '6.2 μm',
@@ -78,7 +73,6 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'ir039',
       name: 'Infrared (IR 3.9)',
-      nameTr: 'Kızılötesi (IR 3.9)',
       description: 'Nighttime low cloud and fog detection',
       uses: ['Night fog detection', 'Low stratus clouds', 'Fire detection', 'Nighttime imaging'],
       wavelength: '3.9 μm',
@@ -88,7 +82,6 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'airmass',
       name: 'Air Mass RGB',
-      nameTr: 'Hava Kütlesi RGB',
       description: 'Shows different air masses and jet stream features',
       uses: ['Air mass boundaries', 'Jet stream analysis', 'Potential vorticity', 'Storm forecasting'],
       wavelength: 'WV+IR composite',
@@ -193,7 +186,7 @@ export const SatelliteImageryViewer = () => {
                 </p>
                 <div className="flex items-center gap-2 text-xs">
                   <Clock className="h-3 w-3" />
-                  Son güncelleme: {lastUpdate.toLocaleTimeString('tr-TR')}
+                  Son güncelleme: {lastUpdate.toLocaleTimeString('en-GB')}
                 </div>
               </div>
             </AlertDescription>
@@ -232,7 +225,7 @@ export const SatelliteImageryViewer = () => {
           {channels.map((channel) => (
             <TabsTrigger key={channel.id} value={channel.id} className="text-xs">
               {channel.icon}
-              <span className="ml-1 hidden sm:inline">{channel.nameTr.split(' ')[0]}</span>
+              <span className="ml-1 hidden sm:inline">{channel.name.split(' ')[0]}</span>
             </TabsTrigger>
           ))}
         </TabsList>
@@ -246,7 +239,7 @@ export const SatelliteImageryViewer = () => {
                   <div className="space-y-2">
                     <CardTitle className="flex items-center gap-2 text-lg">
                       {channel.icon}
-                      {channel.nameTr}
+                      {channel.name}
                     </CardTitle>
                   </div>
                   <Badge className={channel.color}>
@@ -280,7 +273,7 @@ export const SatelliteImageryViewer = () => {
                 <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <img
                     src={getEumetsatImageUrl(channel.id)}
-                    alt={`${channel.nameTr} uydu görüntüsü`}
+                    alt={`${channel.name} satellite image`}
                     className="w-full h-auto"
                     onError={(e) => {
                       // Fallback if image fails to load
@@ -292,7 +285,7 @@ export const SatelliteImageryViewer = () => {
                       <div className="font-semibold">{channel.name}</div>
                       <div className="text-xs opacity-90">
                         {selectedRegion === 'europe' ? 'Avrupa / Akdeniz' : 'Tam Disk'} • 
-                        Güncelleme: {lastUpdate.toLocaleTimeString('tr-TR')}
+                        Güncelleme: {lastUpdate.toLocaleTimeString('en-GB')}
                       </div>
                     </div>
                   </div>

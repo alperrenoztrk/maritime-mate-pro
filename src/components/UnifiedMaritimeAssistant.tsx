@@ -213,7 +213,7 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
 
   const handleSubmit = async () => {
     if (!question.trim()) {
-      toast.error("Lütfen bir soru yazın");
+      toast.error("Please type a question");
       return;
     }
 
@@ -261,11 +261,11 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
       // Try Gemini first, fallback to local
       try {
         answer = await getGeminiResponse(currentQuestion);
-        toast.success("Yanıt hazırlandı");
+        toast.success("Answer ready");
       } catch (error) {
         console.warn('Gemini failed, using local knowledge:', error);
         answer = getLocalKnowledge(currentQuestion);
-        toast.info("Yerel bilgi bankası kullanıldı");
+        toast.info("Local knowledge base used");
       }
 
       // Combine answers
@@ -282,7 +282,7 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
 
     } catch (error) {
       console.error('Assistant error:', error);
-      toast.error("Yanıt alınamadı");
+      toast.error("No answer could be retrieved");
     } finally {
       setIsLoading(false);
     }

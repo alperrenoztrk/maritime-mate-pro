@@ -31,7 +31,6 @@ type FallbackEdition = MaritimeNewsLocale & {
 };
 
 const FALLBACK_EDITIONS: Record<string, FallbackEdition> = {
-  tr: { language: "tr", countryCode: "TR", countryName: "Türkiye", mode: "regional", hl: "tr", ceid: "TR:tr", query: "denizcilik gemi liman" },
   en: { language: "en", countryCode: "GB", countryName: "United Kingdom", mode: "regional-and-global", hl: "en-GB", ceid: "GB:en", query: "shipping maritime port" },
   es: { language: "es", countryCode: "ES", countryName: "España", mode: "regional", hl: "es", ceid: "ES:es", query: "marítimo buque puerto" },
   de: { language: "de", countryCode: "DE", countryName: "Deutschland", mode: "regional", hl: "de", ceid: "DE:de", query: "Schifffahrt Schiff Hafen" },
@@ -78,7 +77,7 @@ function createFallbackNews(language: unknown): MaritimeNewsResponse {
       mode: edition.mode,
     },
     items: [{
-      title: `${edition.countryName} denizcilik haberlerini aç`,
+      title: `Open ${edition.countryName} maritime news`,
       link: url,
       source: `Google News · ${edition.countryName}`,
       summary: "Haber servisine geçici olarak ulaşılamadı. Seçili dile ait güncel yerel kaynakları açabilirsiniz.",
@@ -268,7 +267,7 @@ export async function fetchMaritimeNews(
       if (!res.ok) {
         const text = await res.text().catch(() => "");
         console.error("📰 [MaritimeNews] HTTP error:", { status: res.status, text });
-        throw new Error(text || `Haber servisi hata döndürdü (${res.status}).`);
+        throw new Error(text || `The news service returned an error (${res.status}).`);
       }
 
       const data = (await res.json().catch(() => null)) as unknown;
@@ -277,7 +276,7 @@ export async function fetchMaritimeNews(
       const message = err instanceof Error ? err.message : String(err);
       const withTimeout =
         err instanceof DOMException && err.name === "AbortError"
-          ? `Zaman aşımı (${timeoutMs} ms)`
+          ? `Timed out (${timeoutMs} ms)`
           : message;
       errors.push(`${url}: ${withTimeout}`);
       console.warn("📰 [MaritimeNews] Failed endpoint, trying next", { url, message: withTimeout });
@@ -289,6 +288,6 @@ export async function fetchMaritimeNews(
   return {
     ...createFallbackNews(language),
     fetchedAt: new Date().toISOString(),
-    errors: errors.map((e, i) => ({ source: `Uç nokta ${i + 1}`, error: e })),
+    errors: errors.map((e, i) => ({ source: `Endpoint ${i + 1}`, error: e })),
   };
 }

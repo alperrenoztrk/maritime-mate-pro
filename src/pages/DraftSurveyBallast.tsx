@@ -57,7 +57,7 @@ export default function DraftSurveyBallast() {
     if (!beforeBallast.forward || !beforeBallast.midship || !beforeBallast.aft ||
         !afterBallast.forward || !afterBallast.midship || !afterBallast.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Hata", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -91,7 +91,7 @@ export default function DraftSurveyBallast() {
       tankDistribution
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Balast ölçümü hesaplandı" });
+    toast({ title: "Calculation Complete", description: "Ballast measurement calculated" });
   };
 
   return (

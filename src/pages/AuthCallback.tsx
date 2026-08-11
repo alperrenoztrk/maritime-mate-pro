@@ -75,7 +75,7 @@ const AuthCallback = () => {
             fail("Google dönüş kodu geldi ancak oturum anahtarı bu cihazda bulunamadı. Tarayıcı/WebView eski oturumu kaybetmiş olabilir; Tekrar dene ile yeni bir akış başlatın.");
             return;
           }
-          fail(`Google oturumu doğrulanamadı: ${oauthError.message}`);
+          fail(`Could not verify the Google session: ${oauthError.message}`);
           return;
         }
         if (handled) {
@@ -87,7 +87,7 @@ const AuthCallback = () => {
         // session up through detectSessionInUrl.
         const { data, error } = await supabase.auth.getSession();
         if (error) {
-          fail(`Oturum okunamadı: ${error.message}`);
+          fail(`Could not read the session: ${error.message}`);
           return;
         }
         if (data.session) finish();

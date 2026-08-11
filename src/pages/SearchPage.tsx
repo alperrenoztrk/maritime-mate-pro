@@ -7,8 +7,8 @@ export default function SearchPage() {
   return (
     <LibraryPageShell title="Ara" icon={Search} maxWidth="max-w-3xl">
       <SEO
-        title="Ara — Mariner's Book"
-        description="Dersler, hesaplamalar, operasyonel kaynaklar ve denizcilik terimleri arasında arama yapın."
+        title="Search — Mariner's Book"
+        description="Search across lessons, calculations, operational references and maritime terms."
         path="/search"
       />
       <AppSearchExperience />

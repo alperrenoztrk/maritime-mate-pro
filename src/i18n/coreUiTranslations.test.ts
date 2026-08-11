@@ -35,7 +35,7 @@ test("persistent app chrome has synchronous copy in every supported language", (
 });
 
 test("library title aliases resolve to the same localized tab label", () => {
-  for (const languageCode of CORE_UI_LANGUAGE_CODES.filter((code) => code !== "tr")) {
+  for (const languageCode of CORE_UI_LANGUAGE_CODES) {
     assert.equal(
       getCoreUiTranslation("Kitaplık", languageCode),
       getCoreUiTranslation("Kütüphane", languageCode),

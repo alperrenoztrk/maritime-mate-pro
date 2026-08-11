@@ -6,8 +6,8 @@ const ClockPage: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
       <Helmet>
-        <title>Saat</title>
-        <meta name="description" content="Rakamları düzgün yerleştirilmiş analog saat" />
+        <title>Clock</title>
+        <meta name="description" content="An analogue clock with properly placed numerals" />
       </Helmet>
       <AnalogClock size={320} showSecondHand className="" />
     </div>

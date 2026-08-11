@@ -42,11 +42,11 @@ export const PendulumStabilityCalc = () => {
       setResults(calculatedResults);
       setSarkacData(prev => ({ ...prev, meyil_acisi }));
       
-      toast.success(`Sarkaç metodu ile meyil açısı: ${meyil_acisi.toFixed(2)}°`);
+      toast.success(`Heel angle by the pendulum method: ${meyil_acisi.toFixed(2)}°`);
       
     } catch (error) {
       console.error("Pendulum calculation error:", error);
-      toast.error("Sarkaç hesaplaması sırasında bir hata oluştu!");
+      toast.error("An error occurred during the pendulum calculation!");
     }
   };
 

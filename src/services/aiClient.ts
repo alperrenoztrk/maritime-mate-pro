@@ -8,7 +8,6 @@ import { supabase } from '@/integrations/supabase/safeClient';
 import type { CalcStep, CourseEntry } from '@/data/courseContent/types';
 
 const LANGUAGE_NAMES: Record<string, string> = {
-  'tr': 'Turkish',
   'en': 'English',
   'es': 'Spanish',
   'de': 'German',
@@ -138,8 +137,8 @@ RESPONSE STYLE:
 };
 
 /**
- * Kota/oturum durumlarını yerel-yanıt fallback'inden ayırmak için özel hata.
- * `message` doğrudan kullanıcıya gösterilebilir.
+ * Dedicated error separating quota/session states from the local-answer
+ * fallback. `message` can be shown to the user directly.
  */
 export class AIAccessError extends Error {
   constructor(
@@ -155,19 +154,19 @@ async function extractAccessError(error: unknown): Promise<AIAccessError | null>
   const context = (error as { context?: Response })?.context;
   if (!(context instanceof Response)) return null;
   if (context.status === 401) {
-    return new AIAccessError('Yapay zekâ asistanını kullanmak için giriş yapmalısınız.', 'AUTH_REQUIRED');
+    return new AIAccessError('You must sign in to use the AI assistant.', 'AUTH_REQUIRED');
   }
   if (context.status === 429) {
     try {
       const body = await context.clone().json();
       if (body?.code === 'AI_QUOTA_EXCEEDED') {
         return new AIAccessError(
-          'Bu ayki yapay zekâ kullanım hakkınız doldu. Pro paket ile aylık kotanızı artırabilirsiniz (Ayarlar → Mariner\'s Book Pro).',
+          'You have used up this month\'s AI allowance. The Pro plan raises your monthly quota (Settings → Mariner\'s Book Pro).',
           'AI_QUOTA_EXCEEDED',
         );
       }
     } catch {
-      // gövde JSON değilse genel akışa bırak
+      // fall through to the generic flow when the body is not JSON
     }
   }
   return null;
@@ -202,37 +201,37 @@ export async function callMaritimeRegulationsAssistant(messages: AIMessage[], la
     
     if (last.includes('weather fax') || last.includes('alrs')) {
       return [
-        '🌊 Weather Fax Frekansları:',
+        '🌊 Weather Fax Frequencies:',
         '→ ALRS Volume 3 (Radio Weather Services)',
-        '• Tüm meteorolojik radyo istasyonlarının frekans bilgileri',
-        '• Yayın programları ve teknik detaylar',
-        '• IMO tarafından onaylanmış resmi kaynak'
+        '• Frequencies for every meteorological radio station',
+        '• Broadcast schedules and technical detail',
+        '• Official source approved by the IMO'
       ].join('\n');
     }
     
-    if (last.includes('solas') || last.includes('güvenlik')) {
+    if (last.includes('solas') || last.includes('safety')) {
       return [
-        '⚓ SOLAS Konvansiyonu:',
+        '⚓ SOLAS Convention:',
         '→ IMO SOLAS 2020 Edition + Amendments',
-        '• Denizde İnsan Hayatının Güvenliği',
-        '• Tüm güvenlik prosedürleri ve ekipmanları',
-        '• Zorunlu kontrol listeleri'
+        '• Safety of Life at Sea',
+        '• All safety procedures and equipment',
+        '• Mandatory checklists'
       ].join('\n');
     }
     
-    if (last.includes('marpol') || last.includes('kirlilik')) {
+    if (last.includes('marpol') || last.includes('pollution')) {
       return [
-        '🛢️ MARPOL Konvansiyonu:',
+        '🛢️ MARPOL Convention:',
         '→ IMO MARPOL 73/78 Consolidated Edition',
-        '• Gemilerden Kaynaklanan Kirlilik Önleme',
-        '• Annex I-VI detayları',
-        '• Oil Record Book gereksinimleri'
+        '• Prevention of Pollution from Ships',
+        '• Annex I-VI detail',
+        '• Oil Record Book requirements'
       ].join('\n');
     }
     
     return [
       '📚 Maritime Regulations Assistant - Mark',
-      'Hangi konuda bilgi arıyorsunuz?',
+      'What would you like to know about?',
       '• Navigation (ALRS, NP, List of Lights)',
       '• Safety (SOLAS, LSA Code, FSS Code)', 
       '• Environment (MARPOL, Ballast Water)',
@@ -255,78 +254,78 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     // Heuristic fallback for navigation topics
     const last = messages.filter(m=>m.role==='user').pop()?.content.toLowerCase() || '';
 
-    if (last.includes('eta') || last.includes('varış') || last.includes('zaman')) {
+    if (last.includes('eta') || last.includes('arrival') || last.includes('time')) {
       return [
-        '⏱️ ETA Hesaplamaları:',
-        '• Temel: T = Mesafe(nm) ÷ Hız(kn) saat',
-        '• Akıntılı: SOG = √(V² + C² + 2VC cos α)',
-        '• Hava faktörü: Lehte 0.90-0.95, Aleyhte 1.10-1.25',
-        'Örn: 240nm, 12kn → 20 saat; ETD 08:00 → ETA 04:00+1d'
+        '⏱️ ETA Calculations:',
+        '• Basic: T = Distance(nm) ÷ Speed(kn) hours',
+        '• With current: SOG = √(V² + C² + 2VC cos α)',
+        '• Weather factor: favourable 0.90-0.95, adverse 1.10-1.25',
+        'e.g. 240nm at 12kn → 20 hours; ETD 08:00 → ETA 04:00+1d'
       ].join('\n');
     }
 
-    if (last.includes('büyük daire') || last.includes('great circle') || last.includes('gc')) {
+    if (last.includes('great circle') || last.includes('gc')) {
       return [
-        '🧭 Büyük Daire (Great Circle):',
-        '• Mesafe: d = arccos(sin φ₁ sin φ₂ + cos φ₁ cos φ₂ cos Δλ) × 3437.747nm',
-        '• İlk Kurs: C₁ = arctan2(sin Δλ cos φ₂, cos φ₁ sin φ₂ - sin φ₁ cos φ₂ cos Δλ)',
-        '• En kısa mesafe ama değişken kurs'
+        '🧭 Great Circle:',
+        '• Distance: d = arccos(sin φ₁ sin φ₂ + cos φ₁ cos φ₂ cos Δλ) × 3437.747nm',
+        '• Initial course: C₁ = arctan2(sin Δλ cos φ₂, cos φ₁ sin φ₂ - sin φ₁ cos φ₂ cos Δλ)',
+        '• Shortest distance, but the course changes continuously'
       ].join('\n');
     }
 
-    if (last.includes('rhumb') || last.includes('loxodrome') || last.includes('sabit kurs')) {
+    if (last.includes('rhumb') || last.includes('loxodrome') || last.includes('constant course')) {
       return [
         '🧭 Rhumb Line (Loxodrome):',
-        '• Mesafe: d = 60√[(Δφ)² + (q×Δλ)²]',
-        '• Kurs: C = arctan(Δλ/Δq) - sabit kurs',
+        '• Distance: d = 60√[(Δφ)² + (q×Δλ)²]',
+        '• Course: C = arctan(Δλ/Δq) - constant course',
         '• q = log(tan(45°+φ₂/2) / tan(45°+φ₁/2)) / Δφ'
       ].join('\n');
     }
 
-    if (last.includes('plane') || last.includes('düzlem')) {
+    if (last.includes('plane sailing') || last.includes('plane')) {
       return [
-        '🧭 Plane Sailing (Düzlem Seyri):',
-        '• DLat = 60(φ₂-φ₁) deniz mili',
+        '🧭 Plane Sailing:',
+        '• DLat = 60(φ₂-φ₁) nautical miles',
         '• Dep = 60(λ₂-λ₁) × cos φₘ',
-        '• Mesafe: d = √(DLat² + Dep²)',
-        '• Kurs: C = arctan(Dep/DLat)',
-        '• Kısa mesafeler için (<600nm) ideal'
+        '• Distance: d = √(DLat² + Dep²)',
+        '• Course: C = arctan(Dep/DLat)',
+        '• Ideal for short distances (<600nm)'
       ].join('\n');
     }
 
-    if (last.includes('akıntı') || last.includes('current') || last.includes('leeway')) {
+    if (last.includes('current') || last.includes('leeway')) {
       return [
-        '🌊 Akıntı Üçgeni & Leeway:',
+        '🌊 Current Triangle & Leeway:',
         '• SOG = √(V² + C² + 2VC cos α)',
         '• CA = arcsin((C × sin β) / V)',
-        '• CTS = İstenen Kurs ± CA',
-        '• Leeway: Rüzgar etkisi düzeltmesi'
+        '• CTS = Desired Course ± CA',
+        '• Leeway: correction for the effect of wind'
       ].join('\n');
     }
 
-    if (last.includes('cpa') || last.includes('tcpa') || last.includes('arpa') || last.includes('çatışma')) {
+    if (last.includes('cpa') || last.includes('tcpa') || last.includes('arpa') || last.includes('collision')) {
       return [
-        '📡 ARPA: CPA/TCPA Hesabı:',
+        '📡 ARPA: CPA/TCPA Calculation:',
         '• CPA = Range × sin(RelBrg - RelCourse)',
         '• TCPA = Range × cos(RelBrg - RelCourse) ÷ RelSpeed',
-        '• Risk: CPA < 0.5nm VE TCPA < 6dk',
+        '• Risk: CPA < 0.5nm AND TCPA < 6 min',
         '• Rel Speed = √[Vt² + Vo² - 2VtVo cos(Ct-Co)]'
       ].join('\n');
     }
 
-    if (last.includes('pusula') || last.includes('compass') || last.includes('varyasyon') || last.includes('deviayon')) {
+    if (last.includes('compass') || last.includes('variation') || last.includes('deviation')) {
       return [
-        '🧭 Pusula Düzeltmeleri:',
+        '🧭 Compass Corrections:',
         '• True = Compass + Variation + Deviation + Gyro Error',
-        '• TVMDC kuralı: T = M + Var, M = C + Dev',
-        '• Doğu +, Batı - (East add, West subtract)',
+        '• TVMDC rule: T = M + Var, M = C + Dev',
+        '• East add, West subtract',
         '• Total Error = Var + Dev + Gyro'
       ].join('\n');
     }
 
-    if (last.includes('bearing') || last.includes('açı') || last.includes('mesafe')) {
+    if (last.includes('bearing') || last.includes('angle') || last.includes('distance')) {
       return [
-        '📐 Bearing & Mesafe:',
+        '📐 Bearing & Distance:',
         '• Doubling Angle: Dist = Run × sin(2A) ÷ sin(A)',
         '• Four Point (Bow & Beam): Dist = Run (45°→90° abeam)',
         '• Special Angle: Dist = 0.707 × Run (22.5°→45°)',
@@ -335,19 +334,19 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
       ].join('\n');
     }
 
-    if (last.includes('gelgit') || last.includes('tide') || last.includes('tidal')) {
+    if (last.includes('tide') || last.includes('tidal')) {
       return [
-        '🌊 Gelgit - 12\'de Bir Kuralı:',
-        '• 1.saat: R/12, 2.saat: 3R/12, 3.saat: 5R/12',
-        '• 4.saat: 6R/12, 5.saat: 9R/12, 6.saat: 11R/12',
-        '• Yükseklik: h = Range/2 × [1 - cos(π×t/6)]',
-        '• Spring tide: Yeniay/Dolunay, Neap: İlk/Son dördün'
+        '🌊 Tides - Rule of Twelfths:',
+        '• 1st hour: R/12, 2nd hour: 3R/12, 3rd hour: 5R/12',
+        '• 4th hour: 6R/12, 5th hour: 9R/12, 6th hour: 11R/12',
+        '• Height: h = Range/2 × [1 - cos(π×t/6)]',
+        '• Spring tide: new/full moon, Neap: first/last quarter'
       ].join('\n');
     }
 
-    if (last.includes('göksel') || last.includes('celestial') || last.includes('yıldız')) {
+    if (last.includes('celestial') || last.includes('star')) {
       return [
-        '⭐ Göksel Seyir:',
+        '⭐ Celestial Navigation:',
         '• Sight Reduction: Hc = arcsin[sin L sin d + cos L cos d cos LHA]',
         '• Azimuth: Z = arccos[(sin d - sin L sin Hc) ÷ (cos L cos Hc)]',
         '• Intercept: I = Ho - Hc (+ towards, - away)',
@@ -355,81 +354,81 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
       ].join('\n');
     }
 
-    if (last.includes('dönme') || last.includes('turning') || last.includes('manevra')) {
+    if (last.includes('turning') || last.includes('manoeuvr')) {
       return [
-        '🚢 Dönme Manevraları:',
-        '• Tactical Diameter = 3.5 × Gemi Boyu',
+        '🚢 Turning Manoeuvres:',
+        '• Tactical Diameter = 3.5 × Ship Length',
         '• Advance = R × sin(Δφ/2)',
         '• Transfer = R × (1 - cos(Δφ/2))',
         '• ROT = 3438 × V ÷ R deg/min'
       ].join('\n');
     }
 
-    if (last.includes('hava') || last.includes('weather') || last.includes('rüzgar') || last.includes('beaufort')) {
+    if (last.includes('weather') || last.includes('wind') || last.includes('beaufort')) {
       return [
-        '🌪️ Hava Durumu:',
-        '• Beaufort → Rüzgar: V = 2√(B³) kn',
-        '• Dalga Yüksekliği: h = 0.025 × V² m',
-        '• Leeway Açısı: θ = k × (Vrüzgar/Vgemi)²',
-        '• Rüzgar Kuvveti: F = 0.00338 × V² × Alan'
+        '🌪️ Weather:',
+        '• Beaufort → wind: V = 2√(B³) kn',
+        '• Wave height: h = 0.025 × V² m',
+        '• Leeway angle: θ = k × (Vwind/Vship)²',
+        '• Wind force: F = 0.00338 × V² × Area'
       ].join('\n');
     }
 
     return [
-      '🧭 Kapsamlı Seyir Asistanı - Tüm Formüller Hazır!',
+      '🧭 Comprehensive Navigation Assistant - every formula ready!',
       '',
-      '📍 Pozisyon: Great Circle, Rhumb Line, Plane Sailing, Mercator',
-      '⏱️ Zaman: ETA, Akıntı üçgeni, Hız hesapları',
-      '📡 Radar: CPA/TCPA, ARPA, Çatışma riski',
-      '🧭 Pusula: Var/Dev/Gyro düzeltmesi, Bearing hesabı',
-      '🌊 Gelgit: 12\'de bir kuralı, Tidal stream',
-      '⭐ Göksel: Sight reduction, Azimuth, Intercept',
-      '🚢 Manevra: Turning circle, ROT, Advance/Transfer',
-      '🌪️ Hava: Beaufort, Dalga, Leeway, Rüzgar kuvveti',
-      '🆘 Acil: Search patterns, Rescue calculations',
+      '📍 Position: Great Circle, Rhumb Line, Plane Sailing, Mercator',
+      '⏱️ Time: ETA, current triangle, speed calculations',
+      '📡 Radar: CPA/TCPA, ARPA, collision risk',
+      '🧭 Compass: Var/Dev/Gyro correction, bearing calculation',
+      '🌊 Tides: rule of twelfths, tidal stream',
+      '⭐ Celestial: sight reduction, azimuth, intercept',
+      '🚢 Manoeuvring: turning circle, ROT, advance/transfer',
+      '🌪️ Weather: Beaufort, waves, leeway, wind force',
+      '🆘 Emergency: search patterns, rescue calculations',
       '',
-      'Hangi hesaplama için yardım istiyorsunuz?'
+      'Which calculation would you like help with?'
     ].join('\n');
   }
 }
 
 /**
- * Bir formülün adım adım çözümünü yapay zekaya açıklatır.
+ * Has the AI explain a formula's solution step by step.
  *
- * Deterministik adımlar (CalcStep[]) ve girilen değerler bağlam olarak
- * gönderilir; yapay zeka YENİ sayı üretmez, yalnızca mevcut doğru adımların
- * "neden/nasıl" yapıldığını öğretici biçimde açıklar. Tüm AI çağrıları mevcut
- * `gemini-chat` edge function üzerinden geçer (callNavigationAssistant).
+ * The deterministic steps (CalcStep[]) and the entered values are sent as
+ * context; the AI produces NO new numbers and only explains the "why/how" of
+ * the existing correct steps in a teaching voice. Every AI call goes through
+ * the existing `gemini-chat` edge function (callNavigationAssistant).
  *
- * @param entry    İlgili formül girdisi (CourseEntry)
- * @param vals     Kullanıcının girdiği değerler
- * @param steps    Deterministik üretilmiş çözüm adımları
- * @param language Yanıt dili (kod, örn. "tr")
- * @param question İSTEĞE BAĞLI öğrenci sorusu; verilmezse genel açıklama istenir.
+ * @param entry    The formula entry concerned (CourseEntry)
+ * @param vals     The values entered by the user
+ * @param steps    The deterministically produced solution steps
+ * @param language Response language (code, e.g. "en")
+ * @param question OPTIONAL student question; a general explanation is requested when omitted.
  */
 export async function explainCalculation(
   entry: Pick<CourseEntry, 'name' | 'formula' | 'note'>,
   vals: Record<string, number>,
   steps: CalcStep[],
-  language: string = 'tr',
+  language: string = 'en',
   question?: string,
 ): Promise<string> {
   const langName = getLanguageDisplayName(language);
 
-  const system = `Sen denizcilik fakültesinde (güverte ve makine dersleri: seyir, gemi stabilitesi, meteoroloji, yük işlemleri, emniyet, termodinamik, akışkanlar mekaniği, dizel makineler, elektrik vb.) ders veren deneyimli bir eğitmensin. Görevin, öğrenciye verilen formülü ve çözüm adımlarını SADE, anlaşılır ve öğretici biçimde açıklamak.
+  const system = `You are an experienced instructor at a maritime academy (deck and engine subjects: navigation, ship stability, meteorology, cargo operations, safety, thermodynamics, fluid mechanics, diesel engines, electrical systems, etc.). Your task is to explain the given formula and its solution steps to the student in a PLAIN, clear and instructive way.
 
-KURALLAR:
-- SANA VERİLEN sayısal adımlar ve sonuçlar DOĞRUDUR; bunları DEĞİŞTİRME, yeni sayı UYDURMA.
-- Her adımın NEDEN yapıldığını (mantığını) ve denizcilik pratiğindeki anlamını açıkla.
-- Kısa tut: madde madde, gereksiz tekrar yok. Formüldeki sembolleri ve birimleri açıkça tanımla.
-- Yaygın öğrenci hatalarına (işaret kuralları, birim dönüşümleri, varsayımlar) dikkat çek.
-- ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.`;
+RULES:
+- The numerical steps and results YOU ARE GIVEN ARE CORRECT; do NOT change them and do NOT invent new numbers.
+- Explain WHY each step is taken (its reasoning) and what it means in maritime practice.
+- Keep it short: use bullet points, no needless repetition. Define the symbols and units in the formula explicitly.
+- Point out common student mistakes (sign conventions, unit conversions, assumptions).
+- MANDATORY: your ENTIRE answer must be in ${langName} (language code: ${language}).`;
 
   const stepsText = steps
     .map((s, i) => {
       const parts = [`${i + 1}. ${s.title}`];
-      if (s.expression) parts.push(`   İfade: ${s.expression}`);
-      if (s.result) parts.push(`   Sonuç: ${s.result}`);
+      if (s.expression) parts.push(`   Expression: ${s.expression}`);
+      if (s.result) parts.push(`   Result: ${s.result}`);
       return parts.join('\n');
     })
     .join('\n');
@@ -439,16 +438,16 @@ KURALLAR:
     .join(', ');
 
   const userContent = [
-    `Formül: ${entry.name} → ${entry.formula}`,
-    entry.note ? `Not: ${entry.note}` : '',
-    inputsText ? `Girilen değerler: ${inputsText}` : '',
+    `Formula: ${entry.name} → ${entry.formula}`,
+    entry.note ? `Note: ${entry.note}` : '',
+    inputsText ? `Entered values: ${inputsText}` : '',
     '',
-    'Deterministik çözüm adımları:',
+    'Deterministic solution steps:',
     stepsText,
     '',
     question
-      ? `Öğrencinin sorusu: ${question}`
-      : 'Bu formülü ve yukarıdaki adımları öğrenciye aşama aşama açıkla.',
+      ? `Student's question: ${question}`
+      : 'Explain this formula and the steps above to the student stage by stage.',
   ]
     .filter(Boolean)
     .join('\n');
@@ -463,53 +462,53 @@ KURALLAR:
 }
 
 /**
- * "Dersler Beta" — gömülü adaptif ders eğitmeni.
+ * "Lessons Beta" — the embedded adaptive lesson tutor.
  *
- * Eğitmen, o anda açık olan dersin İÇERİĞİNE topraklanır (lessonText bağlam
- * olarak gönderilir) ve öğrencinin seviyesine göre öğretir. Halüsinasyonu
- * azaltmak için: verilen içerik + bilinen denizcilik standartları dışına
- * çıkmaması, emin olmadığında kaynağa yönlendirmesi istenir. Tüm çağrılar
- * mevcut `gemini-chat` edge function üzerinden geçer (callGemini).
+ * The tutor is grounded in the CONTENT of the lesson currently open (lessonText
+ * is sent as context) and teaches to the student's level. To reduce
+ * hallucination it is asked to stay within the given content plus established
+ * maritime standards, and to point at the source when unsure. Every call goes
+ * through the existing `gemini-chat` edge function (callGemini).
  */
 export type TutorLevel = 'basit' | 'normal' | 'ileri';
 
 export interface LessonTutorContext {
   topicTitle: string;
-  /** Dersin bölüm metinlerinin özeti (read-only, mevcut anlatımdan). */
+  /** Summary of the lesson's section texts (read-only, from the existing narrative). */
   lessonText: string;
   level?: TutorLevel;
 }
 
 const LEVEL_GUIDANCE: Record<TutorLevel, string> = {
   basit:
-    'Öğrenci seviyesi: TEMEL. Çok sade bir dille, günlük benzetmelerle, kısa cümlelerle anlat. Ağır terimlerden kaçın; kullanırsan hemen tanımla.',
+    'Student level: BASIC. Explain in very plain language, with everyday analogies and short sentences. Avoid heavy terminology; define it immediately if you use it.',
   normal:
-    'Öğrenci seviyesi: ORTA. Denizcilik fakültesi öğrencisine uygun, dengeli teknik derinlikte anlat.',
+    'Student level: INTERMEDIATE. Explain at a balanced technical depth suited to a maritime academy student.',
   ileri:
-    'Öğrenci seviyesi: İLERİ. Zabit adayına uygun, kural/standart atıflı ve pratik gemi uygulamasına odaklı anlat.',
+    'Student level: ADVANCED. Explain at a level suited to an officer candidate, citing rules/standards and focusing on practical shipboard application.',
 };
 
 export async function askLessonTutor(
   context: LessonTutorContext,
   messages: AIMessage[],
-  language: string = 'tr',
+  language: string = 'en',
 ): Promise<string> {
   const langName = getLanguageDisplayName(language);
   const level = context.level ?? 'normal';
 
-  const system = `Sen denizcilik fakültesinde ders veren deneyimli bir eğitmensin (güverte ve makine dersleri). Şu anda öğrenciye "${context.topicTitle}" konusunu öğretiyorsun.
+  const system = `You are an experienced instructor at a maritime academy (deck and engine subjects). You are currently teaching the student the topic "${context.topicTitle}".
 
-GÖREVİN: Öğrencinin bu konuyu OKULDAN DAHA İYİ kavramasını sağlamak; teoriyi gemi pratiğine bağlamak.
+YOUR TASK: help the student grasp this topic BETTER THAN IN CLASS; connect the theory to shipboard practice.
 
-KURALLAR:
-- Yanıtlarını ÖNCELİKLE aşağıda verilen DERS İÇERİĞİNE ve bilinen denizcilik standartlarına (COLREG, SOLAS, STCW, IMO yayınları) dayandır.
-- Ders içeriğinde olmayan bir şey sorulursa ve emin değilsen UYDURMA; "bu ders içeriğinde yok" de ve doğru kaynağa/yayına yönlendir.
-- Sayı, kural numarası veya formül verirken doğru ol; emin değilsen belirt.
+RULES:
+- Base your answers PRIMARILY on the LESSON CONTENT given below and on established maritime standards (COLREG, SOLAS, STCW, IMO publications).
+- If you are asked something that is not in the lesson content and you are unsure, do NOT invent it; say "this is not in the lesson content" and point to the correct source/publication.
+- Be accurate when giving a number, rule number or formula; say so if you are unsure.
 - ${LEVEL_GUIDANCE[level]}
-- Kısa ve öğretici tut: gerektiğinde madde madde. Mümkünse "gemide bunun anlamı" şeklinde pratik bir bağ kur.
-- ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.
+- Keep it short and instructive: use bullet points where useful. Where possible, make a practical link in the form of "what this means on board".
+- MANDATORY: your ENTIRE answer must be in ${langName} (language code: ${language}).
 
-DERS İÇERİĞİ ("${context.topicTitle}"):
+LESSON CONTENT ("${context.topicTitle}"):
 ${context.lessonText}`;
 
   try {
@@ -517,6 +516,6 @@ ${context.lessonText}`;
   } catch (e) {
     if (e instanceof AIAccessError) return e.message;
     console.error('Lesson tutor AI error:', e);
-    return 'Şu anda eğitmen asistanına ulaşılamıyor. Lütfen biraz sonra tekrar deneyin. Bu arada ders anlatımını ve çözümlü örnekleri inceleyebilirsiniz.';
+    return 'The tutor assistant is unavailable right now. Please try again shortly. In the meantime you can review the lesson text and the worked examples.';
   }
 }

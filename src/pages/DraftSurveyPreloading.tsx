@@ -41,7 +41,7 @@ export default function DraftSurveyPreloading() {
     const { drafts, vesselParticulars, consumables } = inputs;
     
     if (!drafts.forward || !drafts.midship || !drafts.aft || !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Hata", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -81,7 +81,7 @@ export default function DraftSurveyPreloading() {
       stability
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Yükleme öncesi kontrol yapıldı" });
+    toast({ title: "Calculation Complete", description: "Pre-loading check completed" });
   };
 
   return (

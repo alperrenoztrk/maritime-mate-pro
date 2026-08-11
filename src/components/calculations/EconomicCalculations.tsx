@@ -84,7 +84,7 @@ export const EconomicCalculations = () => {
     setCalcSteps(prev => ({ ...prev, tce: [
       { step: 1, title: "Formül", formula: "TCE = (Brüt Navlun - Sefer Giderleri) / Sefer Günü", explanation: "Zaman Eşdeğer Kiralama (TCE), günlük kazancı hesaplar" },
       { step: 2, title: "Net navlun hesabı", formula: "Net Navlun = Brüt Navlun - Sefer Giderleri", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
-      { step: 3, title: "TCE hesabı", formula: "TCE = Net Navlun / Gün", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/gün` },
+      { step: 3, title: "TCE hesabı", formula: "TCE = Net Navlun / Gün", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
     ] }));
   };
 
@@ -176,10 +176,10 @@ export const EconomicCalculations = () => {
                      profitMargin > 0 ? 'Poor' : 'Loss'
     });
     setCalcSteps(prev => ({ ...prev, voyage: [
-      { step: 1, title: "Brüt gelir hesabı", formula: "Brüt Gelir = Kargo Miktarı × Navlun Oranı", substitution: `Brüt Gelir = ${quantity.toLocaleString()} × $${rate}`, result: `Brüt Gelir = $${grossRevenue.toLocaleString()}` },
+      { step: 1, title: "Brüt gelir hesabı", formula: "Brüt Gelir = Kargo Miktarı × Navlun Oranı", substitution: `Gross Revenue = ${quantity.toLocaleString()} × $${rate}`, result: `Gross Revenue = $${grossRevenue.toLocaleString()}` },
       { step: 2, title: "Toplam maliyet", formula: "Toplam Maliyet = Yakıt + Liman Masrafları", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
       { step: 3, title: "Net kâr", formula: "Net Kâr = Brüt Gelir - Toplam Maliyet", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
-      { step: 4, title: "Kâr marjı", formula: "Kâr Marjı = (Net Kâr / Brüt Gelir) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Kâr Marjı = %${profitMargin.toFixed(1)}` },
+      { step: 4, title: "Kâr marjı", formula: "Kâr Marjı = (Net Kâr / Brüt Gelir) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = ${profitMargin.toFixed(1)}%` },
     ] }));
   };
 

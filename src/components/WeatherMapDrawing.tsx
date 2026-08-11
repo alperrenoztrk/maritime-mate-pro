@@ -68,8 +68,8 @@ export const WeatherMapDrawing = () => {
       };
       setElements(prev => [...prev, newElement]);
       toast({
-        title: activeTool === "high" ? "Yüksek Basınç Eklendi" : "Alçak Basınç Eklendi",
-        description: activeTool === "high" ? "Antisiklon (H) sistemi yerleştirildi" : "Siklon (L) sistemi yerleştirildi",
+        title: activeTool === "high" ? "High Pressure Added" : "Low Pressure Added",
+        description: activeTool === "high" ? "Anticyclone (H) system placed" : "Cyclone (L) system placed",
       });
     } else {
       setIsDrawing(true);
@@ -113,7 +113,7 @@ export const WeatherMapDrawing = () => {
     };
 
     toast({
-      title: `${names[frontType] || "Çizgi"} Eklendi`,
+      title: `${names[frontType] || "Line"} Eklendi`,
       description: "Haritaya eklendi",
     });
   }, [isDrawing, currentPoints, activeTool, isobarPressure, toast]);
@@ -123,7 +123,7 @@ export const WeatherMapDrawing = () => {
     setSelectedId(null);
     toast({
       title: "Harita Temizlendi",
-      description: "Tüm çizimler silindi",
+      description: "All drawings deleted",
     });
   };
 
@@ -154,8 +154,8 @@ export const WeatherMapDrawing = () => {
     img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
     
     toast({
-      title: "Harita İndirildi",
-      description: "Hava haritası PNG olarak kaydedildi",
+      title: "Map Downloaded",
+      description: "The weather chart was saved as a PNG",
     });
   };
 
@@ -163,7 +163,7 @@ export const WeatherMapDrawing = () => {
     if (selectedId) {
       setElements(prev => prev.filter(el => el.id !== selectedId));
       setSelectedId(null);
-      toast({ title: "Silindi", description: "Seçili eleman silindi" });
+      toast({ title: "Silindi", description: "The selected element was deleted" });
     }
   };
 

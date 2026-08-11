@@ -116,14 +116,14 @@ export const DrydockStabilityCalc = () => {
       setDrydockData(prev => ({ ...prev, kritik_gm, kren_momenti }));
 
       if (mevcut_gm >= kritik_gm) {
-        toast.success(`Havuz operasyonu güvenli: GM = ${mevcut_gm.toFixed(3)}m`);
+        toast.success(`Drydocking operation is safe: GM = ${mevcut_gm.toFixed(3)}m`);
       } else {
         toast.error(`Kritik GM yetersiz: ${kritik_gm.toFixed(3)}m gerekli!`);
       }
 
     } catch (error) {
       console.error("Drydock calculation error:", error);
-      toast.error("Havuz hesaplaması sırasında bir hata oluştu!");
+      toast.error("An error occurred during the drydock calculation!");
     }
   };
 

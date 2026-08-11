@@ -98,7 +98,7 @@ const OAuthConsent = () => {
           </div>
           <CardTitle className="text-xl">
             {details?.client?.name
-              ? `${details.client.name} bağlantısını onaylayın`
+              ? `Approve the connection to ${details.client.name}`
               : "Bağlantıyı onaylayın"}
           </CardTitle>
           <CardDescription className="text-sm">

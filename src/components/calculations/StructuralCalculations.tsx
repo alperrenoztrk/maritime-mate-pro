@@ -179,7 +179,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
     if (!structuralData.L || !structuralData.displacement || !structuralData.sectionModulus) {
       toast({
         title: "Eksik Veri",
-        description: "Gerekli yapısal parametreleri girin.",
+        description: "Enter the required structural parameters.",
         variant: "destructive"
       });
       return;
@@ -288,7 +288,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
         formula: "Qtoplam = w x L + Sigma(Pi)",
         substitution: `Qtoplam = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
         result: `Qtoplam = ${totalLoad.toFixed(1)} ton`,
-        explanation: `Dağıtılmış ağırlık (${structuralWeight.toFixed(0)} ton) ve ${loadPoints.length} adet noktasal yük (${totalConcentrated.toFixed(0)} ton) toplanır.`
+        explanation: `The distributed weight (${structuralWeight.toFixed(0)} tonnes) and ${loadPoints.length} point loads (${totalConcentrated.toFixed(0)} tonnes) are summed.`
       },
       {
         step: 4,
@@ -336,7 +336,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
         formula: "tau = V / Aweb",
         substitution: `tau = (${maxShearForce.toFixed(0)} x 1000) / (${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)})`,
         result: `tau = ${maxShearStress.toFixed(1)} N/mm²`,
-        explanation: `Gövde (web) alanı: A = plaka kalınlığı x derinlik = ${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)} = ${webAreaVal.toFixed(0)} mm²`
+        explanation: `Web area: A = plate thickness x depth = ${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)} = ${webAreaVal.toFixed(0)} mm²`
       },
       {
         step: 10,
@@ -363,15 +363,15 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
         title: "Durum değerlendirmesi",
         formula: "SF >= 2.0 -> Güvenli | 1.5 <= SF < 2.0 -> Sınır | SF < 1.5 -> Güvensiz",
         result: `Durum: ${status === 'safe' ? 'GÜVENLİ' : status === 'marginal' ? 'SINIR DURUMDA' : 'GÜVENSİZ'}`,
-        explanation: `Kritik kesit AP'den ${criticalPoint.position.toFixed(1)} m mesafede. İzin verilen sehim = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, hesaplanan sehim = ${deflection.toFixed(1)} mm.`
+        explanation: `The critical section is ${criticalPoint.position.toFixed(1)} m from the AP. Permissible deflection = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, calculated deflection = ${deflection.toFixed(1)} mm.`
       }
     ];
 
     setCalcSteps(prev => ({ ...prev, "calculateStructural": steps }));
 
     toast({
-      title: "Yapısal Analiz Tamamlandı",
-      description: `Güvenlik Faktörü: ${safetyFactor.toFixed(2)}`,
+      title: "Structural Analysis Complete",
+      description: `Safety Factor: ${safetyFactor.toFixed(2)}`,
       variant: status === 'unsafe' ? "destructive" : "default"
     });
   };

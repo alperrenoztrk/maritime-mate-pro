@@ -64,11 +64,11 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
     const lonNum = parseCoordinate(lon, false);
 
     if (latNum == null || !Number.isFinite(latNum) || latNum < -90 || latNum > 90) {
-      toast.error("Geçersiz enlem değeri (-90 ile 90 arası olmalı)");
+      toast.error("Invalid latitude (must be between -90 and 90)");
       return;
     }
     if (lonNum == null || !Number.isFinite(lonNum) || lonNum < -180 || lonNum > 180) {
-      toast.error("Geçersiz boylam değeri (-180 ile 180 arası olmalı)");
+      toast.error("Invalid longitude (must be between -180 and 180)");
       return;
     }
 
@@ -83,7 +83,7 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
 
   const handleClear = () => {
     setSelectedLocation(null);
-    toast.success("Manuel konum temizlendi — GPS / IP kullanılacak");
+    toast.success("Manual location cleared — GPS / IP will be used");
     onOpenChange(false);
   };
 

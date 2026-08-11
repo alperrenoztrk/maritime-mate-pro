@@ -177,7 +177,7 @@ export default function MachineTopicQuizPage() {
             <div className="flex flex-wrap gap-2">
               {selectableCounts.map((c) => (
                 <Button key={c} variant={count === c ? "default" : "outline"} size="sm" onClick={() => { setCount(c); setSeed(Date.now()); }}>
-                  {c === maxCount ? `Tümü (${c})` : `${c} Soru`}
+                  {c === maxCount ? `All (${c})` : `${c} Soru`}
                 </Button>
               ))}
               <Button variant="ghost" size="sm" className="gap-1" onClick={() => setSeed(Date.now())}>

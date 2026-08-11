@@ -45,7 +45,7 @@ function LocationCard({ location, onSelect }: { location: LocationResult; onSele
               {location.population && (
                 <div className="flex items-center gap-1">
                   <Users className="h-3 w-3" />
-                  <span>{location.population.toLocaleString('tr-TR')}</span>
+                  <span>{location.population.toLocaleString('en-GB')}</span>
                 </div>
               )}
               
@@ -87,7 +87,7 @@ export default function LocationSelector() {
       locationLabel: `${location.name}, ${location.country}`,
     });
     
-    toast.success(`Konum ayarlandı: ${location.name}`);
+    toast.success(`Location set: ${location.name}`);
     
     // Seçim sonrası hedef sayfaya dön
     navigate(returnTo);
@@ -95,7 +95,7 @@ export default function LocationSelector() {
 
   const handleUseDeviceLocation = () => {
     setSelectedLocation(null);
-    toast.success("Cihaz konumu kullanılacak");
+    toast.success("The device location will be used");
     navigate(returnTo);
   };
 

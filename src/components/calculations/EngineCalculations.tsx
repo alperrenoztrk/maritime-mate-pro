@@ -354,7 +354,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       }
       
       if (noxCalc.rate > selectedNoxLimit) {
-        warnings.push(`NOx emisyonu MARPOL Tier ${data.requiredNoxTier} limitini aşıyor (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
+        warnings.push(`NOx emission exceeds the MARPOL Tier ${data.requiredNoxTier} limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
       }
       
       if (!ecaCompliance) {
@@ -414,10 +414,10 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       setResult(calculatedResult);
       setCalcSteps({
         fuel: [
-          { step: 1, title: "SFOC hesabı", formula: "SFOC interpolasyon ile hesaplanır (yük %'sine göre)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Yük: %${data.currentLoad})` },
+          { step: 1, title: "SFOC hesabı", formula: "SFOC interpolasyon ile hesaplanır (yük %'sine göre)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Load: ${data.currentLoad}%)` },
           { step: 2, title: "Güç çıkışı", formula: "P = MCR × Yük / 100", substitution: `P = ${data.mcrPower} × ${data.currentLoad} / 100`, result: `P = ${powerOutput.toFixed(0)} kW` },
           { step: 3, title: "Saatlik tüketim", formula: "FCsaat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/saat` },
-          { step: 4, title: "Günlük tüketim", formula: "FCgün = (FCsaat × Çalışma Saati) / 1000", substitution: `FCgün = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FCgün = ${dailyConsumption.toFixed(1)} ton/gün` },
+          { step: 4, title: "Günlük tüketim", formula: "FCgün = (FCsaat × Çalışma Saati) / 1000", substitution: `FCday = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FCday = ${dailyConsumption.toFixed(1)} t/day` },
         ],
         power: [
           { step: 1, title: "Fren gücü", formula: "BP = İndike Güç × Mekanik Verim / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
@@ -427,12 +427,12 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         ],
         emissions: [
           { step: 1, title: "NOx emisyonu", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
-          { step: 2, title: "SOx emisyonu", formula: "SOx = 2 × S% × FC", explanation: `Kükürt içeriği: %${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
-          { step: 3, title: "CO₂ emisyonu", formula: "CO₂ = FC × Emisyon Faktörü", explanation: `${data.fuelType} emisyon faktörü kullanıldı`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} ton/gün` },
+          { step: 2, title: "SOx emisyonu", formula: "SOx = 2 × S% × FC", explanation: `Sulphur content: ${data.fuelSulfurContent}%`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
+          { step: 3, title: "CO₂ emisyonu", formula: "CO₂ = FC × Emisyon Faktörü", explanation: `${data.fuelType} emission factor applied`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} t/day` },
         ],
         changeover: [
-          { step: 1, title: "Geçiş süresi", formula: "Süre = Ön Isıtma + (Boru Hacmi / Akış Oranı)", substitution: `Süre = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Süre = ${changeoverTime.toFixed(0)} dakika` },
-          { step: 2, title: "Atık yakıt", formula: "Atık = Boru Hacmi × 1.1 (%10 emniyet)", substitution: `Atık = ${data.pipelineVolume} × 1.1`, result: `Atık = ${fuelWasteVolume.toFixed(0)} L` },
+          { step: 1, title: "Geçiş süresi", formula: "Süre = Ön Isıtma + (Boru Hacmi / Akış Oranı)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} minutes` },
+          { step: 2, title: "Atık yakıt", formula: "Atık = Boru Hacmi × 1.1 (%10 emniyet)", substitution: `Waste = ${data.pipelineVolume} × 1.1`, result: `Waste = ${fuelWasteVolume.toFixed(0)} L` },
         ],
         cooling: [
           { step: 1, title: "Isı atım oranı", formula: "Q = Güç × 0.4 (tipik %40 ısı atımı)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
@@ -448,13 +448,13 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         ],
       });
       toast({
-        title: "Hesaplama Tamamlandı",
-        description: "Makine hesaplamaları MARPOL regülasyonlarına uygun olarak tamamlandı.",
+        title: "Calculation Complete",
+        description: "The engine calculations were completed in accordance with MARPOL regulations.",
       });
     } catch (error) {
       toast({
         title: "Hata",
-        description: "Hesaplama sırasında bir hata oluştu.",
+        description: "An error occurred during the calculation.",
         variant: "destructive",
       });
     }

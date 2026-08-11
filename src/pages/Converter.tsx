@@ -156,7 +156,7 @@ function ConverterSection({ cat }: { cat: typeof CATEGORIES[0] }) {
           </Select>
           <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-2.5 text-center">
             <span className="text-lg font-semibold text-foreground">
-              {result !== null ? result.toLocaleString("tr-TR", { maximumFractionDigits: 6 }) : "—"}
+              {result !== null ? result.toLocaleString("en-GB", { maximumFractionDigits: 6 }) : "—"}
             </span>
             <span className="ml-1.5 text-xs text-muted-foreground">
               {cat.units[toIdx].label}

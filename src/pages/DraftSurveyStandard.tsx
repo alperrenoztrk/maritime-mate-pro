@@ -35,7 +35,7 @@ export default function DraftSurveyStandard() {
     const { lengthBP, breadth, forwardDraft, midshipDraft, aftDraft, density, ballast, fuel, freshWater, stores } = inputs;
     
     if (!lengthBP || !breadth || !forwardDraft || !midshipDraft || !aftDraft) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Hata", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -66,7 +66,7 @@ export default function DraftSurveyStandard() {
       cargoWeight
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Draft survey sonuçları hesaplandı" });
+    toast({ title: "Calculation Complete", description: "Draft survey results calculated" });
   };
 
   return (

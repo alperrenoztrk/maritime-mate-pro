@@ -237,7 +237,7 @@ export const auxiliary: CourseTopic = {
         const production = (v.qAvail * (v.eta / 100) * 3600) / v.hfg;
         return [
           { label: "Su Üretimi", value: `${production.toFixed(0)} kg/saat` },
-          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} ton/gün` },
+          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} t/day` },
         ];
       },
     },

@@ -14,7 +14,6 @@
  */
 
 export const CORE_UI_LANGUAGE_CODES = [
-  "tr",
   "en",
   "es",
   "de",
@@ -59,7 +58,6 @@ const SHELL_SOURCE_TO_INDEX: Readonly<Record<string, number>> = {
 // Order: main sections, home, learn, tools, library, search, search in app, back.
 // These labels are deliberately concise so they remain legible at 200% text.
 export const SHELL_COPY_BY_LANGUAGE: Readonly<Record<CoreUiLanguageCode, readonly string[]>> = {
-  tr: ["Ana bölümler", "Ana Sayfa", "Öğren", "Araçlar", "Kütüphane", "Ara", "Uygulamada ara", "Geri"],
   en: ["Main sections", "Home", "Learn", "Tools", "Library", "Search", "Search in the app", "Back"],
   es: ["Secciones principales", "Inicio", "Aprender", "Herramientas", "Biblioteca", "Buscar", "Buscar en la aplicación", "Atrás"],
   de: ["Hauptbereiche", "Start", "Lernen", "Werkzeuge", "Bibliothek", "Suchen", "In der App suchen", "Zurück"],
@@ -201,7 +199,6 @@ export const getCoreUiTranslation = (
   languageCode: string,
 ): string | null => {
   if (!source || !languageCode) return null;
-  if (languageCode === "tr") return source;
 
   const shellIndex = SHELL_SOURCE_TO_INDEX[source];
   if (shellIndex !== undefined && isCoreUiLanguage(languageCode)) {

@@ -25,7 +25,7 @@ export function buildAutoSteps(
   inputs.forEach((input) => {
     const unit = input.unit ? ` ${input.unit}` : "";
     steps.push({
-      title: `Girdi doğrulama — ${input.label}`,
+      title: `Input validation — ${input.label}`,
       expression: `${input.key} = ${vals[input.key]}${unit}`,
       hint: input.help,
     });
@@ -50,7 +50,7 @@ export function buildAutoSteps(
 
   results.forEach((r) => {
     steps.push({
-      title: `Sonuç — ${r.label}`,
+      title: `Result — ${r.label}`,
       result: r.value,
       hint: /^(?:hata|error)$/i.test(r.label.trim())
         ? "Girdileri ve formülün geçerlilik koşullarını kontrol edin."

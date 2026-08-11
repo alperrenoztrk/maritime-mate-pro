@@ -7,6 +7,7 @@ import {
   isRouteTranslationReady,
   ROUTE_TRANSLATION_GATE_HARD_LIMIT_MS,
 } from "@/utils/routeTranslation";
+import { SOURCE_LANGUAGE } from "@/utils/pageTranslator";
 import { isAppPageImmersive } from "@/lib/appChrome";
 
 
@@ -79,10 +80,10 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
 
   // The route subtree is committed but kept invisible on its very first frame.
   // Translate that exact subtree, then reveal it and let the entrance animation
-  // run. Because this is a layout effect, authored Turkish copy can never be
-  // painted between the lazy route mount and the translation pass.
+  // run. Because this is a layout effect, the dictionary's source-language copy
+  // can never be painted between the lazy route mount and the translation pass.
   useLayoutEffect(() => {
-    if (currentLanguage === "tr" || translationReady || !rootRef.current) return;
+    if (currentLanguage === SOURCE_LANGUAGE || translationReady || !rootRef.current) return;
     void translateRouteRoot(rootRef.current, routeTranslationToken).catch((error) => {
       console.error("Route translation failed:", error);
     });

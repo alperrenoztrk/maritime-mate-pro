@@ -46,7 +46,7 @@ export default function DraftSurveyBunker() {
     if (!beforeBunkering.forward || !beforeBunkering.midship || !beforeBunkering.aft ||
         !afterBunkering.forward || !afterBunkering.midship || !afterBunkering.aft ||
         !vesselData.tpc || !fuelSpecs.density) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Hata", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -79,7 +79,7 @@ export default function DraftSurveyBunker() {
       fuelDensityCorrection: correctedDensity
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Bunker tonajı hesaplandı" });
+    toast({ title: "Calculation Complete", description: "Bunker tonnage calculated" });
   };
 
   return (

@@ -157,7 +157,7 @@ export default function WeatherForecast() {
                           <div>
                             <p className="font-medium text-foreground">{wmoToTr(day.weatherCode)}</p>
                             <p className="text-xs text-muted-foreground">
-                              {new Date(day.date).toLocaleDateString('tr-TR')}
+                              {new Date(day.date).toLocaleDateString('en-GB')}
                             </p>
                           </div>
                         </div>

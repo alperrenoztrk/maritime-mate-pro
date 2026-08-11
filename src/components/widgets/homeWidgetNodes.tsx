@@ -95,14 +95,14 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
 
   const nationalTime = useMemo(() => {
     try {
-      return now.toLocaleTimeString("tr-TR", {
+      return now.toLocaleTimeString("en-GB", {
         timeZone: data?.timezoneId,
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
       });
     } catch {
-      return now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false });
+      return now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false });
     }
   }, [now, data?.timezoneId]);
 
@@ -133,7 +133,7 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     effectiveAccuracy < 1000 ? `±${Math.round(effectiveAccuracy)} m` :
     `±${(effectiveAccuracy / 1000).toFixed(1)} km`;
   const fixedAt = effectiveTimestamp
-    ? new Date(effectiveTimestamp).toLocaleTimeString("tr-TR", {
+    ? new Date(effectiveTimestamp).toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
@@ -142,10 +142,10 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     : "—";
 
   const sunrise = data?.sunriseIso
-    ? new Date(data.sunriseIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
+    ? new Date(data.sunriseIso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })
     : "—";
   const sunset = data?.sunsetIso
-    ? new Date(data.sunsetIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
+    ? new Date(data.sunsetIso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })
     : "—";
   let sunProgress: number | null = null;
   if (data?.sunriseIso && data?.sunsetIso) {

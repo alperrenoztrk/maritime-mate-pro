@@ -71,19 +71,19 @@ const Auth = () => {
         } else {
           // Yönlendirmeyi yukarıdaki effect yapar: 2FA açıksa önce kod adımı
           // gösterilmeli, doğrudan navigate çağırmak o adımı atlardı.
-          toast.success("Giriş başarılı");
+          toast.success("Signed in");
         }
       } else {
         const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password, nextPath);
         if (error) {
           if (error.message.includes("already registered") || error.message.includes("User already")) {
-            toast.error("Bu e-posta zaten kayıtlı. Google ile giriş yapın veya \"Şifremi unuttum\" ile şifre belirleyin.");
+            toast.error("This email is already registered. Sign in with Google, or set a password via \"Forgot my password\".");
             setTab("signin");
           } else {
             toast.error(error.message);
           }
         } else {
-          toast.success("Kayıt başarılı! E-postanızı kontrol edin.");
+          toast.success("Registration successful! Check your email.");
         }
       }
     } finally {
@@ -96,7 +96,7 @@ const Auth = () => {
   const handleResetPassword = async () => {
     const parsedEmail = credentialsSchema.shape.email.safeParse(email);
     if (!parsedEmail.success) {
-      toast.error("Önce geçerli bir e-posta girin");
+      toast.error("Enter a valid email address first");
       return;
     }
     setBusy(true);
@@ -105,9 +105,9 @@ const Auth = () => {
         redirectTo: `${window.location.origin}/reset-password`,
       });
       if (error) {
-        toast.error(error.message || "Şifre belirleme e-postası gönderilemedi");
+        toast.error(error.message || "The password setup email could not be sent");
       } else {
-        toast.success("Şifre belirleme bağlantısı e-postanıza gönderildi.");
+        toast.success("A password setup link was sent to your email.");
       }
     } finally {
       setBusy(false);
@@ -119,7 +119,7 @@ const Auth = () => {
   const handleMagicLink = async () => {
     const parsedEmail = credentialsSchema.shape.email.safeParse(email);
     if (!parsedEmail.success) {
-      toast.error("Önce geçerli bir e-posta girin");
+      toast.error("Enter a valid email address first");
       return;
     }
     setBusy(true);
@@ -129,14 +129,14 @@ const Auth = () => {
         const rate = /rate limit|too many|429/i.test(error.message);
         toast.error(
           rate
-            ? "Çok fazla istek gönderildi. Lütfen birkaç dakika sonra tekrar deneyin."
-            : error.message || "Giriş bağlantısı gönderilemedi",
+            ? "Too many requests. Please try again in a few minutes."
+            : error.message || "The sign-in link could not be sent",
         );
         return;
       }
       setMagicSent(true);
       setMagicCooldown(60);
-      toast.success("Giriş bağlantısı e-postanıza gönderildi.");
+      toast.success("A sign-in link was sent to your email.");
     } finally {
       setBusy(false);
     }
@@ -152,10 +152,10 @@ const Auth = () => {
     try {
       const { error } = await signInWithGoogle(nextPath);
       if (error) {
-        toast.error(error.message || "Google ile giriş başarısız");
+        toast.error(error.message || "Google sign-in failed");
       }
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
+      toast.error(err instanceof Error ? err.message : "Google sign-in failed");
     } finally {
       setBusy(false);
     }
@@ -221,7 +221,7 @@ const Auth = () => {
                     >
                       <Sparkles className="h-4 w-4" />
                       {magicCooldown > 0
-                        ? `Tekrar gönder (${magicCooldown} sn)`
+                        ? `Resend (${magicCooldown} s)`
                         : "Şifresiz giriş bağlantısı gönder"}
                     </Button>
                     {magicSent && (

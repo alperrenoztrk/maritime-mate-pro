@@ -56,7 +56,7 @@ export function useWeatherForecast(lat?: number, lon?: number) {
       forecastUrl.searchParams.set("forecast_days", "7");
 
       const res = await fetch(forecastUrl.toString());
-      if (!res.ok) throw new Error(`Hava tahmini alınamadı (${res.status})`);
+      if (!res.ok) throw new Error(`Could not fetch the weather forecast (${res.status})`);
       
       const json = await res.json();
       const daily = json.daily || {};
@@ -125,7 +125,7 @@ export function useHourlyForecast(lat?: number, lon?: number, targetDate?: strin
       forecastUrl.searchParams.set("end_date", date);
 
       const res = await fetch(forecastUrl.toString());
-      if (!res.ok) throw new Error(`Saatlik hava tahmini alınamadı (${res.status})`);
+      if (!res.ok) throw new Error(`Could not fetch the hourly forecast (${res.status})`);
       
       const json = await res.json();
       const hourly = json.hourly || {};

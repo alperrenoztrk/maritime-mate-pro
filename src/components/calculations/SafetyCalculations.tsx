@@ -472,37 +472,37 @@ export const SafetyCalculations = () => {
       setResult(calculatedResult);
       setCalcSteps({
         anchoring: [
-          { step: 1, title: "Rüzgar kuvveti", formula: "Früzgar = 0.5 × ρhava × Cd × A × V²", result: `Früzgar = ${anchoring.windForce.toFixed(2)} ton` },
-          { step: 2, title: "Akıntı kuvveti", formula: "Fakıntı = 0.5 × ρsu × Cd × A × V²", result: `Fakıntı = ${anchoring.currentForce.toFixed(2)} ton` },
+          { step: 1, title: "Rüzgar kuvveti", formula: "Früzgar = 0.5 × ρhava × Cd × A × V²", result: `Fwind = ${anchoring.windForce.toFixed(2)} tonnes` },
+          { step: 2, title: "Akıntı kuvveti", formula: "Fakıntı = 0.5 × ρsu × Cd × A × V²", result: `Fcurrent = ${anchoring.currentForce.toFixed(2)} tonnes` },
           { step: 3, title: "Toplam çevresel kuvvet", formula: "Ftoplam = (Früzgar + Fakıntı) × Dalga faktörü", result: `Ftoplam = ${anchoring.totalForce.toFixed(2)} ton` },
-          { step: 4, title: "Zincir uzunluğu", formula: "L = Kapsam × Efektif Derinlik", result: `Önerilen = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
-          { step: 5, title: "Tutma gücü", formula: "HP = (Çapa Ağırlığı / 1000) × Zemin Faktörü", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} ton, Emniyet Faktörü = ${anchoring.safetyFactor.toFixed(2)}` },
+          { step: 4, title: "Zincir uzunluğu", formula: "L = Kapsam × Efektif Derinlik", result: `Recommended = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
+          { step: 5, title: "Tutma gücü", formula: "HP = (Çapa Ağırlığı / 1000) × Zemin Faktörü", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} tonnes, Safety Factor = ${anchoring.safetyFactor.toFixed(2)}` },
         ],
         mooring: [
-          { step: 1, title: "Hat başına yük", formula: "Yük = Toplam Kuvvet / Hat Sayısı", result: `Yük = ${mooring.mooringLineLoad.toFixed(2)} ton/hat` },
+          { step: 1, title: "Hat başına yük", formula: "Yük = Toplam Kuvvet / Hat Sayısı", result: `Load = ${mooring.mooringLineLoad.toFixed(2)} t/line` },
           { step: 2, title: "Emniyet faktörü", formula: "SF = Kopma Yükü / (Hat Yükü × Hat Sayısı)", result: `SF = ${mooring.mooringLineSafety.toFixed(2)}` },
         ],
         fireFighting: [
           { step: 1, title: "Yangın suyu debisi", formula: "Q = Pompa Kapasitesi × Verimlilik", result: `Q = ${fireFighting.fireWaterFlow.toFixed(1)} m³/saat` },
-          { step: 2, title: "Hortum erişimi", formula: "Erişim = √(2 × P × g) × faktör", result: `Erişim = ${fireFighting.fireReach.toFixed(1)} m` },
+          { step: 2, title: "Hortum erişimi", formula: "Erişim = √(2 × P × g) × faktör", result: `Reach = ${fireFighting.fireReach.toFixed(1)} m` },
         ],
         lsa: [
-          { step: 1, title: "Toplam can kurtarma kapasitesi", formula: "Kapasite = (Bot Sayısı × Kapasite) + (Sal Sayısı × Kapasite)", result: `Toplam = ${lsa.totalLifeSavingCapacity} kişi (Gemide: ${data.totalPersonsOnBoard})` },
+          { step: 1, title: "Toplam can kurtarma kapasitesi", formula: "Kapasite = (Bot Sayısı × Kapasite) + (Sal Sayısı × Kapasite)", result: `Total = ${lsa.totalLifeSavingCapacity} persons (On board: ${data.totalPersonsOnBoard})` },
           { step: 2, title: "SOLAS uygunluğu", formula: "Kapasite ≥ Gemideki Kişi Sayısı", result: lsa.lsaCompliance ? "UYGUN" : "UYGUN DEĞİL" },
         ],
         freeboard: [
-          { step: 1, title: "Fribord hesabı", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Gerçek = ${freeboard.actualFreeboard.toFixed(2)} m` },
+          { step: 1, title: "Fribord hesabı", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Actual = ${freeboard.actualFreeboard.toFixed(2)} m` },
           { step: 2, title: "Uygunluk", formula: "Gerçek Fribord ≥ Minimum Fribord", result: freeboard.freeboardCompliance ? "UYGUN" : "UYGUN DEĞİL" },
         ],
       });
       toast({
-        title: "Hesaplama Tamamlandı",
-        description: "Güverte ve güvenlik hesaplamaları başarıyla tamamlandı.",
+        title: "Calculation Complete",
+        description: "The deck and safety calculations completed successfully.",
       });
     } catch (error) {
       toast({
         title: "Hata",
-        description: "Hesaplama sırasında bir hata oluştu.",
+        description: "An error occurred during the calculation.",
         variant: "destructive",
       });
     }

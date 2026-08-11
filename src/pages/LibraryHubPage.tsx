@@ -37,8 +37,8 @@ export default function LibraryHubPage() {
   return (
     <LibraryPageShell title="Kitaplık" icon={BookA} maxWidth="max-w-4xl">
       <SEO
-        title="Kitaplık — Mariner's Book"
-        description="Operasyon, gemi sistemleri, personel ve denizcilik referanslarına tek yerden ulaşın."
+        title="Library — Mariner's Book"
+        description="Reach operations, ship systems, crew and maritime references from one place."
         path="/library"
       />
 

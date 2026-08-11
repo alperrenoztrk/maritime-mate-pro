@@ -199,7 +199,7 @@ const MaritimeNews = () => {
   };
 
   const today = new Date();
-  const dateline = today.toLocaleDateString(currentLanguage || "tr", {
+  const dateline = today.toLocaleDateString(currentLanguage || "en-GB", {
     weekday: "long",
     day: "2-digit",
     month: "long",
@@ -211,12 +211,12 @@ const MaritimeNews = () => {
     Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 86_400_000),
   );
   const volume = toRoman(today.getFullYear() - FOUNDED_YEAR + 1);
-  const issueNo = ((today.getFullYear() - FOUNDED_YEAR) * 365 + dayOfYear).toLocaleString("tr-TR");
+  const issueNo = ((today.getFullYear() - FOUNDED_YEAR) * 365 + dayOfYear).toLocaleString("en-GB");
   const coverage = query.data?.locale
-    ? `${query.data.locale.countryName}${query.data.locale.mode === "regional-and-global" ? " ve Küresel" : ""} Kaynakları`
+    ? `${query.data.locale.countryName}${query.data.locale.mode === "regional-and-global" ? " and Global" : ""} Sources`
     : "Bölgesel Kaynaklar";
   const pressTime = query.data?.fetchedAt
-    ? new Date(query.data.fetchedAt).toLocaleTimeString(currentLanguage || "tr", {
+    ? new Date(query.data.fetchedAt).toLocaleTimeString(currentLanguage || "en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
@@ -249,14 +249,14 @@ const MaritimeNews = () => {
       onTouchEnd={handleTouchEnd}
     >
       <Helmet>
-        <title>Mariner's Book — Denizcilik Haberleri</title>
+        <title>Mariner's Book — Maritime News</title>
         <meta
           name="description"
-          content="Denizcilik dünyasından güncel haberler; başlıklar, kaynaklar ve gazete formatında uygulama içi okuma."
+          content="Current news from the maritime world; headlines, sources and in-app reading in a newspaper format."
         />
         <link rel="canonical" href="https://nauticalleap.com/maritime-news" />
-        <meta property="og:title" content="Mariner's Book — Denizcilik Haberleri" />
-        <meta property="og:description" content="Denizcilik dünyasından güncel haberler; kaynaklara göre derlenmiş öne çıkan başlıklar." />
+        <meta property="og:title" content="Mariner's Book — Maritime News" />
+        <meta property="og:description" content="Current news from the maritime world; highlighted headlines collated by source." />
         <meta property="og:url" content="https://nauticalleap.com/maritime-news" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

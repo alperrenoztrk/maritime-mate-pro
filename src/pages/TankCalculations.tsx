@@ -48,8 +48,8 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
     });
     
     toast({
-      title: "Başarılı!",
-      description: "Sounding Table hesaplamaları tamamlandı!"
+      title: "Success!",
+      description: "The sounding table calculations are complete!"
     });
   };
 

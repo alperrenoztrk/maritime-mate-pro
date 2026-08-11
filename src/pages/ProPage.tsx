@@ -82,7 +82,7 @@ const ProPage = () => {
           const loaded = await fetchProOffers();
           if (mounted) setOffers(loaded);
         } catch {
-          if (mounted) toast.error("Fiyat bilgileri yüklenemedi. Lütfen tekrar deneyin.");
+          if (mounted) toast.error("Pricing information could not be loaded. Please try again.");
         }
       }
     })();
@@ -106,9 +106,9 @@ const ProPage = () => {
     try {
       const newTier = await purchase(plan);
       if (newTier === "pro" || newTier === "lifetime") {
-        toast.success("Pro erişiminiz açıldı. İyi seyirler! ⚓");
+        toast.success("Your Pro access is active. Fair winds! ⚓");
       } else {
-        toast.error("Satın alma doğrulanamadı. Lütfen 'Satın almaları geri yükle'yi deneyin.");
+        toast.error("The purchase could not be verified. Please try 'Restore purchases'.");
       }
     } catch (e) {
       if (isUserCanceled(e)) {
@@ -119,7 +119,7 @@ const ProPage = () => {
         // Sunucu yapılandırma hatası: "tekrar deneyin" demek yanıltıcı olur.
         toast.error(e.message, { duration: 10_000 });
       } else {
-        toast.error("Satın alma tamamlanamadı. Lütfen tekrar deneyin.");
+        toast.error("The purchase could not be completed. Please try again.");
       }
     } finally {
       setBusyPlan(null);
@@ -135,12 +135,12 @@ const ProPage = () => {
     try {
       const newTier = await restore();
       if (newTier === "pro" || newTier === "lifetime") {
-        toast.success("Satın almalarınız geri yüklendi.");
+        toast.success("Your purchases were restored.");
       } else {
-        toast.info("Bu Google hesabında geri yüklenecek satın alma bulunamadı.");
+        toast.info("No purchases to restore were found on this Google account.");
       }
     } catch {
-      toast.error("Geri yükleme başarısız oldu. İnternet bağlantınızı kontrol edin.");
+      toast.error("Restore failed. Check your internet connection.");
     } finally {
       setRestoring(false);
     }
@@ -180,7 +180,7 @@ const ProPage = () => {
             <Card className="border-amber-400/40 bg-amber-500/10">
               <CardContent className="flex items-center gap-3 py-3 text-sm">
                 <Lock className="w-4 h-4 shrink-0 text-amber-400" />
-                <span data-translatable>{`${gatedFeature} Pro paketine dahildir. Erişim için bir plan seçin.`}</span>
+                <span data-translatable>{`${gatedFeature} is part of the Pro plan. Choose a plan to get access.`}</span>
               </CardContent>
             </Card>
           )}

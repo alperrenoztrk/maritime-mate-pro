@@ -36,7 +36,7 @@ export const engineRoomOps: CourseTopic = {
         if (v.days <= 0) return [{ label: "Hata", value: "Süre pozitif olmalı" }];
         const perDay = v.total / v.days;
         return [
-          { label: "Günlük Tüketim", value: `${perDay.toFixed(2)} ton/gün` },
+          { label: "Günlük Tüketim", value: `${perDay.toFixed(2)} t/day` },
           { label: "Saatlik Tüketim", value: `${(perDay / 24).toFixed(3)} ton/saat` },
         ];
       },
@@ -59,7 +59,7 @@ export const engineRoomOps: CourseTopic = {
       calculate: (v) => {
         const days = v.stock / v.rate;
         return [
-          { label: "Tahmini Menzil", value: `${days.toFixed(1)} gün` },
+          { label: "Tahmini Menzil", value: `${days.toFixed(1)} days` },
           { label: "Saat", value: `${(days * 24).toFixed(0)} saat` },
         ];
       },
@@ -86,7 +86,7 @@ export const engineRoomOps: CourseTopic = {
         const dailyRate = consumption / (v.hours / 24);
         return [
           { label: "Toplam Silindir Yağı", value: `${(consumption * 1000).toFixed(0)} kg` },
-          { label: "Günlük Tüketim", value: `${(dailyRate * 1000).toFixed(1)} kg/gün` },
+          { label: "Günlük Tüketim", value: `${(dailyRate * 1000).toFixed(1)} kg/day` },
         ];
       },
     },

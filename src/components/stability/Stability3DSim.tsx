@@ -241,8 +241,8 @@ export const Stability3DSim = () => {
             >
               <AlertTriangle className="h-3.5 w-3.5" />
               {nearCapsize
-                ? `TEHLİKE: ${absHeel.toFixed(0)}° meyil — alabora riski!`
-                : `Güverte kenarı suya girdi (φ_deck ${deckImmAngle.toFixed(0)}°)`}
+                ? `DANGER: ${absHeel.toFixed(0)}° of heel — risk of capsizing!`
+                : `The deck edge is immersed (φ_deck ${deckImmAngle.toFixed(0)}°)`}
             </div>
           )}
         </div>

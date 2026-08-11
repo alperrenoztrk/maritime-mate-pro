@@ -160,6 +160,10 @@ export default defineConfig(({ mode }) => ({
         name: "Mariner's Book",
         short_name: "Mariner's Book",
         description: "Professional tools for all mariners — calculators, lessons and references that work offline.",
+        // The app ships English-only; declaring it here keeps the installed PWA
+        // title and shortcuts consistent with index.html's `lang`.
+        lang: "en",
+        dir: "ltr",
         // Must match index.html theme-color and capacitor.config.ts StatusBar —
         // all three describe the same surface (top of the shell gradient).
         theme_color: "#111318",

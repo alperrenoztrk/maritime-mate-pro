@@ -8,6 +8,30 @@ maritime-aware AI + glossary and shipped as per-language JSON under
 dictionaries first — an instant, network-free, offline-capable hit — and only
 falls back to the live translator for anything not covered (dynamic strings).
 
+## Turkish is a dictionary key, not an interface language
+
+Turkish is **not** offered in the language picker and the app ships
+English-first (`DEFAULT_LANGUAGE = 'en'`). `SOURCE_LANGUAGE = 'tr'` survives
+only as the key language of the shipped packs above — it is an internal
+identifier for the content corpus in `src/data/*.ts`, never a user choice.
+
+Interface and notification copy is therefore **authored in English**, not in
+the source language:
+
+- a toast is portalled outside the translated route subtree and can expire
+  before a live translation lands, so it has to read correctly with no lookup;
+- an interpolated template literal can never be a dictionary key, so it would
+  otherwise render in the source language forever;
+- `<head>` copy (`SEO`, `Helmet`) is never observed by the DOM translator,
+  which watches `document.body` only.
+
+When a source string is re-authored this way its old key stops matching and
+the other 23 languages lose that string. `npm run i18n:rekey` repairs that
+mechanically and offline from `scripts/i18n/source-rewrites.json` by copying
+the existing translation onto the new key; it is part of `i18n:all`. **Add the
+old→new pair to that file whenever you re-author a source string**, or the
+string will fall back to English in every other language.
+
 ## Workflow
 
 ```bash
@@ -20,14 +44,17 @@ LOVABLE_API_KEY=xxxx npm run i18n:pretranslate -- --lang=en,de,es     # several
 LOVABLE_API_KEY=xxxx npm run i18n:pretranslate -- --lang=all          # every target
 LOVABLE_API_KEY=xxxx npm run i18n:pretranslate -- --lang=en --limit=500  # cap (cost control)
 
-# 3. Report coverage
+# 3. Re-key the packs for interface strings re-authored in English
+npm run i18n:rekey            # add --dry-run to preview
+
+# 4. Report coverage
 npm run i18n:check            # or: npm run i18n:check -- --strict
 
-# 4. Apply the contextual correction layer to the shipped dictionaries
+# 5. Apply the contextual correction layer to the shipped dictionaries
 #    (run after changing the maritime glossary or contextual-corrections.mjs)
 npm run i18n:fix
 
-# 5. Audit the terminology of the shipped dictionaries
+# 6. Audit the terminology of the shipped dictionaries
 npm run i18n:audit-terms                                  # report
 npm run i18n:audit-terms -- --strict --max-errors=135     # guard (part of i18n:verify)
 ```

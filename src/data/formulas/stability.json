@@ -1,16 +1,16 @@
 {
   "grain": {
-    "title": "Tahıl Stabilitesi",
+    "title": "Grain Stability",
     "formula": "GHM = Δ · GM · tanφ; θ = 57.3 × GHM / (Δ × GM)",
-    "source": "SOLAS 1974, Bölüm VI; International Grain Code",
+    "source": "SOLAS 1974, Chapter VI; International Grain Code",
     "edition": "2016 Consolidated Edition",
     "referenceYear": "2016",
     "lastUpdated": "2024-09-15",
     "sourceUrl": "https://www.imo.org/en/OurWork/Safety/Pages/GrainSafety.aspx"
   },
   "gz-curve": {
-    "title": "GZ Eğrisi",
-    "formula": "GZ(φ) = KN(φ) − KG · sinφ; küçük açılar için GZ ≈ GM · sinφ",
+    "title": "GZ Curve",
+    "formula": "GZ(φ) = KN(φ) − KG · sinφ; for small angles GZ ≈ GM · sinφ",
     "source": "IMO Intact Stability Code",
     "edition": "MSC.267(85)",
     "referenceYear": "2008",
@@ -37,7 +37,7 @@
   },
   "imo-criteria": {
     "title": "IMO Stability Criteria",
-    "formula": "Alan(0–30°) ≥ 0.055 m·rad; Alan(0–40°) ≥ 0.090 m·rad; Max GZ ≥ 0.20 m",
+    "formula": "Area(0–30°) ≥ 0.055 m·rad; Area(0–40°) ≥ 0.090 m·rad; Max GZ ≥ 0.20 m",
     "source": "IMO Intact Stability Code",
     "edition": "MSC.267(85)",
     "referenceYear": "2008",
@@ -46,8 +46,8 @@
   },
   "shear-bending": {
     "title": "Shear Force & Bending Moment",
-    "formula": "ΣW = 0, ΣM = 0 ve kesit boyunca kümülatif yük yaklaşımı",
-    "source": "Gemi Yapı Mukavemeti Klasik Kaynaklar",
+    "formula": "ΣW = 0, ΣM = 0 and a cumulative load approach along the section",
+    "source": "Classic References on Ship Structural Strength",
     "edition": "Genel referans",
     "referenceYear": "Genel referans",
     "lastUpdated": "2024-09-15",

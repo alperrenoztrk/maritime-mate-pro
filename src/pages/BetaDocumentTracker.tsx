@@ -98,7 +98,7 @@ function formatDate(value: string | null): string {
   if (!value) return "Okunamadı";
   const [year, month, day] = value.split("-").map(Number);
   if (!year || !month || !day) return "Okunamadı";
-  return new Intl.DateTimeFormat("tr-TR", {
+  return new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -144,7 +144,7 @@ export default function BetaDocumentTracker() {
     try {
       setDocuments(sortByExpiry(await fetchDocuments(user.id)));
     } catch {
-      toast.error("Belge arşivi yüklenemedi");
+      toast.error("The document archive could not be loaded");
     } finally {
       setLoading(false);
     }
@@ -182,7 +182,7 @@ export default function BetaDocumentTracker() {
     const selected = files.slice(0, MAX_DOCUMENT_FILES);
     if (!selected.length) return;
     if (files.length > MAX_DOCUMENT_FILES) {
-      toast.warning(`Bir seferde en fazla ${MAX_DOCUMENT_FILES} fotoğraf işlenir.`);
+      toast.warning(`At most ${MAX_DOCUMENT_FILES} photos are processed at a time.`);
     }
 
     const pending = selected.map((file) => ({
@@ -209,7 +209,7 @@ export default function BetaDocumentTracker() {
     }
 
     setProcessing(false);
-    if (successCount) toast.success(`${successCount} belge analiz edilip arşive eklendi`);
+    if (successCount) toast.success(`${successCount} documents analysed and added to the archive`);
   };
 
   const handleInput = (fileList: FileList | null) => {
@@ -218,7 +218,7 @@ export default function BetaDocumentTracker() {
   };
 
   const handleDelete = async (document: MaritimeDocumentRecord) => {
-    if (!window.confirm(`“${document.title}” belgesini ve fotoğrafını kalıcı olarak silmek istiyor musunuz?`)) {
+    if (!window.confirm(`Permanently delete the document “${document.title}” and its photo?`)) {
       return;
     }
     try {
@@ -239,7 +239,7 @@ export default function BetaDocumentTracker() {
       else window.location.assign(url);
     } catch {
       popup?.close();
-      toast.error("Belge fotoğrafı açılamadı");
+      toast.error("The document photo could not be opened");
     }
   };
 
@@ -247,8 +247,8 @@ export default function BetaDocumentTracker() {
     if (!("Notification" in window)) return;
     const permission = await Notification.requestPermission();
     setNotificationPermission(permission);
-    if (permission === "granted") toast.success("Belge hatırlatma bildirimleri açıldı");
-    if (permission === "denied") toast.error("Bildirim izni reddedildi. Cihaz ayarlarından açabilirsiniz.");
+    if (permission === "granted") toast.success("Document reminder notifications enabled");
+    if (permission === "denied") toast.error("Notification permission was denied. You can enable it in your device settings.");
   };
 
   if (authLoading) {

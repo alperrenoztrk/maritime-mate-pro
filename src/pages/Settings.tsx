@@ -43,12 +43,12 @@ const Settings = () => {
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
-    toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
+    toast.success(`Language changed: ${getLanguageName(value)}`);
   };
 
   const handleSignOut = async () => {
     await signOut();
-    toast.success("Çıkış yapıldı");
+    toast.success("Signed out");
     // Settings is behind the login wall; leaving the user here would bounce
     // them straight into the auth screen.
     navigate("/", { replace: true });
@@ -64,11 +64,11 @@ const Settings = () => {
     try {
       const { error } = await supabase.functions.invoke("delete-account", { body: {} });
       if (error) throw error;
-      toast.success("Hesabınız ve tüm verileriniz silindi");
+      toast.success("Your account and all your data were deleted");
       await signOut();
       navigate("/", { replace: true });
     } catch {
-      toast.error("Hesap silinemedi. Lütfen tekrar deneyin veya bize yazın.");
+      toast.error("The account could not be deleted. Please try again or contact us.");
       setDeleting(false);
       setConfirmDelete(false);
     }
@@ -104,7 +104,7 @@ const Settings = () => {
 
   const handleFontSizeChange = (value: string) => {
     setFontSize(value as FontSizeKey);
-    toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
+    toast.success(`Text size: ${fontSizeLabels[value as FontSizeKey]}`);
   };
 
   // Reklam onayı (UMP): Google, onay formu gösterilen bölgelerde kullanıcının
@@ -129,7 +129,7 @@ const Settings = () => {
 
   const handlePrivacyOptions = async () => {
     const opened = await openPrivacyOptionsForm();
-    if (!opened) toast.error("Reklam tercihleri şu anda açılamadı");
+    if (!opened) toast.error("Ad preferences could not be opened right now");
   };
 
   // Only reachable for the frame between signing out and the redirect landing.

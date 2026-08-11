@@ -169,7 +169,7 @@ export const environment: CourseTopic = {
         { key: "p", label: "Güç (P)", unit: "kW", placeholder: "8000" },
         { key: "sfoc", label: "SFOC", unit: "g/kWh", placeholder: "180" },
       ],
-      calculate: (v) => [{ label: "FOC", value: `${((v.p * v.sfoc * 24) / 1e6).toFixed(2)} ton/gün` }],
+      calculate: (v) => [{ label: "FOC", value: `${((v.p * v.sfoc * 24) / 1e6).toFixed(2)} t/day` }],
     },
     {
       id: "shaft-energy",

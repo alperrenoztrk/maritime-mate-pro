@@ -587,7 +587,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const production = (v.qAvail * (v.eta / 100) * 3600) / v.hfg;
         return [
           { label: "Su Üretimi", value: `${production.toFixed(0)} kg/saat` },
-          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} ton/gün` },
+          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} t/day` },
         ];
       },
     },
@@ -839,7 +839,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const total = daily * v.days;
         const withMargin = total * (1 + v.margin / 100);
         return [
-          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} ton/gün` },
+          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} t/day` },
           { label: "Toplam İhtiyaç", value: `${total.toFixed(1)} ton` },
           { label: "Güvenlik Payı Dahil", value: `${withMargin.toFixed(1)} ton` },
         ];
@@ -918,7 +918,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const rt = Math.exp(-lambda * v.t) * 100;
         return [
           { label: "Arıza Oranı (λ)", value: `${(lambda * 1e6).toFixed(1)} × 10⁻⁶ /saat` },
-          { label: `R(${v.t}) Güvenilirlik`, value: `${rt.toFixed(2)}%` },
+          { label: `R(${v.t}) Reliability`, value: `${rt.toFixed(2)}%` },
         ];
       },
     },
@@ -978,7 +978,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const fc2 = v.fc1 * Math.pow(v.v2 / v.v1, 3);
         const saving = ((v.fc1 - fc2) / v.fc1) * 100;
         return [
-          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} ton/gün` },
+          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} t/day` },
           { label: "Tasarruf", value: `${saving.toFixed(1)}%` },
         ];
       },
@@ -1212,7 +1212,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [
           { label: "Vardiya Sayısı/Gün", value: `${watchesPerDay.toFixed(0)}` },
           { label: "Vardiya Başına Kişi", value: `${crewPerWatch.toFixed(1)}` },
-          { label: "Kişi Başı Görev Yükü", value: `${taskLoad.toFixed(1)} görev/kişi` },
+          { label: "Kişi Başı Görev Yükü", value: `${taskLoad.toFixed(1)} tasks/person` },
           { label: "Etkinlik Skoru", value: `${effectiveness.toFixed(0)}%` },
         ];
       },
@@ -1385,7 +1385,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const days = v.stock / v.rate;
         return [
-          { label: "Tahmini Menzil", value: `${days.toFixed(1)} gün` },
+          { label: "Tahmini Menzil", value: `${days.toFixed(1)} days` },
           { label: "Saat", value: `${(days * 24).toFixed(0)} saat` },
         ];
       },
@@ -1423,7 +1423,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const dailyRate = consumption / (v.hours / 24);
         return [
           { label: "Toplam Silindir Yağı", value: `${(consumption * 1000).toFixed(0)} kg` },
-          { label: "Günlük Tüketim", value: `${(dailyRate * 1000).toFixed(1)} kg/gün` },
+          { label: "Günlük Tüketim", value: `${(dailyRate * 1000).toFixed(1)} kg/day` },
         ];
       },
     },

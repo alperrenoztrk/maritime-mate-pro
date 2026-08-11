@@ -61,9 +61,8 @@ const IS_HARVEST_FRAME =
 const DEFAULT_LANGUAGE = 'en';
 const TRANSLATION_PENDING_ATTR = 'data-mt-translation-pending';
 
-// Supported languages - 25 languages (sorted by international alphabetical order / English name)
+// Supported languages - 24 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
-  { language: 'tr', name: 'Turkish', displayName: 'Türkçe' },
   { language: 'en', name: 'English', displayName: 'English' },
   { language: 'es', name: 'Spanish', displayName: 'Español' },
   { language: 'de', name: 'German', displayName: 'Deutsch' },
@@ -102,13 +101,20 @@ interface RouteTranslationTask {
   promise: Promise<void>;
 }
 
+// Turkish is no longer an interface language: it survives only as the internal
+// key of the shipped dictionaries (see SOURCE_LANGUAGE). Installs that still
+// carry the retired `tr` preference are migrated to English on read, and the
+// stale value is rewritten so the migration does not have to run again.
 const getSavedLanguage = (): string => {
   if (IS_HARVEST_FRAME) return SOURCE_LANGUAGE;
   try {
-    const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
-    return BASE_SUPPORTED_LANGUAGES.some((lang) => lang.language === savedLanguage)
-      ? savedLanguage
-      : DEFAULT_LANGUAGE;
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (!savedLanguage) return DEFAULT_LANGUAGE;
+    if (BASE_SUPPORTED_LANGUAGES.some((lang) => lang.language === savedLanguage)) {
+      return savedLanguage;
+    }
+    localStorage.setItem('preferredLanguage', DEFAULT_LANGUAGE);
+    return DEFAULT_LANGUAGE;
   } catch {
     return DEFAULT_LANGUAGE;
   }
@@ -377,8 +383,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       : null;
     let parts: string[] | null = null;
     try {
+      // `sl=auto` rather than the dictionary's SOURCE_LANGUAGE: interface and
+      // notification copy is authored in English while the shipped content
+      // corpus is still keyed in the source language, so the live path sees
+      // both. Pinning the source language mistranslated whichever half did not
+      // match it; detection handles the mixture.
       const response = await fetch(
-        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`,
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`,
         { signal: controller?.signal },
       );
       if (!response.ok) throw new Error(`translation HTTP ${response.status}`);
@@ -812,7 +823,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         for (const src of harvested) recordSeen(src);
         markHarvestedFor(languageCode, HARVEST_VERSION);
       } catch (error) {
-        console.warn('Route harvest sırasında hata:', error);
+        console.warn('Route harvest failed:', error);
       }
     }
 
@@ -891,7 +902,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     try {
       await runBulkTranslation(languageCode);
     } catch (error) {
-      console.error('Toplu çeviri sırasında hata:', error);
+      console.error('Bulk translation failed:', error);
     }
 
     localStorage.setItem('preferredLanguage', languageCode);
@@ -901,11 +912,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     window.setTimeout(() => {
       setIsChangingLanguage(false);
       setChangePhase('idle');
-      const titleTr = 'Dil Değiştirildi';
-      const descTr = 'Uygulama dili başarıyla değiştirildi';
+      // Authored in English, so an unresolved lookup degrades to English rather
+      // than to the dictionary's internal source language.
+      const title = 'Language Changed';
+      const description = 'The app language was changed successfully';
       toast({
-        title: getStaticTranslation(titleTr, languageCode) ?? titleTr,
-        description: getStaticTranslation(descTr, languageCode) ?? descTr,
+        title: getStaticTranslation(title, languageCode) ?? title,
+        description: getStaticTranslation(description, languageCode) ?? description,
       });
     }, 300);
   };
@@ -919,11 +932,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     localStorage.removeItem('preferredLanguage');
     setCurrentLanguage(DEFAULT_LANGUAGE);
 
-    const titleTr = 'Ayarlar Sıfırlandı';
-    const descTr  = 'Dil ayarları varsayılan değerlere döndürüldü';
+    const title = 'Settings Reset';
+    const description = 'Language settings were restored to their defaults';
     toast({
-      title: getStaticTranslation(titleTr, DEFAULT_LANGUAGE) ?? titleTr,
-      description: getStaticTranslation(descTr, DEFAULT_LANGUAGE) ?? descTr,
+      title: getStaticTranslation(title, DEFAULT_LANGUAGE) ?? title,
+      description: getStaticTranslation(description, DEFAULT_LANGUAGE) ?? description,
     });
   };
 
@@ -938,12 +951,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return;
     }
     loadCacheFromStorage();
-    const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
-    const validLanguage = SUPPORTED_LANGUAGES.find((lang) => lang.language === savedLanguage)
-      ? savedLanguage
-      : DEFAULT_LANGUAGE;
-
-    setCurrentLanguage(validLanguage);
+    setCurrentLanguage(getSavedLanguage());
     setIsLoading(false);
     // Storage hydration is intentionally mount-only; the functions above use
     // refs and must not replay after provider state updates.

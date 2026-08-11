@@ -9,6 +9,11 @@
 //
 // Dictionaries are keyed by the SAME normalized source string the runtime uses
 // (see normalizeSource in pageTranslator.ts), so lookups match exactly.
+//
+// SOURCE_LANGUAGE is the internal key language of those dictionaries, not an
+// interface language — it is not offered in the language picker.
+
+import { SOURCE_LANGUAGE } from './pageTranslator';
 
 export type StaticDictionary = Record<string, string>;
 
@@ -34,7 +39,7 @@ const dictionaryUrl = (languageCode: string): string =>
  * (the caller then relies on the live translator).
  */
 export const loadStaticDictionary = async (languageCode: string): Promise<StaticDictionary> => {
-  if (!languageCode || languageCode === 'tr') return {};
+  if (!languageCode || languageCode === SOURCE_LANGUAGE) return {};
   const cached = loadedDictionaries[languageCode];
   if (cached) return cached;
   const inFlight = inFlightLoads[languageCode];
@@ -99,7 +104,7 @@ export const getStaticTranslation = (
  * offline by the translation-locales runtime cache (see vite.config.ts).
  */
 export const isDictionaryComplete = (languageCode: string): boolean => {
-  if (!languageCode || languageCode === 'tr') return true; // source language
+  if (!languageCode || languageCode === SOURCE_LANGUAGE) return true; // source language
   const dict = loadedDictionaries[languageCode];
   return !!dict && Object.keys(dict).length > 0;
 };

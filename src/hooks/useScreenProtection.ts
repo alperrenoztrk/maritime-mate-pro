@@ -34,8 +34,8 @@ export function useScreenProtection(): void {
       if (Capacitor.getPlatform() === 'ios') {
         try {
           const handle = await ScreenProtection.addListener('screenshotTaken', () => {
-            toast.info('Ekran görüntüsü alındı', {
-              description: 'Bu uygulamadaki içerik korumalıdır.',
+            toast.info('Screenshot taken', {
+              description: 'The content in this app is protected.',
             });
           });
           if (cancelled) {

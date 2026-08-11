@@ -58,7 +58,7 @@ export default function EmissionCalculationsPage() {
     const deadweight = parseFloat(dwt.replace(",", "."));
 
     if (isNaN(fuel) || isNaN(dist) || isNaN(deadweight) || fuel <= 0 || dist <= 0 || deadweight <= 0) {
-      toast.error("Lütfen tüm değerleri doğru girin");
+      toast.error("Please enter all values correctly");
       return;
     }
 
@@ -77,7 +77,7 @@ export default function EmissionCalculationsPage() {
     else if (cii <= 1.18) ciiRating = "D";
 
     setResult({ co2, cii, ciiRating, aer });
-    toast.success("Hesaplama tamamlandı");
+    toast.success("Calculation complete");
   };
 
   const calculateEEXI = () => {
@@ -87,14 +87,14 @@ export default function EmissionCalculationsPage() {
     const speed = parseFloat(eexiData.speed.replace(",", "."));
 
     if (isNaN(power) || isNaN(sfc) || isNaN(capacity) || isNaN(speed) || power <= 0 || sfc <= 0 || capacity <= 0 || speed <= 0) {
-      toast.error("Lütfen tüm değerleri doğru girin");
+      toast.error("Please enter all values correctly");
       return;
     }
 
     const cf = carbonFactors[fuelType];
     const eexi = (power * cf * sfc) / (capacity * speed);
     setEexiResult(eexi);
-    toast.success("EEXI hesaplandı");
+    toast.success("EEXI calculated");
   };
 
   const getCiiColor = (rating: string) => {
@@ -205,7 +205,7 @@ export default function EmissionCalculationsPage() {
                         <div className="p-4 rounded-xl bg-primary/5">
                           <p className="text-sm text-muted-foreground">Yıllık CO₂ Emisyonu</p>
                           <p className="text-2xl font-bold text-[#2F5BFF]">
-                            {result.co2.toLocaleString("tr-TR", { maximumFractionDigits: 2 })} ton
+                            {result.co2.toLocaleString("en-GB", { maximumFractionDigits: 2 })} ton
                           </p>
                         </div>
 

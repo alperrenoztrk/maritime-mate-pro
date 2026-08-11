@@ -57,7 +57,7 @@ export function WidgetSettings() {
                 <Switch
                   checked={entry.enabled}
                   onCheckedChange={() => toggle(entry.id)}
-                  aria-label={`${meta.label} widget'ını aç/kapat`}
+                  aria-label={`Turn the ${meta.label} widget on or off`}
                 />
               </li>
             );

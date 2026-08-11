@@ -34,7 +34,7 @@ export const economics: CourseTopic = {
         if (v.speed <= 0) return [{ label: "Hata", value: "Hız pozitif olmalı" }];
         const days = v.dist / (v.speed * 24);
         return [
-          { label: "Sefer Süresi", value: `${days.toFixed(2)} gün` },
+          { label: "Sefer Süresi", value: `${days.toFixed(2)} days` },
           { label: "Sefer Süresi", value: `${(days * 24).toFixed(1)} saat` },
         ];
       },
@@ -91,7 +91,7 @@ export const economics: CourseTopic = {
       ],
       calculate: (v) => {
         if (v.days <= 0) return [{ label: "Hata", value: "Sefer süresi pozitif olmalı" }];
-        return [{ label: "TCE", value: `$${((v.revenue - v.cost) / v.days).toFixed(0)} / gün` }];
+        return [{ label: "TCE", value: `$${((v.revenue - v.cost) / v.days).toFixed(0)} / day` }];
       },
     },
     {
@@ -110,7 +110,7 @@ export const economics: CourseTopic = {
       ],
       calculate: (v) => {
         if (v.rate <= 0) return [{ label: "Hata", value: "Oran pozitif olmalı" }];
-        return [{ label: "Laytime", value: `${(v.cargo / v.rate).toFixed(2)} gün` }];
+        return [{ label: "Laytime", value: `${(v.cargo / v.rate).toFixed(2)} days` }];
       },
     },
     {

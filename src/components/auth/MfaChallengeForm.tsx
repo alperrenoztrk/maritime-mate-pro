@@ -40,7 +40,7 @@ export const MfaChallengeForm = ({
       if (error) {
         // Supabase yanlış kod ile süresi geçmiş kodu ayırmaz; kullanıcıya
         // her iki durumda da işe yarayan tek bir yönlendirme veriyoruz.
-        toast.error("Kod doğrulanamadı. Uygulamadaki güncel kodu girin.");
+        toast.error("The code could not be verified. Enter the current code from the app.");
         setCode("");
         return;
       }

@@ -572,7 +572,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const dM = parseFloat(hoggingSaggingInputs.draftMidship);
     
     if (isNaN(dF) || isNaN(dA) || isNaN(dM)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
@@ -581,7 +581,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const type = difference > 0 ? "Hogging" : "Sagging";
     
     setHoggingSaggingResult({ type, difference: Math.abs(difference) });
-    toast({ title: "Hesaplama Tamamlandı", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
+    toast({ title: "Calculation Complete", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
   };
 
   // 2. Yeni KG Hesaplama
@@ -590,13 +590,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const totalWeight = parseFloat(newKGInputs.totalWeight);
     
     if (isNaN(totalMoment) || isNaN(totalWeight) || totalWeight === 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const newKG = totalMoment / totalWeight;
     setNewKGResult(newKG);
-    toast({ title: "Hesaplama Tamamlandı", description: `Yeni KG: ${newKG.toFixed(3)} m` });
+    toast({ title: "Calculation Complete", description: `Yeni KG: ${newKG.toFixed(3)} m` });
   };
 
   const calculateGM = () => {
@@ -605,18 +605,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const kg = parseFloat(gmInputs.kg);
     
     if (isNaN(kb) || isNaN(bm) || isNaN(kg)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const gm = kb + bm - kg;
     const km = kb + bm;
     if (!runStabilityLogic("gm", { km, kg, gm })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "KM > KG ve GM ≥ 0 şartlarını sağlayın.", variant: "destructive" });
+      toast({ title: "Consistency Check Error", description: "Satisfy the conditions KM > KG and GM ≥ 0.", variant: "destructive" });
       return;
     }
     setGmResult(gm);
-    toast({ title: "Hesaplama Tamamlandı", description: `GM: ${gm.toFixed(3)} m - Uygun` });
+    toast({ title: "Calculation Complete", description: `GM: ${gm.toFixed(3)} m - Uygun` });
   };
 
   const calculateGZ = () => {
@@ -624,18 +624,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const angle = parseFloat(gzInputs.angle);
     
     if (isNaN(gm) || isNaN(angle)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const angleRad = (angle * Math.PI) / 180;
     const gz = gm * Math.sin(angleRad);
     if (!runStabilityLogic("gz", { gm, gz })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "GM ≥ 0 ve GZ ≥ 0 şartlarını sağlayın.", variant: "destructive" });
+      toast({ title: "Consistency Check Error", description: "Satisfy the conditions GM ≥ 0 and GZ ≥ 0.", variant: "destructive" });
       return;
     }
     setGzResult(gz);
-    toast({ title: "Hesaplama Tamamlandı", description: `GZ: ${gz.toFixed(4)} m - Uygun` });
+    toast({ title: "Calculation Complete", description: `GZ: ${gz.toFixed(4)} m - Uygun` });
   };
 
   const calculateTrim = () => {
@@ -644,13 +644,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const l = parseFloat(trimInputs.length);
     
     if (isNaN(ta) || isNaN(tf) || isNaN(l)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const trimAngle = Math.atan((ta - tf) / l) * (180 / Math.PI);
     setTrimResult(trimAngle);
-    toast({ title: "Hesaplama Tamamlandı", description: `Trim Açısı: ${trimAngle.toFixed(4)}°` });
+    toast({ title: "Calculation Complete", description: `Trim Angle: ${trimAngle.toFixed(4)}°` });
   };
 
   const calculateList = () => {
@@ -660,18 +660,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const gm = parseFloat(listInputs.gm);
     
     if (isNaN(w) || isNaN(d) || isNaN(displacement) || isNaN(gm)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     if (!runStabilityLogic("list", { displacement, gm })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "Δ > 0 ve GM ≥ 0 olmalıdır.", variant: "destructive" });
+      toast({ title: "Consistency Check Error", description: "Δ > 0 and GM ≥ 0 are required.", variant: "destructive" });
       return;
     }
 
     const listAngle = Math.atan((w * d) / (displacement * gm)) * (180 / Math.PI);
     setListResult(listAngle);
-    toast({ title: "Hesaplama Tamamlandı", description: `List Açısı: ${listAngle.toFixed(4)}°` });
+    toast({ title: "Calculation Complete", description: `List Angle: ${listAngle.toFixed(4)}°` });
   };
 
   const calculateTPC = () => {
@@ -679,13 +679,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const rho = parseFloat(tpcInputs.density);
     
     if (isNaN(awp) || isNaN(rho)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const tpc = (awp * rho) / 100;
     setTpcResult(tpc);
-    toast({ title: "Hesaplama Tamamlandı", description: `TPC: ${tpc.toFixed(2)} ton/cm` });
+    toast({ title: "Calculation Complete", description: `TPC: ${tpc.toFixed(2)} ton/cm` });
   };
 
   const calculateLoll = () => {
@@ -693,18 +693,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const km = parseFloat(lollInputs.km);
     
     if (isNaN(kg) || isNaN(km)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     if (!runStabilityLogic("loll", { km, kg })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "KM > KG şartını sağlayın.", variant: "destructive" });
+      toast({ title: "Consistency Check Error", description: "Satisfy the condition KM > KG.", variant: "destructive" });
       return;
     }
     
     const lollAngle = Math.acos(kg / km) * (180 / Math.PI);
     setLollResult(lollAngle);
-    toast({ title: "Hesaplama Tamamlandı", description: `Loll Açısı: ${lollAngle.toFixed(2)}°` });
+    toast({ title: "Calculation Complete", description: `Loll Angle: ${lollAngle.toFixed(2)}°` });
   };
 
   // TRANSVERSE STABILITY CALCULATIONS
@@ -725,7 +725,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Cw = parseFloat(hydrostaticInputs.waterplaneCoeff);
 
     if (isNaN(L) || isNaN(B) || isNaN(T) || isNaN(Cb) || isNaN(Cw)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
 
@@ -738,7 +738,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const kmt = kb + bmt; // KM_T = KB + BM_T
 
     setHydrostaticResults({ displacement, volume, waterplaneArea, kb, bmt, kmt });
-    toast({ title: "Hidrostatik Temeller Hesaplandı", description: `Δ: ${displacement.toFixed(1)} ton, ∇: ${volume.toFixed(1)} m³` });
+    toast({ title: "Hydrostatic Fundamentals Calculated", description: `Δ: ${displacement.toFixed(1)} ton, ∇: ${volume.toFixed(1)} m³` });
   };
 
   // 2. Ağırlık Merkezi ve GM
@@ -756,13 +756,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     if (!isNaN(KMT) && !isNaN(KG)) {
       const GMT = KMT - KG; // GM_T = KM_T - KG
       setWeightCenterResults({ kg: KG, gmt: GMT });
-      toast({ title: "GM Hesaplandı", description: `GMT: ${GMT.toFixed(3)} m` });
+      toast({ title: "GM Calculated", description: `GMT: ${GMT.toFixed(3)} m` });
     } else if (!isNaN(totalMoment) && !isNaN(totalWeight) && totalWeight > 0) {
       const newKG = totalMoment / totalWeight; // KG = Σ(wi * KGi) / Σwi
       setWeightCenterResults({ kg: newKG, gmt: 0 });
-      toast({ title: "KG Hesaplandı", description: `KG: ${newKG.toFixed(3)} m` });
+      toast({ title: "KG Calculated", description: `KG: ${newKG.toFixed(3)} m` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
     }
   };
 
@@ -781,7 +781,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
     if (!isNaN(w) && !isNaN(d) && !isNaN(Delta) && !isNaN(GMT)) {
       if (!runStabilityLogic("weightShift", { displacement: Delta, gm: GMT })) {
-        toast({ title: "Mantıksal Kontrol Hatası", description: "Δ > 0 ve GM ≥ 0 olmalıdır.", variant: "destructive" });
+        toast({ title: "Consistency Check Error", description: "Δ > 0 and GM ≥ 0 are required.", variant: "destructive" });
         return;
       }
       // Enine şift: tan φ ≈ w*d/(Δ*GM_T)
@@ -794,9 +794,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       }
 
       setWeightShiftResults({ listAngle, kgChange });
-      toast({ title: "Ağırlık Şifti Hesaplandı", description: `List Açısı: ${listAngle.toFixed(2)}°` });
+      toast({ title: "Weight Shift Calculated", description: `List Angle: ${listAngle.toFixed(2)}°` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
     }
   };
 
@@ -813,7 +813,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const volume = parseFloat(freeSurfaceInputs2.volume);
 
     if (isNaN(l) || isNaN(b) || isNaN(rhoTank) || isNaN(volume)) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
@@ -821,7 +821,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const fsc = (rhoTank / 1.025) * (iF / volume); // FSC = (ρ_tank/ρ_sea) * i_f/∇
     
     setFreeSurfaceResults({ fsc, gmCorrected: 0 });
-    toast({ title: "Serbest Yüzey Etkisi Hesaplandı", description: `FSC: ${fsc.toFixed(4)} m` });
+    toast({ title: "Free Surface Effect Calculated", description: `FSC: ${fsc.toFixed(4)} m` });
   };
 
   // 5. GZ ve Dinamik Stabilite
@@ -843,7 +843,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       const rightingMoment = (geometry.length * geometry.breadth * geometry.draft * geometry.blockCoefficient * 1.025) * gz;
       
       setGzDynamicResults({ gz, rightingMoment });
-      toast({ title: "GZ Hesaplandı", description: `GZ: ${gz.toFixed(4)} m` });
+      toast({ title: "GZ Calculated", description: `GZ: ${gz.toFixed(4)} m` });
     } else if (!isNaN(kn) && !isNaN(kg) && !isNaN(angle)) {
       // Genel açılar için: GZ(φ) = KN(φ) - KG sin φ
       const angleRad = (angle * Math.PI) / 180;
@@ -851,9 +851,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       const rightingMoment = (geometry.length * geometry.breadth * geometry.draft * geometry.blockCoefficient * 1.025) * gz;
       
       setGzDynamicResults({ gz, rightingMoment });
-      toast({ title: "GZ (KN Yöntemi) Hesaplandı", description: `GZ: ${gz.toFixed(4)} m` });
+      toast({ title: "GZ (KN Method) Calculated", description: `GZ: ${gz.toFixed(4)} m` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
     }
   };
 
@@ -870,7 +870,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Delta = parseFloat(windEffectInputs.displacement); // ton
 
     if (isNaN(q) || isNaN(A) || isNaN(z) || isNaN(Delta)) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
@@ -878,7 +878,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const heelingArm = heelingMoment / (Delta * 9.81); // m
 
     setWindEffectResults({ heelingMoment, heelingArm });
-    toast({ title: "Rüzgar Etkisi Hesaplandı", description: `Heeling Moment: ${heelingMoment.toFixed(2)} kN·m` });
+    toast({ title: "Wind Effect Calculated", description: `Heeling Moment: ${heelingMoment.toFixed(2)} kN·m` });
   };
 
   // 7. İnklinasyon Deneyi
@@ -894,7 +894,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const phi = parseFloat(inclinationInputs.observedAngle);
 
     if (isNaN(w) || isNaN(l) || isNaN(Delta) || isNaN(phi)) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
@@ -902,7 +902,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const gmt = (w * l) / (Delta * Math.tan(phiRad)); // GM_T = w*l/(Δ*tan φ)
 
     setInclinationResults({ gmt });
-    toast({ title: "İnklinasyon Deneyi Sonucu", description: `GMT: ${gmt.toFixed(3)} m` });
+    toast({ title: "Inclining Experiment Result", description: `GMT: ${gmt.toFixed(3)} m` });
   };
 
   // 8. Yalpa Periyodu
@@ -917,14 +917,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const k = parseFloat(rollPeriodInputs2.radiusOfGyration) || 0.35 * B; // Default k ≈ 0.35B
 
     if (isNaN(B) || isNaN(gmCorr) || gmCorr <= 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
     const T = 2 * Math.PI * k / Math.sqrt(9.81 * gmCorr); // T = 2π * k / √(g*GM_corr)
 
     setRollPeriodResults({ period: T });
-    toast({ title: "Yalpa Periyodu Hesaplandı", description: `T: ${T.toFixed(2)} saniye` });
+    toast({ title: "Rolling Period Calculated", description: `T: ${T.toFixed(2)} saniye` });
   };
 
   // 9. Angle of Loll
@@ -938,14 +938,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const BMT = parseFloat(lollInputs2.bmt);
 
     if (isNaN(GM) || isNaN(BMT) || GM >= 0) {
-      toast({ title: "Hata", description: "GM negatif olmalı (GM < 0)", variant: "destructive" });
+      toast({ title: "Hata", description: "GM must be negative (GM < 0)", variant: "destructive" });
       return;
     }
 
     const lollAngle = Math.atan(Math.sqrt(-2 * GM / BMT)) * (180 / Math.PI); // tan φ_loll ≈ √(-2*GM/BM_T)
 
     setLollResults({ lollAngle });
-    toast({ title: "Angle of Loll Hesaplandı", description: `Loll Açısı: ${lollAngle.toFixed(2)}°` });
+    toast({ title: "Angle of Loll Calculated", description: `Loll Angle: ${lollAngle.toFixed(2)}°` });
   };
 
   const calculateDisplacement = () => {
@@ -953,13 +953,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const waterDensity = parseFloat(displacementInputs.waterDensity);
     
     if (isNaN(volume) || isNaN(waterDensity)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const displacement = volume * waterDensity;
     setDisplacementResult(displacement);
-    toast({ title: "Hesaplama Tamamlandı", description: `Deplasman: ${displacement.toFixed(2)} ton` });
+    toast({ title: "Calculation Complete", description: `Deplasman: ${displacement.toFixed(2)} ton` });
   };
 
   const calculateDraft = () => {
@@ -967,13 +967,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const waterplaneArea = parseFloat(draftInputs.waterplaneArea);
     
     if (isNaN(volume) || isNaN(waterplaneArea) || waterplaneArea === 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Please enter valid numeric values", variant: "destructive" });
       return;
     }
     
     const draft = volume / waterplaneArea;
     setDraftResult(draft);
-    toast({ title: "Hesaplama Tamamlandı", description: `Draft: ${draft.toFixed(3)} m` });
+    toast({ title: "Calculation Complete", description: `Draft: ${draft.toFixed(3)} m` });
   };
 
   // === New calculator implementations ===
@@ -982,16 +982,16 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const d = parseFloat(gmShiftInputs.distance);
     const Delta = parseFloat(gmShiftInputs.displacement);
     if ([w, d, Delta].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, d, Δ girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid w, d, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("gmShift", { displacement: Delta })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Consistency Check Error', description: 'Δ > 0 is required.', variant: 'destructive' });
       return;
     }
     const dGM = (w * d) / Delta;
     setGmShiftResult(dGM);
-    toast({ title: 'ΔGM Hesaplandı', description: `ΔGM = ${dGM.toFixed(4)} m` });
+    toast({ title: 'ΔGM Calculated', description: `ΔGM = ${dGM.toFixed(4)} m` });
   };
 
   const calculateHeelAngle2 = () => {
@@ -1000,17 +1000,17 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Delta = parseFloat(heelAngle2Inputs.displacement);
     const GM = parseFloat(heelAngle2Inputs.gm);
     if ([w, y, Delta, GM].some(isNaN) || Delta === 0 || GM === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, y, Δ, GM girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid w, y, Δ, GM', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("heelAngle2", { displacement: Delta, gm: GM })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 ve GM ≥ 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Consistency Check Error', description: 'Δ > 0 and GM ≥ 0 are required.', variant: 'destructive' });
       return;
     }
     const gz = (w * y) / Delta;
     const angle = Math.atan(gz / GM) * (180 / Math.PI);
     setHeelAngle2Result({ gz, angleDeg: angle });
-    toast({ title: 'Meyil Açısı', description: `θ = ${angle.toFixed(3)}°` });
+    toast({ title: 'Heel Angle', description: `θ = ${angle.toFixed(3)}°` });
   };
 
   const calculateCraneGG1 = () => {
@@ -1019,16 +1019,16 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const hl = parseFloat(craneGG1Inputs.loadHeight);
     const Delta = parseFloat(craneGG1Inputs.displacement);
     if ([w, hh, hl, Delta].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, hkanca, hyük, Δ girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid w, hhook, hload, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("craneGG1", { displacement: Delta })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Consistency Check Error', description: 'Δ > 0 is required.', variant: 'destructive' });
       return;
     }
     const gg1 = (w * (hh - hl)) / Delta;
     setCraneGG1Result(gg1);
-    toast({ title: 'GG₁ (Bumba) Hesaplandı', description: `GG₁ = ${gg1.toFixed(4)} m` });
+    toast({ title: 'GG₁ (Derrick) Calculated', description: `GG₁ = ${gg1.toFixed(4)} m` });
   };
 
   const calculateDockCriticalGM = () => {
@@ -1038,11 +1038,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const km = parseFloat(dockGMInputs.km);
     const Delta = parseFloat(dockGMInputs.displacement);
     if ([mct1cm, trim, lbp, km, Delta].some(isNaN) || lbp === 0 || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli MCT1cm, Trim(cm), LBP, KM, Δ girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid MCT1cm, Trim(cm), LBP, KM, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("dockGM", { displacement: Delta })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Consistency Check Error', description: 'Δ > 0 is required.', variant: 'destructive' });
       return;
     }
     const P = (mct1cm * trim) / lbp; // t
@@ -1055,30 +1055,30 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const M = parseFloat(trimMomentInputs.totalMoment);
     const mct1cm = parseFloat(trimMomentInputs.mct1cm);
     if ([M, mct1cm].some(isNaN) || mct1cm === 0) {
-      toast({ title: 'Hata', description: 'Geçerli moment ve MCT1cm girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter a valid moment and MCT1cm', variant: 'destructive' });
       return;
     }
     const dTrimCm = M / mct1cm;
     setTrimMomentResult(dTrimCm);
-    toast({ title: 'Trim Değişimi', description: `ΔTrim = ${dTrimCm.toFixed(2)} cm` });
+    toast({ title: 'Trim Change', description: `ΔTrim = ${dTrimCm.toFixed(2)} cm` });
   };
 
   const calculateParallelSinkage = () => {
     const w = parseFloat(parallelSinkageInputs.weight);
     const tpc = parseFloat(parallelSinkageInputs.tpc);
     if ([w, tpc].some(isNaN) || tpc === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w ve TPC girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid w and TPC', variant: 'destructive' });
       return;
     }
     const sinkageCm = w / tpc;
     setParallelSinkageResult(sinkageCm);
-    toast({ title: 'Paralel Batma/Çıkma', description: `${sinkageCm.toFixed(2)} cm` });
+    toast({ title: 'Parallel Sinkage/Rise', description: `${sinkageCm.toFixed(2)} cm` });
   };
 
   const calculateDraftChangeLCF = () => {
     const dTrimCm = parseFloat(draftChangeLCFInputs.dTrimCm);
     if (isNaN(dTrimCm)) {
-      toast({ title: 'Hata', description: 'Geçerli ΔTrim (cm) girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter a valid ΔTrim (cm)', variant: 'destructive' });
       return;
     }
     setDraftChangeLCFResult({ dFcm: -dTrimCm / 2, dAcm: dTrimCm / 2 });
@@ -1089,7 +1089,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const trim = parseFloat(draftCorrectionInputs.trim); // cm total
     const lbp = parseFloat(draftCorrectionInputs.lbp); // m
     if ([distance, trim, lbp].some(isNaN) || lbp === 0) {
-      toast({ title: 'Hata', description: 'Geçerli mesafe, trim(cm), LBP girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter a valid distance, trim(cm), LBP', variant: 'destructive' });
       return;
     }
     const correction = (distance / lbp) * trim; // cm
@@ -1101,7 +1101,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const dM = parseFloat(mmmDraftQuickInputs.dM);
     const dA = parseFloat(mmmDraftQuickInputs.dA);
     if ([dF, dM, dA].some(isNaN)) {
-      toast({ title: 'Hata', description: 'Geçerli dF, dM, dA girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid dF, dM, dA', variant: 'destructive' });
       return;
     }
     const mmm = (dF + dA + 6 * dM) / 8;
@@ -1114,7 +1114,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const tpc = parseFloat(trimCorrection1Inputs2.tpc); // t/cm
     const lbp = parseFloat(trimCorrection1Inputs2.lbp); // m
     if ([trimM, lcf, tpc, lbp].some(isNaN) || lbp === 0) {
-      toast({ title: 'Hata', description: 'Geçerli Trim(m), LCF, TPC, LBP girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid Trim(m), LCF, TPC, LBP', variant: 'destructive' });
       return;
     }
     const delta1 = trimM * lcf * tpc * 100 / lbp; // tons
@@ -1126,7 +1126,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const dMCT = parseFloat(trimCorrection2Inputs2.deltaMct1cm); // t·m/cm per cm change
     const lbp = parseFloat(trimCorrection2Inputs2.lbp); // m
     if ([trimM, dMCT, lbp].some(isNaN) || lbp === 0) {
-      toast({ title: 'Hata', description: 'Geçerli Trim(m), ΔMCT(1cm), LBP girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid Trim(m), ΔMCT(1cm), LBP', variant: 'destructive' });
       return;
     }
     const trimCm = trimM * 100;
@@ -1138,7 +1138,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const fwa = parseFloat(densityDraftChangeInputs.fwa); // cm
     const rho = parseFloat(densityDraftChangeInputs.rho);
     if ([fwa, rho].some(isNaN)) {
-      toast({ title: 'Hata', description: 'Geçerli FWA(cm) ve ρ girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid FWA(cm) and ρ', variant: 'destructive' });
       return;
     }
     const dT = fwa * (1025 - 1000 * rho) / 25; // assuming rho in t/m³; convert to kg/m³ comparison
@@ -1150,7 +1150,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const r1 = parseFloat(densityDisplacementInputs.rho1);
     const r2 = parseFloat(densityDisplacementInputs.rho2);
     if ([d1, r1, r2].some(isNaN) || r1 === 0) {
-      toast({ title: 'Hata', description: 'Geçerli Δ1, ρ1, ρ2 girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid Δ1, ρ1, ρ2', variant: 'destructive' });
       return;
     }
     const d2 = d1 * (r2 / r1);
@@ -1162,7 +1162,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Delta = parseFloat(ghmInputs.displacement);
     const GM = parseFloat(ghmInputs.gm);
     if ([ghm, Delta, GM].some(isNaN) || Delta === 0 || GM === 0) {
-      toast({ title: 'Hata', description: 'Geçerli GHM, Δ, GM girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid GHM, Δ, GM', variant: 'destructive' });
       return;
     }
     const thetaDeg = 57.3 * (ghm / (Delta * GM));
@@ -1176,7 +1176,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const h = parseFloat(simpson13Inputs.h);
     const y = parseOrdinates(simpson13Inputs.ordinates);
     if (Number.isNaN(h) || y.length < 3 || (y.length - 1) % 2 !== 0) {
-      toast({ title: 'Hata', description: '1/3 kuralı için h ve tek sayıda segmente uygun ordinatlar girin (n gen = çift)', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'For the 1/3 rule enter h and ordinates matching an odd number of segments (n generally = even)', variant: 'destructive' });
       return;
     }
     let sumOdd = 0, sumEven = 0;
@@ -1191,7 +1191,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const h = parseFloat(simpson38Inputs.h);
     const y = parseOrdinates(simpson38Inputs.ordinates);
     if (Number.isNaN(h) || y.length < 4 || (y.length - 1) % 3 !== 0) {
-      toast({ title: 'Hata', description: '3/8 kuralı için h ve 3\'ün katı sayıda segment girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'For the 3/8 rule enter h and a number of segments that is a multiple of 3', variant: 'destructive' });
       return;
     }
     let sum3 = 0, sum2 = 0;
@@ -1210,7 +1210,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const rhoSea = parseFloat(fsmGeneralInputs.rhoSea);
     const n = parseFloat(fsmGeneralInputs.n) || 1;
     if ([L, B, Delta, rhoFluid, rhoSea].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli L, B, Δ, ρsıvı, ρdeniz girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid L, B, Δ, ρfluid, ρsea', variant: 'destructive' });
       return;
     }
     const I = (L * Math.pow(B, 3)) / 12;
@@ -1223,7 +1223,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(rollSimpleInputs.breadth);
     const GM = parseFloat(rollSimpleInputs.gm);
     if ([Cb, B, GM].some(isNaN) || GM <= 0) {
-      toast({ title: 'Hata', description: 'Geçerli Cb, B, GM girin (GM>0)', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid Cb, B, GM (GM>0)', variant: 'destructive' });
       return;
     }
     const T = Cb * B / Math.sqrt(GM);
@@ -1236,7 +1236,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(damagedStabInputs.B);
     const Ld = parseFloat(damagedStabInputs.Ldam);
     if ([w, L, B, Ld].some(isNaN) || (L * B - Ld * B) === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, L, B, Lyaralı girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid w, L, B, Ldamaged', variant: 'destructive' });
       return;
     }
     const dT = w / (L * B - Ld * B);
@@ -1248,7 +1248,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const SF = parseFloat(cargoInputs.stowageFactor); // m³/t
     const PL = parseFloat(cargoInputs.pressureLimit); // t/m²
     if ([V, SF, PL].some(isNaN) || SF === 0) {
-      toast({ title: 'Hata', description: 'Geçerli V, SF, PL girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Enter valid V, SF, PL', variant: 'destructive' });
       return;
     }
     const wmax = V / SF; // t
@@ -1262,7 +1262,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(tankInputs.breadth);
     const H = parseFloat(tankInputs.height);
     const rho = parseFloat(tankInputs.rho);
-    if ([L, B, H, rho].some(isNaN)) { toast({ title:'Hata', description:'Geçerli L, B, H, ρ girin', variant:'destructive' }); return; }
+    if ([L, B, H, rho].some(isNaN)) { toast({ title:'Hata', description:'Enter valid L, B, H, ρ', variant:'destructive' }); return; }
     const V = L * B * H; // m³
     const m = V * rho; // t
     setTankResults({ V, m });
@@ -1271,7 +1271,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   const calculateFWA = () => {
     const Delta = parseFloat(fwaCalcInputs.displacement);
     const TPC = parseFloat(fwaCalcInputs.tpc);
-    if ([Delta, TPC].some(isNaN) || Delta === 0) { toast({ title:'Hata', description:'Geçerli Δ ve TPC girin', variant:'destructive' }); return; }
+    if ([Delta, TPC].some(isNaN) || Delta === 0) { toast({ title:'Hata', description:'Enter valid Δ and TPC', variant:'destructive' }); return; }
     const FWA = (Delta / 4) / TPC; // cm
     setFwaCalcResult(FWA);
   };
@@ -1281,7 +1281,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const T1 = parseFloat(tempDensityInputs.T1);
     const T2 = parseFloat(tempDensityInputs.T2);
     const k = parseFloat(tempDensityInputs.k);
-    if ([rho1, T1, T2, k].some(isNaN)) { toast({ title:'Hata', description:'Geçerli ρ1, T1, T2, k girin', variant:'destructive' }); return; }
+    if ([rho1, T1, T2, k].some(isNaN)) { toast({ title:'Hata', description:'Enter valid ρ1, T1, T2, k', variant:'destructive' }); return; }
     const rho2 = rho1 - ((T2 - T1) * k);
     setTempDensityResult(rho2);
   };
@@ -1289,7 +1289,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   const calculateGHMfromVHM = () => {
     const vhm = parseFloat(ghmInputs2.vhm);
     const sf = parseFloat(ghmInputs2.sf);
-    if ([vhm, sf].some(isNaN) || sf === 0) { toast({ title:'Hata', description:'Geçerli VHM ve SF girin', variant:'destructive' }); return; }
+    if ([vhm, sf].some(isNaN) || sf === 0) { toast({ title:'Hata', description:'Enter valid VHM and SF', variant:'destructive' }); return; }
     const ghm = vhm / sf;
     setGhmResult2(ghm);
   };
@@ -3182,9 +3182,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         const parsed = HydrostaticCalculations.parseCrossCurvesCSV(crossCurvesText);
                         if (parsed.angles?.length > 0 && parsed.kn?.length === parsed.angles.length) {
                           setCrossCurvesSet(parsed);
-                          toast({ title: 'KN yüklendi', description: `${parsed.angles.length} açı okundu` });
+                          toast({ title: 'KN loaded', description: `${parsed.angles.length} angles read` });
                         } else {
-                          toast({ title: 'Hata', description: 'Geçersiz KN CSV', variant: 'destructive' });
+                          toast({ title: 'Hata', description: 'Invalid KN CSV', variant: 'destructive' });
                         }
                       } catch (e) {
                         toast({ title: 'Hata', description: 'CSV parse edilemedi', variant: 'destructive' });
@@ -3226,9 +3226,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                           displacementT: analysis.hydrostatic.displacement
                         });
                         setWeatherResult(res);
-                        toast({ title: 'Weather Criterion', description: res.ok ? 'Sağlandı' : 'Sağlanmadı' });
+                        toast({ title: 'Weather Criterion', description: res.ok ? 'Met' : 'Not met' });
                       } else {
-                        toast({ title: 'Hata', description: 'Geçerli değerler girin', variant: 'destructive' });
+                        toast({ title: 'Hata', description: 'Enter valid values', variant: 'destructive' });
                       }
                     }}>Değerlendir</Button>
                   </div>
@@ -3281,9 +3281,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 const parsed = JSON.parse(bonjeanText);
                 if (parsed?.sections && Array.isArray(parsed.sections) && typeof parsed.stationSpacing === 'number') {
                   setBonjeanSet(parsed);
-                  toast({ title: 'Bonjean uygulandı', description: `İstasyon sayısı: ${parsed.sections.length}` });
+                  toast({ title: 'Bonjean applied', description: `Number of stations: ${parsed.sections.length}` });
                 } else {
-                  toast({ title: 'Hata', description: 'Geçersiz Bonjean JSON', variant: 'destructive' });
+                  toast({ title: 'Hata', description: 'Invalid Bonjean JSON', variant: 'destructive' });
                 }
               } catch (e) {
                 toast({ title: 'Hata', description: 'JSON parse edilemedi', variant: 'destructive' });
@@ -3334,7 +3334,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 const fv = parseFloat(newCompartment.floodedVolume);
                 const nk = parseFloat(newCompartment.newKG);
                 if(isNaN(fv) || isNaN(nk) || !newCompartment.compartment){
-                  toast({ title:'Hata', description:'Geçerli bölme/veri girin', variant:'destructive' }); return;
+                  toast({ title:'Hata', description:'Enter a valid compartment/data set', variant:'destructive' }); return;
                 }
                 const comp: CompartmentAnalysis = { compartment: newCompartment.compartment, floodedVolume: fv, newKG: nk, residualGM: 0, downfloodingAngle: 0 };
                 setFloodedCompartments(prev=> [...prev, comp]);

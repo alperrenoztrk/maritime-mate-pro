@@ -64,7 +64,7 @@ export const maintenance: CourseTopic = {
         const rt = Math.exp(-lambda * v.t) * 100;
         return [
           { label: "Arıza Oranı (λ)", value: `${(lambda * 1e6).toFixed(1)} × 10⁻⁶ /saat` },
-          { label: `R(${v.t}) Güvenilirlik`, value: `${rt.toFixed(2)}%` },
+          { label: `R(${v.t}) Reliability`, value: `${rt.toFixed(2)}%` },
         ];
       },
     },

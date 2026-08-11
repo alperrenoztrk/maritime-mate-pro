@@ -101,8 +101,8 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   'Kritik basınç - acil müdahale gerekli'
     });
     setCalcSteps(prev => ({ ...prev, tanker: [
-      { step: 1, title: "COW süresi hesabı", formula: "COW Süresi = Tank Hacmi / COW Oranı", substitution: `COW = ${volume.toFixed(1)} / ${rate.toFixed(1)}`, result: `COW Süresi = ${cowTime.toFixed(1)} saat` },
-      { step: 2, title: "İnert gaz gereksinimi", formula: "İnert Gaz = Tank Hacmi × 1.05 (%5 fazlalık)", substitution: `İnert Gaz = ${volume.toFixed(1)} × 1.05`, result: `İnert Gaz = ${inertGasRequired.toFixed(0)} m³` },
+      { step: 1, title: "COW süresi hesabı", formula: "COW Süresi = Tank Hacmi / COW Oranı", substitution: `COW = ${volume.toFixed(1)} / ${rate.toFixed(1)}`, result: `COW Duration = ${cowTime.toFixed(1)} hours` },
+      { step: 2, title: "İnert gaz gereksinimi", formula: "İnert Gaz = Tank Hacmi × 1.05 (%5 fazlalık)", substitution: `Inert Gas = ${volume.toFixed(1)} × 1.05`, result: `Inert Gas = ${inertGasRequired.toFixed(0)} m³` },
       { step: 3, title: "Basınç kontrolü", formula: "P < 0.014 bar → Güvenli, P < 0.02 → Dikkat, P ≥ 0.02 → Kritik", result: `P = ${pressure} bar → ${pressureStatus}` },
     ] }));
   };
@@ -131,9 +131,9 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
     });
     setCalcSteps(prev => ({ ...prev, lng: [
       { step: 1, title: "Formül", formula: "Toplam Kayıp = (Günlük Boil-off% / 100) × Kapasite × Gün", explanation: "LNG buharlaşma kaybı hesabı" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Kayıp = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Toplam Kayıp = ${totalBoilOff.toFixed(1)} m³` },
+      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Boil-off = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Total Boil-off = ${totalBoilOff.toFixed(1)} m³` },
       { step: 3, title: "Kalan kargo", formula: "Kalan = Kapasite - Toplam Kayıp", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
-      { step: 4, title: "Kayıp yüzdesi", formula: "Kayıp% = (Toplam Kayıp / Kapasite) × 100", substitution: `Kayıp% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Kayıp = %${lossPercentage.toFixed(2)}` },
+      { step: 4, title: "Kayıp yüzdesi", formula: "Kayıp% = (Toplam Kayıp / Kapasite) × 100", substitution: `Boil-off % = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Boil-off = ${lossPercentage.toFixed(2)}%` },
     ] }));
   };
 
@@ -166,7 +166,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
     setCalcSteps(prev => ({ ...prev, container: [
       { step: 1, title: "Toplam stack ağırlığı", formula: "Toplam = Konteyner Ağırlığı × Stack Yüksekliği", substitution: `Toplam = ${weight} × ${height}`, result: `Toplam = ${totalStackWeight} ton` },
       { step: 2, title: "Emniyet faktörü", formula: "SF = Güverte Kapasitesi / Toplam Stack Ağırlığı", substitution: `SF = ${capacity} / ${totalStackWeight}`, result: `SF = ${safetyFactor.toFixed(2)}` },
-      { step: 3, title: "Maks. güvenli stack", formula: "Maks = ⌊Güverte Kapasitesi / Konteyner Ağırlığı⌋", substitution: `Maks = ⌊${capacity} / ${weight}⌋`, result: `Maks Güvenli Stack = ${maxSafeHeight} adet` },
+      { step: 3, title: "Maks. güvenli stack", formula: "Maks = ⌊Güverte Kapasitesi / Konteyner Ağırlığı⌋", substitution: `Maks = ⌊${capacity} / ${weight}⌋`, result: `Max Safe Stack = ${maxSafeHeight} units` },
     ] }));
   };
 
@@ -190,13 +190,13 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       safetyMargin,
       status: axleLoad <= limit ? 'safe' : 'overload',
       recommendation: axleLoad <= limit ?
-        `Güvenli - ${safetyMargin.toFixed(1)}% emniyet marjı` :
+        `Safe - ${safetyMargin.toFixed(1)}% safety margin` :
         'Yük limiti aşıldı - araç reddedilmeli'
     });
     setCalcSteps(prev => ({ ...prev, roro: [
-      { step: 1, title: "Axle yükü hesabı", formula: "Axle Yükü = Araç Ağırlığı / Axle Sayısı", substitution: `Axle Yükü = ${weight} / ${axles}`, result: `Axle Yükü = ${axleLoad.toFixed(2)} ton/axle` },
-      { step: 2, title: "Emniyet marjı", formula: "Marj = ((Limit - Axle Yükü) / Limit) × 100", substitution: `Marj = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Emniyet Marjı = ${safetyMargin.toFixed(1)}%` },
-      { step: 3, title: "Sonuç", formula: "Axle Yükü ≤ Limit → Güvenli", result: axleLoad <= limit ? `${axleLoad.toFixed(2)} ≤ ${limit} → GÜVENLİ` : `${axleLoad.toFixed(2)} > ${limit} → AŞIRI YÜK` },
+      { step: 1, title: "Axle yükü hesabı", formula: "Axle Yükü = Araç Ağırlığı / Axle Sayısı", substitution: `Axle Load = ${weight} / ${axles}`, result: `Axle Load = ${axleLoad.toFixed(2)} t/axle` },
+      { step: 2, title: "Emniyet marjı", formula: "Marj = ((Limit - Axle Yükü) / Limit) × 100", substitution: `Marj = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Safety Margin = ${safetyMargin.toFixed(1)}%` },
+      { step: 3, title: "Sonuç", formula: "Axle Yükü ≤ Limit → Güvenli", result: axleLoad <= limit ? `${axleLoad.toFixed(2)} ≤ ${limit} → SAFE` : `${axleLoad.toFixed(2)} > ${limit} → OVERLOAD` },
     ] }));
   };
 

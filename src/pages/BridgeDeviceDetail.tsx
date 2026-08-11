@@ -82,7 +82,7 @@ export default function BridgeDeviceDetailPage() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <LessonImage
                     src={url}
-                    alt={`${device.name} örnek görsel ${index + 1}`}
+                    alt={`${device.name} example image ${index + 1}`}
                     className="h-full w-full object-cover transition duration-sheet group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60" />

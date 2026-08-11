@@ -396,8 +396,8 @@ export class HydrostaticUtils {
     }
 
     weightDistribution.forEach((item, index) => {
-      if (item.weight <= 0) errors.push(`${index + 1}. öğe ağırlığı pozitif olmalıdır`);
-      if (item.item.trim() === '') errors.push(`${index + 1}. öğe adı boş olamaz`);
+      if (item.weight <= 0) errors.push(`Item ${index + 1}: weight must be positive`);
+      if (item.item.trim() === '') errors.push(`Item ${index + 1}: name cannot be empty`);
     });
 
     return {
@@ -416,11 +416,11 @@ export class HydrostaticUtils {
     const errors: string[] = [];
 
     tanks.forEach((tank, index) => {
-      if (tank.capacity <= 0) errors.push(`${index + 1}. tank kapasitesi pozitif olmalıdır`);
+      if (tank.capacity <= 0) errors.push(`Tank ${index + 1}: capacity must be positive`);
       if (tank.currentVolume < 0) errors.push(`${index + 1}. tank hacmi negatif olamaz`);
-      if (tank.currentVolume > tank.capacity) errors.push(`${index + 1}. tank hacmi kapasitesini aşamaz`);
-      if (tank.fluidDensity <= 0) errors.push(`${index + 1}. tank sıvı yoğunluğu pozitif olmalıdır`);
-      if (tank.name.trim() === '') errors.push(`${index + 1}. tank adı boş olamaz`);
+      if (tank.currentVolume > tank.capacity) errors.push(`Tank ${index + 1}: volume cannot exceed its capacity`);
+      if (tank.fluidDensity <= 0) errors.push(`Tank ${index + 1}: liquid density must be positive`);
+      if (tank.name.trim() === '') errors.push(`Tank ${index + 1}: name cannot be empty`);
     });
 
     return {

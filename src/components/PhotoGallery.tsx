@@ -71,7 +71,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
   return (
     <>
       <section
-        aria-label={topicTitle ? `${topicTitle} — fotoğraf galerisi` : "Fotoğraf galerisi"}
+        aria-label={topicTitle ? `${topicTitle} — photo gallery` : "Photo gallery"}
         className="grid gap-3 sm:grid-cols-2"
       >
         {photos.map((p, i) => (
@@ -83,7 +83,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
               type="button"
               onClick={() => setActiveIndex(i)}
               className="relative block w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              aria-label={`Büyüt: ${p.title}`}
+              aria-label={`Enlarge: ${p.title}`}
             >
               <img
                 src={p.src}

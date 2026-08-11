@@ -86,8 +86,8 @@ export default function LessonsLibraryPage() {
       backLabel="Dersler ana ekranına dön"
     >
       <SEO
-        title="Mariner's Book — Denizcilik Dersleri"
-        description="Güverte ve makine kitaplıklarında yapılandırılmış denizcilik dersleri."
+        title="Mariner's Book — Maritime Lessons"
+        description="Structured maritime lessons in the deck and engine libraries."
         path="/lessons"
         jsonLd={LESSONS_JSONLD}
       />

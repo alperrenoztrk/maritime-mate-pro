@@ -61,7 +61,7 @@ export function DocumentExpiryNotifier() {
         const extra = due.length > 1 ? ` ve ${due.length - 1} belge daha` : "";
         const body = `${first.title}: ${firstState.label}${extra}.`;
 
-        toast.warning("Belge süresi hatırlatması", {
+        toast.warning("Document expiry reminder", {
           description: body,
           duration: 9000,
           action: {

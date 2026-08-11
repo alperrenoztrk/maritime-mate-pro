@@ -61,7 +61,7 @@ const Formulas = () => {
 
   const askAI = async () => {
     if (!question.trim()) {
-      toast.error("Lütfen bir soru yazın");
+      toast.error("Please type a question");
       return;
     }
 
@@ -95,7 +95,7 @@ const Formulas = () => {
           setGeminiApiStatus('working');
         }
         
-        toast.success("AI yanıtı alındı!");
+        toast.success("AI response received!");
         setQuestion(""); // Soruyu temizle
       } else {
         throw new Error("AI yanıtı alınamadı");
@@ -103,7 +103,7 @@ const Formulas = () => {
     } catch (error) {
       console.error("AI soru-cevap hatası:", error);
       setGeminiApiStatus('error');
-      toast.error(`AI hatası: ${error.message}`);
+      toast.error(`AI error: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -258,7 +258,7 @@ const Formulas = () => {
                         <button
                           onClick={() => {
                             navigator.clipboard.writeText(aiResponse);
-                            toast.success("Yanıt kopyalandı!");
+                            toast.success("Response copied!");
                           }}
                           style={{
                             background: 'transparent',
@@ -281,7 +281,7 @@ const Formulas = () => {
                               printWindow.document.write(`
                                 <html>
                                   <head>
-                                    <title>AI Yanıtı - Maritime Calculator</title>
+                                    <title>AI Response - Maritime Calculator</title>
                                     <style>
                                       body { font-family: system-ui; padding: 40px; max-width: 800px; margin: 0 auto; }
                                       h1 { color: #0066cc; }
@@ -291,16 +291,16 @@ const Formulas = () => {
                                     </style>
                                   </head>
                                   <body>
-                                    <h1>Maritime Calculator - AI Yanıtı</h1>
+                                    <h1>Maritime Calculator - AI Response</h1>
                                     <div class="question">
-                                      <strong>Soru:</strong> ${question}
+                                      <strong>Question:</strong> ${question}
                                     </div>
                                     <div class="answer">
                                       ${aiResponse.replace(/\n/g, '<br>')}
                                     </div>
                                     <hr style="margin-top: 40px;">
                                     <p style="text-align: center; color: #666; font-size: 12px;">
-                                      ${new Date().toLocaleString('tr-TR')} - Maritime Calculator
+                                      ${new Date().toLocaleString('en-GB')} - Maritime Calculator
                                     </p>
                                   </body>
                                 </html>
@@ -332,7 +332,7 @@ const Formulas = () => {
                               }).catch(() => {});
                             } else {
                               navigator.clipboard.writeText(`Soru: ${question}\n\nCevap: ${aiResponse}`);
-                              toast.success("Paylaşım metni kopyalandı!");
+                              toast.success("Share text copied!");
                             }
                           }}
                           style={{
@@ -468,7 +468,7 @@ const Formulas = () => {
                 onClick={() => {
                   setConversationHistory([]);
                   localStorage.removeItem('aiConversationHistory');
-                  toast.success("Konuşma geçmişi temizlendi");
+                  toast.success("Conversation history cleared");
                 }}
                 className="text-muted-foreground hover:text-destructive"
               >

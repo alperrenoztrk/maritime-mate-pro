@@ -22,7 +22,7 @@ export default function ShipOperationsDetail() {
 
   return (
     <LibraryPageShell
-      title={`${ship.label} Operasyonları`}
+      title={`${ship.label} Operations`}
       icon={ClipboardList}
       backHref="/ship-operations"
       backLabel="Gemi operasyonları kitaplığına dön"

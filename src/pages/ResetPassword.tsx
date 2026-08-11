@@ -50,7 +50,7 @@ const ResetPassword = () => {
       return;
     }
     if (password !== confirm) {
-      toast.error("Şifreler eşleşmiyor");
+      toast.error("The passwords do not match");
       return;
     }
 
@@ -58,10 +58,10 @@ const ResetPassword = () => {
     try {
       const { error } = await supabase.auth.updateUser({ password });
       if (error) {
-        toast.error(error.message || "Şifre güncellenemedi");
+        toast.error(error.message || "The password could not be updated");
         return;
       }
-      toast.success("Şifreniz belirlendi. Artık e-posta ve şifre ile giriş yapabilirsiniz.");
+      toast.success("Your password is set. You can now sign in with your email and password.");
       navigate("/", { replace: true });
     } finally {
       setBusy(false);

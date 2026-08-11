@@ -58,7 +58,7 @@ export default function DraftSurveyComparative() {
     const tpc = parseFloat(vesselParticulars.tpc);
     
     if (!tpc) {
-      toast({ title: "Hata", description: "TPC değerini girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Enter the TPC value", variant: "destructive" });
       return;
     }
 
@@ -67,7 +67,7 @@ export default function DraftSurveyComparative() {
     );
 
     if (surveys.length < 2) {
-      toast({ title: "Hata", description: "En az 2 ölçüm değeri girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Enter at least 2 measurements", variant: "destructive" });
       return;
     }
 
@@ -111,7 +111,7 @@ export default function DraftSurveyComparative() {
       comparisons
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Karşılaştırmalı analiz yapıldı" });
+    toast({ title: "Calculation Complete", description: "Comparative analysis completed" });
   };
 
   return (

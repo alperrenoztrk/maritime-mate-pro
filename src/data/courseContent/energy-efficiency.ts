@@ -142,7 +142,7 @@ export const energyEfficiency: CourseTopic = {
         const fc2 = v.fc1 * Math.pow(v.v2 / v.v1, 3);
         const saving = ((v.fc1 - fc2) / v.fc1) * 100;
         return [
-          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} ton/gün` },
+          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} t/day` },
           { label: "Tasarruf", value: `${saving.toFixed(1)}%` },
         ];
       },

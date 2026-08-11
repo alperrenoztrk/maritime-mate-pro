@@ -730,7 +730,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
     } catch (error) {
       toast({
         title: "Hata",
-        description: "Hesaplama sırasında bir hata oluştu.",
+        description: "An error occurred during the calculation.",
         variant: "destructive",
       });
     }

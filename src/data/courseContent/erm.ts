@@ -150,7 +150,7 @@ export const erm: CourseTopic = {
         return [
           { label: "Vardiya Sayısı/Gün", value: `${watchesPerDay.toFixed(0)}` },
           { label: "Vardiya Başına Kişi", value: `${crewPerWatch.toFixed(1)}` },
-          { label: "Kişi Başı Görev Yükü", value: `${taskLoad.toFixed(1)} görev/kişi` },
+          { label: "Kişi Başı Görev Yükü", value: `${taskLoad.toFixed(1)} tasks/person` },
           { label: "Etkinlik Skoru", value: `${effectiveness.toFixed(0)}%` },
         ];
       },

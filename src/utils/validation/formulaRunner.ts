@@ -54,11 +54,11 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
     const keys = new Set<string>();
     for (const input of inputs) {
       if (!input.key.trim()) fail(where, "boş girdi anahtarı");
-      if (keys.has(input.key)) fail(where, `tekrarlanan girdi anahtarı: ${input.key}`);
+      if (keys.has(input.key)) fail(where, `duplicate input key: ${input.key}`);
       keys.add(input.key);
       if (!input.label.trim()) fail(where, `"${input.key}" girdi etiketi eksik`);
       if (input.placeholder === undefined || !Number.isFinite(Number(input.placeholder))) {
-        fail(where, `"${input.key}" sayısal örnek değeri eksik/geçersiz`);
+        fail(where, `"${input.key}" has a missing/invalid numeric sample value`);
       }
     }
 
@@ -83,9 +83,9 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
     }
     for (const r of results) {
       if (typeof r?.value !== "string" || r.value.trim() === "") {
-        fail(where, `sonuç "${r?.label}" boş/string değil`);
+        fail(where, `result "${r?.label}" is empty or not a string`);
       } else if (BAD_VALUE.test(r.value)) {
-        fail(where, `sonuç "${r.label}" geçersiz değer: "${r.value}"`);
+        fail(where, `result "${r.label}" has an invalid value: "${r.value}"`);
       }
     }
 
@@ -100,7 +100,7 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
           const tail = steps.slice(-results.length);
           results.forEach((r, i) => {
             if (tail[i]?.result !== r.value) {
-              fail(where, `auto-step sonucu "${r.label}" calculate ile uyuşmuyor`);
+              fail(where, `auto-step result "${r.label}" does not match calculate`);
             }
           });
         }
@@ -115,7 +115,7 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
         );
         const recordText = calculationRecordToText(record);
         for (const marker of ["GİRDİLER", "FORMÜL:", "SONUÇLAR", "İŞLEM İZİ", "KAYNAK:"]) {
-          if (!recordText.includes(marker)) fail(where, `hesap dökümünde "${marker}" eksik`);
+          if (!recordText.includes(marker)) fail(where, `"${marker}" is missing from the calculation breakdown`);
         }
         if (record.checks.some((check) => check.status === "error")) {
           fail(where, "örnek hesap dökümü hata kontrolü üretti");
@@ -138,11 +138,11 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
 
 if (failures.length) {
   const message = [
-    `Formül doğrulama BAŞARISIZ (${failures.length} sorun, ${checked} hesaplayıcı kontrol edildi):`,
+    `Formula validation FAILED (${failures.length} issues, ${checked} calculators checked):`,
     ...failures.map((f) => `- ${f}`),
   ].join("\n");
   console.error(message);
   process.exit(1);
 }
 
-console.log(`✅ Formül doğrulama geçti: ${checked} hesaplayıcı sorunsuz.`);
+console.log(`✅ Formula validation passed: ${checked} calculators clean.`);

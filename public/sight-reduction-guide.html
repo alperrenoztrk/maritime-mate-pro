@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sight Reduction Tables - Gözlem İndirgeme Tabloları</title>
+    <title>Sight Reduction Tables</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -188,63 +188,63 @@
 <body>
     <div class="container">
         <h1>SIGHT REDUCTION TABLES</h1>
-        <p class="subtitle">Gözlem İndirgeme Tabloları - HO 229 Formatı</p>
+        <p class="subtitle">Sight Reduction Tables - HO 229 Format</p>
         
         <div class="info-box">
-            <strong>Kullanım Talimatları:</strong>
+            <strong>Instructions for Use:</strong>
             <ol>
-                <li>Varsayılan konumunuzun enlemini (Latitude) tam derece olarak seçin</li>
-                <li>Gök cisminin deklinasyonunu (Declination) tam dereceye yuvarlayın</li>
-                <li>Enlem ve deklinasyon aynı yarımkürede ise SAME, farklı yarımkürelerde ise CONTRARY tablosunu kullanın</li>
-                <li>Yerel saat açısını (LHA) hesaplayın</li>
-                <li>Tablodan Hc (hesaplanmış yükseklik), d (düzeltme faktörü) ve Z (azimut) değerlerini okuyun</li>
+                <li>Select the latitude of your assumed position in whole degrees</li>
+                <li>Round the declination of the celestial body to whole degrees</li>
+                <li>Use the SAME table when latitude and declination are in the same hemisphere, and the CONTRARY table when they are in different hemispheres</li>
+                <li>Calculate the local hour angle (LHA)</li>
+                <li>Read Hc (computed altitude), d (correction factor) and Z (azimuth) from the table</li>
             </ol>
         </div>
 
-        <h2>Kısaltmalar ve Terimler</h2>
+        <h2>Abbreviations and Terms</h2>
         <div class="abbreviations">
-            <div class="abbr-item"><strong>LHA:</strong> Local Hour Angle (Yerel Saat Açısı)</div>
-            <div class="abbr-item"><strong>Dec:</strong> Declination (Deklinasyon)</div>
-            <div class="abbr-item"><strong>Hc:</strong> Computed Altitude (Hesaplanmış Yükseklik)</div>
-            <div class="abbr-item"><strong>d:</strong> Difference (Düzeltme Faktörü)</div>
-            <div class="abbr-item"><strong>Z:</strong> Azimuth Angle (Azimut Açısı)</div>
-            <div class="abbr-item"><strong>Lat:</strong> Latitude (Enlem)</div>
-            <div class="abbr-item"><strong>SAME:</strong> Enlem ve deklinasyon aynı yarımküre</div>
-            <div class="abbr-item"><strong>CONTRARY:</strong> Enlem ve deklinasyon farklı yarımküre</div>
+            <div class="abbr-item"><strong>LHA:</strong> Local Hour Angle</div>
+            <div class="abbr-item"><strong>Dec:</strong> Declination</div>
+            <div class="abbr-item"><strong>Hc:</strong> Computed Altitude</div>
+            <div class="abbr-item"><strong>d:</strong> Difference (correction factor)</div>
+            <div class="abbr-item"><strong>Z:</strong> Azimuth Angle</div>
+            <div class="abbr-item"><strong>Lat:</strong> Latitude</div>
+            <div class="abbr-item"><strong>SAME:</strong> Latitude and declination in the same hemisphere</div>
+            <div class="abbr-item"><strong>CONTRARY:</strong> Latitude and declination in different hemispheres</div>
         </div>
 
-        <h2>Gelişmiş Sight Reduction Hesaplayıcı</h2>
+        <h2>Advanced Sight Reduction Calculator</h2>
         <div class="calculator">
-            <h3>Marc St. Hilaire Metodu Hesaplayıcı</h3>
+            <h3>Marc St. Hilaire Method Calculator</h3>
             <div>
-                <label>Latitude (Enlem): 
+                <label>Latitude: 
                     <input type="number" id="lat" placeholder="40" min="-90" max="90" step="0.1">
                     <select id="lat-dir">
-                        <option value="N">N (Kuzey)</option>
-                        <option value="S">S (Güney)</option>
+                        <option value="N">N (North)</option>
+                        <option value="S">S (South)</option>
                     </select>
                 </label>
             </div>
             <div>
-                <label>Declination (Deklinasyon): 
+                <label>Declination: 
                     <input type="number" id="dec" placeholder="15" min="-90" max="90" step="0.1">
                     <select id="dec-dir">
-                        <option value="N">N (Kuzey)</option>
-                        <option value="S">S (Güney)</option>
+                        <option value="N">N (North)</option>
+                        <option value="S">S (South)</option>
                     </select>
                 </label>
             </div>
             <div>
-                <label>LHA (Yerel Saat Açısı): 
+                <label>LHA (Local Hour Angle): 
                     <input type="number" id="lha" placeholder="45" min="0" max="360" step="0.1">°
                 </label>
             </div>
             <div>
-                <label>Ho (Gözlenen Yükseklik - opsiyonel): 
+                <label>Ho (Observed Altitude - optional): 
                     <input type="number" id="ho" placeholder="45.5" min="0" max="90" step="0.1">°
                 </label>
             </div>
-            <button onclick="calculateAdvancedSight()">Hesapla</button>
+            <button onclick="calculateAdvancedSight()">Calculate</button>
             <div id="result" class="result"></div>
         </div>
 
@@ -656,13 +656,13 @@
             </table>
         </div>
 
-        <h2>İnterpolasyon Tabloları</h2>
+        <h2>Interpolation Tables</h2>
         
-        <h3>Deklinasyon İnterpolasyonu (d faktörü)</h3>
+        <h3>Declination Interpolation (d factor)</h3>
         <table style="max-width: 800px;">
             <thead>
                 <tr>
-                    <th>d değeri</th>
+                    <th>d value</th>
                     <th>0.1°</th>
                     <th>0.2°</th>
                     <th>0.3°</th>
@@ -684,38 +684,38 @@
             </tbody>
         </table>
 
-        <h3>Azimut Dönüşüm Kuralları</h3>
+        <h3>Azimuth Conversion Rules</h3>
         <div class="info-box">
-            <p><strong>Z'den Gerçek Azimut'a (Zn) Dönüşüm:</strong></p>
+            <p><strong>Converting Z to True Azimuth (Zn):</strong></p>
             <ul>
-                <li><strong>Kuzey Enlemi, LHA < 180°:</strong> Zn = Z</li>
-                <li><strong>Kuzey Enlemi, LHA > 180°:</strong> Zn = 360° - Z</li>
-                <li><strong>Güney Enlemi, LHA < 180°:</strong> Zn = 180° - Z</li>
-                <li><strong>Güney Enlemi, LHA > 180°:</strong> Zn = 180° + Z</li>
+                <li><strong>North latitude, LHA &lt; 180°:</strong> Zn = Z</li>
+                <li><strong>North latitude, LHA &gt; 180°:</strong> Zn = 360° - Z</li>
+                <li><strong>South latitude, LHA &lt; 180°:</strong> Zn = 180° - Z</li>
+                <li><strong>South latitude, LHA &gt; 180°:</strong> Zn = 180° + Z</li>
             </ul>
         </div>
 
         <div class="warning-box">
-            <strong>Önemli Notlar:</strong>
+            <strong>Important Notes:</strong>
             <ul>
-                <li>Bu tablolar eğitim amaçlıdır ve gerçek değerlerden küçük sapmalar gösterebilir</li>
-                <li>Gerçek navigasyon için resmi Sight Reduction Tables (HO 229, HO 249, veya NP 401) kullanınız</li>
-                <li>Yüksek enlemlerde (>70°) ve çok düşük yüksekliklerde (<10°) hesaplama hassasiyeti azalır</li>
-                <li>Tablolar arasında geçiş yaparken interpolasyon gerekebilir</li>
+                <li>These tables are for training purposes and may deviate slightly from the official values</li>
+                <li>For real navigation use the official Sight Reduction Tables (HO 229, HO 249 or NP 401)</li>
+                <li>Accuracy falls off at high latitudes (&gt;70°) and at very low altitudes (&lt;10°)</li>
+                <li>Interpolation may be needed when moving between tables</li>
             </ul>
         </div>
 
-        <h2>Formüller ve Teorik Bilgi</h2>
+        <h2>Formulas and Theory</h2>
         <div class="formula">
-            <strong>Temel Sight Reduction Formülü:</strong><br>
+            <strong>Basic Sight Reduction Formula:</strong><br>
             sin(Hc) = sin(Lat) × sin(Dec) + cos(Lat) × cos(Dec) × cos(LHA)
         </div>
         <div class="formula">
-            <strong>Azimut Formülü:</strong><br>
+            <strong>Azimuth Formula:</strong><br>
             cos(Z) = (sin(Dec) - sin(Lat) × sin(Hc)) / (cos(Lat) × cos(Hc))
         </div>
         <div class="formula">
-            <strong>İntersepta (a) Hesaplama:</strong><br>
+            <strong>Intercept (a) Calculation:</strong><br>
             a = Ho - Hc (dakika cinsinden)
         </div>
     </div>
@@ -723,18 +723,18 @@
     <script>
         function showTable(tableId, event) {
             const evt = event || window.event;
-            // Tüm tabloları gizle
+            // Hide all tables
             const tables = document.querySelectorAll('.table-section');
             tables.forEach(table => table.classList.remove('active'));
             
-            // Tüm butonlardan active sınıfını kaldır
+            // Remove the active class from every button
             const buttons = document.querySelectorAll('.table-navigation button');
             buttons.forEach(button => button.classList.remove('active'));
             
-            // Seçilen tabloyu göster
+            // Show the selected table
             document.getElementById(tableId).classList.add('active');
             
-            // Tıklanan butona active sınıfı ekle
+            // Add the active class to the clicked button
             if (evt && evt.target) {
                 evt.target.classList.add('active');
             }
@@ -748,14 +748,14 @@
             const lha = parseFloat(document.getElementById('lha').value) || 0;
             const ho = parseFloat(document.getElementById('ho').value) || null;
             
-            // Enlem ve deklinasyonu işaretli değerlere çevir
+            // Convert latitude and declination to signed values
             const latSigned = latDir === 'S' ? -lat : lat;
             const decSigned = decDir === 'S' ? -dec : dec;
             
             // Same/Contrary belirleme
             const sameContrary = (latDir === decDir) ? 'SAME' : 'CONTRARY';
             
-            // Dereceyi radyana çevir
+            // Convert degrees to radians
             const toRad = (deg) => deg * Math.PI / 180;
             const toDeg = (rad) => rad * 180 / Math.PI;
             
@@ -786,19 +786,19 @@
                       (Math.cos(latRad) * Math.cos(hcRad));
             }
             
-            // cosZ değerini -1 ile 1 arasında sınırla
+            // Clamp cosZ between -1 and 1
             cosZ = Math.max(-1, Math.min(1, cosZ));
             let z = toDeg(Math.acos(Math.abs(cosZ)));
             
-            // Gerçek Azimut (Zn) hesapla
+            // Compute the true azimuth (Zn)
             let zn;
-            if (latSigned >= 0) { // Kuzey enlemi
+            if (latSigned >= 0) { // North latitude
                 if (lha < 180) {
                     zn = z;
                 } else {
                     zn = 360 - z;
                 }
-            } else { // Güney enlemi
+            } else { // South latitude
                 if (lha < 180) {
                     zn = 180 - z;
                 } else {
@@ -806,7 +806,7 @@
                 }
             }
             
-            // İntersepta hesapla (eğer Ho verilmişse)
+            // Compute the intercept (when Ho is supplied)
             let intercepta = null;
             let direction = '';
             if (ho !== null) {
@@ -814,24 +814,24 @@
                 direction = intercepta >= 0 ? 'TOWARD' : 'AWAY';
             }
             
-            // Sonuçları göster
+            // Show the results
             const resultDiv = document.getElementById('result');
             resultDiv.style.display = 'block';
             resultDiv.innerHTML = `
-                <h4>Hesaplama Sonuçları:</h4>
-                <p><strong>Enlem/Deklinasyon Durumu:</strong> ${sameContrary}</p>
-                <p><strong>Hc (Hesaplanmış Yükseklik):</strong> ${hc >= 0 ? hc.toFixed(1) : 'Gök cismi ufkun altında'}</p>
-                <p><strong>Z (Azimut Açısı):</strong> ${z.toFixed(1)}°</p>
-                <p><strong>Zn (Gerçek Azimut):</strong> ${zn.toFixed(1)}°</p>
+                <h4>Calculation Results:</h4>
+                <p><strong>Latitude/Declination Relation:</strong> ${sameContrary}</p>
+                <p><strong>Hc (Computed Altitude):</strong> ${hc >= 0 ? hc.toFixed(1) : 'Body below the horizon'}</p>
+                <p><strong>Z (Azimuth Angle):</strong> ${z.toFixed(1)}°</p>
+                <p><strong>Zn (True Azimuth):</strong> ${zn.toFixed(1)}°</p>
                 ${ho !== null ? `
-                    <p><strong>Ho (Gözlenen Yükseklik):</strong> ${ho.toFixed(1)}°</p>
-                    <p><strong>İntersepta (a):</strong> ${Math.abs(intercepta).toFixed(1)}′ ${direction}</p>
-                    <p><strong>Konum Hattı:</strong> ${direction === 'TOWARD' ? 'Gök cismine doğru' : 'Gök cisminden uzağa'} ${Math.abs(intercepta).toFixed(1)} deniz mili</p>
+                    <p><strong>Ho (Observed Altitude):</strong> ${ho.toFixed(1)}°</p>
+                    <p><strong>Intercept (a):</strong> ${Math.abs(intercepta).toFixed(1)}′ ${direction}</p>
+                    <p><strong>Line of Position:</strong> ${direction === 'TOWARD' ? 'towards the body' : 'away from the body'} ${Math.abs(intercepta).toFixed(1)} nautical miles</p>
                 ` : ''}
                 <hr>
                 <p style="font-size: 0.9em; color: #666;">
-                    <strong>Not:</strong> Bu hesaplama küresel trigonometri formülleri kullanılarak yapılmıştır. 
-                    Gerçek tablolardan küçük farklılıklar gösterebilir.
+                    <strong>Note:</strong> This calculation uses spherical trigonometry formulas. 
+                    It may differ slightly from the official tables.
                 </p>
             `;
         }

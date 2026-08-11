@@ -226,7 +226,7 @@ const EmptyPage = () => {
   const nationalTime = useMemo(() => {
     const tz = data?.timezoneId;
     try {
-      return currentTime.toLocaleTimeString("tr-TR", {
+      return currentTime.toLocaleTimeString("en-GB", {
         timeZone: tz,
         hour: "2-digit",
         minute: "2-digit",
@@ -234,7 +234,7 @@ const EmptyPage = () => {
         hour12: false,
       });
     } catch {
-      return currentTime.toLocaleTimeString("tr-TR", {
+      return currentTime.toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
@@ -264,13 +264,13 @@ const EmptyPage = () => {
   const sunriseTime = useMemo(() => {
     if (!data?.sunriseIso) return "—";
     const sunrise = new Date(data.sunriseIso);
-    return sunrise.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false });
+    return sunrise.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false });
   }, [data?.sunriseIso]);
 
   const sunsetTime = useMemo(() => {
     if (!data?.sunsetIso) return "—";
     const sunset = new Date(data.sunsetIso);
-    return sunset.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false });
+    return sunset.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false });
   }, [data?.sunsetIso]);
 
   if (loading) {

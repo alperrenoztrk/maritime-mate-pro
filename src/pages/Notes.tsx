@@ -23,7 +23,7 @@ import {
 
 function formatDate(ts: number): string {
   try {
-    return new Date(ts).toLocaleDateString("tr-TR", {
+    return new Date(ts).toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",
       year: "numeric",

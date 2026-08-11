@@ -375,7 +375,7 @@ export function getExerciseQuestionDistribution(
 
   if (assignedQuestions !== questions.length) {
     throw new Error(
-      `Alıştırma soru dağıtımı eksik: ${categoryId} için ${questions.length} sorudan ${assignedQuestions} tanesi atandı.`,
+      `Exercise question distribution incomplete: ${assignedQuestions} of ${questions.length} questions assigned for ${categoryId}.`,
     );
   }
 

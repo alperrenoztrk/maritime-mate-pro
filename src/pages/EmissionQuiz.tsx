@@ -151,9 +151,9 @@ export default function EmissionQuiz() {
 
     if (answerIndex === questions[currentQuestion].correctAnswer) {
       setScore(score + 1);
-      toast.success("Doğru!");
+      toast.success("Correct!");
     } else {
-      toast.error("Yanlış!");
+      toast.error("Wrong!");
     }
   };
 

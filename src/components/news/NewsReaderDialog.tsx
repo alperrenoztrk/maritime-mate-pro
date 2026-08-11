@@ -120,7 +120,7 @@ async function fetchArticleContent(url: string): Promise<{
       // The server was reached but the article itself is unavailable; retrying
       // another endpoint of the same function won't help.
       const text = await res.text().catch(() => "");
-      let errorMsg = `Makale alınamadı (${res.status})`;
+      let errorMsg = `Could not fetch the article (${res.status})`;
       try {
         const parsed = JSON.parse(text);
         if (parsed.error) errorMsg = parsed.error;
@@ -230,7 +230,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
 
   const summary = softHyphenate(stripHtml(item?.summary));
   const heroImage = toProxyImageUrl(item?.imageUrl) ?? normalizeImageUrl(item?.imageUrl);
-  const pageDate = new Date().toLocaleDateString(currentLanguage || "tr", {
+  const pageDate = new Date().toLocaleDateString(currentLanguage || "en-GB", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -322,7 +322,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                     />
                   </span>
                   <figcaption className="gz-caption">
-                    {item?.source ? `Fotoğraf: ${item.source}` : "Arşiv fotoğrafı"}
+                    {item?.source ? `Photo: ${item.source}` : "Arşiv fotoğrafı"}
                   </figcaption>
                 </figure>
               ) : null}

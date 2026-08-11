@@ -1,3 +1,5 @@
+import { SOURCE_LANGUAGE } from './pageTranslator';
+
 /**
  * Stable identity for a rendered route in a specific application language.
  *
@@ -41,7 +43,7 @@ export const isRouteTranslationReady = (
   language: string,
   routeToken: string,
   readyRoutes: ReadonlySet<string> | null,
-): boolean => language === 'tr' || !!readyRoutes?.has(routeToken);
+): boolean => language === SOURCE_LANGUAGE || !!readyRoutes?.has(routeToken);
 
 /**
  * How many route tokens stay marked ready. Only the screens currently mounted

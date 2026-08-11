@@ -11,12 +11,12 @@ function formatRelative(iso?: string): string {
   if (Number.isNaN(date.getTime())) return "";
   const diffMinutes = Math.round((Date.now() - date.getTime()) / 60_000);
   if (diffMinutes < 1) return "şimdi";
-  if (diffMinutes < 60) return `${diffMinutes} dk önce`;
+  if (diffMinutes < 60) return `${diffMinutes} min ago`;
   const hours = Math.round(diffMinutes / 60);
-  if (hours < 24) return `${hours} sa önce`;
+  if (hours < 24) return `${hours} h ago`;
   const days = Math.round(hours / 24);
-  if (days < 7) return `${days} gün önce`;
-  return date.toLocaleDateString("tr-TR", { day: "2-digit", month: "short" });
+  if (days < 7) return `${days} d ago`;
+  return date.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
 }
 
 function proxyImage(url?: string): string | undefined {

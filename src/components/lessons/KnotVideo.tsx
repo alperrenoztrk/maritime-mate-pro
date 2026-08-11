@@ -32,7 +32,7 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
           <iframe
             className="absolute inset-0 h-full w-full"
             src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-            title={`${title} — bağ atma videosu`}
+            title={`${title} — knot-tying video`}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             loading="lazy"
@@ -42,12 +42,12 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
             type="button"
             onClick={() => setPlaying(true)}
             className="group absolute inset-0 h-full w-full"
-            aria-label={`${title} bağ atma videosunu oynat`}
+            aria-label={`Play the ${title} knot-tying video`}
           >
             <img
               src={thumbFailed ? poster : thumb}
               onError={() => setThumbFailed(true)}
-              alt={`${title} bağının önizlemesi`}
+              alt={`Preview of the ${title} knot`}
               className={`h-full w-full ${thumbFailed ? "bg-white object-contain" : "object-cover"}`}
               loading="lazy"
             />

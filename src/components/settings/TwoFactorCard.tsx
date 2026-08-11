@@ -42,7 +42,7 @@ export const TwoFactorCard = () => {
     try {
       const { data, error } = await startEnrollment();
       if (error || !data) {
-        toast.error(error?.message || "İki adımlı doğrulama başlatılamadı");
+        toast.error(error?.message || "Two-factor authentication could not be started");
         return;
       }
       setEnrollment(data);
@@ -59,11 +59,11 @@ export const TwoFactorCard = () => {
     try {
       const { error } = await confirmEnrollment(enrollment.factorId, code);
       if (error) {
-        toast.error("Kod doğrulanamadı. Uygulamadaki güncel kodu girin.");
+        toast.error("The code could not be verified. Enter the current code from the app.");
         setCode("");
         return;
       }
-      toast.success("İki adımlı doğrulama açıldı");
+      toast.success("Two-factor authentication enabled");
       setEnrollment(null);
       setCode("");
       await refresh();
@@ -77,10 +77,10 @@ export const TwoFactorCard = () => {
     try {
       const { error } = await removeFactor(factorId);
       if (error) {
-        toast.error(error.message || "İki adımlı doğrulama kapatılamadı");
+        toast.error(error.message || "Two-factor authentication could not be disabled");
         return;
       }
-      toast.success("İki adımlı doğrulama kapatıldı");
+      toast.success("Two-factor authentication disabled");
       await refresh();
     } finally {
       setBusy(false);

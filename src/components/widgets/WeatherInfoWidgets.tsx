@@ -230,7 +230,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                       <WeatherIcon code={day.weatherCode} ranged className="h-8 w-8" />
                       <div>
                         <div className="font-semibold">
-                          {new Date(day.date).toLocaleDateString('tr-TR', { 
+                          {new Date(day.date).toLocaleDateString('en-GB', { 
                             weekday: 'short', 
                             day: 'numeric', 
                             month: 'short' 
@@ -273,7 +273,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
-              {selectedDate && `${new Date(selectedDate).toLocaleDateString('tr-TR', { 
+              {selectedDate && `${new Date(selectedDate).toLocaleDateString('en-GB', { 
                 weekday: 'long', 
                 day: 'numeric', 
                 month: 'long',
@@ -299,14 +299,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                       dataKey="time" 
-                      tickFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                      tickFormatter={(time) => new Date(time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                       angle={-45}
                       textAnchor="end"
                       height={60}
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(time).toLocaleTimeString('en-GB')}
                       formatter={(value: number) => [`${value.toFixed(1)}°C`, 'Sıcaklık']}
                     />
                     <Line 
@@ -332,14 +332,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                       dataKey="time" 
-                      tickFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                      tickFormatter={(time) => new Date(time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                       angle={-45}
                       textAnchor="end"
                       height={60}
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(time).toLocaleTimeString('en-GB')}
                       formatter={(value: number) => [`${value.toFixed(0)}%`, 'Nem']}
                     />
                     <Line 
@@ -365,14 +365,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                       dataKey="time" 
-                      tickFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                      tickFormatter={(time) => new Date(time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                       angle={-45}
                       textAnchor="end"
                       height={60}
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(time).toLocaleTimeString('en-GB')}
                       formatter={(value: number) => [`${value.toFixed(1)} kt`, 'Rüzgar']}
                     />
                     <Line 
@@ -398,14 +398,14 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                       dataKey="time" 
-                      tickFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                      tickFormatter={(time) => new Date(time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                       angle={-45}
                       textAnchor="end"
                       height={60}
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(time).toLocaleTimeString('en-GB')}
                       formatter={(value: number) => [`${value.toFixed(1)} mm`, 'Yağış']}
                     />
                     <Line 
@@ -427,7 +427,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                   {hourlyData.map((hour, index) => (
                     <Card key={index} className="p-3">
                       <div className="text-xs font-semibold text-center mb-2">
-                        {new Date(hour.time).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                        {new Date(hour.time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                       </div>
                       <div className="flex justify-center mb-1">
                         <WeatherIcon code={hour.weatherCode} ranged className="h-6 w-6" />

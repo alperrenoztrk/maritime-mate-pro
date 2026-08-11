@@ -44,7 +44,7 @@ export default function DraftSurveyPostdischarge() {
     if (!beforeDischarge.forward || !beforeDischarge.midship || !beforeDischarge.aft ||
         !afterDischarge.forward || !afterDischarge.midship || !afterDischarge.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Hata", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -71,7 +71,7 @@ export default function DraftSurveyPostdischarge() {
       remainingCargo: actualRemaining
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Boşaltma sonrası analiz yapıldı" });
+    toast({ title: "Calculation Complete", description: "Post-discharge analysis completed" });
   };
 
   return (

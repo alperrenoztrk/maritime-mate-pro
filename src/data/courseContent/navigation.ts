@@ -78,7 +78,7 @@ export const navigation: CourseTopic = {
         const eta = (v.etd + sailing) % 24;
         return [
           { label: "Seyir Süresi", value: `${sailing.toFixed(2)} sa` },
-          { label: "ETA", value: `${eta.toFixed(2)} sa (24 sa formatı)` },
+          { label: "ETA", value: `${eta.toFixed(2)} h (24 h format)` },
         ];
       },
     },
@@ -739,7 +739,7 @@ export const navigation: CourseTopic = {
           {
             title: "Dip'i çıkar",
             expression: `${afterIe.toFixed(1)} ′ − ${v.dip} ′`,
-            result: `${afterDip.toFixed(1)} ′  (görünen irtifa, Ha)`,
+            result: `${afterDip.toFixed(1)} ′  (apparent altitude, Ha)`,
           },
           {
             title: "Ana düzeltmeyi (R) uygula",
@@ -844,7 +844,7 @@ export const navigation: CourseTopic = {
         return [
           {
             title: "Verileri yerleştir",
-            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, yön = ${v.bearing >= 0 ? "Zenit güneyde" : "Zenit kuzeyde"}`,
+            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, direction = ${v.bearing >= 0 ? "Zenith to the south" : "Zenith to the north"}`,
             hint: "Öğle boyu (meridyen geçişi) anında cisim gözlemcinin meridyenindedir.",
           },
           {

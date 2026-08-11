@@ -46,7 +46,7 @@ export default function DraftSurveyIntermediate() {
     if (!initialDrafts.forward || !initialDrafts.midship || !initialDrafts.aft ||
         !intermediateDrafts.forward || !intermediateDrafts.midship || !intermediateDrafts.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Hata", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -73,7 +73,7 @@ export default function DraftSurveyIntermediate() {
     const remainingHours = handlingRate > 0 ? remainingCargo / handlingRate : 0;
     
     const completionTime = new Date(intermediateTime.getTime() + (remainingHours * 60 * 60 * 1000));
-    const estimatedCompletion = completionTime.toLocaleTimeString('tr-TR', { 
+    const estimatedCompletion = completionTime.toLocaleTimeString('en-GB', { 
       hour: '2-digit', 
       minute: '2-digit' 
     });
@@ -91,7 +91,7 @@ export default function DraftSurveyIntermediate() {
       projectedFinalDraft
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Ara draft analizi yapıldı" });
+    toast({ title: "Calculation Complete", description: "Intermediate draft analysis completed" });
   };
 
   return (

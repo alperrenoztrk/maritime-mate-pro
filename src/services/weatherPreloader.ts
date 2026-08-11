@@ -226,7 +226,7 @@ class WeatherPreloader {
     weatherUrl.searchParams.set("timezone", "auto");
 
     const res = await fetch(weatherUrl.toString());
-    if (!res.ok) throw new Error(`Hava verisi alınamadı (${res.status})`);
+    if (!res.ok) throw new Error(`Could not fetch weather data (${res.status})`);
     const json = (await res.json()) as WeatherResponse;
     const cur = json.current ?? {};
     const sunriseIso = json.daily?.sunrise?.[0];
@@ -257,7 +257,7 @@ class WeatherPreloader {
       const reverseUrl = new URL("https://api.bigdatacloud.net/data/reverse-geocode-client");
       reverseUrl.searchParams.set("latitude", String(lat));
       reverseUrl.searchParams.set("longitude", String(lon));
-      reverseUrl.searchParams.set("localityLanguage", "tr");
+      reverseUrl.searchParams.set("localityLanguage", "en");
       const res = await fetch(reverseUrl.toString());
       if (!res.ok) return null;
       const reverseJson = (await res.json()) as BigDataCloudReverse;

@@ -144,7 +144,7 @@ export const NAVTEXWarnings = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m&hourly=wind_speed_10m,wind_gusts_10m,wave_height,wave_direction&forecast_days=3&wind_speed_unit=kn`
       );
       
-      if (!response.ok) throw new Error('Hava durumu verileri alınamadı');
+      if (!response.ok) throw new Error('Could not fetch weather data');
       
       const data = await response.json() as OpenMeteoMarineWeather;
       
@@ -153,14 +153,14 @@ export const NAVTEXWarnings = () => {
       setMessages(generatedMessages);
       
       toast({
-        title: "NAVTEX Mesajları Güncellendi",
-        description: `${selectedStation} istasyonu için ${generatedMessages.length} mesaj alındı`,
+        title: "NAVTEX Messages Updated",
+        description: `${generatedMessages.length} messages received for station ${selectedStation}`,
       });
     } catch (error) {
       console.error('Weather alerts error:', error);
       toast({
         title: "Hata",
-        description: "Hava durumu uyarıları alınamadı",
+        description: "Weather warnings could not be retrieved",
         variant: "destructive",
       });
     } finally {
@@ -298,7 +298,7 @@ export const NAVTEXWarnings = () => {
                           </span>
                           <span className="flex items-center gap-1">
                             <Clock className="h-3 w-3" />
-                            {new Date(message.timestamp).toLocaleString('tr-TR')}
+                            {new Date(message.timestamp).toLocaleString('en-GB')}
                           </span>
                         </div>
                       </div>
@@ -309,8 +309,8 @@ export const NAVTEXWarnings = () => {
                       {message.content}
                     </div>
                     <div className="mt-3 pt-3 border-t flex items-center justify-between text-xs text-muted-foreground">
-                      <span>Geçerlilik: {new Date(message.validFrom).toLocaleString('tr-TR')}</span>
-                      <span>Bitiş: {new Date(message.validUntil).toLocaleString('tr-TR')}</span>
+                      <span>Geçerlilik: {new Date(message.validFrom).toLocaleString('en-GB')}</span>
+                      <span>Bitiş: {new Date(message.validUntil).toLocaleString('en-GB')}</span>
                     </div>
                   </CardContent>
                 </Card>

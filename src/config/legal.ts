@@ -12,14 +12,17 @@
 export const PRIVACY_POLICY_URL = "https://nauticalleap.com/privacy-policy.html";
 
 /**
- * Play Console → Data safety → Data deletion alanına girilecek adres.
+ * The URL to enter in Play Console → Data safety → Data deletion.
  *
- * Politikanın tamamı yerine doğrudan "Hesap ve Veri Silme" bölümüne iner;
- * inceleyen kişinin silme yönteminde sayfayı taraması gerekmez. Anchor,
- * privacy-policy.html'deki `id="hesap-ve-veri-silme"` başlığına bağlıdır —
- * başlık id'si değişirse burası da güncellenmeli.
+ * It lands directly on the "Account and Data Deletion" section instead of the
+ * whole policy, so a reviewer does not have to scan the page for the deletion
+ * method. The anchor tracks the `id="account-and-data-deletion"` heading in
+ * privacy-policy.html — update this if that heading id changes.
+ *
+ * NOTE: the app ships English-only, so this points at the English section. The
+ * matching field in Play Console has to be updated by hand to stay in sync.
  */
-export const DATA_DELETION_URL = `${PRIVACY_POLICY_URL}#hesap-ve-veri-silme`;
+export const DATA_DELETION_URL = `${PRIVACY_POLICY_URL}#account-and-data-deletion`;
 
 /**
  * Kullanım şartları. Abonelik koşulları (otomatik yenileme, iptal, iade),
@@ -30,25 +33,26 @@ export const DATA_DELETION_URL = `${PRIVACY_POLICY_URL}#hesap-ve-veri-silme`;
 export const TERMS_OF_USE_URL = "https://nauticalleap.com/terms-of-use.html";
 
 /**
- * Yasal sayfaların dile göre doğru bölümüne inen adresi üretir.
+ * Builds the address that lands on the readable section of a legal page.
  *
- * Her iki doküman da tek sayfada önce Türkçe, sonra İngilizce metni taşır.
- * Uygulamanın varsayılan dili İngilizce (bkz. LanguageContext'teki
- * DEFAULT_LANGUAGE), dolayısıyla adresi olduğu gibi vermek ilk kez açan
- * kullanıcıyı okuyamayacağı Türkçe metnin başına indirir. Türkçe dışındaki
- * her dilde İngilizce bölüme (`#en`) inilir — desteklenen diğer diller için
- * ayrı çeviri bulunmadığından İngilizce en yakın okunabilir karşılıktır.
+ * Both documents carry more than one language on a single page. The app is
+ * English-only, so every link jumps to the English section (`#en`) rather than
+ * to the top of the page — no supported interface language has its own
+ * translation of these documents, and English is the closest readable match.
+ *
+ * The `language` parameter is kept so callers can stay language-aware if a
+ * translated legal page is published later.
  */
-function localizedLegalUrl(baseUrl: string, language: string): string {
-  return language === "tr" ? baseUrl : `${baseUrl}#en`;
+function localizedLegalUrl(baseUrl: string, _language: string): string {
+  return `${baseUrl}#en`;
 }
 
-/** Gizlilik politikasının, verilen dile uygun bölümüne inen adresi. */
+/** Address of the privacy policy, on its readable section. */
 export function getPrivacyPolicyUrl(language: string): string {
   return localizedLegalUrl(PRIVACY_POLICY_URL, language);
 }
 
-/** Kullanım şartlarının, verilen dile uygun bölümüne inen adresi. */
+/** Address of the terms of use, on its readable section. */
 export function getTermsOfUseUrl(language: string): string {
   return localizedLegalUrl(TERMS_OF_USE_URL, language);
 }

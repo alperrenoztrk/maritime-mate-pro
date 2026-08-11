@@ -18,10 +18,10 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
     const text = steps
       .flatMap((step) => [
         `${step.step}. ${step.title}`,
-        `Formül: ${step.formula}`,
+        `Formula: ${step.formula}`,
         step.substitution ? `Yerine koyma: ${step.substitution}` : "",
-        step.result ? `Sonuç: ${step.result}` : "",
-        step.explanation ? `Açıklama: ${step.explanation}` : "",
+        step.result ? `Result: ${step.result}` : "",
+        step.explanation ? `Explanation: ${step.explanation}` : "",
       ])
       .filter(Boolean)
       .join("\n");
@@ -40,7 +40,7 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
       <div className="flex flex-wrap items-center gap-2">
         <CollapsibleTrigger className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-md py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 dark:text-blue-400 dark:hover:bg-blue-900/20 dark:hover:text-blue-300">
           <ListOrdered className="h-4 w-4" />
-          {isOpen ? `İşlem zincirini gizle (${steps.length} adım)` : `İşlem zincirini göster (${steps.length} adım)`}
+          {isOpen ? `Hide the calculation chain (${steps.length} steps)` : `Show the calculation chain (${steps.length} steps)`}
           {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
         </CollapsibleTrigger>
         <Button type="button" size="sm" variant="ghost" className="h-8 gap-1.5 text-xs" onClick={copySteps}>

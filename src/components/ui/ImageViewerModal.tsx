@@ -95,7 +95,7 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
             <div className="flex flex-col items-center justify-center gap-3 rounded-xl bg-white/5 p-10 text-white/80">
               <ImageOff className="h-12 w-12 opacity-70" />
               <span className="max-w-xs text-center text-sm">
-                {alt ? `Görsel yüklenemedi: ${alt}` : "Görsel yüklenemedi"}
+                {alt ? `Image could not be loaded: ${alt}` : "Görsel yüklenemedi"}
               </span>
             </div>
           ) : (

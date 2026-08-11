@@ -77,10 +77,10 @@ export default function BetaPscChecklist() {
   };
 
   const handleReset = () => {
-    if (!window.confirm("Tüm işaretlemeler silinsin mi?")) return;
+    if (!window.confirm("Clear all check marks?")) return;
     clearState();
     setState({});
-    toast.success("Kontrol listesi sıfırlandı.");
+    toast.success("The checklist was reset.");
   };
 
   const handleExport = async () => {
@@ -92,7 +92,7 @@ export default function BetaPscChecklist() {
       toast.success("Rapor indirildi.");
     } catch (e) {
       console.error(e);
-      toast.error("Rapor oluşturulamadı.");
+      toast.error("The report could not be generated.");
     } finally {
       setExporting(false);
     }

@@ -81,14 +81,14 @@ export const StableTalesCalculator = () => {
       
       // Status mesajı
       if (calculationResults.solas_uygunluk.genel_uygunluk) {
-        toast.success("Tüm SOLAS kriterleri sağlandı!");
+        toast.success("All SOLAS criteria are met!");
       } else {
-        toast.error("Bazı SOLAS kriterleri sağlanmadı!");
+        toast.error("Some SOLAS criteria are not met!");
       }
       
     } catch (error) {
       console.error("Calculation error:", error);
-      toast.error("Hesaplama sırasında bir hata oluştu!");
+      toast.error("An error occurred during the calculation!");
     }
   };
 

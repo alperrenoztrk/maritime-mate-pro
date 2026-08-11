@@ -67,11 +67,11 @@ export function validateCalculationInputs(
       return;
     }
     if (input.min !== undefined && value < input.min) {
-      errors[input.key] = `En küçük değer ${input.min}${input.unit ? ` ${input.unit}` : ""}.`;
+      errors[input.key] = `Minimum value ${input.min}${input.unit ? ` ${input.unit}` : ""}.`;
       return;
     }
     if (input.max !== undefined && value > input.max) {
-      errors[input.key] = `En büyük değer ${input.max}${input.unit ? ` ${input.unit}` : ""}.`;
+      errors[input.key] = `Maximum value ${input.max}${input.unit ? ` ${input.unit}` : ""}.`;
       return;
     }
 
@@ -109,7 +109,7 @@ export function buildCalculationRecord(
     {
       label: "Girdi bütünlüğü",
       status: inputs.length >= (entry.inputs ?? []).filter(isRequired).length ? "pass" : "warning",
-      detail: `${inputs.length}/${(entry.inputs ?? []).length} alan sayısal olarak işlendi.`,
+      detail: `${inputs.length}/${(entry.inputs ?? []).length} fields processed as numeric.`,
     },
     {
       label: "Formül izi",
@@ -126,7 +126,7 @@ export function buildCalculationRecord(
       status: hasCalculationError(results) ? "error" : "pass",
       detail: hasCalculationError(results)
         ? "Hesap motoru hata veya sonlu olmayan çıktı bildirdi."
-        : `${results.length} sonuç satırı üretildi.`,
+        : `${results.length} result rows produced.`,
     },
   ];
 
@@ -160,7 +160,7 @@ export function calculationRecordToText(record: CalculationRecord): string {
       (input) => `${input.label}: ${input.value}${input.unit ? ` ${input.unit}` : ""}`,
     ),
     "",
-    `FORMÜL: ${record.formula}`,
+    `FORMULA: ${record.formula}`,
     "",
     "SONUÇLAR",
     ...record.results.map((result) => `${result.label}: ${result.value}`),
@@ -169,7 +169,7 @@ export function calculationRecordToText(record: CalculationRecord): string {
     ...record.steps.flatMap((step, index) => [
       `${index + 1}. ${step.title}`,
       step.expression ? `   ${step.expression}` : "",
-      step.result ? `   Sonuç: ${step.result}` : "",
+      step.result ? `   Result: ${step.result}` : "",
       step.hint ? `   Not: ${step.hint}` : "",
     ]).filter(Boolean),
     "",

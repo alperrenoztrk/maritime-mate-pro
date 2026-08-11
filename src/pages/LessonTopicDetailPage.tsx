@@ -33,7 +33,7 @@ export default function LessonTopicDetailPage() {
     title: decodedTitleOrId || "Konu Detayı",
     sourceTitle: decodedTitleOrId,
     introduction: decodedTitleOrId
-      ? `${decodedTitleOrId} konusuna ilişkin temel kavramlar, formüller ve uygulama örnekleri.`
+      ? `Core concepts, formulas and worked examples for ${decodedTitleOrId}.`
       : "Konu detayı.",
     sections: [],
   };

@@ -79,7 +79,7 @@ const degrade = (reason: string, err?: unknown) => {
   if (degradedToLocalStorage) return;
   degradedToLocalStorage = true;
   console.warn(
-    `[secureSessionStorage] Güvenli depolama devre dışı (${reason}); ` +
+    `[secureSessionStorage] Secure storage is disabled (${reason}); ` +
       "oturum jetonu localStorage'a yazılacak.",
     err,
   );

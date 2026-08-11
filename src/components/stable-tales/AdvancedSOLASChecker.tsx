@@ -164,14 +164,14 @@ export const AdvancedSOLASChecker = () => {
       setCriteriaResults(finalResults);
       
       if (finalResults.overall.compliant) {
-        toast.success(`Tüm SOLAS kriterleri sağlandı! Genel skor: ${overallScore.toFixed(1)}%`);
+        toast.success(`All SOLAS criteria met! Overall score: ${overallScore.toFixed(1)}%`);
       } else {
-        toast.error(`${totalCriteria - passedCriteria} SOLAS kriteri başarısız! Genel skor: ${overallScore.toFixed(1)}%`);
+        toast.error(`${totalCriteria - passedCriteria} SOLAS criteria failed! Overall score: ${overallScore.toFixed(1)}%`);
       }
       
     } catch (error) {
       console.error("SOLAS check error:", error);
-      toast.error("SOLAS kriterleri kontrolü sırasında bir hata oluştu!");
+      toast.error("An error occurred while checking the SOLAS criteria!");
     }
   };
 

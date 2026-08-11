@@ -51,10 +51,10 @@ export function CourseQuiz({
     if (idx === question.correctAnswer) {
       setCorrect((count) => count + 1);
       hapticNotify("success");
-      toast.success("Doğru!");
+      toast.success("Correct!");
     } else {
       hapticNotify("error");
-      toast.error("Yanlış!");
+      toast.error("Wrong!");
     }
   };
 

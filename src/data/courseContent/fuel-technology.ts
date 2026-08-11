@@ -193,7 +193,7 @@ export const fuelTechnology: CourseTopic = {
         const total = daily * v.days;
         const withMargin = total * (1 + v.margin / 100);
         return [
-          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} ton/gün` },
+          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} t/day` },
           { label: "Toplam İhtiyaç", value: `${total.toFixed(1)} ton` },
           { label: "Güvenlik Payı Dahil", value: `${withMargin.toFixed(1)} ton` },
         ];

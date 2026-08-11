@@ -128,7 +128,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
     if (!operation.tankFrom || !operation.tankTo || !operation.volume) {
       toast({
         title: "Eksik Veri",
-        description: "Transfer detaylarını girin.",
+        description: "Enter the transfer details.",
         variant: "destructive"
       });
       return;
@@ -149,8 +149,8 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
 
     if (newFromLevel < 0 || newToLevel > 100) {
       toast({
-        title: "Geçersiz Transfer",
-        description: "Tank kapasiteleri aşılıyor.",
+        title: "Invalid Transfer",
+        description: "Tank capacities would be exceeded.",
         variant: "destructive"
       });
       return;
@@ -230,7 +230,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
         formula: "Seviyeyeni = Seviyeeski - (Vtransfer / Kapasite × 100)",
         substitution: `Seviyeyeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
         result: `Seviyeyeni = ${newFromLevel.toFixed(1)}%`,
-        explanation: `${fromTank.name} tankının transfer sonrası seviyesi`
+        explanation: `Level of tank ${fromTank.name} after the transfer`
       },
       {
         step: 3,
@@ -238,7 +238,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
         formula: "Seviyeyeni = Seviyeeski + (Vtransfer / Kapasite × 100)",
         substitution: `Seviyeyeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
         result: `Seviyeyeni = ${newToLevel.toFixed(1)}%`,
-        explanation: `${toTank.name} tankının transfer sonrası seviyesi`
+        explanation: `Level of tank ${toTank.name} after the transfer`
       },
       {
         step: 4,
@@ -292,8 +292,8 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
         step: 10,
         title: "Düzeltilmiş GM hesabı",
         formula: "GMdüzeltilmiş = GM₀ - FSC",
-        substitution: `GMdüzeltilmiş = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
-        result: `GMdüzeltilmiş = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
+        substitution: `GMcorrected = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
+        result: `GMcorrected = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
         explanation: "Serbest yüzey etkisi çıkarılarak düzeltilmiş metasentrik yükseklik bulunur"
       }
     ];
@@ -301,8 +301,8 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
     setCalcSteps(prev => ({...prev, "ballastTransfer": steps}));
 
     toast({
-      title: "Balast Transfer Hesaplandı",
-      description: `Transfer süresi: ${pumpingTime.toFixed(1)} saat`,
+      title: "Ballast Transfer Calculated",
+      description: `Transfer time: ${pumpingTime.toFixed(1)} hours`,
       variant: stabilityStatus === 'degraded' ? "destructive" : "default"
     });
   };

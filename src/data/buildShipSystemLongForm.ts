@@ -35,7 +35,7 @@ export function buildGeneratedShipSystemLongForm(
       callouts.push({
         type: "example",
         title: "Uygulama örneği",
-        text: `${section.example.problem} ${section.example.steps.join(" ")} Sonuç: ${section.example.result}`,
+        text: `${section.example.problem} ${section.example.steps.join(" ")} Result: ${section.example.result}`,
       });
     }
     return {

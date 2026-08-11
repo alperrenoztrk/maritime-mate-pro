@@ -340,11 +340,11 @@ function SystemSummary({
                 type="button"
                 className="block w-full cursor-zoom-in overflow-hidden text-left group"
                 onClick={() => onOpenImage(topicImage, topic.title)}
-                aria-label={`${topic.title} fotoğrafını büyüt`}
+                aria-label={`Enlarge the ${topic.title} photo`}
               >
                 <img
                   src={topicImage}
-                  alt={`${topic.title} için gerçek gemi kurulum örneği`}
+                  alt={`Real shipboard installation example for ${topic.title}`}
                   className="h-48 w-full object-cover transition-transform duration-page group-hover:scale-[1.02]"
                   loading="lazy"
                 />

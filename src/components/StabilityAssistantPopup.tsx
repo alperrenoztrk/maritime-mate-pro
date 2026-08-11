@@ -79,9 +79,9 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
    const copyText = async (text: string) => {
      try {
        await navigator.clipboard.writeText(text);
-       toast({ title: 'Kopyalandı', description: 'Metin panoya kopyalandı.' });
+       toast({ title: 'Copied', description: 'The text was copied to the clipboard.' });
      } catch (e) {
-       toast({ title: 'Kopyalama başarısız', description: 'Tarayıcı izinlerini kontrol edin.', variant: 'destructive' });
+       toast({ title: 'Copy failed', description: 'Check your browser permissions.', variant: 'destructive' });
      }
    };
    const pasteIntoInput = async () => {
@@ -89,7 +89,7 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
        const t = await navigator.clipboard.readText();
        setInput(prev => prev ? `${prev}${prev.endsWith(' ') ? '' : ' '}${t}` : t);
      } catch (e) {
-       toast({ title: 'Yapıştırma başarısız', description: 'Panoya erişim izni gerekli olabilir.', variant: 'destructive' });
+       toast({ title: 'Paste failed', description: 'Clipboard access permission may be required.', variant: 'destructive' });
      }
    };
    const lastAssistant = () => {
@@ -102,16 +102,16 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
    // Guided flows
    const startGM = () => {
      setMode('gm');
-     appendAssistant('GM hesabı için KB, BM, KG değerlerini girin. Eğer yoksa L, B, T ile KB≈T/2 ve BM≈B²/(12T) varsayımlarıyla ilerleyebiliriz.');
+     appendAssistant('For the GM calculation, enter KB, BM and KG. If you do not have them, we can proceed from L, B and T with the assumptions KB≈T/2 and BM≈B²/(12T).');
    };
    const computeGM = () => {
      let kb = parseFloat(gmKB);
      let bm = parseFloat(gmBM);
      const kgVal = parseFloat(gmKG);
-     if (isNaN(kgVal)) { appendAssistant('KG (m) girin.'); return; }
+     if (isNaN(kgVal)) { appendAssistant('Enter KG (m).'); return; }
      if (Number.isNaN(kb) || Number.isNaN(bm)) {
        const L = parseFloat(approxL), B = parseFloat(approxB), T = parseFloat(approxT);
-       if ([L,B,T].some(isNaN)) { appendAssistant('KB/BM yoksa yaklaşık için L, B, T değerleri gerekir.'); return; }
+       if ([L,B,T].some(isNaN)) { appendAssistant('Without KB/BM, the approximation needs L, B and T.'); return; }
        kb = T/2; bm = (B*B)/(12*T);
      }
      const gm = kb + bm - kgVal;
@@ -136,7 +136,7 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
    };
    const computeIMO = () => {
      const kgNum = parseFloat(kg);
-     if (isNaN(kgNum)) { appendAssistant('KG (m) girin.'); return; }
+     if (isNaN(kgNum)) { appendAssistant('Enter KG (m).'); return; }
      const analysis = HydrostaticCalculations.performStabilityAnalysis(geo, kgNum, [], []);
      const imo = analysis.imoCriteria;
      const ok = imo?.compliance;
@@ -145,8 +145,8 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
        `Alan(0–30°): ${imo.area0to30.toFixed(3)} mrad (≥0.055)`,
        `Alan(0–40°): ${imo.area0to40.toFixed(3)} mrad (≥0.09)`,
        `Max GZ: ${imo.maxGz.toFixed(3)} m (≥0.20)`,
-       `Başlangıç GM: ${imo.initialGM.toFixed(3)} m (≥0.15)`,
-       `Hava koşulu kriteri: ${imo.weatherCriterion? 'Sağlandı' : 'Sağlanmadı'}`
+       `Initial GM: ${imo.initialGM.toFixed(3)} m (≥0.15)`,
+       `Weather criterion: ${imo.weatherCriterion? 'Met' : 'Not met'}`
      ];
      appendAssistant(lines.join('\n'));
    };

@@ -327,20 +327,20 @@ const machineCategories: CategoryConfig[] = machineTopics.map((topic) => {
   const seed: CategorySeed = {
     id: `machine-${topic.slug}`,
     title: topic.title,
-    subtitle: machineSubtitles[topic.slug] ?? `${topic.title} teori ve operasyonları`,
+    subtitle: machineSubtitles[topic.slug] ?? `${topic.title} theory and operations`,
     icon: topic.icon,
     accent: topic.accent,
     badge: "Makine",
     status: "live",
-    ctaLabel: `${topic.title} derslerini aç`,
+    ctaLabel: `Open the ${topic.title} lessons`,
     group: "machine",
     basePath,
     descriptions: {
-      calculations: `${topic.title} için mühendislik ve operasyon hesapları`,
-      formulas: `${topic.title} temel denklemleri, değişkenleri ve uygulama sınırları`,
-      rules: `${topic.title} için SOLAS, MARPOL, STCW, klas ve üretici gereklilikleri`,
-      assistant: `${topic.title} operasyonu, bakım ve arıza teşhisi için AI eğitmen`,
-      quiz: `${topic.title} teori, vardiya, arıza ve denetim senaryoları`,
+      calculations: `Engineering and operational calculations for ${topic.title}`,
+      formulas: `Core equations, variables and limits of application for ${topic.title}`,
+      rules: `SOLAS, MARPOL, STCW, class and manufacturer requirements for ${topic.title}`,
+      assistant: `AI tutor for ${topic.title} operation, maintenance and fault diagnosis`,
+      quiz: `${topic.title} theory, watchkeeping, fault and inspection scenarios`,
     },
   };
   return { ...seed, sections: buildSections(seed) };

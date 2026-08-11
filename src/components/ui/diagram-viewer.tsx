@@ -62,8 +62,8 @@ export const DiagramViewer = ({
       if (response.success && response.diagram) {
         setDiagram(response.diagram);
         toast({
-          title: "Diyagram Oluşturuldu",
-          description: "Diyagramınız başarıyla hazırlandı.",
+          title: "Diagram Generated",
+          description: "Your diagram was prepared successfully.",
         });
       } else {
         throw new Error(response.error || 'Diagram generation failed');
@@ -72,7 +72,7 @@ export const DiagramViewer = ({
       const errorMessage = error instanceof Error ? error.message : 'Bilinmeyen bir hata oluştu';
       setError(errorMessage);
       toast({
-        title: "Diyagram Hatası",
+        title: "Diagram Error",
         description: errorMessage,
         variant: "destructive"
       });
@@ -95,8 +95,8 @@ export const DiagramViewer = ({
     URL.revokeObjectURL(url);
     
     toast({
-      title: "İndirildi",
-      description: "Diyagram SVG formatında indirildi.",
+      title: "Downloaded",
+      description: "The diagram was downloaded in SVG format.",
     });
   };
 

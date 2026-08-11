@@ -20,7 +20,7 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<!-- Supabase Google girişinin uygulamaya dönüşü için özel URL şeması
+	<!-- Custom URL scheme that returns the Supabase Google sign-in to the app
 	     (com.marinersbook.app://auth/callback). -->
 	<key>CFBundleURLTypes</key>
 	<array>
@@ -37,23 +37,23 @@
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<!-- @capacitor/camera kaldırıldı, ancak bu iki açıklama HÂLÂ GEREKLİ:
-	     belge yükleme WKWebView içindeki <input type="file" accept="image/*">
-	     ile yapılıyor ve iOS'un dosya seçicisi "Fotoğraf Çek" / "Fotoğraf
-	     Kitaplığı" seçeneklerini sunarken bu anahtarları arıyor. Silinirse
-	     kullanıcı fotoğraf çekmeye kalktığında uygulama çöker. -->
+	<!-- @capacitor/camera was removed, but these two descriptions are STILL
+	     REQUIRED: document upload goes through <input type="file"
+	     accept="image/*"> inside the WKWebView, and the iOS file picker looks
+	     for these keys when it offers "Take Photo" / "Photo Library". Removing
+	     them crashes the app when the user tries to take a photo. -->
 	<key>NSCameraUsageDescription</key>
-	<string>Kamera, denizcilik belgelerinizin fotoğrafını çekip son geçerlilik tarihi takibi için yüklemek üzere kullanılır. / The camera is used to photograph your maritime documents and upload them for expiry tracking.</string>
+	<string>The camera is used to photograph your maritime documents and upload them for expiry tracking.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Fotoğraf kitaplığı, yükleyeceğiniz belge görsellerini seçmek için kullanılır. / The photo library is used to select document images to upload.</string>
+	<string>The photo library is used to select document images to upload.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Oluşturulan görselleri fotoğraf kitaplığınıza kaydetmek için kullanılır. / Used to save generated images to your photo library.</string>
+	<string>Used to save generated images to your photo library.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Konumunuz; harita, hava durumu ve göksel hesaplamalarda güncel pozisyonunuzu göstermek için kullanılır. / Your location is used to show your current position for maps, weather, and celestial calculations.</string>
+	<string>Your location is used to show your current position for maps, weather, and celestial calculations.</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Bu izin, size daha alakalı reklamlar gösterebilmek için kullanılır. / This identifier will be used to deliver personalized ads to you.</string>
+	<string>This identifier will be used to deliver personalized ads to you.</string>
 	<key>GADApplicationIdentifier</key>
-	<!-- AdMob iOS TEST App ID — gerçek reklamlar devreye alınırken AdMob Console'daki gerçek App ID ile değiştirin -->
+	<!-- AdMob iOS TEST App ID — replace with the real App ID from the AdMob Console when live ads are enabled -->
 	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<!-- SKAdNetwork: Google'in AdMob icin yayimladigi tam ag kimligi listesi
 	     (https://developers.google.com/admob/ios/ios14). Eksik birakilirsa

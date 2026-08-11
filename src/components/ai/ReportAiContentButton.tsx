@@ -78,7 +78,7 @@ export function ReportAiContentButton({
     setSending(true);
     try {
       await submitAiContentReport({ surface, reason, content, prompt, note });
-      toast.success("Bildiriminiz alındı. İncelenmek üzere kaydedildi.");
+      toast.success("Your report has been received and saved for review.");
       setOpen(false);
       setNote("");
       setReason("inaccurate");
@@ -86,7 +86,7 @@ export function ReportAiContentButton({
       if (err instanceof NotSignedInError) {
         toast.error(err.message);
       } else {
-        toast.error("Bildirim gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.");
+        toast.error("The report could not be sent. Check your connection and try again.");
       }
     } finally {
       setSending(false);
