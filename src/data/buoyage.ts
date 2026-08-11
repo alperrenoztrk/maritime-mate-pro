@@ -12,6 +12,9 @@
 // Marking Buoy) dahildir; yeni bir batık tespit edildiğinde harita ve seyir
 // ihbarları güncellenene kadar kullanılan geçici işarettir.
 
+import isolatedDangerImage from "@/assets/navigation/isolated-danger-mark.svg";
+import safeWaterImage from "@/assets/navigation/safe-water-mark.svg";
+
 export type BuoyCategory = "lateral" | "cardinal" | "isolated" | "safeWater" | "special" | "wreck";
 
 /** IALA bölgeleri: lateral işaretlerin renkleri bölgeye göre yer değiştirir. */
@@ -36,30 +39,45 @@ export interface BuoyMark {
   instruction: string;
   /** Sahada işe yarayan ek not / hatırlatma. */
   note?: string;
-  /** Varsa mevcut diyagram görselinin yolu. */
-  image?: string;
 }
 
-export const BUOY_CATEGORY_LABELS: Record<BuoyCategory, { title: string; description: string }> = {
+/**
+ * Diyagram kategoriye bağlıdır, işarete değil: tek bir levha o kategorinin
+ * bütün varyantlarını birlikte gösterir. Bu yüzden görsel bölüm başlığında
+ * bir kez basılır — kart başına konsaydı aynı levha lateralde sekiz kez
+ * tekrar ederdi.
+ */
+export const BUOY_CATEGORY_LABELS: Record<
+  BuoyCategory,
+  { title: string; description: string; image?: string; imageAlt?: string }
+> = {
   lateral: {
     title: "Lateral (Yanal) İşaretler",
     description:
       "Bir kanalın veya geçiş hattının kenarlarını tarif eder; emniyetli suyu çizgisel olarak tanımlar. Renk anlamı IALA bölgesine göre TERSTİR — önce hangi bölgede olduğunuzu bilmeniz gerekir.",
+    image: "/diagrams/navigation/iala-lateral-marks.svg",
+    imageAlt: "IALA lateral marks for Region A and Region B side by side",
   },
   cardinal: {
     title: "Kardinal İşaretler",
     description:
       "Kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli suyun HANGİ YÖNDE olduğunu söyler. Her iki IALA bölgesinde de aynıdır.",
+    image: "/diagrams/seamanship/kardinal-samandiralar.svg",
+    imageAlt: "North, east, south and west cardinal marks with their topmarks and colour bands",
   },
   isolated: {
     title: "İzole Tehlike İşareti",
     description:
       "Çevresinde dolaşılabilir su bulunan tekil bir tehlikenin (kaya, batık, sığlık) üzerine veya hemen yanına konur.",
+    image: isolatedDangerImage,
+    imageAlt: "Isolated danger mark with two black spheres as its topmark",
   },
   safeWater: {
     title: "Emniyetli Su İşareti",
     description:
       "Çevresi emniyetli su olan bir noktayı gösterir: kanal orta hattı, yaklaşım (landfall) noktası veya ayrım hattı. 'Doğru yerdeyim' teyidi verir.",
+    image: safeWaterImage,
+    imageAlt: "Safe water mark with red and white vertical stripes and a single red sphere topmark",
   },
   special: {
     title: "Özel İşaretler",
@@ -82,9 +100,6 @@ export const BUOY_CATEGORY_ORDER: BuoyCategory[] = [
   "wreck",
 ];
 
-const lateralImage = "/diagrams/navigation/iala-lateral-marks.svg";
-const cardinalImage = "/diagrams/seamanship/kardinal-samandiralar.svg";
-
 export const BUOY_MARKS: BuoyMark[] = [
   // ─── Lateral — Bölge A ────────────────────────────────────────────────────
   {
@@ -99,7 +114,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     instruction:
       "Limana/kanala girerken (yön akıntı ve kanal yönüyle tanımlanır) bu işaret İSKELE tarafınızda kalmalıdır.",
     note: "Bölge A'ya Avrupa, Afrika, Asya'nın büyük bölümü ve Avustralya dahildir — Türkiye Bölge A'dadır.",
-    image: lateralImage,
   },
   {
     id: "lateral-a-starboard",
@@ -111,7 +125,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     topmark: "Tek yeşil koni, ucu yukarı",
     light: "Yeşil; her karakter olabilir",
     instruction: "Limana/kanala girerken bu işaret SANCAK tarafınızda kalmalıdır.",
-    image: lateralImage,
   },
   {
     id: "lateral-a-pref-stbd",
@@ -125,7 +138,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     instruction:
       "Kanal ikiye ayrılıyor. ANA (tercihli) kanal sancağınızda kalıyor; işareti iskelenizde bırakarak ana kanalda kalırsınız.",
     note: "Gövde rengi HANGİ tarafta bırakılacağını, bant rengi ise tercihli kanalın yönünü söyler.",
-    image: lateralImage,
   },
   {
     id: "lateral-a-pref-port",
@@ -137,7 +149,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     topmark: "Tek yeşil koni, ucu yukarı",
     light: "Yeşil, kompozit grup çakar: Fl (2+1) G",
     instruction: "Ana kanal iskelenizde kalıyor; işareti sancağınızda bırakırsınız.",
-    image: lateralImage,
   },
 
   // ─── Lateral — Bölge B ────────────────────────────────────────────────────
@@ -152,7 +163,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     light: "Yeşil; her karakter olabilir",
     instruction: "Limana/kanala girerken bu işaret İSKELE tarafınızda kalmalıdır.",
     note: "Bölge B: Kuzey ve Güney Amerika, Japonya, Kore ve Filipinler. Renkler Bölge A'nın tam tersidir.",
-    image: lateralImage,
   },
   {
     id: "lateral-b-starboard",
@@ -165,7 +175,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     light: "Kırmızı; her karakter olabilir",
     instruction: "Limana/kanala girerken bu işaret SANCAK tarafınızda kalmalıdır.",
     note: "Amerika'da denizcilerin ezberi 'red right returning' — dönüşte kırmızı sancakta.",
-    image: lateralImage,
   },
   {
     id: "lateral-b-pref-stbd",
@@ -177,7 +186,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     topmark: "Tek yeşil silindir",
     light: "Yeşil, kompozit grup çakar: Fl (2+1) G",
     instruction: "Ana kanal sancağınızda kalıyor; işareti iskelenizde bırakırsınız.",
-    image: lateralImage,
   },
   {
     id: "lateral-b-pref-port",
@@ -189,7 +197,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     topmark: "Tek kırmızı koni, ucu yukarı",
     light: "Kırmızı, kompozit grup çakar: Fl (2+1) R",
     instruction: "Ana kanal iskelenizde kalıyor; işareti sancağınızda bırakırsınız.",
-    image: lateralImage,
   },
 
   // ─── Kardinal işaretler ───────────────────────────────────────────────────
@@ -203,7 +210,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     light: "Beyaz — VQ veya Q (kesintisiz hızlı/çok hızlı çakar)",
     instruction: "Tehlikenin KUZEYİNDEN geçin.",
     note: "Tepe işaretindeki konilerin yönü, siyah bandın konumunu da verir: koniler yukarı → siyah üstte.",
-    image: cardinalImage,
   },
   {
     id: "cardinal-east",
@@ -215,7 +221,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     light: "Beyaz — VQ (3) 5s veya Q (3) 10s",
     instruction: "Tehlikenin DOĞUSUNDAN geçin.",
     note: "Üçlü grup = doğu. Tepe işareti yumurta/fıçı biçimi hatırlatır.",
-    image: cardinalImage,
   },
   {
     id: "cardinal-south",
@@ -227,7 +232,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     light: "Beyaz — VQ (6) + LFl 10s veya Q (6) + LFl 15s",
     instruction: "Tehlikenin GÜNEYİNDEN geçin.",
     note: "Altılı gruptan sonraki UZUN çakar, altıncı ile yedinciyi ayırt etmek için konmuştur; güneyin imzasıdır.",
-    image: cardinalImage,
   },
   {
     id: "cardinal-west",
@@ -239,7 +243,6 @@ export const BUOY_MARKS: BuoyMark[] = [
     light: "Beyaz — VQ (9) 10s veya Q (9) 15s",
     instruction: "Tehlikenin BATISINDAN geçin.",
     note: "Kadeh (wineglass) biçimi batıyı hatırlatır; dokuzlu grup batının imzasıdır.",
-    image: cardinalImage,
   },
 
   // ─── İzole tehlike ────────────────────────────────────────────────────────

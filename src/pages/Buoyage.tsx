@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { LifeBuoy, Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { LessonImage } from "@/components/ui/LessonImage";
 import {
   BUOY_CATEGORY_LABELS,
   BUOY_CATEGORY_ORDER,
@@ -184,6 +185,18 @@ export default function BuoyagePage() {
                   </div>
                   <p className="mt-0.5 text-xs text-muted-foreground">{label.description}</p>
                 </div>
+
+                {label.image ? (
+                  <div className="border-b border-border/40 bg-background/40 px-4 py-3">
+                    <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40 bg-white">
+                      <LessonImage
+                        src={label.image}
+                        alt={label.imageAlt ?? label.title}
+                        className="h-auto w-full object-contain"
+                      />
+                    </div>
+                  </div>
+                ) : null}
 
                 <div>
                   {marks.map((mark) => (
