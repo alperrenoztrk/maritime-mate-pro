@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import {
   Anchor,
   BarChart3,
+  ChevronRight,
   Compass,
   Droplets,
   Flame,
@@ -19,14 +20,15 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
-  LibraryBookCard,
   LibraryCompactCard,
   LibraryEntryCard,
   LibraryPageShell,
   LibrarySearchField,
   LibrarySectionHeading,
 } from "@/components/library/LibraryInterface";
+import { accentGradient } from "@/components/library/libraryAccent";
 
 interface CalcTool {
   id: string;
@@ -103,7 +105,7 @@ const writeRecent = (id: string) => {
   localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(next));
 };
 
-function ToolBook({
+function ToolCard({
   tool,
   favorite,
   onFavorite,
@@ -114,12 +116,24 @@ function ToolBook({
 }) {
   const meta = CATEGORY_META[tool.category];
   return (
-    <div className="relative" onClickCapture={() => writeRecent(tool.id)}>
-      <LibraryBookCard
+    <div className="surface-2 group flex min-h-[4.75rem] items-stretch overflow-hidden rounded-xl border transition-[background-color,border-color,transform] duration-control hover:border-primary/20 active:scale-[0.99]">
+      <Link
         to={tool.to}
-        title={tool.title}
-        accent={meta.accent}
-      />
+        onClick={() => writeRecent(tool.id)}
+        className="flex min-w-0 flex-1 items-center gap-3 px-3.5 py-3"
+      >
+        <span
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.625rem] ${meta.accent} text-white`}
+          style={accentGradient("145deg", meta.accent)}
+        >
+          <tool.icon className="h-5 w-5" aria-hidden />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold leading-snug text-foreground">{tool.title}</span>
+          <span className="mt-0.5 block truncate text-caption text-muted-foreground">{meta.title}</span>
+        </span>
+        <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+      </Link>
       <button
         type="button"
         aria-label={favorite ? "Favorilerden çıkar" : "Favorilere ekle"}
@@ -128,9 +142,9 @@ function ToolBook({
           event.stopPropagation();
           onFavorite();
         }}
-        className="absolute right-3 top-3 z-20 rounded-full bg-black/30 p-2 text-white transition hover:bg-black/50"
+        className="flex w-12 shrink-0 items-center justify-center border-l border-border/60 text-muted-foreground transition-colors duration-control hover:bg-muted/70 hover:text-foreground"
       >
-        <Star className={`h-4 w-4 ${favorite ? "fill-amber-400 text-amber-400" : "text-white"}`} />
+        <Star className={`h-4 w-4 ${favorite ? "fill-warning text-warning" : ""}`} aria-hidden />
       </button>
     </div>
   );
@@ -241,9 +255,9 @@ export default function CalculationsLibraryPage() {
           {normalizedQuery ? "Arama Sonuçları" : activeMeta?.title ?? "Hızlı Araçlar"}
         </LibrarySectionHeading>
         {visibleTools.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {visibleTools.map((tool) => (
-              <ToolBook
+              <ToolCard
                 key={tool.id}
                 tool={tool}
                 favorite={favorites.includes(tool.id)}

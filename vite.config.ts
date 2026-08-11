@@ -154,6 +154,7 @@ export default defineConfig(({ mode }) => ({
         "maritime-background.svg",
         "maritime-home-background.svg",
         "nautical-chart-background.svg",
+        "theme-prepaint.js",
       ],
       manifest: {
         name: "Mariner's Book",
@@ -161,8 +162,8 @@ export default defineConfig(({ mode }) => ({
         description: "Professional tools for all mariners — calculators, lessons and references that work offline.",
         // Must match index.html theme-color and capacitor.config.ts StatusBar —
         // all three describe the same surface (top of the shell gradient).
-        theme_color: "#031226",
-        background_color: "#031226",
+        theme_color: "#111318",
+        background_color: "#111318",
         display: "standalone",
         orientation: "portrait",
         start_url: "/",
@@ -177,18 +178,14 @@ export default defineConfig(({ mode }) => ({
         navigateFallback: "/index.html",
         // Don't cache OAuth/auth routes — they must always hit network
         navigateFallbackDenylist: [/^\/auth\//, /^\/api\//],
-        // The default English locale is large; keep enough headroom for it.
-        maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
-        // Precache the executable shell, not the entire media library. The old
-        // pattern eagerly downloaded every diagram, store graphic and HDR at
-        // service-worker install (2k+ files / ~80 MB). Images, diagrams, PDFs
-        // and HDR environments are cached on first use by runtime rules below.
-        globPatterns: ["**/*.{js,css,html,ico,woff2,json}"],
-        // Every language now ships a FULL translation dictionary (~8 MB each,
-        // 24 languages ≈ 190 MB total), so precaching them all at install is no
-        // longer viable. Only the default language's pack (en) is precached;
-        // any other language is fetched once on first selection and then kept
-        // for offline use by the translation-locales runtime cache below.
+        // No individual shell asset should approach a locale/media payload.
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
+        // Precache only what is required to boot React. Route chunks are
+        // content, not app-shell: forcing all ~1,600 lazy files into the
+        // install transaction made a first update download ~36 MB before the
+        // user could benefit from it. Hashed route chunks are cached on first
+        // use by the immutable script rule below.
+        globPatterns: ["**/*.{css,html,ico,woff2}", "assets/entry-*.js"],
         // Locale packs are route-independent 8–10 MB dictionaries. None may
         // block service-worker installation; each chosen language is cached by
         // the runtime rule below after the app shell is interactive.
@@ -197,6 +194,19 @@ export default defineConfig(({ mode }) => ({
         clientsClaim: true,
         skipWaiting: true,
         runtimeCaching: [
+          {
+            // Lazy route and feature chunks. Hashes make them immutable; once
+            // a user opens a route it remains available offline without
+            // blocking service-worker installation with every unused route.
+            urlPattern: ({ request, url }) =>
+              url.origin === self.location.origin && request.destination === "script",
+            handler: "CacheFirst",
+            options: {
+              cacheName: "app-route-chunks",
+              expiration: { maxEntries: 900, maxAgeSeconds: 60 * 60 * 24 * 90 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             // Per-language static translation dictionaries (public/locales/*.json)
             urlPattern: ({ url }) => url.pathname.includes("/locales/") && url.pathname.endsWith(".json"),
@@ -309,10 +319,17 @@ export default defineConfig(({ mode }) => ({
         assetFileNames: "assets/[name]-[hash][extname]",
         manualChunks(id) {
           if (!id.includes("node_modules")) return undefined;
-          if (id.includes("three") || id.includes("@react-three")) return "vendor-three";
-          if (id.includes("recharts") || id.includes("d3-")) return "vendor-charts";
-          if (id.includes("pdf-lib") || id.includes("exceljs") || id.includes("html2canvas")) return "vendor-export";
-          if (id.includes("@supabase") || id.includes("@lovable.dev/cloud-auth")) return "vendor-data";
+          if (id.includes("/three/examples/")) return "vendor-three-extras";
+          if (id.includes("@react-three/drei")) return "vendor-three-drei";
+          if (id.includes("@react-three/fiber")) return "vendor-three-react";
+          if (id.includes("/three/")) return "vendor-three-core";
+          if (id.includes("recharts")) return "vendor-recharts";
+          if (id.includes("d3-")) return "vendor-d3";
+          if (id.includes("exceljs")) return "vendor-excel";
+          if (id.includes("pdf-lib")) return "vendor-pdf";
+          if (id.includes("html2canvas")) return "vendor-capture";
+          if (id.includes("@supabase")) return "vendor-supabase";
+          if (id.includes("@lovable.dev/cloud-auth")) return "vendor-cloud-auth";
           if (id.includes("framer-motion")) return "vendor-motion";
           if (id.includes("react") || id.includes("scheduler")) return "vendor-react";
           return undefined;

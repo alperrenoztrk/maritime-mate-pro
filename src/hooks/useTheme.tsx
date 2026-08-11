@@ -28,7 +28,7 @@ const systemTheme = (): ResolvedTheme =>
 
 export function ThemeProvider({
   children,
-  defaultTheme = "dark",
+  defaultTheme = "system",
   storageKey = "maritime-ui-theme",
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
@@ -51,14 +51,14 @@ export function ThemeProvider({
       root.style.colorScheme = next;
 
       const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-      if (themeColor) themeColor.content = next === "dark" ? "#031226" : "#e8f3f8";
+      if (themeColor) themeColor.content = next === "dark" ? "#111318" : "#f8fafb";
 
       void import("@capacitor/status-bar")
         .then(({ StatusBar, Style }) => {
           if (!Capacitor.isNativePlatform()) return;
           void StatusBar.setStyle({ style: next === "dark" ? Style.Light : Style.Dark });
           if (Capacitor.getPlatform() === "android") {
-            void StatusBar.setBackgroundColor({ color: next === "dark" ? "#031226" : "#e8f3f8" });
+            void StatusBar.setBackgroundColor({ color: next === "dark" ? "#111318" : "#f8fafb" });
           }
         })
         .catch(() => {

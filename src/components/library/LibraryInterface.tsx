@@ -1,8 +1,9 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, ChevronRight, Search } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { accentGradient } from "./libraryAccent";
+import { hasHierarchicalBack } from "@/lib/appNavigation";
 
 
 export function LibraryPageShell({
@@ -24,6 +25,10 @@ export function LibraryPageShell({
   maxWidth?: string;
   headerAside?: ReactNode;
 }) {
+  const { pathname } = useLocation();
+  const rootSpacing = hasHierarchicalBack(pathname)
+    ? "pt-3"
+    : "pt-[calc(var(--safe-top)+1.5rem)]";
   // No navigational back control here: the app has one global back affordance
   // (AppNavBar + edge swipe). `backHref` is accepted and ignored so callers
   // don't have to change. `onBack` is NOT navigation — it unwinds in-page
@@ -41,9 +46,9 @@ export function LibraryPageShell({
 
   return (
     <div
-      className="relative min-h-[100svh] px-[max(1rem,var(--safe-left))] pb-8 pt-3 sm:px-[max(1.25rem,var(--safe-left))]"
+      className={`relative min-h-[100svh] px-[max(1rem,var(--safe-left))] pb-8 ${rootSpacing} sm:px-[max(1.25rem,var(--safe-left))]`}
     >
-      <div className={`relative mx-auto flex ${maxWidth} flex-col gap-6`}>
+      <div className={`relative mx-auto flex ${maxWidth} flex-col gap-5 sm:gap-6`}>
         <header className="flex min-h-11 items-center gap-3 pb-1">
           {backControl}
           <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -52,7 +57,7 @@ export function LibraryPageShell({
                 <HeaderIcon className="h-5 w-5 text-primary" />
               </span>
             )}
-            <h1 data-page-title className="min-w-0 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground">{title}</h1>
+            <h1 data-page-title className="min-w-0 text-[2.125rem] font-bold leading-[1.08] tracking-[-0.035em] text-foreground">{title}</h1>
           </div>
           {headerAside}
         </header>
@@ -70,6 +75,7 @@ export function LibraryEntryCard({
   to,
   onClick,
   badge,
+  description,
 }: {
   title: string;
   icon: LucideIcon;
@@ -77,24 +83,30 @@ export function LibraryEntryCard({
   to?: string;
   onClick?: () => void;
   badge?: string | number;
+  description?: string;
 }) {
   const className =
-    "surface-2 group flex min-h-[5.75rem] w-full items-center rounded-2xl border p-4 text-left transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/25 active:scale-[0.985]";
+    "surface-3 group flex min-h-[5rem] w-full items-center rounded-xl border px-4 py-3.5 text-left shadow-elev-1 transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/20 active:scale-[0.985]";
   const content = (
     <span className="flex w-full items-center gap-3">
       <span
-        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${accent} text-white`}
+        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.625rem] ${accent} text-white shadow-elev-1`}
         style={accentGradient("145deg", accent)}
       >
         <Icon className="h-5 w-5" />
       </span>
-      <span className="min-w-0 flex-1 whitespace-pre-line text-base font-semibold leading-snug text-foreground">{title}</span>
+      <span className="min-w-0 flex-1">
+        <span className="block whitespace-pre-line text-base font-semibold leading-snug text-foreground">{title}</span>
+        {description && (
+          <span className="mt-1 block text-caption leading-relaxed text-muted-foreground">{description}</span>
+        )}
+      </span>
       {badge !== undefined && (
         <span className="rounded-full bg-muted px-2.5 py-1 text-caption font-semibold text-muted-foreground">
           {badge}
         </span>
       )}
-      <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-control group-hover:translate-x-0.5" />
+      <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" />
     </span>
   );
 
@@ -327,10 +339,10 @@ export function LibraryCompactCard({
   return (
     <Link
       to={to}
-      className="surface-2 group flex min-h-[4.5rem] items-center gap-3 rounded-2xl border px-3.5 py-3 transition-[background-color,border-color,transform] duration-control hover:border-primary/25 active:scale-[0.99]"
+      className="surface-2 group flex min-h-[4.25rem] items-center gap-3 rounded-xl border px-3.5 py-2.5 transition-[background-color,border-color,transform] duration-control hover:border-primary/20 active:scale-[0.99]"
     >
       <span
-        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${accent} text-white`}
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[0.625rem] ${accent} text-white`}
         style={accentGradient("145deg", accent)}
       >
         <Icon className="h-4 w-4" />
@@ -341,7 +353,7 @@ export function LibraryCompactCard({
           {badge}
         </span>
       )}
-      <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-[color,transform] duration-control group-hover:translate-x-0.5 group-hover:text-primary" />
+      <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors duration-control group-hover:text-primary" />
     </Link>
   );
 }
@@ -366,7 +378,7 @@ export function LibrarySearchField({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        className="surface-2 h-11 w-full rounded-xl border pl-10 pr-4 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-control placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+        className="surface-3 h-11 w-full rounded-xl border pl-10 pr-4 text-base text-foreground outline-none transition-[border-color,box-shadow] duration-control placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/15"
       />
     </div>
   );

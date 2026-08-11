@@ -16,6 +16,7 @@ const KNOWN_TITLES: Array<[RegExp, string]> = [
   [/^\/exercises$/, "Alıştırmalar"],
   [/^\/calculations$/, "Araçlar"],
   [/^\/library$/, "Kitaplık"],
+  [/^\/search$/, "Ara"],
   [/^\/crew$/, "Personel"],
   [/^\/bridge$/, "Köprüüstü"],
   [/^\/ship-systems$/, "Gemi Sistemleri"],

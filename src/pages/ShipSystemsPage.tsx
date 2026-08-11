@@ -4,7 +4,6 @@ import { shipSystemsData } from "@/data/shipSystemsData";
 import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 import { shipSystemsSections as SECTIONS } from "@/data/shipSystemsSections";
 import {
-  LibraryBookCard,
   LibraryCompactCard,
   LibraryPageShell,
   LibrarySearchField,
@@ -63,7 +62,7 @@ export default function ShipSystemsPage() {
   );
 
   return (
-    <LibraryPageShell title="Gemi Sistemleri ve Ekipmanları" icon={Anchor}>
+    <LibraryPageShell title="Gemi Sistemleri" icon={Anchor}>
       <LibrarySearchField
         value={query}
         onChange={setQuery}
@@ -94,13 +93,15 @@ export default function ShipSystemsPage() {
           )}
         </section>
       ) : (
-        <section className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <section className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {SECTIONS.map((section) => (
-            <LibraryBookCard
+            <LibraryCompactCard
               key={section.id}
               to={section.to}
               title={section.title}
+              icon={section.icon}
               accent={section.color}
+              badge={shipSystemsData[section.id]?.topics.length ?? 0}
             />
           ))}
         </section>

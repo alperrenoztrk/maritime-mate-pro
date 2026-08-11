@@ -119,6 +119,14 @@ export const ENGLISH_CORE_SCREEN_COPY: Readonly<Record<string, string>> = {
   "Güverte Kitaplığı": "Deck Library",
   "Makine Kitaplığı": "Engine Library",
   "Dersler ana ekranına dön": "Return to the lessons home",
+  Kitaplıklar: "Libraries",
+  Pratik: "Practice",
+  "Seyir, stabilite, yük, emniyet ve köprüüstü dersleri":
+    "Navigation, stability, cargo, safety, and bridge lessons",
+  "Makine, elektrik, termodinamik ve bakım dersleri":
+    "Engineering, electrical, thermodynamics, and maintenance lessons",
+  "Sınava Hazırlık": "Exam Preparation",
+  "Sistem (Dynamic Type)": "System (Dynamic Type)",
   "Operasyonel Kaynaklar": "Operational References",
   "Hızlı Başvuru": "Quick Reference",
   "Personel ve Görevler": "Crew and Duties",
@@ -163,6 +171,8 @@ export const ENGLISH_CORE_SCREEN_COPY: Readonly<Record<string, string>> = {
   "Favorilerden çıkar": "Remove from favorites",
   "Sayfa, hesaplama veya konu ara…": "Search pages, calculations, or topics…",
   "Sayfa, konu, terim veya düğüm ara…": "Search pages, topics, terms, or nodes…",
+  "Sayfa, konu, terim veya hesaplama ara": "Search pages, topics, terms, or calculations",
+  "Arama metnini temizle": "Clear search text",
   "Son aramalar": "Recent Searches",
   Öneriler: "Suggestions",
   "İçerik dizini yükleniyor…": "Loading content index…",
@@ -170,6 +180,7 @@ export const ENGLISH_CORE_SCREEN_COPY: Readonly<Record<string, string>> = {
   "↑↓ gezin": "↑↓ navigate",
   "↵ aç": "↵ open",
   "esc kapat": "esc close",
+  "esc temizle": "esc clear",
   "İçerik dizini yükleniyor": "Loading content index",
 };
 

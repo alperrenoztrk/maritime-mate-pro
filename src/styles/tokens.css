@@ -60,7 +60,7 @@
   --text-caption: 0.75rem;  /* 12px                  */
 
   /* ── App chrome geometry ──────────────────────────────────── */
-  --app-tabbar-height: 3.875rem;
+  --app-tabbar-height: 3.625rem;
   --app-tabbar-reserve: calc(var(--app-tabbar-height) + max(0.75rem, var(--safe-bottom)) + var(--ad-banner-height, 0px));
   --app-sidebar-reserve: 0px;
 
@@ -74,34 +74,38 @@
   --safe-right: env(safe-area-inset-right, 0px);
 
   /* Light appearance. Dark values are overridden below. */
-  --surface-1: rgba(255, 255, 255, 0.48);
-  --surface-2: rgba(255, 255, 255, 0.68);
-  --surface-3: rgba(255, 255, 255, 0.84);
-  --surface-border: rgba(15, 42, 68, 0.10);
-  --surface-border-strong: rgba(15, 42, 68, 0.18);
-  --glass-bg: rgba(247, 251, 255, 0.78);
-  --glass-blur: 20px;
-  --glass-border: rgba(15, 42, 68, 0.12);
-  --shadow-1: 0 1px 2px rgba(21, 50, 76, 0.10);
-  --shadow-2: 0 6px 20px -4px rgba(21, 50, 76, 0.18);
-  --shadow-3: 0 18px 40px -10px rgba(21, 50, 76, 0.24);
-  --maritime-shell-background: linear-gradient(180deg, hsl(204 58% 96%) 0%, hsl(205 54% 92%) 52%, hsl(195 48% 88%) 100%);
-  --maritime-shell-glow: radial-gradient(ellipse at 50% 0%, rgba(14, 165, 233, 0.14) 0%, transparent 58%);
+  --surface-1: rgba(255, 255, 255, 0.54);
+  --surface-2: rgba(255, 255, 255, 0.78);
+  --surface-3: rgba(255, 255, 255, 0.94);
+  --surface-border: rgba(38, 38, 41, 0.075);
+  --surface-border-strong: rgba(38, 38, 41, 0.13);
+  --glass-bg: rgba(249, 249, 251, 0.74);
+  --glass-blur: 24px;
+  --glass-border: rgba(38, 38, 41, 0.09);
+  --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.055);
+  --shadow-2: 0 10px 28px -12px rgba(15, 23, 42, 0.26);
+  --shadow-3: 0 24px 54px -18px rgba(15, 23, 42, 0.30);
+  --maritime-shell-background: linear-gradient(180deg, hsl(210 30% 98%) 0%, hsl(207 24% 96%) 100%);
+  --maritime-shell-glow: radial-gradient(ellipse at 50% 0%, rgba(0, 122, 255, 0.07) 0%, transparent 56%);
+  --maritime-wave-1: rgba(42, 145, 190, 0.065);
+  --maritime-wave-2: rgba(38, 184, 204, 0.045);
 }
 
 .dark {
-  --surface-1: rgba(255, 255, 255, 0.05);
-  --surface-2: rgba(255, 255, 255, 0.08);
-  --surface-3: rgba(255, 255, 255, 0.12);
-  --surface-border: rgba(255, 255, 255, 0.10);
-  --surface-border-strong: rgba(255, 255, 255, 0.18);
-  --glass-bg: rgba(10, 26, 47, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --shadow-1: 0 1px 2px rgba(2, 10, 20, 0.28);
-  --shadow-2: 0 4px 16px -2px rgba(2, 10, 20, 0.40);
-  --shadow-3: 0 12px 32px -6px rgba(2, 10, 20, 0.52);
-  --maritime-shell-background: linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%);
-  --maritime-shell-glow: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.14) 0%, transparent 55%);
+  --surface-1: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.07);
+  --surface-3: rgba(255, 255, 255, 0.105);
+  --surface-border: rgba(255, 255, 255, 0.085);
+  --surface-border-strong: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(22, 24, 29, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.11);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-2: 0 10px 28px -12px rgba(0, 0, 0, 0.62);
+  --shadow-3: 0 24px 54px -18px rgba(0, 0, 0, 0.72);
+  --maritime-shell-background: linear-gradient(180deg, hsl(222 18% 8%) 0%, hsl(214 20% 10%) 100%);
+  --maritime-shell-glow: radial-gradient(ellipse at 50% 0%, rgba(10, 132, 255, 0.09) 0%, transparent 54%);
+  --maritime-wave-1: rgba(43, 138, 178, 0.09);
+  --maritime-wave-2: rgba(40, 177, 196, 0.065);
 }
 
 /* ================================================================
@@ -133,12 +137,12 @@
 .app-tabbar {
   position: fixed;
   z-index: 45;
-  left: max(0.625rem, var(--safe-left));
-  right: max(0.625rem, var(--safe-right));
-  bottom: calc(var(--ad-banner-height, 0px) + max(0.5rem, var(--safe-bottom)));
+  left: max(0.5rem, var(--safe-left));
+  right: max(0.5rem, var(--safe-right));
+  bottom: calc(var(--ad-banner-height, 0px) + max(0.375rem, var(--safe-bottom)));
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  border-radius: 1.375rem;
+  border-radius: 1.5rem;
   box-shadow: var(--shadow-2);
 }
 
@@ -146,14 +150,14 @@
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   min-height: var(--app-tabbar-height);
-  padding: 0.25rem;
+  padding: 0.1875rem 0.25rem;
 }
 
 .app-tabbar__item {
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 3.375rem;
+  min-height: 3.25rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -167,7 +171,8 @@
 .app-tabbar__item:active { transform: scale(0.94); }
 .app-tabbar__item:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: -2px; }
 .app-tabbar__item--active { color: hsl(var(--primary)); }
-.app-tabbar__item--active .app-tabbar__icon { background: hsl(var(--primary) / 0.14); }
+.app-tabbar__item--active .app-tabbar__icon { transform: translateY(-1px); }
+.app-tabbar__item--active .app-tabbar__icon svg { stroke-width: 2.35; }
 
 .app-tabbar__icon {
   display: grid;
@@ -175,12 +180,16 @@
   height: 1.75rem;
   place-items: center;
   border-radius: 999px;
-  transition: background-color var(--motion-control) var(--ease-out-ios);
+  transition: transform var(--motion-control) var(--ease-out-ios);
 }
 
 .app-tabbar__icon svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
 .app-tabbar__label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: var(--text-micro); font-weight: 600; line-height: 1.15; white-space: nowrap; }
-.app-tabbar__search { border-radius: 1.125rem; }
+
+.search-keyboard-hints { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .search-keyboard-hints { display: flex; }
+}
 
 .app-tabbar-visible .page-transition-shell {
   padding-bottom: var(--app-tabbar-reserve);
@@ -375,7 +384,6 @@ html[data-font-size="max"] .app-page-shell :where(.grid-cols-2, .grid-cols-3, .g
   }
   .app-tabbar__icon { width: 2.25rem; flex: 0 0 2.25rem; }
   .app-tabbar__label { font-size: 0.9375rem; }
-  .app-tabbar__search { margin: 0.35rem 0 0; border-top: 1px solid var(--surface-border-strong); border-left: 0; border-radius: 0 0 1.125rem 1.125rem; }
   .app-tabbar-visible .route-presence-frame { padding-left: var(--app-sidebar-reserve); }
   .app-tabbar-visible .app-navbar { left: var(--app-sidebar-reserve); }
   .app-tabbar-visible .app-edge-swipe { left: var(--app-sidebar-reserve); }

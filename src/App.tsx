@@ -31,6 +31,7 @@ import { AdsController } from "@/components/ads/AdsController";
 import { MOTION_EASE_OUT, MOTION_SECONDS, prefersReducedMotion } from "@/hooks/useAppMotion";
 import { isAppChromeHidden } from "@/lib/appChrome";
 import { captureRoutePreview } from "@/lib/navigationPreview";
+import { hasHierarchicalBack } from "@/lib/appNavigation";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -38,6 +39,7 @@ const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
 const LibraryHubPage = lazy(() => import("./pages/LibraryHubPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
 const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
 const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
 const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
@@ -206,7 +208,11 @@ const RouteFallback = () => <RouteSkeleton />;
 const routeFrameVariants = {
   initial: () => {
     if (prefersReducedMotion()) return { opacity: 0, x: 0, zIndex: 1 };
-    const forward = getNavigationDirection() === "forward";
+    const direction = getNavigationDirection();
+    if (direction === "tab") {
+      return { opacity: 0, x: 0, zIndex: 1, position: "relative" as const };
+    }
+    const forward = direction === "forward";
     return {
       opacity: 1,
       x: forward ? "100%" : "-28%",
@@ -230,7 +236,17 @@ const routeFrameVariants = {
         inset: 0,
       };
     }
-    const forward = getNavigationDirection() === "forward";
+    const direction = getNavigationDirection();
+    if (direction === "tab") {
+      return {
+        opacity: 0,
+        x: 0,
+        zIndex: 0,
+        position: "absolute" as const,
+        inset: 0,
+      };
+    }
+    const forward = direction === "forward";
     return {
       opacity: 1,
       x: forward ? "-28%" : "100%",
@@ -302,7 +318,7 @@ const AnimatedRoutes = () => {
         key={location.pathname}
         className="route-presence-frame min-h-[100svh] w-full"
         data-route-path={location.pathname}
-        data-app-navbar={location.pathname !== "/" && !isAppChromeHidden(location.pathname)}
+        data-app-navbar={hasHierarchicalBack(location.pathname) && !isAppChromeHidden(location.pathname)}
         initial="initial"
         animate="animate"
         exit="exit"
@@ -310,7 +326,10 @@ const AnimatedRoutes = () => {
         transition={
           prefersReducedMotion()
             ? { duration: MOTION_SECONDS.press, ease: "linear" }
-            : { duration: MOTION_SECONDS.page, ease: MOTION_EASE_OUT }
+            : {
+                duration: getNavigationDirection() === "tab" ? MOTION_SECONDS.control : MOTION_SECONDS.page,
+                ease: MOTION_EASE_OUT,
+              }
         }
       >
 
@@ -322,6 +341,7 @@ const AnimatedRoutes = () => {
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/library" element={<PageTransition><LibraryHubPage /></PageTransition>} />
+        <Route path="/search" element={<PageTransition><SearchPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
@@ -528,7 +548,7 @@ const App = () => {
           <EntitlementProvider>
           <LanguageProvider>
             <TooltipProvider>
-              <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
+              <ThemeProvider defaultTheme="system" storageKey="maritime-ui-theme-v2">
                 <FontSizeProvider>
                   <Toaster />
                   <DocumentExpiryNotifier />

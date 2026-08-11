@@ -91,6 +91,7 @@ const Settings = () => {
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");
 
   const fontSizeLabels: Record<FontSizeKey, string> = {
+    system: "Sistem (Dynamic Type)",
     small: "Küçük",
     normal: "Normal",
     large: "Büyük",
