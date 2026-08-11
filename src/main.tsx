@@ -79,7 +79,7 @@ const prefersReducedMotion =
 // Keep the launch surface only through the first committed React frame. iOS
 // already supplies a native LaunchScreen, so the web layer must not replay a
 // second narrative or block the first useful interaction.
-const splashHideDelay = prefersReducedMotion ? 0 : 120;
+const splashHideDelay = prefersReducedMotion ? 1000 : 1120;
 
 document.getElementById('splash-root')?.classList.add('splash-brief');
 
