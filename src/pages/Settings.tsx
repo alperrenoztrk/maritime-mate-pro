@@ -90,15 +90,11 @@ const Settings = () => {
   };
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");
 
-  const fontSizeLabels: Record<FontSizeKey, string> = {
-    system: "Sistem (Dynamic Type)",
-    small: "Küçük",
+  const fontSizeLabels: Partial<Record<FontSizeKey, string>> = {
     normal: "Normal",
     large: "Büyük",
-    xlarge: "Çok Büyük",
-    accessibility: "Erişilebilir",
-    max: "En Büyük (%200)",
   };
+
 
   const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Monitor }> = [
     { value: "system", label: "Sistem", icon: Monitor },
