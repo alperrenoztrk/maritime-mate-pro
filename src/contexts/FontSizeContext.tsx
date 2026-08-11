@@ -44,38 +44,10 @@ export function FontSizeProvider({
     return stored ? normalizeFontSize(stored) : defaultFontSize;
   });
 
-  const [systemScale, setSystemScale] = useState(1);
-
   useEffect(() => {
-    if (Capacitor.getPlatform() !== "ios") return;
+    applyScale(fontSize);
+  }, [fontSize]);
 
-    let cancelled = false;
-    let listener: { remove: () => Promise<void> } | undefined;
-    void ContentSize.getCurrent()
-      .then(({ scale }) => {
-        if (!cancelled) setSystemScale(Math.min(2, Math.max(0.875, scale || 1)));
-      })
-      .catch(() => {
-        // A browser preview or an older native binary can safely stay at 100%.
-      });
-    void ContentSize.addListener("contentSizeChanged", ({ scale }) => {
-      if (!cancelled) setSystemScale(Math.min(2, Math.max(0.875, scale || 1)));
-    }).then((handle) => {
-      if (cancelled) void handle.remove();
-      else listener = handle;
-    }).catch(() => {
-      // Plugin is unavailable until the native shell containing it is installed.
-    });
-
-    return () => {
-      cancelled = true;
-      if (listener) void listener.remove();
-    };
-  }, []);
-
-  useEffect(() => {
-    applyScale(fontSize, systemScale);
-  }, [fontSize, systemScale]);
 
   const setFontSize = (size: FontSizeKey) => {
     safeLocalStorage.setItem(storageKey, size);
