@@ -12,8 +12,6 @@ import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { MobileLayout } from "@/components/MobileLayout";
 import { PageHeader } from "@/components/layout/PageHeader";
 
-const levelLabel = (level: BetaTopic["level"]) =>
-  level === "foundation" ? "Temel" : level === "operational" ? "Operasyonel" : "İleri";
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{
