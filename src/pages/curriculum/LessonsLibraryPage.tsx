@@ -34,13 +34,13 @@ export default function LessonsLibraryPage() {
       id: "deck" as const,
       title: "Güverte Kitaplığı",
       icon: Ship,
-      accent: "from-blue-500 via-indigo-500 to-blue-700",
+      accent: "accent-ocean",
     },
     {
       id: "machine" as const,
       title: "Makine Kitaplığı",
       icon: Wrench,
-      accent: "from-slate-600 via-zinc-700 to-slate-900",
+      accent: "accent-slate",
     },
   ];
 

@@ -136,7 +136,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' && componentTagger(),
     cspPlugin(),
     mcpPlugin(),
-    VitePWA({
+    mode !== "native" && VitePWA({
       registerType: "autoUpdate",
       injectRegister: false,
       // CRITICAL: Disabled in dev to avoid breaking the Lovable preview iframe.
@@ -264,7 +264,7 @@ export default defineConfig(({ mode }) => ({
     //  - modern paket için eksik API'leri polyfill'ler (modernPolyfills),
     //  - modül desteği olmayan çok eski WebView'ler için ES5 + SystemJS legacy paket
     //    üretir (nomodule), böylece uygulama "çoğu Android sürümünde" açılır.
-    legacy({
+    mode !== "native" && legacy({
       // package.json "browserslist" ile hizalı en düşük hedefler.
       targets: [
         "Android >= 6",
@@ -281,7 +281,7 @@ export default defineConfig(({ mode }) => ({
       additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
     }),
     // VitePWA sw.js'i closeBundle'da ürettiği için doğrulama en sonda durmalı.
-    verifyPrecachePlugin(),
+    mode !== "native" && verifyPrecachePlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -289,6 +289,11 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    // Capacitor bundles run in current WKWebView/Android WebView and already
+    // package every asset locally. A dedicated native profile avoids shipping
+    // the duplicate ES5/nomodule tree and a service worker that a WebView does
+    // not need. The default web build keeps the existing legacy + PWA support.
+    target: mode === "native" ? "es2020" : undefined,
     // NOT: Modern paketin hedefini (build.target) @vitejs/plugin-legacy yönetir
     // (modül + dynamic import destekleyen WebView tabanı, ~Chrome 64). Modülü
     // olup dynamic import'u olmayan "arada kalan" eski WebView'ler (Chrome 61-63)

@@ -192,7 +192,10 @@ assert(
 // also owns the scroll-edge material. The guarantee is unchanged: exactly one
 // globally mounted "Geri" affordance.
 const appNavBar = read("src/components/AppNavBar.tsx");
-assert(appNavBar.includes('aria-label="Geri"'), "Global Geri control must remain available");
+assert(
+  appNavBar.includes("aria-label={localizedBack}") && appNavBar.includes("getCoreUiTranslation"),
+  "Global back control must remain available in the selected language",
+);
 assert(
   appNavBar.includes("useBackNavigation"),
   "AppNavBar must route back through useBackNavigation so it agrees with the hardware button and the edge swipe",

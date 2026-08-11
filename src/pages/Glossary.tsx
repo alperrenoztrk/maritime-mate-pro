@@ -12,12 +12,10 @@ import {
 } from "@/components/library/LibraryInterface";
 
 const CATEGORY_ACCENTS = [
-  "from-cyan-500 via-blue-600 to-indigo-700",
-  "from-blue-500 via-indigo-500 to-violet-700",
-  "from-teal-500 via-cyan-600 to-blue-700",
-  "from-slate-600 via-blue-700 to-indigo-900",
-  "from-violet-500 via-purple-600 to-indigo-800",
-  "from-emerald-500 via-teal-600 to-cyan-800",
+  "accent-ocean",
+  "accent-deep",
+  "accent-teal",
+  "accent-slate",
 ];
 
 const Glossary = () => {

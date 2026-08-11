@@ -41,6 +41,7 @@ import {
   type LanguageContextValue,
   type SupportedLanguage,
 } from './language-context';
+import { getCoreUiTranslation } from '@/i18n/coreUiTranslations';
 
 // True when this window is the hidden harvester iframe. In that case the
 // LanguageProvider must stay in source language and skip all translation work
@@ -282,6 +283,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // must never shadow the curated result.
   const resolveLocally = (normalizedText: string, languageCode: string): string | undefined => {
     const cacheKey = `${languageCode}:${normalizedText}`;
+
+    // Persistent chrome and recently-added iOS library screens use a small,
+    // reviewed overlay. Those strings must resolve synchronously and offline:
+    // they are visible before the multi-megabyte route dictionary settles and
+    // were the source of the Turkish/English mixture found in the UI audit.
+    const coreUiTranslation = getCoreUiTranslation(normalizedText, languageCode);
+    if (coreUiTranslation) return coreUiTranslation;
 
     const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
     if (maritimeOverride) {

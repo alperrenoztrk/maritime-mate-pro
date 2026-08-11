@@ -16,7 +16,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "Vinç, ırgat, mooring winch, capstan ve güvertede kullanılan tüm mekanik ekipmanlar",
     icon: Anchor,
     to: "/ship-systems/deck-machinery",
-    color: "from-blue-500/20 to-cyan-500/10",
+    color: "accent-ocean",
   },
   {
     id: "nav-systems",
@@ -24,7 +24,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "Radar, ECDIS, AIS, GPS, gyro pusula, echo sounder ve köprüüstü cihazları",
     icon: Compass,
     to: "/ship-systems/nav-systems",
-    color: "from-emerald-500/20 to-teal-500/10",
+    color: "accent-teal",
   },
   {
     id: "main-engine",
@@ -32,7 +32,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "Ana dizel motor, şaft hattı, pervane, dümen makinesi ve tahrik donanımları",
     icon: Wrench,
     to: "/ship-systems/main-engine",
-    color: "from-orange-500/20 to-amber-500/10",
+    color: "accent-amber",
   },
   {
     id: "auxiliary",
@@ -40,7 +40,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "Jeneratör, acil/şaft jeneratörü, kazan, separatör, kompresör, pompa, merkezi soğutma, yakıt-yağ devreleri, balast/sintine, hidrolik ünite ve itici",
     icon: Gauge,
     to: "/ship-systems/auxiliary",
-    color: "from-purple-500/20 to-violet-500/10",
+    color: "accent-slate",
   },
   {
     id: "fire-safety",
@@ -48,7 +48,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "CO₂, foam, sprinkler, fire pump, EEBD/SCBA, dedektörler ve seyyar söndürücüler",
     icon: Flame,
     to: "/ship-systems/fire-safety",
-    color: "from-red-500/20 to-rose-500/10",
+    color: "accent-amber",
   },
   {
     id: "cargo-systems",
@@ -56,7 +56,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "Kargo pompaları, COW, hatch cover, lashing, reefer plug, ramp ve cargo gear",
     icon: Package,
     to: "/ship-systems/cargo-systems",
-    color: "from-yellow-500/20 to-amber-500/10",
+    color: "accent-deep",
   },
   {
     id: "environmental-auxiliary",
@@ -64,7 +64,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "BWMS, OWS, sewage, insinerator, HVAC, hidrofor, soğuk depo, sıkıştırılmış hava ve buhar",
     icon: Leaf,
     to: "/ship-systems/environmental-auxiliary",
-    color: "from-green-500/20 to-emerald-500/10",
+    color: "accent-teal",
   },
   {
     id: "gmdss-lsa",
@@ -72,6 +72,6 @@ export const shipSystemsSections: ShipSystemsSection[] = [
     desc: "GMDSS, EPIRB, SART, BNWAS, VDR, lifeboat, davit, liferaft ve rescue boat",
     icon: Radio,
     to: "/ship-systems/gmdss-lsa",
-    color: "from-sky-500/20 to-indigo-500/10",
+    color: "accent-ocean",
   },
 ];

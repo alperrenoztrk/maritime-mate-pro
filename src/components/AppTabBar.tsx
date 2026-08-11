@@ -11,6 +11,8 @@ import {
 import { cn } from "@/lib/utils";
 import { hapticSelection } from "@/lib/haptics";
 import { isAppChromeHidden } from "@/lib/appChrome";
+import { useLanguage } from "@/contexts/useLanguage";
+import { getCoreUiTranslation } from "@/i18n/coreUiTranslations";
 
 type TabId = "home" | "learn" | "tools" | "library";
 
@@ -61,8 +63,10 @@ const activeTabForPath = (pathname: string): TabId => {
 
 export function AppTabBar() {
   const { pathname } = useLocation();
+  const { currentLanguage } = useLanguage();
   const hidden = isAppChromeHidden(pathname);
   const activeTab = activeTabForPath(pathname);
+  const localize = (source: string) => getCoreUiTranslation(source, currentLanguage) ?? source;
 
   useEffect(() => {
     lastRouteByTab[activeTab] = pathname;
@@ -78,22 +82,24 @@ export function AppTabBar() {
 
   return (
     <nav
-      aria-label="Ana bölümler"
-      className="app-tabbar surface-glass"
+      aria-label={localize("Ana bölümler")}
+      className="app-tabbar surface-glass notranslate"
       data-app-tabbar
-      data-mt-global-root
+      translate="no"
+      lang={currentLanguage}
     >
       <div className="app-tabbar__items">
         {TABS.map(({ id, label, to, icon: Icon }) => {
           const active = activeTab === id;
           const destination = active ? to : lastRouteByTab[id] || to;
+          const localizedLabel = localize(label);
           return (
             <NavLink
               key={id}
               to={destination}
               end={destination === "/"}
               aria-current={active ? "page" : undefined}
-              aria-label={label}
+              aria-label={localizedLabel}
               onClick={(event) => {
                 hapticSelection();
                 if (active && pathname === to) {
@@ -106,14 +112,14 @@ export function AppTabBar() {
               <span className="app-tabbar__icon" aria-hidden>
                 <Icon />
               </span>
-              <span className="app-tabbar__label">{label}</span>
+              <span className="app-tabbar__label">{localizedLabel}</span>
             </NavLink>
           );
         })}
 
         <button
           type="button"
-          aria-label="Uygulamada ara"
+          aria-label={localize("Uygulamada ara")}
           className="app-tabbar__item app-tabbar__search"
           onClick={() => {
             hapticSelection();
@@ -123,7 +129,7 @@ export function AppTabBar() {
           <span className="app-tabbar__icon" aria-hidden>
             <Search />
           </span>
-          <span className="app-tabbar__label">Ara</span>
+          <span className="app-tabbar__label">{localize("Ara")}</span>
         </button>
       </div>
     </nav>
