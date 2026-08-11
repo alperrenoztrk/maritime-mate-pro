@@ -12,15 +12,18 @@ export const FONT_SCALES: Record<FontSizeKey, number> = {
   max: 2,
 };
 
+// Yalnızca iki boyut sunulur: Normal ve Büyük.
 export const FONT_SIZE_OPTIONS: { key: FontSizeKey; labelTr: string }[] = [
-  { key: "system", labelTr: "Sistem (Dynamic Type)" },
-  { key: "small", labelTr: "Küçük" },
   { key: "normal", labelTr: "Normal" },
   { key: "large", labelTr: "Büyük" },
-  { key: "xlarge", labelTr: "Çok Büyük" },
-  { key: "accessibility", labelTr: "Erişilebilir" },
-  { key: "max", labelTr: "En Büyük (%200)" },
 ];
+
+/** Eski kayıtlı tercihleri desteklenen iki boyuta indirger. */
+export const normalizeFontSize = (value: string | null | undefined): FontSizeKey =>
+  value === "large" || value === "xlarge" || value === "accessibility" || value === "max"
+    ? "large"
+    : "normal";
+
 
 export interface FontSizeContextValue {
   fontSize: FontSizeKey;
