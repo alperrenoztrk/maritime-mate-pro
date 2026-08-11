@@ -8,8 +8,8 @@ import {
   type FontSizeKey,
 } from "./font-size-context";
 
-import { Capacitor } from "@capacitor/core";
-import { ContentSize } from "@/plugins/contentSize";
+
+
 
 /**
  * Font size scaling. The scale is applied to the root <html> element through the
