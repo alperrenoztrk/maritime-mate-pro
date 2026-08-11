@@ -25,7 +25,7 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, mfaChallengeRequired, signOut, signInWithEmail, signUpWithEmail, signInWithGoogle } =
+  const { user, loading, mfaChallengeRequired, signOut, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithMagicLink } =
     useAuth();
   const { currentLanguage } = useLanguage();
   const privacyPolicyUrl = getPrivacyPolicyUrl(currentLanguage);
@@ -34,6 +34,15 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [magicSent, setMagicSent] = useState(false);
+  const [magicCooldown, setMagicCooldown] = useState(0);
+
+  // Tekrar gönderme sayacı: sunucu tarafı hız sınırına takılmayı önler.
+  useEffect(() => {
+    if (magicCooldown <= 0) return;
+    const timer = window.setTimeout(() => setMagicCooldown((s) => s - 1), 1000);
+    return () => window.clearTimeout(timer);
+  }, [magicCooldown]);
 
   const nextPath = useMemo(() => sanitizeReturnPath(searchParams.get("next")), [searchParams]);
 
