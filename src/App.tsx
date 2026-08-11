@@ -500,7 +500,9 @@ const AnimatedRoutes = () => {
         </div>
       </motion.div>
       </AnimatePresence>
+    </div>
     </>
+
   );
 };
 
