@@ -114,6 +114,34 @@ const Auth = () => {
     }
   };
 
+  // Şifresiz giriş: sadece e-posta yeterli. Şifresi olmayan (Google ile açılmış)
+  // hesaplar da bu yolla girebilir.
+  const handleMagicLink = async () => {
+    const parsedEmail = credentialsSchema.shape.email.safeParse(email);
+    if (!parsedEmail.success) {
+      toast.error("Önce geçerli bir e-posta girin");
+      return;
+    }
+    setBusy(true);
+    try {
+      const { error } = await signInWithMagicLink(parsedEmail.data, nextPath);
+      if (error) {
+        const rate = /rate limit|too many|429/i.test(error.message);
+        toast.error(
+          rate
+            ? "Çok fazla istek gönderildi. Lütfen birkaç dakika sonra tekrar deneyin."
+            : error.message || "Giriş bağlantısı gönderilemedi",
+        );
+        return;
+      }
+      setMagicSent(true);
+      setMagicCooldown(60);
+      toast.success("Giriş bağlantısı e-postanıza gönderildi.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
 
   // Supabase owns the Google round trip: it builds the authorize URL against
   // its own /auth/v1/callback, so the only redirect URI Google ever sees is
