@@ -1,0 +1,94 @@
+<svg width="720" height="430" viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:14px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .ctr{font:26px sans-serif;font-weight:700}
+      .line{fill:none;stroke-width:3}
+    </style>
+  </defs>
+  <rect width="720" height="430" fill="#ffffff"/>
+  <text x="360" y="30" text-anchor="middle" class="ttl">Synoptic Chart Symbols</text>
+
+  <!-- left panel: pressure pattern -->
+  <g transform="translate(20 50)">
+    <rect width="330" height="360" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="18" y="30" class="hd" style="fill:#1d4ed8">Pressure Pattern</text>
+
+    <!-- isobars -->
+    <g>
+      <path d="M60,62 C95,48 130,84 170,64" class="line" stroke="#334155"/>
+      <path d="M60,92 C95,78 130,114 170,94" class="line" stroke="#334155"/>
+      <text x="52" y="56" text-anchor="end" class="sm">1008</text>
+      <text x="52" y="86" text-anchor="end" class="sm">1012</text>
+      <text x="190" y="82" class="it">Isobars, 4 hPa</text>
+    </g>
+
+    <!-- low centre: letter ringed by its closed isobar -->
+    <g>
+      <circle cx="83" cy="150" r="28" fill="none" stroke="#dc2626" stroke-width="2"/>
+      <text x="83" y="162" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="700" fill="#dc2626">L</text>
+      <text x="190" y="155" class="it">Low (depression)</text>
+    </g>
+
+    <!-- high centre -->
+    <g>
+      <circle cx="83" cy="228" r="28" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+      <text x="83" y="240" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="700" fill="#1d4ed8">H</text>
+      <text x="190" y="233" class="it">High (anticyclone)</text>
+    </g>
+
+    <!-- trough -->
+    <g>
+      <path d="M18,292 h130" class="line" stroke="#b45309" stroke-dasharray="12 8"/>
+      <text x="190" y="296" class="it">Trough</text>
+    </g>
+
+    <!-- ridge -->
+    <g>
+      <path d="M18,342 l22,-16 l22,16 l22,-16 l22,16 l22,-16 l22,16" class="line" stroke="#b45309"/>
+      <text x="190" y="346" class="it">Ridge</text>
+    </g>
+  </g>
+
+  <!-- right panel: fronts -->
+  <g transform="translate(370 50)">
+    <rect width="330" height="360" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="18" y="30" class="hd" style="fill:#b91c1c">Fronts</text>
+
+    <!-- cold front: blue triangles -->
+    <g>
+      <path d="M18,90 h150" class="line" stroke="#1d4ed8"/>
+      <path d="M40,90 l9,-15 l9,15 z M85,90 l9,-15 l9,15 z M130,90 l9,-15 l9,15 z" fill="#1d4ed8"/>
+      <text x="190" y="94" class="it">Cold front</text>
+    </g>
+
+    <!-- warm front: red semicircles -->
+    <g>
+      <path d="M18,160 h150" class="line" stroke="#dc2626"/>
+      <path d="M40,160 a9,9 0 0,1 18,0 z M85,160 a9,9 0 0,1 18,0 z M130,160 a9,9 0 0,1 18,0 z" fill="#dc2626"/>
+      <text x="190" y="164" class="it">Warm front</text>
+    </g>
+
+    <!-- occluded front: alternating, violet -->
+    <g>
+      <path d="M18,230 h150" class="line" stroke="#7c3aed"/>
+      <path d="M40,230 l9,-15 l9,15 z M130,230 l9,-15 l9,15 z" fill="#7c3aed"/>
+      <path d="M85,230 a9,9 0 0,1 18,0 z" fill="#7c3aed"/>
+      <text x="190" y="234" class="it">Occluded front</text>
+    </g>
+
+    <!-- stationary front: opposing symbols on opposite sides -->
+    <g>
+      <path d="M18,300 h75" class="line" stroke="#1d4ed8"/>
+      <path d="M93,300 h75" class="line" stroke="#dc2626"/>
+      <path d="M40,300 l9,-15 l9,15 z" fill="#1d4ed8"/>
+      <path d="M120,300 a9,9 0 0,0 18,0 z" fill="#dc2626"/>
+      <text x="190" y="304" class="it">Stationary front</text>
+    </g>
+
+    <text x="18" y="338" class="sm">Front symbols point the way the front is moving.</text>
+  </g>
+</svg>

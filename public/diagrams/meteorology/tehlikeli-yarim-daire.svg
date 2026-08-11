@@ -1,0 +1,72 @@
+<svg width="720" height="470" viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:14px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+    </style>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/>
+    </marker>
+    <marker id="arwW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect width="720" height="470" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Dangerous and Navigable Semicircles — Northern Hemisphere</text>
+
+  <!-- storm diagram -->
+  <g>
+    <!-- semicircle shading -->
+    <path d="M230,120 A150,150 0 0,1 230,420 Z" fill="#fee2e2" stroke="#fecaca"/>
+    <path d="M230,120 A150,150 0 0,0 230,420 Z" fill="#dcfce7" stroke="#bbf7d0"/>
+
+    <!-- eye -->
+    <circle cx="230" cy="270" r="16" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="230" cy="270" r="3" fill="#0f172a"/>
+
+    <!-- anticlockwise circulation (northern hemisphere).
+         Arrowheads are placed and rotated explicitly rather than with
+         marker-end, so the sense of rotation cannot be ambiguous. -->
+    <circle cx="230" cy="270" r="100" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+    <g fill="#1d4ed8">
+      <path d="M-7,-6 L7,0 L-7,6 z" transform="translate(230 170) rotate(180)"/>
+      <path d="M-7,-6 L7,0 L-7,6 z" transform="translate(130 270) rotate(90)"/>
+      <path d="M-7,-6 L7,0 L-7,6 z" transform="translate(230 370)"/>
+      <path d="M-7,-6 L7,0 L-7,6 z" transform="translate(330 270) rotate(-90)"/>
+    </g>
+
+    <!-- track of the storm centre -->
+    <path d="M230,440 L230,100" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="10 7"/>
+    <path d="M-8,7 L0,-8 L8,7 z" fill="#0f172a" transform="translate(230 96)"/>
+    <text x="248" y="104" class="hd">Track</text>
+
+    <text x="330" y="150" class="hd" style="fill:#b91c1c">Dangerous</text>
+    <text x="330" y="168" class="hd" style="fill:#b91c1c">semicircle</text>
+    <text x="130" y="150" text-anchor="end" class="hd" style="fill:#15803d">Navigable</text>
+    <text x="130" y="168" text-anchor="end" class="hd" style="fill:#15803d">semicircle</text>
+    <text x="230" y="452" text-anchor="middle" class="sm">Wind circulates anticlockwise around the centre.</text>
+  </g>
+
+  <!-- notes -->
+  <g transform="translate(450 100)">
+    <rect width="250" height="300" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="16" y="30" class="hd">Why it matters</text>
+
+    <text x="16" y="60" class="it" style="fill:#b91c1c">Right of the track</text>
+    <text x="16" y="80" class="sm">Wind speed and the forward speed</text>
+    <text x="16" y="96" class="sm">of the storm add together, so the</text>
+    <text x="16" y="112" class="sm">wind is stronger. The wind also</text>
+    <text x="16" y="128" class="sm">sets a ship into the storm path.</text>
+
+    <text x="16" y="162" class="it" style="fill:#15803d">Left of the track</text>
+    <text x="16" y="182" class="sm">The two speeds oppose, so the</text>
+    <text x="16" y="198" class="sm">wind is weaker and a ship is set</text>
+    <text x="16" y="214" class="sm">away from the path.</text>
+
+    <text x="16" y="248" class="it">Action in the N. hemisphere</text>
+    <text x="16" y="268" class="sm">Dangerous side: wind on the</text>
+    <text x="16" y="284" class="sm">starboard bow, haul to starboard.</text>
+  </g>
+</svg>

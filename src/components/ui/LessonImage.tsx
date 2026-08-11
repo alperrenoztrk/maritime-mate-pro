@@ -22,6 +22,13 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
     !src.startsWith("data:") &&
     !src.startsWith("blob:");
 
+  // Vektörler çözünürlükten bağımsızdır: bir SVG hangi boyutta çizilirse
+  // çizilsin keskin kalır. Aşağıdaki düşük çözünürlük kısıtı yalnızca raster
+  // kaynaklar içindir; SVG'lere uygulanırsa diyagramlar gereksiz yere küçülür
+  // (viewBox'ı olup width/height'ı olmayan SVG'lerde tarayıcı ~300x150'lik
+  // varsayılan bir intrinsic boyut bildirir).
+  const isVector = /\.svg(?:[?#]|$)/i.test(src ?? "");
+
   const [stage, setStage] = useState<Stage>(isExternal ? "proxy" : "direct");
   const [displayLimit, setDisplayLimit] = useState<number | null>(null);
 
@@ -61,7 +68,7 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
       alt={alt || "Görsel"}
       onError={handleError}
       onLoad={(event) => {
-        if (bare) return;
+        if (bare || isVector) return;
         const image = event.currentTarget;
         // Small source images are kept near their 2x CSS size instead of being
         // stretched across a Retina screen and advertising every source pixel.

@@ -11,7 +11,9 @@ React 18 + Vite + Capacitor mobile-first web app (Turkish UI). No test suite tha
 
 ```bash
 npm ci                      # if node_modules missing (vite not found)
-npx tsc --noEmit            # type check
+npm run typecheck           # tsc -p tsconfig.app.json --noEmit
+                            # NOT `npx tsc --noEmit`: the root tsconfig.json is a
+                            # solution file with "files": [], so it checks nothing.
 npm run build               # vite build; PWA "globbing" warning at the end is pre-existing noise
 npm run dev -- --host 127.0.0.1 --port 5183   # dev server, ready in ~1s
 ```

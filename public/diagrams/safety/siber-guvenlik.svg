@@ -1,0 +1,61 @@
+<svg width="720" height="440" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect width="720" height="440" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Maritime Cyber Risk — IT and OT on Board</text>
+
+  <!-- IT vs OT -->
+  <g transform="translate(20 44)">
+    <rect width="332" height="188" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="18" y="28" class="hd" style="fill:#1d4ed8">IT — information systems</text>
+    <text x="18" y="52" class="sm">Business email, crew internet, planned</text>
+    <text x="18" y="68" class="sm">maintenance, cargo and stores software,</text>
+    <text x="18" y="84" class="sm">administrative networks.</text>
+    <text x="18" y="112" class="it">If it fails</text>
+    <text x="18" y="132" class="sm">Data is lost or stolen. Costly and</text>
+    <text x="18" y="148" class="sm">disruptive, but the ship still steers.</text>
+    <text x="18" y="174" class="sm">Usually the way in for an attacker.</text>
+  </g>
+
+  <g transform="translate(368 44)">
+    <rect width="332" height="188" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="18" y="28" class="hd" style="fill:#b91c1c">OT — operational technology</text>
+    <text x="18" y="52" class="sm">ECDIS, GNSS, AIS, radar, VDR, engine and</text>
+    <text x="18" y="68" class="sm">power management, ballast and cargo</text>
+    <text x="18" y="84" class="sm">control, steering.</text>
+    <text x="18" y="112" class="it">If it fails</text>
+    <text x="18" y="132" class="sm">The ship itself is affected — navigation,</text>
+    <text x="18" y="148" class="sm">propulsion or stability.</text>
+    <text x="18" y="174" class="sm">This is why the two must stay separated.</text>
+  </g>
+
+  <!-- how it gets in / controls -->
+  <g transform="translate(20 246)">
+    <rect width="332" height="180" rx="10" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="18" y="28" class="hd" style="fill:#b45309">How it usually gets in</text>
+    <text x="18" y="54" class="sm">Phishing email to a crew or office account</text>
+    <text x="18" y="76" class="sm">USB stick brought on board — chart updates,</text>
+    <text x="18" y="92" class="sm">service engineer's laptop</text>
+    <text x="18" y="114" class="sm">Unpatched software left at an old version</text>
+    <text x="18" y="136" class="sm">Shared or default passwords never changed</text>
+    <text x="18" y="158" class="sm">Remote access left open for a supplier</text>
+  </g>
+
+  <g transform="translate(368 246)">
+    <rect width="332" height="180" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="18" y="28" class="hd" style="fill:#15803d">What is required</text>
+    <text x="18" y="54" class="sm">Cyber risk is managed inside the existing</text>
+    <text x="18" y="70" class="sm">safety management system (IMO 2021).</text>
+    <text x="18" y="96" class="it">Identify · Protect · Detect · Respond · Recover</text>
+    <text x="18" y="122" class="sm">Segregate OT from IT; control removable media;</text>
+    <text x="18" y="138" class="sm">unique accounts; keep offline backups of charts</text>
+    <text x="18" y="154" class="sm">and settings; drill the fallback to paper and</text>
+    <text x="18" y="170" class="sm">manual steering, because that is the real defence.</text>
+  </g>
+</svg>

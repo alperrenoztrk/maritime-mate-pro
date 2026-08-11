@@ -5,7 +5,11 @@ import { getBetaCategories, getBetaTopic, type BetaTopic } from "@/data/betaLess
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
 import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
 import { buildSectionKey, type ContentCategory } from "@/services/topicContentOverrides";
-import { resolveLessonImage } from "@/utils/lessonImageFallbacks";
+import {
+  collectLessonMarkdownImages,
+  lessonImageIdentity,
+  resolveLessonImage,
+} from "@/utils/lessonImageFallbacks";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
@@ -52,7 +56,9 @@ export default function LessonTopicDetailPage() {
   const categoryKey = categoryId as ContentCategory;
 
   // Aynı görselin konu boyunca tekrar tekrar basılmasını engelle: görsel
-  // yalnız ilk göründüğü bölümde gösterilir.
+  // yalnız ilk göründüğü bölümde gösterilir. Bu, hem bölüm görselini hem de
+  // metin içindeki markdown görsellerini kapsar — bazı konularda (ör. Mercator
+  // projeksiyonu) aynı diyagram her bölümde yeniden çözümlenip basılıyordu.
   const seenImages = new Set<string>();
   const sections = content.sections.map((section) => {
     const sourceSectionTitle = section.sourceTitle ?? section.title;
@@ -64,12 +70,27 @@ export default function LessonTopicDetailPage() {
       sourceTopicTitle,
       section.imageAlt,
     );
-    const duplicate = Boolean(resolved && seenImages.has(resolved));
-    if (resolved) seenImages.add(resolved);
+    const duplicate = Boolean(resolved && seenImages.has(lessonImageIdentity(resolved)));
+    // Bu bölüm çizilmeden ÖNCE kullanılmış olanların anlık kopyası.
+    const alreadyUsedImages = [...seenImages];
+    if (resolved) seenImages.add(lessonImageIdentity(resolved));
+
+    const body = override?.content ?? section.content;
+    if (body) {
+      for (const src of collectLessonMarkdownImages(
+        body,
+        categoryId,
+        sourceSectionTitle,
+        sourceTopicTitle,
+      )) {
+        seenImages.add(lessonImageIdentity(src));
+      }
+    }
 
     return {
       section: override?.content ? { ...section, content: override.content } : section,
       hideImage: duplicate,
+      alreadyUsedImages,
     };
   });
 
@@ -86,7 +107,7 @@ export default function LessonTopicDetailPage() {
           </div>
         )}
 
-        {sections.map(({ section, hideImage }, index) => (
+        {sections.map(({ section, hideImage, alreadyUsedImages }, index) => (
           <div
             key={section.id ?? `${section.sourceTitle ?? section.title}-${index}`}
             className="surface-2 rounded-2xl border p-5 shadow-elev-1"
@@ -96,6 +117,7 @@ export default function LessonTopicDetailPage() {
               categoryId={categoryId}
               topicTitle={sourceTopicTitle}
               hideImage={hideImage}
+              alreadyUsedImages={alreadyUsedImages}
             />
           </div>
         ))}

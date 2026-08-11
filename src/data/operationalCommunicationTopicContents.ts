@@ -11,6 +11,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
         title: "Kapalı Döngü Haberleşme",
         content:
           "Emir veren kişi açık komut verir, alan kişi aynen tekrar eder, emir veren doğru tekrar edildiğini teyit eder ve uygulama sonucu raporlanır. Dümen, makine, römorkör, mooring ve cargo rate değişikliklerinde bu döngü kullanılmalıdır. 'Okay' gibi belirsiz cevaplar yerine komutun içeriği tekrar edilir.",
+        image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
+        imageAlt: "SMCP message markers used to keep bridge communication unambiguous",
         bulletPoints: [
           "Order: 'Starboard ten.'",
           "Read-back: 'Starboard ten.'",
@@ -54,6 +56,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
     sections: [
       {
         title: "Deck Logbook Kayıt İlkeleri",
+        image: "/diagrams/communication/gemi-jurnali.svg",
+        imageAlt: "What belongs in the deck log, what does not, and how to structure a statement",
         content:
           "Mevki, course, speed, weather, sea state, barometer, pilot, tug, all fast, anchor, restricted visibility, alarms, drills, equipment failure ve olağandışı olaylar gemi prosedüründeki aralık ve formatta yazılır. 'Normal' yerine ölçülebilir bilgi tercih edilir. Yanlış kayıt silinmez; tek çizgiyle okunabilir bırakılır, doğru bilgi ve paraf eklenir.",
       },
@@ -95,6 +99,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
         title: "MAYDAY ve PAN-PAN Sonrası Güncelleme",
         content:
           "İlk distress/urgency mesajından sonra durum değiştikçe kısa SITREP verilir: current position, nature of distress, damage/flooding/fire status, persons on board/injured/missing, assistance required ve master's intentions. Aynı bilgiler çelişkili rakamlarla tekrarlanmaz; her güncelleme zamanı belirtilir.",
+        image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
+        imageAlt: "Standard message markers used in distress and urgency traffic",
       },
       {
         title: "Fire Party Raporları",
@@ -132,6 +138,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
     sections: [
       {
         title: "Ekipmanı Göstererek Açıklama",
+        image: "/diagrams/communication/psc-denetimi.svg",
+        imageAlt: "How a port state control inspection escalates, the action codes and how to conduct yourself",
         content:
           "Zabit ekipmanın konumunu, amacını, normal durumunu, test yöntemini, son test kaydını ve arızada yedek tedbiri açıklayabilmelidir. 'It is checked regularly' yerine kayıt ve tarih gösterilir. Test yalnız güvenli ve yetkili şartlarda yapılır; inspector talebi olsa dahi tehlikeli yanlış aktivasyon yapılmaz.",
       },

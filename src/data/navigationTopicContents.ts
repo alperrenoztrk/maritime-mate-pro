@@ -79,6 +79,12 @@ import isolatedDangerMark from "@/assets/navigation/isolated-danger-mark.svg";
 import greatCircleVsRhumb from "@/assets/navigation/great-circle-vs-rhumb.svg";
 import sextantSvg from "@/assets/navigation/sextant.svg";
 import ukcStack from "@/assets/tides/ukc-stack.svg";
+import aisTargets from "@/assets/navigation/ais-targets.svg";
+import azimuthalProjection from "@/assets/navigation/azimuthal-projection.svg";
+import meanLatSailingImg from "@/assets/navigation/enlem-plane-sailing.jpg";
+import echoSounderImg from "@/assets/bridge/echo-sounder.jpg";
+import gyroCompassImg from "@/assets/bridge/gyro-compass.jpg";
+import polarIceImg from "@/assets/lessons/polar-ice-navigation.jpg";
 
 // Konuya özel diyagramlar — yanlış kullanılan dolgu görsellerin yerine (public/diagrams/navigation)
 const speedDistanceTime = "/diagrams/navigation/mesafe-hiz-zaman.svg";
@@ -221,6 +227,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Görsel Referanslar",
+        image: sextantSvg,
+        imageAlt: "Sextant used to measure the altitude of a body",
         content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2015/09/nonum-diag26.jpg)
 
 ![Image](https://astronavigationdemystified.com/wp-content/uploads/2015/09/diag-27.jpg)
@@ -326,6 +334,8 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
     sections: [
       {
         title: "Görsel Referanslar",
+        image: sextantSvg,
+        imageAlt: "Parts of a marine sextant and how it is held",
         content: `![Image](https://future-seafarer.com/wp-content/uploads/2017/09/sextent_with_parts.jpg)
 
 ![Image](https://easysextant.com/wp-content/uploads/2022/10/Hv-anglais.jpg.webp)
@@ -383,6 +393,8 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
     sections: [
       {
         title: "Görsel Referanslar",
+        image: enlemCelestial,
+        imageAlt: "Latitude from the sun's meridian altitude at local noon",
         content: `![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2018/09/ship-position-by-sun-sight.jpg)
 
 ![Image](https://easysextant.com/wp-content/uploads/2025/09/L-D-alpha.jpg.webp)
@@ -945,6 +957,8 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
     sections: [
       {
         title: "Departure (Doğu–Batı Mesafesi) Genel Tanım",
+        image: boylamDeparture,
+        imageAlt: "Departure as the east-west distance made good",
         content: `Departure değeri daima **deniz mili** cinsindendir ve işareti, geminin doğuya mı yoksa batıya mı hareket ettiğini gösterir. Bu yön bilgisi, kurs hesaplarında ve boylam değişimi ilişkilerinde doğrudan kullanılır.
 
 ![Departure in a plane sailing example](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
@@ -1044,6 +1058,8 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
     sections: [
       {
         title: "Düzlem Seyirin Sınırlarını Belirleyen Temel Etken",
+        image: "/diagrams/navigation/duzlem-seyir.svg",
+        imageAlt: "Plane sailing triangle and the assumptions behind it",
         content: `Düzlem seyirin sınırlarını belirleyen temel etken, **meridyenlerin kutuplara doğru yakınlaşmasıdır**. Gerçekte boylam dakikasının uzunluğu ekvatordan kutuplara gidildikçe azalır. Düzlem seyirde bu azalma göz ardı edilir. Bu ihmal, özellikle doğu–batı bileşeni büyüdüğünde, hesaplanan departure ile gerçek yatay mesafe arasında fark doğurur.
 
 ![Plane sailing diagram](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
@@ -1108,6 +1124,8 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
     sections: [
       {
         title: "Departure’ın Tanımı ve Boylam Değişimi",
+        image: boylamDeparture,
+        imageAlt: "Relationship between departure and difference of longitude",
         content: `Departure, geminin doğu–batı doğrultusunda kat ettiği **gerçek mesafedir** ve deniz mili cinsindendir. Boylam değişimi ise derece ve dakika cinsinden ifade edilir. Bu iki büyüklük doğrudan eşit değildir; aralarındaki dönüşüm, ilgili enlemin kosinüsü ile kurulur.
 
 ![Relationship between departure and longitude](https://astronavigationdemystified.com/wp-content/uploads/2012/06/diag-16-mod.jpg?w=584)
@@ -1200,6 +1218,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
     sections: [
       {
         title: "Enlem İşaret Kuralı",
+        image: "/diagrams/navigation/koordinat-sistemi.svg",
+        imageAlt: "Coordinate system in which north and east are taken as positive",
         content:
           "Enlem için temel kural basittir: **kuzey (+), güney (−)**. DLat hesaplanırken her zaman mutlak fark alınır, ardından yön verilir. Seyir kuzeye ise DLat kuzey (+), güneye ise DLat güney (−) kabul edilir. Enlem işareti, yalnızca bulunduğunuz veya varacağınız yarımküreyi değil, hareket yönünü de ifade eder."
       },
@@ -1554,6 +1574,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
     sections: [
       {
         title: "Hakiki Sistem ve Referans",
+        image: chartPlotting,
+        imageAlt: "Measuring a course on the chart with parallel rules",
         content: "Deniz haritalarında rota her zaman hakiki sistemde ölçülür. Harita üzerindeki meridyenler hakiki kuzey–hakiki güney doğrultusunu temsil ettiği için, yapılan her açı ölçümü doğrudan hakiki rota değerini verir. Bu nedenle harita üzerinde ölçülen rota, manyetik veya pusula değil, daima hakiki rota olarak kabul edilir. Daha sonra gerekiyorsa variation ve deviation düzeltmeleriyle diğer sistemlere geçilir."
       },
       {
@@ -1926,6 +1948,8 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
     sections: [
       {
         title: "Harita Ölçeği",
+        image: "/diagrams/navigation/harita-datum.svg",
+        imageAlt: "Chart scale and datum on which the chart is drawn",
         content: `Harita ölçeği, deniz haritasının neyi **ayrıntılı**, neyi **bilinçli olarak eksik** gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.
 
 ![Chart scale, example chart 1](https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18020.jpg)
@@ -1972,6 +1996,8 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
     sections: [
       {
         title: "Tanım ve Temel Geometri",
+        image: greatCircleVsRhumb,
+        imageAlt: "Great circle compared with the rhumb line between two points",
         content: `Büyük daire, Dünya merkezinden geçen bir düzlemin küre yüzeyiyle oluşturduğu çemberdir. Ekvator ve tüm meridyenler büyük daire örnekleridir; diğer enlemler ise merkezden geçmedikleri için küçük daire niteliğindedir.
 
 ![The great circle](https://www.caliper.com/glossary/xmaptitude-great-circle-map.jpg.pagespeed.ic.ho-3Oj1XIA.jpg)
@@ -2021,6 +2047,8 @@ Bu fark orta enlemlerde sınırlı, yüksek enlemlerde ise belirgin hâle gelir.
     sections: [
       {
         title: "Kavramsal Karşılaştırma",
+        image: greatCircleVsRhumb,
+        imageAlt: "Great circle and rhumb line tracks between the same two ports",
         content: `Büyük dairede kurs sürekli değişir; rhumb line’da kurs sabittir. Bu nedenle büyük daire “yakıt ve süre” avantajı, rhumb line ise “uygulama sadeliği” avantajı sunar. Modern ECDIS ve rota planlama sistemleri, büyük daireyi ara noktalara bölerek rhumb line segmentleri şeklinde uygular; böylece sahada **hibrit** bir yöntem ortaya çıkar.
 
 ![Great circle and rhumb line](/diagrams/navigation/great-circle-vs-rhumb.svg)
@@ -2205,6 +2233,8 @@ Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapa
     sections: [
       {
         title: "Genel Mantık",
+        image: greatCircleVsRhumb,
+        imageAlt: "Composite track: great circle limited by a maximum latitude",
         content: `Büyük daire seyrinde rota genellikle yüksek enlemlere doğru kavis yapar. Bu durum kış şartlarında, buz riski bulunan bölgelerde veya geminin operasyonel sınırlarının zorlandığı durumlarda pratik değildir. Composite rota, büyük daireye göre **daha güvenli ve öngörülebilir** bir alternatif üretir: büyük daireye girilir, sınırlayıcı enleme ulaşmadan önce rota terk edilir, sabit enlem boyunca ilerlenir ve uygun noktada tekrar büyük daireye bağlanılır.
 
 ![Composite track diagram](/diagrams/navigation/great-circle-vs-rhumb.svg)
@@ -2271,6 +2301,8 @@ Bu örnekte büyük daire rotası yüksek enlemlere çıkmamaktadır. Ancak φma
     sections: [
       {
         title: "Rhumb Line’ın Mercator’da Düz Görünmesi",
+        image: mercatorProjection,
+        imageAlt: "On a Mercator chart the rhumb line is a straight line",
         content: `Rhumb line, küre üzerinde meridyenleri **sabit açıyla kesen** bir eğridir. Mercator projeksiyonu açısal doğruluğu koruduğu için bu eğri harita üzerinde **tam olarak düz bir doğru** gibi görünür. Bu sayede denizci, sabit kursla seyir yapan geminin rotasını harita üzerinde cetvelle tek hamlede çizebilir.
 
 Büyük daire ise küre üzerindeki **en kısa yol** olmasına rağmen Mercator haritasında eğri olarak görünür; yalnızca ekvator ve meridyenler düz çizgi hâlindedir.
@@ -2344,6 +2376,8 @@ Bu örnek, Mercator projeksiyonunda kurs hesaplarının **izometrik enlem** üze
     sections: [
       {
         title: "Silindirik Yapı ve Haritaya Aktarım",
+        image: mercatorProjection,
+        imageAlt: "Mercator projection with its expanding latitude scale",
         content: `Mercator projeksiyonda dünya, ekvatora teğet bir silindirin içine yerleştirilmiş gibi düşünülür. Dünya üzerindeki enlem ve boylamlar bu silindire aktarılır ve silindir açılarak düz bir harita hâline getirilir. Bu işlem sonucunda meridyenler birbirine paralel ve eşit aralıklı dikey çizgiler olarak, paraleller ise yatay çizgiler olarak görünür.
 
 ![The Mercator projection](https://cdn.britannica.com/55/109155-050-9FE4B08C/simple-cylindrical-projection-earth-map-globe-mercator.jpg)
@@ -2433,6 +2467,8 @@ Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; **
     sections: [
       {
         title: "Büyük Daire ve Küresel Üçgen",
+        image: greatCircleVsRhumb,
+        imageAlt: "Geometry of a great circle on the sphere",
         content: `Küresel üçgen, kenarları büyük daire yaylarından oluşan ve köşeleri küre yüzeyinde bulunan geometrik yapıdır. Denizcilikte kullanılan temel küresel üçgen, **Kuzey Kutbu – başlangıç mevkii – varış mevkii** köşeleriyle kurulur. Bu üçgende kenarlar enlemlerin tamamlayıcıları ve boylam farkı ile ifade edilir; açılar ise büyük daire başlangıç kursu ve bitiş kursu gibi seyirle doğrudan ilişkili büyüklüklerdir.
 
 ![The great circle triangle](/diagrams/navigation/great-circle-vs-rhumb.svg)
@@ -2504,6 +2540,8 @@ Bu hesaplama, büyük daire geometrisinin küresel üçgen esasına dayandığı
     sections: [
       {
         title: "Küresel Üçgen Yaklaşımı",
+        image: gnomonicProjection,
+        imageAlt: "Gnomonic chart on which a great circle plots as a straight line",
         content: `Başlangıç kursu hesabı, Kuzey Kutbu, başlangıç mevkii ve varış mevkiinden oluşan küresel üçgenin çözümüne dayanır. Bu üçgende başlangıç noktasındaki açı, büyük daire başlangıç kursunu verir. Hesaplama tamamen küresel trigonometri esaslıdır ve düzlem seyir bağıntıları bu problemde geçerli değildir.
 
 ![Spherical triangle diagram](https://www.nosco.ch/mathematics/inc/img/sphericaltriangle.png)`
@@ -2588,6 +2626,8 @@ Başlangıç kursu yaklaşık **039° gerçek** kurstur. Seyir ilerledikçe bu k
     sections: [
       {
         title: "Büyük Daire Mesafesinin Geometrisi",
+        image: gnomonicProjection,
+        imageAlt: "Great circle distance measured on a gnomonic projection",
         content: `Büyük daire mesafesi, küre üzerindeki iki mevkii birleştiren **en kısa yüzey yoludur**. Bu mesafe, Dünya merkezinde görülen **merkez açı** ile tanımlanır. Merkez açı büyüdükçe büyük daire yayı doğrusal olarak uzar.
 
 ![Great circle distance](https://astrolabesailing.com/wp-content/uploads/2014/10/distances.jpg?w=396)
@@ -2797,6 +2837,8 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
     sections: [
       {
         title: "Harita Düzeltmeleri",
+        image: ecdisDisplay,
+        imageAlt: "Electronic chart kept up to date by notices to mariners",
         content: `![Image](https://www.celestaire.com/wp-content/uploads/cm/images/stories/virtuemart/product/Chart_Correction_5088aae37cd311.jpg)
 
 ![Image](https://www.captainsnautical.com/cdn/shop/products/6162b6a837c4431f5ed98448a11171d3_2000x.png?v=1571461279)
@@ -2878,6 +2920,8 @@ Düzeltme tamamlandıktan sonra, haritanın kenar boşluğuna ilgili Notice to M
     sections: [
       {
         title: "Mevki Türleri ve Güvenilirlik Seviyeleri",
+        image: chartPlotting,
+        imageAlt: "Plotting the ship's position on the chart",
         content: `Denizcilikte mevki, kullanılan bilginin güvenilirliğine göre farklı sınıflarda değerlendirilir.
 
 **Tahmini Mevki (Estimated Position – EP)**  
@@ -2978,6 +3022,8 @@ Harita datum’u ile elektronik sistem datum’u aynı olmalıdır. Aksi hâlde 
     sections: [
       {
         title: "Genel Bakış",
+        image: "/diagrams/navigation/mesafe-hiz-zaman.svg",
+        imageAlt: "Relationship between distance, speed and time",
         content: `![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
 
 ![Image](https://imgv2-1-f.scribdassets.com/img/document/373015606/original/1b051a5aaf/1?v=1)
@@ -3163,6 +3209,8 @@ Tan θ bağıntısı yalnız açının büyüklüğünü verir; hangi yönde old
     sections: [
       {
         title: "Genel Bakış",
+        image: "/diagrams/navigation/paraleller-meridyenler.svg",
+        imageAlt: "Parallels and meridians against which DLat and DLong are measured",
         content: `![Latitude and longitude diagram](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 ![Latitude and longitude explained](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
@@ -3408,6 +3456,8 @@ DLat ve DLong’un kuzey–güney, doğu–batı yönleri netleştirilmeden yap�
     sections: [
       {
         title: "Orta Enlem Seyrinin Kullanım Gerekçesi",
+        image: meanLatSailingImg,
+        imageAlt: "Mean latitude sailing worked on the plane sailing triangle",
         content: `Düzlem seyirde boylam dakikası her yerde 1 deniz mili kabul edilir. Bu kabul, kısa mesafelerde ihmal edilebilir hata üretir; ancak mesafe arttıkça hata büyür. Orta enlem seyri, bu hatayı boylam dakikasının kosinüs enlem oranında kısaldığını kabul ederek düzeltir. Böylece hesaplar, küresel seyre yaklaşır.`
       },
       {
@@ -3525,6 +3575,8 @@ Varış boylamı:
     sections: [
       {
         title: "Ortalama Enlem Kavramı",
+        image: meanLatSailingImg,
+        imageAlt: "Mean latitude used to convert departure into difference of longitude",
         content: `![Mean latitude diagram](/diagrams/navigation/duzlem-seyir.svg)
 
 ![Longitude and latitude](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
@@ -3594,6 +3646,8 @@ Bu noktada daha gelişmiş projeksiyon tabanlı yöntemlere geçilmesi gerekir. 
     sections: [
       {
         title: "Set ve Drift Kavramı",
+        image: tideCurrent,
+        imageAlt: "Set and drift of the current acting on the ship",
         content: `![Set and drift diagram](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg)
 
 ![Apparent wind diagram](https://sailingissues.com/acht/apparent-wind-explanation-3x.png)
@@ -3628,6 +3682,8 @@ Set ve drift birlikte akıntı vektörünü oluşturur. Bu vektör, geminin suya
     sections: [
       {
         title: "Akıntı Vektörlerinin Görsel Mantığı",
+        image: tideCurrent,
+        imageAlt: "Current vector combined with the ship's own motion",
         content: `![Vector addition](https://www.grc.nasa.gov/www/k-12/airplane/Images/vectadd.gif)
 
 ![Set and drift diagram](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg?w=640)
@@ -3675,6 +3731,8 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
     sections: [
       {
         title: "Heading ile COG Arasındaki Sapma",
+        image: yonHeadingBearing,
+        imageAlt: "Difference between heading and course over the ground",
         content: `![Tidal vectors](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2016/06/Tidal-Vectors_Dick-Everitt.jpg)
 
 Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sürüklenmesi sonucu oluşur. Akıntılı seyirde rota COG ile temsil edilir; heading ise COG’yi tutturmak için ayarlanan kontrol değişkenidir.`
@@ -3702,6 +3760,8 @@ Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sü
     sections: [
       {
         title: "STW ve SOG Farkı",
+        image: "/diagrams/navigation/hiz-degisimi.svg",
+        imageAlt: "Speed through the water against speed over the ground",
         content: `![The effect of current on STW and SOG](/diagrams/navigation/tide-current.svg)
 
 Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyorsa SOG azalır. Çapraz akıntı durumunda SOG yalnızca artıp azalmaktan ibaret değildir; aynı zamanda COG’yi değiştirir.`
@@ -3738,6 +3798,8 @@ Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyo
     sections: [
       {
         title: "Problem Tipleri",
+        image: tideCurrent,
+        imageAlt: "Allowing for current in the course and speed made good",
         content: `![Sailing in a current](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
 
 ![Sailing in a current, worked example](https://imgv2-2-f.scribdassets.com/img/document/151674944/original/fad718bd48/1?v=1)
@@ -3785,6 +3847,8 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
     sections: [
       {
         title: "Vektör Üçgeni Mantığı",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "Vector triangle of heading, current and track made good",
         content: `![The wind triangle](https://upload.wikimedia.org/wikipedia/commons/1/13/Wind_triangle.jpg)
 
 ![Set and drift diagram](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg?w=640)
@@ -3819,6 +3883,8 @@ Bu üçgen, yalnızca bir çizim değil; yön ve büyüklük ilişkilerini aynı
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: chartPlotting,
+        imageAlt: "Fix obtained by crossing two or more bearings",
         content: `![Image](https://pzsc.org.uk/wp-content/uploads/2016/04/3pointfix.jpg)
 
 ![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2016/03/crossed-bearings.jpg)
@@ -4032,6 +4098,8 @@ Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: meanLatSailingImg,
+        imageAlt: "Mean latitude sailing triangle",
         content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 ![Image](/diagrams/navigation/duzlem-seyir.svg)
@@ -4275,6 +4343,8 @@ Yön: **N 51° E → 051°T**
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "Running fix: an earlier bearing advanced along the course made good",
         content: `![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
 
 ![Image](https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-1.png)
@@ -4474,6 +4544,8 @@ Bu nokta, **t₂ anındaki gemi mevkii**dir.
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: chartPlotting,
+        imageAlt: "Two marks in transit giving a precise position line",
         content: `![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2015/08/lead-light1_cmyk.jpg)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.27-1024x574.png?media=1759652400)
@@ -4813,6 +4885,8 @@ Transit (Leading Line), klasik seyirde **en güvenilir ve en basit** mevki tayin
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/duzlem-seyir.svg",
+        imageAlt: "Course and distance from the plane sailing triangle",
         content: `![Great circle compared with rhumb line](/diagrams/navigation/great-circle-vs-rhumb.svg)
 
 ![Image](/diagrams/navigation/duzlem-seyir.svg)
@@ -5028,6 +5102,8 @@ Long₂ = 023°21′ E
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: sembolDangers,
+        imageAlt: "Clearing line drawn to keep the ship clear of a charted danger",
         content: `![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2015/08/Tacking-into-an-entrance.jpg)
 
 ![Image](https://imgv2-2-f.scribdassets.com/img/document/452965426/original/a1fe3b13d5/1?v=1)
@@ -5223,6 +5299,8 @@ Clearing Line, klasik seyrüseferde **fix sağlamaz**, ancak geminin **tehlikede
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: sembolLightCharacteristics,
+        imageAlt: "Distance off a lighthouse from its vertical angle",
         content: `![Image](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/08/distance-off.jpg?fit=1200%2C901&ssl=1&w=640)
 
 ![Image](https://imgv2-2-f.scribdassets.com/img/document/670945450/original/8747219132/1?v=1)
@@ -5415,6 +5493,8 @@ Distance Off by Vertical Angle, klasik seyrüseferde **tek ölçümle güvenilir
     sections: [
       {
         title: "Görsel Referanslar",
+        image: gpsSatellites,
+        imageAlt: "GPS constellation and the fix obtained from it",
         content: `![Image](/diagrams/navigation/ecdis-display.svg)
 
 ![Image](https://optim.tildacdn.net/tild3836-3661-4332-a265-663434346237/-/resize/640x/-/format/webp/21_Types_of_Navigati.png.webp)
@@ -5485,6 +5565,8 @@ Akıntının 3 knot olduğu bir bölgede, GPS’e bakılarak yapılan yaklaşma 
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/duzlem-seyir.svg",
+        imageAlt: "Course and distance between two positions by mean latitude",
         content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 ![Image](https://sailingissues.com/vier/running-fix-3x.png)
@@ -5723,6 +5805,8 @@ Distance = 278 NM
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: yonTrueBearing,
+        imageAlt: "Distance off found from a horizontal angle",
         content: `![Image](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/08/distance-off.jpg?fit=1200%2C901&ssl=1&w=640)
 
 ![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.1.5.10_fig_1-1024x906.jpg)
@@ -5909,6 +5993,8 @@ Distance Off by Horizontal Angle, klasik seyrüseferde **tek ölçümle mesafe t
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "Transferring a position line to obtain a running fix",
         content: `![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
@@ -6116,6 +6202,8 @@ Running Fix, klasik seyrüseferde **zaman ve hareketi denkleme katan**, doğru u
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/duzlem-seyir.svg",
+        imageAlt: "Where the plane sailing assumption starts to break down",
         content: `![Great circle compared with rhumb line](/diagrams/navigation/great-circle-vs-rhumb.svg)
 
 ![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
@@ -6360,6 +6448,8 @@ Mean Latitude Sailing, **basitliği ve hızı** sayesinde klasik seyrüseferin t
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "DR position advanced by course and distance, and the EP with current applied",
         content: `![Image](https://upload.wikimedia.org/wikipedia/commons/e/ed/Dead-reckoning.svg)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/PLOTTING-SYMBOLS.png?media=1759652400)
@@ -6567,6 +6657,8 @@ Dead Reckoning ve Estimated Position, klasik seyrüseferde **her an kullanılan*
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: tideCurrent,
+        imageAlt: "Course to steer obtained from the current vector triangle",
         content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
 
 ![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/03/edScreenshot-2022-02-18-at-11.26.42.png)
@@ -6755,6 +6847,8 @@ Course to Steer, klasik seyrüseferde **akıntının fiilen telafi edildiği**, 
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: meanLatSailingImg,
+        imageAlt: "Direct problem: course and distance known, position sought",
         content: `![Great circle compared with rhumb line](/diagrams/navigation/great-circle-vs-rhumb.svg)
 
 ![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
@@ -6992,6 +7086,8 @@ Mean Latitude Sailing’in doğrudan problemi, **rota ve mesafeden yeni mevki ü
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: yonWindDrift,
+        imageAlt: "Leeway: the ship pushed bodily to leeward by the wind",
         content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.8_fig_1.jpg)
 
 ![Image](https://sailzing.com/wp-content/uploads/2021/02/leeway-definition.jpg)
@@ -7171,6 +7267,8 @@ Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uz
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: yonTrueBearing,
+        imageAlt: "True bearings of two objects crossed to fix the position",
         content: `![Image](https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
@@ -7353,6 +7451,8 @@ Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** 
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: meanLatSailingImg,
+        imageAlt: "Inverse problem: two positions known, course and distance sought",
         content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 ![Image](/diagrams/navigation/duzlem-seyir.svg)
@@ -7589,6 +7689,8 @@ Inverse Problem of Mean Latitude Sailing, **bilinen iki mevkii arasında rota ve
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "Successive bearings of one object giving a running fix",
         content: `![Image](https://i0.wp.com/boatluv.com/wp-content/uploads/2019/08/7_running-fix_boatluv.png?fit=400%2C400&ssl=1)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
@@ -7785,6 +7887,8 @@ Running Fix, klasik seyrüseferde **tek obje ile mevki tayinine imkân veren**, 
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: yonTrueBearing,
+        imageAlt: "Horizontal angles between three objects used to fix the position",
         content: `![Image](https://knowledgeofsea.com/wp-content/uploads/2020/02/IMG_4143-1024x594.jpg)
 
 ![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.1.5.10_fig_1-1024x906.jpg)
@@ -7946,6 +8050,8 @@ Horizontal Angle Fix, klasik seyrüseferde **açı geometrisine dayalı**, doğr
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: "/diagrams/navigation/duzlem-seyir.svg",
+        imageAlt: "Limits of the mean latitude method over long distances",
         content: `![Great circle compared with rhumb line](/diagrams/navigation/great-circle-vs-rhumb.svg)
 
 ![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
@@ -8140,6 +8246,8 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
     sections: [
       {
         title: "Görsel Kavramlar",
+        image: celestialTriangle,
+        imageAlt: "Celestial triangle relating observed and calculated altitude",
         content: `![Distance from the geographical position](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Diagram_showing_GP_distance_%3D_ZD.jpg/500px-Diagram_showing_GP_distance_%3D_ZD.jpg)
 
 ![Intercept geometrisi](https://flyandwire.com/wp-content/uploads/2020/12/intercept-geometry-n-p2-definitions-rate-of-closure-tid-as-2.png?w=780)
@@ -8208,6 +8316,8 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
     sections: [
       {
         title: "Görsel Referanslar",
+        image: celestialTriangle,
+        imageAlt: "Azimuth as an angle in the celestial triangle",
         content: `![Azimut geometrisi](https://www.onboardintelligence.com/CelestialNav/Images/astro2.gif)
 
 ![The celestial triangle](https://ars.els-cdn.com/content/image/1-s2.0-S0038092X13002612-fx1.jpg)
@@ -8265,6 +8375,8 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
     sections: [
       {
         title: "Vertex’in Seyirdeki Önemi",
+        image: gnomonicProjection,
+        imageAlt: "Vertex, the highest latitude reached on a great circle track",
         content: `Vertex, büyük daire rotasının **kutba en yakın** olduğu noktadır. Büyük daire, en kısa yol olduğu için yüksek enlemlere doğru “yukarı kıvrılır”; bu kıvrılma sınırının bilinmemesi, gemiyi istenmeyen meteorolojik ve operasyonel koşullara sokabilir.
 
 ![The vertex of a great circle](https://blog.evoatpl.com/wp-content/uploads/2024/08/GreatCircleVertices-1.png)
@@ -8333,6 +8445,8 @@ Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan u
     sections: [
       {
         title: "Görsel Referanslar",
+        image: azimuthalProjection,
+        imageAlt: "Azimuthal projection used for planning long ocean passages",
         content: `![A great circle track example](https://gisgeography.com/wp-content/uploads/2019/07/Great-Circle-NewYork-Madrid.jpg)
 
 ![Ocean currents and routes](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2015/09/LRATLANTIC_CIRCUIT_ROUTE_CURRENTS.jpg)
@@ -8521,6 +8635,8 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
     sections: [
       {
         title: "Detaylı Anlatım",
+        image: chartPlotting,
+        imageAlt: "Advancing a celestial position line to obtain a running fix",
         content: `![Image](https://easysextant.com/wp-content/uploads/2024/03/running-fix.jpg)
 
 ![Image](https://easysextant.com/wp-content/uploads/2024/08/The-process-of-transferring-a-line-of-position.jpg.webp)
@@ -8613,6 +8729,8 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
     sections: [
       {
         title: "Görsel Referanslar",
+        image: chartPlotting,
+        imageAlt: "Plotting a line of position on the chart",
         content: `![Direction toward or away from the sun](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
 
 ![Line of position diagram](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/11/fullsizerender-70.jpg?fit=835%2C1200&ssl=1)
@@ -8676,6 +8794,8 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
     sections: [
       {
         title: "Görsel Referanslar",
+        image: chartPlotting,
+        imageAlt: "Two and three position lines crossed to give a fix",
         content: `![The running fix and carrying a LOP forward](https://easysextant.com/wp-content/uploads/2024/03/running-fix.jpg)
 
 ![Intersection of two and three LOPs](https://www.onboardintelligence.com/CelestialNav/Images/InFix.jpg)`
@@ -8739,6 +8859,8 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
     sections: [
       {
         title: "Görsel Referanslar",
+        image: celestialTriangle,
+        imageAlt: "Intercept method: comparing observed with calculated altitude",
         content: `![Intercept geometrisi](https://www.onboardintelligence.com/CelestialNav/Images/astro2.gif)
 
 ![The toward / away rule](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
@@ -8877,6 +8999,8 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
     sections: [
       {
         title: "Görsel Referanslar",
+        image: sextantSvg,
+        imageAlt: "Sextant errors that affect the observed altitude",
         content: `![How a time error affects longitude](https://astronavigationdemystified.com/wp-content/uploads/2015/09/nonum-diag26.jpg)`
       },
       {
@@ -9030,6 +9154,8 @@ Bu senaryoda fix güvenilirdir.`
     sections: [
       {
         title: "Görsel Referanslar",
+        image: gpsSatellites,
+        imageAlt: "Satellite geometry, which governs the accuracy of a GPS fix",
         content: `![Image](/diagrams/navigation/gps-satellites.svg)
 
 ![Image](https://www.groundcontrol.com/wp-content/uploads/2025/05/Diagram-of-RockBLOCK-APNT-in-Maritime-Application.jpg)
@@ -9096,6 +9222,8 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
     sections: [
       {
         title: "Görsel Referanslar",
+        image: "/diagrams/navigation/duzlem-seyir.svg",
+        imageAlt: "Plane sailing treats the Earth's surface as flat over a short run",
         content: `![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
 
 ![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
@@ -9158,6 +9286,8 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
     sections: [
       {
         title: "Görsel Referanslar",
+        image: "/diagrams/navigation/enlem-paralelleri.svg",
+        imageAlt: "Parallels of latitude and the change of latitude between them",
         content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
 
 ![Image](/diagrams/navigation/duzlem-seyir.svg)
@@ -9229,6 +9359,8 @@ DLat = 69.6' N (≈ 1° 09.6' N)
     sections: [
       {
         title: "Görsel Referanslar",
+        image: "/diagrams/navigation/mesafe-hiz-zaman.svg",
+        imageAlt: "Distance, speed and time with no current allowance",
         content: `![Plotting a DR track with no current](/diagrams/navigation/duzlem-seyir.svg)
 
 ![Image](https://upload.wikimedia.org/wikipedia/commons/e/ed/Dead-reckoning.svg)
@@ -9309,6 +9441,8 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
     sections: [
       {
         title: "Görsel Referanslar",
+        image: yonRelativeBearing,
+        imageAlt: "True, magnetic and relative bearings compared",
         content: `![Image](https://sailingissues.com/drie/convert-east-west-magnetic-variation-true-courses.png)
 
 ![The compass rose and the system of direction](/diagrams/navigation/compass.svg)
@@ -9418,6 +9552,8 @@ Hedef, hakiki kuzeye göre 040° doğrultusundadır.`
     sections: [
       {
         title: "Görsel Referanslar",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "Classic running fix on a single charted object",
         content: `![Running fix: the earlier LOP brought forward and crossed with the second bearing](https://easysextant.com/wp-content/uploads/2024/03/running-fix.jpg)`
       },
       {
@@ -11278,6 +11414,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "PSC Denetim Süreci ve Hukuki Dayanak",
+        image: "/diagrams/navigation/solas-v-tasima.svg",
+        imageAlt: "SOLAS V carriage requirements checked during a port state inspection",
         content:
           "PSC müfettişi, gemiye çıkışından itibaren kaptan ve kıdemli zabitten sertifikaları, güvenlik belgeleri ve önemli kayıtları talep eder. SOLAS Bölüm V'in 34. Kuralı uyarınca her sefer için seyir planı hazırlanmış olmalı ve köprüüstünde erişilebilir konumda bulunmalıdır. Denetim iki aşamada gerçekleşir: ilk aşamada sertifikalar ve belgeler kontrol edilir (belge denetimi); ikinci aşamada fiziksel ekipman, prosedür ve kayıtlar incelenir (ayrıntılı denetim). Paris MOU kriterlerine göre yüksek risk profili taşıyan gemiler — bayrak, sınıflandırma geçmişi ve önceki detention sayısına göre — daha sık ve daha kapsamlı denetime tabi tutulur. Eksiklikler 'deficiency' olarak kayıt altına alınır; belirli eşiği aşan veya emniyet açısından kritik eksiklikler detention ile sonuçlanır.",
         bulletPoints: [
@@ -11400,6 +11538,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Tüm Gemiler İçin Dikkate Alınacak Etkenler",
+        image: "/diagrams/navigation/kural5-gozculuk.svg",
+        imageAlt: "Lookout and safe speed as the basis of collision avoidance",
         content:
           "Emniyetli hız belirlenirken aşağıdaki etkenler birlikte değerlendirilir. Görüş azaldıkça, trafik yoğunlaştıkça veya manevra alanı daraldıkça emniyetli hız düşer.",
         bulletPoints: [
@@ -11439,6 +11579,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Manevranın Nitelikleri",
+        image: "/diagrams/navigation/kural15-aykiri-gecis.svg",
+        imageAlt: "Action to avoid collision in a crossing situation",
         content:
           "Kural 8'in temel ilkesi, niyetin karşı gemi tarafından açıkça anlaşılmasıdır. Bu nedenle rota ve/veya hız değişiklikleri yeterince büyük yapılır.",
         bulletPoints: [
@@ -11929,6 +12071,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Çalışma Prensibi",
+        image: gyroCompassImg,
+        imageAlt: "Gyro compass repeater on the bridge",
         content:
           "Serbest bir cayroskop, dönme ekseninin yönünü uzayda korur (jiroskopik atalet). Dünya'nın dönüşü nedeniyle bu eksen gözlemciye göre kayar; cayroya yerçekimi kontrolü (üst/alt ağırlık veya sıvı bağlantı) eklenerek eksen meridyene doğru salınır ve sönümleme (damping) ile hakiki kuzeyde 'oturur' (settle). Bu nedenle cayro, manyetik kuzey değil hakiki kuzey referansı verir; variation ve deviation düzeltmesi gerektirmez.",
       },
@@ -11963,6 +12107,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Vaka 1: MV Bright Field – Mississippi Nehri, 1996",
+        image: "/diagrams/navigation/kural13-yetisme.svg",
+        imageAlt: "Overtaking situation, a common factor in collision casualties",
         content:
           "Panama bandıralı bulk carrier Bright Field, Mississippi Nehri'nde seyir ederken makine arızası yaşadı ve akıntının etkisiyle New Orleans rıhtımına çarptı; 116 kişi yaralandı. Soruşturma; makine bakımındaki sistemik yetersizlikleri, kaptan ile makine zabiti arasındaki iletişim eksikliğini ve acil durum tatbikatlarının yetersizliğini tespit etti. Bu vaka, 'kıyı seyri güvenlidir' varsayımının dar sularda ve akıntılı kanallarda nasıl yanlış olduğunu ve makine arızası senaryosu için köprüüstü-makine koordinasyon planlamasının kritikliğini gözler önüne serdi. ISM Kodu'nun zorunlu hale getirilmesinde bu türden vakalar belirleyici rol oynadı.",
         bulletPoints: [
@@ -12023,6 +12169,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Neden (Root Cause) Analizi: Kök Neden Tespiti",
+        image: "/diagrams/navigation/brm-bilesenleri.svg",
+        imageAlt: "Bridge resource management components examined after an incident",
         content:
           "Kök neden analizi, yüzeysel hatanın (active failure) arkasındaki sistemik zayıflıkları (latent failure) ortaya çıkarmayı hedefler. '5 Neden Tekniği' (5 Whys), kök nedene ulaşmak için her bir hatanın nedenini beş katmana kadar sorgular. Örnek: Çatışma neden oldu? → Gemi rotayı değiştirmedi. Neden? → Gözcü uyarı vermedi. Neden? → Radarı izlemiyordu. Neden? → İş yükü aşırıydı. Neden? → Vardiya organizasyonu yetersizdi. Kök neden: vardiya planlaması ve köprüüstü organizasyonu. Bu teknik, tek bir kişiyi suçlamak yerine sistemin tasarımındaki boşlukları hedef alır — bu nedenle IMO'nun 'just culture' (adil kültür) anlayışıyla da uyumludur.",
         bulletPoints: [
@@ -12083,6 +12231,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Planlama Aşamasında Meteorolojik Entegrasyon",
+        image: weatherSystems,
+        imageAlt: "Weather systems taken into account when planning the route",
         content:
           "Sefer öncesinde pilot chart, grib verileri, sinoptik haritalar ve rota üzerindeki liman tahminleri birlikte incelenmelidir. Tek bir kaynağa bağlı kalmak yerine farklı kaynakların karşılaştırılması, yanlış tahmin riskini azaltır. Özellikle açık deniz geçişlerinde 24–72 saatlik trendin izlenmesi kritik önem taşır.",
         bulletPoints: [
@@ -12115,6 +12265,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Variation (Manyetik Sapma)",
+        image: "/diagrams/navigation/pusula-duzeltme.svg",
+        imageAlt: "Compass correction from compass course to true course",
         content: "Variation, manyetik kuzey ile hakiki (true) kuzey arasındaki açıdır. Konuma ve zamana göre değişir; deniz haritasının pusula gülünde (compass rose) ve yıllık değişim oranıyla birlikte verilir. Doğu (E) variation pozitif, batı (W) variation negatif kabul edilir.",
       },
       {
@@ -12154,6 +12306,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Çalışma Prensibi",
+        image: echoSounderImg,
+        imageAlt: "Echo sounder display showing the depth beneath the keel",
         content: "Gemi dibindeki bir transdüser (transducer) kısa bir akustik darbe gönderir; ses dalgası deniz dibinden yansıyarak geri döner. Cihaz, gidiş-dönüş süresini ölçer ve deniz suyundaki ses hızını (yaklaşık 1500 m/s) kullanarak derinliği hesaplar.",
         formula: {
           text: "Derinlik = (Ses hızı × Geçen süre) / 2",
@@ -12193,6 +12347,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "STW ve SOG Ayrımı",
+        image: "/diagrams/navigation/doppler-log.svg",
+        imageAlt: "Doppler log measuring speed through the water",
         content: "STW (Speed Through Water), geminin içinden geçtiği SU kütlesine göre hızıdır; akıntıdan etkilenir. SOG (Speed Over Ground), geminin YERE (deniz dibine/coğrafi konuma) göre gerçek hızıdır. SOG − STW farkı, akıntının rota yönündeki bileşenini verir. Hesaplı seyirde (DR) STW, ETA/yer takibinde SOG kullanılır.",
       },
       {
@@ -12227,6 +12383,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Çalışma Prensibi ve Kanallar",
+        image: aisTargets,
+        imageAlt: "AIS targets displayed with their vectors",
         content: "AIS, iki özel VHF kanalı (AIS 1: 161.975 MHz, AIS 2: 162.025 MHz) üzerinden veri yayınlar. SOTDMA (Self-Organising Time Division Multiple Access) yöntemiyle gemiler zaman dilimlerini kendi aralarında paylaşır, böylece çakışma olmadan sık güncelleme yapılır. Menzil tipik olarak VHF görüş hattı kadardır (~20-40 mil).",
       },
       {
@@ -12261,6 +12419,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Kaloma (Scope) ve Tutma",
+        image: "/diagrams/seamanship/demirleme-manevralari.svg",
+        imageAlt: "Anchoring manoeuvre and the scope of cable laid out",
         content: "Demirin tutması büyük ölçüde zincirin deniz dibine YATAY bir çekme uygulamasına bağlıdır. Bu nedenle verilen zincir uzunluğu (kaloma), su derinliğinin birkaç katı olmalıdır. İyi havada tipik kural su derinliğinin yaklaşık 5-6 katı zincir; kötü havada daha fazla (7+ kat) verilir. Zincirin ağırlığı (catenary) çekmeyi yatay tutar ve tutma gücünü artırır.",
         formula: {
           text: "Kaloma ≈ 5-6 × su derinliği (iyi hava), 7+ × (kötü hava)",
@@ -12304,6 +12464,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "Polar Code ve Belgeler",
+        image: polarIceImg,
+        imageAlt: "Icebreakers working in Arctic sea ice",
         content: "Polar Code, kutup sularında işletilen gemilere ek yapısal, donanımsal ve operasyonel gereksinimler getirir. Gemi, Polar Ship Certificate taşımalı ve geminin kapasite/limitlerini, risk değerlendirmesini ve operasyonel prosedürleri içeren Polar Water Operational Manual (PWOM) bulundurmalıdır.",
       },
       {

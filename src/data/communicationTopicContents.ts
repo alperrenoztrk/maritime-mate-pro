@@ -1,5 +1,16 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import epirbSartImage from "@/assets/lessons/epirb-sart.jpg";
+import signalFlagsImage from "@/assets/lessons/signal-flags-chart.png";
+import dscPanelImage from "@/assets/bridge/dsc-panel.jpg";
+import vhfRadioImage from "@/assets/bridge/vhf-radio.jpg";
+import navtexImage from "@/assets/bridge/navtex-receiver.jpg";
+import inmarsatImage from "@/assets/bridge/inmarsat-terminal.jpg";
+import aisDisplayImage from "@/assets/bridge/ais-display.jpg";
+import dscDistressImage from "@/assets/navigation/dsc-distress.svg";
+import bridgeOverviewImage from "@/assets/bridge/ship-bridge-overview.jpg";
+
 export const communicationTopicContents: Record<string, TopicDetailContent> = {
   "GMDSS Mimarisi ve Deniz Alanları": {
     title: "GMDSS Mimarisi ve Deniz Alanları",
@@ -10,6 +21,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Deniz Alanları (Sea Area) Sınıflandırması",
         content:
           "GMDSS dört deniz alanı tanımlar ve her alan, kapsama sağlayan altyapı teknolojisine göre belirlenir. A1 alanı, en az bir VHF kıyı istasyonunun DSC (Digital Selective Calling) kapsaması altındaki bölgedir; tipik menzili 20–30 deniz milidir. A2 alanı, A1 dışında kalan ancak bir MF (Medium Frequency) kıyı istasyonunun DSC kapsaması altındaki bölgedir; menzili tipik olarak yaklaşık 100–150 deniz miline kadar uzanır. A3 alanı, A1 ve A2 dışında kalan ancak Inmarsat uydu kapsaması altındaki bölgedir; bu kapsama yaklaşık 70°K – 70°G enlemleri arasını içerir. A4 alanı, A1, A2 ve A3 dışında kalan bölgeleri kapsar; esas olarak kutup bölgeleridir ve burada HF (High Frequency) radyo haberleşmesi temel iletişim aracıdır.",
+        image: dscPanelImage,
+        imageAlt: "GMDSS console carrying the required radio installations",
       },
       {
         title: "Ekipman Gereklilikleri",
@@ -44,6 +57,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "DSC Çağrı Mekanizması",
         content:
           "DSC, belirli bir frekans üzerinden (VHF Ch.70) dijital çağrı yapılmasını sağlayan otomatik bir sistemdir. Her geminin benzersiz bir MMSI (Maritime Mobile Service Identity) numarası vardır ve DSC çağrısı bu numara üzerinden gerçekleşir. DSC çağrı tipleri: tehlike (distress), aciliyet (urgency), emniyet (safety) ve rutin (routine). Bir DSC çağrısında çağrı tipi, MMSI, mevki (GPS bağlantılıysa otomatik eklenir), çağrılan istasyon ve iletişimin sürdürüleceği çalışma kanalı bilgileri dijital olarak iletilir. Karşı tarafın DSC alıcısı bu bilgileri otomatik olarak çözer, ekranda gösterir ve alarm verir.",
+        image: vhfRadioImage,
+        imageAlt: "VHF radiotelephone with DSC controller",
       },
       {
         title: "VHF Kanalları ve Kullanım Disiplini",
@@ -109,6 +124,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlike Haberleşmesi (MAYDAY)",
         content:
           "MAYDAY, geminin veya gemideki kişilerin ciddi ve yakın tehlike altında olduğu ve acil yardım gerektiği durumlarda kullanılır. Batma, kontrolsüz yangın, terk-i gemi, çarpışma sonrası su alma gibi durumlar MAYDAY gerektirir. MAYDAY mesajı tüm diğer haberleşmenin önüne geçer; MAYDAY yayını yapıldığında, bu yayınla ilgisi olmayan tüm istasyonlar sessizliğe geçer (SEELONCE MAYDAY). MAYDAY mesaj formatı standart ve kısadır: gemi kimliği, mevki, tehlike türü, yardım talebi ve gemideki kişi sayısı bilgilerini içerir. MAYDAY RELAY, tehlikedeki gemi adına başka bir geminin veya kıyı istasyonunun alarm yayması durumunda kullanılır.",
+        image: dscDistressImage,
+        imageAlt: "Structure of a DSC distress alert and its follow-up call",
       },
       {
         title: "Aciliyet Haberleşmesi (PAN PAN)",
@@ -143,6 +160,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "NAVTEX Sistemi",
         content:
           "NAVTEX, 518 kHz (uluslararası NAVTEX) ve 490 kHz (ulusal NAVTEX) frekanslarında otomatik olarak metin mesajları ileten bir radyo teleks sistemidir. Menzili yaklaşık 200–400 deniz milidir; bu nedenle esas olarak kıyıya yakın bölgelerde (A1/A2 alanları) hizmet verir. NAVTEX mesajları dört karakterli bir tanımlayıcıyla kodlanır: ilk harf istasyonu, ikinci harf mesaj türünü (A: seyir uyarısı, B: meteoroloji, D: SAR bilgisi vb.), son iki rakam sıra numarasını gösterir. Alıcı, daha önce alınmış mesajları otomatik olarak filtreler ve tekrar yazdırmaz. Mesaj türleri seçilebilir ancak A (seyir uyarısı), B (meteoroloji), D (SAR) ve L (NAVAREA uyarıları) her zaman açık tutulmalıdır — bunlar devre dışı bırakılamaz.",
+        image: navtexImage,
+        imageAlt: "NAVTEX receiver printing maritime safety information",
       },
       {
         title: "SafetyNET Sistemi",
@@ -178,6 +197,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "EPIRB Çalışma Prensibi",
         content:
           "406 MHz EPIRB, COSPAS-SARSAT uydu sistemi üzerinden tehlike sinyali iletir. Sinyal, geminin kimliğini (MMSI veya kayıt numarası), GPS pozisyonunu (GPS modüllü ise) ve tehlike durumunu içerir. COSPAS-SARSAT uyduları bu sinyali alarak ilgili MRCC'ye (Maritime Rescue Coordination Centre) ileten LUT (Local User Terminal) istasyonlarına aktarır. GPS entegreli EPIRB ile konum doğruluğu yaklaşık 100 m'ye iner; GPS'siz modellerde Doppler etkisiyle konum belirlenir, bu daha yavaş ve daha az doğrudur (2–5 km). EPIRB, ek olarak 121.5 MHz homing sinyali yayarak uçak ve helikopterlerin yakın mesafede yönlenmesini sağlar.",
+        image: epirbSartImage,
+        imageAlt: "Emergency beacons used to raise and home in on a distress alert",
       },
       {
         title: "EPIRB Montajı, Bakımı ve Kayıt",
@@ -330,6 +351,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Uluslararası Fonetik Alfabe",
         content:
           "Harfler tek tek söylenmek yerine standart kelimelerle kodlanır: A-Alfa, B-Bravo, C-Charlie, D-Delta, E-Echo, F-Foxtrot, G-Golf, H-Hotel, I-India, J-Juliett, K-Kilo, L-Lima, M-Mike, N-November, O-Oscar, P-Papa, Q-Quebec, R-Romeo, S-Sierra, T-Tango, U-Uniform, V-Victor, W-Whiskey, X-X-ray, Y-Yankee, Z-Zulu. Bu alfabe çağrı işaretleri (call sign), gemi adları ve kritik kelimelerin hecelenmesinde kullanılır. Örnek: 'TCA' çağrı işareti 'Tango Charlie Alfa' olarak okunur.",
+        image: signalFlagsImage,
+        imageAlt: "International Code of Signals flags with their phonetic alphabet names",
       },
       {
         title: "Sayıların ve Ondalıkların Okunması",
@@ -370,6 +393,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Sürekli Nöbet (Continuous Watch) Yükümlülükleri",
         content:
           "SOLAS Bölüm IV gereği gemi, seyir halindeyken şu nöbetleri sürekli tutar: VHF Ch.70 DSC otomatik izleme; sefer alanına göre MF Ch.2187.5 kHz DSC ve/veya HF DSC tehlike frekansları; NAVTEX (518 kHz) otomatik alım; ve uygun olduğunda Inmarsat MSI alımı. Ch.16 sesli dinleme, DSC'ye geçişten sonra da pek çok gemide sürdürülür. Nöbet, ekipmanın açık ve doğru ayarlı tutulmasıyla otomatik olarak sağlanır; operatör alarmlara tepki vermekle yükümlüdür.",
+        image: vhfRadioImage,
+        imageAlt: "Radio installation on which the listening watch is kept",
       },
       {
         title: "Radyo Log Defteri (Radio Log)",
@@ -410,6 +435,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Inmarsat Sistemi ve Kapsama",
         content:
           "Inmarsat, jeostatik (yer-sabit) uydularla yaklaşık 70°K – 70°G enlemleri arasını (A3 alanı) kapsar; kutuplar (A4) kapsama dışıdır. Jeostatik yörünge nedeniyle çok yüksek enlemlerde uydu ufka çok alçaldığından bağlantı zorlaşır. GMDSS kapsamında Inmarsat-C, tehlike alarmı, MSI alımı ve mesajlaşma için tanınan bir hizmettir.",
+        image: inmarsatImage,
+        imageAlt: "Inmarsat satellite terminal antenna radomes",
       },
       {
         title: "Inmarsat-C ve Fleet/FleetBroadband",
@@ -449,6 +476,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Uluslararası İşaret Kodu (ICS)",
         content:
           "International Code of Signals (ICS), dil engelini aşmak için tasarlanmış, özellikle emniyet ve seyir konularını kapsayan standart bir koddur. 26 harf bayrağı, 10 rakam flaması ve yardımcı flamalar ile tek harfli, iki harfli ve üç harfli kodlanmış anlamlar iletilir. Mesajlar bayrakla (flag hoist), mors lambasıyla veya sesle iletilebilir.",
+        image: signalFlagsImage,
+        imageAlt: "International Code of Signals alphabet flags, numeral pennants and substitutes",
       },
       {
         title: "Tek Harfli İşaretlerin Tamamı (A-Z)",
@@ -553,6 +582,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "ITU Radyo Tüzüğü ve Frekans Yönetimi",
         content:
           "ITU (Uluslararası Telekomünikasyon Birliği) Radyo Tüzüğü, deniz hizmetine ayrılan frekans bantlarını, tehlike/çağrı frekanslarını ve kullanım kurallarını belirler. Gemi telsizi yalnızca tahsis edilen frekans/kanallarda ve izin verilen güçte yayın yapabilir. Tehlike frekanslarında (Ch.16, Ch.70, 2182/2187.5 kHz vb.) gereksiz yayın yasaktır. Yanlış/kötü niyetli tehlike çağrısı (false distress) ciddi yaptırımlara tabidir.",
+        image: "/diagrams/communication/gmdss-deniz-alanlari.svg",
+        imageAlt: "GMDSS sea areas, which determine the required equipment and operator certificate",
       },
       {
         title: "Gemi İstasyon Ruhsatı ve Kimlikler",
@@ -592,6 +623,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Çalışma Prensibi ve Kanallar",
         content:
           "AIS, iki özel VHF deniz kanalında çalışır: AIS 1 (Ch.87B, 161.975 MHz) ve AIS 2 (Ch.88B, 162.025 MHz). Class A transponderler SOTDMA (Self-Organizing Time Division Multiple Access) tekniğiyle zaman dilimlerini kendi aralarında otomatik paylaşır; böylece merkezî bir kontrole gerek kalmadan yüzlerce gemi aynı kanalı çakışmadan kullanabilir. Cihaz GPS/GNSS'ten aldığı mevkiyi ve gemi sensörlerinden (cayro, hız logu) aldığı verileri belirli aralıklarla yayınlar. Yayın aralığı gemi durumuna göre değişir: demirdeyken veya yavaşken birkaç dakikada bir, yüksek hızda veya manevrada birkaç saniyede bir güncellenir.",
+        image: aisDisplayImage,
+        imageAlt: "AIS display listing nearby vessels and their data",
         bulletPoints: [
           "AIS 1 = Ch.87B (161.975 MHz), AIS 2 = Ch.88B (162.025 MHz).",
           "Class A: SOTDMA, 12.5 W — SOLAS gemileri için zorunlu.",
@@ -643,6 +676,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "MF ve HF Bantları, Tehlike Frekansları",
         content:
           "MF bandı 300 kHz – 3 MHz arasıdır; deniz haberleşmesinde 2 MHz civarı kullanılır. MF telsiz telefon tehlike/çağrı frekansı 2182 kHz, MF-DSC tehlike frekansı ise 2187.5 kHz'tir. HF bandı 3 – 30 MHz arasıdır ve deniz hizmetine 4, 6, 8, 12 ve 16 MHz dolaylarında bantlar ayrılmıştır; her bantta ayrı bir DSC tehlike frekansı vardır (örn. 8414.5 kHz). HF, dünya çapında uzun menzil sağlayabildiğinden A4 (kutup) dahil tüm alanlarda temel uzun menzil haberleşme aracıdır. NBDP (Narrow-Band Direct Printing / teleks) de MF/HF bantlarında çalışır.",
+        image: vhfRadioImage,
+        imageAlt: "Ship's radio installation carrying the MF/HF and VHF sets",
         bulletPoints: [
           "MF telsiz telefon tehlike/çağrı: 2182 kHz; MF-DSC: 2187.5 kHz.",
           "HF deniz bantları: ~4/6/8/12/16 MHz; her birinde ayrı DSC frekansı.",
@@ -688,6 +723,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "VTS Hizmet Türleri",
         content:
           "VTS, IMO A.857(20) kararı çerçevesinde üç temel hizmet sunar. Bilgi Hizmeti (INS – Information Service): trafik, hava, seyir engelleri gibi emniyet için gerekli bilgilerin belirli zamanlarda veya talep üzerine yayınlanması. Trafik Düzenleme Hizmeti (TOS – Traffic Organization Service): trafiğin akışını düzenlemek için geçiş sırası, hız, bekleme noktaları gibi düzenlemeler. Seyir Yardım Hizmeti (NAS – Navigational Assistance Service): zor seyir veya meteorolojik koşullarda, gemi talebi veya VTS'nin gerekli görmesi hâlinde mevki ve seyir konusunda yardım. VTS talimatları geminin kaptanının seyir sorumluluğunu ortadan kaldırmaz; nihai sorumluluk kaptandadır.",
+        image: bridgeOverviewImage,
+        imageAlt: "Bridge from which VTS reporting is carried out",
         bulletPoints: [
           "INS: emniyet bilgisi yayını (trafik, hava, engeller).",
           "TOS: trafik akışının düzenlenmesi (sıra, hız, bekleme).",
@@ -733,6 +770,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Köprüüstü–Makine Haberleşmesi ve Telgraf",
         content:
           "Köprüüstü ile makine dairesi arasındaki ana komut bağlantısı makine telgrafıdır (engine telegraph); modern gemilerde elektronik telgraf, istenen makine komutunu (örn. Half Ahead, Stop, Full Astern) hem köprüüstünde hem makine kontrol odasında eşzamanlı gösterir ve onaylar. Telgrafın yanında köprüüstü ile makine kontrol odası arasında telefon ve interkom bağlantısı bulunur. Köprü-makine komutlarının kapalı döngüyle (komutun makine tarafından tekrar edilip onaylanması) yürütülmesi yanlış manevrayı önler. Manevra sırasında verilen tüm makine komutları otomatik kaydedici (engine movement recorder / bell book) ile kayıt altına alınır.",
+        image: bridgeOverviewImage,
+        imageAlt: "Bridge console carrying the internal communication equipment",
       },
       {
         title: "Ses-Güçlü Telefonlar ve İnterkom",
@@ -778,6 +817,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "SAR Organizasyonu ve MRCC",
         content:
           "Dünya denizleri SAR sorumluluk bölgelerine ayrılmıştır; her bölgeyi bir MRCC (Maritime Rescue Coordination Centre) yönetir. Bir tehlike alarmı (DSC, EPIRB, telsiz telefon vb.) MRCC'ye ulaştığında, SAR Görev Koordinatörü (SMC – SAR Mission Coordinator) operasyonu planlar ve yönetir. Tehlike durumu üç aşamada değerlendirilir: belirsizlik (INCERFA – uncertainty), alarm (ALERFA – alert) ve tehlike (DETRESFA – distress). MRCC, bölgedeki gemilere yardım çağrısı yapabilir; SOLAS ve denizcilik geleneği gereği tehlikedeki kişilere yardım, kaptanın temel bir yükümlülüğüdür.",
+        image: epirbSartImage,
+        imageAlt: "Beacons that mark the distress position for on-scene coordination",
         bulletPoints: [
           "MRCC, SAR bölgesini yönetir; SMC operasyonu koordine eder.",
           "Tehlike aşamaları: INCERFA (belirsizlik), ALERFA (alarm), DETRESFA (tehlike).",
@@ -829,6 +870,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Sistem Mimarisi: LEOSAR, GEOSAR ve MEOSAR",
         content:
           "Cospas-Sarsat üç uydu katmanı kullanır. LEOSAR, alçak kutupsal yörüngedeki uydularla çalışır; Doppler kayması üzerinden konum hesaplar ancak uydu o anda kapsama alanında değilse beklemek (gecikme) gerekir. GEOSAR, sabit (jeostasyoner) uydularla anında alarm sağlar fakat tek başına konum üretemez (vericide GNSS yoksa). MEOSAR (Medium Earth Orbit), GPS/Galileo/GLONASS gibi navigasyon uydularına yerleştirilen SAR yükleriyle çalışır; geniş, sürekli kapsama ve birden çok uydudan eşzamanlı alımla hızlı ve hassas konumlandırma sunar. Modern sistemde GEOSAR'ın anlık alarmı ile MEOSAR'ın hızlı bağımsız konumlandırması birlikte kullanılır.",
+        image: epirbSartImage,
+        imageAlt: "406 MHz beacons detected by the Cospas-Sarsat satellite system",
         bulletPoints: [
           "LEOSAR: kutupsal yörünge, Doppler konumu, olası bekleme süresi.",
           "GEOSAR: anlık alarm, tek başına konum üretemez.",
@@ -883,6 +926,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Modernizasyonun Gerekçesi ve Kapsamı",
         content:
           "GMDSS modernizasyonu; eskiyen teknolojileri güncellemeyi, sistemin yeni uydu sağlayıcılarına açılmasını, dijital veri yayınını yaygınlaştırmayı ve gereksiz çakışan zorunlulukları sadeleştirmeyi amaçlar. SOLAS Bölüm IV ve ilgili performans standartları bu doğrultuda revize edilmektedir. Hedef; tehlike ve emniyet haberleşmesinin güvenilirliğini korurken modern ekipmanın getirdiği hız, kapasite ve esneklikten yararlanmaktır. Modernizasyon kademeli yürür; gemiler ve idareler için geçiş takvimleri ve uyum gereklilikleri belirlenir.",
+        image: "/diagrams/communication/gmdss-deniz-alanlari.svg",
+        imageAlt: "GMDSS sea areas A1 to A4 and their carriage requirements",
         bulletPoints: [
           "Amaç: eskiyen teknolojiyi güncellemek ve sistemi yeni sağlayıcılara açmak.",
           "SOLAS Bölüm IV ve performans standartları revize edilmektedir.",
@@ -937,6 +982,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Amaç ve ISPS Çerçevesi",
         content:
           "SSAS, 11 Eylül sonrası getirilen SOLAS Bölüm XI-2 ve ISPS Kodu kapsamında, çoğu uluslararası sefer yapan gemi için zorunlu hâle getirilmiştir. Amaç, geminin güvenliği ihlal edildiğinde veya tehdit altındayken kıyıdaki idareye sessiz bir uyarı iletmektir. Tehlike alarmından (GMDSS) farkı: SSAS, çevredeki gemilere veya saldırganlara açık bir alarm vermez; yalnızca önceden tanımlanmış kara muhataplarına gizli bildirim gönderir. Böylece kaçırma veya korsanlık girişimi sırasında müdahale planları güvenlik içinde başlatılabilir.",
+        image: dscPanelImage,
+        imageAlt: "Ship security alarm activated from the bridge console",
         bulletPoints: [
           "SOLAS XI-2 / ISPS Kodu kapsamında zorunludur.",
           "Geminin güvenlik ihlali/tehdidini kıyıya GİZLİCE bildirir.",
@@ -991,6 +1038,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Amaç ve Yasal Dayanak",
         content:
           "LRIT, SOLAS Bölüm V (Seyir Güvenliği) kapsamında, çoğu uluslararası sefer yapan yolcu gemisi, yüksek hızlı tekne, 300 GT ve üzeri yük gemisi ile mobil açıkdeniz sondaj birimleri için zorunludur. Amaç; emniyet, güvenlik (security) ve deniz çevresinin korunması maksadıyla devletlerin kendi bayraklı, kıyılarına yaklaşan veya limanlarına gelecek gemileri izleyebilmesidir. LRIT bir 'izleme' (tracking) sistemidir; çatışmadan kaçınma gibi anlık seyir amaçlı değildir. Veriler yetkili merkezler arasında kontrollü biçimde paylaşılır.",
+        image: aisDisplayImage,
+        imageAlt: "Vessel tracking display of the kind LRIT reporting feeds",
         bulletPoints: [
           "SOLAS Bölüm V kapsamında belirli gemi türleri için zorunludur.",
           "Amaç: emniyet, güvenlik ve çevre koruma için uzaktan izleme.",
@@ -1045,6 +1094,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Anten Türleri ve Frekansa Göre Tasarım",
         content:
           "Anten boyutu ve tipi, çalıştığı frekans bandıyla doğrudan ilişkilidir. VHF için kısa, çubuk (whip) tipi anteni yeterlidir; tipik olarak direk veya köprüüstü üstünde, mümkün olan en yüksek ve açık konuma yerleştirilir (telsiz ufku yükseklikle artar). MF/HF için çok daha uzun teller veya kamçı antenler ve bir anten tuneri (ATU – Antenna Tuning Unit) gerekir; bu antenler genellikle gemi gövdesini topraklama düzlemi olarak kullanır. Uydu (Inmarsat/diğer) terminalleri ise yönlü/sabit kubbe antenler kullanır; bazı sistemler uyduyu sürekli takip eden stabilize antene ihtiyaç duyarken, alçak yörünge takımyıldızları daha basit antenlerle çalışabilir.",
+        image: inmarsatImage,
+        imageAlt: "Satellite antenna radomes and the mast carrying the radio aerials",
         bulletPoints: [
           "VHF: kısa whip anten, mümkün olan en yüksek konum.",
           "MF/HF: uzun tel/kamçı + ATU; gövde topraklama düzlemi.",

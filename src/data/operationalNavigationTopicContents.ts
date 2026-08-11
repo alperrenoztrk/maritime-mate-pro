@@ -4,6 +4,12 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * Operasyonel seyir yeterlilikleri.
  * Bu içerikler klasik teori anlatımını, vardiya zabitinin gerçek karar ve işlem sırasıyla tamamlar.
  */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import heavyWeatherImage from "@/assets/lessons/heavy-weather.jpg";
+import bridgeOverviewImage from "@/assets/bridge/ship-bridge-overview.jpg";
+import gyroCompassImage from "@/assets/bridge/gyro-compass.jpg";
+import ecdisImage from "@/assets/bridge/ecdis-display.jpg";
+
 export const operationalNavigationTopicContents: Record<string, TopicDetailContent> = {
   "DR, EP ve Set-Drift ile Mevki İlerletme": {
     title: "DR, EP ve Set-Drift ile Mevki İlerletme",
@@ -14,6 +20,8 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         title: "DR ve EP Arasındaki Operasyonel Ayrım",
         content:
           "DR mevkii, son fix noktasından itibaren geminin hakiki rotası, suya göre hızı ve geçen zaman kullanılarak bulunur; akıntı ve rüzgâr etkileri hesaba katılmaz. EP ise beklenen set, drift ve leeway uygulanmış tahmini gerçek mevkidir. Haritada DR ve EP farklı sembollerle, saat ve log mesafesiyle işaretlenmelidir. GNSS mevcut olsa dahi DR hattı belirli aralıklarla sürdürülür; böylece elektronik mevki sıçraması, yanlış sensör veya datum hatası erken fark edilir.",
+        image: "/diagrams/navigation/olu-hesap.svg",
+        imageAlt: "Dead reckoning position advanced by course and distance run",
         bulletPoints: [
           "DR: course through the water + speed through the water + time.",
           "EP: DR + current set/drift + leeway + bilinen diğer dış etkiler.",
@@ -64,6 +72,8 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         title: "Vardiyayı Devralmadan Önce",
         content:
           "Devralan zabit yeterince dinlenmiş olmalı, karanlığa göz uyumu sağlamalı ve vardiyayı kabul etmeden önce mevki, rota, hız, trafik, hava, makine durumu, dümen modu, seyir planı, XTE limitleri, yaklaşan waypointler, harita düzeltmeleri, GMDSS/VTS nöbeti ve kaptanın özel talimatlarını bizzat doğrulamalıdır. Manevra, yoğun trafik veya kritik olay sırasında devir teslim yapılmaz.",
+        image: bridgeOverviewImage,
+        imageAlt: "Bridge of a ship under way, where the watch is kept",
         bulletPoints: [
           "Mevkiyi yalnız sözlü değil bağımsız yöntemle doğrula.",
           "Radar ayarlarını, hedef takibini ve alarm limitlerini kontrol et.",
@@ -112,6 +122,8 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         title: "Pilot Gelmeden Önce Hazırlık",
         content:
           "Pilot card, wheelhouse poster, manoeuvring booklet, güncel draftlar, trim, UKC hesabı, makine ve dümen durumu, thruster/römorkör durumu, demirlerin hazırlığı, yanaşma planı ve abort noktaları hazır edilir. Pilot merdiveni operasyonu ayrı kontrol listesiyle yürütülür. Köprüüstü ekip görevleri; conning, radar/ECDIS izleme, dümen/makine emirlerinin tekrarı ve kayıt olarak dağıtılır.",
+        image: ecdisImage,
+        imageAlt: "ECDIS display used during the master-pilot exchange",
       },
       {
         title: "Master-Pilot Information Exchange",
@@ -153,6 +165,8 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         title: "GNSS Kaybı, Jamming ve Spoofing",
         content:
           "Ani mevki sıçraması, COG/SOG ile radar-görsel durumun uyuşmaması, aynı yerde bulunan iki alıcının farklı değer göstermesi veya AIS hedeflerinin topluca kayması GNSS anomalisi işareti olabilir. ECDIS position source doğrulanır, ikinci alıcı ve radar/görsel fixlerle karşılaştırma yapılır, son güvenilir fixten DR/EP başlatılır ve kaptan çağrılır. Emniyet marjı artırılır; dar suya giriş ertelenebilir.",
+        image: gyroCompassImage,
+        imageAlt: "Gyro compass, whose failure forces a fallback to magnetic steering",
       },
       {
         title: "Gyro ve Manyetik Pusula Arızası",
@@ -192,6 +206,8 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         title: "Ağır Hava Öncesi Hazırlık",
         content:
           "Güncel hava haritaları ve rota tahminleri değerlendirilir; kaptan ve makine dairesi bilgilendirilir. Hatch coverlar, kapılar, ventilatörler, güverte yükleri, demirler, pilot merdiveni donanımı ve hareketli malzemeler sea-secure yapılır. Tank seviyeleri ve serbest yüzey etkisi kontrol edilir, balast planı hazırlanır, sintine ve scupperlar kontrol edilir. Dümen ve makine hazır tutulur; personel güverteye çıkışları sınırlandırılır.",
+        image: heavyWeatherImage,
+        imageAlt: "View aft from a ship's deck in heavy seas",
       },
       {
         title: "Rota ve Hız Seçimi",

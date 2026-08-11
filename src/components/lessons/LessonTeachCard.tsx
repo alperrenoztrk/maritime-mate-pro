@@ -16,12 +16,19 @@ export function LessonTeachCard({
   categoryId,
   topicTitle,
   hideImage = false,
+  alreadyUsedImages,
 }: {
   section: BetaSection;
   categoryId: string;
   topicTitle: string;
   /** Görsel aynı konuda daha önce gösterildiyse tekrar basılmaz. */
   hideImage?: boolean;
+  /**
+   * Konunun ÖNCEKİ bölümlerinde basılmış görseller. Metin içindeki markdown
+   * görselleri bunlara karşı da elenir; aksi hâlde aynı diyagram bir konunun
+   * her bölümünde yeniden görünür.
+   */
+  alreadyUsedImages?: readonly string[];
 }) {
   const resolvedImage = resolveLessonImage(
     categoryId,
@@ -37,7 +44,7 @@ export function LessonTeachCard({
         categoryId,
         section.sourceTitle ?? section.title,
         topicTitle,
-        resolvedImage ? [resolvedImage] : [],
+        [...(alreadyUsedImages ?? []), ...(resolvedImage ? [resolvedImage] : [])],
       )
     : section.content;
 

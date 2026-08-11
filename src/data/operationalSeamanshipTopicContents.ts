@@ -1,6 +1,12 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 /** İleri gemicilik, manevra, demirleme, bağlama ve gemi yapısı içerikleri. */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import tugImage from "@/assets/lessons/tug-assisting.jpg";
+import rudderPropellerImage from "@/assets/seamanship/rudder-propeller.jpg";
+import anchorChainImage from "@/assets/seamanship/anchor-chain.jpg";
+import mooringEquipmentImage from "@/assets/seamanship/mooring-equipment.jpg";
+
 export const operationalSeamanshipTopicContents: Record<string, TopicDetailContent> = {
   "İleri Gemi Manevrası ve Pervane Etkileri": {
     title: "İleri Gemi Manevrası ve Pervane Etkileri",
@@ -11,6 +17,8 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Tek Pervaneli Gemide Transverse Thrust",
         content:
           "Pervane kanatlarının alt ve üst kısımlarındaki farklı su akışı özellikle tornistanda kıçın yana atmasına neden olur. Sağ dönüşlü sabit hatveli pervanede tipik olarak tornistanda kıç iskeleye, baş sancağa eğilim gösterir; ancak gövde, dümen, CPP ve thruster düzeni sonucu değiştirebilir. Manevra planı gemiye özel deneme ve pilot card verisine dayanmalıdır.",
+        image: rudderPropellerImage,
+        imageAlt: "Ship's propeller and rudder, which govern her handling",
       },
       {
         title: "Pivot Point ve Kuvvet Kolu",
@@ -50,6 +58,8 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Tug Type ve Bollard Pull",
         content:
           "Conventional, ASD ve tractor tugların çekme noktası ve manevra karakteri farklıdır. Bollard pull statik maksimum çekme kuvvetidir; gerçek deniz ve hız koşullarında kullanılabilir kuvvet daha düşük olabilir. Gerekli tug sayısı rüzgâr alanı, draft, akıntı, rıhtım, thruster ve acil durdurma ihtiyacına göre belirlenir.",
+        image: tugImage,
+        imageAlt: "Tug made fast and assisting a ship in a port approach",
       },
       {
         title: "Push, Pull, Braking ve Escort Mode",
@@ -89,6 +99,8 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Let Go ve Walk Back Yöntemleri",
         content:
           "Let go yönteminde fren kontrollü bırakılarak demir serbest düşer; uygun derinlik ve zincir hız kontrolü gerekir. Walk back yönteminde windlass ile zincir kontrollü indirilir ve derin su/yoğun trafikte daha hassas yerleştirme sağlar. Çok derin suda demirin serbest düşmesi ekipmana şok yükü bindirebilir. Gemi SMS'i ve windlass limitleri esas alınır.",
+        image: anchorChainImage,
+        imageAlt: "Anchor cable secured on the forecastle",
       },
       {
         title: "Anchor Position ve Swinging Circle",
@@ -137,6 +149,8 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Ship Design MBL ve Line Selection",
         content:
           "Mooring donanımı ve halatların tasarım referansı Ship Design Minimum Breaking Load değeridir. Halat malzemesi, uzama, çap, bağlantı elemanları ve winch kapasitesi bu sistemle uyumlu olmalıdır. Aşırı güçlü yeni halatı zayıf bitt/fairlead sistemine takmak emniyet sağlamaz; yükü daha zayıf elemana taşır.",
+        image: mooringEquipmentImage,
+        imageAlt: "Mooring lines and deck fittings used to secure the ship",
       },
       {
         title: "Mooring Line Management Plan",
@@ -181,6 +195,8 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Ana Yapısal Elemanlar",
         content:
           "Keel, shell plating, deck plating, frames, beams, girders, longitudinals, floors ve bulkheads tekne yüklerini taşır. Double bottom; tank, boru ve yapısal derinlik sağlar. Collision bulkhead baş hasarında su yayılımını sınırlar. Watertight bulkhead ve kapılar hasar kontrolünün pasif bariyeridir.",
+        image: "/diagrams/seamanship/gemi-kisimlari.svg",
+        imageAlt: "Principal structural parts of a ship",
       },
       {
         title: "Boyuna Mukavemet: Hogging ve Sagging",

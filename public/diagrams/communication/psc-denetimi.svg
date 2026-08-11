@@ -1,0 +1,65 @@
+<svg width="720" height="440" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .num{font:13px sans-serif;fill:#ffffff;font-weight:700}
+    </style>
+  </defs>
+  <rect width="720" height="440" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Port State Control — How an Inspection Runs</text>
+
+  <g transform="translate(20 44)">
+    <rect width="436" height="230" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">The escalation is driven by what the inspector finds</text>
+
+    <g transform="translate(18 44)">
+      <circle cx="14" cy="14" r="14" fill="#0369a1"/><text x="14" y="19" text-anchor="middle" class="num">1</text>
+      <text x="42" y="12" class="it">Initial inspection</text>
+      <text x="42" y="30" class="sm">Certificates, documents and the general condition.</text>
+    </g>
+
+    <g transform="translate(18 100)">
+      <circle cx="14" cy="14" r="14" fill="#b45309"/><text x="14" y="19" text-anchor="middle" class="num">2</text>
+      <text x="42" y="12" class="it">More detailed inspection</text>
+      <text x="42" y="30" class="sm">Triggered by "clear grounds" — missing or invalid</text>
+      <text x="42" y="46" class="sm">certificates, poor condition, or a crew that cannot</text>
+      <text x="42" y="62" class="sm">carry out essential operations.</text>
+    </g>
+
+    <g transform="translate(18 172)">
+      <circle cx="14" cy="14" r="14" fill="#b91c1c"/><text x="14" y="19" text-anchor="middle" class="num">3</text>
+      <text x="42" y="12" class="it">Detention</text>
+      <text x="42" y="30" class="sm">A deficiency serious enough that the ship may not sail.</text>
+    </g>
+  </g>
+
+  <g transform="translate(472 44)">
+    <rect width="228" height="230" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="18" y="28" class="hd" style="fill:#b91c1c">Action codes on the report</text>
+    <text x="18" y="56" class="it">10</text>
+    <text x="56" y="56" class="sm">deficiency rectified</text>
+    <text x="18" y="80" class="it">15</text>
+    <text x="56" y="80" class="sm">rectify at next port</text>
+    <text x="18" y="104" class="it">17</text>
+    <text x="56" y="104" class="sm">rectify before departure</text>
+    <text x="18" y="128" class="it">30</text>
+    <text x="56" y="128" class="sm">detainable</text>
+    <text x="18" y="160" class="sm">A detention is published and</text>
+    <text x="18" y="176" class="sm">counts against both the flag</text>
+    <text x="18" y="192" class="sm">and the company for years —</text>
+    <text x="18" y="208" class="sm">it raises future targeting.</text>
+  </g>
+
+  <!-- conduct -->
+  <g transform="translate(20 290)">
+    <rect width="680" height="136" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="18" y="28" class="hd" style="fill:#1d4ed8">How to conduct yourself with an inspector or surveyor</text>
+    <text x="18" y="54" class="sm">Accompany the inspector at all times; never let anyone wander the ship unescorted.</text>
+    <text x="18" y="74" class="sm">Answer the question asked. Do not volunteer opinions, and do not guess — offer to check and come back.</text>
+    <text x="18" y="94" class="sm">Demonstrate rather than argue: if the equipment works, show it working.</text>
+    <text x="18" y="114" class="sm">Read the report before signing. Signing acknowledges receipt, not agreement — record any disagreement.</text>
+  </g>
+</svg>

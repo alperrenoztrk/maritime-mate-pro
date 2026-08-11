@@ -6,6 +6,9 @@ dosyanın kaynağını, fotoğrafçısını ve lisansını listeler. CC BY / CC 
 lisanslı görseller için atıf zorunludur; kaynak sayfalara verilen bağlantılar
 üzerinden lisans metinlerine ulaşılabilir.
 
+Ayrı kredi dosyaları: bulut fotoğrafları için [`clouds/CREDITS.md`](clouds/CREDITS.md),
+meteoroloji ders görselleri için [`meteorology/CREDITS.md`](meteorology/CREDITS.md).
+
 | Dosya | Kaynak (Wikimedia Commons) | Fotoğrafçı | Lisans |
 | --- | --- | --- | --- |
 | `bridge/ais-display.jpg` | [Ships AIS display with lists of nearby vessels.jpg](https://commons.wikimedia.org/wiki/File:Ships_AIS_display_with_lists_of_nearby_vessels.jpg) | Ulf Larsen | CC BY-SA 3.0 |

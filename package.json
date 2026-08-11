@@ -18,6 +18,7 @@
     "build:native": "node --max-old-space-size=4096 ./node_modules/vite/bin/vite.js build --mode native",
     "build:dev": "node --max-old-space-size=4096 ./node_modules/vite/bin/vite.js build --mode development",
     "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit",
     "check:svg-text": "node scripts/check-svg-text-fit.mjs",
     "test:validation": "tsc -p tsconfig.validation.json && node -e \"require('fs').writeFileSync('tmp/validation-test/package.json', '{\\\"type\\\":\\\"commonjs\\\"}')\" && node tmp/validation-test/utils/validation/validationRunner.js",
     "test:formulas": "node --import tsx src/utils/validation/formulaRunner.ts",

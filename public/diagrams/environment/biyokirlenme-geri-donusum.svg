@@ -1,0 +1,57 @@
+<svg width="720" height="430" viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect width="720" height="430" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Biofouling, Anti-fouling and Ship Recycling</text>
+
+  <!-- biofouling -->
+  <g transform="translate(20 46)">
+    <rect width="332" height="210" rx="10" fill="#f0f9ff" stroke="#bae6fd"/>
+    <text x="18" y="30" class="hd" style="fill:#0369a1">Biofouling</text>
+    <text x="18" y="52" class="sm">Growth on the hull, in sea chests and in every</text>
+    <text x="18" y="68" class="sm">niche area — bow thruster tunnels, gratings.</text>
+
+    <text x="18" y="98" class="it">Two costs</text>
+    <text x="18" y="118" class="sm">Invasive species carried between ecosystems.</text>
+    <text x="18" y="134" class="sm">Added hull friction: more power for the same</text>
+    <text x="18" y="150" class="sm">speed, so more fuel burned and more CO2.</text>
+
+    <text x="18" y="180" class="sm">Managed with a biofouling management plan,</text>
+    <text x="18" y="196" class="sm">a record book and planned in-water cleaning.</text>
+  </g>
+
+  <!-- AFS -->
+  <g transform="translate(368 46)">
+    <rect width="332" height="210" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="18" y="30" class="hd" style="fill:#b91c1c">AFS Convention</text>
+    <text x="18" y="52" class="sm">Controls what may be used in the coating.</text>
+
+    <text x="18" y="82" class="it">Banned</text>
+    <text x="18" y="102" class="sm">Organotin compounds acting as biocides —</text>
+    <text x="18" y="118" class="sm">TBT — banned since 2008.</text>
+    <text x="18" y="138" class="sm">Cybutryne banned from 2023.</text>
+
+    <text x="18" y="168" class="it">Carried on board</text>
+    <text x="18" y="188" class="sm">IAFS Certificate with a record of the coating</text>
+    <text x="18" y="200" class="sm">system applied.</text>
+  </g>
+
+  <!-- recycling -->
+  <g transform="translate(20 270)">
+    <rect width="680" height="146" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">End of life — Hong Kong Convention</text>
+
+    <text x="18" y="56" class="it">Inventory of Hazardous Materials (IHM)</text>
+    <text x="18" y="76" class="sm">Part I is kept and maintained throughout the ship's whole service life, not written at the end.</text>
+    <text x="18" y="92" class="sm">Parts II and III are added before the ship goes for recycling.</text>
+
+    <text x="18" y="120" class="it">Ship Recycling Plan</text>
+    <text x="18" y="136" class="sm">Prepared by an authorised yard for that specific ship, based on its IHM.</text>
+  </g>
+</svg>

@@ -1,6 +1,9 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
 /** Operasyonel emniyet, güvenlik, tıbbi müdahale ve hasar kontrolü içerikleri. */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import shipBridgeImage from "@/assets/maritime/ship-bridge.jpg";
+
 export const operationalSafetyTopicContents: Record<string, TopicDetailContent> = {
   "Gemide Tıbbi İlk Yardım ve TMAS": {
     title: "Gemide Tıbbi İlk Yardım ve TMAS",
@@ -9,6 +12,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
     sections: [
       {
         title: "Olay Yeri Güvenliği ve ABCDE Yaklaşımı",
+        image: "/diagrams/safety/tmas-tibbi-yardim.svg",
+        imageAlt: "Chain of medical care at sea from first aid to TMAS advice and evacuation",
         content:
           "Kurtarıcı önce yangın, elektrik, gaz, kimyasal veya hareketli ekipman tehlikesini kontrol eder ve uygun KKD kullanır. Hastaya sistematik ABCDE yaklaşımı uygulanır: Airway hava yolu, Breathing solunum, Circulation dolaşım ve ciddi kanama, Disability bilinç/nörolojik durum, Exposure tüm vücut değerlendirmesi ve ısı kaybının önlenmesi. Yaşamı tehdit eden sorun bulunduğu anda müdahale edilir; değerlendirme sonuna kadar beklenmez.",
         bulletPoints: [
@@ -59,6 +64,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
     sections: [
       {
         title: "Security Level 1, 2 ve 3",
+        image: "/diagrams/safety/isps-guvenlik-seviyeleri.svg",
+        imageAlt: "ISPS security levels 1 to 3, the security officers and BMP anti-piracy measures",
         content:
           "Level 1 normal asgari koruma tedbirlerinin sürekli uygulandığı seviyedir. Level 2 artmış riskte ek tedbirler, daha sık devriye, sınırlı giriş noktası ve güçlendirilmiş kontrol gerektirir. Level 3 muhtemel veya yakın tehdide karşı belirli süreyle olağanüstü tedbirlerdir. Seviye değişikliği kaptan/SSO tarafından ekibe duyurulur; Ship Security Plan'daki gemiye özel işlemler uygulanır.",
       },
@@ -103,6 +110,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
     sections: [
       {
         title: "Köprüüstü ve OT Sistemlerinin Riskleri",
+        image: "/diagrams/safety/siber-guvenlik.svg",
+        imageAlt: "IT and OT systems on board, how an attacker gets in and the required controls",
         content:
           "Operasyonel teknoloji sistemleri uzun ömürlü, üreticiye özel ve bazen güncel olmayan yazılımlarla çalışır. Yetkisiz USB, zayıf parola, ortak hesap, açık uzaktan erişim ve IT-OT ağlarının kontrolsüz bağlantısı başlıca risklerdir. ECDIS güncellemesi, servis laptopu ve taşınabilir medya yalnız onaylı prosedürle kullanılır.",
       },
@@ -139,6 +148,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "İlk Dakikalar",
         content:
           "Genel alarm verilir, kaptan ve makine dairesi çağrılır, yaralılar ve yangın kontrol edilir. Gemi mevkii, başı, hızı ve trafik durumu belirlenir; gerekiyorsa makine/dümenle ikinci çatışma önlenir. Çarpan gemiler plansız biçimde ayrılmaz; ayrılma su girişini artırabilir. Watertight kapılar ve ilgili açıklıklar kapatılır.",
+        image: "/diagrams/stability/yara-stabilitesi.svg",
+        imageAlt: "Damage stability after hull breach and flooding",
       },
       {
         title: "Hasar ve Stabilite Değerlendirmesi",
@@ -173,6 +184,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "İlk Eylemler",
         content:
           "Makine durdurulur veya kaptan talimatına göre sınırlanır, genel alarm ve gerekli acil çağrı yapılır. Mevki, heading, oturma zamanı ve gelgit safhası kaydedilir. Tüm tank/ambar/void soundingleri, draftlar ve sintineler kontrol edilir. Yakıt transferi, ballast ve pompalama plansız yapılmaz.",
+        image: "/diagrams/seamanship/squat-etkisi.svg",
+        imageAlt: "Squat in shallow water, which reduces under-keel clearance",
       },
       {
         title: "Ground Reaction ve Stabilite",
@@ -207,6 +220,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "Flooding Kaynağının Belirlenmesi",
         content:
           "Yüksek seviye alarmı, sintine pompasının sık çalışması, draft/list değişimi veya kapalı mahalde su sesi ilk işaret olabilir. Güvenli ekip sounding, tank seviye, CCTV ve bölme kontrolüyle kaynağı arar. Kapalı mahal ve elektrik tehlikesi değerlendirilmeden personel gönderilmez.",
+        image: "/diagrams/stability/yara-stabilitesi.svg",
+        imageAlt: "Damage stability: flooding of a compartment and the resulting loss of stability",
       },
       {
         title: "Watertight Boundary ve Progressive Flooding",
@@ -246,6 +261,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
         title: "Komuta Zinciri ve Ortak Durum Resmi",
         content:
           "Kaptan komuta eder; köprüüstü, makine kontrol ve olay yeri ekipleri belirlenmiş kanallarda rapor verir. Raporlar kısa ve standarttır: yer, olay, tehlike, personel durumu, yapılan işlem, ihtiyaç. Söylenti ve tahmin doğrulanmış bilgi gibi aktarılmaz. Köprüüstünde olay çizelgesi ve personel sayımı tutulur.",
+        image: shipBridgeImage,
+        imageAlt: "Bridge acting as the emergency command centre",
       },
       {
         title: "Dış Bildirim Önceliği",

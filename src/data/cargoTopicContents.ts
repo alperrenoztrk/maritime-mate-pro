@@ -8,6 +8,13 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * `TopicSection.title` değerleri lessonFlow/cargo.ts içindeki `sectionRef` ve
  * `sectionTitles` ile birebir eşleşir.
  */
+// Ders görselleri — depoda hâlihazırda bulunan varlıklar.
+import hatchCoversImage from "@/assets/seamanship/hatch-covers.jpg";
+import bulkCarrierImage from "@/assets/ships/bulk-carrier.jpg";
+import containerShipImage from "@/assets/ships/container-ship.jpg";
+import deckCraneImage from "@/assets/seamanship/deck-crane.jpg";
+import roroShipImage from "@/assets/ships/roro-ship.jpg";
+
 export const cargoTopicContents: Record<string, TopicDetailContent> = {
   "İstif Faktörü ve Broken Stowage": {
     title: "İstif Faktörü ve Broken Stowage",
@@ -18,6 +25,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "İstif Faktörü Tanımı ve Hesabı",
         content:
           "İstif faktörü, yükün birim ağırlığının kapladığı hacimdir: SF = V / W. Düşük SF'li yükler (örn. demir cevheri ~0.4 m³/t) ağır ve yoğundur; gemi hacim dolmadan deadweight sınırına ulaşır (deadweight cargo). Yüksek SF'li yükler (örn. pamuk ~2.0 m³/t, kereste) hafif ve hacimlidir; gemi ağırlık sınırına ulaşmadan ambar dolar (measurement/volume cargo). Yük için gereken hacim V = W × SF formülüyle bulunur. Planlamada önce hangi sınıra (ağırlık ya da hacim) önce ulaşılacağı belirlenir; bu, ambar doluluk stratejisini ve gelir optimizasyonunu yönlendirir.",
+        image: hatchCoversImage,
+        imageAlt: "Cargo hold hatch covers on a bulk carrier",
         formula: {
           text: "V = W × SF",
           description: "V: gereken hacim (m³), W: yük ağırlığı (t), SF: istif faktörü (m³/t)",
@@ -60,6 +69,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Deadweight ve Yük Kapasitesi",
         content:
           "Deadweight (DWT), geminin yaz draftında taşıyabileceği toplam ağırlıktır: yük + yakıt + yağ + su + kumanya + mürettebat + safra. Net taşınabilir yük (cargo deadweight) = DWT − (bunker + tatlı su + yağlar + sabit ağırlıklar + safra). Plan yapılırken önce sefer için gereken yakıt ve su rezervi ayrılır, kalan kapasite yüke tahsis edilir. Yükleme limanında deniz suyu yoğunluğu (dock water allowance) ve varış limanına kadar tüketilecek bunker da hesaba katılır; aksi hâlde gemi yola çıkışta veya varışta draft sınırını aşabilir.",
+        image: bulkCarrierImage,
+        imageAlt: "Bulk carrier whose holds are loaded to a planned weight distribution",
       },
       {
         title: "Ağırlık Dağılımı ve Tekne Mukavemeti",
@@ -94,6 +105,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Arşimet Prensibi ve Deplasman",
         content:
           "Yüzen bir gemi, batan hacmi kadar suyun ağırlığına eşit bir kaldırma kuvvetiyle desteklenir. Dolayısıyla geminin toplam ağırlığı (deplasman, Δ), o draftta yer değiştirdiği su ağırlığına eşittir. Draft survey, yükleme öncesi ve sonrası deplasman farkından yük ağırlığını bulur: Yük = Δsonra − Δönce. Deplasman, geminin hidrostatik tablolarından (ya da deplasman ölçeğinden) ortalama drafta karşılık gelen değer okunarak elde edilir.",
+        image: "/diagrams/seamanship/load-line-isaretleri.svg",
+        imageAlt: "Load line marks read on the ship's side during a draft survey",
         formula: {
           text: "Yük = Δsonra − Δönce",
           description: "Δ: ilgili draftta okunan deplasman (ton); fark yüklenen/boşaltılan yük miktarıdır",
@@ -136,6 +149,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "IMSBC Grupları (A, B, C)",
         content:
           "Code, yükleri üç gruba ayırır. Grup A: nem fazlalığında sıvılaşabilen yükler (örn. nikel cevheri, demir cevheri konsantresi, bazı kömürler). Grup B: kimyasal tehlike taşıyan yükler (yanıcı, oksitleyici, oksijen tüketen veya zehirli gaz çıkaran; örn. kömür, doğrudan indirgenmiş demir/DRI). Grup C: ne sıvılaşan ne kimyasal tehlike taşıyan yükler (örn. çakıl, klinker). Bir yük hem A hem B özelliği taşıyabilir. Yükleme öncesi sevkiyatçı, yükün doğru sınıflandırmasını ve özelliklerini içeren beyanı (shipper's declaration) sağlamak zorundadır.",
+        image: bulkCarrierImage,
+        imageAlt: "Bulk carrier carrying solid bulk cargo under the IMSBC Code",
       },
       {
         title: "Sıvılaşma ve Transportable Moisture Limit (TML)",
@@ -174,6 +189,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Tahıl Kayması ve Heeling Moment",
         content:
           "Tahıl yüzeyi başlangıçta ambarın üst kısmında boşluk bırakır (settling sonrası ~%2-3 oturma). Gemi yalpaladığında tahıl yüzeyi yaklaşık 15°'ye kadar kayar ve dolu ambarlarda da yüzey kayması (assumed volumetric heeling moment) hesaba alınır. Bu kayma, geminin bir tarafına ek ağırlık etkisi yaratarak yatırıcı moment (heeling moment) doğurur. Grain Code, dolu ve kısmen dolu (slack) ambarlar için varsayılan hacimsel kayma momentlerini tablolar hâlinde verir; gerçek kayma değil, standart bir varsayım kullanılır.",
+        image: bulkCarrierImage,
+        imageAlt: "Bulk carrier of the type that loads grain in bulk",
       },
       {
         title: "Grain Code Stabilite Kriterleri",
@@ -212,6 +229,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Yükü Etkileyen Kuvvetler",
         content:
           "Denizde yüke etki eden kuvvetler geminin altı serbestlik derecesindeki hareketinden doğar: yalpa (roll) en büyük enine ivmeyi, baş-kıç vurma (pitch) ve dalıp çıkma (heave) boyuna ve dikine ivmeleri yaratır. CSS Code, gemi büyüklüğü ve hıza göre tasarım ivmelerini (g cinsinden) tablolar hâlinde verir. Bağlama hesabı, yükün ağırlığından doğan atalet kuvvetlerinin (enine, boyuna, dikine) bağlama ve sürtünme dirençleriyle dengelenmesini sağlar. En kritik yön genellikle enine (yalpa) yöndür.",
+        image: roroShipImage,
+        imageAlt: "Ro-Ro cargo secured and lashed under the CSS Code",
       },
       {
         title: "Sürtünme ve Bağlama Direnci",
@@ -250,6 +269,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Bay-Row-Tier Adresleme",
         content:
           "Her konteyner pozisyonu üç koordinatla tanımlanır. Bay (gözenek): baştan kıça doğru numaralanır; 20'lik konteynerler tek sayı, 40'lık konteynerler çift sayı bay numarası alır. Row (sıra): ortadan iskele/sancağa doğru numaralanır (00 merkez; çift sayılar iskele, tek sayılar sancak ya da tersi konvansiyona göre). Tier (kat): ambar içi ve güverte üstü için ayrı numaralanır (ambar 02, 04...; güverte 82, 84...). Bu sistem, plan üzerinde her kutunun yerini benzersiz adresler ve otomasyonla (terminal/loading computer) uyumludur.",
+        image: containerShipImage,
+        imageAlt: "Container ship stacked according to its bay plan",
       },
       {
         title: "Ağırlık Dağılımı ve Stabilite",
@@ -284,6 +305,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlike Sınıfları",
         content:
           "IMDG Code maddeleri 9 ana sınıfa ayırır: 1 Patlayıcılar, 2 Gazlar (yanıcı/yanıcı olmayan/zehirli), 3 Yanıcı sıvılar, 4 Yanıcı katılar / kendiliğinden yanan / su ile yanıcı gaz çıkaran, 5 Oksitleyiciler ve organik peroksitler, 6 Zehirli ve bulaşıcı maddeler, 7 Radyoaktif maddeler, 8 Aşındırıcılar (korozif), 9 Muhtelif tehlikeli maddeler (deniz kirleticiler dâhil). Her madde, dört haneli UN numarası ve uygun sevkiyat adı (Proper Shipping Name) ile tanımlanır; bazı maddeler ek tehlike (subsidiary risk) taşır.",
+        image: "/diagrams/seamanship/imdg-ayrim.svg",
+        imageAlt: "IMDG Code segregation table for dangerous goods",
       },
       {
         title: "Ambalajlama, İşaretleme ve Belgeler",
@@ -318,6 +341,8 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Safe Working Load (SWL) ve Sertifikasyon",
         content:
           "Her kaldırma ekipmanının üzerinde, güvenle kaldırabileceği maksimum yük olan SWL (Safe Working Load / Working Load Limit) işaretlidir. SWL, malzemenin kopma yüküne uygulanan güvenlik katsayısıyla (factor of safety) belirlenir. Kaldırma ekipmanı belirli aralıklarla yük testine tabi tutulur ve yetkili kişi/kuruluşça sertifikalandırılır; testler ve muayeneler Register of Cargo Handling Gear'a kaydedilir. SWL'in aşılması, açının değişmesiyle elemana binen gerçek yükün artması nedeniyle özellikle tehlikelidir.",
+        image: deckCraneImage,
+        imageAlt: "Deck crane used for cargo handling",
         formula: {
           text: "SWL = Kopma Yükü / Güvenlik Katsayısı",
           description: "Güvenlik katsayısı ekipman tipine ve kullanıma göre değişir (tipik 4–6)",

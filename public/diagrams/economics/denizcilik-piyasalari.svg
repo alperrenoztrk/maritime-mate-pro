@@ -1,0 +1,91 @@
+<svg width="720" height="440" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect width="720" height="440" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">The Four Shipping Markets and the Cycle</text>
+
+  <!-- four markets -->
+  <g transform="translate(20 44)">
+    <rect width="680" height="176" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">Cash moves between four connected markets</text>
+
+    <g transform="translate(18 44)">
+      <rect width="158" height="116" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="12" y="26" class="it" style="fill:#1d4ed8">Freight market</text>
+      <text x="12" y="48" class="sm">Ships are hired.</text>
+      <text x="12" y="66" class="sm">Earns the revenue</text>
+      <text x="12" y="82" class="sm">that drives the</text>
+      <text x="12" y="98" class="sm">other three.</text>
+    </g>
+
+    <g transform="translate(190 44)">
+      <rect width="158" height="116" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+      <text x="12" y="26" class="it" style="fill:#15803d">Sale &amp; purchase</text>
+      <text x="12" y="48" class="sm">Second-hand ships</text>
+      <text x="12" y="66" class="sm">change hands. Money</text>
+      <text x="12" y="82" class="sm">moves between owners,</text>
+      <text x="12" y="98" class="sm">not out of shipping.</text>
+    </g>
+
+    <g transform="translate(362 44)">
+      <rect width="158" height="116" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+      <text x="12" y="26" class="it" style="fill:#b45309">Newbuilding</text>
+      <text x="12" y="48" class="sm">Orders placed with</text>
+      <text x="12" y="66" class="sm">yards. Cash leaves</text>
+      <text x="12" y="82" class="sm">the industry and adds</text>
+      <text x="12" y="98" class="sm">tonnage years later.</text>
+    </g>
+
+    <g transform="translate(534 44)">
+      <rect width="128" height="116" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+      <text x="12" y="26" class="it" style="fill:#b91c1c">Demolition</text>
+      <text x="12" y="48" class="sm">Old ships sold</text>
+      <text x="12" y="66" class="sm">for scrap. Removes</text>
+      <text x="12" y="82" class="sm">tonnage and brings</text>
+      <text x="12" y="98" class="sm">cash back in.</text>
+    </g>
+  </g>
+
+  <!-- the cycle -->
+  <g transform="translate(20 234)">
+    <rect width="680" height="188" rx="10" fill="#f0f9ff" stroke="#bae6fd"/>
+    <text x="18" y="28" class="hd" style="fill:#0369a1">The cycle repeats because supply reacts slowly</text>
+
+    <g transform="translate(18 44)">
+      <rect width="158" height="76" rx="8" fill="#ffffff" stroke="#bae6fd"/>
+      <text x="12" y="24" class="it">1 · Trough</text>
+      <text x="12" y="44" class="sm">Rates below cost;</text>
+      <text x="12" y="62" class="sm">old ships scrapped.</text>
+    </g>
+
+    <g transform="translate(190 44)">
+      <rect width="158" height="76" rx="8" fill="#ffffff" stroke="#bae6fd"/>
+      <text x="12" y="24" class="it">2 · Recovery</text>
+      <text x="12" y="44" class="sm">Surplus absorbed;</text>
+      <text x="12" y="62" class="sm">rates firm up.</text>
+    </g>
+
+    <g transform="translate(362 44)">
+      <rect width="158" height="76" rx="8" fill="#ffffff" stroke="#bae6fd"/>
+      <text x="12" y="24" class="it">3 · Peak</text>
+      <text x="12" y="44" class="sm">Rates far above cost;</text>
+      <text x="12" y="62" class="sm">heavy ordering.</text>
+    </g>
+
+    <g transform="translate(534 44)">
+      <rect width="128" height="76" rx="8" fill="#ffffff" stroke="#bae6fd"/>
+      <text x="12" y="24" class="it">4 · Collapse</text>
+      <text x="12" y="44" class="sm">Ordered ships</text>
+      <text x="12" y="62" class="sm">arrive at once.</text>
+    </g>
+
+    <text x="18" y="158" class="sm">A ship ordered at the peak is delivered two to three years later — often straight into the next trough.</text>
+    <text x="18" y="176" class="sm">That delivery lag is the engine of the cycle, not a failure of judgement by any one owner.</text>
+  </g>
+</svg>
