@@ -140,6 +140,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         mfaChallengeRequired,
         signInWithEmail,
         signUpWithEmail,
+        signInWithMagicLink,
         signInWithGoogle,
         signOut,
       }}
