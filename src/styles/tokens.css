@@ -194,10 +194,31 @@
   padding-top: calc(var(--safe-top) + 1rem);
 }
 
+/* Stacking + clipping context for the push/pop pair. Without it the exiting
+   absolute frame anchors to <body> and its off-screen X creates a horizontal
+   overflow, which the browser resolves mid-animation as a scrollbar/reflow —
+   the "stutter" users see between pages. */
+.route-presence-viewport {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow-x: clip;
+}
+
+/* Keep both frames on the compositor for the whole transition: no per-frame
+   layout, no text re-rasterisation. */
+.route-presence-frame {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  contain: paint;
+}
+
 .interactive-page-surface {
   transform-origin: right center;
   background: transparent;
 }
+
 
 /* Every standard route participates in one semantic content plane. Individual
    page components can keep layout-specific spacing, but may not repaint a
