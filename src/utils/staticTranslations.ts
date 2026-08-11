@@ -18,11 +18,14 @@ const META_PREFIX = '__';
 const loadedDictionaries: Record<string, StaticDictionary> = {};
 const inFlightLoads: Record<string, Promise<StaticDictionary>> = {};
 const DICTIONARY_FETCH_TIMEOUT_MS = 8_000;
+// Query-versioning bypasses both the browser HTTP cache and an older service
+// worker's StaleWhileRevalidate entry on the first load after a locale rebuild.
+export const STATIC_DICTIONARY_CACHE_VERSION = 'v2';
 
 const baseUrl = (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/';
 
 const dictionaryUrl = (languageCode: string): string =>
-  `${baseUrl.replace(/\/$/, '')}/locales/${languageCode}.json`;
+  `${baseUrl.replace(/\/$/, '')}/locales/${languageCode}.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
 
 /**
  * Lazily fetches and caches the static dictionary for a language. Only the

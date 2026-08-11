@@ -2,12 +2,27 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   createRouteTranslationToken,
+  isRouteTranslationBoundary,
   isRouteTranslationReady,
   READY_ROUTE_TOKEN_LIMIT,
+  ROUTE_TRANSLATION_PENDING_SELECTOR,
   ROUTE_TRANSLATION_MAX_WAIT_MS,
   settleWithDeadline,
   withReadyRouteToken,
 } from './routeTranslation';
+
+test('only the pending route boundary is owned by the route pass', () => {
+  const boundary = {
+    matches: (selector: string) => selector === ROUTE_TRANSLATION_PENDING_SELECTOR,
+  } as Pick<Element, 'matches'>;
+  const asyncDescendant = {
+    matches: () => false,
+  } as Pick<Element, 'matches'>;
+
+  assert.equal(isRouteTranslationBoundary(boundary), true);
+  assert.equal(isRouteTranslationBoundary(asyncDescendant), false);
+  assert.equal(isRouteTranslationBoundary(null), false);
+});
 
 test('route translation tokens include language and the complete location identity', () => {
   const english = createRouteTranslationToken('en', 'abc', '/lessons', '?tab=deck', '#rules');

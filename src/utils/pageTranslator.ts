@@ -18,6 +18,7 @@ export const TRANSLATABLE_ATTRS: Array<{ attr: string; ds: string }> = [
   { attr: 'placeholder', ds: 'mtOrigPlaceholder' },
   { attr: 'title', ds: 'mtOrigTitle' },
   { attr: 'aria-label', ds: 'mtOrigAriaLabel' },
+  { attr: 'alt', ds: 'mtOrigAlt' },
 ];
 export const ATTR_SELECTOR = TRANSLATABLE_ATTRS.map(({ attr }) => `[${attr}]`).join(',');
 

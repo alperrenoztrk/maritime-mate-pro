@@ -45,7 +45,9 @@ let belowFull = 0;
 for (const file of localeFiles.sort()) {
   const dict = readJson(path.join(OUT_DIR, file), {});
   let covered = 0;
-  for (const s of source.strings) if (typeof dict[s] === 'string') covered++;
+  for (const s of source.strings) {
+    if (typeof dict[s] === 'string' && dict[s].trim().length > 0) covered++;
+  }
   const pct = ((covered / total) * 100).toFixed(1);
   if (covered < total) belowFull++;
   console.log(`   ${file.padEnd(12)} ${String(covered).padStart(6)}/${total}  ${pct}%`);

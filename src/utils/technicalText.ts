@@ -127,9 +127,11 @@ const ACCOUNT_TO_CALCULATION: Record<string, [RegExp, string]> = {
 
 // Sources where "hesap" really is the user's account: the sign-in and
 // account-deletion screens ("Hesabımı sil", "Hesap ve Veri Silme", "banka
-// hesabı"). These keep the banking sense.
+// hesabı"). A bare UI label is reserved for Account; calculation content uses
+// the unambiguous "Hesaplama" label. These keep the banking sense.
 const ACCOUNT_SOURCE_RE = new RegExp(
   [
+    String.raw`^\s*hesap\s*$`,
     // The account keyword leads: "banka hesabı", "kullanıcı hesabı".
     String.raw`\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab`,
     // …or trails: "Bu hesabı Google ile oluşturduysanız".

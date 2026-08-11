@@ -9189,7 +9189,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
 - Seyredilen mesafe: 85 NM
 - Hakiki rota: 035°
 
-**Hesap:**
+**Hesaplama:**
 DLat = 85 × cos(35°)
 DLat = 85 × 0.8192
 DLat = 69.6' N (≈ 1° 09.6' N)
@@ -9371,7 +9371,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
 - Geminin hakiki rotası: 045°T
 - Hedef nispi kerterizi: 120° (sancak tarafta)
 
-**Hesap:**
+**Hesaplama:**
 Hakiki Kerteriz = 045° + 120° = 165°T
 
 **Sonuç:**
@@ -9383,7 +9383,7 @@ Hedef, hakiki kuzeye göre 165° doğrultusundadır.
 - Geminin hakiki rotası: 320°T
 - Hedef nispi kerterizi: 080°
 
-**Hesap:**
+**Hesaplama:**
 Hakiki Kerteriz = 320° + 080° = 400°
 400° > 360° → 400° − 360° = 040°T
 

@@ -1865,7 +1865,7 @@ Wall-sided formül şu durumlarda geçerlidir:
 | Özellik | Cross Curves | Wall-Sided |
 |---------|--------------|------------|
 | Doğruluk | Yüksek (tüm açılar) | Sınırlı (küçük-orta açılar) |
-| Hesap | Tablo/grafik okuma | Formül |
+| Hesaplama | Tablo/grafik okuma | Formül |
 | Genel geçerlilik | Tüm gemi formları | Sadece dikey bordalı |
 | Hız | Yavaş | Hızlı |
 | Kullanım | Nihai değerlendirme | Hızlı tahmin |`,

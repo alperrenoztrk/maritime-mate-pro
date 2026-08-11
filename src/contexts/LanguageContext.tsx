@@ -37,6 +37,7 @@ import {
 } from '@/utils/routeHarvester';
 import { HARVEST_VERSION } from '@/utils/routeManifest';
 import {
+  isRouteTranslationBoundary,
   ROUTE_TRANSLATION_MAX_WAIT_MS,
   settleWithDeadline,
   withReadyRouteToken,
@@ -59,7 +60,6 @@ const IS_HARVEST_FRAME =
 
 const DEFAULT_LANGUAGE = 'en';
 const TRANSLATION_PENDING_ATTR = 'data-mt-translation-pending';
-const ROUTE_TRANSLATION_PENDING_SELECTOR = '[data-mt-route-pending]';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
@@ -115,10 +115,16 @@ const getSavedLanguage = (): string => {
 };
 
 // ── Translation engine configuration ─────────────────────────────────────────
-// v2: cache version bumped when the contextual glossary/correction layer was
-// activated, so clients drop previously cached mistranslations (e.g. "Üstü:"
-// rendered as "Above:") instead of serving them forever from localStorage.
-const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v2';
+// v3: invalidates the dictionaries/runtime values produced before complete UI
+// extraction and context-safe "Hesap" handling. Old stores are also deleted so
+// mobile WebViews do not retain hundreds of megabytes of unreachable locale data.
+const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v3';
+const LEGACY_TRANSLATION_CACHE_KEYS = [
+  'mt-translation-cache',
+  'mt-translation-cache-v1',
+  'mt-translation-cache-v2',
+];
+const LEGACY_LOCALE_RUNTIME_CACHES = ['translation-locales'];
 const SEEN_STRINGS_KEY = 'mt-seen-strings-v1';
 const TRANSLATION_CACHE_MAX = 12000;
 const SEEN_STRINGS_MAX = 8000;
@@ -198,6 +204,18 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       }
     } catch {
       // ignore
+    }
+    for (const key of LEGACY_TRANSLATION_CACHE_KEYS) {
+      try {
+        localStorage.removeItem(key);
+      } catch {
+        // ignore unavailable/private storage
+      }
+    }
+    if (typeof globalThis !== 'undefined' && 'caches' in globalThis) {
+      void Promise.all(
+        LEGACY_LOCALE_RUNTIME_CACHES.map((cacheName) => globalThis.caches.delete(cacheName)),
+      );
     }
     try {
       const rawSeen = localStorage.getItem(SEEN_STRINGS_KEY);
@@ -611,14 +629,17 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       ? node as HTMLElement
       : node.parentElement;
 
-  const isOwnedByPendingRoute = (node: Node) => {
-    const element = elementForNode(node);
-    return !!element?.closest(ROUTE_TRANSLATION_PENDING_SELECTOR);
-  };
-
   const shouldIgnoreObservedNode = (node: Node) => {
     const element = elementForNode(node);
-    return !element || isOwnedByPendingRoute(node) || isNoTranslateZone(element);
+    // Skip only the boundary node that PageTransition translates as a complete
+    // subtree. A descendant inserted later (MFA state, async data, portals) must
+    // stay observable even while its route still carries the pending marker.
+    // This node-kind check also keeps a Text node inserted directly under the
+    // route boundary eligible for translation.
+    const isBoundaryNode =
+      node.nodeType === Node.ELEMENT_NODE &&
+      isRouteTranslationBoundary(node as Element);
+    return !element || isBoundaryNode || isNoTranslateZone(element);
   };
 
   const markPendingVisibility = (node: Node) => {
@@ -740,13 +761,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   // ── Language activation ──────────────────────────────────────────────────
-  // Fast path: load the language's static pack (scripts/i18n/* → precached
-  // public/locales/*.json). The pack seeds INSTANT, offline translation of the
-  // UI strings it covers, then we translate the current page live so its body
-  // content is translated too (the packs intentionally only ship the common UI
-  // labels, not the whole app's content). Subsequent navigation is translated
-  // live on view and cached, so the entire app — not just the interface — ends
-  // up translated.
+  // Fast path: load the language's complete extracted static pack
+  // (scripts/i18n/* → precached public/locales/*.json), then sweep the current
+  // page. Runtime-only/dynamic strings still use the bounded live path and are
+  // cached for subsequent renders.
   //
   // Fallback path (kept for safety): if a language's pack is missing/empty
   // (e.g. it failed to load), fall back to the legacy harvest + live gtx flow.
@@ -884,7 +902,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       setIsChangingLanguage(false);
       setChangePhase('idle');
       const titleTr = 'Dil Değiştirildi';
-      const descTr = `Uygulama dili ${getLanguageNameLocal(languageCode)} olarak değiştirildi`;
+      const descTr = 'Uygulama dili başarıyla değiştirildi';
       toast({
         title: getStaticTranslation(titleTr, languageCode) ?? titleTr,
         description: getStaticTranslation(descTr, languageCode) ?? descTr,

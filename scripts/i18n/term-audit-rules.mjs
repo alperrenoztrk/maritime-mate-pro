@@ -40,7 +40,7 @@ export const SENSE_RULES = [
 // Sources where "hesap" genuinely means the user's account. Mirrors
 // ACCOUNT_SOURCE_RE in src/utils/technicalText.ts — keep the two in step.
 const ACCOUNT_SOURCE_RE =
-  /\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab|hesab[^.!?]{0,40}\b(google|apple|e-?posta|şifre|parola|oturum)\b|hesab[ıi]m|hesab[ıi]n[ıi]z|hesap\s+(ve\s+veri\s+)?silme|hesab[ıi]\s*(kalıcı olarak\s*)?sil/i;
+  /^\s*hesap\s*$|\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab|hesab[^.!?]{0,40}\b(google|apple|e-?posta|şifre|parola|oturum)\b|hesab[ıi]m|hesab[ıi]n[ıi]z|hesap\s+(ve\s+veri\s+)?silme|hesab[ıi]\s*(kalıcı olarak\s*)?sil/i;
 
 /**
  * Labels every terminology defect in one dictionary entry. An empty array means

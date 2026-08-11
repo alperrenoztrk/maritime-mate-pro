@@ -2,10 +2,10 @@
 /**
  * Locale file generator using the free Google Translate (gtx) API.
  * -----------------------------------------------------------------
- * Reads scripts/i18n/source-strings.json (produced by i18n:extract) plus a
- * hard-coded list of UI component strings not covered by the static extractor,
- * then translates everything to each target language and writes
- * public/locales/<lang>.json dictionaries.
+ * Reads scripts/i18n/source-strings.json (produced by i18n:extract), translates
+ * every extracted key to each target language and writes
+ * public/locales/<lang>.json dictionaries. The extractor is the only source of
+ * truth, so strict coverage cannot be masked by a second hand-maintained list.
  *
  * Usage:
  *   node scripts/i18n/generate-locales-gtx.mjs [--lang=en,de] [--limit=N]
@@ -40,13 +40,55 @@ const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
 const CACHE_DIR   = path.join(repoRoot, 'scripts/i18n/.cache');
 const OUT_DIR     = path.join(repoRoot, 'public/locales');
 
-const GTX_ENDPOINT = 'https://translate.googleapis.com/translate_a/single';
+// Credential-free Google-compatible services expose several response shapes.
+// A privacy proxy is tried first so one build host cannot exhaust Google's
+// per-IP quota; the direct Chrome and canonical endpoints remain fallbacks.
+// Keeping all three makes a full dictionary rebuild reproducible instead of
+// silently shipping the previous cache's coverage.
+const GTX_PROVIDERS = [
+  {
+    buildUrl(text, targetLang, sourceLang) {
+      const params = new URLSearchParams({
+        engine: 'google',
+        from: sourceLang,
+        to: targetLang,
+        text,
+      });
+      return `https://simplytranslate.org/api/translate/?${params}`;
+    },
+    parse(data) {
+      return typeof data?.translated_text === 'string' ? data.translated_text : null;
+    },
+  },
+  {
+    buildUrl(text, targetLang, sourceLang) {
+      const params = new URLSearchParams({ client: 'at', sl: sourceLang, tl: targetLang, q: text });
+      return `https://clients5.google.com/translate_a/t?${params}`;
+    },
+    parse(data) {
+      return Array.isArray(data) && typeof data[0] === 'string' ? data.join('') : null;
+    },
+  },
+  {
+    buildUrl(text, targetLang, sourceLang) {
+      const params = new URLSearchParams({
+        client: 'gtx', sl: sourceLang, tl: targetLang, dt: 't', q: text,
+      });
+      return `https://translate.googleapis.com/translate_a/single?${params}`;
+    },
+    parse(data) {
+      if (!Array.isArray(data?.[0])) return null;
+      return data[0].map((item) => item[0]).join('');
+    },
+  },
+];
 // Each request now carries a whole BATCH (~up to 48 strings / 1200 chars), so a
 // lower worker count keeps us well under gtx's informal rate limits while still
 // translating the large corpus in a reasonable wall-time.
-const CONCURRENCY = 15;    // parallel batch-fetch workers
+const CONCURRENCY = Math.max(1, Number(process.env.I18N_CONCURRENCY) || 6);
 const RETRY_MAX   = 4;
 const RETRY_DELAY = 1500;  // ms between retries on 429 (grows linearly)
+const FETCH_TIMEOUT = 20_000;
 
 // Manual corrections for strings where the GTX engine is known to produce bad
 // output. Key = Turkish source string, value = map of langCode → correct translation.
@@ -74,60 +116,6 @@ for (const [source, perLang] of Object.entries(CONTEXTUAL_CORRECTIONS)) {
   ALL_CORRECTIONS[source] = { ...(ALL_CORRECTIONS[source] ?? {}), ...perLang };
 }
 
-// UI strings hardcoded in React components that the data-file extractor misses.
-// Keep this list in sync when new Turkish strings are added to components.
-const UI_STRINGS = [
-  // FloatingNavButtons.tsx
-  'Geri',
-  // CourseTopicHeader.tsx — section labels and navigation
-  'Derslere Dön',
-  'Formüller',
-  'Hesaplamalar',
-  'Kurallar',
-  // CourseQuiz.tsx
-  'Bilginizi test edin',
-  'Soru',
-  'Açıklama:',
-  'Doğru!',
-  'Yanlış!',
-  'Sonraki Soru',
-  'Sonucu Gör',
-  'Quizi Tamamla',
-  'Quiz Tamamlandı!',
-  'Doğru cevap:',
-  'Mükemmel! Bu konuda uzman seviyesindesiniz.',
-  'İyi! Biraz daha çalışmayla mükemmel olabilirsiniz.',
-  'Daha fazla çalışmanız önerilir.',
-  'Tekrar Dene',
-  // CalculatorCard.tsx
-  'Hesapla',
-  'Kaynak:',
-  'Çözümü Adım Adım Göster',
-  'Adımları Gizle',
-  // autoSteps.ts (otomatik adım adım çözüm başlıkları)
-  'Verilen değerler',
-  'Uygulanan formül',
-  // StepByStepSolution.tsx
-  'Adım Adım Çözüm',
-  'Bu işlemi yapay zekaya sor',
-  'Yapay Zeka Açıklaması',
-  'Hazırlanıyor...',
-  'Açıklama alınamadı. Lütfen tekrar deneyin.',
-  // CalculatorList.tsx
-  'Bu konu için bağlı hesaplayıcı henüz eklenmedi.',
-  // CourseRulesList.tsx
-  'Bu konu için kurallar henüz eklenmedi.',
-  // ui/language-selector.tsx
-  'Dil Seçin',
-  'Dil Değiştir',
-  'Şu anki dil:',
-  'Aktif',
-  // LanguageContext.tsx (toast messages)
-  'Dil Değiştirildi',
-  'Ayarlar Sıfırlandı',
-  'Dil ayarları varsayılan değerlere döndürüldü',
-];
-
 // Target languages (mirrors SUPPORTED_LANGUAGES in LanguageContext, minus 'tr').
 const LANGUAGE_NAMES = {
   en: 'English', es: 'Spanish', de: 'German', fr: 'French', it: 'Italian',
@@ -148,11 +136,19 @@ const args = Object.fromEntries(
 );
 const langs = args.lang ? String(args.lang).split(',').map((s) => s.trim()) : ALL_LANGS;
 const limit = args.limit ? parseInt(args.limit, 10) : Infinity;
-// When --ui-only is passed, only translate the short UI component strings.
-const uiOnly = !!args['ui-only'];
 
 function readJson(file, fallback) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return fallback; }
+}
+
+const hasUsableTranslation = (value) =>
+  typeof value === 'string' && value.trim().length > 0;
+
+function persistTranslationCache(cacheFile, cache) {
+  fs.mkdirSync(path.dirname(cacheFile), { recursive: true });
+  const tempFile = `${cacheFile}.tmp`;
+  fs.writeFileSync(tempFile, JSON.stringify(cache, null, 0));
+  fs.renameSync(tempFile, cacheFile);
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -169,18 +165,31 @@ async function runWithConcurrency(items, concurrency, task) {
 }
 
 async function gtxTranslate(text, targetLang, sourceLang = 'tr') {
-  const url =
-    `${GTX_ENDPOINT}?client=gtx&sl=${encodeURIComponent(sourceLang)}&tl=${encodeURIComponent(targetLang)}&dt=t&q=${encodeURIComponent(text)}`;
-  for (let attempt = 0; attempt < RETRY_MAX; attempt++) {
-    try {
-      const res = await fetch(url);
-      if (res.status === 429) { await sleep(RETRY_DELAY * (attempt + 1)); continue; }
-      if (!res.ok) return null;
-      const data = await res.json();
-      if (!Array.isArray(data?.[0])) return null;
-      return data[0].map((item) => item[0]).join('');
-    } catch {
-      if (attempt < RETRY_MAX - 1) await sleep(RETRY_DELAY);
+  for (const provider of GTX_PROVIDERS) {
+    const url = provider.buildUrl(text, targetLang, sourceLang);
+
+    for (let attempt = 0; attempt < RETRY_MAX; attempt++) {
+      try {
+        const res = await fetch(url, {
+          redirect: 'manual',
+          signal: AbortSignal.timeout(FETCH_TIMEOUT),
+        });
+        if (res.status === 429) {
+          await sleep(RETRY_DELAY * (attempt + 1));
+          continue;
+        }
+        // A bot-challenge redirect/non-JSON response is provider-specific; move
+        // to the fallback immediately rather than retrying the same challenge.
+        if (!res.ok || !res.headers.get('content-type')?.includes('json')) break;
+        const parsed = provider.parse(await res.json());
+        if (hasUsableTranslation(parsed)) return parsed;
+        break;
+      } catch {
+        if (attempt < RETRY_MAX - 1) {
+          await sleep(RETRY_DELAY);
+          continue;
+        }
+      }
     }
   }
   return null;
@@ -202,6 +211,7 @@ function maskSources(sources, langCode, protect) {
 // instead of shipping "TKN0" in a dictionary.
 function restoreSegment(source, raw, termMask, mathMask, langCode) {
   let out = raw.trim();
+  if (!out) return null;
   if (mathMask) out = unmaskTechnicalTokens(out, mathMask.slots);
   if (termMask) {
     const restored = unmaskProtectedTokens(out, termMask.slots);
@@ -218,10 +228,19 @@ async function translateLanguage(langCode, sources) {
   const cacheFile = path.join(CACHE_DIR, `${langCode}.json`);
   const cache = readJson(cacheFile, {});
 
+  // Older generator runs treated an empty provider response as a completed
+  // translation. Purge those poisoned entries so they are retried and so the
+  // strict coverage check can never be satisfied by an empty UI label.
+  for (const [source, value] of Object.entries(cache)) {
+    if (!hasUsableTranslation(value)) delete cache[source];
+  }
+
   // Seed the cache with any existing locale-file entries (preserves prior work).
   const existingLocale = readJson(path.join(OUT_DIR, `${langCode}.json`), {});
   for (const [key, val] of Object.entries(existingLocale)) {
-    if (!key.startsWith('__') && cache[key] === undefined) cache[key] = val;
+    if (!key.startsWith('__') && cache[key] === undefined && hasUsableTranslation(val)) {
+      cache[key] = val;
+    }
   }
 
   // Apply manual + contextual corrections — these take priority over everything.
@@ -252,7 +271,7 @@ async function translateLanguage(langCode, sources) {
       overrideCount++;
       continue;
     }
-    if (cache[source] !== undefined) { skipCount++; continue; }
+    if (hasUsableTranslation(cache[source])) { skipCount++; continue; }
     const enCorrection = ALL_CORRECTIONS[source]?.en;
     if (enCorrection && langCode !== 'en') {
       pendingPivot.push([source, enCorrection]);
@@ -277,7 +296,8 @@ async function translateLanguage(langCode, sources) {
   const translateOne = async (source, protect = true) => {
     const { termMasks, mathMasks, queries } = maskSources([source], langCode, protect);
     const raw = await gtxTranslate(queries[0], langCode);
-    // If gtx failed, leave uncached so the runtime live-translator handles it.
+    // If both anonymous providers fail, leave uncached so strict verification
+    // reports the gap instead of baking the Turkish source in as a translation.
     if (raw === null) return;
     const value = restoreSegment(source, raw, termMasks[0], mathMasks[0], langCode);
     if (value === null) {
@@ -312,6 +332,9 @@ async function translateLanguage(langCode, sources) {
     }
     done += batch.length;
     if (done % 500 < batch.length || done === total) {
+      // Checkpoint the in-memory results atomically. A network interruption can
+      // now resume this language instead of losing hundreds of completed keys.
+      persistTranslationCache(cacheFile, cache);
       process.stdout.write(`  ${langCode}: ${done}/${total} (gtx)          \r`);
     }
   });
@@ -335,8 +358,7 @@ async function translateLanguage(langCode, sources) {
   });
 
   // Persist incremental cache so interrupted runs resume without re-doing work.
-  fs.mkdirSync(CACHE_DIR, { recursive: true });
-  fs.writeFileSync(cacheFile, JSON.stringify(cache, null, 0));
+  persistTranslationCache(cacheFile, cache);
 
   // Build the shipped dictionary from the CURRENT source list only.
   const version = crypto.createHash('sha1')
@@ -344,7 +366,7 @@ async function translateLanguage(langCode, sources) {
   const dict = { __version: version };
   let covered = 0;
   for (const source of sources) {
-    if (cache[source] !== undefined) { dict[source] = cache[source]; covered++; }
+    if (hasUsableTranslation(cache[source])) { dict[source] = cache[source]; covered++; }
   }
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(path.join(OUT_DIR, `${langCode}.json`), JSON.stringify(dict, null, 0) + '\n');
@@ -357,22 +379,18 @@ async function translateLanguage(langCode, sources) {
 }
 
 async function main() {
-  // Merge source strings with hardcoded UI strings (deduplicated).
+  // The extractor is the sole source of truth. A second hand-maintained UI
+  // list previously hid component coverage regressions from strict checks.
   const sourceData = readJson(SOURCE_FILE, null);
-  const staticStrings = sourceData?.strings ?? [];
-  if (!staticStrings.length && !uiOnly) {
-    console.warn('⚠️  No source strings found. Run: npm run i18n:extract');
+  const allStrings = sourceData?.strings ?? [];
+  if (!allStrings.length) {
+    throw new Error('No source strings found. Run: npm run i18n:extract');
   }
-
-  const allStrings = uiOnly
-    ? UI_STRINGS
-    : [...new Set([...UI_STRINGS, ...staticStrings])];
 
   const targets = langs.includes('all') ? ALL_LANGS : langs;
   console.log(
     `🌐 Generating locales for [${targets.join(', ')}]\n` +
-    `   strings: ${allStrings.length} (UI: ${UI_STRINGS.length}, static: ${staticStrings.length})` +
-    (uiOnly ? '  [ui-only mode]' : '') + '\n'
+    `   strings: ${allStrings.length} (extractor source of truth)\n`
   );
 
   for (const lang of targets) {

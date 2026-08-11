@@ -23,6 +23,22 @@
 // the maritime glossary override or the machine translation.
 
 export const CONTEXTUAL_CORRECTIONS = {
+  // ── Settings/account: bare "Hesap" is Account, never Calculation ─────────
+  // Calculation content uses the explicit "Hesaplama" source label. Cover all
+  // shipped languages so a regeneration also repairs already-cached bad values.
+  'Hesap': {
+    en: 'Account', es: 'Cuenta', de: 'Konto', fr: 'Compte', it: 'Account',
+    pt: 'Conta', ru: 'Учётная запись', ja: 'アカウント', ko: '계정',
+    'zh-CN': '账户', ar: 'الحساب', hi: 'खाता', nl: 'Account', sv: 'Konto',
+    no: 'Konto', da: 'Konto', fi: 'Tili', pl: 'Konto', cs: 'Účet',
+    hu: 'Fiók', ro: 'Cont', el: 'Λογαριασμός', bg: 'Акаунт',
+    uk: 'Обліковий запис',
+  },
+
+  // Preserve the hydrostatic abbreviation; generic Polish MT swaps its letters
+  // and ships "LFC", which refers to a different token.
+  'LCF Konumu': { pl: 'Położenie LCF' },
+
   // ── Lesson categories: "Makine" is the engine department, not "machine" ────
   'Makine': { en: 'Engine' },
 
