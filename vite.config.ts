@@ -198,8 +198,8 @@ export default defineConfig(({ mode }) => ({
             // Lazy route and feature chunks. Hashes make them immutable; once
             // a user opens a route it remains available offline without
             // blocking service-worker installation with every unused route.
-            urlPattern: ({ request, url }) =>
-              url.origin === location.origin && request.destination === "script",
+            urlPattern: ({ request, sameOrigin }) =>
+              sameOrigin && request.destination === "script",
             handler: "CacheFirst",
             options: {
               cacheName: "app-route-chunks",
