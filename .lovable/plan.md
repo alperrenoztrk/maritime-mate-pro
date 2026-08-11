@@ -18,3 +18,7 @@ Kullanıcı e-postasını girer, gelen bağlantıya tıklayınca doğrudan uygul
 - `src/lib/authFlow.ts`: magic link redirect URL'ini üreten yardımcı, Google akışıyla aynı `buildRedirectUrl` mantığını paylaşır.
 - Backend: e-posta gönderimi mevcut auth e-posta altyapısı üzerinden gider; ek yapılandırma gerekmez. Kayıtlı olmayan adres için hesap oluşturmayı kapatmak istenirse `shouldCreateUser: false` ile sınırlanabilir — varsayılan olarak açık bırakılır.
 - Tüm yeni metinler mevcut çeviri kurallarına uyar (teknik terimler `translate="no"`).
+
+## Yan not
+
+`vite.config.ts` içinde service worker kuralında `self.location.origin` kullanımı TypeScript hatası veriyor (`Cannot find name 'self'`). Bu mevcut bir hata, magic link ile ilgisi yok; uygulama sırasında `url.origin === location.origin` şeklinde düzeltilecek.
