@@ -3,9 +3,11 @@ import { safeLocalStorage } from "@/lib/safeStorage";
 import {
   FONT_SCALES,
   FontSizeContext,
+  normalizeFontSize,
   type FontSizeContextValue,
   type FontSizeKey,
 } from "./font-size-context";
+
 import { Capacitor } from "@capacitor/core";
 import { ContentSize } from "@/plugins/contentSize";
 
