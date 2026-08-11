@@ -80,7 +80,6 @@ export function LibraryEntryCard({
   to,
   onClick,
   badge,
-  description,
 }: {
   title: string;
   icon: LucideIcon;
@@ -102,10 +101,8 @@ export function LibraryEntryCard({
       </span>
       <span className="library-entry-text min-w-0 flex-1">
         <span className="block whitespace-pre-line text-base font-semibold leading-snug text-foreground">{title}</span>
-        {description && (
-          <span className="mt-1 block text-caption leading-relaxed text-muted-foreground">{description}</span>
-        )}
       </span>
+
       {badge !== undefined && (
         <span className="library-entry-badge rounded-full bg-muted px-2.5 py-1 text-caption font-semibold text-muted-foreground">
           {badge}
