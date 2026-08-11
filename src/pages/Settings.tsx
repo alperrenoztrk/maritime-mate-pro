@@ -313,14 +313,15 @@ const Settings = () => {
                           setTheme(value);
                           hapticImpact("light");
                         }}
-                        className={`inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-2 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
+                        className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-lg px-1.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
                           selected
                             ? "bg-background text-foreground shadow-elev-1"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
-                        <Icon className="h-4 w-4" />
-                        <span data-translatable>{label}</span>
+                        <Icon className="h-4 w-4 shrink-0" />
+                        <span className="truncate" data-translatable>{label}</span>
+
                       </button>
                     );
                   })}
