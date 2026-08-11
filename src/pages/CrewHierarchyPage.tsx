@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { Navigation, ShieldAlert, Users, Wrench } from "lucide-react";
 import { crewHierarchy } from "@/data/crewHierarchy";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import {
   LibraryBookCard,
   LibraryEntryCard,
@@ -8,9 +9,9 @@ import {
 } from "@/components/library/LibraryInterface";
 
 const departmentMeta = [
-  { icon: Navigation, accent: "from-blue-500 via-indigo-500 to-blue-700" },
-  { icon: Wrench, accent: "from-slate-600 via-zinc-700 to-slate-900" },
-  { icon: Users, accent: "from-cyan-500 via-blue-600 to-indigo-700" },
+  { icon: Navigation, accent: "accent-ocean" },
+  { icon: Wrench, accent: "accent-slate" },
+  { icon: Users, accent: "accent-teal" },
 ];
 
 export default function CrewHierarchyPage() {
@@ -49,11 +50,11 @@ export default function CrewHierarchyPage() {
 
   return (
     <LibraryPageShell title="Gemi Personeli" icon={Users}>
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <InsetGroupedList columns={2}>
         <LibraryEntryCard
           title="Muster List"
           icon={ShieldAlert}
-          accent="from-rose-500 via-red-600 to-red-800"
+          accent="accent-amber"
           to="/crew/muster-list"
         />
         {crewHierarchy.map((group, index) => {
@@ -69,7 +70,7 @@ export default function CrewHierarchyPage() {
             />
           );
         })}
-      </section>
+      </InsetGroupedList>
     </LibraryPageShell>
   );
 }

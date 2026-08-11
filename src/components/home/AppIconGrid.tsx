@@ -13,6 +13,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { hapticImpact } from "@/lib/haptics";
+import { AppSymbol } from "@/components/ui/AppSymbol";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 
 interface AppShortcut {
   label: string;
@@ -45,14 +47,14 @@ export function AppIconGrid() {
         </div>
       </div>
 
-      <div className="grid gap-2 sm:grid-cols-2">
+      <InsetGroupedList columns={2}>
         {APPS.map(({ label, description, to, icon: Icon }) => (
           <Link
             key={to}
             to={to}
             aria-label={label}
             onClick={() => hapticImpact("light")}
-            className="surface-2 group flex min-h-[4.75rem] items-center gap-3 rounded-2xl border px-3.5 py-3 outline-none transition-[background-color,border-color,transform] duration-control hover:border-primary/25 focus-visible:ring-2 focus-visible:ring-primary active:scale-[0.99]"
+            className="ios-list-row group flex min-h-[4.5rem] items-center gap-3 px-3.5 py-3 outline-none transition-[background-color,transform] duration-control focus-visible:ring-2 focus-visible:ring-primary active:scale-[0.99]"
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <Icon className="h-5 w-5" strokeWidth={2} />
@@ -61,10 +63,14 @@ export function AppIconGrid() {
               <span className="block truncate text-sm font-semibold text-foreground">{label}</span>
               <span className="mt-0.5 block truncate text-caption text-muted-foreground">{description}</span>
             </span>
-            <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-control group-hover:translate-x-0.5" />
+            <AppSymbol
+              name="chevron.right"
+              fallback={ChevronRight}
+              className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-control group-hover:translate-x-0.5"
+            />
           </Link>
         ))}
-      </div>
+      </InsetGroupedList>
     </section>
   );
 }

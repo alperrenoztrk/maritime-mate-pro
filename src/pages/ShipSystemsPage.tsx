@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Anchor } from "lucide-react";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 import { shipSystemsSections as SECTIONS } from "@/data/shipSystemsSections";
@@ -74,7 +75,7 @@ export default function ShipSystemsPage() {
         <section className="space-y-3">
           <LibrarySectionHeading badge={hits.length}>Arama Sonuçları</LibrarySectionHeading>
           {hits.length > 0 ? (
-            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            <InsetGroupedList columns={2}>
               {hits.map((hit) => (
                 <LibraryCompactCard
                   key={`${hit.sectionId}-${hit.topicIndex}`}
@@ -85,7 +86,7 @@ export default function ShipSystemsPage() {
                   badge={hit.sectionTitle}
                 />
               ))}
-            </div>
+            </InsetGroupedList>
           ) : (
             <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
               Eşleşen konu bulunamadı.
@@ -93,7 +94,7 @@ export default function ShipSystemsPage() {
           )}
         </section>
       ) : (
-        <section className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <InsetGroupedList columns={2}>
           {SECTIONS.map((section) => (
             <LibraryCompactCard
               key={section.id}
@@ -104,7 +105,7 @@ export default function ShipSystemsPage() {
               badge={shipSystemsData[section.id]?.topics.length ?? 0}
             />
           ))}
-        </section>
+        </InsetGroupedList>
       )}
     </LibraryPageShell>
   );

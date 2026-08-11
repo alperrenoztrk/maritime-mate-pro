@@ -82,6 +82,7 @@
   --glass-bg: rgba(249, 249, 251, 0.74);
   --glass-blur: 24px;
   --glass-border: rgba(38, 38, 41, 0.09);
+  --glass-highlight: rgba(255, 255, 255, 0.62);
   --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.055);
   --shadow-2: 0 10px 28px -12px rgba(15, 23, 42, 0.26);
   --shadow-3: 0 24px 54px -18px rgba(15, 23, 42, 0.30);
@@ -99,6 +100,7 @@
   --surface-border-strong: rgba(255, 255, 255, 0.15);
   --glass-bg: rgba(22, 24, 29, 0.72);
   --glass-border: rgba(255, 255, 255, 0.11);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow-2: 0 10px 28px -12px rgba(0, 0, 0, 0.62);
   --shadow-3: 0 24px 54px -18px rgba(0, 0, 0, 0.72);
@@ -114,16 +116,87 @@
 
 /* The ONLY blur in the app. Chrome layers exclusively. */
 .surface-glass {
+  isolation: isolate;
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   border-color: var(--glass-border);
 }
 
+.surface-glass::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, var(--glass-highlight), transparent 34%),
+    linear-gradient(110deg, transparent 12%, hsl(var(--primary) / 0.035) 46%, transparent 76%);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
 /* Content surfaces. No blur — see the --surface-* note above. */
 .surface-1 { background: var(--surface-1); border-color: var(--surface-border); }
 .surface-2 { background: var(--surface-2); border-color: var(--surface-border); }
 .surface-3 { background: var(--surface-3); border-color: var(--surface-border-strong); }
+
+/* iOS inset-grouped content. Individual rows remain reusable on their own;
+   inside this container they become one calm semantic surface with separators
+   instead of a stack of floating cards. */
+.inset-grouped-list {
+  overflow: hidden;
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-xl);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-1);
+}
+
+.inset-grouped-list > .ios-list-row {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.inset-grouped-list > .ios-list-row + .ios-list-row {
+  border-top: 1px solid var(--surface-border);
+}
+
+.inset-grouped-list > .ios-list-row:hover {
+  border-color: var(--surface-border);
+  background: hsl(var(--foreground) / 0.035);
+}
+
+.library-page-title {
+  font-size: min(2.125rem, 52px);
+  overflow-wrap: anywhere;
+}
+
+.library-symbol-tile {
+  box-shadow: none;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.app-system-symbol {
+  color: inherit;
+}
+
+.search-result-group {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.search-result-row + .search-result-row {
+  border-top: 1px solid var(--surface-border);
+}
+
+.search-scope-strip {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.search-scope-strip::-webkit-scrollbar { display: none; }
 
 /* ================================================================
    GLOBAL APP CHROME
@@ -144,9 +217,12 @@
   border: 1px solid var(--glass-border);
   border-radius: 1.5rem;
   box-shadow: var(--shadow-2);
+  transform: translateZ(0);
 }
 
 .app-tabbar__items {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   min-height: var(--app-tabbar-height);
@@ -183,7 +259,7 @@
   transition: transform var(--motion-control) var(--ease-out-ios);
 }
 
-.app-tabbar__icon svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
+.app-tabbar__icon :is(svg, .app-system-symbol) { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
 .app-tabbar__label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: var(--text-micro); font-weight: 600; line-height: 1.15; white-space: nowrap; }
 
 .search-keyboard-hints { display: none; }
@@ -280,6 +356,182 @@ html[data-font-size="max"] .app-page-shell :where(.truncate, .line-clamp-1, .lin
 html[data-font-size="accessibility"] .app-page-shell :where(.grid-cols-3, .grid-cols-4),
 html[data-font-size="max"] .app-page-shell :where(.grid-cols-2, .grid-cols-3, .grid-cols-4) {
   grid-template-columns: minmax(0, 1fr);
+}
+
+html[data-font-size="accessibility"] .app-tabbar__label,
+html[data-font-size="max"] .app-tabbar__label {
+  font-size: 13px;
+}
+
+html[data-font-size="accessibility"] .ios-list-row,
+html[data-font-size="max"] .ios-list-row {
+  min-height: 4.75rem;
+}
+
+html[data-font-size="accessibility"] .library-search-field input,
+html[data-font-size="max"] .library-search-field input {
+  font-size: 22px;
+}
+
+html[data-font-size="accessibility"] .library-entry-content,
+html[data-font-size="max"] .library-entry-content {
+  display: grid;
+  align-items: start;
+  grid-template-columns: 44px minmax(0, 1fr) 22px;
+  gap: 8px 12px;
+}
+
+html[data-font-size="accessibility"] .inset-grouped-list > .ios-list-row,
+html[data-font-size="max"] .inset-grouped-list > .ios-list-row {
+  min-height: 76px;
+  padding: 14px;
+}
+
+html[data-font-size="accessibility"] .library-symbol-tile,
+html[data-font-size="max"] .library-symbol-tile {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+html[data-font-size="accessibility"] .library-symbol-tile svg,
+html[data-font-size="max"] .library-symbol-tile svg {
+  width: 22px;
+  height: 22px;
+}
+
+html[data-font-size="accessibility"] .library-entry-text,
+html[data-font-size="max"] .library-entry-text {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+html[data-font-size="accessibility"] .library-entry-badge,
+html[data-font-size="max"] .library-entry-badge {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+}
+
+html[data-font-size="accessibility"] .library-entry-content > .library-symbol-tile,
+html[data-font-size="max"] .library-entry-content > .library-symbol-tile {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+html[data-font-size="accessibility"] .library-entry-content > .library-row-chevron,
+html[data-font-size="max"] .library-entry-content > .library-row-chevron {
+  align-self: center;
+  grid-column: 3;
+  grid-row: 1;
+  width: 22px;
+  height: 22px;
+}
+
+html[data-font-size="accessibility"] .library-compact-row,
+html[data-font-size="max"] .library-compact-row {
+  display: grid;
+  align-items: start;
+  grid-template-columns: 44px minmax(0, 1fr) 22px;
+  gap: 8px 12px;
+}
+
+html[data-font-size="accessibility"] .library-compact-title,
+html[data-font-size="max"] .library-compact-title {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+html[data-font-size="accessibility"] .library-compact-badge,
+html[data-font-size="max"] .library-compact-badge {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+}
+
+html[data-font-size="accessibility"] .library-compact-row > .library-row-chevron,
+html[data-font-size="max"] .library-compact-row > .library-row-chevron {
+  align-self: center;
+  grid-column: 3;
+  grid-row: 1;
+  width: 22px;
+  height: 22px;
+}
+
+html[data-font-size="accessibility"] .calculation-tool-row,
+html[data-font-size="max"] .calculation-tool-row {
+  align-items: stretch;
+  padding: 0;
+}
+
+html[data-font-size="accessibility"] .calculation-tool-link,
+html[data-font-size="max"] .calculation-tool-link {
+  gap: 12px;
+  padding: 14px;
+}
+
+html[data-font-size="accessibility"] .calculation-tool-link > .library-row-chevron,
+html[data-font-size="max"] .calculation-tool-link > .library-row-chevron {
+  width: 20px;
+  height: 20px;
+}
+
+html[data-font-size="accessibility"] .calculation-favorite-button,
+html[data-font-size="max"] .calculation-favorite-button {
+  width: 48px;
+}
+
+html[data-font-size="accessibility"] .calculation-favorite-button :is(svg, .app-system-symbol),
+html[data-font-size="max"] .calculation-favorite-button :is(svg, .app-system-symbol) {
+  width: 22px;
+  height: 22px;
+}
+
+html[data-font-size="max"] .search-result-row {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+html[data-font-size="max"] .search-result-content {
+  width: 100%;
+}
+
+html[data-font-size="accessibility"] .library-page-title,
+html[data-font-size="max"] .library-page-title {
+  font-size: 52px;
+}
+
+@media (min-width: 640px) {
+  .inset-grouped-list--columns-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inset-grouped-list--columns-2 > .ios-list-row + .ios-list-row {
+    border-top: 0;
+  }
+
+  .inset-grouped-list--columns-2 > .ios-list-row:nth-child(even) {
+    border-left: 1px solid var(--surface-border);
+  }
+
+  .inset-grouped-list--columns-2 > .ios-list-row:nth-child(n + 3) {
+    border-top: 1px solid var(--surface-border);
+  }
+}
+
+@media (min-width: 640px) {
+  html[data-font-size="max"] .inset-grouped-list--columns-2 {
+    display: block;
+  }
+
+  html[data-font-size="max"] .inset-grouped-list--columns-2 > .ios-list-row:nth-child(even) {
+    border-left: 0;
+  }
+
+  html[data-font-size="max"] .inset-grouped-list--columns-2 > .ios-list-row + .ios-list-row {
+    border-top: 1px solid var(--surface-border);
+  }
 }
 
 .edge-swipe-page {
@@ -395,6 +647,7 @@ html[data-font-size="max"] .app-page-shell :where(.grid-cols-2, .grid-cols-3, .g
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
+  .surface-glass::before { display: none; }
 }
 
 @media (prefers-contrast: more) {

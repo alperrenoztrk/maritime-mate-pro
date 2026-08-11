@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
 import { BookOpenText, ClipboardCheck, GraduationCap, Ship, Wrench } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import {
   LibraryBookCard,
   LibraryCompactCard,
@@ -95,7 +96,7 @@ export default function LessonsLibraryPage() {
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
           <section className="space-y-3">
             <LibrarySectionHeading>Kitaplıklar</LibrarySectionHeading>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <InsetGroupedList columns={2}>
               {entryCards.map((entry) => (
                 <LibraryEntryCard
                   key={entry.id}
@@ -106,16 +107,16 @@ export default function LessonsLibraryPage() {
                   onClick={() => openView(entry.id)}
                 />
               ))}
-            </div>
+            </InsetGroupedList>
           </section>
 
           <section className="space-y-3">
             <LibrarySectionHeading>Pratik</LibrarySectionHeading>
-            <div className="grid gap-2 sm:grid-cols-2">
+            <InsetGroupedList columns={2}>
               {practiceEntries.map((entry) => (
                 <LibraryCompactCard key={entry.to} {...entry} />
               ))}
-            </div>
+            </InsetGroupedList>
           </section>
         </div>
       ) : (

@@ -1,8 +1,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Clock, Loader2, Search, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { AppSymbol } from "@/components/ui/AppSymbol";
 import { searchIndex, type SearchItem } from "@/data/searchIndex";
 import { getDeepSearchIndex, loadDeepSearchIndex } from "@/data/deepSearchIndex";
+import {
+  dedupeSearchItems,
+  displaySearchCategory,
+  matchesSearchScope,
+  SEARCH_SCOPES,
+  type SearchScopeId,
+} from "@/lib/appSearch";
+import { hapticImpact, hapticSelection } from "@/lib/haptics";
 import { cn } from "@/lib/utils";
 
 const RECENT_KEY = "maritime-global-search-recent";
@@ -120,6 +129,7 @@ export function AppSearchExperience({
   onNavigate?: () => void;
 }) {
   const [query, setQuery] = useState("");
+  const [activeScope, setActiveScope] = useState<SearchScopeId>("all");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [keyboardNavigation, setKeyboardNavigation] = useState(false);
   const [deepIndex, setDeepIndex] = useState<SearchItem[] | null>(getDeepSearchIndex);
@@ -149,23 +159,36 @@ export function AppSearchExperience({
 
   const tokens = useMemo(() => tokenize(query), [query]);
   const results = useMemo(() => {
-    if (tokens.length === 0) return searchIndex.slice(0, 8);
     const pool = deepIndex ? [...searchIndex, ...deepIndex] : searchIndex;
-    return pool
-      .map((item) => ({ item, score: matchScore(item, tokens) }))
-      .filter(({ score }) => score > 0)
-      .sort((left, right) => right.score - left.score)
-      .slice(0, RESULT_LIMIT)
-      .map(({ item }) => item);
-  }, [deepIndex, tokens]);
+    const ranked = tokens.length === 0
+      ? pool.map((item, index) => ({ item, score: pool.length - index }))
+      : pool
+          .map((item) => ({ item, score: matchScore(item, tokens) }))
+          .filter(({ score }) => score > 0)
+          .sort((left, right) => right.score - left.score);
+    return dedupeSearchItems(ranked.map(({ item }) => item))
+      .filter((item) => matchesSearchScope(item, activeScope))
+      .slice(0, tokens.length === 0 ? 8 : RESULT_LIMIT);
+  }, [activeScope, deepIndex, tokens]);
 
-  const showRecent = tokens.length === 0 && recent.length > 0;
-  const navigableItems = showRecent ? [...recent, ...results] : results;
+  const scopedRecent = useMemo(
+    () => recent.filter((item) => matchesSearchScope(item, activeScope)),
+    [activeScope, recent],
+  );
+  const showRecent = tokens.length === 0 && scopedRecent.length > 0;
+  const recentKeys = useMemo(
+    () => new Set(scopedRecent.map((item) => `${item.path}\u0000${item.title}`)),
+    [scopedRecent],
+  );
+  const suggestedResults = showRecent
+    ? results.filter((item) => !recentKeys.has(`${item.path}\u0000${item.title}`))
+    : results;
+  const navigableItems = showRecent ? [...scopedRecent, ...suggestedResults] : suggestedResults;
 
   useEffect(() => {
     setSelectedIndex(0);
     setKeyboardNavigation(false);
-  }, [query]);
+  }, [activeScope, query]);
 
   useEffect(() => {
     if (!keyboardNavigation) return;
@@ -186,6 +209,7 @@ export function AppSearchExperience({
         .slice(0, RECENT_LIMIT);
       saveRecent(updated);
       setRecent(updated);
+      hapticImpact("light");
       onNavigate?.();
       navigate(item.path);
     },
@@ -196,7 +220,7 @@ export function AppSearchExperience({
     if (event.key === "ArrowDown") {
       event.preventDefault();
       setKeyboardNavigation(true);
-      setSelectedIndex((index) => Math.min(index + 1, navigableItems.length - 1));
+      setSelectedIndex((index) => Math.min(index + 1, Math.max(0, navigableItems.length - 1)));
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setKeyboardNavigation(true);
@@ -222,27 +246,31 @@ export function AppSearchExperience({
           setSelectedIndex(index);
         }}
         className={cn(
-          "group flex min-h-[3.75rem] w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition-colors duration-control",
+          "search-result-row group flex min-h-[3.75rem] w-full items-center gap-3 px-3 py-2.5 text-left text-sm transition-colors duration-control",
           selected ? "bg-primary/10" : "hover:bg-foreground/[0.045] active:bg-foreground/[0.07]",
         )}
       >
-        {isRecent && <Clock className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />}
-        <span className="min-w-0 flex-1">
-          <span className="block truncate font-medium text-foreground">
-            {tokens.length > 0 && !isRecent ? (
-              <HighlightedTitle title={item.title} tokens={tokens} />
-            ) : (
-              item.title
+        <span className="search-result-content flex min-w-0 flex-1 items-center gap-3">
+          {isRecent && (
+            <AppSymbol name="clock" fallback={Clock} className="h-4 w-4 shrink-0 text-muted-foreground" />
+          )}
+          <span className="min-w-0 flex-1">
+            <span className="block truncate font-medium text-foreground">
+              {tokens.length > 0 && !isRecent ? (
+                <HighlightedTitle title={item.title} tokens={tokens} />
+              ) : (
+                item.title
+              )}
+            </span>
+            {item.description && (
+              <span className="mt-0.5 block truncate text-caption text-muted-foreground">
+                {item.description}
+              </span>
             )}
           </span>
-          {item.description && (
-            <span className="mt-0.5 block truncate text-caption text-muted-foreground">
-              {item.description}
-            </span>
-          )}
         </span>
-        <span className="shrink-0 rounded-full bg-foreground/[0.055] px-2 py-1 text-micro font-medium text-muted-foreground">
-          {item.category}
+        <span className="search-result-category shrink-0 rounded-full bg-foreground/[0.055] px-2 py-1 text-micro font-medium text-muted-foreground">
+          {displaySearchCategory(item)}
         </span>
       </button>
     );
@@ -256,14 +284,14 @@ export function AppSearchExperience({
       )}
     >
       <div className="flex min-h-14 items-center border-b border-border/60 px-3">
-        <Search className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
+        <AppSymbol name="magnifyingglass" fallback={Search} className="h-5 w-5 shrink-0 text-muted-foreground" />
         <input
           ref={inputRef}
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Sayfa, konu, terim veya hesaplama ara"
+          placeholder="Ara"
           aria-label="Uygulamada ara"
           autoComplete="off"
           enterKeyHint="search"
@@ -276,29 +304,73 @@ export function AppSearchExperience({
             aria-label="Arama metnini temizle"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors duration-control hover:bg-muted hover:text-foreground"
           >
-            <X className="h-4 w-4" aria-hidden />
+            <AppSymbol name="xmark" fallback={X} className="h-4 w-4" />
           </button>
         )}
+      </div>
+
+      <div
+        role="group"
+        aria-label="Arama kapsamı"
+        className="search-scope-strip flex gap-1 overflow-x-auto border-b border-border/60 px-2 py-1.5"
+      >
+        {SEARCH_SCOPES.map((scope) => {
+          const selected = activeScope === scope.id;
+          return (
+            <button
+              key={scope.id}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => {
+                if (!selected) hapticSelection();
+                setActiveScope(scope.id);
+              }}
+              className={cn(
+                "min-h-11 shrink-0 rounded-full px-3 text-caption font-semibold transition-[background-color,color] duration-control",
+                selected
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-foreground/[0.055] hover:text-foreground",
+              )}
+            >
+              {scope.label}
+            </button>
+          );
+        })}
       </div>
 
       <div
         ref={listRef}
         className={cn(
           "overflow-y-auto p-2",
-          variant === "sheet" ? "max-h-[62svh]" : "min-h-[20rem] max-h-[62svh] sm:max-h-[68svh]",
+          variant === "sheet" ? "max-h-[62svh]" : "max-h-[62svh] sm:max-h-[68svh]",
         )}
       >
         {showRecent && (
           <>
-            <p className="px-3 pb-1.5 pt-1 text-micro font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Son aramalar
-            </p>
-            <div className="space-y-0.5">
-              {recent.map((item, index) => renderRow(item, index, true))}
+            <div className="flex min-h-9 items-center px-3 pb-1 pt-1">
+              <p className="min-w-0 flex-1 text-micro font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Son kullanılanlar
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  saveRecent([]);
+                  setRecent([]);
+                  hapticSelection();
+                }}
+                className="min-h-11 rounded-lg px-2 text-caption font-semibold text-primary"
+              >
+                Temizle
+              </button>
             </div>
-            <p className="px-3 pb-1.5 pt-4 text-micro font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Öneriler
-            </p>
+            <div className="search-result-group">
+              {scopedRecent.map((item, index) => renderRow(item, index, true))}
+            </div>
+            {suggestedResults.length > 0 && (
+              <p className="px-3 pb-1.5 pt-4 text-micro font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Öneriler
+              </p>
+            )}
           </>
         )}
 
@@ -309,9 +381,9 @@ export function AppSearchExperience({
               : "Sonuç bulunamadı"}
           </div>
         ) : (
-          <div className="space-y-0.5">
-            {results.map((item, index) =>
-              renderRow(item, showRecent ? recent.length + index : index),
+          <div className="search-result-group">
+            {suggestedResults.map((item, index) =>
+              renderRow(item, showRecent ? scopedRecent.length + index : index),
             )}
           </div>
         )}
@@ -327,6 +399,11 @@ export function AppSearchExperience({
           <span className="ml-auto flex items-center gap-1.5">
             <Loader2 className="h-3 w-3 animate-spin" aria-hidden />
             İçerik dizini yükleniyor
+          </span>
+        )}
+        {deepIndex && (
+          <span className="ml-auto" aria-live="polite">
+            {navigableItems.length} sonuç
           </span>
         )}
       </div>

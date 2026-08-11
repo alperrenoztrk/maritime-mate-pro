@@ -10,6 +10,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import {
   LibraryCompactCard,
   LibraryPageShell,
@@ -45,22 +46,22 @@ export default function LibraryHubPage() {
         <LibrarySectionHeading>
           <span id="operational-library-heading">Operasyonel Kaynaklar</span>
         </LibrarySectionHeading>
-        <div className="grid gap-2 sm:grid-cols-2">
+        <InsetGroupedList columns={2}>
           {operationalReferences.map((item) => (
             <LibraryCompactCard key={item.to} {...item} />
           ))}
-        </div>
+        </InsetGroupedList>
       </section>
 
       <section className="space-y-3" aria-labelledby="quick-reference-heading">
         <LibrarySectionHeading>
           <span id="quick-reference-heading">Hızlı Başvuru</span>
         </LibrarySectionHeading>
-        <div className="grid gap-2 sm:grid-cols-2">
+        <InsetGroupedList columns={2}>
           {quickReferences.map((item) => (
             <LibraryCompactCard key={item.to} {...item} />
           ))}
-        </div>
+        </InsetGroupedList>
       </section>
     </LibraryPageShell>
   );

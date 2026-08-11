@@ -21,6 +21,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AppSymbol } from "@/components/ui/AppSymbol";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
+import { hapticImpact, hapticSelection } from "@/lib/haptics";
 import {
   LibraryCompactCard,
   LibraryEntryCard,
@@ -28,7 +31,7 @@ import {
   LibrarySearchField,
   LibrarySectionHeading,
 } from "@/components/library/LibraryInterface";
-import { accentGradient } from "@/components/library/libraryAccent";
+import { accentTone } from "@/components/library/libraryAccent";
 
 interface CalcTool {
   id: string;
@@ -116,15 +119,18 @@ function ToolCard({
 }) {
   const meta = CATEGORY_META[tool.category];
   return (
-    <div className="surface-2 group flex min-h-[4.75rem] items-stretch overflow-hidden rounded-xl border transition-[background-color,border-color,transform] duration-control hover:border-primary/20 active:scale-[0.99]">
+    <div className="ios-list-row calculation-tool-row surface-2 group flex min-h-[4.75rem] items-stretch overflow-hidden rounded-xl border transition-[background-color,border-color,transform] duration-control hover:border-primary/20 active:scale-[0.99]">
       <Link
         to={tool.to}
-        onClick={() => writeRecent(tool.id)}
-        className="flex min-w-0 flex-1 items-center gap-3 px-3.5 py-3"
+        onClick={() => {
+          writeRecent(tool.id);
+          hapticImpact("light");
+        }}
+        className="calculation-tool-link flex min-w-0 flex-1 items-center gap-3 px-3.5 py-3"
       >
         <span
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.625rem] ${meta.accent} text-white`}
-          style={accentGradient("145deg", meta.accent)}
+          className="library-symbol-tile flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.625rem]"
+          style={accentTone(meta.accent)}
         >
           <tool.icon className="h-5 w-5" aria-hidden />
         </span>
@@ -132,19 +138,27 @@ function ToolCard({
           <span className="block text-sm font-semibold leading-snug text-foreground">{tool.title}</span>
           <span className="mt-0.5 block truncate text-caption text-muted-foreground">{meta.title}</span>
         </span>
-        <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+        <AppSymbol name="chevron.right" fallback={ChevronRight} className="library-row-chevron h-4 w-4 shrink-0 text-muted-foreground" />
       </Link>
       <button
         type="button"
         aria-label={favorite ? "Favorilerden çıkar" : "Favorilere ekle"}
+        aria-pressed={favorite}
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
+          hapticSelection();
           onFavorite();
         }}
-        className="flex w-12 shrink-0 items-center justify-center border-l border-border/60 text-muted-foreground transition-colors duration-control hover:bg-muted/70 hover:text-foreground"
+        className="calculation-favorite-button flex w-12 shrink-0 items-center justify-center border-l border-border/60 text-muted-foreground transition-colors duration-control hover:bg-muted/70 hover:text-foreground"
       >
-        <Star className={`h-4 w-4 ${favorite ? "fill-warning text-warning" : ""}`} aria-hidden />
+        <AppSymbol
+          name="star"
+          selectedName="star.fill"
+          selected={favorite}
+          fallback={Star}
+          className={`h-4 w-4 ${favorite ? "fill-warning text-warning" : ""}`}
+        />
       </button>
     </div>
   );
@@ -199,7 +213,7 @@ export default function CalculationsLibraryPage() {
 
       {!activeCategory && !normalizedQuery && (
         <>
-          <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <InsetGroupedList columns={2}>
             {(Object.entries(CATEGORY_META) as Array<[Category, (typeof CATEGORY_META)[Category]]>).map(
               ([category, meta]) => (
                 <LibraryEntryCard
@@ -212,12 +226,12 @@ export default function CalculationsLibraryPage() {
                 />
               ),
             )}
-          </section>
+          </InsetGroupedList>
 
           {favoriteTools.length > 0 && (
             <section className="space-y-3">
               <LibrarySectionHeading badge={favoriteTools.length}>Favoriler</LibrarySectionHeading>
-              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              <InsetGroupedList columns={2}>
                 {favoriteTools.map((tool) => (
                   <LibraryCompactCard
                     key={tool.id}
@@ -227,14 +241,14 @@ export default function CalculationsLibraryPage() {
                     accent={CATEGORY_META[tool.category].accent}
                   />
                 ))}
-              </div>
+              </InsetGroupedList>
             </section>
           )}
 
           {recentTools.length > 0 && (
             <section className="space-y-3">
               <LibrarySectionHeading>Son Kullanılan</LibrarySectionHeading>
-              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              <InsetGroupedList columns={2}>
                 {recentTools.map((tool) => (
                   <LibraryCompactCard
                     key={tool.id}
@@ -244,7 +258,7 @@ export default function CalculationsLibraryPage() {
                     accent={CATEGORY_META[tool.category].accent}
                   />
                 ))}
-              </div>
+              </InsetGroupedList>
             </section>
           )}
         </>
@@ -255,7 +269,7 @@ export default function CalculationsLibraryPage() {
           {normalizedQuery ? "Arama Sonuçları" : activeMeta?.title ?? "Hızlı Araçlar"}
         </LibrarySectionHeading>
         {visibleTools.length > 0 ? (
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <InsetGroupedList columns={2}>
             {visibleTools.map((tool) => (
               <ToolCard
                 key={tool.id}
@@ -264,7 +278,7 @@ export default function CalculationsLibraryPage() {
                 onFavorite={() => toggleFavorite(tool.id)}
               />
             ))}
-          </div>
+          </InsetGroupedList>
         ) : (
           <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
             Aramanızla eşleşen hesaplama bulunamadı.

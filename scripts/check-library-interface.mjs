@@ -102,19 +102,28 @@ for (const [label, source] of [
   ["Dersler", lessons],
   ["Operasyonlar", operations],
   ["Personel", crew],
-  ["Gemi Sistemleri", systems],
   ["Köprüüstü", bridge],
   ["Alıştırmalar", exercises],
-  ["Hesaplamalar", calculations],
   ["Regülasyonlar", regulations],
 ]) {
   requireText(source, "LibraryBookCard", `${label} kitap kapağı görünümü`);
 }
 
+// Dense tool/reference indexes use the iOS inset-grouped pattern. Realistic
+// covers remain on content that behaves like a book; systems and calculators
+// need faster scanning, visible counts and calmer tonal symbols.
+for (const [label, source] of [
+  ["Gemi Sistemleri", systems],
+  ["Hesaplamalar", calculations],
+]) {
+  requireText(source, "InsetGroupedList", `${label} iOS gruplanmış liste görünümü`);
+  requireText(source, "LibraryCompactCard", `${label} kompakt tarama satırları`);
+}
+
 forbidText(lessons, "category.subtitle", "ders kapaklarında gereksiz açıklama");
 forbidText(operations, "ship.description", "operasyon kapaklarında gereksiz açıklama");
 forbidText(operations, "badge={", "operasyon kapaklarında sayısal rozet");
-forbidText(systems, "badge={shipSystemsData", "sistem kapaklarında sayısal rozet");
+requireText(systems, "badge={shipSystemsData", "sistem satırlarında konu sayısı");
 
 // Operasyon ekranları gemi görselleriyle değil sade cilt kapaklarıyla çalışır.
 forbidText(operations, "image", "operasyon kapaklarında gemi görseli");
@@ -169,5 +178,5 @@ if (failures.length) {
 }
 
 console.log(
-  "✅ Kitaplık arayüzü doğrulandı: gerçekçi kapaklar, sayfa sayısı metinlerinin kaldırılması, sade başlıklar ve ana kitaplık rotaları korunuyor.",
+  "✅ Kitaplık arayüzü doğrulandı: gerçekçi kapaklar, iOS gruplanmış tarama listeleri, sade başlıklar ve ana kitaplık rotaları korunuyor.",
 );

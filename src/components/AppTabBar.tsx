@@ -8,6 +8,7 @@ import {
   Search,
   type LucideIcon,
 } from "lucide-react";
+import { AppSymbol } from "@/components/ui/AppSymbol";
 import { cn } from "@/lib/utils";
 import { hapticSelection } from "@/lib/haptics";
 import { isAppChromeHidden } from "@/lib/appChrome";
@@ -19,15 +20,17 @@ type AppTab = {
   id: AppTabId;
   label: string;
   to: string;
-  icon: LucideIcon;
+  symbol: string;
+  selectedSymbol?: string;
+  fallback: LucideIcon;
 };
 
 const TABS: AppTab[] = [
-  { id: "home", label: "Ana Sayfa", to: "/", icon: House },
-  { id: "learn", label: "Öğren", to: "/lessons", icon: BookOpenText },
-  { id: "tools", label: "Araçlar", to: "/calculations", icon: Calculator },
-  { id: "library", label: "Kütüphane", to: "/library", icon: LibraryBig },
-  { id: "search", label: "Ara", to: "/search", icon: Search },
+  { id: "home", label: "Ana Sayfa", to: "/", symbol: "house", selectedSymbol: "house.fill", fallback: House },
+  { id: "learn", label: "Öğren", to: "/lessons", symbol: "book", selectedSymbol: "book.fill", fallback: BookOpenText },
+  { id: "tools", label: "Araçlar", to: "/calculations", symbol: "function", fallback: Calculator },
+  { id: "library", label: "Kütüphane", to: "/library", symbol: "books.vertical", selectedSymbol: "books.vertical.fill", fallback: LibraryBig },
+  { id: "search", label: "Ara", to: "/search", symbol: "magnifyingglass", fallback: Search },
 ];
 
 // Each top-level area owns its most recent route for the current app session,
@@ -63,7 +66,7 @@ export function AppTabBar() {
       lang={currentLanguage}
     >
       <div className="app-tabbar__items">
-        {TABS.map(({ id, label, to, icon: Icon }) => {
+        {TABS.map(({ id, label, to, symbol, selectedSymbol, fallback }) => {
           const active = activeTab === id;
           const destination = active ? to : lastRouteByTab[id] || to;
           const localizedLabel = localize(label);
@@ -88,7 +91,12 @@ export function AppTabBar() {
               className={cn("app-tabbar__item", active && "app-tabbar__item--active")}
             >
               <span className="app-tabbar__icon" aria-hidden>
-                <Icon />
+                <AppSymbol
+                  name={symbol}
+                  selectedName={selectedSymbol}
+                  selected={active}
+                  fallback={fallback}
+                />
               </span>
               <span className="app-tabbar__label">{localizedLabel}</span>
             </NavLink>
