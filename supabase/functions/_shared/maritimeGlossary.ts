@@ -1929,6 +1929,177 @@ export const maritimeTerms: MaritimeTerm[] = [
       bg: 'Открито море', uk: 'Відкрите море',
     },
   },
+
+  // ── "Baş" = heading / bow, never the anatomical "head" ─────────────────────
+  // Bare "baş" is far too common in ordinary Turkish to list on its own, so only
+  // the unambiguous nautical compounds are here. Every rendering below was
+  // confirmed wrong in the shipped dictionaries first ("baş kontrolü" → "head
+  // control", "baş tutma" → "do not rebel").
+  {
+    tr: 'Baş kontrolü',
+    aliases: ['Baş Kontrolü', 'baş kontrolü'],
+    translations: {
+      en: 'Heading control', de: 'Kurskontrolle', fr: 'Contrôle de cap',
+      es: 'Control de rumbo', it: 'Controllo di prua', pt: 'Controlo de rumo',
+      nl: 'Koersregeling',
+    },
+  },
+  {
+    tr: 'Otomatik baş',
+    aliases: ['Otomatik Baş', 'otomatik baş'],
+    translations: {
+      en: 'Automatic heading', de: 'Automatischer Kurs', fr: 'Cap automatique',
+      es: 'Rumbo automático', it: 'Prua automatica', pt: 'Rumo automático',
+      nl: 'Automatische koers',
+    },
+  },
+  {
+    tr: 'Baş açısı',
+    aliases: ['Baş Açısı', 'baş açısı', 'Baş açısını', 'baş açısını', 'Baş açısı', 'baş açıları'],
+    translations: {
+      en: 'Heading angle', de: 'Kurswinkel', fr: 'Angle de cap',
+      es: 'Ángulo de rumbo', it: 'Angolo di prua', pt: 'Ângulo de rumo',
+      nl: 'Koershoek',
+    },
+  },
+  {
+    tr: 'Baş yönü',
+    aliases: ['Baş Yönü', 'baş yönü'],
+    translations: {
+      en: 'Heading', de: 'Kurs', fr: 'Cap', es: 'Rumbo', it: 'Prua',
+      pt: 'Rumo', nl: 'Koers',
+    },
+  },
+  {
+    // "Mevki" (position) makes the pairing unambiguous, so this is safe where a
+    // bare "baş" would not be.
+    tr: 'Mevki ve baş',
+    aliases: ['Mevki ve Baş', 'mevki ve baş'],
+    translations: {
+      en: 'position and heading', de: 'Position und Kurs',
+      fr: 'position et cap', es: 'situación y rumbo',
+      it: 'posizione e prua', pt: 'posição e rumo',
+      nl: 'positie en koers',
+    },
+  },
+  {
+    tr: 'Otomatik mevki ve baş',
+    aliases: ['Otomatik Mevki ve Baş', 'otomatik mevki ve baş'],
+    translations: {
+      en: 'Automatic position and heading', de: 'Automatische Position und Kurs',
+      fr: 'Position et cap automatiques', es: 'Situación y rumbo automáticos',
+      it: 'Posizione e prua automatiche', pt: 'Posição e rumo automáticos',
+      nl: 'Automatische positie en koers',
+    },
+  },
+  {
+    tr: 'Baş tutma',
+    aliases: ['Baş Tutma', 'baş tutma'],
+    translations: {
+      en: 'Heading keeping', de: 'Kurshaltung', fr: 'Tenue de cap',
+      es: 'Mantenimiento de rumbo', it: 'Tenuta di prua',
+      pt: 'Manutenção de rumo', nl: 'Koershouden',
+    },
+  },
+
+  // ── Hull sectors and decks ─────────────────────────────────────────────────
+  // "Omuzluk" is the shoulder of the hull, not a shoulder pad; "kıç kasara" is
+  // the poop deck, not an "aft forecastle". ("Baş üstü" is deliberately absent:
+  // it is the forecastle head on deck but the zenith in the celestial lessons.)
+  {
+    tr: 'Baş omuzluk',
+    // The corpus also writes it as one word ("başomuzluk").
+    aliases: [
+      'Baş Omuzluk', 'baş omuzluk', 'baş omuzluktan', 'Baş omuzlukta',
+      'Başomuzluk', 'başomuzluk', 'başomuzluktan',
+    ],
+    translations: {
+      en: 'Bow quarter', de: 'Bug', fr: 'Hanche avant', es: 'Amura',
+      it: 'Mascone', pt: 'Amura', nl: 'Boeg',
+    },
+  },
+  {
+    // Written as one word in parts of the corpus. Only the canonical `tr` form
+    // takes part in inline masking, so the one-word spelling needs its own entry
+    // rather than an alias.
+    tr: 'Başomuzluk',
+    aliases: ['başomuzluk', 'Başomuzlukta', 'başomuzluktan'],
+    translations: {
+      en: 'Bow quarter', de: 'Bug', fr: 'Hanche avant', es: 'Amura',
+      it: 'Mascone', pt: 'Amura', nl: 'Boeg',
+    },
+  },
+  {
+    tr: 'Kıçomuzluk',
+    aliases: ['kıçomuzluk', 'Kıçomuzlukta', 'kıçomuzluktan'],
+    translations: {
+      en: 'Stern quarter', de: 'Achterschiff', fr: 'Hanche arrière',
+      es: 'Aleta', it: 'Giardinetto', pt: 'Alheta', nl: 'Achterschip',
+    },
+  },
+  {
+    tr: 'Kıç omuzluk',
+    aliases: [
+      'Kıç Omuzluk', 'kıç omuzluk', 'kıç omuzluktan',
+      'Kıçomuzluk', 'kıçomuzluk', 'kıçomuzluktan',
+    ],
+    translations: {
+      en: 'Stern quarter', de: 'Achterschiff', fr: 'Hanche arrière',
+      es: 'Aleta', it: 'Giardinetto', pt: 'Alheta', nl: 'Achterschip',
+    },
+  },
+  {
+    tr: 'Kıç kasara',
+    aliases: ['Kıç Kasara', 'kıç kasara'],
+    translations: {
+      en: 'Poop deck', de: 'Poopdeck', fr: 'Dunette', es: 'Toldilla',
+      it: 'Cassero di poppa', pt: 'Tombadilho', nl: 'Kampanjedek',
+    },
+  },
+
+  // ── Helm and engine orders ─────────────────────────────────────────────────
+  // "Alabanda" is the hard-over helm order; the engines untranslated it as the
+  // Turkish place name, or as "astern to starboard".
+  {
+    tr: 'Sancağa alabanda',
+    aliases: ['Sancağa Alabanda', 'sancağa alabanda'],
+    translations: {
+      en: 'Hard to starboard', de: 'Hart Steuerbord', fr: 'Toute à tribord',
+      es: 'Todo a estribor', it: 'Tutta a dritta', pt: 'Todo a estibordo',
+      nl: 'Hard stuurboord',
+    },
+  },
+  {
+    tr: 'İskeleye alabanda',
+    aliases: ['İskeleye Alabanda', 'iskeleye alabanda'],
+    translations: {
+      en: 'Hard to port', de: 'Hart Backbord', fr: 'Toute à bâbord',
+      es: 'Todo a babor', it: 'Tutta a sinistra', pt: 'Todo a bombordo',
+      nl: 'Hard bakboord',
+    },
+  },
+  {
+    tr: 'Alabanda',
+    aliases: ['alabanda'],
+    translations: { en: 'Hard over' },
+  },
+  {
+    tr: 'Makine hazır',
+    aliases: ['Makine Hazır', 'makine hazır'],
+    translations: {
+      en: 'Engine on stand-by', de: 'Maschine auf Stand-by',
+      fr: 'Machine parée', es: 'Máquina lista', it: 'Macchina pronta',
+      pt: 'Máquina pronta', nl: 'Machine gereed',
+    },
+  },
+  {
+    tr: 'Tornistan',
+    aliases: ['tornistan'],
+    translations: {
+      en: 'Astern', de: 'Rückwärts', fr: 'En arrière', es: 'Atrás',
+      it: 'Indietro', pt: 'Atrás', nl: 'Achteruit',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
@@ -2204,7 +2375,24 @@ const decodeHtmlEntities = (value: string): string =>
 // (those match the engine's OUTPUT language, not the source).
 const maskRulesCache = new Map<string, MaritimeCorrectionRule[]>();
 
-const getGlossaryMaskRules = (languageCode: string): MaritimeCorrectionRule[] => {
+const maskMatcherCache = new Map<string, RegExp | null>();
+
+/**
+ * Single combined (non-global) regex over the glossary mask rules, used as a
+ * cheap pre-check: most strings contain no glossary term at all, and this skips
+ * running several hundred individual patterns over them.
+ */
+export const getGlossaryMaskMatcher = (languageCode: string): RegExp | null => {
+  if (maskMatcherCache.has(languageCode)) return maskMatcherCache.get(languageCode) ?? null;
+  const rules = getGlossaryMaskRules(languageCode);
+  const matcher = rules.length
+    ? new RegExp(rules.map((rule) => rule.pattern.source).join('|'), 'iu')
+    : null;
+  maskMatcherCache.set(languageCode, matcher);
+  return matcher;
+};
+
+export const getGlossaryMaskRules = (languageCode: string): MaritimeCorrectionRule[] => {
   if (!languageCode || languageCode === 'tr') return [];
   const cached = maskRulesCache.get(languageCode);
   if (cached) return cached;

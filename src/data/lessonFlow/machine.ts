@@ -5896,7 +5896,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Temel Kurallar", "Özel Alanlar"] }],
     questions: [
       { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "15 ppm kuralı neyi ifade eder?", options: ["Sintine suyu yağ içeriği 15 ppm altında olmalı (OWS ile)", "Yakıt kükürdü 15 ppm", "Su sıcaklığı 15°C", "Hız 15 knot"], correctAnswer: 0, explanation: "Sintine suyu yağ içeriği 15 ppm altında olmalıdır (OWS ile); ODMCS, Oil Record Book ve SOPEP de Ek I gerekliliklerindendir." },
-      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Aşağıdakilerden hangisi Ek I özel alanıdır?", options: ["Akdeniz, Baltık ve Karadeniz", "Pasifik açıkları", "Atlantik ortası", "Hint Okyanusu açıkları"], correctAnswer: 0, explanation: "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika ve KB Avrupa suları özel alandır; deşarj kuralları daha sıkıdır." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Aşağıdakilerden hangisi Ek I özel alanıdır?", options: ["Akdeniz, Baltık ve Karadeniz", "Pasifik açıkları", "Atlantik ortası", "Hint Okyanusu açıkları"], correctAnswer: 0, explanation: "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika ve Kuzeybatı Avrupa suları özel alandır; deşarj kuralları daha sıkıdır." },
     ],
   },
   {

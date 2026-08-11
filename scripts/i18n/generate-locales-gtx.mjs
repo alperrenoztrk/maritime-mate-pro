@@ -26,6 +26,13 @@ import {
   splitBatchResult,
 } from '../../src/utils/pageTranslator.ts';
 import { normalizeMachineTranslation } from '../../src/utils/translationQuality.ts';
+import { maskTechnicalTokens, unmaskTechnicalTokens } from '../../src/utils/technicalText.ts';
+import {
+  isAbbreviationOnly,
+  maskProtectedTokens,
+  renderAbbreviationOnly,
+  unmaskProtectedTokens,
+} from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
@@ -179,6 +186,31 @@ async function gtxTranslate(text, targetLang, sourceLang = 'tr') {
   return null;
 }
 
+// Hides from the engine what it would otherwise "correct": maritime
+// abbreviations ("DP" → "XP", "KB" → "NW") and math function names. Mirrors the
+// runtime translator in src/contexts/LanguageContext.tsx so a string reads the
+// same whether it came from the shipped dictionary or the live path.
+function maskSources(sources, langCode, protect) {
+  const termMasks = sources.map((s) => (protect ? maskProtectedTokens(s, langCode) : null));
+  const mathMasks = sources.map((s, i) => maskTechnicalTokens(termMasks[i]?.masked ?? s));
+  const queries = sources.map((s, i) => mathMasks[i]?.masked ?? termMasks[i]?.masked ?? s);
+  return { termMasks, mathMasks, queries };
+}
+
+// Restores one translated segment. Returns null when an abbreviation sentinel did
+// not survive the round-trip, so the caller can retry that string unprotected
+// instead of shipping "TKN0" in a dictionary.
+function restoreSegment(source, raw, termMask, mathMask, langCode) {
+  let out = raw.trim();
+  if (mathMask) out = unmaskTechnicalTokens(out, mathMask.slots);
+  if (termMask) {
+    const restored = unmaskProtectedTokens(out, termMask.slots);
+    if (restored === null) return null;
+    out = restored;
+  }
+  return normalizeMachineTranslation(source, applyMaritimeCorrections(out, langCode), langCode);
+}
+
 async function translateLanguage(langCode, sources) {
   const langName = LANGUAGE_NAMES[langCode];
   if (!langName) { console.warn(`⚠️  Unknown language "${langCode}", skipping`); return; }
@@ -213,6 +245,13 @@ async function translateLanguage(langCode, sources) {
     if (ALL_CORRECTIONS[source]?.[langCode]) { overrideCount++; continue; }
     const override = getMaritimeTranslationOverride(source, langCode);
     if (override) { cache[source] = override; overrideCount++; continue; }
+    // "SOLAS V", "MF/HF", "DP 1" — nothing to translate once the abbreviation
+    // is protected, and a round-trip only risks damage.
+    if (isAbbreviationOnly(source)) {
+      cache[source] = renderAbbreviationOnly(source, langCode);
+      overrideCount++;
+      continue;
+    }
     if (cache[source] !== undefined) { skipCount++; continue; }
     const enCorrection = ALL_CORRECTIONS[source]?.en;
     if (enCorrection && langCode !== 'en') {
@@ -235,34 +274,38 @@ async function translateLanguage(langCode, sources) {
     process.stdout.write(`  ${langCode}: translating ${total} strings in ${batches.length} batches via gtx...\r`);
   }
 
-  const translateOne = async (source) => {
-    const raw = await gtxTranslate(source, langCode);
-    if (raw !== null) {
-      cache[source] = normalizeMachineTranslation(
-        source,
-        applyMaritimeCorrections(raw, langCode),
-        langCode,
-      );
-      gtxCount++;
-    }
+  const translateOne = async (source, protect = true) => {
+    const { termMasks, mathMasks, queries } = maskSources([source], langCode, protect);
+    const raw = await gtxTranslate(queries[0], langCode);
     // If gtx failed, leave uncached so the runtime live-translator handles it.
+    if (raw === null) return;
+    const value = restoreSegment(source, raw, termMasks[0], mathMasks[0], langCode);
+    if (value === null) {
+      if (protect) await translateOne(source, false);
+      return;
+    }
+    cache[source] = value;
+    gtxCount++;
   };
 
   await runWithConcurrency(batches, CONCURRENCY, async (batch) => {
     if (batch.length === 1) {
       await translateOne(batch[0]);
     } else {
-      const joined = await gtxTranslate(batch.join(BATCH_SEPARATOR), langCode);
+      const { termMasks, mathMasks, queries } = maskSources(batch, langCode, true);
+      const joined = await gtxTranslate(queries.join(BATCH_SEPARATOR), langCode);
       const parts = joined === null ? null : splitBatchResult(joined, batch.length);
       if (parts) {
-        batch.forEach((source, i) => {
-          cache[source] = normalizeMachineTranslation(
-            source,
-            applyMaritimeCorrections(parts[i].trim(), langCode),
-            langCode,
-          );
+        for (let i = 0; i < batch.length; i++) {
+          const source = batch[i];
+          const value = restoreSegment(source, parts[i], termMasks[i], mathMasks[i], langCode);
+          if (value === null) {
+            await translateOne(source, false);
+            continue;
+          }
+          cache[source] = value;
           gtxCount++;
-        });
+        }
       } else {
         for (const source of batch) await translateOne(source);
       }
@@ -276,15 +319,19 @@ async function translateLanguage(langCode, sources) {
   // Pivot-translate the curated English corrections into the target language.
   // Few strings (one per contextual correction), so no batching needed.
   await runWithConcurrency(pendingPivot, CONCURRENCY, async ([source, enText]) => {
-    const raw = await gtxTranslate(enText, langCode, 'en');
-    if (raw !== null) {
-      cache[source] = normalizeMachineTranslation(
-        enText,
-        applyMaritimeCorrections(raw, langCode),
-        langCode,
-      );
-      gtxCount++;
+    // The abbreviations are spelled the same in the curated English, so the same
+    // protection applies on the en → target leg.
+    const { termMasks, mathMasks, queries } = maskSources([enText], langCode, true);
+    let raw = await gtxTranslate(queries[0], langCode, 'en');
+    if (raw === null) return;
+    let value = restoreSegment(enText, raw, termMasks[0], mathMasks[0], langCode);
+    if (value === null) {
+      raw = await gtxTranslate(enText, langCode, 'en');
+      if (raw === null) return;
+      value = restoreSegment(enText, raw, null, null, langCode);
     }
+    cache[source] = value;
+    gtxCount++;
   });
 
   // Persist incremental cache so interrupted runs resume without re-doing work.

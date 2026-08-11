@@ -7,6 +7,12 @@ import {
 import { normalizeMachineTranslation } from '@/utils/translationQuality';
 import { maskTechnicalTokens, unmaskTechnicalTokens } from '@/utils/technicalText';
 import {
+  isAbbreviationOnly,
+  maskProtectedTokens,
+  renderAbbreviationOnly,
+  unmaskProtectedTokens,
+} from '@/utils/protectedTerms';
+import {
   SOURCE_LANGUAGE,
   TranslationUnit,
   collectTranslationUnits,
@@ -291,6 +297,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const coreUiTranslation = getCoreUiTranslation(normalizedText, languageCode);
     if (coreUiTranslation) return coreUiTranslation;
 
+    // "SOLAS V", "MF/HF", "DP 1" carry no translatable words; render the
+    // abbreviations directly rather than risking an engine round-trip.
+    if (isAbbreviationOnly(normalizedText)) {
+      const rendered = renderAbbreviationOnly(normalizedText, languageCode);
+      translationCacheRef.current.set(cacheKey, rendered);
+      return rendered;
+    }
+
     const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
     if (maritimeOverride) {
       // Override matching tolerates a trailing colon on the source label
@@ -319,15 +333,26 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // fan-out across a large lesson page.
   const fetchTranslationBatch = async (
     batch: string[],
-    languageCode: string
+    languageCode: string,
+    options: { protectTerms?: boolean } = {}
   ): Promise<Map<string, string>> => {
+    const { protectTerms = true } = options;
     const out = new Map<string, string>();
     if (Date.now() < liveTranslationPausedUntilRef.current) return out;
 
-    // Protect math function names ("atan2", "cosφ") from the engine before the
-    // request; they are restored verbatim in the response.
-    const masks = batch.map((source) => maskTechnicalTokens(source));
-    const query = batch.map((source, i) => masks[i]?.masked ?? source).join(BATCH_SEPARATOR);
+    // Two protection layers stand between the source and the engine, because it
+    // "corrects" what it does not recognise: maritime abbreviations ("DP" → "XP",
+    // "KB" → "NW") and math function names ("atan2", "cosφ"). Both are swapped
+    // for sentinels here and restored from the response below.
+    const termMasks = batch.map((source) =>
+      protectTerms ? maskProtectedTokens(source, languageCode) : null
+    );
+    const mathMasks = batch.map((source, i) =>
+      maskTechnicalTokens(termMasks[i]?.masked ?? source)
+    );
+    const query = batch
+      .map((source, i) => mathMasks[i]?.masked ?? termMasks[i]?.masked ?? source)
+      .join(BATCH_SEPARATOR);
     const controller = typeof AbortController === 'undefined' ? null : new AbortController();
     const timeout = controller
       ? globalThis.setTimeout(() => controller.abort(), LIVE_TRANSLATION_TIMEOUT_MS)
@@ -351,19 +376,39 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
 
     if (parts) {
+      // Strings whose abbreviation sentinels came back unrecoverable; they are
+      // re-translated unprotected rather than leaking "TKN0" into the UI.
+      const unresolved: string[] = [];
       batch.forEach((source, i) => {
-        const slots = masks[i]?.slots;
-        const raw = slots ? unmaskTechnicalTokens(parts![i].trim(), slots) : parts![i].trim();
+        let raw = parts![i].trim();
+        const mathSlots = mathMasks[i]?.slots;
+        if (mathSlots) raw = unmaskTechnicalTokens(raw, mathSlots);
+        const termSlots = termMasks[i]?.slots;
+        if (termSlots) {
+          const restored = unmaskProtectedTokens(raw, termSlots);
+          if (restored === null) {
+            unresolved.push(source);
+            return;
+          }
+          raw = restored;
+        }
         const corrected = applyMaritimeCorrections(raw, languageCode);
         out.set(source, normalizeMachineTranslation(source, corrected, languageCode));
       });
+      if (unresolved.length > 0) {
+        const retried = await fetchTranslationBatch(unresolved, languageCode, {
+          ...options,
+          protectTerms: false,
+        });
+        for (const [source, value] of retried) out.set(source, value);
+      }
       return out;
     }
 
     if (batch.length === 1 || batch.length > MAX_SINGLE_REQUEST_FALLBACKS) return out;
 
     await runWithConcurrency(batch, BULK_CONCURRENCY, async (source) => {
-      const single = await fetchTranslationBatch([source], languageCode);
+      const single = await fetchTranslationBatch([source], languageCode, options);
       const value = single.get(source);
       if (value !== undefined) out.set(source, value);
     });

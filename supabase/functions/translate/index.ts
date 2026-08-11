@@ -4,8 +4,6 @@ import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ER
 import {
   getMaritimeTranslationOverride,
   applyMaritimeCorrections,
-  maskGlossaryTerms,
-  unmaskGlossaryTerms,
 } from "../_shared/maritimeGlossary.ts";
 import {
   maskTechnicalTokens,
@@ -13,19 +11,27 @@ import {
   fixCalculationNoun,
   isTechnicalString,
 } from "../_shared/technicalText.ts";
+import {
+  isAbbreviationOnly,
+  maskProtectedTokens,
+  renderAbbreviationOnly,
+  unmaskProtectedTokens,
+} from "../_shared/protectedTerms.ts";
 
 // Google Cloud Translation API v2
 // Docs: https://cloud.google.com/translate/docs/reference/rest/v2/translate
 const GOOGLE_TRANSLATE_ENDPOINT = "https://translation.googleapis.com/language/translate/v2";
 
 // Google Translate is a GENERIC engine: without help it mistranslates maritime
-// Turkish ("Viya" → licking, "Funda" → heather, "Sancak" → banner). Every text
-// therefore goes through the glossary pipeline:
+// Turkish ("Viya" → licking, "Funda" → heather, "Sancak" → banner) and
+// "corrects" abbreviations it does not know ("DP" → "XP"). Every text therefore
+// goes through the same pipeline the app's other translation paths use:
 //   1) exact whole-string glossary override → answered locally, no API call;
-//   2) the Turkish SOURCE is scanned for glossary terms and matches are masked
-//      with <span translate="no"> (sent as format=html) so Google cannot touch
-//      them, then unmasking forces the curated term into the output — whatever
-//      Google produced;
+//   2) the Turkish SOURCE is scanned for protected abbreviations and curated
+//      glossary terms, which are replaced by sentinels the engine leaves alone;
+//      unmasking then forces the curated term into the output — whatever Google
+//      produced. A sentinel that does not survive sends the string back through
+//      unprotected instead of leaking the sentinel to the client;
 //   3) applyMaritimeCorrections sweeps the final text for leftover Turkish
 //      terms and known-bad renderings.
 // Glossary steps only apply when translating FROM Turkish (the glossary's
@@ -36,8 +42,10 @@ interface TranslationJob {
   index: number;
   /** Query actually sent to Google (masked HTML or plain text). */
   q: string;
-  /** Curated glossary terms to substitute back into the masked result. */
-  slots: string[] | null;
+  /** Curated abbreviations and glossary terms to substitute back, per sentinel. */
+  termSlots: string[] | null;
+  /** Math function names to substitute back, one per sentinel. */
+  mathSlots: string[] | null;
 }
 
 async function googleTranslate(
@@ -106,28 +114,41 @@ serve(async (req) => {
     const glossaryActive = sourceLanguage === 'tr' && targetLanguage !== 'tr';
     const results: string[] = new Array(texts.length);
     const plainJobs: TranslationJob[] = [];
-    const maskedJobs: TranslationJob[] = [];
 
     for (let i = 0; i < texts.length; i++) {
       const source = texts[i];
-      // Pure formulas are language independent — return them untouched.
+      // Pure formulas and bare abbreviations ("SOLAS V") are language
+      // independent — return them untouched.
       if (isTechnicalString(source)) { results[i] = source; continue; }
+      if (isAbbreviationOnly(source)) {
+        results[i] = renderAbbreviationOnly(source, targetLanguage);
+        continue;
+      }
       if (glossaryActive) {
         const override = getMaritimeTranslationOverride(source, targetLanguage);
         if (override) { results[i] = override; continue; }
-        const mask = maskGlossaryTerms(source, targetLanguage);
-        if (mask) { maskedJobs.push({ index: i, q: mask.masked, slots: mask.slots }); continue; }
       }
+      // Abbreviations and curated glossary terms both go behind sentinels. This
+      // replaces the earlier <span translate="no"> masking: the sentinels work
+      // on plain text, so they hold on every engine this app talks to rather
+      // than only on the ones that honour the HTML attribute.
+      const termMask = glossaryActive ? maskProtectedTokens(source, targetLanguage) : null;
+      const working = termMask?.masked ?? source;
       // Protect math function names inside mixed prose.
-      const mathMask = maskTechnicalTokens(source);
-      plainJobs.push({ index: i, q: mathMask?.masked ?? source, slots: null });
+      const mathMask = maskTechnicalTokens(working);
+      plainJobs.push({
+        index: i,
+        q: mathMask?.masked ?? working,
+        termSlots: termMask?.slots ?? null,
+        mathSlots: mathMask?.slots ?? null,
+      });
     }
 
-    // Masked texts must go as format=html for <span translate="no"> to be
-    // honoured; everything else stays format=text (no entity escaping).
-    for (const [jobs, format] of [[plainJobs, 'text'], [maskedJobs, 'html']] as const) {
-      if (!jobs.length) continue;
-      const translated = await googleTranslate(apiKey, jobs, sourceLanguage, targetLanguage, format);
+    {
+      const jobs = plainJobs;
+      const translated = jobs.length
+        ? await googleTranslate(apiKey, jobs, sourceLanguage, targetLanguage, 'text')
+        : [];
       if (translated instanceof Response) {
         if (translated.status === 429) {
           return errorResponse(corsHeaders, 429, GENERIC_ERRORS.RATE_LIMIT);
@@ -137,6 +158,9 @@ serve(async (req) => {
         }
         return errorResponse(corsHeaders, 500, GENERIC_ERRORS.SERVICE_ERROR);
       }
+      // Jobs whose abbreviation sentinels did not survive; retried below without
+      // protection rather than leaking "TKN0" to the client.
+      const unresolved: TranslationJob[] = [];
       jobs.forEach((job, j) => {
         const raw = translated[j];
         if (raw === undefined || raw === '') {
@@ -145,13 +169,35 @@ serve(async (req) => {
           return;
         }
         const originalSource = texts[job.index];
-        let out = job.slots ? unmaskGlossaryTerms(raw, job.slots) : raw;
-        const mathMask = maskTechnicalTokens(originalSource);
-        if (mathMask) out = unmaskTechnicalTokens(out, mathMask.slots);
+        let out = raw;
+        if (job.mathSlots) out = unmaskTechnicalTokens(out, job.mathSlots);
+        if (job.termSlots) {
+          const restored = unmaskProtectedTokens(out, job.termSlots);
+          if (restored === null) { unresolved.push(job); return; }
+          out = restored;
+        }
         if (glossaryActive) out = applyMaritimeCorrections(out, targetLanguage);
         out = fixCalculationNoun(originalSource, out, targetLanguage);
         results[job.index] = out;
       });
+
+      if (unresolved.length > 0) {
+        const retryJobs: TranslationJob[] = unresolved.map((job) => ({
+          index: job.index,
+          q: texts[job.index],
+          termSlots: null,
+          mathSlots: null,
+        }));
+        const retried = await googleTranslate(apiKey, retryJobs, sourceLanguage, targetLanguage, 'text');
+        retryJobs.forEach((job, j) => {
+          const raw = retried instanceof Response ? '' : retried[j];
+          const originalSource = texts[job.index];
+          if (!raw) { results[job.index] = originalSource; return; }
+          let out = glossaryActive ? applyMaritimeCorrections(raw, targetLanguage) : raw;
+          out = fixCalculationNoun(originalSource, out, targetLanguage);
+          results[job.index] = out;
+        });
+      }
     }
 
     // Return same shape as input: string in -> string out; array in -> array out.

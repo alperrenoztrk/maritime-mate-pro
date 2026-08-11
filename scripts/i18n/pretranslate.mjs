@@ -26,6 +26,10 @@ import {
   applyMaritimeCorrections,
   maritimeGlossaryPromptHint,
 } from '../../src/utils/maritimeGlossary.ts';
+import {
+  PROTECTED_TOKENS,
+  findMissingProtectedTokens,
+} from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
@@ -78,6 +82,12 @@ async function runWithConcurrency(items, concurrency, task) {
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, worker));
 }
 
+// Abbreviations the model must carry through untouched. Unlike the generic
+// engines, a language model gets these right when told, so the AI path states
+// the rule instead of masking the text (masking would cost it the context it
+// needs to translate the surrounding sentence well).
+const PROTECTED_TOKEN_HINT = PROTECTED_TOKENS.map((entry) => entry.token).join(', ');
+
 function systemPrompt(langName) {
   return (
     `You are a professional maritime translator specialised in nautical, navigation, ` +
@@ -86,6 +96,11 @@ function systemPrompt(langName) {
     `language (never literal/generic words). Preserve numbers, symbols, units and ` +
     `placeholders. Maritime glossary (Turkish = English) for reference: ` +
     `${maritimeGlossaryPromptHint}.\n\n` +
+    `Keep these technical abbreviations EXACTLY as written — never translate, expand, ` +
+    `spell out or "correct" them, and never drop them (stability symbols such as GM, ` +
+    `KG, KB and BM are formula variables): ${PROTECTED_TOKEN_HINT}. The only permitted ` +
+    `change is the established equivalent of the target language (e.g. IMO = OMI in ` +
+    `French, PPE = PSA in German).\n\n` +
     `You receive a JSON array of strings. Return ONLY a JSON array of the same length ` +
     `with the translations in the same order — no prose, no code fences.`
   );
@@ -138,6 +153,7 @@ async function translateLanguage(langCode, sources) {
   const cache = readJson(cacheFile, {});
   let aiCount = 0;
   let overrideCount = 0;
+  let droppedCount = 0;
 
   // Determine what still needs AI (not overridable, not cached).
   const pending = [];
@@ -171,10 +187,24 @@ async function translateLanguage(langCode, sources) {
           results.push(single && single[0] ? single[0] : s);
         }
       }
-      batch.forEach((source, i) => {
-        cache[source] = applyMaritimeCorrections(results[i] ?? source, langCode);
+      // A dropped abbreviation is silent damage, so verify rather than trust:
+      // retry the string on its own, and if the model drops it again leave the
+      // entry uncached so the runtime (which masks) translates it instead.
+      for (let i = 0; i < batch.length; i++) {
+        const source = batch[i];
+        let translated = results[i] ?? source;
+        if (findMissingProtectedTokens(source, translated, langCode).length > 0) {
+          const retry = await aiTranslateBatch([source], langCode, langName);
+          const retried = retry && retry[0];
+          if (!retried || findMissingProtectedTokens(source, retried, langCode).length > 0) {
+            droppedCount++;
+            continue;
+          }
+          translated = retried;
+        }
+        cache[source] = applyMaritimeCorrections(translated, langCode);
         aiCount++;
-      });
+      }
       done += batch.length;
       if (done % 250 < BATCH_SIZE) console.log(`   ${langCode}: ${done}/${limited.length}`);
     });
@@ -194,7 +224,9 @@ async function translateLanguage(langCode, sources) {
   fs.writeFileSync(path.join(OUT_DIR, `${langCode}.json`), JSON.stringify(dict, null, 0) + '\n');
 
   console.log(`✅ ${langCode}: ${covered}/${sources.length} covered ` +
-    `(override ${overrideCount}, AI ${aiCount}) → public/locales/${langCode}.json`);
+    `(override ${overrideCount}, AI ${aiCount}` +
+    (droppedCount ? `, ${droppedCount} left to the runtime: abbreviation dropped` : '') +
+    `) → public/locales/${langCode}.json`);
 }
 
 async function main() {
