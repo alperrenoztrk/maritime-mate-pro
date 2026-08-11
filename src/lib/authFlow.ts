@@ -30,9 +30,9 @@ const AUTH_ROUTES = [
   "/auth",
   "/auth/callback",
   "/reset-password",
-  "/privacy",
-  "/terms",
+  "/.lovable/oauth/consent",
 ];
+
 
 export const isPublicPath = (pathname: string) => {
   const clean = pathname.replace(/\/+$/, "") || "/";
