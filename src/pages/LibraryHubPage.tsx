@@ -17,19 +17,19 @@ import {
 } from "@/components/library/LibraryInterface";
 
 const operationalReferences = [
-  { title: "Personel ve Görevler", to: "/crew", icon: Users, accent: "from-indigo-500 to-blue-600" },
-  { title: "Köprüüstü Cihazları", to: "/bridge", icon: Compass, accent: "from-sky-500 to-cyan-600" },
-  { title: "Gemi Sistemleri", to: "/ship-systems", icon: Ship, accent: "from-amber-500 to-orange-600" },
-  { title: "Gemi Görevleri", to: "/ship-tasks", icon: ClipboardCheck, accent: "from-teal-500 to-emerald-600" },
-  { title: "Gemi Operasyonları", to: "/ship-operations", icon: Anchor, accent: "from-rose-500 to-pink-600" },
-  { title: "Makine Bölümü", to: "/machinery", icon: Wrench, accent: "from-slate-500 to-zinc-700" },
+  { title: "Personel ve Görevler", to: "/crew", icon: Users, accent: "accent-deep" },
+  { title: "Köprüüstü Cihazları", to: "/bridge", icon: Compass, accent: "accent-ocean" },
+  { title: "Gemi Sistemleri", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
+  { title: "Gemi Görevleri", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
+  { title: "Gemi Operasyonları", to: "/ship-operations", icon: Anchor, accent: "accent-ocean" },
+  { title: "Makine Bölümü", to: "/machinery", icon: Wrench, accent: "accent-slate" },
 ];
 
 const quickReferences = [
-  { title: "Denizcilik Sözlüğü", to: "/glossary", icon: BookA, accent: "from-cyan-500 to-blue-600" },
-  { title: "Mevzuat", to: "/regulations", icon: ScrollText, accent: "from-violet-500 to-indigo-600" },
-  { title: "Geçiş Planı", to: "/passage-plan", icon: Compass, accent: "from-blue-500 to-sky-600" },
-  { title: "İşaret ve Haberleşme", to: "/communication/flags", icon: RadioTower, accent: "from-orange-500 to-red-600" },
+  { title: "Denizcilik Sözlüğü", to: "/glossary", icon: BookA, accent: "accent-ocean" },
+  { title: "Mevzuat", to: "/regulations", icon: ScrollText, accent: "accent-deep" },
+  { title: "Geçiş Planı", to: "/passage-plan", icon: Compass, accent: "accent-ocean" },
+  { title: "İşaret ve Haberleşme", to: "/communication/flags", icon: RadioTower, accent: "accent-amber" },
 ];
 
 export default function LibraryHubPage() {

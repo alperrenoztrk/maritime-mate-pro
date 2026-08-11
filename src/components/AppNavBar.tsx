@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
 import { isAppChromeHidden } from "@/lib/appChrome";
+import { useLanguage } from "@/contexts/useLanguage";
+import { getCoreUiTranslation } from "@/i18n/coreUiTranslations";
 
 const COLLAPSE_AT = 44;
 
@@ -27,6 +29,12 @@ const KNOWN_TITLES: Array<[RegExp, string]> = [
 const knownTitle = (pathname: string) =>
   KNOWN_TITLES.find(([pattern]) => pattern.test(pathname))?.[1] ?? "";
 
+const localizedKnownTitle = (pathname: string, languageCode: string) => {
+  const source = knownTitle(pathname);
+  if (!source || source === "Mariner's Book") return source;
+  return getCoreUiTranslation(source, languageCode) ?? "";
+};
+
 const readRouteHeading = (pathname: string): string => {
   const routeRoot = Array.from(document.querySelectorAll<HTMLElement>("[data-page-path]"))
     .find((element) => element.dataset.pagePath === pathname);
@@ -48,14 +56,23 @@ const readRouteHeading = (pathname: string): string => {
 export function AppNavBar() {
   const { pathname } = useLocation();
   const { goBack, canGoBack } = useBackNavigation();
+  const { currentLanguage } = useLanguage();
   const [collapsed, setCollapsed] = useState(false);
-  const [title, setTitle] = useState(() => knownTitle(pathname));
+  const [title, setTitle] = useState(() => localizedKnownTitle(pathname, currentLanguage));
   const reduceMotion = useReducedMotion();
-  const backLabel = useMemo(() => knownTitle(findParentPath(pathname)) || "Geri", [pathname]);
+  const localizedBack = useMemo(
+    () => getCoreUiTranslation("Geri", currentLanguage) ?? "Geri",
+    [currentLanguage],
+  );
+  const backLabel = useMemo(() => {
+    const parentSource = knownTitle(findParentPath(pathname));
+    if (parentSource === "Mariner's Book") return parentSource;
+    return getCoreUiTranslation(parentSource, currentLanguage) ?? localizedBack;
+  }, [currentLanguage, localizedBack, pathname]);
 
   useEffect(() => {
     setCollapsed(false);
-    setTitle(knownTitle(pathname));
+    setTitle(localizedKnownTitle(pathname, currentLanguage));
     if (!canGoBack || isAppChromeHidden(pathname)) return;
 
     let frame = 0;
@@ -102,7 +119,7 @@ export function AppNavBar() {
       observer.disconnect();
       window.cancelAnimationFrame(frame);
     };
-  }, [canGoBack, pathname]);
+  }, [canGoBack, currentLanguage, pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -133,11 +150,12 @@ export function AppNavBar() {
         <button
           type="button"
           onClick={() => goBack()}
-          aria-label="Geri"
+          aria-label={localizedBack}
+          data-no-translate
           className="pointer-events-auto relative z-10 inline-flex h-11 max-w-[42%] items-center gap-0.5 rounded-xl px-1.5 text-sm font-medium text-primary transition-colors duration-control hover:bg-primary/10 active:bg-primary/15"
         >
           <ChevronLeft className="h-6 w-6 shrink-0" strokeWidth={2.25} />
-          <span className="truncate">{backLabel}</span>
+          <span className="truncate" lang={currentLanguage}>{backLabel}</span>
         </button>
 
         <motion.div

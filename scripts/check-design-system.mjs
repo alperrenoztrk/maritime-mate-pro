@@ -76,16 +76,27 @@ assert(
   app.includes("<AppTabBar />") && app.includes('path="/library"'),
   "src/App.tsx: the persistent tab bar and its discoverable /library destination must remain mounted",
 );
+const appTabBar = read("src/components/AppTabBar.tsx");
 assert(
-  read("src/components/AppTabBar.tsx").includes("lastRouteByTab"),
+  appTabBar.includes("lastRouteByTab"),
   "AppTabBar: each top-level tab must preserve its most recent route during the session",
 );
 for (const label of ["Ana Sayfa", "Öğren", "Araçlar", "Kütüphane", "Ara"]) {
   assert(
-    read("src/components/AppTabBar.tsx").includes(label),
+    appTabBar.includes(label),
     `AppTabBar: primary navigation label must remain ${label}`,
   );
 }
+assert(
+  appTabBar.includes("getCoreUiTranslation") &&
+    appTabBar.includes('translate="no"') &&
+    !appTabBar.includes("data-mt-global-root"),
+  "AppTabBar: persistent chrome must render its selected language synchronously instead of waiting for DOM translation",
+);
+assert(
+  read("src/contexts/LanguageContext.tsx").includes("getCoreUiTranslation"),
+  "LanguageContext: the audited core-screen copy overlay must resolve before the large locale dictionary",
+);
 assert(
   read("src/components/PageTransition.tsx").includes("app-page-shell--${shellMode}"),
   "PageTransition: every route must use the shared standard/immersive AppPageShell boundary",
@@ -268,6 +279,22 @@ for (const file of [
   assert(
     !/backdrop-blur|backdropFilter|backdrop-filter/.test(read(file)),
     `${file}: content surfaces must remain blur-free; glass is navigation chrome only`,
+  );
+}
+
+// ── 10. Restrained high-traffic library palette ─────────────────────
+// These entry screens used dozens of arbitrary Tailwind gradients. The book
+// metaphor remains, but category colour now comes from a compact semantic set.
+for (const file of [
+  "src/pages/LibraryHubPage.tsx",
+  "src/pages/curriculum/LessonsLibraryPage.tsx",
+  "src/pages/library/CalculationsLibraryPage.tsx",
+  "src/pages/Glossary.tsx",
+  "src/data/shipSystemsSections.ts",
+]) {
+  assert(
+    !/from-(?:rose|pink|purple|violet|indigo|blue|sky|cyan|teal|emerald|green|yellow|amber|orange|red|slate|zinc)-/.test(read(file)),
+    `${file}: high-traffic library accents must use the shared accent-* palette`,
   );
 }
 
