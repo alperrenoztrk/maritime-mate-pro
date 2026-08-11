@@ -3,9 +3,11 @@ import type { Session, User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import {
+  buildMagicLinkRedirect,
   consumeReturnPath,
   finishOAuthFromUrl,
   isNativePlatform,
+  rememberReturnPath,
   sanitizeReturnPath,
   startGoogleSignIn,
 } from "@/lib/authFlow";
