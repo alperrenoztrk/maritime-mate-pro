@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Anchor, Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink } from "lucide-react";
+import { Anchor, Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,7 +25,7 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, mfaChallengeRequired, signOut, signInWithEmail, signUpWithEmail, signInWithGoogle } =
+  const { user, loading, mfaChallengeRequired, signOut, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithMagicLink } =
     useAuth();
   const { currentLanguage } = useLanguage();
   const privacyPolicyUrl = getPrivacyPolicyUrl(currentLanguage);
@@ -34,6 +34,15 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [magicSent, setMagicSent] = useState(false);
+  const [magicCooldown, setMagicCooldown] = useState(0);
+
+  // Tekrar gönderme sayacı: sunucu tarafı hız sınırına takılmayı önler.
+  useEffect(() => {
+    if (magicCooldown <= 0) return;
+    const timer = window.setTimeout(() => setMagicCooldown((s) => s - 1), 1000);
+    return () => window.clearTimeout(timer);
+  }, [magicCooldown]);
 
   const nextPath = useMemo(() => sanitizeReturnPath(searchParams.get("next")), [searchParams]);
 
@@ -100,6 +109,34 @@ const Auth = () => {
       } else {
         toast.success("Şifre belirleme bağlantısı e-postanıza gönderildi.");
       }
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  // Şifresiz giriş: sadece e-posta yeterli. Şifresi olmayan (Google ile açılmış)
+  // hesaplar da bu yolla girebilir.
+  const handleMagicLink = async () => {
+    const parsedEmail = credentialsSchema.shape.email.safeParse(email);
+    if (!parsedEmail.success) {
+      toast.error("Önce geçerli bir e-posta girin");
+      return;
+    }
+    setBusy(true);
+    try {
+      const { error } = await signInWithMagicLink(parsedEmail.data, nextPath);
+      if (error) {
+        const rate = /rate limit|too many|429/i.test(error.message);
+        toast.error(
+          rate
+            ? "Çok fazla istek gönderildi. Lütfen birkaç dakika sonra tekrar deneyin."
+            : error.message || "Giriş bağlantısı gönderilemedi",
+        );
+        return;
+      }
+      setMagicSent(true);
+      setMagicCooldown(60);
+      toast.success("Giriş bağlantısı e-postanıza gönderildi.");
     } finally {
       setBusy(false);
     }
@@ -178,19 +215,39 @@ const Auth = () => {
                       {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
                     </Button>
                   </form>
-                  <div className="mt-3 text-center">
-                    <button
+                  <div className="mt-3 space-y-3">
+                    <Button
                       type="button"
-                      onClick={handleResetPassword}
-                      disabled={busy}
-                      className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                      variant="secondary"
+                      className="w-full gap-2"
+                      onClick={handleMagicLink}
+                      disabled={busy || magicCooldown > 0}
                     >
-                      Şifremi unuttum / şifre belirle
-                    </button>
-                    <p className="mt-2 text-micro text-muted-foreground">
-                      Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
-                      belirleyebilir veya Google ile giriş yapabilirsiniz.
-                    </p>
+                      <Sparkles className="h-4 w-4" />
+                      {magicCooldown > 0
+                        ? `Tekrar gönder (${magicCooldown} sn)`
+                        : "Şifresiz giriş bağlantısı gönder"}
+                    </Button>
+                    {magicSent && (
+                      <p className="text-xs text-center text-muted-foreground">
+                        Giriş bağlantısı e-postanıza gönderildi. Bağlantıya bu cihazdan
+                        tıklayın; oturum otomatik açılır.
+                      </p>
+                    )}
+                    <div className="text-center">
+                      <button
+                        type="button"
+                        onClick={handleResetPassword}
+                        disabled={busy}
+                        className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                      >
+                        Şifremi unuttum / şifre belirle
+                      </button>
+                      <p className="mt-2 text-micro text-muted-foreground">
+                        Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Şifresiz
+                        giriş bağlantısını kullanabilir veya buradan şifre belirleyebilirsiniz.
+                      </p>
+                    </div>
                   </div>
                 </TabsContent>
 

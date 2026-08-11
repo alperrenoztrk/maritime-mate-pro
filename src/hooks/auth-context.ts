@@ -13,6 +13,8 @@ export interface AuthContextValue {
   mfaChallengeRequired: boolean;
   signInWithEmail: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUpWithEmail: (email: string, password: string, returnPath?: string) => Promise<{ error: Error | null }>;
+  /** Şifresiz giriş: e-postaya tek kullanımlık bağlantı gönderir. */
+  signInWithMagicLink: (email: string, returnPath?: string) => Promise<{ error: Error | null }>;
   signInWithGoogle: (returnPath?: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }

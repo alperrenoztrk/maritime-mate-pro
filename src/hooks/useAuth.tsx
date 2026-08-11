@@ -3,9 +3,11 @@ import type { Session, User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import {
+  buildMagicLinkRedirect,
   consumeReturnPath,
   finishOAuthFromUrl,
   isNativePlatform,
+  rememberReturnPath,
   sanitizeReturnPath,
   startGoogleSignIn,
 } from "@/lib/authFlow";
@@ -104,6 +106,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error as Error | null };
   };
 
+  // Şifresiz giriş: kullanıcı e-postasına tek kullanımlık bağlantı gider.
+  // Kayıtlı olmayan adres için hesap otomatik açılır (profil tetikleyicisi
+  // profili yazar); dönüş adresi Google akışıyla aynı /auth/callback'tir.
+  const signInWithMagicLink = async (email: string, returnPath = "/") => {
+    const safeReturn = sanitizeReturnPath(returnPath);
+    rememberReturnPath(safeReturn);
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: buildMagicLinkRedirect(safeReturn) },
+    });
+    return { error: error as Error | null };
+  };
+
   const signInWithGoogle = async (returnPath = "/") => {
     try {
       return await startGoogleSignIn(returnPath);
@@ -125,6 +140,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         mfaChallengeRequired,
         signInWithEmail,
         signUpWithEmail,
+        signInWithMagicLink,
         signInWithGoogle,
         signOut,
       }}

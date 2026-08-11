@@ -18,6 +18,7 @@ const clearOAuthParams = () => {
     "provider_token",
     "provider_refresh_token",
     "state",
+    "type",
   ].forEach((key) => {
     url.searchParams.delete(key);
     hash.delete(key);
@@ -38,7 +39,15 @@ const AuthCallback = () => {
   useEffect(() => {
     let cancelled = false;
 
+    const readType = () => {
+      const hash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+      return new URLSearchParams(window.location.search).get("type") || hash.get("type");
+    };
+
     const readReturn = () => {
+      // Şifre kurtarma bağlantısı oturumu açar ama kullanıcı yeni şifre
+      // belirlemeli; magic link ise doğrudan hedef sayfaya götürür.
+      if (readType() === "recovery") return "/reset-password";
       const fromUrl = new URLSearchParams(window.location.search).get("next");
       if (fromUrl) return sanitizeReturnPath(fromUrl);
       return consumeReturnPath();
