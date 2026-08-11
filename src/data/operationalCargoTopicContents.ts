@@ -235,6 +235,8 @@ export const operationalCargoTopicContents: Record<string, TopicDetailContent> =
     sections: [
       {
         title: "Mate's Receipt ve Bill of Lading Remarks",
+        image: "/diagrams/cargo/liman-belgeleri.svg",
+        imageAlt: "Order of the port cargo documents and when to issue a letter of protest",
         content:
           "Mate's Receipt yükün gemiye alındığı görünür durum ve miktar için ilk gemi belgesidir. Islak, paslı, yırtık, eksik, açık paketli veya sayımı belirsiz yük doğru ve somut ifadeyle remarked edilir. Belirsiz genel ifadeler veya kanıtlanamayan suçlayıcı dil kullanılmaz. Clean B/L verilmesi için remark silme baskısı kaptan/şirket/P&I'ye bildirilir; yetkisiz Letter of Indemnity kabul edilmez.",
       },

@@ -251,6 +251,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Konşimentonun Üç İşlevi",
+        image: "/diagrams/economics/konsimento.svg",
+        imageAlt: "The three functions of a bill of lading, and clean against claused bills",
         content:
           "Konşimento (Bill of Lading, B/L) üç temel işlevi yerine getirir: (1) Makbuz — yükün belirtilen miktar ve durumda gemiye teslim alındığının kanıtıdır; (2) Taşıma sözleşmesinin kanıtı — taşıyan ile yük ilgilisi arasındaki şartları yansıtır; (3) Kıymetli evrak / mülkiyet senedi (document of title) — konşimentonun devri yükün mülkiyetinin devri anlamına gelir ve yük, konşimentonun ibrazıyla teslim alınır. Bu üçlü işlev, konşimentoyu uluslararası ticaretin ve akreditifli ödemelerin merkezine yerleştirir.",
       },
@@ -285,6 +287,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Tekne ve Makine Sigortası (Hull & Machinery)",
+        image: "/diagrams/economics/deniz-sigortasi-avarya.svg",
+        imageAlt: "Hull and machinery, P&I and cargo cover, and how general average is shared",
         content:
           "Hull & Machinery (H&M) sigortası, geminin kendisini (tekne, makine ve donanım) fiziksel hasar ve kayba karşı korur: karaya oturma, çatışma, yangın, ağır hava hasarı, batma gibi rizikolar tipik olarak kapsanır. Poliçe, sigortalı değer, muafiyet (deductible) ve kapsanan/kapsanmayan rizikoları tanımlar. H&M ayrıca çatışmada karşı gemiye verilen hasarın bir kısmını (collision liability) da kapsayabilir. Armatör için H&M, sermaye varlığını koruyan birincil sigortadır.",
       },
@@ -319,6 +323,8 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Arz, Talep ve Piyasa Döngüleri",
+        image: "/diagrams/economics/denizcilik-piyasalari.svg",
+        imageAlt: "The four shipping markets and the phases of the shipping cycle",
         content:
           "Navlun oranları, taşıma talebi (dünya ticareti, ürün akışları, mevsimsellik) ile gemi arzı (mevcut filo, yeni inşa teslimatları, hurdaya ayırma) arasındaki dengeyle belirlenir. Talep arzı aştığında oranlar hızla yükselir; çünkü kısa vadede gemi arzı esnek değildir (yeni gemi yapımı yıllar alır). Yüksek oranlar yeni gemi siparişini teşvik eder, teslimatlar arzı artırır ve oranlar düşer; bu da siparişleri ve filo büyümesini frenler. Bu öz-düzeltici mekanizma, denizciliğin belirgin döngülerini (boom-bust) yaratır.",
       },

@@ -1,0 +1,55 @@
+<svg width="720" height="450" viewBox="0 0 720 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .num{font:12px sans-serif;fill:#ffffff;font-weight:700}
+    </style>
+  </defs>
+  <rect width="720" height="450" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Port Cargo Documents and the Letter of Protest</text>
+
+  <!-- document order -->
+  <g transform="translate(20 44)">
+    <rect width="680" height="232" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">The order they are raised — each one feeds the next</text>
+
+    <g transform="translate(18 44)">
+      <circle cx="13" cy="13" r="13" fill="#0369a1"/><text x="13" y="18" text-anchor="middle" class="num">1</text>
+      <text x="40" y="10" class="it">Notice of Readiness (NOR)</text>
+      <text x="40" y="28" class="sm">Tendered when the ship is arrived, ready in all respects. Starts the laytime clock.</text>
+    </g>
+
+    <g transform="translate(18 96)">
+      <circle cx="13" cy="13" r="13" fill="#0369a1"/><text x="13" y="18" text-anchor="middle" class="num">2</text>
+      <text x="40" y="10" class="it">Mate's Receipt</text>
+      <text x="40" y="28" class="sm">Signed by the chief officer for cargo actually received, with any remarks on its condition.</text>
+    </g>
+
+    <g transform="translate(18 148)">
+      <circle cx="13" cy="13" r="13" fill="#0369a1"/><text x="13" y="18" text-anchor="middle" class="num">3</text>
+      <text x="40" y="10" class="it">Bill of Lading</text>
+      <text x="40" y="28" class="sm">Raised from the mate's receipt. Any remark there must be carried into the bill.</text>
+    </g>
+
+    <g transform="translate(18 192)">
+      <circle cx="13" cy="13" r="13" fill="#0369a1"/><text x="13" y="18" text-anchor="middle" class="num">4</text>
+      <text x="40" y="10" class="it">Statement of Facts and Time Sheet</text>
+    </g>
+    <text x="58" y="220" class="sm">Every event with its time; the basis on which laytime and demurrage are later calculated.</text>
+  </g>
+
+  <!-- letter of protest -->
+  <g transform="translate(20 290)">
+    <rect width="680" height="146" rx="10" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="18" y="28" class="hd" style="fill:#b45309">Letter of Protest</text>
+    <text x="18" y="52" class="sm">A written, dated record that the ship does not accept something — issued at the time, not afterwards.</text>
+
+    <text x="18" y="80" class="it">Issue one when</text>
+    <text x="18" y="100" class="sm">Shore figures differ from the ship's · cargo or its packing is damaged · loading rate is below the</text>
+    <text x="18" y="116" class="sm">charter party figure · the terminal delays the ship · sampling or draft survey is refused.</text>
+    <text x="18" y="138" class="sm">Hand it over and have receipt acknowledged. A protest the other side never received proves nothing.</text>
+  </g>
+</svg>

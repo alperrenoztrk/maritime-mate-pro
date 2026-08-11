@@ -291,6 +291,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "İstilacı Türler Sorunu",
+        image: "/diagrams/environment/balast-suyu-yonetimi.svg",
+        imageAlt: "Ballast water D-1 exchange standard against the D-2 treatment standard",
         content:
           "Balast suyuyla taşınan yabancı organizmalar, yeni ortamda doğal düşmanları olmadığında hızla çoğalıp yerel türleri yerinden eder, ekolojik dengeyi ve ekonomik faaliyetleri (balıkçılık, su alma yapıları) zarara uğratır. Tarihte zebra midyesi ve çeşitli plankton/medusa örnekleri ciddi etkiler yaratmıştır. BWM Convention'ın amacı, balast suyu ve sedimanı yoluyla bu tür transferini en aza indirmektir.",
       },
@@ -329,6 +331,8 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Biyo-kirlenme (Biofouling) Yönetimi",
+        image: "/diagrams/environment/biyokirlenme-geri-donusum.svg",
+        imageAlt: "Biofouling, the AFS Convention and the Hong Kong ship recycling requirements",
         content:
           "Tekne ve su altı yapılarında biriken organizmalar (biofilm, deniz kabukluları, yosun) hem istilacı tür transferine yol açar hem de sürtünmeyi artırarak yakıt tüketimini ve dolayısıyla emisyonu yükseltir. IMO biofouling kılavuzları; düzenli tekne kontrolü, hat (hull) temizliği, anti-fouling kaplama bakımı ve niş alanların (sea chest, pervane, dümen) yönetimini önerir. Temiz tekne hem çevreyi korur hem önemli yakıt tasarrufu sağlar.",
       },

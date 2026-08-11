@@ -1,0 +1,51 @@
+<svg width="720" height="430" viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect width="720" height="430" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">The Deck Log and Written Reports</text>
+
+  <!-- why it matters -->
+  <g transform="translate(20 44)">
+    <rect width="680" height="76" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="18" y="28" class="hd" style="fill:#1d4ed8">Why the wording matters</text>
+    <text x="18" y="52" class="sm">The log is evidence. After a casualty it is read years later by people who were not there —</text>
+    <text x="18" y="68" class="sm">investigators, surveyors, lawyers and the court. Write it so it still makes sense to them.</text>
+  </g>
+
+  <!-- do / don't -->
+  <g transform="translate(20 134)">
+    <rect width="332" height="180" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="18" y="28" class="hd" style="fill:#15803d">Do</text>
+    <text x="18" y="54" class="sm">Record facts, times and observations.</text>
+    <text x="18" y="76" class="sm">Use UTC or state the time zone used.</text>
+    <text x="18" y="98" class="sm">Write in ink, at the time, in sequence.</text>
+    <text x="18" y="120" class="sm">Name who did what, and who was told.</text>
+    <text x="18" y="142" class="sm">Correct an error with a single line through</text>
+    <text x="18" y="158" class="sm">it, the correction beside it, and initials.</text>
+  </g>
+
+  <g transform="translate(368 134)">
+    <rect width="332" height="180" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="18" y="28" class="hd" style="fill:#b91c1c">Do not</text>
+    <text x="18" y="54" class="sm">Do not record opinion, blame or a cause.</text>
+    <text x="18" y="76" class="sm">Do not leave gaps or blank lines.</text>
+    <text x="18" y="98" class="sm">Do not erase, overwrite or use correction</text>
+    <text x="18" y="114" class="sm">fluid — an altered log destroys its value.</text>
+    <text x="18" y="136" class="sm">Do not write it up later from memory.</text>
+    <text x="18" y="158" class="sm">Do not use vague words like "some" or "soon".</text>
+  </g>
+
+  <!-- report structure -->
+  <g transform="translate(20 328)">
+    <rect width="680" height="94" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">Structure of a statement or incident report</text>
+    <text x="18" y="52" class="sm">1 · What the ship was doing before it happened   2 · What happened, in time order, with positions</text>
+    <text x="18" y="72" class="sm">3 · What was done in response, and by whom   4 · Who was informed, and when   5 · Attachments and log extracts</text>
+  </g>
+</svg>

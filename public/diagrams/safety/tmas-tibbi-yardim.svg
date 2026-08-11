@@ -1,0 +1,73 @@
+<svg width="720" height="430" viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .num{font:13px sans-serif;fill:#ffffff;font-weight:700}
+    </style>
+  </defs>
+  <rect width="720" height="430" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Medical Care at Sea and TMAS</text>
+
+  <g transform="translate(20 44)">
+    <rect width="436" height="366" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">The chain, in order</text>
+
+    <g transform="translate(18 44)">
+      <circle cx="14" cy="14" r="14" fill="#0369a1"/><text x="14" y="19" text-anchor="middle" class="num">1</text>
+      <text x="42" y="12" class="it">Make the scene safe, then assess</text>
+      <text x="42" y="30" class="sm">Airway, breathing, circulation before anything else.</text>
+    </g>
+
+    <g transform="translate(18 100)">
+      <circle cx="14" cy="14" r="14" fill="#0369a1"/><text x="14" y="19" text-anchor="middle" class="num">2</text>
+      <text x="42" y="12" class="it">First aid by the trained crew member</text>
+      <text x="42" y="30" class="sm">Ships carry a person trained in medical first aid or care.</text>
+    </g>
+
+    <g transform="translate(18 156)">
+      <circle cx="14" cy="14" r="14" fill="#b91c1c"/><text x="14" y="19" text-anchor="middle" class="num">3</text>
+      <text x="42" y="12" class="it">Call TMAS for radio medical advice</text>
+      <text x="42" y="30" class="sm">Free of charge, worldwide, through the coast radio station.</text>
+      <text x="42" y="46" class="sm">A doctor takes the case and directs treatment on board.</text>
+    </g>
+
+    <g transform="translate(18 226)">
+      <circle cx="14" cy="14" r="14" fill="#0369a1"/><text x="14" y="19" text-anchor="middle" class="num">4</text>
+      <text x="42" y="12" class="it">Treat on board under that advice</text>
+      <text x="42" y="30" class="sm">Using the ship's medicine chest and the medical guide.</text>
+    </g>
+
+    <g transform="translate(18 282)">
+      <circle cx="14" cy="14" r="14" fill="#0369a1"/><text x="14" y="19" text-anchor="middle" class="num">5</text>
+      <text x="42" y="12" class="it">Decide on evacuation with the doctor</text>
+      <text x="42" y="30" class="sm">Diversion, ship-to-ship transfer or helicopter medevac.</text>
+      <text x="42" y="46" class="sm">The master decides; the doctor advises on urgency.</text>
+    </g>
+  </g>
+
+  <g transform="translate(472 44)">
+    <rect width="228" height="366" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="18" y="28" class="hd" style="fill:#1d4ed8">Have this ready before you call</text>
+
+    <text x="18" y="58" class="sm">Ship name, call sign, position</text>
+    <text x="18" y="78" class="sm">Patient age and sex</text>
+    <text x="18" y="98" class="sm">What happened, and when</text>
+    <text x="18" y="118" class="sm">Pulse, breathing rate,</text>
+    <text x="18" y="134" class="sm">temperature, blood pressure</text>
+    <text x="18" y="154" class="sm">Level of consciousness</text>
+    <text x="18" y="174" class="sm">Treatment already given</text>
+    <text x="18" y="194" class="sm">Medicines carried on board</text>
+    <text x="18" y="214" class="sm">Nearest port and its ETA</text>
+
+    <path d="M18,238 H210" stroke="#bfdbfe" stroke-width="1"/>
+
+    <text x="18" y="264" class="it" style="fill:#1d4ed8">Record everything</text>
+    <text x="18" y="286" class="sm">Every observation, dose and</text>
+    <text x="18" y="302" class="sm">message is entered in the</text>
+    <text x="18" y="318" class="sm">official log. It becomes the</text>
+    <text x="18" y="334" class="sm">medical record for the case.</text>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg width="720" height="450" viewBox="0 0 720 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .lvl{font:20px sans-serif;font-weight:700}
+    </style>
+  </defs>
+  <rect width="720" height="450" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">ISPS Security Levels and Anti-Piracy Measures</text>
+
+  <!-- levels -->
+  <g transform="translate(20 44)">
+    <rect width="680" height="196" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">The level is set by the flag or the port state — never chosen by the ship alone</text>
+
+    <g transform="translate(18 44)">
+      <rect width="212" height="134" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+      <text x="16" y="34" class="lvl" style="fill:#15803d">1</text>
+      <text x="44" y="34" class="it" style="fill:#15803d">Normal</text>
+      <text x="16" y="60" class="sm">Minimum protective measures</text>
+      <text x="16" y="76" class="sm">maintained at all times.</text>
+      <text x="16" y="98" class="sm">Access control, gangway watch,</text>
+      <text x="16" y="114" class="sm">ID checks, restricted areas.</text>
+    </g>
+
+    <g transform="translate(246 44)">
+      <rect width="212" height="134" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+      <text x="16" y="34" class="lvl" style="fill:#b45309">2</text>
+      <text x="44" y="34" class="it" style="fill:#b45309">Heightened</text>
+      <text x="16" y="60" class="sm">A raised risk of an incident,</text>
+      <text x="16" y="76" class="sm">for a period of time.</text>
+      <text x="16" y="98" class="sm">Extra patrols, searches of</text>
+      <text x="16" y="114" class="sm">stores, deck lighting up.</text>
+    </g>
+
+    <g transform="translate(474 44)">
+      <rect width="188" height="134" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+      <text x="16" y="34" class="lvl" style="fill:#b91c1c">3</text>
+      <text x="44" y="34" class="it" style="fill:#b91c1c">Exceptional</text>
+      <text x="16" y="60" class="sm">An incident is probable</text>
+      <text x="16" y="76" class="sm">or imminent.</text>
+      <text x="16" y="98" class="sm">Access limited or stopped,</text>
+      <text x="16" y="114" class="sm">ship may be ordered to move.</text>
+    </g>
+  </g>
+
+  <!-- roles and BMP -->
+  <g transform="translate(20 254)">
+    <rect width="332" height="176" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="18" y="28" class="hd" style="fill:#1d4ed8">Who is responsible</text>
+    <text x="18" y="54" class="it">SSO — Ship Security Officer</text>
+    <text x="18" y="72" class="sm">Implements and maintains the SSP on board.</text>
+    <text x="18" y="98" class="it">CSO — Company Security Officer</text>
+    <text x="18" y="116" class="sm">Ashore; keeps the plan current across the fleet.</text>
+    <text x="18" y="142" class="it">PFSO — Port Facility Security Officer</text>
+    <text x="18" y="160" class="sm">The terminal's counterpart to the SSO.</text>
+  </g>
+
+  <g transform="translate(368 254)">
+    <rect width="332" height="176" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="18" y="28" class="hd" style="fill:#b91c1c">In a piracy area — BMP</text>
+    <text x="18" y="54" class="sm">Register with the reporting centre before entry.</text>
+    <text x="18" y="76" class="sm">Proceed at full speed; hold a hard-to-board freeboard.</text>
+    <text x="18" y="98" class="sm">Razor wire, water spray, locked accommodation.</text>
+    <text x="18" y="120" class="sm">Extra lookouts, radar watch, all doors secured.</text>
+    <text x="18" y="142" class="sm">Citadel with independent communications.</text>
+    <text x="18" y="164" class="sm">SSAS raises a covert alarm — no sound on board.</text>
+  </g>
+</svg>

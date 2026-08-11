@@ -1,0 +1,57 @@
+<svg width="720" height="440" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .hd{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .it{font:12px sans-serif;fill:#0f172a}
+      .sm{font:11px sans-serif;fill:#475569}
+      .tag{font:12px sans-serif;font-weight:700}
+    </style>
+  </defs>
+  <rect width="720" height="440" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Ballast Water Management — D-1 and D-2</text>
+
+  <!-- D-1 -->
+  <g transform="translate(20 46)">
+    <rect width="332" height="240" rx="10" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="18" y="30" class="hd" style="fill:#b45309">D-1 — Exchange Standard</text>
+    <text x="18" y="52" class="sm">Being phased out; replaced by D-2.</text>
+
+    <text x="18" y="82" class="it">Where</text>
+    <text x="18" y="102" class="sm">At least 200 NM from land and in water</text>
+    <text x="18" y="118" class="sm">at least 200 m deep, where possible.</text>
+
+    <text x="18" y="148" class="it">Three accepted methods</text>
+    <text x="18" y="168" class="sm">Sequential — empty a tank, then refill it.</text>
+    <text x="18" y="184" class="sm">Flow-through — pump three times the volume.</text>
+    <text x="18" y="200" class="sm">Dilution — fill from the top, drain the bottom.</text>
+    <text x="18" y="224" class="sm">Efficiency at least 95 % volumetric exchange.</text>
+  </g>
+
+  <!-- D-2 -->
+  <g transform="translate(368 46)">
+    <rect width="332" height="240" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="18" y="30" class="hd" style="fill:#15803d">D-2 — Treatment Standard</text>
+    <text x="18" y="52" class="sm">Met by an approved treatment system.</text>
+
+    <text x="18" y="82" class="it">Discharge limits</text>
+    <text x="18" y="102" class="sm">Organisms ≥ 50 µm: under 10 per m³</text>
+    <text x="18" y="118" class="sm">Organisms 10–50 µm: under 10 per mL</text>
+
+    <text x="18" y="148" class="it">Indicator microbes</text>
+    <text x="18" y="168" class="sm">Toxicogenic V. cholerae: under 1 cfu / 100 mL</text>
+    <text x="18" y="184" class="sm">E. coli: under 250 cfu / 100 mL</text>
+    <text x="18" y="200" class="sm">Intestinal enterococci: under 100 cfu / 100 mL</text>
+    <text x="18" y="224" class="sm">Typically filtration plus UV or electrolysis.</text>
+  </g>
+
+  <!-- paperwork -->
+  <g transform="translate(20 300)">
+    <rect width="680" height="120" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="28" class="hd">Carried on board</text>
+    <text x="18" y="54" class="it">Ballast Water Management Plan</text>
+    <text x="18" y="74" class="sm">Ship-specific and approved; sets out the procedures the crew actually follow.</text>
+    <text x="18" y="98" class="it">Ballast Water Record Book — every operation logged</text>
+    <text x="18" y="114" class="sm">International Ballast Water Management Certificate for ships of 400 GT and above.</text>
+  </g>
+</svg>

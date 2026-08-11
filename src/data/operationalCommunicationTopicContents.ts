@@ -56,6 +56,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
     sections: [
       {
         title: "Deck Logbook Kayıt İlkeleri",
+        image: "/diagrams/communication/gemi-jurnali.svg",
+        imageAlt: "What belongs in the deck log, what does not, and how to structure a statement",
         content:
           "Mevki, course, speed, weather, sea state, barometer, pilot, tug, all fast, anchor, restricted visibility, alarms, drills, equipment failure ve olağandışı olaylar gemi prosedüründeki aralık ve formatta yazılır. 'Normal' yerine ölçülebilir bilgi tercih edilir. Yanlış kayıt silinmez; tek çizgiyle okunabilir bırakılır, doğru bilgi ve paraf eklenir.",
       },
@@ -136,6 +138,8 @@ export const operationalCommunicationTopicContents: Record<string, TopicDetailCo
     sections: [
       {
         title: "Ekipmanı Göstererek Açıklama",
+        image: "/diagrams/communication/psc-denetimi.svg",
+        imageAlt: "How a port state control inspection escalates, the action codes and how to conduct yourself",
         content:
           "Zabit ekipmanın konumunu, amacını, normal durumunu, test yöntemini, son test kaydını ve arızada yedek tedbiri açıklayabilmelidir. 'It is checked regularly' yerine kayıt ve tarih gösterilir. Test yalnız güvenli ve yetkili şartlarda yapılır; inspector talebi olsa dahi tehlikeli yanlış aktivasyon yapılmaz.",
       },

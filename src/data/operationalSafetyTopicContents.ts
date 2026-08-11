@@ -12,6 +12,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
     sections: [
       {
         title: "Olay Yeri Güvenliği ve ABCDE Yaklaşımı",
+        image: "/diagrams/safety/tmas-tibbi-yardim.svg",
+        imageAlt: "Chain of medical care at sea from first aid to TMAS advice and evacuation",
         content:
           "Kurtarıcı önce yangın, elektrik, gaz, kimyasal veya hareketli ekipman tehlikesini kontrol eder ve uygun KKD kullanır. Hastaya sistematik ABCDE yaklaşımı uygulanır: Airway hava yolu, Breathing solunum, Circulation dolaşım ve ciddi kanama, Disability bilinç/nörolojik durum, Exposure tüm vücut değerlendirmesi ve ısı kaybının önlenmesi. Yaşamı tehdit eden sorun bulunduğu anda müdahale edilir; değerlendirme sonuna kadar beklenmez.",
         bulletPoints: [
@@ -62,6 +64,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
     sections: [
       {
         title: "Security Level 1, 2 ve 3",
+        image: "/diagrams/safety/isps-guvenlik-seviyeleri.svg",
+        imageAlt: "ISPS security levels 1 to 3, the security officers and BMP anti-piracy measures",
         content:
           "Level 1 normal asgari koruma tedbirlerinin sürekli uygulandığı seviyedir. Level 2 artmış riskte ek tedbirler, daha sık devriye, sınırlı giriş noktası ve güçlendirilmiş kontrol gerektirir. Level 3 muhtemel veya yakın tehdide karşı belirli süreyle olağanüstü tedbirlerdir. Seviye değişikliği kaptan/SSO tarafından ekibe duyurulur; Ship Security Plan'daki gemiye özel işlemler uygulanır.",
       },
@@ -106,6 +110,8 @@ export const operationalSafetyTopicContents: Record<string, TopicDetailContent> 
     sections: [
       {
         title: "Köprüüstü ve OT Sistemlerinin Riskleri",
+        image: "/diagrams/safety/siber-guvenlik.svg",
+        imageAlt: "IT and OT systems on board, how an attacker gets in and the required controls",
         content:
           "Operasyonel teknoloji sistemleri uzun ömürlü, üreticiye özel ve bazen güncel olmayan yazılımlarla çalışır. Yetkisiz USB, zayıf parola, ortak hesap, açık uzaktan erişim ve IT-OT ağlarının kontrolsüz bağlantısı başlıca risklerdir. ECDIS güncellemesi, servis laptopu ve taşınabilir medya yalnız onaylı prosedürle kullanılır.",
       },
