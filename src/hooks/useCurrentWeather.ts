@@ -1,11 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  LAST_POSITION_MAX_AGE_MS,
-  markLocationPrompted,
-  readCachedPosition,
-  shouldRequestLocation,
-  writeCachedPosition,
-} from "@/lib/geolocationPermission";
 import { weatherPreloader } from "@/services/weatherPreloader";
 import { useLocation } from "@/contexts/useSelectedLocation";
 
@@ -299,12 +292,6 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     if (!preloadedData) setLoading(true);
     setError(null);
     try {
-      // İzin daha önce reddedilmişse tekrar sormayız: kullanıcı her açılışta
-      // izin diyaloğuyla karşılaşmasın (bkz. src/lib/geolocationPermission.ts).
-      if (!(await shouldRequestLocation())) {
-        throw new Error("Konum izni verilmemiş");
-      }
-      markLocationPrompted();
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
         console.log("📍 Konum servisi kontrol ediliyor...");
         if (!("geolocation" in navigator)) {
@@ -328,11 +315,6 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       lastPositionRef.current = { lat, lon };
-      writeCachedPosition({
-        latitude: lat,
-        longitude: lon,
-        accuracyMeters: typeof position.coords.accuracy === "number" ? position.coords.accuracy : null,
-      });
       setAccuracyMeters(typeof position.coords.accuracy === "number" ? position.coords.accuracy : null);
       setLocationSource("gps");
       setPositionTimestamp(position.timestamp ?? Date.now());
@@ -350,22 +332,6 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         // A valid device fix is already on screen. Do not replace it with a
         // less precise IP estimate just because the refinement timed out.
         console.warn("⚠️ Taze GPS düzeltmesi alınamadı; ön yüklenen cihaz konumu korunuyor:", message);
-        setError(null);
-        return dataRef.current;
-      }
-      // Önce cihazda saklanan son bilinen konumu kullan: izin yeniden
-      // istenmeden widget'lar doğru konumla dolar.
-      const cached = readCachedPosition();
-      if (cached && Date.now() - cached.timestamp < LAST_POSITION_MAX_AGE_MS) {
-        lastPositionRef.current = { lat: cached.latitude, lon: cached.longitude };
-        setAccuracyMeters(cached.accuracyMeters);
-        setLocationSource("gps");
-        setPositionTimestamp(cached.timestamp);
-        await Promise.allSettled([
-          fetchWeather(cached.latitude, cached.longitude),
-          reverseGeocode ? fetchReverse(cached.latitude, cached.longitude) : Promise.resolve(),
-        ]);
-        setIsFallbackLocation(false);
         setError(null);
         return dataRef.current;
       }
@@ -448,14 +414,11 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
 
     if (watchPosition && "geolocation" in navigator) {
       try {
-        void shouldRequestLocation().then((allowed) => {
-          if (!allowed || cancelled) return;
-          watchId = navigator.geolocation.watchPosition(
-            handleWatch,
-            () => { /* ignore watch errors */ },
-            { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
-          );
-        });
+        watchId = navigator.geolocation.watchPosition(
+          handleWatch,
+          () => { /* ignore watch errors */ },
+          { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
+        );
       } catch {
         // ignore
       }

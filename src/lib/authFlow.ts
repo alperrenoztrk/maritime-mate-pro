@@ -22,24 +22,19 @@ export const sanitizeReturnPath = (raw?: string | null) => {
 };
 
 /**
- * Uygulama oturum gerektirir: kullanıcı kayıt olmadan içerik göremez.
- * Yalnızca kimlik akışının kendi sayfaları oturumsuz açılabilir
- * (bkz. RequireAuth).
+ * Uygulama içeriği herkese açıktır: arama motorlarından, yer imlerinden veya
+ * paylaşılan bağlantılardan gelen ziyaretçi istediği sayfayı doğrudan görür.
+ * Yalnızca kişisel veriye dokunan rotalar oturum ister (bkz. RequireAuth).
  */
-const AUTH_ROUTES = [
-  "/auth",
-  "/auth/callback",
-  "/reset-password",
-  "/.lovable/oauth/consent",
+const PRIVATE_PREFIXES = [
+  "/settings",
+  "/beta/documents",
 ];
-
 
 export const isPublicPath = (pathname: string) => {
   const clean = pathname.replace(/\/+$/, "") || "/";
-  return AUTH_ROUTES.some((p) => clean === p || clean.startsWith(`${p}/`));
+  return !PRIVATE_PREFIXES.some((p) => clean === p || clean.startsWith(`${p}/`));
 };
-
-
 
 
 /** Sends the visitor to the login screen while remembering where they meant to go. */

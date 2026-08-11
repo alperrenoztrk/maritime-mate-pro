@@ -684,22 +684,3 @@ html[data-font-size="max"] .library-page-title {
     animation: none !important;
   }
 }
-
-/* Büyük yazı boyutunda hiçbir metnin ekrandan taşmaması için genel güvenlik. */
-html[data-font-size="large"] body,
-html[data-font-size="large"] .app-page-shell {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-html[data-font-size="large"] .app-page-shell :where(.truncate) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
-}
-
-html[data-font-size="large"] :where(h1, h2, h3, [data-page-title]) {
-  overflow-wrap: anywhere;
-  hyphens: auto;
-}

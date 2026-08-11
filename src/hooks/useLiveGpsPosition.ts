@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { shouldRequestLocation } from "@/lib/geolocationPermission";
 
 export type LiveGpsPosition = {
   latitude: number;
@@ -46,18 +45,6 @@ export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean =
 
     const startWatch = () => {
       if (cancelled || watchId !== null) return;
-      // İzin reddedilmişse yeniden sorma.
-      void shouldRequestLocation().then((allowed) => {
-        if (!allowed) {
-          setError("Konum izni verilmemiş");
-          return;
-        }
-        if (cancelled || watchId !== null) return;
-        startWatchNow();
-      });
-    };
-
-    const startWatchNow = () => {
       watchId = navigator.geolocation.watchPosition(
         (pos) => {
           if (cancelled) return;

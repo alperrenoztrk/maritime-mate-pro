@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink, Sparkles } from "lucide-react";
+import { Anchor, Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -165,7 +165,11 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center p-4 bg-background text-foreground">
       <Card className="w-full max-w-md shadow-2xl border-border/50">
         <CardHeader className="text-center space-y-3">
-
+          <div className="flex justify-center">
+            <div className="p-3 rounded-2xl bg-primary/10 border border-primary/20">
+              <Anchor className="w-8 h-8 text-primary" />
+            </div>
+          </div>
           <CardTitle className="text-2xl notranslate" translate="no" lang="en">
             Mariner's Book
           </CardTitle>

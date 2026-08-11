@@ -90,11 +90,15 @@ const Settings = () => {
   };
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");
 
-  const fontSizeLabels: Partial<Record<FontSizeKey, string>> = {
+  const fontSizeLabels: Record<FontSizeKey, string> = {
+    system: "Sistem (Dynamic Type)",
+    small: "Küçük",
     normal: "Normal",
     large: "Büyük",
+    xlarge: "Çok Büyük",
+    accessibility: "Erişilebilir",
+    max: "En Büyük (%200)",
   };
-
 
   const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Monitor }> = [
     { value: "system", label: "Sistem", icon: Monitor },
@@ -139,9 +143,8 @@ const Settings = () => {
 
   return (
     <MobileLayout>
-      <div className="min-h-screen w-full max-w-full overflow-x-hidden py-2 text-foreground sm:py-4 [overflow-wrap:anywhere]">
+      <div className="min-h-screen py-2 text-foreground sm:py-4">
         <div className="max-w-4xl mx-auto space-y-6">
-
 
           {/* Header */}
           <div className="space-y-1 pb-1">
@@ -164,7 +167,7 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-4">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
                     {avatarUrl ? (
                       <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
@@ -172,7 +175,7 @@ const Settings = () => {
                       <span className="text-lg font-semibold text-primary">{initials}</span>
                     )}
                   </div>
-                  <div className="min-w-0 flex-1 basis-40 space-y-1">
+                  <div className="flex-1 min-w-0 space-y-1">
                     {displayName ? (
                       <div className="font-medium truncate">{displayName}</div>
                     ) : null}
@@ -190,7 +193,6 @@ const Settings = () => {
                       <span data-translatable>Sağlayıcı</span>: {providerLabel}
                     </div>
                   </div>
-
 
                   <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
                     <LogOut className="w-4 h-4" />
@@ -313,15 +315,14 @@ const Settings = () => {
                           setTheme(value);
                           hapticImpact("light");
                         }}
-                        className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-lg px-1.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
+                        className={`inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-2 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
                           selected
                             ? "bg-background text-foreground shadow-elev-1"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
-                        <Icon className="h-4 w-4 shrink-0" />
-                        <span className="truncate" data-translatable>{label}</span>
-
+                        <Icon className="h-4 w-4" />
+                        <span data-translatable>{label}</span>
                       </button>
                     );
                   })}

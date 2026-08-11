@@ -195,18 +195,6 @@ export default defineConfig(({ mode }) => ({
         skipWaiting: true,
         runtimeCaching: [
           {
-            // HTML navigations must never be served cache-first, otherwise a
-            // published update stays invisible until the SW happens to refresh.
-            urlPattern: ({ request }) => request.mode === "navigate",
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "app-shell-html",
-              networkTimeoutSeconds: 3,
-              expiration: { maxEntries: 10 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-          {
             // Lazy route and feature chunks. Hashes make them immutable; once
             // a user opens a route it remains available offline without
             // blocking service-worker installation with every unused route.
@@ -219,7 +207,6 @@ export default defineConfig(({ mode }) => ({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
-
           {
             // Per-language static translation dictionaries (public/locales/*.json)
             urlPattern: ({ url }) => url.pathname.includes("/locales/") && url.pathname.endsWith(".json"),

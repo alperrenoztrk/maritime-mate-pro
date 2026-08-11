@@ -22,16 +22,21 @@ const Index = () => {
     <main className="relative min-h-[100svh] px-[max(1rem,var(--safe-left))] pt-[calc(var(--safe-top)+1.5rem)] text-foreground sm:px-[max(1.25rem,var(--safe-left))]">
       <div className="mx-auto w-full max-w-3xl">
         <header className="pb-5">
+          <p className="mb-1 text-caption font-semibold uppercase tracking-[0.16em] text-primary">
+            Denizcilik çalışma alanı
+          </p>
           <h1
             data-page-title
-            className="notranslate text-[clamp(1.75rem,7vw,3rem)] font-bold leading-tight tracking-[-0.04em] text-foreground"
+            className="notranslate text-[clamp(2rem,8vw,3rem)] font-bold leading-none tracking-[-0.04em] text-foreground"
             translate="no"
             lang="en"
           >
             Mariner&rsquo;s Book
           </h1>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            Dersler, hesaplama araçları ve operasyonel kaynaklar tek, sakin bir çalışma alanında.
+          </p>
         </header>
-
 
         <div
           role="tablist"
