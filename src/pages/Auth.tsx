@@ -178,19 +178,39 @@ const Auth = () => {
                       {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
                     </Button>
                   </form>
-                  <div className="mt-3 text-center">
-                    <button
+                  <div className="mt-3 space-y-3">
+                    <Button
                       type="button"
-                      onClick={handleResetPassword}
-                      disabled={busy}
-                      className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                      variant="secondary"
+                      className="w-full gap-2"
+                      onClick={handleMagicLink}
+                      disabled={busy || magicCooldown > 0}
                     >
-                      Şifremi unuttum / şifre belirle
-                    </button>
-                    <p className="mt-2 text-micro text-muted-foreground">
-                      Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
-                      belirleyebilir veya Google ile giriş yapabilirsiniz.
-                    </p>
+                      <Sparkles className="h-4 w-4" />
+                      {magicCooldown > 0
+                        ? `Tekrar gönder (${magicCooldown} sn)`
+                        : "Şifresiz giriş bağlantısı gönder"}
+                    </Button>
+                    {magicSent && (
+                      <p className="text-xs text-center text-muted-foreground">
+                        Giriş bağlantısı e-postanıza gönderildi. Bağlantıya bu cihazdan
+                        tıklayın; oturum otomatik açılır.
+                      </p>
+                    )}
+                    <div className="text-center">
+                      <button
+                        type="button"
+                        onClick={handleResetPassword}
+                        disabled={busy}
+                        className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                      >
+                        Şifremi unuttum / şifre belirle
+                      </button>
+                      <p className="mt-2 text-micro text-muted-foreground">
+                        Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Şifresiz
+                        giriş bağlantısını kullanabilir veya buradan şifre belirleyebilirsiniz.
+                      </p>
+                    </div>
                   </div>
                 </TabsContent>
 
