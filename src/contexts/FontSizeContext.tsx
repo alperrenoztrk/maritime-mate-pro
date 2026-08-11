@@ -25,33 +25,25 @@ type FontSizeProviderProps = {
   storageKey?: string;
 };
 
-const layoutSizeForScale = (size: FontSizeKey, scale: number): FontSizeKey => {
-  if (size !== "system") return size;
-  if (scale >= 1.9) return "max";
-  if (scale >= 1.5) return "accessibility";
-  if (scale >= 1.28) return "xlarge";
-  if (scale >= 1.1) return "large";
-  return "system";
-};
-
-function applyScale(size: FontSizeKey, systemScale: number) {
+function applyScale(size: FontSizeKey) {
   const root = window.document.documentElement;
-  const scale = size === "system" ? systemScale : (FONT_SCALES[size] ?? 1);
+  const scale = FONT_SCALES[size] ?? 1;
   root.style.setProperty("--font-scale", String(scale));
-  root.setAttribute("data-font-size", layoutSizeForScale(size, scale));
-  root.setAttribute("data-font-size-source", size === "system" ? "system" : "manual");
+  root.setAttribute("data-font-size", size);
+  root.setAttribute("data-font-size-source", "manual");
 }
 
 export function FontSizeProvider({
   children,
-  defaultFontSize = "system",
+  defaultFontSize = "normal",
   storageKey = "maritime-ui-font-size",
   ...props
 }: FontSizeProviderProps) {
   const [fontSize, setFontSizeState] = useState<FontSizeKey>(() => {
-    const stored = safeLocalStorage.getItem(storageKey) as FontSizeKey | null;
-    return stored && stored in FONT_SCALES ? stored : defaultFontSize;
+    const stored = safeLocalStorage.getItem(storageKey);
+    return stored ? normalizeFontSize(stored) : defaultFontSize;
   });
+
   const [systemScale, setSystemScale] = useState(1);
 
   useEffect(() => {
