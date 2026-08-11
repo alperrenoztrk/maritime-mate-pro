@@ -126,6 +126,13 @@ const buildRedirectUrl = (nextPath: string) => {
 };
 
 /**
+ * Şifresiz giriş bağlantısının döneceği adres. Google akışıyla aynı hedefi
+ * kullanır: web'de /auth/callback, native kabukta özel URL şeması.
+ */
+export const buildMagicLinkRedirect = (nextPath = "/") =>
+  buildRedirectUrl(sanitizeReturnPath(nextPath));
+
+/**
  * Starts the Google round trip. On the web the browser navigates away; on
  * native the URL is opened in the system browser and the session is completed
  * by the `appUrlOpen` listener in AuthProvider.
