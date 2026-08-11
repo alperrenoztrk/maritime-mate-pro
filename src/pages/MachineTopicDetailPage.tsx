@@ -43,15 +43,7 @@ export default function MachineTopicDetailPage() {
   return (
     <MobileLayout>
       <div className="mx-auto flex max-w-4xl flex-col gap-6 pb-24">
-        <PageHeader
-          title={content.title}
-          icon={TopicIcon}
-          actions={content.level ? (
-            <span className="surface-2 inline-flex min-h-8 items-center rounded-full border px-3 text-caption font-semibold uppercase tracking-wide text-primary">
-              {content.level === "foundation" ? "Temel" : content.level === "operational" ? "Operasyonel" : "İleri"}
-            </span>
-          ) : undefined}
-        />
+        <PageHeader title={content.title} icon={TopicIcon} />
         <div className="flex items-center gap-2">
           <div
             className={`flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${topicConfig.accent} text-white`}

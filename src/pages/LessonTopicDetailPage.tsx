@@ -12,8 +12,6 @@ import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { MobileLayout } from "@/components/MobileLayout";
 import { PageHeader } from "@/components/layout/PageHeader";
 
-const levelLabel = (level: BetaTopic["level"]) =>
-  level === "foundation" ? "Temel" : level === "operational" ? "Operasyonel" : "İleri";
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{
@@ -78,15 +76,7 @@ export default function LessonTopicDetailPage() {
   return (
     <MobileLayout>
       <div className="mx-auto flex max-w-4xl flex-col gap-5 pb-24">
-        <PageHeader
-          title={content.title}
-          icon={CategoryIcon}
-          actions={content.level ? (
-            <span className="surface-2 inline-flex min-h-8 items-center rounded-full border px-3 text-caption font-semibold uppercase tracking-wide text-primary">
-              {levelLabel(content.level)}
-            </span>
-          ) : undefined}
-        />
+        <PageHeader title={content.title} icon={CategoryIcon} />
 
         {content.introduction && (
           <div className="surface-1 rounded-xl border border-primary/20 p-5">
