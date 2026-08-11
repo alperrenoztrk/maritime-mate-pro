@@ -31,8 +31,9 @@ export interface FontSizeContextValue {
 }
 
 const initialState: FontSizeContextValue = {
-  fontSize: "system",
+  fontSize: "normal",
   setFontSize: () => null,
 };
+
 
 export const FontSizeContext = createContext<FontSizeContextValue>(initialState);
