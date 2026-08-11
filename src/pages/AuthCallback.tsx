@@ -18,6 +18,7 @@ const clearOAuthParams = () => {
     "provider_token",
     "provider_refresh_token",
     "state",
+    "type",
   ].forEach((key) => {
     url.searchParams.delete(key);
     hash.delete(key);
