@@ -18,21 +18,20 @@ import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 
 interface AppShortcut {
   label: string;
-  description: string;
   to: string;
   icon: LucideIcon;
 }
 
 const APPS: AppShortcut[] = [
-  { label: "Dersler", description: "Güverte ve makine", to: "/lessons", icon: BookOpen },
-  { label: "Alıştırmalar", description: "Bilgini pekiştir", to: "/exercises", icon: Sparkles },
-  { label: "Personel", description: "Roller ve görevler", to: "/crew", icon: Users },
-  { label: "Gemi Sistemleri", description: "Sistem başvuruları", to: "/ship-systems", icon: Ship },
-  { label: "Operasyonlar", description: "Gemi operasyonları", to: "/ship-operations", icon: ClipboardList },
-  { label: "Sözlük", description: "Denizcilik terimleri", to: "/glossary", icon: BookA },
-  { label: "Beta", description: "Yeni özellikler", to: "/beta", icon: FlaskConical },
-  { label: "Notlar", description: "Kişisel notların", to: "/notes", icon: StickyNote },
-  { label: "Ayarlar", description: "Uygulama tercihleri", to: "/settings", icon: Settings },
+  { label: "Dersler", to: "/lessons", icon: BookOpen },
+  { label: "Alıştırmalar", to: "/exercises", icon: Sparkles },
+  { label: "Personel", to: "/crew", icon: Users },
+  { label: "Gemi Sistemleri", to: "/ship-systems", icon: Ship },
+  { label: "Operasyonlar", to: "/ship-operations", icon: ClipboardList },
+  { label: "Sözlük", to: "/glossary", icon: BookA },
+  { label: "Beta", to: "/beta", icon: FlaskConical },
+  { label: "Notlar", to: "/notes", icon: StickyNote },
+  { label: "Ayarlar", to: "/settings", icon: Settings },
 ];
 
 export function AppIconGrid() {

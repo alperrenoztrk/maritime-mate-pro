@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Anchor, Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink, Sparkles } from "lucide-react";
+import { Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
