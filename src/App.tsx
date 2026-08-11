@@ -293,7 +293,10 @@ const AnimatedRoutes = () => {
     </div>
     {/* A keyed motion frame is AnimatePresence's direct child. `sync` keeps
         the outgoing and incoming screens in one continuous iOS push/pop;
-        the exiting frame becomes absolute while the new frame owns layout. */}
+        the exiting frame becomes absolute while the new frame owns layout.
+        The viewport wrapper clips the off-screen frame so the slide never
+        produces horizontal overflow mid-animation. */}
+    <div className="route-presence-viewport">
     <AnimatePresence mode="sync" initial={false}>
       <motion.div
         key={location.pathname}
@@ -310,6 +313,7 @@ const AnimatedRoutes = () => {
             : { duration: MOTION_SECONDS.page, ease: MOTION_EASE_OUT }
         }
       >
+
         <div className="interactive-page-surface min-h-[100svh] w-full">
         <Suspense fallback={<RouteFallback />}>
         <Routes location={location}>
