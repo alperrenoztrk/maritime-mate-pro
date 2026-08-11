@@ -130,6 +130,12 @@ const MANIFEST = [
     file: "heavy-weather.jpg",
     thumbWidth: 1000,
   },
+  {
+    dir: "lessons",
+    commons: "Icebreakers Louis S. St-Laurent and Healy in the Arctic Ocean.jpg",
+    file: "polar-ice-navigation.jpg",
+    thumbWidth: 1000,
+  },
 ];
 
 /**
