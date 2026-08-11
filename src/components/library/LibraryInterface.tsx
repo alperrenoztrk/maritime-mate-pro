@@ -80,7 +80,6 @@ export function LibraryEntryCard({
   to,
   onClick,
   badge,
-  description,
 }: {
   title: string;
   icon: LucideIcon;
