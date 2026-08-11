@@ -18,6 +18,31 @@ import tubaImage from "@/assets/clouds/tuba.jpg";
 import lenticularisImage from "@/assets/clouds/lenticularis.jpg";
 import virgaImage from "@/assets/clouds/virga.jpg";
 
+// Meteoroloji görselleri — Wikimedia Commons'tan indirildi.
+// Kaynak/lisans tablosu: src/assets/meteorology/CREDITS.md
+// Yeniden indirmek: node scripts/fetch-meteorology-images.mjs
+import frontSymbolsImage from "@/assets/meteorology/front-symbols-nws.svg";
+import stationModelImage from "@/assets/meteorology/station-model.svg";
+import windBarbsImage from "@/assets/meteorology/wind-barbs.svg";
+import surfaceAnalysisImage from "@/assets/meteorology/surface-analysis-chart.png";
+import pressureCentresImage from "@/assets/meteorology/pressure-centres-circulation.svg";
+import geostrophicWindImage from "@/assets/meteorology/geostrophic-wind.svg";
+import airMassImage from "@/assets/meteorology/air-mass-source-regions.png";
+import beaufort4Image from "@/assets/meteorology/beaufort-force-4.jpg";
+import beaufort8Image from "@/assets/meteorology/beaufort-force-8.jpg";
+import beaufort11Image from "@/assets/meteorology/beaufort-force-11.jpg";
+import cycloneEyeImage from "@/assets/meteorology/cyclone-eye-satellite.jpg";
+import cycloneSectionImage from "@/assets/meteorology/cyclone-vertical-section.jpg";
+import buysBallotImage from "@/assets/meteorology/buys-ballot-law.svg";
+import advectionFogImage from "@/assets/meteorology/advection-fog.jpg";
+import worldCurrentsImage from "@/assets/meteorology/world-surface-currents.jpg";
+
+// Diğer derslerden yeniden kullanılan görseller.
+import windDriftImage from "@/assets/navigation/yon-wind-drift.png";
+import radarDisplayImage from "@/assets/navigation/radar-display.svg";
+import tideCurrentImage from "@/assets/navigation/tide-current.svg";
+import weatherSystemsImage from "@/assets/navigation/weather-systems.svg";
+
 export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
   "Basınç merkezleri (alçak/yüksek)": {
     title: "Basınç Merkezleri (Alçak / Yüksek)",
@@ -28,6 +53,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Alçak Basınç Merkezleri (Siklon / Depresyon)",
         content:
           "Alçak basınç merkezi, çevresindeki basınçtan daha düşük basınca sahip atmosferik bölgedir. Bu merkezde hava yüzeyden yukarıya doğru yükselir; yükselme sırasında soğuyarak nem yoğuşmasına, bulut oluşumuna ve yağışa neden olur. Kuzey yarım kürede alçak basınç etrafında rüzgâr saatin tersi yönünde (siklonik) dönerken, güney yarım kürede saat yönünde döner. Alçak basınç merkezinin yaklaşması barometre okumasında düzenli bir düşüşle kendini gösterir; bu düşüşün hızı ve sürekliliği, sistemin şiddetini tahmin etmede önemli ipuçları verir. Denizde karşılaşılan fırtınaların büyük çoğunluğu alçak basınç sistemleriyle ilişkilidir. Derin bir alçak basınç merkezi, geniş bir alanda şiddetli rüzgâr, yüksek dalga ve kötü görüş koşulları üretebilir. Seyir planlamasında alçak basınç merkezinin tahmini rotası, hızı ve derinliği kritik parametrelerdir.",
+        image: pressureCentresImage,
+        imageAlt: "Airflow around low and high pressure centres in both hemispheres",
       },
       {
         title: "Yüksek Basınç Merkezleri (Antisiklon)",
@@ -62,6 +89,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Basınç Gradyanı ve Rüzgâr İlişkisi",
         content:
           "Basınç gradyanı, birim mesafe başına basınç değişimidir. Synoptik haritada iki izobar arasındaki mesafe ne kadar kısa ise gradyan o kadar büyüktür ve dolayısıyla rüzgâr hızı o kadar yüksektir. Geostrofik rüzgâr denklemi bu ilişkiyi matematiksel olarak tanımlar: rüzgâr hızı, gradyan kuvveti ile Coriolis kuvvetinin dengesinden elde edilir. Ancak yüzey sürtünmesi nedeniyle gerçek rüzgâr geostrofik rüzgârdan yaklaşık %20–30 daha yavaş ve izobarların yüksek basınç tarafına doğru 15°–30° sapmalı olarak eser. Deniz üzerinde sürtünme karadan az olduğundan, rüzgâr geostrofik değere daha yakın seyreder.",
+        image: geostrophicWindImage,
+        imageAlt: "Geostrophic wind: pressure gradient force balanced by the Coriolis force along the isobars",
       },
       {
         title: "Operasyonel Uygulama",
@@ -86,6 +115,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Hava Kütlesi Sınıflandırması",
         content:
           "Hava kütleleri iki temel eksende sınıflandırılır. İlk eksen kaynak bölgenin enlemidir: kutupsal (P) veya tropikal (T). İkinci eksen kaynak yüzeydir: denizel (m – maritime) veya karasal (c – continental). Böylece dört ana tip ortaya çıkar: karasal kutupsal (cP), denizel kutupsal (mP), karasal tropikal (cT) ve denizel tropikal (mT). Bunlara ek olarak Arktik (A) ve Ekvatoral (E) kütleler de tanımlanır. Her tipin karakteristik sıcaklık ve nem profili farklıdır: mT kütle sıcak ve nemli olup sis riski taşırken, cP kütle soğuk ve kuru olup ani soğuma ve güçlü rüzgâr üretebilir.",
+        image: airMassImage,
+        imageAlt: "Source regions of the main air masses",
       },
       {
         title: "Kütle Dönüşümü ve Stabilite Etkisi",
@@ -125,6 +156,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Oklüde Cephe ve Stasyoner Cephe",
         content:
           "Oklüzyon, soğuk cephenin sıcak cepheye yetişmesiyle oluşur ve sıcak sektör yüzeyden kopar. Soğuk oklüzyon (arkadaki hava daha soğuk) ve sıcak oklüzyon (arkadaki hava nispeten daha ılık) olmak üzere iki türü vardır. Oklüde cepheler karmaşık hava koşulları üretir; hem soğuk hem sıcak cephe özellikleri birlikte gözlenebilir. Stasyoner cephe ise belirgin bir hareketi olmayan, iki kütle arasında denge durumundaki cephedir. Uzun süre aynı bölgede kalarak sürekli bulutlu ve yağışlı hava koşulları üretebilir. Her iki tip de köprüüstünde dikkatli takip gerektirir; stasyoner cephenin harekete geçmesi aniden şiddetli hava değişimine yol açabilir.",
+        image: frontSymbolsImage,
+        imageAlt: "NWS chart symbols for cold, warm, stationary, occluded and other fronts",
       },
       {
         title: "Operasyonel Karar ve Hazırlık",
@@ -149,6 +182,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tanımlar ve Vektörel İlişki",
         content:
           "Gerçek rüzgâr (True Wind – TW), sabit bir referans noktasından ölçülen rüzgârdır; yönü ve hızı geminin hareketinden bağımsızdır. Görünen rüzgâr (Apparent Wind – AW), geminin kendi hareket vektörü ile gerçek rüzgâr vektörünün bileşenidir. Gemi rüzgâra doğru seyrettiğinde görünen rüzgâr hızı gerçek rüzgârdan fazla, rüzgâr arkadan estiğinde ise düşük ölçülür. Vektörel çözümleme için geminin seyir hızı (STW veya SOG) ve başı (heading) ile görünen rüzgâr açısı ve hızı kullanılarak gerçek rüzgâr hesaplanır. Modern gemilerde bu hesaplama otomatik yapılır, ancak sensör arızası durumunda manuel hesaplama bilgisi hayati önem taşır.",
+        image: windDriftImage,
+        imageAlt: "Vector relationship between true wind, apparent wind and the ship's course",
       },
       {
         title: "Operasyonel Önem",
@@ -177,16 +212,22 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Skalanın Yapısı",
         content:
           "Sir Francis Beaufort tarafından 1805'te geliştirilen skala, 0 (sakin) ile 12 (kasırga) arasında 13 kademeden oluşur. Her kademe belirli bir rüzgâr hızı aralığına ve deniz yüzeyi belirtisine karşılık gelir. Örneğin Force 4 (11–16 knot) için 'küçük dalgalar belirginleşir, beyaz köpükler oluşmaya başlar' tanımı yapılır. Force 7 (28–33 knot) için 'deniz kabarmaya başlar, rüzgâr yönündeki köpük çizgileri belirginleşir.' Force 10 (48–55 knot) ve üzeri fırtına koşullarında deniz yüzeyi beyaz köpükle kaplanır ve görüş yağışla sınırlanır.",
+        image: beaufort4Image,
+        imageAlt: "Sea state at Beaufort force 4 — small waves with frequent white horses",
       },
       {
         title: "Deniz Durumu (Sea State) ile İlişki",
         content:
           "Beaufort skalası doğrudan rüzgâr hızını sınıflar; ancak dalga yüksekliği rüzgâr hızına ek olarak rüzgârın esme süresine (duration) ve açık deniz mesafesine (fetch) bağlıdır. Bu nedenle Force 6 rüzgâr farklı bölgelerde çok farklı dalga yükseklikleri üretebilir. Douglas deniz durumu skalası dalga yüksekliğini ayrıca sınıflandırır ve Beaufort ile birlikte kullanılır. Vardiya kayıtlarında her iki skalanın da tutarlı şekilde kaydedilmesi, trend analizi ve rota değerlendirmesi için gereklidir.",
+        image: beaufort8Image,
+        imageAlt: "Sea state at Beaufort force 8 — moderately high waves with spindrift",
       },
       {
         title: "Köprüüstü Kullanımı",
         content:
           "Beaufort skalası, vardiya defteri girişlerinde, hava raporlarında ve kaptan brifinglerinde standart referans olarak kullanılır. Özellikle gece ve yağışlı koşullarda görsel deniz yüzeyi değerlendirmesi zorlaşır; bu durumlarda dalga ses düzeyi, sıçrama karakteri ve gemi hareketleri gibi dolaylı göstergeler yardımcı olur. Güverte operasyon limitleri (crane operasyonu, pilot transferi, supply boat yaklaşması) genellikle Beaufort kademesine referans verilerek belirlenir. Tutarsız Beaufort kayıtları, önceki vardiyalarla karşılaştırmayı ve trend takibini bozar; bu nedenle standardize gözlem eğitimi önemlidir.",
+        image: beaufort11Image,
+        imageAlt: "Sea state at Beaufort force 11 — exceptionally high waves and reduced visibility",
       },
     ],
     keyPoints: [
@@ -206,6 +247,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tanımlar",
         content:
           "Dalga yüksekliği (H), dalga çukurundan tepesine olan dikey mesafedir. Deniz durumu değerlendirmesinde kullanılan anlamlı dalga yüksekliği (Hs veya H₁/₃), gözlenen en yüksek dalgaların üçte birinin ortalamasıdır ve hem gözlem hem uydu/model verileriyle ifade edilir. Dalga periyodu (T), ardışık iki dalga tepesinin aynı noktadan geçme süresidir (saniye cinsinden). Dalgaboyu (λ) ve dalga hızı (c) periyottan türetilir: derin suda λ ≈ 1.56 × T² (metre) ve c ≈ 1.56 × T (m/s).",
+        image: "/diagrams/meteorology/dalga-parametreleri.svg",
+        imageAlt: "Wave height, wavelength and period defined on a wave profile",
       },
       {
         title: "Gemi Hareketlerine Etkisi",
@@ -235,6 +278,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Wind Sea Karakteristiği",
         content:
           "Wind sea, yerel rüzgâr tarafından aktif olarak oluşturulan dalgalardır. Rüzgâr esiş yönüyle hemen hemen aynı doğrultuda ilerler. Periyodu genellikle kısa (3–8 s), formu düzensiz ve dik eğimlidir. Rüzgâr durduğunda veya yön değiştirdiğinde wind sea hızla sönümlenir. Wind sea'nin dalga yüksekliği; rüzgâr hızı, esiş süresi ve fetch mesafesi tarafından belirlenir.",
+        image: "/diagrams/meteorology/dalga-parametreleri.svg",
+        imageAlt: "Short steep wind sea compared with long regular swell",
       },
       {
         title: "Swell Karakteristiği",
@@ -274,6 +319,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yapısal Öğeler",
         content:
           "Olgunlaşmış bir tropikal siklon, merkezden dışa doğru üç ana yapısal bölgeden oluşur. Merkezde, sistemin en düşük basıncının ölçüldüğü, rüzgârın zayıfladığı ve gökyüzünün kısmen açılabildiği göz (eye) bulunur; tipik çapı 20–60 km arasında değişir. Gözü çepeçevre saran eyewall (göz duvarı), dikine gelişmiş kümülonimbus bulutlarından oluşan bir halkadır ve sistemin en şiddetli rüzgârı ile en yoğun yağışı burada gözlenir. Eyewall'dan dışa doğru, merkeze sarmal biçimde kıvrılan spiral yağmur bantları yüzlerce kilometre uzanır; bantlar arasındaki nispeten sakin koridorlar yanıltıcıdır, her yeni bantla birlikte sağanak ve gust koşulları geri döner. Siklonun yüzey rüzgâr alanı çapı yüzlerce kilometre olabilir; sistemin ürettiği soluğan (swell) dalgaları ise bu alanın çok ötesine, binlerce kilometre uzağa ulaşarak siklonun ilk habercisi olur. Göz, eyewall ve spiral bantların ayrıntılı incelemesi ve köprüüstü uygulamaları, 'Siklonun gözü (eye) ve eyewall' konusunda ayrı olarak ele alınmıştır.",
+        image: cycloneSectionImage,
+        imageAlt: "Vertical section through a tropical cyclone showing the eye and surrounding cloud walls",
         bulletPoints: [
           "Göz: en düşük basınç, zayıf rüzgâr, kısmen açık gökyüzü — yanıltıcı sakinlik.",
           "Eyewall: en şiddetli rüzgâr, en yoğun yağış, en dik basınç gradyanı.",
@@ -299,6 +346,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Gözün Tanımı ve Fiziksel Özellikleri",
         content:
           "Göz (eye), olgunlaşmış bir tropikal siklonun dönme merkezinde yer alan, yaklaşık dairesel biçimli sakin bölgedir. Tipik çapı 20–60 km arasındadır; ancak çok şiddetli, kompakt sistemlerde 8–10 km'ye kadar daralabilen 'iğne deliği' (pinhole) gözler ve zayıf ya da çok geniş sistemlerde 100 km'yi aşan gözler de gözlenmiştir. Genel kural olarak küçük ve keskin sınırlı bir göz, yoğunlaşmış ve şiddetli bir sisteme işaret eder. Göz içinde yüzey rüzgârı çoğunlukla 10–15 knotun altına düşer, yağış kesilir ve gökyüzü kısmen veya tamamen açılabilir; geceleyin yıldızlar, gündüz güneş görülebilir. Sistemin deniz seviyesindeki en düşük basıncı gözün merkezinde ölçülür; şiddetli kasırgalarda bu değer 950 hPa'nın, rekor sistemlerde 900 hPa'nın altına iner. Göz aynı zamanda sistemin 'sıcak çekirdeğidir' (warm core): çöken havanın sıkışarak ısınması nedeniyle göz içi, aynı yükseklikteki çevre atmosferden orta seviyelerde 5–10°C daha sıcaktır. Bu sıcak çekirdek, tropikal siklonu orta enlem alçak basınçlarından (soğuk çekirdekli sistemlerden) ayıran temel termodinamik özelliktir. Gözün içinden yukarıya bakıldığında, eyewall bulutlarının çepeçevre yükselen dev bir stadyum tribünü gibi görünmesi 'stadyum etkisi' (stadium effect) olarak adlandırılır.",
+        image: cycloneEyeImage,
+        imageAlt: "Satellite view of a mature typhoon with a clear eye",
         bulletPoints: [
           "Tipik göz çapı 20–60 km; küçük ve keskin göz genellikle şiddetli sistem demektir.",
           "Göz merkezi = sistemin en düşük deniz seviyesi basıncı (şiddetli sistemlerde < 950 hPa).",
@@ -322,6 +371,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Eyewall: Sistemin En Şiddetli Bölgesi",
         content:
           "Eyewall (göz duvarı), gözü çepeçevre saran, 8–15 km yüksekliğe kadar dikine gelişmiş kümülonimbus bulutlarından oluşan halkadır ve tropikal siklonun tartışmasız en tehlikeli bölgesidir. Sistemin en yüksek sürekli rüzgârı, en şiddetli gust'ları, en yoğun yağışı ve en dik basınç gradyanı burada bulunur. Rüzgâr hızı gözün sakin merkezinden eyewall'a geçerken birkaç deniz mili içinde sıfıra yakın değerden 100 knotun üzerine fırlayabilir; hiçbir başka meteorolojik sistemde bu kadar keskin bir geçiş yoktur. Barometre, eyewall geçişi sırasında saatte 15–20 hPa gibi olağanüstü hızlarla düşebilir veya yükselebilir. Kuzey Yarım Küre'de en şiddetli rüzgâr genellikle eyewall'un sağ-ön çeyreğinde (sistemin hareket yönüne göre) bulunur; çünkü burada siklonun dönel rüzgârına sistemin ilerleme hızı da eklenir — bu, tehlikeli yarım daire kavramının mikro ölçekteki karşılığıdır. Eyewall altındaki deniz durumu tanımlanabilir sınırların ötesindedir: 15 metreyi aşan kaotik dalgalar, sürüklenen serpinti (spray) nedeniyle sıfıra inen görüş ve kıyı bölgelerinde fırtına kabarmasının (storm surge) en yüksek değerleri eyewall bölgesinde üretilir. Hiçbir ticari gemi eyewall koşullarında güvenle manevra yapamaz; tüm kaçınma stratejisinin amacı gemiyi bu halkadan mümkün olan en uzak mesafede tutmaktır.",
+        image: cycloneSectionImage,
+        imageAlt: "Vertical section through a cyclone showing the eyewall either side of the eye",
         bulletPoints: [
           "Eyewall = en yüksek rüzgâr + en yoğun yağış + en dik basınç gradyanı.",
           "Gözden eyewall'a geçişte rüzgâr birkaç mil içinde ~0'dan 100+ knota çıkabilir.",
@@ -395,6 +446,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yarım Daire Tanımı",
         content:
           "Kuzey Yarım Kürede siklonun hareket yönünün sağ tarafı 'tehlikeli yarım daire' (dangerous semicircle), sol tarafı ise 'seyir yapılabilir yarım daire' (navigable semicircle) olarak adlandırılır. Güney Yarım Kürede bu durum tersine döner. Tehlikeli yarım dairede, siklonun hareket hızı (translasyon) dönel rüzgâra eklenerek toplam rüzgâr hızı artar. Ayrıca bu yarım dairede bulunan bir gemi, rüzgâr etkisiyle siklonun yoluna doğru sürüklenir. Seyir yapılabilir yarım dairede ise translasyon hızı dönel rüzgârdan çıkarılır, net rüzgâr hızı nispeten düşüktür ve rüzgâr gemiyi siklon yolundan uzaklaştırma eğilimindedir.",
+        image: "/diagrams/meteorology/tehlikeli-yarim-daire.svg",
+        imageAlt: "Dangerous and navigable semicircles either side of a tropical cyclone track",
       },
       {
         title: "Konum Belirleme Yöntemleri",
@@ -429,6 +482,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Rüzgâr Yönü ile Konum Belirleme",
         content:
           "Buys Ballot kuralı basit ama etkili bir yöntemdir: Kuzey Yarım Kürede rüzgâra sırtınızı döndüğünüzde, alçak basınç merkezi solunuzda (yaklaşık 90° kadar) ve biraz önünüzde kalır. Güney Yarım Kürede bu durum ayna görüntüsüdür. Rüzgâr yönünün zamana göre değişimi (veering veya backing) izlenerek, geminin sisteme göre hangi tarafta olduğu ve sistemin yaklaşıp yaklaşmadığı tespit edilir. Rüzgâr hızının artması ve basıncın eş zamanlı düşmesi sistemin yaklaştığını, rüzgâr hızının azalması ve basıncın yükselmesi uzaklaştığını gösterir.",
+        image: buysBallotImage,
+        imageAlt: "Buys Ballot's law: with the wind at your back the low pressure centre lies to your left in the northern hemisphere",
       },
       {
         title: "Operasyonel Uygulama",
@@ -458,6 +513,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yarım Daireye Göre Manevra",
         content:
           "Tehlikeli yarım dairede bulunan gemi, rüzgârı sancak baş omuzluğuna alarak mümkün olan en yüksek emniyetli hızla siklondan uzaklaşır. Seyir yapılabilir yarım dairede ise rüzgâr kıç omuzluktan alınarak siklonun gerisine geçilir. Siklonun doğrudan yolunda (path) bulunan gemi, hızla yolun dışına çıkmayı hedefler. Tüm bu manevralarda deniz durumu, yük emniyeti ve makine kapasitesi sınırlamalarını göz önünde bulundurmak gerekir; aşırı hızla seyir, slamming ve yapısal hasara yol açabilir.",
+        image: "/diagrams/meteorology/tehlikeli-yarim-daire.svg",
+        imageAlt: "Avoiding action based on which semicircle of the storm the ship is in",
       },
       {
         title: "BRM ve Ekip Koordinasyonu",
@@ -482,6 +539,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Adveksiyon Sisi",
         content:
           "Sıcak ve nemli havanın soğuk bir yüzey üzerinden hareket etmesiyle oluşur. Denizcilerin en sık karşılaştığı sis türüdür. Sıcak mT hava kütlesinin soğuk akıntı bölgesi üzerinden geçmesi tipik bir örnektir (Grand Banks, Japonya kuzey kıyıları vb.). Rüzgâr 5–15 knot arasında olduğunda, nemin sürekli taşınması nedeniyle yoğun ve geniş alana yayılan sis oluşur. Adveksiyon sisi gece-gündüz farkı gözetmeksizin oluşabilir ve günlerce sürebilir. Kalınlığı birkaç yüz metreden 1–2 km'ye kadar ulaşabilir.",
+        image: advectionFogImage,
+        imageAlt: "Advection fog formed as warm moist air moves over a cold sea surface",
       },
       {
         title: "Radyasyon Sisi",
@@ -516,6 +575,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Meteorolojik Görüş Sınıfları",
         content:
           "Dünya Meteoroloji Örgütü (WMO) ve IMO standartlarına göre görüş mesafesi şu şekilde sınıflandırılır: 0–200 m yoğun sis (dense fog), 200–500 m kalın sis (thick fog), 500–1000 m sis (fog), 1–2 km hafif sis (mist), 2–5 km pus (haze), 5–10 km orta görüş, 10 km üzeri iyi görüş. COLREG açısından görüşün 'kısıtlı' sayılması için belirgin bir eşik tanımlanmamıştır; bu değerlendirme geminin tipine, hızına, trafik yoğunluğuna ve mevcut koşullara göre vardiya zabitinin takdirine bırakılır. Genel uygulamada 3–5 deniz milinden az görüş 'kısıtlı' kabul edilir.",
+        image: advectionFogImage,
+        imageAlt: "Sea fog reducing horizontal visibility",
       },
       {
         title: "Görüş Ölçümü ve Güçlükleri",
@@ -555,6 +616,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Ses İşaretleri ve Ek Tedbirler",
         content:
           "COLREG Kural 35 uyarınca kısıtlı görüşte ses işaretleri zorunludur. Makine ile seyir halindeki gemi 2 dakikada bir uzun düdük; yol üzerinde makinesi çalışır ancak yol yapmayan gemi 2 dakikada bir art arda iki uzun düdük; dümeni tutmayan gemi, sürüklenen gemi, yelkenlide ve balıkçıda art arda bir uzun iki kısa düdük verilir. Demirdeki gemi her 1 dakikada çan çalar. Ses işaretlerinin zamanında başlatılması hukuki yükümlülüktür. Ek olarak, tüm seyir ışıkları yakılır, AIS durumu kontrol edilir ve uyarı mesajları yayınlanabilir.",
+        image: "/diagrams/navigation/ses-isaretleri.svg",
+        imageAlt: "Sound signals prescribed for restricted visibility",
       },
     ],
     keyPoints: [
@@ -574,6 +637,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Radar Kullanımı ve Ayarlar",
         content:
           "Kısıtlı görüşte radar, birincil hedef tespit aracıdır. Gain, sea clutter ve rain clutter kontrolleri mevcut koşullara göre optimize edilmelidir. Aşırı gain küçük hedeflerin clutter içinde kaybolmasına, yetersiz gain ise hedef kaçırılmasına neden olur. Her iki menzil (S-band ve X-band mevcutsa) birlikte kullanılmalıdır: X-band küçük hedefleri daha iyi çözerken, S-band yağış clutter'ından daha az etkilenir. ARPA (Automatic Radar Plotting Aid) ile tüm hedefler için CPA ve TCPA hesaplanır; kritik eşik değerleri (genellikle CPA < 1–2 NM) alarm olarak ayarlanır.",
+        image: radarDisplayImage,
+        imageAlt: "Radar display with targets and range rings",
       },
       {
         title: "Radar Kör Sektörleri ve Sınırlamalar",
@@ -584,6 +649,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Ses İşaretleri Detayı",
         content:
           "COLREG Kural 33 ve 35, ses işaretlerinin detaylarını düzenler. Makineyle seyir halindeki gemi 2 dakikada bir uzun düdük verir (4–6 saniye). Durağan ancak makinesi çalışan gemi art arda iki uzun düdük verir. Dümeni tutmayan, manevra kabiliyeti kısıtlı, draft'ından dolayı kısıtlı, yelkenli ve balıkçı gemileri bir uzun ve iki kısa düdük verir. Çekilen gemi (mevcutsa) çeken geminin hemen ardından bir uzun üç kısa düdük verir. Demirdeki gemi baş tarafında hızlı çan çalar (5 saniye, dakikada bir); 100 m'den uzun gemilerde ek olarak kıç tarafında gong çalınır. Bu işaretlerin doğru ve zamanında verilmesi hem emniyet hem de hukuki sorumluluk açısından zorunludur.",
+        image: "/diagrams/navigation/ses-isaretleri.svg",
+        imageAlt: "Sound signal patterns and their meanings",
       },
     ],
     keyPoints: [
@@ -603,6 +670,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Rüzgâr Kaynaklı Yüzey Akıntıları",
         content:
           "Kalıcı rüzgâr sistemleri (alizeler, batı rüzgârları) okyanus yüzeyinde sürekli akıntılar oluşturur. Ekman teorisine göre yüzey akıntısı rüzgâr yönünden sağa (Kuzey Yarım Küre) veya sola (Güney Yarım Küre) yaklaşık 45° saparak akar. Bu yüzey akıntıları birleşerek büyük ölçekli gyre (döngü) sistemleri oluşturur: Kuzey Atlantik Gyre (Gulf Stream – Kuzey Atlantik Akıntısı – Kanarya Akıntısı – Kuzey Ekvatoral Akıntısı), Güney Atlantik Gyre, Kuzey ve Güney Pasifik Gyre'ları, Hint Okyanusu döngüleri. Batı sınır akıntıları (Gulf Stream, Kuroshio) doğu sınır akıntılarından çok daha güçlü ve dardır.",
+        image: worldCurrentsImage,
+        imageAlt: "Admiralty chart of the general surface current circulation of the world",
       },
       {
         title: "Termohalin Dolaşım",
@@ -637,6 +706,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Vektörel Çözümleme",
         content:
           "Akıntılı seyirde CTS (course to steer) hesaplaması vektörel olarak yapılır. İstenen iz rotası (track), akıntı vektörü ve gemi hız vektörü bir üçgen oluşturur. Akıntı yönü ve hızı bilinen veya ölçülen değer olarak alınır; istenen iz üzerinde kalabilmek için dümen kursuna uygulanacak düzeltme bu üçgenden çıkarılır. Leeway (rüzgâr kayması) ayrı bir bileşendir ve akıntıyla karıştırılmamalıdır; özellikle yüksek freeboard'lu gemilerde leeway etkisi belirgin olabilir.",
+        image: tideCurrentImage,
+        imageAlt: "Set and drift resolved as a vector on the ship's course",
       },
       {
         title: "Operasyonel Uygulama",
@@ -661,6 +732,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "ETA Hesabında Akıntı Etkisi",
         content:
           "Geminin STW'si (speed through water) sabit tutulsa bile, karşı akıntı SOG'u (speed over ground) düşürür. Örneğin 14 knot STW ile seyreden ve 2 knot karşı akıntıya maruz kalan geminin SOG'u yaklaşık 12 knot olur. 1000 deniz millik bir seferde bu fark yaklaşık 12 saatlik ETA gecikmesine dönüşür. Sefer planı hazırlanırken, rota boyunca beklenen akıntı değerleri segmentlere bölünerek her segment için ayrı SOG hesaplanmalıdır. Güncel pilot chart verileri ve oşinografik tahminler kullanılarak en iyi, beklenen ve en kötü senaryo ETA'ları hesaplanır.",
+        image: "/diagrams/navigation/eta-diyagrami.svg",
+        imageAlt: "Effect of current on speed made good and the resulting ETA",
       },
       {
         title: "Yakıt Tüketimi Üzerine Etkisi",
@@ -690,6 +763,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Monsun Etkisi",
         content:
           "Hint Okyanusu'nda monsun rejimi, akıntı sistemini tamamen tersine çevirebilir. Güneybatı monsununda (Haziran–Eylül) Somalya Akıntısı kuzeye dönerken, kuzeydoğu monsununda (Aralık–Mart) güneye yönelir. Güneydoğu Asya denizlerinde de benzer mevsimsel değişimler görülür. Bu bölgelerde sefer planı yapan zabit, mevcut monsun döneminin akıntı rejimini pilot chart ve güncel oşinografik verilerden kontrol etmelidir.",
+        image: worldCurrentsImage,
+        imageAlt: "General surface current circulation, which the monsoon reverses in the Indian Ocean",
       },
       {
         title: "Diğer Mevsimsel Faktörler",
@@ -719,16 +794,22 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Temel Semboller",
         content:
           "İzobarlar: sürekli eğriler, genellikle 4 hPa aralıkla, basınç değerleri üzerinde yazılıdır. Alçak basınç merkezi 'L' veya 'A' (Alçak), yüksek basınç merkezi 'H' veya 'Y' (Yüksek) ile gösterilir. Cepheler renkli çizgilerle belirtilir: soğuk cephe mavi üçgenlerle, sıcak cephe kırmızı yarım dairelerle, oklüde cephe her ikisinin birleşimiyle, stasyoner cephe karşılıklı üçgen ve yarım dairelerle gösterilir. Trough (oluk) kesik çizgiyle, ridge (sırt) zigzag çizgiyle temsil edilir.",
+        image: "/diagrams/meteorology/sinoptik-sembol-lejanti.svg",
+        imageAlt: "Synoptic chart symbols: isobars, high and low centres, fronts, trough and ridge",
       },
       {
         title: "Rüzgâr Barb'ları ve İstasyon Modeli",
         content:
           "Rüzgâr barb'ı, istasyon noktasından estiği yöne doğru çizilen bir çubuktur. Kısa çizgi 5 knot, uzun çizgi 10 knot, bayrak (üçgen) 50 knot rüzgâr hızını temsil eder. İstasyon modeli (station plot) kompakt bir şekilde tek noktada şu bilgileri verir: rüzgâr yönü ve hızı, bulut örtüsü (çember doluluk oranı), sıcaklık, çiğ noktası, basınç ve basınç eğilimi. Bu modeli okuyabilmek, harita üzerinde herhangi bir noktanın mevcut koşullarını hızlıca değerlendirmeyi sağlar.",
+        image: stationModelImage,
+        imageAlt: "Station model showing how wind, cloud, temperature, pressure and weather are plotted at one point",
       },
       {
         title: "Operasyonel Okuma ve Doğrulama",
         content:
           "Synoptik harita okunurken ilk kontrol, haritanın geçerlilik zamanıdır (UTC). Harita zamanı ile mevcut zaman arasındaki fark arttıkça güvenilirliği azalır. Rota üzerindeki kritik semboller (cephe konumları, sıkışık izobar bölgeleri, tropikal sistem pozisyonları) vardiya notlarına aktarılır ve ETA çizelgesiyle eşleştirilir. Birden fazla kaynak (NOAA, ECMWF, JMA, UK Met Office) karşılaştırılarak model tutarsızlıkları tespit edilir. Hava durumu faksı veya internet üzerinden alınan haritalar, NAVTEX ve SafetyNET uyarılarıyla çapraz kontrol edilir.",
+        image: surfaceAnalysisImage,
+        imageAlt: "NOAA surface weather analysis with isobars, fronts, pressure centres and station plots",
       },
     ],
     keyPoints: [
@@ -748,6 +829,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Ardışık Harita Karşılaştırması",
         content:
           "Cephe hareket hızını tahmin etmek için ardışık iki synoptik haritada aynı cephenin konumu karşılaştırılır. İki harita arasındaki süre (genellikle 6 veya 12 saat) ve cephenin kat ettiği mesafe kullanılarak hareket hızı hesaplanır. Soğuk cepheler genellikle 25–40 knot, sıcak cepheler 15–25 knot hızla ilerler; ancak bu değerler büyük değişkenlik gösterebilir. Cephenin hareket yönü, arkasındaki hava kütlesinin baskı yönü ve üst seviye akışlarla belirlenir.",
+        image: surfaceAnalysisImage,
+        imageAlt: "Surface analysis chart used to track front positions between successive charts",
       },
       {
         title: "Şiddet Değerlendirmesi",
@@ -777,16 +860,22 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Rüzgâr Tahmini",
         content:
           "İzobar aralığından geostrofik rüzgâr hızı tahmin edilir. Genel kural olarak, 60° enlemde 5° boylam mesafede 4 hPa basınç farkı yaklaşık 20 knot geostrofik rüzgâra karşılık gelir; enlem azaldıkça aynı gradyan daha yüksek rüzgâr üretir. Yüzey rüzgârı, geostrofik değerin deniz üzerinde %70–80'i, kara üzerinde %50–60'ı kadardır. Rüzgâr yönü, izobar yönünden deniz üzerinde 10°–15°, kara üzerinde 25°–35° yüksek basınç tarafına sapar. Konvektif koşullarda (kümülonimbus, squall line) anlık gust değerleri ortalama rüzgârın 1.5–2 katına ulaşabilir.",
+        image: geostrophicWindImage,
+        imageAlt: "Estimating the geostrophic wind from the isobar spacing",
       },
       {
         title: "Deniz Durumu Tahmini",
         content:
           "Rüzgâr hızı belirlendikten sonra, rüzgârın esme süresi ve fetch mesafesi değerlendirilerek dalga gelişimi tahmin edilir. Tam gelişmiş denizde dalga yüksekliği yalnızca rüzgâr hızına bağlıdır. Ancak çoğu durumda deniz tam gelişmemiştir; fetch veya süre sınırlıdır. Pratik amaçla, rüzgâr hızı, esiş süresi ve fetch'in üçünden en küçüğü dalga gelişimini sınırlayan faktördür. Swell bileşeni bu hesaplamanın dışındadır ve ayrıca değerlendirilmelidir. Deniz durumu tahmini yapılırken yerel topografik etkiler (ada, burun, sığ su) dikkate alınmalıdır.",
+        image: "/diagrams/meteorology/dalga-parametreleri.svg",
+        imageAlt: "Wave height, period and wavelength used when estimating sea state",
       },
       {
         title: "Gözlem ile Doğrulama",
         content:
           "Haritadan çıkarılan tahminler, gemideki gerçek gözlemlerle sürekli karşılaştırılmalıdır. Tahmin ile gözlem arasındaki fark, ya harita analizinin ya da yerel koşulların standart dışı olduğunu gösterir. Her iki durumda da dikkat artırılmalıdır. Gözlem sapmalarının kaydedilmesi ve bir sonraki vardiyaya aktarılması, ekibin kolektif hava değerlendirmesini güçlendirir. Rota segmentlerine göre deniz durumu notu hazırlamak, sonraki seferlerde referans olarak kullanılabilir.",
+        image: windBarbsImage,
+        imageAlt: "Wind barbs: each half barb 5 knots, full barb 10 knots and pennant 50 knots",
       },
     ],
     keyPoints: [
@@ -806,6 +895,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Risk Tanımlama ve Sınıflandırma",
         content:
           "Rota üzerinde meteorolojik risk değerlendirmesi, olasılık ve etki matrisine dayalı olarak yapılır. Her rota segmenti için beklenen hava koşulları, dalga yüksekliği, görüş, rüzgâr hızı ve akıntı parametreleri değerlendirilir. Risk seviyesi düşük (yeşil), orta (sarı), yüksek (kırmızı) olarak kodlanır. Tetikleyici limitler önceden tanımlanır: örneğin Force 7 üzeri rüzgâr, 4 m üzeri dalga yüksekliği veya 2 NM altı görüş gibi eşik değerler belirlenir.",
+        image: weatherSystemsImage,
+        imageAlt: "Weather systems marked along a planned route",
       },
       {
         title: "Görsel İşaretleme ve İletişim",

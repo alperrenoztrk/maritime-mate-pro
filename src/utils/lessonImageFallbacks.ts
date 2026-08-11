@@ -40,6 +40,19 @@ import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
 import ruleOfTwelfths from "@/assets/tides/rule-of-twelfths.svg";
 import tideTableExcerpt from "@/assets/tides/tide-table-excerpt.svg";
 import ukcStack from "@/assets/tides/ukc-stack.svg";
+// Meteorology (bkz. src/assets/meteorology/CREDITS.md)
+import frontSymbols from "@/assets/meteorology/front-symbols-nws.svg";
+import stationModel from "@/assets/meteorology/station-model.svg";
+import windBarbs from "@/assets/meteorology/wind-barbs.svg";
+import surfaceAnalysis from "@/assets/meteorology/surface-analysis-chart.png";
+import pressureCentres from "@/assets/meteorology/pressure-centres-circulation.svg";
+import geostrophicWind from "@/assets/meteorology/geostrophic-wind.svg";
+import airMass from "@/assets/meteorology/air-mass-source-regions.png";
+import beaufortSeaState from "@/assets/meteorology/beaufort-force-8.jpg";
+import cycloneEye from "@/assets/meteorology/cyclone-eye-satellite.jpg";
+import cycloneSection from "@/assets/meteorology/cyclone-vertical-section.jpg";
+import advectionFog from "@/assets/meteorology/advection-fog.jpg";
+import worldCurrents from "@/assets/meteorology/world-surface-currents.jpg";
 
 type Fallback = {
   keywords: string[];
@@ -156,10 +169,47 @@ const navigationFallbacks: Fallback[] = [
   { keywords: ["north", "kuzey"], src: compass },
 ];
 
+/**
+ * Sıra önemlidir: ilk eşleşen kazanır, bu yüzden dar anahtarlar ("wind sea",
+ * "barb", "geostrophic") geniş olanlardan ("wind", "rüzg") önce gelir.
+ */
 const meteorologyFallbacks: Fallback[] = [
   { keywords: ["tehlike", "danger", "solas v"], src: "/diagrams/meteorology/solas-v-tehlike-mesajlari.svg" },
+  {
+    keywords: ["synoptik", "synoptic", "sinoptik", "izobar", "isobar", "trough", "ridge"],
+    src: "/diagrams/meteorology/sinoptik-sembol-lejanti.svg",
+  },
+  { keywords: ["istasyon modeli", "station model", "station plot"], src: stationModel },
+  { keywords: ["barb", "barbül"], src: windBarbs },
+  {
+    keywords: ["yüzey analiz", "surface analysis", "surface weather map", "hava haritası", "weather map"],
+    src: surfaceAnalysis,
+  },
+  { keywords: ["geostrofik", "geostrophic", "gradyan", "gradient"], src: geostrophicWind },
+  { keywords: ["hava kütle", "air mass"], src: airMass },
+  { keywords: ["beaufort", "deniz durumu", "sea state"], src: beaufortSeaState },
+  {
+    keywords: ["dalga", "wave", "swell", "wind sea", "periyot", "period"],
+    src: "/diagrams/meteorology/dalga-parametreleri.svg",
+  },
+  {
+    keywords: ["yarım daire", "semicircle", "buys ballot", "buys-ballot", "kaçınma"],
+    src: "/diagrams/meteorology/tehlikeli-yarim-daire.svg",
+  },
+  { keywords: ["eyewall", "eye", "göz"], src: cycloneEye },
+  {
+    keywords: ["siklon", "cyclone", "tropikal", "tropical", "hurricane", "typhoon", "fırtına"],
+    src: cycloneSection,
+  },
+  { keywords: ["sis", "fog", "görüş", "visibility"], src: advectionFog },
+  { keywords: ["akıntı", "current", "drift", "set ve drift"], src: worldCurrents },
+  { keywords: ["cephe", "front", "occlu", "oklü"], src: frontSymbols },
+  {
+    keywords: ["basınç merkez", "alçak basınç", "yüksek basınç", "depression", "anticyclone", "antisiklon"],
+    src: pressureCentres,
+  },
   { keywords: ["rüzg", "wind", "apparent", "görünen", "true wind"], src: yonWindDrift },
-  { keywords: ["weather", "front", "cephe", "depression", "alçak basınç", "yüksek basınç"], src: weatherSystems },
+  { keywords: ["weather", "meteoroloji"], src: weatherSystems },
 ];
 
 const machineFallbacks: Fallback[] = [
