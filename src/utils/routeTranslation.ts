@@ -13,6 +13,18 @@ export const createRouteTranslationToken = (
   hash = '',
 ): string => JSON.stringify([language, locationKey, pathname, search, hash]);
 
+export const ROUTE_TRANSLATION_PENDING_SELECTOR = '[data-mt-route-pending]';
+
+/**
+ * The route boundary itself is owned by PageTransition's full-subtree pass.
+ * Descendants are intentionally NOT treated as owned: async content can mount
+ * after that pass has taken its snapshot, and the global MutationObserver must
+ * translate those later additions instead of dropping them.
+ */
+export const isRouteTranslationBoundary = (
+  element: Pick<Element, 'matches'> | null,
+): boolean => !!element?.matches(ROUTE_TRANSLATION_PENDING_SELECTOR);
+
 /**
  * Readiness is tracked as a SET of tokens, never as a single "last ready" one.
  *

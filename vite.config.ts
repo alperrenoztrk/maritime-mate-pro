@@ -225,7 +225,7 @@ export default defineConfig(({ mode }) => ({
             urlPattern: ({ url }) => url.pathname.includes("/locales/") && url.pathname.endsWith(".json"),
             handler: "StaleWhileRevalidate",
             options: {
-              cacheName: "translation-locales",
+              cacheName: "translation-locales-v2",
               expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 90 },
               cacheableResponse: { statuses: [0, 200] },
             },

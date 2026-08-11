@@ -2,9 +2,9 @@
 /**
  * Static string extractor for build-time pre-translation.
  * -------------------------------------------------------
- * Walks the app's static content (src/data + the *TopicsPage.tsx topic maps)
- * and collects every user-visible Turkish string value found under an
- * allow-listed property name. The result feeds scripts/i18n/pretranslate.mjs.
+ * Walks the app's static content and every user-facing page/component, then
+ * collects user-visible Turkish strings from data properties, JSX, translated
+ * attributes and notification calls. The result feeds the locale generators.
  *
  * Strings are normalized identically to the runtime translator
  * (normalizeSource = trim) so dictionary keys match runtime lookup keys.
@@ -69,6 +69,29 @@ const addSegment = (value) => {
   if (isTranslatable(s)) strings.add(s);
 };
 
+// React applies special whitespace rules to JSX text: indentation/newlines are
+// collapsed before a DOM Text node is created. Dictionary keys must mirror that
+// rendered value, otherwise a multi-line paragraph is "covered" at build time
+// but still misses at runtime.
+function normalizeJsxText(value) {
+  const lines = value.replace(/\r\n?/g, '\n').split('\n');
+  let lastNonEmptyLine = 0;
+  for (let i = 0; i < lines.length; i += 1) {
+    if (/[^\t ]/.test(lines[i])) lastNonEmptyLine = i;
+  }
+
+  let result = '';
+  for (let i = 0; i < lines.length; i += 1) {
+    let line = lines[i].replace(/\t/g, ' ');
+    if (i !== 0) line = line.replace(/^ +/, '');
+    if (i !== lines.length - 1) line = line.replace(/ +$/, '');
+    if (!line) continue;
+    result += line;
+    if (i !== lastNonEmptyLine) result += ' ';
+  }
+  return result;
+}
+
 // Splits a line into the text segments ReactMarkdown produces: plain runs plus
 // the inner text of emphasis/links/code (each becomes its own DOM text node).
 function stripInlineToSegments(text) {
@@ -128,6 +151,108 @@ function stringLiteralText(node) {
   return null;
 }
 
+const VISIBLE_SELECTION_OPERATORS = new Set([
+  ts.SyntaxKind.BarBarToken,
+  ts.SyntaxKind.QuestionQuestionToken,
+  ts.SyntaxKind.AmpersandAmpersandToken,
+]);
+
+// JSX often renders labels through a conditional expression, e.g.
+// `{busy ? <Spinner /> : "Kapat"}`. Follow only value-selection constructs;
+// deliberately do not descend into arbitrary calls such as navigate("/path"),
+// where string literals are implementation details rather than copy.
+function collectFromVisibleExpression(node) {
+  const literal = stringLiteralText(node);
+  if (literal !== null) {
+    consider(literal, 'text');
+    return;
+  }
+  if (ts.isConditionalExpression(node)) {
+    collectFromVisibleExpression(node.whenTrue);
+    collectFromVisibleExpression(node.whenFalse);
+    return;
+  }
+  if (ts.isBinaryExpression(node)) {
+    if (VISIBLE_SELECTION_OPERATORS.has(node.operatorToken.kind)) {
+      collectFromVisibleExpression(node.left);
+      collectFromVisibleExpression(node.right);
+    }
+    return;
+  }
+  if (
+    ts.isParenthesizedExpression(node) ||
+    ts.isAsExpression(node) ||
+    ts.isTypeAssertionExpression(node) ||
+    ts.isNonNullExpression(node) ||
+    ts.isSatisfiesExpression(node)
+  ) {
+    collectFromVisibleExpression(node.expression);
+  }
+}
+
+const TOAST_METHODS = new Set([
+  'success', 'error', 'warning', 'info', 'message', 'loading',
+]);
+const TRANSLATION_LOOKUP_METHODS = new Set([
+  'getStaticTranslation',
+  'getCoreUiTranslation',
+]);
+
+function isUserVisibleMessageCall(expression) {
+  if (ts.isIdentifier(expression)) {
+    return expression.text === 'toast' || expression.text === 'alert' || expression.text === 'confirm';
+  }
+  if (!ts.isPropertyAccessExpression(expression)) return false;
+  const owner = expression.expression;
+  const method = expression.name.text;
+  if (ts.isIdentifier(owner) && owner.text === 'toast') return TOAST_METHODS.has(method);
+  return ts.isIdentifier(owner) && owner.text === 'window' && (method === 'alert' || method === 'confirm');
+}
+
+// Notification copy lives outside JSX. Once a call has been identified as a
+// user-visible message surface, collect its literal fallbacks and object fields.
+function collectFromMessageExpression(node, bindings = new Map(), visited = new Set()) {
+  const literal = stringLiteralText(node);
+  if (literal !== null) {
+    consider(literal, 'text');
+    return;
+  }
+  if (ts.isIdentifier(node) && bindings.has(node.text) && !visited.has(node.text)) {
+    const nextVisited = new Set(visited).add(node.text);
+    for (const initializer of bindings.get(node.text)) {
+      collectFromMessageExpression(initializer, bindings, nextVisited);
+    }
+    return;
+  }
+  if (ts.isObjectLiteralExpression(node)) {
+    for (const property of node.properties) {
+      if (ts.isPropertyAssignment(property)) {
+        collectFromMessageExpression(property.initializer, bindings, visited);
+      }
+    }
+    return;
+  }
+  if (ts.isConditionalExpression(node)) {
+    collectFromMessageExpression(node.whenTrue, bindings, visited);
+    collectFromMessageExpression(node.whenFalse, bindings, visited);
+    return;
+  }
+  if (ts.isBinaryExpression(node)) {
+    collectFromMessageExpression(node.left, bindings, visited);
+    collectFromMessageExpression(node.right, bindings, visited);
+    return;
+  }
+  if (
+    ts.isParenthesizedExpression(node) ||
+    ts.isAsExpression(node) ||
+    ts.isTypeAssertionExpression(node) ||
+    ts.isNonNullExpression(node) ||
+    ts.isSatisfiesExpression(node)
+  ) {
+    collectFromMessageExpression(node.expression, bindings, visited);
+  }
+}
+
 // Collects string literals from an array of any depth (`string[]`, `string[][]`).
 function collectFromArray(node, propName) {
   for (const el of node.elements) {
@@ -147,9 +272,8 @@ function listFiles(dir, exts, out = []) {
   return out;
 }
 
-// UI component files that contain hardcoded Turkish strings (JSX text and specific
-// prop values) that the data-file walker would otherwise miss. These live outside
-// the broadly-walked src/pages + src/components/courseContent trees.
+// User-visible non-component modules that sit outside the canonical pages,
+// components and data trees.
 const UI_COMPONENT_FILES = [
   'src/components/FloatingNavButtons.tsx',
   'src/contexts/LanguageContext.tsx',
@@ -163,22 +287,14 @@ const EXCLUDE_BASENAMES = new Set([
   'ReleaseChecklistCard.tsx',
 ]);
 
-// High-traffic content component directories rendered into the lesson/topic UI.
-const CONTENT_COMPONENT_DIRS = [
-  path.join(repoRoot, 'src/components/courseContent'),
-  path.join(repoRoot, 'src/components/widgets'),
-];
-const EXTRA_COMPONENT_FILES = [
-].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
-
-// Canonical walk set: all static content (src/data) + every page + the lesson
-// content components + a few curated UI files. Deduped, minus dev/admin files.
+// Canonical walk set: all static content, every route and EVERY component.
+// Restricting this to a hand-picked list previously omitted settings/auth UI;
+// the 2FA card then passed "100%" coverage while shipping no locale entries.
 const files = [
   ...new Set([
     ...listFiles(path.join(repoRoot, 'src/data'), ['.ts', '.tsx']),
     ...listFiles(path.join(repoRoot, 'src/pages'), ['.tsx']),
-    ...CONTENT_COMPONENT_DIRS.flatMap((d) => listFiles(d, ['.ts', '.tsx'])),
-    ...EXTRA_COMPONENT_FILES,
+    ...listFiles(path.join(repoRoot, 'src/components'), ['.ts', '.tsx']),
     ...UI_COMPONENT_FILES,
   ]),
 ].filter((f) => !EXCLUDE_BASENAMES.has(path.basename(f)));
@@ -234,6 +350,24 @@ for (const file of files) {
     file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS,
   );
 
+  // Resolve local constants passed into toast/translation helpers. UI copy is
+  // often authored as `const title = "..."` and then passed by identifier; a
+  // literal-only walker falsely reports coverage while missing that text.
+  const bindings = new Map();
+  const collectBindings = (node) => {
+    if (
+      ts.isVariableDeclaration(node) &&
+      ts.isIdentifier(node.name) &&
+      node.initializer
+    ) {
+      const initializers = bindings.get(node.name.text) ?? [];
+      initializers.push(node.initializer);
+      bindings.set(node.name.text, initializers);
+    }
+    ts.forEachChild(node, collectBindings);
+  };
+  collectBindings(sf);
+
   const walk = (node) => {
     if (ts.isPropertyAssignment(node)) {
       const name = ts.isIdentifier(node.name)
@@ -253,7 +387,7 @@ for (const file of files) {
     if (ts.isJsxAttribute(node)) {
       const attrName = node.name.getText(sf);
       if (
-        (attrName === 'placeholder' || attrName === 'title' || attrName === 'aria-label') &&
+        (attrName === 'placeholder' || attrName === 'title' || attrName === 'aria-label' || attrName === 'alt') &&
         node.initializer && ts.isStringLiteral(node.initializer)
       ) {
         consider(node.initializer.text, 'text');
@@ -265,12 +399,24 @@ for (const file of files) {
     if (ts.isJsxElement(node) || ts.isJsxFragment(node)) {
       for (const child of node.children) {
         if (ts.isJsxText(child)) {
-          consider(child.text, 'text');
+          consider(normalizeJsxText(child.text), 'text');
         } else if (ts.isJsxExpression(child) && child.expression) {
-          const lit = stringLiteralText(child.expression);
-          if (lit !== null) consider(lit, 'text');
+          collectFromVisibleExpression(child.expression);
         }
       }
+    }
+    if (ts.isCallExpression(node) && isUserVisibleMessageCall(node.expression)) {
+      for (const argument of node.arguments) {
+        collectFromMessageExpression(argument, bindings);
+      }
+    }
+    if (
+      ts.isCallExpression(node) &&
+      ts.isIdentifier(node.expression) &&
+      TRANSLATION_LOOKUP_METHODS.has(node.expression.text) &&
+      node.arguments[0]
+    ) {
+      collectFromMessageExpression(node.arguments[0], bindings);
     }
     ts.forEachChild(node, walk);
   };

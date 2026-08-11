@@ -17,6 +17,7 @@ test('calculation sources lose the banking sense', () => {
 
 test('real account sources keep it, whichever side the keyword falls on', () => {
   const keeps: Array<[string, string]> = [
+    ['Hesap', 'Account'],
     ['Hesap ve Veri Silme', 'Account and Data Deletion'],
     ['Hesabımı sil', 'Delete my account'],
     ['Hesabınız ve tüm verileriniz silindi', 'Your account and all your data have been deleted'],
@@ -26,6 +27,11 @@ test('real account sources keep it, whichever side the keyword falls on', () => 
   for (const [source, translated] of keeps) {
     assert.equal(fixCalculationNoun(source, translated, 'en'), translated, source);
   }
+});
+
+test('unambiguous calculation copy still receives the calculation sense', () => {
+  assert.equal(fixCalculationNoun('Hesaplama', 'Account', 'en'), 'Calculation');
+  assert.equal(fixCalculationNoun('Hesaplama Adımları', 'Account Steps', 'en'), 'Calculation Steps');
 });
 
 test('sources that never said "hesap" are untouched', () => {
