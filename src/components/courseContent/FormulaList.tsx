@@ -6,7 +6,7 @@ import type { CourseEntry } from "@/data/courseContent/types";
 /**
  * Formül listesi. Girdileri `group`'a göre gruplar ve mevcut makine formül
  * kartı düzeniyle render eder. Bir girdinin hesaplayıcısı varsa, küçük bir
- * "Hesapla" rozeti ile bağ görünür kılınır (calcHref verildiğinde linklenir).
+ * "Calculate" rozeti ile bağ görünür kılınır (calcHref verildiğinde linklenir).
  */
 export function FormulaList({
   entries,
@@ -39,7 +39,7 @@ export function FormulaList({
                             to={`${calcHref}#${f.id}`}
                             className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary transition-colors hover:bg-primary/20"
                           >
-                            <Calculator className="h-3 w-3" /> Hesapla
+                            <Calculator className="h-3 w-3" /> Calculate
                           </Link>
                         ) : (
                           <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary">

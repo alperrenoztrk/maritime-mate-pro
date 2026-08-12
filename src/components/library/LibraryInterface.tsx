@@ -14,7 +14,7 @@ export function LibraryPageShell({
   icon: HeaderIcon,
   backHref,
   onBack,
-  backLabel = "Geri dön",
+  backLabel = "come back",
   maxWidth = "max-w-6xl",
   headerAside,
 }: {

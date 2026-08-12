@@ -43,7 +43,7 @@ const CATEGORIES: {
   },
   {
     id: "weight",
-    label: "Ağırlık",
+    label: "Weight",
     icon: Droplets,
     units: [
       { label: "Metrik Ton (MT)", toBase: (v) => v * 1000, fromBase: (v) => v / 1000 },
@@ -181,7 +181,7 @@ export default function ConverterPage() {
             <TabsList className="grid w-full grid-cols-3 mb-4">
               <TabsTrigger value="distance" className="text-xs">Mesafe</TabsTrigger>
               <TabsTrigger value="speed" className="text-xs">Hız</TabsTrigger>
-              <TabsTrigger value="weight" className="text-xs">Ağırlık</TabsTrigger>
+              <TabsTrigger value="weight" className="text-xs">Weight</TabsTrigger>
             </TabsList>
             <TabsList className="grid w-full grid-cols-3 mb-4">
               <TabsTrigger value="volume" className="text-xs">Hacim</TabsTrigger>

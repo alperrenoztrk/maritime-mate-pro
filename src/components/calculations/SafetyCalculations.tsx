@@ -472,37 +472,37 @@ export const SafetyCalculations = () => {
       setResult(calculatedResult);
       setCalcSteps({
         anchoring: [
-          { step: 1, title: "Rüzgar kuvveti", formula: "Früzgar = 0.5 × ρhava × Cd × A × V²", result: `Früzgar = ${anchoring.windForce.toFixed(2)} ton` },
-          { step: 2, title: "Akıntı kuvveti", formula: "Fakıntı = 0.5 × ρsu × Cd × A × V²", result: `Fakıntı = ${anchoring.currentForce.toFixed(2)} ton` },
-          { step: 3, title: "Toplam çevresel kuvvet", formula: "Ftoplam = (Früzgar + Fakıntı) × Dalga faktörü", result: `Ftoplam = ${anchoring.totalForce.toFixed(2)} ton` },
-          { step: 4, title: "Zincir uzunluğu", formula: "L = Kapsam × Efektif Derinlik", result: `Önerilen = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
-          { step: 5, title: "Tutma gücü", formula: "HP = (Çapa Ağırlığı / 1000) × Zemin Faktörü", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} ton, Emniyet Faktörü = ${anchoring.safetyFactor.toFixed(2)}` },
+          { step: 1, title: "wind force", formula: "Wind = 0.5 × ρair × Cd × A × V²", result: `Wind = ${anchoring.windForce.toFixed(2)} ton` },
+          { step: 2, title: "current force", formula: "Fact = 0.5 × ρsu × Cd × A × V²", result: `Fact = ${anchoring.currentForce.toFixed(2)} ton` },
+          { step: 3, title: "Total circumferential force", formula: "Ftotal = (Wind + Current) × Wave factor", result: `Ftoplam = ${anchoring.totalForce.toFixed(2)} ton` },
+          { step: 4, title: "chain length", formula: "L = Kapsam × Efektif Derinlik", result: `Recommended = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
+          { step: 5, title: "holding power", formula: "HP = (Anchor Weight / 1000) × Ground Factor", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} tons, Safety Factor = ${anchoring.safetyFactor.toFixed(2)}` },
         ],
         mooring: [
-          { step: 1, title: "Hat başına yük", formula: "Yük = Toplam Kuvvet / Hat Sayısı", result: `Yük = ${mooring.mooringLineLoad.toFixed(2)} ton/hat` },
-          { step: 2, title: "Emniyet faktörü", formula: "SF = Kopma Yükü / (Hat Yükü × Hat Sayısı)", result: `SF = ${mooring.mooringLineSafety.toFixed(2)}` },
+          { step: 1, title: "load per line", formula: "Load = Total Force / Number of Lines", result: `Load = ${mooring.mooringLineLoad.toFixed(2)} ton/hat` },
+          { step: 2, title: "Safety factor", formula: "SF = Breaking Load / (Line Load × Number of Lines)", result: `SF = ${mooring.mooringLineSafety.toFixed(2)}` },
         ],
         fireFighting: [
-          { step: 1, title: "Yangın suyu debisi", formula: "Q = Pompa Kapasitesi × Verimlilik", result: `Q = ${fireFighting.fireWaterFlow.toFixed(1)} m³/saat` },
-          { step: 2, title: "Hortum erişimi", formula: "Erişim = √(2 × P × g) × faktör", result: `Erişim = ${fireFighting.fireReach.toFixed(1)} m` },
+          { step: 1, title: "Fire water flow rate", formula: "Q = Pompa Kapasitesi × Verimlilik", result: `Q = ${fireFighting.fireWaterFlow.toFixed(1)} m³/hour` },
+          { step: 2, title: "Hose access", formula: "Reach = √(2 × P × g) × factor", result: `Access = ${fireFighting.fireReach.toFixed(1)} m` },
         ],
         lsa: [
-          { step: 1, title: "Toplam can kurtarma kapasitesi", formula: "Kapasite = (Bot Sayısı × Kapasite) + (Sal Sayısı × Kapasite)", result: `Toplam = ${lsa.totalLifeSavingCapacity} kişi (Gemide: ${data.totalPersonsOnBoard})` },
-          { step: 2, title: "SOLAS uygunluğu", formula: "Kapasite ≥ Gemideki Kişi Sayısı", result: lsa.lsaCompliance ? "UYGUN" : "UYGUN DEĞİL" },
+          { step: 1, title: "Toplam can kurtarma kapasitesi", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Toplam = ${lsa.totalLifeSavingCapacity} person (On board: ${data.totalPersonsOnBoard})` },
+          { step: 2, title: "SOLAS compliance", formula: "Capacity ≥ Number of People on Board", result: lsa.lsaCompliance ? "UYGUN" : "NOT SUITABLE" },
         ],
         freeboard: [
-          { step: 1, title: "Fribord hesabı", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Gerçek = ${freeboard.actualFreeboard.toFixed(2)} m` },
-          { step: 2, title: "Uygunluk", formula: "Gerçek Fribord ≥ Minimum Fribord", result: freeboard.freeboardCompliance ? "UYGUN" : "UYGUN DEĞİL" },
+          { step: 1, title: "freeboard account", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Real = ${freeboard.actualFreeboard.toFixed(2)} m` },
+          { step: 2, title: "Uygunluk", formula: "Actual Freeboard ≥ Minimum Freeboard", result: freeboard.freeboardCompliance ? "UYGUN" : "NOT SUITABLE" },
         ],
       });
       toast({
-        title: "Hesaplama Tamamlandı",
-        description: "Güverte ve güvenlik hesaplamaları başarıyla tamamlandı.",
+        title: "Calculation Completed",
+        description: "Deck and security calculations have been completed successfully.",
       });
     } catch (error) {
       toast({
-        title: "Hata",
-        description: "Hesaplama sırasında bir hata oluştu.",
+        title: "Error",
+        description: "An error occurred during calculation.",
         variant: "destructive",
       });
     }
@@ -518,14 +518,14 @@ export const SafetyCalculations = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Güverte ve Güvenlik Hesaplamaları
+            Deck and Safety Calculations
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="anchoring" className="w-full">
             <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="anchoring">Demir</TabsTrigger>
-              <TabsTrigger value="fire">Yangın</TabsTrigger>
+              <TabsTrigger value="fire">fire</TabsTrigger>
               <TabsTrigger value="lifesaving">Can Kurtarma</TabsTrigger>
               <TabsTrigger value="freeboard">Freeboard</TabsTrigger>
               <TabsTrigger value="emergency">Acil Durum</TabsTrigger>
@@ -534,7 +534,7 @@ export const SafetyCalculations = () => {
             <TabsContent value="anchoring" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="windSpeed">Rüzgar Hızı (knot)</Label>
+                  <Label htmlFor="windSpeed">Wind Speed (knots)</Label>
                   <Input
                     id="windSpeed"
                     type="number"
@@ -543,7 +543,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="currentSpeed">Akıntı Hızı (knot)</Label>
+                  <Label htmlFor="currentSpeed">Current Speed (knots)</Label>
                   <Input
                     id="currentSpeed"
                     type="number"
@@ -553,7 +553,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="waterDepth">Su Derinliği (m)</Label>
+                  <Label htmlFor="waterDepth">Water Depth (m)</Label>
                   <Input
                     id="waterDepth"
                     type="number"
@@ -573,7 +573,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="anchorWeight">Demir Ağırlığı (kg)</Label>
+                  <Label htmlFor="anchorWeight">Iron Weight (kg)</Label>
                   <Input
                     id="anchorWeight"
                     type="number"
@@ -582,7 +582,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="chainDiameter">Zincir Çapı (mm)</Label>
+                  <Label htmlFor="chainDiameter">Chain Diameter (mm)</Label>
                   <Input
                     id="chainDiameter"
                     type="number"
@@ -596,7 +596,7 @@ export const SafetyCalculations = () => {
             <TabsContent value="fire" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firePumpCapacity">Yangın Pompası Kapasitesi (m³/h)</Label>
+                  <Label htmlFor="firePumpCapacity">Fire Pump Capacity (m³/h)</Label>
                   <Input
                     id="firePumpCapacity"
                     type="number"
@@ -605,7 +605,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="firePumpPressure">Yangın Pompası Basıncı (bar)</Label>
+                  <Label htmlFor="firePumpPressure">Fire Pump Pressure (bar)</Label>
                   <Input
                     id="firePumpPressure"
                     type="number"
@@ -615,7 +615,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="fireMainDiameter">Ana Yangın Hattı Çapı (mm)</Label>
+                  <Label htmlFor="fireMainDiameter">Main Fire Line Diameter (mm)</Label>
                   <Input
                     id="fireMainDiameter"
                     type="number"
@@ -624,7 +624,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="fireHoseLength">Yangın Hortumu Uzunluğu (m)</Label>
+                  <Label htmlFor="fireHoseLength">Fire Hose Length (m)</Label>
                   <Input
                     id="fireHoseLength"
                     type="number"
@@ -633,7 +633,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="fireExtinguisherCount">Yangın Söndürücü Sayısı</Label>
+                  <Label htmlFor="fireExtinguisherCount">Number of Fire Extinguishers</Label>
                   <Input
                     id="fireExtinguisherCount"
                     type="number"
@@ -647,7 +647,7 @@ export const SafetyCalculations = () => {
             <TabsContent value="lifesaving" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="lifeBoatCapacity">Can Botu Kapasitesi (kişi)</Label>
+                  <Label htmlFor="lifeBoatCapacity">Life Boat Capacity (person)</Label>
                   <Input
                     id="lifeBoatCapacity"
                     type="number"
@@ -656,7 +656,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lifeBoatCount">Can Botu Sayısı</Label>
+                  <Label htmlFor="lifeBoatCount">Number of Lifeboats</Label>
                   <Input
                     id="lifeBoatCount"
                     type="number"
@@ -665,7 +665,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lifeRaftCapacity">Can Salı Kapasitesi (kişi)</Label>
+                  <Label htmlFor="lifeRaftCapacity">Life Raft Capacity (person)</Label>
                   <Input
                     id="lifeRaftCapacity"
                     type="number"
@@ -674,7 +674,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lifeRaftCount">Can Salı Sayısı</Label>
+                  <Label htmlFor="lifeRaftCount">Number of Life Rafts</Label>
                   <Input
                     id="lifeRaftCount"
                     type="number"
@@ -683,7 +683,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="totalPersonsOnBoard">Toplam Kişi Sayısı</Label>
+                  <Label htmlFor="totalPersonsOnBoard">Total Number of People</Label>
                   <Input
                     id="totalPersonsOnBoard"
                     type="number"
@@ -697,7 +697,7 @@ export const SafetyCalculations = () => {
             <TabsContent value="freeboard" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="summerDraft">Yaz Su Çekimi (m)</Label>
+                  <Label htmlFor="summerDraft">Summer Water Withdrawal (m)</Label>
                   <Input
                     id="summerDraft"
                     type="number"
@@ -707,7 +707,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="winterDraft">Kış Su Çekimi (m)</Label>
+                  <Label htmlFor="winterDraft">Winter Water Withdrawal (m)</Label>
                   <Input
                     id="winterDraft"
                     type="number"
@@ -717,7 +717,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="tropicalDraft">Tropikal Su Çekimi (m)</Label>
+                  <Label htmlFor="tropicalDraft">Tropical Water Withdrawal (m)</Label>
                   <Input
                     id="tropicalDraft"
                     type="number"
@@ -727,7 +727,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="freshWaterDraft">Tatlı Su Çekimi (m)</Label>
+                  <Label htmlFor="freshWaterDraft">Fresh Water Draw (m)</Label>
                   <Input
                     id="freshWaterDraft"
                     type="number"
@@ -742,7 +742,7 @@ export const SafetyCalculations = () => {
             <TabsContent value="emergency" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="emergencyGeneratorCapacity">Acil Jeneratör Kapasitesi (kW)</Label>
+                  <Label htmlFor="emergencyGeneratorCapacity">Emergency Generator Capacity (kW)</Label>
                   <Input
                     id="emergencyGeneratorCapacity"
                     type="number"
@@ -751,7 +751,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="batteryCapacity">Akü Kapasitesi (Ah)</Label>
+                  <Label htmlFor="batteryCapacity">Battery Capacity (Ah)</Label>
                   <Input
                     id="batteryCapacity"
                     type="number"
@@ -770,7 +770,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="craneSWL">Vinç SWL (ton)</Label>
+                  <Label htmlFor="craneSWL">Crane SWL (ton)</Label>
                   <Input
                     id="craneSWL"
                     type="number"
@@ -786,7 +786,7 @@ export const SafetyCalculations = () => {
           <div className="mt-6">
             <Button onClick={calculate} className="w-full">
               <Calculator className="mr-2 h-4 w-4" />
-              Hesapla
+              Calculate
             </Button>
           </div>
         </CardContent>
@@ -798,21 +798,21 @@ export const SafetyCalculations = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Anchor className="h-5 w-5" />
-                Demir Hesaplamaları
+                Iron Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Önerilen Zincir Uzunluğu</Label>
+                  <Label className="text-sm font-medium">Recommended Chain Length</Label>
                   <p className="text-2xl font-bold text-info">{result.recommendedChainLength.toFixed(0)} m</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Minimum Zincir Uzunluğu</Label>
+                  <Label className="text-sm font-medium">Minimum Chain Length</Label>
                   <p className="text-2xl font-bold text-green-600">{result.minimumChainLength.toFixed(0)} m</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Güvenlik Faktörü</Label>
+                  <Label className="text-sm font-medium">Safety Factor</Label>
                   <p className="text-lg font-semibold">{result.safetyFactor.toFixed(1)}</p>
                 </div>
                 <div>
@@ -821,16 +821,16 @@ export const SafetyCalculations = () => {
                     result.anchoringStatus === 'safe' ? 'default' :
                     result.anchoringStatus === 'marginal' ? 'secondary' : 'destructive'
                   }>
-                    {result.anchoringStatus === 'safe' ? 'Güvenli' :
-                     result.anchoringStatus === 'marginal' ? 'Şartlı' : 'Güvensiz'}
+                    {result.anchoringStatus === 'safe' ? 'safe' :
+                     result.anchoringStatus === 'marginal' ? 'conditional' : 'insecure'}
                   </Badge>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Toplam Çevresel Kuvvet</Label>
+                  <Label className="text-sm font-medium">Total Circumferential Force</Label>
                   <p className="text-lg font-semibold">{result.totalEnvironmentalForce.toFixed(1)} ton</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Demir Tutma Gücü</Label>
+                  <Label className="text-sm font-medium">Iron Holding Power</Label>
                   <p className="text-lg font-semibold">{result.anchorHoldingPower.toFixed(1)} ton</p>
                 </div>
               </div>
@@ -843,13 +843,13 @@ export const SafetyCalculations = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Flame className="h-5 w-5" />
-                Yangın Sistemi
+                Fire System
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Su Akışı</Label>
+                  <Label className="text-sm font-medium">Water Flow</Label>
                   <p className="text-2xl font-bold text-red-600">{result.fireWaterFlow.toFixed(0)} L/dk</p>
                 </div>
                 <div>
@@ -857,24 +857,24 @@ export const SafetyCalculations = () => {
                   <p className="text-2xl font-bold text-orange-600">{result.firePumpEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Hortum Erişimi</Label>
+                  <Label className="text-sm font-medium">Hose Access</Label>
                   <p className="text-lg font-semibold">{result.fireReach.toFixed(1)} m</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Hazırlık Durumu</Label>
+                  <Label className="text-sm font-medium">Readiness Status</Label>
                   <Badge variant={
                     result.fireReadiness === 'excellent' ? 'default' :
                     result.fireReadiness === 'good' ? 'secondary' :
                     result.fireReadiness === 'fair' ? 'outline' : 'destructive'
                   }>
-                    {result.fireReadiness === 'excellent' ? 'Mükemmel' :
-                     result.fireReadiness === 'good' ? 'İyi' :
+                    {result.fireReadiness === 'excellent' ? 'excellent' :
+                     result.fireReadiness === 'good' ? 'good' :
                      result.fireReadiness === 'fair' ? 'Orta' : 'Yetersiz'}
                   </Badge>
                 </div>
               </div>
               <div>
-                <Label className="text-sm font-medium">Yangın Kapsamı</Label>
+                <Label className="text-sm font-medium">Fire Scope</Label>
                 <p className="text-sm">{result.fireCoverage}</p>
               </div>
               <CalculationSteps steps={calcSteps["fireFighting"] || []} />
@@ -885,7 +885,7 @@ export const SafetyCalculations = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <LifeBuoy className="h-5 w-5" />
-                Can Kurtarma Araçları
+                Lifesaving Vehicles
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -895,17 +895,17 @@ export const SafetyCalculations = () => {
                   <p className="text-2xl font-bold text-info">{result.totalLifeboatCapacity} kişi</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Toplam Can Salı Kapasitesi</Label>
+                  <Label className="text-sm font-medium">Total Life Raft Capacity</Label>
                   <p className="text-2xl font-bold text-green-600">{result.totalLifeRaftCapacity} kişi</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Tahliye Süresi</Label>
+                  <Label className="text-sm font-medium">Evacuation Time</Label>
                   <p className="text-lg font-semibold">{result.evacuationTime.toFixed(0)} dakika</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">SOLAS Uygunluğu</Label>
+                  <Label className="text-sm font-medium">SOLAS Compliance</Label>
                   <Badge variant={result.lsaCompliance ? 'default' : 'destructive'}>
-                    {result.lsaCompliance ? 'Uygun' : 'Uygun Değil'}
+                    {result.lsaCompliance ? 'Uygun' : 'Not Suitable'}
                   </Badge>
                 </div>
               </div>
@@ -931,13 +931,13 @@ export const SafetyCalculations = () => {
                   <p className="text-2xl font-bold text-green-600">{result.actualFreeboard.toFixed(0)} mm</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Yük Çizgisi Bölgesi</Label>
+                  <Label className="text-sm font-medium">Load Line Zone</Label>
                   <p className="text-lg font-semibold">{result.loadLineZone}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Freeboard Uygunluğu</Label>
+                  <Label className="text-sm font-medium">Freeboard Eligibility</Label>
                   <Badge variant={result.freeboardCompliance ? 'default' : 'destructive'}>
-                    {result.freeboardCompliance ? 'Uygun' : 'Uygun Değil'}
+                    {result.freeboardCompliance ? 'Uygun' : 'Not Suitable'}
                   </Badge>
                 </div>
               </div>
@@ -950,7 +950,7 @@ export const SafetyCalculations = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-red-500" />
-                  Uyarılar
+                  Warnings
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -971,7 +971,7 @@ export const SafetyCalculations = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-green-500" />
-                  Öneriler
+                  Suggestions
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -993,7 +993,7 @@ export const SafetyCalculations = () => {
       <Separator className="my-6" />
       <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
         <Calculator className="h-5 w-5" />
-        Hızlı Hesaplayıcılar
+        Quick Calculators
       </h3>
       <StandaloneFireCalcs />
     </div>
@@ -1046,12 +1046,12 @@ function StandaloneFireCalcs() {
         <CardHeader className="pb-2">
           <CardTitle className="text-base flex items-center gap-2">
             <Flame className="h-4 w-4" />
-            Köpük Çözeltisi Miktarı
+            Amount of Foam Solution
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="space-y-1">
-            <Label className="text-xs">Uygulama Hızı (L/m²/dk)</Label>
+            <Label className="text-xs">Application Rate (L/m²/min)</Label>
             <Input type="number" placeholder="6.5" value={foamInputs.rate} onChange={(e) => setFoamInputs(p => ({ ...p, rate: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
@@ -1059,12 +1059,12 @@ function StandaloneFireCalcs() {
             <Input type="number" placeholder="500" value={foamInputs.area} onChange={(e) => setFoamInputs(p => ({ ...p, area: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Uygulama Süresi (dk)</Label>
+            <Label className="text-xs">Application Time (min)</Label>
             <Input type="number" placeholder="15" value={foamInputs.time} onChange={(e) => setFoamInputs(p => ({ ...p, time: e.target.value }))} className="h-9" />
           </div>
           {foamResult && (
             <div className="bg-primary/5 rounded-lg p-3">
-              <span className="text-xs text-muted-foreground">Gerekli Köpük:</span>
+              <span className="text-xs text-muted-foreground">Required Foam:</span>
               <p className="text-lg font-bold">{foamResult} m³</p>
             </div>
           )}
@@ -1080,11 +1080,11 @@ function StandaloneFireCalcs() {
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="space-y-1">
-            <Label className="text-xs">Nozul Katsayısı (K)</Label>
+            <Label className="text-xs">Nozzle Coefficient (K)</Label>
             <Input type="number" placeholder="0.07" value={mistInputs.k} onChange={(e) => setMistInputs(p => ({ ...p, k: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Basınç (bar)</Label>
+            <Label className="text-xs">Pressure (bar)</Label>
             <Input type="number" placeholder="100" value={mistInputs.pressure} onChange={(e) => setMistInputs(p => ({ ...p, pressure: e.target.value }))} className="h-9" />
           </div>
           {mistResult && (
@@ -1100,7 +1100,7 @@ function StandaloneFireCalcs() {
         <CardHeader className="pb-2">
           <CardTitle className="text-base flex items-center gap-2">
             <Anchor className="h-4 w-4" />
-            Yangın Suyu Kapasitesi
+            Fire Water Capacity
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -1109,11 +1109,11 @@ function StandaloneFireCalcs() {
             <Input type="number" placeholder="150" value={waterInputs.q} onChange={(e) => setWaterInputs(p => ({ ...p, q: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Çalışma Süresi (dk)</Label>
+            <Label className="text-xs">Working Time (min)</Label>
             <Input type="number" placeholder="60" value={waterInputs.time} onChange={(e) => setWaterInputs(p => ({ ...p, time: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Pompa Sayısı</Label>
+            <Label className="text-xs">Number of Pumps</Label>
             <Input type="number" placeholder="2" value={waterInputs.pumps} onChange={(e) => setWaterInputs(p => ({ ...p, pumps: e.target.value }))} className="h-9" />
           </div>
           {waterResult && (
@@ -1129,24 +1129,24 @@ function StandaloneFireCalcs() {
         <CardHeader className="pb-2">
           <CardTitle className="text-base flex items-center gap-2">
             <Users className="h-4 w-4" />
-            Kaçış Süresi
+            Escape Time
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="space-y-1">
-            <Label className="text-xs">Kaçış Yolu Uzunluğu (m)</Label>
+            <Label className="text-xs">Escape Route Length (m)</Label>
             <Input type="number" placeholder="120" value={escapeInputs.length} onChange={(e) => setEscapeInputs(p => ({ ...p, length: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Yürüme Hızı (m/s)</Label>
+            <Label className="text-xs">Walking Speed (m/s)</Label>
             <Input type="number" placeholder="1.2" value={escapeInputs.speed} onChange={(e) => setEscapeInputs(p => ({ ...p, speed: e.target.value }))} className="h-9" />
           </div>
           {escapeResult && (
             <div className="bg-primary/5 rounded-lg p-3">
-              <span className="text-xs text-muted-foreground">Tahmini Kaçış Süresi (t = L / v):</span>
+              <span className="text-xs text-muted-foreground">Estimated Escape Time (t = L/v):</span>
               <p className="text-lg font-bold">{escapeResult} dakika</p>
               {parseFloat(escapeResult) > 30 && (
-                <Badge variant="destructive" className="mt-1">SOLAS 30 dk limitini aşıyor</Badge>
+                <Badge variant="destructive" className="mt-1">Exceeds SOLAS 30 minute limit</Badge>
               )}
             </div>
           )}

@@ -291,8 +291,8 @@ export function AppSearchExperience({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ara"
-          aria-label="Uygulamada ara"
+          placeholder="Search"
+          aria-label="Search in app"
           autoComplete="off"
           enterKeyHint="search"
           className="h-14 min-w-0 flex-1 border-0 bg-transparent px-3 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:outline-none"
@@ -368,7 +368,7 @@ export function AppSearchExperience({
             </div>
             {suggestedResults.length > 0 && (
               <p className="px-3 pb-1.5 pt-4 text-micro font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Öneriler
+                Suggestions
               </p>
             )}
           </>
@@ -378,7 +378,7 @@ export function AppSearchExperience({
           <div className="flex min-h-48 items-center justify-center px-6 text-center text-sm text-muted-foreground">
             {tokens.length > 0 && !deepIndex
               ? "İçerik dizini yükleniyor…"
-              : "Sonuç bulunamadı"}
+              : "No results found"}
           </div>
         ) : (
           <div className="search-result-group">

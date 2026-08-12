@@ -4,7 +4,7 @@ import { Sigma, Flame, Droplets, Wind } from "lucide-react";
 
 const safetyFormulas = [
   {
-    title: "Köpük Çözeltisi Miktarı",
+    title: "Amount of Foam Solution",
     icon: Droplets,
     formula: "Q = Uygulama Hızı × Alan × Süre",
     variables: [
@@ -40,7 +40,7 @@ const safetyFormulas = [
     note: "K değeri nozzle tipine göre üretici kataloglarından alınır."
   },
   {
-    title: "Yangın Suyu Kapasitesi",
+    title: "Fire Water Capacity",
     icon: Flame,
     formula: "Kapasite = Q × t × n",
     variables: [

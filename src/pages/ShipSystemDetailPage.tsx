@@ -42,7 +42,7 @@ export default function ShipSystemDetailPage() {
         <PageHeader title={section.title} icon={BookOpen} />
         <div className="space-y-3">
           {/* Liste yalnız başlık taşır: tanım, sistem zinciri, izleme, arıza ve
-              kayıt blokları konunun detaylı anlatımındaki "Özet" bölümünde
+              kayıt blokları konunun detaylı anlatımındaki "Summary" bölümünde
               tek kaynaktan okunur. */}
           {section.topics.map((topic, idx) => (
             <Link

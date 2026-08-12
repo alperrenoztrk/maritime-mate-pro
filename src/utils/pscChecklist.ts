@@ -207,7 +207,7 @@ export async function buildPscReport(
     { header: "Madde", key: "item", width: 52 },
     { header: "Referans", key: "ref", width: 20 },
     { header: "Durum", key: "status", width: 16 },
-    { header: "Not", key: "note", width: 40 },
+    { header: "Note", key: "note", width: 40 },
   ];
 
   ws.getRow(1).font = { bold: true };

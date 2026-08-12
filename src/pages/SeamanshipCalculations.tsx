@@ -205,7 +205,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               <Input placeholder="Scope" value={catenaryInputs.scope} onChange={(e) => setCatenaryInputs({ ...catenaryInputs, scope: e.target.value })} />
             </div>
             <div className="space-y-2">
-              <Label>Su Derinliği (m)</Label>
+              <Label>Water Depth (m)</Label>
               <Input placeholder="Derinlik" value={catenaryInputs.depth} onChange={(e) => setCatenaryInputs({ ...catenaryInputs, depth: e.target.value })} />
             </div>
             {calculateCatenaryLength() && (
@@ -228,7 +228,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label>Demir Ağırlığı (kg)</Label>
+            <Label>Iron Weight (kg)</Label>
             <Input placeholder="Demir ağırlığı" value={anchorInputs.weight} onChange={(e) => setAnchorInputs({ ...anchorInputs, weight: e.target.value })} />
           </div>
           <div className="space-y-2">
@@ -270,7 +270,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               <Input placeholder="Gemi deplasmanı" value={bollardInputs.displacement} onChange={(e) => setBollardInputs({ ...bollardInputs, displacement: e.target.value })} />
             </div>
             <div className="space-y-2">
-              <Label>Gemi Hızı (knot)</Label>
+              <Label>Ship Speed (knots)</Label>
               <Input placeholder="Hız" value={bollardInputs.speed} onChange={(e) => setBollardInputs({ ...bollardInputs, speed: e.target.value })} />
             </div>
             <div className="space-y-2">
@@ -300,7 +300,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               <Input placeholder="Filada zincir" value={scopeInputs.chainLength} onChange={(e) => setScopeInputs({ ...scopeInputs, chainLength: e.target.value })} />
             </div>
             <div className="space-y-2">
-              <Label>Su Derinliği (m)</Label>
+              <Label>Water Depth (m)</Label>
               <Input placeholder="Derinlik" value={scopeInputs.depth} onChange={(e) => setScopeInputs({ ...scopeInputs, depth: e.target.value })} />
             </div>
             {(() => {
@@ -356,7 +356,7 @@ const SeamanshipCalculationsPage = () => {
             <Link to="/seamanship/formulas">
               <Button variant="secondary" size="sm" className="gap-2">
                 <Sigma className="h-4 w-4" />
-                Formüller
+                Formulas
               </Button>
             </Link>
           </div>

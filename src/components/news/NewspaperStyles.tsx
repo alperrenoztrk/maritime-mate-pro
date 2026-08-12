@@ -1,14 +1,14 @@
 /**
  * Gerçek gazete nesnesinin paylaşılan CSS'i (`gz-` prefix).
  * MaritimeNews sayfası, NewsReaderDialog ve ana sayfadaki NewsPanel tarafından
- * render edilir; her yazı kağıdın üzerine "basılı" durur.
+ * render edilir; her yazı kağıdın üzerine "printed" durur.
  *
  * Doku için harici görsel yok — yalnızca inline SVG data-URI (feTurbulence) +
  * gradyanlar. Yazı tipleri `src/index.css` içinde kendi sunucumuzdan tanımlı
  * (UnifrakturMaguntia / Playfair Display / Old Standard TT), Georgia fallback'li.
  */
 
-/* Büyük ölçekli, bulutumsu renk oynaması — eski kağıdın asıl "eskimiş" katmanı.
+/* Büyük ölçekli, bulutumsu renk oynaması — eski kağıdın asıl "obsolete" katmanı.
    Düşük baseFrequency ile geniş lekeler; alfa turbulence'ın R kanalından
    türetildiği için düzensiz ve tekrarsız görünür. */
 const MOTTLE_SVG =

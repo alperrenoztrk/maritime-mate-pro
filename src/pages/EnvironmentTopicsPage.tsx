@@ -1954,7 +1954,7 @@ export default function EnvironmentTopicsPage() {
             <section className="rounded-2xl border border-border/40 bg-card/80 p-6 mt-6">
               <div className="mb-4 flex items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-emerald-500" />
-                <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
+                <h2 className="text-lg font-semibold text-foreground">Quick Access</h2>
               </div>
               <div className="grid gap-2 sm:grid-cols-3">
                 {[
@@ -2071,7 +2071,7 @@ export default function EnvironmentTopicsPage() {
                   <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
                     <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5" />
-                      Uyarılar
+                      Warnings
                     </h3>
                     <div className="space-y-2">
                       {currentContent.warnings.map((warning, index) => (

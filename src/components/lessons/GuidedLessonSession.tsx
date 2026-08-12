@@ -24,19 +24,19 @@ type FlowItem =
   | { kind: "quiz"; question: RecapQuestion };
 
 /**
- * "Alıştırmalar" — rehberli ders oturumu (güverte + makine, tüm konular).
+ * "Exercises" — rehberli ders oturumu (güverte + makine, tüm konular).
  * Akış (lessonFlow) yazılmış konularda Duolingo modu: ÖNCE ANLAT → KARIŞIK SOR,
  * yanlışlar sonda tekrar. Akışı henüz olmayan konularda REHBERLİ OKUMA modu:
  * bölümler sırayla öğretilir (içerik mevcut anlatımdan, read-only).
  */
 export default function GuidedLessonSession() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
-  const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
+  const decodedTitle = topicTitle ? decodeURIComponent(topicTitle): "";
   const flow = getLessonFlow(categoryId, decodedTitle);
   const content = getBetaTopic(categoryId, decodedTitle);
   const hasFlow = !!flow;
 
-  // Oturum öğeleri: akış varsa blok blok öğret → karışık sor; yoksa sadece öğret.
+  // Session elements: teach block by block if flow exists → ask shuffle; Otherwise just teach.
   const mainItems = useMemo<FlowItem[]>(() => {
     if (!content) return [];
     const items: FlowItem[] = [];
@@ -86,12 +86,12 @@ export default function GuidedLessonSession() {
   if (!content || content.sections.length === 0) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
-        <p className="text-muted-foreground">Bu konu için anlatım içeriği henüz hazırlanmadı.</p>
+        <p className="text-muted-foreground">The narrative content for this topic has not been prepared yet.</p>
         <Link
           to={`/exercises/${categoryId}/topics`}
           className="text-sm text-primary underline"
         >
-          Konulara dön
+          Back to topics
         </Link>
       </div>
     );
@@ -169,13 +169,13 @@ export default function GuidedLessonSession() {
             {hasFlow ? (
               <>
                 <Trophy className="mx-auto h-16 w-16 text-amber-500" />
-                <h2 className="mt-4 text-2xl font-bold text-foreground">Oturum Tamamlandı!</h2>
+                <h2 className="mt-4 text-2xl font-bold text-foreground">Session Completed!</h2>
                 <div className="mt-3 text-5xl font-bold text-primary">%{percent}</div>
                 <p className="mt-2 text-sm text-muted-foreground">{correct} / {answeredTotal} doğru</p>
                 {weakSections.length > 0 ? (
                   <div className="mt-5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-left">
                     <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
-                      Tekrar etmen iyi olur
+                      You better repeat
                     </p>
                     <ul className="mt-2 space-y-1">
                       {weakSections.map((s) => (
@@ -185,27 +185,27 @@ export default function GuidedLessonSession() {
                   </div>
                 ) : (
                   <p className="mt-4 text-sm text-emerald-600 dark:text-emerald-400">
-                    Harika! Tüm soruları doğru bildin.
+                    Great! You got all the questions correct.
                   </p>
                 )}
               </>
             ) : (
               <>
                 <CheckCircle2 className="mx-auto h-16 w-16 text-emerald-500" />
-                <h2 className="mt-4 text-2xl font-bold text-foreground">Konuyu Tamamladın!</h2>
+                <h2 className="mt-4 text-2xl font-bold text-foreground">You have completed the topic!</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Tüm bölümleri okudun. Pekiştirmek için AI eğitmene soru sorabilirsin.
+                  You have read all the chapters. You can ask questions to the AI ​​trainer to reinforce it.
                 </p>
               </>
             )}
 
             <div className="mt-6 flex flex-col gap-2">
               <Button onClick={restart} className="w-full">
-                <RotateCcw className="mr-2 h-4 w-4" /> Tekrar Başla
+                <RotateCcw className="mr-2 h-4 w-4" /> Start Again
               </Button>
               <Button asChild variant="outline" className="w-full">
                 <Link to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}>
-                  <Sparkles className="mr-2 h-4 w-4" /> AI Eğitmene Sor
+                  <Sparkles className="mr-2 h-4 w-4" /> Ask the AI Instructor
                 </Link>
               </Button>
             </div>
@@ -215,7 +215,7 @@ export default function GuidedLessonSession() {
             {inRepeatPhase && (
               <div className="mb-4 flex items-center justify-center gap-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-center text-xs font-semibold text-amber-700 dark:text-amber-300">
                 <RotateCcw className="h-3.5 w-3.5" aria-hidden />
-                Yanlışları pekiştirme turu
+                Tour of reinforcing mistakes
               </div>
             )}
 
@@ -227,13 +227,13 @@ export default function GuidedLessonSession() {
                   topicTitle={content.title}
                 />
                 <Button onClick={advance} className="mt-6 w-full">
-                  {lastStep ? "Bitir" : "Anladım, devam"} <ArrowRight className="ml-2 h-4 w-4" />
+                  {lastStep ? "Bitir" : "Got it, continue."} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </>
             ) : current?.kind === "quiz" ? (
               <>
                 <p className="mb-3 text-micro font-bold uppercase tracking-[0.2em] text-primary">
-                  Karışık Soru
+                  Mixed Question
                 </p>
                 <KnowledgeCheck
                   key={`${sessionKey}-${pos}`}
@@ -243,7 +243,7 @@ export default function GuidedLessonSession() {
                 />
                 {answeredThisStep && (
                   <Button onClick={advance} className="mt-5 w-full">
-                    {lastStep ? "Sonucu Gör" : "Devam"} <ArrowRight className="ml-2 h-4 w-4" />
+                    {lastStep ? "See Result" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 )}
               </>

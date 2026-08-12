@@ -112,7 +112,7 @@ export function buildCalculationRecord(
       detail: `${inputs.length}/${(entry.inputs ?? []).length} alan sayısal olarak işlendi.`,
     },
     {
-      label: "Formül izi",
+      label: "formula trace",
       status: entry.formula.trim() ? "pass" : "error",
       detail: entry.formula.trim() ? "Kullanılan bağıntı kayda eklendi." : "Formül metni eksik.",
     },
@@ -169,8 +169,8 @@ export function calculationRecordToText(record: CalculationRecord): string {
     ...record.steps.flatMap((step, index) => [
       `${index + 1}. ${step.title}`,
       step.expression ? `   ${step.expression}` : "",
-      step.result ? `   Sonuç: ${step.result}` : "",
-      step.hint ? `   Not: ${step.hint}` : "",
+      step.result ? `   Result: ${step.result}` : "",
+      step.hint ? `   Note: ${step.hint}` : "",
     ]).filter(Boolean),
     "",
     `KAYNAK: ${source}`,

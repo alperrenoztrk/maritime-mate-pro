@@ -17,10 +17,10 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 type QuickAction = { label: string; prompt: string; level?: TutorLevel };
 
 const QUICK_ACTIONS: QuickAction[] = [
-  { label: "Daha basit anlat", prompt: "Bu konuyu en baştan, çok basit bir dille ve günlük bir benzetmeyle anlat.", level: "basit" },
-  { label: "Bana bir soru sor", prompt: "Bu konuyu anlayıp anlamadığımı ölçmek için bana tek bir soru sor ve cevabımı bekle." },
-  { label: "Gemideki uygulaması ne?", prompt: "Bu konunun gerçek bir gemideki/vardiyadaki pratik uygulamasını somut bir örnekle açıkla." },
-  { label: "Sık yapılan hata ne?", prompt: "Bu konuda zabitlerin/öğrencilerin en sık yaptığı hataları ve nasıl kaçınılacağını anlat." },
+  { label: "Daha basit anlat", prompt: "Explain this topic from the beginning, in very simple language and with an everyday analogy.", level: "basit" },
+  { label: "ask me a question", prompt: "To test whether I understand this topic, ask me one question and wait for my answer." },
+  { label: "What is its application on the ship?", prompt: "Explain the practical application of this topic on a real ship/shift with a concrete example." },
+  { label: "What is the common mistake?", prompt: "Explain the most common mistakes made by officers/students in this regard and how to avoid them." },
 ];
 
 export function LessonAITutor({
@@ -56,7 +56,7 @@ export function LessonAITutor({
         {
           role: "assistant",
           content:
-            "Eğitmen asistanını kullanmak için giriş yapmanız gerekiyor. Ayarlar → Hesap bölümünden veya /auth sayfasından giriş yapabilirsiniz. Bu arada ders anlatımını ve çözümlü örnekleri inceleyebilirsiniz.",
+            "You need to log in to use the instructor assistant. You can log in from Settings → Account or from the /auth page. In the meantime, you can review the lecture and solved examples.",
         },
       ]);
       return;
@@ -74,7 +74,7 @@ export function LessonAITutor({
     } catch {
       setMessages((m) => [
         ...m,
-        { role: "assistant", content: "Şu anda yanıt veremedim, lütfen tekrar deneyin." },
+        { role: "assistant", content: "I couldn't respond right now, please try again." },
       ]);
     } finally {
       setLoading(false);
@@ -91,7 +91,7 @@ export function LessonAITutor({
           <Sparkles className="h-4 w-4" />
         </div>
         <div>
-          <h2 className="text-base font-bold text-foreground">AI Eğitmen</h2>
+          <h2 className="text-base font-bold text-foreground">AI Trainer</h2>
         </div>
       </div>
 
@@ -131,7 +131,7 @@ export function LessonAITutor({
             </div>
           ))}
           {loading && (
-            <p className="pl-9 text-xs italic text-muted-foreground">Eğitmen yazıyor…</p>
+            <p className="pl-9 text-xs italic text-muted-foreground">Instructor writes…</p>
           )}
         </div>
       )}
@@ -160,7 +160,7 @@ export function LessonAITutor({
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Bu konu hakkında bir şey sor…"
+          placeholder="Ask anything about this topic…"
           disabled={loading}
           className="flex-1 rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none focus:border-primary/50 disabled:opacity-50"
         />

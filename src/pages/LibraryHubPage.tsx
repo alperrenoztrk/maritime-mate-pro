@@ -20,8 +20,8 @@ import {
 const operationalReferences = [
   { title: "Personel ve Görevler", to: "/crew", icon: Users, accent: "accent-deep" },
   { title: "Köprüüstü Cihazları", to: "/bridge", icon: Compass, accent: "accent-ocean" },
-  { title: "Gemi Sistemleri", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
-  { title: "Gemi Görevleri", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
+  { title: "Ship Systems", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
+  { title: "Ship Missions", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
   { title: "Gemi Operasyonları", to: "/ship-operations", icon: Anchor, accent: "accent-ocean" },
   { title: "Makine Bölümü", to: "/machinery", icon: Wrench, accent: "accent-slate" },
 ];
@@ -35,7 +35,7 @@ const quickReferences = [
 
 export default function LibraryHubPage() {
   return (
-    <LibraryPageShell title="Kitaplık" icon={BookA} maxWidth="max-w-4xl">
+    <LibraryPageShell title="bookshelf" icon={BookA} maxWidth="max-w-4xl">
       <SEO
         title="Kitaplık — Mariner's Book"
         description="Operasyon, gemi sistemleri, personel ve denizcilik referanslarına tek yerden ulaşın."

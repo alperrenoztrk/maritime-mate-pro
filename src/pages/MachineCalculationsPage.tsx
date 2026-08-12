@@ -125,7 +125,7 @@ export default function MachineCalculationsPage() {
     <MobileLayout>
       <CalculationGridScreen
         eyebrow="Makine"
-        title="Makine Hesaplamaları"
+        title="Machine Calculations"
       >
         <Card className="border-border/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
           <CardHeader className="pb-3">

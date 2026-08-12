@@ -54,7 +54,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
     try {
       const resultList = entry.calculate(validation.values);
       if (!Array.isArray(resultList) || resultList.length === 0) {
-        throw new Error("Hesap motoru sonuç üretmedi.");
+        throw new Error("The calculator produced no results.");
       }
 
       const calculatedSteps = entry.steps
@@ -85,7 +85,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
       setRecord(null);
       setShowSteps(false);
       setCalculationError(
-        error instanceof Error ? error.message : "Hesaplama tamamlanamadı. Girdileri kontrol edin.",
+        error instanceof Error ? error.message : "The calculation could not be completed. Check the entries.",
       );
     }
   };
@@ -148,13 +148,13 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
           ))}
         </div>
         <Button onClick={handleCalc} size="sm" className="w-full gap-2">
-          <Calculator className="h-4 w-4" /> Hesapla
+          <Calculator className="h-4 w-4" /> Calculate
         </Button>
         {calculationError && (
           <div role="alert" className="flex items-start gap-2 rounded-lg border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
             <div>
-              <p className="font-semibold">Hesaplama tamamlanamadı</p>
+              <p className="font-semibold">Calculation could not be completed</p>
               <p className="text-xs">{calculationError}</p>
             </div>
           </div>
@@ -169,7 +169,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
               className="w-full gap-2 text-primary"
             >
               <ListOrdered className="h-4 w-4" />
-              {showSteps ? "Adımları Gizle" : "Çözümü Adım Adım Göster"}
+              {showSteps ? "Hide Steps" : "Show Solution Step by Step"}
             </Button>
             {showSteps && (
               <StepByStepSolution entry={entry} vals={numVals} steps={steps} />

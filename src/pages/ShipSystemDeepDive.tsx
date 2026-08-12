@@ -31,10 +31,10 @@ import { SystemArchitectureDiagram } from "@/components/ship-systems/SystemArchi
 import { scrollToTop } from "@/lib/scrollToTop";
 
 const calloutMeta: Record<ShipSystemCallout["type"], { Icon: typeof AlertTriangle; cls: string; label: string }> = {
-  warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Uyarı" },
+  warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Warning" },
   reference:  { Icon: BookMarked,    cls: "border-blue-500/40 bg-blue-500/10 text-blue-900 dark:text-blue-200", label: "Referans" },
-  tip:        { Icon: Lightbulb,     cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200", label: "İpucu" },
-  example:    { Icon: FileText,      cls: "border-violet-500/40 bg-violet-500/10 text-violet-900 dark:text-violet-200", label: "Örnek" },
+  tip:        { Icon: Lightbulb,     cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200", label: "hint" },
+  example:    { Icon: FileText,      cls: "border-violet-500/40 bg-violet-500/10 text-violet-900 dark:text-violet-200", label: "Example" },
   regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Mevzuat" },
 };
 
@@ -108,7 +108,7 @@ export default function ShipSystemDeepDive() {
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-5">
           <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">
-              <BookOpen className="h-4 w-4" /> Detaylı Anlatım
+              <BookOpen className="h-4 w-4" /> Detailed Explanation
             </div>
             <p className="mb-1 text-xs text-muted-foreground">
               {section.title}
@@ -131,7 +131,7 @@ export default function ShipSystemDeepDive() {
               {chapters.length > 0 && (
                 <nav className="sticky top-2 z-20 -mx-1 overflow-x-auto rounded-xl border border-border/40 bg-card/80 p-2">
                   <div className="flex gap-1.5">
-                    {["Özet", ...chapters.map((ch) => ch.heading.replace(/^\d+\.\s*/, ""))].map((label, i) => (
+                    {["Summary", ...chapters.map((ch) => ch.heading.replace(/^\d+\.\s*/, ""))].map((label, i) => (
                       <button
                         key={i}
                         onClick={() => setActivePage(i)}

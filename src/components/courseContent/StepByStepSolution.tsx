@@ -7,7 +7,7 @@ import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 
 /**
  * Bir formülün deterministik çözüm adımlarını numaralı kartlar halinde gösterir
- * ve altında "Bu işlemi yapay zekaya sor" butonu sunar. Yapay zeka yalnızca
+ * ve altında "Ask this process to artificial intelligence" butonu sunar. Yapay zeka yalnızca
  * mevcut (doğru) adımları öğretici biçimde açıklar; yeni sayı üretmez.
  *
  * Adımlar `entry.steps(vals)` ile CalculatorCard tarafında üretilip buraya
@@ -35,7 +35,7 @@ export function StepByStepSolution({
       const result = await explainCalculation(entry, vals, steps, currentLanguage);
       setAiAnswer(result);
     } catch {
-      setError("Açıklama alınamadı. Lütfen tekrar deneyin.");
+      setError("No explanation received. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -45,7 +45,7 @@ export function StepByStepSolution({
 
   return (
     <div className="space-y-3 rounded-lg border border-border/40 bg-background/60 p-3">
-      <p className="text-xs font-semibold text-primary">Adım Adım Çözüm</p>
+      <p className="text-xs font-semibold text-primary">Step by Step Solution</p>
 
       <ol className="space-y-2">
         {steps.map((s, i) => (
@@ -82,11 +82,11 @@ export function StepByStepSolution({
       >
         {loading ? (
           <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Hazırlanıyor...
+            <Loader2 className="h-4 w-4 animate-spin" /> Getting ready...
           </>
         ) : (
           <>
-            <Sparkles className="h-4 w-4" /> Bu işlemi yapay zekaya sor
+            <Sparkles className="h-4 w-4" /> Ask this process to artificial intelligence
           </>
         )}
       </Button>
@@ -95,7 +95,7 @@ export function StepByStepSolution({
       {aiAnswer && !loading && (
         <div className="rounded-md border border-blue-500/20 bg-blue-500/5 p-3">
           <p className="mb-1 flex items-center gap-1.5 text-micro uppercase tracking-wide text-blue-500">
-            <Sparkles className="h-3 w-3" /> Yapay Zeka Açıklaması
+            <Sparkles className="h-3 w-3" /> Artificial Intelligence Explained
           </p>
           <p className="whitespace-pre-wrap text-xs leading-relaxed text-foreground">
             {aiAnswer}

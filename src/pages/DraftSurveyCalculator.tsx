@@ -65,7 +65,7 @@ const DraftSurveyCalculator = () => {
 
   return (
     <CalculationLayout
-      title="Hesap Makinesi"
+      title="Calculator"
       icon={Calculator}
       hero={{
         title: "Draft Survey",

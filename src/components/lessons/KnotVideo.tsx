@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 
 interface KnotVideoProps {
   videoId: string;
-  /** Accessible label, e.g. "İzbarço Bağı (Bowline)". */
+  /** Accessible label, e.g. "İzbarço Bağları (Bowline)". */
   title: string;
   /** Local diagram used as the poster / offline fallback. */
   poster: string;
@@ -32,7 +32,7 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
           <iframe
             className="absolute inset-0 h-full w-full"
             src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-            title={`${title} — bağ atma videosu`}
+            title={`${title} — tying video`}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             loading="lazy"
@@ -42,12 +42,12 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
             type="button"
             onClick={() => setPlaying(true)}
             className="group absolute inset-0 h-full w-full"
-            aria-label={`${title} bağ atma videosunu oynat`}
+            aria-label={`${title} Play tying video`}
           >
             <img
               src={thumbFailed ? poster : thumb}
               onError={() => setThumbFailed(true)}
-              alt={`${title} bağının önizlemesi`}
+              alt={`${title} Preview of link`}
               className={`h-full w-full ${thumbFailed ? "bg-white object-contain" : "object-cover"}`}
               loading="lazy"
             />

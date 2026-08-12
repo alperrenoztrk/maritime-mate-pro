@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/safeClient";
 
-const passwordSchema = z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72);
+const passwordSchema = z.string().min(8, { message: "Password must be at least 8 characters" }).max(72);
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const ResetPassword = () => {
       return;
     }
     if (password !== confirm) {
-      toast.error("Şifreler eşleşmiyor");
+      toast.error("Passwords do not match");
       return;
     }
 
@@ -58,10 +58,10 @@ const ResetPassword = () => {
     try {
       const { error } = await supabase.auth.updateUser({ password });
       if (error) {
-        toast.error(error.message || "Şifre güncellenemedi");
+        toast.error(error.message || "Could not update password");
         return;
       }
-      toast.success("Şifreniz belirlendi. Artık e-posta ve şifre ile giriş yapabilirsiniz.");
+      toast.success("Your password has been set. You can now log in with email and password.");
       navigate("/", { replace: true });
     } finally {
       setBusy(false);
@@ -77,7 +77,7 @@ const ResetPassword = () => {
               <Anchor className="w-8 h-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl">Şifre Belirle</CardTitle>
+          <CardTitle className="text-2xl">Set Password</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {!ready ? (
@@ -87,17 +87,17 @@ const ResetPassword = () => {
           ) : !hasSession ? (
             <div className="space-y-4 text-center">
               <p className="text-sm text-muted-foreground">
-                Bu bağlantı geçersiz veya süresi dolmuş. Lütfen giriş sayfasından yeni bir
-                şifre belirleme e-postası isteyin.
+                This link is invalid or expired. Please register for a new one from the login page.
+                Request a password setting email.
               </p>
               <Button className="w-full" onClick={() => navigate("/auth", { replace: true })}>
-                Giriş sayfasına dön
+                Return to login page
               </Button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="space-y-1.5">
-                <Label htmlFor="new-password">Yeni şifre</Label>
+                <Label htmlFor="new-password">new password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
@@ -112,7 +112,7 @@ const ResetPassword = () => {
                 </div>
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="confirm-password">Yeni şifre (tekrar)</Label>
+                <Label htmlFor="confirm-password">New password (again)</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
@@ -127,10 +127,10 @@ const ResetPassword = () => {
                 </div>
               </div>
               <Button type="submit" className="w-full" disabled={busy}>
-                {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Şifreyi Kaydet"}
+                {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Save Password"}
               </Button>
               <p className="text-xs text-muted-foreground text-center">
-                Şifre en az 8 karakter olmalıdır
+                Password must be at least 8 characters
               </p>
             </form>
           )}

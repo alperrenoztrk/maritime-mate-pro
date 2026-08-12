@@ -76,7 +76,7 @@ GM                : ${results.gm.toFixed(3)} m
 
 STABİLİTE ANALİZİ
 ----------------
-İlk Stabilite     : ${results.gm >= 0.15 ? 'UYGUN' : 'UYGUN DEĞİL'} (GM = ${results.gm.toFixed(3)} m)
+İlk Stabilite     : ${results.gm >= 0.15 ? 'UYGUN' : 'NOT SUITABLE'} (GM = ${results.gm.toFixed(3)} m)
 Serbest Yüzey Etkisi : ${results.fsm.toFixed(3)} m
 Düzeltilmiş GM    : ${(results.gm - results.fsm).toFixed(3)} m
 GZ (15°)          : ${results.gz.toFixed(3)} m
@@ -230,7 +230,7 @@ Stable Tales - Maritime Stability System
               />
             </div>
             <div>
-              <Label>Tarih</Label>
+              <Label>Date</Label>
               <Input
                 type="date"
                 value={reportData.tarih}

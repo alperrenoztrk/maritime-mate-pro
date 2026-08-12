@@ -25,7 +25,7 @@ export default function StabilityGZCurvePage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-6 w-6" />
-            GZ Eğrisi ve Stabilite Kolu
+            GZ Curve and Stability Arm
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">

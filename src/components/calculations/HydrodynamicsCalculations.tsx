@@ -440,7 +440,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "V = Vknot x 0.514",
           substitution: `V = ${data.shipSpeed} x 0.514`,
           result: `V = ${speedMS.toFixed(3)} m/s`,
-          explanation: "Gemi hizi knot biriminden m/s birimine donusturulur."
+          explanation: "Ship speed is converted from knots to m/s."
         },
         {
           step: 2,
@@ -448,7 +448,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Fn = V / sqrt(g x L)",
           substitution: `Fn = ${speedMS.toFixed(3)} / sqrt(${g} x ${data.shipLength})`,
           result: `Fn = ${dimensionless.froudeNumber.toFixed(4)}`,
-          explanation: "Froude sayisi, gemi hizinin dalga hizina oranini ifade eder. 0.32'nin uzerinde dalga direnci onemli olcude artar."
+          explanation: "Froude number expresses the ratio of ship speed to wave speed. Above 0.32 the wave resistance increases significantly."
         },
         {
           step: 3,
@@ -456,7 +456,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Rn = V x L / v",
           substitution: `Rn = ${speedMS.toFixed(3)} x ${data.shipLength} / ${nu}`,
           result: `Rn = ${dimensionless.reynoldsNumber.toExponential(3)}`,
-          explanation: "Reynolds sayisi, akisin turbulansi hakkinda bilgi verir. Yuksek degerler tam turbulanslI akisi gosterir."
+          explanation: "Reynolds number gives information about the turbulence of the flow. High values ​​indicate fully turbulent flow."
         },
         {
           step: 4,
@@ -464,7 +464,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Cf = 0.075 / (log10(Rn) - 2)^2",
           substitution: `Cf = 0.075 / (log10(${dimensionless.reynoldsNumber.toExponential(3)}) - 2)^2`,
           result: `Cf = ${(0.075 / Math.pow(Math.log10(dimensionless.reynoldsNumber) - 2, 2)).toExponential(4)}`,
-          explanation: "ITTC-1957 formulu ile duz levha surtunme direnci katsayisi hesaplanir."
+          explanation: "Flat plate friction resistance coefficient is calculated with the ITTC-1957 formula."
         },
         {
           step: 5,
@@ -480,7 +480,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Rv = 0.5 x rho x S x V^2 x Cf x (1+k) / 1000",
           substitution: `Rv = 0.5 x ${rho} x ${data.wetSurfaceArea} x ${speedMS.toFixed(3)}^2 x Cf x ${resistance.formFactor.toFixed(4)} / 1000`,
           result: `Rv = ${resistance.viscousResistance.toFixed(2)} kN`,
-          explanation: "Viskoz direnc, suyun viskozitesinden kaynaklanan surtunme ve form direncinin toplamidir."
+          explanation: "Viscous resistance is the sum of friction and form resistance resulting from the viscosity of water."
         },
         {
           step: 7,
@@ -496,7 +496,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Rt = Rv + Rw",
           substitution: `Rt = ${resistance.viscousResistance.toFixed(2)} + ${resistance.waveResistance.toFixed(2)}`,
           result: `Rt = ${resistance.totalResistance.toFixed(2)} kN`,
-          explanation: "Toplam direnc, viskoz direnc ile dalga direncinin toplamidir."
+          explanation: "Total resistance is the sum of viscous resistance and wave resistance."
         },
         {
           step: 9,
@@ -504,7 +504,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "w = 0.25 x Cb + 0.15",
           substitution: `w = 0.25 x ${data.blockCoefficient} + 0.15`,
           result: `w = ${propulsion.wakeDeduction.toFixed(4)}`,
-          explanation: "Iz katsayisi, pervane diskindeki suyun gemi hizina gore yavaslamasini ifade eder."
+          explanation: "The wake coefficient refers to the deceleration of the water in the propeller disk relative to the ship's speed."
         },
         {
           step: 10,
@@ -520,15 +520,15 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "etaH = (1 - t) / (1 - w)",
           substitution: `etaH = (1 - ${propulsion.thrustDeduction.toFixed(4)}) / (1 - ${propulsion.wakeDeduction.toFixed(4)})`,
           result: `etaH = ${(propulsion.hullEfficiency).toFixed(2)}%`,
-          explanation: "Govde verimi, iz ve itki azalma katsayilarinin birlesmis etkisini gosterir."
+          explanation: "Hull efficiency shows the combined effect of wake and thrust reduction coefficients."
         },
         {
           step: 12,
           title: "Pervane Verimi",
           formula: "etaO = (Kt / Kq) x (J / 2pi)",
-          substitution: `etaO hesaplandi (Wageningen B-serisi yaklasimi ile)`,
+          substitution: `etaO calculated (using Wageningen B-series approach)`,
           result: `etaO = ${propulsion.propellerEfficiency.toFixed(2)}%`,
-          explanation: "Pervane acik su verimi, pervane itki ve tork katsayilari ile ilerleme katsayisindan hesaplanir."
+          explanation: "Propeller open water efficiency is calculated from the propeller thrust and torque coefficients and the advance coefficient."
         },
         {
           step: 13,
@@ -558,7 +558,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "k = omega^2 / g",
           substitution: `k = ${omega.toFixed(4)}^2 / ${g}`,
           result: `k = ${kWave.toFixed(6)} 1/m`,
-          explanation: "Dalga sayisi, dalga boyuyla ters orantili bir buyukluktur."
+          explanation: "Wave number is a magnitude inversely proportional to wavelength."
         },
         {
           step: 3,
@@ -566,7 +566,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "omegae = omega - omega^2 x V / g x cos(mu)",
           substitution: `omegae = ${omega.toFixed(4)} - ${omega.toFixed(4)}^2 x ${speedMS.toFixed(3)} / ${g} x cos(${data.waveDirection}deg)`,
           result: `omegae = ${motions.encounterFrequency.toFixed(4)} rad/s`,
-          explanation: "Karsilasma frekansi, geminin dalga ile karsilasma hizini ifade eder. Dalga yonu ve gemi hizina baglidir."
+          explanation: "Encounter frequency refers to the speed at which the ship encounters the wave. It depends on wave direction and ship speed."
         },
         {
           step: 4,
@@ -614,7 +614,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "av = omegae^2 x z",
           substitution: `av = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.heaveAmplitude.toFixed(2)}`,
           result: `av = ${motions.verticalAcceleration.toFixed(3)} m/s^2`,
-          explanation: "Dusey ivme, dalip cikma hareketinden kaynaklanan ivmedir. Yuk ve murettebat konforu icin onemlidir."
+          explanation: "Vertical acceleration is the acceleration resulting from the diving motion. It is important for cargo and crew comfort."
         },
         {
           step: 10,
@@ -636,7 +636,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Sp = V x Hw / L^2",
           substitution: `Sp = ${speedMS.toFixed(3)} x ${data.waveHeight} / ${data.shipLength}^2`,
           result: `Sp = ${slammingParameter.toExponential(4)}`,
-          explanation: "Slamming parametresi, gemi hizi ve dalga yuksekligine bagli olarak slamming olasiligini belirler."
+          explanation: "The slamming parameter determines the probability of slamming depending on ship speed and wave height."
         },
         {
           step: 2,
@@ -658,7 +658,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           step: 4,
           title: "Ilave Dalga Direnci (Gerritsma-Beukelman)",
           formula: "Raw = Caw x 0.5 x rho x g x Hw^2 x B / 1000",
-          substitution: `Raw hesabi: dalga sayisi, dalga yuksekligi, gemi boyutlari ve dalga yonu kullanilarak yapildi`,
+          substitution: `Raw calculation: made using wave number, wave height, ship dimensions and wave direction`,
           result: `Raw = ${addedRes.addedResistance.toFixed(2)} kN`,
           explanation: "Ilave dalga direnci, dalgali denizde artan direnci ifade eder."
         },
@@ -696,7 +696,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "PE = Rt x V",
           substitution: `PE = ${resistance.totalResistance.toFixed(2)} x ${speedMS.toFixed(3)}`,
           result: `PE = ${effectivePower.toFixed(1)} kW`,
-          explanation: "Efektif guc, geminin belirli bir hizda suyu itmek icin gereken guctur."
+          explanation: "Effective power is the power required by the ship to push water at a given speed."
         },
         {
           step: 2,
@@ -704,7 +704,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "PT = PE / etaH",
           substitution: `PT = ${effectivePower.toFixed(1)} / ${(propulsion.hullEfficiency / 100).toFixed(4)}`,
           result: `PT = ${thrustPower.toFixed(1)} kW`,
-          explanation: "Itki gucu, pervanenin suya aktardigi guctur. Govde verimi ile iliskilidir."
+          explanation: "Impulse power is the power that the propeller transfers to the water. It is related to stem efficiency."
         },
         {
           step: 3,
@@ -712,7 +712,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "PD = PT / etaO",
           substitution: `PD = ${thrustPower.toFixed(1)} / ${(propulsion.propellerEfficiency / 100).toFixed(4)}`,
           result: `PD = ${deliveredPower.toFixed(1)} kW`,
-          explanation: "Teslim edilen guc, pervane miline iletilmesi gereken guctur. Pervane verimi ile iliskilidir."
+          explanation: "The delivered power is the power that must be transmitted to the propeller shaft. It is related to propeller efficiency."
         }
       ];
 
@@ -729,8 +729,8 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       });
     } catch (error) {
       toast({
-        title: "Hata",
-        description: "Hesaplama sırasında bir hata oluştu.",
+        title: "Error",
+        description: "An error occurred during calculation.",
         variant: "destructive",
       });
     }
@@ -752,7 +752,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         <CardContent>
           <Tabs defaultValue={initialTab || "ship"} className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="ship">Gemi</TabsTrigger>
+              <TabsTrigger value="ship">ship</TabsTrigger>
               <TabsTrigger value="propulsion">Sevk</TabsTrigger>
               <TabsTrigger value="waves">Dalgalar</TabsTrigger>
               <TabsTrigger value="motion">Hareket</TabsTrigger>
@@ -761,7 +761,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <TabsContent value="ship" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="shipLength">Gemi Boyu (m)</Label>
+                  <Label htmlFor="shipLength">Ship Length (m)</Label>
                   <Input
                     id="shipLength"
                     type="number"
@@ -771,7 +771,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="shipBeam">Gemi Eni (m)</Label>
+                  <Label htmlFor="shipBeam">Ship Width (m)</Label>
                   <Input
                     id="shipBeam"
                     type="number"
@@ -781,7 +781,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="shipDraft">Su Çekimi (m)</Label>
+                  <Label htmlFor="shipDraft">Water Draft (m)</Label>
                   <Input
                     id="shipDraft"
                     type="number"
@@ -800,7 +800,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="blockCoefficient">Blok Katsayısı (Cb)</Label>
+                  <Label htmlFor="blockCoefficient">Block Coefficient (Cb)</Label>
                   <Input
                     id="blockCoefficient"
                     type="number"
@@ -810,7 +810,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="shipSpeed">Gemi Hızı (knot)</Label>
+                  <Label htmlFor="shipSpeed">Ship Speed (knots)</Label>
                   <Input
                     id="shipSpeed"
                     type="number"
@@ -825,7 +825,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <TabsContent value="propulsion" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="enginePower">Motor Gücü (kW)</Label>
+                  <Label htmlFor="enginePower">Engine Power (kW)</Label>
                   <Input
                     id="enginePower"
                     type="number"
@@ -834,7 +834,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="propellerDiameter">Pervane Çapı (m)</Label>
+                  <Label htmlFor="propellerDiameter">Propeller Diameter (m)</Label>
                   <Input
                     id="propellerDiameter"
                     type="number"
@@ -853,7 +853,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="propellerPitch">Pervane Adımı (m)</Label>
+                  <Label htmlFor="propellerPitch">Propeller Pitch (m)</Label>
                   <Input
                     id="propellerPitch"
                     type="number"
@@ -863,7 +863,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="numberOfBlades">Kanat Sayısı</Label>
+                  <Label htmlFor="numberOfBlades">Number of Wings</Label>
                   <Input
                     id="numberOfBlades"
                     type="number"
@@ -872,7 +872,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="thrust">İtki Kuvveti (kN)</Label>
+                  <Label htmlFor="thrust">Thrust Force (kN)</Label>
                   <Input
                     id="thrust"
                     type="number"
@@ -886,7 +886,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <TabsContent value="waves" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="waveHeight">Dalga Yüksekliği (m)</Label>
+                  <Label htmlFor="waveHeight">Wave Height (m)</Label>
                   <Input
                     id="waveHeight"
                     type="number"
@@ -915,7 +915,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="waveDirection">Dalga Doğrultusu (°)</Label>
+                  <Label htmlFor="waveDirection">Wave Direction (°)</Label>
                   <Input
                     id="waveDirection"
                     type="number"
@@ -924,7 +924,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="windSpeed">Rüzgar Hızı (knot)</Label>
+                  <Label htmlFor="windSpeed">Wind Speed (knots)</Label>
                   <Input
                     id="windSpeed"
                     type="number"
@@ -948,7 +948,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="naturalRollPeriod">Doğal Yalpa Periyodu (s)</Label>
+                  <Label htmlFor="naturalRollPeriod">Natural Roll Period (s)</Label>
                   <Input
                     id="naturalRollPeriod"
                     type="number"
@@ -958,7 +958,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="radiusOfGyration">Atalet Yarıçapı (m)</Label>
+                  <Label htmlFor="radiusOfGyration">Inertia Radius (m)</Label>
                   <Input
                     id="radiusOfGyration"
                     type="number"
@@ -968,7 +968,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="dampingCoefficient">Sönümleme Katsayısı</Label>
+                  <Label htmlFor="dampingCoefficient">Damping Coefficient</Label>
                   <Input
                     id="dampingCoefficient"
                     type="number"
@@ -984,7 +984,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           <div className="mt-6">
             <Button onClick={calculate} className="w-full">
               <Calculator className="mr-2 h-4 w-4" />
-              Hesapla
+              Calculate
             </Button>
           </div>
         </CardContent>
@@ -996,17 +996,17 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <TrendingUp className="h-5 w-5" />
-                Direnç ve Verimlilik
+                Resistance and Efficiency
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Froude Sayısı</Label>
+                  <Label className="text-sm font-medium">Froude Number</Label>
                   <p className="text-2xl font-bold text-info">{result.froudeNumber.toFixed(3)}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Toplam Direnç</Label>
+                  <Label className="text-sm font-medium">Total Resistance</Label>
                   <p className="text-2xl font-bold text-red-600">{result.totalResistance.toFixed(1)} kN</p>
                 </div>
                 <div>
@@ -1018,7 +1018,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-lg font-semibold">{result.propellerEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Gövde Verimi</Label>
+                  <Label className="text-sm font-medium">Body Efficiency</Label>
                   <p className="text-lg font-semibold">{result.hullEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
@@ -1034,35 +1034,35 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Activity className="h-5 w-5" />
-                Gemi Hareketleri
+                Ship Movements
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Yalpa Genliği</Label>
+                  <Label className="text-sm font-medium">Yaw Amplitude</Label>
                   <p className="text-2xl font-bold text-purple-600">{result.rollAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Tangage Genliği</Label>
+                  <Label className="text-sm font-medium">Tangage Amplitude</Label>
                   <p className="text-2xl font-bold text-green-700">{result.pitchAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Dalıp Çıkma</Label>
+                  <Label className="text-sm font-medium">diving in</Label>
                   <p className="text-2xl font-bold text-info">{result.heaveAmplitude.toFixed(1)} m</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Düşey İvme</Label>
+                  <Label className="text-sm font-medium">Vertical Acceleration</Label>
                   <p className="text-lg font-semibold">{result.verticalAcceleration.toFixed(2)} m/s²</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Yanal İvme</Label>
+                  <Label className="text-sm font-medium">Lateral Acceleration</Label>
                   <p className="text-lg font-semibold">{result.lateralAcceleration.toFixed(2)} m/s²</p>
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Slamming</Label>
                   <Badge variant={result.slamming ? 'destructive' : 'default'}>
-                    {result.slamming ? 'Var' : 'Yok'}
+                    {result.slamming ? 'Yes' : 'None'}
                   </Badge>
                 </div>
               </div>
@@ -1074,13 +1074,13 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Waves className="h-5 w-5" />
-                Denizcilik Performansı
+                Marine Performance
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Denizcilik İndeksi</Label>
+                  <Label className="text-sm font-medium">Maritime Index</Label>
                   <p className="text-2xl font-bold text-info">{result.seakeepingIndex.toFixed(1)}/10</p>
                 </div>
                 <div>
@@ -1091,26 +1091,26 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                     result.comfortLevel === 'fair' ? 'outline' :
                     result.comfortLevel === 'poor' ? 'destructive' : 'destructive'
                   }>
-                    {result.comfortLevel === 'excellent' ? 'Mükemmel' :
-                     result.comfortLevel === 'good' ? 'İyi' :
+                    {result.comfortLevel === 'excellent' ? 'excellent' :
+                     result.comfortLevel === 'good' ? 'good' :
                      result.comfortLevel === 'fair' ? 'Orta' :
-                     result.comfortLevel === 'poor' ? 'Kötü' : 'Çok Kötü'}
+                     result.comfortLevel === 'poor' ? 'bad' : 'Very Bad'}
                   </Badge>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Operabilite İndeksi</Label>
+                  <Label className="text-sm font-medium">Operability Index</Label>
                   <p className="text-lg font-semibold">{result.operabilityIndex.toFixed(1)}%</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Hız Kaybı</Label>
+                  <Label className="text-sm font-medium">Loss of Speed</Label>
                   <p className="text-lg font-semibold">{result.speedLoss.toFixed(1)}%</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">İlave Direnç</Label>
+                  <Label className="text-sm font-medium">Additional Resistance</Label>
                   <p className="text-lg font-semibold">{result.addedResistance.toFixed(1)} kN</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Slamming Olasılığı</Label>
+                  <Label className="text-sm font-medium">Slamming Probability</Label>
                   <p className="text-lg font-semibold">{result.slammingProbability.toFixed(1)}%</p>
                 </div>
               </div>
@@ -1122,21 +1122,21 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BarChart3 className="h-5 w-5" />
-                Güç Hesaplamaları
+                Power Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Efektif Güç</Label>
+                  <Label className="text-sm font-medium">Effective Power</Label>
                   <p className="text-2xl font-bold text-green-700">{result.effectivePower.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">İtki Gücü</Label>
+                  <Label className="text-sm font-medium">Propulsion</Label>
                   <p className="text-2xl font-bold text-info">{result.thrustPower.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Teslim Edilen Güç</Label>
+                  <Label className="text-sm font-medium">Power Delivered</Label>
                   <p className="text-2xl font-bold text-orange-700">{result.deliveredPower.toFixed(0)} kW</p>
                 </div>
               </div>
@@ -1149,7 +1149,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-red-500" />
-                  Uyarılar
+                  Warnings
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -1170,7 +1170,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-green-500" />
-                  Öneriler
+                  Suggestions
                 </CardTitle>
               </CardHeader>
               <CardContent>

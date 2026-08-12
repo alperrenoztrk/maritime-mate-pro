@@ -42,7 +42,7 @@ export function KnowledgeCheck({
     >
       {!compact && (
         <p className="text-micro font-bold uppercase tracking-[0.2em] text-primary">
-          Bilgi Kontrolü
+          Information Control
         </p>
       )}
       <p className="text-base font-medium text-foreground">{question.question}</p>
@@ -84,7 +84,7 @@ export function KnowledgeCheck({
       {answered && (
         <div className="rounded-xl border border-blue-200 bg-blue-50 p-3.5 dark:border-blue-800 dark:bg-blue-900/20">
           <p className="text-sm text-blue-700 dark:text-blue-300">
-            <strong>Açıklama:</strong> {question.explanation}
+            <strong>Description:</strong> {question.explanation}
           </p>
         </div>
       )}

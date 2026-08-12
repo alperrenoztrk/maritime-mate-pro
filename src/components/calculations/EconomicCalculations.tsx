@@ -82,9 +82,9 @@ export const EconomicCalculations = () => {
       profitability: tce > 15000 ? 'Excellent' : tce > 10000 ? 'Good' : tce > 5000 ? 'Fair' : 'Poor'
     });
     setCalcSteps(prev => ({ ...prev, tce: [
-      { step: 1, title: "Formül", formula: "TCE = (Brüt Navlun - Sefer Giderleri) / Sefer Günü", explanation: "Zaman Eşdeğer Kiralama (TCE), günlük kazancı hesaplar" },
-      { step: 2, title: "Net navlun hesabı", formula: "Net Navlun = Brüt Navlun - Sefer Giderleri", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
-      { step: 3, title: "TCE hesabı", formula: "TCE = Net Navlun / Gün", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/gün` },
+      { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "Time Equivalent Rental (TCE) calculates daily earnings" },
+      { step: 2, title: "Net freight account", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
+      { step: 3, title: "TCE account", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/gün` },
     ] }));
   };
 
@@ -111,7 +111,7 @@ export const EconomicCalculations = () => {
         ...baseResult,
         type: 'Demurrage',
         amount: timeDifference * rate,
-        description: 'Yükleme/boşaltma süresi aşıldı',
+        description: 'Loading/unloading time exceeded',
         status: 'penalty',
       };
     } else if (timeDifference < 0) {
@@ -120,7 +120,7 @@ export const EconomicCalculations = () => {
         ...baseResult,
         type: 'Despatch',
         amount: Math.abs(timeDifference) * (rate * 0.5), // Usually half demurrage rate
-        description: 'Yükleme/boşaltma erken tamamlandı',
+        description: 'Loading/unloading completed early',
         status: 'bonus',
       };
     } else {
@@ -128,22 +128,22 @@ export const EconomicCalculations = () => {
         ...baseResult,
         type: 'On Time',
         amount: 0,
-        description: 'Tam zamanında tamamlandı',
+        description: 'Completed on time',
         status: 'neutral',
       };
     }
 
     setDemurrageResult(result);
     const demSteps: CalculationStep[] = [
-      { step: 1, title: "Formül", formula: "Süre Farkı = Gerçek Süre - Lay Time", explanation: "Pozitif fark demurrage, negatif fark despatch anlamına gelir" },
-      { step: 2, title: "Süre farkı hesabı", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} saat` },
+      { step: 1, title: "Formula", formula: "Time Difference = Actual Time - Lay Time", explanation: "Positive difference means demurrage, negative difference means despatch" },
+      { step: 2, title: "Time difference calculation", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} clock` },
     ];
     if (timeDifference > 0) {
-      demSteps.push({ step: 3, title: "Demurrage hesabı", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Demurrage account", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
     } else if (timeDifference < 0) {
-      demSteps.push({ step: 3, title: "Despatch hesabı", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Despatch account", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
     } else {
-      demSteps.push({ step: 3, title: "Sonuç", formula: "Fark = 0", result: "Tam zamanında tamamlandı, ödeme yok" });
+      demSteps.push({ step: 3, title: "Result", formula: "Fark = 0", result: "Completed on time, no payment" });
     }
     setCalcSteps(prev => ({ ...prev, demurrage: demSteps }));
   };
@@ -176,10 +176,10 @@ export const EconomicCalculations = () => {
                      profitMargin > 0 ? 'Poor' : 'Loss'
     });
     setCalcSteps(prev => ({ ...prev, voyage: [
-      { step: 1, title: "Brüt gelir hesabı", formula: "Brüt Gelir = Kargo Miktarı × Navlun Oranı", substitution: `Brüt Gelir = ${quantity.toLocaleString()} × $${rate}`, result: `Brüt Gelir = $${grossRevenue.toLocaleString()}` },
-      { step: 2, title: "Toplam maliyet", formula: "Toplam Maliyet = Yakıt + Liman Masrafları", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
-      { step: 3, title: "Net kâr", formula: "Net Kâr = Brüt Gelir - Toplam Maliyet", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
-      { step: 4, title: "Kâr marjı", formula: "Kâr Marjı = (Net Kâr / Brüt Gelir) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Kâr Marjı = %${profitMargin.toFixed(1)}` },
+      { step: 1, title: "gross revenue account", formula: "Gross Revenue = Cargo Amount × Freight Rate", substitution: `Gross Revenue = ${quantity.toLocaleString()} × $${rate}`, result: `Brüt Gelir = $${grossRevenue.toLocaleString()}` },
+      { step: 2, title: "Toplam maliyet", formula: "Total Cost = Fuel + Port Expenses", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
+      { step: 3, title: "Net kâr", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
+      { step: 4, title: "profit margin", formula: "Profit Margin = (Net Profit / Gross Revenue) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = %${profitMargin.toFixed(1)}` },
     ] }));
   };
 
@@ -196,7 +196,7 @@ export const EconomicCalculations = () => {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="grossFreight">Brüt Navlun ($)</Label>
+              <Label htmlFor="grossFreight">Gross Freight ($)</Label>
               <Input
                 id="grossFreight"
                 type="number"
@@ -212,23 +212,23 @@ export const EconomicCalculations = () => {
                 type="number"
                 value={voyageExpenses}
                 onChange={(e) => setVoyageExpenses(e.target.value)}
-                placeholder="Yakıt, liman vs."
+                placeholder="Fuel, port etc."
               />
             </div>
             <div>
-              <Label htmlFor="voyageDays">Sefer Süresi (Gün)</Label>
+              <Label htmlFor="voyageDays">Trip Duration (Days)</Label>
               <Input
                 id="voyageDays"
                 type="number"
                 value={voyageDays}
                 onChange={(e) => setVoyageDays(e.target.value)}
-                placeholder="Toplam sefer günü"
+                placeholder="Total sailing days"
               />
             </div>
           </div>
           
           <Button onClick={calculateTCE} className="w-full">
-            TCE Hesapla
+            Calculate TCE
           </Button>
 
           {tceResult && (
@@ -236,7 +236,7 @@ export const EconomicCalculations = () => {
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="font-medium">Brüt Navlun:</span>
+                    <span className="font-medium">Gross Freight:</span>
                     <span className="ml-2">${tceResult.grossFreight.toLocaleString()}</span>
                   </div>
                   <div>
@@ -244,13 +244,13 @@ export const EconomicCalculations = () => {
                     <span className="ml-2">${tceResult.netFreight.toLocaleString()}</span>
                   </div>
                   <div className="col-span-2">
-                    <span className="font-medium">TCE (Günlük):</span>
+                    <span className="font-medium">TCE (Daily):</span>
                     <Badge variant="outline" className="ml-2">
                       ${tceResult.tce.toFixed(0)}/gün
                     </Badge>
                   </div>
                   <div className="col-span-2">
-                    <span className="font-medium">Kârlılık:</span>
+                    <span className="font-medium">Profitability:</span>
                     <Badge variant={tceResult.profitability === 'Excellent' ? 'default' :
                                   tceResult.profitability === 'Good' ? 'outline' : 'destructive'}
                            className="ml-2">
@@ -278,7 +278,7 @@ export const EconomicCalculations = () => {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="demurrageRate">Demurrage Oranı ($/saat)</Label>
+              <Label htmlFor="demurrageRate">Demurrage Rate ($/hour)</Label>
               <Input
                 id="demurrageRate"
                 type="number"
@@ -288,29 +288,29 @@ export const EconomicCalculations = () => {
               />
             </div>
             <div>
-              <Label htmlFor="layTime">Lay Time (Saat)</Label>
+              <Label htmlFor="layTime">Lay Time (Hour)</Label>
               <Input
                 id="layTime"
                 type="number"
                 value={layTime}
                 onChange={(e) => setLayTime(e.target.value)}
-                placeholder="Öngörülen süre"
+                placeholder="Estimated duration"
               />
             </div>
             <div>
-              <Label htmlFor="actualTime">Gerçek Süre (Saat)</Label>
+              <Label htmlFor="actualTime">Actual Duration (Hours)</Label>
               <Input
                 id="actualTime"
                 type="number"
                 value={actualTime}
                 onChange={(e) => setActualTime(e.target.value)}
-                placeholder="Gerçekleşen süre"
+                placeholder="Actual time"
               />
             </div>
           </div>
           
           <Button onClick={calculateDemurrage} className="w-full">
-            Hesapla
+            Calculate
           </Button>
 
           {demurrageResult && (
@@ -330,11 +330,11 @@ export const EconomicCalculations = () => {
                     <span className="ml-2 font-bold">${demurrageResult.amount.toFixed(2)}</span>
                   </div>
                   <div className="col-span-2">
-                    <span className="font-medium">Süre Farkı:</span>
+                    <span className="font-medium">Time Difference:</span>
                     <span className="ml-2">{Math.abs(demurrageResult.timeDifference)} saat</span>
                   </div>
                   <div className="col-span-2">
-                    <span className="font-medium">Açıklama:</span>
+                    <span className="font-medium">Description:</span>
                     <p className="mt-1 text-muted-foreground">{demurrageResult.description}</p>
                   </div>
                 </div>
@@ -358,7 +358,7 @@ export const EconomicCalculations = () => {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="cargoQuantity">Kargo Miktarı (MT)</Label>
+              <Label htmlFor="cargoQuantity">Cargo Quantity (MT)</Label>
               <Input
                 id="cargoQuantity"
                 type="number"
@@ -368,33 +368,33 @@ export const EconomicCalculations = () => {
               />
             </div>
             <div>
-              <Label htmlFor="freightRate">Navlun Oranı ($/MT)</Label>
+              <Label htmlFor="freightRate">Freight Rate ($/MT)</Label>
               <Input
                 id="freightRate"
                 type="number"
                 value={freightRate}
                 onChange={(e) => setFreightRate(e.target.value)}
-                placeholder="Ton başına"
+                placeholder="per ton"
               />
             </div>
             <div>
-              <Label htmlFor="bunkerCost">Yakıt Maliyeti ($)</Label>
+              <Label htmlFor="bunkerCost">Fuel Cost ($)</Label>
               <Input
                 id="bunkerCost"
                 type="number"
                 value={bunkerCost}
                 onChange={(e) => setBunkerCost(e.target.value)}
-                placeholder="Toplam yakıt"
+                placeholder="Total fuel"
               />
             </div>
             <div>
-              <Label htmlFor="portCosts">Liman Masrafları ($)</Label>
+              <Label htmlFor="portCosts">Port Expenses ($)</Label>
               <Input
                 id="portCosts"
                 type="number"
                 value={portCosts}
                 onChange={(e) => setPortCosts(e.target.value)}
-                placeholder="Liman ve diğer"
+                placeholder="Port and other"
               />
             </div>
           </div>
@@ -408,7 +408,7 @@ export const EconomicCalculations = () => {
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="font-medium">Brüt Gelir:</span>
+                    <span className="font-medium">Gross Income:</span>
                     <span className="ml-2">${voyageResult.grossRevenue.toLocaleString()}</span>
                   </div>
                   <div>
@@ -422,7 +422,7 @@ export const EconomicCalculations = () => {
                     </span>
                   </div>
                   <div>
-                    <span className="font-medium">Kâr Marjı:</span>
+                    <span className="font-medium">Profit Margin:</span>
                     <Badge variant={voyageResult.profitMargin > 10 ? 'default' :
                                   voyageResult.profitMargin > 0 ? 'outline' : 'destructive'}
                            className="ml-2">
@@ -430,7 +430,7 @@ export const EconomicCalculations = () => {
                     </Badge>
                   </div>
                   <div className="col-span-2">
-                    <span className="font-medium">Değerlendirme:</span>
+                    <span className="font-medium">Rating:</span>
                     <Badge variant={voyageResult.profitability === 'Excellent' ? 'default' :
                                   voyageResult.profitability === 'Good' ? 'outline' : 'destructive'}
                            className="ml-2">

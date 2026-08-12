@@ -110,7 +110,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   const [draftSurveyInputs, setDraftSurveyInputs] = useState<{ forwardDraft: string; midshipDraft: string; aftDraft: string }>({ forwardDraft: "", midshipDraft: "", aftDraft: "" });
   const [draftSurveyResult, setDraftSurveyResult] = useState<DraftSurvey | null>(null);
 
-  // Hasar stabilitesi giriş satırı
+  // Damage stability input line
   const [newCompartment, setNewCompartment] = useState<{ compartment: string; floodedVolume: string; newKG: string }>({ compartment: "", floodedVolume: "", newKG: "" });
 
   // 1. Hogging/Sagging Detection
@@ -173,8 +173,8 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   const totalFSC = analysis ? HydrostaticCalculations.calculateTotalFSC(analysis.freeSurfaceCorrections) : 0;
   const correctedGM = analysis ? HydrostaticCalculations.calculateCorrectedGM(analysis.stability.gm, totalFSC) : 0;
   const gmChangeData = analysis ? [
-    { label: "Başlangıç GM", value: analysis.stability.gm },
-    { label: "Düzeltilmiş GM", value: correctedGM }
+    { label: "Home GM", value: analysis.stability.gm },
+    { label: "Adjusted GM", value: correctedGM }
   ] : [];
 
   // 4. Draft Survey
@@ -328,7 +328,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   });
   const [temperatureDensityResult, setTemperatureDensityResult] = useState<number | null>(null);
 
-  // Weather criterion girdileri ve sonucu
+  // Weather criterion inputs and result
   const [weatherInputs, setWeatherInputs] = useState<{ pressure: string; area: string; lever: string }>({ pressure: "", area: "", lever: "" });
   const [weatherResult, setWeatherResult] = useState<{ ok: boolean; phiEq: number } | null>(null);
 
@@ -572,7 +572,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const dM = parseFloat(hoggingSaggingInputs.draftMidship);
     
     if (isNaN(dF) || isNaN(dA) || isNaN(dM)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -581,7 +581,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const type = difference > 0 ? "Hogging" : "Sagging";
     
     setHoggingSaggingResult({ type, difference: Math.abs(difference) });
-    toast({ title: "Hesaplama Tamamlandı", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
   };
 
   // 2. Yeni KG Hesaplama
@@ -590,13 +590,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const totalWeight = parseFloat(newKGInputs.totalWeight);
     
     if (isNaN(totalMoment) || isNaN(totalWeight) || totalWeight === 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const newKG = totalMoment / totalWeight;
     setNewKGResult(newKG);
-    toast({ title: "Hesaplama Tamamlandı", description: `Yeni KG: ${newKG.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `New QA: ${newKG.toFixed(3)} m` });
   };
 
   const calculateGM = () => {
@@ -605,18 +605,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const kg = parseFloat(gmInputs.kg);
     
     if (isNaN(kb) || isNaN(bm) || isNaN(kg)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const gm = kb + bm - kg;
     const km = kb + bm;
     if (!runStabilityLogic("gm", { km, kg, gm })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "KM > KG ve GM ≥ 0 şartlarını sağlayın.", variant: "destructive" });
+      toast({ title: "Logical Check Error", description: "Meet the conditions KM > KG and GM ≥ 0.", variant: "destructive" });
       return;
     }
     setGmResult(gm);
-    toast({ title: "Hesaplama Tamamlandı", description: `GM: ${gm.toFixed(3)} m - Uygun` });
+    toast({ title: "Calculation Completed", description: `GM: ${gm.toFixed(3)} m - Uygun` });
   };
 
   const calculateGZ = () => {
@@ -624,18 +624,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const angle = parseFloat(gzInputs.angle);
     
     if (isNaN(gm) || isNaN(angle)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const angleRad = (angle * Math.PI) / 180;
     const gz = gm * Math.sin(angleRad);
     if (!runStabilityLogic("gz", { gm, gz })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "GM ≥ 0 ve GZ ≥ 0 şartlarını sağlayın.", variant: "destructive" });
+      toast({ title: "Logical Check Error", description: "Satisfy the conditions GM ≥ 0 and GZ ≥ 0.", variant: "destructive" });
       return;
     }
     setGzResult(gz);
-    toast({ title: "Hesaplama Tamamlandı", description: `GZ: ${gz.toFixed(4)} m - Uygun` });
+    toast({ title: "Calculation Completed", description: `GZ: ${gz.toFixed(4)} m - Uygun` });
   };
 
   const calculateTrim = () => {
@@ -644,13 +644,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const l = parseFloat(trimInputs.length);
     
     if (isNaN(ta) || isNaN(tf) || isNaN(l)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const trimAngle = Math.atan((ta - tf) / l) * (180 / Math.PI);
     setTrimResult(trimAngle);
-    toast({ title: "Hesaplama Tamamlandı", description: `Trim Açısı: ${trimAngle.toFixed(4)}°` });
+    toast({ title: "Calculation Completed", description: `Trim Angle: ${trimAngle.toFixed(4)}°` });
   };
 
   const calculateList = () => {
@@ -660,18 +660,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const gm = parseFloat(listInputs.gm);
     
     if (isNaN(w) || isNaN(d) || isNaN(displacement) || isNaN(gm)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     if (!runStabilityLogic("list", { displacement, gm })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "Δ > 0 ve GM ≥ 0 olmalıdır.", variant: "destructive" });
+      toast({ title: "Logical Check Error", description: "Δ > 0 and GM ≥ 0.", variant: "destructive" });
       return;
     }
 
     const listAngle = Math.atan((w * d) / (displacement * gm)) * (180 / Math.PI);
     setListResult(listAngle);
-    toast({ title: "Hesaplama Tamamlandı", description: `List Açısı: ${listAngle.toFixed(4)}°` });
+    toast({ title: "Calculation Completed", description: `List Angle: ${listAngle.toFixed(4)}°` });
   };
 
   const calculateTPC = () => {
@@ -679,13 +679,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const rho = parseFloat(tpcInputs.density);
     
     if (isNaN(awp) || isNaN(rho)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const tpc = (awp * rho) / 100;
     setTpcResult(tpc);
-    toast({ title: "Hesaplama Tamamlandı", description: `TPC: ${tpc.toFixed(2)} ton/cm` });
+    toast({ title: "Calculation Completed", description: `TPC: ${tpc.toFixed(2)} ton/cm` });
   };
 
   const calculateLoll = () => {
@@ -693,18 +693,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const km = parseFloat(lollInputs.km);
     
     if (isNaN(kg) || isNaN(km)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     if (!runStabilityLogic("loll", { km, kg })) {
-      toast({ title: "Mantıksal Kontrol Hatası", description: "KM > KG şartını sağlayın.", variant: "destructive" });
+      toast({ title: "Logical Check Error", description: "Meet the KM > KG condition.", variant: "destructive" });
       return;
     }
     
     const lollAngle = Math.acos(kg / km) * (180 / Math.PI);
     setLollResult(lollAngle);
-    toast({ title: "Hesaplama Tamamlandı", description: `Loll Açısı: ${lollAngle.toFixed(2)}°` });
+    toast({ title: "Calculation Completed", description: `Loll Angle: ${lollAngle.toFixed(2)}°` });
   };
 
   // TRANSVERSE STABILITY CALCULATIONS
@@ -725,7 +725,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Cw = parseFloat(hydrostaticInputs.waterplaneCoeff);
 
     if (isNaN(L) || isNaN(B) || isNaN(T) || isNaN(Cb) || isNaN(Cw)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
 
@@ -738,7 +738,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const kmt = kb + bmt; // KM_T = KB + BM_T
 
     setHydrostaticResults({ displacement, volume, waterplaneArea, kb, bmt, kmt });
-    toast({ title: "Hidrostatik Temeller Hesaplandı", description: `Δ: ${displacement.toFixed(1)} ton, ∇: ${volume.toFixed(1)} m³` });
+    toast({ title: "Hydrostatic Foundations Calculated", description: `Δ: ${displacement.toFixed(1)} ton, ∇: ${volume.toFixed(1)} m³` });
   };
 
   // 2. Ağırlık Merkezi ve GM
@@ -756,13 +756,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     if (!isNaN(KMT) && !isNaN(KG)) {
       const GMT = KMT - KG; // GM_T = KM_T - KG
       setWeightCenterResults({ kg: KG, gmt: GMT });
-      toast({ title: "GM Hesaplandı", description: `GMT: ${GMT.toFixed(3)} m` });
+      toast({ title: "GM Calculated", description: `GMT: ${GMT.toFixed(3)} m` });
     } else if (!isNaN(totalMoment) && !isNaN(totalWeight) && totalWeight > 0) {
       const newKG = totalMoment / totalWeight; // KG = Σ(wi * KGi) / Σwi
       setWeightCenterResults({ kg: newKG, gmt: 0 });
-      toast({ title: "KG Hesaplandı", description: `KG: ${newKG.toFixed(3)} m` });
+      toast({ title: "KG Calculated", description: `KG: ${newKG.toFixed(3)} m` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
     }
   };
 
@@ -781,7 +781,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
     if (!isNaN(w) && !isNaN(d) && !isNaN(Delta) && !isNaN(GMT)) {
       if (!runStabilityLogic("weightShift", { displacement: Delta, gm: GMT })) {
-        toast({ title: "Mantıksal Kontrol Hatası", description: "Δ > 0 ve GM ≥ 0 olmalıdır.", variant: "destructive" });
+        toast({ title: "Logical Check Error", description: "Δ > 0 and GM ≥ 0.", variant: "destructive" });
         return;
       }
       // Enine şift: tan φ ≈ w*d/(Δ*GM_T)
@@ -794,9 +794,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       }
 
       setWeightShiftResults({ listAngle, kgChange });
-      toast({ title: "Ağırlık Şifti Hesaplandı", description: `List Açısı: ${listAngle.toFixed(2)}°` });
+      toast({ title: "Weight Shift Calculated", description: `List Angle: ${listAngle.toFixed(2)}°` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
     }
   };
 
@@ -813,7 +813,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const volume = parseFloat(freeSurfaceInputs2.volume);
 
     if (isNaN(l) || isNaN(b) || isNaN(rhoTank) || isNaN(volume)) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
@@ -821,7 +821,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const fsc = (rhoTank / 1.025) * (iF / volume); // FSC = (ρ_tank/ρ_sea) * i_f/∇
     
     setFreeSurfaceResults({ fsc, gmCorrected: 0 });
-    toast({ title: "Serbest Yüzey Etkisi Hesaplandı", description: `FSC: ${fsc.toFixed(4)} m` });
+    toast({ title: "Free Surface Effect Calculated", description: `FSC: ${fsc.toFixed(4)} m` });
   };
 
   // 5. GZ ve Dinamik Stabilite
@@ -843,7 +843,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       const rightingMoment = (geometry.length * geometry.breadth * geometry.draft * geometry.blockCoefficient * 1.025) * gz;
       
       setGzDynamicResults({ gz, rightingMoment });
-      toast({ title: "GZ Hesaplandı", description: `GZ: ${gz.toFixed(4)} m` });
+      toast({ title: "GZ Calculated", description: `GZ: ${gz.toFixed(4)} m` });
     } else if (!isNaN(kn) && !isNaN(kg) && !isNaN(angle)) {
       // Genel açılar için: GZ(φ) = KN(φ) - KG sin φ
       const angleRad = (angle * Math.PI) / 180;
@@ -851,9 +851,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       const rightingMoment = (geometry.length * geometry.breadth * geometry.draft * geometry.blockCoefficient * 1.025) * gz;
       
       setGzDynamicResults({ gz, rightingMoment });
-      toast({ title: "GZ (KN Yöntemi) Hesaplandı", description: `GZ: ${gz.toFixed(4)} m` });
+      toast({ title: "GZ (KN Method) Calculated", description: `GZ: ${gz.toFixed(4)} m` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
     }
   };
 
@@ -870,7 +870,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Delta = parseFloat(windEffectInputs.displacement); // ton
 
     if (isNaN(q) || isNaN(A) || isNaN(z) || isNaN(Delta)) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
@@ -878,7 +878,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const heelingArm = heelingMoment / (Delta * 9.81); // m
 
     setWindEffectResults({ heelingMoment, heelingArm });
-    toast({ title: "Rüzgar Etkisi Hesaplandı", description: `Heeling Moment: ${heelingMoment.toFixed(2)} kN·m` });
+    toast({ title: "Wind Effect Calculated", description: `Heeling Moment: ${heelingMoment.toFixed(2)} kN·m` });
   };
 
   // 7. İnklinasyon Deneyi
@@ -894,7 +894,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const phi = parseFloat(inclinationInputs.observedAngle);
 
     if (isNaN(w) || isNaN(l) || isNaN(Delta) || isNaN(phi)) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
@@ -902,7 +902,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const gmt = (w * l) / (Delta * Math.tan(phiRad)); // GM_T = w*l/(Δ*tan φ)
 
     setInclinationResults({ gmt });
-    toast({ title: "İnklinasyon Deneyi Sonucu", description: `GMT: ${gmt.toFixed(3)} m` });
+    toast({ title: "Inclination Test Result", description: `GMT: ${gmt.toFixed(3)} m` });
   };
 
   // 8. Yalpa Periyodu
@@ -917,14 +917,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const k = parseFloat(rollPeriodInputs2.radiusOfGyration) || 0.35 * B; // Default k ≈ 0.35B
 
     if (isNaN(B) || isNaN(gmCorr) || gmCorr <= 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid values", variant: "destructive" });
       return;
     }
 
     const T = 2 * Math.PI * k / Math.sqrt(9.81 * gmCorr); // T = 2π * k / √(g*GM_corr)
 
     setRollPeriodResults({ period: T });
-    toast({ title: "Yalpa Periyodu Hesaplandı", description: `T: ${T.toFixed(2)} saniye` });
+    toast({ title: "Yaw Period Calculated", description: `T: ${T.toFixed(2)} saniye` });
   };
 
   // 9. Angle of Loll
@@ -938,14 +938,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const BMT = parseFloat(lollInputs2.bmt);
 
     if (isNaN(GM) || isNaN(BMT) || GM >= 0) {
-      toast({ title: "Hata", description: "GM negatif olmalı (GM < 0)", variant: "destructive" });
+      toast({ title: "Error", description: "GM must be negative (GM < 0)", variant: "destructive" });
       return;
     }
 
     const lollAngle = Math.atan(Math.sqrt(-2 * GM / BMT)) * (180 / Math.PI); // tan φ_loll ≈ √(-2*GM/BM_T)
 
     setLollResults({ lollAngle });
-    toast({ title: "Angle of Loll Hesaplandı", description: `Loll Açısı: ${lollAngle.toFixed(2)}°` });
+    toast({ title: "Angle of Loll Calculated", description: `Loll Angle: ${lollAngle.toFixed(2)}°` });
   };
 
   const calculateDisplacement = () => {
@@ -953,13 +953,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const waterDensity = parseFloat(displacementInputs.waterDensity);
     
     if (isNaN(volume) || isNaN(waterDensity)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const displacement = volume * waterDensity;
     setDisplacementResult(displacement);
-    toast({ title: "Hesaplama Tamamlandı", description: `Deplasman: ${displacement.toFixed(2)} ton` });
+    toast({ title: "Calculation Completed", description: `Deplasman: ${displacement.toFixed(2)} ton` });
   };
 
   const calculateDraft = () => {
@@ -967,13 +967,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const waterplaneArea = parseFloat(draftInputs.waterplaneArea);
     
     if (isNaN(volume) || isNaN(waterplaneArea) || waterplaneArea === 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const draft = volume / waterplaneArea;
     setDraftResult(draft);
-    toast({ title: "Hesaplama Tamamlandı", description: `Draft: ${draft.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `Draft: ${draft.toFixed(3)} m` });
   };
 
   // === New calculator implementations ===
@@ -982,16 +982,16 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const d = parseFloat(gmShiftInputs.distance);
     const Delta = parseFloat(gmShiftInputs.displacement);
     if ([w, d, Delta].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, d, Δ girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid w, d, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("gmShift", { displacement: Delta })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Logical Check Error', description: 'Δ > 0.', variant: 'destructive' });
       return;
     }
     const dGM = (w * d) / Delta;
     setGmShiftResult(dGM);
-    toast({ title: 'ΔGM Hesaplandı', description: `ΔGM = ${dGM.toFixed(4)} m` });
+    toast({ title: 'ΔGM Calculated', description: `ΔGM = ${dGM.toFixed(4)} m` });
   };
 
   const calculateHeelAngle2 = () => {
@@ -1000,17 +1000,17 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Delta = parseFloat(heelAngle2Inputs.displacement);
     const GM = parseFloat(heelAngle2Inputs.gm);
     if ([w, y, Delta, GM].some(isNaN) || Delta === 0 || GM === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, y, Δ, GM girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid w, y, Δ, GM', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("heelAngle2", { displacement: Delta, gm: GM })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 ve GM ≥ 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Logical Check Error', description: 'Δ > 0 and GM ≥ 0.', variant: 'destructive' });
       return;
     }
     const gz = (w * y) / Delta;
     const angle = Math.atan(gz / GM) * (180 / Math.PI);
     setHeelAngle2Result({ gz, angleDeg: angle });
-    toast({ title: 'Meyil Açısı', description: `θ = ${angle.toFixed(3)}°` });
+    toast({ title: 'Inclination Angle', description: `θ = ${angle.toFixed(3)}°` });
   };
 
   const calculateCraneGG1 = () => {
@@ -1019,16 +1019,16 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const hl = parseFloat(craneGG1Inputs.loadHeight);
     const Delta = parseFloat(craneGG1Inputs.displacement);
     if ([w, hh, hl, Delta].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, hkanca, hyük, Δ girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid w, hhook, hyuk, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("craneGG1", { displacement: Delta })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Logical Check Error', description: 'Δ > 0.', variant: 'destructive' });
       return;
     }
     const gg1 = (w * (hh - hl)) / Delta;
     setCraneGG1Result(gg1);
-    toast({ title: 'GG₁ (Bumba) Hesaplandı', description: `GG₁ = ${gg1.toFixed(4)} m` });
+    toast({ title: 'GG₁ (Bumba) Calculated', description: `GG₁ = ${gg1.toFixed(4)} m` });
   };
 
   const calculateDockCriticalGM = () => {
@@ -1038,11 +1038,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const km = parseFloat(dockGMInputs.km);
     const Delta = parseFloat(dockGMInputs.displacement);
     if ([mct1cm, trim, lbp, km, Delta].some(isNaN) || lbp === 0 || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli MCT1cm, Trim(cm), LBP, KM, Δ girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid MCT1cm, Trim(cm), LBP, KM, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("dockGM", { displacement: Delta })) {
-      toast({ title: 'Mantıksal Kontrol Hatası', description: 'Δ > 0 olmalıdır.', variant: 'destructive' });
+      toast({ title: 'Logical Check Error', description: 'Δ > 0.', variant: 'destructive' });
       return;
     }
     const P = (mct1cm * trim) / lbp; // t
@@ -1055,30 +1055,30 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const M = parseFloat(trimMomentInputs.totalMoment);
     const mct1cm = parseFloat(trimMomentInputs.mct1cm);
     if ([M, mct1cm].some(isNaN) || mct1cm === 0) {
-      toast({ title: 'Hata', description: 'Geçerli moment ve MCT1cm girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid torque and MCT1cm', variant: 'destructive' });
       return;
     }
     const dTrimCm = M / mct1cm;
     setTrimMomentResult(dTrimCm);
-    toast({ title: 'Trim Değişimi', description: `ΔTrim = ${dTrimCm.toFixed(2)} cm` });
+    toast({ title: 'Trim Change', description: `ΔTrim = ${dTrimCm.toFixed(2)} cm` });
   };
 
   const calculateParallelSinkage = () => {
     const w = parseFloat(parallelSinkageInputs.weight);
     const tpc = parseFloat(parallelSinkageInputs.tpc);
     if ([w, tpc].some(isNaN) || tpc === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w ve TPC girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid w and TPC', variant: 'destructive' });
       return;
     }
     const sinkageCm = w / tpc;
     setParallelSinkageResult(sinkageCm);
-    toast({ title: 'Paralel Batma/Çıkma', description: `${sinkageCm.toFixed(2)} cm` });
+    toast({ title: 'Parallel Subduction/Exit', description: `${sinkageCm.toFixed(2)} cm` });
   };
 
   const calculateDraftChangeLCF = () => {
     const dTrimCm = parseFloat(draftChangeLCFInputs.dTrimCm);
     if (isNaN(dTrimCm)) {
-      toast({ title: 'Hata', description: 'Geçerli ΔTrim (cm) girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid ΔTrim (cm)', variant: 'destructive' });
       return;
     }
     setDraftChangeLCFResult({ dFcm: -dTrimCm / 2, dAcm: dTrimCm / 2 });
@@ -1089,7 +1089,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const trim = parseFloat(draftCorrectionInputs.trim); // cm total
     const lbp = parseFloat(draftCorrectionInputs.lbp); // m
     if ([distance, trim, lbp].some(isNaN) || lbp === 0) {
-      toast({ title: 'Hata', description: 'Geçerli mesafe, trim(cm), LBP girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid distance, trim(cm), LBP', variant: 'destructive' });
       return;
     }
     const correction = (distance / lbp) * trim; // cm
@@ -1101,7 +1101,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const dM = parseFloat(mmmDraftQuickInputs.dM);
     const dA = parseFloat(mmmDraftQuickInputs.dA);
     if ([dF, dM, dA].some(isNaN)) {
-      toast({ title: 'Hata', description: 'Geçerli dF, dM, dA girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid dF, dM, dA', variant: 'destructive' });
       return;
     }
     const mmm = (dF + dA + 6 * dM) / 8;
@@ -1114,7 +1114,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const tpc = parseFloat(trimCorrection1Inputs2.tpc); // t/cm
     const lbp = parseFloat(trimCorrection1Inputs2.lbp); // m
     if ([trimM, lcf, tpc, lbp].some(isNaN) || lbp === 0) {
-      toast({ title: 'Hata', description: 'Geçerli Trim(m), LCF, TPC, LBP girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid Trim(m), LCF, TPC, LBP', variant: 'destructive' });
       return;
     }
     const delta1 = trimM * lcf * tpc * 100 / lbp; // tons
@@ -1126,7 +1126,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const dMCT = parseFloat(trimCorrection2Inputs2.deltaMct1cm); // t·m/cm per cm change
     const lbp = parseFloat(trimCorrection2Inputs2.lbp); // m
     if ([trimM, dMCT, lbp].some(isNaN) || lbp === 0) {
-      toast({ title: 'Hata', description: 'Geçerli Trim(m), ΔMCT(1cm), LBP girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid Trim(m), ΔMCT(1cm), LBP', variant: 'destructive' });
       return;
     }
     const trimCm = trimM * 100;
@@ -1138,7 +1138,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const fwa = parseFloat(densityDraftChangeInputs.fwa); // cm
     const rho = parseFloat(densityDraftChangeInputs.rho);
     if ([fwa, rho].some(isNaN)) {
-      toast({ title: 'Hata', description: 'Geçerli FWA(cm) ve ρ girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid FWA(cm) and ρ', variant: 'destructive' });
       return;
     }
     const dT = fwa * (1025 - 1000 * rho) / 25; // assuming rho in t/m³; convert to kg/m³ comparison
@@ -1150,7 +1150,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const r1 = parseFloat(densityDisplacementInputs.rho1);
     const r2 = parseFloat(densityDisplacementInputs.rho2);
     if ([d1, r1, r2].some(isNaN) || r1 === 0) {
-      toast({ title: 'Hata', description: 'Geçerli Δ1, ρ1, ρ2 girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid Δ1, ρ1, ρ2', variant: 'destructive' });
       return;
     }
     const d2 = d1 * (r2 / r1);
@@ -1162,7 +1162,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const Delta = parseFloat(ghmInputs.displacement);
     const GM = parseFloat(ghmInputs.gm);
     if ([ghm, Delta, GM].some(isNaN) || Delta === 0 || GM === 0) {
-      toast({ title: 'Hata', description: 'Geçerli GHM, Δ, GM girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid GHM, Δ, GM', variant: 'destructive' });
       return;
     }
     const thetaDeg = 57.3 * (ghm / (Delta * GM));
@@ -1176,7 +1176,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const h = parseFloat(simpson13Inputs.h);
     const y = parseOrdinates(simpson13Inputs.ordinates);
     if (Number.isNaN(h) || y.length < 3 || (y.length - 1) % 2 !== 0) {
-      toast({ title: 'Hata', description: '1/3 kuralı için h ve tek sayıda segmente uygun ordinatlar girin (n gen = çift)', variant: 'destructive' });
+      toast({ title: 'Error', description: 'For the 1/3 rule, enter ordinates suitable for h and an odd number of segments (n genes = even)', variant: 'destructive' });
       return;
     }
     let sumOdd = 0, sumEven = 0;
@@ -1191,7 +1191,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const h = parseFloat(simpson38Inputs.h);
     const y = parseOrdinates(simpson38Inputs.ordinates);
     if (Number.isNaN(h) || y.length < 4 || (y.length - 1) % 3 !== 0) {
-      toast({ title: 'Hata', description: '3/8 kuralı için h ve 3\'ün katı sayıda segment girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'For the 3/8 rule, enter a multiple of h and 3 segments', variant: 'destructive' });
       return;
     }
     let sum3 = 0, sum2 = 0;
@@ -1210,7 +1210,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const rhoSea = parseFloat(fsmGeneralInputs.rhoSea);
     const n = parseFloat(fsmGeneralInputs.n) || 1;
     if ([L, B, Delta, rhoFluid, rhoSea].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli L, B, Δ, ρsıvı, ρdeniz girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid L, B, Δ, ρliquid, ρsea', variant: 'destructive' });
       return;
     }
     const I = (L * Math.pow(B, 3)) / 12;
@@ -1223,7 +1223,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(rollSimpleInputs.breadth);
     const GM = parseFloat(rollSimpleInputs.gm);
     if ([Cb, B, GM].some(isNaN) || GM <= 0) {
-      toast({ title: 'Hata', description: 'Geçerli Cb, B, GM girin (GM>0)', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid Cb, B, GM (GM>0)', variant: 'destructive' });
       return;
     }
     const T = Cb * B / Math.sqrt(GM);
@@ -1236,7 +1236,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(damagedStabInputs.B);
     const Ld = parseFloat(damagedStabInputs.Ldam);
     if ([w, L, B, Ld].some(isNaN) || (L * B - Ld * B) === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, L, B, Lyaralı girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid w, L, B, L injured', variant: 'destructive' });
       return;
     }
     const dT = w / (L * B - Ld * B);
@@ -1248,7 +1248,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const SF = parseFloat(cargoInputs.stowageFactor); // m³/t
     const PL = parseFloat(cargoInputs.pressureLimit); // t/m²
     if ([V, SF, PL].some(isNaN) || SF === 0) {
-      toast({ title: 'Hata', description: 'Geçerli V, SF, PL girin', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid V, SF, PL', variant: 'destructive' });
       return;
     }
     const wmax = V / SF; // t
@@ -1262,7 +1262,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(tankInputs.breadth);
     const H = parseFloat(tankInputs.height);
     const rho = parseFloat(tankInputs.rho);
-    if ([L, B, H, rho].some(isNaN)) { toast({ title:'Hata', description:'Geçerli L, B, H, ρ girin', variant:'destructive' }); return; }
+    if ([L, B, H, rho].some(isNaN)) { toast({ title:'Error', description:'Enter valid L, B, H, ρ', variant:'destructive' }); return; }
     const V = L * B * H; // m³
     const m = V * rho; // t
     setTankResults({ V, m });
@@ -1271,7 +1271,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   const calculateFWA = () => {
     const Delta = parseFloat(fwaCalcInputs.displacement);
     const TPC = parseFloat(fwaCalcInputs.tpc);
-    if ([Delta, TPC].some(isNaN) || Delta === 0) { toast({ title:'Hata', description:'Geçerli Δ ve TPC girin', variant:'destructive' }); return; }
+    if ([Delta, TPC].some(isNaN) || Delta === 0) { toast({ title:'Error', description:'Enter valid Δ and TPC', variant:'destructive' }); return; }
     const FWA = (Delta / 4) / TPC; // cm
     setFwaCalcResult(FWA);
   };
@@ -1281,7 +1281,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const T1 = parseFloat(tempDensityInputs.T1);
     const T2 = parseFloat(tempDensityInputs.T2);
     const k = parseFloat(tempDensityInputs.k);
-    if ([rho1, T1, T2, k].some(isNaN)) { toast({ title:'Hata', description:'Geçerli ρ1, T1, T2, k girin', variant:'destructive' }); return; }
+    if ([rho1, T1, T2, k].some(isNaN)) { toast({ title:'Error', description:'Enter valid ρ1, T1, T2, k', variant:'destructive' }); return; }
     const rho2 = rho1 - ((T2 - T1) * k);
     setTempDensityResult(rho2);
   };
@@ -1289,7 +1289,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   const calculateGHMfromVHM = () => {
     const vhm = parseFloat(ghmInputs2.vhm);
     const sf = parseFloat(ghmInputs2.sf);
-    if ([vhm, sf].some(isNaN) || sf === 0) { toast({ title:'Hata', description:'Geçerli VHM ve SF girin', variant:'destructive' }); return; }
+    if ([vhm, sf].some(isNaN) || sf === 0) { toast({ title:'Error', description:'Enter valid VHM and SF', variant:'destructive' }); return; }
     const ghm = vhm / sf;
     setGhmResult2(ghm);
   };
@@ -1310,12 +1310,12 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const criteria = analysis.imoCriteria;
     const weatherCriterionOk = criteria.weatherCriterion >= criteria.areaRequirement;
     const warnings: string[] = [];
-    if (criteria.area0to30 < 0.055) warnings.push("0–30° alanı 0.055 mrad sınırının altında.");
-    if (criteria.area0to40 < 0.09) warnings.push("0–40° alanı 0.090 mrad sınırının altında.");
-    if (criteria.area30to40 < 0.03) warnings.push("30–40° alanı 0.030 mrad sınırının altında.");
-    if (criteria.maxGz < 0.2) warnings.push("Maksimum GZ 0.20 m değerinin altında.");
-    if (criteria.initialGM < 0.15) warnings.push("Başlangıç GM 0.15 m değerinin altında.");
-    if (!weatherCriterionOk) warnings.push("Weather criterion alan gereksinimini karşılamıyor.");
+    if (criteria.area0to30 < 0.055) warnings.push("The 0–30° area is below the 0.055 mrad limit.");
+    if (criteria.area0to40 < 0.09) warnings.push("The 0–40° area is below the 0.090 mrad limit.");
+    if (criteria.area30to40 < 0.03) warnings.push("The 30–40° area is below the 0.030 mrad limit.");
+    if (criteria.maxGz < 0.2) warnings.push("Maximum GZ is below 0.20 m.");
+    if (criteria.initialGM < 0.15) warnings.push("Initial GM is below 0.15 m.");
+    if (!weatherCriterionOk) warnings.push("Weather criterion does not meet space requirement.");
     return warnings;
   }, [analysis]);
 
@@ -1326,26 +1326,26 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       title: "Hidrostatik",
       items: [
         "Hacim V (m³)",
-        "Su yoğunluğu ρsw (t/m³)",
-        "Su hattı alanı Awp (m²)",
+        "Water density ρsw (t/m³)",
+        "Waterline area Awp (m²)",
         "Draft T (m)",
         "TPC (t/cm)"
       ]
     },
     {
-      title: "GM/GZ ve Stabilite",
+      title: "GM/GZ and Stability",
       items: [
         "KB (m)",
         "BM (m)",
         "KM (m)",
         "KG (m)",
         "GM (m)",
-        "GZ için GM (m)",
-        "Açı φ (°)",
+        "GM to GZ (m)",
+        "Angle φ (°)",
         "Deplasman Δ (t)",
-        "Ağırlık w (t)",
+        "Weight w(t)",
         "Mesafe d/y (m)",
-        "Kanca/Yük yüksekliği h (m)",
+        "Hook/Load height h (m)",
         "MCT 1cm (t·m/cm)",
         "Trim (cm)",
         "LBP (m)"
@@ -1356,38 +1356,38 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       items: [
         "Ta/Tf (m)",
         "Uzunluk L (m)",
-        "List için GM (m)",
-        "List için Δ (t)",
-        "Loll için KM/KG (m)"
+        "GM for List (m)",
+        "Δ(t) for List",
+        "KM/KG (m) for Loll"
       ]
     },
     {
-      title: "Enine Stabilite Detayları",
+      title: "Transverse Stability Details",
       items: [
         "KMT (m)",
         "Toplam moment (t·m)",
-        "Toplam ağırlık (t)",
-        "Düşey şift h (m)",
-        "Tank uzunluğu/genişliği (m)",
-        "Akışkan yoğunluğu (t/m³)",
-        "Gemi hacmi ∇ (m³)",
+        "Total weight (t)",
+        "Vertical shift h (m)",
+        "Tank length/width (m)",
+        "Fluid density (t/m³)",
+        "Ship volume ∇ (m³)",
         "GMcorr (m)",
         "KN (m)",
-        "Rüzgar basıncı q (Pa)",
+        "Wind pressure q (Pa)",
         "Yanal alan A (m²)",
         "Kol z (m)",
-        "Test ağırlığı/şift mesafesi (t, m)",
-        "Gözlenen açı (°)",
-        "Genişlik B (m)",
-        "Atalet yarıçapı k (m)"
+        "Test weight/pair distance (t, m)",
+        "Observed angle (°)",
+        "Width B (m)",
+        "Inertia radius k (m)"
       ]
     },
     {
       title: "Pratik Hesaplar",
       items: [
         "Tank L/B/H (m)",
-        "Yoğunluk ρ (t/m³)",
-        "FWA için Δ (t)",
+        "Density ρ (t/m³)",
+        "Δ(t) for FWA",
         "TPC (t/cm)",
         "ρ₁, ρ₂ (t/m³)",
         "T₁, T₂ (°C)",
@@ -1399,9 +1399,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     {
       title: "Hasar Stabilitesi",
       items: [
-        "Bölme adı",
-        "Suya gömülen hacim (m³)",
-        "Yeni KG (m)"
+        "Partition name",
+        "Volume submerged in water (m³)",
+        "New KG (m)"
       ]
     }
   ];
@@ -1411,7 +1411,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       {singleMode && (
         <div className="flex items-center gap-3">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Stabilite Hesaplamaları
+            Stability Calculations
           </span>
         </div>
       )}
@@ -1423,7 +1423,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader className="pb-2">
           <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Brain className="h-5 w-5" />
-            Stabilite Asistanı
+            Stability Assistant
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -1436,7 +1436,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader className="pb-2">
           <CardTitle className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
             <Target className="h-5 w-5" />
-            Giriş Alanları ve Birimleri
+            Input Fields and Units
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
@@ -1453,7 +1453,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
           ))}
           <p className="text-xs text-slate-500 dark:text-slate-300">
-            Not: KN CSV, Bonjean JSON ve diğer metin girişleri ayrıca ilgili bölümlerde belirtilmiştir.
+            Note: KN CSV, Bonjean JSON and other text inputs are also mentioned in the relevant sections.
           </p>
         </CardContent>
       </Card>
@@ -1463,7 +1463,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader className="pb-2">
           <CardTitle className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
             <AlertTriangle className="h-5 w-5" />
-            Basitleştirilmiş Hesaplar (Riskli) - Sonraki Sürüm Öncelikleri
+            Simplified Accounts (At Risk) - Next Release Priorities
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
@@ -1472,7 +1472,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               <div className="flex items-center justify-between gap-2 font-semibold">
                 <span>{index + 1}. {item.title}</span>
                 <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
-                  Öncelik
+                  priority
                 </span>
               </div>
               <p className="mt-1 text-xs opacity-80">{item.summary}</p>
@@ -1514,7 +1514,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="density">Su Yoğunluğu (ton/m³)</Label>
+                <Label htmlFor="density">Water Density (ton/m³)</Label>
                 <Input
                   id="density"
                   type="number"
@@ -1525,7 +1525,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateDisplacement} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {displacementResult !== null && (
@@ -1552,7 +1552,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="waterplane">Su Hattı Alanı (m²)</Label>
+                <Label htmlFor="waterplane">Waterline Area (m²)</Label>
                 <Input
                   id="waterplane"
                   type="number"
@@ -1563,7 +1563,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateDraft} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {draftResult !== null && (
@@ -1580,7 +1580,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">TPC Hesaplama (TPC = Awp × ρsw / 100)</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
               <div>
-                <Label htmlFor="tpc-awp">Su Hattı Alanı (m²)</Label>
+                <Label htmlFor="tpc-awp">Waterline Area (m²)</Label>
                 <Input
                   id="tpc-awp"
                   type="number"
@@ -1590,7 +1590,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="tpc-density">Su Yoğunluğu (ton/m³)</Label>
+                <Label htmlFor="tpc-density">Water Density (ton/m³)</Label>
                 <Input
                   id="tpc-density"
                   type="number"
@@ -1601,7 +1601,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateTPC} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {tpcResult !== null && (
@@ -1669,7 +1669,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateGM} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {logicErrors.gm?.length > 0 && (
@@ -1705,7 +1705,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
               GZ Hesaplama (GZ = GM × sin(φ))
               <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
-                Basitleştirilmiş • Riskli
+                Simplified • Risky
               </span>
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
@@ -1721,7 +1721,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <InputError message={gzValidation.gm.error} />
               </div>
               <div>
-                <Label htmlFor="gz-angle">Açı (°)</Label>
+                <Label htmlFor="gz-angle">Angle (°)</Label>
                 <Input
                   id="gz-angle"
                   type="number"
@@ -1733,7 +1733,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateGZ} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {logicErrors.gz?.length > 0 && (
@@ -1760,10 +1760,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* ΔGM (w*d/Δ) */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Şift ile ΔGM (ΔGM = w × d / Δ)</h4>
+            <h4 className="font-semibold mb-3">ΔGM with shift (ΔGM = w × d / Δ)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
-                <Label>Ağırlık w (t)</Label>
+                <Label>Weight w(t)</Label>
                 <Input value={gmShiftInputs.weight} onChange={(e)=> setGmShiftInputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
@@ -1775,7 +1775,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={gmShiftInputs.displacement} onChange={(e)=> setGmShiftInputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <Button onClick={calculateGMShift} className="w-full md:col-span-2">
-                <Calculator className="w-4 h-4 mr-2" /> Hesapla
+                <Calculator className="w-4 h-4 mr-2" /> Calculate
               </Button>
             </div>
             {logicErrors.gmShift?.length > 0 && (
@@ -1794,7 +1794,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Heeling angle from w,y */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Meyil Açısı (GZ = w·y/Δ, tanθ = GZ/GM)</h4>
+            <h4 className="font-semibold mb-3">Heeling Angle (GZ = w·y/Δ, tanθ = GZ/GM)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
                 <Label>w (t)</Label>
@@ -1813,7 +1813,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={heelAngle2Inputs.gm} onChange={(e)=> setHeelAngle2Inputs(p=>({...p, gm: e.target.value}))} />
               </div>
               <Button onClick={calculateHeelAngle2} className="w-full">
-                <Calculator className="w-4 h-4 mr-2" /> Hesapla
+                <Calculator className="w-4 h-4 mr-2" /> Calculate
               </Button>
             </div>
             {logicErrors.heelAngle2?.length > 0 && (
@@ -1833,7 +1833,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Crane (Bumba) GG1 */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Bumba ile GG₁ (GG₁ = w·(hkanca − hyük)/Δ)</h4>
+            <h4 className="font-semibold mb-3">GG₁ with derrick (GG₁ = w·(hkanca − hyük)/Δ)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
                 <Label>w (t)</Label>
@@ -1844,7 +1844,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={craneGG1Inputs.hookHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, hookHeight: e.target.value}))} />
               </div>
               <div>
-                <Label>hyük (m)</Label>
+                <Label>hyuk (m)</Label>
                 <Input value={craneGG1Inputs.loadHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, loadHeight: e.target.value}))} />
               </div>
               <div>
@@ -1852,7 +1852,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={craneGG1Inputs.displacement} onChange={(e)=> setCraneGG1Inputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <Button onClick={calculateCraneGG1} className="w-full">
-                <Calculator className="w-4 h-4 mr-2" /> Hesapla
+                <Calculator className="w-4 h-4 mr-2" /> Calculate
               </Button>
             </div>
             {logicErrors.craneGG1?.length > 0 && (
@@ -1895,7 +1895,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={dockGMInputs.displacement} onChange={(e)=> setDockGMInputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <Button onClick={calculateDockCriticalGM} className="w-full">
-                <Calculator className="w-4 h-4 mr-2" /> Hesapla
+                <Calculator className="w-4 h-4 mr-2" /> Calculate
               </Button>
             </div>
             {logicErrors.dockGM?.length > 0 && (
@@ -1933,7 +1933,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           <div className="bg-emerald-50 dark:bg-gray-700 p-4 rounded-lg">
             <h4 className="mb-3 flex items-center gap-2 text-2xl font-bold text-blue-700 drop-shadow-sm">
               <Anchor className="h-6 w-6 text-blue-700" />
-              Duba/Tank Hacmi ve Kütle
+              Pontoon/Tank Volume and Mass
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
               <div>
@@ -1953,7 +1953,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={tankInputs.rho} onChange={(e)=> setTankInputs(p=>({...p, rho: e.target.value}))} />
               </div>
               <Button onClick={calculateTankVolumeMass} className="w-full md:col-span-2">
-                <Calculator className="w-4 h-4 mr-2" /> Hesapla
+                <Calculator className="w-4 h-4 mr-2" /> Calculate
               </Button>
             </div>
             {tankResults && (
@@ -1969,7 +1969,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           <div className="bg-emerald-50 dark:bg-gray-700 p-4 rounded-lg">
             <h4 className="mb-3 flex items-center gap-2 text-2xl font-bold text-blue-700 drop-shadow-sm">
               <Waves className="h-6 w-6 text-blue-700" />
-              FWA ve Yoğunluk
+              FWA and Density
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
@@ -2056,7 +2056,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-orange-700 dark:text-orange-300">
             <Ship className="h-5 w-5" />
-            Trim ve List Hesaplamalar
+            Trim and List Calculations
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -2064,10 +2064,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* Trim Hesaplama */}
           {(!singleMode || !calc || calc==='trim') && (
           <div className="bg-orange-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Trim Açısı (Trim = arctan((Ta - Tf) / L))</h4>
+            <h4 className="font-semibold mb-3">Trim Angle (Trim = arctan((Ta - Tf) / L))</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
               <div>
-                <Label htmlFor="ta">Ta - Kıç Su Çekimi (m)</Label>
+                <Label htmlFor="ta">Ta - Aft Draft (m)</Label>
                 <Input
                   id="ta"
                   type="number"
@@ -2077,7 +2077,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="tf">Tf - Baş Su Çekimi (m)</Label>
+                <Label htmlFor="tf">Tf - Head Draft (m)</Label>
                 <Input
                   id="tf"
                   type="number"
@@ -2098,7 +2098,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateTrim} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {trimResult !== null && (
@@ -2112,10 +2112,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* List Hesaplama */}
           {(!singleMode || !calc || calc==='list') && (
           <div className="bg-orange-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">List Açısı (List = arctan(W × d / (Δ × GM)))</h4>
+            <h4 className="font-semibold mb-3">List Angle (List = arctan(W × d / (Δ × GM)))</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
               <div>
-                <Label htmlFor="list-weight">Ağırlık (ton)</Label>
+                <Label htmlFor="list-weight">Weight (ton)</Label>
                 <Input
                   id="list-weight"
                   type="number"
@@ -2156,7 +2156,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateList} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {logicErrors.list?.length > 0 && (
@@ -2177,7 +2177,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* Loll Açısı Hesaplama */}
           {(!singleMode || !calc || calc==='loll') && (
           <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Loll Açısı (φloll = arccos(KG / KM))</h4>
+            <h4 className="font-semibold mb-3">Loll Angle (φloll = arccos(KG / KM))</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
               <div>
                 <Label htmlFor="loll-kg">KG (m)</Label>
@@ -2201,7 +2201,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateLoll} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hesapla
+                Calculate
               </Button>
             </div>
             {logicErrors.loll?.length > 0 && (
@@ -2232,7 +2232,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Shield className="h-5 w-5" />
-            Enine Stabilite Hesaplamaları
+            Transverse Stability Calculations
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -2240,7 +2240,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* 2. Ağırlık Merkezi ve GM */}
           {(!singleMode || section === 'stability' || calc === 'gm') && (
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">2. Ağırlık Merkezi ve GM</h4>
+            <h4 className="font-semibold mb-3">2. Center of Gravity and GM</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
                 <Label htmlFor="weight-kmt">KMT [m]</Label>
@@ -2273,7 +2273,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="weight-total">Toplam Ağırlık [t]</Label>
+                <Label htmlFor="weight-total">Total Weight [t]</Label>
                 <Input
                   id="weight-total"
                   type="number"
@@ -2285,7 +2285,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateWeightCenterGM} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              GM ve KG Hesapla
+              Calculate GM and KG
             </Button>
             {weightCenterResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-green-500">
@@ -2301,10 +2301,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* 3. Ağırlık Şifti */}
           {(!singleMode || section === 'stability' || calc === 'list') && (
           <div className="bg-orange-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">3. Ağırlık Ekleme/Çıkarma/Şift</h4>
+            <h4 className="font-semibold mb-3">3. Add/Subtract/Shift Weight</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div>
-                <Label htmlFor="shift-weight">Ağırlık (w) [t]</Label>
+                <Label htmlFor="shift-weight">Weight (w) [t]</Label>
                 <Input
                   id="shift-weight"
                   type="number"
@@ -2344,7 +2344,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="shift-vertical">Düşey Şift (h) [m]</Label>
+                <Label htmlFor="shift-vertical">Vertical Shift (h) [m]</Label>
                 <Input
                   id="shift-vertical"
                   type="number"
@@ -2356,7 +2356,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateWeightShift} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              Ağırlık Şifti Hesapla
+              Calculate Weight Shift
             </Button>
             {logicErrors.weightShift?.length > 0 && (
               <div className="mt-2 space-y-1">
@@ -2368,8 +2368,8 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             {weightShiftResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-orange-500">
                 <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div><strong>List Açısı:</strong> {weightShiftResults.listAngle.toFixed(2)}°</div>
-                  <div><strong>KG Değişimi:</strong> {weightShiftResults.kgChange.toFixed(4)} m</div>
+                  <div><strong>List Angle:</strong> {weightShiftResults.listAngle.toFixed(2)}°</div>
+                  <div><strong>KG Change:</strong> {weightShiftResults.kgChange.toFixed(4)} m</div>
                 </div>
               </div>
             )}
@@ -2378,10 +2378,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* 4. Serbest Yüzey Etkisi */}
           <div className="bg-amber-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">4. Serbest Yüzey Etkisi (FSC)</h4>
+            <h4 className="font-semibold mb-3">4. Free Surface Effect (FSC)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div>
-                <Label htmlFor="fs-length">Tank Uzunluğu [m]</Label>
+                <Label htmlFor="fs-length">Tank Length [m]</Label>
                 <Input
                   id="fs-length"
                   type="number"
@@ -2391,7 +2391,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="fs-breadth">Tank Genişliği [m]</Label>
+                <Label htmlFor="fs-breadth">Tank Width [m]</Label>
                 <Input
                   id="fs-breadth"
                   type="number"
@@ -2401,7 +2401,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="fs-density">Akışkan Yoğunluğu [t/m³]</Label>
+                <Label htmlFor="fs-density">Fluid Density [t/m³]</Label>
                 <Input
                   id="fs-density"
                   type="number"
@@ -2411,7 +2411,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="fs-volume">Gemi Hacmi (∇) [m³]</Label>
+                <Label htmlFor="fs-volume">Ship Volume (∇) [m³]</Label>
                 <Input
                   id="fs-volume"
                   type="number"
@@ -2422,7 +2422,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               </div>
               <Button onClick={calculateFreeSurfaceEffect} className="w-full">
                 <Calculator className="w-4 h-4 mr-2" />
-                FSC Hesapla
+                Calculate FSC
               </Button>
             </div>
             {freeSurfaceResults && (
@@ -2441,7 +2441,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* 5. GZ ve Dinamik Stabilite */}
           {(!singleMode || section === 'stability' || calc === 'gz') && (
           <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">5. GZ ve Moment Hesaplamaları</h4>
+            <h4 className="font-semibold mb-3">5. GZ and Moment Calculations</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
                 <Label htmlFor="gz-gmcorr">GMcorr [m]</Label>
@@ -2454,7 +2454,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="gz-angle">Açı (φ) [°]</Label>
+                <Label htmlFor="gz-angle">Angle (φ) [°]</Label>
                 <Input
                   id="gz-angle"
                   type="number"
@@ -2474,7 +2474,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="gz-kg">KG [m] (KN için)</Label>
+                <Label htmlFor="gz-kg">KG [m] (for KN)</Label>
                 <Input
                   id="gz-kg"
                   type="number"
@@ -2486,7 +2486,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateGZDynamic} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              GZ Hesapla
+              Calculate GZ
             </Button>
             {gzDynamicResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-purple-500">
@@ -2501,10 +2501,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* 6. Rüzgar Etkisi */}
           <div className="bg-cyan-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">6. Rüzgar Etkisi</h4>
+            <h4 className="font-semibold mb-3">6. Wind Effect</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <Label htmlFor="wind-pressure">Rüzgar Basıncı (q) [Pa]</Label>
+                <Label htmlFor="wind-pressure">Wind Pressure (q) [Pa]</Label>
                 <Input
                   id="wind-pressure"
                   type="number"
@@ -2546,7 +2546,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateWindEffect} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              Rüzgar Etkisi Hesapla
+              Calculate Wind Effect
             </Button>
             {windEffectResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-cyan-500">
@@ -2560,10 +2560,10 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* 7. İnklinasyon Deneyi */}
           <div className="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">7. İnklinasyon Deneyi</h4>
+            <h4 className="font-semibold mb-3">7. Inclination Experiment</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <Label htmlFor="incl-weight">Test Ağırlığı (w) [t]</Label>
+                <Label htmlFor="incl-weight">Test Weight (w) [t]</Label>
                 <Input
                   id="incl-weight"
                   type="number"
@@ -2573,7 +2573,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="incl-distance">Şift Mesafesi (l) [m]</Label>
+                <Label htmlFor="incl-distance">Shift Distance (l) [m]</Label>
                 <Input
                   id="incl-distance"
                   type="number"
@@ -2593,7 +2593,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="incl-angle">Gözlenen Açı (φ) [°]</Label>
+                <Label htmlFor="incl-angle">Observed Angle (φ) [°]</Label>
                 <Input
                   id="incl-angle"
                   type="number"
@@ -2605,7 +2605,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateInclinationTest} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              GM Ölç (İnklinasyon)
+              Measure GM (Inclination)
             </Button>
             {inclinationResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-indigo-500">
@@ -2624,7 +2624,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">8. Yalpa Periyodu</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <Label htmlFor="roll-breadth">Genişlik (B) [m]</Label>
+                <Label htmlFor="roll-breadth">Width (B) [m]</Label>
                 <Input
                   id="roll-breadth"
                   type="number"
@@ -2644,7 +2644,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="roll-k">Atalet Yarıçapı (k) [m]</Label>
+                <Label htmlFor="roll-k">Inertia Radius (k) [m]</Label>
                 <Input
                   id="roll-k"
                   type="number"
@@ -2656,7 +2656,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateRollPeriod} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              Yalpa Periyodu Hesapla
+              Calculate Yaw Period
             </Button>
             {rollPeriodResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-teal-500">
@@ -2676,7 +2676,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
               9. Angle of Loll
               <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
-                Yaklaşık • Riskli
+                About • Risky
               </span>
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2703,12 +2703,12 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             <Button onClick={calculateAngleOfLoll} className="w-full mt-4">
               <Calculator className="w-4 h-4 mr-2" />
-              Loll Açısını Hesapla
+              Calculate Loll Angle
             </Button>
             {lollResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
                 <div className="text-sm">
-                  <div><strong>Loll Açısı:</strong> {lollResults.lollAngle.toFixed(2)}°</div>
+                  <div><strong>Loll Angle:</strong> {lollResults.lollAngle.toFixed(2)}°</div>
                   <div className="text-xs mt-1 text-red-600 dark:text-red-400">
                     tan φloll ≈ √(-2·GM/BMT)
                   </div>
@@ -2720,7 +2720,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Longitudinal quick calcs */}
           <div className="bg-orange-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Boyuna Hızlı Hesaplar</h4>
+            <h4 className="font-semibold mb-3">Longitudinal Quick Calculations</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
                 <Label>Toplam Moment (t·m)</Label>
@@ -2741,7 +2741,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             )}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end mt-4">
               <div>
-                <Label>Ağırlık w (t)</Label>
+                <Label>Weight w(t)</Label>
                 <Input value={parallelSinkageInputs.weight} onChange={(e)=> setParallelSinkageInputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
@@ -2754,7 +2754,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             {parallelSinkageResult!==null && (
               <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-orange-500 text-sm">
-                Batma/Çıkma = <span className="font-mono">{parallelSinkageResult.toFixed(1)} cm</span>
+                Sinking/Floating = <span className="font-mono">{parallelSinkageResult.toFixed(1)} cm</span>
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end mt-4">
@@ -2786,12 +2786,12 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={draftCorrectionInputs.lbp} onChange={(e)=> setDraftCorrectionInputs(p=>({...p, lbp: e.target.value}))} />
               </div>
               <Button onClick={calculateDraftCorrection} className="w-full md:col-span-3">
-                <Calculator className="w-4 h-4 mr-2" /> Draft Düzeltmesi (cm)
+                <Calculator className="w-4 h-4 mr-2" /> Draft Correction (cm)
               </Button>
             </div>
             {draftCorrectionResult!==null && (
               <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-orange-500 text-sm">
-                Düzeltme = <span className="font-mono">{draftCorrectionResult.toFixed(2)} cm</span>
+                Correction = <span className="font-mono">{draftCorrectionResult.toFixed(2)} cm</span>
               </div>
             )}
           </div>
@@ -2808,7 +2808,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-purple-700 dark:text-purple-300">
             <BarChart3 className="h-5 w-5" />
-            Kapsamlı Stabilite Analizi
+            Comprehensive Stability Analysis
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -2818,7 +2818,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
                 <h4 className="font-semibold mb-3 flex items-center gap-2">
                   <Ship className="h-4 w-4" />
-                  Gemi Geometrisi
+                  Ship Geometry
                 </h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
@@ -2832,7 +2832,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                     <InputError message={geometryValidation.length.error} />
                   </div>
                   <div>
-                    <Label htmlFor="breadth">Genişlik (m)</Label>
+                    <Label htmlFor="breadth">Width (m)</Label>
                     <Input
                       id="breadth"
                       type="number"
@@ -2852,7 +2852,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                     <InputError message={geometryValidation.depth.error} />
                   </div>
                   <div>
-                    <Label htmlFor="draft">Su Çekimi (m)</Label>
+                    <Label htmlFor="draft">Water Draft (m)</Label>
                     <Input
                       id="draft"
                       type="number"
@@ -2868,7 +2868,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               <div className="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
                 <h4 className="font-semibold mb-3 flex items-center gap-2">
                   <Target className="h-4 w-4" />
-                  KG Ayarlaması
+                  QA Adjustment
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -2889,7 +2889,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
                   <h4 className="font-semibold mb-3 flex items-center gap-2">
                     <Waves className="h-4 w-4" />
-                    Hidrostatik Sonuçlar
+                    Hydrostatic Results
                   </h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
@@ -2897,7 +2897,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       <span className="font-medium">{analysis.hydrostatic.displacement.toFixed(2)} t</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Hacim Deplasmanı:</span>
+                      <span>Volume Displacement:</span>
                       <span className="font-medium">{analysis.hydrostatic.volumeDisplacement.toFixed(2)} m³</span>
                     </div>
                     <div className="flex justify-between">
@@ -2926,7 +2926,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   </h4>
                   {solasCriteriaStatus && (
                     <div className="mb-3 flex items-center justify-between rounded-md bg-white/70 px-3 py-2 text-xs font-semibold dark:bg-gray-600/60">
-                      <span>Genel Değerlendirme</span>
+                      <span>General Evaluation</span>
                       <span className={`rounded-full px-2 py-1 ${solasCriteriaStatus.ok ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200' : 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-200'}`}>
                         {solasCriteriaStatus.ok ? 'Uygun' : 'Uygunsuz'}
                       </span>
@@ -2936,7 +2936,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                     <div className="mb-3 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-100">
                       <div className="mb-1 flex items-center gap-2 font-semibold">
                         <AlertTriangle className="h-4 w-4" />
-                        SOLAS/IMO Uyarıları
+                        SOLAS/IMO Warnings
                       </div>
                       <ul className="list-disc space-y-1 pl-4">
                         {solasWarnings.map((warning) => (
@@ -2980,7 +2980,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Başlangıç GM:</span>
+                      <span>Starting GM:</span>
                       <span className="flex items-center gap-2 font-medium">
                         <span className={`${analysis.imoCriteria.initialGM >= 0.15 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.initialGM.toFixed(3)} m
@@ -2994,7 +2994,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       <span>Weather Criterion:</span>
                       <span className="flex items-center gap-2 font-medium">
                         <span className={`${solasCriteriaStatus?.weatherCriterionOk ? 'text-green-700' : 'text-red-700'}`}>
-                          {solasCriteriaStatus?.weatherCriterionOk ? 'Sağlandı' : 'Sağlanmadı'}
+                          {solasCriteriaStatus?.weatherCriterionOk ? 'Provided' : 'Not provided'}
                         </span>
                         <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${solasCriteriaStatus?.weatherCriterionOk ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                           {solasCriteriaStatus?.weatherCriterionOk ? 'Uygun' : 'Uygunsuz'}
@@ -3017,8 +3017,8 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       <tr className="text-left opacity-70">
                         <th className="py-1 pr-4 align-top break-words">Tank</th>
                         <th className="py-1 pr-4 align-top break-words">FSM (proxy)</th>
-                        <th className="py-1 pr-4 align-top break-words">Düzeltme (m)</th>
-                        <th className="py-1 pr-4 align-top break-words max-w-[8rem]">Hesaplama Adımları</th>
+                        <th className="py-1 pr-4 align-top break-words">Correction (m)</th>
+                        <th className="py-1 pr-4 align-top break-words max-w-[8rem]">Calculation Steps</th>
                         <th className="py-1 pr-4 align-top break-words max-w-[8rem]">Kaynak</th>
                       </tr>
                     </thead>
@@ -3037,11 +3037,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
                   <div className="flex justify-between"><span>Toplam FSC</span><span className="font-mono">{totalFSC.toFixed(4)} m</span></div>
-                  <div className="flex justify-between"><span>Başlangıç GM</span><span className="font-mono">{analysis.stability.gm.toFixed(3)} m</span></div>
-                  <div className="flex justify-between"><span>Düzeltilmiş GM</span><span className="font-mono">{correctedGM.toFixed(3)} m</span></div>
+                  <div className="flex justify-between"><span>Home GM</span><span className="font-mono">{analysis.stability.gm.toFixed(3)} m</span></div>
+                  <div className="flex justify-between"><span>Adjusted GM</span><span className="font-mono">{correctedGM.toFixed(3)} m</span></div>
                 </div>
                 <div className="mt-4 rounded-lg border border-amber-200/60 bg-amber-50 p-3 dark:border-amber-500/30 dark:bg-amber-500/10">
-                  <div className="mb-2 text-sm font-semibold text-amber-900 dark:text-amber-100">GM Değişimi</div>
+                  <div className="mb-2 text-sm font-semibold text-amber-900 dark:text-amber-100">GM Change</div>
                   <div className="h-40">
                     <ResponsiveContainer>
                       <BarChart data={gmChangeData} margin={{ left: 8, right: 8 }}>
@@ -3078,20 +3078,20 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                     </ResponsiveContainer>
                   </div>
                   <div className="mt-2 text-xs text-amber-900/90 dark:text-amber-100/90">
-                    <div className="font-semibold">Formül</div>
+                    <div className="font-semibold">Formula</div>
                     <div>GMcorr = GM − ΣFSC; ΔKG = FSM / Δ</div>
                     <div className="mt-1 font-semibold">Anlam</div>
-                    <div>Serbest yüzey düzeltmesi GM'yi azaltır.</div>
+                    <div>Free surface correction reduces GM.</div>
                   </div>
                 </div>
               </div>
 
               {/* Dinamik Stabilite ve GZ Eğrisi */}
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Dinamik Stabilite ve GZ Eğrisi</h4>
+                <h4 className="font-semibold mb-3">Dynamic Stability and GZ Curve</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>Maksimum Sağlama Momenti:</span>
+                    <span>Maximum Turning Torque:</span>
                     <span className="font-medium">{Math.max(...analysis.dynamicStability.gzCurve.map(p => p.rightingMoment)).toFixed(0)} kN·m</span>
                   </div>
                   <div className="flex justify-between">
@@ -3107,7 +3107,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
               {/* GZ Eğrisi Grafiği ve Metrix */}
               <div className="bg-white dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">GZ Eğrisi ve Sağlama Momenti</h4>
+                <h4 className="font-semibold mb-3">GZ Curve and Tension Torque</h4>
                 <div className="h-64 w-full">
                   <ResponsiveContainer>
                     <LineChart data={analysis.dynamicStability.gzCurve} margin={{ left: 8, right: 8, top: 8, bottom: 8 }}>
@@ -3134,7 +3134,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       )}
                       <ReferenceArea x1={analysis.stability.maxGzAngle - 1.5} x2={analysis.stability.maxGzAngle + 1.5} fill="#f59e0b" fillOpacity={0.12} />
                       <Line yAxisId="left" type="monotone" dataKey="gz" name="GZ (m)" stroke="#10b981" dot={false} />
-                      <Line yAxisId="right" type="monotone" dataKey="rightingMoment" name="Sağlama Momenti (kN·m)" stroke="#6366f1" dot={false} />
+                      <Line yAxisId="right" type="monotone" dataKey="rightingMoment" name="Provisioning Moment (kN·m)" stroke="#6366f1" dot={false} />
                       <ReferenceLine x={analysis.stability.maxGzAngle} stroke="#10b981" strokeDasharray="3 3" label={{ value: "Max GZ", position: "top" }} />
                       <ReferenceLine x={30} stroke="#94a3b8" strokeDasharray="2 2" label={{ value: "SOLAS 30°", position: "top" }} />
                       <ReferenceLine x={40} stroke="#94a3b8" strokeDasharray="2 2" label={{ value: "SOLAS 40°", position: "top" }} />
@@ -3153,15 +3153,15 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 text-sm">
                   <div className="flex justify-between"><span>Max GZ</span><span className="font-mono">{analysis.stability.maxGz.toFixed(3)} m</span></div>
-                  <div className="flex justify-between"><span>Max GZ Açısı</span><span className="font-mono">{analysis.stability.maxGzAngle.toFixed(1)}°</span></div>
+                  <div className="flex justify-between"><span>Max GZ Angle</span><span className="font-mono">{analysis.stability.maxGzAngle.toFixed(1)}°</span></div>
                   <div className="flex justify-between"><span>Area 0-30°</span><span className="font-mono">{HydrostaticCalculations.calculateAreaUnderGZCurveAdaptive(analysis.stability.gz, analysis.stability.angles, 0, 30).toFixed(3)} mrad</span></div>
                   <div className="flex justify-between"><span>Area 0-40°</span><span className="font-mono">{HydrostaticCalculations.calculateAreaUnderGZCurveAdaptive(analysis.stability.gz, analysis.stability.angles, 0, 40).toFixed(3)} mrad</span></div>
                 </div>
                 <div className="mt-4 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
-                  <div className="font-semibold">Formül</div>
+                  <div className="font-semibold">Formula</div>
                   <div>GZ(φ) = KN(φ) − KG · sinφ; RM = Δ · GZ</div>
                   <div className="mt-1 font-semibold">Anlam</div>
-                  <div>GZ doğrultucu kolu, RM doğrultucu momenttir.</div>
+                  <div>GZ is the rectifier arm, RM is the rectifier moment.</div>
                 </div>
               </div>
 
@@ -3169,7 +3169,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg">
                   <h4 className="font-semibold mb-3">Cross Curves (KN) CSV</h4>
-                  <p className="text-xs mb-2 opacity-80">Format: angle,kn satırları</p>
+                  <p className="text-xs mb-2 opacity-80">Format: angle,kn lines</p>
                   <textarea
                     className="w-full h-32 p-2 rounded bg-white dark:bg-gray-700"
                     placeholder={"0,0\n10,0.1\n20,0.3\n30,0.55"}
@@ -3182,12 +3182,12 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         const parsed = HydrostaticCalculations.parseCrossCurvesCSV(crossCurvesText);
                         if (parsed.angles?.length > 0 && parsed.kn?.length === parsed.angles.length) {
                           setCrossCurvesSet(parsed);
-                          toast({ title: 'KN yüklendi', description: `${parsed.angles.length} açı okundu` });
+                          toast({ title: 'KN loaded', description: `${parsed.angles.length} angle read` });
                         } else {
-                          toast({ title: 'Hata', description: 'Geçersiz KN CSV', variant: 'destructive' });
+                          toast({ title: 'Error', description: 'Invalid KN CSV', variant: 'destructive' });
                         }
                       } catch (e) {
-                        toast({ title: 'Hata', description: 'CSV parse edilemedi', variant: 'destructive' });
+                        toast({ title: 'Error', description: 'CSV parse edilemedi', variant: 'destructive' });
                       }
                     }}>Uygula</Button>
                     <Button variant="outline" onClick={() => { setCrossCurvesText(''); setCrossCurvesSet(undefined); }}>Temizle</Button>
@@ -3196,14 +3196,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
                 <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
                   <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
-                    Weather Criterion (Basitleştirilmiş)
+                    Weather Criterion (Simplified)
                     <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
                       Riskli
                     </span>
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2 items-end">
                     <div>
-                      <Label>Baskı P (N/m²)</Label>
+                      <Label>Pressure P (N/m²)</Label>
                       <Input type="number" value={weatherInputs.pressure} onChange={(e)=> setWeatherInputs(p=>({...p, pressure:e.target.value}))} />
                     </div>
                     <div>
@@ -3211,7 +3211,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       <Input type="number" value={weatherInputs.area} onChange={(e)=> setWeatherInputs(p=>({...p, area:e.target.value}))} />
                     </div>
                     <div>
-                      <Label>Kaldıraç h (m)</Label>
+                      <Label>Leverage h (m)</Label>
                       <Input type="number" value={weatherInputs.lever} onChange={(e)=> setWeatherInputs(p=>({...p, lever:e.target.value}))} />
                     </div>
                     <Button className="w-full mt-2 md:mt-0" onClick={() => {
@@ -3226,20 +3226,20 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                           displacementT: analysis.hydrostatic.displacement
                         });
                         setWeatherResult(res);
-                        toast({ title: 'Weather Criterion', description: res.ok ? 'Sağlandı' : 'Sağlanmadı' });
+                        toast({ title: 'Weather Criterion', description: res.ok ? 'Provided' : 'Not provided' });
                       } else {
-                        toast({ title: 'Hata', description: 'Geçerli değerler girin', variant: 'destructive' });
+                        toast({ title: 'Error', description: 'Enter valid values', variant: 'destructive' });
                       }
-                    }}>Değerlendir</Button>
+                    }}>Evaluate</Button>
                   </div>
                   {weatherResult && (
                     <div className="mt-2 text-sm">
                       <div className="flex justify-between">
-                        <span>Sonuç:</span>
-                        <span className={`font-medium ${weatherResult.ok ? 'text-green-700' : 'text-red-700'}`}>{weatherResult.ok ? 'Sağlandı' : 'Sağlanmadı'}</span>
+                        <span>Result:</span>
+                        <span className={`font-medium ${weatherResult.ok ? 'text-green-700' : 'text-red-700'}`}>{weatherResult.ok ? 'Provided' : 'Not provided'}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Denge Açısı φeq:</span>
+                        <span>Equilibrium Angle φeq:</span>
                         <span className="font-medium">{weatherResult.phiEq.toFixed(1)}°</span>
                       </div>
                     </div>
@@ -3261,7 +3261,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
             <BarChart3 className="h-5 w-5" />
-            Bonjean Eğrileri / Kesit Entegrasyonu
+            Bonjean Curves / Section Integration
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -3281,12 +3281,12 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 const parsed = JSON.parse(bonjeanText);
                 if (parsed?.sections && Array.isArray(parsed.sections) && typeof parsed.stationSpacing === 'number') {
                   setBonjeanSet(parsed);
-                  toast({ title: 'Bonjean uygulandı', description: `İstasyon sayısı: ${parsed.sections.length}` });
+                  toast({ title: 'Bonjean applied', description: `Number of stations: ${parsed.sections.length}` });
                 } else {
-                  toast({ title: 'Hata', description: 'Geçersiz Bonjean JSON', variant: 'destructive' });
+                  toast({ title: 'Error', description: 'Invalid Bonjean JSON', variant: 'destructive' });
                 }
               } catch (e) {
-                toast({ title: 'Hata', description: 'JSON parse edilemedi', variant: 'destructive' });
+                toast({ title: 'Error', description: 'JSON parse edilemedi', variant: 'destructive' });
               }
             }}>Uygula</Button>
             <Button variant="outline" onClick={() => { setBonjeanText(''); setBonjeanSet(undefined); }}>Temizle</Button>
@@ -3319,27 +3319,27 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           <div className="space-y-3">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-2 items-end">
               <div>
-                <Label>Bölme Adı</Label>
-                <Input placeholder="Bölme adı" value={newCompartment.compartment} onChange={(e)=> setNewCompartment(p=>({...p, compartment:e.target.value}))} />
+                <Label>Partition Name</Label>
+                <Input placeholder="Partition name" value={newCompartment.compartment} onChange={(e)=> setNewCompartment(p=>({...p, compartment:e.target.value}))} />
               </div>
               <div>
-                <Label>Suya Gömülen Hacim (m³)</Label>
-                <Input placeholder="Örn. 120" value={newCompartment.floodedVolume} onChange={(e)=> setNewCompartment(p=>({...p, floodedVolume:e.target.value}))} />
+                <Label>Volume Submerged in Water (m³)</Label>
+                <Input placeholder="Ex. 120" value={newCompartment.floodedVolume} onChange={(e)=> setNewCompartment(p=>({...p, floodedVolume:e.target.value}))} />
               </div>
               <div>
-                <Label>Yeni KG (m)</Label>
-                <Input placeholder="Örn. 5.4" value={newCompartment.newKG} onChange={(e)=> setNewCompartment(p=>({...p, newKG:e.target.value}))} />
+                <Label>New KG (m)</Label>
+                <Input placeholder="Ex. 5.4" value={newCompartment.newKG} onChange={(e)=> setNewCompartment(p=>({...p, newKG:e.target.value}))} />
               </div>
               <Button onClick={()=>{
                 const fv = parseFloat(newCompartment.floodedVolume);
                 const nk = parseFloat(newCompartment.newKG);
                 if(isNaN(fv) || isNaN(nk) || !newCompartment.compartment){
-                  toast({ title:'Hata', description:'Geçerli bölme/veri girin', variant:'destructive' }); return;
+                  toast({ title:'Error', description:'Enter valid bin/data', variant:'destructive' }); return;
                 }
                 const comp: CompartmentAnalysis = { compartment: newCompartment.compartment, floodedVolume: fv, newKG: nk, residualGM: 0, downfloodingAngle: 0 };
                 setFloodedCompartments(prev=> [...prev, comp]);
                 setNewCompartment({ compartment:"", floodedVolume:"", newKG:"" });
-              }}>Bölme Ekle</Button>
+              }}>Add Partition</Button>
             </div>
 
             {analysis && (

@@ -63,7 +63,7 @@ const Notes = () => {
 
   const handleDelete = (id: string) => {
     deleteNote(id);
-    toast.success("Not silindi");
+    toast.success("Note deleted");
   };
 
   const handleAdd = () => {
@@ -71,7 +71,7 @@ const Notes = () => {
     if (!text) return;
     addNote(text);
     setDraft("");
-    toast.success("Not eklendi");
+    toast.success("Note added");
   };
 
   return (
@@ -83,7 +83,7 @@ const Notes = () => {
             <div className="flex items-center gap-3">
               <StickyNote className="h-9 w-9 text-amber-300" strokeWidth={1.8} />
               <h1 className="text-3xl font-bold text-amber-300">
-                <span data-translatable>Notlarım</span>
+                <span data-translatable>my notes</span>
               </h1>
             </div>
           </div>
@@ -94,7 +94,7 @@ const Notes = () => {
               <Textarea
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
-                placeholder="Yeni not yazın…"
+                placeholder="Write a new note…"
                 rows={3}
                 className="resize-none border-white/10 bg-white/5 text-white placeholder:text-white/40"
               />
@@ -105,7 +105,7 @@ const Notes = () => {
                   className="bg-amber-500/20 text-amber-200 hover:bg-amber-500/30"
                 >
                   <Plus className="mr-1 h-4 w-4" />
-                  <span data-translatable>Not ekle</span>
+                  <span data-translatable>add note</span>
                 </Button>
               </div>
             </CardContent>
@@ -115,11 +115,11 @@ const Notes = () => {
           {notes.length === 0 ? (
             <EmptyState
               icon={StickyNote}
-              title={<span data-translatable>Henüz kaydedilmiş notunuz yok.</span>}
+              title={<span data-translatable>You have no notes saved yet.</span>}
               description={
                 <span data-translatable>
-                  Herhangi bir sayfada metin seçin ve beliren "Kaydet" düğmesine
-                  dokunun; not burada kategorisine göre görünür.
+                  Select text on any page and tap the "Save" button that appears;
+                  the note shows up here under its category.
                 </span>
               }
             />
@@ -175,7 +175,7 @@ const Notes = () => {
                                 variant="ghost"
                                 size="icon"
                                 onClick={() => handleDelete(note.id)}
-                                aria-label="Notu sil"
+                                aria-label="delete note"
                                 className="h-7 w-7 text-white/50 hover:bg-red-500/15 hover:text-red-300"
                               >
                                 <Trash2 className="h-4 w-4" />

@@ -25,7 +25,7 @@ interface SignalTonePlayerProps {
   /** Çalınacak ses/sessizlik dizisi. */
   steps: ToneStep[];
   preset?: TonePreset;
-  /** Butonun yanında gösterilecek kısa etiket (ör. "1 uzun + 2 kısa"). */
+  /** Butonun yanında gösterilecek kısa etiket (ör. "1 long + 2 short"). */
   label?: string;
   /**
    * Adım adım görsel ilerleme çubuğu gösterilsin mi. Mors kartlarında nokta /
@@ -155,7 +155,7 @@ export default function SignalTonePlayer({
       >
         {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
         <Volume2 className="h-3.5 w-3.5" />
-        <span className="text-xs">{playing ? "Durdur" : "Çal"}</span>
+        <span className="text-xs">{playing ? "Durdur" : "play"}</span>
       </Button>
 
       {label ? <span className="text-xs text-muted-foreground">{label}</span> : null}

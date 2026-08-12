@@ -47,7 +47,7 @@ const MfaGateScreen = ({ onCancel }: { onCancel: () => void }) => (
             <Anchor className="h-8 w-8 text-primary" />
           </div>
         </div>
-        <CardTitle className="text-xl">Doğrulama gerekiyor</CardTitle>
+        <CardTitle className="text-xl">Verification required</CardTitle>
       </CardHeader>
       <CardContent>
         <MfaChallengeForm onCancel={onCancel} />

@@ -13,19 +13,19 @@ const COLLAPSE_AT = 44;
 
 const KNOWN_TITLES: Array<[RegExp, string]> = [
   [/^\/$/, "Mariner's Book"],
-  [/^\/lessons$/, "Öğren"],
-  [/^\/exercises$/, "Alıştırmalar"],
-  [/^\/calculations$/, "Araçlar"],
-  [/^\/library$/, "Kitaplık"],
-  [/^\/search$/, "Ara"],
+  [/^\/lessons$/, "learn"],
+  [/^\/exercises$/, "Exercises"],
+  [/^\/calculations$/, "tools"],
+  [/^\/library$/, "bookshelf"],
+  [/^\/search$/, "Search"],
   [/^\/crew$/, "Personel"],
-  [/^\/bridge$/, "Köprüüstü"],
-  [/^\/ship-systems$/, "Gemi Sistemleri"],
-  [/^\/ship-tasks$/, "Gemi Görevleri"],
+  [/^\/bridge$/, "bridge"],
+  [/^\/ship-systems$/, "Ship Systems"],
+  [/^\/ship-tasks$/, "Ship Missions"],
   [/^\/ship-operations$/, "Operasyonlar"],
-  [/^\/glossary$/, "Sözlük"],
+  [/^\/glossary$/, "dictionary"],
   [/^\/regulations$/, "Mevzuat"],
-  [/^\/settings$/, "Ayarlar"],
+  [/^\/settings$/, "Settings"],
 ];
 
 const knownTitle = (pathname: string) =>
@@ -63,7 +63,7 @@ export function AppNavBar() {
   const [title, setTitle] = useState(() => localizedKnownTitle(pathname, currentLanguage));
   const reduceMotion = useReducedMotion();
   const localizedBack = useMemo(
-    () => getCoreUiTranslation("Geri", currentLanguage) ?? "Geri",
+    () => getCoreUiTranslation("Back", currentLanguage) ?? "Back",
     [currentLanguage],
   );
   const backLabel = useMemo(() => {

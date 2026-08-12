@@ -16,7 +16,7 @@ import {
 type Filter = "all" | FlagKind;
 
 const FILTER_CHIPS: { value: Filter; label: string }[] = [
-  { value: "all", label: "Tümü" },
+  { value: "all", label: "All" },
   ...SIGNAL_FLAG_KIND_ORDER.map((kind) => ({
     value: kind as Filter,
     label: SIGNAL_FLAG_KIND_LABELS[kind].title,
@@ -160,7 +160,7 @@ export default function SignalFlagsPage() {
 
         {totalMatches === 0 ? (
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">Sonuç bulunamadı</p>
+            <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">
               Farklı bir arama terimi deneyin veya filtreyi temizleyin.
             </p>

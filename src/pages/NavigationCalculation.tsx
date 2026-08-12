@@ -1606,7 +1606,7 @@ export default function NavigationCalculationPage() {
               <div className="text-sm font-semibold">Knot ↔ km/h ↔ m/s</div>
               <div className="grid grid-cols-3 gap-4 items-end">
                 <div>
-                  <Label htmlFor="b-conv-value">Değer</Label>
+                  <Label htmlFor="b-conv-value">Value</Label>
                   <Input id="b-conv-value" type="number" value={basicInputs.convertValue} onChange={(e) => setBasicInputs({ ...basicInputs, convertValue: e.target.value })} />
                 </div>
                 <div>
@@ -1930,7 +1930,7 @@ export default function NavigationCalculationPage() {
               <Label htmlFor="bearing-type">Hesaplama Türü</Label>
               <Select value={bearingInputs.type} onValueChange={(value) => setBearingInputs({ ...bearingInputs, type: value as typeof bearingInputs.type })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Seçiniz" />
+                  <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="doubling">Doubling Angle on Bow</SelectItem>
@@ -2084,7 +2084,7 @@ export default function NavigationCalculationPage() {
               <Label htmlFor="distance-type">Hesaplama Türü</Label>
               <Select value={distanceInputs.type} onValueChange={(value) => setDistanceInputs({ ...distanceInputs, type: value as typeof distanceInputs.type })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Seçiniz" />
+                  <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="dip">Dip (Horizon) Distance</SelectItem>
@@ -2143,7 +2143,7 @@ export default function NavigationCalculationPage() {
                 </div>
                 <div className="flex items-end">
                   <Button type="button" className="w-full" onClick={searchTideForecast} disabled={tideForecastLoading || !tideForecastQuery.trim()}>
-                    {tideForecastLoading ? "Aranıyor..." : "Ara"}
+                    {tideForecastLoading ? "Aranıyor..." : "Search"}
                   </Button>
                 </div>
               </div>
@@ -2204,8 +2204,8 @@ export default function NavigationCalculationPage() {
                         <thead>
                           <tr className="border-b">
                             <th className="text-left p-2">Olay</th>
-                            <th className="text-left p-2">Tarih</th>
-                            <th className="text-left p-2">Saat</th>
+                            <th className="text-left p-2">Date</th>
+                            <th className="text-left p-2">Time</th>
                             <th className="text-left p-2">Yükseklik (m)</th>
                           </tr>
                         </thead>
@@ -2386,7 +2386,7 @@ export default function NavigationCalculationPage() {
                   <table className="w-full border-collapse text-xs">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left p-2">Saat</th>
+                        <th className="text-left p-2">Time</th>
                         <th className="text-left p-2">Yükseklik (m)</th>
                         <th className="text-left p-2">Değişim</th>
                         <th className="text-left p-2">Durumu</th>
@@ -2525,7 +2525,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="turn-length">Gemi Boyu (m)</Label>
+              <Label htmlFor="turn-length">Ship Length (m)</Label>
               <Input id="turn-length" type="number" placeholder="200" value={turningInputs.length} onChange={(e) => setTurningInputs({ ...turningInputs, length: e.target.value })} />
             </div>
             <div>
@@ -2547,7 +2547,7 @@ export default function NavigationCalculationPage() {
               <Input id="weather-beaufort" type="number" min={0} max={12} placeholder="" value={weatherInputs.beaufort} onChange={(e) => setWeatherInputs({ ...weatherInputs, beaufort: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="weather-windspeed">Rüzgar Hızı (knot)</Label>
+              <Label htmlFor="weather-windspeed">Wind Speed (knots)</Label>
               <Input id="weather-windspeed" type="number" placeholder="" value={weatherInputs.windSpeed} onChange={(e) => setWeatherInputs({ ...weatherInputs, windSpeed: e.target.value })} />
             </div>
             <div>
@@ -2568,7 +2568,7 @@ export default function NavigationCalculationPage() {
               <Label htmlFor="celestial-type" data-translatable>Hesaplama Türü</Label>
               <Select value={celestialInputs.type} onValueChange={(value) => setCelestialInputs({ ...celestialInputs, type: value as typeof celestialInputs.type })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Seçiniz" />
+                  <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="meridian">Meridian Passage</SelectItem>
@@ -2601,7 +2601,7 @@ export default function NavigationCalculationPage() {
               <Label htmlFor="emergency-type">Arama Türü</Label>
               <Select value={emergencyInputs.type} onValueChange={(value) => setEmergencyInputs({ ...emergencyInputs, type: value as typeof emergencyInputs.type })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Seçiniz" />
+                  <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="square">Square Search</SelectItem>
@@ -3401,7 +3401,7 @@ export default function NavigationCalculationPage() {
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 space-y-4">
               {renderInputs()}
-              <Button onClick={onCalculate} className="w-full">Hesapla</Button>
+              <Button onClick={onCalculate} className="w-full">Calculate</Button>
             </div>
             {renderResults()}
           </CardContent>

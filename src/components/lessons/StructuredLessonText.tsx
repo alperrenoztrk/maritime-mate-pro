@@ -4,7 +4,7 @@ import { useMemo } from "react";
  * Ders anlatım metinlerini yapısal olarak render eden bileşen.
  *
  * Ders sayfalarındaki uzun anlatımlar tek bir düz metin bloğu olarak tutuluyor;
- * başlıklar metnin içinde büyük harfle yazılmış satırlardan ("PİYASA YAPISI:"),
+ * başlıklar metnin içinde büyük harfle yazılmış satırlardan ("MARKET STRUCTURE:"),
  * listeler ise "- " veya "1. " ile başlayan satırlardan ibaret. Bu bileşen o
  * kalıpları ayrıştırıp gerçek başlık/liste/paragraf tipografisine çevirir.
  *
@@ -26,7 +26,7 @@ const ORDERED_RE = /^(\d{1,2})[.)]\s+(.*)$/;
 const LOWER_RE = /[a-zçğıöşü]/g;
 const UPPER_RE = /[A-ZÇĞİÖŞÜ]/g;
 
-/** "PİYASA YAPISI:" gibi tek başına duran büyük harfli başlık satırı mı? */
+/** "MARKET STRUCTURE:" gibi tek başına duran büyük harfli başlık satırı mı? */
 function isHeadingLine(line: string): boolean {
   if (!line.endsWith(":")) return false;
   const body = line.slice(0, -1).trim();
@@ -38,7 +38,7 @@ function isHeadingLine(line: string): boolean {
   return upper / (upper + lower) >= 0.8;
 }
 
-/** "Talebi etkileyen faktörler:" gibi listeyi tanıtan kısa satır mı? */
+/** "Factors affecting demand:" gibi listeyi tanıtan kısa satır mı? */
 function isLeadLine(line: string): boolean {
   return line.endsWith(":") && line.length <= 90 && !/[.?!]/.test(line);
 }
@@ -95,7 +95,7 @@ function parseLessonText(text: string): Block[] {
       continue;
     }
 
-    // Numaralı başlığın ("1. NAVLUN PİYASASI (Freight Market):") hemen ardından
+    // Numaralı başlığın ("1. FREIGHT MARKET (Freight Market):") hemen ardından
     // gelen açıklama satırı o maddenin gövdesidir.
     if (current?.kind === "ordered") {
       const last = current.items[current.items.length - 1];
@@ -119,7 +119,7 @@ function parseLessonText(text: string): Block[] {
 }
 
 /**
- * "Terim (English): açıklama" kalıbını kalın terim + açıklamaya böler.
+ * "Term (English): description" kalıbını kalın terim + açıklamaya böler.
  * Cümle içindeki iki nokta işaretlerini yanlışlıkla bölmemek için terim
  * kısmının kısa ve noktalama içermiyor olmasını şart koşar.
  */

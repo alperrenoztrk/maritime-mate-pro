@@ -69,25 +69,25 @@ export class ErrorBoundary extends Component<Props, State> {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
                 <AlertTriangle className="h-6 w-6 text-destructive" />
               </div>
-              <CardTitle className="text-xl">Beklenmeyen Hata</CardTitle>
+              <CardTitle className="text-xl">Unexpected Error</CardTitle>
               <CardDescription>
-                Uygulama yüklenirken bir hata oluştu. Bu genellikle geçici bir sorundur.
+                An error occurred while loading the application. This is usually a temporary problem.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Button onClick={this.handleReload} className="w-full">
                   <RefreshCw className="mr-2 h-4 w-4" />
-                  Sayfayı Yenile
+                  Refresh Page
                 </Button>
                 <Button variant="outline" onClick={this.handleReset} className="w-full">
-                  Tekrar Dene
+                  Try Again
                 </Button>
               </div>
               {import.meta.env.DEV && this.state.error && (
                 <details className="mt-4 p-3 bg-muted rounded-lg">
                   <summary className="cursor-pointer text-sm font-medium mb-2">
-                    Hata Detayları (Geliştirici)
+                    Error Details (Developer)
                   </summary>
                   <pre className="text-xs overflow-auto whitespace-pre-wrap">
                     {this.state.error.message}

@@ -9,7 +9,7 @@ import { WeatherIcon } from "@/components/weather/WeatherIcon";
 
 function wmoToTr(code?: number): string {
   switch (code) {
-    case 0: return "Açık";
+    case 0: return "open";
     case 1: return "Az bulutlu";
     case 2: return "Parçalı bulutlu";
     case 3: return "Kapalı";
@@ -204,7 +204,7 @@ export default function WeatherForecast() {
                         </div>
                         <div className="space-y-1">
                           <p className="text-lg font-semibold text-foreground">
-                            {day.precipitationSum > 0 ? `${day.precipitationSum.toFixed(1)} mm` : "Yok"}
+                            {day.precipitationSum > 0 ? `${day.precipitationSum.toFixed(1)} mm` : "None"}
                           </p>
                           <p className="text-xs text-muted-foreground">Toplam</p>
                         </div>

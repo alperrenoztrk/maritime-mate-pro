@@ -3,7 +3,7 @@
  *
  * Reklam, para kazanma modelinde ikincil gelirdir (bkz. MONETIZATION_SETUP.md):
  * yalnızca ÜCRETSİZ pakette gösterilir, Pro/ömür boyu kullanıcıda hiç
- * gösterilmez ("reklamsız kullanım" Pro vaadidir).
+ * gösterilmez ("ad-free use" Pro vaadidir).
  *
  * Reklamların tamamı `VITE_ADS_ENABLED` build-time anahtarına bağlıdır ve
  * anahtar **varsayılan olarak kapalıdır** (bkz. `areAdsEnabled()`).

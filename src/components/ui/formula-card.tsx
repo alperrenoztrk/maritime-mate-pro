@@ -36,7 +36,7 @@ const accentTextClass: Record<FormulaAccent, string> = {
 };
 
 export function FormulaCard({
-  title = "Formüller",
+  title = "Formulas",
   sections,
   symbolsNote,
   className,

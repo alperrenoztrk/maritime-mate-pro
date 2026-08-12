@@ -5,7 +5,7 @@ import { SEO } from "@/components/SEO";
 
 export default function SearchPage() {
   return (
-    <LibraryPageShell title="Ara" icon={Search} maxWidth="max-w-3xl">
+    <LibraryPageShell title="Search" icon={Search} maxWidth="max-w-3xl">
       <SEO
         title="Ara — Mariner's Book"
         description="Dersler, hesaplamalar, operasyonel kaynaklar ve denizcilik terimleri arasında arama yapın."

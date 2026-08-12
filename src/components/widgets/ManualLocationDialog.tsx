@@ -138,10 +138,10 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
           </Button>
           <div className="flex gap-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              İptal
+              Cancel
             </Button>
             <Button type="button" onClick={handleSave}>
-              Kaydet
+              Save
             </Button>
           </div>
         </DialogFooter>

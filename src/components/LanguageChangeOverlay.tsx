@@ -9,12 +9,12 @@ export function LanguageChangeOverlay() {
 
   const title =
     changePhase === 'harvest'
-      ? 'Sayfalar taranıyor…'
-      : 'Çeviriler hazırlanıyor…';
+      ? 'Pages are being scanned…'
+      : 'Translations are being prepared…';
   const subtitle =
     changePhase === 'harvest'
-      ? 'Uygulamanın tüm sayfaları taranıyor (tek seferlik, 1–3 dk)'
-      : 'Tüm metinler önbelleğe alınıyor — sonraki gezinmelerde bekleme olmayacak';
+      ? 'Scanning all pages of the application (one time, 1–3 min)'
+      : 'All text is cached — no waiting for subsequent navigations';
 
   return (
     <div

@@ -212,11 +212,11 @@ export default function FluidMechanicsTopicsPage() {
             <section className="mt-6 rounded-2xl border border-border/40 bg-card/80 p-6">
               <div className="mb-4 flex items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-primary" />
-                <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
+                <h2 className="text-lg font-semibold text-foreground">Quick Access</h2>
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
-                  { title: "Makine Hesaplamaları", href: "/machine/calculations" },
+                  { title: "Machine Calculations", href: "/machine/calculations" },
                   { title: "Makine Formülleri", href: "/machine/formulas" },
                 ].map((resource) => (
                   <Link
@@ -310,7 +310,7 @@ export default function FluidMechanicsTopicsPage() {
 
                 {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
                   <div className="rounded-xl border border-border/40 bg-card/60 p-4">
-                    <h3 className="mb-3 font-semibold text-foreground">Notlar</h3>
+                    <h3 className="mb-3 font-semibold text-foreground">Notes</h3>
                     <div className="space-y-2">
                       {currentContent.keyPoints.map((point, index) => (
                         <div key={index} className="flex items-start gap-3 text-sm text-foreground/80">

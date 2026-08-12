@@ -37,7 +37,7 @@ const chapters = [
   },
   {
     id: "III",
-    title: "Can Kurtarma Araçları",
+    title: "Lifesaving Vehicles",
     summary: "Can salı, filika, davit ve mustering düzenlemeleri.",
     checkpoints: [
       "Minimum filika kapasitesi = gemi nüfusu × 1.25",

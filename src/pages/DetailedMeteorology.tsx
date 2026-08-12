@@ -146,7 +146,7 @@ const DetailedMeteorology = () => {
     {
       id: 'cold-front',
       name: 'Cold Front',
-      nameTr: 'Soğuk Cephe',
+      nameTr: 'Cold Front',
       type: 'front',
       description: 'Boundary between cold and warm air masses',
       characteristics: [
@@ -171,7 +171,7 @@ const DetailedMeteorology = () => {
     {
       id: 'warm-front',
       name: 'Warm Front',
-      nameTr: 'Sıcak Cephe',
+      nameTr: 'Warm Front',
       type: 'front',
       description: 'Boundary where warm air overrides cold air',
       characteristics: [
@@ -429,7 +429,7 @@ const DetailedMeteorology = () => {
                 Veri Kaynakları
               </div>
               <p className="text-sm text-blue-800 dark:text-blue-200">
-                Bu konu anlatımı <span className="font-semibold">US Coast Guard (USCG)</span> ve 
+                Bu konu anlatımı <span className="font-semibold">US Coast Guard (USCG)</span> and 
                 <span className="font-semibold"> SeaVision</span> meteoroloji verilerinden derlenmiştir. 
                 Tüm bilgiler denizcilik güvenliği standartlarına uygun olarak hazırlanmıştır.
               </p>
@@ -441,7 +441,7 @@ const DetailedMeteorology = () => {
           <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="systems">Hava Sistemleri</TabsTrigger>
             <TabsTrigger value="clouds">Bulutlar</TabsTrigger>
-            <TabsTrigger value="pressure">Basınç Sistemleri</TabsTrigger>
+            <TabsTrigger value="pressure">Pressure Systems</TabsTrigger>
             <TabsTrigger value="storms">Fırtına Türleri</TabsTrigger>
             <TabsTrigger value="satellite">Uydu Görüntüleri</TabsTrigger>
             <TabsTrigger value="navtex">NAVTEX Uyarıları</TabsTrigger>
@@ -572,7 +572,7 @@ const DetailedMeteorology = () => {
                             <Badge className={getSafetyColor(system.safetyLevel)}>
                               {getSafetyIcon(system.safetyLevel)}
                               <span className="ml-1">
-                                {system.safetyLevel === 'safe' ? 'Güvenli' :
+                                {system.safetyLevel === 'safe' ? 'safe' :
                                  system.safetyLevel === 'caution' ? 'Dikkatli' :
                                  system.safetyLevel === 'dangerous' ? 'Tehlikeli' : 'Çok Tehlikeli'}
                               </span>
@@ -717,7 +717,7 @@ const DetailedMeteorology = () => {
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-sm mb-2">Öneriler</h4>
+                          <h4 className="font-semibold text-sm mb-2">Suggestions</h4>
                           <ul className="text-sm space-y-1">
                             {system.recommendations.map((rec, index) => (
                               <li key={index} className="flex items-start gap-2">

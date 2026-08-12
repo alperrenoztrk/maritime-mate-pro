@@ -14,7 +14,7 @@ import {
 type Filter = "all" | KnotCategory;
 
 const FILTER_CHIPS: { value: Filter; label: string }[] = [
-  { value: "all", label: "Tümü" },
+  { value: "all", label: "All" },
   ...KNOT_CATEGORY_ORDER.map((c) => ({ value: c, label: KNOT_CATEGORY_LABELS[c].title.split(" ")[0] })),
 ];
 
@@ -106,7 +106,7 @@ export default function SailorKnotsPage() {
         {/* Results */}
         {totalMatches === 0 ? (
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">Sonuç bulunamadı</p>
+            <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">
               Farklı bir arama terimi deneyin veya kategori filtresini temizleyin.
             </p>

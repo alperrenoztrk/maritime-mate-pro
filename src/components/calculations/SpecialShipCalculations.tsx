@@ -96,14 +96,14 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       inertGasRequired,
       tankPressure: pressure,
       pressureStatus,
-      safetyNote: pressureStatus === 'safe' ? 'Güvenli basınç seviyesi' :
-                  pressureStatus === 'caution' ? 'Dikkat - basınç yükseliyor' :
-                  'Kritik basınç - acil müdahale gerekli'
+      safetyNote: pressureStatus === 'safe' ? 'Safe pressure level' :
+                  pressureStatus === 'caution' ? 'Caution - pressure rising' :
+                  'Critical pressure - urgent intervention required'
     });
     setCalcSteps(prev => ({ ...prev, tanker: [
-      { step: 1, title: "COW süresi hesabı", formula: "COW Süresi = Tank Hacmi / COW Oranı", substitution: `COW = ${volume.toFixed(1)} / ${rate.toFixed(1)}`, result: `COW Süresi = ${cowTime.toFixed(1)} saat` },
-      { step: 2, title: "İnert gaz gereksinimi", formula: "İnert Gaz = Tank Hacmi × 1.05 (%5 fazlalık)", substitution: `İnert Gaz = ${volume.toFixed(1)} × 1.05`, result: `İnert Gaz = ${inertGasRequired.toFixed(0)} m³` },
-      { step: 3, title: "Basınç kontrolü", formula: "P < 0.014 bar → Güvenli, P < 0.02 → Dikkat, P ≥ 0.02 → Kritik", result: `P = ${pressure} bar → ${pressureStatus}` },
+      { step: 1, title: "COW time calculation", formula: "COW Time = Tank Volume / COW Ratio", substitution: `COW = ${volume.toFixed(1)} / ${rate.toFixed(1)}`, result: `COW Duration = ${cowTime.toFixed(1)} clock` },
+      { step: 2, title: "Inert gas requirement", formula: "Inert Gas = Tank Volume × 1.05 (5% excess)", substitution: `Inert Gas = ${volume.toFixed(1)} × 1.05`, result: `Inert Gas = ${inertGasRequired.toFixed(0)} m³` },
+      { step: 3, title: "Pressure control", formula: "P < 0.014 bar → Safe, P < 0.02 → Caution, P ≥ 0.02 → Critical", result: `P = ${pressure} bar → ${pressureStatus}` },
     ] }));
   };
 
@@ -130,10 +130,10 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
               lossPercentage < 10 ? 'acceptable' : 'excessive'
     });
     setCalcSteps(prev => ({ ...prev, lng: [
-      { step: 1, title: "Formül", formula: "Toplam Kayıp = (Günlük Boil-off% / 100) × Kapasite × Gün", explanation: "LNG buharlaşma kaybı hesabı" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Kayıp = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Toplam Kayıp = ${totalBoilOff.toFixed(1)} m³` },
-      { step: 3, title: "Kalan kargo", formula: "Kalan = Kapasite - Toplam Kayıp", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
-      { step: 4, title: "Kayıp yüzdesi", formula: "Kayıp% = (Toplam Kayıp / Kapasite) × 100", substitution: `Kayıp% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Kayıp = %${lossPercentage.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "Total Loss = (Daily Boil-off% / 100) × Capacity × Day", explanation: "LNG evaporation loss calculation" },
+      { step: 2, title: "Placement of values", formula: `Loss = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Total Loss = ${totalBoilOff.toFixed(1)} m³` },
+      { step: 3, title: "Kalan kargo", formula: "Remaining = Capacity - Total Loss", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
+      { step: 4, title: "Loss percentage", formula: "Loss% = (Total Loss/Capacity) × 100", substitution: `Loss% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Loss = %${lossPercentage.toFixed(2)}` },
     ] }));
   };
 
@@ -159,14 +159,14 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       maxSafeHeight,
       status: safetyFactor >= 1.5 ? 'safe' :
               safetyFactor >= 1.2 ? 'caution' : 'dangerous',
-      recommendation: safetyFactor < 1.2 ? 'Stack yüksekliğini azaltın' :
-                     safetyFactor < 1.5 ? 'Dikkatli yükleme yapın' :
-                     'Güvenli yükleme limitleri'
+      recommendation: safetyFactor < 1.2 ? 'Reduce stack height' :
+                     safetyFactor < 1.5 ? 'Install with caution' :
+                     'Safe upload limits'
     });
     setCalcSteps(prev => ({ ...prev, container: [
-      { step: 1, title: "Toplam stack ağırlığı", formula: "Toplam = Konteyner Ağırlığı × Stack Yüksekliği", substitution: `Toplam = ${weight} × ${height}`, result: `Toplam = ${totalStackWeight} ton` },
-      { step: 2, title: "Emniyet faktörü", formula: "SF = Güverte Kapasitesi / Toplam Stack Ağırlığı", substitution: `SF = ${capacity} / ${totalStackWeight}`, result: `SF = ${safetyFactor.toFixed(2)}` },
-      { step: 3, title: "Maks. güvenli stack", formula: "Maks = ⌊Güverte Kapasitesi / Konteyner Ağırlığı⌋", substitution: `Maks = ⌊${capacity} / ${weight}⌋`, result: `Maks Güvenli Stack = ${maxSafeHeight} adet` },
+      { step: 1, title: "Total stack weight", formula: "Total = Container Weight × Stack Height", substitution: `Toplam = ${weight} × ${height}`, result: `Toplam = ${totalStackWeight} ton` },
+      { step: 2, title: "Safety factor", formula: "SF = Deck Capacity / Total Stack Weight", substitution: `SF = ${capacity} / ${totalStackWeight}`, result: `SF = ${safetyFactor.toFixed(2)}` },
+      { step: 3, title: "Max. safe stack", formula: "Max = ⌊Deck Capacity / Container Weight⌋", substitution: `Maks = ⌊${capacity} / ${weight}⌋`, result: `Max Secure Stack = ${maxSafeHeight} adet` },
     ] }));
   };
 
@@ -190,13 +190,13 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       safetyMargin,
       status: axleLoad <= limit ? 'safe' : 'overload',
       recommendation: axleLoad <= limit ?
-        `Güvenli - ${safetyMargin.toFixed(1)}% emniyet marjı` :
-        'Yük limiti aşıldı - araç reddedilmeli'
+        `Safe - ${safetyMargin.toFixed(1)}% safety margin` :
+        'Load limit exceeded - vehicle must be rejected'
     });
     setCalcSteps(prev => ({ ...prev, roro: [
-      { step: 1, title: "Axle yükü hesabı", formula: "Axle Yükü = Araç Ağırlığı / Axle Sayısı", substitution: `Axle Yükü = ${weight} / ${axles}`, result: `Axle Yükü = ${axleLoad.toFixed(2)} ton/axle` },
-      { step: 2, title: "Emniyet marjı", formula: "Marj = ((Limit - Axle Yükü) / Limit) × 100", substitution: `Marj = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Emniyet Marjı = ${safetyMargin.toFixed(1)}%` },
-      { step: 3, title: "Sonuç", formula: "Axle Yükü ≤ Limit → Güvenli", result: axleLoad <= limit ? `${axleLoad.toFixed(2)} ≤ ${limit} → GÜVENLİ` : `${axleLoad.toFixed(2)} > ${limit} → AŞIRI YÜK` },
+      { step: 1, title: "Axle load calculation", formula: "Axle Load = Vehicle Weight / Number of Axles", substitution: `Axle Load = ${weight} / ${axles}`, result: `Axle Load = ${axleLoad.toFixed(2)} ton/axle` },
+      { step: 2, title: "margin of safety", formula: "Margin = ((Limit - Axle Load) / Limit) × 100", substitution: `Marj = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Safety Margin = ${safetyMargin.toFixed(1)}%` },
+      { step: 3, title: "Result", formula: "Axle Load ≤ Limit → Safe", result: axleLoad <= limit ? `${axleLoad.toFixed(2)} ≤ ${limit} → SECURE` : `${axleLoad.toFixed(2)} > ${limit} → OVERLOAD` },
     ] }));
   };
 
@@ -216,7 +216,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Fuel className="w-5 h-5 text-orange-500" />
-                Tanker Operasyonları
+                Tanker Operations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -232,29 +232,29 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   />
                 </div>
                 <div>
-                  <Label htmlFor="cowRate">COW Oranı (m³/saat)</Label>
+                  <Label htmlFor="cowRate">COW Rate (m³/hour)</Label>
                   <Input
                     id="cowRate"
                     type="number"
                     value={cowRate}
                     onChange={(e) => setCowRate(e.target.value)}
-                    placeholder="Yıkama oranı"
+                    placeholder="Washing rate"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="tankPressure">Tank Basıncı (bar)</Label>
+                  <Label htmlFor="tankPressure">Tank Pressure (bar)</Label>
                   <Input
                     id="tankPressure"
                     type="number"
                     value={tankPressure}
                     onChange={(e) => setTankPressure(e.target.value)}
-                    placeholder="Mevcut basınç"
+                    placeholder="current pressure"
                   />
                 </div>
               </div>
               
               <Button onClick={calculateTankerOperations} className="w-full">
-                Hesapla
+                Calculate
               </Button>
 
               {tankerResult && (
@@ -262,15 +262,15 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <span className="font-medium">COW Süresi:</span>
+                        <span className="font-medium">COW Duration:</span>
                         <span className="ml-2">{tankerResult.cowTime.toFixed(1)} saat</span>
                       </div>
                       <div>
-                        <span className="font-medium">İnert Gaz:</span>
+                        <span className="font-medium">Inert Gas:</span>
                         <span className="ml-2">{tankerResult.inertGasRequired.toFixed(0)} m³</span>
                       </div>
                       <div>
-                        <span className="font-medium">Basınç Durumu:</span>
+                        <span className="font-medium">Pressure Status:</span>
                         <Badge variant={tankerResult.pressureStatus === 'safe' ? 'default' :
                                       tankerResult.pressureStatus === 'caution' ? 'outline' : 'destructive'}
                                className="ml-2">
@@ -278,7 +278,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         </Badge>
                       </div>
                       <div className="col-span-2">
-                        <span className="font-medium">Güvenlik Notu:</span>
+                        <span className="font-medium">Security Note:</span>
                         <p className="mt-1 text-muted-foreground">{tankerResult.safetyNote}</p>
                       </div>
                     </div>
@@ -296,7 +296,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Fuel className="w-5 h-5 text-blue-500" />
-                LNG Boil-off Hesabı
+                LNG Boil-off Account
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -312,29 +312,29 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   />
                 </div>
                 <div>
-                  <Label htmlFor="boilOffRate">Günlük Boil-off (%)</Label>
+                  <Label htmlFor="boilOffRate">Daily Boil-off (%)</Label>
                   <Input
                     id="boilOffRate"
                     type="number"
                     value={boilOffRate}
                     onChange={(e) => setBoilOffRate(e.target.value)}
-                    placeholder="Günlük kayıp oranı"
+                    placeholder="Daily loss rate"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="voyageDuration">Sefer Süresi (Gün)</Label>
+                  <Label htmlFor="voyageDuration">Trip Duration (Days)</Label>
                   <Input
                     id="voyageDuration"
                     type="number"
                     value={voyageDuration}
                     onChange={(e) => setVoyageDuration(e.target.value)}
-                    placeholder="Toplam sefer günü"
+                    placeholder="Total sailing days"
                   />
                 </div>
               </div>
               
               <Button onClick={calculateLNGBoilOff} className="w-full">
-                Boil-off Hesapla
+                Calculate Boil-off
               </Button>
 
               {lngResult && (
@@ -342,7 +342,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <span className="font-medium">Toplam Kayıp:</span>
+                        <span className="font-medium">Total Loss:</span>
                         <span className="ml-2">{lngResult.totalBoilOff.toFixed(1)} m³</span>
                       </div>
                       <div>
@@ -350,7 +350,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         <span className="ml-2">{lngResult.remainingCargo.toFixed(1)} m³</span>
                       </div>
                       <div>
-                        <span className="font-medium">Kayıp Oranı:</span>
+                        <span className="font-medium">Loss Rate:</span>
                         <Badge variant={lngResult.status === 'excellent' ? 'default' :
                                       lngResult.status === 'good' ? 'outline' : 'destructive'}
                                className="ml-2">
@@ -382,7 +382,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <Label htmlFor="containerWeight">Konteyner Ağırlığı (ton)</Label>
+                  <Label htmlFor="containerWeight">Container Weight (ton)</Label>
                   <Input
                     id="containerWeight"
                     type="number"
@@ -392,17 +392,17 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   />
                 </div>
                 <div>
-                  <Label htmlFor="stackHeight">Stack Yüksekliği (adet)</Label>
+                  <Label htmlFor="stackHeight">Stack Height (pcs)</Label>
                   <Input
                     id="stackHeight"
                     type="number"
                     value={stackHeight}
                     onChange={(e) => setStackHeight(e.target.value)}
-                    placeholder="Konteyner sayısı"
+                    placeholder="Number of containers"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="deckCapacity">Güverte Kapasitesi (ton)</Label>
+                  <Label htmlFor="deckCapacity">Deck Capacity (tons)</Label>
                   <Input
                     id="deckCapacity"
                     type="number"
@@ -414,7 +414,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
               </div>
               
               <Button onClick={calculateContainerStack} className="w-full">
-                Stack Kontrolü
+                Stack Control
               </Button>
 
               {containerResult && (
@@ -422,15 +422,15 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <span className="font-medium">Toplam Ağırlık:</span>
+                        <span className="font-medium">Total Weight:</span>
                         <span className="ml-2">{containerResult.totalStackWeight} ton</span>
                       </div>
                       <div>
-                        <span className="font-medium">Emniyet Faktörü:</span>
+                        <span className="font-medium">Safety Factor:</span>
                         <span className="ml-2">{containerResult.safetyFactor.toFixed(2)}</span>
                       </div>
                       <div>
-                        <span className="font-medium">Maks. Güvenli Stack:</span>
+                        <span className="font-medium">Max. Secure Stack:</span>
                         <span className="ml-2">{containerResult.maxSafeHeight} adet</span>
                       </div>
                       <div>
@@ -442,7 +442,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         </Badge>
                       </div>
                       <div className="col-span-2">
-                        <span className="font-medium">Öneri:</span>
+                        <span className="font-medium">Suggestion:</span>
                         <p className="mt-1 text-muted-foreground">{containerResult.recommendation}</p>
                       </div>
                     </div>
@@ -466,17 +466,17 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <Label htmlFor="vehicleWeight">Araç Ağırlığı (ton)</Label>
+                  <Label htmlFor="vehicleWeight">Vehicle Weight (tons)</Label>
                   <Input
                     id="vehicleWeight"
                     type="number"
                     value={vehicleWeight}
                     onChange={(e) => setVehicleWeight(e.target.value)}
-                    placeholder="Toplam araç ağırlığı"
+                    placeholder="Total vehicle weight"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="axleNumber">Axle Sayısı</Label>
+                  <Label htmlFor="axleNumber">Number of Axles</Label>
                   <Input
                     id="axleNumber"
                     type="number"
@@ -486,19 +486,19 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   />
                 </div>
                 <div>
-                  <Label htmlFor="deckLoadLimit">Güverte Limit (ton/axle)</Label>
+                  <Label htmlFor="deckLoadLimit">Deck Limit (ton/axle)</Label>
                   <Input
                     id="deckLoadLimit"
                     type="number"
                     value={deckLoadLimit}
                     onChange={(e) => setDeckLoadLimit(e.target.value)}
-                    placeholder="Axle başına limit"
+                    placeholder="Limit per axle"
                   />
                 </div>
               </div>
               
               <Button onClick={calculateRoRoAxleLoad} className="w-full">
-                Axle Load Kontrolü
+                Axle Load Control
               </Button>
 
               {roroResult && (
@@ -506,11 +506,11 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <span className="font-medium">Axle Yükü:</span>
+                        <span className="font-medium">Axle Load:</span>
                         <span className="ml-2">{roroResult.axleLoad.toFixed(2)} ton/axle</span>
                       </div>
                       <div>
-                        <span className="font-medium">Emniyet Marjı:</span>
+                        <span className="font-medium">Safety Margin:</span>
                         <span className="ml-2">{roroResult.safetyMargin.toFixed(1)}%</span>
                       </div>
                       <div>
@@ -521,7 +521,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         </Badge>
                       </div>
                       <div className="col-span-2">
-                        <span className="font-medium">Öneri:</span>
+                        <span className="font-medium">Suggestion:</span>
                         <p className="mt-1 text-muted-foreground">{roroResult.recommendation}</p>
                       </div>
                     </div>

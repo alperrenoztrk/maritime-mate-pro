@@ -46,7 +46,7 @@ export default function DraftSurveyBunker() {
     if (!beforeBunkering.forward || !beforeBunkering.midship || !beforeBunkering.aft ||
         !afterBunkering.forward || !afterBunkering.midship || !afterBunkering.aft ||
         !vesselData.tpc || !fuelSpecs.density) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
       return;
     }
 
@@ -79,14 +79,14 @@ export default function DraftSurveyBunker() {
       fuelDensityCorrection: correctedDensity
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Bunker tonajı hesaplandı" });
+    toast({ title: "Calculation Completed", description: "Bunker tonajı hesaplandı" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold">Bunker Ölçümü</h1>
+          <h1 className="text-2xl font-bold">Bunker Measurement</h1>
         </div>
       </div>
 
@@ -127,7 +127,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="breadth">Genişlik (m)</Label>
+              <Label htmlFor="breadth">Width (m)</Label>
               <Input
                 id="breadth"
                 type="number"
@@ -136,7 +136,7 @@ export default function DraftSurveyBunker() {
                   ...prev, 
                   vesselData: { ...prev.vesselData, breadth: e.target.value }
                 }))}
-                placeholder="Genişlik"
+                placeholder="Width"
               />
             </div>
           </div>

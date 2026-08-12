@@ -311,7 +311,7 @@ export const Stability3DSim = () => {
               variant={imo.overallPass ? "default" : "destructive"}
               className="ml-auto text-micro px-1.5 py-0"
             >
-              {imo.overallPass ? "UYGUN" : "UYGUN DEĞİL"}
+              {imo.overallPass ? "UYGUN" : "NOT SUITABLE"}
             </Badge>
           </div>
           <div className="grid grid-cols-2 gap-x-4 gap-y-1">

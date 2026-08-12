@@ -10,10 +10,10 @@ import { FormulaCard } from "@/components/ui/formula-card";
 const Engine = () => {
   return (
     <CalculationLayout
-      title="Makine Hesaplamaları"
+      title="Machine Calculations"
       icon={Cog}
       hero={{
-        title: "Makine Hesaplamaları",
+        title: "Machine Calculations",
         imageSrc: shipBridge,
         imageAlt: "Ship Bridge Control Panel",
       }}
@@ -25,9 +25,9 @@ const Engine = () => {
               title: "Güç Formülleri",
               accent: "blue",
               lines: [
-                { label: "Fren Gücü", formula: "BHP = IHP × ηmech" },
-                { label: "Şaft Gücü", formula: "SHP = BHP × ηtrans" },
-                { label: "Efektif Güç", formula: "EHP = SHP × ηprop" },
+                { label: "Braking Power", formula: "BHP = IHP × ηmech" },
+                { label: "Shaft Power", formula: "SHP = BHP × ηtrans" },
+                { label: "Effective Power", formula: "EHP = SHP × ηprop" },
               ],
             },
             {

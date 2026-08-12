@@ -39,7 +39,7 @@ export default function KnotCard({ knotId }: KnotCardProps) {
         {/* Alternate names */}
         {def.aka && def.aka.length > 0 && (
           <div className="mb-3 flex flex-wrap items-center gap-1.5">
-            <span className="text-micro uppercase tracking-wide text-muted-foreground/70">Diğer adı</span>
+            <span className="text-micro uppercase tracking-wide text-muted-foreground/70">Other name</span>
             {def.aka.map((name) => (
               <span
                 key={name}
@@ -69,7 +69,7 @@ export default function KnotCard({ knotId }: KnotCardProps) {
         {/* Usage note */}
         <div className="mt-3 rounded-lg border border-border/40 bg-muted/20 px-3 py-2">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">Kullanım: </span>
+            <span className="font-medium text-foreground">Usage: </span>
             {def.use}
             {def.strengthLoss && (
               <span className="ml-1 text-amber-600 dark:text-amber-400">({def.strengthLoss})</span>
@@ -82,7 +82,7 @@ export default function KnotCard({ knotId }: KnotCardProps) {
           <div className="mt-2 flex gap-2 rounded-lg border border-sky-500/30 bg-sky-500/5 px-3 py-2">
             <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-sky-500" />
             <p className="text-xs leading-relaxed text-muted-foreground">
-              <span className="font-medium text-foreground">İpucu: </span>
+              <span className="font-medium text-foreground">Hint: </span>
               {def.tip}
             </p>
           </div>

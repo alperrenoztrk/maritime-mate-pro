@@ -209,7 +209,7 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
               <AlertTriangle className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-foreground">Kritik Pratik Uyarılar</h2>
+              <h2 className="text-base font-bold text-foreground">Critical Practical Warnings</h2>
             </div>
           </div>
           <ul className="space-y-3">

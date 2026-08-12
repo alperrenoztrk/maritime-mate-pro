@@ -54,7 +54,7 @@ const STAGE_LABELS: Record<JobState, string> = {
   analyzing: "Yapay zekâ belgeyi okuyor",
   uploading: "Güvenli arşive yükleniyor",
   saving: "Tarihler kaydediliyor",
-  done: "Eklendi",
+  done: "added",
   error: "Eklenemedi",
 };
 
@@ -269,7 +269,7 @@ export default function BetaDocumentTracker() {
             Fotoğraflarınızı yalnızca sizin hesabınıza bağlı, özel bir arşivde tutmak için giriş yapın.
           </p>
           <Button className="mt-6 w-full" onClick={() => navigate("/auth?next=/beta/documents")}>
-            Giriş yap
+            Sign in
           </Button>
         </div>
       </div>
@@ -427,7 +427,7 @@ export default function BetaDocumentTracker() {
             <div className="flex flex-wrap gap-1.5">
               {(
                 [
-                  ["all", "Tümü"],
+                  ["all", "All"],
                   ["attention", "Yaklaşan"],
                   ["valid", "Geçerli"],
                   ["unknown", "Kontrol"],

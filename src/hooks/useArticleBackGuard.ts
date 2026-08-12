@@ -8,7 +8,7 @@ import { useEffect, useId } from 'react';
  * HARD RULE: the back button MUST NEVER close a piece of writing. While at
  * least one article is registered here, `useNavigationHierarchy` swallows the
  * back press completely — the text stays exactly where it was, and the reader
- * leaves it through the article's own close control ("✕" / "Gazeteye dön").
+ * leaves it through the article's own close control ("✕" / "return to newspaper").
  *
  * A module-level Set (instead of a context) keeps this free of re-renders: the
  * back handler only ever *reads* it, from inside listeners that are registered

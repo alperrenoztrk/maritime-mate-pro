@@ -18,14 +18,14 @@ export const NOTES_UPDATED_EVENT = "marine-notes-updated";
 // doesn't swallow "/machinery" or "/machine-calculations".
 const CATEGORY_MAP: Array<[string, string]> = [
   ["/lessons", "Dersler"],
-  ["/exercises", "Alıştırmalar"],
+  ["/exercises", "Exercises"],
   ["/crew", "Personel"],
   ["/ship-tasks", "Personel"],
-  ["/ship-systems", "Gemi Sistemleri"],
-  ["/bridge", "Gemi Sistemleri"],
-  ["/machinery", "Gemi Sistemleri"],
+  ["/ship-systems", "Ship Systems"],
+  ["/bridge", "Ship Systems"],
+  ["/machinery", "Ship Systems"],
   ["/ship-operations", "Operasyonlar"],
-  ["/glossary", "Sözlük"],
+  ["/glossary", "dictionary"],
   ["/regulations", "Kurallar ve Mevzuat"],
   ["/solas", "Kurallar ve Mevzuat"],
   ["/stability", "Stabilite"],
@@ -50,7 +50,7 @@ const CATEGORY_MAP: Array<[string, string]> = [
   ["/beta", "Beta"],
 ];
 
-export const FALLBACK_CATEGORY = "Diğer";
+export const FALLBACK_CATEGORY = "Other";
 
 export function deriveCategory(pathname: string): string {
   for (const [prefix, label] of CATEGORY_MAP) {
@@ -64,7 +64,7 @@ export function deriveCategory(pathname: string): string {
 function getPageTitle(): string {
   const h1 = document.querySelector("main h1, h1");
   const title = h1?.textContent?.trim();
-  return title || document.title || "Not";
+  return title || document.title || "Note";
 }
 
 function generateId(): string {

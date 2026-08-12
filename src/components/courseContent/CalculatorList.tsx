@@ -5,7 +5,7 @@ import { CalculatorCard } from "./CalculatorCard";
 /**
  * Konunun hesaplayıcı taşıyan girdilerini listeler. Aynı kaynaktan
  * (Formüller ile birebir) beslenir; her aracın `id`'si anchor olarak
- * kullanılır (Formüller'den "Hesapla" linki bu anchor'a gider).
+ * kullanılır (Formüller'"Calculate" link from this anchor'a gider).
  */
 export function CalculatorList({ topic }: { topic: CourseTopic }) {
   const entries = getCalculatorEntries(topic);
@@ -13,7 +13,7 @@ export function CalculatorList({ topic }: { topic: CourseTopic }) {
   if (entries.length === 0) {
     return (
       <p className="text-sm text-muted-foreground">
-        Bu konu için bağlı hesaplayıcı henüz eklenmedi.
+        The linked calculator for this topic has not been added yet.
       </p>
     );
   }

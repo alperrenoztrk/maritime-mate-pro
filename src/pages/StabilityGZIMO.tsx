@@ -58,7 +58,7 @@ export default function StabilityGZIMO() {
 
   const complianceText = useMemo(() => {
     if (!imo) return '';
-    return imo.compliance ? 'Uygun' : 'Uygun değil';
+    return imo.compliance ? 'Uygun' : 'not suitable';
   }, [imo]);
 
   const chartData = useMemo(() => {
@@ -124,7 +124,7 @@ export default function StabilityGZIMO() {
                 <Input type="number" value={geometry.length} onChange={handleChange('length')} />
               </div>
               <div>
-                <Label>Genişlik B (m)</Label>
+                <Label>Width B (m)</Label>
                 <Input type="number" value={geometry.breadth} onChange={handleChange('breadth')} />
               </div>
               <div>
@@ -150,7 +150,7 @@ export default function StabilityGZIMO() {
                 <Input type="number" value={geometry.length} onChange={handleChange('length')} />
               </div>
               <div>
-                <Label>Genişlik B (m)</Label>
+                <Label>Width B (m)</Label>
                 <Input type="number" value={geometry.breadth} onChange={handleChange('breadth')} />
               </div>
               <div>
@@ -189,7 +189,7 @@ export default function StabilityGZIMO() {
           )}
 
           <div className="flex flex-wrap gap-2">
-            <Button variant="primary" onClick={handleCalculate}>Hesapla</Button>
+            <Button variant="primary" onClick={handleCalculate}>Calculate</Button>
             <Button variant="outline" className="gap-2" onClick={handleExportPng}><Download className="h-4 w-4" /> PNG</Button>
             <Button variant="outline" className="gap-2" onClick={handleExportCsv}><Download className="h-4 w-4" /> CSV</Button>
             <Button variant="ghost" onClick={() => { setData(null); setImo(null); setErrors([]); }}>Temizle</Button>
@@ -280,7 +280,7 @@ export default function StabilityGZIMO() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-muted-foreground">
-                      <th className="text-left p-1">Açı (°)</th>
+                      <th className="text-left p-1">Angle (°)</th>
                       <th className="text-left p-1">GZ (m)</th>
                       <th className="text-left p-1">Moment (kNm)</th>
                     </tr>

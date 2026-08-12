@@ -201,7 +201,7 @@ export default function StabilityGrainCalculationPage() {
     },
     {
       id: "gm",
-      label: "Düzeltilmiş GM",
+      label: "Adjusted GM",
       value: correctedGM ? `${correctedGM} m` : "—",
       helper: "IMO limiti ≥ 0.30 m",
       status: correctedGM ? parseFloat(correctedGM) >= 0.30 : null
@@ -851,7 +851,7 @@ export default function StabilityGrainCalculationPage() {
                         </Alert>
 
                         <div className="p-4 bg-muted rounded-lg">
-                          <h5 className="font-semibold mb-2 text-sm">Öneriler</h5>
+                          <h5 className="font-semibold mb-2 text-sm">Suggestions</h5>
                           <ul className="space-y-1 text-xs">
                             <li>• Tahıl yüklemesi öncesi tüm parametreleri doğrulayın</li>
                             <li>• IMO Grain Code tablosundan shift volumes değerlerini kontrol edin</li>

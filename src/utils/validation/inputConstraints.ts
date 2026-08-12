@@ -15,7 +15,7 @@ export const stabilityInputConstraints: Record<string, ConstraintGroup> = {
     breadth: { label: "Gemi En (B)", unit: "m", min: 2, max: 80, required: true },
     depth: { label: "Derinlik (D)", unit: "m", min: 2, max: 60, required: true },
     draft: { label: "Su Çekimi (T)", unit: "m", min: 0.5, max: 35, required: true },
-    blockCoefficient: { label: "Blok Katsayısı (Cb)", unit: "-", min: 0.45, max: 0.95, required: true },
+    blockCoefficient: { label: "Block Coefficient (Cb)", unit: "-", min: 0.45, max: 0.95, required: true },
     waterplaneCoefficient: { label: "Su Hattı Katsayısı (Cw)", unit: "-", min: 0.5, max: 0.98, required: true },
     midshipCoefficient: { label: "Orta Kesit Katsayısı (Cm)", unit: "-", min: 0.6, max: 0.99, required: true },
     prismaticCoefficient: { label: "Prizmatik Katsayı (Cp)", unit: "-", min: 0.5, max: 0.85, required: true },

@@ -9,7 +9,7 @@ export default function StabilityCalculationsPage() {
     <MobileLayout>
       <CalculationGridScreen
         eyebrow="Stabilite"
-        title="Stabilite Hesaplamaları"
+        title="Stability Calculations"
       >
         <div className="space-y-8">
           <StabilityCalculations />

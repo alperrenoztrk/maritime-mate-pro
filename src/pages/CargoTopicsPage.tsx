@@ -146,7 +146,7 @@ const cargoTopics: CargoMainTopic[] = [
   {
     id: "tanker-ops",
     number: 8,
-    title: "Tanker Operasyonları",
+    title: "Tanker Operations",
     icon: Droplets,
     subtopics: [
       { id: "tanker-types", title: "Tanker tipleri", hasContent: true },
@@ -1066,7 +1066,7 @@ Trim düzeltmeleri özellikle büyük trimlerde (1 metreden fazla) önemli fark 
     },
   },
   "density-correction": {
-    title: "Yoğunluk Düzeltmesi",
+    title: "Density Correction",
     introduction: "Hidrostatik tablolar tuzlu deniz suyu (1.025 t/m³) için hazırlanır; farklı yoğunluktaki sularda düzeltme gerekir.",
     content: `Hidrostatik tablolar 1.025 t/m³ yoğunluk için düzenlenmiştir.
 
@@ -1094,7 +1094,7 @@ Düşük yoğunlukta gemi daha fazla batar (daha büyük draft okur) ancak depla
       "Hidrometre ile yoğunluk ölçülür",
     ],
     formula: {
-      name: "Yoğunluk Düzeltmesi",
+      name: "Density Correction",
       expression: "Δcorrected = Δtable × (ρdock / 1.025)",
       description: "ρdock: Liman suyu yoğunluğu (t/m³). Düşük yoğunlukta deplasman azaltılır.",
     },
@@ -3340,7 +3340,7 @@ export default function CargoTopicsPage() {
             <section className="rounded-2xl border border-border/40 bg-card/80 p-6 mt-6">
               <div className="mb-4 flex items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-amber-500" />
-                <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
+                <h2 className="text-lg font-semibold text-foreground">Quick Access</h2>
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
@@ -3478,7 +3478,7 @@ export default function CargoTopicsPage() {
                   <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
                     <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5" />
-                      Uyarılar
+                      Warnings
                     </h3>
                     <div className="space-y-2">
                       {currentContent.warnings.map((warning, index) => (

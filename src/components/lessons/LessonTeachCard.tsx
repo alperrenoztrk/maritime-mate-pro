@@ -136,7 +136,7 @@ export function LessonTeachCard({
         <div className="overflow-hidden rounded-xl border border-sky-500/30 bg-sky-500/5">
           <div className="bg-sky-500/10 px-4 py-2">
             <p className="text-micro font-bold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">
-              Çözümlü Örnek
+              Worked Example
             </p>
           </div>
           <div className="space-y-2 p-4">

@@ -58,7 +58,7 @@ export default function DraftSurveyComparative() {
     const tpc = parseFloat(vesselParticulars.tpc);
     
     if (!tpc) {
-      toast({ title: "Hata", description: "TPC değerini girin", variant: "destructive" });
+      toast({ title: "Error", description: "TPC değerini girin", variant: "destructive" });
       return;
     }
 
@@ -67,7 +67,7 @@ export default function DraftSurveyComparative() {
     );
 
     if (surveys.length < 2) {
-      toast({ title: "Hata", description: "En az 2 ölçüm değeri girin", variant: "destructive" });
+      toast({ title: "Error", description: "En az 2 ölçüm değeri girin", variant: "destructive" });
       return;
     }
 
@@ -111,7 +111,7 @@ export default function DraftSurveyComparative() {
       comparisons
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Karşılaştırmalı analiz yapıldı" });
+    toast({ title: "Calculation Completed", description: "Karşılaştırmalı analiz yapıldı" });
   };
 
   return (
@@ -143,7 +143,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="density">Su Yoğunluğu (ton/m³)</Label>
+              <Label htmlFor="density">Water Density (ton/m³)</Label>
               <Input
                 id="density"
                 type="number"

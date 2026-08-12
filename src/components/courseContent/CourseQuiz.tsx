@@ -51,10 +51,10 @@ export function CourseQuiz({
     if (idx === question.correctAnswer) {
       setCorrect((count) => count + 1);
       hapticNotify("success");
-      toast.success("Doğru!");
+      toast.success("TRUE!");
     } else {
       hapticNotify("error");
-      toast.error("Yanlış!");
+      toast.error("Wrong!");
     }
   };
 
@@ -108,7 +108,7 @@ export function CourseQuiz({
           <Card className="border-border/60 bg-card/85">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="text-lg">Soru</CardTitle>
+                <CardTitle className="text-lg">Question</CardTitle>
                 <span className="text-sm text-muted-foreground">Skor: %{percent}</span>
               </div>
             </CardHeader>
@@ -147,7 +147,7 @@ export function CourseQuiz({
               {answered && (
                 <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
                   <p className="text-sm text-blue-700 dark:text-blue-300">
-                    <strong>Açıklama:</strong> {question.explanation}
+                    <strong>Description:</strong> {question.explanation}
                   </p>
                 </div>
               )}
@@ -155,11 +155,11 @@ export function CourseQuiz({
               <div className="flex flex-col gap-2 sm:flex-row">
                 {answered && (
                   <Button onClick={next} className="flex-1">
-                    {current < order.length - 1 ? "Sonraki Soru" : "Sonucu Gör"}
+                    {current < order.length - 1 ? "Next Question" : "See Result"}
                   </Button>
                 )}
                 <Button onClick={finishNow} variant="outline" className="flex-1">
-                  Alıştırmayı Tamamla
+                  Complete Exercise
                 </Button>
               </div>
             </CardContent>
@@ -168,18 +168,18 @@ export function CourseQuiz({
           <Card className="border-border/60 bg-card/85 text-center">
             <CardContent className="space-y-6 pb-8 pt-8">
               <Trophy className="mx-auto h-16 w-16 text-amber-500" />
-              <h2 className="text-2xl font-bold text-foreground">Alıştırma Tamamlandı</h2>
+              <h2 className="text-2xl font-bold text-foreground">Exercise Completed</h2>
               <div className="text-5xl font-bold text-primary">%{percent}</div>
               <p className="text-sm text-muted-foreground">Doğru cevap: {correct}</p>
               <p className="text-sm text-muted-foreground">
                 {percent >= 80
-                  ? "Mükemmel! Bu konuda uzman seviyesindesiniz."
+                  ? "Perfect! You are an expert on this subject."
                   : percent >= 60
-                    ? "İyi! Biraz daha çalışmayla mükemmel olabilirsiniz."
-                    : "Daha fazla çalışmanız önerilir."}
+                    ? "Good morning my baby! With a little more work you can become perfect."
+                    : "It is recommended that you study more."}
               </p>
               <Button onClick={restart} className="w-full">
-                <RotateCcw className="mr-2 h-4 w-4" /> Tekrar Dene
+                <RotateCcw className="mr-2 h-4 w-4" /> Try Again
               </Button>
             </CardContent>
           </Card>

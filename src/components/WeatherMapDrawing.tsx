@@ -68,8 +68,8 @@ export const WeatherMapDrawing = () => {
       };
       setElements(prev => [...prev, newElement]);
       toast({
-        title: activeTool === "high" ? "Yüksek Basınç Eklendi" : "Alçak Basınç Eklendi",
-        description: activeTool === "high" ? "Antisiklon (H) sistemi yerleştirildi" : "Siklon (L) sistemi yerleştirildi",
+        title: activeTool === "high" ? "High Pressure Added" : "Low Pressure Added",
+        description: activeTool === "high" ? "Anticyclone (H) system installed" : "Cyclone (L) system installed",
       });
     } else {
       setIsDrawing(true);
@@ -113,8 +113,8 @@ export const WeatherMapDrawing = () => {
     };
 
     toast({
-      title: `${names[frontType] || "Çizgi"} Eklendi`,
-      description: "Haritaya eklendi",
+      title: `${names[frontType] || "line"} added`,
+      description: "Added to map",
     });
   }, [isDrawing, currentPoints, activeTool, isobarPressure, toast]);
 
@@ -123,7 +123,7 @@ export const WeatherMapDrawing = () => {
     setSelectedId(null);
     toast({
       title: "Harita Temizlendi",
-      description: "Tüm çizimler silindi",
+      description: "All drawings deleted",
     });
   };
 
@@ -154,8 +154,8 @@ export const WeatherMapDrawing = () => {
     img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
     
     toast({
-      title: "Harita İndirildi",
-      description: "Hava haritası PNG olarak kaydedildi",
+      title: "Map Downloaded",
+      description: "Weather map saved as PNG",
     });
   };
 
@@ -163,7 +163,7 @@ export const WeatherMapDrawing = () => {
     if (selectedId) {
       setElements(prev => prev.filter(el => el.id !== selectedId));
       setSelectedId(null);
-      toast({ title: "Silindi", description: "Seçili eleman silindi" });
+      toast({ title: "deleted", description: "Selected element has been deleted" });
     }
   };
 
@@ -357,21 +357,21 @@ export const WeatherMapDrawing = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-6 w-6 text-blue-600" />
-            Hava Haritası Çizim Aracı
+            Weather Map Drawing Tool
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Alert className="bg-blue-50 border-blue-200">
             <Info className="h-4 w-4" />
             <AlertDescription>
-              Bu araçla hava haritaları üzerinde basınç sistemleri, cepheler ve izobar çizgileri çizerek 
-              meteorolojik analiz yapabilirsiniz. Bir araç seçin ve harita üzerine tıklayarak çizim yapın.
+              With this tool, you can draw pressure systems, fronts and isobar lines on weather maps. 
+              You can perform meteorological analysis. Choose a tool and draw by clicking on the map.
             </AlertDescription>
           </Alert>
 
           {/* Tool Selection */}
           <div className="space-y-3">
-            <h3 className="font-semibold text-sm">Basınç Sistemleri</h3>
+            <h3 className="font-semibold text-sm">Pressure Systems</h3>
             <div className="flex flex-wrap gap-2">
               <Button
                 variant={activeTool === "select" ? "default" : "outline"}
@@ -380,7 +380,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Move className="h-4 w-4" />
-                Seç
+                Select
               </Button>
               <Button
                 variant={activeTool === "high" ? "default" : "outline"}
@@ -389,7 +389,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <TrendingUp className="h-4 w-4" />
-                Yüksek Basınç (H)
+                High Pressure (H)
               </Button>
               <Button
                 variant={activeTool === "low" ? "default" : "outline"}
@@ -398,7 +398,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <TrendingDown className="h-4 w-4" />
-                Alçak Basınç (L)
+                Low Pressure (L)
               </Button>
             </div>
 
@@ -413,7 +413,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Snowflake className="h-4 w-4 text-blue-500" />
-                Soğuk Cephe
+                Cold Front
               </Button>
               <Button
                 variant={activeTool === "warm-front" ? "default" : "outline"}
@@ -422,7 +422,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Sun className="h-4 w-4 text-red-500" />
-                Sıcak Cephe
+                Warm Front
               </Button>
               <Button
                 variant={activeTool === "stationary-front" ? "default" : "outline"}
@@ -431,7 +431,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <CloudRain className="h-4 w-4 text-purple-500" />
-                Durağan Cephe
+                Stationary Facade
               </Button>
               <Button
                 variant={activeTool === "occluded-front" ? "default" : "outline"}
@@ -440,13 +440,13 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Activity className="h-4 w-4 text-amber-500" />
-                Tıkanık Cephe
+                Clogging Facade
               </Button>
             </div>
 
             <Separator />
 
-            <h3 className="font-semibold text-sm">İzobar Çizgisi</h3>
+            <h3 className="font-semibold text-sm">Isobar Line</h3>
             <div className="flex flex-wrap items-center gap-2">
               <Button
                 variant={activeTool === "isobar" ? "default" : "outline"}
@@ -455,10 +455,10 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Gauge className="h-4 w-4" />
-                İzobar
+                isobar
               </Button>
               <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground">Basınç:</span>
+                <span className="text-sm text-muted-foreground">Pressure:</span>
                 <input
                   type="number"
                   value={isobarPressure}
@@ -504,12 +504,12 @@ export const WeatherMapDrawing = () => {
             {selectedId && (
               <Button variant="destructive" onClick={deleteSelected} className="gap-2">
                 <Trash2 className="h-4 w-4" />
-                Seçili Sil
+                Delete Selected
               </Button>
             )}
             <Button variant="outline" onClick={handleExport} className="gap-2">
               <Download className="h-4 w-4" />
-              PNG İndir
+              Download PNG
             </Button>
           </div>
 
@@ -517,32 +517,32 @@ export const WeatherMapDrawing = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-muted/50 rounded-lg">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full border-2 border-blue-500 flex items-center justify-center text-blue-500 font-bold text-sm">H</div>
-              <span className="text-sm">Yüksek Basınç</span>
+              <span className="text-sm">High Pressure</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full border-2 border-red-500 flex items-center justify-center text-red-500 font-bold text-sm">L</div>
-              <span className="text-sm">Alçak Basınç</span>
+              <span className="text-sm">Low Pressure</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center">
                 <div className="w-6 h-0.5 bg-blue-500"></div>
                 <div className="w-0 h-0 border-l-4 border-r-4 border-b-8 border-l-transparent border-r-transparent border-b-blue-500"></div>
               </div>
-              <span className="text-sm">Soğuk Cephe</span>
+              <span className="text-sm">Cold Front</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center">
                 <div className="w-6 h-0.5 bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
               </div>
-              <span className="text-sm">Sıcak Cephe</span>
+              <span className="text-sm">Warm Front</span>
             </div>
           </div>
 
           {/* Info */}
           <div className="text-sm text-muted-foreground">
-            <Badge variant="outline" className="mr-2">İpucu</Badge>
-            Basınç sistemleri için tıklayın, cepheler ve izobarlar için sürükleyerek çizin. Seçili elemanı silmek için önce tıklayarak seçin.
+            <Badge variant="outline" className="mr-2">hint</Badge>
+            Click for pressure systems, drag to draw for fronts and isobars. To delete the selected element, first select it by clicking.
           </div>
         </CardContent>
       </Card>

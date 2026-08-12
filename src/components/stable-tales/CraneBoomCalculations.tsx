@@ -57,11 +57,11 @@ export const CraneBoomCalculations = () => {
       const recommendations: string[] = [];
 
       if (yeni_gm >= 0.5) {
-        stabilityStatus = 'Mükemmel';
+        stabilityStatus = 'excellent';
         stabilityColor = 'default';
         recommendations.push('Stabilite durumu güvenli');
       } else if (yeni_gm >= 0.15) {
-        stabilityStatus = 'İyi';
+        stabilityStatus = 'good';
         stabilityColor = 'secondary';
         recommendations.push('Dikkatli operasyon önerilir');
       } else if (yeni_gm >= 0.05) {
@@ -87,7 +87,7 @@ export const CraneBoomCalculations = () => {
         stabilityColor,
         recommendations,
         güvenlik_marjı: yeni_gm - 0.15, // Minimum required GM
-        operasyon_durumu: yeni_gm > 0.15 ? 'Güvenli' : 'Güvenli Değil'
+        operasyon_durumu: yeni_gm > 0.15 ? 'safe' : 'Güvenli Değil'
       };
 
       setResults(calculatedResults);
@@ -216,7 +216,7 @@ export const CraneBoomCalculations = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                {results.operasyon_durumu === 'Güvenli' ? (
+                {results.operasyon_durumu === 'safe' ? (
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />

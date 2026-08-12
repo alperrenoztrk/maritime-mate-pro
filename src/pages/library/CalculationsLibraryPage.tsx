@@ -47,7 +47,7 @@ const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent:
   navigation: { title: "Navigasyon ve Seyir", icon: Compass, accent: "accent-ocean" },
   stability: { title: "Yük ve Stabilite", icon: Scale, accent: "accent-teal" },
   machine: { title: "Makine ve Tüketim", icon: Wrench, accent: "accent-slate" },
-  "ship-systems": { title: "Gemi Sistemleri", icon: Anchor, accent: "accent-amber" },
+  "ship-systems": { title: "Ship Systems", icon: Anchor, accent: "accent-amber" },
   converter: { title: "Formüller ve Dönüştürücüler", icon: Zap, accent: "accent-deep" },
 };
 
@@ -56,14 +56,14 @@ const QUICK_TOOLS: CalcTool[] = [
   { id: "trim", title: "Stabilite / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "fuel", title: "Yakıt Tüketimi", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
   { id: "voyage", title: "Sefer Süresi", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
-  { id: "cargo", title: "Yük Dağılımı", icon: Layers, to: "/cargo/calculations", category: "stability" },
+  { id: "cargo", title: "Load Distribution", icon: Layers, to: "/cargo/calculations", category: "stability" },
   { id: "converter", title: "Birim Dönüştürücü", icon: Zap, to: "/converter", category: "converter" },
 ];
 
 const TOOLS: CalcTool[] = [
   { id: "draft-survey", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
   { id: "preloading", title: "Ön Yükleme", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
-  { id: "ballast", title: "Balast Hesabı", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
+  { id: "ballast", title: "Ballast Calculation", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
   { id: "density", title: "Yoğunluk Düzeltme", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
   { id: "bunker", title: "Bunker Survey", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
   { id: "stability-calc", title: "Stabilite Hesapları", icon: Scale, to: "/stability/calculations", category: "stability" },

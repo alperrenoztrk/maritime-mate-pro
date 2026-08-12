@@ -72,10 +72,10 @@ const AuthCallback = () => {
         const { handled, error: oauthError } = await finishOAuthFromUrl(window.location.href);
         if (oauthError) {
           if (hasOAuthCode && !hadCodeVerifier) {
-            fail("Google dönüş kodu geldi ancak oturum anahtarı bu cihazda bulunamadı. Tarayıcı/WebView eski oturumu kaybetmiş olabilir; Tekrar dene ile yeni bir akış başlatın.");
+            fail("The Google return code arrived, but the session key was not found on this device. The browser/WebView may have lost the old session; Start a new flow with Try again.");
             return;
           }
-          fail(`Google oturumu doğrulanamadı: ${oauthError.message}`);
+          fail(`Google login could not be verified: ${oauthError.message}`);
           return;
         }
         if (handled) {
@@ -87,12 +87,12 @@ const AuthCallback = () => {
         // session up through detectSessionInUrl.
         const { data, error } = await supabase.auth.getSession();
         if (error) {
-          fail(`Oturum okunamadı: ${error.message}`);
+          fail(`Session could not be read: ${error.message}`);
           return;
         }
         if (data.session) finish();
       } catch (err) {
-        fail(err instanceof Error ? err.message : "Google oturumu tamamlanamadı.");
+        fail(err instanceof Error ? err.message : "Google login could not be completed.");
       }
     };
 
@@ -107,7 +107,7 @@ const AuthCallback = () => {
     // Safety fallback: if nothing happens in 10s, show a visible failure
     // instead of silently returning home as if login had succeeded.
     const timeout = window.setTimeout(() => {
-      fail("Google dönüşü tamamlandı ancak uygulama oturumu kuramadı. Lütfen tekrar deneyin.");
+      fail("Google return completed but failed to establish app session. Please try again.");
     }, 10000);
 
     return () => {
@@ -124,11 +124,11 @@ const AuthCallback = () => {
           <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 text-destructive">
             <AlertTriangle className="h-5 w-5" />
           </div>
-          <h1 className="text-lg font-semibold">Google girişi tamamlanamadı</h1>
+          <h1 className="text-lg font-semibold">Google login could not be completed</h1>
           <p className="mt-2 text-sm text-muted-foreground">{error}</p>
           <div className="mt-5 grid gap-2">
-            <Button onClick={() => navigate("/auth", { replace: true })}>Tekrar dene</Button>
-            <Button variant="outline" onClick={() => navigate("/", { replace: true })}>Ana sayfaya dön</Button>
+            <Button onClick={() => navigate("/auth", { replace: true })}>Try again</Button>
+            <Button variant="outline" onClick={() => navigate("/", { replace: true })}>Return to home page</Button>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@ const AuthCallback = () => {
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
       <div className="flex flex-col items-center gap-3">
         <Loader2 className="w-6 h-6 animate-spin text-primary" />
-        <p className="text-sm text-muted-foreground">Oturum tamamlanıyor…</p>
+        <p className="text-sm text-muted-foreground">The session is completed…</p>
       </div>
     </div>
   );

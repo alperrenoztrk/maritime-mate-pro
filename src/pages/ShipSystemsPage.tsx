@@ -63,7 +63,7 @@ export default function ShipSystemsPage() {
   );
 
   return (
-    <LibraryPageShell title="Gemi Sistemleri" icon={Anchor}>
+    <LibraryPageShell title="Ship Systems" icon={Anchor}>
       <LibrarySearchField
         value={query}
         onChange={setQuery}

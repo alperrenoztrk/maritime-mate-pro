@@ -77,7 +77,7 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
 /**
  * COLREG ses işaretleri referansı. Her kalıp Web Audio ile sentezlenmiş gemi
  * düdüğü tonuyla, Kural 32'deki gerçek süreleriyle (kısa ≈1 sn, uzun 4-6 sn)
- * çalınabilir — böylece "1 uzun + 2 kısa" ezber değil, tanınan bir ritim olur.
+ * çalınabilir — böylece "1 long + 2 short" ezber değil, tanınan bir ritim olur.
  */
 export default function SoundSignalsPage() {
   const [searchParams] = useSearchParams();
@@ -146,7 +146,7 @@ export default function SoundSignalsPage() {
 
         {totalMatches === 0 ? (
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">Sonuç bulunamadı</p>
+            <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">Farklı bir arama terimi deneyin.</p>
           </div>
         ) : (

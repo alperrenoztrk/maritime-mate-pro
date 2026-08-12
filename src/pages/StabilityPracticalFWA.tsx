@@ -9,7 +9,7 @@ export default function StabilityPracticalFWAPage() {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Wrench className="h-5 w-5" />
-            <h1 className="text-xl font-bold">FWA ve Yoğunluk</h1>
+            <h1 className="text-xl font-bold">FWA and Density</h1>
           </div>
           <HydrostaticsStabilityCalculations singleMode section="practical" practicalCalc="fwa" />
         </div>

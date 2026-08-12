@@ -106,7 +106,7 @@ const documentationTasks: TaskRow[] = [
 ];
 
 const emergencyTasks: TaskRow[] = [
-  { task: "Yangın", responsible: "Master", slug: "yangin-acil" },
+  { task: "fire", responsible: "Master", slug: "yangin-acil" },
   { task: "Can kurtarma", responsible: "3/O", slug: "can-kurtarma-acil" },
   { task: "Adam denize", responsible: "Master", slug: "adam-denize" },
   { task: "Collision", responsible: "Master", slug: "collision-acil" },

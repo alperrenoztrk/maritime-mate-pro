@@ -21,7 +21,7 @@ const details: Record<string, Detail> = {
   // 1. Giriş
   "giris": {
     title: "1. Giriş – Hogging & Sagging Tespiti",
-    group: "Giriş",
+    group: "Sign in",
     content: `Hogging & Sagging Tespiti:
 Hogging: (dF + dA)/2 > dM
 Sagging: (dF + dA)/2 < dM`,

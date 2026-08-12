@@ -3,9 +3,9 @@ import type { SearchItem } from "@/data/searchIndex";
 export type SearchScopeId = "all" | "learn" | "tools" | "reference" | "operations";
 
 export const SEARCH_SCOPES: ReadonlyArray<{ id: SearchScopeId; label: string }> = [
-  { id: "all", label: "Tümü" },
+  { id: "all", label: "All" },
   { id: "learn", label: "Dersler" },
-  { id: "tools", label: "Araçlar" },
+  { id: "tools", label: "tools" },
   { id: "reference", label: "Kaynaklar" },
   { id: "operations", label: "Operasyonlar" },
 ];
@@ -73,10 +73,10 @@ export const matchesSearchScope = (item: SearchItem, scope: SearchScopeId) =>
 
 export const displaySearchCategory = (item: SearchItem): string => {
   if (item.category !== "Genel") return item.category;
-  if (item.path === "/") return "Ana Sayfa";
+  if (item.path === "/") return "Home Page";
   const scope = searchItemScope(item);
   if (scope === "learn") return "Dersler";
-  if (scope === "tools") return "Araçlar";
+  if (scope === "tools") return "tools";
   if (startsWithAny(item.path, ["/ship-operations", "/ship-tasks"])) return "Operasyonlar";
   if (startsWithAny(item.path, ["/crew"])) return "Personel";
   if (startsWithAny(item.path, ["/ship-systems", "/bridge", "/glossary", "/regulations"])) {

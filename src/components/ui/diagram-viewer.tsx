@@ -134,7 +134,7 @@ export const DiagramViewer = ({
                     className="gap-2"
                   >
                     <Maximize2 className="h-4 w-4" />
-                    {isFullscreen ? 'Küçült' : 'Büyüt'}
+                    {isFullscreen ? 'Küçült' : 'enlarge'}
                   </Button>
                 </>
               )}
