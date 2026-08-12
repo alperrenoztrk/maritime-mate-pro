@@ -14,8 +14,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { EmptyState } from "@/components/state/AppState";
+import { Textarea } from "@/components/ui/textarea";
 import {
   getNotes,
+  addNote,
   deleteNote,
   NOTES_UPDATED_EVENT,
   type SavedNote,
@@ -35,6 +37,8 @@ function formatDate(ts: number): string {
 
 const Notes = () => {
   const [notes, setNotes] = useState<SavedNote[]>(() => getNotes());
+  const [draft, setDraft] = useState("");
+
 
   useEffect(() => {
     const refresh = () => setNotes(getNotes());
