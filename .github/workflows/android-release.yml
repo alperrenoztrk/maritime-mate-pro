@@ -61,6 +61,13 @@ jobs:
       - name: Run topic coverage quality gate
         run: npm run check:topic-coverage
 
+      # aapt2 reports an unescaped apostrophe in a string resource as an opaque
+      # "Can not extract resource" exception, with no file or line, and only
+      # after the Gradle build has already run. Fail here instead, in
+      # milliseconds and with the resource name.
+      - name: Check Android string resources
+        run: npm run check:android-resources
+
       # Reklam anahtarı ve birimi kimlikleri JS bundle'ına build sırasında
       # gömülür (src/config/ads.ts). ADS_ENABLED variable'ı "true" değilse
       # (varsayılan) bundle'da reklam yolu hiç çalışmaz ve aşağıdaki kimlikler
