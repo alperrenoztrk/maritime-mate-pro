@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Flag, Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import SignalTonePlayer from "@/components/audio/SignalTonePlayer";
