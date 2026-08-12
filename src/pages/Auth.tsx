@@ -17,8 +17,8 @@ import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { useLanguage } from "@/contexts/useLanguage";
 
 const credentialsSchema = z.object({
-  email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
-  password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
+  email: z.string().trim().email({ message: "Enter a valid email" }).max(255),
+  password: z.string().min(8, { message: "Password must be at least 8 characters" }).max(72),
 });
 
 
@@ -65,25 +65,25 @@ const Auth = () => {
         const { error } = await signInWithEmail(parsed.data.email, parsed.data.password);
         if (error) {
           const msg = error.message.includes("Invalid login")
-            ? "E-posta veya şifre hatalı. Bu hesabı Google ile oluşturduysanız \"Google ile devam et\" ile girin ya da aşağıdan şifre belirleyin."
+            ? "Email or password is incorrect. If you created this account with Google, enter it with \"Continue with Google\" or set a password below."
             : error.message;
           toast.error(msg);
         } else {
           // Yönlendirmeyi yukarıdaki effect yapar: 2FA açıksa önce kod adımı
           // gösterilmeli, doğrudan navigate çağırmak o adımı atlardı.
-          toast.success("Giriş başarılı");
+          toast.success("Login successful");
         }
       } else {
         const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password, nextPath);
         if (error) {
           if (error.message.includes("already registered") || error.message.includes("User already")) {
-            toast.error("Bu e-posta zaten kayıtlı. Google ile giriş yapın veya \"Şifremi unuttum\" ile şifre belirleyin.");
+            toast.error("This email is already registered. Log in with Google or set a password with \"I forgot my password\".");
             setTab("signin");
           } else {
             toast.error(error.message);
           }
         } else {
-          toast.success("Kayıt başarılı! E-postanızı kontrol edin.");
+          toast.success("Registration successful! Check your email.");
         }
       }
     } finally {
@@ -96,7 +96,7 @@ const Auth = () => {
   const handleResetPassword = async () => {
     const parsedEmail = credentialsSchema.shape.email.safeParse(email);
     if (!parsedEmail.success) {
-      toast.error("Önce geçerli bir e-posta girin");
+      toast.error("First enter a valid email");
       return;
     }
     setBusy(true);
@@ -105,9 +105,9 @@ const Auth = () => {
         redirectTo: `${window.location.origin}/reset-password`,
       });
       if (error) {
-        toast.error(error.message || "Şifre belirleme e-postası gönderilemedi");
+        toast.error(error.message || "Password setting email could not be sent");
       } else {
-        toast.success("Şifre belirleme bağlantısı e-postanıza gönderildi.");
+        toast.success("The password setting link has been sent to your e-mail.");
       }
     } finally {
       setBusy(false);
@@ -119,7 +119,7 @@ const Auth = () => {
   const handleMagicLink = async () => {
     const parsedEmail = credentialsSchema.shape.email.safeParse(email);
     if (!parsedEmail.success) {
-      toast.error("Önce geçerli bir e-posta girin");
+      toast.error("First enter a valid email");
       return;
     }
     setBusy(true);
@@ -129,14 +129,14 @@ const Auth = () => {
         const rate = /rate limit|too many|429/i.test(error.message);
         toast.error(
           rate
-            ? "Çok fazla istek gönderildi. Lütfen birkaç dakika sonra tekrar deneyin."
-            : error.message || "Giriş bağlantısı gönderilemedi",
+            ? "Too many requests have been sent. Please try again in a few minutes."
+            : error.message || "Login link could not be sent",
         );
         return;
       }
       setMagicSent(true);
       setMagicCooldown(60);
-      toast.success("Giriş bağlantısı e-postanıza gönderildi.");
+      toast.success("The login link has been sent to your email.");
     } finally {
       setBusy(false);
     }
@@ -152,10 +152,10 @@ const Auth = () => {
     try {
       const { error } = await signInWithGoogle(nextPath);
       if (error) {
-        toast.error(error.message || "Google ile giriş başarısız");
+        toast.error(error.message || "Login with Google failed");
       }
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
+      toast.error(err instanceof Error ? err.message : "Login with Google failed");
     } finally {
       setBusy(false);
     }
@@ -183,20 +183,20 @@ const Auth = () => {
                 disabled={busy}
               >
                 <GoogleIcon />
-                Google ile devam et
+                Continue with Google
               </Button>
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t border-border/60" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">veya e-posta ile</span>
+                  <span className="bg-card px-2 text-muted-foreground">or by email</span>
                 </div>
               </div>
               <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
                 <TabsList className="grid grid-cols-2 w-full">
-                  <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
-                  <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
+                  <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                  <TabsTrigger value="signin">Sign In</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="signin" className="mt-4">
@@ -208,7 +208,7 @@ const Auth = () => {
                       onPassword={setPassword}
                     />
                     <Button type="submit" className="w-full" disabled={busy}>
-                      {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
+                      {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sign In"}
                     </Button>
                   </form>
                   <div className="mt-3 space-y-3">
@@ -221,13 +221,13 @@ const Auth = () => {
                     >
                       <Sparkles className="h-4 w-4" />
                       {magicCooldown > 0
-                        ? `Tekrar gönder (${magicCooldown} sn)`
-                        : "Şifresiz giriş bağlantısı gönder"}
+                        ? `Send again (${magicCooldown} sn)`
+                        : "Send login link without password"}
                     </Button>
                     {magicSent && (
                       <p className="text-xs text-center text-muted-foreground">
-                        Giriş bağlantısı e-postanıza gönderildi. Bağlantıya bu cihazdan
-                        tıklayın; oturum otomatik açılır.
+                        The login link has been sent to your email. Connect from this device
+                        click; The session opens automatically.
                       </p>
                     )}
                     <div className="text-center">
@@ -237,11 +237,11 @@ const Auth = () => {
                         disabled={busy}
                         className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
                       >
-                        Şifremi unuttum / şifre belirle
+                        I forgot my password / set password
                       </button>
                       <p className="mt-2 text-micro text-muted-foreground">
-                        Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Şifresiz
-                        giriş bağlantısını kullanabilir veya buradan şifre belirleyebilirsiniz.
+                        If you created your account with Google, you do not have a password. without password
+                        You can use the login link or set a password here.
                       </p>
                     </div>
                   </div>
@@ -257,10 +257,10 @@ const Auth = () => {
                       onPassword={setPassword}
                     />
                     <Button type="submit" className="w-full" disabled={busy}>
-                      {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Kayıt Ol"}
+                      {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sign Up"}
                     </Button>
                     <p className="text-xs text-muted-foreground text-center">
-                      Şifre en az 8 karakter olmalıdır
+                      Password must be at least 8 characters
                     </p>
                   </form>
                 </TabsContent>
@@ -268,33 +268,31 @@ const Auth = () => {
             </>
           )}
 
-          {/* Yasal metinler giriş duvarının arkasında kalmamalı: kullanıcı hesap
-              açmadan önce hem verisinin nasıl işlendiğini hem de kabul ettiği
-              şartları okuyabilmeli. Ayarlar'daki bağlantıların aynısı
-              (bkz. src/pages/Settings.tsx). */}
+          {/* Legal texts must stay outside the sign-in wall: users need to read
+              how their data is handled and what they agree to before creating an
+              account. Same links as in Settings (see src/pages/Settings.tsx). */}
           <div className="border-t border-border/60 pt-4 text-center">
             <p className="text-micro leading-relaxed text-muted-foreground">
-              Kayıt olarak veya giriş yaparak{" "}
+              By signing up or signing in you accept the{" "}
               <a
                 href={termsOfUseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"
               >
-                Kullanım Şartları
+                Terms of Use
               </a>
-              'nı kabul eder ve verilerinizin{" "}
+              {" "}and agree that your data is processed under the{" "}
               <a
                 href={privacyPolicyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"
               >
-                Gizlilik Politikası
+                Privacy Policy
               </a>{" "}
-              kapsamında işlenmesini kabul etmiş olursunuz. Hesabınızı ve tüm
-              verilerinizi istediğiniz zaman Ayarlar → Hesabımı sil ile kalıcı
-              olarak silebilirsiniz.
+              . You can permanently delete your account and all of your data at
+              any time from Settings → Delete my account.
             </p>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
               <a
@@ -304,7 +302,7 @@ const Auth = () => {
                 className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
               >
                 <ShieldCheck className="h-3.5 w-3.5" />
-                Gizlilik Politikası
+                Privacy Policy
                 <ExternalLink className="h-3 w-3 opacity-70" />
               </a>
               <a
@@ -314,7 +312,7 @@ const Auth = () => {
                 className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
               >
                 <FileText className="h-3.5 w-3.5" />
-                Kullanım Şartları
+                Terms of Use
                 <ExternalLink className="h-3 w-3 opacity-70" />
               </a>
             </div>
@@ -353,7 +351,7 @@ const EmailPasswordFields = ({
       </div>
     </div>
     <div className="space-y-1.5">
-      <Label htmlFor="password">Şifre</Label>
+      <Label htmlFor="password">password</Label>
       <div className="relative">
         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <Input

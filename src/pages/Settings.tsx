@@ -43,18 +43,18 @@ const Settings = () => {
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
-    toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
+    toast.success(`Language changed: ${getLanguageName(value)}`);
   };
 
   const handleSignOut = async () => {
     await signOut();
-    toast.success("Çıkış yapıldı");
+    toast.success("Signed out");
     // Settings is behind the login wall; leaving the user here would bounce
     // them straight into the auth screen.
     navigate("/", { replace: true });
   };
 
-  // Hesap silme: sunucu tarafında tüm tablolar ve depolanan belgeler temizlenir.
+  // Account silme: sunucu tarafında tüm tablolar ve depolanan belgeler temizlenir.
   const handleDeleteAccount = async () => {
     if (!confirmDelete) {
       setConfirmDelete(true);
@@ -64,11 +64,11 @@ const Settings = () => {
     try {
       const { error } = await supabase.functions.invoke("delete-account", { body: {} });
       if (error) throw error;
-      toast.success("Hesabınız ve tüm verileriniz silindi");
+      toast.success("Your account and all your data have been deleted");
       await signOut();
       navigate("/", { replace: true });
     } catch {
-      toast.error("Hesap silinemedi. Lütfen tekrar deneyin veya bize yazın.");
+      toast.error("The account could not be deleted. Please try again or write to us.");
       setDeleting(false);
       setConfirmDelete(false);
     }
@@ -88,23 +88,23 @@ const Settings = () => {
   const providerLabels: Record<string, string> = {
     email: "E-posta",
   };
-  const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");
+  const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Unknown");
 
   const fontSizeLabels: Partial<Record<FontSizeKey, string>> = {
     normal: "Normal",
-    large: "Büyük",
+    large: "Large",
   };
 
 
   const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Monitor }> = [
-    { value: "system", label: "Sistem", icon: Monitor },
-    { value: "light", label: "Açık", icon: Sun },
-    { value: "dark", label: "Koyu", icon: Moon },
+    { value: "system", label: "System", icon: Monitor },
+    { value: "light", label: "Light", icon: Sun },
+    { value: "dark", label: "Dark", icon: Moon },
   ];
 
   const handleFontSizeChange = (value: string) => {
     setFontSize(value as FontSizeKey);
-    toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
+    toast.success(`Text size: ${fontSizeLabels[value as FontSizeKey]}`);
   };
 
   // Reklam onayı (UMP): Google, onay formu gösterilen bölgelerde kullanıcının
@@ -129,7 +129,7 @@ const Settings = () => {
 
   const handlePrivacyOptions = async () => {
     const opened = await openPrivacyOptionsForm();
-    if (!opened) toast.error("Reklam tercihleri şu anda açılamadı");
+    if (!opened) toast.error("Ad preferences could not be opened at this time");
   };
 
   // Only reachable for the frame between signing out and the redirect landing.
@@ -150,7 +150,7 @@ const Settings = () => {
                 <SettingsIcon className="h-5 w-5 text-primary" />
               </span>
               <h1 data-page-title className="text-3xl font-bold tracking-[-0.025em] text-foreground">
-                <span data-translatable>Ayarlar</span>
+                <span data-translatable>Settings</span>
               </h1>
             </div>
           </div>
@@ -160,7 +160,7 @@ const Settings = () => {
             <Card>
               <CardHeader>
                 <CardTitle>
-                  <span data-translatable>Hesap</span>
+                  <span data-translatable>Account</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -183,18 +183,18 @@ const Settings = () => {
                       </div>
                     ) : (
                       <div className="text-xs text-muted-foreground italic">
-                        <span data-translatable>E-posta bulunamadı</span>
+                        <span data-translatable>Email not found</span>
                       </div>
                     )}
                     <div className="text-xs text-muted-foreground/80 truncate">
-                      <span data-translatable>Sağlayıcı</span>: {providerLabel}
+                      <span data-translatable>Provider</span>: {providerLabel}
                     </div>
                   </div>
 
 
                   <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
                     <LogOut className="w-4 h-4" />
-                    <span data-translatable>Çıkış</span>
+                    <span data-translatable>Sign out</span>
                   </Button>
                 </div>
 
@@ -210,7 +210,7 @@ const Settings = () => {
                     className="flex items-center gap-2 rounded-lg px-2 text-sm text-primary hover:bg-primary/10"
                   >
                     <ShieldCheck className="w-4 h-4" />
-                    <span data-translatable>Gizlilik Politikası</span>
+                    <span data-translatable>Privacy Policy</span>
                     <ExternalLink className="w-3 h-3 opacity-70" />
                   </a>
 
@@ -222,21 +222,21 @@ const Settings = () => {
                     className="flex items-center gap-2 rounded-lg px-2 text-sm text-primary hover:bg-primary/10"
                   >
                     <FileText className="w-4 h-4" />
-                    <span data-translatable>Kullanım Şartları</span>
+                    <span data-translatable>Terms of Use</span>
                     <ExternalLink className="w-3 h-3 opacity-70" />
                   </a>
 
                   <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 space-y-2">
                     <p className="text-xs text-muted-foreground">
                       <span data-translatable>
-                        Hesabınızı sildiğinizde profiliniz, sınav sonuçlarınız, istatistikleriniz, belgeleriniz ve yüklediğiniz dosyalar kalıcı olarak silinir. Bu işlem geri alınamaz.
+                        When you delete your account, your profile, exam results, statistics, documents and uploaded files are permanently deleted. This action cannot be undone.
                       </span>
                     </p>
                     {/* Play, hesap silmenin faturalandırmayı durdurmadığının
                         kullanıcıya açıkça söylenmesini istiyor. */}
                     <p className="text-xs font-medium text-destructive/90">
                       <span data-translatable>
-                        Hesap silme, Google Play aboneliğinizi iptal etmez. Ödemenin durması için aboneliği Google Play &gt; Abonelikler bölümünden ayrıca iptal etmeniz gerekir.
+                        Account deletion does not cancel your Google Play subscription. In order for the payment to stop, you must also cancel the subscription from Google Play &gt; Subscriptions.
                       </span>
                     </p>
                     <div className="flex flex-wrap items-center gap-2">
@@ -249,12 +249,12 @@ const Settings = () => {
                       >
                         <Trash2 className="w-4 h-4" />
                         <span data-translatable>
-                          {deleting ? "Siliniyor..." : confirmDelete ? "Evet, hesabımı kalıcı olarak sil" : "Hesabımı sil"}
+                          {deleting ? "Siliniyor..." : confirmDelete ? "Yes, delete my account permanently" : "delete my account"}
                         </span>
                       </Button>
                       {confirmDelete && !deleting && (
                         <Button variant="ghost" size="sm" onClick={() => setConfirmDelete(false)}>
-                          <span data-translatable>Vazgeç</span>
+                          <span data-translatable>Cancel</span>
                         </Button>
                       )}
                     </div>
@@ -263,7 +263,7 @@ const Settings = () => {
               </CardContent>
             </Card>
 
-            {/* Hesap güvenliği: isteğe bağlı 2FA (bkz. src/lib/mfa.ts) */}
+            {/* Account güvenliği: isteğe bağlı 2FA (bkz. src/lib/mfa.ts) */}
             <TwoFactorCard />
 
 
@@ -273,17 +273,17 @@ const Settings = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Megaphone className="w-5 h-5" />
-                    <span data-translatable>Reklamlar ve Gizlilik</span>
+                    <span data-translatable>Ads and Privacy</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <p className="text-sm text-muted-foreground">
-                      <span data-translatable>{"Ücretsiz pakette reklam gösterilir. Pro üyelikte reklam yoktur."}</span>
+                      <span data-translatable>{"Ads are shown in the free package. There are no ads in Pro membership."}</span>
                     </p>
                     {privacyOptionsAvailable && (
                       <Button variant="outline" size="sm" onClick={handlePrivacyOptions}>
-                        <span data-translatable>Reklam tercihlerini yönet</span>
+                        <span data-translatable>Manage ad preferences</span>
                       </Button>
                     )}
                   </div>
@@ -296,11 +296,11 @@ const Settings = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Sun className="h-5 w-5" />
-                  <span data-translatable>Görünüm</span>
+                  <span data-translatable>Appearance</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="surface-1 grid grid-cols-3 gap-1 rounded-xl border p-1" role="radiogroup" aria-label="Görünüm">
+                <div className="surface-1 grid grid-cols-3 gap-1 rounded-xl border p-1" role="radiogroup" aria-label="Appearance">
                   {appearanceOptions.map(({ value, label, icon: Icon }) => {
                     const selected = theme === value;
                     return (
@@ -334,14 +334,14 @@ const Settings = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Type className="w-5 h-5" />
-                  <span data-translatable>Yazı Boyutu</span>
+                  <span data-translatable>Font Size</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="font-size-select">
-                      <span data-translatable>Yazı Boyutu</span>
+                      <span data-translatable>Font Size</span>
                     </Label>
                     <Select value={fontSize} onValueChange={handleFontSizeChange}>
                       <SelectTrigger id="font-size-select">
@@ -352,7 +352,7 @@ const Settings = () => {
                       <SelectContent>
                         {FONT_SIZE_OPTIONS.map((opt) => (
                           <SelectItem key={opt.key} value={opt.key}>
-                            <span data-translatable>{opt.labelTr}</span>
+                            <span data-translatable>{opt.label}</span>
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -367,15 +367,15 @@ const Settings = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Vibrate className="w-5 h-5" />
-                  <span data-translatable>Dokunsal Geri Bildirim</span>
+                  <span data-translatable>Haptic Feedback</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between gap-4">
                   <Label htmlFor="haptics-toggle" className="flex-1">
-                    <span data-translatable>Dokunmalarda titreşim</span>
+                    <span data-translatable>Vibration on touches</span>
                     <span className="mt-1 block text-caption font-normal text-muted-foreground" data-translatable>
-                      Yalnızca telefon uygulamasında çalışır.
+                      It only works on the phone app.
                     </span>
                   </Label>
                   <Switch
@@ -397,14 +397,14 @@ const Settings = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="w-5 h-5" />
-                  <span data-translatable>Dil Ayarları</span>
+                  <span data-translatable>Language Settings</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="language-select">
-                      <span data-translatable>Dil</span>
+                      <span data-translatable>Language</span>
                     </Label>
                     <Select value={currentLanguage} onValueChange={handleLanguageChange}>
                       <SelectTrigger id="language-select">

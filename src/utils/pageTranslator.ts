@@ -22,6 +22,12 @@ export const TRANSLATABLE_ATTRS: Array<{ attr: string; ds: string }> = [
 ];
 export const ATTR_SELECTOR = TRANSLATABLE_ATTRS.map(({ attr }) => `[${attr}]`).join(',');
 
+// True when a string still contains Turkish-specific characters/words. UI copy
+// is authored in English; content data under src/data is still Turkish.
+const TURKISH_WORDS = /\b(ve|ile|için|bir|bu|olarak|gemi|hesap|sayfa|değer|göre|yok|var|kaydet|geri|ayarlar|kapat|aç)\b/i;
+export const hasTurkishText = (value: string): boolean =>
+  /[şğıçöüŞĞİÇÖÜ]/.test(value) || TURKISH_WORDS.test(value);
+
 export const hasLetters = (value: string): boolean => /\p{L}/u.test(value);
 
 // Canonical source-string normalization shared by the runtime translator and

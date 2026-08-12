@@ -22,6 +22,7 @@ import {
   splitBatchResult,
   BATCH_SEPARATOR,
   isNoTranslateZone,
+  hasTurkishText,
 } from '@/utils/pageTranslator';
 import {
   loadStaticDictionary,
@@ -63,7 +64,6 @@ const TRANSLATION_PENDING_ATTR = 'data-mt-translation-pending';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
-  { language: 'tr', name: 'Turkish', displayName: 'Türkçe' },
   { language: 'en', name: 'English', displayName: 'English' },
   { language: 'es', name: 'Spanish', displayName: 'Español' },
   { language: 'de', name: 'German', displayName: 'Deutsch' },
@@ -106,6 +106,11 @@ const getSavedLanguage = (): string => {
   if (IS_HARVEST_FRAME) return SOURCE_LANGUAGE;
   try {
     const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
+    // Turkish is no longer offered; migrate any stored 'tr' preference.
+    if (savedLanguage === 'tr') {
+      try { localStorage.setItem('preferredLanguage', DEFAULT_LANGUAGE); } catch { /* ignore */ }
+      return DEFAULT_LANGUAGE;
+    }
     return BASE_SUPPORTED_LANGUAGES.some((lang) => lang.language === savedLanguage)
       ? savedLanguage
       : DEFAULT_LANGUAGE;
@@ -118,11 +123,12 @@ const getSavedLanguage = (): string => {
 // v3: invalidates the dictionaries/runtime values produced before complete UI
 // extraction and context-safe "Hesap" handling. Old stores are also deleted so
 // mobile WebViews do not retain hundreds of megabytes of unreachable locale data.
-const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v3';
+const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v4';
 const LEGACY_TRANSLATION_CACHE_KEYS = [
   'mt-translation-cache',
   'mt-translation-cache-v1',
   'mt-translation-cache-v2',
+  'mt-translation-cache-v3',
 ];
 const LEGACY_LOCALE_RUNTIME_CACHES = ['translation-locales'];
 const SEEN_STRINGS_KEY = 'mt-seen-strings-v1';
@@ -378,7 +384,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     let parts: string[] | null = null;
     try {
       const response = await fetch(
-        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`,
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`,
         { signal: controller?.signal },
       );
       if (!response.ok) throw new Error(`translation HTTP ${response.status}`);
@@ -512,11 +518,16 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       const local = resolveLocally(source, languageCode);
       if (local !== undefined) {
         localTranslations.set(source, local);
+      } else if (languageCode === 'en' && !hasTurkishText(source)) {
+        // UI copy is authored in English; nothing to translate and no request
+        // to spend when the target language is English too.
+        continue;
       } else if (canLiveFetch) {
         networkSources.push(source);
       }
       // else: leave in source language (cache-only mode after a bulk pass).
     }
+
     applyTranslations(localTranslations);
 
     // 2) Translate the remainder in as few batched requests as possible.
@@ -938,7 +949,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return;
     }
     loadCacheFromStorage();
-    const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
+    const stored = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
+    // Turkish is no longer offered; migrate any stored 'tr' preference.
+    const savedLanguage = stored === 'tr' ? DEFAULT_LANGUAGE : stored;
+    if (stored === 'tr') {
+      try { localStorage.setItem('preferredLanguage', DEFAULT_LANGUAGE); } catch { /* ignore */ }
+    }
+
     const validLanguage = SUPPORTED_LANGUAGES.find((lang) => lang.language === savedLanguage)
       ? savedLanguage
       : DEFAULT_LANGUAGE;

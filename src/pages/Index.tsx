@@ -7,7 +7,7 @@ import { hapticSelection } from "@/lib/haptics";
 import { prefersReducedMotion } from "@/hooks/useAppMotion";
 
 const VIEWS = [
-  { id: "overview", label: "Özet" },
+  { id: "overview", label: "Summary" },
   { id: "news", label: "Haberler" },
   { id: "widgets", label: "Widget'lar" },
 ] as const;
@@ -35,7 +35,7 @@ const Index = () => {
 
         <div
           role="tablist"
-          aria-label="Ana ekran görünümü"
+          aria-label="Home screen view"
           className="surface-1 sticky top-[calc(var(--safe-top)+0.5rem)] z-20 grid grid-cols-3 gap-1 rounded-xl border p-1 shadow-elev-1"
         >
           {VIEWS.map((view) => {

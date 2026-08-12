@@ -28,7 +28,7 @@ export function GlobalSearch() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-xl gap-0 overflow-hidden border-border/60 bg-background p-0 sm:p-0">
-        <DialogTitle className="sr-only">Uygulamada ara</DialogTitle>
+        <DialogTitle className="sr-only">Search in app</DialogTitle>
         {open && (
           <AppSearchExperience
             variant="sheet"
