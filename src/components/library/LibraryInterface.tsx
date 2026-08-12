@@ -173,16 +173,19 @@ const goldFoil: CSSProperties = {
   backgroundImage: "linear-gradient(180deg, #fff8e7 0%, #efd08a 52%, #c9983d 100%)",
 };
 
-/** Kapaktaki başlık kutusu dar. Tire kapalı olduğu için sığmayan kelimeyi tarayıcı
-    tiresiz kırar; onu da istemiyoruz. Punto başlığın en uzun kelimesine göre
-    seçiliyor, böylece her satır tek parça kelimeyle sütuna sığıyor. */
+/** Kapaktaki başlık kutusu dar. Punto, kullanıcının yazı boyutu ayarından (rem)
+    bağımsız olsun diye kapağın kendi genişliğine (cqw) göre ölçekleniyor; böylece
+    "Communication at Sea" gibi uzun başlıklar her yazı boyutunda çerçeve içinde
+    kalır ve kelime ortasından bölünmez. clamp()'in px yedeği, container query
+    desteklemeyen tarayıcılarda makul bir taban sağlar. */
 const coverTitleSize = (title: string) => {
   const longest = Math.max(...title.split(/\s+/).map((word) => word.length), 0);
-  if (longest > 18 || title.length > 60) return "text-[0.68rem] sm:text-[0.74rem]";
-  if (longest > 15) return "text-[0.78rem] sm:text-[0.84rem]";
-  if (longest > 12 || title.length > 44) return "text-[0.9rem] sm:text-[0.95rem]";
-  return "text-[1.02rem] sm:text-lg";
+  if (longest > 18 || title.length > 60) return "text-[clamp(7px,6.4cqw,15px)]";
+  if (longest > 15) return "text-[clamp(8px,7.4cqw,17px)]";
+  if (longest > 12 || title.length > 44) return "text-[clamp(9px,8.6cqw,19px)]";
+  return "text-[clamp(10px,10cqw,22px)]";
 };
+
 
 function LibraryBookCase({
   title,
