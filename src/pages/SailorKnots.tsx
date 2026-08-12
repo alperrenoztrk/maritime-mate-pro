@@ -59,11 +59,6 @@ export default function SailorKnotsPage() {
           <Anchor className="h-7 w-7 text-amber-500" />
           <h1 className="text-3xl font-bold md:text-4xl">Gemici Bağları</h1>
         </div>
-        <p className="mb-5 text-sm text-muted-foreground">
-          Denizcilikte en çok kullanılan temel bağlar kategorilere ayrılmıştır. Bir bağı incelemek için
-          başlığına dokunarak açın; gerçek bağ atma videosunu oynatın, adım adım yapılışı, kullanımı ve
-          püf noktasını görün. Aramak için yazın ya da kategori seçin.
-        </p>
 
         {/* Search */}
         <div className="relative mb-3">

@@ -110,10 +110,6 @@ export default function SoundSignalsPage() {
           <Volume2 className="h-7 w-7 text-amber-500" />
           <h1 className="text-3xl font-bold md:text-4xl">Ses İşaretleri</h1>
         </div>
-        <p className="mb-4 text-sm text-muted-foreground">
-          COLREG Bölüm D (Kural 32-37), gemilerin niyet ve durumlarını sesle bildirmesini düzenler.
-          Aşağıdaki her kalıbı gerçek süreleriyle dinleyebilirsiniz.
-        </p>
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
