@@ -8,7 +8,7 @@ import {
 import type { LessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 
 /**
- * Personel modülündeki "Detaylı Anlatım" düzeniyle aynı dil.
+ * Personel modülündeki "Detailed Explanation" düzeniyle aynı dil.
  * `LessonTopicDetailPage` ve `MachineTopicDetailPage` tarafından kullanılır.
  */
 export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement }) {
@@ -20,7 +20,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
         </div>
         <div>
           <h2 className="text-base font-bold text-foreground">
-            Detaylı Anlatım & Çözümlü Örnekler
+            Detailed Explanation & Examples with Solutions
           </h2>
         </div>
       </div>
@@ -28,7 +28,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
       {data.deepDive && (
         <div className="rounded-2xl border border-border/50 bg-card/80 p-5 shadow-md">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
-            Kavramsal Çerçeve
+            Conceptual Framework
           </p>
           <p className="mt-2 text-sm leading-relaxed text-foreground/90">{data.deepDive}</p>
         </div>
@@ -37,7 +37,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
       {data.coreFormula && (
         <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-4 shadow-sm">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-            Çekirdek Bağıntı
+            Core Correlation
           </p>
           <p className="mt-2 font-mono text-sm font-semibold text-foreground">
             {data.coreFormula.text}
@@ -56,7 +56,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow">
               <CheckCircle2 className="h-4 w-4" />
             </div>
-            <h3 className="text-sm font-bold text-foreground">Hesaplama Adımları</h3>
+            <h3 className="text-sm font-bold text-foreground">Calculation Steps</h3>
           </div>
           <Accordion type="single" collapsible className="space-y-2">
             {data.steps.map((step, i) => (
@@ -126,7 +126,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
 
                 <div className="rounded-lg border border-border/40 bg-background/60 p-3">
                   <p className="text-micro font-bold uppercase tracking-wider text-muted-foreground">
-                    Çözüm
+                    Solution
                   </p>
                   <ol className="mt-2 space-y-2">
                     {ex.solution.map((s, j) => (
@@ -150,7 +150,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
 
               <div className="border-t border-sky-500/20 bg-emerald-500/10 px-4 py-3">
                 <p className="text-micro font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-                  Sonuç
+                  Result
                 </p>
                 <p className="mt-1 text-sm font-bold text-foreground">{ex.answer}</p>
                 {ex.note && (
@@ -168,7 +168,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400">
               <AlertTriangle className="h-5 w-5" />
             </div>
-            <h3 className="text-sm font-bold text-foreground">Yaygın Hatalar</h3>
+            <h3 className="text-sm font-bold text-foreground">Common Mistakes</h3>
           </div>
           <ul className="space-y-2">
             {data.commonMistakes.map((m, i) => (
@@ -189,7 +189,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
               <CheckCircle2 className="h-5 w-5" />
             </div>
-            <h3 className="text-sm font-bold text-foreground">Kritik Pratik Uyarılar</h3>
+            <h3 className="text-sm font-bold text-foreground">Critical Practical Warnings</h3>
           </div>
           <ul className="space-y-2">
             {data.criticalNotes.map((n, i) => (

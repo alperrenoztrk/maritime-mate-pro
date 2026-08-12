@@ -17,8 +17,8 @@ import {
  *
  * Tek karar noktası: reklam **kime** ve **nerede** gösterilir.
  *  - Yalnızca ücretsiz pakette. `hasProAccess` true olduğu anda banner kalkar
- *    ("reklamsız kullanım" Pro vaadi — bkz. MONETIZATION_SETUP.md).
- *  - Yalnızca native platformda (web'de servis katmanı zaten no-op'tur).
+ *    ("ad-free use" Pro vaadi — bkz. MONETIZATION_SETUP.md).
+ *  - Yalnızca native platformda (web'The service layer is already no-op'tur).
  *  - `AD_FREE_ROUTES` dışındaki sayfalarda (ana sayfa, giriş akışı ve /pro
  *    ödeme ekranı reklamsız kalır).
  *

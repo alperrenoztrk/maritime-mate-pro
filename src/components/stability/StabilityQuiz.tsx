@@ -131,7 +131,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                       </div>
                       {!isCorrect && (
                         <div className="text-sm text-blue-600 mt-2 p-2 bg-blue-50 rounded">
-                          <strong>Açıklama:</strong> {question.explanation}
+                          <strong>Description:</strong> {question.explanation}
                         </div>
                       )}
                     </div>
@@ -144,7 +144,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
           <div className="flex justify-center">
             <Button onClick={resetQuiz} className="gap-2">
               <RotateCcw className="h-4 w-4" />
-              Tekrar Dene
+              Try Again
             </Button>
           </div>
         </CardContent>
@@ -235,7 +235,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
         
         {showResults && (
           <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <div className="font-medium text-blue-800 mb-2">Açıklama:</div>
+            <div className="font-medium text-blue-800 mb-2">Description:</div>
             <div className="text-blue-700 text-sm leading-relaxed">
               {currentQuestion.explanation}
             </div>
@@ -278,7 +278,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                 disabled={currentQuestionIndex === totalQuestions - 1}
                 className="gap-2"
               >
-                Sonraki Soru
+                Next Question
                 <ChevronRight className="h-4 w-4" />
               </Button>
             )}

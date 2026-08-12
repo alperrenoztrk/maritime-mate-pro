@@ -90,13 +90,13 @@ export const maskTechnicalTokens = (source: string): TechnicalMask | null => {
 export const unmaskTechnicalTokens = (translated: string, slots: string[]): string =>
   translated.replace(MASK_RE, (whole, index: string) => slots[Number(index)] ?? whole);
 
-// ── "Hesap" disambiguation ───────────────────────────────────────────────────
+// ── "Account" disambiguation ───────────────────────────────────────────────────
 // Turkish "hesap" means both "account" and "calculation". Titles such as
 // "KG Hesabı" are rendered "KG Account" by every generic engine. When the
 // SOURCE is a calculation heading we rewrite the banking sense out of the
 // translation.
 
-// Bare "Hesap" is included because it heads calculation content throughout the
+// Bare "Account" is included because it heads calculation content throughout the
 // corpus ("Hesap Formülü", "Hesap Adımları", "GM ve KG Hesap Örnekleri"); the
 // account senses it also has are excluded by ACCOUNT_SOURCE_RE below.
 const CALCULATION_SOURCE_RE =
@@ -126,7 +126,7 @@ const ACCOUNT_TO_CALCULATION: Record<string, [RegExp, string]> = {
 };
 
 // Sources where "hesap" really is the user's account: the sign-in and
-// account-deletion screens ("Hesabımı sil", "Hesap ve Veri Silme", "banka
+// account-deletion screens ("delete my account", "Hesap ve Veri Silme", "banka
 // hesabı"). A bare UI label is reserved for Account; calculation content uses
 // the unambiguous "Hesaplama" label. These keep the banking sense.
 const ACCOUNT_SOURCE_RE = new RegExp(

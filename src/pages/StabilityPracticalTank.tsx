@@ -10,7 +10,7 @@ export default function StabilityPracticalTankPage() {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Wrench className="h-5 w-5" />
-            <h1 className="text-xl font-bold">Duba/Tank Hacmi ve Kütle</h1>
+            <h1 className="text-xl font-bold">Pontoon/Tank Volume and Mass</h1>
           </div>
           <HydrostaticsStabilityCalculations singleMode section="practical" practicalCalc="tank" />
         </div>

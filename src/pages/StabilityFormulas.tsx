@@ -25,15 +25,15 @@ export default function StabilityFormulasPage() {
             <div className="space-y-4">
               {/* 1. Giriş */}
               <div className="space-y-2">
-                <div className="text-sm font-semibold text-primary px-1">1. Giriş</div>
+                <div className="text-sm font-semibold text-primary px-1">1. Introduction</div>
                 <div className="flex flex-wrap gap-2">
-                  <Link to="/stability/formulas/giris"><Button variant="outline" size="sm">Giriş</Button></Link>
+                  <Link to="/stability/formulas/giris"><Button variant="outline" size="sm">Sign in</Button></Link>
                 </div>
               </div>
 
               {/* 2. Enine Denge Hesapları */}
               <div className="space-y-2">
-                <div className="text-sm font-semibold text-primary px-1">2. Enine Denge Hesapları</div>
+                <div className="text-sm font-semibold text-primary px-1">2. Transverse Balance Calculations</div>
                 <div className="flex flex-wrap gap-2">
                   <Link to="/stability/formulas/moment-kg"><Button variant="outline" size="sm">2.1 Moment ve KG</Button></Link>
                   <Link to="/stability/formulas/gm-shifting"><Button variant="outline" size="sm">2.2 Shifting ile GM</Button></Link>
@@ -45,7 +45,7 @@ export default function StabilityFormulasPage() {
 
               {/* 3. Boyuna Denge Hesapları */}
               <div className="space-y-2">
-                <div className="text-sm font-semibold text-primary px-1">3. Boyuna Denge Hesapları</div>
+                <div className="text-sm font-semibold text-primary px-1">3. Longitudinal Balance Calculations</div>
                 <div className="flex flex-wrap gap-2">
                   <Link to="/stability/formulas/trim-degisimi"><Button variant="outline" size="sm">3.1 Trim Değişimi</Button></Link>
                   <Link to="/stability/formulas/paralel-batma"><Button variant="outline" size="sm">3.2 Paralel Batma/Çıkma</Button></Link>
@@ -88,7 +88,7 @@ export default function StabilityFormulasPage() {
 
               {/* 7. Yük Hesapları */}
               <div className="space-y-2">
-                <div className="text-sm font-semibold text-primary px-1">7. Yük Hesapları</div>
+                <div className="text-sm font-semibold text-primary px-1">7. Load Calculations</div>
                 <div className="flex flex-wrap gap-2">
                   <Link to="/stability/formulas/musade-yuk"><Button variant="outline" size="sm">7.1 Müsaade Edilen Yük</Button></Link>
                   <Link to="/stability/formulas/sicaklik-yogunluk"><Button variant="outline" size="sm">7.2 Sıcaklıkla Yoğunluk</Button></Link>

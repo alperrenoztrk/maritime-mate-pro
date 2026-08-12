@@ -56,7 +56,7 @@ let sharedContext: AudioContext | null = null;
  * Paylaşılan AudioContext'i döndürür; yoksa oluşturur.
  *
  * iOS/Safari yalnızca bir kullanıcı jesti içinde AudioContext açılmasına veya
- * resume edilmesine izin verir — bu yüzden modül yüklenirken DEĞİL, ilk "çal"
+ * resume edilmesine izin verir — bu yüzden modül yüklenirken DEĞİL, ilk "play"
  * tıklamasında çağrılmalıdır.
  */
 export const acquireAudioContext = (): AudioContext | null => {

@@ -90,7 +90,7 @@ const machinerySystems: MachineSystem[] = [
     description: "Merkezi soğutma, klima ve reefer devreleri",
     icon: Snowflake,
     color: "from-sky-400 to-cyan-600",
-    specs: ["Tatlı Su / Deniz Suyu", "Isı Değiştirici", "R-134a / R-407C"],
+    specs: ["Tatlı Su / Deniz Suyu", "Heat Exchanger", "R-134a / R-407C"],
   },
   {
     name: "Kazanlar",
@@ -275,7 +275,7 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
               <div className="flex items-center gap-1.5 rounded-lg bg-muted/40 px-3 py-2">
                 <Ship className="h-3.5 w-3.5 text-primary" />
                 <span className="text-micro text-muted-foreground">
-                  <strong className="text-foreground">Kullanım:</strong> {engine.usage}
+                  <strong className="text-foreground">Usage:</strong> {engine.usage}
                 </span>
               </div>
             </div>
@@ -306,7 +306,7 @@ function ComparisonTable() {
             { name: "Gaz Türbini", power: "5–40", eff: "Kısmi ↓", effColor: "text-amber-500", maint: "Yüksek maliyet", use: "Savaş gemisi, feribot" },
             { name: "Buhar Türbini", power: "10–50", eff: "Orta", effColor: "text-amber-500", maint: "Kazan bakımı", use: "LNG taşıyıcı, buz kıran" },
             { name: "Nükleer", power: "50–200+", eff: "Yüksek", effColor: "text-emerald-500", maint: "Özel lisans", use: "Uçak gemisi, denizaltı" },
-            { name: "Dizel-Elektrik", power: "1–30", eff: "İyi", effColor: "text-emerald-500", maint: "Batarya bakımı", use: "DP, kruvaziyer" },
+            { name: "Dizel-Elektrik", power: "1–30", eff: "good", effColor: "text-emerald-500", maint: "Batarya bakımı", use: "DP, kruvaziyer" },
             { name: "Dual-Fuel", power: "2–80", eff: "Yüksek", effColor: "text-emerald-500", maint: "FGSS bakımı", use: "LNG, konteyner" },
             { name: "Yakıt Hücresi", power: "0.1–5", eff: "Çok yüksek", effColor: "text-emerald-500", maint: "Stack değişimi", use: "Pilot feribot" },
           ].map((row) => (
@@ -405,7 +405,7 @@ export default function MachineryHubPage() {
         {/* ── Quick Links ── */}
         <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { label: "Makine Hesaplamaları", to: "/engine", icon: Gauge, desc: "Motor gücü, yakıt tüketimi ve performans" },
+            { label: "Machine Calculations", to: "/engine", icon: Gauge, desc: "Motor gücü, yakıt tüketimi ve performans" },
             { label: "Makine Dersleri", to: "/lessons", icon: BookOpen, desc: "16 konu başlığında makine müfredatı" },
             { label: "Makine Dairesi İşleri", to: "/ship-tasks", icon: Factory, desc: "Günlük operasyon prosedürleri" },
           ].map((link) => (

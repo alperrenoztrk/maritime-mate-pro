@@ -26,11 +26,11 @@ type AppTab = {
 };
 
 const TABS: AppTab[] = [
-  { id: "home", label: "Ana Sayfa", to: "/", symbol: "house", selectedSymbol: "house.fill", fallback: House },
-  { id: "learn", label: "Öğren", to: "/lessons", symbol: "book", selectedSymbol: "book.fill", fallback: BookOpenText },
-  { id: "tools", label: "Araçlar", to: "/calculations", symbol: "function", fallback: Calculator },
-  { id: "library", label: "Kütüphane", to: "/library", symbol: "books.vertical", selectedSymbol: "books.vertical.fill", fallback: LibraryBig },
-  { id: "search", label: "Ara", to: "/search", symbol: "magnifyingglass", fallback: Search },
+  { id: "home", label: "Home Page", to: "/", symbol: "house", selectedSymbol: "house.fill", fallback: House },
+  { id: "learn", label: "learn", to: "/lessons", symbol: "book", selectedSymbol: "book.fill", fallback: BookOpenText },
+  { id: "tools", label: "tools", to: "/calculations", symbol: "function", fallback: Calculator },
+  { id: "library", label: "library", to: "/library", symbol: "books.vertical", selectedSymbol: "books.vertical.fill", fallback: LibraryBig },
+  { id: "search", label: "Search", to: "/search", symbol: "magnifyingglass", fallback: Search },
 ];
 
 // Each top-level area owns its most recent route for the current app session,
@@ -59,7 +59,7 @@ export function AppTabBar() {
 
   return (
     <nav
-      aria-label={localize("Ana bölümler")}
+      aria-label={localize("Main sections")}
       className="app-tabbar surface-glass notranslate"
       data-app-tabbar
       translate="no"

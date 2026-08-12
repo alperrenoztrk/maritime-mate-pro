@@ -46,7 +46,7 @@ export default function DraftSurveyIntermediate() {
     if (!initialDrafts.forward || !initialDrafts.midship || !initialDrafts.aft ||
         !intermediateDrafts.forward || !intermediateDrafts.midship || !intermediateDrafts.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
       return;
     }
 
@@ -91,7 +91,7 @@ export default function DraftSurveyIntermediate() {
       projectedFinalDraft
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Ara draft analizi yapıldı" });
+    toast({ title: "Calculation Completed", description: "Ara draft analizi yapıldı" });
   };
 
   return (
@@ -123,7 +123,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="density">Su Yoğunluğu (ton/m³)</Label>
+              <Label htmlFor="density">Water Density (ton/m³)</Label>
               <Input
                 id="density"
                 type="number"

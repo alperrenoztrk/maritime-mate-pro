@@ -342,7 +342,7 @@ const ProPage = () => {
                     rel="noopener noreferrer"
                     className="text-primary underline underline-offset-4"
                   >
-                    <span data-translatable>Kullanım Şartları</span>
+                    <span data-translatable>Terms of Use</span>
                   </a>
                   .
                 </p>

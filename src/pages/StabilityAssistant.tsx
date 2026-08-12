@@ -18,8 +18,8 @@ Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap v
 export default function StabilityAssistantPage() {
   return (
     <AssistantInterface
-      title="Stabilite Asistanı"
-      badge="Stabilite Asistanı"
+      title="Stability Assistant"
+      badge="Stability Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
       placeholder="Stabilite hesapları, FSC veya IMO kriterleriyle ilgili sorunuzu yazın..."

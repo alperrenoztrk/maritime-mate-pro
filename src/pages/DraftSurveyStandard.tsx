@@ -35,7 +35,7 @@ export default function DraftSurveyStandard() {
     const { lengthBP, breadth, forwardDraft, midshipDraft, aftDraft, density, ballast, fuel, freshWater, stores } = inputs;
     
     if (!lengthBP || !breadth || !forwardDraft || !midshipDraft || !aftDraft) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
       return;
     }
 
@@ -66,7 +66,7 @@ export default function DraftSurveyStandard() {
       cargoWeight
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Draft survey sonuçları hesaplandı" });
+    toast({ title: "Calculation Completed", description: "Draft survey sonuçları hesaplandı" });
   };
 
   return (
@@ -97,7 +97,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="breadth">Genişlik (m)</Label>
+              <Label htmlFor="breadth">Width (m)</Label>
               <Input
                 id="breadth"
                 type="number"
@@ -107,7 +107,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="density">Su Yoğunluğu (ton/m³)</Label>
+              <Label htmlFor="density">Water Density (ton/m³)</Label>
               <Input
                 id="density"
                 type="number"
@@ -183,7 +183,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="fuel">Yakıt</Label>
+              <Label htmlFor="fuel">fuel</Label>
               <Input
                 id="fuel"
                 type="number"
@@ -218,7 +218,7 @@ export default function DraftSurveyStandard() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Hesapla
+        Calculate
       </Button>
 
       {result && (

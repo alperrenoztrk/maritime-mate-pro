@@ -154,7 +154,7 @@ export const StableTalesCalculator = () => {
                 <h4 className="font-medium">Yük {index + 1}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <Label>Ağırlık (ton)</Label>
+                    <Label>Weight (ton)</Label>
                     <Input
                       type="number"
                       value={yuk.agirlik}
@@ -215,7 +215,7 @@ export const StableTalesCalculator = () => {
                     />
                   </div>
                   <div>
-                    <Label>Genişlik (m)</Label>
+                    <Label>Width (m)</Label>
                     <Input
                       type="number"
                       value={tank.genislik}
@@ -305,7 +305,7 @@ export const StableTalesCalculator = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-primary">{results.meyil_acisi.toFixed(1)}°</p>
-                  <p className="text-sm text-muted-foreground">Meyil Açısı</p>
+                  <p className="text-sm text-muted-foreground">Inclination Angle</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-primary">{results.yalpa_periyodu.toFixed(1)}s</p>
@@ -406,10 +406,10 @@ export const StableTalesCalculator = () => {
                   </ResponsiveContainer>
                 </div>
                 <div className="mt-3 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
-                  <div className="font-semibold">Formül</div>
+                  <div className="font-semibold">Formula</div>
                   <div>GZ(φ) = GM · sinφ; RM = Δ · GZ</div>
                   <div className="mt-1 font-semibold">Anlam</div>
-                  <div>GZ doğrultucu kolu, RM doğrultucu momenttir.</div>
+                  <div>GZ is the rectifier arm, RM is the rectifier moment.</div>
                 </div>
               </CardContent>
             </Card>

@@ -55,7 +55,7 @@ const examModules = [
     borderColor: "border-blue-500/30",
     questions: stabilityQuestions,
     description: "IS Code, GZ eğrileri, serbest yüzey, hasarlı stabilite",
-    topics: ["IS Code 2008", "Grain Code", "GZ/KN", "Serbest Yüzey", "Hasarlı Stabilite"]
+    topics: ["IS Code 2008", "Grain Code", "GZ/KN", "Free Surface", "Hasarlı Stabilite"]
   },
   {
     id: "navigation",
@@ -110,7 +110,7 @@ const examModules = [
     borderColor: "border-slate-500/30",
     questions: machineQuestions,
     description: "Ana makine, yakıt sistemi, elektrik, kazan, bakım",
-    topics: ["Ana Makine", "Yakıt Sistemi", "Elektrik & Jeneratör", "MARPOL", "Bakım"]
+    topics: ["Ana Makine", "Fuel System", "Elektrik & Jeneratör", "MARPOL", "Bakım"]
   },
   {
     id: "meteorology",
@@ -121,7 +121,7 @@ const examModules = [
     borderColor: "border-sky-500/30",
     questions: meteorologyQuestions,
     description: "Rüzgar, basınç sistemleri, fırtına, dalgalar, sis",
-    topics: ["Beaufort", "Basınç Sistemleri", "Tropikal Meteoroloji", "Cepheler", "Dalgalar"]
+    topics: ["Beaufort", "Pressure Systems", "Tropikal Meteoroloji", "Cepheler", "Dalgalar"]
   }
 ];
 
@@ -373,7 +373,7 @@ export default function ExamPreparationPage() {
             </div>
             <Button variant="outline" size="sm" onClick={resetQuiz}>
               <RotateCcw className="h-4 w-4 mr-2" />
-              Çıkış
+              Sign out
             </Button>
           </div>
 
@@ -439,7 +439,7 @@ export default function ExamPreparationPage() {
                   </span>
                 </div>
                 <Button variant="ghost" size="sm" onClick={() => setLastScore(null)}>
-                  Kapat
+                  Close
                 </Button>
               </CardContent>
             </Card>
@@ -530,7 +530,7 @@ export default function ExamPreparationPage() {
                             className={`flex-1 bg-gradient-to-r ${module.color} text-white`}
                             onClick={() => startModuleQuiz(module.id, module.questions.length)}
                           >
-                            Tümü
+                            All
                           </Button>
                         </div>
                       </CardContent>
@@ -680,7 +680,7 @@ export default function ExamPreparationPage() {
                 <div className="flex items-start gap-3">
                   <GraduationCap className="h-5 w-5 text-primary mt-0.5" />
                   <div className="text-sm text-muted-foreground space-y-1">
-                    <p><strong>Not:</strong> Bu sınavlar gerçek STCW sınavlarını simüle etmektedir.</p>
+                    <p><strong>Note:</strong> Bu sınavlar gerçek STCW sınavlarını simüle etmektedir.</p>
                     <p>Soru dağılımları IMO yeterlilik tabloları baz alınarak hazırlanmıştır.</p>
                     <p>Gerçek sınavlarda sözlü ve pratik değerlendirmeler de bulunur.</p>
                   </div>

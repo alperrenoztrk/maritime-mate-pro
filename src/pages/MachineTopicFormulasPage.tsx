@@ -101,7 +101,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
   ],
   "ship-systems": [
     {
-      title: "Yakıt Sistemi",
+      title: "Fuel System",
       formulas: [
         { name: "Yakıt Tüketimi", formula: "FC = SFOC × BHP × t / 10⁶", variables: "FC: tüketim (ton), SFOC (g/kW·h), BHP (kW), t: süre (saat)" },
         { name: "Viskozite-Sıcaklık", formula: "log(log(ν + 0,7)) = A − B·log(T)", variables: "Walther denklemi; ν: kinematik viskozite (cSt), T: sıcaklık (K)" },
@@ -126,7 +126,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Jeneratör Hesapları",
       formulas: [
-        { name: "Elektrik Gücü", formula: "P = √3 × V × I × cos(φ)", variables: "V: hat gerilimi (V), I: hat akımı (A), cos(φ): güç faktörü" },
+        { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: hat gerilimi (V), I: hat akımı (A), cos(φ): güç faktörü" },
         { name: "Frekans-Devir İlişkisi", formula: "f = (p × n) / 60", variables: "f: frekans (Hz), p: kutup çifti sayısı, n: devir (rpm)" },
         { name: "Jeneratör Verimi", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
       ],
@@ -365,7 +365,7 @@ export default function MachineTopicFormulasPage() {
             <div>
               <h1 className="text-xl font-bold text-foreground">{topic.title}</h1>
               <p className="text-sm text-muted-foreground flex items-center gap-1">
-                <Sigma className="h-3.5 w-3.5" /> Formüller
+                <Sigma className="h-3.5 w-3.5" /> Formulas
               </p>
             </div>
           </div>

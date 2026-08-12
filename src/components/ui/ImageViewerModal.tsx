@@ -67,7 +67,7 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
             <button
               onClick={handleZoomIn}
               className="rounded-full bg-white/10 p-2.5 text-white transition-colors hover:bg-white/20"
-              aria-label="Büyüt"
+              aria-label="enlarge"
             >
               <ZoomIn className="h-5 w-5" />
             </button>
@@ -84,7 +84,7 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
                 handleReset();
               }}
               className="rounded-full bg-white/10 p-2.5 text-white transition-colors hover:bg-white/20"
-              aria-label="Kapat"
+              aria-label="Close"
             >
               <X className="h-6 w-6" />
             </button>

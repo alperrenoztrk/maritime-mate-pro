@@ -92,11 +92,11 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
       <Card className="border-destructive">
         <CardContent className="flex flex-col items-center justify-center py-12 text-center">
           <AlertTriangle className="h-12 w-12 text-destructive mb-4" />
-          <h3 className="font-semibold text-lg mb-2">Hata</h3>
+          <h3 className="font-semibold text-lg mb-2">Error</h3>
           <p className="text-sm text-muted-foreground mb-4">{error}</p>
           <Button variant="outline" onClick={refresh}>
             <RefreshCw className="h-4 w-4 mr-2" />
-            Tekrar Dene
+            Try Again
           </Button>
         </CardContent>
       </Card>

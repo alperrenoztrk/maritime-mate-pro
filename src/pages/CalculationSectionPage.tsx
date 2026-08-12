@@ -67,7 +67,7 @@ export default function CalculationSectionPage() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Özet</CardTitle>
+                <CardTitle>Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">{fallback.intro}</p>
@@ -87,7 +87,7 @@ export default function CalculationSectionPage() {
             {fallback.formulas && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Formüller</CardTitle>
+                  <CardTitle>Formulas</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {fallback.formulas.map((formula) => (

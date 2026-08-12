@@ -59,7 +59,7 @@ export function AskAIPopup() {
       const result = await askGeminiAboutText(selectedText, currentLanguage);
       setAnswer(result);
     } catch {
-      setError('Açıklama alınamadı. Lütfen tekrar deneyin.');
+      setError('No explanation received. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -75,7 +75,7 @@ export function AskAIPopup() {
   const handleSaveNote = () => {
     if (!selectedText) return;
     addNote(selectedText);
-    toast.success('Not kaydedildi');
+    toast.success('note saved');
     clearSelection();
   };
 
@@ -109,7 +109,7 @@ export function AskAIPopup() {
             className="flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-primary transition-colors duration-control hover:bg-primary/10"
           >
             <Sparkles className="h-4 w-4" />
-            Açıkla
+            explain
           </button>
           {!onNotesPage && (
             <button
@@ -118,7 +118,7 @@ export function AskAIPopup() {
               className="flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-foreground transition-colors duration-control hover:bg-muted"
             >
               <Highlighter className="h-4 w-4 text-amber-500" />
-              Kaydet
+              Save
             </button>
           )}
         </div>
@@ -137,7 +137,7 @@ export function AskAIPopup() {
             ref={panelRef}
             role="dialog"
             aria-modal="true"
-            aria-label="Seçilen metin açıklaması"
+            aria-label="Selected text description"
             className="surface-3 w-full max-w-lg overflow-hidden rounded-t-3xl border border-b-0 shadow-elev-3 sm:rounded-2xl sm:border"
           >
             <div className="flex min-h-14 items-center justify-between border-b px-4">
@@ -149,7 +149,7 @@ export function AskAIPopup() {
                 type="button"
                 data-ask-ai-popup="true"
                 onClick={handleClose}
-                aria-label="Kapat"
+                aria-label="Close"
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors duration-control hover:bg-muted hover:text-foreground"
               >
                 <X className="h-5 w-5" />
@@ -157,7 +157,7 @@ export function AskAIPopup() {
             </div>
 
             <div className="border-b px-4 py-3">
-              <p className="mb-1 text-caption font-semibold uppercase tracking-wide text-muted-foreground">Seçilen metin</p>
+              <p className="mb-1 text-caption font-semibold uppercase tracking-wide text-muted-foreground">Selected text</p>
               <p className="line-clamp-3 text-sm italic leading-relaxed text-foreground/75">“{selectedText}”</p>
             </div>
 
@@ -165,7 +165,7 @@ export function AskAIPopup() {
               {loading && (
                 <div className="flex min-h-20 items-center gap-3 text-primary" aria-live="polite">
                   <Loader2 className="h-5 w-5 animate-spin" />
-                  <span className="text-base">Hazırlanıyor...</span>
+                  <span className="text-base">Getting ready...</span>
                 </div>
               )}
               {error && <p className="text-base text-destructive">{error}</p>}

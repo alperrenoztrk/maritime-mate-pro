@@ -57,7 +57,7 @@ export default function DraftSurveyBallast() {
     if (!beforeBallast.forward || !beforeBallast.midship || !beforeBallast.aft ||
         !afterBallast.forward || !afterBallast.midship || !afterBallast.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
       return;
     }
 
@@ -91,7 +91,7 @@ export default function DraftSurveyBallast() {
       tankDistribution
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Balast ölçümü hesaplandı" });
+    toast({ title: "Calculation Completed", description: "Balast ölçümü hesaplandı" });
   };
 
   return (
@@ -123,7 +123,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="density">Su Yoğunluğu (ton/m³)</Label>
+              <Label htmlFor="density">Water Density (ton/m³)</Label>
               <Input
                 id="density"
                 type="number"

@@ -55,7 +55,7 @@ export default function ShipOperationsDetail() {
       {currentDepartment && (
         <section className="space-y-3">
           {/* Liste yalnız başlık taşır: amaç, prosedür, mevzuat, risk ve kayıt
-              başlıkları operasyonun detaylı anlatımındaki "Özet" bölümünde
+              başlıkları operasyonun detaylı anlatımındaki "Summary" bölümünde
               tek kaynaktan okunur. */}
           {currentDepartment.operations.map((operation, index) => (
             <Link

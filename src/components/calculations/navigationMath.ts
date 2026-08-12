@@ -274,13 +274,13 @@ export function computeArpaCpaTcpa(input: ARPAInput): ARPAResult {
 export function calculateGreatCircle(lat1Deg: number, lon1Deg: number, lat2Deg: number, lon2Deg: number) {
   // Input validation
   if (!isFinite(lat1Deg) || !isFinite(lon1Deg) || !isFinite(lat2Deg) || !isFinite(lon2Deg)) {
-    throw new Error("Geçersiz koordinatlar");
+    throw new Error("Invalid coordinates");
   }
   if (Math.abs(lat1Deg) > 90 || Math.abs(lat2Deg) > 90) {
-    throw new Error("Enlem -90° ile +90° arasında olmalıdır");
+    throw new Error("Latitude must be between -90° and +90°");
   }
   if (Math.abs(lon1Deg) > 180 || Math.abs(lon2Deg) > 180) {
-    throw new Error("Boylam -180° ile +180° arasında olmalıdır");
+    throw new Error("Longitude must be between -180° and +180°");
   }
 
   const R = 3440.065; // nautical miles (Earth radius)
@@ -1246,18 +1246,18 @@ export function assessColregSituation(relativeBearingDeg: number): ColregAssessm
   const within = (a: number, b: number, tol: number) => Math.min(normalizeAngle(a - b), normalizeAngle(b - a)) <= tol;
 
   if (within(rb, 0, 5) || within(rb, 360, 5)) {
-    return { situation: "head-on", isGiveWay: true, note: "Head-on ihtimali: her iki gemi de sancağa dönerek geçiş yapmalı (Genel yaklaşım)." };
+    return { situation: "head-on", isGiveWay: true, note: "Head-on possibility: both ships should turn to starboard and pass (General approach)." };
   }
   if (rb > 112.5 && rb < 247.5) {
-    return { situation: "overtaking", isGiveWay: null, note: "Overtaking sektörü: yaklaşanın (overtaking) give-way olduğu durumlar olabilir; ışık/işaret ve gerçek hareketle teyit edin." };
+    return { situation: "overtaking", isGiveWay: null, note: "Overtaking sector: there may be situations where overtaking is a give-way; Confirm with light/sign and actual movement." };
   }
   if (rb > 0 && rb <= 112.5) {
-    return { situation: "crossing-starboard", isGiveWay: true, note: "Hedef sancak tarafında: crossing durumda genellikle siz give-way olursunuz (duruma göre teyit)." };
+    return { situation: "crossing-starboard", isGiveWay: true, note: "The target is on the starboard side: in case of crossing you are usually the give-way (confirmation depending on the situation)." };
   }
   if (rb >= 247.5 && rb < 360) {
-    return { situation: "crossing-port", isGiveWay: false, note: "Hedef iskele tarafında: crossing durumda genellikle siz stand-on olursunuz (duruma göre teyit)." };
+    return { situation: "crossing-port", isGiveWay: false, note: "On the target port side: in case of crossing you usually stand-on (confirmation according to the situation)." };
   }
-  return { situation: "unknown", isGiveWay: null, note: "Sınıflama için yeterli veri yok." };
+  return { situation: "unknown", isGiveWay: null, note: "There is not enough data for classification." };
 }
 
 // ---- Tides / UKC / Squat

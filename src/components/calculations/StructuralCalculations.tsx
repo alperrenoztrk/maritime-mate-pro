@@ -179,7 +179,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
     if (!structuralData.L || !structuralData.displacement || !structuralData.sectionModulus) {
       toast({
         title: "Eksik Veri",
-        description: "Gerekli yapısal parametreleri girin.",
+        description: "Enter the required structural parameters.",
         variant: "destructive"
       });
       return;
@@ -227,16 +227,16 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
     // Recommendations
     const recommendations: string[] = [];
     if (safetyFactor < 2.0) {
-      recommendations.push("Güvenlik faktörü düşük - yük dağılımını optimize edin");
+      recommendations.push("Low safety factor - optimize load distribution");
     }
     if (maxBendingStress > data.steelYieldStrength * 0.8) {
-      recommendations.push("Eğilme gerilmesi yüksek - yapısal takviye gerekli");
+      recommendations.push("Bending stress high - structural reinforcement required");
     }
     if (deflection > data.L * 1000 / 300) {
-      recommendations.push("Deformasyon aşırı - rijitlik artırılmalı");
+      recommendations.push("Deformation excessive - stiffness must be increased");
     }
     if (maxShearStress > 100) {
-      recommendations.push("Kesme gerilmesi yüksek - web kalınlığı artırın");
+      recommendations.push("Shear stress high - increase web thickness");
     }
     
     const result: StructuralResult = {
@@ -268,43 +268,43 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
     const steps: CalculationStep[] = [
       {
         step: 1,
-        title: "Yapısal ağırlığın hesaplanması",
+        title: "Calculation of structural weight",
         formula: "Wyapisal = Deplasman x 0.30",
         substitution: `Wyapisal = ${data.displacement} x 0.30`,
         result: `Wyapisal = ${structuralWeight.toFixed(1)} ton`,
-        explanation: "Geminin yapısal ağırlığı, deplasmanın yaklaşık %30'u olarak kabul edilir."
+        explanation: "The structural weight of the ship is considered to be approximately 30% of the displacement."
       },
       {
         step: 2,
-        title: "Dağıtılmış ağırlığın hesaplanması",
+        title: "Calculation of distributed weight",
         formula: "w = Wyapisal / L",
         substitution: `w = ${structuralWeight.toFixed(1)} / ${data.L}`,
         result: `w = ${distributedWeight.toFixed(2)} ton/m`,
-        explanation: "Yapısal ağırlık gemi boyunca düzgün dağıtılmış kabul edilir."
+        explanation: "Structural weight is assumed to be uniformly distributed throughout the ship."
       },
       {
         step: 3,
-        title: "Toplam yükün hesaplanması",
+        title: "Calculation of total load",
         formula: "Qtoplam = w x L + Sigma(Pi)",
         substitution: `Qtoplam = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
         result: `Qtoplam = ${totalLoad.toFixed(1)} ton`,
-        explanation: `Dağıtılmış ağırlık (${structuralWeight.toFixed(0)} ton) ve ${loadPoints.length} adet noktasal yük (${totalConcentrated.toFixed(0)} ton) toplanır.`
+        explanation: `Distributed weight (${structuralWeight.toFixed(0)} tons) and ${loadPoints.length} point load (${totalConcentrated.toFixed(0)} tons) are collected.`
       },
       {
         step: 4,
-        title: "Mesnet tepkisinin hesaplanması (basit mesnetli kiriş)",
+        title: "Calculation of support response (simply supported beam)",
         formula: "RAP = Qtoplam / 2",
         substitution: `RAP = ${totalLoad.toFixed(1)} / 2`,
         result: `RAP = ${reactionAP.toFixed(1)} ton`,
-        explanation: "Gemi basit mesnetli kiriş olarak modellenir, simetrik yükleme varsayımıyla tepkiler eşit alınır."
+        explanation: "The ship is modeled as a simply supported beam, and the reactions are taken equal assuming symmetrical loading."
       },
       {
         step: 5,
-        title: "Maksimum sagging (çökme) momenti",
+        title: "Maximum sagging moment",
         formula: "Msagging = max(M(x)) x 9.81",
         substitution: `Msagging = ${(maxSaggingMoment / 9.81).toFixed(0)} x 9.81`,
         result: `Msagging = ${maxSaggingMoment.toFixed(0)} kN.m`,
-        explanation: "Gemi boyunca 50 noktada eğilme momenti hesaplanarak en büyük pozitif moment bulunur."
+        explanation: "The bending moment is calculated at 50 points along the ship to find the largest positive moment."
       },
       {
         step: 6,
@@ -312,66 +312,66 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
         formula: "Mhogging = |min(M(x))| x 9.81",
         substitution: `Mhogging = |${(maxHoggingMoment / 9.81).toFixed(0)}| x 9.81`,
         result: `Mhogging = ${maxHoggingMoment.toFixed(0)} kN.m`,
-        explanation: "Gemi boyunca hesaplanan en büyük negatif moment mutlak değeri alınır."
+        explanation: "The absolute value of the largest negative moment calculated along the ship is taken."
       },
       {
         step: 7,
-        title: "Maksimum kesme kuvvetinin bulunması",
+        title: "Finding the maximum cutting force",
         formula: "Vmax = max(|V(x)|) x 9.81",
         substitution: `Vmax = ${(maxShearForce / 9.81).toFixed(0)} x 9.81`,
         result: `Vmax = ${maxShearForce.toFixed(0)} kN`,
-        explanation: "Gemi boyunca 50 noktada kesme kuvveti hesaplanarak en büyük mutlak değer bulunur."
+        explanation: "The largest absolute value is found by calculating the shear force at 50 points along the ship."
       },
       {
         step: 8,
-        title: "Eğilme gerilmesinin hesaplanması",
+        title: "Calculation of bending stress",
         formula: "sigma = M / Z = (M x 10^6) / (Z x 10^3)",
         substitution: `sigma = (${maxMomentVal.toFixed(0)} x 10^6) / (${data.sectionModulus} x 10^3)`,
         result: `sigma = ${maxBendingStress.toFixed(1)} N/mm²`,
-        explanation: "Birim dönüşümü: M (kN.m -> N.mm) ve Z (cm³ -> mm³) uygulanır."
+        explanation: "Unit conversion: M (kN.m -> N.mm) and Z (cm³ -> mm³) is applied."
       },
       {
         step: 9,
-        title: "Kesme gerilmesinin hesaplanması",
+        title: "Calculation of shear stress",
         formula: "tau = V / Aweb",
         substitution: `tau = (${maxShearForce.toFixed(0)} x 1000) / (${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)})`,
         result: `tau = ${maxShearStress.toFixed(1)} N/mm²`,
-        explanation: `Gövde (web) alanı: A = plaka kalınlığı x derinlik = ${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)} = ${webAreaVal.toFixed(0)} mm²`
+        explanation: `Body (web) area: A = plate thickness x depth = ${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)} = ${webAreaVal.toFixed(0)} mm²`
       },
       {
         step: 10,
-        title: "Maksimum deformasyonun hesaplanması (Euler-Bernoulli)",
+        title: "Calculation of maximum deformation (Euler-Bernoulli)",
         formula: "delta = 5wL^4 / (384EI)",
         substitution: `delta = (5 x ${wVal.toFixed(4)} x (${(data.L * 1000).toFixed(0)})^4) / (384 x ${data.elasticModulus} x ${I_val} x 10000)`,
         result: `delta = ${deflection.toFixed(1)} mm`,
-        explanation: "Düzgün dağılmış yük altında basit mesnetli kiriş için maksimum sehim formülü kullanılır."
+        explanation: "The maximum deflection formula is used for a simply supported beam under uniformly distributed load."
       },
       {
         step: 11,
-        title: "Güvenlik faktörünün hesaplanması",
+        title: "Calculation of safety factor",
         formula: "SF = sigmay / sigmamax",
         substitution: `SF = ${data.steelYieldStrength} / ${maxBendingStress.toFixed(1)}`,
         result: `SF = ${safetyFactor.toFixed(2)}`,
         explanation: safetyFactor >= 2.0
-          ? "Güvenlik faktörü >= 2.0: Yapı güvenli durumda."
+          ? "Safety factor >= 2.0: The structure is in a safe condition."
           : safetyFactor >= 1.5
-            ? "Güvenlik faktörü 1.5 - 2.0 arası: Sınır durumda, dikkat edilmeli."
-            : "Güvenlik faktörü < 1.5: Yapı güvensiz, acil önlem gerekli!"
+            ? "Safety factor 1.5 to 2.0: In limit case, caution must be exercised."
+            : "Safety factor < 1.5: The structure is unsafe, urgent action required!"
       },
       {
         step: 12,
-        title: "Durum değerlendirmesi",
-        formula: "SF >= 2.0 -> Güvenli | 1.5 <= SF < 2.0 -> Sınır | SF < 1.5 -> Güvensiz",
-        result: `Durum: ${status === 'safe' ? 'GÜVENLİ' : status === 'marginal' ? 'SINIR DURUMDA' : 'GÜVENSİZ'}`,
-        explanation: `Kritik kesit AP'den ${criticalPoint.position.toFixed(1)} m mesafede. İzin verilen sehim = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, hesaplanan sehim = ${deflection.toFixed(1)} mm.`
+        title: "Situation assessment",
+        formula: "SF >= 2.0 -> Secure | 1.5 <= SF < 2.0 -> Border | SF < 1.5 -> Unsafe",
+        result: `Durum: ${status === 'safe' ? 'SAFE' : status === 'marginal' ? 'SINIR DURUMDA' : 'UNSAFE'}`,
+        explanation: `Kritik kesit AP'den ${criticalPoint.position.toFixed(1)} m distance. Permissible deflection = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, hesaplanan sehim = ${deflection.toFixed(1)} mm.`
       }
     ];
 
     setCalcSteps(prev => ({ ...prev, "calculateStructural": steps }));
 
     toast({
-      title: "Yapısal Analiz Tamamlandı",
-      description: `Güvenlik Faktörü: ${safetyFactor.toFixed(2)}`,
+      title: "Structural Analysis Completed",
+      description: `Safety Factor: ${safetyFactor.toFixed(2)}`,
       variant: status === 'unsafe' ? "destructive" : "default"
     });
   };
@@ -405,22 +405,22 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Building className="h-6 w-6" />
-            Yapısal Yük Hesaplamaları
+            Structural Load Calculations
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="loads">Yük Dağılımı</TabsTrigger>
-              <TabsTrigger value="properties">Yapısal Özellikler</TabsTrigger>
-              <TabsTrigger value="analysis">Analiz Sonuçları</TabsTrigger>
+              <TabsTrigger value="loads">Load Distribution</TabsTrigger>
+              <TabsTrigger value="properties">Structural Features</TabsTrigger>
+              <TabsTrigger value="analysis">Analysis Results</TabsTrigger>
               <TabsTrigger value="diagrams">Diyagramlar</TabsTrigger>
             </TabsList>
 
             <TabsContent value="loads" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="L">Gemi Boyu (L) [m]</Label>
+                  <Label htmlFor="L">Ship Length (L) [m]</Label>
                   <Input
                     id="L"
                     type="number"
@@ -440,16 +440,16 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="cargoDistribution">Yük Dağılımı</Label>
+                  <Label htmlFor="cargoDistribution">Load Distribution</Label>
                   <select 
                     id="cargoDistribution"
                     className="w-full p-2 border rounded"
                     value={structuralData.cargoDistribution || 'uniform'}
                     onChange={(e) => setStructuralData({...structuralData, cargoDistribution: e.target.value as StructuralData["cargoDistribution"]})}
                   >
-                    <option value="uniform">Düzgün Dağılım</option>
-                    <option value="concentrated">Yoğunlaşmış</option>
-                    <option value="partial">Kısmi Yükleme</option>
+                    <option value="uniform">Uniform Distribution</option>
+                    <option value="concentrated">concentrated</option>
+                    <option value="partial">Partial Loading</option>
                   </select>
                 </div>
               </div>
@@ -458,9 +458,9 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
 
               <div>
                 <div className="flex justify-between items-center mb-4">
-                  <h4 className="font-semibold">Yük Noktaları</h4>
+                  <h4 className="font-semibold">Load Points</h4>
                   <Button onClick={addLoadPoint} variant="outline" size="sm">
-                    Yük Noktası Ekle
+                    Add Load Point
                   </Button>
                 </div>
                 
@@ -476,7 +476,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                         />
                       </div>
                       <div>
-                        <Label className="text-xs">Ağırlık [ton]</Label>
+                        <Label className="text-xs">Weight [ton]</Label>
                         <Input
                           type="number"
                           value={load.weight}
@@ -484,7 +484,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                         />
                       </div>
                       <div>
-                        <Label className="text-xs">Tür</Label>
+                        <Label className="text-xs">Genre</Label>
                         <select 
                           className="w-full p-1 border rounded text-sm"
                           value={load.type}
@@ -492,8 +492,8 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                         >
                           <option value="cargo">Kargo</option>
                           <option value="ballast">Balast</option>
-                          <option value="fuel">Yakıt</option>
-                          <option value="structure">Yapı</option>
+                          <option value="fuel">fuel</option>
+                          <option value="structure">structure</option>
                         </select>
                       </div>
                       <div className="flex items-end">
@@ -503,7 +503,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                           size="sm"
                           className="w-full"
                         >
-                          Sil
+                          Delete
                         </Button>
                       </div>
                     </div>
@@ -516,11 +516,11 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Malzeme Özellikleri</CardTitle>
+                    <CardTitle className="text-lg">Material Properties</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="steelYieldStrength">Çelik Akma Dayanımı [N/mm²]</Label>
+                      <Label htmlFor="steelYieldStrength">Steel Yield Strength [N/mm²]</Label>
                       <Input
                         id="steelYieldStrength"
                         type="number"
@@ -529,11 +529,11 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                         placeholder="235"
                       />
                       <div className="text-xs text-muted-foreground">
-                        Normal çelik: 235, Yüksek mukavemetli: 355
+                        Normal steel: 235, High strength: 355
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="elasticModulus">Elastisite Modülü [N/mm²]</Label>
+                      <Label htmlFor="elasticModulus">Elasticity Modulus [N/mm²]</Label>
                       <Input
                         id="elasticModulus"
                         type="number"
@@ -543,7 +543,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="plateThickness">Plaka Kalınlığı [mm]</Label>
+                      <Label htmlFor="plateThickness">Plate Thickness [mm]</Label>
                       <Input
                         id="plateThickness"
                         type="number"
@@ -557,11 +557,11 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
 
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Kesit Özellikleri</CardTitle>
+                    <CardTitle className="text-lg">Section Properties</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="sectionModulus">Kesit Modülü [cm³]</Label>
+                      <Label htmlFor="sectionModulus">Section Modulus [cm³]</Label>
                       <Input
                         id="sectionModulus"
                         type="number"
@@ -581,7 +581,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="depth">Gemi Derinliği (D) [m]</Label>
+                      <Label htmlFor="depth">Ship Depth (D) [m]</Label>
                       <Input
                         id="depth"
                         type="number"
@@ -596,7 +596,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
 
               <Button onClick={calculateStructural} className="flex items-center gap-2">
                 <Calculator className="h-4 w-4" />
-                Yapısal Analiz Yap
+                Perform Structural Analysis
               </Button>
             </TabsContent>
 
@@ -606,7 +606,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5" />
-                      Yapısal Analiz Sonuçları
+                      Structural Analysis Results
                       <Badge className={getStatusColor(result.status)}>
                         {result.status.toUpperCase()}
                       </Badge>
@@ -628,7 +628,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-2xl font-bold">{result.safetyFactor.toFixed(2)}</div>
-                        <div className="text-sm text-muted-foreground">Güvenlik Faktörü</div>
+                        <div className="text-sm text-muted-foreground">Safety Factor</div>
                       </div>
                     </div>
 
@@ -637,7 +637,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-lg font-bold">{result.maxBendingStress.toFixed(1)} N/mm²</div>
-                        <div className="text-sm text-muted-foreground">Max Eğilme Gerilmesi</div>
+                        <div className="text-sm text-muted-foreground">Max Bending Stress</div>
                       </div>
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-lg font-bold">{result.maxShearStress.toFixed(1)} N/mm²</div>
@@ -657,7 +657,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {result.recommendations.length > 0 && (
                       <div>
-                        <h4 className="font-semibold mb-2">Öneriler</h4>
+                        <h4 className="font-semibold mb-2">Suggestions</h4>
                         <ul className="list-disc list-inside space-y-1">
                           {result.recommendations.map((rec, index) => (
                             <li key={index} className="text-sm">{rec}</li>
@@ -673,11 +673,11 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Class Society Standartları</CardTitle>
+                  <CardTitle>Class Society Standards</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="prose max-w-none">
-                    <h4>Yapısal Gereksinimler:</h4>
+                    <h4>Structural Requirements:</h4>
                     <ul>
                       <li><strong>ABS Rules:</strong> Hull girder ultimate strength</li>
                       <li><strong>DNV GL:</strong> Direct calculation methods</li>
@@ -685,10 +685,10 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       <li><strong>IMO CSR:</strong> Common Structural Rules for tankers</li>
                     </ul>
                     
-                    <h4>Güvenlik Faktörleri:</h4>
+                    <h4>Security Factors:</h4>
                     <ul>
                       <li><strong>Minimum:</strong> SF ≥ 1.5 (Ultimate limit state)</li>
-                      <li><strong>Önerilen:</strong> SF ≥ 2.0 (Working stress)</li>
+                      <li><strong>Recommended:</strong> SF ≥ 2.0 (Working stress)</li>
                       <li><strong>Fatigue:</strong> SF ≥ 3.0 (Cyclic loading)</li>
                     </ul>
                   </div>
@@ -701,36 +701,36 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
-                    Kesme Kuvveti ve Eğilme Momenti Diyagramları
+                    Shear Force and Bending Moment Diagrams
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
                     <div>
-                      <h4 className="font-semibold mb-3">Kesme Kuvveti Diyagramı</h4>
+                      <h4 className="font-semibold mb-3">Cutting Force Diagram</h4>
                       <div className="h-32 border rounded-lg p-4 bg-muted/50">
                         <div className="flex items-center justify-center h-full text-muted-foreground">
-                          Kesme Kuvveti Grafiği
+                          Cutting Force Chart
                           <br />
-                          (Chart kütüphanesi ile geliştirilebilir)
+                          (Can be developed with Chart library)
                         </div>
                       </div>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold mb-3">Eğilme Momenti Diyagramı</h4>
+                      <h4 className="font-semibold mb-3">Bending Moment Diagram</h4>
                       <div className="h-32 border rounded-lg p-4 bg-muted/50">
                         <div className="flex items-center justify-center h-full text-muted-foreground">
-                          Eğilme Momenti Grafiği
+                          Bending Moment Graph
                           <br />
-                          (Chart kütüphanesi ile geliştirilebilir)
+                          (Can be developed with Chart library)
                         </div>
                       </div>
                     </div>
                     
                     {shearBendingData.length > 0 && (
                       <div>
-                        <h4 className="font-semibold mb-3">Kritik Değerler</h4>
+                        <h4 className="font-semibold mb-3">Critical Values</h4>
                         <div className="grid grid-cols-3 gap-4 text-sm">
                           <div>
                             <strong>Max Pozitif Moment:</strong> 
@@ -760,12 +760,12 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="prose max-w-none">
-                    <h4>Kullanılan Formüller:</h4>
+                    <h4>Formulas Used:</h4>
                     <ul>
-                      <li><strong>Eğilme Gerilmesi:</strong> σ = M / Z</li>
+                      <li><strong>Bending Stress:</strong> σ = M / Z</li>
                       <li><strong>Kesme Gerilmesi:</strong> τ = Q / A</li>
                       <li><strong>Deflection:</strong> δ = 5wL⁴/(384EI)</li>
-                      <li><strong>Güvenlik Faktörü:</strong> SF = σy / σmax</li>
+                      <li><strong>Safety Factor:</strong> SF = σy / σmax</li>
                     </ul>
                     
                     <h4>Kritik Kontroller:</h4>
@@ -773,7 +773,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       <li>Eğilme gerilmesi {'<'} Akma dayanımı</li>
                       <li>Kesme gerilmesi {'<'} 0.6 × Akma dayanımı</li>
                       <li>Deflection {'<'} L/300 (Comfort kriteri)</li>
-                      <li>Güvenlik faktörü ≥ 2.0</li>
+                      <li>Safety factor ≥ 2.0</li>
                     </ul>
                   </div>
                 </CardContent>

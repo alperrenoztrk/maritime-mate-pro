@@ -57,8 +57,8 @@ interface OpenMeteoMarineWeather {
 }
 
 const NAVTEX_STATIONS = [
-  { id: "ISTANBUL", name: "İstanbul (Türkiye)", lat: 41.0082, lon: 28.9784 },
-  { id: "IZMIR", name: "İzmir (Türkiye)", lat: 38.4192, lon: 27.1287 },
+  { id: "ISTANBUL", name: "Istanbul (Türkiye)", lat: 41.0082, lon: 28.9784 },
+  { id: "IZMIR", name: "Izmir (Türkiye)", lat: 38.4192, lon: 27.1287 },
   { id: "ANTALYA", name: "Antalya (Türkiye)", lat: 36.8969, lon: 30.7133 },
   { id: "SAMSUN", name: "Samsun (Türkiye)", lat: 41.2867, lon: 36.33 },
   { id: "ATHENS", name: "Athens (Greece)", lat: 37.9838, lon: 23.7275 },
@@ -144,7 +144,7 @@ export const NAVTEXWarnings = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m&hourly=wind_speed_10m,wind_gusts_10m,wave_height,wave_direction&forecast_days=3&wind_speed_unit=kn`
       );
       
-      if (!response.ok) throw new Error('Hava durumu verileri alınamadı');
+      if (!response.ok) throw new Error('Weather data could not be retrieved');
       
       const data = await response.json() as OpenMeteoMarineWeather;
       
@@ -153,14 +153,14 @@ export const NAVTEXWarnings = () => {
       setMessages(generatedMessages);
       
       toast({
-        title: "NAVTEX Mesajları Güncellendi",
-        description: `${selectedStation} istasyonu için ${generatedMessages.length} mesaj alındı`,
+        title: "NAVTEX Messages Updated",
+        description: `${selectedStation} for station ${generatedMessages.length} message received`,
       });
     } catch (error) {
       console.error('Weather alerts error:', error);
       toast({
-        title: "Hata",
-        description: "Hava durumu uyarıları alınamadı",
+        title: "Error",
+        description: "Could not receive weather alerts",
         variant: "destructive",
       });
     } finally {
@@ -199,22 +199,22 @@ export const NAVTEXWarnings = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Radio className="h-6 w-6 text-blue-600" />
-            NAVTEX Denizcilik Uyarıları
+            NAVTEX Marine Notices
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Alert className="bg-blue-50 border-blue-200">
             <Info className="h-4 w-4" />
             <AlertDescription>
-              <strong>NAVTEX (Navigational Telex)</strong> - 518 kHz frekansında yayın yapan uluslararası 
-              denizcilik güvenlik bilgi sistemi. Meteoroloji uyarıları, seyir uyarıları, SAR bilgileri ve 
-              güvenlik mesajlarını otomatik olarak alıcılara iletir.
+              <strong>NAVTEX (Navigational Telex)</strong> - International broadcasting on 518 kHz frequency 
+              maritime safety information system. Meteorological warnings, navigational warnings, SAR information and 
+              automatically transmits security messages to recipients.
             </AlertDescription>
           </Alert>
 
           {/* Station Selection */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">İstasyon Seçimi</label>
+            <label className="text-sm font-medium">Station Selection</label>
             <div className="flex flex-wrap gap-2">
               {NAVTEX_STATIONS.map((station) => (
                 <Button
@@ -239,7 +239,7 @@ export const NAVTEXWarnings = () => {
                 className="gap-2 ml-auto"
               >
                 <RefreshCw className={`h-3 w-3 ${loading ? 'animate-spin' : ''}`} />
-                Güncelle
+                Update
               </Button>
             </div>
           </div>
@@ -255,20 +255,20 @@ export const NAVTEXWarnings = () => {
               </h3>
               <Badge variant="outline" className="gap-1">
                 <Clock className="h-3 w-3" />
-                Canlı Veri
+                Live Data
               </Badge>
             </div>
 
             {loading ? (
               <div className="text-center py-8">
                 <RefreshCw className="h-8 w-8 animate-spin mx-auto text-blue-600" />
-                <p className="mt-2 text-sm text-muted-foreground">Mesajlar alınıyor...</p>
+                <p className="mt-2 text-sm text-muted-foreground">Receiving messages...</p>
               </div>
             ) : messages.length === 0 ? (
               <Alert>
                 <Info className="h-4 w-4" />
                 <AlertDescription>
-                  Seçili istasyon için aktif NAVTEX mesajı bulunmuyor.
+                  There are no active NAVTEX messages for the selected station.
                 </AlertDescription>
               </Alert>
             ) : (
@@ -330,33 +330,33 @@ export const NAVTEXWarnings = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <p className="text-sm font-semibold">A - Navigational Warnings</p>
-                  <p className="text-xs text-muted-foreground">Seyir uyarıları ve tehlikeler</p>
+                  <p className="text-xs text-muted-foreground">Navigation warnings and dangers</p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-semibold">B - Meteorological Warnings</p>
-                  <p className="text-xs text-muted-foreground">Meteoroloji uyarıları ve tahmini</p>
+                  <p className="text-xs text-muted-foreground">Meteorological warnings and forecast</p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-semibold">D - Search and Rescue</p>
-                  <p className="text-xs text-muted-foreground">Arama kurtarma bilgileri</p>
+                  <p className="text-xs text-muted-foreground">Search and rescue information</p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-semibold">L - Navigational Warnings (Local)</p>
-                  <p className="text-xs text-muted-foreground">Yerel seyir uyarıları</p>
+                  <p className="text-xs text-muted-foreground">Local navigational alerts</p>
                 </div>
               </div>
               <Separator />
               <div className="space-y-2">
                 <p className="text-sm font-semibold flex items-center gap-2">
                   <Waves className="h-4 w-4" />
-                  Kullanım Bilgileri
+                  Usage Information
                 </p>
                 <ul className="text-xs space-y-1 text-muted-foreground ml-6 list-disc">
-                  <li>NAVTEX mesajları 518 kHz frekansında yayınlanır</li>
-                  <li>Her istasyon belirli saatlerde yayın yapar</li>
-                  <li>Mesajlar otomatik olarak alınır ve saklanır</li>
-                  <li>Kritik güvenlik mesajları önceliklidir</li>
-                  <li>Mesajlar 24-72 saat geçerlilik süresine sahiptir</li>
+                  <li>NAVTEX messages are broadcast on the frequency 518 kHz</li>
+                  <li>Each station broadcasts at certain times</li>
+                  <li>Messages are automatically retrieved and stored</li>
+                  <li>Critical security messages take priority</li>
+                  <li>Messages have a validity period of 24-72 hours</li>
                 </ul>
               </div>
             </CardContent>

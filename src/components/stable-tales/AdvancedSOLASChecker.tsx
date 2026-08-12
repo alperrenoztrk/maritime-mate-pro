@@ -177,12 +177,12 @@ export const AdvancedSOLASChecker = () => {
 
   const getCriterionName = (key: string) => {
     const names: { [key: string]: string } = {
-      gm: 'Başlangıç GM',
+      gm: 'Home GM',
       area_0_30: 'Alan 0-30°',
       area_0_40: 'Alan 0-40°',
       area_30_40: 'Alan 30-40°',
       max_gz: 'Maksimum GZ',
-      gz_angle: 'Max GZ Açısı'
+      gz_angle: 'Max GZ Angle'
     };
     return names[key] || key;
   };
@@ -300,7 +300,7 @@ export const AdvancedSOLASChecker = () => {
                 </div>
                 <div className="text-center">
                   <Badge variant={criteriaResults.overall.compliant ? "default" : "destructive"}>
-                    {criteriaResults.overall.compliant ? "UYGUN" : "UYGUN DEĞİL"}
+                    {criteriaResults.overall.compliant ? "UYGUN" : "NOT SUITABLE"}
                   </Badge>
                   <p className="text-sm text-muted-foreground mt-1">Genel Durum</p>
                 </div>
@@ -388,7 +388,7 @@ export const AdvancedSOLASChecker = () => {
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={gzCurve.filter(p => p.aci <= 60)}>
                           <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="aci" label={{ value: 'Açı (°)', position: 'insideBottom', offset: -10 }} />
+                          <XAxis dataKey="aci" label={{ value: 'Angle (°)', position: 'insideBottom', offset: -10 }} />
                           <YAxis label={{ value: 'GZ (m)', angle: -90, position: 'insideLeft' }} />
                           <Tooltip
                             content={({ active, payload, label }) => {
@@ -424,10 +424,10 @@ export const AdvancedSOLASChecker = () => {
                       </ResponsiveContainer>
                     </div>
                     <div className="mt-3 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
-                      <div className="font-semibold">Formül</div>
+                      <div className="font-semibold">Formula</div>
                       <div>GZ(φ) = GM · sinφ; RM = Δ · GZ</div>
                       <div className="mt-1 font-semibold">Anlam</div>
-                      <div>GZ doğrultucu kolu, RM doğrultucu momenttir.</div>
+                      <div>GZ is the rectifier arm, RM is the rectifier moment.</div>
                     </div>
                   </div>
 
@@ -438,7 +438,7 @@ export const AdvancedSOLASChecker = () => {
                       <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={gzCurve.filter(p => p.aci <= 60)}>
                           <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="aci" label={{ value: 'Açı (°)', position: 'insideBottom', offset: -10 }} />
+                          <XAxis dataKey="aci" label={{ value: 'Angle (°)', position: 'insideBottom', offset: -10 }} />
                           <YAxis label={{ value: 'Alan (m.rad)', angle: -90, position: 'insideLeft' }} />
                           <Tooltip
                             content={({ active, payload, label }) => {
@@ -466,7 +466,7 @@ export const AdvancedSOLASChecker = () => {
                       </ResponsiveContainer>
                     </div>
                     <div className="mt-3 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
-                      <div className="font-semibold">Formül</div>
+                      <div className="font-semibold">Formula</div>
                       <div>Alan(0–30°) ≥ 0.055 m·rad; Alan(0–40°) ≥ 0.090 m·rad; Max GZ ≥ 0.20 m</div>
                       <div className="mt-1 font-semibold">Anlam</div>
                       <div>IS Code alan ve GZ sınırları için görsel kontrol.</div>

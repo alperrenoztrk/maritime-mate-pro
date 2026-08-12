@@ -398,7 +398,7 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
  *
  * Deterministik adımlar (CalcStep[]) ve girilen değerler bağlam olarak
  * gönderilir; yapay zeka YENİ sayı üretmez, yalnızca mevcut doğru adımların
- * "neden/nasıl" yapıldığını öğretici biçimde açıklar. Tüm AI çağrıları mevcut
+ * "why/how" yapıldığını öğretici biçimde açıklar. Tüm AI çağrıları mevcut
  * `gemini-chat` edge function üzerinden geçer (callNavigationAssistant).
  *
  * @param entry    İlgili formül girdisi (CourseEntry)
@@ -429,7 +429,7 @@ KURALLAR:
     .map((s, i) => {
       const parts = [`${i + 1}. ${s.title}`];
       if (s.expression) parts.push(`   İfade: ${s.expression}`);
-      if (s.result) parts.push(`   Sonuç: ${s.result}`);
+      if (s.result) parts.push(`   Result: ${s.result}`);
       return parts.join('\n');
     })
     .join('\n');
@@ -440,7 +440,7 @@ KURALLAR:
 
   const userContent = [
     `Formül: ${entry.name} → ${entry.formula}`,
-    entry.note ? `Not: ${entry.note}` : '',
+    entry.note ? `Note: ${entry.note}` : '',
     inputsText ? `Girilen değerler: ${inputsText}` : '',
     '',
     'Deterministik çözüm adımları:',

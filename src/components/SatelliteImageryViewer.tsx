@@ -38,7 +38,7 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'rgb',
       name: 'Natural Color (RGB)',
-      nameTr: 'Doğal Renk (RGB)',
+      nameTr: 'Natural Color (RGB)',
       description: 'True color composite showing clouds and surface as they appear to the eye',
       uses: ['Daytime cloud identification', 'Surface features', 'Dust storms', 'Snow cover'],
       wavelength: 'VIS + NIR composite',
@@ -48,7 +48,7 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'vis',
       name: 'Visible (VIS 0.6)',
-      nameTr: 'Görünür Işık (VIS 0.6)',
+      nameTr: 'Visible Light (VIS 0.6)',
       description: 'Visible light channel showing cloud reflectivity',
       uses: ['Cloud detection', 'Fog identification', 'Cloud thickness', 'Daytime only'],
       wavelength: '0.635 μm',
@@ -58,7 +58,7 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'ir108',
       name: 'Infrared (IR 10.8)',
-      nameTr: 'Kızılötesi (IR 10.8)',
+      nameTr: 'Infrared (IR 10.8)',
       description: 'Thermal infrared showing cloud top temperature',
       uses: ['24/7 cloud detection', 'Cloud height', 'Fog detection', 'Storm intensity'],
       wavelength: '10.8 μm',
@@ -68,7 +68,7 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'wv',
       name: 'Water Vapor (WV 6.2)',
-      nameTr: 'Su Buharı (WV 6.2)',
+      nameTr: 'Water Vapor (WV 6.2)',
       description: 'Upper level moisture and jet stream patterns',
       uses: ['Upper level winds', 'Jet stream location', 'Moisture tracking', 'Storm development'],
       wavelength: '6.2 μm',
@@ -78,7 +78,7 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'ir039',
       name: 'Infrared (IR 3.9)',
-      nameTr: 'Kızılötesi (IR 3.9)',
+      nameTr: 'Infrared (IR 3.9)',
       description: 'Nighttime low cloud and fog detection',
       uses: ['Night fog detection', 'Low stratus clouds', 'Fire detection', 'Nighttime imaging'],
       wavelength: '3.9 μm',
@@ -88,7 +88,7 @@ export const SatelliteImageryViewer = () => {
     {
       id: 'airmass',
       name: 'Air Mass RGB',
-      nameTr: 'Hava Kütlesi RGB',
+      nameTr: 'Air Mass RGB',
       description: 'Shows different air masses and jet stream features',
       uses: ['Air mass boundaries', 'Jet stream analysis', 'Potential vorticity', 'Storm forecasting'],
       wavelength: 'WV+IR composite',
@@ -152,10 +152,10 @@ export const SatelliteImageryViewer = () => {
               </div>
               <div>
                 <div className="text-xl font-bold text-blue-900 dark:text-blue-100">
-                  EUMETSAT Uydu Görüntüleri
+                  EUMETSAT Satellite Images
                 </div>
                 <div className="text-sm text-blue-700 dark:text-blue-300 font-normal">
-                  Meteosat Gerçek Zamanlı Meteoroloji Görüntüleme
+                  Meteosat Real Time Meteorology Viewing
                 </div>
               </div>
             </CardTitle>
@@ -176,7 +176,7 @@ export const SatelliteImageryViewer = () => {
                 className="gap-2"
               >
                 <Clock className="h-4 w-4" />
-                {autoRefresh ? 'Otomatik Açık' : 'Otomatik Kapalı'}
+                {autoRefresh ? 'Auto On' : 'Auto Off'}
               </Button>
             </div>
           </div>
@@ -186,10 +186,10 @@ export const SatelliteImageryViewer = () => {
             <Info className="h-4 w-4 text-blue-700 dark:text-blue-300" />
             <AlertDescription className="text-sm text-blue-800 dark:text-blue-200">
               <div className="space-y-2">
-                <p className="font-semibold">EUMETSAT Meteosat Uyduları</p>
+                <p className="font-semibold">EUMETSAT Meteosat Satellites</p>
                 <p>
-                  Bu görüntüler EUMETSAT'in (Avrupa Meteorolojik Uydular Organizasyonu) Meteosat serisinden alınmaktadır. 
-                  Görüntüler yaklaşık 15 dakikada bir güncellenir.
+                  These images are taken from the Meteosat series of EUMETSAT (European Organization of Meteorological Satellites). 
+                  Images are updated approximately every 15 minutes.
                 </p>
                 <div className="flex items-center gap-2 text-xs">
                   <Clock className="h-3 w-3" />
@@ -204,7 +204,7 @@ export const SatelliteImageryViewer = () => {
       {/* Region Selection */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Görüntü Bölgesi</CardTitle>
+          <CardTitle className="text-lg">Image Region</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex gap-2">
@@ -258,7 +258,7 @@ export const SatelliteImageryViewer = () => {
                 <div>
                   <div className="font-semibold text-sm mb-2 flex items-center gap-2">
                     <Zap className="h-4 w-4" />
-                    Kullanım Alanları:
+                    Areas of Use:
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {channel.uses.map((use, idx) => (
@@ -274,13 +274,13 @@ export const SatelliteImageryViewer = () => {
             {/* Satellite Image */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Canlı Uydu Görüntüsü</CardTitle>
+                <CardTitle className="text-lg">Live Satellite View</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <img
                     src={getEumetsatImageUrl(channel.id)}
-                    alt={`${channel.nameTr} uydu görüntüsü`}
+                    alt={`${channel.nameTr} satellite image`}
                     className="w-full h-auto"
                     onError={(e) => {
                       // Fallback if image fails to load
@@ -305,57 +305,57 @@ export const SatelliteImageryViewer = () => {
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Info className="h-5 w-5 text-yellow-700 dark:text-yellow-300" />
-                  Görüntü Yorumlama Rehberi
+                  Image Interpretation Guide
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-sm text-yellow-900 dark:text-yellow-100">
                   {channel.id === 'rgb' && (
                     <>
-                      <p><strong>Beyaz/Parlak Alanlar:</strong> Kalın bulutlar, genellikle yağış taşıyan sistemler</p>
+                      <p><strong>Beyaz/Parlak Alanlar:</strong> Thick clouds, systems that often carry precipitation</p>
                       <p><strong>Gri Tonlar:</strong> Orta seviye bulutlar</p>
-                      <p><strong>Mavi Alanlar:</strong> Açık deniz yüzeyleri, bulut yok</p>
-                      <p><strong>Yeşil/Kahverengi:</strong> Kara yüzeyleri</p>
+                      <p><strong>Mavi Alanlar:</strong> Clear sea surfaces, no clouds</p>
+                      <p><strong>Green/Brown:</strong> land surfaces</p>
                     </>
                   )}
                   {channel.id === 'ir108' && (
                     <>
-                      <p><strong>Beyaz/Parlak:</strong> Çok soğuk bulut tepeleri (yüksek bulutlar, fırtınalar)</p>
-                      <p><strong>Gri:</strong> Orta sıcaklıkta bulutlar</p>
-                      <p><strong>Koyu/Siyah:</strong> Sıcak yüzeyler (açık deniz, kara)</p>
-                      <p><strong>Not:</strong> 24 saat kullanılabilir, gece görüntüleme için ideal</p>
+                      <p><strong>Beyaz/Parlak:</strong> Very cold cloud tops (high clouds, storms)</p>
+                      <p><strong>Gri:</strong> moderate temperature clouds</p>
+                      <p><strong>Koyu/Siyah:</strong> Hot surfaces (open sea, land)</p>
+                      <p><strong>Note:</strong> Available 24 hours a day, ideal for night viewing</p>
                     </>
                   )}
                   {channel.id === 'wv' && (
                     <>
-                      <p><strong>Beyaz Alanlar:</strong> Nemli hava kütleleri, üst seviye nem</p>
-                      <p><strong>Koyu Alanlar:</strong> Kuru hava kütleleri</p>
-                      <p><strong>Spiraller:</strong> Jet akımı ve alçak basınç sistemleri</p>
-                      <p><strong>Kullanım:</strong> Fırtına gelişimi ve hava kütlesi hareketlerini takip için</p>
+                      <p><strong>Beyaz Alanlar:</strong> Humid air masses, upper level humidity</p>
+                      <p><strong>Koyu Alanlar:</strong> dry air masses</p>
+                      <p><strong>Spiraller:</strong> Jet stream and low pressure systems</p>
+                      <p><strong>Usage:</strong> To monitor storm development and air mass movements</p>
                     </>
                   )}
                   {channel.id === 'vis' && (
                     <>
-                      <p><strong>Beyaz:</strong> Kalın bulutlar, yüksek yansıma</p>
-                      <p><strong>Gri:</strong> İnce bulutlar, sis, pus</p>
-                      <p><strong>Koyu:</strong> Açık deniz, bulut yok</p>
-                      <p><strong>Sınırlama:</strong> Sadece gündüz saatlerinde kullanılabilir</p>
+                      <p><strong>Beyaz:</strong> Thick clouds, high reflection</p>
+                      <p><strong>Gri:</strong> Thin clouds, fog, haze</p>
+                      <p><strong>Koyu:</strong> Open sea, no clouds</p>
+                      <p><strong>Limitation:</strong> Only available during daylight hours</p>
                     </>
                   )}
                   {channel.id === 'ir039' && (
                     <>
-                      <p><strong>Beyaz:</strong> Düşük bulutlar ve sis (gece)</p>
-                      <p><strong>Siyah Noktalar:</strong> Yangın tespiti</p>
-                      <p><strong>Kullanım:</strong> Gece sis ve düşük stratus bulut tespiti</p>
-                      <p><strong>Özel:</strong> Deniz sisi için en iyi kanal</p>
+                      <p><strong>Beyaz:</strong> Low clouds and fog (night)</p>
+                      <p><strong>Siyah Noktalar:</strong> fire detection</p>
+                      <p><strong>Usage:</strong> Night fog and low stratus cloud detection</p>
+                      <p><strong>Special:</strong> Best channel for sea fog</p>
                     </>
                   )}
                   {channel.id === 'airmass' && (
                     <>
-                      <p><strong>Kırmızı/Turuncu:</strong> Tropikal hava kütleleri</p>
-                      <p><strong>Mavi/Yeşil:</strong> Kutupsal hava kütleleri</p>
-                      <p><strong>Sarı/Beyaz:</strong> Kuru stratosferik hava</p>
-                      <p><strong>Kullanım:</strong> Cephe analizi ve fırtına tahminlemesi</p>
+                      <p><strong>Red/Orange:</strong> tropical air masses</p>
+                      <p><strong>Blue/Green:</strong> polar air masses</p>
+                      <p><strong>Yellow/White:</strong> Kuru stratosferik hava</p>
+                      <p><strong>Usage:</strong> Front analysis and storm forecasting</p>
                     </>
                   )}
                 </div>
@@ -371,15 +371,15 @@ export const SatelliteImageryViewer = () => {
           <div className="space-y-2">
             <p className="font-semibold flex items-center gap-2">
               <Satellite className="h-4 w-4" />
-              Denizcilik Güvenlik Notu
+              Maritime Safety Note
             </p>
             <p>
-              Uydu görüntüleri hava durumu tahminlerini destekleyen önemli bir araçtır. Ancak tek başına 
-              navigasyon kararları için yeterli değildir. Resmi hava durumu tahminleri, NAVTEX uyarıları 
-              ve gemi meteoroloji ekipmanları ile birlikte kullanılmalıdır.
+              Satellite images are an important tool to support weather forecasts. But alone 
+              is not sufficient for navigation decisions. Official weather forecasts, NAVTEX alerts 
+              and should be used together with ship meteorological equipment.
             </p>
             <p className="font-semibold">
-              Kritik durumlar için her zaman resmi kaynaklara danışın!
+              For critical situations, always consult official sources!
             </p>
           </div>
         </AlertDescription>

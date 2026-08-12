@@ -18,8 +18,8 @@ interface CourseSectionTabsProps {
 const tabDefinitions = [
   { id: "topics", label: "Konular", icon: BookOpen },
   { id: "calculations", label: "Hesaplamalar", icon: Calculator },
-  { id: "formulas", label: "Formüller", icon: Sigma },
-  { id: "quiz", label: "Alıştırmalar", icon: ListChecks },
+  { id: "formulas", label: "Formulas", icon: Sigma },
+  { id: "quiz", label: "Exercises", icon: ListChecks },
 ] satisfies { id: CurriculumSectionId; label: string; icon: typeof BookOpen }[];
 
 export function CourseSectionTabs({
@@ -45,7 +45,7 @@ export function CourseSectionTabs({
 
   return (
     <nav
-      aria-label="Ders bölümleri"
+      aria-label="Course sections"
       className="overflow-x-auto rounded-2xl border border-border/60 bg-card/80 p-1.5 shadow-sm"
     >
       <div className="flex min-w-max gap-1.5">

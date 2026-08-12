@@ -55,7 +55,7 @@ export default function LessonsLibraryPage() {
 
   const practiceEntries = [
     {
-      title: "Alıştırmalar",
+      title: "Exercises",
       to: "/exercises",
       icon: ClipboardCheck,
       accent: "accent-teal",

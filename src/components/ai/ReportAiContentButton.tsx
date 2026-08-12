@@ -19,34 +19,34 @@ import {
 } from "@/services/aiContentReport";
 
 /**
- * "Bu yanıtı bildir" düğmesi.
+ * "Report this reply" düğmesi.
  *
  * Google Play'in Üretken Yapay Zekâ politikası, AI üretimi rahatsız edici
  * içeriğin uygulama içinden bildirilebilmesini zorunlu tutuyor. Bu bileşen
  * AI yanıtı gösteren HER yüzeye eklenir; bildirim `ai_content_reports`
  * tablosuna yazılır.
  *
- * Denizcilik bağlamında "yanlış bilgi" seçeneği rahatsız edici içerik kadar
+ * Denizcilik bağlamında "misinformation" seçeneği rahatsız edici içerik kadar
  * önemli: hatalı bir stabilite/COLREG yanıtı gerçek bir emniyet riskidir.
  */
 
 const REASONS: Array<{ value: AiReportReason; label: string; hint: string }> = [
   {
     value: "inaccurate",
-    label: "Yanlış bilgi",
-    hint: "Denizcilik açısından hatalı hesap, kural veya tanım",
+    label: "false information",
+    hint: "Erroneous calculation, rule or definition from a maritime perspective",
   },
   {
     value: "unsafe",
     label: "Emniyetsiz tavsiye",
-    hint: "Uygulanırsa can, mal veya çevre güvenliğini riske atar",
+    hint: "If implemented, it puts life, property or environmental safety at risk.",
   },
   {
     value: "offensive",
-    label: "Rahatsız edici içerik",
-    hint: "Hakaret, nefret söylemi veya uygunsuz ifade",
+    label: "Disturbing content",
+    hint: "Insults, hate speech or inappropriate language",
   },
-  { value: "other", label: "Diğer", hint: "Yukarıdakilerin dışında bir sorun" },
+  { value: "other", label: "Other", hint: "A problem other than the above" },
 ];
 
 interface ReportAiContentButtonProps {
@@ -78,7 +78,7 @@ export function ReportAiContentButton({
     setSending(true);
     try {
       await submitAiContentReport({ surface, reason, content, prompt, note });
-      toast.success("Bildiriminiz alındı. İncelenmek üzere kaydedildi.");
+      toast.success("Your notification has been received. Saved for review.");
       setOpen(false);
       setNote("");
       setReason("inaccurate");
@@ -86,7 +86,7 @@ export function ReportAiContentButton({
       if (err instanceof NotSignedInError) {
         toast.error(err.message);
       } else {
-        toast.error("Bildirim gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.");
+        toast.error("Notification could not be sent. Check your connection and try again.");
       }
     } finally {
       setSending(false);
@@ -103,8 +103,8 @@ export function ReportAiContentButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Bu yapay zekâ yanıtını bildir"
-        title="Bu yanıtı bildir"
+        aria-label="Report this AI response"
+        title="Report this reply"
         className={`inline-flex items-center gap-1 text-micro transition-colors ${triggerClass} ${className}`}
       >
         <Flag className="h-3 w-3" />
@@ -122,10 +122,10 @@ export function ReportAiContentButton({
         */}
         <DialogContent className="max-w-md" data-ask-ai-popup="true">
           <DialogHeader>
-            <DialogTitle>Yapay zekâ yanıtını bildir</DialogTitle>
+            <DialogTitle>Report AI response</DialogTitle>
             <DialogDescription>
-              Yapay zekâ hata yapabilir. Sorunlu bulduğunuz yanıtı bildirin; inceleyip
-              düzeltiyoruz. Yanıtın metni bildirimle birlikte kaydedilir.
+              Artificial intelligence can make mistakes. Report the answer you find problematic; examine and
+              We fix it. The text of the response is saved with the notification.
             </DialogDescription>
           </DialogHeader>
 
@@ -161,17 +161,17 @@ export function ReportAiContentButton({
             onChange={(e) => setNote(e.target.value.slice(0, 1000))}
             disabled={sending}
             rows={3}
-            placeholder="İsterseniz kısaca açıklayın (isteğe bağlı)"
+            placeholder="Explain briefly if you want (optional)"
             className="text-sm"
           />
 
           <DialogFooter className="gap-2 sm:gap-2">
             <Button variant="ghost" onClick={() => setOpen(false)} disabled={sending}>
-              Vazgeç
+              Cancel
             </Button>
             <Button onClick={handleSubmit} disabled={sending}>
               {sending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {sending ? "Gönderiliyor…" : "Bildir"}
+              {sending ? "Sending…" : "Bildir"}
             </Button>
           </DialogFooter>
         </DialogContent>

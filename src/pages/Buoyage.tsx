@@ -45,7 +45,7 @@ function BuoyCard({ mark }: { mark: BuoyMark }) {
         </div>
         <div className="flex gap-1.5">
           <dt className="shrink-0 font-medium text-muted-foreground">Tepe işareti:</dt>
-          <dd className="text-foreground">{mark.topmark ?? "Yok"}</dd>
+          <dd className="text-foreground">{mark.topmark ?? "None"}</dd>
         </div>
         <div className="flex gap-1.5">
           <dt className="shrink-0 font-medium text-muted-foreground">Işık:</dt>
@@ -161,7 +161,7 @@ export default function BuoyagePage() {
 
         {totalMatches === 0 ? (
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">Sonuç bulunamadı</p>
+            <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">Farklı bir arama terimi deneyin.</p>
           </div>
         ) : (

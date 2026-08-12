@@ -20,8 +20,8 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
         `${step.step}. ${step.title}`,
         `Formül: ${step.formula}`,
         step.substitution ? `Yerine koyma: ${step.substitution}` : "",
-        step.result ? `Sonuç: ${step.result}` : "",
-        step.explanation ? `Açıklama: ${step.explanation}` : "",
+        step.result ? `Result: ${step.result}` : "",
+        step.explanation ? `Description: ${step.explanation}` : "",
       ])
       .filter(Boolean)
       .join("\n");
@@ -45,7 +45,7 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
         </CollapsibleTrigger>
         <Button type="button" size="sm" variant="ghost" className="h-8 gap-1.5 text-xs" onClick={copySteps}>
           {copied ? <Check className="h-3.5 w-3.5" /> : <Clipboard className="h-3.5 w-3.5" />}
-          {copied ? "Kopyalandı" : "İşlem izini kopyala"}
+          {copied ? "Copied" : "İşlem izini kopyala"}
         </Button>
       </div>
       <CollapsibleContent>

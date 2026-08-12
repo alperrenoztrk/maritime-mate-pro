@@ -23,15 +23,15 @@ const UI_TRANSLATIONS: Record<string, {
   defaultPlaceholder: string;
 }> = {
   tr: {
-    quickQuestions: "Hızlı Sorular",
-    writeQuestion: "Sorunuzu Yazın",
-    send: "Gönder",
-    preparing: "Yanıt hazırlanıyor...",
-    response: "Yanıt",
-    pleaseWrite: "Lütfen bir soru yazın",
-    noResponse: "Yanıt alınamadı",
-    errorOccurred: "Yanıt alınırken bir hata oluştu",
-    defaultPlaceholder: "Sorunuzu yazın...",
+    quickQuestions: "Quick Questions",
+    writeQuestion: "Write Your Question",
+    send: "Send",
+    preparing: "The answer is being prepared...",
+    response: "Reply",
+    pleaseWrite: "Please write a question",
+    noResponse: "No response received",
+    errorOccurred: "An error occurred while receiving the response",
+    defaultPlaceholder: "Write your question...",
   },
   en: {
     quickQuestions: "Quick Questions",

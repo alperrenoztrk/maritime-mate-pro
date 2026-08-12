@@ -61,7 +61,7 @@ const Formulas = () => {
 
   const askAI = async () => {
     if (!question.trim()) {
-      toast.error("Lütfen bir soru yazın");
+      toast.error("Please write a question");
       return;
     }
 
@@ -113,7 +113,7 @@ const Formulas = () => {
     "GM hesaplama formülü",
     "Trim açısı nasıl bulunur?",
     "Stabilite kriterleri nelerdir?",
-    "Büyük daire seyir hesabı",
+    "Great circle cruise calculation",
     "SFOC nasıl hesaplanır?",
     "Balast suyu dağılımı",
     "Metasantır yarıçapı formülü",
@@ -345,7 +345,7 @@ const Formulas = () => {
                           }}
                           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
                           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
-                          title="Paylaş"
+                          title="Share"
                         >
                           <Share2 style={{ width: '18px', height: '18px', color: '#2563eb' }} />
                         </button>

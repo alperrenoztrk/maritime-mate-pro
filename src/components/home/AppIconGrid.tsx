@@ -24,14 +24,14 @@ interface AppShortcut {
 
 const APPS: AppShortcut[] = [
   { label: "Dersler", to: "/lessons", icon: BookOpen },
-  { label: "Alıştırmalar", to: "/exercises", icon: Sparkles },
+  { label: "Exercises", to: "/exercises", icon: Sparkles },
   { label: "Personel", to: "/crew", icon: Users },
-  { label: "Gemi Sistemleri", to: "/ship-systems", icon: Ship },
+  { label: "Ship Systems", to: "/ship-systems", icon: Ship },
   { label: "Operasyonlar", to: "/ship-operations", icon: ClipboardList },
-  { label: "Sözlük", to: "/glossary", icon: BookA },
+  { label: "dictionary", to: "/glossary", icon: BookA },
   { label: "Beta", to: "/beta", icon: FlaskConical },
-  { label: "Notlar", to: "/notes", icon: StickyNote },
-  { label: "Ayarlar", to: "/settings", icon: Settings },
+  { label: "Notes", to: "/notes", icon: StickyNote },
+  { label: "Settings", to: "/settings", icon: Settings },
 ];
 
 export function AppIconGrid() {
@@ -39,7 +39,7 @@ export function AppIconGrid() {
     <section aria-labelledby="quick-access-title" className="space-y-3">
       <div className="flex items-end justify-between gap-3 px-1">
         <h2 id="quick-access-title" className="text-xl font-semibold tracking-[-0.02em] text-foreground">
-          Hızlı Erişim
+          Quick Access
         </h2>
       </div>
 

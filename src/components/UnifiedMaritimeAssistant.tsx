@@ -48,7 +48,7 @@ CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLang
       });
 
       if (error) throw error;
-      return data?.text || "Yanıt alınamadı";
+      return data?.text || "No response received";
     } catch (error) {
       console.error('AI API failed:', error);
       throw error;
@@ -94,45 +94,45 @@ CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLang
     const mapping: Array<{ test: RegExp; answer: string }> = [
       {
         test: /(weather\s*fax|radiofax|weatherfax|fax\s*mesaj|hava\s*faks|radiofacsimile|facsimile)/i,
-        answer: `- **Kaynak**: Admiralty List of Radio Signals (ALRS) — Cilt 3 (Vol. 3): Maritime Safety Information Services — Radiofacsimile (Weather Fax) yayınları
-- **Erişim**: ALRS Vol 3 içinde “Radiofacsimile/Weather Fax Schedules” başlığı; istasyon listesi ve frekanslar. Dizin: "Radiofacsimile" veya "Weather" → ilgili tablo/ek.
-- **Not**: Bazı bölgeler için NAVAREA duyuruları ve Deniz Meteoroloji yayın planları (sched) de kontrol edilir.`
+        answer: `- **Source**: Admiralty List of Radio Signals (ALRS) — Volume 3 (Vol. 3): Maritime Safety Information Services — Radiofacsimile (Weather Fax) publications
+- **Access**: “Radiofacsimile/Weather Fax Schedules” title in ALRS Vol 3; station list and frequencies. Index: "Radiofacsimile" or "Weather" → corresponding table/appendix.
+- **Note**: For some regions, NAVAREA announcements and Marine Meteorology broadcast plans (sched) are also checked.`
       },
       {
         test: /(navtex)/i,
-        answer: `- **Kaynak**: ALRS — Cilt 3 (Vol. 3): Maritime Safety Information — NAVTEX yayın istasyonları ve frekanslar
-- **Erişim**: “NAVTEX Stations” tablosu; istasyon kimliği, MSC frekansları (518/490/4209.5 kHz), program saatleri
-- **Not**: NAVAREA/METAREA bülten kesitlerini ve yerel dil yayınlarını kontrol edin.`
+        answer: `- **Source**: ALRS — Volume 3 (Vol. 3): Maritime Safety Information — NAVTEX broadcast stations and frequencies
+- **Access**: “NAVTEX Stations” table; station ID, MSC frequencies (518/490/4209.5 kHz), program times
+- **Note**: Check NAVAREA/METAREA bulletin extracts and local language publications.`
       },
       {
         test: /(vhf|port operations|liman\s*iletişim|pilotage)/i,
-        answer: `- **Kaynak**: ALRS — Cilt 6 (Vol. 6): Pilotage, Port Operations and Services
-- **Erişim**: Liman bazlı VHF kanalları, manevra/rehberlik/servis bilgileri. Dizin: Liman adı → VHF Kanal/Telsiz Çağrı işaretleri.
-- **Not**: Deniz Rehberi/NP (Sailing Directions) ilgili cilt ile tamamlayın.`
+        answer: `- **Source**: ALRS — Volume 6 (Vol. 6): Pilotage, Port Operations and Services
+- **Access**: Port-based VHF channels, maneuvering/guidance/service information. Index: Port name → VHF Channel/Radio Call signs.
+- **Note**: Complete the Sailing Guide/NP (Sailing Directions) with the relevant volume.`
       },
       {
         test: /(distress|gmdss|tehlike|acil|epirb|sart|dsC)/i,
-        answer: `- **Kaynak**: ALRS — Cilt 5 (Vol. 5): Global Maritime Distress and Safety System (GMDSS)
-- **Erişim**: Tehlike/Emniyet prosedürleri, DSC, EPIRB, SART, Inmarsat/MF/HF çağrıları, MMSI ve MRCC iletişim bilgileri
-- **Not**: IAMSAR Cilt 3 operasyon rehberi ile birlikte kullanın.`
+        answer: `- **Source**: ALRS — Volume 5 (Vol. 5): Global Maritime Distress and Safety System (GMDSS)
+- **Access**: Distress/Safety procedures, DSC, EPIRB, SART, Inmarsat/MF/HF calls, MMSI and MRCC contact information
+- **Note**: Use in conjunction with the IAMSAR Volume 3 operations guide.`
       },
       {
         test: /(advisory|warning|msi|metarea|navarea)/i,
-        answer: `- **Kaynak**: ALRS — Cilt 3 (Vol. 3): Maritime Safety Information Services (NAVAREA/METAREA)
-- **Erişim**: NAVAREA koordinatörleri, yayın kanalları/sıklıkları, MSI dağıtım yolları
-- **Not**: NAVTEX/RADIOFAX planları ve SafetyNET ile birlikte kontrol edin.`
+        answer: `- **Source**: ALRS — Volume 3 (Vol. 3): Maritime Safety Information Services (NAVAREA/METAREA)
+- **Reach**: NAVAREA coordinators, broadcast channels/frequencies, MSI distribution paths
+- **Note**: Check with NAVTEX/RADIOFAX plans and SafetyNET.`
       },
       {
         test: /(colreg|ışıklar|seyir\s*fenerleri|ışık karakteri)/i,
-        answer: `- **Kaynak**: COLREG ve Admiralty List of Lights (Aids to Navigation) — Bölgesel ciltler
-- **Erişim**: Fener/şamandıra ışık karakterleri, sektörel aralıklar. Dizin: Coğrafi bölge/ışık numarası
-- **Not**: Elektronik Harita (ENC) ve NP5011 (Semboller ve Kısaltmalar) ile teyit edin.`
+        answer: `- **Source**: COLREG and Admiralty List of Lights (Aids to Navigation) — Regional volumes
+- **Reach**: Beacon/buoy light characters, sectoral ranges. Index: Geographic area/light number
+- **Note**: Confirm with Electronic Chart (ENC) and NP5011 (Symbols and Abbreviations).`
       },
       {
         test: /(load\s*line|fribord|serbest\s*bord|assignments)/i,
-        answer: `- **Kaynak**: International Load Line Convention + Bayrak Devleti kılavuzları
-- **Erişim**: Serbest borda işaretleri ve hesap metodolojisi; sınıflandırma cemiyeti kuralları
-- **Not**: Stabilite Kitapçığı ve Freeboard Calculation dosyalarıyla uyum şart.`
+        answer: `- **Source**: International Load Line Convention + Flag State guidelines
+- **Access**: Free side signals and calculation methodology; classification society rules
+- **Note**: Compatibility with the Stability Booklet and Freeboard Calculation files is required.`
       }
     ];
 
@@ -141,52 +141,52 @@ CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLang
     }
 
     const knowledge = {
-      "gm": `**GM (Metasantrik Yükseklik) Hesaplaması**
+      "gm": `**GM (Metacentric Height) Calculation**
 
-**Formül:** GM = KM - KG
+**Formula:** GM = KM - KG
 
-**Bileşenler:**
-- **KM**: Metasantır mesafesi (keel'den metasantıra)
-- **KG**: Ağırlık merkezi yüksekliği (keel'den CoG'a)
+**Components:**
+- **KM**: Metacenter distance (keel to metacenter)
+- **KG**: Center of gravity height (keel to CoG)
 
-**IMO Kriterleri:**
+**IMO Criteria:**
 - **Minimum**: GM ≥ 0.15m
 - **Optimal**: 0.15m ≤ GM ≤ 0.35m  
-- **Aşırı sert**: GM > 0.35m
+- **Extremely hard**: GM > 0.35m
 
-**Praktik Değerlendirme:**
-- GM < 0.15m: Tehlikeli
-- GM = 0.15-0.35m: İdeal
-- GM > 0.35m: Aşırı sert`,
+**Practical Evaluation:**
+- GM < 0.15m: Dangerous
+- GM = 0.15-0.35m: Ideal
+- GM > 0.35m: Extremely hard`,
 
-      "stabilite": `**Gemi Stabilitesi Hesaplamaları**
+      "stabilite": `**Ship Stability Calculations**
 
-**Temel Formüller:**
-1. **GM = KM - KG** (Metasantrik yükseklik)
-2. **GZ = GM × sin(φ)** (Doğrultucu kol)
-3. **BM = I / ∇** (Metasantrik yarıçap)
+**Basic Formulas:**
+1. **GM = KM - KG** (Metacentric height)
+2. **GZ = GM × sin(φ)** (Rectifier arm)
+3. **BM = I / ∇** (Metacentric radius)
 
-**IMO IS Code 2008 Kriterleri:**
-- 0-30° alan: ≥ 3.151 m.derece
-- 0-40° alan: ≥ 5.157 m.derece
-- 30-40° alan: ≥ 1.719 m.derece
-- Max GZ: ≥ 0.20m, açısı ≥ 30°`,
+**IMO IS Code 2008 Criteria:**
+- 0-30° area: ≥ 3.151 m.degree
+- 0-40° area: ≥ 5.157 m.degree
+- 30-40° area: ≥ 1.719 m.degree
+- Max GZ: ≥ 0.20m, angle ≥ 30°`,
 
-      "deplasman": `**Deplasman Hesaplaması**
+      "deplasman": `**Displacement Calculation**
 
-**Formül:** Δ = L × B × T × Cb × ρ
+**Formula:** Δ = L × B × T × Cb × ρ
 
-**Bileşenler:**
-- **L**: Gemi uzunluğu (m)
-- **B**: Gemi genişliği (m)
-- **T**: Su çekimi (m)
-- **Cb**: Blok katsayısı (0.6-0.8)
-- **ρ**: Su yoğunluğu (1.025 t/m³)`,
+**Components:**
+- **L**: Ship length (m)
+- **B**: Ship width (m)
+- **T**: Draft (m)
+- **Cb**: Block coefficient (0.6-0.8)
+- **ρ**: Water density (1.025 t/m³)`,
 
-      "trim": `**Trim Hesaplamaları**
+      "trim": `**Trim Calculations**
 
-**Trim:** Ta - Tf (Kıç su çekimi - Baş su çekimi)
-**Trim Açısı:** θ = arctan(Trim / LPP)
+**Trim:** Ta - Tf (Aft draft - Fore draft)
+**Trim Angle:** θ = arctan(Trim / LPP)
 **MCT:** MCT1cm = (Δ × GML) / (100 × LPP)`
     };
 
@@ -196,24 +196,24 @@ CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLang
       }
     }
 
-    return `**Asistan**
+    return `**Assistant**
 
-Size maritime mühendisliği konularında yardımcı olmaya hazırım!
+I am ready to help you with maritime engineering issues!
 
-**Uzmanlık Alanları:**
-• **Stabilite**: GM, GZ, metasantır hesaplamaları
-• **Seyir**: Mesafe, hız, rota hesaplamaları  
-• **Hidrodinamik**: Direnç, güç, itme analizi
-• **Yapısal**: Mukavemet, gerilme hesaplamaları
-• **Güvenlik**: IMO, SOLAS kriterleri
-• **Ekonomik**: Maliyet, yakıt optimizasyonu
+**Areas of Expertise:**
+• **Stability**: GM, GZ, metacenter calculations
+• **Navigation**: Distance, speed, route calculations  
+• **Hydrodynamics**: Resistance, power, thrust analysis
+• **Structural**: Strength, stress calculations
+• **Safety**: IMO, SOLAS criteria
+• **Economic**: Cost, fuel optimization
 
-Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
+Ask a detailed question and I will provide you with calculations and explanations!`;
   };
 
   const handleSubmit = async () => {
     if (!question.trim()) {
-      toast.error("Lütfen bir soru yazın");
+      toast.error("Please write a question");
       return;
     }
 
@@ -261,11 +261,11 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
       // Try Gemini first, fallback to local
       try {
         answer = await getGeminiResponse(currentQuestion);
-        toast.success("Yanıt hazırlandı");
+        toast.success("Response prepared");
       } catch (error) {
         console.warn('Gemini failed, using local knowledge:', error);
         answer = getLocalKnowledge(currentQuestion);
-        toast.info("Yerel bilgi bankası kullanıldı");
+        toast.info("Local knowledge base used");
       }
 
       // Combine answers
@@ -282,18 +282,18 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
 
     } catch (error) {
       console.error('Assistant error:', error);
-      toast.error("Yanıt alınamadı");
+      toast.error("No response received");
     } finally {
       setIsLoading(false);
     }
   };
 
   const quickQuestions = [
-    "GM hesaplaması nasıl yapılır?",
-    "Trim açısı formülü nedir?",
-    "Kararlılık kriterleri nelerdir?",
-    "SFOC hesaplama yöntemi",
-    "Büyük daire seyir hesabı"
+    "How to calculate GM?",
+    "What is the trim angle formula?",
+    "What are the stability criteria?",
+    "SFOC calculation method",
+    "Great circle cruise calculation"
   ];
 
   const handleQuickQuestion = (q: string) => {
@@ -305,7 +305,7 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
       <CardContent className="space-y-4">
         {/* Quick Questions */}
         <div className="space-y-2">
-          <h4 className="text-sm font-medium text-muted-foreground mt-4">Hızlı Sorular:</h4>
+          <h4 className="text-sm font-medium text-muted-foreground mt-4">Quick Questions:</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {quickQuestions.map((q, index) => (
               <Button
@@ -328,9 +328,9 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
             placeholder="Denizcilikle ilgili sorularınızı buraya yazınız...
 
 Örnekler:
-• 'GM hesaplaması nasıl yapılır?'
-• 'KM 15.2m, KG 14.8m olan geminin GM değeri?'
-• 'Kararlılık kriterleri nelerdir?'"
+• 'How to calculate GM?'
+• 'GM value of the ship with KM 15.2m, KG 14.8m?'
+• 'What are the stability criteria?'"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             className="min-h-[100px] resize-none"
@@ -345,7 +345,7 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                Hesaplanıyor...
+                Calculating...
               </>
             ) : (
               <>
@@ -361,7 +361,7 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
           <div className="p-4 bg-card border border-primary/20 rounded-lg shadow-sm">
             <h4 className="font-semibold text-card-foreground mb-3 flex items-center gap-2">
               <Calculator className="w-5 h-5" />
-              Uzman Değerlendirme:
+              Expert Evaluation:
             </h4>
             <div className="text-sm text-card-foreground whitespace-pre-wrap leading-relaxed space-y-2">
               {response.split('\n').map((line, index) => {

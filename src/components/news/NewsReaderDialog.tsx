@@ -107,7 +107,7 @@ async function fetchArticleContent(url: string): Promise<{
       // Network-level failure (offline, DNS, CORS, timeout) — try the next endpoint.
       lastError =
         err instanceof DOMException && err.name === "AbortError"
-          ? "Zaman aşımı — sunucu yanıt vermedi."
+          ? "Timeout — the server did not respond."
           : err instanceof Error
             ? err.message
             : String(err);
@@ -120,7 +120,7 @@ async function fetchArticleContent(url: string): Promise<{
       // The server was reached but the article itself is unavailable; retrying
       // another endpoint of the same function won't help.
       const text = await res.text().catch(() => "");
-      let errorMsg = `Makale alınamadı (${res.status})`;
+      let errorMsg = `Article could not be retrieved (${res.status})`;
       try {
         const parsed = JSON.parse(text);
         if (parsed.error) errorMsg = parsed.error;
@@ -131,7 +131,7 @@ async function fetchArticleContent(url: string): Promise<{
     return res.json();
   }
 
-  throw new Error(lastError || "Makale alınamadı.");
+  throw new Error(lastError || "The article could not be retrieved.");
 }
 
 function ArticleRenderer({ content }: { content: string }) {
@@ -145,7 +145,7 @@ function ArticleRenderer({ content }: { content: string }) {
 
   return (
     /* Gerçek gazete dizgisi: geniş ekranda çift sütun, saç teli sütun cetveliyle.
-       Tek geniş sütun "gazete değil" hissinin en büyük nedeniydi. */
+       Tek geniş sütun "not a newspaper" hissinin en büyük nedeniydi. */
     <div
       className="gz-cols gz-cols--wide text-[12.5px] leading-[1.62]"
       style={{ color: "var(--gz-ink-soft)" }}
@@ -218,7 +218,7 @@ export interface NewsReaderDialogProps {
 
 export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogProps) {
   const { currentLanguage } = useLanguage();
-  // Back tuşu açık bir haberi asla kapatmaz; okuyucu "Gazeteye dön" ile çıkar.
+  // Back tuşu açık bir haberi asla kapatmaz; okuyucu "return to newspaper" ile çıkar.
   useArticleBackGuard(open);
   const articleQuery = useQuery({
     queryKey: ["article-content", item?.link],
@@ -271,7 +271,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                 <DialogTitle className="gz-headline text-[clamp(1.35rem,5.6vw,1.9rem)] leading-[1.12]">
                   {item?.title ?? "Haber"}
                 </DialogTitle>
-                <DialogDescription className="sr-only">Haber detayı</DialogDescription>
+                <DialogDescription className="sr-only">News detail</DialogDescription>
                 {/* Byline satırı */}
                 <div
                   className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-y py-1.5 text-micro"
@@ -322,7 +322,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                     />
                   </span>
                   <figcaption className="gz-caption">
-                    {item?.source ? `Fotoğraf: ${item.source}` : "Arşiv fotoğrafı"}
+                    {item?.source ? `Photo: ${item.source}` : "archive photo"}
                   </figcaption>
                 </figure>
               ) : null}
@@ -334,7 +334,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                     style={{ color: "var(--gz-ink-faint)" }}
                   >
                     <Loader2 className="h-6 w-6 animate-spin" />
-                    <span className="text-sm italic">Dizgi hazırlanıyor…</span>
+                    <span className="text-sm italic">The typesetting is being prepared…</span>
                   </div>
                 ) : articleQuery.isError ? (
                   summary ? (
@@ -346,14 +346,14 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                         {summary}
                       </p>
                       <div className="gz-notice">
-                        <p>Tam metin baskıya yetişmedi; özet dizgisi gösteriliyor.</p>
+                        <p>The full text did not arrive in time for printing; Showing summary string.</p>
                         {articleQuery.error instanceof Error && articleQuery.error.message ? (
                           <p className="mt-1 break-words text-micro opacity-75">{articleQuery.error.message}</p>
                         ) : null}
                       </div>
                     </div>
                   ) : (
-                    <div className="gz-notice">İçerik şu an dizilemiyor. Daha sonra tekrar deneyin.</div>
+                    <div className="gz-notice">The content cannot be sorted at this time. Try again later.</div>
                   )
                 ) : articleQuery.data?.content ? (
                   <div className="space-y-4">
@@ -386,7 +386,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                   }}
                   onClick={() => onOpenChange(false)}
                 >
-                  ‹ Gazeteye dön
+                  ‹ Return to newspaper
                 </button>
               </div>
             </div>

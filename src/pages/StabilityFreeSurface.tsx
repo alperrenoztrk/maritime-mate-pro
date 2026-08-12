@@ -7,7 +7,7 @@ import yacht from "@/assets/maritime/yacht-clear-water.jpg";
 export default function StabilityFreeSurfacePage(){
   return (
     <CalculationLayout
-      title="Serbest Yüzey Etkisi"
+      title="Free Surface Effect"
       icon={Waves}
       hero={{
         title: "Stabilite",

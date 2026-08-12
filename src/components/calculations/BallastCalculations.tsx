@@ -128,7 +128,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
     if (!operation.tankFrom || !operation.tankTo || !operation.volume) {
       toast({
         title: "Eksik Veri",
-        description: "Transfer detaylarını girin.",
+        description: "Enter transfer details.",
         variant: "destructive"
       });
       return;
@@ -149,8 +149,8 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
 
     if (newFromLevel < 0 || newToLevel > 100) {
       toast({
-        title: "Geçersiz Transfer",
-        description: "Tank kapasiteleri aşılıyor.",
+        title: "Invalid Transfer",
+        description: "Tank capacities are exceeded.",
         variant: "destructive"
       });
       return;
@@ -188,16 +188,16 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
     // Recommendations
     const recommendations: string[] = [];
     if (Math.abs(listChange) > 1) {
-      recommendations.push("Aşırı list - karşı borda tankları dengeleme");
+      recommendations.push("Extreme list - balancing tanks against broadside");
     }
     if (Math.abs(trimChange) > 30) {
-      recommendations.push("Trim değişimi yüksek - boyuna dengeleme gerekli");
+      recommendations.push("Trim variation high - longitudinal balancing required");
     }
     if (freeSurfaceEffect > 0.3) {
-      recommendations.push("Serbest yüzey etkisi yüksek - tankları tam doldur");
+      recommendations.push("High free surface effect - fill tanks fully");
     }
     if (!ballastExchangeCompliance) {
-      recommendations.push("BWM Convention uygunluğu kontrol edin");
+      recommendations.push("Check BWM Convention compliance");
     }
 
     const result: BallastResult = {
@@ -218,91 +218,91 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
     const steps: CalculationStep[] = [
       {
         step: 1,
-        title: "Transfer ağırlığı hesabı",
+        title: "Transfer weight calculation",
         formula: "Wtransfer = V × ρ",
         substitution: `Wtransfer = ${operation.volume} × 1.025`,
         result: `Wtransfer = ${transferWeight.toFixed(3)} ton`,
-        explanation: "Transfer edilen suyun ağırlığı, hacim ile deniz suyu yoğunluğunun çarpımıdır"
+        explanation: "The weight of water transferred is the volume multiplied by the density of seawater"
       },
       {
         step: 2,
-        title: "Kaynak tank yeni seviyesi",
+        title: "Resource tank new level",
         formula: "Seviyeyeni = Seviyeeski - (Vtransfer / Kapasite × 100)",
         substitution: `Seviyeyeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
         result: `Seviyeyeni = ${newFromLevel.toFixed(1)}%`,
-        explanation: `${fromTank.name} tankının transfer sonrası seviyesi`
+        explanation: `${fromTank.name} tank level after transfer`
       },
       {
         step: 3,
-        title: "Hedef tank yeni seviyesi",
+        title: "Target tank new level",
         formula: "Seviyeyeni = Seviyeeski + (Vtransfer / Kapasite × 100)",
         substitution: `Seviyeyeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
         result: `Seviyeyeni = ${newToLevel.toFixed(1)}%`,
-        explanation: `${toTank.name} tankının transfer sonrası seviyesi`
+        explanation: `${toTank.name} tank level after transfer`
       },
       {
         step: 4,
-        title: "Boyuna moment değişimi (Trim momenti)",
+        title: "Longitudinal moment change (Trim moment)",
         formula: "MLCG = Wtransfer × (LCGhedef - LCGkaynak)",
         substitution: `MLCG = ${transferWeight.toFixed(3)} × (${toTank.LCG} - ${fromTank.LCG})`,
         result: `MLCG = ${momentLCG.toFixed(3)} t·m`,
-        explanation: "Boyuna ağırlık merkezi farkından kaynaklanan moment"
+        explanation: "Moment due to longitudinal center of gravity difference"
       },
       {
         step: 5,
-        title: "Enine moment değişimi (List momenti)",
+        title: "Transverse moment change (List moment)",
         formula: "MTCG = Wtransfer × (TCGhedef - TCGkaynak)",
         substitution: `MTCG = ${transferWeight.toFixed(3)} × (${toTank.TCG} - ${fromTank.TCG})`,
         result: `MTCG = ${momentTCG.toFixed(3)} t·m`,
-        explanation: "Enine ağırlık merkezi farkından kaynaklanan moment"
+        explanation: "Moment due to transverse center of gravity difference"
       },
       {
         step: 6,
-        title: "Trim değişimi hesabı",
+        title: "Trim change calculation",
         formula: "ΔTrim = MLCG / (Δ × GML / 100)",
         substitution: `ΔTrim = ${momentLCG.toFixed(3)} / (${displacement} × ${GML} / 100)`,
         result: `ΔTrim = ${trimChange.toFixed(3)} cm = ${(trimChange / 100).toFixed(3)} m`,
-        explanation: "Δ = deplasman, GML = boyuna metasentrik yükseklik"
+        explanation: "Δ = displacement, GML = longitudinal metacentric height"
       },
       {
         step: 7,
-        title: "List değişimi hesabı",
+        title: "List exchange account",
         formula: "ΔList = MTCG / (Δ × GMT) × (180/π)",
         substitution: `ΔList = ${momentTCG.toFixed(3)} / (${displacement} × ${GMT}) × ${(180 / Math.PI).toFixed(4)}`,
         result: `ΔList = ${listChange.toFixed(3)}°`,
-        explanation: "GMT = enine metasentrik yükseklik, sonuç dereceye çevrilir"
+        explanation: "GMT = transverse metacentric height, result converted to degrees"
       },
       {
         step: 8,
-        title: "Pompalama süresi hesabı",
+        title: "Pumping time calculation",
         formula: "t = V / min(Qkaynak, Qhedef)",
         substitution: `t = ${operation.volume} / min(${fromTank.pumpRate}, ${toTank.pumpRate})`,
-        result: `t = ${pumpingTime.toFixed(2)} saat`,
-        explanation: "İki tankın pompa kapasitesinden düşük olanı baz alınır"
+        result: `t = ${pumpingTime.toFixed(2)} clock`,
+        explanation: "Based on the lower of the pump capacity of the two tanks"
       },
       {
         step: 9,
-        title: "Serbest yüzey düzeltmesi (FSC)",
+        title: "Free surface correction (FSC)",
         formula: "FSC = Σ(ρ × l × b³ / 12) / Δ",
         substitution: `FSC = Σ(FSM) / ${displacement}`,
         result: `FSC = ${freeSurfaceEffect.toFixed(4)} m`,
-        explanation: "Kısmen dolu tanklardaki sıvı hareketinin stabiliteye etkisi (%5-%95 arası seviyeler)"
+        explanation: "Effect of liquid movement on stability in partially filled tanks (levels between 5% and 95%)"
       },
       {
         step: 10,
-        title: "Düzeltilmiş GM hesabı",
-        formula: "GMdüzeltilmiş = GM₀ - FSC",
-        substitution: `GMdüzeltilmiş = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
-        result: `GMdüzeltilmiş = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
-        explanation: "Serbest yüzey etkisi çıkarılarak düzeltilmiş metasentrik yükseklik bulunur"
+        title: "Corrected GM account",
+        formula: "GMcorrected = GM₀ - FSC",
+        substitution: `GMcorrected = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
+        result: `GMcorrected = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
+        explanation: "The corrected metacentric height is found by subtracting the free surface effect."
       }
     ];
 
     setCalcSteps(prev => ({...prev, "ballastTransfer": steps}));
 
     toast({
-      title: "Balast Transfer Hesaplandı",
-      description: `Transfer süresi: ${pumpingTime.toFixed(1)} saat`,
+      title: "Ballast Transfer Calculated",
+      description: `Transfer time: ${pumpingTime.toFixed(1)} clock`,
       variant: stabilityStatus === 'degraded' ? "destructive" : "default"
     });
   };
@@ -337,15 +337,15 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Droplets className="h-6 w-6" />
-            Balast Hesaplamaları
+            Ballast Calculations
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="tanks">Tank Durumu</TabsTrigger>
-              <TabsTrigger value="operations">Transfer İşlemleri</TabsTrigger>
-              <TabsTrigger value="exchange">Balast Değişimi</TabsTrigger>
+              <TabsTrigger value="operations">Transfer Transactions</TabsTrigger>
+              <TabsTrigger value="exchange">Ballast Change</TabsTrigger>
               <TabsTrigger value="compliance">BWMC Uygunluk</TabsTrigger>
             </TabsList>
 
@@ -382,7 +382,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                           <div className="text-sm font-bold">
                             {(tank.capacity * tank.currentLevel / 100 * 1.025).toFixed(0)}t
                           </div>
-                          <div className="text-xs text-muted-foreground">Ağırlık</div>
+                          <div className="text-xs text-muted-foreground">Weight</div>
                         </div>
                         <div className="text-center p-2 bg-muted rounded">
                           <div className="text-sm font-bold">LCG: {tank.LCG}m</div>
@@ -391,7 +391,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                         <div className="text-center p-2 bg-muted rounded">
                           <div className="text-sm font-bold">VCG: {tank.VCG}m</div>
                           <div className="text-xs text-muted-foreground">
-                            {tank.currentLevel > 5 && tank.currentLevel < 95 ? "FS Var" : "FS Yok"}
+                            {tank.currentLevel > 5 && tank.currentLevel < 95 ? "FS Yes" : "No FS"}
                           </div>
                         </div>
                       </div>
@@ -420,7 +420,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                     </div>
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-2xl font-bold">{calculateFreeSurfaceEffect().toFixed(3)}m</div>
-                      <div className="text-sm text-muted-foreground">Serbest Yüzey Etkisi</div>
+                      <div className="text-sm text-muted-foreground">Free Surface Effect</div>
                     </div>
                   </div>
                 </CardContent>
@@ -432,7 +432,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <ArrowUpDown className="h-5 w-5" />
-                    Balast Transfer İşlemi
+                    Ballast Transfer Process
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -445,7 +445,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                         value={operation.tankFrom || ''}
                         onChange={(e) => setOperation({...operation, tankFrom: e.target.value})}
                       >
-                        <option value="">Tank Seçin</option>
+                        <option value="">Select Tank</option>
                         {ballastTanks.map(tank => (
                           <option key={tank.name} value={tank.name}>
                             {tank.name} ({tank.currentLevel.toFixed(0)}%)
@@ -461,7 +461,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                         value={operation.tankTo || ''}
                         onChange={(e) => setOperation({...operation, tankTo: e.target.value})}
                       >
-                        <option value="">Tank Seçin</option>
+                        <option value="">Select Tank</option>
                         {ballastTanks.map(tank => (
                           <option key={tank.name} value={tank.name}>
                             {tank.name} ({tank.currentLevel.toFixed(0)}%)
@@ -483,25 +483,25 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="purpose">Transfer Amacı</Label>
+                      <Label htmlFor="purpose">Transfer Purpose</Label>
                       <select 
                         id="purpose"
                         className="w-full p-2 border rounded"
                         value={operation.purpose || ''}
                         onChange={(e) => setOperation({...operation, purpose: e.target.value as BallastOperation["purpose"]})}
                       >
-                        <option value="">Amaç Seçin</option>
-                        <option value="trim">Trim Düzeltme</option>
-                        <option value="stability">Stabilite Artırma</option>
+                        <option value="">Select Purpose</option>
+                        <option value="trim">Trim Correction</option>
+                        <option value="stability">Stability Increase</option>
                         <option value="draft">Draft Ayarlama</option>
-                        <option value="list">List Düzeltme</option>
+                        <option value="list">List Correction</option>
                       </select>
                     </div>
                   </div>
 
                   <Button onClick={calculateBallastTransfer} className="flex items-center gap-2">
                     <Calculator className="h-4 w-4" />
-                    Transfer Hesapla
+                    Calculate Transfer
                   </Button>
 
                   {result && (
@@ -509,7 +509,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <CheckCircle className="h-5 w-5" />
-                          Transfer Sonuçları
+                          Transfer Results
                           <Badge className={getStatusColor(result.stabilityStatus)}>
                             {result.stabilityStatus.toUpperCase()}
                           </Badge>
@@ -521,27 +521,27 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                             <div className="text-2xl font-bold">
                               {result.newTrim > 0 ? '+' : ''}{result.newTrim.toFixed(3)}m
                             </div>
-                            <div className="text-sm text-muted-foreground">Trim Değişimi</div>
+                            <div className="text-sm text-muted-foreground">Trim Change</div>
                           </div>
                           <div className="text-center p-3 bg-muted rounded-lg">
                             <div className="text-2xl font-bold">
                               {result.newList > 0 ? '+' : ''}{result.newList.toFixed(2)}°
                             </div>
-                            <div className="text-sm text-muted-foreground">List Değişimi</div>
+                            <div className="text-sm text-muted-foreground">List Change</div>
                           </div>
                           <div className="text-center p-3 bg-muted rounded-lg">
                             <div className="text-2xl font-bold">{result.pumpingTime.toFixed(1)}h</div>
-                            <div className="text-sm text-muted-foreground">Pompalama Süresi</div>
+                            <div className="text-sm text-muted-foreground">Pumping Time</div>
                           </div>
                           <div className="text-center p-3 bg-muted rounded-lg">
                             <div className="text-2xl font-bold">{result.newGM.toFixed(3)}m</div>
-                            <div className="text-sm text-muted-foreground">Yeni GM</div>
+                            <div className="text-sm text-muted-foreground">New GM</div>
                           </div>
                         </div>
 
                         {result.recommendations.length > 0 && (
                           <div>
-                            <h4 className="font-semibold mb-2">Öneriler</h4>
+                            <h4 className="font-semibold mb-2">Suggestions</h4>
                             <ul className="list-disc list-inside space-y-1">
                               {result.recommendations.map((rec, index) => (
                                 <li key={index} className="text-sm">{rec}</li>
@@ -561,7 +561,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
             <TabsContent value="exchange" className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Balast Suyu Değişimi</CardTitle>
+                  <CardTitle>Ballast Water Change</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="p-4 bg-info-muted rounded-lg">
@@ -569,42 +569,42 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                     <ul className="text-sm text-info-muted-foreground space-y-1">
                       <li>• Balast değişimi kıyıdan {'>'} 200 nm uzaklıkta</li>
                       <li>• Su derinliği {'>'} 200 metre</li>
-                      <li>• %95 hacimsel değişim minimum</li>
+                      <li>• 95% volumetric change minimum</li>
                       <li>• Pompalama oranı {'>'} 3 kez tank hacmi</li>
-                      <li>• Ballast Water Record Book kaydı zorunlu</li>
+                      <li>• Ballast Water Record Book registration is mandatory</li>
                     </ul>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-lg font-bold">200+ nm</div>
-                      <div className="text-sm text-muted-foreground">Kıyıdan Mesafe</div>
+                      <div className="text-sm text-muted-foreground">Distance from Shore</div>
                     </div>
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-lg font-bold">200+ m</div>
-                      <div className="text-sm text-muted-foreground">Su Derinliği</div>
+                      <div className="text-sm text-muted-foreground">Water Depth</div>
                     </div>
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-lg font-bold">95%</div>
-                      <div className="text-sm text-muted-foreground">Min. Değişim</div>
+                      <div className="text-sm text-muted-foreground">Min. Change</div>
                     </div>
                   </div>
 
                   <Separator />
 
                   <div>
-                    <h4 className="font-semibold mb-3">Değişim Yöntemleri</h4>
+                    <h4 className="font-semibold mb-3">Exchange Methods</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-3 border rounded">
                         <h5 className="font-medium">Sequential Method</h5>
                         <p className="text-sm text-muted-foreground">
-                          Tank önce boşaltılır, sonra yeni su alınır. Güvenli ama yavaş.
+                          The tank is first emptied, then new water is taken in. Safe but slow.
                         </p>
                       </div>
                       <div className="p-3 border rounded">
                         <h5 className="font-medium">Flow-through Method</h5>
                         <p className="text-sm text-muted-foreground">
-                          Aynı anda alma ve verme. Hızlı ama stabiliteye dikkat.
+                          Giving and receiving at the same time. Fast but pay attention to stability.
                         </p>
                       </div>
                     </div>
@@ -618,7 +618,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <FlaskConical className="h-5 w-5" />
-                    BWMC Uygunluk ve Discharge Standards
+                    BWMC Compliance and Discharge Standards
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -632,7 +632,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                             checked={bwmcData.exchangeRequired || false}
                             onChange={(e) => setBwmcData({...bwmcData, exchangeRequired: e.target.checked})}
                           />
-                          <span className="text-sm">Balast değişimi yapıldı</span>
+                          <span className="text-sm">Ballast change was made</span>
                         </label>
                         <label className="flex items-center space-x-2">
                           <input 
@@ -648,7 +648,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                             checked={bwmcData.ballastWaterRecord || false}
                             onChange={(e) => setBwmcData({...bwmcData, ballastWaterRecord: e.target.checked})}
                           />
-                          <span className="text-sm">BWR Book güncel</span>
+                          <span className="text-sm">BWR Book is up to date</span>
                         </label>
                         <label className="flex items-center space-x-2">
                           <input 
@@ -689,19 +689,19 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                   </div>
 
                   <div className="p-4 bg-green-50 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">BWM Sistemi Türleri</h4>
+                    <h4 className="font-semibold text-green-800 mb-2">BWM System Types</h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-green-700">
                       <div>
                         <strong>UV Treatment</strong>
-                        <p>Ultraviyole ışınla dezenfeksiyon</p>
+                        <p>Disinfection with ultraviolet light</p>
                       </div>
                       <div>
                         <strong>Electrolysis</strong>
-                        <p>Elektroliz ile aktif klor üretimi</p>
+                        <p>Production of active chlorine by electrolysis</p>
                       </div>
                       <div>
                         <strong>Ozonation</strong>
-                        <p>Ozon gazı ile sterilizasyon</p>
+                        <p>Sterilization with ozone gas</p>
                       </div>
                     </div>
                   </div>

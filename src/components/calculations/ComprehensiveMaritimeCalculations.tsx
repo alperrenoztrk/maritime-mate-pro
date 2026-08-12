@@ -189,10 +189,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
   const [maxCargoResult, setMaxCargoResult] = useState<number | null>(null);
 
   // 8. Pratik – draft okuma ve ortalama draftlar
-  const [metricDraftInputs, setMetricDraftInputs] = useState({ baseMeters: "", position: "alt" as "alt" | "orta" | "üst" });
+  const [metricDraftInputs, setMetricDraftInputs] = useState({ baseMeters: "", position: "alt" as "alt" | "orta" | "top" });
   const [metricDraftResult, setMetricDraftResult] = useState<number | null>(null);
 
-  const [imperialDraftInputs, setImperialDraftInputs] = useState({ baseFeet: "", position: "alt" as "alt" | "orta" | "üst" });
+  const [imperialDraftInputs, setImperialDraftInputs] = useState({ baseFeet: "", position: "alt" as "alt" | "orta" | "top" });
   const [imperialDraftResult, setImperialDraftResult] = useState<{ feet: number; inches: number } | null>(null);
 
   const [avgDraftsInputs, setAvgDraftsInputs] = useState({
@@ -229,7 +229,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const dM = parseFloat(hoggingSaggingInputs.draftMidship);
     
     if (isNaN(dF) || isNaN(dA) || isNaN(dM)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -241,13 +241,13 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setCalcSteps(prev => ({
       ...prev,
       hoggingSagging: [
-        { step: 1, title: "Formül", formula: "Ortalama Draft = (dF + dA) / 2", explanation: "Baş ve kıç draftların ortalaması hesaplanır" },
-        { step: 2, title: "Değerlerin yerleştirilmesi", formula: "Ortalama Draft = (dF + dA) / 2", substitution: `Ortalama Draft = (${dF} + ${dA}) / 2 = ${meanDraft.toFixed(3)} m` },
-        { step: 3, title: "Karşılaştırma", formula: "Fark = dM - Ortalama Draft", substitution: `Fark = ${dM} - ${meanDraft.toFixed(3)} = ${difference.toFixed(3)} m` },
-        { step: 4, title: "Sonuç", formula: "dM > Ortalama ise Hogging, dM < Ortalama ise Sagging", result: `${type}: ${Math.abs(difference).toFixed(3)} m`, explanation: type === "Hogging" ? "Vasat draft ortalamadan büyük olduğu için gemi hogging durumundadır" : "Vasat draft ortalamadan küçük olduğu için gemi sagging durumundadır" }
+        { step: 1, title: "Formula", formula: "Ortalama Draft = (dF + dA) / 2", explanation: "The average of fore and aft drafts is calculated" },
+        { step: 2, title: "Placement of values", formula: "Ortalama Draft = (dF + dA) / 2", substitution: `Ortalama Draft = (${dF} + ${dA}) / 2 = ${meanDraft.toFixed(3)} m` },
+        { step: 3, title: "Comparison", formula: "Fark = dM - Ortalama Draft", substitution: `Fark = ${dM} - ${meanDraft.toFixed(3)} = ${difference.toFixed(3)} m` },
+        { step: 4, title: "Result", formula: "dM > Ortalama ise Hogging, dM < Ortalama ise Sagging", result: `${type}: ${Math.abs(difference).toFixed(3)} m`, explanation: type === "Hogging" ? "The ship is in a state of hogging because the mediocre draft is greater than average" : "The ship is sagging because the mediocre draft is less than average" }
       ]
     }));
-    toast({ title: "Hesaplama Tamamlandı", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
   };
 
   // New KG Calculation
@@ -256,18 +256,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const totalWeight = parseFloat(newKGInputs.totalWeight);
     
     if (isNaN(totalMoment) || isNaN(totalWeight) || totalWeight === 0) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const newKG = totalMoment / totalWeight;
     setNewKGResult(newKG);
     setCalcSteps(prev => ({ ...prev, newKG: [
-      { step: 1, title: "Formül", formula: "Yeni KG = Toplam Moment / Toplam Ağırlık", explanation: "Ağırlık merkezinin yeni yüksekliği, toplam momentlerin toplam ağırlığa bölünmesiyle bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: "KG = ΣM / ΣW", substitution: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}`, result: `KG = ${newKG.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "New KG = Total Moment / Total Weight", explanation: "The new height of the center of gravity is found by dividing the total moments by the total weight" },
+      { step: 2, title: "Placement of values", formula: "KG = ΣM / ΣW", substitution: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}`, result: `KG = ${newKG.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Yeni KG: ${newKG.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `New QA: ${newKG.toFixed(3)} m` });
   };
 
   // Heel Angle Calculation
@@ -281,22 +281,22 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       const angle = Math.atan(gz / gm) * (180 / Math.PI);
       setHeelAngleResult(angle);
       setCalcSteps(prev => ({ ...prev, heelAngle: [
-        { step: 1, title: "Formül", formula: "θ = arctan(GZ / GM) × (180/π)", explanation: "Meyil açısı, GZ kolunun GM'ye oranının arctanjantı ile bulunur" },
-        { step: 2, title: "Değerlerin yerleştirilmesi", formula: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(4)}) × 57.2958`, substitution: `θ = arctan(${(gz/gm).toFixed(6)}) × 57.2958` },
-        { step: 3, title: "Sonuç", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
+        { step: 1, title: "Formula", formula: "θ = arctan(GZ / GM) × (180/π)", explanation: "The angle of inclination is found by the arctangent of the ratio of the arm GZ to GM" },
+        { step: 2, title: "Placement of values", formula: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(4)}) × 57.2958`, substitution: `θ = arctan(${(gz/gm).toFixed(6)}) × 57.2958` },
+        { step: 3, title: "Result", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
       ] }));
-      toast({ title: "Hesaplama Tamamlandı", description: `Meyil Açısı: ${angle.toFixed(2)}°` });
+      toast({ title: "Calculation Completed", description: `Inclination Angle: ${angle.toFixed(2)}°` });
     } else if (heelingMoment && displacement && gm) {
       const angle = Math.atan(heelingMoment / (displacement * gm)) * (180 / Math.PI);
       setHeelAngleResult(angle);
       setCalcSteps(prev => ({ ...prev, heelAngle: [
-        { step: 1, title: "Formül", formula: "θ = arctan(Mheel / (Δ × GM)) × (180/π)", explanation: "Meyil açısı, meyil momentinin deplasman ve GM çarpımına oranından bulunur" },
-        { step: 2, title: "Değerlerin yerleştirilmesi", formula: `θ = arctan(${heelingMoment.toFixed(2)} / (${displacement.toFixed(2)} × ${gm.toFixed(3)}))`, substitution: `θ = arctan(${heelingMoment.toFixed(2)} / ${(displacement*gm).toFixed(2)}) = arctan(${(heelingMoment/(displacement*gm)).toFixed(6)})` },
-        { step: 3, title: "Sonuç", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
+        { step: 1, title: "Formula", formula: "θ = arctan(Mheel / (Δ × GM)) × (180/π)", explanation: "The angle of heel is found from the ratio of the heeling moment to the product of displacement and GM." },
+        { step: 2, title: "Placement of values", formula: `θ = arctan(${heelingMoment.toFixed(2)} / (${displacement.toFixed(2)} × ${gm.toFixed(3)}))`, substitution: `θ = arctan(${heelingMoment.toFixed(2)} / ${(displacement*gm).toFixed(2)}) = arctan(${(heelingMoment/(displacement*gm)).toFixed(6)})` },
+        { step: 3, title: "Result", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
       ] }));
-      toast({ title: "Hesaplama Tamamlandı", description: `Meyil Açısı: ${angle.toFixed(2)}°` });
+      toast({ title: "Calculation Completed", description: `Inclination Angle: ${angle.toFixed(2)}°` });
     } else {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
     }
   };
 
@@ -307,18 +307,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const displacement = parseFloat(craneGMInputs.displacement);
     
     if (isNaN(weight) || isNaN(leverArm) || isNaN(displacement)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const gmChange = (weight * leverArm) / displacement;
     setCraneGMResult(gmChange);
     setCalcSteps(prev => ({ ...prev, craneGM: [
-      { step: 1, title: "Formül", formula: "ΔGM = (W × d) / Δ", explanation: "Vinç operasyonunda GM değişimi, kaldırılan ağırlık ve kol uzunluğunun deplasmanla oranından bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `ΔGM = (${weight.toFixed(2)} × ${leverArm.toFixed(2)}) / ${displacement.toFixed(2)}`, substitution: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}`, result: `ΔGM = ${gmChange.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "ΔGM = (W × d) / Δ", explanation: "In crane operation, GM change is found from the ratio of the lifted weight and arm length to the displacement." },
+      { step: 2, title: "Placement of values", formula: `ΔGM = (${weight.toFixed(2)} × ${leverArm.toFixed(2)}) / ${displacement.toFixed(2)}`, substitution: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}`, result: `ΔGM = ${gmChange.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `GM Değişimi: ${gmChange.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `GM Change: ${gmChange.toFixed(3)} m` });
   };
 
   // Drydock Critical GM
@@ -328,18 +328,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const displacement = parseFloat(drydockGMInputs.displacement);
     
     if (isNaN(pressure) || isNaN(km) || isNaN(displacement)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const criticalGM = (pressure * km) / displacement;
     setDrydockGMResult(criticalGM);
     setCalcSteps(prev => ({ ...prev, drydockGM: [
-      { step: 1, title: "Formül", formula: "GMkritik = (P × KM) / Δ", explanation: "Kuru havuzda kritik GM, omurga basıncı ve KM çarpımının deplasmanla oranıdır" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `GMk = (${pressure.toFixed(2)} × ${km.toFixed(3)}) / ${displacement.toFixed(2)}`, substitution: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}`, result: `GMkritik = ${criticalGM.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "GMkritik = (P × KM) / Δ", explanation: "In dry dock, critical GM is the ratio of keel pressure and KM multiplied by displacement" },
+      { step: 2, title: "Placement of values", formula: `GMk = (${pressure.toFixed(2)} × ${km.toFixed(3)}) / ${displacement.toFixed(2)}`, substitution: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}`, result: `GMkritik = ${criticalGM.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Kritik GM: ${criticalGM.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `Kritik GM: ${criticalGM.toFixed(3)} m` });
   };
 
   // 3. Trim Change
@@ -348,18 +348,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const mct = parseFloat(trimChangeInputs.mct);
     
     if (isNaN(totalMoment) || isNaN(mct)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const trimChange = totalMoment / mct;
     setTrimChangeResult(trimChange);
     setCalcSteps(prev => ({ ...prev, trimChange: [
-      { step: 1, title: "Formül", formula: "ΔTrim = Toplam Moment / MCT", explanation: "Trim değişimi, toplam trim momentinin MCT değerine bölünmesiyle cm cinsinden bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}`, result: `ΔTrim = ${trimChange.toFixed(2)} cm` }
+      { step: 1, title: "Formula", formula: "ΔTrim = Toplam Moment / MCT", explanation: "Trim change is found in cm by dividing the total trim moment by the MCT value" },
+      { step: 2, title: "Placement of values", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}`, result: `ΔTrim = ${trimChange.toFixed(2)} cm` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Trim Değişimi: ${trimChange.toFixed(2)} cm` });
+    toast({ title: "Calculation Completed", description: `Trim Change: ${trimChange.toFixed(2)} cm` });
   };
 
   // Parallel Sinkage
@@ -368,18 +368,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const tpc = parseFloat(parallelSinkageInputs.tpc);
     
     if (isNaN(loadedWeight) || isNaN(tpc)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const sinkage = loadedWeight / tpc;
     setParallelSinkageResult(sinkage);
     setCalcSteps(prev => ({ ...prev, parallelSinkage: [
-      { step: 1, title: "Formül", formula: "Paralel Batma = W / TPC", explanation: "Yüklenen ağırlığın TPC'ye bölünmesiyle cm cinsinden batma hesaplanır" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Batma = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `Batma = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}`, result: `Batma = ${sinkage.toFixed(2)} cm` }
+      { step: 1, title: "Formula", formula: "Paralel Batma = W / TPC", explanation: "Sink in cm is calculated by dividing the loaded weight by TPC" },
+      { step: 2, title: "Placement of values", formula: `Batma = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `Batma = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}`, result: `Batma = ${sinkage.toFixed(2)} cm` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Paralel Batma: ${sinkage.toFixed(2)} cm` });
+    toast({ title: "Calculation Completed", description: `Paralel Batma: ${sinkage.toFixed(2)} cm` });
   };
 
   // Draft Correction
@@ -389,18 +389,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const lbp = parseFloat(draftCorrectionInputs.lbp);
     
     if (isNaN(trim) || isNaN(distance) || isNaN(lbp)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const correction = (trim * distance) / lbp;
     setDraftCorrectionResult(correction);
     setCalcSteps(prev => ({ ...prev, draftCorrection: [
-      { step: 1, title: "Formül", formula: "Düzeltme = (Trim × Mesafe) / LBP", explanation: "Draft düzeltmesi, trim ve ölçüm noktası mesafesinin LBP'ye oranından bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Düzeltme = (${trim.toFixed(3)} × ${distance.toFixed(2)}) / ${lbp.toFixed(2)}`, substitution: `Düzeltme = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `Düzeltme = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}`, result: `Düzeltme = ${correction.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "Trim = (Trim × Distance) / LBP", explanation: "Draft correction is found from the ratio of trim and measuring point distance to LBP" },
+      { step: 2, title: "Placement of values", formula: `Correction = (${trim.toFixed(3)} × ${distance.toFixed(2)}) / ${lbp.toFixed(2)}`, substitution: `Correction = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `Correction = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}`, result: `Correction = ${correction.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Draft Düzeltmesi: ${correction.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `Draft Fix: ${correction.toFixed(3)} m` });
   };
 
   // 4. MMM Draft
@@ -410,18 +410,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const dM = parseFloat(mmmDraftInputs.draftMidship);
     
     if (isNaN(dF) || isNaN(dA) || isNaN(dM)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const mmm = (dF + dA + 6 * dM) / 8;
     setMmmDraftResult(mmm);
     setCalcSteps(prev => ({ ...prev, mmmDraft: [
-      { step: 1, title: "Formül", formula: "MMM = (dF + dA + 6×dM) / 8", explanation: "Mean of Mean of Means formülü, vasat drafta 6 kat ağırlık vererek ortalama hesaplar" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + 6×${dM.toFixed(3)}) / 8`, substitution: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + ${(6*dM).toFixed(3)}) / 8 = ${(dF + dA + 6*dM).toFixed(3)} / 8` },
-      { step: 3, title: "Sonuç", formula: `MMM = ${(dF + dA + 6*dM).toFixed(3)} / 8`, result: `MMM = ${mmm.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "MMM = (dF + dA + 6×dM) / 8", explanation: "Mean of Means formula calculates average by giving 6x weight to mediocre draft" },
+      { step: 2, title: "Placement of values", formula: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + 6×${dM.toFixed(3)}) / 8`, substitution: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + ${(6*dM).toFixed(3)}) / 8 = ${(dF + dA + 6*dM).toFixed(3)} / 8` },
+      { step: 3, title: "Result", formula: `MMM = ${(dF + dA + 6*dM).toFixed(3)} / 8`, result: `MMM = ${mmm.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `MMM Draft: ${mmm.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `MMM Draft: ${mmm.toFixed(3)} m` });
   };
 
   // Trim Correction 1
@@ -432,18 +432,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const lbp = parseFloat(trimCorrection1Inputs.lbp);
     
     if (isNaN(trim) || isNaN(lcf) || isNaN(tpc) || isNaN(lbp)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const correction = (trim * lcf * tpc * 100) / lbp;
     setTrimCorrection1Result(correction);
     setCalcSteps(prev => ({ ...prev, trimCorrection1: [
-      { step: 1, title: "Formül", formula: "Δ₁ = (Trim × LCF × TPC × 100) / LBP", explanation: "Birinci trim düzeltmesi, trimden kaynaklanan deplasman farkını hesaplar" },
-      { step: 2, title: "Pay hesabı", formula: `Pay = ${trim.toFixed(3)} × ${lcf.toFixed(2)} × ${tpc.toFixed(2)} × 100`, substitution: `Pay = ${(trim*lcf*tpc*100).toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `Δ₁ = ${(trim*lcf*tpc*100).toFixed(2)} / ${lbp.toFixed(2)}`, result: `Δ₁ = ${correction.toFixed(2)} ton` }
+      { step: 1, title: "Formula", formula: "Δ₁ = (Trim × LCF × TPC × 100) / LBP", explanation: "First trim correction calculates the displacement difference due to trim" },
+      { step: 2, title: "share account", formula: `Pay = ${trim.toFixed(3)} × ${lcf.toFixed(2)} × ${tpc.toFixed(2)} × 100`, substitution: `Pay = ${(trim*lcf*tpc*100).toFixed(2)}` },
+      { step: 3, title: "Result", formula: `Δ₁ = ${(trim*lcf*tpc*100).toFixed(2)} / ${lbp.toFixed(2)}`, result: `Δ₁ = ${correction.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `1. Trim Düzeltmesi: ${correction.toFixed(2)} ton` });
+    toast({ title: "Calculation Completed", description: `1. Trim Correction: ${correction.toFixed(2)} ton` });
   };
 
   // Trim Correction 2
@@ -453,7 +453,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const lbp = parseFloat(trimCorrection2Inputs.lbp);
     
     if (isNaN(trim) || isNaN(mct) || isNaN(lbp)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -461,12 +461,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const correction = (trimSq * mct * 50) / lbp;
     setTrimCorrection2Result(correction);
     setCalcSteps(prev => ({ ...prev, trimCorrection2: [
-      { step: 1, title: "Formül", formula: "Δ₂ = (Trim² × ΔMCT × 50) / LBP", explanation: "İkinci trim düzeltmesi, büyük trimlerde oluşan ikinci derece farkı düzeltir" },
-      { step: 2, title: "Trim² hesabı", formula: `Trim² = ${trim.toFixed(3)}² = ${trimSq.toFixed(4)}` },
-      { step: 3, title: "Pay hesabı", formula: `Pay = ${trimSq.toFixed(4)} × ${mct.toFixed(2)} × 50`, substitution: `Pay = ${(trimSq*mct*50).toFixed(2)}` },
-      { step: 4, title: "Sonuç", formula: `Δ₂ = ${(trimSq*mct*50).toFixed(2)} / ${lbp.toFixed(2)}`, result: `Δ₂ = ${correction.toFixed(2)} ton` }
+      { step: 1, title: "Formula", formula: "Δ₂ = (Trim² × ΔMCT × 50) / LBP", explanation: "Second trim correction corrects quadratic difference in large trims" },
+      { step: 2, title: "Trim² calculation", formula: `Trim² = ${trim.toFixed(3)}² = ${trimSq.toFixed(4)}` },
+      { step: 3, title: "share account", formula: `Pay = ${trimSq.toFixed(4)} × ${mct.toFixed(2)} × 50`, substitution: `Pay = ${(trimSq*mct*50).toFixed(2)}` },
+      { step: 4, title: "Result", formula: `Δ₂ = ${(trimSq*mct*50).toFixed(2)} / ${lbp.toFixed(2)}`, result: `Δ₂ = ${correction.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `2. Trim Düzeltmesi: ${correction.toFixed(2)} ton` });
+    toast({ title: "Calculation Completed", description: `2. Trim Correction: ${correction.toFixed(2)} ton` });
   };
 
   // Density Correction
@@ -475,18 +475,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const actualDensity = parseFloat(densityCorrectionInputs.actualDensity);
     
     if (isNaN(displacement) || isNaN(actualDensity)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const correction = displacement * (actualDensity / 1.025 - 1);
     setDensityCorrectionResult(correction);
     setCalcSteps(prev => ({ ...prev, densityCorrection: [
-      { step: 1, title: "Formül", formula: "Δdüzeltme = Δ × (ρgerçek / 1.025 - 1)", explanation: "Yoğunluk düzeltmesi, gerçek su yoğunluğu ile standart deniz suyu arasındaki farktan hesaplanır" },
-      { step: 2, title: "Oran hesabı", formula: `ρgerçek / 1.025 = ${actualDensity.toFixed(3)} / 1.025 = ${(actualDensity/1.025).toFixed(6)}` },
-      { step: 3, title: "Sonuç", formula: `Düzeltme = ${displacement.toFixed(2)} × (${(actualDensity/1.025).toFixed(6)} - 1)`, result: `Düzeltme = ${correction.toFixed(2)} ton` }
+      { step: 1, title: "Formula", formula: "Δcorrection = Δ × (ρactual / 1.025 - 1)", explanation: "Density correction is calculated from the difference between the actual water density and standard seawater" },
+      { step: 2, title: "rate calculation", formula: `ρactual / 1.025 = ${actualDensity.toFixed(3)} / 1.025 = ${(actualDensity/1.025).toFixed(6)}` },
+      { step: 3, title: "Result", formula: `Correction = ${displacement.toFixed(2)} × (${(actualDensity/1.025).toFixed(6)} - 1)`, result: `Correction = ${correction.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Yoğunluk Düzeltmesi: ${correction.toFixed(2)} ton` });
+    toast({ title: "Calculation Completed", description: `Density Correction: ${correction.toFixed(2)} ton` });
   };
 
   // 5. Block Coefficient
@@ -497,7 +497,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const draft = parseFloat(blockCoefficientInputs.draft);
     
     if (isNaN(volume) || isNaN(length) || isNaN(breadth) || isNaN(draft)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -505,11 +505,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const cb = volume / boxVolume;
     setBlockCoefficientResult(cb);
     setCalcSteps(prev => ({ ...prev, blockCoefficient: [
-      { step: 1, title: "Formül", formula: "Cb = ∇ / (L × B × T)", explanation: "Blok katsayısı, geminin su altı hacminin kutu hacmine oranıdır" },
-      { step: 2, title: "Kutu hacmi hesabı", formula: `L × B × T = ${length.toFixed(2)} × ${breadth.toFixed(2)} × ${draft.toFixed(2)}`, result: `= ${boxVolume.toFixed(2)} m³` },
-      { step: 3, title: "Sonuç", formula: `Cb = ${volume.toFixed(2)} / ${boxVolume.toFixed(2)}`, result: `Cb = ${cb.toFixed(3)}` }
+      { step: 1, title: "Formula", formula: "Cb = ∇ / (L × B × T)", explanation: "Block coefficient is the ratio of the ship's underwater volume to the box volume" },
+      { step: 2, title: "Box volume calculation", formula: `L × B × T = ${length.toFixed(2)} × ${breadth.toFixed(2)} × ${draft.toFixed(2)}`, result: `= ${boxVolume.toFixed(2)} m³` },
+      { step: 3, title: "Result", formula: `Cb = ${volume.toFixed(2)} / ${boxVolume.toFixed(2)}`, result: `Cb = ${cb.toFixed(3)}` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Blok Katsayısı (Cb): ${cb.toFixed(3)}` });
+    toast({ title: "Calculation Completed", description: `Block Coefficient (Cb): ${cb.toFixed(3)}` });
   };
 
   // FWA
@@ -518,18 +518,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const tpc = parseFloat(fwaInputs.tpc);
     
     if (isNaN(displacement) || isNaN(tpc)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const fwa = displacement / (4 * tpc);
     setFwaResult(fwa);
     setCalcSteps(prev => ({ ...prev, fwa: [
-      { step: 1, title: "Formül", formula: "FWA = Δ / (4 × TPC)", explanation: "Fresh Water Allowance, geminin tatlı suda ne kadar fazla batacağını gösterir" },
-      { step: 2, title: "Payda hesabı", formula: `4 × TPC = 4 × ${tpc.toFixed(2)} = ${(4*tpc).toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `FWA = ${displacement.toFixed(2)} / ${(4*tpc).toFixed(2)}`, result: `FWA = ${fwa.toFixed(1)} mm` }
+      { step: 1, title: "Formula", formula: "FWA = Δ / (4 × TPC)", explanation: "Fresh Water Allowance indicates how much longer the ship will sink in fresh water" },
+      { step: 2, title: "denominator calculation", formula: `4 × TPC = 4 × ${tpc.toFixed(2)} = ${(4*tpc).toFixed(2)}` },
+      { step: 3, title: "Result", formula: `FWA = ${displacement.toFixed(2)} / ${(4*tpc).toFixed(2)}`, result: `FWA = ${fwa.toFixed(1)} mm` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `FWA: ${fwa.toFixed(1)} mm` });
+    toast({ title: "Calculation Completed", description: `FWA: ${fwa.toFixed(1)} mm` });
   };
 
   // Density Change
@@ -539,18 +539,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const oldDensity = parseFloat(densityChangeInputs.oldDensity);
     
     if (isNaN(displacement) || isNaN(newDensity) || isNaN(oldDensity)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const newDisplacement = displacement * (newDensity / oldDensity);
     setDensityChangeResult(newDisplacement);
     setCalcSteps(prev => ({ ...prev, densityChange: [
-      { step: 1, title: "Formül", formula: "Δyeni = Δ × (ρyeni / ρeski)", explanation: "Farklı yoğunlukta suda deplasman, yoğunluk oranıyla düzeltilir" },
-      { step: 2, title: "Oran hesabı", formula: `ρyeni / ρeski = ${newDensity.toFixed(3)} / ${oldDensity.toFixed(3)} = ${(newDensity/oldDensity).toFixed(6)}` },
-      { step: 3, title: "Sonuç", formula: `Δyeni = ${displacement.toFixed(2)} × ${(newDensity/oldDensity).toFixed(6)}`, result: `Δyeni = ${newDisplacement.toFixed(2)} ton` }
+      { step: 1, title: "Formula", formula: "Δnew = Δ × (ρnew / ρold)", explanation: "Displacement in water of different density is corrected by density ratio" },
+      { step: 2, title: "rate calculation", formula: `ρnew / ρold = ${newDensity.toFixed(3)} / ${oldDensity.toFixed(3)} = ${(newDensity/oldDensity).toFixed(6)}` },
+      { step: 3, title: "Result", formula: `Δnew = ${displacement.toFixed(2)} × ${(newDensity/oldDensity).toFixed(6)}`, result: `Δnew = ${newDisplacement.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Yeni Deplasman: ${newDisplacement.toFixed(2)} ton` });
+    toast({ title: "Calculation Completed", description: `New Away: ${newDisplacement.toFixed(2)} ton` });
   };
 
   // 6. Grain Heel Angle
@@ -560,20 +560,20 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gm = parseFloat(grainHeelInputs.gm);
     
     if (isNaN(ghm) || isNaN(displacement) || isNaN(gm)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const angle = (57.3 * ghm) / (displacement * gm);
     setGrainHeelResult(angle);
-    const status = angle <= 12 ? "SOLAS Uygun" : "SOLAS Uygun Değil";
+    const status = angle <= 12 ? "SOLAS Uygun" : "SOLAS Not Compliant";
     setCalcSteps(prev => ({ ...prev, grainHeel: [
-      { step: 1, title: "Formül", formula: "θ = (57.3 × GHM) / (Δ × GM)", explanation: "Tahıl kümelenme açısı, tahıl meyil momentinin (GHM) deplasman ve GM çarpımına oranından bulunur. 57.3 = 180/π" },
-      { step: 2, title: "Pay hesabı", formula: `57.3 × GHM = 57.3 × ${ghm.toFixed(2)} = ${(57.3*ghm).toFixed(2)}` },
-      { step: 3, title: "Payda hesabı", formula: `Δ × GM = ${displacement.toFixed(2)} × ${gm.toFixed(3)} = ${(displacement*gm).toFixed(2)}` },
-      { step: 4, title: "Sonuç", formula: `θ = ${(57.3*ghm).toFixed(2)} / ${(displacement*gm).toFixed(2)}`, result: `θ = ${angle.toFixed(1)}° (${status})` }
+      { step: 1, title: "Formula", formula: "θ = (57.3 × GHM) / (Δ × GM)", explanation: "Grain clustering angle is found from the ratio of grain heeling moment (GHM) to the product of displacement and GM. 57.3 = 180/π" },
+      { step: 2, title: "share account", formula: `57.3 × GHM = 57.3 × ${ghm.toFixed(2)} = ${(57.3*ghm).toFixed(2)}` },
+      { step: 3, title: "denominator calculation", formula: `Δ × GM = ${displacement.toFixed(2)} × ${gm.toFixed(3)} = ${(displacement*gm).toFixed(2)}` },
+      { step: 4, title: "Result", formula: `θ = ${(57.3*ghm).toFixed(2)} / ${(displacement*gm).toFixed(2)}`, result: `θ = ${angle.toFixed(1)}° (${status})` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Kümelenme Açısı: ${angle.toFixed(1)}° - ${status}` });
+    toast({ title: "Calculation Completed", description: `Clustering Angle: ${angle.toFixed(1)}° - ${status}` });
   };
 
   // GZ Lever
@@ -583,7 +583,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const angle = parseFloat(gzLeverInputs.angle);
     
     if (isNaN(kn) || isNaN(kg) || isNaN(angle)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -592,12 +592,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gz = kn - kg * sinAngle;
     setGzLeverResult(gz);
     setCalcSteps(prev => ({ ...prev, gzLever: [
-      { step: 1, title: "Formül", formula: "GZ = KN - KG × sin(θ)", explanation: "GZ kolu, KN eğrisinden KG ile sin(θ) çarpımı çıkarılarak bulunur" },
-      { step: 2, title: "sin(θ) hesabı", formula: `sin(${angle.toFixed(1)}°) = sin(${angleRad.toFixed(6)} rad)`, result: `= ${sinAngle.toFixed(6)}` },
+      { step: 1, title: "Formula", formula: "GZ = KN - KG × sin(θ)", explanation: "The GZ branch is found by subtracting the product KG and sin(θ) from the KN curve" },
+      { step: 2, title: "sin(θ) calculation", formula: `sin(${angle.toFixed(1)}°) = sin(${angleRad.toFixed(6)} rad)`, result: `= ${sinAngle.toFixed(6)}` },
       { step: 3, title: "KG × sin(θ)", formula: `${kg.toFixed(3)} × ${sinAngle.toFixed(6)} = ${(kg*sinAngle).toFixed(4)}` },
-      { step: 4, title: "Sonuç", formula: `GZ = ${kn.toFixed(4)} - ${(kg*sinAngle).toFixed(4)}`, result: `GZ = ${gz.toFixed(4)} m` }
+      { step: 4, title: "Result", formula: `GZ = ${kn.toFixed(4)} - ${(kg*sinAngle).toFixed(4)}`, result: `GZ = ${gz.toFixed(4)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `GZ: ${gz.toFixed(4)} m` });
+    toast({ title: "Calculation Completed", description: `GZ: ${gz.toFixed(4)} m` });
   };
 
   // Free Surface Effect
@@ -607,7 +607,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const volume = parseFloat(freeSurfaceInputs.volume);
     
     if (isNaN(length) || isNaN(breadth) || isNaN(volume)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -615,12 +615,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const fsm = (length * b3) / (12 * volume);
     setFreeSurfaceResult(fsm);
     setCalcSteps(prev => ({ ...prev, freeSurface: [
-      { step: 1, title: "Formül", formula: "FSM = (L × B³) / (12 × ∇)", explanation: "Serbest yüzey momenti, tankın boyuna ve genişliğinin küpünden hesaplanır" },
-      { step: 2, title: "B³ hesabı", formula: `B³ = ${breadth.toFixed(2)}³ = ${b3.toFixed(2)}` },
-      { step: 3, title: "Pay hesabı", formula: `L × B³ = ${length.toFixed(2)} × ${b3.toFixed(2)} = ${(length*b3).toFixed(2)}` },
-      { step: 4, title: "Sonuç", formula: `FSM = ${(length*b3).toFixed(2)} / (12 × ${volume.toFixed(2)}) = ${(length*b3).toFixed(2)} / ${(12*volume).toFixed(2)}`, result: `FSM = ${fsm.toFixed(4)} m` }
+      { step: 1, title: "Formula", formula: "FSM = (L × B³) / (12 × ∇)", explanation: "The free surface moment is calculated from the cube of the tank's length and width" },
+      { step: 2, title: "B³ account", formula: `B³ = ${breadth.toFixed(2)}³ = ${b3.toFixed(2)}` },
+      { step: 3, title: "share account", formula: `L × B³ = ${length.toFixed(2)} × ${b3.toFixed(2)} = ${(length*b3).toFixed(2)}` },
+      { step: 4, title: "Result", formula: `FSM = ${(length*b3).toFixed(2)} / (12 × ${volume.toFixed(2)}) = ${(length*b3).toFixed(2)} / ${(12*volume).toFixed(2)}`, result: `FSM = ${fsm.toFixed(4)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `FSM: ${fsm.toFixed(4)} m` });
+    toast({ title: "Calculation Completed", description: `FSM: ${fsm.toFixed(4)} m` });
   };
 
   // Roll Period
@@ -630,7 +630,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gm = parseFloat(rollPeriodInputs.gm);
     
     if (isNaN(cb) || isNaN(breadth) || isNaN(gm)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -638,12 +638,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const period = (cb * breadth) / sqrtGM;
     setRollPeriodResult(period);
     setCalcSteps(prev => ({ ...prev, rollPeriod: [
-      { step: 1, title: "Formül", formula: "T = C × B / √GM", explanation: "Yalpa periyodu, blok katsayısı (C) ile genişliğin çarpımının GM karekökünle bölünmesiyle bulunur" },
-      { step: 2, title: "√GM hesabı", formula: `√GM = √${gm.toFixed(3)} = ${sqrtGM.toFixed(4)}` },
-      { step: 3, title: "Pay hesabı", formula: `C × B = ${cb.toFixed(3)} × ${breadth.toFixed(2)} = ${(cb*breadth).toFixed(3)}` },
-      { step: 4, title: "Sonuç", formula: `T = ${(cb*breadth).toFixed(3)} / ${sqrtGM.toFixed(4)}`, result: `T = ${period.toFixed(2)} saniye` }
+      { step: 1, title: "Formula", formula: "T = C × B / √GM", explanation: "The roll period is found by multiplying the block coefficient (C) and the width and dividing by the square root of GM." },
+      { step: 2, title: "√GM account", formula: `√GM = √${gm.toFixed(3)} = ${sqrtGM.toFixed(4)}` },
+      { step: 3, title: "share account", formula: `C × B = ${cb.toFixed(3)} × ${breadth.toFixed(2)} = ${(cb*breadth).toFixed(3)}` },
+      { step: 4, title: "Result", formula: `T = ${(cb*breadth).toFixed(3)} / ${sqrtGM.toFixed(4)}`, result: `T = ${period.toFixed(2)} saniye` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Yalpa Periyodu: ${period.toFixed(2)} saniye` });
+    toast({ title: "Calculation Completed", description: `Yalpa Periyodu: ${period.toFixed(2)} saniye` });
   };
 
   // 7. Load Height
@@ -652,18 +652,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const pl = parseFloat(loadHeightInputs.pl);
     
     if (isNaN(sf) || isNaN(pl)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
     const height = sf * pl;
     setLoadHeightResult(height);
     setCalcSteps(prev => ({ ...prev, loadHeight: [
-      { step: 1, title: "Formül", formula: "h = SF × PL", explanation: "Müsaade edilen yük yüksekliği, istif faktörü ile izin verilen yükün çarpımıdır" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}` },
-      { step: 3, title: "Sonuç", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}`, result: `h = ${height.toFixed(2)} m` }
+      { step: 1, title: "Formula", formula: "h = SF × PL", explanation: "The permissible load height is the stacking factor multiplied by the permissible load" },
+      { step: 2, title: "Placement of values", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}` },
+      { step: 3, title: "Result", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}`, result: `h = ${height.toFixed(2)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Müsaade Edilen Yük Yüksekliği: ${height.toFixed(2)} m` });
+    toast({ title: "Calculation Completed", description: `Permissible Load Height: ${height.toFixed(2)} m` });
   };
 
   // Temperature Density Change
@@ -674,7 +674,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const coefficient = parseFloat(temperatureDensityInputs.coefficient);
     
     if (isNaN(oldDensity) || isNaN(oldTemp) || isNaN(newTemp) || isNaN(coefficient)) {
-      toast({ title: "Hata", description: "Lütfen geçerli sayısal değerler girin", variant: "destructive" });
+      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
       return;
     }
     
@@ -682,12 +682,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setTemperatureDensityResult(newDensity);
     const tempDiff = newTemp - oldTemp;
     setCalcSteps(prev => ({ ...prev, temperatureDensity: [
-      { step: 1, title: "Formül", formula: "ρyeni = ρeski - (ΔT × k)", explanation: "Sıcaklık değişiminin yoğunluğa etkisi, sıcaklık farkı ile katsayının çarpımıyla hesaplanır" },
-      { step: 2, title: "Sıcaklık farkı", formula: `ΔT = Tyeni - Teski = ${newTemp.toFixed(1)} - ${oldTemp.toFixed(1)} = ${tempDiff.toFixed(1)} °C` },
-      { step: 3, title: "Değerlerin yerleştirilmesi", formula: `ρyeni = ${oldDensity.toFixed(4)} - (${tempDiff.toFixed(1)} × ${coefficient.toFixed(4)})`, substitution: `ρyeni = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}` },
-      { step: 4, title: "Sonuç", formula: `ρyeni = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}`, result: `ρyeni = ${newDensity.toFixed(4)} ton/m³` }
+      { step: 1, title: "Formula", formula: "ρnew = ρold - (ΔT × k)", explanation: "The effect of temperature change on density is calculated by multiplying the temperature difference and the coefficient" },
+      { step: 2, title: "temperature difference", formula: `ΔT = Tyeni - Teski = ${newTemp.toFixed(1)} - ${oldTemp.toFixed(1)} = ${tempDiff.toFixed(1)} °C` },
+      { step: 3, title: "Placement of values", formula: `ρnew = ${oldDensity.toFixed(4)} - (${tempDiff.toFixed(1)} × ${coefficient.toFixed(4)})`, substitution: `ρnew = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}` },
+      { step: 4, title: "Result", formula: `ρnew = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}`, result: `ρnew = ${newDensity.toFixed(4)} ton/m³` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Yeni Yoğunluk: ${newDensity.toFixed(4)} ton/m³` });
+    toast({ title: "Calculation Completed", description: `New Density: ${newDensity.toFixed(4)} ton/m³` });
   };
 
   // Enine Ek Fonksiyonlar
@@ -696,34 +696,34 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const d = parseFloat(gg1Inputs.distance);
     const delta = parseFloat(gg1Inputs.displacement);
     if (isNaN(w) || isNaN(d) || isNaN(delta) || delta === 0) {
-      toast({ title: "Hata", description: "Geçerli w, d, Δ girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid w, d, Δ", variant: "destructive" });
       return;
     }
     const gg1 = (w * d) / delta;
     setGg1Result(gg1);
     setCalcSteps(prev => ({ ...prev, gg1: [
-      { step: 1, title: "Formül", formula: "GG₁ = (w × d) / Δ", explanation: "Ağırlık merkezi kayması, taşınan ağırlık ve mesafe çarpımının deplasmanla oranıdır" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `GG₁ = (${w.toFixed(2)} × ${d.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}`, result: `GG₁ = ${gg1.toFixed(4)} m` }
+      { step: 1, title: "Formula", formula: "GG₁ = (w × d) / Δ", explanation: "Center of gravity shift is the ratio of the weight carried and the distance multiplied by the displacement" },
+      { step: 2, title: "Placement of values", formula: `GG₁ = (${w.toFixed(2)} × ${d.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}`, result: `GG₁ = ${gg1.toFixed(4)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `GG₁ = ${gg1.toFixed(4)} m` });
+    toast({ title: "Calculation Completed", description: `GG₁ = ${gg1.toFixed(4)} m` });
   };
 
   const calculatePendulumAngle = () => {
     const L = parseFloat(pendulumInputs.pendulumLength);
     const x = parseFloat(pendulumInputs.deflection);
     if (isNaN(L) || isNaN(x) || L === 0) {
-      toast({ title: "Hata", description: "Geçerli sarkaç boyu ve sapma girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid pendulum length and deviation", variant: "destructive" });
       return;
     }
     const angle = Math.atan(x / L) * (180 / Math.PI);
     setPendulumResult(angle);
     setCalcSteps(prev => ({ ...prev, pendulumAngle: [
-      { step: 1, title: "Formül", formula: "θ = arctan(sapma / sarkaç boyu) × (180/π)", explanation: "Sarkaç yöntemiyle meyil açısı, sapmanın sarkaç boyuna oranının arctanjantıdır" },
-      { step: 2, title: "Oran hesabı", formula: `sapma / boy = ${x.toFixed(3)} / ${L.toFixed(3)} = ${(x/L).toFixed(6)}` },
-      { step: 3, title: "Sonuç", formula: `θ = arctan(${(x/L).toFixed(6)}) × 57.2958`, result: `θ ≈ ${angle.toFixed(2)}°` }
+      { step: 1, title: "Formula", formula: "θ = arctan(deviation / pendulum length) × (180/π)", explanation: "With the pendulum method, the angle of inclination is the arctangent of the ratio of the declination to the length of the pendulum" },
+      { step: 2, title: "rate calculation", formula: `sapma / boy = ${x.toFixed(3)} / ${L.toFixed(3)} = ${(x/L).toFixed(6)}` },
+      { step: 3, title: "Result", formula: `θ = arctan(${(x/L).toFixed(6)}) × 57.2958`, result: `θ ≈ ${angle.toFixed(2)}°` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Meyil Açısı ≈ ${angle.toFixed(2)}°` });
+    toast({ title: "Calculation Completed", description: `Inclination Angle ≈ ${angle.toFixed(2)}°` });
   };
 
   const calculateCraneVertical = () => {
@@ -732,19 +732,19 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const hLoad = parseFloat(craneVerticalInputs.loadHeight);
     const delta = parseFloat(craneVerticalInputs.displacement);
     if (isNaN(w) || isNaN(hHook) || isNaN(hLoad) || isNaN(delta) || delta === 0) {
-      toast({ title: "Hata", description: "Geçerli w, hcunda, hyük, Δ girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid w, hcunda, hyük, Δ", variant: "destructive" });
       return;
     }
     const heightDiff = hHook - hLoad;
     const deltaKG = (w * heightDiff) / delta; // meters
     setCraneVerticalResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, craneVertical: [
-      { step: 1, title: "Formül", formula: "ΔKG = (w × (hcunda - hyük)) / Δ", explanation: "Vinç ile dikey kaldırmada KG değişimi, ağırlık ile yükseklik farkının deplasmanla oranıdır" },
-      { step: 2, title: "Yükseklik farkı", formula: `hcunda - hyük = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
-      { step: 3, title: "Değerlerin yerleştirilmesi", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
-      { step: 4, title: "Sonuç", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
+      { step: 1, title: "Formula", formula: "ΔKG = (w × (hcunda - hyük)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
+      { step: 2, title: "height difference", formula: `hcunda - hyük = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
+      { step: 3, title: "Placement of values", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
+      { step: 4, title: "Result", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `ΔKG (dikey kaldırma) = ${deltaKG.toFixed(4)} m` });
+    toast({ title: "Calculation Completed", description: `ΔKG (vertical lift) = ${deltaKG.toFixed(4)} m` });
   };
 
   const calculateDrydockReaction = () => {
@@ -754,7 +754,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const km = parseFloat(drydockReactionInputs.km);
     const delta = parseFloat(drydockReactionInputs.displacement);
     if (isNaN(mct1cm) || isNaN(trimCm) || isNaN(t) || t === 0) {
-      toast({ title: "Hata", description: "Geçerli MCT1cm, Trim(cm), t girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid MCT1cm, Trim(cm), t", variant: "destructive" });
       return;
     }
     const P = (mct1cm * trimCm) / t; // tonnes
@@ -764,15 +764,15 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     }
     setDrydockReactionResult({ P, gmCritical });
     const drydockSteps: CalculationStep[] = [
-      { step: 1, title: "Formül", formula: "P = (MCT1cm × Trimcm) / t", explanation: "Kuru havuz omurga basıncı (P), MCT1cm ve trim çarpımının takoz mesafesine bölünmesiyle bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `P = (${mct1cm.toFixed(2)} × ${trimCm.toFixed(2)}) / ${t.toFixed(2)}`, substitution: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "P = (MCT1cm × Trimcm) / t", explanation: "Dry dock keel pressure (P) is the product of MCT1cm and trim divided by the wedge distance" },
+      { step: 2, title: "Placement of values", formula: `P = (${mct1cm.toFixed(2)} × ${trimCm.toFixed(2)}) / ${t.toFixed(2)}`, substitution: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}` },
       { step: 3, title: "P sonucu", formula: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}`, result: `P = ${P.toFixed(2)} ton` },
     ];
     if (gmCritical != null) {
       drydockSteps.push({ step: 4, title: "Kritik GM", formula: "GMk = (P × KM) / Δ", substitution: `GMk = (${P.toFixed(2)} × ${km.toFixed(3)}) / ${delta.toFixed(2)}`, result: `GMk = ${gmCritical.toFixed(3)} m` });
     }
     setCalcSteps(prev => ({ ...prev, drydockReaction: drydockSteps }));
-    toast({ title: "Hesaplama Tamamlandı", description: `P = ${P.toFixed(2)} ton${gmCritical != null ? `, GM_k = ${gmCritical.toFixed(3)} m` : ''}` });
+    toast({ title: "Calculation Completed", description: `P = ${P.toFixed(2)} ton${gmCritical != null ? `, GM_k = ${gmCritical.toFixed(3)} m` : ''}` });
   };
 
   const calculateFSMRect = () => {
@@ -781,7 +781,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const rho = parseFloat(fsmRectInputs.rho);
     const delta = parseFloat(fsmRectInputs.displacement);
     if (isNaN(L) || isNaN(B) || isNaN(rho)) {
-      toast({ title: "Hata", description: "Geçerli L, B, ρ girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid L, B, ρ", variant: "destructive" });
       return;
     }
     const b3 = Math.pow(B, 3);
@@ -793,16 +793,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     }
     setFsmRectResult(result);
     const fsmSteps: CalculationStep[] = [
-      { step: 1, title: "Formül", formula: "FSM = (L × B³ / 12) × ρ", explanation: "Dikdörtgen tank için serbest yüzey momenti hesaplanır" },
-      { step: 2, title: "B³ hesabı", formula: `B³ = ${B.toFixed(2)}³ = ${b3.toFixed(2)}` },
-      { step: 3, title: "Ixx hesabı", formula: `Ixx = ${L.toFixed(2)} × ${b3.toFixed(2)} / 12 = ${ixx.toFixed(2)} m⁴` },
-      { step: 4, title: "FSM hesabı", formula: `FSM = ${ixx.toFixed(2)} × ${rho.toFixed(3)}`, result: `FSM = ${fsm.toFixed(2)} t·m` },
+      { step: 1, title: "Formula", formula: "FSM = (L × B³ / 12) × ρ", explanation: "Calculate free surface moment for rectangular tank" },
+      { step: 2, title: "B³ account", formula: `B³ = ${B.toFixed(2)}³ = ${b3.toFixed(2)}` },
+      { step: 3, title: "Ixx account", formula: `Ixx = ${L.toFixed(2)} × ${b3.toFixed(2)} / 12 = ${ixx.toFixed(2)} m⁴` },
+      { step: 4, title: "FSM account", formula: `FSM = ${ixx.toFixed(2)} × ${rho.toFixed(3)}`, result: `FSM = ${fsm.toFixed(2)} t·m` },
     ];
     if (result.deltaKG != null) {
-      fsmSteps.push({ step: 5, title: "ΔKG hesabı", formula: "ΔKG = FSM / Δ", substitution: `ΔKG = ${fsm.toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${result.deltaKG.toFixed(4)} m` });
+      fsmSteps.push({ step: 5, title: "ΔKG calculation", formula: "ΔKG = FSM / Δ", substitution: `ΔKG = ${fsm.toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${result.deltaKG.toFixed(4)} m` });
     }
     setCalcSteps(prev => ({ ...prev, fsmRect: fsmSteps }));
-    toast({ title: "Hesaplama Tamamlandı", description: `FSM = ${fsm.toFixed(2)} t·m${result.deltaKG != null ? `, ΔKG = ${result.deltaKG.toFixed(4)} m` : ''}` });
+    toast({ title: "Calculation Completed", description: `FSM = ${fsm.toFixed(2)} t·m${result.deltaKG != null ? `, ΔKG = ${result.deltaKG.toFixed(4)} m` : ''}` });
   };
 
   const calculatePontoonDraftChange = () => {
@@ -812,22 +812,22 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const Ad = parseFloat(pontoonInputs.damagedArea);
     const rho = parseFloat(pontoonInputs.rho);
     if ([w, L, B, Ad, rho].some((v) => isNaN(v))) {
-      toast({ title: "Hata", description: "Geçerli w, L, B, yaralı alan ve ρ girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid w, L, B, injured area and ρ", variant: "destructive" });
       return;
     }
     const effectiveArea = Math.max(0, (L * B) - Ad);
     if (effectiveArea === 0 || rho === 0) {
-      toast({ title: "Hata", description: "Etkin alan ve yoğunluk sıfır olamaz", variant: "destructive" });
+      toast({ title: "Error", description: "Effective area and density cannot be zero", variant: "destructive" });
       return;
     }
     const deltaDraft = w / (effectiveArea * rho); // meters
     setPontoonResult(deltaDraft);
     setCalcSteps(prev => ({ ...prev, pontoon: [
-      { step: 1, title: "Formül", formula: "Δd = W / ((L×B - Ayaralı) × ρ)", explanation: "Yaralı durumda draft artışı, etkin alana ve yoğunluğa bağlıdır" },
-      { step: 2, title: "Etkin alan", formula: `Aetkin = L×B - Ayaralı = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
-      { step: 3, title: "Sonuç", formula: `Δd = ${w.toFixed(2)} / (${effectiveArea.toFixed(2)} × ${rho.toFixed(3)})`, result: `Δd = ${deltaDraft.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "Δd = W / ((L×B - Adjusted) × ρ)", explanation: "Draft increase in injured state depends on effective area and density" },
+      { step: 2, title: "Etkin alan", formula: `Aactive = L×B - Adjustable = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
+      { step: 3, title: "Result", formula: `Δd = ${w.toFixed(2)} / (${effectiveArea.toFixed(2)} × ${rho.toFixed(3)})`, result: `Δd = ${deltaDraft.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `Δd = ${deltaDraft.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `Δd = ${deltaDraft.toFixed(3)} m` });
   };
 
   // 1. Ortalama Draft
@@ -835,84 +835,84 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const dF = parseFloat(meanDraftInputs.draftForward);
     const dA = parseFloat(meanDraftInputs.draftAft);
     if (isNaN(dF) || isNaN(dA)) {
-      toast({ title: "Hata", description: "Geçerli dF ve dA girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid dF and dA", variant: "destructive" });
       return;
     }
     const dM = (dF + dA) / 2;
     setMeanDraftResult(dM);
     setCalcSteps(prev => ({ ...prev, meanDraft: [
-      { step: 1, title: "Formül", formula: "dM = (dF + dA) / 2", explanation: "Ortalama draft, baş ve kıç draftların aritmetik ortalamasıdır" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `dM = (${dF.toFixed(3)} + ${dA.toFixed(3)}) / 2 = ${(dF+dA).toFixed(3)} / 2` },
-      { step: 3, title: "Sonuç", formula: `dM = ${(dF+dA).toFixed(3)} / 2`, result: `dM = ${dM.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "dM = (dF + dA) / 2", explanation: "Average draft is the arithmetic mean of fore and aft drafts" },
+      { step: 2, title: "Placement of values", formula: `dM = (${dF.toFixed(3)} + ${dA.toFixed(3)}) / 2 = ${(dF+dA).toFixed(3)} / 2` },
+      { step: 3, title: "Result", formula: `dM = ${(dF+dA).toFixed(3)} / 2`, result: `dM = ${dM.toFixed(3)} m` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `dM = ${dM.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `dM = ${dM.toFixed(3)} m` });
   };
 
   // 2. Temel bağıntılar ve ekler
   const calculateKmFromKgGm = () => {
     const kg = parseFloat(kmFromKgGmInputs.kg);
     const gm = parseFloat(kmFromKgGmInputs.gm);
-    if (isNaN(kg) || isNaN(gm)) { toast({ title: "Hata", description: "Geçerli KG ve GM girin", variant: "destructive" }); return; }
+    if (isNaN(kg) || isNaN(gm)) { toast({ title: "Error", description: "Enter valid KG and GM", variant: "destructive" }); return; }
     const km = kg + gm;
     setKmFromKgGmResult(km);
     setCalcSteps(prev => ({ ...prev, kmFromKgGm: [
-      { step: 1, title: "Formül", formula: "KM = KG + GM", explanation: "Metacenter yüksekliği, ağırlık merkezi ile metacentrik yüksekliğin toplamıdır" },
-      { step: 2, title: "Sonuç", formula: `KM = ${kg.toFixed(3)} + ${gm.toFixed(3)}`, result: `KM = ${km.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "KM = KG + GM", explanation: "Metacenter height is the sum of the center of gravity and the metacentric height" },
+      { step: 2, title: "Result", formula: `KM = ${kg.toFixed(3)} + ${gm.toFixed(3)}`, result: `KM = ${km.toFixed(3)} m` }
     ] }));
-    toast({ title: "KM Hesaplandı", description: `KM = ${km.toFixed(3)} m` });
+    toast({ title: "KM Calculated", description: `KM = ${km.toFixed(3)} m` });
   };
 
   const calculateKmFromKbBm = () => {
     const kb = parseFloat(kmFromKbBmInputs.kb);
     const bm = parseFloat(kmFromKbBmInputs.bm);
-    if (isNaN(kb) || isNaN(bm)) { toast({ title: "Hata", description: "Geçerli KB ve BM girin", variant: "destructive" }); return; }
+    if (isNaN(kb) || isNaN(bm)) { toast({ title: "Error", description: "Enter valid KB and BM", variant: "destructive" }); return; }
     const km = kb + bm;
     setKmFromKbBmResult(km);
     setCalcSteps(prev => ({ ...prev, kmFromKbBm: [
-      { step: 1, title: "Formül", formula: "KM = KB + BM", explanation: "KM, yüzdürme merkezinden (KB) metacentrik yarıçapın (BM) eklenmesiyle bulunur" },
-      { step: 2, title: "Sonuç", formula: `KM = ${kb.toFixed(3)} + ${bm.toFixed(3)}`, result: `KM = ${km.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "KM = KB + BM", explanation: "KM is found by adding the metacentric radius (BM) from the center of buoyancy (KB)" },
+      { step: 2, title: "Result", formula: `KM = ${kb.toFixed(3)} + ${bm.toFixed(3)}`, result: `KM = ${km.toFixed(3)} m` }
     ] }));
-    toast({ title: "KM Hesaplandı", description: `KM = ${km.toFixed(3)} m` });
+    toast({ title: "KM Calculated", description: `KM = ${km.toFixed(3)} m` });
   };
 
   const calculateGmFromKmKg = () => {
     const km = parseFloat(gmFromKmKgInputs.km);
     const kg = parseFloat(gmFromKmKgInputs.kg);
-    if (isNaN(km) || isNaN(kg)) { toast({ title: "Hata", description: "Geçerli KM ve KG girin", variant: "destructive" }); return; }
+    if (isNaN(km) || isNaN(kg)) { toast({ title: "Error", description: "Enter valid KM and KG", variant: "destructive" }); return; }
     const gm = km - kg;
     setGmFromKmKgResult(gm);
     setCalcSteps(prev => ({ ...prev, gmFromKmKg: [
-      { step: 1, title: "Formül", formula: "GM = KM - KG", explanation: "Metacentrik yükseklik, KM'den ağırlık merkezi yüksekliğinin (KG) çıkarılmasıyla bulunur" },
-      { step: 2, title: "Sonuç", formula: `GM = ${km.toFixed(3)} - ${kg.toFixed(3)}`, result: `GM = ${gm.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "GM = KM - KG", explanation: "Metacentric height is found by subtracting the center of gravity height (KG) from KM" },
+      { step: 2, title: "Result", formula: `GM = ${km.toFixed(3)} - ${kg.toFixed(3)}`, result: `GM = ${gm.toFixed(3)} m` }
     ] }));
-    toast({ title: "GM Hesaplandı", description: `GM = ${gm.toFixed(3)} m` });
+    toast({ title: "GM Calculated", description: `GM = ${gm.toFixed(3)} m` });
   };
 
   const calculateMoment = () => {
     const weight = parseFloat(momentInputs.weight);
     const kgDistance = parseFloat(momentInputs.kgDistance);
-    if (isNaN(weight) || isNaN(kgDistance)) { toast({ title: "Hata", description: "Geçerli ağırlık ve KG mesafesi girin", variant: "destructive" }); return; }
+    if (isNaN(weight) || isNaN(kgDistance)) { toast({ title: "Error", description: "Enter valid weight and KG distance", variant: "destructive" }); return; }
     const moment = weight * kgDistance;
     setMomentResult(moment);
     setCalcSteps(prev => ({ ...prev, moment: [
-      { step: 1, title: "Formül", formula: "Moment = W × KG", explanation: "Moment, ağırlık ile ağırlık merkezi mesafesinin çarpımıdır" },
-      { step: 2, title: "Sonuç", formula: `Moment = ${weight.toFixed(2)} × ${kgDistance.toFixed(2)}`, result: `Moment = ${moment.toFixed(2)} t·m` }
+      { step: 1, title: "Formula", formula: "Moment = W × KG", explanation: "Moment is the product of weight times the distance from the center of gravity" },
+      { step: 2, title: "Result", formula: `Moment = ${weight.toFixed(2)} × ${kgDistance.toFixed(2)}`, result: `Moment = ${moment.toFixed(2)} t·m` }
     ] }));
-    toast({ title: "Moment Hesaplandı", description: `Moment = ${moment.toFixed(2)} t·m` });
+    toast({ title: "Moment Calculated", description: `Moment = ${moment.toFixed(2)} t·m` });
   };
 
   const calculateDeltaGMShift = () => {
     const w = parseFloat(deltaGMShiftInputs.weight);
     const d = parseFloat(deltaGMShiftInputs.distance);
     const Delta = parseFloat(deltaGMShiftInputs.displacement);
-    if ([w, d, Delta].some(isNaN) || Delta === 0) { toast({ title: "Hata", description: "Geçerli w, d, Δ girin", variant: "destructive" }); return; }
+    if ([w, d, Delta].some(isNaN) || Delta === 0) { toast({ title: "Error", description: "Enter valid w, d, Δ", variant: "destructive" }); return; }
     const deltaGM = (w * d) / Delta;
     setDeltaGMShiftResult(deltaGM);
     setCalcSteps(prev => ({ ...prev, deltaGMShift: [
-      { step: 1, title: "Formül", formula: "ΔGM = (w × d) / Δ", explanation: "Ağırlık kaydırmasından kaynaklanan GM değişimi" },
-      { step: 2, title: "Sonuç", formula: `ΔGM = (${w.toFixed(2)} × ${d.toFixed(2)}) / ${Delta.toFixed(2)}`, result: `ΔGM = ${deltaGM.toFixed(4)} m` }
+      { step: 1, title: "Formula", formula: "ΔGM = (w × d) / Δ", explanation: "GM change due to weight shift" },
+      { step: 2, title: "Result", formula: `ΔGM = (${w.toFixed(2)} × ${d.toFixed(2)}) / ${Delta.toFixed(2)}`, result: `ΔGM = ${deltaGM.toFixed(4)} m` }
     ] }));
-    toast({ title: "ΔGM Hesaplandı", description: `ΔGM = ${deltaGM.toFixed(4)} m` });
+    toast({ title: "ΔGM Calculated", description: `ΔGM = ${deltaGM.toFixed(4)} m` });
   };
 
   const calculateHeelFromWY = () => {
@@ -920,56 +920,56 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const y = parseFloat(heelWyInputs.lever);
     const Delta = parseFloat(heelWyInputs.displacement);
     const gm = parseFloat(heelWyInputs.gm);
-    if ([w, y, Delta, gm].some(isNaN) || Delta === 0 || gm === 0) { toast({ title: "Hata", description: "Geçerli w, y, Δ, GM girin", variant: "destructive" }); return; }
+    if ([w, y, Delta, gm].some(isNaN) || Delta === 0 || gm === 0) { toast({ title: "Error", description: "Enter valid w, y, Δ, GM", variant: "destructive" }); return; }
     const gz = (w * y) / Delta;
     const angle = Math.atan(gz / gm) * (180 / Math.PI);
     setHeelWyResults({ gz, angle });
     setCalcSteps(prev => ({ ...prev, heelWy: [
-      { step: 1, title: "GZ hesabı", formula: "GZ = (w × y) / Δ", substitution: `GZ = (${w.toFixed(2)} × ${y.toFixed(2)}) / ${Delta.toFixed(2)}`, result: `GZ = ${gz.toFixed(4)} m` },
-      { step: 2, title: "Meyil açısı", formula: "θ = arctan(GZ / GM) × (180/π)", substitution: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(3)}) × 57.2958`, result: `θ = ${angle.toFixed(2)}°` }
+      { step: 1, title: "GZ account", formula: "GZ = (w × y) / Δ", substitution: `GZ = (${w.toFixed(2)} × ${y.toFixed(2)}) / ${Delta.toFixed(2)}`, result: `GZ = ${gz.toFixed(4)} m` },
+      { step: 2, title: "angle of inclination", formula: "θ = arctan(GZ / GM) × (180/π)", substitution: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(3)}) × 57.2958`, result: `θ = ${angle.toFixed(2)}°` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `GZ = ${gz.toFixed(4)} m, θ = ${angle.toFixed(2)}°` });
+    toast({ title: "Calculation Completed", description: `GZ = ${gz.toFixed(4)} m, θ = ${angle.toFixed(2)}°` });
   };
 
   // 3. Boyuna ekleri
   const calculateLcgSimple = () => {
     const totalMoment = parseFloat(lcgSimpleInputs.totalMoment);
     const totalWeight = parseFloat(lcgSimpleInputs.totalWeight);
-    if (isNaN(totalMoment) || isNaN(totalWeight) || totalWeight === 0) { toast({ title: "Hata", description: "Geçerli moment ve toplam ağırlık girin", variant: "destructive" }); return; }
+    if (isNaN(totalMoment) || isNaN(totalWeight) || totalWeight === 0) { toast({ title: "Error", description: "Enter valid moment and total weight", variant: "destructive" }); return; }
     const lcg = totalMoment / totalWeight;
     setLcgSimpleResult(lcg);
     setCalcSteps(prev => ({ ...prev, lcgSimple: [
-      { step: 1, title: "Formül", formula: "LCG = ΣM / ΣW", explanation: "Boyuna ağırlık merkezi, toplam momentin toplam ağırlığa bölünmesiyle bulunur" },
-      { step: 2, title: "Sonuç", formula: `LCG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}`, result: `LCG = ${lcg.toFixed(2)} m` }
+      { step: 1, title: "Formula", formula: "LCG = ΣM / ΣW", explanation: "Longitudinal center of gravity is calculated by dividing the total moment by the total weight" },
+      { step: 2, title: "Result", formula: `LCG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}`, result: `LCG = ${lcg.toFixed(2)} m` }
     ] }));
-    toast({ title: "LCG Hesaplandı", description: `LCG = ${lcg.toFixed(2)} m` });
+    toast({ title: "LCG Calculated", description: `LCG = ${lcg.toFixed(2)} m` });
   };
 
   const calculateTrimFromBg = () => {
     const Delta = parseFloat(trimBgInputs.displacement);
     const bg = parseFloat(trimBgInputs.bg);
     const mct = parseFloat(trimBgInputs.mct);
-    if ([Delta, bg, mct].some(isNaN) || mct === 0) { toast({ title: "Hata", description: "Geçerli Δ, BG, MCT girin", variant: "destructive" }); return; }
+    if ([Delta, bg, mct].some(isNaN) || mct === 0) { toast({ title: "Error", description: "Enter valid Δ, BG, MCT", variant: "destructive" }); return; }
     const trimCm = (Delta * bg) / mct;
     setTrimBgResult(trimCm);
     setCalcSteps(prev => ({ ...prev, trimBg: [
-      { step: 1, title: "Formül", formula: "Trim = (Δ × BG) / MCT", explanation: "Trim miktarı, deplasmanla BG mesafesi çarpımının MCT'ye bölünmesiyle bulunur" },
-      { step: 2, title: "Sonuç", formula: `Trim = (${Delta.toFixed(2)} × ${bg.toFixed(3)}) / ${mct.toFixed(2)}`, result: `Trim = ${trimCm.toFixed(2)} cm` }
+      { step: 1, title: "Formula", formula: "Trim = (Δ × BG) / MCT", explanation: "The trim amount is calculated by multiplying the displacement times the BG distance and dividing it by the MCT." },
+      { step: 2, title: "Result", formula: `Trim = (${Delta.toFixed(2)} × ${bg.toFixed(3)}) / ${mct.toFixed(2)}`, result: `Trim = ${trimCm.toFixed(2)} cm` }
     ] }));
-    toast({ title: "Trim Hesaplandı", description: `Trim = ${trimCm.toFixed(2)} cm` });
+    toast({ title: "Trim Calculated", description: `Trim = ${trimCm.toFixed(2)} cm` });
   };
 
   const calculateHalfTrimDrafts = () => {
     const deltaTrim = parseFloat(draftHalfTrimInputs.deltaTrim);
-    if (isNaN(deltaTrim)) { toast({ title: "Hata", description: "Geçerli trim (cm) girin", variant: "destructive" }); return; }
+    if (isNaN(deltaTrim)) { toast({ title: "Error", description: "Enter valid trim (cm)", variant: "destructive" }); return; }
     const dF = -deltaTrim / 2;
     const dA = +deltaTrim / 2;
     setDraftHalfTrimResults({ dF, dA });
     setCalcSteps(prev => ({ ...prev, halfTrimDrafts: [
-      { step: 1, title: "Formül", formula: "ΔdF = -Trim/2, ΔdA = +Trim/2", explanation: "Trim, eşit olarak baş ve kıça dağıtılır (LCF ortada varsayımı)" },
-      { step: 2, title: "Sonuç", formula: `ΔdF = -${deltaTrim.toFixed(1)}/2 = ${dF.toFixed(1)} cm`, result: `ΔdA = +${deltaTrim.toFixed(1)}/2 = ${dA.toFixed(1)} cm` }
+      { step: 1, title: "Formula", formula: "ΔdF = -Trim/2, ΔdA = +Trim/2", explanation: "Trim is distributed equally fore and aft (LCF midway assumption)" },
+      { step: 2, title: "Result", formula: `ΔdF = -${deltaTrim.toFixed(1)}/2 = ${dF.toFixed(1)} cm`, result: `ΔdA = +${deltaTrim.toFixed(1)}/2 = ${dA.toFixed(1)} cm` }
     ] }));
-    toast({ title: "Dağılım", description: `ΔdF = ${dF.toFixed(1)} cm, ΔdA = ${dA.toFixed(1)} cm` });
+    toast({ title: "distribution", description: `ΔdF = ${dF.toFixed(1)} cm, ΔdA = ${dA.toFixed(1)} cm` });
   };
 
   // 5. Diğer
@@ -978,54 +978,54 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const B = parseFloat(volumeMassInputs.breadth);
     const H = parseFloat(volumeMassInputs.height);
     const rho = parseFloat(volumeMassInputs.rho);
-    if ([L, B, H, rho].some(isNaN)) { toast({ title: "Hata", description: "Geçerli L, B, H, ρ girin", variant: "destructive" }); return; }
+    if ([L, B, H, rho].some(isNaN)) { toast({ title: "Error", description: "Enter valid L, B, H, ρ", variant: "destructive" }); return; }
     const V = L * B * H;
     const m = V * rho;
     setVolumeMassResults({ V, m });
     setCalcSteps(prev => ({ ...prev, volumeMass: [
-      { step: 1, title: "Hacim hesabı", formula: `V = L × B × H = ${L.toFixed(2)} × ${B.toFixed(2)} × ${H.toFixed(2)}`, result: `V = ${V.toFixed(3)} m³` },
-      { step: 2, title: "Kütle hesabı", formula: `m = V × ρ = ${V.toFixed(3)} × ${rho.toFixed(3)}`, result: `m = ${m.toFixed(2)} t` }
+      { step: 1, title: "volume calculation", formula: `V = L × B × H = ${L.toFixed(2)} × ${B.toFixed(2)} × ${H.toFixed(2)}`, result: `V = ${V.toFixed(3)} m³` },
+      { step: 2, title: "mass calculation", formula: `m = V × ρ = ${V.toFixed(3)} × ${rho.toFixed(3)}`, result: `m = ${m.toFixed(2)} t` }
     ] }));
-    toast({ title: "Hesaplama Tamamlandı", description: `V = ${V.toFixed(3)} m³, m = ${m.toFixed(2)} t` });
+    toast({ title: "Calculation Completed", description: `V = ${V.toFixed(3)} m³, m = ${m.toFixed(2)} t` });
   };
 
   const calculateDensityDraftChange = () => {
     const fwa = parseFloat(densityDraftInputs.fwa);
     const rho = parseFloat(densityDraftInputs.rho);
-    if (isNaN(fwa) || isNaN(rho)) { toast({ title: "Hata", description: "Geçerli FWA ve ρ girin", variant: "destructive" }); return; }
+    if (isNaN(fwa) || isNaN(rho)) { toast({ title: "Error", description: "Enter valid FWA and ρ", variant: "destructive" }); return; }
     const deltaT = (fwa * (1025 - rho * 1000)) / 25;
     setDensityDraftResult(deltaT);
     setCalcSteps(prev => ({ ...prev, densityDraft: [
-      { step: 1, title: "Formül", formula: "ΔT = FWA × (1025 - ρ×1000) / 25", explanation: "Yoğunluk değişiminden kaynaklanan draft farkı hesaplanır" },
-      { step: 2, title: "Sonuç", formula: `ΔT = ${fwa.toFixed(1)} × (1025 - ${(rho*1000).toFixed(0)}) / 25 = ${fwa.toFixed(1)} × ${(1025-rho*1000).toFixed(0)} / 25`, result: `ΔT ≈ ${deltaT.toFixed(1)} mm` }
+      { step: 1, title: "Formula", formula: "ΔT = FWA × (1025 - ρ×1000) / 25", explanation: "The draft difference resulting from the density change is calculated" },
+      { step: 2, title: "Result", formula: `ΔT = ${fwa.toFixed(1)} × (1025 - ${(rho*1000).toFixed(0)}) / 25 = ${fwa.toFixed(1)} × ${(1025-rho*1000).toFixed(0)} / 25`, result: `ΔT ≈ ${deltaT.toFixed(1)} mm` }
     ] }));
-    toast({ title: "Draft Değişimi", description: `ΔT ≈ ${deltaT.toFixed(1)} mm` });
+    toast({ title: "Draft Change", description: `ΔT ≈ ${deltaT.toFixed(1)} mm` });
   };
 
   // 6. SOLAS
   const calculateGHM = () => {
     const vhm = parseFloat(ghmInputs.vhm);
     const sf = parseFloat(ghmInputs.sf);
-    if (isNaN(vhm) || isNaN(sf) || sf === 0) { toast({ title: "Hata", description: "Geçerli VHM ve SF girin", variant: "destructive" }); return; }
+    if (isNaN(vhm) || isNaN(sf) || sf === 0) { toast({ title: "Error", description: "Enter valid VHM and SF", variant: "destructive" }); return; }
     const ghm = vhm / sf;
     setGhmResult(ghm);
     setCalcSteps(prev => ({ ...prev, ghm: [
-      { step: 1, title: "Formül", formula: "GHM = VHM / SF", explanation: "Grain Heeling Moment, Volumetrik HM'nin istif faktörüne bölünmesiyle bulunur" },
-      { step: 2, title: "Sonuç", formula: `GHM = ${vhm.toFixed(2)} / ${sf.toFixed(2)}`, result: `GHM = ${ghm.toFixed(2)} t·m` }
+      { step: 1, title: "Formula", formula: "GHM = VHM / SF", explanation: "Grain Heeling Moment is found by dividing the Volumetric HM by the stacking factor" },
+      { step: 2, title: "Result", formula: `GHM = ${vhm.toFixed(2)} / ${sf.toFixed(2)}`, result: `GHM = ${ghm.toFixed(2)} t·m` }
     ] }));
-    toast({ title: "GHM Hesaplandı", description: `GHM = ${ghm.toFixed(2)} t·m` });
+    toast({ title: "GHM Calculated", description: `GHM = ${ghm.toFixed(2)} t·m` });
   };
 
   const calculateSimpson13 = () => {
     const { h, y0, y1, y2, y3, y4 } = simpson13Inputs;
     const hh = parseFloat(h); const Y0 = parseFloat(y0); const Y1 = parseFloat(y1); const Y2 = parseFloat(y2); const Y3 = parseFloat(y3); const Y4 = parseFloat(y4);
-    if ([hh, Y0, Y1, Y2, Y3, Y4].some(isNaN)) { toast({ title: "Hata", description: "Geçerli h ve y değerleri girin", variant: "destructive" }); return; }
+    if ([hh, Y0, Y1, Y2, Y3, Y4].some(isNaN)) { toast({ title: "Error", description: "Enter valid h and y values", variant: "destructive" }); return; }
     const A = (hh / 3) * (Y0 + 4 * Y1 + 2 * Y2 + 4 * Y3 + Y4);
     setSimpson13Result(A);
     setCalcSteps(prev => ({ ...prev, simpson13: [
-      { step: 1, title: "Formül", formula: "A = (h/3) × [y₀ + 4y₁ + 2y₂ + 4y₃ + y₄]", explanation: "Simpson 1/3 kuralı ile alan hesabı" },
-      { step: 2, title: "Köşeli parantez", formula: `[${Y0} + 4×${Y1} + 2×${Y2} + 4×${Y3} + ${Y4}]`, result: `= ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}` },
-      { step: 3, title: "Sonuç", formula: `A = (${hh}/3) × ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}`, result: `A = ${A.toFixed(4)}` }
+      { step: 1, title: "Formula", formula: "A = (h/3) × [y₀ + 4y₁ + 2y₂ + 4y₃ + y₄]", explanation: "Area calculation with Simpson's 1/3 rule" },
+      { step: 2, title: "square brackets", formula: `[${Y0} + 4×${Y1} + 2×${Y2} + 4×${Y3} + ${Y4}]`, result: `= ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}` },
+      { step: 3, title: "Result", formula: `A = (${hh}/3) × ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}`, result: `A = ${A.toFixed(4)}` }
     ] }));
     toast({ title: "Simpson 1/3", description: `A = ${A.toFixed(4)}` });
   };
@@ -1033,13 +1033,13 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
   const calculateSimpson38 = () => {
     const { h, y0, y1, y2, y3 } = simpson38Inputs;
     const hh = parseFloat(h); const Y0 = parseFloat(y0); const Y1 = parseFloat(y1); const Y2 = parseFloat(y2); const Y3 = parseFloat(y3);
-    if ([hh, Y0, Y1, Y2, Y3].some(isNaN)) { toast({ title: "Hata", description: "Geçerli h ve y değerleri girin", variant: "destructive" }); return; }
+    if ([hh, Y0, Y1, Y2, Y3].some(isNaN)) { toast({ title: "Error", description: "Enter valid h and y values", variant: "destructive" }); return; }
     const A = (3 * hh / 8) * (Y0 + 3 * Y1 + 3 * Y2 + Y3);
     setSimpson38Result(A);
     setCalcSteps(prev => ({ ...prev, simpson38: [
-      { step: 1, title: "Formül", formula: "A = (3h/8) × [y₀ + 3y₁ + 3y₂ + y₃]", explanation: "Simpson 3/8 kuralı ile alan hesabı" },
-      { step: 2, title: "Köşeli parantez", formula: `[${Y0} + 3×${Y1} + 3×${Y2} + ${Y3}]`, result: `= ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}` },
-      { step: 3, title: "Sonuç", formula: `A = (3×${hh}/8) × ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}`, result: `A = ${A.toFixed(4)}` }
+      { step: 1, title: "Formula", formula: "A = (3h/8) × [y₀ + 3y₁ + 3y₂ + y₃]", explanation: "Area calculation with Simpson's 3/8 rule" },
+      { step: 2, title: "square brackets", formula: `[${Y0} + 3×${Y1} + 3×${Y2} + ${Y3}]`, result: `= ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}` },
+      { step: 3, title: "Result", formula: `A = (3×${hh}/8) × ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}`, result: `A = ${A.toFixed(4)}` }
     ] }));
     toast({ title: "Simpson 3/8", description: `A = ${A.toFixed(4)}` });
   };
@@ -1052,18 +1052,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const rhoSea = parseFloat(fsmGroupInputs.rhoSea);
     const n = parseFloat(fsmGroupInputs.n);
     if ([L, B, V, rhoFluid, rhoSea, n].some(isNaN) || V === 0 || rhoSea === 0 || n === 0) {
-      toast({ title: "Hata", description: "Geçerli L, B, V, ρsıvı, ρdeniz, n girin", variant: "destructive" }); return; }
+      toast({ title: "Error", description: "Enter valid L, B, V, ρliquid, ρsea, n", variant: "destructive" }); return; }
     const ixx = L * Math.pow(B, 3) / 12;
     const deltaKG = (ixx / V) * (rhoFluid / rhoSea) * (1 / (n * n));
     setFsmGroupResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, fsmGroup: [
-      { step: 1, title: "Formül", formula: "ΔKG = (L×B³/12/V) × (ρsıvı/ρdeniz) × (1/n²)", explanation: "Bölünmüş tank için serbest yüzey etkisiyle KG değişimi" },
-      { step: 2, title: "Ixx hesabı", formula: `Ixx = ${L.toFixed(2)} × ${B.toFixed(2)}³ / 12 = ${ixx.toFixed(2)} m⁴` },
-      { step: 3, title: "Yoğunluk oranı", formula: `ρsıvı/ρdeniz = ${rhoFluid.toFixed(3)} / ${rhoSea.toFixed(3)} = ${(rhoFluid/rhoSea).toFixed(4)}` },
-      { step: 4, title: "Bölme etkisi", formula: `1/n² = 1/${n.toFixed(0)}² = ${(1/(n*n)).toFixed(4)}` },
-      { step: 5, title: "Sonuç", formula: `ΔKG = (${ixx.toFixed(2)} / ${V.toFixed(2)}) × ${(rhoFluid/rhoSea).toFixed(4)} × ${(1/(n*n)).toFixed(4)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
+      { step: 1, title: "Formula", formula: "ΔKG = (L×B³/12/V) × (ρliquid/ρsea) × (1/n²)", explanation: "KG variation with free surface effect for split tank" },
+      { step: 2, title: "Ixx account", formula: `Ixx = ${L.toFixed(2)} × ${B.toFixed(2)}³ / 12 = ${ixx.toFixed(2)} m⁴` },
+      { step: 3, title: "Density ratio", formula: `ρliquid/ρsea = ${rhoFluid.toFixed(3)} / ${rhoSea.toFixed(3)} = ${(rhoFluid/rhoSea).toFixed(4)}` },
+      { step: 4, title: "splitting effect", formula: `1/n² = 1/${n.toFixed(0)}² = ${(1/(n*n)).toFixed(4)}` },
+      { step: 5, title: "Result", formula: `ΔKG = (${ixx.toFixed(2)} / ${V.toFixed(2)}) × ${(rhoFluid/rhoSea).toFixed(4)} × ${(1/(n*n)).toFixed(4)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
-    toast({ title: "Serbest Yüzey", description: `ΔKG = ${deltaKG.toFixed(4)} m` });
+    toast({ title: "Free Surface", description: `ΔKG = ${deltaKG.toFixed(4)} m` });
   };
 
   const calculateDamagedDraft = () => {
@@ -1071,66 +1071,66 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const L = parseFloat(damagedDraftInputs.length);
     const B = parseFloat(damagedDraftInputs.breadth);
     const Ld = parseFloat(damagedDraftInputs.damagedLength);
-    if ([w, L, B, Ld].some(isNaN)) { toast({ title: "Hata", description: "Geçerli w, L, B, Lyaralı girin", variant: "destructive" }); return; }
+    if ([w, L, B, Ld].some(isNaN)) { toast({ title: "Error", description: "Enter valid w, L, B, L injured", variant: "destructive" }); return; }
     const effectiveArea = (L * B) - (Ld * B);
-    if (effectiveArea <= 0) { toast({ title: "Hata", description: "Etkin alan > 0 olmalı", variant: "destructive" }); return; }
+    if (effectiveArea <= 0) { toast({ title: "Error", description: "Active area must be > 0", variant: "destructive" }); return; }
     const deltaT = w / effectiveArea; // m (assuming ρ≈1 t/m³)
     setDamagedDraftResult(deltaT);
     setCalcSteps(prev => ({ ...prev, damagedDraft: [
-      { step: 1, title: "Formül", formula: "ΔT = W / Aetkin", explanation: "Yaralı durumda draft değişimi, ağırlığın etkin su kesim alanına bölünmesiyle bulunur" },
-      { step: 2, title: "Etkin alan hesabı", formula: "Aetkin = (L × B) - (Lyaralı × B)", substitution: `Aetkin = (${L.toFixed(2)} × ${B.toFixed(2)}) - (${Ld.toFixed(2)} × ${B.toFixed(2)}) = ${effectiveArea.toFixed(2)} m²` },
-      { step: 3, title: "Sonuç", formula: `ΔT = ${w.toFixed(2)} / ${effectiveArea.toFixed(2)}`, result: `ΔT = ${deltaT.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "ΔT = W / Aetkin", explanation: "The change in draft in the injured state is calculated by dividing the weight by the effective wading area." },
+      { step: 2, title: "Active domain account", formula: "Aeffective = (L × B) - (Linjured × B)", substitution: `Aetkin = (${L.toFixed(2)} × ${B.toFixed(2)}) - (${Ld.toFixed(2)} × ${B.toFixed(2)}) = ${effectiveArea.toFixed(2)} m²` },
+      { step: 3, title: "Result", formula: `ΔT = ${w.toFixed(2)} / ${effectiveArea.toFixed(2)}`, result: `ΔT = ${deltaT.toFixed(3)} m` }
     ] }));
-    toast({ title: "Yaralı Stabilite", description: `ΔT = ${deltaT.toFixed(3)} m` });
+    toast({ title: "Injured Stability", description: `ΔT = ${deltaT.toFixed(3)} m` });
   };
 
   // 7. Yük – maksimum yük miktarı
   const calculateMaxCargo = () => {
     const Vh = parseFloat(maxCargoInputs.holdVolume);
     const SF = parseFloat(maxCargoInputs.stowageFactor);
-    if (isNaN(Vh) || isNaN(SF) || SF === 0) { toast({ title: "Hata", description: "Geçerli Vambar ve SF girin", variant: "destructive" }); return; }
+    if (isNaN(Vh) || isNaN(SF) || SF === 0) { toast({ title: "Error", description: "Enter valid Vambar and SF", variant: "destructive" }); return; }
     const wmax = Vh / SF;
     setMaxCargoResult(wmax);
     setCalcSteps(prev => ({ ...prev, maxCargo: [
-      { step: 1, title: "Formül", formula: "Wmax = Vambar / SF", explanation: "Maksimum yük miktarı, ambar hacminin istif faktörüne bölünmesiyle bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
-      { step: 3, title: "Sonuç", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}`, result: `Wmax = ${wmax.toFixed(2)} ton` }
+      { step: 1, title: "Formula", formula: "Wmax = Vambar / SF", explanation: "The maximum load amount is found by dividing the warehouse volume by the stacking factor" },
+      { step: 2, title: "Placement of values", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
+      { step: 3, title: "Result", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}`, result: `Wmax = ${wmax.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Maksimum Yük", description: `wmax = ${wmax.toFixed(2)} ton` });
+    toast({ title: "Maximum Load", description: `wmax = ${wmax.toFixed(2)} ton` });
   };
 
   // 8. Pratik
   const calculateMetricDraftReading = () => {
     const base = parseFloat(metricDraftInputs.baseMeters);
-    if (isNaN(base)) { toast({ title: "Hata", description: "Geçerli taban draft (m) girin", variant: "destructive" }); return; }
+    if (isNaN(base)) { toast({ title: "Error", description: "Enter valid base draft (m)", variant: "destructive" }); return; }
     let value = base;
     let offset = 0;
     if (metricDraftInputs.position === "orta") { value = base + 0.05; offset = 0.05; }
-    if (metricDraftInputs.position === "üst") { value = base + 0.10; offset = 0.10; }
+    if (metricDraftInputs.position === "top") { value = base + 0.10; offset = 0.10; }
     setMetricDraftResult(value);
     setCalcSteps(prev => ({ ...prev, metricDraft: [
-      { step: 1, title: "Formül", formula: "Draft = Taban + Pozisyon Düzeltmesi", explanation: "Metrik draft okuma, taban değerine pozisyon düzeltmesi eklenerek bulunur" },
-      { step: 2, title: "Pozisyon düzeltmesi", formula: `Pozisyon: ${metricDraftInputs.position} → Düzeltme = ${offset.toFixed(2)} m` },
-      { step: 3, title: "Sonuç", formula: `Draft = ${base.toFixed(2)} + ${offset.toFixed(2)}`, result: `Draft = ${value.toFixed(2)} m` }
+      { step: 1, title: "Formula", formula: "Draft = Base + Position Correction", explanation: "Metric draft reading is found by adding position correction to the base value" },
+      { step: 2, title: "Position correction", formula: `Pozisyon: ${metricDraftInputs.position} → Correction = ${offset.toFixed(2)} m` },
+      { step: 3, title: "Result", formula: `Draft = ${base.toFixed(2)} + ${offset.toFixed(2)}`, result: `Draft = ${value.toFixed(2)} m` }
     ] }));
     toast({ title: "Draft Okuma (Metre)", description: `${value.toFixed(2)} m` });
   };
 
   const calculateImperialDraftReading = () => {
     const baseFt = parseFloat(imperialDraftInputs.baseFeet);
-    if (isNaN(baseFt)) { toast({ title: "Hata", description: "Geçerli taban draft (ft) girin", variant: "destructive" }); return; }
+    if (isNaN(baseFt)) { toast({ title: "Error", description: "Enter current base draft (ft)", variant: "destructive" }); return; }
     let inches = 0;
     if (imperialDraftInputs.position === "orta") inches = 3;
-    if (imperialDraftInputs.position === "üst") inches = 6;
+    if (imperialDraftInputs.position === "top") inches = 6;
     const totalInches = baseFt * 12 + inches;
     const feet = Math.floor(totalInches / 12);
     const remInches = totalInches - feet * 12;
     setImperialDraftResult({ feet, inches: remInches });
     setCalcSteps(prev => ({ ...prev, imperialDraft: [
-      { step: 1, title: "Formül", formula: "Toplam İnç = Taban(ft) × 12 + Pozisyon İnç", explanation: "İmparatorluk sistemiyle draft okuma" },
-      { step: 2, title: "Pozisyon düzeltmesi", formula: `Pozisyon: ${imperialDraftInputs.position} → +${inches} inç` },
-      { step: 3, title: "Toplam inç", formula: `${baseFt.toFixed(0)} × 12 + ${inches} = ${totalInches.toFixed(0)} inç` },
-      { step: 4, title: "Sonuç", formula: `${totalInches.toFixed(0)} inç = ${feet} ft ${remInches.toFixed(0)} in`, result: `Draft = ${feet} ft ${remInches.toFixed(0)} in` }
+      { step: 1, title: "Formula", formula: "Total Inches = Base(ft) × 12 + Position Inches", explanation: "Reading drafts with the imperial system" },
+      { step: 2, title: "Position correction", formula: `Pozisyon: ${imperialDraftInputs.position} → +${inches} inch` },
+      { step: 3, title: "total inches", formula: `${baseFt.toFixed(0)} × 12 + ${inches} = ${totalInches.toFixed(0)} inch` },
+      { step: 4, title: "Result", formula: `${totalInches.toFixed(0)} inch = ${feet} ft ${remInches.toFixed(0)} in`, result: `Draft = ${feet} ft ${remInches.toFixed(0)} in` }
     ] }));
     toast({ title: "Draft Okuma (Kraliyet)", description: `${feet} ft ${remInches.toFixed(0)} in` });
   };
@@ -1142,16 +1142,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const sf = parseFloat(avgDraftsInputs.starboardForward);
     const sm = parseFloat(avgDraftsInputs.starboardMidship);
     const sa = parseFloat(avgDraftsInputs.starboardAft);
-    if ([pf, pm, pa, sf, sm, sa].some(isNaN)) { toast({ title: "Hata", description: "Geçerli tüm draftları girin", variant: "destructive" }); return; }
+    if ([pf, pm, pa, sf, sm, sa].some(isNaN)) { toast({ title: "Error", description: "Enter all valid drafts", variant: "destructive" }); return; }
     const dF = (pf + sf) / 2;
     const dM = (pm + sm) / 2;
     const dA = (pa + sa) / 2;
     setAvgDraftsResults({ dF, dM, dA });
     setCalcSteps(prev => ({ ...prev, avgDrafts: [
-      { step: 1, title: "Formül", formula: "d = (İskele + Sancak) / 2", explanation: "Her pozisyon için iskele ve sancak tarafı draftlarının ortalaması alınır" },
-      { step: 2, title: "Baş draft", formula: `dF = (${pf.toFixed(3)} + ${sf.toFixed(3)}) / 2`, result: `dF = ${dF.toFixed(3)} m` },
+      { step: 1, title: "Formula", formula: "d = (Port + Starboard) / 2", explanation: "Port and starboard side drafts are averaged for each position" },
+      { step: 2, title: "chief draft", formula: `dF = (${pf.toFixed(3)} + ${sf.toFixed(3)}) / 2`, result: `dF = ${dF.toFixed(3)} m` },
       { step: 3, title: "Orta draft", formula: `dM = (${pm.toFixed(3)} + ${sm.toFixed(3)}) / 2`, result: `dM = ${dM.toFixed(3)} m` },
-      { step: 4, title: "Kıç draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
+      { step: 4, title: "aft draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
     ] }));
     toast({ title: "Ortalama Draftlar", description: `dF=${dF.toFixed(3)}, dM=${dM.toFixed(3)}, dA=${dA.toFixed(3)} m` });
   };
@@ -1160,17 +1160,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     <div className="space-y-6">
       <Tabs defaultValue="hogging" className="w-full">
         <TabsList className={`grid w-full ${showLongitudinal && showDraftSurvey ? 'grid-cols-8' : showLongitudinal || showDraftSurvey ? 'grid-cols-7' : 'grid-cols-6'}`}>
-          <TabsTrigger value="hogging">1. Giriş</TabsTrigger>
-          <TabsTrigger value="transverse">2. Enine Denge Hesapları</TabsTrigger>
+          <TabsTrigger value="hogging">1. Introduction</TabsTrigger>
+          <TabsTrigger value="transverse">2. Transverse Balance Calculations</TabsTrigger>
           {showLongitudinal && (
-            <TabsTrigger value="longitudinal">3. Boyuna Denge Hesapları</TabsTrigger>
+            <TabsTrigger value="longitudinal">3. Longitudinal Balance Calculations</TabsTrigger>
           )}
           {showDraftSurvey && (
             <TabsTrigger value="draft">4. Draft Survey</TabsTrigger>
           )}
-          <TabsTrigger value="density">5. Duba ve Yoğunluk Hesapları</TabsTrigger>
+          <TabsTrigger value="density">5. Pontoon and Density Calculations</TabsTrigger>
           <TabsTrigger value="solas">6. SOLAS Stabilite Kriterleri</TabsTrigger>
-          <TabsTrigger value="load">7. Yük Hesapları</TabsTrigger>
+          <TabsTrigger value="load">7. Load Calculations</TabsTrigger>
           <TabsTrigger value="practical">8. Pratik Hesaplar</TabsTrigger>
         </TabsList>
 
@@ -1180,27 +1180,27 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
                 <Ship className="h-5 w-5" />
-                1. Hogging ve Sagging Tespiti
+                1. Hogging and Sagging Detection
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Hogging/Sagging = (dF + dA)/2 ile dM karşılaştırılır</h4>
+                <h4 className="font-semibold mb-3">Hogging/Sagging = (dF + dA)/2 compared to dM</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Baş Draft (dF) - m</Label>
+                    <Label>Head Draft (dF) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Baş draft"
+                      placeholder="chief draft"
                       value={hoggingSaggingInputs.draftForward}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftForward: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Kıç Draft (dA) - m</Label>
+                    <Label>Aft Draft (dA) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Kıç draft"
+                      placeholder="aft draft"
                       value={hoggingSaggingInputs.draftAft}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftAft: e.target.value }))}
                     />
@@ -1216,14 +1216,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateHoggingSagging} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {hoggingSaggingResult && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-blue-500">
                     <p className="font-mono text-lg">{hoggingSaggingResult.type}: {hoggingSaggingResult.difference.toFixed(3)} m</p>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                      {hoggingSaggingResult.type === "Hogging" ? "Geminin ortası yukarı eğilimli" : "Geminin ortası aşağı eğilimli"}
+                      {hoggingSaggingResult.type === "Hogging" ? "Midships inclined upward" : "Midships inclined downward"}
                     </p>
                   </div>
                 )}
@@ -1234,16 +1234,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Ortalama Draft (dM) = (dF + dA) / 2</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Baş Draft (dF) - m</Label>
+                    <Label>Head Draft (dF) - m</Label>
                     <Input type="number" value={meanDraftInputs.draftForward} onChange={(e)=> setMeanDraftInputs(p=>({...p, draftForward: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Kıç Draft (dA) - m</Label>
+                    <Label>Aft Draft (dA) - m</Label>
                     <Input type="number" value={meanDraftInputs.draftAft} onChange={(e)=> setMeanDraftInputs(p=>({...p, draftAft: e.target.value}))} />
                   </div>
                   <Button onClick={calculateMeanDraft} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {meanDraftResult !== null && (
@@ -1263,14 +1263,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-green-700 dark:text-green-300">
                 <Shield className="h-5 w-5" />
-                2. Enine Denge Hesapları
+                2. Transverse Balance Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               
               {/* Yeni KG Hesaplama */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Yeni KG = Toplam Moment / Toplam Ağırlık</h4>
+                <h4 className="font-semibold mb-3">New KG = Total Moment / Total Weight</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
                     <Label>Toplam Moment (ton.m)</Label>
@@ -1282,17 +1282,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Toplam Ağırlık (ton)</Label>
+                    <Label>Total Weight (ton)</Label>
                     <Input
                       type="number"
-                      placeholder="Toplam ağırlık"
+                      placeholder="total weight"
                       value={newKGInputs.totalWeight}
                       onChange={(e) => setNewKGInputs(prev => ({ ...prev, totalWeight: e.target.value }))}
                     />
                   </div>
                   <Button onClick={calculateNewKG} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {newKGResult !== null && (
@@ -1305,7 +1305,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Meyil Açısı Hesaplama */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Meyil Açısı (θ) = tan⁻¹(GZ/GM) veya tan⁻¹(Yatırıcı Moment / Δ×GM)</h4>
+                <h4 className="font-semibold mb-3">Heel Angle (θ) = tan⁻¹(GZ/GM) or tan⁻¹(Heeling Moment / Δ×GM)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
                     <Label>GZ (m) - opsiyonel</Label>
@@ -1326,10 +1326,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Yatırıcı Moment (ton.m)</Label>
+                    <Label>Tilting Moment (ton.m)</Label>
                     <Input
                       type="number"
-                      placeholder="Yatırıcı moment"
+                      placeholder="tilting moment"
                       value={heelAngleInputs.heelingMoment}
                       onChange={(e) => setHeelAngleInputs(prev => ({ ...prev, heelingMoment: e.target.value }))}
                     />
@@ -1345,7 +1345,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateHeelAngle} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {heelAngleResult !== null && (
@@ -1361,7 +1361,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">GG₁ = w × d / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Ağırlık w (ton)</Label>
+                    <Label>Weight w (ton)</Label>
                     <Input type="number" placeholder="w" value={gg1Inputs.weight} onChange={(e)=> setGg1Inputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
@@ -1374,7 +1374,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateGG1} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {gg1Result !== null && (
@@ -1387,10 +1387,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Sarkaç ile Meyil Açısı */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">tan φ ≈ sin φ = Sapma / Sarkaç Boyu</h4>
+                <h4 className="font-semibold mb-3">tan φ ≈ sin φ = Deviation / Pendulum Length</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Sarkaç Boyu (m)</Label>
+                    <Label>Pendulum Length (m)</Label>
                     <Input type="number" placeholder="Uzunluk" value={pendulumInputs.pendulumLength} onChange={(e)=> setPendulumInputs(p=>({...p, pendulumLength:e.target.value}))} />
                   </div>
                   <div>
@@ -1399,7 +1399,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculatePendulumAngle} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {pendulumResult !== null && (
@@ -1412,22 +1412,22 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Bumba ile Kaldırma Sonrası GM Değişimi */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Bumba GM Değişimi = w × Yük Kolu / Δ</h4>
+                <h4 className="font-semibold mb-3">Boom GM Change = w × Load Arm / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Ağırlık (w) - ton</Label>
+                    <Label>Weight (w) - tons</Label>
                     <Input
                       type="number"
-                      placeholder="Ağırlık"
+                      placeholder="Weight"
                       value={craneGMInputs.weight}
                       onChange={(e) => setCraneGMInputs(prev => ({ ...prev, weight: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Yük Kolu (m)</Label>
+                    <Label>Load Arm (m)</Label>
                     <Input
                       type="number"
-                      placeholder="Yük kolu"
+                      placeholder="load arm"
                       value={craneGMInputs.leverArm}
                       onChange={(e) => setCraneGMInputs(prev => ({ ...prev, leverArm: e.target.value }))}
                     />
@@ -1443,7 +1443,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateCraneGM} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {craneGMResult !== null && (
@@ -1459,16 +1459,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">ΔKG = w × (hcunda − hyük) / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Ağırlık w (ton)</Label>
+                    <Label>Weight w (ton)</Label>
                     <Input type="number" placeholder="w" value={craneVerticalInputs.weight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
                     <Label>hcunda (m)</Label>
-                    <Input type="number" placeholder="Kanca yüksekliği" value={craneVerticalInputs.hookHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, hookHeight:e.target.value}))} />
+                    <Input type="number" placeholder="hook height" value={craneVerticalInputs.hookHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, hookHeight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>hyük (m)</Label>
-                    <Input type="number" placeholder="Yükün başlangıç yüksekliği" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
+                    <Label>hyuk (m)</Label>
+                    <Input type="number" placeholder="Starting height of the load" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
                   </div>
                   <div>
                     <Label>Deplasman Δ (ton)</Label>
@@ -1476,7 +1476,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateCraneVertical} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {craneVerticalResult !== null && (
@@ -1509,7 +1509,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateFSMRect} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {fsmRectResult && (
@@ -1522,7 +1522,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Temel Bağıntılar ve Ek Formüller */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Temel Bağıntılar</h4>
+                <h4 className="font-semibold mb-3">Basic Relations</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>KG (m)</Label>
@@ -1573,10 +1573,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
               </div>
 
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Moment ve ΔGM</h4>
+                <h4 className="font-semibold mb-3">Torque and ΔGM</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Ağırlık (t)</Label>
+                    <Label>Weight (t)</Label>
                     <Input type="number" value={momentInputs.weight} onChange={(e)=> setMomentInputs(p=>({...p, weight: e.target.value}))} />
                   </div>
                   <div>
@@ -1623,7 +1623,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>GM (m)</Label>
                     <Input type="number" value={heelWyInputs.gm} onChange={(e)=> setHeelWyInputs(p=>({...p, gm: e.target.value}))} />
                   </div>
-                  <Button onClick={calculateHeelFromWY} className="w-full"><Calculator className="w-4 h-4 mr-2" />GZ ve θ</Button>
+                  <Button onClick={calculateHeelFromWY} className="w-full"><Calculator className="w-4 h-4 mr-2" />GZ and θ</Button>
                 </div>
                 {heelWyResults && (
                   <div className="mt-2 text-sm">GZ = <span className="font-mono">{heelWyResults.gz.toFixed(4)} m</span>; θ = <span className="font-mono">{heelWyResults.angle.toFixed(2)}°</span></div>
@@ -1642,14 +1642,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-purple-700 dark:text-purple-300">
                 <BarChart3 className="h-5 w-5" />
-                3. Boyuna Denge Hesapları
+                3. Longitudinal Balance Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               
               {/* Trim Değişimi */}
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Trim Değişimi = Toplam Moment / MCT</h4>
+                <h4 className="font-semibold mb-3">Trim Change = Total Torque / MCT</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
                     <Label>Toplam Moment (ton.m)</Label>
@@ -1671,7 +1671,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateTrimChange} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {trimChangeResult !== null && (
@@ -1684,13 +1684,13 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Paralel Batma/Çıkma */}
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Paralel Batma = Yüklenen Yük / TPC</h4>
+                <h4 className="font-semibold mb-3">Parallel Sinking = Load Loaded / TPC</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>Yüklenen Yük (ton)</Label>
+                    <Label>Loaded Load (ton)</Label>
                     <Input
                       type="number"
-                      placeholder="Yüklenen yük"
+                      placeholder="Loaded load"
                       value={parallelSinkageInputs.loadedWeight}
                       onChange={(e) => setParallelSinkageInputs(prev => ({ ...prev, loadedWeight: e.target.value }))}
                     />
@@ -1706,7 +1706,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateParallelSinkage} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {parallelSinkageResult !== null && (
@@ -1719,7 +1719,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Draft Düzeltmesi */}
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Draft Düzeltmesi = Trim × Mesafe / LBP</h4>
+                <h4 className="font-semibold mb-3">Draft Correction = Trim × Distance / LBP</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Trim (m)</Label>
@@ -1750,7 +1750,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateDraftCorrection} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {draftCorrectionResult !== null && (
@@ -1772,7 +1772,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-orange-700 dark:text-orange-300">
                 <Waves className="h-5 w-5" />
-                4. Draft Survey Hesapları
+                4. Draft Survey Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -1788,7 +1788,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-teal-700 dark:text-teal-300">
                 <Target className="h-5 w-5" />
-                5. Duba ve Yoğunluk Hesapları
+                5. Pontoon and Density Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -1816,10 +1816,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Genişlik (B) - m</Label>
+                    <Label>Width (B) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Genişlik"
+                      placeholder="Width"
                       value={blockCoefficientInputs.breadth}
                       onChange={(e) => setBlockCoefficientInputs(prev => ({ ...prev, breadth: e.target.value }))}
                     />
@@ -1835,7 +1835,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateBlockCoefficient} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {blockCoefficientResult !== null && (
@@ -1870,7 +1870,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateFWA} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {fwaResult !== null && (
@@ -1883,7 +1883,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Yoğunluk Değişiminde Deplasman */}
               <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Yeni Deplasman = Δ × ρyeni / ρeski</h4>
+                <h4 className="font-semibold mb-3">New Displacement = Δ × ρnew / ρold</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Deplasman (Δ) - ton</Label>
@@ -1895,16 +1895,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Yeni Yoğunluk (ton/m³)</Label>
+                    <Label>New Density (ton/m³)</Label>
                     <Input
                       type="number"
-                      placeholder="Yeni yoğunluk"
+                      placeholder="new intensity"
                       value={densityChangeInputs.newDensity}
                       onChange={(e) => setDensityChangeInputs(prev => ({ ...prev, newDensity: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Eski Yoğunluk (ton/m³)</Label>
+                    <Label>Old Density (ton/m³)</Label>
                     <Input
                       type="number"
                       placeholder="1.025"
@@ -1914,7 +1914,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateDensityChange} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {densityChangeResult !== null && (
@@ -1927,11 +1927,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Duba – Yaralı Stabilite: Draft Değişimi */}
               <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Δd = w / [(Boy × En − Yaralı Alan) × ρ]</h4>
+                <h4 className="font-semibold mb-3">Δd = w / [(Length × Width − Wounded Area) × ρ]</h4>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
                   <div>
                     <Label>w (ton)</Label>
-                    <Input type="number" placeholder="Ağırlık" value={pontoonInputs.weight} onChange={(e)=> setPontoonInputs(p=>({...p, weight:e.target.value}))} />
+                    <Input type="number" placeholder="Weight" value={pontoonInputs.weight} onChange={(e)=> setPontoonInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
                     <Label>Boy (m)</Label>
@@ -1942,7 +1942,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="En" value={pontoonInputs.breadth} onChange={(e)=> setPontoonInputs(p=>({...p, breadth:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Yaralı Alan (m²)</Label>
+                    <Label>Wounded Area (m²)</Label>
                     <Input type="number" placeholder="Alan" value={pontoonInputs.damagedArea} onChange={(e)=> setPontoonInputs(p=>({...p, damagedArea:e.target.value}))} />
                   </div>
                   <div>
@@ -1951,7 +1951,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculatePontoonDraftChange} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {pontoonResult !== null && (
@@ -2009,14 +2009,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateGrainHeel} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {grainHeelResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
                     <p className="font-mono text-lg">Kümelenme Açısı = {grainHeelResult.toFixed(1)}°</p>
                     <p className="text-sm mt-1">
-                      {grainHeelResult <= 12 ? "✓ SOLAS Uygun" : "✗ SOLAS Uygun Değil - 12°'yi Aşıyor"}
+                      {grainHeelResult <= 12 ? "✓ SOLAS Uygun" : "✗ Not SOLAS Conforming - Exceeds 12°"}
                     </p>
                   </div>
                 )}
@@ -2047,17 +2047,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Açı (θ) - derece</Label>
+                    <Label>Angle (θ) – degrees</Label>
                     <Input
                       type="number"
-                      placeholder="Açı"
+                      placeholder="angle"
                       value={gzLeverInputs.angle}
                       onChange={(e) => setGzLeverInputs(prev => ({ ...prev, angle: e.target.value }))}
                     />
                   </div>
                   <Button onClick={calculateGZLever} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {gzLeverResult !== null && (
@@ -2083,10 +2083,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Genişlik (B) - m</Label>
+                    <Label>Width (B) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Genişlik"
+                      placeholder="Width"
                       value={freeSurfaceInputs.breadth}
                       onChange={(e) => setFreeSurfaceInputs(prev => ({ ...prev, breadth: e.target.value }))}
                     />
@@ -2102,7 +2102,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateFreeSurface} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {freeSurfaceResult !== null && (
@@ -2122,16 +2122,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>Cb</Label>
                     <Input
                       type="number"
-                      placeholder="Blok katsayısı"
+                      placeholder="Block coefficient"
                       value={rollPeriodInputs.cb}
                       onChange={(e) => setRollPeriodInputs(prev => ({ ...prev, cb: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Genişlik (B) - m</Label>
+                    <Label>Width (B) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Genişlik"
+                      placeholder="Width"
                       value={rollPeriodInputs.breadth}
                       onChange={(e) => setRollPeriodInputs(prev => ({ ...prev, breadth: e.target.value }))}
                     />
@@ -2147,7 +2147,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateRollPeriod} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {rollPeriodResult !== null && (
@@ -2167,17 +2167,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
                 <Anchor className="h-5 w-5" />
-                7. Yük Hesapları
+                7. Load Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               
               {/* Müsaade Edilen Yük Yüksekliği */}
               <div className="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Yükseklik = SF × PL</h4>
+                <h4 className="font-semibold mb-3">Height = SF × PL</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>SF (Güvenlik Faktörü)</Label>
+                    <Label>SF (Safety Factor)</Label>
                     <Input
                       type="number"
                       placeholder="SF"
@@ -2186,7 +2186,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>PL (Yük Limiti)</Label>
+                    <Label>PL (Load Limit)</Label>
                     <Input
                       type="number"
                       placeholder="PL"
@@ -2196,7 +2196,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateLoadHeight} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {loadHeightResult !== null && (
@@ -2209,37 +2209,37 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Sıcaklıkla Yoğunluk Değişimi */}
               <div className="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Dyeni = Deski - [(Tyeni - Teski) × Katsayı]</h4>
+                <h4 className="font-semibold mb-3">Dyeni = Deski - [(Tyeni - Teski) × Coefficient]</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Eski Yoğunluk (ton/m³)</Label>
+                    <Label>Old Density (ton/m³)</Label>
                     <Input
                       type="number"
-                      placeholder="Eski yoğunluk"
+                      placeholder="old density"
                       value={temperatureDensityInputs.oldDensity}
                       onChange={(e) => setTemperatureDensityInputs(prev => ({ ...prev, oldDensity: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Eski Sıcaklık (°C)</Label>
+                    <Label>Old Temperature (°C)</Label>
                     <Input
                       type="number"
-                      placeholder="Eski sıcaklık"
+                      placeholder="old temperature"
                       value={temperatureDensityInputs.oldTemperature}
                       onChange={(e) => setTemperatureDensityInputs(prev => ({ ...prev, oldTemperature: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Yeni Sıcaklık (°C)</Label>
+                    <Label>New Temperature (°C)</Label>
                     <Input
                       type="number"
-                      placeholder="Yeni sıcaklık"
+                      placeholder="new temperature"
                       value={temperatureDensityInputs.newTemperature}
                       onChange={(e) => setTemperatureDensityInputs(prev => ({ ...prev, newTemperature: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Katsayı</Label>
+                    <Label>Coefficient</Label>
                     <Input
                       type="number"
                       placeholder="0.0007"
@@ -2249,7 +2249,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <Button onClick={calculateTemperatureDensity} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
                 {temperatureDensityResult !== null && (
@@ -2276,7 +2276,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Draft Okuma (Metrik)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Taban Değer (m)</Label>
+                    <Label>Base Value (m)</Label>
                     <Input type="number" value={metricDraftInputs.baseMeters} onChange={(e)=> setMetricDraftInputs(p=>({...p, baseMeters: e.target.value}))} />
                   </div>
                   <div className="md:col-span-2">
@@ -2284,10 +2284,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <div className="grid grid-cols-3 gap-2">
                       <Button variant={metricDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'alt'}))}>Alt</Button>
                       <Button variant={metricDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'orta'}))}>Orta (+5cm)</Button>
-                      <Button variant={metricDraftInputs.position==='üst'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'üst'}))}>Üst (+10cm)</Button>
+                      <Button variant={metricDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'top'}))}>Top (+10cm)</Button>
                     </div>
                   </div>
-                  <Button onClick={calculateMetricDraftReading} className="w-full md:col-span-2"><Calculator className="w-4 h-4 mr-2" />Hesapla</Button>
+                  <Button onClick={calculateMetricDraftReading} className="w-full md:col-span-2"><Calculator className="w-4 h-4 mr-2" />Calculate</Button>
                 </div>
                 {metricDraftResult !== null && (<div className="mt-2 text-sm">Okuma = <span className="font-mono">{metricDraftResult.toFixed(2)} m</span></div>)}
                 <CalculationSteps steps={calcSteps["metricDraft"] || []} />
@@ -2297,7 +2297,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Draft Okuma (Kraliyet)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Taban Değer (ft)</Label>
+                    <Label>Base Value (ft)</Label>
                     <Input type="number" value={imperialDraftInputs.baseFeet} onChange={(e)=> setImperialDraftInputs(p=>({...p, baseFeet: e.target.value}))} />
                   </div>
                   <div className="md:col-span-2">
@@ -2305,10 +2305,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <div className="grid grid-cols-3 gap-2">
                       <Button variant={imperialDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'alt'}))}>Alt</Button>
                       <Button variant={imperialDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'orta'}))}>Orta (+3in)</Button>
-                      <Button variant={imperialDraftInputs.position==='üst'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'üst'}))}>Üst (+6in)</Button>
+                      <Button variant={imperialDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'top'}))}>Top (+6in)</Button>
                     </div>
                   </div>
-                  <Button onClick={calculateImperialDraftReading} className="w-full md:col-span-2"><Calculator className="w-4 h-4 mr-2" />Hesapla</Button>
+                  <Button onClick={calculateImperialDraftReading} className="w-full md:col-span-2"><Calculator className="w-4 h-4 mr-2" />Calculate</Button>
                 </div>
                 {imperialDraftResult && (<div className="mt-2 text-sm">Okuma = <span className="font-mono">{imperialDraftResult.feet} ft {imperialDraftResult.inches.toFixed(0)} in</span></div>)}
                 <CalculationSteps steps={calcSteps["imperialDraft"] || []} />
@@ -2317,14 +2317,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
               <div className="bg-slate-50 dark:bg-gray-700 p-4 rounded-lg">
                 <h4 className="font-semibold mb-3">Ortalama Draftlar</h4>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
-                  <div><Label>Baş Port</Label><Input type="number" value={avgDraftsInputs.portForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portForward: e.target.value}))} /></div>
+                  <div><Label>Head Port</Label><Input type="number" value={avgDraftsInputs.portForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portForward: e.target.value}))} /></div>
                   <div><Label>Vasat Port</Label><Input type="number" value={avgDraftsInputs.portMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portMidship: e.target.value}))} /></div>
-                  <div><Label>Kıç Port</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
-                  <div><Label>Baş Starboard</Label><Input type="number" value={avgDraftsInputs.starboardForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardForward: e.target.value}))} /></div>
+                  <div><Label>Aft Port</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
+                  <div><Label>Head Starboard</Label><Input type="number" value={avgDraftsInputs.starboardForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardForward: e.target.value}))} /></div>
                   <div><Label>Vasat Starboard</Label><Input type="number" value={avgDraftsInputs.starboardMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardMidship: e.target.value}))} /></div>
-                  <div><Label>Kıç Starboard</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
+                  <div><Label>Aft Starboard</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
                 </div>
-                <div className="flex justify-end mt-3"><Button onClick={calculateAverageDrafts}><Calculator className="w-4 h-4 mr-2" />Hesapla</Button></div>
+                <div className="flex justify-end mt-3"><Button onClick={calculateAverageDrafts}><Calculator className="w-4 h-4 mr-2" />Calculate</Button></div>
                 {avgDraftsResults && (
                   <div className="mt-2 text-sm">
                     dF = <span className="font-mono">{avgDraftsResults.dF.toFixed(3)} m</span>; dM = <span className="font-mono">{avgDraftsResults.dM.toFixed(3)} m</span>; dA = <span className="font-mono">{avgDraftsResults.dA.toFixed(3)} m</span>

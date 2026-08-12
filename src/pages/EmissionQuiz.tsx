@@ -151,9 +151,9 @@ export default function EmissionQuiz() {
 
     if (answerIndex === questions[currentQuestion].correctAnswer) {
       setScore(score + 1);
-      toast.success("Doğru!");
+      toast.success("TRUE!");
     } else {
-      toast.error("Yanlış!");
+      toast.error("Wrong!");
     }
   };
 
@@ -244,7 +244,7 @@ export default function EmissionQuiz() {
               {answered && (
                 <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
                   <p className="text-sm text-blue-700 dark:text-blue-300">
-                    <strong>Açıklama:</strong> {question.explanation}
+                    <strong>Description:</strong> {question.explanation}
                   </p>
                 </div>
               )}
@@ -254,7 +254,7 @@ export default function EmissionQuiz() {
                   onClick={nextQuestion}
                   className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700"
                 >
-                  {currentQuestion < questions.length - 1 ? "Sonraki Soru" : "Sonucu Gör"}
+                  {currentQuestion < questions.length - 1 ? "Next Question" : "See Result"}
                 </Button>
               )}
             </CardContent>
@@ -276,8 +276,8 @@ export default function EmissionQuiz() {
 
               <p className="text-sm text-muted-foreground">
                 {score >= 8 ? "Mükemmel! Çevre konusunda uzman seviyesindesiniz." :
-                 score >= 6 ? "İyi! Biraz daha çalışmayla mükemmel olabilirsiniz." :
-                 "Daha fazla çalışmanız önerilir."}
+                 score >= 6 ? "Good morning my baby! With a little more work you can become perfect." :
+                 "It is recommended that you study more."}
               </p>
 
               <Button 
@@ -285,7 +285,7 @@ export default function EmissionQuiz() {
                 className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700"
               >
                 <RotateCcw className="h-4 w-4 mr-2" />
-                Tekrar Dene
+                Try Again
               </Button>
             </CardContent>
           </Card>

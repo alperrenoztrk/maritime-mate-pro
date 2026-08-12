@@ -16,7 +16,7 @@ import {
 type Filter = "all" | MorseGroup;
 
 const FILTER_CHIPS: { value: Filter; label: string }[] = [
-  { value: "all", label: "Tümü" },
+  { value: "all", label: "All" },
   ...MORSE_GROUP_ORDER.map((group) => ({
     value: group as Filter,
     label: MORSE_GROUP_LABELS[group].title,
@@ -258,7 +258,7 @@ export default function MorseCodePage() {
 
         {totalMatches === 0 ? (
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">Sonuç bulunamadı</p>
+            <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">
               Farklı bir arama terimi deneyin veya grup filtresini temizleyin.
             </p>

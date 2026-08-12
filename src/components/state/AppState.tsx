@@ -43,7 +43,7 @@ export const RouteSkeleton = () => (
   <div
     className="route-skeleton flex min-h-[100svh] w-full flex-col gap-4 px-4 pt-4"
     role="status"
-    aria-label="Yükleniyor"
+    aria-label="Loading"
   >
     <Skeleton className="h-7 w-40 rounded-lg" />
     <AppSkeleton lines={4} />
@@ -89,7 +89,7 @@ export const ErrorState = ({
   description,
   icon: Icon = AlertTriangle,
   onRetry,
-  retryLabel = "Tekrar dene",
+  retryLabel = "Try again",
   className,
 }: Omit<StateProps, "action"> & {
   onRetry?: () => void;

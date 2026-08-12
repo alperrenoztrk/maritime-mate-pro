@@ -338,27 +338,27 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       const warnings = [];
       
       if (data.currentLoad < 70) {
-        recommendations.push("Motor yükünü artırarak yakıt verimliliğini iyileştirin");
+        recommendations.push("Improve fuel efficiency by increasing engine load");
       }
       
       if (data.currentLoad > 90) {
-        warnings.push("Motor yükü çok yüksek - hasar riski var");
+        warnings.push("Engine load too high - risk of damage");
       }
       
       if (currentSFOC > 200) {
-        recommendations.push("Motor bakımı yaparak yakıt verimliliğini artırın");
+        recommendations.push("Increase fuel efficiency by performing engine maintenance");
       }
       
       if (data.fuelSulfurContent > 0.5) {
-        warnings.push("Yakıt kükürt içeriği MARPOL limitini aşıyor");
+        warnings.push("Fuel sulfur content exceeds MARPOL limit");
       }
       
       if (noxCalc.rate > selectedNoxLimit) {
-        warnings.push(`NOx emisyonu MARPOL Tier ${data.requiredNoxTier} limitini aşıyor (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
+        warnings.push(`NOx emisyonu MARPOL Tier ${data.requiredNoxTier} exceeds the limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
       }
       
       if (!ecaCompliance) {
-        warnings.push("ECA bölgesi gereksinimlerini karşılamıyor");
+        warnings.push("Does not meet ECA zone requirements");
       }
 
       const calculatedResult: EngineResult = {
@@ -414,47 +414,47 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       setResult(calculatedResult);
       setCalcSteps({
         fuel: [
-          { step: 1, title: "SFOC hesabı", formula: "SFOC interpolasyon ile hesaplanır (yük %'sine göre)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Yük: %${data.currentLoad})` },
-          { step: 2, title: "Güç çıkışı", formula: "P = MCR × Yük / 100", substitution: `P = ${data.mcrPower} × ${data.currentLoad} / 100`, result: `P = ${powerOutput.toFixed(0)} kW` },
-          { step: 3, title: "Saatlik tüketim", formula: "FCsaat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/saat` },
-          { step: 4, title: "Günlük tüketim", formula: "FCgün = (FCsaat × Çalışma Saati) / 1000", substitution: `FCgün = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FCgün = ${dailyConsumption.toFixed(1)} ton/gün` },
+          { step: 1, title: "SFOC account", formula: "SFOC calculated by interpolation (based on % load)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Load: %${data.currentLoad})` },
+          { step: 2, title: "power output", formula: "P = MCR × Load / 100", substitution: `P = ${data.mcrPower} × ${data.currentLoad} / 100`, result: `P = ${powerOutput.toFixed(0)} kW` },
+          { step: 3, title: "Hourly consumption", formula: "FCsaat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/hour` },
+          { step: 4, title: "daily consumption", formula: "FCday = (FChour × Working Hour) / 1000", substitution: `FCday = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FCday = ${dailyConsumption.toFixed(1)} tons/day` },
         ],
         power: [
-          { step: 1, title: "Fren gücü", formula: "BP = İndike Güç × Mekanik Verim / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
-          { step: 2, title: "Elektrik gücü", formula: "EP = BP × Jeneratör Verimi / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
-          { step: 3, title: "İndike termal verim", formula: "ηi = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `ηi = ${indicatedThermalEfficiency.toFixed(1)}%` },
+          { step: 1, title: "brake power", formula: "BP = Indicated Power × Mechanical Efficiency / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
+          { step: 2, title: "electric power", formula: "EP = BP × Generator Efficiency / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
+          { step: 3, title: "Indicated thermal efficiency", formula: "ηi = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `ηi = ${indicatedThermalEfficiency.toFixed(1)}%` },
           { step: 4, title: "Toplam verim", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
         ],
         emissions: [
           { step: 1, title: "NOx emisyonu", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
-          { step: 2, title: "SOx emisyonu", formula: "SOx = 2 × S% × FC", explanation: `Kükürt içeriği: %${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
-          { step: 3, title: "CO₂ emisyonu", formula: "CO₂ = FC × Emisyon Faktörü", explanation: `${data.fuelType} emisyon faktörü kullanıldı`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} ton/gün` },
+          { step: 2, title: "SOx emisyonu", formula: "SOx = 2 × S% × FC", explanation: `Sulfur content:%${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
+          { step: 3, title: "CO₂ emisyonu", formula: "CO₂ = FC × Emission Factor", explanation: `${data.fuelType} emission factor used`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} tons/day` },
         ],
         changeover: [
-          { step: 1, title: "Geçiş süresi", formula: "Süre = Ön Isıtma + (Boru Hacmi / Akış Oranı)", substitution: `Süre = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Süre = ${changeoverTime.toFixed(0)} dakika` },
-          { step: 2, title: "Atık yakıt", formula: "Atık = Boru Hacmi × 1.1 (%10 emniyet)", substitution: `Atık = ${data.pipelineVolume} × 1.1`, result: `Atık = ${fuelWasteVolume.toFixed(0)} L` },
+          { step: 1, title: "Transition time", formula: "Time = Preheat + (Pipe Volume / Flow Rate)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} dakika` },
+          { step: 2, title: "waste fuel", formula: "Waste = Pipe Volume × 1.1 (10% safety)", substitution: `Waste = ${data.pipelineVolume} × 1.1`, result: `Waste = ${fuelWasteVolume.toFixed(0)} L` },
         ],
         cooling: [
-          { step: 1, title: "Isı atım oranı", formula: "Q = Güç × 0.4 (tipik %40 ısı atımı)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
-          { step: 2, title: "Gerekli soğutma", formula: "Qgerekli = Q × 1.2 (%20 emniyet)", substitution: `Qgerekli = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qgerekli = ${coolingCapacityRequired.toFixed(0)} kW` },
+          { step: 1, title: "Heat rejection rate", formula: "Q = Power × 0.4 (typical 40% heat rejection)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
+          { step: 2, title: "Required cooling", formula: "Qgerekli = Q × 1.2 (%20 emniyet)", substitution: `Qgerekli = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qgerekli = ${coolingCapacityRequired.toFixed(0)} kW` },
         ],
         heatExchanger: [
-          { step: 1, title: "Isı değiştirici alanı", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (Ueff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
-          { step: 2, title: "Boru sayısı", formula: "n = A / (π × d × Lboru)", result: `n = ${heatExchanger.tubes} adet` },
+          { step: 1, title: "Heat exchanger area", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (Ueff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
+          { step: 2, title: "Number of pipes", formula: "n = A / (π × d × Lboru)", result: `n = ${heatExchanger.tubes} adet` },
         ],
         tanks: [
-          { step: 1, title: "Pis su tankı", formula: "V = L × B × H", substitution: `V = ${data.bilgeTankLength} × ${data.bilgeTankWidth} × ${data.bilgeTankHeight}`, result: `V = ${tanks.bilgeCapacity.toFixed(1)} m³` },
-          { step: 2, title: "Sintine tankı", formula: "V = π × r² × H", substitution: `V = π × ${(data.sludgeTankDiameter/2).toFixed(2)}² × ${data.sludgeTankHeight}`, result: `V = ${tanks.sludgeCapacity.toFixed(1)} m³` },
+          { step: 1, title: "waste water tank", formula: "V = L × B × H", substitution: `V = ${data.bilgeTankLength} × ${data.bilgeTankWidth} × ${data.bilgeTankHeight}`, result: `V = ${tanks.bilgeCapacity.toFixed(1)} m³` },
+          { step: 2, title: "bilge tank", formula: "V = π × r² × H", substitution: `V = π × ${(data.sludgeTankDiameter/2).toFixed(2)}² × ${data.sludgeTankHeight}`, result: `V = ${tanks.sludgeCapacity.toFixed(1)} m³` },
         ],
       });
       toast({
-        title: "Hesaplama Tamamlandı",
-        description: "Makine hesaplamaları MARPOL regülasyonlarına uygun olarak tamamlandı.",
+        title: "Calculation Completed",
+        description: "Machine calculations were completed in accordance with MARPOL regulations.",
       });
     } catch (error) {
       toast({
-        title: "Hata",
-        description: "Hesaplama sırasında bir hata oluştu.",
+        title: "Error",
+        description: "An error occurred during calculation.",
         variant: "destructive",
       });
     }
@@ -470,24 +470,24 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings className="h-5 w-5" />
-            Makine Hesaplamaları
+            Machine Calculations
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue={initialTab || "engine"} className="w-full">
             <TabsList className="grid w-full grid-cols-6">
               <TabsTrigger value="engine">Ana Makine</TabsTrigger>
-              <TabsTrigger value="fuel">Yakıt Sistemi</TabsTrigger>
-              <TabsTrigger value="cooling">Soğutma</TabsTrigger>
-              <TabsTrigger value="changeover">Geçiş</TabsTrigger>
-              <TabsTrigger value="heat">Isı Değiştirici</TabsTrigger>
+              <TabsTrigger value="fuel">Fuel System</TabsTrigger>
+              <TabsTrigger value="cooling">cooling</TabsTrigger>
+              <TabsTrigger value="changeover">transition</TabsTrigger>
+              <TabsTrigger value="heat">Heat Exchanger</TabsTrigger>
               <TabsTrigger value="tanks">Tanklar</TabsTrigger>
             </TabsList>
 
             <TabsContent value="engine" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="mcrPower">MCR Gücü (kW)</Label>
+                  <Label htmlFor="mcrPower">MCR Power (kW)</Label>
                   <Input
                     id="mcrPower"
                     type="number"
@@ -496,7 +496,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="currentLoad">Mevcut Yük (%)</Label>
+                  <Label htmlFor="currentLoad">Current Load (%)</Label>
                   <Input
                     id="currentLoad"
                     type="number"
@@ -523,7 +523,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="cylinderNumber">Silindir Sayısı</Label>
+                  <Label htmlFor="cylinderNumber">Number of Cylinders</Label>
                   <Input
                     id="cylinderNumber"
                     type="number"
@@ -538,13 +538,13 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="two-stroke">İki Zamanlı</SelectItem>
-                      <SelectItem value="four-stroke">Dört Zamanlı</SelectItem>
+                      <SelectItem value="two-stroke">Two Stroke</SelectItem>
+                      <SelectItem value="four-stroke">Four Stroke</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="requiredNoxTier">NOₓ Regülasyon Tier (Kontrol)</Label>
+                  <Label htmlFor="requiredNoxTier">NOₓ Regulation Tier (Control)</Label>
                   <Select value={data.requiredNoxTier} onValueChange={(value) => updateData('requiredNoxTier', value as EngineData["requiredNoxTier"])}>
                     <SelectTrigger>
                       <SelectValue />
@@ -557,7 +557,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="indicatedPower">İndike Güç (kW)</Label>
+                  <Label htmlFor="indicatedPower">Indicated Power (kW)</Label>
                   <Input
                     id="indicatedPower"
                     type="number"
@@ -580,7 +580,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <TabsContent value="fuel" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="fuelType">Yakıt Tipi</Label>
+                  <Label htmlFor="fuelType">Fuel Type</Label>
                   <Select value={data.fuelType} onValueChange={(value) => updateData('fuelType', value as 'HFO' | 'MDO' | 'MGO' | 'LNG' | 'Methanol')}>
                     <SelectTrigger>
                       <SelectValue />
@@ -595,7 +595,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="fuelDensity">Yakıt Yoğunluğu (kg/m³)</Label>
+                  <Label htmlFor="fuelDensity">Fuel Density (kg/m³)</Label>
                   <Input
                     id="fuelDensity"
                     type="number"
@@ -604,7 +604,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="fuelSulfurContent">Kükürt İçeriği (%)</Label>
+                  <Label htmlFor="fuelSulfurContent">Sulfur Content (%)</Label>
                   <Input
                     id="fuelSulfurContent"
                     type="number"
@@ -614,7 +614,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lowerCalorificValue">Alt Isıl Değer (MJ/kg)</Label>
+                  <Label htmlFor="lowerCalorificValue">Lower Calorific Value (MJ/kg)</Label>
                   <Input
                     id="lowerCalorificValue"
                     type="number"
@@ -665,7 +665,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <TabsContent value="cooling" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="seawaterInletTemp">Deniz Suyu Giriş Sıcaklığı (°C)</Label>
+                  <Label htmlFor="seawaterInletTemp">Sea Water Inlet Temperature (°C)</Label>
                   <Input
                     id="seawaterInletTemp"
                     type="number"
@@ -674,7 +674,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="seawaterOutletTemp">Deniz Suyu Çıkış Sıcaklığı (°C)</Label>
+                  <Label htmlFor="seawaterOutletTemp">Sea Water Outlet Temperature (°C)</Label>
                   <Input
                     id="seawaterOutletTemp"
                     type="number"
@@ -683,7 +683,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="freshwaterInletTemp">Tatlı Su Giriş Sıcaklığı (°C)</Label>
+                  <Label htmlFor="freshwaterInletTemp">Fresh Water Inlet Temperature (°C)</Label>
                   <Input
                     id="freshwaterInletTemp"
                     type="number"
@@ -692,7 +692,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="freshwaterOutletTemp">Tatlı Su Çıkış Sıcaklığı (°C)</Label>
+                  <Label htmlFor="freshwaterOutletTemp">Fresh Water Outlet Temperature (°C)</Label>
                   <Input
                     id="freshwaterOutletTemp"
                     type="number"
@@ -701,7 +701,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="coolingWaterFlow">Soğutma Suyu Debisi (m³/h)</Label>
+                  <Label htmlFor="coolingWaterFlow">Cooling Water Flow Rate (m³/h)</Label>
                   <Input
                     id="coolingWaterFlow"
                     type="number"
@@ -715,7 +715,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <TabsContent value="changeover" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="pipelineVolume">Boru Hattı Hacmi (L)</Label>
+                  <Label htmlFor="pipelineVolume">Pipeline Volume (L)</Label>
                   <Input
                     id="pipelineVolume"
                     type="number"
@@ -724,7 +724,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="changeoverFlowRate">Geçiş Debi (L/min)</Label>
+                  <Label htmlFor="changeoverFlowRate">Passage Flow (L/min)</Label>
                   <Input
                     id="changeoverFlowRate"
                     type="number"
@@ -733,7 +733,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="preheatingTime">Ön Isıtma Süresi (dakika)</Label>
+                  <Label htmlFor="preheatingTime">Preheating Time (minutes)</Label>
                   <Input
                     id="preheatingTime"
                     type="number"
@@ -747,7 +747,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <TabsContent value="heat" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="heatLoad">Isı Yükü (kW)</Label>
+                  <Label htmlFor="heatLoad">Heat Load (kW)</Label>
                   <Input
                     id="heatLoad"
                     type="number"
@@ -756,7 +756,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="logMeanTempDiff">Ortalama Sıcaklık Farkı (°C)</Label>
+                  <Label htmlFor="logMeanTempDiff">Average Temperature Difference (°C)</Label>
                   <Input
                     id="logMeanTempDiff"
                     type="number"
@@ -765,7 +765,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="overallHeatTransferCoeff">Isı Transfer Katsayısı (W/m²K)</Label>
+                  <Label htmlFor="overallHeatTransferCoeff">Heat Transfer Coefficient (W/m²K)</Label>
                   <Input
                     id="overallHeatTransferCoeff"
                     type="number"
@@ -774,7 +774,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="foulingFactor">Kirlenme Faktörü (m²K/W)</Label>
+                  <Label htmlFor="foulingFactor">Pollution Factor (m²K/W)</Label>
                   <Input
                     id="foulingFactor"
                     type="number"
@@ -789,7 +789,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <TabsContent value="tanks" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="bilgeTankLength">Pis Su Tankı Uzunluk (m)</Label>
+                  <Label htmlFor="bilgeTankLength">Waste Water Tank Length (m)</Label>
                   <Input
                     id="bilgeTankLength"
                     type="number"
@@ -798,7 +798,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bilgeTankWidth">Pis Su Tankı Genişlik (m)</Label>
+                  <Label htmlFor="bilgeTankWidth">Waste Water Tank Width (m)</Label>
                   <Input
                     id="bilgeTankWidth"
                     type="number"
@@ -807,7 +807,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bilgeTankHeight">Pis Su Tankı Yükseklik (m)</Label>
+                  <Label htmlFor="bilgeTankHeight">Waste Water Tank Height (m)</Label>
                   <Input
                     id="bilgeTankHeight"
                     type="number"
@@ -816,7 +816,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="sludgeTankDiameter">Sintine Tankı Çap (m)</Label>
+                  <Label htmlFor="sludgeTankDiameter">Bilge Tank Diameter (m)</Label>
                   <Input
                     id="sludgeTankDiameter"
                     type="number"
@@ -825,7 +825,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="sludgeTankHeight">Sintine Tankı Yükseklik (m)</Label>
+                  <Label htmlFor="sludgeTankHeight">Bilge Tank Height (m)</Label>
                   <Input
                     id="sludgeTankHeight"
                     type="number"
@@ -840,7 +840,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
           <div className="mt-6">
             <Button onClick={calculate} className="w-full">
               <Calculator className="mr-2 h-4 w-4" />
-              Hesapla
+              Calculate
             </Button>
           </div>
         </CardContent>
@@ -853,7 +853,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Fuel className="h-5 w-5" />
-                Yakıt Tüketimi ve Verimlilik
+                Fuel Consumption and Efficiency
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -863,7 +863,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-2xl font-bold text-info">{result.currentSFOC.toFixed(1)} g/kWh</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Saatlik Tüketim</Label>
+                  <Label className="text-sm font-medium">Hourly Consumption</Label>
                   <p className="text-2xl font-bold text-green-700">{result.hourlyConsumption.toFixed(1)} kg/h</p>
 ...
                   <p className="text-2xl font-bold text-orange-700">{result.dailyConsumption.toFixed(1)} ton</p>
@@ -882,25 +882,25 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Zap className="h-5 w-5" />
-                Güç Hesaplamaları
+                Power Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Şaft Gücü</Label>
+                  <Label className="text-sm font-medium">Shaft Power</Label>
                   <p className="text-lg font-semibold">{result.shaftPower.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Fren Gücü</Label>
+                  <Label className="text-sm font-medium">Braking Power</Label>
                   <p className="text-lg font-semibold">{result.brakePower.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Elektrik Gücü</Label>
+                  <Label className="text-sm font-medium">Electric Power</Label>
                   <p className="text-lg font-semibold">{result.electricalPower.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">İndike Termal Verim</Label>
+                  <Label className="text-sm font-medium">Indicated Thermal Efficiency</Label>
                   <p className="text-lg font-semibold">{result.indicatedThermalEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
@@ -935,7 +935,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <Badge variant={result.noxCompliance === 'compliant' ? 'default' : 
                                  result.noxCompliance === 'marginal' ? 'secondary' : 'destructive'}>
                     {result.noxCompliance === 'compliant' ? 'Uygun' :
-                     result.noxCompliance === 'marginal' ? 'Sınırda' : 'Uygun Değil'}
+                     result.noxCompliance === 'marginal' ? 'on the border' : 'Not Suitable'}
                   </Badge>
                 </div>
                 <div>
@@ -944,7 +944,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <Badge variant={result.soxCompliance === 'compliant' ? 'default' : 
                                  result.soxCompliance === 'marginal' ? 'secondary' : 'destructive'}>
                     {result.soxCompliance === 'compliant' ? 'Uygun' :
-                     result.soxCompliance === 'marginal' ? 'Sınırda' : 'Uygun Değil'}
+                     result.soxCompliance === 'marginal' ? 'on the border' : 'Not Suitable'}
                   </Badge>
                 </div>
                 <div>
@@ -958,7 +958,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                 <div>
                   <Label className="text-sm font-medium">ECA Uyumluluk</Label>
                   <Badge variant={result.ecaCompliance ? 'default' : 'destructive'}>
-                    {result.ecaCompliance ? 'Uyumlu' : 'Uyumlu Değil'}
+                    {result.ecaCompliance ? 'Uyumlu' : 'Not Compatible'}
                   </Badge>
                 </div>
                 <div>
@@ -975,17 +975,17 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Settings className="h-5 w-5" />
-                HFO/MDO Geçiş Hesaplamaları
+                HFO/MDO Transition Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Toplam Geçiş Süresi</Label>
+                  <Label className="text-sm font-medium">Total Transition Time</Label>
                   <p className="text-lg font-semibold">{result.changeoverTime.toFixed(0)} dakika</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Atık Yakıt Hacmi</Label>
+                  <Label className="text-sm font-medium">Waste Fuel Volume</Label>
                   <p className="text-lg font-semibold">{result.fuelWasteVolume.toFixed(0)} L</p>
                 </div>
                 <div>
@@ -1002,21 +1002,21 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Thermometer className="h-5 w-5" />
-                Soğutma Sistemi Hesaplamaları
+                Cooling System Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Isı Atım Oranı</Label>
+                  <Label className="text-sm font-medium">Heat Removal Rate</Label>
                   <p className="text-lg font-semibold">{result.heatRejectionRate.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Gerekli Soğutma Kapasitesi</Label>
+                  <Label className="text-sm font-medium">Required Cooling Capacity</Label>
                   <p className="text-lg font-semibold">{result.coolingCapacityRequired.toFixed(0)} kW</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Soğutma Verimi</Label>
+                  <Label className="text-sm font-medium">Cooling Efficiency</Label>
                   <p className="text-lg font-semibold">{result.coolingEfficiency.toFixed(0)}%</p>
                 </div>
               </div>
@@ -1029,7 +1029,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Waves className="h-5 w-5" />
-                Isı Değiştirici Hesaplamaları
+                Heat Exchanger Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -1039,15 +1039,15 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.heatExchangerArea.toFixed(1)} m²</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Boru Sayısı</Label>
+                  <Label className="text-sm font-medium">Number of Pipes</Label>
                   <p className="text-lg font-semibold">{result.numberOfTubes}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Boru Uzunluğu</Label>
+                  <Label className="text-sm font-medium">Pipe Length</Label>
                   <p className="text-lg font-semibold">{result.tubeLength.toFixed(1)} m</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Basınç Düşümü</Label>
+                  <Label className="text-sm font-medium">Pressure Drop</Label>
                   <p className="text-lg font-semibold">{result.pressureDrop.toFixed(0)} kPa</p>
                 </div>
                 <div>
@@ -1064,25 +1064,25 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Droplets className="h-5 w-5" />
-                Tank Kapasitesi Hesaplamaları
+                Tank Capacity Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Pis Su Tankı Kapasitesi</Label>
+                  <Label className="text-sm font-medium">Waste Water Tank Capacity</Label>
                   <p className="text-lg font-semibold">{result.bilgeTankCapacity.toFixed(1)} m³</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Sintine Tankı Kapasitesi</Label>
+                  <Label className="text-sm font-medium">Bilge Tank Capacity</Label>
                   <p className="text-lg font-semibold">{result.sludgeTankCapacity.toFixed(1)} m³</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Pis Su Üretimi</Label>
+                  <Label className="text-sm font-medium">Waste Water Production</Label>
                   <p className="text-lg font-semibold">{result.bilgeGenerationRate.toFixed(1)} L/gün</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Sintine Üretimi</Label>
+                  <Label className="text-sm font-medium">Bilge Production</Label>
                   <p className="text-lg font-semibold">{result.sludgeGenerationRate.toFixed(1)} L/gün</p>
                 </div>
               </div>
@@ -1096,7 +1096,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-red-500" />
-                  Uyarılar
+                  Warnings
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -1118,7 +1118,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-green-500" />
-                  Öneriler
+                  Suggestions
                 </CardTitle>
               </CardHeader>
               <CardContent>

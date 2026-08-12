@@ -53,7 +53,7 @@ const DraftSurveyDensity = () => {
 
   return (
     <CalculationLayout
-      title="Yoğunluk Düzeltmesi"
+      title="Density Correction"
       icon={BarChart3}
       hero={{
         title: "Draft Survey",
@@ -63,10 +63,10 @@ const DraftSurveyDensity = () => {
       maxWidthClassName="max-w-6xl"
       rightRail={
         <FormulaCard
-          title="Formül"
+          title="Formula"
           sections={[
             {
-              title: "Yoğunluk Düzeltmesi",
+              title: "Density Correction",
               accent: "teal",
               lines: [{ formula: "Düzeltme = Deplasman × ((ρ - ρ₀) / ρ₀)" }],
             },
@@ -144,7 +144,7 @@ const DraftSurveyDensity = () => {
               <h3 className="text-lg font-semibold">Hesaplama Sonucu</h3>
               <div className="space-y-2 mt-2">
                 <p className="text-lg font-semibold">
-                  Yoğunluk Düzeltmesi: <span className="text-sky-700 dark:text-sky-300">{correction.toFixed(2)} ton</span>
+                  Density Correction: <span className="text-sky-700 dark:text-sky-300">{correction.toFixed(2)} ton</span>
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {correction > 0 ? "Pozitif düzeltme (ekleme)" : "Negatif düzeltme (çıkarma)"}

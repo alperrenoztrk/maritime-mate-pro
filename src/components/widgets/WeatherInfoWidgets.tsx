@@ -56,7 +56,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
 
   const wmoToTr = (code?: number): string => {
     if (!code) return "Veri Yok";
-    if (code === 0) return "Açık";
+    if (code === 0) return "open";
     if (code <= 3) return "Az Bulutlu";
     if (code <= 48) return "Sisli";
     if (code <= 67) return "Yağmurlu";
@@ -215,7 +215,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           
           {forecastLoading ? (
             <div className="flex items-center justify-center py-8">
-              <div className="text-muted-foreground">Yükleniyor...</div>
+              <div className="text-muted-foreground">Loading…</div>
             </div>
           ) : forecast && forecast.daily ? (
             <div className="space-y-3">
@@ -284,7 +284,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           
           {hourlyLoading ? (
             <div className="flex items-center justify-center py-8">
-              <div className="text-muted-foreground">Yükleniyor...</div>
+              <div className="text-muted-foreground">Loading…</div>
             </div>
           ) : hourlyData && hourlyData.length > 0 ? (
             <div className="space-y-6">

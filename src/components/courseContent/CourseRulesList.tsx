@@ -11,7 +11,7 @@ export function CourseRulesList({ groups }: { groups: RuleGroup[] }) {
   if (!groups || groups.length === 0) {
     return (
       <p className="text-sm text-muted-foreground">
-        Bu konu için kurallar henüz eklenmedi.
+        Rules for this topic have not been added yet.
       </p>
     );
   }

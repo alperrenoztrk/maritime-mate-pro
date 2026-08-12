@@ -35,7 +35,7 @@ export default function ExercisesPage() {
   );
 
   return (
-    <LibraryPageShell title="Alıştırmalar" icon={FlaskConical}>
+    <LibraryPageShell title="Exercises" icon={FlaskConical}>
       <section className="space-y-4">
         <LibrarySectionHeading badge={deck.length}>
           <span className="inline-flex items-center gap-2">

@@ -44,7 +44,7 @@ const Navigation = () => {
             <Link to="/navigation/formulas">
               <Button variant="secondary" size="sm" className="gap-2">
                 <Sigma className="h-4 w-4" />
-                Formüller
+                Formulas
               </Button>
             </Link>
           </div>

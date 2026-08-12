@@ -71,7 +71,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
   return (
     <>
       <section
-        aria-label={topicTitle ? `${topicTitle} — fotoğraf galerisi` : "Fotoğraf galerisi"}
+        aria-label={topicTitle ? `${topicTitle} — photo gallery` : "photo gallery"}
         className="grid gap-3 sm:grid-cols-2"
       >
         {photos.map((p, i) => (
@@ -83,7 +83,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
               type="button"
               onClick={() => setActiveIndex(i)}
               className="relative block w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              aria-label={`Büyüt: ${p.title}`}
+              aria-label={`Enlarge: ${p.title}`}
             >
               <img
                 src={p.src}
@@ -97,7 +97,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
                 className="pointer-events-none absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1 text-micro font-medium text-foreground opacity-0 transition-opacity group-hover:opacity-100"
                 aria-hidden="true"
               >
-                <ZoomIn className="h-3 w-3" /> Büyüt
+                <ZoomIn className="h-3 w-3" /> enlarge
               </span>
             </button>
             <figcaption className="space-y-1 border-t border-border/30 bg-muted/30 px-3 py-2">
@@ -134,7 +134,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
             <button
               type="button"
               onClick={close}
-              aria-label="Kapat"
+              aria-label="Close"
               className="rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <X className="h-5 w-5" />
@@ -149,7 +149,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
               <button
                 type="button"
                 onClick={prev}
-                aria-label="Önceki fotoğraf"
+                aria-label="previous photo"
                 className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground shadow hover:bg-background focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <ChevronLeft className="h-6 w-6" />
@@ -164,7 +164,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
               <button
                 type="button"
                 onClick={next}
-                aria-label="Sonraki fotoğraf"
+                aria-label="Next photo"
                 className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground shadow hover:bg-background focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <ChevronRight className="h-6 w-6" />

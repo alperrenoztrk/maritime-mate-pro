@@ -10,7 +10,7 @@ import type { CalcResult, CalcStep, CourseEntry } from "@/data/courseContent/typ
  *   n+2. Sayısal yerine koyma izi
  *   n+3.. Sonuç(lar) (calculate çıktısının her satırı)
  *
- * Derinlemesine "neden/nasıl" anlatımı, StepByStepSolution içindeki
+ * Derinlemesine "why/how" anlatımı, StepByStepSolution içindeki
  * "yapay zekaya sor" butonu ile (bu adımlar bağlam verilerek) sağlanır.
  * Navigasyondaki gibi elle yazılmış zengin `entry.steps` varsa o önceliklidir.
  */
@@ -25,14 +25,14 @@ export function buildAutoSteps(
   inputs.forEach((input) => {
     const unit = input.unit ? ` ${input.unit}` : "";
     steps.push({
-      title: `Girdi doğrulama — ${input.label}`,
+      title: `Input validation — ${input.label}`,
       expression: `${input.key} = ${vals[input.key]}${unit}`,
       hint: input.help,
     });
   });
 
   steps.push({
-    title: "Uygulanan formül",
+    title: "Formula applied",
     expression: entry.formula,
     hint: entry.note,
   });
@@ -42,18 +42,18 @@ export function buildAutoSteps(
       .map((input) => `${input.key}=${vals[input.key]}${input.unit ? ` ${input.unit}` : ""}`)
       .join("; ");
     steps.push({
-      title: "Sayısal yerine koyma",
+      title: "Numerical substitution",
       expression: `${entry.formula}  |  ${substitution}`,
-      hint: "Ara değerler tam hassasiyetle hesaplanır; ekrandaki yuvarlama yalnız gösterim içindir.",
+      hint: "Intermediate values are calculated with full precision; The on-screen rounding is for display only.",
     });
   }
 
   results.forEach((r) => {
     steps.push({
-      title: `Sonuç — ${r.label}`,
+      title: `Result — ${r.label}`,
       result: r.value,
       hint: /^(?:hata|error)$/i.test(r.label.trim())
-        ? "Girdileri ve formülün geçerlilik koşullarını kontrol edin."
+        ? "Check the inputs and validity conditions of the formula."
         : undefined,
     });
   });

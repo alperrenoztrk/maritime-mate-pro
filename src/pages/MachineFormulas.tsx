@@ -4,7 +4,7 @@ import { Calculator, Fuel, Thermometer, Gauge, Zap, Droplets } from "lucide-reac
 
 const formulaCategories = [
   {
-    title: "Güç Hesaplamaları",
+    title: "Power Calculations",
     icon: Zap,
     color: "text-yellow-600",
     bgColor: "bg-yellow-100 dark:bg-yellow-900/20",

@@ -41,7 +41,7 @@ export default function DraftSurveyPreloading() {
     const { drafts, vesselParticulars, consumables } = inputs;
     
     if (!drafts.forward || !drafts.midship || !drafts.aft || !vesselParticulars.tpc) {
-      toast({ title: "Hata", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
       return;
     }
 
@@ -67,7 +67,7 @@ export default function DraftSurveyPreloading() {
     
     // Stabilite durumu değerlendirmesi
     const trimByHead = parseFloat(drafts.forward) - parseFloat(drafts.aft);
-    let stability = "İyi";
+    let stability = "good";
     if (Math.abs(trimByHead) > 2) {
       stability = "Dikkat - Aşırı Trim";
     } else if (Math.abs(trimByHead) > 1) {
@@ -81,7 +81,7 @@ export default function DraftSurveyPreloading() {
       stability
     });
 
-    toast({ title: "Hesaplama Tamamlandı", description: "Yükleme öncesi kontrol yapıldı" });
+    toast({ title: "Calculation Completed", description: "Yükleme öncesi kontrol yapıldı" });
   };
 
   return (
@@ -164,7 +164,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="breadth">Genişlik (m)</Label>
+              <Label htmlFor="breadth">Width (m)</Label>
               <Input
                 id="breadth"
                 type="number"
@@ -173,7 +173,7 @@ export default function DraftSurveyPreloading() {
                   ...prev, 
                   vesselParticulars: { ...prev.vesselParticulars, breadth: e.target.value }
                 }))}
-                placeholder="Genişlik"
+                placeholder="Width"
               />
             </div>
             <div>
@@ -227,7 +227,7 @@ export default function DraftSurveyPreloading() {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="fuel">Yakıt</Label>
+              <Label htmlFor="fuel">fuel</Label>
               <Input
                 id="fuel"
                 type="number"

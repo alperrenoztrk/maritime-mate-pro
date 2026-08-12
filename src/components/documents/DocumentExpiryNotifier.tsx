@@ -58,10 +58,10 @@ export function DocumentExpiryNotifier() {
 
         const first = due[0];
         const firstState = getDocumentExpiryState(first.expiry_date, first.no_expiry);
-        const extra = due.length > 1 ? ` ve ${due.length - 1} belge daha` : "";
+        const extra = due.length > 1 ? ` and ${due.length - 1} belge daha` : "";
         const body = `${first.title}: ${firstState.label}${extra}.`;
 
-        toast.warning("Belge süresi hatırlatması", {
+        toast.warning("Document deadline reminder", {
           description: body,
           duration: 9000,
           action: {
@@ -69,7 +69,7 @@ export function DocumentExpiryNotifier() {
             onClick: () => window.location.assign("/beta/documents"),
           },
         });
-        await showDeviceNotification("Mariner's Book — Belge hatırlatması", body);
+        await showDeviceNotification("Mariner's Book — Document reminder", body);
         for (const document of due) {
           const milestone = getReminderMilestone(document.expiry_date);
           if (milestone !== null) {

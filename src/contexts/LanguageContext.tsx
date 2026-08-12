@@ -121,7 +121,7 @@ const getSavedLanguage = (): string => {
 
 // ── Translation engine configuration ─────────────────────────────────────────
 // v3: invalidates the dictionaries/runtime values produced before complete UI
-// extraction and context-safe "Hesap" handling. Old stores are also deleted so
+// extraction and context-safe "Account" handling. Old stores are also deleted so
 // mobile WebViews do not retain hundreds of megabytes of unreachable locale data.
 const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v4';
 const LEGACY_TRANSLATION_CACHE_KEYS = [

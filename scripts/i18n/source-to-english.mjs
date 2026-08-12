@@ -132,7 +132,8 @@ async function translateBatch(list) {
   for (let i = 0; i < pending.length; i += 10) {
     const chunk = pending.slice(i, i + 10);
     await new Promise((r) => setTimeout(r, 400));
-    const joined = await gtx(chunk.join(SEP));
+    let joined = '';
+    try { joined = await gtx(chunk.join(SEP)); } catch { console.log('\nrate limited, stopping translation early'); break; }
     const parts = joined.split(/\s*@@@\s*/);
     if (parts.length === chunk.length) {
       chunk.forEach((s, idx) => cache.set(s, parts[idx].trim()));

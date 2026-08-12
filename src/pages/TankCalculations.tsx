@@ -186,7 +186,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                     onClick={calculateSoundingTable} 
                     className="px-8 py-2 bg-[#2F5BFF] hover:bg-[#2F5BFF]/90 text-white"
                   >
-                    Hesapla
+                    Calculate
                   </Button>
                 </div>
 

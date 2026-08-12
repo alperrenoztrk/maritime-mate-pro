@@ -40,7 +40,7 @@ export const MfaChallengeForm = ({
       if (error) {
         // Supabase yanlış kod ile süresi geçmiş kodu ayırmaz; kullanıcıya
         // her iki durumda da işe yarayan tek bir yönlendirme veriyoruz.
-        toast.error("Kod doğrulanamadı. Uygulamadaki güncel kodu girin.");
+        toast.error("The code could not be verified. Enter the current code in the app.");
         setCode("");
         return;
       }
@@ -58,14 +58,14 @@ export const MfaChallengeForm = ({
         </div>
       </div>
       <div className="space-y-1.5 text-center">
-        <p className="text-sm font-medium">İki adımlı doğrulama</p>
+        <p className="text-sm font-medium">Two-step verification</p>
         <p className="text-xs text-muted-foreground">
-          Kimlik doğrulayıcı uygulamanızdaki 6 haneli kodu girin.
+          Enter the 6-digit code from your authenticator app.
         </p>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="mfa-code" className="sr-only">
-          Doğrulama kodu
+          verification code
         </Label>
         <Input
           id="mfa-code"
@@ -80,7 +80,7 @@ export const MfaChallengeForm = ({
         />
       </div>
       <Button type="submit" className="w-full" disabled={busy || code.length !== 6}>
-        {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Doğrula"}
+        {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "verify"}
       </Button>
       {onCancel && (
         <button
@@ -89,12 +89,12 @@ export const MfaChallengeForm = ({
           disabled={busy}
           className="w-full text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
         >
-          Vazgeç ve çıkış yap
+          Give up and log out
         </button>
       )}
       <p className="text-center text-micro leading-relaxed text-muted-foreground">
-        Doğrulayıcınıza erişiminizi kaybettiyseniz destek için bize yazın;
-        kimliğinizi doğruladıktan sonra 2FA'yı kaldırabiliriz.
+        If you have lost access to your authenticator, write to us for support;
+        Once we verify your identity, we can remove 2FA.
       </p>
     </form>
   );

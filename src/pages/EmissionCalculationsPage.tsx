@@ -149,7 +149,7 @@ export default function EmissionCalculationsPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Yakıt Tipi</Label>
+                        <Label>Fuel Type</Label>
                         <Select value={fuelType} onValueChange={setFuelType}>
                           <SelectTrigger>
                             <SelectValue />
@@ -197,7 +197,7 @@ export default function EmissionCalculationsPage() {
                       className="w-full bg-[#2F5BFF] hover:bg-[#2F5BFF]/90"
                     >
                       <Calculator className="h-4 w-4 mr-2" />
-                      Hesapla
+                      Calculate
                     </Button>
 
                     {result && (
@@ -250,7 +250,7 @@ export default function EmissionCalculationsPage() {
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label>Yakıt Tipi</Label>
+                        <Label>Fuel Type</Label>
                         <Select value={fuelType} onValueChange={setFuelType}>
                           <SelectTrigger>
                             <SelectValue />

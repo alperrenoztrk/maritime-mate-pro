@@ -46,7 +46,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const dt1 = v.t1i - v.t2o;
         const dt2 = v.t1o - v.t2i;
-        if (dt1 <= 0 || dt2 <= 0) return [{ label: "Hata", value: "Sıcaklık farkları pozitif olmalı" }];
+        if (dt1 <= 0 || dt2 <= 0) return [{ label: "Error", value: "Sıcaklık farkları pozitif olmalı" }];
         const lmtd = Math.abs(dt1 - dt2) < 0.01 ? dt1 : (dt1 - dt2) / Math.log(dt1 / dt2);
         return [{ label: "LMTD", value: `${lmtd.toFixed(2)} °C` }];
       },
@@ -163,7 +163,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (vals) => {
         const re = (vals.rho * vals.v * vals.d) / vals.mu;
-        const regime = re < 2300 ? "Laminer" : re < 4000 ? "Geçiş" : "Türbülanslı";
+        const regime = re < 2300 ? "Laminer" : re < 4000 ? "transition" : "Türbülanslı";
         return [
           { label: "Reynolds Sayısı", value: re.toFixed(0) },
           { label: "Akış Rejimi", value: regime },
@@ -298,7 +298,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "SFOC Hesabı",
       description: "Özgül yakıt tüketimini hesaplar.",
       inputs: [
-        { key: "fc", label: "Yakıt Tüketimi", unit: "kg/saat", placeholder: "5000" },
+        { key: "fc", label: "Yakıt Tüketimi", unit: "kg/hour", placeholder: "5000" },
         { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "25000" },
       ],
       calculate: (v) => {
@@ -327,7 +327,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Motor termal verimini hesaplar: η = (BHP × 3600) / (ṁf × LCV)",
       inputs: [
         { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "10000" },
-        { key: "fc", label: "Yakıt Tüketimi (ṁf)", unit: "kg/saat", placeholder: "1850" },
+        { key: "fc", label: "Yakıt Tüketimi (ṁf)", unit: "kg/hour", placeholder: "1850" },
         { key: "lcv", label: "Alt Isıl Değer (LCV)", unit: "kJ/kg", placeholder: "42700" },
       ],
       calculate: (v) => {
@@ -343,7 +343,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "bore", label: "Silindir Çapı", unit: "m", placeholder: "0.5" },
         { key: "stroke", label: "Strok", unit: "m", placeholder: "2.0" },
         { key: "n", label: "Devir", unit: "rpm", placeholder: "100" },
-        { key: "k", label: "Silindir Sayısı", unit: "adet", placeholder: "6" },
+        { key: "k", label: "Number of Cylinders", unit: "adet", placeholder: "6" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore, 2) / 4 * v.stroke; // m³
@@ -408,7 +408,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
         { key: "bhp", label: "BHP", unit: "kW", placeholder: "15000" },
-        { key: "t", label: "Süre", unit: "saat", placeholder: "240" },
+        { key: "t", label: "Süre", unit: "clock", placeholder: "240" },
       ],
       calculate: (v) => {
         const fc = (v.sfoc * v.bhp * v.t) / 1e6;
@@ -539,7 +539,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (v) => {
         const steam = (v.q * (v.eta / 100) * 3600) / (v.hfg);
-        return [{ label: "Buhar Üretimi", value: `${steam.toFixed(0)} kg/saat` }];
+        return [{ label: "Buhar Üretimi", value: `${steam.toFixed(0)} kg/hour` }];
       },
     },
     {
@@ -547,7 +547,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Santrifüj separatör akış kapasitesini hesaplar.",
       inputs: [
         { key: "fc", label: "Yakıt Tüketimi", unit: "litre/saat", placeholder: "3000" },
-        { key: "factor", label: "Güvenlik Faktörü", unit: "", placeholder: "1.2" },
+        { key: "factor", label: "Safety Factor", unit: "", placeholder: "1.2" },
         { key: "hours", label: "Çalışma Süresi", unit: "saat/gün", placeholder: "20" },
       ],
       calculate: (v) => {
@@ -562,7 +562,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "250" },
         { key: "stroke", label: "Strok", unit: "mm", placeholder: "200" },
         { key: "n", label: "Devir", unit: "rpm", placeholder: "1000" },
-        { key: "k", label: "Silindir Sayısı", unit: "", placeholder: "2" },
+        { key: "k", label: "Number of Cylinders", unit: "", placeholder: "2" },
         { key: "etav", label: "Hacimsel Verim", unit: "%", placeholder: "85" },
       ],
       calculate: (v) => {
@@ -570,8 +570,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const qTheory = vs * v.n * v.k; // m³/min
         const qActual = qTheory * (v.etav / 100);
         return [
-          { label: "Teorik Debi", value: `${(qTheory * 60).toFixed(2)} m³/saat` },
-          { label: "Gerçek Debi", value: `${(qActual * 60).toFixed(2)} m³/saat` },
+          { label: "Teorik Debi", value: `${(qTheory * 60).toFixed(2)} m³/hour` },
+          { label: "Gerçek Debi", value: `${(qActual * 60).toFixed(2)} m³/hour` },
         ];
       },
     },
@@ -586,8 +586,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const production = (v.qAvail * (v.eta / 100) * 3600) / v.hfg;
         return [
-          { label: "Su Üretimi", value: `${production.toFixed(0)} kg/saat` },
-          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} ton/gün` },
+          { label: "Su Üretimi", value: `${production.toFixed(0)} kg/hour` },
+          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} tons/day` },
         ];
       },
     },
@@ -776,7 +776,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const mAir = v.q * v.rho / 3600; // kg/s
         const moisture = mAir * (v.w1 - v.w2) / 1000; // kg/s water removed
         return [
-          { label: "Nem Alma Kapasitesi", value: `${(moisture * 3600).toFixed(2)} kg/saat` },
+          { label: "Nem Alma Kapasitesi", value: `${(moisture * 3600).toFixed(2)} kg/hour` },
           { label: "Latent Yük", value: `${(moisture * 2450).toFixed(1)} kW` },
         ];
       },
@@ -792,7 +792,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (vals) => {
         const ccai = vals.d - 81.703 * Math.log10(Math.log10(vals.v + 0.85)) - 483.5;
-        const quality = ccai < 840 ? "İyi" : ccai < 870 ? "Kabul edilebilir" : "Zayıf tutuşma";
+        const quality = ccai < 840 ? "good" : ccai < 870 ? "Kabul edilebilir" : "Zayıf tutuşma";
         return [
           { label: "CCAI", value: ccai.toFixed(0) },
           { label: "Kalite", value: quality },
@@ -839,7 +839,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const total = daily * v.days;
         const withMargin = total * (1 + v.margin / 100);
         return [
-          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} ton/gün` },
+          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} tons/day` },
           { label: "Toplam İhtiyaç", value: `${total.toFixed(1)} ton` },
           { label: "Güvenlik Payı Dahil", value: `${withMargin.toFixed(1)} ton` },
         ];
@@ -851,9 +851,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "MTBF ve Kullanılabilirlik",
       description: "Ekipman güvenilirlik ve kullanılabilirlik hesabı.",
       inputs: [
-        { key: "hours", label: "Toplam Çalışma Süresi", unit: "saat", placeholder: "8760" },
+        { key: "hours", label: "Toplam Çalışma Süresi", unit: "clock", placeholder: "8760" },
         { key: "failures", label: "Arıza Sayısı", unit: "adet", placeholder: "3" },
-        { key: "repair", label: "Toplam Onarım Süresi", unit: "saat", placeholder: "72" },
+        { key: "repair", label: "Toplam Onarım Süresi", unit: "clock", placeholder: "72" },
       ],
       calculate: (v) => {
         if (v.failures === 0) return [{ label: "MTBF", value: "Arıza yok — sonsuz" }];
@@ -861,8 +861,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const mttr = v.repair / v.failures;
         const avail = mtbf / (mtbf + mttr) * 100;
         return [
-          { label: "MTBF", value: `${mtbf.toFixed(0)} saat` },
-          { label: "MTTR", value: `${mttr.toFixed(1)} saat` },
+          { label: "MTBF", value: `${mtbf.toFixed(0)} clock` },
+          { label: "MTTR", value: `${mttr.toFixed(1)} clock` },
           { label: "Kullanılabilirlik", value: `${avail.toFixed(1)}%` },
         ];
       },
@@ -873,7 +873,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       inputs: [
         { key: "d0", label: "Orijinal Çap", unit: "mm", placeholder: "500" },
         { key: "d1", label: "Ölçülen Çap", unit: "mm", placeholder: "500.8" },
-        { key: "hours", label: "Çalışma Saati", unit: "saat", placeholder: "20000" },
+        { key: "hours", label: "Çalışma Saati", unit: "clock", placeholder: "20000" },
       ],
       calculate: (v) => {
         const wear = v.d1 - v.d0;
@@ -883,7 +883,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [
           { label: "Toplam Aşınma", value: `${wear.toFixed(2)} mm` },
           { label: "Aşınma Oranı", value: `${rate.toFixed(3)} mm/1000 saat` },
-          { label: "Tahmini Kalan Ömür", value: `${remainingLife > 0 ? remainingLife.toFixed(0) : 0} saat` },
+          { label: "Tahmini Kalan Ömür", value: `${remainingLife > 0 ? remainingLife.toFixed(0) : 0} clock` },
         ];
       },
     },
@@ -910,8 +910,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "Güvenilirlik R(t)",
       description: "Üstel dağılım ile zaman bazlı güvenilirlik hesabı: R(t) = e^(-t/MTBF)",
       inputs: [
-        { key: "mtbf", label: "MTBF", unit: "saat", placeholder: "5000" },
-        { key: "t", label: "Hedef Süre (t)", unit: "saat", placeholder: "1000" },
+        { key: "mtbf", label: "MTBF", unit: "clock", placeholder: "5000" },
+        { key: "t", label: "Hedef Süre (t)", unit: "clock", placeholder: "1000" },
       ],
       calculate: (v) => {
         const lambda = 1 / v.mtbf;
@@ -972,13 +972,13 @@ const topicCalculations: Record<string, CalcTool[]> = {
       inputs: [
         { key: "v1", label: "Mevcut Hız", unit: "knot", placeholder: "14" },
         { key: "v2", label: "Yeni Hız", unit: "knot", placeholder: "12" },
-        { key: "fc1", label: "Mevcut Tüketim", unit: "ton/gün", placeholder: "35" },
+        { key: "fc1", label: "Mevcut Tüketim", unit: "tons/day", placeholder: "35" },
       ],
       calculate: (v) => {
         const fc2 = v.fc1 * Math.pow(v.v2 / v.v1, 3);
         const saving = ((v.fc1 - fc2) / v.fc1) * 100;
         return [
-          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} ton/gün` },
+          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} tons/day` },
           { label: "Tasarruf", value: `${saving.toFixed(1)}%` },
         ];
       },
@@ -1059,7 +1059,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const requiredCapacity = v.bilge / v.hours;
         return [
-          { label: "Gerekli OWS Kapasitesi", value: `${requiredCapacity.toFixed(2)} m³/saat` },
+          { label: "Gerekli OWS Kapasitesi", value: `${requiredCapacity.toFixed(2)} m³/hour` },
           { label: "Haftalık Sintine", value: `${(v.bilge * 7).toFixed(1)} m³` },
         ];
       },
@@ -1069,14 +1069,14 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "D-2 standardına uygun arıtma kapasitesini hesaplar.",
       inputs: [
         { key: "tankVol", label: "Toplam Balast Hacmi", unit: "m³", placeholder: "15000" },
-        { key: "pumpRate", label: "Balast Pompa Debisi", unit: "m³/saat", placeholder: "500" },
+        { key: "pumpRate", label: "Balast Pompa Debisi", unit: "m³/hour", placeholder: "500" },
       ],
       calculate: (v) => {
         const treatmentRate = v.pumpRate;
         const totalTime = v.tankVol / v.pumpRate;
         return [
-          { label: "Gerekli Arıtma Kapasitesi", value: `${treatmentRate.toFixed(0)} m³/saat` },
-          { label: "Toplam Süre", value: `${totalTime.toFixed(1)} saat` },
+          { label: "Gerekli Arıtma Kapasitesi", value: `${treatmentRate.toFixed(0)} m³/hour` },
+          { label: "Toplam Süre", value: `${totalTime.toFixed(1)} clock` },
         ];
       },
     },
@@ -1110,7 +1110,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const airForCombustion = v.p * 2.5; // m³/saat
         const ventChanges = airForCombustion / v.vol;
         return [
-          { label: "Yanma Havası İhtiyacı", value: `${airForCombustion.toFixed(0)} m³/saat` },
+          { label: "Yanma Havası İhtiyacı", value: `${airForCombustion.toFixed(0)} m³/hour` },
           { label: "Hava Değişim Sayısı", value: `${ventChanges.toFixed(1)} /saat` },
         ];
       },
@@ -1135,7 +1135,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
           { label: "H₂S Durumu", value: `${v.h2s} ppm → ${h2sOk ? "Uygun" : "TEHLİKELİ"}` },
           { label: "CO Durumu", value: `${v.co} ppm → ${coOk ? "Uygun" : "TEHLİKELİ"}` },
           { label: "LEL Durumu", value: `${v.lel}% → ${lelOk ? "Uygun" : "TEHLİKELİ"}` },
-          { label: "Genel Değerlendirme", value: safe ? "GİRİLEBİLİR" : "GİRİLEMEZ" },
+          { label: "General Evaluation", value: safe ? "GİRİLEBİLİR" : "GİRİLEMEZ" },
         ];
       },
     },
@@ -1164,11 +1164,11 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Lost Time Injury Frequency oranını hesaplar.",
       inputs: [
         { key: "lti", label: "Kayıp Zamanlı Kaza Sayısı", unit: "", placeholder: "2" },
-        { key: "hours", label: "Toplam Çalışma Saati", unit: "saat", placeholder: "500000" },
+        { key: "hours", label: "Toplam Çalışma Saati", unit: "clock", placeholder: "500000" },
       ],
       calculate: (v) => {
         const ltif = (v.lti / v.hours) * 1e6;
-        const status = ltif < 1 ? "Çok İyi" : ltif < 3 ? "İyi" : ltif < 5 ? "Orta" : "Kötü";
+        const status = ltif < 1 ? "Çok İyi" : ltif < 3 ? "good" : ltif < 5 ? "Orta" : "bad";
         return [
           { label: "LTIF", value: ltif.toFixed(2) },
           { label: "Değerlendirme", value: status },
@@ -1179,8 +1179,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "Yorgunluk İndeksi",
       description: "IMO yorgunluk yönetimi için çalışma/dinlenme saatlerini değerlendirir.",
       inputs: [
-        { key: "workHours", label: "Günlük Çalışma", unit: "saat", placeholder: "14" },
-        { key: "restHours", label: "Günlük Dinlenme", unit: "saat", placeholder: "10" },
+        { key: "workHours", label: "Günlük Çalışma", unit: "clock", placeholder: "14" },
+        { key: "restHours", label: "Günlük Dinlenme", unit: "clock", placeholder: "10" },
         { key: "days", label: "Ardışık Çalışma Günü", unit: "gün", placeholder: "14" },
       ],
       calculate: (v) => {
@@ -1200,7 +1200,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Vardiya düzeninin operasyonel etkinliğini değerlendirir.",
       inputs: [
         { key: "crew", label: "Makine Personeli", unit: "kişi", placeholder: "8" },
-        { key: "watchHours", label: "Vardiya Süresi", unit: "saat", placeholder: "4" },
+        { key: "watchHours", label: "Vardiya Süresi", unit: "clock", placeholder: "4" },
         { key: "tasks", label: "Günlük Rutin Görev", unit: "adet", placeholder: "25" },
         { key: "incidents", label: "Aylık Olay Sayısı", unit: "adet", placeholder: "2" },
       ],
@@ -1246,7 +1246,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const l10Hours = l10Rev / (v.n * 60);
         return [
           { label: "L₁₀ (devir)", value: `${(l10Rev / 1e6).toFixed(1)} × 10⁶` },
-          { label: "L₁₀ (saat)", value: `${l10Hours.toFixed(0)} saat` },
+          { label: "L₁₀ (saat)", value: `${l10Hours.toFixed(0)} clock` },
         ];
       },
     },
@@ -1380,13 +1380,13 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Mevcut yakıt stokuyla tahmini çalışma süresini hesaplar.",
       inputs: [
         { key: "stock", label: "Yakıt Stoku", unit: "ton", placeholder: "500" },
-        { key: "rate", label: "Tüketim Hızı", unit: "ton/gün", placeholder: "30" },
+        { key: "rate", label: "Tüketim Hızı", unit: "tons/day", placeholder: "30" },
       ],
       calculate: (v) => {
         const days = v.stock / v.rate;
         return [
           { label: "Tahmini Menzil", value: `${days.toFixed(1)} gün` },
-          { label: "Saat", value: `${(days * 24).toFixed(0)} saat` },
+          { label: "Time", value: `${(days * 24).toFixed(0)} clock` },
         ];
       },
     },
@@ -1416,7 +1416,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       inputs: [
         { key: "cylOil", label: "Silindir Yağı Tüketimi", unit: "g/kW·h", placeholder: "0.7" },
         { key: "bhp", label: "Motor Gücü", unit: "kW", placeholder: "15000" },
-        { key: "hours", label: "Çalışma Süresi", unit: "saat", placeholder: "720" },
+        { key: "hours", label: "Çalışma Süresi", unit: "clock", placeholder: "720" },
       ],
       calculate: (v) => {
         const consumption = (v.cylOil * v.bhp * v.hours) / 1e6; // ton
@@ -1504,7 +1504,7 @@ function CalcToolCard({ tool }: { tool: CalcTool }) {
           ))}
         </div>
         <Button onClick={handleCalc} size="sm" className="w-full gap-2">
-          <Calculator className="h-4 w-4" /> Hesapla
+          <Calculator className="h-4 w-4" /> Calculate
         </Button>
         {results && (
           <div className="bg-primary/5 rounded-lg p-3 space-y-1">

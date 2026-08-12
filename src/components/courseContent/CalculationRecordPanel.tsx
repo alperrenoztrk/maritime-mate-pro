@@ -30,15 +30,15 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
   };
 
   return (
-    <section className="space-y-3 rounded-xl border border-primary/20 bg-primary/[0.035] p-3" aria-label="Hesap dökümü">
+    <section className="space-y-3 rounded-xl border border-primary/20 bg-primary/[0.035] p-3" aria-label="account statement">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <FileCheck2 className="h-4 w-4 text-primary" />
-          <p className="text-sm font-semibold">Profesyonel Hesap Dökümü</p>
+          <p className="text-sm font-semibold">Professional Account Statement</p>
         </div>
         <Button type="button" size="sm" variant="outline" className="h-8 gap-1.5" onClick={copyRecord}>
           {copied ? <Check className="h-3.5 w-3.5" /> : <Clipboard className="h-3.5 w-3.5" />}
-          {copied ? "Kopyalandı" : "Dökümü Kopyala"}
+          {copied ? "Copied" : "Copy Dump"}
         </Button>
       </div>
 
@@ -47,7 +47,7 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
           <CheckCircle2 className="h-3 w-3 text-emerald-500" /> {record.inputs.length} girdi
         </Badge>
         <Badge variant="outline" className="gap-1 bg-background/70">
-          <Sigma className="h-3 w-3 text-blue-500" /> Formül izi
+          <Sigma className="h-3 w-3 text-blue-500" /> formula trace
         </Badge>
         <Badge variant="outline" className="gap-1 bg-background/70">
           <Clock3 className="h-3 w-3 text-muted-foreground" /> {formatUtc(record.computedAtUtc)}
@@ -56,7 +56,7 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
 
       <div className="grid gap-3 lg:grid-cols-2">
         <div className="min-w-0 rounded-lg border border-border/40 bg-background/65 p-3">
-          <p className="mb-2 text-micro font-semibold uppercase tracking-wide text-muted-foreground">Doğrulanan girdiler</p>
+          <p className="mb-2 text-micro font-semibold uppercase tracking-wide text-muted-foreground">Verified entries</p>
           <dl className="space-y-1.5">
             {record.inputs.map((input) => (
               <div key={input.key} className="grid grid-cols-[minmax(0,1fr)_auto] gap-3 text-xs">
@@ -70,7 +70,7 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
         </div>
 
         <div className="min-w-0 rounded-lg border border-emerald-500/20 bg-emerald-500/[0.055] p-3">
-          <p className="mb-2 text-micro font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Nihai sonuçlar</p>
+          <p className="mb-2 text-micro font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">final results</p>
           <dl className="space-y-1.5">
             {record.results.map((result, index) => (
               <div key={`${result.label}-${index}`} className="grid grid-cols-[minmax(0,1fr)_auto] gap-3 text-xs">
@@ -84,19 +84,19 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
 
       <div className="space-y-2 rounded-lg border border-border/40 bg-background/65 p-3 text-xs">
         <div>
-          <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Kullanılan bağıntı</p>
+          <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Relation used</p>
           <p translate="no" className="notranslate mt-1 break-words font-mono text-primary">{record.formula}</p>
         </div>
         {record.note && (
           <div>
-            <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Kapsam / varsayım</p>
+            <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Scope/assumption</p>
             <p className="mt-1 text-muted-foreground">{record.note}</p>
           </div>
         )}
         <div>
           <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Kaynak izi</p>
           <p className="mt-1 text-muted-foreground">
-            {record.source?.code ?? "Kaynak belirtilmemiş"}
+            {record.source?.code ?? "Source not specified"}
             {record.source?.detail ? ` — ${record.source.detail}` : ""}
           </p>
         </div>
@@ -114,8 +114,8 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
       )}
 
       <p className="text-micro leading-relaxed text-muted-foreground">
-        Bu döküm eğitim ve çapraz kontrol içindir. Stabilite kitapçığı, yükleme bilgisayarı, seyir neşriyatı,
-        klas/üretici verisi ve gemiye özel onaylı dokümanlar gereken operasyonlarda önceliklidir.
+        This transcript is for training and cross-checking. Stability booklet, loading computer, navigational publications,
+        Class/manufacturer data and ship-specific approved documents have priority in required operations.
       </p>
     </section>
   );

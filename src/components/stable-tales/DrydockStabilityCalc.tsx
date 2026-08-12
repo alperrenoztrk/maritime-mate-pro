@@ -75,7 +75,7 @@ export const DrydockStabilityCalc = () => {
       const kren_momenti = vesselData.deplasman * kritik_gm * 9.81; // kN.m
       
       // Safety assessment
-      let güvenlik_durumu = 'Güvenli';
+      let güvenlik_durumu = 'safe';
       let güvenlik_rengi = 'default';
       const öneriler: string[] = [];
       
@@ -84,7 +84,7 @@ export const DrydockStabilityCalc = () => {
         güvenlik_rengi = 'default';
         öneriler.push('Havuz operasyonu güvenle gerçekleştirilebilir');
       } else if (mevcut_gm >= kritik_gm) {
-        güvenlik_durumu = 'Güvenli';
+        güvenlik_durumu = 'safe';
         güvenlik_rengi = 'secondary';
         öneriler.push('Dikkatli operasyon önerilir');
       } else {
@@ -241,7 +241,7 @@ export const DrydockStabilityCalc = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                {results.güvenlik_durumu === 'Çok Güvenli' || results.güvenlik_durumu === 'Güvenli' ? (
+                {results.güvenlik_durumu === 'Çok Güvenli' || results.güvenlik_durumu === 'safe' ? (
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />

@@ -10,12 +10,12 @@ function formatRelative(iso?: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "";
   const diffMinutes = Math.round((Date.now() - date.getTime()) / 60_000);
-  if (diffMinutes < 1) return "şimdi";
-  if (diffMinutes < 60) return `${diffMinutes} dk önce`;
+  if (diffMinutes < 1) return "now";
+  if (diffMinutes < 60) return `${diffMinutes} minutes ago`;
   const hours = Math.round(diffMinutes / 60);
-  if (hours < 24) return `${hours} sa önce`;
+  if (hours < 24) return `${hours} hr ago`;
   const days = Math.round(hours / 24);
-  if (days < 7) return `${days} gün önce`;
+  if (days < 7) return `${days} days ago`;
   return date.toLocaleDateString("tr-TR", { day: "2-digit", month: "short" });
 }
 
@@ -49,17 +49,17 @@ export function NewsPanel() {
             <Newspaper className="h-5 w-5 text-primary" />
             Denizcilik Haberleri
           </h2>
-          <p className="mt-0.5 text-caption text-muted-foreground">Sektörden güncel başlıklar</p>
+          <p className="mt-0.5 text-caption text-muted-foreground">Current headlines from the industry</p>
         </div>
         <Link to="/maritime-news" className="inline-flex min-h-11 items-center gap-0.5 rounded-xl px-2 text-sm font-semibold text-primary hover:bg-primary/10">
-          Tümü
+          All
           <ChevronRight className="h-4 w-4" />
         </Link>
       </div>
 
       <div className="surface-2 overflow-hidden rounded-2xl border">
         {isLoading && (
-          <div className="divide-y divide-border/60" aria-label="Haberler yükleniyor">
+          <div className="divide-y divide-border/60" aria-label="News loading">
             {Array.from({ length: 5 }).map((_, index) => (
               <div key={index} className="flex animate-pulse gap-3 p-3.5">
                 <div className="h-16 w-20 shrink-0 rounded-xl bg-muted" />
@@ -72,9 +72,9 @@ export function NewsPanel() {
           </div>
         )}
 
-        {isError && <p className="p-6 text-center text-sm text-muted-foreground">Haberler şu an alınamıyor.</p>}
+        {isError && <p className="p-6 text-center text-sm text-muted-foreground">News cannot be received at the moment.</p>}
         {!isLoading && !isError && items.length === 0 && (
-          <p className="p-6 text-center text-sm text-muted-foreground">Şu an gösterilecek haber yok.</p>
+          <p className="p-6 text-center text-sm text-muted-foreground">There is currently no news to display.</p>
         )}
 
         {!isLoading && !isError && items.length > 0 && (

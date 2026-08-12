@@ -188,7 +188,7 @@ const EmptyPage = () => {
 
   const wmoToTr = (code?: number): string => {
     if (code === undefined) return "Bilinmiyor";
-    if (code === 0) return "Açık";
+    if (code === 0) return "open";
     if (code <= 3) return "Az Bulutlu";
     if (code <= 48) return "Bulutlu";
     if (code <= 67) return "Yağmurlu";
@@ -276,7 +276,7 @@ const EmptyPage = () => {
   if (loading) {
     return (
       <div className={`min-h-screen ${oceanTheme.background} flex items-center justify-center`}>
-        <div className={oceanTheme.textColor}>Yükleniyor...</div>
+        <div className={oceanTheme.textColor}>Loading…</div>
       </div>
     );
   }

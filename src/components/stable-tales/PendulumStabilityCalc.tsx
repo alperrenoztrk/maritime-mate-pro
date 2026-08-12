@@ -111,7 +111,7 @@ export const PendulumStabilityCalc = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary">{results.meyil_acisi.toFixed(2)}°</p>
-                  <p className="text-sm text-muted-foreground">Meyil Açısı</p>
+                  <p className="text-sm text-muted-foreground">Inclination Angle</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-secondary">{results.hata_marji.toFixed(2)}%</p>

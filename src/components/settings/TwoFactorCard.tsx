@@ -59,7 +59,7 @@ export const TwoFactorCard = () => {
     try {
       const { error } = await confirmEnrollment(enrollment.factorId, code);
       if (error) {
-        toast.error("Kod doğrulanamadı. Uygulamadaki güncel kodu girin.");
+        toast.error("The code could not be verified. Enter the current code in the app.");
         setCode("");
         return;
       }
@@ -98,7 +98,7 @@ export const TwoFactorCard = () => {
           ) : (
             <ShieldOff className="h-4 w-4 text-muted-foreground" />
           )}
-          <span data-translatable>İki adımlı doğrulama</span>
+          <span data-translatable>Two-step verification</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -119,7 +119,7 @@ export const TwoFactorCard = () => {
                 onClick={() => handleRemove(factor.id)}
                 className="w-full text-destructive hover:text-destructive"
               >
-                {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Kapat"}
+                {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Close"}
               </Button>
             ))}
           </>
@@ -147,7 +147,7 @@ export const TwoFactorCard = () => {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="mfa-enroll-code" className="text-xs">
-                Doğrulama kodu
+                verification code
               </Label>
               <Input
                 id="mfa-enroll-code"
@@ -169,7 +169,7 @@ export const TwoFactorCard = () => {
                 disabled={busy}
                 onClick={() => setEnrollment(null)}
               >
-                Vazgeç
+                Cancel
               </Button>
               <Button type="submit" size="sm" className="flex-1" disabled={busy || code.length !== 6}>
                 {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Onayla"}

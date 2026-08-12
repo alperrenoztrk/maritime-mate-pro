@@ -216,7 +216,7 @@ export const FreeSurfaceCalculator = () => {
         
         <div className="bg-muted/50 rounded-lg p-3">
           <div className="text-center">
-            <p className="text-xs text-muted-foreground mb-1">Serbest Yüzey Etkisi</p>
+            <p className="text-xs text-muted-foreground mb-1">Free Surface Effect</p>
             <p className="text-2xl font-bold text-primary">{fse.toFixed(4)} m</p>
           </div>
           
@@ -260,7 +260,7 @@ export const WeightShiftCalculator = () => {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <Label className="text-xs">Ağırlık (w) - ton</Label>
+            <Label className="text-xs">Weight (w) - tons</Label>
             <Input
               type="number"
               value={weight}
@@ -461,7 +461,7 @@ export const GrainStabilityCalculator = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Wheat className="h-5 w-5 text-primary" />
-          Tahıl Hesabı
+          Grain Account
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -660,7 +660,7 @@ export const InteractiveStabilityTools = () => {
         </TabsTrigger>
         <TabsTrigger value="weight" className="text-xs py-1.5 px-1">
           <Scale className="h-3 w-3 mr-1 hidden sm:inline" />
-          Ağırlık
+          Weight
         </TabsTrigger>
         <TabsTrigger value="imo" className="text-xs py-1.5 px-1">
           <Target className="h-3 w-3 mr-1 hidden sm:inline" />
