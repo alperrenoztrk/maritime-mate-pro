@@ -101,11 +101,6 @@ export default function BuoyagePage() {
           <LifeBuoy className="h-7 w-7 text-emerald-500" />
           <h1 className="text-3xl font-bold md:text-4xl">IALA Şamandıra Sistemi</h1>
         </div>
-        <p className="mb-4 text-sm text-muted-foreground">
-          Şamandıralar bilgi vermek için değil, sizi hareket ettirmek için vardır. Her işaret bir
-          geçiş talimatıdır. Lateral işaretlerin renk anlamı IALA bölgesine göre tersine döner; bu
-          yüzden bir şamandırayı okumadan önceki ilk refleks “hangi bölgedeyim?” sorusu olmalıdır.
-        </p>
 
         {/* Region toggle — the single most important control on this page. */}
         <div className="mb-4 rounded-xl border border-border/50 bg-card/60 p-3">

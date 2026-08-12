@@ -602,7 +602,6 @@ export default function RegulationDetailPage() {
                 <h1 className="mt-1 text-2xl font-black leading-tight text-foreground sm:text-4xl">{regulation.label}</h1>
               </div>
             </div>
-            <p className="max-w-5xl text-sm leading-7 text-muted-foreground sm:text-base">{regulation.overview}</p>
             <div className="flex flex-wrap gap-2 text-micro font-semibold text-muted-foreground">
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
                 {regulation.narrativeChapters?.length || 0} kapsamlı ders bölümü

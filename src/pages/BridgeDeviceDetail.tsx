@@ -52,7 +52,6 @@ export default function BridgeDeviceDetailPage() {
               <h1 className="text-3xl font-black text-foreground sm:text-4xl">{device.name}</h1>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground sm:text-base">{device.summary}</p>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">

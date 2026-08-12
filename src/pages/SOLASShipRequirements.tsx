@@ -65,9 +65,6 @@ const SOLASShipRequirementsPage = () => {
               </h1>
             </div>
           </div>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Tasarım onayları, operasyonel kayıtlar ve günlük bakımlar için takip edilmesi gereken minimum gereksinim seti.
-          </p>
         </div>
 
         {/* Requirement Blocks */}

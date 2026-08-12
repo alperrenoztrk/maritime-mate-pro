@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Flag, Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import SignalTonePlayer from "@/components/audio/SignalTonePlayer";
@@ -114,15 +114,6 @@ export default function SignalFlagsPage() {
           <Flag className="h-7 w-7 text-sky-500" />
           <h1 className="text-3xl font-bold md:text-4xl">İşaret Bayrakları</h1>
         </div>
-        <p className="mb-4 text-sm text-muted-foreground">
-          Uluslararası İşaret Kodu (ICS), dil engelini aşmak için kurulmuş görsel haberleşme
-          sistemidir. 26 harf bayrağı, 10 rakam flaması, 3 ikame flaması ve cevap flamasından oluşur.
-          Harflerin mors karşılığını dinlemek için “Çal” düğmesini kullanın; tam mors tablosu için{" "}
-          <Link to="/communication/morse" className="font-medium text-sky-600 underline dark:text-sky-400">
-            Mors Alfabesi
-          </Link>{" "}
-          sayfasına bakın.
-        </p>
 
         {/* Search */}
         <div className="relative mb-3">

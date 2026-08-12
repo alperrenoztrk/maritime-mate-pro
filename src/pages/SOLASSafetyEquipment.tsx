@@ -69,9 +69,6 @@ const SOLASSafetyEquipmentPage = () => {
               </h1>
             </div>
           </div>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Gemi üzerindeki kritik güvenlik ekipmanlarını tek ekranda görün; servis, drill ve test kayıtlarını aynı yerde takip edin.
-          </p>
         </div>
 
         {/* Equipment Cards */}

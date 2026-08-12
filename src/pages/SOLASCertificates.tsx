@@ -53,9 +53,6 @@ const SOLASCertificatesPage = () => {
               </h1>
             </div>
           </div>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Sertifika süreleri, ara survey tarihleri ve hazırlanması gereken dokümanlar için tek sayfalık özet.
-          </p>
         </div>
 
         {/* Certificates */}

@@ -203,11 +203,6 @@ export default function MorseCodePage() {
           <Radio className="h-7 w-7 text-sky-500" />
           <h1 className="text-3xl font-bold md:text-4xl">Mors Alfabesi</h1>
         </div>
-        <p className="mb-4 text-sm text-muted-foreground">
-          Mors lambası (Aldis), telsiz arızasında ve karartma altında çalışan tek görsel haberleşme
-          yöntemidir. Aşağıdaki tablo ITU-R M.1677-1 kod setini ve Uluslararası İşaret Kodu'nun
-          ışıkla haberleşme prosedür işaretlerini içerir. Her satırı dinleyebilirsiniz.
-        </p>
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
