@@ -267,16 +267,17 @@ function LibraryBookCase({
           {/* Başlık doğrudan cildin üstüne yaldız varakla basılıyor; arkasında
               koyu etiket plakası yok. Açık cilt renklerinde okunurluğu harflerin
               kabartma (gömme baskı) gölgesi sağlıyor. */}
-          <div className="absolute inset-x-[11%] top-[21%] flex flex-col items-center gap-2 px-2 text-center">
-            <span aria-hidden className={`h-px w-8 ${goldRule}`} />
+          <div className="absolute inset-x-[11%] top-[21%] flex max-h-[58%] flex-col items-center gap-2 overflow-hidden px-1 text-center">
+            <span aria-hidden className={`h-px w-8 shrink-0 ${goldRule}`} />
             <h2
-              className={`line-clamp-5 bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.8))_drop-shadow(0_0_4px_rgba(0,0,0,0.45))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
+              className={`line-clamp-5 min-w-0 max-w-full bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.8))_drop-shadow(0_0_4px_rgba(0,0,0,0.45))] [hyphens:none] [-webkit-hyphens:none] [overflow-wrap:normal] [word-break:normal] ${coverTitleSize(title)}`}
               style={goldFoil}
             >
               {title}
             </h2>
-            <span aria-hidden className={`h-px w-8 ${goldRule}`} />
+            <span aria-hidden className={`h-px w-8 shrink-0 ${goldRule}`} />
           </div>
+
 
           <span aria-hidden className={`absolute inset-x-[38%] bottom-[13%] h-px ${goldRule}`} />
         </div>
