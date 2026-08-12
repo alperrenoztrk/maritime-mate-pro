@@ -178,7 +178,6 @@ export default function BuoyagePage() {
                       {marks.length} işaret
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{label.description}</p>
                 </div>
 
                 {label.image ? (

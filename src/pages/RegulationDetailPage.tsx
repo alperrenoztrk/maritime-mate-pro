@@ -73,7 +73,6 @@ const SectionHeader = ({
       <span>{eyebrow}</span>
     </div>
     <h2 className="text-xl font-black text-foreground sm:text-2xl">{title}</h2>
-    {description && <p className="mt-1 max-w-3xl text-sm leading-relaxed text-muted-foreground">{description}</p>}
   </div>
 );
 
