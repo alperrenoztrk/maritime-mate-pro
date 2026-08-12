@@ -75,7 +75,7 @@ const ConverterPage = lazy(() => import("./pages/Converter"));
 const PassagePlanPage = lazy(() => import("./pages/PassagePlanPage"));
 const MoonPhases = lazy(() => import("./pages/MoonPhases"));
 const Settings = lazy(() => import("./pages/Settings"));
-const NotesRouteOverlay = lazy(() => import("./components/NotesRouteOverlay"));
+const NotesPage = lazy(() => import("./pages/Notes"));
 const ProPage = lazy(() => import("./pages/ProPage"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const Regulations = lazy(() => import("./pages/Regulations"));
@@ -343,6 +343,7 @@ const AnimatedRoutes = () => {
         <Route path="/library" element={<PageTransition><LibraryHubPage /></PageTransition>} />
         <Route path="/search" element={<PageTransition><SearchPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
+        <Route path="/notes" element={<PageTransition><NotesPage /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
         <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
@@ -566,18 +567,13 @@ const App = () => {
                           banner is a native view (see src/services/ads.ts). */}
                       <AdsController />
                       {/* Login wall: only the home page and the auth screens are
-                          open to anonymous visitors. NotesRouteOverlay renders
-                          itself for /notes outside <Routes>, so it has to sit
-                          inside the gate too. */}
+                          open to anonymous visitors. */}
                       <RequireAuth>
                         {/* Keep the translation blocker inside the auth gate.
                             Auth loading/MFA screens do not mount PageTransition,
                             so a gate outside RequireAuth could never be released. */}
                         <RouteTranslationGate />
                         <AnimatedRoutes />
-                        <Suspense fallback={null}>
-                          <NotesRouteOverlay />
-                        </Suspense>
                       </RequireAuth>
                     </BrowserRouter>
                   </div>

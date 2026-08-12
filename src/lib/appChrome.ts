@@ -2,7 +2,7 @@ const CHROMELESS_ROUTES = [
   /^\/auth(?:\/|$)/,
   /^\/reset-password$/,
   /^\/\.lovable\/oauth\/consent$/,
-  /^\/notes(?:\/|$)/,
+  
   /^\/exercises\/[^/]+\/topics\/[^/]+\/learn$/,
 ];
 
