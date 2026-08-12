@@ -173,16 +173,19 @@ const goldFoil: CSSProperties = {
   backgroundImage: "linear-gradient(180deg, #fff8e7 0%, #efd08a 52%, #c9983d 100%)",
 };
 
-/** Kapaktaki başlık kutusu dar. Tire kapalı olduğu için sığmayan kelimeyi tarayıcı
-    tiresiz kırar; onu da istemiyoruz. Punto başlığın en uzun kelimesine göre
-    seçiliyor, böylece her satır tek parça kelimeyle sütuna sığıyor. */
+/** Kapaktaki başlık kutusu dar. Punto, kullanıcının yazı boyutu ayarından (rem)
+    bağımsız olsun diye kapağın kendi genişliğine (cqw) göre ölçekleniyor; böylece
+    "Communication at Sea" gibi uzun başlıklar her yazı boyutunda çerçeve içinde
+    kalır ve kelime ortasından bölünmez. clamp()'in px yedeği, container query
+    desteklemeyen tarayıcılarda makul bir taban sağlar. */
 const coverTitleSize = (title: string) => {
   const longest = Math.max(...title.split(/\s+/).map((word) => word.length), 0);
-  if (longest > 18 || title.length > 60) return "text-[0.68rem] sm:text-[0.74rem]";
-  if (longest > 15) return "text-[0.78rem] sm:text-[0.84rem]";
-  if (longest > 12 || title.length > 44) return "text-[0.9rem] sm:text-[0.95rem]";
-  return "text-[1.02rem] sm:text-lg";
+  if (longest > 18 || title.length > 60) return "text-[clamp(7px,6.4cqw,15px)]";
+  if (longest > 15) return "text-[clamp(8px,7.4cqw,17px)]";
+  if (longest > 12 || title.length > 44) return "text-[clamp(9px,8.6cqw,19px)]";
+  return "text-[clamp(10px,10cqw,22px)]";
 };
+
 
 function LibraryBookCase({
   title,
@@ -233,7 +236,7 @@ function LibraryBookCase({
         </div>
 
         {/* Ön kapak. */}
-        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_10px_22px_rgba(15,23,42,0.28)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-sheet group-hover:shadow-[0_15px_28px_rgba(15,23,42,0.36)] motion-reduce:transition-none">
+        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_10px_22px_rgba(15,23,42,0.28)] [container-type:inline-size] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-sheet group-hover:shadow-[0_15px_28px_rgba(15,23,42,0.36)] motion-reduce:transition-none">
           <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg", accent)} />
           {/* Boyanın mat, koyu cilt bezine çekilmesi (parlak plastik görünümü kırar). */}
           <div
@@ -264,16 +267,17 @@ function LibraryBookCase({
           {/* Başlık doğrudan cildin üstüne yaldız varakla basılıyor; arkasında
               koyu etiket plakası yok. Açık cilt renklerinde okunurluğu harflerin
               kabartma (gömme baskı) gölgesi sağlıyor. */}
-          <div className="absolute inset-x-[11%] top-[21%] flex flex-col items-center gap-2 px-2 text-center">
-            <span aria-hidden className={`h-px w-8 ${goldRule}`} />
+          <div className="absolute inset-x-[11%] top-[21%] flex max-h-[58%] flex-col items-center gap-2 overflow-hidden px-1 text-center">
+            <span aria-hidden className={`h-px w-8 shrink-0 ${goldRule}`} />
             <h2
-              className={`line-clamp-5 bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.8))_drop-shadow(0_0_4px_rgba(0,0,0,0.45))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
+              className={`line-clamp-5 min-w-0 max-w-full bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.8))_drop-shadow(0_0_4px_rgba(0,0,0,0.45))] [hyphens:none] [-webkit-hyphens:none] [overflow-wrap:normal] [word-break:normal] ${coverTitleSize(title)}`}
               style={goldFoil}
             >
               {title}
             </h2>
-            <span aria-hidden className={`h-px w-8 ${goldRule}`} />
+            <span aria-hidden className={`h-px w-8 shrink-0 ${goldRule}`} />
           </div>
+
 
           <span aria-hidden className={`absolute inset-x-[38%] bottom-[13%] h-px ${goldRule}`} />
         </div>
