@@ -72,9 +72,6 @@ const SOLASRegulationsPage = () => {
               </h1>
             </div>
           </div>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Her bölüm için kritik gereklilikleri, uygulama ipuçlarını ve denetim sırasında sorulan anahtar soruları hızlıca gözden geçirin.
-          </p>
         </div>
 
         {/* Content */}

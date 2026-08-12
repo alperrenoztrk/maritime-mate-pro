@@ -286,9 +286,6 @@ export default function BetaDocumentTracker() {
                 <Sparkles className="h-3 w-3" /> Beta · Yapay zekâ
               </div>
               <h1 className="text-2xl font-bold text-foreground">Belge ve Sertifika Takibi</h1>
-              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-                Yalnızca fotoğrafı yükleyin. Belge türü ve geçerlilik tarihleri otomatik okunup yaklaşan süreler sıralanır.
-              </p>
             </div>
             {notificationPermission !== "unsupported" && notificationPermission !== "granted" && (
               <Button variant="outline" size="sm" className="gap-2" onClick={enableNotifications}>
