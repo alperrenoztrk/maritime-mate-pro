@@ -236,7 +236,7 @@ function LibraryBookCase({
         </div>
 
         {/* Ön kapak. */}
-        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_10px_22px_rgba(15,23,42,0.28)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-sheet group-hover:shadow-[0_15px_28px_rgba(15,23,42,0.36)] motion-reduce:transition-none">
+        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_10px_22px_rgba(15,23,42,0.28)] [container-type:inline-size] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-sheet group-hover:shadow-[0_15px_28px_rgba(15,23,42,0.36)] motion-reduce:transition-none">
           <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg", accent)} />
           {/* Boyanın mat, koyu cilt bezine çekilmesi (parlak plastik görünümü kırar). */}
           <div
