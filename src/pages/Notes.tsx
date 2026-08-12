@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { StickyNote, Trash2, ArrowRight } from "lucide-react";
+import { StickyNote, Trash2, ArrowRight, Plus } from "lucide-react";
 import { toast } from "sonner";
 
 import { MobileLayout } from "@/components/MobileLayout";
@@ -14,8 +14,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { EmptyState } from "@/components/state/AppState";
+import { Textarea } from "@/components/ui/textarea";
 import {
   getNotes,
+  addNote,
   deleteNote,
   NOTES_UPDATED_EVENT,
   type SavedNote,
@@ -35,6 +37,8 @@ function formatDate(ts: number): string {
 
 const Notes = () => {
   const [notes, setNotes] = useState<SavedNote[]>(() => getNotes());
+  const [draft, setDraft] = useState("");
+
 
   useEffect(() => {
     const refresh = () => setNotes(getNotes());
@@ -62,6 +66,14 @@ const Notes = () => {
     toast.success("Not silindi");
   };
 
+  const handleAdd = () => {
+    const text = draft.trim();
+    if (!text) return;
+    addNote(text);
+    setDraft("");
+    toast.success("Not eklendi");
+  };
+
   return (
     <MobileLayout>
       <div className="min-h-screen p-4">
@@ -75,6 +87,30 @@ const Notes = () => {
               </h1>
             </div>
           </div>
+
+          {/* Yeni not */}
+          <Card className="border-white/10 bg-white/5">
+            <CardContent className="space-y-3 p-4">
+              <Textarea
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                placeholder="Yeni not yazın…"
+                rows={3}
+                className="resize-none border-white/10 bg-white/5 text-white placeholder:text-white/40"
+              />
+              <div className="flex justify-end">
+                <Button
+                  onClick={handleAdd}
+                  disabled={!draft.trim()}
+                  className="bg-amber-500/20 text-amber-200 hover:bg-amber-500/30"
+                >
+                  <Plus className="mr-1 h-4 w-4" />
+                  <span data-translatable>Not ekle</span>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
 
           {notes.length === 0 ? (
             <EmptyState
