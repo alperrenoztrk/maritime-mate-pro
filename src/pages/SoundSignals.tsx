@@ -163,7 +163,6 @@ export default function SoundSignalsPage() {
                       {signals.length} işaret
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{label.description}</p>
                 </div>
 
                 <div>

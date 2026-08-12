@@ -277,7 +277,6 @@ export default function MorseCodePage() {
                       {entries.length} kayıt
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{label.description}</p>
                 </div>
 
                 <div>

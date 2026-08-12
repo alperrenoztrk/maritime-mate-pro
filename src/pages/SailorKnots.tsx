@@ -125,7 +125,6 @@ export default function SailorKnotsPage() {
                       {knots.length} bağ
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{label.subtitle}</p>
                 </div>
 
                 <Accordion type="multiple" className="px-1">

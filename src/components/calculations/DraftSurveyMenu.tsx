@@ -95,11 +95,6 @@ const DraftSurveyMenu = () => {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-sm text-muted-foreground">
-                  {calc.description}
-                </p>
-              </CardContent>
             </Card>
           );
         })}

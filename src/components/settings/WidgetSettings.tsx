@@ -50,9 +50,6 @@ export function WidgetSettings() {
                   <div className="text-sm font-medium text-foreground">
                     <span data-translatable>{meta.label}</span>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    <span data-translatable>{meta.description}</span>
-                  </div>
                 </div>
                 <Switch
                   checked={entry.enabled}

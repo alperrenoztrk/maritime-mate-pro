@@ -262,11 +262,6 @@ export function AppSearchExperience({
                 item.title
               )}
             </span>
-            {item.description && (
-              <span className="mt-0.5 block truncate text-caption text-muted-foreground">
-                {item.description}
-              </span>
-            )}
           </span>
         </span>
         <span className="search-result-category shrink-0 rounded-full bg-foreground/[0.055] px-2 py-1 text-micro font-medium text-muted-foreground">
