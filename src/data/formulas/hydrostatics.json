@@ -1,6 +1,6 @@
 {
   "gm": {
-    "title": "GM Hesaplama",
+    "title": "GM Calculation",
     "formula": "GM = KB + BM − KG",
     "source": "SNAME - Principles of Naval Architecture",
     "edition": "1988",
@@ -8,7 +8,7 @@
     "lastUpdated": "2024-09-15"
   },
   "gz": {
-    "title": "GZ Hesaplama",
+    "title": "GZ Calculation",
     "formula": "GZ = GM · sin(φ)",
     "source": "IMO Intact Stability Code",
     "edition": "MSC.267(85)",
@@ -24,9 +24,9 @@
     "lastUpdated": "2024-09-15"
   },
   "solas-criteria": {
-    "title": "SOLAS Stabilite Kriterleri",
+    "title": "SOLAS Stability Criteria",
     "formula": "θ = 57.3 × GHM / (Δ × GM); limit 12°",
-    "source": "SOLAS 1974, Bölüm VI; International Grain Code",
+    "source": "SOLAS 1974, Chapter VI; International Grain Code",
     "edition": "2016 Consolidated Edition",
     "referenceYear": "2016",
     "lastUpdated": "2024-09-15"

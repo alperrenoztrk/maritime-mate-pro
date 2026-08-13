@@ -170,7 +170,7 @@ export function CourseQuiz({
               <Trophy className="mx-auto h-16 w-16 text-amber-500" />
               <h2 className="text-2xl font-bold text-foreground">Exercise Completed</h2>
               <div className="text-5xl font-bold text-primary">%{percent}</div>
-              <p className="text-sm text-muted-foreground">Doğru cevap: {correct}</p>
+              <p className="text-sm text-muted-foreground">Correct answer: {correct}</p>
               <p className="text-sm text-muted-foreground">
                 {percent >= 80
                   ? "Perfect! You are an expert on this subject."

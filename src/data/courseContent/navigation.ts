@@ -15,41 +15,41 @@ export const navigation: CourseTopic = {
   accent: "from-indigo-500 via-purple-500 to-blue-500",
   group: "deck",
   intro:
-    "Mesafe-hız-zaman, rota seyirleri (plane/Mercator/büyük daire), akıntı " +
-    "üçgeni, pusula dönüşümleri ve göksel seyir temelleri. Her formülün altında " +
-    "onu aynı bağıntıyla hesaplayan araç yer alır.",
-  advancedTool: { label: "Gelişmiş Seyir Araçları", href: "/navigation" },
+    "Distance-speed-time, sailings (plane/Mercator/great circle), current " +
+    "triangle, compass conversions and celestial navigation fundamentals. Each formula is followed by " +
+    "the tool that calculates it with the same relation.",
+  advancedTool: { label: "Advanced Navigation Tools", href: "/navigation" },
   entries: [
     // ---- Temel Seyir ----
     {
       id: "speed-time-distance",
-      name: "Hız – Mesafe – Zaman",
+      name: "Speed – Distance – Time",
       group: "Temel Seyir",
-      formula: "Hız = Mesafe / Zaman",
+      formula: "Speed = Distance / Time",
       variables: [
         { symbol: "Mesafe", label: "Kat edilen mesafe", unit: "nm" },
-        { symbol: "Zaman", label: "Geçen süre", unit: "sa" },
-        { symbol: "Hız", label: "Sürat", unit: "knot" },
+        { symbol: "Zaman", label: "Elapsed time", unit: "sa" },
+        { symbol: "Speed", label: "Speed", unit: "knot" },
       ],
-      source: { code: "Temel seyir — hız–mesafe–zaman bağıntısı" },
+      source: { code: "Basic navigation — speed–distance–time relation" },
       inputs: [
         { key: "distance", label: "Mesafe", unit: "nm", placeholder: "120" },
         { key: "time", label: "Zaman", unit: "sa", placeholder: "8" },
       ],
       calculate: (v) => {
-        if (v.time <= 0) return [{ label: "Hata", value: "Zaman pozitif olmalı" }];
+        if (v.time <= 0) return [{ label: "Hata", value: "The time must be positive" }];
         const speed = v.distance / v.time;
-        return [{ label: "Hız", value: `${speed.toFixed(2)} knot` }];
+        return [{ label: "Speed", value: `${speed.toFixed(2)} knot` }];
       },
     },
     {
       id: "speed-conversion",
-      name: "Hız Dönüşümleri",
+      name: "Speed Conversions",
       group: "Temel Seyir",
       formula: "1 knot = 1 nm/sa = 1.852 km/sa = 0.5144 m/s",
-      variables: [{ symbol: "V", label: "Sürat", unit: "knot" }],
-      source: { code: "Standart birim dönüşümleri" },
-      inputs: [{ key: "knots", label: "Sürat", unit: "knot", placeholder: "15" }],
+      variables: [{ symbol: "V", label: "Speed", unit: "knot" }],
+      source: { code: "Standard unit conversions" },
+      inputs: [{ key: "knots", label: "Speed", unit: "knot", placeholder: "15" }],
       calculate: (v) => [
         { label: "km/sa", value: `${(v.knots * 1.852).toFixed(2)} km/sa` },
         { label: "m/s", value: `${(v.knots * 0.5144).toFixed(3)} m/s` },
@@ -57,28 +57,28 @@ export const navigation: CourseTopic = {
     },
     {
       id: "eta",
-      name: "Tahmini Varış Zamanı (ETA)",
+      name: "Estimated Time of Arrival (ETA)",
       group: "Temel Seyir",
-      formula: "ETA = ETD + (Mesafe / Hız)",
+      formula: "ETA = ETD + (Distance / Speed)",
       variables: [
-        { symbol: "ETD", label: "Kalkış saati (saat cinsi)", unit: "sa" },
+        { symbol: "ETD", label: "Departure time (in hours)", unit: "sa" },
         { symbol: "Mesafe", label: "Mesafe", unit: "nm" },
-        { symbol: "Hız", label: "Sürat", unit: "knot" },
+        { symbol: "Speed", label: "Speed", unit: "knot" },
       ],
       source: { code: "Temel seyir — ETA/ETD" },
-      note: "ETD ondalık saat girilir (örn. 14:30 = 14.5). Sonuç ondalık saat ve seyir süresi olarak verilir.",
+      note: "ETD is entered as a decimal hour (e.g. 14:30 = 14.5). The result is given as a decimal hour and a passage time.",
       inputs: [
-        { key: "etd", label: "Kalkış Saati (ETD)", unit: "sa", placeholder: "8" },
+        { key: "etd", label: "Departure Time (ETD)", unit: "sa", placeholder: "8" },
         { key: "distance", label: "Mesafe", unit: "nm", placeholder: "240" },
-        { key: "speed", label: "Hız", unit: "knot", placeholder: "12" },
+        { key: "speed", label: "Speed", unit: "knot", placeholder: "12" },
       ],
       calculate: (v) => {
-        if (v.speed <= 0) return [{ label: "Hata", value: "Hız pozitif olmalı" }];
+        if (v.speed <= 0) return [{ label: "Hata", value: "The speed must be positive" }];
         const sailing = v.distance / v.speed;
         const eta = (v.etd + sailing) % 24;
         return [
-          { label: "Seyir Süresi", value: `${sailing.toFixed(2)} sa` },
-          { label: "ETA", value: `${eta.toFixed(2)} sa (24 sa formatı)` },
+          { label: "Passage Time", value: `${sailing.toFixed(2)} sa` },
+          { label: "ETA", value: `${eta.toFixed(2)} h (24 h format)` },
         ];
       },
     },
@@ -89,15 +89,15 @@ export const navigation: CourseTopic = {
       group: "Enlem-Boylam ve Mesafe",
       formula: "D.Lat = 60·Δφ ;  D.Long = 60·Δλ·cosφ̄",
       variables: [
-        { symbol: "Δφ", label: "Enlem farkı", unit: "°" },
-        { symbol: "Δλ", label: "Boylam farkı", unit: "°" },
+        { symbol: "Δφ", label: "Difference of latitude", unit: "°" },
+        { symbol: "Δλ", label: "Difference of longitude", unit: "°" },
         { symbol: "φ̄", label: "Orta enlem", unit: "°" },
       ],
       source: { code: "Plane sailing — D.Lat/Departure", detail: "1° = 60 NM" },
-      note: "Departure (D.Long) için 1° = 60 NM ilişkisi cosφ̄ ile düzeltilir.",
+      note: "For departure (D.Long) the 1° = 60 NM relation is corrected by cosφ̄.",
       inputs: [
-        { key: "dphi", label: "Enlem Farkı (Δφ)", unit: "°", placeholder: "2.5" },
-        { key: "dlambda", label: "Boylam Farkı (Δλ)", unit: "°", placeholder: "3.0" },
+        { key: "dphi", label: "Difference of Latitude (Δφ)", unit: "°", placeholder: "2.5" },
+        { key: "dlambda", label: "Difference of Longitude (Δλ)", unit: "°", placeholder: "3.0" },
         { key: "meanlat", label: "Orta Enlem (φ̄)", unit: "°", placeholder: "40" },
       ],
       calculate: (v) => {
@@ -115,11 +115,11 @@ export const navigation: CourseTopic = {
       group: "Enlem-Boylam ve Mesafe",
       formula: "Kurs = atan2(Dep, dLat) ;  Mesafe = √(dLat² + Dep²)",
       variables: [
-        { symbol: "dLat", label: "Enlem farkı mesafesi (60·Δφ)", unit: "nm" },
+        { symbol: "dLat", label: "Distance of the latitude difference (60·Δφ)", unit: "nm" },
         { symbol: "Dep", label: "Departure (60·Δλ·cosφ̄)", unit: "nm" },
       ],
       source: { code: "Plane sailing" },
-      note: "Kurs 0–360° aralığına normalize edilir.",
+      note: "The course is normalised to the 0–360° range.",
       inputs: [
         { key: "dlat", label: "D.Lat", unit: "nm", placeholder: "150" },
         { key: "dep", label: "Departure", unit: "nm", placeholder: "138" },
@@ -136,22 +136,22 @@ export const navigation: CourseTopic = {
     },
     {
       id: "great-circle-distance",
-      name: "Büyük Daire Mesafesi",
+      name: "Great Circle Distance",
       group: "Enlem-Boylam ve Mesafe",
       formula:
         "d = 2R·arcsin(√(sin²(Δφ/2) + cosφ₁·cosφ₂·sin²(Δλ/2)))",
       variables: [
-        { symbol: "φ₁, φ₂", label: "Başlangıç/varış enlemleri", unit: "°" },
-        { symbol: "Δφ, Δλ", label: "Enlem/boylam farkları", unit: "°" },
-        { symbol: "R", label: "Dünya yarıçapı", unit: "≈3440.065 nm" },
+        { symbol: "φ₁, φ₂", label: "Departure/arrival latitudes", unit: "°" },
+        { symbol: "Δφ, Δλ", label: "Latitude/longitude differences", unit: "°" },
+        { symbol: "R", label: "Earth radius", unit: "≈3440.065 nm" },
       ],
-      source: { code: "Büyük daire seyri (haversine)" },
-      note: "Doğu boylamları (+), batı boylamları (−) girilir. R = 3440.065 nm.",
+      source: { code: "Great circle sailing (haversine)" },
+      note: "East longitudes are entered as (+), west longitudes as (−). R = 3440.065 nm.",
       inputs: [
-        { key: "lat1", label: "Başlangıç Enlemi (φ₁)", unit: "°", placeholder: "25" },
-        { key: "lon1", label: "Başlangıç Boylamı (λ₁)", unit: "°", placeholder: "-40" },
-        { key: "lat2", label: "Varış Enlemi (φ₂)", unit: "°", placeholder: "45" },
-        { key: "lon2", label: "Varış Boylamı (λ₂)", unit: "°", placeholder: "10" },
+        { key: "lat1", label: "Departure Latitude (φ₁)", unit: "°", placeholder: "25" },
+        { key: "lon1", label: "Departure Longitude (λ₁)", unit: "°", placeholder: "-40" },
+        { key: "lat2", label: "Arrival Latitude (φ₂)", unit: "°", placeholder: "45" },
+        { key: "lon2", label: "Arrival Longitude (λ₂)", unit: "°", placeholder: "10" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -162,26 +162,26 @@ export const navigation: CourseTopic = {
           Math.sin(dphi / 2) ** 2 +
           Math.cos(rad(v.lat1)) * Math.cos(rad(v.lat2)) * Math.sin(dlam / 2) ** 2;
         const d = 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
-        return [{ label: "Büyük Daire Mesafesi", value: `${d.toFixed(1)} nm` }];
+        return [{ label: "Great Circle Distance", value: `${d.toFixed(1)} nm` }];
       },
     },
     {
       id: "great-circle-initial-course",
-      name: "Büyük Daire İlk Kurs",
+      name: "Great Circle Initial Course",
       group: "Enlem-Boylam ve Mesafe",
       formula:
         "θ₀ = atan2(sinΔλ·cosφ₂, cosφ₁·sinφ₂ − sinφ₁·cosφ₂·cosΔλ)",
       variables: [
-        { symbol: "φ₁, φ₂", label: "Başlangıç/varış enlemleri", unit: "°" },
-        { symbol: "Δλ", label: "Boylam farkı", unit: "°" },
+        { symbol: "φ₁, φ₂", label: "Departure/arrival latitudes", unit: "°" },
+        { symbol: "Δλ", label: "Difference of longitude", unit: "°" },
       ],
-      source: { code: "Büyük daire seyri — başlangıç kursu" },
-      note: "Doğu (+), batı (−). Sonuç 0–360° normalize edilir.",
+      source: { code: "Great circle sailing — initial course" },
+      note: "East (+), west (−). The result is normalised to 0–360°.",
       inputs: [
-        { key: "lat1", label: "Başlangıç Enlemi (φ₁)", unit: "°", placeholder: "25" },
-        { key: "lon1", label: "Başlangıç Boylamı (λ₁)", unit: "°", placeholder: "-40" },
-        { key: "lat2", label: "Varış Enlemi (φ₂)", unit: "°", placeholder: "45" },
-        { key: "lon2", label: "Varış Boylamı (λ₂)", unit: "°", placeholder: "10" },
+        { key: "lat1", label: "Departure Latitude (φ₁)", unit: "°", placeholder: "25" },
+        { key: "lon1", label: "Departure Longitude (λ₁)", unit: "°", placeholder: "-40" },
+        { key: "lat2", label: "Arrival Latitude (φ₂)", unit: "°", placeholder: "45" },
+        { key: "lon2", label: "Arrival Longitude (λ₂)", unit: "°", placeholder: "10" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -192,7 +192,7 @@ export const navigation: CourseTopic = {
           Math.sin(rad(v.lat1)) * Math.cos(rad(v.lat2)) * Math.cos(dlam);
         let course = (Math.atan2(y, x) * 180) / Math.PI;
         if (course < 0) course += 360;
-        return [{ label: "İlk Kurs (θ₀)", value: `${course.toFixed(1)} °` }];
+        return [{ label: "Initial Course (θ₀)", value: `${course.toFixed(1)} °` }];
       },
     },
     {
@@ -201,19 +201,19 @@ export const navigation: CourseTopic = {
       group: "Enlem-Boylam ve Mesafe",
       formula: "d = 60·√((Δφ)² + (q·Δλ)²)",
       variables: [
-        { symbol: "Δφ, Δλ", label: "Enlem/boylam farkı", unit: "°" },
+        { symbol: "Δφ, Δλ", label: "Latitude/longitude difference", unit: "°" },
         {
           symbol: "q",
-          label: "Genişletilmiş enlem oranı = Δφ / ln(tan(π/4+φ₂/2)/tan(π/4+φ₁/2))",
+          label: "Meridional parts ratio = Δφ / ln(tan(π/4+φ₂/2)/tan(π/4+φ₁/2))",
         },
       ],
       source: { code: "Mercator seyri (rhumb line)" },
-      note: "Δφ → 0 olduğunda q = cosφ̄ yaklaşımı kullanılır. Doğu (+), batı (−).",
+      note: "When Δφ → 0 the approximation q = cosφ̄ is used. East (+), west (−).",
       inputs: [
-        { key: "lat1", label: "Başlangıç Enlemi (φ₁)", unit: "°", placeholder: "36" },
-        { key: "lon1", label: "Başlangıç Boylamı (λ₁)", unit: "°", placeholder: "-5" },
-        { key: "lat2", label: "Varış Enlemi (φ₂)", unit: "°", placeholder: "40" },
-        { key: "lon2", label: "Varış Boylamı (λ₂)", unit: "°", placeholder: "14" },
+        { key: "lat1", label: "Departure Latitude (φ₁)", unit: "°", placeholder: "36" },
+        { key: "lon1", label: "Departure Longitude (λ₁)", unit: "°", placeholder: "-5" },
+        { key: "lat2", label: "Arrival Latitude (φ₂)", unit: "°", placeholder: "40" },
+        { key: "lon2", label: "Arrival Longitude (λ₂)", unit: "°", placeholder: "14" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -237,15 +237,15 @@ export const navigation: CourseTopic = {
     },
     {
       id: "horizon-range",
-      name: "Coğrafi Görüş Mesafesi (Horizon)",
+      name: "Geographical Range (Horizon)",
       group: "Enlem-Boylam ve Mesafe",
       formula: "d = 2.08·√h  (h metre, d nm)",
-      variables: [{ symbol: "h", label: "Göz/ışık yüksekliği", unit: "m" }],
-      source: { code: "Coğrafi görüş mesafesi — yükseklik bağıntısı" },
-      inputs: [{ key: "h", label: "Yükseklik (h)", unit: "m", placeholder: "20" }],
+      variables: [{ symbol: "h", label: "Height of eye/light", unit: "m" }],
+      source: { code: "Geographical range — height relation" },
+      inputs: [{ key: "h", label: "Height (h)", unit: "m", placeholder: "20" }],
       calculate: (v) => {
-        if (v.h < 0) return [{ label: "Hata", value: "Yükseklik negatif olamaz" }];
-        return [{ label: "Görüş Mesafesi", value: `${(2.08 * Math.sqrt(v.h)).toFixed(2)} nm` }];
+        if (v.h < 0) return [{ label: "Hata", value: "The height cannot be negative" }];
+        return [{ label: "Visible Range", value: `${(2.08 * Math.sqrt(v.h)).toFixed(2)} nm` }];
       },
     },
     {
@@ -254,16 +254,16 @@ export const navigation: CourseTopic = {
       group: "Enlem-Boylam ve Mesafe",
       formula: "d = 2.23·(√h₁ + √h₂)  (h metre, d nm)",
       variables: [
-        { symbol: "h₁", label: "Anten/radar yüksekliği", unit: "m" },
-        { symbol: "h₂", label: "Hedef yüksekliği", unit: "m" },
+        { symbol: "h₁", label: "Antenna/radar height", unit: "m" },
+        { symbol: "h₂", label: "Target height", unit: "m" },
       ],
       source: { code: "Radar/VHF ufku (refraksiyon dahil)" },
       inputs: [
-        { key: "h1", label: "Anten Yüksekliği (h₁)", unit: "m", placeholder: "30" },
-        { key: "h2", label: "Hedef Yüksekliği (h₂)", unit: "m", placeholder: "15" },
+        { key: "h1", label: "Antenna Height (h₁)", unit: "m", placeholder: "30" },
+        { key: "h2", label: "Target Height (h₂)", unit: "m", placeholder: "15" },
       ],
       calculate: (v) => {
-        if (v.h1 < 0 || v.h2 < 0) return [{ label: "Hata", value: "Yükseklikler negatif olamaz" }];
+        if (v.h1 < 0 || v.h2 < 0) return [{ label: "Hata", value: "The heights cannot be negative" }];
         const d = 2.23 * (Math.sqrt(v.h1) + Math.sqrt(v.h2));
         return [{ label: "Ufuk Mesafesi", value: `${d.toFixed(2)} nm` }];
       },
@@ -271,55 +271,55 @@ export const navigation: CourseTopic = {
     // ---- Akıntı, Rüzgar ve Pusula ----
     {
       id: "current-triangle",
-      name: "Akıntı Üçgeni (CTS / SOG)",
-      group: "Akıntı, Rüzgar ve Pusula",
+      name: "Current Triangle (CTS / SOG)",
+      group: "Current, Wind and Compass",
       formula:
         "sin(CTS−TR) = (c/V)·sin(set−TR) ;  SOG = V·cos(CTS−TR) + c·cos(set−TR)",
       variables: [
-        { symbol: "TR", label: "İstenen rota (track)", unit: "°" },
-        { symbol: "V", label: "Gemi sürati (su üstü)", unit: "knot" },
-        { symbol: "set", label: "Akıntı yönü", unit: "°" },
-        { symbol: "c", label: "Akıntı hızı (drift)", unit: "knot" },
+        { symbol: "TR", label: "Desired track", unit: "°" },
+        { symbol: "V", label: "Vessel speed (through the water)", unit: "knot" },
+        { symbol: "set", label: "Current set", unit: "°" },
+        { symbol: "c", label: "Current drift", unit: "knot" },
       ],
-      source: { code: "Akıntı üçgeni — CTS/SOG" },
-      note: "Açılar 0–360°. CTS = düzeltilmiş pusula rotası, SOG = yer üzeri hız.",
+      source: { code: "Current triangle — CTS/SOG" },
+      note: "Angles are 0–360°. CTS = course to steer, SOG = speed over ground.",
       inputs: [
-        { key: "tr", label: "İstenen Rota (TR)", unit: "°", placeholder: "90" },
-        { key: "v", label: "Gemi Sürati (V)", unit: "knot", placeholder: "12" },
-        { key: "set", label: "Akıntı Yönü (set)", unit: "°", placeholder: "180" },
-        { key: "c", label: "Akıntı Hızı (c)", unit: "knot", placeholder: "2" },
+        { key: "tr", label: "Desired Track (TR)", unit: "°", placeholder: "90" },
+        { key: "v", label: "Vessel Speed (V)", unit: "knot", placeholder: "12" },
+        { key: "set", label: "Current Set", unit: "°", placeholder: "180" },
+        { key: "c", label: "Current Drift (c)", unit: "knot", placeholder: "2" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
-        if (v.v <= 0) return [{ label: "Hata", value: "Gemi sürati pozitif olmalı" }];
+        if (v.v <= 0) return [{ label: "Hata", value: "The vessel speed must be positive" }];
         const ratio = (v.c / v.v) * Math.sin(rad(v.set - v.tr));
-        if (Math.abs(ratio) > 1) return [{ label: "Hata", value: "Akıntı çok güçlü, rota korunamaz" }];
+        if (Math.abs(ratio) > 1) return [{ label: "Hata", value: "The current is too strong, the track cannot be held" }];
         const corr = (Math.asin(ratio) * 180) / Math.PI;
         let cts = v.tr + corr;
         cts = ((cts % 360) + 360) % 360;
         const sog =
           v.v * Math.cos(rad(cts - v.tr)) + v.c * Math.cos(rad(v.set - v.tr));
         return [
-          { label: "CTS (Düzeltilmiş Rota)", value: `${cts.toFixed(1)} °` },
+          { label: "CTS (Course To Steer)", value: `${cts.toFixed(1)} °` },
           { label: "SOG", value: `${sog.toFixed(2)} knot` },
         ];
       },
     },
     {
       id: "tvmdc",
-      name: "Pusula Dönüşümü (TVMDC)",
-      group: "Akıntı, Rüzgar ve Pusula",
+      name: "Compass Conversion (TVMDC)",
+      group: "Current, Wind and Compass",
       formula: "Ct = Cc + Dev + Var  (East +, West −)",
       variables: [
-        { symbol: "Cc", label: "Pusula rotası", unit: "°" },
+        { symbol: "Cc", label: "Compass course", unit: "°" },
         { symbol: "Dev", label: "Deviasyon", unit: "°" },
         { symbol: "Var", label: "Manyetik sapma (variation)", unit: "°" },
         { symbol: "Ct", label: "Hakiki rota", unit: "°" },
       ],
-      source: { code: "TVMDC zinciri (manyetik/pusula düzeltmesi)" },
-      note: "Doğu (E) değerler (+), batı (W) değerler (−) girilir. Sonuç 0–360° normalize edilir.",
+      source: { code: "TVMDC chain (magnetic/compass correction)" },
+      note: "East (E) values are entered as (+), west (W) values as (−). The result is normalised to 0–360°.",
       inputs: [
-        { key: "cc", label: "Pusula Rotası (Cc)", unit: "°", placeholder: "270" },
+        { key: "cc", label: "Compass Course (Cc)", unit: "°", placeholder: "270" },
         { key: "dev", label: "Deviasyon (Dev)", unit: "°", placeholder: "-2" },
         { key: "var", label: "Variation (Var)", unit: "°", placeholder: "5" },
       ],
@@ -328,7 +328,7 @@ export const navigation: CourseTopic = {
         ct = ((ct % 360) + 360) % 360;
         return [
           { label: "Hakiki Rota (Ct)", value: `${ct.toFixed(1)} °` },
-          { label: "Pusula Hatası (Dev+Var)", value: `${(v.dev + v.var).toFixed(1)} °` },
+          { label: "Compass Error (Dev+Var)", value: `${(v.dev + v.var).toFixed(1)} °` },
         ];
       },
     },
@@ -339,11 +339,11 @@ export const navigation: CourseTopic = {
       group: "Radar ve Manevra",
       formula: "tCPA = −(R·Vrel)/|Vrel|² ;  dCPA = |R + Vrel·tCPA|",
       variables: [
-        { symbol: "R", label: "Bağıl konum vektörü (Rx, Ry)", unit: "nm" },
-        { symbol: "Vrel", label: "Bağıl hız vektörü (Vx, Vy)", unit: "knot" },
+        { symbol: "R", label: "Relative position vector (Rx, Ry)", unit: "nm" },
+        { symbol: "Vrel", label: "Relative velocity vector (Vx, Vy)", unit: "knot" },
       ],
       source: { code: "Radar plotting — CPA/TCPA" },
-      note: "Vektör bileşenleri (x: doğu, y: kuzey) girilir. tCPA negatifse hedef uzaklaşmaktadır.",
+      note: "The vector components are entered as (x: east, y: north). A negative tCPA means the target is opening.",
       inputs: [
         { key: "rx", label: "Rx", unit: "nm", placeholder: "4" },
         { key: "ry", label: "Ry", unit: "nm", placeholder: "6" },
@@ -352,7 +352,7 @@ export const navigation: CourseTopic = {
       ],
       calculate: (v) => {
         const v2 = v.vx * v.vx + v.vy * v.vy;
-        if (v2 <= 0) return [{ label: "Sonuç", value: "Bağıl hız sıfır — CPA değişmez" }];
+        if (v2 <= 0) return [{ label: "Result", value: "Relative speed is zero — the CPA does not change" }];
         const tcpa = -(v.rx * v.vx + v.ry * v.vy) / v2;
         const cx = v.rx + v.vx * tcpa;
         const cy = v.ry + v.vy * tcpa;
@@ -365,47 +365,47 @@ export const navigation: CourseTopic = {
     },
     {
       id: "rate-of-turn",
-      name: "Dönüş Oranı (ROT)",
+      name: "Rate of Turn (ROT)",
       group: "Radar ve Manevra",
       formula: "ROT (°/dk) = (30·V) / R",
       variables: [
-        { symbol: "V", label: "Sürat", unit: "knot" },
-        { symbol: "R", label: "Dönüş yarıçapı", unit: "m" },
+        { symbol: "V", label: "Speed", unit: "knot" },
+        { symbol: "R", label: "Turning radius", unit: "m" },
       ],
       source: { code: "Manevra — rate of turn" },
-      note: "30 = (1852 m/sa) / (60 dk × π/180·... ) basitleştirilmiş katsayı; sayfada verilen bağıntı.",
+      note: "30 = (1852 m/h) / (60 min × π/180·… ) simplified coefficient; the relation given on the page.",
       inputs: [
-        { key: "v", label: "Sürat (V)", unit: "knot", placeholder: "12" },
-        { key: "r", label: "Dönüş Yarıçapı (R)", unit: "m", placeholder: "600" },
+        { key: "v", label: "Speed (V)", unit: "knot", placeholder: "12" },
+        { key: "r", label: "Turning Radius (R)", unit: "m", placeholder: "600" },
       ],
       calculate: (v) => {
-        if (v.r <= 0) return [{ label: "Hata", value: "Yarıçap pozitif olmalı" }];
+        if (v.r <= 0) return [{ label: "Hata", value: "The radius must be positive" }];
         const rot = (30 * v.v) / v.r;
-        return [{ label: "Dönüş Oranı (ROT)", value: `${rot.toFixed(2)} °/dk` }];
+        return [{ label: "Rate of Turn (ROT)", value: `${rot.toFixed(2)} °/dk` }];
       },
     },
     // ---- Seyir Emniyeti ----
     {
       id: "ukc",
-      name: "Omurga Altı Boşluğu (UKC)",
+      name: "Under Keel Clearance (UKC)",
       group: "Seyir Emniyeti",
       formula: "UKC = CD + HoT − Draft − Squat",
       variables: [
-        { symbol: "CD", label: "Harita derinliği (chart datum)", unit: "m" },
-        { symbol: "HoT", label: "Gelgit yüksekliği", unit: "m" },
-        { symbol: "Draft", label: "Geminin su çekimi", unit: "m" },
+        { symbol: "CD", label: "Charted depth (chart datum)", unit: "m" },
+        { symbol: "HoT", label: "Height of tide", unit: "m" },
+        { symbol: "Draft", label: "Vessel draft", unit: "m" },
         { symbol: "Squat", label: "Squat (basma)", unit: "m" },
       ],
-      source: { code: "Seyir emniyeti — UKC bağıntısı" },
+      source: { code: "Navigational safety — UKC relation" },
       inputs: [
-        { key: "cd", label: "Harita Derinliği (CD)", unit: "m", placeholder: "12" },
-        { key: "hot", label: "Gelgit Yüksekliği (HoT)", unit: "m", placeholder: "1.5" },
+        { key: "cd", label: "Charted Depth (CD)", unit: "m", placeholder: "12" },
+        { key: "hot", label: "Height of Tide (HoT)", unit: "m", placeholder: "1.5" },
         { key: "draft", label: "Draft", unit: "m", placeholder: "10.5" },
         { key: "squat", label: "Squat", unit: "m", placeholder: "0.4" },
       ],
       calculate: (v) => {
         const ukc = v.cd + v.hot - v.draft - v.squat;
-        const durum = ukc > 0 ? "Pozitif boşluk" : "TEHLİKE — yetersiz su";
+        const durum = ukc > 0 ? "Positive clearance" : "DANGER — insufficient water";
         return [
           { label: "UKC", value: `${ukc.toFixed(2)} m` },
           { label: "Durum", value: durum },
@@ -414,20 +414,20 @@ export const navigation: CourseTopic = {
     },
     {
       id: "squat",
-      name: "Squat (Açık Su Yaklaşımı)",
+      name: "Squat (Open Water Approximation)",
       group: "Seyir Emniyeti",
       formula: "Squat ≈ V² / (100·B)",
       variables: [
-        { symbol: "V", label: "Sürat", unit: "knot" },
-        { symbol: "B", label: "Gemi genişliği (beam)", unit: "m" },
+        { symbol: "V", label: "Speed", unit: "knot" },
+        { symbol: "B", label: "Vessel beam", unit: "m" },
       ],
-      source: { code: "Seyir emniyeti — açık su squat yaklaşımı" },
+      source: { code: "Navigational safety — open water squat approximation" },
       inputs: [
-        { key: "v", label: "Sürat (V)", unit: "knot", placeholder: "14" },
-        { key: "b", label: "Genişlik (B)", unit: "m", placeholder: "22" },
+        { key: "v", label: "Speed (V)", unit: "knot", placeholder: "14" },
+        { key: "b", label: "Beam (B)", unit: "m", placeholder: "22" },
       ],
       calculate: (v) => {
-        if (v.b <= 0) return [{ label: "Hata", value: "Genişlik pozitif olmalı" }];
+        if (v.b <= 0) return [{ label: "Hata", value: "The beam must be positive" }];
         const squat = (v.v * v.v) / (100 * v.b);
         return [{ label: "Squat", value: `${squat.toFixed(2)} m` }];
       },
@@ -435,20 +435,20 @@ export const navigation: CourseTopic = {
     // ---- Gelgit ----
     {
       id: "height-of-tide",
-      name: "Gelgit Yüksekliği (Onikiler Kuralı)",
+      name: "Height of Tide (Rule of Twelfths)",
       group: "Gelgit",
-      formula: "H = Low + (Σ onikiler oranı × Tidal Range)",
+      formula: "H = Low + (Σ twelfths ratio × Tidal Range)",
       variables: [
-        { symbol: "Low", label: "Alçak su yüksekliği", unit: "m" },
-        { symbol: "Range", label: "Gelgit genliği (HW − LW)", unit: "m" },
-        { symbol: "t", label: "LW'den itibaren geçen saat (1–6)", unit: "sa" },
+        { symbol: "Low", label: "Low water height", unit: "m" },
+        { symbol: "Range", label: "Tidal range (HW − LW)", unit: "m" },
+        { symbol: "t", label: "Hours elapsed since LW (1–6)", unit: "sa" },
       ],
-      source: { code: "Rule of Twelfths (onikiler kuralı)" },
-      note: "Onikiler: 1,3,6,9,11,12 / 12 (saat sonu kümülatif). t=0..6 saat girilir.",
+      source: { code: "Rule of Twelfths" },
+      note: "Twelfths: 1,3,6,9,11,12 / 12 (cumulative at the end of each hour). Enter t = 0..6 hours.",
       inputs: [
-        { key: "low", label: "Alçak Su (LW)", unit: "m", placeholder: "1.2" },
-        { key: "range", label: "Gelgit Genliği (Range)", unit: "m", placeholder: "4.0" },
-        { key: "t", label: "Geçen Süre (LW'den)", unit: "sa", placeholder: "3" },
+        { key: "low", label: "Low Water (LW)", unit: "m", placeholder: "1.2" },
+        { key: "range", label: "Tidal Range", unit: "m", placeholder: "4.0" },
+        { key: "t", label: "Elapsed Time (since LW)", unit: "sa", placeholder: "3" },
       ],
       calculate: (v) => {
         const cum = [0, 1, 3, 6, 9, 11, 12];
@@ -456,24 +456,24 @@ export const navigation: CourseTopic = {
         const fraction = cum[hr] / 12;
         const h = v.low + fraction * v.range;
         return [
-          { label: "Yükselen Miktar", value: `${(fraction * v.range).toFixed(2)} m` },
-          { label: "Gelgit Yüksekliği (H)", value: `${h.toFixed(2)} m` },
+          { label: "Amount Risen", value: `${(fraction * v.range).toFixed(2)} m` },
+          { label: "Height of Tide (H)", value: `${h.toFixed(2)} m` },
         ];
       },
     },
     // ---- Göksel Seyir ----
     {
       id: "celestial-altitude",
-      name: "Hesaplanan Yükseklik (Hc)",
-      group: "Göksel Seyir",
+      name: "Calculated Altitude (Hc)",
+      group: "Celestial Navigation",
       formula: "sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA)",
       variables: [
-        { symbol: "φ", label: "Gözlemci enlemi", unit: "°" },
+        { symbol: "φ", label: "Observer latitude", unit: "°" },
         { symbol: "δ", label: "Deklinasyon", unit: "°" },
-        { symbol: "LHA", label: "Yerel saat açısı", unit: "°" },
+        { symbol: "LHA", label: "Local hour angle", unit: "°" },
       ],
-      source: { code: "Sight reduction — hesaplanan yükseklik" },
-      note: "Güney enlem/deklinasyon (−) girilir. Nautical Almanac verileri ile kullanılır.",
+      source: { code: "Sight reduction — calculated altitude" },
+      note: "South latitude/declination is entered as (−). Used with Nautical Almanac data.",
       inputs: [
         { key: "lat", label: "Enlem (φ)", unit: "°", placeholder: "40" },
         { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
@@ -485,7 +485,7 @@ export const navigation: CourseTopic = {
           Math.sin(rad(v.lat)) * Math.sin(rad(v.dec)) +
           Math.cos(rad(v.lat)) * Math.cos(rad(v.dec)) * Math.cos(rad(v.lha));
         const hc = (Math.asin(Math.max(-1, Math.min(1, sinHc))) * 180) / Math.PI;
-        return [{ label: "Hesaplanan Yükseklik (Hc)", value: `${hc.toFixed(2)} °` }];
+        return [{ label: "Calculated Altitude (Hc)", value: `${hc.toFixed(2)} °` }];
       },
       steps: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -495,9 +495,9 @@ export const navigation: CourseTopic = {
         const hc = (Math.asin(Math.max(-1, Math.min(1, sinHc))) * 180) / Math.PI;
         return [
           {
-            title: "Verileri yerleştir",
+            title: "Substitute the data",
             expression: `φ = ${v.lat}°, δ = ${v.dec}°, LHA = ${v.lha}°`,
-            hint: "Güney enlem ve deklinasyon (−) işaretli girilir; LHA daima 0–360° aralığında.",
+            hint: "South latitude and declination are entered with a (−) sign; LHA is always in the 0–360° range.",
           },
           {
             title: "1. terim: sinφ · sinδ",
@@ -515,10 +515,10 @@ export const navigation: CourseTopic = {
             result: `sin(Hc) = ${sinHc.toFixed(4)}`,
           },
           {
-            title: "Ters sinüs (arcsin) ile Hc",
+            title: "Hc from the inverse sine (arcsin)",
             expression: `Hc = arcsin(${sinHc.toFixed(4)})`,
             result: `Hc = ${hc.toFixed(2)}°`,
-            hint: "Hc, gözlemcinin varsayılan mevkisinden (AP) cismin teorik yüksekliğidir; Ho ile karşılaştırılarak intercept bulunur.",
+            hint: "Hc is the theoretical altitude of the body from the assumed position (AP); comparing it with Ho gives the intercept.",
           },
         ];
       },
@@ -526,41 +526,41 @@ export const navigation: CourseTopic = {
     {
       id: "celestial-azimuth",
       name: "Azimut (Z)",
-      group: "Göksel Seyir",
+      group: "Celestial Navigation",
       formula: "cos(Z) = (sinδ − sinφ·sinHc) / (cosφ·cosHc)",
       variables: [
         { symbol: "δ", label: "Deklinasyon", unit: "°" },
-        { symbol: "φ", label: "Gözlemci enlemi", unit: "°" },
-        { symbol: "Hc", label: "Hesaplanan yükseklik", unit: "°" },
+        { symbol: "φ", label: "Observer latitude", unit: "°" },
+        { symbol: "Hc", label: "Calculated altitude", unit: "°" },
       ],
       source: { code: "Sight reduction — azimut" },
-      note: "Deklinasyon, enlem ve hesaplanan yükseklik derece girilir; azimut açısı Z (0–180°) hesaplanır.",
+      note: "Declination, latitude and calculated altitude are entered in degrees; the azimuth angle Z (0–180°) is computed.",
       inputs: [
         { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
-        { key: "lat", label: "Gözlemci Enlemi (φ)", unit: "°", placeholder: "41" },
-        { key: "hc", label: "Hesaplanan Yükseklik (Hc)", unit: "°", placeholder: "35" },
+        { key: "lat", label: "Observer Latitude (φ)", unit: "°", placeholder: "41" },
+        { key: "hc", label: "Calculated Altitude (Hc)", unit: "°", placeholder: "35" },
       ],
       calculate: (v) => {
         const r = Math.PI / 180;
         const denom = Math.cos(v.lat * r) * Math.cos(v.hc * r);
-        if (Math.abs(denom) < 1e-9) return [{ label: "Hata", value: "Payda sıfıra yakın (φ veya Hc = 90°)" }];
+        if (Math.abs(denom) < 1e-9) return [{ label: "Hata", value: "The denominator is near zero (φ or Hc = 90°)" }];
         let cosZ = (Math.sin(v.dec * r) - Math.sin(v.lat * r) * Math.sin(v.hc * r)) / denom;
         cosZ = Math.max(-1, Math.min(1, cosZ));
         const Z = Math.acos(cosZ) / r;
-        return [{ label: "Azimut Açısı (Z)", value: `${Z.toFixed(1)}°` }];
+        return [{ label: "Azimuth Angle (Z)", value: `${Z.toFixed(1)}°` }];
       },
       steps: (v) => {
         const r = Math.PI / 180;
         const denom = Math.cos(v.lat * r) * Math.cos(v.hc * r);
         if (Math.abs(denom) < 1e-9)
-          return [{ title: "Hata", result: "Payda sıfıra yakın (φ veya Hc = 90°)" }];
+          return [{ title: "Hata", result: "The denominator is near zero (φ or Hc = 90°)" }];
         const numer = Math.sin(v.dec * r) - Math.sin(v.lat * r) * Math.sin(v.hc * r);
         let cosZ = numer / denom;
         cosZ = Math.max(-1, Math.min(1, cosZ));
         const Z = Math.acos(cosZ) / r;
         return [
           {
-            title: "Verileri yerleştir",
+            title: "Substitute the data",
             expression: `δ = ${v.dec}°, φ = ${v.lat}°, Hc = ${v.hc}°`,
           },
           {
@@ -574,30 +574,30 @@ export const navigation: CourseTopic = {
             result: `${denom.toFixed(4)}`,
           },
           {
-            title: "Bölüm = cos(Z)",
+            title: "Quotient = cos(Z)",
             expression: `${numer.toFixed(4)} / ${denom.toFixed(4)}`,
             result: `cos(Z) = ${cosZ.toFixed(4)}`,
           },
           {
-            title: "Ters kosinüs (arccos) ile Z",
+            title: "Z from the inverse cosine (arccos)",
             expression: `Z = arccos(${cosZ.toFixed(4)})`,
             result: `Z = ${Z.toFixed(1)}°`,
-            hint: "Z açısı (0–180°), cismin yönüne göre N/S ve E/W ile gerçek azimuta (Zn) çevrilir.",
+            hint: "The angle Z (0–180°) is converted to the true azimuth (Zn) using N/S and E/W according to the bearing of the body.",
           },
         ];
       },
     },
     {
       id: "amplitude",
-      name: "Amplitude (Doğuş/Batış Azimutu)",
-      group: "Göksel Seyir",
+      name: "Amplitude (Rising/Setting Azimuth)",
+      group: "Celestial Navigation",
       formula: "A = arcsin(sinδ / cosφ)",
       variables: [
         { symbol: "δ", label: "Deklinasyon", unit: "°" },
-        { symbol: "φ", label: "Gözlemci enlemi", unit: "°" },
+        { symbol: "φ", label: "Observer latitude", unit: "°" },
       ],
-      source: { code: "Göksel seyir — amplitude (pusula hatası kontrolü)" },
-      note: "Doğu için E, batı için W'den ölçülür. Güney enlem/deklinasyon (−) girilir.",
+      source: { code: "Celestial navigation — amplitude (compass error check)" },
+      note: "Measured from E when rising and from W when setting. South latitude/declination is entered as (−).",
       inputs: [
         { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "15" },
         { key: "lat", label: "Enlem (φ)", unit: "°", placeholder: "40" },
@@ -605,7 +605,7 @@ export const navigation: CourseTopic = {
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
         const ratio = Math.sin(rad(v.dec)) / Math.cos(rad(v.lat));
-        if (Math.abs(ratio) > 1) return [{ label: "Hata", value: "Bu enlemde cisim doğmaz/batmaz" }];
+        if (Math.abs(ratio) > 1) return [{ label: "Hata", value: "At this latitude the body does not rise/set" }];
         const a = (Math.asin(ratio) * 180) / Math.PI;
         return [{ label: "Amplitude (A)", value: `${a.toFixed(2)} ° (E/W'den)` }];
       },
@@ -613,13 +613,13 @@ export const navigation: CourseTopic = {
         const rad = (x: number) => (x * Math.PI) / 180;
         const ratio = Math.sin(rad(v.dec)) / Math.cos(rad(v.lat));
         if (Math.abs(ratio) > 1)
-          return [{ title: "Hata", result: "Bu enlemde cisim doğmaz/batmaz (|sinδ/cosφ| > 1)" }];
+          return [{ title: "Hata", result: "At this latitude the body does not rise/set (|sinδ/cosφ| > 1)" }];
         const a = (Math.asin(ratio) * 180) / Math.PI;
         return [
           {
-            title: "Verileri yerleştir",
+            title: "Substitute the data",
             expression: `δ = ${v.dec}°, φ = ${v.lat}°`,
-            hint: "Amplitude, doğuş/batışta cismin gerçek azimutudur; pusula hatası kontrolünde kullanılır.",
+            hint: "The amplitude is the true azimuth of the body at rising/setting; it is used to check the compass error.",
           },
           {
             title: "Oran: sinδ / cosφ",
@@ -627,10 +627,10 @@ export const navigation: CourseTopic = {
             result: `${ratio.toFixed(4)}`,
           },
           {
-            title: "Ters sinüs (arcsin) ile A",
+            title: "A from the inverse sine (arcsin)",
             expression: `A = arcsin(${ratio.toFixed(4)})`,
             result: `A = ${a.toFixed(2)}° (E/W'den)`,
-            hint: "Doğuda E, batıda W'den ölçülür; deklinasyon N ise kuzeye, S ise güneye doğru.",
+            hint: "Measured from E when rising and from W when setting; toward the north for a N declination and toward the south for a S declination.",
           },
         ];
       },
@@ -638,85 +638,85 @@ export const navigation: CourseTopic = {
     // ---- Konu anlatımından eklenen hesaplayıcılar ----
     {
       id: "arc-time",
-      name: "Boylam ↔ Zaman Dönüşümü",
+      name: "Longitude ↔ Time Conversion",
       group: "Enlem-Boylam ve Mesafe",
       formula: "λ(°) = ZF × 15 ;  Boylam(°) × 4 = ZF(dk)",
       variables: [
         { symbol: "λ", label: "Boylam (yay)", unit: "°" },
-        { symbol: "ZF", label: "Zaman farkı", unit: "sa" },
+        { symbol: "ZF", label: "Time difference", unit: "sa" },
       ],
-      source: { code: "Göksel seyir — yay/zaman dönüşümü", detail: "360° = 24 sa, 1° = 4 dk" },
-      note: "Boylam derecesi gir → eşdeğer zaman farkı (Greenwich'e göre) hesaplanır.",
+      source: { code: "Celestial navigation — arc/time conversion", detail: "360° = 24 sa, 1° = 4 dk" },
+      note: "Enter the longitude in degrees → the equivalent time difference (relative to Greenwich) is calculated.",
       inputs: [{ key: "lon", label: "Boylam (λ)", unit: "°", placeholder: "45" }],
       calculate: (v) => {
         const totalMin = Math.abs(v.lon) * 4;
         const h = Math.floor(totalMin / 60);
         const m = totalMin - h * 60;
         return [
-          { label: "Zaman Farkı (ondalık)", value: `${(totalMin / 60).toFixed(3)} sa` },
-          { label: "Zaman Farkı (sa:dk)", value: `${h} sa ${m.toFixed(1)} dk` },
+          { label: "Time Difference (decimal)", value: `${(totalMin / 60).toFixed(3)} sa` },
+          { label: "Time Difference (h:min)", value: `${h} sa ${m.toFixed(1)} dk` },
         ];
       },
     },
     {
       id: "dip",
-      name: "Ufuk Çukurlaşması (Dip)",
-      group: "Göksel Seyir",
+      name: "Dip of the Horizon",
+      group: "Celestial Navigation",
       formula: "Dip = 1.76 × √h  (h metre, Dip dakika)",
-      variables: [{ symbol: "h", label: "Göz yüksekliği", unit: "m" }],
+      variables: [{ symbol: "h", label: "Height of eye", unit: "m" }],
       source: { code: "Nautical Almanac — dip of the horizon" },
-      note: "Sekstant irtifa düzeltmesinde gözlemcinin göz yüksekliğinden kaynaklanan çukurlaşma.",
-      inputs: [{ key: "h", label: "Göz Yüksekliği (h)", unit: "m", placeholder: "12" }],
+      note: "The dip caused by the observer's height of eye in the sextant altitude correction.",
+      inputs: [{ key: "h", label: "Height of Eye (h)", unit: "m", placeholder: "12" }],
       calculate: (v) => {
-        if (v.h < 0) return [{ label: "Hata", value: "Yükseklik negatif olamaz" }];
+        if (v.h < 0) return [{ label: "Hata", value: "The height cannot be negative" }];
         const dip = 1.76 * Math.sqrt(v.h);
         return [{ label: "Dip", value: `${dip.toFixed(1)} ′ (dakika)` }];
       },
       steps: (v) => {
-        if (v.h < 0) return [{ title: "Hata", result: "Yükseklik negatif olamaz" }];
+        if (v.h < 0) return [{ title: "Hata", result: "The height cannot be negative" }];
         const dip = 1.76 * Math.sqrt(v.h);
         return [
           {
-            title: "Göz yüksekliğini yerleştir",
+            title: "Substitute the height of eye",
             expression: `h = ${v.h} m`,
-            hint: "h, gözlemcinin deniz seviyesinden göz yüksekliğidir (köprüüstü vb.).",
+            hint: "h is the observer's height of eye above sea level (bridge deck etc.).",
           },
           {
-            title: "Karekök al",
+            title: "Take the square root",
             expression: `√${v.h} = ${Math.sqrt(v.h).toFixed(3)}`,
           },
           {
-            title: "Katsayı ile çarp",
+            title: "Multiply by the coefficient",
             expression: `Dip = 1.76 × ${Math.sqrt(v.h).toFixed(3)}`,
             result: `Dip = ${dip.toFixed(1)} ′`,
-            hint: "Dip, sekstant düzeltmesinde Hs'den DAİMA çıkarılır (ufuk gözün altında görünür).",
+            hint: "In the sextant correction the dip is ALWAYS subtracted from Hs (the horizon appears below the eye).",
           },
         ];
       },
     },
     {
       id: "sextant-correction",
-      name: "Sekstant İrtifa Düzeltmesi (Ho)",
-      group: "Göksel Seyir",
+      name: "Sextant Altitude Correction (Ho)",
+      group: "Celestial Navigation",
       formula: "Ho = Hs ± IE − Dip ± R ± SD ± P",
       variables: [
-        { symbol: "Hs", label: "Sekstant irtifası", unit: "°" },
-        { symbol: "IE", label: "Endeks hatası (E: −, W: +)", unit: "′" },
-        { symbol: "Dip", label: "Ufuk çukurlaşması", unit: "′" },
-        { symbol: "R", label: "Toplam düzeltme (refraksiyon + SD + P)", unit: "′" },
+        { symbol: "Hs", label: "Sextant altitude", unit: "°" },
+        { symbol: "IE", label: "Index error (E: −, W: +)", unit: "′" },
+        { symbol: "Dip", label: "Dip of the horizon", unit: "′" },
+        { symbol: "R", label: "Total correction (refraction + SD + P)", unit: "′" },
       ],
       source: { code: "Nautical Almanac — sight reduction (apparent → observed altitude)" },
-      note: "IE ve toplam düzeltme dakika (′) girilir. Endeks hatası işaretiyle, dip her zaman çıkarılır, ana düzeltme R işaretiyle eklenir.",
+      note: "IE and the total correction are entered in minutes (′). The index error is applied with its sign, the dip is always subtracted, and the main correction R is added with its sign.",
       inputs: [
-        { key: "hs", label: "Sekstant İrtifası (Hs)", unit: "°", placeholder: "45.5" },
-        { key: "ie", label: "Endeks Hatası (IE)", unit: "′", placeholder: "-1.5" },
+        { key: "hs", label: "Sextant Altitude (Hs)", unit: "°", placeholder: "45.5" },
+        { key: "ie", label: "Index Error (IE)", unit: "′", placeholder: "-1.5" },
         { key: "dip", label: "Dip", unit: "′", placeholder: "6.1" },
-        { key: "r", label: "Ana Düzeltme (R)", unit: "′", placeholder: "14.5" },
+        { key: "r", label: "Main Correction (R)", unit: "′", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const hoMin = v.hs * 60 + v.ie - v.dip + v.r;
         const ho = hoMin / 60;
-        return [{ label: "Gözlenen İrtifa (Ho)", value: `${ho.toFixed(3)} °` }];
+        return [{ label: "Observed Altitude (Ho)", value: `${ho.toFixed(3)} °` }];
       },
       steps: (v) => {
         const hsMin = v.hs * 60;
@@ -726,104 +726,104 @@ export const navigation: CourseTopic = {
         const ho = hoMin / 60;
         return [
           {
-            title: "Hs'yi dakikaya çevir",
+            title: "Convert Hs to minutes",
             expression: `${v.hs}° × 60 = ${hsMin.toFixed(1)} ′`,
-            hint: "Tüm düzeltmeler dakika (′) cinsinden yapılır; 1° = 60′.",
+            hint: "All corrections are made in minutes (′); 1° = 60′.",
           },
           {
-            title: "Endeks hatasını (IE) uygula",
+            title: "Apply the index error (IE)",
             expression: `${hsMin.toFixed(1)} ′ + (${v.ie}) ′`,
             result: `${afterIe.toFixed(1)} ′`,
-            hint: "IE işaretiyle eklenir (on-the-arc: −, off-the-arc: +).",
+            hint: "IE is added with its sign (on the arc: −, off the arc: +).",
           },
           {
-            title: "Dip'i çıkar",
+            title: "Subtract the dip",
             expression: `${afterIe.toFixed(1)} ′ − ${v.dip} ′`,
-            result: `${afterDip.toFixed(1)} ′  (görünen irtifa, Ha)`,
+            result: `${afterDip.toFixed(1)} ′  (apparent altitude, Ha)`,
           },
           {
-            title: "Ana düzeltmeyi (R) uygula",
+            title: "Apply the main correction (R)",
             expression: `${afterDip.toFixed(1)} ′ + (${v.r}) ′`,
             result: `${hoMin.toFixed(1)} ′`,
-            hint: "R = refraksiyon + yarıçap (SD) + paralaks (P), Almanac'tan alınır.",
+            hint: "R = refraction + semi-diameter (SD) + parallax (P), taken from the Almanac.",
           },
           {
-            title: "Dereceye geri çevir",
+            title: "Convert back to degrees",
             expression: `${hoMin.toFixed(1)} ′ ÷ 60`,
             result: `Ho = ${ho.toFixed(3)}°`,
-            hint: "Ho (gözlenen irtifa), Hc ile karşılaştırılarak intercept (a) bulunur.",
+            hint: "Ho (observed altitude) is compared with Hc to obtain the intercept (a).",
           },
         ];
       },
     },
     {
       id: "intercept",
-      name: "Yükseklik Farkı (Intercept)",
-      group: "Göksel Seyir",
+      name: "Altitude Difference (Intercept)",
+      group: "Celestial Navigation",
       formula: "a = Ho − Hc",
       variables: [
-        { symbol: "Ho", label: "Gözlenen yükseklik", unit: "°" },
-        { symbol: "Hc", label: "Hesaplanan yükseklik", unit: "°" },
+        { symbol: "Ho", label: "Observed altitude", unit: "°" },
+        { symbol: "Hc", label: "Calculated altitude", unit: "°" },
       ],
-      source: { code: "Marcq St-Hilaire — intercept yöntemi" },
-      note: "Pozitif (Toward) → cisme doğru, negatif (Away) → cisimden uzağa. 1′ = 1 NM.",
+      source: { code: "Marcq St-Hilaire — intercept method" },
+      note: "Positive (Toward) → toward the body, negative (Away) → away from the body. 1′ = 1 NM.",
       inputs: [
-        { key: "ho", label: "Gözlenen Yükseklik (Ho)", unit: "°", placeholder: "45.30" },
-        { key: "hc", label: "Hesaplanan Yükseklik (Hc)", unit: "°", placeholder: "45.10" },
+        { key: "ho", label: "Observed Altitude (Ho)", unit: "°", placeholder: "45.30" },
+        { key: "hc", label: "Calculated Altitude (Hc)", unit: "°", placeholder: "45.10" },
       ],
       calculate: (v) => {
         const aMin = (v.ho - v.hc) * 60;
-        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
         return [
           { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM` },
-          { label: "Yön", value: yon },
+          { label: "Direction", value: yon },
         ];
       },
       steps: (v) => {
         const diff = v.ho - v.hc;
         const aMin = diff * 60;
-        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
         return [
           {
-            title: "Verileri yerleştir",
+            title: "Substitute the data",
             expression: `Ho = ${v.ho}°, Hc = ${v.hc}°`,
-            hint: "Ho gözlenen, Hc hesaplanan (AP'ye göre) irtifadır.",
+            hint: "Ho is the observed altitude and Hc the calculated altitude (relative to the AP).",
           },
           {
-            title: "Farkı al (Ho − Hc)",
+            title: "Take the difference (Ho − Hc)",
             expression: `${v.ho}° − ${v.hc}°`,
             result: `${diff.toFixed(3)}°`,
           },
           {
-            title: "Deniz miline çevir (× 60)",
+            title: "Convert to nautical miles (× 60)",
             expression: `${diff.toFixed(3)}° × 60 ′/° = ${aMin.toFixed(1)} ′`,
             result: `a = ${Math.abs(aMin).toFixed(1)} NM`,
-            hint: "1 yay dakikası = 1 deniz mili.",
+            hint: "1 minute of arc = 1 nautical mile.",
           },
           {
-            title: "Yönü belirle",
-            expression: aMin >= 0 ? "Ho > Hc → cisme doğru" : "Ho < Hc → cisimden uzağa",
+            title: "Determine the direction",
+            expression: aMin >= 0 ? "Ho > Hc → toward the body" : "Ho < Hc → away from the body",
             result: yon,
-            hint: "Mevki hattı (LOP), AP'den azimut yönünde a kadar bu yöne kaydırılarak çizilir.",
+            hint: "The line of position (LOP) is drawn by shifting a from the AP along the azimuth in this direction.",
           },
         ];
       },
     },
     {
       id: "meridian-passage-lat",
-      name: "Öğle Boyu Enlemi (Meridian Passage)",
-      group: "Göksel Seyir",
+      name: "Latitude by Meridian Passage",
+      group: "Celestial Navigation",
       formula: "Z = 90° − Ho ;  φ = Z ± δ",
       variables: [
-        { symbol: "Ho", label: "Meridyen geçişi gözlenen yükseklik", unit: "°" },
+        { symbol: "Ho", label: "Observed altitude at meridian passage", unit: "°" },
         { symbol: "δ", label: "Deklinasyon", unit: "°" },
       ],
-      source: { code: "Göksel seyir — meridyen geçişi enlem hesabı" },
-      note: "Zenit mesafesi (Z) ve deklinasyon aynı adda ise toplanır, zıt adda ise çıkarılır. Güney değerler (−) girilerek otomatik hesaplanır.",
+      source: { code: "Celestial navigation — latitude by meridian passage" },
+      note: "The zenith distance (Z) and the declination are added when of the same name and subtracted when of contrary name. Entering south values as (−) handles this automatically.",
       inputs: [
-        { key: "ho", label: "Gözlenen Yükseklik (Ho)", unit: "°", placeholder: "68.5" },
+        { key: "ho", label: "Observed Altitude (Ho)", unit: "°", placeholder: "68.5" },
         { key: "dec", label: "Deklinasyon (δ, S: −)", unit: "°", placeholder: "20" },
-        { key: "bearing", label: "Cisim Yönü (1=Güney/Zenit güneyde, −1=Kuzey)", unit: "", placeholder: "1" },
+        { key: "bearing", label: "Body Direction (1 = zenith to the south, −1 = north)", unit: "", placeholder: "1" },
       ],
       calculate: (v) => {
         const z = 90 - v.ho;
@@ -843,9 +843,9 @@ export const navigation: CourseTopic = {
         const hemis = lat >= 0 ? "N" : "S";
         return [
           {
-            title: "Verileri yerleştir",
-            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, yön = ${v.bearing >= 0 ? "Zenit güneyde" : "Zenit kuzeyde"}`,
-            hint: "Öğle boyu (meridyen geçişi) anında cisim gözlemcinin meridyenindedir.",
+            title: "Substitute the data",
+            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, direction = ${v.bearing >= 0 ? "zenith to the south" : "zenith to the north"}`,
+            hint: "At meridian passage (local apparent noon) the body is on the observer's meridian.",
           },
           {
             title: "Zenit mesafesi: Z = 90° − Ho",
@@ -856,35 +856,35 @@ export const navigation: CourseTopic = {
             title: "Enlem: φ = δ ± Z",
             expression: `${v.dec}° ${sign >= 0 ? "+" : "−"} ${z.toFixed(2)}°`,
             result: `φ = ${Math.abs(lat).toFixed(2)}° ${hemis}`,
-            hint: "Z ile δ aynı adda ise toplanır, zıt adda ise çıkarılır (işaretler otomatik).",
+            hint: "Z and δ are added when of the same name and subtracted when of contrary name (the signs are handled automatically).",
           },
         ];
       },
     },
     {
       id: "sight-reduction",
-      name: "Mevki Hattı Zinciri (Sight Reduction)",
-      group: "Göksel Seyir",
-      formula: "GHA → LHA = GHA±λ → Hc, Z → Ho = Hs±düzeltme → a = Ho−Hc",
+      name: "Line of Position Chain (Sight Reduction)",
+      group: "Celestial Navigation",
+      formula: "GHA → LHA = GHA±λ → Hc, Z → Ho = Hs±corrections → a = Ho−Hc",
       variables: [
-        { symbol: "GHA", label: "Greenwich saat açısı", unit: "°" },
+        { symbol: "GHA", label: "Greenwich hour angle", unit: "°" },
         { symbol: "λ", label: "Boylam (E: +, W: −)", unit: "°" },
         { symbol: "φ", label: "AP enlemi", unit: "°" },
         { symbol: "δ", label: "Deklinasyon", unit: "°" },
-        { symbol: "Hs", label: "Sekstant irtifası", unit: "°" },
-        { symbol: "a", label: "Intercept (yükseklik farkı)", unit: "NM" },
+        { symbol: "Hs", label: "Sextant altitude", unit: "°" },
+        { symbol: "a", label: "Intercept (altitude difference)", unit: "NM" },
       ],
       source: { code: "Marcq St-Hilaire — tam sight reduction zinciri (AP → LOP)" },
-      note: "Almanac'tan GHA ve δ alınır. Güney enlem/deklinasyon (−), batı boylam (−) girilir. Tüm düzeltmeler dakika (′).",
+      note: "GHA and δ are taken from the Almanac. South latitude/declination is entered as (−) and west longitude as (−). All corrections are in minutes (′).",
       inputs: [
         { key: "gha", label: "GHA", unit: "°", placeholder: "130.5" },
         { key: "lon", label: "Boylam (λ, E:+ W:−)", unit: "°", placeholder: "28" },
         { key: "lat", label: "AP Enlemi (φ)", unit: "°", placeholder: "40" },
         { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
-        { key: "hs", label: "Sekstant İrtifası (Hs)", unit: "°", placeholder: "45.5" },
-        { key: "ie", label: "Endeks Hatası (IE)", unit: "′", placeholder: "-1.5" },
+        { key: "hs", label: "Sextant Altitude (Hs)", unit: "°", placeholder: "45.5" },
+        { key: "ie", label: "Index Error (IE)", unit: "′", placeholder: "-1.5" },
         { key: "dip", label: "Dip", unit: "′", placeholder: "6.1" },
-        { key: "r", label: "Ana Düzeltme (R)", unit: "′", placeholder: "14.5" },
+        { key: "r", label: "Main Correction (R)", unit: "′", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -903,12 +903,12 @@ export const navigation: CourseTopic = {
         }
         const ho = (v.hs * 60 + v.ie - v.dip + v.r) / 60;
         const aMin = (ho - hc) * 60;
-        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
         return [
           { label: "LHA", value: `${lha.toFixed(2)} °` },
-          { label: "Hesaplanan İrtifa (Hc)", value: `${hc.toFixed(2)} °` },
-          { label: "Azimut Açısı (Z)", value: `${z.toFixed(1)} °` },
-          { label: "Gözlenen İrtifa (Ho)", value: `${ho.toFixed(3)} °` },
+          { label: "Calculated Altitude (Hc)", value: `${hc.toFixed(2)} °` },
+          { label: "Azimuth Angle (Z)", value: `${z.toFixed(1)} °` },
+          { label: "Observed Altitude (Ho)", value: `${ho.toFixed(3)} °` },
           { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM ${yon}` },
         ];
       },
@@ -929,55 +929,55 @@ export const navigation: CourseTopic = {
         }
         const ho = (v.hs * 60 + v.ie - v.dip + v.r) / 60;
         const aMin = (ho - hc) * 60;
-        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
         return [
           {
-            title: "1) Yerel Saat Açısı (LHA) = GHA ± λ",
+            title: "1) Local Hour Angle (LHA) = GHA ± λ",
             expression: `${v.gha}° + (${v.lon}°) = ${(v.gha + v.lon).toFixed(2)}° → 0–360° normalize`,
             result: `LHA = ${lha.toFixed(2)}°`,
-            hint: "Doğu boylam (+) eklenir, batı boylam (−) çıkarılır. Sonuç 0–360° aralığına indirgenir.",
+            hint: "East longitude (+) is added and west longitude (−) is subtracted. The result is reduced to the 0–360° range.",
           },
           {
-            title: "2) Hesaplanan İrtifa (Hc)",
+            title: "2) Calculated Altitude (Hc)",
             expression: `sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA) = ${sinHc.toFixed(4)}`,
             result: `Hc = arcsin(${sinHc.toFixed(4)}) = ${hc.toFixed(2)}°`,
-            hint: "AP (varsayılan mevki) enlemi ile cismin teorik yüksekliği.",
+            hint: "The theoretical altitude of the body for the latitude of the AP (assumed position).",
           },
           {
-            title: "3) Azimut Açısı (Z)",
+            title: "3) Azimuth Angle (Z)",
             expression: `cos(Z) = (sinδ − sinφ·sinHc)/(cosφ·cosHc) = ${cosZ.toFixed(4)}`,
             result: `Z = ${z.toFixed(1)}°`,
-            hint: "Z, mevki hattının (LOP) çiziminde kullanılan azimut yönüdür.",
+            hint: "Z is the azimuth direction used when plotting the line of position (LOP).",
           },
           {
-            title: "4) Gözlenen İrtifa (Ho) = Hs ± düzeltmeler",
+            title: "4) Observed Altitude (Ho) = Hs ± corrections",
             expression: `${v.hs}° + (${v.ie}′ IE) − ${v.dip}′ Dip + ${v.r}′ R`,
             result: `Ho = ${ho.toFixed(3)}°`,
-            hint: "Sekstant okuması Hs, endeks hatası/dip/ana düzeltme ile gerçek irtifaya çevrilir.",
+            hint: "The sextant reading Hs is converted to the true altitude with the index error, dip and main correction.",
           },
           {
             title: "5) Intercept (a) = Ho − Hc",
             expression: `(${ho.toFixed(3)}° − ${hc.toFixed(2)}°) × 60 = ${aMin.toFixed(1)} ′`,
             result: `a = ${Math.abs(aMin).toFixed(1)} NM — ${yon}`,
-            hint: "AP'den azimut (Zn) yönünde a kadar bu yöne gidilerek mevki hattı (LOP) çizilir; iki LOP kesişimi mevkidir.",
+            hint: "The line of position (LOP) is drawn by running a from the AP along the azimuth (Zn) in this direction; the intersection of two LOPs is the fix.",
           },
         ];
       },
     },
     {
       id: "gc-vertex-lat",
-      name: "Büyük Daire Tepe Enlemi (Vertex)",
+      name: "Great Circle Vertex Latitude",
       group: "Enlem-Boylam ve Mesafe",
       formula: "sin φv = |sin C₁| × cos φ₁",
       variables: [
-        { symbol: "C₁", label: "Başlangıç (ilk) kurs", unit: "°" },
-        { symbol: "φ₁", label: "Başlangıç enlemi", unit: "°" },
+        { symbol: "C₁", label: "Initial course", unit: "°" },
+        { symbol: "φ₁", label: "Departure latitude", unit: "°" },
       ],
-      source: { code: "Büyük daire seyri — vertex (tepe noktası)" },
-      note: "Vertex, büyük dairenin ulaştığı en yüksek enlemdir (kursun 090°/270° olduğu nokta).",
+      source: { code: "Great circle sailing — vertex" },
+      note: "The vertex is the highest latitude reached by the great circle (the point where the course is 090°/270°).",
       inputs: [
-        { key: "c1", label: "İlk Kurs (C₁)", unit: "°", placeholder: "60" },
-        { key: "lat1", label: "Başlangıç Enlemi (φ₁)", unit: "°", placeholder: "35" },
+        { key: "c1", label: "Initial Course (C₁)", unit: "°", placeholder: "60" },
+        { key: "lat1", label: "Departure Latitude (φ₁)", unit: "°", placeholder: "35" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -988,41 +988,41 @@ export const navigation: CourseTopic = {
     },
     {
       id: "distance-vertical-angle",
-      name: "Düşey Açıyla Mesafe (Distance Off)",
+      name: "Distance Off by Vertical Angle",
       group: "Radar ve Manevra",
-      formula: "Mesafe (NM) ≈ 1.856 × Yükseklik(m) / Düşey Açı(′)",
+      formula: "Distance (NM) ≈ 1.856 × Height(m) / Vertical Angle(′)",
       variables: [
-        { symbol: "H", label: "Nesnenin (fener vb.) yüksekliği", unit: "m" },
-        { symbol: "α", label: "Sekstantla ölçülen düşey açı", unit: "′" },
+        { symbol: "H", label: "Height of the object (lighthouse etc.)", unit: "m" },
+        { symbol: "α", label: "Vertical angle measured with the sextant", unit: "′" },
       ],
       source: { code: "Admiralty — distance by vertical sextant angle" },
-      note: "Yüksekliği bilinen nesnenin (deniz feneri, tepe) düşey açısından mesafe; nesne ufuk içindeyse geçerlidir.",
+      note: "Distance from the vertical angle of an object of known height (lighthouse, hilltop); valid while the object is within the horizon.",
       inputs: [
-        { key: "h", label: "Yükseklik (H)", unit: "m", placeholder: "80" },
-        { key: "angle", label: "Düşey Açı (α)", unit: "′", placeholder: "12" },
+        { key: "h", label: "Height (H)", unit: "m", placeholder: "80" },
+        { key: "angle", label: "Vertical Angle (α)", unit: "′", placeholder: "12" },
       ],
       calculate: (v) => {
-        if (v.angle <= 0) return [{ label: "Hata", value: "Düşey açı pozitif olmalı" }];
+        if (v.angle <= 0) return [{ label: "Hata", value: "The vertical angle must be positive" }];
         const dist = (1.856 * v.h) / v.angle;
         return [{ label: "Mesafe", value: `${dist.toFixed(2)} NM` }];
       },
     },
     {
       id: "echo-sounder-depth",
-      name: "İskandil (Echo Sounder) Derinliği",
+      name: "Echo Sounder Depth",
       group: "Seyir Emniyeti",
-      formula: "Derinlik = (Ses Hızı × Geçen Süre) / 2",
+      formula: "Depth = (Speed of Sound × Elapsed Time) / 2",
       variables: [
-        { symbol: "c", label: "Suda ses hızı (≈1500 m/s)", unit: "m/s" },
-        { symbol: "t", label: "Sinyalin gidiş-dönüş süresi", unit: "s" },
+        { symbol: "c", label: "Speed of sound in water (≈1500 m/s)", unit: "m/s" },
+        { symbol: "t", label: "Two-way travel time of the signal", unit: "s" },
       ],
-      source: { code: "Elektronik seyir — echo sounder (yankı iskandil)" },
+      source: { code: "Electronic navigation — echo sounder" },
       inputs: [
-        { key: "c", label: "Ses Hızı (c)", unit: "m/s", placeholder: "1500" },
-        { key: "t", label: "Gidiş-Dönüş Süresi (t)", unit: "s", placeholder: "0.04" },
+        { key: "c", label: "Speed of Sound (c)", unit: "m/s", placeholder: "1500" },
+        { key: "t", label: "Two-Way Travel Time (t)", unit: "s", placeholder: "0.04" },
       ],
       calculate: (v) => {
-        if (v.t < 0) return [{ label: "Hata", value: "Süre negatif olamaz" }];
+        if (v.t < 0) return [{ label: "Hata", value: "The time cannot be negative" }];
         const depth = (v.c * v.t) / 2;
         return [{ label: "Derinlik", value: `${depth.toFixed(1)} m` }];
       },

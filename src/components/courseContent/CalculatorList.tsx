@@ -3,9 +3,9 @@ import type { CourseTopic } from "@/data/courseContent/types";
 import { CalculatorCard } from "./CalculatorCard";
 
 /**
- * Konunun hesaplayıcı taşıyan girdilerini listeler. Aynı kaynaktan
- * (Formüller ile birebir) beslenir; her aracın `id`'si anchor olarak
- * kullanılır (Formüller'"Calculate" link from this anchor'a gider).
+ * Lists the topic entries that carry a calculator. Fed from the same source as
+ * the Formulas page (one to one); each tool's `id` is used as an anchor, so the
+ * "Calculate" link on the Formulas page jumps straight to it.
  */
 export function CalculatorList({ topic }: { topic: CourseTopic }) {
   const entries = getCalculatorEntries(topic);

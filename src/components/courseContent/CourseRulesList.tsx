@@ -3,9 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Kural listesi — tüm derslerde aynı kart düzeni (makine kural sayfasından
- * korunmuştur). Her kategori başlığı + isteğe bağlı kaynak rozeti + alt başlıklı
- * madde listeleri.
+ * Rule list — the same card layout across all topics (carried over from the
+ * machine rules page). Each category title + optional source badge + subtitled
+ * bullet lists.
  */
 export function CourseRulesList({ groups }: { groups: RuleGroup[] }) {
   if (!groups || groups.length === 0) {

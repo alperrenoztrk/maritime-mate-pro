@@ -18,8 +18,8 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
     const text = steps
       .flatMap((step) => [
         `${step.step}. ${step.title}`,
-        `Formül: ${step.formula}`,
-        step.substitution ? `Yerine koyma: ${step.substitution}` : "",
+        `Formula: ${step.formula}`,
+        step.substitution ? `Substitution: ${step.substitution}` : "",
         step.result ? `Result: ${step.result}` : "",
         step.explanation ? `Description: ${step.explanation}` : "",
       ])
@@ -40,12 +40,12 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
       <div className="flex flex-wrap items-center gap-2">
         <CollapsibleTrigger className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-md py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 dark:text-blue-400 dark:hover:bg-blue-900/20 dark:hover:text-blue-300">
           <ListOrdered className="h-4 w-4" />
-          {isOpen ? `İşlem zincirini gizle (${steps.length} adım)` : `İşlem zincirini göster (${steps.length} adım)`}
+          {isOpen ? `Hide calculation chain (${steps.length} steps)` : `Show calculation chain (${steps.length} steps)`}
           {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
         </CollapsibleTrigger>
         <Button type="button" size="sm" variant="ghost" className="h-8 gap-1.5 text-xs" onClick={copySteps}>
           {copied ? <Check className="h-3.5 w-3.5" /> : <Clipboard className="h-3.5 w-3.5" />}
-          {copied ? "Copied" : "İşlem izini kopyala"}
+          {copied ? "Copied" : "Copy calculation trace"}
         </Button>
       </div>
       <CollapsibleContent>
@@ -82,8 +82,8 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
           ))}
         </div>
         <p className="mt-2 px-2 text-micro leading-relaxed text-muted-foreground">
-          Ara değerler hesap motorunda tam hassasiyetle tutulur; gösterimdeki yuvarlama sonraki adıma taşınmaz.
-          Sonuçları gemiye özel onaylı doküman ve cihaz çıktılarıyla doğrulayın.
+          Intermediate values are kept at full precision in the calculation engine; the rounding shown is not carried into the next step.
+          Verify the results against the ship-specific approved documentation and instrument output.
         </p>
       </CollapsibleContent>
     </Collapsible>
