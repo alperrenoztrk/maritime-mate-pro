@@ -34,6 +34,10 @@ import {
   unmaskProtectedTokens,
 } from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
+import {
+  ENGLISH_RESIDUAL_CORRECTIONS,
+  normalizeEnglishResidualTerms,
+} from './english-residuals.mjs';
 
 const repoRoot = process.cwd();
 const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
@@ -113,6 +117,9 @@ const MANUAL_CORRECTIONS = {
 // corrections. Both take priority over cached/live machine translations.
 const ALL_CORRECTIONS = { ...MANUAL_CORRECTIONS };
 for (const [source, perLang] of Object.entries(CONTEXTUAL_CORRECTIONS)) {
+  ALL_CORRECTIONS[source] = { ...(ALL_CORRECTIONS[source] ?? {}), ...perLang };
+}
+for (const [source, perLang] of Object.entries(ENGLISH_RESIDUAL_CORRECTIONS)) {
   ALL_CORRECTIONS[source] = { ...(ALL_CORRECTIONS[source] ?? {}), ...perLang };
 }
 
@@ -239,7 +246,7 @@ async function translateLanguage(langCode, sources) {
   const existingLocale = readJson(path.join(OUT_DIR, `${langCode}.json`), {});
   for (const [key, val] of Object.entries(existingLocale)) {
     if (!key.startsWith('__') && cache[key] === undefined && hasUsableTranslation(val)) {
-      cache[key] = val;
+      cache[key] = langCode === 'en' ? normalizeEnglishResidualTerms(val, key) : val;
     }
   }
 
@@ -269,6 +276,16 @@ async function translateLanguage(langCode, sources) {
     if (isAbbreviationOnly(source)) {
       cache[source] = renderAbbreviationOnly(source, langCode);
       overrideCount++;
+      continue;
+    }
+    // English-authored interface additions do not need a translation provider.
+    // Copy missing values verbatim, then let the strict English residue audit
+    // reject any newly authored Turkish string that lacks a curated correction.
+    // This keeps the English pack complete and reproducible offline.
+    if (langCode === 'en') {
+      if (!hasUsableTranslation(cache[source])) cache[source] = source;
+      cache[source] = normalizeEnglishResidualTerms(cache[source], source);
+      skipCount++;
       continue;
     }
     if (hasUsableTranslation(cache[source])) { skipCount++; continue; }

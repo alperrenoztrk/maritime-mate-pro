@@ -1019,7 +1019,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const hl = parseFloat(craneGG1Inputs.loadHeight);
     const Delta = parseFloat(craneGG1Inputs.displacement);
     if ([w, hh, hl, Delta].some(isNaN) || Delta === 0) {
-      toast({ title: 'Error', description: 'Enter valid w, hhook, hyuk, Δ', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Enter valid w, h_hook, h_load, Δ', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("craneGG1", { displacement: Delta })) {
@@ -1028,7 +1028,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     }
     const gg1 = (w * (hh - hl)) / Delta;
     setCraneGG1Result(gg1);
-    toast({ title: 'GG₁ (Bumba) Calculated', description: `GG₁ = ${gg1.toFixed(4)} m` });
+    toast({ title: 'GG₁ (Derrick) Calculated', description: `GG₁ = ${gg1.toFixed(4)} m` });
   };
 
   const calculateDockCriticalGM = () => {
@@ -1833,18 +1833,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Crane (Bumba) GG1 */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">GG₁ with derrick (GG₁ = w·(hkanca − hyük)/Δ)</h4>
+            <h4 className="font-semibold mb-3">GG₁ with derrick (GG₁ = w·(h_hook − h_load)/Δ)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
                 <Label>w (t)</Label>
                 <Input value={craneGG1Inputs.weight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
-                <Label>hkanca (m)</Label>
+                <Label>h_hook (m)</Label>
                 <Input value={craneGG1Inputs.hookHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, hookHeight: e.target.value}))} />
               </div>
               <div>
-                <Label>hyuk (m)</Label>
+                <Label>h_load (m)</Label>
                 <Input value={craneGG1Inputs.loadHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, loadHeight: e.target.value}))} />
               </div>
               <div>

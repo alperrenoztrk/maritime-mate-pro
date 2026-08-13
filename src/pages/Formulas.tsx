@@ -112,7 +112,7 @@ const Formulas = () => {
   const suggestedQuestions = [
     "GM calculation formula",
     "How is the trim angle found?",
-    "Stabilite kriterleri nelerdir?",
+    "What are the stability criteria?",
     "Great circle cruise calculation",
     "How is SFOC calculated?",
     "Ballast water distribution",
@@ -185,7 +185,7 @@ const Formulas = () => {
 Example questions:
 • How is GM calculated?
 • What is the trim angle formula?
-• Stabilite kriterleri nelerdir?
+• What are the stability criteria?
 • Great circle sailing calculation
 • SFOC calculation method
 • Ballast water calculations"

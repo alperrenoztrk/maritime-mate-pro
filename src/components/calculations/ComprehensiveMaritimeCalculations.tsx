@@ -732,15 +732,15 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const hLoad = parseFloat(craneVerticalInputs.loadHeight);
     const delta = parseFloat(craneVerticalInputs.displacement);
     if (isNaN(w) || isNaN(hHook) || isNaN(hLoad) || isNaN(delta) || delta === 0) {
-      toast({ title: "Error", description: "Enter valid w, hcunda, hyük, Δ", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid w, h_hook, h_load, Δ", variant: "destructive" });
       return;
     }
     const heightDiff = hHook - hLoad;
     const deltaKG = (w * heightDiff) / delta; // meters
     setCraneVerticalResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, craneVertical: [
-      { step: 1, title: "Formula", formula: "ΔKG = (w × (hcunda - hyük)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
-      { step: 2, title: "height difference", formula: `hcunda - hyük = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
+      { step: 1, title: "Formula", formula: "ΔKG = (w × (h_hook - h_load)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
+      { step: 2, title: "height difference", formula: `h_hook - h_load = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
       { step: 3, title: "Placement of values", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
       { step: 4, title: "Result", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
@@ -1456,18 +1456,18 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Dikey Kaldırmada ΔKG (Vinç/Bumba) */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">ΔKG = w × (hcunda − hyük) / Δ</h4>
+                <h4 className="font-semibold mb-3">ΔKG = w × (h_hook − h_load) / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
                     <Label>Weight w (ton)</Label>
                     <Input type="number" placeholder="w" value={craneVerticalInputs.weight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>hcunda (m)</Label>
+                    <Label>h_hook (m)</Label>
                     <Input type="number" placeholder="hook height" value={craneVerticalInputs.hookHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, hookHeight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>hyuk (m)</Label>
+                    <Label>h_load (m)</Label>
                     <Input type="number" placeholder="Starting height of the load" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
                   </div>
                   <div>

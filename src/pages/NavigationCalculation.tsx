@@ -3330,7 +3330,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-3">
             <div className="space-y-2">
-              <div className="font-semibold text-primary" data-translatable>Celestial Navigation Sonuçları:</div>
+              <div className="font-semibold text-primary" data-translatable>Celestial Navigation Results:</div>
               <div className="space-y-1 text-sm">
                 {celestialInputs.type === 'meridian' && celestialResults.latitudeDeg !== undefined && (
                   <div>

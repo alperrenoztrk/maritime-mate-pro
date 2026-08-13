@@ -42,7 +42,7 @@ export const TwoFactorCard = () => {
     try {
       const { data, error } = await startEnrollment();
       if (error || !data) {
-        toast.error(error?.message || "İki adımlı doğrulama başlatılamadı");
+        toast.error(error?.message || "Two-step verification could not be started");
         return;
       }
       setEnrollment(data);
@@ -63,7 +63,7 @@ export const TwoFactorCard = () => {
         setCode("");
         return;
       }
-      toast.success("İki adımlı doğrulama açıldı");
+      toast.success("Two-step verification enabled");
       setEnrollment(null);
       setCode("");
       await refresh();
@@ -77,10 +77,10 @@ export const TwoFactorCard = () => {
     try {
       const { error } = await removeFactor(factorId);
       if (error) {
-        toast.error(error.message || "İki adımlı doğrulama kapatılamadı");
+        toast.error(error.message || "Two-step verification could not be disabled");
         return;
       }
-      toast.success("İki adımlı doğrulama kapatıldı");
+      toast.success("Two-step verification disabled");
       await refresh();
     } finally {
       setBusy(false);
@@ -107,8 +107,8 @@ export const TwoFactorCard = () => {
         ) : enabled ? (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Açık. Girişte şifrenizin yanında doğrulayıcı uygulamanızdaki 6 haneli kod
-              da istenir.
+              Enabled. When you sign in, you will be asked for the 6-digit code from
+              your authenticator app in addition to your password.
             </p>
             {factors.map((factor) => (
               <Button
@@ -126,20 +126,20 @@ export const TwoFactorCard = () => {
         ) : enrollment ? (
           <form onSubmit={handleConfirm} className="space-y-3">
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Google Authenticator, 1Password, Authy gibi bir uygulamayla aşağıdaki
-              QR'ı okutun, ardından ürettiği 6 haneli kodu girin.
+              Scan the QR code below with an app such as Google Authenticator,
+              1Password, or Authy, then enter the 6-digit code it generates.
             </p>
             {/* Supabase QR'ı hazır SVG data-URI olarak döner; harici bir QR
                 kütüphanesine ya da ağ isteğine gerek yok. CSP `img-src data:`
                 zaten açık (bkz. vite.config.ts). */}
             <img
               src={enrollment.qrCode}
-              alt="İki adımlı doğrulama QR kodu"
+              alt="Two-step verification QR code"
               className="mx-auto h-44 w-44 rounded-lg bg-white p-2"
             />
             <div className="space-y-1.5">
               <Label className="text-xs text-muted-foreground">
-                QR okutamıyorsanız bu anahtarı elle girin
+                If you cannot scan the QR code, enter this key manually
               </Label>
               <code className="block break-all rounded bg-muted px-2 py-1.5 text-micro">
                 {enrollment.secret}
@@ -147,7 +147,7 @@ export const TwoFactorCard = () => {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="mfa-enroll-code" className="text-xs">
-                verification code
+                Verification code
               </Label>
               <Input
                 id="mfa-enroll-code"
@@ -172,19 +172,19 @@ export const TwoFactorCard = () => {
                 Cancel
               </Button>
               <Button type="submit" size="sm" className="flex-1" disabled={busy || code.length !== 6}>
-                {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Onayla"}
+                {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Confirm"}
               </Button>
             </div>
           </form>
         ) : (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Şu anda devre dışı. Etkinleştirdiğinizde hesabınıza yalnızca şifrenizi
-              bilen değil, doğrulayıcı uygulamanıza da erişebilen biri girebilir.
+              Currently disabled. Once enabled, signing in requires access to both
+              your password and your authenticator app.
             </p>
             <Button variant="outline" size="sm" className="w-full gap-2" disabled={busy} onClick={handleStart}>
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}
-              Etkinleştir
+              Enable
             </Button>
           </>
         )}

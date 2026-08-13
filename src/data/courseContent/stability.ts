@@ -134,7 +134,7 @@ export const stability: CourseTopic = {
       formula: "GG₁ = w × (h_head − h_load) / Δ",
       variables: [
         { symbol: "w", label: "Lifted load", unit: "t" },
-        { symbol: "hcunda", label: "Davit/derrick head height", unit: "m" },
+        { symbol: "h_head", label: "Davit/derrick head height", unit: "m" },
         { symbol: "h_load", label: "Initial height of the load", unit: "m" },
         { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
