@@ -13,36 +13,36 @@ export const electrical: CourseTopic = {
   accent: "from-yellow-500 via-amber-500 to-orange-500",
   group: "machine",
   intro:
-    "Temel elektrik bağıntıları, üç fazlı güç, koruma ve kablo hesapları. " +
+    "Basic electrical relations, three phase power, protection and cable calculations. " +
     "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "ohms-law",
-      name: "Ohm Yasası",
+      name: "Ohm's Law",
       group: "Elektrik Temel",
       formula: "V = I × R",
       variables: [
         { symbol: "V", label: "Gerilim", unit: "V" },
-        { symbol: "I", label: "Akım", unit: "A" },
-        { symbol: "R", label: "Direnç", unit: "Ω" },
+        { symbol: "I", label: "Current", unit: "A" },
+        { symbol: "R", label: "Resistance", unit: "Ω" },
       ],
-      source: { code: "Ohm yasası" },
-      note: "Akım ve direnç girilir; gerilim V = I × R ve güç P = V × I hesaplanır.",
+      source: { code: "Ohm's law" },
+      note: "The current and the resistance are entered; the voltage V = I × R and the power P = V × I are calculated.",
       inputs: [
-        { key: "i", label: "Akım (I)", unit: "A", placeholder: "10" },
-        { key: "r", label: "Direnç (R)", unit: "Ω", placeholder: "22" },
+        { key: "i", label: "Current (I)", unit: "A", placeholder: "10" },
+        { key: "r", label: "Resistance (R)", unit: "Ω", placeholder: "22" },
       ],
       calculate: (v) => {
         const volt = v.i * v.r;
         return [
           { label: "Gerilim (V)", value: `${volt.toFixed(2)} V` },
-          { label: "Güç (P = V·I)", value: `${(volt * v.i).toFixed(1)} W` },
+          { label: "Power (P = V·I)", value: `${(volt * v.i).toFixed(1)} W` },
         ];
       },
     },
     {
       id: "three-phase-power",
-      name: "Üç Fazlı Güç",
+      name: "Three Phase Power",
       group: "Elektrik Temel",
       formula: "P = √3 × VL × IL × cos(φ)",
       variables: [
@@ -51,10 +51,10 @@ export const electrical: CourseTopic = {
         { symbol: "cos(φ)", label: "Power factor" },
       ],
       source: { code: "Three phase active power relation" },
-      note: "Sonuç W çıkar, kW'a çevrilir. Görünür güç S = √3 × VL × IL.",
+      note: "The result is in W and converted to kW. The apparent power is S = √3 × VL × IL.",
       inputs: [
         { key: "v", label: "Hat Gerilimi (VL)", unit: "V", placeholder: "440" },
-        { key: "i", label: "Hat Akımı (IL)", unit: "A", placeholder: "200" },
+        { key: "i", label: "Line Current (IL)", unit: "A", placeholder: "200" },
         { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
       ],
       calculate: (v) => {
@@ -68,18 +68,18 @@ export const electrical: CourseTopic = {
     },
     {
       id: "reactive-power",
-      name: "Reaktif Güç",
+      name: "Reactive Power",
       group: "Elektrik Temel",
       formula: "Q = P × tan(φ),  S = P / cos(φ)",
       variables: [
-        { symbol: "P", label: "Aktif güç", unit: "kW" },
+        { symbol: "P", label: "Active power", unit: "kW" },
         { symbol: "cos(φ)", label: "Power factor" },
-        { symbol: "tan(φ)", label: "Reaktif/aktif oranı" },
-        { symbol: "Q", label: "Reaktif güç", unit: "kVAR" },
-        { symbol: "S", label: "Görünür güç", unit: "kVA" },
+        { symbol: "tan(φ)", label: "Reactive/active ratio" },
+        { symbol: "Q", label: "Reactive power", unit: "kVAR" },
+        { symbol: "S", label: "Apparent power", unit: "kVA" },
       ],
-      source: { code: "Üç fazlı reaktif güç (güç üçgeni)" },
-      note: "Hesaplayıcı P ve cos(φ) ile φ = arccos(pf), Q = P·tan(φ), S = P/pf hesaplar.",
+      source: { code: "Three phase reactive power (power triangle)" },
+      note: "From P and cos(φ) the calculator obtains φ = arccos(pf), Q = P·tan(φ) and S = P/pf.",
       inputs: [
         { key: "p", label: "Active Power (P)", unit: "kW", placeholder: "300" },
         { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
@@ -89,27 +89,27 @@ export const electrical: CourseTopic = {
         const q = v.p * Math.tan(phi);
         const s = v.p / v.pf;
         return [
-          { label: "Reaktif Güç (Q)", value: `${q.toFixed(1)} kVAR` },
+          { label: "Reactive Power (Q)", value: `${q.toFixed(1)} kVAR` },
           { label: "Apparent Power (S)", value: `${s.toFixed(1)} kVA` },
-          { label: "Faz Açısı (φ)", value: `${(phi * 180 / Math.PI).toFixed(1)}°` },
+          { label: "Phase Angle (φ)", value: `${(phi * 180 / Math.PI).toFixed(1)}°` },
         ];
       },
     },
     {
       id: "apparent-power",
-      name: "Görünür Güç",
+      name: "Apparent Power",
       group: "Elektrik Temel",
       formula: "S = √(P² + Q²) = √3 × VL × IL",
       variables: [
-        { symbol: "P", label: "Aktif güç", unit: "kW" },
-        { symbol: "Q", label: "Reaktif güç", unit: "kVAR" },
-        { symbol: "S", label: "Görünür güç", unit: "kVA" },
+        { symbol: "P", label: "Active power", unit: "kW" },
+        { symbol: "Q", label: "Reactive power", unit: "kVAR" },
+        { symbol: "S", label: "Apparent power", unit: "kVA" },
       ],
-      source: { code: "Güç üçgeni (görünür güç)" },
-      note: "Aktif ve reaktif güç girilir; görünür güç S = √(P² + Q²) ve güç faktörü cos(φ) = P/S hesaplanır.",
+      source: { code: "Power triangle (apparent power)" },
+      note: "The active and reactive power are entered; the apparent power S = √(P² + Q²) and the power factor cos(φ) = P/S are calculated.",
       inputs: [
         { key: "p", label: "Active Power (P)", unit: "kW", placeholder: "240" },
-        { key: "q", label: "Reaktif Güç (Q)", unit: "kVAR", placeholder: "180" },
+        { key: "q", label: "Reactive Power (Q)", unit: "kVAR", placeholder: "180" },
       ],
       calculate: (v) => {
         const s = Math.sqrt(v.p * v.p + v.q * v.q);
@@ -122,18 +122,18 @@ export const electrical: CourseTopic = {
     },
     {
       id: "generator-frequency",
-      name: "Jeneratör Frekansı",
+      name: "Generator Frequency",
       group: "Elektrik Temel",
       formula: "f = (n × P) / 120",
       variables: [
         { symbol: "n", label: "Devir", unit: "rpm" },
-        { symbol: "P", label: "Kutup sayısı" },
+        { symbol: "P", label: "Number of poles" },
         { symbol: "f", label: "Frekans", unit: "Hz" },
       ],
-      source: { code: "Senkron jeneratör frekans-devir bağıntısı" },
+      source: { code: "Synchronous generator frequency-speed relation" },
       inputs: [
         { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "720" },
-        { key: "p", label: "Kutup Sayısı (P)", unit: "", placeholder: "10" },
+        { key: "p", label: "Number of Poles (P)", unit: "", placeholder: "10" },
       ],
       calculate: (v) => {
         const f = (v.n * v.p) / 120;
@@ -142,98 +142,98 @@ export const electrical: CourseTopic = {
     },
     {
       id: "short-circuit-current",
-      name: "Kısa Devre Akımı",
+      name: "Short Circuit Current",
       group: "Koruma ve Kablo",
       formula: "Isc = V / (√3 × Z)",
       variables: [
         { symbol: "V", label: "Hat gerilimi", unit: "V" },
         { symbol: "Z", label: "Toplam empedans", unit: "Ω" },
       ],
-      source: { code: "Üç fazlı kısa devre akımı (empedans yöntemi)" },
+      source: { code: "Three phase short circuit current (impedance method)" },
       inputs: [
         { key: "v", label: "Hat Gerilimi", unit: "V", placeholder: "440" },
         { key: "z", label: "Empedans (Z)", unit: "Ω", placeholder: "0.05" },
       ],
       calculate: (v) => {
         const isc = v.v / (Math.sqrt(3) * v.z);
-        return [{ label: "Kısa Devre Akımı", value: `${isc.toFixed(0)} A` }];
+        return [{ label: "Short Circuit Current", value: `${isc.toFixed(0)} A` }];
       },
     },
     {
       id: "voltage-drop",
-      name: "Gerilim Düşümü",
+      name: "Voltage Drop",
       group: "Koruma ve Kablo",
       formula: "ΔV = 2 × I × R × L × cos(φ)",
       variables: [
-        { symbol: "I", label: "Akım", unit: "A" },
-        { symbol: "R", label: "Birim direnç", unit: "Ω/km" },
-        { symbol: "L", label: "Kablo uzunluğu", unit: "m" },
+        { symbol: "I", label: "Current", unit: "A" },
+        { symbol: "R", label: "Resistance per unit length", unit: "Ω/km" },
+        { symbol: "L", label: "Cable length", unit: "m" },
         { symbol: "cos(φ)", label: "Power factor" },
       ],
-      source: { code: "Kablo gerilim düşümü (gidiş-dönüş, IEC 60092)" },
-      note: "Birim direnç Ω/km girilir, hesapta Ω/m'ye çevrilir (÷1000). Düşüm oranı 440 V referansına göre verilir.",
+      source: { code: "Cable voltage drop (out and return, IEC 60092)" },
+      note: "The resistance per unit length is entered in Ω/km and converted to Ω/m in the calculation (÷1000). The drop ratio is given relative to a 440 V reference.",
       inputs: [
-        { key: "i", label: "Akım (I)", unit: "A", placeholder: "100" },
-        { key: "r", label: "Birim Direnç (R)", unit: "Ω/km", placeholder: "0.5" },
-        { key: "l", label: "Kablo Uzunluğu (L)", unit: "m", placeholder: "50" },
-        { key: "pf", label: "Güç Faktörü", unit: "", placeholder: "0.85" },
+        { key: "i", label: "Current (I)", unit: "A", placeholder: "100" },
+        { key: "r", label: "Resistance per Unit Length (R)", unit: "Ω/km", placeholder: "0.5" },
+        { key: "l", label: "Cable Length (L)", unit: "m", placeholder: "50" },
+        { key: "pf", label: "Power Factor", unit: "", placeholder: "0.85" },
       ],
       calculate: (v) => {
         const drop = 2 * v.i * (v.r / 1000) * v.l * v.pf;
         const dropPercent = (drop / 440) * 100;
         return [
-          { label: "Gerilim Düşümü", value: `${drop.toFixed(2)} V` },
-          { label: "Düşüm Oranı (440V'a göre)", value: `${dropPercent.toFixed(2)}%` },
+          { label: "Voltage Drop", value: `${drop.toFixed(2)} V` },
+          { label: "Drop Ratio (relative to 440 V)", value: `${dropPercent.toFixed(2)}%` },
         ];
       },
     },
     {
       id: "transformer-ratio",
-      name: "Trafo Dönüşüm Oranı",
+      name: "Transformer Turns Ratio",
       group: "Koruma ve Kablo",
       formula: "a = V₁ / V₂ = I₂ / I₁",
       variables: [
         { symbol: "V₁", label: "Primer gerilim", unit: "V" },
         { symbol: "V₂", label: "Sekonder gerilim", unit: "V" },
-        { symbol: "I₁", label: "Primer akım", unit: "A" },
-        { symbol: "I₂", label: "Sekonder akım", unit: "A" },
+        { symbol: "I₁", label: "Primary current", unit: "A" },
+        { symbol: "I₂", label: "Secondary current", unit: "A" },
       ],
-      source: { code: "İdeal transformatör dönüşüm oranı" },
+      source: { code: "Ideal transformer turns ratio" },
       inputs: [
         { key: "v1", label: "Primer Gerilim (V₁)", unit: "V", placeholder: "440" },
         { key: "v2", label: "Sekonder Gerilim (V₂)", unit: "V", placeholder: "220" },
-        { key: "i1", label: "Primer Akım (I₁)", unit: "A", placeholder: "50" },
+        { key: "i1", label: "Primary Current (I₁)", unit: "A", placeholder: "50" },
       ],
       calculate: (v) => {
         const ratio = v.v1 / v.v2;
         const i2 = v.i1 * ratio;
         return [
-          { label: "Dönüşüm Oranı", value: `${ratio.toFixed(2)}:1` },
-          { label: "Sekonder Akım (I₂)", value: `${i2.toFixed(1)} A` },
+          { label: "Turns Ratio", value: `${ratio.toFixed(2)}:1` },
+          { label: "Secondary Current (I₂)", value: `${i2.toFixed(1)} A` },
         ];
       },
     },
     {
       id: "insulation-resistance",
-      name: "İzolasyon Direnci",
+      name: "Insulation Resistance",
       group: "Koruma ve Kablo",
-      formula: "Riz = Vtest / Ikaçak",
+      formula: "R_ins = V_test / I_leakage",
       variables: [
         { symbol: "Vtest", label: "Test gerilimi", unit: "V" },
-        { symbol: "Ikaçak", label: "Kaçak akım", unit: "mA" },
-        { symbol: "Riz", label: "İzolasyon direnci", unit: "MΩ" },
+        { symbol: "I_leakage", label: "Leakage current", unit: "mA" },
+        { symbol: "Riz", label: "Insulation resistance", unit: "MΩ" },
       ],
-      source: { code: "İzolasyon direnci ölçümü (SOLAS/IEC 60092, min 1 MΩ)" },
-      note: "Kaçak akım mA, test gerilimi V girilir; R = V/I (kΩ) ÷1000 ile MΩ verilir.",
+      source: { code: "Insulation resistance measurement (SOLAS/IEC 60092, min 1 MΩ)" },
+      note: "The leakage current is entered in mA and the test voltage in V; R = V/I (kΩ) is divided by 1000 to give MΩ.",
       inputs: [
         { key: "vtest", label: "Test Gerilimi", unit: "V", placeholder: "500" },
-        { key: "ileak", label: "Kaçak Akım", unit: "mA", placeholder: "0.5" },
+        { key: "ileak", label: "Leakage Current", unit: "mA", placeholder: "0.5" },
       ],
       calculate: (v) => {
         const ir = v.vtest / v.ileak; // kΩ → MΩ
         const status = ir >= 1000 ? "Uygun (≥1 MΩ)" : ir >= 100 ? "Dikkat (100kΩ–1MΩ)" : "Tehlikeli (<100kΩ)";
         return [
-          { label: "İzolasyon Direnci", value: `${(ir / 1000).toFixed(2)} MΩ` },
+          { label: "Insulation Resistance", value: `${(ir / 1000).toFixed(2)} MΩ` },
           { label: "Durum", value: status },
         ];
       },

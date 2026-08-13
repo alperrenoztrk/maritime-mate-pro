@@ -8,31 +8,31 @@ import type { CourseTopic } from "./types";
  */
 export const fuelTechnology: CourseTopic = {
   key: "fuel-technology",
-  title: "Yakıt Teknolojisi ve Yönetimi",
+  title: "Fuel Technology and Management",
   icon: Thermometer,
   accent: "from-orange-600 via-red-600 to-rose-600",
   group: "machine",
   intro:
-    "Yakıt özellikleri, kalite indeksleri, arıtma ve bunker yönetimi. " +
+    "Fuel properties, quality indices, treatment and bunker management. " +
     "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "ccai",
-      name: "CCAI (Aromatiklik İndeksi)",
-      group: "Yakıt Özellikleri",
+      name: "CCAI (Calculated Carbon Aromaticity Index)",
+      group: "Fuel Properties",
       formula: "CCAI = D − 140,7·log(log(ν₅₀ + 0,85)) − 80,6",
       variables: [
-        { symbol: "D", label: "Yoğunluk 15°C", unit: "kg/m³" },
+        { symbol: "D", label: "Density at 15 °C", unit: "kg/m³" },
         { symbol: "ν₅₀", label: "50°C kinematik viskozite", unit: "cSt" },
       ],
-      source: { code: "ISO 8217 — CCAI hesaplanmış aromatiklik indeksi" },
+      source: { code: "ISO 8217 — calculated carbon aromaticity index (CCAI)" },
       inputs: [
-        { key: "d", label: "Yoğunluk 15°C (D)", unit: "kg/m³", placeholder: "991" },
+        { key: "d", label: "Density at 15 °C (D)", unit: "kg/m³", placeholder: "991" },
         { key: "v", label: "Viskozite 50°C (ν)", unit: "cSt", placeholder: "380" },
       ],
       calculate: (vals) => {
         const ccai = vals.d - 140.7 * Math.log10(Math.log10(vals.v + 0.85)) - 80.6;
-        const quality = ccai < 840 ? "Good" : ccai < 870 ? "Kabul edilebilir" : "Zayıf tutuşma";
+        const quality = ccai < 840 ? "Good" : ccai < 870 ? "Kabul edilebilir" : "Poor ignition quality";
         return [
           { label: "CCAI", value: ccai.toFixed(0) },
           { label: "Kalite", value: quality },
@@ -41,36 +41,36 @@ export const fuelTechnology: CourseTopic = {
     },
     {
       id: "fuel-heating-value",
-      name: "Yakıt Isıl Değeri",
-      group: "Yakıt Özellikleri",
+      name: "Fuel Calorific Value",
+      group: "Fuel Properties",
       formula: "Hu ≈ 46,704 − 8,802·d² + 3,167·d",
       variables: [
-        { symbol: "d", label: "15°C yoğunluk", unit: "kg/L" },
-        { symbol: "Hu", label: "Alt ısıl değer", unit: "MJ/kg" },
+        { symbol: "d", label: "Density at 15 °C", unit: "kg/L" },
+        { symbol: "Hu", label: "Lower calorific value", unit: "MJ/kg" },
       ],
-      source: { code: "ISO 8217 — yoğunluk bazlı alt ısıl değer yaklaşımı" },
-      note: "Yoğunluk kg/L (örn. 0,991) girilir; alt ısıl değer Hu MJ/kg olarak tahmin edilir.",
+      source: { code: "ISO 8217 — density based lower calorific value approximation" },
+      note: "The density is entered in kg/L (e.g. 0.991); the lower calorific value Hu is estimated in MJ/kg.",
       inputs: [
-        { key: "d", label: "Yoğunluk @15°C (d)", unit: "kg/L", placeholder: "0.991" },
+        { key: "d", label: "Density @15 °C (d)", unit: "kg/L", placeholder: "0.991" },
       ],
       calculate: (v) => {
         const hu = 46.704 - 8.802 * v.d * v.d + 3.167 * v.d;
         return [
           { label: "Lower Calorific Value (Hu)", value: `${hu.toFixed(2)} MJ/kg` },
-          { label: "Alt Isıl Değer", value: `${(hu * 1000).toFixed(0)} kJ/kg` },
+          { label: "Lower Calorific Value", value: `${(hu * 1000).toFixed(0)} kJ/kg` },
         ];
       },
     },
     {
       id: "viscosity-conversion",
-      name: "Viskozite Dönüşümü",
-      group: "Yakıt Özellikleri",
+      name: "Viscosity Conversion",
+      group: "Fuel Properties",
       formula: "1 cSt = 1 mm²/s",
       variables: [
         { symbol: "ν", label: "Kinematik viskozite", unit: "cSt = mm²/s" },
       ],
-      source: { code: "Kinematik viskozite birim eşitliği (Redwood No.1 ≈ 4,05 × cSt)" },
-      note: "1 cSt = 1 mm²/s. Yaklaşık dönüşümler: Redwood No.1 ≈ 4,05 × cSt; Saybolt Universal (SSU) ≈ 4,635 × cSt.",
+      source: { code: "Kinematic viscosity unit equivalence (Redwood No.1 ≈ 4.05 × cSt)" },
+      note: "1 cSt = 1 mm²/s. Approximate conversions: Redwood No.1 ≈ 4.05 × cSt; Saybolt Universal (SSU) ≈ 4.635 × cSt.",
       inputs: [
         { key: "v", label: "Kinematik Viskozite (ν)", unit: "cSt", placeholder: "380" },
       ],
@@ -84,16 +84,16 @@ export const fuelTechnology: CourseTopic = {
     },
     {
       id: "fuel-heating-temperature",
-      name: "Yakıt Isıtma Sıcaklığı",
-      group: "Yakıt Arıtma",
+      name: "Fuel Heating Temperature",
+      group: "Fuel Treatment",
       formula: "T = 50 + (ln(ν₅₀ / νhedef) / ln(1,055))",
       variables: [
         { symbol: "ν₅₀", label: "50°C viskozite", unit: "cSt" },
         { symbol: "ν_hedef", label: "Hedef (enjeksiyon) viskozite", unit: "cSt" },
-        { symbol: "T", label: "Tahmini ısıtma sıcaklığı", unit: "°C" },
+        { symbol: "T", label: "Estimated heating temperature", unit: "°C" },
       ],
-      source: { code: "Walther viskozite-sıcaklık bağıntısı (yaklaşık çözüm)" },
-      note: "HFO enjeksiyon viskozitesine ulaşmak için gerekli ısıtma sıcaklığını tahmin eder.",
+      source: { code: "Walther viscosity-temperature relation (approximate solution)" },
+      note: "Estimates the heating temperature required to reach the HFO injection viscosity.",
       inputs: [
         { key: "v50", label: "Viskozite @50°C", unit: "cSt", placeholder: "380" },
         { key: "vTarget", label: "Hedef Viskozite", unit: "cSt", placeholder: "15" },
@@ -101,101 +101,101 @@ export const fuelTechnology: CourseTopic = {
       calculate: (v) => {
         // Walther denklemi yaklaşık çözümü
         const t = 50 + (Math.log(v.v50 / v.vTarget) / Math.log(1.055)) * 1;
-        return [{ label: "Tahmini Isıtma Sıcaklığı", value: `${t.toFixed(0)} °C` }];
+        return [{ label: "Estimated Heating Temperature", value: `${t.toFixed(0)} °C` }];
       },
     },
     {
       id: "fuel-density-correction",
-      name: "Yakıt Yoğunluk Düzeltmesi",
-      group: "Yakıt Arıtma",
+      name: "Fuel Density Correction",
+      group: "Fuel Treatment",
       formula: "ρT = ρ₁₅ − 0,00065·ρ₁₅·(T − 15)",
       variables: [
-        { symbol: "ρ₁₅", label: "15°C yoğunluk", unit: "kg/m³" },
-        { symbol: "T", label: "Mevcut sıcaklık", unit: "°C" },
-        { symbol: "ρT", label: "Düzeltilmiş yoğunluk", unit: "kg/m³" },
+        { symbol: "ρ₁₅", label: "Density at 15 °C", unit: "kg/m³" },
+        { symbol: "T", label: "Current temperature", unit: "°C" },
+        { symbol: "ρT", label: "Corrected density", unit: "kg/m³" },
       ],
-      source: { code: "ASTM D1250 / yoğunluk-sıcaklık düzeltmesi (HFO yaklaşık katsayısı)" },
-      note: "HFO için yaklaşık düzeltme katsayısı: 0,00065 /°C.",
+      source: { code: "ASTM D1250 / density-temperature correction (approximate HFO coefficient)" },
+      note: "Approximate correction coefficient for HFO: 0.00065 /°C.",
       inputs: [
-        { key: "d15", label: "Yoğunluk @15°C", unit: "kg/m³", placeholder: "991" },
-        { key: "t", label: "Mevcut Sıcaklık", unit: "°C", placeholder: "130" },
+        { key: "d15", label: "Density @15 °C", unit: "kg/m³", placeholder: "991" },
+        { key: "t", label: "Current Temperature", unit: "°C", placeholder: "130" },
       ],
       calculate: (v) => {
         // Yaklaşık düzeltme katsayısı: 0.00065 per °C (HFO için)
         const dT = v.d15 - 0.00065 * v.d15 * (v.t - 15);
-        return [{ label: "Düzeltilmiş Yoğunluk", value: `${dT.toFixed(1)} kg/m³` }];
+        return [{ label: "Corrected Density", value: `${dT.toFixed(1)} kg/m³` }];
       },
     },
     {
       id: "heating-power",
-      name: "Isıtma Gücü",
-      group: "Yakıt Arıtma",
+      name: "Heating Power",
+      group: "Fuel Treatment",
       formula: "Q̇ = ṁ·cp·ΔT",
       variables: [
         { symbol: "ṁ", label: "Fuel flow rate", unit: "kg/s" },
-        { symbol: "cp", label: "Özgül ısı (~2 kJ/kg·K HFO)", unit: "kJ/kg·K" },
+        { symbol: "cp", label: "Specific heat (~2 kJ/kg·K for HFO)", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Temperature rise", unit: "K" },
       ],
-      source: { code: "Duyulur ısı bağıntısı (yakıt ön ısıtma)" },
-      note: "Yakıt debisi kg/s girilir; gerekli ısıtma gücü Q̇ = ṁ·cp·ΔT (kW) hesaplanır.",
+      source: { code: "Sensible heat relation (fuel pre-heating)" },
+      note: "The fuel flow rate is entered in kg/s; the required heating power is calculated as Q̇ = ṁ·cp·ΔT (kW).",
       inputs: [
-        { key: "mdot", label: "Yakıt Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
+        { key: "mdot", label: "Fuel Flow Rate (ṁ)", unit: "kg/s", placeholder: "0.5" },
         { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "2.0" },
-        { key: "dt", label: "Sıcaklık Artışı (ΔT)", unit: "K", placeholder: "90" },
+        { key: "dt", label: "Temperature Rise (ΔT)", unit: "K", placeholder: "90" },
       ],
       calculate: (v) => {
         const q = v.mdot * v.cp * v.dt;
-        return [{ label: "Isıtma Gücü (Q̇)", value: `${q.toFixed(1)} kW` }];
+        return [{ label: "Heating Power (Q̇)", value: `${q.toFixed(1)} kW` }];
       },
     },
     {
       id: "settling-tank-time",
-      name: "Settling Tank Süresi",
-      group: "Yakıt Arıtma",
+      name: "Settling Tank Time",
+      group: "Fuel Treatment",
       formula: "t ≥ 24 saat",
       variables: [
-        { symbol: "t", label: "Çökeltme süresi", unit: "saat" },
+        { symbol: "t", label: "Settling time", unit: "saat" },
       ],
-      source: { code: "ISO 8217 — settling tank uygulaması (HFO 70°C, yerçekimiyle çökme)" },
-      note: "HFO için önerilen çökeltme süresi ≥ 24 saattir. Planlanan süre girilir; sınıra göre uygunluk değerlendirilir.",
+      source: { code: "ISO 8217 — settling tank practice (HFO at 70 °C, gravity settling)" },
+      note: "The recommended settling time for HFO is ≥ 24 hours. The planned time is entered and assessed against the limit.",
       inputs: [
-        { key: "t", label: "Planlanan Çökeltme Süresi", unit: "saat", placeholder: "24" },
+        { key: "t", label: "Planned Settling Time", unit: "saat", placeholder: "24" },
       ],
       calculate: (v) => {
         const margin = v.t - 24;
         return [
           { label: "Margin to the Limit", value: `${margin.toFixed(1)} saat` },
-          { label: "Uygunluk", value: margin >= 0 ? "UYGUN (≥24 saat)" : "YETERSİZ (<24 saat)" },
+          { label: "Uygunluk", value: margin >= 0 ? "UYGUN (≥24 saat)" : "INSUFFICIENT (<24 hours)" },
         ];
       },
     },
     {
       id: "bunker-quantity",
-      name: "Bunker Miktar Hesabı",
-      group: "Bunker Yönetimi",
-      formula: "Bunker = (SFOC × P × 24 / 10⁶) × gün × (1 + pay/100)",
+      name: "Bunker Quantity Calculation",
+      group: "Bunker Management",
+      formula: "Bunker = (SFOC × P × 24 / 10⁶) × days × (1 + margin/100)",
       variables: [
         { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
         { symbol: "P", label: "Engine power", unit: "kW" },
         { symbol: "days", label: "Voyage time", unit: "days" },
-        { symbol: "pay", label: "Güvenlik payı", unit: "%" },
+        { symbol: "pay", label: "Safety margin", unit: "%" },
       ],
-      source: { code: "Bunker planlama (SFOC × güç × süre + güvenlik payı)" },
-      note: "SFOC g/kW·h'tir; günlük ton için ×24/10⁶. Güvenlik payı % olarak eklenir.",
+      source: { code: "Bunker planning (SFOC × power × time + safety margin)" },
+      note: "SFOC is in g/kW·h; multiply by 24/10⁶ for tonnes per day. The safety margin is added as a percentage.",
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "185" },
         { key: "p", label: "Engine Power", unit: "kW", placeholder: "10000" },
         { key: "days", label: "Passage Time", unit: "days", placeholder: "15" },
-        { key: "margin", label: "Güvenlik Payı", unit: "%", placeholder: "10" },
+        { key: "margin", label: "Safety Margin", unit: "%", placeholder: "10" },
       ],
       calculate: (v) => {
         const daily = (v.sfoc * v.p * 24) / 1e6;
         const total = daily * v.days;
         const withMargin = total * (1 + v.margin / 100);
         return [
-          { label: "Daily Consumption", value: `${daily.toFixed(1)} ton/gün` },
-          { label: "Toplam İhtiyaç", value: `${total.toFixed(1)} ton` },
-          { label: "Güvenlik Payı Dahil", value: `${withMargin.toFixed(1)} ton` },
+          { label: "Daily Consumption", value: `${daily.toFixed(1)} tonnes/day` },
+          { label: "Total Requirement", value: `${total.toFixed(1)} ton` },
+          { label: "Including Safety Margin", value: `${withMargin.toFixed(1)} ton` },
         ];
       },
     },

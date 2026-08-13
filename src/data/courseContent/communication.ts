@@ -7,12 +7,12 @@ import type { CourseTopic } from "./types";
  */
 export const communication: CourseTopic = {
   key: "communication",
-  title: "Denizde Haberleşme",
+  title: "Maritime Communications",
   icon: Radio,
   accent: "from-cyan-500 via-blue-500 to-indigo-500",
   group: "deck",
   intro:
-    "Dalga boyu, telsiz ufku, kazanç (dB), serbest uzay yol kaybı ve Doppler. " +
+    "Wavelength, radio horizon, gain (dB), free space path loss and Doppler. " +
     "Each formula is followed by the tool that calculates it.",
   entries: [
     {
@@ -21,14 +21,14 @@ export const communication: CourseTopic = {
       group: "Dalga Temelleri",
       formula: "λ = c / f",
       variables: [
-        { symbol: "c", label: "Işık hızı", unit: "3×10⁸ m/s" },
+        { symbol: "c", label: "Speed of light", unit: "3×10⁸ m/s" },
         { symbol: "f", label: "Frekans", unit: "Hz" },
       ],
-      source: { code: "Elektromanyetik dalga bağıntısı" },
-      note: "Frekans MHz girilir; hesapta Hz'e çevrilir (×10⁶).",
+      source: { code: "Electromagnetic wave relation" },
+      note: "The frequency is entered in MHz and converted to Hz in the calculation (×10⁶).",
       inputs: [{ key: "f", label: "Frekans (f)", unit: "MHz", placeholder: "156.8" }],
       calculate: (v) => {
-        if (v.f <= 0) return [{ label: "Hata", value: "Frekans pozitif olmalı" }];
+        if (v.f <= 0) return [{ label: "Hata", value: "The frequency must be positive" }];
         const lambda = 3e8 / (v.f * 1e6);
         return [{ label: "Dalga Boyu (λ)", value: `${lambda.toFixed(3)} m` }];
       },
@@ -42,11 +42,11 @@ export const communication: CourseTopic = {
         { symbol: "T", label: "Periyot", unit: "s" },
         { symbol: "f", label: "Frekans", unit: "Hz" },
       ],
-      source: { code: "Periyot-frekans tanımı" },
-      note: "Frekans MHz girilir; sonuç mikrosaniye (µs).",
+      source: { code: "Period-frequency definition" },
+      note: "The frequency is entered in MHz; the result is in microseconds (µs).",
       inputs: [{ key: "f", label: "Frekans (f)", unit: "MHz", placeholder: "2.182" }],
       calculate: (v) => {
-        if (v.f <= 0) return [{ label: "Hata", value: "Frekans pozitif olmalı" }];
+        if (v.f <= 0) return [{ label: "Hata", value: "The frequency must be positive" }];
         const tUs = 1 / (v.f * 1e6) * 1e6;
         return [{ label: "Periyot (T)", value: `${tUs.toFixed(4)} µs` }];
       },
@@ -57,14 +57,14 @@ export const communication: CourseTopic = {
       group: "Kapsama ve Menzil",
       formula: "d (NM) ≈ 2.23 × (√htx + √hrx)",
       variables: [
-        { symbol: "htx", label: "Verici anten yüksekliği", unit: "m" },
-        { symbol: "hrx", label: "Alıcı anten yüksekliği", unit: "m" },
+        { symbol: "htx", label: "Transmitter antenna height", unit: "m" },
+        { symbol: "hrx", label: "Receiver antenna height", unit: "m" },
       ],
-      source: { code: "Telsiz ufku (radio horizon) yaklaşımı" },
-      note: "Optik ufkun ~%15 fazlası; sonuç deniz mili (NM). h metre girilir.",
+      source: { code: "Radio horizon approximation" },
+      note: "About 15% beyond the optical horizon; the result is in nautical miles (NM). h is entered in metres.",
       inputs: [
-        { key: "htx", label: "Verici Yüksekliği", unit: "m", placeholder: "15" },
-        { key: "hrx", label: "Alıcı Yüksekliği", unit: "m", placeholder: "9" },
+        { key: "htx", label: "Transmitter Height", unit: "m", placeholder: "15" },
+        { key: "hrx", label: "Receiver Height", unit: "m", placeholder: "9" },
       ],
       calculate: (v) => {
         if (v.htx < 0 || v.hrx < 0) return [{ label: "Hata", value: "The height cannot be negative" }];
@@ -74,81 +74,81 @@ export const communication: CourseTopic = {
     },
     {
       id: "decibel-gain",
-      name: "Kazanç / Zayıflama (dB)",
+      name: "Gain / Attenuation (dB)",
       group: "Sinyal Seviyesi",
-      formula: "G (dB) = 10 · log₁₀(Pçıkış / Pgiriş)",
+      formula: "G (dB) = 10 · log₁₀(P_out / P_in)",
       variables: [
-        { symbol: "Pçıkış", label: "Çıkış gücü", unit: "W" },
-        { symbol: "Pgiriş", label: "Giriş gücü", unit: "W" },
+        { symbol: "P_out", label: "Output power", unit: "W" },
+        { symbol: "P_in", label: "Input power", unit: "W" },
       ],
-      source: { code: "Desibel (güç oranı) tanımı" },
+      source: { code: "Decibel (power ratio) definition" },
       inputs: [
-        { key: "pout", label: "Çıkış Gücü", unit: "W", placeholder: "25" },
-        { key: "pin", label: "Giriş Gücü", unit: "W", placeholder: "1" },
+        { key: "pout", label: "Output Power", unit: "W", placeholder: "25" },
+        { key: "pin", label: "Input Power", unit: "W", placeholder: "1" },
       ],
       calculate: (v) => {
-        if (v.pin <= 0 || v.pout <= 0) return [{ label: "Hata", value: "Güçler pozitif olmalı" }];
+        if (v.pin <= 0 || v.pout <= 0) return [{ label: "Hata", value: "The powers must be positive" }];
         const db = 10 * Math.log10(v.pout / v.pin);
-        return [{ label: "Kazanç", value: `${db.toFixed(2)} dB` }];
+        return [{ label: "Gain", value: `${db.toFixed(2)} dB` }];
       },
     },
     {
       id: "fspl",
-      name: "Serbest Uzay Yol Kaybı (FSPL)",
+      name: "Free Space Path Loss (FSPL)",
       group: "Sinyal Seviyesi",
       formula: "FSPL (dB) = 20·log₁₀(d) + 20·log₁₀(f) + 32.44",
       variables: [
         { symbol: "d", label: "Mesafe", unit: "km" },
         { symbol: "f", label: "Frekans", unit: "MHz" },
       ],
-      source: { code: "Friis — serbest uzay yol kaybı (d: km, f: MHz)" },
+      source: { code: "Friis — free space path loss (d: km, f: MHz)" },
       inputs: [
         { key: "d", label: "Mesafe (d)", unit: "km", placeholder: "30" },
         { key: "f", label: "Frekans (f)", unit: "MHz", placeholder: "156.8" },
       ],
       calculate: (v) => {
-        if (v.d <= 0 || v.f <= 0) return [{ label: "Hata", value: "d ve f pozitif olmalı" }];
+        if (v.d <= 0 || v.f <= 0) return [{ label: "Hata", value: "d and f must be positive" }];
         const fspl = 20 * Math.log10(v.d) + 20 * Math.log10(v.f) + 32.44;
         return [{ label: "FSPL", value: `${fspl.toFixed(2)} dB` }];
       },
     },
     {
       id: "eirp",
-      name: "EIRP (Etkin Yayılan Güç)",
+      name: "EIRP (Effective Isotropic Radiated Power)",
       group: "Sinyal Seviyesi",
-      formula: "EIRP (dBW) = Pverici + Ganten − Lkayıp",
+      formula: "EIRP (dBW) = P_tx + G_antenna − L_loss",
       variables: [
-        { symbol: "Pverici", label: "Verici gücü", unit: "dBW" },
-        { symbol: "Ganten", label: "Anten kazancı", unit: "dBi" },
-        { symbol: "Lkayıp", label: "Hat/konnektör kaybı", unit: "dB" },
+        { symbol: "Pverici", label: "Transmitter power", unit: "dBW" },
+        { symbol: "Ganten", label: "Antenna gain", unit: "dBi" },
+        { symbol: "L_loss", label: "Line/connector loss", unit: "dB" },
       ],
-      source: { code: "EIRP tanımı (anten link bütçesi)" },
+      source: { code: "EIRP definition (antenna link budget)" },
       inputs: [
-        { key: "ptx", label: "Verici Gücü", unit: "dBW", placeholder: "14" },
-        { key: "g", label: "Anten Kazancı", unit: "dBi", placeholder: "6" },
+        { key: "ptx", label: "Transmitter Power", unit: "dBW", placeholder: "14" },
+        { key: "g", label: "Antenna Gain", unit: "dBi", placeholder: "6" },
         { key: "l", label: "Loss", unit: "dB", placeholder: "2" },
       ],
       calculate: (v) => [{ label: "EIRP", value: `${(v.ptx + v.g - v.l).toFixed(2)} dBW` }],
     },
     {
       id: "doppler-shift",
-      name: "Doppler Kayması",
+      name: "Doppler Shift",
       group: "Dalga Temelleri",
       formula: "Δf = (v / c) × f",
       variables: [
-        { symbol: "v", label: "Bağıl hız", unit: "m/s" },
-        { symbol: "c", label: "Işık hızı", unit: "3×10⁸ m/s" },
-        { symbol: "f", label: "Taşıyıcı frekans", unit: "Hz" },
+        { symbol: "v", label: "Relative speed", unit: "m/s" },
+        { symbol: "c", label: "Speed of light", unit: "3×10⁸ m/s" },
+        { symbol: "f", label: "Carrier frequency", unit: "Hz" },
       ],
-      source: { code: "Doppler etkisi (radyo dalgaları)" },
-      note: "Frekans MHz girilir; sonuç Hz.",
+      source: { code: "Doppler effect (radio waves)" },
+      note: "The frequency is entered in MHz; the result is in Hz.",
       inputs: [
-        { key: "v", label: "Bağıl Hız (v)", unit: "m/s", placeholder: "10" },
+        { key: "v", label: "Relative Speed (v)", unit: "m/s", placeholder: "10" },
         { key: "f", label: "Frekans (f)", unit: "MHz", placeholder: "9400" },
       ],
       calculate: (v) => {
         const df = (v.v / 3e8) * (v.f * 1e6);
-        return [{ label: "Doppler Kayması (Δf)", value: `${df.toFixed(2)} Hz` }];
+        return [{ label: "Doppler Shift (Δf)", value: `${df.toFixed(2)} Hz` }];
       },
     },
   ],

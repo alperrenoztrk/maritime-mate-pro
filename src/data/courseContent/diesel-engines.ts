@@ -33,7 +33,7 @@ export const dieselEngines: CourseTopic = {
       inputs: [
         { key: "pmi", label: "Mean Indicated Pressure (Pmi)", unit: "bar", placeholder: "18" },
         { key: "l", label: "Strok (L)", unit: "m", placeholder: "2.5" },
-        { key: "a", label: "Piston Alanı (A)", unit: "m²", placeholder: "0.35" },
+        { key: "a", label: "Piston Area (A)", unit: "m²", placeholder: "0.35" },
         { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "100" },
         { key: "k", label: "Number of Cylinders (k)", unit: "adet", placeholder: "6" },
       ],
