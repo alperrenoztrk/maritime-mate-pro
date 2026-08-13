@@ -16,7 +16,7 @@ const requirementGroups = [
     readiness: 82,
   },
   {
-    title: "Yangın Güvenliği",
+    title: "Fire Safety",
     badge: "Bölüm II-2",
     description: "Yangın bölmeleri, sprinkler/ drencher sistemleri, sabit gazlı söndürme ve algılama ekipmanları.",
     items: [

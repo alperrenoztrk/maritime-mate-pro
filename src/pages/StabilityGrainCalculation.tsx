@@ -251,7 +251,7 @@ export default function StabilityGrainCalculationPage() {
                         variant="secondary"
                         className={`mt-2 w-fit ${stat.status ? "bg-green-100 text-green-800 hover:bg-green-100" : "bg-red-100 text-red-800 hover:bg-red-100"}`}
                       >
-                        {stat.status ? "Uygun" : "Riskli"}
+                        {stat.status ? "Compliant" : "Riskli"}
                       </Badge>
                     )}
                   </div>

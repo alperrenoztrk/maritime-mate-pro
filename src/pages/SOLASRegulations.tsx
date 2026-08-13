@@ -27,7 +27,7 @@ const chapters = [
   },
   {
     id: "II-2",
-    title: "Yangın Güvenliği",
+    title: "Fire Safety",
     summary: "Yangın bölmelendirmesi, algılama/ihbar sistemleri ve sabit-söndürme ekipmanları.",
     checkpoints: [
       "Yangın zon planı ve ekipman yerleri köprüüstünde güncel",

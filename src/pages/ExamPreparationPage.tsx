@@ -59,7 +59,7 @@ const examModules = [
   },
   {
     id: "navigation",
-    title: "Seyir",
+    title: "Navigation",
     icon: Compass,
     color: "from-emerald-500 to-teal-500",
     bgColor: "bg-emerald-500/10",

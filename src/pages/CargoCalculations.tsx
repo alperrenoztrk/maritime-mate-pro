@@ -19,8 +19,8 @@ export default function CargoCalculationsPage() {
   return (
     <MobileLayout>
       <CalculationGridScreen
-        eyebrow="Yük Elleçleme ve İstifleme"
-        title="Yük Elleçleme ve İstifleme"
+        eyebrow="Cargo Handling and Stowage"
+        title="Cargo Handling and Stowage"
       >
         <div className="space-y-6">
           <div className="flex justify-end">

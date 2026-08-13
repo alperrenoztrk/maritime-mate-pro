@@ -7,7 +7,7 @@ const safetyRules = [
     title: "SOLAS Bölüm II-2 - Yangın Güvenliği",
     icon: Flame,
     rules: [
-      "Yangın algılama ve alarm sistemleri zorunludur.",
+      "Fire detection and alarm systems are mandatory.",
       "Yangın söndürme sistemleri (FFA) eksiksiz olmalıdır.",
       "Yangın kapıları ve bölmeleri düzenli kontrol edilmelidir.",
       "Yangın planları görünür yerlerde asılı olmalıdır.",
@@ -31,7 +31,7 @@ const safetyRules = [
     rules: [
       "DOC (Document of Compliance) şirket için geçerli olmalıdır.",
       "SMC (Safety Management Certificate) gemi için geçerli olmalıdır.",
-      "DPA (Designated Person Ashore) atanmış olmalıdır.",
+      "A DPA (Designated Person Ashore) must be appointed.",
       "Acil durum prosedürleri dokümante edilmelidir.",
       "İç denetimler yıllık olarak yapılmalıdır."
     ]
@@ -40,7 +40,7 @@ const safetyRules = [
     title: "ISPS Kodu - Güvenlik",
     icon: Scale,
     rules: [
-      "ISSC (International Ship Security Certificate) geçerli olmalıdır.",
+      "The ISSC (International Ship Security Certificate) must be valid.",
       "SSP (Ship Security Plan) onaylı ve uygulanıyor olmalıdır.",
       "SSO (Ship Security Officer) atanmış olmalıdır.",
       "Güvenlik tatbikatları düzenli yapılmalıdır.",

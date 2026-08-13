@@ -7,7 +7,7 @@ const cargoRules = [
     title: "IMSBC Kodu",
     icon: FileText,
     rules: [
-      "Transportable Moisture Limit (TML) ve Flow Moisture Point (FMP) kontrolleri zorunludur.",
+      "Transportable Moisture Limit (TML) and Flow Moisture Point (FMP) checks are mandatory.",
       "Kargo sınıflandırması (A, B, C grupları) doğru yapılmalıdır.",
       "Özel taşıma şartları ve tehlikeli özellikler dikkate alınmalıdır.",
       "Shipper's Declaration ve sertifikalar eksiksiz olmalıdır."
@@ -27,8 +27,8 @@ const cargoRules = [
     title: "ISGOTT & Terminal Prosedürleri",
     icon: AlertTriangle,
     rules: [
-      "Gaz ölçümleri manifold açılmadan önce yapılmalıdır.",
-      "Sıcak iş izinleri terminal koordinasyonuyla verilmelidir.",
+      "Gas measurements must be taken before the manifold is opened.",
+      "Hot work permits must be issued in coordination with the terminal.",
       "Manifold bağlantıları ve güvenlik ekipmanları kontrol edilmelidir.",
       "Emergency shutdown prosedürleri hazır olmalıdır."
     ]

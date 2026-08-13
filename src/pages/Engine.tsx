@@ -35,8 +35,8 @@ const Engine = () => {
               accent: "green",
               lines: [
                 { label: "SFOC Interpolasyon", formula: "SFOC = a × Load² + b × Load + c" },
-                { label: "Yakıt Tüketimi", formula: "FC = Power × SFOC / 1000" },
-                { label: "Günlük Tüketim", formula: "Daily = FC × 24" },
+                { label: "Fuel Consumption", formula: "FC = Power × SFOC / 1000" },
+                { label: "Daily Consumption", formula: "Daily = FC × 24" },
               ],
             },
             {
@@ -45,16 +45,16 @@ const Engine = () => {
               lines: [
                 { label: "Isı Değişim Alanı", formula: "A = Q / (U × LMTD)" },
                 { label: "LMTD", formula: "LMTD = (ΔT₁ - ΔT₂) / ln(ΔT₁/ΔT₂)" },
-                { label: "Isı Yükü", formula: "Q = m × cp × ΔT" },
+                { label: "Heat Load", formula: "Q = m × cp × ΔT" },
               ],
             },
             {
               title: "Emisyon Formülleri",
               accent: "red",
               lines: [
-                { label: "NOx Emisyonu", formula: "NOx = EF × FC × CF" },
-                { label: "SOx Emisyonu", formula: "SOx = FC × S% × 2" },
-                { label: "CO₂ Emisyonu", formula: "CO₂ = FC × CF × 44/12" },
+                { label: "NOx Emission", formula: "NOx = EF × FC × CF" },
+                { label: "SOx Emission", formula: "SOx = FC × S% × 2" },
+                { label: "CO₂ Emission", formula: "CO₂ = FC × CF × 44/12" },
               ],
             },
             {

@@ -4,67 +4,67 @@ import { Sigma, Anchor, Wind, Ship } from "lucide-react";
 
 const seamanshipFormulas = [
   {
-    title: "Palamar Çalışma Yükü",
+    title: "Mooring Working Load",
     icon: Anchor,
-    formula: "Çalışma Yükü (kN) = (SWL × Güvenlik Katsayısı) / 1000",
+    formula: "Working Load (kN) = (SWL × Safety Factor) / 1000",
     variables: [
       "SWL: Safe Working Load (kg)",
-      "Güvenlik Katsayısı: 0.55 - 0.60 (standart)"
+      "Safety factor: 0.55 - 0.60 (standard)"
     ],
-    note: "MBL (Minimum Breaking Load) = SWL / 0.55 yaklaşık değeri kullanılabilir."
+    note: "The approximation MBL (Minimum Breaking Load) = SWL / 0.55 may be used."
   },
   {
-    title: "Rüzgâr Kuvveti",
+    title: "Wind Force",
     icon: Wind,
     formula: "F = 0.613 × Cd × A × V²",
     variables: [
       "F: Kuvvet (N)",
-      "Cd: Sürtünme katsayısı (tipik 1.0-1.3)",
-      "A: Rüzgâra maruz cephe alanı (m²)",
-      "V: Rüzgâr hızı (m/s)"
+      "Cd: drag coefficient (typically 1.0-1.3)",
+      "A: frontal area exposed to the wind (m²)",
+      "V: wind speed (m/s)"
     ],
-    note: "kN için sonucu 1000'e bölün."
+    note: "Divide the result by 1000 for kN."
   },
   {
-    title: "Zincir Katenary Eğimi",
+    title: "Chain Catenary Slope",
     icon: Ship,
     formula: "T = W × sinh(s / a)",
     variables: [
       "T: Zincir gerilimi",
-      "W: Birim uzunluk ağırlığı (kg/m)",
+      "W: weight per unit length (kg/m)",
       "s: Yatay mesafe",
       "a: Katenary parametresi"
     ],
-    note: "Katenary analizi karmaşık hesap gerektirir; pratik için tablolar kullanılır."
+    note: "Catenary analysis requires complex calculation; tables are used in practice."
   },
   {
     title: "Demir Tutma Kuvveti",
     icon: Anchor,
-    formula: "Holding Power = Demir Ağırlığı × Tutma Katsayısı",
+    formula: "Holding Power = Anchor Weight × Holding Coefficient",
     variables: [
-      "Demir Ağırlığı: kg",
-      "Tutma Katsayısı: 2-12 (zemin tipine göre)"
+      "Anchor weight: kg",
+      "Holding coefficient: 2-12 (by seabed type)"
     ],
-    note: "Çamur: 2-4, Kum: 5-8, Kil: 6-12"
+    note: "Mud: 2-4, sand: 5-8, clay: 6-12"
   },
   {
-    title: "Römorkör Bollard Pull",
+    title: "Tug Bollard Pull",
     icon: Ship,
-    formula: "Gerekli BP = (Δ × V²) / K",
+    formula: "Required BP = (Δ × V²) / K",
     variables: [
-      "Δ: Gemi deplasmanı (ton)",
-      "V: İstenen hız (knot)",
-      "K: Katsayı (yaklaşık 1000-1500)"
+      "Δ: vessel displacement (tonnes)",
+      "V: required speed (knots)",
+      "K: coefficient (approximately 1000-1500)"
     ],
-    note: "Gerçek hesaplar direnci de içermelidir."
+    note: "Real calculations must also include the resistance."
   },
   {
     title: "Scope Ratio",
     icon: Anchor,
-    formula: "Scope = Zincir Uzunluğu / Su Derinliği",
+    formula: "Scope = Cable Length / Water Depth",
     variables: [
-      "Normal koşullar: 5:1 - 7:1",
-      "Fırtına koşulları: 10:1 veya daha fazla"
+      "Normal conditions: 5:1 - 7:1",
+      "Storm conditions: 10:1 or more"
     ],
     note: "Daha uzun scope = daha iyi tutma kuvveti"
   }
@@ -77,13 +77,13 @@ export default function SeamanshipFormulasPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Sigma className="h-4 w-4" />
-            Gemicilik Formülleri
+            Seamanship Formulas
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
-            Gemicilik Formülleri
+            Seamanship Formulas
           </h1>
         </div>
 
@@ -103,7 +103,7 @@ export default function SeamanshipFormulasPage() {
                   </pre>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium">Değişkenler:</p>
+                  <p className="text-sm font-medium">Variables:</p>
                   <ul className="space-y-1">
                     {formula.variables.map((variable, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">

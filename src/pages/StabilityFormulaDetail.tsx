@@ -9,102 +9,103 @@ type Detail = {
   group: string;
   content: string;
   /**
-   * Formülün geometrisini gösteren diyagram. Bir formül neyin hesaplandığını
-   * söyler ama neye benzediğini söylemez — GZ eğrisinin şekli, serbest yüzeyin
-   * etkisi veya FWA'nın load line markası üzerindeki yeri ancak çizimle anlaşılır.
+   * A diagram showing the geometry of the formula. A formula says what is being
+   * calculated but not what it looks like — the shape of the GZ curve, the effect
+   * of a free surface or where the FWA sits on the load line mark are only
+   * understood from a drawing.
    */
   image?: string;
   imageAlt?: string;
 };
 
 const details: Record<string, Detail> = {
-  // 1. Giriş
+  // 1. Introduction
   "giris": {
-    title: "1. Giriş – Hogging & Sagging Tespiti",
+    title: "1. Introduction – Identifying Hogging and Sagging",
     group: "Sign in",
     content: `Hogging & Sagging Tespiti:
 Hogging: (dF + dA)/2 > dM
 Sagging: (dF + dA)/2 < dM`,
   },
 
-  // 2. Enine Denge Hesapları
+  // 2. Transverse Equilibrium Calculations
   "moment-kg": {
-    title: "2.1. Moment ve KG Hesapları",
-    group: "Enine Denge Hesapları",
+    title: "2.1. Moment and KG Calculations",
+    group: "Transverse Equilibrium Calculations",
     image: "/diagrams/stability/metasantr-gm.svg",
     imageAlt: "K, G, B and M on the midship section, and GM = KM − KG",
-    content: `Toplam Moment:
-Moment = Ağırlık × KG Mesafesi
+    content: `Total moment:
+Moment = Weight × KG distance
 
-Yeni KG:
-KGyeni = Toplam Moment / Toplam Ağırlık
+New KG:
+KG_new = Total moment / Total weight
 
-GM Hesaplama:
+GM calculation:
 GM = KM − KG`,
   },
   "gm-shifting": {
-    title: "2.2. Shifting ile GM Değişimi",
-    group: "Enine Denge Hesapları",
+    title: "2.2. GM Change from Shifting",
+    group: "Transverse Equilibrium Calculations",
     image: "/diagrams/agirlik-merkezi.svg",
     imageAlt: "How the centre of gravity shifts when a weight is moved",
-    content: `GM Değişimi:
+    content: `GM change:
 ΔGM = (w × d) / Δ`,
   },
   "meyil-acisi": {
-    title: "2.3. Meyil Açısı Hesaplama",
-    group: "Enine Denge Hesapları",
+    title: "2.3. Heel Angle Calculation",
+    group: "Transverse Equilibrium Calculations",
     image: "/diagrams/dogrultma-kolu.svg",
     imageAlt: "Righting lever GZ at an angle of heel",
-    content: `GZ Kolu:
+    content: `Righting lever:
 GZ = (w × y) / Δ
 
-Meyil Açısı:
+Heel angle:
 	an(θ) = GZ / GM`,
   },
   "kreyn-gm": {
-    title: "2.4. Bumba/Kreyn ile GM Değişimi",
-    group: "Enine Denge Hesapları",
+    title: "2.4. GM Change with a Derrick/Crane",
+    group: "Transverse Equilibrium Calculations",
     image: "/diagrams/agirlik-merkezi.svg",
     imageAlt: "Weight lifted on a derrick acts at the head, raising G",
-    content: `GM Azalması:
-GG₁ = (w × (hcunda − hyük)) / Δ`,
+    content: `GM reduction:
+GG₁ = (w × (h_head − h_load)) / Δ`,
   },
   "havuzlama-gm": {
     title: "2.5. Havuzlamada Kritik GM",
-    group: "Enine Denge Hesapları",
+    group: "Transverse Equilibrium Calculations",
     image: "/diagrams/stability/metasantr-gm.svg",
     imageAlt: "Metacentric height, which the upthrust P reduces during docking",
-    content: `P Kuvveti:
+    content: `P force:
 P = (MCT × Trim (cm)) / l
 
-GM Değişimi:
+GM change:
 ΔGM = (P × KM) / Δ`,
   },
 
-  // 3. Boyuna Denge Hesapları
+  // 3. Longitudinal Equilibrium Calculations
   "trim-degisimi": {
-    title: "3.1. Trim Değişimi",
-    group: "Boyuna Denge Hesapları",
+    title: "3.1. Trim Change",
+    group: "Longitudinal Equilibrium Calculations",
     image: "/diagrams/stability/trim.svg",
     imageAlt: "Trim as the difference between forward and after draft",
-    content: `Trim Değişimi:
-ΔTrim = Toplam Moment / MCT`,
+    content: `Trim change:
+ΔTrim = Total moment / MCT`,
   },
   "paralel-batma": {
-    title: "3.2. Paralel Batma/Çıkma",
-    group: "Boyuna Denge Hesapları",
+    title: "3.2. Parallel Sinkage/Rise",
+    group: "Longitudinal Equilibrium Calculations",
     image: "/diagrams/kaldirma-merkezi.svg",
     imageAlt: "Added weight increases displacement and sinks the ship bodily",
     content: `Paralel Batma (cm):
 Batma = w / TPC`,
   },
   "draft-duzeltme": {
-    title: "3.3. Baş/Kıç Draft Düzeltmesi",
-    group: "Boyuna Denge Hesapları",
+    title: "3.3. Forward/Aft Draft Correction",
+    group: "Longitudinal Equilibrium Calculations",
     image: "/diagrams/stability/trim.svg",
     imageAlt: "Distributing the trim between the forward and after draft marks",
-    content: `Baş/Kıç Draft Düzeltmesi:
-Düzeltme = (Mesafe × Trim) / LBD`,
+    content: `Forward/aft draft correction:
+Correction = (Distance × Trim) / LBD`,
   },
 
   // 4. Draft Survey
@@ -116,83 +117,83 @@ Düzeltme = (Mesafe × Trim) / LBD`,
     content: `MMM = (dF + dA + 6 × dM) / 8`,
   },
   "trim-duzeltmeleri": {
-    title: "4.2. Trim Düzeltmeleri",
+    title: "4.2. Trim Corrections",
     group: "Draft Survey",
     image: "/diagrams/stability/trim.svg",
     imageAlt: "Trim and the position of LCF, on which both trim corrections depend",
-    content: `1. Trim Düzeltmesi:
+    content: `First trim correction:
 Δ₁ = (Trim × LCF × TPC × 100) / LBP
 
-2. Trim Düzeltmesi:
+Second trim correction:
 Δ₂ = (Trim² × ΔMCT × 50) / LBP`,
   },
   "yogunluk-duzeltmesi": {
-    title: "4.3. Yoğunluk Düzeltmesi",
+    title: "4.3. Density Correction",
     group: "Draft Survey",
     image: "/diagrams/kaldirma-merkezi.svg",
     imageAlt: "Buoyancy and displacement, which change with water density",
     content: `Δρ = ((ρ / 1.025) − 1) × Δ`,
   },
 
-  // 5. Diğer Hesaplar
+  // 5. Other Calculations
   "duba-tank-hacim": {
-    title: "5.1. Duba/Tank Hacim Hesapları",
-    group: "Diğer Hesaplar",
-    content: `Hacim:
-V = Boy × En × Yükseklik
+    title: "5.1. Barge/Tank Volume Calculations",
+    group: "Other Calculations",
+    content: `Volume:
+V = Length × Breadth × Height
 
-Kütle:
+Mass:
 m = V × ρ`,
   },
   "blok-katsayisi": {
-    title: "5.2. Blok Katsayısı",
-    group: "Diğer Hesaplar",
+    title: "5.2. Block Coefficient",
+    group: "Other Calculations",
     image: "/diagrams/seamanship/gemi-kisimlari.svg",
     imageAlt: "Hull form: the block coefficient compares the underwater volume with its enclosing box",
     content: `Cb = ∇ / (L × B × T)`,
   },
   "fwa-yogunluk": {
-    title: "5.3. Yoğunluk Farkı ve FWA",
-    group: "Diğer Hesaplar",
+    title: "5.3. Density Difference and FWA",
+    group: "Other Calculations",
     image: "/diagrams/seamanship/load-line-isaretleri.svg",
     imageAlt: "Fresh water allowance shown on the load line mark",
     content: `FWA:
 FWA = Δ / (4 × TPC)
 
-Draft Değişimi:
+Draft change:
 ΔT = (FWA × (1025 − ρ)) / 25`,
   },
 
   // 6. SOLAS Stabilite Kriterleri
   "kumelenme-acisi": {
-    title: "6.1. Kümelenme Açısı",
+    title: "6.1. Grain Heeling Angle",
     group: "SOLAS Stabilite Kriterleri",
     content: `θ = (57.3 × GHM) / (Δ × GM)`,
   },
   "gz-kn": {
-    title: "6.2. GZ Kolu (KN Eğrileri)",
+    title: "6.2. Righting Lever (KN Curves)",
     group: "SOLAS Stabilite Kriterleri",
     image: "/diagrams/stability/gz-egrisi.svg",
     imageAlt: "Curve of statical stability: GZ against angle of heel",
     content: `GZ = KN − KG · sin(θ)`,
   },
   "simpson-alan": {
-    title: "6.3. Simpson ile Alan Hesabı",
+    title: "6.3. Area Calculation by Simpson's Rule",
     group: "SOLAS Stabilite Kriterleri",
     image: "/diagrams/stability/gz-egrisi.svg",
     imageAlt: "Area under the GZ curve, which Simpson's rule integrates",
-    content: `Simpson 1/3 Kuralı:
+    content: `Simpson's 1/3 rule:
 A = (h/3) · (y0 + 4y1 + 2y2 + ··· + yn)
 
-Simpson 3/8 Kuralı:
+Simpson's 3/8 rule:
 A = (3h/8) · (y0 + 3y1 + 3y2 + y3)`,
   },
   "fsm": {
-    title: "6.4. Serbest Yüzey Momenti (FSM)",
+    title: "6.4. Free Surface Moment (FSM)",
     group: "SOLAS Stabilite Kriterleri",
     image: "/diagrams/stability/serbest-yuzey.svg",
     imageAlt: "Free surface in a slack tank and the virtual rise of G",
-    content: `GG₁ = (L × B³) / (12 × V) × (ρsıvı / ρdeniz) × (1 / n²)`,
+    content: `GG₁ = (L × B³) / (12 × V) × (ρ_liquid / ρ_sea) × (1 / n²)`,
   },
   "yalpa-periyodu": {
     title: "6.5. Yalpa Periyodu",
@@ -202,28 +203,28 @@ A = (3h/8) · (y0 + 3y1 + 3y2 + y3)`,
     content: `T = (Cb × B) / √(GM)`,
   },
   "yarali-stabilite": {
-    title: "6.6. Yaralı Stabilite",
+    title: "6.6. Damage Stability",
     group: "SOLAS Stabilite Kriterleri",
     image: "/diagrams/stability/yara-stabilitesi.svg",
     imageAlt: "Bilging a compartment: lost buoyancy and the resulting sinkage",
-    content: `ΔT = w / ((L × B) − (Lyaralı × B))`,
+    content: `ΔT = w / ((L × B) − (L_damaged × B))`,
   },
 
-  // 7. Yük Hesapları
+  // 7. Cargo Calculations
   "musade-yuk": {
-    title: "7.1. Müsaade Edilen Yük",
-    group: "Yük Hesapları",
+    title: "7.1. Permissible Load",
+    group: "Cargo Calculations",
     image: "/diagrams/seamanship/load-line-isaretleri.svg",
     imageAlt: "Load line marks setting the maximum permissible draft",
-    content: `Maksimum Yük Yüksekliği:
-hmax = SF × PL
+    content: `Maximum load height:
+h_max = SF × PL
 
-Maksimum Yük Miktarı:
-wmax = Vambar / SF`,
+Maximum load quantity:
+w_max = V_hold / SF`,
   },
   "sicaklik-yogunluk": {
-    title: "7.2. Sıcaklıkla Yoğunluk Değişimi",
-    group: "Yük Hesapları",
+    title: "7.2. Density Change with Temperature",
+    group: "Cargo Calculations",
     image: "/diagrams/kaldirma-merkezi.svg",
     imageAlt: "Density change alters the buoyancy the ship gets from the water",
     content: `ρ₂ = ρ₁ − ((T₂ − T₁) × k)`,
@@ -239,16 +240,16 @@ export default function StabilityFormulaDetailPage() {
       <div className="space-y-4">
         <div className="text-sm text-muted-foreground flex items-center gap-2">
           <BookOpen className="h-4 w-4" />
-          Stabilite Formülleri
+          Stability Formulas
         </div>
 
         {!detail ? (
           <Card className="shadow">
             <CardHeader>
-              <CardTitle>Sayfa bulunamadı</CardTitle>
+              <CardTitle>Page not found</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-sm">Geçersiz başlık kimliği.</div>
+              <div className="text-sm">Invalid section identifier.</div>
             </CardContent>
           </Card>
         ) : (

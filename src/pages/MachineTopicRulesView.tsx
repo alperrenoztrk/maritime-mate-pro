@@ -12,7 +12,7 @@ export default function MachineTopicRulesView() {
   if (!topic || !rules) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Konu bulunamadı</p>
+        <p className="text-muted-foreground">Topic not found</p>
       </div>
     );
   }

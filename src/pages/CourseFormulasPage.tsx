@@ -4,9 +4,9 @@ import { CourseTopicHeader } from "@/components/courseContent/CourseTopicHeader"
 import { FormulaList } from "@/components/courseContent/FormulaList";
 
 /**
- * Birleşik Formüller sayfası — tüm güverte ve makine konuları için tek tasarım.
- * Tek kaynak registry'den beslenir; her formülün hesaplayıcısı varsa
- * Hesaplamalar sayfasındaki ilgili araca link verir.
+ * Unified Formulas page — a single design for all deck and machine topics.
+ * It is fed from the single source registry; when a formula has a calculator it
+ * links to the corresponding tool on the Calculations page.
  */
 export default function CourseFormulasPage() {
   const { topicKey } = useParams<{ topicKey: string }>();
@@ -15,7 +15,7 @@ export default function CourseFormulasPage() {
   if (!topic) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Konu bulunamadı</p>
+        <p className="text-muted-foreground">Topic not found</p>
       </div>
     );
   }

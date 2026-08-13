@@ -30,7 +30,7 @@ const STATUS_OPTIONS: {
   icon: typeof Check;
   active: string;
 }[] = [
-  { value: "ok", label: "Uygun", icon: Check, active: "bg-emerald-600 text-white" },
+  { value: "ok", label: "Compliant", icon: Check, active: "bg-emerald-600 text-white" },
   {
     value: "deficiency",
     label: "Eksik",

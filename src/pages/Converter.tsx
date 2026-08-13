@@ -18,7 +18,7 @@ const CATEGORIES: {
 }[] = [
   {
     id: "distance",
-    label: "Mesafe",
+    label: "Distance",
     icon: Ruler,
     units: [
       { label: "Deniz Mili (NM)", toBase: (v) => v * 1852, fromBase: (v) => v / 1852 },
@@ -32,7 +32,7 @@ const CATEGORIES: {
   },
   {
     id: "speed",
-    label: "Hız",
+    label: "Speed",
     icon: Gauge,
     units: [
       { label: "Knot (kn)", toBase: (v) => v * 0.514444, fromBase: (v) => v / 0.514444 },
@@ -55,7 +55,7 @@ const CATEGORIES: {
   },
   {
     id: "volume",
-    label: "Hacim",
+    label: "Volume",
     icon: Droplets,
     units: [
       { label: "Metreküp (m³)", toBase: (v) => v, fromBase: (v) => v },
@@ -68,7 +68,7 @@ const CATEGORIES: {
   },
   {
     id: "temperature",
-    label: "Sıcaklık",
+    label: "Temperature",
     icon: Thermometer,
     units: [
       { label: "Celsius (°C)", toBase: (v) => v, fromBase: (v) => v },
@@ -78,7 +78,7 @@ const CATEGORIES: {
   },
   {
     id: "pressure",
-    label: "Basınç",
+    label: "Pressure",
     icon: Wind,
     units: [
       { label: "Bar", toBase: (v) => v, fromBase: (v) => v },

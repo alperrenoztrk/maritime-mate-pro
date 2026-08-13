@@ -6,27 +6,27 @@ const safetyFormulas = [
   {
     title: "Amount of Foam Solution",
     icon: Droplets,
-    formula: "Q = Uygulama Hızı × Alan × Süre",
+    formula: "Q = Application Rate × Area × Duration",
     variables: [
-      "Q: Gerekli köpük miktarı (litre)",
-      "Uygulama Hızı: 6.5 L/m²/dk (makine dairesi)",
-      "Uygulama Hızı: 4.0 L/m²/dk (güverte)",
+      "Q: required foam quantity (litres)",
+      "Application rate: 6.5 L/m²/min (machinery space)",
+      "Application rate: 4.0 L/m²/min (deck)",
       "Alan: Korunan alan (m²)",
-      "Süre: Uygulama süresi (dk)"
+      "Duration: the application time (min)"
     ],
-    note: "SOLAS ve FSS Code'a göre minimum uygulama süreleri belirlenmiştir."
+    note: "The minimum application times are set by SOLAS and the FSS Code."
   },
   {
-    title: "CO₂ Miktarı",
+    title: "CO₂ Quantity",
     icon: Wind,
     formula: "M = 1.5 × V × (ρgas / ρliq)",
     variables: [
-      "M: Gerekli CO₂ miktarı (kg)",
+      "M: required CO₂ quantity (kg)",
       "V: Korunan hacim (m³)",
       "ρgas ≈ 1.84 kg/m³ (20°C'de)",
       "ρliq ≈ 770 kg/m³ (15°C'de)"
     ],
-    note: "Pratik: Makine dairesi için hacmin %40'ı × 1.5 kg/m³"
+    note: "In practice: 40% of the volume × 1.5 kg/m³ for a machinery space"
   },
   {
     title: "Su Sisi Debisi",
@@ -34,43 +34,43 @@ const safetyFormulas = [
     formula: "Q = K × √P",
     variables: [
       "Q: Debi (L/dk)",
-      "K: Nozzle faktörü",
-      "P: Basınç (bar)"
+      "K: nozzle factor",
+      "P: pressure (bar)"
     ],
-    note: "K değeri nozzle tipine göre üretici kataloglarından alınır."
+    note: "The K value is taken from the manufacturer's catalogue for the nozzle type."
   },
   {
     title: "Fire Water Capacity",
     icon: Flame,
-    formula: "Kapasite = Q × t × n",
+    formula: "Capacity = Q × t × n",
     variables: [
       "Q: Her bir hidrant debisi (m³/h)",
-      "t: Minimum çalışma süresi (saat)",
-      "n: Eşzamanlı çalışan hidrant sayısı"
+      "t: minimum operating time (hours)",
+      "n: number of hydrants operating simultaneously"
     ],
-    note: "SOLAS II-2 gerekliliklerine göre hesaplanır."
+    note: "Calculated in accordance with the SOLAS II-2 requirements."
   },
   {
-    title: "Kaçış Süresi Hesabı",
+    title: "Escape Time Calculation",
     icon: Wind,
     formula: "t = L / v",
     variables: [
-      "t: Kaçış süresi (dakika)",
-      "L: Kaçış yolu uzunluğu (m)",
-      "v: Yürüyüş hızı (tipik 1.2 m/s)"
+      "t: escape time (minutes)",
+      "L: escape route length (m)",
+      "v: walking speed (typically 1.2 m/s)"
     ],
-    note: "Engelli personel için hız düşürülerek hesaplanmalıdır."
+    note: "The speed must be reduced for personnel with impaired mobility."
   },
   {
-    title: "Risk Matrisi Skoru",
+    title: "Risk Matrix Score",
     icon: Flame,
-    formula: "Risk = Olasılık × Şiddet",
+    formula: "Risk = Likelihood × Severity",
     variables: [
-      "Olasılık: 1-5 (Nadir - Çok Sık)",
-      "Şiddet: 1-5 (Önemsiz - Felaket)",
+      "Likelihood: 1-5 (rare – very frequent)",
+      "Severity: 1-5 (negligible – catastrophic)",
       "Risk Skoru: 1-25"
     ],
-    note: "15+ = Yüksek Risk, 8-14 = Orta Risk, 1-7 = Düşük Risk"
+    note: "15+ = High Risk, 8-14 = Medium Risk, 1-7 = Low Risk"
   }
 ];
 
@@ -81,13 +81,13 @@ export default function SafetyFormulasPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Sigma className="h-4 w-4" />
-            Emniyet Formülleri
+            Safety Formulas
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 bg-clip-text text-transparent">
-            Emniyet Formülleri
+            Safety Formulas
           </h1>
         </div>
 
@@ -107,7 +107,7 @@ export default function SafetyFormulasPage() {
                   </pre>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium">Değişkenler:</p>
+                  <p className="text-sm font-medium">Variables:</p>
                   <ul className="space-y-1">
                     {formula.variables.map((variable, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">

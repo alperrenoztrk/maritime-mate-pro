@@ -95,7 +95,7 @@ const cargoTopics: CargoMainTopic[] = [
       { id: "draft-reading", title: "Draft okuma teknikleri", hasContent: true },
       { id: "mean-draft", title: "Ortalama draft hesabı", hasContent: true },
       { id: "trim-correction", title: "Trim düzeltmeleri", hasContent: true },
-      { id: "density-correction", title: "Yoğunluk düzeltmesi", hasContent: true },
+      { id: "density-correction", title: "Density correction", hasContent: true },
       { id: "deductibles", title: "Düşülen değerler (Deductibles)", hasContent: true },
     ],
   },
@@ -2298,7 +2298,7 @@ Allowable Heeling Moment, geminin stabilite durumuna göre belirlenir.`,
     },
   },
   "grain-stability-criteria": {
-    title: "Tahıl Stabilite Kriterleri",
+    title: "Grain Stability Criteria",
     introduction: "Grain Code, tahıl taşıyan gemiler için genel stabilite kriterlerinden daha sıkı özel kriterler belirler.",
     content: `GRAIN CODE STABİLİTE KRİTERLERİ:
 
@@ -2801,7 +2801,7 @@ BELGELENDİRME:
     ],
   },
   "hague-visby": {
-    title: "Hague-Visby Kuralları",
+    title: "Hague-Visby Rules",
     introduction: "Hague-Visby Rules, deniz yoluyla yük taşımacılığında taşıyıcının hak ve sorumluluklarını düzenleyen temel uluslararası sözleşmedir.",
     content: `TEMEL İLKELER:
 

@@ -58,7 +58,7 @@ const machinerySystems: MachineSystem[] = [
     specs: ["2-Zamanlı / 4-Zamanlı", "50–80.000 kW", "80–120 RPM"],
   },
   {
-    name: "Yardımcı Makineler",
+    name: "Auxiliary Machinery",
     description: "Jeneratörler, kompresörler ve pompa grupları",
     icon: Factory,
     color: "from-blue-500 to-indigo-600",
@@ -302,12 +302,12 @@ function ComparisonTable() {
         </thead>
         <tbody>
           {[
-            { name: "Dizel", power: "0.5–80+", eff: "Yüksek", effColor: "text-emerald-500", maint: "Düzenli overhaul", use: "Büyük ticari gemiler" },
+            { name: "Dizel", power: "0.5–80+", eff: "High", effColor: "text-emerald-500", maint: "Düzenli overhaul", use: "Büyük ticari gemiler" },
             { name: "Gaz Türbini", power: "5–40", eff: "Kısmi ↓", effColor: "text-amber-500", maint: "Yüksek maliyet", use: "Savaş gemisi, feribot" },
             { name: "Buhar Türbini", power: "10–50", eff: "Orta", effColor: "text-amber-500", maint: "Kazan bakımı", use: "LNG taşıyıcı, buz kıran" },
-            { name: "Nükleer", power: "50–200+", eff: "Yüksek", effColor: "text-emerald-500", maint: "Özel lisans", use: "Uçak gemisi, denizaltı" },
+            { name: "Nükleer", power: "50–200+", eff: "High", effColor: "text-emerald-500", maint: "Özel lisans", use: "Uçak gemisi, denizaltı" },
             { name: "Dizel-Elektrik", power: "1–30", eff: "good", effColor: "text-emerald-500", maint: "Batarya bakımı", use: "DP, kruvaziyer" },
-            { name: "Dual-Fuel", power: "2–80", eff: "Yüksek", effColor: "text-emerald-500", maint: "FGSS bakımı", use: "LNG, konteyner" },
+            { name: "Dual-Fuel", power: "2–80", eff: "High", effColor: "text-emerald-500", maint: "FGSS bakımı", use: "LNG, konteyner" },
             { name: "Yakıt Hücresi", power: "0.1–5", eff: "Çok yüksek", effColor: "text-emerald-500", maint: "Stack değişimi", use: "Pilot feribot" },
           ].map((row) => (
             <tr key={row.name} className="border-b border-border/30 transition-colors hover:bg-muted/20">

@@ -3,27 +3,27 @@ import { Sigma, Wind, Waves, Thermometer, CloudRain } from "lucide-react";
 
 const meteorologyFormulas = [
   {
-    title: "Gerçek Rüzgâr Hızı",
+    title: "True Wind Speed",
     icon: Wind,
     formula: "V⃗t = V⃗a + V⃗g  ⇒  |Vt| = √(Va² + Vg² + 2·Va·Vg·cos(θ))",
     variables: [
-      "Va: Görünür (apparent) rüzgâr hızı",
-      "Vg: Gemi hızı",
-      "θ: Va vektörü ile gemi hız vektörü arasındaki açı"
+      "Va: apparent wind speed",
+      "Vg: vessel speed",
+      "θ: the angle between the Va vector and the vessel velocity vector"
     ],
-    note: "Not: Tanımlar vektörel olmalı. Eğer θ ‘göreli rüzgârın geldiği yön’ gibi farklı bir referansa göre ölçülürse işaret değişebilir; en güvenlisi V⃗t = V⃗a + V⃗g vektör bağıntısını kullanmaktır."
+    note: "Note: the definitions must be vectorial. If θ is measured against a different reference, such as the direction the relative wind comes from, the sign can change; the safest approach is to use the vector relation V⃗t = V⃗a + V⃗g."
   },
   {
-    title: "Hava Yoğunluğu",
+    title: "Air Density",
     icon: Thermometer,
     formula: "ρ = P / (R · T)",
     variables: [
-      "ρ: Hava yoğunluğu (kg/m³)",
-      "P: Atmosfer basıncı (Pa)",
-      "R: Özgül gaz sabiti = 287 J/kg·K",
-      "T: Mutlak sıcaklık (Kelvin)"
+      "ρ: air density (kg/m³)",
+      "P: atmospheric pressure (Pa)",
+      "R: specific gas constant = 287 J/kg·K",
+      "T: absolute temperature (kelvin)"
     ],
-    note: "Standart koşullarda (15°C, 1013.25 hPa) ρ ≈ 1.225 kg/m³"
+    note: "Under standard conditions (15 °C, 1013.25 hPa) ρ ≈ 1.225 kg/m³"
   },
   {
     title: "Derin Su Dalgaboyu",
@@ -31,55 +31,55 @@ const meteorologyFormulas = [
     formula: "L = (g · T²) / (2π)",
     variables: [
       "L: Dalgaboyu (m)",
-      "g: Yerçekimi ivmesi = 9.81 m/s²",
+      "g: gravitational acceleration = 9.81 m/s²",
       "T: Dalga periyodu (s)",
       "π ≈ 3.14159"
     ],
     note: "Derin su: Derinlik > L/2"
   },
   {
-    title: "Dalga Hızı (Derin Su)",
+    title: "Wave Speed (Deep Water)",
     icon: Waves,
     formula: "C = L / T = (g · T) / (2π) ≈ 1.56 · T",
     variables: [
-      "C: Dalga hızı (m/s)",
+      "C: wave speed (m/s)",
       "L: Dalgaboyu (m)",
       "T: Dalga periyodu (s)"
     ],
     note: "Knot cinsinden: C (kn) ≈ 3.03 · T"
   },
   {
-    title: "Beaufort Rüzgâr Hızı",
+    title: "Beaufort Wind Speed",
     icon: Wind,
     formula: "V = 0.836 · B^1.5",
     variables: [
-      "V: Rüzgâr hızı (m/s)",
-      "B: Beaufort sayısı (0-12)"
+      "V: wind speed (m/s)",
+      "B: Beaufort number (0-12)"
     ],
-    note: "Yaklaşık formül. Beaufort 8 (Gale) ≈ 34-40 knot"
+    note: "Approximate formula. Beaufort 8 (gale) ≈ 34-40 knots"
   },
   {
-    title: "Çiğ Noktası Sıcaklığı",
+    title: "Dew Point Temperature",
     icon: CloudRain,
     formula: "Td ≈ T - ((100 - RH) / 5)",
     variables: [
-      "Td: Çiğ noktası sıcaklığı (°C)",
-      "T: Hava sıcaklığı (°C)",
-      "RH: Bağıl nem (%)"
+      "Td: dew point temperature (°C)",
+      "T: air temperature (°C)",
+      "RH: relative humidity (%)"
     ],
-    note: "Basit yaklaşım formülü. Sis riski: T - Td < 2.5°C"
+    note: "Simple approximation formula. Fog risk: T − Td < 2.5 °C"
   },
   {
-    title: "Deniz Seviyesine İndirgenmiş Basınç",
+    title: "Pressure Reduced to Sea Level",
     icon: Thermometer,
     formula: "P₀ = P · e^( (g·h) / (R·T̄) )",
     variables: [
-      "P₀: Deniz seviyesi basıncı",
-      "P: Ölçülen basınç",
-      "h: Yükseklik (m)",
-      "T̄: Ortalama sıcaklık (K)"
+      "P₀: sea level pressure",
+      "P: measured pressure",
+      "h: height (m)",
+      "T̄: mean temperature (K)"
     ],
-    note: "Yaklaşık: Her 8 m yükseklik için 1 hPa düşüş"
+    note: "Approximately a 1 hPa drop for every 8 m of height"
   }
 ];
 
@@ -90,13 +90,13 @@ export default function MeteorologyFormulasPage() {
         <div className="flex items-center justify-end">
           <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Sigma className="h-4 w-4" />
-            Meteoroloji Formülleri
+            Meteorology Formulas
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-            Meteoroloji Formülleri
+            Meteorology Formulas
           </h1>
         </div>
 
@@ -116,7 +116,7 @@ export default function MeteorologyFormulasPage() {
                   </pre>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium">Değişkenler:</p>
+                  <p className="text-sm font-medium">Variables:</p>
                   <ul className="space-y-1">
                     {formula.variables.map((variable, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">

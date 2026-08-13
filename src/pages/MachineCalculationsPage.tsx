@@ -21,7 +21,7 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Yardımcı Makineler",
+    name: "Auxiliary Machinery",
     detail: "Yardımcı dizel ve acil jeneratörler, ana şafttan tahrikli jeneratör",
     description:
       "Gemi elektriğini sağlayan yardımcı dizel jeneratörler ve acil jeneratör, kritik sistemlerin kesintisiz beslenmesi için yedekli çalışır. Yük paylaşımı ve otomatik devre alma kabiliyetleri önemlidir.",

@@ -1958,7 +1958,7 @@ export default function EnvironmentTopicsPage() {
               </div>
               <div className="grid gap-2 sm:grid-cols-3">
                 {[
-                  { title: "Emisyon Hesaplamaları", href: "/environment/calculations" },
+                  { title: "Emission Calculations", href: "/environment/calculations" },
                   { title: "Emisyon Formülleri", href: "/environment/formulas" },
                   { title: "Tüm Dersler", href: "/lessons" },
                 ].map((resource, index) => (
