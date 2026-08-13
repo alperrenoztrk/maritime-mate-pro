@@ -362,35 +362,8 @@ const Settings = () => {
               </CardContent>
             </Card>
 
-            {/* Haptic feedback */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Vibrate className="w-5 h-5" />
-                  <span data-translatable>Haptic Feedback</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between gap-4">
-                  <Label htmlFor="haptics-toggle" className="flex-1">
-                    <span data-translatable>Vibration on touches</span>
-                    <span className="mt-1 block text-caption font-normal text-muted-foreground" data-translatable>
-                      It only works on the phone app.
-                    </span>
-                  </Label>
-                  <Switch
-                    id="haptics-toggle"
-                    checked={hapticsOn}
-                    onCheckedChange={(checked) => {
-                      setHapticsEnabled(checked);
-                      setHapticsOn(checked);
-                      // Confirm the new state with the thing being toggled.
-                      if (checked) hapticImpact("light");
-                    }}
-                  />
-                </div>
-              </CardContent>
-            </Card>
+
+
 
             {/* Language Settings */}
             <Card>
