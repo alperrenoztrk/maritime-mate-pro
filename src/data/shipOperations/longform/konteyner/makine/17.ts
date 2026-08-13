@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Departure ve emergency",
           paragraphs: [
-            `Limandan ayrılmadan önce (12 saat içinde) main steering test edilir; emergency steering ve haberleşme yıllık tatbikatla doğrulanır. Hidrolik yağ temizliği izlenir.`,
+            `Limandan ayrılmadan önce (12 saat içinde) main steering test edilir; emergency steering ve haberleşme en az üç ayda bir yapılan acil dümen tatbikatıyla doğrulanır (SOLAS V/26.4). Hidrolik yağ temizliği izlenir.`,
           ],
           bullets: [`Departure test`, `Emergency steering yıllık`, `Hidrolik yağ temizliği`],
         },

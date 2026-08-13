@@ -89,7 +89,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.3 Permit-to-Work ve kritik operasyonlar",
           paragraphs: [
             `Permit-to-Work (PTW) sistemi; enclosed space entry, hot work (kaynak/taşlama), aloft work (yüksekte çalışma), overboard work, elektrik izolasyonu (LOTO — lock out tag out) gibi yüksek riskli işlerde zorunludur. İzin, işi yetkilendiren (genelde kaptan veya görevlendirdiği zabit), işi yapan ve doğrulayan kişilerin imzasını taşır; geçerlilik süresi sınırlıdır ve iş bitince kapatılır.`,
-            `Enclosed space entry, denizcilikteki ölümcül kazaların başında gelir. SOLAS III/19 yıllık enclosed space entry ve rescue drill'i zorunlu kılar. PTW öncesi atmosfer ölçümü (O2 %20.9, LEL %0, H2S/CO toleranslarda) yapılır, sürekli havalandırma sağlanır, standby personel ve resüsitasyon ekipmanı hazır tutulur. Kaptan, "test edilmeden hiçbir kapalı alana girilmez" kuralını taviz vermeden uygular.`,
+            `Enclosed space entry, denizcilikteki ölümcül kazaların başında gelir. SOLAS III/19.3.3, giriş veya kurtarma görevi bulunan personel için en az iki ayda bir enclosed space entry ve rescue drill'i zorunlu kılar. PTW öncesi atmosfer ölçümü (O2 %20.9, LEL %0, H2S/CO toleranslarda) yapılır, sürekli havalandırma sağlanır, standby personel ve resüsitasyon ekipmanı hazır tutulur. Kaptan, "test edilmeden hiçbir kapalı alana girilmez" kuralını taviz vermeden uygular.`,
           ],
           callouts: [
             {
@@ -157,7 +157,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Drill ve eğitim frekansları",
           paragraphs: [
-            `SOLAS, belirli drill'leri zorunlu frekanslarda yapmayı emreder: abandon ship ve fire drill her ay (SOLAS III/19); yolcu gemilerinde her hafta. Yeni katılan personel için ise gemiye katıldıktan sonra 24 saat içinde brifing yapılmalıdır. Enclosed space entry/rescue drill en az 2 ayda bir, can kurtarma botu (rescue boat) suya indirme her 3 ayda bir, free-fall lifeboat indirme ise belirlenen aralıklarla yapılır. Kaptan bu takvimi planlar ve drill'lerin "kağıt üzerinde" değil gerçekçi yapılmasını sağlar.`,
+            `SOLAS, belirli drill'leri zorunlu frekanslarda yapmayı emreder: abandon ship ve fire drill her ay (SOLAS III/19.3.2); yolcu gemilerinde her hafta (SOLAS III/30.2). Gemiye katılan personele can kurtarma ve yangın donanımı eğitimi en geç iki hafta içinde verilir (SOLAS III/19.4.1). Enclosed space entry/rescue drill en az 2 ayda bir (III/19.3.3), can filikası suya indirme + manevra en az 3 ayda bir (III/19.3.4.3), kurtarma botu (rescue boat) suya indirme mümkün olduğu ölçüde aylık ve her hâlükârda en az 3 ayda bir (III/19.3.4.4) yapılır. Kaptan bu takvimi planlar ve drill'lerin "kağıt üzerinde" değil gerçekçi yapılmasını sağlar.`,
             `Drill kalitesi, kaptanın imzasını taşır. Etkili bir drill; gerçekçi senaryo, beklenmedik komplikasyon (örn. "bu can salı arızalı, alternatif kullan"), sürelerin ölçülmesi ve sonrasında debrief (değerlendirme) içerir. Drill kayıtlarına "what went well / what to improve" yazılır ve eksiklikler düzeltici aksiyona dönüştürülür. PSC denetçisi, kaydı görmenin ötesinde "şunu göster" diyerek gerçek yetkinlik test edebilir.`,
           ],
           table: {
@@ -167,8 +167,9 @@ const content: CrewTaskLongForm = {
               ["Abandon ship", "Her ay", "SOLAS III/19.3.2"],
               ["Fire drill", "Her ay", "SOLAS III/19.3.2"],
               ["Enclosed space entry & rescue", "En az 2 ayda bir", "SOLAS III/19.3.3"],
-              ["Rescue boat launch", "Mümkünse 3 ayda bir", "SOLAS III/19.3.3.3"],
-              ["Yeni personel brifingi", "Katıldıktan 24 saat içinde", "SOLAS III/19.4"],
+              ["Filika suya indirme + manevra", "En az 3 ayda bir", "SOLAS III/19.3.4.3"],
+              ["Rescue boat launch", "Mümkünse aylık, en az 3 ayda bir", "SOLAS III/19.3.4.4"],
+              ["Yeni personele LSA/FFE eğitimi", "Katıldıktan en geç 2 hafta içinde", "SOLAS III/19.4.1"],
             ],
           },
         },

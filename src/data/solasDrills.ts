@@ -11,8 +11,9 @@ export type SolasDrill = {
 
 /**
  * Periyodik talim başlıkları yalnızca yürürlükteki zorunlu metinlerde kullanılan
- * adlarla verilir. "Genel talim" bir SOLAS talim başlığı değildir; genel acil
- * durum alarmı, ilgili talimin personeli istasyonlarına çağırma yöntemidir.
+ * adlarla verilir. "Genel talim" ve "genel alarm talimi" birer SOLAS talim
+ * başlığı değildir; genel acil durum alarmı bir talimin adı değil, aşağıdaki
+ * talimlerde personeli istasyonlarına çağıran işarettir (SOLAS III/6.4.2).
  */
 export const solasDrills: readonly SolasDrill[] = [
   {
@@ -23,7 +24,7 @@ export const solasDrills: readonly SolasDrill[] = [
     applicability: "Tüm SOLAS gemileri",
     frequency:
       "Yük gemisinde her personel ayda en az bir kez katılır. Yolcu gemisinde talim haftalık yapılır; her personel ayda en az bir kez katılır.",
-    reference: "SOLAS III/19.3.2 ve III/19.4.3; SOLAS II-2/15.2.2; SOLAS III/30.2",
+    reference: "SOLAS III/19.3.2 ve III/19.3.5; SOLAS II-2/15.2.2; SOLAS III/30.2",
     isStandalone: true,
   },
   {
@@ -34,7 +35,7 @@ export const solasDrills: readonly SolasDrill[] = [
     applicability: "Tüm SOLAS gemileri",
     frequency:
       "Yük gemisinde her personel ayda en az bir kez katılır. Yolcu gemisinde talim haftalık yapılır; her personel ayda en az bir kez katılır.",
-    reference: "SOLAS III/19.3.2 ve III/19.4.2; SOLAS III/30.2",
+    reference: "SOLAS III/19.3.2 ve III/19.3.4; SOLAS III/30.2",
     isStandalone: true,
   },
   {
@@ -44,7 +45,7 @@ export const solasDrills: readonly SolasDrill[] = [
     classification: "SOLAS talimi",
     applicability: "Giriş veya kurtarma görevi bulunan personel",
     frequency: "Gemide en az iki ayda bir yapılır; atanmış personel talime katılır.",
-    reference: "SOLAS III/19.3.3 ve III/19.6",
+    reference: "SOLAS III/19.3.3 ve III/19.3.6",
     isStandalone: true,
   },
   {
@@ -86,7 +87,7 @@ export const solasDrills: readonly SolasDrill[] = [
     applicability: "Donanıma ve onaylı muafiyetlere göre",
     frequency:
       "Can filikası atanmış işletme ekibiyle en az üç ayda bir; ayrı kurtarma botu mümkünse aylık, her hâlükârda en az üç ayda bir suya indirilip manevra yaptırılır.",
-    reference: "SOLAS III/19.4.3; MSC.152(78)",
+    reference: "SOLAS III/19.3.4.3 ve III/19.3.4.4",
     isStandalone: false,
   },
 ] as const;

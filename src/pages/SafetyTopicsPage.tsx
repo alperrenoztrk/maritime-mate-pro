@@ -659,13 +659,13 @@ Yangın söndürüldükten sonra sıcak yüzeyler soğumadan bölme açılırsa 
     introduction: "SOLAS III/19.3 gereği yangın tatbikatları düzenli aralıklarla yapılmalı ve tüm mürettebatın katılımı sağlanmalıdır.",
     content: `TATBİKAT SIKLIĞI:
 
-SOLAS Bölüm III, Kural 19.3: Yangın tatbikatı en az ayda bir yapılmalıdır. Herhangi bir limandan kalkışta mürettebatın %25'inden fazlası değişmişse, kalkıştan sonraki 24 saat içinde tatbikat yapılmalıdır.
+SOLAS Bölüm III, Kural 19.3.2: Her mürettebat üyesi ayda en az bir yangın tatbikatına katılmalıdır. Mürettebatın %25'inden fazlası bir önceki ay o gemideki tatbikatlara katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde tatbikat yapılmalıdır.
 
-ZORUNLU TATBİKAT TAKVİMİ (SOLAS III/19.3):
+ZORUNLU TATBİKAT TAKVİMİ (SOLAS III/19.3; yolcu gemilerinde III/30.2):
 - Gemiyi terk (abandon ship) tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
 - Yangın tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
-- Her cankurtarma sandalı denize indirilip suda manevra ettirilmeli: en az 3 ayda 1.
-- Kurtarma botu (rescue boat) denize indirilip manevra ettirilmeli: mümkün olduğunca ayda 1.
+- Her cankurtarma sandalı denize indirilip suda manevra ettirilmeli: en az 3 ayda 1 (III/19.3.4.3).
+- Kurtarma botu (rescue boat) denize indirilip manevra ettirilmeli: mümkün olduğunca ayda 1, her hâlükârda en az 3 ayda 1 (III/19.3.4.4).
 - Serbest düşüşlü (free-fall) sandal: en az 6 ayda 1 fiili veya benzetilmiş (simulated) indirme tatbikatı.
 - Kapalı alana giriş ve kurtarma tatbikatı: en az 2 ayda 1 (SOLAS III/19.3.3).
 - Her mürettebat üyesi 1 ay içinde bir gemiyi terk tatbikatına katılmalıdır.

@@ -152,18 +152,19 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 SOLAS/ISM zorunlu tatbikatlar",
           paragraphs: [
-            `SOLAS Chapter III ve ISM madde 8, düzenli tatbikatları zorunlu kılar: abandon ship ve fire drill her ay (yeni katılan mürettebat için 24 saat içinde), enclosed space entry & rescue drill belirli aralıklarla, ayrıca damage control, oil spill (SOPEP), man overboard, steering gear failure, security (ISPS) ve diğer senaryolar. Kaptan, bu tatbikatların takvimini tutar ve fiilen yapıldığını kayıt altına alır.`,
+            `SOLAS Chapter III ve ISM madde 8, düzenli tatbikatları zorunlu kılar: abandon ship ve fire drill her ay (mürettebatın %25'inden fazlası önceki ay tatbikatlara katılmamışsa limandan ayrılmayı izleyen 24 saat içinde), enclosed space entry & rescue drill en az iki ayda bir, ayrıca damage control, oil spill (SOPEP), man overboard, steering gear failure, security (ISPS) ve diğer senaryolar. Kaptan, bu tatbikatların takvimini tutar ve fiilen yapıldığını kayıt altına alır.`,
             `Tatbikatın amacı kayıt doldurmak değil, kriz anında kas hafızası oluşturmaktır. Bu yüzden iyi tatbikat gerçekçidir: senaryo değiştirilir (her ay aynı "filika indir" rutini ezbere dönüşür), zorluk eklenir (bir kişi "yaralı" sayılır, bir çıkış "kapalı" varsayılır), ve sonrasında dürüst bir debrief yapılır. El Faro ve benzeri kazalar, ezbere ve gerçekçi olmayan tatbikatların kriz anında işe yaramadığını gösterdi.`,
           ],
           table: {
             caption: `Zorunlu Tatbikat Sıklıkları (Tipik)`,
             headers: ["Tatbikat", "Sıklık", "Mevzuat dayanağı"],
             rows: [
-              ["Abandon ship", "Aylık", "SOLAS III/19"],
-              ["Fire drill", "Aylık", "SOLAS III/19"],
-              ["Enclosed space entry & rescue", "Periyodik (≤2 ay)", "SOLAS III/19"],
-              ["Man overboard / rescue boat", "Periyodik", "SOLAS III/19"],
-              ["Steering gear emergency", "Sefer öncesi/periyodik", "SOLAS V/26"],
+              ["Abandon ship", "Aylık", "SOLAS III/19.3.2"],
+              ["Fire drill", "Aylık", "SOLAS III/19.3.2"],
+              ["Enclosed space entry & rescue", "En az 2 ayda bir", "SOLAS III/19.3.3"],
+              ["Rescue boat suya indirme", "Mümkünse aylık, en az 3 ayda bir", "SOLAS III/19.3.4.4"],
+              ["Man overboard", "Şirket SMS'ine göre", "ISM / SMS"],
+              ["Acil dümen tatbikatı", "En az 3 ayda bir", "SOLAS V/26.4"],
               ["Security (ISPS)", "Periyodik", "ISPS / SOLAS XI-2"],
               ["SOPEP / pollution", "Periyodik", "MARPOL / SMS"],
             ],

@@ -252,14 +252,14 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.1 Düzenli drill ve gerçekçilik",
           paragraphs: [
-            `Acil durum becerileri ancak düzenli, gerçekçi tatbikatlarla canlı kalır. SOLAS III/19 gereği yangın ve abandon ship drill'leri ayda en az bir kez, kapalı alan kurtarma drill'i ise yıllık yapılır. "Kâğıt üzerinde" yapılan, herkesin sırayla beklediği drill işe yaramaz; gerçek koşulları (duman makinesi, karartma, gerçek ekipman) taklit eden drill öğretir.`,
+            `Acil durum becerileri ancak düzenli, gerçekçi tatbikatlarla canlı kalır. SOLAS III/19 gereği yangın ve abandon ship drill'leri ayda en az bir kez (III/19.3.2), kapalı alan giriş ve kurtarma drill'i ise en az iki ayda bir (III/19.3.3) yapılır. "Kâğıt üzerinde" yapılan, herkesin sırayla beklediği drill işe yaramaz; gerçek koşulları (duman makinesi, karartma, gerçek ekipman) taklit eden drill öğretir.`,
             `Yağcı, her drill'i kendi görevini gerçek bir acil durummuş gibi prova etme fırsatı olarak görür: ekipmanı bulma süresi, SCBA takma, valf kapatma, kaçış yolu. Drill sonrası debrief'te çıkan eksikler (ekipman arızası, görev belirsizliği) raporlanır ve düzeltilir.`,
           ],
           callouts: [
             {
               type: "regulation",
               title: "SOLAS III/19 — Drills ve eğitim",
-              text: `Gemiadamları, acil durum ekipmanını kullanma ve görevlerini yerine getirme konusunda düzenli tatbikatlarla eğitilir. Yangın ve terk tatbikatları ayda en az bir kez yapılır; yeni katılanlar ilk 24 saat içinde temel familiarization alır.`,
+              text: `Gemiadamları, acil durum ekipmanını kullanma ve görevlerini yerine getirme konusunda düzenli tatbikatlarla eğitilir. Yangın ve terk tatbikatları ayda en az bir kez yapılır; gemiye katılan personele can kurtarma ve yangın donanımı eğitimi en geç iki hafta içinde verilir (SOLAS III/19.4.1). Göreve başlamadan önceki emniyet familiarizasyonu ise STCW ve ISM kapsamındadır.`,
             },
           ],
         },

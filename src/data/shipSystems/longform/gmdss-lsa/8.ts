@@ -70,7 +70,7 @@ const content: ShipSystemLongForm = {
           table: {
             headers: ["İşlem", "Periyot"],
             rows: [
-              ["Abandon ship drill", "Aylık (yolcuda haftalık brifing)"],
+              ["Abandon ship drill", "Aylık (yolcu gemisinde haftalık)"],
               ["Filika denize indirme", "3 ayda bir (rotasyonla)"],
               ["Motor çalıştırma", "Haftalık (kısa)"],
               ["On-load release yük testi", "5 yıl + yıllık muayene"],

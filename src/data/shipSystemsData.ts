@@ -3097,7 +3097,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Söndürücüye yakın elektrik tablosu varsa CO₂/kuru kimyasal seçilmeli; su yasaktır.",
           "CO₂ kapalı küçük hacimde kullanırsa boğulma riski vardır.",
           "Kuru kimyasal sonrası elektronik ekipman kuruluk + temizlik gerektirir.",
-          "Personel yıllık tatbikatla söndürücü kullanımı konusunda eğitilmeli."
+          "Söndürücü kullanımı eğitimi SOLAS III/19.4 kapsamında verilir: gemiye katılan personele en geç iki hafta içinde, tüm donanım ise iki aylık dönemler içinde kapsanacak şekilde."
         ]
       },
       {

@@ -72,13 +72,13 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "general",
     title: "Genel Acil Durum",
-    shortTitle: "Genel Alarm",
+    shortTitle: "Genel Acil Durum",
     signalClass: "solas",
     signalLabel: "SOLAS genel acil durum alarmı",
     signal:
       "Gemi düdüğü/sireni ve dahili alarm sistemiyle yedi veya daha fazla kısa, ardından bir uzun ses; PA anonsu olayın türünü ve yerini bildirir.",
     description:
-      "Personel, işini emniyete alarak kendi role cetvelinde yazılı ilk istasyona gider, uygun PPE'yi kuşanır, yoklama veya durum raporu verir ve komuta zincirine girer.",
+      "Genel acil durum alarmı bir talim adı değil, yangın/gemiyi terk/kapalı mahal gibi olaylarda personeli istasyonlara çağıran ortak işarettir. Personel, işini emniyete alarak kendi role cetvelinde yazılı ilk istasyona gider, uygun PPE'yi kuşanır, yoklama veya durum raporu verir ve komuta zincirine girer.",
     firstActions: [
       "Yapılan işi emniyetli biçimde durdur; sıcak işi, yakıt transferini ve açık ekipmanı prosedüre göre emniyete al.",
       "Role cetvelinde yazılı istasyona en kısa emniyetli yoldan git; kamaraya yalnızca cetvel veya anons bunu gerektiriyorsa uğra.",
@@ -110,7 +110,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "abandon",
     title: "Gemiyi Terk",
-    shortTitle: "Ship Abandon",
+    shortTitle: "Gemiyi Terk",
     signalClass: "master-order",
     signalLabel: "Yalnızca Kaptanın açık emri",
     signal:
@@ -167,7 +167,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "enclosed-space",
     title: "Kapalı Mahal Kurtarma",
-    shortTitle: "Enclosed Space",
+    shortTitle: "Kapalı Mahal",
     signalClass: "ship-specific",
     signalLabel: "Lokal imdat çağrısı + gemiye özel alarm/PA",
     signal:
@@ -186,7 +186,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "pollution",
     title: "Petrol / Yakıt Döküntüsü",
-    shortTitle: "Oil Pollution",
+    shortTitle: "Döküntü",
     signalClass: "ship-specific",
     signalLabel: "Köprüüstü bildirimi + SOPEP/SMPEP çağrısı",
     signal:

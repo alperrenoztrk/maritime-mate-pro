@@ -170,7 +170,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 Drill ve familiarization kayıtları",
           paragraphs: [
-            `SOLAS gereği drill'ler (abandon ship ve fire haftalık/aylık, enclosed space yıllık vb.) zamanında yapılır ve detaylı kaydedilir; senaryo, katılımcılar, süre, tespit edilen eksikler ve düzeltmeler yazılır. "Yapıldı" yazmak yetmez; denetçi kalite ve gerçekliği sorgular. Yeni gelen personelin familiarization kaydı da hazır olmalıdır.`,
+            `SOLAS gereği drill'ler (abandon ship ve fire aylık — yolcu gemisinde haftalık, enclosed space entry/rescue en az iki ayda bir vb.) zamanında yapılır ve detaylı kaydedilir; senaryo, katılımcılar, süre, tespit edilen eksikler ve düzeltmeler yazılır. "Yapıldı" yazmak yetmez; denetçi kalite ve gerçekliği sorgular. Yeni gelen personelin familiarization kaydı da hazır olmalıdır.`,
           ],
         },
       ],

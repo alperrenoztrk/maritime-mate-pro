@@ -631,9 +631,9 @@ export const konteyner: ShipType = {
             "Mürettebatın acil durumlara hazır olmasını sağlamak için zorunlu drill periyotlarına göre tatbikatların yapılması.",
           procedure: [
             "Aylık fire drill ve abandon ship drill (her crew member 1 ayda 1 kez katılmalı).",
-            "Yeni katılan personel için boarding'ten 24 saat içinde familiarisation.",
-            "Lifeboat suya 3 ayda 1 kez indirilmeli (SOLAS III/19.3.3.3).",
-            "Free-fall lifeboat için yıllık serbest düşüş veya simülasyon.",
+            "Gemiye katılan personele en geç 2 hafta içinde LSA/FFE eğitimi (SOLAS III/19.4.1).",
+            "Lifeboat suya 3 ayda 1 kez indirilmeli (SOLAS III/19.3.4.3).",
+            "Free-fall lifeboat için en az 6 ayda 1 serbest düşüş veya simülasyon.",
             "Drill scenario, observations ve corrective actions raporlanır.",
           ],
           regulations: [

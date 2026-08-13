@@ -245,7 +245,8 @@ export default function MusterListPage() {
               <div>
                 <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Talim Başlıkları</h2>
                 <p className="mt-1 text-micro leading-relaxed text-muted-foreground">
-                  Periyodik zorunlu adlandırmalar; “Genel Talim” bir SOLAS talim başlığı değildir.
+                  Periyodik zorunlu adlandırmalar; “Genel Talim” veya “Genel Alarm Talimi” bir SOLAS
+                  talim başlığı değildir. Genel acil durum alarmı, bu talimleri başlatan işarettir.
                 </p>
               </div>
             </div>

@@ -101,7 +101,7 @@ const content: CrewTaskLongForm = {
             {
               type: "warning",
               title: "Enclosed space — ölümcül risk",
-              text: `Sintine, double-bottom, kojferdam, COW tankı gibi kapalı hacimlere giriş enclosed space entry permit ister. O2 (%20,9 hedef), LEL, H2S, CO ölçülür; standby personel ve resüsitasyon ekipmanı hazır olur. SOLAS III/19 kapsamında yıllık enclosed space rescue drill zorunludur.`,
+              text: `Sintine, double-bottom, kojferdam, COW tankı gibi kapalı hacimlere giriş enclosed space entry permit ister. O2 (%20,9 hedef), LEL, H2S, CO ölçülür; standby personel ve resüsitasyon ekipmanı hazır olur. SOLAS III/19.3.3 kapsamında bu görevi olan personel için en az iki ayda bir enclosed space entry ve rescue drill zorunludur.`,
             },
           ],
         },

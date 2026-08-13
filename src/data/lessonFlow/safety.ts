@@ -491,7 +491,7 @@ export const safetyLessonFlows: LessonFlow[] = [
           "Hiç gerekmez",
         ],
         correctAnswer: 0,
-        explanation: "Talimler ayda en az bir kez; yeni mürettebat genelde 24 saat içinde eğitilir.",
+        explanation: "Her mürettebat üyesi ayda en az bir yangın ve bir gemi terk talimine katılır (SOLAS III/19.3.2); gemiye katılan personele en geç iki hafta içinde eğitim verilir (III/19.4.1).",
       },
     ],
   },

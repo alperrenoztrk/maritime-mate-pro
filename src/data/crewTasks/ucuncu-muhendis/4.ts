@@ -121,7 +121,7 @@ const content: CrewTaskLongForm = {
             {
               type: "regulation",
               title: "IMO Res. A.1050(27) & SOLAS III/19",
-              text: `Kapalı alan girişleri için yazılı izin, atmosfer testi, standby personel ve yıllık enclosed space rescue tatbikatı zorunludur. Sıcak çalışma kapalı alanda yapılacaksa hem entry hem hot work permit birlikte gerekir.`,
+              text: `Kapalı alan girişleri için yazılı izin, atmosfer testi, standby personel ve en az iki ayda bir enclosed space entry/rescue tatbikatı (SOLAS III/19.3.3) zorunludur. Sıcak çalışma kapalı alanda yapılacaksa hem entry hem hot work permit birlikte gerekir.`,
             },
           ],
         },

@@ -219,7 +219,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.2 Enclosed space entry disiplini",
           paragraphs: [
-            `Hold, tank ve kofferdam gibi kapalı alanlara giriş enclosed space entry permit ile yapılır. O2, LEL, H2S, CO ölçümleri sürekli yapılır; standby personel ve rescue plan zorunludur. SOLAS III/19 kapsamında yıllık enclosed space drill yapılır. Kaptan permit sisteminin işlediğini denetler.`,
+            `Hold, tank ve kofferdam gibi kapalı alanlara giriş enclosed space entry permit ile yapılır. O2, LEL, H2S, CO ölçümleri sürekli yapılır; standby personel ve rescue plan zorunludur. SOLAS III/19.3.3 kapsamında en az iki ayda bir enclosed space entry ve rescue drill yapılır. Kaptan permit sisteminin işlediğini denetler.`,
           ],
         },
       ],

@@ -205,7 +205,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.2 Standby kişi, rescue plan ve iletişim",
           paragraphs: [
             `Her kapalı alan girişinde dışarıda bir standby kişi bulunur; içeridekiyle sürekli iletişim kurar, lifeline tutar ve acil durumda alarm verip kurtarmayı başlatır. Rescue plan önceden hazırlanır: kurtarma ekipmanı (tripod, vinç, harness, SCBA) hazır, kurtarma yolu açık tutulur.`,
-            `Yağcı, kapalı alanda çalışırken zaman sınırını, kaçış yolunu ve iletişim sinyallerini bilir. Gaz alarmı çaldığında veya kendini kötü hissettiğinde derhal çıkar; tereddüt etmez. SOLAS III/19 kapsamında yıllık kapalı alan kurtarma tatbikatı bu becerileri canlı tutar.`,
+            `Yağcı, kapalı alanda çalışırken zaman sınırını, kaçış yolunu ve iletişim sinyallerini bilir. Gaz alarmı çaldığında veya kendini kötü hissettiğinde derhal çıkar; tereddüt etmez. SOLAS III/19.3.3 kapsamında en az iki ayda bir yapılan kapalı alan giriş ve kurtarma tatbikatı bu becerileri canlı tutar.`,
           ],
           callouts: [
             {

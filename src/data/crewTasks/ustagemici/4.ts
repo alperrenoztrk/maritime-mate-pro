@@ -59,7 +59,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Zorunlu drill türleri ve periyotları",
           paragraphs: [
-            `SOLAS, gemiyi terk (abandon ship) ve yangın (fire) tatbikatlarının her ay, kısa sürede mürettebat değişiyorsa daha sık yapılmasını ister. Yeni katılan personel gemiye katıldıktan sonra 24 saat içinde tatbikata katılmalıdır. Ayrıca enclosed space rescue, man overboard, kirlilik (pollution) ve güvenlik (ISPS) tatbikatları belirli periyotlarla yapılır.`,
+            `SOLAS III/19.3.2, gemiyi terk (abandon ship) ve yangın (fire) tatbikatlarına her mürettebat üyesinin ayda en az bir kez katılmasını ister; mürettebatın %25'inden fazlası bir önceki ay gemideki tatbikatlara katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde tatbikat yapılır. Kapalı mahal giriş ve kurtarma tatbikatı en az iki ayda bir (III/19.3.3), güvenlik (ISPS) tatbikatı en az üç ayda bir yapılır; man overboard ve kirlilik senaryoları şirket SMS'ine göre planlanır.`,
             `Tatbikat gerçek gibi yürütülür: alarm verilir, mürettebat muster'a toplanır, isim sayımı (head count) yapılır, ekipler görevini fiilen uygular (filika indirme hazırlığı, yangın hortumu açma, boundary cooling). AB, tatbikatı "zaman kaybı" görmez; gerçek acilde hayat kurtaracak refleksi burada kazanır.`,
           ],
           table: {
@@ -68,8 +68,8 @@ const content: CrewTaskLongForm = {
             rows: [
               ["Abandon ship (gemiyi terk)", "Aylık", "Filika ekibi, sal hazırlama"],
               ["Fire drill (yangın)", "Aylık", "Yangın partisi / boundary cooling"],
-              ["Enclosed space rescue", "Periyodik (örn. 2 ayda bir)", "Standby / lifeline / kurtarma"],
-              ["Man overboard", "Periyodik", "Gözcü, can simidi, kurtarma teknesi"],
+              ["Enclosed space entry & rescue", "En az 2 ayda bir (SOLAS III/19.3.3)", "Standby / lifeline / kurtarma"],
+              ["Man overboard", "Şirket SMS'ine göre periyodik", "Gözcü, can simidi, kurtarma teknesi"],
               ["Kirlilik (SOPEP)", "Periyodik", "Emici/bariyer, scupper kapama"],
             ],
           },

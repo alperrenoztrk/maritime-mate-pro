@@ -24,13 +24,13 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 SOLAS III/19 ve periyotlar",
           paragraphs: [
-            `SOLAS III/19, her mürettebat üyesinin ayda en az bir abandon ship drill ve bir fire drill'e katılmasını şart koşar. Mürettebatın %25'inden fazlası bir önceki ayda gemideki drill'lere katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde abandon ship drill yapılmalıdır. Bu kural, personel devri yüksek gemilerde Safety Officer'ın drill planını sefer takvimine göre kurmasını zorunlu kılar.`,
-            `Her abandon ship drill'de muster, can yeleğinin doğru giyilmesi, filika/sal istasyonlarında toplanma, embarkation prosedürünün anlatılması ve en az bir filikanın indirilmesi yer alır. Filikalar 3 ayda bir suya indirilip manevra yaptırılır (free-fall filikalarda serbest düşüş veya simulated launch). Rescue boat ise her ay (mümkünse) suya indirilip çalıştırılır.`,
+            `SOLAS III/19, her mürettebat üyesinin ayda en az bir abandon ship drill ve bir fire drill'e katılmasını şart koşar. Mürettebatın %25'inden fazlası bir önceki ayda gemideki drill'lere katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde abandon ship ve fire drill yapılmalıdır. Bu kural, personel devri yüksek gemilerde Safety Officer'ın drill planını sefer takvimine göre kurmasını zorunlu kılar.`,
+            `Her abandon ship drill'de muster, can yeleğinin doğru giyilmesi, filika/sal istasyonlarında toplanma, embarkation prosedürünün anlatılması ve en az bir filikanın indirilmesi yer alır. Filikalar 3 ayda bir suya indirilip manevra yaptırılır (free-fall filikalarda serbest düşüş veya simulated launch). Rescue boat ise mümkün olduğu ölçüde her ay, her hâlükârda en az 3 ayda bir suya indirilip manevra yaptırılır (SOLAS III/19.3.4.4).`,
           ],
           callouts: [
             {
               type: "regulation",
-              title: "SOLAS III/19.3.4 — Filika indirme",
+              title: "SOLAS III/19.3.4.3 — Filika indirme",
               text: `Her abandon ship drill'de farklı bir filika, mümkün olduğunca rotasyonla suya indirilmeli ve manevra yaptırılmalıdır; en az 3 ayda bir her filika personelle indirilerek suda manevra ettirilmelidir.`,
             },
           ],
@@ -38,7 +38,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.2 Drill çeşitleri ve özel talimler",
           paragraphs: [
-            `Aylık zorunlu abandon ship ve fire drill'lerin yanında; enclosed space entry & rescue drill (en az 2 ayda bir, SOLAS III/19.3.6.2), man overboard (MOB), kcollision/grounding, oil spill (SOPEP), steering gear failure, blackout, security (ISPS) ve medical emergency drill'leri de SMS gereği periyodik yapılır. Safety Officer bu talimlerin tümünün takvimini tek bir matriste izler.`,
+            `Aylık zorunlu abandon ship ve fire drill'lerin yanında; enclosed space entry & rescue drill (en az 2 ayda bir, SOLAS III/19.3.3), man overboard (MOB), collision/grounding, oil spill (SOPEP), steering gear failure, blackout, security (ISPS) ve medical emergency drill'leri de SMS gereği periyodik yapılır. Safety Officer bu talimlerin tümünün takvimini tek bir matriste izler.`,
             `Tanker, gas carrier ve yolcu gemilerinde ek talimler (cargo emergency, enclosed space, mass rescue) devreye girer. Safety Officer, gemi tipine özgü zorunlu drill'leri SMS ve flag ek gerekliliklerinden çıkartıp yıllık plana işler; hiçbir periyodun kaçmaması için "due date" tablosu tutar.`,
           ],
           table: {
@@ -47,9 +47,9 @@ const content: CrewTaskLongForm = {
             rows: [
               ["Abandon ship", "Aylık", "SOLAS III/19.3.2", "Official log + drill record"],
               ["Fire drill", "Aylık", "SOLAS III/19.3.2", "Official log + drill record"],
-              ["Filika suya indirme + manevra", "3 aylık", "SOLAS III/19.3.4", "PMS + logbook"],
-              ["Enclosed space entry & rescue", "2 aylık", "SOLAS III/19.3.6.2", "Drill record"],
-              ["Rescue boat suya indirme", "Aylık (mümkünse)", "SOLAS III/19.3.3.3", "Logbook"],
+              ["Filika suya indirme + manevra", "3 aylık", "SOLAS III/19.3.4.3", "PMS + logbook"],
+              ["Enclosed space entry & rescue", "2 aylık", "SOLAS III/19.3.3", "Drill record"],
+              ["Rescue boat suya indirme", "Aylık (mümkünse), en az 3 aylık", "SOLAS III/19.3.4.4", "Logbook"],
               ["Damage control / steering gear", "SMS'e göre", "Company SMS", "Drill record"],
             ],
           },

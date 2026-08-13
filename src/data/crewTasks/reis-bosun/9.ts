@@ -107,7 +107,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Enclosed space rescue drill",
           paragraphs: [
-            `SOLAS, yıllık (genelde 2 ayda bir önerilir) enclosed space rescue drill öngörür. Reis, ekibin gerçekçi kurtarma senaryosunu tatbik etmesini sağlar; çünkü gerçek bir olayda doğru ve hızlı kurtarma ancak tatbik edilmiş bir refleksle mümkündür.`,
+            `SOLAS III/19.3.3, giriş veya kurtarma görevi bulunan personel için en az iki ayda bir enclosed space entry ve rescue drill zorunlu kılar. Reis, ekibin gerçekçi kurtarma senaryosunu tatbik etmesini sağlar; çünkü gerçek bir olayda doğru ve hızlı kurtarma ancak tatbik edilmiş bir refleksle mümkündür.`,
           ],
         },
       ],

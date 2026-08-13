@@ -187,7 +187,7 @@ const content: CrewTaskLongForm = {
             {
               type: "regulation",
               title: "SOLAS III/19 — Drills",
-              text: `Abandon ship ve fire drill ayda en az bir kez yapılmalı; her mürettebat aylık olarak en az bir abandon ship ve bir fire drill'e katılmalıdır. Filika, yeni katılanlar için 24 saat içinde tanıtılmalı; enclosed space rescue drill periyodik yapılmalıdır.`,
+              text: `Abandon ship ve fire drill ayda en az bir kez yapılmalı; her mürettebat aylık olarak en az bir abandon ship ve bir fire drill'e katılmalıdır. Gemiye katılan personele can kurtarma donanımı eğitimi en geç iki hafta içinde verilmeli (III/19.4.1); enclosed space entry ve rescue drill en az iki ayda bir yapılmalıdır (III/19.3.3).`,
             },
           ],
         },
