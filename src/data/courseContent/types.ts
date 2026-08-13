@@ -67,7 +67,7 @@ export interface CourseEntry {
   /** Kararlı slug, örn. "carnot-efficiency". */
   id: string;
   name: string;
-  /** Formül grubu başlığı, örn. "Termodinamik Yasaları". */
+  /** Formül grubu başlığı, örn. "Laws of Thermodynamics". */
   group: string;
   /** Gösterim ifadesi, örn. "η = 1 − (T_L / T_H)". */
   formula: string;

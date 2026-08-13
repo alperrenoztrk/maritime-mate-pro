@@ -23,7 +23,7 @@ export const environment: CourseTopic = {
       group: "Emisyonlar",
       formula: "CO₂ (ton) = Yakıt (ton) × CF",
       variables: [
-        { symbol: "Yakıt", label: "Yakıt tüketimi", unit: "t" },
+        { symbol: "Yakıt", label: "Fuel consumption", unit: "t" },
         { symbol: "CF", label: "Karbon faktörü", unit: "t CO₂/t yakıt" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "MEPC.245(66) — CF değerleri" },
@@ -40,7 +40,7 @@ export const environment: CourseTopic = {
       group: "Emisyonlar",
       formula: "SOx (kg) = Yakıt (ton) × S% × 20",
       variables: [
-        { symbol: "Yakıt", label: "Yakıt tüketimi", unit: "t" },
+        { symbol: "Yakıt", label: "Fuel consumption", unit: "t" },
         { symbol: "S%", label: "Yakıt kükürt oranı", unit: "% m/m" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Kural 14 — kükürt limiti" },
@@ -75,7 +75,7 @@ export const environment: CourseTopic = {
       group: "Emisyonlar",
       formula: "PM (kg) = Yakıt (ton) × EFPM",
       variables: [
-        { symbol: "Yakıt", label: "Yakıt tüketimi", unit: "t" },
+        { symbol: "Yakıt", label: "Fuel consumption", unit: "t" },
         { symbol: "EFPM", label: "PM emisyon faktörü", unit: "kg/t" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Partikül madde emisyonu" },
@@ -93,7 +93,7 @@ export const environment: CourseTopic = {
       variables: [
         { symbol: "P", label: "Ana makine gücü", unit: "kW" },
         { symbol: "CF", label: "Karbon faktörü", unit: "t CO₂/t" },
-        { symbol: "SFC", label: "Özgül yakıt tüketimi", unit: "g/kWh" },
+        { symbol: "SFC", label: "Specific fuel consumption", unit: "g/kWh" },
         { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
         { symbol: "Vref", label: "Referans hız", unit: "kn" },
       ],
@@ -162,7 +162,7 @@ export const environment: CourseTopic = {
       formula: "FOC (ton/gün) = P (kW) × SFOC (g/kWh) × 24 / 10⁶",
       variables: [
         { symbol: "P", label: "Makine gücü", unit: "kW" },
-        { symbol: "SFOC", label: "Özgül yakıt tüketimi", unit: "g/kWh" },
+        { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kWh" },
       ],
       source: { code: "Yakıt tüketimi — SFOC bağıntısı" },
       inputs: [
@@ -178,7 +178,7 @@ export const environment: CourseTopic = {
       formula: "E = P (kW) × t (h)",
       variables: [
         { symbol: "P", label: "Güç", unit: "kW" },
-        { symbol: "t", label: "Süre", unit: "h" },
+        { symbol: "t", label: "Duration", unit: "h" },
       ],
       source: { code: "Enerji = güç × süre" },
       inputs: [
@@ -195,7 +195,7 @@ export const environment: CourseTopic = {
       variables: [
         { symbol: "∑P", label: "Toplam makine gücü", unit: "kW" },
         { symbol: "CF", label: "Karbon faktörü" },
-        { symbol: "SFC", label: "Özgül yakıt tüketimi", unit: "g/kWh" },
+        { symbol: "SFC", label: "Specific fuel consumption", unit: "g/kWh" },
         { symbol: "fi", label: "Kapasite düzeltme faktörü" },
         { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
         { symbol: "Vref", label: "Referans hız", unit: "kn" },

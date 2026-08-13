@@ -13,7 +13,7 @@ export const communication: CourseTopic = {
   group: "deck",
   intro:
     "Dalga boyu, telsiz ufku, kazanç (dB), serbest uzay yol kaybı ve Doppler. " +
-    "Her formülün altında onu hesaplayan araç yer alır.",
+    "Each formula is followed by the tool that calculates it.",
   entries: [
     {
       id: "wavelength",
@@ -67,7 +67,7 @@ export const communication: CourseTopic = {
         { key: "hrx", label: "Alıcı Yüksekliği", unit: "m", placeholder: "9" },
       ],
       calculate: (v) => {
-        if (v.htx < 0 || v.hrx < 0) return [{ label: "Hata", value: "Yükseklik negatif olamaz" }];
+        if (v.htx < 0 || v.hrx < 0) return [{ label: "Hata", value: "The height cannot be negative" }];
         const d = 2.23 * (Math.sqrt(v.htx) + Math.sqrt(v.hrx));
         return [{ label: "Menzil (d)", value: `${d.toFixed(1)} NM` }];
       },
@@ -126,7 +126,7 @@ export const communication: CourseTopic = {
       inputs: [
         { key: "ptx", label: "Verici Gücü", unit: "dBW", placeholder: "14" },
         { key: "g", label: "Anten Kazancı", unit: "dBi", placeholder: "6" },
-        { key: "l", label: "Kayıp", unit: "dB", placeholder: "2" },
+        { key: "l", label: "Loss", unit: "dB", placeholder: "2" },
       ],
       calculate: (v) => [{ label: "EIRP", value: `${(v.ptx + v.g - v.l).toFixed(2)} dBW` }],
     },

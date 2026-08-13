@@ -22,10 +22,10 @@ export const erm: CourseTopic = {
       id: "risk-level",
       name: "Risk Seviyesi",
       group: "Risk Değerlendirme",
-      formula: "Risk = Olasılık × Şiddet",
+      formula: "Risk = Likelihood × Severity",
       variables: [
-        { symbol: "Olasılık", label: "Olay olma olasılığı (1–5)" },
-        { symbol: "Şiddet", label: "Olayın sonuç şiddeti (1–5)" },
+        { symbol: "Likelihood", label: "Olay olma olasılığı (1–5)" },
+        { symbol: "Severity", label: "Olayın sonuç şiddeti (1–5)" },
       ],
       source: { code: "5×5 risk matrisi: Düşük (1–4), Orta (5–9), Yüksek (10–15), Çok Yüksek (16–25)" },
       inputs: [
@@ -34,7 +34,7 @@ export const erm: CourseTopic = {
       ],
       calculate: (v) => {
         const risk = v.prob * v.sev;
-        const level = risk <= 4 ? "Düşük" : risk <= 9 ? "Orta" : risk <= 15 ? "Yüksek" : "Çok Yüksek";
+        const level = risk <= 4 ? "Low" : risk <= 9 ? "Orta" : risk <= 15 ? "Yüksek" : "Çok Yüksek";
         const color = risk <= 4 ? "Yeşil" : risk <= 9 ? "Sarı" : risk <= 15 ? "Turuncu" : "Kırmızı";
         return [
           { label: "Risk Puanı", value: `${risk}` },
@@ -101,19 +101,19 @@ export const erm: CourseTopic = {
       variables: [
         { symbol: "Çalışma", label: "Günlük çalışma saati", unit: "saat" },
         { symbol: "Dinlenme", label: "Günlük dinlenme saati", unit: "saat" },
-        { symbol: "Gün", label: "Ardışık çalışma günü", unit: "gün" },
+        { symbol: "Gün", label: "Ardışık çalışma günü", unit: "days" },
       ],
       source: { code: "STCW / MLC dinlenme süresi: min 10 saat/24 saat, min 77 saat/7 gün" },
       note: "İndeks bağıntısı hesaplayıcıdan türetilmiştir; MLC uyumu için çalışma ≤ 14 saat ve dinlenme ≥ 10 saat olmalıdır.",
       inputs: [
         { key: "workHours", label: "Günlük Çalışma", unit: "saat", placeholder: "14" },
         { key: "restHours", label: "Günlük Dinlenme", unit: "saat", placeholder: "10" },
-        { key: "days", label: "Ardışık Çalışma Günü", unit: "gün", placeholder: "14" },
+        { key: "days", label: "Ardışık Çalışma Günü", unit: "days", placeholder: "14" },
       ],
       calculate: (v) => {
         const ratio = v.workHours / v.restHours;
         const fatigue = Math.min(100, ratio * v.days * 3);
-        const status = fatigue < 30 ? "Düşük" : fatigue < 60 ? "Orta" : fatigue < 80 ? "Yüksek" : "Kritik";
+        const status = fatigue < 30 ? "Low" : fatigue < 60 ? "Orta" : fatigue < 80 ? "Yüksek" : "Kritik";
         const mclCompliant = v.workHours <= 14 && v.restHours >= 10;
         return [
           { label: "Yorgunluk İndeksi", value: `${fatigue.toFixed(0)}%` },
@@ -128,7 +128,7 @@ export const erm: CourseTopic = {
       group: "İnsan Faktörü",
       formula: "ηvardiya = max(0, 100 − Olay × 10 − max(0, GörevYükü − 4) × 5)",
       variables: [
-        { symbol: "Personel", label: "Makine personeli", unit: "kişi" },
+        { symbol: "Personel", label: "Makine personeli", unit: "persons" },
         { symbol: "Vardiya", label: "Vardiya süresi", unit: "saat" },
         { symbol: "Görev", label: "Günlük rutin görev", unit: "adet" },
         { symbol: "Olay", label: "Aylık olay sayısı", unit: "adet" },
@@ -137,7 +137,7 @@ export const erm: CourseTopic = {
       source: { code: "STCW vardiya tutma esasları (Bölüm VIII) — operasyonel etkinlik göstergesi" },
       note: "Etkinlik skoru bağıntısı hesaplayıcıdan türetilmiştir; kişi başı görev yükü = görev / personel.",
       inputs: [
-        { key: "crew", label: "Makine Personeli", unit: "kişi", placeholder: "8" },
+        { key: "crew", label: "Makine Personeli", unit: "persons", placeholder: "8" },
         { key: "watchHours", label: "Vardiya Süresi", unit: "saat", placeholder: "4" },
         { key: "tasks", label: "Günlük Rutin Görev", unit: "adet", placeholder: "25" },
         { key: "incidents", label: "Aylık Olay Sayısı", unit: "adet", placeholder: "2" },

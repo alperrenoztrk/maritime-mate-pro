@@ -14,7 +14,7 @@ export const dieselEngines: CourseTopic = {
   group: "machine",
   intro:
     "Dizel motor performansı, yanma, enjeksiyon ve güç hesapları. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "indicated-power",
@@ -24,9 +24,9 @@ export const dieselEngines: CourseTopic = {
       variables: [
         { symbol: "Pmi", label: "Ortalama indike basınç", unit: "bar" },
         { symbol: "L", label: "Strok", unit: "m" },
-        { symbol: "A", label: "Piston alanı", unit: "m²" },
+        { symbol: "A", label: "Piston area", unit: "m²" },
         { symbol: "n", label: "Devir", unit: "rpm" },
-        { symbol: "k", label: "Silindir sayısı" },
+        { symbol: "k", label: "Number of cylinders" },
       ],
       source: { code: "Motor teorisi — indike güç bağıntısı" },
       note: "Pmi bar girilir, hesapta 10⁵ Pa'ya çevrilir; sonuç kW olarak verilir.",
@@ -45,7 +45,7 @@ export const dieselEngines: CourseTopic = {
     },
     {
       id: "brake-power",
-      name: "Fren Gücü (BHP)",
+      name: "Brake Power (BHP)",
       group: "Motor Performans",
       formula: "BHP = IHP × ηmech",
       variables: [
@@ -62,7 +62,7 @@ export const dieselEngines: CourseTopic = {
         const bhp = v.ihp * (v.eta / 100);
         const loss = v.ihp - bhp;
         return [
-          { label: "Fren Gücü (BHP)", value: `${bhp.toFixed(1)} kW` },
+          { label: "Brake Power (BHP)", value: `${bhp.toFixed(1)} kW` },
           { label: "Mekanik Kayıp", value: `${loss.toFixed(1)} kW` },
         ];
       },
@@ -73,14 +73,14 @@ export const dieselEngines: CourseTopic = {
       group: "Motor Performans",
       formula: "SFOC = Yakıt tüketimi (g/h) / BHP (kW)",
       variables: [
-        { symbol: "FC", label: "Yakıt tüketimi", unit: "kg/saat" },
-        { symbol: "BHP", label: "Fren gücü", unit: "kW" },
+        { symbol: "FC", label: "Fuel consumption", unit: "kg/saat" },
+        { symbol: "BHP", label: "Brake power", unit: "kW" },
       ],
       source: { code: "Motor teorisi — özgül yakıt tüketimi (düşük değer daha verimli)" },
       note: "Yakıt tüketimi kg/saat girilir, ×1000 ile g'ye çevrilir; sonuç g/kW·h.",
       inputs: [
-        { key: "fc", label: "Yakıt Tüketimi", unit: "kg/saat", placeholder: "5000" },
-        { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "25000" },
+        { key: "fc", label: "Fuel Consumption", unit: "kg/saat", placeholder: "5000" },
+        { key: "bhp", label: "Brake Power (BHP)", unit: "kW", placeholder: "25000" },
       ],
       calculate: (v) => {
         const sfoc = (v.fc / v.bhp) * 1000;
@@ -96,16 +96,16 @@ export const dieselEngines: CourseTopic = {
         { symbol: "P", label: "Güç", unit: "kW" },
         { symbol: "Vs", label: "Strok hacmi (silindir başına)", unit: "m³" },
         { symbol: "n", label: "Devir", unit: "rpm" },
-        { symbol: "k", label: "Silindir sayısı" },
+        { symbol: "k", label: "Number of cylinders" },
       ],
       source: { code: "Motor teorisi — ortalama efektif basınç (BMEP/IMEP)" },
       note: "Vs = π·D²/4·L olarak hesaplanır; sonuç Pa'dan bar'a çevrilir.",
       inputs: [
         { key: "p", label: "Güç (P)", unit: "kW", placeholder: "10000" },
-        { key: "bore", label: "Silindir Çapı", unit: "m", placeholder: "0.5" },
+        { key: "bore", label: "Cylinder Bore", unit: "m", placeholder: "0.5" },
         { key: "stroke", label: "Strok", unit: "m", placeholder: "2.0" },
         { key: "n", label: "Devir", unit: "rpm", placeholder: "100" },
-        { key: "k", label: "Silindir Sayısı", unit: "adet", placeholder: "6" },
+        { key: "k", label: "Number of Cylinders", unit: "adet", placeholder: "6" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore, 2) / 4 * v.stroke; // m³
@@ -128,7 +128,7 @@ export const dieselEngines: CourseTopic = {
       source: { code: "Motor teorisi — geometrik sıkıştırma oranı (Vmax/Vmin)" },
       note: "Çap ve strok mm girilir, strok hacmi litreye çevrilir.",
       inputs: [
-        { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "500" },
+        { key: "bore", label: "Cylinder Bore", unit: "mm", placeholder: "500" },
         { key: "stroke", label: "Strok", unit: "mm", placeholder: "2000" },
         { key: "vc", label: "Ölü Hacim (Vc)", unit: "litre", placeholder: "15" },
       ],
@@ -137,7 +137,7 @@ export const dieselEngines: CourseTopic = {
         const cr = (vs + v.vc) / v.vc;
         return [
           { label: "Strok Hacmi (Vs)", value: `${vs.toFixed(1)} litre` },
-          { label: "Sıkıştırma Oranı (r)", value: `${cr.toFixed(1)}:1` },
+          { label: "Compression Ratio (r)", value: `${cr.toFixed(1)}:1` },
         ];
       },
     },
@@ -148,7 +148,7 @@ export const dieselEngines: CourseTopic = {
       formula: "C = (Δ^(2/3) × V³) / P",
       variables: [
         { symbol: "Δ", label: "Deplasman", unit: "ton" },
-        { symbol: "V", label: "Hız", unit: "knot" },
+        { symbol: "V", label: "Speed", unit: "knot" },
         { symbol: "P", label: "Güç", unit: "kW" },
       ],
       source: { code: "Gemi sevki — Admiralty (deplasman) katsayısı, hız-güç ilişkisi" },
@@ -215,14 +215,14 @@ export const dieselEngines: CourseTopic = {
       group: "Yanma ve Enjeksiyon",
       formula: "ηth = (BHP × 3600) / (ṁyakıt × Hu)",
       variables: [
-        { symbol: "BHP", label: "Fren gücü", unit: "kW" },
-        { symbol: "ṁyakıt", label: "Yakıt tüketimi", unit: "kg/saat" },
+        { symbol: "BHP", label: "Brake power", unit: "kW" },
+        { symbol: "ṁ_fuel", label: "Fuel consumption", unit: "kg/saat" },
         { symbol: "Hu", label: "Alt ısıl değer (LCV)", unit: "kJ/kg" },
       ],
       source: { code: "Motor teorisi — efektif (fren) ısıl verim" },
       note: "BHP (kW) × 3600 ile saatlik enerjiye çevrilir; yakıt kg/saat girilir.",
       inputs: [
-        { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "10000" },
+        { key: "bhp", label: "Brake Power (BHP)", unit: "kW", placeholder: "10000" },
         { key: "fc", label: "Yakıt Tüketimi (ṁf)", unit: "kg/saat", placeholder: "1850" },
         { key: "lcv", label: "Alt Isıl Değer (LCV)", unit: "kJ/kg", placeholder: "42700" },
       ],

@@ -14,7 +14,7 @@ export const fluidMechanics: CourseTopic = {
   group: "machine",
   intro:
     "Akışkan statiği ve dinamiği; boru hatları, pompalar ve akış rejimleri. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "bernoulli",
@@ -22,10 +22,10 @@ export const fluidMechanics: CourseTopic = {
       group: "Temel Akışkan Denklemleri",
       formula: "P₁/ρg + v₁²/2g + z₁ = P₂/ρg + v₂²/2g + z₂",
       variables: [
-        { symbol: "P", label: "Basınç" },
-        { symbol: "ρ", label: "Yoğunluk" },
-        { symbol: "v", label: "Hız" },
-        { symbol: "z", label: "Yükseklik" },
+        { symbol: "P", label: "Pressure" },
+        { symbol: "ρ", label: "Density" },
+        { symbol: "v", label: "Speed" },
+        { symbol: "z", label: "Height" },
         { symbol: "g", label: "Yerçekimi" },
       ],
       source: { code: "Bernoulli denklemi (enerjinin korunumu, sürtünmesiz akış)" },
@@ -36,7 +36,7 @@ export const fluidMechanics: CourseTopic = {
         { key: "z1", label: "z₁ (Yükseklik)", unit: "m", placeholder: "5" },
         { key: "z2", label: "z₂ (Yükseklik)", unit: "m", placeholder: "0" },
         { key: "v2", label: "v₂ (Hız)", unit: "m/s", placeholder: "4" },
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1000" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
       ],
       calculate: (v) => {
         const p2 = v.p1 * 1000 + 0.5 * v.rho * (v.v1 * v.v1 - v.v2 * v.v2) + v.rho * 9.81 * (v.z1 - v.z2);
@@ -76,14 +76,14 @@ export const fluidMechanics: CourseTopic = {
       group: "Temel Akışkan Denklemleri",
       formula: "Re = ρ·v·D / μ",
       variables: [
-        { symbol: "ρ", label: "Yoğunluk", unit: "kg/m³" },
-        { symbol: "v", label: "Hız", unit: "m/s" },
+        { symbol: "ρ", label: "Density", unit: "kg/m³" },
+        { symbol: "v", label: "Speed", unit: "m/s" },
         { symbol: "D", label: "Çap", unit: "m" },
         { symbol: "μ", label: "Dinamik viskozite", unit: "Pa·s" },
       ],
       source: { code: "Reynolds sayısı (akış rejimi: Re<2300 laminer, >4000 türbülanslı)" },
       inputs: [
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1000" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
         { key: "v", label: "Hız (v)", unit: "m/s", placeholder: "2" },
         { key: "d", label: "Çap (D)", unit: "m", placeholder: "0.1" },
         { key: "mu", label: "Dinamik Viskozite (μ)", unit: "Pa·s", placeholder: "0.001" },
@@ -115,7 +115,7 @@ export const fluidMechanics: CourseTopic = {
         { key: "l", label: "Boru Uzunluğu (L)", unit: "m", placeholder: "50" },
         { key: "d", label: "Boru Çapı (D)", unit: "m", placeholder: "0.1" },
         { key: "v", label: "Akış Hızı (v)", unit: "m/s", placeholder: "3" },
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1000" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
       ],
       calculate: (vals) => {
         const hf = vals.f * (vals.l / vals.d) * (vals.v * vals.v) / (2 * 9.81);
@@ -132,7 +132,7 @@ export const fluidMechanics: CourseTopic = {
       group: "Pompa Hesapları",
       formula: "P = ρ·g·Q·H / η",
       variables: [
-        { symbol: "ρ", label: "Yoğunluk", unit: "kg/m³" },
+        { symbol: "ρ", label: "Density", unit: "kg/m³" },
         { symbol: "g", label: "Yerçekimi", unit: "m/s²" },
         { symbol: "Q", label: "Debi", unit: "m³/s" },
         { symbol: "H", label: "Toplam basma yüksekliği", unit: "m" },
@@ -141,7 +141,7 @@ export const fluidMechanics: CourseTopic = {
       source: { code: "Santrifüj pompa hidrolik güç bağıntısı" },
       note: "Debi m³/h girilir, hesapta m³/s'ye çevrilir; verim % girilir.",
       inputs: [
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
         { key: "q", label: "Debi (Q)", unit: "m³/h", placeholder: "100" },
         { key: "h", label: "Basma Yüksekliği (H)", unit: "m", placeholder: "30" },
         { key: "eta", label: "Verim (η)", unit: "%", placeholder: "75" },
@@ -158,9 +158,9 @@ export const fluidMechanics: CourseTopic = {
       group: "Pompa Hesapları",
       formula: "NPSHa = (Patm − Pvap) / (ρ·g) + zs − hf",
       variables: [
-        { symbol: "Patm", label: "Atmosfer basıncı" },
-        { symbol: "Pvap", label: "Buhar basıncı" },
-        { symbol: "ρ", label: "Yoğunluk", unit: "kg/m³" },
+        { symbol: "Patm", label: "Atmospheric pressure" },
+        { symbol: "Pvap", label: "Vapour pressure" },
+        { symbol: "ρ", label: "Density", unit: "kg/m³" },
         { symbol: "g", label: "Yerçekimi", unit: "m/s²" },
         { symbol: "zs", label: "Emiş yüksekliği", unit: "m" },
         { symbol: "hf", label: "Emiş hattı kaybı", unit: "m" },
@@ -172,7 +172,7 @@ export const fluidMechanics: CourseTopic = {
         { key: "pv", label: "Buhar Basıncı", unit: "kPa", placeholder: "2.34" },
         { key: "hs", label: "Emiş Yüksekliği (+/-)", unit: "m", placeholder: "3" },
         { key: "hf", label: "Emiş Hattı Kaybı", unit: "m", placeholder: "0.5" },
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1000" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
       ],
       calculate: (v) => {
         const npsha = (v.pa - v.pv) * 1000 / (v.rho * 9.81) + v.hs - v.hf;
@@ -219,22 +219,22 @@ export const fluidMechanics: CourseTopic = {
         { symbol: "P", label: "Toplam (mutlak) basınç", unit: "Pa" },
         { symbol: "P₀", label: "Yüzeydeki basınç (atmosfer)", unit: "Pa" },
         { symbol: "ρ", label: "Akışkan yoğunluğu", unit: "kg/m³" },
-        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
+        { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
         { symbol: "h", label: "Derinlik", unit: "m" },
       ],
       source: { code: "Hidrostatik temel denklem (Pascal)" },
       note: "Deniz suyu ρ ≈ 1025 kg/m³, tatlı su 1000 kg/m³. P₀ atmosfer için ≈ 101325 Pa; yalnızca gösterge basıncı isteniyorsa P₀ = 0 girin.",
       inputs: [
         { key: "p0", label: "Yüzey Basıncı (P₀)", unit: "Pa", placeholder: "101325" },
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
         { key: "h", label: "Derinlik (h)", unit: "m", placeholder: "10" },
       ],
       calculate: (v) => {
         if (v.h < 0 || v.rho <= 0) return [{ label: "Hata", value: "Yoğunluk pozitif, derinlik ≥ 0 olmalı" }];
         const p = v.p0 + v.rho * 9.81 * v.h;
         return [
-          { label: "Basınç (P)", value: `${(p / 1000).toFixed(2)} kPa` },
-          { label: "Basınç", value: `${(p / 1e5).toFixed(3)} bar` },
+          { label: "Pressure (P)", value: `${(p / 1000).toFixed(2)} kPa` },
+          { label: "Pressure", value: `${(p / 1e5).toFixed(3)} bar` },
         ];
       },
     },
@@ -246,16 +246,16 @@ export const fluidMechanics: CourseTopic = {
       variables: [
         { symbol: "F", label: "Bileşke hidrostatik kuvvet", unit: "N" },
         { symbol: "ρ", label: "Akışkan yoğunluğu", unit: "kg/m³" },
-        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
+        { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
         { symbol: "hc", label: "Yüzey ağırlık merkezinin derinliği", unit: "m" },
         { symbol: "A", label: "Islak yüzey alanı", unit: "m²" },
       ],
       source: { code: "Düzlem yüzeye etkiyen hidrostatik kuvvet" },
       note: "hc, yüzeyin geometrik merkezinin sıvı yüzeyinden derinliğidir (gösterge basıncı esas alınır). Kapak/perde/tank cidarı hesaplarında kullanılır.",
       inputs: [
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
         { key: "hc", label: "Merkez Derinliği (hc)", unit: "m", placeholder: "3" },
-        { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "2" },
+        { key: "a", label: "Surface Area (A)", unit: "m²", placeholder: "2" },
       ],
       calculate: (v) => {
         if (v.rho <= 0 || v.hc < 0 || v.a <= 0) return [{ label: "Hata", value: "ρ ve A pozitif, hc ≥ 0 olmalı" }];

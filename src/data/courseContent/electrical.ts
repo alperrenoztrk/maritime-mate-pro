@@ -14,7 +14,7 @@ export const electrical: CourseTopic = {
   group: "machine",
   intro:
     "Temel elektrik bağıntıları, üç fazlı güç, koruma ve kablo hesapları. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "ohms-law",
@@ -47,22 +47,22 @@ export const electrical: CourseTopic = {
       formula: "P = √3 × VL × IL × cos(φ)",
       variables: [
         { symbol: "VL", label: "Hat gerilimi", unit: "V" },
-        { symbol: "IL", label: "Hat akımı", unit: "A" },
-        { symbol: "cos(φ)", label: "Güç faktörü" },
+        { symbol: "IL", label: "Line current", unit: "A" },
+        { symbol: "cos(φ)", label: "Power factor" },
       ],
-      source: { code: "Üç fazlı aktif güç bağıntısı" },
+      source: { code: "Three phase active power relation" },
       note: "Sonuç W çıkar, kW'a çevrilir. Görünür güç S = √3 × VL × IL.",
       inputs: [
         { key: "v", label: "Hat Gerilimi (VL)", unit: "V", placeholder: "440" },
         { key: "i", label: "Hat Akımı (IL)", unit: "A", placeholder: "200" },
-        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+        { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
       ],
       calculate: (v) => {
         const p = Math.sqrt(3) * v.v * v.i * v.pf;
         const s = Math.sqrt(3) * v.v * v.i;
         return [
-          { label: "Aktif Güç (P)", value: `${(p / 1000).toFixed(1)} kW` },
-          { label: "Görünür Güç (S)", value: `${(s / 1000).toFixed(1)} kVA` },
+          { label: "Active Power (P)", value: `${(p / 1000).toFixed(1)} kW` },
+          { label: "Apparent Power (S)", value: `${(s / 1000).toFixed(1)} kVA` },
         ];
       },
     },
@@ -73,7 +73,7 @@ export const electrical: CourseTopic = {
       formula: "Q = P × tan(φ),  S = P / cos(φ)",
       variables: [
         { symbol: "P", label: "Aktif güç", unit: "kW" },
-        { symbol: "cos(φ)", label: "Güç faktörü" },
+        { symbol: "cos(φ)", label: "Power factor" },
         { symbol: "tan(φ)", label: "Reaktif/aktif oranı" },
         { symbol: "Q", label: "Reaktif güç", unit: "kVAR" },
         { symbol: "S", label: "Görünür güç", unit: "kVA" },
@@ -81,8 +81,8 @@ export const electrical: CourseTopic = {
       source: { code: "Üç fazlı reaktif güç (güç üçgeni)" },
       note: "Hesaplayıcı P ve cos(φ) ile φ = arccos(pf), Q = P·tan(φ), S = P/pf hesaplar.",
       inputs: [
-        { key: "p", label: "Aktif Güç (P)", unit: "kW", placeholder: "300" },
-        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+        { key: "p", label: "Active Power (P)", unit: "kW", placeholder: "300" },
+        { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
       ],
       calculate: (v) => {
         const phi = Math.acos(v.pf);
@@ -90,7 +90,7 @@ export const electrical: CourseTopic = {
         const s = v.p / v.pf;
         return [
           { label: "Reaktif Güç (Q)", value: `${q.toFixed(1)} kVAR` },
-          { label: "Görünür Güç (S)", value: `${s.toFixed(1)} kVA` },
+          { label: "Apparent Power (S)", value: `${s.toFixed(1)} kVA` },
           { label: "Faz Açısı (φ)", value: `${(phi * 180 / Math.PI).toFixed(1)}°` },
         ];
       },
@@ -108,15 +108,15 @@ export const electrical: CourseTopic = {
       source: { code: "Güç üçgeni (görünür güç)" },
       note: "Aktif ve reaktif güç girilir; görünür güç S = √(P² + Q²) ve güç faktörü cos(φ) = P/S hesaplanır.",
       inputs: [
-        { key: "p", label: "Aktif Güç (P)", unit: "kW", placeholder: "240" },
+        { key: "p", label: "Active Power (P)", unit: "kW", placeholder: "240" },
         { key: "q", label: "Reaktif Güç (Q)", unit: "kVAR", placeholder: "180" },
       ],
       calculate: (v) => {
         const s = Math.sqrt(v.p * v.p + v.q * v.q);
         const pf = s > 0 ? v.p / s : 0;
         return [
-          { label: "Görünür Güç (S)", value: `${s.toFixed(1)} kVA` },
-          { label: "Güç Faktörü (cos φ)", value: pf.toFixed(3) },
+          { label: "Apparent Power (S)", value: `${s.toFixed(1)} kVA` },
+          { label: "Power Factor (cos φ)", value: pf.toFixed(3) },
         ];
       },
     },
@@ -168,7 +168,7 @@ export const electrical: CourseTopic = {
         { symbol: "I", label: "Akım", unit: "A" },
         { symbol: "R", label: "Birim direnç", unit: "Ω/km" },
         { symbol: "L", label: "Kablo uzunluğu", unit: "m" },
-        { symbol: "cos(φ)", label: "Güç faktörü" },
+        { symbol: "cos(φ)", label: "Power factor" },
       ],
       source: { code: "Kablo gerilim düşümü (gidiş-dönüş, IEC 60092)" },
       note: "Birim direnç Ω/km girilir, hesapta Ω/m'ye çevrilir (÷1000). Düşüm oranı 440 V referansına göre verilir.",

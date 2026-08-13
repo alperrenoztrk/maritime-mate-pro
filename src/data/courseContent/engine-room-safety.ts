@@ -78,7 +78,7 @@ export const engineRoomSafety: CourseTopic = {
       formula: "Vköpük = A × t × applicationrate",
       variables: [
         { symbol: "A", label: "Korunan alan", unit: "m²" },
-        { symbol: "t", label: "Uygulama süresi", unit: "dk" },
+        { symbol: "t", label: "Application time", unit: "dk" },
         { symbol: "applicationrate", label: "Uygulama debisi", unit: "L/m²·dk" },
       ],
       source: { code: "Sabit köpük söndürme sistemi tasarımı (SOLAS / FSS Code)" },

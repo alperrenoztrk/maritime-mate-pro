@@ -16,7 +16,7 @@ export const environmentMachine: CourseTopic = {
   intro:
     "Gemi makine dairesinden kaynaklanan emisyonlar (CO₂, SOx, NOx) ve atık " +
     "yönetimi (sintine, atık su, balast) — MARPOL ekleri çerçevesinde. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "co2-emission",
@@ -24,12 +24,12 @@ export const environmentMachine: CourseTopic = {
       group: "Emisyon Hesapları",
       formula: "ECO₂ = FC × Cf",
       variables: [
-        { symbol: "FC", label: "Yakıt tüketimi", unit: "ton" },
+        { symbol: "FC", label: "Fuel consumption", unit: "ton" },
         { symbol: "Cf", label: "Karbon faktörü (HFO: 3,114, MDO: 3,206)", unit: "t-CO₂/t-yakıt" },
       ],
       source: { code: "MARPOL Annex VI (IMO DCS / karbon faktörü)" },
       inputs: [
-        { key: "fc", label: "Yakıt Tüketimi", unit: "ton", placeholder: "100" },
+        { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "100" },
         { key: "cf", label: "Karbon Faktörü (Cf)", unit: "t-CO₂/t-yakıt", placeholder: "3.114" },
       ],
       calculate: (v) => {
@@ -42,13 +42,13 @@ export const environmentMachine: CourseTopic = {
       group: "Emisyon Hesapları",
       formula: "ESOx = 2 × (S / 100) × FC",
       variables: [
-        { symbol: "FC", label: "Yakıt tüketimi", unit: "ton" },
+        { symbol: "FC", label: "Fuel consumption", unit: "ton" },
         { symbol: "S", label: "Yakıt kükürt oranı", unit: "%, m/m" },
       ],
       source: { code: "MARPOL Annex VI Reg.14 (kükürt sınırı: ECA %0,10, global %0,50)" },
       note: "S→SO₂ kütle dönüşüm çarpanı ≈ 2; kükürt oranı yüzde olarak girilir.",
       inputs: [
-        { key: "fc", label: "Yakıt Tüketimi", unit: "ton", placeholder: "100" },
+        { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "100" },
         { key: "s", label: "Kükürt İçeriği", unit: "%", placeholder: "0.5" },
       ],
       calculate: (v) => {
@@ -102,14 +102,14 @@ export const environmentMachine: CourseTopic = {
       formula: "QOWS = Vsintine / t",
       variables: [
         { symbol: "Vsintine", label: "Günlük sintine üretimi", unit: "m³/gün" },
-        { symbol: "t", label: "OWS çalışma süresi", unit: "saat/gün" },
+        { symbol: "t", label: "OWS çalışma süresi", unit: "hours/day" },
         { symbol: "QOWS", label: "Gerekli OWS debisi", unit: "m³/saat" },
       ],
       source: { code: "MARPOL Annex I Reg.14 (sintine suyu yağ içeriği ≤ 15 ppm)" },
       note: "OWS çıkış yağ konsantrasyonu ≤ 15 ppm olmalıdır (15 ppm alarm + otomatik durdurma).",
       inputs: [
         { key: "bilge", label: "Günlük Sintine Üretimi", unit: "m³/gün", placeholder: "5" },
-        { key: "hours", label: "OWS Çalışma Süresi", unit: "saat/gün", placeholder: "8" },
+        { key: "hours", label: "OWS Çalışma Süresi", unit: "hours/day", placeholder: "8" },
       ],
       calculate: (v) => {
         const requiredCapacity = v.bilge / v.hours;

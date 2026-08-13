@@ -14,7 +14,7 @@ export const engineRoomOps: CourseTopic = {
   group: "machine",
   intro:
     "Yakıt ve yağ tüketim takibi, devreye alma ve operasyon parametreleri. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "fuel-consumption-rate",
@@ -23,17 +23,17 @@ export const engineRoomOps: CourseTopic = {
       formula: "FCrate = FCtoplam / Seyir süresi",
       variables: [
         { symbol: "FCtoplam", label: "Toplam yakıt tüketimi", unit: "ton" },
-        { symbol: "Seyir süresi", label: "Geçen süre", unit: "gün veya saat" },
+        { symbol: "Seyir süresi", label: "Elapsed time", unit: "gün veya saat" },
         { symbol: "FCrate", label: "Tüketim hızı", unit: "ton/gün veya ton/saat" },
       ],
       source: { code: "Operasyonel yakıt tüketim takibi" },
       note: "Toplam tüketim ton, süre gün girilir; günlük ve saatlik tüketim hızı hesaplanır.",
       inputs: [
         { key: "total", label: "Toplam Yakıt (FCtoplam)", unit: "ton", placeholder: "180" },
-        { key: "days", label: "Seyir Süresi", unit: "gün", placeholder: "12" },
+        { key: "days", label: "Passage Time", unit: "days", placeholder: "12" },
       ],
       calculate: (v) => {
-        if (v.days <= 0) return [{ label: "Hata", value: "Süre pozitif olmalı" }];
+        if (v.days <= 0) return [{ label: "Hata", value: "The time must be positive" }];
         const perDay = v.total / v.days;
         return [
           { label: "Günlük Tüketim", value: `${perDay.toFixed(2)} ton/gün` },
@@ -49,7 +49,7 @@ export const engineRoomOps: CourseTopic = {
       variables: [
         { symbol: "Yakıtstok", label: "Mevcut yakıt stoku", unit: "ton" },
         { symbol: "FCrate", label: "Tüketim hızı", unit: "ton/gün" },
-        { symbol: "Menzil", label: "Tahmini çalışma süresi", unit: "gün" },
+        { symbol: "Menzil", label: "Tahmini çalışma süresi", unit: "days" },
       ],
       source: { code: "Operasyonel yakıt planlaması" },
       inputs: [
@@ -70,7 +70,7 @@ export const engineRoomOps: CourseTopic = {
       group: "Operasyon Parametreleri",
       formula: "Yağtüketimi = SLOC × BHP × t",
       variables: [
-        { symbol: "SLOC", label: "Özgül yağ tüketimi", unit: "g/kW·h" },
+        { symbol: "SLOC", label: "Specific lubricating oil consumption", unit: "g/kW·h" },
         { symbol: "BHP", label: "Motor gücü", unit: "kW" },
         { symbol: "t", label: "Çalışma süresi", unit: "saat" },
         { symbol: "Yağtüketimi", label: "Toplam yağ tüketimi", unit: "g (→ kg/ton)" },
@@ -79,7 +79,7 @@ export const engineRoomOps: CourseTopic = {
       inputs: [
         { key: "cylOil", label: "Silindir Yağı Tüketimi", unit: "g/kW·h", placeholder: "0.7" },
         { key: "bhp", label: "Motor Gücü", unit: "kW", placeholder: "15000" },
-        { key: "hours", label: "Çalışma Süresi", unit: "saat", placeholder: "720" },
+        { key: "hours", label: "Operating Time", unit: "saat", placeholder: "720" },
       ],
       calculate: (v) => {
         const consumption = (v.cylOil * v.bhp * v.hours) / 1e6; // ton
@@ -167,7 +167,7 @@ export const engineRoomOps: CourseTopic = {
         { key: "pAlarm", label: "Alarm Değeri", unit: "bar", placeholder: "2.0" },
       ],
       calculate: (v) => {
-        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Düşük" : v.pMeasured > v.pMax ? "Yüksek" : "Normal";
+        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Low" : v.pMeasured > v.pMax ? "Yüksek" : "Normal";
         const margin = ((v.pMeasured - v.pAlarm) / v.pAlarm) * 100;
         return [
           { label: "Durum", value: status },

@@ -14,7 +14,7 @@ export const fuelTechnology: CourseTopic = {
   group: "machine",
   intro:
     "Yakıt özellikleri, kalite indeksleri, arıtma ve bunker yönetimi. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "ccai",
@@ -56,7 +56,7 @@ export const fuelTechnology: CourseTopic = {
       calculate: (v) => {
         const hu = 46.704 - 8.802 * v.d * v.d + 3.167 * v.d;
         return [
-          { label: "Alt Isıl Değer (Hu)", value: `${hu.toFixed(2)} MJ/kg` },
+          { label: "Lower Calorific Value (Hu)", value: `${hu.toFixed(2)} MJ/kg` },
           { label: "Alt Isıl Değer", value: `${(hu * 1000).toFixed(0)} kJ/kg` },
         ];
       },
@@ -132,7 +132,7 @@ export const fuelTechnology: CourseTopic = {
       group: "Yakıt Arıtma",
       formula: "Q̇ = ṁ·cp·ΔT",
       variables: [
-        { symbol: "ṁ", label: "Yakıt debisi", unit: "kg/s" },
+        { symbol: "ṁ", label: "Fuel flow rate", unit: "kg/s" },
         { symbol: "cp", label: "Özgül ısı (~2 kJ/kg·K HFO)", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Sıcaklık artışı", unit: "K" },
       ],
@@ -140,7 +140,7 @@ export const fuelTechnology: CourseTopic = {
       note: "Yakıt debisi kg/s girilir; gerekli ısıtma gücü Q̇ = ṁ·cp·ΔT (kW) hesaplanır.",
       inputs: [
         { key: "mdot", label: "Yakıt Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
-        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "2.0" },
+        { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "2.0" },
         { key: "dt", label: "Sıcaklık Artışı (ΔT)", unit: "K", placeholder: "90" },
       ],
       calculate: (v) => {
@@ -175,9 +175,9 @@ export const fuelTechnology: CourseTopic = {
       group: "Bunker Yönetimi",
       formula: "Bunker = (SFOC × P × 24 / 10⁶) × gün × (1 + pay/100)",
       variables: [
-        { symbol: "SFOC", label: "Özgül yakıt tüketimi", unit: "g/kW·h" },
+        { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
         { symbol: "P", label: "Motor gücü", unit: "kW" },
-        { symbol: "gün", label: "Seyir süresi", unit: "gün" },
+        { symbol: "days", label: "Seyir süresi", unit: "days" },
         { symbol: "pay", label: "Güvenlik payı", unit: "%" },
       ],
       source: { code: "Bunker planlama (SFOC × güç × süre + güvenlik payı)" },
@@ -185,7 +185,7 @@ export const fuelTechnology: CourseTopic = {
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "185" },
         { key: "p", label: "Motor Gücü", unit: "kW", placeholder: "10000" },
-        { key: "days", label: "Seyir Süresi", unit: "gün", placeholder: "15" },
+        { key: "days", label: "Passage Time", unit: "days", placeholder: "15" },
         { key: "margin", label: "Güvenlik Payı", unit: "%", placeholder: "10" },
       ],
       calculate: (v) => {

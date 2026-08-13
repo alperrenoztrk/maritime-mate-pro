@@ -16,7 +16,7 @@ export const energyEfficiency: CourseTopic = {
   intro:
     "IMO enerji verimliliği rejimi: tasarım (EEDI/EEXI) ve operasyonel (CII/EEOI) " +
     "göstergeleri ile atık ısı geri kazanımı ve hız optimizasyonu. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "eedi",
@@ -25,7 +25,7 @@ export const energyEfficiency: CourseTopic = {
       formula: "EEDI = (PME × SFOC × Cf) / (DWT × Vref)",
       variables: [
         { symbol: "PME", label: "Ana makine gücü", unit: "kW" },
-        { symbol: "SFOC", label: "Özgül yakıt tüketimi", unit: "g/kW·h" },
+        { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
         { symbol: "Cf", label: "CO₂ dönüşüm faktörü" },
         { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
         { symbol: "Vref", label: "Referans hız", unit: "knot" },
@@ -102,7 +102,7 @@ export const energyEfficiency: CourseTopic = {
       group: "Enerji Verimliliği Göstergeleri",
       formula: "EEOI = (FC × Cf × 10⁶) / (Yük × D)",
       variables: [
-        { symbol: "FC", label: "Yakıt tüketimi", unit: "ton" },
+        { symbol: "FC", label: "Fuel consumption", unit: "ton" },
         { symbol: "Cf", label: "CO₂ dönüşüm faktörü" },
         { symbol: "Yük", label: "Taşınan yük", unit: "ton" },
         { symbol: "D", label: "Mesafe", unit: "NM" },
@@ -110,7 +110,7 @@ export const energyEfficiency: CourseTopic = {
       source: { code: "EEOI — MEPC.1/Circ.684 (gönüllü operasyonel gösterge)" },
       note: "Yakıt tüketimi ton girilir, 10⁶ ile g'a çevrilir; sonuç g CO₂/(ton·NM).",
       inputs: [
-        { key: "fc", label: "Yakıt Tüketimi", unit: "ton", placeholder: "500" },
+        { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "500" },
         { key: "cf", label: "CO₂ Faktörü", unit: "", placeholder: "3.114" },
         { key: "cargo", label: "Taşınan Yük", unit: "ton", placeholder: "40000" },
         { key: "dist", label: "Mesafe", unit: "NM", placeholder: "5000" },
@@ -154,7 +154,7 @@ export const energyEfficiency: CourseTopic = {
       formula: "PWHR = ṁegzoz × cp × ΔT × η",
       variables: [
         { symbol: "ṁegzoz", label: "Egzoz gazı debisi", unit: "kg/s" },
-        { symbol: "cp", label: "Özgül ısı", unit: "kJ/kg·K" },
+        { symbol: "cp", label: "Specific heat", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Egzoz sıcaklık düşüşü", unit: "K" },
         { symbol: "η", label: "WHR sistem verimi" },
       ],
@@ -164,14 +164,14 @@ export const energyEfficiency: CourseTopic = {
         { key: "mexh", label: "Egzoz Debisi", unit: "kg/s", placeholder: "30" },
         { key: "texhIn", label: "Egzoz Giriş Sıcaklığı", unit: "°C", placeholder: "350" },
         { key: "texhOut", label: "Egzoz Çıkış Sıcaklığı", unit: "°C", placeholder: "180" },
-        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "1.05" },
+        { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "1.05" },
         { key: "eta", label: "Sistem Verimi", unit: "%", placeholder: "70" },
       ],
       calculate: (v) => {
         const qAvail = v.mexh * v.cp * (v.texhIn - v.texhOut);
         const qRecovered = qAvail * (v.eta / 100);
         return [
-          { label: "Kullanılabilir Isı", value: `${qAvail.toFixed(0)} kW` },
+          { label: "Available Heat", value: `${qAvail.toFixed(0)} kW` },
           { label: "Geri Kazanılan Enerji", value: `${qRecovered.toFixed(0)} kW` },
         ];
       },

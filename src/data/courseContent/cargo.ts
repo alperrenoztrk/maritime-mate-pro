@@ -57,12 +57,12 @@ export const cargo: CourseTopic = {
       formula: "W = V × ρ",
       variables: [
         { symbol: "V", label: "Hacim", unit: "m³" },
-        { symbol: "ρ", label: "Yoğunluk", unit: "t/m³" },
+        { symbol: "ρ", label: "Density", unit: "t/m³" },
       ],
       source: { code: "Kütle-hacim-yoğunluk bağıntısı" },
       inputs: [
         { key: "vol", label: "Hacim (V)", unit: "m³", placeholder: "8000" },
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "t/m³", placeholder: "0.85" },
+        { key: "rho", label: "Density (ρ)", unit: "t/m³", placeholder: "0.85" },
       ],
       calculate: (v) => [{ label: "Kütle (W)", value: `${(v.vol * v.rho).toFixed(1)} t` }],
     },
@@ -90,9 +90,9 @@ export const cargo: CourseTopic = {
       group: "Draft Survey",
       formula: "dQM = (dF + 6 × dM + dA) / 8",
       variables: [
-        { symbol: "dF", label: "Baş draft", unit: "m" },
+        { symbol: "dF", label: "Forward draft", unit: "m" },
         { symbol: "dM", label: "Vasat draft", unit: "m" },
-        { symbol: "dA", label: "Kıç draft", unit: "m" },
+        { symbol: "dA", label: "Aft draft", unit: "m" },
       ],
       source: { code: "UN ECE Draft Survey Code", detail: "Quarter mean (MMM)" },
       inputs: [
@@ -110,7 +110,7 @@ export const cargo: CourseTopic = {
       variables: [
         { symbol: "Trim", label: "Trim", unit: "m" },
         { symbol: "LCF", label: "Su hattı alan merkezi", unit: "m" },
-        { symbol: "TPC", label: "1 cm için ton", unit: "t/cm" },
+        { symbol: "TPC", label: "Tonnes per centimetre", unit: "t/cm" },
         { symbol: "LBP", label: "Dikmeler arası boy", unit: "m" },
       ],
       source: { code: "UN ECE Draft Survey Code", detail: "Birinci trim düzeltmesi" },
@@ -132,9 +132,9 @@ export const cargo: CourseTopic = {
       formula: "Δcorrected = Δtable × (ρdock / 1.025)",
       variables: [
         { symbol: "Δtable", label: "Tablodan deplasman", unit: "t" },
-        { symbol: "ρdock", label: "Liman suyu yoğunluğu", unit: "t/m³" },
+        { symbol: "ρdock", label: "Dock water density", unit: "t/m³" },
       ],
-      source: { code: "UN ECE Draft Survey Code", detail: "Yoğunluk düzeltmesi" },
+      source: { code: "UN ECE Draft Survey Code", detail: "Density correction" },
       inputs: [
         { key: "disp", label: "Tablo Deplasmanı", unit: "t", placeholder: "12000" },
         { key: "rho", label: "Liman Suyu (ρ)", unit: "t/m³", placeholder: "1.012" },
@@ -169,13 +169,13 @@ export const cargo: CourseTopic = {
     },
     {
       id: "grain-heel",
-      name: "Tahıl Kümelenme Açısı",
+      name: "Grain Heeling Angle",
       group: "Katı Dökme Yük",
       formula: "θ = (57.3 × GHM) / (Δ × GM)",
       variables: [
-        { symbol: "GHM", label: "Tahıl kayma momenti", unit: "t·m" },
+        { symbol: "GHM", label: "Grain heeling moment", unit: "t·m" },
         { symbol: "Δ", label: "Deplasman", unit: "t" },
-        { symbol: "GM", label: "Düzeltilmiş GM", unit: "m" },
+        { symbol: "GM", label: "Corrected GM", unit: "m" },
       ],
       source: { code: "International Grain Code", detail: "Kümelenme açısı ≤ 12°" },
       inputs: [
@@ -184,7 +184,7 @@ export const cargo: CourseTopic = {
         { key: "gm", label: "GM", unit: "m", placeholder: "1.5" },
       ],
       calculate: (v) => {
-        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Hata", value: "Δ ve GM pozitif olmalı" }];
+        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Hata", value: "Δ and GM must be positive" }];
         const theta = (57.3 * v.ghm) / (v.disp * v.gm);
         return [
           { label: "Kümelenme Açısı", value: `${theta.toFixed(2)} °` },
@@ -254,11 +254,11 @@ export const cargo: CourseTopic = {
       group: "Yük Planlama",
       formula: "θ = (w × d) / (Δ × GM) × 57.3",
       variables: [
-        { symbol: "θ", label: "Meyil açısı", unit: "°" },
+        { symbol: "θ", label: "Heel angle", unit: "°" },
         { symbol: "w", label: "Kayan/transfer edilen yük", unit: "t" },
         { symbol: "d", label: "Enine yer değiştirme mesafesi", unit: "m" },
         { symbol: "Δ", label: "Deplasman", unit: "t" },
-        { symbol: "GM", label: "Düzeltilmiş GM", unit: "m" },
+        { symbol: "GM", label: "Corrected GM", unit: "m" },
       ],
       source: { code: "Stabilite — enine ağırlık kaymasından meyil" },
       note: "Küçük açı yaklaşımı (tan θ ≈ θ). Büyük açılarda tam çözüm gerekir.",
@@ -269,9 +269,9 @@ export const cargo: CourseTopic = {
         { key: "gm", label: "GM", unit: "m", placeholder: "1.5" },
       ],
       calculate: (v) => {
-        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Hata", value: "Δ ve GM pozitif olmalı" }];
+        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Hata", value: "Δ and GM must be positive" }];
         const theta = ((v.w * v.d) / (v.disp * v.gm)) * 57.3;
-        return [{ label: "Meyil Açısı (θ)", value: `${theta.toFixed(2)} °` }];
+        return [{ label: "Heel Angle (θ)", value: `${theta.toFixed(2)} °` }];
       },
     },
   ],

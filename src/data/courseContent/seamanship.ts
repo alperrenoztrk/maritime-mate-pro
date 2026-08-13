@@ -39,20 +39,20 @@ export const seamanship: CourseTopic = {
     },
     {
       id: "wind-force",
-      name: "Rüzgâr Kuvveti",
+      name: "Wind Force",
       group: "Rüzgâr ve Akıntı",
       formula: "F = 0.613 × Cd × A × V²",
       variables: [
         { symbol: "Cd", label: "Sürükleme katsayısı" },
         { symbol: "A", label: "Rüzgâra maruz alan", unit: "m²" },
-        { symbol: "V", label: "Rüzgâr hızı", unit: "m/s" },
+        { symbol: "V", label: "Wind speed", unit: "m/s" },
       ],
       source: { code: "Rüzgâr basıncı / sürükleme kuvveti bağıntısı" },
       note: "Sonuç Newton (N) cinsindedir; 0,613 = ½·ρhava (≈1,226 kg/m³).",
       inputs: [
         { key: "cd", label: "Cd", unit: "", placeholder: "1.0" },
         { key: "a", label: "Alan (A)", unit: "m²", placeholder: "500" },
-        { key: "v", label: "Rüzgâr Hızı (V)", unit: "m/s", placeholder: "20" },
+        { key: "v", label: "Wind Speed (V)", unit: "m/s", placeholder: "20" },
       ],
       calculate: (v) => [{ label: "Kuvvet (F)", value: `${(0.613 * v.cd * v.a * v.v * v.v).toFixed(0)} N` }],
     },
@@ -123,7 +123,7 @@ export const seamanship: CourseTopic = {
       formula: "Gerekli BP = (Δ × V²) / K",
       variables: [
         { symbol: "Δ", label: "Gemi deplasmanı", unit: "t" },
-        { symbol: "V", label: "Hız", unit: "kn" },
+        { symbol: "V", label: "Speed", unit: "kn" },
         { symbol: "K", label: "Ampirik katsayı" },
       ],
       source: { code: "Römorkör bollard pull tahmini (ampirik)" },
@@ -172,7 +172,7 @@ export const seamanship: CourseTopic = {
       group: "Rüzgâr ve Akıntı",
       formula: "F = ½ · ρ · Cd · A · V²",
       variables: [
-        { symbol: "ρ", label: "Deniz suyu yoğunluğu", unit: "kg/m³" },
+        { symbol: "ρ", label: "Sea water density", unit: "kg/m³" },
         { symbol: "Cd", label: "Sürükleme katsayısı" },
         { symbol: "A", label: "Su altı (ıslak) profil alanı", unit: "m²" },
         { symbol: "V", label: "Akıntı hızı", unit: "m/s" },
@@ -180,7 +180,7 @@ export const seamanship: CourseTopic = {
       source: { code: "Hidrodinamik sürükleme kuvveti bağıntısı" },
       note: "Deniz suyu ρ ≈ 1025 kg/m³. Akıntı hızı m/s girilir (1 kn ≈ 0,514 m/s). Demirleme/palamar yük analizinde rüzgâr kuvvetiyle birlikte kullanılır.",
       inputs: [
-        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
         { key: "cd", label: "Cd", unit: "", placeholder: "1.0" },
         { key: "a", label: "Islak Alan (A)", unit: "m²", placeholder: "300" },
         { key: "v", label: "Akıntı Hızı (V)", unit: "m/s", placeholder: "1.5" },

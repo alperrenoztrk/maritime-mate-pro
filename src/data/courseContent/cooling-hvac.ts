@@ -14,7 +14,7 @@ export const coolingHvac: CourseTopic = {
   group: "machine",
   intro:
     "Soğutma çevrimi, COP, soğutucu akışkan debisi ve klima (HVAC) yük hesapları. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "cop-cooling",
@@ -25,11 +25,11 @@ export const coolingHvac: CourseTopic = {
         { symbol: "QL", label: "Soğutma kapasitesi", unit: "kW" },
         { symbol: "Wcomp", label: "Kompresör işi", unit: "kW" },
       ],
-      source: { code: "Soğutma çevrimi performans katsayısı (COP) tanımı" },
+      source: { code: "Refrigeration cycle coefficient of performance (COP) definition" },
       note: "Isı atımı QH = QL + Wcomp (enerji korunumu).",
       inputs: [
         { key: "ql", label: "Soğutma Kapasitesi (QL)", unit: "kW", placeholder: "50" },
-        { key: "wc", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "15" },
+        { key: "wc", label: "Compressor Power (W)", unit: "kW", placeholder: "15" },
       ],
       calculate: (v) => {
         const cop = v.ql / v.wc;
@@ -53,10 +53,10 @@ export const coolingHvac: CourseTopic = {
       note: "Isıtma kapasitesi ve kompresör gücü girilir; COPHP = QH/W ve COPsoğutma = COPHP − 1.",
       inputs: [
         { key: "qh", label: "Isıtma Kapasitesi (QH)", unit: "kW", placeholder: "65" },
-        { key: "wc", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "15" },
+        { key: "wc", label: "Compressor Power (W)", unit: "kW", placeholder: "15" },
       ],
       calculate: (v) => {
-        if (v.wc <= 0) return [{ label: "Hata", value: "Kompresör gücü pozitif olmalı" }];
+        if (v.wc <= 0) return [{ label: "Hata", value: "The compressor power must be positive" }];
         const cop = v.qh / v.wc;
         return [
           { label: "COP (Isı Pompası)", value: cop.toFixed(2) },
@@ -74,7 +74,7 @@ export const coolingHvac: CourseTopic = {
         { symbol: "TH", label: "Sıcak ortam mutlak sıcaklığı", unit: "K" },
       ],
       source: { code: "Ters Carnot çevrimi (ideal soğutma COP)" },
-      note: "Girişler °C alınır, hesaplamada mutlak sıcaklığa (K) çevrilir: T(K) = T(°C) + 273,15.",
+      note: "Inputs are taken in °C and converted to absolute temperature (K) in the calculation: T(K) = T(°C) + 273.15.",
       inputs: [
         { key: "tl", label: "Soğuk Ortam (TL)", unit: "°C", placeholder: "-18" },
         { key: "th", label: "Sıcak Ortam (TH)", unit: "°C", placeholder: "35" },
@@ -126,7 +126,7 @@ export const coolingHvac: CourseTopic = {
       ],
       calculate: (v) => {
         const mdot = v.ql / (v.h1 - v.h4);
-        return [{ label: "Kütle Debisi (ṁ)", value: `${mdot.toFixed(3)} kg/s` }];
+        return [{ label: "Mass Flow Rate (ṁ)", value: `${mdot.toFixed(3)} kg/s` }];
       },
     },
     {
@@ -141,13 +141,13 @@ export const coolingHvac: CourseTopic = {
       ],
       source: { code: "Kompresör enerji dengesi (izentropik iş)" },
       inputs: [
-        { key: "mdot", label: "Kütle Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
+        { key: "mdot", label: "Mass Flow Rate (ṁ)", unit: "kg/s", placeholder: "0.5" },
         { key: "h1", label: "Kompresör Girişi (h₁)", unit: "kJ/kg", placeholder: "400" },
         { key: "h2", label: "Kompresör Çıkışı (h₂)", unit: "kJ/kg", placeholder: "450" },
       ],
       calculate: (v) => {
         const w = v.mdot * (v.h2 - v.h1);
-        return [{ label: "Kompresör Gücü (W)", value: `${w.toFixed(2)} kW` }];
+        return [{ label: "Compressor Power (W)", value: `${w.toFixed(2)} kW` }];
       },
     },
     {
@@ -158,7 +158,7 @@ export const coolingHvac: CourseTopic = {
       variables: [
         { symbol: "U", label: "Isı geçiş katsayısı", unit: "W/m²·K" },
         { symbol: "A", label: "Duvar alanı", unit: "m²" },
-        { symbol: "ΔT", label: "Sıcaklık farkı", unit: "K" },
+        { symbol: "ΔT", label: "Temperature difference", unit: "K" },
         { symbol: "Qhava", label: "Taze hava yükü", unit: "kW" },
         { symbol: "Qiç", label: "İç ısı kaynakları", unit: "kW" },
       ],
@@ -196,7 +196,7 @@ export const coolingHvac: CourseTopic = {
         { key: "q", label: "Hava Debisi", unit: "m³/h", placeholder: "5000" },
         { key: "w1", label: "Giriş Nem Oranı (W₁)", unit: "g/kg", placeholder: "14" },
         { key: "w2", label: "Çıkış Nem Oranı (W₂)", unit: "g/kg", placeholder: "8" },
-        { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.2" },
+        { key: "rho", label: "Air Density (ρ)", unit: "kg/m³", placeholder: "1.2" },
       ],
       calculate: (v) => {
         const mAir = v.q * v.rho / 3600; // kg/s

@@ -51,7 +51,7 @@ export const automation: CourseTopic = {
       variables: [
         { symbol: "V", label: "Termokupl gerilimi (EMF)", unit: "mV" },
         { symbol: "S", label: "Seebeck katsayısı", unit: "μV/°C" },
-        { symbol: "ΔT", label: "Sıcaklık farkı", unit: "°C" },
+        { symbol: "ΔT", label: "Temperature difference", unit: "°C" },
       ],
       source: { code: "Seebeck etkisi — termokupl ölçümü", detail: "K-tipi termokupl ≈ 40,7 µV/°C" },
       note: "K-tipi yaklaşık lineer kabul edilir: ΔT = EMF (mV) / 0,0407 (mV/°C).",
