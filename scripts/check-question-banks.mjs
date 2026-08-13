@@ -153,6 +153,7 @@ const BALANCED_BANKS = new Set([
   "beta/communication",
   "beta/meteorology",
   "beta/stability",
+  "beta/navigation",
 ]);
 
 /**
@@ -163,7 +164,6 @@ const BALANCED_BANKS = new Set([
  * böylece yeni bankalar dengeli doğar. Bütçeler yalnızca düşürülür.
  */
 const LENGTH_BUDGET = {
-  "beta/navigation": 74,
   "beta/machine": 86,
 };
 
@@ -177,7 +177,6 @@ const LENGTH_BUDGET = {
  * yeniden yazıldıkça düşürülür, asla artırılmaz.
  */
 const POSITION_BUDGET = {
-  "beta/navigation": 97,
   "beta/machine": 100,
 };
 
