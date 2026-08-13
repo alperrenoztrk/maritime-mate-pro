@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Vibrate, Monitor, Moon, Sun } from "lucide-react";
-import { Switch } from "@/components/ui/switch";
-import { getHapticsEnabled, setHapticsEnabled, hapticImpact } from "@/lib/haptics";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun } from "lucide-react";
+import { hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -38,8 +37,9 @@ const Settings = () => {
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  // Read once on mount; the haptics module owns the persisted value.
-  const [hapticsOn, setHapticsOn] = useState(() => getHapticsEnabled());
+
+
+
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
@@ -362,35 +362,8 @@ const Settings = () => {
               </CardContent>
             </Card>
 
-            {/* Haptic feedback */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Vibrate className="w-5 h-5" />
-                  <span data-translatable>Haptic Feedback</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between gap-4">
-                  <Label htmlFor="haptics-toggle" className="flex-1">
-                    <span data-translatable>Vibration on touches</span>
-                    <span className="mt-1 block text-caption font-normal text-muted-foreground" data-translatable>
-                      It only works on the phone app.
-                    </span>
-                  </Label>
-                  <Switch
-                    id="haptics-toggle"
-                    checked={hapticsOn}
-                    onCheckedChange={(checked) => {
-                      setHapticsEnabled(checked);
-                      setHapticsOn(checked);
-                      // Confirm the new state with the thing being toggled.
-                      if (checked) hapticImpact("light");
-                    }}
-                  />
-                </div>
-              </CardContent>
-            </Card>
+
+
 
             {/* Language Settings */}
             <Card>
