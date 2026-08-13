@@ -10,9 +10,9 @@ const chapters = [
     title: "Genel Hükümler",
     summary: "Uygulama kapsamı, bayrak devleti sorumlulukları ve sertifikasyon gereklilikleri.",
     checkpoints: [
-      "Geminin SOLAS kapsamına girdiğini doğrulayın",
-      "Müfettiş raporlarını ve sertifikaların geçerlilik tarihlerini kontrol edin",
-      "Yapılan tadilatların idareye bildirildiğinden emin olun"
+      "Confirm that the ship falls within the scope of SOLAS",
+      "Check the surveyor reports and the validity dates of the certificates",
+      "Make sure any alterations carried out have been reported to the administration"
     ],
   },
   {
@@ -20,9 +20,9 @@ const chapters = [
     title: "Yapı, Bölmelendirme ve Stabilite",
     summary: "Gemi mukavemeti, su geçirmez bölmeler, makine dairesi güvenliği ve elektrik tesisatı.",
     checkpoints: [
-      "Hasar stabilitesi hesapları güncel ve sınıf tarafından onaylı",
-      "Su geçirmez kapıların uzaktan kumandaları ve yerel kontrolleri test edildi",
-      "Makine emniyet sistemleri (LOP, yüksek sıcaklık alarmları) kayıt altına alındı"
+      "Damage stability calculations are up to date and class-approved",
+      "Remote and local controls of the watertight doors have been tested",
+      "Machinery safety systems (LOP, high-temperature alarms) have been recorded"
     ],
   },
   {
@@ -30,9 +30,9 @@ const chapters = [
     title: "Fire Safety",
     summary: "Yangın bölmelendirmesi, algılama/ihbar sistemleri ve sabit-söndürme ekipmanları.",
     checkpoints: [
-      "Yangın zon planı ve ekipman yerleri köprüüstünde güncel",
-      "Sprinkler, drencher ve sabit CO₂ sistemleri son test tarihleri kayıtlı",
-      "Yangın kapıları otomatik kapanıyor ve hold back cihazları onaylı"
+      "The fire zone plan and equipment locations on the bridge are up to date",
+      "The latest test dates of the sprinkler, drencher and fixed CO₂ systems are recorded",
+      "Fire doors close automatically and the hold-back devices are approved"
     ],
   },
   {
@@ -40,9 +40,9 @@ const chapters = [
     title: "Lifesaving Vehicles",
     summary: "Can salı, filika, davit ve mustering düzenlemeleri.",
     checkpoints: [
-      "Minimum filika kapasitesi = gemi nüfusu × 1.25",
-      "Her filika için son yük testi ve sertifikası mevcut",
-      "Muster listeleri, görev dağılımları ve anons sistemi güncel"
+      "Minimum lifeboat capacity = ship's complement × 1.25",
+      "The latest load test and certificate is available for each lifeboat",
+      "Muster lists, duty allocations and the public address system are up to date"
     ],
   },
   {
@@ -50,9 +50,9 @@ const chapters = [
     title: "Seyir Güvenliği",
     summary: "Seyir almaçları, elektronik sistemler, kayıt cihazları ve operasyon prosedürleri.",
     checkpoints: [
-      "Voyage Data Recorder (VDR) fonksiyon testi gerçekleştirildi",
-      "E-NP, dijital seyir yayınları ve kağıt haritalar güncel",
-      "Bridge Navigational Watch Alarm System (BNWAS) aktif ve kaydediliyor"
+      "The Voyage Data Recorder (VDR) function test has been carried out",
+      "E-NP, digital nautical publications and paper charts are up to date",
+      "The Bridge Navigational Watch Alarm System (BNWAS) is active and recording"
     ],
   },
 ];

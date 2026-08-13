@@ -241,8 +241,8 @@ export const Stability3DSim = () => {
             >
               <AlertTriangle className="h-3.5 w-3.5" />
               {nearCapsize
-                ? `TEHLİKE: ${absHeel.toFixed(0)}° meyil — alabora riski!`
-                : `Güverte kenarı suya girdi (φ_deck ${deckImmAngle.toFixed(0)}°)`}
+                ? `DANGER: ${absHeel.toFixed(0)}° meyil — alabora riski!`
+                : `Deck edge immersed (φ_deck ${deckImmAngle.toFixed(0)}°)`}
             </div>
           )}
         </div>
@@ -266,8 +266,7 @@ export const Stability3DSim = () => {
             onValueChange={(v) => setWindMoment(v[0])}
           />
           <p className="mt-1 text-micro text-muted-foreground">
-            Yandan esen rüzgârın devirme momenti. Denge meyli, doğrultma momenti Δ·GZ(φ)'ye eşitlenerek çözülür.
-            Yüksek KG → düşük GM → aynı rüzgârda daha büyük meyil.
+            The heeling moment of a beam wind. The equilibrium heel is solved by setting it equal to the righting moment Δ·GZ(φ). Higher KG → lower GM → greater heel in the same wind.
           </p>
         </div>
 
@@ -280,7 +279,7 @@ export const Stability3DSim = () => {
             max={12.0}
             step={0.1}
             onChange={setKgInput}
-            hint="Ağırlık merkezi yüksekliği. ↑ KG → ↓ GM"
+            hint="Height of the centre of gravity. ↑ KG → ↓ GM"
           />
           <SliderControl
             label="Draft (m)"
@@ -289,7 +288,7 @@ export const Stability3DSim = () => {
             max={12.0}
             step={0.1}
             onChange={setDraftInput}
-            hint="Su çekimi. Deplasman ve KB etkiler."
+            hint="Draft. Affects displacement and KB."
           />
           <SliderControl
             label="Cb (blok kts.)"
@@ -298,7 +297,7 @@ export const Stability3DSim = () => {
             max={0.88}
             step={0.01}
             onChange={setCbInput}
-            hint="Gövde doluluk oranı. BM'yi etkiler."
+            hint="Hull block coefficient. Affects BM."
           />
         </div>
 
@@ -317,7 +316,7 @@ export const Stability3DSim = () => {
           <div className="grid grid-cols-2 gap-x-4 gap-y-1">
             <IMOBadge label={`GM ≥ 0.15 m (${stability.gm.toFixed(2)})`} ok={imo.gmOk} />
             <IMOBadge label={`GZ₃₀° ≥ 0.20 m`} ok={imo.gzAt30Ok} />
-            <IMOBadge label={`Max GZ açısı ≥ 25°`} ok={imo.maxGzAngleOk} />
+            <IMOBadge label={`Angle of max GZ ≥ 25°`} ok={imo.maxGzAngleOk} />
             <IMOBadge label={`Alan 0–30° ≥ 0.055 m·rad`} ok={imo.areaTo30Ok} />
             <IMOBadge label={`Alan 0–40° ≥ 0.090 m·rad`} ok={imo.areaTo40Ok} />
             <IMOBadge label={`Alan 30–40° ≥ 0.030 m·rad`} ok={imo.area30to40Ok} />
@@ -330,8 +329,7 @@ export const Stability3DSim = () => {
           <div className="font-mono text-primary text-xs">GZ = sinφ · [GM + ½·BM·tan²φ]</div>
           <div className="font-mono text-primary text-xs">KB ≈ ⅓(5T/2 − ∇/Awp)</div>
           <p className="mt-1 text-micro">
-            Wall-sided formül büyük açılarda (φ &gt; 15°) doğrusal yaklaşıma göre çok daha doğru sonuç verir.
-            Yalpa hareketi sönümlü harmonik osilatör (ζ = 0.15) ile modellenir.
+            At large angles (φ &gt; 15°) the wall-sided formula gives a far more accurate result than the linear approximation. Roll motion is modelled as a damped harmonic oscillator (ζ = 0.15).
           </p>
         </div>
       </CardContent>
@@ -363,8 +361,7 @@ function SimErrorFallback() {
     <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center">
       <AlertTriangle className="h-6 w-6 text-amber-400" />
       <p className="text-xs text-muted-foreground">
-        3D görüntüleme bu cihazda başlatılamadı (WebGL desteklenmiyor olabilir).
-        Hesaplamalar ve kriterler aşağıda çalışmaya devam eder.
+        3D rendering could not be started on this device (WebGL may not be supported). The calculations and criteria below continue to work.
       </p>
     </div>
   );

@@ -8,19 +8,19 @@ const cargoRules = [
     icon: FileText,
     rules: [
       "Transportable Moisture Limit (TML) and Flow Moisture Point (FMP) checks are mandatory.",
-      "Kargo sınıflandırması (A, B, C grupları) doğru yapılmalıdır.",
-      "Özel taşıma şartları ve tehlikeli özellikler dikkate alınmalıdır.",
-      "Shipper's Declaration ve sertifikalar eksiksiz olmalıdır."
+      "Cargo classification (groups A, B, C) must be done correctly.",
+      "Special carriage conditions and hazardous properties must be taken into account.",
+      "The Shipper's Declaration and the certificates must be complete."
     ]
   },
   {
     title: "International Grain Code",
     icon: Ship,
     rules: [
-      "Grain Stability: GM ≥ 0.30 m (düzeltilmiş)",
+      "Grain Stability: GM ≥ 0.30 m (corrected)",
       "Heeling angle ≤ 12° (statik)",
-      "GZ eğrisi altındaki alan ≥ 0.075 m·rad",
-      "Serbest yüzey düzeltmeleri uygulanmalıdır."
+      "Area under the GZ curve ≥ 0.075 m·rad",
+      "Free surface corrections must be applied."
     ]
   },
   {
@@ -29,18 +29,18 @@ const cargoRules = [
     rules: [
       "Gas measurements must be taken before the manifold is opened.",
       "Hot work permits must be issued in coordination with the terminal.",
-      "Manifold bağlantıları ve güvenlik ekipmanları kontrol edilmelidir.",
-      "Emergency shutdown prosedürleri hazır olmalıdır."
+      "Manifold connections and safety equipment must be checked.",
+      "Emergency shutdown procedures must be ready."
     ]
   },
   {
     title: "SOLAS Gereklilikleri",
     icon: Scale,
     rules: [
-      "VGM (Verified Gross Mass) konteyner yüklemelerinde zorunludur.",
-      "Cargo Securing Manual gereklilikleri karşılanmalıdır.",
-      "Stability booklet limitleri aşılmamalıdır.",
-      "Dangerous goods deklarasyonları eksiksiz olmalıdır."
+      "VGM (Verified Gross Mass) is mandatory for container loading.",
+      "The Cargo Securing Manual requirements must be met.",
+      "The stability booklet limits must not be exceeded.",
+      "Dangerous goods declarations must be complete."
     ]
   }
 ];

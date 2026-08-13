@@ -291,7 +291,7 @@ const DetailedMeteorology = () => {
     {
       id: 'hurricane-cat1',
       name: 'Category 1 Hurricane',
-      nameTr: 'Kategori 1 Kasırga',
+      nameTr: 'Category 1 Hurricane',
       category: 'Category 1',
       windSpeed: '64-82 knots (119-153 km/h)',
       characteristics: [
@@ -316,7 +316,7 @@ const DetailedMeteorology = () => {
     {
       id: 'hurricane-cat5',
       name: 'Category 5 Hurricane',
-      nameTr: 'Kategori 5 Kasırga',
+      nameTr: 'Category 5 Hurricane',
       category: 'Category 5',
       windSpeed: '137+ knots (252+ km/h)',
       characteristics: [
@@ -341,7 +341,7 @@ const DetailedMeteorology = () => {
     {
       id: 'extratropical-storm',
       name: 'Extratropical Storm',
-      nameTr: 'Ekstratropik Fırtına',
+      nameTr: 'Extratropical Storm',
       category: 'Gale/Storm',
       windSpeed: '34-63+ knots',
       characteristics: [
@@ -430,8 +430,7 @@ const DetailedMeteorology = () => {
               </div>
               <p className="text-sm text-blue-800 dark:text-blue-200">
                 Bu konu anlatımı <span className="font-semibold">US Coast Guard (USCG)</span> and 
-                <span className="font-semibold"> SeaVision</span> meteoroloji verilerinden derlenmiştir. 
-                Tüm bilgiler denizcilik güvenliği standartlarına uygun olarak hazırlanmıştır.
+                <span className="font-semibold"> SeaVision</span> meteorological data. All information has been prepared in line with maritime safety standards.
               </p>
             </div>
           </div>
@@ -1102,16 +1101,14 @@ const DetailedMeteorology = () => {
                     <Alert className="border-red-200 bg-red-50">
                       <AlertTriangle className="h-4 w-4 text-red-600" />
                       <AlertDescription>
-                        <strong>Fırtına Yaklaşımı:</strong> Derhal güvenli liman ara, hızı azalt, 
-                        tüm ekipmanları sabitle, personeli güvenli alanlara yönlendir.
+                        <strong>Fırtına Yaklaşımı:</strong> Seek a safe harbour immediately, reduce speed, secure all equipment and move personnel to safe areas.
                       </AlertDescription>
                     </Alert>
                     
                     <Alert className="border-orange-200 bg-orange-50">
                       <AlertTriangle className="h-4 w-4 text-orange-600" />
                       <AlertDescription>
-                        <strong>Görüş Kaybı:</strong> Radar kullan, hızı azalt, 
-                        sis düdüğü çal, VHF ile konum bildir.
+                        <strong>Görüş Kaybı:</strong> Use radar, reduce speed, sound the fog signal and report your position on VHF.
                       </AlertDescription>
                     </Alert>
                   </div>
@@ -1163,12 +1160,10 @@ const DetailedMeteorology = () => {
         {/* Footer */}
         <div className="text-center text-sm text-gray-500 dark:text-gray-400 py-6">
           <p>
-            Bu rehber US Coast Guard ve SeaVision meteoroloji verilerinden derlenmiştir. 
-            Tüm bilgiler denizcilik güvenliği standartlarına uygun olarak hazırlanmıştır.
+            This guide has been compiled from US Coast Guard and SeaVision meteorological data. All information has been prepared in line with maritime safety standards.
           </p>
           <p className="mt-2">
-            <strong>Önemli:</strong> Hava durumu tahminleri değişebilir. 
-            Seyir öncesi ve sırasında güncel bilgileri takip edin.
+            <strong>Önemli:</strong> Weather forecasts can change. Follow the latest information before and during the passage.
           </p>
         </div>
       </div>

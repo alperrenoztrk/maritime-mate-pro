@@ -37,8 +37,8 @@ const appraisalResources = [
   {
     title: "Risk Faktörleri",
     items: [
-      "TSS bölgeleri",
-      "Dar boğazlar",
+      "TSS areas",
+      "Narrow straits",
       "Shallow waters",
       "Restricted visibility areas",
       "Piracy zones",
@@ -96,8 +96,8 @@ const passagePlanContents = [
 ];
 
 const roleTable = [
-  { task: "Passage plan hazırlama", owner: "2. Kaptan", doer: "2. Kaptan" },
-  { task: "Risk değerlendirme", owner: "2/O + Master", doer: "2/O + Master" },
+  { task: "Passage plan preparation", owner: "2. Kaptan", doer: "2. Kaptan" },
+  { task: "Risk assessment", owner: "2/O + Master", doer: "2/O + Master" },
   { task: "Onay", owner: "Master", doer: "Master" },
   { task: "Uygulama", owner: "OOW", doer: "OOW" },
   { task: "İzleme", owner: "OOW", doer: "OOW" },
@@ -125,8 +125,7 @@ export default function PassagePlanPage() {
         <section className="rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-foreground">Passage Plan Nedir?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Geminin sefer boyunca izleyeceği rota, riskler ve operasyonel sınırlar bütünüdür. Emniyet, mevzuata uyum ve optimizasyon
-            hedeflenir; PSC ve vetting denetimlerinde ilk incelenen dokümandır.
+            It is the whole of the route, risks and operational limits the ship will follow throughout the voyage. It aims at safety, regulatory compliance and optimisation; it is the first document examined in PSC and vetting inspections.
           </p>
         </section>
 
@@ -186,8 +185,7 @@ export default function PassagePlanPage() {
           <div className="rounded-xl border border-dashed border-primary/40 bg-slate-900/50 p-4 text-xs text-muted-foreground">
             <p className="font-semibold text-primary">Contingency Plan Hatırlatması:</p>
             <p>
-              Her risk için B planı oluşturulmalı; makine arızasında manevra, kötü hava koşullarında alternatif rota ve trafik sıkışıklığında bekleme
-              alanı hazır olmalıdır. PSC denetimleri bu kısmı özellikle kontrol eder.
+              A contingency plan must be prepared for every risk: manoeuvring in the event of machinery failure, an alternative route in bad weather and a waiting area in heavy traffic. PSC inspections check this part particularly closely.
             </p>
           </div>
         </section>
@@ -195,17 +193,14 @@ export default function PassagePlanPage() {
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-foreground">3️⃣ EXECUTION – UYGULAMA AŞAMASI</h2>
           <p className="text-sm text-muted-foreground">
-            Plan master tarafından onaylanmadan uygulanmaz. Bu aşamada bridge team briefing yapılır; vardiya zabitlerine kritik
-            waypoint’ler, UKC limitleri ve alarm ayarları aktarılır. Pilot varsa bilgi paylaşılır. Plan körü körüne uygulanmaz; duruma göre
-            revize edilebilir ve her revizyon kayıt altına alınır.
+            The plan is not put into effect until it is approved by the master. A bridge team briefing is held at this stage; the critical waypoints, UKC limits and alarm settings are passed on to the watchkeeping officers. Information is shared with the pilot if one is on board. The plan is not applied blindly; it can be revised as the situation requires and every revision is recorded.
           </p>
         </section>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-foreground">4️⃣ MONITORING – İZLEME AŞAMASI</h2>
           <p className="text-sm text-muted-foreground">
-            Seyir sırasında planın canlı takibi yapılır. OOW; XTD aşımı, course deviation, hız değişimi, depth trendi ve trafik
-            durumunu izler. Sapma varsa düzeltme yapılır, kayıt alınır ve gerekirse master çağrılır.
+            The plan is monitored live during the passage. The OOW watches for XTD exceedance, course deviation, speed changes, the depth trend and the traffic situation. Any deviation is corrected and recorded, and the master is called if necessary.
           </p>
           <div className="rounded-xl border border-border/50 bg-slate-900/60 p-4 text-xs text-muted-foreground">
             <p className="font-semibold text-primary">Kullanılan araçlar:</p>
