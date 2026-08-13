@@ -2,19 +2,19 @@ import { CloudSun } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "Rota üzerindeki METAREA yayınlarına göre önümüzdeki 72 saatte beklenen hava ve deniz durumu nedir?",
-  "Beaufort 8 rüzgar ve 4-5 m dalga bekleniyor, rota optimizasyonu için önerin nedir?",
-  "Barometrede hızlı düşüş gözleniyor. Olası hava sistemi ve alınacak önlemler nelerdir?",
-  "Tropik siklon bölgesine yaklaşmadan güvenli kaçış rotası nasıl planlanır?",
-  "Kış şartlarında buzlanma riski için operasyonel limitler ve kontrol listesi verebilir misin?",
-  "Yoğun sis koşullarında köprüüstü alarm ve vardiya düzenini nasıl güncellemeliyim?",
+  "Based on the METAREA broadcasts along the route, what weather and sea state is expected over the next 72 hours?",
+  "Beaufort 8 winds and 4-5 m waves are expected; what do you recommend for route optimisation?",
+  "A rapid fall is observed on the barometer. What is the likely weather system and which precautions should be taken?",
+  "How is a safe evasion route planned before approaching a tropical cyclone area?",
+  "Can you give the operational limits and a checklist for icing risk in winter conditions?",
+  "How should I update the bridge alarm settings and watch arrangement in dense fog?",
 ];
 
-const systemPrompt = `Sen denizcilik meteorolojisi konusunda uzman bir asistansın.
-METAREA/SYNOP yayınları, Beaufort ve Douglas skalası, rota optimizasyonu, icing ve tropik siklon kaçış planları konusunda rehberlik edersin.
-Yanıtlarını kısa maddelerle ve operasyonel tavsiyelerle ver.
-Güvenlik önlemlerini, alarm eşiklerini ve gerekli raporlamaları (NAVTEX, MSI vb.) vurgula.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in marine meteorology.
+You provide guidance on METAREA/SYNOP broadcasts, the Beaufort and Douglas scales, route optimisation, icing and tropical cyclone evasion plans.
+Give your answers in short bullet points with operational advice.
+Emphasise the safety precautions, the alarm thresholds and the reporting required (NAVTEX, MSI, etc.).
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function MeteorologyAssistantPage() {
   return (

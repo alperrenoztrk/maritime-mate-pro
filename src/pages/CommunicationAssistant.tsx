@@ -2,18 +2,18 @@ import { Radio } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "MAYDAY çağrısının doğru sırası ve içeriği nedir?",
-  "VHF DSC ile tehlike çağrısı nasıl yapılır ve hangi kanal kullanılır?",
-  "NAVTEX ve SafetyNET mesajlarını nasıl değerlendirmeliyim?",
-  "EPIRB ve SART testleri hangi sıklıkla ve nasıl yapılır?",
-  "GMDSS deniz alanına göre zorunlu ekipman gereklilikleri nelerdir?",
-  "Radyo log defterine hangi kayıtlar tutulmalıdır?",
+  "What is the correct order and content of a MAYDAY call?",
+  "How is a distress alert made with VHF DSC and which channel is used?",
+  "How should I evaluate NAVTEX and SafetyNET messages?",
+  "How often and how are EPIRB and SART tests carried out?",
+  "What are the mandatory equipment requirements by GMDSS sea area?",
+  "Which entries must be kept in the radio log book?",
 ];
 
-const systemPrompt = `Sen GMDSS ve denizde haberleşme konusunda uzman bir asistansın.
-VHF/DSC, MF/HF, Inmarsat, NAVTEX, SafetyNET, EPIRB, SART, AIS ve tehlike/aciliyet/emniyet haberleşme prosedürleri hakkında rehberlik verirsin.
-Yanıtlarını adım adım ve SOLAS/ITU Radyo Tüzüğü'ne uygun şekilde yaz; öncelik sırasını ve emniyet uyarılarını vurgula.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in GMDSS and communications at sea.
+You provide guidance on VHF/DSC, MF/HF, Inmarsat, NAVTEX, SafetyNET, EPIRB, SART, AIS and distress/urgency/safety communication procedures.
+Write your answers step by step and in line with SOLAS and the ITU Radio Regulations; emphasise the order of priority and the safety warnings.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function CommunicationAssistantPage() {
   return (

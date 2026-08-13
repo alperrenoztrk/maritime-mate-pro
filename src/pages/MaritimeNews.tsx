@@ -213,8 +213,8 @@ const MaritimeNews = () => {
   const volume = toRoman(today.getFullYear() - FOUNDED_YEAR + 1);
   const issueNo = ((today.getFullYear() - FOUNDED_YEAR) * 365 + dayOfYear).toLocaleString("tr-TR");
   const coverage = query.data?.locale
-    ? `${query.data.locale.countryName}${query.data.locale.mode === "regional-and-global" ? " ve Küresel" : ""} Kaynakları`
-    : "Bölgesel Kaynaklar";
+    ? `${query.data.locale.countryName}${query.data.locale.mode === "regional-and-global" ? " and Global" : ""} Sources`
+    : "Regional Sources";
   const pressTime = query.data?.fetchedAt
     ? new Date(query.data.fetchedAt).toLocaleTimeString(currentLanguage || "tr", {
         hour: "2-digit",
@@ -252,11 +252,11 @@ const MaritimeNews = () => {
         <title>Mariner's Book — Denizcilik Haberleri</title>
         <meta
           name="description"
-          content="Denizcilik dünyasından güncel haberler; başlıklar, kaynaklar ve gazete formatında uygulama içi okuma."
+          content="Current news from the maritime world; headlines, sources and in-app reading in a newspaper format."
         />
         <link rel="canonical" href="https://nauticalleap.com/maritime-news" />
         <meta property="og:title" content="Mariner's Book — Denizcilik Haberleri" />
-        <meta property="og:description" content="Denizcilik dünyasından güncel haberler; kaynaklara göre derlenmiş öne çıkan başlıklar." />
+        <meta property="og:description" content="Current news from the maritime world; featured headlines compiled by source." />
         <meta property="og:url" content="https://nauticalleap.com/maritime-news" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

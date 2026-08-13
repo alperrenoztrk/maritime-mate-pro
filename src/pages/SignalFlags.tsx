@@ -196,22 +196,18 @@ export default function SignalFlagsPage() {
               </div>
               <div className="space-y-2 p-4 text-sm leading-relaxed text-muted-foreground">
                 <p>
-                  Bir hoist içinde aynı harf veya rakam ikinci kez gerektiğinde, gemide ikinci bir
-                  takım bayrak bulundurmak yerine ikame flaması çekilir. İkame flaması,{" "}
+                  When the same letter or numeral is needed a second time within a hoist, a substitute pennant is hoisted instead of carrying a second set of flags on board. The substitute pennant{" "}
                   <span className="font-medium text-foreground">
                     yalnızca kendi sınıfındaki bayrağı
                   </span>{" "}
-                  tekrarlar: harf bayrakları arasındaki bir ikame harfleri, rakam flamaları
-                  arasındaki bir ikame rakamları sayar.
+                  repeats: a substitute among the letter flags counts the letters, and a substitute among the numeral pennants counts the numerals.
                 </p>
                 <p>
                   Örnek: <span className="font-mono font-semibold text-foreground">“ANNA”</span>{" "}
-                  hoist'ında A-N-(2. ikame)-(1. ikame) çekilir. 2. ikame kendi sınıfındaki ikinci
-                  bayrağı (N), 1. ikame ise birinci bayrağı (A) tekrarlar.
+                  hoist, A-N-(2nd substitute)-(1st substitute) is flown. The 2nd substitute repeats the second flag of its own class (N), and the 1st substitute repeats the first flag (A).
                 </p>
                 <p>
-                  Üç ikame flaması sayesinde tek takım bayrakla dört karakterlik her kombinasyon
-                  çekilebilir.
+                  Thanks to the three substitute pennants, every four-character combination can be hoisted with a single set of flags.
                 </p>
               </div>
             </section>
@@ -223,8 +219,7 @@ export default function SignalFlagsPage() {
                   Sık Kullanılan İki Harfli Gruplar
                 </h2>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  Tek harfli işaretlerin ötesinde, iki harfli gruplar emniyet ve acil durum
-                  mesajlarının çoğunu taşır.
+                  Beyond the single-letter signals, the two-letter groups carry most of the safety and emergency messages.
                 </p>
               </div>
               <div>

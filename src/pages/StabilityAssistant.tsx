@@ -2,18 +2,18 @@ import { Shield } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "KG ve KM değerlerim var. GM hesaplayıp IMO minimum kriteriyle karşılaştırır mısın?",
-  "0-40° GZ eğrisi alanını hesaplamak için hangi adımları izlemeliyim?",
-  "Serbest yüzey düzeltmesini (FSC) tank listesine nasıl uygularım?",
-  "Tahıl yüklemesinde heeling momenti nasıl hesaplar ve GM'i nasıl doğrularım?",
-  "Hasarlı stabilite için perdelenmemiş bölme su alırsa başlangıç açısını nasıl tahmin ederim?",
-  "Rüzgar devrilme momentine karşı gerekli GM minimumunu nasıl bulurum?",
+  "I have my KG and KM values. Can you calculate GM and compare it against the IMO minimum criterion?",
+  "Which steps should I follow to calculate the area under the 0-40° GZ curve?",
+  "How do I apply the free surface correction (FSC) to the tank list?",
+  "How do I calculate the heeling moment and verify GM when loading grain?",
+  "For damage stability, how do I estimate the initial angle if an unsubdivided compartment floods?",
+  "How do I find the minimum GM required against the wind heeling moment?",
 ];
 
-const systemPrompt = `Sen gemi stabilitesi konusunda uzman bir asistansın.
-GM, GZ, KN tabloları, FSC, tahıl ve hasarlı stabilite hesapları ile IMO IS Code kriterleri hakkında detaylı bilgi verirsin.
-Yanıtlarını maddeler halinde ve formülleri belirterek yaz; hesap adımlarını ve emniyet limitlerini vurgula.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in ship stability.
+You give detailed information on GM, GZ, KN tables, FSC, grain and damage stability calculations and the IMO IS Code criteria.
+Write your answers as bullet points, stating the formulas; emphasise the calculation steps and the safety limits.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function StabilityAssistantPage() {
   return (

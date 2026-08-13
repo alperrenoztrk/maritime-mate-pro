@@ -108,8 +108,7 @@ function MorseTranslator() {
       <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
         <h2 className="text-base font-semibold text-foreground">Metin → Mors Çevirici</h2>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          Gemi adı, çağrı işareti veya kısa bir mesaj yazın; harf harf mors karşılığını görün ve
-          dinleyin.
+          Type a ship name, a call sign or a short message; see and hear its Morse equivalent letter by letter.
         </p>
       </div>
 
@@ -147,14 +146,13 @@ function MorseTranslator() {
               <SignalTonePlayer
                 steps={morsePattern(fullCode)}
                 preset="morse"
-                label="Tamamını çal"
+                label="Play all"
               />
             ) : null}
 
             {hasUnknown ? (
               <p className="text-xs text-muted-foreground">
-                “—” ile gösterilen karakterlerin uluslararası mors karşılığı yoktur; sahada bu
-                harfler temel karşılıklarıyla (Ğ→G, İ→I, Ş→S) hecelenir.
+                Characters shown with “—” have no international Morse equivalent; in the field these letters are spelled out with their base equivalents (Ğ→G, İ→I, Ş→S).
               </p>
             ) : null}
           </>
@@ -206,10 +204,7 @@ export default function MorseCodePage() {
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Zamanlama kuralı:</span> nokta 1 birim ·
-            çizgi 3 birim · aynı harfin öğeleri arası 1 birim · harfler arası 3 birim · kelimeler
-            arası 7 birim. Hız değişse de bu oranlar sabit kalır; mors “hızlı/yavaş” değil, oranı
-            doğru gönderildiğinde okunur.
+            <span className="font-semibold text-foreground">Zamanlama kuralı:</span> a dot is 1 unit, a dash 3 units, the gap between the elements of the same letter 1 unit, between letters 3 units and between words 7 units. These ratios stay constant however the speed changes; Morse is read by sending the ratio correctly, not by sending it “fast” or “slow”.
           </p>
         </div>
 

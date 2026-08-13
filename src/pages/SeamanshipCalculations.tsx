@@ -120,11 +120,11 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
     if (isNaN(chainLength) || isNaN(depth) || depth === 0) return null;
     const ratio = chainLength / depth;
     let recommendation = "";
-    if (ratio < 3) recommendation = "Yetersiz — minimum 3:1 önerilir";
+    if (ratio < 3) recommendation = "Insufficient — a minimum of 3:1 is recommended";
     else if (ratio < 5) recommendation = "Kabul edilebilir — sakin hava";
-    else if (ratio < 7) recommendation = "İyi — normal koşullar";
-    else if (ratio < 10) recommendation = "Çok iyi — sert hava";
-    else recommendation = "Mükemmel — fırtına koşulları";
+    else if (ratio < 7) recommendation = "Good — normal conditions";
+    else if (ratio < 10) recommendation = "Very good — heavy weather";
+    else recommendation = "Excellent — storm conditions";
     return { ratio: ratio.toFixed(1), recommendation };
   };
 

@@ -55,7 +55,7 @@ const examModules = [
     borderColor: "border-blue-500/30",
     questions: stabilityQuestions,
     description: "IS Code, GZ eğrileri, serbest yüzey, hasarlı stabilite",
-    topics: ["IS Code 2008", "Grain Code", "GZ/KN", "Free Surface", "Hasarlı Stabilite"]
+    topics: ["IS Code 2008", "Grain Code", "GZ/KN", "Free Surface", "Damage Stability"]
   },
   {
     id: "navigation",
@@ -320,7 +320,7 @@ export default function ExamPreparationPage() {
         : selectedPreset
           ? examPresets.find(p => p.id === selectedPreset)?.title || 'Sınav'
           : selectedOfficerExam
-            ? deckOfficerExams.find(e => e.id === selectedOfficerExam)?.title || 'Zabit Sınavı'
+            ? deckOfficerExams.find(e => e.id === selectedOfficerExam)?.title || 'Officer Examination'
             : 'Quiz';
 
       const timeSpent = Math.round((Date.now() - quizStartTime.current) / 1000);
@@ -491,7 +491,7 @@ export default function ExamPreparationPage() {
                           <div className={`p-2 rounded-lg bg-gradient-to-br ${module.color}`}>
                             <Icon className="h-5 w-5 text-white" />
                           </div>
-                          <Badge variant="secondary">{module.questions.length} soru</Badge>
+                          <Badge variant="secondary">{module.questions.length} questions</Badge>
                         </div>
                         <CardTitle className="text-lg">{module.title}</CardTitle>
                       </CardHeader>
@@ -566,7 +566,7 @@ export default function ExamPreparationPage() {
                           <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                             <span className="flex items-center gap-1">
                               <Target className="h-3 w-3" />
-                              {preset.count} soru
+                              {preset.count} questions
                             </span>
                             <span className="flex items-center gap-1">
                               <Clock className="h-3 w-3" />
@@ -650,7 +650,7 @@ export default function ExamPreparationPage() {
                               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                                 <span className="flex items-center gap-1">
                                   <Target className="h-4 w-4" />
-                                  {exam.totalQuestions} soru
+                                  {exam.totalQuestions} questions
                                 </span>
                                 <span className="flex items-center gap-1">
                                   <Award className="h-4 w-4" />

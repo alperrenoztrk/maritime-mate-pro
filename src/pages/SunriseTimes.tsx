@@ -11,7 +11,7 @@ import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 
 function formatDateTr(dateStr: string): string {
   const date = new Date(dateStr);
-  const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+  const dayNames = ["Pazar", "Pazartesi", "Tuesday", "Wednesday", "Thursday", "Cuma", "Cumartesi"];
   const dayName = dayNames[date.getDay()];
   const d = String(date.getDate()).padStart(2, "0");
   const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -94,7 +94,7 @@ export default function SunriseTimes() {
       }
 
       if (list.length === 0) {
-        throw new Error("Gündoğumu verisi bulunamadı");
+        throw new Error("No sunrise data found");
       }
 
       setDays(list);

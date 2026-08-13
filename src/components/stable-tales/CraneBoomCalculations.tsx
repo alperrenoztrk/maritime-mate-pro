@@ -59,19 +59,19 @@ export const CraneBoomCalculations = () => {
       if (yeni_gm >= 0.5) {
         stabilityStatus = 'excellent';
         stabilityColor = 'default';
-        recommendations.push('Stabilite durumu güvenli');
+        recommendations.push('Stability condition safe');
       } else if (yeni_gm >= 0.15) {
         stabilityStatus = 'good';
         stabilityColor = 'secondary';
-        recommendations.push('Dikkatli operasyon önerilir');
+        recommendations.push('Careful operation recommended');
       } else if (yeni_gm >= 0.05) {
         stabilityStatus = 'Riskli';
         stabilityColor = 'destructive';
-        recommendations.push('ACİL: Operasyonu durdurun!');
+        recommendations.push('URGENT: Stop the operation!');
       } else {
         stabilityStatus = 'Tehlikeli';
         stabilityColor = 'destructive';
-        recommendations.push('DANGER: Negatif GM - Operasyon yasaklandı!');
+        recommendations.push('DANGER: Negative GM - Operation prohibited!');
       }
 
       // Calculate virtual height effect
@@ -87,14 +87,14 @@ export const CraneBoomCalculations = () => {
         stabilityColor,
         recommendations,
         güvenlik_marjı: yeni_gm - 0.15, // Minimum required GM
-        operasyon_durumu: yeni_gm > 0.15 ? 'safe' : 'Güvenli Değil'
+        operasyon_durumu: yeni_gm > 0.15 ? 'safe' : 'Not Safe'
       };
 
       setResults(calculatedResults);
       setCraneData(prev => ({ ...prev, gm_degisimi }));
 
       if (yeni_gm > 0.15) {
-        toast.success(`Kren operasyonu güvenli: GM = ${yeni_gm.toFixed(3)}m`);
+        toast.success(`Crane operation safe: GM = ${yeni_gm.toFixed(3)}m`);
       } else {
         toast.error(`Tehlikeli GM: ${yeni_gm.toFixed(3)}m - Operasyonu durdurun!`);
       }
@@ -278,7 +278,7 @@ export const CraneBoomCalculations = () => {
               <div className="p-4 bg-muted rounded-lg">
                 <h5 className="font-medium mb-2">Kullanılan Formül:</h5>
                 <p className="font-mono text-sm mb-2">
-                  ΔGM = -W × (h_kanca - h_yük)² / (Δ + W)
+                  ΔGM = -W × (h_hook - h_load)² / (Δ + W)
                 </p>
                 <p className="text-xs text-muted-foreground">
                   Burada: W = Yük ağırlığı, h_kanca = Kanca yüksekliği, h_yük = Yük yüksekliği, Δ = Deplasman

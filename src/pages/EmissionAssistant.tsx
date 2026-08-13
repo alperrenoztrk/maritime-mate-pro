@@ -2,20 +2,20 @@ import { Leaf } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "Gemimizin CII derecesi D olarak hesaplandı. Hangi önlemlerle B veya C'ye yükseltebiliriz?",
-  "VLSFO'dan MGO'ya yakıt değişimi prosedürünü açıklar mısın?",
-  "Balast suyu arıtma sistemi arızası durumunda yapılması gerekenler nelerdir?",
-  "MARPOL Annex V'e göre yiyecek atıklarını denize deşarj edebilir miyim?",
-  "IMO DCS raporlaması için hangi verileri toplamalıyım?",
-  "Scrubber yıkama suyu deşarj limitleri nelerdir?",
+  "Our ship's CII rating has been calculated as D. What measures can raise it to B or C?",
+  "Can you explain the fuel changeover procedure from VLSFO to MGO?",
+  "What has to be done if the ballast water treatment system fails?",
+  "Can I discharge food waste into the sea under MARPOL Annex V?",
+  "Which data do I need to collect for IMO DCS reporting?",
+  "What are the scrubber wash water discharge limits?",
 ];
 
-const systemPrompt = `Sen denizcilik sektöründe çevre yönetimi ve emisyon kontrolü konusunda uzman bir asistansın.
-MARPOL ekleri (I, II, IV, V, VI), BWM Convention, IMO DCS, EU MRV, EEXI, CII ve SEEMP konularında derin bilgiye sahipsin.
-Soruları teknik doğrulukla ve pratik örneklerle yanıtla.
-Önemli uyarıları ve zorunlu gereklilikleri vurgula.
-Yanıtlarını maddeler halinde, anlaşılır ve operasyonel açıdan uygulanabilir şekilde ver.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in environmental management and emission control in the maritime industry.
+You have deep knowledge of the MARPOL annexes (I, II, IV, V, VI), the BWM Convention, IMO DCS, EU MRV, EEXI, CII and SEEMP.
+Answer questions with technical accuracy and practical examples.
+Emphasise the important warnings and the mandatory requirements.
+Give your answers as bullet points, clearly and in an operationally applicable form.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function EmissionAssistant() {
   return (
