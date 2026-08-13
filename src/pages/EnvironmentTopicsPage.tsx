@@ -181,19 +181,19 @@ const topicContents: Record<string, TopicContent> = {
   "marpol-history": {
     title: "MARPOL Tarihçesi ve Gelişimi",
     introduction: "MARPOL 73/78 (International Convention for the Prevention of Pollution from Ships), gemilerden kaynaklanan deniz kirliliğinin önlenmesine yönelik en kapsamlı uluslararası sözleşmedir.",
-    content: `TARİHSEL GELİŞİM:
+    content: `HISTORICAL DEVELOPMENT:
 
-1954 – OILPOL Sözleşmesi: İlk uluslararası deniz kirliliği sözleşmesidir. Yalnızca petrol deşarjını düzenler. Belirli bölgelerde petrol deşarjını yasaklar ancak uygulama zayıftır.
+1954 – The OILPOL Convention: the first international marine pollution convention. It regulated oil discharges only. It prohibited oil discharges in certain areas, but enforcement was weak.
 
-1967 – Torrey Canyon kazası: İngiltere kıyılarında 119.000 ton ham petrol döküldü. Bu felaket, daha kapsamlı düzenlemelerin gerekliliğini ortaya koydu.
+1967 – The Torrey Canyon casualty: 119,000 tonnes of crude oil were spilled off the coast of England. This disaster demonstrated the need for far wider regulation.
 
-1973 – MARPOL Sözleşmesi kabul edildi: IMO tarafından Londra'da kabul edilen sözleşme, yalnızca petrole değil tüm deniz kirleticilerine yönelik düzenlemeler içerir. Ancak yeterli onay sayısına ulaşamadığından yürürlüğe giremedi.
+1973 – The MARPOL Convention was adopted: adopted by the IMO in London, the convention covered not only oil but all marine pollutants. It could not enter into force, however, because it did not attract enough ratifications.
 
-1978 – MARPOL Protokolü: 1976-77 yıllarında yaşanan tanker kazaları (Argo Merchant, Amoco Cadiz) nedeniyle 1978 Protokolü kabul edildi. 1973 Sözleşmesi'ni absorbe etti; birleşik metin MARPOL 73/78 olarak anılır.
+1978 – The MARPOL Protocol: the 1978 Protocol was adopted following the tanker casualties of 1976-77 (Argo Merchant, Amoco Cadiz). It absorbed the 1973 Convention; the combined text is known as MARPOL 73/78.
 
-1983 – MARPOL 73/78 yürürlüğe girdi: 2 Ekim 1983'te Ek I ve Ek II zorunlu olarak yürürlüğe girdi.
+1983 – MARPOL 73/78 entered into force: Annexes I and II entered into force as mandatory annexes on 2 October 1983.
 
-MARPOL'ün günümüzde 6 eki bulunmakta olup, Ek I ve Ek II zorunlu; Ek III, IV, V ve VI isteğe bağlı onaya tabidir. Ancak pratikte tüm büyük denizcilik devletleri 6 ekin tamamını onaylamıştır.`,
+MARPOL today has 6 annexes, of which Annexes I and II are mandatory; Annexes III, IV, V and VI are subject to optional ratification. In practice, however, all the major maritime states have ratified all six annexes.`,
     bulletPoints: [
       "MARPOL 73/78: 1973 Sözleşmesi + 1978 Protokolü birleşik metnidir",
       "Ek I ve Ek II zorunlu; diğer ekler isteğe bağlıdır",
@@ -209,27 +209,27 @@ MARPOL'ün günümüzde 6 eki bulunmakta olup, Ek I ve Ek II zorunlu; Ek III, IV
   "marpol-structure": {
     title: "MARPOL Yapısı ve Ekleri",
     introduction: "MARPOL 73/78, ana sözleşme metni, iki protokol ve altı teknik ekten oluşur; her ek farklı bir kirlilik kaynağını düzenler.",
-    content: `ANA YAPI:
+    content: `THE MAIN STRUCTURE:
 
-MARPOL sözleşmesi üç katmanlı bir yapıya sahiptir:
+The MARPOL convention has a three-layer structure:
 
-1. Ana Sözleşme Metni (Articles): Genel yükümlülükleri, tanımları, uygulama ve yaptırım prensiplerini belirler.
+1. The main convention text (Articles): sets out the general obligations, definitions and the principles of application and enforcement.
 
-2. Protokoller:
-   Protokol I: Zararlı madde olaylarının raporlanması (Kural 8.8'deki bildirim yükümlülüğü).
-   Protokol II: Tahkim (uyuşmazlık çözümü).
+2. Protocols:
+   Protocol I: Reporting of incidents involving harmful substances (the reporting obligation in Regulation 8.8).
+   Protocol II: Arbitration (dispute resolution).
 
-3. Teknik Ekler:
-   Ek I – Petrol kirliliğinin önlenmesi kuralları (Yürürlük: 1983)
-   Ek II – Dökme zehirli sıvı maddelerle (NLS) kirlenmenin kontrolü (Yürürlük: 1983)
-   Ek III – Denizde paketlenmiş hâlde taşınan zararlı maddelerin kirliliğinin önlenmesi (Yürürlük: 1992)
-   Ek IV – Gemilerden kaynaklanan pis suyun (sewage) kirliliğinin önlenmesi (Yürürlük: 2003)
-   Ek V – Gemilerden kaynaklanan çöpün kirliliğinin önlenmesi (Yürürlük: 1988)
-   Ek VI – Gemilerden kaynaklanan hava kirliliğinin önlenmesi (Yürürlük: 2005)
+3. Technical Annexes:
+   Annex I – Regulations for the prevention of pollution by oil (in force: 1983)
+   Annex II – Control of pollution by noxious liquid substances in bulk (NLS) (in force: 1983)
+   Annex III – Prevention of pollution by harmful substances carried by sea in packaged form (in force: 1992)
+   Annex IV – Prevention of pollution by sewage from ships (in force: 2003)
+   Annex V – Prevention of pollution by garbage from ships (in force: 1988)
+   Annex VI – Prevention of air pollution from ships (in force: 2005)
 
-DEĞİŞİKLİK PROSEDÜRÜ:
+THE AMENDMENT PROCEDURE:
 
-MARPOL değişiklikleri "tacit acceptance" (zımni kabul) yöntemiyle yürürlüğe girer. IMO, değişikliği kabul eder ve belirli bir süre içinde üye devletlerin 1/3'ü itiraz etmezse değişiklik otomatik olarak yürürlüğe girer. Bu yöntem, sözleşmenin hızlı güncellenmesini sağlar.`,
+MARPOL amendments enter into force by "tacit acceptance". The IMO adopts the amendment and, if one third of the member states do not object within a defined period, the amendment enters into force automatically. This method allows the convention to be updated quickly.`,
     bulletPoints: [
       "Ek I ve II zorunlu; Ek III-VI isteğe bağlı onaya tabidir",
       "Tacit acceptance: Değişiklikler, itiraz edilmezse otomatik yürürlüğe girer",
@@ -244,35 +244,35 @@ MARPOL değişiklikleri "tacit acceptance" (zımni kabul) yöntemiyle yürürlü
   "marpol-certificates": {
     title: "MARPOL Sertifikaları",
     introduction: "MARPOL sözleşmesinin her eki, gemilerin uygunluğunu belgeleyen ayrı sertifikalar gerektirir; bu sertifikalar bayrak devleti veya yetkilendirilmiş kuruluş tarafından düzenlenir.",
-    content: `TEMEL MARPOL SERTİFİKALARI:
+    content: `THE PRINCIPAL MARPOL CERTIFICATES:
 
-1. IOPP Sertifikası (International Oil Pollution Prevention Certificate):
-   Ek I gereği 400 GT ve üzeri gemiler için zorunludur.
-   Geçerlilik süresi: 5 yıl (yıllık/ara sörveylerle).
-   Kapsamı: Yağlı su ayırıcı, slop tankı, izleme sistemi (ODME), SBT/CBT düzenlemeleri.
+1. IOPP Certificate (International Oil Pollution Prevention Certificate):
+   Mandatory under Annex I for ships of 400 GT and above.
+   Validity: 5 years (with annual/intermediate surveys).
+   Scope: oily water separator, slop tank, monitoring system (ODME), SBT/CBT arrangements.
 
-2. ISPP Sertifikası (International Sewage Pollution Prevention Certificate):
-   Ek IV gereği 400 GT ve üzeri veya 15'ten fazla personel taşıyan gemiler için zorunludur.
-   Kapsamı: Pis su arıtma tesisi, dezenfeksiyon sistemi, depolama tankı.
+2. ISPP Certificate (International Sewage Pollution Prevention Certificate):
+   Mandatory under Annex IV for ships of 400 GT and above, or carrying more than 15 persons.
+   Scope: sewage treatment plant, disinfection system, holding tank.
 
-3. IAPP Sertifikası (International Air Pollution Prevention Certificate):
-   Ek VI gereği 400 GT ve üzeri gemiler için zorunludur.
-   Kapsamı: Motor emisyonları (NOx teknik dosyası), yakıt kükürt oranı, ODS envanteri.
+3. IAPP Certificate (International Air Pollution Prevention Certificate):
+   Mandatory under Annex VI for ships of 400 GT and above.
+   Scope: engine emissions (NOx technical file), fuel sulphur content, ODS inventory.
 
-4. IEE Sertifikası (International Energy Efficiency Certificate):
-   EEDI/EEXI değerini ve SEEMP'i belgeler.
-   2023'ten itibaren tüm gemiler için zorunludur.
+4. IEE Certificate (International Energy Efficiency Certificate):
+   Documents the EEDI/EEXI value and the SEEMP.
+   Mandatory for all ships from 2023.
 
-5. Fitness Certificate (Ek II):
-   NLS taşıyan gemiler için zorunlu uygunluk sertifikasıdır.
+5. Fitness Certificate (Annex II):
+   The mandatory certificate of fitness for ships carrying NLS.
 
-6. BWM Sertifikası (International Ballast Water Management Certificate):
-   BWM Sözleşmesi gereği düzenlenir.
+6. BWM Certificate (International Ballast Water Management Certificate):
+   Issued under the BWM Convention.
 
-HER SERTİFİKA İÇİN:
-Geçerlilik: 5 yıl
-Sörvey: İlk, yıllık, ara, yenileme ve olağanüstü sörveyler
-Düzenleyen: Bayrak devleti idaresi veya yetkilendirilmiş klas kuruluşu`,
+FOR EVERY CERTIFICATE:
+Validity: 5 years
+Surveys: initial, annual, intermediate, renewal and additional surveys
+Issued by: the flag State administration or an authorised classification society`,
     bulletPoints: [
       "IOPP: Ek I (petrol), ISPP: Ek IV (pis su), IAPP: Ek VI (hava kirliliği)",
       "IEE sertifikası 2023'ten itibaren zorunludur",
@@ -287,27 +287,27 @@ Düzenleyen: Bayrak devleti idaresi veya yetkilendirilmiş klas kuruluşu`,
   "marpol-surveys": {
     title: "Sörvey ve Denetimler",
     introduction: "MARPOL uygunluğu, düzenli sörveyler ve liman devleti denetimleri (PSC) yoluyla kontrol edilir.",
-    content: `SÖRVEY TÜRLERİ:
+    content: `TYPES OF SURVEY:
 
-1. İlk Sörvey (Initial Survey): Gemi hizmete girmeden veya MARPOL sertifikası ilk kez alınmadan önce yapılır. Tüm donanımın, sistemlerin ve belgelerin MARPOL gereksinimlerine uygunluğu doğrulanır.
+1. Initial Survey: carried out before the ship enters service or before a MARPOL certificate is issued for the first time. It verifies that all equipment, systems and documents comply with the MARPOL requirements.
 
-2. Yıllık Sörvey (Annual Survey): Sertifika süresince her yıl yapılır. Donanımın çalışır durumda olduğu ve kayıtların düzgün tutulduğu kontrol edilir.
+2. Annual Survey: carried out every year during the life of the certificate. It checks that the equipment is in working order and that the records are properly kept.
 
-3. Ara Sörvey (Intermediate Survey): 5 yıllık sertifika süresinin 2. veya 3. yılında yapılır. Yıllık sörveyden daha kapsamlıdır.
+3. Intermediate Survey: carried out in the 2nd or 3rd year of the 5-year certificate period. It is more comprehensive than the annual survey.
 
-4. Yenileme Sörveyi (Renewal Survey): 5 yıllık sertifika süresi dolmadan önce yapılır. İlk sörvey kapsamında yapılır.
+4. Renewal Survey: carried out before the 5-year certificate expires. It has the same scope as the initial survey.
 
-5. Olağanüstü Sörvey (Additional Survey): Bir olay, arıza veya onarım sonrasında talep edilir.
+5. Additional Survey: required after an incident, a failure or a repair.
 
-PSC DENETİMLERİ:
+PSC INSPECTIONS:
 
-Liman Devleti Kontrolü (Port State Control) denetçileri, geminin sertifikalarını, kayıt defterlerini, donanım durumunu ve mürettebat bilgisini kontrol eder. Paris MoU, Tokyo MoU gibi bölgesel anlaşmalar denetim standartlarını belirler.
+Port State Control inspectors check the ship's certificates, record books, equipment condition and crew knowledge. Regional agreements such as the Paris MoU and the Tokyo MoU set the inspection standards.
 
-PSC'de en sık tespit edilen MARPOL eksiklikleri:
-- OWS arızası veya bypass şüphesi
-- Yağ Kayıt Defteri kayıt hataları
-- Çöp yönetim planı eksikliği
-- IAPP sertifikası ile motor NOx teknik dosyası uyumsuzluğu`,
+The MARPOL deficiencies most frequently found in PSC:
+- OWS failure or suspicion of bypass
+- Errors in the Oil Record Book entries
+- A missing garbage management plan
+- A mismatch between the IAPP certificate and the engine NOx technical file`,
     bulletPoints: [
       "5 sörvey türü: ilk, yıllık, ara, yenileme, olağanüstü",
       "PSC denetçileri sertifika + kayıt defteri + donanım kontrolü yapar",
@@ -326,24 +326,24 @@ PSC'de en sık tespit edilen MARPOL eksiklikleri:
   "annex1-overview": {
     title: "Ek I Genel Yapısı ve Kapsamı",
     introduction: "MARPOL Ek I, gemilerden kaynaklanan petrol kirliliğinin önlenmesine yönelik kuralları içerir ve tüm gemiler için geçerlidir.",
-    content: `EK I KAPSAMI:
+    content: `THE SCOPE OF ANNEX I:
 
-Ek I, gemilerden denize petrol ve petrol karışımlı suların deşarjını düzenler. Hem makine dairesi sintine suyunu hem de yük tankı artıklarını (tankerler için) kapsar.
+Annex I regulates the discharge of oil and oily mixtures from ships into the sea. It covers both engine room bilge water and cargo tank residues (for tankers).
 
-TEMEL KURALLAR:
+THE MAIN REGULATIONS:
 
-Kural 15 – Makine Dairesi Deşarjı (tüm gemiler):
-400 GT ve üzeri gemilerde yağlı su ayırıcı (OWS) bulunmalıdır. Deşarj edilen suyun petrol içeriği 15 ppm'i geçmemelidir. ODME (Oil Discharge Monitoring Equipment) sürekli izleme yapmalı ve 15 ppm aşıldığında otomatik olarak deşarjı durdurmalıdır.
+Regulation 15 – Engine room discharge (all ships):
+Ships of 400 GT and above must be fitted with an oily water separator (OWS). The oil content of the water discharged must not exceed 15 ppm. The ODME (Oil Discharge Monitoring Equipment) must monitor continuously and stop the discharge automatically when 15 ppm is exceeded.
 
-Kural 34 – Özel Alanlarda Deşarj:
-Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfezler bölgesi, Antarktika, Kuzey Batı Avrupa suları ve Oman Denizi Bölgesi özel alan olarak tanımlanmıştır. Özel alanlarda makine dairesi sintine suyu deşarjı, yalnızca OWS üzerinden (15 ppm altında), geminin seyir hâlinde olması koşuluyla yapılabilir. Yük artığı deşarjı özel alanlarda yasaktır.
+Regulation 34 – Discharge in special areas:
+The Mediterranean, Baltic, Black Sea, Red Sea, Gulfs area, Antarctic, North West European waters and the Oman Sea area are defined as special areas. In special areas engine room bilge water may only be discharged through the OWS (below 15 ppm) and while the ship is under way. The discharge of cargo residues is prohibited in special areas.
 
-Kural 20 – Çift Cidarlı Tankerler:
-5.000 DWT ve üzeri petrol tankerlerinde çift cidar (double hull) zorunludur. Mevcut tek cidarlı tankerler aşamalı olarak hizmet dışı bırakılmıştır.
+Regulation 20 – Double hull tankers:
+A double hull is mandatory for oil tankers of 5,000 DWT and above. Existing single hull tankers have been phased out.
 
-SBT ve CBT:
-SBT (Segregated Ballast Tanks): Yalnızca balast suyu için ayrılmış tanklar. Yükle temas etmez.
-CBT (Clean Ballast Tanks): Yük taşıdıktan sonra temizlenip balast suyu alınan tanklar (artık güncel değil).`,
+SBT AND CBT:
+SBT (Segregated Ballast Tanks): tanks dedicated to ballast water only. They never come into contact with cargo.
+CBT (Clean Ballast Tanks): tanks cleaned after carrying cargo and then used for ballast water (no longer current).`,
     bulletPoints: [
       "15 ppm kuralı: tüm gemilerde deşarj edilen suyun petrol içeriği sınırı",
       "Özel alanlarda yük artığı deşarjı tamamen yasaktır",
@@ -358,26 +358,26 @@ CBT (Clean Ballast Tanks): Yük taşıdıktan sonra temizlenip balast suyu alın
   "oily-water-separator": {
     title: "Yağlı Su Ayırıcı (OWS) ve 15 ppm Kuralı",
     introduction: "Yağlı su ayırıcı (Oil Water Separator), makine dairesi sintine suyundaki petrolü ayırarak denize deşarj edilebilir seviyeye getiren kritik bir MARPOL donanımıdır.",
-    content: `ÇALIŞMA PRENSİBİ:
+    content: `PRINCIPLE OF OPERATION:
 
-OWS, üç aşamalı bir ayırma işlemi gerçekleştirir:
+An OWS performs separation in three stages:
 
-1. Yerçekimi Ayırma (1. kademe): Yoğunluk farkı kullanılarak büyük petrol damlaları yüzeye çıkarılır ve ayrı bir tanka alınır. Bu kademe petrol içeriğini yaklaşık 100 ppm'e düşürür.
+1. Gravity separation (1st stage): the difference in density brings large oil droplets to the surface, where they are drawn off to a separate tank. This stage reduces the oil content to about 100 ppm.
 
-2. Koalesör/Filtre Kademe (2. kademe): Özel filtre elemanları küçük petrol damlacıklarını birleştirerek (coalescing) büyük damlaların oluşmasını sağlar. Bu kademe petrol içeriğini 15 ppm altına düşürür.
+2. Coalescer/filter stage (2nd stage): special filter elements bring small oil droplets together (coalescing) to form larger droplets. This stage reduces the oil content below 15 ppm.
 
-3. İzleme ve Otomatik Kontrol: ODME (Oil Discharge Monitoring Equipment) veya OCM (Oil Content Monitor), deşarj edilen suyun petrol içeriğini sürekli izler. 15 ppm aşıldığında üç yollu valf otomatik olarak suyu geri devir hattına yönlendirir.
+3. Monitoring and automatic control: the ODME (Oil Discharge Monitoring Equipment) or OCM (Oil Content Monitor) continuously measures the oil content of the discharged water. When 15 ppm is exceeded, a three-way valve automatically diverts the water to the recirculation line.
 
-15 PPM KURALI:
+THE 15 PPM RULE:
 
-MARPOL Ek I Kural 15'e göre, gemiden denize deşarj edilen sintine suyunun petrol içeriği 15 ppm'i geçemez. Bu kural:
-- Tüm deniz alanlarında geçerlidir (özel alan ayrımı yoktur)
-- Gemi seyir hâlinde olmalıdır
-- Deşarj su hattı altından yapılmalıdır
+Under MARPOL Annex I Regulation 15, the oil content of bilge water discharged into the sea must not exceed 15 ppm. This rule:
+- Applies in all sea areas (there is no special area distinction)
+- Requires the ship to be under way
+- Requires the discharge to be made below the waterline
 
-OWS'NİN BYPASS EDİLMESİ:
+BYPASSING THE OWS:
 
-OWS'nin bypass edilmesi (magic pipe vb.) ağır cezai yaptırımlara tabidir. ABD sularında tespit edilen bypass vakaları milyonlarca dolar para cezası ve hapis cezası ile sonuçlanmıştır.`,
+Bypassing the OWS (the "magic pipe" and similar) attracts severe criminal sanctions. Bypass cases detected in US waters have resulted in fines of millions of dollars and prison sentences.`,
     bulletPoints: [
       "3 aşama: yerçekimi ayırma → koalesör filtre → otomatik izleme",
       "15 ppm sınırı tüm deniz alanlarında geçerlidir",
@@ -389,40 +389,40 @@ OWS'nin bypass edilmesi (magic pipe vb.) ağır cezai yaptırımlara tabidir. AB
       "Sintine tankı dolu iken OWS çalıştırmak zorunludur; doğrudan denize pompalama yasaktır",
     ],
     warnings: [
-      "OWS bypass girişimi ABD'de milyonlarca dolar ceza ve hapis cezası getirir",
-      "OCM kalibrasyonu yapılmamış gemi PSC'de alıkonabilir (detention)",
+      "An attempted OWS bypass brings fines of millions of dollars and imprisonment in the USA",
+      "A ship whose OCM has not been calibrated can be detained in PSC",
     ],
   },
   "oil-record-book": {
     title: "Yağ Kayıt Defteri (ORB) Part I ve II",
     introduction: "Yağ Kayıt Defteri (Oil Record Book), gemideki tüm petrol operasyonlarının yasal olarak kaydedildiği resmi belgedir ve PSC denetimlerinde en çok incelenen kayıttır.",
-    content: `ORB PART I – MAKİNE DAİRESİ OPERASYONLARI:
+    content: `ORB PART I – MACHINERY SPACE OPERATIONS:
 
-400 GT ve üzeri tüm gemiler ORB Part I tutmak zorundadır. Kaydedilen operasyonlar:
+All ships of 400 GT and above must keep ORB Part I. The operations recorded are:
 
-(A) Sintine tanklarının balastlanması veya temizlenmesi
-(B) Sintine tanklarından veya makine dairesi sintine kuyusundan deşarj
-(C) Slop tanklarındaki yağ artıklarının tasfiyesi
-(D) Sintine suyunun OWS üzerinden deşarjı
-(E) Yağ yakıt transferleri
-(F) Yağ dökülmesi
-(G) Limanda alıcı tesise teslim
+(A) Ballasting or cleaning of oil fuel tanks
+(B) Discharge from oil fuel tanks or the engine room bilge well
+(C) Disposal of oil residues in slop tanks
+(D) Discharge of bilge water through the OWS
+(E) Bunkering and oil fuel transfers
+(F) Accidental discharge of oil
+(G) Delivery to a reception facility in port
 
-ORB PART II – YÜK VE BALAST OPERASYONLARI (Tankerler):
+ORB PART II – CARGO AND BALLAST OPERATIONS (Tankers):
 
-150 GT ve üzeri petrol tankerleri ORB Part II tutar. Kaydedilen operasyonlar:
+Oil tankers of 150 GT and above keep ORB Part II. The operations recorded are:
 
-(A) Yük yükleme
-(B) İç transfer
-(C) Yük boşaltma
-(D) Tank yıkama (COW dahil)
-(E) Balast alma/boşaltma
-(F) Slop tankı operasyonları
-(G) Artık deşarjı
+(A) Loading of cargo
+(B) Internal transfer
+(C) Discharge of cargo
+(D) Tank cleaning (including COW)
+(E) Ballasting/deballasting
+(F) Slop tank operations
+(G) Discharge of residues
 
-KAYIT KURALLARI:
+RECORDING RULES:
 
-Her giriş, operasyon koduna göre yapılır. Sorumlu zabit imzalar, kaptan her sayfayı onaylar. ORB, gemide 3 yıl muhafaza edilir. Kayıtlar İngilizce, Fransızca veya İspanyolca olarak tutulur (veya bayrak devletinin dili + İngilizce çevirisi).`,
+Each entry is made against the operation code. The officer in charge signs and the master endorses every page. The ORB is retained on board for 3 years. Entries are made in English, French or Spanish (or in the flag State language plus an English translation).`,
     bulletPoints: [
       "Part I: 400 GT+ tüm gemiler, Part II: 150 GT+ petrol tankerleri",
       "ORB gemide 3 yıl muhafaza edilir",
@@ -434,27 +434,27 @@ Her giriş, operasyon koduna göre yapılır. Sorumlu zabit imzalar, kaptan her 
       "Kod sistemi: A-G harfleri ile operasyon türü belirtilir",
     ],
     warnings: [
-      "ORB'de kaydedilen miktarlar ile tank soundingleri tutarsızsa PSC genişletilmiş denetime geçer",
+      "If the quantities recorded in the ORB do not tally with the tank soundings, PSC moves to an expanded inspection",
     ],
   },
   "special-areas-annex1": {
     title: "Özel Alanlar ve Deşarj Kuralları",
     introduction: "MARPOL, ekolojik açıdan hassas deniz alanlarını 'özel alan' olarak tanımlar ve bu bölgelerde daha sıkı deşarj kuralları uygular.",
-    content: `EK I ÖZEL ALANLAR:
+    content: `ANNEX I SPECIAL AREAS:
 
-Akdeniz, Baltık Denizi, Karadeniz, Kızıldeniz, Körfezler Bölgesi (Persian Gulf), Aden Körfezi, Antarktika Bölgesi, Kuzey-Batı Avrupa Suları, Oman Denizi Bölgesi, Güney Afrika Suları.
+The Mediterranean, the Baltic Sea, the Black Sea, the Red Sea, the Gulfs area (Persian Gulf), the Gulf of Aden, the Antarctic area, North-West European waters, the Oman Sea area and Southern African waters.
 
-ÖZEL ALANLARDA KURALLAR:
+RULES IN SPECIAL AREAS:
 
-Makine dairesi deşarjı:
-- OWS üzerinden, 15 ppm altında ve gemi seyir hâlinde ise izin verilir (normal alanlarla aynı)
+Engine room discharge:
+- Permitted through the OWS, below 15 ppm and while the ship is under way (the same as in normal areas)
 
-Yük artığı deşarjı (tankerler):
-- Özel alanlarda tamamen YASAKTIR
-- Slop tankına alınmalı ve limandaki alıcı tesise teslim edilmelidir
+Cargo residue discharge (tankers):
+- Completely PROHIBITED in special areas
+- Must be retained in the slop tank and delivered to a reception facility in port
 
 PSSA (Particularly Sensitive Sea Areas):
-Özel alanlardan farklı olarak PSSA, IMO tarafından belirlenen ve ek koruyucu tedbirler (rotalama sistemi, hız sınırı vb.) uygulanan bölgelerdir. Örnekler: Büyük Set Resifi, Galapagos, Baltık, Kanarya Adaları.`,
+Unlike special areas, PSSAs are areas designated by the IMO in which additional protective measures (routeing systems, speed limits, etc.) apply. Examples: the Great Barrier Reef, Galápagos, the Baltic, the Canary Islands.`,
     bulletPoints: [
       "Özel alanlarda tanker yük artığı deşarjı tamamen yasaktır",
       "Makine dairesi 15 ppm kuralı özel alanlarda da aynıdır",
@@ -469,27 +469,27 @@ PSSA (Particularly Sensitive Sea Areas):
   "sopep": {
     title: "SOPEP (Shipboard Oil Pollution Emergency Plan)",
     introduction: "SOPEP, gemide petrol sızıntısı veya dökülmesi durumunda mürettebatın izleyeceği acil müdahale prosedürlerini içeren zorunlu bir plandır.",
-    content: `SOPEP ZORUNLULUĞU:
+    content: `THE SOPEP REQUIREMENT:
 
-MARPOL Ek I Kural 37 gereği, 400 GT ve üzeri tüm gemiler SOPEP taşımak zorundadır. Tankerler için ayrıca SMPEP (Shipboard Marine Pollution Emergency Plan) ile birleştirilmiş olabilir.
+Under MARPOL Annex I Regulation 37, all ships of 400 GT and above must carry a SOPEP. For tankers it may also be combined with the SMPEP (Shipboard Marine Pollution Emergency Plan).
 
-SOPEP İÇERİĞİ:
+CONTENTS OF THE SOPEP:
 
-1. Raporlama prosedürü: MARPOL Protokol I gereği yapılacak bildirimin detayları. Kime, ne zaman, nasıl rapor edileceği.
+1. Reporting procedure: the details of the report required by MARPOL Protocol I. To whom, when and how the report is to be made.
 
-2. Bildirim listesi: Kıyı devleti idaresi, liman yetkilisi, P&I kulübü, şirket DPA (Designated Person Ashore), klas kuruluşu iletişim bilgileri.
+2. Contact list: contact details for the coastal State administration, the port authority, the P&I club, the company DPA (Designated Person Ashore) and the classification society.
 
-3. Müdahale prosedürleri:
-   - Güvertede dökülme: Emici malzeme kullanımı, savak kapatma
-   - Tank taşması: Transfer durdurma, slop tankına yönlendirme
-   - Boru hattı arızası: İzolasyon valfi kapatma, acil pompa durdurma
-   - Çarpışma/karaya oturma sonrası sızıntı: Hasar değerlendirmesi, tank transferi
+3. Response procedures:
+   - Spill on deck: use of absorbent material, closing the scuppers
+   - Tank overflow: stopping the transfer, diverting to the slop tank
+   - Pipeline failure: closing the isolating valve, emergency pump stop
+   - Leakage after collision/grounding: damage assessment, tank transfer
 
-4. Koordinasyon: Kıyı devleti SAR/kirlilik müdahale merkezi ile koordinasyon prosedürü.
+4. Coordination: the procedure for coordinating with the coastal State SAR/pollution response centre.
 
-SOPEP TATBİKATI:
+SOPEP DRILLS:
 
-IMO tavsiyesi: yılda en az bir SOPEP tatbikatı yapılmalıdır. Tatbikatta raporlama zinciri, donanım kullanımı ve müdahale süresi değerlendirilir.`,
+IMO recommendation: at least one SOPEP drill should be held each year. The drill assesses the reporting chain, the use of the equipment and the response time.`,
     bulletPoints: [
       "400 GT+ tüm gemilerde SOPEP zorunludur",
       "Raporlama, bildirim listesi, müdahale prosedürü ve koordinasyonu kapsar",
@@ -504,27 +504,27 @@ IMO tavsiyesi: yılda en az bir SOPEP tatbikatı yapılmalıdır. Tatbikatta rap
   "crude-oil-washing": {
     title: "Ham Petrol Yıkama (COW) Sistemi",
     introduction: "COW (Crude Oil Washing), ham petrol tankerlerinde yük tanklarının boşaltma sırasında ham petrolün kendisiyle yıkanarak artık miktarını minimuma indiren bir yöntemdir.",
-    content: `COW PRENSİBİ:
+    content: `THE PRINCIPLE OF COW:
 
-Geleneksel su yıkamada yıkama suyu slop tankına alınır ve tasfiye edilir; bu süreçte büyük miktarda yağlı su oluşur. COW sisteminde ise yük boşaltma sırasında yük pompalarıyla ham petrolün bir kısmı yüksek basınçlı nozullardan (tank cleaning machines) tanklara püskürtülür. Ham petrol, tank cidarlarına yapışan waxy tortularını çözer ve süzer; böylece artık miktarı çok düşük seviyeye iner.
+In traditional water washing the wash water is collected in the slop tank and disposed of; this process generates a large quantity of oily water. With a COW system, part of the crude oil is sprayed into the tanks by the cargo pumps through high-pressure nozzles (tank cleaning machines) during discharge. The crude oil dissolves and washes away the waxy deposits clinging to the tank walls, so that the quantity of residue is reduced to a very low level.
 
-COW AVANTAJLARI:
+ADVANTAGES OF COW:
 
-1. Artık miktarı %0,1'in altına düşer (su yıkamada %0,3-1,0)
-2. Daha fazla yük teslim edilir → ticari avantaj
-3. Slop miktarı azalır → denize deşarj riski düşer
-4. Su tüketimi azalır
+1. The residue falls below 0.1% (0.3-1.0% with water washing)
+2. More cargo is delivered → a commercial advantage
+3. Less slop → a lower risk of discharge into the sea
+4. Water consumption is reduced
 
-COW GEREKSİNİMLERİ (MARPOL Ek I Kural 33):
+COW REQUIREMENTS (MARPOL Annex I Regulation 33):
 
-20.000 DWT ve üzeri ham petrol tankerlerinde COW zorunludur. Sistem, bayrak devleti idaresi tarafından onaylanmış COW Manual'e uygun olarak işletilir.
+COW is mandatory on crude oil tankers of 20,000 DWT and above. The system is operated in accordance with a COW Manual approved by the flag State administration.
 
-İnert gaz sistemi (IGS) ile birlikte çalışması zorunludur; COW sırasında tank atmosferi inert gaz ile %8 O₂ altında tutulmalıdır.
+It must be operated together with an inert gas system (IGS); during COW the tank atmosphere must be kept below 8% O₂ with inert gas.
 
-COW sırasında en az 2 tank yıkanmalı ve her limanda yıkanan tanklar ORB Part II'ye kaydedilmelidir.`,
+At least 2 tanks must be washed during COW, and the tanks washed at each port must be recorded in ORB Part II.`,
     formula: {
       name: "COW Basınç Gereksinimi",
-      expression: "Tank yıkama makinesi basıncı: 8-10 bar (tipik)",
+      expression: "Tank cleaning machine pressure: 8-10 bar (typical)",
       description: "Ham petrol, yüksek basınçla tank cidarlarına püskürtülerek wax ve tortu çözülür.",
     },
     bulletPoints: [
@@ -538,7 +538,7 @@ COW sırasında en az 2 tank yıkanmalı ve her limanda yıkanan tanklar ORB Par
       "Her COW operasyonu ORB Part II'ye kaydedilir",
     ],
     warnings: [
-      "COW sırasında inert gaz kullanılmazsa patlama riski vardır",
+      "There is a risk of explosion if inert gas is not used during COW",
     ],
   },
 
@@ -548,19 +548,19 @@ COW sırasında en az 2 tank yıkanmalı ve her limanda yıkanan tanklar ORB Par
   "annex2-categories": {
     title: "NLS Kategorileri (X, Y, Z, OS)",
     introduction: "MARPOL Ek II, dökme hâlde taşınan zehirli sıvı maddeleri (NLS - Noxious Liquid Substances) tehlike derecelerine göre dört kategoride sınıflandırır.",
-    content: `KATEGORİLER:
+    content: `CATEGORIES:
 
-Kategori X – Büyük Tehlike: Denize deşarj edilmesi hâlinde deniz kaynakları veya insan sağlığı için büyük tehlike oluşturan maddeler. Denize deşarjı tamamen YASAKTIR. Tank yıkama artıkları alıcı tesise verilmelidir. Örnekler: Karbon tetraklorür, bazı pestisitler.
+Category X – Major hazard: substances which, if discharged into the sea, present a major hazard to marine resources or human health. Discharge into the sea is completely PROHIBITED. Tank washing residues must be delivered to a reception facility. Examples: carbon tetrachloride, certain pesticides.
 
-Kategori Y – Tehlike: Deşarjı hâlinde deniz kaynakları veya insan sağlığı için tehlike oluşturan veya deniz ortamını zararlı etkileyen maddeler. Sınırlı koşullarda deşarj izni vardır (ön yıkama + alıcı tesis zorunlu). Örnekler: Fenol, krezol, bazı solventler.
+Category Y – Hazard: substances which, if discharged, present a hazard to marine resources or human health or cause harm to the marine environment. Discharge is permitted under limited conditions (prewash plus a reception facility are mandatory). Examples: phenol, cresol, certain solvents.
 
-Kategori Z – Hafif Tehlike: Deşarjı hâlinde deniz kaynakları veya insan sağlığı için hafif tehlike oluşturan maddeler. Belirli koşullarda deşarj izni vardır. Örnekler: Fosfat esterleri, bazı asitler.
+Category Z – Minor hazard: substances which, if discharged, present a minor hazard to marine resources or human health. Discharge is permitted under defined conditions. Examples: phosphate esters, certain acids.
 
-OS (Other Substances) – Diğer Maddeler: Yukarıdaki kategorilere girmeyen maddeler. Deşarjı serbest olan maddelerdir. Ancak yine de P&A Manual'e uygun operasyon zorunludur.
+OS (Other Substances): substances which do not fall into the above categories. Their discharge is unrestricted. Operations must nevertheless comply with the P&A Manual.
 
-PREWASH ZORUNLULUĞU:
+THE PREWASH REQUIREMENT:
 
-Kategori X ve Y maddeler taşındıktan sonra prewash (ön yıkama) zorunludur. Prewash suyu alıcı tesise verilmelidir. Kategori Z için prewash, yalnızca belirli koşullarda gereklidir.`,
+A prewash is mandatory after carrying Category X and Y substances. The prewash water must be delivered to a reception facility. For Category Z a prewash is required only under certain conditions.`,
     bulletPoints: [
       "X: deşarj yasak, Y: ön yıkama + alıcı tesis, Z: koşullu deşarj, OS: serbest",
       "Kategori X ve Y sonrası prewash zorunludur",
@@ -575,29 +575,29 @@ Kategori X ve Y maddeler taşındıktan sonra prewash (ön yıkama) zorunludur. 
   "annex2-discharge": {
     title: "Deşarj Standartları ve Prewash",
     introduction: "MARPOL Ek II, NLS taşıyan gemilerin tank yıkama ve deşarj işlemlerini maddenin tehlike kategorisine göre düzenler.",
-    content: `DEŞARJ KOŞULLARI:
+    content: `DISCHARGE CONDITIONS:
 
-Genel kurallar (Kural 13):
-- Gemi seyir hâlinde olmalıdır
-- Hız en az 7 knot
-- Deşarj su hattı altından yapılmalıdır
-- En yakın kıyıdan en az 12 deniz mili uzakta
-- Su derinliği en az 25 metre
+General rules (Regulation 13):
+- The ship must be under way
+- Speed at least 7 knots
+- The discharge must be made below the waterline
+- At least 12 nautical miles from the nearest land
+- Water depth at least 25 metres
 
-KATEGORİYE GÖRE KURALLAR:
+RULES BY CATEGORY:
 
-Kategori X: Tamamen yasak. Prewash zorunlu, prewash suyu alıcı tesise.
-Kategori Y: Prewash zorunlu. Prewash sonrası artık su deşarj koşullarına uyularak denize verilebilir. Özel alanlarda ek kısıtlamalar.
-Kategori Z: Prewash genellikle zorunlu değil. Deşarj koşullarına uyularak verilebilir.
-OS: Kısıtlama yoktur.
+Category X: completely prohibited. Prewash mandatory, prewash water to a reception facility.
+Category Y: prewash mandatory. After the prewash the residual water may be discharged into the sea subject to the discharge conditions. Additional restrictions apply in special areas.
+Category Z: a prewash is generally not required. It may be discharged subject to the discharge conditions.
+OS: no restrictions.
 
-PREWASH PROSEDÜRÜ:
+THE PREWASH PROCEDURE:
 
-1. Boşaltma işlemi tamamlanır, stripping yapılır
-2. Prewash sırasında belirli miktarda su ile tank yıkanır
-3. Yıkama suyu slop tankına veya doğrudan alıcı tesise verilir
-4. Prewash tamamlandıktan sonra sörveyor veya liman yetkilisi onayı alınır
-5. Cargo Record Book'a kayıt yapılır`,
+1. Discharge is completed and stripping is carried out
+2. During the prewash the tank is washed with a defined quantity of water
+3. The wash water is transferred to the slop tank or directly to a reception facility
+4. Once the prewash is complete the approval of a surveyor or port official is obtained
+5. An entry is made in the Cargo Record Book`,
     bulletPoints: [
       "Deşarj: 7 knot hız, 12 mil kıyıdan uzak, 25 m derinlik",
       "Kategori X: deşarj tamamen yasak; Y: prewash + koşullu deşarj",
@@ -612,31 +612,31 @@ PREWASH PROSEDÜRÜ:
   "annex2-ppap": {
     title: "P&A Manual ve Cargo Record Book",
     introduction: "P&A Manual (Procedures and Arrangements Manual), NLS taşıyan kimyasal tankerlerin operasyonel prosedürlerini tanımlayan zorunlu dokümandır.",
-    content: `P&A MANUAL:
+    content: `THE P&A MANUAL:
 
-MARPOL Ek II Kural 14 gereği, NLS taşıyan her gemide P&A Manual bulunmalıdır. Manual, bayrak devleti tarafından onaylanır.
+Under MARPOL Annex II Regulation 14, every ship carrying NLS must have a P&A Manual on board. The manual is approved by the flag State.
 
-İÇERİĞİ:
-1. Tank yıkama prosedürleri (her tank için)
-2. Stripping sistemi kapasitesi ve operasyonu
-3. Prewash gereksinimleri (kategori bazlı)
-4. Slop tankı operasyonu
-5. Deşarj bağlantıları ve düzenlemeleri
-6. Uyumluluk tabloları (hangi maddeler aynı tankta taşınabilir)
+CONTENTS:
+1. Tank washing procedures (for each tank)
+2. Stripping system capacity and operation
+3. Prewash requirements (by category)
+4. Slop tank operation
+5. Discharge connections and arrangements
+6. Compatibility tables (which substances may be carried in the same tank)
 
-CARGO RECORD BOOK:
+THE CARGO RECORD BOOK:
 
-Ek II kapsamındaki tüm operasyonlar Cargo Record Book'a kaydedilir. ORB Part II'nin NLS eşdeğeridir.
+All operations under Annex II are recorded in the Cargo Record Book. It is the NLS equivalent of ORB Part II.
 
-Kaydedilen operasyonlar:
-- Yük yükleme ve boşaltma
-- Tank yıkama ve prewash
-- Balast operasyonları
-- Slop transferi
-- Artık deşarjı
-- Alıcı tesise teslim
+The operations recorded:
+- Loading and discharging of cargo
+- Tank washing and prewash
+- Ballast operations
+- Slop transfer
+- Discharge of residues
+- Delivery to a reception facility
 
-Cargo Record Book gemide 3 yıl muhafaza edilir. PSC denetimlerinde P&A Manual ile birlikte kontrol edilir.`,
+The Cargo Record Book is retained on board for 3 years. It is checked together with the P&A Manual during PSC inspections.`,
     bulletPoints: [
       "P&A Manual bayrak devleti onaylı olmalıdır",
       "Cargo Record Book tüm NLS operasyonlarını kaydeder",
@@ -655,27 +655,27 @@ Cargo Record Book gemide 3 yıl muhafaza edilir. PSC denetimlerinde P&A Manual i
   "annex3-imdg": {
     title: "IMDG Code ve Sınıflandırma",
     introduction: "IMDG Code (International Maritime Dangerous Goods Code), deniz yoluyla paketlenmiş tehlikeli maddelerin güvenli taşınmasını düzenleyen uluslararası standarttır.",
-    content: `IMDG CODE YAPISI:
+    content: `THE STRUCTURE OF THE IMDG CODE:
 
-IMDG Code, MARPOL Ek III'ü destekleyen ve SOLAS Bölüm VII'ye referans verilen zorunlu bir koddur. 2 yılda bir güncellenir.
+The IMDG Code is a mandatory code that supports MARPOL Annex III and is referenced in SOLAS Chapter VII. It is updated every 2 years.
 
-TEHLİKELİ MADDE SINIFLARI:
+CLASSES OF DANGEROUS GOODS:
 
-Sınıf 1 – Patlayıcılar (1.1-1.6 alt sınıflar)
-Sınıf 2 – Gazlar (2.1 yanıcı, 2.2 yanıcı olmayan, 2.3 zehirli)
-Sınıf 3 – Yanıcı sıvılar (parlama noktası ≤ 60°C kapalı kap)
-Sınıf 4 – Yanıcı katılar (4.1 yanıcı katı, 4.2 kendiliğinden yanıcı, 4.3 su ile temas)
-Sınıf 5 – Oksitleyiciler ve organik peroksitler (5.1, 5.2)
-Sınıf 6 – Zehirli ve bulaşıcı maddeler (6.1, 6.2)
-Sınıf 7 – Radyoaktif maddeler
-Sınıf 8 – Aşındırıcılar
-Sınıf 9 – Çeşitli tehlikeli maddeler
+Class 1 – Explosives (divisions 1.1-1.6)
+Class 2 – Gases (2.1 flammable, 2.2 non-flammable, 2.3 toxic)
+Class 3 – Flammable liquids (flash point ≤ 60°C closed cup)
+Class 4 – Flammable solids (4.1 flammable solid, 4.2 spontaneously combustible, 4.3 dangerous when wet)
+Class 5 – Oxidizers and organic peroxides (5.1, 5.2)
+Class 6 – Toxic and infectious substances (6.1, 6.2)
+Class 7 – Radioactive material
+Class 8 – Corrosives
+Class 9 – Miscellaneous dangerous substances
 
-UN NUMARASI VE DOĞRU NAKLİYE ADI:
+UN NUMBER AND PROPER SHIPPING NAME:
 
-Her tehlikeli madde, dört haneli bir UN numarası ve Proper Shipping Name (PSN) ile tanımlanır. Örnek: UN 1203 – GASOLINE (Benzin), Sınıf 3.
+Every dangerous substance is identified by a four-digit UN number and a Proper Shipping Name (PSN). Example: UN 1203 – GASOLINE, Class 3.
 
-IMDG Code, her UN numarası için paketleme grubu (PG I: büyük tehlike, PG II: orta, PG III: küçük), istifleme kuralları ve uyumsuz maddeler listesi sunar.`,
+For each UN number the IMDG Code gives the packing group (PG I: great danger, PG II: medium, PG III: minor), the stowage rules and the list of incompatible substances.`,
     bulletPoints: [
       "9 ana sınıf: patlayıcı, gaz, yanıcı sıvı/katı, oksitleyici, zehirli, radyoaktif, aşındırıcı",
       "Her madde UN numarası + PSN ile tanımlanır",
@@ -690,33 +690,33 @@ IMDG Code, her UN numarası için paketleme grubu (PG I: büyük tehlike, PG II:
   "annex3-marking": {
     title: "Etiketleme, İşaretleme ve İstifleme",
     introduction: "Paketlenmiş tehlikeli maddeler, IMDG Code'a uygun etiket, işaret ve plakartlarla tanımlanmalı ve uyumluluk kurallarına göre istiflenmelidir.",
-    content: `ETİKETLEME:
+    content: `LABELLING:
 
-Her tehlikeli madde paketi üzerinde:
-1. UN numarası (UN ile başlayan 4 haneli numara)
-2. Proper Shipping Name (doğru nakliye adı)
-3. Tehlike etiketi (diamond-shaped label): Sınıfa göre renk ve sembol
-   - Sınıf 1: turuncu/patlama sembolü
-   - Sınıf 2.1: kırmızı/alev
-   - Sınıf 3: kırmızı/alev
-   - Sınıf 6.1: beyaz/kurukafa
-   - Sınıf 8: siyah-beyaz/sıvı damla
+On every package of dangerous goods:
+1. The UN number (a 4-digit number prefixed by UN)
+2. The Proper Shipping Name
+3. The hazard label (diamond-shaped): colour and symbol according to class
+   - Class 1: orange/exploding bomb symbol
+   - Class 2.1: red/flame
+   - Class 3: red/flame
+   - Class 6.1: white/skull and crossbones
+   - Class 8: black and white/liquid drops
 
-4. İkincil tehlike etiketi (varsa)
+4. The subsidiary hazard label (where applicable)
 
-İŞARETLEME (Marking):
-Konteyner üzerinde: tehlike plakartı (placard) ve UN numarası görünür şekilde yazılır.
+MARKING:
+On the container: the placard and the UN number are displayed so as to be clearly visible.
 
-İSTİFLEME (Stowage & Segregation):
+STOWAGE & SEGREGATION:
 
-IMDG Code, uyumsuz maddelerin birbirinden ayrılması için 4 seviyeli bir sistem tanımlar:
+The IMDG Code defines a four-level system for keeping incompatible substances apart:
 
-1. "Away from" (uzakta): Farklı bölme/ambar veya en az 3 m yatay mesafe
-2. "Separated from" (ayrılmış): Farklı bölme veya en az bir tam bölme aralığı
-3. "Separated by a complete compartment" (tam bölme ile ayrılmış)
-4. "Separated longitudinally by an intervening complete compartment" (boylamasına tam bölme ile ayrılmış)
+1. "Away from": a different compartment/hold or at least 3 m horizontal separation
+2. "Separated from": a different compartment, or at least one full compartment apart
+3. "Separated by a complete compartment"
+4. "Separated longitudinally by an intervening complete compartment"
 
-Güverte üzeri ve güverte altı istifleme kuralları farklıdır; IMDG Code Bölüm 7 detayları içerir.`,
+The stowage rules on deck and under deck are different; Part 7 of the IMDG Code gives the details.`,
     bulletPoints: [
       "Paket: UN numarası + PSN + tehlike etiketi zorunludur",
       "Konteyner: placard + UN numarası görünür olmalıdır",
@@ -731,28 +731,28 @@ Güverte üzeri ve güverte altı istifleme kuralları farklıdır; IMDG Code B�
   "annex3-documentation": {
     title: "Tehlikeli Madde Beyannamesi",
     introduction: "Tehlikeli madde taşıyan gemiler, SOLAS ve MARPOL gereği doğru beyanname ve dokümantasyona sahip olmalıdır.",
-    content: `ZORUNLU BELGELER:
+    content: `MANDATORY DOCUMENTS:
 
-1. Dangerous Goods Declaration (Tehlikeli Madde Beyannamesi):
-   Yükleyici (shipper) tarafından hazırlanır. UN numarası, PSN, sınıf, paketleme grubu, miktar ve acil müdahale bilgilerini içerir.
+1. Dangerous Goods Declaration:
+   Prepared by the shipper. It states the UN number, PSN, class, packing group, quantity and emergency response information.
 
 2. Container/Vehicle Packing Certificate:
-   Konteynere yükleme yapan tarafın, yüklemenin IMDG Code'a uygun yapıldığını onayladığı belgedir.
+   The document by which the party packing the container certifies that the packing has been carried out in accordance with the IMDG Code.
 
-3. Dangerous Goods Manifest veya Stowage Plan:
-   Gemideki tüm tehlikeli maddelerin yeri, miktarı ve sınıfını gösteren listedir. Gemi terk edildiğinde kıyı otoritelerine verilmelidir.
+3. Dangerous Goods Manifest or Stowage Plan:
+   The list showing the location, quantity and class of all dangerous goods on board. It must be given to the shore authorities if the ship is abandoned.
 
 4. EmS (Emergency Schedules):
-   Her sınıf için acil müdahale prosedürlerini içerir. IMDG Code Supplement'te yer alır.
+   Contains the emergency response procedures for each class. Found in the IMDG Code Supplement.
 
 5. MFAG (Medical First Aid Guide):
-   Tehlikeli madde temasında ilk yardım prosedürleri. IMDG Code Supplement'te yer alır.
+   First aid procedures following contact with dangerous goods. Found in the IMDG Code Supplement.
 
-SORUMLULUKLAR:
+RESPONSIBILITIES:
 
-Yükleyici: Doğru beyanname, etiketleme, paketleme
-Gemi: İstifleme, ayrım, belge kontrolü, acil müdahale planı
-Liman: Yükleme öncesi onay (bazı limanlarda)`,
+Shipper: correct declaration, labelling and packing
+Ship: stowage, segregation, document check, emergency response plan
+Port: pre-loading approval (in some ports)`,
     bulletPoints: [
       "Dangerous Goods Declaration yükleyici tarafından hazırlanır",
       "Manifest veya stowage plan gemide bulunmalıdır",
@@ -771,29 +771,29 @@ Liman: Yükleme öncesi onay (bazı limanlarda)`,
   "annex4-overview": {
     title: "Ek IV Gereksinimleri ve Uygulama",
     introduction: "MARPOL Ek IV, gemilerden kaynaklanan pis suyun (sewage) denize deşarjını düzenler ve 400 GT üzeri veya 15'ten fazla personel taşıyan gemilere uygulanır.",
-    content: `KAPSAM:
+    content: `SCOPE:
 
-MARPOL Ek IV, 27 Eylül 2003'te yürürlüğe girmiştir.
+MARPOL Annex IV entered into force on 27 September 2003.
 
-Uygulama alanı:
-- 400 GT ve üzeri uluslararası sefer yapan gemiler
-- 400 GT altında olup 15'ten fazla kişi taşıyan gemiler
+Application:
+- Ships of 400 GT and above engaged on international voyages
+- Ships of less than 400 GT carrying more than 15 persons
 
-PİS SU TANIMI:
+DEFINITION OF SEWAGE:
 
-Pis su (sewage), aşağıdaki kaynakları kapsar:
-1. Tuvalet ve pisuar drenajı
-2. Tıbbi bölüm lavabo ve drenajı
-3. Hayvan taşınan bölümlerin drenajı
-4. Yukarıdaki kaynaklarla karışmış diğer atık sular
+Sewage covers the following sources:
+1. Drainage from toilets and urinals
+2. Drainage from medical spaces (washbasins and drains)
+3. Drainage from spaces containing live animals
+4. Other waste waters mixed with the above
 
-GEMİDE BULUNMASI GEREKEN SİSTEMLER:
+SYSTEMS REQUIRED ON BOARD:
 
-- Pis su arıtma tesisi (Sewage Treatment Plant - STP) ve/veya
-- Dezenfeksiyon sistemi (comminuting and disinfecting system) ve/veya
-- Toplama tankı (holding tank)
+- A sewage treatment plant (STP) and/or
+- A comminuting and disinfecting system and/or
+- A holding tank
 
-Üç seçenekten en az biri bulunmalıdır. Modern gemilerde genellikle STP + holding tank kombinasyonu tercih edilir.`,
+At least one of the three options must be fitted. Modern ships usually prefer a combination of STP plus holding tank.`,
     bulletPoints: [
       "400 GT+ veya 15+ kişi taşıyan gemilerde zorunludur",
       "Pis su: tuvalet, tıbbi bölüm ve hayvan drenajını kapsar",
@@ -808,24 +808,24 @@ GEMİDE BULUNMASI GEREKEN SİSTEMLER:
   "sewage-treatment": {
     title: "Pis Su Arıtma Tesisi ve Standartları",
     introduction: "Gemilerdeki pis su arıtma tesisleri (STP), pis suyu biyolojik, kimyasal veya fiziksel yöntemlerle arıtarak denize deşarj edilebilir kaliteye getirir.",
-    content: `ARITMA YÖNTEMLERİ:
+    content: `TREATMENT METHODS:
 
-1. Biyolojik Arıtma: Aerobik bakteriler organik maddeyi parçalar. En yaygın yöntemdir. Aktif çamur (activated sludge) veya membran biyoreaktör (MBR) kullanılır.
+1. Biological treatment: aerobic bacteria break down the organic matter. This is the most common method. Activated sludge or a membrane bioreactor (MBR) is used.
 
-2. Kimyasal Arıtma: Klor veya UV dezenfeksiyon ile patojen mikroorganizmalar yok edilir.
+2. Chemical treatment: pathogenic micro-organisms are destroyed by chlorine or UV disinfection.
 
-3. Elektrokimyasal Arıtma: Elektroliz yöntemiyle parçalama ve dezenfeksiyon. Bazı modern sistemlerde kullanılır.
+3. Electrochemical treatment: breakdown and disinfection by electrolysis. Used in some modern systems.
 
-IMO STANDARTLARI (MEPC.227(64)):
+IMO STANDARDS (MEPC.227(64)):
 
-Arıtılmış suyun kalite standartları:
-- BOD₅ (Biyolojik Oksijen İhtiyacı): ≤ 25 mg/L
-- COD (Kimyasal Oksijen İhtiyacı): ≤ 125 mg/L
-- TSS (Toplam Askıda Katı Madde): ≤ 35 mg/L
-- Koliform bakteri: ≤ 100 CFU/100 mL
-- pH: 6-8,5
+Quality standards for the treated effluent:
+- BOD₅ (Biochemical Oxygen Demand): ≤ 25 mg/L
+- COD (Chemical Oxygen Demand): ≤ 125 mg/L
+- TSS (Total Suspended Solids): ≤ 35 mg/L
+- Coliform bacteria: ≤ 100 CFU/100 mL
+- pH: 6-8.5
 
-Bu standartlar, 1 Ocak 2010 ve sonrasında inşa edilen gemiler ile Baltık özel alanında faaliyet gösteren yolcu gemileri için geçerlidir.`,
+These standards apply to ships built on or after 1 January 2010 and to passenger ships operating in the Baltic special area.`,
     formula: {
       name: "STP Kalite Standartları",
       expression: "BOD₅ ≤ 25 mg/L | TSS ≤ 35 mg/L | Koliform ≤ 100 CFU/100mL",
@@ -845,28 +845,28 @@ Bu standartlar, 1 Ocak 2010 ve sonrasında inşa edilen gemiler ile Baltık öze
   "sewage-discharge": {
     title: "Deşarj Kuralları ve Mesafe Sınırları",
     introduction: "Pis su deşarjı, arıtma durumuna, özel alan tanımına ve kıyıdan uzaklığa göre farklı kurallara tabidir.",
-    content: `DEŞARJ KOŞULLARI:
+    content: `DISCHARGE CONDITIONS:
 
-1. Arıtılmış pis su (STP çıkışı):
-   - MEPC.227(64) standardını karşılıyorsa: kısıtlama olmaksızın deşarj edilebilir
-   - Eski standartları karşılıyorsa: en yakın kıyıdan 3 deniz mili ötede deşarj
+1. Treated sewage (STP effluent):
+   - If it meets the MEPC.227(64) standard: it may be discharged without restriction
+   - If it meets the earlier standards: discharge more than 3 nautical miles from the nearest land
 
-2. Dezenfekte edilmiş pis su (comminuted and disinfected):
-   - En yakın kıyıdan en az 3 deniz mili uzakta
-   - Gemi seyir hâlinde, hız en az 4 knot
+2. Comminuted and disinfected sewage:
+   - At least 3 nautical miles from the nearest land
+   - The ship under way, speed at least 4 knots
 
-3. Arıtılmamış pis su:
-   - En yakın kıyıdan en az 12 deniz mili uzakta
-   - Gemi seyir hâlinde, hız en az 4 knot
-   - Anlık deşarj hızı: Oran IMO tarafından belirlenmiş formüle uymalıdır
+3. Untreated sewage:
+   - At least 12 nautical miles from the nearest land
+   - The ship under way, speed at least 4 knots
+   - Instantaneous rate of discharge: the rate must comply with the formula set by the IMO
 
-ÖZEL ALAN – BALTIK DENİZİ:
+SPECIAL AREA – THE BALTIC SEA:
 
-Baltık Denizi, Ek IV özel alanı olarak belirlenmiştir. Yolcu gemileri için ek kurallar:
-- Yeni yolcu gemileri (1 Haziran 2019 sonrası keel): STP MEPC.227(64) standardını karşılamalı
-- Mevcut yolcu gemileri: 1 Haziran 2021'den itibaren uyum zorunlu
+The Baltic Sea is designated an Annex IV special area. Additional rules for passenger ships:
+- New passenger ships (keel laid after 1 June 2019): the STP must meet the MEPC.227(64) standard
+- Existing passenger ships: compliance mandatory from 1 June 2021
 
-Yük gemileri için Baltık'ta genel kurallar geçerlidir.`,
+The general rules apply to cargo ships in the Baltic.`,
     bulletPoints: [
       "Arıtılmış (MEPC.227): kısıtlamasız; dezenfekte: 3 mil; arıtılmamış: 12 mil",
       "Deşarj sırasında gemi seyir hâlinde, en az 4 knot hız",
@@ -885,31 +885,31 @@ Yük gemileri için Baltık'ta genel kurallar geçerlidir.`,
   "annex5-categories": {
     title: "Çöp Kategorileri ve Deşarj Kuralları",
     introduction: "MARPOL Ek V, gemilerden kaynaklanan çöplerin denize atılmasını çoğunlukla yasaklar; yalnızca belirli kategorilerde sınırlı istisnalar tanımlar.",
-    content: `ÇÖP KATEGORİLERİ (Ek V Kural 4-6):
+    content: `GARBAGE CATEGORIES (Annex V Regulations 4-6):
 
-Kategori A – Plastikler: Denize atılması tamamen YASAKTIR. İstisna yoktur.
+Category A – Plastics: discharge into the sea is completely PROHIBITED. There are no exceptions.
 
-Kategori B – Yemek artıkları: 
-- Normal alanlar: 3 mil ötede, parçalanmış (25 mm altı) olarak
-- Özel alanlar: 12 mil ötede, parçalanmış olarak
+Category B – Food waste:
+- Normal areas: more than 3 miles offshore, comminuted (below 25 mm)
+- Special areas: more than 12 miles offshore, comminuted
 
-Kategori C – İç yüzeyler, ambalaj, kağıt, paçavra:
-- Normal alanlar: 12 mil ötede
-- Özel alanlar: YASAK
+Category C – Domestic wastes, packaging, paper, rags:
+- Normal areas: more than 12 miles offshore
+- Special areas: PROHIBITED
 
-Kategori D – Pişirme yağı:
-- Normal alanlar: 12 mil ötede
-- Özel alanlar: YASAK
+Category D – Cooking oil:
+- Normal areas: more than 12 miles offshore
+- Special areas: PROHIBITED
 
-Kategori E – Küller (incinerator):
-- Normal alanlar: 12 mil ötede
-- Özel alanlar: YASAK
+Category E – Incinerator ashes:
+- Normal areas: more than 12 miles offshore
+- Special areas: PROHIBITED
 
-Kategori F – Operasyonel atıklar (kargo artığı dahil):
-- Normal alanlar: 12 mil ötede, çevre için zararlı değilse
-- Özel alanlar: YASAK (kargo artıkları hariç bazı istisnalar)
+Category F – Operational wastes (including cargo residues):
+- Normal areas: more than 12 miles offshore, if not harmful to the environment
+- Special areas: PROHIBITED (with some exceptions for cargo residues)
 
-GENEL KURAL: Plastik dahil tüm sentetik materyallerin denize atılması her koşulda yasaktır.`,
+GENERAL RULE: the discharge of all synthetic materials including plastics into the sea is prohibited in all circumstances.`,
     bulletPoints: [
       "Plastik denize atılması: tamamen ve her yerde YASAK",
       "Yemek artıkları: 3 mil (normal), 12 mil (özel alan), parçalanmış",
@@ -924,35 +924,35 @@ GENEL KURAL: Plastik dahil tüm sentetik materyallerin denize atılması her ko�
   "garbage-management": {
     title: "Çöp Yönetim Planı ve Kayıt Defteri",
     introduction: "100 GT ve üzeri gemiler ile 15 veya daha fazla kişi taşıyan sabit platformlar Çöp Yönetim Planı (Garbage Management Plan) bulundurmak zorundadır.",
-    content: `ÇÖP YÖNETİM PLANI:
+    content: `THE GARBAGE MANAGEMENT PLAN:
 
-Kural 10.2 gereği, 100 GT ve üzeri gemilerde yazılı bir Çöp Yönetim Planı bulunmalıdır. Plan, mürettebat tarafından anlaşılır dilde yazılmalı ve aşağıdakileri içermelidir:
+Under Regulation 10.2, ships of 100 GT and above must carry a written Garbage Management Plan. The plan must be written in a language the crew understands and must cover:
 
-1. Toplama prosedürleri: Çöp kategorilerine göre ayrıştırma
-2. Depolama: Güvertede veya çöp odasında kategorilere göre ayrı konteynerler
-3. İşleme: Incinerator (yakma fırını), compactor (sıkıştırıcı), comminuter (parçalayıcı)
-4. Deşarj: Denize izin verilen ve verilmeyen kategoriler
-5. Alıcı tesise teslim: Limanda çöp bertarafı prosedürü
+1. Collection procedures: segregation by garbage category
+2. Storage: separate containers by category on deck or in the garbage room
+3. Processing: incinerator, compactor, comminuter
+4. Discharge: the categories which may and may not be discharged into the sea
+5. Delivery to a reception facility: the procedure for disposing of garbage in port
 
-ÇÖP KAYIT DEFTERİ (Garbage Record Book):
+THE GARBAGE RECORD BOOK:
 
-400 GT ve üzeri gemiler ile 15+ kişi taşıyan sabit platformlarda zorunludur.
+Mandatory for ships of 400 GT and above and for fixed platforms carrying 15 or more persons.
 
-Kaydedilen bilgiler:
-- Çöp türü (kategori kodu)
-- Tahmini miktar (m³)
-- Bertaraf yöntemi (denize deşarj / yakma / alıcı tesise teslim)
-- Tarih, saat ve konum
+The information recorded:
+- Type of garbage (category code)
+- Estimated quantity (m³)
+- Method of disposal (discharge to sea / incineration / delivery to a reception facility)
+- Date, time and position
 
-Kayıt defteri gemide 2 yıl muhafaza edilir.
+The record book is retained on board for 2 years.
 
-INCINERATOR KURALLARI:
+INCINERATOR RULES:
 
-Gemilerde çöp yakma (incineration) izin verilenler:
-- Kağıt, paçavra, yağlı atıklar, yemek artıkları
-Yasak olanlar:
-- Ek I, II, III kapsamındaki yük artıkları
-- PVC içeren plastikler (dioksin riski)`,
+What may be incinerated on board:
+- Paper, rags, oily wastes, food waste
+What is prohibited:
+- Cargo residues covered by Annexes I, II and III
+- Plastics containing PVC (risk of dioxins)`,
     bulletPoints: [
       "100 GT+ gemilerde Çöp Yönetim Planı zorunludur",
       "400 GT+ gemilerde Çöp Kayıt Defteri zorunludur",
@@ -967,25 +967,25 @@ Yasak olanlar:
   "annex5-special-areas": {
     title: "Özel Alanlar ve Antarktika Kuralları",
     introduction: "MARPOL Ek V kapsamında çok sayıda deniz alanı özel alan olarak belirlenmiş olup, bu alanlarda çöp deşarjı kuralları normal alanlardan çok daha kısıtlayıcıdır.",
-    content: `EK V ÖZEL ALANLARI:
+    content: `ANNEX V SPECIAL AREAS:
 
-Akdeniz, Baltık Denizi, Karadeniz, Kızıldeniz, Körfezler Bölgesi, Kuzey Denizi, Antarktika Bölgesi (60°S güneyinde), Geniş Karayip Bölgesi.
+The Mediterranean, the Baltic Sea, the Black Sea, the Red Sea, the Gulfs area, the North Sea, the Antarctic area (south of 60°S) and the Wider Caribbean Region.
 
-ÖZEL ALANLARDA KURALLAR:
+RULES IN SPECIAL AREAS:
 
-Plastikler: YASAK (normal alanlarla aynı)
-Yemek artıkları: 12 deniz mili ötede, parçalanmış (25 mm altı), gemi seyir hâlinde
-Diğer tüm kategoriler: YASAK (limanda alıcı tesise verilmeli)
+Plastics: PROHIBITED (as in normal areas)
+Food waste: more than 12 nautical miles offshore, comminuted (below 25 mm), the ship under way
+All other categories: PROHIBITED (must be delivered to a reception facility in port)
 
-ANTARKTİKA BÖLGESİ (60°S GÜNEYİ):
+THE ANTARCTIC AREA (SOUTH OF 60°S):
 
-Antarktika bölgesi en sıkı kurallara tabidir:
-- Tüm çöp türlerinin denize atılması YASAKTIR
-- Yemek artıkları dahil hiçbir çöp verilemez
-- Incinerator kullanımı: Antarktika Antlaşması Çevre Protokolü gereği bazı kısıtlamalar
-- Tüm çöp gemide depolanarak Antarktika dışına çıkarılmalıdır
+The Antarctic area is subject to the strictest rules:
+- The discharge of all types of garbage into the sea is PROHIBITED
+- No garbage at all, including food waste, may be discharged
+- Use of the incinerator: certain restrictions apply under the Environmental Protocol to the Antarctic Treaty
+- All garbage must be stored on board and taken out of the Antarctic area
 
-Antarktika'da faaliyet gösteren gemiler, yerel çevre mevzuatına da uymak zorundadır (Antarctic Treaty System).`,
+Ships operating in the Antarctic must also comply with the local environmental legislation (the Antarctic Treaty System).`,
     bulletPoints: [
       "Özel alanlarda yalnızca yemek artıkları (12 mil, parçalanmış) deşarj edilebilir",
       "Antarktika: yemek artıkları dahil TÜM çöp yasaktır",
@@ -1004,27 +1004,27 @@ Antarktika'da faaliyet gösteren gemiler, yerel çevre mevzuatına da uymak zoru
   "sox-regulations": {
     title: "SOx Sınırları ve Yakıt Kükürt Oranları",
     introduction: "MARPOL Ek VI, gemilerden kaynaklanan kükürt oksit (SOx) emisyonlarını yakıt kükürt oranı sınırları aracılığıyla kontrol eder.",
-    content: `KÜRESEL KÜKÜRT SINIRLARI:
+    content: `GLOBAL SULPHUR LIMITS:
 
-1 Ocak 2020'den itibaren küresel kükürt sınırı %0,50 m/m (ağırlıkça) olarak uygulanmaktadır. Bu düzenleme "IMO 2020" olarak bilinir.
+Since 1 January 2020 the global sulphur limit has been 0.50% m/m (by mass). This regulation is known as "IMO 2020".
 
-TARİHSEL GELİŞİM:
-- 2012 öncesi: %4,50 (fiilen sınırsız)
-- 2012-2020: %3,50
-- 2020 sonrası: %0,50
+HISTORICAL DEVELOPMENT:
+- Before 2012: 4.50% (effectively unlimited)
+- 2012-2020: 3.50%
+- After 2020: 0.50%
 
-ECA/SECA BÖLGELERİ:
+ECA/SECA AREAS:
 
-Emisyon Kontrol Alanları (ECA) veya Kükürt Emisyon Kontrol Alanları (SECA) içinde sınır: %0,10 m/m (2015'ten itibaren).
+Within Emission Control Areas (ECA) or Sulphur Emission Control Areas (SECA) the limit is 0.10% m/m (since 2015).
 
-Mevcut ECA'lar: Baltık Denizi, Kuzey Denizi, Kuzey Amerika (ABD + Kanada kıyıları, 200 mil), ABD Karayip Bölgesi, Akdeniz (2025'ten itibaren).
+Existing ECAs: the Baltic Sea, the North Sea, North America (US and Canadian coasts, 200 miles), the US Caribbean, and the Mediterranean (from 2025).
 
-UYUM YÖNTEMLERİ:
+METHODS OF COMPLIANCE:
 
-1. Düşük kükürtlü yakıt (VLSFO/ULSFO): En yaygın yöntem. %0,50 (küresel) veya %0,10 (ECA) uyumlu yakıt kullanımı.
-2. Scrubber (Egzoz Gazı Temizleme Sistemi - EGCS): HFO kullanımına devam ederken egzoz gazından SO₂'yi yıkar. Open-loop, closed-loop veya hybrid tipler.
-3. LNG: Doğal gaz yakıt olarak kullanıldığında SOx emisyonu sıfıra yakındır.
-4. Metanol ve diğer alternatif yakıtlar.`,
+1. Low sulphur fuel (VLSFO/ULSFO): the most common method. Using fuel compliant with 0.50% (global) or 0.10% (ECA).
+2. Scrubber (Exhaust Gas Cleaning System – EGCS): washes SO₂ out of the exhaust gas while continuing to burn HFO. Open-loop, closed-loop or hybrid types.
+3. LNG: when natural gas is used as fuel, SOx emissions are close to zero.
+4. Methanol and other alternative fuels.`,
     bulletPoints: [
       "2020 sonrası küresel sınır: %0,50 m/m kükürt",
       "ECA/SECA sınırı: %0,10 m/m (2015'ten itibaren)",
@@ -1036,39 +1036,39 @@ UYUM YÖNTEMLERİ:
       "Scrubber kullanan gemiler HFO (%3,50) yakabilir ancak scrubber çıkışı izlenmelidir",
     ],
     warnings: [
-      "ECA'ya girerken yakıt geçişi (fuel changeover) en az 1 saat önceden yapılmalıdır",
-      "Uyumsuz yakıt kullanımı: PSC detention + yüksek para cezası",
+      "The fuel changeover before entering an ECA must be completed at least 1 hour in advance",
+      "Use of non-compliant fuel: PSC detention plus heavy fines",
     ],
   },
   "nox-tiers": {
     title: "NOx Tier I, II, III Standartları",
     introduction: "MARPOL Ek VI, gemi dizel motorlarından kaynaklanan azot oksit (NOx) emisyonlarını motor devir sayısına bağlı üç kademeli standartla sınırlar.",
-    content: `NOx STANDARTLARI:
+    content: `NOx STANDARDS:
 
-NOx sınırları, motorun devir sayısına (n = RPM) göre belirlenir:
+The NOx limits are set according to the engine speed (n = rpm):
 
-Tier I (2000-2011 arası inşa edilen gemiler):
-- n < 130 rpm: 17,0 g/kWh
+Tier I (ships built between 2000 and 2011):
+- n < 130 rpm: 17.0 g/kWh
 - 130 ≤ n < 2000 rpm: 45 × n⁻⁰·² g/kWh
-- n ≥ 2000 rpm: 9,8 g/kWh
+- n ≥ 2000 rpm: 9.8 g/kWh
 
-Tier II (2011 sonrası inşa edilen gemiler):
-- n < 130 rpm: 14,4 g/kWh
+Tier II (ships built after 2011):
+- n < 130 rpm: 14.4 g/kWh
 - 130 ≤ n < 2000 rpm: 44 × n⁻⁰·²³ g/kWh
-- n ≥ 2000 rpm: 7,7 g/kWh
+- n ≥ 2000 rpm: 7.7 g/kWh
 
-Tier III (2016 sonrası, NOx ECA içinde):
-- n < 130 rpm: 3,4 g/kWh
+Tier III (after 2016, inside a NOx ECA):
+- n < 130 rpm: 3.4 g/kWh
 - 130 ≤ n < 2000 rpm: 9 × n⁻⁰·² g/kWh
-- n ≥ 2000 rpm: 2,0 g/kWh
+- n ≥ 2000 rpm: 2.0 g/kWh
 
-TIER III UYUM YÖNTEMLERİ:
+METHODS OF TIER III COMPLIANCE:
 
-1. SCR (Selective Catalytic Reduction): Egzoz gazına üre çözeltisi enjekte edilerek NOx azaltılır. %80-90 verimlilik.
-2. EGR (Exhaust Gas Recirculation): Egzoz gazının bir kısmı yanma odasına geri döndürülerek yanma sıcaklığı düşürülür.
-3. LNG: Doğal gazla çalışan motorlar Tier III'ü doğal olarak karşılar.
+1. SCR (Selective Catalytic Reduction): a urea solution is injected into the exhaust gas to reduce NOx. 80-90% efficiency.
+2. EGR (Exhaust Gas Recirculation): part of the exhaust gas is returned to the combustion chamber, lowering the combustion temperature.
+3. LNG: gas-fuelled engines meet Tier III naturally.
 
-NOx ECA: Kuzey Amerika ve ABD Karayip. Baltık ve Kuzey Denizi 2021'den itibaren NOx ECA.`,
+NOx ECAs: North America and the US Caribbean. The Baltic and the North Sea became NOx ECAs in 2021.`,
     formula: {
       name: "Tier II NOx Sınırı (130-2000 rpm arası)",
       expression: "NOx ≤ 44 × n⁻⁰·²³ g/kWh",
@@ -1088,28 +1088,28 @@ NOx ECA: Kuzey Amerika ve ABD Karayip. Baltık ve Kuzey Denizi 2021'den itibaren
   "eca-seca": {
     title: "ECA/SECA Bölgeleri ve Gereksinimleri",
     introduction: "Emisyon Kontrol Alanları (ECA), IMO tarafından belirlenen ve normal deniz alanlarından daha sıkı emisyon standartlarının uygulandığı bölgelerdir.",
-    content: `MEVCUT ECA BÖLGELERİ:
+    content: `THE EXISTING ECAs:
 
-1. Baltık Denizi SECA: Yalnızca SOx kontrolü. 2006'dan beri aktif.
-2. Kuzey Denizi SECA: Yalnızca SOx kontrolü. 2007'den beri aktif.
-3. Kuzey Amerika ECA: SOx + NOx + PM kontrolü. 2012'den beri. ABD ve Kanada kıyılarından 200 deniz mili.
-4. ABD Karayip ECA: SOx + NOx + PM. 2014'ten beri. Porto Riko ve ABD Virjin Adaları çevresi.
-5. Baltık ve Kuzey Denizi NOx ECA: 1 Ocak 2021'den itibaren (Tier III uyumu).
-6. Akdeniz SOx ECA: 2025'te yürürlüğe girecektir.
+1. Baltic Sea SECA: SOx control only. In force since 2006.
+2. North Sea SECA: SOx control only. In force since 2007.
+3. North American ECA: SOx + NOx + PM control. Since 2012. 200 nautical miles from the US and Canadian coasts.
+4. US Caribbean ECA: SOx + NOx + PM. Since 2014. Around Puerto Rico and the US Virgin Islands.
+5. Baltic and North Sea NOx ECA: from 1 January 2021 (Tier III compliance).
+6. Mediterranean SOx ECA: enters into force in 2025.
 
-GEREKSİNİMLER:
+REQUIREMENTS:
 
 SOx ECA:
-- Yakıt kükürt oranı ≤ %0,10 m/m veya eşdeğer scrubber
-- Fuel changeover prosedürü ve kaydı
+- Fuel sulphur content ≤ 0.10% m/m or an equivalent scrubber
+- Fuel changeover procedure and record
 
 NOx ECA:
-- 2016/2021 sonrası inşa edilen gemilerin motorları Tier III'ü karşılamalıdır
-- SCR, EGR veya LNG teknolojisi
+- Engines of ships built after 2016/2021 must meet Tier III
+- SCR, EGR or LNG technology
 
-ECA'YA GİRİŞ/ÇIKIŞ:
+ENTERING/LEAVING AN ECA:
 
-Gemi ECA sınırına girmeden önce düşük kükürtlü yakıta geçiş (fuel changeover) yapmalıdır. Geçiş süreci boyunca yakıt tanklarında yeterli düşük kükürtlü yakıt bulunmalıdır. Fuel changeover zamanı, tarihi ve tank hacmi log book'a kaydedilir.`,
+The ship must change over to low sulphur fuel before crossing the ECA boundary. Sufficient low sulphur fuel must be available in the tanks throughout the changeover. The time and date of the changeover and the tank volumes are recorded in the log book.`,
     bulletPoints: [
       "SOx ECA: %0,10 kükürt sınırı; NOx ECA: Tier III zorunlu",
       "Kuzey Amerika: SOx + NOx + PM kontrolü (en kapsamlı)",
@@ -1124,28 +1124,28 @@ Gemi ECA sınırına girmeden önce düşük kükürtlü yakıta geçiş (fuel c
   "ods-regulations": {
     title: "Ozon Tabakasını İncelten Maddeler",
     introduction: "MARPOL Ek VI Kural 12, ozon tabakasını incelten maddelerin (ODS) gemilerde kullanımını kontrol eder.",
-    content: `KAPSAM:
+    content: `SCOPE:
 
-Ozon tabakasını incelten maddeler (ODS - Ozone Depleting Substances), Montreal Protokolü ile kontrol altına alınmış kimyasallardır.
+Ozone Depleting Substances (ODS) are chemicals brought under control by the Montreal Protocol.
 
-Gemilerde en yaygın ODS kullanım alanları:
-- Soğutma sistemleri (klima, provizyon soğutma, kargo soğutma)
-- Yangın söndürme sistemleri (Halon)
-- Yalıtım köpükleri
+The most common uses of ODS on board:
+- Refrigeration systems (air conditioning, provision cooling, cargo refrigeration)
+- Fire extinguishing systems (halon)
+- Insulation foams
 
-MARPOL EK VI KURAL 12:
+MARPOL ANNEX VI REGULATION 12:
 
-1. Yeni kurulum yasağı: CFC (Chlorofluorocarbon) içeren soğutma ve yangın söndürme sistemlerinin yeni kurulumu yasaktır (tüm gemiler).
+1. Prohibition of new installations: new installations of refrigeration and fire extinguishing systems containing CFCs (chlorofluorocarbons) are prohibited (all ships).
 
-2. Halon 1211, 1301 ve CFC-12 (R-12) gibi maddelerin yeni kurulumu yasaktır.
+2. New installations of substances such as Halon 1211, 1301 and CFC-12 (R-12) are prohibited.
 
-3. HCFC (Hydrochlorofluorocarbon) sınırlaması: 1 Ocak 2020'den itibaren HCFC (R-22 dahil) içeren yeni kurulum yasaktır. Mevcut sistemlerin kullanımı devam edebilir ancak dolum yapılamaz.
+3. HCFC (hydrochlorofluorocarbon) restriction: from 1 January 2020 new installations containing HCFCs (including R-22) are prohibited. Existing systems may continue in use but may not be recharged.
 
-4. ODS Kayıt Defteri (ODS Record Book): ODS içeren tüm sistemler kaydedilmeli, sızıntılar ve dolum miktarları izlenmelidir.
+4. ODS Record Book: all systems containing ODS must be recorded, and leakages and recharge quantities must be tracked.
 
-ALTERNATIFLER:
+ALTERNATIVES:
 
-R-134a, R-404A, R-407C gibi HFC (Hydrofluorocarbon) soğutucu akışkanlar ODS değildir ancak sera gazı etkisi nedeniyle Kigali Değişikliği ile aşamalı olarak azaltılmaktadır.`,
+HFC (hydrofluorocarbon) refrigerants such as R-134a, R-404A and R-407C are not ODS, but they are being phased down under the Kigali Amendment because of their greenhouse effect.`,
     bulletPoints: [
       "CFC ve Halon yeni kurulumu tamamen yasaktır",
       "HCFC (R-22): 2020'den itibaren yeni kurulum yasak; mevcut sistemde dolum yapılamaz",
@@ -1160,26 +1160,26 @@ R-134a, R-404A, R-407C gibi HFC (Hydrofluorocarbon) soğutucu akışkanlar ODS d
   "voc-regulations": {
     title: "VOC (Uçucu Organik Bileşikler) Kontrolü",
     introduction: "MARPOL Ek VI Kural 15, tanker operasyonlarından kaynaklanan uçucu organik bileşik (VOC) emisyonlarının kontrolünü düzenler.",
-    content: `VOC NEDİR?
+    content: `WHAT ARE VOCs?
 
-VOC (Volatile Organic Compounds), tanker yük tanklarından atmosfere yayılan uçucu hidrokarbonlardır. Ham petrol ve benzin gibi yüklerin buharlaşması sonucu oluşur. Ozon oluşumuna katkıda bulunur ve hava kalitesini olumsuz etkiler.
+VOCs (Volatile Organic Compounds) are volatile hydrocarbons released into the atmosphere from tanker cargo tanks. They arise from the evaporation of cargoes such as crude oil and petrol. They contribute to the formation of ozone and have an adverse effect on air quality.
 
-KURAL 15 GEREKSİNİMLERİ:
+REGULATION 15 REQUIREMENTS:
 
-1. VOC Yönetim Planı (VOCSMP): Ham petrol tankerleri bir VOC Yönetim Planı hazırlamalıdır.
+1. VOC Management Plan (VOCSMP): crude oil tankers must prepare a VOC Management Plan.
 
-2. Buhar Toplama Sistemi (VECS - Vapour Emission Control System): Bazı limanlar ve terminaller, yükleme sırasında VOC emisyonlarının toplanmasını zorunlu kılar. Gemi bu sisteme bağlanabilecek donanıma sahip olmalıdır.
+2. Vapour Emission Control System (VECS): some ports and terminals require VOC emissions to be collected during loading. The ship must have the equipment to connect to this system.
 
-3. Buhar Geri Kazanım Sistemi (VRUS): Toplanan buharların yoğunlaştırılarak geri kazanılması veya güvenli yakılması.
+3. Vapour Recovery Unit (VRU): the vapours collected are condensed and recovered or safely burned.
 
-UYGULAMA:
+APPLICATION:
 
-VOC kontrolü ağırlıklı olarak terminallerde uygulanır. Geminin sorumluluğu:
-- VECS bağlantı manifoldu bulundurmak
-- VOC yönetim planına uymak
-- Yükleme sırasında tank vantilatörlerini kontrol etmek
+VOC control is applied mainly at terminals. The ship's responsibility is to:
+- Carry a VECS connection manifold
+- Comply with the VOC management plan
+- Control the tank vents during loading
 
-Norveç gibi bazı kıyı devletleri, karasuları içinde ek VOC kontrol gereksinimleri uygular.`,
+Some coastal States, such as Norway, apply additional VOC control requirements within their territorial waters.`,
     bulletPoints: [
       "VOC: tanker yük tanklarından yayılan uçucu hidrokarbonlar",
       "Ham petrol tankerleri VOC Yönetim Planı bulundurmalıdır",
@@ -1198,31 +1198,31 @@ Norveç gibi bazı kıyı devletleri, karasuları içinde ek VOC kontrol gereksi
   "eedi-eexi": {
     title: "EEDI ve EEXI Hesaplama ve Gereksinimleri",
     introduction: "EEDI (Energy Efficiency Design Index) yeni gemiler için, EEXI (Energy Efficiency Existing Ship Index) ise mevcut gemiler için karbon verimliliğini ölçen zorunlu endekslerdir.",
-    content: `EEDI (YENİ GEMİLER):
+    content: `EEDI (NEW SHIPS):
 
-EEDI, geminin tasarım aşamasında ton-mil başına CO₂ emisyonunu ölçer. MARPOL Ek VI Kural 21 gereği 2013'ten itibaren yeni gemiler için zorunludur.
+The EEDI measures the CO₂ emission per ton-mile at the design stage of the ship. It has been mandatory for new ships since 2013 under MARPOL Annex VI Regulation 21.
 
-Hesaplama (basitleştirilmiş):
-EEDI = (CO₂ emisyonu) / (taşıma kapasitesi × hız)
+Calculation (simplified):
+EEDI = (CO₂ emission) / (carrying capacity × speed)
 
-Birim: g CO₂ / (ton × deniz mili)
+Unit: g CO₂ / (tonne × nautical mile)
 
-EEDI azaltma hedefleri (baseline'a göre):
-- Faz 0 (2013-2015): %0 (referans)
-- Faz 1 (2015-2020): %10 azaltma
-- Faz 2 (2020-2025): %20 azaltma
-- Faz 3 (2025+): %30-50 azaltma (gemi tipine göre)
+EEDI reduction targets (against the baseline):
+- Phase 0 (2013-2015): 0% (reference)
+- Phase 1 (2015-2020): 10% reduction
+- Phase 2 (2020-2025): 20% reduction
+- Phase 3 (2025+): 30-50% reduction (depending on ship type)
 
-EEXI (MEVCUT GEMİLER):
+EEXI (EXISTING SHIPS):
 
-1 Ocak 2023'ten itibaren mevcut gemiler EEXI hesaplaması yapmak ve gerekli enerji verimliliği endeksini sağlamak zorundadır.
+From 1 January 2023 existing ships must calculate their EEXI and achieve the required energy efficiency index.
 
-EEXI = EEDI'nin mevcut gemilere uygulanmış hâlidir.
+The EEXI is the EEDI applied to existing ships.
 
-EEXI uyum yöntemleri:
-1. Motor güç sınırlaması (Engine Power Limitation - EPL): En yaygın yöntem
-2. Enerji tasarruflu teknolojiler (waste heat recovery, air lubrication)
-3. Alternatif yakıt dönüşümü`,
+Methods of EEXI compliance:
+1. Engine Power Limitation (EPL): the most common method
+2. Energy saving technologies (waste heat recovery, air lubrication)
+3. Conversion to alternative fuel`,
     formula: {
       name: "EEDI Hesaplaması (Basitleştirilmiş)",
       expression: "EEDI = (P × SFC × CF) / (Capacity × Vref)",
@@ -1242,44 +1242,44 @@ EEXI uyum yöntemleri:
   "cii-rating": {
     title: "CII Derecelendirmesi (A-E) ve Hesaplama",
     introduction: "CII (Carbon Intensity Indicator), geminin yıllık operasyonel karbon yoğunluğunu ölçer ve A-E arasında bir derecelendirme verir.",
-    content: `CII NEDİR?
+    content: `WHAT IS THE CII?
 
-CII, geminin bir yılda fiilen ürettiği CO₂ emisyonunu taşıma kapasitesine ve kat ettiği mesafeye oranlar. EEDI/EEXI'den farklı olarak CII operasyonel performansı ölçer.
+The CII relates the CO₂ a ship actually emits in a year to its carrying capacity and the distance it sails. Unlike the EEDI/EEXI, the CII measures operational performance.
 
-HESAPLAMA:
+CALCULATION:
 
-CII = Yıllık CO₂ emisyonu / (Capacity × Mesafe)
+CII = Annual CO₂ emission / (Capacity × Distance)
 
-Birim: g CO₂ / (ton × deniz mili)
+Unit: g CO₂ / (tonne × nautical mile)
 
-Yıllık CO₂ = Toplam yakıt tüketimi × CF (CO₂ dönüşüm faktörü)
+Annual CO₂ = Total fuel consumption × CF (CO₂ conversion factor)
 
-DERECELENDİRME:
+RATING:
 
-A: Üstün (Superior) – Referans çizgisinin çok altında
-B: İyi (Good) – Referans çizgisinin altında  
-C: Orta (Moderate) – Referans çizgisi civarında
-D: Yetersiz (Inferior) – Referans çizgisinin üstünde
-E: Kötü (Poor) – Referans çizgisinin çok üstünde
+A: Superior – well below the reference line
+B: Good – below the reference line
+C: Moderate – around the reference line
+D: Inferior – above the reference line
+E: Poor – well above the reference line
 
-Üst üste 3 yıl D veya 1 yıl E alan gemiler düzeltici eylem planı hazırlamak zorundadır.
+Ships rated D for three consecutive years or E for one year must prepare a corrective action plan.
 
-CII AZALTMA HEDEFLERİ:
+CII REDUCTION TARGETS:
 
-2023: referans yılı
-2024: %2 azaltma
-2025: %3 azaltma
-2026: %4 azaltma
-Sonrası: IMO tarafından belirlenecek
+2023: reference year
+2024: 2% reduction
+2025: 3% reduction
+2026: 4% reduction
+Beyond that: to be set by the IMO
 
-İYİLEŞTİRME YÖNTEMLERİ:
+METHODS OF IMPROVEMENT:
 
-1. Hız optimizasyonu (slow steaming)
-2. Rota optimizasyonu
-3. Tekne bakımı (anti-fouling)
-4. Pervane polisajı
-5. Trim optimizasyonu
-6. Alternatif yakıt kullanımı`,
+1. Speed optimisation (slow steaming)
+2. Route optimisation
+3. Hull maintenance (anti-fouling)
+4. Propeller polishing
+5. Trim optimisation
+6. Use of alternative fuels`,
     formula: {
       name: "CII Hesaplaması",
       expression: "CII = (ΣFCⱼ × CFⱼ) / (Capacity × D)",
@@ -1299,36 +1299,36 @@ Sonrası: IMO tarafından belirlenecek
   "seemp": {
     title: "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)",
     introduction: "SEEMP, geminin enerji verimliliğini izlemek ve iyileştirmek için gerekli prosedürleri içeren zorunlu bir yönetim planıdır.",
-    content: `SEEMP YAPISI:
+    content: `THE STRUCTURE OF THE SEEMP:
 
-SEEMP, 2023'ten itibaren iki bölümden oluşur:
+Since 2023 the SEEMP has consisted of two parts:
 
-SEEMP Part I: Enerji Verimliliği Yönetim Planı
-- Gemi-spesifik enerji verimliliği tedbirleri
-- Yakıt tüketimi izleme prosedürleri
-- Mürettebat eğitimi
-- Tüm gemiler için zorunludur
+SEEMP Part I: the Energy Efficiency Management Plan
+- Ship-specific energy efficiency measures
+- Fuel consumption monitoring procedures
+- Crew training
+- Mandatory for all ships
 
-SEEMP Part II: CII İzleme ve Raporlama
-- 5.000 GT ve üzeri gemiler için zorunludur
-- Yakıt tüketimi verilerinin toplanması (DCS - Data Collection System)
-- Yıllık CII hesaplaması
-- Düzeltici eylem planı (D veya E derecelendirmesi alınırsa)
+SEEMP Part II: CII monitoring and reporting
+- Mandatory for ships of 5,000 GT and above
+- Collection of fuel consumption data (DCS – Data Collection System)
+- Annual CII calculation
+- Corrective action plan (if a D or E rating is received)
 
-ENERJİ VERİMLİLİĞİ TEDBİRLERİ:
+ENERGY EFFICIENCY MEASURES:
 
-SEEMP'te yer alabilecek iyileştirme tedbirleri:
-1. Seyir optimizasyonu: rota planlama, akıntı ve hava durumu dikkate alma
-2. Hız yönetimi: optimum ekonomik hız belirleme
-3. Trim optimizasyonu: statik trim ayarlaması ile direnç azaltma
-4. Makine bakımı: motor tune-up, pervane polisajı
-5. Tekne bakımı: anti-fouling boya uygulaması
-6. Atık ısı geri kazanımı
-7. LED aydınlatma ve enerji verimli ekipman
+Improvement measures that may be included in the SEEMP:
+1. Voyage optimisation: passage planning, allowing for currents and weather
+2. Speed management: determining the optimum economical speed
+3. Trim optimisation: reducing resistance by adjusting the static trim
+4. Machinery maintenance: engine tune-up, propeller polishing
+5. Hull maintenance: application of anti-fouling paint
+6. Waste heat recovery
+7. LED lighting and energy efficient equipment
 
-DCS (Veri Toplama Sistemi):
+DCS (Data Collection System):
 
-5.000 GT+ gemiler yıllık yakıt tüketimi verilerini bayrak devletine raporlar. Veriler IMO DCS veritabanında toplanır.`,
+Ships of 5,000 GT and above report their annual fuel consumption data to the flag State. The data is collated in the IMO DCS database.`,
     bulletPoints: [
       "SEEMP Part I: tüm gemiler; Part II: 5.000 GT+ gemiler",
       "Part II CII izleme ve yıllık raporlama içerir",
@@ -1343,35 +1343,35 @@ DCS (Veri Toplama Sistemi):
   "eu-ets": {
     title: "EU ETS ve FuelEU Maritime",
     introduction: "AB, denizcilik sektörünü 2024'ten itibaren Emisyon Ticaret Sistemi'ne (EU ETS) dahil etmiş ve FuelEU Maritime düzenlemesiyle sera gazı yoğunluğu hedefleri belirlemiştir.",
-    content: `EU ETS DENİZCİLİK:
+    content: `EU ETS FOR SHIPPING:
 
-1 Ocak 2024'ten itibaren 5.000 GT ve üzeri gemilerin CO₂ emisyonları AB Emisyon Ticaret Sistemi kapsamına alınmıştır.
+Since 1 January 2024 the CO₂ emissions of ships of 5,000 GT and above have been included in the EU Emissions Trading System.
 
-KAPSAM:
-- AB limanları arasındaki seferler: emisyonların %100'ü
-- AB limanı – AB dışı liman seferleri: emisyonların %50'si
-- AB limanında bekleme sırasında: emisyonların %100'ü
+SCOPE:
+- Voyages between EU ports: 100% of emissions
+- Voyages between an EU port and a non-EU port: 50% of emissions
+- While at berth in an EU port: 100% of emissions
 
-AŞAMALI GEÇİŞ:
-2024: emisyonların %40'ı için tahsisat satın alma
-2025: %70
-2026: %100
+PHASE-IN:
+2024: allowances to be surrendered for 40% of emissions
+2025: 70%
+2026: 100%
 
-Gemi operatörü, emisyonlarını karşılayacak kadar EUA (EU Allowance) satın almalıdır. 1 EUA = 1 ton CO₂.
+The ship operator must buy enough EUAs (EU Allowances) to cover its emissions. 1 EUA = 1 tonne of CO₂.
 
 FUELEU MARITIME (2025):
 
-1 Ocak 2025'ten itibaren gemilerin yakıt sera gazı yoğunluğu (GHG intensity) azaltma hedefleri:
-2025: -%2 (2020 referansına göre)
-2030: -%6
-2035: -%14,5
-2040: -%31
-2045: -%62
-2050: -%80
+From 1 January 2025 ships must meet targets for reducing the greenhouse gas intensity of their fuel:
+2025: −2% (against the 2020 reference)
+2030: −6%
+2035: −14.5%
+2040: −31%
+2045: −62%
+2050: −80%
 
-GHG intensity, Well-to-Wake (kuyudan pervanaya) bazında hesaplanır; üretim, taşıma ve yanma emisyonlarının tamamını kapsar.
+GHG intensity is calculated on a Well-to-Wake basis; it covers the emissions from production, transport and combustion.
 
-Uyumsuzluk halinde para cezası uygulanır.`,
+Fines apply in the event of non-compliance.`,
     bulletPoints: [
       "EU ETS: 2024'ten itibaren 5.000 GT+ gemiler dahil",
       "AB-AB seferleri: %100, AB-üçüncü ülke: %50 emisyon kapsamı",
@@ -1386,36 +1386,36 @@ Uyumsuzluk halinde para cezası uygulanır.`,
   "alternative-fuels": {
     title: "Alternatif Yakıtlar (LNG, Metanol, Amonyak)",
     introduction: "Denizcilik sektörünün dekarbonizasyon hedeflerini karşılamak için geleneksel petrol bazlı yakıtlara alternatif çeşitli yakıt seçenekleri geliştirilmektedir.",
-    content: `LNG (SIVILAŞTIRILMIŞ DOĞAL GAZ):
+    content: `LNG (LIQUEFIED NATURAL GAS):
 
-Avantajlar: SOx emisyonu neredeyse sıfır, NOx %85 azalma, CO₂ %20-25 azalma, PM (partikül madde) %95 azalma.
-Dezavantajlar: Methan slip (yanmamış metan kaçağı) sera gazı etkisini azaltır; yüksek yatırım maliyeti; bunkerleme altyapısı sınırlı.
-IGF Code: LNG yakıtlı gemilerin güvenlik gereksinimleri.
+Advantages: SOx emissions close to zero, NOx down by 85%, CO₂ down by 20-25%, PM (particulate matter) down by 95%.
+Disadvantages: methane slip (unburned methane) offsets the greenhouse benefit; high investment cost; limited bunkering infrastructure.
+IGF Code: the safety requirements for gas-fuelled ships.
 
-METANOL:
+METHANOL:
 
-Avantajlar: SOx sıfır, NOx düşük, oda sıcaklığında sıvı (depolama kolaylığı), biyometanol ve e-metanol ile karbonsuz olabilir.
-Dezavantajlar: Düşük enerji yoğunluğu (HFO'nun yarısı), zehirli (görünmez alev, cilt teması).
-Maersk 2024'te metanol yakıtlı konteyner gemilerini hizmete almıştır.
+Advantages: zero SOx, low NOx, liquid at ambient temperature (easy to store), can be carbon neutral as biomethanol or e-methanol.
+Disadvantages: low energy density (half that of HFO), toxic (invisible flame, skin contact).
+Maersk brought methanol-fuelled container ships into service in 2024.
 
-AMONYAK:
+AMMONIA:
 
-Avantajlar: Karbon içermez (yanma sırasında CO₂ üretmez), yüksek enerji yoğunluğu, mevcut LPG taşıma teknolojisi uyarlanabilir.
-Dezavantajlar: Son derece zehirli (TLV: 25 ppm), korozif, düşük yanma hızı, NOx üretebilir.
-2030'lu yıllarda ticari kullanıma girmesi beklenmektedir.
+Advantages: contains no carbon (produces no CO₂ on combustion), high energy density, existing LPG carriage technology can be adapted.
+Disadvantages: extremely toxic (TLV: 25 ppm), corrosive, low flame speed, can produce NOx.
+Commercial use is expected during the 2030s.
 
-HİDROJEN:
+HYDROGEN:
 
-Yeşil hidrojen (elektroliz) en temiz yakıttır ancak depolama zorluğu (yüksek basınç veya kriojenik), düşük enerji yoğunluğu (hacimsel) ve üretim maliyeti nedeniyle denizcilik uygulaması henüz sınırlıdır.
+Green hydrogen (from electrolysis) is the cleanest fuel, but its marine application is still limited by the difficulty of storage (high pressure or cryogenic), its low volumetric energy density and its production cost.
 
-KARŞILAŞTIRMA (HFO = 100 referans):
+COMPARISON (HFO = 100 reference):
 
-Yakıt / Enerji Yoğunluğu / CO₂ azaltma / Maliyet
-HFO: 100 / referans / düşük
-LNG: 75 / %20-25 / orta
-Metanol: 50 / %0-100* / yüksek
-Amonyak: 55 / %100 (tank-to-wake) / yüksek
-*Biyometanol veya e-metanol ile %100 azaltma mümkün`,
+Fuel / Energy density / CO₂ reduction / Cost
+HFO: 100 / reference / low
+LNG: 75 / 20-25% / medium
+Methanol: 50 / 0-100%* / high
+Ammonia: 55 / 100% (tank-to-wake) / high
+*A 100% reduction is possible with biomethanol or e-methanol`,
     bulletPoints: [
       "LNG: SOx ≈ 0, CO₂ %20-25 azalma; methan slip dezavantajı",
       "Metanol: oda sıcaklığında sıvı, e-metanol ile %100 azaltma mümkün",
@@ -1434,23 +1434,23 @@ Amonyak: 55 / %100 (tank-to-wake) / yüksek
   "bwm-convention": {
     title: "BWM Sözleşmesi ve Tarihçesi",
     introduction: "Balast Suyu Yönetimi (BWM) Sözleşmesi, gemilerin balast suyu yoluyla yabancı deniz organizmalarını taşımasını önlemeye yönelik uluslararası düzenlemedir.",
-    content: `BWM SÖZLEŞMESİ:
+    content: `THE BWM CONVENTION:
 
-2004'te IMO tarafından kabul edilmiş, 8 Eylül 2017'de yürürlüğe girmiştir.
+Adopted by the IMO in 2004, it entered into force on 8 September 2017.
 
-SORUN: Gemiler dengeyi sağlamak için bir bölgede aldıkları balast suyunu başka bir bölgede denize boşaltır. Balast suyuyla birlikte taşınan yabancı organizmalar (istilacı türler), yerel ekosistemleri ciddi şekilde tehdit eder.
+THE PROBLEM: ships take on ballast water in one region to maintain their stability and discharge it in another. The alien organisms carried with the ballast water (invasive species) pose a serious threat to local ecosystems.
 
-ÖNEMLİ ÖRNEKLER:
-- Zebra midyesi (Dreissena polymorpha): Hazar Denizi'nden Büyük Göller'e taşınmış; su altyapısına milyarlarca dolar hasar.
-- Kolera bakterisi: Balast suyu yoluyla Güney Amerika'ya taşındığı tespit edilmiştir.
-- Deniz tarağı (Mnemiopsis leidyi): Batı Atlantik'ten Karadeniz'e; balıkçılığı yıkıcı etki.
+IMPORTANT EXAMPLES:
+- The zebra mussel (Dreissena polymorpha): carried from the Caspian Sea to the Great Lakes; billions of dollars of damage to water infrastructure.
+- The cholera bacterium: found to have been carried to South America in ballast water.
+- The comb jelly (Mnemiopsis leidyi): from the western Atlantic to the Black Sea; a devastating effect on fisheries.
 
-UYGULAMA TAKVİMİ:
+IMPLEMENTATION TIMETABLE:
 
-D-1 Standardı (Balast suyu değişimi): Geçiş dönemi uygulaması. Okyanus ortasında balast suyu değişimi.
-D-2 Standardı (Balast suyu arıtma): Nihai hedef. Onaylı arıtma sistemi (BWTS) ile organizmaların yok edilmesi.
+D-1 Standard (ballast water exchange): a transitional measure. Exchange of ballast water in mid-ocean.
+D-2 Standard (ballast water treatment): the final goal. Destruction of the organisms by an approved treatment system (BWTS).
 
-2024 itibarıyla tüm gemilerin D-2 standardına geçmesi planlanmaktadır (gemi yaşına bağlı geçiş takvimi).`,
+All ships are due to have moved to the D-2 standard by 2024 (on a transition timetable based on the age of the ship).`,
     bulletPoints: [
       "BWM Sözleşmesi 2004'te kabul, 2017'de yürürlüğe girmiştir",
       "İstilacı türler milyarlarca dolarlık ekonomik hasar verebilir",
@@ -1465,36 +1465,36 @@ D-2 Standardı (Balast suyu arıtma): Nihai hedef. Onaylı arıtma sistemi (BWTS
   "ballast-exchange": {
     title: "Balast Suyu Değişim Yöntemleri (D-1)",
     introduction: "D-1 standardı, geminin kıyıdan uzak açık okyanus sularında balast suyunu değiştirerek kıyısal organizmaları uzaklaştırmasını gerektirir.",
-    content: `D-1 STANDARDI GEREKSİNİMLERİ:
+    content: `D-1 STANDARD REQUIREMENTS:
 
-- En yakın kıyıdan en az 200 deniz mili uzakta
-- Su derinliği en az 200 metre
-- %95 hacimsel değişim
+- At least 200 nautical miles from the nearest land
+- Water depth at least 200 metres
+- 95% volumetric exchange
 
-200 mil şartı karşılanamıyorsa: en az 50 mil uzakta ve 200 m derinlikte.
+If the 200-mile condition cannot be met: at least 50 miles offshore in a depth of 200 m.
 
-DEĞİŞİM YÖNTEMLERİ:
+METHODS OF EXCHANGE:
 
-1. Sıralı Yöntem (Sequential Method):
-   Tank tamamen boşaltılır, ardından okyanus suyu ile doldurulur.
-   Avantaj: %100'e yakın değişim
-   Dezavantaj: Stabilite sorunları (boş tank anı); yapısal stres
+1. Sequential Method:
+   The tank is emptied completely and then refilled with ocean water.
+   Advantage: close to 100% exchange
+   Disadvantage: stability problems (the moment the tank is empty); structural stress
 
-2. Akıtmalı Yöntem (Flow-through Method):
-   Tank dolu iken alttan veya üstten okyanus suyu pompalar; su üst taşma (overflow) ile dışarı verilir.
-   Kural: tank hacminin en az 3 katı su geçirilmelidir (%95 değişim).
-   Avantaj: Stabilite korunur
-   Dezavantaj: Güverte ıslanması, uzun süre
+2. Flow-through Method:
+   Ocean water is pumped into the full tank from the bottom or the top and the water leaves by overflow.
+   Rule: at least 3 times the tank volume must be pumped through (95% exchange).
+   Advantage: stability is maintained
+   Disadvantage: wet decks, takes a long time
 
-3. Seyreltme Yöntemi (Dilution Method):
-   Tankın üstünden temiz su girerken alttan aynı hızda boşaltılır.
-   Kural: 3 kat hacim geçirilmelidir.
-   Avantaj: Kontrollü işlem
-   Dezavantaj: Özel boru tesisatı gerektirir
+3. Dilution Method:
+   Clean water enters at the top of the tank while the same rate is discharged from the bottom.
+   Rule: 3 times the volume must be pumped through.
+   Advantage: a controlled operation
+   Disadvantage: requires special pipework
 
-STABİLİTE DİKKATİ:
+STABILITY CONSIDERATIONS:
 
-Sıralı yöntemde tankların boşaltılma/doldurulma sırası stabilite hesabına uygun olmalıdır. Serbest yüzey etkisi ve trim değişimi izlenmelidir.`,
+With the sequential method the order in which tanks are emptied and filled must be consistent with the stability calculation. The free surface effect and the change of trim must be monitored.`,
     bulletPoints: [
       "200 mil + 200 m derinlik; veya 50 mil + 200 m derinlik",
       "3 yöntem: sıralı, akıtmalı, seyreltme; hepsi %95 değişim hedefler",
@@ -1506,43 +1506,43 @@ Sıralı yöntemde tankların boşaltılma/doldurulma sırası stabilite hesabı
       "Balast suyu değişimi Balast Suyu Kayıt Defteri'ne kaydedilir",
     ],
     warnings: [
-      "Sıralı yöntemde tank boşken stabilite kaybı olabilir; stabilite hesabı şarttır",
+      "With the sequential method stability can be lost while a tank is empty; a stability calculation is essential",
     ],
   },
   "ballast-treatment": {
     title: "Balast Suyu Arıtma Sistemleri (D-2)",
     introduction: "D-2 standardı, balast suyundaki canlı organizmaların onaylı bir arıtma sistemi (BWTS) ile belirli sınırların altına düşürülmesini gerektirir.",
-    content: `D-2 STANDARDI LİMİTLERİ:
+    content: `D-2 STANDARD LIMITS:
 
-Canlı organizmalar (≥50 µm): < 10 birey/m³
-Canlı organizmalar (10-50 µm): < 10 birey/mL
+Viable organisms (≥50 µm): < 10 individuals/m³
+Viable organisms (10-50 µm): < 10 individuals/mL
 Vibrio cholerae: < 1 CFU/100 mL
 E. coli: < 250 CFU/100 mL
-Intestinal Enterococci: < 100 CFU/100 mL
+Intestinal enterococci: < 100 CFU/100 mL
 
-ARITMA TEKNOLOJİLERİ:
+TREATMENT TECHNOLOGIES:
 
-1. UV (Ultraviyole) Arıtma:
-   UV-C ışığı ile organizmaların DNA'sı hasar görür ve çoğalamazlar.
-   Avantaj: Kimyasal kullanılmaz, artık madde bırakmaz
-   Dezavantaj: Bulanık suda etkinlik düşer; ön filtrasyon gerekir
+1. UV (Ultraviolet) treatment:
+   UV-C light damages the DNA of the organisms so that they cannot reproduce.
+   Advantage: no chemicals used, leaves no residue
+   Disadvantage: effectiveness falls in turbid water; pre-filtration is needed
 
-2. Elektroklorinasyon:
-   Deniz suyunun elektrolizi ile sodyum hipoklorit (NaOCl) üretilir ve balast suyuna dozlanır.
-   Avantaj: Yerinde üretim, etkili
-   Dezavantaj: TRO (Total Residual Oxidant) kontrolü gerekir; korozyon riski
+2. Electrochlorination:
+   Sodium hypochlorite (NaOCl) is produced by electrolysis of seawater and dosed into the ballast water.
+   Advantage: produced in situ, effective
+   Disadvantage: TRO (Total Residual Oxidant) must be controlled; risk of corrosion
 
-3. Ozonlama:
-   Ozon (O₃) gazı ile dezenfeksiyon.
-   Avantaj: Çok güçlü oksidant
-   Dezavantaj: Enerji yoğun; bromat oluşumu riski
+3. Ozonation:
+   Disinfection with ozone (O₃) gas.
+   Advantage: a very powerful oxidant
+   Disadvantage: energy intensive; risk of bromate formation
 
-4. Filtrasyon + UV kombinasyonu:
-   En yaygın ticari sistem. Ön filtre (40-50 µm) + UV kamara.
+4. Filtration plus UV:
+   The most common commercial system. A pre-filter (40-50 µm) plus a UV chamber.
 
-IMO TİP ONAYI:
+IMO TYPE APPROVAL:
 
-Tüm BWTS'ler IMO tarafından belirlenen G8 veya BWMS Code kapsamında tip onayı almak zorundadır.`,
+All BWTS must be type approved under the IMO G8 guidelines or the BWMS Code.`,
     bulletPoints: [
       "D-2: ≥50 µm organizma < 10/m³; 10-50 µm < 10/mL",
       "UV, elektroklorinasyon ve ozon başlıca arıtma teknolojileridir",
@@ -1557,32 +1557,32 @@ Tüm BWTS'ler IMO tarafından belirlenen G8 veya BWMS Code kapsamında tip onay�
   "ballast-management-plan": {
     title: "Balast Suyu Yönetim Planı ve Kayıt Defteri",
     introduction: "Her gemide balast suyu operasyonlarını düzenleyen bir yönetim planı ve tüm operasyonları kaydeden bir kayıt defteri bulunmalıdır.",
-    content: `BALAST SUYU YÖNETİM PLANI:
+    content: `THE BALLAST WATER MANAGEMENT PLAN:
 
-BWM Sözleşmesi Kural B-1 gereği her gemide bir Balast Suyu Yönetim Planı (BWMP) bulunmalıdır. Plan bayrak devleti tarafından onaylanır.
+Under Regulation B-1 of the BWM Convention every ship must have a Ballast Water Management Plan (BWMP). The plan is approved by the flag State.
 
-İÇERİĞİ:
-1. Balast suyu operasyonlarına ilişkin güvenlik prosedürleri
-2. Gemiye özgü balast sistemi açıklaması (tank yerleşimi, pompa kapasiteleri)
-3. D-1 veya D-2 standardına uyum yöntemi
-4. BWTS operasyon ve bakım prosedürleri
-5. Sediment yönetimi
-6. Mürettebat görev ve sorumlulukları
-7. Balast suyu alınacak bölgelerin değerlendirilmesi
+CONTENTS:
+1. Safety procedures for ballast water operations
+2. A ship-specific description of the ballast system (tank arrangement, pump capacities)
+3. The method of compliance with the D-1 or D-2 standard
+4. BWTS operating and maintenance procedures
+5. Sediment management
+6. Crew duties and responsibilities
+7. Assessment of the areas from which ballast water is to be taken
 
-BALAST SUYU KAYIT DEFTERİ:
+THE BALLAST WATER RECORD BOOK:
 
-Kural B-2 gereği her gemide Balast Suyu Kayıt Defteri (Ballast Water Record Book) bulunmalıdır.
+Under Regulation B-2 every ship must carry a Ballast Water Record Book.
 
-Kaydedilen bilgiler:
-- Balast suyu alma: tarih, saat, konum, tank numarası, miktar
-- Balast suyu boşaltma: aynı bilgiler
-- Balast suyu değişimi (D-1): yöntem, başlangıç/bitiş konumu
-- BWTS ile arıtma (D-2): çalıştırma/durdurma zamanları
-- Alıcı tesise teslim
-- Kazara veya istisnai deşarj
+The information recorded:
+- Ballast water uptake: date, time, position, tank number, quantity
+- Ballast water discharge: the same details
+- Ballast water exchange (D-1): method, start/finish position
+- Treatment by BWTS (D-2): start/stop times
+- Delivery to a reception facility
+- Accidental or exceptional discharge
 
-Kayıt defteri gemide en az 2 yıl muhafaza edilir; PSC denetiminde ibraz edilir.`,
+The record book is retained on board for at least 2 years and is produced during PSC inspections.`,
     bulletPoints: [
       "BWMP bayrak devleti tarafından onaylanmalıdır",
       "Kayıt defteri tüm balast operasyonlarını tarih, saat ve konumla kaydeder",
@@ -1601,29 +1601,29 @@ Kayıt defteri gemide en az 2 yıl muhafaza edilir; PSC denetiminde ibraz edilir
   "afs-convention": {
     title: "AFS Sözleşmesi (Anti-fouling Sistemler)",
     introduction: "AFS Sözleşmesi (International Convention on the Control of Harmful Anti-fouling Systems on Ships), gemi tekne boyalarında kullanılan zararlı kimyasalları yasaklar.",
-    content: `TARİHÇE:
+    content: `HISTORY:
 
-Gemi teknelerine deniz organizmalarının (biyokirlenme) yapışmasını önlemek için kullanılan anti-fouling boyalar, uzun yıllar tributilkalay (TBT - Tributyltin) bileşikleri içermiştir. TBT'nin deniz ekosistemleri üzerindeki yıkıcı etkisi (midye ve salyangozlarda üreme bozuklukları) ortaya çıkınca AFS Sözleşmesi hazırlanmıştır.
+The anti-fouling paints used to stop marine organisms (biofouling) attaching to ships' hulls contained tributyltin (TBT) compounds for many years. The AFS Convention was drawn up once the devastating effect of TBT on marine ecosystems (reproductive disorders in mussels and snails) became apparent.
 
-AFS SÖZLEŞMESİ:
+THE AFS CONVENTION:
 
-2001'de kabul edilmiş, 17 Eylül 2008'de yürürlüğe girmiştir.
+Adopted in 2001, it entered into force on 17 September 2008.
 
-TEMEL GEREKSİNİMLER:
-1. TBT içeren anti-fouling boyaların uygulanması 1 Ocak 2003'ten itibaren yasaklanmıştır.
-2. 1 Ocak 2008'den itibaren TBT boyalı gemilerin faaliyet göstermesi veya TBT boyanın mühürlenmesi (sealer coat) zorunludur.
-3. Sibutryn gibi diğer potansiyel zararlı maddeler inceleme altındadır.
+THE MAIN REQUIREMENTS:
+1. The application of anti-fouling paints containing TBT has been prohibited since 1 January 2003.
+2. From 1 January 2008 ships with TBT coatings may not operate unless the coating is sealed (sealer coat).
+3. Other potentially harmful substances such as cybutryne are under review.
 
-AFS SERTİFİKASI:
+THE AFS CERTIFICATE:
 
-400 GT ve üzeri uluslararası sefer yapan gemilerde International Anti-fouling System Certificate veya Declaration bulunmalıdır.
+Ships of 400 GT and above engaged on international voyages must carry an International Anti-fouling System Certificate or a Declaration.
 
-GÜNCEL ALTERNATIFLER:
+CURRENT ALTERNATIVES:
 
-- Bakır bazlı boyalar (en yaygın)
-- Silikon bazlı foul-release boyalar (kaygan yüzey)
-- Ultrasonik anti-fouling sistemleri
-- Biyosidal olmayan boyalar`,
+- Copper-based paints (the most common)
+- Silicone-based foul-release coatings (a slippery surface)
+- Ultrasonic anti-fouling systems
+- Non-biocidal coatings`,
     bulletPoints: [
       "TBT boyaların uygulanması 2003'ten, bulundurulması 2008'den beri yasaktır",
       "AFS sertifikası 400 GT+ uluslararası gemilerde zorunludur",
@@ -1638,32 +1638,32 @@ GÜNCEL ALTERNATIFLER:
   "biofouling-management": {
     title: "Biyokirlenme Yönetimi",
     introduction: "Biyokirlenme (biofouling), deniz organizmalarının gemi teknesine yapışması olup yakıt tüketimini artırır ve istilacı tür transferine neden olabilir.",
-    content: `BİYOKİRLENME ETKİLERİ:
+    content: `THE EFFECTS OF BIOFOULING:
 
-1. Yakıt tüketimi artışı: Yoğun biyokirlenme sürtünme direncini %40'a kadar artırabilir; bu da yakıt tüketiminde %10-40 artış demektir.
+1. Increased fuel consumption: heavy biofouling can increase frictional resistance by up to 40%, which means a 10-40% increase in fuel consumption.
 
-2. İstilacı tür transferi: Tekneye yapışan organizmalar bir bölgeden diğerine taşınır. Balast suyundan sonra en büyük istilacı tür vektörüdür.
+2. Transfer of invasive species: organisms attached to the hull are carried from one region to another. After ballast water this is the largest vector for invasive species.
 
-3. Emisyon artışı: Artan yakıt tüketimi doğrudan CO₂, SOx, NOx emisyonlarını artırır. CII derecelendirmesini olumsuz etkiler.
+3. Increased emissions: higher fuel consumption directly increases CO₂, SOx and NOx emissions. It has an adverse effect on the CII rating.
 
-IMO BİYOKİRLENME REHBERİ (2011/2023):
+THE IMO BIOFOULING GUIDELINES (2011/2023):
 
-IMO, biyokirlenme yönetimi için gönüllü rehber yayınlamıştır (MEPC.207(62), 2023 revizyonu). Rehber şunları içerir:
+The IMO has published voluntary guidelines on biofouling management (MEPC.207(62), revised in 2023). They cover:
 
-1. Biyokirlenme Yönetim Planı (Biofouling Management Plan):
-   - Anti-fouling sistemi seçimi ve bakım programı
-   - Sualtı muayene takvimi
-   - Niş alanların (deniz suyu girişleri, dümen, pervane) bakımı
+1. A Biofouling Management Plan:
+   - Selection of the anti-fouling system and the maintenance programme
+   - The underwater inspection schedule
+   - Maintenance of niche areas (sea water inlets, rudder, propeller)
 
-2. Biyokirlenme Kayıt Defteri (Biofouling Record Book):
-   - Anti-fouling boya uygulamaları
-   - Sualtı temizlik ve muayeneleri
-   - Dry-docking tarihleri
-   - Niş alan bakımları
+2. A Biofouling Record Book:
+   - Applications of anti-fouling paint
+   - Underwater cleaning and inspections
+   - Drydocking dates
+   - Niche area maintenance
 
-NİŞ ALANLAR:
+NICHE AREAS:
 
-Gemi teknesinde biyokirlenmeye en duyarlı bölgeler: deniz suyu giriş ızgaraları (sea chest), dümen, pervane, bow thruster tüneli, anot koruma alanları, kingo valfleri.`,
+The parts of the hull most susceptible to biofouling: sea water inlet gratings (sea chests), the rudder, the propeller, the bow thruster tunnel, anode protection areas and sea valves.`,
     bulletPoints: [
       "Biyokirlenme yakıt tüketimini %10-40 artırabilir",
       "IMO gönüllü rehberi: yönetim planı + kayıt defteri",
@@ -1678,33 +1678,33 @@ Gemi teknesinde biyokirlenmeye en duyarlı bölgeler: deniz suyu giriş ızgaral
   "ship-recycling": {
     title: "Hong Kong Sözleşmesi (Gemi Geri Dönüşümü)",
     introduction: "Hong Kong Sözleşmesi (2009), gemilerin söküm/geri dönüşüm sürecinde insan sağlığı ve çevre korumasını amaçlayan uluslararası düzenlemedir.",
-    content: `HONG KONG SÖZLEŞMESİ:
+    content: `THE HONG KONG CONVENTION:
 
-2009'da kabul edilmiş, 26 Haziran 2025'te yürürlüğe girecektir (yeterli onay sağlanmıştır).
+Adopted in 2009, it enters into force on 26 June 2025 (sufficient ratifications have been achieved).
 
-AMAÇ: Gemilerin söküm sürecinde:
-- İşçi sağlığı ve güvenliğinin korunması
-- Çevre kirliliğinin önlenmesi
-- Zararlı maddelerin kontrollü yönetimi
+PURPOSE: during the ship recycling process:
+- To protect worker health and safety
+- To prevent environmental pollution
+- To manage hazardous materials under control
 
-TEMEL GEREKSİNİMLER:
+THE MAIN REQUIREMENTS:
 
 1. IHM (Inventory of Hazardous Materials):
-   Her gemide bulunan zararlı maddelerin envanteri. 500 GT ve üzeri gemilerde zorunlu olacaktır.
-   Üç bölüm:
-   - Part I: Gemi yapısında ve donanımında bulunan zararlı maddeler (asbest, PCB, TBT, ODS vb.)
-   - Part II: Operasyonel olarak üretilen atıklar
-   - Part III: Depolar (stok malzemeleri)
+   An inventory of the hazardous materials present on each ship. It will be mandatory for ships of 500 GT and above.
+   Three parts:
+   - Part I: hazardous materials in the ship's structure and equipment (asbestos, PCBs, TBT, ODS, etc.)
+   - Part II: operationally generated wastes
+   - Part III: stores (stock materials)
 
-2. Gemi Geri Dönüşüm Planı (Ship Recycling Plan):
-   Söküm tesisi tarafından her gemi için özel olarak hazırlanır.
+2. Ship Recycling Plan:
+   Prepared specifically for each ship by the recycling facility.
 
-3. Geri Dönüşüm Tesisi Yetkilendirmesi:
-   Tesisler ulusal otorite tarafından yetkilendirilmelidir.
+3. Authorisation of the recycling facility:
+   Facilities must be authorised by the national authority.
 
-AB DÜZENLEMESI (EU SRR):
+THE EU REGULATION (EU SRR):
 
-AB, Hong Kong Sözleşmesi'ni beklemeden kendi Gemi Geri Dönüşüm Düzenlemesi'ni (EU Ship Recycling Regulation, 1257/2013) yürürlüğe koymuştur. AB bayraklı gemiler yalnızca AB onaylı tesislerde sökülebilir.`,
+Without waiting for the Hong Kong Convention, the EU brought its own Ship Recycling Regulation (EU 1257/2013) into force. EU-flagged ships may only be recycled at EU-approved facilities.`,
     bulletPoints: [
       "Hong Kong Sözleşmesi 2009'da kabul, 2025'te yürürlüğe girecektir",
       "IHM (Zararlı Madde Envanteri) 500 GT+ gemilerde zorunlu olacaktır",
@@ -1723,23 +1723,23 @@ AB, Hong Kong Sözleşmesi'ni beklemeden kendi Gemi Geri Dönüşüm Düzenlemes
   "port-reception": {
     title: "Liman Atık Kabul Tesisleri (Port Reception Facilities)",
     introduction: "MARPOL, gemilerin deşarj edemediği atıkları (yağlı atık, slop, çöp, pis su, kargo artığı) karaya güvenle teslim edebilmesi için liman devletlerinin yeterli atık kabul tesisi (Port Reception Facility – PRF) sağlamasını şart koşar.",
-    content: `NEDEN GEREKLİ?
+    content: `WHY ARE THEY NEEDED?
 
-MARPOL ekleri pek çok atığın denize deşarjını yasaklar veya sıkı sınırlandırır. Geminin bu atıkları (sintine yağı, slop, çamur/sludge, çöp, pis su, kargo yıkama artığı) bir yerde biriktirip karaya teslim etmesi gerekir. PRF, bu teslimi mümkün kılan liman altyapısıdır; PRF olmadan MARPOL uyumu pratikte sağlanamaz.
+The MARPOL annexes prohibit or strictly limit the discharge of many wastes into the sea. The ship must collect these wastes (bilge oil, slops, sludge, garbage, sewage, cargo washing residues) and land them ashore. Port reception facilities (PRF) are the port infrastructure that makes this possible; without PRF, MARPOL compliance cannot be achieved in practice.
 
-GEMİNİN SORUMLULUĞU:
+THE SHIP'S RESPONSIBILITY:
 
-- Atıkları ilgili ekin kayıt defterine (ORB, Garbage Record Book vb.) işlemek.
-- PRF'ye teslimde teslim makbuzu (waste delivery receipt) almak ve saklamak.
-- Atık yönetim planlarına (Garbage Management Plan vb.) uymak.
+- To enter the wastes in the record book for the relevant annex (ORB, Garbage Record Book, etc.).
+- To obtain and keep a waste delivery receipt on delivery to the PRF.
+- To comply with the waste management plans (Garbage Management Plan, etc.).
 
-LİMAN DEVLETİNİN SORUMLULUĞU:
+THE PORT STATE'S RESPONSIBILITY:
 
-Taraf devletler, gemilere gereksiz gecikme yaşatmadan yeterli kapasitede PRF sağlamakla yükümlüdür. Yetersiz PRF, denize yasa dışı deşarjı teşvik ettiği için ciddi bir uyum boşluğudur.
+States Parties are obliged to provide PRF of adequate capacity without causing undue delay to ships. Inadequate PRF is a serious compliance gap because it encourages illegal discharge into the sea.
 
-AB ÖZELİ:
+THE EU POSITION:
 
-AB'de PRF Direktifi, gemilerin atıklarını limana teslim etmesini ve atık ücretinin liman ücretine dâhil edilmesini düzenler (deşarj teşvikini azaltmak için).`,
+In the EU the PRF Directive requires ships to deliver their wastes to the port and requires the waste fee to be included in the port dues (in order to reduce the incentive to discharge at sea).`,
     bulletPoints: [
       "PRF, gemilerin MARPOL atıklarını karaya güvenle teslim etmesini sağlar.",
       "Teslimde waste delivery receipt alınır ve saklanır.",
@@ -1755,23 +1755,23 @@ AB'de PRF Direktifi, gemilerin atıklarını limana teslim etmesini ve atık üc
   "scrubber-egcs": {
     title: "Egzoz Gazı Temizleme Sistemleri (Scrubber/EGCS)",
     introduction: "EGCS (Exhaust Gas Cleaning System / scrubber), egzoz gazındaki kükürt oksitlerini (SOx) yıkayarak gidermek için kullanılır ve MARPOL Ek VI kükürt sınırına 'eşdeğer tedbir' olarak yüksek kükürtlü yakıt (HSFO) kullanımına imkân verir.",
-    content: `ÇALIŞMA PRENSİBİ:
+    content: `PRINCIPLE OF OPERATION:
 
-Scrubber, egzoz gazını su (genellikle deniz suyu) ile yıkar; SOx suda çözünerek gazdan ayrılır. Böylece bacadan çıkan SOx, düşük kükürtlü yakıt kullanılmış gibi sınır altına iner. Uyum, eşdeğer SO2/CO2 oranı ölçümüyle sürekli izlenir.
+A scrubber washes the exhaust gas with water (usually seawater); the SOx dissolves in the water and is separated from the gas. The SOx leaving the funnel is thereby brought below the limit as if low sulphur fuel had been used. Compliance is monitored continuously by measuring the equivalent SO2/CO2 ratio.
 
-TİPLER:
+TYPES:
 
-- Açık devre (open loop): deniz suyu doğal alkalinitesiyle yıkar, yıkama suyu (washwater) izleme sonrası denize deşarj edilir.
-- Kapalı devre (closed loop): tatlı su + alkali (kostik) ile yıkar; washwater devridaim eder, çamur (sludge) karaya verilir. Deşarj kısıtı olan bölgeler için uygundur.
-- Hibrit: her iki modda çalışabilir.
+- Open loop: washes with the natural alkalinity of seawater; after monitoring, the washwater is discharged into the sea.
+- Closed loop: washes with fresh water plus an alkali (caustic); the washwater is recirculated and the sludge is landed ashore. Suitable for areas with discharge restrictions.
+- Hybrid: can operate in either mode.
 
-WASHWATER VE KISITLAR:
+WASHWATER AND RESTRICTIONS:
 
-Açık devre deşarj suyu için MARPOL Ek VI kriterleri (pH, PAH, bulanıklık, nitrat) izlenir. Bazı liman/bölgeler açık devre washwater deşarjını yasaklar; bu durumda kapalı devreye geçilir.
+For open-loop discharge water the MARPOL Annex VI criteria (pH, PAH, turbidity, nitrate) are monitored. Some ports/regions prohibit open-loop washwater discharge; the system is then switched to closed loop.
 
-UYUM VE DİĞER YOLLAR:
+COMPLIANCE AND THE OTHER ROUTES:
 
-Scrubber, düşük kükürtlü yakıt (VLSFO/MGO) ve LNG ile birlikte Ek VI kükürt uyumunun üç ana yolundan biridir. Sürekli izleme verileri ve onay belgeleri (SECC/onaylı SO2/CO2 oranı) tutulur.`,
+Along with low sulphur fuel (VLSFO/MGO) and LNG, the scrubber is one of the three main routes to Annex VI sulphur compliance. Continuous monitoring data and the approval documents (SECC/approved SO2/CO2 ratio) are retained.`,
     bulletPoints: [
       "Scrubber egzozdaki SOx'i suyla yıkayarak giderir.",
       "Açık devre (deniz suyu), kapalı devre (tatlı su+alkali), hibrit tipleri vardır.",
@@ -1787,25 +1787,25 @@ Scrubber, düşük kükürtlü yakıt (VLSFO/MGO) ve LNG ile birlikte Ek VI kük
   "incinerator": {
     title: "Gemide Atık Yakma (Incinerator) ve Ek VI",
     introduction: "Gemi insineratörü; atık yağ (sludge), yağlı paçavra, belirli çöp ve katı atıkları yakarak hacmini azaltır. MARPOL Ek VI, gemide yakmayı düzenler ve bazı maddelerin yakılmasını yasaklar.",
-    content: `KULLANIM AMACI:
+    content: `PURPOSE:
 
-Gemide biriken yanabilir atıklar (yağlı çamur/sludge, yağ artığı, bazı çöpler) insineratörde yakılarak hacmi azaltılır; bu, karaya teslim edilecek atık miktarını düşürür.
+Combustible wastes accumulated on board (oily sludge, oil residues, some garbage) are burned in the incinerator to reduce their volume; this lowers the quantity of waste that has to be landed ashore.
 
-MARPOL EK VI GEREKSİNİMLERİ:
+MARPOL ANNEX VI REQUIREMENTS:
 
-- Onaylı tip insineratör (IMO standardına uygun) kullanılmalı; yanma odası sıcaklığı izlenmelidir.
-- Belirli maddelerin gemide yakılması YASAKTIR: örn. MARPOL ekleri kapsamındaki belirli kalıntılar, PCB içerenler, ağır metal içeren çöpler ve halojenli bileşikler.
-- Limanlarda/iç sularda yakma çoğunlukla yasaktır veya kısıtlıdır; liman kuralları önceliklidir.
+- An approved type of incinerator (meeting the IMO standard) must be used; the combustion chamber temperature must be monitored.
+- The incineration on board of certain substances is PROHIBITED: for example certain residues covered by the MARPOL annexes, materials containing PCBs, garbage containing heavy metals and halogenated compounds.
+- Incineration in port or in inland waters is mostly prohibited or restricted; the port rules take precedence.
 
-OPERASYON VE GÜVENLİK:
+OPERATION AND SAFETY:
 
-- Yakma kayıtları (yakılan atık türü/miktarı) Garbage Record Book / ilgili kayıtlara işlenir.
-- Yanma sıcaklığı ve baca emisyonu izlenir.
-- Yangın ve patlama riski nedeniyle düzgün besleme ve bakım gerekir.
+- Incineration records (type/quantity of waste burned) are entered in the Garbage Record Book or the relevant records.
+- The combustion temperature and the funnel emissions are monitored.
+- Correct feeding and maintenance are required because of the risk of fire and explosion.
 
-ALTERNATİF:
+THE ALTERNATIVE:
 
-Yakılamayan veya yakılması yasak atıklar liman atık kabul tesislerine (PRF) teslim edilir.`,
+Wastes that cannot or must not be incinerated are delivered to port reception facilities (PRF).`,
     bulletPoints: [
       "İnsineratör yanabilir atık (sludge, bazı çöpler) hacmini azaltır.",
       "Onaylı tip insineratör ve sıcaklık izleme gerekir (Ek VI).",
@@ -1818,36 +1818,36 @@ Yakılamayan veya yakılması yasak atıklar liman atık kabul tesislerine (PRF)
       "Yakılamayan atık PRF'ye teslim edilir.",
     ],
     warnings: [
-      "Yasak maddelerin yakılması ağır yaptırım doğurur",
-      "Yanlış besleme/bakım yangın ve patlama riski yaratır",
+      "Incinerating prohibited materials carries severe sanctions",
+      "Incorrect feeding/maintenance creates a risk of fire and explosion",
     ],
   },
   "imo-ghg-strategy": {
     title: "IMO Sera Gazı (GHG) Stratejisi ve Net-Zero Hedefleri",
     introduction: "IMO'nun gemicilik sera gazı stratejisi, uluslararası deniz taşımacılığından kaynaklanan GHG emisyonlarını azaltmak için hedefler ve tedbirler belirler. EEDI/CII gibi araçlar bu stratejinin uygulama mekanizmalarıdır.",
-    content: `STRATEJİNİN ÇERÇEVESİ:
+    content: `THE FRAMEWORK OF THE STRATEGY:
 
-IMO'nun revize GHG Stratejisi (2023), uluslararası gemiciliğin emisyonlarını 2050 civarında net-sıfıra (net-zero) ulaştırmayı amaçlar ve yol boyunca ara kontrol noktaları (gösterge hedefler) tanımlar; ayrıca düşük/sıfır karbonlu yakıtların payının artırılmasını hedefler.
+The IMO's revised GHG Strategy (2023) aims to bring the emissions of international shipping to net zero by around 2050 and defines indicative checkpoints along the way; it also aims to increase the share of low/zero carbon fuels.
 
-TEDBİR TÜRLERİ:
+TYPES OF MEASURE:
 
-- Teknik tedbirler: yakıtların karbon yoğunluğunu sınırlayan kurallar (ör. yakıt standardı) ve gemi verimliliği gereksinimleri.
-- Ekonomik tedbirler: karbon fiyatlandırması/ücretlendirme gibi piyasa temelli mekanizmalar (üzerinde çalışılan).
+- Technical measures: rules limiting the carbon intensity of fuels (e.g. a fuel standard) and ship efficiency requirements.
+- Economic measures: market-based mechanisms such as carbon pricing/levies (still under development).
 
-UYGULAMA ARAÇLARI (mevcut):
+THE IMPLEMENTING INSTRUMENTS (existing):
 
-- EEDI/EEXI: tasarım/var olan gemi verimlilik indeksleri.
-- CII: operasyonel karbon yoğunluğu derecelendirmesi (A–E).
-- SEEMP: gemi enerji verimliliği yönetim planı.
-Bunlar stratejinin somut uygulama araçlarıdır.
+- EEDI/EEXI: the design/existing ship efficiency indices.
+- CII: the operational carbon intensity rating (A-E).
+- SEEMP: the ship energy efficiency management plan.
+These are the concrete instruments through which the strategy is implemented.
 
-BÖLGESEL ETKİLEŞİM:
+INTERACTION WITH REGIONAL RULES:
 
-AB'nin EU ETS ve FuelEU Maritime düzenlemeleri, IMO çerçevesiyle paralel/ek baskı oluşturur. Gemi işletmeleri hem küresel (IMO) hem bölgesel (AB) gereksinimleri birlikte yönetir.
+The EU's EU ETS and FuelEU Maritime regulations create parallel and additional pressure alongside the IMO framework. Ship operators have to manage both the global (IMO) and the regional (EU) requirements together.
 
-OPERASYONEL ETKİ:
+OPERATIONAL IMPACT:
 
-Hız optimizasyonu (slow steaming), rota/trim optimizasyonu, enerji tasarruf cihazları ve alternatif yakıtlar, hedeflere ulaşmada başlıca operasyonel kaldıraçlardır.`,
+Speed optimisation (slow steaming), route/trim optimisation, energy saving devices and alternative fuels are the main operational levers for meeting the targets.`,
     bulletPoints: [
       "Revize IMO GHG Stratejisi (2023) ~2050 net-zero hedefler.",
       "Teknik (yakıt/verim) ve ekonomik (karbon fiyatı) tedbirler içerir.",
