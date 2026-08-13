@@ -13,34 +13,34 @@ export const dieselEngines: CourseTopic = {
   accent: "from-slate-600 via-zinc-700 to-slate-800",
   group: "machine",
   intro:
-    "Dizel motor performansı, yanma, enjeksiyon ve güç hesapları. " +
+    "Diesel engine performance, combustion, injection and power calculations. " +
     "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "indicated-power",
-      name: "İndike Güç (IHP)",
+      name: "Indicated Power (IHP)",
       group: "Motor Performans",
       formula: "IHP = (Pmi × L × A × n × k) / 60000",
       variables: [
-        { symbol: "Pmi", label: "Ortalama indike basınç", unit: "bar" },
+        { symbol: "Pmi", label: "Mean indicated pressure", unit: "bar" },
         { symbol: "L", label: "Strok", unit: "m" },
         { symbol: "A", label: "Piston area", unit: "m²" },
         { symbol: "n", label: "Devir", unit: "rpm" },
         { symbol: "k", label: "Number of cylinders" },
       ],
-      source: { code: "Motor teorisi — indike güç bağıntısı" },
-      note: "Pmi bar girilir, hesapta 10⁵ Pa'ya çevrilir; sonuç kW olarak verilir.",
+      source: { code: "Engine theory — indicated power relation" },
+      note: "Pmi is entered in bar and converted to 10⁵ Pa in the calculation; the result is given in kW.",
       inputs: [
-        { key: "pmi", label: "Ortalama İndike Basınç (Pmi)", unit: "bar", placeholder: "18" },
+        { key: "pmi", label: "Mean Indicated Pressure (Pmi)", unit: "bar", placeholder: "18" },
         { key: "l", label: "Strok (L)", unit: "m", placeholder: "2.5" },
         { key: "a", label: "Piston Alanı (A)", unit: "m²", placeholder: "0.35" },
         { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "100" },
-        { key: "k", label: "Silindir Sayısı (k)", unit: "adet", placeholder: "6" },
+        { key: "k", label: "Number of Cylinders (k)", unit: "adet", placeholder: "6" },
       ],
       calculate: (v) => {
         // P_mi (bar) * 10^5 (Pa) * L * A * n * k / 60 → Watt → /1000 → kW
         const ihp = (v.pmi * 1e5 * v.l * v.a * v.n * v.k) / (60 * 1000);
-        return [{ label: "İndike Güç (IHP)", value: `${ihp.toFixed(1)} kW` }];
+        return [{ label: "Indicated Power (IHP)", value: `${ihp.toFixed(1)} kW` }];
       },
     },
     {
@@ -49,13 +49,13 @@ export const dieselEngines: CourseTopic = {
       group: "Motor Performans",
       formula: "BHP = IHP × ηmech",
       variables: [
-        { symbol: "IHP", label: "İndike güç", unit: "kW" },
+        { symbol: "IHP", label: "Indicated power", unit: "kW" },
         { symbol: "ηmech", label: "Mekanik verim (0,85–0,92)" },
       ],
-      source: { code: "Motor teorisi — mekanik verim ve fren gücü" },
+      source: { code: "Engine theory — mechanical efficiency and brake power" },
       note: "Mekanik verim % girilir.",
       inputs: [
-        { key: "ihp", label: "İndike Güç (IHP)", unit: "kW", placeholder: "12000" },
+        { key: "ihp", label: "Indicated Power (IHP)", unit: "kW", placeholder: "12000" },
         { key: "eta", label: "Mekanik Verim (ηmek)", unit: "%", placeholder: "90" },
       ],
       calculate: (v) => {
@@ -63,21 +63,21 @@ export const dieselEngines: CourseTopic = {
         const loss = v.ihp - bhp;
         return [
           { label: "Brake Power (BHP)", value: `${bhp.toFixed(1)} kW` },
-          { label: "Mekanik Kayıp", value: `${loss.toFixed(1)} kW` },
+          { label: "Mechanical Loss", value: `${loss.toFixed(1)} kW` },
         ];
       },
     },
     {
       id: "sfoc",
-      name: "SFOC (Özgül Yakıt Tüketimi)",
+      name: "SFOC (Specific Fuel Oil Consumption)",
       group: "Motor Performans",
-      formula: "SFOC = Yakıt tüketimi (g/h) / BHP (kW)",
+      formula: "SFOC = Fuel consumption (g/h) / BHP (kW)",
       variables: [
         { symbol: "FC", label: "Fuel consumption", unit: "kg/saat" },
         { symbol: "BHP", label: "Brake power", unit: "kW" },
       ],
-      source: { code: "Motor teorisi — özgül yakıt tüketimi (düşük değer daha verimli)" },
-      note: "Yakıt tüketimi kg/saat girilir, ×1000 ile g'ye çevrilir; sonuç g/kW·h.",
+      source: { code: "Engine theory — specific fuel consumption (a lower value is more efficient)" },
+      note: "The fuel consumption is entered in kg/hour and converted to g by ×1000; the result is in g/kW·h.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "kg/saat", placeholder: "5000" },
         { key: "bhp", label: "Brake Power (BHP)", unit: "kW", placeholder: "25000" },
@@ -89,19 +89,19 @@ export const dieselEngines: CourseTopic = {
     },
     {
       id: "mep",
-      name: "Ortalama Efektif Basınç (MEP)",
+      name: "Mean Effective Pressure (MEP)",
       group: "Motor Performans",
       formula: "MEP = (P × 60) / (Vs × n × k)",
       variables: [
         { symbol: "P", label: "Power", unit: "kW" },
-        { symbol: "Vs", label: "Strok hacmi (silindir başına)", unit: "m³" },
+        { symbol: "Vs", label: "Swept volume (per cylinder)", unit: "m³" },
         { symbol: "n", label: "Devir", unit: "rpm" },
         { symbol: "k", label: "Number of cylinders" },
       ],
-      source: { code: "Motor teorisi — ortalama efektif basınç (BMEP/IMEP)" },
-      note: "Vs = π·D²/4·L olarak hesaplanır; sonuç Pa'dan bar'a çevrilir.",
+      source: { code: "Engine theory — mean effective pressure (BMEP/IMEP)" },
+      note: "Vs is calculated as π·D²/4·L; the result is converted from Pa to bar.",
       inputs: [
-        { key: "p", label: "Güç (P)", unit: "kW", placeholder: "10000" },
+        { key: "p", label: "Power (P)", unit: "kW", placeholder: "10000" },
         { key: "bore", label: "Cylinder Bore", unit: "m", placeholder: "0.5" },
         { key: "stroke", label: "Strok", unit: "m", placeholder: "2.0" },
         { key: "n", label: "Devir", unit: "rpm", placeholder: "100" },
@@ -118,19 +118,19 @@ export const dieselEngines: CourseTopic = {
     },
     {
       id: "compression-ratio",
-      name: "Sıkıştırma Oranı",
+      name: "Compression Ratio",
       group: "Motor Performans",
       formula: "r = (Vs + Vc) / Vc",
       variables: [
         { symbol: "Vs", label: "Strok hacmi", unit: "litre" },
-        { symbol: "Vc", label: "Ölü (clearance) hacim", unit: "litre" },
+        { symbol: "Vc", label: "Clearance volume", unit: "litre" },
       ],
-      source: { code: "Motor teorisi — geometrik sıkıştırma oranı (Vmax/Vmin)" },
-      note: "Çap ve strok mm girilir, strok hacmi litreye çevrilir.",
+      source: { code: "Engine theory — geometric compression ratio (Vmax/Vmin)" },
+      note: "The bore and stroke are entered in mm and the swept volume is converted to litres.",
       inputs: [
         { key: "bore", label: "Cylinder Bore", unit: "mm", placeholder: "500" },
         { key: "stroke", label: "Strok", unit: "mm", placeholder: "2000" },
-        { key: "vc", label: "Ölü Hacim (Vc)", unit: "litre", placeholder: "15" },
+        { key: "vc", label: "Clearance Volume (Vc)", unit: "litre", placeholder: "15" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000) * 1000; // litre
@@ -143,7 +143,7 @@ export const dieselEngines: CourseTopic = {
     },
     {
       id: "admiralty-coefficient",
-      name: "Admiralty Katsayısı",
+      name: "Admiralty Coefficient",
       group: "Motor Performans",
       formula: "C = (Δ^(2/3) × V³) / P",
       variables: [
@@ -151,80 +151,80 @@ export const dieselEngines: CourseTopic = {
         { symbol: "V", label: "Speed", unit: "knot" },
         { symbol: "P", label: "Power", unit: "kW" },
       ],
-      source: { code: "Gemi sevki — Admiralty (deplasman) katsayısı, hız-güç ilişkisi" },
+      source: { code: "Ship propulsion — Admiralty (displacement) coefficient, speed-power relation" },
       inputs: [
         { key: "delta", label: "Deplasman (Δ)", unit: "ton", placeholder: "50000" },
         { key: "v", label: "Speed (V)", unit: "knot", placeholder: "14" },
-        { key: "p", label: "Güç (P)", unit: "kW", placeholder: "10000" },
+        { key: "p", label: "Power (P)", unit: "kW", placeholder: "10000" },
       ],
       calculate: (v) => {
         const c = (Math.pow(v.delta, 2 / 3) * Math.pow(v.v, 3)) / v.p;
-        return [{ label: "Admiralty Katsayısı (C)", value: c.toFixed(1) }];
+        return [{ label: "Admiralty Coefficient (C)", value: c.toFixed(1) }];
       },
     },
     {
       id: "excess-air-ratio",
-      name: "Hava Fazlalık Katsayısı (λ)",
+      name: "Excess Air Ratio (λ)",
       group: "Yanma ve Enjeksiyon",
-      formula: "λ = mhava,gerçek / mhava,stokiyometrik",
+      formula: "λ = m_air,actual / m_air,stoichiometric",
       variables: [
-        { symbol: "mhava,gerçek", label: "Gerçek hava/yakıt oranı", unit: "kg/kg" },
-        { symbol: "mhava,stok", label: "Stokiyometrik hava/yakıt oranı", unit: "kg/kg" },
+        { symbol: "m_air,actual", label: "Actual air/fuel ratio", unit: "kg/kg" },
+        { symbol: "mhava,stok", label: "Stoichiometric air/fuel ratio", unit: "kg/kg" },
       ],
-      source: { code: "Yanma teorisi — hava fazlalık katsayısı (dizel λ ≈ 1,5–2,5)" },
+      source: { code: "Combustion theory — excess air ratio (diesel λ ≈ 1.5–2.5)" },
       inputs: [
-        { key: "afr", label: "Gerçek Hava/Yakıt Oranı", unit: "kg/kg", placeholder: "42" },
+        { key: "afr", label: "Actual Air/Fuel Ratio", unit: "kg/kg", placeholder: "42" },
         { key: "stoich", label: "Stokiyometrik Oran", unit: "kg/kg", placeholder: "14.7" },
       ],
       calculate: (v) => {
         const lambda = v.afr / v.stoich;
-        const status = lambda < 1 ? "Zengin Karışım" : lambda > 1.5 ? "Fakir Karışım" : "Normal Aralık";
+        const status = lambda < 1 ? "Rich Mixture" : lambda > 1.5 ? "Lean Mixture" : "Normal Range";
         return [
-          { label: "Hava Fazlalık Katsayısı (λ)", value: lambda.toFixed(2) },
+          { label: "Excess Air Ratio (λ)", value: lambda.toFixed(2) },
           { label: "Durum", value: status },
         ];
       },
     },
     {
       id: "injection-pressure",
-      name: "Enjeksiyon Basıncı",
+      name: "Injection Pressure",
       group: "Yanma ve Enjeksiyon",
-      formula: "Pinj = Fyay / Aiğne + Psilindir",
+      formula: "Pinj = F_spring / A_needle + P_cylinder",
       variables: [
         { symbol: "Fyay", label: "Yay kuvveti", unit: "N" },
-        { symbol: "Aiğne", label: "İğne kesit alanı", unit: "m²" },
-        { symbol: "Psilindir", label: "Silindir basıncı", unit: "Pa" },
+        { symbol: "A_needle", label: "Needle cross-sectional area", unit: "m²" },
+        { symbol: "Psilindir", label: "Cylinder pressure", unit: "Pa" },
       ],
-      source: { code: "Yakıt enjeksiyon sistemi (300–1000 bar mekanik, 1500–2500 bar common rail)" },
-      note: "Yay kuvveti N, iğne alanı mm², silindir basıncı bar girilir; açılma basıncı bar olarak verilir.",
+      source: { code: "Fuel injection system (300–1000 bar mechanical, 1500–2500 bar common rail)" },
+      note: "The spring force is entered in N, the needle area in mm² and the cylinder pressure in bar; the opening pressure is given in bar.",
       inputs: [
         { key: "fspring", label: "Yay Kuvveti (Fyay)", unit: "N", placeholder: "4000" },
-        { key: "area", label: "İğne Kesit Alanı (A)", unit: "mm²", placeholder: "20" },
-        { key: "pcyl", label: "Silindir Basıncı (Psilindir)", unit: "bar", placeholder: "150" },
+        { key: "area", label: "Needle Cross-sectional Area (A)", unit: "mm²", placeholder: "20" },
+        { key: "pcyl", label: "Cylinder Pressure (P_cylinder)", unit: "bar", placeholder: "150" },
       ],
       calculate: (v) => {
-        if (v.area <= 0) return [{ label: "Hata", value: "İğne alanı pozitif olmalı" }];
+        if (v.area <= 0) return [{ label: "Hata", value: "The needle area must be positive" }];
         const pSpringBar = v.fspring / (v.area * 1e-6) / 1e5;
         const pInj = pSpringBar + v.pcyl;
-        return [{ label: "Enjeksiyon Basıncı (Pinj)", value: `${pInj.toFixed(0)} bar` }];
+        return [{ label: "Injection Pressure (Pinj)", value: `${pInj.toFixed(0)} bar` }];
       },
     },
     {
       id: "thermal-efficiency",
-      name: "Isıl Verim",
+      name: "Thermal Efficiency",
       group: "Yanma ve Enjeksiyon",
-      formula: "ηth = (BHP × 3600) / (ṁyakıt × Hu)",
+      formula: "ηth = (BHP × 3600) / (ṁ_fuel × Hu)",
       variables: [
         { symbol: "BHP", label: "Brake power", unit: "kW" },
         { symbol: "ṁ_fuel", label: "Fuel consumption", unit: "kg/saat" },
-        { symbol: "Hu", label: "Alt ısıl değer (LCV)", unit: "kJ/kg" },
+        { symbol: "Hu", label: "Lower calorific value (LCV)", unit: "kJ/kg" },
       ],
-      source: { code: "Motor teorisi — efektif (fren) ısıl verim" },
-      note: "BHP (kW) × 3600 ile saatlik enerjiye çevrilir; yakıt kg/saat girilir.",
+      source: { code: "Engine theory — brake thermal efficiency" },
+      note: "BHP (kW) × 3600 converts to hourly energy; the fuel is entered in kg/hour.",
       inputs: [
         { key: "bhp", label: "Brake Power (BHP)", unit: "kW", placeholder: "10000" },
-        { key: "fc", label: "Yakıt Tüketimi (ṁf)", unit: "kg/saat", placeholder: "1850" },
-        { key: "lcv", label: "Alt Isıl Değer (LCV)", unit: "kJ/kg", placeholder: "42700" },
+        { key: "fc", label: "Fuel Consumption (ṁf)", unit: "kg/saat", placeholder: "1850" },
+        { key: "lcv", label: "Lower Calorific Value (LCV)", unit: "kJ/kg", placeholder: "42700" },
       ],
       calculate: (v) => {
         const eta = (v.bhp * 3600) / (v.fc * v.lcv) * 100;

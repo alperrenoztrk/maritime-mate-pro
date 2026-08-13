@@ -9,35 +9,35 @@ import type { CourseTopic } from "./types";
  */
 export const energyEfficiency: CourseTopic = {
   key: "energy-efficiency",
-  title: "Enerji Verimliliği",
+  title: "Energy Efficiency",
   icon: TrendingUp,
   accent: "from-lime-500 via-green-500 to-emerald-500",
   group: "machine",
   intro:
-    "IMO enerji verimliliği rejimi: tasarım (EEDI/EEXI) ve operasyonel (CII/EEOI) " +
-    "göstergeleri ile atık ısı geri kazanımı ve hız optimizasyonu. " +
+    "The IMO energy efficiency regime: design (EEDI/EEXI) and operational (CII/EEOI) " +
+    "indicators together with waste heat recovery and speed optimisation. " +
     "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "eedi",
-      name: "EEDI (Enerji Verimlilik Tasarım İndeksi)",
-      group: "Enerji Verimliliği Göstergeleri",
+      name: "EEDI (Energy Efficiency Design Index)",
+      group: "Energy Efficiency Indicators",
       formula: "EEDI = (PME × SFOC × Cf) / (DWT × Vref)",
       variables: [
-        { symbol: "PME", label: "Ana makine gücü", unit: "kW" },
+        { symbol: "PME", label: "Main engine power", unit: "kW" },
         { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
-        { symbol: "Cf", label: "CO₂ dönüşüm faktörü" },
+        { symbol: "Cf", label: "CO₂ conversion factor" },
         { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
-        { symbol: "Vref", label: "Referans hız", unit: "knot" },
+        { symbol: "Vref", label: "Reference speed", unit: "knot" },
       ],
-      source: { code: "MARPOL Annex VI Reg.21 — EEDI (yeni gemiler için zorunlu üst sınır)" },
-      note: "Sonuç g CO₂/(ton·NM) cinsindendir.",
+      source: { code: "MARPOL Annex VI Reg.21 — EEDI (mandatory upper limit for new ships)" },
+      note: "The result is in g CO₂/(tonne·NM).",
       inputs: [
-        { key: "p", label: "Motor Gücü (PME)", unit: "kW", placeholder: "15000" },
+        { key: "p", label: "Engine Power (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
-        { key: "cf", label: "CO₂ Faktörü (Cf)", unit: "", placeholder: "3.114" },
+        { key: "cf", label: "CO₂ Factor (Cf)", unit: "", placeholder: "3.114" },
         { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
-        { key: "vref", label: "Referans Hız", unit: "knot", placeholder: "14.5" },
+        { key: "vref", label: "Reference Speed", unit: "knot", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const eedi = (v.p * v.sfoc * v.cf) / (v.dwt * v.vref);
@@ -46,28 +46,28 @@ export const energyEfficiency: CourseTopic = {
     },
     {
       id: "eexi",
-      name: "EEXI (Mevcut Gemi Enerji Verimlilik İndeksi)",
-      group: "Enerji Verimliliği Göstergeleri",
+      name: "EEXI (Energy Efficiency Existing Ship Index)",
+      group: "Energy Efficiency Indicators",
       formula: "EEXI = (PME × SFOCME × Cf + PAE × SFOCAE × Cf) / (DWT × Vref)",
       variables: [
-        { symbol: "PME", label: "Ana makine gücü", unit: "kW" },
-        { symbol: "SFOCME", label: "Ana makine özgül yakıt tüketimi", unit: "g/kW·h" },
-        { symbol: "PAE", label: "Yardımcı makine gücü", unit: "kW" },
-        { symbol: "SFOCAE", label: "Yardımcı makine özgül yakıt tüketimi", unit: "g/kW·h" },
-        { symbol: "Cf", label: "CO₂ dönüşüm faktörü" },
+        { symbol: "PME", label: "Main engine power", unit: "kW" },
+        { symbol: "SFOCME", label: "Main engine specific fuel consumption", unit: "g/kW·h" },
+        { symbol: "PAE", label: "Auxiliary engine power", unit: "kW" },
+        { symbol: "SFOCAE", label: "Auxiliary engine specific fuel consumption", unit: "g/kW·h" },
+        { symbol: "Cf", label: "CO₂ conversion factor" },
         { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
-        { symbol: "Vref", label: "Referans hız", unit: "knot" },
+        { symbol: "Vref", label: "Reference speed", unit: "knot" },
       ],
-      source: { code: "EEXI — MEPC.328(76) (2023'ten itibaren mevcut gemiler için zorunlu)" },
-      note: "Sonuç g CO₂/(ton·NM) cinsindendir.",
+      source: { code: "EEXI — MEPC.328(76) (mandatory for existing ships from 2023)" },
+      note: "The result is in g CO₂/(tonne·NM).",
       inputs: [
-        { key: "pme", label: "Ana Motor Gücü (PME)", unit: "kW", placeholder: "15000" },
+        { key: "pme", label: "Main Engine Power (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfocMe", label: "Ana Motor SFOC", unit: "g/kW·h", placeholder: "175" },
-        { key: "pae", label: "Yardımcı Motor Gücü (PAE)", unit: "kW", placeholder: "750" },
-        { key: "sfocAe", label: "Yardımcı SFOC", unit: "g/kW·h", placeholder: "215" },
-        { key: "cf", label: "CO₂ Faktörü", unit: "", placeholder: "3.114" },
+        { key: "pae", label: "Auxiliary Engine Power (PAE)", unit: "kW", placeholder: "750" },
+        { key: "sfocAe", label: "Auxiliary SFOC", unit: "g/kW·h", placeholder: "215" },
+        { key: "cf", label: "CO₂ Factor", unit: "", placeholder: "3.114" },
         { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
-        { key: "vref", label: "Referans Hız", unit: "knot", placeholder: "14.5" },
+        { key: "vref", label: "Reference Speed", unit: "knot", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const eexi = ((v.pme * v.sfocMe * v.cf) + (v.pae * v.sfocAe * v.cf)) / (v.dwt * v.vref);
@@ -76,16 +76,16 @@ export const energyEfficiency: CourseTopic = {
     },
     {
       id: "cii-aer",
-      name: "CII / AER (Yıllık Karbon Yoğunluğu)",
-      group: "Enerji Verimliliği Göstergeleri",
+      name: "CII / AER (Annual Carbon Intensity)",
+      group: "Energy Efficiency Indicators",
       formula: "CII (AER) = (CO₂toplam × 10⁶) / (DWT × Dtoplam)",
       variables: [
-        { symbol: "CO₂_toplam", label: "Yıllık toplam CO₂ emisyonu", unit: "ton" },
+        { symbol: "CO₂_toplam", label: "Total annual CO₂ emissions", unit: "ton" },
         { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
-        { symbol: "Dtoplam", label: "Yıllık toplam seyir mesafesi", unit: "NM" },
+        { symbol: "Dtoplam", label: "Total annual distance sailed", unit: "NM" },
       ],
-      source: { code: "CII/AER — MEPC.328(76) (yıllık derecelendirme A–E)" },
-      note: "Toplam CO₂ ton girilir, 10⁶ ile g'a çevrilir; sonuç g CO₂/(DWT·NM). AER, CII hesabında kullanılan göstergedir.",
+      source: { code: "CII/AER — MEPC.328(76) (annual rating A–E)" },
+      note: "The total CO₂ is entered in tonnes and converted to g by 10⁶; the result is in g CO₂/(DWT·NM). The AER is the indicator used in the CII calculation.",
       inputs: [
         { key: "co2", label: "Toplam CO₂ Emisyonu", unit: "ton", placeholder: "25000" },
         { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
@@ -98,21 +98,21 @@ export const energyEfficiency: CourseTopic = {
     },
     {
       id: "eeoi",
-      name: "EEOI (Enerji Verimlilik Operasyonel Göstergesi)",
-      group: "Enerji Verimliliği Göstergeleri",
-      formula: "EEOI = (FC × Cf × 10⁶) / (Yük × D)",
+      name: "EEOI (Energy Efficiency Operational Indicator)",
+      group: "Energy Efficiency Indicators",
+      formula: "EEOI = (FC × Cf × 10⁶) / (Cargo × D)",
       variables: [
         { symbol: "FC", label: "Fuel consumption", unit: "ton" },
-        { symbol: "Cf", label: "CO₂ dönüşüm faktörü" },
-        { symbol: "Yük", label: "Taşınan yük", unit: "ton" },
+        { symbol: "Cf", label: "CO₂ conversion factor" },
+        { symbol: "Cargo", label: "Cargo carried", unit: "ton" },
         { symbol: "D", label: "Mesafe", unit: "NM" },
       ],
-      source: { code: "EEOI — MEPC.1/Circ.684 (gönüllü operasyonel gösterge)" },
-      note: "Yakıt tüketimi ton girilir, 10⁶ ile g'a çevrilir; sonuç g CO₂/(ton·NM).",
+      source: { code: "EEOI — MEPC.1/Circ.684 (voluntary operational indicator)" },
+      note: "The fuel consumption is entered in tonnes and converted to g by 10⁶; the result is in g CO₂/(tonne·NM).",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "500" },
-        { key: "cf", label: "CO₂ Faktörü", unit: "", placeholder: "3.114" },
-        { key: "cargo", label: "Taşınan Yük", unit: "ton", placeholder: "40000" },
+        { key: "cf", label: "CO₂ Factor", unit: "", placeholder: "3.114" },
+        { key: "cargo", label: "Cargo Carried", unit: "ton", placeholder: "40000" },
         { key: "dist", label: "Mesafe", unit: "NM", placeholder: "5000" },
       ],
       calculate: (v) => {
@@ -122,48 +122,48 @@ export const energyEfficiency: CourseTopic = {
     },
     {
       id: "speed-reduction-fuel-saving",
-      name: "Hız Azaltma ile Yakıt Tasarrufu (Küp Kuralı)",
-      group: "Atık Isı Geri Kazanım",
+      name: "Fuel Saving from Speed Reduction (Cube Rule)",
+      group: "Waste Heat Recovery",
       formula: "FC₂ = FC₁ × (V₂ / V₁)³",
       variables: [
-        { symbol: "V₁", label: "Mevcut hız", unit: "knot" },
-        { symbol: "V₂", label: "Yeni hız", unit: "knot" },
-        { symbol: "FC₁", label: "Mevcut yakıt tüketimi", unit: "tonnes/day" },
-        { symbol: "FC₂", label: "Yeni yakıt tüketimi", unit: "tonnes/day" },
+        { symbol: "V₁", label: "Current speed", unit: "knot" },
+        { symbol: "V₂", label: "New speed", unit: "knot" },
+        { symbol: "FC₁", label: "Current fuel consumption", unit: "tonnes/day" },
+        { symbol: "FC₂", label: "New fuel consumption", unit: "tonnes/day" },
       ],
-      source: { code: "SEEMP — hız optimizasyonu (gemi direnci ∝ hızın küpü)" },
-      note: "Sevk gücü ve yakıt tüketimi hızın küpüyle orantılıdır; tasarruf (%) = (FC₁ − FC₂)/FC₁ × 100.",
+      source: { code: "SEEMP — speed optimisation (ship resistance ∝ the cube of the speed)" },
+      note: "The propulsion power and the fuel consumption are proportional to the cube of the speed; saving (%) = (FC₁ − FC₂)/FC₁ × 100.",
       inputs: [
-        { key: "v1", label: "Mevcut Hız", unit: "knot", placeholder: "14" },
-        { key: "v2", label: "Yeni Hız", unit: "knot", placeholder: "12" },
-        { key: "fc1", label: "Mevcut Tüketim", unit: "tonnes/day", placeholder: "35" },
+        { key: "v1", label: "Current Speed", unit: "knot", placeholder: "14" },
+        { key: "v2", label: "New Speed", unit: "knot", placeholder: "12" },
+        { key: "fc1", label: "Current Consumption", unit: "tonnes/day", placeholder: "35" },
       ],
       calculate: (v) => {
         const fc2 = v.fc1 * Math.pow(v.v2 / v.v1, 3);
         const saving = ((v.fc1 - fc2) / v.fc1) * 100;
         return [
-          { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} ton/gün` },
+          { label: "New Consumption", value: `${fc2.toFixed(1)} tonnes/day` },
           { label: "Tasarruf", value: `${saving.toFixed(1)}%` },
         ];
       },
     },
     {
       id: "whr-power",
-      name: "Atık Isı Geri Kazanım (WHRS)",
-      group: "Atık Isı Geri Kazanım",
+      name: "Waste Heat Recovery (WHRS)",
+      group: "Waste Heat Recovery",
       formula: "PWHR = ṁegzoz × cp × ΔT × η",
       variables: [
-        { symbol: "ṁegzoz", label: "Egzoz gazı debisi", unit: "kg/s" },
+        { symbol: "ṁegzoz", label: "Exhaust gas flow rate", unit: "kg/s" },
         { symbol: "cp", label: "Specific heat", unit: "kJ/kg·K" },
-        { symbol: "ΔT", label: "Egzoz sıcaklık düşüşü", unit: "K" },
+        { symbol: "ΔT", label: "Exhaust temperature drop", unit: "K" },
         { symbol: "η", label: "WHR sistem verimi" },
       ],
-      source: { code: "Atık ısı geri kazanım sistemi (WHRS) — egzoz enerji bilançosu" },
-      note: "ΔT = Tgiriş − Tçıkış (K = °C farkı); verim % girilir, hesapta orana çevrilir.",
+      source: { code: "Waste heat recovery system (WHRS) — exhaust energy balance" },
+      note: "ΔT = T_in − T_out (a difference in K equals a difference in °C); the efficiency is entered as a percentage and converted to a ratio in the calculation.",
       inputs: [
         { key: "mexh", label: "Egzoz Debisi", unit: "kg/s", placeholder: "30" },
-        { key: "texhIn", label: "Egzoz Giriş Sıcaklığı", unit: "°C", placeholder: "350" },
-        { key: "texhOut", label: "Egzoz Çıkış Sıcaklığı", unit: "°C", placeholder: "180" },
+        { key: "texhIn", label: "Exhaust Inlet Temperature", unit: "°C", placeholder: "350" },
+        { key: "texhOut", label: "Exhaust Outlet Temperature", unit: "°C", placeholder: "180" },
         { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "1.05" },
         { key: "eta", label: "Sistem Verimi", unit: "%", placeholder: "70" },
       ],
@@ -172,27 +172,27 @@ export const energyEfficiency: CourseTopic = {
         const qRecovered = qAvail * (v.eta / 100);
         return [
           { label: "Available Heat", value: `${qAvail.toFixed(0)} kW` },
-          { label: "Geri Kazanılan Enerji", value: `${qRecovered.toFixed(0)} kW` },
+          { label: "Recovered Energy", value: `${qRecovered.toFixed(0)} kW` },
         ];
       },
     },
     {
       id: "seemp-saving",
       name: "SEEMP Tasarruf",
-      group: "Atık Isı Geri Kazanım",
-      formula: "Tasarruf (%) = (FCöncesi − FCsonrası) / FCöncesi × 100",
+      group: "Waste Heat Recovery",
+      formula: "Saving (%) = (FC_before − FC_after) / FC_before × 100",
       variables: [
-        { symbol: "FCöncesi", label: "Önlem öncesi yakıt tüketimi", unit: "ton" },
-        { symbol: "FCsonrası", label: "Önlem sonrası yakıt tüketimi", unit: "ton" },
+        { symbol: "FC_before", label: "Fuel consumption before the measure", unit: "ton" },
+        { symbol: "FC_after", label: "Fuel consumption after the measure", unit: "ton" },
       ],
       source: { code: "SEEMP — Ship Energy Efficiency Management Plan (MARPOL Annex VI Reg.22)" },
-      note: "Önlem öncesi ve sonrası yakıt tüketimi girilir; tasarruf yüzdesi ve mutlak tasarruf hesaplanır.",
+      note: "The fuel consumption before and after the measure is entered; the percentage and absolute savings are calculated.",
       inputs: [
-        { key: "before", label: "Önce (FCöncesi)", unit: "ton", placeholder: "1000" },
-        { key: "after", label: "Sonra (FCsonrası)", unit: "ton", placeholder: "920" },
+        { key: "before", label: "Before (FC_before)", unit: "ton", placeholder: "1000" },
+        { key: "after", label: "After (FC_after)", unit: "ton", placeholder: "920" },
       ],
       calculate: (v) => {
-        if (v.before <= 0) return [{ label: "Hata", value: "Öncesi tüketim pozitif olmalı" }];
+        if (v.before <= 0) return [{ label: "Hata", value: "The consumption before must be positive" }];
         const saving = ((v.before - v.after) / v.before) * 100;
         return [
           { label: "Tasarruf", value: `${saving.toFixed(1)} %` },

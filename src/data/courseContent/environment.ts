@@ -63,7 +63,7 @@ export const environment: CourseTopic = {
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Kural 13 — NOx Tier limitleri" },
       inputs: [
-        { key: "p", label: "Güç (P)", unit: "kW", placeholder: "8000" },
+        { key: "p", label: "Power (P)", unit: "kW", placeholder: "8000" },
         { key: "t", label: "Süre (t)", unit: "h", placeholder: "24" },
         { key: "ef", label: "Emisyon Faktörü (EF)", unit: "g/kWh", placeholder: "14" },
       ],
@@ -88,18 +88,18 @@ export const environment: CourseTopic = {
     {
       id: "eexi",
       name: "EEXI",
-      group: "Enerji Verimliliği",
+      group: "Energy Efficiency",
       formula: "EEXI = (P × CF × SFC) / (Capacity × Vref)",
       variables: [
-        { symbol: "P", label: "Ana makine gücü", unit: "kW" },
+        { symbol: "P", label: "Main engine power", unit: "kW" },
         { symbol: "CF", label: "Karbon faktörü", unit: "t CO₂/t" },
         { symbol: "SFC", label: "Specific fuel consumption", unit: "g/kWh" },
         { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
-        { symbol: "Vref", label: "Referans hız", unit: "kn" },
+        { symbol: "Vref", label: "Reference speed", unit: "kn" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "EEXI — MEPC.333(76)" },
       inputs: [
-        { key: "p", label: "Güç (P)", unit: "kW", placeholder: "8000" },
+        { key: "p", label: "Power (P)", unit: "kW", placeholder: "8000" },
         { key: "cf", label: "CF", unit: "", placeholder: "3.114" },
         { key: "sfc", label: "SFC", unit: "g/kWh", placeholder: "180" },
         { key: "cap", label: "Kapasite", unit: "t", placeholder: "50000" },
@@ -114,7 +114,7 @@ export const environment: CourseTopic = {
     {
       id: "cii",
       name: "CII (Karbon Yoğunluğu Göstergesi)",
-      group: "Enerji Verimliliği",
+      group: "Energy Efficiency",
       formula: "CII = Yıllık CO₂ / (Capacity × Distance)",
       variables: [
         { symbol: "Yıllık CO₂", label: "Yıllık toplam CO₂", unit: "g" },
@@ -136,7 +136,7 @@ export const environment: CourseTopic = {
     {
       id: "aer",
       name: "AER (Yıllık Verimlilik Oranı)",
-      group: "Enerji Verimliliği",
+      group: "Energy Efficiency",
       formula: "AER = ∑CO₂ / (DWT × ∑Distance)",
       variables: [
         { symbol: "∑CO₂", label: "Yıllık toplam CO₂", unit: "g" },
@@ -166,7 +166,7 @@ export const environment: CourseTopic = {
       ],
       source: { code: "Yakıt tüketimi — SFOC bağıntısı" },
       inputs: [
-        { key: "p", label: "Güç (P)", unit: "kW", placeholder: "8000" },
+        { key: "p", label: "Power (P)", unit: "kW", placeholder: "8000" },
         { key: "sfoc", label: "SFOC", unit: "g/kWh", placeholder: "180" },
       ],
       calculate: (v) => [{ label: "FOC", value: `${((v.p * v.sfoc * 24) / 1e6).toFixed(2)} ton/gün` }],
@@ -182,7 +182,7 @@ export const environment: CourseTopic = {
       ],
       source: { code: "Enerji = güç × süre" },
       inputs: [
-        { key: "p", label: "Güç (P)", unit: "kW", placeholder: "8000" },
+        { key: "p", label: "Power (P)", unit: "kW", placeholder: "8000" },
         { key: "t", label: "Süre (t)", unit: "h", placeholder: "24" },
       ],
       calculate: (v) => [{ label: "Enerji (E)", value: `${(v.p * v.t).toFixed(0)} kWh` }],
@@ -190,7 +190,7 @@ export const environment: CourseTopic = {
     {
       id: "eedi",
       name: "EEDI",
-      group: "Enerji Verimliliği",
+      group: "Energy Efficiency",
       formula: "EEDI = (∑P × CF × SFC) / (fi × Capacity × Vref)",
       variables: [
         { symbol: "∑P", label: "Toplam makine gücü", unit: "kW" },
@@ -198,7 +198,7 @@ export const environment: CourseTopic = {
         { symbol: "SFC", label: "Specific fuel consumption", unit: "g/kWh" },
         { symbol: "fi", label: "Kapasite düzeltme faktörü" },
         { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
-        { symbol: "Vref", label: "Referans hız", unit: "kn" },
+        { symbol: "Vref", label: "Reference speed", unit: "kn" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "EEDI — MEPC.245(66)" },
       inputs: [

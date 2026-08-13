@@ -41,7 +41,7 @@ export const environmentRules: RuleGroup[] = [
         ],
       },
       {
-        subtitle: "Enerji Verimliliği",
+        subtitle: "Energy Efficiency",
         content: [
           "EEDI: Yeni gemiler için zorunlu (2013+)",
           "EEXI: Mevcut gemiler için zorunlu (2023+)",
