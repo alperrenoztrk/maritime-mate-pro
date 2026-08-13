@@ -18,7 +18,7 @@ export const fluidMechanics: CourseTopic = {
   entries: [
     {
       id: "bernoulli",
-      name: "Bernoulli Denklemi",
+      name: "Bernoulli Equation",
       group: "Fundamental Fluid Equations",
       formula: "P₁/ρg + v₁²/2g + z₁ = P₂/ρg + v₂²/2g + z₂",
       variables: [
@@ -66,7 +66,7 @@ export const fluidMechanics: CourseTopic = {
         const q = a1 * v.v1;
         return [
           { label: "V₂ (Velocity)", value: `${v2.toFixed(2)} m/s` },
-          { label: "Debi (Q)", value: `${(q * 3600).toFixed(1)} m³/h` },
+          { label: "Flow Rate (Q)", value: `${(q * 3600).toFixed(1)} m³/h` },
         ];
       },
     },
@@ -79,14 +79,14 @@ export const fluidMechanics: CourseTopic = {
         { symbol: "ρ", label: "Density", unit: "kg/m³" },
         { symbol: "v", label: "Speed", unit: "m/s" },
         { symbol: "D", label: "Diameter", unit: "m" },
-        { symbol: "μ", label: "Dinamik viskozite", unit: "Pa·s" },
+        { symbol: "μ", label: "Dynamic viscosity", unit: "Pa·s" },
       ],
       source: { code: "Reynolds number (flow regime: Re < 2300 laminar, > 4000 turbulent)" },
       inputs: [
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
         { key: "v", label: "Velocity (v)", unit: "m/s", placeholder: "2" },
         { key: "d", label: "Diameter (D)", unit: "m", placeholder: "0.1" },
-        { key: "mu", label: "Dinamik Viskozite (μ)", unit: "Pa·s", placeholder: "0.001" },
+        { key: "mu", label: "Dynamic Viscosity (μ)", unit: "Pa·s", placeholder: "0.001" },
       ],
       calculate: (vals) => {
         const re = (vals.rho * vals.v * vals.d) / vals.mu;
@@ -134,17 +134,17 @@ export const fluidMechanics: CourseTopic = {
       variables: [
         { symbol: "ρ", label: "Density", unit: "kg/m³" },
         { symbol: "g", label: "Gravity", unit: "m/s²" },
-        { symbol: "Q", label: "Debi", unit: "m³/s" },
+        { symbol: "Q", label: "Flow rate", unit: "m³/s" },
         { symbol: "H", label: "Total head", unit: "m" },
-        { symbol: "η", label: "Verim" },
+        { symbol: "η", label: "Efficiency" },
       ],
       source: { code: "Centrifugal pump hydraulic power relation" },
       note: "The flow rate is entered in m³/h and converted to m³/s in the calculation; the efficiency is entered as a percentage.",
       inputs: [
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
-        { key: "q", label: "Debi (Q)", unit: "m³/h", placeholder: "100" },
+        { key: "q", label: "Flow Rate (Q)", unit: "m³/h", placeholder: "100" },
         { key: "h", label: "Head (H)", unit: "m", placeholder: "30" },
-        { key: "eta", label: "Verim (η)", unit: "%", placeholder: "75" },
+        { key: "eta", label: "Efficiency (η)", unit: "%", placeholder: "75" },
       ],
       calculate: (vals) => {
         const qm3s = vals.q / 3600;
@@ -185,16 +185,16 @@ export const fluidMechanics: CourseTopic = {
       group: "Pump Calculations",
       formula: "Q₂/Q₁ = n₂/n₁ ; H₂/H₁ = (n₂/n₁)² ; P₂/P₁ = (n₂/n₁)³",
       variables: [
-        { symbol: "Q", label: "Debi" },
+        { symbol: "Q", label: "Flow rate" },
         { symbol: "H", label: "Head" },
         { symbol: "P", label: "Power" },
-        { symbol: "n", label: "Devir", unit: "rpm" },
+        { symbol: "n", label: "Speed", unit: "rpm" },
       ],
       source: { code: "Pump/fan affinity laws" },
       inputs: [
-        { key: "n1", label: "Mevcut Devir (n₁)", unit: "rpm", placeholder: "1450" },
-        { key: "n2", label: "Yeni Devir (n₂)", unit: "rpm", placeholder: "1200" },
-        { key: "q1", label: "Mevcut Debi (Q₁)", unit: "m³/h", placeholder: "100" },
+        { key: "n1", label: "Current Speed (n₁)", unit: "rpm", placeholder: "1450" },
+        { key: "n2", label: "New Speed (n₂)", unit: "rpm", placeholder: "1200" },
+        { key: "q1", label: "Current Flow Rate (Q₁)", unit: "m³/h", placeholder: "100" },
         { key: "h1", label: "Current Head (H₁)", unit: "m", placeholder: "30" },
         { key: "p1", label: "Current Power (P₁)", unit: "kW", placeholder: "15" },
       ],
@@ -204,7 +204,7 @@ export const fluidMechanics: CourseTopic = {
         const h2 = v.h1 * Math.pow(ratio, 2);
         const p2 = v.p1 * Math.pow(ratio, 3);
         return [
-          { label: "Yeni Debi (Q₂)", value: `${q2.toFixed(1)} m³/h` },
+          { label: "New Flow Rate (Q₂)", value: `${q2.toFixed(1)} m³/h` },
           { label: "New Head (H₂)", value: `${h2.toFixed(1)} m` },
           { label: "New Power (P₂)", value: `${p2.toFixed(2)} kW` },
         ];
@@ -213,24 +213,24 @@ export const fluidMechanics: CourseTopic = {
     {
       id: "hydrostatic-pressure",
       name: "Hydrostatic Pressure",
-      group: "Hidrostatik",
+      group: "Hydrostatics",
       formula: "P = P₀ + ρ·g·h",
       variables: [
         { symbol: "P", label: "Total (absolute) pressure", unit: "Pa" },
         { symbol: "P₀", label: "Pressure at the surface (atmospheric)", unit: "Pa" },
         { symbol: "ρ", label: "Fluid density", unit: "kg/m³" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
-        { symbol: "h", label: "Derinlik", unit: "m" },
+        { symbol: "h", label: "Depth", unit: "m" },
       ],
-      source: { code: "Hidrostatik temel denklem (Pascal)" },
+      source: { code: "Fundamental hydrostatic equation (Pascal)" },
       note: "Sea water ρ ≈ 1025 kg/m³, fresh water 1000 kg/m³. For atmospheric conditions P₀ ≈ 101325 Pa; enter P₀ = 0 if only the gauge pressure is required.",
       inputs: [
         { key: "p0", label: "Surface Pressure (P₀)", unit: "Pa", placeholder: "101325" },
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
-        { key: "h", label: "Derinlik (h)", unit: "m", placeholder: "10" },
+        { key: "h", label: "Depth (h)", unit: "m", placeholder: "10" },
       ],
       calculate: (v) => {
-        if (v.h < 0 || v.rho <= 0) return [{ label: "Hata", value: "The density must be positive and the depth ≥ 0" }];
+        if (v.h < 0 || v.rho <= 0) return [{ label: "Error", value: "The density must be positive and the depth ≥ 0" }];
         const p = v.p0 + v.rho * 9.81 * v.h;
         return [
           { label: "Pressure (P)", value: `${(p / 1000).toFixed(2)} kPa` },
@@ -241,7 +241,7 @@ export const fluidMechanics: CourseTopic = {
     {
       id: "hydrostatic-force",
       name: "Hydrostatic Force (Plane Surface)",
-      group: "Hidrostatik",
+      group: "Hydrostatics",
       formula: "F = ρ·g·hc·A",
       variables: [
         { symbol: "F", label: "Resultant hydrostatic force", unit: "N" },
@@ -258,11 +258,11 @@ export const fluidMechanics: CourseTopic = {
         { key: "a", label: "Surface Area (A)", unit: "m²", placeholder: "2" },
       ],
       calculate: (v) => {
-        if (v.rho <= 0 || v.hc < 0 || v.a <= 0) return [{ label: "Hata", value: "ρ and A must be positive and hc ≥ 0" }];
+        if (v.rho <= 0 || v.hc < 0 || v.a <= 0) return [{ label: "Error", value: "ρ and A must be positive and hc ≥ 0" }];
         const f = v.rho * 9.81 * v.hc * v.a;
         return [
-          { label: "Hidrostatik Kuvvet (F)", value: `${(f / 1000).toFixed(2)} kN` },
-          { label: "Kuvvet", value: `${f.toFixed(0)} N` },
+          { label: "Hydrostatic Force (F)", value: `${(f / 1000).toFixed(2)} kN` },
+          { label: "Force", value: `${f.toFixed(0)} N` },
         ];
       },
     },

@@ -56,7 +56,7 @@ export const meteorology: CourseTopic = {
         { key: "b", label: "Beaufort Number (B)", unit: "", placeholder: "8" },
       ],
       calculate: (v) => {
-        if (v.b < 0) return [{ label: "Hata", value: "The Beaufort number cannot be negative" }];
+        if (v.b < 0) return [{ label: "Error", value: "The Beaufort number cannot be negative" }];
         const ms = 0.836 * Math.pow(v.b, 1.5);
         return [
           { label: "Wind Speed (V)", value: `${ms.toFixed(2)} m/s` },
@@ -83,7 +83,7 @@ export const meteorology: CourseTopic = {
       ],
       calculate: (v) => {
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "The temperature must be above absolute zero" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const rho = (v.p * 100) / (287 * tK);
         return [{ label: "Air Density (ρ)", value: `${rho.toFixed(3)} kg/m³` }];
       },
@@ -110,7 +110,7 @@ export const meteorology: CourseTopic = {
       ],
       calculate: (v) => {
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "The temperature must be above absolute zero" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const p0 = v.p * Math.exp((9.81 * v.h) / (287 * tK));
         return [{ label: "Sea Level Pressure (P₀)", value: `${p0.toFixed(1)} hPa` }];
       },
@@ -134,7 +134,7 @@ export const meteorology: CourseTopic = {
       calculate: (v) => {
         const td = v.t - (100 - v.rh) / 5;
         const spread = v.t - td;
-        const durum = spread < 2.5 ? "Sis riski (T − Td < 2,5 °C)" : "Low fog risk";
+        const durum = spread < 2.5 ? "Fog risk (T − Td < 2.5 °C)" : "Low fog risk";
         return [
           { label: "Dew Point (Td)", value: `${td.toFixed(1)} °C` },
           { label: "Temperature-Dew Point Spread", value: `${spread.toFixed(1)} °C` },
@@ -145,17 +145,17 @@ export const meteorology: CourseTopic = {
     {
       id: "deep-water-wavelength",
       name: "Derin Su Dalgaboyu",
-      group: "Dalga",
+      group: "Wave",
       formula: "L = (g · T²) / (2π)",
       variables: [
         { symbol: "L", label: "Dalgaboyu", unit: "m" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
-        { symbol: "T", label: "Dalga periyodu", unit: "s" },
+        { symbol: "T", label: "Wave period", unit: "s" },
       ],
-      source: { code: "Derin su dalga teorisi" },
+      source: { code: "Deep water wave theory" },
       note: "Deep water condition: depth > L/2.",
       inputs: [
-        { key: "t", label: "Dalga Periyodu (T)", unit: "s", placeholder: "8" },
+        { key: "t", label: "Wave Period (T)", unit: "s", placeholder: "8" },
       ],
       calculate: (v) => {
         const l = (9.81 * v.t * v.t) / (2 * Math.PI);
@@ -165,17 +165,17 @@ export const meteorology: CourseTopic = {
     {
       id: "deep-water-wave-speed",
       name: "Wave Speed (Deep Water)",
-      group: "Dalga",
+      group: "Wave",
       formula: "C = L / T = (g · T) / (2π) ≈ 1.56 · T",
       variables: [
         { symbol: "C", label: "Wave speed", unit: "m/s" },
         { symbol: "L", label: "Dalgaboyu", unit: "m" },
-        { symbol: "T", label: "Dalga periyodu", unit: "s" },
+        { symbol: "T", label: "Wave period", unit: "s" },
       ],
       source: { code: "Deep water wave theory (phase speed)" },
-      note: "Knot cinsinden: C (kn) ≈ 3,03 · T.",
+      note: "In knots: C (kn) ≈ 3.03 · T.",
       inputs: [
-        { key: "t", label: "Dalga Periyodu (T)", unit: "s", placeholder: "8" },
+        { key: "t", label: "Wave Period (T)", unit: "s", placeholder: "8" },
       ],
       calculate: (v) => {
         const c = (9.81 * v.t) / (2 * Math.PI);
@@ -238,7 +238,7 @@ export const meteorology: CourseTopic = {
       inputs: [
         { key: "rho", label: "Air Density (ρ)", unit: "kg/m³", placeholder: "1.225" },
         { key: "vkn", label: "Relative Wind Speed (V)", unit: "kn", placeholder: "25" },
-        { key: "length", label: "Gemi Boyu", unit: "m", placeholder: "180" },
+        { key: "length", label: "Ship Length", unit: "m", placeholder: "180" },
         { key: "freeboard", label: "Freeboard", unit: "m", placeholder: "12" },
         { key: "cd", label: "Drag Coefficient (Cd)", unit: "", placeholder: "0.8" },
       ],
@@ -291,7 +291,7 @@ export const meteorology: CourseTopic = {
     {
       id: "beaufort-scale",
       name: "Beaufort Scale (Force from Speed)",
-      group: "Deniz Durumu",
+      group: "Sea State",
       formula: "Beaufort = f(wind speed) — range table",
       variables: [
         { symbol: "V", label: "Wind speed", unit: "kn" },
@@ -328,7 +328,7 @@ export const meteorology: CourseTopic = {
     {
       id: "douglas-sea-scale",
       name: "Douglas Sea Scale (State from Wave Height)",
-      group: "Deniz Durumu",
+      group: "Sea State",
       formula: "Douglas = f(significant wave height) — range table",
       variables: [
         { symbol: "Hs", label: "Significant wave height", unit: "m" },
@@ -367,26 +367,26 @@ export const meteorology: CourseTopic = {
       variables: [
         { symbol: "Vg", label: "Geostrophic wind speed", unit: "m/s" },
         { symbol: "ρ", label: "Air density", unit: "kg/m³" },
-        { symbol: "f", label: "Coriolis parametresi", unit: "1/s" },
+        { symbol: "f", label: "Coriolis parameter", unit: "1/s" },
         { symbol: "ΔP/Δn", label: "Horizontal pressure gradient", unit: "Pa/m" },
-        { symbol: "φ", label: "Enlem", unit: "°" },
+        { symbol: "φ", label: "Latitude", unit: "°" },
       ],
-      source: { code: "Dinamik meteoroloji — geostrofik denge" },
+      source: { code: "Dynamic meteorology — geostrophic balance" },
       note: "Ω = 7.292×10⁻⁵ rad/s. The pressure gradient is entered in hPa/100 km and converted to Pa/m in the calculation (1 hPa/100 km = 10⁻³ Pa/m). It is not valid at the equator (φ = 0).",
       inputs: [
         { key: "rho", label: "Air Density (ρ)", unit: "kg/m³", placeholder: "1.225" },
         { key: "grad", label: "Pressure Gradient", unit: "hPa/100km", placeholder: "3" },
-        { key: "lat", label: "Enlem (φ)", unit: "°", placeholder: "45" },
+        { key: "lat", label: "Latitude (φ)", unit: "°", placeholder: "45" },
       ],
       calculate: (v) => {
         const phi = Math.abs(v.lat);
-        if (phi < 1) return [{ label: "Hata", value: "Geostrophic balance is not valid near the equator (φ ≥ 1°)" }];
-        if (v.rho <= 0) return [{ label: "Hata", value: "Density must be positive" }];
+        if (phi < 1) return [{ label: "Error", value: "Geostrophic balance is not valid near the equator (φ ≥ 1°)" }];
+        if (v.rho <= 0) return [{ label: "Error", value: "Density must be positive" }];
         const f = 2 * 7.292e-5 * Math.sin((phi * Math.PI) / 180);
         const gradPaPerM = v.grad * 1e-3; // hPa/100km → Pa/m
         const vg = gradPaPerM / (v.rho * f);
         return [
-          { label: "Coriolis Parametresi (f)", value: `${f.toExponential(3)} 1/s` },
+          { label: "Coriolis Parameter (f)", value: `${f.toExponential(3)} 1/s` },
           { label: "Geostrophic Wind (Vg)", value: `${vg.toFixed(1)} m/s` },
           { label: "Geostrophic Wind", value: `${(vg * 1.94384).toFixed(1)} kn` },
         ];
@@ -410,7 +410,7 @@ export const meteorology: CourseTopic = {
         { key: "td", label: "Dew Point (Td)", unit: "°C", placeholder: "15" },
       ],
       calculate: (v) => {
-        if (v.td > v.t) return [{ label: "Hata", value: "The dew point cannot be higher than the air temperature" }];
+        if (v.td > v.t) return [{ label: "Error", value: "The dew point cannot be higher than the air temperature" }];
         const es = (t: number) => 6.112 * Math.exp((17.62 * t) / (243.12 + t));
         const rh = (es(v.td) / es(v.t)) * 100;
         return [{ label: "Relative Humidity (RH)", value: `${rh.toFixed(1)} %` }];

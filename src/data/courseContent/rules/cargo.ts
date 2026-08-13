@@ -25,7 +25,7 @@ export const cargoRules: RuleGroup[] = [
       {
         subtitle: "Carriage Requirements and Declarations",
         content: [
-          "Transportable Moisture Limit (TML) ve Flow Moisture Point (FMP) kontrolleri zorunludur.",
+          "Transportable Moisture Limit (TML) and Flow Moisture Point (FMP) checks are mandatory.",
           "The cargo must be classified correctly (Group A: may liquefy, Group B: chemical hazard, Group C: neither A nor B).",
           "The shipper's declaration and the certificates (TML, moisture content) must be complete.",
           "The special carriage requirements and hazardous properties (BCSN — Bulk Cargo Shipping Name) must be taken into account.",
@@ -133,7 +133,7 @@ export const cargoRules: RuleGroup[] = [
         ],
       },
       {
-        subtitle: "Statik Elektrik ve Inert Gaz",
+        subtitle: "Static Electricity and Inert Gas",
         content: [
           "The tank atmosphere must be kept at O₂ ≤ 8% by volume with the inert gas system.",
           "A low initial loading rate is used at the start of loading because of the static accumulation risk.",

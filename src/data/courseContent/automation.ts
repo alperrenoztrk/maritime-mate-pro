@@ -37,7 +37,7 @@ export const automation: CourseTopic = {
         const relError = (absError / v.actual) * 100;
         const spanError = (absError / v.span) * 100;
         return [
-          { label: "Mutlak Hata", value: `${absError.toFixed(3)}` },
+          { label: "Absolute Error", value: `${absError.toFixed(3)}` },
           { label: "Relative Error", value: `${relError.toFixed(2)}%` },
           { label: "Span Error", value: `${spanError.toFixed(2)}%` },
         ];
@@ -49,11 +49,11 @@ export const automation: CourseTopic = {
       group: "Measurement and Sensors",
       formula: "V = S × ΔT",
       variables: [
-        { symbol: "V", label: "Termokupl gerilimi (EMF)", unit: "mV" },
+        { symbol: "V", label: "Thermocouple voltage (EMF)", unit: "mV" },
         { symbol: "S", label: "Seebeck coefficient", unit: "μV/°C" },
         { symbol: "ΔT", label: "Temperature difference", unit: "°C" },
       ],
-      source: { code: "Seebeck effect — thermocouple measurement", detail: "K-tipi termokupl ≈ 40,7 µV/°C" },
+      source: { code: "Seebeck effect — thermocouple measurement", detail: "Type K thermocouple ≈ 40.7 µV/°C" },
       note: "A type K thermocouple is assumed approximately linear: ΔT = EMF (mV) / 0.0407 (mV/°C).",
       inputs: [
         { key: "emf", label: "Measured EMF", unit: "mV", placeholder: "12.2" },
@@ -89,10 +89,10 @@ export const automation: CourseTopic = {
     {
       id: "pid-output",
       name: "PID Controller Output",
-      group: "Kontrol Sistemleri",
+      group: "Control Systems",
       formula: "u(t) = Kp·e + Ki·∫e·dt + Kd·de/dt",
       variables: [
-        { symbol: "e", label: "Hata (SP − PV)" },
+        { symbol: "e", label: "Error (SP − PV)" },
         { symbol: "Kp", label: "Proportional gain" },
         { symbol: "Ki", label: "Integral gain" },
         { symbol: "Kd", label: "Derivative gain" },
@@ -112,7 +112,7 @@ export const automation: CourseTopic = {
         const iOut = v.ki * error * v.dt;
         const total = Math.min(100, Math.max(0, 50 + pOut + iOut)); // Bias = %50
         return [
-          { label: "Hata (e)", value: `${error.toFixed(2)}` },
+          { label: "Error (e)", value: `${error.toFixed(2)}` },
           { label: "P Output", value: `${pOut.toFixed(2)}` },
           { label: "Controller Output", value: `${total.toFixed(1)}%` },
         ];
@@ -121,7 +121,7 @@ export const automation: CourseTopic = {
     {
       id: "current-loop-4-20ma",
       name: "4-20 mA Conversion",
-      group: "Kontrol Sistemleri",
+      group: "Control Systems",
       formula: "I = 4 + (16 × (X − Xmin) / (Xmax − Xmin))",
       variables: [
         { symbol: "X", label: "Measured value" },

@@ -41,7 +41,7 @@ export const safetyRules: RuleGroup[] = [
     ],
   },
   {
-    title: "SOLAS III & LSA — Can Kurtarma",
+    title: "SOLAS III & LSA — Life Saving",
     source: {
       code: "SOLAS III / LSA Code",
       detail: "International Life-Saving Appliance Code",
@@ -53,7 +53,7 @@ export const safetyRules: RuleGroup[] = [
           "Liferafts and lifeboats must be maintained in accordance with the annual servicing and davit/launching test requirements.",
           "Lifejackets and immersion suits must be provided in sufficient numbers for all personnel plus spares.",
           "EPIRB and SART units must be registered and in working order.",
-          "Pyrotechnics ve line-throwing apparatus son kullanma tarihleri izlenmelidir.",
+          "The expiry dates of the pyrotechnics and the line-throwing apparatus must be monitored.",
         ],
       },
       {

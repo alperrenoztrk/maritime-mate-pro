@@ -27,14 +27,14 @@ export const safety: CourseTopic = {
       variables: [
         { symbol: "Q", label: "Required foam quantity", unit: "L" },
         { symbol: "Application Rate", label: "6.5 L/m²/min (machinery space), 4.0 L/m²/min (deck)", unit: "L/m²/dk" },
-        { symbol: "Alan", label: "Korunan alan", unit: "m²" },
+        { symbol: "Area", label: "Protected area", unit: "m²" },
         { symbol: "Duration", label: "Application time", unit: "dk" },
       ],
       source: { code: "SOLAS II-2 / FSS Code", detail: "Minimum application times" },
       note: "The result is also given in m³ (1000 L = 1 m³).",
       inputs: [
         { key: "rate", label: "Application Rate", unit: "L/m²/dk", placeholder: "6.5" },
-        { key: "area", label: "Korunan Alan", unit: "m²", placeholder: "500" },
+        { key: "area", label: "Protected Area", unit: "m²", placeholder: "500" },
         { key: "time", label: "Application Time", unit: "dk", placeholder: "15" },
       ],
       calculate: (v) => {
@@ -52,64 +52,64 @@ export const safety: CourseTopic = {
       formula: "M = V × f × 1.5",
       variables: [
         { symbol: "M", label: "Required CO₂ quantity", unit: "kg" },
-        { symbol: "V", label: "Korunan hacim", unit: "m³" },
+        { symbol: "V", label: "Protected volume", unit: "m³" },
         { symbol: "f", label: "Filling factor (machinery space 0.40)" },
         { symbol: "1.5", label: "CO₂ density coefficient (≈ 1/0.56 m³/kg)", unit: "kg/m³" },
       ],
       source: { code: "SOLAS II-2 / FSS Code", detail: "Fixed CO₂ extinguishing system" },
       note: "SOLAS: the free CO₂ gas volume must be ≥ 40% of the protected volume. 1.5 kg/m³ ≈ 1/0.56 m³/kg specific volume.",
       inputs: [
-        { key: "vol", label: "Korunan Hacim (V)", unit: "m³", placeholder: "2000" },
+        { key: "vol", label: "Protected Volume (V)", unit: "m³", placeholder: "2000" },
         { key: "factor", label: "Filling Factor (f)", unit: "", placeholder: "0.40" },
       ],
       calculate: (v) => {
-        if (v.vol <= 0) return [{ label: "Hata", value: "The volume must be positive" }];
+        if (v.vol <= 0) return [{ label: "Error", value: "The volume must be positive" }];
         const m = v.vol * v.factor * 1.5;
-        return [{ label: "Gerekli CO₂ (M)", value: `${m.toFixed(1)} kg` }];
+        return [{ label: "Required CO₂ (M)", value: `${m.toFixed(1)} kg` }];
       },
     },
     {
       id: "water-mist-flow",
-      name: "Su Sisi Nozul Debisi",
+      name: "Water Mist Nozzle Flow Rate",
       group: "Fire Fighting",
       formula: "Q = K × √P",
       variables: [
-        { symbol: "Q", label: "Debi", unit: "L/dk" },
+        { symbol: "Q", label: "Flow rate", unit: "L/dk" },
         { symbol: "K", label: "Nozzle factor (manufacturer's catalogue)" },
         { symbol: "P", label: "Pressure", unit: "bar" },
       ],
-      source: { code: "SOLAS II-2 / FSS Code", detail: "Su sisi / sprinkler nozul" },
+      source: { code: "SOLAS II-2 / FSS Code", detail: "Water mist / sprinkler nozzle" },
       note: "The K value is taken from the manufacturer's catalogue for the nozzle type.",
       inputs: [
         { key: "k", label: "Nozzle Coefficient (K)", unit: "", placeholder: "0.07" },
         { key: "p", label: "Pressure (P)", unit: "bar", placeholder: "100" },
       ],
       calculate: (v) => {
-        if (v.p < 0) return [{ label: "Hata", value: "The pressure cannot be negative" }];
+        if (v.p < 0) return [{ label: "Error", value: "The pressure cannot be negative" }];
         const q = v.k * Math.sqrt(v.p);
-        return [{ label: "Nozul Debisi (Q)", value: `${q.toFixed(3)} L/dk` }];
+        return [{ label: "Nozzle Flow Rate (Q)", value: `${q.toFixed(3)} L/dk` }];
       },
     },
     {
       id: "fire-water-capacity",
       name: "Fire Water Capacity",
       group: "Fire Fighting",
-      formula: "Kapasite = Q × t × n",
+      formula: "Capacity = Q × t × n",
       variables: [
-        { symbol: "Q", label: "Her bir hidrant/pompa debisi", unit: "m³/h" },
-        { symbol: "t", label: "Minimum operating time", unit: "saat" },
+        { symbol: "Q", label: "Flow rate of each hydrant/pump", unit: "m³/h" },
+        { symbol: "t", label: "Minimum operating time", unit: "h" },
         { symbol: "n", label: "Number of hydrants/pumps operating simultaneously" },
       ],
       source: { code: "SOLAS II-2 / FSS Code", detail: "Main fire line requirements" },
       note: "The time is entered in minutes; the capacity is calculated in m³ (Q is converted to minutes).",
       inputs: [
-        { key: "q", label: "Pompa Debisi (Q)", unit: "m³/h", placeholder: "150" },
+        { key: "q", label: "Pump Flow Rate (Q)", unit: "m³/h", placeholder: "150" },
         { key: "time", label: "Operating Time (t)", unit: "dk", placeholder: "60" },
         { key: "n", label: "Number of Pumps (n)", unit: "", placeholder: "2" },
       ],
       calculate: (v) => {
         const capacity = (v.q / 60) * v.time * v.n;
-        return [{ label: "Toplam Kapasite", value: `${capacity.toFixed(1)} m³` }];
+        return [{ label: "Total Capacity", value: `${capacity.toFixed(1)} m³` }];
       },
     },
     {
@@ -129,7 +129,7 @@ export const safety: CourseTopic = {
         { key: "speed", label: "Walking Speed (v)", unit: "m/s", placeholder: "1.2" },
       ],
       calculate: (v) => {
-        if (v.speed <= 0) return [{ label: "Hata", value: "The speed must be positive" }];
+        if (v.speed <= 0) return [{ label: "Error", value: "The speed must be positive" }];
         const t = v.length / v.speed / 60;
         const durum = t > 30 ? "Exceeds the SOLAS 30 min limit" : "Within the limit (≤30 min)";
         return [
@@ -140,13 +140,13 @@ export const safety: CourseTopic = {
     },
     {
       id: "risk-matrix",
-      name: "Risk Matrisi Skoru",
+      name: "Risk Matrix Score",
       group: "Risk Assessment",
       formula: "Risk = Likelihood × Severity",
       variables: [
         { symbol: "Likelihood", label: "1-5 (Rare – Very Frequent)" },
         { symbol: "Severity", label: "1-5 (Negligible – Catastrophic)" },
-        { symbol: "Risk", label: "Risk skoru (1-25)" },
+        { symbol: "Risk", label: "Risk score (1-25)" },
       ],
       source: { code: "ISM Code / risk assessment matrix" },
       note: "15+ = High Risk, 8-14 = Medium Risk, 1-7 = Low Risk.",
@@ -156,28 +156,28 @@ export const safety: CourseTopic = {
       ],
       calculate: (v) => {
         const risk = v.p * v.s;
-        const seviye = risk >= 15 ? "High Risk" : risk >= 8 ? "Orta Risk" : "Low Risk";
+        const seviye = risk >= 15 ? "High Risk" : risk >= 8 ? "Medium Risk" : "Low Risk";
         return [
-          { label: "Risk Skoru", value: `${risk.toFixed(0)}` },
+          { label: "Risk Score", value: `${risk.toFixed(0)}` },
           { label: "Seviye", value: seviye },
         ];
       },
     },
     {
       id: "lsa-capacity",
-      name: "Toplam Can Kurtarma Kapasitesi (LSA)",
+      name: "Total Life Saving Capacity (LSA)",
       group: "Life Saving Appliances",
       formula: "Capacity = (Number of Boats × Boat Capacity) + (Number of Rafts × Raft Capacity)",
       variables: [
-        { symbol: "Bot Kapasitesi", label: "Persons per lifeboat", unit: "persons" },
-        { symbol: "Number of Boats", label: "Can botu adedi" },
-        { symbol: "Sal Kapasitesi", label: "Persons per liferaft", unit: "persons" },
+        { symbol: "Boat Capacity", label: "Persons per lifeboat", unit: "persons" },
+        { symbol: "Number of Boats", label: "Number of lifeboats" },
+        { symbol: "Raft Capacity", label: "Persons per liferaft", unit: "persons" },
         { symbol: "Number of Rafts", label: "Number of liferafts" },
       ],
       source: { code: "SOLAS III / LSA Code", detail: "Life saving appliance capacity" },
       note: "SOLAS compliance check: total capacity ≥ the number of persons on board.",
       inputs: [
-        { key: "boatCap", label: "Can Botu Kapasitesi", unit: "persons", placeholder: "65" },
+        { key: "boatCap", label: "Lifeboat Capacity", unit: "persons", placeholder: "65" },
         { key: "boatCount", label: "Number of Lifeboats", unit: "", placeholder: "4" },
         { key: "raftCap", label: "Liferaft Capacity", unit: "persons", placeholder: "25" },
         { key: "raftCount", label: "Number of Liferafts", unit: "", placeholder: "6" },
@@ -187,11 +187,11 @@ export const safety: CourseTopic = {
         const boatTotal = v.boatCap * v.boatCount;
         const raftTotal = v.raftCap * v.raftCount;
         const total = boatTotal + raftTotal;
-        const uygun = total >= v.pob ? "UYGUN" : "NOT COMPLIANT";
+        const uygun = total >= v.pob ? "COMPLIANT" : "NOT COMPLIANT";
         return [
-          { label: "Toplam Can Botu Kapasitesi", value: `${boatTotal.toFixed(0)} persons` },
+          { label: "Total Lifeboat Capacity", value: `${boatTotal.toFixed(0)} persons` },
           { label: "Total Liferaft Capacity", value: `${raftTotal.toFixed(0)} persons` },
-          { label: "Toplam LSA Kapasitesi", value: `${total.toFixed(0)} persons` },
+          { label: "Total LSA Capacity", value: `${total.toFixed(0)} persons` },
           { label: "SOLAS Compliance", value: uygun },
         ];
       },
@@ -223,15 +223,15 @@ export const safety: CourseTopic = {
       id: "fire-water-flow",
       name: "Fire Water Flow Rate (Pump)",
       group: "Fire Fighting",
-      formula: "Q = Pompa Kapasitesi (m³/h) × 1000 / 60",
+      formula: "Q = Pump Capacity (m³/h) × 1000 / 60",
       variables: [
-        { symbol: "Q", label: "Su debisi", unit: "L/dk" },
-        { symbol: "Pompa Kapasitesi", label: "Fire pump capacity", unit: "m³/h" },
+        { symbol: "Q", label: "Water flow rate", unit: "L/dk" },
+        { symbol: "Pump Capacity", label: "Fire pump capacity", unit: "m³/h" },
       ],
       source: { code: "SOLAS II-2 / FSS Code", detail: "Main fire pump flow rate" },
       note: "Conversion from m³/h to L/min: × 1000 ÷ 60.",
       inputs: [
-        { key: "cap", label: "Pompa Kapasitesi", unit: "m³/h", placeholder: "150" },
+        { key: "cap", label: "Pump Capacity", unit: "m³/h", placeholder: "150" },
       ],
       calculate: (v) => {
         const q = (v.cap * 1000) / 60;
@@ -244,19 +244,19 @@ export const safety: CourseTopic = {
       group: "Anchoring and Mooring",
       formula: "Line Load = Total Force / Number of Lines ;  SF = WLL / Line Load",
       variables: [
-        { symbol: "Toplam Kuvvet", label: "Total environmental/displacement force", unit: "t" },
+        { symbol: "Total Force", label: "Total environmental/displacement force", unit: "t" },
         { symbol: "Number of Lines", label: "Number of mooring lines" },
         { symbol: "WLL", label: "Working load limit of the line", unit: "t" },
       ],
       source: { code: "OCIMF MEG4 / good seamanship practice" },
       note: "SF ≥ 2.0 is considered safe.",
       inputs: [
-        { key: "force", label: "Toplam Kuvvet", unit: "t", placeholder: "25000" },
+        { key: "force", label: "Total Force", unit: "t", placeholder: "25000" },
         { key: "lines", label: "Number of Lines", unit: "", placeholder: "6" },
         { key: "wll", label: "Working Load Limit (WLL)", unit: "t", placeholder: "17" },
       ],
       calculate: (v) => {
-        if (v.lines <= 0) return [{ label: "Hata", value: "The number of lines must be positive" }];
+        if (v.lines <= 0) return [{ label: "Error", value: "The number of lines must be positive" }];
         const load = v.force / v.lines;
         const sf = load > 0 ? v.wll / load : 0;
         const durum = sf >= 2.0 ? "Safe (SF ≥ 2.0)" : "Overloaded";
@@ -273,7 +273,7 @@ export const safety: CourseTopic = {
       group: "Load Line and Freeboard",
       formula: "Actual Freeboard = Depth − Draft",
       variables: [
-        { symbol: "Derinlik", label: "Vessel depth (D)", unit: "m" },
+        { symbol: "Depth", label: "Vessel depth (D)", unit: "m" },
         { symbol: "Draft", label: "Summer draft (T)", unit: "m" },
       ],
       source: { code: "Load Line Convention (ICLL 1966)", detail: "Freeboard compliance" },
@@ -284,7 +284,7 @@ export const safety: CourseTopic = {
       ],
       calculate: (v) => {
         const fb = (v.depth - v.draft) * 1000;
-        return [{ label: "Mevcut Freeboard", value: `${fb.toFixed(0)} mm` }];
+        return [{ label: "Actual Freeboard", value: `${fb.toFixed(0)} mm` }];
       },
     },
     {
@@ -308,12 +308,12 @@ export const safety: CourseTopic = {
         const map: Record<number, { name: string; agent: string }> = {
           1: { name: "A — Solids (wood, paper, textiles)", agent: "Water, foam, ABC dry powder" },
           2: { name: "B — Flammable liquids (fuel, oil, paint)", agent: "Foam, CO₂, ABC/BC dry powder" },
-          3: { name: "C — Gaz / elektrikli ekipman", agent: "CO₂, kuru kimyevi (SU KULLANMA)" },
+          3: { name: "C — Gases / electrical equipment", agent: "CO₂, dry powder (DO NOT USE WATER)" },
           4: { name: "D — Combustible metals", agent: "Special class D powder (sand/graphite); water/CO₂ PROHIBITED" },
-          5: { name: "F/K — Cooking oil (galley)", agent: "Islak kimyevi (wet chemical); su YASAK" },
+          5: { name: "F/K — Cooking oil (galley)", agent: "Wet chemical; water PROHIBITED" },
         };
         const sel = map[Math.round(v.cls)];
-        if (!sel) return [{ label: "Hata", value: "The class must be between 1 and 5" }];
+        if (!sel) return [{ label: "Error", value: "The class must be between 1 and 5" }];
         return [
           { label: "Fire Class", value: sel.name },
           { label: "Recommended Extinguisher", value: sel.agent },

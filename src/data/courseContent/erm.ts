@@ -20,7 +20,7 @@ export const erm: CourseTopic = {
   entries: [
     {
       id: "risk-level",
-      name: "Risk Seviyesi",
+      name: "Risk Level",
       group: "Risk Assessment",
       formula: "Risk = Likelihood × Severity",
       variables: [
@@ -38,8 +38,8 @@ export const erm: CourseTopic = {
         const color = risk <= 4 ? "Green" : risk <= 9 ? "Yellow" : risk <= 15 ? "Turuncu" : "Red";
         return [
           { label: "Risk Score", value: `${risk}` },
-          { label: "Risk Seviyesi", value: level },
-          { label: "Risk Rengi", value: color },
+          { label: "Risk Level", value: level },
+          { label: "Risk Colour", value: color },
         ];
       },
     },
@@ -59,7 +59,7 @@ export const erm: CourseTopic = {
         { key: "after", label: "Risk Score After", unit: "", placeholder: "4" },
       ],
       calculate: (v) => {
-        if (v.after <= 0) return [{ label: "Hata", value: "The risk score after must be positive" }];
+        if (v.after <= 0) return [{ label: "Error", value: "The risk score after must be positive" }];
         const rrf = v.before / v.after;
         const redux = ((v.before - v.after) / v.before) * 100;
         return [
@@ -76,13 +76,13 @@ export const erm: CourseTopic = {
       formula: "LTIF = (Lost time injuries / Total hours worked) × 10⁶",
       variables: [
         { symbol: "LTI", label: "Number of lost time injuries" },
-        { symbol: "H", label: "Total hours worked", unit: "saat" },
+        { symbol: "H", label: "Total hours worked", unit: "h" },
       ],
       source: { code: "Lost Time Injury Frequency (per million hours worked)" },
       note: "The formula is derived from the relation in the calculator: LTIF = (LTI / H) × 1,000,000.",
       inputs: [
         { key: "lti", label: "Number of Lost Time Injuries", unit: "", placeholder: "2" },
-        { key: "hours", label: "Total Hours Worked", unit: "saat", placeholder: "500000" },
+        { key: "hours", label: "Total Hours Worked", unit: "h", placeholder: "500000" },
       ],
       calculate: (v) => {
         const ltif = (v.lti / v.hours) * 1e6;
@@ -99,15 +99,15 @@ export const erm: CourseTopic = {
       group: "Human Factors",
       formula: "FI = min(100, (Work / Rest) × Days × 3)",
       variables: [
-        { symbol: "Work", label: "Daily hours of work", unit: "saat" },
-        { symbol: "Dinlenme", label: "Daily hours of rest", unit: "saat" },
+        { symbol: "Work", label: "Daily hours of work", unit: "h" },
+        { symbol: "Dinlenme", label: "Daily hours of rest", unit: "h" },
         { symbol: "Days", label: "Consecutive days worked", unit: "days" },
       ],
       source: { code: "STCW / MLC rest hours: min 10 hours per 24 hours, min 77 hours per 7 days" },
       note: "The index relation is derived from the calculator; for MLC compliance the work must be ≤ 14 hours and the rest ≥ 10 hours.",
       inputs: [
-        { key: "workHours", label: "Daily Work", unit: "saat", placeholder: "14" },
-        { key: "restHours", label: "Daily Rest", unit: "saat", placeholder: "10" },
+        { key: "workHours", label: "Daily Work", unit: "h", placeholder: "14" },
+        { key: "restHours", label: "Daily Rest", unit: "h", placeholder: "10" },
         { key: "days", label: "Consecutive Days Worked", unit: "days", placeholder: "14" },
       ],
       calculate: (v) => {
@@ -117,8 +117,8 @@ export const erm: CourseTopic = {
         const mclCompliant = v.workHours <= 14 && v.restHours >= 10;
         return [
           { label: "Fatigue Index", value: `${fatigue.toFixed(0)}%` },
-          { label: "Risk Seviyesi", value: status },
-          { label: "MLC Uyumu", value: mclCompliant ? "Uygun" : "UYUMSUZ" },
+          { label: "Risk Level", value: status },
+          { label: "MLC Compliance", value: mclCompliant ? "Compliant" : "UYUMSUZ" },
         ];
       },
     },
@@ -128,19 +128,19 @@ export const erm: CourseTopic = {
       group: "Human Factors",
       formula: "η_watch = max(0, 100 − Incidents × 10 − max(0, Task load − 4) × 5)",
       variables: [
-        { symbol: "Personel", label: "Makine personeli", unit: "persons" },
-        { symbol: "Vardiya", label: "Watch duration", unit: "saat" },
-        { symbol: "Tasks", label: "Daily routine tasks", unit: "adet" },
-        { symbol: "Olay", label: "Monthly number of incidents", unit: "adet" },
+        { symbol: "Personel", label: "Engine room personnel", unit: "persons" },
+        { symbol: "Watch", label: "Watch duration", unit: "h" },
+        { symbol: "Tasks", label: "Daily routine tasks", unit: "units" },
+        { symbol: "Olay", label: "Monthly number of incidents", unit: "units" },
         { symbol: "Task load", label: "Task load per person (= Tasks / Crew)", unit: "tasks/person" },
       ],
       source: { code: "STCW watchkeeping principles (Chapter VIII) — operational effectiveness indicator" },
       note: "The effectiveness score relation is derived from the calculator; the task load per person = tasks / crew.",
       inputs: [
-        { key: "crew", label: "Makine Personeli", unit: "persons", placeholder: "8" },
-        { key: "watchHours", label: "Watch Duration", unit: "saat", placeholder: "4" },
-        { key: "tasks", label: "Daily Routine Tasks", unit: "adet", placeholder: "25" },
-        { key: "incidents", label: "Monthly Incidents", unit: "adet", placeholder: "2" },
+        { key: "crew", label: "Engine Room Personnel", unit: "persons", placeholder: "8" },
+        { key: "watchHours", label: "Watch Duration", unit: "h", placeholder: "4" },
+        { key: "tasks", label: "Daily Routine Tasks", unit: "units", placeholder: "25" },
+        { key: "incidents", label: "Monthly Incidents", unit: "units", placeholder: "2" },
       ],
       calculate: (v) => {
         const watchesPerDay = 24 / v.watchHours;
@@ -151,7 +151,7 @@ export const erm: CourseTopic = {
           { label: "Watches per Day", value: `${watchesPerDay.toFixed(0)}` },
           { label: "Crew per Watch", value: `${crewPerWatch.toFixed(1)}` },
           { label: "Task Load per Person", value: `${taskLoad.toFixed(1)} tasks/person` },
-          { label: "Etkinlik Skoru", value: `${effectiveness.toFixed(0)}%` },
+          { label: "Effectiveness Score", value: `${effectiveness.toFixed(0)}%` },
         ];
       },
     },

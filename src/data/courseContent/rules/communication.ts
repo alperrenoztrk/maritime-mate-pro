@@ -34,7 +34,7 @@ export const communicationRules: RuleGroup[] = [
           "All ships carry VHF DSC, a NAVTEX receiver (in areas where the NAVTEX service is provided), a SART, portable VHF sets and a satellite EPIRB.",
           "A1: VHF DSC may be sufficient; ships proceeding beyond A1 additionally require MF or satellite equipment.",
           "A2: VHF + MF DSC equipment.",
-          "A3: VHF + MF/HF veya VHF + MF + Inmarsat (uydu) ya kombinasyonu.",
+          "A3: VHF + MF/HF, or a combination of VHF + MF + Inmarsat (satellite).",
           "A4: VHF + MF/HF DSC (HF is mandatory as there is no satellite coverage).",
         ],
       },
@@ -43,7 +43,7 @@ export const communicationRules: RuleGroup[] = [
         content: [
           "Transmission of distress alerts ship to shore, shore to ship and ship to ship.",
           "Arama-kurtarma (SAR) koordinasyon ve sahada (on-scene) muhabere.",
-          "Yer tayini sinyalleri (homing - SART, AIS-SART).",
+          "Locating signals (homing — SART, AIS-SART).",
           "Broadcast of Maritime Safety Information (MSI) and general communications.",
           "Bridge-to-bridge communications.",
         ],

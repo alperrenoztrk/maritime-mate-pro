@@ -63,7 +63,7 @@ export const stabilityRules: RuleGroup[] = [
     ],
   },
   {
-    title: "IBC/IGC — Kimyasal ve Gaz Tankerleri",
+    title: "IBC/IGC — Chemical and Gas Tankers",
     source: { code: "IBC Code / IGC Code", url: "https://www.imo.org/en/publications" },
     rules: [
       {
@@ -142,7 +142,7 @@ export const stabilityRules: RuleGroup[] = [
     ],
   },
   {
-    title: "OSV / SPS — Offshore Supply ve Special Purpose Ships",
+    title: "OSV / SPS — Offshore Supply and Special Purpose Ships",
     source: { code: "OSV Code (2006/2020); SPS Code (2008)", url: "https://www.imo.org/en/publications" },
     rules: [
       {

@@ -8,7 +8,7 @@ import type { CourseTopic } from "./types";
  */
 export const shipSystems: CourseTopic = {
   key: "ship-systems",
-  title: "Gemi Makine Sistemleri",
+  title: "Ship Machinery Systems",
   icon: Wrench,
   accent: "from-blue-600 via-indigo-600 to-violet-600",
   group: "machine",
@@ -24,19 +24,19 @@ export const shipSystems: CourseTopic = {
       variables: [
         { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
         { symbol: "BHP", label: "Brake power", unit: "kW" },
-        { symbol: "t", label: "Duration", unit: "saat" },
-        { symbol: "FC", label: "Total consumption", unit: "ton" },
+        { symbol: "t", label: "Duration", unit: "h" },
+        { symbol: "FC", label: "Total consumption", unit: "tonnes" },
       ],
       source: { code: "Fuel management — voyage consumption balance" },
       note: "The result is in g and converted to tonnes by dividing by 10⁶.",
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
         { key: "bhp", label: "BHP", unit: "kW", placeholder: "15000" },
-        { key: "t", label: "Duration", unit: "saat", placeholder: "240" },
+        { key: "t", label: "Duration", unit: "h", placeholder: "240" },
       ],
       calculate: (v) => {
         const fc = (v.sfoc * v.bhp * v.t) / 1e6;
-        return [{ label: "Total Fuel", value: `${fc.toFixed(1)} ton` }];
+        return [{ label: "Total Fuel", value: `${fc.toFixed(1)} tonnes` }];
       },
     },
     {
@@ -45,17 +45,17 @@ export const shipSystems: CourseTopic = {
       group: "Fuel System",
       formula: "log(log(ν + 0,7)) = A − B·log(T)",
       variables: [
-        { symbol: "ν", label: "Kinematik viskozite", unit: "cSt" },
+        { symbol: "ν", label: "Kinematic viscosity", unit: "cSt" },
         { symbol: "T", label: "Absolute temperature", unit: "K" },
-        { symbol: "A", label: "Walther sabiti" },
+        { symbol: "A", label: "Walther constant" },
         { symbol: "B", label: "Walther slope constant" },
       ],
       source: { code: "Walther equation (ASTM D341) — viscosity-temperature relation" },
       note: "The temperatures are entered in °C and converted to K (T + 273.15) in the calculation.",
       inputs: [
-        { key: "v1", label: "Viskozite @T₁", unit: "cSt", placeholder: "380" },
+        { key: "v1", label: "Viscosity @T₁", unit: "cSt", placeholder: "380" },
         { key: "t1", label: "Temperature T₁", unit: "°C", placeholder: "50" },
-        { key: "v2", label: "Viskozite @T₂", unit: "cSt", placeholder: "15" },
+        { key: "v2", label: "Viscosity @T₂", unit: "cSt", placeholder: "15" },
         { key: "t2", label: "Temperature T₂", unit: "°C", placeholder: "130" },
         { key: "tx", label: "Target Temperature Tx", unit: "°C", placeholder: "100" },
       ],
@@ -70,7 +70,7 @@ export const shipSystems: CourseTopic = {
         const ltx = Math.log10(v.tx + 273.15);
         const wx = A - B * ltx;
         const vx = Math.pow(10, Math.pow(10, wx)) - 0.7;
-        return [{ label: `Viskozite @${v.tx}°C`, value: `${vx.toFixed(1)} cSt` }];
+        return [{ label: `Viscosity @${v.tx} °C`, value: `${vx.toFixed(1)} cSt` }];
       },
     },
     {
@@ -91,11 +91,11 @@ export const shipSystems: CourseTopic = {
         { key: "rho", label: "Oil Density (ρ)", unit: "kg/m³", placeholder: "900" },
       ],
       calculate: (v) => {
-        if (v.rho <= 0) return [{ label: "Hata", value: "Density must be positive" }];
+        if (v.rho <= 0) return [{ label: "Error", value: "Density must be positive" }];
         const m3h = (v.bhp * v.sloc) / (v.rho * 1000);
         return [
-          { label: "Oil Flow Rate", value: `${(m3h * 1000).toFixed(1)} L/saat` },
-          { label: "Oil Flow Rate", value: `${m3h.toFixed(3)} m³/saat` },
+          { label: "Oil Flow Rate", value: `${(m3h * 1000).toFixed(1)} L/h` },
+          { label: "Oil Flow Rate", value: `${m3h.toFixed(3)} m³/h` },
         ];
       },
     },
@@ -106,7 +106,7 @@ export const shipSystems: CourseTopic = {
       formula: "S = (μ·n / P)·(r/c)²",
       variables: [
         { symbol: "μ", label: "Oil viscosity", unit: "Pa·s" },
-        { symbol: "n", label: "Devir", unit: "rps" },
+        { symbol: "n", label: "Speed", unit: "rps" },
         { symbol: "P", label: "Unit load", unit: "MPa" },
         { symbol: "c", label: "Bearing clearance", unit: "mm" },
         { symbol: "r", label: "Shaft radius", unit: "mm" },
@@ -115,7 +115,7 @@ export const shipSystems: CourseTopic = {
       note: "The unit load is entered in MPa and converted to Pa (×10⁶) in the calculation; the film thickness is given in µm.",
       inputs: [
         { key: "mu", label: "Oil Viscosity (μ)", unit: "Pa·s", placeholder: "0.05" },
-        { key: "n", label: "Devir (n)", unit: "rps", placeholder: "5" },
+        { key: "n", label: "Speed (n)", unit: "rps", placeholder: "5" },
         { key: "p", label: "Unit Load (P)", unit: "MPa", placeholder: "3" },
         { key: "c", label: "Bearing Clearance (c)", unit: "mm", placeholder: "0.1" },
         { key: "r", label: "Shaft Radius (r)", unit: "mm", placeholder: "100" },
@@ -171,11 +171,11 @@ export const shipSystems: CourseTopic = {
       ],
       calculate: (v) => {
         const denom = v.cp * v.dt;
-        if (denom <= 0) return [{ label: "Hata", value: "cp and ΔT must be positive" }];
+        if (denom <= 0) return [{ label: "Error", value: "cp and ΔT must be positive" }];
         const mdot = v.q / denom;
         return [
           { label: "Mass Flow Rate (ṁ)", value: `${mdot.toFixed(2)} kg/s` },
-          { label: "Hacimsel Debi (su)", value: `${(mdot * 3.6).toFixed(1)} m³/saat` },
+          { label: "Volumetric Flow Rate (water)", value: `${(mdot * 3.6).toFixed(1)} m³/h` },
         ];
       },
     },
@@ -217,14 +217,14 @@ export const shipSystems: CourseTopic = {
       variables: [
         { symbol: "KT", label: "Thrust coefficient" },
         { symbol: "ρ", label: "Sea water density", unit: "kg/m³" },
-        { symbol: "n", label: "Devir", unit: "rps" },
+        { symbol: "n", label: "Speed", unit: "rps" },
         { symbol: "D", label: "Propeller diameter", unit: "m" },
       ],
       source: { code: "Propeller theory — non-dimensional thrust coefficient (KT) relation" },
       inputs: [
         { key: "rho", label: "Sea Water Density", unit: "kg/m³", placeholder: "1025" },
         { key: "d", label: "Propeller Diameter", unit: "m", placeholder: "6" },
-        { key: "n", label: "Devir", unit: "rps", placeholder: "2" },
+        { key: "n", label: "Speed", unit: "rps", placeholder: "2" },
         { key: "kt", label: "Thrust Coefficient (KT)", unit: "", placeholder: "0.18" },
       ],
       calculate: (v) => {
@@ -235,8 +235,8 @@ export const shipSystems: CourseTopic = {
     },
     {
       id: "hydraulic-cylinder-force",
-      name: "Hidrolik Silindir Kuvveti",
-      group: "Hidrolik Sistem",
+      name: "Hydraulic Cylinder Force",
+      group: "Hydraulic System",
       formula: "F = P × A = P × π·D²/4",
       variables: [
         { symbol: "P", label: "Pressure", unit: "bar" },
@@ -254,33 +254,33 @@ export const shipSystems: CourseTopic = {
         const force = v.p * 1e5 * areaM2;
         return [
           { label: "Piston Area", value: `${(areaM2 * 1e4).toFixed(2)} cm²` },
-          { label: "Silindir Kuvveti", value: `${(force / 1000).toFixed(1)} kN` },
+          { label: "Cylinder Force", value: `${(force / 1000).toFixed(1)} kN` },
         ];
       },
     },
     {
       id: "propulsive-efficiency",
-      name: "Propulsif (Pervane) Verim",
+      name: "Propulsive (Propeller) Efficiency",
       group: "Steering and Propulsion",
       formula: "ηD = η₀ · ηH · ηR",
       variables: [
-        { symbol: "ηD", label: "Toplam propulsif (quasi-propulsive) verim" },
+        { symbol: "ηD", label: "Total (quasi-propulsive) efficiency" },
         { symbol: "η₀", label: "Open water propeller efficiency" },
-        { symbol: "ηH", label: "Tekne (hull) verimi" },
+        { symbol: "ηH", label: "Hull efficiency" },
         { symbol: "ηR", label: "Relative rotative efficiency" },
       ],
       source: { code: "Propulsion theory — propulsive efficiency components" },
       note: "Typical ranges: η₀ ≈ 0.55–0.70 ; ηH ≈ 1.0–1.15 ; ηR ≈ 0.98–1.02. If required, the delivered power is obtained from the effective power (PE) as PD = PE/ηD.",
       inputs: [
         { key: "eta0", label: "Open Water Efficiency (η₀)", unit: "", placeholder: "0.65" },
-        { key: "etah", label: "Tekne Verimi (ηH)", unit: "", placeholder: "1.05" },
+        { key: "etah", label: "Hull Efficiency (ηH)", unit: "", placeholder: "1.05" },
         { key: "etar", label: "Relative Rotative Efficiency (ηR)", unit: "", placeholder: "1.0" },
         { key: "pe", label: "Effective Power (PE) — optional", unit: "kW", placeholder: "0" },
       ],
       calculate: (v) => {
         const etaD = v.eta0 * v.etah * v.etar;
         const out = [
-          { label: "Propulsif Verim (ηD)", value: `${etaD.toFixed(3)}  (${(etaD * 100).toFixed(1)} %)` },
+          { label: "Propulsive Efficiency (ηD)", value: `${etaD.toFixed(3)}  (${(etaD * 100).toFixed(1)} %)` },
         ];
         if (v.pe > 0 && etaD > 0) {
           out.push({ label: "Delivered Power (PD = PE/ηD)", value: `${(v.pe / etaD).toFixed(0)} kW` });

@@ -102,15 +102,15 @@ export const navigationRules: RuleGroup[] = [
     ],
   },
   {
-    title: "Tehlike ve Emniyet Sinyalleri",
+    title: "Distress and Safety Signals",
     source: {
       code: "SOLAS Chapter IV, GMDSS, COLREG Annex IV",
     },
     rules: [
       {
-        subtitle: "Sesli ve Telsiz Sinyalleri",
+        subtitle: "Sound and Radio Signals",
         content: [
-          "MAYDAY: Can ve gemi tehlikede — VHF Ch 16, 2182 kHz, DSC distress butonu ile iletilir.",
+          "MAYDAY: life and vessel in danger — transmitted on VHF Ch 16, 2182 kHz or with the DSC distress button.",
           "PAN PAN: an urgency situation without immediate danger — broadcast on VHF Ch 16.",
           "SECURITÉ: a navigational safety or meteorological warning — addressed to all stations.",
           "Distress signals: red flare, orange smoke, SOS (· · · — — — · · ·), continuous sounding of a whistle, flags N over C.",

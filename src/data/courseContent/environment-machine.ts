@@ -20,44 +20,44 @@ export const environmentMachine: CourseTopic = {
   entries: [
     {
       id: "co2-emission",
-      name: "CO₂ Emisyonu",
+      name: "CO₂ Emission",
       group: "Emission Calculations",
       formula: "ECO₂ = FC × Cf",
       variables: [
-        { symbol: "FC", label: "Fuel consumption", unit: "ton" },
+        { symbol: "FC", label: "Fuel consumption", unit: "tonnes" },
         { symbol: "Cf", label: "Carbon factor (HFO: 3.114, MDO: 3.206)", unit: "t CO₂/t fuel" },
       ],
       source: { code: "MARPOL Annex VI (IMO DCS / carbon factor)" },
       inputs: [
-        { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "100" },
+        { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "100" },
         { key: "cf", label: "Carbon Factor (Cf)", unit: "t CO₂/t fuel", placeholder: "3.114" },
       ],
       calculate: (v) => {
-        return [{ label: "CO₂ Emisyonu", value: `${(v.fc * v.cf).toFixed(1)} ton CO₂` }];
+        return [{ label: "CO₂ Emission", value: `${(v.fc * v.cf).toFixed(1)} tonnes CO₂` }];
       },
     },
     {
       id: "sox-emission",
-      name: "SOx Emisyonu",
+      name: "SOx Emission",
       group: "Emission Calculations",
       formula: "ESOx = 2 × (S / 100) × FC",
       variables: [
-        { symbol: "FC", label: "Fuel consumption", unit: "ton" },
+        { symbol: "FC", label: "Fuel consumption", unit: "tonnes" },
         { symbol: "S", label: "Fuel sulphur content", unit: "%, m/m" },
       ],
       source: { code: "MARPOL Annex VI Reg.14 (sulphur limit: ECA 0.10%, global 0.50%)" },
       note: "The S→SO₂ mass conversion factor is ≈ 2; the sulphur content is entered as a percentage.",
       inputs: [
-        { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "100" },
+        { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "100" },
         { key: "s", label: "Sulphur Content", unit: "%", placeholder: "0.5" },
       ],
       calculate: (v) => {
         // SO₂ = 2 × S% × FC (kütle oranı: S→SO₂ çarpan ≈ 2)
         const sox = 2 * (v.s / 100) * v.fc;
-        const limit = v.s <= 0.1 ? "ECA Uyumlu" : v.s <= 0.5 ? "Global Uyumlu" : "Uyumsuz";
+        const limit = v.s <= 0.1 ? "ECA Compliant" : v.s <= 0.5 ? "Globally Compliant" : "Uyumsuz";
         return [
-          { label: "SOx Emisyonu", value: `${sox.toFixed(2)} ton SO₂` },
-          { label: "MARPOL Durumu", value: limit },
+          { label: "SOx Emission", value: `${sox.toFixed(2)} tonnes SO₂` },
+          { label: "MARPOL Status", value: limit },
         ];
       },
     },
@@ -67,7 +67,7 @@ export const environmentMachine: CourseTopic = {
       group: "Emission Calculations",
       formula: "Tier II: 44·n⁻⁰·²³  (130 ≤ n < 2000 rpm)",
       variables: [
-        { symbol: "n", label: "Motor anma devri", unit: "rpm" },
+        { symbol: "n", label: "Rated engine speed", unit: "rpm" },
         { symbol: "Tier I", label: "n<130:17,0 · 130–2000:45·n⁻⁰·² · n≥2000:9,8", unit: "g/kWh" },
         { symbol: "Tier II", label: "n<130:14,4 · 130–2000:44·n⁻⁰·²³ · n≥2000:7,7", unit: "g/kWh" },
         { symbol: "Tier III", label: "n<130:3,4 · 130–2000:9·n⁻⁰·² · n≥2000:2,0 (ECA)", unit: "g/kWh" },
@@ -75,7 +75,7 @@ export const environmentMachine: CourseTopic = {
       source: { code: "MARPOL Annex VI Reg.13 (NOx Tier I/II/III limits)" },
       note: "NOx formation is not obtained from a closed analytical relation; compliance is determined by comparing the weighted NOx value measured over the NOx Technical Code test cycle with the speed-dependent Tier limit.",
       inputs: [
-        { key: "n", label: "Motor Anma Devri (n)", unit: "rpm", placeholder: "500" },
+        { key: "n", label: "Rated Engine Speed (n)", unit: "rpm", placeholder: "500" },
         { key: "measured", label: "Measured NOx (optional)", unit: "g/kWh", placeholder: "10" },
       ],
       calculate: (v) => {
@@ -90,7 +90,7 @@ export const environmentMachine: CourseTopic = {
           { label: "Tier III Limit (ECA)", value: `${t3.toFixed(2)} g/kWh` },
         ];
         if (v.measured > 0) {
-          out.push({ label: "Tier II Compliance", value: v.measured <= t2 ? "UYGUN" : "EXCEEDED" });
+          out.push({ label: "Tier II Compliance", value: v.measured <= t2 ? "COMPLIANT" : "EXCEEDED" });
         }
         return out;
       },
@@ -103,7 +103,7 @@ export const environmentMachine: CourseTopic = {
       variables: [
         { symbol: "Vsintine", label: "Daily bilge water generation", unit: "m³/day" },
         { symbol: "t", label: "OWS operating time", unit: "hours/day" },
-        { symbol: "QOWS", label: "Gerekli OWS debisi", unit: "m³/saat" },
+        { symbol: "QOWS", label: "Required OWS flow rate", unit: "m³/h" },
       ],
       source: { code: "MARPOL Annex I Reg.14 (bilge water oil content ≤ 15 ppm)" },
       note: "The OWS discharge oil concentration must be ≤ 15 ppm (15 ppm alarm + automatic stopping device).",
@@ -114,7 +114,7 @@ export const environmentMachine: CourseTopic = {
       calculate: (v) => {
         const requiredCapacity = v.bilge / v.hours;
         return [
-          { label: "Gerekli OWS Kapasitesi", value: `${requiredCapacity.toFixed(2)} m³/saat` },
+          { label: "Required OWS Capacity", value: `${requiredCapacity.toFixed(2)} m³/h` },
           { label: "Weekly Bilge Water", value: `${(v.bilge * 7).toFixed(1)} m³` },
         ];
       },
@@ -132,7 +132,7 @@ export const environmentMachine: CourseTopic = {
       inputs: [
         { key: "bod", label: "BOD₅ (effluent)", unit: "mg/L", placeholder: "20" },
         { key: "tss", label: "Total Suspended Solids (TSS)", unit: "mg/L", placeholder: "30" },
-        { key: "coli", label: "Termotolerant Koliform", unit: "/100 mL", placeholder: "80" },
+        { key: "coli", label: "Thermotolerant Coliform", unit: "/100 mL", placeholder: "80" },
       ],
       calculate: (v) => {
         const bodOk = v.bod <= 25;
@@ -153,22 +153,22 @@ export const environmentMachine: CourseTopic = {
       group: "Waste Management",
       formula: "t = Vbalast / Qpompa",
       variables: [
-        { symbol: "Vbalast", label: "Toplam balast hacmi", unit: "m³" },
-        { symbol: "Qpompa", label: "Balast pompa debisi", unit: "m³/saat" },
-        { symbol: "t", label: "Total treatment time", unit: "saat" },
+        { symbol: "Vbalast", label: "Total ballast volume", unit: "m³" },
+        { symbol: "Qpompa", label: "Ballast pump flow rate", unit: "m³/h" },
+        { symbol: "t", label: "Total treatment time", unit: "h" },
       ],
       source: { code: "Ballast Water Management Convention (BWMC) D-2 standard" },
       note: "The treatment system (BWTS) must have a rated capacity (TRC) at least equal to the ballast pump flow rate.",
       inputs: [
-        { key: "tankVol", label: "Toplam Balast Hacmi", unit: "m³", placeholder: "15000" },
-        { key: "pumpRate", label: "Balast Pompa Debisi", unit: "m³/saat", placeholder: "500" },
+        { key: "tankVol", label: "Total Ballast Volume", unit: "m³", placeholder: "15000" },
+        { key: "pumpRate", label: "Ballast Pump Flow Rate", unit: "m³/h", placeholder: "500" },
       ],
       calculate: (v) => {
         const treatmentRate = v.pumpRate;
         const totalTime = v.tankVol / v.pumpRate;
         return [
-          { label: "Required Treatment Capacity", value: `${treatmentRate.toFixed(0)} m³/saat` },
-          { label: "Total Time", value: `${totalTime.toFixed(1)} saat` },
+          { label: "Required Treatment Capacity", value: `${treatmentRate.toFixed(0)} m³/h` },
+          { label: "Total Time", value: `${totalTime.toFixed(1)} h` },
         ];
       },
     },

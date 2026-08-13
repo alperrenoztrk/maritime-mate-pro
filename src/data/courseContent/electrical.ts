@@ -8,7 +8,7 @@ import type { CourseTopic } from "./types";
  */
 export const electrical: CourseTopic = {
   key: "electrical",
-  title: "Gemi Elektrik Sistemleri",
+  title: "Ship Electrical Systems",
   icon: Zap,
   accent: "from-yellow-500 via-amber-500 to-orange-500",
   group: "machine",
@@ -19,10 +19,10 @@ export const electrical: CourseTopic = {
     {
       id: "ohms-law",
       name: "Ohm's Law",
-      group: "Elektrik Temel",
+      group: "Electrical Fundamentals",
       formula: "V = I × R",
       variables: [
-        { symbol: "V", label: "Gerilim", unit: "V" },
+        { symbol: "V", label: "Voltage", unit: "V" },
         { symbol: "I", label: "Current", unit: "A" },
         { symbol: "R", label: "Resistance", unit: "Ω" },
       ],
@@ -35,7 +35,7 @@ export const electrical: CourseTopic = {
       calculate: (v) => {
         const volt = v.i * v.r;
         return [
-          { label: "Gerilim (V)", value: `${volt.toFixed(2)} V` },
+          { label: "Voltage (V)", value: `${volt.toFixed(2)} V` },
           { label: "Power (P = V·I)", value: `${(volt * v.i).toFixed(1)} W` },
         ];
       },
@@ -43,17 +43,17 @@ export const electrical: CourseTopic = {
     {
       id: "three-phase-power",
       name: "Three Phase Power",
-      group: "Elektrik Temel",
+      group: "Electrical Fundamentals",
       formula: "P = √3 × VL × IL × cos(φ)",
       variables: [
-        { symbol: "VL", label: "Hat gerilimi", unit: "V" },
+        { symbol: "VL", label: "Line voltage", unit: "V" },
         { symbol: "IL", label: "Line current", unit: "A" },
         { symbol: "cos(φ)", label: "Power factor" },
       ],
       source: { code: "Three phase active power relation" },
       note: "The result is in W and converted to kW. The apparent power is S = √3 × VL × IL.",
       inputs: [
-        { key: "v", label: "Hat Gerilimi (VL)", unit: "V", placeholder: "440" },
+        { key: "v", label: "Line Voltage (VL)", unit: "V", placeholder: "440" },
         { key: "i", label: "Line Current (IL)", unit: "A", placeholder: "200" },
         { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
       ],
@@ -69,7 +69,7 @@ export const electrical: CourseTopic = {
     {
       id: "reactive-power",
       name: "Reactive Power",
-      group: "Elektrik Temel",
+      group: "Electrical Fundamentals",
       formula: "Q = P × tan(φ),  S = P / cos(φ)",
       variables: [
         { symbol: "P", label: "Active power", unit: "kW" },
@@ -98,7 +98,7 @@ export const electrical: CourseTopic = {
     {
       id: "apparent-power",
       name: "Apparent Power",
-      group: "Elektrik Temel",
+      group: "Electrical Fundamentals",
       formula: "S = √(P² + Q²) = √3 × VL × IL",
       variables: [
         { symbol: "P", label: "Active power", unit: "kW" },
@@ -123,35 +123,35 @@ export const electrical: CourseTopic = {
     {
       id: "generator-frequency",
       name: "Generator Frequency",
-      group: "Elektrik Temel",
+      group: "Electrical Fundamentals",
       formula: "f = (n × P) / 120",
       variables: [
-        { symbol: "n", label: "Devir", unit: "rpm" },
+        { symbol: "n", label: "Speed", unit: "rpm" },
         { symbol: "P", label: "Number of poles" },
-        { symbol: "f", label: "Frekans", unit: "Hz" },
+        { symbol: "f", label: "Frequency", unit: "Hz" },
       ],
       source: { code: "Synchronous generator frequency-speed relation" },
       inputs: [
-        { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "720" },
+        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "720" },
         { key: "p", label: "Number of Poles (P)", unit: "", placeholder: "10" },
       ],
       calculate: (v) => {
         const f = (v.n * v.p) / 120;
-        return [{ label: "Frekans (f)", value: `${f.toFixed(1)} Hz` }];
+        return [{ label: "Frequency (f)", value: `${f.toFixed(1)} Hz` }];
       },
     },
     {
       id: "short-circuit-current",
       name: "Short Circuit Current",
-      group: "Koruma ve Kablo",
+      group: "Protection and Cabling",
       formula: "Isc = V / (√3 × Z)",
       variables: [
-        { symbol: "V", label: "Hat gerilimi", unit: "V" },
-        { symbol: "Z", label: "Toplam empedans", unit: "Ω" },
+        { symbol: "V", label: "Line voltage", unit: "V" },
+        { symbol: "Z", label: "Total impedance", unit: "Ω" },
       ],
       source: { code: "Three phase short circuit current (impedance method)" },
       inputs: [
-        { key: "v", label: "Hat Gerilimi", unit: "V", placeholder: "440" },
+        { key: "v", label: "Line Voltage", unit: "V", placeholder: "440" },
         { key: "z", label: "Empedans (Z)", unit: "Ω", placeholder: "0.05" },
       ],
       calculate: (v) => {
@@ -162,7 +162,7 @@ export const electrical: CourseTopic = {
     {
       id: "voltage-drop",
       name: "Voltage Drop",
-      group: "Koruma ve Kablo",
+      group: "Protection and Cabling",
       formula: "ΔV = 2 × I × R × L × cos(φ)",
       variables: [
         { symbol: "I", label: "Current", unit: "A" },
@@ -190,18 +190,18 @@ export const electrical: CourseTopic = {
     {
       id: "transformer-ratio",
       name: "Transformer Turns Ratio",
-      group: "Koruma ve Kablo",
+      group: "Protection and Cabling",
       formula: "a = V₁ / V₂ = I₂ / I₁",
       variables: [
-        { symbol: "V₁", label: "Primer gerilim", unit: "V" },
-        { symbol: "V₂", label: "Sekonder gerilim", unit: "V" },
+        { symbol: "V₁", label: "Primary voltage", unit: "V" },
+        { symbol: "V₂", label: "Secondary voltage", unit: "V" },
         { symbol: "I₁", label: "Primary current", unit: "A" },
         { symbol: "I₂", label: "Secondary current", unit: "A" },
       ],
       source: { code: "Ideal transformer turns ratio" },
       inputs: [
-        { key: "v1", label: "Primer Gerilim (V₁)", unit: "V", placeholder: "440" },
-        { key: "v2", label: "Sekonder Gerilim (V₂)", unit: "V", placeholder: "220" },
+        { key: "v1", label: "Primary Voltage (V₁)", unit: "V", placeholder: "440" },
+        { key: "v2", label: "Secondary Voltage (V₂)", unit: "V", placeholder: "220" },
         { key: "i1", label: "Primary Current (I₁)", unit: "A", placeholder: "50" },
       ],
       calculate: (v) => {
@@ -216,22 +216,22 @@ export const electrical: CourseTopic = {
     {
       id: "insulation-resistance",
       name: "Insulation Resistance",
-      group: "Koruma ve Kablo",
+      group: "Protection and Cabling",
       formula: "R_ins = V_test / I_leakage",
       variables: [
-        { symbol: "Vtest", label: "Test gerilimi", unit: "V" },
+        { symbol: "Vtest", label: "Test voltage", unit: "V" },
         { symbol: "I_leakage", label: "Leakage current", unit: "mA" },
         { symbol: "Riz", label: "Insulation resistance", unit: "MΩ" },
       ],
       source: { code: "Insulation resistance measurement (SOLAS/IEC 60092, min 1 MΩ)" },
       note: "The leakage current is entered in mA and the test voltage in V; R = V/I (kΩ) is divided by 1000 to give MΩ.",
       inputs: [
-        { key: "vtest", label: "Test Gerilimi", unit: "V", placeholder: "500" },
+        { key: "vtest", label: "Test Voltage", unit: "V", placeholder: "500" },
         { key: "ileak", label: "Leakage Current", unit: "mA", placeholder: "0.5" },
       ],
       calculate: (v) => {
         const ir = v.vtest / v.ileak; // kΩ → MΩ
-        const status = ir >= 1000 ? "Uygun (≥1 MΩ)" : ir >= 100 ? "Dikkat (100kΩ–1MΩ)" : "Tehlikeli (<100kΩ)";
+        const status = ir >= 1000 ? "Compliant (≥1 MΩ)" : ir >= 100 ? "Caution (100 kΩ–1 MΩ)" : "Tehlikeli (<100kΩ)";
         return [
           { label: "Insulation Resistance", value: `${(ir / 1000).toFixed(2)} MΩ` },
           { label: "Durum", value: status },

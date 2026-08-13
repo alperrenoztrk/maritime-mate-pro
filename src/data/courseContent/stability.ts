@@ -23,7 +23,7 @@ export const stability: CourseTopic = {
     {
       id: "gm",
       name: "Metacentric Height (GM)",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "GM = KM − KG",
       variables: [
         { symbol: "KM", label: "Height from keel to metacentre", unit: "m" },
@@ -36,7 +36,7 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const gm = v.km - v.kg;
-        const durum = gm > 0.15 ? "Yeterli (≥0,15 m)" : gm > 0 ? "Low" : "NEGATIVE — unstable";
+        const durum = gm > 0.15 ? "Adequate (≥0.15 m)" : gm > 0 ? "Low" : "NEGATIVE — unstable";
         return [
           { label: "GM", value: `${gm.toFixed(3)} m` },
           { label: "Durum", value: durum },
@@ -46,7 +46,7 @@ export const stability: CourseTopic = {
     {
       id: "gz-small",
       name: "Righting Lever (Small Angle)",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "GZ = GM · sin θ",
       variables: [
         { symbol: "GM", label: "Metacentric height", unit: "m" },
@@ -65,7 +65,7 @@ export const stability: CourseTopic = {
     {
       id: "gz-kn",
       name: "Righting Lever (KN Curves)",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "GZ = KN − KG · sin θ",
       variables: [
         { symbol: "KN", label: "Cross curve value", unit: "m" },
@@ -86,18 +86,18 @@ export const stability: CourseTopic = {
     {
       id: "gm-shift",
       name: "GM Change from Weight Shift",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "ΔGM = (w × d) / Δ",
       variables: [
         { symbol: "w", label: "Shifted weight", unit: "t" },
         { symbol: "d", label: "Vertical shift distance", unit: "m" },
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Weight movement effect" },
       inputs: [
         { key: "w", label: "Weight (w)", unit: "t", placeholder: "50" },
-        { key: "d", label: "Kayma Mesafesi (d)", unit: "m", placeholder: "4" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "d", label: "Shift Distance (d)", unit: "m", placeholder: "4" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
         const dgm = HydrostaticCalculations.calculateGG1(v.w, v.d, v.disp);
@@ -107,19 +107,19 @@ export const stability: CourseTopic = {
     {
       id: "list-shift",
       name: "Heel Angle from Transverse Shift",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "tan θ = (w × y) / (Δ × GM)",
       variables: [
         { symbol: "w", label: "Shifted weight", unit: "t" },
-        { symbol: "y", label: "Enine kayma mesafesi", unit: "m" },
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "y", label: "Transverse shift distance", unit: "m" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GM", label: "Metacentric height", unit: "m" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Fixed weight heel relation" },
       inputs: [
         { key: "w", label: "Weight (w)", unit: "t", placeholder: "80" },
-        { key: "y", label: "Enine Mesafe (y)", unit: "m", placeholder: "6" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "y", label: "Transverse Distance (y)", unit: "m", placeholder: "6" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "gm", label: "GM", unit: "m", placeholder: "1.2" },
       ],
       calculate: (v) => {
@@ -130,20 +130,20 @@ export const stability: CourseTopic = {
     {
       id: "crane-gm",
       name: "Vertical KG Change with Derrick/Crane",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "GG₁ = w × (h_head − h_load) / Δ",
       variables: [
         { symbol: "w", label: "Lifted load", unit: "t" },
         { symbol: "hcunda", label: "Davit/derrick head height", unit: "m" },
         { symbol: "h_load", label: "Initial height of the load", unit: "m" },
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Load lifting effect (KG rise)" },
       inputs: [
         { key: "w", label: "Load (w)", unit: "t", placeholder: "20" },
         { key: "hhook", label: "Derrick Head Height", unit: "m", placeholder: "18" },
         { key: "hload", label: "Load Height", unit: "m", placeholder: "2" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
         const dkg = HydrostaticCalculations.calculateCraneDeltaKG(v.w, v.hhook, v.hload, v.disp);
@@ -153,7 +153,7 @@ export const stability: CourseTopic = {
     {
       id: "angle-of-loll",
       name: "Angle of Loll",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "φloll = arccos(KG / KM)",
       variables: [
         { symbol: "KG", label: "Height of centre of gravity", unit: "m" },
@@ -174,19 +174,19 @@ export const stability: CourseTopic = {
     {
       id: "trim-change",
       name: "Trim Change",
-      group: "Boyuna Denge",
-      formula: "ΔTrim (cm) = Toplam Moment / MCT",
+      group: "Longitudinal Equilibrium",
+      formula: "ΔTrim (cm) = Total Moment / MCT",
       variables: [
         { symbol: "Moment", label: "Longitudinal moment causing trim", unit: "t·m" },
         { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
       ],
       source: { code: "Hydrostatics — trim calculation" },
       inputs: [
-        { key: "moment", label: "Trim Momenti", unit: "t·m", placeholder: "1500" },
+        { key: "moment", label: "Trimming Moment", unit: "t·m", placeholder: "1500" },
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
       ],
       calculate: (v) => {
-        if (v.mct <= 0) return [{ label: "Hata", value: "MCT must be positive" }];
+        if (v.mct <= 0) return [{ label: "Error", value: "MCT must be positive" }];
         const trimCm = v.moment / v.mct;
         return [
           { label: "Trim Change", value: `${trimCm.toFixed(1)} cm` },
@@ -197,7 +197,7 @@ export const stability: CourseTopic = {
     {
       id: "parallel-sinkage",
       name: "Parallel Sinkage/Rise",
-      group: "Boyuna Denge",
+      group: "Longitudinal Equilibrium",
       formula: "Batma (cm) = w / TPC",
       variables: [
         { symbol: "w", label: "Weight loaded/discharged", unit: "t" },
@@ -209,30 +209,30 @@ export const stability: CourseTopic = {
         { key: "tpc", label: "TPC", unit: "t/cm", placeholder: "25" },
       ],
       calculate: (v) => {
-        if (v.tpc <= 0) return [{ label: "Hata", value: "TPC must be positive" }];
+        if (v.tpc <= 0) return [{ label: "Error", value: "TPC must be positive" }];
         const cm = v.w / v.tpc;
-        return [{ label: "Paralel Batma", value: `${cm.toFixed(1)} cm` }];
+        return [{ label: "Parallel Sinkage", value: `${cm.toFixed(1)} cm` }];
       },
     },
     {
       id: "dock-reaction",
-      name: "Havuzlamada Tekne Tepki Kuvveti (P)",
-      group: "Boyuna Denge",
+      name: "Docking Reaction Force on the Hull (P)",
+      group: "Longitudinal Equilibrium",
       formula: "P = MCT × Trim(cm) / l",
       variables: [
-        { symbol: "MCT", label: "1 cm trim momenti", unit: "t·m/cm" },
+        { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
         { symbol: "Trim", label: "Initial trim", unit: "cm" },
         { symbol: "l", label: "Distance between LCF and the aft perpendicular", unit: "m" },
       ],
-      source: { code: "Hidrostatik — havuzlama (docking) analizi" },
+      source: { code: "Hydrostatics — docking analysis" },
       inputs: [
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
         { key: "trim", label: "Trim", unit: "cm", placeholder: "40" },
-        { key: "l", label: "Mesafe (l)", unit: "m", placeholder: "60" },
+        { key: "l", label: "Distance (l)", unit: "m", placeholder: "60" },
       ],
       calculate: (v) => {
         const p = HydrostaticCalculations.calculateDockReactionP(v.mct, v.trim, v.l);
-        return [{ label: "Tepki Kuvveti (P)", value: `${p.toFixed(1)} t` }];
+        return [{ label: "Reaction Force (P)", value: `${p.toFixed(1)} t` }];
       },
     },
     {
@@ -241,17 +241,17 @@ export const stability: CourseTopic = {
       group: "Free Surface and Hydrostatics",
       formula: "FSM = (L × B³ / 12) × ρ ;  ΔGM = FSM / Δ",
       variables: [
-        { symbol: "L", label: "Tank boyu", unit: "m" },
-        { symbol: "B", label: "Tank eni", unit: "m" },
+        { symbol: "L", label: "Tank length", unit: "m" },
+        { symbol: "B", label: "Tank breadth", unit: "m" },
         { symbol: "ρ", label: "Liquid density", unit: "t/m³" },
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Free surface correction (FSC)" },
       inputs: [
-        { key: "l", label: "Tank Boyu (L)", unit: "m", placeholder: "12" },
-        { key: "b", label: "Tank Eni (B)", unit: "m", placeholder: "10" },
+        { key: "l", label: "Tank Length (L)", unit: "m", placeholder: "12" },
+        { key: "b", label: "Tank Breadth (B)", unit: "m", placeholder: "10" },
         { key: "rho", label: "Liquid Density (ρ)", unit: "t/m³", placeholder: "1.0" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
         const fsm = HydrostaticCalculations.calculateFSMRectangularTank(v.l, v.b, v.rho);
@@ -264,7 +264,7 @@ export const stability: CourseTopic = {
     },
     {
       id: "displacement",
-      name: "Deplasman",
+      name: "Displacement",
       group: "Free Surface and Hydrostatics",
       formula: "Δ = ρ × ∇",
       variables: [
@@ -278,7 +278,7 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const disp = v.rho * v.vol;
-        return [{ label: "Deplasman (Δ)", value: `${disp.toFixed(0)} t` }];
+        return [{ label: "Displacement (Δ)", value: `${disp.toFixed(0)} t` }];
       },
     },
     {
@@ -294,14 +294,14 @@ export const stability: CourseTopic = {
       ],
       source: { code: "Hull form — block coefficient definition" },
       inputs: [
-        { key: "vol", label: "Hacim (∇)", unit: "m³", placeholder: "11700" },
+        { key: "vol", label: "Volume (∇)", unit: "m³", placeholder: "11700" },
         { key: "l", label: "Boy (L)", unit: "m", placeholder: "150" },
         { key: "b", label: "En (B)", unit: "m", placeholder: "22" },
         { key: "t", label: "Draft (T)", unit: "m", placeholder: "8" },
       ],
       calculate: (v) => {
         const denom = v.l * v.b * v.t;
-        if (denom <= 0) return [{ label: "Hata", value: "L, B and T must be positive" }];
+        if (denom <= 0) return [{ label: "Error", value: "L, B and T must be positive" }];
         const cb = v.vol / denom;
         return [{ label: "Block Coefficient (Cb)", value: cb.toFixed(3) }];
       },
@@ -312,24 +312,24 @@ export const stability: CourseTopic = {
       group: "Free Surface and Hydrostatics",
       formula: "FWA (mm) = Δ / (4 × TPC)",
       variables: [
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "TPC", label: "Tonnes per centimetre (salt water)", unit: "t/cm" },
       ],
-      source: { code: "Load Line / hidrostatik — FWA" },
+      source: { code: "Load Line / hydrostatics — FWA" },
       note: "The result is in mm (classic FWA relation).",
       inputs: [
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "tpc", label: "TPC", unit: "t/cm", placeholder: "25" },
       ],
       calculate: (v) => {
-        if (v.tpc <= 0) return [{ label: "Hata", value: "TPC must be positive" }];
+        if (v.tpc <= 0) return [{ label: "Error", value: "TPC must be positive" }];
         const fwa = v.disp / (4 * v.tpc);
         return [{ label: "FWA", value: `${fwa.toFixed(1)} mm` }];
       },
     },
     {
       id: "roll-period",
-      name: "Yalpa Periyodu",
+      name: "Rolling Period",
       group: "Free Surface and Hydrostatics",
       formula: "T = C × B / √GM",
       variables: [
@@ -337,7 +337,7 @@ export const stability: CourseTopic = {
         { symbol: "B", label: "Breadth", unit: "m" },
         { symbol: "GM", label: "Metacentric height", unit: "m" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Hava kriteri — yalpa periyodu" },
+      source: { code: "IMO IS Code 2008", detail: "Weather criterion — rolling period" },
       inputs: [
         { key: "cb", label: "Block Coefficient (Cb)", unit: "", placeholder: "0.7" },
         { key: "b", label: "Breadth (B)", unit: "m", placeholder: "22" },
@@ -345,8 +345,8 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const t = HydrostaticCalculations.calculateRollPeriodSimplified(v.cb, v.b, v.gm);
-        if (t <= 0) return [{ label: "Hata", value: "GM and B must be positive" }];
-        return [{ label: "Yalpa Periyodu (T)", value: `${t.toFixed(1)} s` }];
+        if (t <= 0) return [{ label: "Error", value: "GM and B must be positive" }];
+        return [{ label: "Rolling Period (T)", value: `${t.toFixed(1)} s` }];
       },
     },
     {
@@ -357,13 +357,13 @@ export const stability: CourseTopic = {
       variables: [
         { symbol: "dF", label: "Forward draft", unit: "m" },
         { symbol: "dA", label: "Aft draft", unit: "m" },
-        { symbol: "dM", label: "Vasat draft", unit: "m" },
+        { symbol: "dM", label: "Midships draft", unit: "m" },
       ],
       source: { code: "UN ECE Draft Survey Code", detail: "Mean of means (quarter mean)" },
       inputs: [
         { key: "df", label: "Forward Draft (dF)", unit: "m", placeholder: "7.80" },
         { key: "da", label: "Aft Draft (dA)", unit: "m", placeholder: "8.20" },
-        { key: "dm", label: "Vasat Draft (dM)", unit: "m", placeholder: "8.00" },
+        { key: "dm", label: "Midships Draft (dM)", unit: "m", placeholder: "8.00" },
       ],
       calculate: (v) => {
         const mmm = (v.df + v.da + 6 * v.dm) / 8;
@@ -382,7 +382,7 @@ export const stability: CourseTopic = {
       source: { code: "UN ECE Draft Survey Code", detail: "Density correction" },
       inputs: [
         { key: "rho", label: "Water Density (ρ)", unit: "t/m³", placeholder: "1.012" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
         const corr = (v.rho / 1.025 - 1) * v.disp;
@@ -392,24 +392,24 @@ export const stability: CourseTopic = {
     {
       id: "grain-heel",
       name: "Grain Heeling Angle",
-      group: "SOLAS Kriterleri",
+      group: "SOLAS Criteria",
       formula: "θ = (57.3 × GHM) / (Δ × GM)",
       variables: [
         { symbol: "GHM", label: "Grain heeling moment", unit: "t·m" },
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GM", label: "Corrected GM", unit: "m" },
       ],
       source: { code: "International Grain Code", detail: "SOLAS Chapter VI" },
       note: "Approximate heeling angle; the Code limit is ≤ 12°.",
       inputs: [
         { key: "ghm", label: "Grain Heeling Moment (GHM)", unit: "t·m", placeholder: "800" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "gm", label: "GM", unit: "m", placeholder: "1.5" },
       ],
       calculate: (v) => {
-        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Hata", value: "Δ and GM must be positive" }];
+        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Error", value: "Δ and GM must be positive" }];
         const theta = (57.3 * v.ghm) / (v.disp * v.gm);
-        const durum = theta <= 12 ? "Uygun (≤12°)" : "Limit exceeded (>12°)";
+        const durum = theta <= 12 ? "Compliant (≤12°)" : "Limit exceeded (>12°)";
         return [
           { label: "Heeling Angle (θ)", value: `${theta.toFixed(2)} °` },
           { label: "Durum", value: durum },
@@ -419,7 +419,7 @@ export const stability: CourseTopic = {
     {
       id: "simpson-area",
       name: "Area by Simpson's Rule",
-      group: "SOLAS Kriterleri",
+      group: "SOLAS Criteria",
       formula: "A = (h/3) · (y₀ + 4y₁ + 2y₂ + … + yₙ)",
       variables: [
         { symbol: "h", label: "Equal spacing between ordinates" },
@@ -429,16 +429,16 @@ export const stability: CourseTopic = {
       note: "Simpson's first rule with 5 equally spaced ordinates (y₀…y₄): A = (h/3)·(y₀ + 4y₁ + 2y₂ + 4y₃ + y₄).",
       inputs: [
         { key: "h", label: "Spacing (h)", unit: "", placeholder: "0.2" },
-        { key: "y0", label: "Ordinat y₀", unit: "", placeholder: "0" },
-        { key: "y1", label: "Ordinat y₁", unit: "", placeholder: "0.15" },
-        { key: "y2", label: "Ordinat y₂", unit: "", placeholder: "0.28" },
-        { key: "y3", label: "Ordinat y₃", unit: "", placeholder: "0.33" },
-        { key: "y4", label: "Ordinat y₄", unit: "", placeholder: "0.30" },
+        { key: "y0", label: "Ordinate y₀", unit: "", placeholder: "0" },
+        { key: "y1", label: "Ordinate y₁", unit: "", placeholder: "0.15" },
+        { key: "y2", label: "Ordinate y₂", unit: "", placeholder: "0.28" },
+        { key: "y3", label: "Ordinate y₃", unit: "", placeholder: "0.33" },
+        { key: "y4", label: "Ordinate y₄", unit: "", placeholder: "0.30" },
       ],
       calculate: (v) => {
-        if (v.h <= 0) return [{ label: "Hata", value: "Spacing (h) must be positive" }];
+        if (v.h <= 0) return [{ label: "Error", value: "Spacing (h) must be positive" }];
         const area = (v.h / 3) * (v.y0 + 4 * v.y1 + 2 * v.y2 + 4 * v.y3 + v.y4);
-        return [{ label: "Alan (A)", value: area.toFixed(4) }];
+        return [{ label: "Area (A)", value: area.toFixed(4) }];
       },
     },
     // ---- Konu anlatımından eklenen hesaplayıcılar ----
@@ -503,27 +503,27 @@ export const stability: CourseTopic = {
     },
     {
       id: "volume-displacement",
-      name: "Hacimsel Deplasman ve Sephiye Kuvveti",
+      name: "Volumetric Displacement and Buoyancy Force",
       group: "Free Surface and Hydrostatics",
       formula: "∇ = Δ / ρ ;  Y = ρ × g × ∇",
       variables: [
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "ρ", label: "Water density", unit: "t/m³" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9.81 m/s²" },
       ],
       source: { code: "Archimedes' principle" },
-      note: "Sephiye kuvveti kN cinsinden verilir (Y = ρ·g·∇, g = 9.81 m/s²).",
+      note: "The buoyancy force is given in kN (Y = ρ·g·∇, g = 9.81 m/s²).",
       inputs: [
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "rho", label: "Water Density (ρ)", unit: "t/m³", placeholder: "1.025" },
       ],
       calculate: (v) => {
-        if (v.rho <= 0) return [{ label: "Hata", value: "Density must be positive" }];
+        if (v.rho <= 0) return [{ label: "Error", value: "Density must be positive" }];
         const vol = v.disp / v.rho;
         const buoyancy = v.rho * 9.81 * vol; // t·m/s² = kN
         return [
           { label: "Underwater Volume (∇)", value: `${vol.toFixed(1)} m³` },
-          { label: "Sephiye Kuvveti (Y)", value: `${buoyancy.toFixed(0)} kN` },
+          { label: "Buoyancy Force (Y)", value: `${buoyancy.toFixed(0)} kN` },
         ];
       },
     },
@@ -533,8 +533,8 @@ export const stability: CourseTopic = {
       group: "Free Surface and Hydrostatics",
       formula: "Δfresh = Δsea × (ρsea / ρfresh)",
       variables: [
-        { symbol: "Δdeniz", label: "Salt water displacement", unit: "t" },
-        { symbol: "ρdeniz", label: "Sea water density", unit: "t/m³" },
+        { symbol: "Δ_sea", label: "Salt water displacement", unit: "t" },
+        { symbol: "ρ_sea", label: "Sea water density", unit: "t/m³" },
         { symbol: "ρfresh", label: "Fresh water density", unit: "t/m³" },
       ],
       source: { code: "Ship hydrostatics — density conversion" },
@@ -544,7 +544,7 @@ export const stability: CourseTopic = {
         { key: "rhofresh", label: "Fresh Water Density", unit: "t/m³", placeholder: "1.000" },
       ],
       calculate: (v) => {
-        if (v.rhofresh <= 0) return [{ label: "Hata", value: "Fresh water density must be positive" }];
+        if (v.rhofresh <= 0) return [{ label: "Error", value: "Fresh water density must be positive" }];
         const disp = v.disp * (v.rhosea / v.rhofresh);
         return [{ label: "Fresh Water Displacement", value: `${disp.toFixed(0)} t` }];
       },
@@ -552,15 +552,15 @@ export const stability: CourseTopic = {
     {
       id: "righting-moment",
       name: "Righting Moment",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "MR = Δ × GZ",
       variables: [
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GZ", label: "Righting lever", unit: "m" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Righting moment" },
       inputs: [
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "gz", label: "Righting Lever (GZ)", unit: "m", placeholder: "0.35" },
       ],
       calculate: (v) => {
@@ -571,7 +571,7 @@ export const stability: CourseTopic = {
     {
       id: "wall-sided-gz",
       name: "Large Angle GZ (Wall-sided Formula)",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "GZ = sin θ × (GM + ½ × BM × tan²θ)",
       variables: [
         { symbol: "GM", label: "Metacentric height", unit: "m" },
@@ -594,7 +594,7 @@ export const stability: CourseTopic = {
     {
       id: "new-kg-loading",
       name: "New KG After Loading",
-      group: "Enine Denge",
+      group: "Transverse Equilibrium",
       formula: "KG₁ = (Δ₀ × KG₀ + w × kg) / (Δ₀ + w)",
       variables: [
         { symbol: "Δ₀", label: "Initial displacement", unit: "t" },
@@ -612,18 +612,18 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const newDisp = v.disp0 + v.w;
-        if (newDisp <= 0) return [{ label: "Hata", value: "The new displacement must be positive" }];
+        if (newDisp <= 0) return [{ label: "Error", value: "The new displacement must be positive" }];
         const newKg = (v.disp0 * v.kg0 + v.w * v.kg) / newDisp;
         return [
-          { label: "Yeni Deplasman (Δ₁)", value: `${newDisp.toFixed(0)} t` },
-          { label: "Yeni KG (KG₁)", value: `${newKg.toFixed(3)} m` },
+          { label: "New Displacement (Δ₁)", value: `${newDisp.toFixed(0)} t` },
+          { label: "New KG (KG₁)", value: `${newKg.toFixed(3)} m` },
         ];
       },
     },
     {
       id: "gml",
       name: "Longitudinal Metacentric Height (GML)",
-      group: "Boyuna Denge",
+      group: "Longitudinal Equilibrium",
       formula: "GML = KML − KG",
       variables: [
         { symbol: "KML", label: "Height from keel to the longitudinal metacentre", unit: "m" },
@@ -642,7 +642,7 @@ export const stability: CourseTopic = {
     {
       id: "bml",
       name: "Longitudinal Metacentric Radius (BML)",
-      group: "Boyuna Denge",
+      group: "Longitudinal Equilibrium",
       formula: "BML = IL / ∇",
       variables: [
         { symbol: "IL", label: "Longitudinal moment of inertia of the waterplane area", unit: "m⁴" },
@@ -650,62 +650,62 @@ export const stability: CourseTopic = {
       ],
       source: { code: "Ship hydrostatics — longitudinal metacentric radius" },
       inputs: [
-        { key: "il", label: "Boyuna Atalet Momenti (IL)", unit: "m⁴", placeholder: "2100000" },
+        { key: "il", label: "Longitudinal Moment of Inertia (IL)", unit: "m⁴", placeholder: "2100000" },
         { key: "vol", label: "Underwater Volume (∇)", unit: "m³", placeholder: "11700" },
       ],
       calculate: (v) => {
-        if (v.vol <= 0) return [{ label: "Hata", value: "The volume must be positive" }];
+        if (v.vol <= 0) return [{ label: "Error", value: "The volume must be positive" }];
         const bml = v.il / v.vol;
         return [{ label: "BML", value: `${bml.toFixed(2)} m` }];
       },
     },
     {
       id: "mct",
-      name: "1 cm Trim Momenti (MCT1cm)",
-      group: "Boyuna Denge",
+      name: "Moment to Change Trim 1 cm (MCT1cm)",
+      group: "Longitudinal Equilibrium",
       formula: "MCT1cm = (Δ × GML) / (100 × L)",
       variables: [
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GML", label: "Longitudinal metacentric height", unit: "m" },
-        { symbol: "L", label: "Tekne boyu (LBP)", unit: "m" },
+        { symbol: "L", label: "Hull length (LBP)", unit: "m" },
       ],
       source: { code: "Ship hydrostatics — MCT1cm" },
       inputs: [
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "gml", label: "GML", unit: "m", placeholder: "172" },
-        { key: "l", label: "Tekne Boyu (L)", unit: "m", placeholder: "150" },
+        { key: "l", label: "Hull Length (L)", unit: "m", placeholder: "150" },
       ],
       calculate: (v) => {
-        if (v.l <= 0) return [{ label: "Hata", value: "The length must be positive" }];
+        if (v.l <= 0) return [{ label: "Error", value: "The length must be positive" }];
         const mct = (v.disp * v.gml) / (100 * v.l);
         return [{ label: "MCT1cm", value: `${mct.toFixed(1)} t·m/cm` }];
       },
     },
     {
       id: "trim-from-lcg",
-      name: "LCG/LCB'den Trim",
-      group: "Boyuna Denge",
+      name: "Trim from LCG/LCB",
+      group: "Longitudinal Equilibrium",
       formula: "Trimming moment = Δ × (LCG − LCB) ;  Trim = Moment / MCT1cm",
       variables: [
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "LCG", label: "Longitudinal centre of gravity (from aft)", unit: "m" },
         { symbol: "LCB", label: "Longitudinal centre of buoyancy (from aft)", unit: "m" },
-        { symbol: "MCT", label: "1 cm trim momenti", unit: "t·m/cm" },
+        { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
       ],
       source: { code: "Ship hydrostatics — trim calculation" },
       note: "A positive result means trim by the head, a negative result means trim by the stern.",
       inputs: [
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "lcg", label: "LCG", unit: "m", placeholder: "75.5" },
         { key: "lcb", label: "LCB", unit: "m", placeholder: "75.0" },
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
       ],
       calculate: (v) => {
-        if (v.mct <= 0) return [{ label: "Hata", value: "MCT must be positive" }];
+        if (v.mct <= 0) return [{ label: "Error", value: "MCT must be positive" }];
         const moment = v.disp * (v.lcg - v.lcb);
         const trimCm = moment / v.mct;
         return [
-          { label: "Trim Momenti", value: `${moment.toFixed(0)} t·m` },
+          { label: "Trimming Moment", value: `${moment.toFixed(0)} t·m` },
           { label: "Trim", value: `${trimCm.toFixed(1)} cm (${(trimCm / 100).toFixed(3)} m)` },
         ];
       },
@@ -713,13 +713,13 @@ export const stability: CourseTopic = {
     {
       id: "trim-distribution",
       name: "Trim Distribution (Forward/Aft Draft Change)",
-      group: "Boyuna Denge",
+      group: "Longitudinal Equilibrium",
       formula: "ΔTF = ΔTrim × da/L ;  ΔTA = ΔTrim × df/L",
       variables: [
         { symbol: "ΔTrim", label: "Total trim change", unit: "cm" },
         { symbol: "df", label: "Distance from the LCF to the forward perpendicular", unit: "m" },
         { symbol: "da", label: "Distance from the LCF to the aft perpendicular", unit: "m" },
-        { symbol: "L", label: "Tekne boyu (LBP)", unit: "m" },
+        { symbol: "L", label: "Hull length (LBP)", unit: "m" },
       ],
       source: { code: "Ship hydrostatics — trim distribution (LCF)" },
       note: "The trim change is distributed to the forward/aft drafts about the LCF.",
@@ -727,10 +727,10 @@ export const stability: CourseTopic = {
         { key: "dtrim", label: "Trim Change (ΔTrim)", unit: "cm", placeholder: "30" },
         { key: "df", label: "LCF–Forward Distance (df)", unit: "m", placeholder: "72" },
         { key: "da", label: "LCF–Aft Distance (da)", unit: "m", placeholder: "78" },
-        { key: "l", label: "Tekne Boyu (L)", unit: "m", placeholder: "150" },
+        { key: "l", label: "Hull Length (L)", unit: "m", placeholder: "150" },
       ],
       calculate: (v) => {
-        if (v.l <= 0) return [{ label: "Hata", value: "The length must be positive" }];
+        if (v.l <= 0) return [{ label: "Error", value: "The length must be positive" }];
         const dtf = (v.dtrim * v.da) / v.l;
         const dta = (v.dtrim * v.df) / v.l;
         return [
@@ -742,44 +742,44 @@ export const stability: CourseTopic = {
     {
       id: "weight-for-trim",
       name: "Weight Required for a Desired Trim",
-      group: "Boyuna Denge",
+      group: "Longitudinal Equilibrium",
       formula: "w = (ΔTrim × MCT1cm) / d",
       variables: [
         { symbol: "ΔTrim", label: "Desired trim change", unit: "cm" },
-        { symbol: "MCT", label: "1 cm trim momenti", unit: "t·m/cm" },
+        { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
         { symbol: "d", label: "Longitudinal distance from the weight to the LCF", unit: "m" },
       ],
       source: { code: "Ship hydrostatics — weight shift for trim" },
       inputs: [
         { key: "dtrim", label: "Desired Trim (ΔTrim)", unit: "cm", placeholder: "20" },
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
-        { key: "d", label: "Mesafe (d)", unit: "m", placeholder: "40" },
+        { key: "d", label: "Distance (d)", unit: "m", placeholder: "40" },
       ],
       calculate: (v) => {
-        if (v.d <= 0) return [{ label: "Hata", value: "The distance must be positive" }];
+        if (v.d <= 0) return [{ label: "Error", value: "The distance must be positive" }];
         const w = (v.dtrim * v.mct) / v.d;
         return [{ label: "Weight to Shift/Load (w)", value: `${w.toFixed(1)} t` }];
       },
     },
     {
       id: "gm-from-roll",
-      name: "Yalpa Periyodundan GM",
+      name: "GM from the Rolling Period",
       group: "Free Surface and Hydrostatics",
       formula: "GM ≈ (C × B / T)²",
       variables: [
         { symbol: "C", label: "Coefficient (≈0.7–0.8)" },
         { symbol: "B", label: "Breadth", unit: "m" },
-        { symbol: "T", label: "Yalpa periyodu", unit: "s" },
+        { symbol: "T", label: "Rolling period", unit: "s" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Inverse of the rolling period relation" },
       note: "Approximate GM estimate from the observed rolling period (rolling test).",
       inputs: [
         { key: "c", label: "Coefficient (C)", unit: "", placeholder: "0.7" },
         { key: "b", label: "Breadth (B)", unit: "m", placeholder: "22" },
-        { key: "t", label: "Yalpa Periyodu (T)", unit: "s", placeholder: "14" },
+        { key: "t", label: "Rolling Period (T)", unit: "s", placeholder: "14" },
       ],
       calculate: (v) => {
-        if (v.t <= 0) return [{ label: "Hata", value: "The period must be positive" }];
+        if (v.t <= 0) return [{ label: "Error", value: "The period must be positive" }];
         const gm = ((v.c * v.b) / v.t) ** 2;
         return [{ label: "Approximate GM", value: `${gm.toFixed(3)} m` }];
       },
@@ -796,10 +796,10 @@ export const stability: CourseTopic = {
       source: { code: "Roll damping — logarithmic decrement" },
       inputs: [
         { key: "a1", label: "First Amplitude (θ₁)", unit: "°", placeholder: "12" },
-        { key: "a2", label: "Sonraki Genlik (θ₂)", unit: "°", placeholder: "9" },
+        { key: "a2", label: "Next Amplitude (θ₂)", unit: "°", placeholder: "9" },
       ],
       calculate: (v) => {
-        if (v.a1 <= 0 || v.a2 <= 0) return [{ label: "Hata", value: "The amplitudes must be positive" }];
+        if (v.a1 <= 0 || v.a2 <= 0) return [{ label: "Error", value: "The amplitudes must be positive" }];
         const delta = Math.log(v.a1 / v.a2);
         const zeta = delta / (2 * Math.PI);
         return [
@@ -811,25 +811,25 @@ export const stability: CourseTopic = {
     {
       id: "weather-criterion",
       name: "Weather Criterion Wind Heeling Levers",
-      group: "SOLAS Kriterleri",
+      group: "SOLAS Criteria",
       formula: "lw1 = (P × A × Z) / (1000 × g × Δ) ;  lw2 = 1.5 × lw1",
       variables: [
         { symbol: "P", label: "Wind pressure (≈504 Pa)", unit: "Pa" },
         { symbol: "A", label: "Lateral windage area", unit: "m²" },
         { symbol: "Z", label: "Vertical distance between the centroid of the area and ½ draft", unit: "m" },
-        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9.81 m/s²" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Hava kriteri (weather criterion), 2.3" },
+      source: { code: "IMO IS Code 2008", detail: "Weather criterion, 2.3" },
       note: "lw1 is the steady wind heeling lever, lw2 is the gust heeling lever.",
       inputs: [
         { key: "p", label: "Wind Pressure (P)", unit: "Pa", placeholder: "504" },
-        { key: "a", label: "Yanal Alan (A)", unit: "m²", placeholder: "1200" },
+        { key: "a", label: "Lateral Area (A)", unit: "m²", placeholder: "1200" },
         { key: "z", label: "Vertical Distance (Z)", unit: "m", placeholder: "6" },
-        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
-        if (v.disp <= 0) return [{ label: "Hata", value: "The displacement must be positive" }];
+        if (v.disp <= 0) return [{ label: "Error", value: "The displacement must be positive" }];
         const lw1 = (v.p * v.a * v.z) / (1000 * 9.81 * v.disp);
         const lw2 = 1.5 * lw1;
         return [
@@ -841,13 +841,13 @@ export const stability: CourseTopic = {
     {
       id: "flooding-rate",
       name: "Flooding Rate and Time for a Damaged Compartment",
-      group: "SOLAS Kriterleri",
+      group: "SOLAS Criteria",
       formula: "Q = A × C × √(2gh) ;  t = V / Q",
       variables: [
         { symbol: "A", label: "Hole/opening area", unit: "m²" },
         { symbol: "C", label: "Discharge coefficient (≈0.6)" },
         { symbol: "h", label: "Water head (pressure head)", unit: "m" },
-        { symbol: "V", label: "Dolacak hacim", unit: "m³" },
+        { symbol: "V", label: "Volume to be flooded", unit: "m³" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9.81 m/s²" },
       ],
       source: { code: "Damage stability — Torricelli flow relation" },
@@ -855,15 +855,15 @@ export const stability: CourseTopic = {
         { key: "a", label: "Opening Area (A)", unit: "m²", placeholder: "0.5" },
         { key: "c", label: "Discharge Coefficient (C)", unit: "", placeholder: "0.6" },
         { key: "h", label: "Water Head (h)", unit: "m", placeholder: "4" },
-        { key: "vol", label: "Dolacak Hacim (V)", unit: "m³", placeholder: "300" },
+        { key: "vol", label: "Volume to be Flooded (V)", unit: "m³", placeholder: "300" },
       ],
       calculate: (v) => {
-        if (v.h < 0) return [{ label: "Hata", value: "The water head cannot be negative" }];
+        if (v.h < 0) return [{ label: "Error", value: "The water head cannot be negative" }];
         const q = v.a * v.c * Math.sqrt(2 * 9.81 * v.h);
-        if (q <= 0) return [{ label: "Hata", value: "Flow rate is zero" }];
+        if (q <= 0) return [{ label: "Error", value: "Flow rate is zero" }];
         const t = v.vol / q;
         return [
-          { label: "Dolma Debisi (Q)", value: `${q.toFixed(3)} m³/s` },
+          { label: "Flooding Rate (Q)", value: `${q.toFixed(3)} m³/s` },
           { label: "Flooding Time (t)", value: `${t.toFixed(0)} s (${(t / 60).toFixed(1)} dk)` },
         ];
       },

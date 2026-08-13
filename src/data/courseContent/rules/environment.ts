@@ -32,7 +32,7 @@ export const environmentRules: RuleGroup[] = [
         ],
       },
       {
-        subtitle: "NOx Emisyon Seviyeleri",
+        subtitle: "NOx Emission Levels",
         content: [
           "Tier I: ships built before 2000",
           "Tier II: ships built after 2011 (global standard)",
@@ -52,7 +52,7 @@ export const environmentRules: RuleGroup[] = [
     ],
   },
   {
-    title: "BWM Convention - Balast Suyu",
+    title: "BWM Convention — Ballast Water",
     source: {
       code: "BWM Convention",
       detail: "Ballast Water Management Convention",
@@ -61,7 +61,7 @@ export const environmentRules: RuleGroup[] = [
       {
         subtitle: "D-1 Standard (Exchange)",
         content: [
-          "Karadan en az 200 deniz mili uzakta",
+          "At least 200 nautical miles from the nearest land",
           "The water depth must be at least 200 metres",
           "At least 95% of the ballast water must be exchanged",
           "Methods: sequential, flow-through or dilution",
@@ -124,7 +124,7 @@ export const environmentRules: RuleGroup[] = [
       {
         subtitle: "Records and Reporting",
         content: [
-          "Garbage Record Book zorunlu (400 GT+ gemiler)",
+          "A Garbage Record Book is mandatory (ships of 400 GT and above)",
           "A garbage management plan must be in place",
           "Receipts for delivery to port reception facilities must be retained",
           "Records must be kept for two years",

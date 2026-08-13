@@ -108,7 +108,7 @@ export const seamanshipRules: RuleGroup[] = [
     ],
   },
   {
-    title: "ISPS Kodu",
+    title: "ISPS Code",
     source: {
       code: "ISPS Code",
       detail: "International Ship and Port Facility Security Code",
@@ -125,7 +125,7 @@ export const seamanshipRules: RuleGroup[] = [
     ],
   },
   {
-    title: "Liman, VTS ve Pilotaj",
+    title: "Port, VTS and Pilotage",
     source: {
       code: "SOLAS V/11-12; IMO VTS Guidelines",
       detail: "Res. A.857(20); port and terminal regulations",
@@ -134,7 +134,7 @@ export const seamanshipRules: RuleGroup[] = [
       {
         subtitle: "Port Operations and Reporting",
         content: [
-          "Port Information Book ve yerel kurallar kontrol edilmelidir.",
+          "The Port Information Book and the local regulations must be checked.",
           "The pilotage and towage requirements must be complied with and a pilot/master exchange carried out.",
           "The VTS reporting requirements (entry/exit, position) must be fulfilled.",
           "Environmental restrictions (discharges, ballast) must be taken into account.",

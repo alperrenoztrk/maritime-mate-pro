@@ -56,7 +56,7 @@ export const coolingHvac: CourseTopic = {
         { key: "wc", label: "Compressor Power (W)", unit: "kW", placeholder: "15" },
       ],
       calculate: (v) => {
-        if (v.wc <= 0) return [{ label: "Hata", value: "The compressor power must be positive" }];
+        if (v.wc <= 0) return [{ label: "Error", value: "The compressor power must be positive" }];
         const cop = v.qh / v.wc;
         return [
           { label: "COP (Heat Pump)", value: cop.toFixed(2) },
@@ -165,7 +165,7 @@ export const coolingHvac: CourseTopic = {
       source: { code: "Cooling load calculation (conduction + safety margin)" },
       note: "This calculator obtains the conduction load from U·A·ΔT and adds a 25% safety margin.",
       inputs: [
-        { key: "vol", label: "Depo Hacmi", unit: "m³", placeholder: "200" },
+        { key: "vol", label: "Store Volume", unit: "m³", placeholder: "200" },
         { key: "tout", label: "Outside Temperature", unit: "°C", placeholder: "35" },
         { key: "tin", label: "Inside Temperature", unit: "°C", placeholder: "-18" },
         { key: "u", label: "Wall U Value", unit: "W/m²·K", placeholder: "0.3" },
@@ -182,7 +182,7 @@ export const coolingHvac: CourseTopic = {
     },
     {
       id: "dehumidification",
-      name: "Nem Alma Kapasitesi",
+      name: "Dehumidification Capacity",
       group: "Air Conditioning Calculations",
       formula: "ṁw = ṁa × (ω₁ − ω₂)",
       variables: [
@@ -193,7 +193,7 @@ export const coolingHvac: CourseTopic = {
       source: { code: "Psychrometric mass balance (dehumidification)" },
       note: "The air flow rate is entered in m³/h; ṁa = Q × ρ / 3600 (kg/s). Divide the humidity ratio by 1000 to convert g/kg → kg/kg. The latent load ≈ ṁw × 2450 kJ/kg.",
       inputs: [
-        { key: "q", label: "Hava Debisi", unit: "m³/h", placeholder: "5000" },
+        { key: "q", label: "Air Flow Rate", unit: "m³/h", placeholder: "5000" },
         { key: "w1", label: "Inlet Humidity Ratio (W₁)", unit: "g/kg", placeholder: "14" },
         { key: "w2", label: "Outlet Humidity Ratio (W₂)", unit: "g/kg", placeholder: "8" },
         { key: "rho", label: "Air Density (ρ)", unit: "kg/m³", placeholder: "1.2" },
@@ -202,7 +202,7 @@ export const coolingHvac: CourseTopic = {
         const mAir = v.q * v.rho / 3600; // kg/s
         const moisture = mAir * (v.w1 - v.w2) / 1000; // kg/s water removed
         return [
-          { label: "Nem Alma Kapasitesi", value: `${(moisture * 3600).toFixed(2)} kg/saat` },
+          { label: "Dehumidification Capacity", value: `${(moisture * 3600).toFixed(2)} kg/h` },
           { label: "Latent Load", value: `${(moisture * 2450).toFixed(1)} kW` },
         ];
       },

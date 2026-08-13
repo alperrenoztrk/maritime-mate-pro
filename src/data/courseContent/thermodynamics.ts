@@ -39,7 +39,7 @@ export const thermodynamics: CourseTopic = {
     },
     {
       id: "carnot-efficiency",
-      name: "Carnot Verimi",
+      name: "Carnot Efficiency",
       group: "Laws of Thermodynamics",
       formula: "η = 1 − (TL / TH)",
       variables: [
@@ -55,9 +55,9 @@ export const thermodynamics: CourseTopic = {
       calculate: (v) => {
         const TH = v.th + 273.15;
         const TL = v.tl + 273.15;
-        if (TH <= 0) return [{ label: "Hata", value: "TH must be above absolute zero" }];
+        if (TH <= 0) return [{ label: "Error", value: "TH must be above absolute zero" }];
         const eta = (1 - TL / TH) * 100;
-        return [{ label: "Carnot Verimi (η)", value: `${eta.toFixed(2)} %` }];
+        return [{ label: "Carnot Efficiency (η)", value: `${eta.toFixed(2)} %` }];
       },
     },
     {
@@ -77,7 +77,7 @@ export const thermodynamics: CourseTopic = {
       ],
       calculate: (v) => {
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "The temperature must be above absolute zero" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const ds = v.q / tK;
         return [{ label: "Entropy Change (ΔS)", value: `${ds.toFixed(4)} kJ/K` }];
       },
@@ -89,22 +89,22 @@ export const thermodynamics: CourseTopic = {
       formula: "P·V = n·R·T",
       variables: [
         { symbol: "P", label: "Pressure", unit: "Pa" },
-        { symbol: "V", label: "Hacim", unit: "m³" },
+        { symbol: "V", label: "Volume", unit: "m³" },
         { symbol: "n", label: "Number of moles", unit: "mol" },
-        { symbol: "R", label: "Evrensel gaz sabiti", unit: "8,314 J/(mol·K)" },
+        { symbol: "R", label: "Universal gas constant", unit: "8,314 J/(mol·K)" },
         { symbol: "T", label: "Absolute temperature", unit: "K" },
       ],
       source: { code: "Ideal gas equation of state" },
       note: "The temperature is entered in °C and converted to K in the calculation (R = 8.314 J/mol·K). The pressure is calculated as P = n·R·T / V.",
       inputs: [
         { key: "n", label: "Number of Moles (n)", unit: "mol", placeholder: "100" },
-        { key: "vol", label: "Hacim (V)", unit: "m³", placeholder: "2" },
+        { key: "vol", label: "Volume (V)", unit: "m³", placeholder: "2" },
         { key: "t", label: "Temperature (T)", unit: "°C", placeholder: "25" },
       ],
       calculate: (v) => {
-        if (v.vol <= 0) return [{ label: "Hata", value: "The volume must be positive" }];
+        if (v.vol <= 0) return [{ label: "Error", value: "The volume must be positive" }];
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "The temperature must be above absolute zero" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const pPa = (v.n * 8.314 * tK) / v.vol;
         return [
           { label: "Pressure (P)", value: `${(pPa / 1000).toFixed(2)} kPa` },
@@ -172,7 +172,7 @@ export const thermodynamics: CourseTopic = {
         { key: "gamma", label: "Specific Heat Ratio (γ)", unit: "", placeholder: "1.4" },
       ],
       calculate: (v) => {
-        if (v.rc <= 1) return [{ label: "Hata", value: "The cut-off ratio must be greater than 1" }];
+        if (v.rc <= 1) return [{ label: "Error", value: "The cut-off ratio must be greater than 1" }];
         const eta =
           (1 - (1 / Math.pow(v.r, v.gamma - 1)) * ((Math.pow(v.rc, v.gamma) - 1) / (v.gamma * (v.rc - 1)))) * 100;
         return [{ label: "Diesel Cycle Efficiency (η)", value: `${eta.toFixed(2)} %` }];
@@ -185,14 +185,14 @@ export const thermodynamics: CourseTopic = {
       formula: "P₁·V₁ⁿ = P₂·V₂ⁿ",
       variables: [
         { symbol: "P", label: "Pressure", unit: "bar" },
-        { symbol: "V", label: "Hacim", unit: "m³" },
-        { symbol: "n", label: "Politropik indeks (izotermik n=1, adyabatik n=γ)" },
+        { symbol: "V", label: "Volume", unit: "m³" },
+        { symbol: "n", label: "Polytropic index (isothermal n = 1, adiabatic n = γ)" },
       ],
       source: { code: "Polytropic change of state" },
       inputs: [
         { key: "p1", label: "Initial Pressure (P₁)", unit: "bar", placeholder: "1" },
         { key: "v1", label: "Initial Volume (V₁)", unit: "m³", placeholder: "0.5" },
-        { key: "v2", label: "Son Hacim (V₂)", unit: "m³", placeholder: "0.05" },
+        { key: "v2", label: "Final Volume (V₂)", unit: "m³", placeholder: "0.05" },
         { key: "n", label: "Polytropic Index (n)", unit: "", placeholder: "1.3" },
       ],
       calculate: (v) => {
@@ -212,19 +212,19 @@ export const thermodynamics: CourseTopic = {
       formula: "Q̇ = k · A · ΔT / L",
       variables: [
         { symbol: "k", label: "Thermal conductivity", unit: "W/m·K" },
-        { symbol: "A", label: "Alan", unit: "m²" },
+        { symbol: "A", label: "Area", unit: "m²" },
         { symbol: "ΔT", label: "Temperature difference", unit: "K" },
         { symbol: "L", label: "Wall thickness", unit: "m" },
       ],
       source: { code: "Fourier's law of heat conduction" },
       inputs: [
         { key: "k", label: "Thermal Conductivity (k)", unit: "W/m·K", placeholder: "50" },
-        { key: "a", label: "Alan (A)", unit: "m²", placeholder: "2" },
+        { key: "a", label: "Area (A)", unit: "m²", placeholder: "2" },
         { key: "dt", label: "Temperature Difference (ΔT)", unit: "°C", placeholder: "80" },
         { key: "l", label: "Wall Thickness (L)", unit: "m", placeholder: "0.05" },
       ],
       calculate: (v) => {
-        if (v.l <= 0) return [{ label: "Hata", value: "The thickness must be positive" }];
+        if (v.l <= 0) return [{ label: "Error", value: "The thickness must be positive" }];
         const q = (v.k * v.a * v.dt) / v.l;
         return [{ label: "Heat Flow (Q̇)", value: `${(q / 1000).toFixed(2)} kW` }];
       },
@@ -257,7 +257,7 @@ export const thermodynamics: CourseTopic = {
       formula: "Q̇ = ε · σ · A · T⁴",
       variables: [
         { symbol: "ε", label: "Emissivity" },
-        { symbol: "σ", label: "Stefan-Boltzmann sabiti", unit: "5,67×10⁻⁸ W/m²·K⁴" },
+        { symbol: "σ", label: "Stefan-Boltzmann constant", unit: "5,67×10⁻⁸ W/m²·K⁴" },
         { symbol: "A", label: "Surface area", unit: "m²" },
         { symbol: "T", label: "Absolute temperature", unit: "K" },
       ],
@@ -270,7 +270,7 @@ export const thermodynamics: CourseTopic = {
       ],
       calculate: (v) => {
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "The temperature must be above absolute zero" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const q = v.eps * 5.67e-8 * v.a * Math.pow(tK, 4);
         return [{ label: "Radiated Power (Q̇)", value: `${(q / 1000).toFixed(2)} kW` }];
       },
@@ -295,7 +295,7 @@ export const thermodynamics: CourseTopic = {
       calculate: (v) => {
         const dt1 = v.t1i - v.t2o;
         const dt2 = v.t1o - v.t2i;
-        if (dt1 <= 0 || dt2 <= 0) return [{ label: "Hata", value: "The temperature differences must be positive" }];
+        if (dt1 <= 0 || dt2 <= 0) return [{ label: "Error", value: "The temperature differences must be positive" }];
         const lmtd = Math.abs(dt1 - dt2) < 0.01 ? dt1 : (dt1 - dt2) / Math.log(dt1 / dt2);
         return [{ label: "LMTD", value: `${lmtd.toFixed(2)} °C` }];
       },
@@ -318,15 +318,15 @@ export const thermodynamics: CourseTopic = {
         { key: "lmtd", label: "LMTD", unit: "°C", placeholder: "35" },
       ],
       calculate: (v) => {
-        if (v.u <= 0 || v.lmtd <= 0) return [{ label: "Hata", value: "U and LMTD must be positive" }];
+        if (v.u <= 0 || v.lmtd <= 0) return [{ label: "Error", value: "U and LMTD must be positive" }];
         const area = (v.q * 1000) / (v.u * v.lmtd);
-        return [{ label: "Gerekli Alan (A)", value: `${area.toFixed(2)} m²` }];
+        return [{ label: "Required Area (A)", value: `${area.toFixed(2)} m²` }];
       },
     },
     {
       id: "absolute-pressure",
       name: "Absolute Pressure",
-      group: "Temel Kavramlar",
+      group: "Fundamental Concepts",
       formula: "Pabs = Pgauge + Patm",
       variables: [
         { symbol: "Pabs", label: "Absolute pressure", unit: "bar" },
@@ -350,11 +350,11 @@ export const thermodynamics: CourseTopic = {
     {
       id: "specific-volume",
       name: "Specific Volume",
-      group: "Temel Kavramlar",
+      group: "Fundamental Concepts",
       formula: "v = V / m = 1 / ρ",
       variables: [
         { symbol: "v", label: "Specific volume", unit: "m³/kg" },
-        { symbol: "V", label: "Hacim", unit: "m³" },
+        { symbol: "V", label: "Volume", unit: "m³" },
         { symbol: "m", label: "Mass", unit: "kg" },
         { symbol: "ρ", label: "Density", unit: "kg/m³" },
       ],
@@ -362,7 +362,7 @@ export const thermodynamics: CourseTopic = {
       note: "If the density is known, v = 1/ρ; if the mass and volume are known, v = V/m. When the density is entered, the volume/mass fields may be left blank.",
       inputs: [
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1.2" },
-        { key: "vol", label: "Hacim (V) — opsiyonel", unit: "m³", placeholder: "0" },
+        { key: "vol", label: "Volume (V) — optional", unit: "m³", placeholder: "0" },
         { key: "m", label: "Mass (m) — optional", unit: "kg", placeholder: "0" },
       ],
       calculate: (v) => {
@@ -372,7 +372,7 @@ export const thermodynamics: CourseTopic = {
         if (v.rho > 0) {
           return [{ label: "Specific Volume (v)", value: `${(1 / v.rho).toFixed(5)} m³/kg` }];
         }
-        return [{ label: "Hata", value: "Either the density or the volume + mass must be entered as positive" }];
+        return [{ label: "Error", value: "Either the density or the volume + mass must be entered as positive" }];
       },
     },
     {
@@ -437,11 +437,11 @@ export const thermodynamics: CourseTopic = {
         { key: "cv", label: "Specific Heat (cv)", unit: "kJ/kg·K", placeholder: "0.718" },
       ],
       calculate: (v) => {
-        if (v.cv <= 0) return [{ label: "Hata", value: "cv must be positive" }];
+        if (v.cv <= 0) return [{ label: "Error", value: "cv must be positive" }];
         const r = v.cp - v.cv;
         const gamma = v.cp / v.cv;
         return [
-          { label: "Gaz Sabiti (R)", value: `${r.toFixed(4)} kJ/kg·K` },
+          { label: "Gas Constant (R)", value: `${r.toFixed(4)} kJ/kg·K` },
           { label: "Specific Heat Ratio (γ)", value: `${gamma.toFixed(3)}` },
         ];
       },
@@ -486,13 +486,13 @@ export const thermodynamics: CourseTopic = {
       note: "The temperature is constant; it is entered in °C and converted to K in the calculation. For air R ≈ 0.287 kJ/kg·K. During expansion (V₂>V₁) the work is positive.",
       inputs: [
         { key: "m", label: "Mass (m)", unit: "kg", placeholder: "1" },
-        { key: "r", label: "Gaz Sabiti (R)", unit: "kJ/kg·K", placeholder: "0.287" },
+        { key: "r", label: "Gas Constant (R)", unit: "kJ/kg·K", placeholder: "0.287" },
         { key: "t", label: "Temperature (T)", unit: "°C", placeholder: "300" },
         { key: "v1", label: "Initial Volume (V₁)", unit: "m³", placeholder: "0.1" },
-        { key: "v2", label: "Son Hacim (V₂)", unit: "m³", placeholder: "0.3" },
+        { key: "v2", label: "Final Volume (V₂)", unit: "m³", placeholder: "0.3" },
       ],
       calculate: (v) => {
-        if (v.v1 <= 0 || v.v2 <= 0) return [{ label: "Hata", value: "The volumes must be positive" }];
+        if (v.v1 <= 0 || v.v2 <= 0) return [{ label: "Error", value: "The volumes must be positive" }];
         const tK = v.t + 273.15;
         const w = v.m * v.r * tK * Math.log(v.v2 / v.v1);
         return [{ label: "Isothermal Work (W)", value: `${w.toFixed(2)} kJ` }];
@@ -513,13 +513,13 @@ export const thermodynamics: CourseTopic = {
       note: "Radial heat loss in insulated pipes/cylindrical walls. r₂ > r₁ is required.",
       inputs: [
         { key: "k", label: "Thermal Conductivity (k)", unit: "W/m·K", placeholder: "0.04" },
-        { key: "l", label: "Uzunluk (L)", unit: "m", placeholder: "10" },
+        { key: "l", label: "Length (L)", unit: "m", placeholder: "10" },
         { key: "dt", label: "Temperature Difference (T₁−T₂)", unit: "°C", placeholder: "120" },
         { key: "r1", label: "Inner Radius (r₁)", unit: "m", placeholder: "0.05" },
         { key: "r2", label: "Outer Radius (r₂)", unit: "m", placeholder: "0.08" },
       ],
       calculate: (v) => {
-        if (v.r1 <= 0 || v.r2 <= v.r1) return [{ label: "Hata", value: "r₂ > r₁ > 0 is required" }];
+        if (v.r1 <= 0 || v.r2 <= v.r1) return [{ label: "Error", value: "r₂ > r₁ > 0 is required" }];
         const q = (2 * Math.PI * v.k * v.l * v.dt) / Math.log(v.r2 / v.r1);
         return [
           { label: "Heat Flow (Q̇)", value: `${q.toFixed(1)} W` },
@@ -547,7 +547,7 @@ export const thermodynamics: CourseTopic = {
         { key: "h2", label: "Outer Convection Coefficient (h₂)", unit: "W/m²·K", placeholder: "2000" },
       ],
       calculate: (v) => {
-        if (v.h1 <= 0 || v.h2 <= 0 || v.k <= 0) return [{ label: "Hata", value: "h₁, h₂ and k must be positive" }];
+        if (v.h1 <= 0 || v.h2 <= 0 || v.k <= 0) return [{ label: "Error", value: "h₁, h₂ and k must be positive" }];
         const rTotal = 1 / v.h1 + v.l / v.k + 1 / v.h2;
         const u = 1 / rTotal;
         return [{ label: "Overall Coefficient (U)", value: `${u.toFixed(2)} W/m²·K` }];
@@ -574,7 +574,7 @@ export const thermodynamics: CourseTopic = {
       ],
       calculate: (v) => {
         const dt = v.thi - v.tci;
-        if (v.cmin <= 0 || dt <= 0) return [{ label: "Hata", value: "Cmin and the inlet difference must be positive" }];
+        if (v.cmin <= 0 || dt <= 0) return [{ label: "Error", value: "Cmin and the inlet difference must be positive" }];
         const qmax = v.cmin * dt;
         const eps = v.q / qmax;
         return [

@@ -27,7 +27,7 @@ export const energyEfficiency: CourseTopic = {
         { symbol: "PME", label: "Main engine power", unit: "kW" },
         { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
         { symbol: "Cf", label: "CO₂ conversion factor" },
-        { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
+        { symbol: "DWT", label: "Deadweight (capacity)", unit: "tonnes" },
         { symbol: "Vref", label: "Reference speed", unit: "knot" },
       ],
       source: { code: "MARPOL Annex VI Reg.21 — EEDI (mandatory upper limit for new ships)" },
@@ -36,12 +36,12 @@ export const energyEfficiency: CourseTopic = {
         { key: "p", label: "Engine Power (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
         { key: "cf", label: "CO₂ Factor (Cf)", unit: "", placeholder: "3.114" },
-        { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
+        { key: "dwt", label: "DWT", unit: "tonnes", placeholder: "50000" },
         { key: "vref", label: "Reference Speed", unit: "knot", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const eedi = (v.p * v.sfoc * v.cf) / (v.dwt * v.vref);
-        return [{ label: "EEDI", value: `${eedi.toFixed(2)} g CO₂/(ton·NM)` }];
+        return [{ label: "EEDI", value: `${eedi.toFixed(2)} g CO₂/(tonne·NM)` }];
       },
     },
     {
@@ -55,41 +55,41 @@ export const energyEfficiency: CourseTopic = {
         { symbol: "PAE", label: "Auxiliary engine power", unit: "kW" },
         { symbol: "SFOCAE", label: "Auxiliary engine specific fuel consumption", unit: "g/kW·h" },
         { symbol: "Cf", label: "CO₂ conversion factor" },
-        { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
+        { symbol: "DWT", label: "Deadweight (capacity)", unit: "tonnes" },
         { symbol: "Vref", label: "Reference speed", unit: "knot" },
       ],
       source: { code: "EEXI — MEPC.328(76) (mandatory for existing ships from 2023)" },
       note: "The result is in g CO₂/(tonne·NM).",
       inputs: [
         { key: "pme", label: "Main Engine Power (PME)", unit: "kW", placeholder: "15000" },
-        { key: "sfocMe", label: "Ana Motor SFOC", unit: "g/kW·h", placeholder: "175" },
+        { key: "sfocMe", label: "Main Engine SFOC", unit: "g/kW·h", placeholder: "175" },
         { key: "pae", label: "Auxiliary Engine Power (PAE)", unit: "kW", placeholder: "750" },
         { key: "sfocAe", label: "Auxiliary SFOC", unit: "g/kW·h", placeholder: "215" },
         { key: "cf", label: "CO₂ Factor", unit: "", placeholder: "3.114" },
-        { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
+        { key: "dwt", label: "DWT", unit: "tonnes", placeholder: "50000" },
         { key: "vref", label: "Reference Speed", unit: "knot", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const eexi = ((v.pme * v.sfocMe * v.cf) + (v.pae * v.sfocAe * v.cf)) / (v.dwt * v.vref);
-        return [{ label: "EEXI", value: `${eexi.toFixed(2)} g CO₂/(ton·NM)` }];
+        return [{ label: "EEXI", value: `${eexi.toFixed(2)} g CO₂/(tonne·NM)` }];
       },
     },
     {
       id: "cii-aer",
       name: "CII / AER (Annual Carbon Intensity)",
       group: "Energy Efficiency Indicators",
-      formula: "CII (AER) = (CO₂toplam × 10⁶) / (DWT × Dtoplam)",
+      formula: "CII (AER) = (CO₂_total × 10⁶) / (DWT × D_total)",
       variables: [
-        { symbol: "CO₂_toplam", label: "Total annual CO₂ emissions", unit: "ton" },
-        { symbol: "DWT", label: "Dedveyt (kapasite)", unit: "ton" },
+        { symbol: "CO₂_total", label: "Total annual CO₂ emissions", unit: "tonnes" },
+        { symbol: "DWT", label: "Deadweight (capacity)", unit: "tonnes" },
         { symbol: "Dtoplam", label: "Total annual distance sailed", unit: "NM" },
       ],
       source: { code: "CII/AER — MEPC.328(76) (annual rating A–E)" },
       note: "The total CO₂ is entered in tonnes and converted to g by 10⁶; the result is in g CO₂/(DWT·NM). The AER is the indicator used in the CII calculation.",
       inputs: [
-        { key: "co2", label: "Toplam CO₂ Emisyonu", unit: "ton", placeholder: "25000" },
-        { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
-        { key: "dist", label: "Toplam Mesafe", unit: "NM", placeholder: "80000" },
+        { key: "co2", label: "Total CO₂ Emission", unit: "tonnes", placeholder: "25000" },
+        { key: "dwt", label: "DWT", unit: "tonnes", placeholder: "50000" },
+        { key: "dist", label: "Total Distance", unit: "NM", placeholder: "80000" },
       ],
       calculate: (v) => {
         const cii = (v.co2 * 1e6) / (v.dwt * v.dist);
@@ -102,22 +102,22 @@ export const energyEfficiency: CourseTopic = {
       group: "Energy Efficiency Indicators",
       formula: "EEOI = (FC × Cf × 10⁶) / (Cargo × D)",
       variables: [
-        { symbol: "FC", label: "Fuel consumption", unit: "ton" },
+        { symbol: "FC", label: "Fuel consumption", unit: "tonnes" },
         { symbol: "Cf", label: "CO₂ conversion factor" },
-        { symbol: "Cargo", label: "Cargo carried", unit: "ton" },
-        { symbol: "D", label: "Mesafe", unit: "NM" },
+        { symbol: "Cargo", label: "Cargo carried", unit: "tonnes" },
+        { symbol: "D", label: "Distance", unit: "NM" },
       ],
       source: { code: "EEOI — MEPC.1/Circ.684 (voluntary operational indicator)" },
       note: "The fuel consumption is entered in tonnes and converted to g by 10⁶; the result is in g CO₂/(tonne·NM).",
       inputs: [
-        { key: "fc", label: "Fuel Consumption", unit: "ton", placeholder: "500" },
+        { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "500" },
         { key: "cf", label: "CO₂ Factor", unit: "", placeholder: "3.114" },
-        { key: "cargo", label: "Cargo Carried", unit: "ton", placeholder: "40000" },
-        { key: "dist", label: "Mesafe", unit: "NM", placeholder: "5000" },
+        { key: "cargo", label: "Cargo Carried", unit: "tonnes", placeholder: "40000" },
+        { key: "dist", label: "Distance", unit: "NM", placeholder: "5000" },
       ],
       calculate: (v) => {
         const eeoi = (v.fc * v.cf * 1e6) / (v.cargo * v.dist);
-        return [{ label: "EEOI", value: `${eeoi.toFixed(2)} g CO₂/(ton·NM)` }];
+        return [{ label: "EEOI", value: `${eeoi.toFixed(2)} g CO₂/(tonne·NM)` }];
       },
     },
     {
@@ -143,7 +143,7 @@ export const energyEfficiency: CourseTopic = {
         const saving = ((v.fc1 - fc2) / v.fc1) * 100;
         return [
           { label: "New Consumption", value: `${fc2.toFixed(1)} tonnes/day` },
-          { label: "Tasarruf", value: `${saving.toFixed(1)}%` },
+          { label: "Saving", value: `${saving.toFixed(1)}%` },
         ];
       },
     },
@@ -156,16 +156,16 @@ export const energyEfficiency: CourseTopic = {
         { symbol: "ṁegzoz", label: "Exhaust gas flow rate", unit: "kg/s" },
         { symbol: "cp", label: "Specific heat", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Exhaust temperature drop", unit: "K" },
-        { symbol: "η", label: "WHR sistem verimi" },
+        { symbol: "η", label: "WHR system efficiency" },
       ],
       source: { code: "Waste heat recovery system (WHRS) — exhaust energy balance" },
       note: "ΔT = T_in − T_out (a difference in K equals a difference in °C); the efficiency is entered as a percentage and converted to a ratio in the calculation.",
       inputs: [
-        { key: "mexh", label: "Egzoz Debisi", unit: "kg/s", placeholder: "30" },
+        { key: "mexh", label: "Exhaust Flow Rate", unit: "kg/s", placeholder: "30" },
         { key: "texhIn", label: "Exhaust Inlet Temperature", unit: "°C", placeholder: "350" },
         { key: "texhOut", label: "Exhaust Outlet Temperature", unit: "°C", placeholder: "180" },
         { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "1.05" },
-        { key: "eta", label: "Sistem Verimi", unit: "%", placeholder: "70" },
+        { key: "eta", label: "System Efficiency", unit: "%", placeholder: "70" },
       ],
       calculate: (v) => {
         const qAvail = v.mexh * v.cp * (v.texhIn - v.texhOut);
@@ -178,25 +178,25 @@ export const energyEfficiency: CourseTopic = {
     },
     {
       id: "seemp-saving",
-      name: "SEEMP Tasarruf",
+      name: "SEEMP Saving",
       group: "Waste Heat Recovery",
       formula: "Saving (%) = (FC_before − FC_after) / FC_before × 100",
       variables: [
-        { symbol: "FC_before", label: "Fuel consumption before the measure", unit: "ton" },
-        { symbol: "FC_after", label: "Fuel consumption after the measure", unit: "ton" },
+        { symbol: "FC_before", label: "Fuel consumption before the measure", unit: "tonnes" },
+        { symbol: "FC_after", label: "Fuel consumption after the measure", unit: "tonnes" },
       ],
       source: { code: "SEEMP — Ship Energy Efficiency Management Plan (MARPOL Annex VI Reg.22)" },
       note: "The fuel consumption before and after the measure is entered; the percentage and absolute savings are calculated.",
       inputs: [
-        { key: "before", label: "Before (FC_before)", unit: "ton", placeholder: "1000" },
-        { key: "after", label: "After (FC_after)", unit: "ton", placeholder: "920" },
+        { key: "before", label: "Before (FC_before)", unit: "tonnes", placeholder: "1000" },
+        { key: "after", label: "After (FC_after)", unit: "tonnes", placeholder: "920" },
       ],
       calculate: (v) => {
-        if (v.before <= 0) return [{ label: "Hata", value: "The consumption before must be positive" }];
+        if (v.before <= 0) return [{ label: "Error", value: "The consumption before must be positive" }];
         const saving = ((v.before - v.after) / v.before) * 100;
         return [
-          { label: "Tasarruf", value: `${saving.toFixed(1)} %` },
-          { label: "Mutlak Tasarruf", value: `${(v.before - v.after).toFixed(1)} ton` },
+          { label: "Saving", value: `${saving.toFixed(1)} %` },
+          { label: "Absolute Saving", value: `${(v.before - v.after).toFixed(1)} tonnes` },
         ];
       },
     },

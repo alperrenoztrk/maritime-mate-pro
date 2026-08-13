@@ -22,14 +22,14 @@ export const auxiliary: CourseTopic = {
       group: "Generator Calculations",
       formula: "P = √3 × V × I × cos(φ)",
       variables: [
-        { symbol: "V", label: "Hat gerilimi", unit: "V" },
+        { symbol: "V", label: "Line voltage", unit: "V" },
         { symbol: "I", label: "Line current", unit: "A" },
         { symbol: "cos(φ)", label: "Power factor" },
       ],
       source: { code: "Three phase active power relation" },
       note: "The result is in W and converted to kW (÷1000). The apparent power is S = √3 × V × I.",
       inputs: [
-        { key: "v", label: "Hat Gerilimi (V)", unit: "V", placeholder: "440" },
+        { key: "v", label: "Line Voltage (V)", unit: "V", placeholder: "440" },
         { key: "i", label: "Line Current (I)", unit: "A", placeholder: "500" },
         { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
       ],
@@ -47,19 +47,19 @@ export const auxiliary: CourseTopic = {
       group: "Generator Calculations",
       formula: "f = (p × n) / 60",
       variables: [
-        { symbol: "f", label: "Frekans", unit: "Hz" },
+        { symbol: "f", label: "Frequency", unit: "Hz" },
         { symbol: "p", label: "Number of pole pairs" },
-        { symbol: "n", label: "Devir", unit: "rpm" },
+        { symbol: "n", label: "Speed", unit: "rpm" },
       ],
       source: { code: "Synchronous machine frequency-speed relation" },
       note: "Enter the number of pole pairs and the speed; the frequency is calculated as f = (p × n) / 60.",
       inputs: [
         { key: "p", label: "Number of Pole Pairs (p)", unit: "", placeholder: "2" },
-        { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "1800" },
+        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "1800" },
       ],
       calculate: (v) => {
         const f = (v.p * v.n) / 60;
-        return [{ label: "Frekans (f)", value: `${f.toFixed(2)} Hz` }];
+        return [{ label: "Frequency (f)", value: `${f.toFixed(2)} Hz` }];
       },
     },
     {
@@ -78,10 +78,10 @@ export const auxiliary: CourseTopic = {
         { key: "pm", label: "Mechanical Input (P_mechanical)", unit: "kW", placeholder: "1000" },
       ],
       calculate: (v) => {
-        if (v.pm <= 0) return [{ label: "Hata", value: "The mechanical input power must be positive" }];
+        if (v.pm <= 0) return [{ label: "Error", value: "The mechanical input power must be positive" }];
         const eta = (v.pe / v.pm) * 100;
         return [
-          { label: "Verim (η)", value: `${eta.toFixed(1)} %` },
+          { label: "Efficiency (η)", value: `${eta.toFixed(1)} %` },
           { label: "Loss", value: `${(v.pm - v.pe).toFixed(1)} kW` },
         ];
       },
@@ -90,31 +90,31 @@ export const auxiliary: CourseTopic = {
       id: "boiler-steam-production",
       name: "Boiler Steam Production",
       group: "Boiler Calculations",
-      formula: "ṁbuhar = (Q̇ × η) / Δh",
+      formula: "ṁ_steam = (Q̇ × η) / Δh",
       variables: [
         { symbol: "Q̇", label: "Fuel heat input", unit: "kW" },
-        { symbol: "η", label: "Kazan verimi" },
+        { symbol: "η", label: "Boiler efficiency" },
         { symbol: "Δh", label: "Enthalpy of evaporation (hfg)", unit: "kJ/kg" },
       ],
       source: { code: "Boiler energy balance (steam production)" },
       note: "The efficiency is entered as a percentage and converted to a ratio in the calculation. Multiply by 3600 for kg/hour.",
       inputs: [
         { key: "q", label: "Fuel Heat Input", unit: "kW", placeholder: "2000" },
-        { key: "eta", label: "Kazan Verimi", unit: "%", placeholder: "85" },
+        { key: "eta", label: "Boiler Efficiency", unit: "%", placeholder: "85" },
         { key: "hfg", label: "Heat of Evaporation", unit: "kJ/kg", placeholder: "2257" },
       ],
       calculate: (v) => {
         const steam = (v.q * (v.eta / 100) * 3600) / (v.hfg);
-        return [{ label: "Steam Production", value: `${steam.toFixed(0)} kg/saat` }];
+        return [{ label: "Steam Production", value: `${steam.toFixed(0)} kg/h` }];
       },
     },
     {
       id: "boiler-efficiency",
-      name: "Kazan Verimi",
+      name: "Boiler Efficiency",
       group: "Boiler Calculations",
       formula: "η = (ṁ_steam × Δh) / (ṁ_fuel × Hu)",
       variables: [
-        { symbol: "ṁbuhar", label: "Buhar debisi", unit: "kg/s" },
+        { symbol: "ṁ_steam", label: "Steam flow rate", unit: "kg/s" },
         { symbol: "Δh", label: "Enthalpy difference", unit: "kJ/kg" },
         { symbol: "ṁ_fuel", label: "Fuel flow rate", unit: "kg/s" },
         { symbol: "Hu", label: "Lower calorific value of the fuel", unit: "kJ/kg" },
@@ -122,16 +122,16 @@ export const auxiliary: CourseTopic = {
       source: { code: "Boiler efficiency (direct/input-output method)" },
       note: "The steam and fuel flow rates are entered in kg/s; efficiency = (ṁ_steam × Δh) / (ṁ_fuel × Hu).",
       inputs: [
-        { key: "ms", label: "Buhar Debisi (ṁbuhar)", unit: "kg/s", placeholder: "1.2" },
+        { key: "ms", label: "Steam Flow Rate (ṁ_steam)", unit: "kg/s", placeholder: "1.2" },
         { key: "dh", label: "Enthalpy Difference (Δh)", unit: "kJ/kg", placeholder: "2600" },
         { key: "mf", label: "Fuel Flow Rate (ṁ_fuel)", unit: "kg/s", placeholder: "0.09" },
         { key: "hu", label: "Lower Calorific Value (Hu)", unit: "kJ/kg", placeholder: "40000" },
       ],
       calculate: (v) => {
         const denom = v.mf * v.hu;
-        if (denom <= 0) return [{ label: "Hata", value: "The fuel flow rate and the calorific value must be positive" }];
+        if (denom <= 0) return [{ label: "Error", value: "The fuel flow rate and the calorific value must be positive" }];
         const eta = ((v.ms * v.dh) / denom) * 100;
-        return [{ label: "Kazan Verimi (η)", value: `${eta.toFixed(1)} %` }];
+        return [{ label: "Boiler Efficiency (η)", value: `${eta.toFixed(1)} %` }];
       },
     },
     {
@@ -140,20 +140,20 @@ export const auxiliary: CourseTopic = {
       group: "Separator",
       formula: "Q = (FC × 24 × k) / t",
       variables: [
-        { symbol: "FC", label: "Fuel consumption", unit: "litre/saat" },
+        { symbol: "FC", label: "Fuel consumption", unit: "litres/h" },
         { symbol: "k", label: "Safety factor" },
         { symbol: "t", label: "Daily operating time", unit: "hours/day" },
       ],
       source: { code: "Centrifugal separator sizing (based on daily consumption)" },
       note: "The daily consumption (FC × 24) is multiplied by the safety factor and divided by the operating time.",
       inputs: [
-        { key: "fc", label: "Fuel Consumption", unit: "litre/saat", placeholder: "3000" },
+        { key: "fc", label: "Fuel Consumption", unit: "litres/h", placeholder: "3000" },
         { key: "factor", label: "Safety Factor", unit: "", placeholder: "1.2" },
         { key: "hours", label: "Operating Time", unit: "hours/day", placeholder: "20" },
       ],
       calculate: (v) => {
         const capacity = (v.fc * 24 * v.factor) / v.hours;
-        return [{ label: "Gerekli Kapasite", value: `${capacity.toFixed(0)} litre/saat` }];
+        return [{ label: "Required Capacity", value: `${capacity.toFixed(0)} litres/h` }];
       },
     },
     {
@@ -166,7 +166,7 @@ export const auxiliary: CourseTopic = {
         { symbol: "ρw", label: "Water density", unit: "kg/m³" },
         { symbol: "ρo", label: "Oil density", unit: "kg/m³" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
-        { symbol: "μ", label: "Dinamik viskozite", unit: "Pa·s" },
+        { symbol: "μ", label: "Dynamic viscosity", unit: "Pa·s" },
       ],
       source: { code: "Stokes' law (laminar settling velocity)" },
       note: "The particle diameter is entered in µm and converted to m in the calculation (g = 9.81 m/s²). The result is given in mm/s.",
@@ -174,10 +174,10 @@ export const auxiliary: CourseTopic = {
         { key: "d", label: "Particle Diameter (d)", unit: "µm", placeholder: "30" },
         { key: "rw", label: "Water Density (ρw)", unit: "kg/m³", placeholder: "1025" },
         { key: "ro", label: "Oil Density (ρo)", unit: "kg/m³", placeholder: "900" },
-        { key: "mu", label: "Dinamik Viskozite (μ)", unit: "Pa·s", placeholder: "0.5" },
+        { key: "mu", label: "Dynamic Viscosity (μ)", unit: "Pa·s", placeholder: "0.5" },
       ],
       calculate: (v) => {
-        if (v.mu <= 0) return [{ label: "Hata", value: "The viscosity must be positive" }];
+        if (v.mu <= 0) return [{ label: "Error", value: "The viscosity must be positive" }];
         const dM = v.d * 1e-6;
         const vel = (dM * dM * (v.rw - v.ro) * 9.81) / (18 * v.mu);
         return [
@@ -192,27 +192,27 @@ export const auxiliary: CourseTopic = {
       formula: "Q = (π·D²/4)·L·n·k·ηv",
       variables: [
         { symbol: "D", label: "Cylinder bore", unit: "mm" },
-        { symbol: "L", label: "Strok", unit: "mm" },
-        { symbol: "n", label: "Devir", unit: "rpm" },
+        { symbol: "L", label: "Stroke", unit: "mm" },
+        { symbol: "n", label: "Speed", unit: "rpm" },
         { symbol: "k", label: "Number of cylinders" },
-        { symbol: "ηv", label: "Hacimsel verim" },
+        { symbol: "ηv", label: "Volumetric efficiency" },
       ],
       source: { code: "Swept volume flow rate of a reciprocating compressor" },
       note: "The bore and stroke are entered in mm and converted to m in the calculation (÷1000). The result is in m³/min → multiply by 60 for m³/hour.",
       inputs: [
         { key: "bore", label: "Cylinder Bore", unit: "mm", placeholder: "250" },
-        { key: "stroke", label: "Strok", unit: "mm", placeholder: "200" },
-        { key: "n", label: "Devir", unit: "rpm", placeholder: "1000" },
+        { key: "stroke", label: "Stroke", unit: "mm", placeholder: "200" },
+        { key: "n", label: "Speed", unit: "rpm", placeholder: "1000" },
         { key: "k", label: "Number of Cylinders", unit: "", placeholder: "2" },
-        { key: "etav", label: "Hacimsel Verim", unit: "%", placeholder: "85" },
+        { key: "etav", label: "Volumetric Efficiency", unit: "%", placeholder: "85" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000);
         const qTheory = vs * v.n * v.k; // m³/min
         const qActual = qTheory * (v.etav / 100);
         return [
-          { label: "Teorik Debi", value: `${(qTheory * 60).toFixed(2)} m³/saat` },
-          { label: "Actual Flow Rate", value: `${(qActual * 60).toFixed(2)} m³/saat` },
+          { label: "Theoretical Flow Rate", value: `${(qTheory * 60).toFixed(2)} m³/h` },
+          { label: "Actual Flow Rate", value: `${(qActual * 60).toFixed(2)} m³/h` },
         ];
       },
     },
@@ -236,7 +236,7 @@ export const auxiliary: CourseTopic = {
       calculate: (v) => {
         const production = (v.qAvail * (v.eta / 100) * 3600) / v.hfg;
         return [
-          { label: "Water Production", value: `${production.toFixed(0)} kg/saat` },
+          { label: "Water Production", value: `${production.toFixed(0)} kg/h` },
           { label: "Daily Production", value: `${(production * 24 / 1000).toFixed(1)} tonnes/day` },
         ];
       },
@@ -257,7 +257,7 @@ export const auxiliary: CourseTopic = {
         { key: "dt2", label: "Cold End Difference (ΔT2)", unit: "°C", placeholder: "10" },
       ],
       calculate: (v) => {
-        if (v.dt1 <= 0 || v.dt2 <= 0) return [{ label: "Hata", value: "The temperature differences must be positive" }];
+        if (v.dt1 <= 0 || v.dt2 <= 0) return [{ label: "Error", value: "The temperature differences must be positive" }];
         const lmtd = Math.abs(v.dt1 - v.dt2) < 1e-9 ? v.dt1 : (v.dt1 - v.dt2) / Math.log(v.dt1 / v.dt2);
         return [{ label: "LMTD (ΔTlm)", value: `${lmtd.toFixed(2)} °C` }];
       },
@@ -293,20 +293,20 @@ export const auxiliary: CourseTopic = {
       group: "Incinerator",
       formula: "Q̇ = (ṁ × Hu) / 3600",
       variables: [
-        { symbol: "ṁ", label: "Sludge/waste feed rate", unit: "kg/saat" },
+        { symbol: "ṁ", label: "Sludge/waste feed rate", unit: "kg/h" },
         { symbol: "Hu", label: "Lower calorific value of the waste", unit: "kJ/kg" },
       ],
       source: { code: "IMO MEPC.244(66) — incinerator thermal capacity (mass × calorific value)" },
       note: "ṁ (kg/hour) × Hu (kJ/kg) = kJ/hour; divide by 3600 for kW. Water-bearing sludge has a low calorific value (~10,000–30,000 kJ/kg).",
       inputs: [
-        { key: "m", label: "Besleme Debisi (ṁ)", unit: "kg/saat", placeholder: "50" },
+        { key: "m", label: "Feed Rate (ṁ)", unit: "kg/h", placeholder: "50" },
         { key: "hu", label: "Lower Calorific Value (Hu)", unit: "kJ/kg", placeholder: "30000" },
       ],
       calculate: (v) => {
         const qkw = (v.m * v.hu) / 3600;
         return [
           { label: "Incineration Heat Rate (Q̇)", value: `${qkw.toFixed(1)} kW` },
-          { label: "Hourly Heat", value: `${(v.m * v.hu / 1000).toFixed(0)} MJ/saat` },
+          { label: "Hourly Heat", value: `${(v.m * v.hu / 1000).toFixed(0)} MJ/h` },
         ];
       },
     },
@@ -330,7 +330,7 @@ export const auxiliary: CourseTopic = {
       calculate: (v) => {
         const liters = v.n * v.q * v.d;
         return [
-          { label: "Gerekli Hacim", value: `${liters.toFixed(0)} litre` },
+          { label: "Required Volume", value: `${liters.toFixed(0)} litres` },
           { label: "m³ cinsinden", value: `${(liters / 1000).toFixed(2)} m³` },
         ];
       },
@@ -341,19 +341,19 @@ export const auxiliary: CourseTopic = {
       group: "Bilge Separator (OWS)",
       formula: "t = V / Q",
       variables: [
-        { symbol: "V", label: "Sintine (bilge) hacmi", unit: "m³" },
-        { symbol: "Q", label: "OWS kapasitesi", unit: "m³/saat" },
+        { symbol: "V", label: "Bilge volume", unit: "m³" },
+        { symbol: "Q", label: "OWS capacity", unit: "m³/h" },
       ],
       source: { code: "OWS sizing (volume/flow rate relation)" },
       note: "The time required to process the oily water volume in the bilge tank at the rated OWS capacity.",
       inputs: [
-        { key: "v", label: "Sintine Hacmi (V)", unit: "m³", placeholder: "10" },
-        { key: "q", label: "OWS Kapasitesi (Q)", unit: "m³/saat", placeholder: "2.5" },
+        { key: "v", label: "Bilge Volume (V)", unit: "m³", placeholder: "10" },
+        { key: "q", label: "OWS Capacity (Q)", unit: "m³/h", placeholder: "2.5" },
       ],
       calculate: (v) => {
-        if (v.q <= 0) return [{ label: "Hata", value: "The capacity must be positive" }];
+        if (v.q <= 0) return [{ label: "Error", value: "The capacity must be positive" }];
         const t = v.v / v.q;
-        return [{ label: "Discharge Time", value: `${t.toFixed(1)} saat` }];
+        return [{ label: "Discharge Time", value: `${t.toFixed(1)} h` }];
       },
     },
     {
@@ -365,7 +365,7 @@ export const auxiliary: CourseTopic = {
         { symbol: "m", label: "Mass to be cooled", unit: "kg" },
         { symbol: "cp", label: "Specific heat", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Temperature drop", unit: "K" },
-        { symbol: "t", label: "Pull-down time", unit: "saat" },
+        { symbol: "t", label: "Pull-down time", unit: "h" },
       ],
       source: { code: "Cooling load energy balance (sensible heat)" },
       note: "Typical cp: fresh produce ~3.3; frozen ~1.7 kJ/kg·K. The result is in kW (cooling power). The time is entered in hours and converted to seconds by ×3600.",
@@ -373,10 +373,10 @@ export const auxiliary: CourseTopic = {
         { key: "m", label: "Mass (m)", unit: "kg", placeholder: "500" },
         { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "3.3" },
         { key: "dt", label: "Temperature Drop (ΔT)", unit: "K", placeholder: "25" },
-        { key: "t", label: "Pull-down Time (t)", unit: "saat", placeholder: "8" },
+        { key: "t", label: "Pull-down Time (t)", unit: "h", placeholder: "8" },
       ],
       calculate: (v) => {
-        if (v.t <= 0) return [{ label: "Hata", value: "The time must be positive" }];
+        if (v.t <= 0) return [{ label: "Error", value: "The time must be positive" }];
         const q = (v.m * v.cp * v.dt) / (v.t * 3600);
         return [{ label: "Cooling Load (Q)", value: `${q.toFixed(2)} kW` }];
       },
@@ -397,7 +397,7 @@ export const auxiliary: CourseTopic = {
         { key: "w", label: "Compressor Power (W)", unit: "kW", placeholder: "4" },
       ],
       calculate: (v) => {
-        if (v.w <= 0) return [{ label: "Hata", value: "The compressor power must be positive" }];
+        if (v.w <= 0) return [{ label: "Error", value: "The compressor power must be positive" }];
         const cop = v.q0 / v.w;
         return [{ label: "COP", value: cop.toFixed(2) }];
       },

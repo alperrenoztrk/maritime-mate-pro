@@ -19,7 +19,7 @@ export const environment: CourseTopic = {
   entries: [
     {
       id: "co2-emission",
-      name: "CO₂ Emisyonu",
+      name: "CO₂ Emission",
       group: "Emisyonlar",
       formula: "CO₂ (tonnes) = Fuel (tonnes) × CF",
       variables: [
@@ -32,11 +32,11 @@ export const environment: CourseTopic = {
         { key: "fuel", label: "Fuel", unit: "t", placeholder: "1000" },
         { key: "cf", label: "Carbon Factor (CF)", unit: "", placeholder: "3.114" },
       ],
-      calculate: (v) => [{ label: "CO₂", value: `${(v.fuel * v.cf).toFixed(1)} ton` }],
+      calculate: (v) => [{ label: "CO₂", value: `${(v.fuel * v.cf).toFixed(1)} tonnes` }],
     },
     {
       id: "sox-emission",
-      name: "SOx Emisyonu",
+      name: "SOx Emission",
       group: "Emisyonlar",
       formula: "SOx (kg) = Fuel (tonnes) × S% × 20",
       variables: [
@@ -53,7 +53,7 @@ export const environment: CourseTopic = {
     },
     {
       id: "nox-emission",
-      name: "NOx Emisyonu",
+      name: "NOx Emission",
       group: "Emisyonlar",
       formula: "NOx (kg) = P (kW) × t (h) × EF / 1000",
       variables: [
@@ -61,7 +61,7 @@ export const environment: CourseTopic = {
         { symbol: "t", label: "Running time", unit: "h" },
         { symbol: "EF", label: "Emission factor", unit: "g/kWh" },
       ],
-      source: { code: "IMO MARPOL Annex VI", detail: "Kural 13 — NOx Tier limitleri" },
+      source: { code: "IMO MARPOL Annex VI", detail: "Regulation 13 — NOx Tier limits" },
       inputs: [
         { key: "p", label: "Power (P)", unit: "kW", placeholder: "8000" },
         { key: "t", label: "Time (t)", unit: "h", placeholder: "24" },
@@ -94,7 +94,7 @@ export const environment: CourseTopic = {
         { symbol: "P", label: "Main engine power", unit: "kW" },
         { symbol: "CF", label: "Carbon factor", unit: "t CO₂/t" },
         { symbol: "SFC", label: "Specific fuel consumption", unit: "g/kWh" },
-        { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
+        { symbol: "Capacity", label: "Capacity (DWT)", unit: "t" },
         { symbol: "Vref", label: "Reference speed", unit: "kn" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "EEXI — MEPC.333(76)" },
@@ -102,13 +102,13 @@ export const environment: CourseTopic = {
         { key: "p", label: "Power (P)", unit: "kW", placeholder: "8000" },
         { key: "cf", label: "CF", unit: "", placeholder: "3.114" },
         { key: "sfc", label: "SFC", unit: "g/kWh", placeholder: "180" },
-        { key: "cap", label: "Kapasite", unit: "t", placeholder: "50000" },
+        { key: "cap", label: "Capacity", unit: "t", placeholder: "50000" },
         { key: "vref", label: "Vref", unit: "kn", placeholder: "14" },
       ],
       calculate: (v) => {
         const denom = v.cap * v.vref;
-        if (denom <= 0) return [{ label: "Hata", value: "The capacity and Vref must be positive" }];
-        return [{ label: "EEXI", value: `${((v.p * v.cf * v.sfc) / denom).toFixed(2)} g CO₂/t·mil` }];
+        if (denom <= 0) return [{ label: "Error", value: "The capacity and Vref must be positive" }];
+        return [{ label: "EEXI", value: `${((v.p * v.cf * v.sfc) / denom).toFixed(2)} g CO₂/t·NM` }];
       },
     },
     {
@@ -118,19 +118,19 @@ export const environment: CourseTopic = {
       formula: "CII = Annual CO₂ / (Capacity × Distance)",
       variables: [
         { symbol: "Annual CO₂", label: "Total annual CO₂", unit: "g" },
-        { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
-        { symbol: "Distance", label: "Annual distance", unit: "deniz mili" },
+        { symbol: "Capacity", label: "Capacity (DWT)", unit: "t" },
+        { symbol: "Distance", label: "Annual distance", unit: "NM" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "CII — MEPC.336(76); derece A–E" },
       inputs: [
         { key: "co2", label: "Annual CO₂", unit: "g", placeholder: "300000000000" },
-        { key: "cap", label: "Kapasite", unit: "t", placeholder: "50000" },
-        { key: "dist", label: "Mesafe", unit: "n.mil", placeholder: "60000" },
+        { key: "cap", label: "Capacity", unit: "t", placeholder: "50000" },
+        { key: "dist", label: "Distance", unit: "NM", placeholder: "60000" },
       ],
       calculate: (v) => {
         const denom = v.cap * v.dist;
-        if (denom <= 0) return [{ label: "Hata", value: "The capacity and the distance must be positive" }];
-        return [{ label: "CII", value: `${(v.co2 / denom).toFixed(3)} g CO₂/t·mil` }];
+        if (denom <= 0) return [{ label: "Error", value: "The capacity and the distance must be positive" }];
+        return [{ label: "CII", value: `${(v.co2 / denom).toFixed(3)} g CO₂/t·NM` }];
       },
     },
     {
@@ -141,18 +141,18 @@ export const environment: CourseTopic = {
       variables: [
         { symbol: "∑CO₂", label: "Total annual CO₂", unit: "g" },
         { symbol: "DWT", label: "Transport capacity", unit: "t" },
-        { symbol: "∑Distance", label: "Total annual distance", unit: "deniz mili" },
+        { symbol: "∑Distance", label: "Total annual distance", unit: "NM" },
       ],
       source: { code: "IMO — AER (used in the CII calculation)" },
       inputs: [
         { key: "co2", label: "∑CO₂", unit: "g", placeholder: "300000000000" },
         { key: "dwt", label: "DWT", unit: "t", placeholder: "50000" },
-        { key: "dist", label: "∑Distance", unit: "n.mil", placeholder: "60000" },
+        { key: "dist", label: "∑Distance", unit: "NM", placeholder: "60000" },
       ],
       calculate: (v) => {
         const denom = v.dwt * v.dist;
-        if (denom <= 0) return [{ label: "Hata", value: "The DWT and the distance must be positive" }];
-        return [{ label: "AER", value: `${(v.co2 / denom).toFixed(3)} g CO₂/t·mil` }];
+        if (denom <= 0) return [{ label: "Error", value: "The DWT and the distance must be positive" }];
+        return [{ label: "AER", value: `${(v.co2 / denom).toFixed(3)} g CO₂/t·NM` }];
       },
     },
     {
@@ -197,7 +197,7 @@ export const environment: CourseTopic = {
         { symbol: "CF", label: "Carbon factor" },
         { symbol: "SFC", label: "Specific fuel consumption", unit: "g/kWh" },
         { symbol: "fi", label: "Capacity correction factor" },
-        { symbol: "Capacity", label: "Kapasite (DWT)", unit: "t" },
+        { symbol: "Capacity", label: "Capacity (DWT)", unit: "t" },
         { symbol: "Vref", label: "Reference speed", unit: "kn" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "EEDI — MEPC.245(66)" },
@@ -206,13 +206,13 @@ export const environment: CourseTopic = {
         { key: "cf", label: "CF", unit: "", placeholder: "3.114" },
         { key: "sfc", label: "SFC", unit: "g/kWh", placeholder: "180" },
         { key: "fi", label: "fi", unit: "", placeholder: "1" },
-        { key: "cap", label: "Kapasite", unit: "t", placeholder: "50000" },
+        { key: "cap", label: "Capacity", unit: "t", placeholder: "50000" },
         { key: "vref", label: "Vref", unit: "kn", placeholder: "14" },
       ],
       calculate: (v) => {
         const denom = v.fi * v.cap * v.vref;
-        if (denom <= 0) return [{ label: "Hata", value: "fi, the capacity and Vref must be positive" }];
-        return [{ label: "EEDI", value: `${((v.p * v.cf * v.sfc) / denom).toFixed(2)} g CO₂/t·mil` }];
+        if (denom <= 0) return [{ label: "Error", value: "fi, the capacity and Vref must be positive" }];
+        return [{ label: "EEDI", value: `${((v.p * v.cf * v.sfc) / denom).toFixed(2)} g CO₂/t·NM` }];
       },
     },
   ],

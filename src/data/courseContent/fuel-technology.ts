@@ -23,16 +23,16 @@ export const fuelTechnology: CourseTopic = {
       formula: "CCAI = D − 140,7·log(log(ν₅₀ + 0,85)) − 80,6",
       variables: [
         { symbol: "D", label: "Density at 15 °C", unit: "kg/m³" },
-        { symbol: "ν₅₀", label: "50°C kinematik viskozite", unit: "cSt" },
+        { symbol: "ν₅₀", label: "Kinematic viscosity at 50 °C", unit: "cSt" },
       ],
       source: { code: "ISO 8217 — calculated carbon aromaticity index (CCAI)" },
       inputs: [
         { key: "d", label: "Density at 15 °C (D)", unit: "kg/m³", placeholder: "991" },
-        { key: "v", label: "Viskozite 50°C (ν)", unit: "cSt", placeholder: "380" },
+        { key: "v", label: "Viscosity at 50 °C (ν)", unit: "cSt", placeholder: "380" },
       ],
       calculate: (vals) => {
         const ccai = vals.d - 140.7 * Math.log10(Math.log10(vals.v + 0.85)) - 80.6;
-        const quality = ccai < 840 ? "Good" : ccai < 870 ? "Kabul edilebilir" : "Poor ignition quality";
+        const quality = ccai < 840 ? "Good" : ccai < 870 ? "Acceptable" : "Poor ignition quality";
         return [
           { label: "CCAI", value: ccai.toFixed(0) },
           { label: "Kalite", value: quality },
@@ -67,12 +67,12 @@ export const fuelTechnology: CourseTopic = {
       group: "Fuel Properties",
       formula: "1 cSt = 1 mm²/s",
       variables: [
-        { symbol: "ν", label: "Kinematik viskozite", unit: "cSt = mm²/s" },
+        { symbol: "ν", label: "Kinematic viscosity", unit: "cSt = mm²/s" },
       ],
       source: { code: "Kinematic viscosity unit equivalence (Redwood No.1 ≈ 4.05 × cSt)" },
       note: "1 cSt = 1 mm²/s. Approximate conversions: Redwood No.1 ≈ 4.05 × cSt; Saybolt Universal (SSU) ≈ 4.635 × cSt.",
       inputs: [
-        { key: "v", label: "Kinematik Viskozite (ν)", unit: "cSt", placeholder: "380" },
+        { key: "v", label: "Kinematic Viscosity (ν)", unit: "cSt", placeholder: "380" },
       ],
       calculate: (v) => {
         return [
@@ -86,17 +86,17 @@ export const fuelTechnology: CourseTopic = {
       id: "fuel-heating-temperature",
       name: "Fuel Heating Temperature",
       group: "Fuel Treatment",
-      formula: "T = 50 + (ln(ν₅₀ / νhedef) / ln(1,055))",
+      formula: "T = 50 + (ln(ν₅₀ / ν_target) / ln(1.055))",
       variables: [
-        { symbol: "ν₅₀", label: "50°C viskozite", unit: "cSt" },
-        { symbol: "ν_hedef", label: "Hedef (enjeksiyon) viskozite", unit: "cSt" },
+        { symbol: "ν₅₀", label: "Viscosity at 50 °C", unit: "cSt" },
+        { symbol: "ν_target", label: "Target (injection) viscosity", unit: "cSt" },
         { symbol: "T", label: "Estimated heating temperature", unit: "°C" },
       ],
       source: { code: "Walther viscosity-temperature relation (approximate solution)" },
       note: "Estimates the heating temperature required to reach the HFO injection viscosity.",
       inputs: [
-        { key: "v50", label: "Viskozite @50°C", unit: "cSt", placeholder: "380" },
-        { key: "vTarget", label: "Hedef Viskozite", unit: "cSt", placeholder: "15" },
+        { key: "v50", label: "Viscosity @50 °C", unit: "cSt", placeholder: "380" },
+        { key: "vTarget", label: "Target Viscosity", unit: "cSt", placeholder: "15" },
       ],
       calculate: (v) => {
         // Walther denklemi yaklaşık çözümü
@@ -152,20 +152,20 @@ export const fuelTechnology: CourseTopic = {
       id: "settling-tank-time",
       name: "Settling Tank Time",
       group: "Fuel Treatment",
-      formula: "t ≥ 24 saat",
+      formula: "t ≥ 24 hours",
       variables: [
-        { symbol: "t", label: "Settling time", unit: "saat" },
+        { symbol: "t", label: "Settling time", unit: "h" },
       ],
       source: { code: "ISO 8217 — settling tank practice (HFO at 70 °C, gravity settling)" },
       note: "The recommended settling time for HFO is ≥ 24 hours. The planned time is entered and assessed against the limit.",
       inputs: [
-        { key: "t", label: "Planned Settling Time", unit: "saat", placeholder: "24" },
+        { key: "t", label: "Planned Settling Time", unit: "h", placeholder: "24" },
       ],
       calculate: (v) => {
         const margin = v.t - 24;
         return [
-          { label: "Margin to the Limit", value: `${margin.toFixed(1)} saat` },
-          { label: "Uygunluk", value: margin >= 0 ? "UYGUN (≥24 saat)" : "INSUFFICIENT (<24 hours)" },
+          { label: "Margin to the Limit", value: `${margin.toFixed(1)} h` },
+          { label: "Uygunluk", value: margin >= 0 ? "COMPLIANT (≥24 hours)" : "INSUFFICIENT (<24 hours)" },
         ];
       },
     },
@@ -194,8 +194,8 @@ export const fuelTechnology: CourseTopic = {
         const withMargin = total * (1 + v.margin / 100);
         return [
           { label: "Daily Consumption", value: `${daily.toFixed(1)} tonnes/day` },
-          { label: "Total Requirement", value: `${total.toFixed(1)} ton` },
-          { label: "Including Safety Margin", value: `${withMargin.toFixed(1)} ton` },
+          { label: "Total Requirement", value: `${total.toFixed(1)} tonnes` },
+          { label: "Including Safety Margin", value: `${withMargin.toFixed(1)} tonnes` },
         ];
       },
     },

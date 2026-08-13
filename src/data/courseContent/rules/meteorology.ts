@@ -65,14 +65,14 @@ export const meteorologyRules: RuleGroup[] = [
     ],
   },
   {
-    title: "STCW VIII/2 — Vardiya ve Hava Takibi",
+    title: "STCW VIII/2 — Watchkeeping and Weather Monitoring",
     source: {
       code: "STCW VIII/2",
       detail: "Watchkeeping principles",
     },
     rules: [
       {
-        subtitle: "Vardiya ve Meteoroloji Takibi",
+        subtitle: "Watchkeeping and Weather Monitoring",
         content: [
           "Bridge watchkeeping officers must continuously assess the meteorological data.",
           "Changes in the weather must be recorded in the deck log book.",
@@ -86,7 +86,7 @@ export const meteorologyRules: RuleGroup[] = [
     title: "MSI — NAVTEX, SafetyNET and Warnings",
     source: {
       code: "WMO No.471 / GMDSS MSI",
-      detail: "Maritime Safety Information; WMO denizcilik servisleri",
+      detail: "Maritime Safety Information; WMO marine services",
     },
     rules: [
       {
