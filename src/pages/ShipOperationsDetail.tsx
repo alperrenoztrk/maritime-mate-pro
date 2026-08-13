@@ -22,10 +22,10 @@ export default function ShipOperationsDetail() {
 
   return (
     <LibraryPageShell
-      title={`${ship.label} Operasyonları`}
+      title={`${ship.label} Operations`}
       icon={ClipboardList}
       backHref="/ship-operations"
-      backLabel="Gemi operasyonları kitaplığına dön"
+      backLabel="Back to the ship operations library"
       maxWidth="max-w-5xl"
     >
       <section className="overflow-hidden rounded-3xl border border-white/20 bg-card/75 shadow-lg">

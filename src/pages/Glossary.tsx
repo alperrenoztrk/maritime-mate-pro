@@ -63,7 +63,7 @@ const Glossary = () => {
     <LibraryPageShell title="Denizcilik Terimleri Sözlüğü" icon={BookOpenText}>
       <SEO
         title="Mariner's Book — Denizcilik Terimleri Sözlüğü"
-        description="Denizcilik terimleri sözlüğü: kategori filtreleri ve arama ile denizcilik kavramlarını hızlıca öğrenin."
+        description="Maritime glossary: learn maritime concepts quickly with category filters and search."
         path="/glossary"
       />
 

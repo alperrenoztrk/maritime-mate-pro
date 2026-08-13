@@ -57,8 +57,8 @@ interface OpenMeteoMarineWeather {
 }
 
 const NAVTEX_STATIONS = [
-  { id: "ISTANBUL", name: "Istanbul (Türkiye)", lat: 41.0082, lon: 28.9784 },
-  { id: "IZMIR", name: "Izmir (Türkiye)", lat: 38.4192, lon: 27.1287 },
+  { id: "ISTANBUL", name: "Istanbul (Turkey)", lat: 41.0082, lon: 28.9784 },
+  { id: "IZMIR", name: "Izmir (Turkey)", lat: 38.4192, lon: 27.1287 },
   { id: "ANTALYA", name: "Antalya (Türkiye)", lat: 36.8969, lon: 30.7133 },
   { id: "SAMSUN", name: "Samsun (Türkiye)", lat: 41.2867, lon: 36.33 },
   { id: "ATHENS", name: "Athens (Greece)", lat: 37.9838, lon: 23.7275 },

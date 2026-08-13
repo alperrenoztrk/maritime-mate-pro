@@ -55,7 +55,7 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     title: "Süreklilik ve Enerji Denklemleri",
     icon: Activity,
     subtopics: [
-      { id: "continuity-equation", title: "Süreklilik denklemi (Q = A·V)", hasContent: true },
+      { id: "continuity-equation", title: "Continuity equation (Q = A·V)", hasContent: true },
       { id: "bernoulli", title: "Bernoulli denklemi", hasContent: true },
       { id: "energy-losses", title: "Enerji çizgisi ve kayıp terimleri", hasContent: true },
     ],

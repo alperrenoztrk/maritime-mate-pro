@@ -87,7 +87,7 @@ export default function LocationSelector() {
       locationLabel: `${location.name}, ${location.country}`,
     });
     
-    toast.success(`Konum ayarlandı: ${location.name}`);
+    toast.success(`Location set: ${location.name}`);
     
     // Seçim sonrası hedef sayfaya dön
     navigate(returnTo);

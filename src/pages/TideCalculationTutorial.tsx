@@ -18,10 +18,7 @@ const TideCalculationTutorial = () => {
           <CardContent className="space-y-6 text-sm leading-6">
             <div className="space-y-2">
               <p>
-                Bu sayfa, gelgit hesabını sahada ve eğitim senaryolarında kullanılan yöntemlerle
-                adım adım açıklar. Amaç; HW/LW zaman-yükseklik bilgisinden istenen saatte gelgit
-                yüksekliğini bulmak, ardından harita derinliğine ekleyerek güvenli derinliği
-                değerlendirmektir.
+                This page explains the tide calculation step by step, using the methods applied in the field and in training scenarios. The aim is to find the tidal height at the required time from the HW/LW time-height data, then add it to the charted depth to assess the safe depth.
               </p>
             </div>
 
@@ -49,10 +46,7 @@ const TideCalculationTutorial = () => {
             <div className="space-y-3">
               <h3 className="text-base font-semibold">3) Standart limanda istenen saat için gelgit yüksekliği</h3>
               <p>
-                Standart yaklaşım, HW–LW aralığını 6 eşit saate bölmek ve “Rule of Twelfths” ile
-                saatlik artış/azalış yüzdesini kullanmaktır. Alternatif olarak gelgit grafiğinde, LW ve HW
-                noktalarını birleştirip gelgit yükseklik doğrusunu çizerek istenen saatteki yüksekliği
-                grafik üzerinden okuyabilirsin.
+                The standard approach is to divide the HW-LW interval into 6 equal hours and use the hourly rise/fall percentage from the “Rule of Twelfths”. Alternatively, on a tidal curve you can join the LW and HW points, draw the tidal height line and read the height at the required time off the graph.
               </p>
               <div className="rounded border bg-muted/30 p-3">
                 <div className="font-semibold">Rule of Twelfths — saatlik katkılar</div>

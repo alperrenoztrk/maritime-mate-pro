@@ -88,7 +88,7 @@ export default function RegulationsLibraryPage() {
         value={query}
         onChange={setQuery}
         placeholder="SOLAS, MARPOL, PSC veya sertifika ara…"
-        ariaLabel="Regülasyonlarda ara"
+        ariaLabel="Search regulations"
       />
 
       {showCategoryLibrary ? (

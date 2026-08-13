@@ -245,8 +245,7 @@ export default function MusterListPage() {
               <div>
                 <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Talim Başlıkları</h2>
                 <p className="mt-1 text-micro leading-relaxed text-muted-foreground">
-                  Periyodik zorunlu adlandırmalar; “Genel Talim” veya “Genel Alarm Talimi” bir SOLAS
-                  talim başlığı değildir. Genel acil durum alarmı, bu talimleri başlatan işarettir.
+                  These are the periodic mandatory drill names; “General Drill” or “General Alarm Drill” is not a SOLAS drill title. The general emergency alarm is the signal that starts these drills.
                 </p>
               </div>
             </div>
@@ -308,7 +307,7 @@ export default function MusterListPage() {
 
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
           <span>
-            <strong className="text-foreground">{visibleAssignments}</strong> personel rütbesi ·{" "}
+            <strong className="text-foreground">{visibleAssignments}</strong> crew ranks ·{" "}
             <strong className="text-foreground">{groups.length}</strong> acil durum ekibi
           </span>
           <span className="print:hidden">Kartlardaki rütbe bağlantıları mevcut görev detaylarını açar.</span>
@@ -507,8 +506,7 @@ export default function MusterListPage() {
             ))}
           </ul>
           <p className="mt-3 border-t border-border/40 pt-3 leading-relaxed">
-            Eğitim örneği; yayımlanmış gemi role cetveli, Fire Control Plan, LSA Plan, Damage
-            Control Plan, SOPEP/SMPEP ve şirket SMS'i her zaman önceliklidir.
+            Training example only; the published ship muster list, Fire Control Plan, LSA Plan, Damage Control Plan, SOPEP/SMPEP and the company SMS always take precedence.
           </p>
         </footer>
       </div>

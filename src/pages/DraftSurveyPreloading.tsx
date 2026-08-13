@@ -69,9 +69,9 @@ export default function DraftSurveyPreloading() {
     const trimByHead = parseFloat(drafts.forward) - parseFloat(drafts.aft);
     let stability = "good";
     if (Math.abs(trimByHead) > 2) {
-      stability = "Dikkat - Aşırı Trim";
+      stability = "Caution - Excessive Trim";
     } else if (Math.abs(trimByHead) > 1) {
-      stability = "Orta - Kontrollü Trim";
+      stability = "Moderate - Controlled Trim";
     }
 
     setResult({

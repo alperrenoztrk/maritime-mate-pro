@@ -81,7 +81,7 @@ export default function BridgeDeviceDetailPage() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <LessonImage
                     src={url}
-                    alt={`${device.name} örnek görsel ${index + 1}`}
+                    alt={`${device.name} sample image ${index + 1}`}
                     className="h-full w-full object-cover transition duration-sheet group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60" />
@@ -100,8 +100,7 @@ export default function BridgeDeviceDetailPage() {
         <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4 text-sm text-foreground shadow-inner sm:p-6">
           <p className="mb-2 text-base font-semibold text-primary">Neden önemli?</p>
           <p className="text-muted-foreground">
-            {device.name} modülü, köprüüstü ekiplerinin görevi güvenli, düzenli ve belgelenebilir şekilde yürütmesine yardımcı olur. Bu özet, yeni katılan
-            zabitler için hızlı bir oryantasyon, deneyimli vardiya zabitleri için ise tatbikat ve denetim hazırlığında referans rehberidir.
+            {device.name} module helps bridge teams carry out the task safely, methodically and in a way that can be documented. This summary is a quick orientation for newly joined officers and a reference guide for experienced watchkeepers preparing for drills and inspections.
           </p>
         </div>
       </div>

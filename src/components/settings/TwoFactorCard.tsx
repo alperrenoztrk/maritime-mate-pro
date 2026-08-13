@@ -107,8 +107,7 @@ export const TwoFactorCard = () => {
         ) : enabled ? (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Açık. Girişte şifrenizin yanında doğrulayıcı uygulamanızdaki 6 haneli kod
-              da istenir.
+              On. At sign-in you are asked for the 6-digit code from your authenticator app in addition to your password.
             </p>
             {factors.map((factor) => (
               <Button
@@ -126,8 +125,7 @@ export const TwoFactorCard = () => {
         ) : enrollment ? (
           <form onSubmit={handleConfirm} className="space-y-3">
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Google Authenticator, 1Password, Authy gibi bir uygulamayla aşağıdaki
-              QR'ı okutun, ardından ürettiği 6 haneli kodu girin.
+              Scan the QR code below with an app such as Google Authenticator, 1Password or Authy, then enter the 6-digit code it generates.
             </p>
             {/* Supabase QR'ı hazır SVG data-URI olarak döner; harici bir QR
                 kütüphanesine ya da ağ isteğine gerek yok. CSP `img-src data:`
@@ -179,8 +177,7 @@ export const TwoFactorCard = () => {
         ) : (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Şu anda devre dışı. Etkinleştirdiğinizde hesabınıza yalnızca şifrenizi
-              bilen değil, doğrulayıcı uygulamanıza da erişebilen biri girebilir.
+              Currently disabled. Once enabled, your account can only be accessed by someone who knows your password and can also reach your authenticator app.
             </p>
             <Button variant="outline" size="sm" className="w-full gap-2" disabled={busy} onClick={handleStart}>
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}

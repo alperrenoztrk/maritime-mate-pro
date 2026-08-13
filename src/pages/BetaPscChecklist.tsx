@@ -87,7 +87,7 @@ export default function BetaPscChecklist() {
     setExporting(true);
     try {
       const blob = await buildPscReport(state, vesselName, inspectionDate);
-      const safe = (vesselName || "gemi").replace(/[^\p{L}\p{N}_-]+/gu, "_");
+      const safe = (vesselName || "vessel").replace(/[^\p{L}\p{N}_-]+/gu, "_");
       downloadBlob(blob, `PSC_hazirlik_${safe}.xlsx`);
       toast.success("Rapor indirildi.");
     } catch (e) {
@@ -149,7 +149,7 @@ export default function BetaPscChecklist() {
             <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground">
               <span>İlerleme: {progressPct}%</span>
               <span>
-                {summary.total - summary.pending}/{summary.total} madde
+                {summary.total - summary.pending}/{summary.total} items
               </span>
             </div>
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-muted">
@@ -276,10 +276,7 @@ export default function BetaPscChecklist() {
         })}
 
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-800 dark:text-amber-200">
-          <strong className="font-semibold">Uyarı:</strong> Bu liste yalnızca
-          hazırlık amaçlıdır ve resmi bir denetim formu değildir. İşaretlemeler
-          yalnızca bu cihazda saklanır. Geminizin tipine ve sefer bölgesine özel
-          ek gereklilikleri daima ilgili sözleşme metinlerinden doğrulayın.
+          <strong className="font-semibold">Uyarı:</strong> This list is for preparation purposes only and is not an official inspection form. Check marks are stored on this device only. Always verify any additional requirements specific to your vessel type and trading area against the relevant convention texts.
         </div>
       </div>
 

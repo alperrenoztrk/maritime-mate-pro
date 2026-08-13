@@ -95,7 +95,7 @@ export default function DraftSurveyComparative() {
       
       let trend = "Sabit";
       if (draftChange > 0.05) trend = "Artış";
-      else if (draftChange < -0.05) trend = "Azalış";
+      else if (draftChange < -0.05) trend = "Decrease";
       
       comparisons.push({
         from: prev.name,
@@ -400,7 +400,7 @@ export default function DraftSurveyComparative() {
                     <p><strong>Trend:</strong> 
                       <span className={`ml-1 ${
                         comparison.trend === 'Artış' ? 'text-green-600 dark:text-green-400' :
-                        comparison.trend === 'Azalış' ? 'text-red-600 dark:text-red-400' :
+                        comparison.trend === 'Decrease' ? 'text-red-600 dark:text-red-400' :
                         'text-gray-600 dark:text-gray-400'
                       }`}>
                         {comparison.trend}

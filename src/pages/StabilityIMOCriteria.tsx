@@ -52,7 +52,7 @@ export default function StabilityIMOCriteriaPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="area030">0-30° Altındaki Alan (m·rad)</Label>
+              <Label htmlFor="area030">Area Under 0-30° (m·rad)</Label>
               <Input
                 id="area030"
                 type="number"
@@ -64,7 +64,7 @@ export default function StabilityIMOCriteriaPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="area040">0-40° Altındaki Alan (m·rad)</Label>
+              <Label htmlFor="area040">Area Under 0-40° (m·rad)</Label>
               <Input
                 id="area040"
                 type="number"
@@ -76,7 +76,7 @@ export default function StabilityIMOCriteriaPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="area3040">30-40° Arası Alan (m·rad)</Label>
+              <Label htmlFor="area3040">Area Between 30-40° (m·rad)</Label>
               <Input
                 id="area3040"
                 type="number"

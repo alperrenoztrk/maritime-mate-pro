@@ -159,7 +159,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Fuel Treatment",
       formulas: [
         { name: "Heating Power", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: fuel flow rate, cp: specific heat (~2 kJ/kg·K for HFO), ΔT: temperature rise" },
-        { name: "Settling Tank Time", formula: "t ≥ 24 saat (ISO 8217)", variables: "Tank temperature: 70 °C (HFO), gravity settling of water and solids" },
+        { name: "Settling Tank Time", formula: "t ≥ 24 hours (ISO 8217)", variables: "Tank temperature: 70 °C (HFO), gravity settling of water and solids" },
       ],
     },
   ],
@@ -308,7 +308,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "EEDI", formula: "EEDI = (CO₂ emission) / (Capacity × Speed)", variables: "Unit: g CO₂/(tonne·mile); a mandatory upper limit for new ships" },
         { name: "EEXI", formula: "EEXI = (PME × Cf × SFCME) / (DWT × Vref)", variables: "For existing ships (mandatory from 2023)" },
-        { name: "CII (Annual)", formula: "CII = CO₂toplam / (DWT × Dtoplam)", variables: "D: total annual distance sailed (nautical miles); rating: A–E" },
+        { name: "CII (Annual)", formula: "CII = CO₂total / (DWT × Dtotal)", variables: "D: total annual distance sailed (nautical miles); rating: A–E" },
         { name: "AER", formula: "AER = CO₂ / (DWT × Distance)", variables: "Annual Efficiency Ratio — used in the CII calculation" },
       ],
     },

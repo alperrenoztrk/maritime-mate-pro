@@ -26,9 +26,7 @@ export default function BetaShipSimulator() {
         </header>
 
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-800 dark:text-amber-200">
-          <strong className="font-semibold">Uyarı:</strong> Beta özellikler
-          deneme aşamasındadır. Simülasyon çıktılarını eğitim amaçlı kullanın ve
-          gerçek stabilite kararlarında resmi hesaplamalarla doğrulayın.
+          <strong className="font-semibold">Uyarı:</strong> Beta features are experimental. Use the simulation output for training purposes and verify it against official calculations before making real stability decisions.
         </div>
 
         <section className="rounded-2xl border border-border/60 bg-card/90 p-5">

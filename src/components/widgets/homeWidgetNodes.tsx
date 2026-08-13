@@ -37,8 +37,8 @@ function wmoText(code?: number): string {
   if (code === undefined) return "—";
   if (code === 0) return "open";
   if (code === 1) return "Az Bulutlu";
-  if (code === 2) return "Parçalı Bulutlu";
-  if (code === 3) return "Kapalı";
+  if (code === 2) return "Partly Cloudy";
+  if (code === 3) return "Overcast";
   if (code <= 48) return "Puslu";
   if (code <= 67) return "Yağmurlu";
   if (code <= 77) return "Karlı";

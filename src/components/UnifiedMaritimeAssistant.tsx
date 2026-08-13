@@ -325,12 +325,7 @@ Ask a detailed question and I will provide you with calculations and explanation
         {/* Question Input */}
         <div className="space-y-3">
           <Textarea
-            placeholder="Denizcilikle ilgili sorularınızı buraya yazınız...
-
-Örnekler:
-• 'How to calculate GM?'
-• 'GM value of the ship with KM 15.2m, KG 14.8m?'
-• 'What are the stability criteria?'"
+            placeholder="Type your maritime questions here...\n\nExamples:\n• 'How to calculate GM?'\n• 'GM value of the ship with KM 15.2m, KG 14.8m?'\n• 'What are the stability criteria?'"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             className="min-h-[100px] resize-none"

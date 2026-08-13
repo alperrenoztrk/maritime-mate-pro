@@ -43,9 +43,9 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
   }, [overview]);
 
   const trendText = useMemo(() => {
-    if (!overview) return 'Henüz veri yok';
+    if (!overview) return 'No data yet';
     switch (overview.recentTrend) {
-      case 'improving': return 'Gelişiyor';
+      case 'improving': return 'Improving';
       case 'declining': return 'Düşüyor';
       default: return 'Stabil';
     }

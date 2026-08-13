@@ -142,7 +142,7 @@ function ToolCard({
       </Link>
       <button
         type="button"
-        aria-label={favorite ? "Favorilerden çıkar" : "Favorilere ekle"}
+        aria-label={favorite ? "Remove from favourites" : "Favorilere ekle"}
         aria-pressed={favorite}
         onClick={(event) => {
           event.preventDefault();
@@ -202,7 +202,7 @@ export default function CalculationsLibraryPage() {
       title={activeMeta?.title ?? "Hesaplamalar"}
       icon={activeMeta?.icon ?? BarChart3}
       onBack={activeCategory ? () => setActiveCategory(null) : undefined}
-      backLabel="Hesaplama kategorilerine dön"
+      backLabel="Back to calculation categories"
     >
       <LibrarySearchField
         value={query}

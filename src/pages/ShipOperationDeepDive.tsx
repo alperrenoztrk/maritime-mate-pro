@@ -254,8 +254,7 @@ function OperationSummary({
 
       {longFormMissing && (
         <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-xs leading-relaxed text-muted-foreground">
-          Bu operasyonun bölüm bölüm uzun anlatımı hazırlanıyor. Aşağıdaki özet, doğrulanmış
-          operasyon verisinin tamamını gösterir.
+          A chapter-by-chapter long-form write-up of this operation is being prepared. The summary below shows the complete verified operation data.
         </p>
       )}
 

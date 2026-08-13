@@ -37,7 +37,7 @@ export default function MachineQuizPage() {
             <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
               <span>Toplam soru havuzu: {maxCount}</span>
               <span>•</span>
-              <span>Görüntülenen: {count} soru</span>
+              <span>Görüntülenen: {count} questions</span>
               <span>•</span>
               <span>Ana makine, yardımcı sistemler, emniyet</span>
             </div>

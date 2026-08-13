@@ -36,7 +36,7 @@ export default function StabilityQuizPage() {
           <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
             <span>Toplam soru havuzu: {maxCount}</span>
             <span>•</span>
-            <span>Karışık {count} soru</span>
+            <span>Karışık {count} questions</span>
             <span>•</span>
             <span>Teorik ve sayısal karışık</span>
           </div>

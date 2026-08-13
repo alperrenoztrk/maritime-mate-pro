@@ -58,7 +58,7 @@ export function DocumentExpiryNotifier() {
 
         const first = due[0];
         const firstState = getDocumentExpiryState(first.expiry_date, first.no_expiry);
-        const extra = due.length > 1 ? ` and ${due.length - 1} belge daha` : "";
+        const extra = due.length > 1 ? ` and ${due.length - 1} more documents` : "";
         const body = `${first.title}: ${firstState.label}${extra}.`;
 
         toast.warning("Document deadline reminder", {

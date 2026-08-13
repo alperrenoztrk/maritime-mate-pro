@@ -305,8 +305,7 @@ function SystemSummary({
 
       {longFormMissing && (
         <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-xs leading-relaxed text-muted-foreground">
-          Mesleki ders anlatımı yüklenemedi. Bağlantıyı yenileyip tekrar deneyin; aşağıdaki özet
-          doğrulanmış konu verisinin tamamını gösterir.
+          The professional lesson content could not be loaded. Refresh the connection and try again; the summary below shows the complete verified topic data.
         </p>
       )}
 
@@ -340,11 +339,11 @@ function SystemSummary({
                 type="button"
                 className="block w-full cursor-zoom-in overflow-hidden text-left group"
                 onClick={() => onOpenImage(topicImage, topic.title)}
-                aria-label={`${topic.title} fotoğrafını büyüt`}
+                aria-label={`${topic.title} photograph`}
               >
                 <img
                   src={topicImage}
-                  alt={`${topic.title} için gerçek gemi kurulum örneği`}
+                  alt={`${topic.title} real-world shipboard installation example`}
                   className="h-48 w-full object-cover transition-transform duration-page group-hover:scale-[1.02]"
                   loading="lazy"
                 />

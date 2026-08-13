@@ -207,9 +207,7 @@ export default function BuoyagePage() {
                   Işık Karakteri Kısaltmaları
                 </h2>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  Gece bir işareti gövde renginden değil, ışık ritminden tanırsınız. Gözle görülen
-                  ritim haritadaki imzayla eşleşmiyorsa ya yanlış ışığa bakıyorsunuzdur ya da mevki
-                  varsayımınız hatalıdır.
+                  At night you recognise a mark by its light rhythm, not by the colour of its body. If the rhythm you see does not match the signature on the chart, either you are looking at the wrong light or your position assumption is wrong.
                 </p>
               </div>
               <div>

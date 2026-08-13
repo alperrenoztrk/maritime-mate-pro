@@ -83,11 +83,11 @@ export default function LessonsLibraryPage() {
       }
       icon={activeView === "deck" ? Ship : activeView === "machine" ? Wrench : BookOpenText}
       onBack={activeView ? closeView : undefined}
-      backLabel="Dersler ana ekranına dön"
+      backLabel="Back to the lessons home screen"
     >
       <SEO
         title="Mariner's Book — Denizcilik Dersleri"
-        description="Güverte ve makine kitaplıklarında yapılandırılmış denizcilik dersleri."
+        description="Structured maritime lessons in the deck and engine libraries."
         path="/lessons"
         jsonLd={LESSONS_JSONLD}
       />
