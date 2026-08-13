@@ -145,6 +145,11 @@ const BALANCED_BANKS = new Set([
   "machine/automation",
   "machine/engine-room-safety",
   "machine/erm",
+  "beta/seamanship",
+  "beta/economics",
+  "beta/safety",
+  "beta/environment",
+  "beta/cargo",
 ]);
 
 /**
@@ -160,11 +165,6 @@ const LENGTH_BUDGET = {
   "beta/machine": 86,
   "beta/communication": 87,
   "beta/stability": 70,
-  "beta/cargo": 93,
-  "beta/safety": 89,
-  "beta/environment": 89,
-  "beta/seamanship": 100,
-  "beta/economics": 97,
 };
 
 /**
@@ -182,11 +182,6 @@ const POSITION_BUDGET = {
   "beta/machine": 100,
   "beta/communication": 100,
   "beta/stability": 100,
-  "beta/cargo": 100,
-  "beta/safety": 100,
-  "beta/environment": 100,
-  "beta/seamanship": 100,
-  "beta/economics": 100,
 };
 
 const errors = [];
