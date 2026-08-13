@@ -10,7 +10,7 @@ const content: CrewTaskLongForm = {
     "SOLAS Chapter II-2 (Fire Protection, Detection and Extinction)",
     "FSS Code (International Code for Fire Safety Systems)",
     "ISM Code (International Safety Management Code)",
-    "IMO Resolution A.1072(28) — Enclosed space entry & rescue drills",
+    "SOLAS III/19.3.3 & III/19.3.6 — Enclosed space entry & rescue drills",
     "OCIMF / ISGOTT — Hot Work & Permit-to-Work Guidelines",
     "SOLAS II-1 Reg. 43-44 — Emergency power & generator",
     "IMO MSC.1/Circ.1432 — Maintenance & inspection of fire-protection systems",
@@ -171,7 +171,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.1 Giriş izni ve atmosfer testi",
           paragraphs: [
             `Boş yakıt tankı, kazan, krank karteri, sintine kuyusu, kofferdam gibi kapalı alanlara giriş enclosed space entry permit ile yapılır. Giriş öncesi atmosfer ölçülür: O2 %20.9, LEL %0, toksik gazlar (H2S, CO) güvenli sınırda. Sürekli havalandırma, standby personel (gözcü), haberleşme ve rescue plan zorunludur.`,
-            `IMO Res. A.1072(28) gereği enclosed space entry ve rescue drill her 2 ayda bir yapılmalıdır. Kapalı alan kazaları genellikle "kurtarmaya koşan ikinci kişi" ölümleriyle çoğalır; bu yüzden gözcü asla içeri girmez, alarm verir ve donanımlı rescue ekibini bekler.`,
+            `SOLAS III/19.3.3 gereği enclosed space entry ve rescue drill en az 2 ayda bir yapılmalıdır; tatbikatın planlanması ve içeriği III/19.3.6 ile IMO Res. A.1050(27) tavsiyelerine dayanır. Kapalı alan kazaları genellikle "kurtarmaya koşan ikinci kişi" ölümleriyle çoğalır; bu yüzden gözcü asla içeri girmez, alarm verir ve donanımlı rescue ekibini bekler.`,
           ],
           callouts: [
             {

@@ -167,6 +167,16 @@ for (const title of [
   assert(drillSource.includes(`title: "${title}"`), `SOLAS drill missing: ${title}`);
 }
 assert(!drillSource.includes('title: "Genel Talim"'), 'Invalid "Genel Talim" heading exists');
+// "Genel alarm" bir talim adı değil, talimi başlatan işarettir: ne talim listesinde
+// ne de muster list sekmelerinde bir başlık olarak görünmelidir.
+assert(
+  !/title: "[^"]*Genel Alarm[^"]*"/.test(drillSource),
+  'Invalid "Genel Alarm" drill heading exists',
+);
+assert(
+  !/shortTitle: "Genel Alarm"/.test(read("src/data/musterList.ts")),
+  'Muster list must not label the general emergency as a drill named "Genel Alarm"',
+);
 
 // Operasyon ekranları gemi görselleriyle değil sade cilt kapaklarıyla çalışıyor:
 // her gemi tipi yalnızca kapak rengini (Tailwind gradyan durakları) taşımalı.

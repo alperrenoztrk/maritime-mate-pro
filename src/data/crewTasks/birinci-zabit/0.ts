@@ -110,7 +110,7 @@ const content: CrewTaskLongForm = {
             {
               type: "warning",
               title: "Enclosed space entry",
-              text: `Hold ve tank içine giriş enclosed space entry permit ile yapılır. O2, LEL, H2S, CO ölçümleri sürekli yapılır. Standby personel ve rescue plan zorunludur. SOLAS III/19 kapsamında yıllık enclosed space drill yapılmalıdır.`,
+              text: `Hold ve tank içine giriş enclosed space entry permit ile yapılır. O2, LEL, H2S, CO ölçümleri sürekli yapılır. Standby personel ve rescue plan zorunludur. SOLAS III/19.3.3 kapsamında en az iki ayda bir enclosed space entry ve rescue drill yapılmalıdır.`,
             },
           ],
         },

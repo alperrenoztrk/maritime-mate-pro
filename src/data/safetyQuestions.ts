@@ -7,7 +7,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
     question: "SOLAS'a göre yolcu gemilerinde haftalık olarak yapılması zorunlu tatbikatlar hangileridir?",
     options: ["Yalnızca yangın tatbikatı", "Yalnızca can salı tatbikatı", "Gemiyi terk (abandon ship) ve yangın tatbikatı", "ISPS güvenlik tatbikatı"],
     correctAnswer: 2,
-    explanation: "SOLAS III/19.3.2: yolcu gemilerinde her hafta bir gemiyi terk (abandon ship) tatbikatı ve bir yangın tatbikatı yapılmalıdır. Ayrıca yeni binen yolcular için kalkıştan önceki 24 saat içinde toplanma (muster) düzenlenir.",
+    explanation: "SOLAS III/30.2: yolcu gemilerinde her hafta bir gemiyi terk (abandon ship) tatbikatı ve bir yangın tatbikatı yapılmalıdır. 24 saatten uzun süre yolcu taşınan seferlerde yeni binen yolcuların toplanması (muster), SOLAS III/19.2.2 gereği kalkıştan önce veya kalkıştan hemen sonra yapılır.",
     category: "SOLAS/LSA"
   },
   {
@@ -207,7 +207,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
     question: "SOLAS'a göre yük gemilerinde gemiyi terk (abandon ship) ve yangın tatbikatları hangi sıklıkta yapılmalıdır?",
     options: ["Haftada bir", "Ayda bir", "Üç ayda bir", "Yılda bir"],
     correctAnswer: 1,
-    explanation: "SOLAS III/19.3.2: yük gemilerinde her bir gemiyi terk ve yangın tatbikatı ayda en az bir kez yapılır. Mürettebatın %25'inden fazlası değiştiyse kalkıştan sonraki 24 saat içinde tatbikat yapılır.",
+    explanation: "SOLAS III/19.3.2: her mürettebat üyesi ayda en az bir gemiyi terk ve bir yangın tatbikatına katılır. Mürettebatın %25'inden fazlası bir önceki ay o gemideki tatbikatlara katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde tatbikat yapılır.",
     category: "SOLAS/LSA"
   },
   {
@@ -215,7 +215,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
     question: "SOLAS'a göre can filikalarının (lifeboat) suya indirilerek yapılan tatbikatı hangi azami aralıkta gerçekleştirilmelidir?",
     options: ["1 ay", "3 ay", "6 ay", "12 ay"],
     correctAnswer: 1,
-    explanation: "SOLAS III/19.3.3.3: her can filikası mümkünse her ay yüzdürülmeli ve manevra yaptırılmalıdır; ancak en az 3 ayda bir indirilip suda kullanılmalıdır.",
+    explanation: "SOLAS III/19.3.4.3: her can filikası, atanmış işletme ekibiyle en az 3 ayda bir gemiyi terk tatbikatı sırasında suya indirilip suda manevra ettirilir. Serbest düşüşlü filikalarda en az 6 ayda bir fiili veya simüle indirme yapılır.",
     category: "SOLAS/LSA"
   },
   {
@@ -463,7 +463,7 @@ const baseSafetyQuestions: QuizQuestion[] = [
     question: "SOLAS III/19'a göre her mürettebat üyesinin can salı/filika tatbikatlarına en geç ne kadar süre içinde katılmış olması gerekir?",
     options: ["Gemiye katıldıktan sonraki ilk hafta", "Gemiye katıldıktan sonraki ilk ay", "İlk üç ay", "İlk altı ay"],
     correctAnswer: 1,
-    explanation: "SOLAS III/19.3.2: bir mürettebat üyesi son tatbikata katılmamışsa, gemiye katılmasını izleyen 24 saat içinde gemiyle tanıştırılmalı ve tatbikatlara katılmalıdır; her üye ayda bir tatbikata katılır.",
+    explanation: "SOLAS III/19.3.2: her mürettebat üyesi ayda en az bir gemiyi terk ve bir yangın tatbikatına katılır. Gemiye katılan personele SOLAS III/19.4.1 gereği en geç iki hafta içinde can kurtarma ve yangın donanımı eğitimi verilir.",
     category: "SOLAS/LSA"
   },
   {

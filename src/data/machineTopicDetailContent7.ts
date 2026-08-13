@@ -434,7 +434,7 @@ const content7: ContentMap = {
             "Kapalı alan girişinde O₂, H₂S, CO ve LEL ölçümü üst-orta-alt seviyede yapılmalı; sonuçlar permit formuna saat/dakika ile kaydedilmelidir. Ölçüm tek seferlik değil, giriş boyunca periyodik devam etmelidir.",
             "Mekanik havalandırma yeterli süre çalıştırılmalı; havalandırma kesildiğinde giriş otomatik olarak askıya alınmalıdır. Giriş yapan personelde kişisel çoklu gaz detektörü sürekli aktif olmalıdır.",
             "Giriş gözcüsü, iletişim hattı ve kurtarma ekipmanı (SCBA, tripod, retrieval line) hazır olmadan giriş başlatılmamalıdır. Kurtarma yalnızca eğitimli ekip tarafından yapılmalı; izinsiz ikinci giriş kesinlikle yasaktır.",
-            "Yılda en az iki gerçekçi kapalı alan kurtarma tatbikatı yapılarak ölçüm, iletişim ve tahliye süreleri raporlanmalıdır."
+            "SOLAS III/19.3.3 gereği en az iki ayda bir gerçekçi kapalı alan giriş ve kurtarma tatbikatı yapılarak ölçüm, iletişim ve tahliye süreleri raporlanmalıdır."
           ],
           bulletPoints: ["O₂ kabul aralığı: yaklaşık %20.9 (prosedür limitleri esas alınır)", "LEL > limit ise giriş yok", "Standby personel aktif güvenlik bariyeridir, pasif gözlemci değildir", "Permit imzası, saha doğrulaması olmadan geçerli sayılmamalıdır"]
         },

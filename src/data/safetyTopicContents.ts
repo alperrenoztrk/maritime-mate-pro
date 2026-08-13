@@ -252,7 +252,7 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Talimler (Drills) ve Eğitim",
         content:
-          "SOLAS düzenli talimleri zorunlu kılar: yangın ve gemi terk talimi genellikle ayda en az bir kez yapılır; yeni katılan mürettebat gemiye binişten kısa süre sonra (tipik 24 saat içinde) eğitilir. Yolcu gemilerinde yolcu toplanma talimi sefer başında uygulanır. Filika belirli aralıklarla suya indirilip çalıştırılır; can salı ve kurtarma botu prosedürleri tatbik edilir. Kapalı mahal giriş/kurtarma ve karaya oturma/çatışma/kirlilik gibi senaryolar da düzenli talim edilir. Talimler gemi günlüğüne kaydedilir.",
+          "SOLAS düzenli talimleri zorunlu kılar: her mürettebat üyesi ayda en az bir yangın ve bir gemi terk talimine katılır (III/19.3.2); yolcu gemilerinde bu talimler haftalık yapılır (III/30.2). Mürettebatın %25'inden fazlası bir önceki ay gemideki talimlere katılmamışsa, limandan ayrılmayı izleyen 24 saat içinde talim yapılır. Gemiye katılan personele can kurtarma ve yangın donanımı eğitimi en geç iki hafta içinde verilir (III/19.4.1). 24 saatten uzun yolcu seferlerinde yolcu toplanması kalkıştan önce veya hemen sonra yapılır (III/19.2.2). Her filika en az üç ayda bir suya indirilip manevra yaptırılır (III/19.3.4.3); kurtarma botu mümkünse aylık, her hâlükârda en az üç ayda bir indirilir (III/19.3.4.4). Kapalı mahal giriş ve kurtarma talimi en az iki ayda bir yapılır (III/19.3.3). Talimler gemi günlüğüne kaydedilir (III/19.5).",
       },
       {
         title: "Acil Durum Planları ve İletişim",
@@ -263,7 +263,7 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
     keyPoints: [
       "Muster list herkesin toplanma istasyonunu ve acil görevini gösterir; görünür yerlere asılır.",
       "Genel acil durum alarmı: yedi kısa + bir uzun düdük; gemi terk kararını yalnızca kaptan verir.",
-      "Yangın ve gemi terk talimi ayda en az bir kez; yeni mürettebat ~24 saat içinde eğitilir.",
+      "Yangın ve gemi terk talimi ayda en az bir kez; kapalı mahal talimi en az iki ayda bir; gemiye katılan personel en geç iki hafta içinde eğitilir.",
       "Yazılı acil durum planları SMS'te güncel tutulur; köprüüstü olayı koordine eder.",
     ],
   },

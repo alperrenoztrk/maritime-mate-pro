@@ -1899,12 +1899,12 @@ FREEFALL İNDİRME:
 
 TATBİKATLAR (DRILLS):
 
-SOLAS gereği her ay abandon ship tatbikatı yapılır. Her mürettebat 3 ayda bir fiili indirme tatbikatına katılmalıdır.`,
+SOLAS III/19.3.2 gereği her mürettebat üyesi ayda en az bir abandon ship tatbikatına katılır. Her can filikası, atanmış işletme ekibiyle en az 3 ayda bir suya indirilip suda manevra yaptırılır (SOLAS III/19.3.4.3).`,
     bulletPoints: [
       "Abandon ship sinyali: 7 kısa + 1 uzun düdük",
       "On-load release: sandal denizde iken hook serbest bırakılır",
       "Freefall: emniyet kemeri zorunlu, çok hızlı tahliye",
-      "Her ay tatbikat, 3 ayda bir fiili indirme (SOLAS)",
+      "Aylık tatbikat (III/19.3.2); her filika en az 3 ayda bir suya indirilir (III/19.3.4.3)",
     ],
     warnings: [
       "On-load release mekanizması yanlış kullanımda kaza riski taşır; eğitim kritiktir",
@@ -1933,12 +1933,12 @@ Man overboard (denize adam düşmesi) durumunda kurtarma botu en hızlı müdaha
 
 TATBİKAT:
 
-Her ay kurtarma botu tatbikatı yapılmalıdır. Kurtarma botu mürettebatı özel eğitimli olmalıdır.`,
+Kurtarma botu, mümkün olduğu ölçüde her ay, her hâlükârda en az 3 ayda bir atanmış ekibiyle suya indirilip manevra yaptırılır (SOLAS III/19.3.4.4). Kurtarma botu mürettebatı özel eğitimli olmalıdır.`,
     bulletPoints: [
       "Minimum 6 kişi kapasiteli, 6 knot hız",
       "İndirme süresi ≤ 5 dakika",
       "MOB durumunda birincil müdahale aracı",
-      "Her ay tatbikat zorunludur",
+      "Mümkünse aylık, her hâlükârda en az 3 ayda bir suya indirme (SOLAS III/19.3.4.4)",
     ],
     keyPoints: [
       "Williamson turn: 60° dönüş + karşı dümen → orijinal hatta dönüş",
@@ -2210,7 +2210,7 @@ Fire suit (itfaiyeci elbisesi): Isıya dayanıklı giriş elbisesi. Yaklaşma el
     introduction: "SOLAS, tüm gemilerde düzenli yangın tatbikatları yapılmasını zorunlu kılar; tatbikatlar mürettebatın gerçek yangın durumunda etkin müdahale yeteneğini geliştirir.",
     content: `TATBİKAT GEREKSİNİMLERİ (SOLAS III/19):
 
-Yangın tatbikatı en az ayda bir yapılmalıdır. Yeni mürettebat katılan ilk hafta içinde tatbikat yapılmalıdır. Tatbikat, mümkün olduğunca gerçekçi senaryolarla planlanmalıdır.
+Her mürettebat üyesi ayda en az bir yangın tatbikatına katılmalıdır (III/19.3.2). Mürettebatın %25'inden fazlası bir önceki ay gemideki tatbikatlara katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde tatbikat yapılır. Gemiye katılan personele yangın donanımı eğitimi en geç iki hafta içinde verilir (III/19.4.1). Tatbikat, mümkün olduğunca gerçekçi senaryolarla planlanmalıdır.
 
 TATBİKAT İÇERİĞİ:
 
@@ -2219,16 +2219,17 @@ TATBİKAT İÇERİĞİ:
 3. Yangın hortumu açma ve su basma
 4. Taşınabilir söndürücü kullanımı
 5. BA giyimi ve kullanımı
-6. Kapalı alan kurtarma tatbikatı
-7. Yangın kapılarının ve damperlerinin kontrolü
+6. Haberleşme donanımının kontrolü
+7. Yangın kapılarının, su geçirmez kapıların ve damperlerin kontrolü
 8. Yangın pompa ve acil jeneratör çalıştırma
+9. Gemiyi terk için gerekli düzenlemelerin gözden geçirilmesi
 
 KAYIT VE DOKÜMANTASYON:
 
 Tüm tatbikatlar jurnale kaydedilir. Tatbikat tarihi, senaryosu, katılımcıları ve değerlendirme notları yazılır. PSC denetimlerinde tatbikat kayıtları kontrol edilir. Eksik tatbikat kaydı, geminin alıkonulma (detention) sebebi olabilir.`,
     bulletPoints: [
-      "Yangın tatbikatı: en az ayda bir (SOLAS III/19)",
-      "Yeni mürettebat: ilk hafta içinde tatbikat zorunlu",
+      "Yangın tatbikatı: her mürettebat üyesi için ayda en az bir (SOLAS III/19.3.2)",
+      "Gemiye katılan personel: en geç 2 hafta içinde LSA/FFE eğitimi (SOLAS III/19.4.1)",
       "BA giyimi, hortum açma, söndürücü kullanımı tatbikat kapsamında",
       "Tüm tatbikatlar jurnale kaydedilir; PSC'de kontrol edilir",
     ],

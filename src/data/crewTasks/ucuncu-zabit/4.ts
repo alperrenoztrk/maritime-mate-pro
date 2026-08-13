@@ -168,7 +168,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 Drill'e katılım ve pekiştirme",
           paragraphs: [
-            `SOLAS III/19 gereği, crew'un önemli bir kısmı değişmişse yeni personel gemiye katıldıktan sonra 24 saat içinde drill yapılır. Safety Officer, yeni personelin ilk drill'de aktif rol almasını sağlar; familiarization'da öğretilen bilgi gerçek senaryo provasıyla pekiştirilir.`,
+            `SOLAS III/19.3.2 gereği, mürettebatın %25'inden fazlası bir önceki ayda gemideki drill'lere katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde drill yapılır. Safety Officer, yeni personelin ilk drill'de aktif rol almasını sağlar; familiarization'da öğretilen bilgi gerçek senaryo provasıyla pekiştirilir.`,
           ],
         },
       ],

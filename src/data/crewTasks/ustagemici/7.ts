@@ -168,7 +168,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Enclosed space rescue drill",
           paragraphs: [
-            `SOLAS III/19, kapalı mekan giriş ve kurtarma tatbikatlarının düzenli (örneğin iki ayda bir) yapılmasını zorunlu kılar. Bu tatbikatlarda atmosfer testi, izin kullanımı, SCBA giyme, lifeline ile kurban çıkarma ve resüsitasyon canlandırılır. AB, gerçek anda düşünmeden uygulayacak refleksi bu tatbikatlarda kazanır.`,
+            `SOLAS III/19.3.3, kapalı mekan giriş ve kurtarma tatbikatlarının en az iki ayda bir yapılmasını zorunlu kılar. Bu tatbikatlarda atmosfer testi, izin kullanımı, SCBA giyme, lifeline ile kurban çıkarma ve resüsitasyon canlandırılır. AB, gerçek anda düşünmeden uygulayacak refleksi bu tatbikatlarda kazanır.`,
             `Tatbikatta kurtarma ekipmanının çalıştığı, SCBA tüplerinin dolu olduğu ve çıkarma düzeninin (tripod/vinç) işlediği teyit edilir. Tatbikat sonrası eksikler raporlanır ve giderilir. "Kâğıt üzerinde drill", gerçek acilde işe yaramaz; AB her tatbikatı ciddiye alır.`,
           ],
           callouts: [
