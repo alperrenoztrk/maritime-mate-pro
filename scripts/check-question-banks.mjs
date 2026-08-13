@@ -152,6 +152,7 @@ const BALANCED_BANKS = new Set([
   "beta/cargo",
   "beta/communication",
   "beta/meteorology",
+  "beta/stability",
 ]);
 
 /**
@@ -164,7 +165,6 @@ const BALANCED_BANKS = new Set([
 const LENGTH_BUDGET = {
   "beta/navigation": 74,
   "beta/machine": 86,
-  "beta/stability": 70,
 };
 
 /**
@@ -179,7 +179,6 @@ const LENGTH_BUDGET = {
 const POSITION_BUDGET = {
   "beta/navigation": 97,
   "beta/machine": 100,
-  "beta/stability": 100,
 };
 
 const errors = [];
