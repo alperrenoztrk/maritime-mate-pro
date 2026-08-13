@@ -168,7 +168,7 @@ export const environmentMachine: CourseTopic = {
         const totalTime = v.tankVol / v.pumpRate;
         return [
           { label: "Gerekli Arıtma Kapasitesi", value: `${treatmentRate.toFixed(0)} m³/saat` },
-          { label: "Toplam Süre", value: `${totalTime.toFixed(1)} saat` },
+          { label: "Total Time", value: `${totalTime.toFixed(1)} saat` },
         ];
       },
     },

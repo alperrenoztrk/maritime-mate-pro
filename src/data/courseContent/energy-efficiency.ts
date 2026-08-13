@@ -128,15 +128,15 @@ export const energyEfficiency: CourseTopic = {
       variables: [
         { symbol: "V₁", label: "Mevcut hız", unit: "knot" },
         { symbol: "V₂", label: "Yeni hız", unit: "knot" },
-        { symbol: "FC₁", label: "Mevcut yakıt tüketimi", unit: "ton/gün" },
-        { symbol: "FC₂", label: "Yeni yakıt tüketimi", unit: "ton/gün" },
+        { symbol: "FC₁", label: "Mevcut yakıt tüketimi", unit: "tonnes/day" },
+        { symbol: "FC₂", label: "Yeni yakıt tüketimi", unit: "tonnes/day" },
       ],
       source: { code: "SEEMP — hız optimizasyonu (gemi direnci ∝ hızın küpü)" },
       note: "Sevk gücü ve yakıt tüketimi hızın küpüyle orantılıdır; tasarruf (%) = (FC₁ − FC₂)/FC₁ × 100.",
       inputs: [
         { key: "v1", label: "Mevcut Hız", unit: "knot", placeholder: "14" },
         { key: "v2", label: "Yeni Hız", unit: "knot", placeholder: "12" },
-        { key: "fc1", label: "Mevcut Tüketim", unit: "ton/gün", placeholder: "35" },
+        { key: "fc1", label: "Mevcut Tüketim", unit: "tonnes/day", placeholder: "35" },
       ],
       calculate: (v) => {
         const fc2 = v.fc1 * Math.pow(v.v2 / v.v1, 3);

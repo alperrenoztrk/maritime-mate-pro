@@ -23,13 +23,13 @@ export const environment: CourseTopic = {
       group: "Emisyonlar",
       formula: "CO₂ (ton) = Yakıt (ton) × CF",
       variables: [
-        { symbol: "Yakıt", label: "Fuel consumption", unit: "t" },
+        { symbol: "Fuel", label: "Fuel consumption", unit: "t" },
         { symbol: "CF", label: "Karbon faktörü", unit: "t CO₂/t yakıt" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "MEPC.245(66) — CF değerleri" },
       note: "CF: HFO 3,114 · MDO/MGO 3,206 · LNG 2,750 (t CO₂/t yakıt).",
       inputs: [
-        { key: "fuel", label: "Yakıt", unit: "t", placeholder: "1000" },
+        { key: "fuel", label: "Fuel", unit: "t", placeholder: "1000" },
         { key: "cf", label: "Karbon Faktörü (CF)", unit: "", placeholder: "3.114" },
       ],
       calculate: (v) => [{ label: "CO₂", value: `${(v.fuel * v.cf).toFixed(1)} ton` }],
@@ -40,13 +40,13 @@ export const environment: CourseTopic = {
       group: "Emisyonlar",
       formula: "SOx (kg) = Yakıt (ton) × S% × 20",
       variables: [
-        { symbol: "Yakıt", label: "Fuel consumption", unit: "t" },
+        { symbol: "Fuel", label: "Fuel consumption", unit: "t" },
         { symbol: "S%", label: "Yakıt kükürt oranı", unit: "% m/m" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Kural 14 — kükürt limiti" },
       note: "20 katsayısı, S kütlesinin SO₂'ye dönüşümünü içerir (1 t yakıt = 10 kg/%S × 2).",
       inputs: [
-        { key: "fuel", label: "Yakıt", unit: "t", placeholder: "1000" },
+        { key: "fuel", label: "Fuel", unit: "t", placeholder: "1000" },
         { key: "s", label: "Kükürt (S%)", unit: "%", placeholder: "0.5" },
       ],
       calculate: (v) => [{ label: "SOx", value: `${(v.fuel * v.s * 20).toFixed(1)} kg` }],
@@ -58,7 +58,7 @@ export const environment: CourseTopic = {
       formula: "NOx (kg) = P (kW) × t (h) × EF / 1000",
       variables: [
         { symbol: "P", label: "Makine gücü", unit: "kW" },
-        { symbol: "t", label: "Çalışma süresi", unit: "h" },
+        { symbol: "t", label: "Running time", unit: "h" },
         { symbol: "EF", label: "Emisyon faktörü", unit: "g/kWh" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Kural 13 — NOx Tier limitleri" },
@@ -75,12 +75,12 @@ export const environment: CourseTopic = {
       group: "Emisyonlar",
       formula: "PM (kg) = Yakıt (ton) × EFPM",
       variables: [
-        { symbol: "Yakıt", label: "Fuel consumption", unit: "t" },
+        { symbol: "Fuel", label: "Fuel consumption", unit: "t" },
         { symbol: "EFPM", label: "PM emisyon faktörü", unit: "kg/t" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Partikül madde emisyonu" },
       inputs: [
-        { key: "fuel", label: "Yakıt", unit: "t", placeholder: "1000" },
+        { key: "fuel", label: "Fuel", unit: "t", placeholder: "1000" },
         { key: "efpm", label: "EFPM", unit: "kg/t", placeholder: "7.6" },
       ],
       calculate: (v) => [{ label: "PM", value: `${(v.fuel * v.efpm).toFixed(1)} kg` }],
@@ -177,7 +177,7 @@ export const environment: CourseTopic = {
       group: "Yakıt ve Enerji",
       formula: "E = P (kW) × t (h)",
       variables: [
-        { symbol: "P", label: "Güç", unit: "kW" },
+        { symbol: "P", label: "Power", unit: "kW" },
         { symbol: "t", label: "Duration", unit: "h" },
       ],
       source: { code: "Enerji = güç × süre" },

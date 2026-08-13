@@ -134,7 +134,7 @@ export const fuelTechnology: CourseTopic = {
       variables: [
         { symbol: "ṁ", label: "Fuel flow rate", unit: "kg/s" },
         { symbol: "cp", label: "Özgül ısı (~2 kJ/kg·K HFO)", unit: "kJ/kg·K" },
-        { symbol: "ΔT", label: "Sıcaklık artışı", unit: "K" },
+        { symbol: "ΔT", label: "Temperature rise", unit: "K" },
       ],
       source: { code: "Duyulur ısı bağıntısı (yakıt ön ısıtma)" },
       note: "Yakıt debisi kg/s girilir; gerekli ısıtma gücü Q̇ = ṁ·cp·ΔT (kW) hesaplanır.",
@@ -164,7 +164,7 @@ export const fuelTechnology: CourseTopic = {
       calculate: (v) => {
         const margin = v.t - 24;
         return [
-          { label: "Sınıra Marj", value: `${margin.toFixed(1)} saat` },
+          { label: "Margin to the Limit", value: `${margin.toFixed(1)} saat` },
           { label: "Uygunluk", value: margin >= 0 ? "UYGUN (≥24 saat)" : "YETERSİZ (<24 saat)" },
         ];
       },
@@ -176,15 +176,15 @@ export const fuelTechnology: CourseTopic = {
       formula: "Bunker = (SFOC × P × 24 / 10⁶) × gün × (1 + pay/100)",
       variables: [
         { symbol: "SFOC", label: "Specific fuel consumption", unit: "g/kW·h" },
-        { symbol: "P", label: "Motor gücü", unit: "kW" },
-        { symbol: "days", label: "Seyir süresi", unit: "days" },
+        { symbol: "P", label: "Engine power", unit: "kW" },
+        { symbol: "days", label: "Voyage time", unit: "days" },
         { symbol: "pay", label: "Güvenlik payı", unit: "%" },
       ],
       source: { code: "Bunker planlama (SFOC × güç × süre + güvenlik payı)" },
       note: "SFOC g/kW·h'tir; günlük ton için ×24/10⁶. Güvenlik payı % olarak eklenir.",
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "185" },
-        { key: "p", label: "Motor Gücü", unit: "kW", placeholder: "10000" },
+        { key: "p", label: "Engine Power", unit: "kW", placeholder: "10000" },
         { key: "days", label: "Passage Time", unit: "days", placeholder: "15" },
         { key: "margin", label: "Güvenlik Payı", unit: "%", placeholder: "10" },
       ],
@@ -193,7 +193,7 @@ export const fuelTechnology: CourseTopic = {
         const total = daily * v.days;
         const withMargin = total * (1 + v.margin / 100);
         return [
-          { label: "Günlük Tüketim", value: `${daily.toFixed(1)} ton/gün` },
+          { label: "Daily Consumption", value: `${daily.toFixed(1)} ton/gün` },
           { label: "Toplam İhtiyaç", value: `${total.toFixed(1)} ton` },
           { label: "Güvenlik Payı Dahil", value: `${withMargin.toFixed(1)} ton` },
         ];

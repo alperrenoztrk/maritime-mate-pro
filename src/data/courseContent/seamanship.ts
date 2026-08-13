@@ -112,7 +112,7 @@ export const seamanship: CourseTopic = {
         const scope = v.chain / v.depth;
         return [
           { label: "Scope", value: `${scope.toFixed(1)} : 1` },
-          { label: "Değerlendirme", value: scope >= 5 ? "Yeterli" : "Yetersiz (<5)" },
+          { label: "Assessment", value: scope >= 5 ? "Yeterli" : "Yetersiz (<5)" },
         ];
       },
     },

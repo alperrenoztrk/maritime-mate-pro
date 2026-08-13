@@ -199,7 +199,7 @@ export const cargo: CourseTopic = {
       formula: "Yük = DWT − (Yakıt + Tatlı Su + Kumanya + Constant)",
       variables: [
         { symbol: "DWT", label: "Yaz deadweight (DWT)", unit: "t" },
-        { symbol: "Yakıt", label: "Yakıt + yağ (bunker)", unit: "t" },
+        { symbol: "Fuel", label: "Yakıt + yağ (bunker)", unit: "t" },
         { symbol: "Tatlı Su", label: "Tatlı su", unit: "t" },
         { symbol: "Kumanya", label: "Kumanya + stores", unit: "t" },
         { symbol: "Constant", label: "Gemi sabiti (constant)", unit: "t" },
@@ -239,7 +239,7 @@ export const cargo: CourseTopic = {
         { key: "limit", label: "İzin Verilen Yük", unit: "t/m²", placeholder: "5" },
       ],
       calculate: (v) => {
-        if (v.a <= 0) return [{ label: "Hata", value: "Alan pozitif olmalı" }];
+        if (v.a <= 0) return [{ label: "Hata", value: "The area must be positive" }];
         const p = v.w / v.a;
         const status = v.limit > 0 ? (p <= v.limit ? "Uygun" : "Limit aşıldı") : "—";
         return [

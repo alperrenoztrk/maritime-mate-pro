@@ -34,7 +34,7 @@ export const erm: CourseTopic = {
       ],
       calculate: (v) => {
         const risk = v.prob * v.sev;
-        const level = risk <= 4 ? "Low" : risk <= 9 ? "Orta" : risk <= 15 ? "Yüksek" : "Çok Yüksek";
+        const level = risk <= 4 ? "Low" : risk <= 9 ? "Orta" : risk <= 15 ? "High" : "Çok Yüksek";
         const color = risk <= 4 ? "Yeşil" : risk <= 9 ? "Sarı" : risk <= 15 ? "Turuncu" : "Kırmızı";
         return [
           { label: "Risk Puanı", value: `${risk}` },
@@ -65,7 +65,7 @@ export const erm: CourseTopic = {
         return [
           { label: "Risk Azaltma Faktörü (RRF)", value: rrf.toFixed(2) },
           { label: "Risk Azalması", value: `${redux.toFixed(0)} %` },
-          { label: "Değerlendirme", value: rrf > 1 ? "Önlem etkili" : "Önlem yetersiz" },
+          { label: "Assessment", value: rrf > 1 ? "Önlem etkili" : "Önlem yetersiz" },
         ];
       },
     },
@@ -89,7 +89,7 @@ export const erm: CourseTopic = {
         const status = ltif < 1 ? "Çok İyi" : ltif < 3 ? "İyi" : ltif < 5 ? "Orta" : "Kötü";
         return [
           { label: "LTIF", value: ltif.toFixed(2) },
-          { label: "Değerlendirme", value: status },
+          { label: "Assessment", value: status },
         ];
       },
     },
@@ -113,7 +113,7 @@ export const erm: CourseTopic = {
       calculate: (v) => {
         const ratio = v.workHours / v.restHours;
         const fatigue = Math.min(100, ratio * v.days * 3);
-        const status = fatigue < 30 ? "Low" : fatigue < 60 ? "Orta" : fatigue < 80 ? "Yüksek" : "Kritik";
+        const status = fatigue < 30 ? "Low" : fatigue < 60 ? "Orta" : fatigue < 80 ? "High" : "Kritik";
         const mclCompliant = v.workHours <= 14 && v.restHours >= 10;
         return [
           { label: "Yorgunluk İndeksi", value: `${fatigue.toFixed(0)}%` },

@@ -93,7 +93,7 @@ export const dieselEngines: CourseTopic = {
       group: "Motor Performans",
       formula: "MEP = (P × 60) / (Vs × n × k)",
       variables: [
-        { symbol: "P", label: "Güç", unit: "kW" },
+        { symbol: "P", label: "Power", unit: "kW" },
         { symbol: "Vs", label: "Strok hacmi (silindir başına)", unit: "m³" },
         { symbol: "n", label: "Devir", unit: "rpm" },
         { symbol: "k", label: "Number of cylinders" },
@@ -149,7 +149,7 @@ export const dieselEngines: CourseTopic = {
       variables: [
         { symbol: "Δ", label: "Deplasman", unit: "ton" },
         { symbol: "V", label: "Speed", unit: "knot" },
-        { symbol: "P", label: "Güç", unit: "kW" },
+        { symbol: "P", label: "Power", unit: "kW" },
       ],
       source: { code: "Gemi sevki — Admiralty (deplasman) katsayısı, hız-güç ilişkisi" },
       inputs: [

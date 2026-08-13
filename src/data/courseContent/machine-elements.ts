@@ -8,31 +8,31 @@ import type { CourseTopic } from "./types";
  */
 export const machineElements: CourseTopic = {
   key: "machine-elements",
-  title: "Makine Elemanları ve Malzeme Bilgisi",
+  title: "Machine Elements and Materials",
   icon: Cog,
   accent: "from-zinc-500 via-slate-500 to-gray-600",
   group: "machine",
   intro:
-    "Mukavemet, gerilme analizi, mil-yatak hesapları ve malzeme bilgisi. " +
-    "Her formül, ilgili büyüklüğü standart mukavemet bağıntılarıyla tanımlar.",
+    "Strength of materials, stress analysis, shaft-bearing calculations and materials knowledge. " +
+    "Each formula defines the relevant quantity with standard strength relations.",
   entries: [
     {
       id: "tensile-stress",
-      name: "Çekme/Basma Gerilmesi",
+      name: "Tensile/Compressive Stress",
       group: "Mukavemet ve Gerilme",
       formula: "σ = F / A",
       variables: [
         { symbol: "F", label: "Kuvvet", unit: "N" },
-        { symbol: "A", label: "Kesit alanı", unit: "m²" },
+        { symbol: "A", label: "Cross-sectional area", unit: "m²" },
       ],
-      source: { code: "Mukavemet — normal (çekme/basma) gerilmesi tanımı" },
-      note: "Kuvvet kN, alan mm² girilir; sonuç MPa (N/mm²) olarak verilir.",
+      source: { code: "Strength of materials — definition of normal (tensile/compressive) stress" },
+      note: "The force is entered in kN and the area in mm²; the result is given in MPa (N/mm²).",
       inputs: [
         { key: "f", label: "Kuvvet (F)", unit: "kN", placeholder: "150" },
-        { key: "a", label: "Kesit Alanı (A)", unit: "mm²", placeholder: "1200" },
+        { key: "a", label: "Cross-sectional Area (A)", unit: "mm²", placeholder: "1200" },
       ],
       calculate: (v) => {
-        if (v.a <= 0) return [{ label: "Hata", value: "Alan pozitif olmalı" }];
+        if (v.a <= 0) return [{ label: "Hata", value: "The area must be positive" }];
         const sigma = (v.f * 1000) / v.a;
         return [{ label: "Gerilme (σ)", value: `${sigma.toFixed(1)} MPa` }];
       },
@@ -44,41 +44,41 @@ export const machineElements: CourseTopic = {
       formula: "τ = F / A",
       variables: [
         { symbol: "F", label: "Kayma kuvveti", unit: "N" },
-        { symbol: "A", label: "Kayma alanı", unit: "m²" },
+        { symbol: "A", label: "Shear area", unit: "m²" },
       ],
-      source: { code: "Mukavemet — kayma gerilmesi tanımı" },
-      note: "Kuvvet kN, alan mm² girilir; sonuç MPa (N/mm²) olarak verilir.",
+      source: { code: "Strength of materials — definition of shear stress" },
+      note: "The force is entered in kN and the area in mm²; the result is given in MPa (N/mm²).",
       inputs: [
         { key: "f", label: "Kayma Kuvveti (F)", unit: "kN", placeholder: "80" },
-        { key: "a", label: "Kayma Alanı (A)", unit: "mm²", placeholder: "1000" },
+        { key: "a", label: "Shear Area (A)", unit: "mm²", placeholder: "1000" },
       ],
       calculate: (v) => {
-        if (v.a <= 0) return [{ label: "Hata", value: "Alan pozitif olmalı" }];
+        if (v.a <= 0) return [{ label: "Hata", value: "The area must be positive" }];
         const tau = (v.f * 1000) / v.a;
         return [{ label: "Kayma Gerilmesi (τ)", value: `${tau.toFixed(1)} MPa` }];
       },
     },
     {
       id: "bending-stress",
-      name: "Eğilme Gerilmesi",
+      name: "Bending Stress",
       group: "Mukavemet ve Gerilme",
       formula: "σ = M·y / I",
       variables: [
-        { symbol: "M", label: "Eğilme momenti", unit: "N·m" },
-        { symbol: "y", label: "Nötr eksenden uzaklık", unit: "m" },
+        { symbol: "M", label: "Bending moment", unit: "N·m" },
+        { symbol: "y", label: "Distance from the neutral axis", unit: "m" },
         { symbol: "I", label: "Atalet momenti", unit: "m⁴" },
       ],
-      source: { code: "Mukavemet — eğilme (flexure) formülü" },
-      note: "Moment N·m, y mm, atalet momenti mm⁴ girilir; sonuç MPa olarak verilir.",
+      source: { code: "Strength of materials — flexure formula" },
+      note: "The moment is entered in N·m, y in mm and the moment of inertia in mm⁴; the result is given in MPa.",
       inputs: [
-        { key: "m", label: "Eğilme Momenti (M)", unit: "N·m", placeholder: "5000" },
-        { key: "y", label: "Nötr Eksenden Uzaklık (y)", unit: "mm", placeholder: "50" },
+        { key: "m", label: "Bending Moment (M)", unit: "N·m", placeholder: "5000" },
+        { key: "y", label: "Distance from the Neutral Axis (y)", unit: "mm", placeholder: "50" },
         { key: "i", label: "Atalet Momenti (I)", unit: "mm⁴", placeholder: "2000000" },
       ],
       calculate: (v) => {
-        if (v.i <= 0) return [{ label: "Hata", value: "Atalet momenti pozitif olmalı" }];
+        if (v.i <= 0) return [{ label: "Hata", value: "The moment of inertia must be positive" }];
         const sigma = (v.m * 1000 * v.y) / v.i;
-        return [{ label: "Eğilme Gerilmesi (σ)", value: `${sigma.toFixed(1)} MPa` }];
+        return [{ label: "Bending Stress (σ)", value: `${sigma.toFixed(1)} MPa` }];
       },
     },
     {
@@ -88,41 +88,41 @@ export const machineElements: CourseTopic = {
       formula: "τ = T·r / J",
       variables: [
         { symbol: "T", label: "Tork", unit: "N·m" },
-        { symbol: "r", label: "Yarıçap", unit: "m" },
+        { symbol: "r", label: "Radius", unit: "m" },
         { symbol: "J", label: "Polar atalet momenti", unit: "m⁴" },
       ],
-      source: { code: "Mukavemet — burulma (torsiyon) formülü" },
-      note: "Tork N·m, yarıçap mm, polar atalet momenti mm⁴ girilir; sonuç MPa olarak verilir.",
+      source: { code: "Strength of materials — torsion formula" },
+      note: "The torque is entered in N·m, the radius in mm and the polar moment of inertia in mm⁴; the result is given in MPa.",
       inputs: [
         { key: "t", label: "Tork (T)", unit: "N·m", placeholder: "8000" },
-        { key: "r", label: "Yarıçap (r)", unit: "mm", placeholder: "40" },
+        { key: "r", label: "Radius (r)", unit: "mm", placeholder: "40" },
         { key: "j", label: "Polar Atalet Momenti (J)", unit: "mm⁴", placeholder: "4000000" },
       ],
       calculate: (v) => {
-        if (v.j <= 0) return [{ label: "Hata", value: "Polar atalet momenti pozitif olmalı" }];
+        if (v.j <= 0) return [{ label: "Hata", value: "The polar moment of inertia must be positive" }];
         const tau = (v.t * 1000 * v.r) / v.j;
         return [{ label: "Burulma Gerilmesi (τ)", value: `${tau.toFixed(1)} MPa` }];
       },
     },
     {
       id: "shaft-diameter-torsion",
-      name: "Mil Çapı (Burulma)",
+      name: "Shaft Diameter (Torsion)",
       group: "Mil ve Yatak",
       formula: "d = ∛(16T / π·τizin)",
       variables: [
         { symbol: "T", label: "Tork", unit: "N·m" },
-        { symbol: "τizin", label: "İzin verilen kayma gerilmesi", unit: "Pa" },
+        { symbol: "τizin", label: "Allowable shear stress", unit: "Pa" },
       ],
-      source: { code: "Mil tasarımı — dolu dairesel mil burulma boyutlandırması" },
-      note: "İzin verilen gerilme MPa girilir, hesapta Pa'ya çevrilir; sonuç mm olarak verilir.",
+      source: { code: "Shaft design — torsional sizing of a solid circular shaft" },
+      note: "The allowable stress is entered in MPa and converted to Pa in the calculation; the result is given in mm.",
       inputs: [
         { key: "t", label: "Tork (T)", unit: "N·m", placeholder: "50000" },
-        { key: "tau", label: "İzin Verilen τ", unit: "MPa", placeholder: "60" },
+        { key: "tau", label: "Allowable τ", unit: "MPa", placeholder: "60" },
       ],
       calculate: (v) => {
         // τ = 16T / (πd³) → d = ∛(16T / πτ)
         const d = Math.pow((16 * v.t) / (Math.PI * v.tau * 1e6), 1 / 3) * 1000;
-        return [{ label: "Minimum Çap", value: `${d.toFixed(1)} mm` }];
+        return [{ label: "Minimum Diameter", value: `${d.toFixed(1)} mm` }];
       },
     },
     {
@@ -132,38 +132,38 @@ export const machineElements: CourseTopic = {
       formula: "ncr = (60/2π)·√(g/δst)",
       variables: [
         { symbol: "δst", label: "Statik sehim", unit: "m" },
-        { symbol: "g", label: "Yerçekimi", unit: "m/s²" },
+        { symbol: "g", label: "Gravity", unit: "m/s²" },
       ],
-      source: { code: "Rotor dinamiği — kritik devir (Dunkerley/Rayleigh yaklaşımı)" },
-      note: "Statik sehim mm girilir, hesapta m'ye çevrilir (g = 9,81 m/s²). Sonuç rpm olarak verilir.",
+      source: { code: "Rotor dynamics — critical speed (Dunkerley/Rayleigh approximation)" },
+      note: "The static deflection is entered in mm and converted to m in the calculation (g = 9.81 m/s²). The result is given in rpm.",
       inputs: [
         { key: "delta", label: "Statik Sehim (δst)", unit: "mm", placeholder: "0.5" },
       ],
       calculate: (v) => {
         const deltaM = v.delta / 1000;
-        if (deltaM <= 0) return [{ label: "Hata", value: "Sehim pozitif olmalı" }];
+        if (deltaM <= 0) return [{ label: "Hata", value: "The deflection must be positive" }];
         const ncr = (60 / (2 * Math.PI)) * Math.sqrt(9.81 / deltaM);
         return [{ label: "Kritik Devir (ncr)", value: `${ncr.toFixed(0)} rpm` }];
       },
     },
     {
       id: "bearing-life-l10",
-      name: "Yatak Ömrü (L₁₀)",
+      name: "Bearing Life (L₁₀)",
       group: "Mil ve Yatak",
       formula: "L₁₀ = (C/P)^p × 10⁶ devir",
       variables: [
-        { symbol: "C", label: "Dinamik yük kapasitesi", unit: "N" },
-        { symbol: "P", label: "Eşdeğer yük", unit: "N" },
-        { symbol: "p", label: "Üs (bilyalı=3, makaralı=10/3)" },
+        { symbol: "C", label: "Dynamic load rating", unit: "N" },
+        { symbol: "P", label: "Equivalent load", unit: "N" },
+        { symbol: "p", label: "Exponent (ball = 3, roller = 10/3)" },
         { symbol: "n", label: "Devir", unit: "rpm" },
       ],
-      source: { code: "Rulman ömrü — temel dinamik yük denklemi (ISO 281)" },
-      note: "C ve P kN girilebilir (oran boyutsuz olduğundan etkilemez); saat ömrü için devir (rpm) kullanılır.",
+      source: { code: "Bearing life — basic dynamic load equation (ISO 281)" },
+      note: "C and P may be entered in kN (the ratio is dimensionless, so it makes no difference); the speed (rpm) is used for the life in hours.",
       inputs: [
-        { key: "c", label: "Dinamik Yük Kapasitesi (C)", unit: "kN", placeholder: "120" },
-        { key: "p", label: "Eşdeğer Yük (P)", unit: "kN", placeholder: "30" },
+        { key: "c", label: "Dynamic Load Rating (C)", unit: "kN", placeholder: "120" },
+        { key: "p", label: "Equivalent Load (P)", unit: "kN", placeholder: "30" },
         { key: "n", label: "Devir", unit: "rpm", placeholder: "1500" },
-        { key: "type", label: "Tip (3=bilyalı, 10/3=makaralı)", unit: "", placeholder: "3" },
+        { key: "type", label: "Type (3 = ball, 10/3 = roller)", unit: "", placeholder: "3" },
       ],
       calculate: (v) => {
         const l10Rev = Math.pow(v.c / v.p, v.type) * 1e6;
@@ -176,21 +176,21 @@ export const machineElements: CourseTopic = {
     },
     {
       id: "gear-ratio",
-      name: "Dişli Çark Hız Oranı",
+      name: "Gear Speed Ratio",
       group: "Mil ve Yatak",
       formula: "i = Z₂/Z₁ = n₁/n₂",
       variables: [
-        { symbol: "Z₁", label: "Tahrik diş sayısı" },
-        { symbol: "Z₂", label: "Çıkış diş sayısı" },
+        { symbol: "Z₁", label: "Driving tooth count" },
+        { symbol: "Z₂", label: "Driven tooth count" },
         { symbol: "n₁", label: "Tahrik devri", unit: "rpm" },
-        { symbol: "n₂", label: "Çıkış devri", unit: "rpm" },
+        { symbol: "n₂", label: "Output speed", unit: "rpm" },
         { symbol: "T₁", label: "Tahrik torku", unit: "N·m" },
       ],
-      source: { code: "Dişli kinematiği — çevrim oranı ve tork aktarımı" },
-      note: "Çıkış torku ~%3 dişli kaybıyla (×0,97) hesaplanır.",
+      source: { code: "Gear kinematics — gear ratio and torque transmission" },
+      note: "The output torque is calculated with ~3% gear loss (×0.97).",
       inputs: [
-        { key: "z1", label: "Tahrik Diş Sayısı (Z₁)", unit: "", placeholder: "20" },
-        { key: "z2", label: "Çıkış Diş Sayısı (Z₂)", unit: "", placeholder: "60" },
+        { key: "z1", label: "Driving Tooth Count (Z₁)", unit: "", placeholder: "20" },
+        { key: "z2", label: "Driven Tooth Count (Z₂)", unit: "", placeholder: "60" },
         { key: "n1", label: "Tahrik Devri (n₁)", unit: "rpm", placeholder: "1500" },
         { key: "t1", label: "Tahrik Torku (T₁)", unit: "N·m", placeholder: "100" },
       ],
@@ -199,33 +199,33 @@ export const machineElements: CourseTopic = {
         const n2 = v.n1 / ratio;
         const t2 = v.t1 * ratio * 0.97; // ~%3 kayıp
         return [
-          { label: "Dişli Oranı (i)", value: `${ratio.toFixed(2)}:1` },
-          { label: "Çıkış Devri (n₂)", value: `${n2.toFixed(0)} rpm` },
-          { label: "Çıkış Torku (T₂)", value: `${t2.toFixed(1)} N·m` },
+          { label: "Gear Ratio (i)", value: `${ratio.toFixed(2)}:1` },
+          { label: "Output Speed (n₂)", value: `${n2.toFixed(0)} rpm` },
+          { label: "Output Torque (T₂)", value: `${t2.toFixed(1)} N·m` },
         ];
       },
     },
     {
       id: "weld-stress",
-      name: "Kaynak Dikişi Gerilmesi",
+      name: "Weld Seam Stress",
       group: "Mil ve Yatak",
       formula: "σ = F / (L·a)",
       variables: [
         { symbol: "F", label: "Uygulanan kuvvet", unit: "N" },
-        { symbol: "L", label: "Kaynak uzunluğu", unit: "mm" },
-        { symbol: "a", label: "Kaynak (boğaz) kalınlığı", unit: "mm" },
+        { symbol: "L", label: "Weld length", unit: "mm" },
+        { symbol: "a", label: "Weld throat thickness", unit: "mm" },
       ],
-      source: { code: "Kaynak bağlantısı mukavemeti — dikiş gerilmesi kontrolü" },
-      note: "Kuvvet kN girilir, hesapta N'ye çevrilir; sonuç MPa (N/mm²) olarak verilir.",
+      source: { code: "Welded joint strength — weld seam stress check" },
+      note: "The force is entered in kN and converted to N in the calculation; the result is given in MPa (N/mm²).",
       inputs: [
         { key: "f", label: "Uygulanan Kuvvet (F)", unit: "kN", placeholder: "200" },
-        { key: "l", label: "Kaynak Uzunluğu (L)", unit: "mm", placeholder: "200" },
-        { key: "a", label: "Kaynak Kalınlığı (a)", unit: "mm", placeholder: "6" },
+        { key: "l", label: "Weld Length (L)", unit: "mm", placeholder: "200" },
+        { key: "a", label: "Weld Throat Thickness (a)", unit: "mm", placeholder: "6" },
       ],
       calculate: (v) => {
         const area = v.l * v.a; // mm²
         const stress = (v.f * 1000) / area; // N/mm² = MPa
-        const status = stress < 100 ? "Uygun" : stress < 160 ? "Dikkat" : "Aşırı";
+        const status = stress < 100 ? "Uygun" : stress < 160 ? "Dikkat" : "Excessive";
         return [
           { label: "Kaynak Gerilmesi", value: `${stress.toFixed(1)} MPa` },
           { label: "Durum", value: status },
@@ -234,58 +234,58 @@ export const machineElements: CourseTopic = {
     },
     {
       id: "youngs-modulus",
-      name: "Hooke Yasası / Elastisite Modülü",
+      name: "Hooke's Law / Modulus of Elasticity",
       group: "Mukavemet ve Gerilme",
       formula: "σ = E·ε    →    E = σ / ε ,  ε = ΔL / L₀",
       variables: [
         { symbol: "σ", label: "Gerilme", unit: "MPa" },
-        { symbol: "E", label: "Elastisite (Young) modülü", unit: "MPa" },
-        { symbol: "ε", label: "Birim şekil değişimi (uzama)" },
-        { symbol: "ΔL", label: "Boy uzaması", unit: "mm" },
-        { symbol: "L₀", label: "İlk boy", unit: "mm" },
+        { symbol: "E", label: "Modulus of elasticity (Young's modulus)", unit: "MPa" },
+        { symbol: "ε", label: "Strain (elongation)" },
+        { symbol: "ΔL", label: "Elongation", unit: "mm" },
+        { symbol: "L₀", label: "Original length", unit: "mm" },
       ],
-      source: { code: "Mukavemet — Hooke yasası (elastik bölge)" },
-      note: "Elastik bölgede geçerlidir. Çelik için E ≈ 210000 MPa. Birim şekil değişimi ε = ΔL/L₀ boyutsuzdur.",
+      source: { code: "Strength of materials — Hooke's law (elastic region)" },
+      note: "Valid in the elastic region. For steel E ≈ 210000 MPa. The strain ε = ΔL/L₀ is dimensionless.",
       inputs: [
         { key: "sigma", label: "Gerilme (σ)", unit: "MPa", placeholder: "150" },
-        { key: "dl", label: "Boy Uzaması (ΔL)", unit: "mm", placeholder: "1.5" },
-        { key: "l0", label: "İlk Boy (L₀)", unit: "mm", placeholder: "2000" },
+        { key: "dl", label: "Elongation (ΔL)", unit: "mm", placeholder: "1.5" },
+        { key: "l0", label: "Original Length (L₀)", unit: "mm", placeholder: "2000" },
       ],
       calculate: (v) => {
-        if (v.l0 <= 0) return [{ label: "Hata", value: "İlk boy pozitif olmalı" }];
+        if (v.l0 <= 0) return [{ label: "Hata", value: "The original length must be positive" }];
         const eps = v.dl / v.l0;
-        if (eps === 0) return [{ label: "Hata", value: "Uzama sıfır olamaz" }];
+        if (eps === 0) return [{ label: "Hata", value: "The elongation cannot be zero" }];
         const e = v.sigma / eps;
         return [
-          { label: "Birim Şekil Değişimi (ε)", value: `${eps.toExponential(3)}` },
-          { label: "Elastisite Modülü (E)", value: `${(e / 1000).toFixed(0)} GPa` },
+          { label: "Strain (ε)", value: `${eps.toExponential(3)}` },
+          { label: "Modulus of Elasticity (E)", value: `${(e / 1000).toFixed(0)} GPa` },
         ];
       },
     },
     {
       id: "lewis-gear-stress",
-      name: "Lewis Dişli Eğilme Gerilmesi",
+      name: "Lewis Gear Bending Stress",
       group: "Mil ve Yatak",
       formula: "σ = Ft / (b·m·Y)",
       variables: [
-        { symbol: "σ", label: "Diş dibi eğilme gerilmesi", unit: "MPa" },
-        { symbol: "Ft", label: "Teğetsel (çevresel) kuvvet", unit: "N" },
-        { symbol: "b", label: "Diş genişliği", unit: "mm" },
-        { symbol: "m", label: "Modül", unit: "mm" },
-        { symbol: "Y", label: "Lewis form faktörü" },
+        { symbol: "σ", label: "Tooth root bending stress", unit: "MPa" },
+        { symbol: "Ft", label: "Tangential force", unit: "N" },
+        { symbol: "b", label: "Face width", unit: "mm" },
+        { symbol: "m", label: "Module", unit: "mm" },
+        { symbol: "Y", label: "Lewis form factor" },
       ],
-      source: { code: "Dişli mukavemeti — Lewis eğilme denklemi" },
-      note: "Y, diş sayısına bağlı form faktörüdür (tipik 0,3–0,45). Ft = 2T/d ile bulunabilir.",
+      source: { code: "Gear strength — Lewis bending equation" },
+      note: "Y is the form factor depending on the tooth count (typically 0.3–0.45). Ft can be obtained from Ft = 2T/d.",
       inputs: [
-        { key: "ft", label: "Teğetsel Kuvvet (Ft)", unit: "N", placeholder: "3000" },
-        { key: "b", label: "Diş Genişliği (b)", unit: "mm", placeholder: "40" },
-        { key: "m", label: "Modül (m)", unit: "mm", placeholder: "4" },
-        { key: "y", label: "Lewis Faktörü (Y)", unit: "", placeholder: "0.38" },
+        { key: "ft", label: "Tangential Force (Ft)", unit: "N", placeholder: "3000" },
+        { key: "b", label: "Face Width (b)", unit: "mm", placeholder: "40" },
+        { key: "m", label: "Module (m)", unit: "mm", placeholder: "4" },
+        { key: "y", label: "Lewis Factor (Y)", unit: "", placeholder: "0.38" },
       ],
       calculate: (v) => {
-        if (v.b <= 0 || v.m <= 0 || v.y <= 0) return [{ label: "Hata", value: "b, m, Y pozitif olmalı" }];
+        if (v.b <= 0 || v.m <= 0 || v.y <= 0) return [{ label: "Hata", value: "b, m and Y must be positive" }];
         const sigma = v.ft / (v.b * v.m * v.y);
-        return [{ label: "Eğilme Gerilmesi (σ)", value: `${sigma.toFixed(1)} MPa` }];
+        return [{ label: "Bending Stress (σ)", value: `${sigma.toFixed(1)} MPa` }];
       },
     },
   ],
