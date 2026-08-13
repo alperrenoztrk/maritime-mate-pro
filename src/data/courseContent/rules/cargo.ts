@@ -42,7 +42,7 @@ export const cargoRules: RuleGroup[] = [
     ],
   },
   {
-    title: "International Grain Code — Tahıl Yükleri",
+    title: "International Grain Code — Grain Cargoes",
     source: {
       code: "International Grain Code",
       detail: "SOLAS Bölüm VI, Part C",
