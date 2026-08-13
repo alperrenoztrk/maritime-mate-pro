@@ -154,7 +154,7 @@ export const dieselEngines: CourseTopic = {
       source: { code: "Gemi sevki — Admiralty (deplasman) katsayısı, hız-güç ilişkisi" },
       inputs: [
         { key: "delta", label: "Deplasman (Δ)", unit: "ton", placeholder: "50000" },
-        { key: "v", label: "Hız (V)", unit: "knot", placeholder: "14" },
+        { key: "v", label: "Speed (V)", unit: "knot", placeholder: "14" },
         { key: "p", label: "Güç (P)", unit: "kW", placeholder: "10000" },
       ],
       calculate: (v) => {

@@ -46,13 +46,13 @@ export const economics: CourseTopic = {
       formula: "Maliyet = Tüketim (t/gün) × Gün × Fiyat",
       variables: [
         { symbol: "Tüketim", label: "Günlük yakıt tüketimi", unit: "t/gün" },
-        { symbol: "Gün", label: "Sefer süresi", unit: "days" },
+        { symbol: "Days", label: "Sefer süresi", unit: "days" },
         { symbol: "Fiyat", label: "Yakıt birim fiyatı", unit: "$/t" },
       ],
       source: { code: "Sefer gideri — bunker maliyeti" },
       inputs: [
         { key: "cons", label: "Tüketim", unit: "t/gün", placeholder: "30" },
-        { key: "days", label: "Gün", unit: "days", placeholder: "15" },
+        { key: "days", label: "Days", unit: "days", placeholder: "15" },
         { key: "price", label: "Fiyat", unit: "$/t", placeholder: "600" },
       ],
       calculate: (v) => [{ label: "Bunker Maliyeti", value: `$${(v.cons * v.days * v.price).toLocaleString("en-US")}` }],

@@ -32,7 +32,7 @@ export const fuelTechnology: CourseTopic = {
       ],
       calculate: (vals) => {
         const ccai = vals.d - 140.7 * Math.log10(Math.log10(vals.v + 0.85)) - 80.6;
-        const quality = ccai < 840 ? "İyi" : ccai < 870 ? "Kabul edilebilir" : "Zayıf tutuşma";
+        const quality = ccai < 840 ? "Good" : ccai < 870 ? "Kabul edilebilir" : "Zayıf tutuşma";
         return [
           { label: "CCAI", value: ccai.toFixed(0) },
           { label: "Kalite", value: quality },
