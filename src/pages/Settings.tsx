@@ -37,7 +37,8 @@ const Settings = () => {
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  // Read once on mount; the haptics module owns the persisted value.
+
+
 
 
   const handleLanguageChange = async (value: string) => {
