@@ -80,9 +80,9 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
   <section id="kapsamli-ders" className="scroll-mt-20">
     <SectionHeader
       icon={<BookOpen className="h-4 w-4" />}
-      eyebrow="Ders kitabı anlatımı"
+      eyebrow="Textbook narrative"
       title="Kapsamlı konu anlatımı"
-      description="Hukukî yapıdan madde mantığına, gemideki karşılıktan vaka çözümüne ilerleyen bölümleri okuyun. Her bölüm; referans, yaygın hata ve operasyonel sonuçla tamamlanır."
+      description="Read the chapters, which progress from the legal framework to the logic of the article, and from the shipboard equivalent to case resolution. Each chapter closes with a reference, a common mistake and an operational outcome."
     />
     <div className="space-y-5">
       {chapters.map((entry, chapterIndex) => (
@@ -221,7 +221,7 @@ const DetailedSections = ({ sections }: { sections: RegulationDetailedSection[] 
       icon={<GraduationCap className="h-4 w-4" />}
       eyebrow="Kuramsal temel"
       title="Hızlı kuramsal harita"
-      description="Kapsamlı dersin ardından ana kavramları mevcut özet bölümleriyle hızlıca tekrar edin."
+      description="After the comprehensive lesson, revise the main concepts quickly with the existing summary sections."
     />
     <div className="space-y-4">
       {sections.map((section, index) => (
@@ -246,7 +246,7 @@ const LearningObjectives = ({ objectives }: { objectives: string[] }) => (
   >
     <SectionHeader
       icon={<ListChecks className="h-4 w-4" />}
-      eyebrow="Okuma rotası"
+      eyebrow="Reading route"
       title="Bu içeriğin sonunda neyi yapabilmelisiniz?"
     />
     <div className="grid gap-3 md:grid-cols-2">
@@ -268,7 +268,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
       icon={<ShipWheel className="h-4 w-4" />}
       eyebrow="Kuraldan operasyona"
       title="Gemide nasıl uygulanır?"
-      description="Her gerekliliği hukukî dayanak, emniyet gerekçesi, sorumlu roller, objektif kanıt ve doğrulama adımlarıyla izleyin."
+      description="Follow each requirement through its legal basis, safety rationale, responsible roles, objective evidence and verification steps."
     />
     <div className="space-y-4">
       {requirements.map((entry, index) => (
@@ -358,9 +358,9 @@ const ComplianceCycle = ({ stages }: { stages: RegulationComplianceStage[] }) =>
   >
     <SectionHeader
       icon={<GitBranch className="h-4 w-4" />}
-      eyebrow="Süreklilik"
+      eyebrow="Continuity"
       title="Beş aşamalı uyum döngüsü"
-      description="Bir defalık denetim hazırlığı yerine, uygulanabilirlikten değişiklik yönetimine uzanan kalıcı sistemi kurun."
+      description="Instead of a one-off inspection preparation, build a lasting system that runs from applicability through to change management."
     />
     <div className="space-y-3">
       {stages.map((stage, index) => (
@@ -393,9 +393,9 @@ const InspectionQuestions = ({ questions }: { questions: RegulationInspectionQue
   <section id="denetim-sorulari" className="scroll-mt-20">
     <SectionHeader
       icon={<HelpCircle className="h-4 w-4" />}
-      eyebrow="PSC · Sörvey · Sözlü hazırlık"
+      eyebrow="PSC · Survey · Oral exam preparation"
       title="Denetçinin sorabileceği kritik sorular"
-      description="Cevabın yalnız metnini değil, gösterilmesi gereken kanıtı ve ayrıntılı denetimi tetikleyebilecek kırmızı bayrakları görün."
+      description="See not only the text of the answer but also the evidence that has to be shown and the red flags that can trigger a detailed inspection."
     />
     <div className="space-y-3">
       {questions.map((entry, index) => (
@@ -571,13 +571,13 @@ export default function RegulationDetailPage() {
   }
 
   const toc = [
-    regulation.learningObjectives?.length && ["ogrenme-hedefleri", "Öğrenme hedefleri"],
-    regulation.narrativeChapters?.length && ["kapsamli-ders", "Kapsamlı ders"],
+    regulation.learningObjectives?.length && ["ogrenme-hedefleri", "Learning objectives"],
+    regulation.narrativeChapters?.length && ["kapsamli-ders", "Comprehensive lesson"],
     regulation.detailedSections?.length && ["konu-anlatimi", "Hızlı kuramsal harita"],
     regulation.operationalRequirements?.length && ["gemi-uygulamasi", "Gemide uygulama"],
-    regulation.complianceStages?.length && ["uyum-dongusu", "Uyum döngüsü"],
-    regulation.inspectionQuestions?.length && ["denetim-sorulari", "Denetim soruları"],
-    regulation.keyArticles?.length && ["temel-bolumler", "Kural haritası"],
+    regulation.complianceStages?.length && ["uyum-dongusu", "Compliance cycle"],
+    regulation.inspectionQuestions?.length && ["denetim-sorulari", "Inspection questions"],
+    regulation.keyArticles?.length && ["temel-bolumler", "Rule map"],
     regulation.terms?.length && ["terimler", "Terimler"],
     regulation.sourceStatus && ["kaynak-durumu", "Kaynak durumu"],
   ].filter(Boolean) as string[][];
@@ -730,8 +730,7 @@ export default function RegulationDetailPage() {
               <div>
                 <h2 className="font-bold text-foreground">Gemide kullanım ilkesi</h2>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  Denetimde ezber cümle yerine gemiye özgü uygulamayı gösterin: hangi hüküm uygulanıyor,
-                  kim sorumlu, işlem nasıl yapılıyor, hangi kayıt oluşuyor ve arıza halinde emniyet nasıl korunuyor?
+                  In an inspection, show the ship-specific practice rather than a memorised sentence: which provision applies, who is responsible, how the operation is carried out, which record is created and how safety is preserved in the event of a failure?
                 </p>
               </div>
             </section>
