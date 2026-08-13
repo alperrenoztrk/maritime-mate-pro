@@ -2,9 +2,9 @@ import { Leaf } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Denizcilik ve Çevre Koruma — tek kaynak ders içeriği.
- * Formüller mevcut EmissionFormulas sayfasındaki gerçek ifadelerden alınmış,
- * hesaplayıcılar bu ifadeleri birebir uygular.
+ * Shipping and Environmental Protection — single source course content.
+ * The formulas are taken verbatim from the existing EmissionFormulas page and
+ * the calculators apply exactly those expressions.
  */
 export const environment: CourseTopic = {
   key: "environment",

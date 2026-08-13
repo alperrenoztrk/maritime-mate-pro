@@ -2,9 +2,9 @@ import { HardHat } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Bakım ve Tutum — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Maintenance and Upkeep — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const maintenance: CourseTopic = {
   key: "maintenance",
@@ -87,7 +87,7 @@ export const maintenance: CourseTopic = {
       calculate: (v) => {
         const wear = v.d1 - v.d0;
         const rate = wear / (v.hours / 1000);
-        const maxWear = v.d0 * 0.01; // Genel kural: çapın %1'i
+        const maxWear = v.d0 * 0.01; // Rule of thumb: 1% of the diameter
         const remainingLife = ((maxWear - wear) / rate) * 1000;
         return [
           { label: "Total Wear", value: `${wear.toFixed(2)} mm` },

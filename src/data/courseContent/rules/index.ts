@@ -11,8 +11,8 @@ import { communicationRules } from "./communication";
 import { economicsRules } from "./economics";
 
 /**
- * Birleşik kural registry'si. Makine konuları mevcut `machineTopicRules`
- * (slug anahtarlı) üzerinden; güverte konuları kendi veri dosyalarından gelir.
+ * Unified rules registry. Machine topics come from the existing `machineTopicRules`
+ * (keyed by slug); deck topics come from their own data files.
  */
 const deckRules: Record<string, RuleGroup[]> = {
   stability: stabilityRules,

@@ -1,18 +1,18 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Yük elleçleme ve istifleme kuralları.
+ * Cargo handling and stowage rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
- *  - IMSBC Code (Uluslararası Denizyolu Katı Dökme Yük Kodu)
+ * The content is taken from real, cited regulations:
+ *  - IMSBC Code (International Maritime Solid Bulk Cargoes Code)
  *  - International Grain Code
- *  - IMDG Code (tehlikeli yükler)
- *  - CSS Code / Annex 13 (yük emniyeti, bağlama)
- *  - ISGOTT ve terminal prosedürleri
+ *  - IMDG Code (dangerous goods)
+ *  - CSS Code / Annex 13 (cargo securing, lashing)
+ *  - ISGOTT and terminal procedures
  *  - SOLAS gereklilikleri (VGM, CSM)
- *  - MARPOL Annex I/II/V (yük artıkları)
+ *  - MARPOL Annex I/II/V (cargo residues)
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const cargoRules: RuleGroup[] = [
   {

@@ -1,14 +1,14 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * GMDSS / Telsiz Haberleşmesi kuralları.
+ * GMDSS / radio communication rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelere dayanır:
- *  - SOLAS Bölüm IV (Küresel Deniz Tehlike ve Güvenlik Sistemi - GMDSS)
- *  - ITU Radyo Tüzüğü (Radio Regulations)
+ * The content is based on real, cited regulations:
+ *  - SOLAS Chapter IV (Global Maritime Distress and Safety System — GMDSS)
+ *  - ITU Radio Regulations
  *  - IMO standart muhabere usulleri
  *
- * Uydurma kural yoktur; ifadeler ilke düzeyinde ve doğrudur.
+ * No invented rules; the statements are at principle level and accurate.
  */
 export const communicationRules: RuleGroup[] = [
   {

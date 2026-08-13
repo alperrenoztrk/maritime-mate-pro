@@ -2,9 +2,9 @@ import { Cog } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Makine Elemanları ve Malzeme Bilgisi — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Machine Elements and Materials — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const machineElements: CourseTopic = {
   key: "machine-elements",
@@ -197,7 +197,7 @@ export const machineElements: CourseTopic = {
       calculate: (v) => {
         const ratio = v.z2 / v.z1;
         const n2 = v.n1 / ratio;
-        const t2 = v.t1 * ratio * 0.97; // ~%3 kayıp
+        const t2 = v.t1 * ratio * 0.97; // ~3% loss
         return [
           { label: "Gear Ratio (i)", value: `${ratio.toFixed(2)}:1` },
           { label: "Output Speed (n₂)", value: `${n2.toFixed(0)} rpm` },

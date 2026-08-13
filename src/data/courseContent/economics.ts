@@ -2,9 +2,9 @@ import { TrendingUp } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Deniz İşletmeciliğinde Ticari Operasyonlar — tek kaynak ders içeriği.
- * TCE, demurrage/despatch, bunker maliyeti ve sefer ekonomisi için gerçek
- * ticari denizcilik bağıntıları; her formül bağlı hesaplayıcıyla.
+ * Commercial Operations in Shipping — single source course content.
+ * Real commercial shipping relations for TCE, demurrage/despatch, bunker cost
+ * and voyage economics; every formula has a linked calculator.
  */
 export const economics: CourseTopic = {
   key: "economics",

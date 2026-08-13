@@ -1,16 +1,16 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Gemicilik kuralları.
+ * Seamanship rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
- *  - COLREG 1972 Kısım B (Manevra Kuralları) ve Kısım C/D (Fenerler, İşaretler)
- *  - Demirleme ve bağlama (good seamanship, OCIMF MEG4)
- *  - ISM Code (Güvenli İşletim Yönetimi)
- *  - ISPS Code (Gemi ve Liman Güvenliği)
- *  - Liman ve terminal talimatları, VTS
+ * The content is taken from real, cited regulations:
+ *  - COLREG 1972 Part B (steering and sailing rules) and Parts C/D (lights, shapes)
+ *  - Anchoring and mooring (good seamanship, OCIMF MEG4)
+ *  - ISM Code (safety management)
+ *  - ISPS Code (ship and port facility security)
+ *  - Port and terminal instructions, VTS
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const seamanshipRules: RuleGroup[] = [
   {

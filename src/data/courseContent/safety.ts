@@ -2,11 +2,11 @@ import { Shield } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Denizde Güvenlik — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi. Buradaki formüller ve
- * hesaplamalar mevcut Emniyet Formülleri ve Güvenlik Hesaplamaları sayfalarındaki
- * GERÇEK formüllerden birebir alınmıştır (yangın söndürme, can kurtarma vb.).
- * `calculate` taşıyan girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Safety at Sea — single source course content.
+ * Formulas and calculators are merged into a SINGLE list. The formulas and
+ * calculations here are taken verbatim from the REAL formulas on the existing
+ * Safety Formulas and Safety Calculations pages (fire fighting, life saving etc.).
+ * entries carrying `calculate` appear on both the Formulas and Calculations page.
  */
 export const safety: CourseTopic = {
   key: "safety",

@@ -2,11 +2,11 @@ import { Compass } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Seyir — tek kaynak ders içeriği.
- * Formüller, mevcut "Seyir Formülleri" sayfasında (NavigationFormulas.tsx)
- * gösterilen GERÇEK bağıntılardan birebir alınmıştır. `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür ve formül metni
- * ile daima aynı matematiği uygular.
+ * Navigation — single source course content.
+ * The formulas are taken verbatim from the REAL relations shown on the existing
+ * Navigation Formulas page (NavigationFormulas.tsx). Entries carrying `calculate`
+ * appear on both the Formulas and the Calculations page and always apply the same
+ * mathematics as the formula text.
  */
 export const navigation: CourseTopic = {
   key: "navigation",
@@ -268,7 +268,7 @@ export const navigation: CourseTopic = {
         return [{ label: "Horizon Range", value: `${d.toFixed(2)} nm` }];
       },
     },
-    // ---- Akıntı, Rüzgar ve Pusula ----
+    // ---- Current, Wind and Compass ----
     {
       id: "current-triangle",
       name: "Current Triangle (CTS / SOG)",
@@ -461,7 +461,7 @@ export const navigation: CourseTopic = {
         ];
       },
     },
-    // ---- Göksel Seyir ----
+    // ---- Celestial Navigation ----
     {
       id: "celestial-altitude",
       name: "Calculated Altitude (Hc)",
@@ -635,7 +635,7 @@ export const navigation: CourseTopic = {
         ];
       },
     },
-    // ---- Konu anlatımından eklenen hesaplayıcılar ----
+    // ---- Calculators added from the topic text ----
     {
       id: "arc-time",
       name: "Longitude ↔ Time Conversion",
@@ -827,7 +827,7 @@ export const navigation: CourseTopic = {
       ],
       calculate: (v) => {
         const z = 90 - v.ho;
-        // Zenit güneyde ise (cisim meridyeni güneyde) enlem = δ + Z, kuzeyde ise δ − Z
+        // If the zenith is to the south, latitude = δ + Z; if to the north, δ − Z
         const sign = v.bearing >= 0 ? 1 : -1;
         const lat = v.dec + sign * z;
         const hemis = lat >= 0 ? "N" : "S";

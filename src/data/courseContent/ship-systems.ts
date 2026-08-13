@@ -2,9 +2,9 @@ import { Wrench } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Gemi Makine Sistemleri — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Ship Machinery Systems — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const shipSystems: CourseTopic = {
   key: "ship-systems",
@@ -201,7 +201,7 @@ export const shipSystems: CourseTopic = {
         const alphaRad = v.alpha * Math.PI / 180;
         // Joessel: F = 577 × A × V² × sin(α) (N)
         const force = 577 * v.a * vMs * vMs * Math.sin(alphaRad);
-        // Tork = F × d (d ≈ 0.35 × kord uzunluğu, tahmini olarak alan/yükseklik)
+        // Torque = F × d (d ≈ 0.35 × chord length, estimated as area/height)
         const torque = force * 0.35 * Math.sqrt(v.a);
         return [
           { label: "Rudder Force", value: `${(force / 1000).toFixed(1)} kN` },

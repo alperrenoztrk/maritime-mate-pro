@@ -2,9 +2,9 @@ import { ShieldAlert } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Makine Dairesi Güvenliği — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Engine Room Safety — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const engineRoomSafety: CourseTopic = {
   key: "engine-room-safety",
@@ -35,7 +35,7 @@ export const engineRoomSafety: CourseTopic = {
       ],
       calculate: (v) => {
         const fuelOk = v.fuel >= 1;
-        const oxyOk = v.o2 >= 15; // ~%15 altında çoğu yanma sürmez
+        const oxyOk = v.o2 >= 15; // below ~15% most combustion cannot be sustained
         const heatOk = v.heat >= 1;
         const risk = fuelOk && oxyOk && heatOk;
         const present = [fuelOk && "Fuel", oxyOk && "Oksijen", heatOk && "Heat"].filter(Boolean).join(" + ") || "—";
@@ -64,7 +64,7 @@ export const engineRoomSafety: CourseTopic = {
       ],
       calculate: (v) => {
         const mass = (v.vol * (v.ratio / 100)) / 0.56;
-        const bottles = Math.ceil(mass / 45); // 45 kg standart tüp
+        const bottles = Math.ceil(mass / 45); // standard 45 kg cylinder
         return [
           { label: "Required CO₂ Quantity", value: `${mass.toFixed(0)} kg` },
           { label: "Required Number of Cylinders (45 kg)", value: `${bottles} cylinders` },
@@ -113,7 +113,7 @@ export const engineRoomSafety: CourseTopic = {
         { key: "vol", label: "Machinery Space Volume", unit: "m³", placeholder: "2500" },
       ],
       calculate: (v) => {
-        // Yaklaşık: motor başına ~2.5 m³/kW·h hava gereksinimi
+        // Approximately ~2.5 m³/kW·h of air required per engine
         const airForCombustion = v.p * 2.5; // m³/saat
         const ventChanges = airForCombustion / v.vol;
         return [

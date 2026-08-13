@@ -2,10 +2,10 @@ import { TrendingUp } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Enerji Verimliliği — tek kaynak ders içeriği.
- * Enerji verimliliği göstergeleri (EEDI, EEXI, CII, EEOI) ve atık ısı geri
- * kazanımı formülleri ilgili hesaplayıcılarla TEK listede birleştirildi;
- * `calculate` taşıyan girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Energy Efficiency — single source course content.
+ * The energy efficiency indicators (EEDI, EEXI, CII, EEOI) and the waste heat
+ * recovery formulas are merged with their calculators into a SINGLE list;
+ * entries carrying `calculate` appear on both the Formulas and Calculations page.
  */
 export const energyEfficiency: CourseTopic = {
   key: "energy-efficiency",

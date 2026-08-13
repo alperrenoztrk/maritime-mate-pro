@@ -1,15 +1,15 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Seyir kuralları.
+ * Navigation rules.
  *
- * İçerik src/pages/NavigationRules.tsx sayfasındaki gerçek, kaynak gösterilmiş
- * düzenlemelerden birebir alınmıştır:
- *  - COLREG 1972 (Denizde Çatışmayı Önleme Kuralları)
- *  - IALA Deniz İşaretleri Sistemi (Maritime Buoyage System)
- *  - SOLAS Bölüm IV / V, GMDSS
+ * The content is taken verbatim from the real, cited regulations on the
+ * src/pages/NavigationRules.tsx page:
+ *  - COLREG 1972 (International Regulations for Preventing Collisions at Sea)
+ *  - IALA Maritime Buoyage System
+ *  - SOLAS Chapters IV / V, GMDSS
  *
- * Uydurma kural yoktur; atıflar (kural numaraları) korunmuştur.
+ * No invented rules; the references (rule numbers) have been preserved.
  */
 export const navigationRules: RuleGroup[] = [
   {

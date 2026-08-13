@@ -28,9 +28,9 @@ import { economics } from "./economics";
 export type { CourseEntry, CourseTopic } from "./types";
 
 /**
- * Birleşik ders içeriği registry'si (tek kaynak).
- * Anahtar eşlemesi: makine konuları = slug (örn. "thermodynamics"),
- * güverte konuları = kategori id (örn. "stability"). Çakışma yoktur.
+ * Unified course content registry (single source of truth).
+ * Key mapping: machine topics = slug (e.g. "thermodynamics"),
+ * deck topics = category id (e.g. "stability"). There are no collisions.
  */
 export const courseTopics: Record<string, CourseTopic> = {
   // Makine
@@ -50,7 +50,7 @@ export const courseTopics: Record<string, CourseTopic> = {
   "environment-machine": environmentMachine,
   erm,
   "energy-efficiency": energyEfficiency,
-  // Güverte
+  // Deck
   stability,
   navigation,
   cargo,
@@ -62,22 +62,22 @@ export const courseTopics: Record<string, CourseTopic> = {
   economics,
 };
 
-/** Verilen anahtara karşılık gelen konuyu döndürür (yoksa null). */
+/** Returns the topic matching the given key (null when absent). */
 export function getCourseTopic(key?: string): CourseTopic | null {
   return key ? courseTopics[key] ?? null : null;
 }
 
-/** Konunun tüm formül girdileri (Formüller sayfası için). */
+/** All formula entries of the topic (for the Formulas page). */
 export function getFormulaEntries(topic: CourseTopic): CourseEntry[] {
   return topic.entries;
 }
 
-/** Yalnız hesaplayıcısı olan girdiler (Hesaplamalar sayfası için). */
+/** Only the entries that carry a calculator (for the Calculations page). */
 export function getCalculatorEntries(topic: CourseTopic): CourseEntry[] {
   return topic.entries.filter((e) => typeof e.calculate === "function");
 }
 
-/** Bir konunun registry'de tanımlı (migrate edilmiş) olup olmadığı. */
+/** Whether a topic is defined (migrated) in the registry. */
 export function hasCourseTopic(key?: string): boolean {
   return !!key && key in courseTopics;
 }

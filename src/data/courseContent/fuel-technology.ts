@@ -2,9 +2,9 @@ import { Thermometer } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Yakıt Teknolojisi ve Yönetimi — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Fuel Technology and Management — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const fuelTechnology: CourseTopic = {
   key: "fuel-technology",
@@ -99,7 +99,7 @@ export const fuelTechnology: CourseTopic = {
         { key: "vTarget", label: "Target Viscosity", unit: "cSt", placeholder: "15" },
       ],
       calculate: (v) => {
-        // Walther denklemi yaklaşık çözümü
+        // Approximate solution of the Walther equation
         const t = 50 + (Math.log(v.v50 / v.vTarget) / Math.log(1.055)) * 1;
         return [{ label: "Estimated Heating Temperature", value: `${t.toFixed(0)} °C` }];
       },
@@ -121,7 +121,7 @@ export const fuelTechnology: CourseTopic = {
         { key: "t", label: "Current Temperature", unit: "°C", placeholder: "130" },
       ],
       calculate: (v) => {
-        // Yaklaşık düzeltme katsayısı: 0.00065 per °C (HFO için)
+        // Approximate correction coefficient: 0.00065 per °C (for HFO)
         const dT = v.d15 - 0.00065 * v.d15 * (v.t - 15);
         return [{ label: "Corrected Density", value: `${dT.toFixed(1)} kg/m³` }];
       },

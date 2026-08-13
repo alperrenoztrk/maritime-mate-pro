@@ -2,9 +2,9 @@ import { Snowflake } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Soğutma ve Klima Sistemleri — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Refrigeration and Air Conditioning Systems — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const coolingHvac: CourseTopic = {
   key: "cooling-hvac",
@@ -173,7 +173,7 @@ export const coolingHvac: CourseTopic = {
       ],
       calculate: (v) => {
         const qTransmission = v.u * v.area * (v.tout - v.tin);
-        const qTotal = qTransmission * 1.25; // %25 güvenlik payı
+        const qTotal = qTransmission * 1.25; // 25% safety margin
         return [
           { label: "Conduction Load", value: `${(qTransmission / 1000).toFixed(2)} kW` },
           { label: "Total Load (25% margin)", value: `${(qTotal / 1000).toFixed(2)} kW` },

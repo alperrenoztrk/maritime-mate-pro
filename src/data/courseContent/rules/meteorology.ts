@@ -1,16 +1,16 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Meteoroloji kuralları.
+ * Meteorology rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
+ * The content is taken from real, cited regulations:
  *  - SOLAS V/34 (Voyage Planning) ve V/5 (Meteorological services)
  *  - IMO Weather Routing Guidelines
  *  - STCW VIII/2 (Watchkeeping)
  *  - WMO No.471 / GMDSS MSI (NAVTEX, SafetyNET)
- *  - Beaufort ölçeği ve tropik siklon kaçınma uygulamaları
+ *  - The Beaufort scale and tropical cyclone avoidance practice
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const meteorologyRules: RuleGroup[] = [
   {

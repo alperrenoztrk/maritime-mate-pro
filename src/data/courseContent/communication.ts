@@ -2,8 +2,8 @@ import { Radio } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Denizde Haberleşme — tek kaynak ders içeriği.
- * GMDSS/telsiz için gerçek RF/ITU bağıntıları; her formül bağlı hesaplayıcıyla.
+ * Maritime Communications — single source course content.
+ * Real RF/ITU relations for GMDSS/radio; every formula has a linked calculator.
  */
 export const communication: CourseTopic = {
   key: "communication",

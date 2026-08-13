@@ -1,12 +1,12 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Deniz ticareti / ekonomi kuralları.
+ * Shipping commerce / economics rules.
  *
- * Bu dosyada bağlı bir bespoke sayfa YOKTUR; içerik gerçek ticari deniz hukuku
- * ve standart formlardan ilke düzeyinde derlenmiştir. Uydurma sayısal eşik
- * verilmemiş, atıflar (Hague-Visby, Incoterms 2020, BIMCO formları vb.)
- * korunmuştur.
+ * There is NO bespoke page linked to this file; the content is compiled at
+ * principle level from real commercial maritime law and standard forms. No
+ * numerical thresholds have been invented, and the references (Hague-Visby,
+ * Incoterms 2020, BIMCO forms etc.) have been preserved.
  */
 export const economicsRules: RuleGroup[] = [
   {

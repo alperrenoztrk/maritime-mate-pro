@@ -2,9 +2,9 @@ import { Zap } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Gemi Elektrik Sistemleri — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Ship Electrical Systems — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const electrical: CourseTopic = {
   key: "electrical",

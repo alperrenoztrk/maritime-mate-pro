@@ -2,10 +2,10 @@ import { Users } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Engine Resource Management (ERM) — tek kaynak ders içeriği.
- * Risk değerlendirme ve insan faktörü (yorgunluk, vardiya) göstergeleri ilgili
- * hesaplayıcılarla TEK listede birleştirildi; `calculate` taşıyan girdiler hem
- * Formüller hem Hesaplamalar sayfasında görünür.
+ * Engine Resource Management (ERM) — single source course content.
+ * The risk assessment and human factor (fatigue, watchkeeping) indicators are
+ * merged with their calculators into a SINGLE list; entries carrying `calculate`
+ * appear on both the Formulas and the Calculations page.
  */
 export const erm: CourseTopic = {
   key: "erm",

@@ -1,18 +1,18 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Çevre kuralları.
+ * Environmental rules.
  *
- * İçerik src/pages/EmissionRules.tsx sayfasındaki gerçek, kaynak gösterilmiş
- * düzenlemelerden alınmıştır. Sayfadaki iç içe (nested) alt bölümler, her biri
- * ayrı bir RuleSection olacak şekilde korunmuştur:
- *  - MARPOL Annex VI (Hava Kirliliği — SOx, NOx, enerji verimliliği)
+ * The content is taken from the real, cited regulations on the
+ * src/pages/EmissionRules.tsx page. The nested sub-sections of that page have
+ * been preserved, each as a separate RuleSection:
+ *  - MARPOL Annex VI (air pollution — SOx, NOx, energy efficiency)
  *  - BWM Convention (Balast Suyu)
- *  - MARPOL Annex I (Petrol Kirliliği)
- *  - MARPOL Annex V (Çöp)
- *  - IMO DCS ve Bölgesel MRV
+ *  - MARPOL Annex I (oil pollution)
+ *  - MARPOL Annex V (garbage)
+ *  - IMO DCS and regional MRV
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const environmentRules: RuleGroup[] = [
   {

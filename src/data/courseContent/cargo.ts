@@ -2,9 +2,9 @@ import { Package } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Yük Elleçleme ve İstifleme — tek kaynak ders içeriği.
- * Formüller mevcut CargoCalculations sayfasındaki gerçek ifadelerden alınmış,
- * hesaplayıcılar bu ifadeleri birebir uygular.
+ * Cargo Handling and Stowage — single source course content.
+ * The formulas are taken verbatim from the existing CargoCalculations page and
+ * the calculators apply exactly those expressions.
  */
 export const cargo: CourseTopic = {
   key: "cargo",

@@ -2,9 +2,9 @@ import { Anchor } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Gemicilik — tek kaynak ders içeriği.
- * Formüller mevcut SeamanshipFormulas sayfasındaki gerçek ifadelerden alınmış,
- * hesaplayıcılar bu ifadeleri birebir uygular.
+ * Seamanship — single source course content.
+ * The formulas are taken verbatim from the existing SeamanshipFormulas page and
+ * the calculators apply exactly those expressions.
  */
 export const seamanship: CourseTopic = {
   key: "seamanship",

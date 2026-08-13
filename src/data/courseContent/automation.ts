@@ -2,9 +2,9 @@ import { Cpu } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Elektronik, Ölçme ve Otomasyon — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Electronics, Measurement and Automation — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const automation: CourseTopic = {
   key: "automation",
@@ -59,7 +59,7 @@ export const automation: CourseTopic = {
         { key: "emf", label: "Measured EMF", unit: "mV", placeholder: "12.2" },
       ],
       calculate: (v) => {
-        // K-tipi yaklaşık lineer: ~40.7 µV/°C → 0.0407 mV/°C → T ≈ EMF / 0.0407
+        // Type K is approximately linear: ~40.7 µV/°C → 0.0407 mV/°C → T ≈ EMF / 0.0407
         const temp = v.emf / 0.0407;
         return [{ label: "Estimated Temperature", value: `${temp.toFixed(0)} °C` }];
       },

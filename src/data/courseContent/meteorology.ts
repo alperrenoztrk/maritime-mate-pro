@@ -2,11 +2,11 @@ import { CloudSun } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Meteoroloji — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür. Tüm formüller
- * mevcut Meteoroloji Formülleri sayfasından ve WeatherCalculations bileşeninden
- * birebir alınmıştır (uydurma yok).
+ * Meteorology — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page. All formulas
+ * are taken verbatim from the existing Meteorology Formulas page and the
+ * WeatherCalculations component (nothing invented).
  */
 export const meteorology: CourseTopic = {
   key: "meteorology",

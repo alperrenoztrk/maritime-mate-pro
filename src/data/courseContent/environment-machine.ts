@@ -2,10 +2,10 @@ import { Leaf } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Çevre ve MARPOL – Makine — tek kaynak ders içeriği.
- * Emisyon ve atık yönetimi formülleri ilgili hesaplayıcılarla TEK listede
- * birleştirildi; `calculate` taşıyan girdiler hem Formüller hem Hesaplamalar
- * sayfasında görünür.
+ * Environment and MARPOL – Machinery — single source course content.
+ * The emission and waste management formulas are merged with their calculators
+ * into a SINGLE list; entries carrying `calculate` appear on both the Formulas
+ * and the Calculations page.
  */
 export const environmentMachine: CourseTopic = {
   key: "environment-machine",
@@ -52,7 +52,7 @@ export const environmentMachine: CourseTopic = {
         { key: "s", label: "Sulphur Content", unit: "%", placeholder: "0.5" },
       ],
       calculate: (v) => {
-        // SO₂ = 2 × S% × FC (kütle oranı: S→SO₂ çarpan ≈ 2)
+        // SO₂ = 2 × S% × FC (mass ratio: the S→SO₂ factor ≈ 2)
         const sox = 2 * (v.s / 100) * v.fc;
         const limit = v.s <= 0.1 ? "ECA Compliant" : v.s <= 0.5 ? "Globally Compliant" : "Uyumsuz";
         return [

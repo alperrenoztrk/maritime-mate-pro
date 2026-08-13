@@ -1,17 +1,17 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Emniyet kuralları.
+ * Safety rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
- *  - SOLAS Bölüm II-2 (Yangın Güvenliği) ve III (Can Kurtarma)
- *  - LSA Code (Can Kurtarma Donanımları)
- *  - FSS Code (Yangın Güvenlik Sistemleri)
+ * The content is taken from real, cited regulations:
+ *  - SOLAS Chapter II-2 (fire safety) and III (life saving)
+ *  - LSA Code (life saving appliances)
+ *  - FSS Code (fire safety systems)
  *  - ISM Code (DOC, SMC, DPA)
  *  - ISPS Code (ISSC, SSP, SSO)
- *  - MLC 2006 (çalışma/sağlık-güvenlik)
+ *  - MLC 2006 (work / health and safety)
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const safetyRules: RuleGroup[] = [
   {

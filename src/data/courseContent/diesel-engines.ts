@@ -2,9 +2,9 @@ import { Settings } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Deniz Dizel Makineleri — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Marine Diesel Engines — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const dieselEngines: CourseTopic = {
   key: "diesel-engines",

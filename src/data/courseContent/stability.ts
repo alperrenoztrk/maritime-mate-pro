@@ -3,11 +3,11 @@ import { HydrostaticCalculations } from "@/services/hydrostaticCalculations";
 import type { CourseTopic } from "./types";
 
 /**
- * Stabilite — tek kaynak ders içeriği.
- * Gerçek formüller (IMO IS Code / SOLAS / Grain Code) ve bunlara BAĞLI
- * hesaplayıcılar tek listede. Hesaplayıcılar, mümkün olduğunda mevcut
- * `HydrostaticCalculations` servis metotlarına delege eder; böylece formül
- * metni ile hesaplama birebir aynı matematiği kullanır.
+ * Stability — single source course content.
+ * Real formulas (IMO IS Code / SOLAS / Grain Code) and the calculators LINKED to
+ * them in a single list. Where possible the calculators delegate to the existing
+ * `HydrostaticCalculations` service methods, so the formula text and the
+ * calculation use exactly the same mathematics.
  */
 export const stability: CourseTopic = {
   key: "stability",
@@ -441,7 +441,7 @@ export const stability: CourseTopic = {
         return [{ label: "Area (A)", value: area.toFixed(4) }];
       },
     },
-    // ---- Konu anlatımından eklenen hesaplayıcılar ----
+    // ---- Calculators added from the topic text ----
     {
       id: "km",
       name: "Metacentre Height (KM)",
