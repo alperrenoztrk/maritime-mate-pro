@@ -92,7 +92,7 @@ export default function ShipSystemDeepDive() {
     return (
       <MobileLayout>
         <div className="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-4 px-4 text-center">
-          <h1 className="text-xl font-bold">Konu bulunamadı</h1>
+          <h1 className="text-xl font-bold">Topic not found</h1>
         </div>
       </MobileLayout>
     );

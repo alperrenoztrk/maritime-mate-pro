@@ -10,156 +10,156 @@ const formulaCategories = [
     bgColor: "bg-yellow-100 dark:bg-yellow-900/20",
     formulas: [
       {
-        name: "İndike Güç (IHP)",
+        name: "Indicated Power (IHP)",
         formula: "IHP = (Pm × L × A × n × k) / 60000",
-        variables: "Pm: ortalama efektif basınç (bar), L: strok (m), A: piston alanı (m²), n: devir (rpm), k: silindir sayısı",
+        variables: "Pm: mean effective pressure (bar), L: stroke (m), A: piston area (m²), n: speed (rpm), k: number of cylinders",
       },
       {
-        name: "Fren Gücü (BHP)",
+        name: "Brake Power (BHP)",
         formula: "BHP = IHP × ηmech",
         variables: "ηmech: mekanik verim (0.85-0.92)",
       },
       {
-        name: "Şaft Gücü (SHP)",
+        name: "Shaft Power (SHP)",
         formula: "SHP = BHP × ηtrans",
         variables: "ηtrans: transmisyon verimi (0.97-0.99)",
       },
       {
-        name: "Efektif Güç (EHP)",
+        name: "Effective Power (EHP)",
         formula: "EHP = R × V",
-        variables: "R: toplam direnç (N), V: gemi hızı (m/s)",
+        variables: "R: total resistance (N), V: vessel speed (m/s)",
       },
       {
-        name: "Pervane Gücü",
+        name: "Propeller Power",
         formula: "DHP = SHP × ηprop",
         variables: "ηprop: pervane verimi (0.55-0.70)",
       },
       {
         name: "Tork",
         formula: "T = (P × 60) / (2π × n)",
-        variables: "P: güç (W), n: devir (rpm)",
+        variables: "P: power (W), n: speed (rpm)",
       },
     ],
   },
   {
-    title: "Yakıt Hesaplamaları",
+    title: "Fuel Calculations",
     icon: Fuel,
     color: "text-orange-600",
     bgColor: "bg-orange-100 dark:bg-orange-900/20",
     formulas: [
       {
-        name: "Spesifik Yakıt Tüketimi (SFOC)",
+        name: "Specific Fuel Oil Consumption (SFOC)",
         formula: "SFOC = FC / P",
-        variables: "FC: yakıt tüketimi (g/h), P: güç (kW) — Birim: g/kWh",
+        variables: "FC: fuel consumption (g/h), P: power (kW) — unit: g/kWh",
       },
       {
-        name: "Günlük Yakıt Tüketimi",
+        name: "Daily Fuel Consumption",
         formula: "Daily FC = P × SFOC × 24 / 1000000",
-        variables: "Sonuç: ton/gün",
+        variables: "Result: tonnes/day",
       },
       {
-        name: "Sefer Yakıt Tüketimi",
-        formula: "Voyage FC = Daily FC × Sefer Süresi",
-        variables: "Sefer Süresi: gün",
+        name: "Voyage Fuel Consumption",
+        formula: "Voyage FC = Daily FC × Voyage Duration",
+        variables: "Voyage duration: days",
       },
       {
-        name: "Yakıt Isıtma Sıcaklığı",
+        name: "Fuel Heating Temperature",
         formula: "T = 50 + (V50 - 10) × 2",
         variables: "V50: 50°C'deki viskozite (cSt)",
       },
       {
-        name: "Yakıt Hacmi Düzeltmesi",
+        name: "Fuel Volume Correction",
         formula: "V15 = Vt × [1 - 0.00064 × (T - 15)]",
-        variables: "V15: 15°C hacim, Vt: ölçülen hacim, T: sıcaklık (°C)",
+        variables: "V15: volume at 15 °C, Vt: measured volume, T: temperature (°C)",
       },
     ],
   },
   {
-    title: "Soğutma Sistemi",
+    title: "Cooling System",
     icon: Thermometer,
     color: "text-blue-600",
     bgColor: "bg-blue-100 dark:bg-blue-900/20",
     formulas: [
       {
-        name: "Isı Yükü",
+        name: "Heat Load",
         formula: "Q = m × cp × ΔT",
-        variables: "m: kütle debisi (kg/s), cp: özgül ısı (kJ/kg·K), ΔT: sıcaklık farkı (K)",
+        variables: "m: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference (K)",
       },
       {
         name: "LMTD",
         formula: "LMTD = (ΔT₁ - ΔT₂) / ln(ΔT₁/ΔT₂)",
-        variables: "ΔT₁, ΔT₂: giriş ve çıkış sıcaklık farkları",
+        variables: "ΔT₁, ΔT₂: the inlet and outlet temperature differences",
       },
       {
-        name: "Isı Değiştirici Alanı",
+        name: "Heat Exchanger Area",
         formula: "A = Q / (U × LMTD)",
-        variables: "U: toplam ısı transfer katsayısı (W/m²·K)",
+        variables: "U: overall heat transfer coefficient (W/m²·K)",
       },
       {
-        name: "Soğutma Suyu Debisi",
+        name: "Cooling Water Flow Rate",
         formula: "m = Q / (cp × ΔT)",
-        variables: "Q: ısı yükü (kW)",
+        variables: "Q: heat load (kW)",
       },
       {
         name: "NTU (Transfer Birimi)",
         formula: "NTU = U × A / (m × cp)",
-        variables: "Isı değiştirici etkinliği için",
+        variables: "For the heat exchanger effectiveness",
       },
     ],
   },
   {
-    title: "Yağlama Sistemi",
+    title: "Lubrication System",
     icon: Droplets,
     color: "text-amber-600",
     bgColor: "bg-amber-100 dark:bg-amber-900/20",
     formulas: [
       {
-        name: "Silindir Yağ Tüketimi",
+        name: "Cylinder Oil Consumption",
         formula: "CLO = BHP × Feed Rate / 1000",
         variables: "Feed Rate: g/kWh (tipik: 0.7-1.2)",
       },
       {
-        name: "Sistem Yağ Tüketimi",
+        name: "System Oil Consumption",
         formula: "SLO = 0.05 × BHP / 1000",
-        variables: "Yaklaşık kg/gün",
+        variables: "Approximately kg/day",
       },
       {
-        name: "Yağ Filtre ΔP",
+        name: "Oil Filter ΔP",
         formula: "ΔP = (8 × μ × Q × L) / (π × r⁴)",
-        variables: "μ: viskozite, Q: debi, L: uzunluk, r: yarıçap",
+        variables: "μ: viscosity, Q: flow rate, L: length, r: radius",
       },
       {
-        name: "BN Tüketimi",
+        name: "BN Consumption",
         formula: "BN loss = Fuel S% × Neutralization Factor",
         variables: "Neutralization Factor ≈ 28-32",
       },
     ],
   },
   {
-    title: "Basınçlı Hava",
+    title: "Compressed Air",
     icon: Gauge,
     color: "text-cyan-600",
     bgColor: "bg-cyan-100 dark:bg-cyan-900/20",
     formulas: [
       {
-        name: "Kompresör Gücü",
+        name: "Compressor Power",
         formula: "P = (p₂/p₁)^((k-1)/(n×k)) - 1) × (n×k)/(k-1) × p₁×V₁",
-        variables: "n: kademe sayısı, k: özgül ısı oranı",
+        variables: "n: number of stages, k: specific heat ratio",
       },
       {
-        name: "Hava Şişe Kapasitesi",
+        name: "Air Receiver Capacity",
         formula: "V = (N × Vswept × pstart) / pbottle",
-        variables: "N: başlatma sayısı, Vswept: süpürülen hacim",
+        variables: "N: number of starts, V_swept: swept volume",
       },
       {
-        name: "İdeal Gaz Denklemi",
+        name: "Ideal Gas Equation",
         formula: "p × V = m × R × T",
-        variables: "R: gaz sabiti (287 J/kg·K hava için)",
+        variables: "R: gas constant (287 J/kg·K for air)",
       },
       {
-        name: "Şarj Süresi",
+        name: "Charging Time",
         formula: "t = (V × (p₂ - p₁)) / (Q × patm)",
-        variables: "Q: kompresör kapasitesi (m³/min)",
+        variables: "Q: compressor capacity (m³/min)",
       },
     ],
   },
@@ -172,22 +172,22 @@ const formulaCategories = [
       {
         name: "Termal Verimlilik",
         formula: "ηth = P / (FC × LCV)",
-        variables: "LCV: alt ısıl değer (kJ/kg)",
+        variables: "LCV: lower calorific value (kJ/kg)",
       },
       {
         name: "Mekanik Verimlilik",
         formula: "ηmech = BHP / IHP",
-        variables: "Tipik değer: 0.85-0.92",
+        variables: "Typical value: 0.85-0.92",
       },
       {
         name: "Pervane Verimi",
         formula: "ηprop = EHP / DHP",
-        variables: "Tipik değer: 0.55-0.70",
+        variables: "Typical value: 0.55-0.70",
       },
       {
         name: "Genel Verimlilik",
         formula: "ηtotal = EHP / (FC × LCV)",
-        variables: "Tüm kayıplar dahil",
+        variables: "Including all losses",
       },
       {
         name: "EEOI",
@@ -210,7 +210,7 @@ export default function MachineFormulas() {
 
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-slate-600 via-zinc-600 to-slate-800 bg-clip-text text-transparent mb-3">
-            Makine Formülleri
+            Machine Formulas
           </h1>
         </div>
 

@@ -7,8 +7,8 @@ const seamanshipRules = [
     title: "COLREG Kısım B - Manevra Kuralları",
     icon: Anchor,
     rules: [
-      "Kural 5: Her zaman uygun gözcülük yapılmalıdır.",
-      "Kural 6: Güvenli hız ile seyredilmelidir.",
+      "Rule 5: a proper look-out must be maintained at all times.",
+      "Rule 6: the vessel must proceed at a safe speed.",
       "Kural 7: Çatışma riski doğru değerlendirilmelidir.",
       "Kural 8: Çatışmadan kaçınma eylemi zamanında ve belirgin olmalıdır.",
       "Kural 15-17: Yol hakkı ve manevra yükümlülükleri net uygulanmalıdır."
@@ -26,14 +26,14 @@ const seamanshipRules = [
     ]
   },
   {
-    title: "ISPS Kodu",
+    title: "ISPS Code",
     icon: Shield,
     rules: [
-      "Güvenlik seviyeleri (1, 2, 3) takip edilmelidir.",
+      "The security levels (1, 2, 3) must be monitored.",
       "Ship Security Plan (SSP) hazır olmalıdır.",
       "Güverte erişim kontrolleri uygulanmalıdır.",
       "Ziyaretçi ve yük kontrolleri yapılmalıdır.",
-      "Declaration of Security (DOS) gerektiğinde düzenlenmelidir."
+      "A Declaration of Security (DOS) must be completed when required."
     ]
   },
   {

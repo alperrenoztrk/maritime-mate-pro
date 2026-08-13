@@ -20,82 +20,82 @@ interface FormulaCategory {
 const topicFormulas: Record<string, FormulaCategory[]> = {
   thermodynamics: [
     {
-      title: "Termodinamik Yasaları",
+      title: "Laws of Thermodynamics",
       formulas: [
-        { name: "Birinci Yasa (Kapalı Sistem)", formula: "Q = ΔU + W", variables: "Q: ısı (kJ), ΔU: iç enerji değişimi (kJ), W: iş (kJ)" },
-        { name: "Carnot Verimi", formula: "ηCarnot = 1 − (TL / TH)", variables: "TL: düşük sıcaklık kaynağı (K), TH: yüksek sıcaklık kaynağı (K)" },
-        { name: "Entropi Değişimi", formula: "ΔS = Qrev / T", variables: "Qrev: tersinir ısı (kJ), T: mutlak sıcaklık (K)" },
-        { name: "İdeal Gaz Denklemi", formula: "PV = nRT", variables: "P: basınç (Pa), V: hacim (m³), n: mol sayısı, R: 8,314 J/(mol·K), T: sıcaklık (K)" },
-        { name: "Politropik Süreç", formula: "P₁V₁ⁿ = P₂V₂ⁿ", variables: "n: politropik indeks (izotermik n=1, adyabatik n=γ)" },
-        { name: "Otto Çevrimi Verimi", formula: "ηOtto = 1 − (1 / r^(γ−1))", variables: "r: sıkıştırma oranı, γ: özgül ısı oranı (cp/cv)" },
+        { name: "First Law (Closed System)", formula: "Q = ΔU + W", variables: "Q: heat (kJ), ΔU: internal energy change (kJ), W: work (kJ)" },
+        { name: "Carnot Efficiency", formula: "ηCarnot = 1 − (TL / TH)", variables: "TL: low temperature reservoir (K), TH: high temperature reservoir (K)" },
+        { name: "Entropy Change", formula: "ΔS = Qrev / T", variables: "Qrev: reversible heat (kJ), T: absolute temperature (K)" },
+        { name: "Ideal Gas Equation", formula: "PV = nRT", variables: "P: pressure (Pa), V: volume (m³), n: number of moles, R: 8.314 J/(mol·K), T: temperature (K)" },
+        { name: "Polytropic Process", formula: "P₁V₁ⁿ = P₂V₂ⁿ", variables: "n: politropik indeks (izotermik n=1, adyabatik n=γ)" },
+        { name: "Otto Cycle Efficiency", formula: "ηOtto = 1 − (1 / r^(γ−1))", variables: "r: compression ratio, γ: specific heat ratio (cp/cv)" },
       ],
     },
     {
-      title: "Isı Transferi",
+      title: "Heat Transfer",
       formulas: [
-        { name: "İletim (Fourier)", formula: "Q̇ = −k·A·(dT/dx)", variables: "k: ısıl iletkenlik (W/m·K), A: alan (m²), dT/dx: sıcaklık gradyanı" },
-        { name: "Taşınım (Newton)", formula: "Q̇ = h·A·ΔT", variables: "h: taşınım katsayısı (W/m²·K), A: yüzey alanı, ΔT: sıcaklık farkı" },
-        { name: "Işınım (Stefan-Boltzmann)", formula: "Q̇ = ε·σ·A·T⁴", variables: "ε: yayma katsayısı, σ: 5,67×10⁻⁸ W/m²·K⁴" },
-        { name: "LMTD (Isı Eşanjörü)", formula: "Q̇ = U·A·LMTD", variables: "U: toplam ısı geçiş katsayısı (W/m²·K), LMTD: logaritmik ortalama sıcaklık farkı" },
+        { name: "Conduction (Fourier)", formula: "Q̇ = −k·A·(dT/dx)", variables: "k: thermal conductivity (W/m·K), A: area (m²), dT/dx: temperature gradient" },
+        { name: "Convection (Newton)", formula: "Q̇ = h·A·ΔT", variables: "h: convection coefficient (W/m²·K), A: surface area, ΔT: temperature difference" },
+        { name: "Radiation (Stefan-Boltzmann)", formula: "Q̇ = ε·σ·A·T⁴", variables: "ε: emissivity, σ: 5.67×10⁻⁸ W/m²·K⁴" },
+        { name: "LMTD (Heat Exchanger)", formula: "Q̇ = U·A·LMTD", variables: "U: overall heat transfer coefficient (W/m²·K), LMTD: log mean temperature difference" },
       ],
     },
   ],
   "fluid-mechanics": [
     {
-      title: "Temel Akışkan Denklemleri",
+      title: "Fundamental Fluid Equations",
       formulas: [
-        { name: "Bernoulli Denklemi", formula: "P₁/ρg + v₁²/2g + z₁ = P₂/ρg + v₂²/2g + z₂", variables: "P: basınç, ρ: yoğunluk, v: hız, z: yükseklik, g: yerçekimi" },
-        { name: "Süreklilik Denklemi", formula: "A₁·v₁ = A₂·v₂", variables: "A: kesit alanı (m²), v: akış hızı (m/s)" },
-        { name: "Reynolds Sayısı", formula: "Re = ρ·v·D / μ", variables: "ρ: yoğunluk, v: hız, D: çap, μ: dinamik viskozite" },
-        { name: "Darcy-Weisbach (Boru Kaybı)", formula: "hf = f·(L/D)·(v²/2g)", variables: "f: sürtünme faktörü, L: boru uzunluğu, D: çap" },
+        { name: "Bernoulli Equation", formula: "P₁/ρg + v₁²/2g + z₁ = P₂/ρg + v₂²/2g + z₂", variables: "P: pressure, ρ: density, v: velocity, z: elevation, g: gravity" },
+        { name: "Continuity Equation", formula: "A₁·v₁ = A₂·v₂", variables: "A: cross-sectional area (m²), v: flow velocity (m/s)" },
+        { name: "Reynolds Number", formula: "Re = ρ·v·D / μ", variables: "ρ: density, v: velocity, D: diameter, μ: dynamic viscosity" },
+        { name: "Darcy-Weisbach (Pipe Loss)", formula: "hf = f·(L/D)·(v²/2g)", variables: "f: friction factor, L: pipe length, D: diameter" },
       ],
     },
     {
-      title: "Pompa Hesapları",
+      title: "Pump Calculations",
       formulas: [
-        { name: "Pompa Gücü", formula: "P = ρ·g·Q·H / η", variables: "Q: debi (m³/s), H: toplam basma yüksekliği (m), η: verim" },
-        { name: "NPSH (Net Pozitif Emme Yüksekliği)", formula: "NPSHa = (Patm − Pvap) / (ρ·g) + zs − hf", variables: "Patm: atmosfer basıncı, Pvap: buhar basıncı, zs: emme yüksekliği" },
-        { name: "Afinite Kuralları (Debi)", formula: "Q₂/Q₁ = n₂/n₁", variables: "Q: debi, n: devir" },
-        { name: "Afinite Kuralları (Güç)", formula: "P₂/P₁ = (n₂/n₁)³", variables: "P: güç, n: devir" },
+        { name: "Pump Power", formula: "P = ρ·g·Q·H / η", variables: "Q: flow rate (m³/s), H: total head (m), η: efficiency" },
+        { name: "NPSH (Net Positive Suction Head)", formula: "NPSHa = (Patm − Pvap) / (ρ·g) + zs − hf", variables: "Patm: atmospheric pressure, Pvap: vapour pressure, zs: suction lift" },
+        { name: "Affinity Laws (Flow Rate)", formula: "Q₂/Q₁ = n₂/n₁", variables: "Q: debi, n: devir" },
+        { name: "Affinity Laws (Power)", formula: "P₂/P₁ = (n₂/n₁)³", variables: "P: power, n: speed" },
       ],
     },
   ],
   "machine-elements": [
     {
-      title: "Mukavemet ve Gerilme",
+      title: "Strength and Stress",
       formulas: [
-        { name: "Çekme/Basma Gerilmesi", formula: "σ = F / A", variables: "F: kuvvet (N), A: kesit alanı (m²)" },
-        { name: "Kayma Gerilmesi", formula: "τ = F / A", variables: "F: kayma kuvveti, A: kayma alanı" },
-        { name: "Eğilme Gerilmesi", formula: "σ = M·y / I", variables: "M: eğilme momenti, y: nötr eksenden uzaklık, I: atalet momenti" },
-        { name: "Burulma Gerilmesi", formula: "τ = T·r / J", variables: "T: tork, r: yarıçap, J: polar atalet momenti" },
+        { name: "Tensile/Compressive Stress", formula: "σ = F / A", variables: "F: force (N), A: cross-sectional area (m²)" },
+        { name: "Shear Stress", formula: "τ = F / A", variables: "F: shear force, A: shear area" },
+        { name: "Bending Stress", formula: "σ = M·y / I", variables: "M: bending moment, y: distance from the neutral axis, I: moment of inertia" },
+        { name: "Torsional Stress", formula: "τ = T·r / J", variables: "T: torque, r: radius, J: polar moment of inertia" },
       ],
     },
     {
-      title: "Mil ve Yatak",
+      title: "Shaft and Bearing",
       formulas: [
-        { name: "Mil Çapı (Burulma)", formula: "d = ∛(16T / π·τizin)", variables: "T: tork (N·m), τizin: izin verilen kayma gerilmesi (Pa)" },
-        { name: "Kritik Devir", formula: "ncr = (60/2π)·√(g/δst)", variables: "δst: statik sehim (m), g: yerçekimi" },
-        { name: "Yatak Ömrü (L₁₀)", formula: "L₁₀ = (C/P)^p × 10⁶ devir", variables: "C: dinamik yük kapasitesi, P: eşdeğer yük, p: 3 (bilyalı) veya 10/3 (makaralı)" },
+        { name: "Shaft Diameter (Torsion)", formula: "d = ∛(16T / π·τizin)", variables: "T: tork (N·m), τizin: izin verilen kayma gerilmesi (Pa)" },
+        { name: "Critical Speed", formula: "ncr = (60/2π)·√(g/δst)", variables: "δst: static deflection (m), g: gravity" },
+        { name: "Bearing Life (L₁₀)", formula: "L₁₀ = (C/P)^p × 10⁶ revolutions", variables: "C: dynamic load rating, P: equivalent load, p: 3 (ball) or 10/3 (roller)" },
       ],
     },
   ],
   "diesel-engines": [
     {
-      title: "Motor Performans",
+      title: "Engine Performance",
       formulas: [
-        { name: "İndike Güç (IHP)", formula: "IHP = (Pmi × L × A × n × k) / 60000", variables: "Pmi: ortalama indike basınç (bar), L: strok (m), A: piston alanı (m²), n: devir (rpm), k: silindir sayısı" },
-        { name: "Fren Gücü (BHP)", formula: "BHP = IHP × ηmech", variables: "ηmech: mekanik verim (0,85–0,92)" },
-        { name: "SFOC", formula: "SFOC = Yakıt tüketimi (g/h) / BHP (kW)", variables: "Sonuç: g/kW·h — düşük olan daha verimli" },
-        { name: "Ortalama Efektif Basınç", formula: "MEP = (Wnet) / Vd", variables: "Wnet: çevrim başına net iş, Vd: strok hacmi" },
-        { name: "Sıkıştırma Oranı", formula: "r = Vmax / Vmin", variables: "Vmax: alt ölü nokta hacmi, Vmin: üst ölü nokta hacmi" },
+        { name: "Indicated Power (IHP)", formula: "IHP = (Pmi × L × A × n × k) / 60000", variables: "Pmi: mean indicated pressure (bar), L: stroke (m), A: piston area (m²), n: speed (rpm), k: number of cylinders" },
+        { name: "Brake Power (BHP)", formula: "BHP = IHP × ηmech", variables: "ηmech: mekanik verim (0,85–0,92)" },
+        { name: "SFOC", formula: "SFOC = Fuel consumption (g/h) / BHP (kW)", variables: "Result: g/kW·h — a lower value is more efficient" },
+        { name: "Mean Effective Pressure", formula: "MEP = (Wnet) / Vd", variables: "Wnet: net work per cycle, Vd: swept volume" },
+        { name: "Compression Ratio", formula: "r = Vmax / Vmin", variables: "Vmax: volume at bottom dead centre, Vmin: volume at top dead centre" },
       ],
     },
     {
       title: "Yanma ve Enjeksiyon",
       formulas: [
-        { name: "Hava Fazlalık Katsayısı", formula: "λ = mhava,gerçek / mhava,stokiyometrik", variables: "λ > 1: fakir karışım (dizel tipik λ = 1,5–2,5)" },
-        { name: "Enjeksiyon Basıncı", formula: "Pinj = Fyay / Aiğne + Psilindir", variables: "Tipik: 300–1.000 bar (mekanik), 1.500–2.500 bar (common rail)" },
-        { name: "Isıl Verim", formula: "ηth = BHP / (ṁyakıt × Hu)", variables: "ṁyakıt: yakıt debisi (kg/s), Hu: alt ısıl değer (kJ/kg)" },
+        { name: "Excess Air Ratio", formula: "λ = m_air,actual / m_air,stoichiometric", variables: "λ > 1: lean mixture (typical diesel λ = 1.5–2.5)" },
+        { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Tipik: 300–1.000 bar (mekanik), 1.500–2.500 bar (common rail)" },
+        { name: "Thermal Efficiency", formula: "ηth = BHP / (ṁ_fuel × Hu)", variables: "ṁ_fuel: fuel flow rate (kg/s), Hu: lower calorific value (kJ/kg)" },
       ],
     },
   ],
@@ -103,220 +103,220 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Fuel System",
       formulas: [
-        { name: "Yakıt Tüketimi", formula: "FC = SFOC × BHP × t / 10⁶", variables: "FC: tüketim (ton), SFOC (g/kW·h), BHP (kW), t: süre (saat)" },
-        { name: "Viskozite-Sıcaklık", formula: "log(log(ν + 0,7)) = A − B·log(T)", variables: "Walther denklemi; ν: kinematik viskozite (cSt), T: sıcaklık (K)" },
+        { name: "Fuel Consumption", formula: "FC = SFOC × BHP × t / 10⁶", variables: "FC: consumption (tonnes), SFOC (g/kW·h), BHP (kW), t: time (hours)" },
+        { name: "Viscosity-Temperature", formula: "log(log(ν + 0,7)) = A − B·log(T)", variables: "Walther equation; ν: kinematic viscosity (cSt), T: temperature (K)" },
       ],
     },
     {
-      title: "Yağlama Sistemi",
+      title: "Lubrication System",
       formulas: [
-        { name: "Yağ Debisi", formula: "Q = (BHP × SLOC) / (ρ × 10⁶)", variables: "SLOC: özgül yağ tüketimi (g/kW·h), ρ: yağ yoğunluğu (kg/m³)" },
-        { name: "Yağ Film Kalınlığı", formula: "hmin = f(μ, N, W, R)", variables: "μ: viskozite, N: devir, W: yük, R: yarıçap" },
+        { name: "Oil Flow Rate", formula: "Q = (BHP × SLOC) / (ρ × 10⁶)", variables: "SLOC: specific lubricating oil consumption (g/kW·h), ρ: oil density (kg/m³)" },
+        { name: "Oil Film Thickness", formula: "hmin = f(μ, N, W, R)", variables: "μ: viscosity, N: speed, W: load, R: radius" },
       ],
     },
     {
-      title: "Soğutma Sistemi",
+      title: "Cooling System",
       formulas: [
-        { name: "Isı Atım Miktarı", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: kütle debisi (kg/s), cp: özgül ısı (kJ/kg·K), ΔT: sıcaklık farkı" },
-        { name: "Soğutma Suyu Debisi", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Tipik ΔT: HT devresi 5–8°C, LT devresi 10–15°C" },
+        { name: "Heat Rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
+        { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Tipik ΔT: HT devresi 5–8°C, LT devresi 10–15°C" },
       ],
     },
   ],
   auxiliary: [
     {
-      title: "Jeneratör Hesapları",
+      title: "Generator Calculations",
       formulas: [
-        { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: hat gerilimi (V), I: hat akımı (A), cos(φ): güç faktörü" },
-        { name: "Frekans-Devir İlişkisi", formula: "f = (p × n) / 60", variables: "f: frekans (Hz), p: kutup çifti sayısı, n: devir (rpm)" },
-        { name: "Jeneratör Verimi", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
+        { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: line voltage (V), I: line current (A), cos(φ): power factor" },
+        { name: "Frequency-Speed Relation", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
+        { name: "Generator Efficiency", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
       ],
     },
     {
-      title: "Kazan Hesapları",
+      title: "Boiler Calculations",
       formulas: [
-        { name: "Kazan Verimi", formula: "η = (ṁbuhar × Δh) / (ṁyakıt × Hu)", variables: "Δh: entalpi farkı (kJ/kg), Hu: yakıtın alt ısıl değeri" },
-        { name: "Buhar Üretimi", formula: "ṁbuhar = Q̇ / Δh", variables: "Q̇: kazana verilen ısı (kW), Δh: buharlaşma entalpisi" },
+        { name: "Boiler Efficiency", formula: "η = (ṁ_steam × Δh) / (ṁ_fuel × Hu)", variables: "Δh: enthalpy difference (kJ/kg), Hu: lower calorific value of the fuel" },
+        { name: "Steam Production", formula: "ṁbuhar = Q̇ / Δh", variables: "Q̇: heat input to the boiler (kW), Δh: enthalpy of evaporation" },
       ],
     },
     {
-      title: "Separatör",
+      title: "Separator",
       formulas: [
-        { name: "Stokes Yasası (Ayrışma Hızı)", formula: "v = d²·(ρw − ρo)·g / (18·μ)", variables: "d: parçacık çapı, ρ: yoğunluklar, μ: viskozite" },
-        { name: "Separatör Kapasitesi", formula: "Q = K × n² × r²", variables: "K: sabit, n: devir, r: disk yarıçapı" },
+        { name: "Stokes' Law (Separation Velocity)", formula: "v = d²·(ρw − ρo)·g / (18·μ)", variables: "d: particle diameter, ρ: densities, μ: viscosity" },
+        { name: "Separator Capacity", formula: "Q = K × n² × r²", variables: "K: constant, n: speed, r: disc radius" },
       ],
     },
   ],
   "fuel-technology": [
     {
-      title: "Yakıt Özellikleri",
+      title: "Fuel Properties",
       formulas: [
-        { name: "CCAI (Aromatiklik İndeksi)", formula: "CCAI = D − 81,703·log(log(ν₅₀ + 0,85)) − 483,5", variables: "D: yoğunluk 15°C (kg/m³), ν₅₀: 50°C kinematik viskozite (cSt)" },
-        { name: "Yakıt Isıl Değeri", formula: "Hu ≈ 46,704 − 8,802·d² + 3,167·d", variables: "d: 15°C yoğunluk (kg/L), sonuç MJ/kg" },
-        { name: "Viskozite Dönüşümü", formula: "1 cSt = 1 mm²/s", variables: "Redwood No.1 (s) ≈ 4,05 × cSt (yaklaşık)" },
+        { name: "CCAI (Calculated Carbon Aromaticity Index)", formula: "CCAI = D − 81,703·log(log(ν₅₀ + 0,85)) − 483,5", variables: "D: density at 15 °C (kg/m³), ν₅₀: kinematic viscosity at 50 °C (cSt)" },
+        { name: "Fuel Calorific Value", formula: "Hu ≈ 46,704 − 8,802·d² + 3,167·d", variables: "d: density at 15 °C (kg/L); the result is in MJ/kg" },
+        { name: "Viscosity Conversion", formula: "1 cSt = 1 mm²/s", variables: "Redwood No.1 (s) ≈ 4.05 × cSt (approximate)" },
       ],
     },
     {
-      title: "Yakıt Arıtma",
+      title: "Fuel Treatment",
       formulas: [
-        { name: "Isıtma Gücü", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: yakıt debisi, cp: özgül ısı (~2 kJ/kg·K HFO), ΔT: sıcaklık artışı" },
-        { name: "Settling Tank Süresi", formula: "t ≥ 24 saat (ISO 8217)", variables: "Tank sıcaklığı: 70°C (HFO), yerçekimiyle su/katı çökmesi" },
+        { name: "Heating Power", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: fuel flow rate, cp: specific heat (~2 kJ/kg·K for HFO), ΔT: temperature rise" },
+        { name: "Settling Tank Time", formula: "t ≥ 24 saat (ISO 8217)", variables: "Tank temperature: 70 °C (HFO), gravity settling of water and solids" },
       ],
     },
   ],
   "cooling-hvac": [
     {
-      title: "Soğutma Çevrimi",
+      title: "Refrigeration Cycle",
       formulas: [
-        { name: "COP (Soğutma)", formula: "COP = QL / Wcomp", variables: "QL: soğutma kapasitesi (kW), Wcomp: kompresör işi (kW)" },
-        { name: "COP (Isı Pompası)", formula: "COPHP = QH / Wcomp = COPsoğutma + 1", variables: "QH: ısıtma kapasitesi" },
-        { name: "Soğutma Kapasitesi", formula: "Q̇ = ṁ × (h₁ − h₄)", variables: "ṁ: soğutucu akışkan debisi, h: entalpi değerleri (kJ/kg)" },
-        { name: "Kompresör İşi", formula: "W = ṁ × (h₂ − h₁)", variables: "h₂: kompresör çıkışı, h₁: kompresör girişi entalpi" },
+        { name: "COP (Refrigeration)", formula: "COP = QL / Wcomp", variables: "QL: cooling capacity (kW), Wcomp: compressor work (kW)" },
+        { name: "COP (Heat Pump)", formula: "COP_HP = QH / Wcomp = COP_cooling + 1", variables: "QH: heating capacity" },
+        { name: "Cooling Capacity", formula: "Q̇ = ṁ × (h₁ − h₄)", variables: "ṁ: refrigerant flow rate, h: enthalpy values (kJ/kg)" },
+        { name: "Compressor Work", formula: "W = ṁ × (h₂ − h₁)", variables: "h₂: enthalpy at the compressor outlet, h₁: enthalpy at the compressor inlet" },
       ],
     },
     {
-      title: "Klima Hesapları",
+      title: "Air Conditioning Calculations",
       formulas: [
-        { name: "Soğutma Yükü", formula: "Q = U·A·ΔT + Qhava + Qiç", variables: "U: ısı geçiş katsayısı, Qhava: taze hava yükü, Qiç: iç ısı kaynakları" },
-        { name: "Nem Alma Kapasitesi", formula: "ṁw = ṁa × (ω₁ − ω₂)", variables: "ṁa: hava debisi, ω: özgül nem (kgsu/kgkuruhava)" },
+        { name: "Cooling Load", formula: "Q = U·A·ΔT + Q_air + Q_internal", variables: "U: heat transfer coefficient, Q_air: fresh air load, Q_internal: internal heat sources" },
+        { name: "Dehumidification Capacity", formula: "ṁw = ṁa × (ω₁ − ω₂)", variables: "ṁa: air flow rate, ω: humidity ratio (kg of water per kg of dry air)" },
       ],
     },
   ],
   electrical: [
     {
-      title: "Elektrik Temel",
+      title: "Electrical Fundamentals",
       formulas: [
-        { name: "Ohm Yasası", formula: "V = I × R", variables: "V: gerilim (V), I: akım (A), R: direnç (Ω)" },
-        { name: "Üç Fazlı Güç", formula: "P = √3 × VL × IL × cos(φ)", variables: "VL: hat gerilimi, IL: hat akımı, cos(φ): güç faktörü" },
-        { name: "Reaktif Güç", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Birim: VAR (Volt-Amper Reaktif)" },
-        { name: "Görünür Güç", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Birim: VA (Volt-Amper)" },
+        { name: "Ohm's Law", formula: "V = I × R", variables: "V: voltage (V), I: current (A), R: resistance (Ω)" },
+        { name: "Three Phase Power", formula: "P = √3 × VL × IL × cos(φ)", variables: "VL: line voltage, IL: line current, cos(φ): power factor" },
+        { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Birim: VAR (Volt-Amper Reaktif)" },
+        { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Birim: VA (Volt-Amper)" },
       ],
     },
     {
-      title: "Koruma ve Kablo",
+      title: "Protection and Cabling",
       formulas: [
-        { name: "Kısa Devre Akımı", formula: "Isc = V / Ztoplam", variables: "Z: empedans (primer+trafo+kablo)" },
-        { name: "Gerilim Düşümü", formula: "ΔV = I × (R·cos(φ) + X·sin(φ)) × L × 2", variables: "R: birim direnç (Ω/m), X: birim reaktans, L: kablo uzunluğu" },
-        { name: "İzolasyon Direnci", formula: "Riz ≥ (Vnominal + 1000) / 1000 MΩ", variables: "Minimum: 1 MΩ (SOLAS/IEC 60092)" },
+        { name: "Short Circuit Current", formula: "Isc = V / Ztoplam", variables: "Z: empedans (primer+trafo+kablo)" },
+        { name: "Voltage Drop", formula: "ΔV = I × (R·cos(φ) + X·sin(φ)) × L × 2", variables: "R: resistance per unit length (Ω/m), X: reactance per unit length, L: cable length" },
+        { name: "Insulation Resistance", formula: "Riz ≥ (Vnominal + 1000) / 1000 MΩ", variables: "Minimum: 1 MΩ (SOLAS/IEC 60092)" },
       ],
     },
   ],
   automation: [
     {
-      title: "Ölçme ve Sensörler",
+      title: "Measurement and Sensors",
       formulas: [
-        { name: "Doğruluk", formula: "Hata (%) = ((Ölçülen − Gerçek) / Gerçek) × 100", variables: "Kabul: ±0,5% (sıcaklık), ±1% (basınç), ±2% (debi)" },
-        { name: "Termokupl EMF", formula: "V = S × ΔT", variables: "S: Seebeck katsayısı (μV/°C), ΔT: sıcaklık farkı" },
-        { name: "RTD Direnci", formula: "R(T) = R₀ × (1 + αT)", variables: "R₀: 0°C direnci (Pt100 → 100Ω), α: sıcaklık katsayısı" },
+        { name: "Accuracy", formula: "Error (%) = ((Measured − True) / True) × 100", variables: "Acceptable: ±0.5% (temperature), ±1% (pressure), ±2% (flow)" },
+        { name: "Termokupl EMF", formula: "V = S × ΔT", variables: "S: Seebeck coefficient (μV/°C), ΔT: temperature difference" },
+        { name: "RTD Direnci", formula: "R(T) = R₀ × (1 + αT)", variables: "R₀: resistance at 0 °C (Pt100 → 100 Ω), α: temperature coefficient" },
       ],
     },
     {
-      title: "Kontrol Sistemleri",
+      title: "Control Systems",
       formulas: [
-        { name: "PID Çıkışı", formula: "u(t) = Kp·e + Ki·∫e·dt + Kd·de/dt", variables: "e: hata, Kp: oransal, Ki: integral, Kd: türevsel kazanç" },
-        { name: "4-20 mA Dönüşüm", formula: "I = 4 + (16 × (X − Xmin) / (Xmax − Xmin))", variables: "X: ölçülen değer, I: çıkış akımı (mA)" },
+        { name: "PID Output", formula: "u(t) = Kp·e + Ki·∫e·dt + Kd·de/dt", variables: "e: error, Kp: proportional gain, Ki: integral gain, Kd: derivative gain" },
+        { name: "4-20 mA Conversion", formula: "I = 4 + (16 × (X − Xmin) / (Xmax − Xmin))", variables: "X: measured value, I: output current (mA)" },
       ],
     },
   ],
   "engine-room-ops": [
     {
-      title: "Operasyon Parametreleri",
+      title: "Operating Parameters",
       formulas: [
-        { name: "Yakıt Tüketim Oranı", formula: "FCrate = FCtoplam / Seyir süresi", variables: "Birim: ton/gün veya ton/saat" },
-        { name: "Kalan Yakıt Tahmini", formula: "Menzil (saat) = Yakıtstok / FCrate", variables: "FCrate: saatlik tüketim (ton/saat)" },
-        { name: "Yağ Tüketimi", formula: "SLOC = Yağ tüketimi (g/h) / BHP (kW)", variables: "Birim: g/kW·h, normal: 0,6–1,2 g/kW·h" },
+        { name: "Fuel Consumption Rate", formula: "FCrate = FCtotal / Voyage time", variables: "Unit: tonnes/day or tonnes/hour" },
+        { name: "Remaining Fuel Estimate", formula: "Endurance (hours) = Fuel stock / FCrate", variables: "FCrate: hourly consumption (tonnes/hour)" },
+        { name: "Lubricating Oil Consumption", formula: "SLOC = Oil consumption (g/h) / BHP (kW)", variables: "Birim: g/kW·h, normal: 0,6–1,2 g/kW·h" },
       ],
     },
     {
-      title: "Devreye Alma",
+      title: "Start-up",
       formulas: [
-        { name: "Isınma Süresi (Ana Makine)", formula: "tısınma ≥ 30 dk (Jacket water → 60°C)", variables: "Turning gear: min 1 saat döndürülmeli" },
-        { name: "Yağ Basıncı Kontrolü", formula: "Pyağ ≥ Pmin (üretici değeri)", variables: "Tipik: 3–5 bar (düşük devirde), 5–8 bar (tam yükte)" },
+        { name: "Warm-up Time (Main Engine)", formula: "t_warm-up ≥ 30 min (jacket water → 60 °C)", variables: "Turning gear: must be turned for at least 1 hour" },
+        { name: "Lubricating Oil Pressure Check", formula: "P_oil ≥ P_min (manufacturer's value)", variables: "Typical: 3–5 bar (at low speed), 5–8 bar (at full load)" },
       ],
     },
   ],
   maintenance: [
     {
-      title: "Bakım Planlama",
+      title: "Maintenance Planning",
       formulas: [
-        { name: "MTBF", formula: "MTBF = Toplam çalışma süresi / Arıza sayısı", variables: "Birim: saat — yüksek olan daha güvenilir" },
-        { name: "MTTR", formula: "MTTR = Toplam onarım süresi / Onarım sayısı", variables: "Birim: saat — düşük olan daha iyi bakım göstergesi" },
-        { name: "Kullanılabilirlik", formula: "A = MTBF / (MTBF + MTTR)", variables: "A: availability oranı (0–1); hedef ≥ 0,95" },
-        { name: "Güvenilirlik", formula: "R(t) = e^(−t/MTBF)", variables: "R: t süresinde arızasız çalışma olasılığı" },
+        { name: "MTBF", formula: "MTBF = Total running time / Number of failures", variables: "Unit: hours — a higher value is more reliable" },
+        { name: "MTTR", formula: "MTTR = Total repair time / Number of repairs", variables: "Unit: hours — a lower value indicates better maintenance" },
+        { name: "Availability", formula: "A = MTBF / (MTBF + MTTR)", variables: "A: availability ratio (0–1); target ≥ 0.95" },
+        { name: "Reliability", formula: "R(t) = e^(−t/MTBF)", variables: "R: the probability of failure-free operation over the time t" },
       ],
     },
     {
-      title: "Yağ Analizi",
+      title: "Oil Analysis",
       formulas: [
-        { name: "TBN (Total Base Number)", formula: "TBN limiti = üretici tavsiyesi (genellikle min 20 mg KOH/g)", variables: "Düşük TBN: asit nötralizasyon kapasitesi azalmış" },
-        { name: "Demir (Fe) Konsantrasyonu", formula: "Felimit ≤ 100 ppm (normal aşınma)", variables: "> 150 ppm: anormal aşınma, kontrol gerekli" },
+        { name: "TBN (Total Base Number)", formula: "TBN limit = the manufacturer's recommendation (usually min 20 mg KOH/g)", variables: "Low TBN: reduced acid neutralisation capacity" },
+        { name: "Demir (Fe) Konsantrasyonu", formula: "Fe limit ≤ 100 ppm (normal wear)", variables: "> 150 ppm: abnormal wear, investigation required" },
       ],
     },
   ],
   "engine-room-safety": [
     {
-      title: "Yangın Güvenliği",
+      title: "Fire Safety",
       formulas: [
-        { name: "Yangın Üçgeni", formula: "Yakıt + Oksijen + Isı = Yangın", variables: "Bir elemanın kaldırılması yangını söndürür" },
-        { name: "CO₂ Miktarı (Hacimlere Göre)", formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)", variables: "V: korunan hacim (m³), SOLAS II-2/Reg.10" },
-        { name: "Köpük Miktarı", formula: "Vköpük = A × t × applicationrate", variables: "A: alan (m²), t: süre (dk), rate: L/m²·dk" },
+        { name: "Fire Triangle", formula: "Fuel + Oxygen + Heat = Fire", variables: "Removing one element extinguishes the fire" },
+        { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)", variables: "V: korunan hacim (m³), SOLAS II-2/Reg.10" },
+        { name: "Foam Quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
       ],
     },
     {
-      title: "Patlama Riski",
+      title: "Explosion Risk",
       formulas: [
-        { name: "LEL/UEL", formula: "Patlama Aralığı: LEL < konsantrasyon < UEL", variables: "Yakıt buharı: LEL ~%1, UEL ~%6 (hacimce)" },
-        { name: "Parlama Noktası", formula: "Tflash ≥ 60°C (SOLAS gereği yakıt)", variables: "HFO: ~65°C, MGO: ~60°C (minimum gereksinim)" },
+        { name: "LEL/UEL", formula: "Explosive range: LEL < concentration < UEL", variables: "Fuel vapour: LEL ~1%, UEL ~6% by volume" },
+        { name: "Flash Point", formula: "T_flash ≥ 60 °C (fuel required by SOLAS)", variables: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
       ],
     },
   ],
   "environment-machine": [
     {
-      title: "Emisyon Hesapları",
+      title: "Emission Calculations",
       formulas: [
-        { name: "CO₂ Emisyonu", formula: "ECO₂ = FC × Cf", variables: "FC: yakıt tüketimi (ton), Cf: karbon faktörü (HFO: 3,114, MDO: 3,206 t-CO₂/t-yakıt)" },
-        { name: "SOx Emisyonu", formula: "ESOx ∝ Syakıt × FC", variables: "Syakıt: yakıt kükürt oranı (%, m/m)" },
-        { name: "NOx Emisyonu", formula: "ENOx = f(Tyanma, λ, tyanma)", variables: "Yanma sıcaklığı, hava fazlalığı ve yanma süresiyle orantılı" },
+        { name: "CO₂ Emission", formula: "ECO₂ = FC × Cf", variables: "FC: fuel consumption (tonnes), Cf: carbon factor (HFO: 3.114, MDO: 3.206 t CO₂/t fuel)" },
+        { name: "SOx Emission", formula: "ESOx ∝ S_fuel × FC", variables: "S_fuel: fuel sulphur content (%, m/m)" },
+        { name: "NOx Emission", formula: "ENOx = f(Tyanma, λ, tyanma)", variables: "Proportional to the combustion temperature, the excess air and the combustion duration" },
       ],
     },
     {
-      title: "Atık Yönetimi",
+      title: "Waste Management",
       formulas: [
-        { name: "OWS Çıkış Limiti", formula: "Yağ konsantrasyonu ≤ 15 ppm", variables: "MARPOL Annex I: Oily Water Separator çıkış standardı" },
-        { name: "Sewage Arıtma", formula: "BOD₅ çıkış ≤ 25 mg/L", variables: "MARPOL Annex IV: atık su arıtma çıkış kalitesi" },
+        { name: "OWS Discharge Limit", formula: "Oil concentration ≤ 15 ppm", variables: "MARPOL Annex I: the oily water separator discharge standard" },
+        { name: "Sewage Treatment", formula: "BOD₅ effluent ≤ 25 mg/L", variables: "MARPOL Annex IV: the sewage treatment effluent quality" },
       ],
     },
   ],
   erm: [
     {
-      title: "Risk Değerlendirme",
+      title: "Risk Assessment",
       formulas: [
-        { name: "Risk Seviyesi", formula: "Risk = Olasılık × Şiddet", variables: "5×5 matris: Düşük (1–4), Orta (5–12), Yüksek (15–25)" },
-        { name: "Risk Azaltma Faktörü", formula: "RRF = Risköncesi / Risksonrası", variables: "RRF > 1: risk azaltma önlemi etkili" },
+        { name: "Risk Level", formula: "Risk = Likelihood × Severity", variables: "5×5 matrix: Low (1–4), Medium (5–12), High (15–25)" },
+        { name: "Risk Reduction Factor", formula: "RRF = Risk_before / Risk_after", variables: "RRF > 1: the risk reduction measure is effective" },
       ],
     },
     {
-      title: "İnsan Faktörü",
+      title: "Human Factors",
       formulas: [
-        { name: "Yorgunluk İndeksi", formula: "FI = f(çalışma saatleri, dinlenme, uyku kalitesi)", variables: "STCW: min 10 saat dinlenme/24 saat, min 77 saat/7 gün" },
-        { name: "Vardiya Etkinliği", formula: "ηvardiya = Tamamlanan görev / Planlanan görev", variables: "Düşük oran: iş yükü dengesizliği veya yetkinlik eksikliği" },
+        { name: "Fatigue Index", formula: "FI = f(hours of work, rest, sleep quality)", variables: "STCW: min 10 hours of rest per 24 hours, min 77 hours per 7 days" },
+        { name: "Watchkeeping Effectiveness", formula: "η_watch = Tasks completed / Tasks planned", variables: "A low ratio indicates an unbalanced workload or a lack of competence" },
       ],
     },
   ],
   "energy-efficiency": [
     {
-      title: "Enerji Verimliliği Göstergeleri",
+      title: "Energy Efficiency Indicators",
       formulas: [
-        { name: "EEDI", formula: "EEDI = (CO₂ emisyonu) / (Kapasite × Hız)", variables: "Birim: g CO₂/(ton·mil), yeni gemiler için zorunlu üst limit" },
-        { name: "EEXI", formula: "EEXI = (PME × Cf × SFCME) / (DWT × Vref)", variables: "Mevcut gemiler için (2023 sonrası zorunlu)" },
-        { name: "CII (Yıllık)", formula: "CII = CO₂toplam / (DWT × Dtoplam)", variables: "D: yıllık toplam seyir mesafesi (deniz mili), Derecelendirme: A–E" },
-        { name: "AER", formula: "AER = CO₂ / (DWT × Distance)", variables: "Annual Efficiency Ratio — CII hesabında kullanılır" },
+        { name: "EEDI", formula: "EEDI = (CO₂ emission) / (Capacity × Speed)", variables: "Unit: g CO₂/(tonne·mile); a mandatory upper limit for new ships" },
+        { name: "EEXI", formula: "EEXI = (PME × Cf × SFCME) / (DWT × Vref)", variables: "For existing ships (mandatory from 2023)" },
+        { name: "CII (Annual)", formula: "CII = CO₂toplam / (DWT × Dtoplam)", variables: "D: total annual distance sailed (nautical miles); rating: A–E" },
+        { name: "AER", formula: "AER = CO₂ / (DWT × Distance)", variables: "Annual Efficiency Ratio — used in the CII calculation" },
       ],
     },
     {
-      title: "Atık Isı Geri Kazanım",
+      title: "Waste Heat Recovery",
       formulas: [
-        { name: "WHR Gücü", formula: "PWHR = ṁegzoz × cp × ΔT × η", variables: "ṁegzoz: egzoz debisi, ΔT: sıcaklık düşüşü, η: WHR verimi" },
-        { name: "SEEMP Tasarruf", formula: "Tasarruf (%) = (FCöncesi − FCsonrası) / FCöncesi × 100", variables: "SEEMP: Ship Energy Efficiency Management Plan" },
+        { name: "WHR Power", formula: "PWHR = ṁegzoz × cp × ΔT × η", variables: "ṁ_exhaust: exhaust flow rate, ΔT: temperature drop, η: WHR efficiency" },
+        { name: "SEEMP Saving", formula: "Saving (%) = (FC_before − FC_after) / FC_before × 100", variables: "SEEMP: Ship Energy Efficiency Management Plan" },
       ],
     },
   ],
@@ -325,7 +325,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
 export default function MachineTopicFormulasPage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
 
-  // Tek kaynak (registry) varsa birleşik tasarımı kullan; yoksa eski sabit veri.
+  // Use the unified design when the single source registry has the topic; otherwise fall back to the legacy static data.
   const courseTopic = getCourseTopic(topicSlug);
   if (courseTopic) {
     return (
@@ -347,7 +347,7 @@ export default function MachineTopicFormulasPage() {
   if (!topic || !formulas) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Konu bulunamadı</p>
+        <p className="text-muted-foreground">Topic not found</p>
       </div>
     );
   }

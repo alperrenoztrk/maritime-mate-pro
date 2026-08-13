@@ -111,7 +111,7 @@ const econTopics: EconMainTopic[] = [
   {
     id: "maritime-insurance",
     number: 7,
-    title: "Deniz Sigortası",
+    title: "Marine Insurance",
     icon: Scale,
     subtopics: [
       { id: "hull-machinery", title: "Tekne ve Makine (H&M) sigortası", hasContent: true },

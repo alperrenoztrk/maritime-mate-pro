@@ -2,174 +2,174 @@ import { TrendingUp } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Deniz İşletmeciliğinde Ticari Operasyonlar — tek kaynak ders içeriği.
- * TCE, demurrage/despatch, bunker maliyeti ve sefer ekonomisi için gerçek
- * ticari denizcilik bağıntıları; her formül bağlı hesaplayıcıyla.
+ * Commercial Operations in Shipping — single source course content.
+ * Real commercial shipping relations for TCE, demurrage/despatch, bunker cost
+ * and voyage economics; every formula has a linked calculator.
  */
 export const economics: CourseTopic = {
   key: "economics",
-  title: "Deniz İşletmeciliğinde Ticari Operasyonlar",
+  title: "Commercial Operations in Shipping",
   icon: TrendingUp,
   accent: "from-amber-400 via-yellow-500 to-orange-600",
   group: "deck",
   intro:
-    "Sefer süresi, navlun geliri, bunker maliyeti, TCE ve demurrage/despatch. " +
-    "Her formülün altında onu hesaplayan araç yer alır.",
+    "Voyage time, freight revenue, bunker cost, TCE and demurrage/despatch. " +
+    "Each formula is followed by the tool that calculates it.",
   entries: [
     {
       id: "voyage-duration",
-      name: "Sefer Süresi",
-      group: "Sefer Planı",
-      formula: "Süre (gün) = Mesafe / (Hız × 24)",
+      name: "Voyage Time",
+      group: "Voyage Plan",
+      formula: "Time (days) = Distance / (Speed × 24)",
       variables: [
-        { symbol: "Mesafe", label: "Sefer mesafesi", unit: "deniz mili" },
-        { symbol: "Hız", label: "Ortalama hız", unit: "kn" },
+        { symbol: "Distance", label: "Voyage distance", unit: "NM" },
+        { symbol: "Speed", label: "Average speed", unit: "kn" },
       ],
-      source: { code: "Sefer planı — mesafe/hız bağıntısı" },
+      source: { code: "Voyage plan — distance/speed relation" },
       inputs: [
-        { key: "dist", label: "Mesafe", unit: "n.mil", placeholder: "5000" },
-        { key: "speed", label: "Hız", unit: "kn", placeholder: "14" },
+        { key: "dist", label: "Distance", unit: "NM", placeholder: "5000" },
+        { key: "speed", label: "Speed", unit: "kn", placeholder: "14" },
       ],
       calculate: (v) => {
-        if (v.speed <= 0) return [{ label: "Hata", value: "Hız pozitif olmalı" }];
+        if (v.speed <= 0) return [{ label: "Error", value: "The speed must be positive" }];
         const days = v.dist / (v.speed * 24);
         return [
-          { label: "Sefer Süresi", value: `${days.toFixed(2)} gün` },
-          { label: "Sefer Süresi", value: `${(days * 24).toFixed(1)} saat` },
+          { label: "Voyage Time", value: `${days.toFixed(2)} days` },
+          { label: "Voyage Time", value: `${(days * 24).toFixed(1)} h` },
         ];
       },
     },
     {
       id: "bunker-cost",
-      name: "Bunker (Yakıt) Maliyeti",
+      name: "Bunker (Fuel) Cost",
       group: "Maliyetler",
-      formula: "Maliyet = Tüketim (t/gün) × Gün × Fiyat",
+      formula: "Cost = Consumption (t/day) × Days × Price",
       variables: [
-        { symbol: "Tüketim", label: "Günlük yakıt tüketimi", unit: "t/gün" },
-        { symbol: "Gün", label: "Sefer süresi", unit: "gün" },
-        { symbol: "Fiyat", label: "Yakıt birim fiyatı", unit: "$/t" },
+        { symbol: "Consumption", label: "Daily fuel consumption", unit: "t/day" },
+        { symbol: "Days", label: "Voyage time", unit: "days" },
+        { symbol: "Fiyat", label: "Fuel unit price", unit: "$/t" },
       ],
-      source: { code: "Sefer gideri — bunker maliyeti" },
+      source: { code: "Voyage cost — bunker cost" },
       inputs: [
-        { key: "cons", label: "Tüketim", unit: "t/gün", placeholder: "30" },
-        { key: "days", label: "Gün", unit: "gün", placeholder: "15" },
+        { key: "cons", label: "Consumption", unit: "t/day", placeholder: "30" },
+        { key: "days", label: "Days", unit: "days", placeholder: "15" },
         { key: "price", label: "Fiyat", unit: "$/t", placeholder: "600" },
       ],
-      calculate: (v) => [{ label: "Bunker Maliyeti", value: `$${(v.cons * v.days * v.price).toLocaleString("en-US")}` }],
+      calculate: (v) => [{ label: "Bunker Cost", value: `$${(v.cons * v.days * v.price).toLocaleString("en-US")}` }],
     },
     {
       id: "freight-revenue",
-      name: "Navlun Geliri",
+      name: "Freight Revenue",
       group: "Gelir",
-      formula: "Gelir = Yük Miktarı × Navlun Oranı",
+      formula: "Revenue = Cargo Quantity × Freight Rate",
       variables: [
-        { symbol: "Yük", label: "Taşınan yük", unit: "t" },
-        { symbol: "Navlun Oranı", label: "Birim navlun", unit: "$/t" },
+        { symbol: "Cargo", label: "Cargo carried", unit: "t" },
+        { symbol: "Freight Rate", label: "Freight rate per unit", unit: "$/t" },
       ],
-      source: { code: "Navlun geliri (freight revenue)" },
+      source: { code: "Freight revenue" },
       inputs: [
-        { key: "cargo", label: "Yük Miktarı", unit: "t", placeholder: "50000" },
-        { key: "rate", label: "Navlun Oranı", unit: "$/t", placeholder: "25" },
+        { key: "cargo", label: "Cargo Quantity", unit: "t", placeholder: "50000" },
+        { key: "rate", label: "Freight Rate", unit: "$/t", placeholder: "25" },
       ],
-      calculate: (v) => [{ label: "Navlun Geliri", value: `$${(v.cargo * v.rate).toLocaleString("en-US")}` }],
+      calculate: (v) => [{ label: "Freight Revenue", value: `$${(v.cargo * v.rate).toLocaleString("en-US")}` }],
     },
     {
       id: "tce",
       name: "TCE (Time Charter Equivalent)",
-      group: "Karlılık",
-      formula: "TCE = (Sefer Geliri − Sefer Giderleri) / Sefer Süresi",
+      group: "Profitability",
+      formula: "TCE = (Voyage Revenue − Voyage Costs) / Voyage Time",
       variables: [
-        { symbol: "Sefer Geliri", label: "Brüt navlun geliri", unit: "$" },
-        { symbol: "Sefer Giderleri", label: "Voyage cost (bunker, liman, kanal)", unit: "$" },
-        { symbol: "Sefer Süresi", label: "Toplam sefer süresi", unit: "gün" },
+        { symbol: "Voyage Revenue", label: "Gross freight revenue", unit: "$" },
+        { symbol: "Voyage Costs", label: "Voyage cost (bunkers, port, canal)", unit: "$" },
+        { symbol: "Voyage Time", label: "Total voyage time", unit: "days" },
       ],
-      source: { code: "TCE — kuru yük/tanker getiri ölçütü" },
+      source: { code: "TCE — dry cargo/tanker earnings measure" },
       inputs: [
-        { key: "revenue", label: "Sefer Geliri", unit: "$", placeholder: "1250000" },
-        { key: "cost", label: "Sefer Giderleri", unit: "$", placeholder: "450000" },
-        { key: "days", label: "Sefer Süresi", unit: "gün", placeholder: "30" },
+        { key: "revenue", label: "Voyage Revenue", unit: "$", placeholder: "1250000" },
+        { key: "cost", label: "Voyage Costs", unit: "$", placeholder: "450000" },
+        { key: "days", label: "Voyage Time", unit: "days", placeholder: "30" },
       ],
       calculate: (v) => {
-        if (v.days <= 0) return [{ label: "Hata", value: "Sefer süresi pozitif olmalı" }];
-        return [{ label: "TCE", value: `$${((v.revenue - v.cost) / v.days).toFixed(0)} / gün` }];
+        if (v.days <= 0) return [{ label: "Error", value: "The voyage time must be positive" }];
+        return [{ label: "TCE", value: `$${((v.revenue - v.cost) / v.days).toFixed(0)} / day` }];
       },
     },
     {
       id: "laytime",
-      name: "Laytime (İzin Verilen Süre)",
+      name: "Laytime (Allowed Time)",
       group: "Charter Party",
-      formula: "Laytime (gün) = Yük Miktarı / Yükleme-Tahliye Oranı",
+      formula: "Laytime (days) = Cargo Quantity / Load-Discharge Rate",
       variables: [
-        { symbol: "Yük", label: "Yük miktarı", unit: "t" },
-        { symbol: "Oran", label: "Yükleme/tahliye oranı", unit: "t/gün" },
+        { symbol: "Cargo", label: "Cargo quantity", unit: "t" },
+        { symbol: "Ratio", label: "Loading/discharge rate", unit: "t/day" },
       ],
-      source: { code: "Charter Party — laytime hesabı" },
+      source: { code: "Charter Party — laytime calculation" },
       inputs: [
-        { key: "cargo", label: "Yük Miktarı", unit: "t", placeholder: "50000" },
-        { key: "rate", label: "Yük/Tahliye Oranı", unit: "t/gün", placeholder: "10000" },
+        { key: "cargo", label: "Cargo Quantity", unit: "t", placeholder: "50000" },
+        { key: "rate", label: "Load/Discharge Rate", unit: "t/day", placeholder: "10000" },
       ],
       calculate: (v) => {
-        if (v.rate <= 0) return [{ label: "Hata", value: "Oran pozitif olmalı" }];
-        return [{ label: "Laytime", value: `${(v.cargo / v.rate).toFixed(2)} gün` }];
+        if (v.rate <= 0) return [{ label: "Error", value: "The rate must be positive" }];
+        return [{ label: "Laytime", value: `${(v.cargo / v.rate).toFixed(2)} days` }];
       },
     },
     {
       id: "demurrage",
-      name: "Demurrage (Sürastarya)",
+      name: "Demurrage",
       group: "Charter Party",
-      formula: "Demurrage = (Kullanılan Süre − Laytime) × Oran",
+      formula: "Demurrage = (Time Used − Laytime) × Rate",
       variables: [
-        { symbol: "Kullanılan Süre", label: "Limanda geçen süre", unit: "gün" },
-        { symbol: "Laytime", label: "İzin verilen süre", unit: "gün" },
-        { symbol: "Oran", label: "Günlük demurrage oranı", unit: "$/gün" },
+        { symbol: "Time Used", label: "Time spent in port", unit: "days" },
+        { symbol: "Laytime", label: "Allowed time", unit: "days" },
+        { symbol: "Ratio", label: "Daily demurrage rate", unit: "$/day" },
       ],
       source: { code: "Charter Party — demurrage" },
-      note: "Sonuç negatifse despatch (kazanılan süre) söz konusudur.",
+      note: "A negative result means despatch (time saved) applies.",
       inputs: [
-        { key: "used", label: "Kullanılan Süre", unit: "gün", placeholder: "7" },
-        { key: "laytime", label: "Laytime", unit: "gün", placeholder: "5" },
-        { key: "rate", label: "Demurrage Oranı", unit: "$/gün", placeholder: "15000" },
+        { key: "used", label: "Time Used", unit: "days", placeholder: "7" },
+        { key: "laytime", label: "Laytime", unit: "days", placeholder: "5" },
+        { key: "rate", label: "Demurrage Rate", unit: "$/day", placeholder: "15000" },
       ],
       calculate: (v) => {
         const diff = v.used - v.laytime;
         const amount = diff * v.rate;
-        if (diff <= 0) return [{ label: "Sonuç", value: "Demurrage yok (despatch durumu)" }];
+        if (diff <= 0) return [{ label: "Result", value: "No demurrage (despatch applies)" }];
         return [{ label: "Demurrage", value: `$${amount.toLocaleString("en-US")}` }];
       },
     },
     {
       id: "despatch",
-      name: "Despatch (Sürdespeç)",
+      name: "Despatch",
       group: "Charter Party",
-      formula: "Despatch = Kazanılan Süre × Oran",
+      formula: "Despatch = Time Saved × Rate",
       variables: [
-        { symbol: "Kazanılan Süre", label: "Laytime'dan tasarruf edilen süre", unit: "gün" },
-        { symbol: "Oran", label: "Despatch oranı (genellikle demurrage/2)", unit: "$/gün" },
+        { symbol: "Time Saved", label: "Time saved from the laytime", unit: "days" },
+        { symbol: "Ratio", label: "Despatch rate (usually demurrage/2)", unit: "$/day" },
       ],
-      source: { code: "Charter Party — despatch (demurrage'ın yarısı)" },
+      source: { code: "Charter Party — despatch (half of the demurrage)" },
       inputs: [
-        { key: "saved", label: "Kazanılan Süre", unit: "gün", placeholder: "2" },
-        { key: "rate", label: "Despatch Oranı", unit: "$/gün", placeholder: "7500" },
+        { key: "saved", label: "Time Saved", unit: "days", placeholder: "2" },
+        { key: "rate", label: "Despatch Rate", unit: "$/day", placeholder: "7500" },
       ],
       calculate: (v) => [{ label: "Despatch", value: `$${(v.saved * v.rate).toLocaleString("en-US")}` }],
     },
     {
       id: "break-even-freight",
-      name: "Başabaş Navlun Oranı",
-      group: "Karlılık",
-      formula: "Başabaş Oran = Toplam Sefer Gideri / Yük Miktarı",
+      name: "Break-even Freight Rate",
+      group: "Profitability",
+      formula: "Break-even Rate = Total Voyage Cost / Cargo Quantity",
       variables: [
-        { symbol: "Toplam Gider", label: "Toplam sefer gideri", unit: "$" },
-        { symbol: "Yük", label: "Yük miktarı", unit: "t" },
+        { symbol: "Total Cost", label: "Total voyage cost", unit: "$" },
+        { symbol: "Cargo", label: "Cargo quantity", unit: "t" },
       ],
-      source: { code: "Başabaş (break-even) navlun analizi" },
+      source: { code: "Break-even freight analysis" },
       inputs: [
-        { key: "cost", label: "Toplam Sefer Gideri", unit: "$", placeholder: "450000" },
-        { key: "cargo", label: "Yük Miktarı", unit: "t", placeholder: "50000" },
+        { key: "cost", label: "Total Voyage Cost", unit: "$", placeholder: "450000" },
+        { key: "cargo", label: "Cargo Quantity", unit: "t", placeholder: "50000" },
       ],
       calculate: (v) => {
-        if (v.cargo <= 0) return [{ label: "Hata", value: "Yük pozitif olmalı" }];
-        return [{ label: "Başabaş Navlun", value: `$${(v.cost / v.cargo).toFixed(2)} / t` }];
+        if (v.cargo <= 0) return [{ label: "Error", value: "The cargo must be positive" }];
+        return [{ label: "Break-even Freight", value: `$${(v.cost / v.cargo).toFixed(2)} / t` }];
       },
     },
   ],

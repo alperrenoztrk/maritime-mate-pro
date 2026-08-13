@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CourseEntry } from "@/data/courseContent/types";
 
 /**
- * Formül listesi. Girdileri `group`'a göre gruplar ve mevcut makine formül
- * kartı düzeniyle render eder. Bir girdinin hesaplayıcısı varsa, küçük bir
- * "Calculate" rozeti ile bağ görünür kılınır (calcHref verildiğinde linklenir).
+ * Formula list. Groups entries by `group` and renders them with the existing
+ * machine formula card layout. When an entry has a calculator, the link is made
+ * visible with a small "Calculate" badge (linked when calcHref is provided).
  */
 export function FormulaList({
   entries,
@@ -43,7 +43,7 @@ export function FormulaList({
                           </Link>
                         ) : (
                           <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary">
-                            <Calculator className="h-3 w-3" /> Hesaplanabilir
+                            <Calculator className="h-3 w-3" /> Calculable
                           </span>
                         ))}
                     </div>
@@ -62,7 +62,7 @@ export function FormulaList({
                     {f.note && <p className="text-xs text-muted-foreground italic">{f.note}</p>}
                     {f.source && (
                       <p className="text-micro text-muted-foreground">
-                        Kaynak: {f.source.code}
+                        Source: {f.source.code}
                         {f.source.detail ? ` — ${f.source.detail}` : ""}
                       </p>
                     )}

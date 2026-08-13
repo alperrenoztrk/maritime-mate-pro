@@ -1,18 +1,19 @@
 import type { CalcResult, CalcStep, CourseEntry } from "@/data/courseContent/types";
 
 /**
- * Elle `steps` yazılmamış HER formül için genel (otomatik) adım adım çözüm
- * üretir. Adımlar daima `calculate()` çıktısıyla tutarlıdır (sonuçlar doğrudan
- * `calculate` sonucundan alınır — yeni sayı üretilmez):
+ * Builds a generic (automatic) step-by-step solution for EVERY formula that has
+ * no hand-written `steps`. The steps are always consistent with the `calculate()`
+ * output (results are taken directly from the `calculate` result — no new numbers
+ * are produced):
  *
- *   1..n. Girdi doğrulama (her büyüklük, değer ve birimi ayrı satır)
- *   n+1. Uygulanan formül (entry.formula + varsa not)
- *   n+2. Sayısal yerine koyma izi
- *   n+3.. Sonuç(lar) (calculate çıktısının her satırı)
+ *   1..n. Input validation (each quantity, value and unit on its own line)
+ *   n+1. Formula applied (entry.formula + note when present)
+ *   n+2. Numerical substitution trace
+ *   n+3.. Result(s) (one line per `calculate` output row)
  *
- * Derinlemesine "why/how" anlatımı, StepByStepSolution içindeki
- * "yapay zekaya sor" butonu ile (bu adımlar bağlam verilerek) sağlanır.
- * Navigasyondaki gibi elle yazılmış zengin `entry.steps` varsa o önceliklidir.
+ * The deeper "why/how" narrative is provided by the "ask AI" button inside
+ * StepByStepSolution (these steps are passed to it as context). When a rich
+ * hand-written `entry.steps` exists (as in navigation), it takes precedence.
  */
 export function buildAutoSteps(
   entry: CourseEntry,

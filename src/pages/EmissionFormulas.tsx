@@ -4,117 +4,117 @@ import { Leaf, Sigma } from "lucide-react";
 
 const formulas = [
   {
-    category: "Emisyon Hesaplamaları",
+    category: "Emission Calculations",
     items: [
       {
-        name: "CO₂ Emisyonu",
-        formula: "CO₂ (ton) = Yakıt (ton) × CF",
-        description: "CF: Karbon Faktörü (yakıt türüne göre)",
-        example: "HFO için CF = 3.114, 1000 ton HFO → 3114 ton CO₂"
+        name: "CO₂ Emission",
+        formula: "CO₂ (tonnes) = Fuel (tonnes) × CF",
+        description: "CF: carbon factor (by fuel type)",
+        example: "For HFO, CF = 3.114; 1000 tonnes of HFO → 3114 tonnes of CO₂"
       },
       {
-        name: "SOx Emisyonu",
-        formula: "SOx (kg) = Yakıt (ton) × S% × 20 × 2",
-        description: "S%: Yakıt kükürt içeriği (yüzde), 2: SO₂/S dönüşüm katsayısı",
-        example: "%0.5 kükürt, 100 ton yakıt → 200 kg SOx"
+        name: "SOx Emission",
+        formula: "SOx (kg) = Fuel (tonnes) × S% × 20 × 2",
+        description: "S%: fuel sulphur content (per cent), 2: the SO₂/S conversion factor",
+        example: "0.5% sulphur, 100 tonnes of fuel → 200 kg of SOx"
       },
       {
-        name: "NOx Emisyonu",
+        name: "NOx Emission",
         formula: "NOx (kg) = P (kW) × t (h) × EF / 1000",
-        description: "EF: Emisyon faktörü (g/kWh), motor tipine göre değişir",
-        example: "Tier II motor için EF ≈ 14.4 g/kWh"
+        description: "EF: emission factor (g/kWh), varies with the engine type",
+        example: "For a Tier II engine, EF ≈ 14.4 g/kWh"
       },
       {
         name: "PM Emisyonu",
-        formula: "PM (kg) = Yakıt (ton) × EFPM",
-        description: "EFPM: Partikül madde emisyon faktörü (kg/ton yakıt)",
-        example: "HFO için EFPM ≈ 1.5 kg/ton"
+        formula: "PM (kg) = Fuel (tonnes) × EF_PM",
+        description: "EF_PM: particulate matter emission factor (kg per tonne of fuel)",
+        example: "For HFO, EF_PM ≈ 1.5 kg/tonne"
       }
     ]
   },
   {
-    category: "Enerji Verimliliği",
+    category: "Energy Efficiency",
     items: [
       {
         name: "EEXI (Energy Efficiency Existing Ship Index)",
         formula: "EEXI = (P × CF × SFC) / (Capacity × Vref)",
-        description: "P: Ana makine gücü (kW), SFC: Özgül yakıt tüketimi (g/kWh), Vref: Referans hız (knot)",
+        description: "P: main engine power (kW), SFC: specific fuel consumption (g/kWh), Vref: reference speed (knots)",
         example: "Birim: gCO₂ / (ton·nm)"
       },
       {
         name: "CII (Carbon Intensity Indicator)",
-        formula: "CII = (Yıllık CO₂) / (Capacity × Distance)",
-        description: "Operasyonel karbon yoğunluğu, yıllık bazda hesaplanır",
+        formula: "CII = (Annual CO₂) / (Capacity × Distance)",
+        description: "The operational carbon intensity, calculated on an annual basis",
         example: "Birim: gCO₂ / (ton·nm)"
       },
       {
         name: "AER (Annual Efficiency Ratio)",
         formula: "AER = (∑CO₂) / (DWT × ∑Distance)",
-        description: "Yıllık toplam CO₂ / (Taşıma kapasitesi × Toplam mesafe)",
-        example: "Bulk carrier için tipik AER: 3-8 gCO₂/(ton·nm)"
+        description: "Total annual CO₂ / (transport capacity × total distance)",
+        example: "Typical AER for a bulk carrier: 3-8 g CO₂/(tonne·nm)"
       },
       {
         name: "EEDI (Energy Efficiency Design Index)",
         formula: "EEDI = (∑P × CF × SFC) / (fi × Capacity × Vref)",
-        description: "Yeni gemiler için tasarım indeksi, fi: düzeltme faktörleri",
+        description: "The design index for new ships; fi: correction factors",
         example: "IMO phase 3: EEDI ≤ Referans × (1 - %30)"
       }
     ]
   },
   {
-    category: "Yakıt ve Enerji",
+    category: "Fuel and Energy",
     items: [
       {
-        name: "Günlük Yakıt Tüketimi",
-        formula: "FOC (ton/gün) = P (kW) × SFOC (g/kWh) × 24 / 10⁶",
-        description: "SFOC: Özgül yakıt tüketimi, yük durumuna bağlı değişir",
-        example: "10,000 kW, 180 g/kWh → 43.2 ton/gün"
+        name: "Daily Fuel Consumption",
+        formula: "FOC (tonnes/day) = P (kW) × SFOC (g/kWh) × 24 / 10⁶",
+        description: "SFOC: specific fuel consumption, varies with the load condition",
+        example: "10,000 kW at 180 g/kWh → 43.2 tonnes/day"
       },
       {
-        name: "Sefer Yakıt Tüketimi",
-        formula: "Toplam Yakıt = FOC × (Distance / Speed) / 24",
-        description: "Mesafe nm, hız knot cinsinden",
-        example: "3000 nm, 15 knot, 40 ton/gün → 333 ton"
+        name: "Voyage Fuel Consumption",
+        formula: "Total Fuel = FOC × (Distance / Speed) / 24",
+        description: "The distance is in nm and the speed in knots",
+        example: "3000 nm at 15 knots and 40 tonnes/day → 333 tonnes"
       },
       {
         name: "Enerji (kWh)",
         formula: "E = P (kW) × t (h)",
-        description: "Jeneratör yük analizi için",
+        description: "For generator load analysis",
         example: "500 kW × 24 saat = 12,000 kWh"
       }
     ]
   },
   {
-    category: "Karbon Faktörleri (CF)",
+    category: "Carbon Factors (CF)",
     items: [
       {
         name: "HFO (Heavy Fuel Oil)",
-        formula: "CF = 3.114 ton CO₂/ton yakıt",
-        description: "Ağır yakıt, en yaygın deniz yakıtı",
+        formula: "CF = 3.114 tonnes CO₂ per tonne of fuel",
+        description: "Heavy fuel oil, the most common marine fuel",
         example: ""
       },
       {
         name: "VLSFO (Very Low Sulphur FO)",
-        formula: "CF = 3.151 ton CO₂/ton yakıt",
-        description: "Düşük kükürtlü yakıt (%0.5 max)",
+        formula: "CF = 3.151 tonnes CO₂ per tonne of fuel",
+        description: "Low sulphur fuel (0.5% max)",
         example: ""
       },
       {
         name: "MGO/MDO (Marine Gas/Diesel Oil)",
-        formula: "CF = 3.206 ton CO₂/ton yakıt",
-        description: "Distilat yakıtlar",
+        formula: "CF = 3.206 tonnes CO₂ per tonne of fuel",
+        description: "Distillate fuels",
         example: ""
       },
       {
         name: "LNG (Liquefied Natural Gas)",
-        formula: "CF = 2.750 ton CO₂/ton yakıt",
-        description: "Sıvılaştırılmış doğal gaz",
+        formula: "CF = 2.750 tonnes CO₂ per tonne of fuel",
+        description: "Liquefied natural gas",
         example: ""
       },
       {
         name: "Methanol",
-        formula: "CF = 1.375 ton CO₂/ton yakıt",
-        description: "Alternatif yakıt",
+        formula: "CF = 1.375 tonnes CO₂ per tonne of fuel",
+        description: "Alternative fuel",
         example: ""
       }
     ]
@@ -135,7 +135,7 @@ export default function EmissionFormulas() {
             <Sigma className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
           </div>
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
-            Çevre Formülleri
+            Environmental Formulas
           </h1>
         </div>
 
@@ -159,7 +159,7 @@ export default function EmissionFormulas() {
                       <p className="text-sm text-muted-foreground">{item.description}</p>
                       {item.example && (
                         <p className="text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/10 p-2 rounded">
-                          Örnek: {item.example}
+                          Example: {item.example}
                         </p>
                       )}
                     </CardContent>

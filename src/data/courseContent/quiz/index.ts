@@ -11,8 +11,8 @@ import { communicationQuestions } from "@/data/communicationQuestions";
 import { economicsQuestions } from "@/data/economicsQuestions";
 
 /**
- * Birleşik quiz registry'si. Güverte konuları kendi soru bankalarından;
- * makine konuları 2400'lük bankadan (slug anahtarlı, 150/konu) gelir.
+ * Unified quiz registry. Deck topics come from their own question banks;
+ * machine topics come from the 2400-question bank (keyed by slug, 150 per topic).
  */
 const deckQuiz: Record<string, QuizQuestion[]> = {
   stability: stabilityQuestions,

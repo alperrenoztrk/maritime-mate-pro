@@ -65,9 +65,9 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
             </div>
           )}
           <div className="mt-2 text-micro text-slate-400">
-            Sürüm / referans yılı: {formulaMeta.edition} / {formulaMeta.referenceYear}
+            Edition / reference year: {formulaMeta.edition} / {formulaMeta.referenceYear}
           </div>
-          <div className="mt-1 text-micro text-slate-500">Son güncelleme: {formulaMeta.lastUpdated}</div>
+          <div className="mt-1 text-micro text-slate-500">Last updated: {formulaMeta.lastUpdated}</div>
         </div>
       )}
     </div>

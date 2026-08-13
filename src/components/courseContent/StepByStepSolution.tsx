@@ -6,12 +6,12 @@ import { explainCalculation } from "@/services/aiClient";
 import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 
 /**
- * Bir formülün deterministik çözüm adımlarını numaralı kartlar halinde gösterir
- * ve altında "Ask this process to artificial intelligence" butonu sunar. Yapay zeka yalnızca
- * mevcut (doğru) adımları öğretici biçimde açıklar; yeni sayı üretmez.
+ * Shows the deterministic solution steps of a formula as numbered cards, with an
+ * "Ask AI about this calculation" button underneath. The AI only explains the
+ * existing (correct) steps in a teaching style; it never produces new numbers.
  *
- * Adımlar `entry.steps(vals)` ile CalculatorCard tarafında üretilip buraya
- * verilir. Stil mevcut CalculatorCard görünümüyle uyumludur.
+ * The steps are generated on the CalculatorCard side via `entry.steps(vals)` and
+ * passed in here. The styling matches the existing CalculatorCard look.
  */
 export function StepByStepSolution({
   entry,

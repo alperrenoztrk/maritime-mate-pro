@@ -6,130 +6,130 @@ import { Leaf, Scale, AlertTriangle, CheckCircle, Info } from "lucide-react";
 
 const rules = [
   {
-    title: "MARPOL Annex VI - Hava Kirliliği",
+    title: "MARPOL Annex VI — Air Pollution",
     icon: Scale,
     sections: [
       {
-        subtitle: "Kükürt Limitleri (SOx)",
+        subtitle: "Sulphur Limits (SOx)",
         rules: [
-          "Global kükürt limiti: %0.50 m/m (1 Ocak 2020'den itibaren)",
-          "ECA bölgelerinde: %0.10 m/m",
-          "Alternatif: Onaylı egzoz gazı temizleme sistemi (scrubber) kullanımı",
-          "Yakıt değişim prosedürü: ECA'ya giriş/çıkışta kayıt tutulmalı"
+          "Global sulphur limit: 0.50% m/m (from 1 January 2020)",
+          "In ECAs: 0.10% m/m",
+          "Alternative: the use of an approved exhaust gas cleaning system (scrubber)",
+          "Fuel changeover procedure: records must be kept when entering and leaving an ECA"
         ]
       },
       {
-        subtitle: "NOx Emisyon Seviyeleri",
+        subtitle: "NOx Emission Levels",
         rules: [
-          "Tier I: 2000 öncesi inşa edilen gemiler",
-          "Tier II: 2011 sonrası inşa edilen gemiler (global standart)",
-          "Tier III: 2016 sonrası inşa, NECA bölgelerinde zorunlu",
-          "Tier III, Tier I değerinin en az %80 altında olmalı"
+          "Tier I: ships built before 2000",
+          "Tier II: ships built after 2011 (global standard)",
+          "Tier III: ships built after 2016, mandatory in NECAs",
+          "Tier III must be at least 80% below the Tier I value"
         ]
       },
       {
-        subtitle: "Enerji Verimliliği",
+        subtitle: "Energy Efficiency",
         rules: [
-          "EEDI: Yeni gemiler için zorunlu (2013+)",
-          "EEXI: Mevcut gemiler için zorunlu (2023+)",
-          "CII: Yıllık operasyonel rating (A-E), 2023+ zorunlu",
-          "SEEMP: Tüm gemiler için gemi enerji verimliliği yönetim planı"
+          "EEDI: mandatory for new ships (2013 onwards)",
+          "EEXI: mandatory for existing ships (2023 onwards)",
+          "CII: annual operational rating (A-E), mandatory from 2023",
+          "SEEMP: a ship energy efficiency management plan for all ships"
         ]
       }
     ]
   },
   {
-    title: "BWM Convention - Balast Suyu",
+    title: "BWM Convention — Ballast Water",
     icon: Scale,
     sections: [
       {
-        subtitle: "D-1 Standardı (Değişim)",
+        subtitle: "D-1 Standard (Exchange)",
         rules: [
-          "Karadan en az 200 deniz mili uzakta",
-          "Su derinliği en az 200 metre",
-          "Balast suyunun en az %95'i değiştirilmeli",
-          "Yöntemler: Sıralı, akış-yoluyla veya seyreltme"
+          "At least 200 nautical miles from the nearest land",
+          "The water depth must be at least 200 metres",
+          "At least 95% of the ballast water must be exchanged",
+          "Methods: sequential, flow-through or dilution"
         ]
       },
       {
-        subtitle: "D-2 Standardı (Arıtma)",
+        subtitle: "D-2 Standard (Treatment)",
         rules: [
-          "Canlı organizma limitleri: <10 organizma ≥50μm/m³",
-          "10-50μm aralığında: <10 organizma/ml",
-          "Sistem IMO tip onaylı olmalı",
-          "Ballast Water Record Book tutulmalı"
+          "Viable organism limits: <10 organisms ≥50 μm per m³",
+          "In the 10-50 μm range: <10 organisms per ml",
+          "The system must hold IMO type approval",
+          "A Ballast Water Record Book must be maintained"
         ]
       }
     ]
   },
   {
-    title: "MARPOL Annex I - Petrol Kirliliği",
+    title: "MARPOL Annex I — Oil Pollution",
     icon: Scale,
     sections: [
       {
-        subtitle: "Sintine Suyu Deşarjı",
+        subtitle: "Bilge Water Discharge",
         rules: [
-          "Yağ içeriği 15 ppm'den az olmalı",
-          "Onaylı yağ filtreleme ekipmanı kullanılmalı",
-          "Otomatik durdurma sistemi aktif olmalı",
-          "Özel alanlarda (Akdeniz, Baltık vb.) sıfır deşarj"
+          "The oil content must be less than 15 ppm",
+          "Approved oil filtering equipment must be used",
+          "The automatic stopping device must be active",
+          "Zero discharge in special areas (Mediterranean, Baltic etc.)"
         ]
       },
       {
-        subtitle: "Yük Tankı Yıkama",
+        subtitle: "Cargo Tank Washing",
         rules: [
-          "COW (Crude Oil Washing) prosedürleri",
-          "Slop tankı yönetimi",
-          "Load-on-top prosedürü",
-          "Oil Record Book Part II kayıtları"
+          "COW (Crude Oil Washing) procedures",
+          "Slop tank management",
+          "Load-on-top procedure",
+          "Oil Record Book Part II entries"
         ]
       }
     ]
   },
   {
-    title: "MARPOL Annex V - Çöp",
+    title: "MARPOL Annex V — Garbage",
     icon: Scale,
     sections: [
       {
-        subtitle: "Deşarj Yasakları",
+        subtitle: "Discharge Prohibitions",
         rules: [
-          "Plastik: Denize deşarj YASAK (her yerde)",
-          "Yiyecek atıkları: Karadan 12+ nm (öğütülmüş: 3+ nm)",
-          "Kargo artıkları: Karadan 12+ nm (zararsız maddeler)",
-          "Özel alanlarda: Çoğu atık için sıfır deşarj"
+          "Plastics: discharge into the sea is PROHIBITED everywhere",
+          "Food waste: more than 12 nm from land (comminuted: more than 3 nm)",
+          "Cargo residues: more than 12 nm from land (non-harmful substances)",
+          "In special areas: zero discharge for most waste"
         ]
       },
       {
-        subtitle: "Kayıt ve Raporlama",
+        subtitle: "Records and Reporting",
         rules: [
-          "Garbage Record Book zorunlu (400 GT+ gemiler)",
-          "Atık yönetim planı mevcut olmalı",
-          "Liman tesislerine teslim belgeleri saklanmalı",
-          "Kayıtlar 2 yıl muhafaza edilmeli"
+          "A Garbage Record Book is mandatory (ships of 400 GT and above)",
+          "A garbage management plan must be in place",
+          "Receipts for delivery to port reception facilities must be retained",
+          "Records must be kept for two years"
         ]
       }
     ]
   },
   {
-    title: "IMO DCS ve Bölgesel MRV",
+    title: "IMO DCS and Regional MRV",
     icon: Scale,
     sections: [
       {
         subtitle: "IMO DCS (Data Collection System)",
         rules: [
-          "5000 GT+ gemiler için zorunlu",
-          "Yıllık yakıt tüketimi bildirimi",
-          "Kat edilen mesafe ve denizde geçirilen saat",
-          "SEEMP Part II dokümantasyonu"
+          "Mandatory for ships of 5000 GT and above",
+          "Annual fuel consumption reporting",
+          "Distance travelled and hours under way",
+          "SEEMP Part II documentation"
         ]
       },
       {
         subtitle: "EU MRV Regulation",
         rules: [
-          "AB limanlarına uğrayan 5000 GT+ gemiler",
-          "CO₂ emisyonları, yakıt tüketimi, mesafe",
-          "Yıllık doğrulama ve raporlama",
-          "Kamuya açık emisyon verileri"
+          "Ships of 5000 GT and above calling at EU ports",
+          "CO₂ emissions, fuel consumption and distance",
+          "Annual verification and reporting",
+          "Publicly available emission data"
         ]
       }
     ]
@@ -139,19 +139,19 @@ const rules = [
 const warnings = [
   {
     type: "critical",
-    text: "CII D veya E derecesi alan gemiler 3 yıl içinde düzeltici aksiyon planı sunmalıdır."
+    text: "Ships rated CII D or E must submit a corrective action plan within three years."
   },
   {
     type: "critical",
-    text: "EEXI sertifikası olmayan gemiler 2023'ten itibaren sefer yapamaz."
+    text: "Ships without an EEXI certificate may not trade from 2023 onwards."
   },
   {
     type: "warning",
-    text: "Yakıt değişim prosedürü ECA sınırından önce tamamlanmalı ve kayıt altına alınmalıdır."
+    text: "The fuel changeover procedure must be completed before the ECA boundary and recorded."
   },
   {
     type: "info",
-    text: "Scrubber kullanan gemilerin yıkama suyu deşarj limitleri için IMO MEPC.259(68) kararına bakınız."
+    text: "For the wash water discharge limits of ships using scrubbers, see IMO resolution MEPC.259(68)."
   }
 ];
 

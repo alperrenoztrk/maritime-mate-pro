@@ -7,45 +7,45 @@ import { Sigma, BookOpen, Calculator, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function NavigationFormulasPage() {
-  // Kategori başlıkları altında içerik TOC'u
+  // Table of contents grouped under the category headings
   const tocGroups = [
     {
-      header: "1. Seyir Hesaplamaları",
+      header: "1. Navigation Calculations",
       items: [
-        { id: "gc", title: "Büyük Daire (Great Circle)" },
+        { id: "gc", title: "Great Circle" },
         { id: "rhumb", title: "Rhumb Line (Mercator)" },
         { id: "plane", title: "Plane Sailing" },
         { id: "time-eta", title: "Zaman ve ETA" },
-        { id: "current", title: "Akıntı Üçgeni (CTS)" },
-        { id: "compass", title: "Pusula Dönüşümleri" },
+        { id: "current", title: "Current Triangle (CTS)" },
+        { id: "compass", title: "Compass Conversions" },
         { id: "cpa", title: "CPA / TCPA" },
         { id: "colreg", title: "COLREG Manevra" },
         { id: "position", title: "Konum Tespiti" },
-        { id: "bearings", title: "Kerteriz Hesaplamaları" },
-        { id: "distance", title: "Mesafe Hesaplamaları" },
-        { id: "turning", title: "Dönüş Hesaplamaları" },
+        { id: "bearings", title: "Bearing Calculations" },
+        { id: "distance", title: "Distance Calculations" },
+        { id: "turning", title: "Turning Calculations" },
         { id: "safety", title: "Seyir Emniyeti" },
         { id: "passage", title: "Passage Plan" }
       ]
     },
     {
-      header: "2. Anlık Bilgiler",
+      header: "2. Real-time Information",
       items: [
-        { id: "radar", title: "Radar Hesaplamaları" }
+        { id: "radar", title: "Radar Calculations" }
       ]
     },
     {
-      header: "3. Meteoroloji ve Çevresel Faktörler",
+      header: "3. Meteorology and Environmental Factors",
       items: [
         { id: "weather", title: "Hava Durumu" },
-        { id: "tides", title: "Gelgit Hesaplamaları" }
+        { id: "tides", title: "Tide Calculations" }
       ]
     },
     {
-      header: "4. Liman ve Seyir Yardımları",
+      header: "4. Port and Aids to Navigation",
       items: [
-        { id: "pilotage", title: "Kıyı Seyri" },
-        { id: "celestial", title: "Göksel Navigasyon" },
+        { id: "pilotage", title: "Coastal Navigation" },
+        { id: "celestial", title: "Celestial Navigation" },
         { id: "sight", title: "Sight Reduction" },
         { id: "ecdis", title: "ECDIS Kontrolleri" }
       ]
@@ -53,7 +53,7 @@ export default function NavigationFormulasPage() {
     {
       header: "5. Acil Durum",
       items: [
-        { id: "emergency", title: "Acil Durum Formülleri" }
+        { id: "emergency", title: "Emergency Formulas" }
       ]
     }
   ];
@@ -80,7 +80,7 @@ export default function NavigationFormulasPage() {
           <div className="flex items-center gap-3">
             <div className="text-sm text-muted-foreground hidden sm:flex items-center gap-2">
               <BookOpen className="h-4 w-4" />
-              Formüller Rehberi
+              Formula Guide
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function NavigationFormulasPage() {
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Sigma className="h-5 w-5" /> Seyir Formülleri – İçindekiler
+              <Sigma className="h-5 w-5" /> Navigation Formulas – Contents
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -114,26 +114,26 @@ export default function NavigationFormulasPage() {
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5" /> Seyir Hesaplamaları Kapsamı (15 başlık)
+              <BookOpen className="h-5 w-5" /> Scope of the Navigation Calculations (15 sections)
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <ol className="list-decimal pl-4 space-y-2">
-              <li><strong>Temel Seyir:</strong> hız–mesafe–zaman, knot ↔ km/h ↔ m/s dönüşümleri, ETA/ETD, kalan süre/mesafe, ortalama hız ve SMG/DMG hesapları.</li>
-              <li><strong>Rota & Kerteriz:</strong> plane sailing, Departure, D.Lat/D.Long, middle latitude sailing, true/magnetic/compass course, chart ölçeği ve kerterizlerle rota doğrulaması.</li>
-              <li><strong>Enlem–Boylam:</strong> dLat/dLong yön tayini, 1° = 60 NM ilişkisi, cos φ ile boylamdan NM dönüşümü, iki nokta arası mesafe.</li>
-              <li><strong>Harita Üzeri:</strong> paralel cetvel/pergel kullanımı, gerçek rota ve mesafe → zaman dönüşümü, chart correction sonrası kontrol.</li>
-              <li><strong>Manyetik & Pusula:</strong> variation, deviation, TVMDC (True–Variation–Magnetic–Deviation–Compass) zinciri, işaret kuralları ve pusula hatası.</li>
-              <li><strong>Akıntı & Rüzgâr:</strong> set/drift, CTS, SOG, leeway, vektör üçgeni ve akıntı etkisiyle ETA düzeltmesi.</li>
-              <li><strong>Kerteriz:</strong> tek/iki/üç kerteriz, relative → true bearing, transit hattı, running fix, DR ve EP.</li>
-              <li><strong>Radar:</strong> radar mesafe/kerteriz, CPA/TCPA, relative & true motion, manuel radar plot, hedef sürat/rota çözümü.</li>
-              <li><strong>COLREG bağlamı:</strong> karşılaşma tespiti, çatışma riski, manevra sonrası yeni CPA/TCPA ve relative movement analizi.</li>
-              <li><strong>Great Circle & Rhumb Line:</strong> başlangıç/son kurs, vertex enlemi, GC vs RL mesafe farkı, composite great circle.</li>
-              <li><strong>Gelgit:</strong> HW/LW zamanı ve yükseklik, Rule of Twelfths, secondary port düzeltmeleri, UKC/Squat + tide etkisi.</li>
-              <li><strong>Seyir Emniyeti:</strong> UKC, squat, güvenli hız ve mesafe, WOP, dönüş dairesi, advance & transfer.</li>
-              <li><strong>Passage Plan:</strong> toplam rota mesafesi, leg bazlı ETA, wheel-over pozisyonları, no-go area, TSS ve abort point hesapları.</li>
-              <li><strong>Astronomik Seyir:</strong> GHA/LHA, declination, sextant/dip/refraction düzeltmeleri, LOP, noon sight, güneş/yıldız fix.</li>
-              <li><strong>Elektronik Seyir (ECDIS):</strong> XTD, safety contour/depth, look-ahead time, rota kontrol konturları.</li>
+              <li><strong>Basic navigation:</strong> speed–distance–time, knot ↔ km/h ↔ m/s conversions, ETA/ETD, remaining time and distance, average speed and SMG/DMG calculations.</li>
+              <li><strong>Course and bearings:</strong> plane sailing, departure, D.Lat/D.Long, middle latitude sailing, true/magnetic/compass course, chart scale and verifying the track by bearings.</li>
+              <li><strong>Latitude and longitude:</strong> determining the direction of dLat/dLong, the 1° = 60 NM relation, converting longitude to NM with cos φ, and the distance between two points.</li>
+              <li><strong>On the chart:</strong> using parallel rules and dividers, true course and distance → time conversion, and checking after chart corrections.</li>
+              <li><strong>Magnetism and compass:</strong> variation, deviation, the TVMDC (True–Variation–Magnetic–Deviation–Compass) chain, the sign conventions and compass error.</li>
+              <li><strong>Current and wind:</strong> set/drift, CTS, SOG, leeway, the vector triangle and correcting the ETA for the current.</li>
+              <li><strong>Bearings:</strong> single, two and three bearing fixes, relative → true bearing, transit lines, running fix, DR and EP.</li>
+              <li><strong>Radar:</strong> radar range and bearing, CPA/TCPA, relative and true motion, the manual radar plot and solving for target course and speed.</li>
+              <li><strong>COLREG context:</strong> identifying the encounter, risk of collision, the new CPA/TCPA after a manoeuvre and relative movement analysis.</li>
+              <li><strong>Great circle and rhumb line:</strong> initial and final course, vertex latitude, the GC vs RL distance difference and the composite great circle.</li>
+              <li><strong>Tides:</strong> HW/LW times and heights, the rule of twelfths, secondary port corrections and the effect of the tide on UKC and squat.</li>
+              <li><strong>Navigational safety:</strong> UKC, squat, safe speed and distance, the wheel-over point, the turning circle, advance and transfer.</li>
+              <li><strong>Passage plan:</strong> total route distance, ETA per leg, wheel-over positions, no-go areas, TSS and abort point calculations.</li>
+              <li><strong>Celestial navigation:</strong> GHA/LHA, declination, sextant/dip/refraction corrections, the LOP, the noon sight and sun/star fixes.</li>
+              <li><strong>Electronic navigation (ECDIS):</strong> XTD, safety contour and depth, look-ahead time and route check contours.</li>
             </ol>
           </CardContent>
         </Card>
@@ -141,29 +141,29 @@ export default function NavigationFormulasPage() {
         <Card className="shadow">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" /> Gerekli Tablolar ve Yayınlar
+              <Calculator className="h-5 w-5" /> Required Tables and Publications
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <ul className="list-disc pl-4 space-y-1">
-              <li><strong>Tide Tables & Tidal Stream Atlas:</strong> HW/LW zaman-yükseklik, secondary port farkları ve akıntı set/drift referansları.</li>
-              <li><strong>Nautical Almanac:</strong> GHA/LHA, declination, refraction & parallax düzeltmeleri; sunrise/sunset ve meridian passage verileri.</li>
-              <li><strong>Sight Reduction Tables (HO-249/HO-229):</strong> intercept/azimut çözümü için tablo kullanımı.</li>
-              <li><strong>Deviation Card & Compass Error Log:</strong> manyetik/pusula düzeltmeleri ve TVMDC doğrulaması.</li>
-              <li><strong>Chart Catalogue & Corrections:</strong> güncel harita/ENC listesi, NM/UWN/SNW bültenleri ve ECDIS route check çıktıları.</li>
-              <li><strong>Current & Wind Reference Sheets:</strong> leeway açı katsayıları, manevra diyagramları, advance/transfer ve wheel-over tabloları.</li>
+              <li><strong>Tide Tables and Tidal Stream Atlas:</strong> HW/LW times and heights, secondary port differences and set/drift references for the tidal stream.</li>
+              <li><strong>Nautical Almanac:</strong> GHA/LHA, declination, refraction and parallax corrections; sunrise/sunset and meridian passage data.</li>
+              <li><strong>Sight Reduction Tables (HO-249/HO-229):</strong> using the tables to solve for the intercept and azimuth.</li>
+              <li><strong>Deviation card and compass error log:</strong> magnetic and compass corrections and verification of the TVMDC chain.</li>
+              <li><strong>Chart catalogue and corrections:</strong> the current chart/ENC list, the NM/UWN/SNW bulletins and the ECDIS route check output.</li>
+              <li><strong>Current and wind reference sheets:</strong> leeway angle coefficients, manoeuvring diagrams and advance/transfer and wheel-over tables.</li>
             </ul>
           </CardContent>
         </Card>
 
-        {/* 1. Seyir Hesaplamaları */}
+        {/* 1. Navigation Calculations */}
         <div className="space-y-4">
-          <div className="text-sm font-semibold text-primary px-1">1. Seyir Hesaplamaları</div>
+          <div className="text-sm font-semibold text-primary px-1">1. Navigation Calculations</div>
 
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('gc')} className="cursor-pointer" aria-expanded={isOpen('gc')}>
               <CardTitle id="gc" className="scroll-mt-24 flex items-center justify-between">
-                Büyük Daire (Great Circle)
+                Great Circle
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('gc') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -171,52 +171,53 @@ export default function NavigationFormulasPage() {
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3 space-y-3">
                 <p>
-                  Büyük daire geometrisi, yerkürenin küresel kabulüne dayanan seyir matematiğinin çekirdeğini oluşturur.
-                  İki mevkiyi ve yerküre merkezini birleştiren tek düzlemin küreyi kestiği yay, büyük daire yayını verir.
-                  Bu yüzden büyük daire, rastgele bir eğri değil; tamamen tanımlı bir geometrik zorunluluktur.
+                  Great circle geometry forms the core of the navigational mathematics that treats the earth as a sphere.
+                  The arc where the single plane through two positions and the centre of the earth cuts the sphere is the great circle arc.
+                  A great circle is therefore not an arbitrary curve but a fully determined geometric necessity.
                 </p>
                 <p>
-                  Temel yapı küresel üçgendir. Başlangıç mevkii, varış mevkii ve kutup noktasıyla kurulan üçgende
-                  kenarlar büyük daire yaylarıdır. Düzlem trigonometrisinden farklı olarak, kenarlar açılarla; açılar
-                  ise enlem ve boylam farklarıyla temsil edilir.
+                  The underlying structure is the spherical triangle. In the triangle formed by the point of departure, the
+                  point of arrival and the pole, the sides are great circle arcs. Unlike plane trigonometry, the sides are
+                  represented by angles, and those angles by differences of latitude and longitude.
                 </p>
                 <p>
-                  Büyük daire mesafesi, merkezde oluşan merkez açıyla tanımlanır. Merkez açı büyüdükçe yüzeydeki mesafe
-                  doğrusal olarak artar. Bu nedenle hesapların ilk adımı merkez açıyı doğru bulmaktır.
+                  The great circle distance is defined by the central angle subtended at the centre of the earth. As the
+                  central angle grows, the distance over the surface increases linearly, so the first step of the
+                  calculation is to find the central angle correctly.
                 </p>
               </div>
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Mesafe (nm):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Distance (nm):
 d = 2R × arcsin(√(sin²((φ₂−φ₁)/2) + cosφ₁ · cosφ₂ · sin²((λ₂−λ₁)/2)))
 
-İlk Kurs (θ₀):
+Initial course (θ₀):
 θ₀ = atan2(sinΔλ · cosφ₂, cosφ₁ · sinφ₂ − sinφ₁ · cosφ₂ · cosΔλ)
 
-Son Kurs (θf):
+Final course (θf):
 θf = atan2(sinΔλ · cosφ₁, −cosφ₂ · sinφ₁ + sinφ₂ · cosφ₁ · cosΔλ)
 
-Vertex Enlemi:
+Vertex latitude:
 φvertex = arccos(|sinθ₀ · cosφ₁|)
 
 Composite GC:
-Kutuplara yaklaşmamak için yüksek enlemde GC leg + RL leg ile birleştir.
+To avoid approaching the poles, combine a GC leg at high latitude with an RL leg.
 
 R ≈ 3440.065 nm`}</pre>
               </div>
               <div className="bg-muted/30 rounded p-3 space-y-2">
-                <div className="font-semibold text-primary">Küresel Üçgen – Merkez Açı Bağıntısı</div>
+                <div className="font-semibold text-primary">Spherical Triangle – Central Angle Relation</div>
                 <div className="font-mono text-sm leading-6">{`cos θ = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ`}</div>
                 <ul className="list-disc pl-4 space-y-1">
-                  <li>θ: iki mevki arasındaki merkez açı</li>
-                  <li>φ₁, φ₂: başlangıç ve varış enlemleri</li>
-                  <li>Δλ: boylam farkı</li>
+                  <li>θ: the central angle between the two positions</li>
+                  <li>φ₁, φ₂: the latitudes of departure and arrival</li>
+                  <li>Δλ: the difference of longitude</li>
                 </ul>
               </div>
               <div className="bg-muted/30 rounded p-3 space-y-2">
-                <div className="font-semibold text-primary">Örnek Hesap</div>
+                <div className="font-semibold text-primary">Worked Example</div>
                 <div className="grid gap-1">
-                  <div>Başlangıç: 25° N, 040° W</div>
-                  <div>Varış: 45° N, 010° E</div>
+                  <div>Departure: 25° N, 040° W</div>
+                  <div>Arrival: 45° N, 010° E</div>
                   <div>Δλ = 50°</div>
                 </div>
                 <div className="font-mono text-sm leading-6">{`sin 25° ≈ 0.423   cos 25° ≈ 0.906
@@ -227,8 +228,8 @@ cos θ = (0.423 × 0.707) + (0.906 × 0.707 × 0.643)
 cos θ ≈ 0.299 + 0.412 = 0.711
 θ ≈ 45°`}</div>
                 <p>
-                  Bulunan merkez açı, büyük daire mesafesinin doğrudan karşılığıdır ve bir sonraki adımda mesafe hesabına
-                  dönüştürülür.
+                  The central angle found is the direct equivalent of the great circle distance and is converted into the
+                  distance in the next step.
                 </p>
               </div>
             </CardContent>
@@ -245,11 +246,11 @@ cos θ ≈ 0.299 + 0.412 = 0.711
             {isOpen('rhumb') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Δψ = ln(tan(π/4 + φ₂/2) / tan(π/4 + φ₁/2))   (izometrik enlem farkı)
-q = Δφ / Δψ        (Δφ → 0 iken q → cosφ̄)
-Mesafe (nm): d = 60 · √((Δφ)² + (q · Δλ)²)
-Kurs: Brg = atan2(Δλ, Δψ)
-Yaklaşık: Departure = 60 · Δλ · cosφ̄, dLat = 60 · Δφ`}</pre>
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Δψ = ln(tan(π/4 + φ₂/2) / tan(π/4 + φ₁/2))   (difference of meridional parts)
+q = Δφ / Δψ        (as Δφ → 0, q → cosφ̄)
+Distance (nm): d = 60 · √((Δφ)² + (q · Δλ)²)
+Course: Brg = atan2(Δλ, Δψ)
+Approximation: Departure = 60 · Δλ · cosφ̄, dLat = 60 · Δφ`}</pre>
               </div>
             </CardContent>
             )}
@@ -265,17 +266,17 @@ Yaklaşık: Departure = 60 · Δλ · cosφ̄, dLat = 60 · Δφ`}</pre>
             {isOpen('plane') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`dLat = 60 · Δφ (N/S yönü)
-Dep = 60 · Δλ · cosφ̄ (E/W yönü)
-Kurs = atan2(Dep, dLat)
-Mesafe = √(dLat² + Dep²)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`dLat = 60 · Δφ (N/S direction)
+Dep = 60 · Δλ · cosφ̄ (E/W direction)
+Course = atan2(Dep, dLat)
+Distance = √(dLat² + Dep²)
 
 Middle Lat Sailing:
 φ̄ = (φ₁ + φ₂) / 2
-Departure = Mesafe × sin(Kurs)
-D.Long (dakika) = Departure / cosφ̄
+Departure = Distance × sin(Course)
+D.Long (minutes) = Departure / cosφ̄
 Course (RL): atan2(D.Long, DMP)
-DMP = MP₂ − MP₁  (meridyen parçaları farkı)
+DMP = MP₂ − MP₁  (difference of meridional parts)
 MP = 7915.7045 · log₁₀tan(45° + φ/2) − 23.0133 · sinφ`}</pre>
               </div>
             </CardContent>
@@ -292,21 +293,21 @@ MP = 7915.7045 · log₁₀tan(45° + φ/2) − 23.0133 · sinφ`}</pre>
             {isOpen('time-eta') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Hız = Mesafe / Zaman
-Zaman = Mesafe / Hız
-Mesafe = Hız × Zaman
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Speed = Distance / Time
+Time = Distance / Speed
+Distance = Speed × Time
 
-Hız dönüşümleri:
-1 knot = 1 nm/sa = 1.852 km/sa = 0.5144 m/s
+Speed conversions:
+1 knot = 1 nm/h = 1.852 km/h = 0.5144 m/s
 
-ETA = ETD + (Mesafe / Hız)
-ETD = ETA − (Mesafe / Hız)
-Remaining Time = Kalan Mesafe / Anlık SOG
-Ortalama Hız = Toplam Mesafe / Toplam Süre
-SMG = DMG / Geçen Süre
-DMG = Σ leg mesafeleri
-Kalan Mesafe = Planlanan Toplam Mesafe − DMG`}</pre>
-                <div className="text-xs text-muted-foreground">SMG/DMG ve SOG/Course Made Good değerleri log/radar/GPS verileriyle doğrulanmalıdır.</div>
+ETA = ETD + (Distance / Speed)
+ETD = ETA − (Distance / Speed)
+Remaining Time = Remaining Distance / current SOG
+Average Speed = Total Distance / Total Time
+SMG = DMG / Time Elapsed
+DMG = Σ leg distances
+Remaining Distance = Planned Total Distance − DMG`}</pre>
+                <div className="text-xs text-muted-foreground">The SMG/DMG and SOG/course made good values must be verified against the log, radar and GPS data.</div>
               </div>
             </CardContent>
             )}
@@ -315,7 +316,7 @@ Kalan Mesafe = Planlanan Toplam Mesafe − DMG`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('current')} className="cursor-pointer" aria-expanded={isOpen('current')}>
               <CardTitle id="current" className="scroll-mt-24 flex items-center justify-between">
-                Akıntı Üçgeni (CTS)
+                Current Triangle (CTS)
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('current') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -324,7 +325,7 @@ Kalan Mesafe = Planlanan Toplam Mesafe − DMG`}</pre>
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`sin(CTS − TR) = (c / V) · sin(set − TR)
 SOG = V · cos(CTS − TR) + c · cos(set − TR)`}</pre>
-                <div className="text-xs text-muted-foreground">TR: istenen rota, V: gemi sürati, c/set: akıntı. ETAdüzeltilmiş = Mesafeplan / SOG.</div>
+                <div className="text-xs text-muted-foreground">TR: the desired track, V: the vessel speed, c/set: the current. Corrected ETA = planned distance / SOG.</div>
               </div>
             </CardContent>
             )}
@@ -333,7 +334,7 @@ SOG = V · cos(CTS − TR) + c · cos(set − TR)`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('compass')} className="cursor-pointer" aria-expanded={isOpen('compass')}>
               <CardTitle id="compass" className="scroll-mt-24 flex items-center justify-between">
-                Pusula Dönüşümleri
+                Compass Conversions
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('compass') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -350,7 +351,7 @@ Cc = Cm − Dev
 Ct = Cc + Var + Dev
 
 Kural: East (+), West (−)`}</pre>
-                <div className="text-xs text-muted-foreground">Deviation card ve manyetik yıllık değişim (annual change) değerlerini güncel tutun.</div>
+                <div className="text-xs text-muted-foreground">Keep the deviation card and the annual change of variation up to date.</div>
               </div>
             </CardContent>
             )}
@@ -368,7 +369,7 @@ Kural: East (+), West (−)`}</pre>
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`tCPA = − (R · Vrel) / |Vrel|²
 dCPA = |R + Vrel · tCPA|`}</pre>
-                <div className="text-xs text-muted-foreground">tCPA (saat) → dakika için ×60</div>
+                <div className="text-xs text-muted-foreground">tCPA (hours) → multiply by 60 for minutes</div>
               </div>
             </CardContent>
             )}
@@ -384,15 +385,15 @@ dCPA = |R + Vrel · tCPA|`}</pre>
             {isOpen('colreg') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Çatışma Riski:
-Relative bearing sabit, mesafe azalıyor → risk var
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Risk of collision:
+The relative bearing stays constant and the range decreases → a risk exists
 
-Yeni CPA/TCPA (manevra sonrası):
-R' = R + V₁·t + V₂·t  (manevra yön/ hız vektörleriyle)
+New CPA/TCPA (after the manoeuvre):
+R' = R + V₁·t + V₂·t  (with the manoeuvre course/speed vectors)
 tCPA' = −(R' · Vrel') / |Vrel'|²
 dCPA' = |R' + Vrel' · tCPA'|
 
-Öneri: İdare manevrası → CPA artmalı, TCPA uzamalı, relative bearing değişmeli.`}</pre>
+Guidance: after an avoiding manoeuvre the CPA should increase, the TCPA should lengthen and the relative bearing should change.`}</pre>
               </div>
             </CardContent>
             )}
@@ -401,29 +402,29 @@ dCPA' = |R' + Vrel' · tCPA'|
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('distance')} className="cursor-pointer" aria-expanded={isOpen('distance')}>
               <CardTitle id="distance" className="scroll-mt-24 flex items-center justify-between">
-                Mesafe Hesaplamaları
+                Distance Calculations
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('distance') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
             {isOpen('distance') && (
           <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`1° Enlem = 60 NM (1' = 1 NM)
-D.Lat (dakika) = 60 · Δφ
-D.Long (dakika) = 60 · Δλ
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`1° of latitude = 60 NM (1' = 1 NM)
+D.Lat (minutes) = 60 · Δφ
+D.Long (minutes) = 60 · Δλ
 Departure (nm) = D.Long · cosφ̄ = 60 · Δλ · cosφ̄
-Mesafe (nm) ≈ √(D.Lat² + Departure²)
+Distance (nm) ≈ √(D.Lat² + Departure²)
 
-Geographical (Horizon) Range:
-d = 2.08 · √hm  (nm, h metre)
-veya d = 1.17 · √hft (nm, h feet)
+Geographical (horizon) range:
+d = 2.08 · √h_m  (nm, h in metres)
+or d = 1.17 · √h_ft (nm, h in feet)
 
-Radar/VHF Horizon (refraksiyon dahil):
-d = 2.23 · (√h₁ + √h₂)  (h metre)
+Radar/VHF horizon (including refraction):
+d = 2.23 · (√h₁ + √h₂)  (h in metres)
 
-Light Geographic Range (USCG Light List):
-d = 2.08 · (√hobserver + √hlight)  (h metre)
-Not: Luminous range; nominal ışık gücü ve meteorolojik görüşe bağlıdır.`}</pre>
+Light geographic range (USCG Light List):
+d = 2.08 · (√h_observer + √h_light)  (h in metres)
+Note: the luminous range depends on the nominal intensity of the light and the meteorological visibility.`}</pre>
               </div>
             </CardContent>
             )}
@@ -439,21 +440,21 @@ Not: Luminous range; nominal ışık gücü ve meteorolojik görüşe bağlıdı
             {isOpen('position') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR (Dead Reckoning):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR (dead reckoning):
 Δφ = (d · cosC) / 60
 Δλ = (d · sinC) / (60 · cosφ̄)
 Lat₂ = Lat₁ + Δφ, Lon₂ = Lon₁ + Δλ
 
-EP (Estimated Position):
-Set/Drift → vektörel ekleme: REP = RDR + (c · t)
+EP (estimated position):
+Set/drift → vector addition: R_EP = R_DR + (c · t)
 
-Running Fix:
-1) İlk kerteriz konumu DR ile ileri taşınır
-2) İkinci kerteriz çizgisi ile kesişim = Fix
+Running fix:
+1) The first bearing is advanced by the DR run
+2) Its intersection with the second bearing line = the fix
 
 DMG/SMG:
 DMG = Σ √(Δφ² + Δλ²) (nm)
-SMG = DMG / Geçen Süre`}</pre>
+SMG = DMG / Time Elapsed`}</pre>
               </div>
             </CardContent>
             )}
@@ -462,28 +463,28 @@ SMG = DMG / Geçen Süre`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('bearings')} className="cursor-pointer" aria-expanded={isOpen('bearings')}>
               <CardTitle id="bearings" className="scroll-mt-24 flex items-center justify-between">
-                Kerteriz Hesaplamaları
+                Bearing Calculations
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('bearings') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
             {isOpen('bearings') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Relative → True Bearing:
-BrgT = HeadingT + BrgR (360° normalize)
-Compass → Magnetic → True: Cc + Dev + Var = Ct
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Relative → true bearing:
+BrgT = HeadingT + BrgR (normalised to 360°)
+Compass → magnetic → true: Cc + Dev + Var = Ct
 
-İki Kerteriz:
-Hatların kesişimi = Fix, açı 30°-150° arası tercih
+Two bearings:
+The intersection of the lines = the fix; an angle of cut between 30° and 150° is preferred
 
-Üç Kerteriz:
-En kesin hat ortada, sapmalar ±5° kontrol
+Three bearings:
+The most reliable line in the middle; check that the cocked hat is within ±5°
 
-Transit / Leading Line:
-İki işaret aynı hizada → emniyet hattı
+Transit / leading line:
+Two marks in line → a safety line
 
-Running Fix (taşınmış kerteriz):
-İlk kerteriz, aradan geçen zaman × hız kadar ileri taşınır.`}</pre>
+Running fix (transferred bearing):
+The first bearing is advanced by the time elapsed × the speed.`}</pre>
               </div>
             </CardContent>
             )}
@@ -492,26 +493,26 @@ Running Fix (taşınmış kerteriz):
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('turning')} className="cursor-pointer" aria-expanded={isOpen('turning')}>
               <CardTitle id="turning" className="scroll-mt-24 flex items-center justify-between">
-                Dönüş Hesaplamaları
+                Turning Calculations
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('turning') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
             {isOpen('turning') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rate of Turn (ROT):
-ROT (°/dk) = (30 × V(kn)) / R(turning radius, m)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rate of turn (ROT):
+ROT (°/min) = (30 × V(kn)) / R (turning radius, m)
 
-Advance & Transfer:
-Advance ≈ V · talign (rota değişene kadar alınan mesafe)
+Advance and transfer:
+Advance ≈ V · t_align (the distance run until the course change is complete)
 Transfer ≈ R × tan(ΔC / 2)
 
-Wheel-Over Point:
-WOP mesafesi = Transfer + güvenlik payı
-WOP zamanı = WOP / SOG
+Wheel-over point:
+WOP distance = transfer + a safety margin
+WOP time = WOP / SOG
 
-Turning Circle:
-Diameter ≈ 4-5 × ship L, taktikte katalog değerleri kullanılır.`}</pre>
+Turning circle:
+Diameter ≈ 4-5 × the ship's length; in practice the values from the manoeuvring booklet are used.`}</pre>
               </div>
             </CardContent>
             )}
@@ -529,10 +530,10 @@ Diameter ≈ 4-5 × ship L, taktikte katalog değerleri kullanılır.`}</pre>
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`UKC = CD + HoT − Draft − Squat
 Squat (open water) ≈ (V(kn)²) / (100 · beam_m)
-Safe Speed: TSS/COG/SOG, görüş ve manevra mesafesine bağlı
-Safe Passing Distance: dCPA > 1-2 NM (trafik durumuna göre)
-Wheel-over mesafeleri: pilot card ve manevra el kitabı değerleri
-No-Go Area: CD + HoT − UKClim < 0 → yasak bölge`}</pre>
+Safe speed: depends on the TSS/COG/SOG, the visibility and the manoeuvring distance
+Safe passing distance: dCPA > 1-2 NM (according to the traffic situation)
+Wheel-over distances: the values from the pilot card and the manoeuvring booklet
+No-go area: CD + HoT − UKC_lim < 0 → prohibited area`}</pre>
               </div>
             </CardContent>
             )}
@@ -548,61 +549,61 @@ No-Go Area: CD + HoT − UKClim < 0 → yasak bölge`}</pre>
             {isOpen('passage') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Toplam Mesafe = Σ leg mesafeleri
-Leg ETA = Mesafeleg / SOG + ETDleg
-Wheel-Over noktası: WOPtime = (Transfer + emniyet) / SOG
-Abort Point: tabort = mesafe güvenli liman / SOG
-TSS geçişi: XTD ≤ limit, hız ≤ sınır, VTS bildirimi
-UKC kontrolü: HoT + CD − (Draft + Squat) ≥ güvenli pay`}</pre>
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Total distance = Σ leg distances
+Leg ETA = leg distance / SOG + leg ETD
+Wheel-over point: WOP_time = (transfer + safety margin) / SOG
+Abort point: t_abort = distance to a safe port / SOG
+TSS transit: XTD ≤ limit, speed ≤ limit, VTS reporting
+UKC check: HoT + CD − (Draft + Squat) ≥ the safety margin`}</pre>
               </div>
             </CardContent>
             )}
           </Card>
         </div>
 
-        {/* 2. Anlık Bilgiler */}
+        {/* 2. Real-time Information */}
         <div className="space-y-4">
-          <div className="text-sm font-semibold text-primary px-1">2. Anlık Bilgiler</div>
+          <div className="text-sm font-semibold text-primary px-1">2. Real-time Information</div>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('radar')} className="cursor-pointer" aria-expanded={isOpen('radar')}>
               <CardTitle id="radar" className="scroll-mt-24 flex items-center justify-between">
-                Radar Hesaplamaları
+                Radar Calculations
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('radar') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
             {isOpen('radar') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Radar Range:
-Rmax = 2.35 · (√hradar + √htarget)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Radar range:
+Rmax = 2.35 · (√h_radar + √h_target)
 
-ARPA Vectors:
-True Vector = Relative + Own Ship
-Ground Track = √(Vₓ² + Vᵧ²)
+ARPA vectors:
+True vector = relative + own ship
+Ground track = √(Vₓ² + Vᵧ²)
 
-Echo Ranging:
+Echo ranging:
 R = (c · t) / 2
 c = 3×10⁸ m/s (radar)
 c = 1500 m/s (sonar)
 
-Relative / True Motion:
-Vrel = Vtarget − Vown (vektörel)
-Course/Speed Target = atan2(V_rel_y, V_rel_x), |Vrel|
+Relative / true motion:
+Vrel = Vtarget − Vown (vectorial)
+Target course/speed = atan2(V_rel_y, V_rel_x), |Vrel|
 
-Manual Plot Δt:
-Relative displacement / Δt → Vrel; CPA/TCPA grafikle doğrula.
+Manual plot Δt:
+Relative displacement / Δt → Vrel; verify the CPA/TCPA graphically.
 
-Parallel Index:
-Sabit mesafe → güvenli geçiş`}</pre>
+Parallel index:
+A constant range → a safe passage`}</pre>
               </div>
             </CardContent>
             )}
           </Card>
         </div>
 
-        {/* 3. Meteoroloji ve Çevresel Faktörler */}
+        {/* 3. Meteorology and Environmental Factors */}
         <div className="space-y-4">
-          <div className="text-sm font-semibold text-primary px-1">3. Meteoroloji ve Çevresel Faktörler</div>
+          <div className="text-sm font-semibold text-primary px-1">3. Meteorology and Environmental Factors</div>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('weather')} className="cursor-pointer" aria-expanded={isOpen('weather')}>
               <CardTitle id="weather" className="scroll-mt-24 flex items-center justify-between">
@@ -613,22 +614,22 @@ Sabit mesafe → güvenli geçiş`}</pre>
             {isOpen('weather') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Beaufort Scale:
-V (knot) = 2 · √(B³)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Beaufort scale:
+V (knots) = 2 · √(B³)
 B: Beaufort number
 
-Wave Height:
-H₁/₃ = 0.025 · V² (fetch unlimited)
+Wave height:
+H₁/₃ = 0.025 · V² (unlimited fetch)
 
-Leeway Angle:
+Leeway angle:
 β = k · V_wind² / V_ship²
-k ≈ 0.1-0.2 (tip faktörü)
+k ≈ 0.1-0.2 (a ship type factor)
 
-Wind Force:
+Wind force:
 F = 0.00338 · V² · A
-A: rüzgar alan (m²)
+A: windage area (m²)
 
-Rüzgâr/akıntı düzeltmesi:
+Wind/current correction:
 SOG = V · cos(CTS − TR) + c · cos(set − TR)
 CTS = TR + arcsin((c/V) · sin(set − TR))`}</pre>
               </div>
@@ -639,7 +640,7 @@ CTS = TR + arcsin((c/V) · sin(set − TR))`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('tides')} className="cursor-pointer" aria-expanded={isOpen('tides')}>
               <CardTitle id="tides" className="scroll-mt-24 flex items-center justify-between">
-                Gelgit Hesaplamaları
+                Tide Calculations
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('tides') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -672,38 +673,38 @@ Kaynaklar: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.`}</pre>
           </Card>
         </div>
 
-        {/* 4. Liman ve Seyir Yardımları */}
+        {/* 4. Port and Aids to Navigation */}
         <div className="space-y-4">
-          <div className="text-sm font-semibold text-primary px-1">4. Liman ve Seyir Yardımları</div>
+          <div className="text-sm font-semibold text-primary px-1">4. Port and Aids to Navigation</div>
 
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('pilotage')} className="cursor-pointer" aria-expanded={isOpen('pilotage')}>
               <CardTitle id="pilotage" className="scroll-mt-24 flex items-center justify-between">
-                Kıyı Seyri
+                Coastal Navigation
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('pilotage') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
             {isOpen('pilotage') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Clearing Bearing:
-Safe bearing > Danger bearing
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Clearing bearing:
+Safe bearing > danger bearing
 
-Danger Angle:
+Danger angle:
 α = arcsin(d / D)
-d: tehlikeli alan yarıçapı
-D: gemiden mesafe
+d: the radius of the danger area
+D: the distance from the vessel
 
-Transit/Range:
-İki işaret çizgisi → güvenli rota
+Transit/range:
+A line through two marks → a safe track
 
-Sounding Pattern:
-3-4-3 metre → konum onayı
+Sounding pattern:
+3-4-3 metres → confirmation of the position
 
-Harita üzeri mesafe:
-Mesafe (nm) = Ölçek uzunluğu (cm) × ölçek katsayısı / 1.852e5
-Paralel cetvel ile rota çiz, pergel ile mesafe ölç
-Rota kontrolü: Chart correction + T/P+NM bülteni sonrası yeniden kontrol`}</pre>
+Distance on the chart:
+Distance (nm) = scale length (cm) × the scale factor / 1.852e5
+Lay the course with parallel rules and measure the distance with dividers
+Track check: re-check after chart corrections and the T/P + NM bulletin`}</pre>
               </div>
             </CardContent>
             )}
@@ -712,15 +713,15 @@ Rota kontrolü: Chart correction + T/P+NM bülteni sonrası yeniden kontrol`}</p
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('celestial')} className="cursor-pointer" aria-expanded={isOpen('celestial')}>
               <CardTitle id="celestial" className="scroll-mt-24 flex items-center justify-between">
-                Göksel Navigasyon
+                Celestial Navigation
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('celestial') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
             {isOpen('celestial') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Meridian Passage:
-Lat = 90° - zenith_distance ± Dec
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Meridian passage:
+Lat = 90° − zenith distance ± Dec
 
 Polaris:
 Lat ≈ Ho + corrections
@@ -728,16 +729,16 @@ Lat ≈ Ho + corrections
 Amplitude:
 A = arcsin(sinδ / cosφ)
 
-Time Sight:
+Time sight:
 Lon = GHA + LHA
 
- Moon Distance:
+ Lunar distance:
  Angular distance → longitude
  
-Sun's Bearing at Sunrise/Sunset:
-Brg = arccos(-tanφ · tanδ)
+Sun's bearing at sunrise/sunset:
+Brg = arccos(−tanφ · tanδ)
 
-Kaynaklar: Nautical Almanac (GHA/Dec), sextant düzeltmeleri (IC, dip, refraction, parallax), sunrise/sunset tabloları.`}</pre>
+Sources: the Nautical Almanac (GHA/Dec), the sextant corrections (IC, dip, refraction, parallax) and the sunrise/sunset tables.`}</pre>
               </div>
             </CardContent>
             )}
@@ -753,18 +754,18 @@ Kaynaklar: Nautical Almanac (GHA/Dec), sextant düzeltmeleri (IC, dip, refractio
             {isOpen('sight') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Hesaplanan Yükseklik (Hc):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Calculated altitude (Hc):
 sin(Hc) = sinφ · sinδ + cosφ · cosδ · cos(LHA)
 
-Azimut (Z):
+Azimuth (Z):
 cos(Z) = (sinδ − sinφ · sinHc) / (cosφ · cosHc)
 
  Intercept:
- a = Ho - Hc (toward/away)
+ a = Ho − Hc (toward/away)
  
-LHA = GHA + Lon (W(-), E(+))
+LHA = GHA + Lon (W(−), E(+))
 
-Tablolar: HO-249/HO-229 sight reduction tabloları ve Nautical Almanac verileri.`}</pre>
+Tables: the HO-249/HO-229 sight reduction tables and Nautical Almanac data.`}</pre>
               </div>
             </CardContent>
             )}
@@ -780,11 +781,11 @@ Tablolar: HO-249/HO-229 sight reduction tabloları ve Nautical Almanac verileri.
             {isOpen('ecdis') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`XTD ≤ limit (genelde 0.5-1.0 NM)
-Safety Contour = max(Chart Datum + UKCpay, tavsiye edilen)
-Safety Depth = Draft + Squat + UKCpay
-Look-ahead Time = tlook = mesafe alarm / SOG
-Route Check: shallow contour, isolated danger, ENC güncelliği
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`XTD ≤ limit (usually 0.5-1.0 NM)
+Safety contour = max(chart datum + the UKC margin, the recommended value)
+Safety depth = draft + squat + the UKC margin
+Look-ahead time = t_look = the alarm distance / SOG
+Route check: shallow contour, isolated dangers, currency of the ENC
 BRM: anti-grounding alarm, cross-track alarm, ETA per leg`}</pre>
               </div>
             </CardContent>
@@ -831,7 +832,7 @@ d = 2.35 · (√h₁ + √h₂) nm`}</pre>
         <div className="flex justify-end">
           <Button asChild variant="default" className="gap-2">
             <a href="#gc">
-              <Calculator className="h-4 w-4" /> Başa Dön
+              <Calculator className="h-4 w-4" /> Back to Top
             </a>
           </Button>
         </div>

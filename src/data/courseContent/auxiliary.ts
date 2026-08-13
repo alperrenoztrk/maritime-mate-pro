@@ -2,402 +2,402 @@ import { Fuel } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Yardımcı Makineler — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Auxiliary Machinery — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const auxiliary: CourseTopic = {
   key: "auxiliary",
-  title: "Yardımcı Makineler",
+  title: "Auxiliary Machinery",
   icon: Fuel,
   accent: "from-amber-500 via-orange-500 to-red-500",
   group: "machine",
   intro:
-    "Jeneratörler, kazanlar, separatörler, kompresörler ve tatlı su üreticileri. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Generators, boilers, separators, compressors and fresh water generators. " +
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "generator-power",
-      name: "Jeneratör Gücü (3 Faz)",
-      group: "Jeneratör Hesapları",
+      name: "Generator Power (3 Phase)",
+      group: "Generator Calculations",
       formula: "P = √3 × V × I × cos(φ)",
       variables: [
-        { symbol: "V", label: "Hat gerilimi", unit: "V" },
-        { symbol: "I", label: "Hat akımı", unit: "A" },
-        { symbol: "cos(φ)", label: "Güç faktörü" },
+        { symbol: "V", label: "Line voltage", unit: "V" },
+        { symbol: "I", label: "Line current", unit: "A" },
+        { symbol: "cos(φ)", label: "Power factor" },
       ],
-      source: { code: "Üç fazlı aktif güç bağıntısı" },
-      note: "Sonuç W cinsinden çıkar, kW'a çevrilir (÷1000). Görünür güç S = √3 × V × I.",
+      source: { code: "Three phase active power relation" },
+      note: "The result is in W and converted to kW (÷1000). The apparent power is S = √3 × V × I.",
       inputs: [
-        { key: "v", label: "Hat Gerilimi (V)", unit: "V", placeholder: "440" },
-        { key: "i", label: "Hat Akımı (I)", unit: "A", placeholder: "500" },
-        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+        { key: "v", label: "Line Voltage (V)", unit: "V", placeholder: "440" },
+        { key: "i", label: "Line Current (I)", unit: "A", placeholder: "500" },
+        { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
       ],
       calculate: (vals) => {
         const p = Math.sqrt(3) * vals.v * vals.i * vals.pf;
         return [
-          { label: "Aktif Güç (P)", value: `${(p / 1000).toFixed(1)} kW` },
-          { label: "Görünür Güç (S)", value: `${(Math.sqrt(3) * vals.v * vals.i / 1000).toFixed(1)} kVA` },
+          { label: "Active Power (P)", value: `${(p / 1000).toFixed(1)} kW` },
+          { label: "Apparent Power (S)", value: `${(Math.sqrt(3) * vals.v * vals.i / 1000).toFixed(1)} kVA` },
         ];
       },
     },
     {
       id: "frequency-speed",
-      name: "Frekans-Devir İlişkisi",
-      group: "Jeneratör Hesapları",
+      name: "Frequency-Speed Relation",
+      group: "Generator Calculations",
       formula: "f = (p × n) / 60",
       variables: [
-        { symbol: "f", label: "Frekans", unit: "Hz" },
-        { symbol: "p", label: "Kutup çifti sayısı" },
-        { symbol: "n", label: "Devir", unit: "rpm" },
+        { symbol: "f", label: "Frequency", unit: "Hz" },
+        { symbol: "p", label: "Number of pole pairs" },
+        { symbol: "n", label: "Speed", unit: "rpm" },
       ],
-      source: { code: "Senkron makine frekans-devir bağıntısı" },
-      note: "Kutup çifti sayısı ve devir girilir; frekans f = (p × n) / 60 hesaplanır.",
+      source: { code: "Synchronous machine frequency-speed relation" },
+      note: "Enter the number of pole pairs and the speed; the frequency is calculated as f = (p × n) / 60.",
       inputs: [
-        { key: "p", label: "Kutup Çifti Sayısı (p)", unit: "", placeholder: "2" },
-        { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "1800" },
+        { key: "p", label: "Number of Pole Pairs (p)", unit: "", placeholder: "2" },
+        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "1800" },
       ],
       calculate: (v) => {
         const f = (v.p * v.n) / 60;
-        return [{ label: "Frekans (f)", value: `${f.toFixed(2)} Hz` }];
+        return [{ label: "Frequency (f)", value: `${f.toFixed(2)} Hz` }];
       },
     },
     {
       id: "generator-efficiency",
-      name: "Jeneratör Verimi",
-      group: "Jeneratör Hesapları",
+      name: "Generator Efficiency",
+      group: "Generator Calculations",
       formula: "η = Pelektrik / Pmekanik",
       variables: [
-        { symbol: "Pelektrik", label: "Elektriksel çıkış gücü", unit: "kW" },
-        { symbol: "Pmekanik", label: "Mekanik giriş gücü", unit: "kW" },
+        { symbol: "Pelektrik", label: "Electrical output power", unit: "kW" },
+        { symbol: "Pmekanik", label: "Mechanical input power", unit: "kW" },
       ],
-      source: { code: "Elektrik makinesi verim tanımı (tipik %92–96)" },
-      note: "Elektriksel çıkış ve mekanik giriş gücü (kW) girilir; verim ve kayıp hesaplanır.",
+      source: { code: "Electrical machine efficiency definition (typically 92–96%)" },
+      note: "Enter the electrical output and mechanical input power (kW); the efficiency and the loss are calculated.",
       inputs: [
-        { key: "pe", label: "Elektriksel Çıkış (Pelektrik)", unit: "kW", placeholder: "920" },
-        { key: "pm", label: "Mekanik Giriş (Pmekanik)", unit: "kW", placeholder: "1000" },
+        { key: "pe", label: "Electrical Output (P_electrical)", unit: "kW", placeholder: "920" },
+        { key: "pm", label: "Mechanical Input (P_mechanical)", unit: "kW", placeholder: "1000" },
       ],
       calculate: (v) => {
-        if (v.pm <= 0) return [{ label: "Hata", value: "Mekanik giriş gücü pozitif olmalı" }];
+        if (v.pm <= 0) return [{ label: "Error", value: "The mechanical input power must be positive" }];
         const eta = (v.pe / v.pm) * 100;
         return [
-          { label: "Verim (η)", value: `${eta.toFixed(1)} %` },
-          { label: "Kayıp", value: `${(v.pm - v.pe).toFixed(1)} kW` },
+          { label: "Efficiency (η)", value: `${eta.toFixed(1)} %` },
+          { label: "Loss", value: `${(v.pm - v.pe).toFixed(1)} kW` },
         ];
       },
     },
     {
       id: "boiler-steam-production",
-      name: "Kazan Buhar Üretimi",
-      group: "Kazan Hesapları",
-      formula: "ṁbuhar = (Q̇ × η) / Δh",
+      name: "Boiler Steam Production",
+      group: "Boiler Calculations",
+      formula: "ṁ_steam = (Q̇ × η) / Δh",
       variables: [
-        { symbol: "Q̇", label: "Yakıt ısıl gücü", unit: "kW" },
-        { symbol: "η", label: "Kazan verimi" },
-        { symbol: "Δh", label: "Buharlaşma entalpisi (hfg)", unit: "kJ/kg" },
+        { symbol: "Q̇", label: "Fuel heat input", unit: "kW" },
+        { symbol: "η", label: "Boiler efficiency" },
+        { symbol: "Δh", label: "Enthalpy of evaporation (hfg)", unit: "kJ/kg" },
       ],
-      source: { code: "Kazan enerji dengesi (buhar üretimi)" },
-      note: "Verim % girilir, hesapta orana çevrilir. Sonuç kg/saat için ×3600.",
+      source: { code: "Boiler energy balance (steam production)" },
+      note: "The efficiency is entered as a percentage and converted to a ratio in the calculation. Multiply by 3600 for kg/hour.",
       inputs: [
-        { key: "q", label: "Yakıt Isıl Gücü", unit: "kW", placeholder: "2000" },
-        { key: "eta", label: "Kazan Verimi", unit: "%", placeholder: "85" },
-        { key: "hfg", label: "Buharlaşma Isısı", unit: "kJ/kg", placeholder: "2257" },
+        { key: "q", label: "Fuel Heat Input", unit: "kW", placeholder: "2000" },
+        { key: "eta", label: "Boiler Efficiency", unit: "%", placeholder: "85" },
+        { key: "hfg", label: "Heat of Evaporation", unit: "kJ/kg", placeholder: "2257" },
       ],
       calculate: (v) => {
         const steam = (v.q * (v.eta / 100) * 3600) / (v.hfg);
-        return [{ label: "Buhar Üretimi", value: `${steam.toFixed(0)} kg/saat` }];
+        return [{ label: "Steam Production", value: `${steam.toFixed(0)} kg/h` }];
       },
     },
     {
       id: "boiler-efficiency",
-      name: "Kazan Verimi",
-      group: "Kazan Hesapları",
-      formula: "η = (ṁbuhar × Δh) / (ṁyakıt × Hu)",
+      name: "Boiler Efficiency",
+      group: "Boiler Calculations",
+      formula: "η = (ṁ_steam × Δh) / (ṁ_fuel × Hu)",
       variables: [
-        { symbol: "ṁbuhar", label: "Buhar debisi", unit: "kg/s" },
-        { symbol: "Δh", label: "Entalpi farkı", unit: "kJ/kg" },
-        { symbol: "ṁyakıt", label: "Yakıt debisi", unit: "kg/s" },
-        { symbol: "Hu", label: "Yakıtın alt ısıl değeri", unit: "kJ/kg" },
+        { symbol: "ṁ_steam", label: "Steam flow rate", unit: "kg/s" },
+        { symbol: "Δh", label: "Enthalpy difference", unit: "kJ/kg" },
+        { symbol: "ṁ_fuel", label: "Fuel flow rate", unit: "kg/s" },
+        { symbol: "Hu", label: "Lower calorific value of the fuel", unit: "kJ/kg" },
       ],
-      source: { code: "Kazan verimi (doğrudan/girdi-çıktı yöntemi)" },
-      note: "Buhar ve yakıt debileri kg/s girilir; verim = (ṁbuhar × Δh) / (ṁyakıt × Hu).",
+      source: { code: "Boiler efficiency (direct/input-output method)" },
+      note: "The steam and fuel flow rates are entered in kg/s; efficiency = (ṁ_steam × Δh) / (ṁ_fuel × Hu).",
       inputs: [
-        { key: "ms", label: "Buhar Debisi (ṁbuhar)", unit: "kg/s", placeholder: "1.2" },
-        { key: "dh", label: "Entalpi Farkı (Δh)", unit: "kJ/kg", placeholder: "2600" },
-        { key: "mf", label: "Yakıt Debisi (ṁyakıt)", unit: "kg/s", placeholder: "0.09" },
-        { key: "hu", label: "Alt Isıl Değer (Hu)", unit: "kJ/kg", placeholder: "40000" },
+        { key: "ms", label: "Steam Flow Rate (ṁ_steam)", unit: "kg/s", placeholder: "1.2" },
+        { key: "dh", label: "Enthalpy Difference (Δh)", unit: "kJ/kg", placeholder: "2600" },
+        { key: "mf", label: "Fuel Flow Rate (ṁ_fuel)", unit: "kg/s", placeholder: "0.09" },
+        { key: "hu", label: "Lower Calorific Value (Hu)", unit: "kJ/kg", placeholder: "40000" },
       ],
       calculate: (v) => {
         const denom = v.mf * v.hu;
-        if (denom <= 0) return [{ label: "Hata", value: "Yakıt debisi ve ısıl değer pozitif olmalı" }];
+        if (denom <= 0) return [{ label: "Error", value: "The fuel flow rate and the calorific value must be positive" }];
         const eta = ((v.ms * v.dh) / denom) * 100;
-        return [{ label: "Kazan Verimi (η)", value: `${eta.toFixed(1)} %` }];
+        return [{ label: "Boiler Efficiency (η)", value: `${eta.toFixed(1)} %` }];
       },
     },
     {
       id: "separator-capacity",
-      name: "Separatör Kapasitesi",
-      group: "Separatör",
+      name: "Separator Capacity",
+      group: "Separator",
       formula: "Q = (FC × 24 × k) / t",
       variables: [
-        { symbol: "FC", label: "Yakıt tüketimi", unit: "litre/saat" },
-        { symbol: "k", label: "Güvenlik faktörü" },
-        { symbol: "t", label: "Günlük çalışma süresi", unit: "saat/gün" },
+        { symbol: "FC", label: "Fuel consumption", unit: "litres/h" },
+        { symbol: "k", label: "Safety factor" },
+        { symbol: "t", label: "Daily operating time", unit: "hours/day" },
       ],
-      source: { code: "Santrifüj separatör boyutlandırma (günlük tüketim bazlı)" },
-      note: "Günlük tüketim (FC × 24) güvenlik faktörüyle çarpılıp çalışma süresine bölünür.",
+      source: { code: "Centrifugal separator sizing (based on daily consumption)" },
+      note: "The daily consumption (FC × 24) is multiplied by the safety factor and divided by the operating time.",
       inputs: [
-        { key: "fc", label: "Yakıt Tüketimi", unit: "litre/saat", placeholder: "3000" },
-        { key: "factor", label: "Güvenlik Faktörü", unit: "", placeholder: "1.2" },
-        { key: "hours", label: "Çalışma Süresi", unit: "saat/gün", placeholder: "20" },
+        { key: "fc", label: "Fuel Consumption", unit: "litres/h", placeholder: "3000" },
+        { key: "factor", label: "Safety Factor", unit: "", placeholder: "1.2" },
+        { key: "hours", label: "Operating Time", unit: "hours/day", placeholder: "20" },
       ],
       calculate: (v) => {
         const capacity = (v.fc * 24 * v.factor) / v.hours;
-        return [{ label: "Gerekli Kapasite", value: `${capacity.toFixed(0)} litre/saat` }];
+        return [{ label: "Required Capacity", value: `${capacity.toFixed(0)} litres/h` }];
       },
     },
     {
       id: "stokes-law",
-      name: "Stokes Yasası (Ayrışma Hızı)",
-      group: "Separatör",
+      name: "Stokes' Law (Separation Velocity)",
+      group: "Separator",
       formula: "v = d²·(ρw − ρo)·g / (18·μ)",
       variables: [
-        { symbol: "d", label: "Parçacık çapı", unit: "m" },
-        { symbol: "ρw", label: "Su yoğunluğu", unit: "kg/m³" },
-        { symbol: "ρo", label: "Yağ yoğunluğu", unit: "kg/m³" },
-        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
-        { symbol: "μ", label: "Dinamik viskozite", unit: "Pa·s" },
+        { symbol: "d", label: "Particle diameter", unit: "m" },
+        { symbol: "ρw", label: "Water density", unit: "kg/m³" },
+        { symbol: "ρo", label: "Oil density", unit: "kg/m³" },
+        { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
+        { symbol: "μ", label: "Dynamic viscosity", unit: "Pa·s" },
       ],
-      source: { code: "Stokes yasası (laminer çökelme hızı)" },
-      note: "Parçacık çapı µm girilir, hesapta m'ye çevrilir (g = 9,81 m/s²). Sonuç mm/s olarak verilir.",
+      source: { code: "Stokes' law (laminar settling velocity)" },
+      note: "The particle diameter is entered in µm and converted to m in the calculation (g = 9.81 m/s²). The result is given in mm/s.",
       inputs: [
-        { key: "d", label: "Parçacık Çapı (d)", unit: "µm", placeholder: "30" },
-        { key: "rw", label: "Su Yoğunluğu (ρw)", unit: "kg/m³", placeholder: "1025" },
-        { key: "ro", label: "Yağ Yoğunluğu (ρo)", unit: "kg/m³", placeholder: "900" },
-        { key: "mu", label: "Dinamik Viskozite (μ)", unit: "Pa·s", placeholder: "0.5" },
+        { key: "d", label: "Particle Diameter (d)", unit: "µm", placeholder: "30" },
+        { key: "rw", label: "Water Density (ρw)", unit: "kg/m³", placeholder: "1025" },
+        { key: "ro", label: "Oil Density (ρo)", unit: "kg/m³", placeholder: "900" },
+        { key: "mu", label: "Dynamic Viscosity (μ)", unit: "Pa·s", placeholder: "0.5" },
       ],
       calculate: (v) => {
-        if (v.mu <= 0) return [{ label: "Hata", value: "Viskozite pozitif olmalı" }];
+        if (v.mu <= 0) return [{ label: "Error", value: "The viscosity must be positive" }];
         const dM = v.d * 1e-6;
         const vel = (dM * dM * (v.rw - v.ro) * 9.81) / (18 * v.mu);
         return [
-          { label: "Ayrışma Hızı (v)", value: `${(vel * 1000).toFixed(4)} mm/s` },
+          { label: "Separation Velocity (v)", value: `${(vel * 1000).toFixed(4)} mm/s` },
         ];
       },
     },
     {
       id: "compressor-volume-flow",
-      name: "Kompresör Hacimsel Debisi",
-      group: "Kompresör",
+      name: "Compressor Volumetric Flow Rate",
+      group: "Compressor",
       formula: "Q = (π·D²/4)·L·n·k·ηv",
       variables: [
-        { symbol: "D", label: "Silindir çapı", unit: "mm" },
-        { symbol: "L", label: "Strok", unit: "mm" },
-        { symbol: "n", label: "Devir", unit: "rpm" },
-        { symbol: "k", label: "Silindir sayısı" },
-        { symbol: "ηv", label: "Hacimsel verim" },
+        { symbol: "D", label: "Cylinder bore", unit: "mm" },
+        { symbol: "L", label: "Stroke", unit: "mm" },
+        { symbol: "n", label: "Speed", unit: "rpm" },
+        { symbol: "k", label: "Number of cylinders" },
+        { symbol: "ηv", label: "Volumetric efficiency" },
       ],
-      source: { code: "Pistonlu kompresör süpürme hacmi debisi" },
-      note: "Çap ve strok mm girilir, hesapta m'ye çevrilir (÷1000). Sonuç m³/dk → m³/saat için ×60.",
+      source: { code: "Swept volume flow rate of a reciprocating compressor" },
+      note: "The bore and stroke are entered in mm and converted to m in the calculation (÷1000). The result is in m³/min → multiply by 60 for m³/hour.",
       inputs: [
-        { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "250" },
-        { key: "stroke", label: "Strok", unit: "mm", placeholder: "200" },
-        { key: "n", label: "Devir", unit: "rpm", placeholder: "1000" },
-        { key: "k", label: "Silindir Sayısı", unit: "", placeholder: "2" },
-        { key: "etav", label: "Hacimsel Verim", unit: "%", placeholder: "85" },
+        { key: "bore", label: "Cylinder Bore", unit: "mm", placeholder: "250" },
+        { key: "stroke", label: "Stroke", unit: "mm", placeholder: "200" },
+        { key: "n", label: "Speed", unit: "rpm", placeholder: "1000" },
+        { key: "k", label: "Number of Cylinders", unit: "", placeholder: "2" },
+        { key: "etav", label: "Volumetric Efficiency", unit: "%", placeholder: "85" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000);
         const qTheory = vs * v.n * v.k; // m³/min
         const qActual = qTheory * (v.etav / 100);
         return [
-          { label: "Teorik Debi", value: `${(qTheory * 60).toFixed(2)} m³/saat` },
-          { label: "Gerçek Debi", value: `${(qActual * 60).toFixed(2)} m³/saat` },
+          { label: "Theoretical Flow Rate", value: `${(qTheory * 60).toFixed(2)} m³/h` },
+          { label: "Actual Flow Rate", value: `${(qActual * 60).toFixed(2)} m³/h` },
         ];
       },
     },
     {
       id: "fresh-water-generator",
-      name: "Tatlı Su Üretimi (Evaporatör)",
-      group: "Tatlı Su Üreteci",
+      name: "Fresh Water Production (Evaporator)",
+      group: "Fresh Water Generator",
       formula: "ṁsu = (Q̇ × η) / hfg",
       variables: [
-        { symbol: "Q̇", label: "Kullanılabilir ısı", unit: "kW" },
-        { symbol: "η", label: "Evaporatör verimi" },
-        { symbol: "hfg", label: "Buharlaşma ısısı (vakumda)", unit: "kJ/kg" },
+        { symbol: "Q̇", label: "Available heat", unit: "kW" },
+        { symbol: "η", label: "Evaporator efficiency" },
+        { symbol: "hfg", label: "Heat of evaporation (under vacuum)", unit: "kJ/kg" },
       ],
-      source: { code: "Vakumlu evaporatör enerji dengesi" },
-      note: "Verim % girilir, orana çevrilir. Saatlik üretim için ×3600; günlük ton için ×24/1000.",
+      source: { code: "Vacuum evaporator energy balance" },
+      note: "The efficiency is entered as a percentage and converted to a ratio. Multiply by 3600 for hourly production and by 24/1000 for tonnes per day.",
       inputs: [
-        { key: "qAvail", label: "Kullanılabilir Isı", unit: "kW", placeholder: "300" },
-        { key: "hfg", label: "Buharlaşma Isısı (vakumda)", unit: "kJ/kg", placeholder: "2400" },
-        { key: "eta", label: "Evaporatör Verimi", unit: "%", placeholder: "80" },
+        { key: "qAvail", label: "Available Heat", unit: "kW", placeholder: "300" },
+        { key: "hfg", label: "Heat of Evaporation (under vacuum)", unit: "kJ/kg", placeholder: "2400" },
+        { key: "eta", label: "Evaporator Efficiency", unit: "%", placeholder: "80" },
       ],
       calculate: (v) => {
         const production = (v.qAvail * (v.eta / 100) * 3600) / v.hfg;
         return [
-          { label: "Su Üretimi", value: `${production.toFixed(0)} kg/saat` },
-          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} ton/gün` },
+          { label: "Water Production", value: `${production.toFixed(0)} kg/h` },
+          { label: "Daily Production", value: `${(production * 24 / 1000).toFixed(1)} tonnes/day` },
         ];
       },
     },
     {
       id: "heat-exchanger-lmtd",
-      name: "Logaritmik Ortalama Sıcaklık Farkı (LMTD)",
-      group: "Isı Değiştirici",
+      name: "Log Mean Temperature Difference (LMTD)",
+      group: "Heat Exchanger",
       formula: "ΔTlm = (ΔT1 − ΔT2) / ln(ΔT1 / ΔT2)",
       variables: [
-        { symbol: "ΔT1", label: "Sıcak uç sıcaklık farkı", unit: "°C" },
-        { symbol: "ΔT2", label: "Soğuk uç sıcaklık farkı", unit: "°C" },
+        { symbol: "ΔT1", label: "Hot end temperature difference", unit: "°C" },
+        { symbol: "ΔT2", label: "Cold end temperature difference", unit: "°C" },
       ],
-      source: { code: "Isı değiştirici LMTD yöntemi (zıt/paralel akış)" },
-      note: "ΔT1 ve ΔT2, eşanjörün iki ucundaki sıcak-soğuk akışkan sıcaklık farklarıdır. ΔT1 = ΔT2 ise ΔTlm = ΔT1 alınır.",
+      source: { code: "Heat exchanger LMTD method (counter/parallel flow)" },
+      note: "ΔT1 and ΔT2 are the hot-cold fluid temperature differences at the two ends of the exchanger. When ΔT1 = ΔT2, ΔTlm = ΔT1 is used.",
       inputs: [
-        { key: "dt1", label: "Sıcak Uç Farkı (ΔT1)", unit: "°C", placeholder: "40" },
-        { key: "dt2", label: "Soğuk Uç Farkı (ΔT2)", unit: "°C", placeholder: "10" },
+        { key: "dt1", label: "Hot End Difference (ΔT1)", unit: "°C", placeholder: "40" },
+        { key: "dt2", label: "Cold End Difference (ΔT2)", unit: "°C", placeholder: "10" },
       ],
       calculate: (v) => {
-        if (v.dt1 <= 0 || v.dt2 <= 0) return [{ label: "Hata", value: "Sıcaklık farkları pozitif olmalı" }];
+        if (v.dt1 <= 0 || v.dt2 <= 0) return [{ label: "Error", value: "The temperature differences must be positive" }];
         const lmtd = Math.abs(v.dt1 - v.dt2) < 1e-9 ? v.dt1 : (v.dt1 - v.dt2) / Math.log(v.dt1 / v.dt2);
         return [{ label: "LMTD (ΔTlm)", value: `${lmtd.toFixed(2)} °C` }];
       },
     },
     {
       id: "heat-exchanger-duty",
-      name: "Isı Değiştirici Isı Transfer Hızı",
-      group: "Isı Değiştirici",
+      name: "Heat Exchanger Heat Transfer Rate",
+      group: "Heat Exchanger",
       formula: "Q = U × A × ΔTlm",
       variables: [
-        { symbol: "U", label: "Toplam ısı transfer katsayısı", unit: "W/m²·K" },
-        { symbol: "A", label: "Isı transfer yüzey alanı", unit: "m²" },
-        { symbol: "ΔTlm", label: "Log. ortalama sıcaklık farkı", unit: "K" },
+        { symbol: "U", label: "Overall heat transfer coefficient", unit: "W/m²·K" },
+        { symbol: "A", label: "Heat transfer surface area", unit: "m²" },
+        { symbol: "ΔTlm", label: "Log mean temperature difference", unit: "K" },
       ],
-      source: { code: "Isı transfer denklemi (eşanjör kapasitesi)" },
-      note: "Sonuç W cinsinden çıkar, kW'a çevrilir (÷1000). ΔTlm için LMTD hesabı kullanılır.",
+      source: { code: "Heat transfer equation (exchanger capacity)" },
+      note: "The result is in W and converted to kW (÷1000). The LMTD calculation is used for ΔTlm.",
       inputs: [
-        { key: "u", label: "Isı Transfer Katsayısı (U)", unit: "W/m²·K", placeholder: "3000" },
-        { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "8" },
+        { key: "u", label: "Heat Transfer Coefficient (U)", unit: "W/m²·K", placeholder: "3000" },
+        { key: "a", label: "Surface Area (A)", unit: "m²", placeholder: "8" },
         { key: "dtlm", label: "LMTD (ΔTlm)", unit: "K", placeholder: "15" },
       ],
       calculate: (v) => {
         const q = v.u * v.a * v.dtlm;
         return [
-          { label: "Isı Transfer Hızı (Q)", value: `${(q / 1000).toFixed(1)} kW` },
+          { label: "Heat Transfer Rate (Q)", value: `${(q / 1000).toFixed(1)} kW` },
           { label: "Q (W)", value: `${q.toFixed(0)} W` },
         ];
       },
     },
     {
       id: "incinerator-heat-capacity",
-      name: "İnsinerator Yakma Isıl Gücü",
-      group: "İnsinerator",
+      name: "Incinerator Thermal Capacity",
+      group: "Incinerator",
       formula: "Q̇ = (ṁ × Hu) / 3600",
       variables: [
-        { symbol: "ṁ", label: "Sludge/atık besleme debisi", unit: "kg/saat" },
-        { symbol: "Hu", label: "Atığın alt ısıl değeri", unit: "kJ/kg" },
+        { symbol: "ṁ", label: "Sludge/waste feed rate", unit: "kg/h" },
+        { symbol: "Hu", label: "Lower calorific value of the waste", unit: "kJ/kg" },
       ],
-      source: { code: "IMO MEPC.244(66) — insinerator ısıl kapasite (kütle × ısıl değer)" },
-      note: "ṁ (kg/saat) × Hu (kJ/kg) = kJ/saat; kW için ÷3600. Su içeren sludge'ın ısıl değeri düşüktür (~10.000–30.000 kJ/kg).",
+      source: { code: "IMO MEPC.244(66) — incinerator thermal capacity (mass × calorific value)" },
+      note: "ṁ (kg/hour) × Hu (kJ/kg) = kJ/hour; divide by 3600 for kW. Water-bearing sludge has a low calorific value (~10,000–30,000 kJ/kg).",
       inputs: [
-        { key: "m", label: "Besleme Debisi (ṁ)", unit: "kg/saat", placeholder: "50" },
-        { key: "hu", label: "Alt Isıl Değer (Hu)", unit: "kJ/kg", placeholder: "30000" },
+        { key: "m", label: "Feed Rate (ṁ)", unit: "kg/h", placeholder: "50" },
+        { key: "hu", label: "Lower Calorific Value (Hu)", unit: "kJ/kg", placeholder: "30000" },
       ],
       calculate: (v) => {
         const qkw = (v.m * v.hu) / 3600;
         return [
-          { label: "Yakma Isıl Gücü (Q̇)", value: `${qkw.toFixed(1)} kW` },
-          { label: "Saatlik Isı", value: `${(v.m * v.hu / 1000).toFixed(0)} MJ/saat` },
+          { label: "Incineration Heat Rate (Q̇)", value: `${qkw.toFixed(1)} kW` },
+          { label: "Hourly Heat", value: `${(v.m * v.hu / 1000).toFixed(0)} MJ/h` },
         ];
       },
     },
     {
       id: "sewage-holding-tank",
-      name: "Atık Su (Sewage) Toplama Tankı Hacmi",
-      group: "Atık Su Arıtma (Sewage)",
+      name: "Sewage Holding Tank Volume",
+      group: "Sewage Treatment",
       formula: "V = N × q × d",
       variables: [
-        { symbol: "N", label: "Personel sayısı" },
-        { symbol: "q", label: "Kişi başı günlük atık su", unit: "litre/kişi·gün" },
-        { symbol: "d", label: "Bekletme süresi", unit: "gün" },
+        { symbol: "N", label: "Number of persons" },
+        { symbol: "q", label: "Daily sewage per person", unit: "litres/person·day" },
+        { symbol: "d", label: "Retention time", unit: "days" },
       ],
-      source: { code: "MARPOL Annex IV / MEPC.227(64) — sewage üretim bazlı boyutlandırma" },
-      note: "q tipik olarak sadece black water için ~30, black+grey için ~70 litre/kişi·gün alınır. Sonuç litre ve m³ verilir.",
+      source: { code: "MARPOL Annex IV / MEPC.227(64) — sizing based on sewage generation" },
+      note: "q is typically taken as ~30 litres/person·day for black water only and ~70 for black + grey water. The result is given in litres and m³.",
       inputs: [
-        { key: "n", label: "Personel Sayısı (N)", unit: "kişi", placeholder: "20" },
-        { key: "q", label: "Kişi Başı Atık Su (q)", unit: "litre/kişi·gün", placeholder: "70" },
-        { key: "d", label: "Bekletme Süresi (d)", unit: "gün", placeholder: "3" },
+        { key: "n", label: "Number of Persons (N)", unit: "persons", placeholder: "20" },
+        { key: "q", label: "Sewage per Person (q)", unit: "litres/person·day", placeholder: "70" },
+        { key: "d", label: "Retention Time (d)", unit: "days", placeholder: "3" },
       ],
       calculate: (v) => {
         const liters = v.n * v.q * v.d;
         return [
-          { label: "Gerekli Hacim", value: `${liters.toFixed(0)} litre` },
+          { label: "Required Volume", value: `${liters.toFixed(0)} litres` },
           { label: "m³ cinsinden", value: `${(liters / 1000).toFixed(2)} m³` },
         ];
       },
     },
     {
       id: "ows-discharge-time",
-      name: "Sintine Separatörü (OWS) Boşaltma Süresi",
-      group: "Sintine Separatörü (OWS)",
+      name: "Bilge Separator (OWS) Discharge Time",
+      group: "Bilge Separator (OWS)",
       formula: "t = V / Q",
       variables: [
-        { symbol: "V", label: "Sintine (bilge) hacmi", unit: "m³" },
-        { symbol: "Q", label: "OWS kapasitesi", unit: "m³/saat" },
+        { symbol: "V", label: "Bilge volume", unit: "m³" },
+        { symbol: "Q", label: "OWS capacity", unit: "m³/h" },
       ],
-      source: { code: "OWS boyutlandırma (hacim/debi ilişkisi)" },
-      note: "Sintine tankındaki yağlı su hacminin, OWS anma kapasitesiyle işlenmesi için gereken süre.",
+      source: { code: "OWS sizing (volume/flow rate relation)" },
+      note: "The time required to process the oily water volume in the bilge tank at the rated OWS capacity.",
       inputs: [
-        { key: "v", label: "Sintine Hacmi (V)", unit: "m³", placeholder: "10" },
-        { key: "q", label: "OWS Kapasitesi (Q)", unit: "m³/saat", placeholder: "2.5" },
+        { key: "v", label: "Bilge Volume (V)", unit: "m³", placeholder: "10" },
+        { key: "q", label: "OWS Capacity (Q)", unit: "m³/h", placeholder: "2.5" },
       ],
       calculate: (v) => {
-        if (v.q <= 0) return [{ label: "Hata", value: "Kapasite pozitif olmalı" }];
+        if (v.q <= 0) return [{ label: "Error", value: "The capacity must be positive" }];
         const t = v.v / v.q;
-        return [{ label: "Boşaltma Süresi", value: `${t.toFixed(1)} saat` }];
+        return [{ label: "Discharge Time", value: `${t.toFixed(1)} h` }];
       },
     },
     {
       id: "refrigeration-pulldown-load",
-      name: "Soğuk Depo Soğutma Yükü (Pull-down)",
-      group: "Soğutma (Provision)",
+      name: "Cold Store Cooling Load (Pull-down)",
+      group: "Refrigeration (Provision)",
       formula: "Q = (m × cp × ΔT) / (t × 3600)",
       variables: [
-        { symbol: "m", label: "Soğutulacak kütle", unit: "kg" },
-        { symbol: "cp", label: "Özgül ısı", unit: "kJ/kg·K" },
-        { symbol: "ΔT", label: "Sıcaklık düşüşü", unit: "K" },
-        { symbol: "t", label: "Pull-down süresi", unit: "saat" },
+        { symbol: "m", label: "Mass to be cooled", unit: "kg" },
+        { symbol: "cp", label: "Specific heat", unit: "kJ/kg·K" },
+        { symbol: "ΔT", label: "Temperature drop", unit: "K" },
+        { symbol: "t", label: "Pull-down time", unit: "h" },
       ],
-      source: { code: "Soğutma yükü enerji dengesi (duyulur ısı)" },
-      note: "cp tipik: taze gıda ~3,3; donmuş ~1,7 kJ/kg·K. Sonuç kW (soğutma gücü). Süre saat girilir, ×3600 ile saniyeye çevrilir.",
+      source: { code: "Cooling load energy balance (sensible heat)" },
+      note: "Typical cp: fresh produce ~3.3; frozen ~1.7 kJ/kg·K. The result is in kW (cooling power). The time is entered in hours and converted to seconds by ×3600.",
       inputs: [
-        { key: "m", label: "Kütle (m)", unit: "kg", placeholder: "500" },
-        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "3.3" },
-        { key: "dt", label: "Sıcaklık Düşüşü (ΔT)", unit: "K", placeholder: "25" },
-        { key: "t", label: "Pull-down Süresi (t)", unit: "saat", placeholder: "8" },
+        { key: "m", label: "Mass (m)", unit: "kg", placeholder: "500" },
+        { key: "cp", label: "Specific Heat (cp)", unit: "kJ/kg·K", placeholder: "3.3" },
+        { key: "dt", label: "Temperature Drop (ΔT)", unit: "K", placeholder: "25" },
+        { key: "t", label: "Pull-down Time (t)", unit: "h", placeholder: "8" },
       ],
       calculate: (v) => {
-        if (v.t <= 0) return [{ label: "Hata", value: "Süre pozitif olmalı" }];
+        if (v.t <= 0) return [{ label: "Error", value: "The time must be positive" }];
         const q = (v.m * v.cp * v.dt) / (v.t * 3600);
-        return [{ label: "Soğutma Yükü (Q)", value: `${q.toFixed(2)} kW` }];
+        return [{ label: "Cooling Load (Q)", value: `${q.toFixed(2)} kW` }];
       },
     },
     {
       id: "refrigeration-cop",
-      name: "Soğutma Çevrimi Performans Katsayısı (COP)",
-      group: "Soğutma (Provision)",
+      name: "Refrigeration Cycle Coefficient of Performance (COP)",
+      group: "Refrigeration (Provision)",
       formula: "COP = Q₀ / W",
       variables: [
-        { symbol: "Q₀", label: "Soğutma kapasitesi (evaporatör)", unit: "kW" },
-        { symbol: "W", label: "Kompresör giriş gücü", unit: "kW" },
+        { symbol: "Q₀", label: "Cooling capacity (evaporator)", unit: "kW" },
+        { symbol: "W", label: "Compressor input power", unit: "kW" },
       ],
-      source: { code: "Soğutma çevrimi performans katsayısı (COP) tanımı" },
-      note: "COP, birim kompresör gücü başına elde edilen soğutma gücüdür; tipik provision sistemlerde ~2–4.",
+      source: { code: "Refrigeration cycle coefficient of performance (COP) definition" },
+      note: "The COP is the cooling power obtained per unit of compressor power; typically ~2–4 in provision systems.",
       inputs: [
-        { key: "q0", label: "Soğutma Kapasitesi (Q₀)", unit: "kW", placeholder: "12" },
-        { key: "w", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "4" },
+        { key: "q0", label: "Cooling Capacity (Q₀)", unit: "kW", placeholder: "12" },
+        { key: "w", label: "Compressor Power (W)", unit: "kW", placeholder: "4" },
       ],
       calculate: (v) => {
-        if (v.w <= 0) return [{ label: "Hata", value: "Kompresör gücü pozitif olmalı" }];
+        if (v.w <= 0) return [{ label: "Error", value: "The compressor power must be positive" }];
         const cop = v.q0 / v.w;
         return [{ label: "COP", value: cop.toFixed(2) }];
       },

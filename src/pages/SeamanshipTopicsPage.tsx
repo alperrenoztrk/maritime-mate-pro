@@ -547,11 +547,11 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
       title: "Çelik Tel Tipleri Karşılaştırması",
       headers: ["Tip", "Telcik Sayısı", "Esneklik", "Aşınma Direnci", "Kullanım Alanı"],
       rows: [
-        ["6×7", "42 (az, kalın)", "Düşük", "Yüksek", "Korkuluk, sabit bağlantı"],
+        ["6×7", "42 (az, kalın)", "Low", "High", "Korkuluk, sabit bağlantı"],
         ["6×19", "114 (orta)", "Orta", "Orta", "Genel güverte işleri"],
-        ["6×37", "222 (çok, ince)", "Yüksek", "Düşük", "Vinç, kaldırma"],
-        ["6×19 FC", "114 + lif çekirdek", "Yüksek", "Orta", "Kaldırma operasyonları"],
-        ["6×19 IWRC", "114 + tel çekirdek", "Orta", "Yüksek", "Ağır yük, ezilme riski"],
+        ["6×37", "222 (çok, ince)", "High", "Low", "Vinç, kaldırma"],
+        ["6×19 FC", "114 + lif çekirdek", "High", "Orta", "Kaldırma operasyonları"],
+        ["6×19 IWRC", "114 + tel çekirdek", "Orta", "High", "Ağır yük, ezilme riski"],
       ],
     },
     content: `ÇELİK TEL YAPISI:
@@ -1094,7 +1094,7 @@ AÇIK DEMİRLEME (Open Moor):
     ],
     table: {
       title: "Palamar Halatları Görev Tablosu",
-      headers: ["Halat Adı", "Konum", "Görev", "Yön"],
+      headers: ["Halat Adı", "Konum", "Tasks", "Direction"],
       rows: [
         ["Head Line", "Pruva", "Geminin ileri hareketini önler", "İleri-yukarı"],
         ["Stern Line", "Kıç", "Geminin geri hareketini önler", "Geri-yukarı"],
@@ -2101,7 +2101,7 @@ SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fi
     ],
     table: {
       title: "Taşınabilir Söndürücü Tipleri ve Kullanım Alanları",
-      headers: ["Söndürücü Tipi", "Söndürme Maddesi", "Yangın Sınıfı", "Menzil (m)", "Dikkat"],
+      headers: ["Söndürücü Tipi", "Söndürme Maddesi", "Fire Class", "Menzil (m)", "Caution"],
       rows: [
         ["Su", "Su (9 L)", "A", "6-10", "Elektrikte kullanılamaz"],
         ["Köpük (Foam)", "AFFF (9 L)", "A, B", "3-6", "Elektrikte kullanılamaz"],

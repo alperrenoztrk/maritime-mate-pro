@@ -57,7 +57,7 @@ const safetyTopics: SafetyMainTopic[] = [
   {
     id: "fire-safety",
     number: 2,
-    title: "Yangın Güvenliği",
+    title: "Fire Safety",
     icon: Flame,
     subtopics: [
       { id: "fire-theory", title: "Yangın teorisi ve yanma kimyası", hasContent: true },

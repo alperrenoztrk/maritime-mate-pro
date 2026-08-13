@@ -4,7 +4,7 @@ import { FileText, Shield, Fuel, Wrench, AlertTriangle, ClipboardCheck } from "l
 
 const ruleCategories = [
   {
-    title: "MARPOL Annex VI - Hava Kirliliği",
+    title: "MARPOL Annex VI — Air Pollution",
     icon: Fuel,
     color: "text-orange-600",
     bgColor: "bg-orange-100 dark:bg-orange-900/20",
@@ -12,8 +12,8 @@ const ruleCategories = [
       {
         subtitle: "Kükürt Limitleri",
         content: [
-          "Global kükürt limiti: %0.50 m/m (1 Ocak 2020'den itibaren)",
-          "ECA bölgelerinde: %0.10 m/m",
+          "Global sulphur limit: 0.50% m/m (from 1 January 2020)",
+          "In ECAs: 0.10% m/m",
           "Uyumlu yakıt veya scrubber kullanımı zorunlu",
           "BDN ve yakıt numunesi 3 yıl saklanmalı",
         ],
@@ -28,7 +28,7 @@ const ruleCategories = [
         ],
       },
       {
-        subtitle: "Enerji Verimliliği",
+        subtitle: "Energy Efficiency",
         content: [
           "EEDI: Yeni gemiler için zorunlu",
           "SEEMP: Tüm gemiler için zorunlu",
@@ -98,7 +98,7 @@ const ruleCategories = [
         ],
       },
       {
-        subtitle: "Yangın Güvenliği",
+        subtitle: "Fire Safety",
         content: [
           "Makine dairesi yangın söndürme sistemleri",
           "Otomatik algılama ve alarm",

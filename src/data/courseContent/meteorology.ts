@@ -2,11 +2,11 @@ import { CloudSun } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Meteoroloji — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür. Tüm formüller
- * mevcut Meteoroloji Formülleri sayfasından ve WeatherCalculations bileşeninden
- * birebir alınmıştır (uydurma yok).
+ * Meteorology — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page. All formulas
+ * are taken verbatim from the existing Meteorology Formulas page and the
+ * WeatherCalculations component (nothing invented).
  */
 export const meteorology: CourseTopic = {
   key: "meteorology",
@@ -15,129 +15,129 @@ export const meteorology: CourseTopic = {
   accent: "from-sky-500 via-cyan-500 to-blue-500",
   group: "deck",
   intro:
-    "Rüzgâr, dalga, atmosfer ve deniz durumu denklemleri. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Wind, wave, atmosphere and sea state equations. " +
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "true-wind-speed",
-      name: "Gerçek Rüzgâr Hızı",
-      group: "Rüzgâr",
+      name: "True Wind Speed",
+      group: "Wind",
       formula: "|Vt| = √(Va² + Vg² + 2·Va·Vg·cos θ)",
       variables: [
-        { symbol: "Va", label: "Görünür (apparent) rüzgâr hızı", unit: "kn" },
-        { symbol: "Vg", label: "Gemi hızı", unit: "kn" },
-        { symbol: "θ", label: "Va vektörü ile gemi hız vektörü arası açı", unit: "°" },
+        { symbol: "Va", label: "Apparent wind speed", unit: "kn" },
+        { symbol: "Vg", label: "Vessel speed", unit: "kn" },
+        { symbol: "θ", label: "Angle between the Va vector and the vessel velocity vector", unit: "°" },
       ],
-      source: { code: "Gerçek/görünür rüzgâr vektör bağıntısı" },
-      note: "Tanımlar vektöreldir. En güvenlisi V⃗t = V⃗a + V⃗g vektör bağıntısını kullanmaktır.",
+      source: { code: "True/apparent wind vector relation" },
+      note: "The definitions are vectorial. The safest approach is to use the vector relation V⃗t = V⃗a + V⃗g.",
       inputs: [
-        { key: "va", label: "Görünür Rüzgâr (Va)", unit: "kn", placeholder: "20" },
-        { key: "vg", label: "Gemi Hızı (Vg)", unit: "kn", placeholder: "12" },
-        { key: "theta", label: "Açı (θ)", unit: "°", placeholder: "60" },
+        { key: "va", label: "Apparent Wind (Va)", unit: "kn", placeholder: "20" },
+        { key: "vg", label: "Vessel Speed (Vg)", unit: "kn", placeholder: "12" },
+        { key: "theta", label: "Angle (θ)", unit: "°", placeholder: "60" },
       ],
       calculate: (v) => {
         const rad = (v.theta * Math.PI) / 180;
         const vt = Math.sqrt(v.va * v.va + v.vg * v.vg + 2 * v.va * v.vg * Math.cos(rad));
-        return [{ label: "Gerçek Rüzgâr Hızı (|Vt|)", value: `${vt.toFixed(2)} kn` }];
+        return [{ label: "True Wind Speed (|Vt|)", value: `${vt.toFixed(2)} kn` }];
       },
     },
     {
       id: "beaufort-wind-speed",
-      name: "Beaufort Rüzgâr Hızı",
-      group: "Rüzgâr",
+      name: "Beaufort Wind Speed",
+      group: "Wind",
       formula: "V = 0.836 · B^1.5",
       variables: [
-        { symbol: "V", label: "Rüzgâr hızı", unit: "m/s" },
-        { symbol: "B", label: "Beaufort sayısı (0-12)" },
+        { symbol: "V", label: "Wind speed", unit: "m/s" },
+        { symbol: "B", label: "Beaufort number (0-12)" },
       ],
-      source: { code: "Beaufort ölçeği", detail: "Yaklaşık rüzgâr hızı bağıntısı" },
-      note: "Yaklaşık formül. Beaufort 8 (Gale) ≈ 34-40 knot.",
+      source: { code: "Beaufort scale", detail: "Approximate wind speed relation" },
+      note: "Approximate formula. Beaufort 8 (Gale) ≈ 34-40 knots.",
       inputs: [
-        { key: "b", label: "Beaufort Sayısı (B)", unit: "", placeholder: "8" },
+        { key: "b", label: "Beaufort Number (B)", unit: "", placeholder: "8" },
       ],
       calculate: (v) => {
-        if (v.b < 0) return [{ label: "Hata", value: "Beaufort sayısı negatif olamaz" }];
+        if (v.b < 0) return [{ label: "Error", value: "The Beaufort number cannot be negative" }];
         const ms = 0.836 * Math.pow(v.b, 1.5);
         return [
-          { label: "Rüzgâr Hızı (V)", value: `${ms.toFixed(2)} m/s` },
-          { label: "Rüzgâr Hızı", value: `${(ms * 1.94384).toFixed(1)} kn` },
+          { label: "Wind Speed (V)", value: `${ms.toFixed(2)} m/s` },
+          { label: "Wind Speed", value: `${(ms * 1.94384).toFixed(1)} kn` },
         ];
       },
     },
     {
       id: "air-density",
-      name: "Hava Yoğunluğu",
+      name: "Air Density",
       group: "Atmosfer",
       formula: "ρ = P / (R · T)",
       variables: [
-        { symbol: "ρ", label: "Hava yoğunluğu", unit: "kg/m³" },
-        { symbol: "P", label: "Atmosfer basıncı", unit: "Pa" },
-        { symbol: "R", label: "Özgül gaz sabiti", unit: "287 J/kg·K" },
-        { symbol: "T", label: "Mutlak sıcaklık", unit: "K" },
+        { symbol: "ρ", label: "Air density", unit: "kg/m³" },
+        { symbol: "P", label: "Atmospheric pressure", unit: "Pa" },
+        { symbol: "R", label: "Specific gas constant", unit: "287 J/kg·K" },
+        { symbol: "T", label: "Absolute temperature", unit: "K" },
       ],
-      source: { code: "İdeal gaz hal denklemi (nemsiz hava)" },
-      note: "Basınç hPa girilir, hesapta Pa'ya çevrilir (×100). Sıcaklık °C girilir, K'ye çevrilir. Standart koşullarda (15°C, 1013,25 hPa) ρ ≈ 1,225 kg/m³.",
+      source: { code: "Ideal gas equation of state (dry air)" },
+      note: "The pressure is entered in hPa and converted to Pa in the calculation (×100). The temperature is entered in °C and converted to K. Under standard conditions (15 °C, 1013.25 hPa) ρ ≈ 1.225 kg/m³.",
       inputs: [
-        { key: "p", label: "Basınç (P)", unit: "hPa", placeholder: "1013.25" },
-        { key: "t", label: "Sıcaklık (T)", unit: "°C", placeholder: "15" },
+        { key: "p", label: "Pressure (P)", unit: "hPa", placeholder: "1013.25" },
+        { key: "t", label: "Temperature (T)", unit: "°C", placeholder: "15" },
       ],
       calculate: (v) => {
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "Sıcaklık mutlak sıfırın üstünde olmalı" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const rho = (v.p * 100) / (287 * tK);
-        return [{ label: "Hava Yoğunluğu (ρ)", value: `${rho.toFixed(3)} kg/m³` }];
+        return [{ label: "Air Density (ρ)", value: `${rho.toFixed(3)} kg/m³` }];
       },
     },
     {
       id: "sea-level-pressure",
-      name: "Deniz Seviyesine İndirgenmiş Basınç",
+      name: "Pressure Reduced to Sea Level",
       group: "Atmosfer",
       formula: "P₀ = P · e^( (g·h) / (R·T̄) )",
       variables: [
-        { symbol: "P₀", label: "Deniz seviyesi basıncı", unit: "hPa" },
-        { symbol: "P", label: "Ölçülen basınç", unit: "hPa" },
-        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
-        { symbol: "h", label: "Yükseklik", unit: "m" },
-        { symbol: "R", label: "Özgül gaz sabiti", unit: "287 J/kg·K" },
-        { symbol: "T̄", label: "Ortalama sıcaklık", unit: "K" },
+        { symbol: "P₀", label: "Sea level pressure", unit: "hPa" },
+        { symbol: "P", label: "Measured pressure", unit: "hPa" },
+        { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
+        { symbol: "h", label: "Height", unit: "m" },
+        { symbol: "R", label: "Specific gas constant", unit: "287 J/kg·K" },
+        { symbol: "T̄", label: "Mean temperature", unit: "K" },
       ],
-      source: { code: "Barometrik yükseklik düzeltmesi" },
-      note: "Sıcaklık °C girilir, K'ye çevrilir. Yaklaşık: her 8 m yükseklik için 1 hPa düşüş.",
+      source: { code: "Barometric height correction" },
+      note: "The temperature is entered in °C and converted to K. Approximately: a 1 hPa drop for every 8 m of height.",
       inputs: [
-        { key: "p", label: "Ölçülen Basınç (P)", unit: "hPa", placeholder: "1010" },
-        { key: "h", label: "Yükseklik (h)", unit: "m", placeholder: "25" },
-        { key: "t", label: "Ortalama Sıcaklık (T̄)", unit: "°C", placeholder: "15" },
+        { key: "p", label: "Measured Pressure (P)", unit: "hPa", placeholder: "1010" },
+        { key: "h", label: "Height (h)", unit: "m", placeholder: "25" },
+        { key: "t", label: "Mean Temperature (T̄)", unit: "°C", placeholder: "15" },
       ],
       calculate: (v) => {
         const tK = v.t + 273.15;
-        if (tK <= 0) return [{ label: "Hata", value: "Sıcaklık mutlak sıfırın üstünde olmalı" }];
+        if (tK <= 0) return [{ label: "Error", value: "The temperature must be above absolute zero" }];
         const p0 = v.p * Math.exp((9.81 * v.h) / (287 * tK));
-        return [{ label: "Deniz Seviyesi Basıncı (P₀)", value: `${p0.toFixed(1)} hPa` }];
+        return [{ label: "Sea Level Pressure (P₀)", value: `${p0.toFixed(1)} hPa` }];
       },
     },
     {
       id: "dew-point",
-      name: "Çiğ Noktası Sıcaklığı",
+      name: "Dew Point Temperature",
       group: "Nem",
       formula: "Td ≈ T − ((100 − RH) / 5)",
       variables: [
-        { symbol: "Td", label: "Çiğ noktası sıcaklığı", unit: "°C" },
-        { symbol: "T", label: "Hava sıcaklığı", unit: "°C" },
-        { symbol: "RH", label: "Bağıl nem", unit: "%" },
+        { symbol: "Td", label: "Dew point temperature", unit: "°C" },
+        { symbol: "T", label: "Air temperature", unit: "°C" },
+        { symbol: "RH", label: "Relative humidity", unit: "%" },
       ],
-      source: { code: "Çiğ noktası basit yaklaşım bağıntısı" },
-      note: "Basit yaklaşım formülü. Sis riski: T − Td < 2,5 °C.",
+      source: { code: "Simple dew point approximation" },
+      note: "Simple approximation formula. Fog risk: T − Td < 2.5 °C.",
       inputs: [
-        { key: "t", label: "Hava Sıcaklığı (T)", unit: "°C", placeholder: "20" },
-        { key: "rh", label: "Bağıl Nem (RH)", unit: "%", placeholder: "80" },
+        { key: "t", label: "Air Temperature (T)", unit: "°C", placeholder: "20" },
+        { key: "rh", label: "Relative Humidity (RH)", unit: "%", placeholder: "80" },
       ],
       calculate: (v) => {
         const td = v.t - (100 - v.rh) / 5;
         const spread = v.t - td;
-        const durum = spread < 2.5 ? "Sis riski (T − Td < 2,5 °C)" : "Düşük sis riski";
+        const durum = spread < 2.5 ? "Fog risk (T − Td < 2.5 °C)" : "Low fog risk";
         return [
-          { label: "Çiğ Noktası (Td)", value: `${td.toFixed(1)} °C` },
-          { label: "Sıcaklık-Çiğ Farkı", value: `${spread.toFixed(1)} °C` },
+          { label: "Dew Point (Td)", value: `${td.toFixed(1)} °C` },
+          { label: "Temperature-Dew Point Spread", value: `${spread.toFixed(1)} °C` },
           { label: "Durum", value: durum },
         ];
       },
@@ -145,17 +145,17 @@ export const meteorology: CourseTopic = {
     {
       id: "deep-water-wavelength",
       name: "Derin Su Dalgaboyu",
-      group: "Dalga",
+      group: "Wave",
       formula: "L = (g · T²) / (2π)",
       variables: [
         { symbol: "L", label: "Dalgaboyu", unit: "m" },
-        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
-        { symbol: "T", label: "Dalga periyodu", unit: "s" },
+        { symbol: "g", label: "Gravitational acceleration", unit: "9,81 m/s²" },
+        { symbol: "T", label: "Wave period", unit: "s" },
       ],
-      source: { code: "Derin su dalga teorisi" },
-      note: "Derin su koşulu: derinlik > L/2.",
+      source: { code: "Deep water wave theory" },
+      note: "Deep water condition: depth > L/2.",
       inputs: [
-        { key: "t", label: "Dalga Periyodu (T)", unit: "s", placeholder: "8" },
+        { key: "t", label: "Wave Period (T)", unit: "s", placeholder: "8" },
       ],
       calculate: (v) => {
         const l = (9.81 * v.t * v.t) / (2 * Math.PI);
@@ -164,44 +164,44 @@ export const meteorology: CourseTopic = {
     },
     {
       id: "deep-water-wave-speed",
-      name: "Dalga Hızı (Derin Su)",
-      group: "Dalga",
+      name: "Wave Speed (Deep Water)",
+      group: "Wave",
       formula: "C = L / T = (g · T) / (2π) ≈ 1.56 · T",
       variables: [
-        { symbol: "C", label: "Dalga hızı", unit: "m/s" },
+        { symbol: "C", label: "Wave speed", unit: "m/s" },
         { symbol: "L", label: "Dalgaboyu", unit: "m" },
-        { symbol: "T", label: "Dalga periyodu", unit: "s" },
+        { symbol: "T", label: "Wave period", unit: "s" },
       ],
-      source: { code: "Derin su dalga teorisi (faz hızı)" },
-      note: "Knot cinsinden: C (kn) ≈ 3,03 · T.",
+      source: { code: "Deep water wave theory (phase speed)" },
+      note: "In knots: C (kn) ≈ 3.03 · T.",
       inputs: [
-        { key: "t", label: "Dalga Periyodu (T)", unit: "s", placeholder: "8" },
+        { key: "t", label: "Wave Period (T)", unit: "s", placeholder: "8" },
       ],
       calculate: (v) => {
         const c = (9.81 * v.t) / (2 * Math.PI);
         return [
-          { label: "Dalga Hızı (C)", value: `${c.toFixed(2)} m/s` },
-          { label: "Dalga Hızı", value: `${(c * 1.94384).toFixed(2)} kn` },
+          { label: "Wave Speed (C)", value: `${c.toFixed(2)} m/s` },
+          { label: "Wave Speed", value: `${(c * 1.94384).toFixed(2)} kn` },
         ];
       },
     },
     {
       id: "relative-wind-vector",
-      name: "Bağıl (Görünür) Rüzgâr Vektörü",
-      group: "Rüzgâr",
-      formula: "Rx = Wx − Sx ; Ry = Wy − Sy ; Vbağıl = √(Rx² + Ry²)",
+      name: "Relative (Apparent) Wind Vector",
+      group: "Wind",
+      formula: "Rx = Wx − Sx ; Ry = Wy − Sy ; V_rel = √(Rx² + Ry²)",
       variables: [
-        { symbol: "Wx, Wy", label: "Gerçek rüzgâr vektör bileşenleri", unit: "kn" },
-        { symbol: "Sx, Sy", label: "Gemi hız vektör bileşenleri", unit: "kn" },
-        { symbol: "Vbağıl", label: "Bağıl rüzgâr hızı", unit: "kn" },
+        { symbol: "Wx, Wy", label: "True wind vector components", unit: "kn" },
+        { symbol: "Sx, Sy", label: "Vessel velocity vector components", unit: "kn" },
+        { symbol: "V_rel", label: "Relative wind speed", unit: "kn" },
       ],
-      source: { code: "Bağıl rüzgâr vektör bağıntısı (WeatherCalculations)" },
-      note: "Yönler kuzeyden saat yönünde derece; Wx = V·sin(yön), Wy = V·cos(yön). Bağıl yön = atan2(Rx, Ry).",
+      source: { code: "Relative wind vector relation (WeatherCalculations)" },
+      note: "Directions are in degrees clockwise from north; Wx = V·sin(direction), Wy = V·cos(direction). Relative direction = atan2(Rx, Ry).",
       inputs: [
-        { key: "windSpeed", label: "Gerçek Rüzgâr Hızı", unit: "kn", placeholder: "25" },
-        { key: "windDir", label: "Rüzgâr Yönü", unit: "°", placeholder: "270" },
-        { key: "shipSpeed", label: "Gemi Hızı", unit: "kn", placeholder: "12" },
-        { key: "shipHeading", label: "Gemi Başı", unit: "°", placeholder: "45" },
+        { key: "windSpeed", label: "True Wind Speed", unit: "kn", placeholder: "25" },
+        { key: "windDir", label: "Wind Direction", unit: "°", placeholder: "270" },
+        { key: "shipSpeed", label: "Vessel Speed", unit: "kn", placeholder: "12" },
+        { key: "shipHeading", label: "Vessel Heading", unit: "°", placeholder: "45" },
       ],
       calculate: (v) => {
         const wRad = (v.windDir * Math.PI) / 180;
@@ -216,59 +216,59 @@ export const meteorology: CourseTopic = {
         let dir = (Math.atan2(rx, ry) * 180) / Math.PI;
         if (dir < 0) dir += 360;
         return [
-          { label: "Bağıl Rüzgâr Hızı", value: `${speed.toFixed(1)} kn` },
-          { label: "Bağıl Rüzgâr Yönü", value: `${dir.toFixed(0)} °` },
+          { label: "Relative Wind Speed", value: `${speed.toFixed(1)} kn` },
+          { label: "Relative Wind Direction", value: `${dir.toFixed(0)} °` },
         ];
       },
     },
     {
       id: "wind-force-on-ship",
-      name: "Gemi Üzerine Rüzgâr Kuvveti",
-      group: "Rüzgâr",
+      name: "Wind Force on the Vessel",
+      group: "Wind",
       formula: "F = 0.5 · ρ · V² · A · Cd",
       variables: [
-        { symbol: "F", label: "Rüzgâr kuvveti", unit: "N" },
-        { symbol: "ρ", label: "Hava yoğunluğu", unit: "kg/m³" },
-        { symbol: "V", label: "Bağıl rüzgâr hızı", unit: "m/s" },
-        { symbol: "A", label: "Yan rüzgâr alanı (boy × freeboard)", unit: "m²" },
-        { symbol: "Cd", label: "Sürükleme katsayısı (tipik 0,8)" },
+        { symbol: "F", label: "Wind force", unit: "N" },
+        { symbol: "ρ", label: "Air density", unit: "kg/m³" },
+        { symbol: "V", label: "Relative wind speed", unit: "m/s" },
+        { symbol: "A", label: "Lateral windage area (length × freeboard)", unit: "m²" },
+        { symbol: "Cd", label: "Drag coefficient (typically 0.8)" },
       ],
-      source: { code: "Aerodinamik sürükleme (WeatherCalculations)" },
-      note: "Rüzgâr hızı knot girilir, hesapta m/s'ye çevrilir (×0,5144). A = boy × freeboard.",
+      source: { code: "Aerodynamic drag (WeatherCalculations)" },
+      note: "The wind speed is entered in knots and converted to m/s in the calculation (×0.5144). A = length × freeboard.",
       inputs: [
-        { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.225" },
-        { key: "vkn", label: "Bağıl Rüzgâr Hızı (V)", unit: "kn", placeholder: "25" },
-        { key: "length", label: "Gemi Boyu", unit: "m", placeholder: "180" },
+        { key: "rho", label: "Air Density (ρ)", unit: "kg/m³", placeholder: "1.225" },
+        { key: "vkn", label: "Relative Wind Speed (V)", unit: "kn", placeholder: "25" },
+        { key: "length", label: "Ship Length", unit: "m", placeholder: "180" },
         { key: "freeboard", label: "Freeboard", unit: "m", placeholder: "12" },
-        { key: "cd", label: "Sürükleme Katsayısı (Cd)", unit: "", placeholder: "0.8" },
+        { key: "cd", label: "Drag Coefficient (Cd)", unit: "", placeholder: "0.8" },
       ],
       calculate: (v) => {
         const vms = v.vkn * 0.5144;
         const area = v.length * v.freeboard;
         const force = 0.5 * v.rho * vms * vms * area * v.cd;
         return [
-          { label: "Rüzgâr Kuvveti (F)", value: `${force.toFixed(0)} N` },
-          { label: "Rüzgâr Kuvveti", value: `${(force / 1000).toFixed(1)} kN` },
+          { label: "Wind Force (F)", value: `${force.toFixed(0)} N` },
+          { label: "Wind Force", value: `${(force / 1000).toFixed(1)} kN` },
         ];
       },
     },
     {
       id: "speed-over-ground",
-      name: "Akıntı ile Yer Üstü Hız (SOG)",
-      group: "Akıntı",
+      name: "Speed Over Ground with Current (SOG)",
+      group: "Current",
       formula: "Rx = Sx + Cx ; Ry = Sy + Cy ; SOG = √(Rx² + Ry²)",
       variables: [
-        { symbol: "Sx, Sy", label: "Gemi hız bileşenleri", unit: "kn" },
-        { symbol: "Cx, Cy", label: "Akıntı hız bileşenleri", unit: "kn" },
-        { symbol: "SOG", label: "Yer üstü hız", unit: "kn" },
+        { symbol: "Sx, Sy", label: "Vessel velocity components", unit: "kn" },
+        { symbol: "Cx, Cy", label: "Current velocity components", unit: "kn" },
+        { symbol: "SOG", label: "Speed over ground", unit: "kn" },
       ],
-      source: { code: "Gemi + akıntı vektör toplamı (WeatherCalculations)" },
-      note: "Gerçek iz (COG) = atan2(Rx, Ry). Yönler kuzeyden saat yönünde.",
+      source: { code: "Vessel + current vector sum (WeatherCalculations)" },
+      note: "Course over ground (COG) = atan2(Rx, Ry). Directions are clockwise from north.",
       inputs: [
-        { key: "shipSpeed", label: "Gemi Hızı", unit: "kn", placeholder: "12" },
-        { key: "shipHeading", label: "Gemi Başı", unit: "°", placeholder: "45" },
-        { key: "currentSpeed", label: "Akıntı Hızı", unit: "kn", placeholder: "1.5" },
-        { key: "currentDir", label: "Akıntı Yönü", unit: "°", placeholder: "180" },
+        { key: "shipSpeed", label: "Vessel Speed", unit: "kn", placeholder: "12" },
+        { key: "shipHeading", label: "Vessel Heading", unit: "°", placeholder: "45" },
+        { key: "currentSpeed", label: "Current Drift", unit: "kn", placeholder: "1.5" },
+        { key: "currentDir", label: "Current Set", unit: "°", placeholder: "180" },
       ],
       calculate: (v) => {
         const sRad = (v.shipHeading * Math.PI) / 180;
@@ -283,24 +283,24 @@ export const meteorology: CourseTopic = {
         let cog = (Math.atan2(rx, ry) * 180) / Math.PI;
         if (cog < 0) cog += 360;
         return [
-          { label: "Yer Üstü Hız (SOG)", value: `${sog.toFixed(1)} kn` },
-          { label: "Gerçek İz (COG)", value: `${cog.toFixed(0)} °` },
+          { label: "Speed Over Ground (SOG)", value: `${sog.toFixed(1)} kn` },
+          { label: "Course Over Ground (COG)", value: `${cog.toFixed(0)} °` },
         ];
       },
     },
     {
       id: "beaufort-scale",
-      name: "Beaufort Ölçeği (Hızdan Sınıf)",
-      group: "Deniz Durumu",
-      formula: "Beaufort = f(rüzgâr hızı) — aralık tablosu",
+      name: "Beaufort Scale (Force from Speed)",
+      group: "Sea State",
+      formula: "Beaufort = f(wind speed) — range table",
       variables: [
-        { symbol: "V", label: "Rüzgâr hızı", unit: "kn" },
-        { symbol: "B", label: "Beaufort sayısı (0-12)" },
+        { symbol: "V", label: "Wind speed", unit: "kn" },
+        { symbol: "B", label: "Beaufort number (0-12)" },
       ],
-      source: { code: "Beaufort ölçeği", detail: "Rüzgâr hızı sınıflandırma tablosu" },
-      note: "Rüzgâr hızı (knot) Beaufort kuvvet kademesine eşlenir (WeatherCalculations tablosu).",
+      source: { code: "Beaufort scale", detail: "Wind speed classification table" },
+      note: "The wind speed (knots) is mapped to a Beaufort force (WeatherCalculations table).",
       inputs: [
-        { key: "windSpeed", label: "Rüzgâr Hızı", unit: "kn", placeholder: "25" },
+        { key: "windSpeed", label: "Wind Speed", unit: "kn", placeholder: "25" },
       ],
       calculate: (v) => {
         const s = v.windSpeed;
@@ -321,23 +321,23 @@ export const meteorology: CourseTopic = {
         else { scale = 12; desc = "Hurricane"; }
         return [
           { label: "Beaufort", value: `${scale}` },
-          { label: "Açıklama", value: desc },
+          { label: "Description", value: desc },
         ];
       },
     },
     {
       id: "douglas-sea-scale",
-      name: "Douglas Deniz Ölçeği (Dalgadan Sınıf)",
-      group: "Deniz Durumu",
-      formula: "Douglas = f(anlamlı dalga yüksekliği) — aralık tablosu",
+      name: "Douglas Sea Scale (State from Wave Height)",
+      group: "Sea State",
+      formula: "Douglas = f(significant wave height) — range table",
       variables: [
-        { symbol: "Hs", label: "Anlamlı dalga yüksekliği", unit: "m" },
-        { symbol: "D", label: "Douglas deniz sayısı (0-9)" },
+        { symbol: "Hs", label: "Significant wave height", unit: "m" },
+        { symbol: "D", label: "Douglas sea state number (0-9)" },
       ],
-      source: { code: "Douglas deniz ölçeği", detail: "Dalga yüksekliği sınıflandırma tablosu" },
-      note: "Anlamlı dalga yüksekliği (m) Douglas deniz kademesine eşlenir (WeatherCalculations tablosu).",
+      source: { code: "Douglas sea scale", detail: "Wave height classification table" },
+      note: "The significant wave height (m) is mapped to a Douglas sea state (WeatherCalculations table).",
       inputs: [
-        { key: "waveHeight", label: "Dalga Yüksekliği (Hs)", unit: "m", placeholder: "3.5" },
+        { key: "waveHeight", label: "Wave Height (Hs)", unit: "m", placeholder: "3.5" },
       ],
       calculate: (v) => {
         const h = v.waveHeight;
@@ -355,65 +355,65 @@ export const meteorology: CourseTopic = {
         else { scale = 9; desc = "Phenomenal"; }
         return [
           { label: "Douglas", value: `${scale}` },
-          { label: "Açıklama", value: desc },
+          { label: "Description", value: desc },
         ];
       },
     },
     {
       id: "geostrophic-wind",
-      name: "Geostrofik Rüzgâr",
-      group: "Rüzgâr",
+      name: "Geostrophic Wind",
+      group: "Wind",
       formula: "Vg = (1 / (ρ·f)) · (ΔP / Δn) ,  f = 2Ω·sin φ",
       variables: [
-        { symbol: "Vg", label: "Geostrofik rüzgâr hızı", unit: "m/s" },
-        { symbol: "ρ", label: "Hava yoğunluğu", unit: "kg/m³" },
-        { symbol: "f", label: "Coriolis parametresi", unit: "1/s" },
-        { symbol: "ΔP/Δn", label: "Yatay basınç gradyanı", unit: "Pa/m" },
-        { symbol: "φ", label: "Enlem", unit: "°" },
+        { symbol: "Vg", label: "Geostrophic wind speed", unit: "m/s" },
+        { symbol: "ρ", label: "Air density", unit: "kg/m³" },
+        { symbol: "f", label: "Coriolis parameter", unit: "1/s" },
+        { symbol: "ΔP/Δn", label: "Horizontal pressure gradient", unit: "Pa/m" },
+        { symbol: "φ", label: "Latitude", unit: "°" },
       ],
-      source: { code: "Dinamik meteoroloji — geostrofik denge" },
-      note: "Ω = 7,292×10⁻⁵ rad/s. Basınç gradyanı hPa/100km girilir, hesapta Pa/m'ye çevrilir (1 hPa/100km = 10⁻³ Pa/m). Ekvatorda (φ=0) geçersizdir.",
+      source: { code: "Dynamic meteorology — geostrophic balance" },
+      note: "Ω = 7.292×10⁻⁵ rad/s. The pressure gradient is entered in hPa/100 km and converted to Pa/m in the calculation (1 hPa/100 km = 10⁻³ Pa/m). It is not valid at the equator (φ = 0).",
       inputs: [
-        { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.225" },
-        { key: "grad", label: "Basınç Gradyanı", unit: "hPa/100km", placeholder: "3" },
-        { key: "lat", label: "Enlem (φ)", unit: "°", placeholder: "45" },
+        { key: "rho", label: "Air Density (ρ)", unit: "kg/m³", placeholder: "1.225" },
+        { key: "grad", label: "Pressure Gradient", unit: "hPa/100km", placeholder: "3" },
+        { key: "lat", label: "Latitude (φ)", unit: "°", placeholder: "45" },
       ],
       calculate: (v) => {
         const phi = Math.abs(v.lat);
-        if (phi < 1) return [{ label: "Hata", value: "Ekvator yakınında geostrofik denge geçersiz (φ ≥ 1°)" }];
-        if (v.rho <= 0) return [{ label: "Hata", value: "Yoğunluk pozitif olmalı" }];
+        if (phi < 1) return [{ label: "Error", value: "Geostrophic balance is not valid near the equator (φ ≥ 1°)" }];
+        if (v.rho <= 0) return [{ label: "Error", value: "Density must be positive" }];
         const f = 2 * 7.292e-5 * Math.sin((phi * Math.PI) / 180);
         const gradPaPerM = v.grad * 1e-3; // hPa/100km → Pa/m
         const vg = gradPaPerM / (v.rho * f);
         return [
-          { label: "Coriolis Parametresi (f)", value: `${f.toExponential(3)} 1/s` },
-          { label: "Geostrofik Rüzgâr (Vg)", value: `${vg.toFixed(1)} m/s` },
-          { label: "Geostrofik Rüzgâr", value: `${(vg * 1.94384).toFixed(1)} kn` },
+          { label: "Coriolis Parameter (f)", value: `${f.toExponential(3)} 1/s` },
+          { label: "Geostrophic Wind (Vg)", value: `${vg.toFixed(1)} m/s` },
+          { label: "Geostrophic Wind", value: `${(vg * 1.94384).toFixed(1)} kn` },
         ];
       },
     },
     {
       id: "relative-humidity",
-      name: "Bağıl Nem (Çiy Noktasından)",
+      name: "Relative Humidity (from the Dew Point)",
       group: "Atmosfer",
       formula: "RH = 100 · e(Td) / e(T) ,  e(T) = 6.112·exp(17.62·T/(243.12+T))",
       variables: [
-        { symbol: "RH", label: "Bağıl nem", unit: "%" },
-        { symbol: "T", label: "Hava sıcaklığı (kuru termometre)", unit: "°C" },
-        { symbol: "Td", label: "Çiy noktası sıcaklığı", unit: "°C" },
-        { symbol: "e", label: "Buhar basıncı", unit: "hPa" },
+        { symbol: "RH", label: "Relative humidity", unit: "%" },
+        { symbol: "T", label: "Air temperature (dry bulb)", unit: "°C" },
+        { symbol: "Td", label: "Dew point temperature", unit: "°C" },
+        { symbol: "e", label: "Vapour pressure", unit: "hPa" },
       ],
-      source: { code: "Magnus-Tetens doyma buhar basıncı bağıntısı (WMO)" },
-      note: "RH, çiy noktasındaki doyma buhar basıncının hava sıcaklığındaki doyma buhar basıncına oranıdır. Td ≤ T olmalıdır.",
+      source: { code: "Magnus-Tetens saturation vapour pressure relation (WMO)" },
+      note: "RH is the ratio of the saturation vapour pressure at the dew point to that at the air temperature. Td ≤ T is required.",
       inputs: [
-        { key: "t", label: "Hava Sıcaklığı (T)", unit: "°C", placeholder: "25" },
-        { key: "td", label: "Çiy Noktası (Td)", unit: "°C", placeholder: "15" },
+        { key: "t", label: "Air Temperature (T)", unit: "°C", placeholder: "25" },
+        { key: "td", label: "Dew Point (Td)", unit: "°C", placeholder: "15" },
       ],
       calculate: (v) => {
-        if (v.td > v.t) return [{ label: "Hata", value: "Çiy noktası hava sıcaklığından büyük olamaz" }];
+        if (v.td > v.t) return [{ label: "Error", value: "The dew point cannot be higher than the air temperature" }];
         const es = (t: number) => 6.112 * Math.exp((17.62 * t) / (243.12 + t));
         const rh = (es(v.td) / es(v.t)) * 100;
-        return [{ label: "Bağıl Nem (RH)", value: `${rh.toFixed(1)} %` }];
+        return [{ label: "Relative Humidity (RH)", value: `${rh.toFixed(1)} %` }];
       },
     },
   ],

@@ -76,7 +76,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     title: "Ağırlık, Kaldırma Kuvveti ve Yüzerlik",
     icon: Weight,
     subtopics: [
-      { id: "weight-w", title: "Ağırlık (W)", hasContent: true },
+      { id: "weight-w", title: "Weight (W)", hasContent: true },
       { id: "center-of-gravity", title: "Ağırlık merkezi (G)", hasContent: true },
       { id: "buoyancy-force", title: "Kaldırma kuvveti", hasContent: true },
       { id: "center-of-buoyancy", title: "Kaldırma merkezi (B)", hasContent: true },
@@ -118,7 +118,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     title: "Enine Stabilite Hesapları",
     icon: Scale,
     subtopics: [
-      { id: "righting-moment", title: "Doğrultma momenti", hasContent: true },
+      { id: "righting-moment", title: "Righting moment", hasContent: true },
       { id: "heeling-moment", title: "Yatma momenti", hasContent: true },
       { id: "angle-of-equilibrium", title: "Denge açısı", hasContent: true },
       { id: "heel-from-weight-shift", title: "Ağırlık kaymasına bağlı yatma", hasContent: true },
@@ -160,7 +160,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     title: "Hidrostatik Veriler ve Stabilite Tabloları",
     icon: BarChart3,
     subtopics: [
-      { id: "displacement", title: "Deplasman", hasContent: true },
+      { id: "displacement", title: "Displacement", hasContent: true },
       { id: "draft", title: "Draft", hasContent: true },
       { id: "draft-displacement-relation", title: "Draft–deplasman ilişkisi", hasContent: true },
       { id: "tpc", title: "TPC (Ton Per Centimeter)", hasContent: true },
@@ -324,7 +324,7 @@ Eğer moment gemiyi daha da yatırmaya çalışıyorsa, gemi unstabildir.`,
       "Devrilme momenti: Gemiyi daha fazla yatıran moment",
     ],
     formula: {
-      name: "Doğrultma Momenti",
+      name: "Righting Moment",
       expression: "RM = W × GZ",
       description: "RM: Doğrultma momenti (t-m), W: Deplasman (ton), GZ: Doğrultma kolu (m)",
     },
@@ -589,7 +589,7 @@ Görsel: Farklı GM değerleri için yalpa periyodu eğrisi ve gemi salınım ge
       "Konfor ve güvenlik arasında denge gerekir",
     ],
     formula: {
-      name: "Yalpa Periyodu",
+      name: "Rolling Period",
       expression: "T = 2π × √(k² / (g × GM))",
       description: "T: Yalpa periyodu (s), k: Atalet yarıçapı (m), g: Yer çekimi ivmesi (9.81 m s²), GM: Metasantrik yükseklik (m)",
     },
@@ -815,7 +815,7 @@ Görsel: Yükün başa/kıça kaydırılması, LCG kayması ve oluşan trim yön
   },
   // Diğer konular için içerikler...
   "weight-w": {
-    title: "Ağırlık (W)",
+    title: "Weight (W)",
     introduction: "Geminin toplam ağırlığı, deplasman olarak adlandırılır ve geminin yüzmesi için gereken kaldırma kuvvetini belirler.",
     content: `Geminin ağırlığı (W veya Δ), geminin tüm bileşenlerinin toplam ağırlığıdır:
 
@@ -950,7 +950,7 @@ Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve sime
     ],
   },
   "gz-righting-lever": {
-    title: "Doğrultma Kolu (GZ)",
+    title: "Righting Lever (GZ)",
     introduction: "GZ, gemi yattığında ağırlık kuvveti ile kaldırma kuvveti arasındaki yatay mesafeyi ifade eder ve doğrultma momentinin temelidir.",
     content: `GZ (righting lever), gemi belirli bir açıyla yattığında ağırlık merkezi (G) ile kaldırma kuvvetinin etki doğrultusu arasındaki yatay uzaklıktır. Bu kol, doğrultma momentini üretir ve geminin dik konuma dönme eğilimini gösterir.
 
@@ -962,7 +962,7 @@ Küçük açılarda GZ yaklaşık olarak GM × sinθ kabul edilir. Bu ilişki, i
       "Küçük açılarda GZ ≈ GM × sinθ",
     ],
     formula: {
-      name: "Doğrultma Momenti",
+      name: "Righting Moment",
       expression: "RM = Δ × GZ",
       description: "RM: Doğrultma momenti (t·m), Δ: Deplasman (ton), GZ: Doğrultma kolu (m)",
     },
@@ -1193,7 +1193,7 @@ Gemilerin güvenli seyir yapabilmesi için kararlı dengede olması şarttır.`,
   // BÖLÜM 5 - ENİNE STABİLİTE HESAPLARI
   // =====================================================
   "righting-moment": {
-    title: "Doğrultma Momenti",
+    title: "Righting Moment",
     introduction: "Doğrultma momenti, gemi yattığında ağırlık ve kaldırma kuvvetlerinin oluşturduğu ve gemiyi dik konuma döndürmeye çalışan momenttir.",
     content: `Gemi belirli bir açıyla yattığında, ağırlık kuvveti G noktasından aşağı, kaldırma kuvveti B noktasından yukarı etkir. Bu iki kuvvet arasındaki yatay mesafe GZ (doğrultma kolu) olarak adlandırılır.
 
@@ -1217,7 +1217,7 @@ Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri 
       "RM büyüklüğü stabilite kapasitesini gösterir",
     ],
     formula: {
-      name: "Doğrultma Momenti",
+      name: "Righting Moment",
       expression: "RM = Δ × GZ",
       description: "RM: Doğrultma momenti (t·m), Δ: Deplasman (ton), GZ: Doğrultma kolu (m)",
     },
@@ -1690,7 +1690,7 @@ Denge durumunda LCG ve LCB aynı düşey doğru üzerinde olmalıdır. Aksi hald
       "LCG ≠ LCB ise trim oluşur",
     ],
     formula: {
-      name: "Trim Momenti",
+      name: "Trimming Moment",
       expression: "Trim Moment = Δ × (LCG - LCB)",
       description: "Trim Moment: Boyuna moment (t·m), Δ: Deplasman (ton), LCG - LCB: Fark (m)",
     },
@@ -1855,7 +1855,7 @@ Stabilite bilgisayarları trim simülasyonu yaparak optimum yükleme planı öne
   // BÖLÜM 8 - HİDROSTATİK VERİLER VE TABLOLAR
   // =====================================================
   "displacement": {
-    title: "Deplasman",
+    title: "Displacement",
     introduction: "Deplasman, geminin toplam ağırlığı ve yer değiştirdiği suyun ağırlığıdır; stabilitenin temel büyüklüğüdür.",
     content: `Deplasman (Δ), geminin yüzerken yer değiştirdiği suyun ağırlığına eşittir. Arşimet prensibine göre bu değer geminin toplam ağırlığına eşittir.
 
@@ -3381,7 +3381,7 @@ export default function StabilityTopicsPage() {
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
                   { title: "Stability Calculations", href: "/stability/calculations" },
-                  { title: "Stabilite Formülleri", href: "/stability/formulas" },
+                  { title: "Stability Formulas", href: "/stability/formulas" },
                 ].map((resource, index) => (
                   <Link
                     key={index}

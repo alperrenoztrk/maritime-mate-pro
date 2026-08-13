@@ -1,37 +1,37 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Deniz ticareti / ekonomi kuralları.
+ * Shipping commerce / economics rules.
  *
- * Bu dosyada bağlı bir bespoke sayfa YOKTUR; içerik gerçek ticari deniz hukuku
- * ve standart formlardan ilke düzeyinde derlenmiştir. Uydurma sayısal eşik
- * verilmemiş, atıflar (Hague-Visby, Incoterms 2020, BIMCO formları vb.)
- * korunmuştur.
+ * There is NO bespoke page linked to this file; the content is compiled at
+ * principle level from real commercial maritime law and standard forms. No
+ * numerical thresholds have been invented, and the references (Hague-Visby,
+ * Incoterms 2020, BIMCO forms etc.) have been preserved.
  */
 export const economicsRules: RuleGroup[] = [
   {
-    title: "Çarter Parti (Charter Party) Türleri",
+    title: "Types of Charter Party",
     source: {
-      code: "Çarter Parti Sözleşmeleri",
-      detail: "BIMCO / standart deniz ticareti uygulaması",
+      code: "Charter Party Contracts",
+      detail: "BIMCO / standard shipping practice",
     },
     rules: [
       {
-        subtitle: "Temel Çarter Türleri",
+        subtitle: "Main Types of Charter",
         content: [
-          "Voyage Charter (Sefer Çarteri): Donatan, belirli bir yükü bir limandan diğerine taşımayı taahhüt eder; navlun yük miktarı veya götürü (lumpsum) üzerinden ödenir.",
-          "Time Charter (Zaman Çarteri): Gemi belirli bir süre için kiralanır; kiracı seferleri yönetir, kira (hire) genellikle günlük olarak peşin ödenir.",
-          "Bareboat / Demise Charter (Çıplak Gemi Çarteri): Kiracı gemiyi mürettebatsız teslim alır; geminin işletim ve seyir sorumluluğunu tümüyle üstlenir.",
-          "Contract of Affreightment (COA): Belirli bir dönemde, ardışık seferlerle toplam bir yük miktarının taşınmasını öngören çerçeve sözleşme.",
+          "Voyage charter: the owner undertakes to carry a specified cargo from one port to another; the freight is paid per unit of cargo or as a lumpsum.",
+          "Time charter: the vessel is hired for a fixed period; the charterer directs the voyages and the hire is normally paid daily in advance.",
+          "Bareboat / demise charter: the charterer takes the vessel without a crew and assumes full responsibility for her operation and navigation.",
+          "Contract of Affreightment (COA): a framework contract for carrying a total quantity of cargo in consecutive voyages over a given period.",
         ],
       },
       {
-        subtitle: "Önemli Çarter Klozları",
+        subtitle: "Key Charter Party Clauses",
         content: [
-          "Safe Port / Safe Berth: Kiracı, geminin güvenle ulaşıp ayrılabileceği emniyetli liman ve rıhtım göstermekle yükümlüdür.",
-          "Off-hire Klozu: Gemi arıza, kuru havuz veya kiracı kusuru dışı nedenlerle hizmet veremezse kira durur.",
-          "Ice Clause / War Risk Clause: Buz ve savaş riski hâllerinde tarafların hak ve yükümlülüklerini düzenler.",
-          "Cancelling (Canceling) Date: Gemi belirtilen tarihe kadar yükleme limanına hazır olmazsa kiracı sözleşmeyi feshedebilir.",
+          "Safe port / safe berth: the charterer is obliged to nominate a port and berth the vessel can reach and leave safely.",
+          "Off-hire clause: hire ceases when the vessel cannot render service because of breakdown, dry-docking or other causes not attributable to the charterer.",
+          "Ice clause / war risk clause: governs the rights and obligations of the parties in cases of ice and war risk.",
+          "Cancelling date: the charterer may cancel the contract if the vessel is not ready at the loading port by the stated date.",
         ],
       },
     ],
@@ -44,19 +44,19 @@ export const economicsRules: RuleGroup[] = [
     },
     rules: [
       {
-        subtitle: "Laytime (Yükleme/Boşaltma Süresi)",
+        subtitle: "Laytime (Loading/Discharging Time)",
         content: [
-          "Laytime, yük elleçleme için kiracıya tanınan ve navluna dahil edilmiş süredir.",
-          "Süre genellikle 'running days', 'weather working days' veya 'SHINC/SHEX' (Pazar ve tatiller dahil/hariç) esasıyla tanımlanır.",
-          "Laytime, kural olarak geçerli bir NOR (Notice of Readiness) verilip kabul edildikten sonra işlemeye başlar.",
+          "Laytime is the period allowed to the charterer for cargo handling and included in the freight.",
+          "The period is normally defined on the basis of running days, weather working days or SHINC/SHEX (Sundays and holidays included/excluded).",
+          "As a rule, laytime starts to run once a valid Notice of Readiness (NOR) has been tendered and accepted.",
         ],
       },
       {
         subtitle: "Demuraj ve Despatch",
         content: [
-          "Demurrage (Demuraj): Laytime aşıldığında kiracının donatana ödediği, sözleşmede belirlenen günlük gecikme tazminatıdır ('once on demurrage, always on demurrage' ilkesi geçerlidir).",
-          "Despatch Money: Laytime'dan önce iş bitirilirse donatanın kiracıya ödediği prim olup tipik olarak demuraj oranının yarısıdır.",
-          "Detention: Laytime ve demuraj kapsamı dışındaki süre kayıpları için talep edilen ayrı bir tazminattır.",
+          "Demurrage: the agreed daily compensation paid by the charterer to the owner when the laytime is exceeded (the principle \"once on demurrage, always on demurrage\" applies).",
+          "Despatch money: the premium paid by the owner to the charterer when the work is completed before the laytime expires, typically half the demurrage rate.",
+          "Detention: a separate claim for time lost outside the scope of laytime and demurrage.",
         ],
       },
     ],
@@ -65,42 +65,42 @@ export const economicsRules: RuleGroup[] = [
     title: "Notice of Readiness (NOR)",
     source: {
       code: "NOR",
-      detail: "Notice of Readiness — charter party uygulaması",
+      detail: "Notice of Readiness — charter party practice",
     },
     rules: [
       {
-        subtitle: "NOR'un Geçerlilik Şartları",
+        subtitle: "Conditions for a Valid NOR",
         content: [
-          "Gemi yükleme/boşaltma için fiilen ve hukuken hazır (ready in all respects) olmalıdır.",
-          "Gemi sözleşmeye göre 'arrived ship' niteliği kazanmış olmalıdır (berth/port charter ayrımına göre).",
-          "NOR, sözleşmede belirtilen yer, zaman ve şekilde (mesai saatleri içinde, belirtilen yöntemle) verilmelidir.",
-          "Geçersiz NOR laytime'ı başlatmaz; bu durum demuraj hesaplarında ihtilaf yaratabilir.",
+          "The vessel must be ready in all respects, both physically and legally, to load or discharge.",
+          "The vessel must have become an \"arrived ship\" under the contract (according to whether it is a berth or a port charter).",
+          "The NOR must be tendered at the place, time and in the manner stated in the contract (within office hours and by the specified method).",
+          "An invalid NOR does not start the laytime, which can lead to disputes in demurrage calculations.",
         ],
       },
     ],
   },
   {
-    title: "Konişmento (Bill of Lading) ve Hague-Visby",
+    title: "Bill of Lading and the Hague-Visby Rules",
     source: {
-      code: "Hague-Visby Kuralları",
+      code: "Hague-Visby Rules",
       detail: "Hague Rules 1924 / Visby Protocol 1968",
     },
     rules: [
       {
-        subtitle: "Konişmentonun İşlevleri",
+        subtitle: "Functions of the Bill of Lading",
         content: [
-          "Yük teslim alındı makbuzu (receipt) işlevi görür.",
-          "Taşıma sözleşmesinin delili (evidence of contract of carriage) niteliğindedir.",
-          "Malı temsil eden kıymetli evrak (document of title) olup ciro ile devredilebilir.",
+          "It acts as a receipt for the goods taken into charge.",
+          "It is evidence of the contract of carriage.",
+          "It is a document of title representing the goods and is transferable by endorsement.",
         ],
       },
       {
-        subtitle: "Taşıyanın Sorumluluk ve İstisnaları",
+        subtitle: "Carrier's Liabilities and Exemptions",
         content: [
-          "Taşıyan, geminin denize elverişliliğini (seaworthiness) sefer başlangıcında gerekli özeni göstererek sağlamakla yükümlüdür.",
-          "Sorumluluk sınırı paket/birim veya brüt kilo başına SDR cinsinden belirlenir (Visby ile getirilen 'package or kilo' limiti).",
-          "Nautical fault (seyir/yönetim hatası) ve yangın gibi belirli hâllerde taşıyan sorumluluktan kurtulabilir.",
-          "Hamburg Kuralları ve Rotterdam Kuralları, Hague-Visby'ye alternatif rejimler olarak farklı sorumluluk dengeleri öngörür.",
+          "The carrier must exercise due diligence to make the vessel seaworthy at the commencement of the voyage.",
+          "The limit of liability is expressed in SDR per package/unit or per gross kilogramme (the \"package or kilo\" limit introduced by Visby).",
+          "The carrier may be exonerated in certain cases such as nautical fault (errors in navigation or management) and fire.",
+          "The Hamburg Rules and the Rotterdam Rules provide alternative regimes to Hague-Visby with a different balance of liability.",
         ],
       },
     ],
@@ -113,65 +113,65 @@ export const economicsRules: RuleGroup[] = [
     },
     rules: [
       {
-        subtitle: "Her Türlü Taşıma Modu",
+        subtitle: "Any Mode of Transport",
         content: [
-          "EXW (Ex Works): Satıcı malı kendi işyerinde hazır eder; risk ve masraf büyük ölçüde alıcıdadır.",
-          "FCA (Free Carrier): Satıcı malı belirlenen yerde taşıyıcıya teslim eder.",
-          "CPT / CIP: Satıcı navlunu (ve CIP'te sigortayı) öder; risk ilk taşıyıcıya teslimle alıcıya geçer.",
-          "DAP / DPU / DDP: Teslim varış yerinde gerçekleşir; DDP'de gümrük ve ithalat vergileri satıcıya aittir.",
+          "EXW (Ex Works): the seller makes the goods available at its own premises; the risk and cost fall largely on the buyer.",
+          "FCA (Free Carrier): the seller delivers the goods to the carrier at the named place.",
+          "CPT / CIP: the seller pays the freight (and, under CIP, the insurance); the risk passes to the buyer on delivery to the first carrier.",
+          "DAP / DPU / DDP: delivery takes place at the destination; under DDP the customs duties and import taxes are for the seller's account.",
         ],
       },
       {
-        subtitle: "Yalnızca Deniz/İç Su Yolu Taşıması",
+        subtitle: "Sea and Inland Waterway Transport Only",
         content: [
-          "FAS (Free Alongside Ship): Mal, yükleme limanında gemi doğrultusunda teslim edilir.",
-          "FOB (Free On Board): Risk, mal gemiye yüklendiğinde alıcıya geçer.",
-          "CFR (Cost and Freight): Satıcı navlunu öder; risk gemiye yükleme ile geçer.",
-          "CIF (Cost, Insurance and Freight): CFR'ye ek olarak satıcı asgari deniz sigortasını da sağlar.",
+          "FAS (Free Alongside Ship): the goods are delivered alongside the vessel at the port of loading.",
+          "FOB (Free On Board): the risk passes to the buyer when the goods are loaded on board.",
+          "CFR (Cost and Freight): the seller pays the freight; the risk passes on loading on board.",
+          "CIF (Cost, Insurance and Freight): in addition to CFR, the seller also provides minimum marine insurance cover.",
         ],
       },
     ],
   },
   {
-    title: "BIMCO Standart Formları",
+    title: "BIMCO Standard Forms",
     source: {
       code: "BIMCO",
-      detail: "Baltic and International Maritime Council standart formları",
+      detail: "Baltic and International Maritime Council standard forms",
     },
     rules: [
       {
-        subtitle: "Yaygın Standart Formlar",
+        subtitle: "Common Standard Forms",
         content: [
-          "GENCON: Genel amaçlı sefer çarteri (voyage charter) formu.",
-          "NYPE / BALTIME: Zaman çarteri (time charter) formları.",
-          "BARECON: Çıplak gemi (bareboat) çarteri formu.",
-          "CONGENBILL: GENCON ile uyumlu konişmento formu.",
-          "SUPPLYTIME: Açık deniz (offshore) destek gemileri için zaman çarteri formu.",
+          "GENCON: the general purpose voyage charter form.",
+          "NYPE / BALTIME: time charter forms.",
+          "BARECON: the bareboat charter form.",
+          "CONGENBILL: the bill of lading form compatible with GENCON.",
+          "SUPPLYTIME: the time charter form for offshore support vessels.",
         ],
       },
     ],
   },
   {
-    title: "P&I ve H&M Sigortası Temelleri",
+    title: "Fundamentals of P&I and H&M Insurance",
     source: {
-      code: "Deniz Sigortası",
-      detail: "P&I Clubs / Hull & Machinery uygulaması",
+      code: "Marine Insurance",
+      detail: "P&I Clubs / Hull & Machinery practice",
     },
     rules: [
       {
-        subtitle: "Başlıca Sigorta Türleri",
+        subtitle: "Main Types of Cover",
         content: [
-          "H&M (Hull & Machinery): Geminin gövde ve makine hasarlarını, çatma sorumluluğunun bir kısmını ve genel avaryayı kapsayan mal sigortasıdır.",
-          "P&I (Protection & Indemnity): Karşılıklı sigorta kulüpleri tarafından sağlanan, üçüncü şahıs sorumluluklarını (yük zararı, çevre kirliliği, mürettebat ve yolcu zararları) kapsayan koruma.",
-          "FD&D (Freight, Demurrage & Defence): Ticari ihtilaflarda hukuki masraf ve danışmanlığı kapsayan ek koruma.",
+          "H&M (Hull & Machinery): property insurance covering damage to the hull and machinery, part of the collision liability and general average.",
+          "P&I (Protection & Indemnity): cover provided by mutual insurance clubs for third party liabilities (cargo damage, pollution, crew and passenger claims).",
+          "FD&D (Freight, Demurrage & Defence): additional cover for legal costs and advice in commercial disputes.",
         ],
       },
       {
-        subtitle: "Temel İlkeler",
+        subtitle: "Basic Principles",
         content: [
-          "General Average (Genel Avarya): Ortak deniz sergüzeştinde gemi ve yükü kurtarmak için yapılan fedakârlık ve masrafların York-Antwerp Kuralları çerçevesinde menfaat sahipleri arasında paylaştırılmasıdır.",
-          "Particular Average: Yalnızca ilgili menfaat sahibine ait kısmi zarardır; paylaşıma tabi değildir.",
-          "Sigortalı, uberrimae fidei (azami iyi niyet) ilkesi gereği rizikoya ilişkin tüm önemli bilgileri sigortacıya açıklamakla yükümlüdür.",
+          "General average: the apportionment among the interests, under the York-Antwerp Rules, of the sacrifices and expenses made to save the ship and cargo in a common maritime adventure.",
+          "Particular average: a partial loss borne solely by the interest concerned; it is not apportioned.",
+          "Under the principle of uberrimae fidei (utmost good faith) the assured must disclose to the insurer all material facts relating to the risk.",
         ],
       },
     ],

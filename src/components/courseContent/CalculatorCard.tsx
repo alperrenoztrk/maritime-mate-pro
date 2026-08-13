@@ -17,12 +17,12 @@ import {
 } from "@/utils/calculationRecord";
 
 /**
- * Tek bir bağlı hesaplayıcı kartı. Üstte formülü gösterir (Formüller
- * sayfasıyla aynı ifade → formül-hesaplama bağı görünür olur), altında
- * girdiler ve `entry.calculate` ile hesaplanan sonuçlar.
+ * A single linked calculator card. Shows the formula on top (the same expression
+ * as the Formulas page → the formula-calculation link stays visible), with the
+ * inputs and the results computed by `entry.calculate` underneath.
  *
- * Tasarım, mevcut makine "CalcToolCard"'ından korunarak tüm dersler için
- * ortaklaştırılmıştır.
+ * The design is carried over from the existing machine "CalcToolCard" and shared
+ * across all topics.
  */
 export function CalculatorCard({ entry }: { entry: CourseEntry }) {
   const [vals, setVals] = useState<Record<string, string>>({});
@@ -76,7 +76,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
       setNumVals(validation.values);
       setSteps(calculatedSteps);
       setRecord(buildCalculationRecord(entry, validation.values, resultList, calculatedSteps));
-      // Navigation Almanac kıyasındaki gibi ayrıntı sonuçla birlikte görünür.
+      // As in the Navigation Almanac comparison, the detail is shown together with the result.
       setShowSteps(true);
     } catch (error) {
       hapticNotify("error");
@@ -99,7 +99,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
       return next;
     });
     setCalculationError("");
-    // Değişen girdilerle eski bir sonucun ekranda kalmasını önle.
+    // Prevent a stale result from staying on screen when the inputs change.
     setResults(null);
     setSteps(null);
     setRecord(null);

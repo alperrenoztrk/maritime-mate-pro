@@ -217,7 +217,7 @@ export default function FluidMechanicsTopicsPage() {
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
                   { title: "Machine Calculations", href: "/machine/calculations" },
-                  { title: "Makine Formülleri", href: "/machine/formulas" },
+                  { title: "Machine Formulas", href: "/machine/formulas" },
                 ].map((resource) => (
                   <Link
                     key={resource.href}

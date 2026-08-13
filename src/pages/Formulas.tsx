@@ -17,7 +17,7 @@ const Formulas = () => {
   const [geminiApiStatus, setGeminiApiStatus] = useState<'unknown' | 'working' | 'error'>('unknown');
   const [conversationHistory, setConversationHistory] = useState<Array<{question: string, answer: string}>>([]);
 
-  // localStorage'dan konuşma geçmişini yükle
+  // Load the conversation history from localStorage
   useEffect(() => {
     const savedHistory = localStorage.getItem('aiConversationHistory');
     if (savedHistory) {
@@ -29,7 +29,7 @@ const Formulas = () => {
     }
   }, []);
 
-  // Konuşma geçmişi değiştiğinde localStorage'a kaydet
+  // Persist the conversation history to localStorage whenever it changes
   useEffect(() => {
     if (conversationHistory.length > 0) {
       localStorage.setItem('aiConversationHistory', JSON.stringify(conversationHistory));
@@ -68,11 +68,11 @@ const Formulas = () => {
     setIsLoading(true);
     
     try {
-      // Supabase Edge Function çağrısı
+      // Supabase Edge Function call
       const { data, error } = await supabase.functions.invoke('ask-ai', {
         body: { 
           question: question.trim(),
-          conversationHistory: conversationHistory // Konuşma geçmişini gönder
+          conversationHistory: conversationHistory // Send the conversation history
         }
       });
 
@@ -84,7 +84,7 @@ const Formulas = () => {
         setAiResponse(data.answer);
         setResponseCount(prev => prev + 1);
         
-        // Konuşma geçmişine ekle
+        // Append to the conversation history
         setConversationHistory(prev => [...prev, {
           question: question.trim(),
           answer: data.answer
@@ -95,29 +95,29 @@ const Formulas = () => {
           setGeminiApiStatus('working');
         }
         
-        toast.success("AI yanıtı alındı!");
+        toast.success("AI response received.");
         setQuestion(""); // Soruyu temizle
       } else {
-        throw new Error("AI yanıtı alınamadı");
+        throw new Error("The AI response could not be retrieved");
       }
     } catch (error) {
-      console.error("AI soru-cevap hatası:", error);
+      console.error("AI question and answer error:", error);
       setGeminiApiStatus('error');
-      toast.error(`AI hatası: ${error.message}`);
+      toast.error(`AI error: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
   };
 
   const suggestedQuestions = [
-    "GM hesaplama formülü",
-    "Trim açısı nasıl bulunur?",
+    "GM calculation formula",
+    "How is the trim angle found?",
     "Stabilite kriterleri nelerdir?",
     "Great circle cruise calculation",
-    "SFOC nasıl hesaplanır?",
-    "Balast suyu dağılımı",
-    "Metasantır yarıçapı formülü",
-    "IMO stabilite standartları"
+    "How is SFOC calculated?",
+    "Ballast water distribution",
+    "Metacentric radius formula",
+    "IMO stability standards"
   ];
 
   const handleSuggestedQuestion = (suggestion: string) => {
@@ -150,7 +150,7 @@ const Formulas = () => {
               <div className="flex items-center gap-2 sm:gap-3">
                 <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                 <CardTitle className="text-base sm:text-lg leading-tight" data-translatable>
-                  Gemini AI Asistanı (Gelişmiş)
+                  Gemini AI Assistant (Advanced)
                 </CardTitle>
               </div>
               <div className="flex items-center gap-2">
@@ -171,8 +171,8 @@ const Formulas = () => {
             <CardDescription className="text-xs sm:text-sm leading-relaxed px-1">
               <span data-translatable>
                 {geminiApiStatus === 'working' 
-                  ? "Google Gemini AI ile gelişmiş maritime mühendisliği analizi."
-                  : "Sunucu ortam değişkenlerine GEMINI_API_KEY ekleyin."
+                  ? "Advanced marine engineering analysis with Google Gemini AI."
+                  : "Add GEMINI_API_KEY to the server environment variables."
                 }
               </span>
             </CardDescription>
@@ -180,15 +180,15 @@ const Formulas = () => {
           <CardContent className="space-y-3 sm:space-y-4">
             <div className="space-y-3 sm:space-y-4">
               <Textarea
-                placeholder="Sorunuzu buraya yazın...
+                placeholder="Type your question here...
 
-Örnek sorular:
-• GM nasıl hesaplanır?
-• Trim açısı formülü nedir?
+Example questions:
+• How is GM calculated?
+• What is the trim angle formula?
 • Stabilite kriterleri nelerdir?
-• Büyük daire seyir hesabı
-• SFOC hesaplama yöntemi
-• Balast suyu hesaplamaları"
+• Great circle sailing calculation
+• SFOC calculation method
+• Ballast water calculations"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 className="min-h-[120px] sm:min-h-[160px] text-sm resize-none"
@@ -204,8 +204,8 @@ const Formulas = () => {
                 {isLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span className="hidden xs:inline" data-translatable>AI Düşünüyor...</span>
-                    <span className="xs:hidden" data-translatable>Düşünüyor...</span>
+                    <span className="hidden xs:inline" data-translatable>AI is thinking...</span>
+                    <span className="xs:hidden" data-translatable>Thinking...</span>
                   </>
                 ) : (
                   <>
@@ -251,14 +251,14 @@ const Formulas = () => {
                           <Brain style={{ width: '24px', height: '24px', color: '#2563eb' }} />
                         </div>
                         <h4 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1e40af', margin: 0 }}>
-                          AI Yanıtı
+                          AI Response
                         </h4>
                       </div>
                       <div style={{ display: 'flex', gap: '4px' }}>
                         <button
                           onClick={() => {
                             navigator.clipboard.writeText(aiResponse);
-                            toast.success("Yanıt kopyalandı!");
+                            toast.success("Response copied.");
                           }}
                           style={{
                             background: 'transparent',
@@ -281,7 +281,7 @@ const Formulas = () => {
                               printWindow.document.write(`
                                 <html>
                                   <head>
-                                    <title>AI Yanıtı - Maritime Calculator</title>
+                                    <title>AI Response - Maritime Calculator</title>
                                     <style>
                                       body { font-family: system-ui; padding: 40px; max-width: 800px; margin: 0 auto; }
                                       h1 { color: #0066cc; }
@@ -291,7 +291,7 @@ const Formulas = () => {
                                     </style>
                                   </head>
                                   <body>
-                                    <h1>Maritime Calculator - AI Yanıtı</h1>
+                                    <h1>Maritime Calculator - AI Response</h1>
                                     <div class="question">
                                       <strong>Soru:</strong> ${question}
                                     </div>
@@ -319,7 +319,7 @@ const Formulas = () => {
                           }}
                           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
                           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
-                          title="Yazdır"
+                          title="Print"
                         >
                           <Printer style={{ width: '18px', height: '18px', color: '#2563eb' }} />
                         </button>
@@ -327,12 +327,12 @@ const Formulas = () => {
                           onClick={() => {
                             if (navigator.share) {
                               navigator.share({
-                                title: 'Maritime Calculator - AI Yanıtı',
+                                title: 'Maritime Calculator — AI Response',
                                 text: `Soru: ${question}\n\nCevap: ${aiResponse}`
                               }).catch(() => {});
                             } else {
                               navigator.clipboard.writeText(`Soru: ${question}\n\nCevap: ${aiResponse}`);
-                              toast.success("Paylaşım metni kopyalandı!");
+                              toast.success("The share text has been copied.");
                             }
                           }}
                           style={{
@@ -353,7 +353,7 @@ const Formulas = () => {
                     </div>
                     <div style={{ fontSize: '15px', lineHeight: '1.8', color: '#1f2937' }}>
                       {aiResponse.split('\n').map((line, index) => {
-                        // Başlıkları vurgula
+                        // Highlight the headings
                         if (line.startsWith('**') && line.endsWith('**')) {
                           return (
                             <h3 key={index} style={{ 
@@ -377,7 +377,7 @@ const Formulas = () => {
                           );
                         }
                         
-                        // Alt başlıklar (bold text)
+                        // Sub-headings (bold text)
                         if (line.includes('**') && !line.startsWith('**')) {
                           const parts = line.split('**');
                           return (
@@ -389,7 +389,7 @@ const Formulas = () => {
                           );
                         }
                         
-                        // Liste elemanları
+                        // List items
                         if (line.startsWith('- ') || line.startsWith('• ')) {
                           return (
                             <div key={index} className="flex items-start gap-2 ml-2">
@@ -399,7 +399,7 @@ const Formulas = () => {
                           );
                         }
                         
-                        // Numaralı liste
+                        // Numbered list
                         if (/^\d+\./.test(line)) {
                           const [num, ...content] = line.split('.');
                           return (
@@ -410,7 +410,7 @@ const Formulas = () => {
                           );
                         }
                         
-                        // Kod blokları (backtick ile)
+                        // Code blocks (delimited by backticks)
                         if (line.includes('`')) {
                           const parts = line.split('`');
                           return (
@@ -426,7 +426,7 @@ const Formulas = () => {
                           );
                         }
                         
-                        // Formül satırları (= içeren)
+                        // Formula lines (those containing =)
                         if (line.includes('=') && (line.includes('×') || line.includes('+') || line.includes('-') || line.includes('/'))) {
                           return (
                             <div key={index} className="bg-card border-2 border-primary/30 p-3 rounded-lg font-mono text-sm shadow-sm">
@@ -454,13 +454,13 @@ const Formulas = () => {
           </CardContent>
         </Card>
 
-        {/* Konuşma Geçmişi */}
+        {/* Conversation history */}
         {conversationHistory.length > 0 && (
           <Card className="shadow-[var(--shadow-card)]">
             <CardHeader className="pb-3 flex flex-row items-center justify-between">
               <CardTitle className="text-lg flex items-center gap-2">
                 <MessageCircle className="w-5 h-5 text-blue-500" />
-                <span data-translatable>Konuşma Geçmişi</span>
+                <span data-translatable>Conversation History</span>
               </CardTitle>
               <Button
                 variant="ghost"
@@ -468,7 +468,7 @@ const Formulas = () => {
                 onClick={() => {
                   setConversationHistory([]);
                   localStorage.removeItem('aiConversationHistory');
-                  toast.success("Konuşma geçmişi temizlendi");
+                  toast.success("The conversation history has been cleared");
                 }}
                 className="text-muted-foreground hover:text-destructive"
               >
@@ -496,43 +496,43 @@ const Formulas = () => {
               </div>
               {conversationHistory.length > 5 && (
                 <div className="mt-3 text-xs text-muted-foreground text-center">
-                  Son 5 konuşma gösteriliyor
+                  Showing the last 5 conversations
                 </div>
               )}
             </CardContent>
           </Card>
         )}
 
-        {/* Önerilen Sorular - Mobil optimize */}
+        {/* Suggested questions — optimised for mobile */}
         <Card className="shadow-[var(--shadow-card)]">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-yellow-500" />
-              <span data-translatable>Örnek Sorular</span>
+              <span data-translatable>Example Questions</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid gap-2">
               <div className="space-y-2">
-                <h4 className="font-semibold text-sm text-muted-foreground">Sayısal Sorular:</h4>
+                <h4 className="font-semibold text-sm text-muted-foreground">Numerical questions:</h4>
                 <div className="grid gap-1">
                   <button 
-                    onClick={() => setQuestion("100 metre boyunda, 20 metre genişliğinde ve 8 metre su çekimi olan bir geminin deplasmanını hesapla")}
+                    onClick={() => setQuestion("Calculate the displacement of a vessel 100 metres long, 20 metres in beam and with a draft of 8 metres")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
                     • Deplasman hesaplama
                   </button>
                   <button 
-                    onClick={() => setQuestion("50 knot hızı km/saat cinsinden nedir?")}
+                    onClick={() => setQuestion("What is 50 knots in km/h?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Birim dönüşümü
+                    • Unit conversion
                   </button>
                   <button 
-                    onClick={() => setQuestion("5 metre yüksekliğindeki dalganın periyodu nedir?")}
+                    onClick={() => setQuestion("What is the period of a 5 metre high wave?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Dalga hesaplaması
+                    • Wave calculation
                   </button>
                 </div>
               </div>
@@ -540,13 +540,13 @@ const Formulas = () => {
               <Separator className="my-2" />
               
               <div className="space-y-2">
-                <h4 className="font-semibold text-sm text-muted-foreground">Denizcilik Soruları:</h4>
+                <h4 className="font-semibold text-sm text-muted-foreground">Maritime questions:</h4>
                 <div className="grid gap-1">
                   <button 
                     onClick={() => setQuestion("COLREG Kural 13 ne der?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • COLREG kuralları
+                    • COLREG rules
                   </button>
                   <button 
                     onClick={() => setQuestion("MARPOL Annex VI emisyon limitleri nedir?")}
@@ -555,28 +555,28 @@ const Formulas = () => {
                     • MARPOL gereksinimleri
                   </button>
                   <button 
-                    onClick={() => setQuestion("Beaufort 7 rüzgar hızı ve dalga yüksekliği?")}
+                    onClick={() => setQuestion("What are the wind speed and wave height at Beaufort 7?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
                     • Meteoroloji
                   </button>
                   <button 
-                    onClick={() => setQuestion("IMDG Kod Sınıf 3 tehlikeli yükler nelerdir?")}
+                    onClick={() => setQuestion("What are IMDG Code Class 3 dangerous goods?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Tehlikeli yük
+                    • Dangerous goods
                   </button>
                   <button 
-                    onClick={() => setQuestion("VHF kanal 16'nın kullanım amacı nedir?")}
+                    onClick={() => setQuestion("What is VHF channel 16 used for?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Haberleşme
+                    • Communications
                   </button>
                   <button 
                     onClick={() => setQuestion("Pilot merdiveni gereksinimleri nelerdir?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Operasyonel güvenlik
+                    • Operational safety
                   </button>
                 </div>
               </div>
@@ -587,7 +587,7 @@ const Formulas = () => {
         <Card className="shadow-[var(--shadow-card)]">
           <CardHeader className="pb-2 sm:pb-3">
             <CardTitle className="text-base sm:text-lg" data-translatable>
-              Sık Sorulan Konular
+              Frequently Asked Topics
             </CardTitle>
           </CardHeader>
           <CardContent>

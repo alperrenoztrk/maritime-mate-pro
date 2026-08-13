@@ -2,193 +2,193 @@ import type { RuleGroup } from "@/data/courseContent/types";
 
 export const stabilityRules: RuleGroup[] = [
   {
-    title: "2008 IS Code — Hasarsız (Intakt) Stabilite",
+    title: "2008 IS Code — Intact Stability",
     source: { code: "IMO 2008 IS Code (MSC.267(85))", url: "https://www.imo.org/en/publications" },
     rules: [
       {
         subtitle: "Kriterler",
         content: [
-          "GZ eğrisi alanı: 0°–30° ≥ 0.055 m·rad; 0°–40° (veya taşma açısına kadar) ≥ 0.090 m·rad; 30°–40° ≥ 0.030 m·rad.",
-          "Maksimum GZ ≥ 0.20 m ve tepe açısı θ ≥ 30°.",
-          "Başlangıç GM (GM0) ≥ 0.15 m (çelik kuru yük, genel kargo vb. için tipik taban değer).",
-          "Pozitif stabilite menzili en az 30°; borda kesim hattı (deck edge) tercihen 30°’den sonra batmalı.",
-          "Hava koşulu kriteri (Weather Criterion): 26–40 m/s rüzgârda denge açısı θw ≤ 16° veya θdeck’in %80’i (hangisi küçükse).",
-          "Hava koşulu kriteri (Weather Criterion): Aynı sınırlayıcı açıya kadar kalan GZ alanı, rüzgâr devirmesine karşı en az %40 fazlalık göstermeli.",
+          "Area under the GZ curve: 0°–30° ≥ 0.055 m·rad; 0°–40° (or up to the downflooding angle) ≥ 0.090 m·rad; 30°–40° ≥ 0.030 m·rad.",
+          "Maximum GZ ≥ 0.20 m occurring at an angle θ ≥ 30°.",
+          "Initial GM (GM0) ≥ 0.15 m (typical minimum for steel dry cargo, general cargo vessels etc.).",
+          "The range of positive stability must be at least 30°; the deck edge should preferably immerse beyond 30°.",
+          "Weather Criterion: in a 26–40 m/s wind the angle of equilibrium θw ≤ 16° or 80% of θ_deck, whichever is less.",
+          "Weather Criterion: the residual GZ area up to the same limiting angle must show a margin of at least 40% against the wind heeling energy.",
         ],
       },
     ],
   },
   {
-    title: "International Grain Code — Tahıl Yükleri",
+    title: "International Grain Code — Grain Cargoes",
     source: { code: "International Grain Code", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Tahıl Stabilite Şartları",
+        subtitle: "Grain Stability Requirements",
         content: [
-          "Düzeltilmiş GM (GMcorr) ≥ 0.30 m (serbest yüzey ve tahıl kayması düzeltmeleri dahil).",
-          "Tahıl kaymasıyla oluşan denge açısı θ ≤ 12° veya borda kesim hattı batma açısından küçük olanı.",
-          "Her yükleme durumu için onaylı Grain Loading Manual’daki kriterler doğrulanmalı ve DOA (Document of Authorization) gemide bulundurulmalı.",
+          "Corrected GM (GM_corr) ≥ 0.30 m (including free surface and grain shift corrections).",
+          "The angle of heel due to grain shift must be θ ≤ 12°, or the deck edge immersion angle, whichever is less.",
+          "The criteria in the approved Grain Loading Manual must be verified for every loading condition and the Document of Authorization (DOA) must be carried on board.",
         ],
       },
     ],
   },
   {
-    title: "SOLAS II‑1 — Olasılıksal Hasar Stabilitesi",
-    source: { code: "SOLAS 1974, Bölüm II‑1", url: "https://www.imo.org/en/publications" },
+    title: "SOLAS II‑1 — Probabilistic Damage Stability",
+    source: { code: "SOLAS 1974, Chapter II‑1", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Olasılıksal Yöntem ve Kriterler",
+        subtitle: "Probabilistic Method and Criteria",
         content: [
-          "Olasılıksal yöntem: A = Σ(s × p). Burada s: hasar sonrası sağkalım katsayısı, p: o hasarın meydana gelme olasılığı (bölme uzunluğu/konumuna bağlı).",
-          "R: Gemi boyuna bağlı olarak yönetmelikte tablolarla verilen “gerekli” değerdir.",
-          "Kriter: A ≥ R sağlanmalıdır; değilse bölümlendirme/stabilite yetersiz kabul edilir.",
-          "Hasarlı durumda son durum: serbest yüzey/trim etkileriyle birlikte can salı indirme ve erişim koşulları sağlanmalı.",
-          "Damage Control Plan/Booklet gemide; su geçmez kapılar ve uzaktan kumandalar ile ölçüm noktaları plan üzerinde gösterilmeli.",
+          "Probabilistic method: A = Σ(s × p), where s is the probability of survival after the damage and p is the probability of that damage occurring (depending on the length and position of the compartment).",
+          "R is the \"required\" value given in the regulation's tables as a function of the ship's length.",
+          "Criterion: A ≥ R must be satisfied; otherwise the subdivision/stability is considered inadequate.",
+          "In the final damaged condition, including free surface and trim effects, the conditions for launching liferafts and for access must remain satisfied.",
+          "The Damage Control Plan/Booklet must be on board; watertight doors, their remote controls and the sounding points must be shown on the plan.",
         ],
       },
     ],
   },
   {
-    title: "Timber Deck Cargo Code — Güverte Tomruk",
+    title: "Timber Deck Cargo Code — Deck Timber",
     source: { code: "2011 Timber Deck Cargo Code", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Güverte Tomruk Yükü Şartları",
+        subtitle: "Deck Timber Cargo Requirements",
         content: [
-          "Yığın yüksekliği/eğim ve bağlama (stanchion, tel, çember) MSL esaslı hesaplarla doğrulanmalı.",
-          "Kötü hava için işletme talimatları: güverte drenajı, güverte erişimi ve görüş koşulları sağlanmalı.",
-          "Yükleme örnekleri için IS Code kriterlerine ilave emniyet marjı korunmalı.",
+          "The stack height/slope and the securing arrangements (stanchions, wires, hoops) must be verified by MSL based calculations.",
+          "Operating instructions for heavy weather: deck drainage, deck access and visibility conditions must be maintained.",
+          "For the sample loading conditions an additional safety margin over the IS Code criteria must be maintained.",
         ],
       },
     ],
   },
   {
-    title: "IBC/IGC — Kimyasal ve Gaz Tankerleri",
+    title: "IBC/IGC — Chemical and Gas Tankers",
     source: { code: "IBC Code / IGC Code", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Stabilite Şartları",
+        subtitle: "Stability Requirements",
         content: [
-          "Kargo tipine bağlı intakt ve hasar stabilitesi şartları (survival capability) sağlanmalı.",
-          "Her onaylı yükleme durumu için stabilite cihazı ile doğrulama yapılmalı; model/doğrulama sertifikaları güncel olmalı.",
+          "The intact and damage stability requirements (survival capability) applicable to the cargo type must be satisfied.",
+          "Every approved loading condition must be verified with the stability instrument; the model/verification certificates must be up to date.",
         ],
       },
       {
         subtitle: "Eklenebilecekler",
         content: [
-          "Sızıntı senaryoları: Kargo sızıntısı halinde serbest yüzey, KG değişimi ve heeling moment etkilerini içeren hassasiyet analizleri.",
-          "Buharlaşma etkileri: Uçucu kargolarda buharlaşmanın kütle/yoğunluk ve KG üzerindeki etkilerini dikkate alan yöntemler.",
+          "Leakage scenarios: sensitivity analyses covering the free surface, KG change and heeling moment effects in the event of a cargo leak.",
+          "Evaporation effects: methods that account for the effect of evaporation on mass/density and KG for volatile cargoes.",
         ],
       },
       {
-        subtitle: "Güncellenmesi Gerekenler",
+        subtitle: "Items Requiring Update",
         content: [
-          "Kargo tipleri: Yeni kimyasal ve gaz kargo tipleri için (IBC/IGC son ekleri uyarınca) ilave stabilite gereksinimlerinin eklenmesi.",
+          "Cargo types: additional stability requirements to be added for new chemical and gas cargo types (in line with the latest IBC/IGC amendments).",
         ],
       },
     ],
   },
   {
-    title: "Polar Code — Kutup Suları Operasyonları",
+    title: "Polar Code — Polar Waters Operations",
     source: { code: "Polar Code (MSC.385(94))", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Kutup Suları Şartları",
+        subtitle: "Polar Waters Requirements",
         content: [
-          "Buz tutması (icing) için KG artışı muhafaza edilerek yeterli GM ve GZ marjı korunmalı.",
-          "PWOM’da belirtilen operasyon limitleri ve acil durum prosedürleri uygulanmalı.",
+          "The KG rise due to icing must be retained and an adequate GM and GZ margin maintained.",
+          "The operational limitations and emergency procedures set out in the PWOM must be applied.",
         ],
       },
     ],
   },
   {
-    title: "CSS Code (Annex 13) — CSM Bağlama Hesaplarına Esas Sayılar",
+    title: "CSS Code (Annex 13) — Values Underlying CSM Lashing Calculations",
     source: { code: "CSS Code, Annex 13", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Bağlama Hesabı Sayıları",
+        subtitle: "Lashing Calculation Values",
         content: [
-          "Tipik sürtünme katsayıları: çelik/çelik μ ≈ 0.10; çelik/ahşap μ ≈ 0.30; ahşap/ahşap μ ≈ 0.40; kauçuk/çelik μ ≈ 0.60 (kuru, yağsız yüzey varsayımı).",
-          "MSL (Maximum Securing Load) ve ivme katsayıları (long., transv., vert.) gemi boyu ve servis hızına göre Annex 13 tablolarından seçilir.",
+          "Typical friction coefficients: steel/steel μ ≈ 0.10; steel/timber μ ≈ 0.30; timber/timber μ ≈ 0.40; rubber/steel μ ≈ 0.60 (assuming dry, grease-free surfaces).",
+          "The MSL (Maximum Securing Load) and the acceleration factors (longitudinal, transverse, vertical) are selected from the Annex 13 tables according to the ship's length and service speed.",
         ],
       },
     ],
   },
   {
-    title: "Stockholm Agreement — Ro‑Ro Yolcu (Bölgesel Ek Şartlar)",
+    title: "Stockholm Agreement — Ro‑Ro Passenger Ships (Regional Additional Requirements)",
     source: { code: "Stockholm Agreement (Ro‑Ro Passenger Ships)", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Ek Hasar Stabilitesi Şartları",
+        subtitle: "Additional Damage Stability Requirements",
         content: [
-          "Araç güvertesinde su birikmesi etkisi: hesabında tipik varsayım 0.50 m su yüksekliği (yönergedeki tablolara göre) ve uygun permeabilite ile dikkate alınır.",
-          "Su birikmesi dahil hasar stabilitesi değerlendirmesinde A ≥ R şartı korunmalı; can salı/evakuasyon koşulları sağlanmalı.",
+          "Effect of water accumulation on the vehicle deck: typically taken into account with a water height of 0.50 m (according to the tables in the instrument) and an appropriate permeability.",
+          "The condition A ≥ R must be maintained in the damage stability assessment including water accumulation; the liferaft/evacuation conditions must remain satisfied.",
         ],
       },
     ],
   },
   {
-    title: "Balıkçı Gemileri — Güvenlik Kodu (2005/2012) ve Cape Town Agreement",
+    title: "Fishing Vessels — Safety Code (2005/2012) and the Cape Town Agreement",
     source: { code: "FAO/ILO/IMO Code of Safety for Fishermen & Fishing Vessels (2005/2012); Cape Town Agreement (2012)", url: "https://www.imo.org/en/OurWork/Safety/Pages/CTA.aspx" },
     rules: [
       {
-        subtitle: "Balıkçı Gemisi Stabilite Şartları",
+        subtitle: "Fishing Vessel Stability Requirements",
         content: [
-          "Başlangıç GM (GM0) için tipik taban değer ≥ 0.35 m (boy ve tasarıma bağlı idare talimatları esas).",
-          "GZ alan kriterleri çoğunlukla IS Code ile uyumlu (örn. 0°–30° ≥ 0.055 m·rad).",
-          "Düşük serbest borda ve icing riski için ek GM marjı ve operasyon sınırlamaları uygulanmalı.",
+          "The typical minimum initial GM (GM0) is ≥ 0.35 m (the Administration's instructions, which depend on length and design, govern).",
+          "The GZ area criteria are largely consistent with the IS Code (e.g. 0°–30° ≥ 0.055 m·rad).",
+          "An additional GM margin and operational limitations must be applied for low freeboard and icing risk.",
         ],
       },
     ],
   },
   {
-    title: "OSV / SPS — Offshore Supply ve Special Purpose Ships",
+    title: "OSV / SPS — Offshore Supply and Special Purpose Ships",
     source: { code: "OSV Code (2006/2020); SPS Code (2008)", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "OSV/SPS Stabilite Şartları",
+        subtitle: "OSV/SPS Stability Requirements",
         content: [
-          "IS Code kriterleri taban alınır; yük ve personel yoğunluğuna göre minimum GM genellikle ≥ 0.15 m olarak idarelerce talep edilir.",
-          "Yük güvertesi serbest yüzey ve yüksek KG etkileri için ek marj ve operasyon limitleri uygulanır.",
+          "The IS Code criteria form the baseline; depending on the cargo and personnel density, Administrations generally require a minimum GM ≥ 0.15 m.",
+          "Additional margins and operational limits are applied for cargo deck free surface and high KG effects.",
         ],
       },
     ],
   },
   {
-    title: "HSC Code — Yüksek Hızlı Tekneler",
+    title: "HSC Code — High Speed Craft",
     source: { code: "HSC Code (1994/2000)", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Yüksek Hızlı Tekne Şartları",
+        subtitle: "High Speed Craft Requirements",
         content: [
-          "Yolcu taraflanması/viraj testi altında statik yalpa açısı tipik sınır ≤ 10°.",
-          "Minimum GM çoğu konfigürasyonda ≥ 0.15 m; fakat hız, gövde tipi ve seakeeping gereksinimlerine bağlı özel denge testleri uygulanır.",
+          "Under the passenger crowding/turning test the static heel angle is typically limited to ≤ 10°.",
+          "The minimum GM is ≥ 0.15 m in most configurations, but specific stability tests are applied depending on the speed, hull type and seakeeping requirements.",
         ],
       },
     ],
   },
   {
-    title: "MODU Code — Mobil Açık Deniz Üniteleri",
+    title: "MODU Code — Mobile Offshore Drilling Units",
     source: { code: "MODU Code (2009)", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "MODU Stabilite Şartları",
+        subtitle: "MODU Stability Requirements",
         content: [
-          "Rüzgâr hızları: işletme durumu için tipik 36 m/s, fırtına/survival durumu için 51.5 m/s eşdeğer rüzgâr; heeling moment buna göre alınır.",
-          "Righting/Heeling moment eğrisi karşılaştırması ile yeterli emniyet marjı gösterilir; pozitif stabilite menzili ve hava boşluğu (air gap) kontrol edilir.",
+          "Wind speeds: typically 36 m/s for the operating condition and an equivalent 51.5 m/s for the storm/survival condition; the heeling moment is taken accordingly.",
+          "An adequate safety margin is demonstrated by comparing the righting and heeling moment curves; the range of positive stability and the air gap are checked.",
         ],
       },
     ],
   },
   {
-    title: "Load Line (LL) — Yükleme Sınırı Sözleşmesi Bağlantıları",
+    title: "Load Line (LL) — Links to the Load Line Convention",
     source: { code: "International Load Line Convention (1966/1988)", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Fribord ve Taşma Açısı Bağlantıları",
+        subtitle: "Freeboard and Downflooding Angle Links",
         content: [
-          "Minimum fribord ve kaporta/üstyapı bütünlüğü; downflooding açıları ve muhtemel su giriş yolları stabilite analizinde sınırlandırıcıdır.",
-          "Stabilite kitapçığındaki taşma (downflooding) açısı gemi bütünlük şartları ile tutarlı olmalı; LL işaretlemeleri ile çelişmemelidir.",
+          "The minimum freeboard and the integrity of hatches/superstructures, the downflooding angles and the possible paths of water ingress are limiting factors in the stability analysis.",
+          "The downflooding angle in the stability booklet must be consistent with the ship's integrity conditions and must not conflict with the Load Line markings.",
         ],
       },
     ],

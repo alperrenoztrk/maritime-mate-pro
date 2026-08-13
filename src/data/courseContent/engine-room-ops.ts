@@ -2,177 +2,177 @@ import { ClipboardCheck } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Makine Dairesi Operasyonları — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Engine Room Operations — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const engineRoomOps: CourseTopic = {
   key: "engine-room-ops",
-  title: "Makine Dairesi Operasyonları",
+  title: "Engine Room Operations",
   icon: ClipboardCheck,
   accent: "from-emerald-500 via-teal-500 to-cyan-500",
   group: "machine",
   intro:
-    "Yakıt ve yağ tüketim takibi, devreye alma ve operasyon parametreleri. " +
-    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Fuel and lubricating oil consumption monitoring, start-up and operating parameters. " +
+    "Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "fuel-consumption-rate",
-      name: "Yakıt Tüketim Oranı",
-      group: "Operasyon Parametreleri",
-      formula: "FCrate = FCtoplam / Seyir süresi",
+      name: "Fuel Consumption Rate",
+      group: "Operating Parameters",
+      formula: "FCrate = FCtotal / Voyage time",
       variables: [
-        { symbol: "FCtoplam", label: "Toplam yakıt tüketimi", unit: "ton" },
-        { symbol: "Seyir süresi", label: "Geçen süre", unit: "gün veya saat" },
-        { symbol: "FCrate", label: "Tüketim hızı", unit: "ton/gün veya ton/saat" },
+        { symbol: "FCtoplam", label: "Total fuel consumption", unit: "tonnes" },
+        { symbol: "Voyage time", label: "Elapsed time", unit: "days or hours" },
+        { symbol: "FCrate", label: "Consumption rate", unit: "tonnes/day or tonnes/hour" },
       ],
-      source: { code: "Operasyonel yakıt tüketim takibi" },
-      note: "Toplam tüketim ton, süre gün girilir; günlük ve saatlik tüketim hızı hesaplanır.",
+      source: { code: "Operational fuel consumption monitoring" },
+      note: "The total consumption is entered in tonnes and the time in days; the daily and hourly consumption rates are calculated.",
       inputs: [
-        { key: "total", label: "Toplam Yakıt (FCtoplam)", unit: "ton", placeholder: "180" },
-        { key: "days", label: "Seyir Süresi", unit: "gün", placeholder: "12" },
+        { key: "total", label: "Total Fuel (FCtotal)", unit: "tonnes", placeholder: "180" },
+        { key: "days", label: "Passage Time", unit: "days", placeholder: "12" },
       ],
       calculate: (v) => {
-        if (v.days <= 0) return [{ label: "Hata", value: "Süre pozitif olmalı" }];
+        if (v.days <= 0) return [{ label: "Error", value: "The time must be positive" }];
         const perDay = v.total / v.days;
         return [
-          { label: "Günlük Tüketim", value: `${perDay.toFixed(2)} ton/gün` },
-          { label: "Saatlik Tüketim", value: `${(perDay / 24).toFixed(3)} ton/saat` },
+          { label: "Daily Consumption", value: `${perDay.toFixed(2)} tonnes/day` },
+          { label: "Hourly Consumption", value: `${(perDay / 24).toFixed(3)} tonnes/h` },
         ];
       },
     },
     {
       id: "remaining-fuel-range",
-      name: "Kalan Yakıt Menzili",
-      group: "Operasyon Parametreleri",
-      formula: "Menzil = Yakıtstok / FCrate",
+      name: "Remaining Fuel Endurance",
+      group: "Operating Parameters",
+      formula: "Endurance = Fuel stock / FCrate",
       variables: [
-        { symbol: "Yakıtstok", label: "Mevcut yakıt stoku", unit: "ton" },
-        { symbol: "FCrate", label: "Tüketim hızı", unit: "ton/gün" },
-        { symbol: "Menzil", label: "Tahmini çalışma süresi", unit: "gün" },
+        { symbol: "Fuel_stock", label: "Available fuel stock", unit: "tonnes" },
+        { symbol: "FCrate", label: "Consumption rate", unit: "tonnes/day" },
+        { symbol: "Range", label: "Estimated operating time", unit: "days" },
       ],
-      source: { code: "Operasyonel yakıt planlaması" },
+      source: { code: "Operational fuel planning" },
       inputs: [
-        { key: "stock", label: "Yakıt Stoku", unit: "ton", placeholder: "500" },
-        { key: "rate", label: "Tüketim Hızı", unit: "ton/gün", placeholder: "30" },
+        { key: "stock", label: "Fuel Stock", unit: "tonnes", placeholder: "500" },
+        { key: "rate", label: "Consumption Rate", unit: "tonnes/day", placeholder: "30" },
       ],
       calculate: (v) => {
         const days = v.stock / v.rate;
         return [
-          { label: "Tahmini Menzil", value: `${days.toFixed(1)} gün` },
-          { label: "Saat", value: `${(days * 24).toFixed(0)} saat` },
+          { label: "Estimated Range", value: `${days.toFixed(1)} days` },
+          { label: "Hours", value: `${(days * 24).toFixed(0)} h` },
         ];
       },
     },
     {
       id: "lube-oil-consumption",
-      name: "Yağ Tüketimi Takibi",
-      group: "Operasyon Parametreleri",
-      formula: "Yağtüketimi = SLOC × BHP × t",
+      name: "Lubricating Oil Consumption Monitoring",
+      group: "Operating Parameters",
+      formula: "Oil_consumption = SLOC × BHP × t",
       variables: [
-        { symbol: "SLOC", label: "Özgül yağ tüketimi", unit: "g/kW·h" },
-        { symbol: "BHP", label: "Motor gücü", unit: "kW" },
-        { symbol: "t", label: "Çalışma süresi", unit: "saat" },
-        { symbol: "Yağtüketimi", label: "Toplam yağ tüketimi", unit: "g (→ kg/ton)" },
+        { symbol: "SLOC", label: "Specific lubricating oil consumption", unit: "g/kW·h" },
+        { symbol: "BHP", label: "Engine power", unit: "kW" },
+        { symbol: "t", label: "Running time", unit: "h" },
+        { symbol: "Oil_consumption", label: "Total oil consumption", unit: "g (→ kg/tonne)" },
       ],
-      source: { code: "Özgül yağ tüketimi (SLOC) takibi", detail: "Normal: 0,6–1,2 g/kW·h" },
+      source: { code: "Specific lubricating oil consumption (SLOC) monitoring", detail: "Normal: 0,6–1,2 g/kW·h" },
       inputs: [
-        { key: "cylOil", label: "Silindir Yağı Tüketimi", unit: "g/kW·h", placeholder: "0.7" },
-        { key: "bhp", label: "Motor Gücü", unit: "kW", placeholder: "15000" },
-        { key: "hours", label: "Çalışma Süresi", unit: "saat", placeholder: "720" },
+        { key: "cylOil", label: "Cylinder Oil Consumption", unit: "g/kW·h", placeholder: "0.7" },
+        { key: "bhp", label: "Engine Power", unit: "kW", placeholder: "15000" },
+        { key: "hours", label: "Operating Time", unit: "h", placeholder: "720" },
       ],
       calculate: (v) => {
         const consumption = (v.cylOil * v.bhp * v.hours) / 1e6; // ton
         const dailyRate = consumption / (v.hours / 24);
         return [
-          { label: "Toplam Silindir Yağı", value: `${(consumption * 1000).toFixed(0)} kg` },
-          { label: "Günlük Tüketim", value: `${(dailyRate * 1000).toFixed(1)} kg/gün` },
+          { label: "Total Cylinder Oil", value: `${(consumption * 1000).toFixed(0)} kg` },
+          { label: "Daily Consumption", value: `${(dailyRate * 1000).toFixed(1)} kg/day` },
         ];
       },
     },
     {
       id: "startup-checklist-time",
-      name: "Seyire Hazırlık Süresi",
-      group: "Devreye Alma",
-      formula: "tToplam = max(tönısıtma, tLO) + (nmotor·15 + njen·10) + 30 dk",
+      name: "Time to Prepare for Sea",
+      group: "Start-up",
+      formula: "t_total = max(t_preheat, t_LO) + (n_engine·15 + n_gen·10) + 30 min",
       variables: [
-        { symbol: "tönısıtma", label: "Ön ısıtma süresi", unit: "dk" },
-        { symbol: "tLO", label: "LO sirkülasyon süresi", unit: "dk" },
-        { symbol: "nmotor", label: "Motor sayısı" },
-        { symbol: "njen", label: "Jeneratör sayısı" },
+        { symbol: "t_preheat", label: "Pre-heating time", unit: "dk" },
+        { symbol: "tLO", label: "LO circulation time", unit: "dk" },
+        { symbol: "nmotor", label: "Number of engines" },
+        { symbol: "njen", label: "Number of generators" },
       ],
-      source: { code: "Makine dairesi seyire hazırlık prosedürü" },
-      note: "Devreye alma süresi yaklaşıktır: motor başına 15 dk, jeneratör başına 10 dk, +30 dk kontrol.",
+      source: { code: "Engine room procedure for preparing for sea" },
+      note: "The start-up time is approximate: 15 min per engine, 10 min per generator, plus 30 min for checks.",
       inputs: [
-        { key: "engines", label: "Motor Sayısı", unit: "", placeholder: "2" },
-        { key: "gens", label: "Jeneratör Sayısı", unit: "", placeholder: "3" },
-        { key: "preHeat", label: "Ön Isıtma Süresi", unit: "dakika", placeholder: "60" },
-        { key: "loCirc", label: "LO Sirkülasyon", unit: "dakika", placeholder: "30" },
+        { key: "engines", label: "Number of Engines", unit: "", placeholder: "2" },
+        { key: "gens", label: "Number of Generators", unit: "", placeholder: "3" },
+        { key: "preHeat", label: "Pre-heating Time", unit: "min", placeholder: "60" },
+        { key: "loCirc", label: "LO Circulation", unit: "min", placeholder: "30" },
       ],
       calculate: (v) => {
         const totalPreheat = Math.max(v.preHeat, v.loCirc);
         const startupTime = v.engines * 15 + v.gens * 10; // dakika
         const total = totalPreheat + startupTime + 30; // +30 dk kontrol
         return [
-          { label: "Ön Hazırlık", value: `${totalPreheat} dakika` },
-          { label: "Start-up", value: `${startupTime} dakika` },
-          { label: "Toplam Süre", value: `${total} dakika` },
+          { label: "Preparation", value: `${totalPreheat} min` },
+          { label: "Start-up", value: `${startupTime} min` },
+          { label: "Total Time", value: `${total} min` },
         ];
       },
     },
     {
       id: "engine-warmup-time",
-      name: "Motor Isınma Süresi",
-      group: "Devreye Alma",
-      formula: "t = (m · cp · ΔT) / Q̇ısıtıcı",
+      name: "Engine Warm-up Time",
+      group: "Start-up",
+      formula: "t = (m · cp · ΔT) / Q̇_heater",
       variables: [
-        { symbol: "m", label: "Motor blok kütlesi", unit: "kg" },
-        { symbol: "cp", label: "Özgül ısı (çelik)", unit: "kJ/kg·K" },
-        { symbol: "ΔT", label: "Sıcaklık artışı", unit: "K" },
-        { symbol: "Q̇ısıtıcı", label: "Isıtıcı gücü", unit: "kW" },
+        { symbol: "m", label: "Engine block mass", unit: "kg" },
+        { symbol: "cp", label: "Specific heat (steel)", unit: "kJ/kg·K" },
+        { symbol: "ΔT", label: "Temperature rise", unit: "K" },
+        { symbol: "Q̇_heater", label: "Heater power", unit: "kW" },
       ],
-      source: { code: "Duyulur ısı bağıntısı — ana makine ön ısıtma", detail: "Turning gear: min 1 saat; jacket water → 60°C" },
-      note: "Kütle ton girilir, hesapta kg'ye çevrilir (×1000).",
+      source: { code: "Sensible heat relation — main engine pre-heating", detail: "Turning gear: min 1 hour; jacket water → 60 °C" },
+      note: "The mass is entered in tonnes and converted to kg in the calculation (×1000).",
       inputs: [
-        { key: "mass", label: "Motor Blok Kütlesi", unit: "ton", placeholder: "200" },
-        { key: "cp", label: "Özgül Isı (çelik)", unit: "kJ/kg·K", placeholder: "0.5" },
-        { key: "tStart", label: "Başlangıç Sıcaklığı", unit: "°C", placeholder: "20" },
-        { key: "tTarget", label: "Hedef Sıcaklık", unit: "°C", placeholder: "60" },
-        { key: "qHeater", label: "Isıtıcı Gücü", unit: "kW", placeholder: "150" },
+        { key: "mass", label: "Engine Block Mass", unit: "tonnes", placeholder: "200" },
+        { key: "cp", label: "Specific Heat (steel)", unit: "kJ/kg·K", placeholder: "0.5" },
+        { key: "tStart", label: "Initial Temperature", unit: "°C", placeholder: "20" },
+        { key: "tTarget", label: "Target Temperature", unit: "°C", placeholder: "60" },
+        { key: "qHeater", label: "Heater Power", unit: "kW", placeholder: "150" },
       ],
       calculate: (v) => {
         const energy = v.mass * 1000 * v.cp * (v.tTarget - v.tStart);
         const timeH = energy / (v.qHeater * 3600);
         return [
-          { label: "Gerekli Enerji", value: `${(energy / 3600).toFixed(0)} kWh` },
-          { label: "Tahmini Isınma Süresi", value: `${(timeH * 60).toFixed(0)} dakika` },
+          { label: "Required Energy", value: `${(energy / 3600).toFixed(0)} kWh` },
+          { label: "Estimated Warm-up Time", value: `${(timeH * 60).toFixed(0)} min` },
         ];
       },
     },
     {
       id: "lube-oil-pressure-check",
-      name: "Yağ Basıncı Kontrolü",
-      group: "Devreye Alma",
-      formula: "Pyağ ≥ Pmin (üretici değeri)",
+      name: "Lubricating Oil Pressure Check",
+      group: "Start-up",
+      formula: "P_oil ≥ P_min (manufacturer's value)",
       variables: [
-        { symbol: "Pyağ", label: "Ölçülen yağ basıncı", unit: "bar" },
-        { symbol: "Pmin", label: "Minimum izin verilen basınç", unit: "bar" },
-        { symbol: "Palarm", label: "Alarm basıncı", unit: "bar" },
+        { symbol: "P_oil", label: "Measured oil pressure", unit: "bar" },
+        { symbol: "Pmin", label: "Minimum allowable pressure", unit: "bar" },
+        { symbol: "Palarm", label: "Alarm pressure", unit: "bar" },
       ],
-      source: { code: "Üretici yağlama sistemi limitleri", detail: "Tipik: 3–5 bar (düşük devirde), 5–8 bar (tam yükte)" },
+      source: { code: "Manufacturer's lubrication system limits", detail: "Typical: 3–5 bar (at low speed), 5–8 bar (at full load)" },
       inputs: [
-        { key: "pMeasured", label: "Ölçülen Basınç", unit: "bar", placeholder: "4.2" },
-        { key: "pMin", label: "Minimum İzin", unit: "bar", placeholder: "2.5" },
-        { key: "pMax", label: "Maksimum İzin", unit: "bar", placeholder: "6.0" },
-        { key: "pAlarm", label: "Alarm Değeri", unit: "bar", placeholder: "2.0" },
+        { key: "pMeasured", label: "Measured Pressure", unit: "bar", placeholder: "4.2" },
+        { key: "pMin", label: "Minimum Allowable", unit: "bar", placeholder: "2.5" },
+        { key: "pMax", label: "Maximum Allowable", unit: "bar", placeholder: "6.0" },
+        { key: "pAlarm", label: "Alarm Value", unit: "bar", placeholder: "2.0" },
       ],
       calculate: (v) => {
-        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Düşük" : v.pMeasured > v.pMax ? "Yüksek" : "Normal";
+        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Low" : v.pMeasured > v.pMax ? "High" : "Normal";
         const margin = ((v.pMeasured - v.pAlarm) / v.pAlarm) * 100;
         return [
           { label: "Durum", value: status },
-          { label: "Alarm Marjı", value: `${margin.toFixed(1)}%` },
-          { label: "Aralık", value: `${v.pMin}–${v.pMax} bar` },
+          { label: "Alarm Margin", value: `${margin.toFixed(1)}%` },
+          { label: "Range", value: `${v.pMin}–${v.pMax} bar` },
         ];
       },
     },

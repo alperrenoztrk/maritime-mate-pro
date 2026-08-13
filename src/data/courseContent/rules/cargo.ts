@@ -1,117 +1,117 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Yük elleçleme ve istifleme kuralları.
+ * Cargo handling and stowage rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
- *  - IMSBC Code (Uluslararası Denizyolu Katı Dökme Yük Kodu)
+ * The content is taken from real, cited regulations:
+ *  - IMSBC Code (International Maritime Solid Bulk Cargoes Code)
  *  - International Grain Code
- *  - IMDG Code (tehlikeli yükler)
- *  - CSS Code / Annex 13 (yük emniyeti, bağlama)
- *  - ISGOTT ve terminal prosedürleri
+ *  - IMDG Code (dangerous goods)
+ *  - CSS Code / Annex 13 (cargo securing, lashing)
+ *  - ISGOTT and terminal procedures
  *  - SOLAS gereklilikleri (VGM, CSM)
- *  - MARPOL Annex I/II/V (yük artıkları)
+ *  - MARPOL Annex I/II/V (cargo residues)
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const cargoRules: RuleGroup[] = [
   {
-    title: "IMSBC Kodu — Katı Dökme Yükler",
+    title: "IMSBC Code — Solid Bulk Cargoes",
     source: {
       code: "IMSBC Code",
       detail: "International Maritime Solid Bulk Cargoes Code (SOLAS VI/VII)",
     },
     rules: [
       {
-        subtitle: "Taşıma Gereklilikleri ve Beyanlar",
+        subtitle: "Carriage Requirements and Declarations",
         content: [
-          "Transportable Moisture Limit (TML) ve Flow Moisture Point (FMP) kontrolleri zorunludur.",
-          "Kargo sınıflandırması (A: sıvılaşabilir, B: kimyasal tehlike, C: ne A ne B) doğru yapılmalıdır.",
-          "Shipper's Declaration ve sertifikalar (TML, nem içeriği) eksiksiz olmalıdır.",
-          "Özel taşıma şartları ve tehlikeli özellikler (BCSN — Bulk Cargo Shipping Name) dikkate alınmalıdır.",
+          "Transportable Moisture Limit (TML) and Flow Moisture Point (FMP) checks are mandatory.",
+          "The cargo must be classified correctly (Group A: may liquefy, Group B: chemical hazard, Group C: neither A nor B).",
+          "The shipper's declaration and the certificates (TML, moisture content) must be complete.",
+          "The special carriage requirements and hazardous properties (BCSN — Bulk Cargo Shipping Name) must be taken into account.",
         ],
       },
       {
-        subtitle: "Sıvılaşma (Liquefaction) Riski",
+        subtitle: "Liquefaction Risk",
         content: [
-          "Grup A yüklerde gerçek nem içeriği TML'in altında olmalıdır (aksi halde yükleme yapılmaz).",
-          "Can test (kutu testi) gemide sıvılaşma eğilimini hızlı kontrol için kullanılabilir.",
-          "Sıvılaşan yük serbest yüzey gibi davranarak ani kayma ve devrilmeye yol açar; yükleme reddedilmelidir.",
+          "For Group A cargoes the actual moisture content must be below the TML; otherwise the cargo must not be loaded.",
+          "The can test may be used on board as a quick check of the tendency to liquefy.",
+          "A liquefied cargo behaves like a free surface and can cause a sudden shift and capsize; loading must be refused.",
         ],
       },
     ],
   },
   {
-    title: "International Grain Code — Tahıl Yükleri",
+    title: "International Grain Code — Grain Cargoes",
     source: {
       code: "International Grain Code",
-      detail: "SOLAS Bölüm VI, Part C",
+      detail: "SOLAS Chapter VI, Part C",
     },
     rules: [
       {
-        subtitle: "Tahıl Stabilite Kriterleri",
+        subtitle: "Grain Stability Criteria",
         content: [
-          "Düzeltilmiş GM (GMcorr) ≥ 0.30 m (serbest yüzey ve tahıl kayması dahil).",
-          "Tahıl kaymasıyla oluşan denge açısı ≤ 12° (veya borda kesim hattı batma açısından küçük olanı).",
-          "GZ eğrisi altındaki kalan (residual) alan ≥ 0.075 m·rad.",
+          "Corrected GM (GM_corr) ≥ 0.30 m (including free surface and grain shift).",
+          "The angle of heel due to grain shift must be ≤ 12° (or the deck edge immersion angle, whichever is less).",
+          "The residual area under the GZ curve must be ≥ 0.075 m·rad.",
         ],
       },
       {
-        subtitle: "Yükleme, Trimleme ve Belgeler",
+        subtitle: "Loading, Trimming and Documentation",
         content: [
-          "Document of Authorization (DOA) ve onaylı Grain Loading Manual gemide bulundurulmalıdır.",
-          "Doldurulmuş ve kısmen dolu ambarlarda trimleme ve heeling moment hesapları yapılmalıdır.",
-          "Boşluk (void) ve kayma momentleri yönetmelik tablolarından alınır.",
+          "The Document of Authorization (DOA) and the approved Grain Loading Manual must be carried on board.",
+          "Trimming and heeling moment calculations must be carried out for both filled and partly filled holds.",
+          "The void spaces and shifting moments are taken from the tables in the regulation.",
         ],
       },
     ],
   },
   {
-    title: "IMDG Kodu — Tehlikeli Yükler",
+    title: "IMDG Code — Dangerous Goods",
     source: {
       code: "IMDG Code",
       detail: "International Maritime Dangerous Goods Code (SOLAS VII / MARPOL Annex III)",
     },
     rules: [
       {
-        subtitle: "Sınıflandırma ve Belgeleme",
+        subtitle: "Classification and Documentation",
         content: [
-          "Tehlikeli yükler 9 sınıfa ayrılır (UN numarası, Proper Shipping Name ile tanımlanır).",
-          "Dangerous Goods Declaration ve Container/Vehicle Packing Certificate eksiksiz olmalıdır.",
-          "Marking, labelling ve plakartlama (placarding) gereklilikleri sağlanmalıdır.",
+          "Dangerous goods are divided into 9 classes and identified by a UN number and a Proper Shipping Name.",
+          "The Dangerous Goods Declaration and the Container/Vehicle Packing Certificate must be complete.",
+          "The marking, labelling and placarding requirements must be met.",
         ],
       },
       {
-        subtitle: "İstif ve Ayrım (Segregation)",
+        subtitle: "Stowage and Segregation",
         content: [
-          "Stowage ve segregation tablolarına (away from / separated from) uyulmalıdır.",
-          "Manifest/Dangerous Goods List ve istif planı gemide hazır olmalıdır.",
-          "Yangın/dökülme acil müdahale için EmS (Emergency Schedules) ve MFAG bulundurulmalıdır.",
+          "The stowage and segregation tables (away from / separated from) must be complied with.",
+          "The manifest/Dangerous Goods List and the stowage plan must be available on board.",
+          "The EmS (Emergency Schedules) and the MFAG must be carried for emergency response to fire and spillage.",
         ],
       },
     ],
   },
   {
-    title: "Yük Emniyeti — CSS Code & CSM",
+    title: "Cargo Securing — CSS Code and CSM",
     source: {
       code: "CSS Code / Annex 13",
       detail: "Cargo Stowage and Securing; Cargo Securing Manual (SOLAS VI/5, VII/5)",
     },
     rules: [
       {
-        subtitle: "Bağlama Hesabı Esasları",
+        subtitle: "Principles of Lashing Calculations",
         content: [
-          "İvme katsayıları (boyuna, enine, düşey) gemi boyu ve servis hızına göre Annex 13 tablolarından seçilir.",
-          "MSL (Maximum Securing Load) ve sürtünme katsayıları (çelik/çelik ≈ 0.10, çelik/ahşap ≈ 0.30) hesaba katılır.",
-          "Onaylı Cargo Securing Manual'daki yöntem ve ekipman kullanılmalıdır.",
+          "The acceleration factors (longitudinal, transverse, vertical) are selected from the Annex 13 tables according to the ship's length and service speed.",
+          "The MSL (Maximum Securing Load) and the friction coefficients (steel/steel ≈ 0.10, steel/timber ≈ 0.30) are taken into account.",
+          "The methods and equipment set out in the approved Cargo Securing Manual must be used.",
         ],
       },
       {
-        subtitle: "VGM ve Konteyner Yükleri",
+        subtitle: "VGM and Container Cargoes",
         content: [
-          "VGM (Verified Gross Mass) konteyner yüklemelerinde zorunludur (SOLAS VI/2).",
-          "İstif planı stack weight ve lashing limitlerini aşmamalıdır.",
-          "Stability booklet limitleri ve görüş hattı (SOLAS V/22) korunmalıdır.",
+          "The VGM (Verified Gross Mass) is mandatory for container shipments (SOLAS VI/2).",
+          "The stowage plan must not exceed the stack weight and lashing limits.",
+          "The stability booklet limits and the line of sight requirements (SOLAS V/22) must be maintained.",
         ],
       },
     ],
@@ -124,37 +124,37 @@ export const cargoRules: RuleGroup[] = [
     },
     rules: [
       {
-        subtitle: "Arayüz ve Güvenlik Kontrolleri",
+        subtitle: "Ship/Shore Interface and Safety Checks",
         content: [
-          "Ship/Shore Safety Checklist yükleme/boşaltma öncesi tamamlanmalıdır.",
-          "Gaz ölçümleri manifold açılmadan önce yapılmalıdır.",
-          "Sıcak iş izinleri terminal koordinasyonuyla verilmelidir.",
-          "Emergency Shutdown (ESD) prosedürleri hazır olmalıdır.",
+          "The Ship/Shore Safety Checklist must be completed before loading/discharging.",
+          "Gas measurements must be taken before the manifold is opened.",
+          "Hot work permits must be issued in coordination with the terminal.",
+          "The Emergency Shutdown (ESD) procedures must be ready.",
         ],
       },
       {
-        subtitle: "Statik Elektrik ve Inert Gaz",
+        subtitle: "Static Electricity and Inert Gas",
         content: [
-          "Inert gaz sistemi ile tank atmosferi O₂ ≤ %8 (hacim) tutulmalıdır.",
-          "Statik birikim riski için yükleme başlangıcında düşük debi (initial loading rate) uygulanır.",
-          "Bonding/earthing ve splash-filling önleme kuralları gözetilir.",
+          "The tank atmosphere must be kept at O₂ ≤ 8% by volume with the inert gas system.",
+          "A low initial loading rate is used at the start of loading because of the static accumulation risk.",
+          "The bonding/earthing rules and the prevention of splash filling must be observed.",
         ],
       },
     ],
   },
   {
-    title: "Yük Artıkları — MARPOL",
+    title: "Cargo Residues — MARPOL",
     source: {
       code: "MARPOL Annex I / II / V",
-      detail: "Yağ, zararlı sıvı madde ve katı atık deşarj kuralları",
+      detail: "Discharge rules for oil, noxious liquid substances and solid waste",
     },
     rules: [
       {
-        subtitle: "Deşarj ve Kayıt",
+        subtitle: "Discharge and Record Keeping",
         content: [
-          "Yağlı yük artıkları (Annex I) ve NLS artıkları (Annex II) deşarj kriterlerine uyulmalıdır.",
-          "Cargo Record Book / Oil Record Book Part II kayıtları tutulmalıdır.",
-          "Katı yük artıkları (Annex V) için Garbage Record Book ve uygun bertaraf gereklidir.",
+          "The discharge criteria for oily cargo residues (Annex I) and NLS residues (Annex II) must be complied with.",
+          "The Cargo Record Book / Oil Record Book Part II entries must be maintained.",
+          "A Garbage Record Book and proper disposal are required for solid cargo residues (Annex V).",
         ],
       },
     ],

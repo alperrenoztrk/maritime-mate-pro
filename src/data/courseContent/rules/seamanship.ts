@@ -1,143 +1,143 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Gemicilik kuralları.
+ * Seamanship rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
- *  - COLREG 1972 Kısım B (Manevra Kuralları) ve Kısım C/D (Fenerler, İşaretler)
- *  - Demirleme ve bağlama (good seamanship, OCIMF MEG4)
- *  - ISM Code (Güvenli İşletim Yönetimi)
- *  - ISPS Code (Gemi ve Liman Güvenliği)
- *  - Liman ve terminal talimatları, VTS
+ * The content is taken from real, cited regulations:
+ *  - COLREG 1972 Part B (steering and sailing rules) and Parts C/D (lights, shapes)
+ *  - Anchoring and mooring (good seamanship, OCIMF MEG4)
+ *  - ISM Code (safety management)
+ *  - ISPS Code (ship and port facility security)
+ *  - Port and terminal instructions, VTS
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const seamanshipRules: RuleGroup[] = [
   {
-    title: "COLREG Kısım B — Manevra Kuralları",
+    title: "COLREG Part B — Steering and Sailing Rules",
     source: {
       code: "COLREG 1972",
-      detail: "Kısım B — Steering and Sailing Rules",
+      detail: "Part B — Steering and Sailing Rules",
     },
     rules: [
       {
-        subtitle: "Her Türlü Görüş Koşulunda (Kural 4-10)",
+        subtitle: "In Any Condition of Visibility (Rules 4-10)",
         content: [
-          "Kural 5: Her zaman uygun gözcülük yapılmalıdır.",
-          "Kural 6: Güvenli hız ile seyredilmelidir.",
-          "Kural 7: Çatışma riski doğru değerlendirilmelidir (şüphe varsa risk var sayılır).",
-          "Kural 8: Çatışmadan kaçınma eylemi zamanında, belirgin ve yeterli olmalıdır.",
-          "Kural 9-10: Dar kanallar ve trafik ayrım düzenleri (TSS) kurallarına uyulmalıdır.",
+          "Rule 5: a proper look-out must be maintained at all times.",
+          "Rule 6: the vessel must proceed at a safe speed.",
+          "Rule 7: the risk of collision must be properly assessed (if in doubt, such risk is deemed to exist).",
+          "Rule 8: action to avoid collision must be timely, apparent and substantial.",
+          "Rules 9-10: the rules for narrow channels and traffic separation schemes (TSS) must be observed.",
         ],
       },
       {
-        subtitle: "Birbirini Gören Tekneler (Kural 11-18)",
+        subtitle: "Vessels in Sight of One Another (Rules 11-18)",
         content: [
-          "Kural 13: Yetişen tekne (overtaking) yol verir.",
-          "Kural 14: Pruva pruvaya (head-on) durumda her iki tekne sancağa alır.",
-          "Kural 15: Aykırı geçişte (crossing) sancağında tekne olan yol verir (give-way).",
-          "Kural 16-17: Give-way ve stand-on tekne yükümlülükleri net uygulanmalıdır.",
+          "Rule 13: the overtaking vessel keeps out of the way.",
+          "Rule 14: in a head-on situation both vessels alter course to starboard.",
+          "Rule 15: in a crossing situation the vessel which has the other on her starboard side gives way.",
+          "Rules 16-17: the obligations of the give-way and stand-on vessels must be applied clearly.",
         ],
       },
     ],
   },
   {
-    title: "COLREG Kısım C/D — Fenerler, Şekiller, Sesli İşaretler",
+    title: "COLREG Parts C/D — Lights, Shapes and Sound Signals",
     source: {
       code: "COLREG 1972",
-      detail: "Kısım C (Lights & Shapes), Kısım D (Sound & Light Signals)",
+      detail: "Part C (Lights and Shapes), Part D (Sound and Light Signals)",
     },
     rules: [
       {
-        subtitle: "Fenerler ve İşaretler",
+        subtitle: "Lights and Shapes",
         content: [
-          "Seyir fenerleri görünürlük menzilleri ve sektörleri (Kural 21-22) sağlanmalıdır.",
-          "Manevra kısıtlı/kumandadan aciz tekne işaretleri (Kural 27) doğru gösterilmelidir.",
-          "Gündüz şekilleri (ball, cone, cylinder, diamond) uygun kullanılmalıdır.",
+          "The visibility ranges and sectors of the navigation lights (Rules 21-22) must be complied with.",
+          "The signals for vessels restricted in their ability to manoeuvre and not under command (Rule 27) must be displayed correctly.",
+          "The day shapes (ball, cone, cylinder, diamond) must be used appropriately.",
         ],
       },
       {
-        subtitle: "Sesli ve Işıklı İşaretler",
+        subtitle: "Sound and Light Signals",
         content: [
-          "Manevra/uyarı işaretleri (Kural 34): bir kısa = sancak, iki kısa = iskele, beş kısa = şüphe/uyarı.",
-          "Kısıtlı görüşte ses işaretleri (Kural 35) düzenli verilmelidir.",
+          "Manoeuvring and warning signals (Rule 34): one short blast = altering to starboard, two short = altering to port, five short = doubt/warning.",
+          "Sound signals in restricted visibility (Rule 35) must be given at regular intervals.",
         ],
       },
     ],
   },
   {
-    title: "Demirleme ve Bağlama — İyi Gemicilik",
+    title: "Anchoring and Mooring — Good Seamanship",
     source: {
       code: "OCIMF MEG4 / Good Seamanship",
-      detail: "Mooring Equipment Guidelines; demir/bağlama uygulamaları",
+      detail: "Mooring Equipment Guidelines; anchoring and mooring practice",
     },
     rules: [
       {
         subtitle: "Demirleme",
         content: [
-          "Demir kaloması genelde su derinliğinin 5–7 katı kadar verilir (hava/akıntıya göre artırılır).",
-          "Demir tarama (dragging) izlenmeli; alarm verildiğinde önlem alınmalıdır.",
-          "Swing dairesi ve trafiğe göre uygun demir sahası seçilmelidir.",
+          "The anchor cable is normally veered to 5–7 times the water depth (increased for weather and current).",
+          "Anchor dragging must be monitored and action taken when the alarm is raised.",
+          "A suitable anchorage must be selected taking the swinging circle and the traffic into account.",
         ],
       },
       {
-        subtitle: "Bağlama (Mooring)",
+        subtitle: "Mooring",
         content: [
-          "MBL/SWL ve line management plan (MEG4) doğrultusunda halat seçimi yapılmalıdır.",
-          "Snap-back zone'lar işaretlenmeli, personel bu bölgelerden uzak tutulmalıdır.",
-          "Mixed mooring (farklı elastiklikte halat birlikte) önlenmelidir.",
+          "Lines must be selected in accordance with the MBL/SWL and the line management plan (MEG4).",
+          "Snap-back zones must be marked and personnel kept clear of them.",
+          "Mixed mooring (lines of different elasticity used together) must be avoided.",
         ],
       },
     ],
   },
   {
-    title: "ISM Kodu — Güvenli İşletim",
+    title: "ISM Code — Safe Operation",
     source: {
       code: "ISM Code",
       detail: "International Safety Management Code",
     },
     rules: [
       {
-        subtitle: "Güvenli İşletim Yönetimi",
+        subtitle: "Safe Operation Management",
         content: [
-          "Safety Management System (SMS) ve operasyonel prosedürler uygulanmalıdır.",
-          "Operasyon öncesi risk değerlendirmesi ve permit-to-work zorunludur.",
-          "Near-miss raporlama ve iç denetimler düzenli yapılmalıdır.",
+          "The Safety Management System (SMS) and the operational procedures must be implemented.",
+          "A pre-operation risk assessment and a permit to work are mandatory.",
+          "Near miss reporting and internal audits must be carried out regularly.",
         ],
       },
     ],
   },
   {
-    title: "ISPS Kodu",
+    title: "ISPS Code",
     source: {
       code: "ISPS Code",
       detail: "International Ship and Port Facility Security Code",
     },
     rules: [
       {
-        subtitle: "Gemi Güvenliği Gereklilikleri",
+        subtitle: "Ship Security Requirements",
         content: [
-          "Güvenlik seviyeleri (1, 2, 3) takip edilmelidir.",
-          "Ship Security Plan (SSP) ve güverte erişim kontrolleri uygulanmalıdır.",
-          "Declaration of Security (DOS) gerektiğinde düzenlenmelidir.",
+          "The security levels (1, 2, 3) must be monitored.",
+          "The Ship Security Plan (SSP) and deck access controls must be implemented.",
+          "A Declaration of Security (DOS) must be completed when required.",
         ],
       },
     ],
   },
   {
-    title: "Liman, VTS ve Pilotaj",
+    title: "Port, VTS and Pilotage",
     source: {
       code: "SOLAS V/11-12; IMO VTS Guidelines",
-      detail: "Res. A.857(20); liman/terminal yönetmelikleri",
+      detail: "Res. A.857(20); port and terminal regulations",
     },
     rules: [
       {
-        subtitle: "Liman Operasyonları ve Raporlama",
+        subtitle: "Port Operations and Reporting",
         content: [
-          "Port Information Book ve yerel kurallar kontrol edilmelidir.",
-          "Pilotaj ve römorkaj gereklilikleri uygulanmalı; pilot/master exchange yapılmalıdır.",
-          "VTS raporlama gereklilikleri (giriş/çıkış, pozisyon) yerine getirilmelidir.",
-          "Çevresel kısıtlamalar (deşarj, balast) dikkate alınmalıdır.",
+          "The Port Information Book and the local regulations must be checked.",
+          "The pilotage and towage requirements must be complied with and a pilot/master exchange carried out.",
+          "The VTS reporting requirements (entry/exit, position) must be fulfilled.",
+          "Environmental restrictions (discharges, ballast) must be taken into account.",
         ],
       },
     ],

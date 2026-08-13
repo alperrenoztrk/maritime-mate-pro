@@ -75,8 +75,8 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
       { subtitle: "Yakıt Tankları", content: ["Çift cidarlı yakıt tankı: 600 DWT üzeri gemilerde zorunlu (MARPOL Annex I)", "Quick-closing valve: tüm yakıt tanklarında zorunlu", "Taşma alarmı ve yüksek seviye alarmı gereklidir"] },
     ]},
     { title: "Yağlama ve Soğutma Sistemleri", source: { code: "Klas Kuralları / Üretici", detail: "LO ve soğutma devresi" }, rules: [
-      { subtitle: "Yağlama Sistemi", content: ["LO basıncı düşük basınç alarmı ve otomatik durdurma ile korunmalıdır", "LO filtre basınç farkı izlenmeli, by-pass durumunda alarm verilmelidir"] },
-      { subtitle: "Soğutma Sistemi", content: ["Merkezi soğutma (HT/LT) devrelerinde sıcaklık ve basınç izlenir", "Deniz suyu sistemi anti-fouling/anodik koruma ile bakımlı tutulur"] },
+      { subtitle: "Lubrication System", content: ["LO basıncı düşük basınç alarmı ve otomatik durdurma ile korunmalıdır", "LO filtre basınç farkı izlenmeli, by-pass durumunda alarm verilmelidir"] },
+      { subtitle: "Cooling System", content: ["Merkezi soğutma (HT/LT) devrelerinde sıcaklık ve basınç izlenir", "Deniz suyu sistemi anti-fouling/anodik koruma ile bakımlı tutulur"] },
     ]},
     { title: "Dümen Donanımı", source: { code: "SOLAS II-1/Reg.29", detail: "Steering gear yedeklilik" }, rules: [
       { subtitle: "Yedeklilik ve Performans", content: ["Ana dümen donanımı dümeni 35°–35° (karşı) 28 sn'de basabilmelidir", "Yardımcı dümen donanımı veya iki bağımsız güç ünitesi bulunmalıdır"] },
@@ -93,7 +93,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
       { subtitle: "Hava Kompresörü", content: ["Marş havası tankları toplam 12 ardışık marş kapasiteli olmalıdır", "Emniyet valfi, drenaj ve aşırı sıcaklık koruması bulunmalıdır"] },
     ]},
     { title: "Tatlı Su ve Hidrofor", source: { code: "Klas / Sağlık Yönetmelikleri", detail: "İçme suyu ve evaporatör" }, rules: [
-      { subtitle: "Tatlı Su Üreteci", content: ["Limanlara/kıyıya yakın bölgelerde (genelde < 12 nm) evaporatör çalıştırılmamalıdır", "Üretilen su mineralizasyon/dezenfeksiyon (UV veya klorlama) ile içilebilir hale getirilir"] },
+      { subtitle: "Fresh Water Generator", content: ["Limanlara/kıyıya yakın bölgelerde (genelde < 12 nm) evaporatör çalıştırılmamalıdır", "Üretilen su mineralizasyon/dezenfeksiyon (UV veya klorlama) ile içilebilir hale getirilir"] },
       { subtitle: "Hidrofor Sistemi", content: ["İçme suyu tankları kapalı ve kontamine olmayacak şekilde havalandırılmalıdır", "Periyodik su analizi (mikrobiyolojik) yapılmalıdır"] },
     ]},
   ],

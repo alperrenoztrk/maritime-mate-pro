@@ -7,19 +7,19 @@ const meteorologyRules = [
     title: "SOLAS V/34 - Voyage Planning",
     icon: FileText,
     rules: [
-      "Seyir planı hazırlanırken güncel meteorolojik veri kullanılmalıdır.",
-      "Hava tahminleri ve routing önerileri dikkate alınmalıdır.",
-      "Şiddetli hava koşulları için alternatif rotalar planlanmalıdır.",
-      "Meteorolojik veriler ve tahminler voyage plan dosyasında saklanmalıdır."
+      "Current meteorological data must be used when preparing the passage plan.",
+      "Weather forecasts and routeing recommendations must be taken into account.",
+      "Alternative routes must be planned for severe weather conditions.",
+      "Meteorological data and forecasts must be kept in the voyage plan file."
     ]
   },
   {
     title: "IMO Weather Routing Guidelines",
     icon: CloudSun,
     rules: [
-      "Şiddetli hava beklenen rotalarda kaçınma planı şarttır.",
-      "Weather routing servisleri kullanılmalıdır.",
-      "Rota seçiminde yük güvenliği ve yakıt ekonomisi dengelenmelidir.",
+      "An avoidance plan is essential on routes where severe weather is expected.",
+      "Weather routeing services should be used.",
+      "Cargo safety and fuel economy must be balanced when selecting the route.",
       "500 nm kuralı: Tropik siklon 500 nm içindeyse rota değişikliği değerlendirilmelidir."
     ]
   },
@@ -27,9 +27,9 @@ const meteorologyRules = [
     title: "STCW VIII/2 - Watchkeeping",
     icon: Shield,
     rules: [
-      "Köprüüstü vardiya zabitleri meteorolojik veriyi sürekli değerlendirmelidir.",
-      "Hava değişiklikleri vardiya defterine kaydedilmelidir.",
-      "Kaptana hava koşulları hakkında düzenli bilgi verilmelidir.",
+      "Bridge watchkeeping officers must continuously assess the meteorological data.",
+      "Changes in the weather must be recorded in the deck log book.",
+      "The master must be kept regularly informed of the weather conditions.",
       "Görüş mesafesi azaldığında uygun önlemler alınmalıdır."
     ]
   },

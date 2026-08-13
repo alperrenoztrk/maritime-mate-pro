@@ -58,7 +58,7 @@ export default function StabilityGZIMO() {
 
   const complianceText = useMemo(() => {
     if (!imo) return '';
-    return imo.compliance ? 'Uygun' : 'not suitable';
+    return imo.compliance ? 'Compliant' : 'not suitable';
   }, [imo]);
 
   const chartData = useMemo(() => {

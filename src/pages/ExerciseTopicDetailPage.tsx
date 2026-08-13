@@ -36,7 +36,7 @@ export default function ExerciseTopicDetailPage() {
     return (
       <MobileLayout>
         <div className="flex min-h-[60svh] items-center justify-center">
-          <p className="text-muted-foreground">Konu bulunamadı</p>
+          <p className="text-muted-foreground">Topic not found</p>
         </div>
       </MobileLayout>
     );

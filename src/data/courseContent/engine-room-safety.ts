@@ -2,190 +2,190 @@ import { ShieldAlert } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Makine Dairesi Güvenliği — tek kaynak ders içeriği.
- * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
- * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ * Engine Room Safety — single source course content.
+ * Formulas and calculators are merged into a SINGLE list; entries carrying
+ * `calculate` appear on both the Formulas and the Calculations page.
  */
 export const engineRoomSafety: CourseTopic = {
   key: "engine-room-safety",
-  title: "Makine Dairesi Güvenliği",
+  title: "Engine Room Safety",
   icon: ShieldAlert,
   accent: "from-rose-500 via-red-500 to-orange-500",
   group: "machine",
   intro:
-    "Yangın ve patlama riski, sabit CO₂ söndürme, havalandırma ve kapalı alan " +
-    "girişi güvenliği. Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+    "Fire and explosion risk, fixed CO₂ extinguishing, ventilation and enclosed space " +
+    "entry safety. Each formula is followed by the calculator that uses the same formula.",
   entries: [
     {
       id: "fire-triangle",
-      name: "Yangın Üçgeni",
-      group: "Yangın Güvenliği",
-      formula: "Yakıt + Oksijen + Isı = Yangın",
+      name: "Fire Triangle",
+      group: "Fire Safety",
+      formula: "Fuel + Oxygen + Heat = Fire",
       variables: [
-        { symbol: "Yakıt", label: "Yanıcı madde" },
-        { symbol: "Oksijen", label: "Yükseltgen (hava)" },
-        { symbol: "Isı", label: "Tutuşma enerjisi" },
+        { symbol: "Fuel", label: "Combustible material" },
+        { symbol: "Oksijen", label: "Oxidiser (air)" },
+        { symbol: "Heat", label: "Ignition energy" },
       ],
-      source: { code: "Yangın üçgeni — yanma prensibi", detail: "Bir elemanın kaldırılması yangını söndürür" },
-      note: "Üç elemanın varlığı 1 (var) / 0 (yok) olarak girilir; oksijen ortam yüzdesi alınır. Üçü birden mevcutsa yangın riski oluşur.",
+      source: { code: "Fire triangle — principle of combustion", detail: "Removing one element extinguishes the fire" },
+      note: "The presence of each element is entered as 1 (present) / 0 (absent); the oxygen is taken as the ambient percentage. Fire risk exists when all three are present.",
       inputs: [
-        { key: "fuel", label: "Yanıcı Madde (1=var, 0=yok)", unit: "", placeholder: "1" },
-        { key: "o2", label: "Oksijen Oranı", unit: "%", placeholder: "20.9" },
-        { key: "heat", label: "Tutuşma Kaynağı (1=var, 0=yok)", unit: "", placeholder: "1" },
+        { key: "fuel", label: "Combustible Material (1 = present, 0 = absent)", unit: "", placeholder: "1" },
+        { key: "o2", label: "Oxygen Content", unit: "%", placeholder: "20.9" },
+        { key: "heat", label: "Ignition Source (1 = present, 0 = absent)", unit: "", placeholder: "1" },
       ],
       calculate: (v) => {
         const fuelOk = v.fuel >= 1;
-        const oxyOk = v.o2 >= 15; // ~%15 altında çoğu yanma sürmez
+        const oxyOk = v.o2 >= 15; // below ~15% most combustion cannot be sustained
         const heatOk = v.heat >= 1;
         const risk = fuelOk && oxyOk && heatOk;
-        const present = [fuelOk && "Yakıt", oxyOk && "Oksijen", heatOk && "Isı"].filter(Boolean).join(" + ") || "—";
+        const present = [fuelOk && "Fuel", oxyOk && "Oksijen", heatOk && "Heat"].filter(Boolean).join(" + ") || "—";
         return [
-          { label: "Mevcut Elemanlar", value: present },
-          { label: "Yangın Riski", value: risk ? "VAR (üçgen tamam)" : "Yok (eleman eksik)" },
+          { label: "Elements Present", value: present },
+          { label: "Fire Risk", value: risk ? "PRESENT (triangle complete)" : "Absent (an element is missing)" },
         ];
       },
     },
     {
       id: "co2-quantity",
-      name: "CO₂ Miktarı (Hacme Göre)",
-      group: "Yangın Güvenliği",
+      name: "CO₂ Quantity (by Volume)",
+      group: "Fire Safety",
       formula: "mCO₂ = (Vhacim × %40) / 0,56 m³/kg",
       variables: [
-        { symbol: "Vhacim", label: "Korunan hacim", unit: "m³" },
-        { symbol: "%40", label: "Minimum serbest CO₂ hacim oranı", unit: "—" },
-        { symbol: "0,56", label: "CO₂ özgül hacmi", unit: "m³/kg" },
-        { symbol: "mCO₂", label: "Gerekli CO₂ kütlesi", unit: "kg" },
+        { symbol: "Vhacim", label: "Protected volume", unit: "m³" },
+        { symbol: "%40", label: "Minimum free CO₂ volume ratio", unit: "—" },
+        { symbol: "0,56", label: "CO₂ specific volume", unit: "m³/kg" },
+        { symbol: "mCO₂", label: "Required CO₂ mass", unit: "kg" },
       ],
-      source: { code: "Sabit CO₂ söndürme sistemi (SOLAS Ch. II-2 / FSS Code)" },
-      note: "Makine dairesi için serbest CO₂ hacmi ≥ brüt hacmin %40'ı; CO₂ özgül hacmi 0,56 m³/kg. Standart tüp kapasitesi 45 kg alınır; tüp sayısı yukarı yuvarlanır.",
+      source: { code: "Fixed CO₂ extinguishing system (SOLAS Ch. II-2 / FSS Code)" },
+      note: "For machinery spaces the free CO₂ volume must be ≥ 40% of the gross volume; the CO₂ specific volume is 0.56 m³/kg. A standard cylinder capacity of 45 kg is assumed and the number of cylinders is rounded up.",
       inputs: [
-        { key: "vol", label: "Korunan Hacim", unit: "m³", placeholder: "2000" },
-        { key: "ratio", label: "Serbest CO₂ Hacim Oranı", unit: "%", placeholder: "40" },
+        { key: "vol", label: "Protected Volume", unit: "m³", placeholder: "2000" },
+        { key: "ratio", label: "Free CO₂ Volume Ratio", unit: "%", placeholder: "40" },
       ],
       calculate: (v) => {
         const mass = (v.vol * (v.ratio / 100)) / 0.56;
-        const bottles = Math.ceil(mass / 45); // 45 kg standart tüp
+        const bottles = Math.ceil(mass / 45); // standard 45 kg cylinder
         return [
-          { label: "Gerekli CO₂ Miktarı", value: `${mass.toFixed(0)} kg` },
-          { label: "Gerekli Tüp Sayısı (45 kg)", value: `${bottles} adet` },
+          { label: "Required CO₂ Quantity", value: `${mass.toFixed(0)} kg` },
+          { label: "Required Number of Cylinders (45 kg)", value: `${bottles} cylinders` },
         ];
       },
     },
     {
       id: "foam-quantity",
-      name: "Köpük Miktarı",
-      group: "Yangın Güvenliği",
-      formula: "Vköpük = A × t × applicationrate",
+      name: "Foam Quantity",
+      group: "Fire Safety",
+      formula: "V_foam = A × t × application rate",
       variables: [
-        { symbol: "A", label: "Korunan alan", unit: "m²" },
-        { symbol: "t", label: "Uygulama süresi", unit: "dk" },
-        { symbol: "applicationrate", label: "Uygulama debisi", unit: "L/m²·dk" },
+        { symbol: "A", label: "Protected area", unit: "m²" },
+        { symbol: "t", label: "Application time", unit: "dk" },
+        { symbol: "applicationrate", label: "Application rate", unit: "L/m²·dk" },
       ],
-      source: { code: "Sabit köpük söndürme sistemi tasarımı (SOLAS / FSS Code)" },
-      note: "Köpük solüsyonu hacmi = alan × süre × uygulama debisi (L olarak verilir; ÷1000 = m³).",
+      source: { code: "Fixed foam extinguishing system design (SOLAS / FSS Code)" },
+      note: "Foam solution volume = area × time × application rate (given in L; ÷1000 = m³).",
       inputs: [
-        { key: "a", label: "Korunan Alan (A)", unit: "m²", placeholder: "300" },
-        { key: "t", label: "Uygulama Süresi (t)", unit: "dk", placeholder: "5" },
-        { key: "rate", label: "Uygulama Debisi", unit: "L/m²·dk", placeholder: "6.5" },
+        { key: "a", label: "Protected Area (A)", unit: "m²", placeholder: "300" },
+        { key: "t", label: "Application Time (t)", unit: "dk", placeholder: "5" },
+        { key: "rate", label: "Application Rate", unit: "L/m²·dk", placeholder: "6.5" },
       ],
       calculate: (v) => {
         const vol = v.a * v.t * v.rate;
         return [
-          { label: "Köpük Solüsyonu", value: `${vol.toFixed(0)} L` },
-          { label: "Köpük Solüsyonu", value: `${(vol / 1000).toFixed(2)} m³` },
+          { label: "Foam Solution", value: `${vol.toFixed(0)} L` },
+          { label: "Foam Solution", value: `${(vol / 1000).toFixed(2)} m³` },
         ];
       },
     },
     {
       id: "engine-room-ventilation",
-      name: "Havalandırma Debisi",
-      group: "Yangın Güvenliği",
-      formula: "Q̇hava = Pmotor × 2,5 ; Hava Değişimi = Q̇hava / Vhacim",
+      name: "Ventilation Flow Rate",
+      group: "Fire Safety",
+      formula: "Q̇_air = P_engine × 2.5 ; Air changes = Q̇_air / V_space",
       variables: [
-        { symbol: "Pmotor", label: "Motor toplam gücü", unit: "kW" },
-        { symbol: "Vhacim", label: "Makine dairesi hacmi", unit: "m³" },
-        { symbol: "Q̇hava", label: "Yanma havası ihtiyacı", unit: "m³/saat" },
+        { symbol: "Pmotor", label: "Total engine power", unit: "kW" },
+        { symbol: "Vhacim", label: "Machinery space volume", unit: "m³" },
+        { symbol: "Q̇_air", label: "Combustion air requirement", unit: "m³/h" },
       ],
-      source: { code: "Makine dairesi havalandırma — yanma havası gereksinimi", detail: "Yaklaşık ~2,5 m³/kW·saat hava ihtiyacı" },
-      note: "Hesap yaklaşıktır; üretici/klas kuralları esas alınmalıdır.",
+      source: { code: "Engine room ventilation — combustion air requirement", detail: "Approximately ~2.5 m³/kW·hour of air required" },
+      note: "The calculation is approximate; the manufacturer's and class rules govern.",
       inputs: [
-        { key: "p", label: "Motor Toplam Gücü", unit: "kW", placeholder: "15000" },
-        { key: "vol", label: "Makine Dairesi Hacmi", unit: "m³", placeholder: "2500" },
+        { key: "p", label: "Total Engine Power", unit: "kW", placeholder: "15000" },
+        { key: "vol", label: "Machinery Space Volume", unit: "m³", placeholder: "2500" },
       ],
       calculate: (v) => {
-        // Yaklaşık: motor başına ~2.5 m³/kW·h hava gereksinimi
+        // Approximately ~2.5 m³/kW·h of air required per engine
         const airForCombustion = v.p * 2.5; // m³/saat
         const ventChanges = airForCombustion / v.vol;
         return [
-          { label: "Yanma Havası İhtiyacı", value: `${airForCombustion.toFixed(0)} m³/saat` },
-          { label: "Hava Değişim Sayısı", value: `${ventChanges.toFixed(1)} /saat` },
+          { label: "Combustion Air Requirement", value: `${airForCombustion.toFixed(0)} m³/h` },
+          { label: "Air Change Rate", value: `${ventChanges.toFixed(1)} /h` },
         ];
       },
     },
     {
       id: "lel-uel",
-      name: "LEL / UEL (Patlama Aralığı)",
-      group: "Patlama Riski",
+      name: "LEL / UEL (Explosive Range)",
+      group: "Explosion Risk",
       formula: "LEL < konsantrasyon < UEL",
       variables: [
-        { symbol: "LEL", label: "Alt patlama sınırı (yakıt buharı ~%1)", unit: "% hacim" },
-        { symbol: "UEL", label: "Üst patlama sınırı (yakıt buharı ~%6)", unit: "% hacim" },
+        { symbol: "LEL", label: "Lower explosive limit (fuel vapour ~1%)", unit: "% by volume" },
+        { symbol: "UEL", label: "Upper explosive limit (fuel vapour ~6%)", unit: "% by volume" },
       ],
-      source: { code: "Patlama sınırları (LEL/UEL) — yanıcı buhar konsantrasyonu" },
-      note: "Ölçülen buhar konsantrasyonu LEL ile UEL arasında ise patlayıcı (tehlikeli) karışım vardır.",
+      source: { code: "Explosive limits (LEL/UEL) — flammable vapour concentration" },
+      note: "If the measured vapour concentration lies between the LEL and the UEL, the mixture is explosive (dangerous).",
       inputs: [
-        { key: "conc", label: "Ölçülen Konsantrasyon", unit: "% hacim", placeholder: "3" },
-        { key: "lel", label: "Alt Patlama Sınırı (LEL)", unit: "% hacim", placeholder: "1" },
-        { key: "uel", label: "Üst Patlama Sınırı (UEL)", unit: "% hacim", placeholder: "6" },
+        { key: "conc", label: "Measured Concentration", unit: "% by volume", placeholder: "3" },
+        { key: "lel", label: "Lower Explosive Limit (LEL)", unit: "% by volume", placeholder: "1" },
+        { key: "uel", label: "Upper Explosive Limit (UEL)", unit: "% by volume", placeholder: "6" },
       ],
       calculate: (v) => {
         let status: string;
-        if (v.conc < v.lel) status = "Fakir (LEL altı) — tutuşmaz";
-        else if (v.conc > v.uel) status = "Zengin (UEL üstü) — tutuşmaz";
-        else status = "PATLAYICI ARALIK — TEHLİKELİ";
+        if (v.conc < v.lel) status = "Too lean (below the LEL) — will not ignite";
+        else if (v.conc > v.uel) status = "Too rich (above the UEL) — will not ignite";
+        else status = "EXPLOSIVE RANGE — DANGEROUS";
         return [
-          { label: "Konsantrasyon", value: `${v.conc} % hacim` },
-          { label: "Değerlendirme", value: status },
+          { label: "Konsantrasyon", value: `${v.conc} % by volume` },
+          { label: "Assessment", value: status },
         ];
       },
     },
     {
       id: "flash-point",
-      name: "Parlama Noktası",
-      group: "Patlama Riski",
-      formula: "Tflash ≥ 60°C (SOLAS gereği yakıt)",
+      name: "Flash Point",
+      group: "Explosion Risk",
+      formula: "T_flash ≥ 60 °C (fuel required by SOLAS)",
       variables: [
-        { symbol: "Tflash", label: "Parlama noktası", unit: "°C" },
+        { symbol: "Tflash", label: "Flash point", unit: "°C" },
       ],
-      source: { code: "Yakıt parlama noktası gerekliliği (SOLAS II-2/Reg.4)", detail: "HFO: ~65°C, MGO: ~60°C (minimum gereksinim)" },
-      note: "Yakıt parlama noktası ≥ 60°C olmalıdır (acil jeneratör gibi istisnalar ≥ 43°C). Ölçülen değerin sınıra marjı hesaplanır.",
+      source: { code: "Fuel flash point requirement (SOLAS II-2/Reg.4)", detail: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
+      note: "The fuel flash point must be ≥ 60 °C (exceptions such as emergency generators ≥ 43 °C). The margin of the measured value to the limit is calculated.",
       inputs: [
-        { key: "tflash", label: "Ölçülen Parlama Noktası", unit: "°C", placeholder: "65" },
-        { key: "limit", label: "Gereken Minimum", unit: "°C", placeholder: "60" },
+        { key: "tflash", label: "Measured Flash Point", unit: "°C", placeholder: "65" },
+        { key: "limit", label: "Required Minimum", unit: "°C", placeholder: "60" },
       ],
       calculate: (v) => {
         const margin = v.tflash - v.limit;
         return [
-          { label: "Sınıra Marj", value: `${margin.toFixed(1)} °C` },
-          { label: "Uygunluk", value: margin >= 0 ? "UYGUN" : "UYGUNSUZ (sınır altı)" },
+          { label: "Margin to the Limit", value: `${margin.toFixed(1)} °C` },
+          { label: "Uygunluk", value: margin >= 0 ? "COMPLIANT" : "NON-COMPLIANT (below the limit)" },
         ];
       },
     },
     {
       id: "enclosed-space-oxygen",
-      name: "Kapalı Alan Oksijen / Gaz Kontrolü",
-      group: "Patlama Riski",
+      name: "Enclosed Space Oxygen / Gas Check",
+      group: "Explosion Risk",
       formula: "O₂ ≥ 20,9% ; H₂S < 10 ppm ; CO < 25 ppm ; LEL < %1",
       variables: [
-        { symbol: "O₂", label: "Oksijen oranı", unit: "%" },
-        { symbol: "H₂S", label: "Hidrojen sülfür", unit: "ppm" },
-        { symbol: "CO", label: "Karbon monoksit", unit: "ppm" },
-        { symbol: "LEL", label: "Alt patlama sınırı yüzdesi", unit: "%" },
+        { symbol: "O₂", label: "Oxygen content", unit: "%" },
+        { symbol: "H₂S", label: "Hydrogen sulphide", unit: "ppm" },
+        { symbol: "CO", label: "Carbon monoxide", unit: "ppm" },
+        { symbol: "LEL", label: "Percentage of the lower explosive limit", unit: "%" },
       ],
-      source: { code: "Kapalı alana giriş — atmosfer ölçüm limitleri (SOLAS / IMO Res.A.1050)" },
-      note: "Tüm limitler sağlanmadan kapalı alana giriş yapılmamalıdır.",
+      source: { code: "Enclosed space entry — atmosphere measurement limits (SOLAS / IMO Res.A.1050)" },
+      note: "Entry into an enclosed space must not be made unless all the limits are met.",
       inputs: [
-        { key: "o2", label: "Ölçülen O₂", unit: "%", placeholder: "20.8" },
+        { key: "o2", label: "Measured O₂", unit: "%", placeholder: "20.8" },
         { key: "h2s", label: "H₂S", unit: "ppm", placeholder: "0" },
         { key: "co", label: "CO", unit: "ppm", placeholder: "5" },
         { key: "lel", label: "LEL", unit: "%", placeholder: "0" },
@@ -197,11 +197,11 @@ export const engineRoomSafety: CourseTopic = {
         const lelOk = v.lel < 1;
         const safe = o2Ok && h2sOk && coOk && lelOk;
         return [
-          { label: "O₂ Durumu", value: `${v.o2}% → ${o2Ok ? "Uygun" : "YETERSİZ"}` },
-          { label: "H₂S Durumu", value: `${v.h2s} ppm → ${h2sOk ? "Uygun" : "TEHLİKELİ"}` },
-          { label: "CO Durumu", value: `${v.co} ppm → ${coOk ? "Uygun" : "TEHLİKELİ"}` },
-          { label: "LEL Durumu", value: `${v.lel}% → ${lelOk ? "Uygun" : "TEHLİKELİ"}` },
-          { label: "Genel Değerlendirme", value: safe ? "GİRİLEBİLİR" : "GİRİLEMEZ" },
+          { label: "O₂ Status", value: `${v.o2}% → ${o2Ok ? "Acceptable" : "INSUFFICIENT"}` },
+          { label: "H₂S Status", value: `${v.h2s} ppm → ${h2sOk ? "Acceptable" : "DANGEROUS"}` },
+          { label: "CO Status", value: `${v.co} ppm → ${coOk ? "Acceptable" : "DANGEROUS"}` },
+          { label: "LEL Status", value: `${v.lel}% → ${lelOk ? "Acceptable" : "DANGEROUS"}` },
+          { label: "Overall Assessment", value: safe ? "ENTRY PERMITTED" : "ENTRY NOT PERMITTED" },
         ];
       },
     },

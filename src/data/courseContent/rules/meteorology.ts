@@ -1,40 +1,40 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Meteoroloji kuralları.
+ * Meteorology rules.
  *
- * İçerik gerçek, kaynak gösterilmiş düzenlemelerden alınmıştır:
+ * The content is taken from real, cited regulations:
  *  - SOLAS V/34 (Voyage Planning) ve V/5 (Meteorological services)
  *  - IMO Weather Routing Guidelines
  *  - STCW VIII/2 (Watchkeeping)
  *  - WMO No.471 / GMDSS MSI (NAVTEX, SafetyNET)
- *  - Beaufort ölçeği ve tropik siklon kaçınma uygulamaları
+ *  - The Beaufort scale and tropical cyclone avoidance practice
  *
- * Uydurma kural yoktur; atıflar korunmuştur.
+ * No invented rules; the references have been preserved.
  */
 export const meteorologyRules: RuleGroup[] = [
   {
-    title: "SOLAS V — Seyir Planı ve Meteoroloji Servisleri",
+    title: "SOLAS V — Passage Planning and Meteorological Services",
     source: {
       code: "SOLAS V/34 & V/5",
       detail: "Voyage Planning; Meteorological services and warnings",
     },
     rules: [
       {
-        subtitle: "Seyir Planında Meteoroloji",
+        subtitle: "Meteorology in the Passage Plan",
         content: [
-          "Seyir planı hazırlanırken güncel meteorolojik veri kullanılmalıdır.",
-          "Hava tahminleri ve routing önerileri dikkate alınmalıdır.",
-          "Şiddetli hava koşulları için alternatif rotalar planlanmalıdır.",
-          "Meteorolojik veriler ve tahminler voyage plan dosyasında saklanmalıdır.",
+          "Current meteorological data must be used when preparing the passage plan.",
+          "Weather forecasts and routeing recommendations must be taken into account.",
+          "Alternative routes must be planned for severe weather conditions.",
+          "Meteorological data and forecasts must be kept in the voyage plan file.",
         ],
       },
       {
-        subtitle: "Gözlem ve Rapor Yükümlülüğü",
+        subtitle: "Observation and Reporting Obligations",
         content: [
-          "Tehlikeli hava (fırtına, buz, tropik siklon) ile karşılaşıldığında danger message yayımlanmalıdır (SOLAS V/31-32).",
-          "Gönüllü Gözlem Gemisi (VOS) kapsamında meteorolojik gözlemler iletilmelidir.",
-          "Barometre/barograf düzenli kalibre edilmeli, basınç eğilimi izlenmelidir.",
+          "A danger message must be broadcast when dangerous weather (storm, ice, tropical cyclone) is encountered (SOLAS V/31-32).",
+          "Meteorological observations must be transmitted under the Voluntary Observing Ship (VOS) scheme.",
+          "The barometer/barograph must be calibrated regularly and the pressure tendency monitored.",
         ],
       },
     ],
@@ -43,67 +43,67 @@ export const meteorologyRules: RuleGroup[] = [
     title: "IMO Weather Routing Guidelines",
     source: {
       code: "IMO Weather Routing Guidelines",
-      detail: "MSC/Circ. — hava rotalaması rehberi",
+      detail: "MSC/Circ. — weather routeing guidance",
     },
     rules: [
       {
-        subtitle: "Hava Rotalaması",
+        subtitle: "Weather Routeing",
         content: [
-          "Şiddetli hava beklenen rotalarda kaçınma planı şarttır.",
-          "Weather routing servisleri kullanılmalıdır.",
-          "Rota seçiminde yük güvenliği ve yakıt ekonomisi dengelenmelidir.",
+          "An avoidance plan is essential on routes where severe weather is expected.",
+          "Weather routeing services should be used.",
+          "Cargo safety and fuel economy must be balanced when selecting the route.",
         ],
       },
       {
-        subtitle: "Tropik Siklon Kaçınma",
+        subtitle: "Tropical Cyclone Avoidance",
         content: [
-          "1-2-3 Kuralı: 24/48/72 saatlik tahmin hatası payı (100/200/300 nm) eklenerek tehlike dairesi çizilir.",
-          "Tehlikeli yarı daire (dangerous semicircle) ve seyredilebilir yarı daire ayrımı yapılmalıdır.",
-          "Buys-Ballot yasası ile alçak basınç merkezinin yönü belirlenmelidir (kuzey yarıkürede rüzgâr sırtına alındığında merkez solda).",
+          "The 1-2-3 rule: the danger circle is drawn by adding the 24/48/72 hour forecast error margin (100/200/300 nm).",
+          "A distinction must be made between the dangerous semicircle and the navigable semicircle.",
+          "The direction of the low pressure centre is determined by Buys Ballot's law (in the northern hemisphere, with the wind at your back the centre lies to the left).",
         ],
       },
     ],
   },
   {
-    title: "STCW VIII/2 — Vardiya ve Hava Takibi",
+    title: "STCW VIII/2 — Watchkeeping and Weather Monitoring",
     source: {
       code: "STCW VIII/2",
       detail: "Watchkeeping principles",
     },
     rules: [
       {
-        subtitle: "Vardiya ve Meteoroloji Takibi",
+        subtitle: "Watchkeeping and Weather Monitoring",
         content: [
-          "Köprüüstü vardiya zabitleri meteorolojik veriyi sürekli değerlendirmelidir.",
-          "Hava değişiklikleri vardiya defterine kaydedilmelidir.",
-          "Kaptana hava koşulları hakkında düzenli bilgi verilmelidir.",
-          "Görüş mesafesi azaldığında uygun önlemler (hız, sis düdüğü, radar) alınmalıdır.",
+          "Bridge watchkeeping officers must continuously assess the meteorological data.",
+          "Changes in the weather must be recorded in the deck log book.",
+          "The master must be kept regularly informed of the weather conditions.",
+          "Appropriate measures (speed, fog signals, radar) must be taken when the visibility falls.",
         ],
       },
     ],
   },
   {
-    title: "MSI — NAVTEX, SafetyNET ve Uyarılar",
+    title: "MSI — NAVTEX, SafetyNET and Warnings",
     source: {
       code: "WMO No.471 / GMDSS MSI",
-      detail: "Maritime Safety Information; WMO denizcilik servisleri",
+      detail: "Maritime Safety Information; WMO marine services",
     },
     rules: [
       {
-        subtitle: "Meteorolojik Uyarı ve Bildirimler",
+        subtitle: "Meteorological Warnings and Notices",
         content: [
-          "NAVTEX (518 kHz) uyarıları takip edilmelidir.",
-          "Gale (≥ Bf 8), storm ve hurricane force uyarıları ciddiye alınmalıdır.",
-          "METAREA bültenleri ve Inmarsat SafetyNET yayınları kontrol edilmelidir.",
-          "Synoptic haritalar ve analiz/tahmin grafikleri yorumlanmalıdır.",
+          "NAVTEX (518 kHz) warnings must be monitored.",
+          "Gale (≥ Bf 8), storm and hurricane force warnings must be taken seriously.",
+          "METAREA bulletins and Inmarsat SafetyNET broadcasts must be checked.",
+          "Synoptic charts and analysis/forecast charts must be interpreted.",
         ],
       },
       {
-        subtitle: "Beaufort Ölçeği ve Deniz Durumu",
+        subtitle: "Beaufort Scale and Sea State",
         content: [
-          "Rüzgâr şiddeti Beaufort 0–12 ölçeğiyle, deniz durumu Douglas ölçeğiyle raporlanır.",
+          "The wind force is reported on the Beaufort scale 0–12 and the sea state on the Douglas scale.",
           "Bf 8 (gale) ≈ 34–40 knot; Bf 10 (storm) ≈ 48–55 knot.",
-          "Görüş kodları ve hava sembolleri standart WMO koduyla kaydedilir.",
+          "Visibility codes and weather symbols are recorded using the standard WMO code.",
         ],
       },
     ],

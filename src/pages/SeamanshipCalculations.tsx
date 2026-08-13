@@ -11,20 +11,20 @@ import { Anchor, Navigation2, Ship, Sigma, Wind, Link2 } from "lucide-react";
 
 const seamanshipItems: CalculationGridItem[] = [
   { id: "overview", title: "Gemicilik Paneli", icon: Navigation2, to: "/seamanship/calculations" },
-  { id: "mooring", title: "Palamar Çalışma Yükü", icon: Anchor, to: "/seamanship/calculations/mooring" },
-  { id: "wind", title: "Rüzgâr Kuvveti", icon: Wind, to: "/seamanship/calculations/wind" },
+  { id: "mooring", title: "Mooring Working Load", icon: Anchor, to: "/seamanship/calculations/mooring" },
+  { id: "wind", title: "Wind Force", icon: Wind, to: "/seamanship/calculations/wind" },
   { id: "catenary", title: "Katenary Hesabı", icon: Ship, to: "/seamanship/calculations/catenary" },
   { id: "anchor-holding", title: "Demir Tutma Kuvveti", icon: Anchor, to: "/seamanship/calculations/anchor-holding" },
-  { id: "bollard-pull", title: "Römorkör Bollard Pull", icon: Ship, to: "/seamanship/calculations/bollard-pull" },
+  { id: "bollard-pull", title: "Tug Bollard Pull", icon: Ship, to: "/seamanship/calculations/bollard-pull" },
   { id: "scope-ratio", title: "Scope Ratio", icon: Link2, to: "/seamanship/calculations/scope-ratio" },
 ];
 
 const sectionTitles: Record<string, string> = {
-  mooring: "Palamar Çalışma Yükü",
-  wind: "Rüzgâr Kuvveti",
+  mooring: "Mooring Working Load",
+  wind: "Wind Force",
   catenary: "Katenary Hesabı",
   "anchor-holding": "Demir Tutma Kuvveti",
-  "bollard-pull": "Römorkör Bollard Pull",
+  "bollard-pull": "Tug Bollard Pull",
   "scope-ratio": "Scope Ratio",
 };
 
@@ -172,11 +172,11 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
             </div>
             <div className="space-y-2">
               <Label>Cephe Alanı (m²)</Label>
-              <Input placeholder="Rüzgâra maruz alan" value={windInputs.area} onChange={(e) => setWindInputs({ ...windInputs, area: e.target.value })} />
+              <Input placeholder="Area exposed to the wind" value={windInputs.area} onChange={(e) => setWindInputs({ ...windInputs, area: e.target.value })} />
             </div>
             <div className="space-y-2">
               <Label>Rüzgâr Hızı (m/s)</Label>
-              <Input placeholder="Rüzgâr hızı" value={windInputs.velocity} onChange={(e) => setWindInputs({ ...windInputs, velocity: e.target.value })} />
+              <Input placeholder="Wind speed" value={windInputs.velocity} onChange={(e) => setWindInputs({ ...windInputs, velocity: e.target.value })} />
             </div>
             {calculateWindForce() && (
               <div className="bg-blue-50 rounded-lg p-4">
@@ -206,7 +206,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
             </div>
             <div className="space-y-2">
               <Label>Water Depth (m)</Label>
-              <Input placeholder="Derinlik" value={catenaryInputs.depth} onChange={(e) => setCatenaryInputs({ ...catenaryInputs, depth: e.target.value })} />
+              <Input placeholder="Depth" value={catenaryInputs.depth} onChange={(e) => setCatenaryInputs({ ...catenaryInputs, depth: e.target.value })} />
             </div>
             {calculateCatenaryLength() && (
               <div className="bg-blue-50 rounded-lg p-4">
@@ -229,7 +229,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label>Iron Weight (kg)</Label>
-            <Input placeholder="Demir ağırlığı" value={anchorInputs.weight} onChange={(e) => setAnchorInputs({ ...anchorInputs, weight: e.target.value })} />
+            <Input placeholder="Anchor weight" value={anchorInputs.weight} onChange={(e) => setAnchorInputs({ ...anchorInputs, weight: e.target.value })} />
           </div>
           <div className="space-y-2">
             <Label>Zemin Tipi</Label>
@@ -267,11 +267,11 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label>Deplasman (ton)</Label>
-              <Input placeholder="Gemi deplasmanı" value={bollardInputs.displacement} onChange={(e) => setBollardInputs({ ...bollardInputs, displacement: e.target.value })} />
+              <Input placeholder="Vessel displacement" value={bollardInputs.displacement} onChange={(e) => setBollardInputs({ ...bollardInputs, displacement: e.target.value })} />
             </div>
             <div className="space-y-2">
               <Label>Ship Speed (knots)</Label>
-              <Input placeholder="Hız" value={bollardInputs.speed} onChange={(e) => setBollardInputs({ ...bollardInputs, speed: e.target.value })} />
+              <Input placeholder="Speed" value={bollardInputs.speed} onChange={(e) => setBollardInputs({ ...bollardInputs, speed: e.target.value })} />
             </div>
             <div className="space-y-2">
               <Label>Admiralty Katsayısı (K)</Label>
@@ -301,7 +301,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
             </div>
             <div className="space-y-2">
               <Label>Water Depth (m)</Label>
-              <Input placeholder="Derinlik" value={scopeInputs.depth} onChange={(e) => setScopeInputs({ ...scopeInputs, depth: e.target.value })} />
+              <Input placeholder="Depth" value={scopeInputs.depth} onChange={(e) => setScopeInputs({ ...scopeInputs, depth: e.target.value })} />
             </div>
             {(() => {
               const result = calculateScopeRatio();

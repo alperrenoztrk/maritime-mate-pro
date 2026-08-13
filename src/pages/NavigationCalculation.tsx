@@ -135,30 +135,30 @@ type CalcId =
   | "emergency";
 
 const CALC_TITLES: Record<CalcId, string> = {
-  gc: "Büyük Daire (Great Circle)",
+  gc: "Great Circle",
   rhumb: "Rhumb Line (Mercator)",
   plane: "Plane Sailing",
   eta: "Temel Seyir (Zaman–Mesafe–Hız)",
   midlat: "Middle Latitude Sailing",
   chart: "Chart Ölçeği (cm ↔ NM)",
   position: "DR / Enlem–Boylam",
-  current: "Akıntı Üçgeni (CTS)",
-  compass: "Pusula Dönüşümleri",
+  current: "Current Triangle (CTS)",
+  compass: "Compass Conversions",
   cpa: "CPA / TCPA",
   radar: "Radar Plot (Hedef Rota/Hız)",
   colreg: "COLREG Durum & Manevra",
   sight: "Sight Reduction",
   astro: "Astronomik Seyir (Almanac + LOP)",
-  bearings: "Kerteriz Hesaplamaları",
+  bearings: "Bearing Calculations",
   fix: "Fixing Position",
-  distance: "Mesafe Hesaplamaları",
+  distance: "Distance Calculations",
   tides: "Gelgit + UKC",
   safety: "Seyir Emniyeti (Squat/UKC)",
   passage: "Passage Plan (Leg ETA)",
   ecdis: "ECDIS (XTD / Look-ahead)",
-  turning: "Dönüş Hesaplamaları",
+  turning: "Turning Calculations",
   weather: "Hava Durumu",
-  celestial: "Göksel Navigasyon",
+  celestial: "Celestial Navigation",
   emergency: "Acil Durum",
 };
 
@@ -3330,7 +3330,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-3">
             <div className="space-y-2">
-              <div className="font-semibold text-primary" data-translatable>Göksel Navigasyon Sonuçları:</div>
+              <div className="font-semibold text-primary" data-translatable>Celestial Navigation Sonuçları:</div>
               <div className="space-y-1 text-sm">
                 {celestialInputs.type === 'meridian' && celestialResults.latitudeDeg !== undefined && (
                   <div>
