@@ -15,27 +15,27 @@ import type { RuleGroup } from "@/data/courseContent/types";
  */
 export const safetyRules: RuleGroup[] = [
   {
-    title: "SOLAS Bölüm II-2 — Yangın Güvenliği",
+    title: "SOLAS Chapter II-2 — Fire Safety",
     source: {
-      code: "SOLAS Bölüm II-2 / FSS Code",
+      code: "SOLAS Chapter II-2 / FSS Code",
       detail: "Fire Protection, Fire Detection and Fire Extinction",
     },
     rules: [
       {
-        subtitle: "Yangın Algılama ve Söndürme",
+        subtitle: "Fire Detection and Extinguishing",
         content: [
-          "Yangın algılama ve alarm sistemleri zorunludur.",
-          "Sabit yangın söndürme sistemleri (FFA) eksiksiz ve sertifikalı olmalıdır.",
-          "Yangın kapıları ve A/B sınıfı bölmeleri düzenli kontrol edilmelidir.",
-          "Fire Control Plan görünür yerlerde ve gemi dışında bir kutuda bulunmalıdır.",
+          "Fire detection and alarm systems are mandatory.",
+          "The fixed fire fighting appliances (FFA) must be complete and certified.",
+          "Fire doors and class A/B divisions must be inspected regularly.",
+          "The Fire Control Plan must be displayed in visible locations and kept in a container outside the ship.",
         ],
       },
       {
-        subtitle: "Yapısal Yangın Koruması",
+        subtitle: "Structural Fire Protection",
         content: [
-          "A-60 / A-0 bölme sınıfları yangın bütünlük tablolarına göre uygulanır.",
-          "Kaçış yolları (means of escape) işaretli ve engelsiz tutulmalıdır.",
-          "Makine dairesi için quick-closing valve ve uzaktan ventilatör kapatma sağlanmalıdır.",
+          "The A-60 / A-0 division classes are applied according to the fire integrity tables.",
+          "The means of escape must be marked and kept unobstructed.",
+          "Quick-closing valves and remote ventilation shutdown must be provided for the machinery space.",
         ],
       },
     ],
@@ -48,79 +48,79 @@ export const safetyRules: RuleGroup[] = [
     },
     rules: [
       {
-        subtitle: "Can Kurtarma Ekipmanları",
+        subtitle: "Life Saving Appliances",
         content: [
-          "Can salları ve filikalar yıllık servis ve davit/launching test gereklilikleriyle bakımlı olmalıdır.",
-          "Can yelekleri ve immersion suit tüm personel + yedek için yeterli sayıda olmalıdır.",
-          "EPIRB ve SART cihazları kayıtlı ve çalışır durumda olmalıdır.",
+          "Liferafts and lifeboats must be maintained in accordance with the annual servicing and davit/launching test requirements.",
+          "Lifejackets and immersion suits must be provided in sufficient numbers for all personnel plus spares.",
+          "EPIRB and SART units must be registered and in working order.",
           "Pyrotechnics ve line-throwing apparatus son kullanma tarihleri izlenmelidir.",
         ],
       },
       {
         subtitle: "Muster ve Tatbikatlar",
         content: [
-          "Abandon ship ve fire drill ayda en az bir kez yapılmalıdır (yolcu gemilerinde daha sık).",
-          "Muster list ve emergency instructions kamaralarda/asılı olmalıdır.",
-          "Filika indirme (lowering) tatbikatı 3 ayda bir gerçekleştirilmelidir.",
+          "Abandon ship and fire drills must be held at least once a month (more frequently on passenger ships).",
+          "The muster list and emergency instructions must be posted in the cabins and in conspicuous places.",
+          "A lifeboat lowering drill must be carried out every three months.",
         ],
       },
     ],
   },
   {
-    title: "ISM Kodu — Emniyetli İşletim",
+    title: "ISM Code — Safe Operation",
     source: {
       code: "ISM Code",
       detail: "International Safety Management Code (SOLAS IX)",
     },
     rules: [
       {
-        subtitle: "Belgelendirme ve Yönetim",
+        subtitle: "Certification and Management",
         content: [
-          "DOC (Document of Compliance) şirket için, SMC (Safety Management Certificate) gemi için geçerli olmalıdır.",
-          "DPA (Designated Person Ashore) atanmış olmalıdır.",
-          "Acil durum prosedürleri dokümante edilmeli, iç denetimler yıllık yapılmalıdır.",
+          "The DOC (Document of Compliance) must be valid for the company and the SMC (Safety Management Certificate) for the ship.",
+          "A DPA (Designated Person Ashore) must be appointed.",
+          "Emergency procedures must be documented and internal audits carried out annually.",
         ],
       },
       {
         subtitle: "Risk ve Raporlama",
         content: [
-          "Risk değerlendirmesi ve permit-to-work sistemi uygulanmalıdır.",
-          "Kaza, uygunsuzluk (non-conformity) ve near-miss raporlanmalı, kök neden analizi yapılmalıdır.",
+          "A risk assessment and permit-to-work system must be implemented.",
+          "Accidents, non-conformities and near misses must be reported and a root cause analysis carried out.",
         ],
       },
     ],
   },
   {
-    title: "ISPS Kodu — Güvenlik",
+    title: "ISPS Code — Security",
     source: {
       code: "ISPS Code",
       detail: "International Ship and Port Facility Security Code (SOLAS XI-2)",
     },
     rules: [
       {
-        subtitle: "Gemi Güvenlik Belgeleri ve Tatbikatlar",
+        subtitle: "Ship Security Documentation and Drills",
         content: [
-          "ISSC (International Ship Security Certificate) geçerli olmalıdır.",
-          "SSP (Ship Security Plan) onaylı ve uygulanıyor olmalı; SSO atanmalıdır.",
-          "Güvenlik seviyeleri (1/2/3) takip edilmeli, erişim kontrolü ve ziyaretçi kayıtları tutulmalıdır.",
-          "Güvenlik tatbikatları (drill) ve egzersizleri düzenli yapılmalıdır.",
+          "The ISSC (International Ship Security Certificate) must be valid.",
+          "The SSP (Ship Security Plan) must be approved and implemented, and an SSO appointed.",
+          "The security levels (1/2/3) must be monitored, and access control and visitor records maintained.",
+          "Security drills and exercises must be held regularly.",
         ],
       },
     ],
   },
   {
-    title: "MLC 2006 — İş Sağlığı ve Güvenliği",
+    title: "MLC 2006 — Occupational Health and Safety",
     source: {
       code: "MLC 2006",
-      detail: "Maritime Labour Convention, Title 4 (sağlık, güvenlik, kaza önleme)",
+      detail: "Maritime Labour Convention, Title 4 (health, safety and accident prevention)",
     },
     rules: [
       {
-        subtitle: "Çalışma Ortamı ve Koruma",
+        subtitle: "Working Environment and Protection",
         content: [
-          "Kişisel koruyucu donanım (KKD) sağlanmalı ve kullanımı denetlenmelidir.",
-          "Çalışma ve dinlenme saatleri (saatlik limitler) kayıt altında tutulmalıdır.",
-          "Onboard safety committee ve düzenli güvenlik toplantıları yapılmalıdır.",
+          "Personal protective equipment (PPE) must be provided and its use supervised.",
+          "Hours of work and rest (and their limits) must be recorded.",
+          "An on-board safety committee must be established and regular safety meetings held.",
         ],
       },
     ],
