@@ -120,15 +120,16 @@ const getSavedLanguage = (): string => {
 };
 
 // ── Translation engine configuration ─────────────────────────────────────────
-// v3: invalidates the dictionaries/runtime values produced before complete UI
-// extraction and context-safe "Account" handling. Old stores are also deleted so
+// v5: invalidates runtime values produced before the final English residue pass.
+// Old stores are also deleted so
 // mobile WebViews do not retain hundreds of megabytes of unreachable locale data.
-const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v4';
+const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v5';
 const LEGACY_TRANSLATION_CACHE_KEYS = [
   'mt-translation-cache',
   'mt-translation-cache-v1',
   'mt-translation-cache-v2',
   'mt-translation-cache-v3',
+  'mt-translation-cache-v4',
 ];
 const LEGACY_LOCALE_RUNTIME_CACHES = ['translation-locales'];
 const SEEN_STRINGS_KEY = 'mt-seen-strings-v1';

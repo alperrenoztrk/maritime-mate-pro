@@ -325,9 +325,9 @@ Ask a detailed question and I will provide you with calculations and explanation
         {/* Question Input */}
         <div className="space-y-3">
           <Textarea
-            placeholder="Denizcilikle ilgili sorularınızı buraya yazınız...
+            placeholder="Type your maritime questions here...
 
-Örnekler:
+Examples:
 • 'How to calculate GM?'
 • 'GM value of the ship with KM 15.2m, KG 14.8m?'
 • 'What are the stability criteria?'"

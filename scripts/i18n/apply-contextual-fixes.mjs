@@ -27,6 +27,10 @@ import {
   renderAbbreviationOnly,
 } from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
+import {
+  ENGLISH_RESIDUAL_CORRECTIONS,
+  normalizeEnglishResidualTerms,
+} from './english-residuals.mjs';
 
 const repoRoot = process.cwd();
 const OUT_DIR = path.join(repoRoot, 'public/locales');
@@ -49,7 +53,8 @@ for (const file of files) {
     if (key.startsWith('__') || typeof value !== 'string') continue;
 
     let next = value;
-    const correction = CONTEXTUAL_CORRECTIONS[key]?.[lang];
+    const correction = ENGLISH_RESIDUAL_CORRECTIONS[key]?.[lang]
+      ?? CONTEXTUAL_CORRECTIONS[key]?.[lang];
     if (correction !== undefined) {
       next = correction;
     } else if (isAbbreviationOnly(key)) {
@@ -75,6 +80,8 @@ for (const file of files) {
         next = normalizeMachineTranslation(key, applyMaritimeCorrections(value, lang), lang);
       }
     }
+
+    if (lang === 'en') next = normalizeEnglishResidualTerms(next, key);
 
     if (next !== value) {
       dict[key] = next;

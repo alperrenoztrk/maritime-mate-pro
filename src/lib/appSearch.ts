@@ -5,7 +5,7 @@ export type SearchScopeId = "all" | "learn" | "tools" | "reference" | "operation
 export const SEARCH_SCOPES: ReadonlyArray<{ id: SearchScopeId; label: string }> = [
   { id: "all", label: "All" },
   { id: "learn", label: "Dersler" },
-  { id: "tools", label: "tools" },
+  { id: "tools", label: "Tools" },
   { id: "reference", label: "Kaynaklar" },
   { id: "operations", label: "Operasyonlar" },
 ];
@@ -76,7 +76,7 @@ export const displaySearchCategory = (item: SearchItem): string => {
   if (item.path === "/") return "Home Page";
   const scope = searchItemScope(item);
   if (scope === "learn") return "Dersler";
-  if (scope === "tools") return "tools";
+  if (scope === "tools") return "Tools";
   if (startsWithAny(item.path, ["/ship-operations", "/ship-tasks"])) return "Operasyonlar";
   if (startsWithAny(item.path, ["/crew"])) return "Personel";
   if (startsWithAny(item.path, ["/ship-systems", "/bridge", "/glossary", "/regulations"])) {

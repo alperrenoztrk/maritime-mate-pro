@@ -13,14 +13,14 @@ const readSources = () => {
 test('extractor covers settings components, conditional labels and notifications', () => {
   const sources = readSources();
   const expected = [
-    'İki adımlı doğrulama',
-    'Şu anda devre dışı. Etkinleştirdiğinizde hesabınıza yalnızca şifrenizi bilen değil, doğrulayıcı uygulamanıza da erişebilen biri girebilir.',
-    'Etkinleştir',
-    'Kapat',
-    'Onayla',
-    'İki adımlı doğrulama açıldı',
-    'Kod doğrulanamadı. Uygulamadaki güncel kodu girin.',
-    'Geri',
+    'Two-step verification',
+    'Currently disabled. Once enabled, signing in requires access to both your password and your authenticator app.',
+    'Enable',
+    'Close',
+    'Confirm',
+    'Two-step verification enabled',
+    'The code could not be verified. Enter the current code in the app.',
+    'Back',
     'Dil Değiştirildi',
     'Uygulama dili başarıyla değiştirildi',
     'Ayarlar Sıfırlandı',
@@ -35,11 +35,11 @@ test('extractor covers settings components, conditional labels and notifications
 test('multiline JSX is normalized to the exact rendered DOM text', () => {
   const sources = readSources();
   const rendered =
-    'Şu anda devre dışı. Etkinleştirdiğinizde hesabınıza yalnızca şifrenizi bilen değil, doğrulayıcı uygulamanıza da erişebilen biri girebilir.';
+    'Currently disabled. Once enabled, signing in requires access to both your password and your authenticator app.';
 
   assert.equal(sources.has(rendered), true);
   assert.equal(
-    [...sources].some((source) => source.includes('şifrenizi\n') && source.includes('doğrulayıcı uygulamanıza')),
+    [...sources].some((source) => source.includes('access to both\n') && source.includes('authenticator app')),
     false,
   );
 });

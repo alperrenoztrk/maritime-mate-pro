@@ -18,9 +18,9 @@ test("classifies high-level search destinations into useful scopes", () => {
 });
 
 test("replaces generic labels for primary destinations", () => {
-  assert.equal(displaySearchCategory({ title: "Hesaplamalar", path: "/calculations", category: "Genel" }), "Araçlar");
+  assert.equal(displaySearchCategory({ title: "Hesaplamalar", path: "/calculations", category: "Genel" }), "Tools");
   assert.equal(displaySearchCategory({ title: "Personel", path: "/crew", category: "Genel" }), "Personel");
-  assert.equal(displaySearchCategory({ title: "Ana Sayfa", path: "/", category: "Genel" }), "Ana Sayfa");
+  assert.equal(displaySearchCategory({ title: "Ana Sayfa", path: "/", category: "Genel" }), "Home Page");
 });
 
 test("deduplicates merged shallow and deep indexes without losing distinct destinations", () => {
