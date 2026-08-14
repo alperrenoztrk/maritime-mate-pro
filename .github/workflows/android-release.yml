@@ -55,6 +55,17 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
+      # Mağaza derlemesi tek yönlüdür: Play'e yüklenen bir sürüm geri alınamaz,
+      # yalnızca yenisi yayımlanabilir. Bu yüzden lint ve tip denetimi AAB
+      # üretilmeden önce burada çalışır — daha önce yalnızca yerelde
+      # çalıştıkları için ekrana görünmez karakter sızdıran bir hata sürüm
+      # dalına kadar gelebilmişti.
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Run validation tests
         run: npm run test:validation
 
