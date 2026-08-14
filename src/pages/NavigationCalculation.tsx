@@ -141,7 +141,7 @@ const CALC_TITLES: Record<CalcId, string> = {
   eta: "Basic Navigation (Time–Distance–Speed)",
   midlat: "Middle Latitude Sailing",
   chart: "Chart Scale (cm ↔ NM)",
-  position: "DR / Enlem–Boylam",
+  position: "DR / Latitude–Longitude",
   current: "Current Triangle (CTS)",
   compass: "Compass Conversions",
   cpa: "CPA / TCPA",
@@ -1382,7 +1382,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="gc-lat2"
-              label="Hedef Enlemi (φ₂)"
+              label="Target Latitude (φ₂)"
               value={gcInputs.lat2}
               onChange={(val) => setGcInputs({ ...gcInputs, lat2: val })}
               isLatitude={true}
@@ -1429,7 +1429,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="rl-lat2"
-              label="Hedef Enlemi"
+              label="Target Latitude"
               value={rhumbInputs.lat2}
               onChange={(val) => setRhumbInputs({ ...rhumbInputs, lat2: val })}
               isLatitude={true}
@@ -1462,7 +1462,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="ps-lat2"
-              label="Hedef Enlemi"
+              label="Target Latitude"
               value={planeInputs.lat2}
               onChange={(val) => setPlaneInputs({ ...planeInputs, lat2: val })}
               isLatitude={true}
@@ -1495,7 +1495,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="ml-lat2"
-              label="Hedef Enlemi"
+              label="Target Latitude"
               value={midlatInputs.lat2}
               onChange={(val) => setMidlatInputs({ ...midlatInputs, lat2: val })}
               isLatitude={true}
@@ -1570,7 +1570,7 @@ export default function NavigationCalculationPage() {
             />
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="dr-course">Kurs (True, °)</Label>
+                <Label htmlFor="dr-course">Course (True, °)</Label>
                 <Input id="dr-course" type="number" value={positionInputs.courseTrue} onChange={(e) => setPositionInputs({ ...positionInputs, courseTrue: e.target.value })} />
               </div>
               <div>
@@ -1595,7 +1595,7 @@ export default function NavigationCalculationPage() {
                   <Input id="b-speed" type="number" value={basicInputs.speedKn} onChange={(e) => setBasicInputs({ ...basicInputs, speedKn: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="b-time">Zaman (saat)</Label>
+                  <Label htmlFor="b-time">Time (hours)</Label>
                   <Input id="b-time" type="number" value={basicInputs.timeHours} onChange={(e) => setBasicInputs({ ...basicInputs, timeHours: e.target.value })} />
                 </div>
               </div>
@@ -1835,7 +1835,7 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="sight-lat"
-              label="Tahmini Enlem"
+              label="Estimated Latitude"
               value={sightInputs.lat}
               onChange={(val) => setSightInputs({ ...sightInputs, lat: val })}
               isLatitude={true}
@@ -1872,8 +1872,8 @@ export default function NavigationCalculationPage() {
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
               <div className="text-sm font-semibold">Assumed Position (AP)</div>
-              <CoordinateInput id="astro-ap-lat" label="AP Enlem" value={astroInputs.apLat} onChange={(val) => setAstroInputs({ ...astroInputs, apLat: val })} isLatitude={true} />
-              <CoordinateInput id="astro-ap-lon" label="AP Boylam" value={astroInputs.apLon} onChange={(val) => setAstroInputs({ ...astroInputs, apLon: val })} isLatitude={false} />
+              <CoordinateInput id="astro-ap-lat" label="AP Latitude" value={astroInputs.apLat} onChange={(val) => setAstroInputs({ ...astroInputs, apLat: val })} isLatitude={true} />
+              <CoordinateInput id="astro-ap-lon" label="AP Longitude" value={astroInputs.apLon} onChange={(val) => setAstroInputs({ ...astroInputs, apLon: val })} isLatitude={false} />
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
@@ -2579,7 +2579,7 @@ export default function NavigationCalculationPage() {
             </div>
             <CoordinateInput
               id="celestial-lat"
-              label="Enlem"
+              label="Latitude"
               value={celestialInputs.lat}
               onChange={(val) => setCelestialInputs({ ...celestialInputs, lat: val })}
               isLatitude={true}
@@ -2732,7 +2732,7 @@ Distance: ${rhumbResults.distance.toFixed(2)} nm\nConstant Bearing: ${rhumbResul
                 `Δψ = ln(tan(45+φ2/2) / tan(45+φ1/2)) = ${formatMaybeNumber(deltaPsi, 6)}`,
                 `q = Δφ / Δψ = ${formatMaybeNumber(q, 6)}`,
                 `Distance = 60 × √(ΔLat² + (q×ΔLon)²) = ${rhumbResults.distance.toFixed(2)} NM`,
-                `Kurs = atan2(ΔLon, Δψ) = ${courseDeg.toFixed(1)}°`,
+                `Course = atan2(ΔLon, Δψ) = ${courseDeg.toFixed(1)}°`,
               ]}
             />
           </div>
@@ -2758,7 +2758,7 @@ dLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.to
                 `Mean latitude: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
                 `dLat = 60 × (φ2-φ1) = ${dLatMin.toFixed(2)}′`,
                 `Departure = 60 × (λ2-λ1) × cos(φm) = ${depMin.toFixed(2)}′`,
-                `Kurs = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
+                `Course = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
                 `Distance = √(dLat² + Departure²) = ${distanceNm.toFixed(2)} NM`,
               ]}
             />
@@ -2787,7 +2787,7 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
                 `dLat = 60 × (φ2-φ1) = ${dLatMin.toFixed(2)}′`,
                 `dLong = 60 × (λ2-λ1) = ${dLongMin.toFixed(2)}′`,
                 `Departure = dLong × cos(φm) = ${departureMin.toFixed(2)}′`,
-                `Kurs = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
+                `Course = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
                 `Distance = √(dLat² + Departure²) = ${distanceNm.toFixed(2)} NM`,
               ]}
             />
@@ -2827,9 +2827,9 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Sonucu:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
             <SolutionSteps
               steps={[
-                `dLat = (Mesafe × cos(Course)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
+                `dLat = (Distance × cos(Course)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
                 `Mean latitude: φm = φ1 + dLat/2 = ${meanLatDeg.toFixed(4)}°`,
-                `dLon = (Mesafe × sin(Course)) / (60 × cos(φm)) = ${dLonDeg.toFixed(4)}°`,
+                `dLon = (Distance × sin(Course)) / (60 × cos(φm)) = ${dLonDeg.toFixed(4)}°`,
                 `Yeni enlem = φ1 + dLat = ${formatSigned(startLat + dLatDeg, 4)}°`,
                 `Yeni boylam = λ1 + dLon = ${formatSigned(startLon + dLonDeg, 4)}°`,
               ]}
@@ -3340,7 +3340,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
         const decDeg = dmsToDecimal(celestialInputs.dec);
         const celestialSteps: string[] = [];
         if (celestialInputs.type === "meridian" && celestialResults.latitudeDeg !== undefined) {
-          celestialSteps.push(`Enlem = 90° − |φ − δ| = 90 − |${latDeg.toFixed(2)} − ${decDeg.toFixed(2)}| = ${celestialResults.latitudeDeg.toFixed(2)}°`);
+          celestialSteps.push(`Latitude = 90° − |φ − δ| = 90 − |${latDeg.toFixed(2)} − ${decDeg.toFixed(2)}| = ${celestialResults.latitudeDeg.toFixed(2)}°`);
         }
         if (celestialInputs.type === "amplitude" && celestialResults.amplitudeDeg !== undefined) {
           celestialSteps.push(`Amplitude = asin(sinδ / cosφ) = asin(sin${decDeg.toFixed(2)} / cos${latDeg.toFixed(2)}) = ${celestialResults.amplitudeDeg.toFixed(2)}°`);
@@ -3355,7 +3355,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
               <div className="space-y-1 text-sm">
                 {celestialInputs.type === 'meridian' && celestialResults.latitudeDeg !== undefined && (
                   <div>
-                    <span className="text-muted-foreground" data-translatable>Meridian Enlem:</span>
+                    <span className="text-muted-foreground" data-translatable>Meridian Latitude:</span>
                     <div className="font-mono font-semibold">{formatDecimalAsDMS(celestialResults.latitudeDeg, true)}</div>
                   </div>
                 )}
