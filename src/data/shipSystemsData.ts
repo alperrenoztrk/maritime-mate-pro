@@ -86,7 +86,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "A/10 = 3200/10 = 320",
                 "EN = 685.4 + 784 + 320 = 1789.4"
               ],
-              result: "EN ≈ 1789. Bu değer, sınıf kuralları tablosundan gereken zincir kalınlığı, demir ağırlığı ve windlass çekme kapasitesini belirler."
+              result: "EN ≈ 1789. This value determines the required chain thickness, anchor weight, and windlass pulling capacity from the class rules table."
             }
           }
         ],
@@ -173,7 +173,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "M = 245.25 × 18 × 0.866",
                 "M = 3 823 kN·m"
               ],
-              result: "Devirme momenti 3 823 kN·m olup, vinç fundament tasarımı bu değere göre yapılır."
+              result: "The heeling moment is 3 823 kN·m, and the winch foundation design is based on this value."
             }
           }
         ],
@@ -368,7 +368,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "T₁ = 200 × e^(4.71)",
                 "T₁ = 200 × 111.3 = 22 260 N ≈ 22.3 kN"
               ],
-              result: "İdeal capstan denklemi yaklaşık 22,3 kN verir; bu değer güvenli çalışma yükü değildir. Rope construction, wet/contaminated drum, fleeting angle, human tailing ve fitting SWL nedeniyle operasyon yalnız maker limitleriyle yapılır."
+              result: "The ideal capstan equation gives approximately 22.3 kN; this value is not a safe working load. Due to rope construction, wet/contaminated drum, fleeting angle, human tailing, and fitting SWL, operation is performed only with maker limits."
             }
           },
           {
@@ -445,7 +445,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "R = 3 720 / 2 = 1 860 m",
                 "R = 1 860 / 1 852 ≈ 1.0 NM"
               ],
-              result: "Hedef yaklaşık 1.0 deniz mili mesafededir."
+              result: "The target is approximately 1.0 nautical mile away."
             }
           },
           {
@@ -871,7 +871,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "Variation = +5° (E)",
                 "True = 245 + (−3) + (+5) = 247°"
               ],
-              result: "Gerçek kerteriz 247°'dir."
+              result: "The true bearing is 247°."
             }
           }
         ],
@@ -929,7 +929,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "D = (1500 × 0.04) / 2",
                 "D = 60 / 2 = 30 m"
               ],
-              result: "Su derinliği 30 metredir."
+              result: "Water depth is 30 meters."
             }
           },
           {
@@ -1008,7 +1008,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "BHP = 1 717 200 / 60 000",
                 "BHP = 28 620 kW"
               ],
-              result: "Motor gücü yaklaşık 28 620 kW (≈ 38 900 BHP) olarak hesaplanır."
+              result: "Engine power is calculated as approximately 28 620 kW (≈ 38 900 BHP)."
             }
           },
           {
@@ -1140,7 +1140,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "T = 7 800 000 / 7.2",
                 "T = 1 083 333 N ≈ 1 083 kN"
               ],
-              result: "İtme kuvveti yaklaşık 1 083 kN (≈ 110 ton) olarak hesaplanır."
+              result: "Thrust force is calculated as approximately 1 083 kN (≈ 110 tons)."
             }
           },
           {
@@ -1283,7 +1283,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "FN = 580 × 10 × 38.07 × 0.574",
                 "FN = 126 700 N ≈ 126.7 kN"
               ],
-              result: "Dümen paletine etkiyen kuvvet yaklaşık 127 kN'dur."
+              result: "The force acting on the rudder blade is approximately 127 kN."
             }
           }
         ],
@@ -1349,7 +1349,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "f = (720 × 8) / 120",
                 "f = 5760 / 120 = 48 Hz"
               ],
-              result: "Bu değer 50 Hz'den düşüktür; motor devri 750 rpm'ye ayarlanmalıdır (750 × 8 / 120 = 50 Hz)."
+              result: "This value is below 50 Hz; engine speed should be set to 750 rpm (750 × 8 / 120 = 50 Hz)."
             }
           },
           {
@@ -1503,7 +1503,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "ri = 150 × 1.0333",
                 "ri = 155.0 mm"
               ],
-              result: "155 mm iç yarıçaplı gravity disc kullanılmalıdır. Katalogdan en yakın değer seçilir."
+              result: "A gravity disc with an inner radius of 155 mm should be used. The closest value is selected from the catalog."
             }
           },
           {
@@ -1651,7 +1651,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "P = 13 988 / 700",
                 "P = 19.98 kW"
               ],
-              result: "Pompa motor gücü yaklaşık 20 kW olmalıdır."
+              result: "Pump motor power should be approximately 20 kW."
             }
           }
         ],
@@ -1941,7 +1941,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "Q = U × A × ΔTlm",
                 "Q = 3000 × 8 × 15 = 360.000 W"
               ],
-              result: "Cooler yaklaşık 360 kW ısıyı yağdan deniz/tatlı suya aktarır."
+              result: "The Cooler transfers approximately 360 kW of heat from the oil to the sea/fresh water."
             }
           },
           {
@@ -2153,7 +2153,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "Devir %10 düşerse N = 810 dev/dak",
                 "f = (810 × 8) / 120 = 54 Hz"
               ],
-              result: "Frekans doğrudan devirle değişir; 54 Hz gemi şebekesi için kabul edilemez. Bu nedenle ya CPP ile şaft devri sabit tutulur ya da frekans dönüştürücü kullanılır."
+              result: "Frequency changes directly with RPM; 54 Hz is unacceptable for the ship's grid. Therefore, either the shaft RPM is kept constant with a CPP, or a frequency converter is used."
             }
           },
           {
@@ -2300,7 +2300,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "Q = 55,6 × 4,18 × 5",
                 "Q ≈ 1162 kW"
               ],
-              result: "Yaklaşık 1,16 MW ısı deniz suyuna aktarılıyor. Aynı debide ΔT'nin beklenenden düşük olması, soğutucunun kirlendiğini veya akışın azaldığını gösterir."
+              result: "Approximately 1.16 MW of heat is transferred to the seawater. A ΔT lower than expected at the same flow rate indicates that the cooler is fouled or the flow is reduced."
             }
           },
           {
@@ -2521,7 +2521,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "t = 3000 / 500 = 6 saat",
                 "Gerekli kapasite: Q = 3000 / 4 = 750 m³/saat"
               ],
-              result: "Tek pompa yetersizdir; ikinci pompa devreye alınmalı veya yükleme hızı terminalle görüşülerek düşürülmelidir. Aksi hâlde ara safhalarda draft ve mukavemet sınırları zorlanır."
+              result: "One pump is insufficient; the second pump must be engaged or the loading rate should be reduced by consulting the terminal. Otherwise, draft and strength limits will be exceeded in intermediate stages."
             }
           },
           {
@@ -2616,7 +2616,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "V₂ = 5000 / 160 ≈ 31,3 litre",
                 "Kullanılabilir yağ = 50 − 31,3 ≈ 18,7 litre"
               ],
-              result: "Yaklaşık 18,7 litre yağ depolanır. Ön şarj basıncı düştüğünde bu hacim azalır ve pompanın devreye girme sıklığı artar; sık devreye girme çoğu zaman ön şarj kaybının ilk işaretidir."
+              result: "Approximately 18.7 liters of oil are stored. When the pre-charge pressure drops, this volume decreases, and the frequency of pump engagement increases; frequent engagement is often the first sign of pre-charge loss."
             }
           },
           {

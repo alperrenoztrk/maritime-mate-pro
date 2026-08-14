@@ -23,7 +23,6 @@ const CATEGORY_MAP: Array<[string, string]> = [
   ["/ship-tasks", "Personel"],
   ["/ship-systems", "Ship Systems"],
   ["/bridge", "Ship Systems"],
-  ["/machinery", "Ship Systems"],
   ["/ship-operations", "Operasyonlar"],
   ["/glossary", "dictionary"],
   ["/regulations", "Kurallar ve Mevzuat"],

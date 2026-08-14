@@ -7,7 +7,6 @@ import {
   ScrollText,
   Ship,
   Users,
-  Wrench,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
@@ -23,7 +22,6 @@ const operationalReferences = [
   { title: "Ship Systems", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
   { title: "Ship Missions", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
   { title: "Gemi Operasyonları", to: "/ship-operations", icon: Anchor, accent: "accent-ocean" },
-  { title: "Makine Bölümü", to: "/machinery", icon: Wrench, accent: "accent-slate" },
 ];
 
 const quickReferences = [

@@ -1726,14 +1726,14 @@ Trim affects the ship's performance, propeller efficiency and deck wetness. Opti
       },
     ],
     bulletPoints: [
-      "Trim = Tkıç - Tbaş",
+      "Trim = T aft - T fore",
       "Pozitif trim = Kıç trimi",
       "Negatif trim = Baş trimi",
       "Optimum trim yakıt verimliliğini artırır",
     ],
     formula: {
       name: "Trim Hesabı",
-      expression: "Trim = Tkıç - Tbaş",
+      expression: "Trim = T aft - T fore",
       description: "Trim: Baş-kıç draft farkı (m), Tkıç: Kıç draftı (m), Tbaş: Baş draftı (m)",
     },
     examples: [

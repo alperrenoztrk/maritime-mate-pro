@@ -18,7 +18,7 @@ const content11: ContentMap = {
             "İdeal (sürtünmesiz, sıkışmaz) akışta toplam enerji (basınç + hız + yükseklik) bir akım çizgisi boyunca sabittir. Gerçek akışta sürtünme kayıpları (hf) ve pompa eklemesi (hp) terimleri eklenir.",
           ],
           formula: {
-            expression: "p/(ρg) + v²/(2g) + z = sabit  →  (gerçek akış) p₁/(ρg)+v₁²/2g+z₁ + hp = p₂/(ρg)+v₂²/2g+z₂ + hf",
+            expression: "p/(ρg) + v²/(2g) + z = constant → (real flow) p₁/(ρg)+v₁²/2g+z₁ + hp = p₂/(ρg)+v₂²/2g+z₂ + hf",
             variables: ["p: basınç", "v: hız", "z: yükseklik", "hp: pompa yükü", "hf: sürtünme kaybı"],
           },
         },
@@ -82,7 +82,7 @@ const content11: ContentMap = {
           example: {
             problem: "0,02 m³/s debi, hedef hız 2 m/s. Gereken iç çap?",
             steps: ["A = Q/v = 0,02/2 = 0,01 m²", "D = √(4A/π) = √(4·0,01/π)"],
-            result: "D ≈ 0,113 m (≈ DN110-125 seçilir)",
+            result: "D ≈ 0,113 m (≈ DN110-125 is selected)",
           },
         },
       ],
@@ -102,7 +102,7 @@ const content11: ContentMap = {
             "Her armatür için bir kayıp katsayısı (K) tanımlanır ve kayıp, hız yükü ile çarpılır. Tüm armatürlerin K'leri toplanarak toplam yerel kayıp bulunur ve sürtünme kaybına eklenir.",
           ],
           formula: {
-            expression: "hL = K · v²/(2g)  ;  eşdeğer boy: Le = K·D/f",
+            expression: "hL = K · v²/(2g) ; equivalent length: Le = K·D/f",
             variables: ["K: kayıp katsayısı (dirsek ~0,3-0,9; küresel vana açık ~0,05; globe vana ~10)", "v: hız"],
           },
         },
@@ -220,7 +220,7 @@ const content11: ContentMap = {
             "Malzeme: deniz suyu için bronz/CuNi; yakıt/yağ için uygun keçe ve sızdırmazlık.",
           ],
           formula: {
-            expression: "Pşaft = ρ·g·Q·H / η",
+            expression: "Pshaft = ρ·g·Q·H / η",
             variables: ["P: güç (W)", "Q: debi", "H: basma yükü", "η: verim"],
           },
         },
@@ -391,7 +391,7 @@ const content11: ContentMap = {
             "Normal (σ) ve kayma (τ) gerilmelerinin bir arada bulunduğu düzlem gerilme durumunda eşdeğer gerilme hesaplanır ve akma sınırıyla karşılaştırılır. σvm < σakma / SF olmalıdır.",
           ],
           formula: {
-            expression: "σvm = √(σ² + 3τ²)  (düzlem gerilme)",
+            expression: "σvm = √(σ² + 3τ²) (plane stress)",
             variables: ["σ: normal gerilme", "τ: kayma gerilmesi", "σvm: eşdeğer gerilme"],
           },
         },
@@ -412,7 +412,7 @@ const content11: ContentMap = {
             "Emniyet gerilmesi, malzeme akma (veya kopma/yorulma) sınırının güvenlik katsayısına bölünmesiyle bulunur. SF; yük tipi (statik/dinamik), malzeme süneklik durumu, sonuçların ciddiyeti ve sınıf kurallarına göre seçilir.",
           ],
           formula: {
-            expression: "σemniyet = σakma / SF  →  SF = σakma / σçalışma",
+            expression: "σsafety = σyield / SF → SF = σyield / σoperating",
           },
         },
       ],
@@ -487,7 +487,7 @@ const content11: ContentMap = {
             "L10, rulmanların %90'ının yorulmadan ulaşacağı ömürdür. Yük arttıkça ömür hızla (bilyalı rulmanda küpsel) düşer.",
           ],
           formula: {
-            expression: "L10 = (C/P)^p × 10⁶ devir   (bilyalı p=3, makaralı p=10/3)",
+            expression: "L10 = (C/P)^p × 10⁶ revolutions (ball p=3, roller p=10/3)",
             variables: ["C: dinamik yük kapasitesi", "P: eşdeğer yük", "p: üs"],
           },
         },
@@ -525,7 +525,7 @@ const content11: ContentMap = {
             "Helisel dişlilerde dişler eğimlidir; bu, kademeli temas sayesinde düz dişliye göre daha sessiz ve yüksek yük taşıma sağlar (ancak eksenel itki oluşturur). Redüksiyon oranı, motor devrini pervanenin verimli çalıştığı düşük devire indirir. Çift girişli kutular, iki makineyi tek pervaneye bağlayabilir.",
           ],
           formula: {
-            expression: "i = ngiriş / nçıkış = zçıkış / zgiriş",
+            expression: "i = ninlet / noutlet = zoutlet / zinlet",
             variables: ["i: redüksiyon oranı", "z: diş sayısı", "n: devir"],
           },
         },

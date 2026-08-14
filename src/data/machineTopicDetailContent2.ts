@@ -13,7 +13,7 @@ const content2: ContentMap = {
       sections: [
         { heading: "Tanım ve Formül", paragraphs: ["Basınç, P = F/A bağıntısıyla tanımlanır. SI birim sisteminde Pascal (Pa = N/m²) kullanılır. Denizcilik uygulamalarında bar (1 bar = 10⁵ Pa) ve kg/cm² birimleri yaygındır."], formula: { expression: "P = F / A", variables: ["P: Basınç (Pa veya bar)", "F: Kuvvet (N)", "A: Alan (m²)"] } },
         { heading: "Birim Dönüşümleri", paragraphs: [], table: { headers: ["Birim", "Pa Karşılığı"], rows: [["1 bar", "100 000 Pa"], ["1 atm", "101 325 Pa"], ["1 kg/cm²", "98 066.5 Pa"], ["1 psi", "6 894.76 Pa"], ["1 mmHg", "133.322 Pa"]] } },
-        { heading: "Sayısal Örnek", paragraphs: [], example: { problem: "Bir hidrolik silindirin piston alanı 50 cm² ve uygulanan kuvvet 25 kN ise basıncı bulunuz.", steps: ["A = 50 cm² = 50 × 10⁻⁴ m² = 0.005 m²", "P = F/A = 25000 / 0.005 = 5 000 000 Pa = 50 bar"], result: "Silindir basıncı 50 bar'dır." } }
+        { heading: "Sayısal Örnek", paragraphs: [], example: { problem: "Bir hidrolik silindirin piston alanı 50 cm² ve uygulanan kuvvet 25 kN ise basıncı bulunuz.", steps: ["A = 50 cm² = 50 × 10⁻⁴ m² = 0.005 m²", "P = F/A = 25000 / 0.005 = 5 000 000 Pa = 50 bar"], result: "Cylinder pressure is 50 bar." } }
       ],
       keyPoints: ["1 bar ≈ 1 atm pratik kabuldür.", "Gemi sistemlerinde basınç ölçüm aralığı 0-400 bar arasında değişir.", "Birim dönüşümlerinde dikkatli olunmalıdır."]
     },
@@ -21,7 +21,7 @@ const content2: ContentMap = {
       title: "Hidrostatik Basınç Denklemleri",
       introduction: "Durgun bir akışkanda basınç yalnızca derinliğe bağlıdır. Hidrostatik basınç, gemi yapısı ve tankların tasarımında temel hesap aracıdır.",
       sections: [
-        { heading: "Temel Denklem", paragraphs: ["Durgun akışkanda herhangi bir derinlikteki basınç, yüzey basıncına o derinlikteki sıvı sütununun ağırlığının eklenmesiyle bulunur."], formula: { expression: "P = P₀ + ρgh", variables: ["P₀: Yüzey basıncı (Pa)", "ρ: Akışkan yoğunluğu (kg/m³)", "g: Yerçekimi ivmesi (9.81 m/s²)", "h: Derinlik (m)"] }, example: { problem: "Deniz suyu yoğunluğu 1025 kg/m³ ise 15 m derinlikteki basınç nedir?", steps: ["P = Patm + ρgh", "P = 101325 + 1025 × 9.81 × 15", "P = 101325 + 150929 = 252254 Pa ≈ 2.52 bar"], result: "15 m derinlikteki mutlak basınç yaklaşık 2.52 bar'dır." } }
+        { heading: "Temel Denklem", paragraphs: ["Durgun akışkanda herhangi bir derinlikteki basınç, yüzey basıncına o derinlikteki sıvı sütununun ağırlığının eklenmesiyle bulunur."], formula: { expression: "P = P₀ + ρgh", variables: ["P₀: Yüzey basıncı (Pa)", "ρ: Akışkan yoğunluğu (kg/m³)", "g: Yerçekimi ivmesi (9.81 m/s²)", "h: Derinlik (m)"] }, example: { problem: "Deniz suyu yoğunluğu 1025 kg/m³ ise 15 m derinlikteki basınç nedir?", steps: ["P = Patm + ρgh", "P = 101325 + 1025 × 9.81 × 15", "P = 101325 + 150929 = 252254 Pa ≈ 2.52 bar"], result: "Absolute pressure at 15 m depth is approximately 2.52 bar." } }
       ],
       keyPoints: ["Basınç her yönde eşit olarak etki eder (Pascal prensibi).", "Deniz suyunda her 10 m derinlikte yaklaşık 1 bar basınç artar.", "Tank basınç hesaplarında sıvının yoğunluğu kritik parametredir."]
     },
@@ -37,7 +37,7 @@ const content2: ContentMap = {
       title: "Pascal Prensibi",
       introduction: "Pascal prensibi, kapalı bir kapta bir noktaya uygulanan basıncın, akışkanın her noktasına eşit olarak iletildiğini belirtir. Hidrolik sistemlerin çalışma temelidir.",
       sections: [
-        { heading: "Prensip ve Uygulama", paragraphs: ["Kapalı bir kapta durgun akışkana uygulanan basınç, akışkanın her noktasına ve kap duvarlarına eşit büyüklükte iletilir. Bu prensip, küçük bir kuvvetle büyük kuvvet üretmeyi mümkün kılar."], formula: { expression: "F₁/A₁ = F₂/A₂  →  F₂ = F₁ × (A₂/A₁)", variables: ["F₁: Küçük pistona uygulanan kuvvet", "A₁, A₂: Piston alanları"] }, example: { problem: "Bir hidrolik preste küçük piston alanı 10 cm², büyük piston alanı 500 cm² ise 200 N kuvvet uygulandığında üretilen kuvvet nedir?", steps: ["F₂ = F₁ × (A₂/A₁) = 200 × (500/10)", "F₂ = 200 × 50 = 10000 N = 10 kN"], result: "Büyük pistonda 10 kN kuvvet üretilir." } }
+        { heading: "Prensip ve Uygulama", paragraphs: ["Kapalı bir kapta durgun akışkana uygulanan basınç, akışkanın her noktasına ve kap duvarlarına eşit büyüklükte iletilir. Bu prensip, küçük bir kuvvetle büyük kuvvet üretmeyi mümkün kılar."], formula: { expression: "F₁/A₁ = F₂/A₂  →  F₂ = F₁ × (A₂/A₁)", variables: ["F₁: Küçük pistona uygulanan kuvvet", "A₁, A₂: Piston alanları"] }, example: { problem: "Bir hidrolik preste küçük piston alanı 10 cm², büyük piston alanı 500 cm² ise 200 N kuvvet uygulandığında üretilen kuvvet nedir?", steps: ["F₂ = F₁ × (A₂/A₁) = 200 × (500/10)", "F₂ = 200 × 50 = 10000 N = 10 kN"], result: "10 kN force is generated on the large piston." } }
       ],
       keyPoints: ["Kuvvet kazancı kadar strok kaybı olur.", "Dümen makinesi, kapak hidroliği ve vinçler bu prensiple çalışır.", "Hidrolik sistemlerde sıvının sıkıştırılamazlığı esas alınır."]
     },
@@ -45,7 +45,7 @@ const content2: ContentMap = {
       title: "Düz ve Eğri Yüzeylere Etkiyen Basınç Kuvveti",
       introduction: "Tank duvarları, kapaklar ve gemi tekne kaplaması gibi düz ve eğri yüzeylere etki eden hidrostatik kuvvetlerin hesabı yapısal tasarımda temel gerekliliktir.",
       sections: [
-        { heading: "Düz Yüzeye Etki Eden Kuvvet", paragraphs: ["Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile yüzey alanının çarpımına eşittir."], formula: { expression: "F = ρg·hc·A", variables: ["hc: Yüzey ağırlık merkezinin sıvı yüzeyinden derinliği (m)", "A: Yüzey alanı (m²)"] }, example: { problem: "Bir balast tankının dikdörtgen kapağı 1.2 m × 0.8 m boyutundadır ve merkezinin derinliği 3 m'dir. Deniz suyu basınç kuvvetini bulunuz.", steps: ["A = 1.2 × 0.8 = 0.96 m²", "F = 1025 × 9.81 × 3 × 0.96", "F = 28 970 N ≈ 29 kN"], result: "Kapağa etkiyen basınç kuvveti yaklaşık 29 kN'dur." } }
+        { heading: "Düz Yüzeye Etki Eden Kuvvet", paragraphs: ["Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile yüzey alanının çarpımına eşittir."], formula: { expression: "F = ρg·hc·A", variables: ["hc: Yüzey ağırlık merkezinin sıvı yüzeyinden derinliği (m)", "A: Yüzey alanı (m²)"] }, example: { problem: "Bir balast tankının dikdörtgen kapağı 1.2 m × 0.8 m boyutundadır ve merkezinin derinliği 3 m'dir. Deniz suyu basınç kuvvetini bulunuz.", steps: ["A = 1.2 × 0.8 = 0.96 m²", "F = 1025 × 9.81 × 3 × 0.96", "F = 28 970 N ≈ 29 kN"], result: "The pressure force acting on the cover is approximately 29 kN." } }
       ],
       keyPoints: ["Kuvvet uygulama noktası (basınç merkezi) ağırlık merkezinin altındadır.", "Derinlik arttıkça kuvvet doğrusal olarak artar.", "Tank yapısal mukavemet hesaplarında bu kuvvetler belirleyicidir."]
     },
@@ -53,7 +53,7 @@ const content2: ContentMap = {
       title: "Yüzdürme Kuvveti (Arşimet Prensibi)",
       introduction: "Bir cisim akışkana batırıldığında, cismin yerinden ettiği akışkanın ağırlığına eşit büyüklükte yukarı yönlü bir kuvvet etkir.",
       sections: [
-        { heading: "Arşimet Prensibi", paragraphs: ["Yüzdürme kuvveti (buoyancy), cismin batık hacmi ile akışkan yoğunluğunun çarpımına eşittir."], formula: { expression: "Fb = ρakışkan × g × Vbatık", variables: ["Fb: Yüzdürme kuvveti (N)", "Vbatık: Batık hacim (m³)"] } }
+        { heading: "Arşimet Prensibi", paragraphs: ["Yüzdürme kuvveti (buoyancy), cismin batık hacmi ile akışkan yoğunluğunun çarpımına eşittir."], formula: { expression: "Fb = ρfluid × g × Vsubmerged", variables: ["Fb: Yüzdürme kuvveti (N)", "Vbatık: Batık hacim (m³)"] } }
       ],
       keyPoints: ["Geminin yüzmesi Arşimet prensibine dayanır.", "Deplasman = yerinden edilen su ağırlığı.", "Yoğunluğu sıvıdan küçük olan cisim yüzer."]
     },
@@ -77,7 +77,7 @@ const content2: ContentMap = {
       title: "Reynolds Sayısı",
       introduction: "Reynolds sayısı, eylemsizlik kuvvetlerinin viskoz kuvvetlere oranını ifade eden boyutsuz bir sayıdır. Akış rejiminin belirlenmesinde temel kriterdir.",
       sections: [
-        { heading: "Tanım ve Hesap", paragraphs: ["Reynolds sayısı akışkan hızı, karakteristik uzunluk ve kinematik viskoziteye bağlıdır."], formula: { expression: "Re = ρVD/μ = VD/ν", variables: ["V: Akışkan hızı (m/s)", "D: Boru çapı (m)", "μ: Dinamik viskozite (Pa·s)", "ν: Kinematik viskozite (m²/s)"] }, example: { problem: "İç çapı 100 mm olan bir boruda 2 m/s hızla deniz suyu (ν = 1.19 × 10⁻⁶ m²/s) akıyorsa Reynolds sayısını ve akış rejimini belirleyiniz.", steps: ["Re = VD/ν = 2 × 0.1 / (1.19 × 10⁻⁶)", "Re = 0.2 / (1.19 × 10⁻⁶) = 168 067"], result: "Re ≈ 168 000 → Türbülanslı akış (Re >> 4000)." } }
+        { heading: "Tanım ve Hesap", paragraphs: ["Reynolds sayısı akışkan hızı, karakteristik uzunluk ve kinematik viskoziteye bağlıdır."], formula: { expression: "Re = ρVD/μ = VD/ν", variables: ["V: Akışkan hızı (m/s)", "D: Boru çapı (m)", "μ: Dinamik viskozite (Pa·s)", "ν: Kinematik viskozite (m²/s)"] }, example: { problem: "İç çapı 100 mm olan bir boruda 2 m/s hızla deniz suyu (ν = 1.19 × 10⁻⁶ m²/s) akıyorsa Reynolds sayısını ve akış rejimini belirleyiniz.", steps: ["Re = VD/ν = 2 × 0.1 / (1.19 × 10⁻⁶)", "Re = 0.2 / (1.19 × 10⁻⁶) = 168 067"], result: "Re ≈ 168 000 → Turbulent flow (Re >> 4000)." } }
       ],
       keyPoints: ["Re < 2300: Laminer, Re > 4000: Türbülanslı.", "Gemi borularında Re genellikle 10⁴-10⁶ arasındadır.", "Re sayısı sürtünme katsayısı hesabında kullanılır."]
     },
@@ -85,7 +85,7 @@ const content2: ContentMap = {
       title: "Süreklilik Denklemi",
       introduction: "Süreklilik denklemi, kütle korunumu ilkesinin akışkan mekaniğindeki ifadesidir. Kararlı akışta giren kütle debisi çıkan kütle debisine eşittir.",
       sections: [
-        { heading: "Denklem", paragraphs: ["Sıkıştırılamaz akışkanlar için hacimsel debi sabit kalır."], formula: { expression: "A₁V₁ = A₂V₂ = Q (sabit)", variables: ["A: Kesit alanı (m²)", "V: Ortalama hız (m/s)", "Q: Hacimsel debi (m³/s)"] }, example: { problem: "Bir boru hattında çap 150 mm'den 75 mm'ye daralmaktadır. Giriş hızı 1.5 m/s ise çıkış hızını bulunuz.", steps: ["A₁V₁ = A₂V₂", "V₂ = V₁ × (D₁/D₂)² = 1.5 × (150/75)²", "V₂ = 1.5 × 4 = 6 m/s"], result: "Daralan bölgede hız 6 m/s'ye yükselir." } }
+        { heading: "Denklem", paragraphs: ["Sıkıştırılamaz akışkanlar için hacimsel debi sabit kalır."], formula: { expression: "A₁V₁ = A₂V₂ = Q (sabit)", variables: ["A: Kesit alanı (m²)", "V: Ortalama hız (m/s)", "Q: Hacimsel debi (m³/s)"] }, example: { problem: "Bir boru hattında çap 150 mm'den 75 mm'ye daralmaktadır. Giriş hızı 1.5 m/s ise çıkış hızını bulunuz.", steps: ["A₁V₁ = A₂V₂", "V₂ = V₁ × (D₁/D₂)² = 1.5 × (150/75)²", "V₂ = 1.5 × 4 = 6 m/s"], result: "In the converging section, velocity increases to 6 m/s." } }
       ],
       keyPoints: ["Kesit daralırsa hız artar, kesit genişlerse hız azalır.", "Kütle debisi (ṁ = ρAV) kararlı akışta sabittir.", "Boru boyutlandırma hesaplarının temelidir."]
     },
@@ -93,7 +93,7 @@ const content2: ContentMap = {
       title: "Bernoulli Denklemi ve Uygulamaları",
       introduction: "Bernoulli denklemi, sürtünmesiz kararlı akışta basınç, hız ve yükseklik arasındaki enerji korunumunu ifade eder.",
       sections: [
-        { heading: "Denklem", paragraphs: ["İdeal akışkan için bir akım çizgisi boyunca toplam enerji sabittir."], formula: { expression: "P₁/ρg + V₁²/2g + z₁ = P₂/ρg + V₂²/2g + z₂", variables: ["P/ρg: Basınç yüksekliği (m)", "V²/2g: Hız yüksekliği (m)", "z: Konumsal yükseklik (m)"] }, example: { problem: "Bir boru hattında dar kesitte hız 6 m/s, geniş kesitte 1.5 m/s'dir. Geniş kesitteki basınç 3 bar ise dar kesitteki basıncı bulunuz (yükseklik farkı ihmal).", steps: ["P₁/ρg + V₁²/2g = P₂/ρg + V₂²/2g", "P₂ = P₁ + ρ(V₁² − V₂²)/2", "P₂ = 300000 + 1025 × (1.5² − 6²)/2", "P₂ = 300000 + 1025 × (2.25 − 36)/2", "P₂ = 300000 − 17297 = 282703 Pa ≈ 2.83 bar"], result: "Dar kesitteki basınç 2.83 bar'dır (hız arttıkça basınç düşer)." } }
+        { heading: "Denklem", paragraphs: ["İdeal akışkan için bir akım çizgisi boyunca toplam enerji sabittir."], formula: { expression: "P₁/ρg + V₁²/2g + z₁ = P₂/ρg + V₂²/2g + z₂", variables: ["P/ρg: Basınç yüksekliği (m)", "V²/2g: Hız yüksekliği (m)", "z: Konumsal yükseklik (m)"] }, example: { problem: "Bir boru hattında dar kesitte hız 6 m/s, geniş kesitte 1.5 m/s'dir. Geniş kesitteki basınç 3 bar ise dar kesitteki basıncı bulunuz (yükseklik farkı ihmal).", steps: ["P₁/ρg + V₁²/2g = P₂/ρg + V₂²/2g", "P₂ = P₁ + ρ(V₁² − V₂²)/2", "P₂ = 300000 + 1025 × (1.5² − 6²)/2", "P₂ = 300000 + 1025 × (2.25 − 36)/2", "P₂ = 300000 − 17297 = 282703 Pa ≈ 2.83 bar"], result: "The pressure in the narrow section is 2.83 bar (as speed increases, pressure decreases)." } }
       ],
       keyPoints: ["Hız arttıkça basınç düşer (Venturi etkisi).", "Gerçek akışlarda sürtünme kayıpları eklenir.", "Orifis ve Venturi debimetrelerinin çalışma prensibidir."]
     },
@@ -101,7 +101,7 @@ const content2: ContentMap = {
       title: "Darcy–Weisbach Denklemi",
       introduction: "Boru akışındaki sürtünme kayıplarını hesaplamak için kullanılan temel denklemdir. Gemi boru sistemi tasarımında pompa basınç yüksekliği hesaplarının ayrılmaz parçasıdır.",
       sections: [
-        { heading: "Denklem", paragraphs: ["Sürtünme basınç kaybı, boru uzunluğu, çapı, akışkan hızı ve sürtünme katsayısına bağlıdır."], formula: { expression: "hf = f × (L/D) × (V²/2g)", variables: ["hf: Sürtünme kayıp yüksekliği (m)", "f: Darcy sürtünme katsayısı (Moody diyagramından)", "L: Boru uzunluğu (m)", "D: Boru iç çapı (m)"] }, example: { problem: "İç çapı 100 mm, uzunluğu 50 m olan bir boruda su 3 m/s hızla akıyorsa ve f = 0.025 ise sürtünme kaybını bulunuz.", steps: ["hf = f × (L/D) × (V²/2g)", "hf = 0.025 × (50/0.1) × (3²/(2×9.81))", "hf = 0.025 × 500 × 0.459 = 5.74 m"], result: "Sürtünme kaybı 5.74 m su sütunudur." } }
+        { heading: "Denklem", paragraphs: ["Sürtünme basınç kaybı, boru uzunluğu, çapı, akışkan hızı ve sürtünme katsayısına bağlıdır."], formula: { expression: "hf = f × (L/D) × (V²/2g)", variables: ["hf: Sürtünme kayıp yüksekliği (m)", "f: Darcy sürtünme katsayısı (Moody diyagramından)", "L: Boru uzunluğu (m)", "D: Boru iç çapı (m)"] }, example: { problem: "İç çapı 100 mm, uzunluğu 50 m olan bir boruda su 3 m/s hızla akıyorsa ve f = 0.025 ise sürtünme kaybını bulunuz.", steps: ["hf = f × (L/D) × (V²/2g)", "hf = 0.025 × (50/0.1) × (3²/(2×9.81))", "hf = 0.025 × 500 × 0.459 = 5.74 m"], result: "Friction loss is 5.74 m water column." } }
       ],
       keyPoints: ["f değeri Re sayısı ve boru pürüzlülüğüne bağlıdır.", "Moody diyagramından veya Colebrook denkleminden bulunur.", "Uzun boru hatlarında sürtünme kaybı baskın kayıp kaynağıdır."]
     },
@@ -118,7 +118,7 @@ const content2: ContentMap = {
       title: "NPSH Kavramı ve Kavitasyon",
       introduction: "NPSH (Net Positive Suction Head), pompa emme tarafında yeterli basıncın olup olmadığını belirleyen kritik parametredir. Yetersiz NPSH kavitasyona yol açar.",
       sections: [
-        { heading: "NPSH Tanımları", paragraphs: ["NPSHavailable: Sistemin emme noktasında sağlayabildiği basınç yüksekliği. NPSHrequired: Pompanın kavitasyonsuz çalışması için ihtiyaç duyduğu minimum basınç yüksekliği (üretici katalogunda belirtilir).", "Güvenli çalışma koşulu: NPSHa > NPSHr (genellikle en az 0.5 m fark)"], formula: { expression: "NPSHa = (Patm − Pbuhar) / ρg + hstatik − hsürtünme", variables: ["Pbuhar: Akışkanın buharlaşma basıncı", "hstatik: Emme statik yüksekliği (pozitif: pompa altında)", "hsürtünme: Emme hattı sürtünme kaybı"] } },
+        { heading: "NPSH Tanımları", paragraphs: ["NPSHavailable: Sistemin emme noktasında sağlayabildiği basınç yüksekliği. NPSHrequired: Pompanın kavitasyonsuz çalışması için ihtiyaç duyduğu minimum basınç yüksekliği (üretici katalogunda belirtilir).", "Güvenli çalışma koşulu: NPSHa > NPSHr (genellikle en az 0.5 m fark)"], formula: { expression: "NPSHa = (Patm − Pbuhar) / ρg + hstatic − hfriction", variables: ["Pbuhar: Akışkanın buharlaşma basıncı", "hstatik: Emme statik yüksekliği (pozitif: pompa altında)", "hsürtünme: Emme hattı sürtünme kaybı"] } },
         { heading: "Kavitasyon", paragraphs: ["Kavitasyon, akışkan basıncının buharlaşma basıncının altına düşmesiyle oluşan buhar kabarcıklarının yüksek basınç bölgesinde çökerek malzeme hasarı, gürültü ve performans düşüşü yaratmasıdır. Çark kanatlarında oyuklanma (pitting) ve erozyon oluşturur."] }
       ],
       keyPoints: ["Kavitasyon pompa ömrünü ciddi oranda kısaltır.", "Sıcak akışkanlarda buharlaşma basıncı yüksek olduğundan kavitasyon riski artar.", "Emme hattını kısa ve büyük çaplı tutmak NPSHa'yı artırır."]
@@ -177,7 +177,7 @@ const content2: ContentMap = {
       title: "Normal Gerilme ve Deformasyon",
       introduction: "Normal gerilme, kesit alanına dik olarak etki eden kuvvetin birim alana düşen değeridir. Çekme ve basma gerilmeleri olarak ikiye ayrılır.",
       sections: [
-        { heading: "Gerilme ve Deformasyon", paragraphs: ["Gerilme σ = F/A formülüyle hesaplanır. Deformasyon (birim uzama) ε = ΔL/L₀ olarak tanımlanır."], formula: { expression: "σ = F/A    ve    ε = ΔL/L₀", variables: ["σ: Normal gerilme (Pa veya MPa)", "F: Kuvvet (N)", "A: Kesit alanı (m²)", "ε: Birim uzama (boyutsuz)"] }, example: { problem: "Çapı 25 mm olan bir çelik çubuk 50 kN çekme kuvvetine maruz kalıyorsa gerilmeyi hesaplayınız.", steps: ["A = π/4 × (0.025)² = 4.909 × 10⁻⁴ m²", "σ = F/A = 50000 / (4.909 × 10⁻⁴)", "σ = 101.86 × 10⁶ Pa = 101.9 MPa"], result: "Çekme gerilmesi 101.9 MPa'dır." } }
+        { heading: "Gerilme ve Deformasyon", paragraphs: ["Gerilme σ = F/A formülüyle hesaplanır. Deformasyon (birim uzama) ε = ΔL/L₀ olarak tanımlanır."], formula: { expression: "σ = F/A    ve    ε = ΔL/L₀", variables: ["σ: Normal gerilme (Pa veya MPa)", "F: Kuvvet (N)", "A: Kesit alanı (m²)", "ε: Birim uzama (boyutsuz)"] }, example: { problem: "Çapı 25 mm olan bir çelik çubuk 50 kN çekme kuvvetine maruz kalıyorsa gerilmeyi hesaplayınız.", steps: ["A = π/4 × (0.025)² = 4.909 × 10⁻⁴ m²", "σ = F/A = 50000 / (4.909 × 10⁻⁴)", "σ = 101.86 × 10⁶ Pa = 101.9 MPa"], result: "Tensile stress is 101.9 MPa." } }
       ],
       keyPoints: ["Çekme gerilmesi pozitif, basma gerilmesi negatif olarak işaretlenir.", "Akma gerilmesinin aşılması kalıcı deformasyona neden olur.", "Gemi yapısal çeliğinde akma gerilmesi 235-390 MPa arasındadır."]
     },
@@ -185,7 +185,7 @@ const content2: ContentMap = {
       title: "Hooke Yasası ve Elastiklik Modülü",
       introduction: "Hooke yasası, elastik bölgede gerilme ile birim uzama arasında doğrusal orantı olduğunu belirtir.",
       sections: [
-        { heading: "Yasa ve Elastiklik Modülü", paragraphs: ["Elastik bölgede σ = E × ε bağıntısı geçerlidir. E (Young modülü veya elastiklik modülü) malzemenin rijitliğinin ölçüsüdür."], formula: { expression: "σ = E × ε    →    E = σ/ε", variables: ["E: Elastiklik modülü (GPa)", "Çelik için E ≈ 200-210 GPa", "Alüminyum için E ≈ 70 GPa", "Bakır için E ≈ 120 GPa"] }, example: { problem: "200 GPa elastiklik modülüne sahip çelik çubuğun uzunluğu 2 m, gerilmesi 150 MPa ise uzama miktarını bulunuz.", steps: ["ε = σ/E = 150/200000 = 7.5 × 10⁻⁴", "ΔL = ε × L₀ = 7.5 × 10⁻⁴ × 2 = 0.0015 m = 1.5 mm"], result: "Çubuk 1.5 mm uzar." } }
+        { heading: "Yasa ve Elastiklik Modülü", paragraphs: ["Elastik bölgede σ = E × ε bağıntısı geçerlidir. E (Young modülü veya elastiklik modülü) malzemenin rijitliğinin ölçüsüdür."], formula: { expression: "σ = E × ε    →    E = σ/ε", variables: ["E: Elastiklik modülü (GPa)", "Çelik için E ≈ 200-210 GPa", "Alüminyum için E ≈ 70 GPa", "Bakır için E ≈ 120 GPa"] }, example: { problem: "200 GPa elastiklik modülüne sahip çelik çubuğun uzunluğu 2 m, gerilmesi 150 MPa ise uzama miktarını bulunuz.", steps: ["ε = σ/E = 150/200000 = 7.5 × 10⁻⁴", "ΔL = ε × L₀ = 7.5 × 10⁻⁴ × 2 = 0.0015 m = 1.5 mm"], result: "The rod extends 1.5 mm." } }
       ],
       keyPoints: ["Hooke yasası yalnızca elastik bölgede geçerlidir.", "E değeri malzemeye özgüdür ve sıcaklıkla azalır.", "Yüksek E değeri rijit (sert) malzeme anlamına gelir."]
     },
@@ -193,7 +193,7 @@ const content2: ContentMap = {
       title: "Mil Çapı Hesabı (Burulma ve Eğilme)",
       introduction: "Gemi tahrik şaftları ve pompa milleri hem burulma hem eğilme yüküne maruz kalır. Mil çapı bu bileşik yüklemeye göre boyutlandırılır.",
       sections: [
-        { heading: "Burulma Gerilmesi", paragraphs: ["Dairesel kesitli bir mile tork uygulandığında kayma gerilmesi oluşur."], formula: { expression: "τ = T × r / J = 16T / πd³", variables: ["τ: Kayma gerilmesi (Pa)", "T: Tork (Nm)", "d: Mil çapı (m)", "J: Polar atalet momenti = πd⁴/32"] }, example: { problem: "Bir ara şaft 500 kNm tork iletmektedir. İzin verilen kayma gerilmesi 60 MPa ise minimum mil çapını bulunuz.", steps: ["d³ = 16T / (πτ)", "d³ = 16 × 500000 / (π × 60 × 10⁶)", "d³ = 8000000 / 188496000 = 0.04244 m³", "d = 0.349 m ≈ 350 mm"], result: "Minimum mil çapı 350 mm'dir." } }
+        { heading: "Burulma Gerilmesi", paragraphs: ["Dairesel kesitli bir mile tork uygulandığında kayma gerilmesi oluşur."], formula: { expression: "τ = T × r / J = 16T / πd³", variables: ["τ: Kayma gerilmesi (Pa)", "T: Tork (Nm)", "d: Mil çapı (m)", "J: Polar atalet momenti = πd⁴/32"] }, example: { problem: "Bir ara şaft 500 kNm tork iletmektedir. İzin verilen kayma gerilmesi 60 MPa ise minimum mil çapını bulunuz.", steps: ["d³ = 16T / (πτ)", "d³ = 16 × 500000 / (π × 60 × 10⁶)", "d³ = 8000000 / 188496000 = 0.04244 m³", "d = 0.349 m ≈ 350 mm"], result: "Minimum shaft diameter is 350 mm." } }
       ],
       keyPoints: ["Bileşik yüklemede Von Mises veya Tresca kriteri kullanılır.", "Klas kuruluşları mil çapını kendi formülleriyle doğrular.", "Pervane şaftı çapı motor gücü ve devire bağlıdır."]
     },
@@ -316,7 +316,7 @@ const content2: ContentMap = {
       title: "Viskozite ve Sıcaklık İlişkisi",
       introduction: "Viskozite, yakıtın enjeksiyon kalitesini belirleyen en önemli parametredir. Sıcaklık arttıkça viskozite düşer.",
       sections: [
-        { heading: "Viskozite Kontrolü", paragraphs: ["Enjeksiyon öncesi yakıt viskozitesi 10-15 cSt'ye ayarlanmalıdır. HFO için ısıtma sıcaklığı 130-150°C, VLSFO için 80-100°C arasındadır.", "Viskometre, yakıt hattındaki viskoziteyi sürekli ölçer ve ısıtıcıyı otomatik kontrol eder."], formula: { expression: "Enjeksiyon viskozitesi = 10-15 cSt (motor üreticisi tavsiyesi)", variables: [] } }
+        { heading: "Viskozite Kontrolü", paragraphs: ["Enjeksiyon öncesi yakıt viskozitesi 10-15 cSt'ye ayarlanmalıdır. HFO için ısıtma sıcaklığı 130-150°C, VLSFO için 80-100°C arasındadır.", "Viskometre, yakıt hattındaki viskoziteyi sürekli ölçer ve ısıtıcıyı otomatik kontrol eder."], formula: { expression: "Injection viscosity = 10-15 cSt (engine manufacturer recommendation)", variables: [] } }
       ],
       keyPoints: ["Düşük viskozite sızıntı ve pompa aşınmasına neden olur.", "Yüksek viskozite kötü atomizasyon ve eksik yanmaya yol açar.", "Viskozite-sıcaklık grafiği (ASTM D341) yakıt yönetiminde kullanılır."]
     },
@@ -362,7 +362,7 @@ const content2: ContentMap = {
       title: "COP (Performans Katsayısı) Hesabı",
       introduction: "COP, soğutma sisteminin verimliliğini gösteren temel parametredir. Elde edilen soğutma etkisinin harcanan enerjiye oranıdır.",
       sections: [
-        { heading: "COP Hesabı", paragraphs: ["Soğutma COP'u, evaporatördeki ısı alımının kompresör iş girdisine oranıdır."], formula: { expression: "COP = Qevaporatör / Wkompresör = (h₁ − h₄) / (h₂ − h₁)", variables: ["h₁: Evaporatör çıkışı entalpisi", "h₂: Kompresör çıkışı entalpisi", "h₄: Genleşme valfi çıkışı entalpisi"] }, example: { problem: "Bir soğutma sisteminde h₁ = 400 kJ/kg, h₂ = 450 kJ/kg, h₃ = h₄ = 250 kJ/kg ise COP'u bulunuz.", steps: ["Qevap = h₁ − h₄ = 400 − 250 = 150 kJ/kg", "Wkomp = h₂ − h₁ = 450 − 400 = 50 kJ/kg", "COP = 150/50 = 3.0"], result: "COP = 3.0 (her 1 kW kompresör gücü ile 3 kW soğutma sağlanır)." } }
+        { heading: "COP Hesabı", paragraphs: ["Soğutma COP'u, evaporatördeki ısı alımının kompresör iş girdisine oranıdır."], formula: { expression: "COP = Qevaporator / Wcompressor = (h₁ − h₄) / (h₂ − h₁)", variables: ["h₁: Evaporatör çıkışı entalpisi", "h₂: Kompresör çıkışı entalpisi", "h₄: Genleşme valfi çıkışı entalpisi"] }, example: { problem: "Bir soğutma sisteminde h₁ = 400 kJ/kg, h₂ = 450 kJ/kg, h₃ = h₄ = 250 kJ/kg ise COP'u bulunuz.", steps: ["Qevap = h₁ − h₄ = 400 − 250 = 150 kJ/kg", "Wkomp = h₂ − h₁ = 450 − 400 = 50 kJ/kg", "COP = 150/50 = 3.0"], result: "COP = 3.0 (for every 1 kW compressor power, 3 kW cooling is provided)." } }
       ],
       keyPoints: ["COP > 1 olması beklenir; düşük COP arıza göstergesidir.", "Evaporatör ve kondenser sıcaklıkları COP'u doğrudan etkiler.", "Fouling, soğutucu eksikliği ve hava kaçağı COP'u düşürür."]
     },
@@ -664,7 +664,7 @@ const content2: ContentMap = {
       title: "Hız Optimizasyonu (Slow Steaming)",
       introduction: "Slow steaming, gemi hızını düşürerek yakıt tüketimini ve emisyonları önemli ölçüde azaltan operasyonel verimlilik yöntemidir.",
       sections: [
-        { heading: "Verimlilik Etkisi", paragraphs: ["Yakıt tüketimi yaklaşık olarak hızın küpüyle orantılıdır. Hızın %10 azaltılması yakıt tüketimini yaklaşık %27 düşürür.", "Motor yükü düştüğünde SFOC (özgül yakıt tüketimi) artar, ancak toplam tüketim yine de azalır."], formula: { expression: "Yakıt tüketimi ∝ V³  →  FC₂/FC₁ ≈ (V₂/V₁)³", variables: ["V: Gemi hızı (knot)", "FC: Yakıt tüketimi"] }, example: { problem: "Bir gemi 14 knot'ta günde 45 ton yakıt tüketiyorsa, 12 knot'ta tahmini tüketimi nedir?", steps: ["FC₂ = FC₁ × (V₂/V₁)³ = 45 × (12/14)³", "FC₂ = 45 × (0.857)³ = 45 × 0.630 = 28.3 ton/gün"], result: "12 knot'ta yakıt tüketimi yaklaşık 28.3 ton/gündür (%37 tasarruf)." } }
+        { heading: "Verimlilik Etkisi", paragraphs: ["Yakıt tüketimi yaklaşık olarak hızın küpüyle orantılıdır. Hızın %10 azaltılması yakıt tüketimini yaklaşık %27 düşürür.", "Motor yükü düştüğünde SFOC (özgül yakıt tüketimi) artar, ancak toplam tüketim yine de azalır."], formula: { expression: "Fuel consumption ∝ V³ → FC₂/FC₁ ≈ (V₂/V₁)³", variables: ["V: Gemi hızı (knot)", "FC: Yakıt tüketimi"] }, example: { problem: "Bir gemi 14 knot'ta günde 45 ton yakıt tüketiyorsa, 12 knot'ta tahmini tüketimi nedir?", steps: ["FC₂ = FC₁ × (V₂/V₁)³ = 45 × (12/14)³", "FC₂ = 45 × (0.857)³ = 45 × 0.630 = 28.3 ton/gün"], result: "At 12 knots, fuel consumption is approximately 28.3 tons/day (37% saving)." } }
       ],
       keyPoints: ["Slow steaming en etkili CO₂ azaltma yöntemidir.", "Motor üreticisi tavsiyesinin altına düşülmemelidir (minimum yük %25-30).", "Düşük yükte silindir durumu ve turboşarj performansı izlenmelidir."]
     },

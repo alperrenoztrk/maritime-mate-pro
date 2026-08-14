@@ -134,7 +134,6 @@ export const ENGLISH_CORE_SCREEN_COPY: Readonly<Record<string, string>> = {
   "Köprüüstü Cihazları": "Bridge Equipment",
   "Gemi Görevleri": "Shipboard Duties",
   "Gemi Operasyonları": "Ship Operations",
-  "Makine Bölümü": "Engineering Department",
   "Denizcilik Sözlüğü": "Maritime Glossary",
   Mevzuat: "Regulations",
   "Geçiş Planı": "Passage Planning",

@@ -11,9 +11,9 @@ const content5: ContentMap = {
       title: "Yük Paylaşımı ve Frekans Regülasyonu",
       introduction: "Paralel çalışan jeneratörlerde yük paylaşımı, her jeneratörün kapasitesi oranında güç üretmesini sağlayan kontrol mekanizmasıdır.",
       sections: [
-        { heading: "Aktif Güç Paylaşımı", paragraphs: ["Aktif güç (kW) paylaşımı frekans (hız) kontrolü ile yapılır. Governor droop ayarı eşit olan jeneratörler eşit yük paylaşır.", "Droop kontrol: Yük arttıkça frekans düşer. İki jeneratörün droop eğrileri kesişim noktasında yük paylaşımı belirlenir."], formula: { expression: "Droop (%) = [(fboş − ftam yük) / fnominal] × 100", variables: ["Tipik droop: %3-5", "Eşit droop → eşit yük paylaşımı"] } },
+        { heading: "Aktif Güç Paylaşımı", paragraphs: ["Aktif güç (kW) paylaşımı frekans (hız) kontrolü ile yapılır. Governor droop ayarı eşit olan jeneratörler eşit yük paylaşır.", "Droop kontrol: Yük arttıkça frekans düşer. İki jeneratörün droop eğrileri kesişim noktasında yük paylaşımı belirlenir."], formula: { expression: "Droop (%) = [(fnoload − ffull load) / fnominal] × 100", variables: ["Tipik droop: %3-5", "Eşit droop → eşit yük paylaşımı"] } },
         { heading: "Reaktif Güç Paylaşımı", paragraphs: ["Reaktif güç (kVAr) paylaşımı gerilim (AVR droop) kontrolü ile yapılır. Reactive current compensation veya cross-current compensation kullanılır.", "Dengesiz reaktif güç paylaşımı jeneratör aşırı ısınmasına neden olur."] },
-        { heading: "Sayısal Örnek", paragraphs: [], example: { problem: "500 kW ve 750 kW kapasiteli iki jeneratör paralel çalışmaktadır. Toplam yük 800 kW ise her jeneratörün yük paylaşımını bulunuz.", steps: ["Kapasite oranı: 500/(500+750) = 0.4 ve 750/(500+750) = 0.6", "G1 yükü: 0.4 × 800 = 320 kW", "G2 yükü: 0.6 × 800 = 480 kW"], result: "500 kW jeneratör 320 kW (%64), 750 kW jeneratör 480 kW (%64) yük taşır." } }
+        { heading: "Sayısal Örnek", paragraphs: [], example: { problem: "500 kW ve 750 kW kapasiteli iki jeneratör paralel çalışmaktadır. Toplam yük 800 kW ise her jeneratörün yük paylaşımını bulunuz.", steps: ["Kapasite oranı: 500/(500+750) = 0.4 ve 750/(500+750) = 0.6", "G1 yükü: 0.4 × 800 = 320 kW", "G2 yükü: 0.6 × 800 = 480 kW"], result: "A 500 kW generator carries 320 kW (64%), a 750 kW generator carries 480 kW (64%) load." } }
       ],
       keyPoints: ["Eşit olmayan droop ayarı dengesiz yük paylaşımına neden olur.", "İzochronous mod yalnızca tek jeneratör çalışmasında kullanılır.", "Güç yönetim sistemi (PMS) yük paylaşımını otomatik izler."]
     },
@@ -47,7 +47,7 @@ const content5: ContentMap = {
             "Isı geri kazanım performansı; motor yükü, egzoz debisi, egzoz giriş sıcaklığı, gaz/su tarafı kirlenme (fouling), su kimyası, drum seviye kontrol kalitesi ve otomasyon ayarlarının birlikte etkisiyle belirlenir."
           ],
           formula: {
-            expression: "Q = ṁgaz · cp,gaz · (Tgiriş − Tçıkış)",
+            expression: "Q = ṁgas · cp,gas · (T inlet − Toutlet)",
             variables: [
               "Q: Ekonomizerde geri kazanılan ısı (kW)",
               "ṁ_gaz: Egzoz gazı debisi (kg/s)",
@@ -165,7 +165,7 @@ const content5: ContentMap = {
             "Aynı yükte ekonomik karşılaştırma yapılırken, ekonomizer aktif/pasif durumda yardımcı kazan yakıt tüketim farkı (kg/h) ve sefer süresine etkisi değerlendirilir."
           ],
           formula: {
-            expression: "Q = ṁgaz · cp,gaz · (Tgiriş − Tçıkış)\nṁbuhar ≈ Q / hfg\nYakıt tasarrufu ≈ (Q / ηkazan) / LHV",
+            expression: "Q = ṁgas · cp,gas · (T inlet − Toutlet)\nṁsteam ≈ Q / hfg\nFuel saving ≈ (Q / ηboiler) / LHV",
             variables: [
               "ṁbuhar: Yaklaşık buhar üretimi (kg/s)",
               "hfg: Buharlaşma gizli ısısı (kJ/kg)",
@@ -180,7 +180,7 @@ const content5: ContentMap = {
               "ṁbuhar ≈ 2592 / 2100 = 1.234 kg/s",
               "Saatlik buhar ≈ 1.234 × 3600 = 4442 kg/h (~4.44 t/h)"
             ],
-            result: "Bu çalışma noktasında ekonomizer yaklaşık 2.59 MW geri kazanım ve 4.44 t/h buhar üretim potansiyeli sağlar."
+            result: "At this operating point, the economizer provides approximately 2.59 MW of recovery and 4.44 t/h of steam production potential."
           }
         },
         {
@@ -268,7 +268,7 @@ const content5: ContentMap = {
       title: "Gravity Disc Seçimi",
       introduction: "Gravity disc (damper ring), purifier modunda çalışan separatörde yağ-su arayüzünün konumunu belirleyen kritik bileşendir.",
       sections: [
-        { heading: "Seçim Prensibi", paragraphs: ["Gravity disc çapı, arıtılacak akışkanın yoğunluğuna göre seçilir. Yoğunluk arttıkça daha büyük çaplı disc kullanılır.", "Yanlış seçim: Çok büyük disc → yağ su çıkışından akar (yağ kaybı). Çok küçük disc → su yağ çıkışına karışır (yetersiz ayırma)."], formula: { expression: "Seçim kriteri: ρyakıt / ρsu oranına göre üretici tablosu", variables: ["ρyakıt: 15°C'de yakıt yoğunluğu (kg/m³)", "ρsu: 1000 kg/m³ (tatlı su)"] } },
+        { heading: "Seçim Prensibi", paragraphs: ["Gravity disc çapı, arıtılacak akışkanın yoğunluğuna göre seçilir. Yoğunluk arttıkça daha büyük çaplı disc kullanılır.", "Yanlış seçim: Çok büyük disc → yağ su çıkışından akar (yağ kaybı). Çok küçük disc → su yağ çıkışına karışır (yetersiz ayırma)."], formula: { expression: "Selection criterion: manufacturer's table based on ρfuel / ρwater ratio", variables: ["ρyakıt: 15°C'de yakıt yoğunluğu (kg/m³)", "ρsu: 1000 kg/m³ (tatlı su)"] } },
         { heading: "Pratik Uygulama", paragraphs: ["Yakıt bunker delivery note (BDN) üzerindeki yoğunluk değeri ve arıtma sıcaklığındaki yoğunluk kullanılarak üretici nomogramından uygun disc seçilir.", "Sıcaklık yoğunluğu etkiler: Sıcaklık arttıkça yoğunluk düşer."] }
       ],
       keyPoints: ["Her yeni yakıt partisinde gravity disc uygunluğu kontrol edilmelidir.", "ALCAP sistemlerde gravity disc değişimi gerekmez.", "Deneme çalıştırma ile su çıkışından yağ gelip gelmediği kontrol edilir."]
@@ -313,7 +313,7 @@ const content5: ContentMap = {
       title: "Üretim Kapasitesi ve Verim",
       introduction: "Gemi tatlı su üretim sisteminin kapasitesi, mürettebat ihtiyacı, kazan besleme suyu ve teknik kullanım için yeterli olmalıdır.",
       sections: [
-        { heading: "Kapasite Hesabı", paragraphs: ["Mürettebat su tüketimi: 150-200 litre/kişi/gün.", "Kazan besleme suyu: 2-5 ton/gün (kazan kapasitesine göre).", "Teknik kullanım (yıkama vb.): 1-3 ton/gün."], example: { problem: "25 mürettebatlı bir geminin günlük tatlı su ihtiyacını ve gerekli üretim kapasitesini hesaplayınız.", steps: ["Mürettebat: 25 × 200 L = 5000 L = 5 ton/gün", "Kazan: 3 ton/gün", "Teknik: 2 ton/gün", "Toplam: 10 ton/gün", "%20 güvenlik payı: 10 × 1.2 = 12 ton/gün"], result: "Gerekli üretim kapasitesi minimum 12 ton/gün olmalıdır." } }
+        { heading: "Kapasite Hesabı", paragraphs: ["Mürettebat su tüketimi: 150-200 litre/kişi/gün.", "Kazan besleme suyu: 2-5 ton/gün (kazan kapasitesine göre).", "Teknik kullanım (yıkama vb.): 1-3 ton/gün."], example: { problem: "25 mürettebatlı bir geminin günlük tatlı su ihtiyacını ve gerekli üretim kapasitesini hesaplayınız.", steps: ["Mürettebat: 25 × 200 L = 5000 L = 5 ton/gün", "Kazan: 3 ton/gün", "Teknik: 2 ton/gün", "Toplam: 10 ton/gün", "%20 güvenlik payı: 10 × 1.2 = 12 ton/gün"], result: "Required production capacity should be a minimum of 12 tons/day." } }
       ],
       keyPoints: ["Evaporatör kapasitesi motor yüküne bağlıdır; RO bağımsızdır.", "Uzun seyirlerde su üretim güvenilirliği kritiktir.", "Tatlı su tank kapasitesi en az 3-5 günlük ihtiyacı karşılamalıdır."]
     },
@@ -321,7 +321,7 @@ const content5: ContentMap = {
       title: "Ara Soğutma ve Son Soğutma",
       introduction: "Çok kademeli kompresörlerde kademeler arası soğutma (intercooling) ve son kademe sonrası soğutma (aftercooling), verim artışı ve güvenlik için zorunludur.",
       sections: [
-        { heading: "Ara Soğutma (Intercooling)", paragraphs: ["Birinci kademe çıkışındaki sıcak hava, bir ısı eşanjöründen geçirilerek soğutulur. Havanın hacmi küçülür ve ikinci kademe sıkıştırma işi azalır.", "Soğutma ortamı: Tatlı su veya deniz suyu."], formula: { expression: "İdeal ara soğutma basıncı: Para = √(P₁ × P₂)", variables: ["P₁: Emme basıncı", "P₂: Son basınç"] } },
+        { heading: "Ara Soğutma (Intercooling)", paragraphs: ["Birinci kademe çıkışındaki sıcak hava, bir ısı eşanjöründen geçirilerek soğutulur. Havanın hacmi küçülür ve ikinci kademe sıkıştırma işi azalır.", "Soğutma ortamı: Tatlı su veya deniz suyu."], formula: { expression: "Ideal intercooling pressure: Para = √(P₁ × P₂)", variables: ["P₁: Emme basıncı", "P₂: Son basınç"] } },
         { heading: "Son Soğutma (Aftercooling)", paragraphs: ["Son kademe çıkışındaki hava 200-250°C olabilir. Son soğutucu bu sıcaklığı ortam sıcaklığına yakın bir değere düşürür.", "Soğutma sonrası oluşan kondens otomatik drenaj vanası ile tahliye edilir."] }
       ],
       keyPoints: ["Yetersiz soğutma yağ tutuşması riskini artırır.", "Soğutucu yüzeyler periyodik temizlenmelidir.", "Kondens birikimi hava şişelerine su girmesine neden olur."]
@@ -725,7 +725,7 @@ const content5: ContentMap = {
       title: "CII (Karbon Yoğunluğu Göstergesi)",
       introduction: "CII, gemilerin operasyonel karbon yoğunluğunu yıllık bazda ölçen ve derecelendiren zorunlu IMO mekanizmasıdır.",
       sections: [
-        { heading: "CII Hesabı", paragraphs: [], formula: { expression: "CII = Yıllık CO₂ emisyonu / (DWT × Kat edilen mesafe)\n[gCO₂/ton·nm]", variables: ["CO₂ = Yakıt tüketimi × CF", "DWT: Deadweight", "Mesafe: Yıllık toplam seyir mesafesi"] } },
+        { heading: "CII Hesabı", paragraphs: [], formula: { expression: "CII = Annual CO₂ emissions / (DWT × Distance travelled)\n[gCO₂/ton·nm]", variables: ["CO₂ = Yakıt tüketimi × CF", "DWT: Deadweight", "Mesafe: Yıllık toplam seyir mesafesi"] } },
         { heading: "Derecelendirme", paragraphs: [], table: { headers: ["Derece", "Performans", "Aksiyon"], rows: [["A", "Çok iyi", "Teşvik"], ["B", "İyi", "Teşvik"], ["C", "Orta (referans)", "İzleme"], ["D", "Kötü", "Düzeltici aksiyon planı (3 yıl içinde C'ye getir)"], ["E", "Çok kötü", "Acil düzeltici aksiyon planı"]] } }
       ],
       keyPoints: ["CII her yıl hesaplanır ve referans değer sıkılaştırılır.", "D veya E alan gemiler SEEMP Part III'te düzeltici plan sunmalıdır.", "Slow steaming, trim optimizasyonu ve WHRS CII'yı iyileştirir."]
