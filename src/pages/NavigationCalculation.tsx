@@ -138,14 +138,14 @@ const CALC_TITLES: Record<CalcId, string> = {
   gc: "Great Circle",
   rhumb: "Rhumb Line (Mercator)",
   plane: "Plane Sailing",
-  eta: "Temel Seyir (Zaman–Mesafe–Hız)",
+  eta: "Basic Navigation (Time–Distance–Speed)",
   midlat: "Middle Latitude Sailing",
-  chart: "Chart Ölçeği (cm ↔ NM)",
-  position: "DR / Enlem–Boylam",
+  chart: "Chart Scale (cm ↔ NM)",
+  position: "DR / Latitude–Longitude",
   current: "Current Triangle (CTS)",
   compass: "Compass Conversions",
   cpa: "CPA / TCPA",
-  radar: "Radar Plot (Hedef Rota/Hız)",
+  radar: "Radar Plot (Target Course/Speed)",
   colreg: "COLREG Durum & Manevra",
   sight: "Sight Reduction",
   astro: "Astronomik Seyir (Almanac + LOP)",
@@ -266,7 +266,7 @@ export default function NavigationCalculationPage() {
     plannedTotalNm: "",
     dmgNm: "",
     sogKn: "",
-    // Time conversions (kitap: GMT/LMT/ZT ilişkileri)
+    // Time conversions (book: GMT/LMT/ZT relations)
     timeUtc: "",
     zoneOffsetHours: "0",
     lonForLmt: "",
@@ -1368,21 +1368,21 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="gc-lat1"
-              label="Başlangıç Enlemi (φ₁)"
+              label="Initial Latitude (φ₁)"
               value={gcInputs.lat1}
               onChange={(val) => setGcInputs({ ...gcInputs, lat1: val })}
               isLatitude={true}
             />
             <CoordinateInput
               id="gc-lon1"
-              label="Başlangıç Boylamı (λ₁)"
+              label="Initial Longitude (λ₁)"
               value={gcInputs.lon1}
               onChange={(val) => setGcInputs({ ...gcInputs, lon1: val })}
               isLatitude={false}
             />
             <CoordinateInput
               id="gc-lat2"
-              label="Hedef Enlemi (φ₂)"
+              label="Target Latitude (φ₂)"
               value={gcInputs.lat2}
               onChange={(val) => setGcInputs({ ...gcInputs, lat2: val })}
               isLatitude={true}
@@ -1395,10 +1395,10 @@ export default function NavigationCalculationPage() {
               isLatitude={false}
             />
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Waypoint üretimi (opsiyonel)</div>
+              <div className="text-sm font-semibold">Waypoint generation (optional)</div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="gc-wp-step">Step (NM) (örn. 60)</Label>
+                  <Label htmlFor="gc-wp-step">Step (NM) (e.g. 60)</Label>
                   <Input id="gc-wp-step" type="number" value={gcInputs.wpStepNm} onChange={(e) => setGcInputs({ ...gcInputs, wpStepNm: e.target.value })} />
                 </div>
                 <div>
@@ -1406,7 +1406,7 @@ export default function NavigationCalculationPage() {
                   <Input id="gc-wp-seg" type="number" value={gcInputs.wpSegments} onChange={(e) => setGcInputs({ ...gcInputs, wpSegments: e.target.value })} />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">Step girilirse mesafeye göre waypoint sayısı seçilir; segments girilirse sabit sayıda parçaya bölünür.</div>
+              <div className="text-xs text-muted-foreground">If Step is entered, the number of waypoints is derived from the distance; if segments is entered, the leg is split into that fixed number of parts.</div>
             </div>
           </div>
         );
@@ -1429,7 +1429,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="rl-lat2"
-              label="Hedef Enlemi"
+              label="Target Latitude"
               value={rhumbInputs.lat2}
               onChange={(val) => setRhumbInputs({ ...rhumbInputs, lat2: val })}
               isLatitude={true}
@@ -1462,7 +1462,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="ps-lat2"
-              label="Hedef Enlemi"
+              label="Target Latitude"
               value={planeInputs.lat2}
               onChange={(val) => setPlaneInputs({ ...planeInputs, lat2: val })}
               isLatitude={true}
@@ -1495,7 +1495,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="ml-lat2"
-              label="Hedef Enlemi"
+              label="Target Latitude"
               value={midlatInputs.lat2}
               onChange={(val) => setMidlatInputs({ ...midlatInputs, lat2: val })}
               isLatitude={true}
@@ -1524,7 +1524,7 @@ export default function NavigationCalculationPage() {
                 />
               </div>
               <div>
-                <Label htmlFor="chart-scale">Ölçek Paydası (1:xxxx)</Label>
+                <Label htmlFor="chart-scale">Scale Denominator (1:xxxx)</Label>
                 <Input
                   id="chart-scale"
                   type="number"
@@ -1536,7 +1536,7 @@ export default function NavigationCalculationPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="chart-nm">Mesafe (NM)</Label>
+                <Label htmlFor="chart-nm">Distance (NM)</Label>
                 <Input
                   id="chart-nm"
                   type="number"
@@ -1546,7 +1546,7 @@ export default function NavigationCalculationPage() {
                 />
               </div>
               <div className="text-xs text-muted-foreground flex items-end">
-                1 NM = 185200 cm, cm↔NM dönüşümü için ölçek zorunludur.
+                1 NM = 185200 cm; a scale is required for cm↔NM conversion.
               </div>
             </div>
           </div>
@@ -1570,11 +1570,11 @@ export default function NavigationCalculationPage() {
             />
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="dr-course">Kurs (True, °)</Label>
+                <Label htmlFor="dr-course">Course (True, °)</Label>
                 <Input id="dr-course" type="number" value={positionInputs.courseTrue} onChange={(e) => setPositionInputs({ ...positionInputs, courseTrue: e.target.value })} />
               </div>
               <div>
-                <Label htmlFor="dr-distance">Mesafe (NM)</Label>
+                <Label htmlFor="dr-distance">Distance (NM)</Label>
                 <Input id="dr-distance" type="number" value={positionInputs.distanceNm} onChange={(e) => setPositionInputs({ ...positionInputs, distanceNm: e.target.value })} />
               </div>
             </div>
@@ -1584,22 +1584,22 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-4">
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Hız – Mesafe – Zaman</div>
+              <div className="text-sm font-semibold">Speed – Distance – Time</div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label htmlFor="b-distance">Mesafe (NM)</Label>
+                  <Label htmlFor="b-distance">Distance (NM)</Label>
                   <Input id="b-distance" type="number" value={basicInputs.distanceNm} onChange={(e) => setBasicInputs({ ...basicInputs, distanceNm: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="b-speed">Hız (kn)</Label>
+                  <Label htmlFor="b-speed">Speed (kn)</Label>
                   <Input id="b-speed" type="number" value={basicInputs.speedKn} onChange={(e) => setBasicInputs({ ...basicInputs, speedKn: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="b-time">Zaman (saat)</Label>
+                  <Label htmlFor="b-time">Time (hours)</Label>
                   <Input id="b-time" type="number" value={basicInputs.timeHours} onChange={(e) => setBasicInputs({ ...basicInputs, timeHours: e.target.value })} />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">3 değerden 2’sini girin, diğeri hesaplanır.</div>
+              <div className="text-xs text-muted-foreground">Enter 2 of the 3 values; the third is calculated.</div>
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
@@ -1642,7 +1642,7 @@ export default function NavigationCalculationPage() {
                   <Input id="b-etd" type="datetime-local" value={basicInputs.etdUtc} onChange={(e) => setBasicInputs({ ...basicInputs, etdUtc: e.target.value })} />
                 </div>
                 <div className="text-xs text-muted-foreground flex items-end">
-                  Mesafe/Hız yukarıdan kullanılır.
+                  Distance/Speed are taken from above.
                 </div>
               </div>
             </div>
@@ -1666,7 +1666,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Zaman Dönüşümleri (UTC ↔ ZT ↔ LMT)</div>
+              <div className="text-sm font-semibold">Time Conversions (UTC ↔ ZT ↔ LMT)</div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="col-span-2">
                   <Label htmlFor="t-utc">UTC (datetime)</Label>
@@ -1681,7 +1681,7 @@ export default function NavigationCalculationPage() {
                   <Input id="t-lon" type="number" value={basicInputs.lonForLmt} onChange={(e) => setBasicInputs({ ...basicInputs, lonForLmt: e.target.value })} />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">LMT ≈ UTC + (Boylam × 4 dakika). Eğitim amaçlıdır.</div>
+              <div className="text-xs text-muted-foreground">LMT ≈ UTC + (Longitude × 4 minutes). For educational use.</div>
             </div>
           </div>
         );
@@ -1689,19 +1689,19 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="ct-course">İstenen Rota (°)</Label>
+              <Label htmlFor="ct-course">Desired Course (°)</Label>
               <Input id="ct-course" type="number" placeholder="045" value={currentInputs.course} onChange={(e) => setCurrentInputs({ ...currentInputs, course: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="ct-speed">Gemi Sürati (kn)</Label>
+              <Label htmlFor="ct-speed">Ship Speed (kn)</Label>
               <Input id="ct-speed" type="number" placeholder="" value={currentInputs.speed} onChange={(e) => setCurrentInputs({ ...currentInputs, speed: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="ct-set">Akıntı İstikameti (°)</Label>
+              <Label htmlFor="ct-set">Current Set (°)</Label>
               <Input id="ct-set" type="number" placeholder="090" value={currentInputs.set} onChange={(e) => setCurrentInputs({ ...currentInputs, set: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="ct-drift">Akıntı Sürati (kn)</Label>
+              <Label htmlFor="ct-drift">Current Drift (kn)</Label>
               <Input id="ct-drift" type="number" placeholder="2" value={currentInputs.drift} onChange={(e) => setCurrentInputs({ ...currentInputs, drift: e.target.value })} />
             </div>
           </div>
@@ -1710,11 +1710,11 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="comp-compass">Pusula Okuyuşu (°)</Label>
+              <Label htmlFor="comp-compass">Compass Reading (°)</Label>
               <Input id="comp-compass" type="number" placeholder="" value={compassInputs.compass} onChange={(e) => setCompassInputs({ ...compassInputs, compass: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="comp-variation">Varyasyon (°) (örn: 2E / 2W)</Label>
+              <Label htmlFor="comp-variation">Varyasyon (°) (e.g. 2E / 2W)</Label>
               <Input
                 id="comp-variation"
                 type="text"
@@ -1725,7 +1725,7 @@ export default function NavigationCalculationPage() {
               />
             </div>
             <div>
-              <Label htmlFor="comp-deviation">Deviasyon (°) (örn: 1E / 1W)</Label>
+              <Label htmlFor="comp-deviation">Deviasyon (°) (e.g. 1E / 1W)</Label>
               <Input
                 id="comp-deviation"
                 type="text"
@@ -1741,27 +1741,27 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="cpa-bearing">Hedef Kerterizi (°)</Label>
+              <Label htmlFor="cpa-bearing">Target Bearing (°)</Label>
               <Input id="cpa-bearing" type="number" placeholder="" value={cpaInputs.bearing} onChange={(e) => setCpaInputs({ ...cpaInputs, bearing: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="cpa-distance">Hedef Mesafesi (nm)</Label>
+              <Label htmlFor="cpa-distance">Target Distance (nm)</Label>
               <Input id="cpa-distance" type="number" placeholder="" value={cpaInputs.distance} onChange={(e) => setCpaInputs({ ...cpaInputs, distance: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="cpa-tcourse">Hedef Rotası (°)</Label>
+              <Label htmlFor="cpa-tcourse">Target Course (°)</Label>
               <Input id="cpa-tcourse" type="number" placeholder="" value={cpaInputs.targetCourse} onChange={(e) => setCpaInputs({ ...cpaInputs, targetCourse: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="cpa-tspeed">Hedef Sürati (kn)</Label>
+              <Label htmlFor="cpa-tspeed">Target Speed (kn)</Label>
               <Input id="cpa-tspeed" type="number" placeholder="" value={cpaInputs.targetSpeed} onChange={(e) => setCpaInputs({ ...cpaInputs, targetSpeed: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="cpa-ocourse">Kendi Rotamız (°)</Label>
+              <Label htmlFor="cpa-ocourse">Own Course (°)</Label>
               <Input id="cpa-ocourse" type="number" placeholder="" value={cpaInputs.ownCourse} onChange={(e) => setCpaInputs({ ...cpaInputs, ownCourse: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="cpa-ospeed">Kendi Süratimiz (kn)</Label>
+              <Label htmlFor="cpa-ospeed">Own Speed (kn)</Label>
               <Input id="cpa-ospeed" type="number" placeholder="" value={cpaInputs.ownSpeed} onChange={(e) => setCpaInputs({ ...cpaInputs, ownSpeed: e.target.value })} />
             </div>
           </div>
@@ -1827,7 +1827,7 @@ export default function NavigationCalculationPage() {
               <Label htmlFor="colreg-rb">Relative Bearing (°) (0=pruva, 90=sancak beam)</Label>
               <Input id="colreg-rb" type="number" value={colregInputs.relativeBearing} onChange={(e) => setColregInputs({ ...colregInputs, relativeBearing: e.target.value })} />
             </div>
-            <div className="text-xs text-muted-foreground">Bu ekran hızlı sınıflama içindir; nihai COLREG kararı AIS/ARPA/ışıklar ve çevre şartlarıyla teyit edilmelidir.</div>
+            <div className="text-xs text-muted-foreground">This screen is for quick classification; the final COLREG decision must be confirmed with AIS/ARPA/lights and the surrounding conditions.</div>
           </div>
         );
       case "sight":
@@ -1835,7 +1835,7 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="sight-lat"
-              label="Tahmini Enlem"
+              label="Estimated Latitude"
               value={sightInputs.lat}
               onChange={(val) => setSightInputs({ ...sightInputs, lat: val })}
               isLatitude={true}
@@ -1860,11 +1860,11 @@ export default function NavigationCalculationPage() {
               <div className="text-sm font-semibold">Nautical Almanac (Sun) – UTC</div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="astro-date">Sight zamanı (UTC)</Label>
+                  <Label htmlFor="astro-date">Sight time (UTC)</Label>
                   <Input id="astro-date" type="datetime-local" value={astroInputs.dateUtc} onChange={(e) => setAstroInputs({ ...astroInputs, dateUtc: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="astro-alm-date">Günlük Almanac tarihi (UTC)</Label>
+                  <Label htmlFor="astro-alm-date">Daily Almanac date (UTC)</Label>
                   <Input id="astro-alm-date" type="date" value={astroInputs.almanacDateUtc} onChange={(e) => setAstroInputs({ ...astroInputs, almanacDateUtc: e.target.value })} />
                 </div>
               </div>
@@ -1872,8 +1872,8 @@ export default function NavigationCalculationPage() {
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
               <div className="text-sm font-semibold">Assumed Position (AP)</div>
-              <CoordinateInput id="astro-ap-lat" label="AP Enlem" value={astroInputs.apLat} onChange={(val) => setAstroInputs({ ...astroInputs, apLat: val })} isLatitude={true} />
-              <CoordinateInput id="astro-ap-lon" label="AP Boylam" value={astroInputs.apLon} onChange={(val) => setAstroInputs({ ...astroInputs, apLon: val })} isLatitude={false} />
+              <CoordinateInput id="astro-ap-lat" label="AP Latitude" value={astroInputs.apLat} onChange={(val) => setAstroInputs({ ...astroInputs, apLat: val })} isLatitude={true} />
+              <CoordinateInput id="astro-ap-lon" label="AP Longitude" value={astroInputs.apLon} onChange={(val) => setAstroInputs({ ...astroInputs, apLon: val })} isLatitude={false} />
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
@@ -1927,7 +1927,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="bearing-type">Hesaplama Türü</Label>
+              <Label htmlFor="bearing-type">Calculation Type</Label>
               <Select value={bearingInputs.type} onValueChange={(value) => setBearingInputs({ ...bearingInputs, type: value as typeof bearingInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select" />
@@ -1941,12 +1941,12 @@ export default function NavigationCalculationPage() {
             </div>
             {bearingInputs.type === "doubling" && (
               <div>
-                <Label htmlFor="bearing-angle">İlk Açı (°)</Label>
+                <Label htmlFor="bearing-angle">Initial Angle (°)</Label>
                 <Input id="bearing-angle" type="number" placeholder="" value={bearingInputs.angle} onChange={(e) => setBearingInputs({ ...bearingInputs, angle: e.target.value })} />
               </div>
             )}
             <div>
-              <Label htmlFor="bearing-run">Koşulan Mesafe (nm)</Label>
+              <Label htmlFor="bearing-run">Run Distance (nm)</Label>
               <Input id="bearing-run" type="number" placeholder="" value={bearingInputs.run} onChange={(e) => setBearingInputs({ ...bearingInputs, run: e.target.value })} />
             </div>
           </div>
@@ -1956,7 +1956,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-6">
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">İki Kerterizle Fix</div>
+              <div className="text-sm font-semibold">Two-Bearing Fix</div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <CoordinateInput id="fix-obj1-lat" label="Object 1 Lat" value={fixInputs.obj1Lat} onChange={(val) => setFixInputs({ ...fixInputs, obj1Lat: val })} isLatitude={true} />
@@ -1978,7 +1978,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Üç Kerterizle Fix (Least Squares)</div>
+              <div className="text-sm font-semibold">Three-Bearing Fix (Least Squares)</div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="space-y-3">
                   <CoordinateInput id="fix-obj3-lat" label="Object 3 Lat" value={fixInputs.obj3Lat} onChange={(val) => setFixInputs({ ...fixInputs, obj3Lat: val })} isLatitude={true} />
@@ -1989,13 +1989,13 @@ export default function NavigationCalculationPage() {
                   </div>
                 </div>
                 <div className="col-span-2 text-xs text-muted-foreground">
-                  Üç LOP aynı noktada kesişmeyebilir. Bu durumda en iyi uyumlu (least squares) fix ve residual (NM) üretilir.
+                  Three LOPs may not intersect at a single point. In that case the best-fit (least squares) fix and the residual (NM) are produced.
                 </div>
               </div>
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">1 Kerteriz + 1 Mesafe (Kerteriz + Mevki Dairesi)</div>
+              <div className="text-sm font-semibold">1 Bearing + 1 Distance (Bearing + Position Circle)</div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <CoordinateInput id="bd-obj-lat" label="Object Lat" value={fixInputs.bdObjLat} onChange={(val) => setFixInputs({ ...fixInputs, bdObjLat: val })} isLatitude={true} />
@@ -2015,7 +2015,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">2 Mesafe ile Fix (İki Mevki Dairesi Kesişimi)</div>
+              <div className="text-sm font-semibold">Two-Distance Fix (Intersection of Two Position Circles)</div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <CoordinateInput id="dd-obj1-lat" label="Object 1 Lat" value={fixInputs.ddObj1Lat} onChange={(val) => setFixInputs({ ...fixInputs, ddObj1Lat: val })} isLatitude={true} />
@@ -2036,7 +2036,7 @@ export default function NavigationCalculationPage() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
-                  <div className="text-xs text-muted-foreground">Opsiyonel: Yaklaşık mevki girersen iki kesişimden uygun olan seçilir.</div>
+                  <div className="text-xs text-muted-foreground">Optional: if you enter an approximate position, the appropriate one of the two intersections is selected.</div>
                   <CoordinateInput id="dd-apx-lat" label="Approx Lat (optional)" value={fixInputs.ddApproxLat} onChange={(val) => setFixInputs({ ...fixInputs, ddApproxLat: val })} isLatitude={true} />
                   <CoordinateInput id="dd-apx-lon" label="Approx Lon (optional)" value={fixInputs.ddApproxLon} onChange={(val) => setFixInputs({ ...fixInputs, ddApproxLon: val })} isLatitude={false} />
                 </div>
@@ -2044,7 +2044,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Running Fix (Taşınmış Kerteriz)</div>
+              <div className="text-sm font-semibold">Running Fix (Transferred Bearing)</div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <CoordinateInput id="run-obj1-lat" label="Object (t1) Lat" value={fixInputs.runObjOldLat} onChange={(val) => setFixInputs({ ...fixInputs, runObjOldLat: val })} isLatitude={true} />
@@ -2081,7 +2081,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="distance-type">Hesaplama Türü</Label>
+              <Label htmlFor="distance-type">Calculation Type</Label>
               <Select value={distanceInputs.type} onValueChange={(value) => setDistanceInputs({ ...distanceInputs, type: value as typeof distanceInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select" />
@@ -2094,12 +2094,12 @@ export default function NavigationCalculationPage() {
               </Select>
             </div>
             <div>
-              <Label htmlFor="distance-height">Yükseklik (m)</Label>
+              <Label htmlFor="distance-height">Height (m)</Label>
               <Input id="distance-height" type="number" placeholder="" value={distanceInputs.height} onChange={(e) => setDistanceInputs({ ...distanceInputs, height: e.target.value })} />
             </div>
             {distanceInputs.type === "light" && (
               <div>
-                <Label htmlFor="distance-light">Işık Yüksekliği (m)</Label>
+                <Label htmlFor="distance-light">Light Height (m)</Label>
                 <Input id="distance-light" type="number" placeholder="" value={distanceInputs.lightHeight} onChange={(e) => setDistanceInputs({ ...distanceInputs, lightHeight: e.target.value })} />
               </div>
             )}
@@ -2115,7 +2115,7 @@ export default function NavigationCalculationPage() {
                 <Input id="tide-hour" type="number" min={1} max={6} placeholder="" value={tideInputs.hour} onChange={(e) => setTideInputs({ ...tideInputs, hour: e.target.value })} />
               </div>
               <div>
-                <Label htmlFor="tide-range">Gelgit Aralığı (m)</Label>
+                <Label htmlFor="tide-range">Tidal Range (m)</Label>
                 <Input id="tide-range" type="number" placeholder="" value={tideInputs.range} onChange={(e) => setTideInputs({ ...tideInputs, range: e.target.value })} />
               </div>
             </div>
@@ -2127,10 +2127,10 @@ export default function NavigationCalculationPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                 <div className="sm:col-span-3">
-                  <Label htmlFor="tide-forecast-query">Liman / şehir</Label>
+                  <Label htmlFor="tide-forecast-query">Port / city</Label>
                   <Input
                     id="tide-forecast-query"
-                    placeholder="Örn: İzmir, Antalya, Manş Denizi..."
+                    placeholder="e.g. Izmir, Antalya, English Channel..."
                     value={tideForecastQuery}
                     onChange={(e) => setTideForecastQuery(e.target.value)}
                     onKeyDown={(e) => {
@@ -2143,7 +2143,7 @@ export default function NavigationCalculationPage() {
                 </div>
                 <div className="flex items-end">
                   <Button type="button" className="w-full" onClick={searchTideForecast} disabled={tideForecastLoading || !tideForecastQuery.trim()}>
-                    {tideForecastLoading ? "Aranıyor..." : "Search"}
+                    {tideForecastLoading ? "Searching..." : "Search"}
                   </Button>
                 </div>
               </div>
@@ -2153,7 +2153,7 @@ export default function NavigationCalculationPage() {
 
               {tideForecastSuggestions.length > 0 && !tideForecastData && (
                 <div className="space-y-2">
-                  <div className="text-xs text-muted-foreground">Eşleşmeler (seç):</div>
+                  <div className="text-xs text-muted-foreground">Matches (select):</div>
                   <div className="flex flex-wrap gap-2">
                     {tideForecastSuggestions.map((s) => (
                       <Button
@@ -2174,14 +2174,14 @@ export default function NavigationCalculationPage() {
               {tideForecastData && (
                 <div className="space-y-3">
                   <div className="text-sm">
-                    <span className="font-semibold">Seçilen:</span> {tideForecastData.selected.name}
+                    <span className="font-semibold">Selected:</span> {tideForecastData.selected.name}
                     {tideForecastData.selected.region ? ` — ${tideForecastData.selected.region}` : ""}
                     <span className="text-muted-foreground"> ({tideForecastData.timezoneLabel})</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {tideForecastData.locationUrl && (
                       <Button asChild size="sm" variant="outline">
-                        <a href={tideForecastData.locationUrl} target="_blank" rel="noreferrer">Sayfayı aç</a>
+                        <a href={tideForecastData.locationUrl} target="_blank" rel="noreferrer">Open page</a>
                       </Button>
                     )}
                     {typeof tideForecastData.rangeM === "number" && Number.isFinite(tideForecastData.rangeM) && (
@@ -2194,7 +2194,7 @@ export default function NavigationCalculationPage() {
                   {tideForecastData.timezoneLabel.trim().toUpperCase() !== "GMT" &&
                     tideForecastData.timezoneLabel.trim().toUpperCase() !== "UTC" && (
                       <div className="text-xs text-muted-foreground">
-                        Not: Saatler <strong>{tideForecastData.timezoneLabel}</strong> olarak geliyor. “HW/LW → Height of Tide (UTC)” alanlarına otomatik yazım sadece GMT/UTC’de yapılır.
+                        Note: Times are in <strong>{tideForecastData.timezoneLabel}</strong> . Automatic filling of the “HW/LW → Height of Tide (UTC)” fields is only done in GMT/UTC.
                       </div>
                     )}
 
@@ -2206,7 +2206,7 @@ export default function NavigationCalculationPage() {
                             <th className="text-left p-2">Olay</th>
                             <th className="text-left p-2">Date</th>
                             <th className="text-left p-2">Time</th>
-                            <th className="text-left p-2">Yükseklik (m)</th>
+                            <th className="text-left p-2">Height (m)</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -2230,27 +2230,27 @@ export default function NavigationCalculationPage() {
               <h4 className="font-semibold mb-3">Gelgit Tablosu</h4>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label htmlFor="tt-low">Alçak Su (m)</Label>
+                  <Label htmlFor="tt-low">Low Water (m)</Label>
                   <Input id="tt-low" type="number" placeholder="" value={tideTableInputs.lowTide} onChange={(e) => setTideTableInputs({ ...tideTableInputs, lowTide: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="tt-high">Yüksek Su (m)</Label>
+                  <Label htmlFor="tt-high">High Water (m)</Label>
                   <Input id="tt-high" type="number" placeholder="" value={tideTableInputs.highTide} onChange={(e) => setTideTableInputs({ ...tideTableInputs, highTide: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="tt-time">Alçak Su Zamanı</Label>
+                  <Label htmlFor="tt-time">Low Water Time</Label>
                   <Input id="tt-time" type="time" value={tideTableInputs.lowTideTime} onChange={(e) => setTideTableInputs({ ...tideTableInputs, lowTideTime: e.target.value })} />
                 </div>
               </div>
               <div className="mt-3">
-                <Button variant="secondary" className="w-full" type="button" onClick={generateTideTable}>Gelgit Tablosu Oluştur</Button>
+                <Button variant="secondary" className="w-full" type="button" onClick={generateTideTable}>Generate Tide Table</Button>
               </div>
             </div>
 
             <div className="rounded border p-3 bg-muted/30">
-              <div className="text-sm font-semibold mb-2">Dünya limanları için tide tables</div>
+              <div className="text-sm font-semibold mb-2">Tide tables for world ports</div>
               <div className="text-xs text-muted-foreground mb-3">
-                Liman adına göre hazır gelgit çizelgesi/tablolarına ulaşmak için:
+                To access ready-made tide charts/tables by port name:
               </div>
               <div className="flex flex-wrap gap-2">
                 <Button asChild variant="outline" size="sm">
@@ -2290,7 +2290,7 @@ export default function NavigationCalculationPage() {
                   <Input id="hot-q-time" type="datetime-local" value={tideHotInputs.queryTimeUtc} onChange={(e) => setTideHotInputs({ ...tideHotInputs, queryTimeUtc: e.target.value })} />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">Rule of Twelfths eğrisi ile yaklaşık “height of tide” üretir.</div>
+              <div className="text-xs text-muted-foreground">Produces an approximate “height of tide” using the Rule of Twelfths curve.</div>
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
@@ -2327,11 +2327,11 @@ export default function NavigationCalculationPage() {
                   <Input id="ukc-safety" type="number" value={ukcInputs.safetyMarginM} onChange={(e) => setUkcInputs({ ...ukcInputs, safetyMarginM: e.target.value })} />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">Height of Tide sonucu yukarıdaki HW/LW hesaplamasından alınır.</div>
+              <div className="text-xs text-muted-foreground">The Height of Tide result is taken from the HW/LW calculation above.</div>
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Gelgit Akıntısı (Tidal Stream) – Pratik</div>
+              <div className="text-sm font-semibold">Tidal Stream – Practical</div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="ts-stage">Stage</Label>
@@ -2376,7 +2376,7 @@ export default function NavigationCalculationPage() {
                   <Input id="ts-ebb-set" type="number" value={tidalStreamInputs.ebbSetDeg} onChange={(e) => setTidalStreamInputs({ ...tidalStreamInputs, ebbSetDeg: e.target.value })} />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">Basit model: spring/neap skalası + slack→max→slack sinüs eğrisi (eğitim amaçlı).</div>
+              <div className="text-xs text-muted-foreground">Simple model: spring/neap scale + slack→max→slack sine curve (for educational use).</div>
             </div>
 
             {tideTable.length > 0 && (
@@ -2387,8 +2387,8 @@ export default function NavigationCalculationPage() {
                     <thead>
                       <tr className="border-b">
                         <th className="text-left p-2">Time</th>
-                        <th className="text-left p-2">Yükseklik (m)</th>
-                        <th className="text-left p-2">Değişim</th>
+                        <th className="text-left p-2">Height (m)</th>
+                        <th className="text-left p-2">Change</th>
                         <th className="text-left p-2">Durumu</th>
                       </tr>
                     </thead>
@@ -2529,11 +2529,11 @@ export default function NavigationCalculationPage() {
               <Input id="turn-length" type="number" placeholder="200" value={turningInputs.length} onChange={(e) => setTurningInputs({ ...turningInputs, length: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="turn-change">Rota Değişikliği (°)</Label>
+              <Label htmlFor="turn-change">Course Change (°)</Label>
               <Input id="turn-change" type="number" placeholder="90" value={turningInputs.courseChange} onChange={(e) => setTurningInputs({ ...turningInputs, courseChange: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="turn-speed">Sürat (knot)</Label>
+              <Label htmlFor="turn-speed">Speed (knot)</Label>
               <Input id="turn-speed" type="number" placeholder="" value={turningInputs.speed} onChange={(e) => setTurningInputs({ ...turningInputs, speed: e.target.value })} />
             </div>
           </div>
@@ -2543,7 +2543,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="weather-beaufort">Beaufort Sayısı</Label>
+              <Label htmlFor="weather-beaufort">Beaufort Number</Label>
               <Input id="weather-beaufort" type="number" min={0} max={12} placeholder="" value={weatherInputs.beaufort} onChange={(e) => setWeatherInputs({ ...weatherInputs, beaufort: e.target.value })} />
             </div>
             <div>
@@ -2551,11 +2551,11 @@ export default function NavigationCalculationPage() {
               <Input id="weather-windspeed" type="number" placeholder="" value={weatherInputs.windSpeed} onChange={(e) => setWeatherInputs({ ...weatherInputs, windSpeed: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="weather-area">Rüzgar Alanı (m²)</Label>
+              <Label htmlFor="weather-area">Wind Area (m²)</Label>
               <Input id="weather-area" type="number" placeholder="" value={weatherInputs.windArea} onChange={(e) => setWeatherInputs({ ...weatherInputs, windArea: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="weather-ship">Gemi Sürati (knot)</Label>
+              <Label htmlFor="weather-ship">Ship Speed (knot)</Label>
               <Input id="weather-ship" type="number" placeholder="" value={weatherInputs.shipSpeed} onChange={(e) => setWeatherInputs({ ...weatherInputs, shipSpeed: e.target.value })} />
             </div>
           </div>
@@ -2565,7 +2565,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-4">
             <div>
-              <Label htmlFor="celestial-type" data-translatable>Hesaplama Türü</Label>
+              <Label htmlFor="celestial-type" data-translatable>Calculation Type</Label>
               <Select value={celestialInputs.type} onValueChange={(value) => setCelestialInputs({ ...celestialInputs, type: value as typeof celestialInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select" />
@@ -2579,7 +2579,7 @@ export default function NavigationCalculationPage() {
             </div>
             <CoordinateInput
               id="celestial-lat"
-              label="Enlem"
+              label="Latitude"
               value={celestialInputs.lat}
               onChange={(val) => setCelestialInputs({ ...celestialInputs, lat: val })}
               isLatitude={true}
@@ -2598,7 +2598,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="emergency-type">Arama Türü</Label>
+              <Label htmlFor="emergency-type">Search Type</Label>
               <Select value={emergencyInputs.type} onValueChange={(value) => setEmergencyInputs({ ...emergencyInputs, type: value as typeof emergencyInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select" />
@@ -2617,20 +2617,20 @@ export default function NavigationCalculationPage() {
             )}
             {emergencyInputs.type === "sector" && (
               <div>
-                <Label htmlFor="emergency-radius">İlk Yarıçap (nm)</Label>
+                <Label htmlFor="emergency-radius">Initial Radius (nm)</Label>
                 <Input id="emergency-radius" type="number" placeholder="" value={emergencyInputs.radius} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, radius: e.target.value })} />
               </div>
             )}
             <div>
-              <Label htmlFor="emergency-distance">Mesafe (nm)</Label>
+              <Label htmlFor="emergency-distance">Distance (nm)</Label>
               <Input id="emergency-distance" type="number" placeholder="" value={emergencyInputs.distance} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, distance: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="emergency-rescue">Kurtarma Sürati (knot)</Label>
+              <Label htmlFor="emergency-rescue">Rescue Speed (knot)</Label>
               <Input id="emergency-rescue" type="number" placeholder="" value={emergencyInputs.rescueSpeed} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, rescueSpeed: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="emergency-drift">Sürüklenme Sürati (knot)</Label>
+              <Label htmlFor="emergency-drift">Drift Speed (knot)</Label>
               <Input id="emergency-drift" type="number" placeholder="" value={emergencyInputs.driftSpeed} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, driftSpeed: e.target.value })} />
             </div>
           </div>
@@ -2645,19 +2645,19 @@ export default function NavigationCalculationPage() {
         return (
           gcResults && (
             <div className="space-y-3">
-              <div className="font-semibold text-primary" data-translatable>Büyük Daire Seyri Sonuçları:</div>
+              <div className="font-semibold text-primary" data-translatable>Great Circle Sailing Results:</div>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span className="text-muted-foreground" data-translatable>Mesafe:</span>
+                  <span className="text-muted-foreground" data-translatable>Distance:</span>
                   <div className="font-mono font-semibold">{gcResults.distance.toFixed(2)} nm</div>
                   <div className="text-xs text-muted-foreground">({gcResults.distanceDeg.toFixed(4)}°)</div>
                 </div>
                 <div>
-                  <span className="text-muted-foreground" data-translatable>İlk Kerteriz:</span>
+                  <span className="text-muted-foreground" data-translatable>Initial Bearing:</span>
                   <div className="font-mono font-semibold">{gcResults.initialCourse.toFixed(1)}°</div>
                 </div>
                 <div>
-                  <span className="text-muted-foreground" data-translatable>Varış Kerterizi:</span>
+                  <span className="text-muted-foreground" data-translatable>Final Bearing:</span>
                   <div className="font-mono font-semibold">{gcResults.finalCourse.toFixed(1)}°</div>
                 </div>
                 {gcResults.vertexLat !== null && (
@@ -2671,7 +2671,7 @@ export default function NavigationCalculationPage() {
                 steps={[
                   `Convert the coordinates to decimal degrees: φ1=${formatSigned(dmsToDecimal(gcInputs.lat1), 4)}°, λ1=${formatSigned(dmsToDecimal(gcInputs.lon1), 4)}°, φ2=${formatSigned(dmsToDecimal(gcInputs.lat2), 4)}°, λ2=${formatSigned(dmsToDecimal(gcInputs.lon2), 4)}°`,
                   `Central angle (Δσ) = ${gcResults.distanceDeg.toFixed(4)}°`,
-                  `Mesafe = Δσ × 60 = ${gcResults.distanceDeg.toFixed(4)} × 60 = ${gcResults.distance.toFixed(2)} NM`,
+                  `Distance = Δσ × 60 = ${gcResults.distanceDeg.toFixed(4)} × 60 = ${gcResults.distance.toFixed(2)} NM`,
                   `Initial bearing = ${gcResults.initialCourse.toFixed(1)}°, final bearing = ${gcResults.finalCourse.toFixed(1)}°`,
                   ...(gcResults.vertexLat !== null ? [`Vertex enlemi = ${formatDecimalAsDMS(gcResults.vertexLat, true)}`] : []),
                 ]}
@@ -2679,7 +2679,7 @@ export default function NavigationCalculationPage() {
               {Array.isArray(gcResults.waypoints) && gcResults.waypoints.length > 0 && (
                 <div className="rounded border p-3 bg-muted/30 mt-3">
                   <div className="text-sm font-semibold mb-2">Great Circle Waypoints</div>
-                  <div className="text-xs text-muted-foreground mb-2">Toplam: {gcResults.waypoints.length} nokta (ilk 12 gösterilir)</div>
+                  <div className="text-xs text-muted-foreground mb-2">Total: {gcResults.waypoints.length} points (first 12 shown)</div>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse text-xs">
                       <thead>
@@ -2724,15 +2724,15 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-Distance: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults.course.toFixed(1)}°`}</pre>
+Distance: ${rhumbResults.distance.toFixed(2)} nm\nConstant Bearing: ${rhumbResults.course.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `Convert the coordinates to decimal degrees: φ1=${formatSigned(lat1, 4)}°, λ1=${formatSigned(lon1, 4)}°, φ2=${formatSigned(lat2, 4)}°, λ2=${formatSigned(lon2, 4)}°`,
                 `ΔLat = φ2 - φ1 = ${formatSigned(deltaLatDeg, 4)}°, ΔLon = ${formatSigned(deltaLonDeg, 4)}° (including the short-way correction)`,
                 `Δψ = ln(tan(45+φ2/2) / tan(45+φ1/2)) = ${formatMaybeNumber(deltaPsi, 6)}`,
                 `q = Δφ / Δψ = ${formatMaybeNumber(q, 6)}`,
-                `Mesafe = 60 × √(ΔLat² + (q×ΔLon)²) = ${rhumbResults.distance.toFixed(2)} NM`,
-                `Kurs = atan2(ΔLon, Δψ) = ${courseDeg.toFixed(1)}°`,
+                `Distance = 60 × √(ΔLat² + (q×ΔLon)²) = ${rhumbResults.distance.toFixed(2)} NM`,
+                `Course = atan2(ΔLon, Δψ) = ${courseDeg.toFixed(1)}°`,
               ]}
             />
           </div>
@@ -2752,14 +2752,14 @@ Distance: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-dLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nKerteriz: ${planeResults.courseDeg.toFixed(1)}°\nMesafe: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
+dLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nBearing: ${planeResults.courseDeg.toFixed(1)}°\nDistance: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
             <SolutionSteps
               steps={[
-                `Ortalama enlem: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
+                `Mean latitude: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
                 `dLat = 60 × (φ2-φ1) = ${dLatMin.toFixed(2)}′`,
                 `Departure = 60 × (λ2-λ1) × cos(φm) = ${depMin.toFixed(2)}′`,
-                `Kurs = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
-                `Mesafe = √(dLat² + Departure²) = ${distanceNm.toFixed(2)} NM`,
+                `Course = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
+                `Distance = √(dLat² + Departure²) = ${distanceNm.toFixed(2)} NM`,
               ]}
             />
           </div>
@@ -2780,15 +2780,15 @@ dLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.to
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMin.toFixed(2)}′\ndLong: ${midlatResults.dLongMin.toFixed(2)}′\nDeparture: ${midlatResults.departureMin.toFixed(2)}′\nKurs: ${midlatResults.courseDeg.toFixed(1)}°\nMesafe: ${midlatResults.distanceNm.toFixed(2)} NM`}</pre>
+Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMin.toFixed(2)}′\ndLong: ${midlatResults.dLongMin.toFixed(2)}′\nDeparture: ${midlatResults.departureMin.toFixed(2)}′\nCourse: ${midlatResults.courseDeg.toFixed(1)}°\nDistance: ${midlatResults.distanceNm.toFixed(2)} NM`}</pre>
             <SolutionSteps
               steps={[
-                `Ortalama enlem: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
+                `Mean latitude: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
                 `dLat = 60 × (φ2-φ1) = ${dLatMin.toFixed(2)}′`,
                 `dLong = 60 × (λ2-λ1) = ${dLongMin.toFixed(2)}′`,
                 `Departure = dLong × cos(φm) = ${departureMin.toFixed(2)}′`,
-                `Kurs = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
-                `Mesafe = √(dLat² + Departure²) = ${distanceNm.toFixed(2)} NM`,
+                `Course = atan2(Departure, dLat) = ${courseDeg.toFixed(1)}°`,
+                `Distance = √(dLat² + Departure²) = ${distanceNm.toFixed(2)} NM`,
               ]}
             />
           </div>
@@ -2808,7 +2808,7 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${chartResults.nmFromCm !== undefined ? `cm → NM: ${chartResults.nmFromCm.toFixed(3)} NM\n` : ""}${chartResults.cmFromNm !== undefined ? `NM → cm: ${chartResults.cmFromNm.toFixed(2)} cm` : ""}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:\n${chartResults.nmFromCm !== undefined ? `cm → NM: ${chartResults.nmFromCm.toFixed(3)} NM\n` : ""}${chartResults.cmFromNm !== undefined ? `NM → cm: ${chartResults.cmFromNm.toFixed(2)} cm` : ""}`}</pre>
             {steps.length > 0 && <SolutionSteps steps={steps} />}
           </div>
         );
@@ -2827,9 +2827,9 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Sonucu:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
             <SolutionSteps
               steps={[
-                `dLat = (Mesafe × cos(Kurs)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
-                `Ortalama enlem: φm = φ1 + dLat/2 = ${meanLatDeg.toFixed(4)}°`,
-                `dLon = (Mesafe × sin(Kurs)) / (60 × cos(φm)) = ${dLonDeg.toFixed(4)}°`,
+                `dLat = (Distance × cos(Course)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
+                `Mean latitude: φm = φ1 + dLat/2 = ${meanLatDeg.toFixed(4)}°`,
+                `dLon = (Distance × sin(Course)) / (60 × cos(φm)) = ${dLonDeg.toFixed(4)}°`,
                 `Yeni enlem = φ1 + dLat = ${formatSigned(startLat + dLatDeg, 4)}°`,
                 `Yeni boylam = λ1 + dLon = ${formatSigned(startLon + dLonDeg, 4)}°`,
               ]}
@@ -2861,7 +2861,7 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
           steps.push(`ETA = ETD + T = ${basicInputs.etdUtc}Z + ${solved.timeHours.toFixed(3)} h = ${basicResults.etaUtcIso}`);
         }
         if (basicResults.remaining) {
-          steps.push(`Kalan mesafe = Planlanan - DMG = ${basicInputs.plannedTotalNm} - ${basicInputs.dmgNm} = ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM`);
+          steps.push(`Remaining distance = Planned - DMG = ${basicInputs.plannedTotalNm} - ${basicInputs.dmgNm} = ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM`);
           steps.push(`Time remaining = Distance remaining / SOG = ${basicResults.remaining.remainingDistanceNm.toFixed(2)} / ${basicInputs.sogKn} = ${basicResults.remaining.remainingTimeHours.toFixed(2)} h`);
         }
         if (basicResults.timeConv) {
@@ -2873,12 +2873,12 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
 Distance: ${basicResults.solved.distanceNm.toFixed(2)} NM
-Speed: ${basicResults.solved.speedKn.toFixed(2)} kn\nZaman: ${basicResults.solved.timeHours.toFixed(3)} h (${basicResults.timeHhMm.hh}h ${basicResults.timeHhMm.mm}m)\n${basicResults.converted !== null ? `
-Conversion: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso ? `\nETA (UTC): ${basicResults.etaUtcIso}` : ""}${basicResults.remaining ? `\n\nKalan Mesafe: ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM
+Speed: ${basicResults.solved.speedKn.toFixed(2)} kn\nTime: ${basicResults.solved.timeHours.toFixed(3)} h (${basicResults.timeHhMm.hh}h ${basicResults.timeHhMm.mm}m)\n${basicResults.converted !== null ? `
+Conversion: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso ? `\nETA (UTC): ${basicResults.etaUtcIso}` : ""}${basicResults.remaining ? `\n\nRemaining Distance: ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM
 Time Remaining: ${basicResults.remaining.remainingTimeHours.toFixed(2)} h` : ""}${basicResults.timeConv ? `
 
 Time Conversion:
-UTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} dakika\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
+UTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} minutes\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
             <SolutionSteps steps={steps} />
           </div>
         );
@@ -2917,10 +2917,10 @@ CTS: ${currentResults.courseToSteerDeg.toFixed(1)}°\nSOG: ${currentResults.grou
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result (TVMDC):
-Compass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.magneticDeg.toFixed(1)}°\nTrue: ${compassResults.trueDeg.toFixed(1)}°\nCompass Error (Var+Dev): ${compassResults.compassErrorDeg.toFixed(1)}°\nToplam Hata: ${compassResults.totalError.toFixed(1)}°`}</pre>
+Compass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.magneticDeg.toFixed(1)}°\nTrue: ${compassResults.trueDeg.toFixed(1)}°\nCompass Error (Var+Dev): ${compassResults.compassErrorDeg.toFixed(1)}°\nTotal Error: ${compassResults.totalError.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
-                `Sapma (Dev) = ${formatSigned(deviation ?? 0, 1)}°, Sapma (Var) = ${formatSigned(variation ?? 0, 1)}°`,
+                `Deviation (Dev) = ${formatSigned(deviation ?? 0, 1)}°, Variation (Var) = ${formatSigned(variation ?? 0, 1)}°`,
                 `M = C + Dev = ${compassResults.compassDeg.toFixed(1)} + ${formatSigned(deviation ?? 0, 1)} = ${compassResults.magneticDeg.toFixed(1)}°`,
                 `T = M + Var = ${compassResults.magneticDeg.toFixed(1)} + ${formatSigned(variation ?? 0, 1)} = ${compassResults.trueDeg.toFixed(1)}°`,
                 `Toplam hata = Var + Dev = ${compassResults.totalError.toFixed(1)}°`,
@@ -2999,7 +2999,7 @@ Relative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`COLREG Quick Check:\nSituation: ${colregResults.situation}\nGive-way: ${colregResults.isGiveWay === null ? "—" : colregResults.isGiveWay ? "Yes" : "No"}\nNote: ${colregResults.note}`}</pre>
             <SolutionSteps
               steps={[
-                `Relatif kerteriz (normalize) = ${rb.toFixed(1)}°`,
+                `Relative bearing (normalized) = ${rb.toFixed(1)}°`,
                 `Sectors: Head-on 0±5°, Crossing from starboard 0-112.5°, Overtaking 112.5-247.5°, Crossing from port 247.5-360°`,
                 `Classification → ${colregResults.situation}`,
               ]}
@@ -3095,7 +3095,7 @@ Calculated Height: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.az
                     </tbody>
                   </table>
                 </div>
-                <div className="text-xs text-muted-foreground mt-2">Not: HO-249/HO-229 tablo mantığı burada algoritmik üretilmiştir.</div>
+                <div className="text-xs text-muted-foreground mt-2">Note: the HO-249/HO-229 table logic is generated algorithmically here.</div>
               </div>
             </div>
           )
@@ -3110,12 +3110,12 @@ Calculated Height: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.az
           const distanceOff = runNm * Math.sin(toRadians(2 * angleDeg)) / Math.sin(toRadians(finalAngle));
           bearingSteps = [
             `Final bearing = 2×initial bearing = ${finalAngle.toFixed(1)}°`,
-            `Mesafe off = run × sin(2θ) / sin(final) = ${runNm.toFixed(2)} × sin(${(2 * angleDeg).toFixed(1)}°) / sin(${finalAngle.toFixed(1)}°) = ${distanceOff.toFixed(2)} NM`,
+            `Distance off = run × sin(2θ) / sin(final) = ${runNm.toFixed(2)} × sin(${(2 * angleDeg).toFixed(1)}°) / sin(${finalAngle.toFixed(1)}°) = ${distanceOff.toFixed(2)} NM`,
           ];
         } else if (bearingInputs.type === "four") {
-          bearingSteps = [`4 noktadan (45°) 8 noktaya (90°): Mesafe off = run = ${runNm.toFixed(2)} NM`];
+          bearingSteps = [`Four-point (45°) to eight-point (90°): Distance off = run = ${runNm.toFixed(2)} NM`];
         } else if (bearingInputs.type === "seven") {
-          bearingSteps = [`7 nokta (22.5°→45°): Mesafe off = 0.707 × run = 0.707 × ${runNm.toFixed(2)} = ${(runNm * 0.707).toFixed(2)} NM`];
+          bearingSteps = [`Seven-point (22.5°→45°): Distance off = 0.707 × run = 0.707 × ${runNm.toFixed(2)} = ${(runNm * 0.707).toFixed(2)} NM`];
         }
         return (
           <div className="space-y-3">
@@ -3149,7 +3149,7 @@ Distance Off: ${bearingResults.distanceOffNm.toFixed(2)} nm`}</pre>
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`${fixResults.fix ? `Two-Bearing Fix:
 Lat: ${formatDecimalAsDMS(fixResults.fix.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.fix.fix.lonDeg, false)}\nIntersection angle: ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.three ? `Three-Bearing Fix (LS):
-Lat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.three.fix.lonDeg, false)}\nResidual: ${fixResults.three.residualNm.toFixed(2)} NM\nBest intersection angle: ${fixResults.three.bestIntersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.bearingDistance ? `1 Kerteriz + 1 Mesafe:\nLat: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.lonDeg, false)}\n\n` : ""}${fixResults.twoDistances ? `2 Mesafe Fix:\nLat: ${formatDecimalAsDMS(fixResults.twoDistances.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.twoDistances.fix.lonDeg, false)}\nCandidates: ${fixResults.twoDistances.candidates.length}\n\n` : ""}${fixResults.running ? `Running Fix:\nLat: ${formatDecimalAsDMS(fixResults.running.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.running.fix.lonDeg, false)}\nIntersection angle: ${fixResults.running.intersectionAngleDeg.toFixed(1)}°` : ""}`}</pre>
+Lat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.three.fix.lonDeg, false)}\nResidual: ${fixResults.three.residualNm.toFixed(2)} NM\nBest intersection angle: ${fixResults.three.bestIntersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.bearingDistance ? `1 Bearing + 1 Distance:\nLat: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.lonDeg, false)}\n\n` : ""}${fixResults.twoDistances ? `2 Distance Fix:\nLat: ${formatDecimalAsDMS(fixResults.twoDistances.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.twoDistances.fix.lonDeg, false)}\nCandidates: ${fixResults.twoDistances.candidates.length}\n\n` : ""}${fixResults.running ? `Running Fix:\nLat: ${formatDecimalAsDMS(fixResults.running.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.running.fix.lonDeg, false)}\nIntersection angle: ${fixResults.running.intersectionAngleDeg.toFixed(1)}°` : ""}`}</pre>
             {fixSteps.length > 0 && <SolutionSteps steps={fixSteps} />}
           </div>
         );
@@ -3255,7 +3255,7 @@ Height: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of 
               </div>
               <div className="text-xs text-muted-foreground mt-2">Toplam mesafe: <span className="font-mono">{passageResults.totalDistanceNm.toFixed(2)} NM</span></div>
               <SolutionSteps
-                title="Leg ETA Adımları"
+                title="Leg ETA Steps"
                 steps={[
                   "Time for each leg = Distance / SOG (hours).",
                   "ETA = leg start + duration.",
@@ -3329,7 +3329,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${weatherResults.windSpeedKn ? `Beaufort Wind Speed: ${weatherResults.windSpeedKn.toFixed(1)} knot\n` : ''}${weatherResults.waveHeightM ? `Wave Height: ${weatherResults.waveHeightM.toFixed(1)} m\n` : ''}${weatherResults.leewayAngleDeg ? `Leeway Angle: ${weatherResults.leewayAngleDeg.toFixed(1)}°\n` : ''}${weatherResults.windForceN ? `Rüzgar Kuvveti: ${weatherResults.windForceN.toFixed(0)} N` : ''}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:\n${weatherResults.windSpeedKn ? `Beaufort Wind Speed: ${weatherResults.windSpeedKn.toFixed(1)} knot\n` : ''}${weatherResults.waveHeightM ? `Wave Height: ${weatherResults.waveHeightM.toFixed(1)} m\n` : ''}${weatherResults.leewayAngleDeg ? `Leeway Angle: ${weatherResults.leewayAngleDeg.toFixed(1)}°\n` : ''}${weatherResults.windForceN ? `Wind Force: ${weatherResults.windForceN.toFixed(0)} N` : ''}`}</pre>
             {weatherSteps.length > 0 && <SolutionSteps steps={weatherSteps} />}
           </div>
         );
@@ -3340,7 +3340,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
         const decDeg = dmsToDecimal(celestialInputs.dec);
         const celestialSteps: string[] = [];
         if (celestialInputs.type === "meridian" && celestialResults.latitudeDeg !== undefined) {
-          celestialSteps.push(`Enlem = 90° − |φ − δ| = 90 − |${latDeg.toFixed(2)} − ${decDeg.toFixed(2)}| = ${celestialResults.latitudeDeg.toFixed(2)}°`);
+          celestialSteps.push(`Latitude = 90° − |φ − δ| = 90 − |${latDeg.toFixed(2)} − ${decDeg.toFixed(2)}| = ${celestialResults.latitudeDeg.toFixed(2)}°`);
         }
         if (celestialInputs.type === "amplitude" && celestialResults.amplitudeDeg !== undefined) {
           celestialSteps.push(`Amplitude = asin(sinδ / cosφ) = asin(sin${decDeg.toFixed(2)} / cos${latDeg.toFixed(2)}) = ${celestialResults.amplitudeDeg.toFixed(2)}°`);
@@ -3355,7 +3355,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
               <div className="space-y-1 text-sm">
                 {celestialInputs.type === 'meridian' && celestialResults.latitudeDeg !== undefined && (
                   <div>
-                    <span className="text-muted-foreground" data-translatable>Meridian Enlem:</span>
+                    <span className="text-muted-foreground" data-translatable>Meridian Latitude:</span>
                     <div className="font-mono font-semibold">{formatDecimalAsDMS(celestialResults.latitudeDeg, true)}</div>
                   </div>
                 )}
@@ -3367,7 +3367,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
                 )}
                 {celestialInputs.type === 'sunrise' && celestialResults.bearingDeg !== undefined && (
                   <div>
-                    <span className="text-muted-foreground" data-translatable>Doğuş Kerterizi:</span>
+                    <span className="text-muted-foreground" data-translatable>Rising Bearing:</span>
                     <div className="font-mono font-semibold">{celestialResults.bearingDeg.toFixed(1)}°</div>
                   </div>
                 )}
@@ -3391,7 +3391,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${emergencyResults.legDistanceNm ? `Search Leg: ${emergencyResults.legDistanceNm.toFixed(2)} nm\n` : ''}${emergencyResults.newRadiusNm ? `Next Radius: ${emergencyResults.newRadiusNm.toFixed(2)} nm\n` : ''}${emergencyResults.timeToRescueHours ? `Rescue Time: ${emergencyResults.timeToRescueHours.toFixed(2)} hours` : ''}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:\n${emergencyResults.legDistanceNm ? `Search Leg: ${emergencyResults.legDistanceNm.toFixed(2)} nm\n` : ''}${emergencyResults.newRadiusNm ? `Next Radius: ${emergencyResults.newRadiusNm.toFixed(2)} nm\n` : ''}${emergencyResults.timeToRescueHours ? `Rescue Time: ${emergencyResults.timeToRescueHours.toFixed(2)} hours` : ''}`}</pre>
             {emergencySteps.length > 0 && <SolutionSteps steps={emergencySteps} />}
           </div>
         );
@@ -3414,7 +3414,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
             {id === "tides" && (
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="sm" onClick={() => navigate("/navigation/tide-tutorial")}>
-                  Hesabın Yapılışı
+                  How It Is Calculated
                 </Button>
               </div>
             )}
@@ -3430,7 +3430,7 @@ Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${
 
         <div className="flex justify-end">
           <Button variant="default" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="gap-2">
-            <Calculator className="h-4 w-4" /> Başa Dön
+            <Calculator className="h-4 w-4" /> Back to Top
           </Button>
         </div>
       </div>
