@@ -72,6 +72,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataTopicFill10.ts",
   "src/data/machineQuizDataTopicFill11.ts",
   "src/data/machineQuizDataTopicFill12.ts",
+  "src/data/machineQuizDataTopicFill13.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -115,6 +116,7 @@ const MACHINE_EXPECTED_OVERRIDES = {
   "environment-machine": 240,
   "fluid-mechanics": 248,
   "machine-elements": 280,
+  "diesel-engines": 296,
 };
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
