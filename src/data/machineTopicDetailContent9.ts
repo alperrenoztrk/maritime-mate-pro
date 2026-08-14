@@ -50,7 +50,7 @@ const content9: ContentMap = {
               "1,385 = 1 + 0,00385 × ΔT",
               "ΔT = 0,385 / 0,00385"
             ],
-            result: "ΔT = 100°C. Ölçülen sıcaklık 100°C'dir."
+            result: "ΔT = 100°C. The measured temperature is 100°C."
           }
         },
         {
@@ -149,7 +149,7 @@ const content9: ContentMap = {
             "Manuel sounding, seviye transmitter arızası veya doğrulama amacıyla yapılır. Sounding borusu ve şerit metre (sounding tape) kullanılır. Ölçüm; ullage (boş mesafe) veya innage (dolu mesafe) olarak yapılır."
           ],
           formula: {
-            expression: "Hacim = Seviye × Tank Kesit Alanı × Trim/List düzeltme faktörü",
+            expression: "Volume = Level × Tank Sectional Area × Trim/List correction factor",
             variables: [
               "Hacim = tank içindeki sıvı hacmi",
               "Tank kalibrasyon tabloları (sounding table) seviyeden hacme dönüşüm sağlar"
@@ -296,7 +296,7 @@ const content9: ContentMap = {
               "I = 4 + (16 × 0,6)",
               "I = 4 + 9,6"
             ],
-            result: "I = 13,6 mA. Transmitter 6 bar basınçta 13,6 mA çıkış verir."
+            result: "I = 13.6 mA. The transmitter gives 13.6 mA output at 6 bar pressure."
           }
         },
         {
@@ -779,7 +779,7 @@ const content9: ContentMap = {
           heading: "Tetikleme Açısı ve Çıkış",
           paragraphs: [],
           formula: {
-            expression: "Vdc = (Vmax / π) × (1 + cosα) — yarım dalga için",
+            expression: "Vdc = (Vmax / π) × (1 + cosα) — for half-wave",
             variables: [
               "Vdc = ortalama DC çıkış gerilimi",
               "Vmax = AC tepe gerilimi",
@@ -832,7 +832,7 @@ const content9: ContentMap = {
               "Vdc = 1,35 × VLL",
               "Vdc = 1,35 × 440"
             ],
-            result: "Vdc = 594 V. Kontrollü doğrultucuda bu değer tetikleme açısıyla düşürülebilir."
+            result: "Vdc = 594 V. In a controlled rectifier, this value can be reduced with the firing angle."
           }
         }
       ],

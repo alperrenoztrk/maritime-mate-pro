@@ -578,7 +578,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           {
             step: "Gerçek rüzgâr yönü (from)",
             expression: "heading 090° + (180° − 71.9°) = 090° + 108.1°",
-            result: "TW yön ≈ 198° T (yaklaşık güneyden)",
+            result: "TW direction ≈ 198° T (approximately from south)",
           },
         ],
         answer: "Gerçek rüzgâr ≈ 17 kn, yön ≈ 198° T",
@@ -613,7 +613,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
         solution: [
           {
             step: "cos 180° = −1",
-            expression: "TW = AW + V (vektörler aynı doğrultuda)",
+            expression: "TW = AW + V (vectors in the same direction)",
             result: "TW = 8 + 18 = 26 kn",
           },
         ],
@@ -694,7 +694,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           },
           {
             step: "ETA = 13:30 + 14:53",
-            result: "28:23 → ertesi gün 04:23 UTC",
+            result: "28:23 → next day 04:23 UTC",
           },
         ],
         answer: "ETA ≈ 04:23 UTC (ertesi gün). Yerel saat +3 ise 07:23 LT.",
@@ -781,7 +781,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           {
             step: "Akıntı–track açı farkı",
             expression: "Set − Track = 180 − 90 = 90°",
-            result: "Akıntı tam sancak traverstan geliyor",
+            result: "Current is coming from dead starboard abeam",
           },
           {
             step: "δ = asin(Drift × sin(90°) / STW)",
@@ -814,7 +814,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           {
             step: "δ = asin(1.5·sin 180° / 12)",
             expression: "asin(0)",
-            result: "δ = 0° (akıntı doğrudan ters yönde)",
+            result: "δ = 0° (current directly in the opposite direction)",
           },
           {
             step: "CTS = Track",
@@ -1015,7 +1015,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           {
             step: "SMS karşılaştırma",
             expression: "2.40 m > 1.15 m",
-            result: "EMNİYETLİ ✓",
+            result: "SAFE ✓",
           },
         ],
         answer: "Geçit emniyetli (UKC 2.4 m > min 1.15 m). Yine de hızı 8 kn'ye düşürmek squat'ı 1.02 m'ye indirir; ek güvenlik.",
@@ -1039,7 +1039,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           {
             step: "SMS karşılaştırma",
             expression: "0.86 m < 1.15 m",
-            result: "EMNİYETSİZ ✗",
+            result: "UNSAFE ✗",
           },
         ],
         answer: "Hızı düşür veya gelgit penceresini bekle. Squat hıza karesel bağımlıdır; küçük hız artışı büyük UKC kaybıdır.",
@@ -1105,7 +1105,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           },
           {
             step: "Gerçek motor verimi tipik %48–52",
-            result: "Carnot oranı ≈ 0.50 / 0.621 ≈ %80",
+            result: "Carnot ratio ≈ 0.50 / 0.621 ≈ %80",
           },
         ],
         answer: "Carnot teorik verim ≈ %62.1. Gerçek motor (%50) bunun yaklaşık %80'i kadar performans gösteriyor.",
@@ -1125,7 +1125,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           },
           {
             step: "Gerçek Rankine çevrimi (~%38)",
-            result: "Carnot oranı ≈ 0.61",
+            result: "Carnot ratio ≈ 0.61",
           },
         ],
         answer: "Carnot ≈ %62.1; gerçek Rankine ≈ %38 (yeniden ısıtma ve regenerasyonla yükseltilir).",

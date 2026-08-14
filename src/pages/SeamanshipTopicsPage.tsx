@@ -1526,7 +1526,7 @@ SIĞ SU ETKİLERİ:
 - Pruva dalgasının büyümesi (kıyı erozyonu riski)`,
     formula: {
       name: "Squat Hesabı (Barrass Formülü)",
-      expression: "Squat ≈ Cb × V² / 100  (açık su, metre)",
+      expression: "Squat ≈ Cb × V² / 100  (open water, meter)",
       description: "Cb: blok katsayısı, V: hız (knot). Kanal/dar sularda sonuç 2 ile çarpılır.",
     },
     examples: [

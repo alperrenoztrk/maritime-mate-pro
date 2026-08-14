@@ -1103,7 +1103,7 @@ EĞRİYİ NE DEĞİŞTİRİR:
     ],
     formula: {
       name: "GZ ve GM ilişkisi (küçük açı / teğet)",
-      expression: "GZ ≈ GM · sinθ  ;  GM = orijin teğetinin 57,3°'deki değeri",
+      expression: "GZ ≈ GM · sinθ  ;  GM = value of the tangent at the origin at 57.3°",
       description: "Başlangıç eğimi GM'yi verir; eğrinin tamamı büyük açı davranışını gösterir.",
     },
     keyPoints: [
@@ -1583,7 +1583,7 @@ Eğrisel veya konik tanklarda FSM hesabı daha karmaşıktır ve tank tabloları
     ],
     formula: {
       name: "Bölmeli Tank FSM",
-      expression: "FSMbölmeli = FSMtam / n²",
+      expression: "FSMcompartmented = FSMintact / n²",
       description: "n: Boyuna bölme sayısı (2 bölme için FSM 1/4 olur)",
     },
     examples: [
@@ -1726,14 +1726,14 @@ Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığın
       },
     ],
     bulletPoints: [
-      "Trim = Tkıç - Tbaş",
+      "Trim = T aft - T fore",
       "Pozitif trim = Kıç trimi",
       "Negatif trim = Baş trimi",
       "Optimum trim yakıt verimliliğini artırır",
     ],
     formula: {
       name: "Trim Hesabı",
-      expression: "Trim = Tkıç - Tbaş",
+      expression: "Trim = T aft - T fore",
       description: "Trim: Baş-kıç draft farkı (m), Tkıç: Kıç draftı (m), Tbaş: Baş draftı (m)",
     },
     examples: [
@@ -1808,7 +1808,7 @@ LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
     ],
     formula: {
       name: "Trim ve Draft Değişimi",
-      expression: "ΔTrim = (w × d) / MCT; ΔTbaş = ΔTrim × (LBP - LCF) / LBP",
+      expression: "ΔTrim = (w × d) / MCT; ΔT fore = ΔTrim × (LBP - LCF) / LBP",
       description: "ΔTrim: Trim değişimi (cm), LCF: Yüzme merkezinin kıçtan uzaklığı (m)",
     },
     examples: [
@@ -1914,7 +1914,7 @@ Draft okuması, yükleme hesabının başlangıç noktasıdır.`,
     ],
     formula: {
       name: "Orta Draft",
-      expression: "Tmean = (Tbaş + Tkıç) / 2",
+      expression: "Tmean = (T fore + T aft) / 2",
       description: "Tmean: Orta draft (m), Tbaş: Baş draftı (m), Tkıç: Kıç draftı (m)",
     },
     examples: [
@@ -2147,7 +2147,7 @@ Bir rüzgâr sağnağı veya dalga, gemiye İŞ (enerji) aktarır. Gemi, bu ener
     ],
     formula: {
       name: "Dinamik stabilite (enerji)",
-      expression: "Dinamik stabilite = Δ × ∫₀^θ GZ dθ  (eğri altı alan)",
+      expression: "Dynamic stability = Δ × ∫₀^θ GZ dθ  (area under curve)",
       description: "GZ eğrisi altındaki alan, gemiyi o açıya yatırmak için yapılan işi (enerji rezervini) verir.",
     },
     keyPoints: [
@@ -3258,7 +3258,7 @@ Blokların uyguladığı tepki kuvveti P, su seviyesi düştükçe artar. P'nin 
 - Stabilite, geminin tüm ağırlığı bloklara binene (fully landed) kadar izlenir; tam oturduktan sonra gemi stabildir.`,
     formula: {
       name: "Havuzlamada GM Kaybı (yaklaşık)",
-      expression: "GM kaybı ≈ (P × KM) / W",
+      expression: "GM loss ≈ (P × KM) / W",
       description: "P: blokların yukarı tepki kuvveti, KM: metasantr yüksekliği, W: deplasman. P arttıkça etkin GM azalır.",
     },
     bulletPoints: [

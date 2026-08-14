@@ -524,7 +524,7 @@ COW GEREKSİNİMLERİ (MARPOL Ek I Kural 33):
 COW sırasında en az 2 tank yıkanmalı ve her limanda yıkanan tanklar ORB Part II'ye kaydedilmelidir.`,
     formula: {
       name: "COW Basınç Gereksinimi",
-      expression: "Tank yıkama makinesi basıncı: 8-10 bar (tipik)",
+      expression: "Tank washing machine pressure: 8-10 bar (typical)",
       description: "Ham petrol, yüksek basınçla tank cidarlarına püskürtülerek wax ve tortu çözülür.",
     },
     bulletPoints: [

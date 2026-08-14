@@ -538,7 +538,7 @@ const content10: ContentMap = {
             "Aşınma hızı (wear rate) mm/1000 saat olarak hesaplanır."
           ],
           formula: {
-            expression: "Aşınma hızı = (Dölçülen − Dnominal) / Çalışma saati × 1000",
+            expression: "Wear rate = (Dmeasured − Dnominal) / Operating hours × 1000",
             variables: [
               "Dölçülen = mevcut iç çap (mm)",
               "Dnominal = orijinal iç çap (mm)",
@@ -552,7 +552,7 @@ const content10: ContentMap = {
               "Aşınma = 500,80 − 500,00 = 0,80 mm",
               "Aşınma hızı = 0,80 / 20.000 × 1000"
             ],
-            result: "Aşınma hızı = 0,04 mm/1000 saat. Normal değer 0,03-0,05 mm/1000 saat arasındadır; kabul edilebilir seviyededir."
+            result: "Wear rate = 0,04 mm/1000 hours. The normal value is between 0,03-0,05 mm/1000 hours; it is at an acceptable level."
           }
         },
         {
@@ -681,7 +681,7 @@ const content10: ContentMap = {
           heading: "Defleksiyon Limit Değerleri",
           paragraphs: [],
           formula: {
-            expression: "Defleksiyon = TDC okuması − BDC okuması",
+            expression: "Deflection = TDC reading − BDC reading",
             variables: [
               "Pozitif değer: Krank açılıyor (yatak çökmüş)",
               "Negatif değer: Krank kapanıyor (yatak yükselmiş)",
@@ -695,7 +695,7 @@ const content10: ContentMap = {
               "Defleksiyon = TDC − BDC = (+0,08) − (−0,04) = +0,12 mm",
               "Sınır = 1200 / 10.000 = 0,12 mm"
             ],
-            result: "Defleksiyon = +0,12 mm. Sınır değere ulaşılmış; yatak muayenesi planlanmalıdır."
+            result: "Deflection = +0,12 mm. The limit value has been reached; bearing inspection should be planned."
           }
         }
       ],
