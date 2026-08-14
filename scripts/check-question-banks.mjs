@@ -37,7 +37,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DECK_BANKS = [
   { name: "stability", expected: 154, files: ["src/data/stabilityQuestions.ts", "src/data/stabilityQuestionsExtended.ts"] },
   { name: "navigation", expected: 300, files: ["src/data/navigationQuestions.ts", "src/data/navigationQuestionsExtended.ts"] },
-  { name: "meteorology", expected: 159, files: ["src/data/meteorologyQuestions.ts", "src/data/meteorologyQuestionsExtended.ts"] },
+  { name: "meteorology", expected: 262, files: ["src/data/meteorologyQuestions.ts", "src/data/meteorologyQuestionsExtended.ts", "src/data/meteorologyQuestionsTopicFill.ts"] },
   { name: "cargo", expected: 232, files: ["src/data/cargoQuestions.ts", "src/data/cargoQuestionsExtended.ts"] },
   { name: "safety", expected: 229, files: ["src/data/safetyQuestions.ts", "src/data/safetyQuestionsExtended.ts"] },
   { name: "seamanship", expected: 259, files: ["src/data/seamanshipQuestions.ts", "src/data/seamanshipQuestionsExtended.ts"] },

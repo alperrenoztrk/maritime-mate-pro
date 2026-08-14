@@ -1,5 +1,6 @@
 import type { QuizQuestion } from "@/types/quiz";
 import { meteorologyQuestionsExtended } from "@/data/meteorologyQuestionsExtended";
+import { meteorologyQuestionsTopicFill } from "@/data/meteorologyQuestionsTopicFill";
 
 const baseMeteorologyQuestions: QuizQuestion[] = [
   {
@@ -540,5 +541,6 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
 export const meteorologyQuestions: QuizQuestion[] = [
   ...baseMeteorologyQuestions,
   ...meteorologyQuestionsExtended,
+  ...meteorologyQuestionsTopicFill,
 ];
 
