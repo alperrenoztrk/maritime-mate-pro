@@ -34,6 +34,7 @@ import {
   unmaskProtectedTokens,
 } from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
+import { repairEnglishMaritimeTerminology } from '../../src/utils/englishMaritimeTerminology.ts';
 
 const repoRoot = process.cwd();
 const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
@@ -366,7 +367,12 @@ async function translateLanguage(langCode, sources) {
   const dict = { __version: version };
   let covered = 0;
   for (const source of sources) {
-    if (hasUsableTranslation(cache[source])) { dict[source] = cache[source]; covered++; }
+    if (hasUsableTranslation(cache[source])) {
+      dict[source] = langCode === 'en'
+        ? repairEnglishMaritimeTerminology(source, cache[source])
+        : cache[source];
+      covered++;
+    }
   }
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(path.join(OUT_DIR, `${langCode}.json`), JSON.stringify(dict, null, 0) + '\n');

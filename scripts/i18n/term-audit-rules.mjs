@@ -5,6 +5,7 @@
 // pipeline can translate them again). Keeping the rules in one place means the
 // audit and the repair can never disagree about what is broken.
 import { findMissingProtectedTokens } from '../../src/utils/protectedTerms.ts';
+import { findEnglishMaritimeTerminologyIssues } from '../../src/utils/englishMaritimeTerminology.ts';
 
 // Word-sense failures: [label, Turkish source pattern, per-language wrong output].
 // A finding needs BOTH halves — the source must use the ambiguous Turkish word
@@ -77,6 +78,12 @@ export function findTermIssues(source, value, lang) {
     if (!targetRe || !sourceRe.test(source) || !targetRe.test(value)) continue;
     if (label.startsWith('hesap') && ACCOUNT_SOURCE_RE.test(source)) continue;
     issues.push({ kind: 'sense', severity: 'error', label });
+  }
+
+  if (lang === 'en') {
+    for (const { id, label } of findEnglishMaritimeTerminologyIssues(source, value)) {
+      issues.push({ kind: 'sense', severity: 'error', label: `${id}: ${label}` });
+    }
   }
 
   return issues;

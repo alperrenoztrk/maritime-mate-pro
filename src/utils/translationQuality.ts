@@ -12,6 +12,7 @@
 //      mid-sentence fragment "açısına uygun…" → "An arc…".
 
 import { fixCalculationNoun } from './technicalText';
+import { repairEnglishMaritimeTerminology } from './englishMaritimeTerminology';
 
 const ZERO_WIDTH = /\u200B|\u200C|\u200D|\uFEFF/g;
 
@@ -78,6 +79,11 @@ export const normalizeMachineTranslation = (
 
   // 4) Fix the "hesap = account" mistranslation of calculation headings.
   out = fixCalculationNoun(source, out, languageCode);
+
+  // 5) English needs the Turkish source to disambiguate maritime senses such
+  // as AB/EU, demir/iron and iskele/pier. This final pass is deterministic and
+  // idempotent, so cached and live translations follow the same terminology.
+  if (languageCode === 'en') out = repairEnglishMaritimeTerminology(source, out);
 
   return out;
 };

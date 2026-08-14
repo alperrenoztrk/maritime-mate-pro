@@ -795,7 +795,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               rows: [
                 ["GPS", "ABD", "31+", "±10 m"],
                 ["GLONASS", "Rusya", "24+", "±10 m"],
-                ["Galileo", "AB", "30", "±1-4 m"],
+                ["Galileo", "Avrupa Birliği (AB)", "30", "±1-4 m"],
                 ["BeiDou", "Çin", "35+", "±10 m"],
                 ["IRNSS/NavIC", "Hindistan", "7", "±20 m (bölgesel)"]
               ]

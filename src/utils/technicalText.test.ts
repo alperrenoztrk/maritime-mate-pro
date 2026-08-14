@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { fixCalculationNoun } from './technicalText';
+import { fixCalculationNoun, isTechnicalString } from './technicalText.ts';
 
 // Turkish "hesap" is both "account" and "calculation"; every generic engine
 // picks the banking sense for headings like "KG Hesabı".
@@ -36,4 +36,16 @@ test('unambiguous calculation copy still receives the calculation sense', () => 
 
 test('sources that never said "hesap" are untouched', () => {
   assert.equal(fixCalculationNoun('Kullanıcı profili', 'User account', 'en'), 'User account');
+});
+
+test('mixed Turkish labels are translated even when they contain formula symbols', () => {
+  assert.equal(isTechnicalString('Açı (°)'), false);
+  assert.equal(isTechnicalString('Hız 1 (V₁)'), false);
+  assert.equal(isTechnicalString('Sıcaklık Farkı (T₁−T₂)'), false);
+  assert.equal(isTechnicalString('Açı olarak: θ = arctan(Trim / LBP)'), false);
+});
+
+test('pure formulas remain language independent', () => {
+  assert.equal(isTechnicalString('GM = KM − KG'), true);
+  assert.equal(isTechnicalString('GZ = GM × sin θ'), true);
 });
