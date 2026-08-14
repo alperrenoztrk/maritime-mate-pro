@@ -25,7 +25,7 @@ import {
 
 function formatDate(ts: number): string {
   try {
-    return new Date(ts).toLocaleDateString("tr-TR", {
+    return new Date(ts).toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",
       year: "numeric",
@@ -88,15 +88,15 @@ const Notes = () => {
             </div>
           </div>
 
-          {/* Yeni not */}
-          <Card className="border-white/10 bg-white/5">
+          {/* New note */}
+          <Card className="border-border bg-card/60">
             <CardContent className="space-y-3 p-4">
               <Textarea
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 placeholder="Write a new note…"
                 rows={3}
-                className="resize-none border-white/10 bg-white/5 text-white placeholder:text-white/40"
+                className="resize-none border-border bg-card/60 text-foreground placeholder:text-muted-foreground"
               />
               <div className="flex justify-end">
                 <Button
@@ -132,12 +132,12 @@ const Notes = () => {
                 <AccordionItem
                   key={category}
                   value={category}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4"
+                  className="rounded-2xl border border-border bg-card/60 px-4"
                 >
                   <AccordionTrigger className="hover:no-underline">
                     <div className="flex items-center gap-2">
                       <span
-                        className="text-base font-semibold text-white"
+                        className="text-base font-semibold text-foreground"
                         data-translatable
                       >
                         {category}
@@ -151,13 +151,13 @@ const Notes = () => {
                     {categoryNotes.map((note) => (
                       <Card
                         key={note.id}
-                        className="border-white/10 bg-white/5"
+                        className="border-border bg-card/60"
                       >
                         <CardContent className="space-y-3 p-4">
-                          <p className="text-sm italic leading-relaxed text-white/90 line-clamp-4">
+                          <p className="text-sm italic leading-relaxed text-foreground/90 line-clamp-4">
                             "{note.text}"
                           </p>
-                          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-white/50">
+                          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                             <span className="truncate">
                               {note.pageTitle}
                               {" · "}
@@ -166,9 +166,9 @@ const Notes = () => {
                             <div className="flex items-center gap-1">
                               <Link
                                 to={note.pathname}
-                                className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 font-medium text-white/80 transition-colors hover:bg-white/10"
+                                className="inline-flex items-center gap-1 rounded-full border border-border px-2.5 py-1 font-medium text-foreground/80 transition-colors hover:bg-muted"
                               >
-                                <span data-translatable>Sayfaya git</span>
+                                <span data-translatable>Go to page</span>
                                 <ArrowRight className="h-3 w-3" />
                               </Link>
                               <Button
@@ -176,7 +176,7 @@ const Notes = () => {
                                 size="icon"
                                 onClick={() => handleDelete(note.id)}
                                 aria-label="delete note"
-                                className="h-7 w-7 text-white/50 hover:bg-red-500/15 hover:text-red-300"
+                                className="h-7 w-7 text-muted-foreground hover:bg-red-500/15 hover:text-red-300"
                               >
                                 <Trash2 className="h-4 w-4" />
                               </Button>

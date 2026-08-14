@@ -62,7 +62,6 @@ const STATIC_ROUTES: string[] = [
 
   '/crew',
   '/bridge',
-  '/machinery',
   '/ship-tasks',
   '/ship-operations',
   '/passage-plan',

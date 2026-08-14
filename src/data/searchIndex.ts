@@ -81,7 +81,6 @@ export const searchIndex: SearchItem[] = [
   
   // Makine
   { title: "Makine Hesaplamaları", path: "/engine", category: "Makine", keywords: ["motor", "dizel"] },
-  { title: "Makine Dairesi", path: "/machinery", category: "Makine", keywords: ["engine room"] },
   
   // Çevre
   { title: "Emisyon Hesaplamaları", path: "/emissions", category: "Çevre", keywords: ["CO2", "CII", "EEXI", "karbon"] },

@@ -26,7 +26,7 @@ const TOOL_ROUTES = [
 
 const LIBRARY_ROUTES = [
   /^\/library$/,
-  /^\/(?:crew|bridge|machinery|ship-systems|ship-tasks|ship-operations|glossary|regulations|passage-plan)(?:\/|$)/,
+  /^\/(?:crew|bridge|ship-systems|ship-tasks|ship-operations|glossary|regulations|passage-plan)(?:\/|$)/,
   /^\/communication(?:\/|$)/,
 ];
 

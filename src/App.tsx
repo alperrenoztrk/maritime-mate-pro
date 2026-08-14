@@ -42,7 +42,6 @@ const LibraryHubPage = lazy(() => import("./pages/LibraryHubPage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
 const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
 const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
-const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
 const ShipTasksPage = lazy(() => import("./pages/ShipTasksPage"));
 const ShipTaskDetailPage = lazy(() => import("./pages/ShipTaskDetailPage"));
 const ShipOperationsPage = lazy(() => import("./pages/ShipOperationsPage"));
@@ -371,7 +370,6 @@ const AnimatedRoutes = () => {
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
         <Route path="/crew/muster-list" element={<PageTransition><MusterListPage /></PageTransition>} />
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />
-        <Route path="/machinery" element={<PageTransition><MachineryHubPage /></PageTransition>} />
         <Route path="/ship-tasks" element={<PageTransition><ShipTasksPage /></PageTransition>} />
         <Route path="/ship-tasks/:taskSlug" element={<PageTransition><ShipTaskDetailPage /></PageTransition>} />
         <Route path="/ship-operations" element={<PageTransition><ShipOperationsPage /></PageTransition>} />
