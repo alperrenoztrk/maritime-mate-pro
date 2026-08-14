@@ -32,7 +32,7 @@ const OAuthConsent = () => {
     let active = true;
     (async () => {
       if (!authorizationId) {
-        setError("Yetkilendirme kimliği eksik.");
+        setError("Authorisation identifier is missing.");
         return;
       }
       const { data: sess } = await untypedSupabase.auth.getSession();
@@ -76,7 +76,7 @@ const OAuthConsent = () => {
       }
       const target = data?.redirect_url ?? data?.redirect_to;
       if (!target) {
-        setError("Sağlayıcı bir yönlendirme adresi döndürmedi.");
+        setError("The provider did not return a redirect address.");
         setBusy(false);
         return;
       }
@@ -98,7 +98,7 @@ const OAuthConsent = () => {
           </div>
           <CardTitle className="text-xl">
             {details?.client?.name
-              ? `${details.client.name} bağlantısını onaylayın`
+              ? `Approve the ${details.client.name} connection`
               : "Bağlantıyı onaylayın"}
           </CardTitle>
           <CardDescription className="text-sm">

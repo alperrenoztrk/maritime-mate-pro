@@ -158,17 +158,17 @@ const EmptyPage = () => {
 
   // Utility functions
   const degreesToCompass = (degrees: number): string => {
-    const directions = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
+    const directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
     const index = Math.round(degrees / 22.5) % 16;
     return directions[index];
   };
 
-  const degreesToWindNameTr = (degrees: number): string => {
+  const degreesToWindName = (degrees: number): string => {
     const windNames = [
-      "Poyraz", "Poyraz-Keşişleme", "Keşişleme", "Keşişleme-Gündoğusu",
-      "Gündoğusu", "Gündoğusu-Kıble", "Kıble", "Kıble-Lodos",
-      "Lodos", "Lodos-Günbatısı", "Günbatısı", "Günbatısı-Karayel",
-      "Karayel", "Karayel-Yıldız", "Yıldız", "Yıldız-Poyraz"
+      "North", "North-northeast", "Northeast", "East-northeast",
+      "East", "East-southeast", "Southeast", "South-southeast",
+      "South", "South-southwest", "Southwest", "West-southwest",
+      "West", "West-northwest", "Northwest", "North-northwest"
     ];
     const index = Math.round(degrees / 22.5) % 16;
     return windNames[index];
@@ -181,22 +181,22 @@ const EmptyPage = () => {
     const minutes = Math.floor(minutesFloat);
     const seconds = ((minutesFloat - minutes) * 60).toFixed(1);
     const direction = isLatitude
-      ? (decimal >= 0 ? "K" : "G")
-      : (decimal >= 0 ? "D" : "B");
+      ? (decimal >= 0 ? "N" : "S")
+      : (decimal >= 0 ? "E" : "W");
     return `${degrees}° ${minutes}' ${seconds}" ${direction}`;
   };
 
-  const wmoToTr = (code?: number): string => {
-    if (code === undefined) return "Bilinmiyor";
-    if (code === 0) return "open";
-    if (code <= 3) return "Az Bulutlu";
-    if (code <= 48) return "Bulutlu";
-    if (code <= 67) return "Yağmurlu";
-    if (code <= 77) return "Karlı";
-    if (code <= 82) return "Sağanak Yağışlı";
-    if (code <= 86) return "Kar Yağışlı";
-    if (code >= 95) return "Fırtınalı";
-    return "Bilinmiyor";
+  const wmoToDescription = (code?: number): string => {
+    if (code === undefined) return "Unknown";
+    if (code === 0) return "Clear";
+    if (code <= 3) return "Partly Cloudy";
+    if (code <= 48) return "Cloudy";
+    if (code <= 67) return "Rainy";
+    if (code <= 77) return "Snowy";
+    if (code <= 82) return "Showers";
+    if (code <= 86) return "Snow Showers";
+    if (code >= 95) return "Stormy";
+    return "Unknown";
   };
 
   // Computed values
@@ -205,8 +205,8 @@ const EmptyPage = () => {
     [data?.windDirectionDeg]
   );
 
-  const windNameTr = useMemo(
-    () => (data?.windDirectionDeg !== undefined ? degreesToWindNameTr(data.windDirectionDeg) : "—"),
+  const windName = useMemo(
+    () => (data?.windDirectionDeg !== undefined ? degreesToWindName(data.windDirectionDeg) : "—"),
     [data?.windDirectionDeg]
   );
 
@@ -220,7 +220,7 @@ const EmptyPage = () => {
     [data?.longitude]
   );
 
-  const weatherDescription = useMemo(() => wmoToTr(data?.weatherCode), [data?.weatherCode]);
+  const weatherDescription = useMemo(() => wmoToDescription(data?.weatherCode), [data?.weatherCode]);
 
   // Time calculations
   const nationalTime = useMemo(() => {
@@ -382,7 +382,7 @@ const EmptyPage = () => {
                 windSpeed={data?.windSpeedKt}
                 windDirection={data?.windDirectionDeg}
                 windCompass={windCompass}
-                windNameTr={windNameTr}
+                windName={windName}
                 weatherCode={data?.weatherCode}
                 weatherDescription={weatherDescription}
                 latitude={data?.latitude}

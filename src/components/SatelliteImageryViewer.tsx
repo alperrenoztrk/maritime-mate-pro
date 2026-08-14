@@ -291,8 +291,7 @@ export const SatelliteImageryViewer = () => {
                     <div className="text-white text-sm space-y-1">
                       <div className="font-semibold">{channel.name}</div>
                       <div className="text-xs opacity-90">
-                        {selectedRegion === 'europe' ? 'Avrupa / Akdeniz' : 'Tam Disk'} • 
-                        Güncelleme: {lastUpdate.toLocaleTimeString('tr-TR')}
+                        {selectedRegion === 'europe' ? 'Avrupa / Akdeniz' : 'Tam Disk'} • Updated: {lastUpdate.toLocaleTimeString('tr-TR')}
                       </div>
                     </div>
                   </div>

@@ -5,152 +5,152 @@ import { AssistantInterface } from "@/components/AssistantInterface";
 const topicAssistantConfig: Record<string, { quickPrompts: string[]; systemPrompt: string }> = {
   thermodynamics: {
     quickPrompts: [
-      "Otto ve Diesel çevrimlerinin verim farklarını karşılaştır.",
-      "Egzoz gazı economizer verimliliği nasıl hesaplanır?",
-      "Isı eşanjöründe fouling etkisi ve LMTD değişimi nasıl yorumlanır?",
-      "Carnot verimi ile gerçek çevrim verimi arasındaki fark neden oluşur?",
+      "Compare the efficiency differences between the Otto and Diesel cycles.",
+      "How is exhaust gas economizer efficiency calculated?",
+      "How are the effect of fouling and the change in LMTD interpreted in a heat exchanger?",
+      "Why is there a difference between Carnot efficiency and actual cycle efficiency?",
     ],
-    systemPrompt: "Sen gemi termodinamik ve ısı tekniği uzmanısın. Isı çevrimleri, enerji dönüşümleri, verim hesapları ve ısı transferi konularında rehberlik verirsin. Yanıtlarını teknik ve formül destekli yaz. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in marine thermodynamics and heat engineering. You provide guidance on thermal cycles, energy conversion, efficiency calculations and heat transfer. Write your answers technically and supported by formulas. Detect the language the user asked the question in and answer in that same language.",
   },
   "fluid-mechanics": {
     quickPrompts: [
-      "Santrifüj pompada kavitasyon belirtileri ve önlemleri nelerdir?",
-      "Boru hattında basınç kaybı hesabı nasıl yapılır?",
-      "Paralel çalışan pompalarda debi ve basınç değişimi nasıl olur?",
-      "Reynolds sayısına göre akış rejimini nasıl belirlerim?",
+      "What are the signs of cavitation in a centrifugal pump and the measures against it?",
+      "How is pressure loss in a pipeline calculated?",
+      "How do flow and pressure change for pumps running in parallel?",
+      "How do I determine the flow regime from the Reynolds number?",
     ],
-    systemPrompt: "Sen gemi akışkanlar mekaniği uzmanısın. Pompa seçimi, boru hesapları, basınç kayıpları, valf tipleri ve akış analizleri konusunda teknik rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in marine fluid mechanics. You provide technical guidance on pump selection, pipe calculations, pressure losses, valve types and flow analysis. Detect the language the user asked the question in and answer in that same language.",
   },
   "machine-elements": {
     quickPrompts: [
-      "Pervane şaftı çapı nasıl hesaplanır?",
-      "Titreşim analizinde alarm ve tehlike eşikleri nedir?",
-      "Rulman arızası belirtileri ve kontrol yöntemleri nelerdir?",
-      "Korozyon türleri ve gemide en sık görülen korozyon tipleri nelerdir?",
+      "How is the propeller shaft diameter calculated?",
+      "What are the alarm and danger thresholds in vibration analysis?",
+      "What are the signs of bearing failure and the methods for checking it?",
+      "What are the types of corrosion and which types are most commonly seen on board?",
     ],
-    systemPrompt: "Sen gemi makine elemanları ve malzeme bilgisi uzmanısın. Miller, yataklar, kaplinler, titreşim analizi, malzeme seçimi ve korozyon yönetimi konularında teknik danışmanlık verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in marine machinery components and materials. You provide technical advice on shafts, bearings, couplings, vibration analysis, material selection and corrosion management. Detect the language the user asked the question in and answer in that same language.",
   },
   "diesel-engines": {
     quickPrompts: [
-      "Bir silindirde yüksek egzoz sıcaklığının olası nedenleri nelerdir?",
-      "İki zamanlı ve dört zamanlı motorların karşılaştırması?",
-      "Common rail enjeksiyon sisteminin avantajları nelerdir?",
-      "Scavenge fire belirtileri ve müdahale prosedürü nedir?",
+      "What are the possible causes of a high exhaust temperature on one cylinder?",
+      "How do two-stroke and four-stroke engines compare?",
+      "What are the advantages of a common rail injection system?",
+      "What are the signs of a scavenge fire and the response procedure?",
     ],
-    systemPrompt: "Sen deniz dizel motorları uzmanısın. İki ve dört zamanlı motorlar, yanma süreci, enjeksiyon sistemleri, performans parametreleri ve arıza tespiti konularında deneyimli bir mühendissin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in marine diesel engines. You are an experienced engineer in two- and four-stroke engines, the combustion process, injection systems, performance parameters and fault finding. Detect the language the user asked the question in and answer in that same language.",
   },
   "ship-systems": {
     quickPrompts: [
-      "Yakıt sistemi arıtma sırasının doğru akışı nedir?",
-      "Yağlama yağı basınç düşüşünün olası nedenleri?",
-      "HT ve LT soğutma devrelerinin farkı ve bağlantıları?",
-      "Egzoz sistemi back pressure yüksekliğinin etkileri?",
+      "What is the correct sequence of the fuel treatment system?",
+      "What are the possible causes of a drop in lubricating oil pressure?",
+      "What is the difference between the HT and LT cooling circuits and how are they connected?",
+      "What are the effects of high back pressure in the exhaust system?",
     ],
-    systemPrompt: "Sen gemi makine sistemleri uzmanısın. Yakıt, yağlama, soğutma, hava/egzoz ve buhar sistemleri konularında teknik rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship machinery systems. You provide technical guidance on fuel, lubrication, cooling, air/exhaust and steam systems. Detect the language the user asked the question in and answer in that same language.",
   },
   auxiliary: {
     quickPrompts: [
-      "Jeneratör paralel bağlama prosedürü nasıldır?",
-      "Kazan su seviye kontrolü ve alarm sistemleri nasıl çalışır?",
-      "Separatör performansı nasıl değerlendirilir?",
-      "Tatlı su jeneratörü verimini etkileyen faktörler nelerdir?",
+      "What is the procedure for paralleling generators?",
+      "How do boiler water level control and alarm systems work?",
+      "How is separator performance assessed?",
+      "Which factors affect fresh water generator efficiency?",
     ],
-    systemPrompt: "Sen gemi yardımcı makineleri uzmanısın. Jeneratörler, kazanlar, separatörler, kompresörler, tatlı su jeneratörleri ve pompa sistemleri konularında rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship auxiliary machinery. You provide guidance on generators, boilers, separators, compressors, fresh water generators and pump systems. Detect the language the user asked the question in and answer in that same language.",
   },
   "fuel-technology": {
     quickPrompts: [
-      "HFO'dan MGO'ya geçiş prosedürü nasıl yapılmalı?",
-      "CCAI değeri yakıt kalitesi hakkında ne söyler?",
-      "Yakıt filtre tıkanması ve separatör sorunlarının kök nedenleri?",
-      "LNG yakıtlı gemilerde BOG yönetimi nasıl yapılır?",
+      "How should the changeover procedure from HFO to MGO be carried out?",
+      "What does the CCAI value tell us about fuel quality?",
+      "What are the root causes of fuel filter clogging and separator problems?",
+      "How is BOG managed on LNG-fuelled ships?",
     ],
-    systemPrompt: "Sen yakıt teknolojisi ve yönetimi uzmanısın. HFO, MGO, LNG yakıt özellikleri, arıtma süreçleri, viskozite kontrolü ve yakıt kaynaklı arızalar konusunda danışmanlık verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in fuel technology and management. You advise on the properties of HFO, MGO and LNG, treatment processes, viscosity control and fuel-related failures. Detect the language the user asked the question in and answer in that same language.",
   },
   "cooling-hvac": {
     quickPrompts: [
-      "Soğutma sisteminde basınç değerleri normalden yüksekse ne yapılmalı?",
-      "R-134a'dan R-290'a geçiş yapılabilir mi?",
-      "Provision soğutma odası sıcaklık ayarları nedir?",
+      "What should be done if the pressures in the refrigeration system are higher than normal?",
+      "Is a changeover from R-134a to R-290 possible?",
+      "What are the temperature settings for the provision cold rooms?",
       "Klima sisteminde nem kontrolü nasıl sağlanır?",
     ],
-    systemPrompt: "Sen gemi soğutma ve klima sistemleri uzmanısın. Soğutma çevrimleri, soğutucu akışkanlar, provision soğutma, reefer kargo ve klima sistemleri konusunda rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in marine refrigeration and air conditioning systems. You provide guidance on refrigeration cycles, refrigerants, provision cooling, reefer cargo and air conditioning systems. Detect the language the user asked the question in and answer in that same language.",
   },
   electrical: {
     quickPrompts: [
-      "Black-out senaryosunda acil güç devreye alma adımları?",
-      "Toprak kaçağı alarm prosedürü ve arıza tespiti?",
-      "Shore connection prosedürü ve güvenlik önlemleri?",
-      "Selektif koruma ayarı nasıl yapılır?",
+      "What are the steps for bringing emergency power on line in a black-out scenario?",
+      "What is the earth fault alarm procedure and how is the fault traced?",
+      "What is the shore connection procedure and what are the safety precautions?",
+      "How is selective protection coordination set?",
     ],
-    systemPrompt: "Sen gemi elektrik sistemleri uzmanısın. AC/DC dağıtım, jeneratör senkronizasyonu, koruma sistemleri, kablo hesapları ve black-out yönetimi konularında rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship electrical systems. You provide guidance on AC/DC distribution, generator synchronisation, protection systems, cable calculations and black-out management. Detect the language the user asked the question in and answer in that same language.",
   },
   automation: [
-    "PID kontrol parametreleri nasıl ayarlanır?",
-    "Alarm sistemi test prosedürü nedir?",
-    "4-20 mA sinyal kalibrasyonu nasıl yapılır?",
-    "UMS gemilerde köprüüstü alarm yönetimi?",
+    "How are PID control parameters tuned?",
+    "What is the alarm system test procedure?",
+    "How is a 4-20 mA signal calibrated?",
+    "How is bridge alarm management handled on UMS ships?",
   ].length ? {
     quickPrompts: [
-      "PID kontrol parametreleri nasıl ayarlanır?",
-      "Alarm sistemi test prosedürü nedir?",
-      "4-20 mA sinyal kalibrasyonu nasıl yapılır?",
-      "UMS gemilerde köprüüstü alarm yönetimi?",
+      "How are PID control parameters tuned?",
+      "What is the alarm system test procedure?",
+      "How is a 4-20 mA signal calibrated?",
+      "How is bridge alarm management handled on UMS ships?",
     ],
-    systemPrompt: "Sen gemi otomasyon ve kontrol sistemleri uzmanısın. Sensörler, transmitterler, PLC, alarm/izleme sistemleri ve uzaktan kontrol konularında danışmanlık verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship automation and control systems. You advise on sensors, transmitters, PLCs, alarm/monitoring systems and remote control. Detect the language the user asked the question in and answer in that same language.",
   } : { quickPrompts: [], systemPrompt: "" },
   "engine-room-ops": {
     quickPrompts: [
-      "Seyir öncesi makine hazırlık kontrol listesi?",
-      "Makine vardiya devir teslim prosedürü nedir?",
-      "Ana makine devreye alma adımları?",
-      "Liman operasyonlarında makine dairesi hazırlıkları?",
+      "What is the machinery preparation checklist before departure?",
+      "What is the engine watch handover procedure?",
+      "What are the steps for starting the main engine?",
+      "What engine room preparations are needed for port operations?",
     ],
-    systemPrompt: "Sen makine dairesi operasyonları uzmanısın. Vardiya prosedürleri, seyir hazırlığı, devreye alma/durdurma ve liman operasyonları konularında rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in engine room operations. You provide guidance on watchkeeping procedures, preparation for sea, starting/stopping and port operations. Detect the language the user asked the question in and answer in that same language.",
   },
   maintenance: {
     quickPrompts: [
-      "Planlı bakım sistemi (PMS) nasıl etkin kullanılır?",
-      "Yağ analiz sonuçları nasıl yorumlanır?",
-      "Klas survey'leri için hazırlık kontrol listesi?",
-      "MTBF ve MTTR değerleri bakım planlamasında nasıl kullanılır?",
+      "How is a planned maintenance system (PMS) used effectively?",
+      "How are oil analysis results interpreted?",
+      "What is the preparation checklist for class surveys?",
+      "How are MTBF and MTTR values used in maintenance planning?",
     ],
-    systemPrompt: "Sen gemi bakım ve tutum yönetimi uzmanısın. Planlı bakım, kestirimci bakım, yağ analizleri, klas gereklilikleri ve bakım KPI'ları konularında danışmanlık verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship maintenance and upkeep management. You advise on planned maintenance, predictive maintenance, oil analysis, class requirements and maintenance KPIs. Detect the language the user asked the question in and answer in that same language.",
   },
   "engine-room-safety": {
     quickPrompts: [
-      "Makine dairesi yangınında ilk müdahale adımları?",
-      "Crankcase patlaması riski ve önlemleri?",
-      "CO₂ söndürme sistemi devreye alma prosedürü?",
-      "Makine dairesi kapalı alan giriş prosedürü?",
+      "What are the first response steps in an engine room fire?",
+      "What is the risk of a crankcase explosion and how is it prevented?",
+      "What is the procedure for releasing the CO₂ extinguishing system?",
+      "What is the enclosed space entry procedure for the engine room?",
     ],
-    systemPrompt: "Sen makine dairesi güvenliği uzmanısın. Yangın güvenliği, patlama riskleri, acil durdurma sistemleri, kapalı alan güvenliği ve makine kazaları konularında rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in engine room safety. You provide guidance on fire safety, explosion risks, emergency shutdown systems, enclosed space safety and machinery accidents. Detect the language the user asked the question in and answer in that same language.",
   },
   "environment-machine": {
     quickPrompts: [
-      "OWS 15 ppm sınırını aştığında ne yapılmalı?",
-      "Sludge tank yönetimi ve bertaraf prosedürleri?",
-      "IAPP sertifikası için gerekli kontroller?",
-      "Gemi içi atık yönetim planı neleri kapsar?",
+      "What should be done when the OWS exceeds the 15 ppm limit?",
+      "What are the sludge tank management and disposal procedures?",
+      "Which checks are required for the IAPP certificate?",
+      "What does the shipboard waste management plan cover?",
     ],
-    systemPrompt: "Sen gemi çevre yönetimi ve MARPOL uzmanısın. Sintine, atık yağ, sewage sistemleri, emisyon kontrolü ve çevresel uyumluluk konularında danışmanlık verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship environmental management and MARPOL. You advise on bilge, waste oil and sewage systems, emission control and environmental compliance. Detect the language the user asked the question in and answer in that same language.",
   },
   erm: {
     quickPrompts: [
-      "Makine dairesinde risk değerlendirmesi nasıl yapılır?",
-      "Yorgunluk yönetimi için etkili stratejiler nelerdir?",
-      "Takım içi iletişim hataları nasıl azaltılır?",
-      "Near-miss raporlama sistemi nasıl kurulur?",
+      "How is a risk assessment carried out in the engine room?",
+      "What are effective strategies for fatigue management?",
+      "How can communication errors within the team be reduced?",
+      "How is a near-miss reporting system set up?",
     ],
-    systemPrompt: "Sen Engine Resource Management (ERM) uzmanısın. Vardiya yönetimi, insan faktörü, karar verme, liderlik, iletişim ve risk değerlendirmesi konularında rehberlik verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in Engine Resource Management (ERM). You provide guidance on watch management, human factors, decision making, leadership, communication and risk assessment. Detect the language the user asked the question in and answer in that same language.",
   },
   "energy-efficiency": {
     quickPrompts: [
-      "CII derecelendirmesini iyileştirmek için neler yapılabilir?",
-      "EEXI hesaplaması nasıl yapılır?",
-      "Atık ısı geri kazanım sistemi verimliliği nasıl artırılır?",
-      "Trim optimizasyonuyla yakıt tasarrufu nasıl sağlanır?",
+      "What can be done to improve the CII rating?",
+      "How is the EEXI calculation carried out?",
+      "How can the efficiency of a waste heat recovery system be increased?",
+      "How are fuel savings achieved through trim optimisation?",
     ],
-    systemPrompt: "Sen gemi enerji verimliliği uzmanısın. EEDI, EEXI, CII, SEEMP, atık ısı geri kazanımı, trim optimizasyonu ve yakıt tasarrufu konularında teknik danışmanlık verirsin. Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.",
+    systemPrompt: "You are an expert in ship energy efficiency. You provide technical advice on EEDI, EEXI, CII, SEEMP, waste heat recovery, trim optimisation and fuel saving. Detect the language the user asked the question in and answer in that same language.",
   },
 };
 
@@ -169,11 +169,11 @@ export default function MachineTopicAssistantPage() {
 
   return (
     <AssistantInterface
-      title={`${topic.title} Asistanı`}
+      title={`${topic.title} Assistant`}
       badge={topic.title}
       quickPrompts={config.quickPrompts}
       systemPrompt={config.systemPrompt}
-      placeholder={`${topic.title} ile ilgili sorunuzu yazın...`}
+      placeholder={`${topic.title} — write your question here...`}
       icon={topic.icon}
       accentGradient={topic.accent}
       iconColor="text-white"

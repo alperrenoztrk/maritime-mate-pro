@@ -11,7 +11,7 @@ type SunsetDay = {
 
 function formatDateTr(dateStr: string): string {
   const date = new Date(dateStr);
-  const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+  const dayNames = ["Pazar", "Pazartesi", "Tuesday", "Wednesday", "Thursday", "Cuma", "Cumartesi"];
   const dayName = dayNames[date.getDay()];
   const d = String(date.getDate()).padStart(2, "0");
   const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -67,7 +67,7 @@ export default function SunsetTimes() {
 
       const res = await fetch(buildForecastUrl().toString());
       if (!res.ok) {
-        throw new Error("API'den veri alınamadı");
+        throw new Error("Could not retrieve data from the API");
       }
       
       const json = await res.json();
@@ -76,7 +76,7 @@ export default function SunsetTimes() {
       const sunsets: Array<string | null> = daily.sunset ?? [];
       
       if (!times.length || !sunsets.length) {
-        throw new Error("Günbatımı verisi bulunamadı");
+        throw new Error("No sunset data found");
       }
       
       const list = times.map((date, i) => ({ date, sunset: sunsets[i] ?? null }));

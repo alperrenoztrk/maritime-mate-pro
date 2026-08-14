@@ -2,19 +2,19 @@ import { Boxes } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "Yükleme öncesi draft survey adımlarını ve gerekli düzeltmeleri sıralar mısın?",
-  "IMDG Class 3 yükleri için ayrım, havalandırma ve yangın önlemleri nelerdir?",
-  "Tahıl yüklerinde list moment kontrolü ve operasyonel limitler nasıl hesaplanır?",
-  "Ağır lift operasyonunda palanga seçimi ve güverte dayanım kontrolü nasıl yapılır?",
-  "Reefer konteynerleri için enerji yük planlamasını nasıl optimize ederim?",
-  "Limanda yük elleçleme sırasında trim ve stabiliteyi güvenli tutmak için öneriler verir misin?",
+  "Can you list the pre-loading draft survey steps and the corrections required?",
+  "What are the segregation, ventilation and fire precautions for IMDG Class 3 cargoes?",
+  "How is the list moment check and the operational limits calculated for grain cargoes?",
+  "How do I select the tackle and check deck strength in a heavy-lift operation?",
+  "How do I optimise the power load plan for reefer containers?",
+  "Can you give advice on keeping trim and stability safe during cargo handling in port?",
 ];
 
-const systemPrompt = `Sen denizcilik alanında kargo ve operasyon uzmanı bir asistansın.
-Yükleme planı, draft survey, trim/stabilite, IMDG, IMSBC, Grain Code, charter party ve terminal operasyonları konusunda bilgi sahibisin.
-Yanıtlarını maddeler halinde ve uygulanabilir olacak şekilde ver.
-Güvenlik, klas ve SOLAS/MARPOL gerekliliklerini vurgula; hesap veya kontrol adımlarını net yaz.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in cargo and operations in the maritime field.
+You are knowledgeable about loading plans, draft surveys, trim/stability, IMDG, IMSBC, the Grain Code, charter parties and terminal operations.
+Give your answers as bullet points and in an actionable form.
+Emphasise safety, class and SOLAS/MARPOL requirements; write the calculation or check steps clearly.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function CargoAssistantPage() {
   return (

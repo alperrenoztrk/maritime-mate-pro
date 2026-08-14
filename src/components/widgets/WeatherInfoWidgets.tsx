@@ -13,7 +13,7 @@ interface WeatherInfoWidgetsProps {
   windSpeed?: number;
   windDirection?: number;
   windCompass: string;
-  windNameTr: string;
+  windName: string;
   weatherCode?: number;
   weatherDescription: string;
   latitude?: number;
@@ -27,7 +27,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
   windSpeed,
   windDirection,
   windCompass,
-  windNameTr,
+  windName,
   weatherCode,
   weatherDescription,
   latitude,
@@ -54,16 +54,16 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
     setHourlyDialogOpen(true);
   };
 
-  const wmoToTr = (code?: number): string => {
-    if (!code) return "Veri Yok";
-    if (code === 0) return "open";
-    if (code <= 3) return "Az Bulutlu";
-    if (code <= 48) return "Sisli";
-    if (code <= 67) return "Yağmurlu";
-    if (code <= 77) return "Karlı";
-    if (code <= 82) return "Sağanak Yağışlı";
-    if (code <= 86) return "Gök Gürültülü";
-    return "Veri Yok";
+  const wmoToDescription = (code?: number): string => {
+    if (!code) return "No Data";
+    if (code === 0) return "Clear";
+    if (code <= 3) return "Partly Cloudy";
+    if (code <= 48) return "Foggy";
+    if (code <= 67) return "Rainy";
+    if (code <= 77) return "Snowy";
+    if (code <= 82) return "Showers";
+    if (code <= 86) return "Thundery";
+    return "No Data";
   };
 
   useEffect(() => {
@@ -183,7 +183,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                 {windSpeed?.toFixed(1)} kt
               </div>
               <div className="text-xs text-muted-foreground">
-                {windFlipped ? windNameTr : `${windDirection}° ${windCompass}`}
+                {windFlipped ? windName : `${windDirection}° ${windCompass}`}
               </div>
             </div>
             <div className="relative">
@@ -237,7 +237,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                           })}
                         </div>
                         <div className="text-sm text-muted-foreground">
-                          {wmoToTr(day.weatherCode)}
+                          {wmoToDescription(day.weatherCode)}
                         </div>
                       </div>
                     </div>

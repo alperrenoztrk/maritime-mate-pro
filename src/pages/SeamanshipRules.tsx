@@ -9,20 +9,20 @@ const seamanshipRules = [
     rules: [
       "Rule 5: a proper look-out must be maintained at all times.",
       "Rule 6: the vessel must proceed at a safe speed.",
-      "Kural 7: Çatışma riski doğru değerlendirilmelidir.",
-      "Kural 8: Çatışmadan kaçınma eylemi zamanında ve belirgin olmalıdır.",
-      "Kural 15-17: Yol hakkı ve manevra yükümlülükleri net uygulanmalıdır."
+      "Rule 7: the risk of collision must be assessed correctly.",
+      "Rule 8: action to avoid collision must be timely and readily apparent.",
+      "Rules 15-17: right of way and manoeuvring obligations must be applied clearly."
     ]
   },
   {
     title: "ISM Kodu",
     icon: FileText,
     rules: [
-      "Safety Management System (SMS) uygulanmalıdır.",
-      "Operasyonel risk değerlendirmesi zorunludur.",
-      "Tüm operasyonlar dokümante edilmelidir.",
-      "Near-miss raporlama sistemi aktif olmalıdır.",
-      "Düzenli iç denetimler yapılmalıdır."
+      "A Safety Management System (SMS) must be implemented.",
+      "An operational risk assessment is mandatory.",
+      "All operations must be documented.",
+      "A near-miss reporting system must be active.",
+      "Regular internal audits must be carried out."
     ]
   },
   {
@@ -30,9 +30,9 @@ const seamanshipRules = [
     icon: Shield,
     rules: [
       "The security levels (1, 2, 3) must be monitored.",
-      "Ship Security Plan (SSP) hazır olmalıdır.",
-      "Güverte erişim kontrolleri uygulanmalıdır.",
-      "Ziyaretçi ve yük kontrolleri yapılmalıdır.",
+      "A Ship Security Plan (SSP) must be in place.",
+      "Deck access controls must be applied.",
+      "Visitor and cargo checks must be carried out.",
       "A Declaration of Security (DOS) must be completed when required."
     ]
   },
@@ -41,10 +41,10 @@ const seamanshipRules = [
     icon: Scale,
     rules: [
       "Port Information Book kontrol edilmelidir.",
-      "Yerel pilotaj ve römorkaj gereklilikleri uygulanmalıdır.",
-      "Terminal prosedürleri ve güvenlik kuralları takip edilmelidir.",
+      "Local pilotage and towage requirements must be complied with.",
+      "Terminal procedures and safety rules must be followed.",
       "VTS raporlama gereklilikleri yerine getirilmelidir.",
-      "Çevresel kısıtlamalar dikkate alınmalıdır."
+      "Environmental restrictions must be taken into account."
     ]
   }
 ];

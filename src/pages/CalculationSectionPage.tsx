@@ -58,8 +58,7 @@ export default function CalculationSectionPage() {
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground">
               <p>
-                {section.label} içeriği canlı modül üzerinde sunuluyor. Yukarıdaki "Modüle git" butonu ile doğrudan ilgili arayüze
-                ulaşabilirsiniz.
+                {section.label} content is delivered on the live module. Use the "Go to module" button above to reach the relevant interface directly.
               </p>
             </CardContent>
           </Card>

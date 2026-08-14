@@ -263,7 +263,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <span className="font-medium">COW Duration:</span>
-                        <span className="ml-2">{tankerResult.cowTime.toFixed(1)} saat</span>
+                        <span className="ml-2">{tankerResult.cowTime.toFixed(1)} h</span>
                       </div>
                       <div>
                         <span className="font-medium">Inert Gas:</span>

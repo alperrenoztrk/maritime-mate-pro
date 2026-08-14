@@ -100,15 +100,15 @@ const MoonPhases = () => {
     } else if (phasePosition < 0.1875) {
       phaseName = "Hilal";
     } else if (phasePosition < 0.3125) {
-      phaseName = "İlk Dördün";
+      phaseName = "First Quarter";
     } else if (phasePosition < 0.4375) {
-      phaseName = "Şişkin Ay";
+      phaseName = "Waxing Gibbous";
     } else if (phasePosition < 0.5625) {
       phaseName = "Dolunay";
     } else if (phasePosition < 0.6875) {
-      phaseName = "Küçülen Ay";
+      phaseName = "Waning Gibbous";
     } else if (phasePosition < 0.8125) {
-      phaseName = "Son Dördün";
+      phaseName = "Last Quarter";
     } else if (phasePosition < 0.9375) {
       phaseName = "Son Hilal";
     } else {
@@ -181,8 +181,7 @@ const MoonPhases = () => {
         {/* Additional info */}
         <div className="mt-8 text-white/70 text-sm max-w-md">
           <p>
-            Ay, Dünya'nın etrafında yaklaşık 29.5 günde bir tam tur atar.
-            Bu süre zarfında farklı fazlardan geçer.
+            The Moon completes one full orbit of the Earth in about 29.5 days. Over that period it passes through its different phases.
           </p>
         </div>
       </div>

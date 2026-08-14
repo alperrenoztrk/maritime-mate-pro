@@ -29,19 +29,19 @@ import { useLanguage } from "@/contexts/useLanguage";
  */
 
 const PRO_FEATURES = [
-  "Tüm kitaplar ve profesyonel içerikler",
-  "Gelişmiş hesaplamalar ve simülasyonlar",
-  "Tüm quizler ve sınav hazırlık modülleri",
-  "3D gemi sistemleri",
-  "Yapay zekâ asistanında yüksek aylık kota",
+  "All books and professional content",
+  "Advanced calculations and simulations",
+  "All quizzes and exam preparation modules",
+  "3D ship systems",
+  "A high monthly quota on the AI assistant",
 ];
 
 const FREE_FEATURES = [
-  "Denizcilik sözlüğü",
-  "Temel COLREG ve emniyet içeriği",
-  "Seçili kitaplar ve temel hesaplayıcılar",
-  "Haberler ve hava durumu",
-  "Sınırlı quiz ve AI kotası",
+  "Maritime glossary",
+  "Basic COLREG and safety content",
+  "Selected books and basic calculators",
+  "News and weather",
+  "Limited quiz and AI quota",
 ];
 
 interface PlanCardData {
@@ -53,9 +53,9 @@ interface PlanCardData {
 }
 
 const PLAN_CARDS: PlanCardData[] = [
-  { plan: "yearly", title: "Pro Yıllık", period: "/ yıl", highlight: true, note: "En avantajlı" },
+  { plan: "yearly", title: "Pro Yıllık", period: "/ year", highlight: true, note: "En avantajlı" },
   { plan: "monthly", title: "Pro Aylık", period: "/ ay", highlight: false },
-  { plan: "lifetime", title: "Ömür Boyu", period: "tek ödeme", highlight: false, note: "Sınırsız AI hariç" },
+  { plan: "lifetime", title: "Ömür Boyu", period: "one-off payment", highlight: false, note: "Sınırsız AI hariç" },
 ];
 
 const ProPage = () => {
@@ -180,7 +180,7 @@ const ProPage = () => {
             <Card className="border-amber-400/40 bg-amber-500/10">
               <CardContent className="flex items-center gap-3 py-3 text-sm">
                 <Lock className="w-4 h-4 shrink-0 text-amber-400" />
-                <span data-translatable>{`${gatedFeature} Pro paketine dahildir. Erişim için bir plan seçin.`}</span>
+                <span data-translatable>{`${gatedFeature} is included in the Pro package. Choose a plan to get access.`}</span>
               </CardContent>
             </Card>
           )}

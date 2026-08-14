@@ -2,19 +2,19 @@ import { Wrench } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "Ana makinede bir silindirin egzoz sıcaklığı diğerlerinden 50°C yüksek. Olası nedenler ve kontrol edilmesi gereken noktalar nelerdir?",
-  "Son haftalarda SFOC değerlerimiz %5 arttı. Bu artışın olası nedenleri ve alınabilecek önlemler nelerdir?",
-  "HT soğutma suyu sıcaklığı normalin üzerinde seyrediyor. Olası nedenler ve kontrol prosedürü nedir?",
-  "Ana makinede anormal titreşim algılandı. Sistematik arıza tespit yaklaşımı ve kontrol edilecek noktalar nelerdir?",
-  "Yakıt viskozitesi düşük ölçüldü. Separatör ve viskometre kontrolleri nasıl yapılmalı?",
-  "Yedek dizel jeneratörde aşırı siyah duman var. Olası kök nedenleri ve ayar önerilerini paylaşır mısın?",
+  "The exhaust temperature of one cylinder on the main engine is 50°C higher than the others. What are the possible causes and the points to check?",
+  "Our SFOC figures have risen by 5% over the last few weeks. What are the possible causes of this increase and the measures that can be taken?",
+  "The HT cooling water temperature is running above normal. What are the possible causes and the check procedure?",
+  "Abnormal vibration has been detected on the main engine. What is the systematic fault-finding approach and which points should be checked?",
+  "The fuel viscosity has been measured low. How should the separator and viscometer checks be carried out?",
+  "There is heavy black smoke from the standby diesel generator. Can you share the possible root causes and adjustment recommendations?",
 ];
 
-const systemPrompt = `Sen denizcilik alanında uzman bir makine mühendisi asistansın.
-Gemi makineleri, yakıt ve yağlama sistemleri, soğutma, bakım planlama ve arıza tespiti konularında rehberlik verirsin.
-Yanıtlarını maddeler halinde ve uygulanabilir şekilde yaz; güvenlik, MARPOL/SOLAS ve üretici talimatlarına uyumu vurgula.
-Adım adım kontrol önerileri ve alarm eşikleri ekle.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised as a marine engineer.
+You provide guidance on ship machinery, fuel and lubricating oil systems, cooling, maintenance planning and fault finding.
+Write your answers as bullet points and in an applicable form; emphasise safety and compliance with MARPOL/SOLAS and the maker's instructions.
+Add step-by-step check recommendations and alarm thresholds.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function MachineAssistant() {
   return (

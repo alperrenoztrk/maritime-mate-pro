@@ -8,32 +8,32 @@ const safetyRules = [
     icon: Flame,
     rules: [
       "Fire detection and alarm systems are mandatory.",
-      "Yangın söndürme sistemleri (FFA) eksiksiz olmalıdır.",
-      "Yangın kapıları ve bölmeleri düzenli kontrol edilmelidir.",
-      "Yangın planları görünür yerlerde asılı olmalıdır.",
-      "Yangın söndürücüler düzenli bakımdan geçirilmelidir."
+      "Fire fighting appliances (FFA) must be complete.",
+      "Fire doors and divisions must be checked regularly.",
+      "Fire plans must be posted in visible locations.",
+      "Fire extinguishers must be serviced regularly."
     ]
   },
   {
     title: "LSA Kodu - Can Kurtarma Donanımları",
     icon: LifeBuoy,
     rules: [
-      "Can salları ve filikalar düzenli servis edilmelidir.",
-      "Can yelekleri tüm personel için mevcut olmalıdır.",
-      "EPIRB ve SART cihazları çalışır durumda olmalıdır.",
-      "Acil durum pozisyon işaretleri (EPIRB) kayıtlı olmalıdır.",
-      "Immersion suit ve thermal protective aid yeterli sayıda olmalıdır."
+      "Liferafts and lifeboats must be serviced regularly.",
+      "Lifejackets must be available for all crew.",
+      "EPIRB and SART devices must be in working order.",
+      "Emergency position indicating beacons (EPIRB) must be registered.",
+      "Immersion suits and thermal protective aids must be carried in sufficient numbers."
     ]
   },
   {
     title: "ISM Kodu",
     icon: Shield,
     rules: [
-      "DOC (Document of Compliance) şirket için geçerli olmalıdır.",
-      "SMC (Safety Management Certificate) gemi için geçerli olmalıdır.",
+      "The DOC (Document of Compliance) must be valid for the company.",
+      "The SMC (Safety Management Certificate) must be valid for the ship.",
       "A DPA (Designated Person Ashore) must be appointed.",
-      "Acil durum prosedürleri dokümante edilmelidir.",
-      "İç denetimler yıllık olarak yapılmalıdır."
+      "Emergency procedures must be documented.",
+      "Internal audits must be carried out annually."
     ]
   },
   {
@@ -41,10 +41,10 @@ const safetyRules = [
     icon: Scale,
     rules: [
       "The ISSC (International Ship Security Certificate) must be valid.",
-      "SSP (Ship Security Plan) onaylı ve uygulanıyor olmalıdır.",
-      "SSO (Ship Security Officer) atanmış olmalıdır.",
-      "Güvenlik tatbikatları düzenli yapılmalıdır.",
-      "Erişim kontrolleri ve ziyaretçi kayıtları tutulmalıdır."
+      "The SSP (Ship Security Plan) must be approved and implemented.",
+      "An SSO (Ship Security Officer) must be appointed.",
+      "Security drills must be held regularly.",
+      "Access controls and visitor records must be kept."
     ]
   }
 ];

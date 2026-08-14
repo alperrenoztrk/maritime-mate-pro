@@ -7,35 +7,35 @@ import { ShieldCheck, AlertCircle } from "lucide-react";
 const certificates = [
   {
     name: "Safety Construction Certificate",
-    validity: "5 Yıl · Yıllık ara survey",
-    authority: "Bayrak Devleti / Yetkilendirilmiş Sınıf",
-    focus: ["Su geçirmez bölmeler", "Makine emniyeti", "Elektrik sistemleri"],
+    validity: "5 Years · Annual intermediate survey",
+    authority: "Flag State / Authorised Class",
+    focus: ["Watertight compartments", "Makine emniyeti", "Elektrik sistemleri"],
   },
   {
     name: "Safety Equipment Certificate",
-    validity: "5 Yıl · 2. ve 3. yılda ara survey",
-    authority: "Bayrak Devleti / Yetkilendirilmiş Sınıf",
-    focus: ["Can kurtarma araçları", "Yangın sistemleri", "Acil durum haberleşmesi"],
+    validity: "5 Years · Intermediate survey in years 2 and 3",
+    authority: "Flag State / Authorised Class",
+    focus: ["Can kurtarma araçları", "Fire systems", "Emergency communications"],
   },
   {
     name: "Safety Radio Certificate",
-    validity: "1 Yıl",
-    authority: "Bayrak veya yetkili GMDSS surveyörleri",
-    focus: ["GMDSS ekipmanı", "Akü ve güç kaynakları", "Radio log kayıtları"],
+    validity: "1 Year",
+    authority: "Flag or authorised GMDSS surveyors",
+    focus: ["GMDSS equipment", "Batteries and power supplies", "Radio log records"],
   },
   {
     name: "International Ship Security Certificate (ISSC)",
-    validity: "5 Yıl · Ara inceleme 2.-3. yıl",
+    validity: "5 Years · Intermediate review in years 2-3",
     authority: "Bayrak Devleti / RSO",
-    focus: ["ISPS uygulamaları", "SSP kayıtları", "Acil durum drill raporları"],
+    focus: ["ISPS practices", "SSP records", "Emergency drill reports"],
   },
 ];
 
 const renewalMatrix = [
-  { item: "Yıllık Emniyet Surveyi", maxDelay: "3 ay", documents: "Sertifika kopyası, eksiklik kapanış raporları" },
-  { item: "Ara Survey (Safety Equipment)", maxDelay: "3 ay", documents: "Filika yük test raporları, CO₂ sistemi testleri" },
-  { item: "GMDSS Survey", maxDelay: "30 gün", documents: "Radio Log, EPIRB / SART test sertifikaları" },
-  { item: "ISPS Doğrulama", maxDelay: "6 ay", documents: "Drill kayıtları, güvenlik uyarıları, SSP revizyonu" },
+  { item: "Annual Safety Survey", maxDelay: "3 ay", documents: "Certificate copy, deficiency closure reports" },
+  { item: "Ara Survey (Safety Equipment)", maxDelay: "3 ay", documents: "Lifeboat load test reports, CO₂ system tests" },
+  { item: "GMDSS Survey", maxDelay: "30 gün", documents: "Radio Log, EPIRB / SART test certificates" },
+  { item: "ISPS Verification", maxDelay: "6 ay", documents: "Drill records, security alerts, SSP revision" },
 ];
 
 const SOLASCertificatesPage = () => {

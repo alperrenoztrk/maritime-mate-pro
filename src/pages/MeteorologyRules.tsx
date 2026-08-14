@@ -20,7 +20,7 @@ const meteorologyRules = [
       "An avoidance plan is essential on routes where severe weather is expected.",
       "Weather routeing services should be used.",
       "Cargo safety and fuel economy must be balanced when selecting the route.",
-      "500 nm kuralı: Tropik siklon 500 nm içindeyse rota değişikliği değerlendirilmelidir."
+      "The 500 nm rule: if a tropical cyclone is within 500 nm, a route change must be considered."
     ]
   },
   {
@@ -30,17 +30,17 @@ const meteorologyRules = [
       "Bridge watchkeeping officers must continuously assess the meteorological data.",
       "Changes in the weather must be recorded in the deck log book.",
       "The master must be kept regularly informed of the weather conditions.",
-      "Görüş mesafesi azaldığında uygun önlemler alınmalıdır."
+      "Appropriate precautions must be taken when visibility is reduced."
     ]
   },
   {
     title: "WMO Denizcilik Servisleri",
     icon: Scale,
     rules: [
-      "NAVTEX uyarıları takip edilmelidir.",
-      "Gale warnings ve storm warnings ciddiye alınmalıdır.",
+      "NAVTEX warnings must be monitored.",
+      "Gale warnings and storm warnings must be taken seriously.",
       "Meteorolojik NAVAREA bildirileri kontrol edilmelidir.",
-      "Synoptic haritalar ve analiz grafikleri yorumlanmalıdır."
+      "Synoptic charts and analysis diagrams must be interpreted."
     ]
   }
 ];

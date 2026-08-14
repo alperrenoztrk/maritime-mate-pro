@@ -44,7 +44,7 @@ const safetyFormulas = [
     icon: Flame,
     formula: "Capacity = Q × t × n",
     variables: [
-      "Q: Her bir hidrant debisi (m³/h)",
+      "Q: Flow rate of each hydrant (m³/h)",
       "t: minimum operating time (hours)",
       "n: number of hydrants operating simultaneously"
     ],

@@ -7,43 +7,43 @@ import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useHourlyWeather } from "@/hooks/useHourlyWeather";
 import { WeatherIcon } from "@/components/weather/WeatherIcon";
 
-function wmoToTr(code?: number): string {
+function wmoToDescription(code?: number): string {
   switch (code) {
-    case 0: return "open";
-    case 1: return "Az bulutlu";
-    case 2: return "Parçalı bulutlu";
-    case 3: return "Kapalı";
+    case 0: return "Clear";
+    case 1: return "Mainly clear";
+    case 2: return "Partly cloudy";
+    case 3: return "Overcast";
     case 45:
-    case 48: return "Sis";
+    case 48: return "Fog";
     case 51:
     case 53:
-    case 55: return "Çiseleme";
+    case 55: return "Drizzle";
     case 56:
-    case 57: return "Donan çiseleme";
+    case 57: return "Freezing drizzle";
     case 61:
     case 63:
-    case 65: return "Yağmur";
+    case 65: return "Rain";
     case 66:
-    case 67: return "Donan yağmur";
+    case 67: return "Freezing rain";
     case 71:
     case 73:
-    case 75: return "Kar";
-    case 77: return "Kar taneleri";
+    case 75: return "Snow";
+    case 77: return "Snow grains";
     case 80:
     case 81:
-    case 82: return "Sağanak yağmur";
+    case 82: return "Rain showers";
     case 85:
-    case 86: return "Kar sağanağı";
-    case 95: return "Gök gürültülü fırtına";
+    case 86: return "Snow showers";
+    case 95: return "Thunderstorm";
     case 96:
-    case 99: return "Dolu fırtınası";
-    default: return "Belirsiz";
+    case 99: return "Thunderstorm with hail";
+    default: return "Unknown";
   }
 }
 
 function degreesToCompass(degrees: number): string {
   if (Number.isNaN(degrees)) return "-";
-  const directions = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
+  const directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
   const index = Math.round(degrees / 22.5) % 16;
   return directions[index];
 }
@@ -61,14 +61,14 @@ export default function WeatherForecast() {
   const { loading: hourlyLoading, error: hourlyError, data: hourlyData, fetchHourlyWeather } = useHourlyWeather();
 
   const dayNames = useMemo(() => {
-    return ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   }, []);
 
   const formatDate = (dateStr: string, index: number) => {
     const date = new Date(dateStr);
     const dayName = dayNames[date.getDay()];
-    if (index === 0) return "Bugün";
-    if (index === 1) return "Yarın";
+    if (index === 0) return "Today";
+    if (index === 1) return "Tomorrow";
     return `${dayName} ${date.getDate()}/${date.getMonth() + 1}`;
   };
 
@@ -155,7 +155,7 @@ export default function WeatherForecast() {
                         <div className="flex items-center justify-center md:justify-start gap-3">
                           <WeatherIcon code={day.weatherCode} className="h-9 w-9" />
                           <div>
-                            <p className="font-medium text-foreground">{wmoToTr(day.weatherCode)}</p>
+                            <p className="font-medium text-foreground">{wmoToDescription(day.weatherCode)}</p>
                             <p className="text-xs text-muted-foreground">
                               {new Date(day.date).toLocaleDateString('tr-TR')}
                             </p>
@@ -260,7 +260,7 @@ export default function WeatherForecast() {
                                 <div className="flex items-center gap-2">
                                   <WeatherIcon code={hour.weatherCode} className="h-6 w-6" />
                                   <span className="text-sm text-muted-foreground hidden sm:inline">
-                                    {wmoToTr(hour.weatherCode)}
+                                    {wmoToDescription(hour.weatherCode)}
                                   </span>
                                 </div>
                               </div>

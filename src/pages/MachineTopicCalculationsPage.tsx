@@ -120,7 +120,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Polytropic Process",
-      description: "P₁V₁ⁿ = P₂V₂ⁿ ile son basınç ve işi hesaplar.",
+      description: "Calculates the final pressure and the work with P₁V₁ⁿ = P₂V₂ⁿ.",
       inputs: [
         { key: "p1", label: "Initial Pressure (P₁)", unit: "bar", placeholder: "1" },
         { key: "v1", label: "Initial Volume (V₁)", unit: "m³", placeholder: "0.5" },
@@ -356,7 +356,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Admiralty Coefficient",
-      description: "Hız-güç ilişkisini belirler: C = (Δ^(2/3) × V³) / P",
+      description: "Determines the speed-power relationship: C = (Δ^(2/3) × V³) / P",
       inputs: [
         { key: "delta", label: "Displacement (Δ)", unit: "tonnes", placeholder: "50000" },
         { key: "v", label: "Speed (V)", unit: "knot", placeholder: "14" },

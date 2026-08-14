@@ -283,13 +283,13 @@ const topicContents: Record<string, TopicContent> = {
   "stability-definition": {
     title: "Stabilitenin Tanımı",
     introduction: "Stabilite, bir geminin dış kuvvetler altında dengesini koruma ve denge bozulduğunda eski haline dönme yeteneğidir.",
-    content: `Gemi stabilitesi, denizcilik mühendisliğinin en kritik konularından biridir. Bir geminin güvenli seyir yapabilmesi için yeterli stabiliteye sahip olması zorunludur.
+    content: `Ship stability is one of the most critical subjects in marine engineering. A ship must have adequate stability if it is to make a safe passage.
 
-Stabilite kavramı temelde şu soruya cevap arar: "Gemi yattığında tekrar dik duruma dönebilir mi?"
+The concept of stability essentially answers this question: "Will the ship return upright when it heels?"
 
-Bir cismin stabilitesi, o cismin denge konumundan uzaklaştırıldığında gösterdiği tepkiyle belirlenir. Eğer cisim eski konumuna dönmeye çalışıyorsa stabildir, daha da uzaklaşıyorsa unstabildir.
+The stability of a body is determined by how it responds when it is moved from its equilibrium position. If the body tries to return to its former position it is stable; if it moves further away it is unstable.
 
-Gemilerde stabilite, yükleme durumuna, tank doluluk oranlarına, hava koşullarına ve yapılan operasyonlara bağlı olarak sürekli değişir. Bu nedenle her yükleme durumunda stabilite hesabı yapılmalıdır.`,
+On ships, stability changes continuously with the loading condition, the level of the tanks, the weather and the operations being carried out. A stability calculation must therefore be made for every loading condition.`,
     bulletPoints: [
       "Stabilite = Dengeyi koruma + Dengeye dönme yeteneği",
       "Yetersiz stabilite = Devrilme riski",
@@ -305,18 +305,18 @@ Gemilerde stabilite, yükleme durumuna, tank doluluk oranlarına, hava koşullar
   "balance-concepts": {
     title: "Denge, Devrilme ve Doğrultma Kavramları",
     introduction: "Gemilerde denge, üzerine etki eden kuvvetlerin dengede olması durumudur. Devrilme bu dengenin bozulması, doğrultma ise dengenin yeniden sağlanmasıdır.",
-    content: `Bir gemi dengedeyken üzerine iki temel kuvvet etki eder:
-1. Ağırlık kuvveti (W) - Aşağı yönlü, ağırlık merkezinden (G) etki eder
-2. Kaldırma kuvveti (B) - Yukarı yönlü, kaldırma merkezinden (B) etki eder
+    content: `Two fundamental forces act on a ship in equilibrium:
+1. The weight force (W) – acting downwards through the centre of gravity (G)
+2. The buoyancy force (B) – acting upwards through the centre of buoyancy (B)
 
-Dengede: W = B ve G ile B aynı düşey doğru üzerindedir.
+In equilibrium: W = B, and G and B lie on the same vertical line.
 
-DEVRILME:
-Gemi yattığında G noktası sabit kalırken, B noktası yatan tarafa doğru kayar. Bu durum bir moment oluşturur.
+CAPSIZING:
+When the ship heels, G stays where it is while B moves towards the low side. This creates a moment.
 
-DOĞRULTMA:
-Eğer oluşan moment gemiyi dik duruma getirmeye çalışıyorsa, bu "doğrultma momenti"dir ve gemi stabildir.
-Eğer moment gemiyi daha da yatırmaya çalışıyorsa, gemi unstabildir.`,
+RIGHTING:
+If the moment created tries to bring the ship upright, it is a "righting moment" and the ship is stable.
+If the moment tries to heel the ship further, the ship is unstable.`,
     bulletPoints: [
       "Denge: W = B, G ve B aynı düşey doğruda",
       "Yatma: B noktası yatan tarafa kayar",
@@ -337,14 +337,14 @@ Eğer moment gemiyi daha da yatırmaya çalışıyorsa, gemi unstabildir.`,
   "static-stability": {
     title: "Statik Stabilite",
     introduction: "Statik stabilite, geminin belirli bir yatma açısında sabit kaldığı ve hareket etmediği durumda analiz edilen stabilite türüdür.",
-    content: `Statik stabilite, geminin belirli bir yatma açısında denge durumunu inceler. Bu analiz, hareketin olmadığı, yani geminin o açıda "donmuş" gibi kabul edildiği bir durum için yapılır.
+    content: `Static stability examines the equilibrium of the ship at a given angle of heel. The analysis is made for a condition in which there is no motion, that is, in which the ship is treated as "frozen" at that angle.
 
-Statik stabilitede temel soru şudur: "Gemi belirli bir açıda yatmış halde mi kalacak, yoksa dik duruma mı dönecek?"
+The basic question in static stability is: "Will the ship stay heeled at a given angle, or will it return upright?"
 
-Statik stabilite analizi, GZ (doğrultma kolu) eğrisi üzerinden yapılır. Bu eğri, farklı yatma açılarında geminin ne kadar doğrultma momenti ürettiğini gösterir.
+Static stability analysis is carried out using the GZ (righting lever) curve. This curve shows how much righting moment the ship produces at different angles of heel.
 
-Pozitif GZ değeri, geminin o açıda dik duruma dönme eğiliminde olduğunu gösterir.
-Negatif GZ değeri, geminin daha fazla yatma eğiliminde olduğunu gösterir.`,
+A positive GZ value shows that at that angle the ship tends to return upright.
+A negative GZ value shows that the ship tends to heel further.`,
     bulletPoints: [
       "Statik = Hareket yok, anlık denge analizi",
       "GZ eğrisi statik stabilitenin temel aracıdır",
@@ -360,13 +360,13 @@ Negatif GZ değeri, geminin daha fazla yatma eğiliminde olduğunu gösterir.`,
   "dynamic-stability-intro": {
     title: "Dinamik Stabilite",
     introduction: "Dinamik stabilite, geminin hareket halindeyken ve dış kuvvetlere maruz kalırken gösterdiği stabilite davranışıdır.",
-    content: `Dinamik stabilite, gerçek deniz koşullarında geminin davranışını inceler. Statik stabiliteden farklı olarak, burada geminin hareketi ve enerji dengesi göz önünde bulundurulur.
+    content: `Dynamic stability examines the behaviour of the ship in real sea conditions. Unlike static stability, here the motion of the ship and the energy balance are taken into account.
 
-Dalga, rüzgâr ve manevra gibi dış kuvvetler gemiye enerji aktarır. Bu enerji, geminin yatma hareketine dönüşür. Gemi, bu enerjiyi absorbe edebilmeli ve devrilmeden dengesini korumalıdır.
+External forces such as waves, wind and manoeuvring transfer energy to the ship. This energy is converted into heeling motion. The ship must be able to absorb this energy and keep its equilibrium without capsizing.
 
-Dinamik stabilite, GZ eğrisinin altındaki alanla ölçülür. Bu alan, geminin belirli bir açıya kadar absorbe edebileceği enerji miktarını temsil eder.
+Dynamic stability is measured by the area under the GZ curve. This area represents the amount of energy the ship can absorb up to a given angle.
 
-Büyük alan = Daha fazla enerji absorbe kapasitesi = Daha iyi dinamik stabilite`,
+A large area = more energy absorbing capacity = better dynamic stability`,
     bulletPoints: [
       "Dinamik = Hareket var, enerji dengesi analizi",
       "Dış kuvvetler gemiye enerji aktarır",
@@ -387,22 +387,22 @@ Büyük alan = Daha fazla enerji absorbe kapasitesi = Daha iyi dinamik stabilite
   "initial-stability": {
     title: "İlk Stabilite Kavramı",
     introduction: "İlk stabilite (initial stability), geminin küçük yatma açılarındaki (0-10°) stabilite davranışını tanımlar ve GM değeri ile ifade edilir.",
-    content: `İlk stabilite, geminin dik konumdan çok az yattığı (genellikle 10°'ye kadar) durumlardaki stabilitesidir. Bu aralıkta metasantr (M) noktası sabit kabul edilir.
+    content: `Initial stability is the stability of the ship at small angles of heel from upright (generally up to 10°). Within this range the metacentre (M) is taken as fixed.
 
-İlk stabilitenin ölçüsü, metasantrik yükseklik GM'dir:
+The measure of initial stability is the metacentric height GM:
 GM = KM - KG
 
-Burada:
-- KM: Omurgadan metasantra uzaklık (hidrostatik tablolardan)
-- KG: Omurgadan ağırlık merkezine uzaklık (yükleme hesabından)
+Where:
+- KM: the distance from the keel to the metacentre (from the hydrostatic tables)
+- KG: the distance from the keel to the centre of gravity (from the loading calculation)
 
-Büyük GM = Sert gemi, hızlı salınım
-Küçük GM = Yumuşak gemi, yavaş salınım
-Negatif GM = Unstabil gemi, tehlike!`,
+Large GM = a stiff ship, rapid rolling
+Small GM = a tender ship, slow rolling
+Negative GM = an unstable ship, danger!`,
     bulletPoints: [
       "İlk stabilite küçük açılar (0-10°) için geçerlidir",
       "GM değeri ilk stabilitenin ölçüsüdür",
-      "GM = KM - KG formülü ile hesaplanır",
+      "Calculated with the formula GM = KM - KG",
       "GM pozitif olmalıdır (minimum 0.15 m)",
     ],
     formula: {
@@ -416,16 +416,16 @@ Negatif GM = Unstabil gemi, tehlike!`,
       "Çok küçük GM yavaş tepki ve risk demektir",
     ],
     warnings: [
-      "GM negatif ise gemi dik duramaz, 'loll' açısında kalır",
-      "Minimum GM değeri gemi tipine göre IMO tarafından belirlenir",
+      "If GM is negative the ship cannot stay upright and rests at an angle of loll",
+      "The minimum GM value is set by the IMO according to ship type",
     ],
   },
   "metacenter-m": {
     title: "Metasantr (M) kavramı",
     introduction: "Metasantr, gemi küçük açılarla yattığında kaldırma merkezinin izlediği eğrinin dikey eksenle kesiştiği noktadır ve ilk stabilitenin geometrik temelidir.",
-    content: `Metasantr (M), gemi çok küçük bir yatma açısına geçtiğinde kaldırma merkezinin (B) yeni konumundan çizilen düşey doğrultunun, gemi merkez hattı ile kesiştiği noktadır. Bu nokta, küçük açılar için doğrultma momentinin oluşup oluşmadığını belirler.
+    content: `The metacentre (M) is the point at which the vertical drawn through the new position of the centre of buoyancy (B), when the ship heels through a very small angle, intersects the ship's centreline. This point determines whether or not a righting moment is produced at small angles.
 
-Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesaplanan BM mesafesi ile belirlenir. BM, B ile M arasındaki düşey mesafedir ve geminin su hattı şekline hassastır.`,
+The position of the metacentre is determined by the distance BM, calculated from the waterplane moment of inertia and the immersed volume. BM is the vertical distance between B and M and is sensitive to the shape of the waterplane.`,
     images: [
       {
         src: metacenterDiagram,
@@ -445,8 +445,8 @@ Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesapl
     },
     examples: [
       {
-        problem: "I = 3.200 m⁴, ∇ = 6.400 m³ ve KB = 3.2 m ise BM ve KM kaç metredir?",
-        solution: "1) BM = I / ∇ = 3.200 / 6.400 = 0.5 m. 2) KM = KB + BM = 3.2 + 0.5 = 3.7 m. Sonuç: Metasantr omurgadan 3.7 m yüksekliktedir.",
+        problem: "If I = 3,200 m⁴, ∇ = 6,400 m³ and KB = 3.2 m, what are BM and KM in metres?",
+        solution: "1) BM = I / ∇ = 3,200 / 6,400 = 0.5 m. 2) KM = KB + BM = 3.2 + 0.5 = 3.7 m. Result: the metacentre is 3.7 m above the keel.",
       },
     ],
     keyPoints: [
@@ -458,11 +458,11 @@ Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesapl
   "metacentric-height-gm": {
     title: "Metasantrik yükseklik (GM)",
     introduction: "Metasantrik yükseklik GM, metasantr ile ağırlık merkezi arasındaki düşey mesafedir ve ilk stabilitenin sayısal ölçüsüdür.",
-    content: `GM, geminin küçük yatma açılarında ne kadar hızlı doğrultma momenti üreteceğini gösterir. GM pozitif ise gemi dik duruma dönme eğilimindedir, GM negatif ise gemi dengesizdir.
+    content: `GM shows how quickly the ship will produce a righting moment at small angles of heel. If GM is positive the ship tends to return upright; if GM is negative the ship is unstable.
 
-GM değeri, hidrostatik tablolardan alınan KM ile yükleme hesabından çıkan KG farkıdır. GM büyüdükçe gemi sertleşir ve salınım periyodu kısalır.
+The GM value is the difference between the KM taken from the hydrostatic tables and the KG produced by the loading calculation. As GM increases the ship becomes stiffer and the rolling period shortens.
 
-Görsel: Omurga üzerinde KB, G ve M noktalarının aynı düşey hat üzerinde gösterildiği şema; GM aralığı vurgulanır.`,
+Diagram: a sketch showing KB, G and M on the same vertical line above the keel, with the GM interval highlighted.`,
     bulletPoints: [
       "GM, ilk stabilitenin ana göstergesidir",
       "GM pozitif olmalıdır",
@@ -475,8 +475,8 @@ Görsel: Omurga üzerinde KB, G ve M noktalarının aynı düşey hat üzerinde 
     },
     examples: [
       {
-        problem: "KM = 7.2 m ve KG = 6.6 m ise GM kaç metredir?",
-        solution: "1) GM = KM - KG. 2) GM = 7.2 - 6.6 = 0.6 m. Sonuç: GM pozitif olduğundan gemi küçük açılarda stabildir.",
+        problem: "If KM = 7.2 m and KG = 6.6 m, what is GM in metres?",
+        solution: "1) GM = KM - KG. 2) GM = 7.2 - 6.6 = 0.6 m. Result: since GM is positive the ship is stable at small angles.",
       },
     ],
     keyPoints: [
@@ -488,11 +488,11 @@ Görsel: Omurga üzerinde KB, G ve M noktalarının aynı düşey hat üzerinde 
   "kb-bm-kg-relation": {
     title: "KB, BM ve KG ilişkisi",
     introduction: "KB, BM ve KG arasındaki ilişki, metasantrik yükseklik ve ilk stabiliteyi belirleyen temel geometrik zincirdir.",
-    content: `KB, omurgadan kaldırma merkezine olan mesafedir ve batık şekle bağlıdır. BM, su hattı atalet momenti ile batık hacmin oranıdır. KG ise ağırlık merkezinin omurgadan yüksekliğidir.
+    content: `KB is the distance from the keel to the centre of buoyancy and depends on the immersed shape. BM is the ratio of the waterplane moment of inertia to the immersed volume. KG is the height of the centre of gravity above the keel.
 
-Bu üç büyüklük bir araya geldiğinde önce KM hesaplanır, ardından GM bulunur. Bu zincir, stabilite hesabında kullanılan en temel geometrik bağlantıdır.
+When these three quantities are brought together, KM is calculated first and then GM is found. This chain is the most fundamental geometric relationship used in the stability calculation.
 
-Görsel: Geminin enine kesitinde omurga, KB, BM ve KG noktaları; KM ve GM aralıkları ölçü çizgileriyle gösterilir.`,
+Diagram: the keel, KB, BM and KG points on a transverse section of the ship, with the KM and GM intervals shown by dimension lines.`,
     bulletPoints: [
       "KB hidrostatik tablodan gelir",
       "BM su hattı şekline duyarlıdır",
@@ -505,8 +505,8 @@ Görsel: Geminin enine kesitinde omurga, KB, BM ve KG noktaları; KM ve GM aral�
     },
     examples: [
       {
-        problem: "KB = 4.0 m, BM = 1.2 m ve KG = 4.6 m ise KM ve GM kaç metredir?",
-        solution: "1) KM = KB + BM = 4.0 + 1.2 = 5.2 m. 2) GM = KM - KG = 5.2 - 4.6 = 0.6 m. Sonuç: GM pozitif, ilk stabilite yeterlidir.",
+        problem: "If KB = 4.0 m, BM = 1.2 m and KG = 4.6 m, what are KM and GM in metres?",
+        solution: "1) KM = KB + BM = 4.0 + 1.2 = 5.2 m. 2) GM = KM - KG = 5.2 - 4.6 = 0.6 m. Result: GM is positive, so the initial stability is adequate.",
       },
     ],
     keyPoints: [
@@ -518,11 +518,11 @@ Görsel: Geminin enine kesitinde omurga, KB, BM ve KG noktaları; KM ve GM aral�
   "positive-gm": {
     title: "Pozitif GM",
     introduction: "Pozitif GM, ağırlık merkezinin metasantrın altında olduğunu ve geminin küçük açılarda doğrultma momenti üretebildiğini gösterir.",
-    content: `GM pozitif olduğunda, gemi küçük bir açıyla yattığında doğrultma kolu GZ oluşur ve gemi dik duruma dönme eğilimi gösterir. Bu durumda doğrultma momenti pozitif yöndedir.
+    content: `When GM is positive and the ship heels through a small angle, a righting lever GZ is created and the ship tends to return upright. In this condition the righting moment acts in the positive direction.
 
-Küçük açılar için GZ, GM ile açının sinüsü çarpımına eşit kabul edilir. Bu basit ilişki, ilk stabilite hesaplarında kullanılır.
+For small angles GZ is taken as GM multiplied by the sine of the angle. This simple relationship is used in initial stability calculations.
 
-Görsel: G noktası M noktasının altında, gemi küçük açıyla yatmış, GZ kolu ve doğrultma momenti okları gösterilir.`,
+Diagram: G below M, the ship heeled through a small angle, with the GZ lever and the righting moment arrows shown.`,
     bulletPoints: [
       "Pozitif GM, ilk stabilitenin varlığını gösterir",
       "GZ doğrultma kolu pozitif olur",
@@ -535,8 +535,8 @@ Görsel: G noktası M noktasının altında, gemi küçük açıyla yatmış, GZ
     },
     examples: [
       {
-        problem: "GM = 0.8 m, θ = 10° ve Δ = 5.000 ton ise GZ ve RM kaçtır?",
-        solution: "1) sin 10° ≈ 0.174. 2) GZ ≈ 0.8 × 0.174 = 0.139 m. 3) RM = Δ × GZ = 5.000 × 0.139 = 695 t m. Sonuç: Doğrultma momenti pozitif ve gemi dik duruma dönme eğilimindedir.",
+        problem: "If GM = 0.8 m, θ = 10° and Δ = 5,000 tonnes, what are GZ and RM?",
+        solution: "1) sin 10° ≈ 0.174. 2) GZ ≈ 0.8 × 0.174 = 0.139 m. 3) RM = Δ × GZ = 5,000 × 0.139 = 695 t m. Result: the righting moment is positive and the ship tends to return upright.",
       },
     ],
     keyPoints: [
@@ -548,11 +548,11 @@ Görsel: G noktası M noktasının altında, gemi küçük açıyla yatmış, GZ
   "negative-gm": {
     title: "Negatif GM",
     introduction: "Negatif GM, ağırlık merkezinin metasantrın üzerinde olduğunu ve geminin küçük açılarda dengesiz olduğunu gösterir.",
-    content: `GM negatif olduğunda, gemi küçük açıyla yattığında doğrultma kolu GZ negatif olur. Bu durumda moment gemiyi daha da yatırır ve gemi dengesiz davranır.
+    content: `When GM is negative and the ship heels through a small angle, the righting lever GZ becomes negative. The moment then heels the ship further and the ship behaves unstably.
 
-Negatif GM, geminin belirli bir loll açısına yatmasına yol açabilir. Bu durum operasyonel olarak tehlikelidir ve yükleme derhal düzeltilmelidir.
+A negative GM can cause the ship to come to rest at an angle of loll. This condition is operationally dangerous and the loading must be corrected immediately.
 
-Görsel: G noktası M noktasının üzerinde, gemi küçük açıyla yatmış, GZ kolu ve moment okları devrilme yönünde gösterilir.`,
+Diagram: G above M, the ship heeled through a small angle, with the GZ lever and the moment arrows shown in the capsizing direction.`,
     bulletPoints: [
       "Negatif GM dengesizliği gösterir",
       "GZ negatif olur ve devrilme momenti oluşur",
@@ -565,8 +565,8 @@ Görsel: G noktası M noktasının üzerinde, gemi küçük açıyla yatmış, G
     },
     examples: [
       {
-        problem: "GM = -0.3 m, θ = 8° ve Δ = 5.000 ton ise GZ ve RM kaçtır?",
-        solution: "1) sin 8° ≈ 0.139. 2) GZ ≈ -0.3 × 0.139 = -0.042 m. 3) RM = 5.000 × -0.042 = -210 t m. Sonuç: Negatif moment gemiyi daha fazla yatırır.",
+        problem: "If GM = -0.3 m, θ = 8° and Δ = 5,000 tonnes, what are GZ and RM?",
+        solution: "1) sin 8° ≈ 0.139. 2) GZ ≈ -0.3 × 0.139 = -0.042 m. 3) RM = 5,000 × -0.042 = -210 t m. Result: the negative moment heels the ship further.",
       },
     ],
     keyPoints: [
@@ -578,11 +578,11 @@ Görsel: G noktası M noktasının üzerinde, gemi küçük açıyla yatmış, G
   "gm-ship-movements": {
     title: "GM'nin gemi hareketlerine etkisi",
     introduction: "GM, geminin yalpa periyodunu ve hareket karakterini belirler; büyük GM sert, küçük GM yumuşak hareketlere neden olur.",
-    content: `GM büyüdükçe geminin doğrultma momenti artar ve yalpa periyodu kısalır. Bu durum gemiyi sert hale getirir, yükler üzerinde dinamik kuvvetler artar.
+    content: `As GM increases the ship's righting moment increases and the rolling period shortens. This makes the ship stiff and increases the dynamic forces on the cargo.
 
-GM küçüldükçe yalpa periyodu uzar, gemi yavaş salınır ve yolcu konforu artabilir; ancak stabilite marjı azalır. Bu nedenle GM değeri emniyet ve konfor arasında dikkatle değerlendirilir.
+As GM decreases the rolling period lengthens, the ship rolls slowly and passenger comfort may improve; but the margin of stability is reduced. The GM value must therefore be weighed carefully between safety and comfort.
 
-Görsel: Farklı GM değerleri için yalpa periyodu eğrisi ve gemi salınım genliği karşılaştırması.`,
+Diagram: a comparison of the rolling period curve and the amplitude of roll for different GM values.`,
     bulletPoints: [
       "Büyük GM = Kısa periyot, sert hareket",
       "Küçük GM = Uzun periyot, yumuşak hareket",
@@ -595,8 +595,8 @@ Görsel: Farklı GM değerleri için yalpa periyodu eğrisi ve gemi salınım ge
     },
     examples: [
       {
-        problem: "k = 4.5 m ve GM = 0.6 m için yalpa periyodu kaç saniyedir?",
-        solution: "1) k² = 4.5 × 4.5 = 20.25. 2) g × GM = 9.81 × 0.6 = 5.886. 3) 20.25 / 5.886 = 3.44. 4) √3.44 = 1.855. 5) T = 2π × 1.855 = 11.65 s. Sonuç: Yalpa periyodu yaklaşık 11.6 saniyedir.",
+        problem: "For k = 4.5 m and GM = 0.6 m, what is the rolling period in seconds?",
+        solution: "1) k² = 4.5 × 4.5 = 20.25. 2) g × GM = 9.81 × 0.6 = 5.886. 3) 20.25 / 5.886 = 3.44. 4) √3.44 = 1.855. 5) T = 2π × 1.855 = 11.65 s. Result: the rolling period is about 11.6 seconds.",
       },
     ],
     keyPoints: [
@@ -608,15 +608,15 @@ Görsel: Farklı GM değerleri için yalpa periyodu eğrisi ve gemi salınım ge
   "stability-safety": {
     title: "Stabilite ve Seyir Emniyeti İlişkisi",
     introduction: "Stabilite, seyir emniyetinin temel direğidir. Yetersiz stabilite can kaybına, gemi kaybına ve çevre felaketlerine yol açabilir.",
-    content: `Denizcilik tarihinde birçok trajik kaza, yetersiz stabiliteden kaynaklanmıştır. Bu kazalar, stabilite kurallarının sürekli güncellenmesine ve sıkılaştırılmasına neden olmuştur.
+    content: `Many tragic casualties in maritime history have been caused by inadequate stability. These casualties have led to the stability rules being updated and tightened continuously.
 
-Stabilite ve emniyet ilişkisi:
-1. Mürettebat güvenliği: Geminin devrilmesi can kaybına yol açar
-2. Yolcu güvenliği: Yolcu gemilerinde binlerce kişi risk altındadır
-3. Çevre güvenliği: Yakıt ve yük denize sızabilir
-4. Ekonomik güvenlik: Gemi ve yük kaybı büyük maddi zarara neden olur
+The relationship between stability and safety:
+1. Crew safety: capsizing causes loss of life
+2. Passenger safety: thousands of people are at risk on passenger ships
+3. Environmental safety: fuel and cargo can leak into the sea
+4. Economic safety: the loss of ship and cargo causes major financial damage
 
-ISM (International Safety Management) Kodu, stabilite yönetimini zorunlu kılmaktadır. Kaptan, her yükleme durumunda stabilitenin yeterli olduğunu doğrulamalıdır.`,
+The ISM (International Safety Management) Code makes stability management mandatory. The master must verify that stability is adequate in every loading condition.`,
     bulletPoints: [
       "Yetersiz stabilite = Can kaybı riski",
       "ISM Kodu stabilite yönetimini zorunlu kılar",
@@ -629,18 +629,18 @@ ISM (International Safety Management) Kodu, stabilite yönetimini zorunlu kılma
       "Yükleme bilgisayarları stabilite kontrolünde kullanılır",
     ],
     warnings: [
-      "Yetersiz stabilite geminin batmasına neden olabilir",
-      "Stabilite kitapçığı limitlerine uyulmalıdır",
+      "Inadequate stability can cause the ship to founder",
+      "The limits in the stability booklet must be complied with",
     ],
   },
   "weight-addition": {
     title: "Ağırlık eklenmesi",
     introduction: "Gemiye yeni bir ağırlık eklendiğinde toplam deplasman artar ve ağırlık merkezi eklenen yükün konumuna doğru kayar.",
-    content: `Ağırlık ekleme; kargo yükleme, yakıt/ballast alma, ekipman montajı gibi işlemleri kapsar. Eklenen yük, toplam ağırlığı artırdığı için geminin draftı büyür ve KG, LCG, TCG değerleri değişir.
+    content: `Adding weight covers operations such as loading cargo, taking bunkers/ballast and installing equipment. Because the added weight increases the total weight, the ship's draft increases and the KG, LCG and TCG values change.
 
-Yeni ağırlık merkezinin hesabı momentler yöntemi ile yapılır. Eklenen yükün dikey (kg), enine (tcg) ve boyuna (lcg) konumları ayrı ayrı değerlendirilir. Bu işlem, her yükleme adımında stabilite kitabı sınırları içinde kalmak için zorunludur.
+The new centre of gravity is calculated by the method of moments. The vertical (kg), transverse (tcg) and longitudinal (lcg) positions of the added weight are each assessed separately. This is essential at every loading step in order to stay within the limits of the stability book.
 
-Görsel: Geminin üzerinde eklenen yük, G noktasının yük yönüne kaydığı vektörle ve moment kolu ile gösterilir.`,
+Diagram: the added weight on the ship, with the vector along which G moves towards the weight and the moment arm shown.`,
     bulletPoints: [
       "Deplasman artar, draft büyür",
       "G noktası eklenen yükün konumuna yaklaşır",
@@ -653,8 +653,8 @@ Görsel: Geminin üzerinde eklenen yük, G noktasının yük yönüne kaydığı
     },
     examples: [
       {
-        problem: "Δ = 5.000 t, KG₀ = 6.2 m ve w = 200 t yük kg = 9.0 m seviyesine eklendi. Yeni KG kaç m?",
-        solution: "KG₁ = (5.000×6.2 + 200×9.0) / 5.200 = (31.000 + 1.800) / 5.200 = 6.31 m. Sonuç: KG yükselir, GM azalır.",
+        problem: "Δ = 5,000 t, KG₀ = 6.2 m, and a weight of w = 200 t is added at kg = 9.0 m. What is the new KG in metres?",
+        solution: "KG₁ = (5,000×6.2 + 200×9.0) / 5,200 = (31,000 + 1,800) / 5,200 = 6.31 m. Result: KG rises and GM falls.",
       },
     ],
     keyPoints: [
@@ -666,11 +666,11 @@ Görsel: Geminin üzerinde eklenen yük, G noktasının yük yönüne kaydığı
   "weight-removal": {
     title: "Ağırlık çıkarılması",
     introduction: "Ağırlık çıkarıldığında deplasman azalır ve ağırlık merkezi çıkarılan yükün ters yönüne kayar.",
-    content: `Ağırlık çıkarma; kargo boşaltma, yakıt tüketimi veya balast verme gibi işlemlerle oluşur. Bu durumda gemi hafifler, draft azalır ve G noktası çıkarılan yükün konumuna ters yönde hareket eder.
+    content: `Removing weight occurs through operations such as discharging cargo, consuming fuel or discharging ballast. The ship becomes lighter, the draft decreases and G moves in the opposite direction to the position of the weight removed.
 
-Çıkarılan yükün konumu yüksek ise KG azalır ve stabilite artabilir; aşağıdan ağırlık çıkarılırsa KG yükselir ve stabilite azalır. Bu nedenle tüketim ve boşaltma planı, stabilite açısından dikkatle izlenmelidir.
+If the weight removed was high up, KG decreases and stability may improve; if weight is removed from low down, KG rises and stability decreases. The consumption and discharge plan must therefore be watched carefully from the stability point of view.
 
-Görsel: Yük çıkarma sonrası G noktasının ters yöne kayması ve moment kolu gösterilir.`,
+Diagram: the movement of G in the opposite direction after the weight is removed, with the moment arm shown.`,
     bulletPoints: [
       "Deplasman azalır, draft küçülür",
       "G noktası çıkarılan yükün ters yönüne kayar",
@@ -683,8 +683,8 @@ Görsel: Yük çıkarma sonrası G noktasının ters yöne kayması ve moment ko
     },
     examples: [
       {
-        problem: "Δ = 4.800 t, KG₀ = 5.9 m, w = 150 t ve kg = 10 m yük çıkarılıyor. Yeni KG kaç m?",
-        solution: "KG₁ = (4.800×5.9 - 150×10) / 4.650 = (28.320 - 1.500) / 4.650 = 5.77 m. Sonuç: KG azalır, stabilite artar.",
+        problem: "Δ = 4,800 t, KG₀ = 5.9 m, and a weight of w = 150 t is removed from kg = 10 m. What is the new KG in metres?",
+        solution: "KG₁ = (4,800×5.9 - 150×10) / 4,650 = (28,320 - 1,500) / 4,650 = 5.77 m. Result: KG falls and stability improves.",
       },
     ],
     keyPoints: [
@@ -696,11 +696,11 @@ Görsel: Yük çıkarma sonrası G noktasının ters yöne kayması ve moment ko
   "weight-shift": {
     title: "Ağırlık kaydırılması",
     introduction: "Ağırlık kaydırma, deplasmanı değiştirmeden ağırlık merkezinin yön değiştirmesine neden olur ve list/trim oluşturabilir.",
-    content: `Ağırlık kaydırma; gemi içinde bir yükün başka bir konuma taşınmasıdır. Bu işlemde toplam deplasman değişmez, ancak G noktası taşınan yükün yönüne doğru kayar.
+    content: `Shifting weight means moving a weight from one position to another within the ship. The total displacement does not change in this operation, but G moves in the direction in which the weight is moved.
 
-Enine kaydırma list (yana yatma), boyuna kaydırma trim değişimine neden olur. Dikey kaydırma ise GM’yi doğrudan etkiler. Bu yüzden vinç operasyonları, konteyner yer değişimleri ve balast transferleri sırasında ağırlık kaydırma etkisi mutlaka hesaplanır.
+A transverse shift causes list and a longitudinal shift causes a change of trim. A vertical shift affects GM directly. The effect of shifting weight must therefore always be calculated during crane operations, container moves and ballast transfers.
 
-Görsel: Yükün yeni konumuna taşınması, G noktasının kayma vektörü ve oluşan moment kolu gösterilir.`,
+Diagram: the weight moved to its new position, with the vector of the shift of G and the resulting moment arm shown.`,
     bulletPoints: [
       "Deplasman sabit kalır, G noktası yer değiştirir",
       "Enine kaydırma list oluşturur",
@@ -713,8 +713,8 @@ Görsel: Yükün yeni konumuna taşınması, G noktasının kayma vektörü ve o
     },
     examples: [
       {
-        problem: "Δ = 6.000 t, w = 120 t yük 6 m enine kaydırılıyor. G kaç metre kayar?",
-        solution: "GG₁ = (120×6) / 6.000 = 0.12 m. Sonuç: G, 12 cm kayar ve list oluşur.",
+        problem: "Δ = 6,000 t and a weight of w = 120 t is shifted 6 m transversely. How far does G move?",
+        solution: "GG₁ = (120×6) / 6,000 = 0.12 m. Result: G moves 12 cm and a list is created.",
       },
     ],
     keyPoints: [
@@ -726,11 +726,11 @@ Görsel: Yükün yeni konumuna taşınması, G noktasının kayma vektörü ve o
   "vertical-weight-movement": {
     title: "Dikey ağırlık hareketleri",
     introduction: "Ağırlığın dikey taşınması KG’yi değiştirir ve geminin ilk stabilitesini doğrudan etkiler.",
-    content: `Dikey ağırlık hareketlerinde yük yukarı taşınırsa KG artar, aşağı taşınırsa KG azalır. Bu işlem deplasmanı değiştirmez ancak GM üzerinde güçlü etki yaratır.
+    content: `In vertical weight movements, KG increases if the weight is moved up and decreases if it is moved down. This operation does not change the displacement but has a strong effect on GM.
 
-Vinçle yük kaldırma, güverteye ekipman yerleştirme veya balastın alt tanklara transferi gibi işlemler dikey ağırlık hareketidir. Özellikle yükün askıda olduğu durumlarda, ağırlık merkezinin etkin konumu askı noktasına taşınmış kabul edilir.
+Lifting a weight with a crane, placing equipment on deck or transferring ballast to the bottom tanks are all vertical weight movements. In particular, when a weight is suspended the effective position of its centre of gravity is taken as having moved to the point of suspension.
 
-Görsel: Yükün yukarı/aşağı taşınması ve KG’nin yeni konumu ile GM değişimi gösterilir.`,
+Diagram: the weight moved up/down, with the new position of KG and the change in GM shown.`,
     bulletPoints: [
       "Yukarı taşıma KG’yi artırır, GM azalır",
       "Aşağı taşıma KG’yi azaltır, GM artar",
@@ -743,8 +743,8 @@ Görsel: Yükün yukarı/aşağı taşınması ve KG’nin yeni konumu ile GM de
     },
     examples: [
       {
-        problem: "Δ = 7.200 t, w = 80 t yük 4 m yukarı taşınıyor. KG ne kadar artar?",
-        solution: "ΔKG = (80×4) / 7.200 = 0.044 m. Sonuç: KG yaklaşık 4.4 cm artar ve GM azalır.",
+        problem: "Δ = 7,200 t and a weight of w = 80 t is moved 4 m upwards. By how much does KG increase?",
+        solution: "ΔKG = (80×4) / 7,200 = 0.044 m. Result: KG increases by about 4.4 cm and GM falls.",
       },
     ],
     keyPoints: [
@@ -756,11 +756,11 @@ Görsel: Yükün yukarı/aşağı taşınması ve KG’nin yeni konumu ile GM de
   "transverse-weight-movement": {
     title: "Enine ağırlık hareketleri",
     introduction: "Enine ağırlık hareketleri TCG’yi değiştirir ve gemide list (yana yatma) oluşturur.",
-    content: `Enine taşıma, bir yükün iskeleden sancağa veya sancaktan iskeleye kaydırılmasıdır. Bu işlemde G noktası yatılan tarafa doğru kayar ve gemi denge açısına gelir.
+    content: `A transverse shift is the movement of a weight from port to starboard or from starboard to port. G moves towards the low side and the ship comes to an angle of equilibrium.
 
-Küçük açılar için list hesabı, doğrultma momenti ile yatma momentinin dengelenmesi prensibine dayanır. Enine kaydırma, liman operasyonlarında sık gerçekleştiği için yükleme planlarında mutlaka hesaplanır.
+For small angles the list calculation is based on the principle of balancing the righting moment against the heeling moment. Because transverse shifts are frequent in port operations, they must always be calculated in the loading plan.
 
-Görsel: Yükün enine taşınması, TCG kayması ve oluşan list açısı gösterilir.`,
+Diagram: the transverse movement of the weight, the shift of TCG and the resulting angle of list.`,
     bulletPoints: [
       "TCG kayması list oluşturur",
       "Küçük açılarda tan θ yaklaşımı kullanılır",
@@ -773,8 +773,8 @@ Görsel: Yükün enine taşınması, TCG kayması ve oluşan list açısı göst
     },
     examples: [
       {
-        problem: "Δ = 5.500 t, GM = 0.9 m, w = 60 t yük 5 m enine kaydırılıyor. List açısı yaklaşık kaç derece?",
-        solution: "tan θ = (60×5) / (5.500×0.9) = 300 / 4.950 = 0.0606. θ ≈ 3.47°. Sonuç: Yaklaşık 3.5° list oluşur.",
+        problem: "Δ = 5,500 t, GM = 0.9 m, and a weight of w = 60 t is shifted 5 m transversely. What is the approximate angle of list in degrees?",
+        solution: "tan θ = (60×5) / (5,500×0.9) = 300 / 4,950 = 0.0606. θ ≈ 3.47°. Result: a list of about 3.5° is created.",
       },
     ],
     keyPoints: [
@@ -786,11 +786,11 @@ Görsel: Yükün enine taşınması, TCG kayması ve oluşan list açısı göst
   "longitudinal-weight-movement": {
     title: "Boyuna ağırlık hareketleri",
     introduction: "Boyuna ağırlık hareketleri LCG’yi değiştirir ve geminin trimini etkiler.",
-    content: `Boyuna taşınan yükler, geminin baş-kıç dengesini değiştirir. Bu değişim LCG kayması ile ifade edilir ve trim oluşmasına neden olur.
+    content: `Weights moved longitudinally change the fore-and-aft balance of the ship. This change is expressed as a shift of LCG and causes trim.
 
-Trim hesabında temel büyüklük MCT (Moment to Change Trim) değeridir. Boyuna kaydırma momenti (w × d) ile MCT karşılaştırılarak trim değişimi bulunur. Bu analiz, yükleme planı ve seyre hazırlık açısından kritiktir.
+The key quantity in the trim calculation is the MCT (Moment to Change Trim). The change of trim is found by comparing the longitudinal shifting moment (w × d) with the MCT. This analysis is critical for the loading plan and for preparing for sea.
 
-Görsel: Yükün başa/kıça kaydırılması, LCG kayması ve oluşan trim yönü gösterilir.`,
+Diagram: the weight shifted forward/aft, the shift of LCG and the resulting direction of trim.`,
     bulletPoints: [
       "LCG kayması trim değiştirir",
       "Trim hesabında MCT kullanılır",
@@ -803,8 +803,8 @@ Görsel: Yükün başa/kıça kaydırılması, LCG kayması ve oluşan trim yön
     },
     examples: [
       {
-        problem: "w = 200 t yük 12 m başa kaydırılıyor. MCT = 400 t·m/cm ise trim değişimi kaç cm olur?",
-        solution: "Trim = (200×12) / 400 = 2.400 / 400 = 6 cm. Sonuç: Baş trim yaklaşık 6 cm artar.",
+        problem: "A weight of w = 200 t is shifted 12 m forward. If MCT = 400 t·m/cm, what is the change of trim in cm?",
+        solution: "Trim = (200×12) / 400 = 2,400 / 400 = 6 cm. Result: the trim by the head increases by about 6 cm.",
       },
     ],
     keyPoints: [
@@ -817,16 +817,16 @@ Görsel: Yükün başa/kıça kaydırılması, LCG kayması ve oluşan trim yön
   "weight-w": {
     title: "Weight (W)",
     introduction: "Geminin toplam ağırlığı, deplasman olarak adlandırılır ve geminin yüzmesi için gereken kaldırma kuvvetini belirler.",
-    content: `Geminin ağırlığı (W veya Δ), geminin tüm bileşenlerinin toplam ağırlığıdır:
+    content: `The weight of the ship (W or Δ) is the total weight of all its components:
 
-W = Hafif gemi ağırlığı + Yük + Yakıt + Tatlı su + Kumanya + Personel + ...
+W = Lightship weight + Cargo + Fuel + Fresh water + Provisions + Crew + ...
 
-Bu toplam ağırlık, ton (t) cinsinden ifade edilir ve "deplasman" olarak adlandırılır.
+This total weight is expressed in tonnes (t) and is called the "displacement".
 
-Arşimet prensibine göre, yüzen bir cisim kendi ağırlığı kadar su kaldırır. Dolayısıyla:
-Deplasman = Yer değiştirilen suyun ağırlığı
+By Archimedes' principle a floating body displaces water equal to its own weight. Therefore:
+Displacement = the weight of the water displaced
 
-Deplasman, stabilite hesaplarının temelini oluşturur. Doğrultma momenti, deplasman ile GZ'nin çarpımıdır.`,
+Displacement is the basis of stability calculations. The righting moment is the displacement multiplied by GZ.`,
     bulletPoints: [
       "Deplasman = Geminin toplam ağırlığı",
       "Deplasman = Yer değiştirilen su ağırlığı",
@@ -840,7 +840,7 @@ Deplasman, stabilite hesaplarının temelini oluşturur. Doğrultma momenti, dep
     },
     examples: [
       {
-        problem: "Lightship = 3.500 t, kargo = 1.200 t, yakıt = 300 t, tatlı su = 50 t ise deplasman kaç tondur?",
+        problem: "If lightship = 3,500 t, cargo = 1,200 t, fuel = 300 t and fresh water = 50 t, what is the displacement in tonnes?",
         solution: "Δ = 3.500 + 1.200 + 300 + 50 = 5.050 ton",
       },
     ],
@@ -853,18 +853,18 @@ Deplasman, stabilite hesaplarının temelini oluşturur. Doğrultma momenti, dep
   "center-of-gravity": {
     title: "Ağırlık Merkezi (G)",
     introduction: "Ağırlık merkezi (G), geminin tüm ağırlığının tek bir noktada toplandığı varsayılan noktadır ve stabilitenin en kritik parametresidir.",
-    content: `Ağırlık merkezi G, gemideki tüm ağırlıkların momentler yöntemiyle hesaplanan bileşke noktasıdır.
+    content: `The centre of gravity G is the resultant point of all the weights on the ship, calculated by the method of moments.
 
-G noktasının konumu üç boyutta tanımlanır:
-- KG: Omurgadan G'ye dikey mesafe (en kritik)
-- LCG: Boyuna ağırlık merkezi (trim için önemli)
-- TCG: Enine ağırlık merkezi (list için önemli)
+The position of G is defined in three dimensions:
+- KG: the vertical distance from the keel to G (the most critical)
+- LCG: the longitudinal centre of gravity (important for trim)
+- TCG: the transverse centre of gravity (important for list)
 
-KG değeri, stabilitenin temel belirleyicisidir:
-- KG yükselirse → GM azalır → Stabilite zayıflar
-- KG düşerse → GM artar → Stabilite güçlenir
+The KG value is the fundamental determinant of stability:
+- If KG rises → GM falls → stability weakens
+- If KG falls → GM rises → stability improves
 
-Her yük hareketi G noktasının konumunu değiştirir.`,
+Every movement of weight changes the position of G.`,
     bulletPoints: [
       "G = Tüm ağırlıkların bileşke noktası",
       "KG yüksekliği stabiliteyi doğrudan etkiler",
@@ -878,7 +878,7 @@ Her yük hareketi G noktasının konumunu değiştirir.`,
     },
     examples: [
       {
-        problem: "100 t yük KG=6 m ve 200 t yük KG=3 m ise toplam KG kaç metredir?",
+        problem: "If 100 t of cargo is at KG = 6 m and 200 t at KG = 3 m, what is the combined KG in metres?",
         solution: "KG = (100×6 + 200×3) / 300 = (600 + 600) / 300 = 4.0 m",
       },
     ],
@@ -891,12 +891,12 @@ Her yük hareketi G noktasının konumunu değiştirir.`,
   "buoyancy-force": {
     title: "Kaldırma Kuvveti",
     introduction: "Kaldırma kuvveti, gemiyi su üzerinde tutan temel kuvvettir ve yer değiştirdiği suyun ağırlığına eşittir.",
-    content: `Kaldırma kuvveti (Y), geminin suya batmış hacminin yer değiştirdiği suyun ağırlığına eşittir. Bu kuvvet, kaldırma merkezinden (B) yukarı doğru etkir ve geminin ağırlık kuvvetini dengeleyerek yüzmesini sağlar.
+    content: `The buoyancy force is equal to the weight of the water displaced by the immersed volume of the ship. It acts upwards through the centre of buoyancy (B) and keeps the ship afloat by balancing its weight.
 
-Kaldırma kuvveti, suyun yoğunluğuna bağlıdır. Bu nedenle gemi tatlı suda daha fazla batar, deniz suyunda ise daha yüksek yüzer.
+The buoyancy force depends on the density of the water. A ship therefore floats deeper in fresh water and higher in sea water.
 
-Stabilite hesaplarında kaldırma kuvveti, geminin deplasmanına eşit kabul edilir:
-Y = W = Δ`,
+In stability calculations the buoyancy force is taken as equal to the ship's displacement:
+B = W = Δ`,
     bulletPoints: [
       "Kaldırma kuvveti yukarı yönlüdür ve B noktasından etkir",
       "Yüzen gemide Y = W dengesi vardır",
@@ -909,7 +909,7 @@ Y = W = Δ`,
     },
     examples: [
       {
-        problem: "∇ = 3.000 m³, ρ = 1.025 t/m³ olan bir gemide kaldırma kuvveti kaç kN olur?",
+        problem: "For a ship with ∇ = 3,000 m³ in water of ρ = 1.025 t/m³, what is the buoyancy force in kN?",
         solution: "Y = 1.025 × 9.81 × 3.000 ≈ 30 166 kN",
       },
     ],
@@ -922,11 +922,11 @@ Y = W = Δ`,
   "center-of-buoyancy": {
     title: "Kaldırma Merkezi (B)",
     introduction: "Kaldırma merkezi (B), batmış hacmin geometrik ağırlık merkezidir ve kaldırma kuvvetinin etki noktasıdır.",
-    content: `Kaldırma merkezi (B), geminin su altında kalan hacminin geometrik merkezidir. Bu nokta, gemi yattığında su altı hacminin şekli değiştiği için yer değiştirir.
+    content: `The centre of buoyancy (B) is the geometric centre of the ship's immersed volume. This point moves when the ship heels because the shape of the immersed volume changes.
 
-Gemi yatmaya başladığında B noktası yatılan tarafa kayar. Bu kayma, ağırlık merkezine göre bir moment kolu oluşturur ve doğrultma momenti meydana gelir.
+As the ship begins to heel, B moves towards the low side. This movement creates a moment arm relative to the centre of gravity and a righting moment is produced.
 
-Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve simetrik durumda omurgadan T/2 kadar yukarıdadır.`,
+For simple prismatic shapes B lies at the centre of the immersed volume and, in the upright condition, is T/2 above the keel.`,
     bulletPoints: [
       "B, batmış hacmin geometrik merkezidir",
       "Gemi yattığında B yatılan tarafa kayar",
@@ -939,8 +939,8 @@ Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve sime
     },
     examples: [
       {
-        problem: "Dikdörtgen kesitli bir gemide draft T = 4 m ise KB yaklaşık kaç metredir?",
-        solution: "Dikdörtgen kesitte KB ≈ T/2 = 2.0 m",
+        problem: "For a ship of rectangular section at a draft of T = 4 m, what is KB approximately in metres?",
+        solution: "For a rectangular section KB ≈ T/2 = 2.0 m",
       },
     ],
     keyPoints: [
@@ -952,9 +952,9 @@ Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve sime
   "gz-righting-lever": {
     title: "Righting Lever (GZ)",
     introduction: "GZ, gemi yattığında ağırlık kuvveti ile kaldırma kuvveti arasındaki yatay mesafeyi ifade eder ve doğrultma momentinin temelidir.",
-    content: `GZ (righting lever), gemi belirli bir açıyla yattığında ağırlık merkezi (G) ile kaldırma kuvvetinin etki doğrultusu arasındaki yatay uzaklıktır. Bu kol, doğrultma momentini üretir ve geminin dik konuma dönme eğilimini gösterir.
+    content: `GZ (the righting lever) is the horizontal distance between the centre of gravity (G) and the line of action of the buoyancy force when the ship is heeled through a given angle. This lever produces the righting moment and shows the ship's tendency to return upright.
 
-Küçük açılarda GZ yaklaşık olarak GM × sinθ kabul edilir. Bu ilişki, ilk stabilite değerlendirmelerinde hızlı bir kontrol sağlar. GZ pozitif olduğunda doğrultma momenti gemiyi düzeltir; GZ negatif olduğunda gemi daha fazla yatma eğilimindedir.`,
+At small angles GZ is taken as approximately GM × sinθ. This relationship provides a quick check in initial stability assessments. When GZ is positive the righting moment brings the ship upright; when GZ is negative the ship tends to heel further.`,
     bulletPoints: [
       "GZ doğrultma momentinin koludur",
       "Pozitif GZ: gemi dikleşme eğiliminde",
@@ -975,15 +975,15 @@ Küçük açılarda GZ yaklaşık olarak GM × sinθ kabul edilir. Bu ilişki, i
   "gz-curve-generation": {
     title: "GZ Eğrisinin Elde Edilmesi",
     introduction: "GZ eğrisi, geminin farklı yatma açılarındaki doğrultma kollarının hesaplanmasıyla oluşturulan stabilite eğrisidir.",
-    content: `GZ eğrisi, geminin çeşitli yatma açıları (genellikle 0°–90° ve gerekirse daha fazla) için GZ değerlerinin hesaplanmasıyla elde edilir. Bu hesaplar, geminin belirli bir yükleme durumundaki geometrisine ve hidrostatik özelliklerine dayanır.
+    content: `The GZ curve is obtained by calculating the GZ values for a range of angles of heel (usually 0°-90°, and further if required). These calculations are based on the geometry and hydrostatic properties of the ship in a given loading condition.
 
-Klasik yöntem şu adımları içerir:
-1) Seçilen yatma açısı için su hattı ve batık hacim hesaplanır.
-2) Kaldırma merkezinin (B) yeni konumu bulunur.
-3) G ve B arasındaki yatay mesafe (GZ) belirlenir.
-4) Tüm açılar için tekrar edilerek eğri oluşturulur.
+The classical method involves the following steps:
+1) The waterline and immersed volume are calculated for the chosen angle of heel.
+2) The new position of the centre of buoyancy (B) is found.
+3) The horizontal distance between G and B (GZ) is determined.
+4) The process is repeated for all angles to build the curve.
 
-Modern uygulamalarda bu süreç stabilite yazılımlarıyla otomatik yapılır; ancak sonuçların stabilite kitapçığı ve hidrostatik tablolarla tutarlı olması şarttır.`,
+In modern practice this process is carried out automatically by stability software; but the results must be consistent with the stability booklet and the hydrostatic tables.`,
     images: [
       {
         src: gzCurveDiagram,
@@ -1005,11 +1005,11 @@ Modern uygulamalarda bu süreç stabilite yazılımlarıyla otomatik yapılır; 
   "max-gz": {
     title: "Maksimum GZ",
     introduction: "Maksimum GZ, doğrultma kolunun en büyük değerini aldığı yatma açısıdır ve geminin stabilite kapasitesinin önemli bir göstergesidir.",
-    content: `GZ eğrisi belirli bir açıya kadar artar, ardından azalarak sıfıra yaklaşır. Eğrinin tepe noktası, geminin en yüksek doğrultma kapasitesini gösterir.
+    content: `The GZ curve rises up to a certain angle and then falls away towards zero. The peak of the curve shows the ship's greatest righting capacity.
 
-IMO 2008 IS Code gibi kriterler, maksimum GZ değerinin ve oluştuğu açının belirli minimumları sağlamasını ister. Örneğin genel kargo gemileri için GZmax ≥ 0.20 m ve bu maksimumun en az 25°–30° civarında oluşması beklenir (gemi tipine göre değişir).
+Criteria such as the IMO 2008 IS Code require the maximum GZ value and the angle at which it occurs to meet defined minima. For general cargo ships, for example, GZmax ≥ 0.20 m is required and this maximum is expected to occur at around at least 25°-30° (this varies with ship type).
 
-Maksimum GZ'nin çok düşük veya küçük açıda oluşması, yetersiz stabilite göstergesi olabilir.`,
+A very low maximum GZ, or one that occurs at a small angle, can indicate inadequate stability.`,
     bulletPoints: [
       "Maksimum GZ stabilite kapasitesinin tepe noktasıdır",
       "Aşırı küçük açıdaki maksimum GZ risklidir",
@@ -1021,18 +1021,18 @@ Maksimum GZ'nin çok düşük veya küçük açıda oluşması, yetersiz stabili
       "GZmax değeri yükleme planı ile kontrol edilir",
     ],
     warnings: [
-      "GZmax kriteri sağlanmazsa sefer emniyeti risk altındadır",
-      "Güverte yükleri ve serbest yüzey etkisi GZmax'ı hızlı düşürebilir",
+      "If the GZmax criterion is not met, the safety of the voyage is at risk",
+      "Deck cargo and the free surface effect can reduce GZmax rapidly",
     ],
   },
   "stability-area": {
     title: "Stabilite Alanı",
     introduction: "Stabilite alanı, GZ eğrisi altında kalan alanı ifade eder ve geminin dinamik stabilite enerji kapasitesini gösterir.",
-    content: `GZ eğrisinin belirli bir açı aralığında altında kalan alan, geminin dış kuvvetlere karşı enerji sönümleme kapasitesini temsil eder. Bu alan ne kadar büyükse gemi dalga ve rüzgâr etkilerini o kadar iyi karşılar.
+    content: `The area under the GZ curve over a given range of angles represents the ship's capacity to absorb the energy of external forces. The larger this area, the better the ship can meet the effects of waves and wind.
 
-IMO kriterleri, farklı açı aralıkları için minimum alan değerleri tanımlar (ör. 0°–30°, 0°–40° ve 30°–40°). Bu değerler gemi tipine göre değişebilir.
+The IMO criteria define minimum area values for different ranges of angle (e.g. 0°-30°, 0°-40° and 30°-40°). These values can vary with ship type.
 
-Alan hesabı pratikte sayısal integrasyon veya stabilite yazılımı ile yapılır.`,
+In practice the area is calculated by numerical integration or with stability software.`,
     bulletPoints: [
       "Alan = Enerji kapasitesi göstergesi",
       "IMO kriterleri alan minimumlarını belirler",
@@ -1052,16 +1052,16 @@ Alan hesabı pratikte sayısal integrasyon veya stabilite yazılımı ile yapıl
   "capsizing-angle": {
     title: "Devrilme Açısı (Vanishing Stability Angle)",
     introduction: "Devrilme açısı (Angle of Vanishing Stability – AVS), GZ eğrisinin pozitif bölgeden çıkıp tekrar sıfıra düştüğü ve geminin doğrultma momenti üretmeyi bıraktığı açıdır. Bu açıdan sonra GZ negatif olur ve gemi geri dönemez (devrilir).",
-    content: `AVS VE STABİLİTE ARALIĞI:
-GZ eğrisi tepe yaptıktan sonra azalır ve bir açıda sıfıra iner; bu açı AVS'dir. Orijinden AVS'ye kadar olan aralık "pozitif stabilite aralığı" (range of positive stability) olarak adlandırılır. Aralık ne kadar genişse gemi büyük yatmalardan o kadar geri dönebilir.
+    content: `AVS AND THE RANGE OF STABILITY:
+After its peak the GZ curve falls and reaches zero at a certain angle; this angle is the AVS. The range from the origin to the AVS is called the "range of positive stability". The wider the range, the greater the angle from which the ship can return.
 
-NEYE BAĞLI:
-- KG yükselmesi ve serbest yüzey GZ eğrisini düşürür → AVS küçülür.
-- Yüksek fribord ve su geçirmez kapalı üst yapı → AVS büyür (eğri daha geç sıfırlanır).
-- Hasar (su alma) durumunda eğri düşer → AVS belirgin küçülür.
+WHAT IT DEPENDS ON:
+- A rise in KG and free surface lower the GZ curve → the AVS decreases.
+- High freeboard and watertight enclosed superstructure → the AVS increases (the curve reaches zero later).
+- In a damaged (flooded) condition the curve falls → the AVS decreases markedly.
 
-DOWNFLOODING AÇISI (θf) — PRATİK SINIR:
-Gemideki kapatılamayan açıklıklar (hava firarı, fan girişi, kapı) belirli bir yatma açısında suya girer; bu "downflooding angle" (θf). Su girmeye başladığında gemi hızla stabilite kaybeder. Bu nedenle PRATİK güvenli aralık, AVS değil, AVS ile θf'den HANGİSİ KÜÇÜKSE odur. IMO alan/aralık kriterleri çoğu zaman θf'ye göre kesilir.`,
+THE DOWNFLOODING ANGLE (θf) — THE PRACTICAL LIMIT:
+Openings on the ship that cannot be closed (air vents, fan intakes, doors) become immersed at a certain angle of heel; this is the downflooding angle (θf). Once water begins to enter, the ship loses stability rapidly. The PRACTICAL safe range is therefore not the AVS but WHICHEVER IS SMALLER of the AVS and θf. The IMO area/range criteria are most often cut off at θf.`,
     bulletPoints: [
       "AVS: GZ'nin sıfıra döndüğü açı; sonrası negatif (devrilme)",
       "Pozitif stabilite aralığı = orijinden AVS'ye kadar",
@@ -1074,27 +1074,27 @@ Gemideki kapatılamayan açıklıklar (hava firarı, fan girişi, kapı) belirli
       "Hasarlı stabilitede AVS belirgin küçülür.",
     ],
     warnings: [
-      "Açıklıkların suya girmesi (θf) devrilme açısını pratikte düşürür",
-      "Downflooding başladığında stabilite hızla kaybedilir",
+      "The immersion of openings (θf) lowers the capsizing angle in practice",
+      "Once downflooding starts, stability is lost rapidly",
     ],
   },
   "gz-curve-interpretation": {
     title: "GZ Eğrisinin Yorumu",
     introduction: "GZ eğrisi (statik stabilite eğrisi), geminin farklı yatma açılarındaki doğrultma kolunu (GZ) gösterir ve geminin tüm stabilite karakterini tek bir grafikte özetler. Eğriden GM, maksimum GZ, stabilite aralığı ve dinamik stabilite birlikte okunur.",
-    content: `EĞRİDEN OKUNAN BAŞLICA BÜYÜKLÜKLER:
+    content: `THE MAIN QUANTITIES READ FROM THE CURVE:
 
-1) BAŞLANGIÇ EĞİMİ → GM: Eğrinin orijindeki teğeti GM'yi verir. Teğet, 1 radyan (57,3°) apsisine kadar uzatılırsa kestiği GZ değeri sayısal olarak GM'ye eşittir. Küçük açılarda GZ ≈ GM · sinθ.
+1) THE INITIAL SLOPE → GM: the tangent to the curve at the origin gives GM. If the tangent is extended to an abscissa of 1 radian (57.3°), the GZ value it cuts is numerically equal to GM. At small angles GZ ≈ GM · sinθ.
 
-2) MAKSİMUM GZ ve AÇISI: Eğrinin tepe noktası, geminin ürettiği en büyük doğrultma koludur. IMO, GZmax'ın tercihen ≥30°'de (en az 25°) oluşmasını ister.
+2) MAXIMUM GZ AND ITS ANGLE: the peak of the curve is the largest righting lever the ship produces. The IMO requires GZmax to occur preferably at ≥30° (at least 25°).
 
-3) DECK EDGE IMMERSION (güverte kenarı suya girişi): Güverte kenarı suya girdiğinde su hattı genişliği azalır, BM düşer ve eğrinin eğimi değişir (genelde bir bükülme/dönüm noktası). Bu noktadan sonra GZ daha yavaş artar veya azalmaya başlar.
+3) DECK EDGE IMMERSION: when the deck edge becomes immersed the breadth of the waterplane decreases, BM falls and the slope of the curve changes (usually an inflection/turning point). Beyond this point GZ increases more slowly or begins to fall.
 
-4) STABİLİTE ARALIĞI (range): Eğrinin pozitif olduğu açı aralığı; sıfıra döndüğü açı AVS (devrilme açısı).
+4) RANGE OF STABILITY: the range of angles over which the curve is positive; the angle at which it returns to zero is the AVS (the angle of vanishing stability).
 
-5) ALAN → DİNAMİK STABİLİTE: Eğri altındaki alan, doğrultma enerjisini (dinamik stabilite) temsil eder; IMO alan kriterleri buna dayanır.
+5) AREA → DYNAMIC STABILITY: the area under the curve represents the righting energy (dynamic stability); the IMO area criteria are based on it.
 
-EĞRİYİ NE DEĞİŞTİRİR:
-Üst ağırlık artışı (KG↑) ve serbest yüzey (FSE) eğriyi aşağı çeker ve başlangıç eğimini (GM) düşürür; genişlik artışı ve düşük KG eğriyi yukarı taşır; fribord/kapalı üst yapı stabilite aralığını uzatır.`,
+WHAT CHANGES THE CURVE:
+An increase in weight high up (KG↑) and free surface (FSE) pull the curve down and reduce the initial slope (GM); greater beam and a lower KG lift the curve; freeboard and enclosed superstructure extend the range of stability.`,
     bulletPoints: [
       "Orijin teğeti 57,3°'de GM'yi verir; küçük açıda GZ ≈ GM·sinθ",
       "Tepe = maksimum GZ (tercihen ≥30°'de)",
@@ -1103,7 +1103,7 @@ EĞRİYİ NE DEĞİŞTİRİR:
     ],
     formula: {
       name: "GZ ve GM ilişkisi (küçük açı / teğet)",
-      expression: "GZ ≈ GM · sinθ  ;  GM = value of the tangent at the origin at 57.3°",
+      expression: "GZ ≈ GM · sinθ  ;  GM = the value of the tangent at the origin read at 57.3°",
       description: "Başlangıç eğimi GM'yi verir; eğrinin tamamı büyük açı davranışını gösterir.",
     },
     keyPoints: [
@@ -1119,16 +1119,16 @@ EĞRİYİ NE DEĞİŞTİRİR:
   "floatation-condition": {
     title: "Yüzerlik Şartı",
     introduction: "Bir cismin su üzerinde kalabilmesi için toplam ağırlığının, batık hacminin yer değiştirdiği suyun ağırlığına eşit veya küçük olması gerekir.",
-    content: `Arşimet prensibine göre bir cisim, yer değiştirdiği sıvının ağırlığı kadar kaldırma kuvveti alır. Yüzerlik şartı bu prensipten türetilir.
+    content: `By Archimedes' principle a body receives a buoyancy force equal to the weight of the fluid it displaces. The condition for flotation is derived from this principle.
 
-Yüzerlik şartı:
+The flotation condition:
 W ≤ ρ × g × ∇max
 
-Burada ∇max, cismin tamamen batması durumundaki hacmidir. W bu değerin üzerindeyse cisim batar.
+where ∇max is the volume of the body when fully immersed. If W exceeds this value the body sinks.
 
-Gemilerde yüzerlik şartı her zaman sağlanmalıdır. Gemi hafif haldeyken bile yeterli batık hacme sahiptir. Yükleme arttıkça draft yükselir ve batık hacim artar. Ancak fribord sınırı aşılırsa tehlike oluşur.
+The flotation condition must always be satisfied on ships. Even in the light condition the ship has sufficient immersed volume. As loading increases the draft rises and the immersed volume increases. Danger arises, however, if the freeboard limit is exceeded.
 
-Yüzerlik durumu statik denge için gerekli ama yeterli değildir. Yüzen bir cisim stabil olmayabilir.`,
+Flotation is necessary for static equilibrium but not sufficient. A floating body may not be stable.`,
     bulletPoints: [
       "W = ρ × ∇ denklemi denge koşulunu tanımlar",
       "Batık hacim ≤ toplam hacim olmalıdır",
@@ -1137,13 +1137,13 @@ Yüzerlik durumu statik denge için gerekli ama yeterli değildir. Yüzen bir ci
     ],
     formula: {
       name: "Yüzerlik Denklemi",
-      expression: "W = ρ × g × ∇; veya Δ = ρ × ∇",
+      expression: "W = ρ × g × ∇; or Δ = ρ × ∇",
       description: "W: Ağırlık (kN), ρ: Suyun yoğunluğu (t/m³), ∇: Batık hacim (m³), Δ: Deplasman (ton)",
     },
     examples: [
       {
-        problem: "Bir geminin batık hacmi ∇ = 4.800 m³ ve deniz suyu yoğunluğu ρ = 1.025 t/m³ ise maksimum deplasman kaç tondur?",
-        solution: "Δ = ρ × ∇ = 1.025 × 4.800 = 4.920 ton. Sonuç: Gemi 4.920 tona kadar yüklenebilir.",
+        problem: "If a ship's immersed volume is ∇ = 4,800 m³ and the sea water density is ρ = 1.025 t/m³, what is the maximum displacement in tonnes?",
+        solution: "Δ = ρ × ∇ = 1.025 × 4,800 = 4,920 tonnes. Result: the ship can be loaded up to 4,920 tonnes.",
       },
     ],
     keyPoints: [
@@ -1155,18 +1155,18 @@ Yüzerlik durumu statik denge için gerekli ama yeterli değildir. Yüzen bir ci
   "equilibrium-states": {
     title: "Denge Halleri",
     introduction: "Yüzen bir cisim üç farklı denge halinde bulunabilir: kararlı denge (stable), kararsız denge (unstable) ve nötr denge (neutral).",
-    content: `Denge halleri, cisim denge konumundan uzaklaştırıldığında gösterdiği tepkiye göre sınıflandırılır.
+    content: `States of equilibrium are classified by how a body responds when it is moved from its equilibrium position.
 
-KARARLI DENGE (Stable Equilibrium):
-Cisim denge konumundan uzaklaştırıldığında geri dönme eğilimi gösterir. Gemilerde pozitif GM bu durumu sağlar. G noktası M noktasının altındadır.
+STABLE EQUILIBRIUM:
+The body tends to return when it is moved from its equilibrium position. On ships a positive GM provides this condition. G lies below M.
 
-KARARSIZ DENGE (Unstable Equilibrium):
-Cisim denge konumundan uzaklaştırıldığında daha da uzaklaşma eğilimi gösterir. Negatif GM bu duruma yol açar. G noktası M noktasının üzerindedir.
+UNSTABLE EQUILIBRIUM:
+The body tends to move further away when it is displaced from its equilibrium position. A negative GM causes this condition. G lies above M.
 
-NÖTR DENGE (Neutral Equilibrium):
-Cisim yeni konumda kalır, ne geri döner ne de uzaklaşır. GM = 0 olduğunda oluşur. G ve M noktaları çakışıktır.
+NEUTRAL EQUILIBRIUM:
+The body stays in its new position; it neither returns nor moves further. This occurs when GM = 0. G and M coincide.
 
-Gemilerin güvenli seyir yapabilmesi için kararlı dengede olması şarttır.`,
+A ship must be in stable equilibrium if it is to make a safe passage.`,
     bulletPoints: [
       "Kararlı denge: Pozitif GM, G altında M",
       "Kararsız denge: Negatif GM, G üstünde M",
@@ -1175,8 +1175,8 @@ Gemilerin güvenli seyir yapabilmesi için kararlı dengede olması şarttır.`,
     ],
     examples: [
       {
-        problem: "KM = 6.5 m ve KG = 6.5 m ise gemi hangi denge halindedir?",
-        solution: "GM = KM - KG = 6.5 - 6.5 = 0 m. Sonuç: Nötr denge. Gemi herhangi bir açıda kalabilir, bu durum tehlikelidir.",
+        problem: "If KM = 6.5 m and KG = 6.5 m, in what state of equilibrium is the ship?",
+        solution: "GM = KM - KG = 6.5 - 6.5 = 0 m. Result: neutral equilibrium. The ship can rest at any angle, which is a dangerous condition.",
       },
     ],
     keyPoints: [
@@ -1185,8 +1185,8 @@ Gemilerin güvenli seyir yapabilmesi için kararlı dengede olması şarttır.`,
       "Nötr denge operasyonel olarak kabul edilemez",
     ],
     warnings: [
-      "GM = 0 veya negatif durumda gemi seyir yapmamalıdır",
-      "Yükleme derhal düzeltilmelidir",
+      "A ship must not proceed to sea with GM zero or negative",
+      "The loading must be corrected immediately",
     ],
   },
   // =====================================================
@@ -1195,14 +1195,14 @@ Gemilerin güvenli seyir yapabilmesi için kararlı dengede olması şarttır.`,
   "righting-moment": {
     title: "Righting Moment",
     introduction: "Doğrultma momenti, gemi yattığında ağırlık ve kaldırma kuvvetlerinin oluşturduğu ve gemiyi dik konuma döndürmeye çalışan momenttir.",
-    content: `Gemi belirli bir açıyla yattığında, ağırlık kuvveti G noktasından aşağı, kaldırma kuvveti B noktasından yukarı etkir. Bu iki kuvvet arasındaki yatay mesafe GZ (doğrultma kolu) olarak adlandırılır.
+    content: `When the ship is heeled through a given angle, the weight force acts downwards through G and the buoyancy force acts upwards through B. The horizontal distance between these two forces is called GZ (the righting lever).
 
-Doğrultma momenti (RM), deplasmanın GZ ile çarpımıdır:
+The righting moment (RM) is the displacement multiplied by GZ:
 RM = Δ × GZ
 
-Bu moment pozitif olduğunda gemiyi dikleştirici etki yapar. Negatif olduğunda ise yatmayı artırır.
+When this moment is positive it acts to bring the ship upright. When it is negative it increases the heel.
 
-Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri belirli açılarda minimum doğrultma kapasitesi gerektirir.`,
+The righting moment is the fundamental measure of a ship's stability. The IMO criteria require a minimum righting capacity at defined angles.`,
     images: [
       {
         src: rightingMomentDiagram,
@@ -1211,7 +1211,7 @@ Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri 
       },
     ],
     bulletPoints: [
-      "RM = Δ × GZ formülü ile hesaplanır",
+      "Calculated with the formula RM = Δ × GZ",
       "Pozitif RM gemiyi dikleştirir",
       "Negatif RM yatmayı artırır",
       "RM büyüklüğü stabilite kapasitesini gösterir",
@@ -1223,8 +1223,8 @@ Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri 
     },
     examples: [
       {
-        problem: "Δ = 8.000 ton ve GZ = 0.35 m ise doğrultma momenti kaç t·m olur?",
-        solution: "RM = 8.000 × 0.35 = 2.800 t·m. Sonuç: Gemi 2.800 t·m doğrultma momenti üretir.",
+        problem: "If Δ = 8,000 tonnes and GZ = 0.35 m, what is the righting moment in t·m?",
+        solution: "RM = 8,000 × 0.35 = 2,800 t·m. Result: the ship produces a righting moment of 2,800 t·m.",
       },
     ],
     keyPoints: [
@@ -1236,14 +1236,14 @@ Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri 
   "heeling-moment": {
     title: "Yatma Momenti",
     introduction: "Yatma momenti, gemiyi yana yatıran dış kuvvetlerin oluşturduğu momenttir ve doğrultma momenti ile dengelenir.",
-    content: `Yatma momenti (HM), rüzgâr, dalga, ağırlık kayması, dönüş manevrası veya asılı yük gibi dış etkilerden kaynaklanır.
+    content: `The heeling moment (HM) arises from external effects such as wind, waves, a shift of weight, a turning manoeuvre or a suspended load.
 
-Gemi belirli bir açıda dengeye geldiğinde:
+When the ship comes to equilibrium at a given angle:
 HM = RM
 
-Bu denge noktasına "denge açısı" (angle of equilibrium) denir.
+This point of balance is called the angle of equilibrium.
 
-Yatma momenti doğrultma momentinden büyük olursa gemi devrilir. Bu nedenle yatma momentinin kaynakları önceden hesaplanmalı ve sınırlandırılmalıdır.`,
+If the heeling moment exceeds the righting moment the ship capsizes. The sources of heeling moment must therefore be calculated in advance and limited.`,
     bulletPoints: [
       "HM dış kaynaklı yatma etkisidir",
       "Rüzgâr, dalga, ağırlık kayması HM oluşturur",
@@ -1257,8 +1257,8 @@ Yatma momenti doğrultma momentinden büyük olursa gemi devrilir. Bu nedenle ya
     },
     examples: [
       {
-        problem: "Rüzgâr basıncı P = 0.05 t/m², A = 400 m² ve h = 6 m ise HM kaç t·m olur?",
-        solution: "HM = 0.05 × 400 × 6 = 120 t·m. Sonuç: Rüzgâr 120 t·m yatma momenti oluşturur.",
+        problem: "If the wind pressure is P = 0.05 t/m², A = 400 m² and h = 6 m, what is HM in t·m?",
+        solution: "HM = 0.05 × 400 × 6 = 120 t·m. Result: the wind creates a heeling moment of 120 t·m.",
       },
     ],
     keyPoints: [
@@ -1270,16 +1270,16 @@ Yatma momenti doğrultma momentinden büyük olursa gemi devrilir. Bu nedenle ya
   "angle-of-equilibrium": {
     title: "Denge Açısı",
     introduction: "Denge açısı, yatma momenti ile doğrultma momentinin eşitlendiği yatma açısıdır ve gemi bu açıda sabit kalır.",
-    content: `Dış bir kuvvet gemiye yatma momenti uyguladığında, gemi doğrultma momenti üretir. İki moment eşitlendiğinde gemi belirli bir açıda dengeye ulaşır.
+    content: `When an external force applies a heeling moment to the ship, the ship produces a righting moment. When the two moments are equal the ship reaches equilibrium at a given angle.
 
-GZ eğrisi üzerinde bu açı, yatma momenti doğrusunun eğriyi kestiği noktadır.
+On the GZ curve this angle is the point at which the heeling moment line cuts the curve.
 
-Denge açısının büyüklüğü:
-- Yatma momentinin büyüklüğüne
-- Geminin GM değerine
-- GZ eğrisinin şekline bağlıdır
+The size of the angle of equilibrium depends on:
+- The size of the heeling moment
+- The ship's GM value
+- The shape of the GZ curve
 
-Küçük açılar için tan θ ≈ HM / (Δ × GM) yaklaşımı kullanılabilir.`,
+For small angles the approximation tan θ ≈ HM / (Δ × GM) can be used.`,
     bulletPoints: [
       "Denge açısı: HM = RM olduğu açı",
       "GZ eğrisi üzerinde grafiksel olarak bulunur",
@@ -1293,8 +1293,8 @@ Küçük açılar için tan θ ≈ HM / (Δ × GM) yaklaşımı kullanılabilir.
     },
     examples: [
       {
-        problem: "HM = 200 t·m, Δ = 5.000 ton, GM = 0.8 m ise denge açısı yaklaşık kaç derece olur?",
-        solution: "tan θ = 200 / (5.000 × 0.8) = 200 / 4.000 = 0.05. θ ≈ 2.86°. Sonuç: Gemi yaklaşık 3° yatma açısında dengelenir.",
+        problem: "If HM = 200 t·m, Δ = 5,000 tonnes and GM = 0.8 m, what is the approximate angle of equilibrium in degrees?",
+        solution: "tan θ = 200 / (5,000 × 0.8) = 200 / 4,000 = 0.05. θ ≈ 2.86°. Result: the ship settles at an angle of heel of about 3°.",
       },
     ],
     keyPoints: [
@@ -1306,20 +1306,20 @@ Küçük açılar için tan θ ≈ HM / (Δ × GM) yaklaşımı kullanılabilir.
   "heel-from-weight-shift": {
     title: "Ağırlık Kaymasına Bağlı Yatma",
     introduction: "Gemide bir ağırlığın enine kayması, ağırlık merkezini kaydırarak yatma (list) oluşturur.",
-    content: `Ağırlık kayması, deplasmanı değiştirmeden G noktasının enine hareket etmesine neden olur. Bu kayma yatma momentine eşdeğerdir.
+    content: `A shift of weight moves G transversely without changing the displacement. This shift is equivalent to a heeling moment.
 
-Oluşan yatma momenti:
+The heeling moment created:
 HM = w × d
 
-Burada w kaydırılan ağırlık, d ise kaydırma mesafesidir.
+where w is the weight shifted and d is the distance it is shifted.
 
-Denge açısı:
+The angle of equilibrium:
 tan θ = (w × d) / (Δ × GM)
 
-Kargo kayması, balast transferi veya vinç operasyonları bu tür yatmaya neden olabilir.`,
+A cargo shift, a ballast transfer or crane operations can cause this kind of heel.`,
     bulletPoints: [
       "Enine ağırlık kayması list oluşturur",
-      "HM = w × d formülü uygulanır",
+      "The formula HM = w × d is applied",
       "GM küçükse aynı kayma daha büyük açı yaratır",
       "Kargo emniyet bağları kaymayı önler",
     ],
@@ -1330,8 +1330,8 @@ Kargo kayması, balast transferi veya vinç operasyonları bu tür yatmaya neden
     },
     examples: [
       {
-        problem: "60 ton yük 4 m enine kaydı. Δ = 6.000 ton, GM = 0.6 m. List açısı kaç derece?",
-        solution: "tan θ = (60 × 4) / (6.000 × 0.6) = 240 / 3.600 = 0.0667. θ ≈ 3.8°. Sonuç: Yaklaşık 4° list oluşur.",
+        problem: "60 tonnes of cargo has shifted 4 m transversely. Δ = 6,000 tonnes, GM = 0.6 m. What is the angle of list in degrees?",
+        solution: "tan θ = (60 × 4) / (6,000 × 0.6) = 240 / 3,600 = 0.0667. θ ≈ 3.8°. Result: a list of about 4° is created.",
       },
     ],
     keyPoints: [
@@ -1340,25 +1340,25 @@ Kargo kayması, balast transferi veya vinç operasyonları bu tür yatmaya neden
       "Seyir sırasında kayma izlenmelidir",
     ],
     warnings: [
-      "Büyük kaymalarda list hızla artabilir",
-      "Asimetrik flooding benzer etki yaratır",
+      "With large shifts the list can increase rapidly",
+      "Asymmetric flooding has a similar effect",
     ],
   },
   "small-angle-stability": {
     title: "Küçük Açılar İçin Stabilite",
     introduction: "Küçük yatma açılarında (yaklaşık 10°'ye kadar) metasantr sabit kabul edilir ve basitleştirilmiş formüller kullanılır.",
-    content: `Küçük açı stabilitesi, geminin dik konuma yakın davranışını inceler. Bu aralıkta metasantr (M) sabit kabul edilir ve GZ doğrusal olarak artar.
+    content: `Small-angle stability examines the ship's behaviour close to upright. In this range the metacentre (M) is taken as fixed and GZ increases linearly.
 
-Temel ilişki:
+The basic relationship:
 GZ ≈ GM × sin θ
 
-Bu yaklaşım, ilk stabilite değerlendirmelerinde hızlı hesap imkânı sağlar.
+This approximation allows a quick calculation in initial stability assessments.
 
-Küçük açı yaklaşımı sin θ ≈ θ (radyan) olarak da yazılabilir. Ancak 10°'nin üzerinde bu yaklaşım hata verir ve tam GZ hesabı gereklidir.`,
+The small-angle approximation can also be written as sin θ ≈ θ (in radians). Above 10°, however, this approximation becomes inaccurate and a full GZ calculation is required.`,
     bulletPoints: [
       "Küçük açı: 0° - 10° aralığı",
       "M sabit kabul edilir",
-      "GZ ≈ GM × sin θ ilişkisi geçerlidir",
+      "The relationship GZ ≈ GM × sin θ applies",
       "10° üzerinde tam hesap gerekir",
     ],
     formula: {
@@ -1368,8 +1368,8 @@ Küçük açı yaklaşımı sin θ ≈ θ (radyan) olarak da yazılabilir. Ancak
     },
     examples: [
       {
-        problem: "GM = 0.7 m ve θ = 8° ise GZ kaç metre olur?",
-        solution: "sin 8° = 0.139. GZ ≈ 0.7 × 0.139 = 0.097 m. Sonuç: GZ yaklaşık 10 cm'dir.",
+        problem: "If GM = 0.7 m and θ = 8°, what is GZ in metres?",
+        solution: "sin 8° = 0.139. GZ ≈ 0.7 × 0.139 = 0.097 m. Result: GZ is about 10 cm.",
       },
     ],
     keyPoints: [
@@ -1381,23 +1381,23 @@ Küçük açı yaklaşımı sin θ ≈ θ (radyan) olarak da yazılabilir. Ancak
   "large-angle-stability": {
     title: "Büyük Açılar İçin Stabilite",
     introduction: "Yaklaşık 10°'nin üzerindeki yatma açılarında metasantr (M) sabit kalmaz ve GZ = GM·sinθ küçük açı yaklaşımı geçerliliğini yitirir. Büyük açı stabilitesi, kaldırma merkezinin (B) gerçek hareketi dikkate alınarak doğrudan GZ eğrisinden incelenir.",
-    content: `NEDEN KÜÇÜK AÇI YAKLAŞIMI BOZULUR:
-Küçük açılarda M neredeyse sabittir ve GZ ≈ GM·sinθ kullanılabilir. Açı büyüdükçe batık hacmin şekli (dolayısıyla B'nin konumu) belirgin değişir; M aşağı kayar ve GZ, basit sinüs bağıntısından sapar.
+    content: `WHY THE SMALL-ANGLE APPROXIMATION BREAKS DOWN:
+At small angles M is almost fixed and GZ ≈ GM·sinθ can be used. As the angle increases the shape of the immersed volume (and so the position of B) changes markedly; M moves down and GZ departs from the simple sine relationship.
 
-WALL-SIDED (DİK BORDA) FORMÜLÜ:
-Güverte kenarı suya girmeden ve omurga sudan çıkmadan, dik bordalı gövde varsayımıyla GZ yaklaşık olarak şöyle hesaplanır:
+THE WALL-SIDED FORMULA:
+Before the deck edge is immersed and before the keel emerges, and assuming a wall-sided hull, GZ is calculated approximately as:
 
 GZ = sinθ · ( GM + ½ · BM · tan²θ )
 
-Buradaki ½·BM·tan²θ terimi, büyük açıda doğrultma koluna yapılan ek katkıdır (form etkisi) ve gemiyi küçük açı tahmininden daha "stabil" gösterebilir.
+The term ½·BM·tan²θ is the additional contribution to the righting lever at large angles (the form effect) and can make the ship appear more "stable" than the small-angle estimate suggests.
 
 DECK EDGE IMMERSION:
-Güverte kenarı suya girdikten sonra su hattı alanı daralır, BM düşer ve GZ'nin artışı yavaşlar/durur; eğri tepe yapar ve düşmeye başlar.
+Once the deck edge is immersed the waterplane area narrows, BM falls and the increase in GZ slows or stops; the curve peaks and begins to fall.
 
-IMO BÜYÜK AÇI KRİTERLERİ:
-- GZ ≥ 0,20 m (genellikle ≥30°'de)
-- GZmax açısı ≥ 25° (tercihen ≥30°)
-- 0-30°, 0-40° ve 30-40° alan kriterleri (IS Code).`,
+IMO LARGE-ANGLE CRITERIA:
+- GZ ≥ 0.20 m (usually at ≥30°)
+- The angle of GZmax ≥ 25° (preferably ≥30°)
+- The 0-30°, 0-40° and 30-40° area criteria (IS Code).`,
     bulletPoints: [
       "10° üzerinde GZ = GM·sinθ yetersizdir; tam GZ analizi gerekir",
       "Wall-sided: GZ = sinθ·(GM + ½·BM·tan²θ)",
@@ -1422,16 +1422,16 @@ IMO BÜYÜK AÇI KRİTERLERİ:
   "free-surface-concept": {
     title: "Serbest Yüzey Kavramı",
     introduction: "Serbest yüzey, kısmen dolu bir tankta sıvının serbestçe hareket edebilmesi durumunu ifade eder ve stabiliteyi olumsuz etkiler.",
-    content: `Bir tank tamamen dolu veya tamamen boş olduğunda içindeki sıvı hareket edemez. Ancak tank kısmen doluysa, sıvı gemi yattığında yatan tarafa akar ve ağırlık merkezini kaydırır.
+    content: `When a tank is completely full or completely empty the liquid inside it cannot move. But if the tank is partly full, the liquid runs to the low side when the ship heels and shifts the centre of gravity.
 
-Bu hareket, sanal bir KG artışı yaratır ve GM'yi azaltır. Bu fenomen "serbest yüzey etkisi" (Free Surface Effect - FSE) olarak adlandırılır.
+This movement creates a virtual rise in KG and reduces GM. The phenomenon is called the Free Surface Effect (FSE).
 
-Serbest yüzey etkisi:
-- Tank ne kadar genişse etki o kadar büyüktür
-- Sıvı yoğunluğu etkiyi artırır
-- Tank bölmeleri (longitudinal veya transverse) etkiyi azaltır
+The free surface effect:
+- The wider the tank, the greater the effect
+- A higher liquid density increases the effect
+- Tank subdivisions (longitudinal or transverse) reduce the effect
 
-Tüm kısmen dolu tanklar serbest yüzey etkisi yaratır: yakıt, balast, tatlı su, cargo oil.`,
+Every partly filled tank creates a free surface effect: fuel, ballast, fresh water, cargo oil.`,
     images: [
       {
         src: freeSurfaceEffect,
@@ -1451,21 +1451,21 @@ Tüm kısmen dolu tanklar serbest yüzey etkisi yaratır: yakıt, balast, tatlı
       "Stabilite hesabında mutlaka dahil edilmelidir",
     ],
     warnings: [
-      "Birden fazla serbest yüzeyli tank etkiyi katlayabilir",
-      "Seyir sırasında tank durumları izlenmelidir",
+      "Several tanks with free surfaces can multiply the effect",
+      "Tank conditions must be monitored during the passage",
     ],
   },
   "fse-gm-effect": {
     title: "Serbest Yüzeyin GM'ye Etkisi",
     introduction: "Serbest yüzey, efektif GM değerini düşürerek geminin ilk stabilitesini zayıflatır.",
-    content: `Serbest yüzey etkisi, ağırlık merkezinin sanal olarak yükselmesine (GG' veya virtual rise of G) neden olur. Bu artış GM'yi doğrudan azaltır.
+    content: `The free surface effect causes a virtual rise of the centre of gravity (GG' or the virtual rise of G). This rise reduces GM directly.
 
-Düzeltilmiş GM:
+The corrected GM:
 GMfluid = GMsolid - GG'
 
-Burada GG' serbest yüzey düzeltmesidir ve FSM/Δ olarak hesaplanır.
+where GG' is the free surface correction, calculated as FSM/Δ.
 
-Efektif GM (GMfluid) negatif olursa gemi kararsız hale gelir. Bu nedenle stabilite hesaplarında serbest yüzey düzeltmesi her zaman uygulanır.`,
+If the effective GM (GMfluid) becomes negative the ship becomes unstable. The free surface correction is therefore always applied in stability calculations.`,
     bulletPoints: [
       "Serbest yüzey KG'yi sanal olarak yükseltir",
       "GMfluid = GMsolid - GG'",
@@ -1479,8 +1479,8 @@ Efektif GM (GMfluid) negatif olursa gemi kararsız hale gelir. Bu nedenle stabil
     },
     examples: [
       {
-        problem: "GMsolid = 0.80 m, FSM = 400 t·m, Δ = 8.000 ton ise GMfluid kaç metredir?",
-        solution: "GG' = FSM / Δ = 400 / 8.000 = 0.05 m. GMfluid = 0.80 - 0.05 = 0.75 m. Sonuç: Serbest yüzey GM'yi 5 cm azaltır.",
+        problem: "If GMsolid = 0.80 m, FSM = 400 t·m and Δ = 8,000 tonnes, what is GMfluid in metres?",
+        solution: "GG' = FSM / Δ = 400 / 8,000 = 0.05 m. GMfluid = 0.80 - 0.05 = 0.75 m. Result: free surface reduces GM by 5 cm.",
       },
     ],
     keyPoints: [
@@ -1492,18 +1492,18 @@ Efektif GM (GMfluid) negatif olursa gemi kararsız hale gelir. Bu nedenle stabil
   "fsm": {
     title: "Free Surface Moment (FSM)",
     introduction: "Free Surface Moment, bir tankın serbest yüzey etkisinin büyüklüğünü ifade eden ve stabilite hesabında kullanılan değerdir.",
-    content: `FSM, tankın geometrik özelliklerine ve içindeki sıvının yoğunluğuna bağlıdır.
+    content: `The FSM depends on the geometry of the tank and the density of the liquid in it.
 
 FSM = ρ × I
 
-Burada ρ sıvının yoğunluğu, I ise tank su yüzeyinin boyuna eksene göre atalet momentidir.
+where ρ is the density of the liquid and I is the moment of inertia of the tank's liquid surface about the longitudinal axis.
 
-Dikdörtgen kesitli bir tank için:
+For a tank of rectangular section:
 I = (L × B³) / 12
 
-FSM değerleri genellikle tank tablolarında verilir. Farklı doluluk oranları için farklı FSM değerleri olabilir.`,
+FSM values are usually given in the tank tables. There may be different FSM values for different filling levels.`,
     bulletPoints: [
-      "FSM = ρ × I formülü ile hesaplanır",
+      "Calculated with the formula FSM = ρ × I",
       "I, su yüzeyinin atalet momentidir",
       "Genişlik (B) küpü ile orantılıdır",
       "Tank tabloları FSM değerlerini verir",
@@ -1515,8 +1515,8 @@ FSM değerleri genellikle tank tablolarında verilir. Farklı doluluk oranları 
     },
     examples: [
       {
-        problem: "Tank boyutları L = 10 m, B = 6 m ve yakıt yoğunluğu ρ = 0.85 t/m³ ise FSM kaç t·m olur?",
-        solution: "I = (10 × 6³) / 12 = (10 × 216) / 12 = 180 m⁴. FSM = 0.85 × 180 = 153 t·m. Sonuç: Tank 153 t·m serbest yüzey momenti oluşturur.",
+        problem: "If the tank dimensions are L = 10 m and B = 6 m and the fuel density is ρ = 0.85 t/m³, what is the FSM in t·m?",
+        solution: "I = (10 × 6³) / 12 = (10 × 216) / 12 = 180 m⁴. FSM = 0.85 × 180 = 153 t·m. Result: the tank creates a free surface moment of 153 t·m.",
       },
     ],
     keyPoints: [
@@ -1528,19 +1528,19 @@ FSM değerleri genellikle tank tablolarında verilir. Farklı doluluk oranları 
   "fse-calc": {
     title: "Free Surface Effect (FSE)",
     introduction: "Free Surface Effect, serbest yüzey momentinin deplasmanla bölünmesiyle bulunan ve KG'ye eklenen sanal yükselme değeridir.",
-    content: `FSE (veya GG'), serbest yüzeyin ağırlık merkezini ne kadar sanal olarak yükselttiğini gösterir.
+    content: `The FSE (or GG') shows how far the free surface raises the centre of gravity virtually.
 
 FSE = FSM / Δ
 
-Bu değer KG'ye eklenerek efektif KG bulunur:
+This value is added to KG to give the effective KG:
 KGfluid = KGsolid + FSE
 
-Veya doğrudan GM'den düşülür:
+Or it is deducted directly from GM:
 GMfluid = GMsolid - FSE
 
-Birden fazla serbest yüzeyli tank varsa, tüm FSM'ler toplanır ve toplam FSE hesaplanır.`,
+If there are several tanks with free surfaces, all the FSMs are added together and the total FSE is calculated.`,
     bulletPoints: [
-      "FSE = FSM / Δ formülü kullanılır",
+      "The formula FSE = FSM / Δ is used",
       "FSE, KG'ye eklenir veya GM'den çıkarılır",
       "Birden fazla tank için FSM'ler toplanır",
       "Deplasman büyüdükçe FSE küçülür",
@@ -1552,8 +1552,8 @@ Birden fazla serbest yüzeyli tank varsa, tüm FSM'ler toplanır ve toplam FSE h
     },
     examples: [
       {
-        problem: "3 tankın FSM toplamı 600 t·m ve Δ = 10.000 ton ise FSE kaç metredir?",
-        solution: "FSE = 600 / 10.000 = 0.06 m. Sonuç: KG 6 cm sanal olarak yükselir.",
+        problem: "If the total FSM of 3 tanks is 600 t·m and Δ = 10,000 tonnes, what is the FSE in metres?",
+        solution: "FSE = 600 / 10,000 = 0.06 m. Result: KG rises virtually by 6 cm.",
       },
     ],
     keyPoints: [
@@ -1565,16 +1565,16 @@ Birden fazla serbest yüzeyli tank varsa, tüm FSM'ler toplanır ve toplam FSE h
   "tank-geometry-effect": {
     title: "Tank Geometrisinin Etkisi",
     introduction: "Tank şekli ve bölmeleme durumu serbest yüzey momentini doğrudan etkiler; geniş tanklar daha büyük FSM üretir.",
-    content: `FSM hesabında atalet momenti (I) tank genişliğinin küpüyle orantılıdır. Bu nedenle geniş tanklar çok daha büyük serbest yüzey etkisi yaratır.
+    content: `In the FSM calculation the moment of inertia (I) is proportional to the cube of the tank's breadth. Wide tanks therefore create a far greater free surface effect.
 
-Boyuna bölme (longitudinal subdivision):
-Bir tankı ortadan boyuna bölmek, toplam FSM'yi 1/4'üne düşürür (2 × (B/2)³ / 2 = B³/4).
+Longitudinal subdivision:
+Dividing a tank longitudinally down the middle reduces the total FSM to a quarter (2 × (B/2)³ / 2 = B³/4).
 
-Enine bölme (transverse subdivision):
-Enine bölmeler FSM'yi değiştirmez; ancak sıvı akışını sınırlar.
+Transverse subdivision:
+Transverse divisions do not change the FSM; they only restrict the flow of the liquid.
 
-Tank şekli:
-Eğrisel veya konik tanklarda FSM hesabı daha karmaşıktır ve tank tablolarına başvurulur.`,
+Tank shape:
+In curved or tapered tanks the FSM calculation is more complex and the tank tables are used.`,
     bulletPoints: [
       "FSM, B³ ile orantılıdır",
       "Boyuna bölme FSM'yi 1/4'e düşürür",
@@ -1583,13 +1583,13 @@ Eğrisel veya konik tanklarda FSM hesabı daha karmaşıktır ve tank tabloları
     ],
     formula: {
       name: "Bölmeli Tank FSM",
-      expression: "FSMcompartmented = FSMintact / n²",
+      expression: "FSMsubdivided = FSMfull / n²",
       description: "n: Boyuna bölme sayısı (2 bölme için FSM 1/4 olur)",
     },
     examples: [
       {
-        problem: "12 m genişliğinde bir tankın FSM = 800 t·m. Tank ortadan boyuna bölünürse yeni FSM kaç t·m olur?",
-        solution: "Bölme sayısı n = 2. FSMyeni = 800 / 2² = 800 / 4 = 200 t·m. Sonuç: FSM 1/4'e düşer.",
+        problem: "The FSM of a tank 12 m wide is 800 t·m. If the tank is divided longitudinally down the middle, what is the new FSM in t·m?",
+        solution: "The number of divisions is n = 2. FSMnew = 800 / 2² = 800 / 4 = 200 t·m. Result: the FSM falls to a quarter.",
       },
     ],
     keyPoints: [
@@ -1601,15 +1601,15 @@ Eğrisel veya konik tanklarda FSM hesabı daha karmaşıktır ve tank tabloları
   "multiple-tanks-effect": {
     title: "Birden Fazla Tankın Etkisi",
     introduction: "Birden fazla kısmen dolu tank varsa, her tankın serbest yüzey momenti toplanarak toplam etki hesaplanır.",
-    content: `Gemide genellikle birden fazla tank kısmen dolu olabilir: yakıt tankları, balast tankları, tatlı su tankları, cargo oil tankları.
+    content: `There are usually several partly filled tanks on board: fuel tanks, ballast tanks, fresh water tanks and cargo oil tanks.
 
-Her tankın FSM'si ayrı hesaplanır veya tank tablolarından alınır. Toplam serbest yüzey momenti:
+The FSM of each tank is calculated separately or taken from the tank tables. The total free surface moment:
 Σ(FSM) = FSM₁ + FSM₂ + FSM₃ + ...
 
-Toplam FSE:
+The total FSE:
 FSE = Σ(FSM) / Δ
 
-Tamamen dolu veya tamamen boş tanklar FSM hesabına dahil edilmez.`,
+Tanks that are completely full or completely empty are not included in the FSM calculation.`,
     bulletPoints: [
       "Her kısmen dolu tank FSM üretir",
       "FSM'ler toplanır, tek FSE hesaplanır",
@@ -1618,8 +1618,8 @@ Tamamen dolu veya tamamen boş tanklar FSM hesabına dahil edilmez.`,
     ],
     examples: [
       {
-        problem: "3 tank: FSM₁ = 150 t·m, FSM₂ = 200 t·m, FSM₃ = 100 t·m. Δ = 7.500 ton. Toplam FSE kaç metredir?",
-        solution: "Σ(FSM) = 150 + 200 + 100 = 450 t·m. FSE = 450 / 7.500 = 0.06 m. Sonuç: Toplam serbest yüzey etkisi 6 cm'dir.",
+        problem: "3 tanks: FSM₁ = 150 t·m, FSM₂ = 200 t·m, FSM₃ = 100 t·m. Δ = 7,500 tonnes. What is the total FSE in metres?",
+        solution: "Σ(FSM) = 150 + 200 + 100 = 450 t·m. FSE = 450 / 7,500 = 0.06 m. Result: the total free surface effect is 6 cm.",
       },
     ],
     keyPoints: [
@@ -1628,8 +1628,8 @@ Tamamen dolu veya tamamen boş tanklar FSM hesabına dahil edilmez.`,
       "Yükleme planında FSM minimizasyonu hedeflenir",
     ],
     warnings: [
-      "Çok sayıda kısmen dolu tank kritik FSE oluşturabilir",
-      "Kritik seyirlerde tank durumları gözden geçirilmelidir",
+      "A large number of partly filled tanks can create a critical FSE",
+      "Tank conditions must be reviewed before critical passages",
     ],
   },
   // =====================================================
@@ -1638,17 +1638,17 @@ Tamamen dolu veya tamamen boş tanklar FSM hesabına dahil edilmez.`,
   "lcg": {
     title: "Boyuna Ağırlık Merkezi (LCG)",
     introduction: "LCG, geminin ağırlık merkezinin boyuna konumunu ifade eder ve trim hesaplarının temel girdisidir.",
-    content: `LCG (Longitudinal Center of Gravity), gemideki tüm ağırlıkların momentler yöntemiyle hesaplanan boyuna bileşkesidir.
+    content: `The LCG (Longitudinal Centre of Gravity) is the longitudinal resultant of all the weights on the ship, calculated by the method of moments.
 
-Referans noktası genellikle:
-- Kıç dikme (AP - After Perpendicular)
-- Orta kesit (Midship)
-- Baş dikme (FP - Forward Perpendicular)
+The reference point is usually:
+- The after perpendicular (AP)
+- Midship
+- The forward perpendicular (FP)
 
-LCG hesabı:
+The LCG calculation:
 LCG = Σ(wᵢ × lcgᵢ) / Σwᵢ
 
-LCG ile LCB arasındaki fark trim oluşumunu belirler.`,
+The difference between LCG and LCB determines the trim.`,
     bulletPoints: [
       "LCG boyuna ağırlık merkezidir",
       "Momentler yöntemiyle hesaplanır",
@@ -1662,8 +1662,8 @@ LCG ile LCB arasındaki fark trim oluşumunu belirler.`,
     },
     examples: [
       {
-        problem: "500 t yük AP'den 80 m, 300 t yük AP'den 40 m ise LCG kaç metredir?",
-        solution: "LCG = (500 × 80 + 300 × 40) / 800 = (40.000 + 12.000) / 800 = 65 m. Sonuç: LCG, AP'den 65 m'dir.",
+        problem: "If 500 t of cargo is 80 m from the AP and 300 t is 40 m from the AP, what is the LCG in metres?",
+        solution: "LCG = (500 × 80 + 300 × 40) / 800 = (40,000 + 12,000) / 800 = 65 m. Result: the LCG is 65 m from the AP.",
       },
     ],
     keyPoints: [
@@ -1675,18 +1675,18 @@ LCG ile LCB arasındaki fark trim oluşumunu belirler.`,
   "lcb": {
     title: "Yüzerlik Merkezi (LCB)",
     introduction: "LCB, geminin batık hacminin boyuna geometrik merkezidir ve trim hesaplarında LCG ile karşılaştırılır.",
-    content: `LCB (Longitudinal Center of Buoyancy), batık hacmin boyuna ağırlık merkezidir. Kaldırma kuvveti bu noktadan yukarı yönlü etkir.
+    content: `The LCB (Longitudinal Centre of Buoyancy) is the longitudinal centre of the immersed volume. The buoyancy force acts upwards through this point.
 
-LCB konumu:
-- Draft ve trim durumuna bağlıdır
-- Hidrostatik tablolardan okunur
-- Gemi form ve doluluk oranına duyarlıdır
+The position of the LCB:
+- Depends on the draft and the trim
+- Is read from the hydrostatic tables
+- Is sensitive to the form and block coefficient of the ship
 
-Denge durumunda LCG ve LCB aynı düşey doğru üzerinde olmalıdır. Aksi halde boyuna moment oluşur ve trim meydana gelir.`,
+In equilibrium the LCG and LCB must lie on the same vertical line. Otherwise a longitudinal moment arises and the ship trims.`,
     bulletPoints: [
       "LCB batık hacmin boyuna merkezidir",
       "Hidrostatik tablolardan alınır",
-      "LCG = LCB ise trim sıfırdır",
+      "If LCG = LCB the trim is zero",
       "LCG ≠ LCB ise trim oluşur",
     ],
     formula: {
@@ -1696,8 +1696,8 @@ Denge durumunda LCG ve LCB aynı düşey doğru üzerinde olmalıdır. Aksi hald
     },
     examples: [
       {
-        problem: "Δ = 6.000 ton, LCG = 70 m (AP'den), LCB = 68 m (AP'den). Trim momenti kaç t·m?",
-        solution: "Trim Moment = 6.000 × (70 - 68) = 6.000 × 2 = 12.000 t·m. Sonuç: Baş yönünde trim momenti oluşur.",
+        problem: "Δ = 6,000 tonnes, LCG = 70 m (from the AP), LCB = 68 m (from the AP). What is the trimming moment in t·m?",
+        solution: "Trimming Moment = 6,000 × (70 - 68) = 6,000 × 2 = 12,000 t·m. Result: a trimming moment by the head is created.",
       },
     ],
     keyPoints: [
@@ -1709,15 +1709,15 @@ Denge durumunda LCG ve LCB aynı düşey doğru üzerinde olmalıdır. Aksi hald
   "trim-concept": {
     title: "Trim Kavramı",
     introduction: "Trim, geminin baş ve kıç draftları arasındaki farkı ifade eder ve boyuna stabiliteyi gösterir.",
-    content: `Trim, geminin boyuna yatma durumudur ve iki şekilde ifade edilir:
-1. Fark olarak: Trim = Tkıç - Tbaş
-2. Açı olarak: θ = arctan(Trim / LBP)
+    content: `Trim is the longitudinal inclination of the ship and is expressed in two ways:
+1. As a difference: Trim = Taft - Tfwd
+2. As an angle: θ = arctan(Trim / LBP)
 
-Trim pozitif ise: Kıç trimi (stern trim)
-Trim negatif ise: Baş trimi (bow trim)
-Trim = 0 ise: Düz oturma (even keel)
+If the trim is positive: trim by the stern
+If the trim is negative: trim by the head
+If the trim is 0: even keel
 
-Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığını etkiler. Ticari operasyonlarda optimum trim değerleri belirlenir.`,
+Trim affects the ship's performance, propeller efficiency and deck wetness. Optimum trim values are established in commercial operations.`,
     images: [
       {
         src: trimDiagram,
@@ -1738,8 +1738,8 @@ Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığın
     },
     examples: [
       {
-        problem: "Tkıç = 7.2 m, Tbaş = 6.8 m ise trim durumu nedir?",
-        solution: "Trim = 7.2 - 6.8 = 0.4 m. Sonuç: 40 cm kıç trimi (stern trim) vardır.",
+        problem: "If Taft = 7.2 m and Tfwd = 6.8 m, what is the trim condition?",
+        solution: "Trim = 7.2 - 6.8 = 0.4 m. Result: there is 40 cm of trim by the stern.",
       },
     ],
     keyPoints: [
@@ -1751,17 +1751,17 @@ Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığın
   "mct": {
     title: "MCT (Moment to Change Trim)",
     introduction: "MCT, trimi 1 cm değiştirmek için gereken momenti ifade eder ve trim hesaplarında temel büyüklüktür.",
-    content: `MCT (Moment to Change Trim 1 cm), geminin boyuna stabilitesinin ölçüsüdür. Bu değer hidrostatik tablolardan alınır ve draft ile değişir.
+    content: `The MCT (Moment to Change Trim 1 cm) is the measure of a ship's longitudinal stability. It is taken from the hydrostatic tables and varies with draft.
 
-MCT hesabı:
+The MCT calculation:
 MCT = (Δ × GML) / (100 × LBP)
 
-Burada GML boyuna metasantrik yükseklik, LBP iki dikme arası uzunluktur.
+where GML is the longitudinal metacentric height and LBP the length between perpendiculars.
 
-Trim değişimi hesabı:
+The change of trim:
 Trim = (w × d) / MCT
 
-Burada w ağırlık, d boyuna taşıma mesafesidir.`,
+where w is the weight and d the longitudinal distance it is moved.`,
     bulletPoints: [
       "MCT, trimi 1 cm değiştiren momenttir",
       "Hidrostatik tablolardan okunur",
@@ -1775,8 +1775,8 @@ Burada w ağırlık, d boyuna taşıma mesafesidir.`,
     },
     examples: [
       {
-        problem: "MCT = 350 t·m/cm, 140 ton yük 15 m başa kaydırılıyor. Trim değişimi kaç cm?",
-        solution: "Moment = 140 × 15 = 2.100 t·m. Trim = 2.100 / 350 = 6 cm. Sonuç: Baş trimi 6 cm artar.",
+        problem: "MCT = 350 t·m/cm and 140 tonnes is shifted 15 m forward. What is the change of trim in cm?",
+        solution: "Moment = 140 × 15 = 2,100 t·m. Trim = 2,100 / 350 = 6 cm. Result: the trim by the head increases by 6 cm.",
       },
     ],
     keyPoints: [
@@ -1788,18 +1788,18 @@ Burada w ağırlık, d boyuna taşıma mesafesidir.`,
   "trim-calculations": {
     title: "Trim Hesapları",
     introduction: "Trim hesapları, yük hareketlerinin ve ağırlık değişikliklerinin baş-kıç draftlarına etkisini belirler.",
-    content: `Trim hesabı iki temel durumu kapsar:
-1. Ağırlık kayması (w × d momenti)
-2. Ağırlık ekleme/çıkarma (LCG değişimi)
+    content: `The trim calculation covers two basic cases:
+1. A shift of weight (the moment w × d)
+2. Adding/removing weight (a change of LCG)
 
-Trim değişimi:
+The change of trim:
 ΔTrim = (w × d) / MCT
 
-Baş ve kıç draft değişimleri:
-ΔTbaş = (ΔTrim × LCF) / LBP
-ΔTkıç = ΔTrim - ΔTbaş
+The changes in the forward and after drafts:
+ΔTfwd = (ΔTrim × LCF) / LBP
+ΔTaft = ΔTrim - ΔTfwd
 
-LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
+The LCF (Longitudinal Centre of Flotation) is the longitudinal position of the centre of flotation.`,
     bulletPoints: [
       "Trim değişimi = Moment / MCT",
       "LCF, draft dağılımını belirler",
@@ -1808,13 +1808,13 @@ LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
     ],
     formula: {
       name: "Trim ve Draft Değişimi",
-      expression: "ΔTrim = (w × d) / MCT; ΔT fore = ΔTrim × (LBP - LCF) / LBP",
+      expression: "ΔTrim = (w × d) / MCT; ΔTfwd = ΔTrim × (LBP - LCF) / LBP",
       description: "ΔTrim: Trim değişimi (cm), LCF: Yüzme merkezinin kıçtan uzaklığı (m)",
     },
     examples: [
       {
-        problem: "w = 200 t, d = 20 m başa, MCT = 400 t·m/cm, LBP = 120 m, LCF = 55 m (kıçtan). Draft değişimleri nedir?",
-        solution: "ΔTrim = (200 × 20) / 400 = 10 cm baş trimi. ΔTkıç = 10 × 55 / 120 = 4.58 cm azalma. ΔTbaş = 10 - 4.58 = 5.42 cm artış. Sonuç: Baş 5.4 cm batar, kıç 4.6 cm yükselir.",
+        problem: "w = 200 t, d = 20 m forward, MCT = 400 t·m/cm, LBP = 120 m, LCF = 55 m (from aft). What are the changes in draft?",
+        solution: "ΔTrim = (200 × 20) / 400 = 10 cm by the head. ΔTaft = 10 × 55 / 120 = 4.58 cm decrease. ΔTfwd = 10 - 4.58 = 5.42 cm increase. Result: the bow sinks 5.4 cm and the stern rises 4.6 cm.",
       },
     ],
     keyPoints: [
@@ -1826,19 +1826,19 @@ LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
   "trim-control": {
     title: "Yükleme ve Boşaltmada Trim Kontrolü",
     introduction: "Trim kontrolü, yükleme operasyonları sırasında geminin optimum trim değerlerinde kalmasını sağlar.",
-    content: `Yükleme ve boşaltma sırasında trim sürekli değişir. Optimum trim değerleri şunları etkiler:
-- Yakıt tüketimi
-- Pervane verimliliği
-- Güverte ıslaklığı
-- Liman manevrası
+    content: `Trim changes continuously during loading and discharging. Optimum trim values affect:
+- Fuel consumption
+- Propeller efficiency
+- Deck wetness
+- Manoeuvring in port
 
-Trim kontrolü yöntemleri:
-1. Yük yerleşim planı
-2. Balast transferi
-3. Yakıt transferi
-4. Yükleme sırası optimizasyonu
+Methods of trim control:
+1. The cargo distribution plan
+2. Ballast transfer
+3. Fuel transfer
+4. Optimising the loading sequence
 
-Stabilite bilgisayarları trim simülasyonu yaparak optimum yükleme planı önerir.`,
+Stability computers simulate the trim and propose an optimum loading plan.`,
     bulletPoints: [
       "Optimum trim yakıt tasarrufu sağlar",
       "Balast transferi trim düzeltmesinde kullanılır",
@@ -1857,20 +1857,20 @@ Stabilite bilgisayarları trim simülasyonu yaparak optimum yükleme planı öne
   "displacement": {
     title: "Displacement",
     introduction: "Deplasman, geminin toplam ağırlığı ve yer değiştirdiği suyun ağırlığıdır; stabilitenin temel büyüklüğüdür.",
-    content: `Deplasman (Δ), geminin yüzerken yer değiştirdiği suyun ağırlığına eşittir. Arşimet prensibine göre bu değer geminin toplam ağırlığına eşittir.
+    content: `The displacement (Δ) is equal to the weight of the water the ship displaces when floating. By Archimedes' principle this value is equal to the total weight of the ship.
 
 Δ = ∇ × ρ
 
-Burada ∇ batık hacim (m³), ρ suyun yoğunluğudur (deniz suyu için 1.025 t/m³).
+where ∇ is the immersed volume (m³) and ρ is the density of the water (1.025 t/m³ for sea water).
 
-Deplasman değeri:
-- Stabilite hesaplarının girdisidir
-- Doğrultma momenti hesabında kullanılır
-- Hidrostatik tablolardan draft ile ilişkilendirilir`,
+The displacement value:
+- Is an input to the stability calculations
+- Is used in the righting moment calculation
+- Is related to draft through the hydrostatic tables`,
     bulletPoints: [
       "Δ = Geminin toplam ağırlığı",
-      "Δ = Yer değiştirilen su ağırlığı",
-      "Δ = ∇ × ρ formülü ile hesaplanır",
+      "Δ = the weight of water displaced",
+      "Calculated with the formula Δ = ∇ × ρ",
       "Draft arttıkça deplasman artar",
     ],
     formula: {
@@ -1880,8 +1880,8 @@ Deplasman değeri:
     },
     examples: [
       {
-        problem: "Batık hacim ∇ = 5.000 m³, deniz suyu yoğunluğu ρ = 1.025 t/m³ ise deplasman kaç tondur?",
-        solution: "Δ = 5.000 × 1.025 = 5.125 ton. Sonuç: Gemi 5.125 ton ağırlığındadır.",
+        problem: "If the immersed volume is ∇ = 5,000 m³ and the sea water density is ρ = 1.025 t/m³, what is the displacement in tonnes?",
+        solution: "Δ = 5,000 × 1.025 = 5,125 tonnes. Result: the ship weighs 5,125 tonnes.",
       },
     ],
     keyPoints: [
@@ -1893,19 +1893,19 @@ Deplasman değeri:
   "draft": {
     title: "Draft",
     introduction: "Draft, geminin omurgasından su hattına olan dikey mesafedir ve yükleme durumunun göstergesidir.",
-    content: `Draft (su çekimi), geminin ne kadar suya battığını gösterir. Üç konumda ölçülür:
-1. Baş draftı (Forward draft)
-2. Kıç draftı (Aft draft)
-3. Orta draft (Mean draft)
+    content: `The draft shows how deep the ship is immersed. It is measured at three positions:
+1. Forward draft
+2. Aft draft
+3. Mean draft
 
-Orta draft = (Tbaş + Tkıç) / 2
+Mean draft = (Tfwd + Taft) / 2
 
-Draft arttıkça:
-- Deplasman artar
-- Fribord azalır
-- Batık hacim büyür
+As the draft increases:
+- The displacement increases
+- The freeboard decreases
+- The immersed volume grows
 
-Draft okuması, yükleme hesabının başlangıç noktasıdır.`,
+Reading the draft is the starting point of the loading calculation.`,
     bulletPoints: [
       "Draft omurgadan su hattına mesafedir",
       "Baş, kıç ve orta draft ayrı ölçülür",
@@ -1914,13 +1914,13 @@ Draft okuması, yükleme hesabının başlangıç noktasıdır.`,
     ],
     formula: {
       name: "Orta Draft",
-      expression: "Tmean = (T fore + T aft) / 2",
+      expression: "Tmean = (Tfwd + Taft) / 2",
       description: "Tmean: Orta draft (m), Tbaş: Baş draftı (m), Tkıç: Kıç draftı (m)",
     },
     examples: [
       {
-        problem: "Tbaş = 6.4 m, Tkıç = 7.0 m ise orta draft kaç metredir?",
-        solution: "Tmean = (6.4 + 7.0) / 2 = 6.7 m. Sonuç: Orta draft 6.7 metredir.",
+        problem: "If Tfwd = 6.4 m and Taft = 7.0 m, what is the mean draft in metres?",
+        solution: "Tmean = (6.4 + 7.0) / 2 = 6.7 m. Result: the mean draft is 6.7 metres.",
       },
     ],
     keyPoints: [
@@ -1932,15 +1932,15 @@ Draft okuması, yükleme hesabının başlangıç noktasıdır.`,
   "draft-displacement-relation": {
     title: "Draft-Deplasman İlişkisi",
     introduction: "Draft ve deplasman arasındaki ilişki hidrostatik eğrilerle tanımlanır ve yükleme hesabında kullanılır.",
-    content: `Draft arttıkça batık hacim ve dolayısıyla deplasman artar. Bu ilişki doğrusal değildir; gemi formuna bağlıdır.
+    content: `As the draft increases the immersed volume, and therefore the displacement, increases. This relationship is not linear; it depends on the form of the ship.
 
-Hidrostatik tablolar veya eğriler bu ilişkiyi gösterir:
-- Draft (m) vs Deplasman (ton)
-- Draft (m) vs Batık hacim (m³)
+The hydrostatic tables or curves show this relationship:
+- Draft (m) vs Displacement (tonnes)
+- Draft (m) vs Immersed volume (m³)
 
-Bu tablolar geminin inşa aşamasında hesaplanır ve stabilite kitapçığında verilir.
+These tables are calculated when the ship is built and are given in the stability booklet.
 
-Yükleme sırasında draft ölçülerek deplasman bulunur veya tersine deplasman hesabından beklenen draft kontrol edilir.`,
+During loading the displacement is found by measuring the draft, or conversely the expected draft is checked against the displacement calculation.`,
     bulletPoints: [
       "Draft-deplasman ilişkisi doğrusal değildir",
       "Hidrostatik tablolardan okunur",
@@ -1956,17 +1956,17 @@ Yükleme sırasında draft ölçülerek deplasman bulunur veya tersine deplasman
   "tpc": {
     title: "TPC (Ton Per Centimeter)",
     introduction: "TPC, draftı 1 cm artırmak için gereken ağırlığı gösterir ve hızlı yükleme hesaplarında kullanılır.",
-    content: `TPC (Tons Per Centimeter Immersion), geminin su hattı alanı ile ilişkilidir.
+    content: `The TPC (Tonnes Per Centimetre Immersion) is related to the ship's waterplane area.
 
 TPC = (A × ρ) / 100
 
-Burada A su hattı alanı (m²), ρ su yoğunluğudur (t/m³).
+where A is the waterplane area (m²) and ρ is the water density (t/m³).
 
-TPC kullanımı:
-- Yüklenecek ağırlık / TPC = Draft artışı (cm)
-- Draft değişimi × TPC = Ağırlık değişimi (ton)
+Using the TPC:
+- Weight to be loaded / TPC = increase in draft (cm)
+- Change of draft × TPC = change in weight (tonnes)
 
-TPC değeri draft ile değişir; hidrostatik tablolardan okunur.`,
+The TPC value varies with draft; it is read from the hydrostatic tables.`,
     bulletPoints: [
       "TPC, 1 cm batış için gereken tondur",
       "Su hattı alanına bağlıdır",
@@ -1980,8 +1980,8 @@ TPC değeri draft ile değişir; hidrostatik tablolardan okunur.`,
     },
     examples: [
       {
-        problem: "TPC = 25 ton/cm ve 500 ton yük yüklenecek. Draft kaç cm artar?",
-        solution: "ΔT = 500 / 25 = 20 cm. Sonuç: Draft 20 cm artar.",
+        problem: "TPC = 25 tonnes/cm and 500 tonnes is to be loaded. By how many cm does the draft increase?",
+        solution: "ΔT = 500 / 25 = 20 cm. Result: the draft increases by 20 cm.",
       },
     ],
     keyPoints: [
@@ -1993,23 +1993,23 @@ TPC değeri draft ile değişir; hidrostatik tablolardan okunur.`,
   "km-values": {
     title: "KM Değerleri",
     introduction: "KM, omurgadan metasantra olan mesafedir ve GM hesabının temel girdisidir.",
-    content: `KM (Keel to Metacenter), metasantrın omurgadan yüksekliğidir.
+    content: `KM (Keel to Metacentre) is the height of the metacentre above the keel.
 
 KM = KB + BM
 
-Burada KB omurgadan kaldırma merkezine, BM metasantrik yarıçaptır.
+where KB is the distance from the keel to the centre of buoyancy and BM is the metacentric radius.
 
-KM değeri:
-- Draft ile değişir
-- Hidrostatik tablolardan okunur
-- GM hesabında kullanılır: GM = KM - KG
+The KM value:
+- Varies with draft
+- Is read from the hydrostatic tables
+- Is used in the GM calculation: GM = KM - KG
 
-KM değeri gemi geometrisine bağlıdır ve yükleme ile değişmez (yalnızca draft değişimi ile değişir).`,
+The KM value depends on the geometry of the ship and does not change with loading (it changes only with a change of draft).`,
     bulletPoints: [
-      "KM = KB + BM formülü geçerlidir",
+      "The formula KM = KB + BM applies",
       "Hidrostatik tablolardan alınır",
       "Draft ile değişir",
-      "GM = KM - KG hesabında kullanılır",
+      "Used in the calculation GM = KM - KG",
     ],
     formula: {
       name: "KM ve GM İlişkisi",
@@ -2018,8 +2018,8 @@ KM değeri gemi geometrisine bağlıdır ve yükleme ile değişmez (yalnızca d
     },
     examples: [
       {
-        problem: "Hidrostatik tablodan T = 6.5 m için KM = 7.8 m okundu. KG = 7.2 m ise GM kaç metredir?",
-        solution: "GM = KM - KG = 7.8 - 7.2 = 0.6 m. Sonuç: GM 60 cm'dir, ilk stabilite yeterlidir.",
+        problem: "From the hydrostatic table, KM = 7.8 m is read for T = 6.5 m. If KG = 7.2 m, what is GM in metres?",
+        solution: "GM = KM - KG = 7.8 - 7.2 = 0.6 m. Result: GM is 60 cm and the initial stability is adequate.",
       },
     ],
     keyPoints: [
@@ -2031,18 +2031,18 @@ KM değeri gemi geometrisine bağlıdır ve yükleme ile değişmez (yalnızca d
   "hydrostatic-tables-usage": {
     title: "Hidrostatik Tabloların Kullanımı",
     introduction: "Hidrostatik tablolar, geminin draft ve trim durumuna göre stabilite parametrelerini veren temel referanstır.",
-    content: `Hidrostatik tablolar genellikle şu verileri içerir:
-- Draft vs Deplasman
+    content: `Hydrostatic tables generally contain the following data:
+- Draft vs Displacement
 - Draft vs TPC
-- Draft vs KM (KMt ve KMl)
+- Draft vs KM (KMt and KMl)
 - Draft vs KB
 - Draft vs LCB
 - Draft vs LCF
 - Draft vs MCT
 
-Tablolar düz oturma (even keel) için hazırlanır. Trim durumunda düzeltme yapılması gerekebilir.
+The tables are prepared for an even keel. A correction may be needed when the ship is trimmed.
 
-Modern stabilite bilgisayarları bu tabloları otomatik olarak kullanır; ancak manuel kontrol için tablolar bilinmelidir.`,
+Modern stability computers use these tables automatically; but the tables must be understood for manual checking.`,
     bulletPoints: [
       "Tüm stabilite parametreleri tablolardan okunur",
       "Draft ana giriş değeridir",
@@ -2061,16 +2061,16 @@ Modern stabilite bilgisayarları bu tabloları otomatik olarak kullanır; ancak 
   "dynamic-righting-moment": {
     title: "Dinamik Doğrultma Momenti",
     introduction: "Dinamik doğrultma momenti, geminin hareket halindeyken dış kuvvetlere karşı ürettiği toplam doğrultma kapasitesidir.",
-    content: `Dinamik stabilite, geminin belirli bir açıya kadar absorbe edebileceği enerji miktarını ifade eder. Bu kapasite, GZ eğrisinin altındaki alanla ölçülür.
+    content: `Dynamic stability expresses the amount of energy a ship can absorb up to a given angle. This capacity is measured by the area under the GZ curve.
 
-Dinamik doğrultma momenti:
+The dynamic righting moment:
 DRM = Δ × ∫GZ dθ
 
-Bu integral, başlangıç açısından belirli bir açıya kadar GZ eğrisinin altındaki alandır.
+This integral is the area under the GZ curve from the initial angle up to a given angle.
 
-Statik stabiliteden farkı:
-- Statik: Belirli bir açıda anlık denge
-- Dinamik: Hareket boyunca enerji dengesi`,
+The difference from static stability:
+- Static: instantaneous equilibrium at a given angle
+- Dynamic: the energy balance throughout the motion`,
     bulletPoints: [
       "Dinamik stabilite enerji kapasitesidir",
       "GZ eğrisi altındaki alanla ölçülür",
@@ -2091,16 +2091,16 @@ Statik stabiliteden farkı:
   "area-concept": {
     title: "Alan Kavramı",
     introduction: "GZ eğrisi altındaki alan, geminin dinamik stabilite kapasitesini ve dış kuvvetlere direnme yeteneğini gösterir.",
-    content: `GZ eğrisi altındaki alan, geminin belirli bir açıya kadar ne kadar enerji absorbe edebileceğini ifade eder.
+    content: `The area under the GZ curve expresses how much energy the ship can absorb up to a given angle.
 
-IMO kriterleri şu alanları tanımlar:
-- A₁: 0° - 30° arası alan ≥ 0.055 m·rad
-- A₂: 0° - 40° arası alan ≥ 0.090 m·rad
-- A₃: 30° - 40° arası alan ≥ 0.030 m·rad
+The IMO criteria define the following areas:
+- A₁: the area from 0° to 30° ≥ 0.055 m·rad
+- A₂: the area from 0° to 40° ≥ 0.090 m·rad
+- A₃: the area from 30° to 40° ≥ 0.030 m·rad
 
-Bu alanlar, geminin çeşitli yatma senaryolarında yeterli enerji rezervine sahip olmasını garanti eder.
+These areas guarantee that the ship has an adequate energy reserve in various heeling scenarios.
 
-Alan hesabı sayısal integrasyon veya trapez kuralı ile yapılır.`,
+The area is calculated by numerical integration or the trapezoidal rule.`,
     bulletPoints: [
       "Alan = Enerji kapasitesi",
       "IMO minimum alan kriterleri tanımlar",
@@ -2114,8 +2114,8 @@ Alan hesabı sayısal integrasyon veya trapez kuralı ile yapılır.`,
     },
     examples: [
       {
-        problem: "0-30° arasında hesaplanan alan A₁ = 0.048 m·rad. IMO kriteri sağlanıyor mu?",
-        solution: "IMO kriteri: A₁ ≥ 0.055 m·rad. 0.048 < 0.055. Sonuç: Kriter sağlanmıyor, stabilite yetersiz.",
+        problem: "The area calculated between 0° and 30° is A₁ = 0.048 m·rad. Is the IMO criterion met?",
+        solution: "The IMO criterion: A₁ ≥ 0.055 m·rad. 0.048 < 0.055. Result: the criterion is not met and the stability is inadequate.",
       },
     ],
     keyPoints: [
@@ -2127,18 +2127,18 @@ Alan hesabı sayısal integrasyon veya trapez kuralı ile yapılır.`,
   "static-vs-dynamic": {
     title: "Statik ve Dinamik Stabilite Farkı",
     introduction: "Statik stabilite, belirli bir yatma açısındaki anlık doğrultma kuvvetini (GZ/moment) inceler. Dinamik stabilite ise gemiyi o açıya yatırmak için yapılan İŞİ (enerji) inceler ve GZ eğrisi altındaki alanla ölçülür. İkisi farklı şeyleri ölçer ve birlikte değerlendirilmelidir.",
-    content: `STATİK STABİLİTE:
-- Belirli açıda anlık denge: doğrultma kolu GZ ve doğrultma momenti (Δ·GZ).
-- Küçük açıda GM, büyük açıda GZ eğrisi ile değerlendirilir.
-- Soru: "Bu açıda gemi ne kadar kuvvetle doğrulur?"
+    content: `STATIC STABILITY:
+- Instantaneous equilibrium at a given angle: the righting lever GZ and the righting moment (Δ·GZ).
+- Assessed by GM at small angles and by the GZ curve at large angles.
+- The question: "How strongly does the ship right itself at this angle?"
 
-DİNAMİK STABİLİTE (ENERJİ):
-- Gemiyi 0'dan θ açısına yatırmak için gereken iş, GZ eğrisi altındaki alandır.
-- Dinamik stabilite = Δ × (GZ eğrisi altındaki alan); birimi tonne·metre·radyan (enerji).
-- Soru: "Gemiyi devirmek için ne kadar ENERJİ gerekir / ne kadar enerji rezervi var?"
+DYNAMIC STABILITY (ENERGY):
+- The work required to heel the ship from 0 to an angle θ is the area under the GZ curve.
+- Dynamic stability = Δ × (the area under the GZ curve); the unit is tonne·metre·radian (energy).
+- The question: "How much ENERGY is needed to capsize the ship / how much energy reserve is there?"
 
-NEDEN İKİSİ DE GEREKLİ:
-Bir rüzgâr sağnağı veya dalga, gemiye İŞ (enerji) aktarır. Gemi, bu enerjiyi karşılayacak yeterli "rezerv dinamik stabiliteye" (eğri altı alan) sahip değilse, anlık GZ pozitif olsa bile devrilebilir. IMO weather criterion tam olarak bu enerji (alan) dengesini (b ≥ a) kontrol eder. Bu yüzden statik kriterlerin sağlanması tek başına yeterli değildir.`,
+WHY BOTH ARE NEEDED:
+A squall or a wave transfers WORK (energy) to the ship. If the ship does not have enough "reserve dynamic stability" (area under the curve) to meet that energy, it can capsize even though the instantaneous GZ is positive. The IMO weather criterion checks precisely this energy (area) balance (b ≥ a). Meeting the static criteria alone is therefore not sufficient.`,
     bulletPoints: [
       "Statik: anlık kuvvet/moment (GZ, Δ·GZ).",
       "Dinamik: iş/enerji = eğri altı alan.",
@@ -2147,7 +2147,7 @@ Bir rüzgâr sağnağı veya dalga, gemiye İŞ (enerji) aktarır. Gemi, bu ener
     ],
     formula: {
       name: "Dinamik stabilite (enerji)",
-      expression: "Dynamic stability = Δ × ∫₀^θ GZ dθ  (area under curve)",
+      expression: "Dynamic stability = Δ × ∫₀^θ GZ dθ  (the area under the curve)",
       description: "GZ eğrisi altındaki alan, gemiyi o açıya yatırmak için yapılan işi (enerji rezervini) verir.",
     },
     keyPoints: [
@@ -2160,17 +2160,17 @@ Bir rüzgâr sağnağı veya dalga, gemiye İŞ (enerji) aktarır. Gemi, bu ener
   "wave-effect": {
     title: "Dalga Etkisi",
     introduction: "Dalgalar gemiye enerji aktararak yatma hareketi oluşturur ve dinamik stabiliteyi test eder.",
-    content: `Dalgalar gemiye çeşitli şekillerde etki eder:
+    content: `Waves act on a ship in several ways:
 
-1. Dalga eğimi (wave slope): Gemi dalga üzerinde yattığında efektif yatma açısı artar.
+1. Wave slope: when the ship lies on a wave the effective angle of heel increases.
 
-2. Dalga momenti: Dalga yüksekliği ve periyodu yatma momentini belirler.
+2. Wave moment: the wave height and period determine the heeling moment.
 
-3. Rezonans: Dalga periyodu yalpa periyoduna yaklaştığında tehlikeli salınımlar oluşur.
+3. Resonance: dangerous oscillations arise when the wave period approaches the rolling period.
 
-4. Parametrik yalpalama: Baş-kıç dalgalarında değişen su hattı genişliği stabiliteyi periyodik olarak değiştirir.
+4. Parametric rolling: in head/following seas the changing waterplane breadth alters the stability periodically.
 
-IMO rüzgâr ve dalga kriterleri bu etkileri hesaba katar.`,
+The IMO wind and wave criteria take these effects into account.`,
     bulletPoints: [
       "Dalgalar yatma enerjisi aktarır",
       "Dalga periyodu ile yalpa periyodu rezonansa girebilir",
@@ -2183,21 +2183,21 @@ IMO rüzgâr ve dalga kriterleri bu etkileri hesaba katar.`,
       "Parametrik yalpalama konteyner gemilerinde önemlidir",
     ],
     warnings: [
-      "Rezonans koşullarında salınım genliği tehlikeli boyutlara ulaşabilir",
-      "Rota değişikliği veya hız azaltma gerekebilir",
+      "Under resonant conditions the amplitude of roll can reach dangerous levels",
+      "A change of course or a reduction of speed may be necessary",
     ],
   },
   "wind-effect": {
     title: "Rüzgâr Etkisi",
     introduction: "Rüzgâr, geminin üst yapılarına etki ederek yatma momenti oluşturur ve stabiliteyi zorlar.",
-    content: `Rüzgâr etkisi, rüzgâra maruz kalan yüzey alanı ve rüzgâr hızına bağlıdır.
+    content: `The effect of wind depends on the surface area exposed to it and on the wind speed.
 
-Rüzgâr yatma momenti:
+The wind heeling moment:
 HMwind = 0.5 × ρair × V² × A × h
 
-Burada ρair hava yoğunluğu, V rüzgâr hızı, A maruz alan, h kaldırma koludur.
+where ρair is the air density, V the wind speed, A the exposed area and h the lever.
 
-IMO rüzgâr kriteri (Weather Criterion), ani rüzgâr altında geminin devrilmemesini garanti eden stabilite kontrolüdür. Bu kriter GZ eğrisi üzerinde grafiksel olarak uygulanır.`,
+The IMO weather criterion is the stability check that guarantees the ship will not capsize under a sudden gust. This criterion is applied graphically on the GZ curve.`,
     bulletPoints: [
       "Rüzgâr yatma momenti üst yapı alanına bağlıdır",
       "Rüzgâr hızının karesiyle orantılıdır",
@@ -2221,21 +2221,21 @@ IMO rüzgâr kriteri (Weather Criterion), ani rüzgâr altında geminin devrilme
   "post-damage-floatation": {
     title: "Hasar Sonrası Yüzerlik",
     introduction: "Hasar sonrası yüzerlik, geminin bir veya birden fazla bölmenin su ile dolması durumunda yüzmeye devam edip edemeyeceğini belirler.",
-    content: `Geminin hasar görmesi durumunda yüzerliğin korunması, can ve mal güvenliği açısından kritik öneme sahiptir.
+    content: `Preserving buoyancy when the ship is damaged is critical for the safety of life and property.
 
-Hasar sonrası yüzerlik iki faktöre bağlıdır:
-1. Hasarlı bölmenin hacmi ve konumu
-2. Geminin mevcut rezerv yüzerliği
+Buoyancy after damage depends on two factors:
+1. The volume and position of the damaged compartment
+2. The ship's available reserve buoyancy
 
-Rezerv yüzerlik, su hattı üzerinde kalan suya dayanıklı hacimdir. Hasarlı bölmeye dolan su miktarı bu hacmi aşarsa gemi batar.
+Reserve buoyancy is the watertight volume above the waterline. If the water entering the damaged compartment exceeds this volume the ship founders.
 
-Permeabilite (μ) faktörü, bölmenin ne kadarının su ile dolabileceğini gösterir:
-- Makine dairesi: μ = 0.85
-- Kargo ambarı (genel yük): μ = 0.60
-- Yolcu alanları: μ = 0.95
-- Boş tanklar: μ = 0.95
+The permeability factor (μ) shows how much of the compartment can fill with water:
+- Engine room: μ = 0.85
+- Cargo hold (general cargo): μ = 0.60
+- Passenger spaces: μ = 0.95
+- Empty tanks: μ = 0.95
 
-Hasarlı hacim = Gerçek hacim × μ`,
+Flooded volume = Actual volume × μ`,
     images: [
       {
         src: damageStabilityDiagram,
@@ -2256,8 +2256,8 @@ Hasarlı hacim = Gerçek hacim × μ`,
     },
     examples: [
       {
-        problem: "Hacmi 500 m³ olan bir kargo ambarı hasar görüyor. Permeabilite μ = 0.60 ise ne kadar su dolar?",
-        solution: "Vflooded = 500 × 0.60 = 300 m³. Sonuç: Ambara 300 m³ su dolar.",
+        problem: "A cargo hold of 500 m³ is damaged. If the permeability is μ = 0.60, how much water enters?",
+        solution: "Vflooded = 500 × 0.60 = 300 m³. Result: 300 m³ of water enters the hold.",
       },
     ],
     keyPoints: [
@@ -2269,17 +2269,17 @@ Hasarlı hacim = Gerçek hacim × μ`,
   "flooding-concept": {
     title: "Flooding Kavramı",
     introduction: "Flooding, geminin bir bölmesinin kontrolsüz şekilde su ile dolmasıdır ve iki yöntemle analiz edilir: kayıp yüzerlik ve eklenen ağırlık.",
-    content: `Flooding analizi iki yaklaşımla yapılır:
+    content: `Flooding is analysed in two ways:
 
-1. KAYIP YÜZERLİK YÖNTEMİ (Lost Buoyancy Method):
-Su dolan bölme artık kaldırma kuvveti üretmez. Gemi dengeyi sağlamak için daha fazla batar. Bu yöntemde deplasmanın değişmediği kabul edilir.
+1. THE LOST BUOYANCY METHOD:
+The flooded compartment no longer produces buoyancy. The ship sinks deeper to restore equilibrium. In this method the displacement is taken as unchanged.
 
-2. EKLENEN AĞIRLIK YÖNTEMİ (Added Weight Method):
-Dolan su bir ağırlık olarak kabul edilir. Deplasman artar ve gemi batar. Bu yöntem serbest yüzey etkisini de dikkate alır.
+2. THE ADDED WEIGHT METHOD:
+The water that enters is treated as a weight. The displacement increases and the ship sinks. This method also takes the free surface effect into account.
 
-Her iki yöntem de aynı nihai draft ve trim değerlerini verir; ancak hesap mantığı farklıdır.
+Both methods give the same final draft and trim; only the logic of the calculation differs.
 
-Modern stabilite bilgisayarları genellikle eklenen ağırlık yöntemini kullanır.`,
+Modern stability computers generally use the added weight method.`,
     bulletPoints: [
       "Kayıp yüzerlik: Bölme kaldırma üretmez",
       "Eklenen ağırlık: Su bir ağırlık olarak eklenir",
@@ -2293,8 +2293,8 @@ Modern stabilite bilgisayarları genellikle eklenen ağırlık yöntemini kullan
     },
     examples: [
       {
-        problem: "Bir bölmeye 400 m³ deniz suyu (ρ = 1.025 t/m³) doluyorsa eklenen ağırlık nedir?",
-        solution: "wadded = 400 × 1.025 = 410 ton. Sonuç: 410 ton ağırlık eklenir.",
+        problem: "If 400 m³ of sea water (ρ = 1.025 t/m³) enters a compartment, what is the weight added?",
+        solution: "wadded = 400 × 1.025 = 410 tonnes. Result: 410 tonnes of weight is added.",
       },
     ],
     keyPoints: [
@@ -2306,23 +2306,23 @@ Modern stabilite bilgisayarları genellikle eklenen ağırlık yöntemini kullan
   "reserve-buoyancy": {
     title: "Rezerv Yüzerlik",
     introduction: "Rezerv yüzerlik, geminin su hattı üzerinde kalan suya dayanıklı hacmidir ve hasar durumunda batmaya karşı güvenlik marjını oluşturur.",
-    content: `Rezerv yüzerlik, geminin fribord ve kapalı üst yapılarının oluşturduğu hacimdir. Bu hacim, hasar durumunda ek yüzerlik sağlar.
+    content: `Reserve buoyancy is the volume formed by the ship's freeboard and enclosed superstructures. This volume provides additional buoyancy in a damaged condition.
 
-Rezerv yüzerlik faktörleri:
-- Fribord yüksekliği
-- Kapalı üst yapıların hacmi
-- Su geçirmez bölmeleme
-- Kapı ve açıklıkların durumu
+Factors in reserve buoyancy:
+- The height of the freeboard
+- The volume of the enclosed superstructures
+- Watertight subdivision
+- The condition of doors and openings
 
-SOLAS gereksinimleri:
-- Minimum fribord değerleri
-- Bölme uzunluğu sınırlamaları
-- Su geçirmez kapı standartları
+SOLAS requirements:
+- Minimum freeboard values
+- Limits on compartment length
+- Watertight door standards
 
-Rezerv yüzerlik hesabı:
-RB = Vüst yapı + Vfribord
+The reserve buoyancy calculation:
+RB = Vsuperstructure + Vfreeboard
 
-Yeterli rezerv yüzerlik, geminin hasarlı durumda bile yüzmesini sağlar.`,
+Adequate reserve buoyancy keeps the ship afloat even in a damaged condition.`,
     bulletPoints: [
       "Rezerv yüzerlik = Fribord + Kapalı üst yapılar",
       "Fribord azaldıkça rezerv yüzerlik azalır",
@@ -2340,28 +2340,28 @@ Yeterli rezerv yüzerlik, geminin hasarlı durumda bile yüzmesini sağlar.`,
       "Kapalı kapılar rezerv yüzerliği korur",
     ],
     warnings: [
-      "Açık kapak ve kapılar rezerv yüzerliği sıfırlar",
-      "Fribord çizgisi aşılmamalıdır",
+      "Open hatches and doors reduce reserve buoyancy to zero",
+      "The freeboard line must not be exceeded",
     ],
   },
   "asymmetric-flooding": {
     title: "Asimetrik Flooding",
     introduction: "Asimetrik flooding, suyun geminin bir tarafına dolması durumudur ve tehlikeli list açısına yol açar.",
-    content: `Asimetrik flooding, hasar tek tarafa olduğunda oluşur. Su yalnızca bir bordaya dolarsa gemi o tarafa yatar.
+    content: `Asymmetric flooding occurs when the damage is on one side. If water enters only one side the ship heels to that side.
 
-Asimetrik flooding tehlikeleri:
-1. Ani ve büyük list açısı
-2. Güverte kenarının suya girmesi
-3. Açık güverte açıklıklarından ek su girişi
-4. Devrilme riski
+The dangers of asymmetric flooding:
+1. A sudden and large angle of list
+2. Immersion of the deck edge
+3. Additional water entering through open deck openings
+4. The risk of capsizing
 
-Çapraz eşitleme (cross-flooding):
-Karşı bordadaki tankların kasten doldurularak listin azaltılması. Bu işlem:
-- SOLAS tarafından zorunlu kılınır
-- Maksimum 15 dakikada tamamlanmalıdır
-- List açısını kabul edilebilir değere düşürür
+Cross-flooding:
+Deliberately filling the tanks on the opposite side to reduce the list. This operation:
+- Is required by SOLAS
+- Must be completed within a maximum of 15 minutes
+- Reduces the list to an acceptable value
 
-Çapraz eşitleme kapasitesi gemi tasarımında belirlenir.`,
+The cross-flooding capacity is determined in the design of the ship.`,
     bulletPoints: [
       "Asimetrik flooding tehlikeli list yaratır",
       "Çapraz eşitleme listi azaltır",
@@ -2375,8 +2375,8 @@ Karşı bordadaki tankların kasten doldurularak listin azaltılması. Bu işlem
     },
     examples: [
       {
-        problem: "200 ton su bordadan 5 m mesafede birikir. Δ = 10.000 ton, GM = 1.0 m ise list açısı nedir?",
-        solution: "tan(θ) = (200 × 5) / (10.000 × 1.0) = 0.1. θ = arctan(0.1) ≈ 5.7°. Sonuç: List açısı yaklaşık 6°.",
+        problem: "200 tonnes of water collects 5 m off the centreline. If Δ = 10,000 tonnes and GM = 1.0 m, what is the angle of list?",
+        solution: "tan(θ) = (200 × 5) / (10,000 × 1.0) = 0.1. θ = arctan(0.1) ≈ 5.7°. Result: the angle of list is about 6°.",
       },
     ],
     keyPoints: [
@@ -2388,22 +2388,21 @@ Karşı bordadaki tankların kasten doldurularak listin azaltılması. Bu işlem
   "progressive-flooding": {
     title: "Progressive Flooding",
     introduction: "Progressive flooding, suyun bir bölmeden diğerine kontrol dışı yayılmasıdır ve geminin batma riskini artırır.",
-    content: `Progressive flooding, hasarlı bölmedeki suyun:
-- Açık kapılar
-- Hasarlı bölme sınırları
-- Havalandırma kanalları
-- Boru hatları
-üzerinden diğer bölmelere yayılmasıdır.
+    content: `Progressive flooding is the spread of water from the damaged compartment into other compartments through:
+- Open doors
+- Damaged compartment boundaries
+- Ventilation ducts
+- Pipelines
 
-Bu durum, ilk hasar sonrası geminin durumunu hızla kötüleştirir.
+This rapidly worsens the ship's condition after the initial damage.
 
-Önleme yöntemleri:
-1. Su geçirmez kapıların kapatılması
-2. Havalandırma damperlerinin kapatılması
-3. Boru valflerinin kontrol edilmesi
-4. Hasarlı bölmenin izole edilmesi
+Methods of prevention:
+1. Closing the watertight doors
+2. Closing the ventilation dampers
+3. Checking the pipeline valves
+4. Isolating the damaged compartment
 
-SOLAS, progressive flooding süresini ve geminin nihai konumunu değerlendirir.`,
+SOLAS assesses the duration of progressive flooding and the final condition of the ship.`,
     bulletPoints: [
       "Su açık geçitlerden diğer bölmelere yayılır",
       "Gemi durumu hızla kötüleşir",
@@ -2416,29 +2415,29 @@ SOLAS, progressive flooding süresini ve geminin nihai konumunu değerlendirir.`
       "Mürettebat eğitimi önemlidir",
     ],
     warnings: [
-      "Açık bırakılan kapılar felakete yol açabilir",
-      "Su geçirmez kapılar seyir sırasında kapalı tutulmalıdır",
+      "Doors left open can lead to disaster",
+      "Watertight doors must be kept closed at sea",
     ],
   },
   "damaged-gm-gz": {
     title: "Hasarlı GM ve GZ",
     introduction: "Hasar sonrası GM ve GZ değerleri değişir; bu değişim geminin hayatta kalma kapasitesini belirler.",
-    content: `Flooding sonrası stabilite değişiklikleri:
+    content: `Changes in stability after flooding:
 
-GM DEĞİŞİMİ:
-1. KG değişimi: Dolan su ağırlık merkezi yükseltir veya alçaltır
-2. KM değişimi: Yeni draft ve trim KM'yi etkiler
-3. Serbest yüzey: Dolan bölmede serbest yüzey etkisi oluşur
+CHANGE IN GM:
+1. Change in KG: the water that enters raises or lowers the centre of gravity
+2. Change in KM: the new draft and trim affect KM
+3. Free surface: a free surface effect arises in the flooded compartment
 
-Hasarlı GM = Sağlam GM + KM değişimi - KG değişimi - FSE
+Damaged GM = Intact GM + change in KM - change in KG - FSE
 
-GZ EĞRİSİ DEĞİŞİMİ:
-- Eğri yatay kayar (list açısı)
-- Maksimum GZ azalır
-- Stabilite alanı küçülür
-- Devrilme açısı azalır
+CHANGE IN THE GZ CURVE:
+- The curve shifts horizontally (the angle of list)
+- The maximum GZ decreases
+- The area of stability shrinks
+- The angle of vanishing stability decreases
 
-SOLAS hasarlı durumda minimum GZ ve alan değerlerini tanımlar.`,
+SOLAS defines minimum GZ and area values for the damaged condition.`,
     bulletPoints: [
       "Hasarlı GM genellikle azalır",
       "Serbest yüzey GM'yi daha da düşürür",
@@ -2462,26 +2461,26 @@ SOLAS hasarlı durumda minimum GZ ve alan değerlerini tanımlar.`,
   "heavy-lift": {
     title: "Heavy Lift Operasyonları",
     introduction: "Heavy lift operasyonları, ağır yüklerin vinç ile kaldırılması sırasında geminin stabilitesini kritik şekilde etkiler.",
-    content: `Ağır yük kaldırma sırasında stabilite değişiklikleri:
+    content: `Changes in stability during a heavy lift:
 
-1. SANAL KG YÜKSELMESİ:
-Yük yerden kalktığında ağırlık merkezi vinç ucuna taşınmış gibi davranır.
-KGyeni = KG + (w × h) / Δ
-h: Kaldırma yüksekliği
+1. VIRTUAL RISE OF KG:
+Once the weight leaves the ground its centre of gravity behaves as if it had moved to the head of the derrick.
+KGnew = KG + (w × h) / Δ
+h: the height of lift
 
-2. SERFİ ETKİSİ:
-Asılı yük bir sarkaç gibi hareket eder ve GM'yi azaltır.
+2. PENDULUM EFFECT:
+The suspended weight behaves like a pendulum and reduces GM.
 GMreduced = GM - (w × l²) / (Δ × GM)
-l: Sapan uzunluğu
+l: the length of the sling
 
-3. LIST OLUŞUMU:
-Boom dışarı açıldığında enine moment oluşur.
+3. FORMATION OF LIST:
+A transverse moment arises when the boom is swung outboard.
 
-Güvenlik önlemleri:
-- Kaldırma öncesi stabilite hesabı
-- Balast hazırlığı
-- Kaldırma sırasında sürekli izleme
-- Rüzgâr ve dalga kontrolü`,
+Safety precautions:
+- A stability calculation before the lift
+- Ballast prepared
+- Continuous monitoring during the lift
+- Checking the wind and sea state`,
     bulletPoints: [
       "Yük kalktığında KG sanal olarak yükselir",
       "Asılı yük sarkaç etkisi yaratır",
@@ -2495,8 +2494,8 @@ Güvenlik önlemleri:
     },
     examples: [
       {
-        problem: "50 ton yük 10 m yüksekliğe kaldırılıyor. Δ = 5.000 ton ise KG ne kadar artar?",
-        solution: "ΔKG = (50 × 10) / 5.000 = 0.10 m. Sonuç: KG 10 cm sanal olarak yükselir.",
+        problem: "A 50-tonne weight is lifted to a height of 10 m. If Δ = 5,000 tonnes, by how much does KG increase?",
+        solution: "ΔKG = (50 × 10) / 5,000 = 0.10 m. Result: KG rises virtually by 10 cm.",
       },
     ],
     keyPoints: [
@@ -2508,27 +2507,27 @@ Güvenlik önlemleri:
   "deck-cargo": {
     title: "Güverte Yükleri",
     introduction: "Güverte yükleri KG'yi yükselterek GM'yi azaltır ve rüzgâr alanını artırarak stabiliteyi olumsuz etkiler.",
-    content: `Güverte yüklerinin stabilite etkileri:
+    content: `The stability effects of deck cargo:
 
-1. KG YÜKSELMESİ:
-Güverte üstü yükler yüksek KG'ye sahiptir.
-KGyeni = Σ(wᵢ × KGᵢ) / Σwᵢ
+1. RISE IN KG:
+Cargo carried on deck has a high KG.
+KGnew = Σ(wᵢ × KGᵢ) / Σwᵢ
 
-2. GM AZALMASI:
-Yükselen KG, GM'yi düşürür.
+2. REDUCTION IN GM:
+A higher KG lowers GM.
 GM = KM - KG
 
-3. RÜZGÂR ALANI ARTIŞI:
-Güverte konteynerları veya kereste yığınları rüzgâr maruz alanını artırır.
+3. INCREASED WINDAGE AREA:
+Deck containers or timber stacks increase the area exposed to the wind.
 
-4. YANAL MOMENT:
-Yük dengesiz yerleştirilirse list oluşur.
+4. TRANSVERSE MOMENT:
+A list arises if the cargo is stowed unevenly.
 
-Güverte yükü sınırlamaları:
-- Maksimum yük ağırlığı (yapısal)
-- Stabilite gereksinimleri
-- Görüş gereksinimleri
-- Bağlama kapasitesi`,
+Limits on deck cargo:
+- Maximum cargo weight (structural)
+- Stability requirements
+- Visibility requirements
+- Lashing capacity`,
     bulletPoints: [
       "Güverte yükü KG'yi yükseltir",
       "Rüzgâr maruz alanı artar",
@@ -2549,22 +2548,22 @@ Güverte yükü sınırlamaları:
   "suspended-weight": {
     title: "Asılı Yük Etkisi",
     introduction: "Asılı yükler ağırlık merkezini sanal olarak askı noktasına taşır ve stabiliteyi azaltır.",
-    content: `Asılı yük (suspended weight), serbestçe sallanabilen herhangi bir ağırlıktır:
-- Vinç yükü
-- Şerit halindeki yük
-- Serbest sallanan ekipman
+    content: `A suspended weight is any weight free to swing:
+- A crane load
+- Cargo in a sling
+- Freely swinging equipment
 
-SANAL KG YÜKSELMESİ:
-Asılı yükün ağırlık merkezi, askı noktasına taşınmış kabul edilir.
+VIRTUAL RISE OF KG:
+The centre of gravity of a suspended weight is taken as having moved to the point of suspension.
 GG' = (w × d) / Δ
-d: Yükün gerçek KG'si ile askı noktası arasındaki mesafe
+d: the distance between the actual KG of the weight and the point of suspension
 
-SALINCAK ETKİSİ:
-Asılı yük gemi yattığında dışa salınır ve yatmayı artırır. Bu etki serbest yüzeye benzer.
+THE PENDULUM EFFECT:
+A suspended weight swings outboard when the ship heels and increases the heel. This effect is similar to free surface.
 
-Asılı yük durumunda GM:
+GM with a suspended weight:
 GMeffective = GM - (w × l²) / (Δ × GM)
-l: Sapan uzunluğu`,
+l: the length of the sling`,
     bulletPoints: [
       "Asılı yük KG'yi sanal olarak yükseltir",
       "Salıncak etkisi stabiliteyi azaltır",
@@ -2578,8 +2577,8 @@ l: Sapan uzunluğu`,
     },
     examples: [
       {
-        problem: "30 ton yük, askı noktası KG'den 8 m yukarıda. Δ = 6.000 ton ise sanal KG artışı nedir?",
-        solution: "GG' = (30 × 8) / 6.000 = 0.04 m. Sonuç: KG 4 cm sanal olarak yükselir.",
+        problem: "A 30-tonne weight is suspended from a point 8 m above its KG. If Δ = 6,000 tonnes, what is the virtual rise of KG?",
+        solution: "GG' = (30 × 8) / 6,000 = 0.04 m. Result: KG rises virtually by 4 cm.",
       },
     ],
     keyPoints: [
@@ -2591,24 +2590,24 @@ l: Sapan uzunluğu`,
   "ballast-operations": {
     title: "Balast Operasyonları",
     introduction: "Balast operasyonları geminin stabilitesini, draft ve trim değerlerini kontrol etmek için kullanılır.",
-    content: `Balast suyu yönetimi stabilite kontrolünün temel aracıdır.
+    content: `Ballast water management is the principal tool of stability control.
 
-BALAST İŞLEVLERİ:
-1. Stabilite ayarı (GM kontrolü)
-2. Trim düzeltme
-3. List düzeltme
-4. Minimum draft sağlama
-5. Stres yönetimi
+THE FUNCTIONS OF BALLAST:
+1. Adjusting stability (GM control)
+2. Correcting trim
+3. Correcting list
+4. Achieving a minimum draft
+5. Managing stresses
 
-STABİLİTE ETKİLERİ:
-Balast tankları genellikle geminin alt kısımlarındadır.
-- Balast alımı: KG düşer, GM artar
-- Balast atımı: KG yükselir, GM azalır
+STABILITY EFFECTS:
+Ballast tanks are generally in the lower part of the ship.
+- Taking ballast: KG falls and GM increases
+- Discharging ballast: KG rises and GM decreases
 
-SERBEST YÜZEY:
-Kısmen dolu balast tankları FSE yaratır. Kritik operasyonlarda tanklar tam dolu veya boş tutulmalıdır.
+FREE SURFACE:
+Partly filled ballast tanks create a free surface effect. During critical operations tanks must be kept either full or empty.
 
-Balast değişimi sırası önemlidir - stabilite hiçbir aşamada kritik değerlerin altına düşmemelidir.`,
+The sequence of ballast operations matters — stability must not fall below critical values at any stage.`,
     bulletPoints: [
       "Balast stabilite, draft ve trim kontrolü sağlar",
       "Düşük tanklar KG'yi düşürür",
@@ -2629,26 +2628,26 @@ Balast değişimi sırası önemlidir - stabilite hiçbir aşamada kritik değer
   "cargo-shift": {
     title: "Kargo Kayması",
     introduction: "Kargo kayması, yükün geminin hareketi ile yer değiştirmesidir ve ani list veya devrilmeye yol açabilir.",
-    content: `Kargo kayması en tehlikeli stabilite kazası nedenlerinden biridir.
+    content: `A cargo shift is one of the most dangerous causes of stability casualties.
 
-KAYMA TÜRLERİ:
-1. Döküm yük kayması (tahıl, cevher, kömür)
-2. Paketli yük kayması (bağlama kopması)
-3. Sıvı yük dalgalanması (tank içi)
-4. Araç kayması (RoRo gemileri)
+TYPES OF SHIFT:
+1. Bulk cargo shift (grain, ore, coal)
+2. Packaged cargo shift (lashings parting)
+3. Liquid cargo sloshing (within the tank)
+4. Vehicle movement (Ro-Ro ships)
 
-LİST HESABI:
+LIST CALCULATION:
 tan(θ) = (w × d) / (Δ × GM)
-w: Kayan yük ağırlığı
-d: Kayma mesafesi
+w: the weight of cargo that shifts
+d: the distance it shifts
 
-ÖNLEMLERİ:
-- Uygun istif ve bağlama
-- Tahıl için shifting board kullanımı
-- Tank doluluk kontrolü
-- RoRo'da araç bağlama
+PRECAUTIONS:
+- Proper stowage and lashing
+- Use of shifting boards for grain
+- Checking tank filling levels
+- Lashing vehicles on Ro-Ro ships
 
-SOLAS ve Tahıl Kodu kayma önlemlerini zorunlu kılar.`,
+SOLAS and the Grain Code make anti-shifting measures mandatory.`,
     bulletPoints: [
       "Kargo kayması tehlikeli list yaratır",
       "Döküm yükler özel risk taşır",
@@ -2662,8 +2661,8 @@ SOLAS ve Tahıl Kodu kayma önlemlerini zorunlu kılar.`,
     },
     examples: [
       {
-        problem: "500 ton kargo 2 m yana kayar. Δ = 15.000 ton, GM = 1.0 m ise list açısı nedir?",
-        solution: "tan(θ) = (500 × 2) / (15.000 × 1.0) = 0.067. θ = arctan(0.067) ≈ 3.8°. Sonuç: 4° civarında list oluşur.",
+        problem: "500 tonnes of cargo shifts 2 m to one side. If Δ = 15,000 tonnes and GM = 1.0 m, what is the angle of list?",
+        solution: "tan(θ) = (500 × 2) / (15,000 × 1.0) = 0.067. θ = arctan(0.067) ≈ 3.8°. Result: a list of around 4° is created.",
       },
     ],
     keyPoints: [
@@ -2675,25 +2674,25 @@ SOLAS ve Tahıl Kodu kayma önlemlerini zorunlu kılar.`,
   "icing-effect": {
     title: "Buzlanma Etkisi",
     introduction: "Buzlanma, geminin üst yapılarında buz birikmesiyle KG'yi yükselterek stabiliteyi tehlikeli şekilde azaltır.",
-    content: `Buzlanma, soğuk bölgelerde seyir eden gemiler için ciddi bir stabilite tehlikesidir.
+    content: `Icing is a serious stability hazard for ships operating in cold regions.
 
-BUZ BİRİKİMİ:
-- Hava sıcaklığı -2°C altında
-- Deniz suyu sıcaklığı +8°C altında
-- Rüzgâr ve dalga spreyi
+ICE ACCRETION:
+- Air temperature below -2°C
+- Sea water temperature below +8°C
+- Wind and sea spray
 
-BUZ AĞIRLIĞI:
-Buz, üst yapılarda, ekipmanlarda ve güvertede birikir.
-- Orta buzlanma: 30 kg/m²
-- Şiddetli buzlanma: 50+ kg/m²
+WEIGHT OF ICE:
+Ice builds up on superstructures, equipment and the deck.
+- Moderate icing: 30 kg/m²
+- Severe icing: 50+ kg/m²
 
-STABİLİTE ETKİSİ:
-Buz yüksek KG'ye sahiptir.
+STABILITY EFFECT:
+Ice has a high KG.
 ΔKG = (wice × KGice) / (Δ + wice)
 
-GM hızla azalır ve devrilme riski artar.
+GM falls rapidly and the risk of capsizing increases.
 
-Buz temizliği kritik öneme sahiptir.`,
+Removing ice is critically important.`,
     bulletPoints: [
       "Buzlanma KG'yi yükseltir",
       "GM azalır, stabilite bozulur",
@@ -2707,8 +2706,8 @@ Buz temizliği kritik öneme sahiptir.`,
     },
     examples: [
       {
-        problem: "Üst yapılarda 50 ton buz birikir, ortalama KG = 15 m. Δ = 5.000 ton, mevcut KG = 7 m ise yeni KG nedir?",
-        solution: "KGnew = (5.000 × 7 + 50 × 15) / 5.050 = (35.000 + 750) / 5.050 = 7.08 m. Sonuç: KG 8 cm yükselir.",
+        problem: "50 tonnes of ice builds up on the superstructures at a mean KG of 15 m. If Δ = 5,000 tonnes and the existing KG = 7 m, what is the new KG?",
+        solution: "KGnew = (5,000 × 7 + 50 × 15) / 5,050 = (35,000 + 750) / 5,050 = 7.08 m. Result: KG rises by 8 cm.",
       },
     ],
     keyPoints: [
@@ -2717,8 +2716,8 @@ Buz temizliği kritik öneme sahiptir.`,
       "Buzlanma hızı şiddetli koşullarda çok yüksektir",
     ],
     warnings: [
-      "Buzlanma çok kısa sürede kritik seviyeye ulaşabilir",
-      "Rota değişikliği gerekebilir",
+      "Icing can reach a critical level in a very short time",
+      "A change of course may be necessary",
     ],
   },
   // =====================================================
@@ -2727,25 +2726,25 @@ Buz temizliği kritik öneme sahiptir.`,
   "imo-stability-criteria": {
     title: "IMO Stabilite Kriterleri",
     introduction: "IMO stabilite kriterleri, gemilerin minimum güvenlik gereksinimlerini tanımlar ve tüm ticari gemiler için zorunludur.",
-    content: `IMO (Uluslararası Denizcilik Örgütü) stabilite kriterleri MSC.267(85) Intact Stability Code ile belirlenir.
+    content: `The IMO (International Maritime Organization) stability criteria are set out in the MSC.267(85) Intact Stability Code.
 
-TEMEL KRİTERLER:
+THE BASIC CRITERIA:
 
-1. ALAN KRİTERLERİ:
-- 0° - 30° arası alan ≥ 0.055 m·rad
-- 0° - 40° arası alan ≥ 0.090 m·rad
-- 30° - 40° arası alan ≥ 0.030 m·rad
+1. AREA CRITERIA:
+- The area from 0° to 30° ≥ 0.055 m·rad
+- The area from 0° to 40° ≥ 0.090 m·rad
+- The area from 30° to 40° ≥ 0.030 m·rad
 
-2. GZ KRİTERLERİ:
-- Maksimum GZ ≥ 0.20 m
-- Maksimum GZ en az 25° açıda olmalı
-- Tercihen 30° ve üzerinde
+2. GZ CRITERIA:
+- Maximum GZ ≥ 0.20 m
+- The maximum GZ must occur at an angle of at least 25°
+- Preferably at 30° or above
 
-3. GM KRİTERİ:
-- Başlangıç GM ≥ 0.15 m
-- Bazı gemi tipleri için daha yüksek değerler
+3. GM CRITERION:
+- Initial GM ≥ 0.15 m
+- Higher values for some ship types
 
-Bu kriterler hasarsız (intact) stabilite içindir. Hasarlı stabilite kriterleri ayrıca tanımlanır.`,
+These criteria are for intact stability. Damage stability criteria are defined separately.`,
     bulletPoints: [
       "Alan kriterleri dinamik stabiliteyi kontrol eder",
       "GZ kriterleri yeterli doğrultma kolunu garanti eder",
@@ -2766,29 +2765,29 @@ Bu kriterler hasarsız (intact) stabilite içindir. Hasarlı stabilite kriterler
   "intact-stability-code": {
     title: "Intact Stability Code",
     introduction: "Intact Stability Code (IS Code), hasarsız gemiler için kapsamlı stabilite gereksinimlerini ve hesap yöntemlerini içerir. 2008 IS Code (MSC.267(85)) ile kabul edilmiş olup SOLAS ve Yük Hattı Sözleşmesi kapsamında zorunludur.",
-    content: `Intact Stability Code (2008 IS Code), MSC.267(85) kararıyla kabul edilmiştir.
+    content: `The Intact Stability Code (the 2008 IS Code) was adopted by resolution MSC.267(85).
 
-YAPISI:
-Bölüm A (zorunlu): genel kriterler ve özel gemi tipi kriterleri.
-Bölüm B (tavsiye): ek tedbirler ve rehberlik.
+STRUCTURE:
+Part A (mandatory): the general criteria and the criteria for particular ship types.
+Part B (recommendatory): additional measures and guidance.
 
-GENEL KRİTERLER (Part A, 2.2 – tüm gemiler için):
-GZ eğrisi altındaki alanlar ve GZ değerleri için asgari şartlar:
-- 0°–30° arası GZ eğrisi altındaki alan ≥ 0,055 m·rad
-- 0°–40° (veya downflooding açısı θf daha küçükse 0°–θf) arası alan ≥ 0,090 m·rad
-- 30°–40° (veya 30°–θf) arası alan ≥ 0,030 m·rad
-- Doğrultma kolu GZ, 30° veya üzeri bir açıda ≥ 0,20 m olmalı
-- Maksimum GZ, tercihen 30°'den büyük bir açıda oluşmalı (en az 25°)
-- Başlangıç metasantr yüksekliği GM₀ ≥ 0,15 m
+GENERAL CRITERIA (Part A, 2.2 – for all ships):
+Minimum requirements for the areas under the GZ curve and for the GZ values:
+- The area under the GZ curve from 0° to 30° ≥ 0.055 m·rad
+- The area from 0° to 40° (or 0° to θf if the downflooding angle θf is smaller) ≥ 0.090 m·rad
+- The area from 30° to 40° (or 30° to θf) ≥ 0.030 m·rad
+- The righting lever GZ must be ≥ 0.20 m at an angle of 30° or more
+- The maximum GZ should preferably occur at an angle greater than 30° (at least 25°)
+- The initial metacentric height GM₀ ≥ 0.15 m
 
-HAVA KRİTERİ (Weather Criterion, Part A 2.3):
-Gemi, sabit yan rüzgâr (basınç kolu lw1) ve üzerine bindirilen yalpa + sağnak rüzgâr (lw2) altında devrilmeye karşı yeterli enerji rezervine sahip olmalı. Rüzgâr momentine karşı koyan alan (b), rüzgâr momentinin uyguladığı alandan (a) büyük/eşit olmalıdır (b ≥ a).
+THE WEATHER CRITERION (Part A 2.3):
+The ship must have sufficient energy reserve against capsizing under a steady beam wind (lever arm lw1) with a superimposed roll and gust (lw2). The area resisting the wind moment (b) must be greater than or equal to the area applied by the wind moment (a), i.e. b ≥ a.
 
-ÖZEL GEMİ TİPLERİ:
-Yolcu gemileri (yolcu kalabalığı ve dönüş momenti kriterleri), tahıl taşıyanlar (Grain Code), kereste güverte yükü, yüksek hızlı tekneler, offshore vb. için ek/özel kriterler tanımlanır.
+PARTICULAR SHIP TYPES:
+Additional or special criteria are defined for passenger ships (passenger crowding and turning moment criteria), grain carriers (the Grain Code), timber deck cargoes, high-speed craft, offshore units and others.
 
-UYGULAMA:
-Her yükleme durumu, geminin onaylı Stability Booklet'inde bu kriterlere göre kontrol edilir; bayrak devleti ve PSC uyumu denetler.`,
+APPLICATION:
+Every loading condition is checked against these criteria in the ship's approved Stability Booklet; the flag State and PSC verify compliance.`,
     bulletPoints: [
       "Genel kriter: 0-30° alan ≥0,055; 0-40° ≥0,090; 30-40° ≥0,030 m·rad",
       "GZ ≥ 0,20 m (≥30°'de); GZ maks ≥25-30°'de; GM₀ ≥ 0,15 m",
@@ -2810,23 +2809,23 @@ Her yükleme durumu, geminin onaylı Stability Booklet'inde bu kriterlere göre 
   "wind-criteria": {
     title: "Rüzgâr Kriterleri",
     introduction: "Rüzgâr kriterleri (Weather Criterion), geminin şiddetli rüzgâr ve dalga koşullarında devrilmemesini sağlar.",
-    content: `Weather Criterion, geminin ani rüzgâr (gust) ve dalga kombinasyonunda hayatta kalmasını test eder.
+    content: `The weather criterion tests the ship's survival under a combination of a sudden gust and waves.
 
-SENARYO:
-1. Kararlı rüzgâr gemiyi θ₁ açısına yatırır
-2. Dalga etkisiyle gemi rüzgâr üstüne θ₂ açısına döner
-3. Ani rüzgâr (gust) gemiyi tekrar rüzgâr altına iter
+THE SCENARIO:
+1. A steady wind heels the ship to angle θ₁
+2. Wave action rolls the ship to windward to angle θ₂
+3. A gust pushes the ship back to leeward
 
-KRİTER:
-b ≥ a (GZ eğrisinde alanlar)
-- a: Rüzgâr momenti ile GZ eğrisi arasındaki alan
-- b: Doğrultma tarafındaki alan
+THE CRITERION:
+b ≥ a (areas on the GZ curve)
+- a: the area between the wind moment and the GZ curve
+- b: the area on the righting side
 
-RÜZGÂR BASINCI:
-P = 504 N/m² (standart değer)
-Düzeltme faktörleri uygulanır.
+WIND PRESSURE:
+P = 504 N/m² (the standard value)
+Correction factors are applied.
 
-Bu kriter özellikle yüksek üst yapılı gemilerde kritiktir.`,
+This criterion is particularly critical for ships with a large superstructure.`,
     bulletPoints: [
       "Weather Criterion en kötü senaryo testidir",
       "Ani rüzgâr ve dalga kombinasyonu değerlendirilir",
@@ -2847,21 +2846,21 @@ Bu kriter özellikle yüksek üst yapılı gemilerde kritiktir.`,
   "wave-criteria": {
     title: "Dalga Kriterleri",
     introduction: "Dalga kriterleri, geminin dalga etkisinde parametrik yalpalama ve aşırı salınım risklerini değerlendirir.",
-    content: `Dalga koşullarında stabilite değerlendirmesi:
+    content: `Assessing stability in a seaway:
 
-PARAMETRİK YALPALAMA:
-Baş veya kıç dalgalarda su hattı genişliği periyodik olarak değişir. Bu durum GM'yi periyodik olarak değiştirir ve rezonans koşullarında tehlikeli salınımlara yol açar.
+PARAMETRIC ROLLING:
+In head or following seas the breadth of the waterplane changes periodically. This changes GM periodically and, under resonant conditions, leads to dangerous rolling.
 
-Konteyner gemileri ve RoPax'lar özellikle hassastır.
+Container ships and RoPax vessels are particularly susceptible.
 
-SURF-RIDING VE BROACHING:
-Kıç dalgalarda gemi dalga ile birlikte sürüklenebilir ve kontrolsüz dönüşe girebilir.
+SURF-RIDING AND BROACHING:
+In following seas the ship can be carried along with the wave and fall into an uncontrolled turn.
 
-IMO TAVSİYELERİ:
-- MSC.1/Circ.1228: Parametrik yalpalama
-- MSC.1/Circ.707: Tehlikeli durumlardan kaçınma
+IMO RECOMMENDATIONS:
+- MSC.1/Circ.1228: parametric rolling
+- MSC.1/Circ.707: avoiding dangerous situations
 
-Operasyonel önlemler: rota ve hız değişikliği.`,
+Operational measures: a change of course and speed.`,
     bulletPoints: [
       "Parametrik yalpalama GM değişiminden kaynaklanır",
       "Rezonans koşullarında salınım tehlikeli boyutlara ulaşır",
@@ -2874,24 +2873,24 @@ Operasyonel önlemler: rota ve hız değişikliği.`,
       "Simülasyon araçları risk değerlendirmesinde kullanılır",
     ],
     warnings: [
-      "Parametrik yalpalama ani ve şiddetli olabilir",
-      "Kötü hava rotası planlaması hayati önemdedir",
+      "Parametric rolling can be sudden and violent",
+      "Heavy weather routeing is vitally important",
     ],
   },
   "min-gm-requirements": {
     title: "Minimum GM Şartları",
     introduction: "Minimum GM değerleri, IMO IS Code kriterlerinden türetilir ve gemi tipi ile yükleme durumuna göre stabilite kitapçığında belirtilen, operasyonda aşılamaz alt sınırlardır. Ancak GM yalnızca 'ne kadar büyük o kadar iyi' değildir; çok yüksek GM de tehlikelidir.",
-    content: `MINIMUM GM'NİN KAYNAĞI:
-IS Code başlangıç metasantr yüksekliği için GM₀ ≥ 0,15 m şartı koyar. Pratikte her yükleme durumu için gereken minimum GM, KG limiti eğrisi (maximum KG / minimum GM curve) üzerinden kitapçıkta verilir; bu eğri tüm IMO kriterlerini (alan, GZ, weather criterion) aynı anda sağlayan sınırı temsil eder.
+    content: `THE ORIGIN OF THE MINIMUM GM:
+The IS Code requires GM₀ ≥ 0.15 m for the initial metacentric height. In practice the minimum GM required for each loading condition is given in the booklet by the KG limit curve (the maximum KG / minimum GM curve); this curve represents the boundary at which all the IMO criteria (area, GZ, weather criterion) are met simultaneously.
 
-GEMİ TİPİNE GÖRE:
-- Genel yük gemisi: GM₀ ≥ 0,15 m (ve KG limit eğrisi).
-- Yolcu gemileri: ek dönüş/yolcu kalabalığı kriterleri.
-- Tankerler: balast durumunda genellikle daha yüksek GM.
-- Konteyner gemileri: parametrik yalpa riski nedeniyle yükleme durumuna özel hesap.
+BY SHIP TYPE:
+- General cargo ship: GM₀ ≥ 0.15 m (plus the KG limit curve).
+- Passenger ships: additional turning/passenger crowding criteria.
+- Tankers: generally a higher GM in the ballast condition.
+- Container ships: a calculation specific to the loading condition because of the risk of parametric rolling.
 
-STIFF (KATI) ve TENDER (YUMUŞAK) GEMİ:
-GM ile yalpa periyodu ters ilişkilidir. Çok yüksek GM → kısa periyot, sert ve ani (violent) yalpa → yük/ekipman hasarı ve konfor kaybı; ayrıca kısa periyot dalga periyoduna yaklaşırsa rezonans. Çok düşük GM → uzun, sluggish yalpa, küçük emniyet payı, takip eden denizde tehlikeli. Bu yüzden hedef, kriterleri sağlayan ancak aşırı yüksek olmayan bir GM'dir.`,
+STIFF AND TENDER SHIPS:
+GM and the rolling period are inversely related. A very high GM → a short period and stiff, violent rolling → damage to cargo and equipment and loss of comfort; and if the short period approaches the wave period, resonance. A very low GM → a long, sluggish roll, a small margin of safety and danger in a following sea. The aim is therefore a GM that meets the criteria without being excessively high.`,
     bulletPoints: [
       "GM₀ ≥ 0,15 m (IS Code) + KG limiti eğrisi her yükleme için sınır verir",
       "Stiff (yüksek GM): kısa/sert yalpa, hasar ve rezonans riski",
@@ -2910,35 +2909,35 @@ GM ile yalpa periyodu ters ilişkilidir. Çok yüksek GM → kısa periyot, sert
       "GM azaltıcı operasyon öncesi hesap yapılmalıdır.",
     ],
     warnings: [
-      "Minimum GM altında seyir devrilme riski taşır",
-      "Aşırı yüksek GM sert yalpayla yük kaymasına/hasara yol açabilir",
+      "Sailing below the minimum GM carries a risk of capsizing",
+      "An excessively high GM can cause cargo to shift and be damaged through violent rolling",
     ],
   },
   "operational-limits": {
     title: "Operasyonel Limitler",
     introduction: "Operasyonel limitler, geminin güvenli çalışma koşullarını tanımlar ve aşılmaları yasaktır.",
-    content: `Operasyonel limitler stabilite kitapçığında tanımlanır:
+    content: `The operational limits are defined in the stability booklet:
 
-YÜK LİMİTLERİ:
-- Maksimum deadweight
-- Ambar ve güverte yük kapasiteleri
-- Yük dağılım sınırları
+CARGO LIMITS:
+- Maximum deadweight
+- Hold and deck cargo capacities
+- Limits on cargo distribution
 
-STABİLİTE LİMİTLERİ:
-- Minimum GM değerleri
-- Maksimum KG değerleri (KG limiti eğrisi)
-- Trim sınırları
+STABILITY LIMITS:
+- Minimum GM values
+- Maximum KG values (the KG limit curve)
+- Trim limits
 
-ÇEVRESEL LİMİTLER:
-- Rüzgâr hızı sınırları (bazı operasyonlar için)
-- Dalga yüksekliği sınırları
-- Sıcaklık limitleri (buzlanma)
+ENVIRONMENTAL LIMITS:
+- Wind speed limits (for certain operations)
+- Wave height limits
+- Temperature limits (icing)
 
-LİMİT AŞIMI:
-Stabilite limitlerinin aşılması:
-- Sigorta geçerliliğini etkiler
-- PSC denetimlerinde tutulmaya yol açar
-- Kazalarda sorumluluk doğurur`,
+EXCEEDING THE LIMITS:
+Exceeding the stability limits:
+- Affects the validity of the insurance
+- Leads to detention in PSC inspections
+- Creates liability in the event of a casualty`,
     bulletPoints: [
       "Stabilite kitapçığı tüm limitleri tanımlar",
       "KG limiti eğrisi sık kullanılır",
@@ -2957,29 +2956,29 @@ Stabilite limitlerinin aşılması:
   "loading-errors": {
     title: "Yükleme Hataları",
     introduction: "Yükleme hataları stabilite kazalarının en yaygın nedenidir ve dikkatli planlama ile önlenebilir.",
-    content: `Yaygın yükleme hataları:
+    content: `Common loading errors:
 
-1. YANLIŞ AĞIRLIK BİLGİSİ:
-- Beyan edilen ve gerçek ağırlık farkı
-- Konteyner ağırlık sapmaları
-- Döküm yük ölçüm hataları
+1. INCORRECT WEIGHT INFORMATION:
+- A difference between the declared and the actual weight
+- Deviations in container weights
+- Measurement errors on bulk cargo
 
-2. YANLIŞ YERLEŞİM:
-- Ağır yüklerin yüksek yerleşimi
-- Asimetrik yük dağılımı
-- Boş alan yanlış değerlendirmesi
+2. INCORRECT STOWAGE:
+- Heavy weights stowed high up
+- Asymmetric weight distribution
+- Incorrect assessment of broken stowage
 
-3. HESAP HATALARI:
-- Yanlış KG hesabı
-- FSE'nin ihmal edilmesi
-- Trim hesap hatası
+3. CALCULATION ERRORS:
+- An incorrect KG calculation
+- Neglecting the FSE
+- Errors in the trim calculation
 
-4. PLANLAMA EKSİKLİĞİ:
-- Ara durumların kontrolsüzlüğü
-- Yakıt tüketimi etkisi
-- Balast düzenlemesi eksikliği
+4. LACK OF PLANNING:
+- Intermediate conditions not checked
+- The effect of fuel consumption
+- Inadequate ballast arrangement
 
-Bu hatalar stabilite kitapçığının dikkatli kullanımı ile önlenir.`,
+These errors are prevented by careful use of the stability booklet.`,
     bulletPoints: [
       "Yanlış ağırlık bilgisi yaygın sorundur",
       "Yüksek yerleşim GM'yi düşürür",
@@ -2992,30 +2991,30 @@ Bu hatalar stabilite kitapçığının dikkatli kullanımı ile önlenir.`,
       "Ara durumlar gözden geçirilmelidir",
     ],
     warnings: [
-      "Konteyner ağırlıkları sıkça yanlış beyan edilir",
-      "IMO VGM (Verified Gross Mass) zorunluluğu uygulanmaktadır",
+      "Container weights are frequently misdeclared",
+      "The IMO VGM (Verified Gross Mass) requirement is in force",
     ],
   },
   "fse-accidents": {
     title: "Serbest Yüzey Kaynaklı Kazalar",
     introduction: "Serbest yüzey etkisinin ihmal edilmesi veya yanlış hesaplanması ciddi stabilite kazalarına yol açmıştır.",
-    content: `Serbest yüzey kaynaklı kazaların ortak özellikleri:
+    content: `The common features of free surface casualties:
 
-1. ÇOK SAYIDA KISMEN DOLU TANK:
-Birden fazla tankın kısmen dolu olması toplam FSE'yi kritik seviyeye çıkarır.
+1. A LARGE NUMBER OF PARTLY FILLED TANKS:
+Several partly filled tanks raise the total FSE to a critical level.
 
-2. FSE HESABININ İHMALİ:
-GM hesabında serbest yüzey düzeltmesinin yapılmaması.
+2. NEGLECTING THE FSE CALCULATION:
+Failing to apply the free surface correction in the GM calculation.
 
-3. ANİ GM KAYBI:
-Yük veya balast operasyonu sırasında ani FSE artışı.
+3. A SUDDEN LOSS OF GM:
+A sudden increase in FSE during a cargo or ballast operation.
 
-ÖRNEK KAZALAR:
-- Bulk carrier alabora (çok sayıda kısmen dolu ambar)
-- Tanker devrilmesi (bölmeler arası sıvı transferi)
-- Balıkçı gemisi batması (haznelerin açık bırakılması)
+EXAMPLE CASUALTIES:
+- A bulk carrier capsizing (several partly filled holds)
+- A tanker capsizing (transfer of liquid between compartments)
+- A fishing vessel foundering (holds left open)
 
-Önlem: Tankları tam dolu veya boş tutmak, FSE'yi sürekli izlemek.`,
+The remedy: keep tanks either full or empty and monitor the FSE continuously.`,
     bulletPoints: [
       "Çok sayıda kısmen dolu tank tehlikelidir",
       "FSE hesabı ihmal edilmemelidir",
@@ -3031,25 +3030,25 @@ Yük veya balast operasyonu sırasında ani FSE artışı.
   "wrong-gm-interpretation": {
     title: "Yanlış GM Yorumları",
     introduction: "GM değerinin yanlış yorumlanması operasyonel hatalara ve kazalara neden olabilir.",
-    content: `GM yorumlama hataları:
+    content: `Errors in interpreting GM:
 
-1. ÇOK YÜKSEK GM İYİDİR YANILGISI:
-Çok yüksek GM sert salınıma (stiff ship) yol açar:
-- Kısa yalpa periyodu
-- Yük hasarı riski
-- Personel rahatsızlığı
-- Yapısal stres
+1. THE FALLACY THAT A VERY HIGH GM IS GOOD:
+A very high GM leads to violent rolling (a stiff ship):
+- A short rolling period
+- The risk of cargo damage
+- Discomfort for the crew
+- Structural stress
 
-2. DÜZ OTURMA HER ZAMAN İYİDİR YANILGISI:
-Bazı gemilerde optimum trim değerleri yakıt verimliliğini artırır.
+2. THE FALLACY THAT AN EVEN KEEL IS ALWAYS BEST:
+On some ships an optimum trim improves fuel efficiency.
 
-3. NEGATİF GM FARKINDA OLUNMAMASI:
-Loll açısı (unstabil denge) yanlış yorumlanabilir:
-- Rüzgâr etkisi sanılır
-- Dengeleme girişimi durumu kötüleştirir
+3. FAILING TO RECOGNISE A NEGATIVE GM:
+An angle of loll (unstable equilibrium) can be misinterpreted:
+- It is taken for the effect of the wind
+- An attempt to correct it makes the situation worse
 
-4. STATİK VS DİNAMİK KARIŞIKLIĞI:
-Yeterli GM, yeterli dinamik stabilite anlamına gelmez.`,
+4. CONFUSING STATIC AND DYNAMIC STABILITY:
+An adequate GM does not mean adequate dynamic stability.`,
     bulletPoints: [
       "Çok yüksek GM de sorunludur",
       "Negatif GM loll açısı yaratır",
@@ -3062,34 +3061,34 @@ Yeterli GM, yeterli dinamik stabilite anlamına gelmez.`,
       "Alan kriterleri de kontrol edilmelidir",
     ],
     warnings: [
-      "Loll durumunda düşük bordaya balast alınmamalıdır",
-      "Önce en düşük tanklara su alınmalıdır",
+      "Ballast must not be taken into the low side when the ship is at an angle of loll",
+      "Water must first be taken into the lowest tanks",
     ],
   },
   "trim-operation-errors": {
     title: "Trim Kaynaklı Operasyon Hataları",
     introduction: "Yanlış trim değerleri pervane verimliliğini, manevrabiliteyi ve güvenliği olumsuz etkiler.",
-    content: `Trim kaynaklı operasyon hataları:
+    content: `Operational errors caused by trim:
 
-1. AŞIRI BAŞ TRİMİ:
-- Güverte ıslaklığı
-- Azalan görüş
-- Baş dalgalanma riski
-- Pervane verimliliği kaybı
+1. EXCESSIVE TRIM BY THE HEAD:
+- Deck wetness
+- Reduced visibility
+- The risk of shipping seas forward
+- Loss of propeller efficiency
 
-2. AŞIRI KIÇ TRİMİ:
-- Dümen etkisi azalması
-- Prova jeti verimsizliği
-- Limanda manevra zorluğu
-- Karina sürtünme artışı
+2. EXCESSIVE TRIM BY THE STERN:
+- Reduced rudder effect
+- Inefficient bow thruster
+- Difficulty manoeuvring in port
+- Increased hull friction
 
-3. TRİM HESAP HATALARI:
-- LCF'nin yanlış kullanımı
-- MCT değerinin yanlış alınması
-- Ara durumların ihmal edilmesi
+3. TRIM CALCULATION ERRORS:
+- Incorrect use of the LCF
+- Taking the wrong MCT value
+- Neglecting intermediate conditions
 
-4. YAKIT TÜKETİMİ ETKİSİ:
-Seyir sırasında yakıt tüketimi trimi değiştirir.`,
+4. THE EFFECT OF FUEL CONSUMPTION:
+Fuel consumption during the passage changes the trim.`,
     bulletPoints: [
       "Aşırı baş trimi güverte ıslaklığına yol açar",
       "Aşırı kıç trimi manevrabiliteyi azaltır",
@@ -3105,28 +3104,28 @@ Seyir sırasında yakıt tüketimi trimi değiştirir.`,
   "psc-findings": {
     title: "Stabiliteyle İlişkili PSC Bulguları",
     introduction: "Port State Control denetimleri stabilite eksikliklerini tespit eder ve gemi tutulmasına yol açabilir.",
-    content: `PSC (Port State Control) stabilite denetimi odaklanır:
+    content: `A PSC (Port State Control) stability inspection focuses on:
 
-BELGE KONTROLLERI:
-- Stabilite kitapçığının güncelliği
-- Yükleme bilgisayarı onayı
-- Eğitim kayıtları
-- Stabilite hesapları
+DOCUMENT CHECKS:
+- Whether the stability booklet is up to date
+- Approval of the loading computer
+- Training records
+- Stability calculations
 
-FİZİKSEL KONTROLLER:
-- Draft okuma ve hesap karşılaştırması
-- Tank durumu ve hesaptaki uyum
-- Su geçirmez kapıların durumu
-- Bağlama ekipmanları
+PHYSICAL CHECKS:
+- Comparing the draft readings against the calculation
+- Agreement between the tank condition and the calculation
+- The condition of the watertight doors
+- The lashing equipment
 
-YAYGIN BULGULAR:
-- Stabilite hesabı güncel değil
-- Draft hesap uyumsuzluğu
-- Su geçirmez kapılar açık
-- Yük bağlama eksik
-- FSE hesaba dahil değil
+COMMON FINDINGS:
+- The stability calculation is not up to date
+- The drafts do not agree with the calculation
+- Watertight doors left open
+- Incomplete cargo lashing
+- The FSE not included in the calculation
 
-Tutulma: Kritik bulgularda gemi kalkmaya izin verilmez.`,
+Detention: the ship is not allowed to sail where critical findings arise.`,
     bulletPoints: [
       "Stabilite kitapçığı güncel olmalıdır",
       "Hesaplar gerçek durumla uyumlu olmalıdır",
@@ -3139,37 +3138,37 @@ Tutulma: Kritik bulgularda gemi kalkmaya izin verilmez.`,
       "Düzenli iç denetim önerilir",
     ],
     warnings: [
-      "Tutulma mali ve operasyonel kayıp demektir",
-      "ISM Code gereği önleyici prosedürler uygulanmalıdır",
+      "Detention means financial and operational loss",
+      "Preventive procedures must be applied as required by the ISM Code",
     ],
   },
 
   "inclining-experiment": {
     title: "Meyil Deneyi (Inclining Experiment)",
     introduction: "Meyil deneyi, geminin boş (lightship) durumdaki ağırlık merkezi yüksekliğini (KG) ve boş gemi deplasmanını deneysel olarak belirlemek için yapılan kontrollü bir testtir. Tüm stabilite hesaplarının dayandığı KG değeri bu deneyle elde edilir.",
-    content: `AMAÇ:
+    content: `PURPOSE:
 
-Bir geminin stabilite hesapları, boş gemi (lightship) ağırlığı ve bu ağırlığın merkezinin yüksekliği (KG) bilinmeden yapılamaz. Meyil deneyi, gemiyi bilinen ağırlıklarla kontrollü biçimde yatırarak KG'yi doğrudan ölçer. Yeni inşa edilen veya büyük değişiklik geçiren gemilerde zorunludur.
+A ship's stability calculations cannot be made without knowing the lightship weight and the height of its centre of gravity (KG). The inclining experiment measures KG directly by heeling the ship in a controlled way with known weights. It is mandatory for newly built ships and for ships that have undergone major alterations.
 
-YÖNTEM:
+METHOD:
 
-Güvertede bilinen bir ağırlık (w) enine olarak bilinen bir mesafe (d) kadar kaydırılır. Bu, gemiye bir yatırma momenti uygular ve gemi küçük bir açı (θ) kadar meyleder. Meyil, sarkaç (plumb line/pendulum) veya U-borusu (manometer) ile ölçülür. Ölçülen meyilden geminin metasantr yüksekliği (GM) hesaplanır; KM hidrostatik tablolardan bilindiğinden KG = KM − GM bulunur.
+A known weight (w) on deck is shifted transversely through a known distance (d). This applies a heeling moment to the ship and the ship heels through a small angle (θ). The heel is measured with a plumb line (pendulum) or a U-tube manometer. The ship's metacentric height (GM) is calculated from the measured heel; since KM is known from the hydrostatic tables, KG = KM − GM.
 
-FORMÜL:
+FORMULA:
 
-Yatırma momenti = w × d. Bu moment, GM ve meyil açısıyla ilişkilidir.
+Heeling moment = w × d. This moment is related to GM and the angle of heel.
 
-DENEY KOŞULLARI (DOĞRULUK İÇİN):
+EXPERIMENT CONDITIONS (FOR ACCURACY):
 
-- Gemi mümkün olduğunca boş ve "as nearly complete as possible" durumda olmalı.
-- Sıvı tankları ya tam dolu/boş olmalı (serbest yüzey etkisini sıfırlamak için) ya da serbest yüzey düzeltmesi yapılmalı.
-- Rüzgâr, akıntı ve bağlama gerginliği minimumda; gemi serbestçe meyledebilmeli.
-- Birkaç farklı ağırlık ve yönde tekrar yapılarak ortalama alınır.
-- Bilinmeyen ağırlıklar (artık yük, su, atık) kaydedilir ve düzeltilir.
+- The ship should be as light as possible and "as nearly complete as possible".
+- Liquid tanks should be either completely full or empty (to eliminate the free surface effect), or a free surface correction must be applied.
+- Wind, current and mooring line tension must be minimal; the ship must be free to heel.
+- The experiment is repeated with several different weights and in both directions, and the results are averaged.
+- Unknown weights (remaining cargo, water, waste) are recorded and corrected for.
 
-SONUÇ:
+RESULT:
 
-Deneyden elde edilen lightship deplasmanı ve KG, geminin Stability Booklet'ine işlenir; tüm yükleme durumlarının stabilite hesapları bu temel değerlere göre yapılır.`,
+The lightship displacement and KG obtained from the experiment are entered in the ship's Stability Booklet; the stability calculations for all loading conditions are based on these fundamental values.`,
     formula: {
       name: "Metasantr Yüksekliği (meyil deneyi)",
       expression: "GM = (w × d) / (W × tan θ)   →   KG = KM − GM",
@@ -3187,34 +3186,34 @@ Deneyden elde edilen lightship deplasmanı ve KG, geminin Stability Booklet'ine 
       "Tank serbest yüzeyi ve dış kuvvetler doğruluğu doğrudan etkiler.",
     ],
     warnings: [
-      "Serbest yüzeyli tanklar veya bağlama gerginliği sonucu ciddi biçimde saptırır",
-      "Hatalı KG, tüm yükleme stabilite hesaplarını güvenilmez kılar",
+      "Tanks with free surfaces or tension in the mooring lines distort the result seriously",
+      "An incorrect KG makes all the loading stability calculations unreliable",
     ],
   },
 
   "probabilistic-damage-stability": {
     title: "Olasılıksal Hasar Stabilitesi",
     introduction: "Hasar stabilitesinin değerlendirilmesinde iki yaklaşım vardır: deterministik (belirli hasar senaryolarına göre) ve olasılıksal (hasarın istatistiksel olasılığına göre). SOLAS, kuru yük ve yolcu gemilerinde olasılıksal yöntemi (probabilistic damage stability) esas alır.",
-    content: `İKİ YAKLAŞIM:
+    content: `TWO APPROACHES:
 
-DETERMİNİSTİK YÖNTEM:
-Önceden tanımlanmış belirli hasar senaryoları (örn. bir/iki bölmenin su alması) ele alınır ve gemi her senaryoda belirli kriterleri sağlamalıdır. "Bir bölme/iki bölme standardı" (one/two-compartment standard) bu mantığın klasik ifadesidir. Anlaşılması kolaydır ancak gerçek hasarın çeşitliliğini tam yansıtmaz.
+THE DETERMINISTIC METHOD:
+Defined damage scenarios (for example the flooding of one or two compartments) are considered and the ship must meet defined criteria in each scenario. The "one-compartment/two-compartment standard" is the classic expression of this logic. It is easy to understand but does not fully reflect the variety of real damage.
 
-OLASILIKSAL YÖNTEM (SOLAS II-1):
-Gerçek çatışma/hasar istatistiklerine dayanır. Hasarın gemi boyunca herhangi bir yerde, çeşitli boyut ve derinlikte oluşabileceği olasılıkları dikkate alınır. Temel ölçüt, "Attained Subdivision Index (A)" değerinin gerekli "Required Subdivision Index (R)" değerinden büyük/eşit olmasıdır.
+THE PROBABILISTIC METHOD (SOLAS II-1):
+It is based on real collision/damage statistics. It takes account of the probabilities that damage may occur anywhere along the ship and be of various extents and depths. The basic measure is that the Attained Subdivision Index (A) must be greater than or equal to the Required Subdivision Index (R).
 
-A ve R İNDEKSLERİ:
+THE A AND R INDICES:
 
-- R (Required Index): Geminin tipine ve büyüklüğüne (yolcu sayısı, boy) bağlı olarak belirlenen, sağlanması gereken asgari bölmelendirme düzeyidir.
-- A (Attained Index): Geminin gerçek bölmelendirme düzenine göre hesaplanan, hasar sonrası hayatta kalma olasılığını yansıtan değerdir. A, her bölme/bölme grubu için hasar olasılığı (p) ile o hasardan sonra hayatta kalma olasılığının (s) çarpımlarının toplamı olarak hesaplanır.
+- R (Required Index): the minimum level of subdivision that must be achieved, determined by the type and size of the ship (number of passengers, length).
+- A (Attained Index): the value calculated from the ship's actual subdivision arrangement, reflecting the probability of survival after damage. A is calculated as the sum of the products of the probability of damage (p) for each compartment or group of compartments and the probability of surviving that damage (s).
 
-ÖLÇÜT:
+THE MEASURE:
 
-A ≥ R sağlanmalıdır. Ayrıca belirli kısmi indeksler ve en kötü durum koşulları da kontrol edilir.
+A ≥ R must be achieved. Certain partial indices and worst-case conditions are also checked.
 
-DENİZCİLİK ÖNEMİ:
+WHY IT MATTERS AT SEA:
 
-Olasılıksal yaklaşım, tasarımcıya bölmelendirmede esneklik tanırken istatistiksel olarak daha güvenli gemiler üretmeyi hedefler. Zabit açısından önemli olan, geminin onaylı yükleme/hasar durumlarının Stability Booklet ve hasar kontrol bilgilerinde tanımlı olduğunu ve bunlara uyulması gerektiğini bilmektir.`,
+The probabilistic approach gives the designer flexibility in subdivision while aiming to produce statistically safer ships. What matters to the officer is knowing that the ship's approved loading/damage conditions are defined in the Stability Booklet and the damage control information, and that they must be complied with.`,
     formula: {
       name: "Ulaşılan Bölmelendirme İndeksi",
       expression: "A = Σ (pᵢ × sᵢ) ≥ R",
@@ -3236,29 +3235,29 @@ Olasılıksal yaklaşım, tasarımcıya bölmelendirmede esneklik tanırken ista
   "drydocking-stability": {
     title: "Havuzlama (Drydocking) Stabilitesi",
     introduction: "Havuzlama sırasında gemi kuru havuz blokları üzerine oturmaya başladığında, blokların uyguladığı yukarı tepki kuvveti geminin etkin stabilitesini azaltır. En kritik an, kıç omurganın bloklara ilk temas ettiği andır.",
-    content: `OLAY:
+    content: `WHAT HAPPENS:
 
-Gemi kuru havuza alınırken su boşaltılır; gemi alçalır ve önce (genellikle trim nedeniyle) kıç omurga bloklara temas eder. Bu temas noktasında bloklar yukarı doğru bir tepki kuvveti (P) uygular. Bu kuvvet, etkin olarak omurga hizasından aşağı bir noktadan yukarı destek anlamına gelir ve geminin metasantr yüksekliğini (GM) AZALTIR; yani sanki KG yükselmiş gibi davranır.
+When a ship is taken into a dry dock the water is pumped out; the ship comes down and (usually because of trim) the after end of the keel touches the blocks first. At this point of contact the blocks apply an upward reaction force (P). This force amounts to support acting upwards from a point below the keel line and REDUCES the ship's metacentric height (GM); that is, it behaves as though KG had risen.
 
-KRİTİK AN:
+THE CRITICAL MOMENT:
 
-En tehlikeli an, geminin tam olarak oturmadan önce, ağırlığın bir kısmının hâlâ yüzme ile bir kısmının bloklarla taşındığı geçiş anıdır. Bu anda GM yetersiz kalırsa gemi havuz içinde devrilebilir veya bloklardan kayabilir. Bu yüzden havuzlama öncesi yeterli başlangıç GM ve uygun trim sağlanmalıdır.
+The most dangerous moment is the transition just before the ship lands fully, when part of the weight is still carried by buoyancy and part by the blocks. If GM is inadequate at that moment the ship can capsize in the dock or slip off the blocks. Adequate initial GM and a suitable trim must therefore be arranged before docking.
 
-P KUVVETİ VE GM KAYBI:
+THE FORCE P AND THE LOSS OF GM:
 
-Blokların uyguladığı tepki kuvveti P, su seviyesi düştükçe artar. P'nin neden olduğu sanal KG artışı (ve GM kaybı), P × KM / W ile orantılı olarak değerlendirilir. Bu nedenle:
-- Havuzlamaya küçük bir kıç trimi ile girilir (temas kontrollü olsun diye).
-- Aşırı trim, tek noktada büyük P oluşturup riski artırır.
-- Yeterli başlangıç GM şarttır.
+The reaction force P applied by the blocks increases as the water level falls. The virtual rise of KG (and the loss of GM) caused by P is assessed as proportional to P × KM / W. Therefore:
+- The ship enters the dock with a small trim by the stern (so that contact is controlled).
+- Excessive trim creates a large P at a single point and increases the risk.
+- Adequate initial GM is essential.
 
-ÖNLEMLER:
+PRECAUTIONS:
 
-- Havuzlama öncesi yükleme/balast ayarıyla uygun trim ve yeterli GM sağlanır.
-- Yan destek blokları (side/bilge blocks) ve payandalar (shores) gemi oturdukça devreye girer.
-- Stabilite, geminin tüm ağırlığı bloklara binene (fully landed) kadar izlenir; tam oturduktan sonra gemi stabildir.`,
+- A suitable trim and adequate GM are arranged before docking by adjusting the loading/ballast.
+- Side/bilge blocks and shores come into play as the ship lands.
+- Stability is monitored until the whole weight of the ship is on the blocks (fully landed); once fully landed the ship is stable.`,
     formula: {
       name: "Havuzlamada GM Kaybı (yaklaşık)",
-      expression: "GM loss ≈ (P × KM) / W",
+      expression: "Loss of GM ≈ (P × KM) / W",
       description: "P: blokların yukarı tepki kuvveti, KM: metasantr yüksekliği, W: deplasman. P arttıkça etkin GM azalır.",
     },
     bulletPoints: [
@@ -3273,8 +3272,8 @@ Blokların uyguladığı tepki kuvveti P, su seviyesi düştükçe artar. P'nin 
       "Yan bloklar ve payandalar oturma sırasında destek sağlar.",
     ],
     warnings: [
-      "Yetersiz GM veya aşırı trim ile havuzlama, gemi bloklardan kayabilir/devrilebilir",
-      "Geçiş anında stabilite sürekli izlenmelidir",
+      "Docking with inadequate GM or excessive trim can cause the ship to slip off the blocks or capsize",
+      "Stability must be monitored continuously during the transition",
     ],
   },
 };

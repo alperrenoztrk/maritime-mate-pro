@@ -113,12 +113,8 @@ export default function SoundSignalsPage() {
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Kural 32 tanımları:</span> kısa düdük
-            yaklaşık 1 saniye, uzun düdük 4-6 saniye sürer.{" "}
-            <span className="font-semibold text-foreground">Kural 33 cihazlar:</span> 12 m ve üzeri
-            gemide düdük, 20 m ve üzerinde ayrıca çan, 100 m ve üzerinde ek olarak gong bulunur. 12
-            m'den küçük tekneler bu işaretleri vermek zorunda değildir; ancak en fazla 2 dakikada bir
-            başka etkili bir ses işareti vermelidir.
+            <span className="font-semibold text-foreground">Kural 32 tanımları:</span> a short blast lasts about 1 second and a prolonged blast 4-6 seconds.{" "}
+            <span className="font-semibold text-foreground">Kural 33 cihazlar:</span> vessels of 12 m and above carry a whistle, those of 20 m and above also a bell, and those of 100 m and above additionally a gong. Vessels of less than 12 m are not obliged to give these signals; however, they must make some other efficient sound signal at intervals of not more than 2 minutes.
           </p>
         </div>
 

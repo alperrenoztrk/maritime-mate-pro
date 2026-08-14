@@ -771,7 +771,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                     <h4>Kritik Kontroller:</h4>
                     <ul>
                       <li>Eğilme gerilmesi {'<'} Akma dayanımı</li>
-                      <li>Kesme gerilmesi {'<'} 0.6 × Akma dayanımı</li>
+                      <li>Kesme gerilmesi {'<'} 0.6 × Yield strength</li>
                       <li>Deflection {'<'} L/300 (Comfort kriteri)</li>
                       <li>Safety factor ≥ 2.0</li>
                     </ul>

@@ -36,23 +36,23 @@ const bridgeNavigationTasks: TaskRow[] = [
   { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O", slug: "vardiya-tutma" },
   { task: "Radar / ARPA takibi", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "radar-arpa-takibi" },
   { task: "COLREG uygulama", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "colreg-uygulama" },
-  { task: "Kaptanı çağırma kararı", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "kaptani-cagirma-karari" },
+  { task: "Decision to call the master", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "kaptani-cagirma-karari" },
   { task: "Logbook doldurma", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "logbook-doldurma" },
   { task: "Pilot embark/disembark", responsible: "Master", worker: "2/O–3/O", slug: "pilot-embark-disembark" },
-  { task: "Kısıtlı sularda seyir", responsible: "Master", worker: "Master + OOW", slug: "kisitli-sularda-seyir" },
-  { task: "GMDSS acil çağrı", responsible: "Master", worker: "2/O", slug: "gmdss-acil-cagri" },
-  { task: "Köprüüstü disiplin", responsible: "Master", worker: "Tüm zabitler", slug: "koprusustu-disiplin" },
+  { task: "Navigation in restricted waters", responsible: "Master", worker: "Master + OOW", slug: "kisitli-sularda-seyir" },
+  { task: "GMDSS distress call", responsible: "Master", worker: "2/O", slug: "gmdss-acil-cagri" },
+  { task: "Bridge discipline", responsible: "Master", worker: "All officers", slug: "koprusustu-disiplin" },
 ];
 
 const navigationTasks: TaskRow[] = [
-  { task: "Harita düzeltmeleri", responsible: "2. Kaptan", slug: "harita-duzeltmeleri" },
-  { task: "ECDIS güncellemeleri", responsible: "2. Kaptan", slug: "ecdis-guncellemeleri" },
+  { task: "Chart corrections", responsible: "2. Kaptan", slug: "harita-duzeltmeleri" },
+  { task: "ECDIS updates", responsible: "2. Kaptan", slug: "ecdis-guncellemeleri" },
   { task: "Notice to Mariners", responsible: "2. Kaptan", slug: "notice-to-mariners" },
   { task: "Navigational warnings", responsible: "2. Kaptan", slug: "navigational-warnings" },
-  { task: "Gyro / manyetik pusula kontrolü", responsible: "2/O – 3/O", slug: "gyro-manyetik-pusula-kontrolu" },
+  { task: "Gyro / magnetic compass check", responsible: "2/O – 3/O", slug: "gyro-manyetik-pusula-kontrolu" },
   { task: "Draft & position plotting", responsible: "OOW", slug: "draft-position-plotting" },
   { task: "BNWAS / AIS kontrol", responsible: "OOW", slug: "bnwas-ais-kontrol" },
-  { task: "Seyir cihazları bakımı", responsible: "2/O", slug: "seyir-cihazlari-bakimi" },
+  { task: "Navigational equipment maintenance", responsible: "2/O", slug: "seyir-cihazlari-bakimi" },
 ];
 
 const cargoTasks: TaskRow[] = [
@@ -68,38 +68,38 @@ const cargoTasks: TaskRow[] = [
 
 const safetyTasks: TaskRow[] = [
   { task: "Safety Officer", responsible: "3. Kaptan", slug: "safety-officer" },
-  { task: "Yangın ekipmanları", responsible: "3/O", slug: "yangin-ekipmanlari" },
+  { task: "Fire equipment", responsible: "3/O", slug: "yangin-ekipmanlari" },
   { task: "Can kurtarma araçları", responsible: "3/O", slug: "can-kurtarma-araclari" },
   { task: "Weekly / Monthly checks", responsible: "3/O", slug: "weekly-monthly-checks" },
   { task: "Drill organizasyonu", responsible: "3/O", slug: "drill-organizasyonu" },
   { task: "Muster list", responsible: "Master", slug: "muster-list" },
-  { task: "ISM kayıtları", responsible: "Master + C/O", slug: "ism-kayitlari" },
-  { task: "ISPS (güvenlik)", responsible: "Master", slug: "isps-guvenlik" },
+  { task: "ISM records", responsible: "Master + C/O", slug: "ism-kayitlari" },
+  { task: "ISPS (security)", responsible: "Master", slug: "isps-guvenlik" },
   { task: "Security watch", responsible: "3/O", slug: "security-watch" },
 ];
 
 const maintenanceTasks: TaskRow[] = [
   { task: "Boya & pas", responsible: "C/O", worker: "Bosun + AB", slug: "boya-pas" },
-  { task: "Güverte temizliği", responsible: "C/O", worker: "AB", slug: "guverte-temizligi" },
-  { task: "Halat – tel bakımı", responsible: "C/O", worker: "Bosun", slug: "halat-tel-bakimi" },
-  { task: "Vinç – capstan yağlama", responsible: "C/O", worker: "AB", slug: "vinc-capstan-yaglama" },
-  { task: "Güverte aydınlatma", responsible: "C/O", worker: "AB", slug: "guverte-aydinlatma" },
-  { task: "Fener & işaretler", responsible: "C/O", worker: "AB", slug: "fener-isaretler" },
+  { task: "Deck cleaning", responsible: "C/O", worker: "AB", slug: "guverte-temizligi" },
+  { task: "Rope and wire maintenance", responsible: "C/O", worker: "Bosun", slug: "halat-tel-bakimi" },
+  { task: "Winch and capstan greasing", responsible: "C/O", worker: "AB", slug: "vinc-capstan-yaglama" },
+  { task: "Deck lighting", responsible: "C/O", worker: "AB", slug: "guverte-aydinlatma" },
+  { task: "Lights & shapes", responsible: "C/O", worker: "AB", slug: "fener-isaretler" },
 ];
 
 const personnelTasks: TaskRow[] = [
-  { task: "Günlük iş planı", responsible: "Chief Officer", slug: "gunluk-is-plani" },
-  { task: "Güverte personeli", responsible: "C/O", slug: "guverte-personeli" },
+  { task: "Daily work plan", responsible: "Chief Officer", slug: "gunluk-is-plani" },
+  { task: "Deck crew", responsible: "C/O", slug: "guverte-personeli" },
   { task: "Disiplin", responsible: "Master", slug: "disiplin" },
-  { task: "İş güvenliği", responsible: "3/O", slug: "is-guvenligi" },
+  { task: "Occupational safety", responsible: "3/O", slug: "is-guvenligi" },
   { task: "Yeni personel oryantasyonu", responsible: "3/O", slug: "yeni-personel-oryantasyonu" },
   { task: "Eğitim", responsible: "Master + C/O", slug: "egitim" },
 ];
 
 const documentationTasks: TaskRow[] = [
-  { task: "PSC hazırlık", responsible: "Master + C/O + 3/O", slug: "psc-hazirlik" },
+  { task: "PSC preparation", responsible: "Master + C/O + 3/O", slug: "psc-hazirlik" },
   { task: "Logbooks", responsible: "OOW", slug: "logbooks-dokumantasyon" },
-  { task: "Checklists", responsible: "İlgili zabit", slug: "checklists-dokumantasyon" },
+  { task: "Checklists", responsible: "Officer concerned", slug: "checklists-dokumantasyon" },
   { task: "Certificates", responsible: "Master", slug: "certificates-dokumantasyon" },
   { task: "Company reporting", responsible: "Master", slug: "company-reporting" },
   { task: "Deficiency takibi", responsible: "C/O", slug: "deficiency-takibi" },
@@ -118,28 +118,28 @@ const emergencyTasks: TaskRow[] = [
 
 const engineRoomTasks: TaskRow[] = [
   { task: "Ana makine operasyonu", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "ana-makine-operasyonu" },
-  { task: "Yardımcı makine bakımı", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "yardimci-makine-bakimi" },
-  { task: "Jeneratör operasyonu", responsible: "2nd Engineer", worker: "3/E – Oiler", slug: "jenerator-operasyonu" },
+  { task: "Auxiliary machinery maintenance", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "yardimci-makine-bakimi" },
+  { task: "Generator operation", responsible: "2nd Engineer", worker: "3/E – Oiler", slug: "jenerator-operasyonu" },
   { task: "Yakıt transferi", responsible: "Chief Engineer", worker: "3/E", slug: "yakit-transferi" },
-  { task: "Yağlama sistemi", responsible: "2nd Engineer", worker: "4/E – Oiler", slug: "yaglama-sistemi" },
+  { task: "Lubrication system", responsible: "2nd Engineer", worker: "4/E – Oiler", slug: "yaglama-sistemi" },
   { task: "Soğutma sistemi", responsible: "2nd Engineer", worker: "3/E", slug: "sogutma-sistemi" },
   { task: "Balast operasyonu", responsible: "Chief Engineer", worker: "3/E", slug: "balast-operasyonu" },
-  { task: "Sintine pompası", responsible: "3rd Engineer", worker: "4/E – Oiler", slug: "sintine-pompasi" },
-  { task: "Separator çalıştırma", responsible: "3rd Engineer", worker: "4/E", slug: "separator-calistirma" },
+  { task: "Bilge pump", responsible: "3rd Engineer", worker: "4/E – Oiler", slug: "sintine-pompasi" },
+  { task: "Separator operation", responsible: "3rd Engineer", worker: "4/E", slug: "separator-calistirma" },
   { task: "Kazan operasyonu", responsible: "2nd Engineer", worker: "3/E", slug: "kazan-operasyonu" },
-  { task: "Kompresör bakımı", responsible: "3rd Engineer", worker: "4/E", slug: "kompresor-bakimi" },
-  { task: "Pompa bakımları", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "pompa-bakimlari" },
+  { task: "Compressor maintenance", responsible: "3rd Engineer", worker: "4/E", slug: "kompresor-bakimi" },
+  { task: "Pump maintenance", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "pompa-bakimlari" },
   { task: "Elektrik sistemleri", responsible: "Electrician", worker: "Electrician", slug: "elektrik-sistemleri" },
   { task: "Otomasyon sistemleri", responsible: "Chief Engineer", worker: "Electrician", slug: "otomasyon-sistemleri" },
-  { task: "Spare parts yönetimi", responsible: "Chief Engineer", worker: "2/E", slug: "spare-parts-yonetimi" },
-  { task: "Makine logbook", responsible: "Chief Engineer", worker: "Vardiya mühendisi", slug: "makine-logbook" },
-  { task: "PMS kayıtları", responsible: "2nd Engineer", worker: "Tüm mühendisler", slug: "pms-kayitlari" },
+  { task: "Spare parts management", responsible: "Chief Engineer", worker: "2/E", slug: "spare-parts-yonetimi" },
+  { task: "Makine logbook", responsible: "Chief Engineer", worker: "Duty engineer", slug: "makine-logbook" },
+  { task: "PMS kayıtları", responsible: "2nd Engineer", worker: "All engineers", slug: "pms-kayitlari" },
   { task: "Bunkering operasyonu", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "bunkering-operasyonu" },
   { task: "LO/FO analizleri", responsible: "Chief Engineer", worker: "2/E", slug: "lo-fo-analizleri" },
-  { task: "Makine dairesi temizliği", responsible: "Chief Engineer", worker: "Oiler – Wiper", slug: "makine-dairesi-temizligi" },
+  { task: "Engine room cleaning", responsible: "Chief Engineer", worker: "Oiler – Wiper", slug: "makine-dairesi-temizligi" },
   { task: "Emergency generator", responsible: "2nd Engineer", worker: "3/E", slug: "emergency-generator" },
-  { task: "Steering gear bakımı", responsible: "2nd Engineer", worker: "3/E", slug: "steering-gear-bakimi" },
-  { task: "Makine dairesi güvenliği", responsible: "Chief Engineer", worker: "Tüm personel", slug: "makine-dairesi-guvenligi" },
+  { task: "Steering gear maintenance", responsible: "2nd Engineer", worker: "3/E", slug: "steering-gear-bakimi" },
+  { task: "Engine room safety", responsible: "Chief Engineer", worker: "All crew", slug: "makine-dairesi-guvenligi" },
 ];
 
 const categories: CategorySection[] = [

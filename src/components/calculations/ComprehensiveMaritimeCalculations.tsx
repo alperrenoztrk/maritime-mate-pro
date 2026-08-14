@@ -732,15 +732,15 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const hLoad = parseFloat(craneVerticalInputs.loadHeight);
     const delta = parseFloat(craneVerticalInputs.displacement);
     if (isNaN(w) || isNaN(hHook) || isNaN(hLoad) || isNaN(delta) || delta === 0) {
-      toast({ title: "Error", description: "Enter valid w, hcunda, hyük, Δ", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid w, hderrick, hload, Δ", variant: "destructive" });
       return;
     }
     const heightDiff = hHook - hLoad;
     const deltaKG = (w * heightDiff) / delta; // meters
     setCraneVerticalResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, craneVertical: [
-      { step: 1, title: "Formula", formula: "ΔKG = (w × (hcargo - hlift)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
-      { step: 2, title: "height difference", formula: `hcargo - hlift = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
+      { step: 1, title: "Formula", formula: "ΔKG = (w × (hderrick - hload)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
+      { step: 2, title: "height difference", formula: `hderrick - hload = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
       { step: 3, title: "Placement of values", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
       { step: 4, title: "Result", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
@@ -1350,7 +1350,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {heelAngleResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-green-500">
-                    <p className="font-mono text-lg">Meyil Açısı = {heelAngleResult.toFixed(2)}°</p>
+                    <p className="font-mono text-lg">Heel Angle = {heelAngleResult.toFixed(2)}°</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["heelAngle"] || []} />
@@ -1448,7 +1448,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {craneGMResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-green-500">
-                    <p className="font-mono text-lg">GM Değişimi = {craneGMResult.toFixed(3)} m</p>
+                    <p className="font-mono text-lg">GM Change = {craneGMResult.toFixed(3)} m</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["craneGM"] || []} />
@@ -1456,7 +1456,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Dikey Kaldırmada ΔKG (Vinç/Bumba) */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">ΔKG = w × (hcunda − hyük) / Δ</h4>
+                <h4 className="font-semibold mb-3">ΔKG = w × (hderrick − hload) / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
                     <Label>Weight w (ton)</Label>
@@ -1676,7 +1676,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {trimChangeResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-purple-500">
-                    <p className="font-mono text-lg">Trim Değişimi = {trimChangeResult.toFixed(2)} cm</p>
+                    <p className="font-mono text-lg">Trim Change = {trimChangeResult.toFixed(2)} cm</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["trimChange"] || []} />
@@ -1755,7 +1755,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {draftCorrectionResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-purple-500">
-                    <p className="font-mono text-lg">Draft Düzeltmesi = {draftCorrectionResult.toFixed(3)} m</p>
+                    <p className="font-mono text-lg">Draft Correction = {draftCorrectionResult.toFixed(3)} m</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["draftCorrection"] || []} />
@@ -2014,7 +2014,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {grainHeelResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
-                    <p className="font-mono text-lg">Kümelenme Açısı = {grainHeelResult.toFixed(1)}°</p>
+                    <p className="font-mono text-lg">Angle of Loll = {grainHeelResult.toFixed(1)}°</p>
                     <p className="text-sm mt-1">
                       {grainHeelResult <= 12 ? "✓ SOLAS Uygun" : "✗ Not SOLAS Conforming - Exceeds 12°"}
                     </p>
@@ -2254,7 +2254,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {temperatureDensityResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-indigo-500">
-                    <p className="font-mono text-lg">Yeni Yoğunluk = {temperatureDensityResult.toFixed(4)} ton/m³</p>
+                    <p className="font-mono text-lg">New Density = {temperatureDensityResult.toFixed(4)} ton/m³</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["temperatureDensity"] || []} />

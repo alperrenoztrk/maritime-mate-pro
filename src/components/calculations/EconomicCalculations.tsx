@@ -246,7 +246,7 @@ export const EconomicCalculations = () => {
                   <div className="col-span-2">
                     <span className="font-medium">TCE (Daily):</span>
                     <Badge variant="outline" className="ml-2">
-                      ${tceResult.tce.toFixed(0)}/gün
+                      ${tceResult.tce.toFixed(0)}/day
                     </Badge>
                   </div>
                   <div className="col-span-2">
@@ -331,7 +331,7 @@ export const EconomicCalculations = () => {
                   </div>
                   <div className="col-span-2">
                     <span className="font-medium">Time Difference:</span>
-                    <span className="ml-2">{Math.abs(demurrageResult.timeDifference)} saat</span>
+                    <span className="ml-2">{Math.abs(demurrageResult.timeDifference)} h</span>
                   </div>
                   <div className="col-span-2">
                     <span className="font-medium">Description:</span>

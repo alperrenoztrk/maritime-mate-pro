@@ -30,11 +30,11 @@ export default function LessonTopicDetailPage() {
   }
 
   const fallbackContent: BetaTopic = {
-    title: decodedTitleOrId || "Konu Detayı",
+    title: decodedTitleOrId || "Topic Detail",
     sourceTitle: decodedTitleOrId,
     introduction: decodedTitleOrId
-      ? `${decodedTitleOrId} konusuna ilişkin temel kavramlar, formüller ve uygulama örnekleri.`
-      : "Konu detayı.",
+      ? `${decodedTitleOrId} key concepts, formulas and worked examples.`
+      : "Topic detail.",
     sections: [],
   };
   const content = getBetaTopic(categoryId, decodedTitleOrId) ?? fallbackContent;

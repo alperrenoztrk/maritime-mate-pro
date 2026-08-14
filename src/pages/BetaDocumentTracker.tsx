@@ -48,11 +48,11 @@ interface UploadJob {
 }
 
 const STAGE_LABELS: Record<JobState, string> = {
-  queued: "Sırada",
-  preparing: "Fotoğraf hazırlanıyor",
-  checking: "Tekrar kontrolü yapılıyor",
+  queued: "Queued",
+  preparing: "Preparing photograph",
+  checking: "Re-checking",
   analyzing: "Yapay zekâ belgeyi okuyor",
-  uploading: "Güvenli arşive yükleniyor",
+  uploading: "Uploading to secure archive",
   saving: "Tarihler kaydediliyor",
   done: "added",
   error: "Eklenemedi",
@@ -95,9 +95,9 @@ const STATUS_STYLE: Record<
 };
 
 function formatDate(value: string | null): string {
-  if (!value) return "Okunamadı";
+  if (!value) return "Could not be read";
   const [year, month, day] = value.split("-").map(Number);
-  if (!year || !month || !day) return "Okunamadı";
+  if (!year || !month || !day) return "Could not be read";
   return new Intl.DateTimeFormat("tr-TR", {
     day: "2-digit",
     month: "long",
@@ -117,7 +117,7 @@ function filterDocument(document: MaritimeDocumentRecord, filter: FilterKey): bo
 
 function errorMessage(error: unknown): string {
   if (error instanceof DocumentTrackerError) return error.message;
-  return "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.";
+  return "An unexpected error occurred. Please try again.";
 }
 
 export default function BetaDocumentTracker() {
@@ -182,7 +182,7 @@ export default function BetaDocumentTracker() {
     const selected = files.slice(0, MAX_DOCUMENT_FILES);
     if (!selected.length) return;
     if (files.length > MAX_DOCUMENT_FILES) {
-      toast.warning(`Bir seferde en fazla ${MAX_DOCUMENT_FILES} fotoğraf işlenir.`);
+      toast.warning(`Bir seferde en fazla ${MAX_DOCUMENT_FILES} photographs are processed.`);
     }
 
     const pending = selected.map((file) => ({
@@ -209,7 +209,7 @@ export default function BetaDocumentTracker() {
     }
 
     setProcessing(false);
-    if (successCount) toast.success(`${successCount} belge analiz edilip arşive eklendi`);
+    if (successCount) toast.success(`${successCount} documents were analysed and added to the archive`);
   };
 
   const handleInput = (fileList: FileList | null) => {
@@ -218,7 +218,7 @@ export default function BetaDocumentTracker() {
   };
 
   const handleDelete = async (document: MaritimeDocumentRecord) => {
-    if (!window.confirm(`“${document.title}” belgesini ve fotoğrafını kalıcı olarak silmek istiyor musunuz?`)) {
+    if (!window.confirm(`“${document.title}” document and its photograph permanently?`)) {
       return;
     }
     try {
@@ -428,7 +428,7 @@ export default function BetaDocumentTracker() {
               {(
                 [
                   ["all", "All"],
-                  ["attention", "Yaklaşan"],
+                  ["attention", "Upcoming"],
                   ["valid", "Geçerli"],
                   ["unknown", "Kontrol"],
                 ] as const
@@ -454,8 +454,8 @@ export default function BetaDocumentTracker() {
           ) : visibleDocuments.length === 0 ? (
             <EmptyState
               icon={FileImage}
-              title={documents.length ? "Bu filtrede belge yok" : "Henüz belge eklenmedi"}
-              description="Bir fotoğraf yüklediğinizde AI tarihleri otomatik çıkarır."
+              title={documents.length ? "No documents in this filter" : "No documents added yet"}
+              description="When you upload a photograph, the AI extracts the dates automatically."
             />
           ) : (
             <div className="grid gap-3 sm:grid-cols-2">

@@ -55,7 +55,7 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
       >
         <ImageOff className="h-8 w-8 opacity-60" />
         <span className="px-3 text-center text-xs">
-          {alt ? `Görsel yüklenemedi: ${alt}` : "Görsel yüklenemedi"}
+          {alt ? `Image could not be loaded: ${alt}` : "Görsel yüklenemedi"}
         </span>
       </div>
     );

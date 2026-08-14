@@ -33,7 +33,7 @@ export const GMCalculator = () => {
   const gm = km - kg;
   
   const getStabilityStatus = () => {
-    if (gm > 1.5) return { status: "Çok İyi", color: "bg-green-500" };
+    if (gm > 1.5) return { status: "Very Good", color: "bg-green-500" };
     if (gm > 0.5) return { status: "Normal", color: "bg-blue-500" };
     if (gm > 0) return { status: "Düşük", color: "bg-yellow-500" };
     return { status: "Kritik!", color: "bg-red-500" };

@@ -141,7 +141,7 @@ export const cloudTypes: CloudType[] = [
     characteristics: [
       'Very high vertical development',
       'anvil-shaped peak',
-      'Koyu gri veya siyah taban',
+      'Dark grey or black base',
       'Lightning and thunder'
     ],
     maritimeImportance: 'Severe storm, lightning danger, waterspout risk',
@@ -193,7 +193,7 @@ export const cloudTypes: CloudType[] = [
     description: 'Gray sheet often covering entire sky',
     descriptionTr: 'Gray blanket covering the sky',
     characteristics: [
-      'Gri veya mavi-gri tabaka',
+      'Grey or blue-grey layer',
       'The sun appears uncertain',
       'Does not cast shadows',
       'Harbinger of frontal approach'
@@ -217,9 +217,9 @@ export const cloudTypes: CloudType[] = [
     altitude: '2-7 km',
     altitudeFt: '6,500-23,000 ft',
     description: 'Gray or white patches in waves or bands',
-    descriptionTr: 'Dalgalar veya bantlar halinde gri/beyaz yamalar',
+    descriptionTr: 'Grey/white patches in waves or bands',
     characteristics: [
-      'Gri veya beyaz yamalar',
+      'Grey or white patches',
       'In waves or rows',
       'Creates small shadows',
       'View of a flock of sheep'
@@ -455,7 +455,7 @@ export const cloudTypes: CloudType[] = [
     altitude: '0.5-2 km',
     altitudeFt: '1,600-6,500 ft',
     description: 'Shelf or roll cloud',
-    descriptionTr: 'Raf veya rulo bulut',
+    descriptionTr: 'Shelf or roll cloud',
     characteristics: [
       'Horizontal roll shape',
       'ahead of the storm',

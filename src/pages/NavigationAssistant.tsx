@@ -2,18 +2,18 @@ import { Compass } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "54°30'N 012°20'W noktası için manyetik sapma/variasyon ve deviasyon düzeltmesini nasıl uygularım?",
-  "Rotada 2 knot iskele akıntı varsa 12 saatlik seyrin DR hesabını nasıl güncellerim?",
-  "Atışlı rota (GC) ile loxodrom rotası arasındaki farkları ve hangi durumda hangisini seçmeliyim?",
-  "Karmaşık bir trafik ayrım şeridinde COLREG'e uygun geçiş planını madde madde yazar mısın?",
-  "ETA hesaplamak için rota uzunluğu, makine hızı ve beklenen karşı akıntıyı nasıl hesaba katmalıyım?",
-  "Seyir fenerleri için görünürlük mesafesini coğrafi ve ışık mesafesiyle nasıl kontrol ederim?",
+  "How do I apply the magnetic variation and deviation correction for position 54°30'N 012°20'W?",
+  "If there is a 2-knot current setting to port along the route, how do I update the DR for a 12-hour run?",
+  "What are the differences between a great circle (GC) and a rhumb line route, and when should I choose which?",
+  "Can you write out, point by point, a COLREG-compliant transit plan for a busy traffic separation scheme?",
+  "How should I allow for route distance, engine speed and the expected counter-current when calculating ETA?",
+  "How do I check the visibility range of navigation lights against the geographical and luminous range?",
 ];
 
-const systemPrompt = `Sen seyir ve köprüüstü operasyonları konusunda uzman bir asistansın.
-Seyir hesaplamaları, rota planlama, akıntı ve rüzgar düzeltmeleri, ETA, COLREG uygulamaları ve seyir yardımcıları konusunda rehberlik verirsin.
-Yanıtlarını maddeler halinde ve uygulanabilir şekilde yaz; kontrol adımlarını ve emniyet uyarılarını ekle.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in navigation and bridge operations.
+You provide guidance on navigational calculations, passage planning, current and wind corrections, ETA, COLREG application and aids to navigation.
+Write your answers as bullet points and in an applicable form; add the check steps and the safety warnings.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function NavigationAssistantPage() {
   return (

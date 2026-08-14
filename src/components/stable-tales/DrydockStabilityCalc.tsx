@@ -80,22 +80,22 @@ export const DrydockStabilityCalc = () => {
       const öneriler: string[] = [];
       
       if (mevcut_gm >= kritik_gm * 1.5) {
-        güvenlik_durumu = 'Çok Güvenli';
+        güvenlik_durumu = 'Very Safe';
         güvenlik_rengi = 'default';
-        öneriler.push('Havuz operasyonu güvenle gerçekleştirilebilir');
+        öneriler.push('The drydocking operation can be carried out safely');
       } else if (mevcut_gm >= kritik_gm) {
         güvenlik_durumu = 'safe';
         güvenlik_rengi = 'secondary';
-        öneriler.push('Dikkatli operasyon önerilir');
+        öneriler.push('Careful operation recommended');
       } else {
         güvenlik_durumu = 'Riskli';
         güvenlik_rengi = 'destructive';
-        öneriler.push('ACİL: GM artırıcı önlemler alınmalı!');
-        öneriler.push('Ballast ayarlaması gerekli');
+        öneriler.push('URGENT: measures to increase GM must be taken!');
+        öneriler.push('Ballast adjustment required');
       }
 
       if (maksimum_aralik > vesselData.loa / 4) {
-        öneriler.push('Uyarı: Destek aralıkları çok geniş, ek destek gerekli');
+        öneriler.push('Warning: block spacing is too wide, additional support required');
       }
 
       const calculatedResults = {
@@ -116,7 +116,7 @@ export const DrydockStabilityCalc = () => {
       setDrydockData(prev => ({ ...prev, kritik_gm, kren_momenti }));
 
       if (mevcut_gm >= kritik_gm) {
-        toast.success(`Havuz operasyonu güvenli: GM = ${mevcut_gm.toFixed(3)}m`);
+        toast.success(`Drydocking operation safe: GM = ${mevcut_gm.toFixed(3)}m`);
       } else {
         toast.error(`Kritik GM yetersiz: ${kritik_gm.toFixed(3)}m gerekli!`);
       }
@@ -241,7 +241,7 @@ export const DrydockStabilityCalc = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                {results.güvenlik_durumu === 'Çok Güvenli' || results.güvenlik_durumu === 'safe' ? (
+                {results.güvenlik_durumu === 'Very Safe' || results.güvenlik_durumu === 'safe' ? (
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />

@@ -2,18 +2,18 @@ import { ShipWheel } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "Ağır hava koşullarında demirleme prosedürü ve kontrol listesi nedir?",
-  "Güverte ekibinin vardiya planını SOLAS ve STCW'ye uygun nasıl düzenlerim?",
-  "Permit to work sürecinde sıcak çalışma için hangi adımları uygulamalıyım?",
-  "Yanaşma manevrasında halat dizilimi ve emniyetli çalışma mesafeleri nelerdir?",
-  "Lashing ekipmanlarının günlük kontrolünde bakılması gereken kritik noktalar hangileri?",
-  "ISM gereği haftalık tatbikat planını nasıl yapılandırmalıyım?",
+  "What is the anchoring procedure and checklist in heavy weather?",
+  "How do I arrange the deck team's watch schedule in line with SOLAS and STCW?",
+  "Which steps should I follow for hot work in the permit to work process?",
+  "What is the mooring line pattern and what are the safe working distances during a berthing manoeuvre?",
+  "Which critical points must be checked in the daily inspection of lashing equipment?",
+  "How should I structure the weekly drill schedule required by ISM?",
 ];
 
-const systemPrompt = `Sen denizcilik operasyonlarında gemicilik ve güverte yönetimi uzmanı bir asistansın.
-Yanaşma-manavra, demirleme, izinli işler (PTW), vardiya düzeni, bakım ve ISM/SOLAS gereklilikleri hakkında rehberlik verirsin.
-Yanıtlarını adım adım ve sahada uygulanabilir şekilde yaz; güvenlik uyarılarını ve ekipman kontrollerini vurgula.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in seamanship and deck management in maritime operations.
+You provide guidance on berthing manoeuvres, anchoring, permit to work (PTW), watch arrangements, maintenance and ISM/SOLAS requirements.
+Write your answers step by step and in a form that can be applied on board; emphasise the safety warnings and the equipment checks.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function SeamanshipAssistantPage() {
   return (

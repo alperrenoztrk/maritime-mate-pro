@@ -85,7 +85,7 @@ const DraftSurveyCalculator = () => {
             {
               title: "Trim",
               accent: "teal",
-              lines: [{ formula: "Trim % = (Aft - Forward) / LPP × 100" }],
+              lines: [{ formula: "Trim % = (Aft - Fwd) / LPP × 100" }],
             },
             {
               title: "Deplasman Düzeltmesi",

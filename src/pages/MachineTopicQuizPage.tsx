@@ -111,7 +111,7 @@ const topicQuestions: Record<string, QuizQuestion[]> = {
     { id: 2, question: "Swiss cheese model neyi açıklar?", options: ["Bakım planlamasını", "Kazaların birden fazla savunma katmanının aynı anda başarısız olmasıyla gerçekleştiğini", "Yağ filtre yapısını", "Emniyet valfi çalışma prensibini"], correctAnswer: 1, explanation: "Swiss cheese (James Reason) modeli: her savunma katmanında delikler vardır; hepsi aynı hizada olursa kaza gerçekleşir.", category: "ERM" },
     { id: 3, question: "MLC 2006 maksimum çalışma saatini ne olarak belirler?", options: ["12 saat/gün", "14 saat/24 saat veya 72 saat/7 gün", "16 saat/gün", "Sınırsız"], correctAnswer: 1, explanation: "MLC 2006: maksimum 14 saat/24 saatlik periyotta veya 72 saat/7 günlük periyotta çalışma.", category: "ERM" },
     { id: 4, question: "Near-miss nedir?", options: ["Gerçekleşmiş kaza", "Kazaya ramak kala olay", "Planlı bakım", "Risk matrisi sonucu"], correctAnswer: 1, explanation: "Near-miss: ciddi bir sonuç doğurabilecek ancak şans eseri hasarsız atlanan olaydır. Raporlanması zorunludur.", category: "ERM" },
-    { id: 5, question: "Risk değerlendirmesinde hangi matris kullanılır?", options: ["3×3", "5×5 (olasılık × şiddet)", "10×10", "2×2"], correctAnswer: 1, explanation: "Standart risk matrisi 5×5 boyutundadır: olasılık (1–5) × şiddet (1–5) = risk seviyesi (1–25).", category: "ERM" },
+    { id: 5, question: "Risk değerlendirmesinde hangi matris kullanılır?", options: ["3×3", "5×5 (probability × severity)", "10×10", "2×2"], correctAnswer: 1, explanation: "Standart risk matrisi 5×5 boyutundadır: olasılık (1–5) × şiddet (1–5) = risk seviyesi (1–25).", category: "ERM" },
   ],
   "energy-efficiency": [
     { id: 1, question: "CII derecelendirmesinde 'C' ne anlama gelir?", options: ["good", "Orta (kabul edilebilir minimum)", "bad", "very bad"], correctAnswer: 1, explanation: "CII derecelendirmesi A (en iyi) – E (en kötü): C = orta/kabul edilebilir minimum. D ve E düzeltici eylem gerektirir.", category: "Energy Efficiency" },
@@ -177,7 +177,7 @@ export default function MachineTopicQuizPage() {
             <div className="flex flex-wrap gap-2">
               {selectableCounts.map((c) => (
                 <Button key={c} variant={count === c ? "default" : "outline"} size="sm" onClick={() => { setCount(c); setSeed(Date.now()); }}>
-                  {c === maxCount ? `Tümü (${c})` : `${c} Question`}
+                  {c === maxCount ? `All (${c})` : `${c} Question`}
                 </Button>
               ))}
               <Button variant="ghost" size="sm" className="gap-1" onClick={() => setSeed(Date.now())}>

@@ -355,7 +355,7 @@ export const StableTalesCalculator = () => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis 
                         dataKey="aci" 
-                        label={{ value: 'Meyil Açısı (°)', position: 'insideBottom', offset: -10 }}
+                        label={{ value: 'Heel Angle (°)', position: 'insideBottom', offset: -10 }}
                       />
                       <YAxis 
                         label={{ value: 'GZ (m)', angle: -90, position: 'insideLeft' }}

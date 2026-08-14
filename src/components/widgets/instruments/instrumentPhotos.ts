@@ -118,7 +118,7 @@ export const SMALL_ASPECT = 1 / 1.14;
  */
 export const SEIKO_CLOCK: InstrumentPhoto = {
   src: seikoClockPhoto,
-  alt: "Açık mavi bezelli, krem kadranlı Seiko köprüüstü saati",
+  alt: "Seiko bridge clock with a light blue bezel and cream dial",
   // Kasa (çap 388 px) kırpılmış kutunun %93'ünü kaplar.
   crop: { x: 0.11661, y: 0.08123, w: 0.75307, h: 0.85849 },
   aspect: SMALL_ASPECT,
@@ -127,8 +127,8 @@ export const SEIKO_CLOCK: InstrumentPhoto = {
     " radial-gradient(ellipse 38.63% 5.42% at 49.31% 51.05%, #000 0 94%, transparent 100%)",
   credit: {
     title: "Seiko köprüüstü saati",
-    author: "Kullanıcı arşivi",
-    license: "Uygulama sahibi tarafından sağlandı",
+    author: "User archive",
+    license: "Supplied by the app owner",
   },
 };
 
@@ -148,15 +148,15 @@ export const SEIKO_CLOCK_DIAL: DialAnchor = { cx: 0.472, cy: 0.477, r: 0.392 };
  */
 export const WIND_GAUGE: InstrumentPhoto = {
   src: windIndicatorPhoto,
-  alt: "Köprüüstü panelinde siyah bezelli rüzgâr yönü göstergesi",
+  alt: "Wind direction indicator with a black bezel on a bridge console",
   // 572×536 karede gösterge (430.6, 250.8) merkezli. Kırpma göstergeyi kutuya
   // ortalar, üstte panelin vidalarını da içeri alır.
   crop: { x: 0.54956, y: 0.22071, w: 0.40646, h: 0.4944 },
   aspect: SMALL_ASPECT,
   credit: {
     title: "Koshin rüzgâr hız/yön paneli",
-    author: "Kullanıcı arşivi",
-    license: "Uygulama sahibi tarafından sağlandı",
+    author: "User archive",
+    license: "Supplied by the app owner",
   },
 };
 
@@ -165,7 +165,7 @@ export const WIND_GAUGE_DIAL: DialAnchor = { cx: 0.5, cy: 0.506, r: 0.422 };
 
 export const THERMOMETER: InstrumentPhoto = {
   src: thermometerPhoto,
-  alt: "Beyaz duvara asılı, cam borulu cıvalı termometre",
+  alt: "Mercury thermometer in a glass tube mounted on a white wall",
   // Kılcal sola alınmaz: kırpma, boruyu kutunun %68'ine getirir ki üstteki
   // etiket plakası sıcak havalarda cıvanın ucunu örtmesin.
   crop: { x: 0.06, y: 0, w: 0.554, h: 0.423 },
@@ -174,7 +174,7 @@ export const THERMOMETER: InstrumentPhoto = {
     title: "Quicksilvertermometer Osaby.JPG",
     url: "https://commons.wikimedia.org/wiki/File:Quicksilvertermometer_Osaby.JPG",
     author: "Pieter Kuiper",
-    license: "Kamu malı",
+    license: "Public domain",
   },
 };
 
@@ -195,7 +195,7 @@ export const THERMOMETER_COLUMN: ColumnAnchor = {
 
 export const PORTHOLE: InstrumentPhoto = {
   src: portholePhoto,
-  alt: "Gemi lombarından görünen deniz ve kıyı",
+  alt: "Sea and coast seen through a ship's porthole",
   crop: { x: 0, y: 0, w: 1, h: 1 },
   aspect: 16 / 9,
   credit: {
@@ -225,8 +225,8 @@ export const GPS: InstrumentPhoto = {
   aspect: 1.8,
   credit: {
     title: "SGN-500 GPS/GLONASS alıcısı",
-    author: "Kullanıcı arşivi",
-    license: "Uygulama sahibi tarafından sağlandı",
+    author: "User archive",
+    license: "Supplied by the app owner",
   },
 };
 

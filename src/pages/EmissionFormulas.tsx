@@ -80,7 +80,7 @@ const formulas = [
         name: "Enerji (kWh)",
         formula: "E = P (kW) × t (h)",
         description: "For generator load analysis",
-        example: "500 kW × 24 saat = 12,000 kWh"
+        example: "500 kW × 24 hours = 12,000 kWh"
       }
     ]
   },

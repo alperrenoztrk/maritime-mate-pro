@@ -94,7 +94,7 @@ const formatSigned = (value: number, digits: number = 2) => `${value >= 0 ? "+" 
 const formatMaybeNumber = (value: number, digits: number = 2) => (Number.isFinite(value) ? value.toFixed(digits) : "—");
 const parseNumber = (value: string) => (value.trim() === "" ? undefined : Number(value));
 
-const SolutionSteps = ({ title = "Çözümlü Çözüm", steps }: { title?: string; steps: string[] }) => (
+const SolutionSteps = ({ title = "Worked Solution", steps }: { title?: string; steps: string[] }) => (
   <div className="rounded border bg-muted/30 p-3 space-y-2">
     <div className="text-sm font-semibold">{title}</div>
     <ol className="list-decimal list-inside space-y-1 text-sm">
@@ -1242,10 +1242,10 @@ export default function NavigationCalculationPage() {
         let status: string;
         if (isRising) {
           height = lowTide + tidalRange * fractions[cycleHour];
-          status = cycleHour === 0 ? "Alçak Su" : cycleHour === 5 ? "Yüksek Su" : "Yükseliyor";
+          status = cycleHour === 0 ? "Low Water" : cycleHour === 5 ? "High Water" : "Rising";
         } else {
           height = highTide - tidalRange * fractions[cycleHour];
-          status = cycleHour === 0 ? "Yüksek Su" : cycleHour === 5 ? "Alçak Su" : "Alçalıyor";
+          status = cycleHour === 0 ? "High Water" : cycleHour === 5 ? "Low Water" : "Falling";
         }
 
         const prevHeight = i > 0 ? rows[i - 1].height : height;
@@ -1285,7 +1285,7 @@ export default function NavigationCalculationPage() {
 
     setTideForecastSuggestions(suggestions);
     if (!suggestions.length) {
-      setTideForecastError("Eşleşme bulunamadı. Yerel liman listesiyle sınırlıdır.");
+      setTideForecastError("No match found. Limited to the local port list.");
     }
     setTideForecastLoading(false);
   };
@@ -1303,7 +1303,7 @@ export default function NavigationCalculationPage() {
     setTideForecastData(null);
     const station = tideStations.find((item) => item.id === s.id);
     if (!station) {
-      setTideForecastError("Liman bulunamadı. Lütfen tekrar deneyin.");
+      setTideForecastError("Port not found. Please try again.");
       setTideForecastLoading(false);
       return;
     }
@@ -1389,7 +1389,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="gc-lon2"
-              label="Hedef Boylamı (λ₂)"
+              label="Destination Longitude (λ₂)"
               value={gcInputs.lon2}
               onChange={(val) => setGcInputs({ ...gcInputs, lon2: val })}
               isLatitude={false}
@@ -1415,14 +1415,14 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="rl-lat1"
-              label="Başlangıç Enlemi"
+              label="Starting Latitude"
               value={rhumbInputs.lat1}
               onChange={(val) => setRhumbInputs({ ...rhumbInputs, lat1: val })}
               isLatitude={true}
             />
             <CoordinateInput
               id="rl-lon1"
-              label="Başlangıç Boylamı"
+              label="Starting Longitude"
               value={rhumbInputs.lon1}
               onChange={(val) => setRhumbInputs({ ...rhumbInputs, lon1: val })}
               isLatitude={false}
@@ -1436,7 +1436,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="rl-lon2"
-              label="Hedef Boylamı"
+              label="Destination Longitude"
               value={rhumbInputs.lon2}
               onChange={(val) => setRhumbInputs({ ...rhumbInputs, lon2: val })}
               isLatitude={false}
@@ -1448,14 +1448,14 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="ps-lat1"
-              label="Başlangıç Enlemi"
+              label="Starting Latitude"
               value={planeInputs.lat1}
               onChange={(val) => setPlaneInputs({ ...planeInputs, lat1: val })}
               isLatitude={true}
             />
             <CoordinateInput
               id="ps-lon1"
-              label="Başlangıç Boylamı"
+              label="Starting Longitude"
               value={planeInputs.lon1}
               onChange={(val) => setPlaneInputs({ ...planeInputs, lon1: val })}
               isLatitude={false}
@@ -1469,7 +1469,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="ps-lon2"
-              label="Hedef Boylamı"
+              label="Destination Longitude"
               value={planeInputs.lon2}
               onChange={(val) => setPlaneInputs({ ...planeInputs, lon2: val })}
               isLatitude={false}
@@ -1481,14 +1481,14 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="ml-lat1"
-              label="Başlangıç Enlemi"
+              label="Starting Latitude"
               value={midlatInputs.lat1}
               onChange={(val) => setMidlatInputs({ ...midlatInputs, lat1: val })}
               isLatitude={true}
             />
             <CoordinateInput
               id="ml-lon1"
-              label="Başlangıç Boylamı"
+              label="Starting Longitude"
               value={midlatInputs.lon1}
               onChange={(val) => setMidlatInputs({ ...midlatInputs, lon1: val })}
               isLatitude={false}
@@ -1502,7 +1502,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="ml-lon2"
-              label="Hedef Boylamı"
+              label="Destination Longitude"
               value={midlatInputs.lon2}
               onChange={(val) => setMidlatInputs({ ...midlatInputs, lon2: val })}
               isLatitude={false}
@@ -1556,14 +1556,14 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <CoordinateInput
               id="dr-lat"
-              label="Başlangıç Enlemi"
+              label="Starting Latitude"
               value={positionInputs.startLat}
               onChange={(val) => setPositionInputs({ ...positionInputs, startLat: val })}
               isLatitude={true}
             />
             <CoordinateInput
               id="dr-lon"
-              label="Başlangıç Boylamı"
+              label="Starting Longitude"
               value={positionInputs.startLon}
               onChange={(val) => setPositionInputs({ ...positionInputs, startLon: val })}
               isLatitude={false}
@@ -2394,11 +2394,11 @@ export default function NavigationCalculationPage() {
                     </thead>
                     <tbody>
                       {tideTable.map((row, i) => (
-                        <tr key={i} className={`border-b ${row.status === 'Yüksek Su' || row.status === 'Alçak Su' ? 'bg-primary/10' : ''}`}>
+                        <tr key={i} className={`border-b ${row.status === 'High Water' || row.status === 'Low Water' ? 'bg-primary/10' : ''}`}>
                           <td className="p-2 font-mono">{row.time}</td>
                           <td className="p-2 font-mono">{row.height.toFixed(2)}</td>
                           <td className="p-2 font-mono">{row.change > 0 ? '+' : ''}{row.change.toFixed(2)}</td>
-                          <td className={`p-2 ${row.status === 'Yükseliyor' ? 'text-green-600' : row.status === 'Alçalıyor' ? 'text-red-600' : 'text-blue-600'}`}>{row.status}</td>
+                          <td className={`p-2 ${row.status === 'Rising' ? 'text-green-600' : row.status === 'Falling' ? 'text-red-600' : 'text-blue-600'}`}>{row.status}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -2669,10 +2669,10 @@ export default function NavigationCalculationPage() {
               </div>
               <SolutionSteps
                 steps={[
-                  `Koordinatları ondalık dereceye çevir: φ1=${formatSigned(dmsToDecimal(gcInputs.lat1), 4)}°, λ1=${formatSigned(dmsToDecimal(gcInputs.lon1), 4)}°, φ2=${formatSigned(dmsToDecimal(gcInputs.lat2), 4)}°, λ2=${formatSigned(dmsToDecimal(gcInputs.lon2), 4)}°`,
-                  `Merkez açı (Δσ) = ${gcResults.distanceDeg.toFixed(4)}°`,
+                  `Convert the coordinates to decimal degrees: φ1=${formatSigned(dmsToDecimal(gcInputs.lat1), 4)}°, λ1=${formatSigned(dmsToDecimal(gcInputs.lon1), 4)}°, φ2=${formatSigned(dmsToDecimal(gcInputs.lat2), 4)}°, λ2=${formatSigned(dmsToDecimal(gcInputs.lon2), 4)}°`,
+                  `Central angle (Δσ) = ${gcResults.distanceDeg.toFixed(4)}°`,
                   `Mesafe = Δσ × 60 = ${gcResults.distanceDeg.toFixed(4)} × 60 = ${gcResults.distance.toFixed(2)} NM`,
-                  `İlk kerteriz = ${gcResults.initialCourse.toFixed(1)}°, varış kerterizi = ${gcResults.finalCourse.toFixed(1)}°`,
+                  `Initial bearing = ${gcResults.initialCourse.toFixed(1)}°, final bearing = ${gcResults.finalCourse.toFixed(1)}°`,
                   ...(gcResults.vertexLat !== null ? [`Vertex enlemi = ${formatDecimalAsDMS(gcResults.vertexLat, true)}`] : []),
                 ]}
               />
@@ -2723,11 +2723,12 @@ export default function NavigationCalculationPage() {
         const courseDeg = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, deltaPsi)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults.course.toFixed(1)}°`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Distance: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults.course.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
-                `Koordinatları ondalık dereceye çevir: φ1=${formatSigned(lat1, 4)}°, λ1=${formatSigned(lon1, 4)}°, φ2=${formatSigned(lat2, 4)}°, λ2=${formatSigned(lon2, 4)}°`,
-                `ΔLat = φ2 - φ1 = ${formatSigned(deltaLatDeg, 4)}°, ΔLon = ${formatSigned(deltaLonDeg, 4)}° (kısa yol düzeltmesi dahil)`,
+                `Convert the coordinates to decimal degrees: φ1=${formatSigned(lat1, 4)}°, λ1=${formatSigned(lon1, 4)}°, φ2=${formatSigned(lat2, 4)}°, λ2=${formatSigned(lon2, 4)}°`,
+                `ΔLat = φ2 - φ1 = ${formatSigned(deltaLatDeg, 4)}°, ΔLon = ${formatSigned(deltaLonDeg, 4)}° (including the short-way correction)`,
                 `Δψ = ln(tan(45+φ2/2) / tan(45+φ1/2)) = ${formatMaybeNumber(deltaPsi, 6)}`,
                 `q = Δφ / Δψ = ${formatMaybeNumber(q, 6)}`,
                 `Mesafe = 60 × √(ΔLat² + (q×ΔLon)²) = ${rhumbResults.distance.toFixed(2)} NM`,
@@ -2750,7 +2751,8 @@ export default function NavigationCalculationPage() {
         const distanceNm = Math.sqrt(dLatMin * dLatMin + depMin * depMin);
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\ndLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nKerteriz: ${planeResults.courseDeg.toFixed(1)}°\nMesafe: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+dLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nKerteriz: ${planeResults.courseDeg.toFixed(1)}°\nMesafe: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
             <SolutionSteps
               steps={[
                 `Ortalama enlem: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
@@ -2777,7 +2779,8 @@ export default function NavigationCalculationPage() {
         const distanceNm = Math.sqrt(dLatMin * dLatMin + departureMin * departureMin);
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMin.toFixed(2)}′\ndLong: ${midlatResults.dLongMin.toFixed(2)}′\nDeparture: ${midlatResults.departureMin.toFixed(2)}′\nKurs: ${midlatResults.courseDeg.toFixed(1)}°\nMesafe: ${midlatResults.distanceNm.toFixed(2)} NM`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMin.toFixed(2)}′\ndLong: ${midlatResults.dLongMin.toFixed(2)}′\nDeparture: ${midlatResults.departureMin.toFixed(2)}′\nKurs: ${midlatResults.courseDeg.toFixed(1)}°\nMesafe: ${midlatResults.distanceNm.toFixed(2)} NM`}</pre>
             <SolutionSteps
               steps={[
                 `Ortalama enlem: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
@@ -2840,7 +2843,7 @@ export default function NavigationCalculationPage() {
         const speed = parseNumber(basicInputs.speedKn);
         const timeHours = parseNumber(basicInputs.timeHours);
         const solved = basicResults.solved;
-        const steps = [`Temel formül: D = V × T, V = D / T, T = D / V`];
+        const steps = [`Basic formula: D = V × T, V = D / T, T = D / V`];
         if (distance === undefined && speed !== undefined && timeHours !== undefined) {
           steps.push(`D = V × T = ${speed} × ${timeHours} = ${solved.distanceNm.toFixed(2)} NM`);
         } else if (speed === undefined && distance !== undefined && timeHours !== undefined) {
@@ -2852,23 +2855,30 @@ export default function NavigationCalculationPage() {
         }
         if (basicResults.converted !== null) {
           const unitLabels: Record<string, string> = { kn: "kn", kmh: "km/h", ms: "m/s" };
-          steps.push(`Dönüşüm: ${basicInputs.convertValue} ${unitLabels[basicInputs.convertFrom]} → ${basicResults.converted.toFixed(4)} ${unitLabels[basicInputs.convertTo]}`);
+          steps.push(`Conversion: ${basicInputs.convertValue} ${unitLabels[basicInputs.convertFrom]} → ${basicResults.converted.toFixed(4)} ${unitLabels[basicInputs.convertTo]}`);
         }
         if (basicResults.etaUtcIso) {
           steps.push(`ETA = ETD + T = ${basicInputs.etdUtc}Z + ${solved.timeHours.toFixed(3)} h = ${basicResults.etaUtcIso}`);
         }
         if (basicResults.remaining) {
           steps.push(`Kalan mesafe = Planlanan - DMG = ${basicInputs.plannedTotalNm} - ${basicInputs.dmgNm} = ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM`);
-          steps.push(`Kalan süre = Kalan mesafe / SOG = ${basicResults.remaining.remainingDistanceNm.toFixed(2)} / ${basicInputs.sogKn} = ${basicResults.remaining.remainingTimeHours.toFixed(2)} h`);
+          steps.push(`Time remaining = Distance remaining / SOG = ${basicResults.remaining.remainingDistanceNm.toFixed(2)} / ${basicInputs.sogKn} = ${basicResults.remaining.remainingTimeHours.toFixed(2)} h`);
         }
         if (basicResults.timeConv) {
           steps.push(`ZT = UTC + ZD = ${basicResults.timeConv.utcIso} + ${basicResults.timeConv.zoneOffsetHours}h = ${basicResults.timeConv.zoneIso}`);
-          steps.push(`Boylam zamanı: ${basicResults.timeConv.lonDeg.toFixed(2)}° → ${basicResults.timeConv.lonMinutes.toFixed(1)} dk`);
-          steps.push(`LMT = UTC + boylam dakikası = ${basicResults.timeConv.lmtIso}`);
+          steps.push(`Longitude time: ${basicResults.timeConv.lonDeg.toFixed(2)}° → ${basicResults.timeConv.lonMinutes.toFixed(1)} dk`);
+          steps.push(`LMT = UTC + longitude in minutes = ${basicResults.timeConv.lmtIso}`);
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${basicResults.solved.distanceNm.toFixed(2)} NM\nHız: ${basicResults.solved.speedKn.toFixed(2)} kn\nZaman: ${basicResults.solved.timeHours.toFixed(3)} h (${basicResults.timeHhMm.hh}h ${basicResults.timeHhMm.mm}m)\n${basicResults.converted !== null ? `\nDönüşüm: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso ? `\nETA (UTC): ${basicResults.etaUtcIso}` : ""}${basicResults.remaining ? `\n\nKalan Mesafe: ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM\nKalan Süre: ${basicResults.remaining.remainingTimeHours.toFixed(2)} h` : ""}${basicResults.timeConv ? `\n\nZaman Dönüşümü:\nUTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} dakika\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Distance: ${basicResults.solved.distanceNm.toFixed(2)} NM
+Speed: ${basicResults.solved.speedKn.toFixed(2)} kn\nZaman: ${basicResults.solved.timeHours.toFixed(3)} h (${basicResults.timeHhMm.hh}h ${basicResults.timeHhMm.mm}m)\n${basicResults.converted !== null ? `
+Conversion: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso ? `\nETA (UTC): ${basicResults.etaUtcIso}` : ""}${basicResults.remaining ? `\n\nKalan Mesafe: ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM
+Time Remaining: ${basicResults.remaining.remainingTimeHours.toFixed(2)} h` : ""}${basicResults.timeConv ? `
+
+Time Conversion:
+UTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} dakika\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
             <SolutionSteps steps={steps} />
           </div>
         );
@@ -2887,10 +2897,11 @@ export default function NavigationCalculationPage() {
         const headingDeg = normalizeAngle(toDegrees(desiredRad + Math.asin(clamped)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nCTS: ${currentResults.courseToSteerDeg.toFixed(1)}°\nSOG: ${currentResults.groundSpeedKn.toFixed(2)} kn`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+CTS: ${currentResults.courseToSteerDeg.toFixed(1)}°\nSOG: ${currentResults.groundSpeedKn.toFixed(2)} kn`}</pre>
             <SolutionSteps
               steps={[
-                `Akıntı bileşenleri: Cx = drift×sin(set) = ${drift.toFixed(2)}×sin(${set.toFixed(1)}°) = ${Cx.toFixed(3)}, Cy = drift×cos(set) = ${Cy.toFixed(3)}`,
+                `Current components: Cx = drift×sin(set) = ${drift.toFixed(2)}×sin(${set.toFixed(1)}°) = ${Cx.toFixed(3)}, Cy = drift×cos(set) = ${Cy.toFixed(3)}`,
                 `RHS = (Cy·sinD − Cx·cosD)/V = ${rhs.toFixed(4)} (D=${course.toFixed(1)}°, V=${speed.toFixed(2)} kn)`,
                 `CTS = D + asin(RHS) = ${headingDeg.toFixed(1)}°`,
                 `SOG = proje( Vgemi + C ) = ${currentResults.groundSpeedKn.toFixed(2)} kn`,
@@ -2905,7 +2916,8 @@ export default function NavigationCalculationPage() {
         const deviation = parseSignedAngleEW(compassInputs.deviation);
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç (TVMDC):\nCompass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.magneticDeg.toFixed(1)}°\nTrue: ${compassResults.trueDeg.toFixed(1)}°\nCompass Error (Var+Dev): ${compassResults.compassErrorDeg.toFixed(1)}°\nToplam Hata: ${compassResults.totalError.toFixed(1)}°`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result (TVMDC):
+Compass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.magneticDeg.toFixed(1)}°\nTrue: ${compassResults.trueDeg.toFixed(1)}°\nCompass Error (Var+Dev): ${compassResults.compassErrorDeg.toFixed(1)}°\nToplam Hata: ${compassResults.totalError.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `Sapma (Dev) = ${formatSigned(deviation ?? 0, 1)}°, Sapma (Var) = ${formatSigned(variation ?? 0, 1)}°`,
@@ -2939,13 +2951,14 @@ export default function NavigationCalculationPage() {
         const cpaY = R0y + Vry * tcpaHours;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nCPA Mesafesi: ${cpaResults.cpaNm.toFixed(2)} nm\nTCPA: ${cpaResults.tcpaMin.toFixed(1)} dk`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+CPA Distance: ${cpaResults.cpaNm.toFixed(2)} nm\nTCPA: ${cpaResults.tcpaMin.toFixed(1)} dk`}</pre>
             <SolutionSteps
               steps={[
-                `Başlangıç relatif konum: R0x = d×sin(Brg) = ${distance.toFixed(2)}×sin(${bearing.toFixed(1)}°) = ${R0x.toFixed(3)}, R0y = d×cos(Brg) = ${R0y.toFixed(3)}`,
-                `Relatif hız: Vr = Vt - Vo → Vrx=${Vrx.toFixed(3)}, Vry=${Vry.toFixed(3)}`,
+                `Initial relative position: R0x = d×sin(Brg) = ${distance.toFixed(2)}×sin(${bearing.toFixed(1)}°) = ${R0x.toFixed(3)}, R0y = d×cos(Brg) = ${R0y.toFixed(3)}`,
+                `Relative velocity: Vr = Vt - Vo → Vrx=${Vrx.toFixed(3)}, Vry=${Vry.toFixed(3)}`,
                 `TCPA (h) = - (R0·Vr) / |Vr|² = ${tcpaHours.toFixed(3)} h = ${(tcpaHours * 60).toFixed(1)} dk`,
-                `CPA vektörü: Rcpa = R0 + Vr×TCPA → CPA = √(x²+y²) = ${Math.sqrt(cpaX * cpaX + cpaY * cpaY).toFixed(2)} NM`,
+                `CPA vector: Rcpa = R0 + Vr×TCPA → CPA = √(x²+y²) = ${Math.sqrt(cpaX * cpaX + cpaY * cpaY).toFixed(2)} NM`,
               ]}
             />
           </div>
@@ -2964,14 +2977,15 @@ export default function NavigationCalculationPage() {
         const vry = (r2y - r1y) / dtHours;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nRelative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed: ${radarResults2.relativeSpeedKn.toFixed(2)} kn\n\nTarget Course (T): ${radarResults2.targetCourseTrueDeg.toFixed(1)}°\nTarget Speed: ${radarResults2.targetSpeedKn.toFixed(2)} kn\n\nCPA: ${radarResults2.cpaNm.toFixed(2)} NM\nTCPA: ${radarResults2.tcpaMin.toFixed(1)} min`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Relative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed: ${radarResults2.relativeSpeedKn.toFixed(2)} kn\n\nTarget Course (T): ${radarResults2.targetCourseTrueDeg.toFixed(1)}°\nTarget Speed: ${radarResults2.targetSpeedKn.toFixed(2)} kn\n\nCPA: ${radarResults2.cpaNm.toFixed(2)} NM\nTCPA: ${radarResults2.tcpaMin.toFixed(1)} min`}</pre>
             <SolutionSteps
               steps={[
                 `Δt = ${dtHours.toFixed(3)} h (plot2 - plot1)`,
-                `Relatif yer değişimi: r1=(${r1x.toFixed(2)}, ${r1y.toFixed(2)}), r2=(${r2x.toFixed(2)}, ${r2y.toFixed(2)})`,
-                `Relatif hız: Vr = (r2−r1)/Δt = (${vrx.toFixed(2)}, ${vry.toFixed(2)}) kn`,
-                `Relatif rota/sürat: ${radarResults2.relativeCourseDeg.toFixed(1)}° / ${radarResults2.relativeSpeedKn.toFixed(2)} kn`,
-                `Hedef gerçek rota/sürat = Vr + Vo → ${radarResults2.targetCourseTrueDeg.toFixed(1)}° / ${radarResults2.targetSpeedKn.toFixed(2)} kn`,
+                `Relative displacement: r1=(${r1x.toFixed(2)}, ${r1y.toFixed(2)}), r2=(${r2x.toFixed(2)}, ${r2y.toFixed(2)})`,
+                `Relative velocity: Vr = (r2−r1)/Δt = (${vrx.toFixed(2)}, ${vry.toFixed(2)}) kn`,
+                `Relative course/speed: ${radarResults2.relativeCourseDeg.toFixed(1)}° / ${radarResults2.relativeSpeedKn.toFixed(2)} kn`,
+                `Target true course/speed = Vr + Vo → ${radarResults2.targetCourseTrueDeg.toFixed(1)}° / ${radarResults2.targetSpeedKn.toFixed(2)} kn`,
               ]}
             />
           </div>
@@ -2986,8 +3000,8 @@ export default function NavigationCalculationPage() {
             <SolutionSteps
               steps={[
                 `Relatif kerteriz (normalize) = ${rb.toFixed(1)}°`,
-                `Sektörler: Head-on 0±5°, Crossing sancağım 0–112.5°, Overtaking 112.5–247.5°, Crossing iskelem 247.5–360°`,
-                `Sınıflandırma → ${colregResults.situation}`,
+                `Sectors: Head-on 0±5°, Crossing from starboard 0-112.5°, Overtaking 112.5-247.5°, Crossing from port 247.5-360°`,
+                `Classification → ${colregResults.situation}`,
               ]}
             />
           </div>
@@ -3006,7 +3020,8 @@ export default function NavigationCalculationPage() {
         const azimuthDeg = normalizeAngle(toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ)))));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nHesaplanan Yükseklik: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Calculated Height: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA)`,
@@ -3094,7 +3109,7 @@ export default function NavigationCalculationPage() {
           const finalAngle = 2 * angleDeg;
           const distanceOff = runNm * Math.sin(toRadians(2 * angleDeg)) / Math.sin(toRadians(finalAngle));
           bearingSteps = [
-            `Final kerteriz = 2×ilk kerteriz = ${finalAngle.toFixed(1)}°`,
+            `Final bearing = 2×initial bearing = ${finalAngle.toFixed(1)}°`,
             `Mesafe off = run × sin(2θ) / sin(final) = ${runNm.toFixed(2)} × sin(${(2 * angleDeg).toFixed(1)}°) / sin(${finalAngle.toFixed(1)}°) = ${distanceOff.toFixed(2)} NM`,
           ];
         } else if (bearingInputs.type === "four") {
@@ -3104,7 +3119,8 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe Off: ${bearingResults.distanceOffNm.toFixed(2)} nm`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Distance Off: ${bearingResults.distanceOffNm.toFixed(2)} nm`}</pre>
             <SolutionSteps steps={bearingSteps} />
           </div>
         );
@@ -3113,25 +3129,27 @@ export default function NavigationCalculationPage() {
         if (!fixResults) return null;
         const fixSteps: string[] = [];
         if (fixResults.fix) {
-          fixSteps.push("İki kerterizde LOP'lar yerel düzleme çevrilir (x=Δlon×60×cosφm, y=Δlat×60) ve kesişim noktası fix olarak alınır.");
-          fixSteps.push(`Kesişim açısı = ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°`);
+          fixSteps.push("For two bearings the LOPs are converted to the local plane (x=Δlon×60×cosφm, y=Δlat×60) and the intersection point is taken as the fix.");
+          fixSteps.push(`Intersection angle = ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°`);
         }
         if (fixResults.three) {
-          fixSteps.push("Üç LOP için least-squares ile en iyi nokta bulunur; residual = en küçük hata.");
+          fixSteps.push("For three LOPs the best point is found by least squares; residual = smallest error.");
           fixSteps.push(`Residual = ${fixResults.three.residualNm.toFixed(2)} NM`);
         }
         if (fixResults.bearingDistance) {
-          fixSteps.push("Kerteriz doğrusu ile mesafe çemberi kesiştirilir.");
+          fixSteps.push("The bearing line is intersected with the distance circle.");
         }
         if (fixResults.twoDistances) {
-          fixSteps.push("İki mesafe çemberi kesişiminden uygun aday seçilir (opsiyonel yaklaşık mevki).");
+          fixSteps.push("The suitable candidate is chosen from the intersection of two distance circles (optional approximate position).");
         }
         if (fixResults.running) {
-          fixSteps.push(`Running fix: İlk LOP, run course ${fixInputs.runCourse}° doğrultusunda ${fixInputs.runDistance} NM paralel taşınır ve ikinci LOP ile kesişir.`);
+          fixSteps.push(`Running fix: the first LOP is transferred parallel along run course ${fixInputs.runCourse}° by ${fixInputs.runDistance} NM and intersected with the second LOP.`);
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`${fixResults.fix ? `İki Kerteriz Fix:\nLat: ${formatDecimalAsDMS(fixResults.fix.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.fix.fix.lonDeg, false)}\nIntersection angle: ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.three ? `Üç Kerteriz Fix (LS):\nLat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.three.fix.lonDeg, false)}\nResidual: ${fixResults.three.residualNm.toFixed(2)} NM\nBest intersection angle: ${fixResults.three.bestIntersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.bearingDistance ? `1 Kerteriz + 1 Mesafe:\nLat: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.lonDeg, false)}\n\n` : ""}${fixResults.twoDistances ? `2 Mesafe Fix:\nLat: ${formatDecimalAsDMS(fixResults.twoDistances.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.twoDistances.fix.lonDeg, false)}\nCandidates: ${fixResults.twoDistances.candidates.length}\n\n` : ""}${fixResults.running ? `Running Fix:\nLat: ${formatDecimalAsDMS(fixResults.running.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.running.fix.lonDeg, false)}\nIntersection angle: ${fixResults.running.intersectionAngleDeg.toFixed(1)}°` : ""}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`${fixResults.fix ? `Two-Bearing Fix:
+Lat: ${formatDecimalAsDMS(fixResults.fix.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.fix.fix.lonDeg, false)}\nIntersection angle: ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.three ? `Three-Bearing Fix (LS):
+Lat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.three.fix.lonDeg, false)}\nResidual: ${fixResults.three.residualNm.toFixed(2)} NM\nBest intersection angle: ${fixResults.three.bestIntersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.bearingDistance ? `1 Kerteriz + 1 Mesafe:\nLat: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.lonDeg, false)}\n\n` : ""}${fixResults.twoDistances ? `2 Mesafe Fix:\nLat: ${formatDecimalAsDMS(fixResults.twoDistances.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.twoDistances.fix.lonDeg, false)}\nCandidates: ${fixResults.twoDistances.candidates.length}\n\n` : ""}${fixResults.running ? `Running Fix:\nLat: ${formatDecimalAsDMS(fixResults.running.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.running.fix.lonDeg, false)}\nIntersection angle: ${fixResults.running.intersectionAngleDeg.toFixed(1)}°` : ""}`}</pre>
             {fixSteps.length > 0 && <SolutionSteps steps={fixSteps} />}
           </div>
         );
@@ -3148,11 +3166,12 @@ export default function NavigationCalculationPage() {
           distanceSteps.push(`Radar ufku = 2.35 × √H = 2.35 × √${heightM.toFixed(2)} = ${distanceResults.distanceNm.toFixed(2)} NM`);
         }
         if (distanceInputs.type === "light") {
-          distanceSteps.push(`Işık mesafesi = 1.17 × (√H + √h) = 1.17 × (√${heightM.toFixed(2)} + √${lightHeightM.toFixed(2)}) = ${distanceResults.distanceNm.toFixed(2)} NM`);
+          distanceSteps.push(`Range of light = 1.17 × (√H + √h) = 1.17 × (√${heightM.toFixed(2)} + √${lightHeightM.toFixed(2)}) = ${distanceResults.distanceNm.toFixed(2)} NM`);
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${distanceResults.distanceNm.toFixed(2)} nm`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Distance: ${distanceResults.distanceNm.toFixed(2)} nm`}</pre>
             {distanceSteps.length > 0 && <SolutionSteps steps={distanceSteps} />}
           </div>
         );
@@ -3163,22 +3182,23 @@ export default function NavigationCalculationPage() {
         if (tideResults) {
           const hour = parseFloat(tideInputs.hour);
           const range = parseFloat(tideInputs.range);
-          tideSteps.push(`Rule of Twelfths: ${hour} saat → ${((tideResults.fractionOfRange ?? 0) * 100).toFixed(0)}% aralık`);
-          tideSteps.push(`Yükseklik = oran × aralık = ${range.toFixed(2)} × ${tideResults.fractionOfRange.toFixed(3)} = ${tideResults.heightM.toFixed(2)} m`);
+          tideSteps.push(`Rule of Twelfths: ${hour} hours → ${((tideResults.fractionOfRange ?? 0) * 100).toFixed(0)}% of range`);
+          tideSteps.push(`Height = ratio × range = ${range.toFixed(2)} × ${tideResults.fractionOfRange.toFixed(3)} = ${tideResults.heightM.toFixed(2)} m`);
         }
         if (tideHotResults) {
-          tideSteps.push(`HW/LW yöntemi: oran (twelfths) = ${tideHotResults.fractionOfRange.toFixed(3)}, yükseklik = ${tideHotResults.heightM.toFixed(2)} m (${tideHotResults.stage})`);
+          tideSteps.push(`HW/LW method: ratio (twelfths) = ${tideHotResults.fractionOfRange.toFixed(3)}, height = ${tideHotResults.heightM.toFixed(2)} m (${tideHotResults.stage})`);
         }
         if (ukcResults) {
           const hotHeight = tideHotResults ? tideHotResults.heightM.toFixed(2) : "0.00";
           tideSteps.push(`UKC = Charted + HOT − Draft − Squat − Margin = ${ukcInputs.chartedDepthM} + ${hotHeight} − ${ukcInputs.draftM} − ${ukcResults.squatM.toFixed(2)} − ${ukcInputs.safetyMarginM || 0}`);
         }
         if (tidalStreamResults) {
-          tideSteps.push(`Akıntı: set ${tidalStreamResults.setDeg.toFixed(0)}°, rate ${tidalStreamResults.rateKn.toFixed(2)} kn (max ${tidalStreamResults.maxRateKn.toFixed(2)} kn)`);
+          tideSteps.push(`Current: set ${tidalStreamResults.setDeg.toFixed(0)}°, rate ${tidalStreamResults.rateKn.toFixed(2)} kn (max ${tidalStreamResults.maxRateKn.toFixed(2)} kn)`);
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rule of Twelfths:\nYükseklik: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of Tide:\n${tideHotResults ? `Height: ${tideHotResults.heightM.toFixed(2)} m\nStage: ${tideHotResults.stage}\n` : "—\n"}\nUKC:\n${ukcResults ? `Squat: ${ukcResults.squatM.toFixed(2)} m\nUKC: ${ukcResults.ukcM.toFixed(2)} m\nSafe: ${ukcResults.isSafe ? "Yes" : "No"}` : "—"}\n\nTidal Stream:\n${tidalStreamResults ? `Set: ${tidalStreamResults.setDeg.toFixed(0)}°\nRate: ${tidalStreamResults.rateKn.toFixed(2)} kn\nMax: ${tidalStreamResults.maxRateKn.toFixed(2)} kn\nFactor: ${(tidalStreamResults.springNeapFactor * 100).toFixed(0)}%` : "—"}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rule of Twelfths:
+Height: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of Tide:\n${tideHotResults ? `Height: ${tideHotResults.heightM.toFixed(2)} m\nStage: ${tideHotResults.stage}\n` : "—\n"}\nUKC:\n${ukcResults ? `Squat: ${ukcResults.squatM.toFixed(2)} m\nUKC: ${ukcResults.ukcM.toFixed(2)} m\nSafe: ${ukcResults.isSafe ? "Yes" : "No"}` : "—"}\n\nTidal Stream:\n${tidalStreamResults ? `Set: ${tidalStreamResults.setDeg.toFixed(0)}°\nRate: ${tidalStreamResults.rateKn.toFixed(2)} kn\nMax: ${tidalStreamResults.maxRateKn.toFixed(2)} kn\nFactor: ${(tidalStreamResults.springNeapFactor * 100).toFixed(0)}%` : "—"}`}</pre>
             {tideSteps.length > 0 && <SolutionSteps steps={tideSteps} />}
           </div>
         );
@@ -3237,8 +3257,8 @@ export default function NavigationCalculationPage() {
               <SolutionSteps
                 title="Leg ETA Adımları"
                 steps={[
-                  "Her leg için süre = Mesafe / SOG (saat).",
-                  "ETA = Leg başlangıcı + süre.",
+                  "Time for each leg = Distance / SOG (hours).",
+                  "ETA = leg start + duration.",
                   `Toplam mesafe = ΣLeg mesafe = ${passageResults.totalDistanceNm.toFixed(2)} NM`,
                 ]}
               />
@@ -3252,7 +3272,7 @@ export default function NavigationCalculationPage() {
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`XTD: ${ecdisResults.xtd.xtdNm.toFixed(3)} NM\nSide: ${ecdisResults.xtd.side}\nAlong-track: ${ecdisResults.xtd.alongTrackNm.toFixed(2)} NM\n\nLook-ahead distance: ${ecdisResults.look.lookAheadDistanceNm.toFixed(2)} NM`}</pre>
             <SolutionSteps
               steps={[
-                "XTD: mevki → rota bacağına en kısa dik mesafe (yerel düzlem projeksiyonu).",
+                "XTD: the shortest perpendicular distance from the position to the route leg (local plane projection).",
                 `Along-track = ${ecdisResults.xtd.alongTrackNm.toFixed(2)} NM, Side = ${ecdisResults.xtd.side}`,
                 `Look-ahead = SOG × time = ${ecdisInputs.sogKn} × ${ecdisInputs.lookAheadMin} / 60 = ${ecdisResults.look.lookAheadDistanceNm.toFixed(2)} NM`,
               ]}
@@ -3271,11 +3291,12 @@ export default function NavigationCalculationPage() {
         const rot = 3438 * (speedKn * 0.514444) / radius;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nTactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${turningResults.advanceM.toFixed(0)} m\nTransfer: ${turningResults.transferM.toFixed(0)} m\nROT: ${turningResults.rotDegPerMin.toFixed(1)} °/min`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
+Tactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${turningResults.advanceM.toFixed(0)} m\nTransfer: ${turningResults.transferM.toFixed(0)} m\nROT: ${turningResults.rotDegPerMin.toFixed(1)} °/min`}</pre>
             <SolutionSteps
               steps={[
                 `Tactical Diameter = 3.5 × L = 3.5 × ${shipLength.toFixed(1)} = ${tacticalDiameter.toFixed(0)} m`,
-                `Yarıçap = TD/2 = ${radius.toFixed(0)} m`,
+                `Radius = TD/2 = ${radius.toFixed(0)} m`,
                 `Advance = R × sin(Δψ/2) = ${advance.toFixed(0)} m`,
                 `Transfer = R × (1 − cos(Δψ/2)) = ${transfer.toFixed(0)} m`,
                 `ROT = 3438 × (V (m/s)) / R = ${rot.toFixed(1)} °/min`,
@@ -3291,8 +3312,8 @@ export default function NavigationCalculationPage() {
           const bf = parseFloat(weatherInputs.beaufort);
           const windSpeed = 2 * Math.sqrt(Math.pow(bf, 3));
           const waveHeight = 0.025 * Math.pow(windSpeed, 2);
-          weatherSteps.push(`Rüzgar hızı (Bft) = 2 × √(B³) = 2 × √(${bf}³) = ${windSpeed.toFixed(1)} kn`);
-          weatherSteps.push(`Dalga yüksekliği = 0.025 × V² = 0.025 × ${windSpeed.toFixed(1)}² = ${waveHeight.toFixed(1)} m`);
+          weatherSteps.push(`Wind speed (Bft) = 2 × √(B³) = 2 × √(${bf}³) = ${windSpeed.toFixed(1)} kn`);
+          weatherSteps.push(`Wave height = 0.025 × V² = 0.025 × ${windSpeed.toFixed(1)}² = ${waveHeight.toFixed(1)} m`);
         }
         if (weatherInputs.windSpeed && weatherInputs.shipSpeed) {
           const wind = parseFloat(weatherInputs.windSpeed);
@@ -3304,11 +3325,11 @@ export default function NavigationCalculationPage() {
           const wind = parseFloat(weatherInputs.windSpeed);
           const area = parseFloat(weatherInputs.windArea);
           const force = 0.00338 * Math.pow(wind, 2) * area;
-          weatherSteps.push(`Rüzgar kuvveti = 0.00338 × V² × A = 0.00338 × ${wind}² × ${area} = ${force.toFixed(0)} N`);
+          weatherSteps.push(`Wind force = 0.00338 × V² × A = 0.00338 × ${wind}² × ${area} = ${force.toFixed(0)} N`);
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${weatherResults.windSpeedKn ? `Beaufort Rüzgar Hızı: ${weatherResults.windSpeedKn.toFixed(1)} knot\n` : ''}${weatherResults.waveHeightM ? `Dalga Yüksekliği: ${weatherResults.waveHeightM.toFixed(1)} m\n` : ''}${weatherResults.leewayAngleDeg ? `Leeway Açısı: ${weatherResults.leewayAngleDeg.toFixed(1)}°\n` : ''}${weatherResults.windForceN ? `Rüzgar Kuvveti: ${weatherResults.windForceN.toFixed(0)} N` : ''}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${weatherResults.windSpeedKn ? `Beaufort Wind Speed: ${weatherResults.windSpeedKn.toFixed(1)} knot\n` : ''}${weatherResults.waveHeightM ? `Wave Height: ${weatherResults.waveHeightM.toFixed(1)} m\n` : ''}${weatherResults.leewayAngleDeg ? `Leeway Angle: ${weatherResults.leewayAngleDeg.toFixed(1)}°\n` : ''}${weatherResults.windForceN ? `Rüzgar Kuvveti: ${weatherResults.windForceN.toFixed(0)} N` : ''}`}</pre>
             {weatherSteps.length > 0 && <SolutionSteps steps={weatherSteps} />}
           </div>
         );
@@ -3325,12 +3346,12 @@ export default function NavigationCalculationPage() {
           celestialSteps.push(`Amplitude = asin(sinδ / cosφ) = asin(sin${decDeg.toFixed(2)} / cos${latDeg.toFixed(2)}) = ${celestialResults.amplitudeDeg.toFixed(2)}°`);
         }
         if (celestialInputs.type === "sunrise" && celestialResults.bearingDeg !== undefined) {
-          celestialSteps.push(`Doğuş kerterizi = acos(−tanφ×tanδ) = ${celestialResults.bearingDeg.toFixed(1)}°`);
+          celestialSteps.push(`Amplitude at rising = acos(−tanφ×tanδ) = ${celestialResults.bearingDeg.toFixed(1)}°`);
         }
         return (
           <div className="space-y-3">
             <div className="space-y-2">
-              <div className="font-semibold text-primary" data-translatable>Celestial Navigation Sonuçları:</div>
+              <div className="font-semibold text-primary" data-translatable>Celestial Navigation Results:</div>
               <div className="space-y-1 text-sm">
                 {celestialInputs.type === 'meridian' && celestialResults.latitudeDeg !== undefined && (
                   <div>
@@ -3363,10 +3384,10 @@ export default function NavigationCalculationPage() {
           emergencySteps.push(`Square search: leg = 2 × track spacing = 2 × ${emergencyInputs.trackSpacing} = ${emergencyResults.legDistanceNm.toFixed(2)} NM`);
         }
         if (emergencyInputs.type === "sector" && emergencyResults.newRadiusNm !== undefined) {
-          emergencySteps.push(`Sector search: yeni yarıçap = R × √2 = ${emergencyInputs.radius} × 1.414 = ${emergencyResults.newRadiusNm.toFixed(2)} NM`);
+          emergencySteps.push(`Sector search: new radius = R × √2 = ${emergencyInputs.radius} × 1.414 = ${emergencyResults.newRadiusNm.toFixed(2)} NM`);
         }
         if (emergencyResults.timeToRescueHours !== undefined) {
-          emergencySteps.push(`Kurtarma zamanı = Mesafe / (Vrescue + Vdrift) = ${emergencyInputs.distance} / (${emergencyInputs.rescueSpeed} + ${emergencyInputs.driftSpeed}) = ${emergencyResults.timeToRescueHours.toFixed(2)} h`);
+          emergencySteps.push(`Rescue time = Distance / (Vrescue + Vdrift) = ${emergencyInputs.distance} / (${emergencyInputs.rescueSpeed} + ${emergencyInputs.driftSpeed}) = ${emergencyResults.timeToRescueHours.toFixed(2)} h`);
         }
         return (
           <div className="space-y-3">

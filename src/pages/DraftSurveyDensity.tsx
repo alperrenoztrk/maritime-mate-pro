@@ -85,8 +85,7 @@ const DraftSurveyDensity = () => {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Deniz suyunun yoğunluğu coğrafi konuma, sıcaklığa ve tuzluluk oranına göre değişir.
-              Bu hesaplama, geminin farklı yoğunluktaki sularda nasıl davranacağını belirlemek için kullanılır.
+              The density of seawater varies with geographic location, temperature and salinity. This calculation is used to determine how the ship will behave in waters of different densities.
             </p>
           </CardContent>
         </CalculationCard>

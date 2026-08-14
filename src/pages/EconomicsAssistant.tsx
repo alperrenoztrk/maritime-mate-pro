@@ -2,25 +2,25 @@ import { TrendingUp } from "lucide-react";
 import { AssistantInterface } from "@/components/AssistantInterface";
 
 const quickPrompts = [
-  "Voyage charter ile time charter arasındaki maliyet ve risk farklarını özetler misin?",
-  "Bir sefer için TCE (Time Charter Equivalent) hesabını adım adım nasıl yaparım?",
-  "Laytime, demurrage ve despatch hesaplamalarını örnekle açıklar mısın?",
-  "NOR (Notice of Readiness) ne zaman geçerlidir ve laytime sayımını nasıl başlatır?",
-  "Bunker maliyeti ve slow steaming'in sefer ekonomisine etkisini değerlendirir misin?",
-  "Incoterms 2020 kapsamında FOB, CFR ve CIF arasındaki fark ve risk devri nedir?",
+  "Can you summarise the cost and risk differences between a voyage charter and a time charter?",
+  "How do I work out the TCE (Time Charter Equivalent) for a voyage, step by step?",
+  "Can you explain laytime, demurrage and despatch calculations with an example?",
+  "When is a NOR (Notice of Readiness) valid and how does it start the laytime count?",
+  "Can you assess the effect of bunker cost and slow steaming on voyage economics?",
+  "Under Incoterms 2020, what is the difference between FOB, CFR and CIF and how does risk transfer?",
 ];
 
-const systemPrompt = `Sen denizcilik alanında ticari operasyonlar ve deniz işletmeciliği uzmanı bir asistansın.
-Charter party türleri (voyage, time, bareboat, COA), navlun ve TCE hesapları, laytime/demurrage/despatch, NOR, sefer tahmini (voyage estimation), bunker/yakıt yönetimi, gemi finansmanı ve değerleme, deniz sigortası (H&M, P&I), müşterek avarya, konişmento (Bill of Lading), Hague-Visby kuralları, Incoterms 2020 ve BIMCO standart formları konularında bilgi sahibisin.
-Yanıtlarını maddeler halinde, uygulanabilir ve mümkün olduğunda hesap adımlarıyla ver.
-Hukuki atıfları (Hague-Visby, Incoterms 2020, York-Antwerp Kuralları, BIMCO formları) koru; uydurma sayısal eşik verme, belirsizse varsayımlarını açıkça belirt.
-Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
+const systemPrompt = `You are an assistant specialised in commercial operations and shipping business in the maritime field.
+You are knowledgeable about charter party types (voyage, time, bareboat, COA), freight and TCE calculations, laytime/demurrage/despatch, NOR, voyage estimation, bunker/fuel management, ship finance and valuation, marine insurance (H&M, P&I), general average, the Bill of Lading, the Hague-Visby Rules, Incoterms 2020 and BIMCO standard forms.
+Give your answers as bullet points, applicable and, where possible, with the calculation steps.
+Preserve the legal references (Hague-Visby, Incoterms 2020, York-Antwerp Rules, BIMCO forms); do not invent numerical thresholds, and state your assumptions explicitly when something is uncertain.
+Detect the language the user asked the question in and answer in that same language.`;
 
 export default function EconomicsAssistantPage() {
   return (
     <AssistantInterface
       title="Ticari Operasyonlar Asistanı"
-      badge="Deniz İşletmeciliği Asistanı"
+      badge="Shipping Business Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
       placeholder="Charter, navlun/TCE, laytime/demurrage veya sefer ekonomisi ile ilgili sorunuzu yazın..."

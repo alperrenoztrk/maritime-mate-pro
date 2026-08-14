@@ -66,7 +66,7 @@ export function TopicExerciseQuestionSet({
         </div>
         <h2 className="min-w-0 flex-1 font-bold text-foreground">Topic Exercises</h2>
         <span className="rounded-full bg-violet-500/15 px-2.5 py-1 text-xs font-semibold text-violet-700 dark:text-violet-300">
-          {questions.length} soru
+          {questions.length} questions
         </span>
       </div>
 

@@ -189,7 +189,7 @@ export default function StabilityGrainCalculationPage() {
       id: "cargo",
       label: "Yüklenebilir Tahıl",
       value: loadableResult ? `${loadableResult.loadable} ton` : "—",
-      helper: "Δ - (Lightship + tüketimler)",
+      helper: "Δ - (Lightship + consumables)",
       status: null
     },
     {
@@ -370,7 +370,7 @@ export default function StabilityGrainCalculationPage() {
                             <AlertDescription>
                               <p className="font-semibold">W = V / SF</p>
                               <p className="text-lg font-bold text-purple-700">
-                                Maksimum Yük = {maxWeight} ton
+                                Maximum Load = {maxWeight} ton
                               </p>
                             </AlertDescription>
                           </Alert>
@@ -408,7 +408,7 @@ export default function StabilityGrainCalculationPage() {
                             <AlertDescription>
                               <p className="font-semibold">Kullanılabilir Hacim = Ambar Hacmi × (1 - BS)</p>
                               <p className="text-lg font-bold text-amber-700">
-                                Kullanılabilir Hacim = {usableVolume} m³
+                                Usable Volume = {usableVolume} m³
                               </p>
                             </AlertDescription>
                           </Alert>
@@ -485,7 +485,7 @@ export default function StabilityGrainCalculationPage() {
                               </p>
                               <p className="text-sm">Deadweight = {loadableResult.deadweight} ton</p>
                               <p className="text-lg font-bold text-blue-700">
-                                Yüklenebilir Kargo = {loadableResult.loadable} ton
+                                Loadable Cargo = {loadableResult.loadable} ton
                               </p>
                             </div>
                           </AlertDescription>
@@ -531,7 +531,7 @@ export default function StabilityGrainCalculationPage() {
                             <Alert>
                               <AlertDescription>
                                 <p className="font-semibold text-xs">ΔW = TPI × ΔT</p>
-                                <p className="font-bold">Ağırlık Değişimi = {draftWeight} ton</p>
+                                <p className="font-bold">Weight Change = {draftWeight} ton</p>
                               </AlertDescription>
                             </Alert>
                           )}
@@ -629,7 +629,7 @@ export default function StabilityGrainCalculationPage() {
                             <AlertDescription>
                               <p className="font-semibold">tan(θ) = GHM / (Δ × GM)</p>
                               <p className="text-lg font-bold" style={{ color: parseFloat(heelingAngle) <= 12 ? '#15803d' : '#991b1b' }}>
-                                Yatma Açısı (θ) = {heelingAngle}°
+                                Heel Angle (θ) = {heelingAngle}°
                               </p>
                               <p className="text-sm mt-2">
                                 {parseFloat(heelingAngle) <= 12 ? (
@@ -739,7 +739,7 @@ export default function StabilityGrainCalculationPage() {
                             <AlertDescription>
                               <p className="font-semibold">GMcorrected = GM - (FSM / Δ)</p>
                               <p className="text-lg font-bold" style={{ color: parseFloat(correctedGM) >= 0.30 ? '#15803d' : '#991b1b' }}>
-                                Düzeltilmiş GM = {correctedGM} m
+                                Corrected GM = {correctedGM} m
                               </p>
                               <p className="text-sm mt-2">
                                 {parseFloat(correctedGM) >= 0.30 ? (

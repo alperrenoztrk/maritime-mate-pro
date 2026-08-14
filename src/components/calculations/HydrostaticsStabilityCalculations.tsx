@@ -1833,7 +1833,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Crane (Bumba) GG1 */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">GG₁ with derrick (GG₁ = w·(hkanca − hyük)/Δ)</h4>
+            <h4 className="font-semibold mb-3">GG₁ with derrick (GG₁ = w·(hhook − hload)/Δ)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
                 <Label>w (t)</Label>
@@ -2103,7 +2103,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </div>
             {trimResult !== null && (
               <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-orange-500">
-                <p className="font-mono text-lg">Trim Açısı = {trimResult.toFixed(4)}°</p>
+                <p className="font-mono text-lg">Trim Angle = {trimResult.toFixed(4)}°</p>
               </div>
             )}
           </div>
@@ -2168,7 +2168,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             )}
             {listResult !== null && (
               <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-orange-500">
-                <p className="font-mono text-lg">List Açısı = {listResult.toFixed(4)}°</p>
+                <p className="font-mono text-lg">List Angle = {listResult.toFixed(4)}°</p>
               </div>
             )}
           </div>
@@ -2213,7 +2213,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             )}
             {lollResult !== null && (
               <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
-                <p className="font-mono text-lg">Loll Açısı = {lollResult.toFixed(2)}°</p>
+                <p className="font-mono text-lg">Angle of Loll = {lollResult.toFixed(2)}°</p>
                 <p className="text-sm mt-1 text-red-600 dark:text-red-400">⚠ GM {'<'} 0 durumunda geçerli</p>
               </div>
             )}
