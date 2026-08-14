@@ -71,6 +71,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataTopicFill9.ts",
   "src/data/machineQuizDataTopicFill10.ts",
   "src/data/machineQuizDataTopicFill11.ts",
+  "src/data/machineQuizDataTopicFill12.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -113,6 +114,7 @@ const MACHINE_EXPECTED_OVERRIDES = {
   electrical: 232,
   "environment-machine": 240,
   "fluid-mechanics": 248,
+  "machine-elements": 280,
 };
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
