@@ -27,6 +27,7 @@ import {
   renderAbbreviationOnly,
 } from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
+import { repairEnglishMaritimeTerminology } from '../../src/utils/englishMaritimeTerminology.ts';
 
 const repoRoot = process.cwd();
 const OUT_DIR = path.join(repoRoot, 'public/locales');
@@ -75,6 +76,8 @@ for (const file of files) {
         next = normalizeMachineTranslation(key, applyMaritimeCorrections(value, lang), lang);
       }
     }
+
+    if (lang === 'en') next = repairEnglishMaritimeTerminology(key, next);
 
     if (next !== value) {
       dict[key] = next;

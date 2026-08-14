@@ -138,7 +138,7 @@ export const maritimeTerms: MaritimeTerm[] = [
   },
   {
     tr: 'Sintine',
-    aliases: ['Sintine (Bilge)'],
+    aliases: ['Sintine (Bilge)', 'Bilge', 'Bilge (Sintine)'],
     translations: {
       en: 'Bilge', de: 'Bilge', fr: 'Sentine', es: 'Sentina',
       it: 'Sentina', pt: 'Sentina', nl: 'Bilge', ru: 'Льяло',
@@ -2100,6 +2100,24 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Indietro', pt: 'Atrás', nl: 'Achteruit',
     },
   },
+  // ── English terminology guardrails added after the full-locale audit ───────
+  // These high-confidence phrases are masked before English MT, preventing the
+  // generic engine from inventing the everyday senses in the first place. The
+  // source-aware postprocessor still protects inflected and legacy outputs.
+  { tr: 'Reis', aliases: ['Reis (Bosun)'], translations: { en: 'Bosun' } },
+  { tr: 'Ana Makine', aliases: ['Ana makine'], translations: { en: 'Main engine' } },
+  { tr: 'Makine Dairesi', aliases: ['Makine dairesi'], translations: { en: 'Engine room' } },
+  { tr: 'Dümen Makinesi', aliases: ['Dümen makinesi'], translations: { en: 'Steering gear' } },
+  { tr: 'Kapalı Mekan', aliases: ['Kapalı mekan', 'Kapalı mekân'], translations: { en: 'Enclosed space' } },
+  { tr: 'Yükleme Bilgisayarı', aliases: ['Yükleme bilgisayarı'], translations: { en: 'Loading computer' } },
+  { tr: 'Doğrultma Kolu', aliases: ['Doğrultma kolu'], translations: { en: 'Righting arm' } },
+  { tr: 'Kaldırma Merkezi', aliases: ['Kaldırma merkezi'], translations: { en: 'Center of buoyancy' } },
+  { tr: 'Yüzme Merkezi', aliases: ['Yüzme merkezi'], translations: { en: 'Center of flotation' } },
+  { tr: 'Eğim Testi', aliases: ['Eğim testi'], translations: { en: 'Inclining test' } },
+  { tr: 'Serbest Borda', aliases: ['Serbest borda'], translations: { en: 'Freeboard' } },
+  { tr: 'Statüter', inline: false, translations: { en: 'Statutory' } },
+  { tr: 'Donatan', inline: false, translations: { en: 'Shipowner' } },
+  { tr: 'Kiracı', inline: false, translations: { en: 'Charterer' } },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.

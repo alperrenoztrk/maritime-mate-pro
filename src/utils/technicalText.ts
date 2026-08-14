@@ -36,6 +36,12 @@ const MASK_RE = /xq(\d+)qx/g;
 /** Symbols that only appear in formulas / measurements. */
 const MATH_SYMBOLS = /[=√∑Σ∫∂≈≤≥×÷°′″⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉Δδθφλμρηπω±·]/u;
 
+// A formula may still contain a user-facing Turkish label. These words were
+// previously swallowed by the pure-formula heuristic, leaving strings such as
+// "Açı (°)", "Hız 1 (V₁)" and "Sıcaklık Farkı (T₁−T₂)" untranslated.
+const TRANSLATABLE_TECHNICAL_LABEL_RE =
+  /(?:^|[^\p{L}])(?:açı|açılar|hız|başlangıç|varış|enlem|boylam|doğu|batı|kuzey|güney|farkı|sıcaklık|yoğunluk|sıvı|yatak|ömrü|ölçümü|kurs|kerteriz|mevki|birim|genlik|çap|deplasman|kargo|yük|ambar|su|rüzgâr|rüzgar|hesaplanır|kesişim|doğrultu|dik|arası|ile|veya)(?=$|[^\p{L}])/iu;
+
 /**
  * True when a string is a formula rather than prose, and therefore must be
  * shown identically in every language.
@@ -48,6 +54,7 @@ export const isTechnicalString = (value: string): boolean => {
   const text = value.trim();
   if (!text) return false;
   if (!MATH_SYMBOLS.test(text)) return false;
+  if (TRANSLATABLE_TECHNICAL_LABEL_RE.test(text)) return false;
 
   // Words of 4+ letters that are not known math functions count as prose.
   const words = text.match(/\p{L}{4,}/gu) ?? [];

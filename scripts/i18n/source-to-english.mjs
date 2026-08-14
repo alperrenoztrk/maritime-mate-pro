@@ -12,6 +12,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { repairEnglishMaritimeTerminology } from '../../src/utils/englishMaritimeTerminology.ts';
 
 const TR_CHARS = /[şğıçöüŞĞİÇÖÜ]/;
 const TR_WORDS =
@@ -149,8 +150,9 @@ async function translateBatch(list) {
 const translateOf = (s) => {
   const t = cache.get(s);
   if (!t || t === s) return null;
-  if (s === s.toUpperCase() && /[A-ZŞĞİÇÖÜ]/.test(s)) return t.toUpperCase();
-  return t;
+  const repaired = repairEnglishMaritimeTerminology(s, t);
+  if (s === s.toUpperCase() && /[A-ZŞĞİÇÖÜ]/.test(s)) return repaired.toUpperCase();
+  return repaired;
 };
 
 // --- precise scanning -------------------------------------------------------

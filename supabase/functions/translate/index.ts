@@ -17,6 +17,7 @@ import {
   renderAbbreviationOnly,
   unmaskProtectedTokens,
 } from "../_shared/protectedTerms.ts";
+import { repairEnglishMaritimeTerminology } from "../_shared/englishMaritimeTerminology.ts";
 
 // Google Cloud Translation API v2
 // Docs: https://cloud.google.com/translate/docs/reference/rest/v2/translate
@@ -178,6 +179,7 @@ serve(async (req) => {
         }
         if (glossaryActive) out = applyMaritimeCorrections(out, targetLanguage);
         out = fixCalculationNoun(originalSource, out, targetLanguage);
+        if (targetLanguage === 'en') out = repairEnglishMaritimeTerminology(originalSource, out);
         results[job.index] = out;
       });
 
@@ -195,6 +197,7 @@ serve(async (req) => {
           if (!raw) { results[job.index] = originalSource; return; }
           let out = glossaryActive ? applyMaritimeCorrections(raw, targetLanguage) : raw;
           out = fixCalculationNoun(originalSource, out, targetLanguage);
+          if (targetLanguage === 'en') out = repairEnglishMaritimeTerminology(originalSource, out);
           results[job.index] = out;
         });
       }

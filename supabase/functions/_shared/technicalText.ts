@@ -36,6 +36,11 @@ const MASK_RE = /xq(\d+)qx/g;
 /** Symbols that only appear in formulas / measurements. */
 const MATH_SYMBOLS = /[=√∑Σ∫∂≈≤≥×÷°′″⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉Δδθφλμρηπω±·]/u;
 
+// Mixed prose/formula labels still need translation. Keep only genuinely pure
+// formula strings out of the translation request.
+const TRANSLATABLE_TECHNICAL_LABEL_RE =
+  /(?:^|[^\p{L}])(?:açı|açılar|hız|başlangıç|varış|enlem|boylam|doğu|batı|kuzey|güney|farkı|sıcaklık|yoğunluk|sıvı|yatak|ömrü|ölçümü|kurs|kerteriz|mevki|birim|genlik|çap|deplasman|kargo|yük|ambar|su|rüzgâr|rüzgar|hesaplanır|kesişim|doğrultu|dik|arası|ile|veya)(?=$|[^\p{L}])/iu;
+
 /**
  * True when a string is a formula rather than prose, and therefore must be
  * shown identically in every language.
@@ -48,6 +53,7 @@ export const isTechnicalString = (value: string): boolean => {
   const text = value.trim();
   if (!text) return false;
   if (!MATH_SYMBOLS.test(text)) return false;
+  if (TRANSLATABLE_TECHNICAL_LABEL_RE.test(text)) return false;
 
   // Words of 4+ letters that are not known math functions count as prose.
   const words = text.match(/\p{L}{4,}/gu) ?? [];
@@ -130,6 +136,7 @@ const ACCOUNT_TO_CALCULATION: Record<string, [RegExp, string]> = {
 // hesabı"). These keep the banking sense.
 const ACCOUNT_SOURCE_RE = new RegExp(
   [
+    String.raw`^\s*hesap\s*$`,
     // The account keyword leads: "banka hesabı", "kullanıcı hesabı".
     String.raw`\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab`,
     // …or trails: "Bu hesabı Google ile oluşturduysanız".

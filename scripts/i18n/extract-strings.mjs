@@ -57,7 +57,10 @@ const isNumericish = (s) => /^[\d\s.,:%°/+\-x×()]+$/.test(s);
 // Math/formula lines (e.g. "A = ΔTrim × LCF / LBP") have a math operator but
 // almost no natural-language words — skip them (pointless/harmful to translate).
 const naturalWordCount = (s) => (s.match(/\p{L}{4,}/gu) || []).length;
-const looksLikeFormula = (s) => /[=√∑∫·×÷]/.test(s) && naturalWordCount(s) <= 2;
+const translatableTechnicalLabel =
+  /(?:^|[^\p{L}])(?:açı|açılar|hız|başlangıç|varış|enlem|boylam|doğu|batı|kuzey|güney|farkı|sıcaklık|yoğunluk|sıvı|yatak|ömrü|ölçümü|kurs|kerteriz|mevki|birim|genlik|çap|deplasman|kargo|yük|ambar|su|rüzgâr|rüzgar|hesaplanır|kesişim|doğrultu|dik|arası|ile|veya)(?=$|[^\p{L}])/iu;
+const looksLikeFormula = (s) =>
+  !translatableTechnicalLabel.test(s) && /[=√∑∫·×÷]/.test(s) && naturalWordCount(s) <= 2;
 
 const strings = new Set();
 
