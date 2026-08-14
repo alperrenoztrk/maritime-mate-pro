@@ -260,26 +260,26 @@ const topicContents: Record<string, TopicContent> = {
   "seamanship-def": {
     title: "Gemiciliğin Tanımı ve Kapsamı",
     introduction: "Gemicilik (seamanship), geminin güvenli ve etkin bir şekilde işletilmesi için gerekli pratik bilgi, beceri ve deneyimin bütünüdür.",
-    content: `Gemicilik kavramı, denizcilik mesleğinin en temel disiplinini oluşturur. Terimin İngilizce karşılığı olan "seamanship" kelimesi, denizde yapılan her türlü pratik işi kapsayan geniş bir anlam taşır.
+    content: `Seamanship is the most fundamental discipline of the maritime profession. The word covers, in a broad sense, every kind of practical work carried out at sea.
 
-GEMİCİLİĞİN KAPSAMI:
+THE SCOPE OF SEAMANSHIP:
 
-Gemicilik, teorik bilginin ötesinde uygulamaya dayalı bir disiplindir. Aşağıdaki alanları kapsar:
+Seamanship is a practical discipline that goes beyond theoretical knowledge. It covers the following areas:
 
-1. Güverte işleri: Halat, tel, zincir kullanımı; düğüm atma; boya ve bakım işleri.
-2. Demirleme ve bağlama: Demir atma, palamar alma, şamandıraya bağlama.
-3. Yük operasyonları: Ambar açma/kapama, vinç kullanımı, yük sabitleme.
-4. Emniyet: Cankurtarma araçlarının kullanımı, yangınla mücadele, gemiyi terk prosedürleri.
-5. Manevra: Dümen kullanımı, dar su geçişleri, yanaşma-kalkma.
-6. Bakım: Güverte ve tekne bakımı, pas temizliği, boyama.
+1. Deck work: the use of ropes, wires and chains; knotting; painting and maintenance work.
+2. Anchoring and mooring: letting go the anchor, taking mooring lines, securing to a buoy.
+3. Cargo operations: opening/closing hatches, operating cranes, securing cargo.
+4. Safety: the use of life-saving appliances, fire fighting, abandon ship procedures.
+5. Manoeuvring: steering, transits of narrow waters, berthing and unberthing.
+6. Maintenance: deck and hull maintenance, rust removal, painting.
 
-TARİHSEL GELİŞİM:
+HISTORICAL DEVELOPMENT:
 
-Gemicilik, yelkenli gemiler döneminde tamamen el becerisine dayalı bir meslek olarak gelişmiştir. Buhar makinelerinin ve modern güverte donanımlarının ortaya çıkmasıyla birlikte gemicilik uygulamaları dönüşmüş, ancak temel prensipler değişmemiştir.
+Seamanship developed in the age of sail as a wholly manual craft. Practices changed with the arrival of the steam engine and modern deck machinery, but the underlying principles have not.
 
-STCW SÖZLEŞMESİ VE GEMİCİLİK:
+THE STCW CONVENTION AND SEAMANSHIP:
 
-STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her seviyedeki denizci için gemicilik yeterliliklerini tanımlar. Güverte zabitlerinin gemicilik konularındaki yeterliliği, eğitim ve sınav süreçleriyle belgelenir. STCW Code A-II/1 bölümü, vardiya zabiti için gereken gemicilik bilgi ve becerisini detaylı olarak listeler.`,
+The STCW (Standards of Training, Certification and Watchkeeping) Convention defines the seamanship competences required of seafarers at every level. Deck officers' competence in seamanship subjects is certified through training and examination. STCW Code section A-II/1 lists in detail the seamanship knowledge and skills required of an officer of the watch.`,
     bulletPoints: [
       "Gemicilik, pratik denizcilik becerilerinin tamamını kapsar",
       "STCW sözleşmesi gemicilik yeterliliklerini tanımlar",
@@ -304,30 +304,30 @@ STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her s
         alt: "A large bulk carrier under way at sea in side profile; the red underwater hull, black side shell, white accommodation block and flush hatch covers stand out.",
       },
     ],
-    content: `GEMİ ANA BÖLÜMLER:
+    content: `THE MAIN PARTS OF A SHIP:
 
-PRUVA (BOW): Geminin ön kısmıdır. Pruva formu, dalga kırma performansını belirler. Başlıca pruva tipleri: Düz pruva (vertical stem), ampul pruva (bulbous bow), clipper pruva, raker pruva. Ampul pruva, dalga direncini %5-15 oranında azaltarak yakıt tasarrufu sağlar.
+BOW: the forward part of the ship. The form of the bow determines its wave-breaking performance. The main bow types: vertical stem, bulbous bow, clipper bow, raked bow. A bulbous bow reduces wave resistance by 5-15% and so saves fuel.
 
-KIÇA (STERN): Geminin arka kısmıdır. Dümen ve pervane bu bölgede bulunur. Kıç formları: Transom kıç (düz), cruiser kıç (yuvarlak), elliptical kıç.
+STERN: the after part of the ship. The rudder and propeller are in this area. Stern forms: transom stern (flat), cruiser stern (rounded), elliptical stern.
 
-İSKELE (PORT): Geminin sol tarafıdır. Gece kırmızı seyir feneri bu tarafta yanar.
-SANCAk (STARBOARD): Geminin sağ tarafıdır. Gece yeşil seyir feneri bu tarafta yanar.
+PORT: the left-hand side of the ship. The red navigation light is on this side at night.
+STARBOARD: the right-hand side of the ship. The green navigation light is on this side at night.
 
-YAPISAL ELEMANLAR:
+STRUCTURAL MEMBERS:
 
-Omurga (Keel): Geminin ana yapısal elemanıdır. Teknenin uzunlamasına alt merkezinde uzanır.
-Postalar (Frames): Omurgadan yukarı doğru yükselen enine yapısal elemanlardır.
-Kaburga (Ribs): Postaların dış kaplamayla birleşen kısmıdır.
-Güverte (Deck): Yatay platformlardır. Ana güverte (main deck), üst güverte (upper deck), alt güverte (lower deck/tween deck).
-Ambar (Cargo Hold): Yükün taşındığı kapalı bölümdür.
-Borda (Hull plating): Teknenin dış kaplamasıdır.
-Koferdamlar (Cofferdams): İki bölme arasındaki boş alanlar olup, sızıntı kontrolü ve güvenlik amacıyla kullanılır.
+Keel: the main structural member of the ship. It runs fore and aft along the bottom centreline of the hull.
+Frames: the transverse structural members rising from the keel.
+Ribs: the part of the frames that meets the outer shell.
+Deck: the horizontal platforms. Main deck, upper deck, lower deck/tween deck.
+Cargo hold: the enclosed compartment in which cargo is carried.
+Hull plating: the outer shell of the hull.
+Cofferdams: void spaces between two compartments, used for leak detection and safety.
 
-ÜST YAPI:
+SUPERSTRUCTURE:
 
-Köprüüstü (Bridge/Wheelhouse): Geminin kumanda merkezi.
-Kasara (Forecastle/Fo'c'sle): Pruva üst yapısı; demir donanımı burada bulunur.
-Güverte ambarı üst yapısı (Poop): Kıç güvertesi üzerindeki yapı.`,
+Bridge/wheelhouse: the ship's command centre.
+Forecastle (fo'c'sle): the forward superstructure; the anchor gear is here.
+Poop: the structure over the after deck.`,
     bulletPoints: [
       "İskele (Port) = sol taraf → kırmızı fener",
       "Sancak (Starboard) = sağ taraf → yeşil fener",
@@ -343,34 +343,34 @@ Güverte ambarı üst yapısı (Poop): Kıç güvertesi üzerindeki yapı.`,
   "ship-types-overview": {
     title: "Gemi Tipleri ve Sınıflandırma",
     introduction: "Gemiler, taşıdıkları yüke, kullanım amacına ve yapısal özelliklerine göre sınıflandırılır.",
-    content: `GEMİ TİPLERİ:
+    content: `SHIP TYPES:
 
-1. KURU YÜK GEMİLERİ:
-Genel kargo gemileri (General Cargo): Çeşitli ambalajlı yükleri taşır. Kendi vinçlerine sahiptir (geared).
-Dökme yük gemileri (Bulk Carrier): Tahıl, kömür, cevher gibi dökme yükleri taşır.
-Konteyner gemileri (Container Ship): Standart konteynerlerle yük taşır. TEU (Twenty-foot Equivalent Unit) kapasitesiyle ölçülür.
+1. DRY CARGO SHIPS:
+General cargo ships: carry various packaged cargoes. They have their own cranes (geared).
+Bulk carriers: carry bulk cargoes such as grain, coal and ore.
+Container ships: carry cargo in standard containers. Measured by TEU (Twenty-foot Equivalent Unit) capacity.
 
-2. TANKERLER:
-Ham petrol tankerleri (Crude Oil Tanker): VLCC (Very Large Crude Carrier, 200.000+ DWT) ve ULCC (Ultra Large, 300.000+ DWT).
-Ürün tankerleri (Product Tanker): Rafine petrol ürünlerini taşır.
-Kimyasal tankerler (Chemical Tanker): Kimyasal maddeleri özel tanklarda taşır. IBC Code'a tabidir.
-LNG/LPG tankerleri: Sıvılaştırılmış gaz taşır. IGC Code'a tabidir.
+2. TANKERS:
+Crude oil tankers: VLCC (Very Large Crude Carrier, 200,000+ DWT) and ULCC (Ultra Large, 300,000+ DWT).
+Product tankers: carry refined petroleum products.
+Chemical tankers: carry chemicals in special tanks. Subject to the IBC Code.
+LNG/LPG carriers: carry liquefied gas. Subject to the IGC Code.
 
-3. ÖZEL TİP GEMİLER:
-Ro-Ro gemileri: Tekerlekli yüklerin rampadan yüklenmesi.
-Yolcu gemileri: SOLAS Bölüm II-2 yangın güvenlik standartlarına tabidir.
-Açık deniz destek gemileri (Offshore Supply Vessels).
-Yüzer üretim ve depolama üniteleri (FPSO).
+3. SPECIAL SHIP TYPES:
+Ro-Ro ships: wheeled cargo loaded over a ramp.
+Passenger ships: subject to the SOLAS Chapter II-2 fire safety standards.
+Offshore Supply Vessels.
+Floating Production Storage and Offloading units (FPSO).
 
-SINIFLANDIRMA KURULUŞLARI:
+CLASSIFICATION SOCIETIES:
 
-Lloyd's Register, DNV, Bureau Veritas, American Bureau of Shipping (ABS), ClassNK gibi kuruluşlar gemilerin yapısal standartlara uygunluğunu denetler. Bu kuruluşlar IACS (International Association of Classification Societies) çatısı altında faaliyet gösterir.
+Organisations such as Lloyd's Register, DNV, Bureau Veritas, the American Bureau of Shipping (ABS) and ClassNK verify that ships comply with the structural standards. They operate under the umbrella of IACS (the International Association of Classification Societies).
 
-TONAJ KAVRAMLARI:
-Gross Tonnage (GT): Geminin tüm kapalı hacminin ölçüsüdür; boyutsuz bir sayıdır.
-Net Tonnage (NT): Yük taşımaya ayrılan hacmin ölçüsüdür.
-Deadweight Tonnage (DWT): Geminin taşıyabileceği toplam ağırlıktır (yük + yakıt + su + kumanya + mürettebat).
-Displacement: Geminin yerinden ettiği suyun ağırlığıdır.`,
+TONNAGE CONCEPTS:
+Gross Tonnage (GT): a measure of the total enclosed volume of the ship; it is a dimensionless number.
+Net Tonnage (NT): a measure of the volume set aside for carrying cargo.
+Deadweight Tonnage (DWT): the total weight the ship can carry (cargo + fuel + water + provisions + crew).
+Displacement: the weight of the water the ship displaces.`,
     bulletPoints: [
       "Dökme yük, konteyner, tanker, Ro-Ro başlıca gemi tipleridir",
       "VLCC: 200.000+ DWT, ULCC: 300.000+ DWT kapasitelidir",
@@ -386,25 +386,25 @@ Displacement: Geminin yerinden ettiği suyun ağırlığıdır.`,
   "ship-dimensions": {
     title: "Gemi Boyutları ve Tonajları",
     introduction: "Gemi boyutları, yapısal tasarımdan liman giriş kısıtlamalarına kadar birçok operasyonel kararı doğrudan etkiler.",
-    content: `TEMEL BOYUTLAR:
+    content: `PRINCIPAL DIMENSIONS:
 
-LOA (Length Overall): Geminin pruva ucundan kıç ucuna kadar olan toplam uzunluğudur. Liman ve kılavuzluk operasyonlarında bu değer kullanılır.
+LOA (Length Overall): the total length of the ship from the extreme forward point to the extreme after point. This is the figure used in port and pilotage operations.
 
-LBP (Length Between Perpendiculars): Pruva dikme hattı ile kıç dikme hattı arasındaki mesafedir. Yapısal hesaplamalarda ve hidrostatik verilerde bu değer referans alınır.
+LBP (Length Between Perpendiculars): the distance between the forward and after perpendiculars. This is the reference used in structural calculations and hydrostatic data.
 
-Genişlik (Beam/Breadth): Geminin en geniş noktasındaki ölçüdür. Moulded beam (kalıp genişliği) yapısal hesaplarda, extreme beam dış ölçüde kullanılır.
+Beam/Breadth: the measurement at the widest point of the ship. The moulded beam is used in structural calculations and the extreme beam for the outside dimension.
 
-Derinlik (Depth): Omurganın üst yüzeyinden ana güvertenin alt yüzeyine kadar olan dikey mesafedir.
+Depth: the vertical distance from the top of the keel to the underside of the main deck.
 
-Draft (Draught): Su hattından omurganın alt yüzeyine (keel) kadar olan dikey mesafedir. Yükleme durumuna göre değişir.
+Draft (Draught): the vertical distance from the waterline to the bottom of the keel. It varies with the loading condition.
 
-Freeboard: Ana güverte kenarından su hattına kadar olan dikey mesafedir. Uluslararası Yükleme Sınırı Sözleşmesi (Load Line Convention) tarafından minimum değerleri belirlenir.
+Freeboard: the vertical distance from the main deck edge to the waterline. Its minimum values are set by the International Load Line Convention.
 
-TONAJ HESAPLARI:
+TONNAGE CALCULATIONS:
 
-GT = K₁ × V formülüyle hesaplanır. V, geminin toplam kapalı hacmi (m³); K₁ = 0,2 + 0,02 × log₁₀V katsayısıdır.
+GT is calculated with the formula GT = K₁ × V. V is the total enclosed volume of the ship (m³); K₁ = 0.2 + 0.02 × log₁₀V.
 
-NT, yük hacminden türetilir ve liman harçları, kılavuzluk ücretleri gibi mali hesaplarda kullanılır.`,
+NT is derived from the cargo volume and is used in financial calculations such as port dues and pilotage fees.`,
     formula: {
       name: "Gross Tonnage Hesabı",
       expression: "GT = K₁ × V     (K₁ = 0,2 + 0,02 × log₁₀V)",
@@ -412,8 +412,8 @@ NT, yük hacminden türetilir ve liman harçları, kılavuzluk ücretleri gibi m
     },
     examples: [
       {
-        problem: "Toplam kapalı hacmi 50.000 m³ olan bir geminin GT değerini hesaplayınız.",
-        solution: "K₁ = 0,2 + 0,02 × log₁₀(50.000) = 0,2 + 0,02 × 4,699 = 0,2 + 0,094 = 0,294. GT = 0,294 × 50.000 = 14.700. Geminin Gross Tonnage değeri 14.700'dür.",
+        problem: "Calculate the GT of a ship with a total enclosed volume of 50,000 m³.",
+        solution: "K₁ = 0.2 + 0.02 × log₁₀(50,000) = 0.2 + 0.02 × 4.699 = 0.2 + 0.094 = 0.294. GT = 0.294 × 50,000 = 14,700. The ship's Gross Tonnage is 14,700.",
       },
     ],
     bulletPoints: [
@@ -430,31 +430,31 @@ NT, yük hacminden türetilir ve liman harçları, kılavuzluk ücretleri gibi m
   "ship-certificates": {
     title: "Gemi Belgeleri ve Sertifikaları",
     introduction: "Her ticaret gemisi, uluslararası sözleşmeler gereği belirli sertifikalara sahip olmak zorundadır; bu belgeler liman devleti denetimlerinde kontrol edilir.",
-    content: `ZORUNLU SERTIFIKALAR:
+    content: `MANDATORY CERTIFICATES:
 
-1. Uluslararası Tonaj Sertifikası (International Tonnage Certificate - ITC 69): 1969 Tonaj Ölçme Sözleşmesi gereği düzenlenir. GT ve NT değerlerini belirtir.
+1. International Tonnage Certificate (ITC 69): issued under the 1969 Tonnage Measurement Convention. It states the GT and NT.
 
-2. Uluslararası Yükleme Sınırı Sertifikası (International Load Line Certificate - ILLC): 1966 Yükleme Sınırı Sözleşmesi gereği düzenlenir. Geminin izin verilen minimum freeboard değerlerini belirtir.
+2. International Load Line Certificate (ILLC): issued under the 1966 Load Line Convention. It states the minimum freeboard permitted for the ship.
 
-3. Emniyet Yapı Sertifikası (Safety Construction Certificate - SCC): SOLAS gereği gemi yapısının standartlara uygunluğunu belgelendirir.
+3. Safety Construction Certificate (SCC): certifies under SOLAS that the ship's structure complies with the standards.
 
-4. Emniyet Donanım Sertifikası (Safety Equipment Certificate - SEC): Cankurtarma ve yangın söndürme donanımının uygunluğunu belirtir.
+4. Safety Equipment Certificate (SEC): certifies the compliance of the life-saving and fire fighting equipment.
 
-5. Emniyet Telsiz Sertifikası (Safety Radio Certificate - SRC): GMDSS donanımının yeterliliğini onaylar.
+5. Safety Radio Certificate (SRC): confirms the adequacy of the GMDSS equipment.
 
-6. IOPP Sertifikası (International Oil Pollution Prevention Certificate): MARPOL Ek I gereği düzenlenir.
+6. IOPP Certificate (International Oil Pollution Prevention Certificate): issued under MARPOL Annex I.
 
-7. ISPP Sertifikası (International Sewage Pollution Prevention Certificate): MARPOL Ek IV gereği düzenlenir.
+7. ISPP Certificate (International Sewage Pollution Prevention Certificate): issued under MARPOL Annex IV.
 
-8. ISM Sertifikası: Document of Compliance (DOC) şirkete, Safety Management Certificate (SMC) gemiye verilir.
+8. ISM certificates: the Document of Compliance (DOC) is issued to the company and the Safety Management Certificate (SMC) to the ship.
 
-9. ISSC (International Ship Security Certificate): ISPS Code gereği düzenlenir.
+9. ISSC (International Ship Security Certificate): issued under the ISPS Code.
 
-10. CLC Sertifikası (Civil Liability Certificate): Petrol kirliliği mali sorumluluk sertifikasıdır.
+10. CLC Certificate (Civil Liability Certificate): the certificate of financial responsibility for oil pollution.
 
-PSC DENETİMLERİNDE BELGE KONTROLÜ:
+DOCUMENT CHECKS IN PSC INSPECTIONS:
 
-Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifikaların geçerliliğini kontrol eder. Süresi dolmuş veya eksik sertifika, geminin alıkonulması (detention) sebebi olabilir.`,
+Port State Control inspectors check the validity of these certificates first. An expired or missing certificate can be grounds for detention.`,
     bulletPoints: [
       "ITC 69: tonaj, ILLC: freeboard, SCC: yapısal güvenlik sertifikası",
       "DOC şirkete, SMC gemiye verilir (ISM Code)",
@@ -495,27 +495,27 @@ Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifi
         ["Çelik Tel", "7,85", "1-2", "Korozyon riski", "Vinç, kaldırma"],
       ],
     },
-    content: `DOĞAL LİF HALATLAR:
+    content: `NATURAL FIBRE ROPES:
 
-Manila: Abaka bitkisinden üretilir. Doğal halatlar arasında en güçlüsüdür. Islakken dayanımı %10-15 düşer. Günümüzde hâlâ pilot merdiveni güvenlik halatı olarak kullanılır.
+Manila: made from the abaca plant. The strongest of the natural ropes. Its strength falls by 10-15% when wet. It is still used as the safety line for a pilot ladder.
 
-Sisal: Manila'dan daha ucuz ancak daha düşük dayanımlıdır. Islakken sertleşir ve dayanımı %20 düşer.
+Sisal: cheaper than manila but weaker. It stiffens when wet and its strength falls by 20%.
 
-SENTETİK LİF HALATLAR:
+SYNTHETIC FIBRE ROPES:
 
-Naylon (Polyamid): Yüksek elastikiyet (%30-40 uzama). Şok yüklerine dayanıklıdır. Islakken dayanımı %10 düşer. Çekme halatı olarak tercih edilir.
+Nylon (polyamide): high elasticity (30-40% extension). Resistant to shock loads. Its strength falls by 10% when wet. Preferred as a towing line.
 
-Polipropilen (PP): Suda yüzer (özgül ağırlık 0,91). Hafiftir ancak UV ışınlarına duyarlıdır. Can kurtarma halatı olarak kullanılır.
+Polypropylene (PP): floats (specific gravity 0.91). Light but sensitive to UV. Used as a lifeline.
 
-Polyester (Terilen/Dacron): Düşük elastikiyet (%12-15 uzama). Islakken dayanımı değişmez. Palamar halatı olarak yaygındır.
+Polyester (Terylene/Dacron): low elasticity (12-15% extension). Its strength does not change when wet. Widely used as a mooring line.
 
-HMPE (Dyneema/Spectra): Çelikle eşdeğer dayanım, çeliğin 1/7'si ağırlıkta. Uzama %3-4. Modern palamar ve çekme halatlarında kullanılır. Isıya duyarlıdır (bollard'larda sürtünme ısısına dikkat).
+HMPE (Dyneema/Spectra): strength equivalent to wire at one seventh of the weight. Extension 3-4%. Used for modern mooring and towing lines. Sensitive to heat (watch for friction heat on bollards).
 
-HALAT YAPILARI:
+ROPE CONSTRUCTIONS:
 
-Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluşur. Z-büküm (sağ el büküm) standarttır.
-Örgülü (Braided rope): İç çekirdek etrafında örgü şeklinde üretilir. Dönme eğilimi yoktur.
-Çift örgülü (Double braided): İç ve dış örgüden oluşur. Yüksek dayanım ve esneklik sağlar.`,
+Laid rope: made by twisting three or four strands together. Z-lay (right-hand lay) is standard.
+Braided rope: braided around an inner core. It has no tendency to rotate.
+Double braided: an inner and an outer braid. It provides high strength and flexibility.`,
     bulletPoints: [
       "Manila: doğal halatlar arasında en güçlü, ıslakken %10-15 dayanım kaybı",
       "Naylon: %30-40 uzama, şok yüklere dayanıklı, çekme halatı",
@@ -528,8 +528,8 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
       "HMPE isıya duyarlıdır; bollard sürtünmesine dikkat edilmelidir",
     ],
     warnings: [
-      "Sentetik halatlar koptuğunda geri tepme (snapback) riski yüksektir",
-      "HMPE halat keskin köşelerde hasar görebilir; chafe guard kullanılmalıdır",
+      "When synthetic ropes part, the risk of snap-back is high",
+      "HMPE rope can be damaged on sharp corners; chafe guards must be used",
     ],
   },
   "wire-ropes": {
@@ -554,28 +554,28 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
         ["6×19 IWRC", "114 + tel çekirdek", "Orta", "High", "Ağır yük, ezilme riski"],
       ],
     },
-    content: `ÇELİK TEL YAPISI:
+    content: `THE CONSTRUCTION OF WIRE ROPE:
 
-Çelik tel, ince çelik telciklerin (wire) bir çekirdek (core) etrafında kollar (strands) halinde sarılmasıyla üretilir. Standart gösterim: A × B şeklindedir. Örneğin 6 × 19, 6 kol ve her kolda 19 telcik anlamına gelir.
+Wire rope is made by laying fine steel wires in strands around a core. The standard designation is A × B. For example, 6 × 19 means 6 strands with 19 wires in each strand.
 
-YAYGIN TEL TİPLERİ:
+COMMON WIRE TYPES:
 
-6 × 7: Az sayıda kalın telcik. Yüksek aşınma direnci, düşük esneklik. Korkuluk, sabit bağlantılar.
-6 × 19: Orta esneklik ve dayanım dengesi. Genel amaçlı güverte işleri.
-6 × 37: Çok sayıda ince telcik. Yüksek esneklik ancak düşük aşınma direnci. Vinç ve kaldırma operasyonları.
+6 × 7: few, thick wires. High abrasion resistance, low flexibility. Guardrails and standing rigging.
+6 × 19: a balance of flexibility and strength. General purpose deck work.
+6 × 37: many fine wires. High flexibility but low abrasion resistance. Winch and lifting operations.
 
-ÇEKİRDEK TİPLERİ:
-Fiber Core (FC): Lif çekirdek. Daha esnek, yağ deposu görevi görür. Kaldırma operasyonlarında tercih edilir.
-Independent Wire Rope Core (IWRC): Bağımsız çelik tel çekirdek. Daha yüksek kırılma yükü (%7-10 fazla). Ezilme direnci daha yüksektir.
+CORE TYPES:
+Fibre Core (FC): a fibre core. More flexible, and acts as a reservoir of lubricant. Preferred in lifting operations.
+Independent Wire Rope Core (IWRC): an independent steel wire core. A higher breaking load (7-10% more). Greater resistance to crushing.
 
-TEL BAKIM VE MUAYENE:
+WIRE MAINTENANCE AND INSPECTION:
 
-Telin ömrünü uzatmak için düzenli yağlama yapılmalıdır. Muayenede kontrol edilen parametreler:
-- Kırık telcik sayısı (bir adım boyunda %10'u geçmemeli)
-- Aşınma (çap kaybı orijinalin %5'ini geçmemeli)
-- Korozyon
-- Kink (bükülme hasarı) – kink olan tel kullanılmamalıdır
-- Çekirdek çıkması (birdcaging)`,
+Regular lubrication extends the life of the wire. The parameters checked at inspection:
+- The number of broken wires (must not exceed 10% in one lay length)
+- Wear (the loss of diameter must not exceed 5% of the original)
+- Corrosion
+- Kinks (bending damage) – a kinked wire must not be used
+- Birdcaging (core protrusion)`,
     formula: {
       name: "Çelik Tel Kırılma Yükü (Yaklaşık)",
       expression: "BL ≈ d² × K (ton)",
@@ -583,8 +583,8 @@ Telin ömrünü uzatmak için düzenli yağlama yapılmalıdır. Muayenede kontr
     },
     examples: [
       {
-        problem: "Çapı 24 mm (2,4 cm) olan 6×19 FC çelik telin yaklaşık kırılma yükünü hesaplayınız.",
-        solution: "BL ≈ d² × K = 2,4² × 46 = 5,76 × 46 = 264,96 ton. Telin yaklaşık kırılma yükü 265 tondur. Güvenli çalışma yükü (SWL) için güvenlik faktörüne (genellikle 5) bölünür: SWL = 265/5 = 53 ton.",
+        problem: "Calculate the approximate breaking load of a 6×19 FC wire rope of 24 mm (2.4 cm) diameter.",
+        solution: "BL ≈ d² × K = 2.4² × 46 = 5.76 × 46 = 264.96 tonnes. The approximate breaking load of the wire is 265 tonnes. For the safe working load (SWL) it is divided by the factor of safety (usually 5): SWL = 265/5 = 53 tonnes.",
       },
     ],
     bulletPoints: [
@@ -594,34 +594,36 @@ Telin ömrünü uzatmak için düzenli yağlama yapılmalıdır. Muayenede kontr
       "Bir adımdaki kırık telcik oranı %10'u geçmemeli",
     ],
     warnings: [
-      "Kink hasarı olan çelik tel tamir edilemez; hizmet dışı bırakılmalıdır",
-      "SWL = BL / güvenlik faktörü (genellikle 5 veya 6)",
+      "A kinked wire rope cannot be repaired; it must be taken out of service",
+      "SWL = BL / factor of safety (usually 5 or 6)",
     ],
   },
   "rope-care": {
     title: "Halat Bakımı ve Depolanması",
     introduction: "Halatların ömrü ve güvenli kullanımı, doğru bakım ve depolama uygulamalarına bağlıdır.",
-    content: `HALAT BAKIMI İLKELERİ:
+    content: `PRINCIPLES OF ROPE MAINTENANCE:
 
-Tüm halatlar düzenli olarak muayene edilmeli ve hasar belirtileri kontrol edilmelidir. Aşınma, kesik, UV hasarı, kimyasal hasar ve iç lif bozulması başlıca kontrol edilecek hususlardır.
+All ropes must be inspected regularly and checked for signs of damage. Abrasion, cuts, UV damage, chemical damage and internal fibre deterioration are the main things to look for.
 
-SENTETİK HALAT BAKIMI:
-- Kullanımdan sonra tatlı suyla yıkanmalı (tuz kristalleri lifleri aşındırır)
-- Doğrudan güneş ışığından korunarak depolanmalı (UV bozulması)
-- Keskin köşelerden korunmalı (chafe guard/fairlead kullanımı)
-- Kink yapılmamalı; kink sentetik halatlarda dayanımı %30'a kadar düşürür
+SYNTHETIC ROPE MAINTENANCE:
+- Wash with fresh water after use (salt crystals abrade the fibres)
+- Store out of direct sunlight (UV degradation)
+- Protect from sharp corners (use chafe guards/fairleads)
+- Do not kink; a kink reduces the strength of a synthetic rope by up to 30%
 
-ÇELİK TEL BAKIMI:
-- Düzenli yağlama (penetrant yağ + koruyucu yağ)
-- Tambur ve makaralardan düzgün sarılma
-- Korozyon kontrolü
-- Kırık telcik sayımı
+WIRE ROPE MAINTENANCE:
+- Regular lubrication (penetrating oil plus protective grease)
+- Correct spooling on drums and sheaves
+- Corrosion checks
+- Counting broken wires
 
-DEPOLAMA:
-Halatlar kuru, havalandırmalı, doğrudan güneş ışığı almayan alanlarda depolanmalıdır. Halat tamburuna sarılı veya flemish coil şeklinde tutulabilir. Halatlar kimyasal maddelerden uzak tutulmalı; özellikle asit ve alkali ile temas önlenmelidir.
+STORAGE:
 
-MUAYENE KAYITLARI:
-ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım planlaması (PMS) kapsamında takip edilmelidir.`,
+Ropes must be stored in a dry, ventilated place out of direct sunlight. They can be kept on a reel or in a Flemish coil. Ropes must be kept away from chemicals; contact with acids and alkalis in particular must be avoided.
+
+INSPECTION RECORDS:
+
+Under the ISM Code the periodic inspections of ropes and wires must be recorded and followed up within the maintenance planning (PMS).`,
     bulletPoints: [
       "Sentetik halatlar tatlı suyla yıkanmalı ve UV'den korunmalı",
       "Kink, sentetik halat dayanımını %30'a kadar düşürür",
@@ -645,28 +647,28 @@ ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım
         alt: "Six different nautical knots tied in white rope on a wooden surface, each clearly visible.",
       },
     ],
-    content: `TEMEL DÜĞÜMLER (KNOTS):
+    content: `BASIC KNOTS:
 
-Yassı Düğüm (Reef Knot / Square Knot): Aynı çaptaki iki halat ucunu birleştirmek için kullanılır. Yelken toplarken yaygın olarak uygulanır. Farklı çaptaki halatlarda güvenilir değildir; kayabilir.
+Reef knot (square knot): used to join two rope ends of the same diameter. Widely used when furling sails. It is not reliable with ropes of different diameters; it can slip.
 
-İzbarço Bağı (Bowline): Halatın ucunda kaymayan bir ilmek oluşturur. Denizcilik düğümlerinin en önemlisidir. Yük altında sıkışmaz ve kolayca çözülebilir. Cankurtarma operasyonlarında, palamar geçirmede ve genel amaçlı kullanılır.
+Bowline: forms a non-slipping loop at the end of a rope. The most important of the seaman's knots. It does not jam under load and is easy to undo. Used in rescue operations, in passing mooring lines and for general purposes.
 
-Sekizli Düğüm (Figure-of-Eight Knot): Halatın bloktan veya makaradan kaymasını önlemek için ucuna atılır. Basit ve etkili bir durdurucu düğümdür.
+Figure-of-eight knot: tied in the end of a rope to stop it running out of a block or sheave. A simple and effective stopper knot.
 
-BAĞLAMALAR (BENDS):
+BENDS:
 
-Çift Kazık Bağı (Double Bowline): Oturak halinde kullanılır (bosen's chair). İki ilmek oluşturur.
+Double bowline: used as a seat (bosun's chair). It forms two loops.
 
-Kıstırma Düğümü (Sheet Bend): Farklı çaptaki iki halatı birleştirmek için kullanılır. Çift kıstırma düğümü (double sheet bend) daha güvenlidir.
+Sheet bend: used to join two ropes of different diameters. A double sheet bend is more secure.
 
-Kamçı Bağı (Carrick Bend): Kalın halat ve çekme halatlarını birleştirmek için kullanılır. Yük altında sıkışmaz.
+Carrick bend: used to join heavy ropes and towing hawsers. It does not jam under load.
 
-DÜĞÜM PRENSIPLERI:
-Her düğüm, halatın kırılma yükünü düşürür. Ortalama dayanım kaybı değerleri:
-- Bowline: %40 dayanım kaybı
-- Reef knot: %55 dayanım kaybı
-- Sheet bend: %45 dayanım kaybı
-- Figure-of-eight: %25 dayanım kaybı`,
+PRINCIPLES OF KNOTS:
+Every knot reduces the breaking load of the rope. Average strength losses:
+- Bowline: 40% loss of strength
+- Reef knot: 55% loss of strength
+- Sheet bend: 45% loss of strength
+- Figure-of-eight: 25% loss of strength`,
     bulletPoints: [
       "Bowline: kaymayan ilmek, en önemli denizcilik düğümü",
       "Reef knot: yalnızca aynı çaptaki halatlar için güvenlidir",
@@ -683,30 +685,30 @@ Her düğüm, halatın kırılma yükünü düşürür. Ortalama dayanım kaybı
     title: "Bağlar ve Eklemeler (Hitches & Splices)",
     introduction: "Bağlar (hitches) halatı bir nesneye sabitlemek, eklemeler (splices) ise iki halat ucunu kalıcı olarak birleştirmek için kullanılan tekniklerdir.",
     knotAnimations: ["clove-hitch", "round-turn-two-half-hitches"],
-    content: `BAĞLAR (HITCHES):
+    content: `HITCHES:
 
-Volta (Clove Hitch): Halatı bir babaya veya baraya geçici olarak bağlamak için kullanılır. Tek başına güvenilir değildir; uçlar serbest bırakılırsa çözülebilir. Genellikle ek güvenlik dönüşleriyle desteklenir.
+Clove hitch: used to secure a rope temporarily to a bollard or a rail. It is not reliable on its own; it can come undone if the ends are left free. It is usually backed up with additional turns.
 
-Kazık Baba Bağı (Bollard Hitch): Palamar halatını babaya bağlama yöntemidir. Standart uygulama: halat gözü (eye) baba üzerine geçirilir, ardından halatla şekil-sekiz (figure-8) sarımlar yapılır. Son sarım kilitlenir.
+Bollard hitch: the method of securing a mooring line to a bollard. The standard practice: the eye of the line is dropped over the bollard, then figure-of-eight turns are taken with the line. The last turn is locked off.
 
-Kancalı Bağ (Blackwall Hitch): Halatı bir kancaya geçici bağlamak için kullanılır. Yalnızca yük altındayken tutar.
+Blackwall hitch: used to secure a rope temporarily to a hook. It holds only while under load.
 
-Balıkçı Bağı (Rolling Hitch): Bir halat üzerine veya çubuğa, çekme yönüne dik olmayan bağlama yapmak için kullanılır.
+Rolling hitch: used to make fast to another rope or a spar where the pull is not at right angles.
 
-EKLEMELER (SPLICES):
+SPLICES:
 
-Göz Ekleme (Eye Splice): Halatın ucunda kalıcı bir ilmek oluşturur. Düğüme kıyasla dayanım kaybı çok düşüktür (%5-10). Palamar halatlarının standart uç işlemesidir.
+Eye splice: forms a permanent loop in the end of a rope. The loss of strength is far lower than with a knot (5-10%). It is the standard finish for mooring lines.
 
-Kısa Ekleme (Short Splice): İki halat ucunu kalıcı olarak birleştirir. Çap artar; makara ve bloktan geçemez.
+Short splice: joins two rope ends permanently. The diameter increases, so it will not pass through a sheave or block.
 
-Uzun Ekleme (Long Splice): İki halat ucunu çap artırmadan birleştirir. Makara ve bloktan geçebilir ancak dayanım kaybı short splice'dan fazladır.
+Long splice: joins two rope ends without increasing the diameter. It will pass through a sheave or block, but the loss of strength is greater than with a short splice.
 
-DAYANIM KARŞILAŞTIRMASI:
-Eye splice: %90-95 orijinal dayanım korunur.
-Short splice: %85-90 orijinal dayanım korunur.
-Bowline düğümü: %60 orijinal dayanım korunur.
+STRENGTH COMPARISON:
+Eye splice: 90-95% of the original strength is retained.
+Short splice: 85-90% of the original strength is retained.
+Bowline: 60% of the original strength is retained.
 
-Bu nedenle kalıcı ilmek gerektiğinde düğüm yerine daima splice tercih edilmelidir.`,
+A splice should therefore always be preferred over a knot where a permanent loop is needed.`,
     bulletPoints: [
       "Eye splice: %90-95 dayanım korur, düğümden çok üstündür",
       "Clove hitch tek başına güvenilir değildir; ek kilitle desteklenmeli",
@@ -722,25 +724,25 @@ Bu nedenle kalıcı ilmek gerektiğinde düğüm yerine daima splice tercih edil
   "swl-breaking": {
     title: "SWL ve Kopma Yükü Hesapları",
     introduction: "Güvenli Çalışma Yükü (SWL), bir donanım veya halatın güvenle taşıyabileceği maksimum yüktür ve kırılma yükünden güvenlik faktörüne bölünerek hesaplanır.",
-    content: `TEMEL KAVRAMLAR:
+    content: `BASIC CONCEPTS:
 
-Breaking Load (BL) / Minimum Breaking Load (MBL): Malzemenin kopma anındaki yüktür. Üretici tarafından belirtilir.
+Breaking Load (BL) / Minimum Breaking Load (MBL): the load at which the material parts. It is stated by the maker.
 
-Safe Working Load (SWL) / Working Load Limit (WLL): Malzemenin güvenle kullanılabileceği maksimum yüktür. SWL = BL / FoS formülüyle hesaplanır.
+Safe Working Load (SWL) / Working Load Limit (WLL): the maximum load at which the item can be used safely. It is calculated as SWL = BL / FoS.
 
-Factor of Safety (FoS): Güvenlik faktörüdür. Uygulama alanına göre değişir.
+Factor of Safety (FoS): the safety factor. It varies with the application.
 
-STANDART GÜVENLİK FAKTÖRLERİ:
+STANDARD SAFETY FACTORS:
 
-Çelik teller (kaldırma): FoS = 5
-Çelik teller (genel güverte işi): FoS = 4-5
-Sentetik halatlar: FoS = 5-6
-Zincirler (kaldırma): FoS = 4-5
-Şaklalar ve kaldırma aksesuarları: FoS = 4-6
-Demir zinciri: FoS = 3-4
+Wire ropes (lifting): FoS = 5
+Wire ropes (general deck work): FoS = 4-5
+Synthetic ropes: FoS = 5-6
+Chains (lifting): FoS = 4-5
+Shackles and lifting accessories: FoS = 4-6
+Anchor chain: FoS = 3-4
 
 PROOF LOAD:
-Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 2 katıdır (PL = 2 × SWL). Proof load testi geçen malzeme kalıcı deformasyon göstermemelidir.`,
+The proof load (PL) is the test load applied after manufacture. It is usually twice the SWL (PL = 2 × SWL). An item that passes the proof load test must show no permanent deformation.`,
     formula: {
       name: "Güvenli Çalışma Yükü",
       expression: "SWL = BL / FoS",
@@ -748,23 +750,23 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
     },
     examples: [
       {
-        problem: "Kırılma yükü 120 ton olan bir çelik telin kaldırma operasyonundaki SWL değerini hesaplayınız (FoS = 5).",
-        solution: "SWL = BL / FoS = 120 / 5 = 24 ton. Bu çelik telle en fazla 24 ton yük kaldırılabilir.",
+        problem: "Calculate the SWL of a wire rope with a breaking load of 120 tonnes for a lifting operation (FoS = 5).",
+        solution: "SWL = BL / FoS = 120 / 5 = 24 tonnes. A maximum of 24 tonnes can be lifted with this wire.",
       },
       {
-        problem: "SWL'si 15 ton olan bir şaklanın proof load değerini hesaplayınız.",
-        solution: "PL = 2 × SWL = 2 × 15 = 30 ton. Şakla üretim sonrası 30 ton ile test edilmiş olmalıdır.",
+        problem: "Calculate the proof load of a shackle with an SWL of 15 tonnes.",
+        solution: "PL = 2 × SWL = 2 × 15 = 30 tonnes. The shackle must have been tested at 30 tonnes after manufacture.",
       },
     ],
     bulletPoints: [
-      "SWL = BL / güvenlik faktörü",
+      "SWL = BL / factor of safety",
       "Kaldırma operasyonlarında FoS = 5 standarttır",
       "Proof load = 2 × SWL (üretim test yükü)",
       "SWL aşıldığında ekipman hizmet dışı bırakılmalıdır",
     ],
     warnings: [
-      "SWL değeri hiçbir koşulda aşılmamalıdır",
-      "Hasarlı veya aşınmış ekipmanın SWL değeri düşer; muayene zorunludur",
+      "The SWL must never be exceeded under any circumstances",
+      "The SWL of damaged or worn equipment is reduced; inspection is mandatory",
     ],
   },
 
@@ -783,23 +785,23 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
         alt: "Four different ships' anchors lined up on a quay, each with a different shank, fluke and stock arrangement.",
       },
     ],
-    content: `BAŞLICA DEMİR TİPLERİ:
+    content: `THE MAIN TYPES OF ANCHOR:
 
-STOCKLESS ANCHOR (Patentli Demir / Hall Demiri): Ticaret gemilerinde en yaygın kullanılan tiptir. Kolları (flukes) ankasa (crown) etrafında dönebilir. Hawse pipe içinde depolanabilir. Kendi ağırlığının 3-5 katı tutma kuvveti üretir.
+STOCKLESS ANCHOR (Hall anchor): the type most widely used on merchant ships. The flukes pivot about the crown. It can be stowed in the hawse pipe. It develops a holding power of 3-5 times its own weight.
 
-DANFORTH DEMİRİ: Geniş ve düz kolları sayesinde yumuşak zeminde (çamur, kum) çok iyi tutma sağlar. Kendi ağırlığının 10-20 katı tutma kuvveti üretir. Küçük teknelerde yaygındır; büyük gemilerde yedek olarak kullanılır.
+DANFORTH ANCHOR: its wide, flat flukes give very good holding in soft ground (mud, sand). It develops a holding power of 10-20 times its own weight. Common on small craft; carried as a spare on large ships.
 
-MUSHROOM DEMİRİ: Mantar şekilli; yumuşak çamurda gömülerek çok yüksek tutma kuvveti sağlar. Fener gemileri ve dalgıç şamandıralarında kalıcı demirleme için kullanılır.
+MUSHROOM ANCHOR: mushroom shaped; it buries itself in soft mud and provides very high holding power. Used for permanent moorings for lightships and marker buoys.
 
-BRUCE DEMİRİ: Kolsuz, tek parça döküm tasarım. Her tür zeminde iyi tutma sağlar. Açık deniz platformlarında yaygındır.
+BRUCE ANCHOR: a one-piece cast design without pivoting flukes. It holds well in all types of ground. Common on offshore installations.
 
-DEMİR AĞIRLIĞI:
+ANCHOR WEIGHT:
 
-Sınıflandırma kuruluşları, geminin equipment number'ına (EN) göre minimum demir ağırlığını belirler. Equipment number, geminin boyutları ve rüzgâra maruz kalan alanından hesaplanır.
+Classification societies set the minimum anchor weight according to the ship's equipment number (EN). The equipment number is calculated from the ship's dimensions and the area exposed to the wind.
 
-EN = Δ^(2/3) + 2hB + A/10 (yaklaşık formül)
+EN = Δ^(2/3) + 2hB + A/10 (approximate formula)
 
-Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demir taşır.`,
+A merchant ship normally carries two bower anchors (forward) and one spare anchor.`,
     bulletPoints: [
       "Stockless: en yaygın ticaret gemisi demiri, tutma = 3-5 × ağırlık",
       "Danforth: yumuşak zeminde çok iyi, tutma = 10-20 × ağırlık",
@@ -830,24 +832,24 @@ Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demi
         alt: "Close-up of an anchor windlass on a ship's forecastle, showing the large steel wildcat that hauls the cable, the brake mechanism and the hawse pipe opening.",
       },
     ],
-    content: `ZİNCİR YAPISI:
+    content: `CHAIN CONSTRUCTION:
 
-Demir zinciri, baklalardan (links) oluşur. Her bakla ortasında bir takviye çubuğu (stud) bulunur; bu çubuk baklanın ezilmesini ve birbirine dolaşmasını önler. Stud-link chain, ticaret gemilerinde standarttır.
+Anchor chain is made up of links. Each link has a stud across its middle; the stud prevents the link being crushed and the chain becoming tangled. Stud-link chain is standard on merchant ships.
 
-ZİNCİR ÖLÇÜLERİ:
-Zincir kalınlığı, baklanın çapıyla (diameter of common link) ifade edilir. Bir zincir boyu (shackle) = 27,5 m (90 feet). Bağlantı şaklası (joining shackle/Kenter shackle) ile zincir boyları birbirine bağlanır.
+CHAIN DIMENSIONS:
+Chain size is expressed by the diameter of the common link. One shackle of chain = 27.5 m (90 feet). Shackles of chain are joined together with a joining shackle (Kenter shackle).
 
-ZİNCİR İŞARETLEME (MARKING):
+CHAIN MARKING:
 
-Her zincir boyu (shackle) renkli boya ve tel sarımlarla işaretlenir:
-1. shackle: 1 beyaz boya + 1 tel sarım
-2. shackle: 2 beyaz boya + 2 tel sarım
-3. shackle: 3 beyaz boya + 3 tel sarım
-Son iki shackle: kırmızı boyalı baklalar
-Son shackle: tamamen kırmızı
+Each shackle of chain is marked with paint and wire turns:
+1st shackle: 1 white mark + 1 turn of wire
+2nd shackle: 2 white marks + 2 turns of wire
+3rd shackle: 3 white marks + 3 turns of wire
+The last two shackles: links painted red
+The last shackle: painted red throughout
 
-ZİNCİR LOCKER (ZİNCİR AMBARI):
-Zincir, pruva altındaki zincir ambarında (chain locker) depolanır. Zincirin uç baklası bir bitter end shackle ile gemiye bağlanır. Acil durumda zincirin serbest bırakılması için bu bağlantı sökülebilir olmalıdır.`,
+THE CHAIN LOCKER:
+The chain is stowed in the chain locker below the forecastle. The end link of the chain is secured to the ship by a bitter end shackle. This connection must be capable of being released so that the chain can be let go in an emergency.`,
     bulletPoints: [
       "Stud-link chain ticaret gemilerinde standarttır",
       "1 shackle = 27,5 m (90 feet) zincir",
@@ -863,27 +865,27 @@ Zincir, pruva altındaki zincir ambarında (chain locker) depolanır. Zincirin u
   "anchor-windlass": {
     title: "Irgatlar ve Demir Donanımı",
     introduction: "Demir ırgatı (anchor windlass), demir zincirini saran ve serbest bırakan mekanik sistemdir.",
-    content: `IRGAT TİPLERİ:
+    content: `TYPES OF WINDLASS:
 
-Yatay Irgatlar (Horizontal Windlass): Tambur ekseni yatay konumdadır. Güvertede daha fazla alan kaplar ancak bakımı kolaydır.
+Horizontal windlass: the drum axis is horizontal. It takes up more deck space but is easier to maintain.
 
-Dikey Irgatlar (Vertical Windlass / Capstan): Tambur ekseni dikeydir. Güvertede daha az alan kaplar. Zincir yönlendirmesi daha doğaldır.
+Vertical windlass (capstan): the drum axis is vertical. It takes up less deck space. The chain lead is more natural.
 
-IRGAT BİLEŞENLERİ:
+WINDLASS COMPONENTS:
 
-Cable lifter (Wildcat/Gypsy): Zincir baklalarını kavrayarak saran çark.
-Warping drum: Halat sarmak için kullanılan silindirik tambur.
-Band brake: Zinciri frenleyen bant fren.
-Clutch: Wildcat'i şafta bağlayan veya ayıran kavrama.
-Hawse pipe: Zincirin güverteden borda dışına çıktığı boru.
-Spurling pipe: Zincirin güverteden zincir ambarına indiği boru.
-Chain stopper (Devil's claw): Zinciri sabit tutan güvenlik tertibatı.
+Cable lifter (wildcat/gypsy): the wheel that grips and takes in the chain links.
+Warping drum: the cylindrical drum used for handling ropes.
+Band brake: the band brake that holds the chain.
+Clutch: engages or disengages the wildcat from the shaft.
+Hawse pipe: the pipe through which the chain runs from the deck outboard.
+Spurling pipe: the pipe through which the chain runs from the deck down to the chain locker.
+Chain stopper (devil's claw): the securing device that holds the chain.
 
-DEMİRLEMEDE IRGAT KULLANIMI:
+USING THE WINDLASS WHEN ANCHORING:
 
-Demir atarken ırgat clutch'ı ayrılır ve band brake kontrollü olarak gevşetilerek zincir serbest bırakılır (paying out). Demir alırken clutch kavranır ve ırgat motoru çalıştırılarak zincir sarılır (heaving up).
+When letting go, the windlass clutch is disengaged and the band brake is eased in a controlled way to pay out the chain. When weighing anchor the clutch is engaged and the windlass motor heaves the chain in.
 
-Acil durumda zincir bottoming (tam serbest bırakma) yapılabilir; ancak bu, zincir ambarında kontrol kaybı riski taşır.`,
+In an emergency the chain can be let go on the run; but this carries the risk of losing control in the chain locker.`,
     bulletPoints: [
       "Yatay ırgat: geniş alan, kolay bakım; dikey ırgat: dar alan",
       "Wildcat/Gypsy zincir baklalarını kavrar",
@@ -899,29 +901,29 @@ Acil durumda zincir bottoming (tam serbest bırakma) yapılabilir; ancak bu, zin
   "anchoring-procedure": {
     title: "Demirleme Prosedürü",
     introduction: "Demirleme, planlı ve koordineli bir şekilde yürütülen operasyondur; kaptan ve kasara ekibi arasında sürekli iletişim gerektirir.",
-    content: `DEMİRLEME ÖNCESİ HAZIRLIK:
+    content: `PREPARATION BEFORE ANCHORING:
 
-1. Demirleme bölgesinin haritadan incelenmesi (derinlik, zemin tipi, engeller)
-2. Hava ve akıntı durumunun değerlendirilmesi
-3. Gerekli zincir boyunun hesaplanması
-4. Demir donanımının hazırlanması (ırgat, fren, iletişim)
-5. Köprüüstü-kasara iletişim kontrolü (UHF/VHF veya telefon)
+1. Studying the anchorage on the chart (depth, type of bottom, obstructions)
+2. Assessing the weather and current
+3. Calculating the length of chain required
+4. Preparing the anchor gear (windlass, brake, communications)
+5. Checking bridge/forecastle communications (UHF/VHF or telephone)
 
-ZİNCİR BOYU HESABI:
+CALCULATING THE LENGTH OF CHAIN:
 
-Genel kural: Toplam zincir boyu = derinliğin 5-7 katı (normal koşullar). Fırtına koşullarında 8-10 katı. Sığ sularda minimum 4 kat.
+The general rule: total chain = 5-7 times the depth (normal conditions). In storm conditions 8-10 times. In shallow water a minimum of 4 times.
 
-Zincirin yere yatan kısmı (catenary) tutma kuvvetini artırır. Yeterli catenary olmadığında demir tarama riski artar.
+The part of the chain lying on the bottom (the catenary) increases the holding power. Without an adequate catenary the risk of dragging increases.
 
-DEMİRLEME ADIMLARI:
+ANCHORING, STEP BY STEP:
 
-1. Gemi demirleme noktasına yaklaşırken hız minimum düzeye düşürülür
-2. Rüzgâr veya akıntıya karşı yaklaşılır
-3. Gemi durduğunda veya çok yavaş sternway aldığında demir bırakılır
-4. Kontrollü şekilde zincir verilir (istenen uzunlukta)
-5. Brake sıkılır ve zincirin tutup tutmadığı kontrol edilir
-6. GPS, radar kerterizi veya kıyı nişangâhlarıyla demir pozisyonu kaydedilir
-7. Demir vardiyası başlatılır`,
+1. Speed is reduced to a minimum as the ship approaches the anchorage
+2. The approach is made into the wind or current
+3. The anchor is let go when the ship is stopped or making very slight sternway
+4. The chain is paid out under control (to the required length)
+5. The brake is applied and the anchor is checked to see whether it is holding
+6. The anchor position is recorded by GPS, radar bearings or shore transits
+7. The anchor watch is set`,
     formula: {
       name: "Zincir Boyu (Genel Kural)",
       expression: "Zincir boyu = Derinlik × (5 ~ 7)",
@@ -929,8 +931,8 @@ DEMİRLEME ADIMLARI:
     },
     examples: [
       {
-        problem: "Derinliği 20 metre olan bir demirleme yerinde normal koşullarda ne kadar zincir verilmelidir?",
-        solution: "Zincir boyu = 20 × 6 (ortalama) = 120 metre. 1 shackle = 27,5 m olduğundan, 120 / 27,5 ≈ 4,4 shackle. Uygulamada 4,5 veya 5 shackle zincir verilir.",
+        problem: "How much chain should be paid out in normal conditions at an anchorage with a depth of 20 metres?",
+        solution: "Length of chain = 20 × 6 (average) = 120 metres. Since 1 shackle = 27.5 m, 120 / 27.5 ≈ 4.4 shackles. In practice 4.5 or 5 shackles are paid out.",
       },
     ],
     bulletPoints: [
@@ -947,27 +949,27 @@ DEMİRLEME ADIMLARI:
   "anchor-watch": {
     title: "Demir Vardiyası ve Tarama Kontrolü",
     introduction: "Demir vardiyası, geminin güvenli bir şekilde demirli kalmasını sağlamak amacıyla sürekli gözetim yapılan vardiya türüdür.",
-    content: `DEMİR VARDIYASI GÖREVLERİ:
+    content: `ANCHOR WATCH DUTIES:
 
-1. Pozisyon kontrolü: GPS veya radar kerterizi ile geminin pozisyonunun izlenmesi. Salma dairesi (swinging circle) hesaplanarak diğer gemilerle ve kıyı engelleriyle güvenli mesafe kontrolü yapılır.
+1. Position monitoring: monitoring the ship's position by GPS or radar bearings. The swinging circle is calculated and the safe distance from other ships and shore obstructions is checked.
 
-2. Tarama kontrolü: Demirin zemine tutunmaya devam edip etmediğinin izlenmesi. Tarama belirtileri:
-   - Zincir yönünün beklenmedik şekilde değişmesi
-   - Zincirde aşırı titreşim
-   - GPS'te pozisyon kayması
-   - Radar kerterizlerinde değişim
+2. Checking for dragging: monitoring whether the anchor is still holding. Signs of dragging:
+   - An unexpected change in the direction of the chain
+   - Excessive vibration in the chain
+   - The position moving on GPS
+   - A change in the radar bearings
 
-3. Hava ve deniz durumu takibi: Rüzgâr, akıntı ve dalga değişimleri izlenir.
+3. Monitoring the weather and sea state: changes in wind, current and swell are watched.
 
-4. Trafik gözetimi: Yaklaşan veya demirdeki diğer gemilerin izlenmesi.
+4. Traffic watch: monitoring other ships approaching or at anchor.
 
-SALMA DAİRESİ HESABI:
+CALCULATING THE SWINGING CIRCLE:
 
-Salma dairesi yarıçapı = gemi boyu + verilen zincir boyu. Demirli geminin rüzgâr ve akıntı etkisiyle bu daire içinde hareket etmesi normaldir.
+The radius of the swinging circle = the ship's length + the length of chain paid out. It is normal for a ship at anchor to move within this circle under the influence of wind and current.
 
-ALARM AYARLARI:
+ALARM SETTINGS:
 
-Modern ECDIS ve GPS sistemlerinde anchor watch alarm ayarı yapılır. Gemi, belirlenen dairenin dışına çıktığında sesli ve görsel alarm verir.`,
+An anchor watch alarm is set on modern ECDIS and GPS systems. It gives an audible and visual alarm when the ship moves outside the defined circle.`,
     formula: {
       name: "Salma Dairesi Yarıçapı",
       expression: "R = L + Zincir boyu",
@@ -975,8 +977,8 @@ Modern ECDIS ve GPS sistemlerinde anchor watch alarm ayarı yapılır. Gemi, bel
     },
     examples: [
       {
-        problem: "LOA = 180 m, verilen zincir = 5 shackle olan geminin salma dairesi yarıçapını hesaplayınız.",
-        solution: "Zincir boyu = 5 × 27,5 = 137,5 m. R = 180 + 137,5 = 317,5 m. Geminin salma dairesi yarıçapı yaklaşık 318 metredir. Çevredeki engellerle bu mesafeden fazla açıklık olmalıdır.",
+        problem: "Calculate the swinging circle radius for a ship with LOA = 180 m and 5 shackles of chain paid out.",
+        solution: "Length of chain = 5 × 27.5 = 137.5 m. R = 180 + 137.5 = 317.5 m. The ship's swinging circle radius is about 318 metres. There must be more clearance than this to the surrounding obstructions.",
       },
     ],
     bulletPoints: [
@@ -986,43 +988,43 @@ Modern ECDIS ve GPS sistemlerinde anchor watch alarm ayarı yapılır. Gemi, bel
       "Zincir yönü ve titreşimi tarama belirtilerini gösterir",
     ],
     warnings: [
-      "Demir taramasında derhal köprüüstü bilgilendirilmeli ve makine hazır tutulmalıdır",
-      "Hava bozulması öncesi ek zincir verilmeli veya ikinci demir hazırlanmalıdır",
+      "If the anchor drags the bridge must be informed at once and the engine kept ready",
+      "Extra chain must be paid out, or a second anchor prepared, before the weather deteriorates",
     ],
   },
   "anchor-dragging": {
     title: "Demir Taraması ve Alınacak Tedbirler",
     introduction: "Demir taraması, demirin zemine tutunma gücünü kaybederek geminin kontrolsüz sürüklenmesidir; denizciliğin en kritik durumlarından biridir.",
-    content: `TARAMA NEDENLERİ:
+    content: `CAUSES OF DRAGGING:
 
-1. Yetersiz zincir boyu (catenary kaybı)
-2. Kötüleşen hava koşulları (artan rüzgâr ve akıntı kuvvetleri)
-3. Uygun olmayan zemin (sert kil, kaya, yosun)
-4. Demir veya zincir hasarı
-5. Ani rüzgâr değişimi (yön veya şiddet)
+1. Insufficient chain (loss of catenary)
+2. Deteriorating weather (increasing wind and current forces)
+3. Unsuitable ground (hard clay, rock, weed)
+4. Damage to the anchor or chain
+5. A sudden change of wind (direction or strength)
 
-TARAMA BELİRTİLERİ:
+SIGNS OF DRAGGING:
 
-- GPS pozisyonunda sürekli ve tek yönlü kayma
-- Radar kerterizlerinde değişim
-- Zincir yönünde anormal değişim
-- Zincirde sert titreşim veya darbe sesleri
-- Pruvanın rüzgâra/akıntıya dönmemesi
+- A continuous, one-directional movement of the GPS position
+- A change in the radar bearings
+- An abnormal change in the direction of the chain
+- Heavy vibration or snatching noises in the chain
+- The bow not lying head to wind/current
 
-ALINACAK TEDBİRLER:
+ACTION TO BE TAKEN:
 
-1. Makineyi derhal hazır et (stand-by engine)
-2. Daha fazla zincir ver (catenary artırmak için)
-3. Zincir tutarsa pozisyonu yeniden doğrula
-4. Tutmazsa ikinci demiri at (farklı yöne)
-5. İki demir de tutmazsa demir al ve başka yere demir at
-6. Gerekiyorsa seyire geç ve açık denize çık
+1. Put the engine on stand-by immediately
+2. Pay out more chain (to increase the catenary)
+3. If the chain holds, verify the position again
+4. If it does not hold, let go the second anchor (in a different direction)
+5. If neither anchor holds, weigh anchor and anchor elsewhere
+6. If necessary, proceed to sea and stand out into open water
 
-İKİ DEMİRLE DEMİRLEME:
+ANCHORING WITH TWO ANCHORS:
 
-Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
-- Open moor (V şekli): İki demir birbirine 60-90° açıyla atılır
-- Tandem: İki demir aynı zincir hattında, birbiri ardına atılır (nadir)`,
+Two anchors can be used when heavy weather is expected. Two methods:
+- Open moor (V-shape): the two anchors are laid at an angle of 60-90° to each other
+- Tandem: the two anchors are laid one behind the other on the same chain (rare)`,
     bulletPoints: [
       "Taramanın 1 numaralı sebebi yetersiz zincir boyudur",
       "İlk adım: makine hazır, ikinci adım: zincir ver",
@@ -1030,34 +1032,34 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
       "Open moor: iki demir 60-90° açıyla yerleştirilir",
     ],
     warnings: [
-      "Tarama anında vakit kaybedilmemeli; makine derhal hazır tutulmalıdır",
-      "Sığ suda veya kalabalık demirlemede tarama = çatışma riski",
+      "No time must be lost when the anchor drags; the engine must be made ready at once",
+      "In shallow water or a crowded anchorage, dragging = the risk of collision",
     ],
   },
   "anchoring-maneuvers": {
     title: "Demirleme Manevra Teknikleri",
     introduction: "Demirleme manevrası; salınım alanı, dip tutuşu, hava/akıntı ve liman düzenine göre farklı tekniklerle yapılır. Doğru teknik, geminin emniyetli salınımını ve sağlam tutuşunu belirler.",
     image: "/diagrams/seamanship/demirleme-manevralari.svg",
-    content: `YAKLAŞMA İLKESİ:
-Gemi demirleme noktasına daima rüzgâr veya akıntının güçlü olanına KARŞI (head to wind/current) yaklaşır. Nokta üzerinde gemi durdurulur ya da çok hafif tornistan (sternway) alırken demir funda edilir; böylece zincir geminin üstüne yığılmaz. Zincir kontrollü verilir (snub) ve demirin tuttuğu (brought up) doğrulanır.
+    content: `THE APPROACH:
+The ship always approaches the anchorage HEAD TO whichever is the stronger, the wind or the current. The ship is stopped over the position, or the anchor is let go while she is making very slight sternway, so that the chain does not pile up on the anchor. The chain is snubbed under control and the anchor is confirmed to be brought up.
 
-TEK DEMİRLE SALINIMLI DEMİRLEME (Single / Swinging Moor):
-En yaygın yöntem. Tek demir atılır, gemi rüzgâr/akıntıyla demir etrafında salınır. Geniş salınım alanı gerektirir. Zincir boyu = derinliğin 5-7 katı (fırtınada 8-10).
+SINGLE / SWINGING MOOR:
+The most common method. One anchor is let go and the ship swings around it with the wind and current. It requires a wide swinging area. Chain = 5-7 times the depth (8-10 in a storm).
 
-AKARAK DEMİRLEME (Running Moor):
-Gemi ileri yol alırken birinci demir funda edilir, ileri gidilmeye devam edilip fazla zincir verilir; ikinci demir atılır ve gemi geri çekilerek zincirler eşitlenir. İki demir, salınımı kısıtlar ve güçlü tutuş sağlar. Kalabalık/akıntılı demir yerlerinde tercih edilir.
+RUNNING MOOR:
+The first anchor is let go while the ship still has headway; she continues ahead paying out extra chain, the second anchor is let go and the ship is dropped back to equalise the chains. The two anchors limit the swing and give strong holding. Preferred in crowded anchorages or where there is a strong current.
 
-DURARAK DEMİRLEME (Standing Moor):
-Gemi durur veya hafif sternway alır; birinci demir atılır, gemi geri kayarken zincir verilir; ikinci demir atılır ve birinci zincir hisa edilerek gemi iki demir arasında ortalanır. Akarak demirlemenin tersi sıradır.
+STANDING MOOR:
+The ship is stopped or making slight sternway; the first anchor is let go and chain is paid out as she drops astern; the second anchor is let go and the first chain is heaved in to bring the ship midway between the two anchors. It is the reverse sequence of the running moor.
 
-AKDENİZ USULÜ (Mediterranean Moor):
-Gemi kıça doğru rıhtıma yanaşır; baştan iki demir (sancak ve iskele) açıyla atılır, kıçtan halatlarla rıhtıma bağlanır. Kalabalık Akdeniz limanlarında çok sayıda gemiyi sığdırmak için kullanılır.
+MEDITERRANEAN MOOR:
+The ship backs in stern-to towards the quay; two anchors (starboard and port) are laid out from forward at an angle, and she is secured to the quay with stern lines. It is used in crowded Mediterranean ports to fit in a large number of ships.
 
-BALTIK USULÜ (Baltic Moor):
-Rıhtımdan denize doğru esen kuvvetli rüzgârda, dış borda demiri + bir palamar halatı birlikte kullanılarak gemi rıhtıma yaklaştırılır ve emniyetle yanaşık tutulur.
+BALTIC MOOR:
+In a strong offshore wind, the offshore anchor and a mooring line are used together to bring the ship in and hold her safely alongside.
 
-AÇIK DEMİRLEME (Open Moor):
-İki demir 60-90° açıyla atılır; akıntı/rüzgâr yön değiştirdiğinde salınımı sınırlar ve tutuşu artırır.`,
+OPEN MOOR:
+The two anchors are laid at an angle of 60-90°; this limits the swing and improves holding when the current/wind changes direction.`,
     bulletPoints: [
       "Yaklaşma daima rüzgâr/akıntıya karşı; nokta üzerinde funda",
       "Running moor: ileri yolda 1. demir → ikinci demir → geri çekip eşitle",
@@ -1072,8 +1074,8 @@ AÇIK DEMİRLEME (Open Moor):
       "Manevra köprüüstü-baş kasara arası sürekli iletişimle yürütülür",
     ],
     warnings: [
-      "İleri yolda demir atmak zinciri ve ırgatı zorlar; running moor'da hız çok düşük olmalı",
-      "Akdeniz usulünde demir zincirlerinin çapraz/karışması (foul) riskine dikkat",
+      "Letting go with headway strains the chain and windlass; the speed must be very low in a running moor",
+      "In a Mediterranean moor watch for the risk of the anchor cables crossing and fouling",
     ],
   },
 
@@ -1104,31 +1106,31 @@ AÇIK DEMİRLEME (Open Moor):
         ["After Spring", "Kıç → pruvaya doğru", "Gemi geri kaymasını önler", "İleriye doğru çapraz"],
       ],
     },
-    content: `PALAMAR HALAT TÜRLERİ VE ADLARI:
+    content: `TYPES AND NAMES OF MOORING LINES:
 
-Geminin pruvasından kıçına doğru sırasıyla:
+From the bow aft:
 
-1. Head Line (Baş Bağı): Pruvanın en ön kısmından ileriye doğru gönderilen halat. Gemiyi iskeleye çeker.
+1. Head Line: run forward from the extreme forward part of the bow. It heaves the ship in towards the quay.
 
-2. Forward Breast Line (Baş Omuz Bağı): Pruva bölgesinden dik olarak kıyıya gönderilen halat. Gemiyi iskeleye yakın tutar.
+2. Forward Breast Line: run ashore at right angles from the bow area. It holds the ship close to the quay.
 
-3. Forward Spring (Baş Spring): Pruva bölgesinden kıça doğru gönderilen halat. Geminin ileri kaymasını önler.
+3. Forward Spring: run aft from the bow area. It prevents the ship moving forward.
 
-4. After Spring (Kıç Spring): Kıç bölgesinden pruva yönüne doğru gönderilen halat. Geminin geri kaymasını önler.
+4. After Spring: run forward from the stern area. It prevents the ship moving aft.
 
-5. After Breast Line (Kıç Omuz Bağı): Kıç bölgesinden dik olarak kıyıya gönderilen halat.
+5. After Breast Line: run ashore at right angles from the stern area.
 
-6. Stern Line (Kıç Bağı): Kıçın en arka kısmından geriye doğru gönderilen halat.
+6. Stern Line: run aft from the extreme after part of the stern.
 
-GÖREVLER:
+THEIR FUNCTIONS:
 
-Head ve stern line'lar geminin uzunlamasına hareketini ve iskeleye çekimini sağlar.
-Breast line'lar gemiyi iskeleye yakın tutar (enine hareket kontrolü).
-Spring'ler geminin ileri-geri kaymasını (surging) önler. Spring'ler en kritik bağlardır; gemi hareketinin birincil kontrolünü sağlar.
+The head and stern lines control the ship's fore-and-aft movement and heave her in to the quay.
+The breast lines hold the ship close to the quay (transverse control).
+The springs prevent the ship surging fore and aft. The springs are the most critical lines; they provide the primary control of the ship's movement.
 
-PALAMAR MALZEMESİ:
+MOORING LINE MATERIALS:
 
-Modern gemilerde genellikle polyester veya HMPE halatlar palamar olarak kullanılır. Naylon, yüksek elastikiyeti nedeniyle palamar olarak tercih edilmez (aşırı uzama istenmeyen harekete izin verir). Ancak bazı limanlarda şamandıra bağlamasında naylon kullanılabilir.`,
+Modern ships generally use polyester or HMPE ropes for mooring. Nylon is not preferred for mooring because of its high elasticity (excessive stretch allows unwanted movement). Nylon may however be used for buoy moorings in some ports.`,
     bulletPoints: [
       "Spring'ler geminin ileri-geri kaymasını önleyen en kritik bağlardır",
       "Breast line'lar gemiyi iskeleye yakın tutar (enine kontrol)",
@@ -1144,27 +1146,27 @@ Modern gemilerde genellikle polyester veya HMPE halatlar palamar olarak kullanı
   "mooring-equipment": {
     title: "Bağlama Donanımı (Babalar, Makaralar)",
     introduction: "Bağlama donanımı, palamar halatlarının gemide ve kıyıda güvenle sabitlenmesini sağlayan yapısal ve mekanik elemanlardır.",
-    content: `GEMİ ÜZERİNDEKİ DONANIM:
+    content: `SHIPBOARD EQUIPMENT:
 
-Baba (Bollard): Palamar halatının sarıldığı çelik silindirik direk. Çift baba (double bollard/cruciform) standart tiptir. SWL değeri üzerinde belirtilmelidir.
+Bollard: the steel cylindrical post around which the mooring line is turned up. The double (cruciform) bollard is the standard type. Its SWL must be marked on it.
 
-Panama Chock: Halatı borda dışına yönlendiren kapalı kılavuz. Halatın aşınmasını azaltır.
+Panama chock: a closed fairlead that leads the line outboard. It reduces chafe.
 
-Roller Fairlead: Dönen makaralı kılavuz. Halat sürtünmesini minimize eder.
+Roller fairlead: a fairlead with rotating rollers. It minimises friction on the line.
 
-Pedestal Fairlead: Yükseltilmiş kılavuz; halat açısını ayarlamak için kullanılır.
+Pedestal fairlead: a raised fairlead; used to adjust the lead of the line.
 
-Bitts (Babalar): İkili dikey direkler. Çekme halatı veya palamar için kullanılır.
+Bitts: paired vertical posts. Used for towing lines or mooring lines.
 
-KIYI DONANIMI:
+SHORE EQUIPMENT:
 
-Bollard (Kıyı babası): Rıhtıma monte edilmiş ağır çelik baba.
-Mooring buoy: Demirleme şamandırası; gemi şamandıraya bağlanır.
-Quick Release Hook (QRH): Tanker terminallerinde kullanılan hızlı serbest bırakma kancası. Acil durumda uzaktan kumandayla açılabilir.
+Shore bollard: a heavy steel bollard fixed to the quay.
+Mooring buoy: the ship is secured to the buoy.
+Quick Release Hook (QRH): the quick release hook used at tanker terminals. It can be released remotely in an emergency.
 
-STANDART DONANIM YERLEŞİMİ:
+STANDARD EQUIPMENT ARRANGEMENT:
 
-OCIMF (Oil Companies International Marine Forum) ve IACS standartları, bağlama donanımının yerleşimini ve SWL değerlerini belirler. Mooring Design MBL (DMBL) kavramı, tüm donanımın eşit dayanımda olmasını hedefler.`,
+The OCIMF (Oil Companies International Marine Forum) and IACS standards define the arrangement of mooring equipment and its SWL values. The Ship Design Minimum Breaking Load (SDMBL) concept aims to give all the equipment equal strength.`,
     bulletPoints: [
       "Panama chock: kapalı kılavuz, halat aşınmasını azaltır",
       "Roller fairlead: dönen makara, sürtünmeyi minimize eder",
@@ -1179,29 +1181,29 @@ OCIMF (Oil Companies International Marine Forum) ve IACS standartları, bağlama
   "mooring-procedure": {
     title: "Yanaşma ve Bağlama Prosedürü",
     introduction: "Yanaşma ve bağlama, köprüüstü ile güverte ekipleri arasında koordineli olarak yürütülen kritik bir operasyondur.",
-    content: `YANAŞMA ÖNCESİ HAZIRLIK:
+    content: `PREPARATION BEFORE BERTHING:
 
-1. Rıhtım bilgileri ve yaklaşım planının incelenmesi
-2. Palamar halatlarının hazırlanması (koçan boşanması)
-3. Koruma donanımının (fender) yerleştirilmesi
-4. İletişim kontrolü (köprüüstü-pruva-kıç)
-5. Makine ve dümen manevra testleri
-6. Römorkör koordinasyonu (gerekiyorsa)
+1. Studying the berth information and the approach plan
+2. Preparing the mooring lines (ranged out and flaked down)
+3. Placing the fenders
+4. Checking communications (bridge-forward-aft)
+5. Testing the engine and steering gear
+6. Coordinating with the tugs (if required)
 
-BAĞLAMA SIRASI:
+THE ORDER OF MAKING FAST:
 
-Standart bağlama sırası (rüzgâr/akıntı durumuna göre değişebilir):
-1. İlk olarak spring halatları gönderilir (gemi hareketini kontrol eder)
-2. Ardından head ve stern line'lar
-3. Son olarak breast line'lar
+The standard order (it can change with the wind/current):
+1. The springs are sent first (they control the ship's movement)
+2. Then the head and stern lines
+3. Finally the breast lines
 
-ROMORKÖRLERİN KULLANIMI:
+THE USE OF TUGS:
 
-Büyük gemilerde yanaşma ve kalkma sırasında römorkör desteği alınır. Römorkör sayısı ve gücü, geminin tonajına, liman koşullarına ve yerel kurallara bağlıdır. Römorkör bağlantı noktası, geminin manevra merkezine göre belirlenir.
+Large ships take tug assistance when berthing and unberthing. The number and power of the tugs depend on the ship's tonnage, the port conditions and local rules. The point of tug connection is chosen in relation to the ship's pivot point.
 
-HEAVING LINE (İNCE ATMA HALATI):
+THE HEAVING LINE:
 
-Palamar halatı doğrudan kıyıya atılamayacağı için önce ince bir atma halatı (heaving line) kıyıya fırlatılır. Bu halatın ucuna ağırlık (monkey's fist) bağlıdır. Kıyıdaki personel atma halatını çekerek palamar halatını kıyıya alır.`,
+Because a mooring line cannot be thrown ashore directly, a light heaving line is thrown first. A weight (a monkey's fist) is made up in its end. The shore party hauls on the heaving line to bring the mooring line ashore.`,
     bulletPoints: [
       "İlk spring, ardından head/stern, son olarak breast gönderilir",
       "Heaving line (atma halatı) ile palamar kıyıya geçirilir",
@@ -1209,62 +1211,62 @@ Palamar halatı doğrudan kıyıya atılamayacağı için önce ince bir atma ha
       "Römorkör sayısı ve gücü gemi tonajına ve koşullara bağlıdır",
     ],
     warnings: [
-      "Heaving line atılırken kıyıdaki personelin güvenli alanda olduğundan emin olunmalıdır",
-      "Snap-back zone'dan (halat geri tepme bölgesi) uzak durulmalıdır",
+      "Make sure the shore party is in a safe area before throwing the heaving line",
+      "Keep clear of the snap-back zone",
     ],
   },
   "mooring-winches": {
     title: "Irgatlar ve Vinçler",
     introduction: "Bağlama ırgatları (mooring winches), palamar halatlarının sarılması ve gerilmesini sağlayan mekanik sistemlerdir.",
-    content: `MOORING WINCH TİPLERİ:
+    content: `TYPES OF MOORING WINCH:
 
-1. Single Drum Winch: Tek tamburlu; basit yapı, yaygın kullanım.
-2. Split Drum Winch: İki tamburlu; bir tambur palamar, diğer tambur yedek halat için.
-3. Tension Winch (Auto-tension/Render-recover): Otomatik gergi winch'i. Halat gerginliğini sabit tutar. Gelgit farklılığının yüksek olduğu limanlarda gereklidir.
-4. Brake Drum: Sadece frenleme yapan tambur; halatın serbest ucu babaya alınır.
+1. Single drum winch: one drum; a simple design, widely used.
+2. Split drum winch: two drums; one for the working part of the line and the other for the stowed part.
+3. Tension winch (auto-tension/render-recover): an automatic tension winch. It keeps the line tension constant. It is needed in ports with a large tidal range.
+4. Brake drum: a drum that only brakes; the free end of the line is turned up on a bollard.
 
-OTOMATİK GERGİ SİSTEMİ:
+THE AUTOMATIC TENSION SYSTEM:
 
-Auto-tension winch'ler halattaki gerilimi sürekli ölçer. Gerginlik arttığında (geminin uzaklaşması) halat verir (render). Gerginlik azaldığında (geminin yaklaşması) halatı sarar (recover). Ayarlanan gerilim değeri SWL'nin %60'ını geçmemelidir.
+Auto-tension winches measure the tension in the line continuously. When the tension rises (the ship moving away) they render the line; when it falls (the ship coming in) they recover it. The tension setting must not exceed 60% of the SWL.
 
-GÜVENLIK:
+SAFETY:
 
-Winch operasyonu sırasında personel tehlikeli bölgelerden uzak durmalıdır. Halatın gerilim altında kopması halinde geri tepme (snapback) ölümcül olabilir. IMO MSC Circ.1175 snap-back zone'ların güverte üzerinde işaretlenmesini gerektirir.`,
+Personnel must keep clear of the danger areas during winch operations. If a line under tension parts, the snap-back can be fatal. IMO MSC Circ.1175 requires snap-back zones to be marked on deck.`,
     bulletPoints: [
       "Auto-tension winch: gelgit farkı yüksek limanlarda gereklidir",
       "Ayar gerilimi SWL'nin %60'ını geçmemelidir",
       "IMO MSC Circ.1175: snap-back zone işaretlemesi zorunluluğu",
     ],
     warnings: [
-      "Snap-back zone ölümcül tehlike bölgesidir; güvertede sarı/kırmızı hatlarla işaretlenir",
-      "Winch operasyonu sırasında tambur önünde durulmamalıdır",
+      "The snap-back zone is a lethal danger area; it is marked on deck with yellow/red lines",
+      "Never stand in front of the drum during winch operations",
     ],
   },
   "mooring-safety": {
     title: "Bağlama Operasyonlarında Güvenlik",
     introduction: "Bağlama operasyonları, denizcilik kazalarının en sık yaşandığı faaliyet alanlarından biridir; güvenlik protokollerinin sıkı uygulanması hayat kurtarır.",
-    content: `BAŞLICA RİSKLER:
+    content: `THE MAIN RISKS:
 
-1. Snapback (Geri Tepme): Gerilmiş halatın koparak geri tepmesi. En ölümcül risktir. Sentetik halatlar yüksek enerji depoladığından snapback mesafesi uzundur.
+1. Snap-back: a line under tension parting and whipping back. This is the most lethal risk. Because synthetic ropes store a lot of energy, the snap-back distance is long.
 
-2. Sıkışma: Halatların, tamburların veya makaraların arasına el/ayak sıkışması.
+2. Trapping: hands/feet caught between lines, drums or sheaves.
 
-3. Çarpma: Halatın veya bağlama donanımının kontrolsüz hareketi.
+3. Impact: uncontrolled movement of a line or of mooring equipment.
 
-4. Düşme: Islak güverte, halat engelleri, dikkatsizlik.
+4. Falls: wet decks, lines as trip hazards, inattention.
 
-GÜVENLİK ÖNLEMLERİ:
+SAFETY MEASURES:
 
-- Snap-back zone'lar güvertede belirgin şekilde işaretlenmeli (IMO MSC Circ.1175)
-- PPE (kask, emniyet gözlüğü, emniyet ayakkabısı, eldiven) giyilmeli
-- Halatın kopabileceği hat üzerinde durulmamalı
-- Kılavuz makaralara uzak durulmalı
-- Winch operatörü ile gözetmen arasında açık iletişim
-- Halatın babaya alınması sırasında halat serbest dönüşü (slack) kontrol edilmeli
+- Snap-back zones must be clearly marked on deck (IMO MSC Circ.1175)
+- PPE (helmet, safety glasses, safety shoes, gloves) must be worn
+- Never stand in line with a rope that could part
+- Keep clear of the fairleads
+- Clear communication between the winch operator and the supervisor
+- The slack must be controlled when turning a line up on a bollard
 
-OCIMF MEG4 KILAVUZU:
+THE OCIMF MEG4 GUIDELINES:
 
-OCIMF Mooring Equipment Guidelines (MEG4) bağlama güvenliği için kapsamlı bir referans kaynağıdır. Donanım tasarımı, bakım, operasyonel prosedürler ve risk değerlendirmesi konularında rehberlik sağlar.`,
+The OCIMF Mooring Equipment Guidelines (MEG4) are the comprehensive reference for mooring safety. They give guidance on equipment design, maintenance, operational procedures and risk assessment.`,
     bulletPoints: [
       "Snapback: en ölümcül bağlama riski; sentetik halatlar yüksek enerji depolar",
       "Snap-back zone'lar güvertede işaretlenmelidir (IMO MSC Circ.1175)",
@@ -1272,34 +1274,34 @@ OCIMF Mooring Equipment Guidelines (MEG4) bağlama güvenliği için kapsamlı b
       "OCIMF MEG4: bağlama güvenliği referans kılavuzu",
     ],
     warnings: [
-      "Gerilmiş halatın hizasında kesinlikle durulmamalıdır",
-      "Bağlama operasyonu sırasında en az iki kişi görev yapmalıdır",
+      "Never stand in line with a rope under tension",
+      "At least two people must be on duty during a mooring operation",
     ],
   },
   "single-buoy-mooring": {
     title: "Tek Şamandıra Bağlaması (SBM/SPM)",
     introduction: "Single Point Mooring (SPM), tankerlerin açık denizde yükleme/boşaltma yapabilmesi için kullanılan şamandıra bağlama sistemidir.",
-    content: `SİSTEM YAPISI:
+    content: `SYSTEM LAYOUT:
 
-SPM/SBM (Single Buoy Mooring), deniz tabanına ankrajlanmış büyük bir şamandıradan oluşur. Tanker, pruvasını bu şamandıraya bağlar ve rüzgâr/akıntı etkisiyle serbest dönüş (weathervaning) yapabilir.
+An SPM/SBM (Single Buoy Mooring) consists of a large buoy anchored to the seabed. The tanker secures her bow to this buoy and can weathervane freely with the wind and current.
 
-Sistemin bileşenleri:
-- Şamandıra gövdesi (buoy body)
-- Ankraj bacakları (anchor legs/chains)
-- Döner kafa (turntable/swivel)
-- Deniz altı boruları (submarine hoses/pipelines)
-- Yüzen hortumlar (floating hoses) veya CALM sistemi
+The components of the system:
+- The buoy body
+- The anchor legs/chains
+- The turntable/swivel
+- Submarine hoses/pipelines
+- Floating hoses or a CALM system
 
-BAĞLAMA PROSEDÜRÜ:
+THE MOORING PROCEDURE:
 
-1. Tanker, şamandıraya kontrollü yaklaşır (genellikle rüzgâraltından)
-2. Heaving line/messenger ile pick-up halatı (pennant wire) alınır
-3. Chafing chain şamandıra ucundan alınarak tankerin pruva stopper'ına bağlanır
-4. Yüzen hortumlar bağlanır ve yük transferi başlar
+1. The tanker approaches the buoy under control (usually from downwind)
+2. The pick-up line (pennant wire) is taken with a heaving line/messenger
+3. The chafing chain is taken from the end of the buoy and secured in the tanker's bow stopper
+4. The floating hoses are connected and cargo transfer begins
 
-Bağlama ve yükleme sırasında tanker, şamandıra etrafında 360° dönebilir. Bu özellik, açık deniz koşullarında güvenli operasyon sağlar.
+During mooring and loading the tanker can swing through 360° around the buoy. This allows safe operation in open sea conditions.
 
-SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dokümanıyla standartlaştırılmıştır.`,
+SBM operations are standardised in the OCIMF publication "SBM and SPM – Guidelines".`,
     bulletPoints: [
       "SPM: tanker pruvasından bağlanır, serbest dönüş (weathervaning) yapar",
       "CALM: Catenary Anchor Leg Mooring yaygın bir SPM tipidir",
@@ -1328,23 +1330,23 @@ SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dok�
         alt: "Stern view of a large ship in dry dock; a blue semi-balanced spade rudder and a large five-bladed bronze propeller, with workers and staging around them.",
       },
     ],
-    content: `BAŞLICA DÜMEN TİPLERİ:
+    content: `THE MAIN TYPES OF RUDDER:
 
-1. Balanced Rudder (Dengeli Dümen): Dümen alanının bir kısmı (%20-25) döndürme ekseni önünde kalır. Bu tasarım, dümen torku gereksinimini azaltır. Modern ticaret gemilerinde standarttır.
+1. Balanced rudder: part of the rudder area (20-25%) lies forward of the stock. This design reduces the rudder torque required. It is standard on modern merchant ships.
 
-2. Semi-Balanced Rudder (Yarı Dengeli): Üst kısım sabit yapıya monte, alt kısım serbest. Dengeli dümenin bir varyasyonudur.
+2. Semi-balanced rudder: the upper part is attached to a fixed structure and the lower part is free. A variation of the balanced rudder.
 
-3. Unbalanced Rudder (Dengesiz): Tüm dümen alanı döndürme ekseni arkasındadır. Yüksek tork gerektirir. Eski tip gemilerde bulunur.
+3. Unbalanced rudder: the whole rudder area lies aft of the stock. It requires high torque. Found on older ships.
 
-4. Flap Rudder (Becker Rudder): Dümenin arka kenarında hareketli bir kanat (flap) bulunur. Dümen açısını efektif olarak artırır ve dönüş performansını iyileştirir.
+4. Flap rudder (Becker rudder): a movable flap on the trailing edge of the rudder. It effectively increases the rudder angle and improves turning performance.
 
-5. Schilling Rudder: Yüksek kaldırma kuvveti üreten profil tasarımı. Dar alanlarda manevra kabiliyetini artırır.
+5. Schilling rudder: a profile design producing high lift. It improves manoeuvrability in confined waters.
 
-DÜMEN PARAMETRELERİ:
+RUDDER PARAMETERS:
 
-Dümen alanı genellikle sualtı yüzey alanının %1,5-2'si kadardır. Maksimum dümen açısı genellikle her iki tarafa 35°'dir. SOLAS gereği dümen, 35°'den bir tarafa 30°'ye karşı tarafa 28 saniyede dönebilmelidir.
+The rudder area is generally 1.5-2% of the underwater lateral area. The maximum rudder angle is usually 35° each way. Under SOLAS the rudder must be capable of being put over from 35° on one side to 30° on the other in 28 seconds.
 
-Dümen başlangıç etkisi (initial turning effect) pruva tarafına değil, kıç tarafına etki eder. Dümen sancağa basıldığında kıç iskeleye savrulur, ardından gemi sancağa dönmeye başlar.`,
+The initial turning effect acts on the stern, not on the bow. When the helm is put to starboard the stern swings to port, and only then does the ship begin to turn to starboard.`,
     bulletPoints: [
       "Balanced rudder: modern standart, düşük tork gereksinimi",
       "Flap rudder (Becker): artırılmış dönüş performansı",
@@ -1368,25 +1370,25 @@ Dümen başlangıç etkisi (initial turning effect) pruva tarafına değil, kı�
         alt: "A ship's steering gear room; two large green hydraulic ram cylinders connected to the tiller, with hydraulic pumps and gauges around them.",
       },
     ],
-    content: `DÜMEN MAKİNESİ TİPLERİ:
+    content: `TYPES OF STEERING GEAR:
 
-1. Ram Type (Pistonlu): Hidrolik silindirler yardımıyla dümen yelpazesini (tiller) hareket ettirir. İki veya dört silindir kullanılır. Büyük gemilerde yaygındır.
+1. Ram type: hydraulic cylinders move the tiller. Two or four rams are used. Common on large ships.
 
-2. Rotary Vane Type: Döner kanatlı hidrolik motor. Kompakt yapıdadır. Orta boy gemilerde tercih edilir.
+2. Rotary vane type: a rotary vane hydraulic motor. Compact in design. Preferred on medium-sized ships.
 
-3. Elektrik Motorlu: Küçük gemilerde doğrudan elektrik motoruyla dümen tahriği.
+3. Electric motor driven: the rudder is driven directly by an electric motor on small ships.
 
-SOLAS GEREKSİNİMLERİ:
+SOLAS REQUIREMENTS:
 
-- Ana dümen makinesi: dümenin 35° bir tarafa, 30° karşı tarafa 28 saniyede dönmesini sağlamalıdır
-- Yardımcı dümen makinesi: dümenin 15° bir tarafa, 15° karşı tarafa 60 saniyede dönmesini sağlamalıdır
-- İki bağımsız güç kaynağı bulunmalıdır
-- Köprüüstünden, dümen makinesi dairesinden ve acil dümen pozisyonundan kontrol edilebilmelidir
-- Dümen açı göstergesi (rudder angle indicator) köprüüstünde ve dümen makinesi dairesinde bulunmalıdır
+- The main steering gear must put the rudder over from 35° on one side to 30° on the other in 28 seconds
+- The auxiliary steering gear must put the rudder over from 15° on one side to 15° on the other in 60 seconds
+- There must be two independent power supplies
+- It must be capable of being controlled from the bridge, from the steering gear compartment and from the emergency steering position
+- A rudder angle indicator must be fitted on the bridge and in the steering gear compartment
 
-ACİL DÜMEN:
+EMERGENCY STEERING:
 
-Ana dümen makinesi arızasında yardımcı sisteme geçiş süresi mümkün olan en kısa olmalıdır. Dümen makinesi tatbikatları düzenli olarak yapılmalıdır (3 ayda bir). Acil dümen prosedürü mürettebat tarafından bilinmelidir.`,
+If the main steering gear fails, the changeover to the auxiliary system must be as quick as possible. Steering gear drills must be held regularly (every 3 months). The emergency steering procedure must be known by the crew.`,
     bulletPoints: [
       "Ram type: büyük gemilerde standart hidrolik sistem",
       "Rotary vane: kompakt, orta boy gemilerde tercih edilir",
@@ -1403,39 +1405,39 @@ Ana dümen makinesi arızasında yardımcı sisteme geçiş süresi mümkün ola
     title: "Dönme Dairesi ve Manevra Karakteristikleri",
     image: "/diagrams/seamanship/donme-dairesi.svg",
     introduction: "Dönme dairesi (turning circle), geminin tam dümen açısıyla 360° dönüş yaptığında çizdiği yoldur ve geminin manevra kabiliyetini tanımlar.",
-    content: `DÖNME DAİRESİ PARAMETRELERİ:
+    content: `TURNING CIRCLE PARAMETERS:
 
-Advance: Dümen basıldığı andan gemi 90° dönene kadar orijinal seyir hattı yönündeki ilerleme mesafesi. Genellikle 3-5 gemi boyu arasındadır.
+Advance: the distance travelled in the direction of the original course from the moment the helm is put over until the ship's head has turned 90°. Generally between 3 and 5 ship lengths.
 
-Transfer: Dümen basıldığı andan gemi 90° dönene kadar orijinal seyir hattına dik yöndeki yer değiştirme mesafesi. Genellikle 1-2 gemi boyu arasındadır.
+Transfer: the distance moved at right angles to the original course from the moment the helm is put over until the head has turned 90°. Generally between 1 and 2 ship lengths.
 
-Tactical Diameter: Geminin 180° dönene kadar orijinal seyir hattına dik yöndeki toplam yer değiştirmesidir. Genellikle 3-6 gemi boyu arasındadır.
+Tactical diameter: the total distance moved at right angles to the original course when the ship has turned 180°. Generally between 3 and 6 ship lengths.
 
-Final Diameter: Kararlı dönüş çapıdır (dönüş hızı sabitlendiğinde).
+Final diameter: the diameter of the steady turn (once the rate of turn has settled).
 
-Kick: Dümenin ilk basılmasında kıçın dönüş yönünün tersine savrulmasıdır.
+Kick: the swing of the stern in the opposite direction to the turn when the helm is first put over.
 
-ETKİLEYEN FAKTÖRLER:
+INFLUENCING FACTORS:
 
-- Dümen açısı (arttıkça çap küçülür)
-- Gemi hızı (arttıkça dönüş süresi kısalır, ancak çap çok değişmez)
-- Trim durumu (kıç triminde dönüş zorlaşır)
-- Yük durumu (tam yüklü gemide dönüş çapı büyür)
-- Rüzgâr ve akıntı
-- Sığ su etkisi (çap büyür)
+- Rudder angle (the greater the angle, the smaller the diameter)
+- Ship's speed (the higher the speed, the shorter the time to turn, though the diameter changes little)
+- Trim (a ship trimmed by the stern turns less readily)
+- Loading condition (the turning circle is larger when fully loaded)
+- Wind and current
+- Shallow water effect (the diameter increases)
 
-IMO STANDARTLARI (MSC.137(76)):
-- Advance ≤ 4,5 gemi boyu
-- Tactical diameter ≤ 5 gemi boyu`,
+IMO STANDARDS (MSC.137(76)):
+- Advance ≤ 4.5 ship lengths
+- Tactical diameter ≤ 5 ship lengths`,
     formula: {
       name: "IMO Manevra Standartları",
-      expression: "Advance ≤ 4,5L  ve  Tactical Diameter ≤ 5L",
+      expression: "Advance ≤ 4.5L  and  Tactical Diameter ≤ 5L",
       description: "L: gemi boyu (LBP). IMO MSC.137(76) standartlarına göre minimum performans gereksinimleri.",
     },
     examples: [
       {
-        problem: "LBP = 200 m olan bir gemi için IMO standartlarına göre izin verilen maksimum advance ve tactical diameter değerlerini hesaplayınız.",
-        solution: "Advance ≤ 4,5 × 200 = 900 m. Tactical diameter ≤ 5 × 200 = 1.000 m. Geminin sea trial testlerinde bu değerlerin altında performans göstermesi gerekir.",
+        problem: "Calculate the maximum advance and tactical diameter permitted by the IMO standards for a ship with LBP = 200 m.",
+        solution: "Advance ≤ 4.5 × 200 = 900 m. Tactical diameter ≤ 5 × 200 = 1,000 m. The ship must perform within these figures on her sea trials.",
       },
     ],
     bulletPoints: [
@@ -1453,30 +1455,30 @@ IMO STANDARTLARI (MSC.137(76)):
   "stopping-distance": {
     title: "Durma Mesafesi ve Crash Stop",
     introduction: "Durma mesafesi, geminin tam yol ilerlerken makinelerin durdurulması veya tornistan verilmesiyle tamamen duruncaya kadar kat ettiği mesafedir.",
-    content: `DURMA KAVRAMLARI:
+    content: `STOPPING CONCEPTS:
 
-Free Stop: Makineler durdurulur, gemi kendi direnciyle yavaşlar. Büyük gemilerde bu mesafe çok uzundur (30-40 dakika sürebilir).
+Free stop: the engines are stopped and the ship slows under her own resistance. On large ships this distance is very long (it can take 30-40 minutes).
 
-Crash Stop (Emergency Stop): Makineler tam yol tornistana alınır. Gemi mümkün olan en kısa mesafede durdurulur. Ancak bu manevra pervane şaftına ve makineye stres uygular.
+Crash stop (emergency stop): the engines are put full astern. The ship is stopped in the shortest possible distance. This manoeuvre imposes stress on the propeller shaft and the engine.
 
-CRASH STOP PARAMETRELERİ:
+CRASH STOP PARAMETERS:
 
-Durma mesafesi (track reach): Geminin crash stop boyunca kat ettiği toplam mesafe. Genellikle 10-20 gemi boyu arasındadır.
+Track reach: the total distance the ship covers during the crash stop. Generally between 10 and 20 ship lengths.
 
-Head reach: Orijinal seyir hattı yönündeki ilerleme mesafesi.
+Head reach: the distance travelled in the direction of the original course.
 
-Lateral deviation: Durma sırasında geminin yana sapması. Pervane etkisi (transverse thrust) nedeniyle gemi genellikle bir tarafa sapar.
+Lateral deviation: the sideways movement of the ship while stopping. The ship usually swings to one side because of transverse thrust.
 
-ETKİLEYEN FAKTÖRLER:
+INFLUENCING FACTORS:
 
-- Gemi hızı (arttıkça durma mesafesi artar – karesel ilişki)
-- Deplasmanı (arttıkça durma zorlaşır)
-- Gemi formu ve direnç
-- Pervane gücü ve tipi
-- Rüzgâr ve akıntı
-- Sığ su etkisi (durma mesafesi kısalır ancak kontrol zorlaşır)
+- Ship's speed (the stopping distance increases with speed – a squared relationship)
+- Displacement (the greater it is, the harder it is to stop)
+- Hull form and resistance
+- Propeller power and type
+- Wind and current
+- Shallow water effect (the stopping distance shortens but control becomes more difficult)
 
-IMO STANDARDI: Head reach ≤ 15 gemi boyu (MSC.137(76))`,
+IMO STANDARD: head reach ≤ 15 ship lengths (MSC.137(76))`,
     formula: {
       name: "IMO Crash Stop Standardı",
       expression: "Head Reach ≤ 15L",
@@ -1489,50 +1491,50 @@ IMO STANDARDI: Head reach ≤ 15 gemi boyu (MSC.137(76))`,
       "Pervane etkisiyle gemi yana sapar",
     ],
     warnings: [
-      "Crash stop pervane şaftına ve makineye aşırı stres uygular",
-      "Büyük konteyner ve tanker gemilerde durma mesafesi 2-3 km'yi bulabilir",
+      "A crash stop imposes excessive stress on the propeller shaft and the engine",
+      "On large container ships and tankers the stopping distance can be 2-3 km",
     ],
   },
   "squat-effect": {
     title: "Squat Etkisi ve Sığ Su Etkileri",
     image: "/diagrams/seamanship/squat-etkisi.svg",
     introduction: "Squat, geminin sığ suda veya dar kanalda hareket ederken su altı basınç değişimlerinin etkisiyle batmasıdır (draft artışı).",
-    content: `SQUAT FİZİĞİ:
+    content: `THE PHYSICS OF SQUAT:
 
-Gemi hareket ettiğinde tekne altında ve çevresinde su akışı hızlanır. Bernoulli prensibi gereği hız artan yerde basınç düşer. Basınç düşüşü geminin batmasına (squat) neden olur.
+When a ship moves through the water the flow beneath and around the hull speeds up. By Bernoulli's principle, where the speed increases the pressure falls. The drop in pressure causes the ship to sink bodily (squat).
 
-Sığ su tanımı: Derinlik/Draft oranı < 1,5 ise sığ su etkisi belirgindir.
+Definition of shallow water: the shallow water effect is significant when the depth/draft ratio is less than 1.5.
 
-SQUAT HESABI (BARRASS FORMÜLÜ):
+CALCULATING SQUAT (BARRASS FORMULA):
 
-Açık sularda: Squat ≈ Cb × V² / 100 (metre)
-Kanal/dar sularda: Squat ≈ 2 × Cb × V² / 100 (metre)
+In open water: Squat ≈ Cb × V² / 100 (metres)
+In a canal/confined water: Squat ≈ 2 × Cb × V² / 100 (metres)
 
-Cb: blok katsayısı (block coefficient)
-V: gemi hızı (knot)
+Cb: the block coefficient
+V: the ship's speed (knots)
 
-SQUAT ETKİLERİ:
+THE EFFECTS OF SQUAT:
 
-- Draft artışı (en kritik etki: karaya oturma riski)
-- Trim değişimi (dolu gemide genellikle pruva triminin artması)
-- Dümen etkinliğinin azalması
-- Dönüş çapının büyümesi
+- An increase in draft (the most critical effect: the risk of grounding)
+- A change of trim (usually an increase in trim by the head on a loaded ship)
+- Reduced rudder effectiveness
+- A larger turning circle
 
-SIĞ SU ETKİLERİ:
+SHALLOW WATER EFFECTS:
 
-- Dalga direncinin artması
-- Gemi hızının düşmesi
-- Manevra kabiliyetinin azalması
-- Pruva dalgasının büyümesi (kıyı erozyonu riski)`,
+- Increased wave resistance
+- A drop in the ship's speed
+- Reduced manoeuvrability
+- A larger bow wave (the risk of bank erosion)`,
     formula: {
       name: "Squat Hesabı (Barrass Formülü)",
-      expression: "Squat ≈ Cb × V² / 100  (açık su, metre)",
+      expression: "Squat ≈ Cb × V² / 100  (open water, metres)",
       description: "Cb: blok katsayısı, V: hız (knot). Kanal/dar sularda sonuç 2 ile çarpılır.",
     },
     examples: [
       {
-        problem: "Cb = 0,80 ve hızı 12 knot olan bir bulk carrier'ın açık sığ suda squat değerini hesaplayınız.",
-        solution: "Squat = Cb × V² / 100 = 0,80 × 12² / 100 = 0,80 × 144 / 100 = 1,152 m. Geminin draftı yaklaşık 1,15 metre artacaktır. Kanal geçişinde bu değer 2 × 1,15 = 2,30 m olur.",
+        problem: "Calculate the squat of a bulk carrier with Cb = 0.80 at 12 knots in open shallow water.",
+        solution: "Squat = Cb × V² / 100 = 0.80 × 12² / 100 = 0.80 × 144 / 100 = 1.152 m. The ship's draft will increase by about 1.15 metres. In a canal transit this becomes 2 × 1.15 = 2.30 m.",
       },
     ],
     bulletPoints: [
@@ -1542,40 +1544,40 @@ SIĞ SU ETKİLERİ:
       "En kritik risk: draft artışı → karaya oturma",
     ],
     warnings: [
-      "Sığ sularda hız mutlaka azaltılmalıdır (squat hızın karesiyle artar)",
-      "UKC hesabında squat değeri mutlaka dikkate alınmalıdır",
+      "Speed must always be reduced in shallow water (squat increases with the square of the speed)",
+      "Squat must always be taken into account in the UKC calculation",
     ],
   },
   "bank-effect": {
     title: "Kıyı Etkisi (Bank Effect) ve Kanal Seyri",
     introduction: "Kıyı etkisi, geminin kıyıya veya kanal duvarına yakın seyrettiğinde ortaya çıkan asimetrik su akışının neden olduğu istem dışı yön değiştirmesidir.",
-    content: `KIYI ETKİSİ MEKANİZMASI:
+    content: `THE MECHANISM OF BANK EFFECT:
 
-Gemi kanal duvarına veya kıyıya yakın seyrettiğinde, yakın taraftaki su akışı hızlanır (dar alan), uzak taraftaki yavaşlar. Bernoulli prensibi gereği:
-- Yakın tarafta basınç düşer → gemi kıyıya doğru çekilir (suction)
-- Pruva uzak tarafa iterken, kıç yakın tarafa çekilir
-- Sonuç: gemi kıyıdan uzaklaşır gibi görünür ancak aslında kıç kıyıya doğru kayar
+When a ship passes close to a canal wall or a bank, the flow on the near side speeds up (the confined space) and the flow on the far side slows down. By Bernoulli's principle:
+- The pressure falls on the near side → the ship is drawn towards the bank (suction)
+- While the bow is pushed away from the bank, the stern is drawn towards it
+- The result: the bow appears to sheer away from the bank while in fact the stern moves towards it
 
-İKİ GEMİNİN ETKİLEŞİMİ:
+INTERACTION BETWEEN TWO SHIPS:
 
-Dar sularda paralel seyreden veya karşılaşan iki gemi arasında da benzer etkiler oluşur:
-- Yaklaşma aşaması: pruva-pruva itme
-- Paralel geçiş: karşılıklı çekim (suction)
-- Uzaklaşma: kıç-kıç itme
+Similar effects arise between two ships running parallel or meeting in confined waters:
+- On approach: bow-to-bow repulsion
+- Passing abeam: mutual attraction (suction)
+- Drawing apart: stern-to-stern repulsion
 
-Bu etkiler küçük gemileri daha fazla etkiler. Büyük gemi geçerken küçük gemi güvenli mesafe bırakmalı ve hızını düşürmelidir.
+These effects act more strongly on small ships. A small vessel must leave a safe distance and reduce speed when a large ship passes.
 
-KANAL SEYRİ KURALLARI:
+RULES FOR CANAL PASSAGE:
 
-1. Orta hattan seyret (mümkünse)
-2. Hızı azalt (squat ve kıyı etkisi azalır)
-3. Dümen kontrolünü sıkı tut
-4. Karşılaşma ve sollama manevralarında ekstra dikkat
-5. Pilot rehberliğine uy
+1. Keep to the centreline (where possible)
+2. Reduce speed (this reduces squat and bank effect)
+3. Keep tight control of the helm
+4. Take extra care when meeting and overtaking
+5. Follow the pilot's advice
 
-SUEZ VE PANAMA KANALLARI:
+THE SUEZ AND PANAMA CANALS:
 
-Bu kanallarda özel seyir kuralları ve hız limitleri uygulanır. Pilot alımı zorunludur. Gemi boyutları kanal geçiş kısıtlamalarına (Suezmax, Panamax, Neopanamax) uygun olmalıdır.`,
+Special navigation rules and speed limits apply in these canals. Pilotage is compulsory. The ship's dimensions must comply with the canal transit restrictions (Suezmax, Panamax, Neopanamax).`,
     bulletPoints: [
       "Kıyı etkisi: yakın tarafta basınç düşer, kıç kıyıya çekilir",
       "İki gemi etkileşiminde pruva-pruva itme, paralelde çekim",
@@ -1603,26 +1605,26 @@ Bu kanallarda özel seyir kuralları ve hız limitleri uygulanır. Pilot alımı
         alt: "A tall grey pedestal crane on the deck of a dry cargo ship at sea, its jib extended and hook hanging over the hatch.",
       },
     ],
-    content: `VİNÇ TİPLERİ:
+    content: `TYPES OF CRANE:
 
-Deck Crane (Güverte Vinci): Modern kargo gemilerinin çoğunda kullanılır. Hidrolik tahrikli, 360° dönebilen yapıdadır. SWL genellikle 25-35 ton arasıdır. Tandem operasyonuyla iki vinç birlikte çalıştırılarak kapasite artırılabilir.
+Deck crane: fitted on most modern cargo ships. Hydraulically driven and capable of slewing through 360°. The SWL is generally between 25 and 35 tonnes. Capacity can be increased by working two cranes together in tandem.
 
-Gantry Crane (Portal Vinç): Ray üzerinde hareket eden vinç. Konteyner gemilerinde ambar kapağı üzerinde çalışır.
+Gantry crane: a crane travelling on rails. It works over the hatch covers on container ships.
 
-TEMEL VİNÇ PARAMETRELERİ:
+BASIC CRANE PARAMETERS:
 
-SWL (Safe Working Load): Vincin güvenle kaldırabileceği maksimum yük.
-Outreach: Vincin merkezinden maksimum çalışma yarıçapı.
-Hoisting Speed: Kaldırma hızı (m/dakika).
-Slewing Speed: Dönüş hızı (derece/saniye).
+SWL (Safe Working Load): the maximum load the crane can lift safely.
+Outreach: the maximum working radius from the crane centre.
+Hoisting speed: the lifting speed (m/minute).
+Slewing speed: the rate of turn (degrees/second).
 
-VİNÇ GÜVENLİĞİ:
+CRANE SAFETY:
 
-- SWL hiçbir koşulda aşılmamalıdır
-- Yük altında slewing (dönüş) dikkatle yapılmalı
-- Rüzgâr hızı limitlerine uyulmalı (genellikle >20 m/s'de operasyon durdurulur)
-- Yükün altında kimse durmamalıdır
-- Vinç operatörü sertifikalı olmalıdır`,
+- The SWL must never be exceeded
+- Slewing under load must be done carefully
+- The wind speed limits must be observed (operations are usually stopped above 20 m/s)
+- Nobody must stand under the load
+- The crane operator must be certificated`,
     bulletPoints: [
       "Deck crane SWL genellikle 25-35 ton",
       "Tandem operasyonuyla kapasite artırılabilir",
@@ -1637,23 +1639,23 @@ VİNÇ GÜVENLİĞİ:
   "derricks": {
     title: "Bumba (Derrick) Sistemleri",
     introduction: "Bumba, eski tip kargo gemilerinde yük kaldırma ve taşıma amacıyla kullanılan mafsallı kol sistemidir.",
-    content: `BUMBA TİPLERİ:
+    content: `TYPES OF DERRICK:
 
-Swinging Derrick: En temel tip. Bir direk (mast/samson post) üzerinde mafsallı kol. Union purchase düzenlemesiyle iki bumba birlikte çalıştırılır.
+Swinging derrick: the most basic type. A boom pivoted on a mast/samson post. Two derricks are worked together in a union purchase rig.
 
-Heavy Lift Derrick (Stülcken, Jumbo): 100-500 ton kapasiteli ağır yük bumbaları. Günümüzde nadir; çoğu ağır yük vinçleriyle değiştirilmiştir.
+Heavy lift derrick (Stülcken, jumbo): heavy lift derricks of 100-500 tonnes capacity. Rare today; most have been replaced by heavy lift cranes.
 
-UNION PURCHASE DÜZENLEMESİ:
+THE UNION PURCHASE RIG:
 
-İki bumba birlikte çalıştırılarak yükün ambardan rıhtıma veya tersine taşınması. Bir bumba ambar üzerinde (hatch derrick), diğeri borda dışında (yard derrick) sabitlenir.
+Two derricks worked together to move the load from the hold to the quay or vice versa. One derrick is plumbed over the hatch (the hatch derrick) and the other outboard (the yard derrick).
 
-- Hatch derrick: yükü ambardan kaldırır
-- Yard derrick: yükü borda dışına taşır
-- İki vincin halatları aynı kancaya bağlanır
+- Hatch derrick: lifts the load out of the hold
+- Yard derrick: carries the load outboard
+- The runners of the two derricks are shackled to the same hook
 
-GÜVENLIK:
+SAFETY:
 
-Bumba operasyonlarında SWL'nin en zayıf elemanı (halat, blok, şakla) belirler. Union purchase'da SWL, tek bumba kapasitesinden düşüktür (açı etkisi).`,
+In derrick operations the weakest element (rope, block, shackle) determines the SWL. In union purchase the SWL is lower than the capacity of a single derrick (because of the angle between the runners).`,
     bulletPoints: [
       "Union purchase: iki bumbanın koordineli çalışması",
       "Heavy lift derrick: 100-500 ton kapasite (nadir)",
@@ -1676,28 +1678,28 @@ Bumba operasyonlarında SWL'nin en zayıf elemanı (halat, blok, şakla) belirle
         alt: "Large blue folding hatch covers, hydraulic cylinders and the hatch coaming on the deck of a bulk carrier.",
       },
     ],
-    content: `AMBAR KAPAĞI TİPLERİ:
+    content: `TYPES OF HATCH COVER:
 
-1. Hydraulic Folding (Hidrolik Katlanır): Paneller hidrolik silindirlerle katlanarak açılır. Modern dökme yük gemilerinde yaygındır.
+1. Hydraulic folding: the panels are folded open by hydraulic cylinders. Common on modern bulk carriers.
 
-2. Side Rolling (Yana Kayar): Paneller ray üzerinde yanlara kayar. Konteyner ve genel kargo gemilerinde kullanılır.
+2. Side rolling: the panels roll sideways on rails. Used on container and general cargo ships.
 
-3. Piggyback (Bindirmeli): Paneller birbiri üzerine bindirilir. Dar güverte alanına sahip gemilerde tercih edilir.
+3. Piggyback: the panels stack on top of each other. Preferred on ships with limited deck space.
 
-4. Pontoon Type (Duba Tipi): Bağımsız paneller vinçle kaldırılarak açılır. Eski tip gemilerde bulunur.
+4. Pontoon type: independent panels lifted off by crane. Found on older ships.
 
-SU GEÇİRMEZLİK:
+WEATHERTIGHTNESS:
 
-Ambar kapaklarının su geçirmezliği SOLAS ve Load Line Convention gereği zorunludur. Hava durumu koşullarından bağımsız olarak denize açılmadan önce tüm kapaklar doğru şekilde kapatılmalı ve kontrol edilmelidir.
+The weathertightness of hatch covers is mandatory under SOLAS and the Load Line Convention. Regardless of the weather, all covers must be properly closed and checked before proceeding to sea.
 
-Test yöntemleri:
-- Hose test (su testi): Yüksek basınçlı su ile contaların test edilmesi
-- Chalk test (tebeşir testi): Conta yüzeylerine tebeşir sürülerek temas kontrolü
-- Ultrasonic test: Ultrasonik cihazla sızıntı tespiti (en güvenilir yöntem)
+Test methods:
+- Hose test: testing the seals with a high-pressure water jet
+- Chalk test: chalking the compression bars to check contact
+- Ultrasonic test: leak detection with an ultrasonic instrument (the most reliable method)
 
-CONTALAR VE BAKIM:
+GASKETS AND MAINTENANCE:
 
-Kauçuk contalar (rubber gaskets) periyodik olarak kontrol edilmelidir. Sertleşmiş, çatlamış veya deforme olmuş contalar değiştirilmelidir. Packing line ve cleating (sıkıştırma) mekanizmaları düzenli olarak bakılmalıdır.`,
+Rubber gaskets must be checked periodically. Hardened, cracked or deformed gaskets must be replaced. The packing line and cleating mechanisms must be maintained regularly.`,
     bulletPoints: [
       "Hidrolik katlanır: modern dökme yük gemilerinde standart",
       "Ultrasonik test en güvenilir su geçirmezlik kontrol yöntemidir",
@@ -1705,33 +1707,33 @@ Kauçuk contalar (rubber gaskets) periyodik olarak kontrol edilmelidir. Sertleş
       "Contalar periyodik olarak kontrol edilmeli ve değiştirilmelidir",
     ],
     warnings: [
-      "Hasarlı ambar kapağı ile denize açılmak yasal ihlaldir",
-      "PSC denetimlerinde ambar kapakları sıklıkla kontrol edilen donanımdır",
+      "Proceeding to sea with a damaged hatch cover is a legal breach",
+      "Hatch covers are equipment frequently checked in PSC inspections",
     ],
   },
   "ventilation-systems": {
     title: "Havalandırma Sistemleri",
     introduction: "Gemi havalandırma sistemleri, yük ambarları, makine dairesi ve yaşam alanlarında yeterli hava dolaşımını sağlar.",
-    content: `HAVALANDIRMA TÜRLERİ:
+    content: `TYPES OF VENTILATION:
 
-Doğal Havalandırma: Rüzgâr ve sıcaklık farkıyla oluşan hava akımı. Cowl ventilator (mantar havalandırıcı) ve mushroom ventilator bu prensiple çalışır.
+Natural ventilation: air movement produced by wind and temperature difference. Cowl and mushroom ventilators work on this principle.
 
-Mekanik Havalandırma: Fan ve blower'larla zorlamalı hava dolaşımı. Makine dairesi, pompa dairesi ve büyük yük ambarlarında kullanılır.
+Mechanical ventilation: forced air circulation by fans and blowers. Used in the engine room, the pump room and large cargo holds.
 
-YÜK AMBARI HAVALANDIRMASI:
+CARGO HOLD VENTILATION:
 
-Yük terlenmesi (cargo sweat) ve gemi terlenmesi (ship sweat) önlenmesi için ambar havalandırması kritiktir. Dew point kuralı uygulanır:
+Hold ventilation is critical in preventing cargo sweat and ship sweat. The dew point rule is applied:
 
-Dış havanın çiy noktası < yükün sıcaklığı → havalandırma yapılabilir
-Dış havanın çiy noktası > yükün sıcaklığı → havalandırma yapılmamalı
+Outside air dew point < cargo temperature → ventilation may be carried out
+Outside air dew point > cargo temperature → ventilation must not be carried out
 
-MAKİNE DAİRESİ HAVALANDIRMASI:
+ENGINE ROOM VENTILATION:
 
-Makine dairesi sürekli havalandırma gerektirir (yanma havası + soğutma + çalışma ortamı). Minimum hava değişim oranı saatte 20-30 değişimdir.
+The engine room requires continuous ventilation (combustion air + cooling + a working environment). The minimum air change rate is 20-30 changes per hour.
 
-TEHLİKELİ ALAN HAVALANDIRMASI:
+VENTILATION OF HAZARDOUS AREAS:
 
-Tanker pompa daireleri, patlayıcı atmosfer oluşabilecek kapalı alanlar sürekli mekanik havalandırma gerektirir. Havalandırma kesildiğinde alana giriş yasaklanır.`,
+Tanker pump rooms and enclosed spaces where an explosive atmosphere can form require continuous mechanical ventilation. Entry is prohibited when the ventilation is stopped.`,
     bulletPoints: [
       "Cowl ventilator: doğal havalandırma, mushroom ventilator: su geçirmez kapalı",
       "Dew point kuralı: dış hava çiy noktası < yük sıcaklığı → havalandır",
@@ -1746,32 +1748,32 @@ Tanker pompa daireleri, patlayıcı atmosfer oluşabilecek kapalı alanlar süre
   "deck-maintenance": {
     title: "Güverte Bakımı ve Boyama",
     introduction: "Düzenli güverte bakımı, geminin yapısal bütünlüğünü korumak ve korozyon hasarını önlemek için zorunludur.",
-    content: `BAKIM FAALİYETLERİ:
+    content: `MAINTENANCE ACTIVITIES:
 
-1. Pas Temizliği: Chipping (çekiçleme), wire brushing (tel fırçalama), needle gun (iğneli tabanca), power tool ile mekanik temizlik. Yüzey Sa 2½ (near-white blast) standardına getirilmelidir.
+1. Rust removal: mechanical cleaning by chipping, wire brushing, needle gun or power tool. The surface should be brought to the Sa 2½ (near-white blast) standard.
 
-2. Boyama Sistemi:
-   - Primer (astar): Metal yüzeyi korozyondan korur. Epoxy primer yaygındır.
-   - Intermediate coat: Koruyucu katman kalınlığını artırır.
-   - Top coat (son kat): UV ve mekanik aşınmaya karşı korur.
+2. The paint system:
+   - Primer: protects the metal surface from corrosion. Epoxy primer is common.
+   - Intermediate coat: builds up the thickness of the protective film.
+   - Top coat: protects against UV and mechanical wear.
 
-3. Güverte Yıkama: Tuzlu su birikiminin önlenmesi için tatlı su ile yıkama.
+3. Deck washing: washing with fresh water to prevent salt build-up.
 
-4. Greasing (Yağlama): Hareketli parçalar (fairlead, roller, şakla) düzenli yağlanmalıdır.
+4. Greasing: moving parts (fairleads, rollers, shackles) must be greased regularly.
 
-5. Sounding (Seviye Ölçümü): Balast tankları, tatlı su tankları ve sintine seviyelerinin günlük kontrolü.
+5. Sounding: daily checks of the ballast tanks, fresh water tanks and bilge levels.
 
-BOYAMA KOŞULLARI:
+PAINTING CONDITIONS:
 
-Boya uygulaması için ideal koşullar:
-- Yüzey sıcaklığı: çiy noktasından en az 3°C yukarıda
-- Bağıl nem: %85'in altında
-- Rüzgâr hızı: aşırı olmayan (toz ve kum etkisi)
-- Doğrudan güneş ışığı altında boya yapılmamalı (kabarcık oluşumu)
+The ideal conditions for applying paint:
+- Surface temperature: at least 3°C above the dew point
+- Relative humidity: below 85%
+- Wind speed: not excessive (dust and grit)
+- Paint must not be applied in direct sunlight (blistering)
 
 PMS (Planned Maintenance System):
 
-ISM Code gereği tüm bakım faaliyetleri PMS kapsamında planlanır, uygulanır ve kaydedilir. Dijital PMS yazılımları bu süreci yönetir.`,
+Under the ISM Code all maintenance is planned, carried out and recorded within the PMS. Digital PMS software manages this process.`,
     bulletPoints: [
       "Sa 2½: yakın-beyaz blast, en yaygın yüzey hazırlık standardı",
       "Epoxy primer: metal korozyon korumasında standart",
@@ -1798,32 +1800,32 @@ ISM Code gereği tüm bakım faaliyetleri PMS kapsamında planlanır, uygulanır
         alt: "A bright orange totally enclosed lifeboat hanging in its davit on the ship's side, with the grey hull behind.",
       },
     ],
-    content: `SANDAL TİPLERİ:
+    content: `TYPES OF LIFEBOAT:
 
-1. Open Lifeboat: Üstü açık sandal. Eski standarttır; yeni inşa gemilerde artık kullanılmaz.
+1. Open lifeboat: an open boat. The old standard; no longer fitted on newly built ships.
 
-2. Totally Enclosed Lifeboat (TELB): Tamamen kapalı sandal. SOLAS standardıdır. Kendi kendine doğrulma (self-righting) özelliğine sahiptir. Dizel motorlu, bağımsız hava besleme sistemi mevcuttur.
+2. Totally Enclosed Lifeboat (TELB): a fully enclosed boat. The SOLAS standard. It is self-righting. It has a diesel engine and an independent air supply system.
 
-3. Partially Enclosed Lifeboat: Kısmen kapalı sandal. Bazı yolcu gemilerinde kullanılır.
+3. Partially enclosed lifeboat: used on some passenger ships.
 
-4. Freefall Lifeboat: Kıçtan serbest düşüşle denize bırakılan sandal. Tanker ve dökme yük gemilerinde yaygındır. Tahliye süresi çok kısadır (dakikalar yerine saniyeler).
+4. Free-fall lifeboat: launched by free fall from the stern. Common on tankers and bulk carriers. The evacuation time is very short (seconds rather than minutes).
 
-SANDAL DONANIMI (SOLAS III/34):
+LIFEBOAT EQUIPMENT (SOLAS III/34):
 
-- Motor ve yakıt (24 saat çalışma kapasitesi)
-- Pusula ve sextant
-- Tatlı su (3 litre/kişi) ve gıda tayını
-- İlk yardım malzemesi
-- İşaret fişekleri ve el feneri
-- Radar reflektörü ve SART
-- Yağmurluk ve termal koruma araçları
-- Deniz çapası (sea anchor)
-- Çamaşır suyu (su arıtma tableti)
-- Oars (kürekler) - motorlu sandallarda da bulunur
+- Engine and fuel (24 hours running)
+- Compass and sextant
+- Fresh water (3 litres per person) and food rations
+- First aid equipment
+- Signal flares and a torch
+- Radar reflector and SART
+- Rainwear and thermal protective aids
+- Sea anchor
+- Water purification tablets
+- Oars – carried even in motor lifeboats
 
-KAPASİTE VE YERLEŞİM:
+CAPACITY AND ARRANGEMENT:
 
-Her iki bordada toplam gemi personelinin %100'ünü alabileceek kapasite. Bir bordanın kullanılamaması durumunda bile tüm personel kurtarılabilmelidir.`,
+Capacity for 100% of the ship's complement on each side. All personnel must be able to be saved even if one side cannot be used.`,
     bulletPoints: [
       "TELB: tamamen kapalı, self-righting, SOLAS standardı",
       "Freefall lifeboat: tanker/bulk carrier, çok hızlı tahliye",
@@ -1847,21 +1849,21 @@ Her iki bordada toplam gemi personelinin %100'ünü alabileceek kapasite. Bir bo
         alt: "A white cylindrical liferaft canister on its cradle on a ship's deck, with the HRU and red painter line visible.",
       },
     ],
-    content: `SAL TİPLERİ:
+    content: `TYPES OF LIFERAFT:
 
-1. Inflatable Life Raft (Şişme Sal): En yaygın tiptir. Fiberglas kapsül (canister) içinde depolanır. Denize atıldığında veya hidrostatik serbest bırakma ile otomatik olarak şişer. Kapasite: 6-150 kişi.
+1. Inflatable liferaft: the most common type. Stowed in a fibreglass canister. It inflates automatically when thrown into the sea or released by the hydrostatic release unit. Capacity: 6-150 persons.
 
-2. Rigid Life Raft: Sert yapılı sal. Bakım gerektirmez ancak hacimli depolama alanı kaplar.
+2. Rigid liferaft: a rigid raft. It needs no servicing but takes up bulky stowage space.
 
-3. Davit-Launched Life Raft (DLRS): Vinçle denize indirilen sal. Yaşlı veya engelli yolcuların tahliyesinde avantaj sağlar.
+3. Davit-launched liferaft (DLRS): a raft lowered by davit. It is an advantage in evacuating elderly or disabled passengers.
 
-HİDROSTATİK SERBEST BIRAKMA (HRU):
+THE HYDROSTATIC RELEASE UNIT (HRU):
 
-Gemi batarken sal otomatik olarak serbest bırakılır. Mekanizma 1,5-4 metre derinlikte su basıncıyla tetiklenir. Weak link (zayıf bağ) salı batan gemiden ayırır. HRU'lar her 2 yılda bir sertifikalı istasyonda servis edilmelidir.
+The raft is released automatically as the ship sinks. The mechanism is triggered by water pressure at a depth of 1.5-4 metres. A weak link separates the raft from the sinking ship. HRUs must be serviced at a certified station every 2 years.
 
-SAL SERVİSİ:
+LIFERAFT SERVICING:
 
-Şişme sallar her 12 ayda (bazı üreticiler 30 ay) sertifikalı servis istasyonunda bakıma alınır. Bakımda şişirilir, donanım kontrol edilir ve yeniden paketlenir.`,
+Inflatable rafts are serviced at a certified service station every 12 months (30 months with some makers). At the service they are inflated, the equipment is checked and they are repacked.`,
     bulletPoints: [
       "Inflatable life raft: en yaygın, canister içinde depolama",
       "HRU: 1,5-4 m derinlikte otomatik serbest bırakma",
@@ -1876,69 +1878,69 @@ SAL SERVİSİ:
   "launching-procedure": {
     title: "Sandal ve Sal İndirme Prosedürü",
     introduction: "Tahlisiye araçlarının doğru prosedürle indirilmesi, tahliye operasyonunun başarısı için hayati önem taşır.",
-    content: `SANDAL İNDİRME (CONVENTIONAL DAVIT):
+    content: `LAUNCHING A LIFEBOAT (CONVENTIONAL DAVIT):
 
-1. Kaptan 'Abandon Ship' emri verir (7 kısa + 1 uzun düdük)
-2. Mürettebat toplanma noktalarına (muster station) gider
-3. Can yelekleri giyilir
-4. Sandalın gripe'ları (sabitleyiciler) sökülür
-5. Sandal dışa salınır (davit'ler dönürülür)
-6. Personel sandala biner (boarding)
-7. Painter (bağ halatı) kontrol edilir
-8. Frapper'lar (fall wire) kontrollü bırakılarak sandal denize indirilir
-9. Denize indikten sonra releasing hook tetiklenir (on-load release)
-10. Painter kesilir ve sandaldan uzaklaşılır
+1. The master gives the order to abandon ship (7 short blasts + 1 prolonged)
+2. The crew go to the muster stations
+3. Lifejackets are put on
+4. The boat's gripes are released
+5. The boat is swung out (the davits are turned out)
+6. The crew board the boat
+7. The painter is checked
+8. The falls are eased under control and the boat is lowered to the water
+9. Once waterborne, the releasing hooks are operated (on-load release)
+10. The painter is cut and the boat clears the ship
 
-FREEFALL İNDİRME:
+FREE-FALL LAUNCHING:
 
-1. Personel sandala biner ve emniyet kemeri bağlar
-2. Kapak kapatılır
-3. Serbest bırakma kolu çekilir
-4. Sandal rampadan serbest düşüşle denize girer
-5. Motor çalıştırılır ve uzaklaşılır
+1. The crew board the boat and fasten their harnesses
+2. The hatch is closed
+3. The release lever is pulled
+4. The boat slides down the ramp and enters the water in free fall
+5. The engine is started and the boat clears the ship
 
-TATBİKATLAR (DRILLS):
+DRILLS:
 
-SOLAS III/19.3.2 gereği her mürettebat üyesi ayda en az bir abandon ship tatbikatına katılır. Her can filikası, atanmış işletme ekibiyle en az 3 ayda bir suya indirilip suda manevra yaptırılır (SOLAS III/19.3.4.3).`,
+Under SOLAS III/19.3.2 every crew member takes part in an abandon ship drill at least once a month. Every lifeboat is launched and manoeuvred in the water with its assigned operating crew at least once every 3 months (SOLAS III/19.3.4.3).`,
     bulletPoints: [
       "Abandon ship sinyali: 7 kısa + 1 uzun düdük",
       "On-load release: sandal denizde iken hook serbest bırakılır",
       "Freefall: emniyet kemeri zorunlu, çok hızlı tahliye",
-      "Aylık tatbikat (III/19.3.2); her filika en az 3 ayda bir suya indirilir (III/19.3.4.3)",
+      "A monthly drill (III/19.3.2); every lifeboat launched at least once every 3 months (III/19.3.4.3)",
     ],
     warnings: [
-      "On-load release mekanizması yanlış kullanımda kaza riski taşır; eğitim kritiktir",
-      "Freefall sandala binmeden önce tüm personel emniyet kemerini bağlamalıdır",
+      "Misuse of the on-load release mechanism carries a risk of accident; training is critical",
+      "All personnel must fasten their harnesses before a free-fall lifeboat is launched",
     ],
   },
   "rescue-boat": {
     title: "Kurtarma Botu (Rescue Boat)",
     introduction: "Kurtarma botu, denize düşen kişinin kurtarılması ve acil müdahale amacıyla kullanılan hızlı tahlisiye aracıdır.",
-    content: `KURTARMA BOTU ÖZELLİKLERİ (SOLAS III/17):
+    content: `RESCUE BOAT CHARACTERISTICS (SOLAS III/17):
 
-- Minimum 6 kişi kapasiteli
-- En az 6 knot hız yapabilmeli
-- 4 saat tam güçte çalışma kapasitesi
-- Denize düşen kişiyi sudan çıkarma düzeneği (boarding ramp/scramble net)
-- İlk yardım malzemesi
-- Arama ışıldağı (searchlight)
-- VHF telsiz
-- Pusula
+- Capacity for at least 6 persons
+- Capable of at least 6 knots
+- Able to run at full power for 4 hours
+- An arrangement for recovering a person from the water (boarding ramp/scramble net)
+- First aid equipment
+- A searchlight
+- A VHF radio
+- A compass
 
-İNDİRME VE KULLANIM:
+LAUNCHING AND USE:
 
-Kurtarma botu genellikle davit ile indirilir. Single-arm slewing davit veya A-frame davit yaygın tipleridir. İndirme süresi 5 dakikayı geçmemelidir.
+The rescue boat is normally launched by davit. Single-arm slewing davits and A-frame davits are the common types. The launching time must not exceed 5 minutes.
 
-Man overboard (denize adam düşmesi) durumunda kurtarma botu en hızlı müdahale aracıdır. Williamson turn veya Anderson turn ile geminin geri dönüşü sağlanırken, kurtarma botu hazırlanır.
+In a man overboard situation the rescue boat is the fastest means of response. While the ship turns back with a Williamson or Anderson turn, the rescue boat is prepared.
 
-TATBİKAT:
+DRILLS:
 
-Kurtarma botu, mümkün olduğu ölçüde her ay, her hâlükârda en az 3 ayda bir atanmış ekibiyle suya indirilip manevra yaptırılır (SOLAS III/19.3.4.4). Kurtarma botu mürettebatı özel eğitimli olmalıdır.`,
+The rescue boat is launched and manoeuvred with its assigned crew monthly as far as practicable, and in any case at least once every 3 months (SOLAS III/19.3.4.4). The rescue boat crew must be specially trained.`,
     bulletPoints: [
       "Minimum 6 kişi kapasiteli, 6 knot hız",
       "İndirme süresi ≤ 5 dakika",
       "MOB durumunda birincil müdahale aracı",
-      "Mümkünse aylık, her hâlükârda en az 3 ayda bir suya indirme (SOLAS III/19.3.4.4)",
+      "Launched monthly where practicable, and in any case at least once every 3 months (SOLAS III/19.3.4.4)",
     ],
     keyPoints: [
       "Williamson turn: 60° dönüş + karşı dümen → orijinal hatta dönüş",
@@ -1956,19 +1958,19 @@ Kurtarma botu, mümkün olduğu ölçüde her ay, her hâlükârda en az 3 ayda 
         alt: "Personal life-saving appliances laid out on a ship's deck: an orange lifejacket, a red immersion suit, a red EPIRB and a white-and-red lifebuoy.",
       },
     ],
-    content: `KİŞİSEL TEÇHİZAT:
+    content: `PERSONAL EQUIPMENT:
 
-Can Yeleği (Life Jacket): Her kişi için bir adet. Bilinçsiz kişiyi sırt üstü çevirebilmeli. Düdük ve ışık takılıdır. Çocuk yelekleri ayrıca bulundurulur.
+Lifejacket: one for every person. It must turn an unconscious person face up. A whistle and a light are attached. Children's lifejackets are also carried.
 
-Can Simidi (Lifebuoy): Köprüüstü ve güvertede stratejik noktalarda. Minimum 8 adet (>200 m gemiler için daha fazla). En az 2 tanesi self-igniting light (otomatik yanan ışık) ve self-activating smoke signal (duman sinyali) ile donatılmış. En az 2 tanesi buoyant lifeline (yüzer halat) bağlı.
+Lifebuoy: at strategic points on the bridge and deck. A minimum of 8 (more on ships over 200 m). At least 2 fitted with a self-igniting light and a self-activating smoke signal. At least 2 with a buoyant lifeline attached.
 
-Immersion Suit (Dalgıç Elbisesi): Soğuk sularda hipotermiden koruma. 1 saat boyunca vücut sıcaklığını koruyabilmeli. Her kişi için bulundurulması zorunludur (bazı seyir bölgelerinde).
+Immersion suit: protection from hypothermia in cold water. It must maintain body temperature for 1 hour. It is mandatory for every person (in certain trading areas).
 
-Thermal Protective Aid (TPA): Varsayımsal olarak ılık sularda seyir yapan gemilerde immersion suit yerine kullanılabilir.
+Thermal Protective Aid (TPA): may be carried in place of immersion suits on ships trading in warm waters.
 
-EPIRB (Emergency Position Indicating Radio Beacon): 406 MHz frekansında çalışır. GPS entegreli olarak pozisyon bilgisi gönderir. HRU ile otomatik serbest bırakılır. Bataryası 48 saat yayın yapar.
+EPIRB (Emergency Position Indicating Radio Beacon): operates on 406 MHz. With integral GPS it transmits position information. It is released automatically by an HRU. The battery transmits for 48 hours.
 
-SART (Search and Rescue Transponder): 9 GHz radar sinyalini alarak yanıt verir. Radar ekranında 12 noktalı daire olarak görünür.`,
+SART (Search and Rescue Transponder): responds to a 9 GHz radar signal. It appears on the radar screen as a line of 12 dots.`,
     bulletPoints: [
       "Can yeleği: bilinçsiz kişiyi sırt üstü çevirebilmeli",
       "Can simidi: minimum 8 adet, 2 tanesi ışık+duman sinyalli",
@@ -1983,34 +1985,34 @@ SART (Search and Rescue Transponder): 9 GHz radar sinyalini alarak yanıt verir.
   "abandon-ship": {
     title: "Gemiyi Terk Etme Prosedürü",
     introduction: "Gemiyi terk etme, tüm diğer kurtarma yöntemleri tükendiğinde son çare olarak uygulanan hayatta kalma operasyonudur.",
-    content: `TERK ETME KARARI:
+    content: `THE DECISION TO ABANDON:
 
-Gemiyi terk etme kararı yalnızca kaptan tarafından verilir. Karar ancak geminin batma, yanma veya oturmaya devam edemeyecek durumda olduğu kesinleştiğinde verilmelidir. Prensip: 'Gemiyi terk etmek her zaman son çaredir.'
+The decision to abandon ship is taken by the master alone. It must be taken only when it is certain that the ship is sinking, burning or otherwise unable to remain afloat. The principle: "abandoning ship is always the last resort."
 
-PROSEDÜR:
+THE PROCEDURE:
 
-1. Kaptan MAYDAY çağrısı yapar
-2. Genel alarm çalınır (7 kısa + 1 uzun düdük)
-3. Mürettebat muster station'lara toplanır
-4. Yoklama yapılır (muster list'e göre)
-5. Can yelekleri giyilir
-6. EPIRB ve SART aktive edilir
-7. Tahlisiye araçları hazırlanır
-8. Kaptan emri ile sandallara/sallara binilir
-9. Araçlar denize indirilir
-10. Gemiden güvenli mesafeye uzaklaşılır (en az 200 m)
-11. Tahlisiye araçları bir arada tutulur
-12. Hayatta kalma prosedürleri uygulanır
+1. The master makes a MAYDAY call
+2. The general alarm is sounded (7 short blasts + 1 prolonged)
+3. The crew muster at the muster stations
+4. A roll call is taken (against the muster list)
+5. Lifejackets are put on
+6. The EPIRB and SART are activated
+7. The survival craft are prepared
+8. On the master's order the boats/rafts are boarded
+9. The craft are launched
+10. They clear the ship to a safe distance (at least 200 m)
+11. The survival craft are kept together
+12. Survival procedures are put into effect
 
-HAYATTA KALMA ÖNCELİKLERİ:
+SURVIVAL PRIORITIES:
 
-1. Koruma (soğuktan, sıcaktan, elemandan)
-2. Pozisyon bildirimi (EPIRB, SART, işaret fişekleri)
-3. Su (tatlı su tayını korunması)
-4. Gıda
-5. Morali yüksek tutmak
+1. Protection (from cold, heat and the elements)
+2. Location (EPIRB, SART, flares)
+3. Water (conserving the fresh water ration)
+4. Food
+5. Keeping morale up
 
-İşaret fişeklerinin kullanım zamanlaması kritiktir; gemi veya uçak görülmeden kullanılmamalıdır.`,
+The timing of flares is critical; they must not be used until a ship or aircraft is sighted.`,
     bulletPoints: [
       "Terk kararı yalnızca kaptan tarafından verilir",
       "MAYDAY çağrısı + genel alarm (7 kısa + 1 uzun)",
@@ -2018,8 +2020,8 @@ HAYATTA KALMA ÖNCELİKLERİ:
       "Hayatta kalma öncelikleri: koruma > pozisyon > su > gıda",
     ],
     warnings: [
-      "Gemiyi terk etmek her zaman son çaredir",
-      "İşaret fişekleri yalnızca kurtarma aracı görüldüğünde kullanılmalıdır",
+      "Abandoning ship is always the last resort",
+      "Flares must only be used when a rescue unit has been sighted",
     ],
   },
 
@@ -2030,26 +2032,26 @@ HAYATTA KALMA ÖNCELİKLERİ:
     title: "Yangın Üçgeni ve Yangın Sınıfları",
     image: "/diagrams/seamanship/yangin-sinifi.svg",
     introduction: "Yangın, ısı, yakıt ve oksijenin bir arada bulunmasıyla başlar; bu üç unsurun herhangi birini ortadan kaldırmak yangını söndürür.",
-    content: `YANGIN ÜÇGENİ:
+    content: `THE FIRE TRIANGLE:
 
-Üç unsur: Isı (Heat) + Yakıt (Fuel) + Oksijen (O₂). Modern anlayış buna kimyasal zincir reaksiyonunu da ekleyerek 'yangın dörtgeni' kavramını kullanır.
+Three elements: heat + fuel + oxygen (O₂). Modern thinking adds the chemical chain reaction and uses the concept of the "fire tetrahedron".
 
-Söndürme prensipleri:
-- Soğutma: Isıyı yok etmek (su)
-- Boğma: Oksijeni kesmek (CO₂, foam, inert gas)
-- Yakıtı uzaklaştırma: Yanıcı malzemeyi ayırmak
-- Kimyasal inhibisyon: Zincir reaksiyonu kesmek (dry powder)
+Principles of extinguishing:
+- Cooling: removing the heat (water)
+- Smothering: cutting off the oxygen (CO₂, foam, inert gas)
+- Starving: removing the fuel
+- Chemical inhibition: breaking the chain reaction (dry powder)
 
-YANGIN SINIFLARI (IMO):
+CLASSES OF FIRE (IMO):
 
-A Sınıfı: Katı maddeler (odun, kâğıt, tekstil). Söndürme: Su.
-B Sınıfı: Yanıcı sıvılar (yakıt, boya, yağ). Söndürme: Köpük (foam), CO₂, kuru toz.
-C Sınıfı: Yanıcı gazlar (LPG, doğalgaz). Söndürme: Kuru toz. Gaz kaynağı kapatılmalıdır.
-D Sınıfı: Yanıcı metaller (magnezyum, alüminyum tozu). Söndürme: Özel kuru toz.
-E Sınıfı (Elektrik yangını): Elektrikli ekipman. Söndürme: CO₂, kuru toz. Su kullanılmaz.
-F Sınıfı: Pişirme yağları. Söndürme: Islak kimyasal (wet chemical).
+Class A: solid materials (wood, paper, textiles). Extinguishing: water.
+Class B: flammable liquids (fuel, paint, oil). Extinguishing: foam, CO₂, dry powder.
+Class C: flammable gases (LPG, natural gas). Extinguishing: dry powder. The gas supply must be shut off.
+Class D: combustible metals (magnesium, aluminium powder). Extinguishing: special dry powder.
+Class E (electrical fire): electrical equipment. Extinguishing: CO₂, dry powder. Water is not used.
+Class F: cooking oils. Extinguishing: wet chemical.
 
-KRİTİK KURAL: B sınıfı yangına su sıkılmaz (yanan sıvıyı sıçratır ve yayar).`,
+A CRITICAL RULE: never play water on a Class B fire (it splashes the burning liquid and spreads it).`,
     bulletPoints: [
       "Yangın üçgeni: Isı + Yakıt + Oksijen",
       "A sınıfı: katı → su, B sınıfı: sıvı → köpük/CO₂",
@@ -2057,30 +2059,30 @@ KRİTİK KURAL: B sınıfı yangına su sıkılmaz (yanan sıvıyı sıçratır 
       "Elektrik yangınında su kullanılmaz",
     ],
     warnings: [
-      "B sınıfı yangına su sıkılmaz: yanan sıvı sıçrar ve yayılır",
-      "Elektrik yangınında önce enerjisi kesilmeli, sonra CO₂ ile söndürülmeli",
+      "Never play water on a Class B fire: the burning liquid splashes and spreads",
+      "In an electrical fire, isolate the power first, then extinguish with CO₂",
     ],
   },
   "fire-detection": {
     title: "Yangın Algılama ve Alarm Sistemleri",
     introduction: "Erken algılama, gemide yangın kontrolünün en kritik aşamasıdır; SOLAS Bölüm II-2 yangın algılama sistemi gereksinimlerini belirler.",
-    content: `ALGILAMA TÜRLERİ:
+    content: `TYPES OF DETECTION:
 
-1. Duman Algılayıcı (Smoke Detector): İyonizasyon tipi veya fotoelektrik tip. Yaşam alanlarında ve koridorlarda zorunludur.
+1. Smoke detector: ionisation or photoelectric type. Mandatory in the accommodation and alleyways.
 
-2. Isı Algılayıcı (Heat Detector): Sabit sıcaklık (68°C genellikle) veya artış hızı (rate-of-rise) tipi. Makine dairesi ve mutfakta kullanılır.
+2. Heat detector: fixed temperature (usually 68°C) or rate-of-rise type. Used in the engine room and the galley.
 
-3. Alev Algılayıcı (Flame Detector): UV veya IR sensörlü. Makine dairesi ve açık güverte alanlarında kullanılır.
+3. Flame detector: with a UV or IR sensor. Used in the engine room and on open deck areas.
 
-4. Manuel Alarm Noktası (Manual Call Point): Personelin yangını ihbar etmesi için kullanılan buton. Her kaçış yolunda ve güvertede bulunur.
+4. Manual call point: the button used by the crew to raise the alarm. Fitted on every escape route and on deck.
 
-YANGIN ALARM SİSTEMİ:
+THE FIRE ALARM SYSTEM:
 
-Merkezi yangın alarm paneli köprüüstünde veya yangın kontrol istasyonunda bulunur. Bölgesel alarm göstergesiyle yangın lokasyonu tespit edilir. Sesli ve görsel alarm tüm gemide duyulmalıdır.
+The central fire alarm panel is on the bridge or in the fire control station. The location of the fire is identified by the zone indication. The audible and visual alarm must be perceived throughout the ship.
 
-YANGIN DEVRIYE VE GÖZETİM:
+FIRE PATROL AND WATCHKEEPING:
 
-SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fire patrol) özellikle yolcu gemilerinde zorunludur.`,
+SOLAS requires continuous fire watch. A fire patrol is mandatory, particularly on passenger ships.`,
     bulletPoints: [
       "Duman algılayıcı: yaşam alanları ve koridorlarda zorunlu",
       "Isı algılayıcı: makine dairesi ve mutfakta kullanılır",
@@ -2110,19 +2112,19 @@ SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fi
         ["Temiz Ajan", "HFC-227ea / FK-5-1-12", "B, C, E", "2-4", "Ozon dostu, pahalı"],
       ],
     },
-    content: `SÖNDÜRÜCÜ TÜRLERİ:
+    content: `TYPES OF EXTINGUISHER:
 
-1. CO₂ (Karbondioksit): B ve E sınıfı yangınlar. Oksijeni keserek söndürür. Kapalı alanda boğulma riski vardır. Elektrik yangınlarında güvenlidir.
+1. CO₂ (carbon dioxide): Class B and E fires. It extinguishes by cutting off the oxygen. There is a risk of asphyxiation in an enclosed space. It is safe on electrical fires.
 
-2. Dry Chemical Powder (Kuru Toz): ABC tipi (çok amaçlı). Kimyasal inhibisyon ve boğma prensibiyle çalışır. Geniş kapsamlıdır ancak yeniden tutuşmayı engellemez.
+2. Dry chemical powder: ABC type (multi-purpose). It works by chemical inhibition and smothering. It has a wide application but does not prevent re-ignition.
 
-3. Foam (Köpük): B sınıfı yangınlar (sıvı). Yüzeyi örtekerek oksijeni keser ve soğutur. AFFF (Aqueous Film Forming Foam) yaygın tiptir.
+3. Foam: Class B (liquid) fires. It blankets the surface, cutting off the oxygen, and cools. AFFF (Aqueous Film Forming Foam) is the common type.
 
-4. Water (Su): A sınıfı yangınlar. Soğutma prensibiyle çalışır.
+4. Water: Class A fires. It works by cooling.
 
-YERLEŞİM VE BAKIM:
+SITING AND MAINTENANCE:
 
-SOLAS II-2/10'a göre her kaçış yolunda, her yaşam alanında ve her makine dairesinde yeterli sayıda söndürücü bulunmalıdır. Söndürücüler yılda bir muayene edilmeli, basınç kontrolü yapılmalı ve her 5 yılda bir hidrostatik teste tabi tutulmalıdır.`,
+Under SOLAS II-2/10 a sufficient number of extinguishers must be provided on every escape route, in every accommodation space and in every machinery space. Extinguishers must be inspected annually, their pressure checked, and be hydrostatically tested every 5 years.`,
     bulletPoints: [
       "CO₂: B ve E sınıfı, elektrik güvenli, kapalı alanda boğulma riski",
       "Kuru toz (ABC): çok amaçlı ancak yeniden tutuşmayı engellemez",
@@ -2141,26 +2143,26 @@ SOLAS II-2/10'a göre her kaçış yolunda, her yaşam alanında ve her makine d
         alt: "Two rows of large red high-pressure CO₂ cylinders and the manifold piping in a white-ceilinged compartment.",
       },
     ],
-    content: `SABİT SİSTEMLER:
+    content: `FIXED SYSTEMS:
 
-1. CO₂ Sistemi: Makine dairesi ve yük ambarlarında kullanılır. CO₂ tüpleri ayrı bir CO₂ odasında depolanır. Sistem tetiklendiğinde alanda bulunan tüm personelin tahliye edilmesi zorunludur (ölüm riski). Çift güvenlik mekanizması (two-man release) bulunur.
+1. CO₂ system: used in machinery spaces and cargo holds. The CO₂ cylinders are stored in a separate CO₂ room. When the system is released all personnel in the space must have been evacuated (risk of death). There is a two-man release safety mechanism.
 
-2. Foam Sistemi: Tanker güvertesi, helikopter güvertesi ve makine dairesi. High-expansion foam: büyük hacimli alanları doldurur. Low-expansion foam: sıvı yüzeyini örter.
+2. Foam system: tanker decks, helicopter decks and machinery spaces. High-expansion foam: fills large volumes. Low-expansion foam: blankets a liquid surface.
 
-3. Su Sisi Sistemi (Water Mist): İnce su tanecikleri ile soğutma ve oksijen seyreltme. Makine dairelerinde CO₂'ye alternatif olarak yaygınlaşmaktadır.
+3. Water mist system: cooling and oxygen dilution with fine water droplets. Increasingly used as an alternative to CO₂ in machinery spaces.
 
-4. Sprinkler Sistemi: Yaşam alanlarında otomatik yangın söndürme. Isıyla tetiklenen cam ampul (bulb) mekanizması.
+4. Sprinkler system: automatic fire extinguishing in the accommodation. Triggered by a heat-sensitive glass bulb.
 
-5. Drencher Sistemi: Güverte alanlarını su perdesiyle koruma. Yangının yayılmasını engeller.
+5. Drencher system: protects deck areas with a water curtain. It prevents fire spreading.
 
-MAKİNE DAİRESİ YANGININDA CO₂ PROSEDÜRÜ:
+THE CO₂ PROCEDURE IN AN ENGINE ROOM FIRE:
 
-1. Alarm verilir ve tüm personel tahliye edilir
-2. Tüm havalandırma fanları durdurulur ve damperler kapatılır
-3. Yakıt kesme vanaları kapatılır
-4. CO₂ alarm süresi (20-30 sn) beklenir
-5. CO₂ salınır
-6. Alan 24 saate kadar açılmamalıdır`,
+1. The alarm is raised and all personnel are evacuated
+2. All ventilation fans are stopped and the dampers closed
+3. The fuel shut-off valves are closed
+4. The CO₂ alarm period (20-30 s) is allowed to run
+5. The CO₂ is released
+6. The space must not be opened for up to 24 hours`,
     bulletPoints: [
       "CO₂ sistemi: ölümcül gaz, two-man release zorunlu",
       "High-expansion foam: büyük hacim doldurma",
@@ -2168,36 +2170,36 @@ MAKİNE DAİRESİ YANGININDA CO₂ PROSEDÜRÜ:
       "Sprinkler: otomatik, ısıyla tetiklenen cam ampul",
     ],
     warnings: [
-      "CO₂ salınımından önce tüm personelin alanı terk ettiği kesinleştirilmeli",
-      "CO₂ alarm sinyali çaldığında alanı derhal terk edin",
+      "Before releasing CO₂ it must be confirmed that all personnel have left the space",
+      "Leave the space immediately when the CO₂ alarm sounds",
     ],
   },
   "fire-fighting-procedure": {
     title: "Yangınla Mücadele Prosedürü",
     introduction: "Gemide yangın müdahalesi, organize ekip çalışması ve standart prosedürlerin uygulanmasını gerektirir.",
-    content: `YANGIN MÜDAHALE ADIMLARI:
+    content: `FIRE RESPONSE, STEP BY STEP:
 
-1. KEŞİF: Yangın tespit edilir ve alarm verilir.
-2. ALARM: Yangın alarmı çalınır (sürekli çan veya genel alarm). Köprüüstü bilgilendirilir.
-3. SINIRLANDIRMA: Yangın alanı izole edilir. Kapılar ve havalandırma kapatılır. Yangının yayılması engellenir.
-4. SÖNDÜRME: Uygun söndürme aracıyla müdahale edilir. Yangın sınıfına göre doğru ajan seçilir.
-5. SOĞUTMA: Yangın sonrası yeniden tutuşmayı önlemek için alan soğutulur.
-6. GÖZETİM: Yangın tamamen söndükten sonra uzun süre gözetim yapılır (re-ignition kontrolü).
+1. DISCOVERY: the fire is detected and the alarm is raised.
+2. ALARM: the fire alarm is sounded (continuous bell or general alarm). The bridge is informed.
+3. CONTAINMENT: the area is isolated. Doors and ventilation are closed. The fire is prevented from spreading.
+4. EXTINGUISHING: the fire is attacked with the appropriate medium. The correct agent is chosen for the class of fire.
+5. COOLING: the area is cooled after the fire to prevent re-ignition.
+6. WATCHKEEPING: the area is watched for a long period after the fire is out (checking for re-ignition).
 
-YANGIN EKİBİ ORGANİZASYONU (MUSTER LIST):
+FIRE TEAM ORGANISATION (MUSTER LIST):
 
-- Yangın ekibi lideri (genellikle Chief Officer)
-- Hortum ekibi (nozzlemen + backup)
-- Destek ekibi (EEBD/BA hazırlığı, hasar kontrolü)
-- Makine ekibi (pompa, vana kontrolü, enerji yönetimi)
-- Kurtarma ekibi (yaralı tahliye)
-- İletişim görevlisi (köprüüstü-ekip arası)
+- Fire team leader (usually the chief officer)
+- Hose team (nozzleman + back-up)
+- Support team (preparing EEBD/BA, damage control)
+- Engine team (pumps, valve control, power management)
+- Rescue team (evacuating casualties)
+- Communications rating (between the bridge and the team)
 
-YAŞAM DESTEK EKİPMANI:
+LIFE SUPPORT EQUIPMENT:
 
-BA (Breathing Apparatus): Müstakil solunum cihazı. Yangın alanına girişte zorunludur. 30-45 dakika hava kapasitesi.
-EEBD (Emergency Escape Breathing Device): Kaçış solunum cihazı. 15 dakika kapasite. Sadece kaçış için kullanılır, yangına müdahale için kullanılmaz.
-Fire suit (itfaiyeci elbisesi): Isıya dayanıklı giriş elbisesi. Yaklaşma elbisesi (proximity suit) ve giriş elbisesi (entry suit) olmak üzere iki tip.`,
+BA (Breathing Apparatus): self-contained breathing apparatus. Mandatory when entering the fire area. 30-45 minutes of air.
+EEBD (Emergency Escape Breathing Device): an escape breathing device. 15 minutes' capacity. Used only for escape, never for fighting a fire.
+Fire suit: a heat-resistant entry suit. There are two types: the proximity suit and the entry suit.`,
     bulletPoints: [
       "Müdahale sırası: keşif → alarm → sınırlandırma → söndürme → soğutma → gözetim",
       "BA: 30-45 dk hava, yangın müdahalesinde zorunlu",
@@ -2208,28 +2210,28 @@ Fire suit (itfaiyeci elbisesi): Isıya dayanıklı giriş elbisesi. Yaklaşma el
   "fire-drill": {
     title: "Yangın Tatbikatları ve SOLAS Gereksinimleri",
     introduction: "SOLAS, tüm gemilerde düzenli yangın tatbikatları yapılmasını zorunlu kılar; tatbikatlar mürettebatın gerçek yangın durumunda etkin müdahale yeteneğini geliştirir.",
-    content: `TATBİKAT GEREKSİNİMLERİ (SOLAS III/19):
+    content: `DRILL REQUIREMENTS (SOLAS III/19):
 
-Her mürettebat üyesi ayda en az bir yangın tatbikatına katılmalıdır (III/19.3.2). Mürettebatın %25'inden fazlası bir önceki ay gemideki tatbikatlara katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde tatbikat yapılır. Gemiye katılan personele yangın donanımı eğitimi en geç iki hafta içinde verilir (III/19.4.1). Tatbikat, mümkün olduğunca gerçekçi senaryolarla planlanmalıdır.
+Every crew member must take part in at least one fire drill a month (III/19.3.2). If more than 25% of the crew did not take part in the drills on board in the previous month, a drill is held within 24 hours of the ship leaving port. Crew joining the ship are given training in the fire equipment within two weeks at the latest (III/19.4.1). Drills must be planned with scenarios that are as realistic as possible.
 
-TATBİKAT İÇERİĞİ:
+DRILL CONTENT:
 
-1. Yangın alarm sinyalinin tanınması
-2. Muster station'a toplanma ve yoklama
-3. Yangın hortumu açma ve su basma
-4. Taşınabilir söndürücü kullanımı
-5. BA giyimi ve kullanımı
-6. Haberleşme donanımının kontrolü
-7. Yangın kapılarının, su geçirmez kapıların ve damperlerin kontrolü
-8. Yangın pompa ve acil jeneratör çalıştırma
-9. Gemiyi terk için gerekli düzenlemelerin gözden geçirilmesi
+1. Recognising the fire alarm signal
+2. Mustering at the muster station and taking a roll call
+3. Running out a fire hose and putting water on
+4. Using portable extinguishers
+5. Donning and using BA
+6. Checking the communications equipment
+7. Checking the fire doors, watertight doors and dampers
+8. Starting the fire pump and the emergency generator
+9. Reviewing the arrangements for abandoning ship
 
-KAYIT VE DOKÜMANTASYON:
+RECORDS AND DOCUMENTATION:
 
-Tüm tatbikatlar jurnale kaydedilir. Tatbikat tarihi, senaryosu, katılımcıları ve değerlendirme notları yazılır. PSC denetimlerinde tatbikat kayıtları kontrol edilir. Eksik tatbikat kaydı, geminin alıkonulma (detention) sebebi olabilir.`,
+All drills are entered in the log book. The date, scenario, participants and assessment notes are recorded. Drill records are checked in PSC inspections. Missing drill records can be grounds for detention.`,
     bulletPoints: [
-      "Yangın tatbikatı: her mürettebat üyesi için ayda en az bir (SOLAS III/19.3.2)",
-      "Gemiye katılan personel: en geç 2 hafta içinde LSA/FFE eğitimi (SOLAS III/19.4.1)",
+      "Fire drill: at least one a month for every crew member (SOLAS III/19.3.2)",
+      "Crew joining the ship: LSA/FFE training within 2 weeks at the latest (SOLAS III/19.4.1)",
       "BA giyimi, hortum açma, söndürücü kullanımı tatbikat kapsamında",
       "Tüm tatbikatlar jurnale kaydedilir; PSC'de kontrol edilir",
     ],
@@ -2241,28 +2243,28 @@ Tüm tatbikatlar jurnale kaydedilir. Tatbikat tarihi, senaryosu, katılımcılar
   "stcw-watchkeeping": {
     title: "STCW Vardiya Standartları",
     introduction: "STCW sözleşmesi, güverte ve makine vardiya zabitlerinin dinlenme saatleri, yeterlilikleri ve vardiya düzeni standartlarını belirler.",
-    content: `DİNLENME SÜRELERİ (STCW A-VIII/1):
+    content: `REST PERIODS (STCW A-VIII/1):
 
-Her 24 saatlik dönemde en az 10 saat dinlenme sağlanmalıdır.
-Her 7 günlük dönemde en az 77 saat dinlenme sağlanmalıdır.
-10 saatlik dinlenme en fazla iki bölüme ayrılabilir; bir bölüm en az 6 saat olmalıdır.
+A minimum of 10 hours' rest must be provided in any 24-hour period.
+A minimum of 77 hours' rest must be provided in any 7-day period.
+The 10 hours' rest may be divided into no more than two periods; one of them must be at least 6 hours.
 
-VARDİYA DÜZENİ:
+WATCH ARRANGEMENTS:
 
-Standart üç vardiya sistemi (4 saat vardiya, 8 saat dinlenme):
-- 00:00-04:00 ve 12:00-16:00: İkinci zabit
-- 04:00-08:00 ve 16:00-20:00: Üçüncü zabit
-- 08:00-12:00 ve 20:00-24:00: Baş zabit
+The standard three-watch system (4 hours on, 8 hours off):
+- 00:00-04:00 and 12:00-16:00: the second officer
+- 04:00-08:00 and 16:00-20:00: the third officer
+- 08:00-12:00 and 20:00-24:00: the chief officer
 
-Liman vardiyası: Yük operasyonları sırasında özel vardiya düzeni uygulanır.
+Port watches: a special watch arrangement applies during cargo operations.
 
-VARDİYA ZABİTİ SORUMLULUKLARI:
+THE OFFICER OF THE WATCH'S RESPONSIBILITIES:
 
-1. Güvenli seyir: Kerteriz, derinlik, hava durumu izleme
-2. COLREG kurallarına uyum
-3. Kayıtların tutulması (seyir jurnali)
-4. Kaptan'a bilgi verme gereklilikleri
-5. Makine ile koordinasyon`,
+1. Safe navigation: monitoring bearings, depth and weather
+2. Compliance with the COLREGs
+3. Keeping the records (the deck log)
+4. Knowing when to call the master
+5. Coordination with the engine room`,
     bulletPoints: [
       "24 saatte en az 10 saat, 7 günde en az 77 saat dinlenme",
       "Dinlenme en fazla 2 bölüm; biri en az 6 saat olmalı",
@@ -2284,22 +2286,22 @@ VARDİYA ZABİTİ SORUMLULUKLARI:
         alt: "Interior view of a modern ship's bridge; radar and ECDIS displays, a wooden helm, and a uniformed officer looking out towards the horizon.",
       },
     ],
-    content: `BRM İLKELERİ:
+    content: `BRM PRINCIPLES:
 
-1. Ekip Çalışması: Kaptan, vardiya zabiti ve gözcü arasında açık iletişim ve görev paylaşımı.
-2. Durum Farkındalığı (Situational Awareness): Geminin konumu, çevresi, trafik ve hava durumu hakkında sürekli farkındalık.
-3. Karar Verme: Yapılandırılmış karar verme süreci; acele kararlardan kaçınma.
-4. İletişim: Standart köprüüstü terminolojisi ve geri bildirim döngüsü (closed loop communication).
+1. Teamwork: open communication and a clear division of duties between the master, the officer of the watch and the lookout.
+2. Situational awareness: continuous awareness of the ship's position, her surroundings, the traffic and the weather.
+3. Decision making: a structured decision-making process; avoiding hasty decisions.
+4. Communication: standard bridge terminology and closed-loop communication.
 
-CLOSED LOOP COMMUNICATION:
+CLOSED-LOOP COMMUNICATION:
 
-Komut veren: "Starboard ten" (dümen sancağa on)
-Uygulayan: "Starboard ten, Sir" (sancağa on, efendim)
-Komut veren: Dümen açı göstergesini doğrular
+The person giving the order: "Starboard ten"
+The person executing it: "Starboard ten, Sir"
+The person giving the order: verifies the rudder angle indicator
 
-KRİTİK DURUMLAR:
+CRITICAL SITUATIONS:
 
-BRM eğitimi, junior personelin (düşük rütbeli) kaptanı veya kıdemli zabiti gerektiğinde uyarabilmesini (challenge) teşvik eder. Hiyerarşik korkudan kaynaklanan kazaların önlenmesi için bu kültür geliştirilmelidir.`,
+BRM training encourages junior personnel to challenge the master or a senior officer when necessary. This culture must be developed in order to prevent accidents caused by fear of the hierarchy.`,
     bulletPoints: [
       "BRM: ekip çalışması, durum farkındalığı, iletişim, karar verme",
       "Closed loop communication: komut → tekrar → doğrulama",
@@ -2313,28 +2315,28 @@ BRM eğitimi, junior personelin (düşük rütbeli) kaptanı veya kıdemli zabit
   "lookout-duty": {
     title: "Gözcülük Görevleri ve Sorumlulukları",
     introduction: "COLREG Kural 5 gereği, her gemi her zaman uygun gözcülük (proper look-out) yapmakla yükümlüdür.",
-    content: `COLREG KURAL 5 - GÖZCÜLÜK:
+    content: `COLREG RULE 5 – LOOK-OUT:
 
-'Her gemi, daima, görme ve işitme yoluyla ve mevcut koşullara ve duruma uygun her araçla, tam bir gözcülük yapacaktır.'
+"Every vessel shall at all times maintain a proper look-out by sight and hearing as well as by all available means appropriate in the prevailing circumstances and conditions."
 
-GÖZCÜLÜK İLKELERİ:
+PRINCIPLES OF KEEPING A LOOK-OUT:
 
-1. Görsel gözcülük: Çıplak göz ve dürbün ile sürekli ufuk taraması
-2. İşitsel gözcülük: Sis düdükleri, alarm sesleri, deniz sesleri
-3. Radar gözcülüğü: Radar ve ARPA ile sistematik izleme
-4. AIS takibi: Çevredeki gemilerin tanımlanması
-5. VHF dinleme: Kanal 16 ve trafik kanalları
+1. Visual look-out: continuous scanning of the horizon by eye and with binoculars
+2. Aural look-out: fog signals, alarms, sounds from the sea
+3. Radar look-out: systematic monitoring with radar and ARPA
+4. AIS monitoring: identifying the ships around you
+5. VHF listening watch: Channel 16 and the traffic channels
 
-GÖZCÜ GÖREVLERİ:
+THE LOOKOUT'S DUTIES:
 
-- Tüm nesneleri (gemi, engel, sürüklenen cisim, insanlar) raporlamak
-- Seyir fenerleri ve işaretlerini tanımlamak
-- Köprüüstündeki vardiya zabitine derhal bilgi vermek
-- Kaçış yollarını ve güvenlik donanımını bilmek
+- Reporting every object (ships, obstructions, floating objects, people)
+- Identifying navigation lights and shapes
+- Reporting immediately to the officer of the watch
+- Knowing the escape routes and the safety equipment
 
-GÖZCÜLÜKTEn MUAF TUTULMAMA:
+NO EXEMPTION FROM THE LOOK-OUT:
 
-Hiçbir koşulda gözcülük görevi başka bir görevle birleştirilemez. Dümen tutarak gözcülük yapılması STCW ve COLREG ihlalidir (bazı istisnalar dışında).`,
+Under no circumstances may the look-out duty be combined with another task. Keeping a look-out while steering is a breach of STCW and the COLREGs (with certain exceptions).`,
     bulletPoints: [
       "COLREG Kural 5: her gemi her zaman tam gözcülük yapacaktır",
       "Gözcülük: görsel + işitsel + radar + AIS + VHF",
@@ -2345,29 +2347,29 @@ Hiçbir koşulda gözcülük görevi başka bir görevle birleştirilemez. Düme
   "watch-handover": {
     title: "Vardiya Devir Teslimi",
     introduction: "Vardiya devir teslimi, seyir güvenliğinin kesintisiz sürdürülmesi için standart prosedüre uygun olarak yapılmalıdır.",
-    content: `DEVİR TESLİM SÜRECİ:
+    content: `THE HANDOVER PROCESS:
 
-Gelen vardiya zabiti, vardiyayı devralmadan önce aşağıdaki bilgileri almalıdır:
+The relieving officer of the watch must be given the following information before taking over the watch:
 
-1. Geminin mevcut pozisyonu ve kerterizi
-2. Planlanan rota ve sonraki waypoint
-3. Hız ve makine durumu
-4. Çevredeki trafik (gemiler, balıkçılar)
-5. Hava ve deniz durumu
-6. Gelgit ve akıntı bilgisi
-7. Seyir uyarıları (NAVTEX, NAVAREA)
-8. Kaptanın özel talimatları
-9. Ekipman arızaları (varsa)
-10. Seyir planı ve harita durumu
+1. The ship's present position and heading
+2. The planned route and the next waypoint
+3. The speed and the state of the engine
+4. The traffic around (ships, fishing vessels)
+5. The weather and sea state
+6. Tidal and current information
+7. Navigational warnings (NAVTEX, NAVAREA)
+8. The master's standing orders
+9. Any equipment defects
+10. The passage plan and the state of the charts
 
-DEVİR ALMA KOŞULLARI:
+WHEN NOT TO TAKE OVER:
 
-Vardiya zabiti, aşağıdaki durumlarda vardiyayı devralmamalıdır:
-- Gözleri karanlığa adapte olmamışsa (gece)
-- Durumun tam farkına varamamışsa
-- Manevra veya tehlike anında (manevra tamamlanana kadar beklenmeli)
+The officer of the watch must not take over the watch:
+- If their eyes are not adapted to the dark (at night)
+- If they are not fully aware of the situation
+- During a manoeuvre or a close-quarters situation (they must wait until it is complete)
 
-SOLAS ve STCW, vardiya devrinin kayıt altına alınmasını gerektirir.`,
+SOLAS and STCW require the handover of the watch to be recorded.`,
     bulletPoints: [
       "Devir teslimde 10 temel bilgi aktarılmalıdır",
       "Gözler karanlığa adapte olmadan gece vardiyası devralınmaz",
@@ -2378,21 +2380,21 @@ SOLAS ve STCW, vardiya devrinin kayıt altına alınmasını gerektirir.`,
   "night-vision": {
     title: "Gece Görüşü ve Köprüüstü Karartması",
     introduction: "Gece seyri sırasında gözcülüğün etkinliği, gözlerin karanlık adaptasyonu ve köprüüstü aydınlatma disiplinine bağlıdır.",
-    content: `KARANLIK ADAPTASYONU:
+    content: `DARK ADAPTATION:
 
-İnsan gözünün karanlığa tam adaptasyonu yaklaşık 20-30 dakika sürer. Beyaz ışığa kısa süreli maruz kalmak bile adaptasyonu bozar ve yeniden 20-30 dakikalık süre gerektirir.
+It takes about 20-30 minutes for the human eye to adapt fully to darkness. Even brief exposure to white light destroys the adaptation and another 20-30 minutes is needed.
 
-KÖPRÜÜSTÜ KARARTMASI:
+BRIDGE BLACKOUT:
 
-Gece seyirde köprüüstü ışıkları kırmızıya alınır. Kırmızı ışık, gözün karanlık adaptasyonunu minimum düzeyde etkiler. Harita aydınlatması da kırmızı filtrelidir.
+Bridge lighting is switched to red at night. Red light has minimal effect on the eye's dark adaptation. Chart table lighting is also red-filtered.
 
-PRATİK KURALLAR:
+PRACTICAL RULES:
 
-- Köprüüstüne girmeden önce gözlerin adapte edilmesi için beklenmeli
-- Beyaz ışıklı ekranların parlaklığı minimuma düşürülmeli
-- Radar ekranına uzun süre bakmak adaptasyonu bozar; periyodik olarak ufka bakılmalı
-- Bir gözün kapatılarak korunması eski ama etkili bir tekniktir
-- Parlak ışık kaynağından sonra kırmızı ışıkta en az 10 dakika beklenilmeli`,
+- Wait before entering the bridge so that the eyes can adapt
+- Turn the brightness of white-lit screens down to minimum
+- Looking at the radar screen for long periods destroys adaptation; look at the horizon periodically
+- Covering one eye to protect it is an old but effective technique
+- After exposure to a bright light, wait at least 10 minutes in red light`,
     bulletPoints: [
       "Karanlık adaptasyonu: 20-30 dakika",
       "Beyaz ışık adaptasyonu anında bozar",
@@ -2407,32 +2409,32 @@ PRATİK KURALLAR:
   "heavy-weather-prep": {
     title: "Fırtına Hazırlıkları (Sea Securing)",
     introduction: "Ağır hava öncesinde geminin denize hazırlanması (sea securing), can ve mal güvenliği açısından hayati bir operasyondur.",
-    content: `FIRTINA HAZIRLIK KONTROL LİSTESİ:
+    content: `HEAVY WEATHER PREPARATION CHECKLIST:
 
-GÜVERTE:
-- Tüm ambar kapakları kontrol edilir ve sıkıca kapatılır
-- Havalandırıcı kapaklarının kapalı olduğu doğrulanır
-- Güvertedeki serbest malzemeler (boya tenekeleri, fıçılar, iskele) sabitlenir
-- Güverte drenaj deliklerinin (scuppers) açık olduğu kontrol edilir
-- Korkuluklar ve güverte aydınlatması kontrol edilir
-- Güverte geçiş yasakları belirlenir (lifeline kurulumu)
+DECK:
+- All hatch covers are checked and secured
+- The ventilator closing appliances are confirmed shut
+- Loose gear on deck (paint tins, drums, staging) is secured
+- The deck scuppers are checked clear
+- The guardrails and deck lighting are checked
+- Deck access restrictions are set (lifelines rigged)
 
-YÜK VE AMBAR:
-- Yük bağlama (lashing) kontrolü yapılır, gerekirse ek bağlama eklenir
-- Ambar havalandırma kapatılır
-- Tanklardaki serbest yüzey etkisi minimize edilir (tanklar dolu veya boş)
+CARGO AND HOLDS:
+- The cargo lashings are checked and additional lashings added if necessary
+- Hold ventilation is closed
+- Free surface in the tanks is minimised (tanks either full or empty)
 
-MAKİNE DAİRESİ:
-- Tüm hareketli parçalar sabitlenir
-- Sintine pompası kontrol edilir
-- Yakıt transfer planı gözden geçirilir
+ENGINE ROOM:
+- All moving parts are secured
+- The bilge pump is checked
+- The fuel transfer plan is reviewed
 
-KÖPRÜüSTü:
-- Hava tahminleri güncellenir
-- Rota alternatiffleri değerlendirilir
-- NAVTEX/GMDSS uyarıları izlenir
+BRIDGE:
+- The weather forecasts are updated
+- Alternative routes are considered
+- NAVTEX/GMDSS warnings are monitored
 
-Kaptan, ağır hava beklentisinde 'Heavy Weather Preparedness' sirküleri yayınlar ve tüm departmanları bilgilendirir.`,
+When heavy weather is expected the master issues a Heavy Weather Preparedness circular and informs all departments.`,
     bulletPoints: [
       "Ambar kapakları, havalandırıcılar, scupper'lar kontrol edilir",
       "Güvertedeki serbest malzemeler sabitlenir",
@@ -2440,33 +2442,33 @@ Kaptan, ağır hava beklentisinde 'Heavy Weather Preparedness' sirküleri yayın
       "Lifeline kurulumu ile güverte geçiş güvenliği sağlanır",
     ],
     warnings: [
-      "Fırtınada güverteye çıkış kaptanın izni olmadan yasaktır",
-      "Serbest yüzey etkisi stabilite kaybının başlıca nedenidir",
+      "Going out on deck in a storm is prohibited without the master's permission",
+      "The free surface effect is the main cause of loss of stability",
     ],
   },
   "parametric-rolling": {
     title: "Parametrik Salınım",
     introduction: "Parametrik salınım, dalga karşılaşma periyodunun geminin doğal salınım periyodunun yarısına eşit olduğu durumda gelişen tehlikeli yalpa hareketidir.",
-    content: `MEKANİZMA:
+    content: `THE MECHANISM:
 
-Parametrik salınım, geminin su hattı alanının (waterplane area) dalga geçişi sırasında periyodik olarak değişmesinden kaynaklanır. Dalga tepesi gemi ortasında iken su hattı alanı azalır (GM düşer), dalga çukurunda iken su hattı alanı artar (GM artar). Bu GM değişimi belirli koşullarda rezonans yaratır.
+Parametric rolling arises from the periodic change in the ship's waterplane area as a wave passes. When the wave crest is amidships the waterplane area decreases (GM falls); in the trough the waterplane area increases (GM rises). Under certain conditions this variation in GM creates resonance.
 
-TEHLİKE KOŞULLARI:
+DANGEROUS CONDITIONS:
 
-- Dalga karşılaşma periyodu ≈ geminin doğal salınım periyodunun yarısı (Te ≈ Tr/2)
-- Dalga yüksekliği geminin genişliğinin %40'ından fazla
-- Pruva ve kıçta belirgin flare (genişleme) olan gemilerde daha sık
+- The wave encounter period ≈ half the ship's natural roll period (Te ≈ Tr/2)
+- A wave height greater than 40% of the ship's beam
+- More frequent on ships with pronounced flare forward and aft
 
-ETKİLENEN GEMİ TİPLERİ:
+SHIP TYPES AFFECTED:
 
-Özellikle konteyner gemileri, büyük C11 tipi post-Panamax konteyner gemileri ve Ro-Ro gemileri parametrik salınıma duyarlıdır. 2000'li yıllardaki ciddi konteyner kaybı kazaları bu fenomene bağlanmıştır.
+Container ships in particular, large C11-type post-Panamax container ships and Ro-Ro ships are susceptible to parametric rolling. The serious container loss casualties of the 2000s were attributed to this phenomenon.
 
-KAÇINMA STRATEJİLERİ:
+AVOIDANCE STRATEGIES:
 
-1. Hız değiştirmek (karşılaşma periyodunu değiştirmek için)
-2. Rota değiştirmek (dalga açısını değiştirmek)
-3. Dalga radarı ve tahmin yazılımları ile izleme
-4. Anti-rolling tank veya fin stabilizer kullanımı`,
+1. Changing speed (to change the encounter period)
+2. Changing course (to change the wave angle)
+3. Monitoring with wave radar and forecasting software
+4. Using anti-rolling tanks or fin stabilisers`,
     formula: {
       name: "Parametrik Rezonans Koşulu",
       expression: "Te ≈ Tr / 2",
@@ -2479,66 +2481,66 @@ KAÇINMA STRATEJİLERİ:
       "GM'nin dalga geçişiyle periyodik değişimi tetikleyicidir",
     ],
     warnings: [
-      "Parametrik salınım 30°+ yalpa açılarına ulaşabilir; konteyner kaybı ve devrilme riski",
-      "Baş veya kıçtan gelen uzun dalgalarda özellikle dikkat edilmelidir",
+      "Parametric rolling can reach roll angles of 30°+; the risk of container loss and capsizing",
+      "Particular care is needed in long waves from ahead or astern",
     ],
   },
   "synchronous-rolling": {
     title: "Senkron Salınım ve Broaching",
     introduction: "Senkron salınım, dalga karşılaşma periyodunun geminin doğal salınım periyoduna eşit olduğu durumda gelişen tehlikeli rezonans halidir.",
-    content: `SENKRON SALINIM:
+    content: `SYNCHRONOUS ROLLING:
 
-Dalga karşılaşma periyodu (Te) geminin doğal yalpa periyoduna (Tr) eşit olduğunda, her dalga geminin salınımını artırır (rezonans). Yalpa açıları giderek büyür ve devrilme noktasına yaklaşabilir.
+When the wave encounter period (Te) equals the ship's natural roll period (Tr), each wave increases the roll (resonance). The roll angles grow progressively and can approach the point of capsize.
 
-Te = Tr → Senkron salınım
+Te = Tr → synchronous rolling
 
 BROACHING:
 
-Broaching, geminin kıçtan veya kıç omuzluktan gelen dalga etkisiyle kontrolsüz şekilde dönmesi (yaw) ve enine dalgaya yakalanmasıdır. Genellikle dalgayla aynı yönde ve benzer hızda seyirde oluşur. Dümen kontrolü kaybedilir.
+Broaching is the uncontrolled yaw of a ship under the influence of a following or quartering sea, leaving her lying beam-on to the waves. It usually happens when running with the sea at a similar speed. Steering control is lost.
 
-KAÇINMA:
+AVOIDANCE:
 
-Senkron salınımdan kaçınma:
-- Hız değiştirerek karşılaşma periyodunu değiştirmek
-- Rota değiştirerek dalga açısını değiştirmek
-- Tankları kullanarak GM'yi değiştirmek
+Avoiding synchronous rolling:
+- Change speed to change the encounter period
+- Change course to change the wave angle
+- Use the tanks to change GM
 
-Broaching'den kaçınma:
-- Kıçtan dalga almaktan kaçınmak
-- Hızı azaltmak (dalga hızının altına düşürmek)
-- Aktif dümen kullanımı`,
+Avoiding broaching:
+- Avoid taking the sea from astern
+- Reduce speed (below the wave speed)
+- Use the helm actively`,
     bulletPoints: [
       "Te = Tr → senkron salınım (rezonans), yalpa açıları büyür",
       "Broaching: kıçtan dalga ile kontrolsüz dönüş, dümen kaybı",
       "Hız ve rota değişikliği her iki tehlike için de çözümdür",
     ],
     warnings: [
-      "Senkron salınımda devrilme riski vardır",
-      "Broaching küçük ve orta boy gemilerde daha sık yaşanır",
+      "There is a risk of capsizing in synchronous rolling",
+      "Broaching is more common on small and medium-sized ships",
     ],
   },
   "heavy-weather-nav": {
     title: "Fırtınada Seyir Stratejileri",
     introduction: "Ağır havada seyir, gemi güvenliği ve yapısal bütünlüğü korumak için özel stratejiler ve hız/rota kararları gerektirir.",
-    content: `SEYİR STRATEJİLERİ:
+    content: `HEAVY WEATHER STRATEGIES:
 
-1. HEAVING TO (Yatarak Bekleme): Pruva dalga yönüne döndürülür, düşük devir ile pozisyon korunur. En yaygın fırtına stratejisi. Dalga etkisini minimuma indirir.
+1. HEAVING TO: the bow is brought into the sea and position is maintained at low revolutions. The most common storm strategy. It minimises the effect of the seas.
 
-2. RUNNING BEFORE THE SEA: Dalgayla aynı yönde seyir. Broaching riski vardır ancak bazı durumlarda tercih edilir. Hız dalgadan düşük tutulmalıdır.
+2. RUNNING BEFORE THE SEA: running in the same direction as the waves. There is a risk of broaching but it is preferred in some circumstances. The speed must be kept below the wave speed.
 
-3. DODGING: Dalgaya 30-45° açıyla ilerleme. Yalpa ve baş dalma arasında denge sağlar.
+3. DODGING: proceeding at 30-45° to the sea. It strikes a balance between rolling and pitching.
 
-4. LYING AHULL: Makine durdurulur, gemi dalgaya bırakılır. Son çaredir; yalnızca makine arızası durumunda uygulanır.
+4. LYING AHULL: the engine is stopped and the ship is left to the sea. A last resort; used only in the event of machinery failure.
 
-HIZ AZALTMA NEDENLERİ:
+REASONS FOR REDUCING SPEED:
 
-- Aşırı baş dalma (bow diving/slamming) önleme
-- Yeşil deniz (green water on deck) önleme
-- Pervane yarışması (racing) önleme
-- Yapısal stres azaltma
-- Parametrik/senkron salınım kaçınma
+- To prevent excessive bow diving/slamming
+- To prevent green water on deck
+- To prevent propeller racing
+- To reduce structural stress
+- To avoid parametric/synchronous rolling
 
-Hız azaltma kararı, kaptanın deneyimine ve mevcut koşullara bağlıdır. Genel kural olarak gemi şiddetli darbeler (slamming) almaya başladığında hız derhal düşürülmelidir.`,
+The decision to reduce speed depends on the master's experience and the prevailing conditions. As a general rule, speed must be reduced immediately once the ship starts to slam heavily.`,
     bulletPoints: [
       "Heaving to: pruva dalga yönüne, düşük devir, en yaygın strateji",
       "Running: dalgayla seyir, broaching riski",
@@ -2549,57 +2551,57 @@ Hız azaltma kararı, kaptanın deneyimine ve mevcut koşullara bağlıdır. Gen
   "pooping-bow-dive": {
     title: "Kıç Dalma (Pooping) ve Pruva Dalma",
     introduction: "Pooping ve pruva dalma, ağır havada gemi güvenliğini doğrudan tehdit eden ciddi deniz olaylarıdır.",
-    content: `POOPING (KIÇ DALMA):
+    content: `POOPING:
 
-Kıçtan gelen dalganın güverteyi aşarak kıç güvertesini kaplamasıdır. Risk faktörleri:
-- Dalgayla aynı yönde seyir (kıçtan dalga)
-- Yüksek dalga ve düşük freeboard
-- Hız dalga hızına yakın
+A following sea overtaking the ship and breaking over the after deck. Risk factors:
+- Running with the sea (a following sea)
+- High waves and low freeboard
+- A speed close to the wave speed
 
-Sonuçları:
-- Kıç güvertesinde hasar
-- Dümen ve pervane hasarı
-- Makine dairesi su alması
-- Personel güvenliği riski
+Consequences:
+- Damage to the after deck
+- Damage to the rudder and propeller
+- Flooding of the engine room
+- Risk to personnel
 
-BOW DIVING (PRUVA DALMA):
+BOW DIVING:
 
-Pruvanın dalga içine girmesi ve güvertenin su altında kalmasıdır. Yüksek hızda dalgaya karşı seyirde oluşur. Slamming (çarpma) pruva yapısında ciddi hasara yol açabilir.
+The bow burying itself in a wave and the deck going under water. It occurs at high speed heading into the sea. Slamming can cause serious damage to the bow structure.
 
-ÖNLEYİCİ TEDBİRLER:
+PREVENTIVE MEASURES:
 
-Pooping için: Kıçtan dalga almaktan kaçın, hızı düşür veya rota değiştir
-Pruva dalma için: Hızı düşür, dalgaya açı ver, baş trimi azalt`,
+Against pooping: avoid taking the sea from astern, reduce speed or alter course
+Against bow diving: reduce speed, take the sea at an angle, reduce trim by the head`,
     bulletPoints: [
       "Pooping: kıçtan dalga güverteyi kaplar, dümen/pervane hasarı riski",
       "Slamming: pruvanın dalgaya çarpması, yapısal hasar",
       "Hız azaltma her iki durum için birincil önlemdir",
     ],
     warnings: [
-      "Pooping sırasında kıç güvertede bulunan personel dalga ile sürüklenebilir",
-      "Şiddetli slamming geminin omurga yapısında kalıcı hasar oluşturabilir",
+      "During pooping, personnel on the after deck can be swept away by the sea",
+      "Severe slamming can cause permanent damage to the ship's structure",
     ],
   },
   "damage-assessment": {
     title: "Fırtına Hasarı Değerlendirmesi",
     introduction: "Fırtına sonrası hasar değerlendirmesi, geminin seyir güvenliğinin ve yapısal bütünlüğünün teyit edilmesi için sistematik olarak yapılmalıdır.",
-    content: `HASAR DEĞERLENDİRME ADIMLARI:
+    content: `DAMAGE ASSESSMENT, STEP BY STEP:
 
-1. PERSONEL GÜVENLİĞİ: Öncelikli olarak tüm personelin durumu kontrol edilir.
+1. PERSONNEL SAFETY: the condition of all personnel is checked first.
 
-2. SU GEÇİRMEZLİK: Ambar kapakları, tank soundingleri ve sintine seviyeleri kontrol edilir. Su girişi tespit edilirse boşaltma (pumping) başlatılır.
+2. WATERTIGHT INTEGRITY: the hatch covers, tank soundings and bilge levels are checked. If water ingress is found, pumping is started.
 
-3. YAPISAL KONTROL: Güverte, borda, ambar coamingleri ve üst yapı görsel olarak incelenir. Çatlak, deformasyon, bükülme aranır.
+3. STRUCTURAL CHECK: the deck, shell, hatch coamings and superstructure are inspected visually. Cracks, deformation and buckling are looked for.
 
-4. YÜK KONTROLÜ: Yük bağlamalarının durumu kontrol edilir. Yük kayması veya hasar belirtileri aranır.
+4. CARGO CHECK: the condition of the cargo lashings is checked. Signs of a cargo shift or damage are looked for.
 
-5. DONANIM KONTROLÜ: Seyir cihazları, haberleşme ekipmanları, dümen ve makine sistemleri fonksiyonel olarak test edilir.
+5. EQUIPMENT CHECK: the navigational equipment, communications equipment, steering and machinery systems are function tested.
 
-6. RAPORLAMA: Kaptan, deniz protestosu (sea protest/note of protest) hazırlar. P&I Club'a ve işletene durum raporu gönderilir.
+6. REPORTING: the master prepares a note of protest (sea protest). A status report is sent to the P&I club and the operator.
 
-DENİZ PROTESTOSU:
+THE NOTE OF PROTEST:
 
-Varış limanında noter veya yetkili makam huzurunda düzenlenir. Fırtına koşullarını, alınan tedbirleri ve oluşan hasarı belgeler. Yük hasarı taleplerinde kaptan ve gemiyi koruyucu hukuki belgedir.`,
+It is drawn up before a notary or a competent authority at the port of arrival. It records the storm conditions, the measures taken and any damage sustained. It is the legal document that protects the master and the ship against cargo damage claims.`,
     bulletPoints: [
       "Öncelik: personel güvenliği > su geçirmezlik > yapısal > yük > donanım",
       "Tank sounding ve sintine seviyesi su girişini tespit eder",
@@ -2614,23 +2616,23 @@ Varış limanında noter veya yetkili makam huzurunda düzenlenir. Fırtına ko�
   "towing-principles": {
     title: "Çekme Prensipleri ve Kuvvetleri",
     introduction: "Denizde çekme operasyonları, çekilen geminin veya objenin ağırlığına, hız ve deniz koşullarına bağlı kuvvetlerin doğru hesaplanmasını gerektirir.",
-    content: `ÇEKME KUVVETLERİ:
+    content: `TOWING FORCES:
 
-Çekme kuvveti (bollard pull), römorkörün sabit durumda ürettiği çekme kapasitesidir ve ton cinsinden ifade edilir. Denizde çekme sırasında toplam direnç, hız ve deniz koşullarıyla artar.
+Bollard pull is the towing capacity a tug develops at rest, expressed in tonnes. When towing at sea the total resistance increases with speed and sea state.
 
-ÇEKMENİN TEMEL PRENSİPLERİ:
+BASIC PRINCIPLES OF TOWING:
 
-1. Çekme halatı (towline) yeterli uzunlukta olmalıdır (catenary oluşturmak için)
-2. Catenary: Halatın yerçekimiyle oluşturduğu eğri. Şok yüklerini absorbe eder.
-3. Çekme hızı, çekilen geminin direncine ve deniz koşullarına göre ayarlanır
-4. Çekme rotası, hava ve akıntı yönü dikkate alınarak planlanır
+1. The towline must be of sufficient length (to form a catenary)
+2. Catenary: the curve the towline takes under its own weight. It absorbs shock loads.
+3. The towing speed is set by the resistance of the towed vessel and the sea conditions
+4. The tow route is planned taking the weather and the current into account
 
-ÇEKİLEN GEMİDE ALINACAK TEDBİRLER:
+PRECAUTIONS ON THE TOWED VESSEL:
 
-- Dümen ortalanmalı veya kilitlenelidir
-- Seyir fenerleri ve gündüz işaretleri gösterilmeli
-- Çekme bağlantı noktası (towing bitts/bollard) dayanımı kontrol edilmeli
-- Acil durumda towline'ın kesilmesi için balta hazır bulundurulmalı`,
+- The rudder must be amidships or locked
+- The navigation lights and day shapes must be displayed
+- The strength of the towing connection (towing bitts/bollard) must be checked
+- An axe must be kept ready to cut the towline in an emergency`,
     bulletPoints: [
       "Bollard pull: römorkörün sabit çekme kapasitesi (ton)",
       "Catenary: halat eğrisi, şok yüklerini absorbe eder",
@@ -2638,30 +2640,30 @@ Varış limanında noter veya yetkili makam huzurunda düzenlenir. Fırtına ko�
       "Towline yeterli uzunlukta olmalı (catenary için)",
     ],
     warnings: [
-      "Çekme halatı koptuğunda geri tepme (snapback) ölümcül tehlike oluşturur",
+      "If the towline parts, the snap-back is a lethal hazard",
     ],
   },
   "towing-gear": {
     title: "Çekme Donanımı ve Düzenlemesi",
     introduction: "Çekme donanımı, çekme operasyonunun güvenli ve verimli yürütülmesi için tasarlanmış özel ekipman ve düzenlemedir.",
-    content: `ÇEKME DONANIMININ BİLEŞENLERİ:
+    content: `COMPONENTS OF THE TOWING GEAR:
 
-1. Towline (Çekme Halatı): HMPE, naylon veya çelik tel olabilir. Açık deniz çekmelerinde genellikle çelik tel + sentetik tail (kuyruk) kombinasyonu kullanılır. Tail esneklik sağlar.
+1. Towline: it may be HMPE, nylon or wire rope. Ocean towing normally uses a combination of wire rope plus a synthetic tail. The tail provides elasticity.
 
-2. Towing Bridle (Çekme Yayılma): Çekme kuvvetini iki noktaya dağıtan V şekilli düzenleme.
+2. Towing bridle: a V-shaped arrangement that spreads the towing force over two points.
 
-3. Towing Pendant: Çekme gemisi ile çekilen gemi arasındaki bağlantı zinciri veya teli.
+3. Towing pendant: the chain or wire connecting the tug to the towed vessel.
 
-4. Emergency Towing Arrangement: SOLAS gereği 20.000 GT üzeri tanker ve 500 GT üzeri diğer gemilerde zorunlu acil çekme donanımı.
+4. Emergency towing arrangement: mandatory under SOLAS on tankers over 20,000 GT and on other ships over 500 GT.
 
-ÇEKME DÜZENLEMELERİ:
+TOWING ARRANGEMENTS:
 
-Kısa mesafe çekme (harbour tow): Kısa towline, düşük hız, römorkör kontrolü.
-Açık deniz çekmesi (ocean tow): Uzun towline (500-1000 m), catenary önemli, çekme süresi günler sürebilir.
+Harbour tow: a short towline, low speed, tug control.
+Ocean tow: a long towline (500-1000 m), where the catenary matters; the tow can last for days.
 
 CHAFING PROTECTION:
 
-Çekme halatı gemi yapısıyla temas ettiği noktalarda aşınmaya karşı korunmalıdır. Fairlead, roller ve chafing gear kullanılır.`,
+The towline must be protected against chafe where it bears on the ship's structure. Fairleads, rollers and chafing gear are used.`,
     bulletPoints: [
       "Çelik tel + sentetik tail kombinasyonu açık deniz standardıdır",
       "Towing bridle: kuvveti iki noktaya dağıtır",
@@ -2672,27 +2674,27 @@ CHAFING PROTECTION:
   "emergency-towing": {
     title: "Acil Çekme Prosedürü",
     introduction: "Acil çekme, makine arızası veya diğer acil durumlarda geminin güvenli bir yere çekilmesi için uygulanan prosedürdür.",
-    content: `ACİL ÇEKME DURUMU:
+    content: `EMERGENCY TOWING SITUATIONS:
 
-Makine arızası, dümen kaybı veya diğer nedenlerle gemi manevra kabiliyetini kaybettiğinde acil çekme gerekebilir. Özellikle kıyıya yakın ve yoğun trafikli bölgelerde aciliyet artar.
+An emergency tow may be needed when a ship loses her manoeuvrability through machinery failure, loss of steering or other causes. The urgency increases close to the coast and in busy traffic areas.
 
-EMERGENCY TOWING ARRANGEMENT (ETA):
+THE EMERGENCY TOWING ARRANGEMENT (ETA):
 
-SOLAS gereği belirli tonajın üzerindeki gemilerde ETA bulunmalıdır. Bu düzenleme, geminin pruva ve kıçında önceden hazırlanmış çekme bağlantı noktalarını içerir. Römorkör geldiğinde hızla bağlantı kurulabilmeli.
+Under SOLAS an ETA must be fitted on ships above a certain tonnage. It comprises pre-rigged towing connection points forward and aft. The connection must be capable of being made quickly when a tug arrives.
 
-PROSEDÜR:
+PROCEDURE:
 
-1. Acil durum ilan edilir; MAYDAY veya PAN PAN çağrısı yapılır
-2. Demir atılabiliyorsa atılır (sürüklenmeyi yavaşlatmak için)
-3. Kıyı Koruma veya kurtarma koordinasyon merkezi ile iletişim kurulur
-4. Römorkör gelene kadar pozisyon ve sürüklenme izlenir
-5. Çekme bağlantısı kurulur (heaving line → messenger → towline)
-6. Güvenli limana veya demirliğe çekilir
+1. An emergency is declared; a MAYDAY or PAN PAN call is made
+2. The anchor is let go if possible (to slow the drift)
+3. Contact is made with the coastguard or the rescue coordination centre
+4. The position and the rate of drift are monitored until the tug arrives
+5. The tow connection is made (heaving line → messenger → towline)
+6. The ship is towed to a safe port or anchorage
 
-SALVAGE vs TOW:
+SALVAGE vs TOWAGE:
 
-Salvage (kurtarma): Tehlike altındaki geminin kurtarılması; kurtarma ücreti yüksektir (LOF - Lloyd's Open Form).
-Towage (çekme): Sözleşmeye dayalı ticari çekme hizmeti.`,
+Salvage: the saving of a ship in danger; the salvage award is high (LOF – Lloyd's Open Form).
+Towage: a commercial towing service under contract.`,
     bulletPoints: [
       "ETA: gemide önceden hazırlanmış acil çekme bağlantı noktaları",
       "Makine kaybında ilk adım: demir atarak sürüklenmeyi yavaşlatmak",
@@ -2703,27 +2705,27 @@ Towage (çekme): Sözleşmeye dayalı ticari çekme hizmeti.`,
   "salvage-law": {
     title: "Kurtarma Hukuku Temel İlkeleri",
     introduction: "Denizde kurtarma hukuku, tehlike altındaki gemilerin kurtarılmasını teşvik eden ve kurtaranın haklarını koruyan uluslararası hukuk dalıdır.",
-    content: `TEMEL İLKELER:
+    content: `BASIC PRINCIPLES:
 
-1. 'No cure, no pay' (Kurtarma yok, ödeme yok): Geleneksel prensip. Kurtarma başarısız olursa ücret ödenmez. Lloyd's Open Form (LOF) bu prensibe dayanır.
+1. "No cure, no pay": the traditional principle. If the salvage fails, no award is paid. The Lloyd's Open Form (LOF) is based on this principle.
 
-2. 1989 Uluslararası Kurtarma Sözleşmesi: Çevre kirliliğinin önlenmesi için yapılan çalışmalara da ücret ödenmesini öngörür (Special Compensation).
+2. The 1989 International Convention on Salvage: it provides for payment (Special Compensation) for work done to prevent environmental damage as well.
 
-3. Kurtarma ücreti, kurtarılan geminin ve yükün değerini aşamaz.
+3. The salvage award cannot exceed the value of the ship and cargo salved.
 
-KAPTANIN SORUMLULUKLARI:
+THE MASTER'S RESPONSIBILITIES:
 
-- Tehlike altındaki gemilere yardım etme yükümlülüğü (SOLAS V/33)
-- Kurtarma sözleşmesi imzalama yetkisi
-- Yardım talep etme (PAN PAN / MAYDAY)
+- The obligation to render assistance to ships in distress (SOLAS V/33)
+- The authority to sign a salvage agreement
+- Requesting assistance (PAN PAN / MAYDAY)
 
 LOF (LLOYD'S OPEN FORM):
 
-Dünya'nın en yaygın kurtarma sözleşmesidir. Kurtarma ücreti sonradan tahkim (arbitration) yoluyla belirlenir. London Maritime Arbitrators Association (LMAA) tahkim yapar.
+The most widely used salvage agreement in the world. The salvage award is settled afterwards by arbitration. The London Maritime Arbitrators Association (LMAA) conducts the arbitration.
 
-SCOPIC CLAUSE:
+THE SCOPIC CLAUSE:
 
-LOF'a eklenen özel tazminat maddesidir. Kurtarma başarısız olsa bile çevre koruma çalışmaları için ücret ödenmesini garanti eder.`,
+A special compensation clause added to the LOF. It guarantees payment for environmental protection work even if the salvage is unsuccessful.`,
     bulletPoints: [
       "No cure, no pay: kurtarma başarısız olursa ücret yok",
       "LOF: en yaygın kurtarma sözleşmesi, tahkim sistemi",
@@ -2734,25 +2736,25 @@ LOF'a eklenen özel tazminat maddesidir. Kurtarma başarısız olsa bile çevre 
   "grounding-response": {
     title: "Karaya Oturma ve Kurtarma",
     introduction: "Karaya oturma, geminin deniz tabanına veya kıyıya oturmasıdır; müdahale hızı ve doğru kararlar geminin kurtarılmasını belirler.",
-    content: `İLK MÜDAHALE ADIMLARI:
+    content: `IMMEDIATE ACTIONS:
 
-1. MAKİNE DURDURULUR: Pervane dönüşü zemin hasarını artırabilir.
-2. Hasar kontrolü: Tüm tanklar sounding edilir, su girişi kontrol edilir.
-3. Pozisyon ve oturma durumu belirlenir (draft okumaları).
-4. Gelgit durumu kontrol edilir.
-5. P&I Club ve işleten bilgilendirilir.
-6. Gerekiyorsa kıyı devletine bildirim yapılır (kirlilik riski).
+1. STOP THE ENGINES: turning the propeller can increase the damage to the bottom.
+2. Damage check: all tanks are sounded and water ingress is checked.
+3. The position and the way the ship is aground are established (draft readings).
+4. The state of the tide is checked.
+5. The P&I club and the operator are informed.
+6. The coastal State is notified if necessary (risk of pollution).
 
-KURTARMA YÖNTEMLERİ:
+METHODS OF REFLOATING:
 
-1. Kendi gücüyle kurtulma (refloating): Balast değişikliği, trim ayarı, makine gücü. Gelgit yükselmesinden faydalanılır.
-2. Römorkör yardımı: Dış çekme kuvveti ile çıkarma.
-3. Yük boşaltma (lightening): Yük, yakıt veya balast boşaltılarak draftı azaltmak.
-4. Dredging: Gemi çevresinin kazılması.
+1. Refloating under her own power: changing ballast, adjusting trim, using engine power. Advantage is taken of the rising tide.
+2. Tug assistance: pulling off with external force.
+3. Lightening: reducing the draft by discharging cargo, fuel or ballast.
+4. Dredging: excavating around the ship.
 
-ÇEVRE RİSKİ:
+ENVIRONMENTAL RISK:
 
-Karaya oturma durumunda yakıt sızıntısı ve çevre kirliliği en büyük risk faktörüdür. SOPEP (Shipboard Oil Pollution Emergency Plan) devreye girer. Kirlilik riski varsa derhal kıyı devletine bildirim yapılmalıdır.`,
+In a grounding, fuel leakage and pollution are the greatest risk. The SOPEP (Shipboard Oil Pollution Emergency Plan) is put into effect. If there is a risk of pollution the coastal State must be notified immediately.`,
     bulletPoints: [
       "İlk adım: makineyi durdur, zemin hasarını artırma",
       "Tank sounding ile su girişi kontrol edilir",
@@ -2760,8 +2762,8 @@ Karaya oturma durumunda yakıt sızıntısı ve çevre kirliliği en büyük ris
       "SOPEP: yakıt sızıntısı acil eylem planı",
     ],
     warnings: [
-      "Oturma durumunda makine gücü kullanmadan önce zemin ve hasar durumu değerlendirilmeli",
-      "Kontrolsüz refloating girişimi gemide ek hasara yol açabilir",
+      "When aground, the ground and the damage must be assessed before using engine power",
+      "An uncontrolled refloating attempt can cause further damage to the ship",
     ],
   },
 
@@ -2771,25 +2773,25 @@ Karaya oturma durumunda yakıt sızıntısı ve çevre kirliliği en büyük ris
   "colreg-basic": {
     title: "COLREG Temel Kuralları",
     introduction: "COLREG (Collision Regulations), denizde çatışmayı önlemek amacıyla tüm gemilerin uyması gereken uluslararası kurallar bütünüdür.",
-    content: `COLREG'İN YAPISI:
+    content: `THE STRUCTURE OF THE COLREGs:
 
-COLREG 1972 (International Regulations for Preventing Collisions at Sea) beş bölüm (A-E), 38 kural ve 4 ekten (Annex I-IV) oluşur:
+COLREG 1972 (International Regulations for Preventing Collisions at Sea) consists of five parts (A-E), 38 rules and 4 annexes (I-IV):
 
-Bölüm A: Genel (Kural 1-3): Uygulama alanı ve tanımlar
-Bölüm B: Yön ve seyir kuralları (Kural 4-19): Manevra kuralları
-Bölüm C: Fenerler ve işaretler (Kural 20-31): Seyir fenerleri
-Bölüm D: Ses ve ışık sinyalleri (Kural 32-37)
-Bölüm E: Muafiyetler (Kural 38)
+Part A: General (Rules 1-3): application and definitions
+Part B: Steering and sailing rules (Rules 4-19): the manoeuvring rules
+Part C: Lights and shapes (Rules 20-31): navigation lights
+Part D: Sound and light signals (Rules 32-37)
+Part E: Exemptions (Rule 38)
 
-KRİTİK KURALLAR:
+THE CRITICAL RULES:
 
-Kural 5 - Gözcülük: Her zaman uygun gözcülük yapılacaktır.
-Kural 7 - Çatışma tehlikesi: Kerteriz değişmiyorsa çatışma tehlikesi vardır.
-Kural 8 - Çatışmadan kaçınma: Manevra erken, belirgin ve geniş açıyla yapılacaktır.
-Kural 13 - Geçme (Overtaking): Geçen gemi yol vermekle yükümlüdür.
-Kural 14 - Karşı karşıya geliş: Her iki gemi sancağa döner.
-Kural 15 - Çaprazlama: Sancak tarafından gelen gemiye yol verilir.
-Kural 18 - Gemiler arası sorumluluk: Manevra kabiliyetine göre öncelik sırası.`,
+Rule 5 – Look-out: a proper look-out shall be maintained at all times.
+Rule 7 – Risk of collision: if the bearing does not appreciably change, risk of collision exists.
+Rule 8 – Action to avoid collision: action shall be positive, made in ample time and be readily apparent.
+Rule 13 – Overtaking: the overtaking vessel shall keep out of the way.
+Rule 14 – Head-on situation: both vessels alter course to starboard.
+Rule 15 – Crossing situation: the vessel which has the other on her starboard side shall keep out of the way.
+Rule 18 – Responsibilities between vessels: the order of priority according to manoeuvrability.`,
     bulletPoints: [
       "Kural 7: kerteriz değişmiyorsa çatışma tehlikesi var",
       "Kural 8: manevra erken, belirgin ve geniş açıyla",
@@ -2805,49 +2807,49 @@ Kural 18 - Gemiler arası sorumluluk: Manevra kabiliyetine göre öncelik sıras
     title: "IALA Şamandıra Sistemi",
     introduction: "IALA (International Association of Marine Aids to Navigation) şamandıra sistemi, seyir yardımcılarının dünya genelinde standart olarak uygulanmasını sağlar.",
     image: "/diagrams/seamanship/kardinal-samandiralar.svg",
-    content: `IALA BÖLGELERİ:
+    content: `IALA REGIONS:
 
-Bölge A: Avrupa, Afrika, Asya'nın büyük bölümü, Avustralya
-Bölge B: Kuzey/Güney Amerika, Japonya, Kore, Filipinler
+Region A: Europe, Africa, most of Asia, Australia
+Region B: North/South America, Japan, Korea, the Philippines
 
-İki bölge arasındaki fark, yanal (lateral) işaretlerin renk anlamlarının ters olmasıdır.
+The difference between the two regions is that the colour meanings of the lateral marks are reversed.
 
-ŞAMANDIRA TİPLERİ:
+TYPES OF BUOY:
 
-1. Yanal İşaretler (Lateral Marks):
-   Bölge A: Kırmızı = iskele (sol), Yeşil = sancak (sağ) [limana girerken]
-   Bölge B: Tam tersi
+1. Lateral marks:
+   Region A: red = port hand, green = starboard hand [when entering harbour]
+   Region B: exactly the reverse
 
-2. Kardinal İşaretler (Cardinal Marks): Sarı-siyah renkli; tepe işareti (topmark) iki siyah koniden oluşur. Koni yönü hangi yöne "geçileceğini" gösterir.
-   Kuzey: İki koni de yukarı bakar (▲▲); siyah üstte, sarı altta → tehlikenin kuzeyinden geç.
-   Güney: İki koni de aşağı bakar (▼▼); sarı üstte, siyah altta → güneyinden geç.
-   Doğu: Koniler tabana taban, uçları ayrık (▲▼); siyah-sarı-siyah → doğusundan geç.
-   Batı: Koniler uç uca, "kadeh" şekli (▼▲); sarı-siyah-sarı → batısından geç.
+2. Cardinal marks: black and yellow; the topmark consists of two black cones. The direction of the cones shows which side to pass.
+   North: both cones point up (▲▲); black above, yellow below → pass to the north of the danger.
+   South: both cones point down (▼▼); yellow above, black below → pass to the south.
+   East: cones base to base, points apart (▲▼); black-yellow-black → pass to the east.
+   West: cones point to point, a "wine glass" shape (▼▲); yellow-black-yellow → pass to the west.
 
-3. Ayrılmış Tehlike İşareti (Isolated Danger): Siyah-kırmızı-siyah yatay çizgili. Tehlike üzerinde konumlandırılır.
+3. Isolated danger mark: black with red horizontal bands. It is placed on the danger itself.
 
-4. Güvenli Su İşareti (Safe Water): Kırmızı-beyaz dikey çizgili. Güvenli su bölgesini gösterir. Yaklaşma işareti olarak kullanılır. Işığı beyazdır; Iso, Oc, LFl 10s veya Mo(A) karakterinde olur.
+4. Safe water mark: red and white vertical stripes. It marks safe water. Used as a landfall mark. Its light is white; Iso, Oc, LFl 10s or Mo(A).
 
-5. Özel İşaret (Special Mark): Sarı renkli, tepe işareti sarı X. Kablo sahası, atış alanı, ölçüm cihazı (ODAS), yarış parkuru gibi özel alan sınırlarını belirtir. Seyir tehlikesi bildirmez.
+5. Special mark: yellow, with a yellow X topmark. It marks the limits of special areas such as cable routes, firing ranges, data collection buoys (ODAS) and racecourses. It does not indicate a navigational danger.
 
-6. Acil Batık İşareti (Emergency Wreck Marking Buoy — EWMB): 2006'da sisteme eklendi. Mavi ve sarı DİKEY şeritli gövde, tepesinde dik duran sarı haç (+). Işığı dönüşümlü mavi-sarı: Al Oc BuY 3s (1 sn mavi, 0.5 sn karanlık, 1 sn sarı, 0.5 sn karanlık). Yeni tespit edilmiş, henüz haritaya ve seyir ihbarlarına işlenmemiş bir batığı GEÇİCİ olarak işaretler; kalıcı işaretleme yapılınca kaldırılır. Mavi-sarı renk çifti başka hiçbir IALA işaretinde kullanılmaz.
+6. Emergency Wreck Marking Buoy (EWMB): added to the system in 2006. A body with blue and yellow VERTICAL stripes and an upright yellow cross (+) as a topmark. Its light alternates blue and yellow: Al Oc BuY 3s (1 s blue, 0.5 s dark, 1 s yellow, 0.5 s dark). It marks a newly discovered wreck TEMPORARILY, before it has been charted and promulgated in navigational warnings; it is removed once permanent marking is in place. The blue/yellow colour pair is used on no other IALA mark.
 
-LATERAL İŞARETLERİN BÖLGEYE GÖRE DEĞİŞİMİ:
+HOW THE LATERAL MARKS CHANGE BY REGION:
 
-Bölge A (limana girerken):
-   İskelede: KIRMIZI, silindirik (can) gövde, kırmızı silindir tepe işareti, kırmızı ışık
-   Sancakta: YEŞİL, konik gövde, yeşil koni tepe işareti (ucu yukarı), yeşil ışık
+Region A (entering harbour):
+   To port: RED, cylindrical (can) shape, red can topmark, red light
+   To starboard: GREEN, conical shape, green cone topmark (point up), green light
 
-Bölge B (limana girerken) — renkler tam ters:
-   İskelede: YEŞİL, silindirik (can) gövde, yeşil silindir tepe işareti, yeşil ışık
-   Sancakta: KIRMIZI, konik gövde, kırmızı koni tepe işareti, kırmızı ışık
-   Amerikan denizcilerinin ezberi: "red right returning" — dönüşte kırmızı sancakta.
+Region B (entering harbour) — the colours are exactly reversed:
+   To port: GREEN, cylindrical (can) shape, green can topmark, green light
+   To starboard: RED, conical shape, red cone topmark, red light
+   The American seaman's mnemonic: "red right returning" — red to starboard when returning.
 
-DİKKAT: Bölge değişse de GÖVDE BİÇİMİ değişmez. İskele işareti her iki bölgede de silindirik (can), sancak işareti her iki bölgede de koniktir. Bu yüzden renk okunamadığında (gece, sis, uzak mesafe) biçim ve tepe işareti hâlâ doğru bilgiyi verir.
+NOTE: the SHAPE does not change between regions. The port hand mark is cylindrical (can) in both regions and the starboard hand mark is conical in both. So when the colour cannot be made out (at night, in fog or at a distance), the shape and topmark still give the right information.
 
-TERCİHLİ KANAL (PREFERRED CHANNEL) İŞARETLERİ:
+PREFERRED CHANNEL MARKS:
 
-Kanal ikiye ayrıldığında kullanılır. Gövde rengi işaretin hangi tarafta bırakılacağını, üzerindeki geniş bant ise tercihli (ana) kanalın yönünü söyler. Işıkları kompozit grup çakardır: Fl (2+1).`,
+Used where a channel divides. The body colour tells you which side to leave the mark, and the broad band on it shows the direction of the preferred (main) channel. Their lights are composite group flashing: Fl (2+1).`,
     bulletPoints: [
       "Bölge A: kırmızı = iskele, yeşil = sancak (limana girerken)",
       "Bölge B: renk anlamları ters — 'red right returning'",
@@ -2866,31 +2868,31 @@ Kanal ikiye ayrıldığında kullanılır. Gövde rengi işaretin hangi tarafta 
   "flag-signals": {
     title: "Uluslararası Bayrak İşaretleri",
     introduction: "Uluslararası İşaret Bayrakları (International Code of Signals), gemiler arasında evrensel bir görsel haberleşme sistemidir.",
-    content: `BAYRAK SİSTEMİ:
+    content: `THE FLAG SYSTEM:
 
-26 harf bayrağı, 10 sayı flaması, 3 ikame flaması ve 1 yanıt flamasından oluşur. Her bayrak tek başına veya kombinasyonlarla mesaj iletir.
+It consists of 26 alphabet flags, 10 numeral pennants, 3 substitute pennants and 1 answering pennant. Each flag conveys a message on its own or in combination.
 
-TEK BAYRAK ANLAMI (EN ÖNEMLİLER):
+SINGLE-LETTER MEANINGS (THE MOST IMPORTANT):
 
-A (Alfa): Dalgıcım var, uzak durunuz
-B (Bravo): Tehlikeli yük alıyorum/boşaltıyorum/taşıyorum
-C (Charlie): Evet (olumlu)
-D (Delta): Manevra güçlüğüm var, uzak durunuz
-G (Golf): Kılavuz istiyorum
-H (Hotel): Kılavuzum var
-L (Lima): Derhal durunuz
-N (November): Hayır (olumsuz)
-O (Oscar): Denize adam düştü
-P (Papa): Tüm personel gemiye! (Blue Peter - hareket hazırlığı)
-Q (Quebec): Gemim sağlıklı, serbest pratika istiyorum
-U (Uniform): Tehlikeye doğru gidiyorsunuz
-W (Whiskey): Tıbbi yardıma ihtiyacım var
+A (Alfa): I have a diver down; keep well clear
+B (Bravo): I am taking in, discharging or carrying dangerous goods
+C (Charlie): Yes (affirmative)
+D (Delta): Keep clear of me; I am manoeuvring with difficulty
+G (Golf): I require a pilot
+H (Hotel): I have a pilot on board
+L (Lima): You should stop your vessel instantly
+N (November): No (negative)
+O (Oscar): Man overboard
+P (Papa): All persons should report on board (the Blue Peter – about to proceed to sea)
+Q (Quebec): My vessel is healthy and I request free pratique
+U (Uniform): You are running into danger
+W (Whiskey): I require medical assistance
 
-ÖNEMLİ KOMBİNASYONLAR:
+IMPORTANT COMBINATIONS:
 
-NC: Tehlike altındayım, acil yardım istiyorum
-ZD: Kılavuz istiyorum (Suez)
-ZW: Römorkör istiyorum`,
+NC: I am in distress and require immediate assistance
+ZD: I require a pilot (Suez)
+ZW: I require a tug`,
     bulletPoints: [
       "A (Alfa): dalgıcım var, B (Bravo): tehlikeli yük",
       "O (Oscar): denize adam düştü, P (Papa): tüm personel gemiye",
@@ -2901,29 +2903,29 @@ ZW: Römorkör istiyorum`,
   "sound-signals": {
     title: "Ses İşaretleri",
     introduction: "COLREG Kural 34 ve 35, gemilerin manevra ve kısıtlı görüşte kullanacağı ses işaretlerini belirler.",
-    content: `MANEVRA İŞARETLERİ (Kural 34):
+    content: `MANOEUVRING SIGNALS (Rule 34):
 
-Bir kısa düdük (•): Rotamı sancağa değiştiriyorum
-İki kısa düdük (••): Rotamı iskele tarafına değiştiriyorum
-Üç kısa düdük (•••): Makinelerimi tornistana alıyorum
+One short blast (•): I am altering my course to starboard
+Two short blasts (••): I am altering my course to port
+Three short blasts (•••): I am operating astern propulsion
 
-Dar kanal/geçitte:
-İki uzun + bir kısa (— — •): Sancak tarafınızdan geçmek istiyorum
-İki uzun + iki kısa (— — ••): İskele tarafınızdan geçmek istiyorum
-Uzun + kısa + uzun + kısa (— • — •): Kabul ediyorum (yanıt)
+In a narrow channel:
+Two prolonged + one short (— — •): I intend to overtake you on your starboard side
+Two prolonged + two short (— — ••): I intend to overtake you on your port side
+Prolonged + short + prolonged + short (— • — •): agreement (the reply)
 
-KISITLI GÖRÜŞ İŞARETLERİ (Kural 35):
+SIGNALS IN RESTRICTED VISIBILITY (Rule 35):
 
-Makine ile seyir: Her 2 dakikada bir uzun düdük (—)
-Makine ile seyir ama duruyor: Her 2 dakikada iki uzun düdük (— —)
-Manevra kısıtlı/derin draftlı/yelkenli: Her 2 dakikada bir uzun + iki kısa (— ••)
-Çekilmekte olan gemi: Çeken gemiden hemen sonra bir uzun + üç kısa (— •••)
-Demirli gemi: Her dakika hızlı çan çalma (5 sn). >100 m gemilerde pruva çan + kıça gong
+A power-driven vessel making way: one prolonged blast every 2 minutes (—)
+A power-driven vessel under way but stopped: two prolonged blasts every 2 minutes (— —)
+A vessel restricted in her ability to manoeuvre/constrained by her draught/under sail: one prolonged plus two short every 2 minutes (— ••)
+A vessel being towed: immediately after the towing vessel, one prolonged plus three short (— •••)
+A vessel at anchor: rapid ringing of the bell for 5 seconds every minute. On ships over 100 m, the bell forward plus a gong aft
 
-ŞÜPHE / İKAZ İŞARETİ (Kural 34(d)): Beş veya daha fazla kısa ve hızlı düdük.
-Bu bir TEHLİKE (distress) işareti DEĞİLDİR; karşı geminin niyetini anlamadığını
-veya çatışmadan kaçınmak için yeterli önlem alındığından şüphe duyulduğunu bildirir.
-Tehlike işaretleri ayrı bir konudur ve Kural 37 ile Ek IV'te düzenlenir.`,
+THE DOUBT / WARNING SIGNAL (Rule 34(d)): at least five short and rapid blasts.
+This is NOT a distress signal; it indicates that you do not understand the other vessel's intentions,
+or that you doubt whether sufficient action is being taken to avoid collision.
+Distress signals are a separate matter, dealt with in Rule 37 and Annex IV.`,
     bulletPoints: [
       "• = sancağa, •• = iskeleye, ••• = tornistan",
       "Kısıtlı görüşte her 2 dakikada uzun düdük (makine ile seyir)",
@@ -2934,30 +2936,30 @@ Tehlike işaretleri ayrı bir konudur ve Kural 37 ile Ek IV'te düzenlenir.`,
   "distress-signals": {
     title: "Tehlike İşaretleri",
     introduction: "Tehlike işaretleri, geminin ciddi ve yakın tehlike altında olduğunu belirtmek için kullanılan uluslararası standart sinyallerdir.",
-    content: `TEHLİKE İŞARETLERİ (COLREG Ek IV):
+    content: `DISTRESS SIGNALS (COLREG Annex IV):
 
-1. Sürekli ses veren herhangi bir sis sinyali cihazı
-2. Kısa aralıklarla ateşlenen silah (dakikada bir)
-3. Kırmızı yıldız fişeği
-4. SOS sinyali (herhangi bir yolla)
-5. MAYDAY telsiz çağrısı (VHF Kanal 16)
-6. NC bayrak sinyali
-7. Üzerinde kare ve daire olan bayrak
-8. Güvertede kontrollü ateş
-9. Kırmızı paraşüt fişeği
-10. Turuncu renkli duman sinyali
-11. Kolları yanlara yavaşça kaldırıp indirme
-12. DSC (Digital Selective Calling) tehlike alarmı
-13. EPIRB aktivasyonu
-14. Onaylanmış radar transponder sinyali (SART)
+1. A continuous sounding with any fog-signalling apparatus
+2. A gun fired at intervals of about a minute
+3. Rockets or shells throwing red stars
+4. The SOS signal (by any means)
+5. A MAYDAY radio call (VHF Channel 16)
+6. The NC flag signal
+7. A signal consisting of a square flag with a ball above or below it
+8. Flames on the vessel (a controlled fire on deck)
+9. A rocket parachute flare showing a red light
+10. An orange-coloured smoke signal
+11. Slowly and repeatedly raising and lowering the arms outstretched to each side
+12. A DSC (Digital Selective Calling) distress alert
+13. Activation of an EPIRB
+14. An approved radar transponder signal (SART)
 
-MAYDAY PROSEDÜRÜ:
+THE MAYDAY PROCEDURE:
 
-'MAYDAY MAYDAY MAYDAY - This is [gemi adı × 3] - MAYDAY [gemi adı] - My position is [pozisyon] - [tehlike türü] - [yardım türü] - [personel sayısı] - [diğer bilgiler] - Over'
+"MAYDAY MAYDAY MAYDAY – This is [ship's name × 3] – MAYDAY [ship's name] – My position is [position] – [nature of distress] – [assistance required] – [number of persons on board] – [any other information] – Over"
 
-TEHLİKE İŞARETLERİNİN KULLANIMI:
+THE USE OF DISTRESS SIGNALS:
 
-Tehlike işaretleri yalnızca gerçek tehlike durumunda kullanılabilir. Yanlış kullanım yasaktır ve cezai yaptırımı vardır.`,
+Distress signals may only be used in a genuine distress situation. Their misuse is prohibited and carries penalties.`,
     bulletPoints: [
       "MAYDAY: VHF Kanal 16, en yüksek öncelikli tehlike çağrısı",
       "Kırmızı paraşüt fişeği: geniş alanda görülebilen tehlike sinyali",
@@ -2965,42 +2967,42 @@ Tehlike işaretleri yalnızca gerçek tehlike durumunda kullanılabilir. Yanlı�
       "Tehlike işaretlerinin yanlış kullanımı suçtur",
     ],
     warnings: [
-      "Tehlike işaretleri yalnızca ciddi ve yakın tehlike durumunda kullanılmalıdır",
+      "Distress signals must only be used in a situation of grave and imminent danger",
     ],
   },
   "ism-safety-culture": {
     title: "ISM Code ve Emniyet Kültürü",
     introduction: "ISM Code (International Safety Management Code), denizde can ve mal güvenliğini sağlamak ve çevre kirliliğini önlemek için uluslararası emniyet yönetim standardıdır.",
-    content: `ISM CODE YAPISI:
+    content: `THE STRUCTURE OF THE ISM CODE:
 
-ISM Code, SOLAS Bölüm IX ile zorunlu hale getirilmiştir. İki temel belge üretir:
+The ISM Code is made mandatory by SOLAS Chapter IX. It produces two fundamental documents:
 
-DOC (Document of Compliance): Şirketin emniyet yönetim sisteminin uygunluğunu belgeler. Bayrak devleti tarafından şirkete verilir.
+DOC (Document of Compliance): certifies the compliance of the company's safety management system. It is issued to the company by the flag State.
 
-SMC (Safety Management Certificate): Geminin SMS'e (Safety Management System) uygun olarak işletildiğini belgeler. Gemiye verilir.
+SMC (Safety Management Certificate): certifies that the ship is operated in accordance with the SMS (Safety Management System). It is issued to the ship.
 
-SMS BİLEŞENLERİ:
+COMPONENTS OF THE SMS:
 
-1. Emniyet ve çevre koruma politikası
-2. Görev ve yetki tanımları
-3. DPA (Designated Person Ashore) atanması
-4. Kaptan'ın yetki ve sorumluluğu
-5. Kaynaklar ve personel
-6. Gemi operasyonları için planlar
-7. Acil durum hazırlığı
-8. Uygunsuzluk, kaza ve tehlikeli durumların raporlanması
-9. Bakım planlaması (PMS)
-10. Dokümantasyon
-11. Şirket doğrulama, denetim ve değerlendirme
+1. Safety and environmental protection policy
+2. Definition of duties and authority
+3. Appointment of a DPA (Designated Person Ashore)
+4. The master's authority and responsibility
+5. Resources and personnel
+6. Plans for shipboard operations
+7. Emergency preparedness
+8. Reporting of non-conformities, accidents and hazardous occurrences
+9. Maintenance planning (PMS)
+10. Documentation
+11. Company verification, review and evaluation
 
-EMNİYET KÜLTÜRÜ:
+SAFETY CULTURE:
 
-Emniyet kültürü, tüm seviyelerdeki personelin emniyeti öncelikli değer olarak benimsemesidir. 'Near miss' (ramak kala) raporlama, risk değerlendirmesi, toolbox meeting ve güvenlik toplantıları emniyet kültürünün araçlarıdır.
+A safety culture is one in which personnel at every level treat safety as the overriding value. Near-miss reporting, risk assessment, toolbox meetings and safety meetings are the tools of a safety culture.
 
-Etkili emniyet kültürünün göstergeleri:
-- Personel uygunsuzlukları ve near miss'leri cezalandırma korkusu olmadan raporlar
-- Risk değerlendirmesi tüm operasyonlar öncesi yapılır
-- Üst yönetim emniyete kaynakayırır ve destekler`,
+The signs of an effective safety culture:
+- Personnel report non-conformities and near misses without fear of punishment
+- A risk assessment is made before every operation
+- Senior management allocates resources to safety and supports it`,
     bulletPoints: [
       "DOC: şirkete verilen uygunluk belgesi",
       "SMC: gemiye verilen emniyet yönetim sertifikası",
@@ -3020,32 +3022,32 @@ Etkili emniyet kültürünün göstergeleri:
   "helm-orders": {
     title: "Dümen Komutları ve Standart Manevra Emirleri",
     introduction: "Köprüüstünde manevra sırasında dümenci (helmsman) ile komutu veren zabit (conning officer) arasındaki iletişim, yanlış anlaşılmayı önlemek için standart dümen komutları (helm orders) ve kapalı döngü teyit ile yürütülür. Komutlar IMO SMCP ile standartlaştırılmıştır.",
-    content: `STANDART DÜMEN KOMUTLARI:
+    content: `STANDARD HELM ORDERS:
 
-- "Hard a-port / Hard a-starboard": dümen sonuna kadar iskele/sancak.
-- "Port / Starboard twenty (ten/five)": belirtilen derecede iskele/sancak dümen.
-- "Midships": dümeni ortala (sıfır).
-- "Steady / Steady as she goes": gemiyi o anki baş yönünde tut.
-- "Ease to ten/five": dümen açısını belirtilen değere azalt.
-- "Meet her": dönüşü durdurmak için karşı dümen ver.
-- "Nothing to port / Nothing to starboard": o tarafa düşmesine izin verme.
-- "Steer one-eight-zero": belirtilen pruvaya (rakam rakam) dümen tut.
+- "Hard a-port / Hard a-starboard": helm hard over to port/starboard.
+- "Port / Starboard twenty (ten/five)": the stated number of degrees of port/starboard helm.
+- "Midships": centre the rudder (zero).
+- "Steady / Steady as she goes": keep the ship on her present heading.
+- "Ease to ten/five": reduce the rudder angle to the stated value.
+- "Meet her": apply opposite helm to check the swing.
+- "Nothing to port / Nothing to starboard": do not let her go that way.
+- "Steer one-eight-zero": steer the stated heading (digit by digit).
 
-KAPALI DÖNGÜ (CLOSED-LOOP) TEYİT:
+CLOSED-LOOP CONFIRMATION:
 
-Dümenci her komutu yüksek sesle tekrarlar (read-back), uygular ve uygulandığını bildirir (örn. "Hard a-starboard" → uygular → "Wheel hard a-starboard"; ortalı/istenen başa gelince "Steady on one-eight-zero"). Bu döngü, komutun doğru alındığını ve uygulandığını garanti eder.
+The helmsman repeats every order aloud (read-back), executes it and reports that it has been executed (e.g. "Hard a-starboard" → executes → "Wheel hard a-starboard"; and on reaching the ordered heading, "Steady on one-eight-zero"). This loop guarantees that the order was received and executed correctly.
 
-SAYILARIN OKUNUŞU:
+HOW NUMBERS ARE SPOKEN:
 
-Pruva ve dümen açıları rakam rakam okunur (örn. 5 derece "five", 180 "one-eight-zero") — yanlış anlamayı önlemek için.
+Headings and rudder angles are spoken digit by digit (e.g. 5 degrees "five", 180 "one-eight-zero") – to prevent misunderstanding.
 
-MAKİNE (TELGRAF) KOMUTLARI:
+ENGINE (TELEGRAPH) ORDERS:
 
-Hız için telgraf komutları kullanılır (Dead Slow / Slow / Half / Full Ahead-Astern, Stop). Manevra başlangıcında dümenci ve makine arasında komut disiplini test edilir (steering gear testi dahil).
+Telegraph orders are used for speed (Dead Slow / Slow / Half / Full Ahead-Astern, Stop). At the start of a manoeuvre the discipline of orders between the helmsman and the engine room is tested (including the steering gear test).
 
-SORUMLULUK:
+RESPONSIBILITY:
 
-Conning officer net ve tek komut verir; aynı anda yalnız bir kişi komut verir. Pilot gemideyken bile sorumluluk kaptandadır; komutlar yine standart biçimde verilir ve teyit edilir.`,
+The conning officer gives clear, single orders; only one person gives orders at any time. Even with a pilot on board the responsibility remains with the master; orders are still given and acknowledged in the standard form.`,
     bulletPoints: [
       "Komutlar IMO SMCP'ye göre standarttır (Hard a-port, Midships, Steady...).",
       "Dümenci her komutu tekrarlar ve uygulandığını bildirir (closed-loop).",
@@ -3058,32 +3060,32 @@ Conning officer net ve tek komut verir; aynı anda yalnız bir kişi komut verir
       "Pilot gemideyken de sorumluluk kaptandadır.",
     ],
     warnings: [
-      "Belirsiz/çift komut çatışma veya karaya oturmaya yol açabilir",
-      "Komut teyidi (read-back) atlanmamalıdır",
+      "An ambiguous or duplicated order can lead to a collision or a grounding",
+      "The read-back of an order must never be omitted",
     ],
   },
   "mob-maneuvers": {
     title: "Denize Adam Düştü Manevraları (Williamson/Anderson/Scharnow)",
     introduction: "Denize adam düşmesi (Man Overboard – MOB) durumunda gemiyi en kısa sürede kazazedeye geri getirmek için standart dönüş manevraları kullanılır. Doğru manevra seçimi; görüş, durumun fark edilme zamanı ve geminin manevra kabiliyetine bağlıdır.",
-    content: `İLK ANDA YAPILACAKLAR:
+    content: `IMMEDIATE ACTIONS:
 
-1. "Man overboard!" diye bağır, köprüyü uyar.
-2. Dümeni kazazedenin düştüğü tarafa bas (pervane akıntısını kişiden uzaklaştırmak için).
-3. Can simidini (ışıklı/dumanlı) derhal denize at — referans noktası oluşturur.
-4. MOB butonuna bas (GPS mevkii işaretlenir), gözcü ata (kişiyi gözden kaybetme).
-5. Genel alarm, makine stand-by, kurtarma botu ekibini hazırla, çevre gemileri uyar.
+1. Shout "Man overboard!" and alert the bridge.
+2. Put the helm over towards the side the person fell from (to swing the propeller away from them).
+3. Throw a lifebuoy (with light/smoke) into the water at once – it provides a datum.
+4. Press the MOB button (marking the GPS position) and post a lookout (do not lose sight of the person).
+5. Sound the general alarm, put the engine on stand-by, prepare the rescue boat crew and warn ships in the vicinity.
 
-DÖNÜŞ MANEVRALARI:
+RECOVERY MANOEUVRES:
 
-- Williamson Turn: Dümen olay tarafına basılır; pruva ilk rotadan ~60° saptıktan sonra dümen karşı tarafa sonuna kadar basılır; gemi eski izine (track) ters yönde döner. Görüşün kısıtlı olduğu veya kazazedenin gözden kaybolduğu durumlarda en güvenilirdir; gemiyi tam ters rotada eski iz üzerine getirir. En kesin ama nispeten yavaştır.
+- Williamson Turn: the helm is put over towards the casualty; once the head has swung about 60° from the original course, the helm is put hard over the other way; the ship comes back onto her original track on the reciprocal course. It is the most reliable manoeuvre in restricted visibility or when the casualty has been lost from sight; it brings the ship back exactly onto her old track. The most accurate but relatively slow.
 
-- Anderson Turn (tek dönüş): Dümen olay tarafına sonuna kadar basılır ve gemi ~250° dönerek doğrudan kazazedeye yönelir. En hızlı dönüştür; kazazede görülüyorsa ve gemi çevik ise idealdir, ancak yaklaşmada hassasiyet gerektirir.
+- Anderson Turn (single turn): the helm is put hard over towards the casualty and the ship turns through about 250° to head straight for them. It is the fastest turn; ideal when the casualty is in sight and the ship is handy, but it demands precision on the final approach.
 
-- Scharnow Turn: Kazazede bir süre önce düşmüş ve gemiden uzaktaysa kullanılır; gemiyi kendi dümen suyu (wake) üzerine geri getirir. Olay hemen fark edilmemişse uygundur; anlık müdahale için uygun değildir.
+- Scharnow Turn: used when the casualty went overboard some time earlier and is well astern; it brings the ship back onto her own wake. Suitable when the incident was not noticed immediately; it is not suitable for an immediate response.
 
-YAKLAŞMA VE KURTARMA:
+APPROACH AND RECOVERY:
 
-Kazazedeye rüzgârüstünden yaklaşılıp gemi rüzgâraltında siper olacak şekilde durdurulur; kurtarma botu veya kurtarma donanımıyla alınır. IAMSAR ve gemi prosedürleri esas alınır.`,
+The approach is made from upwind and the ship is stopped so that she provides a lee for the casualty; they are recovered by the rescue boat or with rescue equipment. IAMSAR and the ship's procedures govern.`,
     bulletPoints: [
       "İlk an: dümeni olay tarafına bas, can simidi at, MOB butonu, gözcü.",
       "Williamson: eski iz üzerine ters rota; kısıtlı görüş/gözden kayıpta en güvenilir.",
@@ -3096,35 +3098,35 @@ Kazazedeye rüzgârüstünden yaklaşılıp gemi rüzgâraltında siper olacak �
       "Kazazedeye rüzgârüstünden yaklaşılır; gemi siper olur.",
     ],
     warnings: [
-      "Gözcü kazazedeyi sürekli işaret etmeli; gözden kaybetmek kurtarmayı zorlaştırır",
-      "Scharnow anlık müdahale için uygun değildir",
+      "The lookout must point continuously at the casualty; losing sight of them makes recovery much harder",
+      "The Scharnow turn is not suitable for an immediate response",
     ],
   },
   "ship-handling-tugs": {
     title: "Yanaşma/Kalkış Manevraları ve Römorkör Kullanımı",
     introduction: "Liman manevralarında (yanaşma/berthing ve kalkış/unberthing) gemi; römorkörler, baş/kıç iticiler (thruster), halatlar ve makine/dümen kullanımıyla kontrol edilir. Rüzgâr, akıntı ve dönme noktası (pivot point) etkileri dikkatle yönetilir.",
-    content: `DÖNME NOKTASI (PIVOT POINT):
+    content: `THE PIVOT POINT:
 
-Gemi döndüğünde etrafında döndüğü nokta ileri harekette pruvaya yakın, geri harekette kıça yakındır. Dümen ve römorkör kuvvetlerinin yarattığı dönme momenti pivot point'e göre değerlendirilir.
+The point about which the ship turns lies close to the bow when going ahead and close to the stern when going astern. The turning moment produced by the rudder and the tugs is assessed relative to the pivot point.
 
-RÖMORKÖR KULLANIMI:
+USING TUGS:
 
-- Römorkörler baştan ve/veya kıçtan bağlanır (make-fast) veya iter (push) / çeker (pull).
-- Yanaşmada römorkörler gemiyi iskeleye paralel getirir ve yaklaşmayı yavaşlatır.
-- Escort römorkörü, dar suda dümen/itki desteği sağlar.
-- GIRTING (girding/tripping) RİSKİ: çeken römorkörün, çekme halatı bordaya doğru açılandığında devrilmesi riskidir; ölümcül olabilir. Hız ve halat açısı kontrol edilir, gerekirse halat hızla bırakılır (gog rope/quick release).
+- Tugs are made fast forward and/or aft, or they push or pull.
+- When berthing, the tugs bring the ship parallel to the quay and slow the approach.
+- An escort tug provides steering/thrust support in confined waters.
+- THE RISK OF GIRTING (girding/tripping): the risk of a towing tug being capsized when the towline leads out over her side; it can be fatal. Speed and the angle of the line are controlled, and the line is released quickly if necessary (gog rope/quick release).
 
-İTİCİLER (THRUSTER):
+THRUSTERS:
 
-Baş/kıç iticiler, düşük hızda gemiyi yanal hareket ettirir veya döndürür; ileri hız arttıkça etkinlikleri azalır. İticiler römorkör ihtiyacını azaltabilir.
+Bow/stern thrusters move the ship sideways or turn her at low speed; their effectiveness falls as headway increases. Thrusters can reduce the need for tugs.
 
-HALAT KULLANIMI (SPRING):
+USING LINES (SPRINGS):
 
-Spring halatları (ileri/geri spring) gemiyi iskele boyunca ileri-geri hareketten alıkoyar ve makineyle birlikte gemiyi iskeleye sıvıştırma (springing on/off) için kullanılır.
+Spring lines (forward/after springs) prevent the ship moving fore and aft along the quay and are used with the engine to spring the ship on and off the berth.
 
-RÜZGÂR/AKINTI VE PLANLAMA:
+WIND/CURRENT AND PLANNING:
 
-Yanaşma planı; rüzgâr, akıntı, gelgit, su derinliği (UKC) ve iskele düzenine göre yapılır. Manevra brifingi (master/pilot exchange) ile roller ve plan paylaşılır.`,
+The berthing plan is made according to the wind, current, tide, water depth (UKC) and the layout of the berth. The roles and the plan are shared in a manoeuvring briefing (the master/pilot exchange).`,
     bulletPoints: [
       "Pivot point: ileride pruvaya, geride kıça yakındır; dönme momentini belirler.",
       "Römorkör itme/çekme/escort; girting (devrilme) riski ölümcüldür.",
@@ -3137,31 +3139,31 @@ Yanaşma planı; rüzgâr, akıntı, gelgit, su derinliği (UKC) ve iskele düze
       "Master/pilot exchange ile plan ve roller paylaşılır.",
     ],
     warnings: [
-      "Römorkör girting'i (devrilme) ani ve ölümcül olabilir",
-      "Aşırı hızda römorköre bağlanmak halat kopması/girting riskini artırır",
+      "Tug girting (capsizing) can be sudden and fatal",
+      "Connecting to a tug at excessive speed increases the risk of the line parting and of girting",
     ],
   },
   "pilot-transfer": {
     title: "Pilot Transferi ve Pilot Çarmıhı (Pilot Ladder)",
     introduction: "Kılavuz kaptanın (pilot) gemiye güvenli iniş-binişi, SOLAS Bölüm V Kural 23 ve IMO standartlarına uygun donatılan pilot çarmıhı (pilot ladder) ile sağlanır. Hatalı donatım, ölümcül düşme kazalarının başlıca nedenidir.",
-    content: `YASAL DAYANAK:
+    content: `THE LEGAL BASIS:
 
-SOLAS V/23 ve ilgili IMO kararları, pilot transfer donanımının yapısını, donatımını ve bakımını düzenler. Donanım onaylı ve işaretli olmalıdır.
+SOLAS V/23 and the related IMO resolutions govern the construction, rigging and maintenance of pilot transfer arrangements. The equipment must be approved and marked.
 
-PİLOT ÇARMIHI DONATIMI:
+RIGGING THE PILOT LADDER:
 
-- Çarmıh, su yüzeyinden binme noktasına kadar düzgün gerilmiş ve gemiye sağlam bağlanmış olmalı.
-- Basamaklar yatay, eşit aralıklı; kaymaz; bükülmeyi önleyen geniş basamaklar (spreader steps) belirli aralıklarla.
-- Yan halatlar (side ropes) sağlam ve uygun çapta.
-- Tutamak kolları (man-ropes), uygun aydınlatma (gece), can simidi (ışıklı), heaving line ve yakında bir gözcü/sorumlu zabit bulunmalı.
+- The ladder must be properly secured to the ship and hang evenly from the water surface to the point of access.
+- The steps must be horizontal, equally spaced and non-slip; wide spreader steps at defined intervals prevent twisting.
+- The side ropes must be sound and of the correct diameter.
+- Man-ropes, adequate lighting (at night), a lifebuoy (with light), a heaving line and a responsible officer/lookout close by must be provided.
 
-KOMBİNE ÇARMIH (COMBINATION LADDER):
+COMBINATION LADDER:
 
-Binme yüksekliği (freeboard) 9 metreyi aştığında, pilot çarmıhı bir borda iskelesi (accommodation ladder) ile birlikte kombine düzende kullanılır; geçiş noktası güvenli ve düzgün olmalı.
+Where the freeboard exceeds 9 metres, the pilot ladder is used together with an accommodation ladder in a combination arrangement; the transfer point must be safe and level.
 
-SORUMLU ZABİT VE GÜVENLİK:
+THE RESPONSIBLE OFFICER AND SAFETY:
 
-Transfer sırasında sorumlu bir zabit gözetim yapar; köprüyle telsiz iletişimi kurulur. Gemi pilota uygun rüzgâraltı (lee) oluşturacak şekilde manevra eder. Donanım her kullanım öncesi kontrol edilir; arızalı çarmıh kullanılmaz.`,
+A responsible officer supervises the transfer, in radio contact with the bridge. The ship manoeuvres to provide a good lee for the pilot. The equipment is checked before every use; a defective ladder must not be used.`,
     bulletPoints: [
       "SOLAS V/23 ve IMO standartlarına uygun, onaylı donanım kullanılır.",
       "Spreader steps, sağlam yan halatlar, man-rope, aydınlatma, can simidi şart.",
@@ -3174,36 +3176,36 @@ Transfer sırasında sorumlu bir zabit gözetim yapar; köprüyle telsiz iletiş
       "Transfer sırasında köprüyle iletişim ve gözetim zorunludur.",
     ],
     warnings: [
-      "Gevşek/aşınmış çarmıh veya yanlış spreader pilotun düşmesine yol açabilir",
-      "Can simidi ve heaving line transfer noktasında hazır bulundurulmalıdır",
+      "A slack or worn ladder, or an incorrect spreader, can cause the pilot to fall",
+      "A lifebuoy and a heaving line must be kept ready at the transfer point",
     ],
   },
   "means-of-access": {
     title: "Gemiye İniş-Biniş Donanımı (Gangway/Accommodation Ladder)",
     introduction: "Personel ve ziyaretçilerin gemiye güvenli iniş-binişi; borda iskelesi (accommodation ladder) veya gangway ile sağlanır. SOLAS II-1/3-9, güvenli erişim araçlarını (means of access) düzenler.",
-    content: `DONANIM TÜRLERİ:
+    content: `TYPES OF EQUIPMENT:
 
-- Accommodation ladder (borda iskelesi): gemi bordasından rıhtıma/su seviyesine inen, eğimli, korkuluklu merdiven.
-- Gangway (iskele): gemi ile rıhtım arasına yatay/az eğimli kurulan geçiş köprüsü.
+- Accommodation ladder: an inclined ladder with handrails, leading from the ship's side down to the quay or the water level.
+- Gangway: the horizontal or slightly inclined brow rigged between the ship and the quay.
 
-GÜVENLİK GEREKSİNİMLERİ (SOLAS II-1/3-9):
+SAFETY REQUIREMENTS (SOLAS II-1/3-9):
 
-- Donanım onaylı, SWL'si işaretli ve sertifikalı olmalı.
-- İki yanda sağlam korkuluk (handrail/stanchion) bulunmalı.
-- Altına güvenlik ağı (safety net) gerilmeli (düşmeyi yakalamak için).
-- Uygun aydınlatma sağlanmalı.
-- Eğim açısı güvenli sınırlar içinde tutulmalı; gelgitle birlikte ayarlanmalı.
+- The equipment must be approved, marked with its SWL and certified.
+- There must be sound handrails/stanchions on both sides.
+- A safety net must be rigged beneath it (to catch a fall).
+- Adequate lighting must be provided.
+- The angle of inclination must be kept within safe limits and adjusted with the tide.
 
-GANGWAY NÖBETİ VE EMNİYET:
+GANGWAY WATCH AND SAFETY:
 
-- Gangway watch (güverte nöbetçisi) giriş-çıkışı kontrol eder (ISPS güvenliği dâhil).
-- Geçiş noktasında ışıklı can simidi + halat (lifebuoy with line) hazır bulundurulur.
-- Aşırı yük bindirilmez (SWL/kişi sayısı sınırı).
-- Bağlantı uçları düşmeye karşı emniyete alınır; gelgit/draft değişiminde konum/eğim sık kontrol edilir.
+- The gangway watch controls access (including ISPS security).
+- A lifebuoy with a light and a line is kept ready at the access point.
+- It must not be overloaded (SWL/number of persons).
+- The ends are secured against falling; the position/angle is checked frequently as the tide and draft change.
 
-BAKIM:
+MAINTENANCE:
 
-Halatlar/teller, mafsallar, basamaklar ve korkuluklar düzenli kontrol edilir; aşınmış donanım kullanılmaz ve kayıt tutulur.`,
+The ropes/wires, hinges, steps and handrails are checked regularly; worn equipment must not be used and records are kept.`,
     bulletPoints: [
       "Accommodation ladder (eğimli merdiven) ve gangway (yatay geçiş) kullanılır.",
       "SOLAS II-1/3-9: korkuluk, güvenlik ağı, aydınlatma, işaretli SWL.",
@@ -3216,8 +3218,8 @@ Halatlar/teller, mafsallar, basamaklar ve korkuluklar düzenli kontrol edilir; a
       "Gangway nöbeti giriş-çıkış ve güvenlik kontrolünü sağlar.",
     ],
     warnings: [
-      "Güvenlik ağı/korkuluk olmadan kullanım düşme/boğulma riski yaratır",
-      "Gelgitle ayarlanmayan iskele tehlikeli eğime gelebilir",
+      "Use without a safety net or handrails creates a risk of falling and drowning",
+      "A gangway not adjusted with the tide can reach a dangerous angle",
     ],
   },
 };
@@ -3407,9 +3409,7 @@ export default function SeamanshipTopicsPage() {
                       <h3 className="font-semibold text-foreground">Adım Adım Bağ Yapımı</h3>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Tüm denizci bağları (düğümler, bağlar ve eklemeler) tek bir yerde toplanmıştır.
-                      Gerçek bağ atma videoları, adım adım yapılış, kullanım ve püf noktaları için
-                      Gemici Bağları sayfasını açın.
+                      All the seaman's knots, bends and splices are gathered in one place. For real knot-tying videos, step-by-step instructions, uses and tips, open the Sailor's Knots page.
                     </p>
                     <Link
                       to="/seamanship/knots"
