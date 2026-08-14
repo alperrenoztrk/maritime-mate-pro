@@ -725,8 +725,7 @@ const content5: ContentMap = {
       title: "CII (Karbon Yoğunluğu Göstergesi)",
       introduction: "CII, gemilerin operasyonel karbon yoğunluğunu yıllık bazda ölçen ve derecelendiren zorunlu IMO mekanizmasıdır.",
       sections: [
-        { heading: "CII Hesabı", paragraphs: [], formula: { expression: "CII = Annual CO₂ emissions / (DWT × Distance travelled)
-[gCO₂/ton·nm]", variables: ["CO₂ = Yakıt tüketimi × CF", "DWT: Deadweight", "Mesafe: Yıllık toplam seyir mesafesi"] } },
+        { heading: "CII Hesabı", paragraphs: [], formula: { expression: "CII = Annual CO₂ emissions / (DWT × Distance travelled)\n[gCO₂/ton·nm]", variables: ["CO₂ = Yakıt tüketimi × CF", "DWT: Deadweight", "Mesafe: Yıllık toplam seyir mesafesi"] } },
         { heading: "Derecelendirme", paragraphs: [], table: { headers: ["Derece", "Performans", "Aksiyon"], rows: [["A", "Çok iyi", "Teşvik"], ["B", "İyi", "Teşvik"], ["C", "Orta (referans)", "İzleme"], ["D", "Kötü", "Düzeltici aksiyon planı (3 yıl içinde C'ye getir)"], ["E", "Çok kötü", "Acil düzeltici aksiyon planı"]] } }
       ],
       keyPoints: ["CII her yıl hesaplanır ve referans değer sıkılaştırılır.", "D veya E alan gemiler SEEMP Part III'te düzeltici plan sunmalıdır.", "Slow steaming, trim optimizasyonu ve WHRS CII'yı iyileştirir."]

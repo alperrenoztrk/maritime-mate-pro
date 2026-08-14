@@ -272,8 +272,7 @@ const content4: ContentMap = {
             "COP değerinin 1'den büyük olması termodinamiğe aykırı değildir; çünkü cihaz ısıyı 'üretmez', düşük sıcaklıktan çekip yüksek sıcaklığa taşır."
           ],
           formula: {
-            expression: "COPcooling = QL / Wnet
-COPheat pump = QH / Wnet = COPcooling + 1",
+            expression: "COPcooling = QL / Wnet\nCOPheat pump = QH / Wnet = COPcooling + 1",
             variables: [
               "QL: Düşük sıcaklık tarafında çekilen ısı",
               "QH: Yüksek sıcaklık tarafına verilen ısı",
@@ -312,8 +311,7 @@ COPheat pump = QH / Wnet = COPcooling + 1",
       title: "Fourier İletim Yasası",
       introduction: "Fourier yasası, kondüksiyon (iletim) yoluyla ısı transferinin temel denklemini tanımlar. Isı akısı, sıcaklık gradyanıyla doğru orantılıdır.",
       sections: [
-        { heading: "Temel Denklem", paragraphs: ["Isı, yüksek sıcaklıktan düşük sıcaklığa doğru iletilir. Bir boyutlu kararlı iletim için:"], formula: { expression: "Q̇ = −k·A·(dT/dx)
-For a flat wall: Q̇ = k·A·(T₁−T₂)/L", variables: ["Q̇: Isı akısı (W)", "k: Isıl iletkenlik katsayısı (W/m·K)", "A: Isı transfer alanı (m²)", "L: Duvar kalınlığı (m)"] }, example: { problem: "Bir çelik kazan duvarı 25 mm kalınlığında, iç yüzey sıcaklığı 300°C, dış yüzey sıcaklığı 280°C ve alan 2 m²'dir. kçelik = 50 W/m·K. Isı akısını bulunuz.", steps: ["Q̇ = k·A·ΔT/L", "Q̇ = 50 × 2 × (300−280) / 0.025", "Q̇ = 50 × 2 × 20 / 0.025 = 80 000 W = 80 kW"], result: "The heat flux through the wall is 80 kW." } }
+        { heading: "Temel Denklem", paragraphs: ["Isı, yüksek sıcaklıktan düşük sıcaklığa doğru iletilir. Bir boyutlu kararlı iletim için:"], formula: { expression: "Q̇ = −k·A·(dT/dx)\nFor a flat wall: Q̇ = k·A·(T₁−T₂)/L", variables: ["Q̇: Isı akısı (W)", "k: Isıl iletkenlik katsayısı (W/m·K)", "A: Isı transfer alanı (m²)", "L: Duvar kalınlığı (m)"] }, example: { problem: "Bir çelik kazan duvarı 25 mm kalınlığında, iç yüzey sıcaklığı 300°C, dış yüzey sıcaklığı 280°C ve alan 2 m²'dir. kçelik = 50 W/m·K. Isı akısını bulunuz.", steps: ["Q̇ = k·A·ΔT/L", "Q̇ = 50 × 2 × (300−280) / 0.025", "Q̇ = 50 × 2 × 20 / 0.025 = 80 000 W = 80 kW"], result: "The heat flux through the wall is 80 kW." } }
       ],
       keyPoints: ["k değeri malzemeye bağlıdır: bakır ~385, çelik ~50, yalıtım ~0.04 W/m·K.", "Yalıtım malzemeleri düşük k değerine sahiptir.", "Boru ve tank yalıtım kalınlığı bu denklemle hesaplanır."]
     },
@@ -417,9 +415,7 @@ For a flat wall: Q̇ = k·A·(T₁−T₂)/L", variables: ["Q̇: Isı akısı (W
       title: "Eşanjör Verim Hesapları",
       introduction: "Isı eşanjör verimi (etkinliği), gerçekleşen ısı transferinin teorik maksimuma oranıdır.",
       sections: [
-        { heading: "ε-NTU Yöntemi", paragraphs: ["LMTD yönteminin alternatifi olan ε-NTU yöntemi, çıkış sıcaklıklarının bilinmediği durumlarda kullanılır."], formula: { expression: "ε = Qactual / Qmax
-Qmax = Cmin × (Th,in − Tc,in)
-NTU = U·A / Cmin", variables: ["Cmin: Minimum ısı kapasitesi akışı (W/K)", "C = ṁ·cp"] } }
+        { heading: "ε-NTU Yöntemi", paragraphs: ["LMTD yönteminin alternatifi olan ε-NTU yöntemi, çıkış sıcaklıklarının bilinmediği durumlarda kullanılır."], formula: { expression: "ε = Qactual / Qmax\nQmax = Cmin × (Th,in − Tc,in)\nNTU = U·A / Cmin", variables: ["Cmin: Minimum ısı kapasitesi akışı (W/K)", "C = ṁ·cp"] } }
       ],
       keyPoints: ["ε = 1 mümkün değildir; pratikte %60-90 arasındadır.", "NTU arttıkça etkinlik artar ancak azalan verimle.", "Eşanjör performans düşüşü fouling'in göstergesidir."]
     },
@@ -586,9 +582,7 @@ NTU = U·A / Cmin", variables: ["Cmin: Minimum ısı kapasitesi akışı (W/K)",
       title: "Fren Gücü (Brake Power) ve Mekanik Verim",
       introduction: "Fren gücü, krank milinden fiilen alınabilen güçtür. İndike güçten mekanik kayıpların çıkarılmasıyla bulunur.",
       sections: [
-        { heading: "Formüller", paragraphs: [], formula: { expression: "Pb = 2π × n × T / 60
-ηmec = Pb / Pi
-Pfriction = Pi − Pb", variables: ["Pb: Fren gücü (W)", "n: Devir (rpm)", "T: Tork (N·m)", "ηmek: Mekanik verim (0.85-0.95)"] }, example: { problem: "Bir motorun indike gücü 5000 kW ve mekanik verimi %90 ise fren gücü ve sürtünme gücünü bulunuz.", steps: ["Pb = ηmek × Pi = 0.90 × 5000 = 4500 kW", "Psürtünme = Pi − Pb = 5000 − 4500 = 500 kW"], result: "Brake power is 4500 kW, friction losses are 500 kW." } }
+        { heading: "Formüller", paragraphs: [], formula: { expression: "Pb = 2π × n × T / 60\nηmec = Pb / Pi\nPfriction = Pi − Pb", variables: ["Pb: Fren gücü (W)", "n: Devir (rpm)", "T: Tork (N·m)", "ηmek: Mekanik verim (0.85-0.95)"] }, example: { problem: "Bir motorun indike gücü 5000 kW ve mekanik verimi %90 ise fren gücü ve sürtünme gücünü bulunuz.", steps: ["Pb = ηmek × Pi = 0.90 × 5000 = 4500 kW", "Psürtünme = Pi − Pb = 5000 − 4500 = 500 kW"], result: "Brake power is 4500 kW, friction losses are 500 kW." } }
       ],
       keyPoints: ["Mekanik verim motorun bakım durumunu gösterir.", "Sürtünme kayıpları: yatak sürtünmesi, pompa tahrik, segman sürtünmesi.", "Torsionmeter ile şaft gücü ölçülerek fren gücü belirlenir."]
     },
