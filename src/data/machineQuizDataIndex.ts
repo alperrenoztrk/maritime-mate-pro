@@ -11,6 +11,7 @@ import { machineQuizQuestionsExt3 } from "./machineQuizDataExt3";
 import { machineQuizQuestionsExt4 } from "./machineQuizDataExt4";
 import { machineQuizQuestionsExt5 } from "./machineQuizDataExt5";
 import { machineQuizQuestionsScenario } from "./machineQuizDataScenario";
+import { machineQuizQuestionsTopicFill1 } from "./machineQuizDataTopicFill1";
 
 /**
  * Aynı konu slug'ı hem taban hem devam bankasında bulunduğundan sığ spread
@@ -32,8 +33,10 @@ const mergeBanks = (
 };
 
 /**
- * Her konu için 154 soru: taban bankadan 50, devam bankasından 100 ve vaka
- * bankasından 4 (durum verip karar sorduğu için sona eklenir).
+ * Konu başına taban bankadan 50, devam bankasından 100 ve vaka bankasından 4
+ * soru gelir (vaka soruları durum verip karar sorduğu için sona eklenir).
+ * Konu doldurma bankaları, konu başına en az 8 soru hedefini tutturmak için
+ * bunların ardından eklenir; bu yüzden her konunun toplamı 154 veya üzeridir.
  */
 export const allMachineQuizQuestions: Record<string, QuizQuestion[]> = mergeBanks(
   machineQuizQuestions,
@@ -47,6 +50,7 @@ export const allMachineQuizQuestions: Record<string, QuizQuestion[]> = mergeBank
   machineQuizQuestionsExt4,
   machineQuizQuestionsExt5,
   machineQuizQuestionsScenario,
+  machineQuizQuestionsTopicFill1,
 );
 
 export function getMachineQuizQuestions(topicSlug: string): QuizQuestion[] {

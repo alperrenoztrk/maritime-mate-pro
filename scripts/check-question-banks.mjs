@@ -60,6 +60,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataExt4.ts",
   "src/data/machineQuizDataExt5.ts",
   "src/data/machineQuizDataScenario.ts",
+  "src/data/machineQuizDataTopicFill1.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -82,6 +83,15 @@ const MACHINE_SLUGS = [
 ];
 
 const MACHINE_EXPECTED_PER_SLUG = 154;
+
+/**
+ * Konu doldurma bankalarıyla büyütülen slug'ların beklenen adedi. Bir slug'a
+ * `machineQuizDataTopicFill*` üzerinden soru eklendiğinde yeni toplam buraya
+ * yazılır; listede olmayan slug 154'te kalmaya devam eder.
+ */
+const MACHINE_EXPECTED_OVERRIDES = {
+  "cooling-hvac": 176,
+};
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
 const BETA_FILES = [
@@ -523,7 +533,11 @@ for (const file of MACHINE_FILES) {
 }
 
 for (const slug of MACHINE_SLUGS) {
-  checkBank(`machine/${slug}`, machineBank.get(slug) ?? [], MACHINE_EXPECTED_PER_SLUG);
+  checkBank(
+    `machine/${slug}`,
+    machineBank.get(slug) ?? [],
+    MACHINE_EXPECTED_OVERRIDES[slug] ?? MACHINE_EXPECTED_PER_SLUG,
+  );
 }
 
 for (const slug of machineBank.keys()) {
