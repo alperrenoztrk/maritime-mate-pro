@@ -69,6 +69,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataTopicFill7.ts",
   "src/data/machineQuizDataTopicFill8.ts",
   "src/data/machineQuizDataTopicFill9.ts",
+  "src/data/machineQuizDataTopicFill10.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -109,6 +110,7 @@ const MACHINE_EXPECTED_OVERRIDES = {
   "ship-systems": 219,
   auxiliary: 216,
   electrical: 232,
+  "environment-machine": 240,
 };
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
