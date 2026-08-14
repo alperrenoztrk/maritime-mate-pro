@@ -377,7 +377,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           },
           {
             step: "C = acos(−0.5113) = 120.75°",
-            result: "DLong > 0 olduğu için doğuya: 120.75° → S 59°15′ E",
+            result: "Since DLong > 0, to the east: 120.75° → S 59°15′ E",
           },
           {
             step: "Hakiki rota",
