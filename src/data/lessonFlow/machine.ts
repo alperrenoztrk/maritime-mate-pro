@@ -26,8 +26,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sistem, Çevre ve Sınır",
         category: MAK,
         question: "Silindir-piston düzeneğinde hareketli sınıra örnek nedir?",
-        options: ["Pistonun üst yüzeyi", "Silindir duvarları", "Çevre havası", "Krank mili"],
-        correctAnswer: 0,
+        options: ["Krank mili", "Pistonun üst yüzeyi", "Silindirin duvarları", "Çevre havası"],
+        correctAnswer: 1,
         explanation: "Pistonun üst yüzeyi hareketli sınırdır; silindir duvarları sabit sınırdır.",
       },
       {
@@ -35,8 +35,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kapalı Sistem (Kontrol Kütlesi)",
         category: MAK,
         question: "Kapalı sistemde sınırdan ne geçebilir?",
-        options: ["Yalnızca enerji (ısı/iş); kütle geçmez", "Hem kütle hem enerji geçebilmektedir", "Yalnızca kütle geçer; enerji geçmez", "Ne kütle ne de enerji geçebilmektedir"],
-        correctAnswer: 0,
+        options: ["Yalnızca kütle geçer; enerji geçmez", "Ne kütle ne de enerji geçiş yapabilmekte", "Yalnızca enerji (ısı/iş); kütle geçmez", "Hem kütle hem enerji geçebilmektedir"],
+        correctAnswer: 2,
         explanation: "Kapalı sistemde (kontrol kütlesi) kütle geçişi yoktur; yalnızca ısı ve iş geçebilir.",
       },
       {
@@ -44,8 +44,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Açık Sistem (Kontrol Hacmi)",
         category: MAK,
         question: "Aşağıdakilerden hangisi açık sisteme (kontrol hacmi) örnektir?",
-        options: ["Türbin, kompresör veya ısı eşanjörü", "Mükemmel yalıtılmış bir termos kabı", "Kapalı silindir-piston düzeneği", "Evrenin tümü (kuramsal örnek)"],
-        correctAnswer: 0,
+        options: ["Mükemmel yalıtılmış bir termos kabı", "Kapalı silindir-piston düzeneği", "Evrenin tümü (kuramsal örnek)", "Türbin, kompresör veya ısı eşanjörü"],
+        correctAnswer: 3,
         explanation: "Açık sistemde hem kütle hem enerji geçer; türbin, kompresör ve eşanjör tipik örneklerdir.",
       },
       {
@@ -53,8 +53,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yalıtılmış Sistem",
         category: MAK,
         question: "Yalıtılmış sistem için doğru olan hangisidir?",
-        options: ["Ne kütle ne enerji geçer; entropi azalmaz", "Yalnızca ısı geçer, kütle geçmemektedir", "Yalnızca kütle geçer, enerji geçmemekte", "Hem kütle hem enerji serbestçe geçmekte"],
-        correctAnswer: 0,
+        options: ["Hem kütle hem enerji serbestçe geçmekte", "Ne kütle ne enerji geçer; entropi azalmaz", "Yalnızca ısı geçer, kütle hiç geçmemektedir", "Yalnızca kütle geçer, enerji geçmemekte"],
+        correctAnswer: 1,
         explanation: "Yalıtılmış sistemde sınırdan ne kütle ne enerji geçer; ikinci yasaya göre entropisi azalmaz.",
       },
       {
@@ -62,8 +62,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Adyabatik Sistem",
         category: MAK,
         question: "Adyabatik sistem nasıl tanımlanır?",
-        options: ["Isı geçişi yok; ancak iş yapabilir", "Hiçbir biçimde iş yapmayan sistem", "Sürekli olarak ısı alan bir sistem", "Kütle geçişine açık olan sistem"],
-        correctAnswer: 0,
+        options: ["Sürekli olarak ısı alan bir sistem", "Kütle geçişine açık olan sistem", "Isı geçişi yok; ancak iş yapabilir", "Hiçbir biçimde iş yapmayan sistem"],
+        correctAnswer: 2,
         explanation: "Adyabatik sistemde sınırdan ısı geçişi yoktur; iş yapılabilir (örn. yalıtılmış silindir-piston).",
       },
     ],
@@ -81,8 +81,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Basınç",
         category: MAK,
         question: "Mutlak basınç hangi bağıntıyla bulunur?",
-        options: ["Pabs = Pgauge + Patm", "Pabs = Pgauge − Patm", "Pabs = Patm − Pgauge", "Pabs = Pgauge × Patm"],
-        correctAnswer: 0,
+        options: ["Pabs = Pgauge − Patm", "Pabs = Patm − Pgauge", "Pabs = Pgauge × Patm", "Pabs = Pgauge + Patm"],
+        correctAnswer: 3,
         explanation: "Mutlak basınç = manometrik basınç + atmosfer basıncı (Patm ≈ 1.013 bar).",
       },
       {
@@ -90,8 +90,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Basınç",
         category: MAK,
         question: "Gösterge 7.5 bar ise mutlak basınç yaklaşık kaçtır?",
-        options: ["8.513 bar", "6.487 bar", "7.5 bar", "1.013 bar"],
-        correctAnswer: 0,
+        options: ["1.013 bar", "8.513 bar", "6.487 bar", "7.5 bar"],
+        correctAnswer: 1,
         explanation: "Pabs = 7.5 + 1.013 = 8.513 bar.",
       },
       {
@@ -99,8 +99,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sıcaklık",
         category: MAK,
         question: "Termodinamik hesaplarda sıcaklık hangi ölçekte alınmalıdır?",
-        options: ["Kelvin (T = t°C + 273,15)", "Celsius (santigrat derece)", "Fahrenheit (F derecesi)", "Ölçek seçimi fark etmez"],
-        correctAnswer: 0,
+        options: ["Fahrenheit (F derecesi)", "Ölçek seçimi fark etmez", "Kelvin (T = t°C + 273,15)", "Celsius (santigrat derece)"],
+        correctAnswer: 2,
         explanation: "Oran/çarpma içeren formüllerde Kelvin zorunludur; Celsius hatalara yol açar.",
       },
       {
@@ -108,8 +108,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Hacim ve Özgül Hacim",
         category: MAK,
         question: "Özgül hacim (v) hangi bağıntıyla ifade edilir?",
-        options: ["v = V/m = 1/ρ (yoğunluk tersi)", "v = m/V (yoğunluğun kendisi)", "v = ρ × V (çarpım değeri)", "v = P/T (basınç-sıcaklık oranı)"],
-        correctAnswer: 0,
+        options: ["v = m/V (yoğunluğun kendisi)", "v = ρ × V (çarpım değeri)", "v = P/T (basınç-sıcaklık oranı)", "v = V/m = 1/ρ (yoğunluk tersi)"],
+        correctAnswer: 3,
         explanation: "Özgül hacim birim kütlenin hacmidir ve yoğunluğun tersidir: v = V/m = 1/ρ.",
       },
     ],
@@ -127,8 +127,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İç Enerji (U)",
         category: MAK,
         question: "Kapalı sistemde birinci yasa nasıl yazılır?",
-        options: ["Q − W = ΔU", "Q + W = ΔU", "ΔU = Q × W", "ΔU = 0 (daima)"],
-        correctAnswer: 0,
+        options: ["ΔU = 0 (daima)", "Q − W = ΔU", "Q + W = ΔU", "ΔU = Q × W"],
+        correctAnswer: 1,
         explanation: "Q − W = ΔU; Q sisteme verilen ısı, W sistemin yaptığı iştir.",
       },
       {
@@ -136,8 +136,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İç Enerji (U)",
         category: MAK,
         question: "İç enerji değişimi hangi bağıntıyla hesaplanır?",
-        options: ["ΔU = m · cv · ΔT", "ΔU = m · cp · ΔT", "ΔU = P · V", "ΔU = m · ΔT / cv"],
-        correctAnswer: 0,
+        options: ["ΔU = P · V", "ΔU = m · ΔT / cv", "ΔU = m · cv · ΔT", "ΔU = m · cp · ΔT"],
+        correctAnswer: 2,
         explanation: "ΔU = m·cv·ΔT (sabit hacim özgül ısısı kullanılır).",
       },
       {
@@ -145,8 +145,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Entalpi (H)",
         category: MAK,
         question: "Entalpi nasıl tanımlanır?",
-        options: ["H = U + PV", "H = U − PV", "H = P/V", "H = U × T"],
-        correctAnswer: 0,
+        options: ["H = U − PV", "H = P/V", "H = U × T", "H = U + PV"],
+        correctAnswer: 3,
         explanation: "Entalpi, iç enerji ile basınç-hacim çarpımının toplamıdır: H = U + PV.",
       },
       {
@@ -154,8 +154,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Entalpi (H)",
         category: MAK,
         question: "Sabit basınçtaki bir süreçte sisteme verilen ısı neye eşittir?",
-        options: ["Entalpi değişimine (ΔH) eşittir", "İç enerji değişimine (ΔU) eşittir", "Her koşulda sıfıra eşit olur", "İş eksi ısı farkına eşittir"],
-        correctAnswer: 0,
+        options: ["İş eksi ısı farkına eşittir", "Entalpi değişimine (ΔH) eşittir", "İç enerji değişimine (ΔU) eşittir", "Her koşulda sıfıra eşit olur"],
+        correctAnswer: 1,
         explanation: "Sabit basınçta Q = ΔH; bu, kazan/kondensör/eşanjör analizini kolaylaştırır.",
       },
       {
@@ -163,8 +163,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Entalpi (H)",
         category: MAK,
         question: "500 kg/h su 15°C→45°C ısıtılıyor (cp=4.0). Gerekli ısı gücü yaklaşık kaçtır?",
-        options: ["16.67 kW", "60 kW", "1.67 kW", "30 kW"],
-        correctAnswer: 0,
+        options: ["1,67 kW değeri", "30 kW", "16.67 kW", "60 kW"],
+        correctAnswer: 2,
         explanation: "Q = (500/3600) × 4.0 × 30 = 0.1389 × 120 ≈ 16.67 kW.",
       },
     ],
@@ -182,8 +182,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sabit Hacimde Özgül Isı (cv)",
         category: MAK,
         question: "Sabit hacimde verilen ısı nereye gider?",
-        options: ["Tamamı iç enerji artışına gider", "Tamamı doğrudan işe dönüşmekte", "Yarısı işe, yarısı ısıya gider", "Tamamı çevreye geri verilmekte"],
-        correctAnswer: 0,
+        options: ["Tamamı doğrudan işe dönüşmektedir", "Yarısı işe, yarısı ısıya gider", "Tamamı çevreye geri verilmekte", "Tamamı iç enerji artışına gider"],
+        correctAnswer: 3,
         explanation: "Sabit hacimde genişleme işi olmadığından verilen ısının tamamı iç enerjiye dönüşür.",
       },
       {
@@ -191,8 +191,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sabit Basınçta Özgül Isı (cp)",
         category: MAK,
         question: "Neden cp her zaman cv'den büyüktür?",
-        options: ["Sabit basınçta sistem genişleyip iş yapar", "cp her koşulda cv'nin yarısı kadardır", "Sabit basınçta ek ısı kaybı oluşur", "cv değeri basınçla birlikte artmakta"],
-        correctAnswer: 0,
+        options: ["cv değeri basınçla birlikte artmakta", "Sabit basınçta sistem genişleyip iş yapar", "cp her koşulda cv'nin yarısı kadardır", "Sabit basınçta ek ısı kaybı oluşur"],
+        correctAnswer: 1,
         explanation: "Sabit basınçta verilen ısının bir kısmı genişleme işine gider; bu yüzden cp > cv.",
       },
       {
@@ -200,8 +200,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Özgül Isılar Arasındaki İlişkiler",
         category: MAK,
         question: "İdeal gazlar için cp ve cv arasındaki bağıntı nedir?",
-        options: ["cp − cv = R", "cp + cv = R", "cp × cv = R", "cp / cv = R"],
-        correctAnswer: 0,
+        options: ["cp × cv = R", "cp / cv = R", "cp − cv = R", "cp + cv = R"],
+        correctAnswer: 2,
         explanation: "İdeal gazlarda cp − cv = R (özgül gaz sabiti).",
       },
       {
@@ -209,8 +209,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Özgül Isılar Arasındaki İlişkiler",
         category: MAK,
         question: "Özgül ısı oranı γ = cp/cv için hava değeri yaklaşık kaçtır?",
-        options: ["1.4", "1.0", "0.7", "2.0"],
-        correctAnswer: 0,
+        options: ["1.0", "0.7", "2.0", "1.4"],
+        correctAnswer: 3,
         explanation: "Hava için γ ≈ 1.4; adyabatik süreç hesaplarında kritik öneme sahiptir.",
       },
     ],
@@ -228,8 +228,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yasa Tanımı",
         category: MAK,
         question: "Sıfırıncı yasa neyi ifade eder?",
-        options: ["A-C ve B-C dengedeyse A-B de dengededir", "Enerji yoktan var, vardan yok edilemez", "Yalıtılmış sistemde entropi daima artar", "Mutlak sıfır sıcaklığa ulaşılamamakta"],
-        correctAnswer: 0,
+        options: ["Mutlak sıfır sıcaklığa ulaşılamamakta", "A-C ve B-C dengedeyse A-B de dengededir", "Enerji yoktan var, vardan yok edilemez", "Yalıtılmış sistemde entropi daima artar"],
+        correctAnswer: 1,
         explanation: "Sıfırıncı yasa termal dengenin geçişliliğini ifade eder ve sıcaklık kavramının temelidir.",
       },
       {
@@ -237,8 +237,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yasa Tanımı",
         category: MAK,
         question: "Termal denge nedir?",
-        options: ["Net ısı akışının olmadığı durum", "Basınçların birbirine eşit olması", "Hacimlerin birbirine eşit olması", "Kütlelerin birbirine eşit olması"],
-        correctAnswer: 0,
+        options: ["Hacimlerin birbirine eşit olması", "Kütlelerin birbirine eşit olması", "Net ısı akışının olmadığı durum", "Basınçların birbirine eşit olması"],
+        correctAnswer: 2,
         explanation: "Termal dengede iki sistem arasında net ısı akışı yoktur; sıcaklıkları eşittir.",
       },
       {
@@ -246,8 +246,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Uygulamadaki Önemi",
         category: MAK,
         question: "Sıfırıncı yasanın pratik önemi nedir?",
-        options: ["Termometreyle ölçümün dayanağını verir", "Sefer yakıt tüketimini hesaplamayı", "Basınç ölçümünün tanımını yapmayı", "Sistem entropisini hesaplamayı"],
-        correctAnswer: 0,
+        options: ["Sefer yakıt tüketimini hesaplamayı", "Basınç ölçümünün tanımını yapmayı", "Sistem entropisini hesaplamayı", "Termometreyle ölçümün dayanağını verir"],
+        correctAnswer: 3,
         explanation: "Termometre, ölçülen sistemle termal dengeye ulaşınca sistemin sıcaklığını gösterir; tüm sıcaklık sensörleri bu ilkeye dayanır.",
       },
     ],
@@ -265,8 +265,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kapalı Sistem İçin Birinci Yasa",
         category: MAK,
         question: "Kapalı sistem için birinci yasa nasıl yazılır?",
-        options: ["Q = W + ΔU", "Q = W − ΔU", "Q = ΔU − W", "Q = W × ΔU"],
-        correctAnswer: 0,
+        options: ["Q = W × ΔU", "Q = W + ΔU", "Q = W − ΔU", "Q = ΔU − W"],
+        correctAnswer: 1,
         explanation: "Verilen ısı = yapılan iş + iç enerji değişimi: Q = W + ΔU.",
       },
       {
@@ -274,8 +274,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kapalı Sistem İçin Birinci Yasa",
         category: MAK,
         question: "Gazın iç enerjisi 150 kJ artmış ve 200 kJ ısı almışsa yapılan iş kaçtır?",
-        options: ["50 kJ", "350 kJ", "150 kJ", "200 kJ"],
-        correctAnswer: 0,
+        options: ["150 kJ", "200 kJ", "50 kJ", "350 kJ"],
+        correctAnswer: 2,
         explanation: "Q = W + ΔU → 200 = W + 150 → W = 50 kJ.",
       },
       {
@@ -283,8 +283,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Açık Sistem İçin Birinci Yasa (SFEE)",
         category: MAK,
         question: "Açık sistemlerde hangi denklem kullanılır?",
-        options: ["Kararlı Akış Enerji Denklemi (SFEE)", "Yalnızca Q = W eşitliği kullanılır", "Bernoulli denklemi tek başına", "Süreklilik denklemi tek başına"],
-        correctAnswer: 0,
+        options: ["Yalnızca Q = W eşitliği kullanılmakta", "Bernoulli denklemi tek başına", "Süreklilik denklemi tek başına", "Kararlı Akış Enerji Denklemi (SFEE)"],
+        correctAnswer: 3,
         explanation: "Açık sistemlerde SFEE: q − w = (h₂−h₁) + (C₂²−C₁²)/2 + g(z₂−z₁).",
       },
     ],
@@ -302,8 +302,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kapalı Sistem Enerji Dengesi",
         category: MAK,
         question: "Kapalı sistemde enerji dengesi nasıl kurulur?",
-        options: ["Q − W = ΔU = m·cv·(T₂ − T₁)", "Q + W = 0 (toplam sıfırdır)", "Q = ṁ·(h₂ − h₁) (akış için)", "Q = P·V (basınç-hacim çarpımı)"],
-        correctAnswer: 0,
+        options: ["Q = P·V (basınç-hacim çarpımı)", "Q − W = ΔU = m·cv·(T₂ − T₁)", "Q + W = 0 (toplam sıfırdır)", "Q = ṁ·(h₂ − h₁) (akış için)"],
+        correctAnswer: 1,
         explanation: "Kütle geçişi olmadığından denge ısı ve iş üzerinden: Q − W = ΔU = m·cv·ΔT.",
       },
       {
@@ -311,8 +311,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Açık Sistem Enerji Dengesi",
         category: MAK,
         question: "KE ve PE değişimleri ihmal edilirse açık sistem denklemi neye indirgenir?",
-        options: ["Q − W = ṁ·(h₂ − h₁)", "Q = ΔU (iç enerji değişimi)", "W = 0 (iş yapılmaz)", "Q = m·cv·ΔT (sabit hacim)"],
-        correctAnswer: 0,
+        options: ["W = 0 (iş yapılmaz)", "Q = m·cv·ΔT (sabit hacim)", "Q − W = ṁ·(h₂ − h₁)", "Q = ΔU (iç enerji değişimi)"],
+        correctAnswer: 2,
         explanation: "Çoğu gemi ekipmanında KE/PE ihmal edilir: Q − W = ṁ·(h₂−h₁) (entalpi farkı esas).",
       },
       {
@@ -320,8 +320,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Açık Sistem Enerji Dengesi",
         category: MAK,
         question: "Egzoz ekonomizeri: 2 kg/s gaz 350°C→200°C (cp=1.1). Isı gücü kaçtır?",
-        options: ["330 kW", "165 kW", "660 kW", "150 kW"],
-        correctAnswer: 0,
+        options: ["165 kW", "660 kW", "150 kW", "330 kW"],
+        correctAnswer: 3,
         explanation: "Q = ṁ·cp·ΔT = 2 × 1.1 × 150 = 330 kW.",
       },
     ],
@@ -339,8 +339,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kelvin–Planck İfadesi",
         category: MAK,
         question: "Kelvin–Planck ifadesi neyi söyler?",
-        options: ["Tek kaynaktan %100 verim olanaksızdır", "Isı daima soğuktan sıcağa akmaktadır", "Yalıtılmış sistemde entropi azalmakta", "Enerji yok edilebilir bir büyüklüktür"],
-        correctAnswer: 0,
+        options: ["Enerji yok edilebilir bir büyüklüktür", "Tek kaynaktan %100 verim olanaksızdır", "Isı daima soğuktan sıcağa akmaktadır", "Yalıtılmış sistemde entropi azalmakta"],
+        correctAnswer: 1,
         explanation: "Her ısı makinesi mutlaka düşük sıcaklık kaynağına ısı verir; %100 termik verim imkânsızdır.",
       },
       {
@@ -348,8 +348,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Clausius İfadesi",
         category: MAK,
         question: "Clausius ifadesinin pratik sonucu nedir?",
-        options: ["Soğutucu kompresörüne enerji verilmeli", "Soğutma hiç enerji gerektirmemektedir", "Isı kendiliğinden soğuktan sıcağa geçer", "Soğutma çevriminde verim daima %100'dür"],
-        correctAnswer: 0,
+        options: ["Isı kendiliğinden soğuktan sıcağa geçer", "Soğutma çevriminde verim daima %100'dür", "Soğutucu kompresörüne enerji verilmeli", "Soğutma hiç enerji gerektirmemektedir"],
+        correctAnswer: 2,
         explanation: "Dış iş olmadan ısı düşükten yükseğe sürekli aktarılamaz; soğutma için dışarıdan enerji şarttır.",
       },
       {
@@ -357,8 +357,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İki İfadenin Eşdeğerliği",
         category: MAK,
         question: "Kelvin–Planck ve Clausius ifadeleri arasındaki ilişki nedir?",
-        options: ["Birbirine eşdeğerdir", "Birbirini çürütür", "İlgisizdir", "Yalnızca biri doğrudur"],
-        correctAnswer: 0,
+        options: ["Birbirini çürütür", "İlgisizdir", "Yalnızca biri doğrudur", "Birbirine eşdeğerdir"],
+        correctAnswer: 3,
         explanation: "İki ifade eşdeğerdir; birinin ihlali diğerinin de ihlali demektir ve entropi artışıyla ilişkilidir.",
       },
     ],
@@ -376,8 +376,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Entropi Tanımı",
         category: MAK,
         question: "Entropi değişimi (tersinir) hangi bağıntıyla tanımlanır?",
-        options: ["dS = δQrev / T", "dS = δQrev × T", "dS = T / δQrev", "dS = P·dV"],
-        correctAnswer: 0,
+        options: ["dS = P·dV", "dS = δQrev / T", "dS = δQrev × T", "dS = T / δQrev"],
+        correctAnswer: 1,
         explanation: "dS = δQrev / T; tersinir ısı transferinin mutlak sıcaklığa oranıdır.",
       },
       {
@@ -385,13 +385,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İdeal Gaz İçin Entropi Değişimi",
         category: MAK,
         question: "İdeal gaz için (T,P cinsinden) entropi değişimi nedir?",
-        options: [
-          "Δs = cp·ln(T₂/T₁) − R·ln(P₂/P₁)",
-          "Δs = cv·ln(T₂/T₁) + R·ln(P₂/P₁)",
-          "Δs = R·ln(T₂/T₁)",
-          "Δs = cp·(T₂−T₁)",
-        ],
-        correctAnswer: 0,
+        options: ["Δs = R·ln(T₂/T₁)", "Δs = cp·(T₂−T₁)", "Δs = cp·ln(T₂/T₁) − R·ln(P₂/P₁)", "Δs = cv·ln(T₂/T₁) + R·ln(P₂/P₁)"],
+        correctAnswer: 2,
         explanation: "Δs = cp·ln(T₂/T₁) − R·ln(P₂/P₁) (veya cv ve hacim oranı cinsinden).",
       },
       {
@@ -399,8 +394,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İdeal Gaz İçin Entropi Değişimi",
         category: MAK,
         question: "1 kg hava 300K/1bar → 600K/4bar için Δs yaklaşık kaçtır? (cp=1.005, R=0.287)",
-        options: ["+0.299 kJ/kg·K", "−0.299 kJ/kg·K", "+0.70 kJ/kg·K", "0 kJ/kg·K"],
-        correctAnswer: 0,
+        options: ["−0.299 kJ/kg·K", "+0.70 kJ/kg·K", "0 kJ/kg·K", "+0.299 kJ/kg·K"],
+        correctAnswer: 3,
         explanation: "Δs = 1.005·ln2 − 0.287·ln4 = 0.6966 − 0.3979 ≈ +0.299 kJ/kg·K (artış).",
       },
     ],
@@ -418,8 +413,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tersinir Süreç",
         category: MAK,
         question: "Tersinir süreç nedir?",
-        options: ["Sistem ve çevrenin geri döndürülebildiği", "Sürtünmenin en yüksek olduğu süreçtir", "Yalnızca sıkıştırmadan oluşan süreçtir", "Entropinin azaldığı gerçek bir süreçtir"],
-        correctAnswer: 0,
+        options: ["Entropinin azaldığı gerçek bir süreç türü", "Sistem ve çevrenin geri döndürülebildiği", "Sürtünmenin en yüksek olduğu süreçtir", "Yalnızca sıkıştırmadan oluşan süreçtir"],
+        correctAnswer: 1,
         explanation: "Tersinir süreçte sürtünme, türbülans, karışma, sonlu ΔT ile ısı transferi yoktur; ideal referanstır.",
       },
       {
@@ -427,8 +422,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tersinmezlik Kaynakları",
         category: MAK,
         question: "Aşağıdakilerden hangisi bir tersinmezlik kaynağıdır?",
-        options: ["Sürtünme, sonlu ΔT, kısılma, karışma", "Tersinir izotermik genleşme süreci", "Mutlak yalıtımlı sistem sınırı", "Entropinin sabit kaldığı süreç"],
-        correctAnswer: 0,
+        options: ["Mutlak yalıtımlı sistem sınırı", "Entropinin sabit kaldığı süreç", "Sürtünme, sonlu ΔT, kısılma, karışma", "Tersinir izotermik genleşme süreç türü"],
+        correctAnswer: 2,
         explanation: "Gemi makine dairesinde sürtünme, sonlu sıcaklık farkıyla ısı transferi, kısılma ve karışma tersinmezlik üretir.",
       },
       {
@@ -436,8 +431,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tersinmezlik Kaynakları",
         category: MAK,
         question: "Bir valfte/orifiste kısılmada (throttling) ne olur?",
-        options: ["Entalpi ~sabit kalır, entropi artar", "Entalpi sabit, entropi azalmaktadır", "Çıkış basıncı belirgin yükselmekte", "Sıcaklık her koşulda yükselmektedir"],
-        correctAnswer: 0,
+        options: ["Entalpi sabit, entropi azalmaktadır", "Çıkış basıncı belirgin yükselmekte", "Sıcaklık her koşulda yükselmektedir", "Entalpi ~sabit kalır, entropi artar"],
+        correctAnswer: 3,
         explanation: "Kısılmada basınç düşer; entalpi sabit kalır ama entropi artar (tersinmez).",
       },
     ],
@@ -455,8 +450,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Exerji Tanımı",
         category: MAK,
         question: "Exerji nedir?",
-        options: ["Çevreye ulaşana dek üretilebilecek iş", "İşe hiç dönüştürülemeyen enerji payı", "Sistemin toplam iç enerji değeri", "Sürtünmeden doğan kayıp enerji"],
-        correctAnswer: 0,
+        options: ["Sürtünmeden doğan kayıp enerji", "Çevreye ulaşana dek üretilebilecek iş", "İşe hiç dönüştürülemeyen enerji miktarı", "Sistemin toplam iç enerji değeri"],
+        correctAnswer: 1,
         explanation: "Exerji (kullanılabilirlik) max faydalı iştir; enerji korunur ama exerji her gerçek süreçte yıkıma uğrar.",
       },
       {
@@ -464,8 +459,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Exerji Tanımı",
         category: MAK,
         question: "Akış exerjisi hangi bağıntıyla ifade edilir?",
-        options: ["Ex = (H − H₀) − T₀(S − S₀)", "Ex = H + PV (entalpi ve iş)", "Ex = m·cv·ΔT (iç enerji)", "Ex = Q − W (ısı eksi iş)"],
-        correctAnswer: 0,
+        options: ["Ex = m·cv·ΔT (iç enerji)", "Ex = Q − W (ısı eksi iş)", "Ex = (H − H₀) − T₀(S − S₀)", "Ex = H + PV (entalpi ve iş)"],
+        correctAnswer: 2,
         explanation: "Ex = (H − H₀) − T₀(S − S₀); H₀,S₀ çevre koşulları, T₀ çevre sıcaklığı.",
       },
       {
@@ -473,8 +468,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Gemi Makinelerinde Exerji Analizi",
         category: MAK,
         question: "Gemi makinelerinde önemli bir exerji kaynağı ve geri kazanım yolu nedir?",
-        options: ["Egzoz gazı sıcaklığı; WHRS ile kazanılır", "Soğutma suyu; tamamı işe çevrilebilir", "Sürtünme ısısı; tamamen geri kazanılır", "Çevre havası; sınırsız exerji taşımakta"],
-        correctAnswer: 0,
+        options: ["Soğutma suyu; tamamı işe çevrilebilir", "Sürtünme ısısı; tamamen geri kazanılır", "Çevre havası; sınırsız exerji taşımaktadır", "Egzoz gazı sıcaklığı; WHRS ile kazanılır"],
+        correctAnswer: 3,
         explanation: "Egzozun yüksek sıcaklığı yüksek exerjili; WHRS ile geri kazanılır. Soğutma suyu düşük ΔT nedeniyle büyük oranda anerjidir.",
       },
     ],
@@ -492,8 +487,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Denklem ve Bileşenleri",
         category: MAK,
         question: "İdeal gaz denkleminde P ve T nasıl alınmalıdır?",
-        options: ["Her ikisi de mutlak değer (kPa ve K)", "P manometrik, T Celsius derecesinde", "P bar cinsinden, T Celsius derecesi", "Birim seçimi sonuç için fark etmez"],
-        correctAnswer: 0,
+        options: ["Birim seçimi sonuç için fark etmez", "Her ikisi de mutlak değer (kPa ve K)", "P manometrik, T ise Celsius derecesinde", "P bar cinsinden, T Celsius derecesi"],
+        correctAnswer: 1,
         explanation: "PV = mRT; P mutlak basınç, T mutlak sıcaklık (Kelvin) olmalıdır.",
       },
       {
@@ -501,8 +496,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Denklem ve Bileşenleri",
         category: MAK,
         question: "30 bar (mutlak), 500°C, 0.5 m³ hava tankındaki kütle yaklaşık kaçtır? (R=0.287)",
-        options: ["6.77 kg", "2.6 kg", "13.5 kg", "1.5 kg"],
-        correctAnswer: 0,
+        options: ["13.5 kg", "1.5 kg", "6.77 kg", "2.6 kg"],
+        correctAnswer: 2,
         explanation: "m = PV/RT = (3000×0.5)/(0.287×773) = 1500/221.75 ≈ 6.77 kg.",
       },
       {
@@ -510,13 +505,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İdeal Gaz Kabulünün Sınırları",
         category: MAK,
         question: "İdeal gaz kabulü hangi koşulda en iyi sonucu verir?",
-        options: [
-          "Düşük basınç ve yüksek sıcaklıkta",
-          "Yüksek basınç ve düşük sıcaklıkta",
-          "Faz değişimine yakın",
-          "Her koşulda kusursuz",
-        ],
-        correctAnswer: 0,
+        options: ["Yüksek basınç ve düşük sıcaklıkta", "Faz değişimine yakın", "Her koşulda kusursuz", "Düşük basınç ve yüksek sıcaklıkta"],
+        correctAnswer: 3,
         explanation: "Düşük basınç/yüksek sıcaklıkta ideal gaz iyi yaklaşır; yüksek basınç/düşük sıcaklıkta sapma artar (Van der Waals daha doğru).",
       },
     ],
@@ -534,8 +524,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Carnot Çevrimi Süreçleri",
         category: MAK,
         question: "Carnot çevrimi hangi dört tersinir süreçten oluşur?",
-        options: ["İzotermik ve adyabatik dört tersinir adım", "Sabit basınç ve sabit hacim dört adımı", "Yalnızca iki adyabatik süreçten oluşur", "İzobarik, izokorik, izotermik, politropik"],
-        correctAnswer: 0,
+        options: ["İzobarik, izokorik, izotermik, politropik", "İzotermik ve adyabatik dört tersinir adım", "Sabit basınç ve sabit hacim dört adımı", "Yalnızca iki adyabatik süreçten oluşur"],
+        correctAnswer: 1,
         explanation: "Carnot: izotermik genleşme (TH'dan ısı al), adyabatik genleşme, izotermik sıkıştırma (TL'ye ısı ver), adyabatik sıkıştırma.",
       },
       {
@@ -543,8 +533,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Carnot Verimi",
         category: MAK,
         question: "Carnot verimi hangi bağıntıyla bulunur?",
-        options: ["η = 1 − TL/TH", "η = 1 − TH/TL", "η = TL/TH", "η = 1 − QH/QL"],
-        correctAnswer: 0,
+        options: ["η = TL/TH", "η = 1 − QH/QL", "η = 1 − TL/TH", "η = 1 − TH/TL"],
+        correctAnswer: 2,
         explanation: "ηCarnot = 1 − TL/TH (mutlak sıcaklıklar); hiçbir gerçek makine bunu aşamaz.",
       },
       {
@@ -552,8 +542,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Carnot Verimi",
         category: MAK,
         question: "TH = 1800 K, TL = 600 K için maksimum teorik verim kaçtır?",
-        options: ["%66.7", "%33.3", "%50", "%100"],
-        correctAnswer: 0,
+        options: ["%33.3", "%50", "%100", "%66.7"],
+        correctAnswer: 3,
         explanation: "η = 1 − 600/1800 = 1 − 0.333 = 0.667 → %66.7 (gerçek verim kayıplar nedeniyle altında).",
       },
     ],
@@ -571,8 +561,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çevrim Süreçleri",
         category: MAK,
         question: "Diesel çevriminde ısı ekleme (yanma) hangi koşulda gerçekleşir?",
-        options: ["Sabit basınçta (2-3)", "Sabit hacimde", "Sabit sıcaklıkta", "Adyabatik olarak"],
-        correctAnswer: 0,
+        options: ["Adyabatik olarak", "Sabit basınçta (2-3)", "Sabit hacimde", "Sabit sıcaklıkta"],
+        correctAnswer: 1,
         explanation: "Diesel çevriminde yakıt enjeksiyonu/yanma sabit basınçta ısı eklenmesiyle modellenir; ısı atımı sabit hacimde.",
       },
       {
@@ -580,8 +570,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Verim Formülü",
         category: MAK,
         question: "Diesel çevrimi verimi hangi parametrelere bağlıdır?",
-        options: ["Sıkıştırma oranı (r) ve kesme oranı (ρ)", "Yalnızca kullanılan yakıtın türü ve cinsi", "Yalnızca motorun devir sayısı değerine", "Yalnızca ortam hava sıcaklığı değerine"],
-        correctAnswer: 0,
+        options: ["Yalnızca motorun devir sayısı değerine", "Yalnızca ortam hava sıcaklığı değerine", "Sıkıştırma oranı (r) ve kesme oranı (ρ)", "Yalnızca kullanılan yakıtın türü ve cinsi"],
+        correctAnswer: 2,
         explanation: "η = 1 − [1/r^(γ−1)]·[(ρ^γ−1)/(γ(ρ−1))]; r = V₁/V₂, ρ = V₃/V₂.",
       },
       {
@@ -589,8 +579,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Verim Formülü",
         category: MAK,
         question: "r=18, ρ=2.5, γ=1.4 olan diesel çevrimin termik verimi yaklaşık kaçtır?",
-        options: ["%60.9", "%39", "%50", "%66.7"],
-        correctAnswer: 0,
+        options: ["%39", "%50", "%66.7", "%60.9"],
+        correctAnswer: 3,
         explanation: "Hesap: η = 1 − 0.3147 × 1.2414 ≈ 1 − 0.391 = 0.609 → %60.9.",
       },
     ],
@@ -606,8 +596,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Genel Özellikler",
         category: MAK,
         question: "Yardımcı dizel motorlar tipik olarak hangi tiptedir?",
-        options: ["Dört zamanlı, trunk piston, orta devir", "İki zamanlı, crosshead, çok düşük devir", "Gaz türbini tahrikli üretim düzeneği", "Buhar makinesi tahrikli üretim düzeneği"],
-        correctAnswer: 0,
+        options: ["Buhar makinesi tahrikli üretim düzeneği", "Dört zamanlı, trunk piston, orta devir", "İki zamanlı, crosshead, çok düşük devir", "Gaz türbini tahrikli üretim düzeneği"],
+        correctAnswer: 1,
         explanation: "Yardımcı dizeller dört zamanlı, trunk piston tipinde, orta/yüksek devirli (720–1800 rpm) motorlardır.",
       },
       {
@@ -615,8 +605,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Genel Özellikler",
         category: MAK,
         question: "Yardımcı dizel motorlar genellikle nasıl başlatılır?",
-        options: ["Basınçlı hava ile (yaklaşık 30 bar)", "Elektrikli marş motoru düzeneği ile", "Hidrolik marş motoru düzeneği ile", "Manuel kol çevrilerek elle yapılır"],
-        correctAnswer: 0,
+        options: ["Hidrolik marş motoru düzeneği ile", "Manuel kol çevrilerek elle yapılır", "Basınçlı hava ile (yaklaşık 30 bar)", "Elektrikli marş motoru düzeneği ile"],
+        correctAnswer: 2,
         explanation: "Büyük yardımcı dizeller basınçlı hava (≈30 bar) ile başlatılır.",
       },
       {
@@ -624,8 +614,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Genel Özellikler",
         category: MAK,
         question: "Limanda yük operasyonu sırasında genellikle kaç jeneratör çalıştırılır?",
-        options: ["2-3 jeneratör (yük durumuna göre)", "Hiç jeneratör çalıştırılmaz", "Tek bir jeneratör yeterlidir", "6-7 jeneratör birlikte çalışır"],
-        correctAnswer: 0,
+        options: ["Hiç jeneratör çalıştırılmaz", "Tek bir jeneratör yeterlidir", "6-7 jeneratör birlikte çalışır", "2-3 jeneratör (yük durumuna göre)"],
+        correctAnswer: 3,
         explanation: "Seyirde 1-2, limanda yük operasyonunda 2-3 jeneratör çalıştırılabilir.",
       },
     ],
@@ -640,8 +630,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Alternatörde elektrik nasıl üretilir?",
-        options: ["Dönen alan statorda EMK indükler", "Statik mıknatıslar ısıtılarak üretir", "Kimyasal tepkime yoluyla üretmekte", "Basınçlı hava akışıyla üretmektedir"],
-        correctAnswer: 0,
+        options: ["Basınçlı hava akışıyla üretmektedir", "Dönen alan statorda EMK indükler", "Statik mıknatıslar ısıtılarak üretir", "Kimyasal tepkime yoluyla üretmekte"],
+        correctAnswer: 1,
         explanation: "Rotor alan sargısı DC ile uyarılır; dönen alan üç faz stator sargısında EMK indükler.",
       },
       {
@@ -649,8 +639,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Üretilen gerilimin frekansı hangi bağıntıyla bulunur?",
-        options: ["f = (N × P) / 120", "f = N × P", "f = 120 / (N × P)", "f = N / P"],
-        correctAnswer: 0,
+        options: ["f = 120 / (N × P)", "f = N / P", "f = (N × P) / 120", "f = N × P"],
+        correctAnswer: 2,
         explanation: "f = (N × P)/120; N devir (rpm), P kutup sayısı. Gemi sistemlerinde genelde 60 Hz (veya 50 Hz).",
       },
       {
@@ -658,8 +648,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Rotordaki alan sargısı ne ile uyarılır?",
-        options: ["DC (doğru akım)", "Üç faz AC", "Yüksek frekanslı sinyal", "Statik elektrik"],
-        correctAnswer: 0,
+        options: ["Üç faz AC", "Yüksek frekanslı sinyal", "Statik elektrik", "DC (doğru akım)"],
+        correctAnswer: 3,
         explanation: "Rotor alan sargısı DC ile uyarılarak manyetik alan oluşturur; faz sargıları 120° arayla yerleşir.",
       },
     ],
@@ -674,8 +664,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Paralel Bağlama Koşulları",
         category: MAK,
         question: "Jeneratör paralel bağlamada sağlanması gereken dört koşul nedir?",
-        options: ["Aynı frekans, gerilim, faz sırası ve açı", "Aynı güç, yakıt, devir ve sıcaklık", "Aynı marka, yaş, kutup ve yağ türü", "Yalnızca aynı gerilim değeri yeterli"],
-        correctAnswer: 0,
+        options: ["Yalnızca aynı gerilim değeri yeterli", "Aynı frekans, gerilim, faz sırası ve açı", "Aynı güç, yakıt, devir ve sıcaklık", "Aynı marka, yaş, kutup ve yağ türü"],
+        correctAnswer: 1,
         explanation: "Dört koşul: aynı frekans, aynı gerilim büyüklüğü, aynı faz sırası ve sıfıra yakın faz açısı farkı.",
       },
       {
@@ -683,8 +673,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Paralel Bağlama Koşulları",
         category: MAK,
         question: "Paralel bağlamada hangi araçlar kullanılır?",
-        options: ["Otomatik senkronizör veya senkroskop", "Yalnızca ampermetre göstergesi ile", "Yalnızca termometre göstergesi ile", "Yalnızca salinometre göstergesi ile"],
-        correctAnswer: 0,
+        options: ["Yalnızca termometre göstergesi ile", "Yalnızca salinometre göstergesine bakarak", "Otomatik senkronizör veya senkroskop", "Yalnızca ampermetre göstergesi ile"],
+        correctAnswer: 2,
         explanation: "Otomatik senkronizör veya senkroskop kullanılır; lambaların karanlık yöntemi basit bir kontrol aracıdır.",
       },
     ],
@@ -702,8 +692,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ateş Borulu Kazan (Fire/Smoke Tube)",
         category: MAK,
         question: "Ateş borulu (fire tube) kazanda akış nasıldır?",
-        options: ["Gaz boru içinden, su dışından geçer", "Su boru içinden, gaz dışından geçer", "Hem su hem gaz aynı borudan geçer", "Yalnızca elektrikle ısıtılmaktadır"],
-        correctAnswer: 0,
+        options: ["Su boru içinden, gaz dışından geçer", "Hem su hem gaz aynı borudan geçer", "Yalnızca elektrikle ısıtılmaktadır", "Gaz boru içinden, su dışından geçer"],
+        correctAnswer: 3,
         explanation: "Ateş borulu kazanda gazlar boru içinden geçer; büyük su hacmi ani yük değişimini karşılar, basınç ≤18 bar.",
       },
       {
@@ -711,8 +701,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Su Borulu Kazan (Water Tube)",
         category: MAK,
         question: "Su borulu (water tube) kazanın belirgin özelliği nedir?",
-        options: ["Yüksek basınç, hızlı buhar, su kalitesi", "Çok düşük basınç ve büyük su hacmi", "Su kalitesi tümüyle önemsizdir", "Yalnızca yardımcı kazan olarak kullanılır"],
-        correctAnswer: 0,
+        options: ["Yalnızca yardımcı kazan olarak kullanılır", "Yüksek basınç, hızlı buhar, su kalitesi", "Çok düşük basınç ve büyük su hacmi", "Su kalitesi tümüyle önemsizdir"],
+        correctAnswer: 1,
         explanation: "Su borulu kazan yüksek basınç ve büyük kapasite içindir; küçük su hacmi hızlı buhar verir, su kalitesi (O₂, sertlik, pH) kritiktir.",
       },
       {
@@ -720,8 +710,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Karşılaştırma",
         category: MAK,
         question: "Ana tahrik / yüksek basınç için hangi kazan tipi uygundur?",
-        options: ["Su borulu (water tube) kazan", "Ateş borulu (fire tube) kazan", "İkisi de bu iş için uygun değil", "Yalnızca elektrikli ısıtıcı kazan"],
-        correctAnswer: 0,
+        options: ["İkisi de bu iş için uygun değil", "Yalnızca elektrikli ısıtıcı kazan", "Su borulu (water tube) kazan", "Ateş borulu (fire tube) kazan"],
+        correctAnswer: 2,
         explanation: "Yüksek basınç/ana tahrik için su borulu; yardımcı kazan için ateş borulu uygundur.",
       },
       {
@@ -729,8 +719,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Egzoz Gazı Ekonomizeri (EGE)",
         category: MAK,
         question: "Egzoz Gazı Ekonomizeri (EGE) ne sağlar ve hangi risk izlenir?",
-        options: ["Atık ısıdan buhar; soot fire riski", "Yakıt tüketimini belirgin artırır", "Yalnızca soğutma görevi görmekte", "Hiçbir risk taşımayan bir ünitedir"],
-        correctAnswer: 0,
+        options: ["Yakıt tüketimini belirgin artırır", "Yalnızca soğutma görevi görmekte", "Hiçbir risk taşımayan bir ünitedir", "Atık ısıdan buhar; soot fire riski"],
+        correctAnswer: 3,
         explanation: "EGE seyirde egzoz atık ısısından buhar üretir (yakıt tasarrufu); düşük yük/yavaş seyirde kurum birikip soot fire riski oluşur.",
       },
     ],
@@ -748,8 +738,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Vakumlu evaporatörde vakum neyi sağlar ve ısı kaynağı nedir?",
-        options: ["Kaynamayı 40–60°C'ye düşürür; HT suyu", "Suyu 100°C'de kaynatır; kaynak egzoz", "Deniz suyunu dondurarak ayrıştırır", "Elektrikli rezistansla ısıtıp kaynatır"],
-        correctAnswer: 0,
+        options: ["Elektrikli rezistansla ısıtıp kaynatır", "Kaynamayı 40–60°C'ye düşürür; HT suyu", "Suyu 100°C'de kaynatır; kaynak egzoz", "Deniz suyunu dondurarak ayrıştırır"],
+        correctAnswer: 1,
         explanation: "Vakum, kaynama sıcaklığını 40–60°C'ye düşürür; HT soğutma suyu (70–85°C) atık ısısıyla deniz suyundan tatlı su üretilir.",
       },
       {
@@ -757,8 +747,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Verim Parametreleri",
         category: MAK,
         question: "Evaporatörün üretim kapasitesi öncelikle neye bağlıdır?",
-        options: ["HT soğutma suyu sıcaklığına bağlıdır", "Deniz suyunun tuzluluk oranına bağlı", "Geminin o anki seyir hızına bağlıdır", "Atmosfer basıncı değerine bağlıdır"],
-        correctAnswer: 0,
+        options: ["Geminin o anki seyir hızına bağlıdır", "Atmosfer basıncı değerine bağlıdır", "HT soğutma suyu sıcaklığına bağlıdır", "Deniz suyunun tuzluluk oranına bağlı"],
+        correctAnswer: 2,
         explanation: "Kapasite HT soğutma suyu sıcaklığına bağlıdır; motor yükü düşünce sıcaklık ve üretim azalır (tipik 10–30 ton/gün).",
       },
     ],
@@ -776,8 +766,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Santrifüj separatör ayırmayı nasıl yapar?",
-        options: ["Merkezkaç ağırı dışa, hafifi merkeze iter", "Karışımı ısıtıp suyu buharlaştırmakta", "Manyetik alan uygulayarak ayırmakta", "Filtre kâğıdından süzerek ayırmakta"],
-        correctAnswer: 0,
+        options: ["Karışımı ısıtıp suyu buharlaştırmakta", "Manyetik alan uygulayarak ayırmakta", "Filtre kâğıdından süzerek ayırmakta", "Merkezkaç ağırı dışa, hafifi merkeze iter"],
+        correctAnswer: 3,
         explanation: "Yüksek hızla dönen tamburda merkezkaç kuvveti yoğunluk farkına göre ayırır; disk yığını verimi artırır.",
       },
       {
@@ -785,8 +775,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Purifier ve Clarifier",
         category: MAK,
         question: "Purifier ile clarifier arasındaki fark nedir?",
-        options: ["Purifier su+katı, clarifier yalnız katı", "Purifier yalnız katı, clarifier su ayırır", "Her ikisi de yalnızca su ayırmaktadır", "Aralarında hiçbir fark bulunmamaktadır"],
-        correctAnswer: 0,
+        options: ["Aralarında hiçbir fark bulunmamaktadır", "Purifier su+katı, clarifier yalnız katı", "Purifier yalnız katı, clarifier su ayırır", "Her ikisi de yalnızca su ayırmaktadır"],
+        correctAnswer: 1,
         explanation: "Purifier su+katı ayırır (gravity disc ile sınır ayarlanır); clarifier yalnızca katı ayırır (gravity disc yok), genelde ikinci aşamadır.",
       },
     ],
@@ -804,8 +794,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Çok kademeli kompresörde ara soğutucunun temel amacı nedir?",
-        options: ["Sonraki kademenin işini azaltmak", "Sıkıştırılan havayı nemlendirmek içindir", "Sistem basıncını düşürmek amacı taşır", "Sisteme yağlama yağı eklemek amacıyla"],
-        correctAnswer: 0,
+        options: ["Sistem basıncını düşürmek amacı taşır", "Sisteme yağlama yağı eklemek amacıyla", "Sonraki kademenin işini azaltmak", "Sıkıştırılan havayı nemlendirmek içindir"],
+        correctAnswer: 2,
         explanation: "Her kademe arasında hava soğutulur; bu sonraki kademenin işini azaltır ve süreci izotermik sıkıştırmaya yaklaştırır.",
       },
       {
@@ -813,8 +803,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Tipik iki kademeli starting air kompresörünün basınç adımları nedir?",
-        options: ["1→6 bar, ara soğutma, 6→30 bar", "Tek kademede 1→30 bar sıkıştırma", "1→2 bar, ardından 2→4 bar adımı", "10→5 bar biçiminde düşürme adımı"],
-        correctAnswer: 0,
+        options: ["Tek kademede 1→30 bar sıkıştırma", "1→2 bar, ardından 2→4 bar adımı", "10→5 bar biçiminde düşürme adımı", "1→6 bar, ara soğutma, 6→30 bar"],
+        correctAnswer: 3,
         explanation: "İki kademeli: 1. kademe 1→6 bar, ara soğutma, 2. kademe 6→30 bar, son soğutma.",
       },
       {
@@ -822,8 +812,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ara Soğutma Faydaları",
         category: MAK,
         question: "Ara soğutmanın güvenlik açısından faydası nedir?",
-        options: ["Yağ buharı tutuşma riskini düşürür", "Basıncı tehlikeli düzeye çıkarmakta", "Havanın nem oranını artırmaktadır", "Güvenlik açısından hiçbir etkisi yok"],
-        correctAnswer: 0,
+        options: ["Güvenlik açısından hiçbir etkisi yok", "Yağ buharı tutuşma riskini düşürür", "Basıncı tehlikeli düzeye çıkarmakta", "Havanın nem oranını artırmaktadır"],
+        correctAnswer: 1,
         explanation: "Ara soğutma sıkıştırma işini azaltır, yağ buharlaşması/tutuşma riskini ve kompresör çıkış sıcaklığını düşürür.",
       },
     ],
@@ -839,8 +829,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Fiziksel Özellikler",
         category: MAK,
         question: "HFO enjeksiyon için yaklaşık kaç °C'ye ısıtılır?",
-        options: ["130–150°C (viskozite 10–15 cSt)", "40–50°C (viskozite değişmez)", "200–250°C (viskozite çok düşer)", "Isıtma yapılması gerekmemektedir"],
-        correctAnswer: 0,
+        options: ["200–250°C (viskozite çok düşer)", "Isıtma yapılması gerekmemektedir", "130–150°C (viskozite 10–15 cSt)", "40–50°C (viskozite değişmez)"],
+        correctAnswer: 2,
         explanation: "HFO 130–150°C'ye ısıtılarak viskozitesi 10–15 cSt'ye düşürülür; 50°C'de viskozitesi 180–700 cSt'dir.",
       },
       {
@@ -848,8 +838,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Fiziksel Özellikler",
         category: MAK,
         question: "HFO'nun 15°C'deki yoğunluğu tipik olarak hangi aralıktadır?",
-        options: ["960–991 kg/m³", "700–750 kg/m³", "500–600 kg/m³", "1100–1200 kg/m³"],
-        correctAnswer: 0,
+        options: ["700–750 kg/m³", "500–600 kg/m³", "1100–1200 kg/m³", "960–991 kg/m³"],
+        correctAnswer: 3,
         explanation: "HFO yoğunluğu 15°C'de 960–991 kg/m³ (ISO 8217 RMG/RMK); kükürt %1.0–3.5 arasındadır.",
       },
     ],
@@ -864,8 +854,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Özellikler",
         category: MAK,
         question: "VLSFO nasıl üretilir?",
-        options: ["Rafineri ürünlerinin karıştırılmasıyla", "Tek bir damıtma kademesinde üretilir", "Doğal gazdan dönüştürülerek üretilir", "Bitkisel yağlardan üretilmektedir"],
-        correctAnswer: 0,
+        options: ["Bitkisel yağlardan üretilmektedir", "Rafineri ürünlerinin karıştırılmasıyla", "Tek bir damıtma kademesinde üretilmekte", "Doğal gazdan dönüştürülerek üretilir"],
+        correctAnswer: 1,
         explanation: "VLSFO blending ile üretilir; bu nedenle özellikleri üreticiden üreticiye değişir.",
       },
       {
@@ -873,8 +863,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Operasyonel Zorluklar",
         category: MAK,
         question: "VLSFO ile çalışırken en önemli risk nedir?",
-        options: ["Stabilite/sludge ve uyumsuzluk riski", "Hiçbir risk taşımayan bir yakıttır", "Çok düşük yoğunluk nedeniyle kaçak", "Düşük sıcaklıkta donma riski taşır"],
-        correctAnswer: 0,
+        options: ["Çok düşük yoğunluk nedeniyle kaçak", "Düşük sıcaklıkta donma riski taşır", "Stabilite/sludge ve uyumsuzluk riski", "Hiçbir risk taşımayan bir yakıt türüdür"],
+        correctAnswer: 2,
         explanation: "Stabilite sorunları ve uyumsuzluk riski vardır; bunker öncesi uyumluluk testi önerilir, farklı VLSFO'lar karıştırılmaz.",
       },
     ],
@@ -889,8 +879,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yakıt Sınıflandırması",
         category: MAK,
         question: "ISO 8217'ye göre distile yakıt sınıfları hangileridir?",
-        options: ["DMA (MGO), DMB ve DMC sınıfları", "RMG ve RMK sınıfları (residual)", "HFO-1 ve HFO-2 sınıfları", "A, B ve C harf sınıfları"],
-        correctAnswer: 0,
+        options: ["RMG ve RMK sınıfları (residual)", "HFO-1 ve HFO-2 sınıfları", "A, B ve C harf sınıfları", "DMA (MGO), DMB ve DMC sınıfları"],
+        correctAnswer: 3,
         explanation: "Distile yakıtlar DMA (MGO), DMB, DMC; kalıntı yakıtlar RMA…RMK olarak viskoziteye göre sınıflandırılır.",
       },
       {
@@ -898,8 +888,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yakıt Sınıflandırması",
         category: MAK,
         question: "Kalıntı yakıtlar (RMA…RMK) hangi parametreye göre sınıflandırılır?",
-        options: ["Viskozite", "Renk", "Üretici ülke", "Tank numarası"],
-        correctAnswer: 0,
+        options: ["Tank numarası", "Viskozite", "Renk", "Üretici ülke"],
+        correctAnswer: 1,
         explanation: "Kalıntı yakıtlar viskoziteye göre sınıflandırılır; her sınıf için yoğunluk, kükürt, su, kül, CCAI, Al+Si limitleri tanımlıdır.",
       },
     ],
@@ -914,8 +904,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Viskozite Kontrolü",
         category: MAK,
         question: "Enjeksiyon öncesi hedef yakıt viskozitesi nedir?",
-        options: ["10–15 cSt", "100 cSt", "380 cSt", "1–2 cSt"],
-        correctAnswer: 0,
+        options: ["380 cSt", "1–2 cSt", "10–15 cSt", "100 cSt değeri"],
+        correctAnswer: 2,
         explanation: "Enjeksiyon viskozitesi 10–15 cSt'ye ayarlanır; viskometre ısıtıcıyı otomatik kontrol eder.",
       },
       {
@@ -923,8 +913,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Viskozite Kontrolü",
         category: MAK,
         question: "HFO ve VLSFO için tipik ısıtma sıcaklıkları nedir?",
-        options: ["HFO 130–150°C, VLSFO 80–100°C", "Her ikisi de yaklaşık 40°C", "HFO 60°C, VLSFO 200°C olarak", "Hiçbirinde ısıtma gerekmemekte"],
-        correctAnswer: 0,
+        options: ["Her ikisi de yaklaşık 40°C", "HFO 60°C, VLSFO 200°C olarak", "Hiçbirinde ısıtma gerekmemekte", "HFO 130–150°C, VLSFO 80–100°C"],
+        correctAnswer: 3,
         explanation: "HFO için 130–150°C, VLSFO için 80–100°C ısıtma ile hedef viskoziteye ulaşılır.",
       },
     ],
@@ -939,8 +929,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Servis Tank (Day Tank)",
         category: MAK,
         question: "Yakıtın motora ulaşana kadarki doğru akış sırası nedir?",
-        options: ["Depolama → Settling → Purifier → Servis", "Servis → Settling → Depolama sırası", "Depolama → Servis → Purifier sırası", "Purifier → Depolama → Settling sırası"],
-        correctAnswer: 0,
+        options: ["Purifier → Depolama → Settling sıralaması", "Depolama → Settling → Purifier → Servis", "Servis → Settling → Depolama sırası", "Depolama → Servis → Purifier sırası"],
+        correctAnswer: 1,
         explanation: "Depolama tankı → Settling (24–48 saat bekleme) → Purifier/Clarifier → Servis tankı → motor.",
       },
       {
@@ -948,8 +938,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Settling Tank",
         category: MAK,
         question: "Settling tankının temel işlevi nedir?",
-        options: ["24–48 saat bekletip su ve tortu ayırır", "Yakıtı ısıtıp doğrudan yakmaktadır", "Yakıtı soğutup viskozitesini artırır", "Yakıtı renklendirip işaretlemektedir"],
-        correctAnswer: 0,
+        options: ["Yakıtı soğutup viskozitesini artırmakta", "Yakıtı renklendirip işaretlemektedir", "24–48 saat bekletip su ve tortu ayırır", "Yakıtı ısıtıp doğrudan yakmaktadır"],
+        correctAnswer: 2,
         explanation: "Settling tankında 24–48 saat bekleme ile su/çökelti dibe çöker ve düzenli drene edilir; sıcaklık sabit tutulur.",
       },
     ],
@@ -964,8 +954,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "BDN İçeriği",
         category: MAK,
         question: "BDN'de hangi bilgiler bulunmalıdır?",
-        options: ["Gemi, tedarikçi, miktar, kükürt, tarih", "Yalnızca yakıtın rengi ve görünümü", "Yalnızca kaptanın imzası ve mührü", "Gemideki mürettebatın tam listesi"],
-        correctAnswer: 0,
+        options: ["Yalnızca yakıtın rengi ve görünümü", "Yalnızca kaptanın imzası ve mührü", "Gemideki mürettebatın tam listesi", "Gemi, tedarikçi, miktar, kükürt, tarih"],
+        correctAnswer: 3,
         explanation: "BDN MARPOL Annex VI gereği zorunludur ve bu bilgileri içerir; PSC denetimlerinde kontrol edilir.",
       },
       {
@@ -973,8 +963,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "BDN İçeriği",
         category: MAK,
         question: "Yakıt numunesi ve BDN ne kadar süre saklanır?",
-        options: ["Numune en az 12 ay, BDN 3 yıl", "Her ikisi de yalnızca bir hafta", "Numune bir gün, BDN bir ay", "Saklama zorunluluğu bulunmamakta"],
-        correctAnswer: 0,
+        options: ["Saklama zorunluluğu bulunmamakta", "Numune en az 12 ay, BDN 3 yıl", "Her ikisi de yalnızca bir hafta", "Numune bir gün, BDN bir ay"],
+        correctAnswer: 1,
         explanation: "Yakıt numunesi en az 12 ay, BDN gemide 3 yıl saklanır.",
       },
     ],
@@ -990,8 +980,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çevrim Bileşenleri",
         category: MAK,
         question: "Buhar sıkıştırmalı soğutma çevriminin dört ana bileşeni nedir?",
-        options: ["Kompresör, kondenser, valf, evaporatör", "Kazan, türbin, pompa ve yoğuşturucu", "Fan, filtre, hava kanalı ve ızgara", "Pompa, valf, tank ve boru düzeneği"],
-        correctAnswer: 0,
+        options: ["Fan, filtre, hava kanalı ve ızgara", "Pompa, valf, tank ve boru düzeneği", "Kompresör, kondenser, valf, evaporatör", "Kazan, türbin, pompa ve yoğuşturucu"],
+        correctAnswer: 2,
         explanation: "Dört bileşen: kompresör, kondenser, genleşme valfi (TXV/EEV) ve evaporatör.",
       },
       {
@@ -999,8 +989,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çevrim Bileşenleri",
         category: MAK,
         question: "Kondenserin işlevi nedir?",
-        options: ["Sıcak buharı soğutup yoğuşturmak", "Soğutucunun basıncını düşürmek", "Ortamdan ısı çekip soğutma yapmak", "Soğutucu buharı sıkıştırıp basmak"],
-        correctAnswer: 0,
+        options: ["Soğutucunun basıncını düşürmek", "Ortamdan ısı çekip soğutma yapmak", "Soğutucu buharı sıkıştırıp basmak", "Sıcak buharı soğutup yoğuşturmak"],
+        correctAnswer: 3,
         explanation: "Kondenser yüksek basınçlı sıcak buharı deniz suyu ile soğutarak sıvı faza yoğuşturur.",
       },
       {
@@ -1008,8 +998,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çevrim Bileşenleri",
         category: MAK,
         question: "Genleşme valfinin görevi nedir?",
-        options: ["Sıvının basıncını düşürmek (kısmi buhar)", "Soğutucu buharını sıkıştırıp basmak", "Ortama ısı atıp yoğuşturma yapmak", "Deniz suyunu kondensere pompalamak"],
-        correctAnswer: 0,
+        options: ["Deniz suyunu kondensere pompalamak", "Sıvının basıncını düşürmek (kısmi buhar)", "Soğutucu buharını sıkıştırıp basmak", "Ortama ısı atıp yoğuşturma yapmak"],
+        correctAnswer: 1,
         explanation: "Genleşme valfi (TXV/EEV) basıncı düşürerek kısmi buharlaşma sağlar; ardından evaporatörde tam buharlaşır.",
       },
     ],
@@ -1024,13 +1014,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Diyagram Yapısı",
         category: MAK,
         question: "P-h (Mollier) diyagramında eksenler neyi gösterir?",
-        options: [
-          "Yatay: entalpi (kJ/kg), düşey: basınç (bar)",
-          "Yatay: sıcaklık, düşey: hacim",
-          "Yatay: entropi, düşey: sıcaklık",
-          "Yatay: basınç, düşey: kütle",
-        ],
-        correctAnswer: 0,
+        options: ["Yatay: entropi, düşey: sıcaklık", "Yatay: basınç, düşey: kütle", "Yatay: entalpi (kJ/kg), düşey: basınç (bar)", "Yatay: sıcaklık, düşey: hacim"],
+        correctAnswer: 2,
         explanation: "P-h diyagramında yatay eksen entalpi, düşey eksen basınçtır; doyma eğrisi sıvı ve buhar bölgelerini ayırır.",
       },
       {
@@ -1038,8 +1023,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Diyagram Yapısı",
         category: MAK,
         question: "Kompresör süreci P-h diyagramında nasıl görünür?",
-        options: ["Yukarı doğru, entropi artışıyla", "Yatay doğrultuda, sabit basınçta", "Düşey doğrultuda, izoentalpik", "Aşağı doğru, basınç düşüşüyle"],
-        correctAnswer: 0,
+        options: ["Yatay doğrultuda, sabit basınçta", "Düşey doğrultuda, izoentalpik", "Aşağı doğru, basınç düşüşüyle", "Yukarı doğru, entropi artışıyla"],
+        correctAnswer: 3,
         explanation: "Kompresör basıncı artırır (yukarı) ve entropiyi artırır; genleşme ise düşey ve izoentalpiktir.",
       },
     ],
@@ -1054,8 +1039,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Soğutma COP",
         category: MAK,
         question: "Soğutma COP'u hangi bağıntıyla bulunur?",
-        options: ["COP = (h₁ − h₄) / (h₂ − h₁)", "COP = (h₂ − h₁) / (h₁ − h₄)", "COP = h₁ × h₂ (çarpım değeri)", "COP = W / Q (iş bölü ısı)"],
-        correctAnswer: 0,
+        options: ["COP = W / Q (iş bölü ısı)", "COP = (h₁ − h₄) / (h₂ − h₁)", "COP = (h₂ − h₁) / (h₁ − h₄)", "COP = h₁ × h₂ (çarpım değeri)"],
+        correctAnswer: 1,
         explanation: "COP, evaporatördeki ısı alımının kompresör işine oranıdır: (h₁−h₄)/(h₂−h₁).",
       },
       {
@@ -1063,8 +1048,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Soğutma COP",
         category: MAK,
         question: "h₁=400, h₂=450, h₄=250 kJ/kg ise COP kaçtır?",
-        options: ["3.0", "0.33", "1.5", "9.0"],
-        correctAnswer: 0,
+        options: ["1.5", "9.0", "3.0", "0.33"],
+        correctAnswer: 2,
         explanation: "Qevap=400−250=150; W=450−400=50; COP=150/50=3.0 (1 kW ile 3 kW soğutma).",
       },
     ],
@@ -1079,8 +1064,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sınıflandırma ve Düzenleme",
         category: MAK,
         question: "CFC gazlar (R-11, R-12) ile ilgili doğru olan nedir?",
-        options: ["Yüksek ODP; Montreal ile yasaklandı", "ODP değeri sıfırdır ve teşvik edilir", "Hâlâ ana soğutucu olarak kullanılır", "Doğal bir soğutucu akışkan sayılır"],
-        correctAnswer: 0,
+        options: ["ODP değeri sıfırdır ve teşvik edilir", "Hâlâ ana soğutucu olarak kullanılır", "Doğal bir soğutucu akışkan sayılır", "Yüksek ODP; Montreal ile yasaklandı"],
+        correctAnswer: 3,
         explanation: "CFC'ler yüksek ODP/GWP'ye sahiptir ve Montreal Protokolü (1987) ile yasaklanmıştır.",
       },
       {
@@ -1088,8 +1073,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sınıflandırma ve Düzenleme",
         category: MAK,
         question: "Aşağıdakilerden hangisi ODP'si sıfır olan doğal soğutuculardır?",
-        options: ["CO₂ (R-744) ve NH₃ (R-717)", "R-11 ve R-12 (CFC gazlar)", "R-22 (HCFC gaz türü)", "R-134a (HFC gaz türü)"],
-        correctAnswer: 0,
+        options: ["R-134a (HFC gaz türü)", "CO₂ (R-744) ve NH₃ (R-717)", "R-11 ve R-12 (CFC gazları)", "R-22 (HCFC gaz türü)"],
+        correctAnswer: 1,
         explanation: "CO₂ (R-744) ve amonyak (R-717) doğal soğutuculardır; ODP 0, GWP çok düşüktür ve teşvik edilir.",
       },
     ],
@@ -1104,8 +1089,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ana Bileşenler",
         category: MAK,
         question: "Merkezi soğutma ünitesi (chiller) ne yapar?",
-        options: ["Soğuk su üretip AHU'lara dağıtır", "Ortam havasını doğrudan ısıtır", "Yakıtı arıtıp suyunu ayırmakta", "Gemide elektrik enerjisi üretir"],
-        correctAnswer: 0,
+        options: ["Yakıtı arıtıp suyunu ayırmakta", "Gemide elektrik enerjisi üretmekte", "Soğuk su üretip AHU'lara dağıtır", "Ortam havasını doğrudan ısıtır"],
+        correctAnswer: 2,
         explanation: "Chiller soğuk su üretip kapalı devreyle AHU'lara dağıtır; AHU bu suyla havayı şartlandırır.",
       },
       {
@@ -1113,8 +1098,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ana Bileşenler",
         category: MAK,
         question: "Hava İşleme Ünitesi (AHU) hangi bölümlerden oluşur?",
-        options: ["Filtre, serpantin, fan ve nem kontrolü", "Yalnızca bir adet üfleme fan ünitesi", "Kompresör ve kondenser üniteleri", "Devirdaim pompası ve depolama tankı"],
-        correctAnswer: 0,
+        options: ["Yalnızca bir adet üfleme fan ünitesidir", "Kompresör ve kondenser üniteleri", "Devirdaim pompası ve depolama tankı", "Filtre, serpantin, fan ve nem kontrolü"],
+        correctAnswer: 3,
         explanation: "AHU filtre, soğutma/ısıtma serpantini, fan ve nem kontrol bölümlerinden oluşur; kanal sistemiyle mahallere dağıtır.",
       },
     ],
@@ -1130,8 +1115,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Senkron jeneratörde elektrik nasıl üretilir?",
-        options: ["DC uyarılan rotor statorda EMK indükler", "Statik mıknatıslarla üretim yapılır", "Kimyasal pil hücreleriyle üretilir", "Buhar basıncı doğrudan gerilim verir"],
-        correctAnswer: 0,
+        options: ["Buhar basıncı doğrudan gerilim verir", "DC uyarılan rotor statorda EMK indükler", "Statik mıknatıslarla üretim yapılır", "Kimyasal pil hücreleriyle üretilir"],
+        correctAnswer: 1,
         explanation: "Rotor DC uyarma ile manyetik alan oluşturur; dizel motor rotoru döndürür ve dönen alan statorda EMK indükler.",
       },
       {
@@ -1139,8 +1124,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "60 Hz sistemde 4 kutuplu jeneratör hangi devirde çalışır? (f = N·P/120)",
-        options: ["1800 rpm", "900 rpm", "3600 rpm", "1200 rpm"],
-        correctAnswer: 0,
+        options: ["3600 rpm", "1200 rpm", "1800 rpm", "900 rpm"],
+        correctAnswer: 2,
         explanation: "f = (N×P)/120 → 60 = (N×4)/120 → N = 1800 rpm.",
       },
     ],
@@ -1155,8 +1140,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Senkronizasyon Koşulları",
         category: MAK,
         question: "Paralel bağlama için karşılanması gereken dört koşul nedir?",
-        options: ["Aynı gerilim, frekans, faz sırası ve açı", "Aynı güç, yağ, yakıt ve makine yaşı", "Aynı kesici, bara, oda ve pano rengi", "Yalnızca aynı frekans değeri yeterli"],
-        correctAnswer: 0,
+        options: ["Aynı güç, yağ, yakıt ve makine yaşı", "Aynı kesici, bara, oda ve pano rengi", "Yalnızca aynı frekans değeri yeterli", "Aynı gerilim, frekans, faz sırası ve açı"],
+        correctAnswer: 3,
         explanation: "Dört koşul: aynı gerilim genliği, aynı frekans, aynı faz sırası ve senkroskop sıfır noktasında faz açısı.",
       },
       {
@@ -1164,8 +1149,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Senkronizasyon Koşulları",
         category: MAK,
         question: "Modern gemilerde paralel bağlamayı ne sağlar?",
-        options: ["Otomatik senkronizasyon ünitesi", "Yalnızca operatörün elle tahmini", "Pano üzerindeki termostat ünitesi", "Devredeki salinometre göstergesi"],
-        correctAnswer: 0,
+        options: ["Devredeki salinometre göstergesi", "Otomatik senkronizasyon ünitesi", "Yalnızca operatörün elle tahmini", "Pano üzerindeki termostat ünitesi"],
+        correctAnswer: 1,
         explanation: "Otomatik senkronizasyon üniteleri koşulları sağlayıp devre kesiciyi doğru anda kapatır.",
       },
     ],
@@ -1180,8 +1165,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yapı ve Bileşenler",
         category: MAK,
         question: "MSB tipik olarak hangi bara gerilimlerinde çalışır?",
-        options: ["440 V veya 6,6 kV bara gerilimi", "12 V veya 24 V bara gerilimi", "Yalnızca 110 V bara gerilimi", "Yalnızca 230 V bara gerilimi"],
-        correctAnswer: 0,
+        options: ["Yalnızca 110 V bara gerilimi", "Yalnızca 230 V bara gerilimi", "440 V veya 6,6 kV bara gerilimi", "12 V veya 24 V bara gerilimi"],
+        correctAnswer: 2,
         explanation: "MSB genellikle 440V veya 6.6kV bara sisteminden oluşur; her jeneratör kendi devre kesicisiyle bağlanır.",
       },
       {
@@ -1189,8 +1174,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yapı ve Bileşenler",
         category: MAK,
         question: "Tercihli açma (preferential trip) ne işe yarar?",
-        options: ["Aşırı yükte önemsiz yükleri ayırır", "Tüm gemiyi karartıp blackout yapar", "Jeneratörü durdurup devreden çıkarır", "Bara gerilimini yükseltip dengeler"],
-        correctAnswer: 0,
+        options: ["Tüm gemiyi karartıp blackout yapar", "Jeneratörü durdurup devreden çıkarır", "Bara gerilimini yükseltip dengeler", "Aşırı yükte önemsiz yükleri ayırır"],
+        correctAnswer: 3,
         explanation: "Preferential trip, aşırı yükte önemsiz tüketicileri devreden çıkararak blackout'u önler.",
       },
     ],
@@ -1205,8 +1190,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Asenkron motorda rotor, döner manyetik alana göre nasıl döner?",
-        options: ["Hafif geri kalarak (kayma %2–5)", "Tam senkron hızda, kaymasız", "Alandan daha hızlı dönerek", "Alanın ters yönünde dönerek"],
-        correctAnswer: 0,
+        options: ["Alanın ters yönünde dönerek", "Hafif geri kalarak (kayma %2–5)", "Tam senkron hızda, kaymasız", "Alandan daha hızlı dönerek"],
+        correctAnswer: 1,
         explanation: "Rotor döner alana göre kayma ile (%2–5) geri kalarak döner; kayma olmadan tork üretilmez.",
       },
       {
@@ -1214,8 +1199,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "4 kutuplu, 60 Hz motorun senkron devri nedir? (ns = 120f/P)",
-        options: ["1800 rpm", "1746 rpm", "3600 rpm", "1500 rpm"],
-        correctAnswer: 0,
+        options: ["3600 rpm", "1500 rpm", "1800 rpm", "1746 rpm"],
+        correctAnswer: 2,
         explanation: "ns = 120×60/4 = 1800 rpm (senkron devir).",
       },
       {
@@ -1223,8 +1208,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "%3 kayma ile aynı motorun çalışma devri (nr) yaklaşık kaçtır?",
-        options: ["1746 rpm", "1800 rpm", "1854 rpm", "1700 rpm"],
-        correctAnswer: 0,
+        options: ["1800 rpm", "1854 rpm", "1700 rpm", "1746 rpm"],
+        correctAnswer: 3,
         explanation: "nr = ns(1−s) = 1800×(1−0.03) = 1746 rpm.",
       },
     ],
@@ -1239,8 +1224,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yöntemler",
         category: MAK,
         question: "DOL (direkt) yol vermede başlangıç akımı yaklaşık kaçtır?",
-        options: ["6–7 × In", "1 × In", "0.5 × In", "20 × In"],
-        correctAnswer: 0,
+        options: ["20 × In", "6–7 × In", "1 × In", "0.5 × In"],
+        correctAnswer: 1,
         explanation: "DOL başlangıç akımı nominal akımın 6–7 katıdır; küçük motorlar (<15 kW) için uygundur.",
       },
       {
@@ -1248,8 +1233,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yöntemler",
         category: MAK,
         question: "Y-Δ (yıldız-üçgen) yol vermede başlangıç torku ne olur?",
-        options: ["%33'e düşer", "%100 kalır", "%200'e çıkar", "Sıfır olur"],
-        correctAnswer: 0,
+        options: ["%200'e çıkar", "Sıfır olur", "%33'e düşer", "%100 kalır"],
+        correctAnswer: 2,
         explanation: "Y-Δ başlangıç akımını 2–2.5×In'e düşürür ama torku %33'e indirir; ağır yüklerde uygun olmayabilir.",
       },
       {
@@ -1257,8 +1242,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yöntemler",
         category: MAK,
         question: "En düşük başlangıç akımı ve hassas hız kontrolü hangi yöntemle sağlanır?",
-        options: ["VFD (frekans dönüştürücü, < 1,5×In)", "DOL (doğrudan yol verme) yöntemi", "Yıldız-üçgen (Y-Δ) yol verme", "Soft starter (yumuşak yol verici)"],
-        correctAnswer: 0,
+        options: ["DOL (doğrudan yol verme) yöntemi", "Yıldız-üçgen (Y-Δ) yol verme", "Soft starter (yumuşak yol verici düzenek)", "VFD (frekans dönüştürücü, < 1,5×In)"],
+        correctAnswer: 3,
         explanation: "VFD başlangıç akımını <1.5×In'de tutar, %100+ tork ve frekans kontrolüyle enerji tasarrufu sağlar.",
       },
     ],
@@ -1277,8 +1262,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sınıflandırma",
         category: MAK,
         question: "Dengeli (balanced) dümenin özelliği nedir?",
-        options: ["%35–40 dengeli alan, düşük tork", "%0 dengeli alan, çok yüksek tork", "Hiç tork gerektirmeyen düzenek", "Yalnızca küçük teknelerde kullanılır"],
-        correctAnswer: 0,
+        options: ["Yalnızca küçük teknelerde kullanılır", "%35–40 dengeli alan, düşük tork", "%0 dengeli alan, çok yüksek tork", "Hiç tork gerektirmeyen düzenek"],
+        correctAnswer: 1,
         explanation: "Balanced dümen %35–40 dengeli alana sahiptir, düşük tork gerektirir; makine daha küçük boyutlandırılır.",
       },
       {
@@ -1286,8 +1271,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sınıflandırma",
         category: MAK,
         question: "Ticari gemilerde en yaygın dümen tipi hangisidir?",
-        options: ["Semi-balanced (%20–30 dengeli)", "Unbalanced (%0 dengeli alan)", "Tam balanced (%40 ve üzeri)", "Flap (Becker) dümen tipidir"],
-        correctAnswer: 0,
+        options: ["Tam balanced (%40 ve üzeri)", "Flap (Becker) dümen tipidir", "Semi-balanced (%20–30 dengeli)", "Unbalanced (%0 dengeli alan oranı)"],
+        correctAnswer: 2,
         explanation: "Ticari gemilerde semi-balanced (%20–30) dümen yaygındır; orta seviye tork gerektirir.",
       },
       {
@@ -1295,8 +1280,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yapısal Özellikler",
         category: MAK,
         question: "Flap (Becker) dümenin avantajı nedir?",
-        options: ["Arka kanatçık manevrayı artırır", "Hiçbir yatak gerektirmemektedir", "Gereken tork değeri sıfırdır", "Yalnızca yüksek hızda çalışmakta"],
-        correctAnswer: 0,
+        options: ["Hiçbir yatak gerektirmemektedir", "Gereken tork değeri sıfırdır", "Yalnızca yüksek hızda çalışmakta", "Arka kanatçık manevrayı artırır"],
+        correctAnswer: 3,
         explanation: "Flap/Becker dümende arka kenarda hareketli kanatçık bulunur ve düşük hızda manevrayı iyileştirir.",
       },
     ],
@@ -1311,8 +1296,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Özellikler",
         category: MAK,
         question: "FPP'de hız ve geri manevra nasıl sağlanır?",
-        options: ["Hız devirle; geri için motor ters döner", "Kanat açısı değiştirilerek sağlanır", "Yalnızca dümen kullanılarak sağlanır", "Pervane sökülüp değiştirilerek olur"],
-        correctAnswer: 0,
+        options: ["Pervane sökülüp değiştirilerek olur", "Hız devirle; geri için motor ters döner", "Kanat açısı değiştirilerek sağlanır", "Yalnızca dümen kullanılarak sağlanır"],
+        correctAnswer: 1,
         explanation: "FPP'de kanat açısı sabittir; hız motor devriyle, geri manevra motorun ters döndürülmesiyle yapılır.",
       },
       {
@@ -1320,8 +1305,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Özellikler",
         category: MAK,
         question: "FPP'nin başlıca avantajı nedir?",
-        options: ["Basit, güvenilir, ucuz ve az bakım", "Karmaşık hidrolik sistem içermesi", "Sabit devirde çalışabiliyor olması", "Yatırım maliyetinin çok yüksekliği"],
-        correctAnswer: 0,
+        options: ["Sabit devirde çalışabiliyor olması", "Yatırım maliyetinin çok yüksekliği", "Basit, güvenilir, ucuz ve az bakım", "Karmaşık hidrolik sistem içermesi"],
+        correctAnswer: 2,
         explanation: "FPP daha basit yapı, düşük maliyet ve az bakım sunar; büyük iki zamanlı direkt tahrikli gemilerde yaygındır.",
       },
     ],
@@ -1336,8 +1321,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Avantajlar ve Dezavantajlar",
         category: MAK,
         question: "CPP'nin önemli bir avantajı nedir?",
-        options: ["Sabit devir; şaft jeneratör olanağı", "Hidrolik sistem gerektirmemesi", "Veriminin FPP'den yüksek olması", "Bakım maliyetinin çok düşüklüğü"],
-        correctAnswer: 0,
+        options: ["Hidrolik sistem gerektirmemesi", "Veriminin FPP'den yüksek olması", "Bakım maliyetinin çok düşüklüğü", "Sabit devir; şaft jeneratör olanağı"],
+        correctAnswer: 3,
         explanation: "CPP'de hatve hidrolik değiştirilir; motor sabit devirde çalışır (shaft generator), hızlı manevra mümkündür.",
       },
       {
@@ -1345,8 +1330,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Avantajlar ve Dezavantajlar",
         category: MAK,
         question: "CPP'nin dezavantajı nedir?",
-        options: ["Karmaşık hidrolik; verim ve bakım", "Geri için motorun ters döndürülmesi", "Hız kontrolünün yapılamıyor olması", "Sabit devirde çalışamıyor olması"],
-        correctAnswer: 0,
+        options: ["Sabit devirde çalışamıyor olması", "Karmaşık hidrolik; verim ve bakım", "Geri için motorun ters döndürülmesi", "Hız kontrolünün yapılamıyor olması"],
+        correctAnswer: 1,
         explanation: "CPP karmaşık hidrolik gerektirir; göbek büyük olduğundan verim FPP'den %1–3 düşüktür ve bakım/sızdırmazlık kritiktir.",
       },
     ],
@@ -1365,8 +1350,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Mevcut Limitler",
         category: MAK,
         question: "2020'den itibaren küresel kükürt limiti nedir?",
-        options: ["%0.50 m/m", "%3.50 m/m", "%0.10 m/m", "%1.00 m/m"],
-        correctAnswer: 0,
+        options: ["%0.10 m/m", "%1.00 m/m", "%0.50 m/m", "%3.50 m/m"],
+        correctAnswer: 2,
         explanation: "IMO MARPOL Annex VI ile küresel SOx limiti 2020'de %0.50'ye düşürüldü.",
       },
       {
@@ -1374,8 +1359,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Mevcut Limitler",
         category: MAK,
         question: "ECA (Emisyon Kontrol Alanı) bölgelerinde kükürt limiti nedir?",
-        options: ["%0.10 m/m", "%0.50 m/m", "%1.50 m/m", "Limit yok"],
-        correctAnswer: 0,
+        options: ["%0.50 m/m", "%1.50 m/m", "Limit yok", "%0.10 m/m"],
+        correctAnswer: 3,
         explanation: "ECA bölgelerinde (Baltık, Kuzey Denizi, K. Amerika, ABD Karayip) limit %0.10'dur (2015'ten beri).",
       },
       {
@@ -1383,8 +1368,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Uyum Yöntemleri",
         category: MAK,
         question: "Kükürt limitine uyum yöntemleri nelerdir?",
-        options: ["VLSFO/MGO, scrubber veya alternatif yakıt", "Yalnızca seyir hızını azaltmak yeterli", "Yalnızca sefer rotasını değiştirmek", "Hiçbir önlem alınması gerekmemektedir"],
-        correctAnswer: 0,
+        options: ["Hiçbir önlem alınması gerekmemektedir", "VLSFO/MGO, scrubber veya alternatif yakıt", "Yalnızca seyir hızını azaltmak yeterli", "Yalnızca sefer rotasını değiştirmek"],
+        correctAnswer: 1,
         explanation: "Uyum: düşük kükürtlü yakıt (VLSFO/MGO), egzoz scrubber'ı veya LNG/metanol gibi alternatif yakıtlar.",
       },
     ],
@@ -1402,8 +1387,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "EEDI",
         category: MAK,
         question: "EEDI hangi gemilere ve neye uygulanır?",
-        options: ["Yeni gemilere; ton-mil başına CO₂", "Mevcut gemilere; işletme verimi", "Yalnızca yolcu gemilerine uygulanır", "Yakıt fiyatına göre uygulanmakta"],
-        correctAnswer: 0,
+        options: ["Yalnızca yolcu gemilerine uygulanır", "Yakıt fiyatına göre uygulanmakta", "Yeni gemilere; ton-mil başına CO₂", "Mevcut gemilere; işletme verimi"],
+        correctAnswer: 2,
         explanation: "EEDI (Energy Efficiency Design Index) yeni gemiler için tasarım aşamasında ton-mil CO₂ emisyonunu sınırlar; Faz 0–3 kademeli azaltım.",
       },
       {
@@ -1411,13 +1396,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "EEXI",
         category: MAK,
         question: "EEXI uyumunda en yaygın yöntem nedir?",
-        options: [
-          "Motor güç sınırlaması (EPL/ShaPoLi)",
-          "Gemiyi hurdaya ayırmak",
-          "Yakıt türünü değiştirmek zorunluluğu",
-          "Hız artırmak",
-        ],
-        correctAnswer: 0,
+        options: ["Gemiyi hurdaya ayırmak", "Yakıt türünü değiştirmek zorunluluğu", "Hız artırmak", "Motor güç sınırlaması (EPL/ShaPoLi)"],
+        correctAnswer: 3,
         explanation: "EEXI mevcut gemilere uygulanır; en yaygın uyum motor güç sınırlaması (EPL/ShaPoLi) veya enerji tasarrufu teknolojisidir.",
       },
     ],
@@ -1436,8 +1416,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ölçüm Yöntemi",
         category: MAK,
         question: "Krank mili deflection ölçümü nasıl yapılır?",
-        options: ["Web arasına dial gauge; 5 pozisyon", "Yalnızca tek bir noktada ölçülür", "Yağ analizi sonuçlarıyla bulunur", "Termal kamera görüntüsüyle bulunur"],
-        correctAnswer: 0,
+        options: ["Termal kamera görüntüsüyle bulunur", "Web arasına dial gauge; 5 pozisyon", "Yalnızca tek bir noktada ölçülür", "Yağ analizi sonuçlarıyla bulunur"],
+        correctAnswer: 1,
         explanation: "Web'ler arasına deflection gauge yerleştirilir; mil yavaşça döndürülerek 5 pozisyonda okuma alınır, fark deflection'ı verir.",
       },
       {
@@ -1445,8 +1425,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ölçüm Yöntemi",
         category: MAK,
         question: "Pozitif deflection değeri neyi gösterir?",
-        options: ["Açılma (web'lerin birbirinden açılması)", "Kapanma (web'lerin birbirine yaklaşması)", "Hizalamanın kusursuz olduğu durum", "Karterde yağ kaçağı bulunduğu durum"],
-        correctAnswer: 0,
+        options: ["Hizalamanın kusursuz olduğu durum", "Karterde yağ kaçağı bulunduğu durum", "Açılma (web'lerin birbirinden açılması)", "Kapanma (web'lerin birbirine yaklaşması)"],
+        correctAnswer: 2,
         explanation: "Pozitif değer açılma, negatif değer kapanma anlamına gelir.",
       },
       {
@@ -1454,8 +1434,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Limit Değerler",
         category: MAK,
         question: "Strok 2000 mm olan motorda izin verilen deflection aralığı yaklaşık nedir?",
-        options: ["±0.10 ile ±0.20 mm", "±1.0 ile ±2.0 mm", "±0.01 mm", "Sınır yoktur"],
-        correctAnswer: 0,
+        options: ["±1,0 ile ±2,0 mm değeri", "±0.01 mm", "Sınır yoktur", "±0.10 ile ±0.20 mm"],
+        correctAnswer: 3,
         explanation: "Max ≈ ±L/20000 … ±L/10000 = ±0.10 … ±0.20 mm.",
       },
     ],
@@ -1473,8 +1453,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ölçüm Parametreleri",
         category: MAK,
         question: "FFT (Hızlı Fourier Dönüşümü) analizi ne işe yarar?",
-        options: ["Titreşimi frekans bileşenlerine ayırır", "Yatak sıcaklığını ölçüp gösterir", "Yağın viskozite değerini ölçmekte", "Sistem basıncını ölçüp göstermekte"],
-        correctAnswer: 0,
+        options: ["Sistem basıncını ölçüp göstermekte", "Titreşimi frekans bileşenlerine ayırır", "Yatak sıcaklığını ölçüp gösterir", "Yağın viskozite değerini ölçmekte"],
+        correctAnswer: 1,
         explanation: "FFT, titreşimi frekans bileşenlerine ayırır; her arıza tipi belirli frekans imzası verir.",
       },
       {
@@ -1482,8 +1462,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tipik Arıza Sinyalleri",
         category: MAK,
         question: "Titreşim spektrumunda 1×RPM ve 2×RPM tepeleri hangi arızalara işaret eder?",
-        options: ["1×RPM dengesizlik, 2×RPM hizalama", "1×RPM rulman hasarı, 2×RPM yağsızlık", "Her ikisi de gevşeklik göstergesidir", "Her ikisi de tümüyle normal sayılır"],
-        correctAnswer: 0,
+        options: ["Her ikisi de gevşeklik göstergesidir", "Her ikisi de tümüyle normal sayılır", "1×RPM dengesizlik, 2×RPM hizalama", "1×RPM rulman hasarı, 2×RPM yağsızlık"],
+        correctAnswer: 2,
         explanation: "1×RPM dengesizlik, 2×RPM hizalama bozukluğu; yatak frekansları rulman hasarı, çoklu harmonikler gevşeklik gösterir.",
       },
     ],
@@ -1502,8 +1482,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tanım",
         category: MAK,
         question: "ERM (Engine Resource Management) nedir?",
-        options: ["BRM'nin makine dairesine uyarlanması", "Yeni bir alternatif yakıt türüdür", "Bir planlı bakım yazılımı adıdır", "Yalnızca bir alarm sistemi adıdır"],
-        correctAnswer: 0,
+        options: ["Yeni bir alternatif yakıt türüdür", "Bir planlı bakım yazılımı adıdır", "Yalnızca bir alarm sistemi adıdır", "BRM'nin makine dairesine uyarlanması"],
+        correctAnswer: 3,
         explanation: "ERM, köprüüstü BRM'sinin makine dairesine uyarlanmasıdır; STCW 2010 Manila ile zorunlu eğitime girmiştir.",
       },
       {
@@ -1511,8 +1491,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Neden Gereklidir",
         category: MAK,
         question: "ERM neden gereklidir?",
-        options: ["Kazaların çoğunda insan faktörü rolü", "Yakıt fiyatlarının yüksek olması", "Makinelerin eskimiş olması nedeni", "Yalnızca yasal bir formalite olması"],
-        correctAnswer: 0,
+        options: ["Yalnızca yasal bir formalite olması hâli", "Kazaların çoğunda insan faktörü rolü", "Yakıt fiyatlarının yüksek olması", "Makinelerin eskimiş olması nedeni"],
+        correctAnswer: 1,
         explanation: "Deniz kazalarının %80'inden fazlasında insan faktörü vardır; ERM iletişim, planlama ve karar süreçlerini güçlendirir.",
       },
     ],
@@ -1527,8 +1507,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bileşenler",
         category: MAK,
         question: "PID'de İntegral (I) terimi ne sağlar?",
-        options: ["Birikmiş hatayı giderip offseti sıfırlar", "Sürecin değişim hızını ölçmektedir", "Aşımı (overshoot) tümüyle önlemekte", "Ölçüm gürültüsünü belirgin artırmakta"],
-        correctAnswer: 0,
+        options: ["Aşımı (overshoot) tümüyle önlemekte", "Ölçüm gürültüsünü belirgin artırmakta", "Birikmiş hatayı giderip offseti sıfırlar", "Sürecin değişim hızını ölçmektedir"],
+        correctAnswer: 2,
         explanation: "I terimi hatanın zamanla birikimini hesaplayıp kalıcı hatayı sıfırlar; aşırısı salınım yapar.",
       },
       {
@@ -1536,8 +1516,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bileşenler",
         category: MAK,
         question: "Türev (D) teriminin etkisi nedir?",
-        options: ["Aşımı azaltır ama gürültüye duyarlı", "Kalıcı hatayı (offset) sıfırlamakta", "Yalnızca değişim hızı üretmektedir", "Çevrim üzerinde hiçbir etkisi yoktur"],
-        correctAnswer: 0,
+        options: ["Kalıcı hatayı (offset) sıfırlamakta", "Yalnızca değişim hızı üretmektedir", "Çevrim üzerinde hiçbir etkisi yoktur", "Aşımı azaltır ama gürültüye duyarlı"],
+        correctAnswer: 3,
         explanation: "D, hatanın değişim hızına tepki vererek aşımı azaltır; ölçüm gürültüsüne duyarlıdır.",
       },
     ],
@@ -1553,8 +1533,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bileşenler",
         category: MAK,
         question: "PID'de Oransal (P) terimin özelliği nedir?",
-        options: ["Hızlı tepki verir ama offset bırakır", "Kalıcı hatayı (offset) sıfırlamakta", "Yalnızca ölçüm gürültüsünü filtreler", "Kontrol çıkışını sabit tutmaktadır"],
-        correctAnswer: 0,
+        options: ["Kontrol çıkışını sabit tutmaktadır", "Hızlı tepki verir ama offset bırakır", "Kalıcı hatayı (offset) sıfırlamakta", "Yalnızca ölçüm gürültüsünü filtreler"],
+        correctAnswer: 1,
         explanation: "P, anlık hataya orantılı çıkış üretir; hızlıdır ama tek başına kalıcı hata bırakır.",
       },
       {
@@ -1562,8 +1542,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bileşenler",
         category: MAK,
         question: "PID'de hata e(t) nasıl tanımlanır?",
-        options: ["e(t) = SP − PV (hedef eksi ölçüm)", "e(t) = PV − çıkış (ölçüm eksi çıkış)", "e(t) = Kp × Ki (kazançlar çarpımı)", "e(t) = sabit bir değerdir"],
-        correctAnswer: 0,
+        options: ["e(t) = Kp × Ki (kazançlar çarpımı)", "e(t) = sabit bir değerdir", "e(t) = SP − PV (hedef eksi ölçüm)", "e(t) = PV − çıkış (ölçüm eksi çıkış)"],
+        correctAnswer: 2,
         explanation: "Hata = Set Point − Ölçülen değer (PV); kontrolör çıkışı u(t) = Kp·e + Ki·∫e + Kd·de/dt.",
       },
     ],
@@ -1581,8 +1561,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Termokuple",
         category: MAK,
         question: "Termokuple hangi prensiple çalışır?",
-        options: ["İki metalde sıcaklık farkı EMK (Seebeck)", "Direncin sıcaklıkla değişimi ilkesi", "Kapasitenin sıcaklıkla değişimi ilkesi", "Işığın emilim oranı değişimi ilkesi"],
-        correctAnswer: 0,
+        options: ["Direncin sıcaklıkla değişimi ilkesi", "Kapasitenin sıcaklıkla değişimi ilkesine", "Işığın emilim oranı değişimi ilkesi", "İki metalde sıcaklık farkı EMK (Seebeck)"],
+        correctAnswer: 3,
         explanation: "Termokuple, Seebeck etkisiyle EMK üretir; ucuz, geniş aralıklı (−200…1800°C) ama RTD'den az doğrudur.",
       },
       {
@@ -1590,8 +1570,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "RTD (Pt100)",
         category: MAK,
         question: "RTD (Pt100) sensörünün özelliği nedir?",
-        options: ["Platin direnci; 0°C'de 100Ω, hassas", "Seebeck etkisiyle çalışan sensördür", "Çok ucuz ancak kararsız bir sensör", "Yalnızca 1000°C üzerinde çalışmakta"],
-        correctAnswer: 0,
+        options: ["Yalnızca 1000°C üzerinde çalışmakta", "Platin direnci; 0°C'de 100Ω, hassas", "Seebeck etkisiyle çalışan sensördür", "Çok ucuz ancak kararsız bir sensör"],
+        correctAnswer: 1,
         explanation: "RTD platin telin doğrusal direnç değişimine dayanır (0°C=100Ω); yüksek doğruluk sunar, soğutma suyu/yağ ölçümünde tercih edilir.",
       },
     ],
@@ -1610,8 +1590,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Hesaplama",
         category: MAK,
         question: "CII temel olarak nasıl hesaplanır?",
-        options: ["Yıllık CO₂ / (DWT × kat edilen mesafe)", "Yakıt fiyatı × kat edilen mesafe", "Motor gücü / geminin servis hızı", "Yıllık yapılan toplam sefer sayısı"],
-        correctAnswer: 0,
+        options: ["Motor gücü / geminin servis hızı", "Yıllık yapılan toplam sefer sayısı", "Yıllık CO₂ / (DWT × kat edilen mesafe)", "Yakıt fiyatı × kat edilen mesafe"],
+        correctAnswer: 2,
         explanation: "CII = Σ(CF×FC) / (Kapasite × D); yıllık CO₂'nin taşıma işine (DWT×mesafe) oranıdır.",
       },
       {
@@ -1619,8 +1599,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Derecelendirme",
         category: MAK,
         question: "CII derecelendirmesinde hangi durumda düzeltici plan gerekir?",
-        options: ["Üst üste 3 yıl D veya 1 yıl E alınırsa", "Bir kez C derecesi alındığı durumda", "Her koşulda ve her derecede gerekir", "Hiçbir koşulda gerekmemektedir"],
-        correctAnswer: 0,
+        options: ["Bir kez C derecesi alındığı durumda", "Her koşulda ve her derecede gerekir", "Hiçbir koşulda gerekmemektedir", "Üst üste 3 yıl D veya 1 yıl E alınırsa"],
+        correctAnswer: 3,
         explanation: "Gemiler A–E derecelendirilir; 3 yıl üst üste D veya 1 yıl E → düzeltici eylem planı zorunludur.",
       },
     ],
@@ -1635,8 +1615,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yakıt-Hız İlişkisi",
         category: MAK,
         question: "Yakıt tüketimi ile hız arasındaki ilişki nasıldır?",
-        options: ["FC ∝ V³ — %10 hız düşüşü ~%27 tasarruf", "FC ∝ V — hızla doğrusal değişmekte", "FC hız değerinden tümüyle bağımsız", "FC ∝ 1/V — hız arttıkça azalmakta"],
-        correctAnswer: 0,
+        options: ["FC ∝ 1/V — hız arttıkça azalmakta", "FC ∝ V³ — %10 hız düşüşü ~%27 tasarruf", "FC ∝ V — hızla doğrusal değişmekte", "FC hız değerinden tümüyle bağımsız"],
+        correctAnswer: 1,
         explanation: "Yakıt tüketimi yaklaşık hızın küpüyle orantılıdır; bu yüzden slow steaming en etkili tasarruf yöntemidir.",
       },
       {
@@ -1644,8 +1624,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yakıt-Hız İlişkisi",
         category: MAK,
         question: "14 knot'ta 45 ton/gün tüketen gemi 12 knot'a düşerse tüketim yaklaşık kaç olur?",
-        options: ["28.3 ton/gün", "38 ton/gün", "45 ton/gün", "20 ton/gün"],
-        correctAnswer: 0,
+        options: ["45 ton/gün", "20 ton/gün", "28.3 ton/gün", "38 ton/gün değeri"],
+        correctAnswer: 2,
         explanation: "FC₂ = 45 × (12/14)³ = 45 × 0.630 ≈ 28.3 ton/gün (~%37 azalma).",
       },
     ],
@@ -1661,8 +1641,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Denklem",
         category: MAK,
         question: "Bernoulli denklemi (bir akım çizgisi boyunca) nasıl yazılır?",
-        options: ["P/ρg + V²/2g + z = sabit", "P + V + z = 0 (toplam sıfır)", "P·V = mRT (ideal gaz bağıntısı)", "Re = ρVD/μ (Reynolds sayısı)"],
-        correctAnswer: 0,
+        options: ["P + V + z = 0 (toplam sıfır)", "P·V = mRT (ideal gaz bağıntısı)", "Re = ρVD/μ (Reynolds sayısı)", "P/ρg + V²/2g + z = sabit"],
+        correctAnswer: 3,
         explanation: "Sürtünmesiz, sıkıştırılamaz, kararlı akışta P/ρg + V²/2g + z (toplam yük) sabittir.",
       },
       {
@@ -1670,8 +1650,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Denklem",
         category: MAK,
         question: "Örnekte 2. noktadaki basınç yaklaşık kaçtır? (P₁=3 bar, V₁=2, z₁=5; V₂=4, z₂=10)",
-        options: ["≈ 2.45 bar", "≈ 3 bar", "≈ 1 bar", "≈ 4 bar"],
-        correctAnswer: 0,
+        options: ["≈ 4 bar", "≈ 2.45 bar", "≈ 3 bar", "≈ 1 bar"],
+        correctAnswer: 1,
         explanation: "Bernoulli ile P₂ ≈ 244936 Pa ≈ 2.45 bar (yükseklik ve hız arttığından basınç düşer).",
       },
     ],
@@ -1689,8 +1669,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tanım ve Hesap",
         category: MAK,
         question: "Reynolds sayısı neyi ifade eder ve nasıl hesaplanır?",
-        options: ["Eylemsizlik/viskoz oranı: Re = ρVD/μ", "Basınç ve sıcaklık oranını verir", "Güç ile tork arasındaki oranı verir", "Kütle ile hacim arasındaki oranı"],
-        correctAnswer: 0,
+        options: ["Güç ile tork arasındaki oranı vermekte", "Kütle ile hacim arasındaki oranı", "Eylemsizlik/viskoz oranı: Re = ρVD/μ", "Basınç ve sıcaklık oranını verir"],
+        correctAnswer: 2,
         explanation: "Re = ρVD/μ; eylemsizlik kuvvetinin viskoz kuvvete oranıdır ve akış rejimini belirler.",
       },
       {
@@ -1698,8 +1678,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kritik Değerler",
         category: MAK,
         question: "Boru akışında akış rejimi sınırları nedir?",
-        options: ["Re<2300 laminer, >4000 türbülanslı", "Re<10 laminer, Re>20 türbülanslı", "Re<100000 değerine kadar laminer", "Rejim Reynolds sayısına bağlı değil"],
-        correctAnswer: 0,
+        options: ["Re<10 laminer, Re>20 türbülanslı", "Re<100000 değerine kadar laminer", "Rejim Reynolds sayısına bağlı değil", "Re<2300 laminer, >4000 türbülanslı"],
+        correctAnswer: 3,
         explanation: "Re<2300 laminer, 2300–4000 geçiş, Re>4000 türbülanslı; gemi boru sistemlerinde akış genelde türbülanslıdır.",
       },
     ],
@@ -1717,8 +1697,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "NPSH Tanımları",
         category: MAK,
         question: "Pompada kavitasyondan kaçınmak için güvenli çalışma koşulu nedir?",
-        options: ["NPSHA > NPSHR + güvenlik payı", "NPSHA < NPSHR olması gerekir", "NPSHA = 0 olması gerekmektedir", "NPSHR = atmosfer basıncı olmalı"],
-        correctAnswer: 0,
+        options: ["NPSHR = atmosfer basıncı olmalı", "NPSHA > NPSHR + güvenlik payı", "NPSHA < NPSHR olması gerekir", "NPSHA = 0 olması gerekmektedir"],
+        correctAnswer: 1,
         explanation: "Sistemin sağladığı NPSHA, pompanın gerektirdiği NPSHR + güvenlik payından (0.5–1.0 m) büyük olmalıdır.",
       },
       {
@@ -1726,8 +1706,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kavitasyon",
         category: MAK,
         question: "Kavitasyon nasıl oluşur ve etkisi nedir?",
-        options: ["Buhar basıncı altında kabarcık çökmesi", "Sıvının donması sonucu oluşmakta", "Basınç çok yükselince oluşmakta", "Yalnızca sıcak suda olur, zararsızdır"],
-        correctAnswer: 0,
+        options: ["Basınç çok yükselince oluşmakta", "Yalnızca sıcak suda oluşur, zararsızdır", "Buhar basıncı altında kabarcık çökmesi", "Sıvının donması sonucu oluşmakta"],
+        correctAnswer: 2,
         explanation: "Kavitasyon, basıncın buhar basıncı altına düşmesiyle oluşan buhar kabarcıklarının çökmesidir; pompa çarkında erozyon yapar.",
       },
     ],
@@ -1746,8 +1726,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Temel Kristal Yapılar",
         category: MAK,
         question: "Metallerde gözlenen üç temel kristal yapı hangileridir?",
-        options: ["HMK (BCC), YMK (FCC), SPH (HCP)", "Amorf, sıvı ve gaz yapıları", "Ferrit, su ve buhar yapıları", "Tek, çift ve üçlü bağ yapıları"],
-        correctAnswer: 0,
+        options: ["Amorf, sıvı ve gaz yapıları", "Ferrit, su ve buhar yapıları", "Tek, çift ve üçlü bağ yapı türleri", "HMK (BCC), YMK (FCC), SPH (HCP)"],
+        correctAnswer: 3,
         explanation: "Hacim Merkezli Kübik (BCC), Yüzey Merkezli Kübik (FCC) ve Sıkı Paket Hekzagonal (HCP).",
       },
       {
@@ -1755,8 +1735,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Temel Kristal Yapılar",
         category: MAK,
         question: "YMK (FCC) yapı hangi özelliği taşır?",
-        options: ["Sünek ve iyi şekillendirilebilir yapı", "Sert ancak kırılgan bir yapı türü", "Manyetik olmayan ama gevrek yapı", "Yalnızca çinkoda görülen bir yapı"],
-        correctAnswer: 0,
+        options: ["Yalnızca çinkoda görülen bir yapı", "Sünek ve iyi şekillendirilebilir yapı", "Sert ancak kırılgan bir yapı türü", "Manyetik olmayan ama gevrek yapı"],
+        correctAnswer: 1,
         explanation: "FCC yapı sünek ve şekillendirilebilirdir; örnekleri östenit, bakır, alüminyum, nikeldir.",
       },
       {
@@ -1764,8 +1744,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kritik Sıcaklıklar",
         category: MAK,
         question: "A₁ (723°C) sıcaklığı neyi ifade eder?",
-        options: ["Ötektoid dönüşüm: perlit ↔ östenit", "Çeliğin erime noktası sıcaklığı", "Çeliğin buharlaşma sıcaklığı", "Suyun kaynama noktası sıcaklığı"],
-        correctAnswer: 0,
+        options: ["Çeliğin buharlaşma sıcaklığı", "Suyun kaynama noktası sıcaklığı", "Ötektoid dönüşüm: perlit ↔ östenit", "Çeliğin erime noktası sıcaklığı"],
+        correctAnswer: 2,
         explanation: "A₁ ötektoid dönüşüm sıcaklığıdır (perlit↔östenit); ısıl işlemler bu kritik sıcaklıklara göre planlanır.",
       },
     ],
@@ -1783,8 +1763,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Karbon Çelikleri",
         category: MAK,
         question: "Düşük karbonlu çeliğin (%0.05–0.25 C) özelliği ve kullanımı nedir?",
-        options: ["Kaynaklanabilir ve sünek; gemi saçları", "Çok sert; kesici takım yapımında kullanılır", "Kaynaklanamaz; yalnızca döküm parçalarda", "Yalnızca yay çeliği yapımında kullanılır"],
-        correctAnswer: 0,
+        options: ["Çok sert; kesici takım yapımında kullanılır", "Kaynaklanamaz; yalnızca döküm parçalarda", "Yalnızca yay çeliği yapımında kullanılır", "Kaynaklanabilir ve sünek; gemi saçları"],
+        correctAnswer: 3,
         explanation: "Düşük karbonlu çelik kaynak edilebilir ve süneklidir; gemi saçı ve yapısal profillerde kullanılır.",
       },
       {
@@ -1792,8 +1772,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Alaşım Elementlerinin Etkileri",
         category: MAK,
         question: "Krom (Cr) çeliğe hangi özelliği kazandırır?",
-        options: ["Korozyon direnci ve sertlik kazandırır", "Yalnızca yoğunluk artışı sağlamakta", "Yalnızca yüzey rengini değiştirmekte", "Erime noktasını belirgin düşürmekte"],
-        correctAnswer: 0,
+        options: ["Erime noktasını belirgin düşürmekte", "Korozyon direnci ve sertlik kazandırır", "Yalnızca yoğunluk artışı sağlamakta", "Yalnızca yüzeyin rengini değiştirmektedir"],
+        correctAnswer: 1,
         explanation: "Krom korozyon direnci ve sertlik sağlar; >%12 Cr paslanmaz çelik oluşturur.",
       },
       {
@@ -1801,8 +1781,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Paslanmaz Çelik Türleri",
         category: MAK,
         question: "Ostenitik paslanmaz çelik (304/316) hakkında doğru olan nedir?",
-        options: ["Amanyetik; mükemmel korozyon direnci", "Manyetik ve sertleştirilebilir yapı", "Korozyona dayanıksız bir alaşımdır", "Yalnızca dekoratif amaçla kullanılır"],
-        correctAnswer: 0,
+        options: ["Korozyona dayanıksız bir alaşımdır", "Yalnızca dekoratif amaçla kullanılır", "Amanyetik; mükemmel korozyon direnci", "Manyetik ve sertleştirilebilir yapı"],
+        correctAnswer: 2,
         explanation: "Ostenitik (304/316) amanyetiktir ve mükemmel korozyon direnci sunar; 316L deniz suyu uygulamalarında tercih edilir.",
       },
     ],
@@ -1820,8 +1800,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bakır ve Alaşımları",
         category: MAK,
         question: "Cupronickel (Cu-Ni 90/10) hangi özelliğiyle nerede kullanılır?",
-        options: ["Deniz suyu direnci; kondenser boruları", "Düşük iletkenlik; izolasyon malzemesi", "Yüksek mıknatıslık; rotor çekirdeği", "Düşük maliyet; ambalaj malzemesi"],
-        correctAnswer: 0,
+        options: ["Düşük iletkenlik; izolasyon malzemeleri", "Yüksek mıknatıslık; rotor çekirdeği", "Düşük maliyet; ambalaj malzemesi", "Deniz suyu direnci; kondenser boruları"],
+        correctAnswer: 3,
         explanation: "Cupronickel deniz suyuna mükemmel direnç gösterir; kondenser boruları ve deniz suyu hatlarında standarttır.",
       },
       {
@@ -1829,8 +1809,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bakır ve Alaşımları",
         category: MAK,
         question: "Bronz (Cu-Sn) hangi özelliğiyle öne çıkar?",
-        options: ["Aşınma direnci; pervane ve yataklar", "Elektrik iletkenliği; kablo damarı", "Hafiflik; üst yapı panelleri için", "Manyetiklik; jeneratör rotorunda"],
-        correctAnswer: 0,
+        options: ["Manyetiklik; jeneratör rotorunda", "Aşınma direnci; pervane ve yataklar", "Elektrik iletkenliği; kablo damarları", "Hafiflik; üst yapı panelleri için"],
+        correctAnswer: 1,
         explanation: "Bronz yüksek aşınma direnci sağlar; pervane ve yatak burçlarında kullanılır, kavitasyona dayanıklıdır.",
       },
       {
@@ -1838,8 +1818,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Alüminyum ve Alaşımları",
         category: MAK,
         question: "Denizcilik alüminyum alaşımlarının (5083/5086) avantaj ve dezavantajı nedir?",
-        options: ["Hafif ve dirençli; düşük erime, yangın", "Yüksek yoğunluk; çok ucuz maliyet", "Hiçbir avantajı bulunmayan malzeme", "Korozyona tümüyle dayanıksız yapı"],
-        correctAnswer: 0,
+        options: ["Hiçbir avantajı bulunmayan malzeme", "Korozyona tümüyle dayanıksız yapı", "Hafif ve dirençli; düşük erime, yangın", "Yüksek yoğunluk; çok ucuz maliyet"],
+        correctAnswer: 2,
         explanation: "5083/5086 hafif ve korozyona dayanıklıdır; ancak düşük erime noktası, yangın riski ve galvanik korozyon dezavantajdır.",
       },
     ],
@@ -1857,8 +1837,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Korozyon Tipleri",
         category: MAK,
         question: "Galvanik korozyon nasıl oluşur?",
-        options: ["Farklı metallerin elektrolitte teması", "Tek metalin üniform biçimde kaybı", "Yalnızca yüksek sıcaklıkta oluşumu", "Yalnızca tatlı su ortamında oluşumu"],
-        correctAnswer: 0,
+        options: ["Tek metalin üniform biçimde kaybı", "Yalnızca yüksek sıcaklıkta oluşumu", "Yalnızca tatlı su ortamında oluşması hâli", "Farklı metallerin elektrolitte teması"],
+        correctAnswer: 3,
         explanation: "Galvanik korozyon, korozif ortamda farklı metallerin teması ile oluşur; en yaygın gemi korozyon problemlerindendir.",
       },
       {
@@ -1866,8 +1846,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Korozyon Tipleri",
         category: MAK,
         question: "Çukurcuk (pitting) korozyonu tipik olarak nerede görülür?",
-        options: ["Paslanmazda klorürle lokal çukurlar", "Boyalı yüzeylerde üniform incelme", "Yalnızca alüminyum yüzeylerde", "Hiçbir malzemede görülmemekte"],
-        correctAnswer: 0,
+        options: ["Hiçbir malzemede görülmemekte", "Paslanmazda klorürle lokal çukurlar", "Boyalı yüzeylerde üniform incelme oluşumu", "Yalnızca alüminyum yüzeylerde"],
+        correctAnswer: 1,
         explanation: "Pitting, paslanmaz çelikte klorür etkisiyle lokal korozyon çukurları oluşturur.",
       },
       {
@@ -1875,8 +1855,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Korozyon Koruma Yöntemleri",
         category: MAK,
         question: "Katodik koruma nasıl uygulanır?",
-        options: ["Kurban anot (çinko) veya ICCP ile", "Yalnızca boya kaplaması ile", "Metali ısıtıp gerilim gidererek", "Yalnızca pH değeri yükselterek"],
-        correctAnswer: 0,
+        options: ["Metali ısıtıp iç gerilimini gidererek", "Yalnızca pH değeri yükselterek", "Kurban anot (çinko) veya ICCP ile", "Yalnızca boya kaplaması ile"],
+        correctAnswer: 2,
         explanation: "Katodik koruma kurban anot (çinko/alüminyum) veya ICCP (tatbiki akım) ile yapılır; anot ömrü periyodik kontrol edilir.",
       },
     ],
@@ -1894,8 +1874,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Temel Isıl İşlem Türleri",
         category: MAK,
         question: "Su verme (sertleştirme) ne sağlar?",
-        options: ["Hızlı soğutmayla martenzit ve sertlik", "Yavaş soğutmayla yumuşatma sağlar", "İç gerilimleri giderip dengeler", "Tane yapısını irileştirip büyütür"],
-        correctAnswer: 0,
+        options: ["Yavaş soğutmayla yumuşatma sağlar", "İç gerilimleri giderip dengeler", "Tane yapısını irileştirip büyütür", "Hızlı soğutmayla martenzit ve sertlik"],
+        correctAnswer: 3,
         explanation: "Su verme en hızlı soğutmadır; martenzit oluşturup maksimum sertlik verir.",
       },
       {
@@ -1903,8 +1883,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Temel Isıl İşlem Türleri",
         category: MAK,
         question: "Menevişleme (temperleme) neden yapılır?",
-        options: ["Sertlik-tokluk dengesi ve gerilim", "En yüksek sertliğe ulaşabilmek için", "Tane yapısını büyütebilmek amacıyla", "Korozyon direncini artırabilmek için"],
-        correctAnswer: 0,
+        options: ["Korozyon direncini artırabilmek için", "Sertlik-tokluk dengesi ve gerilim", "En yüksek sertliğe ulaşabilmek için", "Tane yapısını büyütebilmek amacıyla"],
+        correctAnswer: 1,
         explanation: "Menevişleme su vermeden sonra yapılır; sertlik-tokluk dengesi kurar ve iç gerilimi azaltır.",
       },
       {
@@ -1912,8 +1892,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Gemi Uygulamaları",
         category: MAK,
         question: "PWHT (kaynak sonrası ısıl işlem) neyi hedefler?",
-        options: ["Kaynak sonrası iç gerilim gidermek", "Kaynak dikişini yeniden eritmek", "Kaynak yüzeyini boyayıp korumak", "Korozyon oluşumunu hızlandırmak"],
-        correctAnswer: 0,
+        options: ["Kaynak yüzeyini boyayıp korumak", "Korozyon oluşumunu hızlandırmak", "Kaynak sonrası iç gerilim gidermek", "Kaynak dikişini yeniden eritmek"],
+        correctAnswer: 2,
         explanation: "PWHT yüksek mukavemetli çelik birleşimlerde kaynak sonrası iç gerilim giderir; gereklilik klas kurallarına bağlıdır.",
       },
     ],
@@ -1931,8 +1911,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "IACS Çelik Sınıfları",
         category: MAK,
         question: "Gemi yapı çeliklerinde A/B/D/E harfleri neyi ifade eder?",
-        options: ["Düşük sıcaklıkta darbe dayanımını", "Çeliğin karbon yüzdesi oranını", "Levhanın kalınlık değeri sınıfını", "Çeliği üreten ülkenin kodunu"],
-        correctAnswer: 0,
+        options: ["Çeliğin karbon yüzdesi oranını", "Levhanın kalınlık değeri sınıfını", "Çeliği üreten ülkenin kodunu", "Düşük sıcaklıkta darbe dayanımını"],
+        correctAnswer: 3,
         explanation: "Harfler düşük sıcaklıkta darbe dayanımını (Charpy/çentik tokluğu) ifade eder; örn. E sınıfı −40°C'de test edilir.",
       },
       {
@@ -1940,8 +1920,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "IACS Çelik Sınıfları",
         category: MAK,
         question: "AH/DH/EH/FH sınıfları neyi gösterir?",
-        options: ["Yüksek mukavemetli gemi çeliği", "Normal mukavemetli gemi çeliği", "Dökme demir (cast iron) sınıfı", "Alüminyum alaşımı sınıflaması"],
-        correctAnswer: 0,
+        options: ["Alüminyum alaşımı sınıflaması", "Yüksek mukavemetli gemi çeliği", "Normal mukavemetli gemi çeliği", "Dökme demir (cast iron) sınıfı"],
+        correctAnswer: 1,
         explanation: "AH32, DH36, EH40 gibi sınıflar yüksek mukavemetli çeliklerdir (min. akma 315–390 MPa).",
       },
       {
@@ -1949,8 +1929,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Seçim Kriterleri",
         category: MAK,
         question: "Soğuk iklimde çalışan gemilerde hangi çelik sınıfı tercih edilir?",
-        options: ["D veya E sınıfı", "A sınıfı", "Yalnızca dökme demir", "Sınıf önemsiz"],
-        correctAnswer: 0,
+        options: ["Yalnızca dökme demir", "Sınıf önemsiz", "D veya E sınıfı", "A sınıfı"],
+        correctAnswer: 2,
         explanation: "Soğuk iklimde düşük sıcaklık tokluğu yüksek D veya E sınıfı çelik kullanılır.",
       },
     ],
@@ -1968,8 +1948,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Normal Gerilme (σ)",
         category: MAK,
         question: "Normal gerilme nasıl hesaplanır?",
-        options: ["σ = F / A", "σ = F × A", "σ = A / F", "σ = M·y/I"],
-        correctAnswer: 0,
+        options: ["σ = F × A", "σ = A / F", "σ = M·y/I", "σ = F / A"],
+        correctAnswer: 3,
         explanation: "Normal gerilme = eksenel kuvvet / kesit alanı: σ = F/A (MPa = N/mm²).",
       },
       {
@@ -1977,8 +1957,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Normal Gerilme (σ)",
         category: MAK,
         question: "Çapı 50 mm çubuğa 100 kN çekme uygulanırsa gerilme yaklaşık kaçtır?",
-        options: ["50.9 MPa", "100 MPa", "25 MPa", "200 MPa"],
-        correctAnswer: 0,
+        options: ["200 MPa", "50.9 MPa", "100 MPa değeri", "25 MPa"],
+        correctAnswer: 1,
         explanation: "A = π/4×50² = 1963.5 mm²; σ = 100000/1963.5 = 50.9 MPa.",
       },
       {
@@ -1986,8 +1966,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Birim Uzama (ε)",
         category: MAK,
         question: "Birim uzama (ε) nasıl tanımlanır?",
-        options: ["ε = ΔL / L₀ (boyutsuz oran)", "ε = F/A (kuvvet bölü alan)", "ε = E × σ (modül ve gerilme)", "ε = M·y/I (eğilme bağıntısı)"],
-        correctAnswer: 0,
+        options: ["ε = E × σ (modül ve gerilme)", "ε = M·y/I (eğilme bağıntısı)", "ε = ΔL / L₀ (boyutsuz oran)", "ε = F/A (kuvvet bölü alan)"],
+        correctAnswer: 2,
         explanation: "Birim uzama, orijinal boya göre uzama oranıdır: ε = ΔL/L₀; boyutsuzdur (genelde %).",
       },
     ],
@@ -2002,8 +1982,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Hooke Yasası",
         category: MAK,
         question: "Hooke yasası elastik bölgede neyi söyler?",
-        options: ["σ = E × ε (doğru orantılı ilişki)", "σ = F × A (kuvvet ve alan çarpımı)", "ε = M / I (moment bölü atalet)", "σ değeri her koşulda sabittir"],
-        correctAnswer: 0,
+        options: ["σ = F × A (kuvvet ve alan çarpımı)", "ε = M / I (moment bölü atalet)", "σ değeri her koşulda sabittir", "σ = E × ε (doğru orantılı ilişki)"],
+        correctAnswer: 3,
         explanation: "Elastik sınır içinde gerilme birim uzamayla doğru orantılıdır: σ = E·ε.",
       },
       {
@@ -2011,8 +1991,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Hooke Yasası",
         category: MAK,
         question: "Çelik için elastiklik (Young) modülü yaklaşık kaçtır?",
-        options: ["200–210 GPa (çelik için)", "70 GPa (alüminyum için)", "120 GPa (bakır için)", "10 GPa (ahşap için)"],
-        correctAnswer: 0,
+        options: ["10 GPa (ahşap için)", "200–210 GPa (çelik için)", "70 GPa (alüminyum malzeme için)", "120 GPa (bakır için)"],
+        correctAnswer: 1,
         explanation: "Çelik E ≈ 200–210 GPa; alüminyum ≈ 70 GPa, bakır ≈ 120 GPa.",
       },
       {
@@ -2020,8 +2000,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Hooke Yasası",
         category: MAK,
         question: "2 m çelik çubuk 100 MPa altında ne kadar uzar? (E=210 GPa)",
-        options: ["≈ 0.95 mm", "≈ 9.5 mm", "≈ 0.1 mm", "≈ 5 mm"],
-        correctAnswer: 0,
+        options: ["≈ 0.1 mm", "≈ 5 mm", "≈ 0.95 mm", "≈ 9,5 mm değeri"],
+        correctAnswer: 2,
         explanation: "ε = 100/210000 = 4.762×10⁻⁴; ΔL = ε×2000 = 0.95 mm.",
       },
     ],
@@ -2036,8 +2016,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Eğilme Formülü",
         category: MAK,
         question: "Eğilme gerilmesi hangi bağıntıyla bulunur?",
-        options: ["σ = M × y / I (eğilme bağıntısı)", "σ = F / A (normal gerilme bağıntısı)", "σ = E × ε (Hooke yasası bağıntısı)", "σ = P / ρg (basınç yükseklik değeri)"],
-        correctAnswer: 0,
+        options: ["σ = F / A (normal gerilme bağıntısı)", "σ = E × ε (Hooke yasası bağıntısı)", "σ = P / ρg (basınç yükseklik değeri)", "σ = M × y / I (eğilme bağıntısı)"],
+        correctAnswer: 3,
         explanation: "σ = M·y/I; M eğilme momenti, y nötr eksenden uzaklık, I atalet momentidir.",
       },
       {
@@ -2045,8 +2025,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Eğilme Formülü",
         category: MAK,
         question: "Eğilmede nötr eksende gerilme ne olur?",
-        options: ["Sıfır", "Maksimum", "Sabit", "Sonsuz"],
-        correctAnswer: 0,
+        options: ["Sonsuz", "Sıfır", "Maksimum", "Sabit"],
+        correctAnswer: 1,
         explanation: "Gerilme kesit boyunca doğrusal değişir; nötr eksende sıfır, üst/alt yüzeylerde maksimumdur.",
       },
       {
@@ -2054,8 +2034,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Eğilme Formülü",
         category: MAK,
         question: "60×100 mm kesitli kirişe 5 kN·m moment için max eğilme gerilmesi kaçtır?",
-        options: ["50 MPa", "100 MPa", "25 MPa", "5 MPa"],
-        correctAnswer: 0,
+        options: ["25 MPa", "5 MPa", "50 MPa", "100 MPa"],
+        correctAnswer: 2,
         explanation: "I = 60×100³/12 = 5×10⁶ mm⁴; y=50; σ = 5×10⁶×50/(5×10⁶) = 50 MPa.",
       },
     ],
@@ -2074,8 +2054,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "AVR temel olarak ne yapar?",
-        options: ["Çıkış gerilimini ölçüp uyarmayı ayarlar", "Şebeke frekansını ölçüp kontrol eder", "Motora giden yakıt debisini ölçmekte", "Jeneratör devir sayısını saymaktadır"],
-        correctAnswer: 0,
+        options: ["Şebeke frekansını ölçüp kontrol eder", "Motora giden yakıt debisini ölçmekte", "Jeneratör devir sayısını saymaktadır", "Çıkış gerilimini ölçüp uyarmayı ayarlar"],
+        correctAnswer: 3,
         explanation: "AVR gerilimi referansla karşılaştırır; sapmada uyarma akımını artırıp azaltarak gerilimi sabit tutar.",
       },
       {
@@ -2083,8 +2063,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Yük artıp gerilim düşerse AVR ne yapar?",
-        options: ["Uyarma akımını artırır; gerilim döner", "Uyarma akımını tümüyle kesmektedir", "Şebeke frekansını düşürmektedir", "Jeneratörü durdurup devreden alır"],
-        correctAnswer: 0,
+        options: ["Jeneratörü durdurup devreden alır", "Uyarma akımını artırır; gerilim döner", "Uyarma akımını tümüyle kesmektedir", "Şebeke frekansını düşürmektedir"],
+        correctAnswer: 1,
         explanation: "Gerilim düşünce AVR uyarma akımını artırır; alan güçlenir ve gerilim normale döner.",
       },
       {
@@ -2092,8 +2072,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "AVR Ayarları",
         category: MAK,
         question: "AVR'de 'droop' ayarı ne içindir?",
-        options: ["Paralelde reaktif yük paylaşımı için", "Şebeke frekansını artırmak içindir", "Motora giden yakıtı kesmek içindir", "Sargıların soğutulması içindir"],
-        correctAnswer: 0,
+        options: ["Motora giden yakıtı kesmek içindir", "Sargıların soğutulması içindir", "Paralelde reaktif yük paylaşımı için", "Şebeke frekansını artırabilmek içindir"],
+        correctAnswer: 2,
         explanation: "Droop, paralel jeneratörlerde reaktif güç paylaşımı için kasıtlı gerilim düşüşüdür (%2.5–5).",
       },
     ],
@@ -2111,8 +2091,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Governor (Hız Regülatörü)",
         category: MAK,
         question: "Governor frekansı nasıl kontrol eder?",
-        options: ["Hızı sabit tutar; yükte yakıtı artırır", "Bara gerilimini ölçerek kontrol eder", "Rotor uyarma akımıyla kontrol eder", "Bara izolasyon direnciyle kontrol"],
-        correctAnswer: 0,
+        options: ["Bara gerilimini ölçerek kontrol etmekte", "Rotor uyarma akımıyla kontrol eder", "Bara izolasyon direnciyle kontrol", "Hızı sabit tutar; yükte yakıtı artırır"],
+        correctAnswer: 3,
         explanation: "Governor dizel motor hızını (dolayısıyla frekansı) sabit tutar; yük artınca yakıtı artırır.",
       },
       {
@@ -2120,8 +2100,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İzochronous ve Droop Kontrol",
         category: MAK,
         question: "İzochronous ve droop kontrol arasındaki fark nedir?",
-        options: ["İzochronous sabit frekans; droop düşer", "Her ikisi de frekansı düşürmektedir", "İzochronous paralelde, droop tekte", "İkisi arasında hiçbir fark yoktur"],
-        correctAnswer: 0,
+        options: ["İkisi arasında hiçbir fark yoktur", "İzochronous sabit frekans; droop düşer", "Her ikisi de frekansı düşürmektedir", "İzochronous paralelde, droop tekte"],
+        correctAnswer: 1,
         explanation: "İzochronous frekansı sabit tutar (tek jeneratör); droop yük arttıkça frekansı düşürerek paralel yük paylaşımı sağlar.",
       },
     ],
@@ -2139,8 +2119,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Fonksiyonlar",
         category: MAK,
         question: "PMS'in otomatik başlatma fonksiyonu ne yapar?",
-        options: ["Yük artınca yedeği çalıştırıp senkronlar", "Bütün yükleri devreden çıkarmaktadır", "Motora giden yakıtı durdurmaktadır", "Bara gerilimini düşürüp dengelemekte"],
-        correctAnswer: 0,
+        options: ["Motora giden yakıtı durdurmaktadır", "Bara gerilimini düşürüp dengelemekte", "Yük artınca yedeği çalıştırıp senkronlar", "Bütün yükleri devreden çıkarmaktadır"],
+        correctAnswer: 2,
         explanation: "PMS yük artışında yedek jeneratörü otomatik başlatıp senkronize eder; yük azalınca fazla jeneratörü durdurur.",
       },
       {
@@ -2148,8 +2128,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Korunma Katmanları",
         category: MAK,
         question: "'Heavy consumer interlock' ne sağlar?",
-        options: ["Kapasite yoksa büyük motora izin vermez", "Bütün yükleri devreden çıkarmaktadır", "Kontrollü biçimde blackout başlatır", "Şebeke frekansını artırmaktadır"],
-        correctAnswer: 0,
+        options: ["Bütün yükleri devreden çıkarmaktadır", "Kontrollü biçimde blackout başlatır", "Şebeke frekansını artırmaktadır", "Kapasite yoksa büyük motora izin vermez"],
+        correctAnswer: 3,
         explanation: "Heavy consumer interlock, büyük motor çalıştırmadan önce yeterli güç kapasitesi olup olmadığını kontrol eder.",
       },
     ],
@@ -2167,8 +2147,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İzole Nötr (IT) Sistem",
         category: MAK,
         question: "İzole nötr (IT) sistemde TEK toprak kaçağında ne olur?",
-        options: ["Devre tamamlanmaz; sistem çalışır", "Anında kısa devre oluşmaktadır", "Tüm gemi kararıp blackout olur", "Jeneratör sargıları patlamaktadır"],
-        correctAnswer: 0,
+        options: ["Jeneratör sargıları patlamaktadır", "Devre tamamlanmaz; sistem çalışır", "Anında kısa devre oluşmaktadır", "Tüm gemi kararıp blackout olur"],
+        correctAnswer: 1,
         explanation: "IT sistemde tek toprak kaçağında akım akmaz; operasyonel süreklilik korunur (alarm verilir, en kısa sürede bulunmalı).",
       },
       {
@@ -2176,8 +2156,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "İzole Nötr (IT) Sistem",
         category: MAK,
         question: "İkinci bir toprak kaçağı oluşursa sonuç nedir?",
-        options: ["Kısa devre olur; kesici açar", "Hiçbir şey olmaz, devam eder", "Bara gerilimi yükselmektedir", "Şebeke frekansı artmaktadır"],
-        correctAnswer: 0,
+        options: ["Bara gerilimi yükselmektedir", "Şebeke frekansı artmaktadır", "Kısa devre olur; kesici açar", "Hiçbir şey olmaz, devam eder"],
+        correctAnswer: 2,
         explanation: "İkinci toprak kaçağı devreyi tamamlar ve kısa devreye yol açar; bu yüzden ilk kaçak derhal giderilmelidir.",
       },
       {
@@ -2185,8 +2165,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Toprak Kaçağı Tespiti",
         category: MAK,
         question: "Insulation Monitoring Device (IMD) ne yapar?",
-        options: ["İzolasyon direncini ölçer, alarm verir", "Şebeke frekansını ölçüp gösterir", "Tanklardaki yakıt seviyesini gösterir", "Sargı sıcaklığını ölçüp göstermekte"],
-        correctAnswer: 0,
+        options: ["Şebeke frekansını ölçüp gösterir", "Tanklardaki yakıt seviyesini göstermekte", "Sargı sıcaklığını ölçüp göstermekte", "İzolasyon direncini ölçer, alarm verir"],
+        correctAnswer: 3,
         explanation: "IMD izolasyon direncini sürekli izler; değer eşiğin altına düşünce alarm verir. Megger ile hat bazında ölçüm yapılır.",
       },
     ],
@@ -2204,8 +2184,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Devre Kesici Tipleri",
         category: MAK,
         question: "ACB (Air Circuit Breaker) tipik olarak nerede kullanılır?",
-        options: ["MSB ve jeneratör (440V)", "Küçük aydınlatma yükü", "6.6 kV yüksek gerilim", "DC akü devresi"],
-        correctAnswer: 0,
+        options: ["DC akü devresi", "MSB ve jeneratör (440V)", "Küçük aydınlatma yükü grubu", "6.6 kV yüksek gerilim"],
+        correctAnswer: 1,
         explanation: "ACB hava ortamlı kesicidir; MSB ve jeneratör devrelerinde (440V) kullanılır.",
       },
       {
@@ -2213,8 +2193,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Devre Kesici Tipleri",
         category: MAK,
         question: "Yüksek gerilim (6.6 kV) sistemlerde hangi kesici kullanılır?",
-        options: ["VCB (Vacuum Circuit Breaker)", "MCB (minyatür devre kesici)", "MCCB (kompakt devre kesici)", "Sigortalı yük ayırma şalteri"],
-        correctAnswer: 0,
+        options: ["MCCB (kompakt devre kesici)", "Sigortalı yük ayırma şalteri", "VCB (Vacuum Circuit Breaker)", "MCB (minyatür devre kesici)"],
+        correctAnswer: 2,
         explanation: "VCB vakum ortamında ark söndürür; yüksek gerilim (6.6 kV) sistemlerinde kullanılır.",
       },
       {
@@ -2222,8 +2202,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Koruma Ayarları",
         category: MAK,
         question: "Kısa devre için hangi koruma kademesi kullanılır?",
-        options: ["Anlık (instantaneous), gecikmesiz açma", "Uzun zamanlı (overload) gecikmeli açma", "Yalnızca termal röle ile yapılan açma", "Hiçbir koşulda açmayan koruma kademesi"],
-        correctAnswer: 0,
+        options: ["Uzun zamanlı (overload) gecikmeli açma", "Yalnızca termal röle ile yapılan açma", "Hiçbir koşulda açmayan koruma kademesi", "Anlık (instantaneous), gecikmesiz açma"],
+        correctAnswer: 3,
         explanation: "Kısa devre anlık (instantaneous) koruma ile gecikmesiz açılır; overload uzun gecikmeli, short-time selektif gecikmelidir.",
       },
     ],
@@ -2241,8 +2221,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ters Güç Durumu",
         category: MAK,
         question: "Ters güç durumu nasıl oluşur ve röle ne yapar?",
-        options: ["Jeneratör motor gibi döner; röle açar", "Gerilim yükselir; röle frekansı düşürür", "Yakıt artar; röle motor hızını keser", "Hiçbir şey olmaz, sistem sürdürülür"],
-        correctAnswer: 0,
+        options: ["Hiçbir şey olmaz, sistem sürdürülür", "Jeneratör motor gibi döner; röle açar", "Gerilim yükselir; röle frekansı düşürür", "Yakıt artar; röle motor hızını keser"],
+        correctAnswer: 1,
         explanation: "Tahrik motoru durunca jeneratör baradan güç alıp motorlaşır; ters güç rölesi bunu algılayıp kesiciyi açar (dizeli korur).",
       },
       {
@@ -2250,8 +2230,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Ayar Değerleri",
         category: MAK,
         question: "Ters güç trip eşiği ve gecikmesi tipik olarak nedir?",
-        options: ["Nominal gücün %2–6'sı; 5–10 sn", "Nominal gücün %50'si; gecikmesiz", "Nominal gücün %100'ü; 60 sn sonra", "Eşik değeri ayarlanamamaktadır"],
-        correctAnswer: 0,
+        options: ["Nominal gücün %100'ü; 60 sn sonra", "Eşik değeri ayarlanamamaktadır", "Nominal gücün %2–6'sı; 5–10 sn", "Nominal gücün %50'si; gecikmesiz"],
+        correctAnswer: 2,
         explanation: "Eşik nominal gücün %2–6'sı, gecikme 5–10 sn'dir (geçici ters güç akışını engellemek için).",
       },
     ],
@@ -2269,8 +2249,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "Aşırı yükte tercihli açmada hangi yükler asla kesilmez?",
-        options: ["Dümen, navigasyon, yangın, aydınlatma", "Klima ve galley (mutfak) yükleri", "Provizyon soğutma odası yükleri", "Ayrım yoktur; tüm yükler kesilir"],
-        correctAnswer: 0,
+        options: ["Klima ve galley (mutfak) yükleri", "Provizyon soğutma odası yükleri", "Ayrım yoktur; tüm yükler kesilir", "Dümen, navigasyon, yangın, aydınlatma"],
+        correctAnswer: 3,
         explanation: "Kritik olmayanlar (klima/galley) kesilir; dümen, navigasyon, yangın pompası ve acil aydınlatma asla kesilmez.",
       },
       {
@@ -2278,8 +2258,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Öncelik Kademeleri",
         category: MAK,
         question: "Tercihli açmada ilk (1.) kademede hangi yükler kesilir?",
-        options: ["Klima ve galley yükleri (%95–100)", "Dümen makinesinin besleme yükü", "Yangın pompasının besleme yükü", "Navigasyon cihazlarının yükü"],
-        correctAnswer: 0,
+        options: ["Navigasyon cihazlarının yükü", "Klima ve galley yükleri (%95–100)", "Dümen makinesinin besleme yükü", "Yangın pompasının besleme yükü"],
+        correctAnswer: 1,
         explanation: "1. kademe klima ve galley'i (%95–100 eşiğinde) keser; kritik yükler en son ve hiç kesilmez.",
       },
     ],
@@ -2297,8 +2277,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Megger Testi",
         category: MAK,
         question: "Megger testi ne ölçer ve genel minimum kabul değeri nedir?",
-        options: ["İzolasyon direncini ölçer; min ≈1 MΩ", "AC akımı ölçer; en az 100 A değeri", "Frekansı ölçer; en az 60 Hz değeri", "Sıcaklığı ölçer; en az 50°C değeri"],
-        correctAnswer: 0,
+        options: ["Frekansı ölçer; en az 60 Hz değeri", "Sıcaklığı ölçer; en az 50°C değeri", "İzolasyon direncini ölçer; min ≈1 MΩ", "AC akımını ölçer; en az 100 A değeri"],
+        correctAnswer: 2,
         explanation: "Megger DC gerilim (500/1000/2500V) uygulayarak izolasyon direncini ölçer; genel kural minimum 1 MΩ'dur.",
       },
       {
@@ -2306,8 +2286,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sürekli İzleme",
         category: MAK,
         question: "IT (izole nötr) sistemde sürekli izlemede ne olur?",
-        options: ["Tek kaçak alarm, ikinci kaçak trip", "Her toprak kaçağı hemen trip yapar", "Hiçbir alarm verilmemektedir", "Yalnızca limanda izlenmektedir"],
-        correctAnswer: 0,
+        options: ["Her toprak kaçağı hemen trip yapar", "Hiçbir alarm verilmemektedir", "Yalnızca limanda izlenmektedir", "Tek kaçak alarm, ikinci kaçak trip"],
+        correctAnswer: 3,
         explanation: "IMD bara-gövde izolasyonunu sürekli ölçer; IT sistemde tek kaçak alarm, ikinci kaçak trip yapar.",
       },
     ],
@@ -2322,8 +2302,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sistem Yapısı",
         category: MAK,
         question: "Kıyı bağlantısı öncesi neyin uyumu sağlanmalıdır?",
-        options: ["Gerilim, frekans ve faz sırası uyumu", "Yalnızca kablo renklerinin uyumu", "Kullanılan yakıt türlerinin uyumu", "Balast su seviyelerinin uyumu"],
-        correctAnswer: 0,
+        options: ["Balast su seviyelerinin uyumu", "Gerilim, frekans ve faz sırası uyumu", "Yalnızca kablo renklerinin uyumu", "Kullanılan yakıt türlerinin uyumu"],
+        correctAnswer: 1,
         explanation: "Kıyı elektriği bağlanırken gerilim, frekans ve faz sırası uyumu sağlanmalı; gerilim farkıysa trafo kullanılır.",
       },
       {
@@ -2331,8 +2311,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Cold Ironing / OPS",
         category: MAK,
         question: "Cold ironing / OPS (Onshore Power Supply) ne sağlar?",
-        options: ["Jeneratörler durur; limanda emisyon yok", "Yakıt tüketimini belirgin artırmakta", "Jeneratörleri daha hızlı çalıştırır", "Emisyon üzerinde hiçbir etkisi yok"],
-        correctAnswer: 0,
+        options: ["Jeneratörleri daha hızlı çalıştırır", "Emisyon üzerinde hiçbir etkisi yok", "Jeneratörler durur; limanda emisyon yok", "Yakıt tüketimini belirgin artırmakta"],
+        correctAnswer: 2,
         explanation: "OPS ile gemi kıyı elektriğiyle çalışır, jeneratörler durdurulur ve liman emisyonları sıfırlanır (IEC/ISO 80005).",
       },
     ],
@@ -2347,8 +2327,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kısa Devre Akımı",
         category: MAK,
         question: "Kısa devre akımı nominal akımın kaç katına ulaşabilir?",
-        options: ["10–50 katı", "2 katı", "0.5 katı", "Değişmez"],
-        correctAnswer: 0,
+        options: ["2 katı", "0,5 katı değeri", "Değişmez", "10–50 katı"],
+        correctAnswer: 3,
         explanation: "Kısa devre akımı nominal akımın 10–50 katına ulaşıp termal/mekanik yıkıcı etki yapabilir.",
       },
       {
@@ -2356,8 +2336,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Koruma Elemanları",
         category: MAK,
         question: "HRC sigortanın kesme hızı nedir?",
-        options: ["Çok hızlı kesme (5 ms altında)", "Yavaş kesme (10 saniye kadar)", "Hiçbir koşulda açmamaktadır", "Bir dakika sonra kesmektedir"],
-        correctAnswer: 0,
+        options: ["Bir dakika sonra kesmektedir", "Çok hızlı kesme (5 ms altında)", "Yavaş kesme (10 saniye kadar sürede)", "Hiçbir koşulda açmamaktadır"],
+        correctAnswer: 1,
         explanation: "HRC sigorta çok hızlı (<5 ms) keser; selektivite için arızaya en yakın eleman ilk açmalıdır.",
       },
     ],
@@ -2372,8 +2352,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "IT Sistemde Toprak Kaçağı",
         category: MAK,
         question: "İzole nötr sistemde tek toprak kaçağında ne olur?",
-        options: ["Devre tamamlanmaz; alarm verilir", "Anında bütün sistem durmaktadır", "Bara gerilimi ikiye katlanmakta", "Jeneratör sargıları yanmaktadır"],
-        correctAnswer: 0,
+        options: ["Bara gerilimi ikiye katlanmakta", "Jeneratör sargıları yanmaktadır", "Devre tamamlanmaz; alarm verilir", "Anında bütün sistem durup kapanmaktadır"],
+        correctAnswer: 2,
         explanation: "IT sistemde tek kaçakta akım devresi tamamlanmaz; sistem çalışır ama alarm verir. İkinci kaçak faz-faz kısa devresi yapar.",
       },
       {
@@ -2381,8 +2361,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Tespit ve İzole Etme",
         category: MAK,
         question: "Toprak kaçağı arızalı devre nasıl bulunur?",
-        options: ["IMD alarmı; kesiciler sırayla açılır", "Yalnızca gözle bakılarak bulunur", "Tüm gemi kapatılıp aranmaktadır", "Bulunması olanaksız bir arızadır"],
-        correctAnswer: 0,
+        options: ["Yalnızca gözle bakılarak bulunur", "Tüm gemi kapatılıp aranmaktadır", "Bulunması olanaksız bir arızadır", "IMD alarmı; kesiciler sırayla açılır"],
+        correctAnswer: 3,
         explanation: "IMD alarmı sonrası faz belirlenir, kesiciler sırayla açılarak arızalı devre bulunup izole edilir, megger ile izolasyon doğrulanır.",
       },
     ],
@@ -2397,8 +2377,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "DC Motor Tipleri",
         category: MAK,
         question: "Seri uyarmalı DC motorun özelliği ve kullanımı nedir?",
-        options: ["Yüksek kalkış torku; vinç ve ırgat", "Sabit hız; pompa ve fan tahriki", "Düşük tork; aydınlatma devreleri", "Yalnızca akü şarjı için kullanılır"],
-        correctAnswer: 0,
+        options: ["Yalnızca akü şarjı için kullanılır", "Yüksek kalkış torku; vinç ve ırgat", "Sabit hız; pompa ve fan tahriki", "Düşük tork; aydınlatma devreleri"],
+        correctAnswer: 1,
         explanation: "Seri uyarmalı DC motorda alan sargısı yükle seridir; yüksek kalkış torku verir, vinç/ırgatta kullanılır.",
       },
       {
@@ -2406,8 +2386,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Gemi Uygulamaları",
         category: MAK,
         question: "Modern gemilerde DC motorların yerini ne aldı?",
-        options: ["VFD kontrollü AC asenkron motorlar", "Buhar makinesi tahrikli düzenekler", "Hidrolik motor tahrikli düzenekler", "Yerini alan bir düzenek olmamıştır"],
-        correctAnswer: 0,
+        options: ["Hidrolik motor tahrikli düzenekler", "Yerini alan bir düzenek olmamıştır", "VFD kontrollü AC asenkron motorlar", "Buhar makinesi tahrikli düzenekler"],
+        correctAnswer: 2,
         explanation: "Eski Ward-Leonard DC sistemlerinin yerini modern gemilerde VFD kontrollü AC motorlar almıştır.",
       },
     ],
@@ -2422,8 +2402,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Çalışma Prensibi",
         category: MAK,
         question: "VFD'nin temel güç dönüşüm zinciri nedir?",
-        options: ["AC → doğrultucu → DC → invertör → AC", "DC → invertör → AC → doğrultucu → DC", "Yalnızca trafo ile gerilim düşürme", "AC → ısı → mekanik dönüşüm zinciri"],
-        correctAnswer: 0,
+        options: ["DC → invertör → AC → doğrultucu → DC", "Yalnızca trafo ile gerilim düşürme", "AC → ısı → mekanik dönüşüm zinciri", "AC → doğrultucu → DC → invertör → AC"],
+        correctAnswer: 3,
         explanation: "VFD: AC'yi doğrultup DC'ye, sonra invertörle değişken frekanslı AC'ye çevirir; V/f oranı sabit tutularak akı korunur (PWM).",
       },
       {
@@ -2431,8 +2411,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Gemi Uygulamaları",
         category: MAK,
         question: "VFD soğutma suyu pompasında yaklaşık ne kadar enerji tasarrufu sağlar?",
-        options: ["%30–50", "%2–5", "Tasarruf sağlamaz", "%90+"],
-        correctAnswer: 0,
+        options: ["%90+", "%30–50", "%2–5", "Tasarruf sağlamaz"],
+        correctAnswer: 1,
         explanation: "Değişken debi ihtiyacı nedeniyle VFD soğutma pompalarında %30–50 tasarruf sağlar (kübik yük karakteristiği).",
       },
     ],
@@ -2447,8 +2427,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Temel Seyir Fenerleri",
         category: MAK,
         question: "Sancak (starboard) seyir feneri hangi renk ve görüş açısındadır?",
-        options: ["Yeşil, 112.5°", "Kırmızı, 112.5°", "Beyaz, 225°", "Yeşil, 360°"],
-        correctAnswer: 0,
+        options: ["Beyaz, 225°", "Yeşil, 360°", "Yeşil, 112.5°", "Kırmızı, 112.5°"],
+        correctAnswer: 2,
         explanation: "Sancak feneri yeşil ve 112.5° görüş açılıdır; iskele kırmızı 112.5°, pruva beyaz 225°.",
       },
       {
@@ -2456,8 +2436,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Elektrik Beslemesi",
         category: MAK,
         question: "Seyir fenerleri nereden beslenir?",
-        options: ["Acil pano (ESB); kesintide akü devrede", "Doğrudan ana jeneratörden, yedeksiz", "Yalnızca güneş paneli üzerinden", "Yalnızca kıyı bağlantısı üzerinden"],
-        correctAnswer: 0,
+        options: ["Doğrudan ana jeneratörden, yedeksiz", "Yalnızca güneş paneli üzerinden", "Yalnızca kıyı bağlantısı üzerinden", "Acil pano (ESB); kesintide akü devrede"],
+        correctAnswer: 3,
         explanation: "Seyir fenerleri ESB'den beslenir; güç kaybında akü otomatik devreye girer, arıza köprüüstünde alarm verir.",
       },
     ],
@@ -2472,8 +2452,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Akü Tipleri",
         category: MAK,
         question: "Nikel-kadmiyum (NiCd) akünün hücre gerilimi ve özelliği nedir?",
-        options: ["1,2 V; dayanıklı, düşük bakım gerektirir", "2,0 V; ucuz, UPS uygulamalarında", "3,7 V; yüksek enerji yoğunluğu taşır", "12,0 V; tek hücreli yapıya sahiptir"],
-        correctAnswer: 0,
+        options: ["12,0 V; tek hücreli yapıya sahiptir", "1,2 V; dayanıklı, düşük bakım gerektirir", "2,0 V; ucuz, UPS uygulamalarında", "3,7 V; yüksek enerji yoğunluğu taşır"],
+        correctAnswer: 1,
         explanation: "NiCd hücre gerilimi 1.2V'dur; dayanıklı ve düşük bakımlıdır, motor çalıştırmada kullanılır.",
       },
       {
@@ -2481,8 +2461,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Şarj Sistemleri",
         category: MAK,
         question: "Float şarj nedir?",
-        options: ["Düşük akımla sürekli şarjda tutma", "Yüksek akımla hızlı şarj etmek", "Aküyü tümüyle boşaltıp bekletmek", "Şarj bağlantısız biçimde bekletmek"],
-        correctAnswer: 0,
+        options: ["Aküyü tümüyle boşaltıp bekletmek", "Şarj bağlantısız biçimde bekletmek", "Düşük akımla sürekli şarjda tutma", "Yüksek akımla hızlı şarj etmek"],
+        correctAnswer: 2,
         explanation: "Float şarj aküyü sürekli düşük akımda tutar; boost şarj ise derin deşarj sonrası yüksek akımla hızlı şarjdır.",
       },
     ],
@@ -2497,8 +2477,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Sistem Yapısı",
         category: MAK,
         question: "Acil aydınlatma neyle beslenir?",
-        options: ["Acil jeneratör veya akü; otomatik", "Yalnızca ana jeneratör üzerinden", "Yalnızca kıyı bağlantısı üzerinden", "Yalnızca taşınabilir el fenerinden"],
-        correctAnswer: 0,
+        options: ["Yalnızca ana jeneratör üzerinden", "Yalnızca kıyı bağlantısı üzerinden", "Yalnızca taşınabilir el fenerinden", "Acil jeneratör veya akü; otomatik"],
+        correctAnswer: 3,
         explanation: "Acil aydınlatma acil jeneratör/akü ile beslenir ve ana güç kaybında otomatik devreye girer (tahliye yolları, muster station).",
       },
       {
@@ -2506,8 +2486,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "SOLAS Gereklilikleri",
         category: MAK,
         question: "SOLAS'a göre akü destekli acil aydınlatma ve geçiş süresi nedir?",
-        options: ["En az 3 saat; geçiş süresi ≤3 saniye", "30 dakika; geçiş süresi 1 dakika", "Herhangi bir süre sınırı yoktur", "Yalnızca limanda beslenmektedir"],
-        correctAnswer: 0,
+        options: ["Yalnızca limanda beslenmektedir", "En az 3 saat; geçiş süresi ≤3 saniye", "30 dakika; geçiş süresi 1 dakika", "Herhangi bir süre sınırı yoktur"],
+        correctAnswer: 1,
         explanation: "Akü destekli acil aydınlatma en az 3 saat çalışmalı, switchover süresi 3 saniyeyi geçmemelidir.",
       },
     ],
@@ -2522,8 +2502,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Koruma Elemanları",
         category: MAK,
         question: "Asimetrik çalışmaya yol açan faz kaybına karşı hangi koruma kullanılır?",
-        options: ["Faz koruma (faz sırası) rölesi", "HRC yüksek kesme kapasiteli sigorta", "PT100 sıcaklık ölçüm sensörü", "Termik aşırı yük rölesi"],
-        correctAnswer: 0,
+        options: ["PT100 sıcaklık ölçüm sensörü", "Termik aşırı yük rölesi", "Faz koruma (faz sırası) rölesi", "HRC yüksek kesme kapasiteli sigorta"],
+        correctAnswer: 2,
         explanation: "Faz kaybı (asimetrik çalışma) faz koruma rölesi ile algılanır; aşırı akım termik röle, kısa devre HRC ile korunur.",
       },
       {
@@ -2531,8 +2511,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bakım İşleri",
         category: MAK,
         question: "Motor periyodik bakımında neler yapılır?",
-        options: ["İzolasyon, gres, terminal ve fan", "Yalnızca motor gövdesinin boyanması", "Motor sökülüp yenisiyle değiştirilir", "Hiçbir bakım işlemi yapılmamakta"],
-        correctAnswer: 0,
+        options: ["Yalnızca motor gövdesinin boyanması", "Motor sökülüp yenisiyle değiştirilir", "Hiçbir bakım işlemi yapılmamakta", "İzolasyon, gres, terminal ve fan"],
+        correctAnswer: 3,
         explanation: "Periyodik bakım: izolasyon ölçümü, yatak gresleme, terminal sıkılık kontrolü, fan temizliği; titreşim ölçümü yatak durumunu gösterir.",
       },
     ],
@@ -2547,8 +2527,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Koruma Tipleri",
         category: MAK,
         question: "Ex d (alev sızdırmaz) koruma tipinin prensibi nedir?",
-        options: ["Patlama muhafaza içinde kalır, yayılmaz", "Enerji tutuşma için yetersiz tutulur", "Pozitif basınçla temiz hava sağlanır", "Kıvılcım hiçbir biçimde oluşmamakta"],
-        correctAnswer: 0,
+        options: ["Kıvılcım hiçbir biçimde oluşmamakta", "Patlama muhafaza içinde kalır, yayılmaz", "Enerji tutuşma için yetersiz tutulur", "Pozitif basınçla temiz hava sağlanır"],
+        correctAnswer: 1,
         explanation: "Ex d alev sızdırmazdır: patlama muhafazanın içinde kalır. Ex i kendinden güvenli, Ex p basınçlandırılmış, Ex e artırılmış güvenliktir.",
       },
       {
@@ -2556,8 +2536,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Bölge Sınıflandırma",
         category: MAK,
         question: "Zone 0 ne anlama gelir?",
-        options: ["Patlayıcı atmosfer sürekli mevcuttur", "Hiçbir patlayıcı atmosfer bulunmaz", "Yalnızca arıza anında oluşmaktadır", "Yalnızca limanda oluşan bir bölgedir"],
-        correctAnswer: 0,
+        options: ["Yalnızca arıza anında oluşmaktadır", "Yalnızca limanda oluşan bir bölgedir", "Patlayıcı atmosfer sürekli mevcuttur", "Hiçbir patlayıcı atmosfer bulunmaz"],
+        correctAnswer: 2,
         explanation: "Zone 0: patlayıcı atmosfer sürekli; Zone 1: normalde ara sıra; Zone 2: anormal koşullarda kısa süreli.",
       },
     ],
@@ -2572,8 +2552,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "UPS Tipi ve Kullanım",
         category: MAK,
         question: "Online (çift dönüşümlü) UPS'in özelliği nedir?",
-        options: ["Sürekli invertör üzerinden; sıfır geçiş", "Kesintide bir dakika gecikme yapar", "Yalnızca limanda çalışabilmektedir", "Yapısında hiç akü bulundurmamakta"],
-        correctAnswer: 0,
+        options: ["Kesintide bir dakika gecikme yapar", "Yalnızca limanda çalışabilmektedir", "Yapısında hiç akü bulundurmamakta", "Sürekli invertör üzerinden; sıfır geçiş"],
+        correctAnswer: 3,
         explanation: "Online UPS sürekli akü-invertör üzerinden besler (sıfır geçiş); standby UPS'te 2–10 ms geçiş vardır.",
       },
       {
@@ -2581,8 +2561,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "UPS Tipi ve Kullanım",
         category: MAK,
         question: "GMDSS ve navigasyon cihazları için hangi UPS tipi tercih edilir?",
-        options: ["Online (çift dönüşümlü) UPS", "Standby (bekleme) tipi UPS", "UPS kullanılması gerekmez", "Yalnızca acil jeneratör yeterli"],
-        correctAnswer: 0,
+        options: ["Yalnızca acil jeneratör yeterli", "Online (çift dönüşümlü) UPS", "Standby (bekleme) tipi UPS", "UPS kullanılması gerekmez"],
+        correctAnswer: 1,
         explanation: "Kritik navigasyon ve GMDSS cihazları sıfır geçişli online UPS ile beslenir.",
       },
     ],
@@ -2597,8 +2577,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Kablo Tipleri",
         category: MAK,
         question: "Mineral yalıtımlı (MI) kablo nerede kullanılır?",
-        options: ["Yangına dayanıklı; acil sistemlerde", "Yalnızca aydınlatma devrelerinde", "Yaşam mahallerinde (düşük duman)", "Gemilerde hiç kullanılmamaktadır"],
-        correctAnswer: 0,
+        options: ["Yaşam mahallerinde (düşük duman)", "Gemilerde hiç kullanılmamaktadır", "Yangına dayanıklı; acil sistemlerde", "Yalnızca aydınlatma devrelerinde"],
+        correctAnswer: 2,
         explanation: "MI kablo yangına dayanıklıdır; acil sistemler ve yangın pompalarında kullanılır. LSZH ise yaşam mahallerinde (düşük duman).",
       },
       {
@@ -2606,8 +2586,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Boyutlandırma",
         category: MAK,
         question: "Kablo kesiti seçiminde hangi kriterler dikkate alınır?",
-        options: ["Akım kapasitesi, gerilim düşüşü, dayanım", "Yalnızca kablo kılıfının renk kodu", "Yalnızca çekilecek kablonun uzunluğu", "Yalnızca üretici firmanın marka adı"],
-        correctAnswer: 0,
+        options: ["Yalnızca kablo kılıfının renk kodu", "Yalnızca çekilecek kablonun uzunluğu", "Yalnızca üretici firmanın marka adı", "Akım kapasitesi, gerilim düşüşü, dayanım"],
+        correctAnswer: 3,
         explanation: "Kesit; akım kapasitesi, gerilim düşüşü (%6 limit) ve kısa devre dayanımına göre seçilir; gruplama/sıcaklık düzeltmeleri uygulanır.",
       },
     ],
@@ -2622,8 +2602,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Karşılaştırma",
         category: MAK,
         question: "6.6 kV sistem tipik olarak hangi gemilerde tercih edilir?",
-        options: [">5 MW güç isteyen büyük gemilerde", "Küçük balıkçı teknelerinde tercih", "Yalnızca özel yat teknelerinde", "Güç ihtiyacından bağımsız her gemide"],
-        correctAnswer: 0,
+        options: ["Güç ihtiyacından bağımsız her gemide", ">5 MW güç isteyen büyük gemilerde", "Küçük balıkçı teknelerinde tercih", "Yalnızca özel yat teknelerinde"],
+        correctAnswer: 1,
         explanation: "6.6 kV >5 MW güç kapasitesi olan büyük gemilerde kullanılır; düşük akım sayesinde kablo kesiti küçülür.",
       },
       {
@@ -2631,8 +2611,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Karşılaştırma",
         category: MAK,
         question: "6.6 kV sistemde koruma ve personel açısından ne gerekir?",
-        options: ["VCB, diferansiyel röle ve YG eğitimi", "Yalnızca MCB kullanılması yeterli", "Ek bir eğitim gerekmemektedir", "440 V sistemle tümüyle aynıdır"],
-        correctAnswer: 0,
+        options: ["Ek bir eğitim gerekmemektedir", "440 V sistemle tümüyle aynıdır", "VCB, diferansiyel röle ve YG eğitimi", "Yalnızca MCB kullanılması yeterli"],
+        correctAnswer: 2,
         explanation: "6.6 kV'de VCB ve diferansiyel röle kullanılır; çalışma özel yüksek gerilim eğitimi ve yetki gerektirir.",
       },
     ],
@@ -2647,8 +2627,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Beslenen Kritik Yükler",
         category: MAK,
         question: "ESB (Acil Dağıtım Panosu) hangi yükleri besler?",
-        options: ["Seyir feneri, GMDSS, yangın, dümen", "Klima ve galley (mutfak) yükleri", "Ambar yük vinçlerinin besleme yükü", "Provizyon soğutma odası besleme yükü"],
-        correctAnswer: 0,
+        options: ["Klima ve galley (mutfak) yükleri", "Ambar yük vinçlerinin besleme yükü", "Provizyon soğutma odası besleme yükü", "Seyir feneri, GMDSS, yangın, dümen"],
+        correctAnswer: 3,
         explanation: "ESB, SOLAS gereği seyir fenerleri, GMDSS, acil yangın pompası, dümen makinesi, acil aydınlatma gibi kritik yükleri besler.",
       },
       {
@@ -2656,8 +2636,8 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Konumlandırma",
         category: MAK,
         question: "ESB nerede konumlandırılır?",
-        options: ["Makine dairesi üstünde, yangın sınırı dışı", "Makine dairesi tabanında konumlandırılır", "Köprüüstünde MSB ile birlikte durur", "Yük ambarının içinde konumlandırılır"],
-        correctAnswer: 0,
+        options: ["Yük ambarının içinde konumlandırılır", "Makine dairesi üstünde, yangın sınırı dışı", "Makine dairesinin tabanında konumlandırılır", "Köprüüstünde MSB ile birlikte durur"],
+        correctAnswer: 1,
         explanation: "ESB ana yangın sınırının ötesinde, makine dairesi üzerinde ve acil jeneratörle birlikte konumlandırılır.",
       },
     ],
@@ -2668,8 +2648,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dizel çevrimi ve sıkıştırma ile ateşleme",
     blocks: [{ sectionTitles: ["Sıkıştırma ile Ateşleme Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorda yakıt nasıl tutuşur?", options: ["Sıkışan hava 700-900°C; kendiliğinden", "Buji kıvılcımı ile ateşlenmektedir", "Elektrikli ısıtıcı ile tutuşturulur", "Dışarıdan verilen alev ile tutuşur"], correctAnswer: 0, explanation: "Emmede silindire yalnızca hava alınır; sıkıştırma sonu sıcaklığı 700-900°C'ye ulaşır ve enjekte edilen yakıt kendiliğinden tutuşur." },
-      { id: 2, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorlarda sıkıştırma oranı genellikle hangi aralıktadır?", options: ["12-20", "2-4", "30-40", "1-2"], correctAnswer: 0, explanation: "Sıkıştırma oranı genellikle 12-20 arasındadır; yüksek sıkıştırma oranı daha iyi ateşleme güvenilirliği sağlar." },
+      { id: 1, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorda yakıt nasıl tutuşur?", options: ["Elektrikli ısıtıcı ile tutuşturulmakta", "Dışarıdan verilen alev ile tutuşur", "Sıkışan hava 700-900°C; kendiliğinden", "Buji kıvılcımı ile ateşlenmektedir"], correctAnswer: 2, explanation: "Emmede silindire yalnızca hava alınır; sıkıştırma sonu sıcaklığı 700-900°C'ye ulaşır ve enjekte edilen yakıt kendiliğinden tutuşur." },
+      { id: 2, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorlarda sıkıştırma oranı genellikle hangi aralıktadır?", options: ["2-4", "30-40", "1-2", "12-20"], correctAnswer: 3, explanation: "Sıkıştırma oranı genellikle 12-20 arasındadır; yüksek sıkıştırma oranı daha iyi ateşleme güvenilirliği sağlar." },
     ],
   },
   {
@@ -2677,8 +2657,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İki zamanlı motor çalışma prensibi",
     blocks: [{ sectionTitles: ["Çalışma Prensipleri", "Avantajlar ve Dezavantajlar"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensipleri", category: MAK, question: "İki zamanlı motorda taze hava silindire nasıl dolar?", options: ["Piston inince süpürme portları açılır", "Buji ateşlemesiyle hava emilmektedir", "Emme supabı yoluyla (dört supaplı)", "Egzoz kanalından geri emilmektedir"], correctAnswer: 0, explanation: "Piston aşağı inerken süpürme portları açılır, taze hava dolar ve yanmış gaz egzoz supabı/portlarıyla atılır; uniflow tipte yalnız egzoz supabı vardır." },
-      { id: 2, sectionRef: "Avantajlar ve Dezavantajlar", category: MAK, question: "İki zamanlı motorun başlıca avantajı nedir?", options: ["Düşük devir, yüksek tork ve verim", "Çok hafif ve kompakt yapıda olması", "Süpürme havası gerektirmiyor olması", "Çok sayıda hareketli parça içermesi"], correctAnswer: 0, explanation: "Avantaj: düşük devir, yüksek tork/verim, direkt tahrik, basit supap mekanizması. Dezavantaj: büyük/ağır yapı ve süpürme havası için ek enerji." },
+      { id: 1, sectionRef: "Çalışma Prensipleri", category: MAK, question: "İki zamanlı motorda taze hava silindire nasıl dolar?", options: ["Egzoz kanalından geri emilmektedir", "Piston inince süpürme portları açılır", "Buji ateşlemesi yoluyla hava emilmektedir", "Emme supabı yoluyla (dört supaplı)"], correctAnswer: 1, explanation: "Piston aşağı inerken süpürme portları açılır, taze hava dolar ve yanmış gaz egzoz supabı/portlarıyla atılır; uniflow tipte yalnız egzoz supabı vardır." },
+      { id: 2, sectionRef: "Avantajlar ve Dezavantajlar", category: MAK, question: "İki zamanlı motorun başlıca avantajı nedir?", options: ["Süpürme havası gerektirmiyor olması", "Çok sayıda hareketli parça içermesi", "Düşük devir, yüksek tork ve verim", "Çok hafif ve kompakt yapıda olması"], correctAnswer: 2, explanation: "Avantaj: düşük devir, yüksek tork/verim, direkt tahrik, basit supap mekanizması. Dezavantaj: büyük/ağır yapı ve süpürme havası için ek enerji." },
     ],
   },
   {
@@ -2686,8 +2666,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dört zamanlı motor çalışma prensibi",
     blocks: [{ sectionTitles: ["Dört Zaman", "Karşılaştırma"] }],
     questions: [
-      { id: 1, sectionRef: "Dört Zaman", category: MAK, question: "Dört zamanlı motorda strok sırası nedir?", options: ["Emme → Sıkıştırma → Yanma-Genleşme → Egzoz", "Egzoz → Emme → Yanma → Sıkıştırma", "Sıkıştırma → Emme → Egzoz → Yanma", "Yanma → Egzoz → Emme → Sıkıştırma"], correctAnswer: 0, explanation: "Emme (hava dolar), sıkıştırma (supaplar kapalı), yanma-genleşme (güç üretir), egzoz (gazlar atılır) sırasıyla gerçekleşir." },
-      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Dört zamanlı motorlar tipik olarak hangi devir aralığında çalışır ve nerede kullanılır?", options: ["400-1000 rpm; jeneratör veya redüktörlü", "80-120 rpm; direkt tahrikli ana motor", "10-20 rpm; dümen makinesi tahriki", "5000 rpm; doğrudan pervane tahriki"], correctAnswer: 0, explanation: "İki zamanlı 80-120 rpm direkt tahrikliyken dört zamanlı 400-1000 rpm olup redüktörlü ana motor veya jeneratör tahrikinde kullanılır." },
+      { id: 1, sectionRef: "Dört Zaman", category: MAK, question: "Dört zamanlı motorda strok sırası nedir?", options: ["Egzoz → Emme → Yanma → Sıkıştırma", "Sıkıştırma → Emme → Egzoz → Yanma", "Yanma → Egzoz → Emme → Sıkıştırma", "Emme → Sıkıştırma → Yanma-Genleşme → Egzoz"], correctAnswer: 3, explanation: "Emme (hava dolar), sıkıştırma (supaplar kapalı), yanma-genleşme (güç üretir), egzoz (gazlar atılır) sırasıyla gerçekleşir." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Dört zamanlı motorlar tipik olarak hangi devir aralığında çalışır ve nerede kullanılır?", options: ["5000 rpm; doğrudan pervane tahriki", "400-1000 rpm; jeneratör veya redüktörlü", "80-120 rpm; doğrudan tahrikli ana motor", "10-20 rpm; dümen makinesi tahriki"], correctAnswer: 1, explanation: "İki zamanlı 80-120 rpm direkt tahrikliyken dört zamanlı 400-1000 rpm olup redüktörlü ana motor veya jeneratör tahrikinde kullanılır." },
     ],
   },
   {
@@ -2695,8 +2675,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Düşük, orta ve yüksek devirli motorlar",
     blocks: [{ sectionTitles: ["Sınıflandırma"] }],
     questions: [
-      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Büyük gemilerde direkt tahrikli ana makine olarak hangi tip kullanılır?", options: ["Düşük devirli iki zamanlı crosshead", "Yüksek devirli dört zamanlı motor", "Orta devirli benzinli motor tipi", "Buhar türbini tahrikli düzenek"], correctAnswer: 0, explanation: "Düşük devirli (80-120 rpm) iki zamanlı crosshead motorlar direkt pervane tahrikinde kullanılır." },
-      { id: 2, sectionRef: "Sınıflandırma", category: MAK, question: "Yüksek devirli (>1000 rpm) motorlar nerede kullanılır?", options: ["Küçük jeneratör ve bot motorunda", "Büyük gemilerin ana motoru olarak", "Doğrudan pervane tahrik düzeneğinde", "Yardımcı kazan tahrik düzeneğinde"], correctAnswer: 0, explanation: "Yüksek devirli dört zamanlı motorlar küçük jeneratör ve bot motorlarında; orta devirli (400-1000 rpm) trunk piston motorlar redüktörlü ana motor/jeneratör olarak kullanılır." },
+      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Büyük gemilerde direkt tahrikli ana makine olarak hangi tip kullanılır?", options: ["Orta devirli benzinli motor tipi", "Buhar türbini tahrikli düzenek", "Düşük devirli iki zamanlı crosshead", "Yüksek devirli dört zamanlı motor tipi"], correctAnswer: 2, explanation: "Düşük devirli (80-120 rpm) iki zamanlı crosshead motorlar direkt pervane tahrikinde kullanılır." },
+      { id: 2, sectionRef: "Sınıflandırma", category: MAK, question: "Yüksek devirli (>1000 rpm) motorlar nerede kullanılır?", options: ["Büyük gemilerin ana motoru olarak", "Doğrudan pervane tahrik düzeneğinde", "Yardımcı kazan tahrik düzeneğinde", "Küçük jeneratör ve bot motorunda"], correctAnswer: 3, explanation: "Yüksek devirli dört zamanlı motorlar küçük jeneratör ve bot motorlarında; orta devirli (400-1000 rpm) trunk piston motorlar redüktörlü ana motor/jeneratör olarak kullanılır." },
     ],
   },
   {
@@ -2704,8 +2684,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Crosshead ve trunk piston motor farkları",
     blocks: [{ sectionTitles: ["Crosshead Motor", "Trunk Piston Motor"] }],
     questions: [
-      { id: 1, sectionRef: "Crosshead Motor", category: MAK, question: "Crosshead motorlarda yanma odası ile karter ilişkisi nasıldır?", options: ["Tamamen ayrı; yağlamalar bağımsız", "Ortak; tek yağlama devresi vardır", "Yarı ortak; kısmen bağlantılıdır", "Hiçbir yağlama uygulanmamaktadır"], correctAnswer: 0, explanation: "Ayrı olduğundan düşük kaliteli yüksek BN silindir yağı kullanılabilir; karter güvenliği yüksektir." },
-      { id: 2, sectionRef: "Trunk Piston Motor", category: MAK, question: "Trunk piston motorda silindir ve karter yağı nasıldır?", options: ["Aynı sistem (ortak)", "Tamamen ayrı", "Yağ kullanılmaz", "Su ile yağlanır"], correctAnswer: 0, explanation: "Piston doğrudan biyele bağlı, çapraz kuvvetleri taşır; karter patlama riski daha yüksektir." },
+      { id: 1, sectionRef: "Crosshead Motor", category: MAK, question: "Crosshead motorlarda yanma odası ile karter ilişkisi nasıldır?", options: ["Hiçbir yağlama uygulanmamaktadır", "Tamamen ayrı; yağlamalar bağımsız", "Ortak; tek yağlama devresi vardır", "Yarı ortak; kısmen bağlantılıdır"], correctAnswer: 1, explanation: "Ayrı olduğundan düşük kaliteli yüksek BN silindir yağı kullanılabilir; karter güvenliği yüksektir." },
+      { id: 2, sectionRef: "Trunk Piston Motor", category: MAK, question: "Trunk piston motorda silindir ve karter yağı nasıldır?", options: ["Yağ kullanılmaz", "Su ile yağlanır", "Aynı sistem (ortak)", "Tamamen ayrı"], correctAnswer: 2, explanation: "Piston doğrudan biyele bağlı, çapraz kuvvetleri taşır; karter patlama riski daha yüksektir." },
     ],
   },
   {
@@ -2713,8 +2693,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Silindir kapağı (cylinder head)",
     blocks: [{ sectionTitles: ["Yapı ve Görevleri"] }],
     questions: [
-      { id: 1, sectionRef: "Yapı ve Görevleri", category: MAK, question: "Silindir kapağı üzerinde hangi bileşenler bulunur?", options: ["Egzoz supabı, enjektör, hava supabı", "Krank mili ve ana yatak burçları", "Turboşarjer türbin ve kompresörü", "Pervane şaftı ve kaplin bağlantısı"], correctAnswer: 0, explanation: "Kapak üzerinde egzoz supabı, yakıt enjektörü, başlatma havası supabı, güvenlik supabı ve indikatör musluğu yer alır." },
-      { id: 2, sectionRef: "Yapı ve Görevleri", category: MAK, question: "Silindir kapağı hangi basınç ve sıcaklığa dayanmalıdır?", options: ["150-200 bar ve 400-500°C", "5 bar ve yaklaşık 50°C", "2 bar ve yaklaşık 100°C", "1000 bar ve 1500°C değeri"], correctAnswer: 0, explanation: "Kapak 150-200 bar basınç ve 400-500°C sıcaklığa dayanmalıdır; dökme demir/çelik dökümden üretilir ve içinde soğutma suyu kanalları bulunur." },
+      { id: 1, sectionRef: "Yapı ve Görevleri", category: MAK, question: "Silindir kapağı üzerinde hangi bileşenler bulunur?", options: ["Krank mili ve ana yatak burçları", "Turboşarjer türbin ve kompresörü", "Pervane şaftı ve kaplin bağlantıları", "Egzoz supabı, enjektör, hava supabı"], correctAnswer: 3, explanation: "Kapak üzerinde egzoz supabı, yakıt enjektörü, başlatma havası supabı, güvenlik supabı ve indikatör musluğu yer alır." },
+      { id: 2, sectionRef: "Yapı ve Görevleri", category: MAK, question: "Silindir kapağı hangi basınç ve sıcaklığa dayanmalıdır?", options: ["1000 bar ve 1500°C değeri", "150-200 bar ve 400-500°C", "5 bar ve yaklaşık 50°C", "2 bar ve yaklaşık 100°C"], correctAnswer: 1, explanation: "Kapak 150-200 bar basınç ve 400-500°C sıcaklığa dayanmalıdır; dökme demir/çelik dökümden üretilir ve içinde soğutma suyu kanalları bulunur." },
     ],
   },
   {
@@ -2722,8 +2702,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Silindir gömleği (liner) ve aşınma",
     blocks: [{ sectionTitles: ["Aşınma Mekanizmaları", "Liner Ölçümü"] }],
     questions: [
-      { id: 1, sectionRef: "Aşınma Mekanizmaları", category: MAK, question: "Korozif aşınmanın nedeni nedir?", options: ["Kükürtten sülfürik asit oluşumu", "Katalizör taneciklerinin çizmesi", "Aşırı yüksek devirde çalışılması", "Silindirin aşırı yağlanması hâli"], correctAnswer: 0, explanation: "Korozif aşınma kükürtten oluşan sülfürik asitten; abrazif partiküllerden; adhesif ise yetersiz yağlamadan (metal-metal teması) kaynaklanır. Doğru TBN'li yağ kontrolü sağlar." },
-      { id: 2, sectionRef: "Liner Ölçümü", category: MAK, question: "Liner iç çapı hangi aletle ölçülür ve aşınma limiti nedir?", options: ["Bore gauge ile; limit %0,5-1,0", "Termometre ile; limit %50 değeri", "Voltmetre ile; limit %10 değeri", "Barometre ile; limit %0,01 değeri"], correctAnswer: 0, explanation: "İç çap bore gauge ile ölçülür; aşınma limiti nominal çapın %0.5-1.0'i kadardır. Ovalizasyon ve koniklik (taper) de kontrol edilir." },
+      { id: 1, sectionRef: "Aşınma Mekanizmaları", category: MAK, question: "Korozif aşınmanın nedeni nedir?", options: ["Aşırı yüksek devirde çalışılması", "Silindirin aşırı yağlanması hâli", "Kükürtten sülfürik asit oluşumu", "Katalizör taneciklerinin çizmesi"], correctAnswer: 2, explanation: "Korozif aşınma kükürtten oluşan sülfürik asitten; abrazif partiküllerden; adhesif ise yetersiz yağlamadan (metal-metal teması) kaynaklanır. Doğru TBN'li yağ kontrolü sağlar." },
+      { id: 2, sectionRef: "Liner Ölçümü", category: MAK, question: "Liner iç çapı hangi aletle ölçülür ve aşınma limiti nedir?", options: ["Termometre ile; limit %50 değeri", "Voltmetre ile; limit %10 değeri", "Barometre ile; limit %0,01 değeri", "Bore gauge ile; limit %0,5-1,0"], correctAnswer: 3, explanation: "İç çap bore gauge ile ölçülür; aşınma limiti nominal çapın %0.5-1.0'i kadardır. Ovalizasyon ve koniklik (taper) de kontrol edilir." },
     ],
   },
   {
@@ -2731,8 +2711,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Piston ve segman tasarımı",
     blocks: [{ sectionTitles: ["Piston Yapısı", "Segman Tipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Segman Tipleri", category: MAK, question: "Sıkıştırma segmanının görevi nedir?", options: ["Gaz sızdırmazlığı", "Yağı kazıma (yağ filmi kontrolü)", "Soğutma", "Yakıt enjeksiyonu"], correctAnswer: 0, explanation: "Sıkıştırma segmanları gaz sızdırmazlığı, yağ segmanları liner üzerindeki yağ filmini kontrol eder. Ağız boşluğu (gap) aşırı artarsa blow-by olur." },
-      { id: 2, sectionRef: "Piston Yapısı", category: MAK, question: "Büyük iki zamanlı motorlarda piston nasıl yapılır?", options: ["İki parça: çelik taç + hafif etek", "Tek parça plastik döküm gövde", "İçi boş alüminyum tek gövde", "Tek parça seramik blok gövde"], correctAnswer: 0, explanation: "Büyük iki zamanlı pistonlar çelik taç (crown) ve daha hafif etekten (skirt) oluşur; taç içinde soğutma yağı/su sirkülasyonu bulunur." },
+      { id: 1, sectionRef: "Segman Tipleri", category: MAK, question: "Sıkıştırma segmanının görevi nedir?", options: ["Yakıt enjeksiyonu", "Gaz sızdırmazlığı", "Yağı kazıma (yağ filmi kontrolü)", "Soğutma"], correctAnswer: 1, explanation: "Sıkıştırma segmanları gaz sızdırmazlığı, yağ segmanları liner üzerindeki yağ filmini kontrol eder. Ağız boşluğu (gap) aşırı artarsa blow-by olur." },
+      { id: 2, sectionRef: "Piston Yapısı", category: MAK, question: "Büyük iki zamanlı motorlarda piston nasıl yapılır?", options: ["İçi boş alüminyum tek gövde", "Tek parça seramik blok gövde", "İki parça: çelik taç + hafif etek", "Tek parça plastik döküm gövde"], correctAnswer: 2, explanation: "Büyük iki zamanlı pistonlar çelik taç (crown) ve daha hafif etekten (skirt) oluşur; taç içinde soğutma yağı/su sirkülasyonu bulunur." },
     ],
   },
   {
@@ -2740,8 +2720,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Biyel kolu ve krank mili",
     blocks: [{ sectionTitles: ["Biyel Kolu", "Krank Mili"] }],
     questions: [
-      { id: 1, sectionRef: "Krank Mili", category: MAK, question: "Krank mili hizalaması hangi ölçümle kontrol edilir?", options: ["Deflection ölçümü", "Basınç ölçümü", "Sıcaklık ölçümü", "Debi ölçümü"], correctAnswer: 0, explanation: "Yatak aşınması veya gövde deformasyonu hizalamayı bozar; her bakım döneminde deflection ölçülmelidir." },
-      { id: 2, sectionRef: "Biyel Kolu", category: MAK, question: "Biyel kolunun büyük ucu (big end) neye bağlanır?", options: ["Krank pinine", "Pervaneye", "Silindir kapağına", "Turboşarjere"], correctAnswer: 0, explanation: "Küçük uç crosshead/piston pinine; büyük uç yatağı ikiye bölünür, boşluk hassas ayarlanır." },
+      { id: 1, sectionRef: "Krank Mili", category: MAK, question: "Krank mili hizalaması hangi ölçümle kontrol edilir?", options: ["Basınç ölçümü", "Sıcaklık ölçümü verisi", "Debi ölçümü", "Deflection ölçümü"], correctAnswer: 3, explanation: "Yatak aşınması veya gövde deformasyonu hizalamayı bozar; her bakım döneminde deflection ölçülmelidir." },
+      { id: 2, sectionRef: "Biyel Kolu", category: MAK, question: "Biyel kolunun büyük ucu (big end) neye bağlanır?", options: ["Turboşarjere", "Krank pinine", "Pervaneye", "Silindir kapağına"], correctAnswer: 1, explanation: "Küçük uç crosshead/piston pinine; büyük uç yatağı ikiye bölünür, boşluk hassas ayarlanır." },
     ],
   },
   {
@@ -2749,8 +2729,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Mekanik yakıt enjeksiyon sistemi",
     blocks: [{ sectionTitles: ["Sistem Bileşenleri"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik yakıt pompasında yakıt miktarını ne kontrol eder?", options: ["Plunjer helisinin dönme açısı", "Elektronik kontrol valfi konumu", "Rail basınç sensörünün değeri", "Turboşarjer besleme basıncı"], correctAnswer: 0, explanation: "Kam mili → kam takipçisi → plunjer pompa zinciri ile çalışır; plunjer helisinin dönme açısıyla yakıt miktarı ayarlanır." },
-      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik enjeksiyon basıncı tipik olarak hangi aralıktadır?", options: ["300-1000 bar", "5-10 bar", "20-50 bar", "5000-8000 bar"], correctAnswer: 0, explanation: "Enjeksiyon basıncı 300-1000 bar aralığındadır; nozül genellikle çok deliklidir ve delik sayısı/çapı püskürtme kalitesini belirler." },
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik yakıt pompasında yakıt miktarını ne kontrol eder?", options: ["Rail basınç sensörünün değeri", "Turboşarjer besleme basıncı", "Plunjer helisinin dönme açısı", "Elektronik kontrol valfi konumu"], correctAnswer: 2, explanation: "Kam mili → kam takipçisi → plunjer pompa zinciri ile çalışır; plunjer helisinin dönme açısıyla yakıt miktarı ayarlanır." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik enjeksiyon basıncı tipik olarak hangi aralıktadır?", options: ["5-10 bar", "20-50 bar", "5000-8000 bar", "300-1000 bar"], correctAnswer: 3, explanation: "Enjeksiyon basıncı 300-1000 bar aralığındadır; nozül genellikle çok deliklidir ve delik sayısı/çapı püskürtme kalitesini belirler." },
     ],
   },
   {
@@ -2758,8 +2738,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Common rail enjeksiyon sistemi",
     blocks: [{ sectionTitles: ["Sistem Yapısı"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Common rail sisteminde yakıt nerede yüksek basınçta tutulur?", options: ["Ortak rail'de 800-1000 bar basınçta", "Yalnızca enjektörün kendi gövdesinde", "Karter içindeki yağ havuzu içinde", "Egzoz manifoldunun çıkışında"], correctAnswer: 0, explanation: "Yüksek basınç pompası yakıtı sürekli 800-1000 bar basınçta ortak rail'e basar; her silindir için bağımsız enjektör ECU komutuyla açılır/kapanır (örn. MAN B&W ME-C)." },
-      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "Common rail'in sağladığı avantaj hangisidir?", options: ["Çoklu enjeksiyon, düşük NOx, kompakt", "Daha fazla titreşim ve gürültü", "Yükle değişen düşük rail basıncı", "Daha fazla hareketli parça sayısı"], correctAnswer: 0, explanation: "Enjeksiyon basıncı yükten bağımsız yüksek tutulabilir; çoklu enjeksiyon, düşük NOx ve pürüzsüz yanma sağlanır; kam mili kaldırıldığından motor kompakttır." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Common rail sisteminde yakıt nerede yüksek basınçta tutulur?", options: ["Egzoz manifoldunun çıkışında", "Ortak rail'de 800-1000 bar basınçta", "Yalnızca enjektörün kendi gövdesinde", "Karter içindeki yağ havuzu içinde"], correctAnswer: 1, explanation: "Yüksek basınç pompası yakıtı sürekli 800-1000 bar basınçta ortak rail'e basar; her silindir için bağımsız enjektör ECU komutuyla açılır/kapanır (örn. MAN B&W ME-C)." },
+      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "Common rail'in sağladığı avantaj hangisidir?", options: ["Yükle değişen düşük rail basıncı", "Daha fazla hareketli parça sayısı", "Çoklu enjeksiyon, düşük NOx, kompakt", "Daha fazla titreşim ve gürültü"], correctAnswer: 2, explanation: "Enjeksiyon basıncı yükten bağımsız yüksek tutulabilir; çoklu enjeksiyon, düşük NOx ve pürüzsüz yanma sağlanır; kam mili kaldırıldığından motor kompakttır." },
     ],
   },
   {
@@ -2767,8 +2747,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Enjektör (nozzle) tipleri ve püskürtme",
     blocks: [{ sectionTitles: ["Nozzle Tipleri", "Atomizasyon Parametreleri"] }],
     questions: [
-      { id: 1, sectionRef: "Nozzle Tipleri", category: MAK, question: "Büyük motorlarda hangi nozzle tipi iyi atomizasyon sağlar?", options: ["Çok delikli (multi-hole, 4-10 delik)", "Pintle tipi (tek delikli) nozzle", "Deliksiz (kapalı uçlu) nozzle", "Yalnızca slide type nozzle tipi"], correctAnswer: 0, explanation: "Damlacık boyutu basınç, delik çapı ve viskoziteye bağlıdır; pop test ile açma basıncı kontrol edilir." },
-      { id: 2, sectionRef: "Atomizasyon Parametreleri", category: MAK, question: "Düşük enjektör açma basıncı neye yol açar?", options: ["Kötü atomizasyon", "Daha iyi yanma", "Yakıt tasarrufu", "Hiçbir etki"], correctAnswer: 0, explanation: "Yüksek basınç ise enjeksiyon gecikmesine neden olur; arızalı enjektör yüksek egzoz sıcaklığı/duman verir." },
+      { id: 1, sectionRef: "Nozzle Tipleri", category: MAK, question: "Büyük motorlarda hangi nozzle tipi iyi atomizasyon sağlar?", options: ["Pintle tipi (tek delikli) nozzle", "Deliksiz (kapalı uçlu) nozzle", "Yalnızca slide type nozzle tipi", "Çok delikli (multi-hole, 4-10 delik)"], correctAnswer: 3, explanation: "Damlacık boyutu basınç, delik çapı ve viskoziteye bağlıdır; pop test ile açma basıncı kontrol edilir." },
+      { id: 2, sectionRef: "Atomizasyon Parametreleri", category: MAK, question: "Düşük enjektör açma basıncı neye yol açar?", options: ["Hiçbir etki", "Kötü atomizasyon", "Daha iyi yanma", "Yakıt tasarrufu sağlar"], correctAnswer: 1, explanation: "Yüksek basınç ise enjeksiyon gecikmesine neden olur; arızalı enjektör yüksek egzoz sıcaklığı/duman verir." },
     ],
   },
   {
@@ -2776,8 +2756,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yanma aşamaları ve gecikme süresi",
     blocks: [{ sectionTitles: ["Dört Yanma Aşaması"] }],
     questions: [
-      { id: 1, sectionRef: "Dört Yanma Aşaması", category: MAK, question: "Tutuşma gecikmesi (ignition delay) nedir?", options: ["Enjeksiyondan tutuşmaya kadarki süre", "Egzoz supabının açılma süresidir", "Sıkıştırma zamanının toplam süresi", "Silindirin soğutulma süresi değeri"], correctAnswer: 0, explanation: "Gecikme uzarsa kontrolsüz yanma (diesel knock) artar; düşük setan yakıtlar gecikmeyi uzatır." },
-      { id: 2, sectionRef: "Dört Yanma Aşaması", category: MAK, question: "Son yanma (late combustion) neye yol açar?", options: ["Verim kaybı ve egzoz sıcaklığı artışı", "Belirgin biçimde daha yüksek verim", "Egzoz sıcaklığında belirgin düşüş", "Motor üzerinde hiçbir etki oluşmaz"], correctAnswer: 0, explanation: "Enjeksiyon bittikten sonra kalan yakıtın yanması; pilot enjeksiyon gecikme etkilerini azaltır." },
+      { id: 1, sectionRef: "Dört Yanma Aşaması", category: MAK, question: "Tutuşma gecikmesi (ignition delay) nedir?", options: ["Sıkıştırma zamanının toplam süre değeri", "Silindirin soğutulma süresi değeri", "Enjeksiyondan tutuşmaya kadarki süre", "Egzoz supabının açılma süresidir"], correctAnswer: 2, explanation: "Gecikme uzarsa kontrolsüz yanma (diesel knock) artar; düşük setan yakıtlar gecikmeyi uzatır." },
+      { id: 2, sectionRef: "Dört Yanma Aşaması", category: MAK, question: "Son yanma (late combustion) neye yol açar?", options: ["Belirgin biçimde daha yüksek verim", "Egzoz sıcaklığında belirgin düşüş", "Motor üzerinde hiçbir etki oluşmaz", "Verim kaybı ve egzoz sıcaklığı artışı"], correctAnswer: 3, explanation: "Enjeksiyon bittikten sonra kalan yakıtın yanması; pilot enjeksiyon gecikme etkilerini azaltır." },
     ],
   },
   {
@@ -2785,8 +2765,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İndike güç (indicated power) hesabı",
     blocks: [{ sectionTitles: ["Hesap Yöntemi"] }],
     questions: [
-      { id: 1, sectionRef: "Hesap Yöntemi", category: MAK, question: "İndike güç hesabında ilk olarak hangi değer belirlenir?", options: ["İndikatör diyagramından MIP değeri", "Pervanenin hatve (pitch) değeri", "Deniz suyunun giriş sıcaklığı", "Kullanılan yakıtın rengi değeri"], correctAnswer: 0, explanation: "İndikatör diyagramından ortalama indike basınç (MIP) belirlenir; ardından Pi = (MIP × A × L × N × n)/(60 × k) ile indike güç hesaplanır." },
-      { id: 2, sectionRef: "Hesap Yöntemi", category: MAK, question: "İndike güç formülünde 'A' ve 'L' neyi temsil eder?", options: ["A: piston alanı, L: strok uzunluğu", "A: devir sayısı, L: motor yükü", "A: sıcaklık değeri, L: basınç", "A: yakıt debisi, L: hava debisi"], correctAnswer: 0, explanation: "Pi = (MIP × A × L × N × n)/(60 × k) formülünde A piston alanı, L strok uzunluğu, N devir, n silindir sayısı, k ise zaman katsayısıdır." },
+      { id: 1, sectionRef: "Hesap Yöntemi", category: MAK, question: "İndike güç hesabında ilk olarak hangi değer belirlenir?", options: ["Kullanılan yakıtın rengi değeri", "İndikatör diyagramından MIP değeri", "Pervanenin hatve (pitch) değeri", "Deniz suyunun giriş sıcaklığı"], correctAnswer: 1, explanation: "İndikatör diyagramından ortalama indike basınç (MIP) belirlenir; ardından Pi = (MIP × A × L × N × n)/(60 × k) ile indike güç hesaplanır." },
+      { id: 2, sectionRef: "Hesap Yöntemi", category: MAK, question: "İndike güç formülünde 'A' ve 'L' neyi temsil eder?", options: ["A: sıcaklık değeri, L: basınç", "A: yakıt debisi, L: hava debisi", "A: piston alanı, L: strok uzunluğu", "A: devir sayısı, L: motor yükü"], correctAnswer: 2, explanation: "Pi = (MIP × A × L × N × n)/(60 × k) formülünde A piston alanı, L strok uzunluğu, N devir, n silindir sayısı, k ise zaman katsayısıdır." },
     ],
   },
   {
@@ -2794,8 +2774,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Fren gücü (brake power) ve mekanik verim",
     blocks: [{ sectionTitles: ["Formüller"] }],
     questions: [
-      { id: 1, sectionRef: "Formüller", category: MAK, question: "Mekanik verim nasıl tanımlanır?", options: ["ηmek = Pb / Pi (fren / indike güç)", "ηmek = Pi / Pb (indike / fren güç)", "ηmek = Pb × Pi (çarpım değeri)", "ηmek = Pi − Pb (fark değeri)"], correctAnswer: 0, explanation: "Tipik 0.85-0.95; sürtünme gücü = Pi − Pb." },
-      { id: 2, sectionRef: "Formüller", category: MAK, question: "İndike güç 5000 kW, mekanik verim %90 ise fren gücü kaçtır?", options: ["4500 kW", "5555 kW", "500 kW", "4500 W"], correctAnswer: 0, explanation: "Pb = 0.90×5000 = 4500 kW; sürtünme = 500 kW." },
+      { id: 1, sectionRef: "Formüller", category: MAK, question: "Mekanik verim nasıl tanımlanır?", options: ["ηmek = Pi / Pb (indike / fren güç)", "ηmek = Pb × Pi (çarpım değeri)", "ηmek = Pi − Pb (fark değeri)", "ηmek = Pb / Pi (fren / indike güç)"], correctAnswer: 3, explanation: "Tipik 0.85-0.95; sürtünme gücü = Pi − Pb." },
+      { id: 2, sectionRef: "Formüller", category: MAK, question: "İndike güç 5000 kW, mekanik verim %90 ise fren gücü kaçtır?", options: ["4500 W", "4500 kW", "5555 kW", "500 kW"], correctAnswer: 1, explanation: "Pb = 0.90×5000 = 4500 kW; sürtünme = 500 kW." },
     ],
   },
   {
@@ -2803,8 +2783,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ortalama efektif basınç (MEP)",
     blocks: [{ sectionTitles: ["Tanım ve Hesap"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Hesap", category: MAK, question: "MEP neyi ifade eder?", options: ["Strok boyunca aynı işi veren sanal basınç", "Silindirdeki maksimum yanma basıncı", "Ortamdaki atmosfer basıncı değeri", "Turboşarjer besleme basıncı değeri"], correctAnswer: 0, explanation: "IMEP indike güçten, BMEP fren gücünden hesaplanır; büyük iki zamanlıda tipik 18-21 bar." },
-      { id: 2, sectionRef: "Tanım ve Hesap", category: MAK, question: "Yüksek MEP neyi gösterir?", options: ["Kompakt ve verimli bir motor", "Belirgin biçimde düşük verim", "Motorda ciddi bir arıza durumu", "Belirgin biçimde düşük güç"], correctAnswer: 0, explanation: "MEP artışı turboşarj teknolojisiyle sınırlıdır." },
+      { id: 1, sectionRef: "Tanım ve Hesap", category: MAK, question: "MEP neyi ifade eder?", options: ["Ortamdaki atmosfer basıncı değeri", "Turboşarjer besleme basıncı değeri", "Strok boyunca aynı işi veren sanal basınç", "Silindirdeki maksimum yanma basıncı"], correctAnswer: 2, explanation: "IMEP indike güçten, BMEP fren gücünden hesaplanır; büyük iki zamanlıda tipik 18-21 bar." },
+      { id: 2, sectionRef: "Tanım ve Hesap", category: MAK, question: "Yüksek MEP neyi gösterir?", options: ["Belirgin biçimde düşük verim", "Motorda ciddi bir arıza durumu", "Belirgin biçimde düşük güç", "Kompakt ve verimli bir motor"], correctAnswer: 3, explanation: "MEP artışı turboşarj teknolojisiyle sınırlıdır." },
     ],
   },
   {
@@ -2812,8 +2792,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Özgül yakıt tüketimi (SFOC)",
     blocks: [{ sectionTitles: ["Tanım ve Hesap"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Hesap", category: MAK, question: "12500 kW güç üretirken saatte 2.5 ton yakıt tüketen motorun SFOC'u kaçtır?", options: ["200 g/kWh", "100 g/kWh", "250 g/kWh", "500 g/kWh"], correctAnswer: 0, explanation: "SFOC = yakıt tüketimi (g/h) / fren gücü (kW) = 2.500.000 g / 12500 kW = 200 g/kWh." },
-      { id: 2, sectionRef: "Tanım ve Hesap", category: MAK, question: "SFOC hangi formülle hesaplanır?", options: ["Yakıt tüketimi (g/h) / Fren gücü (kW)", "Fren gücü (kW) / Yakıt tüketimi (g/h)", "Yakıt tüketimi × fren gücü çarpımı", "Fren gücü − yakıt tüketimi farkı"], correctAnswer: 0, explanation: "SFOC = Yakıt tüketimi (g/h) / Fren gücü (kW); birimi g/kWh'dir." },
+      { id: 1, sectionRef: "Tanım ve Hesap", category: MAK, question: "12500 kW güç üretirken saatte 2.5 ton yakıt tüketen motorun SFOC'u kaçtır?", options: ["500 g/kWh", "200 g/kWh", "100 g/kWh", "250 g/kWh"], correctAnswer: 1, explanation: "SFOC = yakıt tüketimi (g/h) / fren gücü (kW) = 2.500.000 g / 12500 kW = 200 g/kWh." },
+      { id: 2, sectionRef: "Tanım ve Hesap", category: MAK, question: "SFOC hangi formülle hesaplanır?", options: ["Yakıt tüketimi × fren gücü çarpımı", "Fren gücü − yakıt tüketimi farkı", "Yakıt tüketimi (g/h) / Fren gücü (kW)", "Fren gücü (kW) / Yakıt tüketimi (g/h)"], correctAnswer: 2, explanation: "SFOC = Yakıt tüketimi (g/h) / Fren gücü (kW); birimi g/kWh'dir." },
     ],
   },
   {
@@ -2821,8 +2801,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Performans izleme ve trend analizi",
     blocks: [{ sectionTitles: ["İzlenen Parametreler", "Trend Analizi"] }],
     questions: [
-      { id: 1, sectionRef: "İzlenen Parametreler", category: MAK, question: "Bir silindirin egzoz sıcaklığı >50°C sapma gösterirse olası neden nedir?", options: ["Enjektör arızası veya supap kaçağı", "Tümüyle normal bir motor davranışı", "O silindirde yakıt tasarrufu olması", "Turboşarjer veriminin iyileşmesi"], correctAnswer: 0, explanation: "Pmax >5 bar sapma enjeksiyon zamanlaması/sıkıştırma kaybı; SFOC >%5 artış turboşarjer/enjektör." },
-      { id: 2, sectionRef: "Trend Analizi", category: MAK, question: "Performans verileri karşılaştırma için nasıl işlenir?", options: ["Referans (ISO) koşullara düzeltilir", "Ham ölçüm hâliyle bırakılmaktadır", "Yalnızca aritmetik ortalaması alınır", "Kaydedilmeden doğrudan atılmakta"], correctAnswer: 0, explanation: "Kademeli bozulma bakımı, ani değişim arıza teşhisini tetikler; performans izleme kestirimci bakımın temelidir." },
+      { id: 1, sectionRef: "İzlenen Parametreler", category: MAK, question: "Bir silindirin egzoz sıcaklığı >50°C sapma gösterirse olası neden nedir?", options: ["Tümüyle normal bir motor davranışı", "O silindirde yakıt tasarrufu olması", "Turboşarjer veriminin iyileşmesi", "Enjektör arızası veya supap kaçağı"], correctAnswer: 3, explanation: "Pmax >5 bar sapma enjeksiyon zamanlaması/sıkıştırma kaybı; SFOC >%5 artış turboşarjer/enjektör." },
+      { id: 2, sectionRef: "Trend Analizi", category: MAK, question: "Performans verileri karşılaştırma için nasıl işlenir?", options: ["Kaydedilmeden doğrudan atılmakta", "Referans (ISO) koşullara düzeltilir", "Ham ölçüm hâliyle bırakılmaktadır", "Yalnızca aritmetik ortalaması alınır"], correctAnswer: 1, explanation: "Kademeli bozulma bakımı, ani değişim arıza teşhisini tetikler; performans izleme kestirimci bakımın temelidir." },
     ],
   },
   {
@@ -2830,8 +2810,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Turboşarjer çalışma prensibi",
     blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Turboşarjer türbinini ne döndürür?", options: ["Egzoz gazları; kompresör aynı şaftta", "Ayrı bir elektrik motoru döndürür", "Pervane şaftından tahrik alınır", "Yakıt pompası şaftından döndürülür"], correctAnswer: 0, explanation: "Egzoz gazları türbin çarkını döndürür; aynı şaft üzerindeki kompresör emme havasını sıkıştırır. Çark devri 10.000-30.000 rpm'dir." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Turboşarjerde basınç oranı ve sıkıştırılan havanın işlemi nedir?", options: ["Oran 2,5-4,5; hava intercooler'da soğur", "Oran 0,5; hava ısıtılarak verilmekte", "Oran 50; hava nemlendirilip verilir", "Basınç oranı hiç değişmemektedir"], correctAnswer: 0, explanation: "Basınç oranı 2.5-4.5 aralığındadır; sıkıştırılan hava şarj havası soğutucusunda (intercooler) soğutularak yoğunluğu artırılır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Turboşarjer türbinini ne döndürür?", options: ["Pervane şaftından tahrik alınır", "Yakıt pompasının şaftından döndürülür", "Egzoz gazları; kompresör aynı şaftta", "Ayrı bir elektrik motoru döndürür"], correctAnswer: 2, explanation: "Egzoz gazları türbin çarkını döndürür; aynı şaft üzerindeki kompresör emme havasını sıkıştırır. Çark devri 10.000-30.000 rpm'dir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Turboşarjerde basınç oranı ve sıkıştırılan havanın işlemi nedir?", options: ["Oran 0,5; hava ısıtılarak verilmekte", "Oran 50; hava nemlendirilip verilir", "Basınç oranı hiç değişmemektedir", "Oran 2,5-4,5; hava intercooler'da soğur"], correctAnswer: 3, explanation: "Basınç oranı 2.5-4.5 aralığındadır; sıkıştırılan hava şarj havası soğutucusunda (intercooler) soğutularak yoğunluğu artırılır." },
     ],
   },
   {
@@ -2839,8 +2819,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Türbin ve kompresör karakteristikleri",
     blocks: [{ sectionTitles: ["Kompresör Haritası", "Türbin"] }],
     questions: [
-      { id: 1, sectionRef: "Kompresör Haritası", category: MAK, question: "Motor çalışma noktası kompresör haritasında nereye göre konumlanmalıdır?", options: ["Surge line'dan yeterli uzaklıkta", "Tam surge line üzerinde konumlanır", "Choke line üzerinde konumlanmalı", "Konumu tümüyle önemsiz sayılır"], correctAnswer: 0, explanation: "Harita basınç oranı-debi grafiğidir; surge (sol) ve choke (sağ) sınırları içerir." },
-      { id: 2, sectionRef: "Türbin", category: MAK, question: "Büyük turboşarjerlerde hangi türbin tipi yüksek verim verir?", options: ["Aksiyel türbin", "Radyal türbin", "Pistonlu türbin", "Hiçbiri"], correctAnswer: 0, explanation: "Radyal küçük turboşarjerlerde; VTA (değişken türbin alanı) düşük yükte verim sağlar." },
+      { id: 1, sectionRef: "Kompresör Haritası", category: MAK, question: "Motor çalışma noktası kompresör haritasında nereye göre konumlanmalıdır?", options: ["Konumu tümüyle önemsiz sayılır", "Surge line'dan yeterli uzaklıkta", "Tam surge line üzerinde konumlanır", "Choke line üzerinde konumlanmalı"], correctAnswer: 1, explanation: "Harita basınç oranı-debi grafiğidir; surge (sol) ve choke (sağ) sınırları içerir." },
+      { id: 2, sectionRef: "Türbin", category: MAK, question: "Büyük turboşarjerlerde hangi türbin tipi yüksek verim verir?", options: ["Pistonlu türbin", "Hiçbiri", "Aksiyel türbin", "Radyal türbin"], correctAnswer: 2, explanation: "Radyal küçük turboşarjerlerde; VTA (değişken türbin alanı) düşük yükte verim sağlar." },
     ],
   },
   {
@@ -2848,8 +2828,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Süpürme (scavenging) tipleri: uniflow, loop",
     blocks: [{ sectionTitles: ["Süpürme Tipleri", "Uniflow Süpürme Detayları"] }],
     questions: [
-      { id: 1, sectionRef: "Süpürme Tipleri", category: MAK, question: "Hangi süpürme tipi en yüksek verimi (%90+) sağlar?", options: ["Uniflow (tek yönlü) süpürme", "Loop (döngüsel) süpürme tipi", "Cross (çapraz) süpürme tipi", "Hiçbiri %90 verime ulaşamaz"], correctAnswer: 0, explanation: "Loop %80-85, cross %70-75 verim verir." },
-      { id: 2, sectionRef: "Uniflow Süpürme Detayları", category: MAK, question: "Süpürme havası debisi yanma havasının kaç katıdır?", options: ["1,5-1,8 katı (soğutmaya da katkı)", "0,5 katı (yarısı kadar debi ile)", "10 katı (çok yüksek debi ile)", "Yanma havasıyla tam eşit debide"], correctAnswer: 0, explanation: "Süpürme havası basıncı 0.2-0.4 bar (gauge); scavenge fire risk yönetimi kritiktir." },
+      { id: 1, sectionRef: "Süpürme Tipleri", category: MAK, question: "Hangi süpürme tipi en yüksek verimi (%90+) sağlar?", options: ["Loop (döngüsel) süpürme tipi", "Cross (çapraz) süpürme tipi", "Hiçbiri %90 verime ulaşamaz", "Uniflow (tek yönlü) süpürme"], correctAnswer: 3, explanation: "Loop %80-85, cross %70-75 verim verir." },
+      { id: 2, sectionRef: "Uniflow Süpürme Detayları", category: MAK, question: "Süpürme havası debisi yanma havasının kaç katıdır?", options: ["Yanma havasıyla tam eşit debide", "1,5-1,8 katı (soğutmaya da katkı)", "0,5 katı (yarısı kadar debi değeri)", "10 katı (çok yüksek debi ile)"], correctAnswer: 1, explanation: "Süpürme havası basıncı 0.2-0.4 bar (gauge); scavenge fire risk yönetimi kritiktir." },
     ],
   },
   {
@@ -2857,8 +2837,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Şarj havası soğutucusu",
     blocks: [{ sectionTitles: ["Amaç ve Etki", "Yapı"] }],
     questions: [
-      { id: 1, sectionRef: "Amaç ve Etki", category: MAK, question: "Şarj havası soğutucusu motor gücünü nasıl artırır?", options: ["Havayı soğutup yoğunluğunu artırır", "Hava akış hızını artırıp güç verir", "Yakıtı ısıtıp daha iyi yakmaktadır", "Egzoz çıkışını kapatıp basınç yapar"], correctAnswer: 0, explanation: "Sıkıştırma sonu hava 150-200°C'den 35-50°C'ye düşürülür; NOx de azalır." },
-      { id: 2, sectionRef: "Yapı", category: MAK, question: "Şarj havası soğutucusu kirliliği neye yol açar?", options: ["Motor performansının doğrudan düşmesi", "Motor performansının belirgin artması", "Performans üzerinde hiçbir etki olmaz", "Sefer yakıt tüketiminde tasarruf"], correctAnswer: 0, explanation: "Hava (fin) ve su (tube) tarafı periyodik temizlik gerektirir; çıkış sıcaklığı izlenmelidir." },
+      { id: 1, sectionRef: "Amaç ve Etki", category: MAK, question: "Şarj havası soğutucusu motor gücünü nasıl artırır?", options: ["Yakıtı ısıtıp daha iyi yakmaktadır", "Egzoz çıkışını kapatıp basınç yapar", "Havayı soğutup yoğunluğunu artırır", "Hava akış hızını artırıp güç verir"], correctAnswer: 2, explanation: "Sıkıştırma sonu hava 150-200°C'den 35-50°C'ye düşürülür; NOx de azalır." },
+      { id: 2, sectionRef: "Yapı", category: MAK, question: "Şarj havası soğutucusu kirliliği neye yol açar?", options: ["Motor performansının belirgin artması", "Performans üzerinde hiçbir etki olmaz", "Sefer yakıt tüketiminde tasarruf", "Motor performansının doğrudan düşmesi"], correctAnswer: 3, explanation: "Hava (fin) ve su (tube) tarafı periyodik temizlik gerektirir; çıkış sıcaklığı izlenmelidir." },
     ],
   },
   {
@@ -2866,8 +2846,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Turboşarj surging",
     blocks: [{ sectionTitles: ["Surging Mekanizması", "Önleme ve Müdahale"] }],
     questions: [
-      { id: 1, sectionRef: "Surging Mekanizması", category: MAK, question: "Surging ne zaman oluşur?", options: ["Debi düşerken basınç oranı yüksekken", "Debi çok yüksek düzeydeyken oluşur", "Motor tümüyle durduğunda oluşmakta", "Yalnızca soğuk havalarda oluşmakta"], correctAnswer: 0, explanation: "Akış periyodik ileri-geri salınır; güçlü titreşim/gürültü/sıcaklık artışı olur." },
-      { id: 2, sectionRef: "Önleme ve Müdahale", category: MAK, question: "Surging devam ederse ne yapılır?", options: ["Yükü azalt, filtre bak, by-pass aç", "Motor yükünü daha da artırmak", "Enjekte edilen yakıtı artırmak", "Hiçbir işlem yapmadan sürdürmek"], correctAnswer: 0, explanation: "Ani yük artışı veya bir silindir misfiring surging tetikleyebilir; yatak/kanat hasarı riski vardır." },
+      { id: 1, sectionRef: "Surging Mekanizması", category: MAK, question: "Surging ne zaman oluşur?", options: ["Yalnızca soğuk havalarda oluşmakta", "Debi düşerken basınç oranı yüksekken", "Debi çok yüksek düzeydeyken oluşmakta", "Motor tümüyle durduğunda oluşmakta"], correctAnswer: 1, explanation: "Akış periyodik ileri-geri salınır; güçlü titreşim/gürültü/sıcaklık artışı olur." },
+      { id: 2, sectionRef: "Önleme ve Müdahale", category: MAK, question: "Surging devam ederse ne yapılır?", options: ["Enjekte edilen yakıtı artırmak", "Hiçbir işlem yapmadan sürdürmek", "Yükü azalt, filtre bak, by-pass aç", "Motor yükünü daha da artırmak"], correctAnswer: 2, explanation: "Ani yük artışı veya bir silindir misfiring surging tetikleyebilir; yatak/kanat hasarı riski vardır." },
     ],
   },
   {
@@ -2875,8 +2855,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Turboşarj yardımcı üfleyici (auxiliary blower)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Yardımcı üfleyici ne zaman devreye girer?", options: ["Motor yükü %25-35 altına inince", "Motor tam yükte çalışırken devrede", "Motor tümüyle dururken devrededir", "Her koşulda sürekli çalışmaktadır"], correctAnswer: 0, explanation: "Turboşarjer yeterli basıncı sağlayamadığında süpürme havası temin eder; çek valf ters akışı önler." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Genellikle kaç yardımcı üfleyici bulunur?", options: ["İki adet (yedeklilik için)", "Bir adet (tek üfleyici düzeni)", "Beş adet (çoklu düzenek)", "Hiç üfleyici bulunmamaktadır"], correctAnswer: 0, explanation: "Üfleyici arızası düşük yükte çalışmayı imkansız kılar; çalıştırmadan önce devreye alınmalıdır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Yardımcı üfleyici ne zaman devreye girer?", options: ["Motor tam yükte çalışırken devrede", "Motor tümüyle dururken devrededir", "Her koşulda sürekli çalışmaktadır", "Motor yükü %25-35 altına inince"], correctAnswer: 3, explanation: "Turboşarjer yeterli basıncı sağlayamadığında süpürme havası temin eder; çek valf ters akışı önler." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Genellikle kaç yardımcı üfleyici bulunur?", options: ["Hiç üfleyici bulunmamaktadır", "İki adet (yedeklilik için)", "Bir adet (tek üfleyici düzeni)", "Beş adet (çoklu düzenek)"], correctAnswer: 1, explanation: "Üfleyici arızası düşük yükte çalışmayı imkansız kılar; çalıştırmadan önce devreye alınmalıdır." },
     ],
   },
   {
@@ -2884,8 +2864,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "VIT (Variable Injection Timing)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Mekanik ve Elektronik VIT"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "VIT düşük yükte enjeksiyon zamanlamasını ne yapar?", options: ["İlerletir (advance); yanma ÜÖN'de", "Geciktirir (retard) enjeksiyonu", "Enjeksiyonu tümüyle durdurmakta", "Zamanlamayı hiç değiştirmemekte"], correctAnswer: 0, explanation: "Yüksek yükte Pmax limiti aşılmasın diye zamanlama geri alınır (retard)." },
-      { id: 2, sectionRef: "Mekanik ve Elektronik VIT", category: MAK, question: "VIT kısmi yükte SFOC'u ne kadar düşürebilir?", options: ["3-5 g/kWh", "100 g/kWh", "Hiç", "50 g/kWh"], correctAnswer: 0, explanation: "ME motorlarında elektronik VIT her silindir için bağımsız ayar yapar; Pmax limiti korunmalıdır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "VIT düşük yükte enjeksiyon zamanlamasını ne yapar?", options: ["Enjeksiyonu tümüyle durdurmakta", "Zamanlamayı hiç değiştirmemekte", "İlerletir (advance); yanma ÜÖN'de", "Geciktirir (retard eder) enjeksiyonu"], correctAnswer: 2, explanation: "Yüksek yükte Pmax limiti aşılmasın diye zamanlama geri alınır (retard)." },
+      { id: 2, sectionRef: "Mekanik ve Elektronik VIT", category: MAK, question: "VIT kısmi yükte SFOC'u ne kadar düşürebilir?", options: ["100 g/kWh", "Hiç", "50 g/kWh", "3-5 g/kWh"], correctAnswer: 3, explanation: "ME motorlarında elektronik VIT her silindir için bağımsız ayar yapar; Pmax limiti korunmalıdır." },
     ],
   },
   {
@@ -2893,8 +2873,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Anormal yanma: knocking ve misfiring",
     blocks: [{ sectionTitles: ["Diesel Knock", "Misfiring"] }],
     questions: [
-      { id: 1, sectionRef: "Diesel Knock", category: MAK, question: "Diesel knock neden oluşur?", options: ["Uzun gecikme sonrası ani tutuşma", "Silindire yetersiz yakıt verilmesi", "Aşırı soğutma ile sıcaklık düşüşü", "Motorun çok düşük devirde çalışması"], correctAnswer: 0, explanation: "Düşük setan yakıt, düşük sıkıştırma sıcaklığı, erken enjeksiyon, soğuk çalıştırma tetikler." },
-      { id: 2, sectionRef: "Misfiring", category: MAK, question: "Misfiring'in tehlikeli sonucu nedir?", options: ["Yanmamış yakıt egzoza; patlama riski", "Sefer yakıt tüketiminde tasarruf", "Motorun daha sessiz çalışması", "Silindirin soğuyup rahatlaması"], correctAnswer: 0, explanation: "Arızalı enjektör, yakıt pompası arızası, düşük sıkıştırma misfiring nedenleridir." },
+      { id: 1, sectionRef: "Diesel Knock", category: MAK, question: "Diesel knock neden oluşur?", options: ["Motorun çok düşük devirde çalışması", "Uzun gecikme sonrası ani tutuşma", "Silindire yetersiz yakıt verilmesi", "Aşırı soğutma ile sıcaklık düşüşü"], correctAnswer: 1, explanation: "Düşük setan yakıt, düşük sıkıştırma sıcaklığı, erken enjeksiyon, soğuk çalıştırma tetikler." },
+      { id: 2, sectionRef: "Misfiring", category: MAK, question: "Misfiring'in tehlikeli sonucu nedir?", options: ["Motorun daha sessiz çalışması", "Silindirin soğuyup rahatlaması", "Yanmamış yakıt egzoza; patlama riski", "Sefer yakıt tüketiminde tasarruf"], correctAnswer: 2, explanation: "Arızalı enjektör, yakıt pompası arızası, düşük sıkıştırma misfiring nedenleridir." },
     ],
   },
   {
@@ -2902,8 +2882,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İndikatör diyagramı ve P-V analizi",
     blocks: [{ sectionTitles: ["Diyagram Tipleri", "Teşhis Örüntüleri"] }],
     questions: [
-      { id: 1, sectionRef: "Diyagram Tipleri", category: MAK, question: "Güç kartının (power card) alanı neyle orantılıdır?", options: ["İndike güçle", "Yakıt tüketimiyle", "Devirle", "Sıcaklıkla"], correctAnswer: 0, explanation: "P-θ (draw card) enjeksiyon zamanlaması ve Pmax'ı; light spring düşük basınç bölgesini gösterir." },
-      { id: 2, sectionRef: "Teşhis Örüntüleri", category: MAK, question: "Düşük Pmax neyin göstergesidir?", options: ["Sıkıştırma kaybı veya geç enjeksiyon", "Erken (advance) enjeksiyon zamanı", "Silindire aşırı yakıt verilmesi", "Tümüyle normal bir çalışma değeri"], correctAnswer: 0, explanation: "Modern motorlarda elektronik indikatör (PMI) kullanılır; tüm silindirler karşılaştırılır." },
+      { id: 1, sectionRef: "Diyagram Tipleri", category: MAK, question: "Güç kartının (power card) alanı neyle orantılıdır?", options: ["Yakıt tüketimiyle", "Devirle", "Sıcaklıkla", "İndike güçle"], correctAnswer: 3, explanation: "P-θ (draw card) enjeksiyon zamanlaması ve Pmax'ı; light spring düşük basınç bölgesini gösterir." },
+      { id: 2, sectionRef: "Teşhis Örüntüleri", category: MAK, question: "Düşük Pmax neyin göstergesidir?", options: ["Tümüyle normal bir çalışma değeri", "Sıkıştırma kaybı veya geç enjeksiyon", "Erken (advance) enjeksiyon zamanı", "Silindire aşırı yakıt verilmesi"], correctAnswer: 1, explanation: "Modern motorlarda elektronik indikatör (PMI) kullanılır; tüm silindirler karşılaştırılır." },
     ],
   },
   {
@@ -2911,8 +2891,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yatak (bearing) tipleri ve ölçüm",
     blocks: [{ sectionTitles: ["Yatak Tipleri", "Yatak Boşluğu Ölçümü"] }],
     questions: [
-      { id: 1, sectionRef: "Yatak Tipleri", category: MAK, question: "Büyük dizel motorlarda yatak malzemesi genellikle nedir?", options: ["Beyaz metal (babbitt) veya Al-Sn", "Saf çelik (alaşımsız) malzeme", "Seramik esaslı sert malzeme", "Plastik esaslı polimer malzeme"], correctAnswer: 0, explanation: "Ana yataklar krank ana muylularını, krank pini yatakları biyel alt ucunu taşır; malzeme beyaz metal (babbitt) veya Al-Sn alaşımıdır." },
-      { id: 2, sectionRef: "Yatak Boşluğu Ölçümü", category: MAK, question: "Yatak boşluğu hangi araçla ölçülür?", options: ["Kurşun tel veya feeler gauge ile", "Termometre ile sıcaklık ölçerek", "Barometre ile basınç ölçerek", "Voltmetre ile gerilim ölçerek"], correctAnswer: 0, explanation: "Yatak boşluğu kurşun tel (lead wire) veya feeler gauge ile ölçülür; aşırı boşluk düşük yağ basıncına ve çarpmaya neden olur." },
+      { id: 1, sectionRef: "Yatak Tipleri", category: MAK, question: "Büyük dizel motorlarda yatak malzemesi genellikle nedir?", options: ["Seramik esaslı sert malzeme", "Plastik esaslı polimer malzemeler", "Beyaz metal (babbitt) veya Al-Sn", "Saf çelik (alaşımsız) malzeme"], correctAnswer: 2, explanation: "Ana yataklar krank ana muylularını, krank pini yatakları biyel alt ucunu taşır; malzeme beyaz metal (babbitt) veya Al-Sn alaşımıdır." },
+      { id: 2, sectionRef: "Yatak Boşluğu Ölçümü", category: MAK, question: "Yatak boşluğu hangi araçla ölçülür?", options: ["Termometre ile sıcaklık ölçülerek", "Barometre ile basınç ölçerek", "Voltmetre ile gerilim ölçerek", "Kurşun tel veya feeler gauge ile"], correctAnswer: 3, explanation: "Yatak boşluğu kurşun tel (lead wire) veya feeler gauge ile ölçülür; aşırı boşluk düşük yağ basıncına ve çarpmaya neden olur." },
     ],
   },
   {
@@ -2920,8 +2900,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Supap mekanizması ve zamanlaması",
     blocks: [{ sectionTitles: ["Supap Zamanlaması"] }],
     questions: [
-      { id: 1, sectionRef: "Supap Zamanlaması", category: MAK, question: "İki zamanlı motorda hangi supap bulunur ve nasıl tahrik edilir?", options: ["Yalnızca egzoz supabı; hidrolik tahrik", "Yalnızca emme supabı; elle tahrikli", "Her ikisi de; buji ile tahrik edilir", "Motorda hiçbir supap bulunmaz"], correctAnswer: 0, explanation: "İki zamanlı motorlarda yalnızca egzoz supabı vardır ve hidrolik/pnömatik tahrik edilir." },
-      { id: 2, sectionRef: "Supap Zamanlaması", category: MAK, question: "Dört zamanlı motorlarda supaplar nasıl çalıştırılır?", options: ["Emme ve egzoz supapları kam mili ile", "Yalnızca yerçekimi etkisiyle açılır", "Elektrik mıknatısıyla (tümü) açılır", "Egzoz basıncıyla itilerek açılmakta"], correctAnswer: 0, explanation: "Dört zamanlıda emme ve egzoz supapları kam mili (camshaft) ile mekanik çalıştırılır; ME tipi elektronik motorlarda zamanlama yüke göre optimize edilir." },
+      { id: 1, sectionRef: "Supap Zamanlaması", category: MAK, question: "İki zamanlı motorda hangi supap bulunur ve nasıl tahrik edilir?", options: ["Motorda hiçbir supap bulunmaz", "Yalnızca egzoz supabı; hidrolik tahrik", "Yalnızca emme supabı; elle tahrikli", "Her ikisi de; buji ile tahrik edilmekte"], correctAnswer: 1, explanation: "İki zamanlı motorlarda yalnızca egzoz supabı vardır ve hidrolik/pnömatik tahrik edilir." },
+      { id: 2, sectionRef: "Supap Zamanlaması", category: MAK, question: "Dört zamanlı motorlarda supaplar nasıl çalıştırılır?", options: ["Elektrik mıknatısıyla (tümü) açılır", "Egzoz basıncıyla itilerek açılmakta", "Emme ve egzoz supapları kam mili ile", "Yalnızca yerçekimi etkisiyle açılmakta"], correctAnswer: 2, explanation: "Dört zamanlıda emme ve egzoz supapları kam mili (camshaft) ile mekanik çalıştırılır; ME tipi elektronik motorlarda zamanlama yüke göre optimize edilir." },
     ],
   },
   {
@@ -2929,8 +2909,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bedplate ve frame yapısı",
     blocks: [{ sectionTitles: ["Yapısal Bileşenler"] }],
     questions: [
-      { id: 1, sectionRef: "Yapısal Bileşenler", category: MAK, question: "Ana yataklar motorun hangi yapısal parçası üzerindedir?", options: ["Bedplate (yatak tablası) üzerinde", "Silindir kapağının üzerinde durur", "Turboşarjer gövdesi üzerindedir", "Pervane şaftı üzerinde bulunur"], correctAnswer: 0, explanation: "Bedplate, A-frame ve silindir bloğu motorun ana yapısını oluşturur; ana yataklar bedplate üzerindedir." },
-      { id: 2, sectionRef: "Yapısal Bileşenler", category: MAK, question: "Tie rod (gerilme cıvataları) ne sağlar?", options: ["Bedplate-frame-blok yapısal bütünlük", "Silindire yakıt iletimini sağlamak", "Silindir gömleğini soğutmak için", "Ana yatakları yağlamak amacıyla"], correctAnswer: 0, explanation: "Tüm yapı uzun gerilme cıvataları (tie rod/stay bolt) ile birbirine bağlanarak sıkıştırma altında tutulur; A-frame bedplate ile silindir bloğu arasında bağlantı sağlar." },
+      { id: 1, sectionRef: "Yapısal Bileşenler", category: MAK, question: "Ana yataklar motorun hangi yapısal parçası üzerindedir?", options: ["Silindir kapağının üzerinde durur", "Turboşarjer gövdesi üzerindedir", "Pervane şaftı üzerinde bulunur", "Bedplate (yatak tablası) üzerinde"], correctAnswer: 3, explanation: "Bedplate, A-frame ve silindir bloğu motorun ana yapısını oluşturur; ana yataklar bedplate üzerindedir." },
+      { id: 2, sectionRef: "Yapısal Bileşenler", category: MAK, question: "Tie rod (gerilme cıvataları) ne sağlar?", options: ["Ana yatakları yağlamak amacıyla", "Bedplate-frame-blok yapısal bütünlük", "Silindire yakıt iletimini sağlamaktır", "Silindir gömleğini soğutmak için"], correctAnswer: 1, explanation: "Tüm yapı uzun gerilme cıvataları (tie rod/stay bolt) ile birbirine bağlanarak sıkıştırma altında tutulur; A-frame bedplate ile silindir bloğu arasında bağlantı sağlar." },
     ],
   },
   {
@@ -2938,8 +2918,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Silindir performans dengesizliği",
     blocks: [{ sectionTitles: ["Dengesizlik Göstergeleri", "Dengeleme Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Dengesizlik Göstergeleri", category: MAK, question: "Pmax farkı için tipik kabul sınırı nedir?", options: ["±3-5 bar", "±50 bar", "±0.1 bar", "Sınır yok"], correctAnswer: 0, explanation: "Egzoz sıcaklık farkı ±30-50°C; dengesizlik düzeltmesi enjeksiyon zamanlaması/yakıt miktarı ile yapılır." },
-      { id: 2, sectionRef: "Dengeleme Prosedürü", category: MAK, question: "Dengeleme prosedürünün ilk adımı nedir?", options: ["Tüm silindirlerin diyagramlarını almak", "Silindirlere giden yakıtı tümüyle kesmek", "Motoru tümüyle durdurup soğutmaya almak", "Turboşarjeri söküp temizliğini yapmak"], correctAnswer: 0, explanation: "ME/RT-flex motorlarında otomatik dengeleme yapılır; dengesizlik titreşimi artırır." },
+      { id: 1, sectionRef: "Dengesizlik Göstergeleri", category: MAK, question: "Pmax farkı için tipik kabul sınırı nedir?", options: ["±0.1 bar", "Sınır yok", "±3-5 bar", "±50 bar"], correctAnswer: 2, explanation: "Egzoz sıcaklık farkı ±30-50°C; dengesizlik düzeltmesi enjeksiyon zamanlaması/yakıt miktarı ile yapılır." },
+      { id: 2, sectionRef: "Dengeleme Prosedürü", category: MAK, question: "Dengeleme prosedürünün ilk adımı nedir?", options: ["Silindirlere giden yakıtı tümüyle kesmek", "Motoru tümüyle durdurup soğutmaya almak", "Turboşarjeri söküp temizliğini yapmak", "Tüm silindirlerin diyagramlarını almak"], correctAnswer: 3, explanation: "ME/RT-flex motorlarında otomatik dengeleme yapılır; dengesizlik titreşimi artırır." },
     ],
   },
   {
@@ -2947,8 +2927,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Liner ve piston aşınması",
     blocks: [{ sectionTitles: ["Aşınma Mekanizmaları", "Aşınma İzleme"] }],
     questions: [
-      { id: 1, sectionRef: "Aşınma Mekanizmaları", category: MAK, question: "Cold corrosion (korozif aşınma) nasıl oluşur?", options: ["Kükürt → SO₃ → H₂SO₄; çiy noktası altı", "Motorun yüksek devirde çalışmasıyla", "Elektriksel kaçak akım etkisiyle", "Kalıcı manyetizma etkisiyle oluşur"], correctAnswer: 0, explanation: "VLSFO'da cold corrosion riski artmıştır; liner sıcaklık yönetimi kritiktir." },
-      { id: 2, sectionRef: "Aşınma İzleme", category: MAK, question: "Scrapedown yağ analizinde hangi element asit korozyonunu gösterir?", options: ["S (kükürt)", "Fe yalnızca", "Ca yalnızca", "Su yok"], correctAnswer: 0, explanation: "Fe aşınmayı, Ca yağ kalıntısını gösterir; iyi koşulda aşınma 0.03-0.05 mm/1000 saat." },
+      { id: 1, sectionRef: "Aşınma Mekanizmaları", category: MAK, question: "Cold corrosion (korozif aşınma) nasıl oluşur?", options: ["Kalıcı manyetizma etkisiyle oluşur", "Kükürt → SO₃ → H₂SO₄; çiy noktası altı", "Motorun yüksek devirde çalışmasıyla", "Elektriksel kaçak akım etkisiyle"], correctAnswer: 1, explanation: "VLSFO'da cold corrosion riski artmıştır; liner sıcaklık yönetimi kritiktir." },
+      { id: 2, sectionRef: "Aşınma İzleme", category: MAK, question: "Scrapedown yağ analizinde hangi element asit korozyonunu gösterir?", options: ["Ca yalnızca", "Su yok", "S (kükürt)", "Fe yalnızca"], correctAnswer: 2, explanation: "Fe aşınmayı, Ca yağ kalıntısını gösterir; iyi koşulda aşınma 0.03-0.05 mm/1000 saat." },
     ],
   },
   {
@@ -2956,8 +2936,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Egzoz sıcaklık sapmaları",
     blocks: [{ sectionTitles: ["Teşhis Tablosu"] }],
     questions: [
-      { id: 1, sectionRef: "Teşhis Tablosu", category: MAK, question: "Tek bir silindirin egzoz sıcaklığı yüksekse olası neden nedir?", options: ["Arızalı enjektör veya supap kaçağı", "Motorun düşük yükte çalışıyor olması", "Yüksek süpürme havası basıncı değeri", "Yalnızca sensör kalibrasyon hatası"], correctAnswer: 0, explanation: "Tüm silindirler yüksekse turboşarjer kirliliği/yüksek yük; tek silindir düşükse yakıt pompası arızası." },
-      { id: 2, sectionRef: "Teşhis Tablosu", category: MAK, question: "Yüksek egzoz sıcaklığının riski nedir?", options: ["Türbin kanadında hasar oluşması", "Sefer yakıt tüketiminde tasarruf", "Silindirde daha iyi yanma olması", "Motorun soğuyup rahatlaması hâli"], correctAnswer: 0, explanation: "Egzoz sıcaklık trendi performans izlemenin temel aracıdır; sensör kalibrasyonu da kontrol edilir." },
+      { id: 1, sectionRef: "Teşhis Tablosu", category: MAK, question: "Tek bir silindirin egzoz sıcaklığı yüksekse olası neden nedir?", options: ["Motorun düşük yükte çalışıyor olması", "Yüksek süpürme havası basıncı değeri", "Yalnızca sensör kalibrasyon hatası", "Arızalı enjektör veya supap kaçağı"], correctAnswer: 3, explanation: "Tüm silindirler yüksekse turboşarjer kirliliği/yüksek yük; tek silindir düşükse yakıt pompası arızası." },
+      { id: 2, sectionRef: "Teşhis Tablosu", category: MAK, question: "Yüksek egzoz sıcaklığının riski nedir?", options: ["Motorun soğuyup rahatlaması hâli", "Türbin kanadında hasar oluşması", "Sefer yakıt tüketiminde tasarruf", "Silindirde daha iyi yanma olması"], correctAnswer: 1, explanation: "Egzoz sıcaklık trendi performans izlemenin temel aracıdır; sensör kalibrasyonu da kontrol edilir." },
     ],
   },
   {
@@ -2965,8 +2945,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yatak arızaları ve sıcaklık kontrolü",
     blocks: [{ sectionTitles: ["Arıza Nedenleri", "Sıcaklık İzleme"] }],
     questions: [
-      { id: 1, sectionRef: "Arıza Nedenleri", category: MAK, question: "Yağ basıncı düşüşü yatak arızasına nasıl yol açar?", options: ["Yetersiz yağ filmi; metal teması", "Aşırı yağlama ve film kalınlaşması", "Yatak soğutmasının artıp iyileşmesi", "Yatak üzerinde hiçbir etki olmaması"], correctAnswer: 0, explanation: "Yağ kirliliği, aşırı yük, misalignment ve boşluk hatası diğer nedenlerdir." },
-      { id: 2, sectionRef: "Sıcaklık İzleme", category: MAK, question: "Karter patlaması öncesi aşırı ısınmayı ne tespit eder?", options: ["Oil mist detector (yağ bulutu algılayıcı)", "Barometre (ortam basıncı ölçüm cihazı)", "GPS alıcısı (konum belirleme cihazı)", "Manyetik pusula (yön gösterme cihazı)"], correctAnswer: 0, explanation: "Normal yatak 50-65°C; alarm 70-75°C, shutdown ~85°C. Yatak sıcaklık trendi en güvenilir göstergedir." },
+      { id: 1, sectionRef: "Arıza Nedenleri", category: MAK, question: "Yağ basıncı düşüşü yatak arızasına nasıl yol açar?", options: ["Yatak soğutmasının artıp iyileşmesi", "Yatak üzerinde hiçbir etki olmaması", "Yetersiz yağ filmi; metal teması", "Aşırı yağlama ve film kalınlaşması"], correctAnswer: 2, explanation: "Yağ kirliliği, aşırı yük, misalignment ve boşluk hatası diğer nedenlerdir." },
+      { id: 2, sectionRef: "Sıcaklık İzleme", category: MAK, question: "Karter patlaması öncesi aşırı ısınmayı ne tespit eder?", options: ["Barometre (ortam basıncı ölçüm cihazı)", "GPS alıcısı (konum belirleme cihazı)", "Manyetik pusula (yön gösterme cihazı)", "Oil mist detector (yağ bulutu algılayıcı)"], correctAnswer: 3, explanation: "Normal yatak 50-65°C; alarm 70-75°C, shutdown ~85°C. Yatak sıcaklık trendi en güvenilir göstergedir." },
     ],
   },
   {
@@ -2974,8 +2954,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Silindir yağlama sistemi sorunları",
     blocks: [{ sectionTitles: ["Yağlama Sistemi", "Sorunlar"] }],
     questions: [
-      { id: 1, sectionRef: "Yağlama Sistemi", category: MAK, question: "Silindir yağı BN (Base Number) değeri neye göre seçilir?", options: ["Yakıtın kükürt oranına göre seçilir", "Motorun devir sayısına göre seçilir", "Yağın çalışma sıcaklığına göre", "Yağın görünen rengine göre seçilir"], correctAnswer: 0, explanation: "Yüksek kükürtte BN 70-100, düşük kükürtte 25-40; alfa yağlama piston hareketiyle senkronizedir." },
-      { id: 2, sectionRef: "Sorunlar", category: MAK, question: "Aşırı yağlama (yüksek feed rate) neye yol açar?", options: ["Yanma odası birikinti ve port tıkanması", "Silindir gömleğinde çok hızlı aşınma", "Sefer yakıt tüketiminde belirgin tasarruf", "Motor üzerinde hiçbir etki oluşmaması"], correctAnswer: 0, explanation: "Yetersiz yağlama scuffing'e; yanlış BN korozyon veya kireçlenmeye yol açar; drain oil analizi liner durumunu gösterir." },
+      { id: 1, sectionRef: "Yağlama Sistemi", category: MAK, question: "Silindir yağı BN (Base Number) değeri neye göre seçilir?", options: ["Yağın görünen rengine göre seçilir", "Yakıtın kükürt oranına göre seçilir", "Motorun devir sayısına göre seçilir", "Yağın çalışma sıcaklığına göre"], correctAnswer: 1, explanation: "Yüksek kükürtte BN 70-100, düşük kükürtte 25-40; alfa yağlama piston hareketiyle senkronizedir." },
+      { id: 2, sectionRef: "Sorunlar", category: MAK, question: "Aşırı yağlama (yüksek feed rate) neye yol açar?", options: ["Sefer yakıt tüketiminde belirgin tasarruf", "Motor üzerinde hiçbir etki oluşmaması", "Yanma odası birikinti ve port tıkanması", "Silindir gömleğinde çok hızlı aşınma"], correctAnswer: 2, explanation: "Yetersiz yağlama scuffing'e; yanlış BN korozyon veya kireçlenmeye yol açar; drain oil analizi liner durumunu gösterir." },
     ],
   },
   {
@@ -2983,8 +2963,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yük dengeleme (load balancing)",
     blocks: [{ sectionTitles: ["Dengeleme Yöntemi", "Kontrol Parametreleri"] }],
     questions: [
-      { id: 1, sectionRef: "Dengeleme Yöntemi", category: MAK, question: "Silindir yük dengeleme nasıl yapılır?", options: ["Diyagramdan güç bulunup rack ayarlanır", "Motor devri değiştirilerek yapılır", "Soğutma suyu debisiyle yapılmakta", "Turboşarjer ayarıyla yapılmaktadır"], correctAnswer: 0, explanation: "ME motorlarda ECU her silindirin fuel index'ini bağımsız ayarlar." },
-      { id: 2, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Pmax ve MEP eşitleme hangi ayarlarla yapılır?", options: ["Pmax zamanlama, MEP yakıt miktarı", "Her ikisi de soğutma ile ayarlanır", "Her ikisi de motor hızıyla ayarlanır", "Hiçbir ayar yapılması gerekmemekte"], correctAnswer: 0, explanation: "İki ayar birbirini etkiler; yük dengesizliği torsiyonel titreşimi artırır." },
+      { id: 1, sectionRef: "Dengeleme Yöntemi", category: MAK, question: "Silindir yük dengeleme nasıl yapılır?", options: ["Motor devri değiştirilerek yapılır", "Soğutma suyu debisiyle yapılmakta", "Turboşarjer ayarıyla yapılmaktadır", "Diyagramdan güç bulunup rack ayarlanır"], correctAnswer: 3, explanation: "ME motorlarda ECU her silindirin fuel index'ini bağımsız ayarlar." },
+      { id: 2, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Pmax ve MEP eşitleme hangi ayarlarla yapılır?", options: ["Hiçbir ayar yapılması gerekmemekte", "Pmax zamanlama, MEP yakıt miktarı", "Her ikisi de soğutma ile ayarlanır", "Her ikisi de motor hızıyla ayarlanır"], correctAnswer: 1, explanation: "İki ayar birbirini etkiler; yük dengesizliği torsiyonel titreşimi artırır." },
     ],
   },
   {
@@ -2992,8 +2972,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ana motor ve yardımcı motor ayrımı",
     blocks: [{ sectionTitles: ["Ana Motor", "Yardımcı Motor"] }],
     questions: [
-      { id: 1, sectionRef: "Ana Motor", category: MAK, question: "Ana motorun (main engine) görevi ve güç aralığı nedir?", options: ["Pervaneyi çevirip itme; 5000-80000 kW", "Elektrik üretir; yaklaşık 500 kW gücünde", "Yalnızca ısıtma yapar; yaklaşık 50 kW", "Dümeni döndürür; yaklaşık 10 kW gücünde"], correctAnswer: 0, explanation: "Ana motor pervaneyi çevirerek itme sağlar; düşük devirli iki zamanlı veya orta devirli dört zamanlı olabilir, güç 5000-80000 kW arasındadır." },
-      { id: 2, sectionRef: "Yardımcı Motor", category: MAK, question: "Yardımcı motorlar ne işe yarar ve gemide kaç adet bulunur?", options: ["Jeneratör tahriki; genellikle 3-4 adet", "Pervaneyi çevirir; yalnızca 1 adet", "Yalnızca yedek amaçlı; 10 adet", "Dümen tahriki için; 2 adet bulunur"], correctAnswer: 0, explanation: "Yardımcı motorlar jeneratör tahrik ederek elektrik üretir (dört zamanlı orta/yüksek devirli); genellikle 3-4 adet bulunur, seyirde 1-2, limanda 2-3 çalışır." },
+      { id: 1, sectionRef: "Ana Motor", category: MAK, question: "Ana motorun (main engine) görevi ve güç aralığı nedir?", options: ["Yalnızca ısıtma yapar; yaklaşık 50 kW", "Dümeni döndürür; yaklaşık 10 kW gücünde", "Pervaneyi çevirip itme; 5000-80000 kW", "Elektrik üretir; yaklaşık 500 kW gücünde"], correctAnswer: 2, explanation: "Ana motor pervaneyi çevirerek itme sağlar; düşük devirli iki zamanlı veya orta devirli dört zamanlı olabilir, güç 5000-80000 kW arasındadır." },
+      { id: 2, sectionRef: "Yardımcı Motor", category: MAK, question: "Yardımcı motorlar ne işe yarar ve gemide kaç adet bulunur?", options: ["Pervaneyi çevirir; yalnızca 1 adet", "Yalnızca yedek amaçlı; 10 adet", "Dümen tahriki için; 2 adet bulunur", "Jeneratör tahriki; genellikle 3-4 adet"], correctAnswer: 3, explanation: "Yardımcı motorlar jeneratör tahrik ederek elektrik üretir (dört zamanlı orta/yüksek devirli); genellikle 3-4 adet bulunur, seyirde 1-2, limanda 2-3 çalışır." },
     ],
   },
   {
@@ -3001,8 +2981,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ana makine seyir hazırlık prosedürü",
     blocks: [{ sectionTitles: ["Hazırlık Adımları"] }],
     questions: [
-      { id: 1, sectionRef: "Hazırlık Adımları", category: MAK, question: "Seyir hazırlığında turning gear çıkarıldıktan sonra ana makineye ne yapılır?", options: ["Hava ile döndürülür (blow-through)", "Doğrudan tam yüke alınmaktadır", "Soğutma devresi durdurulmaktadır", "Yakıt beslemesi tümüyle kesilir"], correctAnswer: 0, explanation: "Blow-through (gösterge muslukları açık hava ile dönüş) silindirlerdeki su ve kalıntı birikimini temizler." },
-      { id: 2, sectionRef: "Hazırlık Adımları", category: MAK, question: "Seyir hazırlığında başlatma havası şişe basıncı en az ne olmalıdır?", options: ["≥ 18-25 bar", "≥ 2 bar", "≥ 6 bar", "≥ 100 bar"], correctAnswer: 0, explanation: "Ana makinenin güvenli başlatılabilmesi için başlatma havası şişe basıncı tipik olarak 18-25 bar ve üzerinde tutulur." },
+      { id: 1, sectionRef: "Hazırlık Adımları", category: MAK, question: "Seyir hazırlığında turning gear çıkarıldıktan sonra ana makineye ne yapılır?", options: ["Yakıt beslemesi tümüyle kesilir", "Hava ile döndürülür (blow-through)", "Doğrudan tam yüke alınmaktadır", "Soğutma su devresi durdurulmaktadır"], correctAnswer: 1, explanation: "Blow-through (gösterge muslukları açık hava ile dönüş) silindirlerdeki su ve kalıntı birikimini temizler." },
+      { id: 2, sectionRef: "Hazırlık Adımları", category: MAK, question: "Seyir hazırlığında başlatma havası şişe basıncı en az ne olmalıdır?", options: ["≥ 6 bar", "≥ 100 bar değeri", "≥ 18-25 bar", "≥ 2 bar"], correctAnswer: 2, explanation: "Ana makinenin güvenli başlatılabilmesi için başlatma havası şişe basıncı tipik olarak 18-25 bar ve üzerinde tutulur." },
     ],
   },
   {
@@ -3010,8 +2990,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yardımcı makine kontrolü",
     blocks: [{ sectionTitles: ["Kontrol Prosedürü", "İzleme Parametreleri"] }],
     questions: [
-      { id: 1, sectionRef: "Kontrol Prosedürü", category: MAK, question: "Çalışan yardımcı jeneratörün hangi elektriksel değerleri ana panoda izlenir?", options: ["Gerilim, frekans ve yük (kW, kVAr)", "Yalnızca yağlama yağının basıncı", "Yalnızca egzoz gazının renk tonu", "Yalnızca motorun devir sayısı değeri"], correctAnswer: 0, explanation: "Jeneratörün gerilim, frekans ve yük (kW/kVAr) değerleri ana panodan izlenir; yedeğin otomatik devreye girme fonksiyonu doğrulanır." },
-      { id: 2, sectionRef: "İzleme Parametreleri", category: MAK, question: "Yardımcı motor yağ basıncı için alarm seviyesi nedir (normal 3-6 bar iken)?", options: ["< 2 bar", "> 90 bar", "60 bar", "±5%"], correctAnswer: 0, explanation: "Yağ basıncı normalde 3-6 bar olup 2 barın altına düştüğünde alarm verir." },
+      { id: 1, sectionRef: "Kontrol Prosedürü", category: MAK, question: "Çalışan yardımcı jeneratörün hangi elektriksel değerleri ana panoda izlenir?", options: ["Yalnızca yağlama yağının basıncı", "Yalnızca egzoz gazının renk tonu", "Yalnızca motorun devir sayısı değeri", "Gerilim, frekans ve yük (kW, kVAr)"], correctAnswer: 3, explanation: "Jeneratörün gerilim, frekans ve yük (kW/kVAr) değerleri ana panodan izlenir; yedeğin otomatik devreye girme fonksiyonu doğrulanır." },
+      { id: 2, sectionRef: "İzleme Parametreleri", category: MAK, question: "Yardımcı motor yağ basıncı için alarm seviyesi nedir (normal 3-6 bar iken)?", options: ["±5%", "< 2 bar", "> 90 bar", "60 bar"], correctAnswer: 1, explanation: "Yağ basıncı normalde 3-6 bar olup 2 barın altına düştüğünde alarm verir." },
     ],
   },
   {
@@ -3019,8 +2999,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt sistemi hazırlığı",
     blocks: [{ sectionTitles: ["Hazırlık Adımları", "Yakıt Geçişi"] }],
     questions: [
-      { id: 1, sectionRef: "Hazırlık Adımları", category: MAK, question: "Yakıt sistemi hazırlığında arıtma akışını sağlamak için hangi ekipman çalıştırılır?", options: ["Purifier/clarifier (separatör) ünitesi", "Turboşarjer ve intercooler ünitesi", "Dümen makinesi hidrolik ünitesi", "Acil jeneratör ve panosu ünitesi"], correctAnswer: 0, explanation: "Purifier/clarifier çalıştırılıp arıtma akışı doğrulanır; ısıtıcılar, viskometre ve filtre diferansiyel basıncı da kontrol edilir." },
-      { id: 2, sectionRef: "Yakıt Geçişi", category: MAK, question: "ECA bölgesine girişte yakıt değişimi (changeover) tipik olarak ne kadar sürer?", options: ["1-3 saat", "Birkaç saniye", "24 saat", "1 hafta"], correctAnswer: 0, explanation: "Changeover süresi yakıt sistemi hacmine ve akış hızına bağlıdır; tipik olarak 1-3 saat sürer ve zamanında başlatılmalıdır." },
+      { id: 1, sectionRef: "Hazırlık Adımları", category: MAK, question: "Yakıt sistemi hazırlığında arıtma akışını sağlamak için hangi ekipman çalıştırılır?", options: ["Dümen makinesi hidrolik ünitesi", "Acil jeneratör ve panosu ünitesi", "Purifier/clarifier (separatör) ünitesi", "Turboşarjer ve intercooler ünitesi"], correctAnswer: 2, explanation: "Purifier/clarifier çalıştırılıp arıtma akışı doğrulanır; ısıtıcılar, viskometre ve filtre diferansiyel basıncı da kontrol edilir." },
+      { id: 2, sectionRef: "Yakıt Geçişi", category: MAK, question: "ECA bölgesine girişte yakıt değişimi (changeover) tipik olarak ne kadar sürer?", options: ["Birkaç saniye", "24 saat", "1 hafta", "1-3 saat"], correctAnswer: 3, explanation: "Changeover süresi yakıt sistemi hacmine ve akış hızına bağlıdır; tipik olarak 1-3 saat sürer ve zamanında başlatılmalıdır." },
     ],
   },
   {
@@ -3028,9 +3008,9 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Soğutma ve yağlama kontrolü",
     blocks: [{ sectionTitles: ["Soğutma Sistemi", "Yağlama Sistemi", "Karter İzleme ve Patlama Koruması"] }],
     questions: [
-      { id: 1, sectionRef: "Soğutma Sistemi", category: MAK, question: "HT (yüksek sıcaklık) soğutma devresi neyi soğutur ve hangi sıcaklıkta tutulur?", options: ["Silindir gömleği ve kapak; 75-90°C", "Yağlama yağı devresi; 10°C değeri", "Yakıt ısıtma devresi; 150°C değeri", "Akü şarj odası ortamı; 25°C değeri"], correctAnswer: 0, explanation: "HT devresi silindir gömleği ve kapak soğutmasını yapar ve sıcaklık 75-90°C arasında tutulur; LT devresi yağ ve şarj havası soğutucusunu besler." },
-      { id: 2, sectionRef: "Karter İzleme ve Patlama Koruması", category: MAK, question: "Oil Mist Detector (OMD) ne işe yarar?", options: ["Karterde yağ buharını izler, durdurur", "Tanklardaki yakıt seviyesini ölçer", "Dümen açısını ölçüp göstermektedir", "Egzoz gazının rengini ölçmektedir"], correctAnswer: 0, explanation: "Sıcak nokta yağ buharı oluşturur; OMD buhar yoğunluğunu izleyerek karter patlamasını önler. Karter sıcakken kapak hemen açılmaz." },
-      { id: 3, sectionRef: "Yağlama Sistemi", category: MAK, question: "Silindir yağının TBN değeri neye göre seçilir?", options: ["Yakıtın kükürt içeriğine göre", "Deniz suyu sıcaklığına göre", "Gemi boyuna göre", "Devir sayısına göre"], correctAnswer: 0, explanation: "Yüksek kükürtlü yakıtta yüksek TBN gerekir; yağ basıncı 3-6 bar, sıcaklık 40-55°C aralığında tutulur." },
+      { id: 1, sectionRef: "Soğutma Sistemi", category: MAK, question: "HT (yüksek sıcaklık) soğutma devresi neyi soğutur ve hangi sıcaklıkta tutulur?", options: ["Akü şarj odası ortamı; 25°C değeri", "Silindir gömleği ve kapak; 75-90°C", "Yağlama yağı devresi; 10°C değeri", "Yakıt ısıtma devresi; 150°C değeri"], correctAnswer: 1, explanation: "HT devresi silindir gömleği ve kapak soğutmasını yapar ve sıcaklık 75-90°C arasında tutulur; LT devresi yağ ve şarj havası soğutucusunu besler." },
+      { id: 2, sectionRef: "Karter İzleme ve Patlama Koruması", category: MAK, question: "Oil Mist Detector (OMD) ne işe yarar?", options: ["Dümen açısını ölçüp göstermektedir", "Egzoz gazının rengini ölçmektedir", "Karterde yağ buharını izler, durdurur", "Tanklardaki yakıt seviyesini ölçer"], correctAnswer: 2, explanation: "Sıcak nokta yağ buharı oluşturur; OMD buhar yoğunluğunu izleyerek karter patlamasını önler. Karter sıcakken kapak hemen açılmaz." },
+      { id: 3, sectionRef: "Yağlama Sistemi", category: MAK, question: "Silindir yağının TBN değeri neye göre seçilir?", options: ["Deniz suyu sıcaklık değerine göre", "Gemi boyuna göre", "Devir sayısına göre", "Yakıtın kükürt içeriğine göre"], correctAnswer: 3, explanation: "Yüksek kükürtlü yakıtta yüksek TBN gerekir; yağ basıncı 3-6 bar, sıcaklık 40-55°C aralığında tutulur." },
     ],
   },
   {
@@ -3038,8 +3018,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dümen ve güverte makineleri testi",
     blocks: [{ sectionTitles: ["Dümen Testi (SOLAS Reg. V/26)", "Güverte Makineleri"] }],
     questions: [
-      { id: 1, sectionRef: "Dümen Testi (SOLAS Reg. V/26)", category: MAK, question: "Ana dümen makinesi tam açıdan tam açıya (35° iskele → 35° sancak) kaç saniyede dönmelidir?", options: ["28 saniye", "5 saniye", "120 saniye", "10 dakika"], correctAnswer: 0, explanation: "SOLAS Reg. V/26 gereği ana dümen makinesi 35° iskeleden 35° sancağa 28 saniye içinde dönüş sağlamalıdır." },
-      { id: 2, sectionRef: "Güverte Makineleri", category: MAK, question: "Demir ırgadında (windlass) hangi test yapılır?", options: ["Fren testi ve kavrama kontrolü", "Egzoz gazı sıcaklık ölçümü", "Yağın TBN değeri ölçümü", "Kompresör surge testi ölçümü"], correctAnswer: 0, explanation: "Demir ırgadında fren testi ve kavrama kontrolü; mooring vinçlerinde çalıştırma ve fren testi yapılır." },
+      { id: 1, sectionRef: "Dümen Testi (SOLAS Reg. V/26)", category: MAK, question: "Ana dümen makinesi tam açıdan tam açıya (35° iskele → 35° sancak) kaç saniyede dönmelidir?", options: ["10 dakika", "28 saniye", "5 saniye", "120 saniye"], correctAnswer: 1, explanation: "SOLAS Reg. V/26 gereği ana dümen makinesi 35° iskeleden 35° sancağa 28 saniye içinde dönüş sağlamalıdır." },
+      { id: 2, sectionRef: "Güverte Makineleri", category: MAK, question: "Demir ırgadında (windlass) hangi test yapılır?", options: ["Yağın TBN değeri ölçümü", "Kompresör surge testi ölçüm işlemi", "Fren testi ve kavrama kontrolü", "Egzoz gazı sıcaklık ölçümü"], correctAnswer: 2, explanation: "Demir ırgadında fren testi ve kavrama kontrolü; mooring vinçlerinde çalıştırma ve fren testi yapılır." },
     ],
   },
   {
@@ -3047,8 +3027,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Engine room check list",
     blocks: [{ sectionTitles: ["Temel Kontrol Listeleri", "Kullanım Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Kontrol Listeleri", category: MAK, question: "Aşağıdakilerden hangisi temel makine dairesi kontrol listelerinden biridir?", options: ["Seyir hazırlık (Departure) listesi", "Yolcu eğlence etkinlik listesi", "Haftalık yemek menü planı listesi", "Liman vergi beyan formu listesi"], correctAnswer: 0, explanation: "Temel listeler: departure, manevra, UMS geçiş (makine dairesi terk), acil durum (yangın/blackout/su sızıntısı), bunker ve bakım öncesi (LOTO) kontrol listeleridir." },
-      { id: 2, sectionRef: "Kullanım Prensibi", category: MAK, question: "Kontrol listesinin (checklist) temel işlevi nedir?", options: ["Tamamlanmanın kanıtıdır, prosedür değil", "Prosedürün tümüyle yerine geçmesidir", "Yalnızca biçimsel bir süsleme sayılır", "Yalnızca denetçi için doldurulmaktadır"], correctAnswer: 0, explanation: "Her madde fiziksel olarak kontrol edilip imzalanır; kontrol listesi prosedürün yerini almaz, tamamlandığının kanıtıdır. ISM Code güvenlik kritik operasyonlarda kullanımını zorunlu kılar." },
+      { id: 1, sectionRef: "Temel Kontrol Listeleri", category: MAK, question: "Aşağıdakilerden hangisi temel makine dairesi kontrol listelerinden biridir?", options: ["Yolcu eğlence etkinlik listesi", "Haftalık yemek menü planlama listesi", "Liman vergi beyan formu listesi", "Seyir hazırlık (Departure) listesi"], correctAnswer: 3, explanation: "Temel listeler: departure, manevra, UMS geçiş (makine dairesi terk), acil durum (yangın/blackout/su sızıntısı), bunker ve bakım öncesi (LOTO) kontrol listeleridir." },
+      { id: 2, sectionRef: "Kullanım Prensibi", category: MAK, question: "Kontrol listesinin (checklist) temel işlevi nedir?", options: ["Yalnızca denetçiler için doldurulmaktadır", "Tamamlanmanın kanıtıdır, prosedür değil", "Prosedürün tümüyle yerine geçmesidir", "Yalnızca biçimsel bir süsleme sayılır"], correctAnswer: 1, explanation: "Her madde fiziksel olarak kontrol edilip imzalanır; kontrol listesi prosedürün yerini almaz, tamamlandığının kanıtıdır. ISM Code güvenlik kritik operasyonlarda kullanımını zorunlu kılar." },
     ],
   },
   {
@@ -3056,8 +3036,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Makine vardiyası devir-teslim",
     blocks: [{ sectionTitles: ["Devir-Teslim İçeriği", "Kontrol Turu"] }],
     questions: [
-      { id: 1, sectionRef: "Devir-Teslim İçeriği", category: MAK, question: "Giden vardiya mühendisi devir-teslimde aşağıdakilerden hangisini aktarır?", options: ["Makine durumu, bakım işleri, alarmlar", "Yalnızca kendi vardiya saat bilgisi", "Yalnızca günün yemek menüsü bilgisi", "Köprüüstü personel listesi bilgisi"], correctAnswer: 0, explanation: "Giden vardiya; ekipman durumu, devam eden bakım, alarm geçmişi, transfer operasyonları ve köprüüstü talimatlarını aktarır." },
-      { id: 2, sectionRef: "Kontrol Turu", category: MAK, question: "Vardiya devir-teslimi nereye kaydedilir?", options: ["Engine Log Book'a, iki imzayla", "Yalnızca sözlü olarak kalmakta", "Ambar yük planı üzerine yazılır", "Köprüüstü jurnaline kaydedilir"], correctAnswer: 0, explanation: "Gelen vardiyacı kapsamlı kontrol turu (round) yapar; devir-teslim Engine Log Book'a kaydedilir ve her iki mühendis tarafından imzalanır." },
+      { id: 1, sectionRef: "Devir-Teslim İçeriği", category: MAK, question: "Giden vardiya mühendisi devir-teslimde aşağıdakilerden hangisini aktarır?", options: ["Yalnızca günün yemek menüsü bilgisi", "Köprüüstü personel listesi bilgisi", "Makine durumu, bakım işleri, alarmlar", "Yalnızca kendi vardiya saatinin bilgisi"], correctAnswer: 2, explanation: "Giden vardiya; ekipman durumu, devam eden bakım, alarm geçmişi, transfer operasyonları ve köprüüstü talimatlarını aktarır." },
+      { id: 2, sectionRef: "Kontrol Turu", category: MAK, question: "Vardiya devir-teslimi nereye kaydedilir?", options: ["Yalnızca sözlü olarak kalmakta", "Ambar yük planı üzerine yazılır", "Köprüüstü jurnaline kaydedilir", "Engine Log Book'a, iki imzayla"], correctAnswer: 3, explanation: "Gelen vardiyacı kapsamlı kontrol turu (round) yapar; devir-teslim Engine Log Book'a kaydedilir ve her iki mühendis tarafından imzalanır." },
     ],
   },
   {
@@ -3065,8 +3045,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Periyodik kontrol turları (round)",
     blocks: [{ sectionTitles: ["Round Kapsamı", "Round Sıklığı"] }],
     questions: [
-      { id: 1, sectionRef: "Round Sıklığı", category: MAK, question: "UMS (insansız) çalışmada round aralığı genellikle ne kadardır?", options: ["4-6 saat (dead man alarm destekli)", "Her 5 dakikada bir yapılmaktadır", "Günde yalnızca bir kez yapılır", "Haftada yalnızca bir kez yapılır"], correctAnswer: 0, explanation: "UMS'de round aralığı genellikle 4-6 saattir ve dead man alarm sistemiyle desteklenir; nöbetli çalışmada her 1-2 saatte round atılır." },
-      { id: 2, sectionRef: "Round Kapsamı", category: MAK, question: "Round sırasında ana motorda neler izlenir?", options: ["Egzoz, scavenge, soğutma ve yağlama", "Yalnızca gövde boya durumu bilgisi", "Yalnızca köprüüstü saat ayarları", "Yalnızca ambar yük planı bilgisi"], correctAnswer: 0, explanation: "Round'da ana/yardımcı motor, kazan, purifier, pompa ve sintine kuyuları kontrol edilir; sızıntı, anormal gürültü, koku ve titreşime bakılır." },
+      { id: 1, sectionRef: "Round Sıklığı", category: MAK, question: "UMS (insansız) çalışmada round aralığı genellikle ne kadardır?", options: ["Haftada yalnızca bir kez yapılır", "4-6 saat (dead man alarm destekli)", "Her 5 dakikada bir düzenli yapılmaktadır", "Günde yalnızca bir kez yapılır"], correctAnswer: 1, explanation: "UMS'de round aralığı genellikle 4-6 saattir ve dead man alarm sistemiyle desteklenir; nöbetli çalışmada her 1-2 saatte round atılır." },
+      { id: 2, sectionRef: "Round Kapsamı", category: MAK, question: "Round sırasında ana motorda neler izlenir?", options: ["Yalnızca köprüüstü saat ayarları", "Yalnızca ambar yük planı bilgisi", "Egzoz, scavenge, soğutma ve yağlama", "Yalnızca gövde boya durumu bilgileri"], correctAnswer: 2, explanation: "Round'da ana/yardımcı motor, kazan, purifier, pompa ve sintine kuyuları kontrol edilir; sızıntı, anormal gürültü, koku ve titreşime bakılır." },
     ],
   },
   {
@@ -3074,8 +3054,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Performans parametreleri izleme",
     blocks: [{ sectionTitles: ["İzlenen Parametreler", "Trend Analizi"] }],
     questions: [
-      { id: 1, sectionRef: "İzlenen Parametreler", category: MAK, question: "SFOC değerindeki sapma neyi gösterir?", options: ["Yanma bozukluğu veya ring aşınması", "Dümen makinesinde oluşan arıza", "Akü grubunun bitmiş olması hâli", "Manyetik pusulada oluşan sapma"], correctAnswer: 0, explanation: "SFOC yakıt verimi göstergesidir; sapma yanma bozukluğu veya ring aşınmasına işaret eder. Scavenge basıncı turbo verimini, egzoz sıcaklığı yanma kalitesini gösterir." },
-      { id: 2, sectionRef: "Trend Analizi", category: MAK, question: "Performans parametrelerinde kademeli sapma ile ani sapma neyi gösterir?", options: ["Kademeli = fouling/aşınma, ani = arıza", "Her ikisi de tümüyle normal sayılır", "Kademeli = arıza, ani = fouling etkisi", "Her ikisi de ölçüm hatası sayılır"], correctAnswer: 0, explanation: "Kademeli sapma fouling veya aşınmayı, ani sapma ise arızayı gösterir; PMI sistemi otomatik analiz sunar." },
+      { id: 1, sectionRef: "İzlenen Parametreler", category: MAK, question: "SFOC değerindeki sapma neyi gösterir?", options: ["Dümen makinesinde oluşan arıza", "Akü grubunun bitmiş olması hâli", "Manyetik pusulada oluşan sapma", "Yanma bozukluğu veya ring aşınması"], correctAnswer: 3, explanation: "SFOC yakıt verimi göstergesidir; sapma yanma bozukluğu veya ring aşınmasına işaret eder. Scavenge basıncı turbo verimini, egzoz sıcaklığı yanma kalitesini gösterir." },
+      { id: 2, sectionRef: "Trend Analizi", category: MAK, question: "Performans parametrelerinde kademeli sapma ile ani sapma neyi gösterir?", options: ["Her ikisi de ölçüm hatası sayılır", "Kademeli = fouling/aşınma, ani = arıza", "Her ikisi de tümüyle normal sayılır", "Kademeli = arıza, ani = fouling etkisi"], correctAnswer: 1, explanation: "Kademeli sapma fouling veya aşınmayı, ani sapma ise arızayı gösterir; PMI sistemi otomatik analiz sunar." },
     ],
   },
   {
@@ -3083,8 +3063,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Günlük kayıt (Engine Log Book)",
     blocks: [{ sectionTitles: ["Kayıt İçeriği", "Yasal Boyutu"] }],
     questions: [
-      { id: 1, sectionRef: "Yasal Boyutu", category: MAK, question: "Engine Log Book'ta düzeltmeler nasıl yapılmalıdır?", options: ["Tek çizgi çizilerek yapılmalıdır", "Beyaz bantla kapatılarak yapılır", "Silgi ile silinerek yapılmaktadır", "Sayfa yırtılıp atılarak yapılır"], correctAnswer: 0, explanation: "Engine Log Book resmi evraktır; mürekkepli kalemle yazılır, düzeltmeler çizilerek yapılır ve PSC/bayrak denetimlerinde incelenir." },
-      { id: 2, sectionRef: "Kayıt İçeriği", category: MAK, question: "Engine Log Book'a aşağıdakilerden hangisi kaydedilir?", options: ["Ana motor devri, güç ve yakıt tüketimi", "Yalnızca gemideki yolcu sayısı", "Yalnızca günün hava durumu bilgisi", "Yalnızca seyir feneri durum bilgisi"], correctAnswer: 0, explanation: "Kayıt içeriği ana/yardımcı motor değerleri, tank seviyeleri, alarmlar, bakım işleri, bunker ve vardiya notlarını kapsar." },
+      { id: 1, sectionRef: "Yasal Boyutu", category: MAK, question: "Engine Log Book'ta düzeltmeler nasıl yapılmalıdır?", options: ["Silgi ile silinerek yapılmaktadır", "Sayfa yırtılıp atılarak yapılır", "Tek çizgi çizilerek yapılmalıdır", "Beyaz bantla kapatılarak yapılır"], correctAnswer: 2, explanation: "Engine Log Book resmi evraktır; mürekkepli kalemle yazılır, düzeltmeler çizilerek yapılır ve PSC/bayrak denetimlerinde incelenir." },
+      { id: 2, sectionRef: "Kayıt İçeriği", category: MAK, question: "Engine Log Book'a aşağıdakilerden hangisi kaydedilir?", options: ["Yalnızca gemideki yolcu sayısı", "Yalnızca günün hava durumu bilgisi", "Yalnızca seyir feneri durum bilgisi", "Ana motor devri, güç ve yakıt tüketimi"], correctAnswer: 3, explanation: "Kayıt içeriği ana/yardımcı motor değerleri, tank seviyeleri, alarmlar, bakım işleri, bunker ve vardiya notlarını kapsar." },
     ],
   },
   {
@@ -3092,8 +3072,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Alarm yönetimi ve müdahale",
     blocks: [{ sectionTitles: ["Alarm Öncelikleri", "Müdahale Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Alarm Öncelikleri", category: MAK, question: "Kritik (Shutdown) öncelikli alarm ne anlama gelir?", options: ["Ekipman durur; acil müdahale gerekir", "Yalnızca bilgi amaçlı bir uyarıdır", "Görmezden gelinebilecek bir uyarı", "Motor yavaşlar ama durmamaktadır"], correctAnswer: 0, explanation: "Kritik alarm motorun otomatik durmasına yol açar; Ciddi (Slowdown) yavaşlatma, Uyarı parametre sapması, Bilgi ise durum değişikliğidir." },
-      { id: 2, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Alarm geldiğinde sesli uyarıyı susturmak için ne yapılır?", options: ["Alarm kabul edilir (acknowledge)", "Motor derhâl durdurulmaktadır", "Alarm panosu tümüyle kapatılır", "Besleme sigortası attırılmakta"], correctAnswer: 0, explanation: "Alarm okunup tanındıktan sonra acknowledge edilir (sesli alarm susar), durum yerinde kontrol edilir ve olay Engine Log Book'a kaydedilir." },
+      { id: 1, sectionRef: "Alarm Öncelikleri", category: MAK, question: "Kritik (Shutdown) öncelikli alarm ne anlama gelir?", options: ["Motor yavaşlar ama durmamaktadır", "Ekipman durur; acil müdahale gerekir", "Yalnızca bilgi amaçlı verilen bir uyarıdır", "Görmezden gelinebilecek bir uyarı"], correctAnswer: 1, explanation: "Kritik alarm motorun otomatik durmasına yol açar; Ciddi (Slowdown) yavaşlatma, Uyarı parametre sapması, Bilgi ise durum değişikliğidir." },
+      { id: 2, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Alarm geldiğinde sesli uyarıyı susturmak için ne yapılır?", options: ["Alarm panosu tümüyle kapatılmaktadır", "Besleme sigortası attırılmakta", "Alarm kabul edilir (acknowledge)", "Motor derhâl durdurulmaktadır"], correctAnswer: 2, explanation: "Alarm okunup tanındıktan sonra acknowledge edilir (sesli alarm susar), durum yerinde kontrol edilir ve olay Engine Log Book'a kaydedilir." },
     ],
   },
   {
@@ -3101,8 +3081,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "UMS (Unmanned Machinery Space) operasyonu",
     blocks: [{ sectionTitles: ["UMS Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "UMS Gereklilikleri", category: MAK, question: "Dead man alarm sistemi neyi gerektirir?", options: ["Vardiyacının sisteme düzenli olarak yanıt vermesini", "Motorun sürekli tam yükte çalışmasını", "Köprüüstünün boş olmasını", "Yangın sisteminin devre dışı olmasını"], correctAnswer: 0, explanation: "Dead man alarm, vardiyacının düzenli yanıt vermesini gerektirir; yanıt gelmezse alarm yükselir." },
-      { id: 2, sectionRef: "UMS Gereklilikleri", category: MAK, question: "UMS sertifikasyonu için aşağıdakilerden hangisi zorunludur?", options: ["Yangın algılama, otomatik durdurma, yedek", "Yalnızca ek personel bulundurulması", "Yalnızca daha büyük motor kullanımı", "Yalnızca manuel valflerin kullanımı"], correctAnswer: 0, explanation: "Tüm kritik parametreler köprüüstünden izlenebilmeli; yangın algılama, otomatik durdurma, uzaktan kontrol ve yedek sistemler eksiksiz çalışmalıdır." },
+      { id: 1, sectionRef: "UMS Gereklilikleri", category: MAK, question: "Dead man alarm sistemi neyi gerektirir?", options: ["Motorun sürekli tam yükte çalışmasını", "Köprüüstünün boş olmasını", "Yangın sisteminin devre dışı olmasını", "Vardiyacının sisteme düzenli olarak yanıt vermesini"], correctAnswer: 3, explanation: "Dead man alarm, vardiyacının düzenli yanıt vermesini gerektirir; yanıt gelmezse alarm yükselir." },
+      { id: 2, sectionRef: "UMS Gereklilikleri", category: MAK, question: "UMS sertifikasyonu için aşağıdakilerden hangisi zorunludur?", options: ["Yalnızca manuel valflerin kullanımı", "Yangın algılama, otomatik durdurma, yedek", "Yalnızca ek personel bulundurulması", "Yalnızca daha büyük motor kullanımı"], correctAnswer: 1, explanation: "Tüm kritik parametreler köprüüstünden izlenebilmeli; yangın algılama, otomatik durdurma, uzaktan kontrol ve yedek sistemler eksiksiz çalışmalıdır." },
     ],
   },
   {
@@ -3110,8 +3090,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Manevra modu geçiş prosedürü",
     blocks: [{ sectionTitles: ["Geçiş Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Geçiş Prosedürü", category: MAK, question: "Manevra moduna geçişte dümen makinesi nasıl çalıştırılır?", options: ["Çift pompa çalıştırılır", "Tek pompayla yetinilir", "Tamamen kapatılır", "Manuel mandalla"], correctAnswer: 0, explanation: "Manevra geçişinde yedek jeneratör devreye alınır, gerekirse HFO'dan MGO'ya geçilir ve dümen makinesi çift pompa çalıştırılır." },
-      { id: 2, sectionRef: "Geçiş Prosedürü", category: MAK, question: "Manevra hazırlığı tamamlanınca köprüüstüne ne bildirilir?", options: ["'Stand-by Engine'", "'Finished With Engine'", "'Full Away'", "'Blackout'"], correctAnswer: 0, explanation: "Başlatma havası ve yedek pompalar hazırlandıktan sonra köprüüstüne 'Stand-by Engine' bildirilir." },
+      { id: 1, sectionRef: "Geçiş Prosedürü", category: MAK, question: "Manevra moduna geçişte dümen makinesi nasıl çalıştırılır?", options: ["Tamamen kapatılır", "Manuel mandalla", "Çift pompa çalıştırılır", "Tek bir pompayla yetinilir"], correctAnswer: 2, explanation: "Manevra geçişinde yedek jeneratör devreye alınır, gerekirse HFO'dan MGO'ya geçilir ve dümen makinesi çift pompa çalıştırılır." },
+      { id: 2, sectionRef: "Geçiş Prosedürü", category: MAK, question: "Manevra hazırlığı tamamlanınca köprüüstüne ne bildirilir?", options: ["'Finished With Engine'", "'Full Away'", "'Blackout'", "'Stand-by Engine'"], correctAnswer: 3, explanation: "Başlatma havası ve yedek pompalar hazırlandıktan sonra köprüüstüne 'Stand-by Engine' bildirilir." },
     ],
   },
   {
@@ -3119,8 +3099,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt değiştirme (fuel changeover)",
     blocks: [{ sectionTitles: ["Kademeli Geçiş Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Kademeli Geçiş Prensibi", category: MAK, question: "HFO-MGO geçişinde sıcaklık neden kontrollü/yavaş bir hızla değiştirilir?", options: ["Ani değişim scuffing ve sızıntı yapar", "Ani değişim yakıtın rengini bozmakta", "Ani değişim pervaneyi yavaşlatmakta", "Yavaş değişimin bir nedeni yoktur"], correctAnswer: 0, explanation: "HFO sıcak/viskoz, MGO soğuk/düşük viskozludur; ani sıcaklık değişimi scuffing ve sızıntı yapar, bu yüzden geçiş dakikada birkaç derece ile sınırlanır." },
-      { id: 2, sectionRef: "Kademeli Geçiş Prensibi", category: MAK, question: "MGO viskozitesi çok düşükse ne gerekebilir?", options: ["Soğutma (chiller)", "Ek ısıtma", "Daha yüksek devir", "Daha fazla kükürt"], correctAnswer: 0, explanation: "MGO'nun viskozitesi çok düşükse chiller ile soğutma gerekebilir; geçiş ECA sınırına yeterince önce başlatılır ve kayıt altına alınır." },
+      { id: 1, sectionRef: "Kademeli Geçiş Prensibi", category: MAK, question: "HFO-MGO geçişinde sıcaklık neden kontrollü/yavaş bir hızla değiştirilir?", options: ["Yavaş değişimin bir nedeni yoktur", "Ani değişim scuffing ve sızıntı yapar", "Ani değişim yakıtın rengini bozmaktadır", "Ani değişim pervaneyi yavaşlatmakta"], correctAnswer: 1, explanation: "HFO sıcak/viskoz, MGO soğuk/düşük viskozludur; ani sıcaklık değişimi scuffing ve sızıntı yapar, bu yüzden geçiş dakikada birkaç derece ile sınırlanır." },
+      { id: 2, sectionRef: "Kademeli Geçiş Prensibi", category: MAK, question: "MGO viskozitesi çok düşükse ne gerekebilir?", options: ["Daha yüksek devir", "Daha fazla kükürt", "Soğutma (chiller)", "Ek ısıtma"], correctAnswer: 2, explanation: "MGO'nun viskozitesi çok düşükse chiller ile soğutma gerekebilir; geçiş ECA sınırına yeterince önce başlatılır ve kayıt altına alınır." },
     ],
   },
   {
@@ -3128,8 +3108,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ana makine hız kontrolü",
     blocks: [{ sectionTitles: ["Kontrol Yöntemleri", "Yük Programı"] }],
     questions: [
-      { id: 1, sectionRef: "Kontrol Yöntemleri", category: MAK, question: "Governor (regülatör) ne işe yarar?", options: ["Set devire göre yakıt ayarını yapar", "Dümen makinesini döndürmektedir", "Soğutma suyu sıcaklığını ayarlar", "Demir ırgadını çalıştırmaktadır"], correctAnswer: 0, explanation: "Governor hız düzenleme cihazıdır; set devire göre yakıt enjeksiyon miktarını otomatik ayarlar. Bridge control köprüden, engine room control daireden yapılır." },
-      { id: 2, sectionRef: "Yük Programı", category: MAK, question: "Tipik bir motor için tam yüke çıkış süresi ne kadardır?", options: ["30-60 dakika", "2-3 saniye", "12 saat", "1 hafta"], correctAnswer: 0, explanation: "Yük programı yükleme hızını sınırlar; tam yüke çıkış tipik olarak 30-60 dakika sürer. Ani yük artışı termal stres ve hasar yapabilir." },
+      { id: 1, sectionRef: "Kontrol Yöntemleri", category: MAK, question: "Governor (regülatör) ne işe yarar?", options: ["Dümen makinesini döndürmektedir", "Soğutma suyu sıcaklığını ayarlar", "Demir ırgadını çalıştırmaktadır", "Set devire göre yakıt ayarını yapar"], correctAnswer: 3, explanation: "Governor hız düzenleme cihazıdır; set devire göre yakıt enjeksiyon miktarını otomatik ayarlar. Bridge control köprüden, engine room control daireden yapılır." },
+      { id: 2, sectionRef: "Yük Programı", category: MAK, question: "Tipik bir motor için tam yüke çıkış süresi ne kadardır?", options: ["1 hafta", "30-60 dakika", "2-3 saniye süresi", "12 saat"], correctAnswer: 1, explanation: "Yük programı yükleme hızını sınırlar; tam yüke çıkış tipik olarak 30-60 dakika sürer. Ani yük artışı termal stres ve hasar yapabilir." },
     ],
   },
   {
@@ -3137,8 +3117,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Acil durma ve geri yol",
     blocks: [{ sectionTitles: ["Acil Durma", "Acil Geri Yol (Crash Astern)"] }],
     questions: [
-      { id: 1, sectionRef: "Acil Durma", category: MAK, question: "Acil durmada ana makine nasıl durdurulur?", options: ["Yakıt kesilerek durdurulmaktadır", "Soğutma debisi artırılarak durdurulur", "Dümen alabanda kırılarak durdurulur", "Turboşarjer hızlandırılarak durdurulur"], correctAnswer: 0, explanation: "Acil durmada yakıt kesilir; iki zamanlı motorda krank mili kısa sürede, dört zamanlıda atalet nedeniyle biraz daha geç durur. Buton köprü ve dairede bulunur." },
-      { id: 2, sectionRef: "Acil Geri Yol (Crash Astern)", category: MAK, question: "Değişken hatveli (CPP) gemide crash astern nasıl gerçekleşir?", options: ["Devir sabit; hatve negatife çevrilir", "Motor durdurulup ters yönde başlatılır", "Turboşarjer söküp devreden çıkarılır", "Yalnızca dümen kullanılarak yapılır"], correctAnswer: 0, explanation: "İki zamanlıda motor durdurulup starting air ile ters yönde çalıştırılır (15-30 sn); CPP'de devir sabit kalır, hatve negatife çevrilir ve yardımcı üfleyiciler devreye girer." },
+      { id: 1, sectionRef: "Acil Durma", category: MAK, question: "Acil durmada ana makine nasıl durdurulur?", options: ["Dümen alabanda kırılarak durdurulur", "Turboşarjer hızlandırılarak durdurulur", "Yakıt kesilerek durdurulmaktadır", "Soğutma debisi artırılarak durdurulur"], correctAnswer: 2, explanation: "Acil durmada yakıt kesilir; iki zamanlı motorda krank mili kısa sürede, dört zamanlıda atalet nedeniyle biraz daha geç durur. Buton köprü ve dairede bulunur." },
+      { id: 2, sectionRef: "Acil Geri Yol (Crash Astern)", category: MAK, question: "Değişken hatveli (CPP) gemide crash astern nasıl gerçekleşir?", options: ["Motor durdurulup ters yönde başlatılır", "Turboşarjer söküp devreden çıkarılır", "Yalnızca dümen kullanılarak yapılır", "Devir sabit; hatve negatife çevrilir"], correctAnswer: 3, explanation: "İki zamanlıda motor durdurulup starting air ile ters yönde çalıştırılır (15-30 sn); CPP'de devir sabit kalır, hatve negatife çevrilir ve yardımcı üfleyiciler devreye girer." },
     ],
   },
   {
@@ -3146,8 +3126,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Köprüüstü-makine dairesi iletişim",
     blocks: [{ sectionTitles: ["İletişim Araçları", "İletişim Protokolü"] }],
     questions: [
-      { id: 1, sectionRef: "İletişim Protokolü", category: MAK, question: "Köprüüstü-makine iletişiminde kapalı döngü (closed-loop) iletişim nasıl işler?", options: ["Komut verilir, tekrarlanır, onaylanır", "Komut bir kez verilir, onay aranmaz", "Komutlar yalnızca yazılı verilmekte", "Komutlar yalnızca düdükle verilir"], correctAnswer: 0, explanation: "Kapalı döngü iletişimde komut verilir, alıcı tekrarlar, verici onaylar; yanlış anlamayı önlemek için standart terminoloji ve sürekli hat kullanılır." },
-      { id: 2, sectionRef: "İletişim Araçları", category: MAK, question: "Hız komutu için kullanılan, kayıt tutan araç hangisidir?", options: ["Makine telgrafı", "El düdüğü", "İnterkom", "SCADA grafiği"], correctAnswer: 0, explanation: "Makine telgrafı (mekanik/elektronik) hız komutu için kullanılır ve komutu kaydeder; kritik komutlar ayrıca Engine Log Book'a yazılır." },
+      { id: 1, sectionRef: "İletişim Protokolü", category: MAK, question: "Köprüüstü-makine iletişiminde kapalı döngü (closed-loop) iletişim nasıl işler?", options: ["Komutlar yalnızca düdükle verilir", "Komut verilir, tekrarlanır, onaylanır", "Komut bir kez verilir, onay hiç aranmaz", "Komutlar yalnızca yazılı verilmekte"], correctAnswer: 1, explanation: "Kapalı döngü iletişimde komut verilir, alıcı tekrarlar, verici onaylar; yanlış anlamayı önlemek için standart terminoloji ve sürekli hat kullanılır." },
+      { id: 2, sectionRef: "İletişim Araçları", category: MAK, question: "Hız komutu için kullanılan, kayıt tutan araç hangisidir?", options: ["İnterkom", "SCADA grafik ekranı", "Makine telgrafı", "El düdüğü"], correctAnswer: 2, explanation: "Makine telgrafı (mekanik/elektronik) hız komutu için kullanılır ve komutu kaydeder; kritik komutlar ayrıca Engine Log Book'a yazılır." },
     ],
   },
   {
@@ -3155,8 +3135,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Makine dairesi yangını",
     blocks: [{ sectionTitles: ["İlk Müdahale", "Sabit Söndürme Sistemi"] }],
     questions: [
-      { id: 1, sectionRef: "İlk Müdahale", category: MAK, question: "Makine dairesi yangınında ilk müdahale adımları nelerdir?", options: ["Alarm, quick closing valf, fan durdur", "Önce yemekhane bölümü boşaltılır", "Ana makine devri hızlandırılmakta", "Soğutma suyu debisi artırılmaktadır"], correctAnswer: 0, explanation: "Alarm çalınır ve köprüüstü bilgilendirilir; portatif söndürücüyle ilk müdahale yapılır, hızlı kapama valfleri kapatılır, havalandırma durdurulup damperler kapatılır." },
-      { id: 2, sectionRef: "Sabit Söndürme Sistemi", category: MAK, question: "CO₂/FM200 sabit söndürme sistemi devreye alınmadan önce hangi şart sağlanmalıdır?", options: ["Personel dışarıda, kapı ve fan kapalı", "Yalnızca bir kapının kapalı olması", "Havalandırmanın açık kalması gerekir", "Personelin içeride beklemesi gerekir"], correctAnswer: 0, explanation: "Makine dairesi tahliye edilip personel sayıldıktan, tüm kapı/havalandırma kapatılıp uyarı alarmı verildikten sonra CO₂ veya FM200 devreye alınabilir." },
+      { id: 1, sectionRef: "İlk Müdahale", category: MAK, question: "Makine dairesi yangınında ilk müdahale adımları nelerdir?", options: ["Önce yemekhane bölümü boşaltılır", "Ana makine devri hızlandırılmakta", "Soğutma suyunun debisi artırılmaktadır", "Alarm, quick closing valf, fan durdur"], correctAnswer: 3, explanation: "Alarm çalınır ve köprüüstü bilgilendirilir; portatif söndürücüyle ilk müdahale yapılır, hızlı kapama valfleri kapatılır, havalandırma durdurulup damperler kapatılır." },
+      { id: 2, sectionRef: "Sabit Söndürme Sistemi", category: MAK, question: "CO₂/FM200 sabit söndürme sistemi devreye alınmadan önce hangi şart sağlanmalıdır?", options: ["Personelin içeride beklemesi gerekir", "Personel dışarıda, kapı ve fan kapalı", "Yalnızca bir kapının kapalı olması", "Havalandırmanın açık kalması gerekmekte"], correctAnswer: 1, explanation: "Makine dairesi tahliye edilip personel sayıldıktan, tüm kapı/havalandırma kapatılıp uyarı alarmı verildikten sonra CO₂ veya FM200 devreye alınabilir." },
     ],
   },
   {
@@ -3164,8 +3144,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Blackout ve güç geri kazanımı",
     blocks: [{ sectionTitles: ["Blackout Nedenleri", "Güç Geri Kazanım Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Blackout Nedenleri", category: MAK, question: "Aşağıdakilerden hangisi tipik bir blackout nedenidir?", options: ["Jeneratörün aşırı yüklenip trip etmesi", "Manyetik pusulanın sapma göstermesi", "Dış hava sıcaklığının yüksek olması", "Demir ırgadı freninin sıkışması"], correctAnswer: 0, explanation: "Aşırı yük/trip, yakıt veya soğutma/yağ arızası, elektrik kısa devresi ve otomasyon hatası blackout'a yol açar." },
-      { id: 2, sectionRef: "Güç Geri Kazanım Prosedürü", category: MAK, question: "Blackout anında navigasyon ve acil aydınlatma nereden beslenir?", options: ["Akü beslemeli UPS üzerinden", "Doğrudan ana bara üzerinden", "Turboşarjer üzerinden gelen güç", "Hiçbir kaynaktan beslenmemekte"], correctAnswer: 0, explanation: "Blackout'ta navigasyon ve acil aydınlatma UPS'ten, dümen acil güçten beslenir; bir jeneratör manuel başlatılıp baraya alınır ve kritik yükler sırayla devreye girer." },
+      { id: 1, sectionRef: "Blackout Nedenleri", category: MAK, question: "Aşağıdakilerden hangisi tipik bir blackout nedenidir?", options: ["Dış hava sıcaklığının yüksek olması", "Demir ırgadı freninin sıkışması", "Jeneratörün aşırı yüklenip trip etmesi", "Manyetik pusulanın sapma göstermesi"], correctAnswer: 2, explanation: "Aşırı yük/trip, yakıt veya soğutma/yağ arızası, elektrik kısa devresi ve otomasyon hatası blackout'a yol açar." },
+      { id: 2, sectionRef: "Güç Geri Kazanım Prosedürü", category: MAK, question: "Blackout anında navigasyon ve acil aydınlatma nereden beslenir?", options: ["Doğrudan ana bara üzerinden", "Turboşarjer üzerinden gelen güç", "Hiçbir kaynaktan beslenmemekte", "Akü beslemeli UPS üzerinden"], correctAnswer: 3, explanation: "Blackout'ta navigasyon ve acil aydınlatma UPS'ten, dümen acil güçten beslenir; bir jeneratör manuel başlatılıp baraya alınır ve kritik yükler sırayla devreye girer." },
     ],
   },
   {
@@ -3173,8 +3153,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ana makine arızası ile seyir",
     blocks: [{ sectionTitles: ["Acil Müdahale", "Kısıtlı Güçle Seyir"] }],
     questions: [
-      { id: 1, sectionRef: "Acil Müdahale", category: MAK, question: "Ana makine devre dışı kaldığında hangi seyir fenerleri gösterilir?", options: ["NUC (Not Under Command) fenerleri", "Demirde bulunan gemi fenerleri", "Balıkçı gemisi çalışma fenerleri", "Hiçbir özel fener gösterilmez"], correctAnswer: 0, explanation: "Köprüüstüne derhal bilgi verilir, NUC fenerleri gösterilir, GMDSS ile trafik uyarılır ve gerekirse demir hazırlığı yapılır." },
-      { id: 2, sectionRef: "Kısıtlı Güçle Seyir", category: MAK, question: "Bazı arızalarda motor nasıl kısıtlı güçle çalıştırılabilir?", options: ["Silindir izole edilip düşük devirde", "Turboşarjer tümüyle çıkarılarak", "Yakıt iki katına çıkarılarak", "Soğutma devresi kapatılarak"], correctAnswer: 0, explanation: "Silindir izolasyonu ve düşük devirle kısıtlı güçle seyir mümkündür; dizel-elektrik gemilerde yardımcı motorlarla tahrik sağlanabilir." },
+      { id: 1, sectionRef: "Acil Müdahale", category: MAK, question: "Ana makine devre dışı kaldığında hangi seyir fenerleri gösterilir?", options: ["Hiçbir özel fener gösterilmez", "NUC (Not Under Command) fenerleri", "Demirde bulunan gemi fenerleri", "Balıkçı gemisinin çalışma fenerleri"], correctAnswer: 1, explanation: "Köprüüstüne derhal bilgi verilir, NUC fenerleri gösterilir, GMDSS ile trafik uyarılır ve gerekirse demir hazırlığı yapılır." },
+      { id: 2, sectionRef: "Kısıtlı Güçle Seyir", category: MAK, question: "Bazı arızalarda motor nasıl kısıtlı güçle çalıştırılabilir?", options: ["Yakıt iki katına çıkarılarak", "Soğutma devresi kapatılarak", "Silindir izole edilip düşük devirde", "Turboşarjer tümüyle çıkarılarak"], correctAnswer: 2, explanation: "Silindir izolasyonu ve düşük devirle kısıtlı güçle seyir mümkündür; dizel-elektrik gemilerde yardımcı motorlarla tahrik sağlanabilir." },
     ],
   },
   {
@@ -3182,8 +3162,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Deniz suyu sızıntısı",
     blocks: [{ sectionTitles: ["Sızıntı Kaynakları", "Müdahale Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Sızıntı Kaynakları", category: MAK, question: "Makine dairesinde deniz suyu sızıntısının olası kaynağı hangisidir?", options: ["Stern tube veya deniz suyu valf hattı", "Karterdeki yağ teknesi ve tahliyesi", "Yakıt enjektörü yüksek basınç borusu", "Başlatma havası şişesi ve hattı"], correctAnswer: 0, explanation: "Kaynaklar arasında deniz suyu valfleri/boruları, stern tube sızdırmazlığı, soğutma borusu korozyonu ve sea chest kapak arızası bulunur." },
-      { id: 2, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Deniz suyu sızıntısında ilk müdahale nedir?", options: ["Kaynağı izole edip sintineyi devreye almak", "Hemen gemiyi terk etme kararı vermek", "Ana makineyi hızlandırıp uzaklaşmak", "Soğutma devresini tümüyle durdurmak"], correctAnswer: 0, explanation: "Önce kaynak izole edilir, sintine pompaları devreye alınır, köprüüstü bilgilendirilir (stabilite) ve geçici onarım uygulanır." },
+      { id: 1, sectionRef: "Sızıntı Kaynakları", category: MAK, question: "Makine dairesinde deniz suyu sızıntısının olası kaynağı hangisidir?", options: ["Karterdeki yağ teknesi ve tahliyesi", "Yakıt enjektörünün yüksek basınç borusu", "Başlatma havası şişesi ve hattı", "Stern tube veya deniz suyu valf hattı"], correctAnswer: 3, explanation: "Kaynaklar arasında deniz suyu valfleri/boruları, stern tube sızdırmazlığı, soğutma borusu korozyonu ve sea chest kapak arızası bulunur." },
+      { id: 2, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Deniz suyu sızıntısında ilk müdahale nedir?", options: ["Soğutma devresini tümüyle durdurmak", "Kaynağı izole edip sintineyi devreye almak", "Hemen gemiyi terk etme kararı vermek", "Ana makineyi hızlandırıp uzaklaşmak"], correctAnswer: 1, explanation: "Önce kaynak izole edilir, sintine pompaları devreye alınır, köprüüstü bilgilendirilir (stabilite) ve geçici onarım uygulanır." },
     ],
   },
   {
@@ -3191,8 +3171,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yüksek sıcaklık ve basınç alarmları",
     blocks: [{ sectionTitles: ["Yaygın Alarm Senaryoları", "Krank Kutusu Patlaması Riski"] }],
     questions: [
-      { id: 1, sectionRef: "Yaygın Alarm Senaryoları", category: MAK, question: "Egzoz sıcaklığı yüksek alarmının olası nedeni nedir?", options: ["Enjektör arızası veya aşırı yük", "Akü grubunun boşalmış olması", "Manyetik pusulada sapma olması", "Dümen açısının düşük olması"], correctAnswer: 0, explanation: "Yüksek egzoz sıcaklığında yük azaltılır ve enjektör kontrol edilir; yağ/su sıcaklığı, scavenge ve krank basıncı alarmlarının kendi nedenleri vardır." },
-      { id: 2, sectionRef: "Krank Kutusu Patlaması Riski", category: MAK, question: "Krank kutusu (crankcase) yüksek basınç alarmı ne gerektirir?", options: ["Motorun durdurulmasını", "Yükün artırılmasını", "Soğutmanın kapatılmasını", "Yakıt değişimini"], correctAnswer: 0, explanation: "Krank kutusunda yağ buharı birikimi patlama riski yaratır; relief valfi riski azaltır ve yüksek basınç alarmı motorun durdurulmasını gerektirir." },
+      { id: 1, sectionRef: "Yaygın Alarm Senaryoları", category: MAK, question: "Egzoz sıcaklığı yüksek alarmının olası nedeni nedir?", options: ["Manyetik pusulada sapma oluşması", "Dümen açısının düşük olması", "Enjektör arızası veya aşırı yük", "Akü grubunun boşalmış olması"], correctAnswer: 2, explanation: "Yüksek egzoz sıcaklığında yük azaltılır ve enjektör kontrol edilir; yağ/su sıcaklığı, scavenge ve krank basıncı alarmlarının kendi nedenleri vardır." },
+      { id: 2, sectionRef: "Krank Kutusu Patlaması Riski", category: MAK, question: "Krank kutusu (crankcase) yüksek basınç alarmı ne gerektirir?", options: ["Yükün artırılmasını", "Soğutmanın kapatılmasını", "Yakıt değişimini", "Motorun durdurulmasını"], correctAnswer: 3, explanation: "Krank kutusunda yağ buharı birikimi patlama riski yaratır; relief valfi riski azaltır ve yüksek basınç alarmı motorun durdurulmasını gerektirir." },
     ],
   },
   {
@@ -3200,8 +3180,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Acil jeneratör devreye alma",
     blocks: [{ sectionTitles: ["Otomatik Devreye Girme", "Manuel Devreye Alma", "Test Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Otomatik Devreye Girme", category: MAK, question: "Acil jeneratör ana bara gerilim kaybında ne kadar sürede çalışır?", options: ["45 saniye içinde", "Anında", "5 dakika içinde", "1 saat içinde"], correctAnswer: 0, explanation: "Gerilim kaybını algılayan röle başlatma sinyali verir; motor 45 saniye içinde çalışır ve acil baraya yük alır (hava veya akü ile başlatma)." },
-      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "SOLAS gereği acil jeneratör ne sıklıkla test çalıştırması yapılır?", options: ["Haftalık", "Yıllık", "Günlük", "Beş yılda bir"], correctAnswer: 0, explanation: "SOLAS gereği acil jeneratör haftalık test edilir; otomatik başlatma, yük alma ve alarm fonksiyonları doğrulanır." },
+      { id: 1, sectionRef: "Otomatik Devreye Girme", category: MAK, question: "Acil jeneratör ana bara gerilim kaybında ne kadar sürede çalışır?", options: ["1 saat içinde", "45 saniye içinde", "Anında", "5 dakika içinde olur"], correctAnswer: 1, explanation: "Gerilim kaybını algılayan röle başlatma sinyali verir; motor 45 saniye içinde çalışır ve acil baraya yük alır (hava veya akü ile başlatma)." },
+      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "SOLAS gereği acil jeneratör ne sıklıkla test çalıştırması yapılır?", options: ["Günlük", "Beş yılda bir", "Haftalık", "Yıllık"], correctAnswer: 2, explanation: "SOLAS gereği acil jeneratör haftalık test edilir; otomatik başlatma, yük alma ve alarm fonksiyonları doğrulanır." },
     ],
   },
   {
@@ -3209,8 +3189,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kişisel koruyucu donanım (KKD) türleri",
     blocks: [{ sectionTitles: ["KKD Kategorileri", "Makine Dairesi Zorunlu KKD"] }],
     questions: [
-      { id: 1, sectionRef: "KKD Kategorileri", category: MAK, question: "Kulak koruyucu hangi gürültü seviyesinin üzerinde gereklidir?", options: ["85 dBA üzeri", "40 dBA üzeri", "120 dBA üzeri", "Gerekmez"], correctAnswer: 0, explanation: "Kulak koruyucu (EN 352) gürültü 85 dBA üzerinde gereklidir; baret EN 397, gözlük EN 166 standardındadır." },
-      { id: 2, sectionRef: "Makine Dairesi Zorunlu KKD", category: MAK, question: "Makine dairesine girerken minimum hangi KKD giyilmelidir?", options: ["Baret, gözlük, kulaklık, ayakkabı, tulum", "Yalnızca koruyucu eldiven takılması", "Yalnızca baret takılması yeterlidir", "Hiçbir KKD kullanılması gerekmez"], correctAnswer: 0, explanation: "Minimum baret, gözlük, kulak koruyucu, güvenlik ayakkabısı ve iş elbisesi giyilir; işe özel ek KKD risk değerlendirmesine göre belirlenir." },
+      { id: 1, sectionRef: "KKD Kategorileri", category: MAK, question: "Kulak koruyucu hangi gürültü seviyesinin üzerinde gereklidir?", options: ["40 dBA üzeri", "120 dBA üzeri", "Gerekmez", "85 dBA üzeri"], correctAnswer: 3, explanation: "Kulak koruyucu (EN 352) gürültü 85 dBA üzerinde gereklidir; baret EN 397, gözlük EN 166 standardındadır." },
+      { id: 2, sectionRef: "Makine Dairesi Zorunlu KKD", category: MAK, question: "Makine dairesine girerken minimum hangi KKD giyilmelidir?", options: ["Hiçbir KKD kullanılması gerekmez", "Baret, gözlük, kulaklık, ayakkabı, tulum", "Yalnızca koruyucu eldiven takılması", "Yalnızca baret takılması yeterlidir"], correctAnswer: 1, explanation: "Minimum baret, gözlük, kulak koruyucu, güvenlik ayakkabısı ve iş elbisesi giyilir; işe özel ek KKD risk değerlendirmesine göre belirlenir." },
     ],
   },
   {
@@ -3218,8 +3198,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yangın üçgeni ve yangın sınıfları",
     blocks: [{ sectionTitles: ["Yangın Üçgeni", "Yangın Sınıfları", "Makine Dairesi Yangın Riskleri"] }],
     questions: [
-      { id: 1, sectionRef: "Yangın Üçgeni", category: MAK, question: "Yangın üçgeninin bir kenarı kaldırılırsa ne olur?", options: ["Yangın söner (bir kenar kesilir)", "Yangın daha da büyümektedir", "Hiçbir değişiklik olmamaktadır", "Şiddetli bir patlama oluşmakta"], correctAnswer: 0, explanation: "Yangın üçgeninin herhangi bir kenarı (yakıt/oksijen/ısı) kaldırılırsa yangın söner: yakıt kesilir (QCV), oksijen kesilir (CO₂/köpük) veya sıcaklık düşürülür (su)." },
-      { id: 2, sectionRef: "Yangın Sınıfları", category: MAK, question: "Yanıcı sıvılar (yakıt, yağ, boya) hangi yangın sınıfındadır?", options: ["B sınıfı", "A sınıfı", "D sınıfı", "C sınıfı"], correctAnswer: 0, explanation: "A katılar, B yanıcı sıvılar (yakıt/yağ), C yanıcı gazlar, D yanıcı metaller, E/F elektrik/pişirme yağıdır. Makine dairesi en yüksek B sınıfı riskine sahiptir." },
+      { id: 1, sectionRef: "Yangın Üçgeni", category: MAK, question: "Yangın üçgeninin bir kenarı kaldırılırsa ne olur?", options: ["Hiçbir değişiklik gerçekleşmemektedir", "Şiddetli bir patlama oluşmakta", "Yangın söner (bir kenar kesilir)", "Yangın daha da büyümektedir"], correctAnswer: 2, explanation: "Yangın üçgeninin herhangi bir kenarı (yakıt/oksijen/ısı) kaldırılırsa yangın söner: yakıt kesilir (QCV), oksijen kesilir (CO₂/köpük) veya sıcaklık düşürülür (su)." },
+      { id: 2, sectionRef: "Yangın Sınıfları", category: MAK, question: "Yanıcı sıvılar (yakıt, yağ, boya) hangi yangın sınıfındadır?", options: ["A sınıfı", "D sınıfı", "C sınıfı", "B sınıfı"], correctAnswer: 3, explanation: "A katılar, B yanıcı sıvılar (yakıt/yağ), C yanıcı gazlar, D yanıcı metaller, E/F elektrik/pişirme yağıdır. Makine dairesi en yüksek B sınıfı riskine sahiptir." },
     ],
   },
   {
@@ -3227,8 +3207,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Makine dairesi sabit söndürme (CO₂, FM200)",
     blocks: [{ sectionTitles: ["CO₂ Sistemi", "FM200 (HFC-227ea)", "Devreye Alma Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "CO₂ Sistemi", category: MAK, question: "CO₂ sistemi yangını nasıl söndürür?", options: ["Oksijeni %21'den %15 altına düşürerek", "Yüzeyi su püskürtüp soğutarak", "Köpük tabakasıyla üstünü örterek", "Yakıtı emip ortamdan çekerek"], correctAnswer: 0, explanation: "CO₂ boşaltılarak oksijen %21'den %15'in altına düşürülür ve yangın boğulur; boşaltma öncesi personel sayımı en kritik adımdır." },
-      { id: 2, sectionRef: "Devreye Alma Prosedürü", category: MAK, question: "Sabit söndürme devreye alınmadan önce hangi adım yapılır?", options: ["Mahal tahliye edilir, personel sayılır", "Havalandırma fanları açık bırakılır", "Yakıt pompası çalıştırılıp beslenir", "Personel içeride bekletilmektedir"], correctAnswer: 0, explanation: "Alarm verilir, daire tahliye edilip personel sayılır, fanlar durdurulup damperler kapatılır, QCV'ler kapatılır, uyarı alarmından sonra kaptan/sorumlu zabit onayıyla boşaltılır." },
+      { id: 1, sectionRef: "CO₂ Sistemi", category: MAK, question: "CO₂ sistemi yangını nasıl söndürür?", options: ["Yakıtı emip ortamdan çekerek", "Oksijeni %21'den %15 altına düşürerek", "Yüzeyi su püskürtüp soğutarak", "Köpük tabakasıyla üstünü örterek"], correctAnswer: 1, explanation: "CO₂ boşaltılarak oksijen %21'den %15'in altına düşürülür ve yangın boğulur; boşaltma öncesi personel sayımı en kritik adımdır." },
+      { id: 2, sectionRef: "Devreye Alma Prosedürü", category: MAK, question: "Sabit söndürme devreye alınmadan önce hangi adım yapılır?", options: ["Yakıt pompası çalıştırılıp beslenir", "Personel içeride bekletilmektedir", "Mahal tahliye edilir, personel sayılır", "Havalandırma fanları açık bırakılır"], correctAnswer: 2, explanation: "Alarm verilir, daire tahliye edilip personel sayılır, fanlar durdurulup damperler kapatılır, QCV'ler kapatılır, uyarı alarmından sonra kaptan/sorumlu zabit onayıyla boşaltılır." },
     ],
   },
   {
@@ -3236,8 +3216,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kapalı alan tanımı ve tehlikeler",
     blocks: [{ sectionTitles: ["Gemide Kapalı Alanlar", "Tehlikeler", "Güvenli Giriş Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Tehlikeler", category: MAK, question: "Kapalı alanda korozyon (paslanma) en çok hangi tehlikeyi yaratır?", options: ["Oksijen eksikliği (bilinç kaybı)", "Aşırı oksijen (zenginleşme)", "Aşırı soğuk ortam sıcaklığı", "Yüksek gürültü düzeyi riski"], correctAnswer: 0, explanation: "Korozyon oksijen tüketerek oksijen eksikliği yaratır; ayrıca H₂S gibi zehirli gaz ve hidrokarbon buharı patlayıcı atmosfer oluşturur." },
-      { id: 2, sectionRef: "Güvenli Giriş Prosedürü", category: MAK, question: "Kapalı alana güvenli giriş için hangi adım zorunludur?", options: ["Giriş izni, atmosfer testi ve izleme", "Doğrudan girip işi tamamlamak", "Yalnızca el feneri alıp girmek", "Havalandırmayı kapatarak girmek"], correctAnswer: 0, explanation: "Risk değerlendirmesi, giriş izni, mekanik havalandırma, atmosfer testi ve sürekli izleme yapılır; dışarıda en az 2 kişilik kurtarma ekibi hazır bekler. İzinsiz giriş ölümcüldür." },
+      { id: 1, sectionRef: "Tehlikeler", category: MAK, question: "Kapalı alanda korozyon (paslanma) en çok hangi tehlikeyi yaratır?", options: ["Aşırı oksijen (zenginleşme)", "Aşırı soğuk ortam sıcaklığı", "Yüksek gürültü düzeyi riski", "Oksijen eksikliği (bilinç kaybı)"], correctAnswer: 3, explanation: "Korozyon oksijen tüketerek oksijen eksikliği yaratır; ayrıca H₂S gibi zehirli gaz ve hidrokarbon buharı patlayıcı atmosfer oluşturur." },
+      { id: 2, sectionRef: "Güvenli Giriş Prosedürü", category: MAK, question: "Kapalı alana güvenli giriş için hangi adım zorunludur?", options: ["Havalandırmayı kapatarak girmek", "Giriş izni, atmosfer testi ve izleme", "Doğrudan girip işi tamamlamak", "Yalnızca el feneri alıp girmek"], correctAnswer: 1, explanation: "Risk değerlendirmesi, giriş izni, mekanik havalandırma, atmosfer testi ve sürekli izleme yapılır; dışarıda en az 2 kişilik kurtarma ekibi hazır bekler. İzinsiz giriş ölümcüldür." },
     ],
   },
   {
@@ -3245,8 +3225,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "ISM Code gereklilikleri",
     blocks: [{ sectionTitles: ["Temel Unsurlar", "SMS (Safety Management System)"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Unsurlar", category: MAK, question: "ISM Code kapsamında karadaki güvenlik sorumlusu kimdir?", options: ["Designated Person Ashore (DPA)", "Liman başkanı (harbour master)", "Klas kuruluşu sörveyörü", "Gemi acentesi temsilcisi"], correctAnswer: 0, explanation: "ISM Code (SOLAS Ch. IX) DPA atanmasını zorunlu kılar; DPA şirket ile gemi arasında güvenlik köprüsüdür." },
-      { id: 2, sectionRef: "SMS (Safety Management System)", category: MAK, question: "ISM kapsamında gemiye verilen sertifika hangisidir?", options: ["SMC (Safety Management Certificate)", "DOC (Document of Compliance)", "COC (Certificate of Competency)", "GMDSS telsiz operatör belgesi"], correctAnswer: 0, explanation: "DOC (Document of Compliance) şirkete, SMC (Safety Management Certificate) gemiye verilir." },
+      { id: 1, sectionRef: "Temel Unsurlar", category: MAK, question: "ISM Code kapsamında karadaki güvenlik sorumlusu kimdir?", options: ["Klas kuruluşu sörveyörü", "Gemi acentesi temsilcisi", "Designated Person Ashore (DPA)", "Liman başkanı (harbour master)"], correctAnswer: 2, explanation: "ISM Code (SOLAS Ch. IX) DPA atanmasını zorunlu kılar; DPA şirket ile gemi arasında güvenlik köprüsüdür." },
+      { id: 2, sectionRef: "SMS (Safety Management System)", category: MAK, question: "ISM kapsamında gemiye verilen sertifika hangisidir?", options: ["DOC (Document of Compliance)", "COC (Certificate of Competency)", "GMDSS telsiz operatör belgesi", "SMC (Safety Management Certificate)"], correctAnswer: 3, explanation: "DOC (Document of Compliance) şirkete, SMC (Safety Management Certificate) gemiye verilir." },
     ],
   },
   {
@@ -3254,8 +3234,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Risk değerlendirme (Risk Assessment)",
     blocks: [{ sectionTitles: ["Risk Matrisi", "Kontrol Hiyerarşisi"] }],
     questions: [
-      { id: 1, sectionRef: "Risk Matrisi", category: MAK, question: "Risk nasıl hesaplanır?", options: ["Risk = Olasılık × Şiddet", "Risk = Olasılık + Şiddet", "Risk = Şiddet / Olasılık", "Risk = sabit"], correctAnswer: 0, explanation: "Risk = Olasılık × Şiddet formülüyle hesaplanır; yaygın olarak 5×5 matris kullanılır ve yüksek riskli işler ek onay gerektirir." },
-      { id: 2, sectionRef: "Kontrol Hiyerarşisi", category: MAK, question: "Tehlike kontrol hiyerarşisinde en etkili (ilk) yöntem hangisidir?", options: ["Eliminasyon (tehlikeyi kaldırma)", "KKD (kişisel koruyucu donanım)", "İdari kontrol ve prosedürler", "Uyarı işaret ve levhaları"], correctAnswer: 0, explanation: "Öncelik sırası: eliminasyon → yerine koyma → mühendislik kontrolü → idari kontrol → KKD. KKD son savunma hattıdır." },
+      { id: 1, sectionRef: "Risk Matrisi", category: MAK, question: "Risk nasıl hesaplanır?", options: ["Risk = sabit", "Risk = Olasılık × Şiddet", "Risk = Olasılık + Şiddet", "Risk = Şiddet / Olasılık"], correctAnswer: 1, explanation: "Risk = Olasılık × Şiddet formülüyle hesaplanır; yaygın olarak 5×5 matris kullanılır ve yüksek riskli işler ek onay gerektirir." },
+      { id: 2, sectionRef: "Kontrol Hiyerarşisi", category: MAK, question: "Tehlike kontrol hiyerarşisinde en etkili (ilk) yöntem hangisidir?", options: ["İdari kontrol ve prosedürler", "Uyarı işaret ve levhaları", "Eliminasyon (tehlikeyi kaldırma)", "KKD (kişisel koruyucu donanım) kullanımı"], correctAnswer: 2, explanation: "Öncelik sırası: eliminasyon → yerine koyma → mühendislik kontrolü → idari kontrol → KKD. KKD son savunma hattıdır." },
     ],
   },
   {
@@ -3263,8 +3243,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İş izin sistemi (Permit to Work)",
     blocks: [{ sectionTitles: ["PTW Gerektiren İşler", "PTW Süreci"] }],
     questions: [
-      { id: 1, sectionRef: "PTW Gerektiren İşler", category: MAK, question: "Aşağıdakilerden hangisi PTW (iş izni) gerektirir?", options: ["Sıcak çalışma (kaynak, kesme, taşlama)", "Rutin tank seviyesi okuma işlemi", "Köprüüstünde seyir nöbeti tutmak", "Mutfakta yemek hazırlama işlemi"], correctAnswer: 0, explanation: "Sıcak iş, kapalı alan girişi, yüksek gerilim, yüksekte çalışma, basınçlı ekipman ve asbest işleri PTW gerektirir." },
-      { id: 2, sectionRef: "PTW Süreci", category: MAK, question: "PTW sürecinde enerji izolasyonunun fiziksel garantisi nedir?", options: ["Lock Out / Tag Out (LOTO) uygulaması", "Yalnızca sözlü uyarı yapılması", "Renkli uyarı bandı çekilmesi", "El feneriyle işaretlenmesi"], correctAnswer: 0, explanation: "Risk değerlendirmesi yapılıp izin formu Chief Engineer/Master tarafından onaylanır; saha LOTO ile izole edilir, iş bitince izin kapatılır." },
+      { id: 1, sectionRef: "PTW Gerektiren İşler", category: MAK, question: "Aşağıdakilerden hangisi PTW (iş izni) gerektirir?", options: ["Rutin tank seviyesi okuma işlemi", "Köprüüstünde seyir nöbeti tutmak", "Mutfakta yemek hazırlama işlemi", "Sıcak çalışma (kaynak, kesme, taşlama)"], correctAnswer: 3, explanation: "Sıcak iş, kapalı alan girişi, yüksek gerilim, yüksekte çalışma, basınçlı ekipman ve asbest işleri PTW gerektirir." },
+      { id: 2, sectionRef: "PTW Süreci", category: MAK, question: "PTW sürecinde enerji izolasyonunun fiziksel garantisi nedir?", options: ["El feneriyle işaretlenmesi", "Lock Out / Tag Out (LOTO) uygulaması", "Yalnızca sözlü uyarı yapılması", "Renkli uyarı bandı çekilmesi"], correctAnswer: 1, explanation: "Risk değerlendirmesi yapılıp izin formu Chief Engineer/Master tarafından onaylanır; saha LOTO ile izole edilir, iş bitince izin kapatılır." },
     ],
   },
   {
@@ -3272,8 +3252,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yangın algılama sistemi",
     blocks: [{ sectionTitles: ["Dedektör Tipleri", "Sistem Yapısı"] }],
     questions: [
-      { id: 1, sectionRef: "Dedektör Tipleri", category: MAK, question: "Makine dairesinde duman dedektörü yerine genellikle hangileri kullanılır?", options: ["Isı ve alev (UV/IR) dedektörleri", "Yalnızca optik duman dedektörü", "Yalnızca manuel alarm butonu", "Ortam nem ölçüm sensörleri"], correctAnswer: 0, explanation: "Makine dairesinin normal ortamı duman dedektöründe yanlış alarm verebilir; bu yüzden ısı ve alev (UV/IR) dedektörleri kullanılır." },
-      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "Yangın algılama paneli nerede bulunur?", options: ["Köprüüstünde, tüm bölgeleri izler", "Yalnızca makine dairesi içinde", "Yakıt tankı dairesinde durur", "Pervane şaft tünelinde durur"], correctAnswer: 0, explanation: "Yangın algılama paneli köprüüstündedir, tüm bölgelerin dedektörlerini izler ve alarmda sesli/ışıklı uyarı verir; bağımsız güç kaynağına sahiptir." },
+      { id: 1, sectionRef: "Dedektör Tipleri", category: MAK, question: "Makine dairesinde duman dedektörü yerine genellikle hangileri kullanılır?", options: ["Yalnızca manuel alarm butonu", "Ortam nem ölçüm sensörleri", "Isı ve alev (UV/IR) dedektörleri", "Yalnızca optik duman dedektörleri"], correctAnswer: 2, explanation: "Makine dairesinin normal ortamı duman dedektöründe yanlış alarm verebilir; bu yüzden ısı ve alev (UV/IR) dedektörleri kullanılır." },
+      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "Yangın algılama paneli nerede bulunur?", options: ["Yalnızca makine dairesi içinde", "Yakıt tankı dairesinde durur", "Pervane şaft tünelinde durur", "Köprüüstünde, tüm bölgeleri izler"], correctAnswer: 3, explanation: "Yangın algılama paneli köprüüstündedir, tüm bölgelerin dedektörlerini izler ve alarmda sesli/ışıklı uyarı verir; bağımsız güç kaynağına sahiptir." },
     ],
   },
   {
@@ -3281,8 +3261,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "MSDS (Güvenlik Bilgi Formu) okuma",
     blocks: [{ sectionTitles: ["MSDS Bölümleri (16 Bölüm - GHS)", "Makine Dairesi Kimyasalları"] }],
     questions: [
-      { id: 1, sectionRef: "MSDS Bölümleri (16 Bölüm - GHS)", category: MAK, question: "MSDS (SDS) kaç standart bölümden oluşur?", options: ["16 bölüm (GHS standardı)", "3 bölüm (kısa biçim)", "50 bölüm (genişletilmiş)", "Tek bölüm (özet biçim)"], correctAnswer: 0, explanation: "MSDS, GHS'e göre 16 standart bölümden oluşur (madde tanımı, tehlike, ilk yardım, yangın, depolama, KKD vb.)." },
-      { id: 2, sectionRef: "Makine Dairesi Kimyasalları", category: MAK, question: "MSDS nerede bulundurulmalıdır?", options: ["Çalışma alanına yakın, erişilebilir", "Yalnızca şirket merkezi arşivinde", "Kilitli kasada saklanmaktadır", "Köprüüstünde gizli tutulmakta"], correctAnswer: 0, explanation: "Soğutma/kazan kimyasalları, solvent, boya gibi her kimyasalın MSDS'i kolay erişilebilir olmalı; döküntüde MSDS'e göre hareket edilir." },
+      { id: 1, sectionRef: "MSDS Bölümleri (16 Bölüm - GHS)", category: MAK, question: "MSDS (SDS) kaç standart bölümden oluşur?", options: ["Tek bölüm (özet biçim)", "16 bölüm (GHS standardı)", "3 bölüm (kısa biçim)", "50 bölüm (genişletilmiş)"], correctAnswer: 1, explanation: "MSDS, GHS'e göre 16 standart bölümden oluşur (madde tanımı, tehlike, ilk yardım, yangın, depolama, KKD vb.)." },
+      { id: 2, sectionRef: "Makine Dairesi Kimyasalları", category: MAK, question: "MSDS nerede bulundurulmalıdır?", options: ["Kilitli kasada saklanmaktadır", "Köprüüstünde gizli tutulmakta", "Çalışma alanına yakın, erişilebilir", "Yalnızca şirket merkezinin arşivinde"], correctAnswer: 2, explanation: "Soğutma/kazan kimyasalları, solvent, boya gibi her kimyasalın MSDS'i kolay erişilebilir olmalı; döküntüde MSDS'e göre hareket edilir." },
     ],
   },
   {
@@ -3290,8 +3270,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Portatif söndürücü tipleri",
     blocks: [{ sectionTitles: ["Söndürücü Tipleri ve Uygunluk", "Kullanım Tekniği (PASS)"] }],
     questions: [
-      { id: 1, sectionRef: "Söndürücü Tipleri ve Uygunluk", category: MAK, question: "Elektrik yangınlarında hangi söndürücü güvenlidir?", options: ["CO₂ veya kuru kimyevi toz (ABC)", "Basınçlı su (jet veya sprey)", "Köpük (AFFF) söndürücüsü", "Yalnızca kuru kum dökülmesi"], correctAnswer: 0, explanation: "CO₂ söndürücü elektrik yangınlarında güvenlidir; kuru toz en çok yönlü tiptir ancak ekipmana zarar verebilir. Su ve köpük elektrikte kullanılmaz." },
-      { id: 2, sectionRef: "Kullanım Tekniği (PASS)", category: MAK, question: "PASS tekniğinde nozül nereye yöneltilir?", options: ["Alevlerin tabanına (Aim adımı)", "Alevin en tepe noktasına doğru", "Mahalin tavanına doğru yukarı", "Rastgele seçilen bir noktaya"], correctAnswer: 0, explanation: "PASS: Pull (pim çek), Aim (nozülü alevlerin tabanına yönelt), Squeeze (tetiği sık), Sweep (süpürme hareketi)." },
+      { id: 1, sectionRef: "Söndürücü Tipleri ve Uygunluk", category: MAK, question: "Elektrik yangınlarında hangi söndürücü güvenlidir?", options: ["Basınçlı su (jet veya sprey)", "Köpük (AFFF) söndürücüsü", "Yalnızca kuru kum dökülmesi", "CO₂ veya kuru kimyevi toz (ABC)"], correctAnswer: 3, explanation: "CO₂ söndürücü elektrik yangınlarında güvenlidir; kuru toz en çok yönlü tiptir ancak ekipmana zarar verebilir. Su ve köpük elektrikte kullanılmaz." },
+      { id: 2, sectionRef: "Kullanım Tekniği (PASS)", category: MAK, question: "PASS tekniğinde nozül nereye yöneltilir?", options: ["Rastgele seçilen bir noktaya", "Alevlerin tabanına (Aim adımı)", "Alevin en tepe noktasına doğru", "Mahalin tavanına doğru yukarı"], correctAnswer: 1, explanation: "PASS: Pull (pim çek), Aim (nozülü alevlerin tabanına yönelt), Squeeze (tetiği sık), Sweep (süpürme hareketi)." },
     ],
   },
   {
@@ -3299,8 +3279,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İşitme koruması (gürültü maruziyeti)",
     blocks: [{ sectionTitles: ["Gürültü Seviyeleri", "Koruma Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Gürültü Seviyeleri", category: MAK, question: "Kaç dB(A) üzerinde işitme koruması zorunludur?", options: ["85 dB(A)", "40 dB(A)", "120 dB(A)", "20 dB(A)"], correctAnswer: 0, explanation: "Makine dairesi gürültüsü 90-110 dB(A) olup 85 dB(A) üzerinde işitme koruması zorunludur; kontrol odası max 75 dB(A)'dır." },
-      { id: 2, sectionRef: "Koruma Yöntemleri", category: MAK, question: "Kulaklık (ear muff) yaklaşık ne kadar azaltma sağlar?", options: ["20-35 dB", "1-2 dB", "60-80 dB", "Azaltmaz"], correctAnswer: 0, explanation: "Kulaklık 20-35 dB, kulak tıkacı 15-30 dB azaltma sağlar; ayrıca titreşim yalıtımı gibi mühendislik önlemleri uygulanır." },
+      { id: 1, sectionRef: "Gürültü Seviyeleri", category: MAK, question: "Kaç dB(A) üzerinde işitme koruması zorunludur?", options: ["120 dB(A)", "20 dB(A)", "85 dB(A)", "40 dB(A)"], correctAnswer: 2, explanation: "Makine dairesi gürültüsü 90-110 dB(A) olup 85 dB(A) üzerinde işitme koruması zorunludur; kontrol odası max 75 dB(A)'dır." },
+      { id: 2, sectionRef: "Koruma Yöntemleri", category: MAK, question: "Kulaklık (ear muff) yaklaşık ne kadar azaltma sağlar?", options: ["1-2 dB", "60-80 dB", "Azaltmaz", "20-35 dB"], correctAnswer: 3, explanation: "Kulaklık 20-35 dB, kulak tıkacı 15-30 dB azaltma sağlar; ayrıca titreşim yalıtımı gibi mühendislik önlemleri uygulanır." },
     ],
   },
   {
@@ -3308,8 +3288,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Göz ve yüz koruması",
     blocks: [{ sectionTitles: ["Koruma Ekipmanları", "Acil Göz Yıkama"] }],
     questions: [
-      { id: 1, sectionRef: "Koruma Ekipmanları", category: MAK, question: "Genel makine çalışmasında güvenlik gözlüğü hangi standarttadır?", options: ["EN 166", "EN 397", "EN 361", "DIN 4-13"], correctAnswer: 0, explanation: "Güvenlik gözlüğü ve yüz siperi EN 166; kaynak maskesi EN 175 (DIN 4-13) standardındadır." },
-      { id: 2, sectionRef: "Acil Göz Yıkama", category: MAK, question: "Kimyasal sıçramasında göz en az ne kadar yıkanmalıdır?", options: ["En az 15 dakika temiz suyla", "En az 10 saniye temiz suyla", "En az 1 dakika temiz suyla", "Yıkanması gerekmemektedir"], correctAnswer: 0, explanation: "Kimyasal sıçramasında en az 15 dakika temiz su ile göz yıkanmalıdır; makine dairesinde acil göz yıkama istasyonu bulunur." },
+      { id: 1, sectionRef: "Koruma Ekipmanları", category: MAK, question: "Genel makine çalışmasında güvenlik gözlüğü hangi standarttadır?", options: ["DIN 4-13", "EN 166", "EN 397", "EN 361"], correctAnswer: 1, explanation: "Güvenlik gözlüğü ve yüz siperi EN 166; kaynak maskesi EN 175 (DIN 4-13) standardındadır." },
+      { id: 2, sectionRef: "Acil Göz Yıkama", category: MAK, question: "Kimyasal sıçramasında göz en az ne kadar yıkanmalıdır?", options: ["En az 1 dakika temiz suyla", "Yıkanması gerekmemektedir", "En az 15 dakika temiz suyla", "En az 10 saniye temiz suyla"], correctAnswer: 2, explanation: "Kimyasal sıçramasında en az 15 dakika temiz su ile göz yıkanmalıdır; makine dairesinde acil göz yıkama istasyonu bulunur." },
     ],
   },
   {
@@ -3317,8 +3297,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Koruyucu giysi ve eldiven",
     blocks: [{ sectionTitles: ["Giysi Türleri", "Eldiven Seçimi"] }],
     questions: [
-      { id: 1, sectionRef: "Giysi Türleri", category: MAK, question: "Tulum (overall) neden dar kesim olmalıdır?", options: ["Dönen parçalara takılmayı önlemek", "Daha şık bir görünüm sağlamak", "Vücudu daha sıcak tutabilmek", "Kesim biçiminin bir önemi yok"], correctAnswer: 0, explanation: "Tulum dönen parçalara takılmayı önlemek için dar kesim olmalıdır; sıcak işlerde ısı dayanımlı, kimyasal işlerde dayanımlı önlük kullanılır." },
-      { id: 2, sectionRef: "Eldiven Seçimi", category: MAK, question: "Kimyasal (asit, solvent) kullanımında hangi eldiven uygundur?", options: ["Nitril veya neopren eldiven", "Deri (bütün el) eldiven", "Kevlar (kesilmez) eldiven", "Pamuklu bez eldiven"], correctAnswer: 0, explanation: "Nitril/neopren kimyasala, NBR yağa, Kevlar kesilmeye, deri mekanik işe uygundur." },
+      { id: 1, sectionRef: "Giysi Türleri", category: MAK, question: "Tulum (overall) neden dar kesim olmalıdır?", options: ["Daha şık bir görünüm sağlamak", "Vücudu daha sıcak tutabilmek", "Kesim biçiminin bir önemi yok", "Dönen parçalara takılmayı önlemek"], correctAnswer: 3, explanation: "Tulum dönen parçalara takılmayı önlemek için dar kesim olmalıdır; sıcak işlerde ısı dayanımlı, kimyasal işlerde dayanımlı önlük kullanılır." },
+      { id: 2, sectionRef: "Eldiven Seçimi", category: MAK, question: "Kimyasal (asit, solvent) kullanımında hangi eldiven uygundur?", options: ["Pamuklu bez eldiven", "Nitril veya neopren eldiven", "Deri (bütün el) eldiven", "Kevlar (kesilmez) tipi eldiven"], correctAnswer: 1, explanation: "Nitril/neopren kimyasala, NBR yağa, Kevlar kesilmeye, deri mekanik işe uygundur." },
     ],
   },
   {
@@ -3326,8 +3306,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Güvenlik ayakkabısı standartları",
     blocks: [{ sectionTitles: ["Sınıflandırma", "Makine Dairesi Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Makine dairesi için standart güvenlik ayakkabısı sınıfı hangisidir?", options: ["S3 (delinmez taban dahil)", "S1 (temel koruma sınıfı)", "S5 (çizme tipi sınıf)", "Sınıfsız standart ayakkabı"], correctAnswer: 0, explanation: "S3 (S2 + delinmeye dayanıklı taban) makine dairesi standardıdır; ıslak/sintine ortamı için S5 çizme kullanılır." },
-      { id: 2, sectionRef: "Makine Dairesi Gereklilikleri", category: MAK, question: "Güvenlik ayakkabısı burnu hangi darbe dayanımına sahip olmalıdır?", options: ["200 J (çelik/kompozit burun)", "10 J (hafif darbe koruma)", "5 J (çok hafif koruma)", "Darbe dayanımı gerekmez"], correctAnswer: 0, explanation: "Çelik/kompozit burun 200 J darbe dayanımına sahip olmalı, taban yağ/yakıta dayanıklı ve antistatik olmalıdır." },
+      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Makine dairesi için standart güvenlik ayakkabısı sınıfı hangisidir?", options: ["S5 (çizme tipi sınıf)", "Sınıfsız standart ayakkabı", "S3 (delinmez taban dahil)", "S1 (temel koruma sınıfı)"], correctAnswer: 2, explanation: "S3 (S2 + delinmeye dayanıklı taban) makine dairesi standardıdır; ıslak/sintine ortamı için S5 çizme kullanılır." },
+      { id: 2, sectionRef: "Makine Dairesi Gereklilikleri", category: MAK, question: "Güvenlik ayakkabısı burnu hangi darbe dayanımına sahip olmalıdır?", options: ["10 J (hafif darbe koruma)", "5 J (çok hafif koruma)", "Darbe dayanımı gerekmez", "200 J (çelik/kompozit burun)"], correctAnswer: 3, explanation: "Çelik/kompozit burun 200 J darbe dayanımına sahip olmalı, taban yağ/yakıta dayanıklı ve antistatik olmalıdır." },
     ],
   },
   {
@@ -3335,8 +3315,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hızlı kapatma vanası (quick closing valve)",
     blocks: [{ sectionTitles: ["Sistem Yapısı", "Operasyon ve Test"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Hızlı kapatma vanaları nerede ve nasıl kapatılır?", options: ["Tank çıkışında; mahal dışından uzaktan", "Yalnızca tankın içinden elle", "Köprüüstünden GPS üzerinden", "Kapatılması olanaksızdır"], correctAnswer: 0, explanation: "Her yakıt/yağ tankı çıkışında QCV bulunur ve makine dairesi dışından (A sınıfı güverte) pnömatik/mekanik olarak uzaktan kapatılır (SOLAS Reg. II-2/4)." },
-      { id: 2, sectionRef: "Operasyon ve Test", category: MAK, question: "Uzaktan kapama mekanizması ne sıklıkla test edilir?", options: ["Haftalık", "Yıllık", "Beş yılda bir", "Hiç"], correctAnswer: 0, explanation: "Haftalık uzaktan kapama testi, aylık tam kapanma doğrulaması yapılır; yangın tatbikatında tüm QCV kapatma prosedürü uygulanır." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Hızlı kapatma vanaları nerede ve nasıl kapatılır?", options: ["Kapatılması olanaksızdır", "Tank çıkışında; mahal dışından uzaktan", "Yalnızca tankın içinden elle", "Köprüüstünden GPS üzerinden"], correctAnswer: 1, explanation: "Her yakıt/yağ tankı çıkışında QCV bulunur ve makine dairesi dışından (A sınıfı güverte) pnömatik/mekanik olarak uzaktan kapatılır (SOLAS Reg. II-2/4)." },
+      { id: 2, sectionRef: "Operasyon ve Test", category: MAK, question: "Uzaktan kapama mekanizması ne sıklıkla test edilir?", options: ["Beş yılda bir", "Hiç", "Haftalık", "Yıllık"], correctAnswer: 2, explanation: "Haftalık uzaktan kapama testi, aylık tam kapanma doğrulaması yapılır; yangın tatbikatında tüm QCV kapatma prosedürü uygulanır." },
     ],
   },
   {
@@ -3344,8 +3324,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yangın tatbikatı ve muster",
     blocks: [{ sectionTitles: ["SOLAS Gereklilikleri", "Yangın Ekibi Görevleri"] }],
     questions: [
-      { id: 1, sectionRef: "SOLAS Gereklilikleri", category: MAK, question: "Yangın tatbikatı en az ne sıklıkla yapılmalıdır?", options: ["Ayda en az bir kez yapılır", "Yılda en az bir kez yapılır", "Haftada en az üç kez yapılır", "Beş yılda bir kez yapılır"], correctAnswer: 0, explanation: "Yangın tatbikatı ayda en az bir kez yapılır; personelin %25'inden fazlası değiştiyse limandan ayrılıştan itibaren 24 saat içinde tatbikat yapılır." },
-      { id: 2, sectionRef: "Yangın Ekibi Görevleri", category: MAK, question: "Kapalı/dumanlı alana hangi ekipmanla girilir?", options: ["SCBA (bağımsız hava tüpü) ile", "Yalnızca toz maskesi ile", "Hiçbir donanım olmadan", "Yalnızca el feneri ile"], correctAnswer: 0, explanation: "Hava tüpü operatörü SCBA ile kapalı alana girer; ekipte lider, nozülcü, yedek nozülcü, sınır soğutma ve ilk yardım ekibi bulunur." },
+      { id: 1, sectionRef: "SOLAS Gereklilikleri", category: MAK, question: "Yangın tatbikatı en az ne sıklıkla yapılmalıdır?", options: ["Yılda en az bir kez yapılır", "Haftada en az üç kez yapılır", "Beş yılda bir kez yapılır", "Ayda en az bir kez yapılır"], correctAnswer: 3, explanation: "Yangın tatbikatı ayda en az bir kez yapılır; personelin %25'inden fazlası değiştiyse limandan ayrılıştan itibaren 24 saat içinde tatbikat yapılır." },
+      { id: 2, sectionRef: "Yangın Ekibi Görevleri", category: MAK, question: "Kapalı/dumanlı alana hangi ekipmanla girilir?", options: ["Yalnızca el feneri ile", "SCBA (bağımsız hava tüpü) ile", "Yalnızca toz maskesi ile", "Hiçbir donanım olmadan"], correctAnswer: 1, explanation: "Hava tüpü operatörü SCBA ile kapalı alana girer; ekipte lider, nozülcü, yedek nozülcü, sınır soğutma ve ilk yardım ekibi bulunur." },
     ],
   },
   {
@@ -3353,8 +3333,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Atmosfer testi (O₂, LEL, H₂S)",
     blocks: [{ sectionTitles: ["Test Parametreleri", "Test Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Test Parametreleri", category: MAK, question: "Kapalı alanda güvenli oksijen seviyesi nedir?", options: ["%20,9 (en az %19,5 olmalı)", "%10 (en az %8 olmalı)", "%30 (en az %25 olmalı)", "%5 (en az %3 olmalı)"], correctAnswer: 0, explanation: "O₂ %20.9 (min %19.5), LEL <%1, H₂S <10 ppm, CO <25 ppm güvenli sınırlardır." },
-      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "Atmosfer testi nasıl yapılmalıdır?", options: ["Kalibre cihazla üst, orta ve alt seviyede", "Yalnızca girişte bir kez ölçülerek", "Yalnızca üst seviyede ölçülerek", "Gözle bakılıp değerlendirilerek"], correctAnswer: 0, explanation: "Cihaz kalibre edilir, farklı seviyelerde (üst/orta/alt) ölçülür, forma kaydedilir ve giriş boyunca sürekli izleme yapılır." },
+      { id: 1, sectionRef: "Test Parametreleri", category: MAK, question: "Kapalı alanda güvenli oksijen seviyesi nedir?", options: ["%30 (en az %25 olmalı)", "%5 (en az %3 olmalı)", "%20,9 (en az %19,5 olmalı)", "%10 (en az %8 olmalı)"], correctAnswer: 2, explanation: "O₂ %20.9 (min %19.5), LEL <%1, H₂S <10 ppm, CO <25 ppm güvenli sınırlardır." },
+      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "Atmosfer testi nasıl yapılmalıdır?", options: ["Yalnızca girişte bir kez ölçülerek", "Yalnızca üst seviyede ölçülerek", "Gözle bakılıp değerlendirilerek", "Kalibre cihazla üst, orta ve alt seviyede"], correctAnswer: 3, explanation: "Cihaz kalibre edilir, farklı seviyelerde (üst/orta/alt) ölçülür, forma kaydedilir ve giriş boyunca sürekli izleme yapılır." },
     ],
   },
   {
@@ -3362,8 +3342,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Giriş izin sistemi (PTW)",
     blocks: [{ sectionTitles: ["PTW Gerektiren İşler", "PTW Süreci"] }],
     questions: [
-      { id: 1, sectionRef: "PTW Gerektiren İşler", category: MAK, question: "Aşağıdakilerden hangisi giriş/iş izni gerektirir?", options: ["Kapalı alana giriş yapılması", "Köprüüstünde nöbet tutmak", "Rutin makine round'u yapmak", "Mutfakta yemek hazırlamak"], correctAnswer: 0, explanation: "Kapalı alan girişi, sıcak iş, yüksekte çalışma, izolasyon gerektiren elektrik işi ve basınçlı sistem açma izin gerektirir." },
-      { id: 2, sectionRef: "PTW Süreci", category: MAK, question: "İş iznini kim imzalar/onaylar?", options: ["Yetkili kişi (responsible officer)", "Gemideki herhangi bir tayfa", "Gemide bulunan bir yolcu", "Limandaki gemi acentesi"], correctAnswer: 0, explanation: "Risk değerlendirmesi ve önlemler belirlenir, yetkili kişi izni imzalar, iş bitince alan kontrol edilip izin kapatılır ve kopya saklanır." },
+      { id: 1, sectionRef: "PTW Gerektiren İşler", category: MAK, question: "Aşağıdakilerden hangisi giriş/iş izni gerektirir?", options: ["Mutfakta yemek hazırlamak", "Kapalı alana giriş yapılması", "Köprüüstünde nöbet tutmak", "Rutin makine round'u yapılması"], correctAnswer: 1, explanation: "Kapalı alan girişi, sıcak iş, yüksekte çalışma, izolasyon gerektiren elektrik işi ve basınçlı sistem açma izin gerektirir." },
+      { id: 2, sectionRef: "PTW Süreci", category: MAK, question: "İş iznini kim imzalar/onaylar?", options: ["Gemide bulunan bir yolcu", "Limandaki gemi acentesi", "Yetkili kişi (responsible officer)", "Gemideki herhangi bir tayfa"], correctAnswer: 2, explanation: "Risk değerlendirmesi ve önlemler belirlenir, yetkili kişi izni imzalar, iş bitince alan kontrol edilip izin kapatılır ve kopya saklanır." },
     ],
   },
   {
@@ -3371,8 +3351,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Havalandırma gereklilikleri",
     blocks: [{ sectionTitles: ["Makine Dairesi Havalandırma", "Kapalı Alan Havalandırma"] }],
     questions: [
-      { id: 1, sectionRef: "Makine Dairesi Havalandırma", category: MAK, question: "Makine dairesi sıcaklığı dış ortama göre en fazla ne kadar yüksek olabilir?", options: ["15°C", "50°C", "100°C", "Sınır yok"], correctAnswer: 0, explanation: "SOLAS gereği makine dairesi sıcaklığı dış ortam sıcaklığının 15°C üzerini geçmemelidir; havalandırma yanma havası ve ısı atımını sağlar." },
-      { id: 2, sectionRef: "Kapalı Alan Havalandırma", category: MAK, question: "Kapalı alan girişten önce ne kadar havalandırılmalıdır?", options: ["En az hacminin 10 katı taze hava", "Hacminin yarısı kadar taze hava", "Havalandırma yapılması gerekmez", "Hacminin 1 katı kadar taze hava"], correctAnswer: 0, explanation: "Giriş öncesi mekanik havalandırma ile en az hacmin 10 katı taze hava değiştirilir; havalandırma kesintisiz sürer, fan arızasında çalışma durdurulur." },
+      { id: 1, sectionRef: "Makine Dairesi Havalandırma", category: MAK, question: "Makine dairesi sıcaklığı dış ortama göre en fazla ne kadar yüksek olabilir?", options: ["50°C", "100°C", "Sınır yok", "15°C"], correctAnswer: 3, explanation: "SOLAS gereği makine dairesi sıcaklığı dış ortam sıcaklığının 15°C üzerini geçmemelidir; havalandırma yanma havası ve ısı atımını sağlar." },
+      { id: 2, sectionRef: "Kapalı Alan Havalandırma", category: MAK, question: "Kapalı alan girişten önce ne kadar havalandırılmalıdır?", options: ["Hacminin 1 katı kadar taze hava", "En az hacminin 10 katı taze hava", "Hacminin yarısı kadar taze hava ile", "Havalandırma yapılması gerekmez"], correctAnswer: 1, explanation: "Giriş öncesi mekanik havalandırma ile en az hacmin 10 katı taze hava değiştirilir; havalandırma kesintisiz sürer, fan arızasında çalışma durdurulur." },
     ],
   },
   {
@@ -3380,8 +3360,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kurtarma prosedürü ve ekipman",
     blocks: [{ sectionTitles: ["Kurtarma Ekipmanları", "Kurtarma Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Kurtarma Ekipmanları", category: MAK, question: "Bağımsız solunum cihazı hangisidir?", options: ["SCBA (bağımsız solunum cihazı)", "EEBD (yalnızca kaçış içindir)", "Toz filtreli yüz maskesi", "Cerrahi tek kullanımlık maske"], correctAnswer: 0, explanation: "SCBA bağımsız solunum cihazıdır; EEBD kaçış içindir. Ayrıca kurtarma halatı, tripod/vinç, sedye ve oksijen ünitesi bulunur." },
-      { id: 2, sectionRef: "Kurtarma Prosedürü", category: MAK, question: "Kapalı alanda kazazedeyi kurtarmak için ne yapılmamalıdır?", options: ["Eğitimsiz ve donanımsız girmek", "Genel alarm verip yardım çağırmak", "SCBA kuşanıp hazırlık yapmak", "Havalandırma debisini artırmak"], correctAnswer: 0, explanation: "Kesinlikle eğitimsiz/donanımsız girilmez (en yaygın ölüm senaryosu); alarm verilir, SCBA kuşanılıp halat bağlanır, havalandırma artırılır." },
+      { id: 1, sectionRef: "Kurtarma Ekipmanları", category: MAK, question: "Bağımsız solunum cihazı hangisidir?", options: ["Toz filtreli yüz maskesi", "Cerrahi tek kullanımlık maske", "SCBA (bağımsız solunum cihazı)", "EEBD (yalnızca kaçış amaçlıdır)"], correctAnswer: 2, explanation: "SCBA bağımsız solunum cihazıdır; EEBD kaçış içindir. Ayrıca kurtarma halatı, tripod/vinç, sedye ve oksijen ünitesi bulunur." },
+      { id: 2, sectionRef: "Kurtarma Prosedürü", category: MAK, question: "Kapalı alanda kazazedeyi kurtarmak için ne yapılmamalıdır?", options: ["Genel alarm verip yardım çağırmak", "SCBA kuşanıp hazırlık yapmak", "Havalandırma debisini artırmak", "Eğitimsiz ve donanımsız girmek"], correctAnswer: 3, explanation: "Kesinlikle eğitimsiz/donanımsız girilmez (en yaygın ölüm senaryosu); alarm verilir, SCBA kuşanılıp halat bağlanır, havalandırma artırılır." },
     ],
   },
   {
@@ -3389,8 +3369,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Asbest ve yasaklı malzemeler",
     blocks: [{ sectionTitles: ["Asbest Tehlikesi", "Asbest Yönetimi"] }],
     questions: [
-      { id: 1, sectionRef: "Asbest Tehlikesi", category: MAK, question: "Asbest lifleri solunduğunda ne olur?", options: ["Akciğerde birikip kanser yapabilir", "Anında ve kendiliğinden iyileşir", "Sağlık üzerinde hiçbir etkisi yok", "Yalnızca geçici öksürüğe yol açar"], correctAnswer: 0, explanation: "Asbest lifleri ölümcül hastalıklara neden olur; etkiler 10-40 yıl sonra çıkabilir. 2011 sonrası gemilerde kullanımı tamamen yasaktır." },
-      { id: 2, sectionRef: "Asbest Yönetimi", category: MAK, question: "Gemideki tehlikeli malzemeleri listeleyen envanter hangisidir?", options: ["IHM (Inventory of Hazardous Materials)", "BDN (Bunker Delivery Note) belgesi", "MSDS (malzeme güvenlik bilgi formu)", "Engine Log Book (makine jurnali)"], correctAnswer: 0, explanation: "Sağlam asbest yerinde bırakılabilir (encapsulation); IHM tüm tehlikeli malzemeleri listeler ve Hong Kong Sözleşmesi/EU SRR ile zorunludur." },
+      { id: 1, sectionRef: "Asbest Tehlikesi", category: MAK, question: "Asbest lifleri solunduğunda ne olur?", options: ["Yalnızca geçici öksürüğe yol açar", "Akciğerde birikip kanser yapabilir", "Anında ve kendiliğinden iyileşir", "Sağlık üzerinde hiçbir etkisi yoktur"], correctAnswer: 1, explanation: "Asbest lifleri ölümcül hastalıklara neden olur; etkiler 10-40 yıl sonra çıkabilir. 2011 sonrası gemilerde kullanımı tamamen yasaktır." },
+      { id: 2, sectionRef: "Asbest Yönetimi", category: MAK, question: "Gemideki tehlikeli malzemeleri listeleyen envanter hangisidir?", options: ["MSDS (malzeme güvenlik bilgi formu)", "Engine Log Book (makine jurnali)", "IHM (Inventory of Hazardous Materials)", "BDN (Bunker Delivery Note) belgesi"], correctAnswer: 2, explanation: "Sağlam asbest yerinde bırakılabilir (encapsulation); IHM tüm tehlikeli malzemeleri listeler ve Hong Kong Sözleşmesi/EU SRR ile zorunludur." },
     ],
   },
   {
@@ -3398,8 +3378,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kimyasal depolama kuralları",
     blocks: [{ sectionTitles: ["Temel Kurallar", "GHS Piktogramları"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "Uyumsuz kimyasallar nasıl depolanır?", options: ["Ayrı bölmelerde (asit ve baz ayrı)", "Aynı raf üzerinde yan yana durur", "Karıştırılıp tek kapta saklanır", "Güvertede açıkta bırakılmakta"], correctAnswer: 0, explanation: "Uyumsuz kimyasallar ayrı bölmelerde tutulur; etiketli/sağlam kaplarda, havalandırmalı ve sızıntı paletli alanda saklanır, sigara/açık alev yasaktır." },
-      { id: 2, sectionRef: "GHS Piktogramları", category: MAK, question: "GHS sistemi neyi sağlar?", options: ["Standart sembollerle etiketleme", "Yakıt fiyatının belirlenmesi", "Gemi hızının ölçülmesi işlemi", "Sefer rotasının planlanması"], correctAnswer: 0, explanation: "GHS (Küresel Uyumlaştırılmış Sistem) ile kimyasallar alev, patlama, korozyon, toksisite gibi standart sembollerle etiketlenir." },
+      { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "Uyumsuz kimyasallar nasıl depolanır?", options: ["Aynı raf üzerinde yan yana durmakta", "Karıştırılıp tek kapta saklanır", "Güvertede açıkta bırakılmakta", "Ayrı bölmelerde (asit ve baz ayrı)"], correctAnswer: 3, explanation: "Uyumsuz kimyasallar ayrı bölmelerde tutulur; etiketli/sağlam kaplarda, havalandırmalı ve sızıntı paletli alanda saklanır, sigara/açık alev yasaktır." },
+      { id: 2, sectionRef: "GHS Piktogramları", category: MAK, question: "GHS sistemi neyi sağlar?", options: ["Sefer rotasının planlanması", "Standart sembollerle etiketleme", "Yakıt fiyatının belirlenmesi", "Gemi hızının ölçülüp kaydedilmesi"], correctAnswer: 1, explanation: "GHS (Küresel Uyumlaştırılmış Sistem) ile kimyasallar alev, patlama, korozyon, toksisite gibi standart sembollerle etiketlenir." },
     ],
   },
   {
@@ -3407,8 +3387,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Basınçlı gaz tüpü güvenliği",
     blocks: [{ sectionTitles: ["Güvenlik Kuralları", "Taşıma ve Kullanım"] }],
     questions: [
-      { id: 1, sectionRef: "Güvenlik Kuralları", category: MAK, question: "Oksijen ve asetilen tüpleri nasıl depolanır?", options: ["En az 6 m uzakta veya duvarla ayrı", "Yan yana ve yatık konumda birlikte", "Aynı kelepçe içinde bağlı olarak", "Doğrudan güneş altında açıkta"], correctAnswer: 0, explanation: "Tüpler düşey ve bağlı depolanır; oksijen ve asetilen en az 6 m uzakta veya yangın duvarıyla ayrılır; renk kodları farklıdır (O₂ beyaz/mavi, asetilen kırmızı)." },
-      { id: 2, sectionRef: "Taşıma ve Kullanım", category: MAK, question: "Oksijen ve yakıcı gaz hatlarında hangi cihaz zorunludur?", options: ["Geri tepme valfi (flashback arrestor)", "Barometre (basınç ölçüm cihazı)", "Termostat (sıcaklık denetleyici)", "Herhangi bir filtre gerekmemekte"], correctAnswer: 0, explanation: "Tüpler el arabasıyla taşınır (yuvarlanmaz/sürüklenmez), vana yavaşça açılır; oksijen ve yakıcı gaz hatlarında flashback arrestor zorunludur." },
+      { id: 1, sectionRef: "Güvenlik Kuralları", category: MAK, question: "Oksijen ve asetilen tüpleri nasıl depolanır?", options: ["Aynı kelepçe içinde bağlı olarak", "Doğrudan güneş altında açıkta", "En az 6 m uzakta veya duvarla ayrı", "Yan yana ve yatık konumda birlikte"], correctAnswer: 2, explanation: "Tüpler düşey ve bağlı depolanır; oksijen ve asetilen en az 6 m uzakta veya yangın duvarıyla ayrılır; renk kodları farklıdır (O₂ beyaz/mavi, asetilen kırmızı)." },
+      { id: 2, sectionRef: "Taşıma ve Kullanım", category: MAK, question: "Oksijen ve yakıcı gaz hatlarında hangi cihaz zorunludur?", options: ["Barometre (basınç ölçüm cihazı)", "Termostat (sıcaklık denetleyici)", "Herhangi bir filtre gerekmemekte", "Geri tepme valfi (flashback arrestor)"], correctAnswer: 3, explanation: "Tüpler el arabasıyla taşınır (yuvarlanmaz/sürüklenmez), vana yavaşça açılır; oksijen ve yakıcı gaz hatlarında flashback arrestor zorunludur." },
     ],
   },
   {
@@ -3416,8 +3396,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kaza raporlama ve kök neden analizi",
     blocks: [{ sectionTitles: ["Raporlama Süreci", "Kök Neden Analizi"] }],
     questions: [
-      { id: 1, sectionRef: "Raporlama Süreci", category: MAK, question: "Kaza sonrası ilk adım nedir?", options: ["İlk müdahale ve acil tedavi", "Sigorta araması", "Sosyal medya paylaşımı", "Olay yerini temizleme"], correctAnswer: 0, explanation: "Önce ilk müdahale/tedavi yapılır, olay yeri güvenceye alınır, ilk rapor (ne/nerede/ne zaman/kim/nasıl) hazırlanır, DPA'ya ve ciddi kazada bayrak devletine bildirilir." },
-      { id: 2, sectionRef: "Kök Neden Analizi", category: MAK, question: "Yüzeysel nedenlerden kök nedene ulaşmak için hangi yöntem kullanılır?", options: ["5 Neden (5 Why) sorgulaması", "Rastgele kura çekme yöntemi", "Sezgisel tahmin yöntemi", "Personel anketi yöntemi"], correctAnswer: 0, explanation: "5 Why ve Ishikawa (balık kılçığı) diyagramı kullanılır; kök neden genellikle prosedür eksikliği, eğitim yetersizliği veya tasarım hatası gibi sistemiktir." },
+      { id: 1, sectionRef: "Raporlama Süreci", category: MAK, question: "Kaza sonrası ilk adım nedir?", options: ["Olay yerini temizleme", "İlk müdahale ve acil tedavi", "Sigorta araması", "Sosyal medya paylaşımı"], correctAnswer: 1, explanation: "Önce ilk müdahale/tedavi yapılır, olay yeri güvenceye alınır, ilk rapor (ne/nerede/ne zaman/kim/nasıl) hazırlanır, DPA'ya ve ciddi kazada bayrak devletine bildirilir." },
+      { id: 2, sectionRef: "Kök Neden Analizi", category: MAK, question: "Yüzeysel nedenlerden kök nedene ulaşmak için hangi yöntem kullanılır?", options: ["Sezgisel tahmin yöntemi", "Personel anketi yöntemi", "5 Neden (5 Why) sorgulaması", "Rastgele kura çekme yöntemi"], correctAnswer: 2, explanation: "5 Why ve Ishikawa (balık kılçığı) diyagramı kullanılır; kök neden genellikle prosedür eksikliği, eğitim yetersizliği veya tasarım hatası gibi sistemiktir." },
     ],
   },
   {
@@ -3425,8 +3405,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Toolbox meeting ve güvenlik brifingi",
     blocks: [{ sectionTitles: ["Toolbox Meeting İçeriği", "Güvenlik Brifingi"] }],
     questions: [
-      { id: 1, sectionRef: "Toolbox Meeting İçeriği", category: MAK, question: "Toolbox meeting'te aşağıdakilerden hangisi ele alınır?", options: ["İş tanımı, risk, KKD ve PTW kontrolü", "Yalnızca günün yemek menüsü listesi", "Limanda ödenecek hizmet ücretleri", "Personelin yıllık tatil planları"], correctAnswer: 0, explanation: "Toolbox meeting iş tanımı/kapsamı, risk paylaşımı, KKD belirleme, PTW kontrolü, acil durum hatırlatması ve soru-cevabı kapsar." },
-      { id: 2, sectionRef: "Güvenlik Brifingi", category: MAK, question: "Güvenlik brifingi ne zaman yapılır?", options: ["Vardiya başında veya değişikliklerde", "Yalnızca yılda bir kez yapılmakta", "Hiçbir zaman brifing yapılmaz", "Yalnızca limanda iken yapılmakta"], correctAnswer: 0, explanation: "Vardiya başında/operasyon değişikliğinde kısa brifing yapılır: güncel tehlikeler, devam eden bakım, hava/deniz etkisi ve özel dikkat konuları." },
+      { id: 1, sectionRef: "Toolbox Meeting İçeriği", category: MAK, question: "Toolbox meeting'te aşağıdakilerden hangisi ele alınır?", options: ["Yalnızca günün yemek menüsü listeleri", "Limanda ödenecek hizmet ücretleri", "Personelin yıllık tatil planları", "İş tanımı, risk, KKD ve PTW kontrolü"], correctAnswer: 3, explanation: "Toolbox meeting iş tanımı/kapsamı, risk paylaşımı, KKD belirleme, PTW kontrolü, acil durum hatırlatması ve soru-cevabı kapsar." },
+      { id: 2, sectionRef: "Güvenlik Brifingi", category: MAK, question: "Güvenlik brifingi ne zaman yapılır?", options: ["Yalnızca limanda iken yapılmakta", "Vardiya başında veya değişikliklerde", "Yalnızca yılda bir kez yapılmakta", "Hiçbir zaman brifing yapılmaz"], correctAnswer: 1, explanation: "Vardiya başında/operasyon değişikliğinde kısa brifing yapılır: güncel tehlikeler, devam eden bakım, hava/deniz etkisi ve özel dikkat konuları." },
     ],
   },
   {
@@ -3434,8 +3414,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Near-miss raporlama",
     blocks: [{ sectionTitles: ["Önemi", "Raporlama Sistemi"] }],
     questions: [
-      { id: 1, sectionRef: "Önemi", category: MAK, question: "Near-miss raporlamanın temel faydası nedir?", options: ["Kaza olmadan tehlikeyi tespit etmek", "Personeli bulup cezalandırmak için", "Evrak sayısını çoğaltabilmek için", "Hiçbir biçimde fayda sağlamaz"], correctAnswer: 0, explanation: "Heinrich piramidine göre her ciddi kaza öncesi ~300 near-miss yaşanır; near-miss raporlama tehlikeleri kaza olmadan tespit ettirir ve güvenlik kültürü olgunluğunu gösterir." },
-      { id: 2, sectionRef: "Raporlama Sistemi", category: MAK, question: "Near-miss raporları nasıl ele alınır?", options: ["DPA analiz eder; filoya bülten çıkar", "Doğrudan çöpe atılıp yok edilir", "Gizli tutulup paylaşılmamaktadır", "Yalnızca kaptanda saklanmaktadır"], correctAnswer: 0, explanation: "Raporlar anonim veya isimli yapılabilir; olay tanımı, yeri, zamanı, olası sonuç ve önerilen önlemi içerir; DPA analiz edip tüm filoya dağıtır." },
+      { id: 1, sectionRef: "Önemi", category: MAK, question: "Near-miss raporlamanın temel faydası nedir?", options: ["Evrak sayısını çoğaltabilmek için", "Hiçbir biçimde fayda sağlamaz", "Kaza olmadan tehlikeyi tespit etmek", "Personeli bulup cezalandırabilmek için"], correctAnswer: 2, explanation: "Heinrich piramidine göre her ciddi kaza öncesi ~300 near-miss yaşanır; near-miss raporlama tehlikeleri kaza olmadan tespit ettirir ve güvenlik kültürü olgunluğunu gösterir." },
+      { id: 2, sectionRef: "Raporlama Sistemi", category: MAK, question: "Near-miss raporları nasıl ele alınır?", options: ["Doğrudan çöpe atılıp yok edilir", "Gizli tutulup paylaşılmamaktadır", "Yalnızca kaptanda saklanmaktadır", "DPA analiz eder; filoya bülten çıkar"], correctAnswer: 3, explanation: "Raporlar anonim veya isimli yapılabilir; olay tanımı, yeri, zamanı, olası sonuç ve önerilen önlemi içerir; DPA analiz edip tüm filoya dağıtır." },
     ],
   },
   {
@@ -3443,8 +3423,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Biyolojik tehlikeler ve önlemler",
     blocks: [{ sectionTitles: ["Biyolojik Tehlike Kaynakları", "Önlemler"] }],
     questions: [
-      { id: 1, sectionRef: "Biyolojik Tehlike Kaynakları", category: MAK, question: "Soğutma kuleleri ve klima sistemlerinde üreyen tehlikeli bakteri hangisidir?", options: ["Legionella", "Laktobasil", "Maya", "Hiçbiri"], correctAnswer: 0, explanation: "Legionella soğutma kuleleri/klimada ürer ve Legionella hastalığına yol açar; pis su, kemirgen, küf ve vücut sıvıları diğer biyolojik tehlikelerdir." },
-      { id: 2, sectionRef: "Önlemler", category: MAK, question: "Legionella kontrolü için su sistemi nasıl yönetilir?", options: ["60°C üzeri sıcaklık veya klorlama", "Suyu sürekli ılık tutmak yeterli", "Sisteme hiç dokunmamak gerekir", "Suya tuz ekleyip tuzluluk artırmak"], correctAnswer: 0, explanation: "Legionella kontrolü için su 60°C üzerinde tutulur veya klorlanır; kişisel hijyen, uygun KKD ve ilk yardımda tek kullanımlık eldiven gereklidir." },
+      { id: 1, sectionRef: "Biyolojik Tehlike Kaynakları", category: MAK, question: "Soğutma kuleleri ve klima sistemlerinde üreyen tehlikeli bakteri hangisidir?", options: ["Hiçbiri", "Legionella", "Laktobasil", "Maya"], correctAnswer: 1, explanation: "Legionella soğutma kuleleri/klimada ürer ve Legionella hastalığına yol açar; pis su, kemirgen, küf ve vücut sıvıları diğer biyolojik tehlikelerdir." },
+      { id: 2, sectionRef: "Önlemler", category: MAK, question: "Legionella kontrolü için su sistemi nasıl yönetilir?", options: ["Sisteme hiç dokunmamak gerekir", "Suya tuz ekleyip tuzluluk artırmak", "60°C üzeri sıcaklık veya klorlama", "Suyu sürekli ılık tutmak yeterli"], correctAnswer: 2, explanation: "Legionella kontrolü için su 60°C üzerinde tutulur veya klorlanır; kişisel hijyen, uygun KKD ve ilk yardımda tek kullanımlık eldiven gereklidir." },
     ],
   },
   {
@@ -3452,8 +3432,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İzotermik süreç",
     blocks: [{ sectionTitles: ["Tanım ve Özellikler"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Özellikler", category: MAK, question: "İdeal gazda izotermik süreçte iç enerji değişimi ne olur?", options: ["Sıfırdır; verilen ısı tümüyle işe gider", "En yüksek değerine ulaşmış olmaktadır", "Negatif bir değer almış olmaktadır", "Hesaplanması olanaksız olmaktadır"], correctAnswer: 0, explanation: "Sıcaklık sabit olduğundan ideal gazda iç enerji değişimi sıfırdır; birinci yasa gereği Q = W. Boyle yasası (PV = sabit) geçerlidir." },
-      { id: 2, sectionRef: "Tanım ve Özellikler", category: MAK, question: "İzotermik süreçte basınç-hacim ilişkisini hangi yasa verir?", options: ["Boyle yasası (PV = sabit)", "Charles yasası (V/T = sabit)", "Stefan-Boltzmann ışınım yasası", "Fourier ısı iletim yasası"], correctAnswer: 0, explanation: "Boyle yasası (PV = sabit) izotermik sürecin basınç-hacim ilişkisini verir; iş W = mRT·ln(V₂/V₁)." },
+      { id: 1, sectionRef: "Tanım ve Özellikler", category: MAK, question: "İdeal gazda izotermik süreçte iç enerji değişimi ne olur?", options: ["En yüksek değerine ulaşmış durumda olmakta", "Negatif bir değer almış olmaktadır", "Hesaplanması olanaksız olmaktadır", "Sıfırdır; verilen ısı tümüyle işe gider"], correctAnswer: 3, explanation: "Sıcaklık sabit olduğundan ideal gazda iç enerji değişimi sıfırdır; birinci yasa gereği Q = W. Boyle yasası (PV = sabit) geçerlidir." },
+      { id: 2, sectionRef: "Tanım ve Özellikler", category: MAK, question: "İzotermik süreçte basınç-hacim ilişkisini hangi yasa verir?", options: ["Fourier ısı iletim yasası", "Boyle yasası (PV = sabit)", "Charles yasası (V/T = sabit)", "Stefan-Boltzmann ışınım yasası"], correctAnswer: 1, explanation: "Boyle yasası (PV = sabit) izotermik sürecin basınç-hacim ilişkisini verir; iş W = mRT·ln(V₂/V₁)." },
     ],
   },
   {
@@ -3461,8 +3441,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İzobarik süreç",
     blocks: [{ sectionTitles: ["Tanım ve İş Hesabı"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve İş Hesabı", category: MAK, question: "Sabit basınçta (izobarik) yapılan iş nasıl hesaplanır?", options: ["W = P·ΔV", "W = 0", "W = mcvΔT", "W = ΔU"], correctAnswer: 0, explanation: "İzobarik süreçte W = P(V₂−V₁) = P·ΔV; verilen ısı entalpi değişimine eşittir: Q = m·cp·ΔT." },
-      { id: 2, sectionRef: "Tanım ve İş Hesabı", category: MAK, question: "İzobarik süreçte verilen ısı neye eşittir?", options: ["Entalpi değişimine (Q = m·cp·ΔT)", "İç enerji değişimine (m·cv·ΔT)", "Her koşulda sıfıra eşit olur", "Yapılan işin tam yarısına eşit"], correctAnswer: 0, explanation: "Sabit basınçta Q = ΔH = m·cp·ΔT'dir." },
+      { id: 1, sectionRef: "Tanım ve İş Hesabı", category: MAK, question: "Sabit basınçta (izobarik) yapılan iş nasıl hesaplanır?", options: ["W = mcvΔT", "W = ΔU", "W = P·ΔV", "W = 0"], correctAnswer: 2, explanation: "İzobarik süreçte W = P(V₂−V₁) = P·ΔV; verilen ısı entalpi değişimine eşittir: Q = m·cp·ΔT." },
+      { id: 2, sectionRef: "Tanım ve İş Hesabı", category: MAK, question: "İzobarik süreçte verilen ısı neye eşittir?", options: ["İç enerji değişimine (Q = m·cv·ΔT)", "Her koşulda sıfıra eşit olur", "Yapılan işin tam yarısına eşit", "Entalpi değişimine (Q = m·cp·ΔT)"], correctAnswer: 3, explanation: "Sabit basınçta Q = ΔH = m·cp·ΔT'dir." },
     ],
   },
   {
@@ -3470,8 +3450,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İzokorik süreç",
     blocks: [{ sectionTitles: ["Özellikler"] }],
     questions: [
-      { id: 1, sectionRef: "Özellikler", category: MAK, question: "İzokorik (sabit hacim) süreçte iş ne kadardır?", options: ["Sıfır (W = 0, çünkü ΔV = 0)", "En yüksek değerdedir (maksimum)", "P·ΔV değerine eşit olmaktadır", "mRT değerine eşit olmaktadır"], correctAnswer: 0, explanation: "Sabit hacimde iş yapılamaz (W = P·ΔV ve ΔV = 0); verilen ısının tamamı iç enerjiye dönüşür: Q = ΔU = m·cv·ΔT." },
-      { id: 2, sectionRef: "Özellikler", category: MAK, question: "Otto çevriminde ısı ekleme/atma süreçleri nasıl modellenir?", options: ["İzokorik (sabit hacim) olarak", "İzobarik (sabit basınç) olarak", "Adyabatik (ısı geçişsiz) olarak", "İzotermik (sabit sıcaklık) olarak"], correctAnswer: 0, explanation: "Otto çevriminde ısı ekleme ve atma süreçleri izokorik (sabit hacim) olarak modellenir." },
+      { id: 1, sectionRef: "Özellikler", category: MAK, question: "İzokorik (sabit hacim) süreçte iş ne kadardır?", options: ["mRT değerine eşit olmaktadır", "Sıfır (W = 0, çünkü ΔV = 0)", "En yüksek değerdedir (maksimum)", "P·ΔV değerine eşit olmaktadır"], correctAnswer: 1, explanation: "Sabit hacimde iş yapılamaz (W = P·ΔV ve ΔV = 0); verilen ısının tamamı iç enerjiye dönüşür: Q = ΔU = m·cv·ΔT." },
+      { id: 2, sectionRef: "Özellikler", category: MAK, question: "Otto çevriminde ısı ekleme/atma süreçleri nasıl modellenir?", options: ["Adyabatik (ısı geçişsiz) olarak", "İzotermik (sabit sıcaklık) olarak", "İzokorik (sabit hacim) olarak", "İzobarik (sabit basınç) olarak"], correctAnswer: 2, explanation: "Otto çevriminde ısı ekleme ve atma süreçleri izokorik (sabit hacim) olarak modellenir." },
     ],
   },
   {
@@ -3479,8 +3459,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Adyabatik (izentropik) süreç",
     blocks: [{ sectionTitles: ["Bağıntılar"] }],
     questions: [
-      { id: 1, sectionRef: "Bağıntılar", category: MAK, question: "Adyabatik süreçte birinci yasa hangi şekli alır?", options: ["W = −ΔU (çünkü Q = 0 olur)", "Q = W (ısı işe eşit olur)", "Q = ΔU (ısı iç enerjiye)", "W = 0 (hiç iş yapılmaz)"], correctAnswer: 0, explanation: "Adyabatik süreçte Q = 0 olduğundan W = −ΔU; ideal gaz için PV^γ = sabit ve TV^(γ−1) = sabit geçerlidir." },
-      { id: 2, sectionRef: "Bağıntılar", category: MAK, question: "İdeal gaz için adyabatik süreçte hangi bağıntı geçerlidir?", options: ["PV^γ = sabit", "PV = sabit", "P/V = sabit", "P + V = sabit"], correctAnswer: 0, explanation: "Adyabatik (izentropik) süreçte PV^γ = sabit ve TV^(γ−1) = sabittir." },
+      { id: 1, sectionRef: "Bağıntılar", category: MAK, question: "Adyabatik süreçte birinci yasa hangi şekli alır?", options: ["Q = W (ısı işe eşit olmakta)", "Q = ΔU (ısı iç enerjiye)", "W = 0 (hiç iş yapılmaz)", "W = −ΔU (çünkü Q = 0 olur)"], correctAnswer: 3, explanation: "Adyabatik süreçte Q = 0 olduğundan W = −ΔU; ideal gaz için PV^γ = sabit ve TV^(γ−1) = sabit geçerlidir." },
+      { id: 2, sectionRef: "Bağıntılar", category: MAK, question: "İdeal gaz için adyabatik süreçte hangi bağıntı geçerlidir?", options: ["P + V = sabit", "PV^γ = sabit", "PV = sabit", "P/V = sabit"], correctAnswer: 1, explanation: "Adyabatik (izentropik) süreçte PV^γ = sabit ve TV^(γ−1) = sabittir." },
     ],
   },
   {
@@ -3488,8 +3468,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Politropik süreç ve n üssü",
     blocks: [{ sectionTitles: ["Politropik Modelin Fiziksel Anlamı", "Sıcaklık ve İş Bağıntıları"] }],
     questions: [
-      { id: 1, sectionRef: "Politropik Modelin Fiziksel Anlamı", category: MAK, question: "Deniz kompresörlerinde politropik üs n tipik olarak hangi aralıktadır?", options: ["1 ile γ arasında", "0 ile 1 arasında", "Her zaman 0", "Her zaman sonsuz"], correctAnswer: 0, explanation: "Kompresörlerde n genellikle 1 ile γ arasındadır (gerçek sıkıştırma bölgesi); ara soğutma arttıkça n, 1'e (izotermik) yaklaşır." },
-      { id: 2, sectionRef: "Sıcaklık ve İş Bağıntıları", category: MAK, question: "Aynı basınç oranında n değerinin artması kompresör çıkış sıcaklığını nasıl etkiler?", options: ["Yükseltir (valf ve yağ filmine yük)", "Düşürür (termal yükü azaltmakta)", "Hiçbir biçimde etkilememektedir", "Çıkış sıcaklığını sıfırlamaktadır"], correctAnswer: 0, explanation: "T₂/T₁ = (P₂/P₁)^((n−1)/n); n arttıkça çıkış sıcaklığı yükselir ve termal yük artar." },
+      { id: 1, sectionRef: "Politropik Modelin Fiziksel Anlamı", category: MAK, question: "Deniz kompresörlerinde politropik üs n tipik olarak hangi aralıktadır?", options: ["Her zaman 0", "Her zaman sonsuz", "1 ile γ arasında", "0 ile 1 arasında"], correctAnswer: 2, explanation: "Kompresörlerde n genellikle 1 ile γ arasındadır (gerçek sıkıştırma bölgesi); ara soğutma arttıkça n, 1'e (izotermik) yaklaşır." },
+      { id: 2, sectionRef: "Sıcaklık ve İş Bağıntıları", category: MAK, question: "Aynı basınç oranında n değerinin artması kompresör çıkış sıcaklığını nasıl etkiler?", options: ["Düşürür (termal yükü azaltmakta)", "Hiçbir biçimde etkilememektedir", "Çıkış sıcaklığını tümüyle sıfırlamakta", "Yükseltir (valf ve yağ filmine yük)"], correctAnswer: 3, explanation: "T₂/T₁ = (P₂/P₁)^((n−1)/n); n arttıkça çıkış sıcaklığı yükselir ve termal yük artar." },
     ],
   },
   {
@@ -3497,8 +3477,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Otto çevrimi (benzinli motor)",
     blocks: [{ sectionTitles: ["Çevrim Aşamaları ve P-V Yorumu", "Termal Verim ve Sıkıştırma Oranı Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "Termal Verim ve Sıkıştırma Oranı Etkisi", category: MAK, question: "Otto çevriminin teorik termal verimi neye bağlıdır?", options: ["Yalnızca sıkıştırma oranı ve γ değeri", "Yalnızca motorun devir sayısına", "Yalnızca silindir sayısı değerine", "Yalnızca kullanılan yakıtın rengine"], correctAnswer: 0, explanation: "ηOtto = 1 − (1/r)^(γ−1); verim yalnızca sıkıştırma oranı ve γ'ya bağlıdır. Pratikte vuruntu (knock) ve NOx sıkıştırma oranını sınırlar." },
-      { id: 2, sectionRef: "Çevrim Aşamaları ve P-V Yorumu", category: MAK, question: "Otto çevriminde iş üreten strok hangisidir?", options: ["3→4 adyabatik genleşme stroku", "1→2 adyabatik sıkıştırma stroku", "2→3 sabit hacimde ısı alımı", "4→1 sabit hacimde ısı atımı"], correctAnswer: 0, explanation: "Çevrim net işinin büyük kısmı 3→4 adyabatik genleşme strokunda üretilir." },
+      { id: 1, sectionRef: "Termal Verim ve Sıkıştırma Oranı Etkisi", category: MAK, question: "Otto çevriminin teorik termal verimi neye bağlıdır?", options: ["Yalnızca kullanılan yakıtın renk tonuna", "Yalnızca sıkıştırma oranı ve γ değeri", "Yalnızca motorun devir sayısına", "Yalnızca silindir sayısı değerine"], correctAnswer: 1, explanation: "ηOtto = 1 − (1/r)^(γ−1); verim yalnızca sıkıştırma oranı ve γ'ya bağlıdır. Pratikte vuruntu (knock) ve NOx sıkıştırma oranını sınırlar." },
+      { id: 2, sectionRef: "Çevrim Aşamaları ve P-V Yorumu", category: MAK, question: "Otto çevriminde iş üreten strok hangisidir?", options: ["2→3 sabit hacimde ısı alımı", "4→1 sabit hacimde ısı atımı", "3→4 adyabatik genleşme stroku", "1→2 adyabatik sıkıştırma stroku"], correctAnswer: 2, explanation: "Çevrim net işinin büyük kısmı 3→4 adyabatik genleşme strokunda üretilir." },
     ],
   },
   {
@@ -3506,8 +3486,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Sabathe (ikili) çevrimi",
     blocks: [{ sectionTitles: ["Neden Sabathe Modeli Kullanılır?", "Çevrim Aşamaları", "Verim Parametreleri ve Tasarım Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "Neden Sabathe Modeli Kullanılır?", category: MAK, question: "Sabathe çevrimi gerçek deniz dizel motorunu neden daha iyi modeller?", options: ["Yanmayı kısmen hacim, kısmen basınç", "Yanmayı tümüyle izotermik almakta", "Hiç ısı alımı olmadığını varsayar", "Yalnızca egzoz sürecini modeller"], correctAnswer: 0, explanation: "Sabathe; hızlı ön-karışım yanmasını sabit hacim, difüzyon kontrollü geç yanmayı sabit basınç olarak modelleyerek indike basınç eğrisine yaklaşır." },
-      { id: 2, sectionRef: "Çevrim Aşamaları", category: MAK, question: "Sabathe çevriminde tepe basıncını hangi aşama belirler?", options: ["2→3 sabit hacimde ısı alımı (ani)", "1→2 adyabatik sıkıştırma aşaması", "4→5 adyabatik genleşme aşaması", "5→1 sabit hacimde ısı atımı"], correctAnswer: 0, explanation: "2→3 sabit hacim ısı alımı (ani yanma fazı) tepe basıncını belirler ve mekanik yükleri doğrudan etkiler." },
+      { id: 1, sectionRef: "Neden Sabathe Modeli Kullanılır?", category: MAK, question: "Sabathe çevrimi gerçek deniz dizel motorunu neden daha iyi modeller?", options: ["Yanmayı tümüyle izotermik olarak almakta", "Hiç ısı alımı olmadığını varsayar", "Yalnızca egzoz sürecini modeller", "Yanmayı kısmen hacim, kısmen basınç"], correctAnswer: 3, explanation: "Sabathe; hızlı ön-karışım yanmasını sabit hacim, difüzyon kontrollü geç yanmayı sabit basınç olarak modelleyerek indike basınç eğrisine yaklaşır." },
+      { id: 2, sectionRef: "Çevrim Aşamaları", category: MAK, question: "Sabathe çevriminde tepe basıncını hangi aşama belirler?", options: ["5→1 sabit hacimde ısı atımı", "2→3 sabit hacimde ısı alımı (ani)", "1→2 adyabatik sıkıştırma aşamasıdır", "4→5 adyabatik genleşme aşaması"], correctAnswer: 1, explanation: "2→3 sabit hacim ısı alımı (ani yanma fazı) tepe basıncını belirler ve mekanik yükleri doğrudan etkiler." },
     ],
   },
   {
@@ -3515,8 +3495,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Rankine çevrimi (buhar türbini)",
     blocks: [{ sectionTitles: ["Çevrim Bileşenleri ve Enerji Akışı", "h-s Diyagramı ile Performans Yorumu"] }],
     questions: [
-      { id: 1, sectionRef: "Çevrim Bileşenleri ve Enerji Akışı", category: MAK, question: "Deniz uygulamasında Rankine çevriminde kazanın ısı kaynağı genellikle nedir?", options: ["Ana makine egzozu", "Güneş", "Pervane sürtünmesi", "Deniz suyu"], correctAnswer: 0, explanation: "Deniz uygulamasında besi suyu çoğunlukla ana makine egzozuyla ısıtılır/buharlaştırılır; türbin entalpiyi şaft işine çevirir, kondenser çevrimi kapatır." },
-      { id: 2, sectionRef: "h-s Diyagramı ile Performans Yorumu", category: MAK, question: "Türbin çıkışında nem oranı artarsa hangi risk doğar?", options: ["Son kademelerde erozyon riski", "Türbin veriminde belirgin artış", "Kanatlarda donma oluşması riski", "Herhangi bir risk oluşmamakta"], correctAnswer: 0, explanation: "Yüksek nem son türbin kademelerinde erozyon yaratır; kızdırma (superheat) ve yeniden kızdırma (reheat) bu riski azaltır." },
+      { id: 1, sectionRef: "Çevrim Bileşenleri ve Enerji Akışı", category: MAK, question: "Deniz uygulamasında Rankine çevriminde kazanın ısı kaynağı genellikle nedir?", options: ["Pervane sürtünmesi", "Deniz suyu", "Ana makine egzozu", "Güneş"], correctAnswer: 2, explanation: "Deniz uygulamasında besi suyu çoğunlukla ana makine egzozuyla ısıtılır/buharlaştırılır; türbin entalpiyi şaft işine çevirir, kondenser çevrimi kapatır." },
+      { id: 2, sectionRef: "h-s Diyagramı ile Performans Yorumu", category: MAK, question: "Türbin çıkışında nem oranı artarsa hangi risk doğar?", options: ["Türbin veriminde belirgin artış", "Kanatlarda donma oluşması riski", "Herhangi bir risk oluşmamakta", "Son kademelerde erozyon riski"], correctAnswer: 3, explanation: "Yüksek nem son türbin kademelerinde erozyon yaratır; kızdırma (superheat) ve yeniden kızdırma (reheat) bu riski azaltır." },
     ],
   },
   {
@@ -3524,8 +3504,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Brayton çevrimi (gaz türbini)",
     blocks: [{ sectionTitles: ["Temel Süreçler ve Gerçek Sistem Sapmaları", "Verim, Basınç Oranı ve Özgül İş", "Deniz Uygulaması ve Kombine Çevrim"] }],
     questions: [
-      { id: 1, sectionRef: "Verim, Basınç Oranı ve Özgül İş", category: MAK, question: "İdeal Brayton verimi basınç oranı arttıkça nasıl değişir?", options: ["Artar; ancak kompresör işi de büyür", "Azalır; verim sürekli düşmektedir", "Hiçbir biçimde değişmemektedir", "Tümüyle sıfıra inip yok olmaktadır"], correctAnswer: 0, explanation: "ηBrayton = 1 − (1/rp)^((γ−1)/γ); verim basınç oranıyla artar ama Back Work Ratio (wc/wt) ve TIT limiti optimumu belirler." },
-      { id: 2, sectionRef: "Deniz Uygulaması ve Kombine Çevrim", category: MAK, question: "Gaz türbini egzoz ısısı (450-550°C) nasıl değerlendirilir?", options: ["HRSG ile Rankine alt çevrimine verilir", "Doğrudan denize atılıp harcanmakta", "Yakıta karıştırılıp geri yakılmakta", "Hiçbir biçimde kullanılmamaktadır"], correctAnswer: 0, explanation: "Gaz türbini egzozu HRSG ile Rankine alt çevrimine verilerek kombine çevrimde (COGAS/COGES) toplam verim artırılır." },
+      { id: 1, sectionRef: "Verim, Basınç Oranı ve Özgül İş", category: MAK, question: "İdeal Brayton verimi basınç oranı arttıkça nasıl değişir?", options: ["Tümüyle sıfıra inip yok olup gitmektedir", "Artar; ancak kompresör işi de büyür", "Azalır; verim sürekli düşmektedir", "Hiçbir biçimde değişmemektedir"], correctAnswer: 1, explanation: "ηBrayton = 1 − (1/rp)^((γ−1)/γ); verim basınç oranıyla artar ama Back Work Ratio (wc/wt) ve TIT limiti optimumu belirler." },
+      { id: 2, sectionRef: "Deniz Uygulaması ve Kombine Çevrim", category: MAK, question: "Gaz türbini egzoz ısısı (450-550°C) nasıl değerlendirilir?", options: ["Yakıta karıştırılıp geri yakılmakta", "Hiçbir biçimde kullanılmamaktadır", "HRSG ile Rankine alt çevrimine verilir", "Doğrudan denize atılıp harcanmakta"], correctAnswer: 2, explanation: "Gaz türbini egzozu HRSG ile Rankine alt çevrimine verilerek kombine çevrimde (COGAS/COGES) toplam verim artırılır." },
     ],
   },
   {
@@ -3533,8 +3513,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ters çevrimler: soğutma ve ısı pompası",
     blocks: [{ sectionTitles: ["Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", "COP Kavramı ve Enerji Yorumu"] }],
     questions: [
-      { id: 1, sectionRef: "Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", category: MAK, question: "Soğutma çevriminin ana güç tüketicisi hangi bileşendir?", options: ["Kompresör", "Evaporatör", "Genleşme valfi", "Kondenser"], correctAnswer: 0, explanation: "Kompresör düşük basınçlı buharı sıkıştırır ve çevrimin ana güç tüketicisidir; evaporatör soğutma etkisini oluşturur." },
-      { id: 2, sectionRef: "COP Kavramı ve Enerji Yorumu", category: MAK, question: "COP'nin 1'den büyük olması neden termodinamiğe aykırı değildir?", options: ["Isı üretilmez; düşükten yükseğe taşınır", "Enerji yoktan var edilmiş olmaktadır", "Bir ölçüm hatası sonucu oluşmakta", "Gerçekte termodinamiğe aykırıdır"], correctAnswer: 0, explanation: "COPısı pompası = COPsoğutma + 1; cihaz ısıyı taşıdığı için COP>1 mümkündür ve termodinamiğe aykırı değildir." },
+      { id: 1, sectionRef: "Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", category: MAK, question: "Soğutma çevriminin ana güç tüketicisi hangi bileşendir?", options: ["Evaporatör", "Genleşme valfi", "Kondenser", "Kompresör"], correctAnswer: 3, explanation: "Kompresör düşük basınçlı buharı sıkıştırır ve çevrimin ana güç tüketicisidir; evaporatör soğutma etkisini oluşturur." },
+      { id: 2, sectionRef: "COP Kavramı ve Enerji Yorumu", category: MAK, question: "COP'nin 1'den büyük olması neden termodinamiğe aykırı değildir?", options: ["Gerçekte termodinamiğe aykırıdır", "Isı üretilmez; düşükten yükseğe taşınır", "Enerji yoktan var edilmiş olmaktadır", "Bir ölçüm hatası sonucu oluşmakta"], correctAnswer: 1, explanation: "COPısı pompası = COPsoğutma + 1; cihaz ısıyı taşıdığı için COP>1 mümkündür ve termodinamiğe aykırı değildir." },
     ],
   },
   {
@@ -3542,8 +3522,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Fourier iletim yasası",
     blocks: [{ sectionTitles: ["Yasa İfadesi", "Isıl İletkenlik Katsayıları"] }],
     questions: [
-      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Fourier yasasına göre iletilen ısı miktarı neye bağlıdır?", options: ["Sıcaklık gradyanı, alan ve iletkenlik", "Yalnızca yüzeyin rengi ve dokusu", "Yalnızca geçen zaman süresi değeri", "Yalnızca malzemenin kütle değeri"], correctAnswer: 0, explanation: "Q̇ = −k·A·(dT/dx); ısı, sıcaklık gradyanı ve alanla doğru orantılı, ısıl iletkenliğe (k) bağlıdır." },
-      { id: 2, sectionRef: "Isıl İletkenlik Katsayıları", category: MAK, question: "Aşağıdaki malzemelerden hangisi en yüksek ısıl iletkenliğe (k) sahiptir?", options: ["Bakır (~385 W/m·K)", "Taş yünü (~0.04)", "Hava (~0.026)", "Asbest (~0.15)"], correctAnswer: 0, explanation: "Bakır ~385 W/m·K ile en yüksek; çelik 45-50, yalıtım malzemeleri çok düşük k değerine sahiptir." },
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Fourier yasasına göre iletilen ısı miktarı neye bağlıdır?", options: ["Yalnızca geçen zaman süresi değeri", "Yalnızca malzemenin kütle değeri", "Sıcaklık gradyanı, alan ve iletkenlik", "Yalnızca yüzeyin rengi ve dokusu"], correctAnswer: 2, explanation: "Q̇ = −k·A·(dT/dx); ısı, sıcaklık gradyanı ve alanla doğru orantılı, ısıl iletkenliğe (k) bağlıdır." },
+      { id: 2, sectionRef: "Isıl İletkenlik Katsayıları", category: MAK, question: "Aşağıdaki malzemelerden hangisi en yüksek ısıl iletkenliğe (k) sahiptir?", options: ["Taş yünü (~0,04 W/m·K)", "Hava (~0.026)", "Asbest (~0.15)", "Bakır (~385 W/m·K)"], correctAnswer: 3, explanation: "Bakır ~385 W/m·K ile en yüksek; çelik 45-50, yalıtım malzemeleri çok düşük k değerine sahiptir." },
     ],
   },
   {
@@ -3551,8 +3531,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Çok katmanlı duvar ve silindirik iletim",
     blocks: [{ sectionTitles: ["Çok Katmanlı Düz Duvar", "Silindirik Duvar (Boru)"] }],
     questions: [
-      { id: 1, sectionRef: "Çok Katmanlı Düz Duvar", category: MAK, question: "Çok katmanlı düz duvarda ısı iletimi hangi kavramla hesaplanır?", options: ["Seri ısıl direnç (R = ΣL/kA)", "Paralel kapasitans toplamı", "Logaritmik basınç düşüşü", "Newton viskozite yasası"], correctAnswer: 0, explanation: "Seri ısıl direnç kullanılır: Rtoplam = L₁/k₁A + L₂/k₂A + … ve Q̇ = ΔTtoplam / Rtoplam." },
-      { id: 2, sectionRef: "Silindirik Duvar (Boru)", category: MAK, question: "Silindirik (boru) geometride iletim neden logaritmik ifade içerir?", options: ["Yarıçapla ısı transfer alanı değişir", "Sıcaklık her noktada sabit kaldığı", "Basıncın hiç değişmemesi nedeniyle", "Malzemenin tek katman olması nedeni"], correctAnswer: 0, explanation: "Silindirik geometride alan yarıçapla değişir; Q̇ = 2πkL(T₁−T₂)/ln(r₂/r₁) ifadesi kullanılır." },
+      { id: 1, sectionRef: "Çok Katmanlı Düz Duvar", category: MAK, question: "Çok katmanlı düz duvarda ısı iletimi hangi kavramla hesaplanır?", options: ["Newton viskozite yasası", "Seri ısıl direnç (R = ΣL/kA)", "Paralel kapasitans toplamı ile", "Logaritmik basınç düşüşü"], correctAnswer: 1, explanation: "Seri ısıl direnç kullanılır: Rtoplam = L₁/k₁A + L₂/k₂A + … ve Q̇ = ΔTtoplam / Rtoplam." },
+      { id: 2, sectionRef: "Silindirik Duvar (Boru)", category: MAK, question: "Silindirik (boru) geometride iletim neden logaritmik ifade içerir?", options: ["Basıncın hiç değişmemesi nedeniyle", "Malzemenin tek katman olması nedeniyle", "Yarıçapla ısı transfer alanı değişir", "Sıcaklık her noktada sabit kaldığı"], correctAnswer: 2, explanation: "Silindirik geometride alan yarıçapla değişir; Q̇ = 2πkL(T₁−T₂)/ln(r₂/r₁) ifadesi kullanılır." },
     ],
   },
   {
@@ -3560,8 +3540,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Newton soğuma yasası (taşınım)",
     blocks: [{ sectionTitles: ["Yasa İfadesi"] }],
     questions: [
-      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Konvektif (taşınımla) ısı transferi neye bağlıdır?", options: ["Yüzey alanı, ΔT ve taşınım katsayısı", "Yalnızca yüzeyin rengine bağlıdır", "Yalnızca cismin kütlesine bağlıdır", "Yalnızca ortam basıncına bağlıdır"], correctAnswer: 0, explanation: "Q̇ = h·A·(Tyüzey − Takışkan); ısı, taşınım katsayısı h, alan ve sıcaklık farkıyla orantılıdır." },
-      { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Newton soğuma yasasında 'h' neyi temsil eder?", options: ["Taşınım (konveksiyon) katsayısı", "Malzemenin ısıl iletkenlik değeri", "Akışkanın özgül entalpi değeri", "Yüzeyin yerden yükseklik değeri"], correctAnswer: 0, explanation: "h taşınım (konveksiyon) katsayısıdır; akış tipine ve akışkana göre değişir." },
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Konvektif (taşınımla) ısı transferi neye bağlıdır?", options: ["Yalnızca yüzeyin rengine bağlıdır", "Yalnızca cismin kütle değerine bağlıdır", "Yalnızca ortam basıncına bağlıdır", "Yüzey alanı, ΔT ve taşınım katsayısı"], correctAnswer: 3, explanation: "Q̇ = h·A·(Tyüzey − Takışkan); ısı, taşınım katsayısı h, alan ve sıcaklık farkıyla orantılıdır." },
+      { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Newton soğuma yasasında 'h' neyi temsil eder?", options: ["Yüzeyin yerden yükseklik değeri", "Taşınım (konveksiyon) katsayısı", "Malzemenin ısıl iletkenlik değeri", "Akışkanın özgül entalpi değeri"], correctAnswer: 1, explanation: "h taşınım (konveksiyon) katsayısıdır; akış tipine ve akışkana göre değişir." },
     ],
   },
   {
@@ -3569,8 +3549,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Doğal ve zorlanmış taşınım",
     blocks: [{ sectionTitles: ["Doğal Taşınım", "Zorlanmış Taşınım"] }],
     questions: [
-      { id: 1, sectionRef: "Doğal Taşınım", category: MAK, question: "Doğal taşınım nasıl oluşur?", options: ["Yoğunluk farkı kaynaklı kaldırma", "Devirdaim pompası zorlamasıyla", "Fan ile hava üflenmesi yoluyla", "Kompresör basıncı zorlamasıyla"], correctAnswer: 0, explanation: "Doğal taşınım yoğunluk farkıyla oluşur (makine dairesi havalandırması, kazan su sirkülasyonu); h ≈ 5-25 W/m²·K'dir." },
-      { id: 2, sectionRef: "Zorlanmış Taşınım", category: MAK, question: "Zorlanmış taşınımda h değeri yaklaşık hangi aralıktadır?", options: ["100-10000 W/m²·K", "0.01-0.1 W/m²·K", "Doğal taşınımla aynı", "Sıfır"], correctAnswer: 0, explanation: "Pompa/fan/kompresörle oluşan zorlanmış taşınımda h, 100-10000 W/m²·K aralığındadır (eşanjör, silindir soğutması)." },
+      { id: 1, sectionRef: "Doğal Taşınım", category: MAK, question: "Doğal taşınım nasıl oluşur?", options: ["Fan ile hava üflenmesi yoluyla", "Kompresör basıncı zorlamasıyla", "Yoğunluk farkı kaynaklı kaldırma", "Devirdaim pompasının zorlamasıyla"], correctAnswer: 2, explanation: "Doğal taşınım yoğunluk farkıyla oluşur (makine dairesi havalandırması, kazan su sirkülasyonu); h ≈ 5-25 W/m²·K'dir." },
+      { id: 2, sectionRef: "Zorlanmış Taşınım", category: MAK, question: "Zorlanmış taşınımda h değeri yaklaşık hangi aralıktadır?", options: ["0.01-0.1 W/m²·K", "Doğal taşınımla aynı", "Sıfır", "100-10000 W/m²·K"], correctAnswer: 3, explanation: "Pompa/fan/kompresörle oluşan zorlanmış taşınımda h, 100-10000 W/m²·K aralığındadır (eşanjör, silindir soğutması)." },
     ],
   },
   {
@@ -3578,8 +3558,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Stefan–Boltzmann ışınım yasası",
     blocks: [{ sectionTitles: ["Yasa İfadesi"] }],
     questions: [
-      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Stefan-Boltzmann yasasına göre yayılan ışınım enerjisi sıcaklığın kaçıncı kuvvetiyle orantılıdır?", options: ["Dördüncü kuvveti (T⁴) ile orantılı", "Birinci kuvveti (T) ile orantılı", "İkinci kuvveti (T²) ile orantılı", "Karekökü (√T) ile orantılıdır"], correctAnswer: 0, explanation: "Q̇ = ε·σ·A·(T₁⁴ − T₂⁴); kara cismin yaydığı enerji mutlak sıcaklığın dördüncü kuvvetiyle orantılıdır." },
-      { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Stefan-Boltzmann ifadesinde ε neyi temsil eder?", options: ["Yüzey yayma katsayısı (kara cisim 1)", "Yüzeyin mutlak sıcaklığı (Kelvin)", "Işıma yapan yüzeyin toplam alanı", "Ortamdaki mutlak basınç büyüklüğü"], correctAnswer: 0, explanation: "ε yüzey yayma katsayısıdır; kara cisim için ε = 1, σ ise Stefan-Boltzmann sabitidir." },
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Stefan-Boltzmann yasasına göre yayılan ışınım enerjisi sıcaklığın kaçıncı kuvvetiyle orantılıdır?", options: ["Karekökü (√T) ile orantılıdır", "Dördüncü kuvveti (T⁴) ile orantılı", "Birinci kuvveti (T¹) ile orantılıdır", "İkinci kuvveti (T²) ile orantılı"], correctAnswer: 1, explanation: "Q̇ = ε·σ·A·(T₁⁴ − T₂⁴); kara cismin yaydığı enerji mutlak sıcaklığın dördüncü kuvvetiyle orantılıdır." },
+      { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Stefan-Boltzmann ifadesinde ε neyi temsil eder?", options: ["Işıma yapan yüzeyin toplam alanı", "Ortamdaki mutlak basınç büyüklüğü", "Yüzey yayma katsayısı (kara cisim 1)", "Yüzeyin mutlak sıcaklığı (Kelvin)"], correctAnswer: 2, explanation: "ε yüzey yayma katsayısıdır; kara cisim için ε = 1, σ ise Stefan-Boltzmann sabitidir." },
     ],
   },
   {
@@ -3587,8 +3567,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Toplam ısı geçiş katsayısı (U)",
     blocks: [{ sectionTitles: ["U Hesabı"] }],
     questions: [
-      { id: 1, sectionRef: "U Hesabı", category: MAK, question: "Toplam ısı geçiş katsayısı (U) hesabında hangi dirençler toplanır?", options: ["İç/dış taşınım, iletim ve fouling", "Yalnızca iletim direnci alınır", "Yalnızca fouling direnci alınır", "Yalnızca taşınım direnci alınır"], correctAnswer: 0, explanation: "1/U = 1/hiç + L/k + 1/hdış + Rfouling; fouling direnci kullanım ömrüne ve temizlik aralığına bağlıdır." },
-      { id: 2, sectionRef: "U Hesabı", category: MAK, question: "Fouling (kirlenme) direnci U değerini nasıl etkiler?", options: ["Toplam direnci artırıp U'yu düşürür", "Toplam direnci azaltıp U'yu artırır", "U değerini hiçbir biçimde etkilemez", "U'yu sıfırlar ama transferi artırır"], correctAnswer: 0, explanation: "Rfouling toplam dirence eklenir; arttıkça U (ve ısı transferi) düşer, bu yüzden periyodik temizlik gerekir." },
+      { id: 1, sectionRef: "U Hesabı", category: MAK, question: "Toplam ısı geçiş katsayısı (U) hesabında hangi dirençler toplanır?", options: ["Yalnızca iletim direnci alınır", "Yalnızca fouling direnci hesaba alınır", "Yalnızca taşınım direnci alınır", "İç/dış taşınım, iletim ve fouling"], correctAnswer: 3, explanation: "1/U = 1/hiç + L/k + 1/hdış + Rfouling; fouling direnci kullanım ömrüne ve temizlik aralığına bağlıdır." },
+      { id: 2, sectionRef: "U Hesabı", category: MAK, question: "Fouling (kirlenme) direnci U değerini nasıl etkiler?", options: ["U'yu sıfırlar ama transferi artırır", "Toplam direnci artırıp U'yu düşürür", "Toplam direnci azaltıp U'yu artırır", "U değerini hiçbir biçimde etkilemez"], correctAnswer: 1, explanation: "Rfouling toplam dirence eklenir; arttıkça U (ve ısı transferi) düşer, bu yüzden periyodik temizlik gerekir." },
     ],
   },
   {
@@ -3596,8 +3576,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Paralel akış ve ters akış düzenlemeleri",
     blocks: [{ sectionTitles: ["Karşılaştırma"] }],
     questions: [
-      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Ters akışlı eşanjör paralel akışa göre neden daha etkilidir?", options: ["Daha yüksek LMTD ve etkinlik sağlar", "Daha düşük LMTD değeri vermektedir", "İkisi arasında hiçbir fark yoktur", "Daha az ısı transfer alanı gerektirir"], correctAnswer: 0, explanation: "Ters akışta LMTD ve etkinlik daha yüksektir; soğuk akışkan sıcak akışkanın çıkış sıcaklığının üzerine çıkabilir, paralel akışta bu mümkün değildir." },
-      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Hangi akış düzenlemesi gemilerde daha yaygın kullanılır?", options: ["Ters akış (counter-flow) düzeni", "Paralel akış (parallel-flow) düzeni", "İkisi de gemilerde kullanılmaz", "Yalnızca çapraz akış düzeni"], correctAnswer: 0, explanation: "Daha yüksek etkinlik nedeniyle ters akış yaygın, paralel akış sınırlıdır." },
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Ters akışlı eşanjör paralel akışa göre neden daha etkilidir?", options: ["İkisi arasında hiçbir fark yoktur", "Daha az ısı transfer alanı gerektirir", "Daha yüksek LMTD ve etkinlik sağlar", "Daha düşük LMTD değeri vermektedir"], correctAnswer: 2, explanation: "Ters akışta LMTD ve etkinlik daha yüksektir; soğuk akışkan sıcak akışkanın çıkış sıcaklığının üzerine çıkabilir, paralel akışta bu mümkün değildir." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Hangi akış düzenlemesi gemilerde daha yaygın kullanılır?", options: ["Paralel akış (parallel-flow) düzeni", "İkisi de gemilerde kullanılmaz", "Yalnızca çapraz akış düzeni", "Ters akış (counter-flow) düzeni"], correctAnswer: 3, explanation: "Daha yüksek etkinlik nedeniyle ters akış yaygın, paralel akış sınırlıdır." },
     ],
   },
   {
@@ -3605,8 +3585,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "LMTD (logaritmik ortalama sıcaklık farkı)",
     blocks: [{ sectionTitles: ["LMTD Formülü", "Isı Eşanjörü Temel Denklemi"] }],
     questions: [
-      { id: 1, sectionRef: "LMTD Formülü", category: MAK, question: "LMTD hangi değerlerden hesaplanır?", options: ["Giriş ve çıkış sıcaklık farkları", "Yalnızca akışkanın debi değeri", "Yalnızca sistemin basınç değeri", "Yalnızca ısı transfer alan değeri"], correctAnswer: 0, explanation: "LMTD = (ΔT₁ − ΔT₂)/ln(ΔT₁/ΔT₂); giriş ve çıkış sıcaklık farklarından hesaplanır." },
-      { id: 2, sectionRef: "Isı Eşanjörü Temel Denklemi", category: MAK, question: "Eşanjörün ısı transfer kapasitesi hangi denklemle bulunur?", options: ["Q = U·A·LMTD (eşanjör bağıntısı)", "Q = m·g·h (potansiyel enerji)", "Q = P·V (basınç ve hacim)", "Q = h·s (entalpi ve entropi)"], correctAnswer: 0, explanation: "Eşanjör kapasitesi Q = U·A·LMTD ile hesaplanır (U toplam ısı geçiş katsayısı, A alan)." },
+      { id: 1, sectionRef: "LMTD Formülü", category: MAK, question: "LMTD hangi değerlerden hesaplanır?", options: ["Yalnızca ısı transfer alan değeri", "Giriş ve çıkış sıcaklık farkları", "Yalnızca akışkanın debi değeri", "Yalnızca sistemin basınç değeri"], correctAnswer: 1, explanation: "LMTD = (ΔT₁ − ΔT₂)/ln(ΔT₁/ΔT₂); giriş ve çıkış sıcaklık farklarından hesaplanır." },
+      { id: 2, sectionRef: "Isı Eşanjörü Temel Denklemi", category: MAK, question: "Eşanjörün ısı transfer kapasitesi hangi denklemle bulunur?", options: ["Q = P·V (basınç ve hacim)", "Q = h·s (entalpi ve entropi)", "Q = U·A·LMTD (eşanjör bağıntısı)", "Q = m·g·h (potansiyel enerji)"], correctAnswer: 2, explanation: "Eşanjör kapasitesi Q = U·A·LMTD ile hesaplanır (U toplam ısı geçiş katsayısı, A alan)." },
     ],
   },
   {
@@ -3614,8 +3594,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Plakalı ısı eşanjörleri",
     blocks: [{ sectionTitles: ["Yapı ve Avantajlar"] }],
     questions: [
-      { id: 1, sectionRef: "Yapı ve Avantajlar", category: MAK, question: "Plakalı eşanjörlerin kabuk-boruya göre temel avantajı nedir?", options: ["Türbülans ve alanla 3-5 kat yüksek U", "Çok daha yüksek basınç dayanımı", "Sınırsız sıcaklıkta çalışabilmesi", "Hiçbir bakım gerektirmiyor olması"], correctAnswer: 0, explanation: "Yüksek türbülans ve geniş yüzey sayesinde U değeri 3-5 kat yüksektir; plaka ekleme/çıkarma ile kapasite ayarlanır." },
-      { id: 2, sectionRef: "Yapı ve Avantajlar", category: MAK, question: "Plakalı eşanjörlerin temel dezavantajı nedir?", options: ["Basınç ve sıcaklık sınırı (<25 bar)", "Belirgin biçimde düşük verim değeri", "Çok büyük yer kaplaması durumu", "Kapasitesinin ayarlanamaması hâli"], correctAnswer: 0, explanation: "Plakalı eşanjörler genellikle < 25 bar ve < 250°C ile sınırlıdır." },
+      { id: 1, sectionRef: "Yapı ve Avantajlar", category: MAK, question: "Plakalı eşanjörlerin kabuk-boruya göre temel avantajı nedir?", options: ["Çok daha yüksek basınç dayanımı", "Sınırsız sıcaklıkta çalışabilmesi", "Hiçbir bakım gerektirmiyor olması", "Türbülans ve alanla 3-5 kat yüksek U"], correctAnswer: 3, explanation: "Yüksek türbülans ve geniş yüzey sayesinde U değeri 3-5 kat yüksektir; plaka ekleme/çıkarma ile kapasite ayarlanır." },
+      { id: 2, sectionRef: "Yapı ve Avantajlar", category: MAK, question: "Plakalı eşanjörlerin temel dezavantajı nedir?", options: ["Kapasitesinin ayarlanamaması hâli", "Basınç ve sıcaklık sınırı (<25 bar)", "Belirgin biçimde düşük verim değeri", "Çok büyük yer kaplaması durumu"], correctAnswer: 1, explanation: "Plakalı eşanjörler genellikle < 25 bar ve < 250°C ile sınırlıdır." },
     ],
   },
   {
@@ -3623,8 +3603,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kabuk–boru (shell & tube) eşanjörler",
     blocks: [{ sectionTitles: ["Yapı"] }],
     questions: [
-      { id: 1, sectionRef: "Yapı", category: MAK, question: "Kabuk-boru eşanjörde baffle (şaşırtma) plakalarının görevi nedir?", options: ["Kabukta çapraz akış oluşturmak", "Sistem basıncını düşürmek için", "Akışı tümüyle durdurmak için", "Boruları doğrudan soğutmak için"], correctAnswer: 0, explanation: "Baffle plakaları kabuk tarafında çapraz akış oluşturarak ısı transferini artırır; boru demeti üzerinden iki akışkan ayrı geçer." },
-      { id: 2, sectionRef: "Yapı", category: MAK, question: "Aşağıdakilerden hangisi tipik olarak kabuk-boru tipinde üretilir?", options: ["Buhar kondenser ve yağ soğutucu", "Yalnızca plakalı filtre üniteleri", "Pervane göbeği ve kanat yapısı", "Dümen yelpazesi ve rot düzeni"], correctAnswer: 0, explanation: "Buhar kondenserler, yağ soğutucular ve yakıt ısıtıcıları kabuk-boru tipinde üretilir." },
+      { id: 1, sectionRef: "Yapı", category: MAK, question: "Kabuk-boru eşanjörde baffle (şaşırtma) plakalarının görevi nedir?", options: ["Akışı tümüyle durdurmak için", "Boruları doğrudan soğutmak için", "Kabukta çapraz akış oluşturmak", "Sistem basıncını düşürmek için"], correctAnswer: 2, explanation: "Baffle plakaları kabuk tarafında çapraz akış oluşturarak ısı transferini artırır; boru demeti üzerinden iki akışkan ayrı geçer." },
+      { id: 2, sectionRef: "Yapı", category: MAK, question: "Aşağıdakilerden hangisi tipik olarak kabuk-boru tipinde üretilir?", options: ["Yalnızca plakalı filtre üniteleri", "Pervane göbeği ve kanat yapısı", "Dümen yelpazesi ve rot düzeni", "Buhar kondenser ve yağ soğutucu"], correctAnswer: 3, explanation: "Buhar kondenserler, yağ soğutucular ve yakıt ısıtıcıları kabuk-boru tipinde üretilir." },
     ],
   },
   {
@@ -3632,8 +3612,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Fouling ve temizlik etkileri",
     blocks: [{ sectionTitles: ["Fouling Tipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Fouling Tipleri", category: MAK, question: "Deniz suyu tarafında en yaygın fouling türü nedir?", options: ["Biyolojik fouling ve mineral çökelme", "Karbon birikimi (kurum) oluşumu", "Kurum ve is tabakasının oluşumu", "Asit yoğuşması ve korozyon oluşumu"], correctAnswer: 0, explanation: "Deniz suyu tarafında biyolojik fouling ve mineral çökelme; yağ tarafında karbon/çamur; egzoz tarafında kurum ve asit yoğuşması görülür." },
-      { id: 2, sectionRef: "Fouling Tipleri", category: MAK, question: "Hangi akışkanın fouling direnci (Rf) en yüksektir?", options: ["Egzoz gazı (~0.002 m²·K/W)", "Temiz deniz suyu (~0.00009)", "Motor yağı (~0.0002)", "Hepsi eşit"], correctAnswer: 0, explanation: "Egzoz gazı en yüksek Rf (~0.002) değerine sahiptir; temiz deniz suyu en düşüktür (~0.00009)." },
+      { id: 1, sectionRef: "Fouling Tipleri", category: MAK, question: "Deniz suyu tarafında en yaygın fouling türü nedir?", options: ["Asit yoğuşması ve korozyon oluşum süreci", "Biyolojik fouling ve mineral çökelme", "Karbon birikimi (kurum) oluşumu", "Kurum ve is tabakasının oluşumu"], correctAnswer: 1, explanation: "Deniz suyu tarafında biyolojik fouling ve mineral çökelme; yağ tarafında karbon/çamur; egzoz tarafında kurum ve asit yoğuşması görülür." },
+      { id: 2, sectionRef: "Fouling Tipleri", category: MAK, question: "Hangi akışkanın fouling direnci (Rf) en yüksektir?", options: ["Motor yağı (~0.0002)", "Hepsi eşit", "Egzoz gazı (~0.002 m²·K/W)", "Temiz deniz suyu (~0.00009)"], correctAnswer: 2, explanation: "Egzoz gazı en yüksek Rf (~0.002) değerine sahiptir; temiz deniz suyu en düşüktür (~0.00009)." },
     ],
   },
   {
@@ -3641,8 +3621,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Eşanjör verim hesapları",
     blocks: [{ sectionTitles: ["NTU-Etkinlik Yöntemi"] }],
     questions: [
-      { id: 1, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "Eşanjör etkinliği (ε) nasıl tanımlanır?", options: ["Gerçek transferin maksimuma oranı", "U ile A değerinin çarpımı (U×A)", "LMTD ile debinin çarpımı değeri", "Yalnızca NTU değerinin kendisi"], correctAnswer: 0, explanation: "ε = Qgerçek/Qmax; Qmax = Cmin×(Th,giriş − Tc,giriş). NTU = UA/Cmin'dir." },
-      { id: 2, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "NTU arttıkça eşanjör etkinliği nasıl değişir?", options: ["Artar (ancak maliyet de artar)", "Azalır (etkinlik düşmektedir)", "Hiçbir biçimde değişmemekte", "Tümüyle sıfıra inmektedir"], correctAnswer: 0, explanation: "NTU = UA/Cmin arttıkça etkinlik artar; ancak daha büyük alan/maliyet gerektirir." },
+      { id: 1, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "Eşanjör etkinliği (ε) nasıl tanımlanır?", options: ["U ile A değerlerinin çarpımı (U×A)", "LMTD ile debinin çarpımı değeri", "Yalnızca NTU değerinin kendisi", "Gerçek transferin maksimuma oranı"], correctAnswer: 3, explanation: "ε = Qgerçek/Qmax; Qmax = Cmin×(Th,giriş − Tc,giriş). NTU = UA/Cmin'dir." },
+      { id: 2, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "NTU arttıkça eşanjör etkinliği nasıl değişir?", options: ["Tümüyle sıfıra inmektedir", "Artar (ancak maliyet de artar)", "Azalır (etkinlik düşüş göstermekte)", "Hiçbir biçimde değişmemekte"], correctAnswer: 1, explanation: "NTU = UA/Cmin arttıkça etkinlik artar; ancak daha büyük alan/maliyet gerektirir." },
     ],
   },
   {
@@ -3650,8 +3630,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Egzoz gazı ekonomizeri",
     blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Egzoz gazı ekonomizeri ne sağlar?", options: ["Egzoz ısısıyla kazan yakıtını azaltır", "Egzoz gazı basıncını artırmaktadır", "Pervane şaftını soğutup korumakta", "Yakıt deposunu doldurup beslemekte"], correctAnswer: 0, explanation: "200-350°C egzoz gazı ekonomizer borularından geçip suyu ısıtır; yardımcı kazan yakıt tüketimini azaltır." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Seyirde ana makine yükü yeterli olduğunda ekonomizer ne yapabilir?", options: ["Tüm buhar ihtiyacını karşılayabilir", "Hiçbir işe yaramaz duruma gelir", "Ana makineyi durdurup devre dışı bırakır", "Sefer yakıt tüketimini artırmakta"], correctAnswer: 0, explanation: "Seyirde yeterli yükte ekonomizer tek başına tüm buhar ihtiyacını karşılayabilir." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Egzoz gazı ekonomizeri ne sağlar?", options: ["Pervane şaftını soğutup korumakta", "Yakıt deposunu doldurup beslemekte", "Egzoz ısısıyla kazan yakıtını azaltır", "Egzoz gazı basıncını artırmaktadır"], correctAnswer: 2, explanation: "200-350°C egzoz gazı ekonomizer borularından geçip suyu ısıtır; yardımcı kazan yakıt tüketimini azaltır." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Seyirde ana makine yükü yeterli olduğunda ekonomizer ne yapabilir?", options: ["Hiçbir işe yaramaz duruma gelir", "Ana makineyi durdurup devre dışı bırakır", "Sefer yakıt tüketimini artırmakta", "Tüm buhar ihtiyacını karşılayabilir"], correctAnswer: 3, explanation: "Seyirde yeterli yükte ekonomizer tek başına tüm buhar ihtiyacını karşılayabilir." },
     ],
   },
   {
@@ -3659,8 +3639,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Atık ısı geri kazanım sistemi (WHRS)",
     blocks: [{ sectionTitles: ["Sistem Bileşenleri"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Tipik bir WHRS hangi bileşenleri içerebilir?", options: ["Ekonomizer, güç türbini, jeneratör", "Yalnızca pervane ve şaft düzeni", "Yalnızca dümen makinesi düzeni", "Yalnızca akü grubu ve şarj cihazı"], correctAnswer: 0, explanation: "WHRS; egzoz ekonomizeri, güç türbini, buhar türbin-jeneratörü ve/veya ORC ünitesinden oluşur." },
-      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Büyük konteyner gemilerinde WHRS ne kadar ek elektrik üretebilir?", options: ["Ana makine gücünün %8-11'i kadar", "Ana makine gücünün %50'si kadar", "Ana makine gücünün %0,1'i kadar", "Hiç ek elektrik üretilememekte"], correctAnswer: 0, explanation: "WHRS, büyük konteyner gemilerinde ana makine gücünün %8-11'i kadar ek elektrik üretebilir." },
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Tipik bir WHRS hangi bileşenleri içerebilir?", options: ["Yalnızca akü grubu ve şarj cihazları", "Ekonomizer, güç türbini, jeneratör", "Yalnızca pervane ve şaft düzeni", "Yalnızca dümen makinesi düzeni"], correctAnswer: 1, explanation: "WHRS; egzoz ekonomizeri, güç türbini, buhar türbin-jeneratörü ve/veya ORC ünitesinden oluşur." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Büyük konteyner gemilerinde WHRS ne kadar ek elektrik üretebilir?", options: ["Ana makine gücünün %0,1'i kadar", "Hiç ek elektrik üretilememekte", "Ana makine gücünün %8-11'i kadar", "Ana makine gücünün tam %50'si kadar"], correctAnswer: 2, explanation: "WHRS, büyük konteyner gemilerinde ana makine gücünün %8-11'i kadar ek elektrik üretebilir." },
     ],
   },
   {
@@ -3668,8 +3648,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Buhar jeneratörü ve türbin entegrasyonu",
     blocks: [{ sectionTitles: ["Entegrasyon Yapısı"] }],
     questions: [
-      { id: 1, sectionRef: "Entegrasyon Yapısı", category: MAK, question: "Ekonomizerde üretilen buhar nasıl elektriğe çevrilir?", options: ["Buhar türbin-jeneratör setine verilir", "Doğrudan akü grubuna basılmakta", "Pervane şaftına verilip harcanır", "Yakıta karıştırılıp geri yakılır"], correctAnswer: 0, explanation: "Egzoz gazı ekonomizerinde üretilen buhar bir buhar türbin-jeneratör setine yönlendirilerek elektrik üretilir; büyük iki zamanlı motorlu gemilerde yaygındır." },
-      { id: 2, sectionRef: "Entegrasyon Yapısı", category: MAK, question: "Bu entegrasyon hangi gemilerde yaygındır?", options: ["Büyük iki zamanlı düşük devirliler", "Yalnızca yelkenli tekne türleri", "Yalnızca küçük balıkçı tekneleri", "Hiçbir gemi tipinde kullanılmaz"], correctAnswer: 0, explanation: "Buhar türbin-jeneratör entegrasyonu özellikle büyük iki zamanlı düşük devirli motorlu gemilerde yaygındır." },
+      { id: 1, sectionRef: "Entegrasyon Yapısı", category: MAK, question: "Ekonomizerde üretilen buhar nasıl elektriğe çevrilir?", options: ["Doğrudan akü grubuna basılmakta", "Pervane şaftına verilip harcanır", "Yakıta karıştırılıp geri yakılır", "Buhar türbin-jeneratör setine verilir"], correctAnswer: 3, explanation: "Egzoz gazı ekonomizerinde üretilen buhar bir buhar türbin-jeneratör setine yönlendirilerek elektrik üretilir; büyük iki zamanlı motorlu gemilerde yaygındır." },
+      { id: 2, sectionRef: "Entegrasyon Yapısı", category: MAK, question: "Bu entegrasyon hangi gemilerde yaygındır?", options: ["Hiçbir gemi tipinde kullanılmaz", "Büyük iki zamanlı düşük devirliler", "Yalnızca yelkenli tekne türleri", "Yalnızca küçük balıkçı tekne türleri"], correctAnswer: 1, explanation: "Buhar türbin-jeneratör entegrasyonu özellikle büyük iki zamanlı düşük devirli motorlu gemilerde yaygındır." },
     ],
   },
   {
@@ -3677,8 +3657,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kojenerasyon uygulamaları",
     blocks: [{ sectionTitles: ["Gemi Kojenerasyonu"] }],
     questions: [
-      { id: 1, sectionRef: "Gemi Kojenerasyonu", category: MAK, question: "Kojenerasyon ile toplam enerji kullanım verimi ne seviyeye çıkabilir?", options: ["%80'in üzerine çıkabilmektedir", "%20'nin altına inmektedir", "Tam olarak %100 olmaktadır", "Yalnızca %5 düzeyinde kalır"], correctAnswer: 0, explanation: "Atık ısıdan buhar üretip hem ısıtma hem elektrik için kullanmak kojenerasyondur; toplam verim %80'in üzerine çıkabilir." },
-      { id: 2, sectionRef: "Gemi Kojenerasyonu", category: MAK, question: "Kojenerasyondan hangi uygulama faydalanır?", options: ["Yakıt ve mahal ısıtma, tatlı su", "Pervane imalatı ve döküm işleri", "Boya kurutma ve yüzey hazırlığı", "Hiçbir uygulama yararlanmamakta"], correctAnswer: 0, explanation: "Soğuk iklimlerde yakıt ısıtma, yaşam mahalli ısıtma ve tatlı su üretimi kojenerasyondan faydalanır." },
+      { id: 1, sectionRef: "Gemi Kojenerasyonu", category: MAK, question: "Kojenerasyon ile toplam enerji kullanım verimi ne seviyeye çıkabilir?", options: ["Tam olarak %100 olmaktadır", "Yalnızca %5 düzeyinde kalır", "%80'in üzerine çıkabilmektedir", "%20'nin altına inmektedir"], correctAnswer: 2, explanation: "Atık ısıdan buhar üretip hem ısıtma hem elektrik için kullanmak kojenerasyondur; toplam verim %80'in üzerine çıkabilir." },
+      { id: 2, sectionRef: "Gemi Kojenerasyonu", category: MAK, question: "Kojenerasyondan hangi uygulama faydalanır?", options: ["Pervane imalatı ve döküm işleri", "Boya kurutma ve yüzey hazırlığı", "Hiçbir uygulama yararlanmamakta", "Yakıt ve mahal ısıtma, tatlı su"], correctAnswer: 3, explanation: "Soğuk iklimlerde yakıt ısıtma, yaşam mahalli ısıtma ve tatlı su üretimi kojenerasyondan faydalanır." },
     ],
   },
   {
@@ -3686,8 +3666,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Enerji dönüşüm verimi ve kayıp analizi",
     blocks: [{ sectionTitles: ["Enerji Akışı ve Kayıplar"] }],
     questions: [
-      { id: 1, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "İki zamanlı deniz dizel motorunda yakıt enerjisinin yaklaşık ne kadarı şaft gücüne dönüşür?", options: ["%48-52 (yaklaşık yarısı kadar)", "%10 (çok küçük bir bölümü)", "%90 (neredeyse tamamı kadar)", "%25 (dörtte biri düzeyinde)"], correctAnswer: 0, explanation: "Yakıt enerjisinin ~%50'si şaft gücüne, ~%25'i egzoza, ~%15'i soğutma suyuna, kalanı yağ ve ışınım kayıplarına gider." },
-      { id: 2, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "Şaft gücünden sonra en büyük enerji kaybı nereye gider?", options: ["Egzoz gazına (yaklaşık %23-27)", "Yağlama yağı devresine gider", "Işınım yoluyla ortama gider", "Tatlı su devresine gitmekte"], correctAnswer: 0, explanation: "Egzoz gazı ~%23-27 ile en büyük kayıp kaynağıdır; bu yüzden WHRS/ekonomizer ile geri kazanılır." },
+      { id: 1, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "İki zamanlı deniz dizel motorunda yakıt enerjisinin yaklaşık ne kadarı şaft gücüne dönüşür?", options: ["%25 (dörtte biri düzeyinde)", "%48-52 (yaklaşık yarısı kadar)", "%10 (çok küçük bir bölümü)", "%90 (neredeyse tamamına yakın kadar)"], correctAnswer: 1, explanation: "Yakıt enerjisinin ~%50'si şaft gücüne, ~%25'i egzoza, ~%15'i soğutma suyuna, kalanı yağ ve ışınım kayıplarına gider." },
+      { id: 2, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "Şaft gücünden sonra en büyük enerji kaybı nereye gider?", options: ["Işınım yoluyla ortama gider", "Tatlı su devresine gitmekte", "Egzoz gazına (yaklaşık %23-27)", "Yağlama yağı devresine gitmektedir"], correctAnswer: 2, explanation: "Egzoz gazı ~%23-27 ile en büyük kayıp kaynağıdır; bu yüzden WHRS/ekonomizer ile geri kazanılır." },
     ],
   },
   {
@@ -3695,8 +3675,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Basınç kavramı ve birimleri",
     blocks: [{ sectionTitles: ["Tanım ve Formül", "Birim Dönüşümleri"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Formül", category: MAK, question: "Basınç nasıl tanımlanır?", options: ["P = F/A (birim alana düşen kuvvet)", "P = F·A (kuvvet ve alan çarpımı)", "P = A/F (alan bölü kuvvet oranı)", "P = F + A (kuvvet ve alan toplamı)"], correctAnswer: 0, explanation: "Basınç P = F/A bağıntısıyla tanımlanır; SI birimi Pascal (Pa = N/m²), denizcilikte bar ve kg/cm² yaygındır." },
-      { id: 2, sectionRef: "Birim Dönüşümleri", category: MAK, question: "1 bar kaç Pascal'dır?", options: ["100 000 Pa", "1 000 Pa", "98 066 Pa", "6 894 Pa"], correctAnswer: 0, explanation: "1 bar = 10⁵ Pa = 100 000 Pa; 1 atm = 101 325 Pa, 1 psi = 6 894.76 Pa." },
+      { id: 1, sectionRef: "Tanım ve Formül", category: MAK, question: "Basınç nasıl tanımlanır?", options: ["P = F·A (kuvvet ve alan çarpımı)", "P = A/F (alan bölü kuvvet oranı)", "P = F + A (kuvvet ve alan toplamı)", "P = F/A (birim alana düşen kuvvet)"], correctAnswer: 3, explanation: "Basınç P = F/A bağıntısıyla tanımlanır; SI birimi Pascal (Pa = N/m²), denizcilikte bar ve kg/cm² yaygındır." },
+      { id: 2, sectionRef: "Birim Dönüşümleri", category: MAK, question: "1 bar kaç Pascal'dır?", options: ["6 894 Pa", "100 000 Pa", "1 000 Pa", "98 066 Pa değeri"], correctAnswer: 1, explanation: "1 bar = 10⁵ Pa = 100 000 Pa; 1 atm = 101 325 Pa, 1 psi = 6 894.76 Pa." },
     ],
   },
   {
@@ -3704,8 +3684,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hidrostatik basınç denklemleri",
     blocks: [{ sectionTitles: ["Temel Denklem"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Denklem", category: MAK, question: "Durgun akışkanda h derinliğindeki basınç nasıl bulunur?", options: ["P = P₀ + ρgh", "P = P₀ − ρgh", "P = ρg/h", "P = P₀·h"], correctAnswer: 0, explanation: "Yüzey basıncına o derinlikteki sıvı sütununun ağırlığı eklenir: P = P₀ + ρgh." },
-      { id: 2, sectionRef: "Temel Denklem", category: MAK, question: "Hidrostatik basınç derinlikle nasıl değişir?", options: ["Derinlikle doğrusal olarak artar", "Derinlik arttıkça azalmaktadır", "Derinlikten bağımsız, değişmez", "Derinliğin kareköküyle artmakta"], correctAnswer: 0, explanation: "P = P₀ + ρgh; basınç derinlik (h) ile doğrusal artar." },
+      { id: 1, sectionRef: "Temel Denklem", category: MAK, question: "Durgun akışkanda h derinliğindeki basınç nasıl bulunur?", options: ["P = ρg/h", "P = P₀·h", "P = P₀ + ρgh", "P = P₀ − ρgh"], correctAnswer: 2, explanation: "Yüzey basıncına o derinlikteki sıvı sütununun ağırlığı eklenir: P = P₀ + ρgh." },
+      { id: 2, sectionRef: "Temel Denklem", category: MAK, question: "Hidrostatik basınç derinlikle nasıl değişir?", options: ["Derinlik arttıkça azalmaktadır", "Derinlikten bağımsız, değişmez", "Derinliğin kareköküyle artmaktadır", "Derinlikle doğrusal olarak artar"], correctAnswer: 3, explanation: "P = P₀ + ρgh; basınç derinlik (h) ile doğrusal artar." },
     ],
   },
   {
@@ -3713,8 +3693,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Mutlak ve manometrik basınç",
     blocks: [{ sectionTitles: ["Tanımlar"] }],
     questions: [
-      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Mutlak basınç neye göre ölçülür?", options: ["Tam vakuma (sıfır basınca) göre", "Ortam atmosfer basıncına göre", "Deniz seviyesi basıncına göre", "Manometrenin okuduğuna göre"], correctAnswer: 0, explanation: "Mutlak basınç tam vakuma göre, manometrik basınç ise atmosfer basıncına göre ölçülür: Pmutlak = Pmanometrik + Patm." },
-      { id: 2, sectionRef: "Tanımlar", category: MAK, question: "Vakum basıncı neyi ifade eder?", options: ["Atmosfer altındaki basınçları", "Tam vakum (sıfır) değerini", "Sistemdeki en yüksek basıncı", "Değişmeyen sabit basıncı"], correctAnswer: 0, explanation: "Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır: Pvakum = Patm − Pmutlak." },
+      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Mutlak basınç neye göre ölçülür?", options: ["Manometrenin okuduğuna göre", "Tam vakuma (sıfır basınca) göre", "Ortamdaki atmosfer basıncına göre", "Deniz seviyesi basıncına göre"], correctAnswer: 1, explanation: "Mutlak basınç tam vakuma göre, manometrik basınç ise atmosfer basıncına göre ölçülür: Pmutlak = Pmanometrik + Patm." },
+      { id: 2, sectionRef: "Tanımlar", category: MAK, question: "Vakum basıncı neyi ifade eder?", options: ["Sistemdeki en yüksek basınç değerini", "Değişmeyen sabit basıncı", "Atmosfer altındaki basınçları", "Tam vakum (sıfır) değerini"], correctAnswer: 2, explanation: "Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır: Pvakum = Patm − Pmutlak." },
     ],
   },
   {
@@ -3722,8 +3702,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pascal prensibi",
     blocks: [{ sectionTitles: ["Prensip ve Uygulama"] }],
     questions: [
-      { id: 1, sectionRef: "Prensip ve Uygulama", category: MAK, question: "Pascal prensibine göre kapalı akışkana uygulanan basınç ne olur?", options: ["Her noktaya ve duvarlara eşit iletilir", "Yalnızca kabın dibine iletilmekte", "İletilmeden tümüyle kaybolmaktadır", "Yarıya inerek iletilmiş olmaktadır"], correctAnswer: 0, explanation: "Kapalı kapta durgun akışkana uygulanan basınç her noktaya eşit iletilir; bu, küçük kuvvetle büyük kuvvet üretmeyi sağlar (F₂ = F₁·A₂/A₁)." },
-      { id: 2, sectionRef: "Prensip ve Uygulama", category: MAK, question: "Hidrolik sistemde A₂ pistonu A₁'in 10 katıysa kuvvet nasıl değişir?", options: ["F₂ = 10·F₁ (kuvvet 10 kat büyür)", "Kuvvet hiçbir biçimde değişmez", "Kuvvet onda birine düşmektedir", "Kuvvet iki katına çıkmaktadır"], correctAnswer: 0, explanation: "F₁/A₁ = F₂/A₂ → F₂ = F₁·(A₂/A₁); alan 10 kat ise kuvvet 10 kat büyür." },
+      { id: 1, sectionRef: "Prensip ve Uygulama", category: MAK, question: "Pascal prensibine göre kapalı akışkana uygulanan basınç ne olur?", options: ["Yalnızca kabın dibine iletilmekte", "İletilmeden tümüyle kaybolmaktadır", "Yarıya inerek iletilmiş olmaktadır", "Her noktaya ve duvarlara eşit iletilir"], correctAnswer: 3, explanation: "Kapalı kapta durgun akışkana uygulanan basınç her noktaya eşit iletilir; bu, küçük kuvvetle büyük kuvvet üretmeyi sağlar (F₂ = F₁·A₂/A₁)." },
+      { id: 2, sectionRef: "Prensip ve Uygulama", category: MAK, question: "Hidrolik sistemde A₂ pistonu A₁'in 10 katıysa kuvvet nasıl değişir?", options: ["Kuvvet iki katına çıkmaktadır", "F₂ = 10·F₁ (kuvvet 10 kat büyür)", "Kuvvet hiçbir biçimde değişmemekte", "Kuvvet onda birine düşmektedir"], correctAnswer: 1, explanation: "F₁/A₁ = F₂/A₂ → F₂ = F₁·(A₂/A₁); alan 10 kat ise kuvvet 10 kat büyür." },
     ],
   },
   {
@@ -3731,8 +3711,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Düz ve eğri yüzeylere etkiyen basınç kuvveti",
     blocks: [{ sectionTitles: ["Düz Yüzeye Etki Eden Kuvvet"] }],
     questions: [
-      { id: 1, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "Düz yüzeye etkiyen toplam basınç kuvveti nasıl bulunur?", options: ["Merkez basıncı × alan (ρg·hc·A)", "Yalnızca derinlik değeriyle", "Yalnızca yüzey alanı değeriyle", "F = ρg/A (yoğunluk bölü alan)"], correctAnswer: 0, explanation: "Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile alanının çarpımıdır: F = ρg·hc·A." },
-      { id: 2, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "F = ρg·hc·A formülünde hc neyi ifade eder?", options: ["Yüzey ağırlık merkezinin derinliği", "Sıvının toplam derinlik değeri", "Yüzeyin kendi yükseklik değeri", "Yüzeydeki basınç değeri (Pa)"], correctAnswer: 0, explanation: "hc yüzeyin ağırlık (centroid) merkezinin sıvı yüzeyinden derinliğidir." },
+      { id: 1, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "Düz yüzeye etkiyen toplam basınç kuvveti nasıl bulunur?", options: ["Yalnızca yüzey alanının değeriyle", "F = ρg/A (yoğunluk bölü alan)", "Merkez basıncı × alan (ρg·hc·A)", "Yalnızca derinlik değeriyle"], correctAnswer: 2, explanation: "Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile alanının çarpımıdır: F = ρg·hc·A." },
+      { id: 2, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "F = ρg·hc·A formülünde hc neyi ifade eder?", options: ["Sıvının toplam derinlik değeri", "Yüzeyin kendi yükseklik değeri", "Yüzeydeki basınç değeri (Pa)", "Yüzey ağırlık merkezinin derinliği"], correctAnswer: 3, explanation: "hc yüzeyin ağırlık (centroid) merkezinin sıvı yüzeyinden derinliğidir." },
     ],
   },
   {
@@ -3740,8 +3720,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yüzdürme kuvveti (Arşimet)",
     blocks: [{ sectionTitles: ["Arşimet Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme (buoyancy) kuvveti neye eşittir?", options: ["Batık hacim × yoğunluk × g değeri", "Cismin kendi ağırlığına eşittir", "Yüzey alanı × basınç çarpımı", "Her koşulda sıfıra eşittir"], correctAnswer: 0, explanation: "Fb = ρakışkan × g × Vbatık; yüzdürme kuvveti taşırılan akışkanın ağırlığına eşittir." },
-      { id: 2, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme kuvveti hangi hacme bağlıdır?", options: ["Cismin batık (su altı) hacmine", "Cismin toplam hacmine her zaman", "Yüzey üstünde kalan hacme", "Hacimden tümüyle bağımsızdır"], correctAnswer: 0, explanation: "Yüzdürme kuvveti cismin batık hacmi (Vbatık) ile orantılıdır." },
+      { id: 1, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme (buoyancy) kuvveti neye eşittir?", options: ["Her koşulda sıfıra eşittir", "Batık hacim × yoğunluk × g değeri", "Cismin kendi ağırlık değerine eşittir", "Yüzey alanı × basınç çarpımı"], correctAnswer: 1, explanation: "Fb = ρakışkan × g × Vbatık; yüzdürme kuvveti taşırılan akışkanın ağırlığına eşittir." },
+      { id: 2, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme kuvveti hangi hacme bağlıdır?", options: ["Yüzey üstünde kalan hacme", "Hacimden tümüyle bağımsızdır", "Cismin batık (su altı) hacmine", "Cismin toplam hacmine her zaman"], correctAnswer: 2, explanation: "Yüzdürme kuvveti cismin batık hacmi (Vbatık) ile orantılıdır." },
     ],
   },
   {
@@ -3749,8 +3729,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Akım çizgileri ve akış tipleri",
     blocks: [{ sectionTitles: ["Akış Sınıflandırması"] }],
     questions: [
-      { id: 1, sectionRef: "Akış Sınıflandırması", category: MAK, question: "Kararlı (steady) akış neyi ifade eder?", options: ["Hızın zamanla değişmediği akışı", "Hızın konumla değişmediği akışı", "Türbülanslı akışı", "Durgun akışkanı"], correctAnswer: 0, explanation: "Kararlı akışta hız zamanla değişmez (boru hattında sabit debi); kararsızda değişir (vana açılma anı)." },
-      { id: 2, sectionRef: "Akış Sınıflandırması", category: MAK, question: "Düzgün (uniform) akışta hız neye göre değişmez?", options: ["Konuma göre", "Zamana göre", "Basınca göre", "Hiçbir şeye göre"], correctAnswer: 0, explanation: "Düzgün akışta hız konumla değişmez (sabit kesitli uzun boru); düzgün olmayanda değişir (daralan boru)." },
+      { id: 1, sectionRef: "Akış Sınıflandırması", category: MAK, question: "Kararlı (steady) akış neyi ifade eder?", options: ["Hızın konumla değişmediği akışı", "Türbülanslı akışı", "Durgun akışkanı", "Hızın zamanla değişmediği akışı"], correctAnswer: 3, explanation: "Kararlı akışta hız zamanla değişmez (boru hattında sabit debi); kararsızda değişir (vana açılma anı)." },
+      { id: 2, sectionRef: "Akış Sınıflandırması", category: MAK, question: "Düzgün (uniform) akışta hız neye göre değişmez?", options: ["Hiçbir şeye göre", "Konuma göre", "Zamana göre", "Basınca göre"], correctAnswer: 1, explanation: "Düzgün akışta hız konumla değişmez (sabit kesitli uzun boru); düzgün olmayanda değişir (daralan boru)." },
     ],
   },
   {
@@ -3758,8 +3738,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Laminer ve türbülanslı akış",
     blocks: [{ sectionTitles: ["Rejim Ayrımı"] }],
     questions: [
-      { id: 1, sectionRef: "Rejim Ayrımı", category: MAK, question: "Boru akışında laminer rejim hangi Reynolds sayısında görülür?", options: ["Re < 2300", "Re > 4000", "Re = 10000", "Re > 100000"], correctAnswer: 0, explanation: "Laminer akış Re < 2300, türbülanslı akış Re > 4000'de görülür; arası geçiş bölgesidir." },
-      { id: 2, sectionRef: "Rejim Ayrımı", category: MAK, question: "Laminer akışta hız profili nasıldır?", options: ["Parabolik", "Tamamen düz", "Sıfır", "Dairesel"], correctAnswer: 0, explanation: "Laminer akışta hız profili paraboliktir ve sürtünme düşüktür; türbülanslıda profil daha düz, sürtünme yüksektir." },
+      { id: 1, sectionRef: "Rejim Ayrımı", category: MAK, question: "Boru akışında laminer rejim hangi Reynolds sayısında görülür?", options: ["Re = 10000", "Re > 100000", "Re < 2300", "Re > 4000"], correctAnswer: 2, explanation: "Laminer akış Re < 2300, türbülanslı akış Re > 4000'de görülür; arası geçiş bölgesidir." },
+      { id: 2, sectionRef: "Rejim Ayrımı", category: MAK, question: "Laminer akışta hız profili nasıldır?", options: ["Tamamen düz", "Sıfır", "Dairesel", "Parabolik"], correctAnswer: 3, explanation: "Laminer akışta hız profili paraboliktir ve sürtünme düşüktür; türbülanslıda profil daha düz, sürtünme yüksektir." },
     ],
   },
   {
@@ -3767,8 +3747,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Süreklilik denklemi",
     blocks: [{ sectionTitles: ["Denklem"] }],
     questions: [
-      { id: 1, sectionRef: "Denklem", category: MAK, question: "Sıkıştırılamaz akışkan için süreklilik denklemi nedir?", options: ["A₁V₁ = A₂V₂ = Q (sabit debi)", "P₁ = P₂ (basınçlar eşittir)", "V₁ = V₂ (hızlar her zaman eşit)", "A₁ = A₂ (kesitler eşittir)"], correctAnswer: 0, explanation: "Sıkışmaz akışta hacimsel debi sabittir: A₁V₁ = A₂V₂ = Q." },
-      { id: 2, sectionRef: "Denklem", category: MAK, question: "Boru kesiti daralırsa akış hızı nasıl değişir?", options: ["Artar (debi sabit kaldığı için)", "Azalır (kesitle birlikte düşer)", "Hiçbir biçimde değişmemekte", "Tümüyle sıfıra inmektedir"], correctAnswer: 0, explanation: "Q = AV sabit olduğundan alan (A) azalınca hız (V) artar." },
+      { id: 1, sectionRef: "Denklem", category: MAK, question: "Sıkıştırılamaz akışkan için süreklilik denklemi nedir?", options: ["A₁ = A₂ (kesitler eşittir)", "A₁V₁ = A₂V₂ = Q (sabit debi)", "P₁ = P₂ (basınçlar eşittir)", "V₁ = V₂ (hızlar her zaman eşit)"], correctAnswer: 1, explanation: "Sıkışmaz akışta hacimsel debi sabittir: A₁V₁ = A₂V₂ = Q." },
+      { id: 2, sectionRef: "Denklem", category: MAK, question: "Boru kesiti daralırsa akış hızı nasıl değişir?", options: ["Hiçbir biçimde değişmemekte", "Tümüyle sıfıra inmektedir", "Artar (debi sabit kaldığı için)", "Azalır (kesitle birlikte düşer)"], correctAnswer: 2, explanation: "Q = AV sabit olduğundan alan (A) azalınca hız (V) artar." },
     ],
   },
   {
@@ -3776,8 +3756,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Enerji ve momentum denklemleri",
     blocks: [{ sectionTitles: ["Bernoulli (Enerji) Denklemi", "Momentum Denklemi"] }],
     questions: [
-      { id: 1, sectionRef: "Bernoulli (Enerji) Denklemi", category: MAK, question: "İdeal akışta Bernoulli denklemine göre ne sabittir?", options: ["Toplam enerji (basınç, hız, yükseklik)", "Yalnızca akışkanın basıncı sabittir", "Yalnızca akışkanın hızı sabittir", "Yalnızca akışkan sıcaklığı sabittir"], correctAnswer: 0, explanation: "İdeal akışta p/(ρg) + v²/2g + z = sabit; gerçek akışta sürtünme kaybı (hf) ve pompa eklemesi (hp) terimleri eklenir." },
-      { id: 2, sectionRef: "Momentum Denklemi", category: MAK, question: "Momentum denklemi neyi verir?", options: ["Akışkanın uyguladığı reaksiyon kuvveti", "Yalnızca akışkanın basınç değeri", "Yalnızca akışkanın hacimsel debisi", "Yalnızca akışkanın sıcaklık değeri"], correctAnswer: 0, explanation: "Kontrol hacmine giren/çıkan momentum farkı net kuvvete eşittir: ΣF = ṁ(v₂−v₁) = ρQ(v₂−v₁)." },
+      { id: 1, sectionRef: "Bernoulli (Enerji) Denklemi", category: MAK, question: "İdeal akışta Bernoulli denklemine göre ne sabittir?", options: ["Yalnızca akışkanın basıncı sabittir", "Yalnızca akışkanın hızı sabittir", "Yalnızca akışkan sıcaklığı sabittir", "Toplam enerji (basınç, hız, yükseklik)"], correctAnswer: 3, explanation: "İdeal akışta p/(ρg) + v²/2g + z = sabit; gerçek akışta sürtünme kaybı (hf) ve pompa eklemesi (hp) terimleri eklenir." },
+      { id: 2, sectionRef: "Momentum Denklemi", category: MAK, question: "Momentum denklemi neyi verir?", options: ["Yalnızca akışkanın sıcaklık değeri", "Akışkanın uyguladığı reaksiyon kuvveti", "Yalnızca akışkanın basınç değeri", "Yalnızca akışkanın hacimsel debisi"], correctAnswer: 1, explanation: "Kontrol hacmine giren/çıkan momentum farkı net kuvvete eşittir: ΣF = ṁ(v₂−v₁) = ρQ(v₂−v₁)." },
     ],
   },
   {
@@ -3785,8 +3765,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Darcy–Weisbach denklemi",
     blocks: [{ sectionTitles: ["Denklem"] }],
     questions: [
-      { id: 1, sectionRef: "Denklem", category: MAK, question: "Darcy-Weisbach denklemine göre sürtünme kaybı neye bağlıdır?", options: ["Sürtünme katsayısı, L/D ve hız karesi", "Yalnızca sistemdeki basınç değeri", "Yalnızca akışkanın sıcaklık değerine", "Yalnızca boru içindeki debi değerine"], correctAnswer: 0, explanation: "hf = f·(L/D)·(V²/2g); sürtünme kaybı boru uzunluğu/çapı, hız karesi ve sürtünme katsayısına bağlıdır." },
-      { id: 2, sectionRef: "Denklem", category: MAK, question: "Akış hızı iki katına çıkarsa sürtünme kaybı nasıl değişir?", options: ["Yaklaşık dört katına çıkar (V²)", "Yaklaşık iki katına çıkmaktadır", "Yaklaşık yarıya inmektedir", "Hiçbir biçimde değişmemekte"], correctAnswer: 0, explanation: "hf hız karesiyle (V²) orantılı olduğundan hız 2 katına çıkınca kayıp ~4 katına çıkar." },
+      { id: 1, sectionRef: "Denklem", category: MAK, question: "Darcy-Weisbach denklemine göre sürtünme kaybı neye bağlıdır?", options: ["Yalnızca akışkanın sıcaklık değerlerine", "Yalnızca boru içindeki debi değerine", "Sürtünme katsayısı, L/D ve hız karesi", "Yalnızca sistemdeki basınç değeri"], correctAnswer: 2, explanation: "hf = f·(L/D)·(V²/2g); sürtünme kaybı boru uzunluğu/çapı, hız karesi ve sürtünme katsayısına bağlıdır." },
+      { id: 2, sectionRef: "Denklem", category: MAK, question: "Akış hızı iki katına çıkarsa sürtünme kaybı nasıl değişir?", options: ["Yaklaşık iki katına çıkmaktadır", "Yaklaşık yarıya inmektedir", "Hiçbir biçimde değişmemekte", "Yaklaşık dört katına çıkar (V²)"], correctAnswer: 3, explanation: "hf hız karesiyle (V²) orantılı olduğundan hız 2 katına çıkınca kayıp ~4 katına çıkar." },
     ],
   },
   {
@@ -3794,8 +3774,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Moody diyagramı ve sürtünme katsayısı",
     blocks: [{ sectionTitles: ["Darcy-Weisbach ve Sürtünme Katsayısı", "Moody Diyagramının Kullanımı"] }],
     questions: [
-      { id: 1, sectionRef: "Darcy-Weisbach ve Sürtünme Katsayısı", category: MAK, question: "Laminer akışta sürtünme katsayısı f nasıl bulunur?", options: ["f = 64/Re (yalnızca Re'ye bağlı)", "f = ε/D (bağıl pürüzlülük oranı)", "f her koşulda sabit kalmaktadır", "f = Re/64 (ters oran değeri)"], correctAnswer: 0, explanation: "Laminer akışta (Re < 2300) f = 64/Re; türbülanslıda bağıl pürüzlülük (ε/D) belirleyici olur." },
-      { id: 2, sectionRef: "Moody Diyagramının Kullanımı", category: MAK, question: "Moody diyagramından f'i okumak için hangi değerler gerekir?", options: ["Reynolds sayısı ve bağıl pürüzlülük", "Yalnızca akışkanın sıcaklık değeri", "Yalnızca sistemdeki basınç değeri", "Yalnızca boru içindeki debi değeri"], correctAnswer: 0, explanation: "Re ve ε/D bilindiğinde f Moody diyagramından okunur; yüksek Re ve pürüzlülükte f sabitlenir (tam türbülanslı bölge)." },
+      { id: 1, sectionRef: "Darcy-Weisbach ve Sürtünme Katsayısı", category: MAK, question: "Laminer akışta sürtünme katsayısı f nasıl bulunur?", options: ["f = Re/64 (ters oran değeri)", "f = 64/Re (yalnızca Re'ye bağlı)", "f = ε/D (bağıl pürüzlülük oranı)", "f her koşulda sabit kalmaktadır"], correctAnswer: 1, explanation: "Laminer akışta (Re < 2300) f = 64/Re; türbülanslıda bağıl pürüzlülük (ε/D) belirleyici olur." },
+      { id: 2, sectionRef: "Moody Diyagramının Kullanımı", category: MAK, question: "Moody diyagramından f'i okumak için hangi değerler gerekir?", options: ["Yalnızca sistemdeki basınç değeri", "Yalnızca boru içindeki debi değeri", "Reynolds sayısı ve bağıl pürüzlülük", "Yalnızca akışkanın sıcaklık değerleri"], correctAnswer: 2, explanation: "Re ve ε/D bilindiğinde f Moody diyagramından okunur; yüksek Re ve pürüzlülükte f sabitlenir (tam türbülanslı bölge)." },
     ],
   },
   {
@@ -3803,8 +3783,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Boru çapı ve hız hesapları",
     blocks: [{ sectionTitles: ["Süreklilik Denklemi"] }],
     questions: [
-      { id: 1, sectionRef: "Süreklilik Denklemi", category: MAK, question: "Verilen debi (Q) ve hız (v) için boru çapı nasıl bulunur?", options: ["D = √(4Q/(π·v)) bağıntısıyla", "D = Q·v (çarpım değeriyle)", "D = π·Q (pi ve debi çarpımı)", "D = v/Q (hız bölü debi oranı)"], correctAnswer: 0, explanation: "Q = (π/4)D²·v olduğundan D = √(4Q/(π·v))." },
-      { id: 2, sectionRef: "Süreklilik Denklemi", category: MAK, question: "Boru çapı belirlenirken neden önerilen hız aralıkları kullanılır?", options: ["Erozyon ve basınç kaybını dengelemek", "Yalnızca estetik görünüm sağlamak", "Boru çapını küçültebilmek için", "Aslında bir önemi bulunmamakta"], correctAnswer: 0, explanation: "Emme ~1-2 m/s, basma ~2-3 m/s gibi aralıklar erozyon ve basınç kaybını dengeler; deniz suyu hatlarında erozyonu önlemek için hız sınırlıdır." },
+      { id: 1, sectionRef: "Süreklilik Denklemi", category: MAK, question: "Verilen debi (Q) ve hız (v) için boru çapı nasıl bulunur?", options: ["D = Q·v (çarpım değeriyle)", "D = π·Q (pi ve debi çarpımı)", "D = v/Q (hız bölü debi oranı)", "D = √(4Q/(π·v)) bağıntısıyla"], correctAnswer: 3, explanation: "Q = (π/4)D²·v olduğundan D = √(4Q/(π·v))." },
+      { id: 2, sectionRef: "Süreklilik Denklemi", category: MAK, question: "Boru çapı belirlenirken neden önerilen hız aralıkları kullanılır?", options: ["Aslında bir önemi bulunmamakta", "Erozyon ve basınç kaybını dengelemek", "Yalnızca estetik görünüm sağlamak", "Boru çapını küçültebilmek için"], correctAnswer: 1, explanation: "Emme ~1-2 m/s, basma ~2-3 m/s gibi aralıklar erozyon ve basınç kaybını dengeler; deniz suyu hatlarında erozyonu önlemek için hız sınırlıdır." },
     ],
   },
   {
@@ -3812,8 +3792,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Lokal kayıplar (dirsek, vana, daralma)",
     blocks: [{ sectionTitles: ["K Katsayısı Yöntemi"] }],
     questions: [
-      { id: 1, sectionRef: "K Katsayısı Yöntemi", category: MAK, question: "Yerel (lokal) kayıplar nasıl hesaplanır?", options: ["hL = K·v²/2g (armatür K katsayısı)", "hL = f·L/D (boru sürtünme kaybı)", "hL = ρgh (hidrostatik yük değeri)", "hL = 0 (hiç kayıp oluşmamakta)"], correctAnswer: 0, explanation: "Her armatür için kayıp katsayısı (K) tanımlanır ve hL = K·v²/2g ile hesaplanır; tüm K'ler toplanır." },
-      { id: 2, sectionRef: "K Katsayısı Yöntemi", category: MAK, question: "Eşdeğer boy (Le) yöntemi neyi sağlar?", options: ["Armatür kaybını düz boruya çevirme", "Sistem basıncını artırma yöntemi", "Hattaki debiyi ölçme yöntemi", "Akış hızını düşürme yöntemi"], correctAnswer: 0, explanation: "Le = K·D/f ile armatür kaybı eşdeğer boru uzunluğuna çevrilebilir." },
+      { id: 1, sectionRef: "K Katsayısı Yöntemi", category: MAK, question: "Yerel (lokal) kayıplar nasıl hesaplanır?", options: ["hL = ρgh (hidrostatik yük büyüklüğü)", "hL = 0 (hiç kayıp oluşmamakta)", "hL = K·v²/2g (armatür K katsayısı)", "hL = f·L/D (boru sürtünme kaybı)"], correctAnswer: 2, explanation: "Her armatür için kayıp katsayısı (K) tanımlanır ve hL = K·v²/2g ile hesaplanır; tüm K'ler toplanır." },
+      { id: 2, sectionRef: "K Katsayısı Yöntemi", category: MAK, question: "Eşdeğer boy (Le) yöntemi neyi sağlar?", options: ["Sistem basıncını artırma yöntemidir", "Hattaki debiyi ölçme yöntemi", "Akış hızını düşürme yöntemi", "Armatür kaybını düz boruya çevirme"], correctAnswer: 3, explanation: "Le = K·D/f ile armatür kaybı eşdeğer boru uzunluğuna çevrilebilir." },
     ],
   },
   {
@@ -3821,8 +3801,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Seri ve paralel boru sistemleri",
     blocks: [{ sectionTitles: ["Seri ve Paralel Davranış"] }],
     questions: [
-      { id: 1, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Seri bağlı borularda debi ve kayıp nasıldır?", options: ["Debi aynı; kayıplar toplanmaktadır", "Debiler toplanır; kayıp aynıdır", "Kayıp her koşulda sabit kalır", "Hattaki basınç sıfır olmaktadır"], correctAnswer: 0, explanation: "Seri bağlamada Q sabittir ve hftoplam = Σhfᵢ." },
-      { id: 2, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Paralel bağlı kollarda ne sabittir?", options: ["Her koldaki basınç kaybı (Δh) aynı", "Her koldaki debi değeri aynıdır", "Her koldaki akış hızı sabittir", "Hiçbir büyüklük sabit kalmaz"], correctAnswer: 0, explanation: "Paralel bağlamada Δh sabittir, Qtoplam = ΣQᵢ; düşük dirençli kol daha çok debi taşır." },
+      { id: 1, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Seri bağlı borularda debi ve kayıp nasıldır?", options: ["Hattaki basınç sıfır olmaktadır", "Debi aynı; kayıplar toplanmaktadır", "Debiler toplanır; kayıp aynıdır", "Kayıp her koşulda sabit kalır"], correctAnswer: 1, explanation: "Seri bağlamada Q sabittir ve hftoplam = Σhfᵢ." },
+      { id: 2, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Paralel bağlı kollarda ne sabittir?", options: ["Her koldaki akış hızı sabittir", "Hiçbir büyüklük sabit kalmaz", "Her koldaki basınç kaybı (Δh) aynı", "Her koldaki debi değeri aynıdır"], correctAnswer: 2, explanation: "Paralel bağlamada Δh sabittir, Qtoplam = ΣQᵢ; düşük dirençli kol daha çok debi taşır." },
     ],
   },
   {
@@ -3830,8 +3810,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Boru hattı tasarım prensipleri",
     blocks: [{ sectionTitles: ["Temel Tasarım Kriterleri"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Tasarım Kriterleri", category: MAK, question: "Boru hattında ısıl genleşme nasıl karşılanır?", options: ["Kompansatör (expansion bellows) ile", "Hat vanası kapatılarak önlenir", "Akış hızı artırılarak önlenir", "Hiçbir önlem alınması gerekmez"], correctAnswer: 0, explanation: "Isıl genleşme kompansatör (expansion bend/bellows) ile karşılanır; destek ve askılar titreşim/sehimi önler." },
-      { id: 2, sectionRef: "Temel Tasarım Kriterleri", category: MAK, question: "Pompa emme tarafında kavitasyonu önlemek için ne sağlanır?", options: ["Yeterli NPSH", "Yüksek hız", "Dar çap", "Açık vent yok"], correctAnswer: 0, explanation: "Emme tarafında NPSH yeterliliği sağlanarak kavitasyon önlenir; eğim, vent ve drenaj hava kilidi/tortuyu önler." },
+      { id: 1, sectionRef: "Temel Tasarım Kriterleri", category: MAK, question: "Boru hattında ısıl genleşme nasıl karşılanır?", options: ["Hat vanası kapatılarak önlenir", "Akış hızı artırılarak önlenir", "Hiçbir önlem alınması gerekmez", "Kompansatör (expansion bellows) ile"], correctAnswer: 3, explanation: "Isıl genleşme kompansatör (expansion bend/bellows) ile karşılanır; destek ve askılar titreşim/sehimi önler." },
+      { id: 2, sectionRef: "Temel Tasarım Kriterleri", category: MAK, question: "Pompa emme tarafında kavitasyonu önlemek için ne sağlanır?", options: ["Açık vent yok", "Yeterli NPSH", "Yüksek hız", "Dar çap"], correctAnswer: 1, explanation: "Emme tarafında NPSH yeterliliği sağlanarak kavitasyon önlenir; eğim, vent ve drenaj hava kilidi/tortuyu önler." },
     ],
   },
   {
@@ -3839,8 +3819,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Santrifüj pompa çalışma prensibi",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Pompa Bileşenleri"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Santrifüj pompada akışkan nasıl basınçlandırılır?", options: ["Çark dışa iter; volüt hızı basınca çevirir", "Piston ile hacimsel olarak sıkıştırılır", "Dişliler arasında taşınıp basılmakta", "Vakum oluşturulup emilerek çekilir"], correctAnswer: 0, explanation: "Akışkan çarkın merkezinden girer, merkezkaç kuvvetiyle dışa itilir ve volüt/difüzör hız enerjisini basınç enerjisine dönüştürür." },
-      { id: 2, sectionRef: "Pompa Bileşenleri", category: MAK, question: "Santrifüj pompada şaft geçiş noktasında sızdırmazlığı ne sağlar?", options: ["Mekanik salmastra (mekanik seal)", "Pompanın çarkı (impeller) yapısı", "Volüt gövde (salyangoz) yapısı", "Bağlantı flanşı ve contası"], correctAnswer: 0, explanation: "Mekanik salmastra/seal şaft geçişinde sızdırmazlık sağlar; çark enerji aktarır, volüt hızı basınca çevirir." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Santrifüj pompada akışkan nasıl basınçlandırılır?", options: ["Dişliler arasında taşınıp basılmakta", "Vakum oluşturulup emilerek çekilir", "Çark dışa iter; volüt hızı basınca çevirir", "Piston ile hacimsel olarak sıkıştırılır"], correctAnswer: 2, explanation: "Akışkan çarkın merkezinden girer, merkezkaç kuvvetiyle dışa itilir ve volüt/difüzör hız enerjisini basınç enerjisine dönüştürür." },
+      { id: 2, sectionRef: "Pompa Bileşenleri", category: MAK, question: "Santrifüj pompada şaft geçiş noktasında sızdırmazlığı ne sağlar?", options: ["Pompanın çarkı (impeller) yapısı", "Volüt gövde (salyangoz) yapısı", "Bağlantı flanşı ve contası", "Mekanik salmastra (mekanik seal)"], correctAnswer: 3, explanation: "Mekanik salmastra/seal şaft geçişinde sızdırmazlık sağlar; çark enerji aktarır, volüt hızı basınca çevirir." },
     ],
   },
   {
@@ -3848,8 +3828,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pompa karakteristik eğrileri (H-Q)",
     blocks: [{ sectionTitles: ["Temel Eğriler", "Çalışma Noktası"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Eğriler", category: MAK, question: "H-Q eğrisinde debi arttıkça basma yüksekliği nasıl değişir?", options: ["Basma yüksekliği düşer", "Basma yüksekliği artar", "Hiçbir biçimde değişmez", "Önce sıfırlanır sonra artar"], correctAnswer: 0, explanation: "H-Q eğrisinde debi (Q) arttıkça basma yüksekliği (H) düşer; en yüksek verim BEP noktasındadır." },
-      { id: 2, sectionRef: "Çalışma Noktası", category: MAK, question: "Pompanın çalışma noktası nasıl belirlenir?", options: ["Pompa ve sistem eğrilerinin kesişimi", "Yalnızca pompa eğrisinden bulunur", "Yalnızca sistem eğrisinden bulunur", "Rastgele bir noktada belirlenir"], correctAnswer: 0, explanation: "Çalışma noktası, pompa H-Q eğrisi ile sistem eğrisinin kesiştiği noktadır; BEP'ten uzaklaştıkça verim düşer, titreşim/aşınma artar." },
+      { id: 1, sectionRef: "Temel Eğriler", category: MAK, question: "H-Q eğrisinde debi arttıkça basma yüksekliği nasıl değişir?", options: ["Önce sıfırlanır sonra artar", "Basma yüksekliği düşer", "Basma yüksekliği artar", "Hiçbir biçimde değişmez"], correctAnswer: 1, explanation: "H-Q eğrisinde debi (Q) arttıkça basma yüksekliği (H) düşer; en yüksek verim BEP noktasındadır." },
+      { id: 2, sectionRef: "Çalışma Noktası", category: MAK, question: "Pompanın çalışma noktası nasıl belirlenir?", options: ["Yalnızca sistem eğrisinden bulunmakta", "Rastgele bir noktada belirlenir", "Pompa ve sistem eğrilerinin kesişimi", "Yalnızca pompa eğrisinden bulunur"], correctAnswer: 2, explanation: "Çalışma noktası, pompa H-Q eğrisi ile sistem eğrisinin kesiştiği noktadır; BEP'ten uzaklaştıkça verim düşer, titreşim/aşınma artar." },
     ],
   },
   {
@@ -3857,8 +3837,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Sistem eğrisi ve çalışma noktası",
     blocks: [{ sectionTitles: ["Sistem Eğrisi", "Çalışma Noktasının Kayması"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Eğrisi", category: MAK, question: "Sistem eğrisi hangi bileşenlerden oluşur?", options: ["Statik yük + Q² ile artan kayıplar", "Yalnızca statik yükten oluşmakta", "Yalnızca sürtünme kaybından oluşur", "Debiden bağımsız sabit bir değer"], correctAnswer: 0, explanation: "Hsistem = Hstatik + k·Q²; statik yük ile debinin karesiyle artan dinamik kayıpların toplamıdır." },
-      { id: 2, sectionRef: "Çalışma Noktasının Kayması", category: MAK, question: "Vana kısma (throttling) çalışma noktasını nasıl etkiler?", options: ["Eğriyi dikleştirir, debi düşer", "Sistem debisini belirgin artırmakta", "Sistem eğrisini düzleştirmektedir", "Çalışma noktasını hiç etkilemez"], correctAnswer: 0, explanation: "Throttling sistem eğrisini dikleştirip düşük debiye kaydırır; VFD ile devir ayarı verimli debi kontrolü sağlar." },
+      { id: 1, sectionRef: "Sistem Eğrisi", category: MAK, question: "Sistem eğrisi hangi bileşenlerden oluşur?", options: ["Yalnızca statik yükten oluşmakta", "Yalnızca sürtünme kaybından oluşur", "Debiden bağımsız sabit bir değer", "Statik yük + Q² ile artan kayıplar"], correctAnswer: 3, explanation: "Hsistem = Hstatik + k·Q²; statik yük ile debinin karesiyle artan dinamik kayıpların toplamıdır." },
+      { id: 2, sectionRef: "Çalışma Noktasının Kayması", category: MAK, question: "Vana kısma (throttling) çalışma noktasını nasıl etkiler?", options: ["Çalışma noktasını hiç etkilemez", "Eğriyi dikleştirir, debi düşer", "Sistem debisini belirgin artırmakta", "Sistem eğrisini düzleştirmektedir"], correctAnswer: 1, explanation: "Throttling sistem eğrisini dikleştirip düşük debiye kaydırır; VFD ile devir ayarı verimli debi kontrolü sağlar." },
     ],
   },
   {
@@ -3866,8 +3846,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pozitif deplasanlı pompalar (dişli, vidalı)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi ve Tipler", "Emniyet Valfi Zorunluluğu"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi ve Tipler", category: MAK, question: "Pozitif deplasmanlı pompada debi neye bağlıdır?", options: ["Devire bağlı (basınçtan bağımsız)", "Yalnızca sistem basıncına bağlı", "Yalnızca akışkan sıcaklığına bağlı", "Debi her koşulda sabit kalır"], correctAnswer: 0, explanation: "Dişli/vidalı pompalarda hacimler emmeden basmaya taşınır; debi devirle orantılıdır, basınç arttıkça debi çok az değişir." },
-      { id: 2, sectionRef: "Emniyet Valfi Zorunluluğu", category: MAK, question: "PD pompanın basma tarafında neden emniyet/by-pass valfi zorunludur?", options: ["Kapalı vanada basınç patlamaya yol açar", "Sistem debisini artırabilmek için", "Çalışma gürültüsünü azaltmak için", "Aslında gerekli bir donanım değildir"], correctAnswer: 0, explanation: "Kapalı vanaya karşı çalışmada basınç tehlikeli yükselir; bu yüzden basma tarafında mutlaka emniyet/by-pass valfi bulunur (santrifüjden temel fark)." },
+      { id: 1, sectionRef: "Çalışma Prensibi ve Tipler", category: MAK, question: "Pozitif deplasmanlı pompada debi neye bağlıdır?", options: ["Yalnızca akışkan sıcaklığına bağlı", "Debi her koşulda sabit kalır", "Devire bağlı (basınçtan bağımsız)", "Yalnızca sistem basıncına bağlı"], correctAnswer: 2, explanation: "Dişli/vidalı pompalarda hacimler emmeden basmaya taşınır; debi devirle orantılıdır, basınç arttıkça debi çok az değişir." },
+      { id: 2, sectionRef: "Emniyet Valfi Zorunluluğu", category: MAK, question: "PD pompanın basma tarafında neden emniyet/by-pass valfi zorunludur?", options: ["Sistem debisini artırabilmek için", "Çalışma gürültüsünü azaltmak için", "Aslında gerekli bir donanım değildir", "Kapalı vanada basınç patlamaya yol açar"], correctAnswer: 3, explanation: "Kapalı vanaya karşı çalışmada basınç tehlikeli yükselir; bu yüzden basma tarafında mutlaka emniyet/by-pass valfi bulunur (santrifüjden temel fark)." },
     ],
   },
   {
@@ -3875,8 +3855,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pompa seçimi ve boyutlandırma",
     blocks: [{ sectionTitles: ["Seçim Kriterleri"] }],
     questions: [
-      { id: 1, sectionRef: "Seçim Kriterleri", category: MAK, question: "Kavitasyonu önlemek için hangi koşul sağlanmalıdır?", options: ["NPSHa > NPSHr (emniyet payıyla)", "NPSHa < NPSHr olması sağlanmalı", "Debinin en yüksek düzeyde olması", "Akış hızının sıfır olması gerekir"], correctAnswer: 0, explanation: "Mevcut emme yükü (NPSHa) gereken emme yükünden (NPSHr) büyük olmalıdır; ayrıca çalışma noktası BEP'e yakın seçilir." },
-      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pompa şaft gücü nasıl hesaplanır?", options: ["Pşaft = ρ·g·Q·H / η bağıntısıyla", "P = Q + H (toplam değeriyle)", "P = η·Q (verim ve debi çarpımı)", "P = ρ/H (yoğunluk bölü yük)"], correctAnswer: 0, explanation: "Pşaft = ρ·g·Q·H/η; debi, basma yükü ve verime bağlıdır." },
+      { id: 1, sectionRef: "Seçim Kriterleri", category: MAK, question: "Kavitasyonu önlemek için hangi koşul sağlanmalıdır?", options: ["Akış hızının sıfır olması gerekir", "NPSHa > NPSHr (emniyet payıyla)", "NPSHa < NPSHr olması sağlanmalı", "Debinin en yüksek düzeyde olması"], correctAnswer: 1, explanation: "Mevcut emme yükü (NPSHa) gereken emme yükünden (NPSHr) büyük olmalıdır; ayrıca çalışma noktası BEP'e yakın seçilir." },
+      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pompa şaft gücü nasıl hesaplanır?", options: ["P = η·Q (verim ve debinin çarpımı)", "P = ρ/H (yoğunluk bölü yük)", "Pşaft = ρ·g·Q·H / η bağıntısıyla", "P = Q + H (toplam değeriyle)"], correctAnswer: 2, explanation: "Pşaft = ρ·g·Q·H/η; debi, basma yükü ve verime bağlıdır." },
     ],
   },
   {
@@ -3884,8 +3864,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Seri ve paralel pompa çalıştırma",
     blocks: [{ sectionTitles: ["Seri ve Paralel"] }],
     questions: [
-      { id: 1, sectionRef: "Seri ve Paralel", category: MAK, question: "Paralel pompa çalıştırma ne sağlar?", options: ["Aynı basma yükünde debiler toplanır", "Aynı debide basınçlar toplanmakta", "Sistem debisini yarıya indirmekte", "Sistem basıncını sıfırlamaktadır"], correctAnswer: 0, explanation: "Paralelde aynı H'de debiler toplanır (yüksek debi için); ancak sistem eğrisi dikse debi artışı sınırlıdır." },
-      { id: 2, sectionRef: "Seri ve Paralel", category: MAK, question: "Seri pompa çalıştırma hangi durumda uygundur?", options: ["Yüksek basınç isteyen sistemlerde", "Yüksek debi isteyen sistemlerde", "Düşük basınç isteyen sistemlerde", "Hiçbir sistemde uygun değildir"], correctAnswer: 0, explanation: "Seride aynı Q'da basma yükleri toplanır (Htop = ΣH); yüksek basınç gerektiren sistemler için uygundur." },
+      { id: 1, sectionRef: "Seri ve Paralel", category: MAK, question: "Paralel pompa çalıştırma ne sağlar?", options: ["Aynı debide basınçlar toplanmaktadır", "Sistem debisini yarıya indirmekte", "Sistem basıncını sıfırlamaktadır", "Aynı basma yükünde debiler toplanır"], correctAnswer: 3, explanation: "Paralelde aynı H'de debiler toplanır (yüksek debi için); ancak sistem eğrisi dikse debi artışı sınırlıdır." },
+      { id: 2, sectionRef: "Seri ve Paralel", category: MAK, question: "Seri pompa çalıştırma hangi durumda uygundur?", options: ["Hiçbir sistemde uygun değildir", "Yüksek basınç isteyen sistemlerde", "Yüksek debi isteyen sistemlerde", "Düşük basınç isteyen sistemler için"], correctAnswer: 1, explanation: "Seride aynı Q'da basma yükleri toplanır (Htop = ΣH); yüksek basınç gerektiren sistemler için uygundur." },
     ],
   },
   {
@@ -3893,8 +3873,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Balast boru sistemi",
     blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Operasyon"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "BWM Convention gereği balast sisteminde ne zorunludur?", options: ["Balast su arıtma sistemi (BWTS)", "Üçüncü bir balast pompası", "Ek bir buhar türbini ünitesi", "Fazladan bir sea chest açıklığı"], correctAnswer: 0, explanation: "Balast sistemi pompalar, sea chest, tanklar ve sensörlerden oluşur; BWM Convention gereği balast su arıtma sistemi (BWTS) zorunludur." },
-      { id: 2, sectionRef: "Operasyon", category: MAK, question: "Balast operasyonu nasıl planlanır?", options: ["Stabilite ve trim sınırları içinde", "Olabildiğince hızlı, sınır gözetmeden", "Yalnızca limanda bulunulurken", "Rastgele bir sırayla yapılarak"], correctAnswer: 0, explanation: "Yükleme/boşaltmada stabilite ve trim sınırları korunur; arıtma/değişim yapılmadan deşarj sınırlamaları uygulanır." },
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "BWM Convention gereği balast sisteminde ne zorunludur?", options: ["Ek bir buhar türbini ünitesi", "Fazladan bir sea chest açıklığı", "Balast su arıtma sistemi (BWTS)", "Üçüncü bir balast pompası"], correctAnswer: 2, explanation: "Balast sistemi pompalar, sea chest, tanklar ve sensörlerden oluşur; BWM Convention gereği balast su arıtma sistemi (BWTS) zorunludur." },
+      { id: 2, sectionRef: "Operasyon", category: MAK, question: "Balast operasyonu nasıl planlanır?", options: ["Olabildiğince hızlı, sınır gözetmeden", "Yalnızca limanda bulunulurken", "Rastgele bir sırayla yapılarak", "Stabilite ve trim sınırları içinde"], correctAnswer: 3, explanation: "Yükleme/boşaltmada stabilite ve trim sınırları korunur; arıtma/değişim yapılmadan deşarj sınırlamaları uygulanır." },
     ],
   },
   {
@@ -3902,8 +3882,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Sintine boru sistemi",
     blocks: [{ sectionTitles: ["Sistem Yapısı", "Çevre Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "SOLAS gereği sintine sisteminde ne bulunmalıdır?", options: ["İki bağımsız pompa ve acil emiş", "Tek bir sintine pompası yeterli", "Yalnızca el pompası bulunması", "Hiçbir pompa gerekmemektedir"], correctAnswer: 0, explanation: "Her bölmede sintine kuyusu, ana hat, çek valfler ve süzgeçler bulunur; SOLAS en az iki bağımsız pompa ve acil sintine emişi ister." },
-      { id: 2, sectionRef: "Çevre Gereklilikleri", category: MAK, question: "Sintine suyu denize basılmadan önce ne yapılmalıdır?", options: ["OWS'den geçirilip 15 ppm altına", "Doğrudan denize basılmaktadır", "Isıtılıp buharlaştırılmaktadır", "Renklendirilip işaretlenmekte"], correctAnswer: 0, explanation: "Sintine suyu doğrudan denize basılamaz; OWS ile 15 ppm altına indirilir ve ODMCS sürekli izleme yapar." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "SOLAS gereği sintine sisteminde ne bulunmalıdır?", options: ["Hiçbir pompa gerekmemektedir", "İki bağımsız pompa ve acil emiş", "Tek bir sintine pompası yeterli", "Yalnızca el pompası bulunması"], correctAnswer: 1, explanation: "Her bölmede sintine kuyusu, ana hat, çek valfler ve süzgeçler bulunur; SOLAS en az iki bağımsız pompa ve acil sintine emişi ister." },
+      { id: 2, sectionRef: "Çevre Gereklilikleri", category: MAK, question: "Sintine suyu denize basılmadan önce ne yapılmalıdır?", options: ["Isıtılıp buharlaştırılıp atılmaktadır", "Renklendirilip işaretlenmekte", "OWS'den geçirilip 15 ppm altına", "Doğrudan denize basılmaktadır"], correctAnswer: 2, explanation: "Sintine suyu doğrudan denize basılamaz; OWS ile 15 ppm altına indirilir ve ODMCS sürekli izleme yapar." },
     ],
   },
   {
@@ -3911,8 +3891,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Soğutma suyu sistemleri",
     blocks: [{ sectionTitles: ["Merkezi Soğutma Mimarisi", "Bileşenler ve Kontrol"] }],
     questions: [
-      { id: 1, sectionRef: "Merkezi Soğutma Mimarisi", category: MAK, question: "Merkezi soğutmada HT ve LT tatlı su devreleri neyi soğutur?", options: ["HT gömlek/kapak; LT yağ ve şarj havası", "Her ikisi de yalnızca yağı soğutur", "Her ikisi de pervane şaftını soğutur", "Hiçbir devre soğutma yapmamaktadır"], correctAnswer: 0, explanation: "HT devresi silindir gömleği/kapaklarını, LT devresi yağ/şarj havası soğutucusu ve yardımcıları soğutur; tatlı su korozyon/tuz birikimini azaltır." },
-      { id: 2, sectionRef: "Bileşenler ve Kontrol", category: MAK, question: "Soğutma suyu sıcaklığı genellikle hangi eleman ile kontrol edilir?", options: ["Üç yollu termostatik valf ile", "Manuel kelebek vana kolu ile", "Turboşarjer basıncı ile", "Buji ateşleme zamanı ile"], correctAnswer: 0, explanation: "Sıcaklık üç yollu termostatik valf ile kontrol edilir; sistemde plakalı soğutucular, genleşme tankı ve deniz suyu tarafında sea chest/filtre bulunur." },
+      { id: 1, sectionRef: "Merkezi Soğutma Mimarisi", category: MAK, question: "Merkezi soğutmada HT ve LT tatlı su devreleri neyi soğutur?", options: ["Her ikisi de yalnızca yağı soğutur", "Her ikisi de pervane şaftını soğutmakta", "Hiçbir devre soğutma yapmamaktadır", "HT gömlek/kapak; LT yağ ve şarj havası"], correctAnswer: 3, explanation: "HT devresi silindir gömleği/kapaklarını, LT devresi yağ/şarj havası soğutucusu ve yardımcıları soğutur; tatlı su korozyon/tuz birikimini azaltır." },
+      { id: 2, sectionRef: "Bileşenler ve Kontrol", category: MAK, question: "Soğutma suyu sıcaklığı genellikle hangi eleman ile kontrol edilir?", options: ["Buji ateşleme zamanı ile", "Üç yollu termostatik valf ile", "Manuel kelebek vana kolu yardımıyla", "Turboşarjer basıncı ile"], correctAnswer: 1, explanation: "Sıcaklık üç yollu termostatik valf ile kontrol edilir; sistemde plakalı soğutucular, genleşme tankı ve deniz suyu tarafında sea chest/filtre bulunur." },
     ],
   },
   {
@@ -3920,8 +3900,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt transfer ve servis hatları",
     blocks: [{ sectionTitles: ["Yakıt Akış Zinciri", "Viskozite ve Isıtma Kontrolü"] }],
     questions: [
-      { id: 1, sectionRef: "Yakıt Akış Zinciri", category: MAK, question: "Bunker tankından motora yakıtın doğru akış sırası nedir?", options: ["Bunker → çöktürme → purifier → servis", "Bunker → makine → purifier sırası", "Servis → bunker → çöktürme sırası", "Purifier → bunker → makine sırası"], correctAnswer: 0, explanation: "Bunker → transfer pompası → settling (çöktürme) → seperatör/purifier → servis tankı → booster ünitesi → makine; booster basınçlandırıp enjeksiyon viskozitesine ısıtır." },
-      { id: 2, sectionRef: "Viskozite ve Isıtma Kontrolü", category: MAK, question: "HFO enjeksiyon viskozitesi nasıl sağlanır?", options: ["Viscotherm ısıtıcıyla 10-15 cSt'ye", "Yakıtı soğutarak sağlanmaktadır", "Yakıta su ekleyerek sağlanmakta", "Hiç ısıtmadan doğrudan verilir"], correctAnswer: 0, explanation: "HFO viscotherm ile ~10-15 cSt'ye getirilir; servis tankında seviye alarmları ve hızlı kapama valfleri yangın güvenliği için bulunur." },
+      { id: 1, sectionRef: "Yakıt Akış Zinciri", category: MAK, question: "Bunker tankından motora yakıtın doğru akış sırası nedir?", options: ["Servis → bunker → çöktürme sırası", "Purifier → bunker → makine sırası", "Bunker → çöktürme → purifier → servis", "Bunker → makine → purifier sırası"], correctAnswer: 2, explanation: "Bunker → transfer pompası → settling (çöktürme) → seperatör/purifier → servis tankı → booster ünitesi → makine; booster basınçlandırıp enjeksiyon viskozitesine ısıtır." },
+      { id: 2, sectionRef: "Viskozite ve Isıtma Kontrolü", category: MAK, question: "HFO enjeksiyon viskozitesi nasıl sağlanır?", options: ["Yakıtı soğutarak sağlanmaktadır", "Yakıta su ekleyerek sağlanmakta", "Hiç ısıtmadan doğrudan verilir", "Viscotherm ısıtıcıyla 10-15 cSt'ye"], correctAnswer: 3, explanation: "HFO viscotherm ile ~10-15 cSt'ye getirilir; servis tankında seviye alarmları ve hızlı kapama valfleri yangın güvenliği için bulunur." },
     ],
   },
   {
@@ -3929,8 +3909,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Valf tipleri ve seçim kriterleri",
     blocks: [{ sectionTitles: ["Başlıca Valf Tipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Başlıca Valf Tipleri", category: MAK, question: "Akış regülasyonu (kontrol) için hangi valf uygundur?", options: ["Küresel (globe) valf", "Sürgülü (gate) valf", "Çek (check) valf", "Emniyet valfi"], correctAnswer: 0, explanation: "Globe valf akış regülasyonu için iyidir (yüksek basınç kaybı, iyi kontrol); gate valf tam açık/kapalı kapama içindir." },
-      { id: 2, sectionRef: "Başlıca Valf Tipleri", category: MAK, question: "Geri akışı (ters akışı) otomatik önleyen valf hangisidir?", options: ["Çek valf (check valve / NRV)", "Kelebek valf (butterfly valve)", "Küresel valf (globe valve)", "Sürgülü valf (gate valve)"], correctAnswer: 0, explanation: "Çek valf (NRV) tek yönlü akışa izin verip geri akışı otomatik önler; emniyet valfi aşırı basınca karşı korur." },
+      { id: 1, sectionRef: "Başlıca Valf Tipleri", category: MAK, question: "Akış regülasyonu (kontrol) için hangi valf uygundur?", options: ["Emniyet valfi", "Küresel (globe) valf", "Sürgülü (gate) tipi valf", "Çek (check) valf"], correctAnswer: 1, explanation: "Globe valf akış regülasyonu için iyidir (yüksek basınç kaybı, iyi kontrol); gate valf tam açık/kapalı kapama içindir." },
+      { id: 2, sectionRef: "Başlıca Valf Tipleri", category: MAK, question: "Geri akışı (ters akışı) otomatik önleyen valf hangisidir?", options: ["Küresel valf (globe valve)", "Sürgülü valf (gate valve)", "Çek valf (check valve / NRV)", "Kelebek valf (butterfly valve)"], correctAnswer: 2, explanation: "Çek valf (NRV) tek yönlü akışa izin verip geri akışı otomatik önler; emniyet valfi aşırı basınca karşı korur." },
     ],
   },
   {
@@ -3938,8 +3918,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Boru malzemeleri ve standartlar",
     blocks: [{ sectionTitles: ["Yaygın Malzemeler", "Standart ve Sınıf Kuralları"] }],
     questions: [
-      { id: 1, sectionRef: "Yaygın Malzemeler", category: MAK, question: "Deniz suyu hatları için tercih edilen malzeme hangisidir?", options: ["Bakır-nikel alaşımı (CuNi 90/10)", "Alaşımsız karbon çeliği borular", "Adi demir (dökme demir) borular", "Plastik PVC esaslı borular"], correctAnswer: 0, explanation: "CuNi 90/10 deniz suyu hatlarında korozyon ve marine growth direnci nedeniyle tercih edilir; yakıt/yağ/buharda karbon çeliği kullanılır." },
-      { id: 2, sectionRef: "Standart ve Sınıf Kuralları", category: MAK, question: "Borular hangi parametrelerle tanımlanır?", options: ["DN (nominal çap) ve schedule", "Yalnızca borunun dış rengi", "Yalnızca borunun uzunluğu", "Yalnızca borunun ağırlığı"], correctAnswer: 0, explanation: "Borular DN ve schedule ile tanımlanır; taşıdığı akışkana göre sınıf kurallarınca sınıflara ayrılır (yüksek risk → daha sıkı test)." },
+      { id: 1, sectionRef: "Yaygın Malzemeler", category: MAK, question: "Deniz suyu hatları için tercih edilen malzeme hangisidir?", options: ["Alaşımsız karbon çeliğinden borular", "Adi demir (dökme demir) borular", "Plastik PVC esaslı borular", "Bakır-nikel alaşımı (CuNi 90/10)"], correctAnswer: 3, explanation: "CuNi 90/10 deniz suyu hatlarında korozyon ve marine growth direnci nedeniyle tercih edilir; yakıt/yağ/buharda karbon çeliği kullanılır." },
+      { id: 2, sectionRef: "Standart ve Sınıf Kuralları", category: MAK, question: "Borular hangi parametrelerle tanımlanır?", options: ["Yalnızca borunun ağırlığı", "DN (nominal çap) ve schedule", "Yalnızca borunun dış renk kodu", "Yalnızca borunun uzunluğu"], correctAnswer: 1, explanation: "Borular DN ve schedule ile tanımlanır; taşıdığı akışkana göre sınıf kurallarınca sınıflara ayrılır (yüksek risk → daha sıkı test)." },
     ],
   },
   {
@@ -3947,8 +3927,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kayma gerilmesi",
     blocks: [{ sectionTitles: ["Tanım ve Burulma"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Burulma", category: MAK, question: "Burulma altındaki dairesel şaftta kayma gerilmesi nerede maksimumdur?", options: ["Yüzeyde (dış yarıçapta)", "Merkezde", "Her yerde eşit", "Eksende sıfır dışında belirsiz"], correctAnswer: 0, explanation: "Kayma gerilmesi yarıçapla doğru orantılı artar ve yüzeyde (r maksimum) en büyüktür: τ = T·r/J." },
-      { id: 2, sectionRef: "Tanım ve Burulma", category: MAK, question: "Doğrudan kesme gerilmesi nasıl tanımlanır?", options: ["Kuvvetin kesite oranı (τ = F/A)", "Kuvvet ile alanın çarpımı (F·A)", "Alanın kuvvete oranı (A/F)", "Her koşulda sıfır değeri"], correctAnswer: 0, explanation: "Doğrudan kesme gerilmesi τ = F/A; burulmada ise τ = T·r/J (J = πd⁴/32)." },
+      { id: 1, sectionRef: "Tanım ve Burulma", category: MAK, question: "Burulma altındaki dairesel şaftta kayma gerilmesi nerede maksimumdur?", options: ["Her yerde eşit", "Eksende sıfır dışında belirsiz", "Yüzeyde (dış yarıçapta)", "Merkezde"], correctAnswer: 2, explanation: "Kayma gerilmesi yarıçapla doğru orantılı artar ve yüzeyde (r maksimum) en büyüktür: τ = T·r/J." },
+      { id: 2, sectionRef: "Tanım ve Burulma", category: MAK, question: "Doğrudan kesme gerilmesi nasıl tanımlanır?", options: ["Kuvvet ile alanın çarpımı (F·A)", "Alanın kuvvete oranı (A/F)", "Her koşulda sıfır değeri", "Kuvvetin kesite oranı (τ = F/A)"], correctAnswer: 3, explanation: "Doğrudan kesme gerilmesi τ = F/A; burulmada ise τ = T·r/J (J = πd⁴/32)." },
     ],
   },
   {
@@ -3956,8 +3936,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Burulma gerilmesi",
     blocks: [{ sectionTitles: ["Burulma Formülü"] }],
     questions: [
-      { id: 1, sectionRef: "Burulma Formülü", category: MAK, question: "Dairesel milde burulma gerilmesi hangi formülle bulunur?", options: ["τ = T·r/J", "τ = F/A", "τ = M/I", "τ = P·V"], correctAnswer: 0, explanation: "Burulma gerilmesi τ = T·r/J; T tork, r yarıçap, J polar atalet momentidir." },
-      { id: 2, sectionRef: "Burulma Formülü", category: MAK, question: "Mil çapı artarsa aynı tork için burulma gerilmesi nasıl değişir?", options: ["Hızla azalır (J ~ d⁴ ile artar)", "Belirgin biçimde artmaktadır", "Hiçbir biçimde değişmemekte", "Doğrusal olarak artmaktadır"], correctAnswer: 0, explanation: "J = πd⁴/32 olduğundan çap arttıkça J büyür ve τ = T·r/J belirgin biçimde düşer." },
+      { id: 1, sectionRef: "Burulma Formülü", category: MAK, question: "Dairesel milde burulma gerilmesi hangi formülle bulunur?", options: ["τ = P·V", "τ = T·r/J", "τ = F/A", "τ = M/I"], correctAnswer: 1, explanation: "Burulma gerilmesi τ = T·r/J; T tork, r yarıçap, J polar atalet momentidir." },
+      { id: 2, sectionRef: "Burulma Formülü", category: MAK, question: "Mil çapı artarsa aynı tork için burulma gerilmesi nasıl değişir?", options: ["Hiçbir biçimde değişmemekte", "Doğrusal olarak artmaktadır", "Hızla azalır (J ~ d⁴ ile artar)", "Belirgin biçimde artmaktadır"], correctAnswer: 2, explanation: "J = πd⁴/32 olduğundan çap arttıkça J büyür ve τ = T·r/J belirgin biçimde düşer." },
     ],
   },
   {
@@ -3965,8 +3945,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bileşik gerilme ve Von Mises kriteri",
     blocks: [{ sectionTitles: ["Eşdeğer (Von Mises) Gerilme"] }],
     questions: [
-      { id: 1, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Düzlem gerilmede Von Mises eşdeğer gerilmesi nasıl bulunur?", options: ["σvm = √(σ² + 3τ²)", "σvm = σ + τ", "σvm = σ·τ", "σvm = √(σ² − τ²)"], correctAnswer: 0, explanation: "Normal ve kayma gerilmesi bir aradayken σvm = √(σ² + 3τ²) hesaplanır ve akma sınırıyla karşılaştırılır." },
-      { id: 2, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Von Mises kriterine göre güvenli tasarım koşulu nedir?", options: ["σvm < σakma / SF", "σvm > σakma", "σvm = σakma", "SF gerekmez"], correctAnswer: 0, explanation: "Eşdeğer gerilme, akma sınırının güvenlik katsayısına bölümünden küçük olmalıdır: σvm < σakma/SF." },
+      { id: 1, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Düzlem gerilmede Von Mises eşdeğer gerilmesi nasıl bulunur?", options: ["σvm = σ + τ", "σvm = σ·τ", "σvm = √(σ² − τ²) bağıntısı", "σvm = √(σ² + 3τ²)"], correctAnswer: 3, explanation: "Normal ve kayma gerilmesi bir aradayken σvm = √(σ² + 3τ²) hesaplanır ve akma sınırıyla karşılaştırılır." },
+      { id: 2, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Von Mises kriterine göre güvenli tasarım koşulu nedir?", options: ["SF gerekmez", "σvm < σakma / SF", "σvm > σakma", "σvm = σakma"], correctAnswer: 1, explanation: "Eşdeğer gerilme, akma sınırının güvenlik katsayısına bölümünden küçük olmalıdır: σvm < σakma/SF." },
     ],
   },
   {
@@ -3974,8 +3954,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Güvenlik katsayısı ve emniyet gerilmesi",
     blocks: [{ sectionTitles: ["Tanım ve Seçim"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Seçim", category: MAK, question: "Emniyet gerilmesi nasıl bulunur?", options: ["Akma sınırının SF'ye bölünmesiyle", "Akma sınırının SF ile çarpımıyla", "Yalnızca çalışma gerilmesi değeri", "SF'nin akmaya bölünmesiyle (SF/σ)"], correctAnswer: 0, explanation: "σemniyet = σakma/SF; SF, σakma/σçalışma oranıdır." },
-      { id: 2, sectionRef: "Tanım ve Seçim", category: MAK, question: "Güvenlik katsayısı (SF) seçiminde hangi faktör etkilidir?", options: ["Yük tipi, süneklik ve sınıf kuralları", "Yalnızca malzemenin renk kod değeri", "Yalnızca malzemenin birim fiyatı", "Hiçbir etken belirleyici değildir"], correctAnswer: 0, explanation: "SF; yük tipi, malzeme sünekliği, arızanın ciddiyeti ve sınıf kurallarına göre seçilir." },
+      { id: 1, sectionRef: "Tanım ve Seçim", category: MAK, question: "Emniyet gerilmesi nasıl bulunur?", options: ["Yalnızca çalışma gerilmesi değeri", "SF'nin akmaya bölünmesiyle (SF/σ)", "Akma sınırının SF'ye bölünmesiyle", "Akma sınırının SF ile çarpımıyla"], correctAnswer: 2, explanation: "σemniyet = σakma/SF; SF, σakma/σçalışma oranıdır." },
+      { id: 2, sectionRef: "Tanım ve Seçim", category: MAK, question: "Güvenlik katsayısı (SF) seçiminde hangi faktör etkilidir?", options: ["Yalnızca malzemenin renk kodunun değeri", "Yalnızca malzemenin birim fiyatı", "Hiçbir etken belirleyici değildir", "Yük tipi, süneklik ve sınıf kuralları"], correctAnswer: 3, explanation: "SF; yük tipi, malzeme sünekliği, arızanın ciddiyeti ve sınıf kurallarına göre seçilir." },
     ],
   },
   {
@@ -3983,8 +3963,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Mil çapı hesabı (burulma ve eğilme)",
     blocks: [{ sectionTitles: ["Bileşik Yükleme"] }],
     questions: [
-      { id: 1, sectionRef: "Bileşik Yükleme", category: MAK, question: "Gerçek çalışmada miller hangi yüklere aynı anda maruz kalır?", options: ["Hem eğilme (M) hem burulma (T)", "Yalnızca eğilme momenti (M)", "Yalnızca burulma momenti (T)", "Yalnızca eksenel çekme yükü"], correctAnswer: 0, explanation: "Miller eğilme ve burulmaya birlikte maruz kalır; eşdeğer moment veya Von Mises kriteri kullanılır." },
-      { id: 2, sectionRef: "Bileşik Yükleme", category: MAK, question: "Bileşik yüklemede mil çapı hangi büyüklüklere bağlıdır?", options: ["Eğilme, tork ve izin verilen gerilme", "Yalnızca malzemenin renk kod değeri", "Yalnızca milin toplam uzunluğu", "Yalnızca milin toplam ağırlığı"], correctAnswer: 0, explanation: "d ≥ ³√(16/(π·τizin)·√(M²+T²)); çap M, T ve τizin'e bağlıdır." },
+      { id: 1, sectionRef: "Bileşik Yükleme", category: MAK, question: "Gerçek çalışmada miller hangi yüklere aynı anda maruz kalır?", options: ["Yalnızca eksenel çekme yükü", "Hem eğilme (M) hem burulma (T)", "Yalnızca eğilme momenti (M)", "Yalnızca burulma momenti (T) değeri"], correctAnswer: 1, explanation: "Miller eğilme ve burulmaya birlikte maruz kalır; eşdeğer moment veya Von Mises kriteri kullanılır." },
+      { id: 2, sectionRef: "Bileşik Yükleme", category: MAK, question: "Bileşik yüklemede mil çapı hangi büyüklüklere bağlıdır?", options: ["Yalnızca milin toplam uzunluğu", "Yalnızca milin toplam ağırlığı", "Eğilme, tork ve izin verilen gerilme", "Yalnızca malzemenin renk kodu değeri"], correctAnswer: 2, explanation: "d ≥ ³√(16/(π·τizin)·√(M²+T²)); çap M, T ve τizin'e bağlıdır." },
     ],
   },
   {
@@ -3992,8 +3972,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pervane şaftı boyutlandırma (IACS UR M68)",
     blocks: [{ sectionTitles: ["Çap Formülünün Mantığı"] }],
     questions: [
-      { id: 1, sectionRef: "Çap Formülünün Mantığı", category: MAK, question: "Pervane şaftı esas olarak hangi yükü taşır ve çapı neye bağlıdır?", options: ["Burulma (tork); güç, devir ve malzeme", "Yalnızca eksenel yük; renge bağlı", "Yalnızca eğilme; sıcaklığa bağlı", "Hiçbir yük taşımaz; debiye bağlı"], correctAnswer: 0, explanation: "Şaft esas olarak torku taşır; tork güç/devir oranıyla artar. Kural çapı P, n, Rm ve tasarım faktörüne bağlı verir." },
-      { id: 2, sectionRef: "Çap Formülünün Mantığı", category: MAK, question: "Kuyruk şaftı neden ara şafttan daha büyük çapta olur?", options: ["Ek eğilme ve korozyon etkisi nedeniyle", "Daha hafif olabilmesi amacı taşıdığı için", "Daha ucuza mal edilebilmesi için", "Aralarında hiçbir fark bulunmaz"], correctAnswer: 0, explanation: "Kuyruk şaftı ek eğilme ve deniz suyu korozyonu nedeniyle ara şafttan daha büyük çapta tasarlanır." },
+      { id: 1, sectionRef: "Çap Formülünün Mantığı", category: MAK, question: "Pervane şaftı esas olarak hangi yükü taşır ve çapı neye bağlıdır?", options: ["Yalnızca eksenel yük; renge bağlı", "Yalnızca eğilme; sıcaklığa bağlı", "Hiçbir yük taşımaz; debiye bağlı", "Burulma (tork); güç, devir ve malzeme"], correctAnswer: 3, explanation: "Şaft esas olarak torku taşır; tork güç/devir oranıyla artar. Kural çapı P, n, Rm ve tasarım faktörüne bağlı verir." },
+      { id: 2, sectionRef: "Çap Formülünün Mantığı", category: MAK, question: "Kuyruk şaftı neden ara şafttan daha büyük çapta olur?", options: ["Aralarında hiçbir fark bulunmaz", "Ek eğilme ve korozyon etkisi nedeniyle", "Daha hafif olabilmesi amacı taşıdığı için", "Daha ucuza mal edilebilmesi için"], correctAnswer: 1, explanation: "Kuyruk şaftı ek eğilme ve deniz suyu korozyonu nedeniyle ara şafttan daha büyük çapta tasarlanır." },
     ],
   },
   {
@@ -4001,8 +3981,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ara şaft ve kıç boru şaftı",
     blocks: [{ sectionTitles: ["Şaft Hattı Bölümleri"] }],
     questions: [
-      { id: 1, sectionRef: "Şaft Hattı Bölümleri", category: MAK, question: "Ara şaftın görevi nedir?", options: ["Makine ile kuyruk şaftı arasında tork", "Pervaneyi doğrudan taşımaktadır", "Gemide elektrik enerjisi üretmektedir", "Soğutma suyunu devrede dolaştırmakta"], correctAnswer: 0, explanation: "Ara şaft makine ile kuyruk şaftı arasında torku iletir ve ara yataklarla desteklenir." },
-      { id: 2, sectionRef: "Şaft Hattı Bölümleri", category: MAK, question: "Kuyruk şaftı korozyona karşı nasıl korunur?", options: ["Koruyucu kovan (liner) ile kaplanır", "Boyanmaz", "Isıtılır", "Hiç korunmaz"], correctAnswer: 0, explanation: "Kuyruk şaftı kıç boru içinde deniz suyu/yağ ortamında döner; çoğu zaman koruyucu kovan (liner) ile kaplanarak korozyona karşı korunur." },
+      { id: 1, sectionRef: "Şaft Hattı Bölümleri", category: MAK, question: "Ara şaftın görevi nedir?", options: ["Gemide elektrik enerjisi üretmektedir", "Soğutma suyunu devrede dolaştırmakta", "Makine ile kuyruk şaftı arasında tork", "Pervaneyi doğrudan taşımaktadır"], correctAnswer: 2, explanation: "Ara şaft makine ile kuyruk şaftı arasında torku iletir ve ara yataklarla desteklenir." },
+      { id: 2, sectionRef: "Şaft Hattı Bölümleri", category: MAK, question: "Kuyruk şaftı korozyona karşı nasıl korunur?", options: ["Yalnızca boya ile korunmaktadır", "Isıtılarak korozyondan korunur", "Hiçbir biçimde korunmamaktadır", "Koruyucu kovan (liner) ile kaplanır"], correctAnswer: 3, explanation: "Kuyruk şaftı kıç boru içinde deniz suyu/yağ ortamında döner; çoğu zaman koruyucu kovan (liner) ile kaplanarak korozyona karşı korunur." },
     ],
   },
   {
@@ -4010,8 +3990,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kaymalı yatak (stern tube bearing)",
     blocks: [{ sectionTitles: ["Yağ ve Su Yağlamalı Tipler"] }],
     questions: [
-      { id: 1, sectionRef: "Yağ ve Su Yağlamalı Tipler", category: MAK, question: "Yağ yağlamalı kıç boru yatağında deniz suyunu dışarıda ne tutar?", options: ["Uçlardaki yağ keçeleri (lip seals)", "Pervane", "Filtre", "Hiçbir şey"], correctAnswer: 0, explanation: "Yağ yağlamalı sistemde beyaz metal yatak kıç boru yağıyla yağlanır; uçlardaki lip seals deniz suyunu dışarıda tutar, baş/kıç tank ile basınç kontrol edilir." },
-      { id: 2, sectionRef: "Yağ ve Su Yağlamalı Tipler", category: MAK, question: "Su yağlamalı sistemin avantajı nedir?", options: ["Çevreye yağ kaçağı riski yoktur", "Hiç aşınma olmaz", "Clearance takibi gerekmez", "Yağ tüketimi yüksektir"], correctAnswer: 0, explanation: "Su yağlamalı yatakta deniz suyu yağlar; yağ kaçağı riski yoktur ancak aşınma ve clearance takibi gerekir." },
+      { id: 1, sectionRef: "Yağ ve Su Yağlamalı Tipler", category: MAK, question: "Yağ yağlamalı kıç boru yatağında deniz suyunu dışarıda ne tutar?", options: ["Hiçbir eleman su tutmamaktadır", "Uçlardaki yağ keçeleri (lip seals)", "Pervane göbeğinin kendi yapısı", "Hattaki yağ filtresi ünitesi"], correctAnswer: 1, explanation: "Yağ yağlamalı sistemde beyaz metal yatak kıç boru yağıyla yağlanır; uçlardaki lip seals deniz suyunu dışarıda tutar, baş/kıç tank ile basınç kontrol edilir." },
+      { id: 2, sectionRef: "Yağ ve Su Yağlamalı Tipler", category: MAK, question: "Su yağlamalı sistemin avantajı nedir?", options: ["Clearance takibi gerekmez", "Yağ tüketimi yüksektir", "Çevreye yağ kaçağı riski yoktur", "Hiç aşınma olmaz"], correctAnswer: 2, explanation: "Su yağlamalı yatakta deniz suyu yağlar; yağ kaçağı riski yoktur ancak aşınma ve clearance takibi gerekir." },
     ],
   },
   {
@@ -4019,8 +3999,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Rulman seçimi ve ömür hesabı",
     blocks: [{ sectionTitles: ["L10 Ömür Formülü"] }],
     questions: [
-      { id: 1, sectionRef: "L10 Ömür Formülü", category: MAK, question: "L10 rulman ömrü neyi ifade eder?", options: ["Rulmanların %90'ının yorulmadan ulaşacağı ömür", "Tüm rulmanların ömrü", "Yağ ömrü", "Mil ömrü"], correctAnswer: 0, explanation: "L10, rulmanların %90'ının yorulma olmadan ulaşacağı ömürdür: L10 = (C/P)^p × 10⁶ devir." },
-      { id: 2, sectionRef: "L10 Ömür Formülü", category: MAK, question: "Bilyalı rulmanda yük iki katına çıkarsa ömür nasıl değişir?", options: ["Yaklaşık 1/8'ine düşer (küpsel ilişki, p=3)", "Yarıya düşer", "İki katına çıkar", "Değişmez"], correctAnswer: 0, explanation: "L10 = (C/P)³ (bilyalı p=3); yük 2 katına çıkınca ömür 1/2³ = 1/8'ine düşer." },
+      { id: 1, sectionRef: "L10 Ömür Formülü", category: MAK, question: "L10 rulman ömrü neyi ifade eder?", options: ["Tüm rulmanların ortalama ömrü", "Yağın toplam kullanım ömrü süre değeri", "Milin toplam kullanım ömrü değeri", "Rulmanların %90'ının ulaşacağı ömür"], correctAnswer: 3, explanation: "L10, rulmanların %90'ının yorulma olmadan ulaşacağı ömürdür: L10 = (C/P)^p × 10⁶ devir." },
+      { id: 2, sectionRef: "L10 Ömür Formülü", category: MAK, question: "Bilyalı rulmanda yük iki katına çıkarsa ömür nasıl değişir?", options: ["Hiçbir biçimde değişmemekte", "Yaklaşık 1/8'ine düşer (p = 3)", "Yaklaşık yarıya düşmektedir", "Yaklaşık olarak iki katına çıkmakta"], correctAnswer: 1, explanation: "L10 = (C/P)³ (bilyalı p=3); yük 2 katına çıkınca ömür 1/2³ = 1/8'ine düşer." },
     ],
   },
   {
@@ -4028,8 +4008,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Şaft hizalama (alignment)",
     blocks: [{ sectionTitles: ["Hizalama Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Hizalama Yöntemleri", category: MAK, question: "Geleneksel şaft hizalama yöntemi hangisidir?", options: ["Sag-and-gap (flanş açıklığı ve sapması) ölçümü", "Sadece gözle bakma", "Yağ analizi", "Termometre"], correctAnswer: 0, explanation: "Geleneksel sag-and-gap ve modern yatak reaksiyonu (jack-up) ölçümü kullanılır; amaç tüm yatakların kabul edilebilir reaksiyon aralığında kalmasıdır." },
-      { id: 2, sectionRef: "Hizalama Yöntemleri", category: MAK, question: "Büyük gemilerde hizalama hesabına hangi etkiler katılır?", options: ["Gövde deformasyonu ve sıcaklık etkisi", "Sadece pervane rengi", "Sadece yakıt tipi", "Hiçbiri"], correctAnswer: 0, explanation: "Büyük gemilerde gövde deformasyonu ve sıcaklık etkisi de hesaba katılır." },
+      { id: 1, sectionRef: "Hizalama Yöntemleri", category: MAK, question: "Geleneksel şaft hizalama yöntemi hangisidir?", options: ["Yağ analizi sonuçlarıyla yapılan", "Termometre okumalarıyla yapılan", "Sag-and-gap (açıklık ve sapma) ölçümü", "Yalnızca gözle bakılarak yapılan"], correctAnswer: 2, explanation: "Geleneksel sag-and-gap ve modern yatak reaksiyonu (jack-up) ölçümü kullanılır; amaç tüm yatakların kabul edilebilir reaksiyon aralığında kalmasıdır." },
+      { id: 2, sectionRef: "Hizalama Yöntemleri", category: MAK, question: "Büyük gemilerde hizalama hesabına hangi etkiler katılır?", options: ["Yalnızca pervanenin boya renk kodu", "Yalnızca kullanılan yakıtın tipi ve adı", "Hiçbir ek etki hesaba katılmamakta", "Gövde deformasyonu ve sıcaklık etkisi"], correctAnswer: 3, explanation: "Büyük gemilerde gövde deformasyonu ve sıcaklık etkisi de hesaba katılır." },
     ],
   },
   {
@@ -4037,8 +4017,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Düz dişli hesapları",
     blocks: [{ sectionTitles: ["Temel Parametreler", "Lewis Eğilme Gerilmesi"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Parametreler", category: MAK, question: "Dişli modülü (m) nasıl tanımlanır?", options: ["m = d/z (bölüm çapı / diş sayısı)", "m = d·z", "m = z/d", "m = a/2"], correctAnswer: 0, explanation: "Modül m = d/z diş büyüklüğü ölçüsüdür; bölüm çapı d = m·z, dişli oranı i = z₂/z₁ = n₁/n₂." },
-      { id: 2, sectionRef: "Lewis Eğilme Gerilmesi", category: MAK, question: "Lewis formülü dişlide neyi belirler?", options: ["Diş dibi eğilme gerilmesini (kırılma mukavemeti)", "Yağlama miktarını", "Devir sayısını", "Rengi"], correctAnswer: 0, explanation: "Lewis eğilme gerilmesi σ = Ft/(b·m·Y); diş dibi eğilme dayanımını belirler." },
+      { id: 1, sectionRef: "Temel Parametreler", category: MAK, question: "Dişli modülü (m) nasıl tanımlanır?", options: ["m = a/2 (eksen mesafesinin yarısı)", "m = d/z (bölüm çapı / diş sayısı)", "m = d·z (çap ve diş çarpımı)", "m = z/d (diş sayısı / çap)"], correctAnswer: 1, explanation: "Modül m = d/z diş büyüklüğü ölçüsüdür; bölüm çapı d = m·z, dişli oranı i = z₂/z₁ = n₁/n₂." },
+      { id: 2, sectionRef: "Lewis Eğilme Gerilmesi", category: MAK, question: "Lewis formülü dişlide neyi belirler?", options: ["Dişlinin devir sayısını belirlemekte", "Dişlinin yüzey rengini belirlemekte", "Diş dibi eğilme gerilmesini belirler", "Gereken yağlama miktarını belirler"], correctAnswer: 2, explanation: "Lewis eğilme gerilmesi σ = Ft/(b·m·Y); diş dibi eğilme dayanımını belirler." },
     ],
   },
   {
@@ -4046,8 +4026,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Helisel dişli ve pervane redüktörü",
     blocks: [{ sectionTitles: ["Helisel Dişli ve Redüksiyon"] }],
     questions: [
-      { id: 1, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Helisel dişlinin düz dişliye göre avantajı ve dezavantajı nedir?", options: ["Daha sessiz ve yüksek yük taşır; ancak eksenel itki oluşturur", "Daha gürültülü; itki yok", "Daha az yük; eksenel itki yok", "Hiç fark yok"], correctAnswer: 0, explanation: "Eğimli dişler kademeli temas sayesinde daha sessiz ve yüksek yük taşır, ancak eksenel itki oluşturur." },
-      { id: 2, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Pervane redüktörü ne işe yarar?", options: ["Motor devrini pervanenin verimli çalıştığı düşük devire indirir", "Devri artırır", "Yakıt pompalar", "Elektrik üretir"], correctAnswer: 0, explanation: "Redüksiyon oranı i = ngiriş/nçıkış; motor devrini pervanenin verimli düşük devrine indirir. Çift girişli kutular iki makineyi tek pervaneye bağlayabilir." },
+      { id: 1, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Helisel dişlinin düz dişliye göre avantajı ve dezavantajı nedir?", options: ["Daha gürültülü; eksenel itki yok", "Daha az yük; eksenel itki yoktur", "İkisi arasında hiçbir fark bulunmaz", "Sessiz ve yüksek yük; eksenel itki"], correctAnswer: 3, explanation: "Eğimli dişler kademeli temas sayesinde daha sessiz ve yüksek yük taşır, ancak eksenel itki oluşturur." },
+      { id: 2, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Pervane redüktörü ne işe yarar?", options: ["Gemide elektrik üretme görevi görür", "Motor devrini pervane devrine indirir", "Motorun devir sayısını artırıp yükseltir", "Sisteme yakıt pompalama görevi görür"], correctAnswer: 1, explanation: "Redüksiyon oranı i = ngiriş/nçıkış; motor devrini pervanenin verimli düşük devrine indirir. Çift girişli kutular iki makineyi tek pervaneye bağlayabilir." },
     ],
   },
   {
@@ -4055,8 +4035,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kayış ve zincir tahrik sistemleri",
     blocks: [{ sectionTitles: ["Karşılaştırma"] }],
     questions: [
-      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Senkron (kaymasız) tahrik için hangisi uygundur?", options: ["Zincir veya triger kayış", "Düz V-kayış", "Sürtünmeli kavrama", "Hiçbiri"], correctAnswer: 0, explanation: "Zincir kaymaz (senkron); V-kayış kayabilir, triger kayış kaymaz. Zincir yüksek yük taşır ama daha gürültülü ve yağlama ister." },
-      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Zincir tahrikin bakım ihtiyacı kayışa göre nasıldır?", options: ["Yağlama + gerginlik gerektirir (daha fazla)", "Hiç bakım istemez", "Sadece boya", "Kayıştan az"], correctAnswer: 0, explanation: "Zincir yağlama ve gerginlik ayarı gerektirir; kayış genelde sadece gerginlik ayarı ister ve daha sessizdir." },
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Senkron (kaymasız) tahrik için hangisi uygundur?", options: ["Sürtünmeli kavrama düzeneği", "Hiçbiri senkron tahrik vermez", "Zincir veya triger (dişli) kayış", "Düz V-kayış (sürtünmeli tip)"], correctAnswer: 2, explanation: "Zincir kaymaz (senkron); V-kayış kayabilir, triger kayış kaymaz. Zincir yüksek yük taşır ama daha gürültülü ve yağlama ister." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Zincir tahrikin bakım ihtiyacı kayışa göre nasıldır?", options: ["Hiçbir bakım gerektirmemekte", "Yalnızca boyanması yeterli olmaktadır", "Kayıştan daha az bakım ister", "Yağlama ve gerginlik gerektirir"], correctAnswer: 3, explanation: "Zincir yağlama ve gerginlik ayarı gerektirir; kayış genelde sadece gerginlik ayarı ister ve daha sessizdir." },
     ],
   },
   {
@@ -4064,8 +4044,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kaplin tipleri (esnek, rijit)",
     blocks: [{ sectionTitles: ["Rijit ve Esnek Kaplinler"] }],
     questions: [
-      { id: 1, sectionRef: "Rijit ve Esnek Kaplinler", category: MAK, question: "Rijit (flanşlı) kaplin hangi koşulu gerektirir?", options: ["Mükemmel hizalama (kaçıklığa izin vermez)", "Büyük kaçıklık", "Yağlama", "Esnek eleman"], correctAnswer: 0, explanation: "Rijit kaplinler hiçbir kaçıklığa izin vermez ve mükemmel hizalama gerektirir (şaft hattı flanşları)." },
-      { id: 2, sectionRef: "Rijit ve Esnek Kaplinler", category: MAK, question: "Esnek kaplinin avantajı nedir?", options: ["Kaçıklığı tolere eder, torsiyonel şokları sönümler ve titreşimi azaltır", "Hiç tork iletmez", "Hizalama gerektirir", "Daha rijittir"], correctAnswer: 0, explanation: "Esnek kaplinler (lastik/dişli/disk) açısal/paralel/eksenel kaçıklığı tolere eder, şokları sönümler ve titreşim iletimini azaltır." },
+      { id: 1, sectionRef: "Rijit ve Esnek Kaplinler", category: MAK, question: "Rijit (flanşlı) kaplin hangi koşulu gerektirir?", options: ["Esnek eleman içeriyor olması", "Mükemmel hizalama gerektirmesi", "Büyük kaçıklığa izin veriyor olması", "Sürekli yağlanması gerekmesi"], correctAnswer: 1, explanation: "Rijit kaplinler hiçbir kaçıklığa izin vermez ve mükemmel hizalama gerektirir (şaft hattı flanşları)." },
+      { id: 2, sectionRef: "Rijit ve Esnek Kaplinler", category: MAK, question: "Esnek kaplinin avantajı nedir?", options: ["Tam hizalama gerektiriyor olması hâli", "Rijit kaplinden daha katı olması", "Kaçıklığı tolere eder, şoku söner", "Hiçbir biçimde tork iletmemesi"], correctAnswer: 2, explanation: "Esnek kaplinler (lastik/dişli/disk) açısal/paralel/eksenel kaçıklığı tolere eder, şokları sönümler ve titreşim iletimini azaltır." },
     ],
   },
   {
@@ -4073,8 +4053,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kavrama (clutch) mekanizmaları",
     blocks: [{ sectionTitles: ["Kavrama Tipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Kavrama Tipleri", category: MAK, question: "Sürtünmeli (friction) kavrama ne sağlar?", options: ["Yük altında kademeli bağlanma", "Yalnız durağanda bağlanma", "Tek yön otomatik bağlanma", "Hiç bağlanmama"], correctAnswer: 0, explanation: "Sürtünmeli kavramalar (çok plakalı, hidrolik/pnömatik) yük altında kademeli bağlanma sağlar." },
-      { id: 2, sectionRef: "Kavrama Tipleri", category: MAK, question: "Pozitif (dişli/tırnak) kavrama ne zaman bağlanır?", options: ["Yalnız durağan/düşük devirde (ama kaymadan tam tork iletir)", "Her devirde", "Sadece yüksek devirde", "Bağlanmaz"], correctAnswer: 0, explanation: "Pozitif kavramalar yalnız durağan/düşük devirde bağlanır fakat kaymadan tam tork iletir; SSS/freewheel tipi tek yönde otomatik bağlanır." },
+      { id: 1, sectionRef: "Kavrama Tipleri", category: MAK, question: "Sürtünmeli (friction) kavrama ne sağlar?", options: ["Yalnız durağanda bağlanma", "Tek yön otomatik bağlanma", "Hiç bağlanmama", "Yük altında kademeli bağlanma"], correctAnswer: 3, explanation: "Sürtünmeli kavramalar (çok plakalı, hidrolik/pnömatik) yük altında kademeli bağlanma sağlar." },
+      { id: 2, sectionRef: "Kavrama Tipleri", category: MAK, question: "Pozitif (dişli/tırnak) kavrama ne zaman bağlanır?", options: ["Hiçbir koşulda bağlanamamakta", "Yalnız durağan/düşük devirde bağlanır", "Her devirde serbestçe bağlanabilir", "Yalnızca yüksek devirde bağlanır"], correctAnswer: 1, explanation: "Pozitif kavramalar yalnız durağan/düşük devirde bağlanır fakat kaymadan tam tork iletir; SSS/freewheel tipi tek yönde otomatik bağlanır." },
     ],
   },
   {
@@ -4082,8 +4062,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yorulma ömrü ve S-N eğrisi",
     blocks: [{ sectionTitles: ["S-N Eğrisi (Wöhler Eğrisi)", "Yorulma Kırılmasını Etkileyen Faktörler"] }],
     questions: [
-      { id: 1, sectionRef: "S-N Eğrisi (Wöhler Eğrisi)", category: MAK, question: "Çelikler için yorulma dayanımı çekme dayanımının yaklaşık ne kadarıdır?", options: ["%40-50'si", "%5'i", "%100'ü", "%200'ü"], correctAnswer: 0, explanation: "S-N eğrisi gerilme genliği ile kırılma çevrim sayısını gösterir; çelikte yorulma dayanımı çekme dayanımının ~%40-50'sidir." },
-      { id: 2, sectionRef: "Yorulma Kırılmasını Etkileyen Faktörler", category: MAK, question: "Deniz ortamı yorulma dayanımını nasıl etkiler?", options: ["Korozyon nedeniyle önemli ölçüde azaltır (korozyon yorulması)", "Artırır", "Etkilemez", "Sonsuz yapar"], correctAnswer: 0, explanation: "Korozyon, çentikler, pürüzlü yüzey, boyut etkisi ve yüksek sıcaklık yorulma ömrünü kısaltır; deniz ortamında korozyon yorulması belirgindir." },
+      { id: 1, sectionRef: "S-N Eğrisi (Wöhler Eğrisi)", category: MAK, question: "Çelikler için yorulma dayanımı çekme dayanımının yaklaşık ne kadarıdır?", options: ["Çekme dayanımının tam %100'ü", "Çekme dayanımının iki katı (%200)", "Çekme dayanımının %40-50'si", "Çekme dayanımının yalnızca %5'i"], correctAnswer: 2, explanation: "S-N eğrisi gerilme genliği ile kırılma çevrim sayısını gösterir; çelikte yorulma dayanımı çekme dayanımının ~%40-50'sidir." },
+      { id: 2, sectionRef: "Yorulma Kırılmasını Etkileyen Faktörler", category: MAK, question: "Deniz ortamı yorulma dayanımını nasıl etkiler?", options: ["Yorulma dayanımını artırmaktadır", "Hiçbir biçimde etkilememektedir", "Dayanımı sonsuz hâle getirmekte", "Korozyon nedeniyle belirgin azaltır"], correctAnswer: 3, explanation: "Korozyon, çentikler, pürüzlü yüzey, boyut etkisi ve yüksek sıcaklık yorulma ömrünü kısaltır; deniz ortamında korozyon yorulması belirgindir." },
     ],
   },
   {
@@ -4091,8 +4071,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yorulma sınırı ve gerilme yoğunlaşması",
     blocks: [{ sectionTitles: ["S-N Eğrisi ve Çentik Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Kesit değişimleri gerilmeyi nasıl etkiler?", options: ["Kt (stres konsantrasyon faktörü) kadar büyütür (σmax = Kt·σnominal)", "Azaltır", "Etkilemez", "Sıfırlar"], correctAnswer: 0, explanation: "Kesit değişimleri gerilmeyi Kt kadar büyütür; keskin köşe yerine kavisli geçiş (fillet) ile azaltılır." },
-      { id: 2, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Çeliklerde yorulma sınırının altındaki gerilmede ne mümkündür?", options: ["Sonsuz ömür", "Anında kırılma", "Hızlı aşınma", "Erime"], correctAnswer: 0, explanation: "Çeliklerde belirli bir gerilme genliğinin (yorulma sınırı) altında sonsuz ömür mümkündür." },
+      { id: 1, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Kesit değişimleri gerilmeyi nasıl etkiler?", options: ["Gerilmeyi tümüyle sıfırlamaktadır", "Kt katsayısı kadar büyütmektedir", "Gerilmeyi belirgin azaltmaktadır", "Gerilmeyi hiçbir biçimde etkilemez"], correctAnswer: 1, explanation: "Kesit değişimleri gerilmeyi Kt kadar büyütür; keskin köşe yerine kavisli geçiş (fillet) ile azaltılır." },
+      { id: 2, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Çeliklerde yorulma sınırının altındaki gerilmede ne mümkündür?", options: ["Hızlı aşınma", "Erime", "Sonsuz ömür", "Anında kırılma"], correctAnswer: 2, explanation: "Çeliklerde belirli bir gerilme genliğinin (yorulma sınırı) altında sonsuz ömür mümkündür." },
     ],
   },
   {
@@ -4100,8 +4080,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Torsiyonel titreşim ve barred speed range",
     blocks: [{ sectionTitles: ["Rezonans ve Yasak Bölge"] }],
     questions: [
-      { id: 1, sectionRef: "Rezonans ve Yasak Bölge", category: MAK, question: "Barred speed range (yasak devir bölgesi) neden tanımlanır?", options: ["Tahrik frekansı doğal burulma frekansına yaklaşıp rezonans/şaft kırılması riski yarattığı için", "Yakıt tasarrufu için", "Gürültü için", "Keyfi olarak"], correctAnswer: 0, explanation: "Tahrik frekansı doğal burulma frekansına yaklaşınca titreşim büyür (rezonans) ve şaft yorulabilir; bu devir aralığında sürekli çalışma yasaklanır, hızla geçilir." },
-      { id: 2, sectionRef: "Rezonans ve Yasak Bölge", category: MAK, question: "Torsiyonel titreşim genliklerini azaltmak için ne kullanılır?", options: ["Torsiyonel sönümleyici (damper)", "Daha fazla yakıt", "Ekstra pervane", "Soğutucu"], correctAnswer: 0, explanation: "Torsiyonel sönümleyici (damper) rezonans genliklerini azaltmak için kullanılır." },
+      { id: 1, sectionRef: "Rezonans ve Yasak Bölge", category: MAK, question: "Barred speed range (yasak devir bölgesi) neden tanımlanır?", options: ["Sefer boyunca yakıt tasarrufu sağlamak", "Makine gürültüsünü azaltmak", "Keyfi olarak belirlenmektedir", "Rezonans ve şaft kırılması riski"], correctAnswer: 3, explanation: "Tahrik frekansı doğal burulma frekansına yaklaşınca titreşim büyür (rezonans) ve şaft yorulabilir; bu devir aralığında sürekli çalışma yasaklanır, hızla geçilir." },
+      { id: 2, sectionRef: "Rezonans ve Yasak Bölge", category: MAK, question: "Torsiyonel titreşim genliklerini azaltmak için ne kullanılır?", options: ["Devreye ek soğutucu takılması", "Torsiyonel sönümleyici (damper)", "Motora daha fazla yakıt verilmesi", "Şafta ek bir pervane takılması"], correctAnswer: 1, explanation: "Torsiyonel sönümleyici (damper) rezonans genliklerini azaltmak için kullanılır." },
     ],
   },
   {
@@ -4109,8 +4089,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Aksiyel titreşim",
     blocks: [{ sectionTitles: ["Kaynak ve Etkiler"] }],
     questions: [
-      { id: 1, sectionRef: "Kaynak ve Etkiler", category: MAK, question: "Aksiyel (eksenel) titreşimin kaynağı nedir?", options: ["Pervane kanatlarının değişken yük altında ürettiği itki dalgalanması", "Yakıt basıncı", "Soğutma suyu", "Elektrik"], correctAnswer: 0, explanation: "Pervane kanatlarının itki dalgalanması şaftı eksenel uyarır; rezonansta thrust bearing, redüktör ve gövde aşırı yüklenir." },
-      { id: 2, sectionRef: "Kaynak ve Etkiler", category: MAK, question: "Aksiyel titreşim nasıl çözülür?", options: ["Eksenel doğal frekansı çalışma devrinden uzak tasarlamak veya eksenel damper kullanmak", "Pervaneyi büyütmek", "Yakıtı artırmak", "Hiçbir şey"], correctAnswer: 0, explanation: "Eksenel doğal frekansı çalışma devrinden uzak tasarlamak ya da eksenel damper kullanmak çözümdür." },
+      { id: 1, sectionRef: "Kaynak ve Etkiler", category: MAK, question: "Aksiyel (eksenel) titreşimin kaynağı nedir?", options: ["Soğutma suyu debisinin değişmesi", "Elektrik şebekesindeki dalgalanma", "Pervane kanatlarının itki dalgalanması", "Yakıt hattındaki basınç dalgalanma etkisi"], correctAnswer: 2, explanation: "Pervane kanatlarının itki dalgalanması şaftı eksenel uyarır; rezonansta thrust bearing, redüktör ve gövde aşırı yüklenir." },
+      { id: 2, sectionRef: "Kaynak ve Etkiler", category: MAK, question: "Aksiyel titreşim nasıl çözülür?", options: ["Pervaneyi daha da büyütüp değiştirmek", "Motora verilen yakıtı artırmak", "Hiçbir önlem alınmasına gerek yok", "Doğal frekansı devirden uzak tutmak"], correctAnswer: 3, explanation: "Eksenel doğal frekansı çalışma devrinden uzak tasarlamak ya da eksenel damper kullanmak çözümdür." },
     ],
   },
   {
@@ -4118,8 +4098,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Lateral titreşim ve kritik hız",
     blocks: [{ sectionTitles: ["Kritik Hız"] }],
     questions: [
-      { id: 1, sectionRef: "Kritik Hız", category: MAK, question: "Lateral (enine) titreşime ne yol açar?", options: ["Dengesizlik (unbalance) ve yatak esnekliği", "Yakıt kalitesi", "Soğutma", "Egzoz"], correctAnswer: 0, explanation: "Dengesizlik ve yatak esnekliği şaftı enine titreştirir; kritik hızda rezonansla sehim büyür." },
-      { id: 2, sectionRef: "Kritik Hız", category: MAK, question: "Kritik hız ile çalışma devri arasında nasıl bir ilişki istenir?", options: ["Çalışma devri kritik hızdan uzak tutulur", "Eşit olmalı", "Çalışma devri kritik hıza yakın olmalı", "İlişki yok"], correctAnswer: 0, explanation: "nkritik ∝ √(k/m); çalışma devri kritik hızdan uzak tutulur. Yatak konumu/sayısı ve şaft rijitliği kritik hızı belirler." },
+      { id: 1, sectionRef: "Kritik Hız", category: MAK, question: "Lateral (enine) titreşime ne yol açar?", options: ["Egzoz gazı basınç değişimi", "Dengesizlik ve yatak esnekliği", "Kullanılan yakıtın kalitesi", "Soğutma suyu sıcaklık farkı"], correctAnswer: 1, explanation: "Dengesizlik ve yatak esnekliği şaftı enine titreştirir; kritik hızda rezonansla sehim büyür." },
+      { id: 2, sectionRef: "Kritik Hız", category: MAK, question: "Kritik hız ile çalışma devri arasında nasıl bir ilişki istenir?", options: ["Çalışma devri kritik hıza çok yakın", "Aralarında hiçbir ilişki yoktur", "Çalışma devri kritik hızdan uzak", "İkisinin birbirine eşit olması"], correctAnswer: 2, explanation: "nkritik ∝ √(k/m); çalışma devri kritik hızdan uzak tutulur. Yatak konumu/sayısı ve şaft rijitliği kritik hızı belirler." },
     ],
   },
   {
@@ -4127,8 +4107,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Elektrik ark kaynağı (SMAW)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Elektrot Seçimi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "SMAW'da elektrot örtüsünün görevi nedir?", options: ["Erir, koruyucu gaz ve cüruf oluşturarak kaynak banyosunu atmosferden korur", "Sadece renk verir", "Akımı keser", "Hiçbir işlevi yoktur"], correctAnswer: 0, explanation: "Ark her iki metali eritir; elektrot örtüsü erir ve koruyucu gaz/cüruf ile banyoyu atmosferden korur. DCEP daha derin nüfuziyet sağlar." },
-      { id: 2, sectionRef: "Elektrot Seçimi", category: MAK, question: "Kritik birleşimlerde yüksek mukavemet için hangi elektrot tercih edilir?", options: ["E7018 (bazik, düşük hidrojen)", "E6013 (rutil)", "E6010 (selülozik)", "Hiçbiri"], correctAnswer: 0, explanation: "E7018 bazik (düşük H₂) elektrottur, yüksek mukavemet/kritik birleşimlerde kullanılır; E6010 boru kökü, E6013 genel amaçlıdır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "SMAW'da elektrot örtüsünün görevi nedir?", options: ["Yalnızca elektroda renk vermekte", "Kaynak akımını kesip sınırlamakta", "Herhangi bir işlevi bulunmamakta", "Erir; koruyucu gaz ve cüruf oluşturur"], correctAnswer: 3, explanation: "Ark her iki metali eritir; elektrot örtüsü erir ve koruyucu gaz/cüruf ile banyoyu atmosferden korur. DCEP daha derin nüfuziyet sağlar." },
+      { id: 2, sectionRef: "Elektrot Seçimi", category: MAK, question: "Kritik birleşimlerde yüksek mukavemet için hangi elektrot tercih edilir?", options: ["Hiçbiri bu iş için uygun değildir", "E7018 (bazik, düşük hidrojenli)", "E6013 (rutil örtülü elektrot)", "E6010 (selülozik elektrot)"], correctAnswer: 1, explanation: "E7018 bazik (düşük H₂) elektrottur, yüksek mukavemet/kritik birleşimlerde kullanılır; E6010 boru kökü, E6013 genel amaçlıdır." },
     ],
   },
   {
@@ -4136,8 +4116,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Gazaltı kaynağı (MIG/MAG, TIG)",
     blocks: [{ sectionTitles: ["MIG/MAG ve TIG Farkı"] }],
     questions: [
-      { id: 1, sectionRef: "MIG/MAG ve TIG Farkı", category: MAK, question: "MIG/MAG kaynağında elektrot nasıldır?", options: ["Sürekli beslenen tel elektrot (hızlı ve verimli)", "Erimeyen tungsten", "Örtülü çubuk", "Elektrot yoktur"], correctAnswer: 0, explanation: "MIG (inert gaz) ve MAG (aktif gaz) sürekli beslenen tel elektrot kullanır; hızlı ve verimlidir." },
-      { id: 2, sectionRef: "MIG/MAG ve TIG Farkı", category: MAK, question: "TIG kaynağının özelliği nedir?", options: ["Erimeyen tungsten ve ayrı dolgu teli; yavaş ama çok temiz/hassas (paslanmaz, alüminyum)", "Çok hızlı ve kaba", "Elektrot erir", "Gaz gerekmez"], correctAnswer: 0, explanation: "TIG erimeyen tungsten elektrot ve ayrı dolgu teli kullanır; yavaş ama temiz/hassas dikiş verir, ince kesit ve paslanmaz/alüminyumda idealdir." },
+      { id: 1, sectionRef: "MIG/MAG ve TIG Farkı", category: MAK, question: "MIG/MAG kaynağında elektrot nasıldır?", options: ["Örtülü çubuk elektrot türü", "Hiçbir elektrot kullanılmamaktadır", "Sürekli beslenen tel elektrot", "Erimeyen tungsten elektrot"], correctAnswer: 2, explanation: "MIG (inert gaz) ve MAG (aktif gaz) sürekli beslenen tel elektrot kullanır; hızlı ve verimlidir." },
+      { id: 2, sectionRef: "MIG/MAG ve TIG Farkı", category: MAK, question: "TIG kaynağının özelliği nedir?", options: ["Çok hızlı ancak kaba dikiş verir", "Elektrotun kendisi eriyip dolgu olur", "Koruyucu gaz gerektirmemektedir", "Erimeyen tungsten; temiz ve hassas"], correctAnswer: 3, explanation: "TIG erimeyen tungsten elektrot ve ayrı dolgu teli kullanır; yavaş ama temiz/hassas dikiş verir, ince kesit ve paslanmaz/alüminyumda idealdir." },
     ],
   },
   {
@@ -4145,8 +4125,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kaynak dikişi hesapları",
     blocks: [{ sectionTitles: ["Köşe Kaynağı Gerilmesi"] }],
     questions: [
-      { id: 1, sectionRef: "Köşe Kaynağı Gerilmesi", category: MAK, question: "Köşe kaynağında boğaz kalınlığı (a) dikiş bacağına (z) göre nedir?", options: ["a ≈ 0,707·z", "a = 2·z", "a = z", "a = z²"], correctAnswer: 0, explanation: "Köşe kaynağında boğaz kalınlığı bacağın yaklaşık 0,707 katıdır: a = 0,707·z." },
-      { id: 2, sectionRef: "Köşe Kaynağı Gerilmesi", category: MAK, question: "Köşe kaynağındaki gerilme nasıl hesaplanır?", options: ["Yük / etkin kesit alanı (τ = F/(a·L))", "Yük × alan", "Sadece bacak uzunluğu", "Yük / hacim"], correctAnswer: 0, explanation: "Gerilme, yükün etkin kesit alanına (boğaz × uzunluk) bölünmesiyle bulunur: τ = F/(a·L) ve izin verilen değerle karşılaştırılır." },
+      { id: 1, sectionRef: "Köşe Kaynağı Gerilmesi", category: MAK, question: "Köşe kaynağında boğaz kalınlığı (a) dikiş bacağına (z) göre nedir?", options: ["a = z² (bacağın karesi)", "a ≈ 0,707·z (bacak çarpanı)", "a = 2·z (bacağın tam iki katı)", "a = z (bacakla tam eşit)"], correctAnswer: 1, explanation: "Köşe kaynağında boğaz kalınlığı bacağın yaklaşık 0,707 katıdır: a = 0,707·z." },
+      { id: 2, sectionRef: "Köşe Kaynağı Gerilmesi", category: MAK, question: "Köşe kaynağındaki gerilme nasıl hesaplanır?", options: ["Yalnızca dikiş bacak uzunluğu", "Yükün hacme bölünmesi değeri", "Yük / etkin kesit (τ = F/(a·L))", "Yük ile kesit alanının çarpımı değeri"], correctAnswer: 2, explanation: "Gerilme, yükün etkin kesit alanına (boğaz × uzunluk) bölünmesiyle bulunur: τ = F/(a·L) ve izin verilen değerle karşılaştırılır." },
     ],
   },
   {
@@ -4154,8 +4134,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kaynak hataları ve muayene yöntemleri",
     blocks: [{ sectionTitles: ["Yaygın Kaynak Hataları", "NDT Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Yaygın Kaynak Hataları", category: MAK, question: "Aşağıdaki kaynak hatalarından hangisi en tehlikelidir?", options: ["Çatlak (hızlı soğuma, hidrojen, gerilme)", "Hafif renk değişimi", "Fazla parlaklık", "Düz yüzey"], correctAnswer: 0, explanation: "Çatlak en tehlikeli hatadır; gözeneklilik dayanımı düşürür, undercut çentik etkisi yaratır, nüfuziyet eksikliği mekanik kayıp verir." },
-      { id: 2, sectionRef: "NDT Yöntemleri", category: MAK, question: "İç (yüzey altı) hataları tespit için hangi yöntem kullanılır?", options: ["Ultrasonik (UT) veya radyografik (RT) muayene", "Sadece görsel (VT)", "Sadece penetrant (PT)", "Hiçbiri"], correctAnswer: 0, explanation: "UT iç hataları ve kalınlığı, RT film üzerinde iç kusurları tespit eder; VT/PT/MT ise yüzey kusurları içindir." },
+      { id: 1, sectionRef: "Yaygın Kaynak Hataları", category: MAK, question: "Aşağıdaki kaynak hatalarından hangisi en tehlikelidir?", options: ["Yüzeyde hafif renk değişimi olması", "Dikişin fazla parlak görünmesi", "Dikiş yüzeyinin düz olması hâli", "Çatlak (hidrojen ve gerilme kaynaklı)"], correctAnswer: 3, explanation: "Çatlak en tehlikeli hatadır; gözeneklilik dayanımı düşürür, undercut çentik etkisi yaratır, nüfuziyet eksikliği mekanik kayıp verir." },
+      { id: 2, sectionRef: "NDT Yöntemleri", category: MAK, question: "İç (yüzey altı) hataları tespit için hangi yöntem kullanılır?", options: ["Hiçbir yöntemle tespit edilemez", "Ultrasonik (UT) veya radyografik (RT)", "Yalnızca görsel muayene (VT) ile", "Yalnızca penetrant muayenesi (PT) yoluyla"], correctAnswer: 1, explanation: "UT iç hataları ve kalınlığı, RT film üzerinde iç kusurları tespit eder; VT/PT/MT ise yüzey kusurları içindir." },
     ],
   },
   {
@@ -4163,8 +4143,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "NDT (tahribatsız muayene) teknikleri",
     blocks: [{ sectionTitles: ["Başlıca Yöntemler"] }],
     questions: [
-      { id: 1, sectionRef: "Başlıca Yöntemler", category: MAK, question: "Manyetik parçacık (MT) yöntemi hangi malzemelerde kullanılır?", options: ["Yalnızca ferromanyetik (manyetik) malzemelerde", "Tüm malzemelerde", "Sadece plastikte", "Sadece alüminyumda"], correctAnswer: 0, explanation: "MT yüzey/yüzey altı kusurları yalnızca ferromanyetik malzemelerde tespit eder; PT iletken olmayanlar dahil yüzey çatlaklarına uygundur." },
-      { id: 2, sectionRef: "Başlıca Yöntemler", category: MAK, question: "Radyografi (RT) uygulanırken hangi önlem gerekir?", options: ["Radyasyon güvenliği", "Su soğutması", "Yağlama", "Hiçbiri"], correctAnswer: 0, explanation: "RT iç kusurları film/dijital görüntüyle tespit eder ancak radyasyon güvenliği gerektirir; UT derin ve hassastır." },
+      { id: 1, sectionRef: "Başlıca Yöntemler", category: MAK, question: "Manyetik parçacık (MT) yöntemi hangi malzemelerde kullanılır?", options: ["Yalnızca plastik malzemelerde", "Yalnızca alüminyum malzemelerde", "Yalnızca ferromanyetik malzemelerde", "Bütün malzeme türlerinde kullanılır"], correctAnswer: 2, explanation: "MT yüzey/yüzey altı kusurları yalnızca ferromanyetik malzemelerde tespit eder; PT iletken olmayanlar dahil yüzey çatlaklarına uygundur." },
+      { id: 2, sectionRef: "Başlıca Yöntemler", category: MAK, question: "Radyografi (RT) uygulanırken hangi önlem gerekir?", options: ["Sürekli su soğutması sağlanması", "Yüzeyin sürekli yağlanması", "Hiçbir önlem gerekmemektedir", "Radyasyon güvenliği önlemleri"], correctAnswer: 3, explanation: "RT iç kusurları film/dijital görüntüyle tespit eder ancak radyasyon güvenliği gerektirir; UT derin ve hassastır." },
     ],
   },
   {
@@ -4172,8 +4152,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Cıvata ve perçin bağlantıları",
     blocks: [{ sectionTitles: ["Ön Gerilme ve Tork", "Perçin Bağlantıları"] }],
     questions: [
-      { id: 1, sectionRef: "Ön Gerilme ve Tork", category: MAK, question: "Cıvatada ön gerilme (preload) neyi önler?", options: ["Bağlantının yük altında ayrılmasını ve cıvatanın yorulmasını", "Sızdırmazlığı", "Isınmayı", "Hiçbir şeyi"], correctAnswer: 0, explanation: "Ön gerilme bağlantının ayrılmasını ve cıvata yorulmasını önler; uygulanan tork ile T ≈ K·F·d ilişkisi vardır." },
-      { id: 2, sectionRef: "Perçin Bağlantıları", category: MAK, question: "Perçinli bağlantılar nasıl tasarlanır?", options: ["Kayma ve ezilme (bearing) gerilmelerine göre (kalıcı bağlantı)", "Sökülebilir olarak", "Sadece eğilmeye göre", "Hesapsız"], correctAnswer: 0, explanation: "Perçin bağlantıları kalıcıdır; kayma ve ezilme gerilmelerine göre tasarlanır. Bugün büyük ölçüde kaynak ve yüksek mukavemetli cıvatalarla yer değiştirmiştir." },
+      { id: 1, sectionRef: "Ön Gerilme ve Tork", category: MAK, question: "Cıvatada ön gerilme (preload) neyi önler?", options: ["Herhangi bir şeyi önlememektedir", "Bağlantının ayrılmasını ve yorulmayı", "Yalnızca sızdırmazlık kaybını", "Bağlantının ısınmasını önlemeyi"], correctAnswer: 1, explanation: "Ön gerilme bağlantının ayrılmasını ve cıvata yorulmasını önler; uygulanan tork ile T ≈ K·F·d ilişkisi vardır." },
+      { id: 2, sectionRef: "Perçin Bağlantıları", category: MAK, question: "Perçinli bağlantılar nasıl tasarlanır?", options: ["Yalnızca eğilme gerilmesine göre", "Hiçbir hesap yapılmadan doğrudan", "Kayma ve ezilme gerilmelerine göre", "Sökülebilir bir bağlantı olarak göre"], correctAnswer: 2, explanation: "Perçin bağlantıları kalıcıdır; kayma ve ezilme gerilmelerine göre tasarlanır. Bugün büyük ölçüde kaynak ve yüksek mukavemetli cıvatalarla yer değiştirmiştir." },
     ],
   },
   {
@@ -4181,8 +4161,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dümen kuvveti ve tork hesabı",
     blocks: [{ sectionTitles: ["Dümen Kuvveti", "Dümen Torku"] }],
     questions: [
-      { id: 1, sectionRef: "Dümen Kuvveti", category: MAK, question: "Dümen paletine etkiyen normal kuvvet neye (hız açısından) bağlıdır?", options: ["Hızın karesine (V²)", "Hıza doğrusal", "Hızdan bağımsız", "1/V'ye"], correctAnswer: 0, explanation: "Joessel formülü FN = K·A·V²·sin(α); kuvvet hız karesi, alan ve dümen açısının sinüsüyle artar." },
-      { id: 2, sectionRef: "Dümen Torku", category: MAK, question: "Dengeli (balanced) dümen oranı arttıkça gerekli tork nasıl değişir?", options: ["Azalır", "Artar", "Değişmez", "İkiye katlanır"], correctAnswer: 0, explanation: "Tork T = FN·d; dengeli dümen oranı arttıkça moment kolu küçülür ve gerekli tork azalır." },
+      { id: 1, sectionRef: "Dümen Kuvveti", category: MAK, question: "Dümen paletine etkiyen normal kuvvet neye (hız açısından) bağlıdır?", options: ["Hıza doğrusal olarak bağlıdır", "Hız değerinden bağımsızdır", "Hızın tersine (1/V) bağlıdır", "Hızın karesine (V²) bağlıdır"], correctAnswer: 3, explanation: "Joessel formülü FN = K·A·V²·sin(α); kuvvet hız karesi, alan ve dümen açısının sinüsüyle artar." },
+      { id: 2, sectionRef: "Dümen Torku", category: MAK, question: "Dengeli (balanced) dümen oranı arttıkça gerekli tork nasıl değişir?", options: ["İkiye katlanır", "Azalır", "Artar", "Değişmez"], correctAnswer: 1, explanation: "Tork T = FN·d; dengeli dümen oranı arttıkça moment kolu küçülür ve gerekli tork azalır." },
     ],
   },
   {
@@ -4190,8 +4170,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Elektro-hidrolik dümen makinesi",
     blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Elektro-hidrolik dümen makinesinde dümen milini (tiller) ne döndürür?", options: ["Çift etkili hidrolik silindir (Rapson slide veya rotary vane)", "Elektrik motoru doğrudan", "Buhar türbini", "Pervane"], correctAnswer: 0, explanation: "HPU (motor + pompa) basıncı üretir; çift etkili silindir (Rapson slide/rotary vane) tiller'ı döndürür." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Dümen istenen açıya gelince akışı ne keser?", options: ["Hunt valfi (dümen sabit kalır)", "Emniyet supabı", "Telemotor", "Pervane"], correctAnswer: 0, explanation: "Telemotor sinyali kontrol valfini sürer; dümen istenen açıya gelince hunt valfi akışı keser ve dümen sabit kalır." },
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Elektro-hidrolik dümen makinesinde dümen milini (tiller) ne döndürür?", options: ["Küçük bir buhar türbini düzeneği", "Pervanenin ürettiği itki kuvveti", "Çift etkili hidrolik silindir düzeni", "Doğrudan bağlanmış bir elektrik motoru"], correctAnswer: 2, explanation: "HPU (motor + pompa) basıncı üretir; çift etkili silindir (Rapson slide/rotary vane) tiller'ı döndürür." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Dümen istenen açıya gelince akışı ne keser?", options: ["Emniyet supabı (basınç sınırı)", "Telemotor alıcı ünitesi", "Pervanenin itki kuvveti", "Hunt valfi (dümen sabit kalır)"], correctAnswer: 3, explanation: "Telemotor sinyali kontrol valfini sürer; dümen istenen açıya gelince hunt valfi akışı keser ve dümen sabit kalır." },
     ],
   },
   {
@@ -4199,8 +4179,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Telemotor sistemi",
     blocks: [{ sectionTitles: ["Hidrolik Telemotor", "Elektrik Telemotor"] }],
     questions: [
-      { id: 1, sectionRef: "Hidrolik Telemotor", category: MAK, question: "Hidrolik telemotorda köprüden sinyal nasıl iletilir?", options: ["Dümen çarkıyla dönen pistonlu pompa basınçlı yağı borularla alıcıya gönderir", "Radyo dalgasıyla", "Elektrikle", "Mekanik milli"], correctAnswer: 0, explanation: "Köprüdeki verici basınçlı yağı borularla dümen makinesindeki alıcıya iletir; basit ve güvenilirdir." },
-      { id: 2, sectionRef: "Elektrik Telemotor", category: MAK, question: "Elektrik telemotorun avantajı nedir?", options: ["Otopilot entegrasyonu daha kolaydır", "Yağ gerektirir", "Daha yavaştır", "Mekanik bağlantı şarttır"], correctAnswer: 0, explanation: "Köprü kumandası potansiyometre/synchro sinyali üretir, kabloyla iletilir ve servo valfi sürer; otopilot entegrasyonu kolaydır." },
+      { id: 1, sectionRef: "Hidrolik Telemotor", category: MAK, question: "Hidrolik telemotorda köprüden sinyal nasıl iletilir?", options: ["Mekanik mil bağlantısıyla iletilir", "Pistonlu pompa yağı borularla iletir", "Radyo dalgası üzerinden iletilmektedir", "Elektrik kablosuyla iletilmektedir"], correctAnswer: 1, explanation: "Köprüdeki verici basınçlı yağı borularla dümen makinesindeki alıcıya iletir; basit ve güvenilirdir." },
+      { id: 2, sectionRef: "Elektrik Telemotor", category: MAK, question: "Elektrik telemotorun avantajı nedir?", options: ["Belirgin biçimde daha yavaştır", "Mekanik bağlantı zorunludur", "Otopilot entegrasyonu kolaydır", "Yağ devresi gerektirmektedir"], correctAnswer: 2, explanation: "Köprü kumandası potansiyometre/synchro sinyali üretir, kabloyla iletilir ve servo valfi sürer; otopilot entegrasyonu kolaydır." },
     ],
   },
   {
@@ -4208,8 +4188,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dümen testleri ve SOLAS gereklilikleri",
     blocks: [{ sectionTitles: ["SOLAS Gereklilikleri", "Test Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "SOLAS Gereklilikleri", category: MAK, question: "Ana dümen makinesi 35°-35° dönüşü kaç saniyede yapmalıdır?", options: ["28 saniye", "60 saniye", "10 saniye", "120 saniye"], correctAnswer: 0, explanation: "Ana dümen makinesi 35° bir taraftan 35° diğer tarafa 28 saniyede dönmelidir; yedek 15°-15° için 60 saniye." },
-      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "Dümen testleri ne zaman yapılır ve nereye kaydedilir?", options: ["Kalkıştan 12 saat önce; seyir jurnalına", "Yılda bir; hiçbir yere", "Varışta; makine defterine", "Hiç test edilmez"], correctAnswer: 0, explanation: "Kalkıştan 12 saat önce dümen testleri yapılır (yedek geçiş, acil kumanda, alarm) ve SOLAS gereği seyir jurnalına kaydedilir." },
+      { id: 1, sectionRef: "SOLAS Gereklilikleri", category: MAK, question: "Ana dümen makinesi 35°-35° dönüşü kaç saniyede yapmalıdır?", options: ["60 saniye", "10 saniye", "120 saniye", "28 saniye"], correctAnswer: 3, explanation: "Ana dümen makinesi 35° bir taraftan 35° diğer tarafa 28 saniyede dönmelidir; yedek 15°-15° için 60 saniye." },
+      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "Dümen testleri ne zaman yapılır ve nereye kaydedilir?", options: ["Hiçbir zaman test edilmemektedir", "Kalkıştan 12 saat önce; seyir jurnalına", "Yılda bir kez; hiçbir yere kaydedilmemekte", "Varışta; makine defterine kaydedilir"], correctAnswer: 1, explanation: "Kalkıştan 12 saat önce dümen testleri yapılır (yedek geçiş, acil kumanda, alarm) ve SOLAS gereği seyir jurnalına kaydedilir." },
     ],
   },
   {
@@ -4217,8 +4197,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yedek dümen sistemi",
     blocks: [{ sectionTitles: ["Yedek Dümen Alternatifleri", "Geçiş Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Yedek Dümen Alternatifleri", category: MAK, question: "Ana güç kaybından sonra yedek dümen kaç saniye içinde devreye girmelidir?", options: ["45 saniye", "5 dakika", "1 saat", "Hemen değil"], correctAnswer: 0, explanation: "SOLAS gereği ana güç kaybından sonra yedek dümen 45 saniye içinde devreye girmelidir; en yaygın yöntem bağımsız ikinci HPU'dur." },
-      { id: 2, sectionRef: "Geçiş Prosedürü", category: MAK, question: "El pompasıyla dümen çevirme sırasında ne sağlanır?", options: ["Köprüüstü ile makine dairesi arasında sesli iletişim", "Otomatik seyir", "Pervane durdurma", "Yakıt değişimi"], correctAnswer: 0, explanation: "El pompasıyla çalışmada köprü ile makine dairesi arasında sesli iletişim kurulur; geçiş otomatik veya manuel olabilir." },
+      { id: 1, sectionRef: "Yedek Dümen Alternatifleri", category: MAK, question: "Ana güç kaybından sonra yedek dümen kaç saniye içinde devreye girmelidir?", options: ["1 saat", "Hemen değil", "45 saniye", "5 dakika"], correctAnswer: 2, explanation: "SOLAS gereği ana güç kaybından sonra yedek dümen 45 saniye içinde devreye girmelidir; en yaygın yöntem bağımsız ikinci HPU'dur." },
+      { id: 2, sectionRef: "Geçiş Prosedürü", category: MAK, question: "El pompasıyla dümen çevirme sırasında ne sağlanır?", options: ["Otomatik seyir moduna geçiş sağlanır", "Ana pervanenin durdurulması sağlanır", "Yakıt türü değişimi gerçekleştirilir", "Köprü ile makine arasında sesli iletişim"], correctAnswer: 3, explanation: "El pompasıyla çalışmada köprü ile makine dairesi arasında sesli iletişim kurulur; geçiş otomatik veya manuel olabilir." },
     ],
   },
   {
@@ -4226,8 +4206,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pervane verimi ve kavitasyon",
     blocks: [{ sectionTitles: ["Pervane Verimi", "Kavitasyon"] }],
     questions: [
-      { id: 1, sectionRef: "Pervane Verimi", category: MAK, question: "Toplam pervane verimi (ηD) genellikle hangi aralıktadır?", options: ["%55-75", "%5-10", "%90-99", "%100'ün üzerinde"], correctAnswer: 0, explanation: "ηD = η₀·ηH·ηR; açık su, gövde ve nispi dönme verimlerinin çarpımıyla %55-75 arasındadır." },
-      { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl oluşur?", options: ["Kanat yüzeyinde basınç buharlaşma basıncının altına düşüp buhar kabarcıkları çökünce", "Yakıt yanınca", "Su ısınınca", "Hız sıfırlanınca"], correctAnswer: 0, explanation: "Basınç buharlaşma basıncının altına düşünce oluşan kabarcıklar yüksek basınç bölgesinde çöker; erozyon, gürültü ve verim kaybı yapar." },
+      { id: 1, sectionRef: "Pervane Verimi", category: MAK, question: "Toplam pervane verimi (ηD) genellikle hangi aralıktadır?", options: ["%100'ün üzerinde", "%55-75", "%5-10", "%90-99"], correctAnswer: 1, explanation: "ηD = η₀·ηH·ηR; açık su, gövde ve nispi dönme verimlerinin çarpımıyla %55-75 arasındadır." },
+      { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl oluşur?", options: ["Deniz suyu ısındığı zaman oluşur", "Gemi hızı sıfırlandığında oluşur", "Kanatta basınç düşer, kabarcık çöker", "Silindirde yakıt yandığı zaman"], correctAnswer: 2, explanation: "Basınç buharlaşma basıncının altına düşünce oluşan kabarcıklar yüksek basınç bölgesinde çöker; erozyon, gürültü ve verim kaybı yapar." },
     ],
   },
   {
@@ -4235,8 +4215,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Şaft hattı düzeni ve bileşenleri",
     blocks: [{ sectionTitles: ["Bileşenler", "Yataklar ve İtme Yatağı"] }],
     questions: [
-      { id: 1, sectionRef: "Bileşenler", category: MAK, question: "İtme yatağının (thrust bearing) görevi nedir?", options: ["Pervane itme kuvvetini gemi yapısına aktarmak", "Yakıt basınçlandırmak", "Elektrik üretmek", "Soğutmak"], correctAnswer: 0, explanation: "Thrust bearing pervane itme kuvvetini gemi gövdesine aktarır; Michell tipi kaymalı yatak yaygındır." },
-      { id: 2, sectionRef: "Yataklar ve İtme Yatağı", category: MAK, question: "Michell (tilting-pad) itme yatağında yağ filmi nasıl oluşur?", options: ["Kendi kendine yönlenen pabuçlar hidrodinamik yağ filmi oluşturur", "Elle yağlanır", "Su ile", "Yağ filmi yoktur"], correctAnswer: 0, explanation: "Michell tipinde kendi kendine yönlenen pabuçlar hidrodinamik yağ filmi oluşturur; pabuç sıcaklığı izlenir, aşırı ısınma film kaybını gösterir." },
+      { id: 1, sectionRef: "Bileşenler", category: MAK, question: "İtme yatağının (thrust bearing) görevi nedir?", options: ["Yakıtı yüksek basınca çıkarmak", "Gemide elektrik enerjisi üretmek", "Şaft yataklarını soğutup korumak", "İtme kuvvetini gemi yapısına aktarmak"], correctAnswer: 3, explanation: "Thrust bearing pervane itme kuvvetini gemi gövdesine aktarır; Michell tipi kaymalı yatak yaygındır." },
+      { id: 2, sectionRef: "Yataklar ve İtme Yatağı", category: MAK, question: "Michell (tilting-pad) itme yatağında yağ filmi nasıl oluşur?", options: ["Hiçbir yağ filmi oluşmamaktadır", "Pabuçlar hidrodinamik yağ filmi kurar", "El pompasıyla elle yağlanmaktadır", "Deniz suyu ile yağlanıp soğutulur"], correctAnswer: 1, explanation: "Michell tipinde kendi kendine yönlenen pabuçlar hidrodinamik yağ filmi oluşturur; pabuç sıcaklığı izlenir, aşırı ısınma film kaybını gösterir." },
     ],
   },
   {
@@ -4244,8 +4224,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Stern tube yağlama ve sızdırmazlık",
     blocks: [{ sectionTitles: ["Yağ Yağlamalı Stern Tube", "Su Yağlamalı Stern Tube"] }],
     questions: [
-      { id: 1, sectionRef: "Yağ Yağlamalı Stern Tube", category: MAK, question: "Yağ yağlamalı stern tube'da deniz suyu girişi nasıl engellenir?", options: ["Header tank basınç farkıyla; lip/face seal'ler ile", "Pervane ile", "Filtre ile", "Engellenemez"], correctAnswer: 0, explanation: "Yağ tankı (header tank) basınç farkı deniz suyu girişini engeller; sızdırmazlık elemanları (lip/face seal) bulunur. Su kontaminasyonu yatak hasarı yapar." },
-      { id: 2, sectionRef: "Su Yağlamalı Stern Tube", category: MAK, question: "Su yağlamalı stern tube'un çevresel avantajı nedir?", options: ["Yağ sızıntısı riski yoktur", "Hiç aşınmaz", "Sızdırmazlık gerekmez", "Daha hızlıdır"], correctAnswer: 0, explanation: "Su yağlamalı stern tube (cutless rubber yatak) deniz suyuyla yağlanır; yağ sızıntısı riski yoktur, sızdırmazlık yalnızca makine dairesi tarafında gerekir." },
+      { id: 1, sectionRef: "Yağ Yağlamalı Stern Tube", category: MAK, question: "Yağ yağlamalı stern tube'da deniz suyu girişi nasıl engellenir?", options: ["Hattaki filtre ünitesiyle önlenir", "Hiçbir biçimde engellenememekte", "Header tank basınç farkı ve seal'ler", "Pervanenin dönüş etkisiyle önlenmekte"], correctAnswer: 2, explanation: "Yağ tankı (header tank) basınç farkı deniz suyu girişini engeller; sızdırmazlık elemanları (lip/face seal) bulunur. Su kontaminasyonu yatak hasarı yapar." },
+      { id: 2, sectionRef: "Su Yağlamalı Stern Tube", category: MAK, question: "Su yağlamalı stern tube'un çevresel avantajı nedir?", options: ["Hiçbir biçimde aşınmaması hâli", "Sızdırmazlık gerektirmemesi hâli", "Belirgin biçimde daha hızlı olması", "Yağ sızıntısı riski bulunmaması"], correctAnswer: 3, explanation: "Su yağlamalı stern tube (cutless rubber yatak) deniz suyuyla yağlanır; yağ sızıntısı riski yoktur, sızdırmazlık yalnızca makine dairesi tarafında gerekir." },
     ],
   },
   {
@@ -4253,8 +4233,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ara yatak ve trust yatak",
     blocks: [{ sectionTitles: ["Ara Yatak (Intermediate Bearing)", "Trust (İtme) Yatağı"] }],
     questions: [
-      { id: 1, sectionRef: "Ara Yatak (Intermediate Bearing)", category: MAK, question: "Ara yatak ne işe yarar ve sıcaklık alarm seviyesi nedir?", options: ["Uzun şaftın sarkmasını/titreşimini önler; ~65°C alarm, 75°C durdurma", "Pervaneyi taşır; 200°C alarm", "Elektrik üretir; alarm yok", "Yakıt ısıtır; 40°C"], correctAnswer: 0, explanation: "Ara yatak uzun şaft hatlarında sarkma/titreşimi önler (beyaz metal); 65°C alarm, 75°C durdurma seviyesi tipiktir." },
-      { id: 2, sectionRef: "Trust (İtme) Yatağı", category: MAK, question: "Büyük iki zamanlı motorlarda trust yatağı nerede bulunur?", options: ["Motor bedplate içinde entegre", "Pervane göbeğinde", "Köprüüstünde", "Yakıt tankında"], correctAnswer: 0, explanation: "Michell tipi trust yatağı en yaygındır; büyük iki zamanlı motorlarda motor bedplate içinde entegredir ve itmeyi gemi yapısına aktarır." },
+      { id: 1, sectionRef: "Ara Yatak (Intermediate Bearing)", category: MAK, question: "Ara yatak ne işe yarar ve sıcaklık alarm seviyesi nedir?", options: ["Yakıt ısıtır; 40°C alarm verir", "Sarkmayı önler; 65°C alarm, 75°C stop", "Pervaneyi taşır; 200°C alarm verir", "Elektrik üretir; alarm bulunmaz"], correctAnswer: 1, explanation: "Ara yatak uzun şaft hatlarında sarkma/titreşimi önler (beyaz metal); 65°C alarm, 75°C durdurma seviyesi tipiktir." },
+      { id: 2, sectionRef: "Trust (İtme) Yatağı", category: MAK, question: "Büyük iki zamanlı motorlarda trust yatağı nerede bulunur?", options: ["Köprüüstü konsolu altında", "Yakıt tankı dairesi içinde", "Motor bedplate içinde entegre", "Pervane göbeğinin içinde"], correctAnswer: 2, explanation: "Michell tipi trust yatağı en yaygındır; büyük iki zamanlı motorlarda motor bedplate içinde entegredir ve itmeyi gemi yapısına aktarır." },
     ],
   },
   {
@@ -4262,8 +4242,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Demir ırgadı (windlass)",
     blocks: [{ sectionTitles: ["Yapı ve Çalışma", "Operasyon"] }],
     questions: [
-      { id: 1, sectionRef: "Yapı ve Çalışma", category: MAK, question: "Demir ırgadında zinciri kavrayıp döndüren eleman hangisidir?", options: ["Zincir tamburu (wildcat/gypsy)", "Bant freni", "Kavrama", "Tahrik motoru"], correctAnswer: 0, explanation: "Wildcat (gypsy) zincir baklalarına uygun profilli tamburdur; zinciri kavrar ve döndürür. Bant fren tutar, kavrama serbest düşüş için açılır." },
-      { id: 2, sectionRef: "Operasyon", category: MAK, question: "Demir atarken serbest düşüşün hızı nasıl kontrol edilir?", options: ["Bant fren ile", "Motor gücüyle", "Kavramayı kapatarak", "Pervaneyle"], correctAnswer: 0, explanation: "Demir atmada kavrama açılır, zincir ağırlığıyla serbest düşer ve hız bant fren ile kontrol edilir; demir almada kavrama kapatılıp motorla toplanır." },
+      { id: 1, sectionRef: "Yapı ve Çalışma", category: MAK, question: "Demir ırgadında zinciri kavrayıp döndüren eleman hangisidir?", options: ["Bant fren (band brake) düzeneği", "Kavrama (clutch) düzeneği", "Tahrik motoru (elektrik)", "Zincir tamburu (wildcat/gypsy)"], correctAnswer: 3, explanation: "Wildcat (gypsy) zincir baklalarına uygun profilli tamburdur; zinciri kavrar ve döndürür. Bant fren tutar, kavrama serbest düşüş için açılır." },
+      { id: 2, sectionRef: "Operasyon", category: MAK, question: "Demir atarken serbest düşüşün hızı nasıl kontrol edilir?", options: ["Pervaneyle", "Bant fren ile", "Motor gücüyle", "Kavramayı kapatarak"], correctAnswer: 1, explanation: "Demir atmada kavrama açılır, zincir ağırlığıyla serbest düşer ve hız bant fren ile kontrol edilir; demir almada kavrama kapatılıp motorla toplanır." },
     ],
   },
   {
@@ -4271,8 +4251,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yük vinçleri ve kaldırma kapasitesi",
     blocks: [{ sectionTitles: ["Vinç Tipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Vinç Tipleri", category: MAK, question: "Konteyner gemilerinde raylar üzerinde hareket eden vinç tipi hangisidir?", options: ["Gantry (portal) vinç (SWL 30-50 ton)", "Tek bom jib", "İkiz bom", "El vinci"], correctAnswer: 0, explanation: "Gantry (portal) vinçler konteyner gemilerinde raylar üzerinde hareket eder, SWL 30-50 ton; jib/goose-neck vinçler genel/kuru kargoda kullanılır." },
-      { id: 2, sectionRef: "Vinç Tipleri", category: MAK, question: "Modern kuru yük gemilerinde standart vinç hangisidir?", options: ["Goose-neck (tek bom, elektro-hidrolik)", "Gantry crane", "Union purchase", "Buharlı vinç"], correctAnswer: 0, explanation: "Goose-neck tek bomlu elektro-hidrolik vinçler modern kuru yük gemilerinde standarttır." },
+      { id: 1, sectionRef: "Vinç Tipleri", category: MAK, question: "Konteyner gemilerinde raylar üzerinde hareket eden vinç tipi hangisidir?", options: ["İkiz bomlu (union) vinç düzeneği", "El ile çevrilen basit vinç düzeneği", "Gantry (portal) vinç (SWL 30-50 t)", "Tek bomlu jib vinç düzeneği"], correctAnswer: 2, explanation: "Gantry (portal) vinçler konteyner gemilerinde raylar üzerinde hareket eder, SWL 30-50 ton; jib/goose-neck vinçler genel/kuru kargoda kullanılır." },
+      { id: 2, sectionRef: "Vinç Tipleri", category: MAK, question: "Modern kuru yük gemilerinde standart vinç hangisidir?", options: ["Gantry (portal) rayli vinç düzeni", "Union purchase (ikiz bom) düzeni", "Buhar tahrikli klasik vinç düzeni", "Goose-neck (tek bom, elektro-hidrolik)"], correctAnswer: 3, explanation: "Goose-neck tek bomlu elektro-hidrolik vinçler modern kuru yük gemilerinde standarttır." },
     ],
   },
   {
@@ -4280,8 +4260,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Mooring vinçleri ve otomatik gerilim",
     blocks: [{ sectionTitles: ["Sistem Özellikleri", "Güvenlik"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Özellikleri", category: MAK, question: "Otomatik gerilim (auto-tension) sistemi ne sağlar?", options: ["Halat gerilimini sabit tutar (gelgit/yük hareketlerini kompanse eder)", "Halatı keser", "Hızı artırır", "Yağ basıncını ölçer"], correctAnswer: 0, explanation: "Auto-tension halat gerilimini sabit tutar; gelgit ve yükleme/boşaltma sırasındaki gemi hareketlerini kompanse eder. Bant fren aşırı yüklenmede kayarak korur." },
-      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Mooring operasyonunda 'snap-back zone' nedir?", options: ["Halat koparsa savrulacağı, ölümcül tehlikeli bölge", "Güvenli dinlenme alanı", "Yakıt deposu", "Vinç motoru"], correctAnswer: 0, explanation: "Snap-back zone, halat kopması durumunda savrulma riskinin ölümcül olduğu işaretli bölgedir; halatların aşınma/kopuk tel muayenesi zorunludur." },
+      { id: 1, sectionRef: "Sistem Özellikleri", category: MAK, question: "Otomatik gerilim (auto-tension) sistemi ne sağlar?", options: ["Hidrolik yağ basıncını ölçmekte", "Halat gerilimini sabit tutmaktadır", "Gerektiğinde halatı kesip atmaktadır", "Sarma hızını belirgin artırmakta"], correctAnswer: 1, explanation: "Auto-tension halat gerilimini sabit tutar; gelgit ve yükleme/boşaltma sırasındaki gemi hareketlerini kompanse eder. Bant fren aşırı yüklenmede kayarak korur." },
+      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Mooring operasyonunda 'snap-back zone' nedir?", options: ["Yakıt deposunun bulunduğu bölge", "Vinç motorunun bulunduğu bölge", "Halat koparsa savrulacağı bölge", "Personelin güvenle dinlendiği alan"], correctAnswer: 2, explanation: "Snap-back zone, halat kopması durumunda savrulma riskinin ölümcül olduğu işaretli bölgedir; halatların aşınma/kopuk tel muayenesi zorunludur." },
     ],
   },
   {
@@ -4289,8 +4269,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kapak (hatch cover) mekanizmaları",
     blocks: [{ sectionTitles: ["Tipler ve Sızdırmazlık", "Bakım ve Test"] }],
     questions: [
-      { id: 1, sectionRef: "Tipler ve Sızdırmazlık", category: MAK, question: "Hatch cover sızdırmazlığı nasıl sağlanır?", options: ["Çelik-çeliğe oturma ve çevredeki lastik conta (rubber packing) ile; drenaj kanalları suyu atar", "Sadece boyayla", "Bant ile", "Sızdırmazlık yoktur"], correctAnswer: 0, explanation: "Sızdırmazlık çelik-çeliğe oturma ve lastik conta ile sağlanır; drenaj kanalları ve geri tepme valfli delikler sızan suyu atar. Tipler: folding, rolling, ponton." },
-      { id: 2, sectionRef: "Bakım ve Test", category: MAK, question: "Kapak sızdırmazlığı hangi yöntemlerle test edilir?", options: ["Tebeşir testi, hortum testi veya ultrasonik sızdırmazlık ölçümü", "Sadece gözle", "Yakma testi", "Hiç test edilmez"], correctAnswer: 0, explanation: "Tebeşir, hortum veya ultrasonik testlerle sızdırmazlık kontrol edilir; bozuk conta su girişi ve yük hasarına yol açar, PSC/sörveylerde denetlenir." },
+      { id: 1, sectionRef: "Tipler ve Sızdırmazlık", category: MAK, question: "Hatch cover sızdırmazlığı nasıl sağlanır?", options: ["Yalnızca boya tabakasıyla sağlanmakta", "Yapışkan bant ile sağlanmaktadır", "Hiçbir sızdırmazlık sağlanmamakta", "Çelik oturma, lastik conta ve drenaj"], correctAnswer: 3, explanation: "Sızdırmazlık çelik-çeliğe oturma ve lastik conta ile sağlanır; drenaj kanalları ve geri tepme valfli delikler sızan suyu atar. Tipler: folding, rolling, ponton." },
+      { id: 2, sectionRef: "Bakım ve Test", category: MAK, question: "Kapak sızdırmazlığı hangi yöntemlerle test edilir?", options: ["Hiçbir biçimde test edilmemekte", "Tebeşir, hortum veya ultrasonik test", "Yalnızca gözle bakılarak yapılır", "Alevle yakma testi ile yapılır"], correctAnswer: 1, explanation: "Tebeşir, hortum veya ultrasonik testlerle sızdırmazlık kontrol edilir; bozuk conta su girişi ve yük hasarına yol açar, PSC/sörveylerde denetlenir." },
     ],
   },
   {
@@ -4298,8 +4278,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ramp ve asansör sistemleri",
     blocks: [{ sectionTitles: ["Rampalar ve Asansörler"] }],
     questions: [
-      { id: 1, sectionRef: "Rampalar ve Asansörler", category: MAK, question: "Rampalar kapalıyken hangi sızdırmazlık sağlanır?", options: ["Weathertight sızdırmazlık ve emniyet kilidi", "Hiçbir sızdırmazlık", "Sadece boya", "Su geçirir"], correctAnswer: 0, explanation: "Kıç/baş/yan rampalar hidrolik silindir ve tel/zincirle hareket eder; kapalıyken weathertight sızdırmazlık ve emniyet kilidi sağlar." },
-      { id: 2, sectionRef: "Rampalar ve Asansörler", category: MAK, question: "Yanlış operasyon nasıl engellenir?", options: ["Aşırı yük, konum sensörleri ve kilit interlock'ları ile", "Sadece uyarı levhasıyla", "Engellenemez", "Manuel dikkatle"], correctAnswer: 0, explanation: "Aşırı yük koruması, konum sensörleri ve kilit interlock'ları yanlış operasyonu engeller; iç rampalar/asansörler güverteler arası araç geçişi sağlar." },
+      { id: 1, sectionRef: "Rampalar ve Asansörler", category: MAK, question: "Rampalar kapalıyken hangi sızdırmazlık sağlanır?", options: ["Yalnızca boya ile sağlanmaktadır", "Kapalıyken bile su geçirmektedir", "Weathertight sızdırmazlık ve kilit", "Hiçbir sızdırmazlık sağlanmamaktadır"], correctAnswer: 2, explanation: "Kıç/baş/yan rampalar hidrolik silindir ve tel/zincirle hareket eder; kapalıyken weathertight sızdırmazlık ve emniyet kilidi sağlar." },
+      { id: 2, sectionRef: "Rampalar ve Asansörler", category: MAK, question: "Yanlış operasyon nasıl engellenir?", options: ["Yalnızca uyarı levhası asılarak", "Hiçbir biçimde engellenememekte", "Yalnızca operatör dikkatiyle elle", "Aşırı yük, konum sensörü ve interlock"], correctAnswer: 3, explanation: "Aşırı yük koruması, konum sensörleri ve kilit interlock'ları yanlış operasyonu engeller; iç rampalar/asansörler güverteler arası araç geçişi sağlar." },
     ],
   },
   {
@@ -4307,8 +4287,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hidrolik pompa tipleri",
     blocks: [{ sectionTitles: ["Pompa Tipleri", "Değişken Deplasanlı Pompalar"] }],
     questions: [
-      { id: 1, sectionRef: "Pompa Tipleri", category: MAK, question: "Yüksek basınç (max ~700 bar) sistemlerinde hangi pompa kullanılır?", options: ["Radyal pistonlu pompa", "Dişli pompa", "Paletli pompa", "El pompası"], correctAnswer: 0, explanation: "Radyal pistonlu pompalar max ~700 bar ile yüksek basınç sistemlerinde; dişli pompa (max 250 bar) dümen/vinç beslemede kullanılır." },
-      { id: 2, sectionRef: "Değişken Deplasanlı Pompalar", category: MAK, question: "Swash plate (eğik plaka) açısı değiştirilerek ne ayarlanır?", options: ["Debi (0'dan maksimuma) ve akış yönü terslenebilir", "Sadece basınç", "Sadece sıcaklık", "Hiçbir şey"], correctAnswer: 0, explanation: "Aksiyel pistonlu pompada swash plate açısıyla debi 0-maksimum ayarlanır ve yön terslenebilir; modern dümen makineleri ve vinçlerde standarttır." },
+      { id: 1, sectionRef: "Pompa Tipleri", category: MAK, question: "Yüksek basınç (max ~700 bar) sistemlerinde hangi pompa kullanılır?", options: ["El ile çalıştırılan hidrolik pompa", "Radyal pistonlu hidrolik pompa", "Dişli (gear) tipi hidrolik pompa", "Paletli (vane) tipi hidrolik pompa"], correctAnswer: 1, explanation: "Radyal pistonlu pompalar max ~700 bar ile yüksek basınç sistemlerinde; dişli pompa (max 250 bar) dümen/vinç beslemede kullanılır." },
+      { id: 2, sectionRef: "Değişken Deplasanlı Pompalar", category: MAK, question: "Swash plate (eğik plaka) açısı değiştirilerek ne ayarlanır?", options: ["Yalnızca yağ sıcaklığı ayarlanır", "Hiçbir büyüklük ayarlanamamakta", "Debi (0'dan maksimuma) ve akış yönü", "Yalnızca sistem basıncı ayarlanmakta"], correctAnswer: 2, explanation: "Aksiyel pistonlu pompada swash plate açısıyla debi 0-maksimum ayarlanır ve yön terslenebilir; modern dümen makineleri ve vinçlerde standarttır." },
     ],
   },
   {
@@ -4316,8 +4296,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hidrolik silindir ve motor",
     blocks: [{ sectionTitles: ["Silindir Kuvveti ve Motor Torku"] }],
     questions: [
-      { id: 1, sectionRef: "Silindir Kuvveti ve Motor Torku", category: MAK, question: "Hidrolik silindirin ürettiği kuvvet nasıl bulunur?", options: ["F = p·A (basınç × piston alanı)", "F = p/A", "F = A/p", "F = p + A"], correctAnswer: 0, explanation: "F = p·A; çift etkili silindirde geri strokta rod tarafı alanı daha küçük olduğundan kuvvet azalır." },
-      { id: 2, sectionRef: "Silindir Kuvveti ve Motor Torku", category: MAK, question: "Hidrolik motorun torku neye bağlıdır?", options: ["Basınç ve deplasmana (T = p·Vd/2π)", "Sadece devire", "Sadece renge", "Yalnız alana"], correctAnswer: 0, explanation: "Hidrolik motor torku basınç ve deplasmana (devir başına hacim) bağlıdır: T = (p·Vd)/(2π)." },
+      { id: 1, sectionRef: "Silindir Kuvveti ve Motor Torku", category: MAK, question: "Hidrolik silindirin ürettiği kuvvet nasıl bulunur?", options: ["F = p/A (basınç bölü alan)", "F = A/p (alan bölü basınç)", "F = p + A (basınç artı alan)", "F = p·A (basınç × piston alanı)"], correctAnswer: 3, explanation: "F = p·A; çift etkili silindirde geri strokta rod tarafı alanı daha küçük olduğundan kuvvet azalır." },
+      { id: 2, sectionRef: "Silindir Kuvveti ve Motor Torku", category: MAK, question: "Hidrolik motorun torku neye bağlıdır?", options: ["Yalnızca piston alan değerine", "Basınç ve deplasman (T = p·Vd/2π)", "Yalnızca motorun devir sayısı değerine", "Yalnızca gövdenin renk koduna"], correctAnswer: 1, explanation: "Hidrolik motor torku basınç ve deplasmana (devir başına hacim) bağlıdır: T = (p·Vd)/(2π)." },
     ],
   },
   {
@@ -4325,8 +4305,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yön kontrol ve basınç kontrol valfleri",
     blocks: [{ sectionTitles: ["Yön Kontrol Valfleri", "Basınç Kontrol Valfleri"] }],
     questions: [
-      { id: 1, sectionRef: "Yön Kontrol Valfleri", category: MAK, question: "Pilot çalışmalı çek valf ne amaçla kullanılır?", options: ["Yük tutma (load holding)", "Basınç sınırlama", "Debi ölçme", "Soğutma"], correctAnswer: 0, explanation: "Çek valf tek yönlü akışa izin verir; pilot çalışmalı çek valf yük tutma amacıyla kullanılır. Spool valfler 2/2…4/3 konfigürasyonlarda olur." },
-      { id: 2, sectionRef: "Basınç Kontrol Valfleri", category: MAK, question: "Relief (emniyet) valfinin görevi nedir?", options: ["Sistem basıncını sınırlar; aşırı basınçta akışkanı tanka döndürür", "Akış yönünü değiştirir", "Debiyi artırır", "Yağı ısıtır"], correctAnswer: 0, explanation: "Relief valf basıncı sınırlar; reducing valf düşük basınçlı dala kontrollü basınç verir; sequence valf belirli basınçta ikinci devreyi aktive eder." },
+      { id: 1, sectionRef: "Yön Kontrol Valfleri", category: MAK, question: "Pilot çalışmalı çek valf ne amaçla kullanılır?", options: ["Hattaki debiyi ölçebilmek için", "Hidrolik yağı soğutmak amacıyla", "Yük tutma (load holding) amacıyla", "Sistem basıncını sınırlayabilmek için"], correctAnswer: 2, explanation: "Çek valf tek yönlü akışa izin verir; pilot çalışmalı çek valf yük tutma amacıyla kullanılır. Spool valfler 2/2…4/3 konfigürasyonlarda olur." },
+      { id: 2, sectionRef: "Basınç Kontrol Valfleri", category: MAK, question: "Relief (emniyet) valfinin görevi nedir?", options: ["Sistemdeki akış yönünü değiştirmektedir", "Hattaki debiyi belirgin artırmakta", "Hidrolik yağı ısıtıp incelmektedir", "Basıncı sınırlar; yağı tanka döndürür"], correctAnswer: 3, explanation: "Relief valf basıncı sınırlar; reducing valf düşük basınçlı dala kontrollü basınç verir; sequence valf belirli basınçta ikinci devreyi aktive eder." },
     ],
   },
   {
@@ -4334,8 +4314,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hidrolik devre okuma",
     blocks: [{ sectionTitles: ["Temel Semboller ve Akış"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Semboller ve Akış", category: MAK, question: "Hidrolik devrede akış sırası genellikle nasıldır?", options: ["Pompa → yön valfi → aktüatör; dönüş tank filtresinden geçer", "Aktüatör → pompa → tank", "Tank → aktüatör → pompa", "Sabit, akış yok"], correctAnswer: 0, explanation: "Akış pompadan yön valfine, oradan aktüatöre gider; emniyet valfi basıncı sınırlar, dönüş hattı tank filtresinden geçer." },
-      { id: 2, sectionRef: "Temel Semboller ve Akış", category: MAK, question: "Hidrolik şemada kesik çizgiler neyi gösterir?", options: ["Pilot/kumanda hatlarını", "Ana basınç hattını", "Tankı", "Elektrik kablosunu"], correctAnswer: 0, explanation: "Kesik çizgiler pilot/kumanda hatlarını gösterir; devrede pompa, tank, relief, yön valfi, akış kontrol, çek valf ve aktüatör bulunur." },
+      { id: 1, sectionRef: "Temel Semboller ve Akış", category: MAK, question: "Hidrolik devrede akış sırası genellikle nasıldır?", options: ["Devrede hiçbir akış oluşmamakta", "Pompa → yön valfi → aktüatör → tank", "Aktüatör → pompa → tank sıralamasıdır", "Tank → aktüatör → pompa sıralaması"], correctAnswer: 1, explanation: "Akış pompadan yön valfine, oradan aktüatöre gider; emniyet valfi basıncı sınırlar, dönüş hattı tank filtresinden geçer." },
+      { id: 2, sectionRef: "Temel Semboller ve Akış", category: MAK, question: "Hidrolik şemada kesik çizgiler neyi gösterir?", options: ["Hidrolik yağ tankını göstermekte", "Elektrik kablo hattını göstermekte", "Pilot (kumanda) hatlarını gösterir", "Ana basınç hattını göstermektedir"], correctAnswer: 2, explanation: "Kesik çizgiler pilot/kumanda hatlarını gösterir; devrede pompa, tank, relief, yön valfi, akış kontrol, çek valf ve aktüatör bulunur." },
     ],
   },
   {
@@ -4343,8 +4323,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hidrolik yağ bakımı ve filtrasyon",
     blocks: [{ sectionTitles: ["Kirlilik ve Filtrasyon"] }],
     questions: [
-      { id: 1, sectionRef: "Kirlilik ve Filtrasyon", category: MAK, question: "Hidrolik yağdaki katı parçacıklar ve nem neye yol açar?", options: ["Parçacık aşınmaya, nem korozyon ve yağ bozulmasına", "Performans artışına", "Yakıt tasarrufuna", "Hiçbir etki"], correctAnswer: 0, explanation: "Katı parçacıklar valf/pompalarda aşınma, nem ise korozyon ve yağ bozulması yapar; temizlik ISO 4406 koduyla ifade edilir." },
-      { id: 2, sectionRef: "Kirlilik ve Filtrasyon", category: MAK, question: "Hidrolik sistemde hangi filtreler kullanılır?", options: ["Basınç hattı, dönüş hattı ve hava firarı (breather) filtreleri", "Sadece yakıt filtresi", "Filtre kullanılmaz", "Sadece hava filtresi"], correctAnswer: 0, explanation: "Basınç, dönüş ve breather filtreleri kullanılır; yağ analizi (su, viskozite, parçacık) periyodik yapılır." },
+      { id: 1, sectionRef: "Kirlilik ve Filtrasyon", category: MAK, question: "Hidrolik yağdaki katı parçacıklar ve nem neye yol açar?", options: ["Sistem performansının artmasına", "Sefer yakıt tüketiminde tasarrufa", "Sistem üzerinde hiçbir etkiye", "Parçacık aşınmaya, nem korozyona"], correctAnswer: 3, explanation: "Katı parçacıklar valf/pompalarda aşınma, nem ise korozyon ve yağ bozulması yapar; temizlik ISO 4406 koduyla ifade edilir." },
+      { id: 2, sectionRef: "Kirlilik ve Filtrasyon", category: MAK, question: "Hidrolik sistemde hangi filtreler kullanılır?", options: ["Yalnızca hava filtresi kullanılır", "Basınç, dönüş ve breather filtreleri", "Yalnızca yakıt filtresi kullanılmakta", "Hiçbir filtre kullanılmamaktadır"], correctAnswer: 1, explanation: "Basınç, dönüş ve breather filtreleri kullanılır; yağ analizi (su, viskozite, parçacık) periyodik yapılır." },
     ],
   },
   {
@@ -4352,8 +4332,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava kompresörleri (pistonlu, vidalı)",
     blocks: [{ sectionTitles: ["Çok Kademeli Pistonlu Kompresör", "Kapasite ve Gereklilikler"] }],
     questions: [
-      { id: 1, sectionRef: "Çok Kademeli Pistonlu Kompresör", category: MAK, question: "Ana makine başlatma havası kompresörünün çıkış basıncı nedir?", options: ["25-30 bar", "2-3 bar", "100 bar", "5 bar"], correctAnswer: 0, explanation: "Başlatma havası kompresörü genellikle 2-3 kademeli, su soğutmalı pistonlu tiptir; çıkış 25-30 bar. Kademeler arası intercooler ve su ayırıcı bulunur." },
-      { id: 2, sectionRef: "Kapasite ve Gereklilikler", category: MAK, question: "SOLAS gereği kaç başlatma havası kompresörü bulunmalıdır?", options: ["En az 2 adet", "1 adet", "5 adet", "Gerekmez"], correctAnswer: 0, explanation: "SOLAS gereği en az 2 kompresör bulunur; toplam kapasite şişeleri 1 saatte doldurabilmeli, şişeler ana motoru art arda en az 12 kez çalıştırabilmelidir." },
+      { id: 1, sectionRef: "Çok Kademeli Pistonlu Kompresör", category: MAK, question: "Ana makine başlatma havası kompresörünün çıkış basıncı nedir?", options: ["100 bar", "5 bar", "25-30 bar", "2-3 bar"], correctAnswer: 2, explanation: "Başlatma havası kompresörü genellikle 2-3 kademeli, su soğutmalı pistonlu tiptir; çıkış 25-30 bar. Kademeler arası intercooler ve su ayırıcı bulunur." },
+      { id: 2, sectionRef: "Kapasite ve Gereklilikler", category: MAK, question: "SOLAS gereği kaç başlatma havası kompresörü bulunmalıdır?", options: ["Tek bir adet kompresör yeterlidir", "En az 5 adet kompresör bulunmalı", "Kompresör bulundurulması gerekmez", "En az 2 adet kompresör bulunmalı"], correctAnswer: 3, explanation: "SOLAS gereği en az 2 kompresör bulunur; toplam kapasite şişeleri 1 saatte doldurabilmeli, şişeler ana motoru art arda en az 12 kez çalıştırabilmelidir." },
     ],
   },
   {
@@ -4361,8 +4341,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava tankları ve emniyet düzenlemeleri",
     blocks: [{ sectionTitles: ["Tank Gereklilikleri", "Muayene Takvimi"] }],
     questions: [
-      { id: 1, sectionRef: "Tank Gereklilikleri", category: MAK, question: "SOLAS gereği başlatma havası şişeleri nasıl olmalıdır?", options: ["En az 2 bağımsız şişe; her biri toplam kapasitenin yarısını sağlamalı", "Tek büyük şişe", "Üç eşit şişe", "Şişe gerekmez"], correctAnswer: 0, explanation: "En az 2 bağımsız şişe bulunur, her biri toplam kapasitenin yarısını sağlar; emniyet supabı, manometre, drenaj ve izolasyon valfleri standarttır." },
-      { id: 2, sectionRef: "Muayene Takvimi", category: MAK, question: "Hava tankının hidrostatik testi hangi periyot ve basınçta yapılır?", options: ["10 yılda bir, 1.5 × çalışma basıncı", "Yılda bir, 0.5 × basınç", "Hiç", "Aylık, çalışma basıncı"], correctAnswer: 0, explanation: "Dış muayene yıllık, iç muayene 5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncıyla yapılır; emniyet supabı yıllık test edilir." },
+      { id: 1, sectionRef: "Tank Gereklilikleri", category: MAK, question: "SOLAS gereği başlatma havası şişeleri nasıl olmalıdır?", options: ["Şişe bulundurulması gerekmemekte", "İki bağımsız şişe; her biri yarım", "Tek büyük şişe yeterli olmaktadır", "Üç eşit kapasiteli şişe gerekir"], correctAnswer: 1, explanation: "En az 2 bağımsız şişe bulunur, her biri toplam kapasitenin yarısını sağlar; emniyet supabı, manometre, drenaj ve izolasyon valfleri standarttır." },
+      { id: 2, sectionRef: "Muayene Takvimi", category: MAK, question: "Hava tankının hidrostatik testi hangi periyot ve basınçta yapılır?", options: ["Hiçbir zaman test yapılmamaktadır", "Ayda bir kez, çalışma basıncında", "10 yılda bir, 1,5 × çalışma basıncı", "Yılda bir kez, 0,5 × çalışma basıncı"], correctAnswer: 2, explanation: "Dış muayene yıllık, iç muayene 5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncıyla yapılır; emniyet supabı yıllık test edilir." },
     ],
   },
   {
@@ -4370,8 +4350,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava kurutucu ve filtre üniteleri",
     blocks: [{ sectionTitles: ["Kurutma ve Filtreleme"] }],
     questions: [
-      { id: 1, sectionRef: "Kurutma ve Filtreleme", category: MAK, question: "Kompresör sonrası kurutucu (dryer) ne yapar?", options: ["Çiy noktasını düşürerek nemi giderir", "Havayı ısıtır", "Basıncı artırır", "Yağ ekler"], correctAnswer: 0, explanation: "After-cooler yoğuşan suyu ayırır; kurutucu (soğutmalı/desiccant) çiy noktasını düşürerek nemi giderir, coalescing filtreler kontrol havasını temizler." },
-      { id: 2, sectionRef: "Kurutma ve Filtreleme", category: MAK, question: "Hava tanklarında suyu otomatik boşaltan eleman nedir?", options: ["Otomatik kondens tahliyesi (auto-drain)", "Emniyet supabı", "Manometre", "Filtre"], correctAnswer: 0, explanation: "Auto-drain otomatik kondens tahliyeleri hava tanklarındaki suyu boşaltır." },
+      { id: 1, sectionRef: "Kurutma ve Filtreleme", category: MAK, question: "Kompresör sonrası kurutucu (dryer) ne yapar?", options: ["Sıkıştırılan havayı ısıtmaktadır", "Hava basıncını daha da artırmaktadır", "Havaya yağlama yağı eklemektedir", "Çiy noktasını düşürüp nemi giderir"], correctAnswer: 3, explanation: "After-cooler yoğuşan suyu ayırır; kurutucu (soğutmalı/desiccant) çiy noktasını düşürerek nemi giderir, coalescing filtreler kontrol havasını temizler." },
+      { id: 2, sectionRef: "Kurutma ve Filtreleme", category: MAK, question: "Hava tanklarında suyu otomatik boşaltan eleman nedir?", options: ["Hava giriş filtresi ünitesi", "Otomatik kondens tahliyesi valfi", "Emniyet supabı (basınç sınırlayıcı)", "Manometre (basınç göstergesi)"], correctAnswer: 1, explanation: "Auto-drain otomatik kondens tahliyeleri hava tanklarındaki suyu boşaltır." },
     ],
   },
   {
@@ -4379,8 +4359,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Starting air sistemi",
     blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Güvenlik"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Hava distribütörünün görevi nedir?", options: ["Ateşleme sırasına göre doğru silindirlere sırayla hava göndermek", "Yakıt enjekte etmek", "Soğutmak", "Egzoz atmak"], correctAnswer: 0, explanation: "Distribütör, motor ateşleme sırasına göre üst ölü noktaya yakın pistonların silindir başlatma valflerine sırayla hava gönderir." },
-      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Starting air hattında alev tutucu (flame arrester) neden bulunur?", options: ["Sızıntılı başlatma valfinden sıcak gaz kaçışı ve patlamayı önlemek için", "Basıncı artırmak için", "Soğutma için", "Gürültü için"], correctAnswer: 0, explanation: "Sızdıran başlatma valfi sıcak yanma gazlarını hava hattına kaçırıp patlamaya yol açabilir; flame arrester, emniyet supabı ve patlama diski bunu önler." },
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Hava distribütörünün görevi nedir?", options: ["Silindirleri soğutup korumaktadır", "Egzoz gazını dışarı atmaktadır", "Ateşleme sırasına göre hava göndermek", "Silindire yakıt enjekte etmektedir"], correctAnswer: 2, explanation: "Distribütör, motor ateşleme sırasına göre üst ölü noktaya yakın pistonların silindir başlatma valflerine sırayla hava gönderir." },
+      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Starting air hattında alev tutucu (flame arrester) neden bulunur?", options: ["Hattaki basıncı artırabilmek için", "Basınçlı havayı soğutmak amacıyla", "Çalışma gürültüsünü azaltmak için", "Sıcak gaz kaçışı ve patlamayı önlemek"], correctAnswer: 3, explanation: "Sızdıran başlatma valfi sıcak yanma gazlarını hava hattına kaçırıp patlamaya yol açabilir; flame arrester, emniyet supabı ve patlama diski bunu önler." },
     ],
   },
   {
@@ -4388,8 +4368,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kontrol havası ve servis havası",
     blocks: [{ sectionTitles: ["Ayrım ve Önceliklendirme"] }],
     questions: [
-      { id: 1, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Kontrol (enstrüman) havası servis havasından nasıl farklıdır?", options: ["Kuru ve yağsız olmalı; ek kurutma/filtrasyondan geçer", "Daha kirli olabilir", "Daha düşük basınçlıdır her zaman", "Fark yoktur"], correctAnswer: 0, explanation: "Kontrol havası pnömatik valf/kontrol için kuru ve yağsız olmalı, ek kurutma/filtrasyondan geçer; servis havası daha düşük kalite tolere eder." },
-      { id: 2, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Düşük basınç durumunda hangi havaya öncelik verilir?", options: ["Kontrol havasına (servis bağlantısı kapatılır)", "Servis havasına", "İkisi de kesilir", "Önceliklendirme yok"], correctAnswer: 0, explanation: "Sistemde kontrol havasına öncelik verilir; düşük basınçta servis havası bağlantısı (alarm/otomatik valf ile) kapatılarak kontrol havası korunur." },
+      { id: 1, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Kontrol (enstrüman) havası servis havasından nasıl farklıdır?", options: ["İkisi arasında hiçbir fark yoktur", "Kuru ve yağsız; ek filtrasyondan geçer", "Daha kirli olması kabul edilebilir", "Her koşulda daha düşük basınçlıdır"], correctAnswer: 1, explanation: "Kontrol havası pnömatik valf/kontrol için kuru ve yağsız olmalı, ek kurutma/filtrasyondan geçer; servis havası daha düşük kalite tolere eder." },
+      { id: 2, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Düşük basınç durumunda hangi havaya öncelik verilir?", options: ["Her ikisi de birlikte kesilmekte", "Bir önceliklendirme yapılmamakta", "Kontrol havasına (servis kesilir)", "Servis havasına (kontrol kesilir)"], correctAnswer: 2, explanation: "Sistemde kontrol havasına öncelik verilir; düşük basınçta servis havası bağlantısı (alarm/otomatik valf ile) kapatılarak kontrol havası korunur." },
     ],
   },
   {
@@ -4397,8 +4377,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yük paylaşımı ve frekans regülasyonu",
     blocks: [{ sectionTitles: ["Aktif Güç Paylaşımı", "Reaktif Güç Paylaşımı"] }],
     questions: [
-      { id: 1, sectionRef: "Aktif Güç Paylaşımı", category: MAK, question: "Paralel jeneratörlerde aktif güç (kW) paylaşımı neyle yapılır?", options: ["Frekans (hız/governor droop) kontrolü ile", "Gerilim ile", "Yakıt rengiyle", "Soğutma ile"], correctAnswer: 0, explanation: "Aktif güç paylaşımı governor droop (frekans) ile yapılır; droop ayarı eşit jeneratörler eşit yük paylaşır." },
-      { id: 2, sectionRef: "Reaktif Güç Paylaşımı", category: MAK, question: "Reaktif güç (kVAr) paylaşımı neyle kontrol edilir?", options: ["Gerilim (AVR droop) kontrolü ile", "Frekans ile", "Devir ile", "Egzoz sıcaklığıyla"], correctAnswer: 0, explanation: "Reaktif güç paylaşımı AVR droop (gerilim) ile yapılır; dengesiz paylaşım jeneratör aşırı ısınmasına yol açar." },
+      { id: 1, sectionRef: "Aktif Güç Paylaşımı", category: MAK, question: "Paralel jeneratörlerde aktif güç (kW) paylaşımı neyle yapılır?", options: ["Bara gerilimi kontrolü ile yapılır", "Egzoz gazının rengiyle yapılmakta", "Soğutma suyu debisiyle yapılmakta", "Frekans (governor droop) kontrolü ile"], correctAnswer: 3, explanation: "Aktif güç paylaşımı governor droop (frekans) ile yapılır; droop ayarı eşit jeneratörler eşit yük paylaşır." },
+      { id: 2, sectionRef: "Reaktif Güç Paylaşımı", category: MAK, question: "Reaktif güç (kVAr) paylaşımı neyle kontrol edilir?", options: ["Egzoz sıcaklığıyla yapılmaktadır", "Gerilim (AVR droop) kontrolü ile", "Frekans kontrolü ile yapılmakta", "Motor devri kontrolü ile yapılır"], correctAnswer: 1, explanation: "Reaktif güç paylaşımı AVR droop (gerilim) ile yapılır; dengesiz paylaşım jeneratör aşırı ısınmasına yol açar." },
     ],
   },
   {
@@ -4406,8 +4386,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Acil jeneratör ve SOLAS gereklilikleri",
     blocks: [{ sectionTitles: ["SOLAS Reg. II-1/42-44 Gereklilikleri", "Beslenmesi Gereken Kritik Yükler"] }],
     questions: [
-      { id: 1, sectionRef: "SOLAS Reg. II-1/42-44 Gereklilikleri", category: MAK, question: "Acil jeneratör nereye konumlandırılmalıdır?", options: ["Makine dairesi dışında, ana yangın sınırının üzerinde", "Makine dairesinin merkezinde", "Yakıt tankı içinde", "Köprüüstünde"], correctAnswer: 0, explanation: "Acil jeneratör makine dairesi dışında, ana yangın sınırının üzerinde olmalı ve güç kaybından 45 saniye içinde devreye girmelidir; yakıt en az 18 saat (yolcuda 36)." },
-      { id: 2, sectionRef: "Beslenmesi Gereken Kritik Yükler", category: MAK, question: "Aşağıdakilerden hangisi acil jeneratörden beslenmesi gereken kritik yüktür?", options: ["Dümen makinesi (bir set), GMDSS ve seyir fenerleri", "Yüzme havuzu pompası", "Kamara TV'leri", "Mutfak fırını"], correctAnswer: 0, explanation: "Kritik yükler: seyir fenerleri, acil yangın pompası, dümen (bir set), GMDSS, genel alarm/PA, acil aydınlatma, su geçirmez kapılar ve yangın algılama." },
+      { id: 1, sectionRef: "SOLAS Reg. II-1/42-44 Gereklilikleri", category: MAK, question: "Acil jeneratör nereye konumlandırılmalıdır?", options: ["Yakıt tankı dairesinin tam içinde", "Köprüüstü konsolunun hemen altında", "Makine dışında, yangın sınırı üzerinde", "Makine dairesinin tam merkezinde"], correctAnswer: 2, explanation: "Acil jeneratör makine dairesi dışında, ana yangın sınırının üzerinde olmalı ve güç kaybından 45 saniye içinde devreye girmelidir; yakıt en az 18 saat (yolcuda 36)." },
+      { id: 2, sectionRef: "Beslenmesi Gereken Kritik Yükler", category: MAK, question: "Aşağıdakilerden hangisi acil jeneratörden beslenmesi gereken kritik yüktür?", options: ["Yüzme havuzu devirdaim pompası", "Kamaralarda bulunan televizyon setleri", "Mutfak fırını ve pişirme ocağı", "Dümen (bir set), GMDSS ve fenerler"], correctAnswer: 3, explanation: "Kritik yükler: seyir fenerleri, acil yangın pompası, dümen (bir set), GMDSS, genel alarm/PA, acil aydınlatma, su geçirmez kapılar ve yangın algılama." },
     ],
   },
   {
@@ -4415,8 +4395,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kompozit kazan tasarımı",
     blocks: [{ sectionTitles: ["Yapı ve Çalışma", "Kapasite Bilgisi"] }],
     questions: [
-      { id: 1, sectionRef: "Yapı ve Çalışma", category: MAK, question: "Kompozit kazan hangi iki bölümden oluşur?", options: ["Ateş borulu (oil-fired) ve ekonomizer (exhaust gas) bölümleri", "Sadece elektrikli ısıtıcı", "İki ayrı tank", "Pervane ve şaft"], correctAnswer: 0, explanation: "Kompozit kazan oil-fired ve ekonomizer bölümlerinden oluşur; ortak buhar/su alanına sahiptir." },
-      { id: 2, sectionRef: "Kapasite Bilgisi", category: MAK, question: "Tam yük seyirde buhar kaynağı nedir?", options: ["Sadece ekonomizer (yakıt yanma bölümü devre dışı)", "Sadece yakıt yanması", "Elektrik", "Hiçbiri"], correctAnswer: 0, explanation: "Tam yük seyirde sadece ekonomizer buhar üretir (yakıt bölümü kapanır); limanda sadece yakıt yanma bölümü devreye girer." },
+      { id: 1, sectionRef: "Yapı ve Çalışma", category: MAK, question: "Kompozit kazan hangi iki bölümden oluşur?", options: ["Pervane ve şaft tahrik bölümü", "Ateş borulu ve ekonomizer bölümleri", "Yalnızca elektrikli ısıtıcı bölümleri", "Birbirinden ayrı iki depo tankı"], correctAnswer: 1, explanation: "Kompozit kazan oil-fired ve ekonomizer bölümlerinden oluşur; ortak buhar/su alanına sahiptir." },
+      { id: 2, sectionRef: "Kapasite Bilgisi", category: MAK, question: "Tam yük seyirde buhar kaynağı nedir?", options: ["Yalnızca elektrikli ısıtıcılar", "Hiçbir kaynaktan buhar üretilmez", "Yalnızca ekonomizer (yakıcı kapalı)", "Yalnızca yakıt yanması bölümü"], correctAnswer: 2, explanation: "Tam yük seyirde sadece ekonomizer buhar üretir (yakıt bölümü kapanır); limanda sadece yakıt yanma bölümü devreye girer." },
     ],
   },
   {
@@ -4424,8 +4404,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Egzoz gazı ekonomizeri",
     blocks: [{ sectionTitles: ["Temel Prensip ve Termodinamik Arka Plan", "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Prensip ve Termodinamik Arka Plan", category: MAK, question: "Egzoz gazı ekonomizerinin amacı nedir?", options: ["Bacadan atılan ısının bir kısmını geri kazanıp yardımcı kazan yakıtını azaltmak", "Egzoz basıncını artırmak", "Pervaneyi soğutmak", "Yakıt deposunu doldurmak"], correctAnswer: 0, explanation: "Ekonomizer (atık ısı kazanı) egzoz entalpisinin bir kısmını geri kazanır: Q = ṁgaz·cp·(Tgiriş − Tçıkış); yardımcı kazanın yaktığı yakıtı azaltır." },
-      { id: 2, sectionRef: "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı", category: MAK, question: "Ekonomizer çıkış egzoz sıcaklığı asit çiğ noktasının altına düşerse ne olur?", options: ["Özellikle yüksek sülfürlü yakıtta düşük sıcaklık korozyonu hızlanır", "Verim artar", "Hiçbir şey", "Buhar üretimi durur ama korozyon olmaz"], correctAnswer: 0, explanation: "Çıkış sıcaklığı asit çiğ noktası altına düşerse düşük sıcaklık (asit) korozyonu hızlanır; bu yüzden minimum güvenli sıcaklık limiti korunur. Gaz tarafı ΔP artışı soot fire için erken uyarıdır." },
+      { id: 1, sectionRef: "Temel Prensip ve Termodinamik Arka Plan", category: MAK, question: "Egzoz gazı ekonomizerinin amacı nedir?", options: ["Egzoz gazı basıncını artırabilmek için", "Pervane şaftını soğutmak amacıyla", "Yakıt deposunu doldurmak amacıyla", "Baca ısısını kazanıp yakıtı azaltmak"], correctAnswer: 3, explanation: "Ekonomizer (atık ısı kazanı) egzoz entalpisinin bir kısmını geri kazanır: Q = ṁgaz·cp·(Tgiriş − Tçıkış); yardımcı kazanın yaktığı yakıtı azaltır." },
+      { id: 2, sectionRef: "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı", category: MAK, question: "Ekonomizer çıkış egzoz sıcaklığı asit çiğ noktasının altına düşerse ne olur?", options: ["Buhar durur ama korozyon olmaz", "Düşük sıcaklık korozyonu hızlanır", "Kazan verimi belirgin artmaktadır", "Hiçbir olumsuz sonuç oluşmamakta"], correctAnswer: 1, explanation: "Çıkış sıcaklığı asit çiğ noktası altına düşerse düşük sıcaklık (asit) korozyonu hızlanır; bu yüzden minimum güvenli sıcaklık limiti korunur. Gaz tarafı ΔP artışı soot fire için erken uyarıdır." },
     ],
   },
   {
@@ -4433,8 +4413,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kazan su kimyası ve işlem",
     blocks: [{ sectionTitles: ["Kontrol Parametreleri", "Kimyasal İşlem"] }],
     questions: [
-      { id: 1, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Kazan suyu pH değeri hangi aralıkta tutulur?", options: ["10.5-11.5", "6.5-7.0", "2-3", "13-14"], correctAnswer: 0, explanation: "Kazan suyu pH 10.5-11.5'te tutulur; düşükse korozyon, yüksekse köpürme olur. Çözünmüş oksijen < 0.02 ppm olmalıdır." },
-      { id: 2, sectionRef: "Kimyasal İşlem", category: MAK, question: "Kazan suyunda oksijen giderme nasıl yapılır?", options: ["Sodyum sülfit (Na₂SO₃) veya hidrazin ile (termal de-aerator ile birlikte)", "Klor ekleyerek", "Su ısıtarak yalnız", "Yağ ekleyerek"], correctAnswer: 0, explanation: "Oksijen, sodyum sülfit veya hidrazin ile giderilir (de-aerator ile); sülfit oksijenle reaksiyona girip sülfata döner. Blowdown çözünmüş katıları kontrol eder." },
+      { id: 1, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Kazan suyu pH değeri hangi aralıkta tutulur?", options: ["2-3 (kuvvetli asidik)", "13-14 (aşırı bazik)", "10,5-11,5 (bazik aralık)", "6,5-7,0 (nötr aralık)"], correctAnswer: 2, explanation: "Kazan suyu pH 10.5-11.5'te tutulur; düşükse korozyon, yüksekse köpürme olur. Çözünmüş oksijen < 0.02 ppm olmalıdır." },
+      { id: 2, sectionRef: "Kimyasal İşlem", category: MAK, question: "Kazan suyunda oksijen giderme nasıl yapılır?", options: ["Suya klor eklenmesi yoluyla", "Yalnızca suyu ısıtmak yoluyla", "Suya yağ eklenmesi yoluyla", "Sodyum sülfit veya hidrazin ile"], correctAnswer: 3, explanation: "Oksijen, sodyum sülfit veya hidrazin ile giderilir (de-aerator ile); sülfit oksijenle reaksiyona girip sülfata döner. Blowdown çözünmüş katıları kontrol eder." },
     ],
   },
   {
@@ -4442,8 +4422,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kazan emniyet düzenleri",
     blocks: [{ sectionTitles: ["Emniyet Bileşenleri", "Düşük Su Seviyesi Koruması"] }],
     questions: [
-      { id: 1, sectionRef: "Emniyet Bileşenleri", category: MAK, question: "Kazan emniyet supabı hangi basınçta ayarlanır?", options: ["Çalışma basıncının 1.03-1.1 katı", "Çalışma basıncının yarısı", "10 katı", "Ayar yapılmaz"], correctAnswer: 0, explanation: "Emniyet supabı çalışma basıncının 1.03-1.1 katında açar; ayrıca düşük su alarmı, alev gözetleyici ve basınç şalteri bulunur." },
-      { id: 2, sectionRef: "Düşük Su Seviyesi Koruması", category: MAK, question: "Düşük su seviyesi korumasının ikinci kademesi ne yapar?", options: ["Yakıcıyı (burner) otomatik kapatır", "Sadece alarm verir", "Su ekler", "Basıncı artırır"], correctAnswer: 0, explanation: "İlk kademe alarm verir, ikinci kademe yakıcıyı otomatik kapatır; düşük su seviyesinde çalışma tüp patlamasına yol açabilir (en ciddi kazan kazası)." },
+      { id: 1, sectionRef: "Emniyet Bileşenleri", category: MAK, question: "Kazan emniyet supabı hangi basınçta ayarlanır?", options: ["Herhangi bir ayar yapılmamakta", "Çalışma basıncının 1,03-1,1 katı", "Çalışma basıncının yarısı kadar", "Çalışma basıncının on katı kadar"], correctAnswer: 1, explanation: "Emniyet supabı çalışma basıncının 1.03-1.1 katında açar; ayrıca düşük su alarmı, alev gözetleyici ve basınç şalteri bulunur." },
+      { id: 2, sectionRef: "Düşük Su Seviyesi Koruması", category: MAK, question: "Düşük su seviyesi korumasının ikinci kademesi ne yapar?", options: ["Kazana otomatik su eklemektedir", "Kazan basıncını artırmaktadır", "Yakıcıyı (burner) otomatik kapatır", "Yalnızca sesli alarm vermektedir"], correctAnswer: 2, explanation: "İlk kademe alarm verir, ikinci kademe yakıcıyı otomatik kapatır; düşük su seviyesinde çalışma tüp patlamasına yol açabilir (en ciddi kazan kazası)." },
     ],
   },
   {
@@ -4451,8 +4431,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kazan bakım ve muayene",
     blocks: [{ sectionTitles: ["Periyodik Bakım İşleri", "İç Muayene"] }],
     questions: [
-      { id: 1, sectionRef: "Periyodik Bakım İşleri", category: MAK, question: "Kazan emniyet supabı testi hangi periyotla yapılır?", options: ["6 ayda bir", "Günlük", "10 yılda bir", "Hiç"], correctAnswer: 0, explanation: "Emniyet supap testi 6 ayda bir, su testi/gauge glass blowdown günlük, iç muayene 2.5 yıl, hidrostatik test 5 yılda bir (klas) yapılır." },
-      { id: 2, sectionRef: "İç Muayene", category: MAK, question: "İç muayenede tüp duvar kalınlığı nasıl kontrol edilir?", options: ["Ultrasonik ölçümle", "Gözle tahmin", "Tartarak", "Termometreyle"], correctAnswer: 0, explanation: "Kazan soğutulup boşaltılır ve havalandırılır; iç yüzey korozyon/pitting/çatlak açısından incelenir, tüp duvar kalınlığı ultrasonik ölçülür." },
+      { id: 1, sectionRef: "Periyodik Bakım İşleri", category: MAK, question: "Kazan emniyet supabı testi hangi periyotla yapılır?", options: ["Günlük", "10 yılda bir", "Hiç", "6 ayda bir"], correctAnswer: 3, explanation: "Emniyet supap testi 6 ayda bir, su testi/gauge glass blowdown günlük, iç muayene 2.5 yıl, hidrostatik test 5 yılda bir (klas) yapılır." },
+      { id: 2, sectionRef: "İç Muayene", category: MAK, question: "İç muayenede tüp duvar kalınlığı nasıl kontrol edilir?", options: ["Termometre okumaları yoluyla", "Ultrasonik kalınlık ölçümü ile", "Gözle bakılıp tahmin edilmesiyle", "Tüp söküp tartılması yoluyla"], correctAnswer: 1, explanation: "Kazan soğutulup boşaltılır ve havalandırılır; iç yüzey korozyon/pitting/çatlak açısından incelenir, tüp duvar kalınlığı ultrasonik ölçülür." },
     ],
   },
   {
@@ -4460,8 +4440,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ters ozmoz (RO) sistemi",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Sistem Bileşenleri"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "RO sisteminde deniz suyu hangi basınçla membrana basılır?", options: ["55-70 bar", "2-3 bar", "150 bar", "10 bar"], correctAnswer: 0, explanation: "Deniz suyu 55-70 bar ile yarı geçirgen membrana basılır; su geçer, tuz geride kalır. Geri kazanım oranı %35-45'tir." },
-      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Enerji geri kazanım cihazı RO'da ne yapar?", options: ["Konsantrat (reject) basıncından enerji geri kazanır", "Tuz ekler", "Membranı ısıtır", "Su üretir"], correctAnswer: 0, explanation: "Enerji geri kazanım cihazı yüksek basınçlı konsantrattan enerji geri kazanır; ön filtre, yüksek basınç pompası ve membran modülleri (%98-99.5 tuz ayrımı) sistemi tamamlar." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "RO sisteminde deniz suyu hangi basınçla membrana basılır?", options: ["150 bar", "10 bar", "55-70 bar", "2-3 bar"], correctAnswer: 2, explanation: "Deniz suyu 55-70 bar ile yarı geçirgen membrana basılır; su geçer, tuz geride kalır. Geri kazanım oranı %35-45'tir." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Enerji geri kazanım cihazı RO'da ne yapar?", options: ["Ürün suyuna mineral tuz eklemekte", "Membranı ısıtıp verimi artırmakta", "Doğrudan tatlı su üretmektedir", "Konsantrat basıncından enerji kazanır"], correctAnswer: 3, explanation: "Enerji geri kazanım cihazı yüksek basınçlı konsantrattan enerji geri kazanır; ön filtre, yüksek basınç pompası ve membran modülleri (%98-99.5 tuz ayrımı) sistemi tamamlar." },
     ],
   },
   {
@@ -4469,8 +4449,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Su kalitesi standartları",
     blocks: [{ sectionTitles: ["Kalite Parametreleri", "Dezenfeksiyon"] }],
     questions: [
-      { id: 1, sectionRef: "Kalite Parametreleri", category: MAK, question: "İçme suyu için TDS (tuzluluk) limiti nedir?", options: ["< 500 ppm", "< 5 ppm", "< 5000 ppm", "Sınır yok"], correctAnswer: 0, explanation: "İçme suyu TDS < 500 ppm, klorür < 250 ppm, pH 6.5-8.5; kazan suyunda ise TDS < 5 ppm, pH 10.5-11.5 olmalıdır." },
-      { id: 2, sectionRef: "Dezenfeksiyon", category: MAK, question: "İçme suyunda bakteri kontrolü nasıl sağlanır?", options: ["UV sterilizasyon, klorlama veya gümüş iyonizasyonu ile", "Sadece soğutma", "Hiç dezenfeksiyon yapılmaz", "Tuz ekleyerek"], correctAnswer: 0, explanation: "UV, klorlama veya gümüş iyonizasyonu ile bakteri kontrol edilir; salinometre tuzluluğu sürekli izler." },
+      { id: 1, sectionRef: "Kalite Parametreleri", category: MAK, question: "İçme suyu için TDS (tuzluluk) limiti nedir?", options: ["Sınır yok", "< 500 ppm", "< 5 ppm", "< 5000 ppm"], correctAnswer: 1, explanation: "İçme suyu TDS < 500 ppm, klorür < 250 ppm, pH 6.5-8.5; kazan suyunda ise TDS < 5 ppm, pH 10.5-11.5 olmalıdır." },
+      { id: 2, sectionRef: "Dezenfeksiyon", category: MAK, question: "İçme suyunda bakteri kontrolü nasıl sağlanır?", options: ["Hiçbir dezenfeksiyon yapılmamakta", "Suya tuz eklenmesi yoluyla yapılır", "UV, klorlama veya gümüş iyonizasyonu", "Yalnızca suyun soğutulması yoluyla"], correctAnswer: 2, explanation: "UV, klorlama veya gümüş iyonizasyonu ile bakteri kontrol edilir; salinometre tuzluluğu sürekli izler." },
     ],
   },
   {
@@ -4478,8 +4458,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Mineral dozajı ve dezenfeksiyon",
     blocks: [{ sectionTitles: ["Mineralleştirme", "Dezenfeksiyon Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Mineralleştirme", category: MAK, question: "Mineralsiz su (pH < 6) neden içme suyu olarak uygun değildir?", options: ["Boru korozyonuna neden olur", "Çok tatlıdır", "Donar", "Renklidir"], correctAnswer: 0, explanation: "Kalsit filtre/kimyasal dozajla kalsiyum, magnezyum ve bikarbonat eklenir, pH 6.5-8.5'e getirilir; mineralsiz su (pH<6) boru korozyonu yapar." },
-      { id: 2, sectionRef: "Dezenfeksiyon Yöntemleri", category: MAK, question: "UV sterilizasyonun bir dezavantajı nedir?", options: ["Rezidüel (kalıcı) koruma sağlamaz", "Kimyasal bırakır", "Çok ucuzdur", "Bakteri öldürmez"], correctAnswer: 0, explanation: "UV kimyasal bırakmaz ama rezidüel koruma yoktur; klorlama ucuz ama tat/koku sorunlu, gümüş iyonizasyonu uzun süreli ama yavaş etkilidir." },
+      { id: 1, sectionRef: "Mineralleştirme", category: MAK, question: "Mineralsiz su (pH < 6) neden içme suyu olarak uygun değildir?", options: ["Tadı fazla tatlı olduğu için uygunsuz", "Düşük sıcaklıkta kolayca donduğu için", "Belirgin biçimde renkli olduğu için", "Boru hatlarında korozyona yol açar"], correctAnswer: 3, explanation: "Kalsit filtre/kimyasal dozajla kalsiyum, magnezyum ve bikarbonat eklenir, pH 6.5-8.5'e getirilir; mineralsiz su (pH<6) boru korozyonu yapar." },
+      { id: 2, sectionRef: "Dezenfeksiyon Yöntemleri", category: MAK, question: "UV sterilizasyonun bir dezavantajı nedir?", options: ["Bakterileri hiç öldürememesi hâli", "Rezidüel (kalıcı) koruma sağlamaz", "Suda kimyasal kalıntı bırakması", "Belirgin biçimde çok ucuz olması"], correctAnswer: 1, explanation: "UV kimyasal bırakmaz ama rezidüel koruma yoktur; klorlama ucuz ama tat/koku sorunlu, gümüş iyonizasyonu uzun süreli ama yavaş etkilidir." },
     ],
   },
   {
@@ -4487,8 +4467,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Üretim kapasitesi ve verim",
     blocks: [{ sectionTitles: ["Kapasite Hesabı"] }],
     questions: [
-      { id: 1, sectionRef: "Kapasite Hesabı", category: MAK, question: "Mürettebat su tüketimi kişi başına yaklaşık ne kadardır?", options: ["150-200 litre/kişi/gün", "10 litre/kişi/gün", "1000 litre/kişi/gün", "5 litre/kişi/gün"], correctAnswer: 0, explanation: "Mürettebat tüketimi 150-200 litre/kişi/gün; ayrıca kazan besleme 2-5 ton/gün, teknik kullanım 1-3 ton/gün hesaplanır." },
-      { id: 2, sectionRef: "Kapasite Hesabı", category: MAK, question: "Su üretim kapasitesi planlanırken hangi kalemler toplanır?", options: ["Mürettebat tüketimi + kazan besleme + teknik kullanım", "Sadece kazan besleme", "Sadece içme suyu", "Sadece yıkama"], correctAnswer: 0, explanation: "Toplam ihtiyaç mürettebat (150-200 L/kişi), kazan besleme (2-5 t/gün) ve teknik kullanım (1-3 t/gün) toplamından bulunur." },
+      { id: 1, sectionRef: "Kapasite Hesabı", category: MAK, question: "Mürettebat su tüketimi kişi başına yaklaşık ne kadardır?", options: ["1000 litre/kişi/gün", "5 litre/kişi/gün", "150-200 litre/kişi/gün", "10 litre/kişi/gün"], correctAnswer: 2, explanation: "Mürettebat tüketimi 150-200 litre/kişi/gün; ayrıca kazan besleme 2-5 ton/gün, teknik kullanım 1-3 ton/gün hesaplanır." },
+      { id: 2, sectionRef: "Kapasite Hesabı", category: MAK, question: "Su üretim kapasitesi planlanırken hangi kalemler toplanır?", options: ["Yalnızca kazan besleme suyu miktarı", "Yalnızca içme suyu tüketim miktarı", "Yalnızca yıkama suyu tüketim miktarı", "Mürettebat, kazan besleme ve teknik"], correctAnswer: 3, explanation: "Toplam ihtiyaç mürettebat (150-200 L/kişi), kazan besleme (2-5 t/gün) ve teknik kullanım (1-3 t/gün) toplamından bulunur." },
     ],
   },
   {
@@ -4496,8 +4476,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Purifier ve clarifier farkı",
     blocks: [{ sectionTitles: ["Karşılaştırma", "Arıtma Düzeni"] }],
     questions: [
-      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Purifier ile clarifier arasındaki temel fark nedir?", options: ["Purifier su ayırır (gravity disc'li); clarifier yalnız temiz yağ çıkarır (su ayırmaz)", "İkisi de aynıdır", "Clarifier su ayırır", "Purifier katı ayırmaz"], correctAnswer: 0, explanation: "Purifier birinci aşamada su+katı ayırır (gravity disc'li); clarifier ikinci aşamada gravity disc'siz çalışıp yalnızca temiz yağ verir, katıyı çok iyi ayırır." },
-      { id: 2, sectionRef: "Arıtma Düzeni", category: MAK, question: "Tipik yakıt arıtma düzeni sırası nedir?", options: ["Settling tank → Purifier → Clarifier → Servis tank", "Servis → Purifier → Settling", "Clarifier → Settling → Purifier", "Sadece servis tank"], correctAnswer: 0, explanation: "Düzen: Settling → Purifier → Clarifier → Servis tank; ALCAP gibi modern sistemlerde ayrım otomatiktir, gravity disc gerekmez." },
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Purifier ile clarifier arasındaki temel fark nedir?", options: ["Purifier katı ayırmayan ünitedir", "Purifier su ayırır; clarifier ayırmaz", "İkisi tümüyle aynı işi yapmaktadır", "Clarifier su ayıran ünitedir"], correctAnswer: 1, explanation: "Purifier birinci aşamada su+katı ayırır (gravity disc'li); clarifier ikinci aşamada gravity disc'siz çalışıp yalnızca temiz yağ verir, katıyı çok iyi ayırır." },
+      { id: 2, sectionRef: "Arıtma Düzeni", category: MAK, question: "Tipik yakıt arıtma düzeni sırası nedir?", options: ["Clarifier → Settling → Purifier sırası", "Yalnızca servis tankı kullanılır", "Settling → Purifier → Clarifier → Servis", "Servis → Purifier → Settling sırası"], correctAnswer: 2, explanation: "Düzen: Settling → Purifier → Clarifier → Servis tank; ALCAP gibi modern sistemlerde ayrım otomatiktir, gravity disc gerekmez." },
     ],
   },
   {
@@ -4505,8 +4485,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Gravity disc seçimi",
     blocks: [{ sectionTitles: ["Seçim Prensibi", "Pratik Uygulama"] }],
     questions: [
-      { id: 1, sectionRef: "Seçim Prensibi", category: MAK, question: "Gravity disc çapı neye göre seçilir?", options: ["Arıtılacak akışkanın yoğunluğuna (yoğunluk arttıkça büyük çap)", "Renge", "Devire", "Sıcaklığa hiç bakılmaz"], correctAnswer: 0, explanation: "Disc çapı akışkan yoğunluğuna göre seçilir; çok büyük disc → yağ kaybı, çok küçük disc → su yağa karışır (yetersiz ayırma)." },
-      { id: 2, sectionRef: "Pratik Uygulama", category: MAK, question: "Sıcaklık gravity disc seçimini nasıl etkiler?", options: ["Sıcaklık arttıkça yoğunluk düşer; arıtma sıcaklığındaki yoğunluk kullanılır", "Etkilemez", "Sıcaklıkla yoğunluk artar", "Sadece renk değişir"], correctAnswer: 0, explanation: "BDN yoğunluğu ve arıtma sıcaklığındaki yoğunluk üretici nomogramında kullanılır; sıcaklık arttıkça yoğunluk düşer." },
+      { id: 1, sectionRef: "Seçim Prensibi", category: MAK, question: "Gravity disc çapı neye göre seçilir?", options: ["Akışkanın görünen rengine göre", "Separatörün devir sayısına göre", "Sıcaklığa hiç bakılmadan seçilir", "Arıtılacak akışkanın yoğunluğuna"], correctAnswer: 3, explanation: "Disc çapı akışkan yoğunluğuna göre seçilir; çok büyük disc → yağ kaybı, çok küçük disc → su yağa karışır (yetersiz ayırma)." },
+      { id: 2, sectionRef: "Pratik Uygulama", category: MAK, question: "Sıcaklık gravity disc seçimini nasıl etkiler?", options: ["Yalnızca akışkanın rengi değişir", "Sıcaklık artınca yoğunluk düşmekte", "Sıcaklık seçimi hiç etkilememektedir", "Sıcaklıkla yoğunluk artmaktadır"], correctAnswer: 1, explanation: "BDN yoğunluğu ve arıtma sıcaklığındaki yoğunluk üretici nomogramında kullanılır; sıcaklık arttıkça yoğunluk düşer." },
     ],
   },
   {
@@ -4514,8 +4494,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Otomatik desludge ve kontrol",
     blocks: [{ sectionTitles: ["Çalışma Mekanizması", "Operasyonel Parametreler"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Mekanizması", category: MAK, question: "Otomatik desludge nasıl gerçekleşir?", options: ["Slayt pistonlar hidrolik kontrol suyuyla açılır, sludge merkezkaç kuvvetiyle atılır", "Elle kazınarak", "Su ile yıkanarak", "Isıtılarak"], correctAnswer: 0, explanation: "Tambur altındaki sliding pistonlar kontrol suyuyla açılır, biriken sludge merkezkaç kuvvetiyle sludge tanka atılır; modern sistemlerde su sensörü optimum zamanı belirler." },
-      { id: 2, sectionRef: "Operasyonel Parametreler", category: MAK, question: "Desludge aralığı tipik olarak ne kadardır?", options: ["30-90 dakika (yakıta göre)", "1 saniye", "24 saat", "1 hafta"], correctAnswer: 0, explanation: "Desludge aralığı 30-90 dakika (yakıta göre), süresi 0.3-0.5 saniye, kontrol suyu basıncı 2-3 bardır." },
+      { id: 1, sectionRef: "Çalışma Mekanizması", category: MAK, question: "Otomatik desludge nasıl gerçekleşir?", options: ["Basınçlı su ile yıkanması yoluyla", "Isıtılıp buharlaştırılması yoluyla", "Slayt piston açılır, sludge dışa atılır", "Elle kazınarak temizlenmesi yoluyla"], correctAnswer: 2, explanation: "Tambur altındaki sliding pistonlar kontrol suyuyla açılır, biriken sludge merkezkaç kuvvetiyle sludge tanka atılır; modern sistemlerde su sensörü optimum zamanı belirler." },
+      { id: 2, sectionRef: "Operasyonel Parametreler", category: MAK, question: "Desludge aralığı tipik olarak ne kadardır?", options: ["1 saniye (sürekli boşaltma ile)", "24 saat (günde yalnızca bir kez)", "1 hafta (haftada yalnızca bir kez)", "30-90 dakika (yakıt türüne göre)"], correctAnswer: 3, explanation: "Desludge aralığı 30-90 dakika (yakıta göre), süresi 0.3-0.5 saniye, kontrol suyu basıncı 2-3 bardır." },
     ],
   },
   {
@@ -4523,8 +4503,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt arıtma sırası ve sıcaklık",
     blocks: [{ sectionTitles: ["Arıtma Sırası", "Sıcaklık Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "Arıtma Sırası", category: MAK, question: "Yakıt purifier'da yaklaşık hangi sıcaklıkta arıtılır?", options: ["95-98°C", "20°C", "150°C", "60°C"], correctAnswer: 0, explanation: "Settling 60-70°C'de çökeltir, purifier 95-98°C'de arıtır, ardından clarifier/servis tank gelir; sıra: bunker→settling→purifier→clarifier→servis→motor." },
-      { id: 2, sectionRef: "Sıcaklık Gereklilikleri", category: MAK, question: "HFO motor girişinde enjeksiyon viskozitesi için hangi sıcaklığa getirilir?", options: ["130-150°C (12-15 cSt)", "40-50°C", "200°C", "Isıtılmaz"], correctAnswer: 0, explanation: "HFO motor girişinde 130-150°C'ye ısıtılarak 12-15 cSt enjeksiyon viskozitesi sağlanır; servis tankı 80-90°C'dir." },
+      { id: 1, sectionRef: "Arıtma Sırası", category: MAK, question: "Yakıt purifier'da yaklaşık hangi sıcaklıkta arıtılır?", options: ["60°C (transfer sıcaklığı)", "95-98°C (yakıt arıtma sıcaklığı)", "20°C (ortam sıcaklığı düzeyi)", "150°C (enjeksiyon sıcaklığı)"], correctAnswer: 1, explanation: "Settling 60-70°C'de çökeltir, purifier 95-98°C'de arıtır, ardından clarifier/servis tank gelir; sıra: bunker→settling→purifier→clarifier→servis→motor." },
+      { id: 2, sectionRef: "Sıcaklık Gereklilikleri", category: MAK, question: "HFO motor girişinde enjeksiyon viskozitesi için hangi sıcaklığa getirilir?", options: ["200°C (aşırı ısıtma değeri)", "Isıtılmadan doğrudan verilir", "130-150°C (12-15 cSt viskozite)", "40-50°C (transfer sıcaklığı)"], correctAnswer: 2, explanation: "HFO motor girişinde 130-150°C'ye ısıtılarak 12-15 cSt enjeksiyon viskozitesi sağlanır; servis tankı 80-90°C'dir." },
     ],
   },
   {
@@ -4532,8 +4512,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yağ arıtma ve su ayrımı",
     blocks: [{ sectionTitles: ["Yağ Arıtma Sistemi", "Yağ Analizi Parametreleri"] }],
     questions: [
-      { id: 1, sectionRef: "Yağ Arıtma Sistemi", category: MAK, question: "Yağlama yağı nasıl temizlenir?", options: ["Sürekli by-pass filtrasyon ve santrifüj (purifier/clarifier) arıtmayla", "Hiç temizlenmez", "Sadece elle", "Su ekleyerek"], correctAnswer: 0, explanation: "Yağ sürekli by-pass filtrasyon ve santrifüj arıtmaya tabidir; ana tanktan alınıp purifier/clarifier'dan geçirilip tanka döner. Trunk piston motorlarda arıtma daha kritiktir." },
-      { id: 2, sectionRef: "Yağ Analizi Parametreleri", category: MAK, question: "Yağ analizinde su içeriği limiti nedir ve neyi gösterir?", options: ["< %0.2; sızdırmazlık arızasını", "< %50; normaldir", "Sınır yok", "%10; iyi durumu"], correctAnswer: 0, explanation: "Su < %0.2 (sızdırmazlık arızası göstergesi); BN > 15-20, TAN < 2.5, Fe < 100 ppm (aşınma) izlenir." },
+      { id: 1, sectionRef: "Yağ Arıtma Sistemi", category: MAK, question: "Yağlama yağı nasıl temizlenir?", options: ["Yağ hiçbir biçimde temizlenmemekte", "Yalnızca elle süzülerek temizlenir", "Yağa su eklenerek temizlenmektedir", "By-pass filtrasyon ve santrifüj arıtma"], correctAnswer: 3, explanation: "Yağ sürekli by-pass filtrasyon ve santrifüj arıtmaya tabidir; ana tanktan alınıp purifier/clarifier'dan geçirilip tanka döner. Trunk piston motorlarda arıtma daha kritiktir." },
+      { id: 2, sectionRef: "Yağ Analizi Parametreleri", category: MAK, question: "Yağ analizinde su içeriği limiti nedir ve neyi gösterir?", options: ["%10; iyi durumda olduğunu", "< %0,2; sızdırmazlık arızasını", "< %50; tümüyle normal kabul edilir", "Herhangi bir sınır bulunmaz"], correctAnswer: 1, explanation: "Su < %0.2 (sızdırmazlık arızası göstergesi); BN > 15-20, TAN < 2.5, Fe < 100 ppm (aşınma) izlenir." },
     ],
   },
   {
@@ -4541,8 +4521,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ara soğutma ve son soğutma",
     blocks: [{ sectionTitles: ["Ara Soğutma (Intercooling)", "Son Soğutma (Aftercooling)"] }],
     questions: [
-      { id: 1, sectionRef: "Ara Soğutma (Intercooling)", category: MAK, question: "Kompresörde ara soğutma (intercooling) neyi azaltır?", options: ["İkinci kademe sıkıştırma işini (hava soğuyup hacmi küçülür)", "Çıkış basıncını", "Devir sayısını", "Hiçbir şey"], correctAnswer: 0, explanation: "Birinci kademe çıkışındaki sıcak hava eşanjörde soğutulur, hacmi küçülür ve ikinci kademe sıkıştırma işi azalır; ideal ara basınç Para = √(P₁·P₂)." },
-      { id: 2, sectionRef: "Son Soğutma (Aftercooling)", category: MAK, question: "Son soğutucu (aftercooler) ne yapar?", options: ["Son kademe çıkışındaki havayı (200-250°C) ortam sıcaklığına yakın düşürür", "Havayı ısıtır", "Yağ ekler", "Basıncı artırır"], correctAnswer: 0, explanation: "Son soğutucu, son kademe çıkışındaki sıcak havayı (200-250°C) ortam sıcaklığına yakın düşürür; oluşan kondens otomatik drenajla atılır." },
+      { id: 1, sectionRef: "Ara Soğutma (Intercooling)", category: MAK, question: "Kompresörde ara soğutma (intercooling) neyi azaltır?", options: ["Kompresörün devir sayısını", "Hiçbir büyüklüğü azaltmamaktadır", "İkinci kademe sıkıştırma işini", "Kompresörün çıkış basıncını"], correctAnswer: 2, explanation: "Birinci kademe çıkışındaki sıcak hava eşanjörde soğutulur, hacmi küçülür ve ikinci kademe sıkıştırma işi azalır; ideal ara basınç Para = √(P₁·P₂)." },
+      { id: 2, sectionRef: "Son Soğutma (Aftercooling)", category: MAK, question: "Son soğutucu (aftercooler) ne yapar?", options: ["Sıkıştırılan havayı ısıtmaktadır", "Havaya yağlama yağı eklemektedir", "Hava basıncını daha da artırmakta", "Çıkış havasını ortam sıcaklığına"], correctAnswer: 3, explanation: "Son soğutucu, son kademe çıkışındaki sıcak havayı (200-250°C) ortam sıcaklığına yakın düşürür; oluşan kondens otomatik drenajla atılır." },
     ],
   },
   {
@@ -4550,8 +4530,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Otomatik boşaltma (auto-drain)",
     blocks: [{ sectionTitles: ["Kondens Noktaları", "Bakım"] }],
     questions: [
-      { id: 1, sectionRef: "Kondens Noktaları", category: MAK, question: "Basınçlı hava sisteminde kondens biriken noktalar hangileridir?", options: ["Ara/son soğutucu çıkışı, hava şişesi alt kısmı ve dağıtım hatları", "Sadece pervane", "Sadece dümen", "Hiçbir yer"], correctAnswer: 0, explanation: "Kondens; ara soğutucu çıkışı, son soğutucu çıkışı, hava şişesi alt kısmı ve dağıtım hatlarında birikir; auto-drain valfleri zamanlayıcı/float ile çalışır." },
-      { id: 2, sectionRef: "Bakım", category: MAK, question: "Auto-drain valfi tıkanırsa ne olur?", options: ["Kondens birikir (sızıntı ise hava kaybı olur)", "Hava daha kuru olur", "Basınç artar ama sorun olmaz", "Hiçbir etki"], correctAnswer: 0, explanation: "Otomatik drenaj valfleri periyodik kontrol edilmelidir; tıkanma kondens birikmesine, sızıntı ise hava kaybına yol açar." },
+      { id: 1, sectionRef: "Kondens Noktaları", category: MAK, question: "Basınçlı hava sisteminde kondens biriken noktalar hangileridir?", options: ["Hiçbir noktada kondens birikmez", "Soğutucu çıkışı, şişe altı, hatlar", "Yalnızca pervane şaft tüneli", "Yalnızca dümen makine dairesi"], correctAnswer: 1, explanation: "Kondens; ara soğutucu çıkışı, son soğutucu çıkışı, hava şişesi alt kısmı ve dağıtım hatlarında birikir; auto-drain valfleri zamanlayıcı/float ile çalışır." },
+      { id: 2, sectionRef: "Bakım", category: MAK, question: "Auto-drain valfi tıkanırsa ne olur?", options: ["Basınç artar ama sorun oluşturmaz", "Sistem üzerinde hiçbir etkisi yok", "Kondens birikir (sızıntıda hava kaybı)", "Basınçlı hava daha kuru olmaktadır"], correctAnswer: 2, explanation: "Otomatik drenaj valfleri periyodik kontrol edilmelidir; tıkanma kondens birikmesine, sızıntı ise hava kaybına yol açar." },
     ],
   },
   {
@@ -4559,8 +4539,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kompresör bakım ve valf muayenesi",
     blocks: [{ sectionTitles: ["Bakım İşleri", "Valf Muayenesi"] }],
     questions: [
-      { id: 1, sectionRef: "Bakım İşleri", category: MAK, question: "Kompresör emme/basma valfi kontrolü hangi periyotla yapılır?", options: ["3000-6000 saat", "Günlük", "10 yılda bir", "Hiç"], correctAnswer: 0, explanation: "Yağ kontrolü günlük, emme/basma valfi 3000-6000 saat, piston/segman 6000-12000 saat, emniyet valfi testi 6 ayda bir yapılır." },
-      { id: 2, sectionRef: "Valf Muayenesi", category: MAK, question: "Kompresör valf arızasının belirtisi nedir?", options: ["Kademe çıkış sıcaklığı artışı, kapasite düşüşü ve anormal ses", "Daha sessiz çalışma", "Yakıt tasarrufu", "Belirti yok"], correctAnswer: 0, explanation: "Emme/basma valfleri verimi doğrudan etkiler; valf plakası çatlağı/aşınması kademe çıkış sıcaklığı artışı, kapasite düşüşü ve anormal sese yol açar." },
+      { id: 1, sectionRef: "Bakım İşleri", category: MAK, question: "Kompresör emme/basma valfi kontrolü hangi periyotla yapılır?", options: ["Her gün düzenli olarak yapılır", "10 yılda yalnızca bir kez yapılır", "Hiçbir zaman kontrol edilmez", "3000-6000 çalışma saatinde bir"], correctAnswer: 3, explanation: "Yağ kontrolü günlük, emme/basma valfi 3000-6000 saat, piston/segman 6000-12000 saat, emniyet valfi testi 6 ayda bir yapılır." },
+      { id: 2, sectionRef: "Valf Muayenesi", category: MAK, question: "Kompresör valf arızasının belirtisi nedir?", options: ["Hiçbir belirti ortaya çıkmamakta", "Çıkış sıcaklığı artışı ve ses", "Belirgin biçimde sessiz çalışma", "Sefer yakıt tüketiminde tasarruf"], correctAnswer: 1, explanation: "Emme/basma valfleri verimi doğrudan etkiler; valf plakası çatlağı/aşınması kademe çıkış sıcaklığı artışı, kapasite düşüşü ve anormal sese yol açar." },
     ],
   },
   {
@@ -4568,8 +4548,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava şişesi muayene gereklilikleri",
     blocks: [{ sectionTitles: ["Muayene Gereklilikleri", "Operasyonel Kontroller"] }],
     questions: [
-      { id: 1, sectionRef: "Muayene Gereklilikleri", category: MAK, question: "Hava şişesinin hidrostatik testi hangi periyot ve basınçtadır?", options: ["10 yılda bir, 1.5 × çalışma basıncı", "Yılda bir, 0.5 × basınç", "Hiç", "Aylık"], correctAnswer: 0, explanation: "İç muayene 5 yıl, dış muayene 2.5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncı, emniyet valfi testi yıllık yapılır." },
-      { id: 2, sectionRef: "Operasyonel Kontroller", category: MAK, question: "SOLAS gereği başlatma havası şişeleri hangi kapasitede olmalıdır?", options: ["En az 12 ardışık başlatma", "1 başlatma", "100 başlatma", "Kapasite önemsiz"], correctAnswer: 0, explanation: "Şişeler her zaman dolu tutulur ve SOLAS gereği en az 12 ardışık başlatma kapasitesi olmalıdır; minimum basınç altında ana makine çalıştırılamaz." },
+      { id: 1, sectionRef: "Muayene Gereklilikleri", category: MAK, question: "Hava şişesinin hidrostatik testi hangi periyot ve basınçtadır?", options: ["Hiçbir zaman test edilmemektedir", "Ayda bir kez, çalışma basıncında", "10 yılda bir, 1,5 × çalışma basıncı", "Yılda bir kez, 0,5 × çalışma basıncı"], correctAnswer: 2, explanation: "İç muayene 5 yıl, dış muayene 2.5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncı, emniyet valfi testi yıllık yapılır." },
+      { id: 2, sectionRef: "Operasyonel Kontroller", category: MAK, question: "SOLAS gereği başlatma havası şişeleri hangi kapasitede olmalıdır?", options: ["En az 1 başlatmaya yetecek kadar", "En az 100 başlatmaya yetecek kapasitede", "Kapasite değeri tümüyle önemsiz", "En az 12 ardışık başlatmaya yetecek"], correctAnswer: 3, explanation: "Şişeler her zaman dolu tutulur ve SOLAS gereği en az 12 ardışık başlatma kapasitesi olmalıdır; minimum basınç altında ana makine çalıştırılamaz." },
     ],
   },
   {
@@ -4577,8 +4557,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "MGO ve MDO ayrımı",
     blocks: [{ sectionTitles: ["Karşılaştırma", "Kullanım Alanları"] }],
     questions: [
-      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "MGO (DMA) ile MDO (DMB) arasındaki temel fark nedir?", options: ["MGO artık bileşen içermez ve daha düşük kükürtlüdür (<%0.10)", "MDO en pahalısıdır", "MGO çok viskozdur", "İkisi de aynıdır"], correctAnswer: 0, explanation: "MGO (DMA) artık bileşen içermez, kükürt <%0.10; MDO (DMB) az miktarda artık içerebilir, kükürt <%0.50." },
-      { id: 2, sectionRef: "Kullanım Alanları", category: MAK, question: "ECA bölgelerine girişte hangi yakıta geçilir?", options: ["MGO'ya", "HFO'ya", "LNG'ye zorunlu", "Hiçbir değişiklik"], correctAnswer: 0, explanation: "ECA bölgelerine girişte MGO'ya geçilir; acil jeneratör genellikle MDO/MGO ile çalışır." },
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "MGO (DMA) ile MDO (DMB) arasındaki temel fark nedir?", options: ["İkisi tümüyle aynı yakıt sınıfıdır", "MGO artık içermez; daha az kükürtlü", "MDO her koşulda en pahalı olandır", "MGO çok yüksek viskoziteye sahiptir"], correctAnswer: 1, explanation: "MGO (DMA) artık bileşen içermez, kükürt <%0.10; MDO (DMB) az miktarda artık içerebilir, kükürt <%0.50." },
+      { id: 2, sectionRef: "Kullanım Alanları", category: MAK, question: "ECA bölgelerine girişte hangi yakıta geçilir?", options: ["Zorunlu olarak LNG yakıtına", "Hiçbir yakıt değişimi yapılmaz", "MGO'ya (düşük kükürtlü distile)", "HFO'ya (yüksek kükürtlü artık yakıt)"], correctAnswer: 2, explanation: "ECA bölgelerine girişte MGO'ya geçilir; acil jeneratör genellikle MDO/MGO ile çalışır." },
     ],
   },
   {
@@ -4586,8 +4566,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "LNG yakıt kullanımı",
     blocks: [{ sectionTitles: ["LNG'nin Yakıt Olarak Özellikleri", "Yakıt Gaz Tedarik Sistemi (FGSS)"] }],
     questions: [
-      { id: 1, sectionRef: "LNG'nin Yakıt Olarak Özellikleri", category: MAK, question: "LNG'nin başlıca emisyon avantajı nedir?", options: ["SOx neredeyse sıfır, PM ihmal edilebilir; NOx Tier III'e yaklaşır", "CO₂ sıfırdır", "Hiç yakıt gerektirmez", "Su üretir"], correctAnswer: 0, explanation: "LNG ağırlıklı metandır (−162°C'de sıvı); SOx sıfıra yakın, PM ihmal edilebilir, NOx ek arıtmasız Tier III'e yaklaşır. Hacimsel enerjisi HFO'nun ~%60'ı olduğundan büyük tank gerekir." },
-      { id: 2, sectionRef: "Yakıt Gaz Tedarik Sistemi (FGSS)", category: MAK, question: "Düşük basınçlı LNG sisteminde gaz basıncı ve metan kayması nasıldır?", options: ["5-8 bar; yüksek metan kayması (%2-4)", "300 bar; sıfır kaçak", "100 bar; düşük kaçak", "1 bar; kaçak yok"], correctAnswer: 0, explanation: "Düşük basınçlı sistem (4 zamanlı Otto) 5-8 bar ve yüksek metan kayması (%2-4); yüksek basınçlı (~300 bar, 2 zamanlı Diesel) çok düşük kayma. Güvenlik IGF Code ile belirlenir." },
+      { id: 1, sectionRef: "LNG'nin Yakıt Olarak Özellikleri", category: MAK, question: "LNG'nin başlıca emisyon avantajı nedir?", options: ["CO₂ salımı tümüyle sıfır olmaktadır", "Hiçbir yakıt gerektirmemektedir", "Yanma sonucu yalnızca su üretmekte", "SOx sıfıra yakın, PM ihmal edilebilir"], correctAnswer: 3, explanation: "LNG ağırlıklı metandır (−162°C'de sıvı); SOx sıfıra yakın, PM ihmal edilebilir, NOx ek arıtmasız Tier III'e yaklaşır. Hacimsel enerjisi HFO'nun ~%60'ı olduğundan büyük tank gerekir." },
+      { id: 2, sectionRef: "Yakıt Gaz Tedarik Sistemi (FGSS)", category: MAK, question: "Düşük basınçlı LNG sisteminde gaz basıncı ve metan kayması nasıldır?", options: ["1 bar; hiçbir kaçak oluşmamakta", "5-8 bar; yüksek metan kayması (%2-4)", "300 bar; hiç metan kayması yoktur", "100 bar; düşük metan kayması olur"], correctAnswer: 1, explanation: "Düşük basınçlı sistem (4 zamanlı Otto) 5-8 bar ve yüksek metan kayması (%2-4); yüksek basınçlı (~300 bar, 2 zamanlı Diesel) çok düşük kayma. Güvenlik IGF Code ile belirlenir." },
     ],
   },
   {
@@ -4595,8 +4575,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Metanol ve amonyak yakıtlar",
     blocks: [{ sectionTitles: ["Metanol", "Amonyak"] }],
     questions: [
-      { id: 1, sectionRef: "Metanol", category: MAK, question: "Metanolün dikkat gerektiren özelliği nedir?", options: ["Flash point'i çok düşüktür (12°C), özel güvenlik önlemleri gerekir", "Çok yüksek flash point", "Karbon içermez", "Toksik değildir hiç"], correctAnswer: 0, explanation: "Metanol oda sıcaklığında sıvıdır ama flash point'i 12°C olduğundan özel önlem gerekir; SOx sıfır, biyolojik olarak parçalanabilir, enerji yoğunluğu HFO'nun ~yarısı." },
-      { id: 2, sectionRef: "Amonyak", category: MAK, question: "Amonyak yakıtın temel riski ve gereksinimi nedir?", options: ["Toksik gazdır ve düşük yanma hızı nedeniyle pilot yakıt gerektirir", "Çok yüksek enerji yoğunluğu", "Karbon salar", "Risksizdir"], correctAnswer: 0, explanation: "Amonyak karbon içermez (yanma ürünü N₂ ve H₂O) ama toksiktir, yavaş yanar ve pilot yakıt (MGO/H₂) gerektirir; N₂O (güçlü sera gazı) oluşum riski vardır." },
+      { id: 1, sectionRef: "Metanol", category: MAK, question: "Metanolün dikkat gerektiren özelliği nedir?", options: ["Yapısında hiç karbon içermemesi", "Hiçbir biçimde toksik olmaması", "Flash point çok düşük (12°C)", "Flash point çok yüksek olması"], correctAnswer: 2, explanation: "Metanol oda sıcaklığında sıvıdır ama flash point'i 12°C olduğundan özel önlem gerekir; SOx sıfır, biyolojik olarak parçalanabilir, enerji yoğunluğu HFO'nun ~yarısı." },
+      { id: 2, sectionRef: "Amonyak", category: MAK, question: "Amonyak yakıtın temel riski ve gereksinimi nedir?", options: ["Çok yüksek enerji yoğunluğu taşır", "Yanmada karbondioksit salmaktadır", "Hiçbir risk taşımayan bir yakıttır", "Toksiktir; pilot yakıt gerektirir"], correctAnswer: 3, explanation: "Amonyak karbon içermez (yanma ürünü N₂ ve H₂O) ama toksiktir, yavaş yanar ve pilot yakıt (MGO/H₂) gerektirir; N₂O (güçlü sera gazı) oluşum riski vardır." },
     ],
   },
   {
@@ -4604,8 +4584,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yoğunluk ve API gravity",
     blocks: [{ sectionTitles: ["Yoğunluk Ölçümü", "API Gravity"] }],
     questions: [
-      { id: 1, sectionRef: "Yoğunluk Ölçümü", category: MAK, question: "Deniz yakıtlarında yoğunluk hangi referans sıcaklıkta verilir?", options: ["15°C", "0°C", "50°C", "100°C"], correctAnswer: 0, explanation: "Yoğunluk 15°C'de kg/m³ olarak verilir; HFO tipik 960-991, MGO 830-890 kg/m³'tür. Hidrometre veya dijital ölçer kullanılır." },
-      { id: 2, sectionRef: "API Gravity", category: MAK, question: "API gravity ölçeği yoğunlukla nasıl ilişkilidir?", options: ["Ters ilişkilidir; hafif yakıtlar yüksek API değerine sahiptir", "Doğru orantılıdır", "İlişkisizdir", "Sadece sıcaklığa bağlıdır"], correctAnswer: 0, explanation: "API = (141.5/SG₆₀°F) − 131.5; ters yoğunluk ölçeğidir, hafif yakıtlar yüksek API'ye sahiptir." },
+      { id: 1, sectionRef: "Yoğunluk Ölçümü", category: MAK, question: "Deniz yakıtlarında yoğunluk hangi referans sıcaklıkta verilir?", options: ["100°C", "15°C", "0°C", "50°C"], correctAnswer: 1, explanation: "Yoğunluk 15°C'de kg/m³ olarak verilir; HFO tipik 960-991, MGO 830-890 kg/m³'tür. Hidrometre veya dijital ölçer kullanılır." },
+      { id: 2, sectionRef: "API Gravity", category: MAK, question: "API gravity ölçeği yoğunlukla nasıl ilişkilidir?", options: ["Yoğunlukla hiçbir ilişkisi yoktur", "Yalnızca sıcaklığa bağlı bir ölçek", "Ters ilişkili; hafif yakıt yüksek API", "Yoğunlukla doğru orantılı bir ölçek"], correctAnswer: 2, explanation: "API = (141.5/SG₆₀°F) − 131.5; ters yoğunluk ölçeğidir, hafif yakıtlar yüksek API'ye sahiptir." },
     ],
   },
   {
@@ -4613,8 +4593,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pour point ve cloud point",
     blocks: [{ sectionTitles: ["Tanımlar", "Operasyonel Önemi"] }],
     questions: [
-      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Cloud point neyi ifade eder?", options: ["Parafin kristallerinin oluşmaya başladığı (yakıtın bulanıklaştığı) sıcaklık", "Yakıtın donduğu nokta", "Yanma sıcaklığı", "Flash point"], correctAnswer: 0, explanation: "Cloud point parafin kristallerinin oluşup yakıtın bulanıklaştığı sıcaklıktır (filtre tıkanması başlar); pour point yakıtın akışkanlığını yitirdiği sıcaklıktır (cloud point'ten 6-10°C düşük)." },
-      { id: 2, sectionRef: "Operasyonel Önemi", category: MAK, question: "Yakıt tank sıcaklığı pour point'e göre nasıl tutulmalıdır?", options: ["Pour point'in en az 10°C üzerinde", "Pour point'in altında", "Tam pour point'te", "Önemsiz"], correctAnswer: 0, explanation: "Depolama/transfer sıcaklığı pour point'in en az 10°C üzerinde tutulur; donmuş yakıt akışı engeller ve pompalar kavitasyon yapar." },
+      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Cloud point neyi ifade eder?", options: ["Yakıtın tümüyle donduğu sıcaklık", "Yakıtın yanmaya başladığı sıcaklık değeri", "Flash point (parlama) sıcaklığı", "Parafin kristali oluşmaya başladığı"], correctAnswer: 3, explanation: "Cloud point parafin kristallerinin oluşup yakıtın bulanıklaştığı sıcaklıktır (filtre tıkanması başlar); pour point yakıtın akışkanlığını yitirdiği sıcaklıktır (cloud point'ten 6-10°C düşük)." },
+      { id: 2, sectionRef: "Operasyonel Önemi", category: MAK, question: "Yakıt tank sıcaklığı pour point'e göre nasıl tutulmalıdır?", options: ["Sıcaklık değeri tümüyle önemsizdir", "Pour point'in en az 10°C üzerinde", "Pour point değerinin hemen altında", "Tam pour point değerinde tutulur"], correctAnswer: 1, explanation: "Depolama/transfer sıcaklığı pour point'in en az 10°C üzerinde tutulur; donmuş yakıt akışı engeller ve pompalar kavitasyon yapar." },
     ],
   },
   {
@@ -4622,8 +4602,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Flash point ve tutuşma noktası",
     blocks: [{ sectionTitles: ["Flash Point", "Tutuşma ve Ateşleme Noktaları"] }],
     questions: [
-      { id: 1, sectionRef: "Flash Point", category: MAK, question: "SOLAS gereği gemi yakıt tankındaki yakıtın flash point'i en az kaç olmalıdır?", options: ["60°C", "12°C", "100°C", "30°C"], correctAnswer: 0, explanation: "SOLAS gereği yakıt flash point'i en az 60°C olmalıdır (MGO, HFO, VLSFO dahil); kapalı kap (Pensky-Martens) yöntemiyle ölçülür." },
-      { id: 2, sectionRef: "Tutuşma ve Ateşleme Noktaları", category: MAK, question: "Auto-ignition (kendiliğinden tutuşma) sıcaklığı nedir?", options: ["Dış ateşleme kaynağı olmadan kendiliğinden yanmanın başladığı sıcaklık (HFO ~250-300°C)", "Flash point ile aynı", "Pour point", "Donma noktası"], correctAnswer: 0, explanation: "Auto-ignition, dış kaynak olmadan kendiliğinden yanmanın başladığı sıcaklıktır (HFO ~250-300°C); fire point flash point'ten 5-10°C yüksektir." },
+      { id: 1, sectionRef: "Flash Point", category: MAK, question: "SOLAS gereği gemi yakıt tankındaki yakıtın flash point'i en az kaç olmalıdır?", options: ["100°C", "30°C", "60°C", "12°C"], correctAnswer: 2, explanation: "SOLAS gereği yakıt flash point'i en az 60°C olmalıdır (MGO, HFO, VLSFO dahil); kapalı kap (Pensky-Martens) yöntemiyle ölçülür." },
+      { id: 2, sectionRef: "Tutuşma ve Ateşleme Noktaları", category: MAK, question: "Auto-ignition (kendiliğinden tutuşma) sıcaklığı nedir?", options: ["Flash point ile aynı olan sıcaklık", "Pour point (akma) sıcaklık değeri", "Yakıtın donma noktası sıcaklığı", "Kendiliğinden yanmanın başladığı"], correctAnswer: 3, explanation: "Auto-ignition, dış kaynak olmadan kendiliğinden yanmanın başladığı sıcaklıktır (HFO ~250-300°C); fire point flash point'ten 5-10°C yüksektir." },
     ],
   },
   {
@@ -4631,8 +4611,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "CCAI ve CII (yakıt kalite indeksleri)",
     blocks: [{ sectionTitles: ["CCAI Hesabı", "Değerlendirme"] }],
     questions: [
-      { id: 1, sectionRef: "CCAI Hesabı", category: MAK, question: "CCAI neyi gösterir?", options: ["Yoğunluk ve viskoziteden hesaplanan ateşleme kalitesini (düşük CCAI = iyi)", "Kükürt oranını", "Su içeriğini", "Yoğunluğu doğrudan"], correctAnswer: 0, explanation: "CCAI yakıtın yoğunluğu ve viskozitesinden hesaplanır; düşük değer iyi ateşleme kalitesidir: CCAI = ρ₁₅ − 81 − 141·log₁₀(log₁₀(ν₅₀+0.85))." },
-      { id: 2, sectionRef: "Değerlendirme", category: MAK, question: "CCAI > 870 değeri ne anlama gelir?", options: ["Kötü ateşleme kalitesi; ateşleme problemleri beklenir", "Mükemmel kalite", "Normal çalışma", "Su yok"], correctAnswer: 0, explanation: "CCAI < 830 iyi, 830-860 kabul edilebilir, > 870 kötü ateşleme kalitesidir (ateşleme problemleri beklenir)." },
+      { id: 1, sectionRef: "CCAI Hesabı", category: MAK, question: "CCAI neyi gösterir?", options: ["Yoğunluğu doğrudan göstermektedir", "Yoğunluk ve viskoziteden ateşleme", "Yakıtın kükürt oranını göstermekte", "Yakıttaki su içeriğini göstermekte"], correctAnswer: 1, explanation: "CCAI yakıtın yoğunluğu ve viskozitesinden hesaplanır; düşük değer iyi ateşleme kalitesidir: CCAI = ρ₁₅ − 81 − 141·log₁₀(log₁₀(ν₅₀+0.85))." },
+      { id: 2, sectionRef: "Değerlendirme", category: MAK, question: "CCAI > 870 değeri ne anlama gelir?", options: ["Tümüyle normal çalışma değeridir", "Yakıtta hiç su bulunmadığını göstermekte", "Kötü ateşleme kalitesi; sorun beklenir", "Mükemmel ateşleme kalitesi demektir"], correctAnswer: 2, explanation: "CCAI < 830 iyi, 830-860 kabul edilebilir, > 870 kötü ateşleme kalitesidir (ateşleme problemleri beklenir)." },
     ],
   },
   {
@@ -4640,8 +4620,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Katalizör incelikleri (Al+Si)",
     blocks: [{ sectionTitles: ["Cat Fines Sorunu", "Arıtma Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Cat Fines Sorunu", category: MAK, question: "Cat fines (Al+Si) neden tehlikelidir?", options: ["Çelikten sert (Mohs 6-7) parçacıklar abrazif aşınma yapar", "Yakıtı renklendirir", "Yanmayı kolaylaştırır", "Zararsızdır"], correctAnswer: 0, explanation: "FCC kaynaklı 1-20 μm cat fines çelikten serttir; enjektör, plunjer, liner ve segmanlarda hızlı abrazif aşınma yapar. ISO 8217 Al+Si max 60 ppm, motor girişinde <15 ppm hedeflenir." },
-      { id: 2, sectionRef: "Arıtma Yöntemleri", category: MAK, question: "Cat fines uzaklaştırmada en etkili yöntem hangisidir?", options: ["Separatör (purifier), 98°C ve düşük akış hızında", "Sadece gözle ayıklama", "Isıtma", "Renklendirme"], correctAnswer: 0, explanation: "Purifier en etkili yöntemdir (98°C, düşük akış); settling 24-48 saat ve filtrasyon (10-25 μm) tamamlar. Motor girişi hedefi <15 ppm." },
+      { id: 1, sectionRef: "Cat Fines Sorunu", category: MAK, question: "Cat fines (Al+Si) neden tehlikelidir?", options: ["Yakıtı renklendirip koyulaştırır", "Yanmayı kolaylaştırıp iyileştirir", "Motora hiçbir zarar vermemekte", "Çelikten sert; abrazif aşınma yapar"], correctAnswer: 3, explanation: "FCC kaynaklı 1-20 μm cat fines çelikten serttir; enjektör, plunjer, liner ve segmanlarda hızlı abrazif aşınma yapar. ISO 8217 Al+Si max 60 ppm, motor girişinde <15 ppm hedeflenir." },
+      { id: 2, sectionRef: "Arıtma Yöntemleri", category: MAK, question: "Cat fines uzaklaştırmada en etkili yöntem hangisidir?", options: ["Yakıtı renklendirmek yoluyla", "Separatör; 98°C ve düşük akış hızı", "Yalnızca gözle bakıp ayıklamak", "Yakıtı daha da ısıtmak yoluyla"], correctAnswer: 1, explanation: "Purifier en etkili yöntemdir (98°C, düşük akış); settling 24-48 saat ve filtrasyon (10-25 μm) tamamlar. Motor girişi hedefi <15 ppm." },
     ],
   },
   {
@@ -4649,8 +4629,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Su ve sediment oranı",
     blocks: [{ sectionTitles: ["Su İçeriği", "Sediment"] }],
     questions: [
-      { id: 1, sectionRef: "Su İçeriği", category: MAK, question: "ISO 8217 kalıntı yakıtlarda maksimum su içeriği nedir?", options: ["%0.50", "%5", "%0.01", "Sınır yok"], correctAnswer: 0, explanation: "Max su içeriği %0.50'dir; yüksek su enjeksiyon dalgalanması, yanma gecikmesi ve liner korozyonu yapar. Karl Fischer titrasyonuyla ölçülür." },
-      { id: 2, sectionRef: "Sediment", category: MAK, question: "Toplam sediment (TSP) yüksekliği neye yol açar?", options: ["Filtre tıkanması ve purifier verimsizliği", "Yakıt tasarrufu", "Daha iyi yanma", "Hiçbir şey"], correctAnswer: 0, explanation: "TSP standardı max %0.10; yüksek sediment filtre tıkanması ve purifier verimsizliği yapar. Uyumsuz yakıtların karıştırılması sediment oluşumunu hızlandırır." },
+      { id: 1, sectionRef: "Su İçeriği", category: MAK, question: "ISO 8217 kalıntı yakıtlarda maksimum su içeriği nedir?", options: ["%0.01", "Sınır yok", "%0.50", "%5"], correctAnswer: 2, explanation: "Max su içeriği %0.50'dir; yüksek su enjeksiyon dalgalanması, yanma gecikmesi ve liner korozyonu yapar. Karl Fischer titrasyonuyla ölçülür." },
+      { id: 2, sectionRef: "Sediment", category: MAK, question: "Toplam sediment (TSP) yüksekliği neye yol açar?", options: ["Sefer yakıt tüketiminde tasarruf", "Silindirde daha iyi yanma olması", "Sistem üzerinde hiçbir etki olmaz", "Filtre tıkanması ve verim düşüşü"], correctAnswer: 3, explanation: "TSP standardı max %0.10; yüksek sediment filtre tıkanması ve purifier verimsizliği yapar. Uyumsuz yakıtların karıştırılması sediment oluşumunu hızlandırır." },
     ],
   },
   {
@@ -4658,8 +4638,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt ısıtma ve viskozite kontrolü",
     blocks: [{ sectionTitles: ["Isıtma Aşamaları", "Viskometre Kontrolü"] }],
     questions: [
-      { id: 1, sectionRef: "Isıtma Aşamaları", category: MAK, question: "Purifier öncesi yakıt hangi sıcaklığa ısıtılır?", options: ["95-98°C (optimum santrifüj ayırma için)", "40°C", "150°C", "Isıtılmaz"], correctAnswer: 0, explanation: "Depolama 40-50°C, settling 60-70°C, purifier öncesi 95-98°C, motor öncesi 130-150°C (10-15 cSt) ısıtma aşamalarıdır." },
-      { id: 2, sectionRef: "Viskometre Kontrolü", category: MAK, question: "Online viskometre ne yapar?", options: ["Viskoziteyi sürekli ölçer ve buhar ısıtıcıyı otomatik kontrol eder", "Yakıt rengini ölçer", "Debiyi sayar", "Basıncı düşürür"], correctAnswer: 0, explanation: "Servis tankı ile motor arasındaki viskometre viskoziteyi sürekli ölçüp ısıtıcıyı otomatik kontrol eder, set değerinden sapmada alarm verir." },
+      { id: 1, sectionRef: "Isıtma Aşamaları", category: MAK, question: "Purifier öncesi yakıt hangi sıcaklığa ısıtılır?", options: ["Isıtma yapılmadan doğrudan verilir", "95-98°C (optimum ayırma sıcaklığı)", "40°C (transfer sıcaklığı düzeyi)", "150°C (enjeksiyon sıcaklığı düzeyi)"], correctAnswer: 1, explanation: "Depolama 40-50°C, settling 60-70°C, purifier öncesi 95-98°C, motor öncesi 130-150°C (10-15 cSt) ısıtma aşamalarıdır." },
+      { id: 2, sectionRef: "Viskometre Kontrolü", category: MAK, question: "Online viskometre ne yapar?", options: ["Hattaki debiyi sayıp toplamakta", "Sistem basıncını düşürmektedir", "Viskoziteyi ölçüp ısıtıcıyı ayarlar", "Yakıtın rengini ölçüp göstermekte"], correctAnswer: 2, explanation: "Servis tankı ile motor arasındaki viskometre viskoziteyi sürekli ölçüp ısıtıcıyı otomatik kontrol eder, set değerinden sapmada alarm verir." },
     ],
   },
   {
@@ -4667,8 +4647,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Purifier ile arıtma",
     blocks: [{ sectionTitles: ["Purifier Operasyonu", "Purifier – Clarifier Düzeni"] }],
     questions: [
-      { id: 1, sectionRef: "Purifier Operasyonu", category: MAK, question: "Purifier ayırma verimi nasıl artırılır?", options: ["Düşük akış hızı (nominal kapasitenin %60-70'i) ile", "Yüksek akış hızı", "Soğuk yakıt", "Disc çıkararak"], correctAnswer: 0, explanation: "Yakıt 95-98°C'ye ısıtılır; düşük akış hızı (nominal %60-70) ayırma verimini artırır. Doğru gravity disc seçimi zorunludur." },
-      { id: 2, sectionRef: "Purifier – Clarifier Düzeni", category: MAK, question: "Modern ALCAP/EPC sistemlerinin avantajı nedir?", options: ["Gravity disc gerektirmez; otomatik faz algılamayla çalışır", "Daha yavaştır", "Su ayırmaz", "Isıtma gerektirmez"], correctAnswer: 0, explanation: "Seri düzende purifier (su+katı) sonra clarifier (katı) çalışır; ALCAP/EPC sistemleri gravity disc gerektirmez, otomatik faz algılamayla çalışır." },
+      { id: 1, sectionRef: "Purifier Operasyonu", category: MAK, question: "Purifier ayırma verimi nasıl artırılır?", options: ["Yüksek akış hızıyla çalıştırmak", "Yakıtı soğuk hâlde beslemekle", "Gravity disc'i çıkarmak yoluyla", "Düşük akış hızı (%60-70 kapasite)"], correctAnswer: 3, explanation: "Yakıt 95-98°C'ye ısıtılır; düşük akış hızı (nominal %60-70) ayırma verimini artırır. Doğru gravity disc seçimi zorunludur." },
+      { id: 2, sectionRef: "Purifier – Clarifier Düzeni", category: MAK, question: "Modern ALCAP/EPC sistemlerinin avantajı nedir?", options: ["Ön ısıtma gerektirmemektedir", "Gravity disc gerektirmez; otomatik", "Belirgin biçimde daha yavaştır", "Yakıttan hiç su ayırmamaktadır"], correctAnswer: 1, explanation: "Seri düzende purifier (su+katı) sonra clarifier (katı) çalışır; ALCAP/EPC sistemleri gravity disc gerektirmez, otomatik faz algılamayla çalışır." },
     ],
   },
   {
@@ -4676,8 +4656,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Otojen filtrasyon ve oto-filter",
     blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Oto-filtre (self-cleaning) ne zaman kendini temizler?", options: ["ΔP belirli eşiği aşınca otomatik ters yıkama (backflush) yapar", "Her gün elle", "Hiç temizlenmez", "Yılda bir"], correctAnswer: 0, explanation: "Filtre üzerindeki ΔP eşiği aşınca sistem otomatik backflush yapar veya kendi temizleme mekanizmasını devreye alır; yüksek ΔP alarmı tıkanmayı bildirir." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Oto-filtre sisteminde genellikle ne birlikte çalışır?", options: ["İnce oto-filtre ile koruyucu kaba filtre", "İki pompa", "İki enjektör", "İki kazan"], correctAnswer: 0, explanation: "Genellikle bir ince oto-filtre ile koruyucu kaba filtre birlikte çalışır; biriken tortu otomatik tahliye edilir." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Oto-filtre (self-cleaning) ne zaman kendini temizler?", options: ["Hiçbir zaman temizlenmemektedir", "Yılda yalnızca bir kez temizlenir", "ΔP eşiği aşınca otomatik ters yıkama", "Her gün elle sökülüp temizlenir"], correctAnswer: 2, explanation: "Filtre üzerindeki ΔP eşiği aşınca sistem otomatik backflush yapar veya kendi temizleme mekanizmasını devreye alır; yüksek ΔP alarmı tıkanmayı bildirir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Oto-filtre sisteminde genellikle ne birlikte çalışır?", options: ["İki ayrı besleme pompası birlikte", "İki ayrı enjektör düzeneği birlikte", "İki ayrı yardımcı kazan birlikte", "İnce oto-filtre ile kaba koruyucu"], correctAnswer: 3, explanation: "Genellikle bir ince oto-filtre ile koruyucu kaba filtre birlikte çalışır; biriken tortu otomatik tahliye edilir." },
     ],
   },
   {
@@ -4685,8 +4665,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Homojenizerler",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Faydaları"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Homojenizer yakıttaki su damlacıklarını ne yapar?", options: ["1-5 μm boyutuna indirir (yanma odasında hızla buharlaşır)", "Büyütür", "Tamamen yok eder", "Isıtır"], correctAnswer: 0, explanation: "Yüksek basınçlı (100-400 bar) pompa yakıtı dar aralıktan geçirir; kesme kuvvetleri su damlacıklarını 1-5 μm'ye indirir, bunlar yanma odasında hızla buharlaşır. Purifier sonrası, motor öncesi konumlanır." },
-      { id: 2, sectionRef: "Faydaları", category: MAK, question: "Homojenizerin faydalarından biri nedir?", options: ["Cat fines'ı kısmen parçalar ve enjektör tıkanma riskini azaltır", "Yakıt tüketimini iki katına çıkarır", "Kükürt ekler", "Su miktarını artırır"], correctAnswer: 0, explanation: "Homojenizer yanma verimini artırır, emisyonları azaltır, cat fines'ı kısmen parçalar, yakıt stabilitesini iyileştirir ve enjektör tıkanma riskini azaltır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Homojenizer yakıttaki su damlacıklarını ne yapar?", options: ["Yakıtı ısıtıp inceltip akıtmaktadır", "1-5 μm boyutuna indirmektedir", "Damlacıkları büyütmektedir", "Suyu tümüyle yok etmektedir"], correctAnswer: 1, explanation: "Yüksek basınçlı (100-400 bar) pompa yakıtı dar aralıktan geçirir; kesme kuvvetleri su damlacıklarını 1-5 μm'ye indirir, bunlar yanma odasında hızla buharlaşır. Purifier sonrası, motor öncesi konumlanır." },
+      { id: 2, sectionRef: "Faydaları", category: MAK, question: "Homojenizerin faydalarından biri nedir?", options: ["Yakıtın kükürt oranını artırmakta", "Yakıttaki su miktarını artırmakta", "Cat fines'ı parçalar; tıkanmayı azaltır", "Yakıt tüketimini iki katına çıkarır"], correctAnswer: 2, explanation: "Homojenizer yanma verimini artırır, emisyonları azaltır, cat fines'ı kısmen parçalar, yakıt stabilitesini iyileştirir ve enjektör tıkanma riskini azaltır." },
     ],
   },
   {
@@ -4694,8 +4674,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt değiştirme (fuel changeover) prosedürü",
     blocks: [{ sectionTitles: ["HFO → MGO Geçişi", "Dikkat Edilecek Noktalar"] }],
     questions: [
-      { id: 1, sectionRef: "HFO → MGO Geçişi", category: MAK, question: "HFO → MGO geçişinde ilk adım nedir?", options: ["Yakıt sıcaklığını kademeli düşürmek (termal şok önleme)", "Hemen MGO'ya geçmek", "Motoru durdurmak", "Isıtıcıyı açmak"], correctAnswer: 0, explanation: "Önce sıcaklık kademeli düşürülür, servis tankı MGO'ya geçirilir, viskometre izlenir ve geçiş zamanı/pozisyonu log book'a işlenir." },
-      { id: 2, sectionRef: "Dikkat Edilecek Noktalar", category: MAK, question: "Changeover'da sıcaklık değişim hızı en fazla ne olmalıdır?", options: ["Dakikada 2°C (2°C/dakika)", "Dakikada 50°C", "Anında", "Sınır yok"], correctAnswer: 0, explanation: "Hızlı sıcaklık değişimi pompa/enjeksiyon contalarına zarar verir; değişim hızı en fazla 2°C/dakika olmalıdır. MARPOL gereği prosedür ve kayıt zorunludur." },
+      { id: 1, sectionRef: "HFO → MGO Geçişi", category: MAK, question: "HFO → MGO geçişinde ilk adım nedir?", options: ["Doğrudan ve hemen MGO'ya geçmek", "Ana makineyi tümüyle durdurmak", "Isıtıcıyı tam açıp sıcaklık yükseltmek", "Yakıt sıcaklığını kademeli düşürmek"], correctAnswer: 3, explanation: "Önce sıcaklık kademeli düşürülür, servis tankı MGO'ya geçirilir, viskometre izlenir ve geçiş zamanı/pozisyonu log book'a işlenir." },
+      { id: 2, sectionRef: "Dikkat Edilecek Noktalar", category: MAK, question: "Changeover'da sıcaklık değişim hızı en fazla ne olmalıdır?", options: ["Herhangi bir sınır bulunmamakta", "Dakikada en fazla 2°C değişim", "Dakikada en fazla 50°C değişim", "Anında değişim yapılabilmekte"], correctAnswer: 1, explanation: "Hızlı sıcaklık değişimi pompa/enjeksiyon contalarına zarar verir; değişim hızı en fazla 2°C/dakika olmalıdır. MARPOL gereği prosedür ve kayıt zorunludur." },
     ],
   },
   {
@@ -4703,8 +4683,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bunker planlama ve sipariş",
     blocks: [{ sectionTitles: ["Planlama"] }],
     questions: [
-      { id: 1, sectionRef: "Planlama", category: MAK, question: "Sefer için gerekli yakıt nasıl hesaplanır?", options: ["Tüketim = SFOC × Güç × Süre (+ güvenlik payı)", "Sadece tank hacmi", "Rastgele", "Sadece hız"], correctAnswer: 0, explanation: "Gerekli yakıt = SFOC × Güç × Süre / 10⁶ + güvenlik payı (%10-15) + kötü hava/bekleme payı; ECA için düşük kükürtlü yakıt ayrıca planlanır." },
-      { id: 2, sectionRef: "Planlama", category: MAK, question: "Bunker planlamasında hangi paylar eklenir?", options: ["Güvenlik payı (%10-15), kötü hava ve bekleme süreleri", "Sadece vergi", "Hiçbir pay", "Sadece liman ücreti"], correctAnswer: 0, explanation: "Hesaplanan tüketime güvenlik payı (%10-15), kötü hava payı ve bekleme süreleri eklenir." },
+      { id: 1, sectionRef: "Planlama", category: MAK, question: "Sefer için gerekli yakıt nasıl hesaplanır?", options: ["Rastgele bir değer seçilerek", "Yalnızca gemi hızına bakılarak", "Tüketim = SFOC × Güç × Süre (+pay)", "Yalnızca tank hacmine bakılarak"], correctAnswer: 2, explanation: "Gerekli yakıt = SFOC × Güç × Süre / 10⁶ + güvenlik payı (%10-15) + kötü hava/bekleme payı; ECA için düşük kükürtlü yakıt ayrıca planlanır." },
+      { id: 2, sectionRef: "Planlama", category: MAK, question: "Bunker planlamasında hangi paylar eklenir?", options: ["Yalnızca liman vergisi payı eklenir", "Herhangi bir pay eklenmemektedir", "Yalnızca liman hizmet ücreti payı", "Güvenlik payı, kötü hava ve bekleme"], correctAnswer: 3, explanation: "Hesaplanan tüketime güvenlik payı (%10-15), kötü hava payı ve bekleme süreleri eklenir." },
     ],
   },
   {
@@ -4712,8 +4692,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bunker miktarı ölçüm yöntemleri",
     blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Hacim-Kütle Dönüşümü"] }],
     questions: [
-      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğruluğa sahip bunker ölçüm yöntemi hangisidir?", options: ["Coriolis flowmetre (±0.1-0.5%)", "Tank sounding (±1-2%)", "Ullage (±1-2%)", "Gözle tahmin"], correctAnswer: 0, explanation: "Coriolis flowmetre ±0.1-0.5% ile en hassastır; tank sounding/ullage ±1-2%, barge tank ölçümü ±0.5-1% doğruluktadır." },
-      { id: 2, sectionRef: "Hacim-Kütle Dönüşümü", category: MAK, question: "Ölçülen hacim kütleye (metrik ton) nasıl çevrilir?", options: ["Ölçüm sıcaklığındaki yoğunlukla çarpılıp sıcaklık düzeltmesi yapılarak", "Sadece 1000'e bölünerek", "Hacimle aynıdır", "Çevrilemez"], correctAnswer: 0, explanation: "Kütle (mt) = Hacim (m³) × ρt/1000; sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır." },
+      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğruluğa sahip bunker ölçüm yöntemi hangisidir?", options: ["Gözle tahmin yöntemi (±%10)", "Coriolis flowmetre (±%0,1-0,5)", "Tank sounding ölçümü (±%1-2)", "Ullage ölçüm yöntemi (±%1-2)"], correctAnswer: 1, explanation: "Coriolis flowmetre ±0.1-0.5% ile en hassastır; tank sounding/ullage ±1-2%, barge tank ölçümü ±0.5-1% doğruluktadır." },
+      { id: 2, sectionRef: "Hacim-Kütle Dönüşümü", category: MAK, question: "Ölçülen hacim kütleye (metrik ton) nasıl çevrilir?", options: ["Kütle ile hacim birbirine eşittir", "Hiçbir biçimde çevrilememektedir", "Yoğunlukla çarpılıp düzeltme yapılır", "Yalnızca 1000'e bölünerek bulunur"], correctAnswer: 2, explanation: "Kütle (mt) = Hacim (m³) × ρt/1000; sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır." },
     ],
   },
   {
@@ -4721,8 +4701,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "MARPOL Annex VI kükürt uyumu",
     blocks: [{ sectionTitles: ["Sınırlar ve Uyum Yolları", "Belgeler ve Denetim"] }],
     questions: [
-      { id: 1, sectionRef: "Sınırlar ve Uyum Yolları", category: MAK, question: "MARPOL Annex VI küresel ve ECA kükürt sınırları nedir?", options: ["Küresel %0,50; ECA %0,10 m/m", "Küresel %3,5; ECA %1,0", "İkisi de %0,10", "Sınır yok"], correctAnswer: 0, explanation: "Küresel kükürt sınırı %0,50 m/m, ECA bölgelerinde %0,10 m/m'dir. Uyum: düşük kükürtlü yakıt, scrubber (EGCS) ile HFO veya LNG gibi alternatif yakıtlarla sağlanır." },
-      { id: 2, sectionRef: "Belgeler ve Denetim", category: MAK, question: "Kükürt uyumu hangi belgelerle kanıtlanır?", options: ["IAPP sertifikası, BDN kayıtları ve yakıt numuneleri", "Sadece sözlü beyan", "Hiçbir belge", "Sadece fatura"], correctAnswer: 0, explanation: "Uyum IAPP sertifikası, BDN kayıtları, yakıt numuneleri ve (scrubber varsa) izleme sistemleriyle kanıtlanır; ECA öncesi changeover tamamlanıp kaydedilir." },
+      { id: 1, sectionRef: "Sınırlar ve Uyum Yolları", category: MAK, question: "MARPOL Annex VI küresel ve ECA kükürt sınırları nedir?", options: ["Küresel %3,50; ECA %1,00 m/m", "Her ikisi de %0,10 m/m değeri", "Herhangi bir sınır bulunmamakta", "Küresel %0,50; ECA %0,10 m/m"], correctAnswer: 3, explanation: "Küresel kükürt sınırı %0,50 m/m, ECA bölgelerinde %0,10 m/m'dir. Uyum: düşük kükürtlü yakıt, scrubber (EGCS) ile HFO veya LNG gibi alternatif yakıtlarla sağlanır." },
+      { id: 2, sectionRef: "Belgeler ve Denetim", category: MAK, question: "Kükürt uyumu hangi belgelerle kanıtlanır?", options: ["Yalnızca tedarikçinin faturası", "IAPP sertifikası, BDN ve numuneler", "Yalnızca sözlü beyan yeterlidir", "Herhangi bir belge gerekmemekte"], correctAnswer: 1, explanation: "Uyum IAPP sertifikası, BDN kayıtları, yakıt numuneleri ve (scrubber varsa) izleme sistemleriyle kanıtlanır; ECA öncesi changeover tamamlanıp kaydedilir." },
     ],
   },
   {
@@ -4730,8 +4710,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt numunesi alma prosedürü",
     blocks: [{ sectionTitles: ["Numune Tipleri", "Alma Yöntemi"] }],
     questions: [
-      { id: 1, sectionRef: "Numune Tipleri", category: MAK, question: "MARPOL numunesi (PSC kükürt doğrulaması) hangi özelliktedir?", options: ["Min 400 mL, mühürlü", "Açık, 1 mL", "Etiketsiz", "Numune gerekmez"], correctAnswer: 0, explanation: "MARPOL numunesi min 400 mL ve mühürlüdür (PSC kükürt doğrulaması); tedarikçi/gemi/karşılaştırma numuneleri 2-5 litredir." },
-      { id: 2, sectionRef: "Alma Yöntemi", category: MAK, question: "Bunker numunesi nasıl alınmalıdır?", options: ["Manifolda bağlı sürekli damlama (drip sampling) ile tüm operasyon boyunca", "Sadece başta bir kez", "Sadece sonda", "Tank dibinden"], correctAnswer: 0, explanation: "Numune manifold hattına bağlı sürekli damlama (drip) yöntemiyle tüm operasyon boyunca alınır; nokta numune yalnız drip mümkün değilse kabul edilir. Şişe etiketlenip mühürlenir ve imzalanır." },
+      { id: 1, sectionRef: "Numune Tipleri", category: MAK, question: "MARPOL numunesi (PSC kükürt doğrulaması) hangi özelliktedir?", options: ["Etiketsiz herhangi bir numune", "Numune alınması gerekmemekte", "En az 400 mL, mühürlü numune", "Açık kapta 1 mL numune"], correctAnswer: 2, explanation: "MARPOL numunesi min 400 mL ve mühürlüdür (PSC kükürt doğrulaması); tedarikçi/gemi/karşılaştırma numuneleri 2-5 litredir." },
+      { id: 2, sectionRef: "Alma Yöntemi", category: MAK, question: "Bunker numunesi nasıl alınmalıdır?", options: ["Yalnızca operasyon başında bir kez", "Yalnızca operasyon sonunda bir kez", "Tank dibinden alınarak yapılmakta", "Manifoldda sürekli damlama yöntemiyle"], correctAnswer: 3, explanation: "Numune manifold hattına bağlı sürekli damlama (drip) yöntemiyle tüm operasyon boyunca alınır; nokta numune yalnız drip mümkün değilse kabul edilir. Şişe etiketlenip mühürlenir ve imzalanır." },
     ],
   },
   {
@@ -4739,8 +4719,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bunker uyuşmazlık yönetimi",
     blocks: [{ sectionTitles: ["Miktar Uyuşmazlığı", "Kalite Uyuşmazlığı"] }],
     questions: [
-      { id: 1, sectionRef: "Miktar Uyuşmazlığı", category: MAK, question: "Gemi ölçümü ile BDN farkı %0.5'i aşarsa ne yapılır?", options: ["Uyuşmazlık bildirilir; BDN'ye 'received under protest' notu düşülür", "Görmezden gelinir", "Yakıt geri verilir", "Hemen ödeme yapılır"], correctAnswer: 0, explanation: "Fark %0.5'i aşarsa uyuşmazlık bildirilir ve BDN'ye 'received under protest' yazılır; bağımsız bunker surveyor atanır, sıcaklık/trim düzeltmeleri kontrol edilir." },
-      { id: 2, sectionRef: "Kalite Uyuşmazlığı", category: MAK, question: "Off-spec yakıt kullanılmak zorunda kalınırsa ne yapılır?", options: ["Purifier akış hızı düşürülür, filtrasyon artırılır, motor parametreleri sıkı izlenir", "Hiçbir önlem alınmaz", "Yakıt ısıtılmaz", "Motor tam yüke alınır"], correctAnswer: 0, explanation: "Analiz ISO 8217'yi aşarsa off-spec claim açılır; kullanım zorunluysa purifier akışı düşürülür, filtrasyon artırılır ve motor parametreleri sıkı izlenir (motor güvenliği önceliklidir)." },
+      { id: 1, sectionRef: "Miktar Uyuşmazlığı", category: MAK, question: "Gemi ölçümü ile BDN farkı %0.5'i aşarsa ne yapılır?", options: ["Hiç sorgulanmadan ödeme yapılır", "Uyuşmazlık bildirilir; protest notu", "Fark görmezden gelinip geçilir", "Alınan yakıt tümüyle geri verilir"], correctAnswer: 1, explanation: "Fark %0.5'i aşarsa uyuşmazlık bildirilir ve BDN'ye 'received under protest' yazılır; bağımsız bunker surveyor atanır, sıcaklık/trim düzeltmeleri kontrol edilir." },
+      { id: 2, sectionRef: "Kalite Uyuşmazlığı", category: MAK, question: "Off-spec yakıt kullanılmak zorunda kalınırsa ne yapılır?", options: ["Yakıt hiç ısıtılmadan kullanılır", "Motor doğrudan tam yüke alınır", "Akış düşürülür, filtrasyon artırılır", "Hiçbir ek önlem alınmamaktadır"], correctAnswer: 2, explanation: "Analiz ISO 8217'yi aşarsa off-spec claim açılır; kullanım zorunluysa purifier akışı düşürülür, filtrasyon artırılır ve motor parametreleri sıkı izlenir (motor güvenliği önceliklidir)." },
     ],
   },
   {
@@ -4748,8 +4728,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kompresör tipleri (pistonlu, vidalı)",
     blocks: [{ sectionTitles: ["Pistonlu Kompresör", "Vidalı Kompresör"] }],
     questions: [
-      { id: 1, sectionRef: "Pistonlu Kompresör", category: MAK, question: "İki kademeli pistonlu kompresör hangi uygulamada kullanılır?", options: ["Düşük sıcaklık (−35°C ve altı) uygulamalarında", "Sadece yüksek sıcaklık", "Sadece klima", "Hiçbir yerde"], correctAnswer: 0, explanation: "Pistonlu kompresör gemi soğutmasında en yaygındır; tek kademeli düşük basınç oranları, iki kademeli düşük sıcaklık (−35°C ve altı) için kullanılır." },
-      { id: 2, sectionRef: "Vidalı Kompresör", category: MAK, question: "Vidalı kompresörde kapasite nasıl kontrol edilir?", options: ["Sürgü valf (slide valve) ile sürekli (%10-100)", "Sadece açma-kapama", "Devir sabit, kontrol yok", "Yağ ile"], correctAnswer: 0, explanation: "Vidalı kompresör iki helisel rotorla sürekli/düzgün basınç sağlar; kapasite slide valve ile %10-100 arası sürekli ayarlanır, titreşimi düşüktür." },
+      { id: 1, sectionRef: "Pistonlu Kompresör", category: MAK, question: "İki kademeli pistonlu kompresör hangi uygulamada kullanılır?", options: ["Yalnızca yüksek sıcaklık uygulamada", "Yalnızca konfor klima uygulamasında", "Gemide hiçbir yerde kullanılmamakta", "Düşük sıcaklık (−35°C altı) uygulamada"], correctAnswer: 3, explanation: "Pistonlu kompresör gemi soğutmasında en yaygındır; tek kademeli düşük basınç oranları, iki kademeli düşük sıcaklık (−35°C ve altı) için kullanılır." },
+      { id: 2, sectionRef: "Vidalı Kompresör", category: MAK, question: "Vidalı kompresörde kapasite nasıl kontrol edilir?", options: ["Yağ debisi ile kontrol edilmekte", "Sürgü valf ile sürekli (%10-100)", "Yalnızca açma-kapama ile kontrol", "Devir sabit; kontrol yapılamamakta"], correctAnswer: 1, explanation: "Vidalı kompresör iki helisel rotorla sürekli/düzgün basınç sağlar; kapasite slide valve ile %10-100 arası sürekli ayarlanır, titreşimi düşüktür." },
     ],
   },
   {
@@ -4757,8 +4737,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kondenser ve evaporatör",
     blocks: [{ sectionTitles: ["Kondenser", "Evaporatör"] }],
     questions: [
-      { id: 1, sectionRef: "Kondenser", category: MAK, question: "Deniz suyu giriş sıcaklığı kondenser performansını nasıl etkiler?", options: ["Tropikal bölgelerde (32°C) kapasite düşer", "Etkilemez", "Sıcaklık arttıkça kapasite artar", "Sadece basıncı etkiler"], correctAnswer: 0, explanation: "Gemi soğutmasında genellikle shell & tube kondenser kullanılır; deniz suyu giriş sıcaklığı performansı doğrudan etkiler, tropikte (32°C) kapasite düşer." },
-      { id: 2, sectionRef: "Evaporatör", category: MAK, question: "Direkt genleşme (DX) evaporatöründe soğutucu akışkan nerede akar?", options: ["Boruların içinde; dışarıdaki hava/sıvıyı soğutur", "Kabuk tarafında", "Borular dışında", "Akmaz"], correctAnswer: 0, explanation: "DX evaporatörde soğutucu boruların içinden geçip dışarıdaki havayı/sıvıyı soğutur; shell & tube tipte ise brine/glikol borularda akar." },
+      { id: 1, sectionRef: "Kondenser", category: MAK, question: "Deniz suyu giriş sıcaklığı kondenser performansını nasıl etkiler?", options: ["Sıcaklık arttıkça kapasite artmakta", "Yalnızca sistem basıncını etkilemektedir", "Tropikal bölgede (32°C) kapasite düşer", "Kapasiteyi hiçbir biçimde etkilemez"], correctAnswer: 2, explanation: "Gemi soğutmasında genellikle shell & tube kondenser kullanılır; deniz suyu giriş sıcaklığı performansı doğrudan etkiler, tropikte (32°C) kapasite düşer." },
+      { id: 2, sectionRef: "Evaporatör", category: MAK, question: "Direkt genleşme (DX) evaporatöründe soğutucu akışkan nerede akar?", options: ["Kabuk (shell) tarafında akmaktadır", "Boruların dış yüzeyinde akmakta", "Soğutucu akışkan hiç akmamakta", "Boruların içinde; dış havayı soğutur"], correctAnswer: 3, explanation: "DX evaporatörde soğutucu boruların içinden geçip dışarıdaki havayı/sıvıyı soğutur; shell & tube tipte ise brine/glikol borularda akar." },
     ],
   },
   {
@@ -4766,8 +4746,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Genleşme valfi (TXV, EEV)",
     blocks: [{ sectionTitles: ["Termostatik Genleşme Valfi (TXV)", "Elektronik Genleşme Valfi (EEV)"] }],
     questions: [
-      { id: 1, sectionRef: "Termostatik Genleşme Valfi (TXV)", category: MAK, question: "TXV açıklığını neye göre ayarlar?", options: ["Evaporatör çıkışındaki kızgınlık derecesine (superheat, ~5-8 K)", "Kondenser basıncına", "Devire", "Renge"], correctAnswer: 0, explanation: "TXV, evaporatör çıkışındaki kızgınlığa göre açar; termik ampul sıcaklığı algılar. Kızgınlık ~5-8 K; düşükse sıvı dönüşü, yüksekse evaporatör yetersiz kullanımı olur." },
-      { id: 2, sectionRef: "Elektronik Genleşme Valfi (EEV)", category: MAK, question: "EEV'nin TXV'ye göre avantajı nedir?", options: ["PID ile daha hassas kontrol ve daha geniş çalışma aralığı", "Daha ucuz ve basit", "Sensör gerektirmez", "Daha az hassas"], correctAnswer: 0, explanation: "EEV step/pulse motorla tahrik edilir ve PID algoritmasıyla kızgınlığı hassas kontrol eder; daha geniş aralık sağlar ve modern sistemlerde yaygınlaşır." },
+      { id: 1, sectionRef: "Termostatik Genleşme Valfi (TXV)", category: MAK, question: "TXV açıklığını neye göre ayarlar?", options: ["Akışkanın görünen renk tonuna göre", "Çıkıştaki kızgınlık derecesine (5-8 K)", "Kondenserin yoğuşma basıncına göre", "Kompresörün devir sayısı değerine"], correctAnswer: 1, explanation: "TXV, evaporatör çıkışındaki kızgınlığa göre açar; termik ampul sıcaklığı algılar. Kızgınlık ~5-8 K; düşükse sıvı dönüşü, yüksekse evaporatör yetersiz kullanımı olur." },
+      { id: 2, sectionRef: "Elektronik Genleşme Valfi (EEV)", category: MAK, question: "EEV'nin TXV'ye göre avantajı nedir?", options: ["Hiçbir sensör gerektirmiyor olması", "Belirgin biçimde daha az hassas olması hâli", "PID ile hassas ve geniş çalışma aralığı", "Belirgin biçimde daha ucuz ve basit"], correctAnswer: 2, explanation: "EEV step/pulse motorla tahrik edilir ve PID algoritmasıyla kızgınlığı hassas kontrol eder; daha geniş aralık sağlar ve modern sistemlerde yaygınlaşır." },
     ],
   },
   {
@@ -4775,8 +4755,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Doğal soğutucu akışkanlar (CO₂, NH₃)",
     blocks: [{ sectionTitles: ["CO₂ (R-744)", "Amonyak (R-717)"] }],
     questions: [
-      { id: 1, sectionRef: "CO₂ (R-744)", category: MAK, question: "CO₂ (R-744) soğutucu akışkanın özelliği nedir?", options: ["Transkritik çevrimde çalışır, yüksek basınç (80-130 bar) gerektirir; toksik/yanıcı değildir", "Çok düşük basınçlı", "Yanıcıdır", "Ozon tabakasına zararlı"], correctAnswer: 0, explanation: "CO₂ transkritik çalışır (kritik 31°C, 73.8 bar), 80-130 bar yüksek basınç gerektirir; toksik/yanıcı değildir, reefer sistemlerinde yaygınlaşmaktadır (ODP 0, GWP 1)." },
-      { id: 2, sectionRef: "Amonyak (R-717)", category: MAK, question: "Amonyak (R-717) neden makine dairesi dışında konumlandırılır?", options: ["Toksik ve yanıcı olduğu için (SOLAS Reg. II-2)", "Çok ucuz olduğu için", "Düşük COP nedeniyle", "Ozon zararı nedeniyle"], correctAnswer: 0, explanation: "Amonyağın COP'si yüksektir (mükemmel termodinamik) ama toksik ve hafif yanıcı olduğundan SOLAS Reg. II-2 gereği makine dairesi dışında konumlandırılır." },
+      { id: 1, sectionRef: "CO₂ (R-744)", category: MAK, question: "CO₂ (R-744) soğutucu akışkanın özelliği nedir?", options: ["Çok düşük basınçta çalışan akışkan", "Kolayca tutuşan yanıcı bir akışkan", "Ozon tabakasına zararlı bir akışkan", "Transkritik çevrim; 80-130 bar basınç"], correctAnswer: 3, explanation: "CO₂ transkritik çalışır (kritik 31°C, 73.8 bar), 80-130 bar yüksek basınç gerektirir; toksik/yanıcı değildir, reefer sistemlerinde yaygınlaşmaktadır (ODP 0, GWP 1)." },
+      { id: 2, sectionRef: "Amonyak (R-717)", category: MAK, question: "Amonyak (R-717) neden makine dairesi dışında konumlandırılır?", options: ["Ozon tabakasına zararlı olması nedeniyle", "Toksik ve yanıcı olduğu için (SOLAS)", "Çok ucuz bir akışkan olduğu için", "COP değeri düşük olduğu için"], correctAnswer: 1, explanation: "Amonyağın COP'si yüksektir (mükemmel termodinamik) ama toksik ve hafif yanıcı olduğundan SOLAS Reg. II-2 gereği makine dairesi dışında konumlandırılır." },
     ],
   },
   {
@@ -4784,8 +4764,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "ODP ve GWP kavramları",
     blocks: [{ sectionTitles: ["ODP (Ozone Depletion Potential)", "GWP (Global Warming Potential)"] }],
     questions: [
-      { id: 1, sectionRef: "ODP (Ozone Depletion Potential)", category: MAK, question: "ODP neyi ölçer ve referansı nedir?", options: ["Ozon tabakasına zararı; R-11 (ODP=1.0) referans alınır", "Küresel ısınmayı; CO₂ referans", "Basıncı", "Toksisiteyi"], correctAnswer: 0, explanation: "ODP, maddenin ozona zararını R-11 (ODP=1.0) ile karşılaştırır; klor/brom içerenler zarar verir, HFC ve doğal akışkanların ODP'si sıfırdır." },
-      { id: 2, sectionRef: "GWP (Global Warming Potential)", category: MAK, question: "GWP neyi ifade eder?", options: ["100 yıllık periyotta tutulan ısının CO₂ (GWP=1) ile karşılaştırması", "Ozon zararını", "Basıncı", "Viskoziteyi"], correctAnswer: 0, explanation: "GWP, maddenin 100 yıllık ısı tutma etkisini CO₂ (GWP=1) ile karşılaştırır; Kigali (2016) ile HFC'ler %80-85 azaltılacaktır." },
+      { id: 1, sectionRef: "ODP (Ozone Depletion Potential)", category: MAK, question: "ODP neyi ölçer ve referansı nedir?", options: ["Çalışma basıncı; hava referans alınır", "Toksisite; amonyak referans alınır", "Ozon zararı; R-11 (ODP=1,0) referans", "Küresel ısınma; CO₂ referans alınır"], correctAnswer: 2, explanation: "ODP, maddenin ozona zararını R-11 (ODP=1.0) ile karşılaştırır; klor/brom içerenler zarar verir, HFC ve doğal akışkanların ODP'si sıfırdır." },
+      { id: 2, sectionRef: "GWP (Global Warming Potential)", category: MAK, question: "GWP neyi ifade eder?", options: ["Ozon tabakasına verilen zarar oranı", "Sistemdeki çalışma basıncı değeri", "Akışkanın viskozite değeri (cSt)", "100 yılda tutulan ısının CO₂ ile oranı"], correctAnswer: 3, explanation: "GWP, maddenin 100 yıllık ısı tutma etkisini CO₂ (GWP=1) ile karşılaştırır; Kigali (2016) ile HFC'ler %80-85 azaltılacaktır." },
     ],
   },
   {
@@ -4793,8 +4773,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Montreal ve Kigali protokolleri",
     blocks: [{ sectionTitles: ["Montreal Protokolü (1987)", "Kigali Değişikliği (2016)"] }],
     questions: [
-      { id: 1, sectionRef: "Montreal Protokolü (1987)", category: MAK, question: "Montreal Protokolü neyi hedefler?", options: ["CFC ve HCFC'lerin kademeli yasaklanmasını (ozon koruması)", "HFC azaltımını", "Kükürt sınırını", "CO₂ azaltımını"], correctAnswer: 0, explanation: "Montreal Protokolü (1987) CFC'leri (1996) ve HCFC'leri (2030) kademeli yasaklar; denizcilikte R-12/R-22 sistemlerinin dönüştürülmesi zorunludur." },
-      { id: 2, sectionRef: "Kigali Değişikliği (2016)", category: MAK, question: "Kigali Değişikliği neyi azaltmayı hedefler?", options: ["HFC'lerin üretim ve tüketimini (küresel ısınma için)", "CFC'leri", "Kükürdü", "Azot oksitleri"], correctAnswer: 0, explanation: "Kigali (2016) HFC'lerin kademeli azaltımını öngörür; gelişmiş ülkeler 2036'ya kadar %85, gelişmekte olanlar 2045-2047'ye kadar %80 azaltım hedefler." },
+      { id: 1, sectionRef: "Montreal Protokolü (1987)", category: MAK, question: "Montreal Protokolü neyi hedefler?", options: ["CO₂ salımının kademeli azaltılmasını", "CFC ve HCFC'lerin kademeli yasağını", "HFC gazlarının kademeli azaltılmasını", "Yakıt kükürt sınırının düşürülmesini"], correctAnswer: 1, explanation: "Montreal Protokolü (1987) CFC'leri (1996) ve HCFC'leri (2030) kademeli yasaklar; denizcilikte R-12/R-22 sistemlerinin dönüştürülmesi zorunludur." },
+      { id: 2, sectionRef: "Kigali Değişikliği (2016)", category: MAK, question: "Kigali Değişikliği neyi azaltmayı hedefler?", options: ["Yakıt kükürt oranının düşürülmesi", "Azot oksit salımının azaltılması", "HFC üretim ve tüketiminin azaltılması", "CFC gazlarının tümüyle yasaklanması"], correctAnswer: 2, explanation: "Kigali (2016) HFC'lerin kademeli azaltımını öngörür; gelişmiş ülkeler 2036'ya kadar %85, gelişmekte olanlar 2045-2047'ye kadar %80 azaltım hedefler." },
     ],
   },
   {
@@ -4802,8 +4782,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Soğutucu akışkan şarj ve geri kazanım",
     blocks: [{ sectionTitles: ["Şarj Prosedürü", "Geri Kazanım"] }],
     questions: [
-      { id: 1, sectionRef: "Şarj Prosedürü", category: MAK, question: "Soğutucu sistemde aşırı şarj neye yol açar?", options: ["Yüksek kondenser basıncı ve kompresör aşırı yüklenmesi", "Düşük soğutma", "Hiçbir şey", "Kızgınlık artışı"], correctAnswer: 0, explanation: "Aşırı şarj yüksek kondenser basıncı ve kompresör aşırı yüklenmesine, yetersiz şarj ise düşük kapasite ve kızgınlık artışına yol açar." },
-      { id: 2, sectionRef: "Geri Kazanım", category: MAK, question: "Soğutucu akışkan atmosfere salınabilir mi?", options: ["Hayır; onaylı geri kazanım ünitesiyle toplanmalıdır", "Evet, serbestçe", "Sadece azı salınır", "Sadece limanda"], correctAnswer: 0, explanation: "Soğutucu atmosfere salınamaz; onaylı geri kazanım ünitesiyle toplanır, arıtılıp tekrar kullanılır veya imha edilir (EU 517/2014 ve MARPOL gereği kaçak kontrolü zorunlu)." },
+      { id: 1, sectionRef: "Şarj Prosedürü", category: MAK, question: "Soğutucu sistemde aşırı şarj neye yol açar?", options: ["Soğutma kapasitesinde belirgin bir düşüş", "Sistem üzerinde hiçbir etki olmaması", "Kızgınlık derecesinde belirgin artış", "Yüksek kondenser basıncı ve aşırı yük"], correctAnswer: 3, explanation: "Aşırı şarj yüksek kondenser basıncı ve kompresör aşırı yüklenmesine, yetersiz şarj ise düşük kapasite ve kızgınlık artışına yol açar." },
+      { id: 2, sectionRef: "Geri Kazanım", category: MAK, question: "Soğutucu akışkan atmosfere salınabilir mi?", options: ["Yalnızca limanda salınabilmekte", "Hayır; onaylı ünite ile toplanmalıdır", "Evet; serbestçe salınabilmektedir", "Yalnızca az miktarda salınabilir"], correctAnswer: 1, explanation: "Soğutucu atmosfere salınamaz; onaylı geri kazanım ünitesiyle toplanır, arıtılıp tekrar kullanılır veya imha edilir (EU 517/2014 ve MARPOL gereği kaçak kontrolü zorunlu)." },
     ],
   },
   {
@@ -4811,8 +4791,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Provizyon soğuk hane sistemi",
     blocks: [{ sectionTitles: ["Soğutma Bölmeleri", "Sistem Özellikleri"] }],
     questions: [
-      { id: 1, sectionRef: "Soğutma Bölmeleri", category: MAK, question: "Et/balık odası tipik olarak hangi sıcaklıkta tutulur?", options: ["−18 ila −25°C", "+2 ila +4°C", "+8 ila +12°C", "+20°C"], correctAnswer: 0, explanation: "Et odası −18 ila −25°C, soğuk oda (chill) +2 ila +4°C, sebze odası +8 ila +12°C'de tutulur." },
-      { id: 2, sectionRef: "Sistem Özellikleri", category: MAK, question: "Soğuk hane kapılarında hangi güvenlik özelliği bulunur?", options: ["İçten açılabilen acil çıkış mekanizması ve alarm butonu", "Sadece dıştan kilit", "Hiçbir güvenlik", "Cam pencere"], correctAnswer: 0, explanation: "Her bölme bağımsız evaporatör/termostatla kontrol edilir, defrost otomatiktir; kapılar izoleli/manyetik contalı olup içten açılan acil çıkış ve alarm butonuna sahiptir." },
+      { id: 1, sectionRef: "Soğutma Bölmeleri", category: MAK, question: "Et/balık odası tipik olarak hangi sıcaklıkta tutulur?", options: ["+8 ila +12°C aralığı", "+20°C", "−18 ila −25°C", "+2 ila +4°C"], correctAnswer: 2, explanation: "Et odası −18 ila −25°C, soğuk oda (chill) +2 ila +4°C, sebze odası +8 ila +12°C'de tutulur." },
+      { id: 2, sectionRef: "Sistem Özellikleri", category: MAK, question: "Soğuk hane kapılarında hangi güvenlik özelliği bulunur?", options: ["Yalnızca dıştan kilitlenen düzenek", "Hiçbir güvenlik özelliği bulunmaz", "Gözetleme için cam pencere bulunur", "İçten açılan acil çıkış ve alarm butonu"], correctAnswer: 3, explanation: "Her bölme bağımsız evaporatör/termostatla kontrol edilir, defrost otomatiktir; kapılar izoleli/manyetik contalı olup içten açılan acil çıkış ve alarm butonuna sahiptir." },
     ],
   },
   {
@@ -4820,8 +4800,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Konteyner (reefer) soğutma",
     blocks: [{ sectionTitles: ["Reefer Konteyner Özellikleri", "Gemi Elektrik Yükü"] }],
     questions: [
-      { id: 1, sectionRef: "Reefer Konteyner Özellikleri", category: MAK, question: "Reefer konteyner nasıl beslenir?", options: ["Gemi prizlerinden (440V/60Hz veya 380V/50Hz); kendi soğutma ünitesine sahip", "Sadece akü", "Gemi havasından", "Beslenmez"], correctAnswer: 0, explanation: "Her reefer kendi kompresör/kondenser/evaporatör/kontrol ünitesine sahiptir ve gemi prizlerinden (440V/60Hz) beslenir; ayar aralığı −30 ile +30°C." },
-      { id: 2, sectionRef: "Gemi Elektrik Yükü", category: MAK, question: "Çok sayıda reefer konteyner gemi için neden kritiktir?", options: ["Jeneratör kapasitesini doğrudan etkiler; yük dengeleme gerekir", "Hiçbir etkisi yok", "Sadece estetik", "Yakıt üretir"], correctAnswer: 0, explanation: "Büyük gemiler 1000+ reefer prizi taşıyabilir; bu, jeneratör kapasitesini doğrudan etkiler ve reefer yük planlaması elektrik yük dengeleme açısından kritiktir." },
+      { id: 1, sectionRef: "Reefer Konteyner Özellikleri", category: MAK, question: "Reefer konteyner nasıl beslenir?", options: ["Hiçbir kaynaktan beslenmez", "Gemi prizlerinden (440V/60Hz)", "Yalnızca kendi akü grubu üzerinden", "Gemi basınçlı hava hattından"], correctAnswer: 1, explanation: "Her reefer kendi kompresör/kondenser/evaporatör/kontrol ünitesine sahiptir ve gemi prizlerinden (440V/60Hz) beslenir; ayar aralığı −30 ile +30°C." },
+      { id: 2, sectionRef: "Gemi Elektrik Yükü", category: MAK, question: "Çok sayıda reefer konteyner gemi için neden kritiktir?", options: ["Yalnızca estetik bir etki yaratmakta", "Gemide ek yakıt üretimi sağlamakta", "Jeneratör kapasitesini doğrudan etkiler", "Gemi üzerinde hiçbir etkisi yoktur"], correctAnswer: 2, explanation: "Büyük gemiler 1000+ reefer prizi taşıyabilir; bu, jeneratör kapasitesini doğrudan etkiler ve reefer yük planlaması elektrik yük dengeleme açısından kritiktir." },
     ],
   },
   {
@@ -4829,8 +4809,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Merkezi soğutma suyu sistemi",
     blocks: [{ sectionTitles: ["Sistem Yapısı", "Avantajlar"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "LT (düşük sıcaklık) devresi sıcaklığı genellikle kaç derece tutulur?", options: ["36°C civarında", "85°C", "10°C", "100°C"], correctAnswer: 0, explanation: "LT devresi (yağ/şarj havası/klima kondenseri) 36°C civarında, HT devresi (silindir kapağı/liner) 80-85°C civarında tutulur." },
-      { id: 2, sectionRef: "Avantajlar", category: MAK, question: "Merkezi soğutmanın avantajı nedir?", options: ["Deniz suyuyla temas eden ekipman azalır, korozyon riski düşer", "Daha fazla ekipman", "Daha çok korozyon", "Daha pahalı su"], correctAnswer: 0, explanation: "Merkezi soğutmada deniz suyuyla temas eden ekipman azaltılarak korozyon riski düşürülür; soğutma suyu kalitesi kimyasal işlemle kontrol edilir." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "LT (düşük sıcaklık) devresi sıcaklığı genellikle kaç derece tutulur?", options: ["85°C civarında tutulmaktadır", "10°C civarında tutulmaktadır", "100°C civarında tutulmaktadır", "36°C civarında tutulmaktadır"], correctAnswer: 3, explanation: "LT devresi (yağ/şarj havası/klima kondenseri) 36°C civarında, HT devresi (silindir kapağı/liner) 80-85°C civarında tutulur." },
+      { id: 2, sectionRef: "Avantajlar", category: MAK, question: "Merkezi soğutmanın avantajı nedir?", options: ["Daha pahalı su kullanılması gereği", "Deniz suyu teması ve korozyon azalır", "Sistemde daha fazla ekipman gerekmesi", "Korozyon riskinin belirgin artması"], correctAnswer: 1, explanation: "Merkezi soğutmada deniz suyuyla temas eden ekipman azaltılarak korozyon riski düşürülür; soğutma suyu kalitesi kimyasal işlemle kontrol edilir." },
     ],
   },
   {
@@ -4838,8 +4818,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ana makine ve yardımcı soğutma",
     blocks: [{ sectionTitles: ["Ana Makine Soğutma Devreleri", "Yardımcı Makine Soğutma"] }],
     questions: [
-      { id: 1, sectionRef: "Ana Makine Soğutma Devreleri", category: MAK, question: "Ana makine HT devresi neyi soğutur ve çıkış sıcaklığı nedir?", options: ["Silindir kapağı, liner ve turboşarj; çıkış 80-85°C", "Yağ soğutucu; 10°C", "Yakıt; 150°C", "Akü; 25°C"], correctAnswer: 0, explanation: "HT devresi silindir kapağı/liner/turboşarjı soğutur (çıkış 80-85°C); LT devresi yağ ve şarj havası soğutucusunu (giriş 36°C) besler." },
-      { id: 2, sectionRef: "Yardımcı Makine Soğutma", category: MAK, question: "Yardımcı motor soğutma suyunda hangi koruma bulunur?", options: ["Sıcaklık alarmı ve otomatik yavaşlama/durdurma", "Hiçbir koruma", "Sadece manometre", "Sadece renk göstergesi"], correctAnswer: 0, explanation: "Yardımcı motorlar kendi HT/LT devresine sahip veya merkezi sisteme bağlıdır; soğutma suyu sıcaklık alarmı ve otomatik yavaşlama/durdurma koruması bulunur." },
+      { id: 1, sectionRef: "Ana Makine Soğutma Devreleri", category: MAK, question: "Ana makine HT devresi neyi soğutur ve çıkış sıcaklığı nedir?", options: ["Yakıt ısıtma devresi; 150°C çıkış değeri", "Akü şarj odası ortamı; 25°C çıkış", "Kapak, liner ve turboşarj; 80-85°C", "Yağ soğutucu devresi; 10°C çıkış"], correctAnswer: 2, explanation: "HT devresi silindir kapağı/liner/turboşarjı soğutur (çıkış 80-85°C); LT devresi yağ ve şarj havası soğutucusunu (giriş 36°C) besler." },
+      { id: 2, sectionRef: "Yardımcı Makine Soğutma", category: MAK, question: "Yardımcı motor soğutma suyunda hangi koruma bulunur?", options: ["Hiçbir koruma düzeneği bulunmaz", "Yalnızca manometre göstergesi var", "Yalnızca renkli gösterge bulunur", "Sıcaklık alarmı ve otomatik durdurma"], correctAnswer: 3, explanation: "Yardımcı motorlar kendi HT/LT devresine sahip veya merkezi sisteme bağlıdır; soğutma suyu sıcaklık alarmı ve otomatik yavaşlama/durdurma koruması bulunur." },
     ],
   },
   {
@@ -4847,8 +4827,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Soğutma sistemi alarm ve korumaları",
     blocks: [{ sectionTitles: ["Tipik Alarmlar", "Otomatik Korumalar"] }],
     questions: [
-      { id: 1, sectionRef: "Tipik Alarmlar", category: MAK, question: "Yüksek basma basıncı alarmının olası nedeni nedir?", options: ["Kirli kondenser veya fazla şarj", "Yetersiz şarj", "Düşük yağ", "Soğuk hava"], correctAnswer: 0, explanation: "Yüksek basma basıncı kirli kondenser/fazla şarjdan; düşük emme basıncı yetersiz şarj/TXV arızasından kaynaklanır." },
-      { id: 2, sectionRef: "Otomatik Korumalar", category: MAK, question: "Yüksek basınç kesici (HP cutout) ne yapar?", options: ["Kompresörü durdurur", "Şarj ekler", "Kondenseri ısıtır", "Hiçbir şey"], correctAnswer: 0, explanation: "HP/LP cutout, yağ basınç fark kesici ve motor aşırı yük koruması kompresörü gerektiğinde durdurur." },
+      { id: 1, sectionRef: "Tipik Alarmlar", category: MAK, question: "Yüksek basma basıncı alarmının olası nedeni nedir?", options: ["Deniz suyunun çok soğuk olması", "Kirli kondenser veya fazla şarj", "Sistemde yetersiz soğutucu şarjı", "Kompresörde düşük yağ seviyesi"], correctAnswer: 1, explanation: "Yüksek basma basıncı kirli kondenser/fazla şarjdan; düşük emme basıncı yetersiz şarj/TXV arızasından kaynaklanır." },
+      { id: 2, sectionRef: "Otomatik Korumalar", category: MAK, question: "Yüksek basınç kesici (HP cutout) ne yapar?", options: ["Kondenseri ısıtır", "Hiçbir şey", "Kompresörü durdurur", "Şarj ekler"], correctAnswer: 2, explanation: "HP/LP cutout, yağ basınç fark kesici ve motor aşırı yük koruması kompresörü gerektiğinde durdurur." },
     ],
   },
   {
@@ -4856,8 +4836,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava işleme ünitesi (AHU)",
     blocks: [{ sectionTitles: ["AHU Bileşenleri", "Kontrol"] }],
     questions: [
-      { id: 1, sectionRef: "AHU Bileşenleri", category: MAK, question: "AHU'da karışım bölümü ne yapar?", options: ["Taze hava ile resirkülasyon havasını karıştırır", "Yakıt karıştırır", "Su ayırır", "Egzoz atar"], correctAnswer: 0, explanation: "AHU; filtre (G4-F7), soğutma/ısıtma serpantini, fan ve karışım bölümünden oluşur; karışım bölümü taze hava ile resirkülasyon havasını karıştırır." },
-      { id: 2, sectionRef: "Kontrol", category: MAK, question: "AHU çıkış havası sıcaklığı nasıl ayarlanır?", options: ["Termostatik kontrol valfi veya VFD fan hız kontrolü ile", "Sadece elle", "Ayarlanamaz", "Pervaneyle"], correctAnswer: 0, explanation: "Çıkış havası sıcaklığı termostatik kontrol valfi veya VFD fan hız kontrolüyle ayarlanır; resirkülasyon oranı enerji tasarrufu için optimize edilir." },
+      { id: 1, sectionRef: "AHU Bileşenleri", category: MAK, question: "AHU'da karışım bölümü ne yapar?", options: ["Yakıt ile havayı karıştırmaktadır", "Havadaki suyu ayırıp dışarı atmakta", "Egzoz gazını dışarıya atmaktadır", "Taze ve dönüş havasını karıştırır"], correctAnswer: 3, explanation: "AHU; filtre (G4-F7), soğutma/ısıtma serpantini, fan ve karışım bölümünden oluşur; karışım bölümü taze hava ile resirkülasyon havasını karıştırır." },
+      { id: 2, sectionRef: "Kontrol", category: MAK, question: "AHU çıkış havası sıcaklığı nasıl ayarlanır?", options: ["Pervane devri üzerinden ayarlanır", "Termostatik valf veya VFD fan kontrolü", "Yalnızca elle ayarlanabilmektedir", "Hiçbir biçimde ayarlanamamaktadır"], correctAnswer: 1, explanation: "Çıkış havası sıcaklığı termostatik kontrol valfi veya VFD fan hız kontrolüyle ayarlanır; resirkülasyon oranı enerji tasarrufu için optimize edilir." },
     ],
   },
   {
@@ -4865,8 +4845,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Soğutma ve ısıtma serpantinleri",
     blocks: [{ sectionTitles: ["Soğutma Serpantini", "Isıtma Serpantini"] }],
     questions: [
-      { id: 1, sectionRef: "Soğutma Serpantini", category: MAK, question: "Soğutma serpantininde hava soğurken ne gerçekleşir?", options: ["Nem yoğuşması (dehumidification); yoğuşan su drenaj tavasına akar", "Hava ısınır", "Nem artar", "Hiçbir şey"], correctAnswer: 0, explanation: "İçinden chilled water (6-12°C) geçen serpantinde hava soğur ve nem yoğuşur (dehumidification); yoğuşan su drenaj tavasına akar." },
-      { id: 2, sectionRef: "Isıtma Serpantini", category: MAK, question: "Buhar ısıtma serpantininde yoğuşan su nasıl toplanır?", options: ["Steam trap (kondens pot) ile", "Drenaj yapılmaz", "Pervaneyle", "Filtreyle"], correctAnswer: 0, explanation: "Isıtma serpantini sıcak su (80-90°C) veya düşük basınçlı buharla çalışır; buhar serpantinlerinde yoğuşan su steam trap ile toplanır." },
+      { id: 1, sectionRef: "Soğutma Serpantini", category: MAK, question: "Soğutma serpantininde hava soğurken ne gerçekleşir?", options: ["Havanın nem oranı belirgin artmaktadır", "Havada hiçbir değişiklik olmamakta", "Nem yoğuşur; su drenaj tavasına akar", "Serpantinden geçen hava ısınmakta"], correctAnswer: 2, explanation: "İçinden chilled water (6-12°C) geçen serpantinde hava soğur ve nem yoğuşur (dehumidification); yoğuşan su drenaj tavasına akar." },
+      { id: 2, sectionRef: "Isıtma Serpantini", category: MAK, question: "Buhar ısıtma serpantininde yoğuşan su nasıl toplanır?", options: ["Steam trap (kondens tuzağı) ile", "Drenaj hiç yapılmamaktadır", "Fan pervanesi yardımıyla atılır", "Hava filtresi yardımıyla tutulur"], correctAnswer: 0, explanation: "Isıtma serpantini sıcak su (80-90°C) veya düşük basınçlı buharla çalışır; buhar serpantinlerinde yoğuşan su steam trap ile toplanır." },
     ],
   },
   {
@@ -4874,7 +4854,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Nemlilik kontrolü",
     blocks: [{ sectionTitles: ["Nem Alma (Dehumidification)", "Nemlendirme (Humidification)"] }],
     questions: [
-      { id: 1, sectionRef: "Nem Alma (Dehumidification)", category: MAK, question: "Soğutmayla nem alma nasıl gerçekleşir?", options: ["Serpantin yüzeyi çiy noktası altına düşürülünce nem yoğuşur", "Hava ısıtılarak", "Su püskürtülerek", "Basınç artırılarak"], correctAnswer: 0, explanation: "Serpantin yüzey sıcaklığı çiy noktası altına düşünce nem yoğuşur (cooling dehumidification); alternatif olarak silika jel/lityum klorürlü absorpsiyonlu sistemler kullanılır." },
+      { id: 1, sectionRef: "Nem Alma (Dehumidification)", category: MAK, question: "Soğutmayla nem alma nasıl gerçekleşir?", options: ["Yüzey çiy noktası altına düşürülünce", "Hava ısıtılarak gerçekleştirilir", "Su püskürtülerek gerçekleştirilir", "Sistem basıncı artırılarak gerçekleştirilir"], correctAnswer: 0, explanation: "Serpantin yüzey sıcaklığı çiy noktası altına düşünce nem yoğuşur (cooling dehumidification); alternatif olarak silika jel/lityum klorürlü absorpsiyonlu sistemler kullanılır." },
       { id: 2, sectionRef: "Nemlendirme (Humidification)", category: MAK, question: "Konfor için bağıl nem hangi aralıkta tutulur?", options: ["%40-60", "%5-10", "%90-100", "Önemsiz"], correctAnswer: 0, explanation: "Kuru iklimlerde buhar enjeksiyonu/ultrasonik nemlendirici kullanılır; konfor için bağıl nem %40-60 arasında tutulur." },
     ],
   },
@@ -4883,8 +4863,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kanal sistemi tasarımı",
     blocks: [{ sectionTitles: ["Kanal Tipleri", "Tasarım Prensipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Kanal Tipleri", category: MAK, question: "Gemilerde standart kanal malzemesi nedir?", options: ["Galvanizli çelik (yalıtımlı yoğuşmayı önler)", "Plastik PVC", "Ahşap", "Bakır"], correctAnswer: 0, explanation: "Galvanizli çelik kanallar standarttır; yalıtılmış kanallar yoğuşma ve enerji kaybını önler. Basma kanalları AHU'dan bölmelere, emiş kanalları geri taşır." },
-      { id: 2, sectionRef: "Tasarım Prensipleri", category: MAK, question: "Gürültü kontrolü için ana kanal hava hızı nasıl sınırlanır?", options: ["Ana kanalda 6-10 m/s, dal kanallarda 3-5 m/s", "50 m/s", "0.5 m/s", "Sınır yok"], correctAnswer: 0, explanation: "Gürültü kontrolü için ana kanalda 6-10 m/s, dal kanallarda 3-5 m/s sınırlanır; boyutlandırmada eşit sürtünme yöntemi yaygındır." },
+      { id: 1, sectionRef: "Kanal Tipleri", category: MAK, question: "Gemilerde standart kanal malzemesi nedir?", options: ["Galvanizli çelik (yalıtımlı kanal)", "Plastik PVC esaslı kanal profili", "Ahşap kaplamalı kanal profili", "Bakır levhalı kanal profili"], correctAnswer: 0, explanation: "Galvanizli çelik kanallar standarttır; yalıtılmış kanallar yoğuşma ve enerji kaybını önler. Basma kanalları AHU'dan bölmelere, emiş kanalları geri taşır." },
+      { id: 2, sectionRef: "Tasarım Prensipleri", category: MAK, question: "Gürültü kontrolü için ana kanal hava hızı nasıl sınırlanır?", options: ["Ana kanalda 6-10, dalda 3-5 m/s", "Bütün kanallarda 50 m/s değeri", "Bütün kanallarda 0,5 m/s değeri", "Herhangi bir sınır bulunmamakta"], correctAnswer: 0, explanation: "Gürültü kontrolü için ana kanalda 6-10 m/s, dal kanallarda 3-5 m/s sınırlanır; boyutlandırmada eşit sürtünme yöntemi yaygındır." },
     ],
   },
   {
@@ -4893,7 +4873,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Taze Hava Gereklilikleri", "Egzoz Havalandırma"] }],
     questions: [
       { id: 1, sectionRef: "Taze Hava Gereklilikleri", category: MAK, question: "Yaşam alanlarında kişi başına minimum taze hava ne kadar olmalıdır?", options: ["30 m³/h", "1 m³/h", "300 m³/h", "Gerekmez"], correctAnswer: 0, explanation: "IMO/SOLAS kurallarına göre yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanır; makine dairesi havalandırması yanma havası ihtiyacı için de gereklidir." },
-      { id: 2, sectionRef: "Egzoz Havalandırma", category: MAK, question: "Makine dairesi ventilation flap (havalandırma kapağı) neden zorunludur?", options: ["Yangında CO₂ söndürme etkinliğini sağlamak için", "Soğutma için", "Estetik için", "Hiçbir nedenle"], correctAnswer: 0, explanation: "Tuvalet/mutfak/atölye bağımsız egzoz havalandırmaya sahiptir; makine dairesi acil havalandırma kapanması (flap) yangında CO₂ söndürme etkinliği için zorunludur." },
+      { id: 2, sectionRef: "Egzoz Havalandırma", category: MAK, question: "Makine dairesi ventilation flap (havalandırma kapağı) neden zorunludur?", options: ["Yangında CO₂ etkinliğini sağlamak", "Makine dairesini soğutmak için", "Estetik görünüm sağlamak için", "Herhangi bir neden bulunmamakta"], correctAnswer: 0, explanation: "Tuvalet/mutfak/atölye bağımsız egzoz havalandırmaya sahiptir; makine dairesi acil havalandırma kapanması (flap) yangında CO₂ söndürme etkinliği için zorunludur." },
     ],
   },
   {
@@ -4901,8 +4881,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Basınç ölçüm cihazları (Bourdon, piezoelektrik)",
     blocks: [{ sectionTitles: ["Bourdon Tüp Manometre", "Diğer Basınç Sensörleri"] }],
     questions: [
-      { id: 1, sectionRef: "Bourdon Tüp Manometre", category: MAK, question: "Bourdon tüp manometre nasıl çalışır?", options: ["Basınçta düzleşen C şekilli tüpün hareketi ibreye aktarılır", "Kristal gerilimiyle", "Ses dalgasıyla", "Manyetik alanla"], correctAnswer: 0, explanation: "Oval kesitli C şekilli tüp basınçta düzleşir; hareket mekanik bağlantıyla ibreye aktarılır. 0.5-1000 bar aralığında, basit ve ucuzdur." },
-      { id: 2, sectionRef: "Diğer Basınç Sensörleri", category: MAK, question: "Silindir dinamik basıncı (hızlı değişen) hangi sensörle ölçülür?", options: ["Piezoelektrik (kristal deformasyonu)", "Bourdon tüp", "Float", "Sight glass"], correctAnswer: 0, explanation: "Piezoelektrik sensör kristal deformasyonunu gerilime çevirir ve dinamik basınç (silindir) ölçümünde 0-2000 bar aralığında kullanılır." },
+      { id: 1, sectionRef: "Bourdon Tüp Manometre", category: MAK, question: "Bourdon tüp manometre nasıl çalışır?", options: ["Basınçta düzleşen C tüpün hareketi", "Kristalin gerilim üretmesi yoluyla", "Ses dalgası yansıması yoluyla", "Manyetik alan değişimi yoluyla"], correctAnswer: 0, explanation: "Oval kesitli C şekilli tüp basınçta düzleşir; hareket mekanik bağlantıyla ibreye aktarılır. 0.5-1000 bar aralığında, basit ve ucuzdur." },
+      { id: 2, sectionRef: "Diğer Basınç Sensörleri", category: MAK, question: "Silindir dinamik basıncı (hızlı değişen) hangi sensörle ölçülür?", options: ["Piezoelektrik (kristal deformasyonu)", "Bourdon tüplü mekanik manometre", "Şamandıralı (float) seviye ölçeri", "Sight glass (gözetleme cam düzeni)"], correctAnswer: 0, explanation: "Piezoelektrik sensör kristal deformasyonunu gerilime çevirir ve dinamik basınç (silindir) ölçümünde 0-2000 bar aralığında kullanılır." },
     ],
   },
   {
@@ -4910,8 +4890,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Seviye ölçüm yöntemleri",
     blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Uzaktan Okuma"] }],
     questions: [
-      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğrulukta (±1 mm) seviye ölçüm yöntemi hangisidir?", options: ["Radar (mikrodalga yansıması)", "Float tip", "Sight glass", "Hidrostatik basınç"], correctAnswer: 0, explanation: "Radar ±1 mm ile en hassastır; float ±5 mm, kapasitif/ultrasonik ±3 mm, hidrostatik ±10 mm doğruluktadır." },
-      { id: 2, sectionRef: "Uzaktan Okuma", category: MAK, question: "Modern gemilerde tank seviyeleri için hangi alarmlar programlanır?", options: ["Yüksek, düşük ve yüksek-yüksek seviye alarmları", "Sadece sıcaklık", "Sadece basınç", "Alarm yok"], correctAnswer: 0, explanation: "Tank seviyeleri merkezi izlemeye aktarılır ve yüksek/düşük/yüksek-yüksek alarmları programlanır; kargo tankları closed/restricted/open olarak sınıflandırılır." },
+      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğrulukta (±1 mm) seviye ölçüm yöntemi hangisidir?", options: ["Radar (mikrodalga yansıması) ile", "Float (şamandıra) tipi ölçüm", "Sight glass (gözetleme cam düzeni)", "Hidrostatik basınç ölçüm yöntemi"], correctAnswer: 0, explanation: "Radar ±1 mm ile en hassastır; float ±5 mm, kapasitif/ultrasonik ±3 mm, hidrostatik ±10 mm doğruluktadır." },
+      { id: 2, sectionRef: "Uzaktan Okuma", category: MAK, question: "Modern gemilerde tank seviyeleri için hangi alarmlar programlanır?", options: ["Yüksek, düşük ve yüksek-yüksek seviye", "Yalnızca sıcaklık alarmı programlanır", "Yalnızca basınç alarmı programlanır", "Hiçbir alarm programlanmamaktadır"], correctAnswer: 0, explanation: "Tank seviyeleri merkezi izlemeye aktarılır ve yüksek/düşük/yüksek-yüksek alarmları programlanır; kargo tankları closed/restricted/open olarak sınıflandırılır." },
     ],
   },
   {
@@ -4920,7 +4900,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Akış Ölçüm Prensipleri", "Yakıt Tüketim Ölçümü"] }],
     questions: [
       { id: 1, sectionRef: "Akış Ölçüm Prensipleri", category: MAK, question: "Orifis plaka akış ölçer hangi prensiple çalışır?", options: ["Basınç düşüşü (ΔP)", "Kütle akışı (Coriolis)", "Faraday yasası", "Ses hızı"], correctAnswer: 0, explanation: "Orifis ve venturi ΔP ile ölçer (±1-2%); elektromanyetik Faraday yasasıyla, Coriolis kütle akışıyla (±0.1%) çalışır." },
-      { id: 2, sectionRef: "Yakıt Tüketim Ölçümü", category: MAK, question: "IMO DCS için yakıt ölçümünde en yüksek doğruluğu hangi cihaz sağlar?", options: ["Coriolis debimetre (kütle akışı, düzeltme gerektirmez)", "Orifis plaka", "Sight glass", "Türbin metre"], correctAnswer: 0, explanation: "IMO DCS için Coriolis debimetre en yüksek doğruluğu sağlar; kütle akışı ölçtüğünden sıcaklık ve yoğunluk düzeltmesi gerektirmez." },
+      { id: 2, sectionRef: "Yakıt Tüketim Ölçümü", category: MAK, question: "IMO DCS için yakıt ölçümünde en yüksek doğruluğu hangi cihaz sağlar?", options: ["Coriolis debimetre (kütle akışı ölçer)", "Orifis plaka tipi debi ölçüm cihazı", "Sight glass (gözetleme cam düzeni)", "Türbin tipi debi ölçüm cihazı"], correctAnswer: 0, explanation: "IMO DCS için Coriolis debimetre en yüksek doğruluğu sağlar; kütle akışı ölçtüğünden sıcaklık ve yoğunluk düzeltmesi gerektirmez." },
     ],
   },
   {
@@ -4928,8 +4908,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Devir ve hız ölçümü",
     blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Motor Devri İzleme"] }],
     questions: [
-      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "Ana motor/jeneratör devri için yaygın yöntem hangisidir?", options: ["Manyetik pick-up (dişli geçişinde manyetik alan değişimi)", "Sight glass", "Termometre", "Manometre"], correctAnswer: 0, explanation: "Manyetik pick-up dişli geçişindeki manyetik alan değişimiyle devri ölçer; encoder hassas hız kontrolü, proximity sensör turboşarjer devri için kullanılır." },
-      { id: 2, sectionRef: "Motor Devri İzleme", category: MAK, question: "Barred speed range (kritik hız aralığı) ne gerektirir?", options: ["Sürekli çalışmaya uygun değildir; hızla geçilmelidir", "Sürekli o devirde çalışılmalı", "Motor durdurulmalı", "Hiçbir önlem gerekmez"], correctAnswer: 0, explanation: "Ana motor devri governor/otomasyonla izlenir; kritik hız aralıkları (barred speed range) torsiyonel titreşim nedeniyle sürekli çalışmaya uygun değildir, hızla geçilir." },
+      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "Ana motor/jeneratör devri için yaygın yöntem hangisidir?", options: ["Manyetik pick-up (dişli geçişi)", "Sight glass (gözetleme camı)", "Termometre ile sıcaklık ölçüm yöntemi", "Manometre ile basınç ölçümü"], correctAnswer: 0, explanation: "Manyetik pick-up dişli geçişindeki manyetik alan değişimiyle devri ölçer; encoder hassas hız kontrolü, proximity sensör turboşarjer devri için kullanılır." },
+      { id: 2, sectionRef: "Motor Devri İzleme", category: MAK, question: "Barred speed range (kritik hız aralığı) ne gerektirir?", options: ["Sürekli çalışmaya uygun değil; hızla geç", "Sürekli o devirde çalışılması gerekir", "Motorun tümüyle durdurulması gerekir", "Hiçbir özel önlem gerekmemektedir"], correctAnswer: 0, explanation: "Ana motor devri governor/otomasyonla izlenir; kritik hız aralıkları (barred speed range) torsiyonel titreşim nedeniyle sürekli çalışmaya uygun değildir, hızla geçilir." },
     ],
   },
   {
@@ -4937,8 +4917,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Sinyal dönüştürücüler (4-20 mA, 0-10V)",
     blocks: [{ sectionTitles: ["Standart Sinyal Tipleri", "4-20 mA Avantajı"] }],
     questions: [
-      { id: 1, sectionRef: "Standart Sinyal Tipleri", category: MAK, question: "4-20 mA akım sinyalinin temel avantajı nedir?", options: ["Kablo kaybından etkilenmez ve kablo kopuğu (0 mA) algılanır", "En ucuzdur", "Sadece kısa mesafe", "Dijitaldir"], correctAnswer: 0, explanation: "4-20 mA akım sinyali kablo direncinden etkilenmez ve 0 mA kablo kopukluğunu gösterir; 0-10 V gerilim sinyali ise kablo direncine duyarlıdır." },
-      { id: 2, sectionRef: "4-20 mA Avantajı", category: MAK, question: "4-20 mA sinyalinde 4 mA ve 20 mA neyi ifade eder?", options: ["4 mA = %0, 20 mA = %100 ölçüm aralığı", "4 mA = %100, 20 mA = %0", "İkisi de hata", "Sabit değer"], correctAnswer: 0, explanation: "4 mA = ölçüm aralığının %0'ı, 20 mA = %100'ü; 0 mA sinyal kopukluğudur. İki kablolu bağlantıda güç ve sinyal aynı kablodan taşınır." },
+      { id: 1, sectionRef: "Standart Sinyal Tipleri", category: MAK, question: "4-20 mA akım sinyalinin temel avantajı nedir?", options: ["Kablo kaybı etkilemez; kopuk algılanır", "Bilinen en ucuz sinyal türü olması", "Yalnızca kısa mesafede çalışması", "Doğrudan dijital bir sinyal olması"], correctAnswer: 0, explanation: "4-20 mA akım sinyali kablo direncinden etkilenmez ve 0 mA kablo kopukluğunu gösterir; 0-10 V gerilim sinyali ise kablo direncine duyarlıdır." },
+      { id: 2, sectionRef: "4-20 mA Avantajı", category: MAK, question: "4-20 mA sinyalinde 4 mA ve 20 mA neyi ifade eder?", options: ["4 mA = %0, 20 mA = %100 aralığı", "4 mA = %100, 20 mA = %0 aralığı", "Her ikisi de hata durumunu gösterir", "Her ikisi de sabit bir değeri gösterir"], correctAnswer: 0, explanation: "4 mA = ölçüm aralığının %0'ı, 20 mA = %100'ü; 0 mA sinyal kopukluğudur. İki kablolu bağlantıda güç ve sinyal aynı kablodan taşınır." },
     ],
   },
   {
@@ -4946,8 +4926,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Açık ve kapalı döngü kontrol",
     blocks: [{ sectionTitles: ["Açık Döngü", "Kapalı Döngü"] }],
     questions: [
-      { id: 1, sectionRef: "Açık Döngü", category: MAK, question: "Açık döngü kontrolün özelliği nedir?", options: ["Geri besleme yoktur; çıkış izlenmez (dış etkilere hassas)", "Çıkış sürekli ölçülür", "En hassas yöntemdir", "Hata düzeltir"], correctAnswer: 0, explanation: "Açık döngüde çıkış izlenmez ve geri besleme yoktur (örn. zamanlayıcılı sintine pompası); basit ama dış etkilere hassastır." },
-      { id: 2, sectionRef: "Kapalı Döngü", category: MAK, question: "Kapalı döngü kontrol nasıl çalışır?", options: ["Çıkış ölçülür, referansla karşılaştırılır, hata düzeltme sinyaline dönüşür", "Geri besleme yoktur", "Sadece zamanlayıcı", "Operatör manuel kontrol eder"], correctAnswer: 0, explanation: "Kapalı döngüde çıkış sürekli ölçülüp referansla karşılaştırılır; fark (hata) düzeltme sinyaline dönüşür (sıcaklık, basınç, hız kontrolü)." },
+      { id: 1, sectionRef: "Açık Döngü", category: MAK, question: "Açık döngü kontrolün özelliği nedir?", options: ["Geri besleme yok; çıkış izlenmez", "Çıkış değeri sürekli ölçülmektedir", "Bilinen en hassas kontrol yöntemi", "Oluşan hatayı kendisi düzeltmekte"], correctAnswer: 0, explanation: "Açık döngüde çıkış izlenmez ve geri besleme yoktur (örn. zamanlayıcılı sintine pompası); basit ama dış etkilere hassastır." },
+      { id: 2, sectionRef: "Kapalı Döngü", category: MAK, question: "Kapalı döngü kontrol nasıl çalışır?", options: ["Çıkış ölçülür, hata düzeltmeye dönüşür", "Sistemde geri besleme bulunmamakta", "Yalnızca zamanlayıcıyla çalışmakta", "Operatör tarafından elle kontrol edilir"], correctAnswer: 0, explanation: "Kapalı döngüde çıkış sürekli ölçülüp referansla karşılaştırılır; fark (hata) düzeltme sinyaline dönüşür (sıcaklık, basınç, hız kontrolü)." },
     ],
   },
   {
@@ -4955,8 +4935,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "P, I, D parametrelerinin etkileri",
     blocks: [{ sectionTitles: ["Parametre Etkileri", "Ayar Stratejisi"] }],
     questions: [
-      { id: 1, sectionRef: "Parametre Etkileri", category: MAK, question: "İntegral (I) terimi artırılınca ne olur?", options: ["Kalıcı hata sıfırlanır ama salınım riski artar", "Kalıcı hata kalır", "Sadece hız artar", "Hiçbir etki"], correctAnswer: 0, explanation: "I terimi kalıcı hatayı sıfırlar fakat salınım riskini artırır ve yavaş kararlılaşır; P hızlı tepki/salınım, D salınım azaltma sağlar." },
-      { id: 2, sectionRef: "Ayar Stratejisi", category: MAK, question: "Ziegler-Nichols yönteminde ilk adım nedir?", options: ["Sadece P ile kararlılık sınırı (Ku, Tu) bulunur", "Önce D ayarlanır", "I maksimuma alınır", "Tüm parametreler sıfırlanır"], correctAnswer: 0, explanation: "Ziegler-Nichols'ta önce sadece P ile kararlılık sınırı (Ku, Tu) bulunur, sonra P/I/D hesaplanır; pratikte önce P, sonra I, son olarak D eklenir." },
+      { id: 1, sectionRef: "Parametre Etkileri", category: MAK, question: "İntegral (I) terimi artırılınca ne olur?", options: ["Kalıcı hata sıfırlanır; salınım artar", "Kalıcı hata olduğu gibi kalmakta", "Yalnızca tepki hızı artmaktadır", "Sistem üzerinde hiçbir etki olmaz"], correctAnswer: 0, explanation: "I terimi kalıcı hatayı sıfırlar fakat salınım riskini artırır ve yavaş kararlılaşır; P hızlı tepki/salınım, D salınım azaltma sağlar." },
+      { id: 2, sectionRef: "Ayar Stratejisi", category: MAK, question: "Ziegler-Nichols yönteminde ilk adım nedir?", options: ["Yalnız P ile kararlılık sınırı bulunur", "Önce D terimi ayarlanıp sabitlenir", "I terimi en yüksek değere alınır", "Bütün parametreler sıfırlanmaktadır"], correctAnswer: 0, explanation: "Ziegler-Nichols'ta önce sadece P ile kararlılık sınırı (Ku, Tu) bulunur, sonra P/I/D hesaplanır; pratikte önce P, sonra I, son olarak D eklenir." },
     ],
   },
   {
@@ -4964,7 +4944,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kontrol döngüsü ayarı (tuning)",
     blocks: [{ sectionTitles: ["Ayar Yöntemleri", "Performans Kriterleri"] }],
     questions: [
-      { id: 1, sectionRef: "Ayar Yöntemleri", category: MAK, question: "Gemide en yaygın kontrol döngüsü ayar yöntemi hangisidir?", options: ["Manuel ayar (P, I, D sırayla deneyimle)", "Sadece Cohen-Coon", "Hiç ayar yapılmaz", "Rastgele"], correctAnswer: 0, explanation: "Ziegler-Nichols ve Cohen-Coon yöntemleri vardır ama gemide en yaygın pratik manuel ayardır (P, I, D sırayla deneyimle ayarlanır)." },
+      { id: 1, sectionRef: "Ayar Yöntemleri", category: MAK, question: "Gemide en yaygın kontrol döngüsü ayar yöntemi hangisidir?", options: ["Manuel ayar (P, I, D sırayla)", "Yalnızca Cohen-Coon yöntemi", "Hiçbir ayar yapılmamaktadır", "Rastgele değer verme yöntemi ile"], correctAnswer: 0, explanation: "Ziegler-Nichols ve Cohen-Coon yöntemleri vardır ama gemide en yaygın pratik manuel ayardır (P, I, D sırayla deneyimle ayarlanır)." },
       { id: 2, sectionRef: "Performans Kriterleri", category: MAK, question: "Overshoot için tipik kabul sınırı nedir?", options: ["< %10-15", "%50", "%100", "Sınır yok"], correctAnswer: 0, explanation: "Overshoot (set değerinin aşılması) genellikle <%10-15 kabul edilir; settling time ±%2 bandına girme süresidir, kalıcı hata I ile sıfırlanır." },
     ],
   },
@@ -4973,8 +4953,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kaskad ve ileri besleme kontrol",
     blocks: [{ sectionTitles: ["Kaskad Kontrol", "İleri Besleme (Feedforward)"] }],
     questions: [
-      { id: 1, sectionRef: "Kaskad Kontrol", category: MAK, question: "Kaskad kontrol nasıl yapılandırılır?", options: ["İki iç içe döngü: dış (master) ana değişkeni, iç (slave) ara değişkeni kontrol eder", "Tek döngü", "Geri besleme yok", "Sadece zamanlayıcı"], correctAnswer: 0, explanation: "Kaskad kontrolde dış (master) döngü ana değişkeni, iç (slave) döngü ara değişkeni kontrol eder; iç döngü bozucu etkilere hızlı tepki verir." },
-      { id: 2, sectionRef: "İleri Besleme (Feedforward)", category: MAK, question: "İleri besleme (feedforward) kontrol ne yapar?", options: ["Bozucu etkiyi ölçüp kontrol eylemine önceden yansıtır", "Sadece geçmişe bakar", "Hata oluşmasını bekler", "Çıkışı ölçmez"], correctAnswer: 0, explanation: "Feedforward bozucu etkiyi ölçüp kontrole önceden yansıtır (geri beslemeyle birlikte); örn. kazan yük değişiminde buhar talebi önceden ölçülüp yakıcı ayarlanır." },
+      { id: 1, sectionRef: "Kaskad Kontrol", category: MAK, question: "Kaskad kontrol nasıl yapılandırılır?", options: ["İki iç içe döngü: master ve slave", "Tek bir kontrol döngüsünden oluşur", "Geri besleme hiç bulunmamaktadır", "Yalnızca zamanlayıcıyla çalışmakta"], correctAnswer: 0, explanation: "Kaskad kontrolde dış (master) döngü ana değişkeni, iç (slave) döngü ara değişkeni kontrol eder; iç döngü bozucu etkilere hızlı tepki verir." },
+      { id: 2, sectionRef: "İleri Besleme (Feedforward)", category: MAK, question: "İleri besleme (feedforward) kontrol ne yapar?", options: ["Bozucuyu ölçüp önceden yansıtmak", "Yalnızca geçmiş verilere bakmak", "Hata oluşmasını bekleyip düzeltmek", "Çıkış değerini hiç ölçmemektedir"], correctAnswer: 0, explanation: "Feedforward bozucu etkiyi ölçüp kontrole önceden yansıtır (geri beslemeyle birlikte); örn. kazan yük değişiminde buhar talebi önceden ölçülüp yakıcı ayarlanır." },
     ],
   },
   {
@@ -4983,7 +4963,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Donanım Bileşenleri"] }],
     questions: [
       { id: 1, sectionRef: "Donanım Bileşenleri", category: MAK, question: "Sıcaklık sensörü (4-20 mA) PLC'nin hangi modülüne bağlanır?", options: ["Analog giriş", "Dijital çıkış", "CPU", "Haberleşme modülü"], correctAnswer: 0, explanation: "Sıcaklık/basınç/seviye sensörleri (4-20 mA) analog girişe bağlanır; dijital giriş ON/OFF sinyalleri, analog çıkış VFD/valf komutu için kullanılır." },
-      { id: 2, sectionRef: "Donanım Bileşenleri", category: MAK, question: "PLC'nin üst sistemle bağlantısını hangi modül sağlar?", options: ["Haberleşme modülü (Modbus, Profibus, Ethernet)", "Dijital giriş", "Analog çıkış", "CPU yalnız"], correctAnswer: 0, explanation: "Haberleşme modülü Modbus/Profibus/Ethernet ile üst sisteme bağlanır; CPU program/mantık işlemlerini yürütür." },
+      { id: 2, sectionRef: "Donanım Bileşenleri", category: MAK, question: "PLC'nin üst sistemle bağlantısını hangi modül sağlar?", options: ["Haberleşme modülü (Modbus, Ethernet)", "Dijital giriş (DI) modülü kartı", "Analog çıkış (AO) modülü kartı", "Yalnızca CPU işlemci modülü kartı"], correctAnswer: 0, explanation: "Haberleşme modülü Modbus/Profibus/Ethernet ile üst sisteme bağlanır; CPU program/mantık işlemlerini yürütür." },
     ],
   },
   {
@@ -4991,7 +4971,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ladder diyagram programlama",
     blocks: [{ sectionTitles: ["Temel Elemanlar", "Programlama Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Elemanlar", category: MAK, question: "Ladder diyagramında '−| |−' sembolü neyi ifade eder?", options: ["Normalde açık kontak (NO) — sinyal aktifse geçirir", "Çıkış bobini", "Timer", "Normalde kapalı kontak"], correctAnswer: 0, explanation: "−| |− normalde açık kontaktır (giriş aktifse geçirir); −|/|− normalde kapalı, −( )− çıkış bobini, −[TON]− timer'dır." },
+      { id: 1, sectionRef: "Temel Elemanlar", category: MAK, question: "Ladder diyagramında '−| |−' sembolü neyi ifade eder?", options: ["Normalde açık kontak (NO) sembolü", "Çıkış bobini (output coil) sembolü", "Zamanlayıcı (timer) blok sembolü", "Normalde kapalı kontak (NC) sembolü"], correctAnswer: 0, explanation: "−| |− normalde açık kontaktır (giriş aktifse geçirir); −|/|− normalde kapalı, −( )− çıkış bobini, −[TON]− timer'dır." },
       { id: 2, sectionRef: "Programlama Prensibi", category: MAK, question: "Ladder mantığında seri bağlı kontaklar hangi mantığı oluşturur?", options: ["AND mantığı", "OR mantığı", "NOT mantığı", "XOR mantığı"], correctAnswer: 0, explanation: "Seri bağlı kontaklar AND, paralel bağlı kontaklar OR mantığıdır; self-holding (tutma) devresinde çıkış kendi kontağıyla kendini tutar." },
     ],
   },
@@ -5000,8 +4980,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Alarm ve izleme sistemi (AMS)",
     blocks: [{ sectionTitles: ["Sistem Yapısı"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "AMS'de kritik bir alarmda ne devreye girebilir?", options: ["Otomatik durdurma (shutdown) veya yavaşlatma (slowdown)", "Sadece kayıt", "Hiçbir şey", "Motor hızlanması"], correctAnswer: 0, explanation: "Set değeri aşılınca sesli/görsel alarm verilir; kritik alarmlarda otomatik shutdown veya slowdown devreye girer." },
-      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "UMS sertifikası için AMS gereksinimi nedir?", options: ["Zorunludur; alarm köprüüstüne ve yaşam alanlarına uzatılmalıdır", "İsteğe bağlıdır", "Gerekmez", "Sadece limanda"], correctAnswer: 0, explanation: "UMS (insansız makine dairesi) sertifikası için AMS zorunludur ve alarm köprüüstü ile yaşam alanlarına uzatılmalıdır." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "AMS'de kritik bir alarmda ne devreye girebilir?", options: ["Otomatik durdurma veya yavaşlatma", "Yalnızca olayın kaydedilmesi", "Hiçbir işlem gerçekleşmemesi", "Motorun hızlanıp daha çok yük alması"], correctAnswer: 0, explanation: "Set değeri aşılınca sesli/görsel alarm verilir; kritik alarmlarda otomatik shutdown veya slowdown devreye girer." },
+      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "UMS sertifikası için AMS gereksinimi nedir?", options: ["Zorunludur; alarm köprüye uzatılır", "Tümüyle isteğe bağlı bir donanım", "Hiçbir biçimde gerekmemektedir", "Yalnızca limanda gerekmektedir"], correctAnswer: 0, explanation: "UMS (insansız makine dairesi) sertifikası için AMS zorunludur ve alarm köprüüstü ile yaşam alanlarına uzatılmalıdır." },
     ],
   },
   {
@@ -5009,8 +4989,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dağıtık kontrol sistemi (DCS)",
     blocks: [{ sectionTitles: ["DCS Mimarisi", "DCS vs PLC"] }],
     questions: [
-      { id: 1, sectionRef: "DCS Mimarisi", category: MAK, question: "DCS'in temel güvenilirlik avantajı nedir?", options: ["Her kontrolcü bağımsız çalışabilir; merkez düşse bile yerel kontrol sürer", "Tek merkezi işlemci her şeyi yapar", "Yedeklilik yoktur", "Sadece manuel kontrol"], correctAnswer: 0, explanation: "Sahadan gelen sinyaller yerel kontrolcülere bağlanır; her kontrolcü bağımsız çalışır, merkezi istasyon devre dışı kalsa bile yerel kontrol devam eder." },
-      { id: 2, sectionRef: "DCS vs PLC", category: MAK, question: "DCS ile PLC'nin odak farkı nedir?", options: ["DCS sürekli proses kontrolü, PLC mantık ve sıralı kontrol", "İkisi de aynı", "PLC büyük ölçek, DCS küçük", "PLC yedekli, DCS tekil"], correctAnswer: 0, explanation: "DCS sürekli proses kontrolüne (büyük ölçek, yedekli), PLC mantık/sıralı kontrole (küçük-orta) odaklıdır; büyük gemiler/FPSO'da DCS yaygındır." },
+      { id: 1, sectionRef: "DCS Mimarisi", category: MAK, question: "DCS'in temel güvenilirlik avantajı nedir?", options: ["Kontrolcüler bağımsız; yerel sürer", "Tek merkezi işlemci her işi yapmakta", "Sistemde hiç yedeklilik bulunmaz", "Yalnızca manuel kontrol yapılmakta"], correctAnswer: 0, explanation: "Sahadan gelen sinyaller yerel kontrolcülere bağlanır; her kontrolcü bağımsız çalışır, merkezi istasyon devre dışı kalsa bile yerel kontrol devam eder." },
+      { id: 2, sectionRef: "DCS vs PLC", category: MAK, question: "DCS ile PLC'nin odak farkı nedir?", options: ["DCS sürekli proses, PLC mantık kontrolü", "İkisi de tümüyle aynı işi yapmakta", "PLC büyük ölçek, DCS küçük ölçek", "PLC yedekli, DCS tekil yapıdadır"], correctAnswer: 0, explanation: "DCS sürekli proses kontrolüne (büyük ölçek, yedekli), PLC mantık/sıralı kontrole (küçük-orta) odaklıdır; büyük gemiler/FPSO'da DCS yaygındır." },
     ],
   },
   {
@@ -5018,7 +4998,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Gemi entegre otomasyon sistemi (IAS)",
     blocks: [{ sectionTitles: ["Entegre Fonksiyonlar", "Üretici Sistemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Entegre Fonksiyonlar", category: MAK, question: "IAS hangi fonksiyonları tek sistemde birleştirir?", options: ["AMS, PMS, makine kontrolü, kargo kontrol ve yangın algılama", "Sadece navigasyon", "Sadece kargo", "Sadece alarm"], correctAnswer: 0, explanation: "IAS; alarm/izleme (AMS), güç yönetimi (PMS), makine kontrolü, kargo kontrol, yangın algılama ve navigasyon veri entegrasyonunu birleştirir." },
+      { id: 1, sectionRef: "Entegre Fonksiyonlar", category: MAK, question: "IAS hangi fonksiyonları tek sistemde birleştirir?", options: ["AMS, PMS, makine, kargo ve yangın", "Yalnızca navigasyon sistemleri", "Yalnızca kargo kontrol sistemi", "Yalnızca alarm izleme sistemi"], correctAnswer: 0, explanation: "IAS; alarm/izleme (AMS), güç yönetimi (PMS), makine kontrolü, kargo kontrol, yangın algılama ve navigasyon veri entegrasyonunu birleştirir." },
       { id: 2, sectionRef: "Üretici Sistemleri", category: MAK, question: "Kongsberg'in IAS sistemi hangisidir?", options: ["K-Chief / AutoChief", "Experion Marine", "CENTUM VP", "Ability Marine"], correctAnswer: 0, explanation: "Kongsberg K-Chief/AutoChief; ABB Ability Marine, Wärtsilä NACOS, Honeywell Experion, Yokogawa CENTUM VP Marine üretici sistemleridir." },
     ],
   },
@@ -5027,8 +5007,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Uzaktan izleme ve tanı",
     blocks: [{ sectionTitles: ["Sistem Yapısı", "Uygulamalar"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Gemi verileri kıyıya nasıl iletilir?", options: ["VSAT veya Fleet Broadband üzerinden kıyı sunucularına", "Posta ile", "Hiç iletilmez", "Sadece limanda USB ile"], correctAnswer: 0, explanation: "Gemideki data server sensör/otomasyon verilerini toplar ve VSAT/Fleet Broadband ile kıyı sunucularına iletir; uzmanlar analiz eder." },
-      { id: 2, sectionRef: "Uygulamalar", category: MAK, question: "Uzaktan izlemenin bir faydası nedir?", options: ["Kestirimci bakımla plansız duruşu azaltma", "Yakıt tüketimini artırma", "Mürettebatı azaltma zorunluluğu", "Hiçbir fayda"], correctAnswer: 0, explanation: "Motor performans izleme (erken arıza), enerji verimlilik (CII), kestirimci bakım (plansız duruş azaltma) ve uzaktan destek başlıca uygulamalardır." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Gemi verileri kıyıya nasıl iletilir?", options: ["VSAT veya Fleet Broadband üzerinden", "Basılı posta yoluyla gönderilir", "Hiçbir biçimde iletilmemektedir", "Yalnızca limanda USB bellek ile aktarılır"], correctAnswer: 0, explanation: "Gemideki data server sensör/otomasyon verilerini toplar ve VSAT/Fleet Broadband ile kıyı sunucularına iletir; uzmanlar analiz eder." },
+      { id: 2, sectionRef: "Uygulamalar", category: MAK, question: "Uzaktan izlemenin bir faydası nedir?", options: ["Kestirimci bakımla plansız duruş azalır", "Sefer yakıt tüketimini artırmaktadır", "Mürettebat azaltma zorunluluğu doğar", "Hiçbir biçimde fayda sağlamamakta"], correctAnswer: 0, explanation: "Motor performans izleme (erken arıza), enerji verimlilik (CII), kestirimci bakım (plansız duruş azaltma) ve uzaktan destek başlıca uygulamalardır." },
     ],
   },
   {
@@ -5036,8 +5016,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Diyot ve thyristor (SCR)",
     blocks: [{ sectionTitles: ["Diyot", "Thyristor (SCR)"] }],
     questions: [
-      { id: 1, sectionRef: "Diyot", category: MAK, question: "Güç diyotunun temel işlevi nedir?", options: ["AC'yi DC'ye çevirmek (tek yönlü akım)", "DC'yi AC'ye çevirmek", "Gerilim yükseltmek", "Frekans değiştirmek"], correctAnswer: 0, explanation: "Diyot tek yönlü akım geçirir (anot+/katot−); güç diyotları doğrultucu devrelerde AC'yi DC'ye çevirir." },
-      { id: 2, sectionRef: "Thyristor (SCR)", category: MAK, question: "SCR (thyristor) çıkış gerilimi nasıl ayarlanır?", options: ["Tetikleme açısı (firing angle) değiştirilerek", "Diyot eklenerek", "Frekansla", "Sıcaklıkla"], correctAnswer: 0, explanation: "SCR üç terminallidir (anot/katot/gate), gate sinyaliyle tetiklenir; kontrollü doğrultucularda tetikleme açısı değiştirilerek çıkış gerilimi ayarlanır." },
+      { id: 1, sectionRef: "Diyot", category: MAK, question: "Güç diyotunun temel işlevi nedir?", options: ["AC'yi DC'ye çevirmek (tek yönlü)", "DC'yi AC'ye çevirmek (invertör işlevi)", "Gerilim değerini yükseltmek", "Şebeke frekansını değiştirmek"], correctAnswer: 0, explanation: "Diyot tek yönlü akım geçirir (anot+/katot−); güç diyotları doğrultucu devrelerde AC'yi DC'ye çevirir." },
+      { id: 2, sectionRef: "Thyristor (SCR)", category: MAK, question: "SCR (thyristor) çıkış gerilimi nasıl ayarlanır?", options: ["Tetikleme açısı (firing angle) ile", "Devreye ek diyot eklenmesi ile", "Şebeke frekansı değiştirilerek", "Ortam sıcaklığı değiştirilerek"], correctAnswer: 0, explanation: "SCR üç terminallidir (anot/katot/gate), gate sinyaliyle tetiklenir; kontrollü doğrultucularda tetikleme açısı değiştirilerek çıkış gerilimi ayarlanır." },
     ],
   },
   {
@@ -5045,8 +5025,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Doğrultucu devreler",
     blocks: [{ sectionTitles: ["Doğrultucu Tipleri", "Filtreleme"] }],
     questions: [
-      { id: 1, sectionRef: "Doğrultucu Tipleri", category: MAK, question: "Büyük VFD'lerde harmonik azaltmak için hangi doğrultucu kullanılır?", options: ["12 darbeli (3-fazlı) — çok düşük dalgalanma", "Yarım dalga (1-fazlı)", "Tam dalga köprü (1-fazlı)", "Tek diyot"], correctAnswer: 0, explanation: "12 darbeli doğrultucu çok düşük dalgalanma sağlar ve büyük VFD'lerde harmonik azaltma için kullanılır; 6 darbeli genel endüstriyeldir." },
-      { id: 2, sectionRef: "Filtreleme", category: MAK, question: "Doğrultulmuş DC gerilimi düzleştirmek için ne kullanılır?", options: ["Kondansatör (kapasitif) veya bobin (endüktif) filtre", "Diyot", "Transformatör", "Sigorta"], correctAnswer: 0, explanation: "DC gerilimi düzleştirmek için kapasitif (kondansatör) veya endüktif (bobin) filtre kullanılır." },
+      { id: 1, sectionRef: "Doğrultucu Tipleri", category: MAK, question: "Büyük VFD'lerde harmonik azaltmak için hangi doğrultucu kullanılır?", options: ["12 darbeli (3 fazlı) doğrultucu", "Yarım dalga (1 fazlı) doğrultucu", "Tam dalga köprü (1 fazlı) tipi", "Tek diyotlu basit doğrultucu"], correctAnswer: 0, explanation: "12 darbeli doğrultucu çok düşük dalgalanma sağlar ve büyük VFD'lerde harmonik azaltma için kullanılır; 6 darbeli genel endüstriyeldir." },
+      { id: 2, sectionRef: "Filtreleme", category: MAK, question: "Doğrultulmuş DC gerilimi düzleştirmek için ne kullanılır?", options: ["Kondansatör veya bobin filtresi", "Ek bir güç diyodu eklenerek", "Bir transformatör eklenerek", "Bir sigorta takılması yoluyla"], correctAnswer: 0, explanation: "DC gerilimi düzleştirmek için kapasitif (kondansatör) veya endüktif (bobin) filtre kullanılır." },
     ],
   },
   {
@@ -5054,8 +5034,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İnvertör ve frekans dönüştürücü",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "VFD Blok Diyagramı"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "İnvertör DC gerilimi değişken frekanslı AC'ye nasıl çevirir?", options: ["IGBT anahtarlama elemanları PWM tekniğiyle", "Diyotlarla", "Manyetik alanla", "Mekanik anahtarla"], correctAnswer: 0, explanation: "IGBT elemanları PWM (Pulse Width Modulation) ile DC'yi değişken frekanslı AC'ye çevirir; PWM frekansı (2-16 kHz) yükseldikçe dalga sinüse yaklaşır." },
-      { id: 2, sectionRef: "VFD Blok Diyagramı", category: MAK, question: "VFD'de V/f kontrolünün amacı nedir?", options: ["Gerilim/frekans oranını sabit tutarak motor manyetik akısını korumak", "Frekansı sabit tutmak", "Gerilimi sıfırlamak", "Tork kontrolü yapmamak"], correctAnswer: 0, explanation: "VFD blok: AC → doğrultucu → DC bus → invertör → motor. V/f kontrolü gerilim/frekans oranını sabit tutup akıyı korur; vektör kontrol tork/akıyı bağımsız kontrol eder." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "İnvertör DC gerilimi değişken frekanslı AC'ye nasıl çevirir?", options: ["IGBT anahtarlar ve PWM tekniğiyle", "Yalnızca güç diyotları yardımıyla", "Manyetik alan değişimi yardımıyla", "Mekanik anahtarlar yardımıyla"], correctAnswer: 0, explanation: "IGBT elemanları PWM (Pulse Width Modulation) ile DC'yi değişken frekanslı AC'ye çevirir; PWM frekansı (2-16 kHz) yükseldikçe dalga sinüse yaklaşır." },
+      { id: 2, sectionRef: "VFD Blok Diyagramı", category: MAK, question: "VFD'de V/f kontrolünün amacı nedir?", options: ["Gerilim/frekans oranını sabit tutmak", "Şebeke frekansını sabit tutmak", "Motor gerilimini sıfırlamak için", "Tork kontrolünü tümüyle devre dışı bırakmak"], correctAnswer: 0, explanation: "VFD blok: AC → doğrultucu → DC bus → invertör → motor. V/f kontrolü gerilim/frekans oranını sabit tutup akıyı korur; vektör kontrol tork/akıyı bağımsız kontrol eder." },
     ],
   },
   {
@@ -5063,8 +5043,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yumuşak yol verici (soft starter)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "VFD ile Karşılaştırma"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Soft starter motor gerilimini nasıl kontrol eder?", options: ["Anti-paralel SCR çiftleriyle tetikleme açısını azaltarak kademeli yükseltir", "Frekansı değiştirerek", "Diyotla", "Mekanik şalterle"], correctAnswer: 0, explanation: "Soft starter anti-paralel SCR çiftleriyle tetikleme açısını azaltıp gerilimi kademeli yükseltir; sonra SCR tam iletime geçer veya bypass kontaktör devreye girer." },
-      { id: 2, sectionRef: "VFD ile Karşılaştırma", category: MAK, question: "Soft starter ile VFD arasındaki temel fark nedir?", options: ["Soft starter yalnız kalkışta, VFD sürekli hız kontrolü yapar", "İkisi de sürekli hız kontrolü yapar", "VFD sadece kalkışta", "Fark yok"], correctAnswer: 0, explanation: "Soft starter yalnızca kalkışta (başlangıç akımı 2-4×Iₙ) çalışır; VFD sürekli hız kontrolü (~Iₙ) sağlar ve değişken hız gereken her uygulamada kullanılır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Soft starter motor gerilimini nasıl kontrol eder?", options: ["Anti-paralel SCR ile açıyı azaltarak", "Şebeke frekansını değiştirerek", "Yalnızca güç diyotları yardımıyla", "Mekanik şalter kademeleri ile"], correctAnswer: 0, explanation: "Soft starter anti-paralel SCR çiftleriyle tetikleme açısını azaltıp gerilimi kademeli yükseltir; sonra SCR tam iletime geçer veya bypass kontaktör devreye girer." },
+      { id: 2, sectionRef: "VFD ile Karşılaştırma", category: MAK, question: "Soft starter ile VFD arasındaki temel fark nedir?", options: ["Soft starter kalkışta, VFD sürekli", "İkisi de sürekli hız kontrolü yapar", "VFD yalnızca kalkış anında çalışır", "İkisi arasında hiçbir fark yoktur"], correctAnswer: 0, explanation: "Soft starter yalnızca kalkışta (başlangıç akımı 2-4×Iₙ) çalışır; VFD sürekli hız kontrolü (~Iₙ) sağlar ve değişken hız gereken her uygulamada kullanılır." },
     ],
   },
   {
@@ -5072,7 +5052,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Harmonik bozulma ve filtreleme",
     blocks: [{ sectionTitles: ["Harmonik Etkileri", "Harmonik Azaltma Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Harmonik Etkileri", category: MAK, question: "Gemi elektrik sistemlerinde THD sınırı nedir?", options: ["<%8 (klas kuralları)", "%50", "%100", "Sınır yok"], correctAnswer: 0, explanation: "THD (Total Harmonic Distortion) harmonik kirliliğin ölçüsüdür; klas kuralları gereği gemi sistemlerinde THD <%8 olmalıdır. Harmonikler trafo/motor ısınması ve yanlış trip yapar." },
+      { id: 1, sectionRef: "Harmonik Etkileri", category: MAK, question: "Gemi elektrik sistemlerinde THD sınırı nedir?", options: ["%8'den küçük (klas kuralları)", "%50'den küçük olması gerekir", "%100'den küçük olması gerekir", "Herhangi bir sınır bulunmamakta"], correctAnswer: 0, explanation: "THD (Total Harmonic Distortion) harmonik kirliliğin ölçüsüdür; klas kuralları gereği gemi sistemlerinde THD <%8 olmalıdır. Harmonikler trafo/motor ısınması ve yanlış trip yapar." },
       { id: 2, sectionRef: "Harmonik Azaltma Yöntemleri", category: MAK, question: "En düşük THD'ye (<%5) hangi yöntem ulaşır?", options: ["Aktif filtre", "Line reactor", "Tek diyot", "Hiçbiri"], correctAnswer: 0, explanation: "Aktif filtre THD'yi <%5'e indirir (yüksek maliyet); 12 darbeli doğrultucu %10'a, line reactor %15-20'ye düşürür." },
     ],
   },
@@ -5081,8 +5061,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Arıza sonrası bakım (corrective)",
     blocks: [{ sectionTitles: ["Özellikler"] }],
     questions: [
-      { id: 1, sectionRef: "Özellikler", category: MAK, question: "Arıza sonrası (corrective) bakım ne zaman uygulanır?", options: ["Ekipman çalışamaz hale geldiğinde müdahale edilir", "Önceden planlanır", "Sürekli izlenir", "Hiç yapılmaz"], correctAnswer: 0, explanation: "Corrective bakımda ekipman bozulunca müdahale edilir; yedek parça bulunurluğu, onarım süresi ve güvenlik riskleri kritiktir." },
-      { id: 2, sectionRef: "Özellikler", category: MAK, question: "Arıza sonrası bakım hangi ekipmanlarda kabul edilemez?", options: ["Ana makine, jeneratör gibi kritik sistemlerde", "Kritik olmayan ekipmanda", "Hiçbir yerde", "Tüm ekipmanlarda kabul edilebilir"], correctAnswer: 0, explanation: "Kritik olmayan ekipmanlarda kabul edilebilir ama ana makine/jeneratör gibi kritik sistemlerde kabul edilemez." },
+      { id: 1, sectionRef: "Özellikler", category: MAK, question: "Arıza sonrası (corrective) bakım ne zaman uygulanır?", options: ["Ekipman çalışamaz hâle geldiğinde", "Önceden takvimlenip planlanarak", "Durum sürekli izlenerek yapılır", "Hiçbir zaman uygulanmamaktadır"], correctAnswer: 0, explanation: "Corrective bakımda ekipman bozulunca müdahale edilir; yedek parça bulunurluğu, onarım süresi ve güvenlik riskleri kritiktir." },
+      { id: 2, sectionRef: "Özellikler", category: MAK, question: "Arıza sonrası bakım hangi ekipmanlarda kabul edilemez?", options: ["Ana makine ve jeneratör gibi kritikte", "Kritik olmayan yardımcı ekipmanda", "Gemide hiçbir ekipman türünde", "Tüm ekipmanlarda kabul edilebilir"], correctAnswer: 0, explanation: "Kritik olmayan ekipmanlarda kabul edilebilir ama ana makine/jeneratör gibi kritik sistemlerde kabul edilemez." },
     ],
   },
   {
@@ -5090,8 +5070,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Planlı bakım (planned/preventive)",
     blocks: [{ sectionTitles: ["Uygulama"] }],
     questions: [
-      { id: 1, sectionRef: "Uygulama", category: MAK, question: "Planlı bakım aralıkları neye göre belirlenir?", options: ["Motor üreticisi tavsiyeleri ve klas gereklilikleri", "Rastgele", "Sadece arıza olunca", "Mürettebat keyfine göre"], correctAnswer: 0, explanation: "Aralıklar üretici tavsiyeleri ve klas gerekliliklerine göre belirlenir (örn. yağ filtresi 250-500 saat, piston çıkarma 16000-24000 saat)." },
-      { id: 2, sectionRef: "Uygulama", category: MAK, question: "PMS yazılımı planlı bakımda ne yapar?", options: ["İş emri oluşturur, geçmişi kaydeder, yaklaşan bakımları hatırlatır", "Sadece alarm verir", "Motoru çalıştırır", "Yakıt ölçer"], correctAnswer: 0, explanation: "PMS yazılımı iş emirleri oluşturur, bakım geçmişini kaydeder ve yaklaşan bakımları hatırlatır." },
+      { id: 1, sectionRef: "Uygulama", category: MAK, question: "Planlı bakım aralıkları neye göre belirlenir?", options: ["Üretici tavsiyeleri ve klas kuralları", "Rastgele belirlenen aralıklara göre", "Yalnızca arıza oluştuğu zamanlarda", "Mürettebatın keyfine göre serbest"], correctAnswer: 0, explanation: "Aralıklar üretici tavsiyeleri ve klas gerekliliklerine göre belirlenir (örn. yağ filtresi 250-500 saat, piston çıkarma 16000-24000 saat)." },
+      { id: 2, sectionRef: "Uygulama", category: MAK, question: "PMS yazılımı planlı bakımda ne yapar?", options: ["İş emri açar, geçmiş kaydı tutar", "Yalnızca sesli alarm vermektedir", "Motoru otomatik çalıştırmaktadır", "Yakıt tüketimini ölçüp saymakta"], correctAnswer: 0, explanation: "PMS yazılımı iş emirleri oluşturur, bakım geçmişini kaydeder ve yaklaşan bakımları hatırlatır." },
     ],
   },
   {
@@ -5099,7 +5079,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Durum bazlı bakım (condition-based)",
     blocks: [{ sectionTitles: ["Prensipler", "Uygulama Örnekleri"] }],
     questions: [
-      { id: 1, sectionRef: "Prensipler", category: MAK, question: "Durum bazlı (CBM) bakımın avantajı nedir?", options: ["Gereksiz bakım önlenir ve ekipman ömrü uzar", "Hiç ölçüm gerektirmez", "En ucuz yöntemdir", "Personel gerektirmez"], correctAnswer: 0, explanation: "CBM'de titreşim/sıcaklık/yağ kalitesi trend izlenip eşik aşılınca bakım planlanır; over-maintenance önlenir ama izleme ekipmanı ve uzman gerektirir." },
+      { id: 1, sectionRef: "Prensipler", category: MAK, question: "Durum bazlı (CBM) bakımın avantajı nedir?", options: ["Gereksiz bakım önlenir, ömür uzar", "Hiçbir ölçüm gerektirmiyor olması", "Bilinen en ucuz bakım yöntemi olması", "Hiç personel gerektirmiyor olması"], correctAnswer: 0, explanation: "CBM'de titreşim/sıcaklık/yağ kalitesi trend izlenip eşik aşılınca bakım planlanır; over-maintenance önlenir ama izleme ekipmanı ve uzman gerektirir." },
       { id: 2, sectionRef: "Uygulama Örnekleri", category: MAK, question: "Yataklarda yağ analizinde hangi eşik bakım sinyalidir?", options: ["Fe > 100 ppm", "Fe > 1 ppm", "Hiçbir değer", "Sadece renk"], correctAnswer: 0, explanation: "Yataklarda yağ analizinde Fe > 100 ppm eşik örneğidir; ana motorda egzoz sıcaklığı nominal ±25°C sapma izlenir." },
     ],
   },
@@ -5108,8 +5088,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kestirimci bakım (predictive)",
     blocks: [{ sectionTitles: ["İzleme Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "İzleme Yöntemleri", category: MAK, question: "Titreşim analizi hangi arızayı tespit eder?", options: ["Yatak aşınması ve dengesizlik", "Yakıt rengini", "Su seviyesini", "Hiçbir şeyi"], correctAnswer: 0, explanation: "Titreşim analizi (frekans/genlik) yatak aşınması ve dengesizliği; yağ analizi aşınma/kontaminasyonu; termal görüntüleme aşırı ısınmayı tespit eder." },
-      { id: 2, sectionRef: "İzleme Yöntemleri", category: MAK, question: "Korozyon ve erozyonu hangi yöntem tespit eder?", options: ["Ultrasonik kalınlık ölçümü", "Performans izleme", "Yağ analizi", "Titreşim"], correctAnswer: 0, explanation: "Ultrasonik ölçüm kalınlık takibiyle korozyon/erozyonu tespit eder; performans izleme (SFOC, egzoz sıcaklığı) yanma bozukluğunu gösterir." },
+      { id: 1, sectionRef: "İzleme Yöntemleri", category: MAK, question: "Titreşim analizi hangi arızayı tespit eder?", options: ["Yatak aşınması ve dengesizliği", "Kullanılan yakıtın renk tonunu", "Tanktaki su seviyesi değerini", "Hiçbir arıza türünü tespit etmez"], correctAnswer: 0, explanation: "Titreşim analizi (frekans/genlik) yatak aşınması ve dengesizliği; yağ analizi aşınma/kontaminasyonu; termal görüntüleme aşırı ısınmayı tespit eder." },
+      { id: 2, sectionRef: "İzleme Yöntemleri", category: MAK, question: "Korozyon ve erozyonu hangi yöntem tespit eder?", options: ["Ultrasonik kalınlık ölçüm yöntemi", "Performans izleme ve trend analizi", "Yağ analizi laboratuvar yöntemi", "Titreşim spektrum analiz yöntemi"], correctAnswer: 0, explanation: "Ultrasonik ölçüm kalınlık takibiyle korozyon/erozyonu tespit eder; performans izleme (SFOC, egzoz sıcaklığı) yanma bozukluğunu gösterir." },
     ],
   },
   {
@@ -5117,8 +5097,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Güvenilirlik merkezli bakım (RCM)",
     blocks: [{ sectionTitles: ["RCM Analiz Süreci", "RCM Karar Mantığı"] }],
     questions: [
-      { id: 1, sectionRef: "RCM Analiz Süreci", category: MAK, question: "RCM analizinde arıza modlarının etkileri hangi yöntemle analiz edilir?", options: ["FMEA (arıza modu ve etki analizi)", "Sadece tahmin", "Kura", "Anket"], correctAnswer: 0, explanation: "RCM: fonksiyonları tanımla → fonksiyonel arızaları belirle → arıza modlarını listele → FMEA ile etkilerini analiz et → sonuçları değerlendir → uygun bakım görevini seç." },
-      { id: 2, sectionRef: "RCM Karar Mantığı", category: MAK, question: "Gizli arızalar (hidden failures) için RCM ne önerir?", options: ["Periyodik fonksiyon testi (örn. emniyet supabı testi)", "Hiçbir şey", "Arıza sonrası bakım", "Tasarım değişikliği zorunlu"], correctAnswer: 0, explanation: "Güvenlik/çevre etkili arızalarda önleyici/kestirimci bakım şart; gizli arızalarda periyodik fonksiyon testi (emniyet supabı testi gibi) yapılır." },
+      { id: 1, sectionRef: "RCM Analiz Süreci", category: MAK, question: "RCM analizinde arıza modlarının etkileri hangi yöntemle analiz edilir?", options: ["FMEA (arıza modu ve etki analizi)", "Yalnızca deneyime dayalı tahmin", "Rastgele kura çekme yöntemi", "Personel anketi ve görüş alma"], correctAnswer: 0, explanation: "RCM: fonksiyonları tanımla → fonksiyonel arızaları belirle → arıza modlarını listele → FMEA ile etkilerini analiz et → sonuçları değerlendir → uygun bakım görevini seç." },
+      { id: 2, sectionRef: "RCM Karar Mantığı", category: MAK, question: "Gizli arızalar (hidden failures) için RCM ne önerir?", options: ["Periyodik fonksiyon testi yapmayı", "Hiçbir işlem yapılmamasını", "Arıza sonrası bakım yapılmasını", "Zorunlu tasarım değişikliğini"], correctAnswer: 0, explanation: "Güvenlik/çevre etkili arızalarda önleyici/kestirimci bakım şart; gizli arızalarda periyodik fonksiyon testi (emniyet supabı testi gibi) yapılır." },
     ],
   },
   {
@@ -5126,8 +5106,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "PMS yazılımı ve iş emri yönetimi",
     blocks: [{ sectionTitles: ["Yazılım Fonksiyonları", "Klas Gerekliliklerine Uyum"] }],
     questions: [
-      { id: 1, sectionRef: "Yazılım Fonksiyonları", category: MAK, question: "PMS yazılımında ekipman ağacı nedir?", options: ["Tüm makine ve alt bileşenlerin hiyerarşik kaydı", "Yedek parça faturası", "Yakıt deposu", "Personel listesi"], correctAnswer: 0, explanation: "Ekipman ağacı makine ve alt bileşenleri hiyerarşik tutar; PMS iş emri yönetimi, bakım geçmişi ve yedek parça stok yönetimi sağlar." },
-      { id: 2, sectionRef: "Klas Gerekliliklerine Uyum", category: MAK, question: "Onaylı PMS kullanımının klas avantajı nedir?", options: ["Bazı survey'ler PMS kayıtlarına dayanarak uzatılabilir (credit sistemi)", "Hiçbir avantaj", "Survey gerekmez", "Sadece ek maliyet"], correctAnswer: 0, explanation: "Klas onaylı PMS'i teşvik eder; bazı survey'ler PMS kayıtlarına dayanarak uzatılabilir/ertelenebilir. AMOS, Star IPS, TM Master yaygın yazılımlardır." },
+      { id: 1, sectionRef: "Yazılım Fonksiyonları", category: MAK, question: "PMS yazılımında ekipman ağacı nedir?", options: ["Makine ve bileşenlerin hiyerarşisi", "Yedek parça fatura kayıt listesi", "Yakıt deposu seviye kayıtları", "Gemi personel listesi kayıtları"], correctAnswer: 0, explanation: "Ekipman ağacı makine ve alt bileşenleri hiyerarşik tutar; PMS iş emri yönetimi, bakım geçmişi ve yedek parça stok yönetimi sağlar." },
+      { id: 2, sectionRef: "Klas Gerekliliklerine Uyum", category: MAK, question: "Onaylı PMS kullanımının klas avantajı nedir?", options: ["Bazı survey'ler kayıtlara göre uzar", "Hiçbir biçimde avantaj sağlamaz", "Hiç survey yapılması gerekmemekte", "Yalnızca ek maliyet getirmektedir"], correctAnswer: 0, explanation: "Klas onaylı PMS'i teşvik eder; bazı survey'ler PMS kayıtlarına dayanarak uzatılabilir/ertelenebilir. AMOS, Star IPS, TM Master yaygın yazılımlardır." },
     ],
   },
   {
@@ -5135,8 +5115,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bakım aralıkları ve çalışma saatleri",
     blocks: [{ sectionTitles: ["Tipik Bakım Aralıkları", "Çalışma Saati Takibi"] }],
     questions: [
-      { id: 1, sectionRef: "Tipik Bakım Aralıkları", category: MAK, question: "Piston çıkarma bakımı tipik olarak hangi aralıkta yapılır?", options: ["16000-24000 saat", "250 saat", "100000 saat", "Her gün"], correctAnswer: 0, explanation: "Piston çıkarma 16000-24000 saat, silindir kapağı revizyonu 8000-16000 saat, yağ filtresi değişimi 250-500 saat aralığındadır." },
-      { id: 2, sectionRef: "Çalışma Saati Takibi", category: MAK, question: "Klas survey takvimi genellikle kaç yıllık döngüdedir?", options: ["5 yıl (annual, intermediate, special)", "1 yıl", "10 yıl", "20 yıl"], correctAnswer: 0, explanation: "Her motorun running hour sayacı vardır; PMS bakım eşiğinde uyarır. Klas survey takvimi 5 yıllık döngüdedir (annual/intermediate/special)." },
+      { id: 1, sectionRef: "Tipik Bakım Aralıkları", category: MAK, question: "Piston çıkarma bakımı tipik olarak hangi aralıkta yapılır?", options: ["16000-24000 çalışma saatinde bir", "250 çalışma saatinde bir kez", "100000 çalışma saatinde yalnızca bir kez", "Her gün düzenli olarak yapılır"], correctAnswer: 0, explanation: "Piston çıkarma 16000-24000 saat, silindir kapağı revizyonu 8000-16000 saat, yağ filtresi değişimi 250-500 saat aralığındadır." },
+      { id: 2, sectionRef: "Çalışma Saati Takibi", category: MAK, question: "Klas survey takvimi genellikle kaç yıllık döngüdedir?", options: ["5 yıl (annual, intermediate, special)", "1 yıl (yalnızca yıllık survey ile)", "10 yıl (uzun döngülü survey ile)", "20 yıl (çok uzun döngülü survey)"], correctAnswer: 0, explanation: "Her motorun running hour sayacı vardır; PMS bakım eşiğinde uyarır. Klas survey takvimi 5 yıllık döngüdedir (annual/intermediate/special)." },
     ],
   },
   {
@@ -5144,8 +5124,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Klas gereklilikleri ve survey takvimi",
     blocks: [{ sectionTitles: ["Survey Tipleri", "Continuous Survey (CMS)"] }],
     questions: [
-      { id: 1, sectionRef: "Survey Tipleri", category: MAK, question: "Special Survey (Class Renewal) hangi aralıkla yapılır?", options: ["5 yıl (kapsamlı muayene, kalınlık ölçümü)", "Her yıl", "2.5 yıl", "10 yıl"], correctAnswer: 0, explanation: "Annual her yıl, Intermediate 2.5 yıl, Special (Class Renewal) 5 yılda bir kapsamlı muayene ve kalınlık ölçümüyle yapılır." },
-      { id: 2, sectionRef: "Continuous Survey (CMS)", category: MAK, question: "Continuous Machinery Survey (CMS) nasıl çalışır?", options: ["5 yıllık döngüde her yıl kalemlerin %20'si kontrol edilir", "Tüm makine bir günde survey edilir", "Survey yapılmaz", "Sadece kuru havuzda"], correctAnswer: 0, explanation: "CMS, 5 yıllık döngüde bileşenlerin parça parça survey edilmesine imkân tanır; her yıl kalemlerin %20'si kontrol edilir, uzun kuru havuz ihtiyacı azalır." },
+      { id: 1, sectionRef: "Survey Tipleri", category: MAK, question: "Special Survey (Class Renewal) hangi aralıkla yapılır?", options: ["5 yıl (kapsamlı muayene ve ölçüm)", "Her yıl düzenli olarak yapılır", "2,5 yılda bir kez yapılmakta", "10 yılda bir kez yapılmaktadır"], correctAnswer: 0, explanation: "Annual her yıl, Intermediate 2.5 yıl, Special (Class Renewal) 5 yılda bir kapsamlı muayene ve kalınlık ölçümüyle yapılır." },
+      { id: 2, sectionRef: "Continuous Survey (CMS)", category: MAK, question: "Continuous Machinery Survey (CMS) nasıl çalışır?", options: ["5 yıllık döngüde yılda %20 kontrol", "Tüm makine tek günde survey edilir", "Hiçbir survey yapılmamaktadır", "Yalnızca kuru havuzda yapılmakta"], correctAnswer: 0, explanation: "CMS, 5 yıllık döngüde bileşenlerin parça parça survey edilmesine imkân tanır; her yıl kalemlerin %20'si kontrol edilir, uzun kuru havuz ihtiyacı azalır." },
     ],
   },
   {
@@ -5153,8 +5133,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kritik ekipman tanımlaması",
     blocks: [{ sectionTitles: ["Kritik Ekipman Listesi", "Bakım Önceliği"] }],
     questions: [
-      { id: 1, sectionRef: "Kritik Ekipman Listesi", category: MAK, question: "Kritik ekipman listesi hangi kural gereği bulunur?", options: ["ISM Code gereği (risk değerlendirmesine dayalı)", "Hiçbir kural", "Sadece sigorta", "Liman talebiyle"], correctAnswer: 0, explanation: "ISM Code gereği her geminin risk değerlendirmesine dayalı kritik ekipman listesi (ana motor, dümen, jeneratörler, yangın pompası vb.) bulunur." },
-      { id: 2, sectionRef: "Bakım Önceliği", category: MAK, question: "Kritik ekipman için bakım nasıl yönetilir?", options: ["Öncelikli planlanır, yedek parça stoklanır, acil onarım prosedürü hazırdır", "En son yapılır", "Hiç bakım yapılmaz", "Sadece arızada"], correctAnswer: 0, explanation: "Kritik ekipman bakımı öncelikli planlanır, yedek parça stoklanır ve acil onarım prosedürleri önceden belirlenir; klas condition monitoring isteyebilir." },
+      { id: 1, sectionRef: "Kritik Ekipman Listesi", category: MAK, question: "Kritik ekipman listesi hangi kural gereği bulunur?", options: ["ISM Code gereği (risk değerlendirme)", "Hiçbir kural gereği bulunmamakta", "Yalnızca sigorta şirketi talebiyle", "Yalnızca liman idaresi talebiyle"], correctAnswer: 0, explanation: "ISM Code gereği her geminin risk değerlendirmesine dayalı kritik ekipman listesi (ana motor, dümen, jeneratörler, yangın pompası vb.) bulunur." },
+      { id: 2, sectionRef: "Bakım Önceliği", category: MAK, question: "Kritik ekipman için bakım nasıl yönetilir?", options: ["Öncelikli planlanır; yedek stoklanır", "Tüm işlerden en son yapılmaktadır", "Hiçbir bakım işlemi yapılmamakta", "Yalnızca arıza çıktığında yapılır"], correctAnswer: 0, explanation: "Kritik ekipman bakımı öncelikli planlanır, yedek parça stoklanır ve acil onarım prosedürleri önceden belirlenir; klas condition monitoring isteyebilir." },
     ],
   },
   {
@@ -5162,8 +5142,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yedek parça envanteri ve min-max seviye",
     blocks: [{ sectionTitles: ["Stok Yönetimi", "Klas Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "Stok Yönetimi", category: MAK, question: "Min-max stok sisteminde sipariş ne zaman oluşturulur?", options: ["Stok minimum seviyeye düştüğünde", "Maksimuma ulaşınca", "Her gün", "Hiç"], correctAnswer: 0, explanation: "Her parça için minimum (sipariş tetikleme) ve maksimum (depolama) seviyesi belirlenir; stok minimuma düşünce sipariş oluşturulur." },
-      { id: 2, sectionRef: "Klas Gereklilikleri", category: MAK, question: "Zorunlu yedek parça eksikliği survey'de neye yol açabilir?", options: ["Koşullu onay (condition of class) konulmasına", "Hiçbir şeye", "Geminin batmasına", "Yakıt kaybına"], correctAnswer: 0, explanation: "Klas belirli yedek parçaların (silindir kapağı, piston, enjektör nozül, yatak) bulundurulmasını zorunlu kılar; eksiklik condition of class'a yol açabilir." },
+      { id: 1, sectionRef: "Stok Yönetimi", category: MAK, question: "Min-max stok sisteminde sipariş ne zaman oluşturulur?", options: ["Stok minimum seviyeye düştüğünde", "Stok maksimuma ulaştığı zaman", "Her gün düzenli olarak sipariş", "Hiçbir zaman sipariş açılmaz"], correctAnswer: 0, explanation: "Her parça için minimum (sipariş tetikleme) ve maksimum (depolama) seviyesi belirlenir; stok minimuma düşünce sipariş oluşturulur." },
+      { id: 2, sectionRef: "Klas Gereklilikleri", category: MAK, question: "Zorunlu yedek parça eksikliği survey'de neye yol açabilir?", options: ["Koşullu onay (condition of class)", "Herhangi bir sonuç doğurmamakta", "Geminin batmasına doğrudan yol açmaktadır", "Sefer yakıt kaybına yol açmakta"], correctAnswer: 0, explanation: "Klas belirli yedek parçaların (silindir kapağı, piston, enjektör nozül, yatak) bulundurulmasını zorunlu kılar; eksiklik condition of class'a yol açabilir." },
     ],
   },
   {
@@ -5171,8 +5151,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Silindir kapağı söküm ve revizyon",
     blocks: [{ sectionTitles: ["Söküm Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Söküm Prosedürü", category: MAK, question: "Silindir kapağı sökümünde ilk adım nedir?", options: ["İlgili silindiri izole etmek (yakıt, hava, soğutma suyu kapatma)", "Hemen cıvataları sökmek", "Pistonu çekmek", "Motoru çalıştırmak"], correctAnswer: 0, explanation: "Önce silindir izole edilir (yakıt/hava/soğutma kapatma), indikatör musluğu açılır, başlatma havası valfi kapatılır; sonra kapak cıvataları tork sırasıyla gevşetilir." },
-      { id: 2, sectionRef: "Söküm Prosedürü", category: MAK, question: "Silindir kapağı revizyonunda hangi muayene yapılır?", options: ["Çatlak kontrolü (PT veya MPI) ve supap oturma yüzeyi taşlama", "Sadece boyama", "Hiçbir muayene", "Sadece tartma"], correctAnswer: 0, explanation: "Hidrolik jack ile kapak kaldırılır, enjektör/supaplar sökülür, soğutma kanalları temizlenir, çatlak kontrolü (PT/MPI) yapılır ve supap yüzeyi taşlanır (lapping)." },
+      { id: 1, sectionRef: "Söküm Prosedürü", category: MAK, question: "Silindir kapağı sökümünde ilk adım nedir?", options: ["Silindiri izole etmek (yakıt, hava, su)", "Doğrudan cıvataları sökmeye başlamak", "Önce pistonu yukarı çekip çıkarmak", "Motoru çalıştırıp ısıtmaya almak"], correctAnswer: 0, explanation: "Önce silindir izole edilir (yakıt/hava/soğutma kapatma), indikatör musluğu açılır, başlatma havası valfi kapatılır; sonra kapak cıvataları tork sırasıyla gevşetilir." },
+      { id: 2, sectionRef: "Söküm Prosedürü", category: MAK, question: "Silindir kapağı revizyonunda hangi muayene yapılır?", options: ["Çatlak kontrolü (PT/MPI) ve taşlama", "Yalnızca yüzeyin boyanması işlemi", "Hiçbir muayene işlemi yapılmaz", "Yalnızca tartılıp kaydedilmesi"], correctAnswer: 0, explanation: "Hidrolik jack ile kapak kaldırılır, enjektör/supaplar sökülür, soğutma kanalları temizlenir, çatlak kontrolü (PT/MPI) yapılır ve supap yüzeyi taşlanır (lapping)." },
     ],
   },
   {
@@ -5180,8 +5160,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Piston ve segman değişimi",
     blocks: [{ sectionTitles: ["Söküm ve Kontrol", "Segman Değerlendirmesi"] }],
     questions: [
-      { id: 1, sectionRef: "Söküm ve Kontrol", category: MAK, question: "Piston tacı (crown) hangi muayeneye alınır?", options: ["Çatlak kontrolü (PT/MPI) ve soğutma kanalı basınç testi", "Sadece tartma", "Hiçbiri", "Sadece boyama"], correctAnswer: 0, explanation: "Piston özel aletle çekilir, segman ağız boşluğu ölçülür, crown çatlak kontrolüne (PT/MPI) alınır ve soğutma kanalları basınç testine tabi tutulur." },
-      { id: 2, sectionRef: "Segman Değerlendirmesi", category: MAK, question: "Segman ağız boşluğu (butt gap) artarsa ne olur?", options: ["Blow-by artar; limit aşılırsa segman değiştirilir", "Yakıt tasarrufu olur", "Hiçbir etki", "Soğuma artar"], correctAnswer: 0, explanation: "Aşınmayla butt gap artar; limit aşılırsa yeni segmanla değiştirilir. Radyal boşluk gaz kaçağını, crown çatlağı piston değişimini gösterir." },
+      { id: 1, sectionRef: "Söküm ve Kontrol", category: MAK, question: "Piston tacı (crown) hangi muayeneye alınır?", options: ["Çatlak kontrolü ve kanal basınç testi", "Yalnızca tartılıp kayda geçirilmesi", "Hiçbir muayeneye alınmamaktadır", "Yalnızca yüzeyinin boyanması işlemi"], correctAnswer: 0, explanation: "Piston özel aletle çekilir, segman ağız boşluğu ölçülür, crown çatlak kontrolüne (PT/MPI) alınır ve soğutma kanalları basınç testine tabi tutulur." },
+      { id: 2, sectionRef: "Segman Değerlendirmesi", category: MAK, question: "Segman ağız boşluğu (butt gap) artarsa ne olur?", options: ["Blow-by artar; limitte değiştirilir", "Sefer yakıt tüketiminde tasarruf", "Motor üzerinde hiçbir etki olmaz", "Silindirin soğuması belirgin biçimde artar"], correctAnswer: 0, explanation: "Aşınmayla butt gap artar; limit aşılırsa yeni segmanla değiştirilir. Radyal boşluk gaz kaçağını, crown çatlağı piston değişimini gösterir." },
     ],
   },
   {
@@ -5189,8 +5169,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Liner muayene ve ölçüm",
     blocks: [{ sectionTitles: ["Ölçüm Yöntemi", "Aşınma Değerlendirmesi"] }],
     questions: [
-      { id: 1, sectionRef: "Ölçüm Yöntemi", category: MAK, question: "Liner iç çapı nasıl ölçülür?", options: ["Bore gauge ile farklı yükseklik ve yönlerde", "Termometreyle", "Tartarak", "Gözle"], correctAnswer: 0, explanation: "Bore gauge ile genellikle 4 yükseklik (TDC, port, orta, alt) ve 2 yönde (fore-aft, port-stbd) ölçülür; ovalizasyon = aynı yükseklikteki iki yön farkıdır." },
-      { id: 2, sectionRef: "Aşınma Değerlendirmesi", category: MAK, question: "Liner aşınma limiti genellikle nedir?", options: ["Nominal çapın %0.5-1.0'i", "%50", "%0.01", "Limit yok"], correctAnswer: 0, explanation: "Normal aşınma 0.02-0.10 mm/1000h; limit nominal çapın %0.5-1.0'idir. Clover-leafing (yonca yaprağı aşınması) anti-polishing ring ile önlenir." },
+      { id: 1, sectionRef: "Ölçüm Yöntemi", category: MAK, question: "Liner iç çapı nasıl ölçülür?", options: ["Bore gauge ile farklı yön ve seviyede", "Termometre ile sıcaklık ölçülerek", "Söküp tartılarak ölçüm yapılarak", "Gözle bakılıp tahmin edilmesiyle"], correctAnswer: 0, explanation: "Bore gauge ile genellikle 4 yükseklik (TDC, port, orta, alt) ve 2 yönde (fore-aft, port-stbd) ölçülür; ovalizasyon = aynı yükseklikteki iki yön farkıdır." },
+      { id: 2, sectionRef: "Aşınma Değerlendirmesi", category: MAK, question: "Liner aşınma limiti genellikle nedir?", options: ["Nominal çapın %0,5-1,0 kadarı", "Nominal çapın %50 kadarı", "Nominal çapın %0,01 kadarı", "Herhangi bir limit yoktur"], correctAnswer: 0, explanation: "Normal aşınma 0.02-0.10 mm/1000h; limit nominal çapın %0.5-1.0'idir. Clover-leafing (yonca yaprağı aşınması) anti-polishing ring ile önlenir." },
     ],
   },
   {
@@ -5198,8 +5178,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Supap taşlama ve ayar",
     blocks: [{ sectionTitles: ["Taşlama İşlemi", "Supap Ayarı"] }],
     questions: [
-      { id: 1, sectionRef: "Taşlama İşlemi", category: MAK, question: "Supap oturma yüzeyi temas kontrolü nasıl yapılır?", options: ["Prusya mavisi (Prussian blue) ile temas şeridi kontrol edilir", "Sadece gözle", "Tartarak", "Termometreyle"], correctAnswer: 0, explanation: "Kaba (80-120 grit) ve ince (200-400 grit) taşlama sonrası Prussian blue ile temas şeridi kontrol edilir; gazyağı testiyle sızdırmazlık doğrulanır." },
-      { id: 2, sectionRef: "Supap Ayarı", category: MAK, question: "Supap boşluğu (tappet clearance) nasıl ölçülür?", options: ["Feeler gauge ile, üretici spesifikasyonuna göre ayarlanır", "Bore gauge ile", "Tahminle", "Ölçülmez"], correctAnswer: 0, explanation: "Supap zamanlaması kam profiline göre ayarlanır (ME tipte yazılımla); supap boşluğu feeler gauge ile ölçülüp üretici değerine göre ayarlanır." },
+      { id: 1, sectionRef: "Taşlama İşlemi", category: MAK, question: "Supap oturma yüzeyi temas kontrolü nasıl yapılır?", options: ["Prusya mavisi ile temas şeridi", "Yalnızca gözle bakılarak kontrol", "Söküp tartılarak yapılan kontrol", "Termometre ile yapılan kontrol"], correctAnswer: 0, explanation: "Kaba (80-120 grit) ve ince (200-400 grit) taşlama sonrası Prussian blue ile temas şeridi kontrol edilir; gazyağı testiyle sızdırmazlık doğrulanır." },
+      { id: 2, sectionRef: "Supap Ayarı", category: MAK, question: "Supap boşluğu (tappet clearance) nasıl ölçülür?", options: ["Feeler gauge ile; spesifikasyona göre", "Bore gauge ile ölçülüp ayarlanmakta", "Tahmine dayanarak ayarlanmaktadır", "Hiçbir biçimde ölçüm yapılmamakta"], correctAnswer: 0, explanation: "Supap zamanlaması kam profiline göre ayarlanır (ME tipte yazılımla); supap boşluğu feeler gauge ile ölçülüp üretici değerine göre ayarlanır." },
     ],
   },
   {
@@ -5208,7 +5188,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Enjektör Testi", "Bakım"] }],
     questions: [
       { id: 1, sectionRef: "Enjektör Testi", category: MAK, question: "Enjektör testinde açma basıncı (opening pressure) tipik aralığı nedir?", options: ["250-350 bar", "10-20 bar", "1000-2000 bar", "Test edilmez"], correctAnswer: 0, explanation: "Test tezgahında açma basıncı (250-350 bar), püskürtme kalitesi (ince/homojen koni) ve sızdırmazlık (açma basıncının %80'inde 10 sn damlamasız) kontrol edilir." },
-      { id: 2, sectionRef: "Bakım", category: MAK, question: "Nozül iğne (needle) ve gövde nasıl değiştirilir?", options: ["Çiftler halinde (karıştırılamaz)", "Tek tek, karışık", "Hiç değiştirilmez", "Sadece iğne"], correctAnswer: 0, explanation: "Karbon birikintileri ultrasonik/tel fırça ile giderilir; nozül iğne ve gövde çiftler halinde değiştirilir (karıştırılamaz), O-ring ve bakır conta her sökümde yenilenir." },
+      { id: 2, sectionRef: "Bakım", category: MAK, question: "Nozül iğne (needle) ve gövde nasıl değiştirilir?", options: ["Çiftler hâlinde (karıştırılamaz)", "Tek tek ve karışık olarak değişir", "Hiçbir zaman değiştirilmemekte", "Yalnızca iğne değiştirilmekte"], correctAnswer: 0, explanation: "Karbon birikintileri ultrasonik/tel fırça ile giderilir; nozül iğne ve gövde çiftler halinde değiştirilir (karıştırılamaz), O-ring ve bakır conta her sökümde yenilenir." },
     ],
   },
   {
@@ -5216,8 +5196,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Görsel muayene prosedürleri",
     blocks: [{ sectionTitles: ["Muayene Yöntemi", "Kontrol Noktaları"] }],
     questions: [
-      { id: 1, sectionRef: "Muayene Yöntemi", category: MAK, question: "Erişilemeyen bölgeler (silindir içi, kazan boruları) nasıl muayene edilir?", options: ["Endoskop (borescope) ile dolaylı görsel muayene", "Sadece çıplak gözle", "Tartarak", "Hiç muayene edilmez"], correctAnswer: 0, explanation: "Doğrudan görsel muayene çıplak göz/büyüteçle (min 500 lux); erişilemeyen bölgeler endoskop (borescope) ile dolaylı muayene edilir." },
-      { id: 2, sectionRef: "Kontrol Noktaları", category: MAK, question: "Görsel muayenede aşağıdakilerden hangisi kontrol edilir?", options: ["Yüzey çatlakları, sızıntı izleri, cıvata gevşekliği", "Sadece renk", "Sadece ağırlık", "Yakıt fiyatı"], correctAnswer: 0, explanation: "Yüzey çatlakları/korozyon, kaynak dikişi düzensizlikleri, cıvata gevşekliği, conta/O-ring durumu ve sızıntı izleri (yağ/su/yakıt/hava) kontrol edilir." },
+      { id: 1, sectionRef: "Muayene Yöntemi", category: MAK, question: "Erişilemeyen bölgeler (silindir içi, kazan boruları) nasıl muayene edilir?", options: ["Endoskop (borescope) ile görsel", "Yalnızca çıplak gözle muayene ile", "Söküp tartılarak muayene yoluyla", "Hiçbir biçimde muayene edilmez"], correctAnswer: 0, explanation: "Doğrudan görsel muayene çıplak göz/büyüteçle (min 500 lux); erişilemeyen bölgeler endoskop (borescope) ile dolaylı muayene edilir." },
+      { id: 2, sectionRef: "Kontrol Noktaları", category: MAK, question: "Görsel muayenede aşağıdakilerden hangisi kontrol edilir?", options: ["Çatlak, sızıntı ve cıvata gevşekliği", "Yalnızca yüzeyin renk değişimi", "Yalnızca parçanın ağırlık değeri", "Kullanılan yakıtın piyasa fiyatı"], correctAnswer: 0, explanation: "Yüzey çatlakları/korozyon, kaynak dikişi düzensizlikleri, cıvata gevşekliği, conta/O-ring durumu ve sızıntı izleri (yağ/su/yakıt/hava) kontrol edilir." },
     ],
   },
   {
@@ -5225,8 +5205,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ultrasonik kalınlık ölçümü",
     blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Ultrasonik kalınlık ölçümü hangi prensiple çalışır?", options: ["Ses dalgasının arka yüzeyden yansıma süresinden kalınlık hesabı", "Manyetik alanla", "Renkle", "Ağırlıkla"], correctAnswer: 0, explanation: "Ses dalgaları malzeme içinde ilerleyip arka yüzeyden yansır; gönderme ve yansıma arasındaki zaman farkından kalınlık hesaplanır." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Ultrasonik kalınlık ölçümü gemide nerede kullanılır?", options: ["Boru hatları, tank duvarları, kazan boruları ve liner", "Sadece pervane", "Sadece dümen", "Hiçbir yer"], correctAnswer: 0, explanation: "Boru hatları, tank duvarları, kazan boruları ve liner kalınlık ölçümlerinde yaygın kullanılır (korozyon/erozyon takibi)." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Ultrasonik kalınlık ölçümü hangi prensiple çalışır?", options: ["Ses dalgası yansıma süresiyle", "Manyetik alan değişimi ölçümüyle", "Yüzey renk değişimi ölçümüyle", "Parçanın ağırlık ölçümü yoluyla"], correctAnswer: 0, explanation: "Ses dalgaları malzeme içinde ilerleyip arka yüzeyden yansır; gönderme ve yansıma arasındaki zaman farkından kalınlık hesaplanır." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Ultrasonik kalınlık ölçümü gemide nerede kullanılır?", options: ["Boru, tank duvarı, kazan borusu, liner", "Yalnızca pervane kanatları üzerinde", "Yalnızca dümen yelpazesi üzerinde", "Gemide hiçbir yerde kullanılmamakta"], correctAnswer: 0, explanation: "Boru hatları, tank duvarları, kazan boruları ve liner kalınlık ölçümlerinde yaygın kullanılır (korozyon/erozyon takibi)." },
     ],
   },
   {
@@ -5234,8 +5214,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Manyetik parçacık muayenesi (MT)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Uygulama Alanları"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "MT yönteminde çatlak nasıl görünür hale gelir?", options: ["Çatlaktaki manyetik alan kaçağına biriken demir tozuyla", "Boyayla", "Isıtmayla", "Su ile"], correctAnswer: 0, explanation: "Parça manyetize edilir; çatlak bölgesindeki manyetik alan kaçağına serpilen manyetik parçacıklar (demir tozu) birikerek çatlağı görünür kılar. Floresan parçacık UV altında daha hassastır." },
-      { id: 2, sectionRef: "Uygulama Alanları", category: MAK, question: "MT gemide hangi parçada kullanılır?", options: ["Krank mili fillet bölgesi ve biyel kolu çatlak kontrolü", "Yakıt deposu içi", "Pervane suyu", "Akü"], correctAnswer: 0, explanation: "MT; krank mili fillet, biyel kolu, şaft/pin, kaynak dikişi ve dişli diş dibi çatlak kontrolünde kullanılır (yalnız ferromanyetik malzeme)." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "MT yönteminde çatlak nasıl görünür hale gelir?", options: ["Kaçak alana biriken demir tozuyla", "Yüzeye boya sürülmesi yoluyla", "Parçanın ısıtılması yoluyla", "Yüzeye su püskürtülmesi yoluyla"], correctAnswer: 0, explanation: "Parça manyetize edilir; çatlak bölgesindeki manyetik alan kaçağına serpilen manyetik parçacıklar (demir tozu) birikerek çatlağı görünür kılar. Floresan parçacık UV altında daha hassastır." },
+      { id: 2, sectionRef: "Uygulama Alanları", category: MAK, question: "MT gemide hangi parçada kullanılır?", options: ["Krank mili fillet ve biyel kolu", "Yakıt deposunun iç yüzeyleri", "Pervane soğutma suyu devresi", "Akü grubu ve bağlantı kabloları"], correctAnswer: 0, explanation: "MT; krank mili fillet, biyel kolu, şaft/pin, kaynak dikişi ve dişli diş dibi çatlak kontrolünde kullanılır (yalnız ferromanyetik malzeme)." },
     ],
   },
   {
@@ -5243,8 +5223,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Sıvı penetrant muayenesi (PT)",
     blocks: [{ sectionTitles: ["Uygulama Adımları", "Gemi Uygulamaları"] }],
     questions: [
-      { id: 1, sectionRef: "Uygulama Adımları", category: MAK, question: "PT'de geliştirici (developer) ne işe yarar?", options: ["Çatlaktaki penetranti emerek kırmızı iz oluşturur", "Yüzeyi temizler", "Penetranti çatlağa iter", "Hiçbir işlev"], correctAnswer: 0, explanation: "Adımlar: temizlik → penetrant → bekleme (5-20 dk) → fazla penetrant temizliği → developer → değerlendirme. Developer çatlaktaki penetranti emip kırmızı çizgi oluşturur." },
-      { id: 2, sectionRef: "Gemi Uygulamaları", category: MAK, question: "PT gemide hangi parçada kullanılır?", options: ["Silindir kapağı çatlağı, supap yüzeyi, pervane kanat yüzeyi", "Yakıt deposu seviyesi", "Akü gerilimi", "Hava basıncı"], correctAnswer: 0, explanation: "PT; silindir kapağı çatlak kontrolü, supap oturma yüzeyleri, kaynak dikişleri, pervane kanatları ve boru bağlantılarında kullanılır (iletken olmayan dahil yüzey çatlakları)." },
+      { id: 1, sectionRef: "Uygulama Adımları", category: MAK, question: "PT'de geliştirici (developer) ne işe yarar?", options: ["Penetranti emerek kırmızı iz yapar", "Muayene yüzeyini temizlemektedir", "Penetranti çatlağın içine itmektedir", "Herhangi bir işlevi bulunmamakta"], correctAnswer: 0, explanation: "Adımlar: temizlik → penetrant → bekleme (5-20 dk) → fazla penetrant temizliği → developer → değerlendirme. Developer çatlaktaki penetranti emip kırmızı çizgi oluşturur." },
+      { id: 2, sectionRef: "Gemi Uygulamaları", category: MAK, question: "PT gemide hangi parçada kullanılır?", options: ["Silindir kapağı, supap ve pervane", "Yakıt deposundaki seviye ölçümü", "Akü grubunun gerilim ölçümü", "Basınçlı hava sistemi basıncı"], correctAnswer: 0, explanation: "PT; silindir kapağı çatlak kontrolü, supap oturma yüzeyleri, kaynak dikişleri, pervane kanatları ve boru bağlantılarında kullanılır (iletken olmayan dahil yüzey çatlakları)." },
     ],
   },
   {
@@ -5252,7 +5232,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yağ analizi ve durum izleme",
     blocks: [{ sectionTitles: ["Analiz Parametreleri", "Yorumlama"] }],
     questions: [
-      { id: 1, sectionRef: "Analiz Parametreleri", category: MAK, question: "Yağ analizinde TBN neyi gösterir?", options: ["Nötralizasyon (asit giderme) kapasitesini", "Su içeriğini", "Viskoziteyi", "Rengi"], correctAnswer: 0, explanation: "TBN nötralizasyon kapasitesini, TAN oksidasyon seviyesini, viskozite yakıt seyreltme/oksidasyonu, metal parçacıklar (spektrometri) aşınma kaynağını gösterir." },
+      { id: 1, sectionRef: "Analiz Parametreleri", category: MAK, question: "Yağ analizinde TBN neyi gösterir?", options: ["Nötralizasyon (asit giderme) gücü", "Yağdaki su içeriği oranı değeri", "Yağın viskozite değeri (cSt)", "Yağın görünen renk tonu değeri"], correctAnswer: 0, explanation: "TBN nötralizasyon kapasitesini, TAN oksidasyon seviyesini, viskozite yakıt seyreltme/oksidasyonu, metal parçacıklar (spektrometri) aşınma kaynağını gösterir." },
       { id: 2, sectionRef: "Yorumlama", category: MAK, question: "Yağ analizinde yüksek Na (sodyum) neyi gösterir?", options: ["Deniz suyu sızıntısı", "Yatak aşınması", "Yakıt seyreltmesi", "Normal durum"], correctAnswer: 0, explanation: "Yüksek Na deniz suyu sızıntısı; yüksek Fe silindir/piston/dişli aşınması; yüksek Cu yatak aşınması; düşük TBN asit nötralizasyon kapasitesinin tükenmesidir." },
     ],
   },
@@ -5261,8 +5241,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "MARPOL sözleşmesi tarihçesi",
     blocks: [{ sectionTitles: ["Tarihsel Gelişim"] }],
     questions: [
-      { id: 1, sectionRef: "Tarihsel Gelişim", category: MAK, question: "MARPOL kaç ek (Annex) içerir?", options: ["Altı (Annex I-VI)", "İki", "On", "Bir"], correctAnswer: 0, explanation: "MARPOL 73/78 altı ek (Annex I-VI) içerir; her ek farklı kirlilik kaynağını düzenler. Büyük tanker kazaları (Torrey Canyon, Amoco Cadiz) sonrası güçlendirilmiştir." },
-      { id: 2, sectionRef: "Tarihsel Gelişim", category: MAK, question: "MARPOL ne zaman MARPOL 73/78 olarak yürürlüğe girdi?", options: ["1973'te kabul, 1978 protokolüyle birleştirilerek", "1990'da", "2000'de", "1950'de"], correctAnswer: 0, explanation: "1973'te kabul edilip 1978 protokolüyle birleştirilerek MARPOL 73/78 olarak yürürlüğe girmiştir." },
+      { id: 1, sectionRef: "Tarihsel Gelişim", category: MAK, question: "MARPOL kaç ek (Annex) içerir?", options: ["Altı ek (Annex I-VI arası)", "İki ek (Annex I ve II)", "On ek (Annex I-X arası)", "Tek ek (yalnızca Annex I bulunur)"], correctAnswer: 0, explanation: "MARPOL 73/78 altı ek (Annex I-VI) içerir; her ek farklı kirlilik kaynağını düzenler. Büyük tanker kazaları (Torrey Canyon, Amoco Cadiz) sonrası güçlendirilmiştir." },
+      { id: 2, sectionRef: "Tarihsel Gelişim", category: MAK, question: "MARPOL ne zaman MARPOL 73/78 olarak yürürlüğe girdi?", options: ["1973'te kabul, 1978 protokolüyle", "1990 yılında yürürlüğe girdi", "2000 yılında yürürlüğe girdi", "1950 yılında yürürlüğe girdi"], correctAnswer: 0, explanation: "1973'te kabul edilip 1978 protokolüyle birleştirilerek MARPOL 73/78 olarak yürürlüğe girmiştir." },
     ],
   },
   {
@@ -5270,8 +5250,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ek I – Petrol kirliliği önleme",
     blocks: [{ sectionTitles: ["Temel Kurallar", "Özel Alanlar"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "15 ppm kuralı neyi ifade eder?", options: ["Sintine suyu yağ içeriği 15 ppm altında olmalı (OWS ile)", "Yakıt kükürdü 15 ppm", "Su sıcaklığı 15°C", "Hız 15 knot"], correctAnswer: 0, explanation: "Sintine suyu yağ içeriği 15 ppm altında olmalıdır (OWS ile); ODMCS, Oil Record Book ve SOPEP de Ek I gerekliliklerindendir." },
-      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Aşağıdakilerden hangisi Ek I özel alanıdır?", options: ["Akdeniz, Baltık ve Karadeniz", "Pasifik açıkları", "Atlantik ortası", "Hint Okyanusu açıkları"], correctAnswer: 0, explanation: "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika ve KB Avrupa suları özel alandır; deşarj kuralları daha sıkıdır." },
+      { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "15 ppm kuralı neyi ifade eder?", options: ["Sintine suyu yağ içeriği 15 ppm altı", "Yakıt kükürt oranı 15 ppm altı", "Deşarj suyu sıcaklığı 15°C altı", "Deşarj sırasında hız 15 knot üstü"], correctAnswer: 0, explanation: "Sintine suyu yağ içeriği 15 ppm altında olmalıdır (OWS ile); ODMCS, Oil Record Book ve SOPEP de Ek I gerekliliklerindendir." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Aşağıdakilerden hangisi Ek I özel alanıdır?", options: ["Akdeniz, Baltık ve Karadeniz", "Pasifik Okyanusu açıkları", "Atlantik Okyanusu ortası", "Hint Okyanusu açık suları"], correctAnswer: 0, explanation: "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika ve KB Avrupa suları özel alandır; deşarj kuralları daha sıkıdır." },
     ],
   },
   {
@@ -5279,8 +5259,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ek II – Zararlı sıvı maddeler",
     blocks: [{ sectionTitles: ["Madde Sınıflandırması"] }],
     questions: [
-      { id: 1, sectionRef: "Madde Sınıflandırması", category: MAK, question: "Ek II'de X kategorisi maddeler nasıl bertaraf edilir?", options: ["Deşarjı yasak; liman alım tesisine verilir", "Serbestçe denize", "Sınırsız deşarj", "Yakılır"], correctAnswer: 0, explanation: "X kategorisi büyük tehlikedir, deşarjı yasaktır (liman alım tesisi); Y sınırlı/koşullu, Z daha gevşek, OS minimum tehlikedir." },
-      { id: 2, sectionRef: "Madde Sınıflandırması", category: MAK, question: "Hangi kategori en düşük tehlikeyi temsil eder?", options: ["OS (Diğer Maddeler)", "X", "Y", "Z"], correctAnswer: 0, explanation: "OS (Other Substances) minimum tehlikedir, kısıtlama yoktur (genel kurallar); X en yüksek tehlikedir." },
+      { id: 1, sectionRef: "Madde Sınıflandırması", category: MAK, question: "Ek II'de X kategorisi maddeler nasıl bertaraf edilir?", options: ["Deşarjı yasak; liman tesisine verilir", "Serbestçe denize deşarj edilebilir", "Sınırsız biçimde deşarj edilebilir", "Gemide yakılarak bertaraf edilir"], correctAnswer: 0, explanation: "X kategorisi büyük tehlikedir, deşarjı yasaktır (liman alım tesisi); Y sınırlı/koşullu, Z daha gevşek, OS minimum tehlikedir." },
+      { id: 2, sectionRef: "Madde Sınıflandırması", category: MAK, question: "Hangi kategori en düşük tehlikeyi temsil eder?", options: ["OS (Diğer Maddeler) kategorisi", "X (en zararlı) kategorisi", "Y (orta zararlı) kategorisi", "Z (az zararlı) kategorisi"], correctAnswer: 0, explanation: "OS (Other Substances) minimum tehlikedir, kısıtlama yoktur (genel kurallar); X en yüksek tehlikedir." },
     ],
   },
   {
@@ -5289,7 +5269,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Gereklilikler"] }],
     questions: [
       { id: 1, sectionRef: "Gereklilikler", category: MAK, question: "Ambalajlı zararlı maddeler hangi koda göre taşınır?", options: ["IMDG Code", "ISO 8217", "MARPOL Ek VI", "SOLAS Reg. V"], correctAnswer: 0, explanation: "Zararlı maddeler IMDG Code'a uygun ambalajlanır, etiketlenir, işaretlenir ve istiflenir; denize düşme riski minimize edilir." },
-      { id: 2, sectionRef: "Gereklilikler", category: MAK, question: "Ek III için hangi doküman gereklidir?", options: ["Manifest veya ayrıntılı istifleme planı", "Oil Record Book", "Garbage Record Book", "Hiçbiri"], correctAnswer: 0, explanation: "Manifest veya ayrıntılı istifleme planı gereklidir; güverte istifi koşulları sağlanmalıdır." },
+      { id: 2, sectionRef: "Gereklilikler", category: MAK, question: "Ek III için hangi doküman gereklidir?", options: ["Manifest veya ayrıntılı istif planı", "Oil Record Book (yağ kayıt defteri)", "Garbage Record Book (çöp defteri)", "Hiçbir doküman gerekmemektedir"], correctAnswer: 0, explanation: "Manifest veya ayrıntılı istifleme planı gereklidir; güverte istifi koşulları sağlanmalıdır." },
     ],
   },
   {
@@ -5297,7 +5277,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ek IV – Pis su (sewage)",
     blocks: [{ sectionTitles: ["Pis Su Deşarj Kuralları", "STP (Sewage Treatment Plant)"] }],
     questions: [
-      { id: 1, sectionRef: "Pis Su Deşarj Kuralları", category: MAK, question: "Arıtılmamış (parçalanmış) pis su nereye deşarj edilebilir?", options: ["Kıyıdan 12 nm sonra, 4+ knot hızda", "Her yere", "Kıyıya yakın", "Hiçbir yere asla"], correctAnswer: 0, explanation: "Arıtılmamış parçalanmış pis su kıyıdan 12 nm sonra ve 4+ knot hızda; onaylı STP ile arıtılmışı 3 nm sonra deşarj edilebilir." },
+      { id: 1, sectionRef: "Pis Su Deşarj Kuralları", category: MAK, question: "Arıtılmamış (parçalanmış) pis su nereye deşarj edilebilir?", options: ["Kıyıdan 12 nm sonra, 4+ knot hızda", "Herhangi bir yere deşarj edilebilir", "Kıyıya çok yakın mesafede serbest", "Hiçbir yere deşarj edilememekte"], correctAnswer: 0, explanation: "Arıtılmamış parçalanmış pis su kıyıdan 12 nm sonra ve 4+ knot hızda; onaylı STP ile arıtılmışı 3 nm sonra deşarj edilebilir." },
       { id: 2, sectionRef: "STP (Sewage Treatment Plant)", category: MAK, question: "STP çıkış suyu BOD limiti nedir?", options: ["< 25 mg/L", "< 250 mg/L", "< 5 g/L", "Sınır yok"], correctAnswer: 0, explanation: "STP çıkış suyu: BOD < 25 mg/L, TSS < 35 mg/L, koliform < 100/100 ml; biyolojik (aerobik), MBR veya elektro-kimyasal arıtma kullanılır." },
     ],
   },
@@ -5306,7 +5286,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ek V – Çöp (garbage)",
     blocks: [{ sectionTitles: ["Çöp Deşarj Kuralları (2013 Revizyonu)", "Çöp Yönetim Planı"] }],
     questions: [
-      { id: 1, sectionRef: "Çöp Deşarj Kuralları (2013 Revizyonu)", category: MAK, question: "Plastiğin denize atımı için kural nedir?", options: ["Kesinlikle yasak (her yerde)", "12 nm sonra serbest", "3 nm sonra", "Özel alan dışında serbest"], correctAnswer: 0, explanation: "Plastik her yerde yasaktır; öğütülmüş yemek atığı özel alan dışı 3+ nm, özel alanda 12+ nm seyirde deşarj edilebilir." },
+      { id: 1, sectionRef: "Çöp Deşarj Kuralları (2013 Revizyonu)", category: MAK, question: "Plastiğin denize atımı için kural nedir?", options: ["Kesinlikle yasak (her yerde geçerli)", "12 nm sonrasında serbest bırakılır", "3 nm sonrasında serbest bırakılır", "Özel alanların dışında serbest bırakılır"], correctAnswer: 0, explanation: "Plastik her yerde yasaktır; öğütülmüş yemek atığı özel alan dışı 3+ nm, özel alanda 12+ nm seyirde deşarj edilebilir." },
       { id: 2, sectionRef: "Çöp Yönetim Planı", category: MAK, question: "Garbage Record Book hangi gemilerde zorunludur?", options: ["400+ GT gemilerde", "Tüm gemilerde", "Sadece tankerlerde", "Hiçbirinde"], correctAnswer: 0, explanation: "100+ GT veya 15+ kişi taşıyan gemiler çöp yönetim planı, 400+ GT gemiler ise Garbage Record Book bulundurmalıdır." },
     ],
   },
@@ -5316,7 +5296,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Kükürt Limitleri", "Diğer Emisyon Kuralları"] }],
     questions: [
       { id: 1, sectionRef: "Kükürt Limitleri", category: MAK, question: "2020 sonrası global kükürt limiti nedir?", options: ["%0.50 m/m", "%3.5 m/m", "%0.10 m/m", "%1.0 m/m"], correctAnswer: 0, explanation: "Global kükürt limiti 1 Ocak 2020'den itibaren %0.50 m/m; ECA bölgelerinde 2015'ten beri %0.10 m/m'dir." },
-      { id: 2, sectionRef: "Diğer Emisyon Kuralları", category: MAK, question: "NOx Tier III ne zaman ve nerede yürürlüktedir?", options: ["2016+ NOx ECA bölgelerinde", "2000 global", "Hiç yürürlükte değil", "Sadece limanda"], correctAnswer: 0, explanation: "NOx: Tier I (2000-2010), Tier II (2011+), Tier III (NOx ECA'da 2016+); ayrıca ODS yasağı, incinerator standardı ve VOC kontrolü vardır." },
+      { id: 2, sectionRef: "Diğer Emisyon Kuralları", category: MAK, question: "NOx Tier III ne zaman ve nerede yürürlüktedir?", options: ["2016 sonrası NOx ECA bölgelerinde", "2000 yılından beri küresel olarak", "Hiçbir biçimde yürürlükte değil", "Yalnızca liman içinde geçerlidir"], correctAnswer: 0, explanation: "NOx: Tier I (2000-2010), Tier II (2011+), Tier III (NOx ECA'da 2016+); ayrıca ODS yasağı, incinerator standardı ve VOC kontrolü vardır." },
     ],
   },
   {
@@ -5324,8 +5304,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yağ-su ayırıcı (OWS) 15 ppm standardı",
     blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "OWS iki aşamalı ayırmada nasıl çalışır?", options: ["Birinci aşama kaba (yerçekimi/koaleser), ikinci aşama ince (membran/absorbsiyon)", "Tek aşamada", "Sadece ısıtmayla", "Sadece filtreyle"], correctAnswer: 0, explanation: "İlk aşamada kaba ayırma (yerçekimi/koaleser), ikinci aşamada ince ayırma (membran/absorbsiyon) yapılır; çıkış ODMCS ile izlenir." },
-      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "OWS çıkışında 15 ppm aşılırsa ne olur?", options: ["Otomatik resirkülasyon devreye girer, denize deşarj kesilir", "Deşarj devam eder", "Alarm verir ama deşarj sürer", "Motor durur"], correctAnswer: 0, explanation: "15 ppm aşılınca otomatik gemi içi resirkülasyon devreye girer ve denize deşarj kesilir." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "OWS iki aşamalı ayırmada nasıl çalışır?", options: ["Kaba (yerçekimi) ve ince (membran)", "Tek aşamada ayırma yapılmaktadır", "Yalnızca ısıtma yoluyla ayrılır", "Yalnızca filtreleme ile ayrılır"], correctAnswer: 0, explanation: "İlk aşamada kaba ayırma (yerçekimi/koaleser), ikinci aşamada ince ayırma (membran/absorbsiyon) yapılır; çıkış ODMCS ile izlenir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "OWS çıkışında 15 ppm aşılırsa ne olur?", options: ["Otomatik resirkülasyon; deşarj kesilir", "Deşarj kesintisiz olarak sürmektedir", "Alarm verir ama deşarj sürmektedir", "Ana makine otomatik durdurulmakta"], correctAnswer: 0, explanation: "15 ppm aşılınca otomatik gemi içi resirkülasyon devreye girer ve denize deşarj kesilir." },
     ],
   },
   {
@@ -5333,8 +5313,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yağ deşarj izleme sistemi (ODMCS)",
     blocks: [{ sectionTitles: ["İşlev ve MARPOL Bağlantısı"] }],
     questions: [
-      { id: 1, sectionRef: "İşlev ve MARPOL Bağlantısı", category: MAK, question: "ODMCS sınır aşıldığında ne yapar?", options: ["Deşarj valfini otomatik kapatır ve kayıt tutar", "Sadece alarm verir", "Hiçbir şey", "Motoru durdurur"], correctAnswer: 0, explanation: "ODMCS anlık yağ oranı ve toplam deşarjı izler; MARPOL Ek I (Kural 31) sınırları aşılırsa deşarj valfini otomatik kapatır ve kayıt tutar." },
-      { id: 2, sectionRef: "İşlev ve MARPOL Bağlantısı", category: MAK, question: "ODMCS ile OWS (15 ppm) arasındaki fark nedir?", options: ["ODMCS yük tankı deşarjına özgü, OWS sintine içindir", "İkisi de aynı", "ODMCS sintine içindir", "OWS yük tankı içindir"], correctAnswer: 0, explanation: "ODMCS yük tankı deşarjına özgü bir sistemdir; sintine için kullanılan 15 ppm yağlı su ayırıcıdan (OWS) farklıdır." },
+      { id: 1, sectionRef: "İşlev ve MARPOL Bağlantısı", category: MAK, question: "ODMCS sınır aşıldığında ne yapar?", options: ["Deşarj valfini kapatır ve kaydeder", "Yalnızca sesli alarm vermektedir", "Hiçbir işlem gerçekleştirmemekte", "Ana makineyi durdurmaktadır"], correctAnswer: 0, explanation: "ODMCS anlık yağ oranı ve toplam deşarjı izler; MARPOL Ek I (Kural 31) sınırları aşılırsa deşarj valfini otomatik kapatır ve kayıt tutar." },
+      { id: 2, sectionRef: "İşlev ve MARPOL Bağlantısı", category: MAK, question: "ODMCS ile OWS (15 ppm) arasındaki fark nedir?", options: ["ODMCS yük tankı, OWS sintine içindir", "İkisi tümüyle aynı görevi görmekte", "ODMCS sintine suyu deşarjı içindir", "OWS yük tankı deşarjı için kullanılır"], correctAnswer: 0, explanation: "ODMCS yük tankı deşarjına özgü bir sistemdir; sintine için kullanılan 15 ppm yağlı su ayırıcıdan (OWS) farklıdır." },
     ],
   },
   {
@@ -5342,7 +5322,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yağ kayıt defteri (Oil Record Book)",
     blocks: [{ sectionTitles: ["Kayıt Gereklilikleri", "Kayıt Formatı"] }],
     questions: [
-      { id: 1, sectionRef: "Kayıt Gereklilikleri", category: MAK, question: "Oil Record Book Part I neyi kapsar?", options: ["Makine dairesi operasyonları (400+ GT gemiler)", "Kargo operasyonları", "Çöp kaydı", "Balast suyu"], correctAnswer: 0, explanation: "Part I makine dairesi operasyonları (400+ GT), Part II kargo/balast operasyonları (150+ GT tankerler) içindir; sintine tahliyesi, sludge bertarafı vb. kaydedilir." },
+      { id: 1, sectionRef: "Kayıt Gereklilikleri", category: MAK, question: "Oil Record Book Part I neyi kapsar?", options: ["Makine dairesi operasyonları", "Kargo ve balast operasyonları", "Çöp kayıt ve bertaraf işlemleri", "Balast suyu değişim işlemleri"], correctAnswer: 0, explanation: "Part I makine dairesi operasyonları (400+ GT), Part II kargo/balast operasyonları (150+ GT tankerler) içindir; sintine tahliyesi, sludge bertarafı vb. kaydedilir." },
       { id: 2, sectionRef: "Kayıt Formatı", category: MAK, question: "ORB kayıtları gemide ne kadar süre tutulmalıdır?", options: ["Son 3 yıl", "Son 1 ay", "Süresiz değil, 6 ay", "Tutulmaz"], correctAnswer: 0, explanation: "Her kayıt tarih, operasyon kodu, miktar ve imza içerir; ORB PSC'de en sık kontrol edilen belgelerdendir ve son 3 yıllık kayıtlar gemide tutulur." },
     ],
   },
@@ -5351,8 +5331,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Slop tank yönetimi",
     blocks: [{ sectionTitles: ["Operasyon", "Bertaraf"] }],
     questions: [
-      { id: 1, sectionRef: "Operasyon", category: MAK, question: "Slop tankta settling sonrası ne yapılır?", options: ["Alttaki su OWS'den geçirilip tahliye, üstteki yağ sludge tanka aktarılır", "Tümü denize basılır", "Hiçbir şey", "Yakılır"], correctAnswer: 0, explanation: "OWS'den geçen sintine kalıntısı slop tanka gider; settling sonrası alt su OWS'den geçirilip tahliye edilir, üst yağ sludge tanka aktarılır." },
-      { id: 2, sectionRef: "Bertaraf", category: MAK, question: "Slop tank içeriği nasıl bertaraf edilir?", options: ["Liman alım tesisine teslim edilir, makbuz alınıp ORB'ye kaydedilir", "Denize basılır", "Yakıta karıştırılır", "Atılır"], correctAnswer: 0, explanation: "Slop tank içeriği liman alım tesisine teslim edilir; alım makbuzu alınır ve Oil Record Book'a kaydedilir." },
+      { id: 1, sectionRef: "Operasyon", category: MAK, question: "Slop tankta settling sonrası ne yapılır?", options: ["Alt su OWS'den geçer, yağ sludge'a", "Tankın tümü denize basılmaktadır", "Hiçbir işlem yapılmamaktadır", "Tümü insineratörde yakılmakta"], correctAnswer: 0, explanation: "OWS'den geçen sintine kalıntısı slop tanka gider; settling sonrası alt su OWS'den geçirilip tahliye edilir, üst yağ sludge tanka aktarılır." },
+      { id: 2, sectionRef: "Bertaraf", category: MAK, question: "Slop tank içeriği nasıl bertaraf edilir?", options: ["Liman tesisine teslim; makbuz ve ORB", "Doğrudan denize basılıp boşaltılır", "Yakıta karıştırılıp geri yakılmaktadır", "Gemide atık olarak dışarı atılır"], correctAnswer: 0, explanation: "Slop tank içeriği liman alım tesisine teslim edilir; alım makbuzu alınır ve Oil Record Book'a kaydedilir." },
     ],
   },
   {
@@ -5361,7 +5341,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Özel Alanlar"] }],
     questions: [
       { id: 1, sectionRef: "Özel Alanlar", category: MAK, question: "Annex IV (pis su) özel alanı hangisidir?", options: ["Baltık Denizi", "Akdeniz", "Pasifik", "Hint Okyanusu"], correctAnswer: 0, explanation: "Annex IV özel alanı Baltık Denizi'dir; Annex I yağ için Akdeniz/Baltık/Karadeniz vb., Annex VI SOx ECA için Baltık/Kuzey Denizi/K. Amerika geçerlidir." },
-      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Özel alanlarda deşarj kuralları nasıldır?", options: ["Normal alanlardan daha sıkıdır", "Daha gevşektir", "Aynıdır", "Kural yoktur"], correctAnswer: 0, explanation: "Özel deniz alanlarında deşarj kuralları normal alanlara göre daha sıkıdır." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Özel alanlarda deşarj kuralları nasıldır?", options: ["Normal alanlardan daha sıkıdır", "Normal alanlardan daha gevşektir", "Normal alanlarla tümüyle aynıdır", "Bu alanlarda hiçbir kural yoktur"], correctAnswer: 0, explanation: "Özel deniz alanlarında deşarj kuralları normal alanlara göre daha sıkıdır." },
     ],
   },
   {
@@ -5369,7 +5349,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Egzoz gazı yıkama (scrubber) sistemi",
     blocks: [{ sectionTitles: ["Scrubber Tipleri", "Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Scrubber Tipleri", category: MAK, question: "Açık döngü scrubber'ın dezavantajı nedir?", options: ["Yıkama suyu denize deşarj edilir; bazı limanlarda yasaktır", "Her yerde kullanılabilir", "NaOH gerektirir", "Çok pahalıdır"], correctAnswer: 0, explanation: "Açık döngü deniz suyuyla yıkar ve denize deşarj eder (bazı limanlarda yasak); kapalı döngü NaOH ile her yerde kullanılabilir, hibrit esnektir." },
+      { id: 1, sectionRef: "Scrubber Tipleri", category: MAK, question: "Açık döngü scrubber'ın dezavantajı nedir?", options: ["Yıkama suyu denize deşarj edilir", "Her limanda serbestçe kullanılır", "Çalışması için NaOH gerektirir", "Belirgin biçimde çok pahalıdır"], correctAnswer: 0, explanation: "Açık döngü deniz suyuyla yıkar ve denize deşarj eder (bazı limanlarda yasak); kapalı döngü NaOH ile her yerde kullanılabilir, hibrit esnektir." },
       { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Scrubber yıkama suyu çıkış pH'ı ne olmalıdır?", options: ["> 6.5", "< 2", "= 0", "Önemsiz"], correctAnswer: 0, explanation: "Egzoz alkali çözeltiyle temas eder (SO₂ + H₂O + NaOH → Na₂SO₃); yıkama suyu çıkış pH'ı > 6.5 olmalı, PAH ve bulanıklık da izlenir." },
     ],
   },
@@ -5388,7 +5368,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Sistem Bileşenleri"] }],
     questions: [
       { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "SCR'de NOx dönüşüm verimi yaklaşık nedir?", options: ["%90-95", "%10-20", "%50", "%100'ün üzerinde"], correctAnswer: 0, explanation: "Üre çözeltisi 300-400°C'de amonyağa dönüşür; katalizörde 4NO + 4NH₃ + O₂ → 4N₂ + 6H₂O ile NOx %90-95 verimle giderilir." },
-      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "SCR sisteminde hangi bileşen bulunur?", options: ["Üre depolama tankı, dozaj pompası ve SCR reaktör (katalizör)", "Scrubber kulesi", "Buhar türbini", "Pervane"], correctAnswer: 0, explanation: "SCR; üre depolama tankı, dozaj pompası, enjeksiyon nozülü, karıştırma ünitesi, SCR reaktör (katalizör) ve kontrol sisteminden oluşur." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "SCR sisteminde hangi bileşen bulunur?", options: ["Üre tankı, dozaj pompası ve reaktör", "Scrubber kulesi ve yıkama pompası", "Buhar türbini ve kondenser üniteleri", "Pervane ve şaft tahrik düzeneği"], correctAnswer: 0, explanation: "SCR; üre depolama tankı, dozaj pompası, enjeksiyon nozülü, karıştırma ünitesi, SCR reaktör (katalizör) ve kontrol sisteminden oluşur." },
     ],
   },
   {
@@ -5396,8 +5376,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "EGR (egzoz gazı resirkülasyonu)",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "SCR ile Karşılaştırma"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "EGR NOx'i nasıl azaltır?", options: ["Egzoz gazını emmeye geri vererek yanma sıcaklığını düşürür", "Yakıtı ısıtarak", "Hızı artırarak", "Su ekleyerek yalnız"], correctAnswer: 0, explanation: "Egzozun %20-40'ı soğutulup emme manifolduna geri gönderilir; CO₂/su buharının yüksek ısı kapasitesi yanma sıcaklığını düşürür ve NOx (Zeldovich) azalır." },
-      { id: 2, sectionRef: "SCR ile Karşılaştırma", category: MAK, question: "EGR ile SCR'nin NOx azaltma kapasitesi nasıldır?", options: ["EGR %50-80, SCR %90-95", "EGR %95, SCR %50", "İkisi de %100", "İkisi de %10"], correctAnswer: 0, explanation: "EGR %50-80 (ek kimyasal yok, motor üzerinde), SCR %90-95 (üre gerektirir, egzoz hattında) NOx azaltır." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "EGR NOx'i nasıl azaltır?", options: ["Egzozu emmeye verip sıcaklığı düşürür", "Yakıtı ısıtarak yanmayı iyileştirir", "Motor devrini artırarak sağlamakta", "Yalnızca su ekleyerek sağlamakta"], correctAnswer: 0, explanation: "Egzozun %20-40'ı soğutulup emme manifolduna geri gönderilir; CO₂/su buharının yüksek ısı kapasitesi yanma sıcaklığını düşürür ve NOx (Zeldovich) azalır." },
+      { id: 2, sectionRef: "SCR ile Karşılaştırma", category: MAK, question: "EGR ile SCR'nin NOx azaltma kapasitesi nasıldır?", options: ["EGR %50-80, SCR %90-95 azaltma", "EGR %95, SCR %50 azaltma sağlar", "Her ikisi de %100 azaltma sağlar", "Her ikisi de %10 azaltma sağlar"], correctAnswer: 0, explanation: "EGR %50-80 (ek kimyasal yok, motor üzerinde), SCR %90-95 (üre gerektirir, egzoz hattında) NOx azaltır." },
     ],
   },
   {
@@ -5405,8 +5385,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "CII (Karbon Yoğunluğu Göstergesi)",
     blocks: [{ sectionTitles: ["CII Hesabı", "Derecelendirme"] }],
     questions: [
-      { id: 1, sectionRef: "CII Hesabı", category: MAK, question: "CII nasıl hesaplanır?", options: ["Yıllık CO₂ emisyonu / (DWT × kat edilen mesafe)", "CO₂ × hız", "Yakıt / güç", "DWT × mesafe"], correctAnswer: 0, explanation: "CII = Yıllık CO₂ emisyonu / (DWT × kat edilen mesafe) [gCO₂/ton·nm]; geminin taşıma işi başına karbon yoğunluğunu ölçer." },
-      { id: 2, sectionRef: "Derecelendirme", category: MAK, question: "CII'de D derecesi alan gemi ne yapmalıdır?", options: ["Düzeltici aksiyon planı (3 yıl içinde C'ye getirmeli)", "Hiçbir şey", "Teşvik alır", "Hemen sökülür"], correctAnswer: 0, explanation: "A/B teşvik, C referans (izleme), D düzeltici aksiyon planı (3 yılda C'ye), E acil düzeltici aksiyon planı gerektirir." },
+      { id: 1, sectionRef: "CII Hesabı", category: MAK, question: "CII nasıl hesaplanır?", options: ["Yıllık CO₂ / (DWT × kat edilen yol)", "CO₂ salımı × geminin servis hızı", "Yakıt tüketimi / motor gücü oranı", "DWT × kat edilen mesafe çarpımı"], correctAnswer: 0, explanation: "CII = Yıllık CO₂ emisyonu / (DWT × kat edilen mesafe) [gCO₂/ton·nm]; geminin taşıma işi başına karbon yoğunluğunu ölçer." },
+      { id: 2, sectionRef: "Derecelendirme", category: MAK, question: "CII'de D derecesi alan gemi ne yapmalıdır?", options: ["Düzeltici plan (3 yılda C'ye çıkmalı)", "Hiçbir işlem yapılması gerekmez", "Teşvik ve prim almaya hak kazanır", "Gemi derhâl sökülmeye gönderilir"], correctAnswer: 0, explanation: "A/B teşvik, C referans (izleme), D düzeltici aksiyon planı (3 yılda C'ye), E acil düzeltici aksiyon planı gerektirir." },
     ],
   },
   {
@@ -5414,8 +5394,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Balast su sözleşmesi (BWM Convention)",
     blocks: [{ sectionTitles: ["D-1 ve D-2 Standartları"] }],
     questions: [
-      { id: 1, sectionRef: "D-1 ve D-2 Standartları", category: MAK, question: "D-1 (değişim) standardı ne gerektirir?", options: ["Açık denizde (200 nm, 200 m+) en az %95 hacimsel balast değişimi", "Arıtma sistemi", "Hiçbir işlem", "Liman teslimi"], correctAnswer: 0, explanation: "D-1 açık denizde (kıyıdan 200 nm, derinlik > 200 m) en az %95 hacimsel değişim; D-2 ise BWTS ile organizma limitlerini sağlar. Tüm gemiler kademeli D-2'ye geçmektedir." },
-      { id: 2, sectionRef: "D-1 ve D-2 Standartları", category: MAK, question: "Hangi standart kalıcı çözümdür?", options: ["D-2 (performans/arıtma standardı)", "D-1 (değişim)", "İkisi de geçici", "Hiçbiri"], correctAnswer: 0, explanation: "D-2 (BWTS ile performans) kalıcı çözümdür; D-1 (değişim) geçicidir ve gemiler kademeli olarak D-2'ye geçer." },
+      { id: 1, sectionRef: "D-1 ve D-2 Standartları", category: MAK, question: "D-1 (değişim) standardı ne gerektirir?", options: ["Açık denizde en az %95 hacim değişimi", "Onaylı arıtma sistemi kullanılması", "Hiçbir işlem yapılması gerekmez", "Balastın liman tesisine teslimi"], correctAnswer: 0, explanation: "D-1 açık denizde (kıyıdan 200 nm, derinlik > 200 m) en az %95 hacimsel değişim; D-2 ise BWTS ile organizma limitlerini sağlar. Tüm gemiler kademeli D-2'ye geçmektedir." },
+      { id: 2, sectionRef: "D-1 ve D-2 Standartları", category: MAK, question: "Hangi standart kalıcı çözümdür?", options: ["D-2 (performans/arıtma standardı)", "D-1 (balast değişim standardı)", "Her ikisi de geçici çözümdür", "Hiçbiri kalıcı çözüm değildir"], correctAnswer: 0, explanation: "D-2 (BWTS ile performans) kalıcı çözümdür; D-1 (değişim) geçicidir ve gemiler kademeli olarak D-2'ye geçer." },
     ],
   },
   {
@@ -5423,7 +5403,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "D-1 ve D-2 standartları",
     blocks: [{ sectionTitles: ["D-1 Standardı (Değişim)", "D-2 Standardı (Performans)"] }],
     questions: [
-      { id: 1, sectionRef: "D-1 Standardı (Değişim)", category: MAK, question: "D-1 standardında hangi değişim yöntemleri kullanılır?", options: ["Sıralı, akıtmalı (flow-through) veya dilüsyon", "Sadece ısıtma", "Sadece filtre", "Hiçbiri"], correctAnswer: 0, explanation: "D-1, açık denizde (200 nm+, 200 m+) en az %95 değişimdir; sıralı, akıtmalı veya dilüsyon yöntemleri kullanılır ve geçici çözümdür." },
+      { id: 1, sectionRef: "D-1 Standardı (Değişim)", category: MAK, question: "D-1 standardında hangi değişim yöntemleri kullanılır?", options: ["Sıralı, akıtmalı veya dilüsyon", "Yalnızca balastı ısıtma yöntemi", "Yalnızca filtreleme yöntemi", "Hiçbir yöntem kullanılmamakta"], correctAnswer: 0, explanation: "D-1, açık denizde (200 nm+, 200 m+) en az %95 değişimdir; sıralı, akıtmalı veya dilüsyon yöntemleri kullanılır ve geçici çözümdür." },
       { id: 2, sectionRef: "D-2 Standardı (Performans)", category: MAK, question: "D-2 standardında ≥50 μm canlı organizma limiti nedir?", options: ["< 10 / m³", "< 1000 / m³", "Sınır yok", "< 10 / mL"], correctAnswer: 0, explanation: "D-2: ≥50 μm organizma < 10/m³, 10-50 μm < 10/mL, E. coli < 250 cfu/100 mL gibi limitler vardır." },
     ],
   },
@@ -5432,8 +5412,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Balast su arıtma sistemleri (BWTS)",
     blocks: [{ sectionTitles: ["Arıtma Yöntemleri ve D-2 Standardı"] }],
     questions: [
-      { id: 1, sectionRef: "Arıtma Yöntemleri ve D-2 Standardı", category: MAK, question: "BWTS genellikle kaç aşamalıdır?", options: ["İki aşamalı: filtrasyon + dezenfeksiyon", "Tek aşama", "Beş aşama", "Aşamasız"], correctAnswer: 0, explanation: "BWTS genellikle iki aşamalıdır: filtrasyon (büyük organizma/tortu ayırma) + dezenfeksiyon (UV veya elektroklorinasyon/kimyasal)." },
-      { id: 2, sectionRef: "Arıtma Yöntemleri ve D-2 Standardı", category: MAK, question: "BWTS dezenfeksiyonu hangi yöntemlerle yapılır?", options: ["UV ışını veya elektroklorinasyon/kimyasal", "Sadece ısıtma", "Sadece settling", "Filtrasyon yeterli"], correctAnswer: 0, explanation: "Dezenfeksiyon UV ışınıyla veya elektroklorinasyon/kimyasalla yapılır; gemide BWM Planı ve kayıt defteri bulunur." },
+      { id: 1, sectionRef: "Arıtma Yöntemleri ve D-2 Standardı", category: MAK, question: "BWTS genellikle kaç aşamalıdır?", options: ["İki aşama: filtrasyon + dezenfeksiyon", "Tek aşama: yalnızca filtrasyon ile", "Beş aşamalı karmaşık bir düzenek", "Aşamasız tek geçişli bir düzenek"], correctAnswer: 0, explanation: "BWTS genellikle iki aşamalıdır: filtrasyon (büyük organizma/tortu ayırma) + dezenfeksiyon (UV veya elektroklorinasyon/kimyasal)." },
+      { id: 2, sectionRef: "Arıtma Yöntemleri ve D-2 Standardı", category: MAK, question: "BWTS dezenfeksiyonu hangi yöntemlerle yapılır?", options: ["UV ışını veya elektroklorinasyon", "Yalnızca balastı ısıtma yöntemi", "Yalnızca çöktürme (settling) ile", "Yalnızca filtrasyon yeterlidir"], correctAnswer: 0, explanation: "Dezenfeksiyon UV ışınıyla veya elektroklorinasyon/kimyasalla yapılır; gemide BWM Planı ve kayıt defteri bulunur." },
     ],
   },
   {
@@ -5441,8 +5421,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "UV, elektroliz ve filtrasyon yöntemleri",
     blocks: [{ sectionTitles: ["Arıtma Teknolojileri"] }],
     questions: [
-      { id: 1, sectionRef: "Arıtma Teknolojileri", category: MAK, question: "UV (orta basınç) arıtmanın avantajı ve dezavantajı nedir?", options: ["Kimyasal bırakmaz; ancak bulanık suda etkinlik düşer", "TRO nötralizasyonu gerekir", "Çok pahalı", "Tek başına yeterli"], correctAnswer: 0, explanation: "UV DNA hasarıyla arıtır, kimyasal bırakmaz ama bulanık suda etkinlik düşer; elektro-klorinasyon yüksek etkin ama TRO nötralizasyonu gerektirir." },
-      { id: 2, sectionRef: "Arıtma Teknolojileri", category: MAK, question: "Filtrasyon (25-50 μm) tek başına neden yetersizdir?", options: ["Sadece büyük organizma/tortu ayırır; dezenfeksiyon gerekir", "Çok pahalıdır", "Kimyasal bırakır", "Hiç ayırmaz"], correctAnswer: 0, explanation: "Filtrasyon basit/güvenilirdir ama tek başına yetersizdir; küçük organizmalar için UV/elektro-klorinasyon/ozon ile dezenfeksiyon gerekir." },
+      { id: 1, sectionRef: "Arıtma Teknolojileri", category: MAK, question: "UV (orta basınç) arıtmanın avantajı ve dezavantajı nedir?", options: ["Kimyasal bırakmaz; bulanıkta zayıflar", "TRO nötralizasyonu gerektirmektedir", "Belirgin biçimde çok pahalı olması", "Tek başına tümüyle yeterli olması"], correctAnswer: 0, explanation: "UV DNA hasarıyla arıtır, kimyasal bırakmaz ama bulanık suda etkinlik düşer; elektro-klorinasyon yüksek etkin ama TRO nötralizasyonu gerektirir." },
+      { id: 2, sectionRef: "Arıtma Teknolojileri", category: MAK, question: "Filtrasyon (25-50 μm) tek başına neden yetersizdir?", options: ["Yalnızca büyük organizmayı ayırır", "Belirgin biçimde çok pahalıdır", "Suda kimyasal kalıntı bırakır", "Hiçbir organizmayı ayıramaz"], correctAnswer: 0, explanation: "Filtrasyon basit/güvenilirdir ama tek başına yetersizdir; küçük organizmalar için UV/elektro-klorinasyon/ozon ile dezenfeksiyon gerekir." },
     ],
   },
   {
@@ -5450,8 +5430,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Balast su değişim bölgeleri",
     blocks: [{ sectionTitles: ["Değişim Koşulları", "Güvenlik"] }],
     questions: [
-      { id: 1, sectionRef: "Değişim Koşulları", category: MAK, question: "Balast su değişimi için ana koşul nedir?", options: ["Kıyıdan en az 200 nm uzakta ve 200 m+ derinlikte", "Limanda", "Kıyıya 1 nm yakın", "Herhangi bir yerde"], correctAnswer: 0, explanation: "Değişim kıyıdan 200 nm uzakta ve 200 m+ derinlikte yapılır; mümkün değilse en az 50 nm uzakta ve 200 m+ derinlikte yapılabilir." },
-      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Balast değişiminde stabilite nasıl korunur?", options: ["Sıralı yöntemde tanklar teker teker, her aşamada stabilite kontrol edilerek", "Tüm tanklar aynı anda boşaltılarak", "Kontrol yapılmadan", "Hızlıca"], correctAnswer: 0, explanation: "Değişim stabilite ve yapısal bütünlüğü riske atmamalı; sıralı yöntemde tanklar teker teker boşaltılıp doldurulur, her aşamada stabilite kontrol edilir. Kötü havada kaptan erteleyebilir." },
+      { id: 1, sectionRef: "Değişim Koşulları", category: MAK, question: "Balast su değişimi için ana koşul nedir?", options: ["Kıyıdan 200 nm ötede, 200 m derinlik", "Liman sahası içinde bulunulurken", "Kıyıya 1 nm mesafede iken serbest", "Herhangi bir yerde yapılabilmekte"], correctAnswer: 0, explanation: "Değişim kıyıdan 200 nm uzakta ve 200 m+ derinlikte yapılır; mümkün değilse en az 50 nm uzakta ve 200 m+ derinlikte yapılabilir." },
+      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Balast değişiminde stabilite nasıl korunur?", options: ["Sıralı yöntem; her aşamada kontrol", "Tüm tanklar aynı anda boşaltılarak", "Hiçbir kontrol yapılmadan doğrudan", "Olabildiğince hızlı biçimde yaparak"], correctAnswer: 0, explanation: "Değişim stabilite ve yapısal bütünlüğü riske atmamalı; sıralı yöntemde tanklar teker teker boşaltılıp doldurulur, her aşamada stabilite kontrol edilir. Kötü havada kaptan erteleyebilir." },
     ],
   },
   {
@@ -5459,7 +5439,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Balast su kayıt defteri",
     blocks: [{ sectionTitles: ["Kayıt Gereklilikleri", "Denetim"] }],
     questions: [
-      { id: 1, sectionRef: "Kayıt Gereklilikleri", category: MAK, question: "Balast su kayıt defterine ne kaydedilir?", options: ["Her balast alımı, deşarjı, değişimi ve arıtma operasyonu", "Sadece yakıt", "Sadece çöp", "Hiçbir şey"], correctAnswer: 0, explanation: "Her balast operasyonu (tarih, saat, konum, tank no, miktar, arıtma yöntemi) kaydedilir; kaptan/yetkili zabit imzalar." },
+      { id: 1, sectionRef: "Kayıt Gereklilikleri", category: MAK, question: "Balast su kayıt defterine ne kaydedilir?", options: ["Alım, deşarj, değişim ve arıtma", "Yalnızca yakıt alım kayıtları", "Yalnızca çöp bertaraf kayıtları", "Hiçbir kayıt tutulmamaktadır"], correctAnswer: 0, explanation: "Her balast operasyonu (tarih, saat, konum, tank no, miktar, arıtma yöntemi) kaydedilir; kaptan/yetkili zabit imzalar." },
       { id: 2, sectionRef: "Denetim", category: MAK, question: "Balast su kayıt defteri gemide ne kadar tutulur?", options: ["Son 2 yıl", "Son 10 yıl", "1 ay", "Tutulmaz"], correctAnswer: 0, explanation: "PSC denetiminde BWM Plan ve Record Book birlikte incelenir; kayıt defteri son 2 yılı gemide tutulur." },
     ],
   },
@@ -5468,8 +5448,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Çöp yönetim planı (Garbage Management Plan)",
     blocks: [{ sectionTitles: ["Çöp Sınıflandırması", "Özel Alanlar"] }],
     questions: [
-      { id: 1, sectionRef: "Çöp Sınıflandırması", category: MAK, question: "Öğütülmemiş yiyecek atığı için denize atım kuralı nedir?", options: ["Kıyıdan > 12 mil (öğütülmüş > 3 mil)", "Serbest", "Yasak", "1 mil sonra"], correctAnswer: 0, explanation: "Yiyecek atığı kıyıdan > 12 mil (öğütülmüş > 3 mil) atılabilir; plastik kesinlikle yasaktır, kâğıt/cam/metal > 12 mil." },
-      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Akdeniz/Baltık gibi özel alanlarda çöp kuralı nedir?", options: ["Yiyecek atığı dahil çoğu çöpün denize atımı yasak; liman tesisine verilir", "Serbestçe atılır", "Sadece plastik yasak", "Kural yok"], correctAnswer: 0, explanation: "Özel alanlarda (Akdeniz, Baltık, Karadeniz) yiyecek atığı dahil çoğu çöpün denize atımı yasaktır; tüm atıklar liman alım tesislerine verilir." },
+      { id: 1, sectionRef: "Çöp Sınıflandırması", category: MAK, question: "Öğütülmemiş yiyecek atığı için denize atım kuralı nedir?", options: ["Kıyıdan 12 mil ötede (öğütülmüş 3)", "Her yerde serbestçe atılabilir", "Her yerde kesinlikle yasaktır", "Kıyıdan 1 mil ötede atılabilir"], correctAnswer: 0, explanation: "Yiyecek atığı kıyıdan > 12 mil (öğütülmüş > 3 mil) atılabilir; plastik kesinlikle yasaktır, kâğıt/cam/metal > 12 mil." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Akdeniz/Baltık gibi özel alanlarda çöp kuralı nedir?", options: ["Çoğu çöp yasak; tesise verilir", "Serbestçe denize atılabilmekte", "Yalnızca plastik atımı yasaktır", "Bu alanlarda hiçbir kural yoktur"], correctAnswer: 0, explanation: "Özel alanlarda (Akdeniz, Baltık, Karadeniz) yiyecek atığı dahil çoğu çöpün denize atımı yasaktır; tüm atıklar liman alım tesislerine verilir." },
     ],
   },
   {
@@ -5477,8 +5457,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Çöp sınıflandırma ve kayıt",
     blocks: [{ sectionTitles: ["Sınıflandırma ve Kayıt", "Bertaraf Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Sınıflandırma ve Kayıt", category: MAK, question: "Garbage Record Book'a ne kaydedilir?", options: ["Atık türü, miktar, bertaraf yöntemi, tarih, konum, imza", "Sadece yakıt tüketimi", "Sadece hız", "Hiçbir şey"], correctAnswer: 0, explanation: "Her atık türü için ayrı kap ve renk kodlama uygulanır; GRB'ye atık türü, miktar, bertaraf yöntemi, tarih, konum ve imza kaydedilir." },
-      { id: 2, sectionRef: "Bertaraf Yöntemleri", category: MAK, question: "İncinerator'da hangi atıklar yakılabilir?", options: ["Kağıt, ahşap, yağlı paçavra ve sludge", "Plastik (her tür)", "Asbest", "Cam"], correctAnswer: 0, explanation: "İncinerator kağıt, ahşap, yağlı paçavra ve sludge yakar; liman teslimi tüm atıklar için, kompaktör hacim azaltma için kullanılır." },
+      { id: 1, sectionRef: "Sınıflandırma ve Kayıt", category: MAK, question: "Garbage Record Book'a ne kaydedilir?", options: ["Tür, miktar, yöntem, tarih ve konum", "Yalnızca sefer yakıt tüketimi verisi", "Yalnızca geminin seyir hız değeri", "Hiçbir bilgi kaydedilmemektedir"], correctAnswer: 0, explanation: "Her atık türü için ayrı kap ve renk kodlama uygulanır; GRB'ye atık türü, miktar, bertaraf yöntemi, tarih, konum ve imza kaydedilir." },
+      { id: 2, sectionRef: "Bertaraf Yöntemleri", category: MAK, question: "İncinerator'da hangi atıklar yakılabilir?", options: ["Kâğıt, ahşap, paçavra ve sludge", "Her türden plastik malzemeler", "Asbest içeren yalıtım malzemesi", "Cam şişe ve kırık cam parçaları"], correctAnswer: 0, explanation: "İncinerator kağıt, ahşap, yağlı paçavra ve sludge yakar; liman teslimi tüm atıklar için, kompaktör hacim azaltma için kullanılır." },
     ],
   },
   {
@@ -5487,7 +5467,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Operasyon Kuralları"] }],
     questions: [
       { id: 1, sectionRef: "Operasyon Kuralları", category: MAK, question: "İncinerator yanma odası minimum sıcaklığı nedir?", options: ["850°C", "200°C", "100°C", "1500°C"], correctAnswer: 0, explanation: "İncinerator IMO MEPC.244(66) standardına uygun olmalı ve yanma odası sıcaklığı minimum 850°C tutulmalıdır." },
-      { id: 2, sectionRef: "Operasyon Kuralları", category: MAK, question: "İncinerator'da aşağıdakilerden hangisi yakılamaz?", options: ["PVC ve asbest içeren malzeme", "Kağıt ve karton", "Yağlı paçavra", "Sludge"], correctAnswer: 0, explanation: "PVC/poliklorlu malzeme, asbest ve rafine ürün kargo kalıntısı yakılamaz; kağıt, ahşap, yağlı paçavra ve sludge yakılabilir. Limanda kullanım yerel kurallara bağlıdır." },
+      { id: 2, sectionRef: "Operasyon Kuralları", category: MAK, question: "İncinerator'da aşağıdakilerden hangisi yakılamaz?", options: ["PVC ve asbest içeren malzemeler", "Kâğıt ve karton ambalaj atığı", "Yağlı paçavra ve temizlik bezi", "Separatörden çıkan sludge atığı"], correctAnswer: 0, explanation: "PVC/poliklorlu malzeme, asbest ve rafine ürün kargo kalıntısı yakılamaz; kağıt, ahşap, yağlı paçavra ve sludge yakılabilir. Limanda kullanım yerel kurallara bağlıdır." },
     ],
   },
   {
@@ -5495,7 +5475,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pis su arıtma tesisi (STP)",
     blocks: [{ sectionTitles: ["Arıtma Yöntemleri", "Çıkış Suyu Standartları"] }],
     questions: [
-      { id: 1, sectionRef: "Arıtma Yöntemleri", category: MAK, question: "MBR (Membran Biyoreaktör) yönteminin özelliği nedir?", options: ["Biyolojik arıtma + membran filtre (çok iyi çıkış kalitesi)", "Sadece settling", "Kimyasal yok", "En kötü kalite"], correctAnswer: 0, explanation: "STP yöntemleri: biyolojik (aerobik), MBR (biyolojik+membran, çok iyi), elektro-kimyasal ve gelişmiş arıtma (yolcu gemisi, en iyi)." },
+      { id: 1, sectionRef: "Arıtma Yöntemleri", category: MAK, question: "MBR (Membran Biyoreaktör) yönteminin özelliği nedir?", options: ["Biyolojik arıtma ve membran filtre", "Yalnızca çöktürme (settling) ile", "Hiç kimyasal kullanılmaması hâli", "Bilinen en kötü çıkış kalitesi"], correctAnswer: 0, explanation: "STP yöntemleri: biyolojik (aerobik), MBR (biyolojik+membran, çok iyi), elektro-kimyasal ve gelişmiş arıtma (yolcu gemisi, en iyi)." },
       { id: 2, sectionRef: "Çıkış Suyu Standartları", category: MAK, question: "STP çıkış suyu için IMO BOD₅ standardı nedir?", options: ["< 25 mg/L", "< 250 mg/L", "< 5 mg/L", "Sınır yok"], correctAnswer: 0, explanation: "IMO standartları: BOD₅ < 25 mg/L, TSS < 35 mg/L, koliform < 100 cfu/100 mL, pH 6-8.5." },
     ],
   },
@@ -5505,7 +5485,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Teslim Edilecek Atıklar", "Prosedür"] }],
     questions: [
       { id: 1, sectionRef: "Teslim Edilecek Atıklar", category: MAK, question: "Sludge ve atık yağ hangi ek kapsamında zorunlu teslim edilir?", options: ["Annex I", "Annex V", "Annex IV", "Hiçbiri"], correctAnswer: 0, explanation: "Sludge/atık yağ (Annex I), kimyasal kalıntı (Annex II), plastik dahil çöp (Annex V), scrubber kalıntısı ve ODS (Annex VI) zorunlu teslim edilir." },
-      { id: 2, sectionRef: "Prosedür", category: MAK, question: "Atık teslim öncesi ne yapılır?", options: ["Limana önceden bildirim (advance notification) yapılır", "Hiçbir şey", "Sadece denize basılır", "Atık yakılır"], correctAnswer: 0, explanation: "Teslim öncesi limana bildirim yapılır, atık alım makbuzu alınıp ilgili kayıt defterine işlenir; AB limanlarında PRF Direktifi gereği teslim zorunludur." },
+      { id: 2, sectionRef: "Prosedür", category: MAK, question: "Atık teslim öncesi ne yapılır?", options: ["Limana önceden bildirim yapılır", "Hiçbir işlem yapılmamaktadır", "Atık doğrudan denize basılır", "Atık gemide yakılarak yok edilir"], correctAnswer: 0, explanation: "Teslim öncesi limana bildirim yapılır, atık alım makbuzu alınıp ilgili kayıt defterine işlenir; AB limanlarında PRF Direktifi gereği teslim zorunludur." },
     ],
   },
   {
@@ -5513,8 +5493,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "BRM'den ERM'ye geçiş",
     blocks: [{ sectionTitles: ["Tarihsel Gelişim", "BRM ve ERM Karşılaştırması"] }],
     questions: [
-      { id: 1, sectionRef: "Tarihsel Gelişim", category: MAK, question: "ERM hangi düzenlemeyle makine zabitlerinin zorunlu eğitimine eklendi?", options: ["STCW 2010 Manila Değişiklikleri", "MARPOL Ek VI", "SOLAS 1974", "ISM Code"], correctAnswer: 0, explanation: "Havacılıktaki CRM denizciliğe BRM olarak uyarlandı; ERM, STCW 2010 Manila Değişiklikleriyle makine zabitlerinin zorunlu müfredatına eklendi." },
-      { id: 2, sectionRef: "BRM ve ERM Karşılaştırması", category: MAK, question: "ERM'nin BRM'den farkı nedir?", options: ["Makine dairesi operasyonlarına (gürültülü, sıcak, tehlikeli ortam) odaklanır", "Sadece köprüüstüne odaklanır", "İletişim gerektirmez", "Hiçbir fark yok"], correctAnswer: 0, explanation: "BRM köprüüstü operasyonlarına, ERM makine dairesine (gürültülü/sıcak/tehlikeli) odaklanır; ERM STCW A-III/1, III/2 tablolarına dayanır." },
+      { id: 1, sectionRef: "Tarihsel Gelişim", category: MAK, question: "ERM hangi düzenlemeyle makine zabitlerinin zorunlu eğitimine eklendi?", options: ["STCW 2010 Manila Değişiklikleri", "MARPOL Ek VI (hava kirliliği)", "SOLAS 1974 (denizde can emniyeti)", "ISM Code (emniyetli yönetim)"], correctAnswer: 0, explanation: "Havacılıktaki CRM denizciliğe BRM olarak uyarlandı; ERM, STCW 2010 Manila Değişiklikleriyle makine zabitlerinin zorunlu müfredatına eklendi." },
+      { id: 2, sectionRef: "BRM ve ERM Karşılaştırması", category: MAK, question: "ERM'nin BRM'den farkı nedir?", options: ["Makine dairesi işlemlerine odaklanır", "Yalnızca köprüüstüne odaklanmakta", "Hiçbir iletişim gerektirmemekte", "İkisi arasında hiçbir fark yoktur"], correctAnswer: 0, explanation: "BRM köprüüstü operasyonlarına, ERM makine dairesine (gürültülü/sıcak/tehlikeli) odaklanır; ERM STCW A-III/1, III/2 tablolarına dayanır." },
     ],
   },
   {
@@ -5523,7 +5503,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Hata Tipleri", "Hata Yönetimi"] }],
     questions: [
       { id: 1, sectionRef: "Hata Tipleri", category: MAK, question: "Doğru niyetle yanlış eylem yapmak (örn. yanlış valfi çevirmek) hangi hata tipidir?", options: ["Slip (kayma)", "Mistake (hata)", "Violation (ihlal)", "Lapse (unutma)"], correctAnswer: 0, explanation: "Slip doğru niyet/yanlış eylem; lapse adım unutma; mistake yanlış plan; violation bilinçli kural ihlalidir (örn. PTW'siz sıcak çalışma)." },
-      { id: 2, sectionRef: "Hata Yönetimi", category: MAK, question: "James Reason'ın 'Swiss Cheese' modeli neyi anlatır?", options: ["Savunma katmanlarındaki boşluklar hizalanınca kaza oluşur", "Tek hata her zaman kazaya yol açar", "Hata önlenemez", "Peynir kalitesini"], correctAnswer: 0, explanation: "Swiss Cheese modelinde her savunma katmanı bir bariyerdir; boşluklar hizalanınca kaza olur. Hata toleranslı tasarım (çift kontrol, interlock, alarm) bunu önler." },
+      { id: 2, sectionRef: "Hata Yönetimi", category: MAK, question: "James Reason'ın 'Swiss Cheese' modeli neyi anlatır?", options: ["Savunma boşlukları hizalanınca kaza", "Tek bir hata her zaman kazaya yol açar", "Hatanın önlenmesi olanaksızdır", "Peynir üretim kalitesini anlatır"], correctAnswer: 0, explanation: "Swiss Cheese modelinde her savunma katmanı bir bariyerdir; boşluklar hizalanınca kaza olur. Hata toleranslı tasarım (çift kontrol, interlock, alarm) bunu önler." },
     ],
   },
   {
@@ -5531,8 +5511,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Situational awareness (durumsal farkındalık)",
     blocks: [{ sectionTitles: ["Üç Seviye (Endsley Modeli)", "Farkındalık Kaybı Nedenleri"] }],
     questions: [
-      { id: 1, sectionRef: "Üç Seviye (Endsley Modeli)", category: MAK, question: "Endsley modelinde Seviye 3 (öngörme) nedir?", options: ["Gelecekte ne olacağını tahmin etmek (önlem alınmazsa arıza)", "Mevcut durumu algılamak", "Bilgiyi anlamak", "Hiçbir şey yapmamak"], correctAnswer: 0, explanation: "Seviye 1 algılama, Seviye 2 anlama, Seviye 3 öngörme (gelecekteki durumu tahmin)dir." },
-      { id: 2, sectionRef: "Farkındalık Kaybı Nedenleri", category: MAK, question: "Aşağıdakilerden hangisi durumsal farkındalık kaybı nedenidir?", options: ["Yorgunluk, otomasyon bağımlılığı (complacency) ve stres", "İyi uyku", "Düşük iş yükü her zaman iyidir", "Dikkatli olmak"], correctAnswer: 0, explanation: "Yorgunluk, dikkat dağıtıcılar, aşırı bilgi yükü/monotonluk, otomasyon bağımlılığı (complacency) ve stres farkındalık kaybına yol açar." },
+      { id: 1, sectionRef: "Üç Seviye (Endsley Modeli)", category: MAK, question: "Endsley modelinde Seviye 3 (öngörme) nedir?", options: ["Gelecekte ne olacağını öngörmek", "Mevcut durumu algılayıp görmek", "Algılanan bilgiyi anlamlandırmak", "Hiçbir işlem yapmadan beklemek"], correctAnswer: 0, explanation: "Seviye 1 algılama, Seviye 2 anlama, Seviye 3 öngörme (gelecekteki durumu tahmin)dir." },
+      { id: 2, sectionRef: "Farkındalık Kaybı Nedenleri", category: MAK, question: "Aşağıdakilerden hangisi durumsal farkındalık kaybı nedenidir?", options: ["Yorgunluk, otomasyon güveni ve stres", "Yeterli ve düzenli uyku alınması", "Düşük iş yükü her zaman iyidir", "Sürekli dikkatli ve uyanık olmak"], correctAnswer: 0, explanation: "Yorgunluk, dikkat dağıtıcılar, aşırı bilgi yükü/monotonluk, otomasyon bağımlılığı (complacency) ve stres farkındalık kaybına yol açar." },
     ],
   },
   {
@@ -5540,8 +5520,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "STCW ERM gereklilikleri",
     blocks: [{ sectionTitles: ["Yeterlilik Tabloları", "Eğitim Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "Yeterlilik Tabloları", category: MAK, question: "ERM yeterlilikleri hangi STCW tablolarında tanımlanır?", options: ["A-III/1 (vardiya mühendisi) ve A-III/2 (baş mühendis)", "A-II/1, II/2", "A-IV/2", "A-VI/1"], correctAnswer: 0, explanation: "ERM yeterlilikleri STCW A-III/1 ve A-III/2 tablolarındadır: kaynak yönetimi, liderlik, durumsal farkındalık, iş yükü/stres yönetimi ve etkili iletişim." },
-      { id: 2, sectionRef: "Eğitim Yöntemleri", category: MAK, question: "ERM eğitiminde hangi yöntemler kullanılır?", options: ["Simülatör senaryoları (blackout, yangın), vaka analizi ve debriefing", "Sadece kitap okuma", "Sadece sınav", "Eğitim yok"], correctAnswer: 0, explanation: "Simülatör tabanlı senaryolar, atölye, vaka analizi ve debriefing kullanılır; ERM sertifikası genellikle 5 yıl geçerli olup tazeleme gerektirir." },
+      { id: 1, sectionRef: "Yeterlilik Tabloları", category: MAK, question: "ERM yeterlilikleri hangi STCW tablolarında tanımlanır?", options: ["A-III/1 ve A-III/2 tabloları", "A-II/1 ve A-II/2 tabloları", "A-IV/2 telsiz operatör tablosu", "A-VI/1 temel eğitim tablosu"], correctAnswer: 0, explanation: "ERM yeterlilikleri STCW A-III/1 ve A-III/2 tablolarındadır: kaynak yönetimi, liderlik, durumsal farkındalık, iş yükü/stres yönetimi ve etkili iletişim." },
+      { id: 2, sectionRef: "Eğitim Yöntemleri", category: MAK, question: "ERM eğitiminde hangi yöntemler kullanılır?", options: ["Simülatör senaryoları ve vaka analizi", "Yalnızca kitap okunması yoluyla", "Yalnızca yazılı sınav yapılması ile", "Hiçbir eğitim verilmemesi yoluyla"], correctAnswer: 0, explanation: "Simülatör tabanlı senaryolar, atölye, vaka analizi ve debriefing kullanılır; ERM sertifikası genellikle 5 yıl geçerli olup tazeleme gerektirir." },
     ],
   },
   {
@@ -5549,8 +5529,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Liderlik tarzları ve durumsal liderlik",
     blocks: [{ sectionTitles: ["Liderlik Tarzları"] }],
     questions: [
-      { id: 1, sectionRef: "Liderlik Tarzları", category: MAK, question: "Acil durumda (yangın) hangi liderlik tarzı uygundur?", options: ["Otoriter (lider karar verir, sorgulanmaz)", "Demokratik", "Delege eden", "Koçluk"], correctAnswer: 0, explanation: "Acil durumda otoriter tarz uygundur; bakım planlamasında demokratik, rutin işlerde delege eden, eğitimde koçluk tarzı uygundur." },
-      { id: 2, sectionRef: "Liderlik Tarzları", category: MAK, question: "Stajyer ve yeni personel eğitiminde hangi tarz uygundur?", options: ["Koçluk (öğretme ve geliştirme odaklı)", "Otoriter", "Delege eden", "Hiçbiri"], correctAnswer: 0, explanation: "Koçluk tarzı öğretme/geliştirme odaklıdır ve stajyer/yeni personel eğitiminde uygundur." },
+      { id: 1, sectionRef: "Liderlik Tarzları", category: MAK, question: "Acil durumda (yangın) hangi liderlik tarzı uygundur?", options: ["Otoriter (lider karar verir)", "Demokratik (birlikte karar alma)", "Delege eden (yetki devri)", "Koçluk (öğretme odaklı)"], correctAnswer: 0, explanation: "Acil durumda otoriter tarz uygundur; bakım planlamasında demokratik, rutin işlerde delege eden, eğitimde koçluk tarzı uygundur." },
+      { id: 2, sectionRef: "Liderlik Tarzları", category: MAK, question: "Stajyer ve yeni personel eğitiminde hangi tarz uygundur?", options: ["Koçluk (öğretme ve geliştirme)", "Otoriter (tek yönlü emir verme)", "Delege eden (tam yetki devri)", "Hiçbir liderlik tarzı uygun değil"], correctAnswer: 0, explanation: "Koçluk tarzı öğretme/geliştirme odaklıdır ve stajyer/yeni personel eğitiminde uygundur." },
     ],
   },
   {
@@ -5558,8 +5538,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Etkili iletişim teknikleri",
     blocks: [{ sectionTitles: ["İletişim Prensipleri", "İletişim Engelleri"] }],
     questions: [
-      { id: 1, sectionRef: "İletişim Prensipleri", category: MAK, question: "Closed-loop (teyit) iletişimde alıcı ne yapar?", options: ["Mesajı tekrarlayarak anladığını doğrular", "Hiçbir şey demez", "Sadece dinler", "Mesajı değiştirir"], correctAnswer: 0, explanation: "İletişim açık/net, zamanında ve uygun kanaldan olmalı; alıcı mesajı tekrarlayarak doğrular (closed-loop communication)." },
-      { id: 2, sectionRef: "İletişim Engelleri", category: MAK, question: "Makine dairesinde temel iletişim engeli nedir?", options: ["Gürültü (90-110 dBA); kulak koruyucu iletişimi zorlaştırır", "Çok sessizlik", "Aşırı aydınlık", "Düşük sıcaklık"], correctAnswer: 0, explanation: "Gürültü (90-110 dBA), dil bariyeri, otorite gradyanı ve yorgunluk iletişim engelleridir; IMO standart denizcilik İngilizcesi kullanılır." },
+      { id: 1, sectionRef: "İletişim Prensipleri", category: MAK, question: "Closed-loop (teyit) iletişimde alıcı ne yapar?", options: ["Mesajı tekrarlayarak doğrular", "Hiçbir şey söylemeden geçer", "Yalnızca sessizce dinlemektedir", "Mesajı değiştirip iletmekte"], correctAnswer: 0, explanation: "İletişim açık/net, zamanında ve uygun kanaldan olmalı; alıcı mesajı tekrarlayarak doğrular (closed-loop communication)." },
+      { id: 2, sectionRef: "İletişim Engelleri", category: MAK, question: "Makine dairesinde temel iletişim engeli nedir?", options: ["Gürültü (90-110 dBA) ve kulaklık", "Aşırı sessiz ortam koşulları", "Aşırı aydınlık ortam koşulu", "Düşük ortam sıcaklığı koşulu"], correctAnswer: 0, explanation: "Gürültü (90-110 dBA), dil bariyeri, otorite gradyanı ve yorgunluk iletişim engelleridir; IMO standart denizcilik İngilizcesi kullanılır." },
     ],
   },
   {
@@ -5567,8 +5547,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kapalı döngü iletişim (closed-loop)",
     blocks: [{ sectionTitles: ["Üç Adımlı Süreç", "Önemi"] }],
     questions: [
-      { id: 1, sectionRef: "Üç Adımlı Süreç", category: MAK, question: "Kapalı döngü iletişimin üç adımı nedir?", options: ["Gönderici iletir → alıcı tekrarlar → gönderici doğrular", "Sadece gönderici konuşur", "Sadece yazılı", "Alıcı karar verir"], correctAnswer: 0, explanation: "Gönderici mesajı iletir, alıcı tekrarlayarak teyit eder, gönderici tekrarı doğrular veya düzeltir." },
-      { id: 2, sectionRef: "Önemi", category: MAK, question: "Kapalı döngü iletişim iletişim hatalarını ne kadar azaltabilir?", options: ["%70'e kadar", "%5", "Hiç", "%1"], correctAnswer: 0, explanation: "Gürültülü/stresli/dil bariyerli ortamlarda iletişim hatalarını %70'e kadar azaltır; acil durum, paralel bağlama ve bakımda kritiktir." },
+      { id: 1, sectionRef: "Üç Adımlı Süreç", category: MAK, question: "Kapalı döngü iletişimin üç adımı nedir?", options: ["İletilir → tekrarlanır → doğrulanır", "Yalnızca gönderici konuşup biter", "Yalnızca yazılı olarak iletilir", "Alıcı kendi kararını vermektedir"], correctAnswer: 0, explanation: "Gönderici mesajı iletir, alıcı tekrarlayarak teyit eder, gönderici tekrarı doğrular veya düzeltir." },
+      { id: 2, sectionRef: "Önemi", category: MAK, question: "Kapalı döngü iletişim iletişim hatalarını ne kadar azaltabilir?", options: ["%70'e kadar azaltabilmektedir", "Yalnızca %5'e kadar azaltabilmektedir", "Hiçbir azaltma sağlamamakta", "%1'e kadar azaltabilmektedir"], correctAnswer: 0, explanation: "Gürültülü/stresli/dil bariyerli ortamlarda iletişim hatalarını %70'e kadar azaltır; acil durum, paralel bağlama ve bakımda kritiktir." },
     ],
   },
   {
@@ -5576,8 +5556,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kültürler arası iletişim",
     blocks: [{ sectionTitles: ["Kültürel Farklılıklar", "Çözüm Stratejileri"] }],
     questions: [
-      { id: 1, sectionRef: "Kültürel Farklılıklar", category: MAK, question: "Yüksek güç mesafesi (power distance) olan kültürlerde ne görülür?", options: ["Ast, üstünü sorgulamakta çekinir", "Herkes eşit konuşur", "Otorite yoktur", "Sürekli itiraz edilir"], correctAnswer: 0, explanation: "Yüksek güç mesafesinde ast üstünü sorgulamaktan çekinir; bireyci/toplulukçu, belirsizlikten kaçınma ve zaman algısı da farklılık yaratır." },
-      { id: 2, sectionRef: "Çözüm Stratejileri", category: MAK, question: "Kültürel farklılıklara karşı çözüm nedir?", options: ["Ortak dil olarak İngilizce standart terminoloji ve assertiveness teşviki", "Herkesin kendi dilinde konuşması", "İletişimi kesmek", "Sadece yazılı"], correctAnswer: 0, explanation: "Ortak çalışma dili İngilizce standart terminoloji kullanılır, ast personelin soru sorması/itirazı teşvik edilir; kültürel farkındalık eğitimi ERM parçasıdır." },
+      { id: 1, sectionRef: "Kültürel Farklılıklar", category: MAK, question: "Yüksek güç mesafesi (power distance) olan kültürlerde ne görülür?", options: ["Ast, üstünü sorgulamakta çekinir", "Herkes eşit biçimde konuşabilmektedir", "Hiçbir otorite yapısı bulunmaz", "Sürekli ve açıkça itiraz edilir"], correctAnswer: 0, explanation: "Yüksek güç mesafesinde ast üstünü sorgulamaktan çekinir; bireyci/toplulukçu, belirsizlikten kaçınma ve zaman algısı da farklılık yaratır." },
+      { id: 2, sectionRef: "Çözüm Stratejileri", category: MAK, question: "Kültürel farklılıklara karşı çözüm nedir?", options: ["Standart İngilizce ve assertiveness", "Herkesin kendi dilinde konuşması", "İletişimi tümüyle kesip azaltmak", "Yalnızca yazılı iletişim kurmak"], correctAnswer: 0, explanation: "Ortak çalışma dili İngilizce standart terminoloji kullanılır, ast personelin soru sorması/itirazı teşvik edilir; kültürel farkındalık eğitimi ERM parçasıdır." },
     ],
   },
   {
@@ -5585,8 +5565,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Asertif davranış ve otorite gradyanı",
     blocks: [{ sectionTitles: ["Otorite Gradyanı", "Asertif İtiraz Tekniği"] }],
     questions: [
-      { id: 1, sectionRef: "Otorite Gradyanı", category: MAK, question: "Optimum otorite gradyanı nedir?", options: ["Net liderlik var ama ekip rahatça geri bildirim verebilir", "Dik gradyan (astlar soru soramaz)", "Düz gradyan (otorite belirsiz)", "Otorite yok"], correctAnswer: 0, explanation: "Dik gradyanda üstün hatası düzeltilemez, düz gradyanda karar zorlaşır; optimum gradyanda net liderlik var ama ekip rahatça geri bildirim verir." },
-      { id: 2, sectionRef: "Asertif İtiraz Tekniği", category: MAK, question: "PACE modelinde son (en güçlü) adım nedir?", options: ["E – Emergency (acil müdahale)", "P – Probe", "A – Alert", "C – Challenge"], correctAnswer: 0, explanation: "PACE: Probe (sor) → Alert (uyar) → Challenge (meydan oku) → Emergency (acil, örn. 'düşürmezseniz motoru durduracağım')." },
+      { id: 1, sectionRef: "Otorite Gradyanı", category: MAK, question: "Optimum otorite gradyanı nedir?", options: ["Net liderlik; geri bildirim serbest", "Dik gradyan (astlar soru soramaz)", "Düz gradyan (otorite belirsizdir)", "Hiçbir otorite yapısı bulunmaz"], correctAnswer: 0, explanation: "Dik gradyanda üstün hatası düzeltilemez, düz gradyanda karar zorlaşır; optimum gradyanda net liderlik var ama ekip rahatça geri bildirim verir." },
+      { id: 2, sectionRef: "Asertif İtiraz Tekniği", category: MAK, question: "PACE modelinde son (en güçlü) adım nedir?", options: ["E – Emergency (acil müdahale)", "P – Probe (soru sorma ilk adımı)", "A – Alert (uyarma adımı)", "C – Challenge (itiraz adımı)"], correctAnswer: 0, explanation: "PACE: Probe (sor) → Alert (uyar) → Challenge (meydan oku) → Emergency (acil, örn. 'düşürmezseniz motoru durduracağım')." },
     ],
   },
   {
@@ -5594,8 +5574,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "DECIDE modeli",
     blocks: [{ sectionTitles: ["Adımlar"] }],
     questions: [
-      { id: 1, sectionRef: "Adımlar", category: MAK, question: "DECIDE modelinin ilk adımı nedir?", options: ["D – Detect (sorunu/değişikliği tespit et)", "Do (uygula)", "Evaluate (değerlendir)", "Choose (seç)"], correctAnswer: 0, explanation: "DECIDE: Detect → Estimate → Choose → Identify → Do → Evaluate; ilk adım sorunu tespit etmektir." },
-      { id: 2, sectionRef: "Adımlar", category: MAK, question: "DECIDE modelinin son adımı nedir?", options: ["E – Evaluate (sonuçları değerlendir, gerekirse düzelt)", "Detect", "Do", "Choose"], correctAnswer: 0, explanation: "Son adım Evaluate: kararı uyguladıktan sonra sonuçları değerlendirip gerekirse düzeltmektir." },
+      { id: 1, sectionRef: "Adımlar", category: MAK, question: "DECIDE modelinin ilk adımı nedir?", options: ["D – Detect (sorunu tespit et)", "Do (belirlenen eylemi uygula)", "Evaluate (sonucu değerlendir)", "Choose (en iyi seçeneği seç)"], correctAnswer: 0, explanation: "DECIDE: Detect → Estimate → Choose → Identify → Do → Evaluate; ilk adım sorunu tespit etmektir." },
+      { id: 2, sectionRef: "Adımlar", category: MAK, question: "DECIDE modelinin son adımı nedir?", options: ["E – Evaluate (sonuçları değerlendir)", "Detect (sorunu tespit etme adımı)", "Do (belirlenen eylemi uygulama)", "Choose (en iyi seçeneği seçme)"], correctAnswer: 0, explanation: "Son adım Evaluate: kararı uyguladıktan sonra sonuçları değerlendirip gerekirse düzeltmektir." },
     ],
   },
   {
@@ -5603,8 +5583,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Risk tabanlı karar verme",
     blocks: [{ sectionTitles: ["Karar Süreci", "Risk Toleransı"] }],
     questions: [
-      { id: 1, sectionRef: "Karar Süreci", category: MAK, question: "Risk tabanlı karar sürecinde seçenekler belirlendikten sonra ne yapılır?", options: ["Her seçeneğin risk düzeyi değerlendirilir", "Hemen uygulanır", "Görmezden gelinir", "Rastgele seçilir"], correctAnswer: 0, explanation: "Durumu değerlendir → seçenekleri belirle → risk değerlendir → en düşük riskli/uygulanabilir seçeneği seç → uygula ve izle." },
-      { id: 2, sectionRef: "Risk Toleransı", category: MAK, question: "İnsan hayatı tehlikedeyse hangi risk seviyesi geçerlidir?", options: ["Kabul edilemez risk → operasyonu durdur", "ALARP → devam et", "Kabul edilebilir → normal operasyon", "Önemsiz"], correctAnswer: 0, explanation: "Kabul edilemez risk (insan hayatı tehlikede) operasyonu durdurmayı gerektirir; ALARP makul seviyeye indirilmiş riski (izleyerek devam), kabul edilebilir risk normal operasyonu ifade eder." },
+      { id: 1, sectionRef: "Karar Süreci", category: MAK, question: "Risk tabanlı karar sürecinde seçenekler belirlendikten sonra ne yapılır?", options: ["Her seçeneğin risk düzeyi ölçülür", "Seçenek doğrudan ve hemen uygulanır", "Seçenekler görmezden gelinmekte", "Rastgele bir seçenek seçilmekte"], correctAnswer: 0, explanation: "Durumu değerlendir → seçenekleri belirle → risk değerlendir → en düşük riskli/uygulanabilir seçeneği seç → uygula ve izle." },
+      { id: 2, sectionRef: "Risk Toleransı", category: MAK, question: "İnsan hayatı tehlikedeyse hangi risk seviyesi geçerlidir?", options: ["Kabul edilemez risk; operasyonu durdur", "ALARP düzeyi; operasyona devam et", "Kabul edilebilir; normal operasyon", "Önemsiz risk; hiçbir önlem gerekmez"], correctAnswer: 0, explanation: "Kabul edilemez risk (insan hayatı tehlikede) operasyonu durdurmayı gerektirir; ALARP makul seviyeye indirilmiş riski (izleyerek devam), kabul edilebilir risk normal operasyonu ifade eder." },
     ],
   },
   {
@@ -5612,8 +5592,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Zaman baskısı altında karar",
     blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
     questions: [
-      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada yardımcı pompa devreye alma neden 90 saniye gecikti?", options: ["Tek zabit manevraya odaklanırken alarmı gecikmeli değerlendirdi", "Pompa arızalıydı", "Yakıt bitti", "Güç kesildi"], correctAnswer: 0, explanation: "Manevrada tek zabit ardışık komutları uygularken jacket cooling düşük basınç alarmını gecikmeli değerlendirdi; ortak durum resmi oluşmadı." },
-      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Zaman baskısında önerilen mini prosedür nedir?", options: ["30-60 sn 'Stop-Think-Act-Review' ve gemi-personel-ekipman emniyeti sırası", "Hızlıca her şeyi yapmak", "Prosedürü atlamak", "Beklemek"], correctAnswer: 0, explanation: "Manevrada 'Stop-Think-Act-Review' mini prosedürü zorunlu olmalı; en az iki kişi (telegraph + alarm takibi) aktif tutulmalı ve kritik komutlarda kapalı döngü iletişim uygulanmalıdır." },
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada yardımcı pompa devreye alma neden 90 saniye gecikti?", options: ["Tek zabit manevraya odaklanmıştı", "Yardımcı pompa arızalı durumdaydı", "Servis tankındaki yakıt bitmişti", "Panoya giden besleme kesilmişti"], correctAnswer: 0, explanation: "Manevrada tek zabit ardışık komutları uygularken jacket cooling düşük basınç alarmını gecikmeli değerlendirdi; ortak durum resmi oluşmadı." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Zaman baskısında önerilen mini prosedür nedir?", options: ["30-60 sn Stop-Think-Act-Review", "Hızlıca her şeyi birlikte yapmak", "Prosedürü tümüyle atlayıp geçmek", "Hiçbir şey yapmadan beklemektir"], correctAnswer: 0, explanation: "Manevrada 'Stop-Think-Act-Review' mini prosedürü zorunlu olmalı; en az iki kişi (telegraph + alarm takibi) aktif tutulmalı ve kritik komutlarda kapalı döngü iletişim uygulanmalıdır." },
     ],
   },
   {
@@ -5621,8 +5601,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hata zincirleri ve kırma noktaları",
     blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
     questions: [
-      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada purifier DP alarmının 'geçici' görülmesi neye yol açtı?", options: ["Yakıt viskozitesi düştü, enjektörde düzensiz püskürtme ve yük dalgalanması oluştu", "Hiçbir şey", "Yakıt tasarrufu", "Motor durdu"], correctAnswer: 0, explanation: "Purifier DP alarmı ertelenip settling drain atlanınca viskozite hedefin altına indi, enjektörde düzensiz püskürtme ve ana makinede yük dalgalanması oldu." },
-      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Kritik alarm ertelemesi için ne zorunlu olmalıdır?", options: ["Zabit onayı + yazılı gerekçe + yeniden değerlendirme zamanı", "Hiçbir şey", "Sadece susturma", "Otomatik silme"], correctAnswer: 0, explanation: "Kritik alarm ertelemesi zabit onayı, yazılı gerekçe ve yeniden değerlendirme zamanı gerektirmeli; süresi dolan alarm otomatik kritik seviyeye dönmeli, vardiya devrinde açık risk listesi aktarılmalıdır." },
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada purifier DP alarmının 'geçici' görülmesi neye yol açtı?", options: ["Viskozite düştü; püskürtme bozuldu", "Hiçbir olumsuz sonuç oluşmamıştı", "Sefer yakıt tüketiminde tasarruf", "Ana makine kendiliğinden durup kapanmıştı"], correctAnswer: 0, explanation: "Purifier DP alarmı ertelenip settling drain atlanınca viskozite hedefin altına indi, enjektörde düzensiz püskürtme ve ana makinede yük dalgalanması oldu." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Kritik alarm ertelemesi için ne zorunlu olmalıdır?", options: ["Zabit onayı, yazılı gerekçe ve süre", "Hiçbir koşul gerekmemektedir", "Yalnızca susturulması yeterlidir", "Otomatik olarak silinmesi yeterli"], correctAnswer: 0, explanation: "Kritik alarm ertelemesi zabit onayı, yazılı gerekçe ve yeniden değerlendirme zamanı gerektirmeli; süresi dolan alarm otomatik kritik seviyeye dönmeli, vardiya devrinde açık risk listesi aktarılmalıdır." },
     ],
   },
   {
@@ -5630,8 +5610,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Stres ve yorgunluk etkisi",
     blocks: [{ sectionTitles: ["Yorgunluk Kaynakları", "Önleme"] }],
     questions: [
-      { id: 1, sectionRef: "Yorgunluk Kaynakları", category: MAK, question: "Aşağıdakilerden hangisi yorgunluk kaynağıdır?", options: ["Düzensiz vardiya sistemi ve yetersiz uyku", "İyi dinlenme", "Sessiz ortam", "Düşük iş yükü her zaman"], correctAnswer: 0, explanation: "Düzensiz vardiya (4-8 veya 6-6), yetersiz uyku, gürültü/titreşim, monotonluk ve fiziksel iş yükü yorgunluk kaynaklarıdır." },
-      { id: 2, sectionRef: "Önleme", category: MAK, question: "MLC gereği 7 günde minimum dinlenme süresi nedir?", options: ["77 saat (24 saatte min 10 saat)", "40 saat", "100 saat", "Sınır yok"], correctAnswer: 0, explanation: "MLC gereği minimum dinlenme 24 saatte 10 saat, 7 günde 77 saattir; work/rest saatleri kaydedilir ve PSC denetler." },
+      { id: 1, sectionRef: "Yorgunluk Kaynakları", category: MAK, question: "Aşağıdakilerden hangisi yorgunluk kaynağıdır?", options: ["Düzensiz vardiya ve yetersiz uyku", "İyi ve düzenli dinlenme koşulu", "Sessiz ve sakin çalışma ortamı", "Her koşulda düşük iş yükü olması hâli"], correctAnswer: 0, explanation: "Düzensiz vardiya (4-8 veya 6-6), yetersiz uyku, gürültü/titreşim, monotonluk ve fiziksel iş yükü yorgunluk kaynaklarıdır." },
+      { id: 2, sectionRef: "Önleme", category: MAK, question: "MLC gereği 7 günde minimum dinlenme süresi nedir?", options: ["77 saat (24 saatte en az 10 saat)", "40 saat (24 saatte en az 5 saat)", "100 saat (24 saatte en az 14 saat)", "Herhangi bir alt sınır yoktur"], correctAnswer: 0, explanation: "MLC gereği minimum dinlenme 24 saatte 10 saat, 7 günde 77 saattir; work/rest saatleri kaydedilir ve PSC denetler." },
     ],
   },
   {
@@ -5639,8 +5619,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Takım oluşturma ve rol dağılımı",
     blocks: [{ sectionTitles: ["Rol Dağılımı", "Etkili Takım Özellikleri"] }],
     questions: [
-      { id: 1, sectionRef: "Rol Dağılımı", category: MAK, question: "İkinci mühendisin (2nd engineer) temel sorumluluğu nedir?", options: ["Ana makine sorumlusu, günlük operasyonları koordine eder", "Tüm departman lideri", "Sadece kazanlar", "Sadece temizlik"], correctAnswer: 0, explanation: "Baş mühendis departman lideri; 2. mühendis ana makine sorumlusu; 3. mühendis yardımcı makine/jeneratör/yakıt; 4. mühendis kazan/purifier/su arıtmadır." },
-      { id: 2, sectionRef: "Etkili Takım Özellikleri", category: MAK, question: "Etkili bir takımın özelliği nedir?", options: ["Açık iletişim, karşılıklı güven ve net rol tanımı", "Belirsiz roller", "İletişimsizlik", "Suçlama kültürü"], correctAnswer: 0, explanation: "Etkili takım; ortak amaç, açık iletişim/geri bildirim, karşılıklı güven, net roller, çapraz kontrol ve hata toleranslı öğrenme kültürüne sahiptir." },
+      { id: 1, sectionRef: "Rol Dağılımı", category: MAK, question: "İkinci mühendisin (2nd engineer) temel sorumluluğu nedir?", options: ["Ana makine sorumlusu; koordinasyon", "Tüm departmanın en üst düzey lideri", "Yalnızca kazanlardan sorumlu olan", "Yalnızca temizlikten sorumlu olan"], correctAnswer: 0, explanation: "Baş mühendis departman lideri; 2. mühendis ana makine sorumlusu; 3. mühendis yardımcı makine/jeneratör/yakıt; 4. mühendis kazan/purifier/su arıtmadır." },
+      { id: 2, sectionRef: "Etkili Takım Özellikleri", category: MAK, question: "Etkili bir takımın özelliği nedir?", options: ["Açık iletişim, güven ve net roller", "Belirsiz ve birbiriyle çakışan rol tanımları", "İletişimsizlik ve kapalı yapı", "Suçlama odaklı çalışma kültürü"], correctAnswer: 0, explanation: "Etkili takım; ortak amaç, açık iletişim/geri bildirim, karşılıklı güven, net roller, çapraz kontrol ve hata toleranslı öğrenme kültürüne sahiptir." },
     ],
   },
   {
@@ -5648,8 +5628,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Brifing ve debrifing teknikleri",
     blocks: [{ sectionTitles: ["Brifing", "Debrifing"] }],
     questions: [
-      { id: 1, sectionRef: "Brifing", category: MAK, question: "Brifing ne zaman ve neyi içerir?", options: ["Operasyon öncesi; iş, roller, tehlikeler, önlemler ve acil durum planı", "Operasyon sonrası; suçlama", "Hiç yapılmaz", "Sadece imza"], correctAnswer: 0, explanation: "Brifing operasyon öncesi yapılır; yapılacak iş, roller, tehlikeler, önlemler, acil durum planı ve iletişimi içerir; kısa, net ve interaktif olmalıdır." },
-      { id: 2, sectionRef: "Debrifing", category: MAK, question: "Debrifing'in amacı nedir?", options: ["Öğrenme (suçlama değil); iyi/kötü/iyileştirilebilir noktaları tartışmak", "Suçlu bulmak", "Ceza vermek", "Hiçbir şey"], correctAnswer: 0, explanation: "Debrifing operasyon sonrası değerlendirmedir; suçlama değil öğrenme amaçlıdır, deneyimler kayıt altına alınıp kurumsal hafıza oluşturulur." },
+      { id: 1, sectionRef: "Brifing", category: MAK, question: "Brifing ne zaman ve neyi içerir?", options: ["Öncesinde; iş, rol, tehlike ve plan", "Sonrasında; suçlama ve ceza için", "Hiçbir zaman yapılmamaktadır", "Yalnızca imza atılması yeterli"], correctAnswer: 0, explanation: "Brifing operasyon öncesi yapılır; yapılacak iş, roller, tehlikeler, önlemler, acil durum planı ve iletişimi içerir; kısa, net ve interaktif olmalıdır." },
+      { id: 2, sectionRef: "Debrifing", category: MAK, question: "Debrifing'in amacı nedir?", options: ["Öğrenme; iyi ve kötü yönleri tartışmak", "Olayda suçlu olan kişiyi bulmak", "Sorumlu kişilere ceza verilmesini sağlamak", "Hiçbir amaç taşımayan formalite"], correctAnswer: 0, explanation: "Debrifing operasyon sonrası değerlendirmedir; suçlama değil öğrenme amaçlıdır, deneyimler kayıt altına alınıp kurumsal hafıza oluşturulur." },
     ],
   },
   {
@@ -5657,8 +5637,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yük paylaşımı (workload management)",
     blocks: [{ sectionTitles: ["İş Yükü Seviyeleri", "Yönetim Stratejileri"] }],
     questions: [
-      { id: 1, sectionRef: "İş Yükü Seviyeleri", category: MAK, question: "Düşük iş yükünün riski nedir?", options: ["Dikkat kaybı ve complacency (rehavet)", "Kritik hata", "Aşırı stres", "Hiçbir risk"], correctAnswer: 0, explanation: "Düşük iş yükü monotonluk/complacency (dikkat kaybı), aşırı yük ise kritik hata/kaza riski yaratır; optimum seviye düşük risklidir." },
-      { id: 2, sectionRef: "Yönetim Stratejileri", category: MAK, question: "Yük yönetiminde temel strateji nedir?", options: ["Önceliklendirme (güvenlik kritik görevler önce) ve delegasyon", "Tüm işleri tek kişiye yüklemek", "Yardım istememek", "Hepsini ertelemek"], correctAnswer: 0, explanation: "Önceliklendirme (güvenlik önce), delegasyon, erteleme, destek talebi ve otomasyon kullanımı yük yönetim stratejileridir; yardım istemek profesyonelliktir." },
+      { id: 1, sectionRef: "İş Yükü Seviyeleri", category: MAK, question: "Düşük iş yükünün riski nedir?", options: ["Dikkat kaybı ve rehavet riski", "Kritik hataların artması riski", "Aşırı stres ve gerginlik riski", "Hiçbir risk oluşturmaması hâli"], correctAnswer: 0, explanation: "Düşük iş yükü monotonluk/complacency (dikkat kaybı), aşırı yük ise kritik hata/kaza riski yaratır; optimum seviye düşük risklidir." },
+      { id: 2, sectionRef: "Yönetim Stratejileri", category: MAK, question: "Yük yönetiminde temel strateji nedir?", options: ["Önceliklendirme ve görev delegasyonu", "Bütün işleri tek kişiye yüklemek", "Hiçbir biçimde yardım istememek", "Bütün işleri sonraya ertelemektir"], correctAnswer: 0, explanation: "Önceliklendirme (güvenlik önce), delegasyon, erteleme, destek talebi ve otomasyon kullanımı yük yönetim stratejileridir; yardım istemek profesyonelliktir." },
     ],
   },
   {
@@ -5666,8 +5646,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Çapraz kontrol ve karşılıklı izleme",
     blocks: [{ sectionTitles: ["Uygulama", "Havacılıktan Öğrenilen Dersler"] }],
     questions: [
-      { id: 1, sectionRef: "Uygulama", category: MAK, question: "Çapraz kontrol nasıl uygulanır?", options: ["Bir kişi vana açarken diğeri doğru vanayı açtığını kontrol eder", "Herkes ayrı çalışır", "Kontrol yapılmaz", "Sadece amir kontrol eder"], correctAnswer: 0, explanation: "Vana/şalter operasyonunda bir kişi yapar diğeri doğrular; tork/ölçüm değerleri ikinci kişiyle teyit edilir. Karşılıklı izleme suçlama değil koruma kültürüdür." },
-      { id: 2, sectionRef: "Havacılıktan Öğrenilen Dersler", category: MAK, question: "Havacılıktaki 'sterile cockpit' kuralının makine dairesindeki karşılığı nedir?", options: ["Manevra sırasında gereksiz konuşmayı önleyip odaklanmayı korumak", "Sürekli sohbet", "Müzik dinlemek", "Hiçbir şey"], correctAnswer: 0, explanation: "Havacılıkta sterile cockpit kritik operasyonlarda gereksiz konuşmayı yasaklar; benzer şekilde manevrada makine dairesinde odaklanma korunur." },
+      { id: 1, sectionRef: "Uygulama", category: MAK, question: "Çapraz kontrol nasıl uygulanır?", options: ["Biri vana açar, diğeri doğruluğunu bakar", "Herkes ayrı ayrı ve bağımsız çalışır", "Hiçbir kontrol işlemi yapılmamakta", "Yalnızca amir tarafından kontrol edilmekte"], correctAnswer: 0, explanation: "Vana/şalter operasyonunda bir kişi yapar diğeri doğrular; tork/ölçüm değerleri ikinci kişiyle teyit edilir. Karşılıklı izleme suçlama değil koruma kültürüdür." },
+      { id: 2, sectionRef: "Havacılıktan Öğrenilen Dersler", category: MAK, question: "Havacılıktaki 'sterile cockpit' kuralının makine dairesindeki karşılığı nedir?", options: ["Manevrada gereksiz konuşmayı önlemek", "Manevra boyunca sürekli sohbet etmek", "Çalışırken müzik dinlemeye izin vermek", "Hiçbir kural uygulanmaması durumu"], correctAnswer: 0, explanation: "Havacılıkta sterile cockpit kritik operasyonlarda gereksiz konuşmayı yasaklar; benzer şekilde manevrada makine dairesinde odaklanma korunur." },
     ],
   },
   {
@@ -5675,8 +5655,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Geri bildirim kültürü",
     blocks: [{ sectionTitles: ["Etkili Geri Bildirim", "Geri Bildirim Alma"] }],
     questions: [
-      { id: 1, sectionRef: "Etkili Geri Bildirim", category: MAK, question: "Etkili geri bildirim nasıl verilir?", options: ["Spesifik, zamanında ve davranışa odaklı (kişiliğe değil)", "Genel ve gecikmeli", "Kişiliği hedef alarak", "Herkesin önünde eleştirerek"], correctAnswer: 0, explanation: "Geri bildirim spesifik, zamanında, davranışa odaklı (kişiliğe değil) olmalı; eleştiri özel, övgü herkesin önünde verilir (sandwich tekniği)." },
-      { id: 2, sectionRef: "Geri Bildirim Alma", category: MAK, question: "Geri bildirim alırken doğru tutum nedir?", options: ["Savunmaya geçme; dinle, anla, açıklama iste ve teşekkür et", "Hemen itiraz et", "Görmezden gel", "Tartış"], correctAnswer: 0, explanation: "Geri bildirim alırken savunmaya geçmeden dinle, anla, açıklama iste, teşekkür et ve geliştirme planı oluştur." },
+      { id: 1, sectionRef: "Etkili Geri Bildirim", category: MAK, question: "Etkili geri bildirim nasıl verilir?", options: ["Spesifik, zamanında ve davranışa odaklı", "Genel ifadelerle ve gecikmeli olarak", "Kişiliği doğrudan hedef alarak verilmekte", "Herkesin önünde eleştirerek verilir"], correctAnswer: 0, explanation: "Geri bildirim spesifik, zamanında, davranışa odaklı (kişiliğe değil) olmalı; eleştiri özel, övgü herkesin önünde verilir (sandwich tekniği)." },
+      { id: 2, sectionRef: "Geri Bildirim Alma", category: MAK, question: "Geri bildirim alırken doğru tutum nedir?", options: ["Savunmaya geçme; dinle ve teşekkür et", "Anında ve sert biçimde itiraz etmek", "Söylenenleri görmezden gelip geçmek", "Uzun uzun tartışmaya girişmektir"], correctAnswer: 0, explanation: "Geri bildirim alırken savunmaya geçmeden dinle, anla, açıklama iste, teşekkür et ve geliştirme planı oluştur." },
     ],
   },
   {
@@ -5684,8 +5664,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Makine dairesi yangın kaza örnekleri",
     blocks: [{ sectionTitles: ["Tipik Senaryo: Yakıt Sızıntısı Yangını", "Çıkarılan Dersler"] }],
     questions: [
-      { id: 1, sectionRef: "Tipik Senaryo: Yakıt Sızıntısı Yangını", category: MAK, question: "Yakıt sızıntısı yangını tipik olarak nasıl başlar?", options: ["HFO sıcak egzoz manifoldu/turboşarj yüzeyine sıçrayıp anlık tutuşur", "Elektrik kesilince", "Su girince", "Soğuk havada"], correctAnswer: 0, explanation: "Yüksek basınçlı yakıt borusu çatlağı/gevşek enjektör bağlantısından HFO sıcak yüzeye (egzoz/turbo) sıçrar; ateşleme sıcaklığı ~250°C üzerinde olduğundan anlık tutuşur." },
-      { id: 2, sectionRef: "Çıkarılan Dersler", category: MAK, question: "Bu yangından çıkarılan temel ders nedir?", options: ["Yakıt boruları termal kalkan (lagging) ile kaplanmalı ve bağlantı sıkılığı kontrol edilmeli", "Hiçbir önlem", "Daha fazla yakıt", "Yalıtımı çıkarmak"], correctAnswer: 0, explanation: "Yakıt boruları lagging ile kaplanmalı, bağlantılar periyodik sıkılık kontrolüne tabi tutulmalı; QCV testleri ve yangın tatbikatları düzenli yapılmalıdır." },
+      { id: 1, sectionRef: "Tipik Senaryo: Yakıt Sızıntısı Yangını", category: MAK, question: "Yakıt sızıntısı yangını tipik olarak nasıl başlar?", options: ["HFO sıcak yüzeye sıçrayıp tutuşur", "Elektrik kesildiğinde başlamaktadır", "Mahale su girdiğinde başlamakta", "Soğuk havalarda başlamaktadır"], correctAnswer: 0, explanation: "Yüksek basınçlı yakıt borusu çatlağı/gevşek enjektör bağlantısından HFO sıcak yüzeye (egzoz/turbo) sıçrar; ateşleme sıcaklığı ~250°C üzerinde olduğundan anlık tutuşur." },
+      { id: 2, sectionRef: "Çıkarılan Dersler", category: MAK, question: "Bu yangından çıkarılan temel ders nedir?", options: ["Yakıt borusu lagging ve sıkılık", "Hiçbir ek önlem alınmamalıdır", "Daha fazla yakıt taşınmalıdır", "Boru yalıtımı sökülüp çıkarılmalı"], correctAnswer: 0, explanation: "Yakıt boruları lagging ile kaplanmalı, bağlantılar periyodik sıkılık kontrolüne tabi tutulmalı; QCV testleri ve yangın tatbikatları düzenli yapılmalıdır." },
     ],
   },
   {
@@ -5693,8 +5673,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Blackout senaryoları ve kök nedenler",
     blocks: [{ sectionTitles: ["Tipik Senaryo", "Kök Neden Analizi"] }],
     questions: [
-      { id: 1, sectionRef: "Tipik Senaryo", category: MAK, question: "Tek jeneratörle bow thruster devreye alınması neye yol açar?", options: ["Aşırı yük → jeneratör trip → blackout (preferential trip yetersizse)", "Yakıt tasarrufu", "Hiçbir şey", "Daha iyi performans"], correctAnswer: 0, explanation: "Tek jeneratör çalışırken büyük motor (bow thruster) devreye alınması aşırı yük yaratır; preferential trip yetersizse jeneratör trip eder ve blackout olur." },
-      { id: 2, sectionRef: "Kök Neden Analizi", category: MAK, question: "5-Why analizinde blackout'un kök nedeni nedir?", options: ["Köprüüstü-makine iletişim kopukluğu (yedek jeneratör hazırlanmamış)", "Jeneratör eski", "Yakıt kötü", "Şans"], correctAnswer: 0, explanation: "5-Why: blackout → trip → aşırı yük → bow thruster → yedek jeneratör çalıştırılmamış → iletişim kopukluğu. Teknik (yedek hazır değil), organizasyonel (önceden bildirilmemiş) ve insan faktörü (farkındalık kaybı) birleşir." },
+      { id: 1, sectionRef: "Tipik Senaryo", category: MAK, question: "Tek jeneratörle bow thruster devreye alınması neye yol açar?", options: ["Aşırı yük → jeneratör trip → blackout", "Sefer yakıt tüketiminde tasarruf", "Sistem üzerinde hiçbir etki olmaz", "Belirgin biçimde daha iyi bir performans"], correctAnswer: 0, explanation: "Tek jeneratör çalışırken büyük motor (bow thruster) devreye alınması aşırı yük yaratır; preferential trip yetersizse jeneratör trip eder ve blackout olur." },
+      { id: 2, sectionRef: "Kök Neden Analizi", category: MAK, question: "5-Why analizinde blackout'un kök nedeni nedir?", options: ["Köprü-makine iletişim kopukluğu", "Jeneratörün eski ve yıpranmış olması", "Kullanılan yakıtın kalitesiz olması", "Yalnızca kötü şans eseri oluşması"], correctAnswer: 0, explanation: "5-Why: blackout → trip → aşırı yük → bow thruster → yedek jeneratör çalıştırılmamış → iletişim kopukluğu. Teknik (yedek hazır değil), organizasyonel (önceden bildirilmemiş) ve insan faktörü (farkındalık kaybı) birleşir." },
     ],
   },
   {
@@ -5702,8 +5682,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Kapalı alan kazaları",
     blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
     questions: [
-      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Kapalı alan kazasında ikinci yaralanma neden oluştu?", options: ["İkinci personel donanımsız kurtarma refleksiyle tanka girdi", "Yangın çıktı", "Su bastı", "Elektrik çarptı"], correctAnswer: 0, explanation: "Atmosfer ölçümü sadece kapak ağzında yapıldı (alt/orta test edilmedi); ilk personel baş dönmesi yaşadı, ikinci personel donanımsız kurtarma refleksiyle girince çift yaralanmalı near-miss oluştu." },
-      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Kapalı alan girişinde atmosfer testi nasıl yapılmalıdır?", options: ["O₂, H₂S, CO ve LEL üst-orta-alt seviyede ve giriş boyunca periyodik", "Sadece kapak ağzında bir kez", "Hiç ölçülmeden", "Sadece giriş sonrası"], correctAnswer: 0, explanation: "Ölçüm üst-orta-alt seviyede ve giriş boyunca periyodik yapılmalı; standby personel aktif güvenlik bariyeridir, izinsiz ikinci giriş yasaktır ve kurtarma yalnız eğitimli ekipçe yapılır." },
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Kapalı alan kazasında ikinci yaralanma neden oluştu?", options: ["İkinci kişi donanımsız olarak girdi", "Mahalde yangın çıkıp yayılmıştı", "Mahali deniz suyu basmış durumdaydı", "Kaçak akım personeli çarpmıştı"], correctAnswer: 0, explanation: "Atmosfer ölçümü sadece kapak ağzında yapıldı (alt/orta test edilmedi); ilk personel baş dönmesi yaşadı, ikinci personel donanımsız kurtarma refleksiyle girince çift yaralanmalı near-miss oluştu." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Kapalı alan girişinde atmosfer testi nasıl yapılmalıdır?", options: ["O₂, H₂S, CO ve LEL; her seviyede", "Yalnızca kapak ağzında bir kez", "Hiç ölçüm yapılmadan doğrudan", "Yalnızca girişten sonra yalnız bir kez"], correctAnswer: 0, explanation: "Ölçüm üst-orta-alt seviyede ve giriş boyunca periyodik yapılmalı; standby personel aktif güvenlik bariyeridir, izinsiz ikinci giriş yasaktır ve kurtarma yalnız eğitimli ekipçe yapılır." },
     ],
   },
   {
@@ -5711,8 +5691,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "İletişim kopukluğuna bağlı olaylar",
     blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
     questions: [
-      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada 'stand by engine' komutu nasıl yanlış yorumlandı?", options: ["Makine dairesi bunu 'dead slow ahead'a geçiş hazırlığı sandı; şaft devri erken yükseldi", "Komut anlaşıldı", "Ekipman arızalandı", "Yakıt bitti"], correctAnswer: 0, explanation: "Komut tekrar edilmediği için makine dairesi 'stand by engine'i yanlış yorumladı, şaft devri erken yükseldi ve palamar operasyonunda risk oluştu (ekipman arızası yok)." },
-      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Manevra evresinde iletişim için ne zorunlu tutulmalıdır?", options: ["Standart marine communication phrases ve 'komut-tekrar-onay' döngüsü", "Yerel/alışkanlık ifadeleri", "Sessizlik", "Yazılı not yeterli"], correctAnswer: 0, explanation: "Manevrada yalnız standart denizcilik ifadeleri kullanılmalı; her komut 'komut-tekrar-onay' tamamlanmadan uygulanmamalı, manevra öncesi ortak komut seti brifingi yapılmalıdır." },
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada 'stand by engine' komutu nasıl yanlış yorumlandı?", options: ["Makine dairesi geçiş hazırlığı sandı", "Komut eksiksiz bir biçimde anlaşılmıştı", "Kullanılan ekipman arızalanmıştı", "Servis tankındaki yakıt bitmişti"], correctAnswer: 0, explanation: "Komut tekrar edilmediği için makine dairesi 'stand by engine'i yanlış yorumladı, şaft devri erken yükseldi ve palamar operasyonunda risk oluştu (ekipman arızası yok)." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Manevra evresinde iletişim için ne zorunlu tutulmalıdır?", options: ["Standart SMCP ve komut-tekrar-onay", "Yerel ve alışkanlık ifadeleri kullanarak", "Manevra boyunca tam sessizlik ile", "Yalnızca yazılı not bırakılması"], correctAnswer: 0, explanation: "Manevrada yalnız standart denizcilik ifadeleri kullanılmalı; her komut 'komut-tekrar-onay' tamamlanmadan uygulanmamalı, manevra öncesi ortak komut seti brifingi yapılmalıdır." },
     ],
   },
   {
@@ -5720,8 +5700,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Derslerin operasyona yansıtılması",
     blocks: [{ sectionTitles: ["Ders Çıkarma Süreci", "Güvenlik Bülteni"] }],
     questions: [
-      { id: 1, sectionRef: "Ders Çıkarma Süreci", category: MAK, question: "Olaydan ders çıkarma sürecinde kök neden tespitinden sonra ne yapılır?", options: ["Düzeltici aksiyonlar (CAPA) belirlenir ve prosedür (SMS) güncellenir", "Dosya kapatılır", "Hiçbir şey", "Sadece ceza verilir"], correctAnswer: 0, explanation: "Süreç: olay analizi/kök neden → düzeltici aksiyon (CAPA) → prosedür (SMS) güncelleme → eğitim → filoya yayma → takip ve doğrulama." },
-      { id: 2, sectionRef: "Güvenlik Bülteni", category: MAK, question: "Çıkarılan dersler filoya nasıl yayılır?", options: ["Şirket DPA'sı güvenlik bülteni olarak tüm filoya dağıtır", "Gizli tutulur", "Sadece o gemide kalır", "Hiç paylaşılmaz"], correctAnswer: 0, explanation: "Şirket DPA'sı dersleri güvenlik bülteni olarak tüm filoya dağıtır; IMO de MSC/Circ. serisiyle sektörel ders paylaşımı yapar." },
+      { id: 1, sectionRef: "Ders Çıkarma Süreci", category: MAK, question: "Olaydan ders çıkarma sürecinde kök neden tespitinden sonra ne yapılır?", options: ["Düzeltici aksiyon ve SMS güncelleme", "Dosya doğrudan kapatılıp arşivlenir", "Hiçbir işlem gerçekleştirilmemekte", "Yalnızca sorumluya ceza verilmekte"], correctAnswer: 0, explanation: "Süreç: olay analizi/kök neden → düzeltici aksiyon (CAPA) → prosedür (SMS) güncelleme → eğitim → filoya yayma → takip ve doğrulama." },
+      { id: 2, sectionRef: "Güvenlik Bülteni", category: MAK, question: "Çıkarılan dersler filoya nasıl yayılır?", options: ["DPA güvenlik bülteni olarak dağıtır", "Bilgi gizli tutulup paylaşılmaz", "Yalnızca o gemide kalmaktadır", "Hiçbir biçimde paylaşılmamakta"], correctAnswer: 0, explanation: "Şirket DPA'sı dersleri güvenlik bülteni olarak tüm filoya dağıtır; IMO de MSC/Circ. serisiyle sektörel ders paylaşımı yapar." },
     ],
   },
   {
@@ -5729,8 +5709,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "IMO GHG stratejisi ve hedefler",
     blocks: [{ sectionTitles: ["Hedefler"] }],
     questions: [
-      { id: 1, sectionRef: "Hedefler", category: MAK, question: "2023 IMO GHG stratejisinin uzun vadeli hedefi nedir?", options: ["2050'ye kadar net sıfır emisyon", "2030'da sıfır emisyon", "Hiçbir hedef yok", "Emisyonu artırmak"], correctAnswer: 0, explanation: "2023 stratejisi 2008'e göre 2030'a kadar GHG'de en az %20 (hedef %30) azalma ve 2050'ye kadar net sıfır emisyon hedefler." },
-      { id: 2, sectionRef: "Hedefler", category: MAK, question: "Strateji nasıl bir yaklaşım izler?", options: ["Kısa (EEXI/CII), orta (karbon vergi/alt. yakıt) ve uzun vadeli (sıfır karbon yakıt) tedbirler", "Sadece tek bir tedbir", "Hiçbir tedbir", "Sadece hız sınırı"], correctAnswer: 0, explanation: "Kısa vadeli (EEXI, CII), orta vadeli (karbon vergilendirme, alternatif yakıtlar) ve uzun vadeli (sıfır karbonlu yakıtlar) aşamalı yaklaşım izlenir." },
+      { id: 1, sectionRef: "Hedefler", category: MAK, question: "2023 IMO GHG stratejisinin uzun vadeli hedefi nedir?", options: ["2050'ye kadar net sıfır emisyon", "2030'a kadar net sıfır emisyon", "Belirlenmiş hiçbir hedef yoktur", "Emisyonu artırmayı hedeflemekte"], correctAnswer: 0, explanation: "2023 stratejisi 2008'e göre 2030'a kadar GHG'de en az %20 (hedef %30) azalma ve 2050'ye kadar net sıfır emisyon hedefler." },
+      { id: 2, sectionRef: "Hedefler", category: MAK, question: "Strateji nasıl bir yaklaşım izler?", options: ["Kısa, orta ve uzun vadeli tedbirler", "Yalnızca tek bir tedbir uygulanır", "Hiçbir tedbir öngörülmemektedir", "Yalnızca hız sınırı getirilmekte"], correctAnswer: 0, explanation: "Kısa vadeli (EEXI, CII), orta vadeli (karbon vergilendirme, alternatif yakıtlar) ve uzun vadeli (sıfır karbonlu yakıtlar) aşamalı yaklaşım izlenir." },
     ],
   },
   {
@@ -5738,8 +5718,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "EEDI (Enerji Verimliliği Tasarım İndeksi)",
     blocks: [{ sectionTitles: ["EEDI Formülü", "Faz Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "EEDI Formülü", category: MAK, question: "EEDI temel olarak neyi ölçer?", options: ["Taşıma işi başına CO₂ emisyonu (g CO₂/ton·mil)", "Yakıt fiyatını", "Hızı", "Mürettebat sayısını"], correctAnswer: 0, explanation: "EEDI = (P × SFC × CF)/(DWT × Vref) [g CO₂/ton·mil]; yeni gemilerin tasarım enerji verimliliğini ölçer." },
-      { id: 2, sectionRef: "Faz Gereklilikleri", category: MAK, question: "EEDI Faz 3 (2025) indirim oranı nedir?", options: ["%30-50 (gemi tipine göre)", "%0", "%5", "%100"], correctAnswer: 0, explanation: "Faz 0 (2013) referans, Faz 1 (2015) %10, Faz 2 (2020) %20, Faz 3 (2025) %30-50 indirim gerektirir." },
+      { id: 1, sectionRef: "EEDI Formülü", category: MAK, question: "EEDI temel olarak neyi ölçer?", options: ["Taşıma işi başına CO₂ (g/ton·mil)", "Kullanılan yakıtın güncel piyasa fiyatı", "Geminin ulaştığı servis hızı", "Gemideki mürettebat sayısı"], correctAnswer: 0, explanation: "EEDI = (P × SFC × CF)/(DWT × Vref) [g CO₂/ton·mil]; yeni gemilerin tasarım enerji verimliliğini ölçer." },
+      { id: 2, sectionRef: "Faz Gereklilikleri", category: MAK, question: "EEDI Faz 3 (2025) indirim oranı nedir?", options: ["%30-50 (gemi tipine göre değişir)", "%0 (hiçbir indirim istenmemektedir)", "%5 (çok küçük oranlı indirim)", "%100 (tam sıfır emisyon değeri)"], correctAnswer: 0, explanation: "Faz 0 (2013) referans, Faz 1 (2015) %10, Faz 2 (2020) %20, Faz 3 (2025) %30-50 indirim gerektirir." },
     ],
   },
   {
@@ -5747,8 +5727,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)",
     blocks: [{ sectionTitles: ["EEXI Hesaplaması", "Uyum Yöntemleri"] }],
     questions: [
-      { id: 1, sectionRef: "EEXI Hesaplaması", category: MAK, question: "EEXI ile EEDI arasındaki temel fark nedir?", options: ["EEXI mevcut geminin gerçek motor gücü/performans verilerini kullanır", "EEXI yeni gemiler içindir", "İkisi de aynıdır", "EEXI yakıt fiyatını ölçer"], correctAnswer: 0, explanation: "EEXI hesaplaması EEDI formülüne benzer ama mevcut geminin gerçek motor gücü ve performans verilerini kullanır; değer referans çizgisinin altında olmalıdır." },
-      { id: 2, sectionRef: "Uyum Yöntemleri", category: MAK, question: "EEXI uyumu için en düşük maliyetli yöntem hangisidir?", options: ["Engine Power Limitation (EPL) / ShaPoLi", "LNG'ye dönüşüm", "WHRS kurulumu", "Yeni gemi almak"], correctAnswer: 0, explanation: "EPL (motor gücü sınırlama) ve ShaPoLi (şaft gücü sınırlama) düşük maliyetli uyum yöntemleridir; WHRS ve LNG dönüşümü daha pahalıdır." },
+      { id: 1, sectionRef: "EEXI Hesaplaması", category: MAK, question: "EEXI ile EEDI arasındaki temel fark nedir?", options: ["EEXI mevcut geminin gerçek verisini", "EEXI yalnızca yeni gemiler için geçerlidir", "İkisi tümüyle aynı göstergedir", "EEXI yakıt fiyatını ölçmektedir"], correctAnswer: 0, explanation: "EEXI hesaplaması EEDI formülüne benzer ama mevcut geminin gerçek motor gücü ve performans verilerini kullanır; değer referans çizgisinin altında olmalıdır." },
+      { id: 2, sectionRef: "Uyum Yöntemleri", category: MAK, question: "EEXI uyumu için en düşük maliyetli yöntem hangisidir?", options: ["Engine Power Limitation (EPL/ShaPoLi)", "LNG yakıtına tam dönüşüm yapılması", "WHRS sistemi kurulumu yapılması", "Yeni bir gemi satın alınıp değişimi"], correctAnswer: 0, explanation: "EPL (motor gücü sınırlama) ve ShaPoLi (şaft gücü sınırlama) düşük maliyetli uyum yöntemleridir; WHRS ve LNG dönüşümü daha pahalıdır." },
     ],
   },
   {
@@ -5756,8 +5736,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "CII derecelendirme sistemi (A–E)",
     blocks: [{ sectionTitles: ["Derecelendirme"] }],
     questions: [
-      { id: 1, sectionRef: "Derecelendirme", category: MAK, question: "CII referans çizgisi her yıl nasıl değişir?", options: ["Yaklaşık %2 düşürülür (her yıl daha sıkı gereksinim)", "%50 yükseltilir", "Sabit kalır", "Kaldırılır"], correctAnswer: 0, explanation: "Her gemi tipi için referans çizgisi yıllık ~%2 düşürülür, bu da her yıl daha sıkı gereksinim demektir." },
-      { id: 2, sectionRef: "Derecelendirme", category: MAK, question: "CII'de D derecesi 3 yıl üst üste alınırsa ne olur?", options: ["Düzeltici eylem planı gerekir", "Teşvik alır", "Hiçbir şey", "Gemi sökülür"], correctAnswer: 0, explanation: "A/B teşvik, C minimum kabul; D 3 yıl üst üste veya E hemen düzeltici eylem planı gerektirir." },
+      { id: 1, sectionRef: "Derecelendirme", category: MAK, question: "CII referans çizgisi her yıl nasıl değişir?", options: ["Her yıl yaklaşık %2 düşürülmektedir", "Her yıl %50 oranında yükseltilir", "Her koşulda sabit kalmaktadır", "Bir süre sonra tümüyle kaldırılır"], correctAnswer: 0, explanation: "Her gemi tipi için referans çizgisi yıllık ~%2 düşürülür, bu da her yıl daha sıkı gereksinim demektir." },
+      { id: 2, sectionRef: "Derecelendirme", category: MAK, question: "CII'de D derecesi 3 yıl üst üste alınırsa ne olur?", options: ["Düzeltici eylem planı gerekmektedir", "Teşvik ve prim almaya hak kazanır", "Hiçbir işlem gerekmemektedir", "Gemi sökülmeye gönderilmektedir"], correctAnswer: 0, explanation: "A/B teşvik, C minimum kabul; D 3 yıl üst üste veya E hemen düzeltici eylem planı gerektirir." },
     ],
   },
   {
@@ -5765,8 +5745,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)",
     blocks: [{ sectionTitles: ["SEEMP Yapısı"] }],
     questions: [
-      { id: 1, sectionRef: "SEEMP Yapısı", category: MAK, question: "SEEMP Part II neyi kapsar?", options: ["IMO DCS yakıt tüketimi veri toplama ve raporlama planı (5000+ GT)", "Hız optimizasyonu", "Mürettebat planı", "Yangın planı"], correctAnswer: 0, explanation: "Part I enerji verimliliği tedbirleri (≥400 GT), Part II IMO DCS veri toplama (5000+ GT), Part III CII uygulama planıdır (5000+ GT)." },
-      { id: 2, sectionRef: "SEEMP Yapısı", category: MAK, question: "SEEMP Part III hangi gemiler için zorunlu düzeltici eylem planı gerektirir?", options: ["3 yıl üst üste D veya 1 yıl E derecesi alan gemiler", "Tüm gemiler", "Sadece A derecesi", "Hiçbiri"], correctAnswer: 0, explanation: "Part III (MEPC.346(78)) CII uygulama planıdır; 3 yıl üst üste D veya 1 yıl E alan gemiler için düzeltici eylem planı zorunludur." },
+      { id: 1, sectionRef: "SEEMP Yapısı", category: MAK, question: "SEEMP Part II neyi kapsar?", options: ["IMO DCS veri toplama planı (5000+ GT)", "Sefer hızı optimizasyonu planı belgesi", "Mürettebat çalışma planı belgesi", "Yangın müdahale planı belgesidir"], correctAnswer: 0, explanation: "Part I enerji verimliliği tedbirleri (≥400 GT), Part II IMO DCS veri toplama (5000+ GT), Part III CII uygulama planıdır (5000+ GT)." },
+      { id: 2, sectionRef: "SEEMP Yapısı", category: MAK, question: "SEEMP Part III hangi gemiler için zorunlu düzeltici eylem planı gerektirir?", options: ["3 yıl üst üste D veya 1 yıl E alanlar", "Bütün gemiler için zorunlu olmakta", "Yalnızca A derecesi alan gemiler", "Hiçbir gemi için gerekmemektedir"], correctAnswer: 0, explanation: "Part III (MEPC.346(78)) CII uygulama planıdır; 3 yıl üst üste D veya 1 yıl E alan gemiler için düzeltici eylem planı zorunludur." },
     ],
   },
   {
@@ -5774,8 +5754,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Trim optimizasyonu",
     blocks: [{ sectionTitles: ["Trim Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "Trim Etkisi", category: MAK, question: "Yanlış trim yakıt tüketimini ne kadar artırabilir?", options: ["%2-5", "%0.01", "%50", "Hiç etkilemez"], correctAnswer: 0, explanation: "Optimum trim genellikle hafif kıç trimidir (0.5-1.5 m); yanlış trim %2-5 yakıt artışına neden olabilir." },
-      { id: 2, sectionRef: "Trim Etkisi", category: MAK, question: "Optimum trim nasıl belirlenir?", options: ["Model deneyleri veya CFD analizleriyle hazırlanan trim tabloları", "Tahminle", "Sabit değer kullanarak", "Rastgele"], correctAnswer: 0, explanation: "Optimum trim yükleme durumu, hız ve deniz koşuluna göre değişir; model deneyleri/CFD ile belirlenen trim tabloları kullanılır." },
+      { id: 1, sectionRef: "Trim Etkisi", category: MAK, question: "Yanlış trim yakıt tüketimini ne kadar artırabilir?", options: ["%2-5 oranında artırabilmektedir", "%0,01 oranında artırabilmekte", "Yaklaşık %50 oranında artırabilmektedir", "Tüketimi hiç etkilememektedir"], correctAnswer: 0, explanation: "Optimum trim genellikle hafif kıç trimidir (0.5-1.5 m); yanlış trim %2-5 yakıt artışına neden olabilir." },
+      { id: 2, sectionRef: "Trim Etkisi", category: MAK, question: "Optimum trim nasıl belirlenir?", options: ["Model deneyi veya CFD trim tablosu", "Deneyime dayalı tahmin yoluyla", "Sabit tek bir değer kullanarak", "Rastgele bir değer seçilerek"], correctAnswer: 0, explanation: "Optimum trim yükleme durumu, hız ve deniz koşuluna göre değişir; model deneyleri/CFD ile belirlenen trim tabloları kullanılır." },
     ],
   },
   {
@@ -5783,8 +5763,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Rota optimizasyonu (weather routing)",
     blocks: [{ sectionTitles: ["Prensip", "Tasarruf Potansiyeli"] }],
     questions: [
-      { id: 1, sectionRef: "Prensip", category: MAK, question: "En kısa mesafe (great circle) neden her zaman en ekonomik değildir?", options: ["Şiddetli rüzgâr, dalga ve akıntılar hız kaybı/yakıt artışı yapar", "Mesafe yanlış ölçülür", "Pusula bozulur", "Her zaman en ekonomiktir"], correctAnswer: 0, explanation: "Great circle en kısa olsa da şiddetli rüzgâr/dalga/akıntı hız kaybı ve yakıt artışı yapar; weather routing minimum yakıt/süre rotasını hesaplar." },
-      { id: 2, sectionRef: "Tasarruf Potansiyeli", category: MAK, question: "Weather routing tipik yakıt tasarrufu nedir?", options: ["%2-5 (bazı koşullarda %10'a kadar)", "%50", "%0", "%80"], correctAnswer: 0, explanation: "Tipik tasarruf %2-5, bazı koşullarda %10'a kadardır; kötü havadan kaçınma yük/gemi hasarını da önler." },
+      { id: 1, sectionRef: "Prensip", category: MAK, question: "En kısa mesafe (great circle) neden her zaman en ekonomik değildir?", options: ["Rüzgâr, dalga ve akıntı hız kaybı", "Mesafe yanlış ölçüldüğü için değişir", "Manyetik pusula bozulduğu için", "Aslında her zaman en ekonomiktir"], correctAnswer: 0, explanation: "Great circle en kısa olsa da şiddetli rüzgâr/dalga/akıntı hız kaybı ve yakıt artışı yapar; weather routing minimum yakıt/süre rotasını hesaplar." },
+      { id: 2, sectionRef: "Tasarruf Potansiyeli", category: MAK, question: "Weather routing tipik yakıt tasarrufu nedir?", options: ["%2-5 (kimi koşulda %10'a kadar)", "Yaklaşık %50 oranında tasarruf sağlanır", "Hiçbir tasarruf sağlanmamakta", "%80 oranında tasarruf sağlanır"], correctAnswer: 0, explanation: "Tipik tasarruf %2-5, bazı koşullarda %10'a kadardır; kötü havadan kaçınma yük/gemi hasarını da önler." },
     ],
   },
   {
@@ -5793,7 +5773,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Fouling Etkileri", "Önleme ve Temizlik"] }],
     questions: [
       { id: 1, sectionRef: "Fouling Etkileri", category: MAK, question: "Makro fouling (yosun, midye) direnci ne kadar artırabilir?", options: ["%10-40", "%1-2", "%0.1", "Azaltır"], correctAnswer: 0, explanation: "Mikro fouling (slime) %1-5, makro fouling (yosun/midye/deniz lalesi) %10-40 direnç artışı yapar; SFOC artışı ve hız düşüşüyle görülür." },
-      { id: 2, sectionRef: "Önleme ve Temizlik", category: MAK, question: "Tam tekne temizliği ve boya yenileme ne sıklıkla yapılır?", options: ["Kuru havuzda, genellikle 5 yılda bir", "Her gün", "10 yılda bir", "Hiç"], correctAnswer: 0, explanation: "Antifouling boya (SPC/silikon foul-release) yapışmayı önler; su altı temizliği periyodik, tam temizlik+boya yenileme kuru havuzda genellikle 5 yılda bir yapılır." },
+      { id: 2, sectionRef: "Önleme ve Temizlik", category: MAK, question: "Tam tekne temizliği ve boya yenileme ne sıklıkla yapılır?", options: ["Kuru havuzda, genellikle 5 yılda bir", "Her gün düzenli biçimde yapılır", "Genellikle 10 yılda bir yapılır", "Hiçbir zaman yapılması gerekmez"], correctAnswer: 0, explanation: "Antifouling boya (SPC/silikon foul-release) yapışmayı önler; su altı temizliği periyodik, tam temizlik+boya yenileme kuru havuzda genellikle 5 yılda bir yapılır." },
     ],
   },
   {
@@ -5801,8 +5781,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pervane parlatma ve kavitasyon kontrolü",
     blocks: [{ sectionTitles: ["Pervane Parlatma", "Kavitasyon"] }],
     questions: [
-      { id: 1, sectionRef: "Pervane Parlatma", category: MAK, question: "Pürüzlü pervane ne kadar fazla yakıt tüketir?", options: ["%3-5", "%50", "%0.01", "Daha az tüketir"], correctAnswer: 0, explanation: "Deniz canlıları/korozyon pervane pürüzlülüğünü artırır; pürüzlü pervane %3-5 fazla yakıt tüketir. Dalgıç sualtında 6-12 ayda bir parlatır." },
-      { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl kontrol edilir?", options: ["Uygun pervane tasarımı, doğru hatve (CPP), temiz gövde ve uygun trim", "Hızı artırarak", "Yakıt değiştirerek", "Kontrol edilemez"], correctAnswer: 0, explanation: "Lokal basınç düşüşü kabarcık oluşturur, çökünce erozyon yapar; kontrol uygun tasarım, doğru hatve, temiz gövde ve uygun trim ile sağlanır." },
+      { id: 1, sectionRef: "Pervane Parlatma", category: MAK, question: "Pürüzlü pervane ne kadar fazla yakıt tüketir?", options: ["%3-5 daha fazla yakıt tüketir", "%50 daha fazla yakıt tüketir", "%0,01 daha fazla yakıt tüketir", "Aslında daha az yakıt tüketir"], correctAnswer: 0, explanation: "Deniz canlıları/korozyon pervane pürüzlülüğünü artırır; pürüzlü pervane %3-5 fazla yakıt tüketir. Dalgıç sualtında 6-12 ayda bir parlatır." },
+      { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl kontrol edilir?", options: ["Doğru tasarım, hatve, temiz gövde", "Geminin seyir hızını artırarak", "Kullanılan yakıtı değiştirerek", "Hiçbir biçimde kontrol edilemez"], correctAnswer: 0, explanation: "Lokal basınç düşüşü kabarcık oluşturur, çökünce erozyon yapar; kontrol uygun tasarım, doğru hatve, temiz gövde ve uygun trim ile sağlanır." },
     ],
   },
   {
@@ -5810,8 +5790,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt tüketimi izleme ve raporlama",
     blocks: [{ sectionTitles: ["İzleme Yöntemleri", "Raporlama"] }],
     questions: [
-      { id: 1, sectionRef: "İzleme Yöntemleri", category: MAK, question: "En yüksek doğrulukta yakıt izleme yöntemi hangisidir?", options: ["Flowmetre (Coriolis/ultrasonik, %0.1-0.5)", "Tank sounding (%2-5)", "BDN bazlı tahmin", "Gözle"], correctAnswer: 0, explanation: "Flowmetre %0.1-0.5 doğruluk sağlar; tank sounding %2-5 hata payı taşır, BDN bazlı dönemsel hesaptır." },
-      { id: 2, sectionRef: "Raporlama", category: MAK, question: "Noon report neyi içerir?", options: ["Günlük seyir verisi (mesafe, hız, yakıt tüketimi, hava durumu)", "Sadece yakıt fiyatı", "Mürettebat menüsü", "Hiçbir şey"], correctAnswer: 0, explanation: "Noon report günlük mesafe/hız/yakıt/hava verisini şirkete raporlar; IMO DCS ve EU MRV kapsamında yıllık yakıt ve CO₂ raporlanır." },
+      { id: 1, sectionRef: "İzleme Yöntemleri", category: MAK, question: "En yüksek doğrulukta yakıt izleme yöntemi hangisidir?", options: ["Flowmetre (Coriolis, %0,1-0,5)", "Tank sounding ölçümü (%2-5)", "BDN kayıtlarına dayalı tahmin yöntemi", "Gözle yapılan yaklaşık tahmin"], correctAnswer: 0, explanation: "Flowmetre %0.1-0.5 doğruluk sağlar; tank sounding %2-5 hata payı taşır, BDN bazlı dönemsel hesaptır." },
+      { id: 2, sectionRef: "Raporlama", category: MAK, question: "Noon report neyi içerir?", options: ["Mesafe, hız, yakıt ve hava durumu", "Yalnızca güncel yakıt fiyatı", "Mürettebatın günlük yemek menüsü listesi", "Hiçbir bilgi içermemektedir"], correctAnswer: 0, explanation: "Noon report günlük mesafe/hız/yakıt/hava verisini şirkete raporlar; IMO DCS ve EU MRV kapsamında yıllık yakıt ve CO₂ raporlanır." },
     ],
   },
   {
@@ -5819,7 +5799,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Atık ısı geri kazanım (WHRS)",
     blocks: [{ sectionTitles: ["Sistem Konfigürasyonları", "Verim Artışı"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Konfigürasyonları", category: MAK, question: "En basit WHRS formu hangisidir?", options: ["Egzoz ekonomizeri (egzoz ısısıyla buhar üretimi)", "Kombine sistem", "Güç türbini yalnız", "Buhar türbini yalnız"], correctAnswer: 0, explanation: "Egzoz ekonomizeri en basit WHRS formudur; güç türbini, buhar türbini ve kombine sistem daha gelişmiş konfigürasyonlardır." },
+      { id: 1, sectionRef: "Sistem Konfigürasyonları", category: MAK, question: "En basit WHRS formu hangisidir?", options: ["Egzoz ekonomizeri (buhar üretimi)", "Kombine (COGAS) sistem düzeni", "Yalnızca güç türbini düzeneği", "Yalnızca buhar türbini düzeneği"], correctAnswer: 0, explanation: "Egzoz ekonomizeri en basit WHRS formudur; güç türbini, buhar türbini ve kombine sistem daha gelişmiş konfigürasyonlardır." },
       { id: 2, sectionRef: "Verim Artışı", category: MAK, question: "WHRS ile elektrik üretiminde ne kadar yakıt tasarrufu mümkündür?", options: ["%8-12", "%0.1", "%50", "Tasarruf yok"], correctAnswer: 0, explanation: "WHRS ile ana motor toplam verimi %50'den %55-60'a çıkar; elektrik üretiminde %8-12 yakıt tasarrufu mümkündür." },
     ],
   },
@@ -5828,8 +5808,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava yağlama (air lubrication) sistemi",
     blocks: [{ sectionTitles: ["Çalışma Prensibi", "Sistem Gereksinimleri"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Hava yağlama sistemi sürtünmeyi nasıl azaltır?", options: ["Gövde altında mikro kabarcık tabakası oluşturarak (%5-10 azaltma)", "Gövdeyi ısıtarak", "Hızı düşürerek", "Su ekleyerek"], correctAnswer: 0, explanation: "Gövde altı dağıtıcılardan düşük basınçlı hava verilir; mikro kabarcık tabakası düşük sürtünmeli arayüz oluşturur (%5-10 azaltma), düz tabanlı gemilerde en etkilidir." },
-      { id: 2, sectionRef: "Sistem Gereksinimleri", category: MAK, question: "Hava yağlama net tasarrufu hesaplanırken ne dikkate alınmalıdır?", options: ["Kompresör enerji tüketimi net tasarruftan düşülmelidir", "Sadece hız", "Sadece yakıt fiyatı", "Hiçbir şey"], correctAnswer: 0, explanation: "Kompresör kapasitesi, dağıtım boruları ve kontrol sistemi gerekir; kompresörün enerji tüketimi net tasarruftan düşülmelidir." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Hava yağlama sistemi sürtünmeyi nasıl azaltır?", options: ["Gövde altında mikro kabarcık tabakası", "Gövdenin yüzeyini ısıtmak yoluyla", "Geminin seyir hızını düşürmekle", "Devreye tatlı su eklemek yoluyla"], correctAnswer: 0, explanation: "Gövde altı dağıtıcılardan düşük basınçlı hava verilir; mikro kabarcık tabakası düşük sürtünmeli arayüz oluşturur (%5-10 azaltma), düz tabanlı gemilerde en etkilidir." },
+      { id: 2, sectionRef: "Sistem Gereksinimleri", category: MAK, question: "Hava yağlama net tasarrufu hesaplanırken ne dikkate alınmalıdır?", options: ["Kompresör enerjisi tasarruftan düşülür", "Yalnızca geminin seyir hızı değeri", "Yalnızca güncel yakıt fiyatı değeri", "Hiçbir kalem dikkate alınmamakta"], correctAnswer: 0, explanation: "Kompresör kapasitesi, dağıtım boruları ve kontrol sistemi gerekir; kompresörün enerji tüketimi net tasarruftan düşülmelidir." },
     ],
   },
   {
@@ -5837,8 +5817,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Rüzgâr destekli itme (rotor sail, wing sail)",
     blocks: [{ sectionTitles: ["Rotor Sail (Flettner Rotoru)", "Wing Sail ve Kite"] }],
     questions: [
-      { id: 1, sectionRef: "Rotor Sail (Flettner Rotoru)", category: MAK, question: "Rotor sail (Flettner rotoru) itme kuvvetini nasıl üretir?", options: ["Magnus etkisiyle (dönen silindir rüzgâra dik kuvvet oluşturur)", "Yakıt yakarak", "Pervane ile", "Elektrikle"], correctAnswer: 0, explanation: "Dikey dönen silindir Magnus etkisiyle rüzgârdan itme üretir; tipik %5-20 yakıt tasarrufu sağlar (rota/rüzgâra bağlı)." },
-      { id: 2, sectionRef: "Wing Sail ve Kite", category: MAK, question: "Kite (uçurtma) sisteminin avantajı nedir?", options: ["Yüksek irtifadaki güçlü rüzgârı yakalar (%10-30 tasarruf)", "Motor gerektirir", "Güverte alanı kaplar çok", "Rüzgârsız çalışır"], correctAnswer: 0, explanation: "Kite pruvadan uçurulup yüksek irtifa rüzgârını yakalar (%10-30 tasarruf, operasyonel karmaşıklık); wing sail rijit kanat profillidir." },
+      { id: 1, sectionRef: "Rotor Sail (Flettner Rotoru)", category: MAK, question: "Rotor sail (Flettner rotoru) itme kuvvetini nasıl üretir?", options: ["Magnus etkisiyle (dönen silindir)", "Yakıt yakarak itme üretmesiyle", "Yardımcı bir pervane yardımıyla", "Bir elektrik motoru yardımıyla"], correctAnswer: 0, explanation: "Dikey dönen silindir Magnus etkisiyle rüzgârdan itme üretir; tipik %5-20 yakıt tasarrufu sağlar (rota/rüzgâra bağlı)." },
+      { id: 2, sectionRef: "Wing Sail ve Kite", category: MAK, question: "Kite (uçurtma) sisteminin avantajı nedir?", options: ["Yüksek irtifada güçlü rüzgârı yakalar", "Çalışması için motor gerektirmesi", "Güverte alanını çok kaplaması hâli", "Rüzgârsız havada da çalışabilmesi"], correctAnswer: 0, explanation: "Kite pruvadan uçurulup yüksek irtifa rüzgârını yakalar (%10-30 tasarruf, operasyonel karmaşıklık); wing sail rijit kanat profillidir." },
     ],
   },
   {
@@ -5846,8 +5826,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Değişken frekanslı tahrik (VFD) kullanımı",
     blocks: [{ sectionTitles: ["Tasarruf Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Tasarruf Prensibi", category: MAK, question: "Pompa/fan güç tüketimi hıza göre nasıl değişir?", options: ["Hızın küpüyle orantılı (P ∝ N³)", "Hızla doğru orantılı", "Hızdan bağımsız", "Hızın karekökü"], correctAnswer: 0, explanation: "P ∝ N³; pompa/fan gücü hızın küpüyle orantılıdır, bu yüzden VFD ile hız düşürmek büyük tasarruf sağlar." },
-      { id: 2, sectionRef: "Tasarruf Prensibi", category: MAK, question: "Hız %20 düşürülürse güç tüketimi ne kadar azalır?", options: ["Yaklaşık %49", "%20", "%5", "Değişmez"], correctAnswer: 0, explanation: "P₂/P₁ = (N₂/N₁)³; hız %20 düşünce (0.8³ = 0.512) güç ~%49 azalır." },
+      { id: 1, sectionRef: "Tasarruf Prensibi", category: MAK, question: "Pompa/fan güç tüketimi hıza göre nasıl değişir?", options: ["Hızın küpüyle orantılı (P ∝ N³)", "Hızla doğru orantılı (P ∝ N)", "Hız değerinden tümüyle bağımsız", "Hızın kareköküyle orantılıdır"], correctAnswer: 0, explanation: "P ∝ N³; pompa/fan gücü hızın küpüyle orantılıdır, bu yüzden VFD ile hız düşürmek büyük tasarruf sağlar." },
+      { id: 2, sectionRef: "Tasarruf Prensibi", category: MAK, question: "Hız %20 düşürülürse güç tüketimi ne kadar azalır?", options: ["Yaklaşık %49 oranında azalır", "Yaklaşık %20 oranında azalır", "Yaklaşık %5 oranında azalır", "Hiçbir biçimde değişmemekte"], correctAnswer: 0, explanation: "P₂/P₁ = (N₂/N₁)³; hız %20 düşünce (0.8³ = 0.512) güç ~%49 azalır." },
     ],
   },
   {
@@ -5856,7 +5836,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Enerji Tasarrufu", "Uygulama"] }],
     questions: [
       { id: 1, sectionRef: "Enerji Tasarrufu", category: MAK, question: "LED, akkor lambalara göre ne kadar az enerji tüketir?", options: ["%80-90", "%5", "%10", "Daha çok tüketir"], correctAnswer: 0, explanation: "LED floresana göre %40-60, akkora göre %80-90 daha az tüketir ve ömrü (50000+ saat) çok daha uzundur." },
-      { id: 2, sectionRef: "Uygulama", category: MAK, question: "Gemide hangi LED armatürler kullanılmalıdır?", options: ["Denizcilik sertifikalı (IP65/67, titreşim dayanımlı)", "Herhangi bir ev tipi", "Sadece akkor", "Sertifikasız ucuz"], correctAnswer: 0, explanation: "Yaşam alanı, makine dairesi, güverte ve seyir fenerleri LED'e dönüştürülebilir; denizcilik sertifikalı (IP65/67, titreşim dayanımlı) armatürler kullanılmalıdır." },
+      { id: 2, sectionRef: "Uygulama", category: MAK, question: "Gemide hangi LED armatürler kullanılmalıdır?", options: ["Denizcilik sertifikalı (IP65/67)", "Herhangi bir ev tipi armatür", "Yalnızca akkor telli armatür", "Sertifikasız ucuz armatürler"], correctAnswer: 0, explanation: "Yaşam alanı, makine dairesi, güverte ve seyir fenerleri LED'e dönüştürülebilir; denizcilik sertifikalı (IP65/67, titreşim dayanımlı) armatürler kullanılmalıdır." },
     ],
   },
   {
@@ -5865,7 +5845,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Cihaz Tipleri", "Seçim Kriterleri"] }],
     questions: [
       { id: 1, sectionRef: "Cihaz Tipleri", category: MAK, question: "Boss cap fin hangi prensiple tasarruf sağlar?", options: ["Hub vortex azaltma (%1-3)", "Akış yönlendirme stator", "Dönme enerjisi geri kazanım", "Kanal hızlandırma"], correctAnswer: 0, explanation: "Boss cap fin pervane göbeğinde hub vortex azaltır (%1-3); pre-swirl stator/duct akış yönlendirir (%3-7), contra-rotating/gate rudder dönme enerjisini geri kazanır (%5-8)." },
-      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pervane tasarruf cihazı seçimi neye göre yapılır?", options: ["Gemi tipi, pervane tasarımı, operasyon profili (CFD ile tahmin)", "Sadece renk", "Sadece fiyat", "Rastgele"], correctAnswer: 0, explanation: "Gemi tipi, pervane tasarımı, operasyon profili ve hız aralığı seçimi etkiler; performans CFD simülasyonuyla tahmin edilir." },
+      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pervane tasarruf cihazı seçimi neye göre yapılır?", options: ["Gemi tipi, pervane ve operasyon profili", "Yalnızca cihazın renk seçimine göre", "Yalnızca cihazın birim fiyatına göre", "Rastgele bir seçim yapılarak"], correctAnswer: 0, explanation: "Gemi tipi, pervane tasarımı, operasyon profili ve hız aralığı seçimi etkiler; performans CFD simülasyonuyla tahmin edilir." },
     ],
   },
   {
@@ -5873,8 +5853,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "IMO DCS (veri toplama sistemi)",
     blocks: [{ sectionTitles: ["Raporlanan Veriler", "Süreç"] }],
     questions: [
-      { id: 1, sectionRef: "Raporlanan Veriler", category: MAK, question: "IMO DCS kapsamında hangi veri raporlanır?", options: ["Yıllık yakıt tüketimi, kat edilen mesafe ve seyir saati", "Mürettebat maaşı", "Yolcu sayısı", "Liman ücretleri"], correctAnswer: 0, explanation: "IMO DCS; gemi tanımı, yıllık yakıt tüketimi (yakıt tipine göre), kat edilen mesafe, seyir saati ve DWT/GT kapasitesini raporlar." },
-      { id: 2, sectionRef: "Süreç", category: MAK, question: "DCS verileri nereye aktarılır?", options: ["Doğrulama sonrası IMO GISIS veritabanına (CII hesabında kullanılır)", "Sadece gemide kalır", "Sosyal medyaya", "Hiçbir yere"], correctAnswer: 0, explanation: "Gemi SEEMP Part II'ye göre veri toplar, yıl sonunda bayrak devleti/RO'ya sunar; doğrulama sonrası IMO GISIS'e aktarılır ve CII hesabında kullanılır." },
+      { id: 1, sectionRef: "Raporlanan Veriler", category: MAK, question: "IMO DCS kapsamında hangi veri raporlanır?", options: ["Yıllık yakıt, mesafe ve seyir saati", "Mürettebat maaş ve prim bilgisi", "Taşınan toplam yolcu sayısı", "Limanda ödenen hizmet ücretleri"], correctAnswer: 0, explanation: "IMO DCS; gemi tanımı, yıllık yakıt tüketimi (yakıt tipine göre), kat edilen mesafe, seyir saati ve DWT/GT kapasitesini raporlar." },
+      { id: 2, sectionRef: "Süreç", category: MAK, question: "DCS verileri nereye aktarılır?", options: ["Doğrulama sonrası IMO GISIS'e", "Yalnızca gemide saklanıp kalır", "Sosyal medya üzerinden yayınlanır", "Hiçbir yere aktarılmamaktadır"], correctAnswer: 0, explanation: "Gemi SEEMP Part II'ye göre veri toplar, yıl sonunda bayrak devleti/RO'ya sunar; doğrulama sonrası IMO GISIS'e aktarılır ve CII hesabında kullanılır." },
     ],
   },
   {
@@ -5882,8 +5862,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "EU MRV regülasyonu",
     blocks: [{ sectionTitles: ["Gereksinimler", "EU ETS ile İlişki"] }],
     questions: [
-      { id: 1, sectionRef: "Gereksinimler", category: MAK, question: "EU MRV emisyon raporu nasıl doğrulanır?", options: ["Akredite doğrulayıcı kuruluşça doğrulanıp THETIS-MRV'ye yüklenir", "Doğrulanmaz", "Sadece kaptan onaylar", "Sözlü beyan"], correctAnswer: 0, explanation: "AB limanlarına/limanlarından seferlerde yakıt ve CO₂ izlenir; yıllık rapor akredite doğrulayıcıca doğrulanıp THETIS-MRV sistemine yüklenir." },
-      { id: 2, sectionRef: "EU ETS ile İlişki", category: MAK, question: "MRV verilerinin EU ETS ile ilişkisi nedir?", options: ["MRV verileri ETS yükümlülüklerinin temelini oluşturur", "İlişkisizdir", "ETS'i iptal eder", "Sadece istatistik"], correctAnswer: 0, explanation: "2024'ten itibaren denizcilik EU ETS kapsamındadır; MRV verileri ETS yükümlülüklerinin temelini oluşturur (karbon ücreti 2024 %40, 2025 %70, 2026 %100)." },
+      { id: 1, sectionRef: "Gereksinimler", category: MAK, question: "EU MRV emisyon raporu nasıl doğrulanır?", options: ["Akredite doğrulayıcı; THETIS-MRV'ye", "Hiçbir biçimde doğrulanmamakta", "Yalnızca kaptan tarafından onaylanır", "Sözlü beyan ile doğrulanmaktadır"], correctAnswer: 0, explanation: "AB limanlarına/limanlarından seferlerde yakıt ve CO₂ izlenir; yıllık rapor akredite doğrulayıcıca doğrulanıp THETIS-MRV sistemine yüklenir." },
+      { id: 2, sectionRef: "EU ETS ile İlişki", category: MAK, question: "MRV verilerinin EU ETS ile ilişkisi nedir?", options: ["MRV verileri ETS'in temelini oluşturur", "Aralarında hiçbir ilişki yoktur", "MRV verileri ETS'i iptal etmekte", "Yalnızca istatistik amaçlı tutulur"], correctAnswer: 0, explanation: "2024'ten itibaren denizcilik EU ETS kapsamındadır; MRV verileri ETS yükümlülüklerinin temelini oluşturur (karbon ücreti 2024 %40, 2025 %70, 2026 %100)." },
     ],
   },
   {
@@ -5891,8 +5871,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "EU ETS (emisyon ticaret sistemi)",
     blocks: [{ sectionTitles: ["Uygulama", "Maliyet Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "Uygulama", category: MAK, question: "EU ETS hangi gemiler ve seferler için emisyon hakkı gerektirir?", options: ["5000+ GT; AB içi seferlerin %100'ü, AB-dışı seferlerin %50'si", "Tüm gemiler %100", "Hiçbiri", "Sadece tankerler"], correctAnswer: 0, explanation: "5000+ GT gemiler AB içi seferlerin %100'ü ve AB-dışı seferlerin %50'si için emisyon hakkı (allowance) satın alır; kademeli geçiş 2024 %40, 2025 %70, 2026 %100." },
-      { id: 2, sectionRef: "Maliyet Etkisi", category: MAK, question: "Karbon fiyatı yakıt maliyetine yaklaşık ne kadar ek yük getirir (HFO bazında)?", options: ["180-280 $/ton", "1 $/ton", "1000 $/ton", "Etki yok"], correctAnswer: 0, explanation: "2024 başı karbon fiyatı ~60-90 €/ton CO₂; bu HFO bazında ton başına ~180-280 $/ton ek yük getirir." },
+      { id: 1, sectionRef: "Uygulama", category: MAK, question: "EU ETS hangi gemiler ve seferler için emisyon hakkı gerektirir?", options: ["5000+ GT; AB içi %100, dışı %50", "Bütün gemiler için %100 kapsam", "Hiçbir gemi kapsama girmemekte", "Yalnızca tanker gemileri kapsamda"], correctAnswer: 0, explanation: "5000+ GT gemiler AB içi seferlerin %100'ü ve AB-dışı seferlerin %50'si için emisyon hakkı (allowance) satın alır; kademeli geçiş 2024 %40, 2025 %70, 2026 %100." },
+      { id: 2, sectionRef: "Maliyet Etkisi", category: MAK, question: "Karbon fiyatı yakıt maliyetine yaklaşık ne kadar ek yük getirir (HFO bazında)?", options: ["180-280 $/ton ek yük getirmekte", "1 $/ton ek yük getirmektedir", "1000 $/ton ek yük getirmekte", "Hiçbir ek yük getirmemektedir"], correctAnswer: 0, explanation: "2024 başı karbon fiyatı ~60-90 €/ton CO₂; bu HFO bazında ton başına ~180-280 $/ton ek yük getirir." },
     ],
   },
   {
@@ -5900,8 +5880,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yakıt tüketimi veri doğrulama",
     blocks: [{ sectionTitles: ["Doğrulama Yöntemleri", "Denetim"] }],
     questions: [
-      { id: 1, sectionRef: "Doğrulama Yöntemleri", category: MAK, question: "Kütle dengesi (mass balance) doğrulaması nasıl olmalıdır?", options: ["Alınan yakıt − ROB − tüketim = sıfır (tolerans dahilinde)", "Her zaman pozitif", "Önemsiz", "Sadece BDN yeterli"], correctAnswer: 0, explanation: "Doğrulama; BDN-tank karşılaştırması, flowmetre kalibrasyonu, kütle dengesi (alınan − ROB − tüketim = 0) ve SFOC×güç×süre cross-check ile yapılır." },
-      { id: 2, sectionRef: "Denetim", category: MAK, question: "DCS/MRV raporlarında uyumsuzluk olursa ne olur?", options: ["Gemi SoC (uygunluk belgesi) alamaz", "Hiçbir şey", "Otomatik onay", "Ödül"], correctAnswer: 0, explanation: "Bayrak devleti/akredite doğrulayıcı raporları denetler; eksik veri, tutarsız rakam veya belge eksikliğinde gemi SoC alamaz." },
+      { id: 1, sectionRef: "Doğrulama Yöntemleri", category: MAK, question: "Kütle dengesi (mass balance) doğrulaması nasıl olmalıdır?", options: ["Alınan − ROB − tüketim = sıfır", "Sonuç her zaman pozitif olmalı", "Bu doğrulama tümüyle önemsizdir", "Yalnızca BDN kaydı yeterlidir"], correctAnswer: 0, explanation: "Doğrulama; BDN-tank karşılaştırması, flowmetre kalibrasyonu, kütle dengesi (alınan − ROB − tüketim = 0) ve SFOC×güç×süre cross-check ile yapılır." },
+      { id: 2, sectionRef: "Denetim", category: MAK, question: "DCS/MRV raporlarında uyumsuzluk olursa ne olur?", options: ["Gemi SoC (uygunluk belgesi) alamaz", "Hiçbir sonuç doğurmamaktadır", "Rapor otomatik onaylanmaktadır", "Gemiye ödül ve teşvik verilmekte"], correctAnswer: 0, explanation: "Bayrak devleti/akredite doğrulayıcı raporları denetler; eksik veri, tutarsız rakam veya belge eksikliğinde gemi SoC alamaz." },
     ],
   },
   {
@@ -5909,8 +5889,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yıllık verimlilik raporu hazırlama",
     blocks: [{ sectionTitles: ["Rapor İçeriği", "Hazırlama Süreci"] }],
     questions: [
-      { id: 1, sectionRef: "Rapor İçeriği", category: MAK, question: "Yıllık verimlilik raporunda hangi değer mutlaka yer alır?", options: ["Hesaplanan CII değeri ve derecelendirme (A-E)", "Mürettebat menüsü", "Yolcu memnuniyeti", "Liman manzarası"], correctAnswer: 0, explanation: "Rapor; gemi tanımı, yıllık yakıt tüketimi, toplam CO₂, mesafe, seyir saati, hesaplanan CII ve derecesi (A-E), önceki yıl karşılaştırması ve (D/E ise) düzeltici plan içerir." },
-      { id: 2, sectionRef: "Hazırlama Süreci", category: MAK, question: "Doğrulama sonrası ne düzenlenir?", options: ["SoC (Statement of Compliance) — gemide bulundurulur", "Hiçbir belge", "Sadece fatura", "Yeni gemi sertifikası"], correctAnswer: 0, explanation: "Takvim yılı sonunda veriler derlenip rapor bayrak devletine sunulur; doğrulama sonrası SoC (Statement of Compliance) düzenlenir ve gemide bulundurulur." },
+      { id: 1, sectionRef: "Rapor İçeriği", category: MAK, question: "Yıllık verimlilik raporunda hangi değer mutlaka yer alır?", options: ["Hesaplanan CII değeri ve derecesi", "Mürettebatın günlük yemek menüsü", "Yolcuların memnuniyet anket sonucu", "Uğranılan limanların manzarası"], correctAnswer: 0, explanation: "Rapor; gemi tanımı, yıllık yakıt tüketimi, toplam CO₂, mesafe, seyir saati, hesaplanan CII ve derecesi (A-E), önceki yıl karşılaştırması ve (D/E ise) düzeltici plan içerir." },
+      { id: 2, sectionRef: "Hazırlama Süreci", category: MAK, question: "Doğrulama sonrası ne düzenlenir?", options: ["SoC (Statement of Compliance) belgesi", "Hiçbir belge düzenlenmemektedir", "Yalnızca hizmet faturası düzenlenir", "Yeni bir gemi sertifikası düzenlenmekte"], correctAnswer: 0, explanation: "Takvim yılı sonunda veriler derlenip rapor bayrak devletine sunulur; doğrulama sonrası SoC (Statement of Compliance) düzenlenir ve gemide bulundurulur." },
     ],
   },
 ];

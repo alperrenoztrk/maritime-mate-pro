@@ -154,6 +154,7 @@ const BALANCED_BANKS = new Set([
   "beta/meteorology",
   "beta/stability",
   "beta/navigation",
+  "beta/machine",
 ]);
 
 /**
@@ -163,9 +164,7 @@ const BALANCED_BANKS = new Set([
  * BALANCED_BANKS'e taşınır. Listede olmayan banka doğrudan tam kurala tabidir,
  * böylece yeni bankalar dengeli doğar. Bütçeler yalnızca düşürülür.
  */
-const LENGTH_BUDGET = {
-  "beta/machine": 86,
-};
+const LENGTH_BUDGET = {};
 
 /**
  * Doğru şıkkın tek bir pozisyonda toplanma tavanı (tam sayı yüzde).
@@ -176,9 +175,7 @@ const LENGTH_BUDGET = {
  * artık sömürülebilir değil. Bütçe borcu kayda geçirmek içindir: bu havuzlar
  * yeniden yazıldıkça düşürülür, asla artırılmaz.
  */
-const POSITION_BUDGET = {
-  "beta/machine": 100,
-};
+const POSITION_BUDGET = {};
 
 const errors = [];
 const report = [];
