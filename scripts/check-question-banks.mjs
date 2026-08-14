@@ -63,6 +63,8 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataTopicFill1.ts",
   "src/data/machineQuizDataTopicFill2.ts",
   "src/data/machineQuizDataTopicFill3.ts",
+  "src/data/machineQuizDataTopicFill4.ts",
+  "src/data/machineQuizDataTopicFill5.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -97,6 +99,8 @@ const MACHINE_EXPECTED_OVERRIDES = {
   automation: 187,
   maintenance: 187,
   "engine-room-ops": 187,
+  "fuel-technology": 209,
+  erm: 210,
 };
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
