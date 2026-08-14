@@ -62,40 +62,50 @@ Repoda artık LFS işaretçisi kalmadı; taze clone/CI build'i tüm görselleri 
 Play'in app bundle indirme boyutu üst sınırı **200 MB**; aşan AAB yüklenemez.
 Her dosya tek tek gzip'lenerek ölçüldü (Play'in hesabına yakın bir vekil):
 
+**Son ölçüm: 14 Ağustos 2026, sürüm 2.5.70** (`npm run build:native` çıktısı):
+
 | | Ham | Sıkıştırılmış |
 |---|---|---|
-| `public/locales` (18 dil) | 155 MB | 56.5 MB |
-| `dist/assets` (JS/CSS/görsel) | 61 MB | 35.0 MB |
-| `public/navigation` (MEB PDF) | 30 MB | 28.6 MB |
-| `passage-plan` + COLREG PDF | 18 MB | 15.7 MB |
-| ~~`public/videos` (ölü mp4)~~ | ~~43 MB~~ | ~~42.5 MB~~ → silindi |
-| **`dist` toplamı (temizlik sonrası, ölçülen)** | **276.7 MB** | **141.1 MB** |
+| `dist/locales` (**24 dil**) | 330 MB | **112.5 MB** |
+| `dist/assets` (JS/CSS/görsel) | 45 MB | 30.3 MB |
+| `dist/passage-plan` (44 taranmış JPG) | 8.9 MB | 7.6 MB |
+| `dist/env` | 1.4 MB | 0.9 MB |
+| diğer (fonts, knots, navigation, diagrams, flags…) | 2.3 MB | 1.5 MB |
+| **`dist` toplamı (ölçülen)** | **388 MB** | **153.4 MB** |
 
-Temizlikten önce `dist` 310.1 MB / sıkıştırılmış **180.7 MB** idi; yani sınırın
-yalnızca 20 MB altında. `public/videos/gemici/*.mp4` (15 dosya, 42.7 MB)
-hiçbir yerden referanslı değildi — knot videoları `KnotVideo.tsx` üzerinden
-YouTube'dan geliyor — ve silindi.
+Marj: **~47 MB**. Sınırın altında ama önceki ölçümden (141.1 MB) 12 MB
+büyümüş durumda — büyümenin tamamı locale paketlerinden geliyor: dil sayısı
+18 → 24'e çıktı ve `locales` tek başına sıkıştırılmış boyutun **%73'ünü**
+(112.5 / 153.4 MB) oluşturuyor. Her yeni dil ~4-5 MB sıkıştırılmış ekliyor,
+yani **sınıra ~10 dil kaldı**; içerik büyümesi de aynı kotadan yiyor.
 
-Marj artık ~59 MB. Sınıra tekrar yaklaşılırsa sıradaki adaylar: 29 MB'lık MEB ders PDF'i,
-8.8 MB'lık COLREG sunumu, ve locale paketleri. Locale'ler için kod zaten
-fetch tabanlı (`src/utils/staticTranslations.ts`) ama **uzağa taşımak
-çevrimdışı dil değiştirmeyi bozar**: service worker `injectRegister: false`
-ile devre dışı, yani dosyaları APK'da tutmak dışında bir çevrimdışı önbellek
-yok. Taşımadan önce runtime cache kurulmalı.
+Sıradaki küçültme adayları, etki sırasına göre:
+1. **Locale paketleri (112.5 MB)** — kod zaten fetch tabanlı
+   (`src/utils/staticTranslations.ts`) ama **uzağa taşımak çevrimdışı dil
+   değiştirmeyi bozar**: service worker `injectRegister: false` ile devre
+   dışı, yani dosyaları AAB'de tutmak dışında bir çevrimdışı önbellek yok.
+   Taşımadan önce runtime cache kurulmalı.
+2. `passage-plan` taranmış JPG'leri (7.6 MB) — WebP'ye çevrilirse ~%60 kazanç.
 
-Kesin rakam ilk AAB yüklendiğinde Play Console'da görünür; oradaki değeri
-esas alın.
+Not: önceki sürümdeki 29 MB'lık MEB ders PDF'i (`public/navigation/pdfs/`) ve
+8.8 MB'lık `COLREG-Ders-Sunumu.pdf` artık pakette değil; `navigation` klasörü
+648 KB'a inmiş.
+
+⚠️ Bu rakamlar dosya bazlı gzip ile ölçülmüş bir **vekildir**. Play'in gerçek
+"indirme boyutu" hesabı farklıdır; kesin değer ilk AAB yüklendiğinde Play
+Console'da görünür ve **esas alınması gereken odur**. Bu ortamda Android SDK
+kurulu olmadığı için gerçek AAB üretilip ölçülemedi.
 
 ---
 
 ## ⚠️ Karar bekleyen: üçüncü taraf içerik telifi
 
-Pakette iki büyük üçüncü taraf doküman var:
+Önceki turda işaretlenen iki büyük PDF (MEB ders materyali ve COLREG sunumu)
+**pakette değil** — bu madde onlar için kapandı. Geriye tek kalem kaldı:
 
-| Dosya | Boyut | Kaynak |
+| Dosya | Boyut | Durum |
 |---|---|---|
-| `public/navigation/pdfs/DN2025SES1112.pdf` | 29 MB | MEB ders materyali (`src/data/dn2025ses1112.ts:13` → meslek.meb.gov.tr) |
-| `public/COLREG-Ders-Sunumu.pdf` | 8.8 MB | Kaynağı belirsiz ders sunumu |
+| `public/passage-plan/page_1..44.jpg` | 8.9 MB / 44 sayfa | Taranmış bir üçüncü taraf dokümanın sayfa görüntüleri. `src/pages/PassagePlanPage.tsx:260` bunları doğrudan gösteriyor; dosyada **kaynak/atıf yok**. |
 
 Uygulamanın ücretli bir Pro katmanı olduğu için bunları yeniden dağıtmak,
 Play'in Fikri Mülkiyet politikası kapsamında şikâyet ve kaldırma sebebi
@@ -160,7 +170,7 @@ koddaki gerçek akışlara dayandırılmıştır:
 | Kişisel bilgiler → Diğer | Toplanıyor, hesaba bağlı | Denizcilik belgesindeki ad, belge no, veren kurum (`documentTracker.ts`) |
 | Fotoğraflar / Dosya ve belgeler | Toplanıyor, hesaba bağlı | Belge fotoğrafı özel bucket'a yükleniyor (`documentTracker.ts:202`) |
 | Uygulama etkinliği → Diğer | Toplanıyor, hesaba bağlı | Sınav sonuçları, kategori istatistikleri |
-| Uygulama etkinliği → Kullanıcı içeriği | Toplanıyor + **paylaşılıyor** | AI sohbet metinleri Google Gemini'ye gidiyor (`gemini-chat`) |
+| Uygulama etkinliği → Kullanıcı içeriği | Toplanıyor + **paylaşılıyor** | AI sohbet metinleri Google Gemini'ye gidiyor (`gemini-chat`). Ayrıca kullanıcı "Bu yanıtı bildir" derse yanıt + soru sunucuda **saklanıyor** (`ai_content_reports`) |
 | Finansal bilgiler → Satın alma geçmişi | Toplanıyor, hesaba bağlı | `purchaseToken` / sipariş no (`verify-purchase`) |
 | Konum → Yaklaşık + Kesin | Toplanıyor, hesaba bağlı DEĞİL | `ACCESS_FINE/COARSE_LOCATION`; sunucuda saklanmaz, hava/gelgit servisine anlık iletilir |
 | Cihaz veya diğer kimlikler | **Toplanmıyor** (ilk sürüm) | AdMob reklam kimliği yalnızca reklamlar açıkken toplanır; `VITE_ADS_ENABLED` kapalı olduğu için SDK hiç başlatılmıyor. Reklam açıldığında: "Toplanıyor" (yalnızca ücretsiz paket) |

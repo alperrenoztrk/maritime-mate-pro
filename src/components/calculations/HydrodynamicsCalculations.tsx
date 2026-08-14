@@ -456,7 +456,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "Rn = V x L / v",
           substitution: `Rn = ${speedMS.toFixed(3)} x ${data.shipLength} / ${nu}`,
           result: `Rn = ${dimensionless.reynoldsNumber.toExponential(3)}`,
-          explanation: "Reynolds number gives information about the turbulence of the flow. High values ​​indicate fully turbulent flow."
+          explanation: "Reynolds number gives information about the turbulence of the flow. High values indicate fully turbulent flow."
         },
         {
           step: 4,

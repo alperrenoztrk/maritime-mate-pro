@@ -31,7 +31,7 @@
 </head>
 <body>
   <h1 id="tr">Gizlilik Politikası – Mariner's Book</h1>
-  <p class="meta">Yürürlük tarihi: 7 Ağustos 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Nautical Leap · İletişim: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+  <p class="meta">Yürürlük tarihi: 14 Ağustos 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Nautical Leap · İletişim: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
   <p class="meta">Ayrıca bkz. <a href="/terms-of-use.html">Kullanım Şartları</a>.</p>
 
   <h2 id="genel-bakis">1. Genel Bakış</h2>
@@ -48,11 +48,12 @@
     <tr><td>Kullanıcı tarafından üretilen bileşenler/dosya yüklemeleri</td><td>İlgili özelliklerin çalışması</td><td>Sözleşmenin ifası</td></tr>
     <tr><td><strong>Konum:</strong> GPS koordinatları (izin verirseniz) ve IP tabanlı yaklaşık konum</td><td>Hava durumu, gelgit ve seyir hesaplamaları</td><td>Açık rıza / meşru menfaat</td></tr>
     <tr><td>Yapay zekâ sohbet metinleri</td><td>Soru-cevap ve eğitim desteği</td><td>Açık rıza</td></tr>
+    <tr><td><strong>Yapay zekâ içeriği bildirimleri:</strong> bildirdiğiniz yapay zekâ yanıtı, ilgili sorunuz, bildirim nedeni ve eklediğiniz not</td><td>Zararlı veya yanlış yapay zekâ çıktısının incelenmesi (yalnızca "Bu yanıtı bildir" düğmesine bastığınızda)</td><td>Meşru menfaat / yasal yükümlülük</td></tr>
     <tr><td>Reklam kimliği (yalnızca ücretsiz pakette, mobil)</td><td>Reklam gösterimi</td><td>Açık rıza (UMP onay formu)</td></tr>
   </table>
   <p><strong>Toplanmayan veriler:</strong> Analitik/çökme izleme SDK'sı, kişiler, mikrofon, takvim, sağlık verisi.</p>
   <p><strong>Konum hakkında:</strong> Uygulama <code>ACCESS_FINE_LOCATION</code> ve <code>ACCESS_COARSE_LOCATION</code> izinlerini kullanır. Konumunuz sunucularımızda saklanmaz; yalnızca ilgili hesaplama/hava durumu servislerine anlık olarak iletilir. İzni cihaz ayarlarından her zaman kapatabilirsiniz; konum kapalıyken uygulamayı manuel konum girerek kullanabilirsiniz.</p>
-  <p><strong>Yapay zekâ sohbetleri:</strong> Sohbet geçmişi sunucularımızda saklanmaz, yalnızca cihazınızın yerel deposunda tutulur. Ancak yanıt üretmek için mesaj içeriği aşağıdaki servis sağlayıcılara iletilir.</p>
+  <p><strong>Yapay zekâ sohbetleri:</strong> Sohbet geçmişi sunucularımızda saklanmaz, yalnızca cihazınızın yerel deposunda tutulur. Ancak yanıt üretmek için mesaj içeriği aşağıdaki servis sağlayıcılara iletilir. <strong>Tek istisna:</strong> bir yanıtı "Bu yanıtı bildir" düğmesiyle bildirmeyi seçerseniz, yalnızca o yanıt ve ilgili sorunuz inceleme amacıyla sunucularımıza kaydedilir.</p>
 
   <h2 id="ucuncu-taraflar">3. Veri Aktarılan Üçüncü Taraflar</h2>
   <table>
@@ -63,7 +64,6 @@
     <tr><td>Google Cloud Translation</td><td>Dil değiştirildiğinde ekrandaki metinler</td></tr>
     <tr><td>Google Play Developer API</td><td>Satın alma jetonu (abonelik doğrulaması)</td></tr>
     <tr><td>Google AdMob</td><td>Reklam kimliği, cihaz bilgisi (yalnızca ücretsiz pakette)</td></tr>
-    <tr><td>Google Fonts</td><td>IP adresi (yazı tipi yükleme)</td></tr>
     <tr><td>Wolfram Alpha</td><td>Hesaplama sorguları</td></tr>
     <tr><td>Open-Meteo</td><td>Koordinatlar (hava durumu)</td></tr>
     <tr><td>BigDataCloud</td><td>Koordinatlar (yer adı çözümleme)</td></tr>
@@ -92,10 +92,11 @@
     <li>Sınav sonuçları ve istatistikler: hesap silinene kadar.</li>
     <li>Satın alma kayıtları: hesap silinene kadar. Hesabınızı sildiğinizde uygulamadaki satın alma kaydınız da silinir; ödeme ve fatura kayıtları Google Play tarafında kendi saklama sürelerine tabidir.</li>
     <li>Yapay zekâ sohbet geçmişi: yalnızca cihazınızda; uygulama verilerini temizlediğinizde silinir.</li>
+    <li>Yapay zekâ içeriği bildirimleri: hesap silinene kadar.</li>
   </ul>
 
   <h2 id="hesap-ve-veri-silme">6. Hesap ve Veri Silme</h2>
-  <p>Uygulama içinde <strong>Ayarlar → Hesap → "Hesabımı sil"</strong> adımlarıyla hesabınızı ve tüm verilerinizi kalıcı olarak silebilirsiniz. Silme işlemi profilinizi, sınav sonuçlarınızı, istatistiklerinizi, belge kayıtlarınızı, belge fotoğraflarınızı, yüklediğiniz dosyaları, kota sayacınızı ve giriş bilgilerinizi kapsar ve geri alınamaz.</p>
+  <p>Uygulama içinde <strong>Ayarlar → Hesap → "Hesabımı sil"</strong> adımlarıyla hesabınızı ve tüm verilerinizi kalıcı olarak silebilirsiniz. Silme işlemi profilinizi, sınav sonuçlarınızı, istatistiklerinizi, belge kayıtlarınızı, belge fotoğraflarınızı, yüklediğiniz dosyaları, kota sayacınızı, yapay zekâ içeriği bildirimlerinizi ve giriş bilgilerinizi kapsar ve geri alınamaz.</p>
   <p><strong>Aboneliğiniz varsa:</strong> Hesabınızı silmek Google Play aboneliğinizi iptal etmez. Ödemenin durması için aboneliği <strong>Google Play &gt; Abonelikler</strong> bölümünden ayrıca iptal etmeniz gerekir.</p>
   <p>Alternatif olarak <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a> adresine yazarak silme veya veri kopyası talebinde bulunabilirsiniz; talepler en geç 30 gün içinde yanıtlanır.</p>
 
@@ -114,7 +115,7 @@
   <hr>
 
   <h1 id="en">Privacy Policy – Mariner's Book</h1>
-  <p class="meta">Effective date: August 7, 2026 · Package: com.marinersbook.app · Data controller: Nautical Leap · Contact: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+  <p class="meta">Effective date: August 14, 2026 · Package: com.marinersbook.app · Data controller: Nautical Leap · Contact: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
   <p class="meta">See also the <a href="/terms-of-use.html#en">Terms of Use</a>.</p>
 
   <h2 id="overview">1. Overview</h2>
@@ -131,11 +132,12 @@
     <tr><td>User-generated components and file uploads</td><td>Feature functionality</td><td>Contract</td></tr>
     <tr><td><strong>Location:</strong> GPS coordinates (with permission) and IP-based approximate location</td><td>Weather, tide and navigation calculations</td><td>Consent / legitimate interest</td></tr>
     <tr><td>AI chat messages</td><td>Q&amp;A and study support</td><td>Consent</td></tr>
+    <tr><td><strong>AI content reports:</strong> the AI answer you report, the related prompt, the reason and any note you add</td><td>Reviewing harmful or inaccurate AI output (only when you press "Report this answer")</td><td>Legitimate interest / legal obligation</td></tr>
     <tr><td>Advertising ID (free tier, mobile only)</td><td>Serving ads</td><td>Consent (UMP form)</td></tr>
   </table>
   <p><strong>Not collected:</strong> analytics/crash SDKs, contacts, microphone, calendar, health data.</p>
   <p><strong>About location:</strong> The App requests <code>ACCESS_FINE_LOCATION</code> and <code>ACCESS_COARSE_LOCATION</code>. Your location is not stored on our servers; it is sent to the weather/geocoding services only at the moment of the request. You can revoke the permission at any time and enter a location manually instead.</p>
-  <p><strong>AI chats:</strong> Chat history is stored only in your device's local storage, never on our servers. Message content is however transmitted to the providers listed below to generate answers.</p>
+  <p><strong>AI chats:</strong> Chat history is stored only in your device's local storage, never on our servers. Message content is however transmitted to the providers listed below to generate answers. <strong>One exception:</strong> if you choose to report an answer using the "Report this answer" button, that answer and the related prompt are saved to our servers for review.</p>
 
   <h2 id="third-parties">3. Third Parties</h2>
   <table>
@@ -146,7 +148,6 @@
     <tr><td>Google Cloud Translation</td><td>On-screen text when you switch language</td></tr>
     <tr><td>Google Play Developer API</td><td>Purchase token (subscription verification)</td></tr>
     <tr><td>Google AdMob</td><td>Advertising ID, device data (free tier only)</td></tr>
-    <tr><td>Google Fonts</td><td>IP address (font delivery)</td></tr>
     <tr><td>Wolfram Alpha</td><td>Calculation queries</td></tr>
     <tr><td>Open-Meteo</td><td>Coordinates (weather)</td></tr>
     <tr><td>BigDataCloud</td><td>Coordinates (reverse geocoding)</td></tr>
@@ -175,10 +176,11 @@
     <li>Quiz results and statistics: until the account is deleted.</li>
     <li>Purchase records: until the account is deleted. Deleting your account also deletes the purchase record held in the App; payment and invoice records remain subject to Google Play's own retention periods.</li>
     <li>AI chat history: device-only; removed when you clear app data.</li>
+    <li>AI content reports: until the account is deleted.</li>
   </ul>
 
   <h2 id="account-and-data-deletion">6. Account and Data Deletion</h2>
-  <p>You can permanently delete your account and all associated data in the App via <strong>Settings → Account → "Delete my account"</strong>. Deletion covers your profile, quiz results, statistics, document records, document photos, uploaded files, usage counters and credentials, and cannot be undone.</p>
+  <p>You can permanently delete your account and all associated data in the App via <strong>Settings → Account → "Delete my account"</strong>. Deletion covers your profile, quiz results, statistics, document records, document photos, uploaded files, usage counters, AI content reports and credentials, and cannot be undone.</p>
   <p><strong>If you have a subscription:</strong> deleting your account does not cancel your Google Play subscription. To stop billing you must also cancel it under <strong>Google Play &gt; Subscriptions</strong>.</p>
   <p>You may also email <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a> to request deletion or a copy of your data; requests are handled within 30 days.</p>
 

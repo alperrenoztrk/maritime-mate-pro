@@ -111,7 +111,7 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
      if (isNaN(kgVal)) { appendAssistant('KG (m) girin.'); return; }
      if (Number.isNaN(kb) || Number.isNaN(bm)) {
        const L = parseFloat(approxL), B = parseFloat(approxB), T = parseFloat(approxT);
-       if ([L,B,T].some(isNaN)) { appendAssistant('If KB/BM is not available, L, B, T values ​​are required for approx.'); return; }
+       if ([L,B,T].some(isNaN)) { appendAssistant('If KB/BM is not available, L, B, T values are required for approx.'); return; }
        kb = T/2; bm = (B*B)/(12*T);
      }
      const gm = kb + bm - kgVal;
@@ -132,7 +132,7 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 
    const startIMO = () => {
      setMode('imo');
-     appendAssistant('Ship geometry and QA are required for IMO control. Enter the values ​​and press Control.');
+     appendAssistant('Ship geometry and QA are required for IMO control. Enter the values and press Control.');
    };
    const computeIMO = () => {
      const kgNum = parseFloat(kg);
