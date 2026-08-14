@@ -66,6 +66,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataTopicFill4.ts",
   "src/data/machineQuizDataTopicFill5.ts",
   "src/data/machineQuizDataTopicFill6.ts",
+  "src/data/machineQuizDataTopicFill7.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -103,6 +104,7 @@ const MACHINE_EXPECTED_OVERRIDES = {
   "fuel-technology": 209,
   erm: 210,
   "engine-room-safety": 220,
+  "ship-systems": 219,
 };
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
