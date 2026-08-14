@@ -221,29 +221,29 @@ const topicContents: Record<string, TopicContent> = {
   "solas-history": {
     title: "SOLAS Tarihçesi ve Gelişimi",
     introduction: "SOLAS (Safety of Life at Sea), denizde can güvenliğinin sağlanmasına yönelik en kapsamlı uluslararası sözleşmedir.",
-    content: `SOLAS SÖZLEŞMESİNİN DOĞUŞU:
+    content: `THE BIRTH OF THE SOLAS CONVENTION:
 
-RMS Titanic'in 15 Nisan 1912'de batması, denizcilik dünyasında köklü değişikliklere yol açmıştır. 2.224 yolcu ve mürettebattan 1.514'ü hayatını kaybetmiş, bu felaket denizde can güvenliği konusundaki uluslararası düzenlemelerin gerekliliğini açıkça ortaya koymuştur.
+The sinking of RMS Titanic on 15 April 1912 brought about fundamental change in the maritime world. 1,514 of the 2,224 passengers and crew lost their lives, and this disaster made the need for international regulation of safety of life at sea plainly clear.
 
-İlk SOLAS sözleşmesi 1914 yılında kabul edilmiştir. Ancak I. Dünya Savaşı nedeniyle yürürlüğe girememiştir.
+The first SOLAS convention was adopted in 1914. It could not enter into force, however, because of the First World War.
 
-SOLAS SÖZLEŞME VERSİYONLARI:
+VERSIONS OF THE SOLAS CONVENTION:
 
-1914 SOLAS: Titanic faciası sonrası ilk girişim. Yeterli cankurtaran sandal sayısı, radyo nöbeti ve buz devriye hizmetini öngörmüştür.
+SOLAS 1914: the first attempt after the Titanic disaster. It required a sufficient number of lifeboats, a radio watch and an ice patrol service.
 
-1929 SOLAS: Yangın güvenliği konusunda ilk kapsamlı düzenlemeler getirilmiştir.
+SOLAS 1929: the first comprehensive provisions on fire safety.
 
-1948 SOLAS: II. Dünya Savaşı deneyimlerinden yararlanılarak güncellenmiştir. IMO'nun (o zamanki adıyla IMCO) kurulmasına giden sürecin bir parçasıdır.
+SOLAS 1948: updated in the light of the experience of the Second World War. It formed part of the process leading to the establishment of the IMO (then called IMCO).
 
-1960 SOLAS: IMO'nun ilk büyük başarısıdır. Teknik standartlar detaylandırılmıştır.
+SOLAS 1960: the IMO's first major achievement. The technical standards were set out in detail.
 
-1974 SOLAS: Halen yürürlükte olan versiyon. "Tacit acceptance" (zımni kabul) prosedürü ile değişikliklerin daha hızlı yürürlüğe girmesi sağlanmıştır.
+SOLAS 1974: the version still in force. The "tacit acceptance" procedure allowed amendments to enter into force far more quickly.
 
-1988 Protokolü: Harmonize sörvey ve sertifika sistemi getirilmiştir.
+The 1988 Protocol: introduced the harmonized system of survey and certification.
 
-ZIMNİ KABUL PROSEDÜRÜ:
+THE TACIT ACCEPTANCE PROCEDURE:
 
-1974 SOLAS'ın en önemli yeniliği zımni kabul (tacit acceptance) prosedürüdür. Bu sisteme göre, kabul edilen bir değişiklik, belirli bir tarihte yeterli sayıda devlet itiraz etmezse otomatik olarak yürürlüğe girer. Bu mekanizma, önceki versiyonlarda değişikliklerin yürürlüğe girmesinde yaşanan on yılları bulan gecikmeleri ortadan kaldırmıştır.`,
+The most important innovation of SOLAS 1974 is the tacit acceptance procedure. Under this system an adopted amendment enters into force automatically on a given date unless a sufficient number of States object. This mechanism removed the delays of decades that amendments suffered under the earlier versions.`,
     keyPoints: [
       "İlk SOLAS sözleşmesi 1914'te Titanic faciası sonrası kabul edilmiştir",
       "Yürürlükteki versiyon 1974 SOLAS'tır",
@@ -254,39 +254,39 @@ ZIMNİ KABUL PROSEDÜRÜ:
   "solas-structure": {
     title: "SOLAS Yapısı ve Bölümleri",
     introduction: "SOLAS sözleşmesi, deniz taşımacılığının tüm güvenlik yönlerini kapsayan kapsamlı bir yapıya sahiptir.",
-    content: `SOLAS BÖLÜM YAPISI:
+    content: `THE STRUCTURE OF SOLAS CHAPTERS:
 
-Bölüm I – Genel Hükümler: Sözleşmenin uygulama alanı, sörvey ve sertifikasyon kuralları.
+Chapter I – General Provisions: the scope of the convention and the survey and certification rules.
 
-Bölüm II-1 – Yapı: Gemi yapısı, alt bölmeler, stabilite, makine ve elektrik tesisatı gereksinimleri. Hasar stabilitesi hesapları bu bölümde yer alır. Probabilistic damage stability yaklaşımı SOLAS 2009 değişiklikleriyle zorunlu hale gelmiştir.
+Chapter II-1 – Construction: requirements for ship structure, subdivision, stability, machinery and electrical installations. The damage stability calculations are found here. The probabilistic damage stability approach became mandatory with the SOLAS 2009 amendments.
 
-Bölüm II-2 – Yangın Güvenliği: Yangın önleme, algılama ve söndürme. FSS Code (Fire Safety Systems Code) bu bölümün ayrılmaz parçasıdır. Yapısal yangın koruması, kaçış yolları, havalandırma sistemlerinin yangın durumunda kontrolü.
+Chapter II-2 – Fire Safety: fire prevention, detection and extinction. The FSS Code (Fire Safety Systems Code) is an integral part of this chapter. Structural fire protection, escape routes and control of ventilation systems in a fire.
 
-Bölüm III – Can Kurtarma Araçları: LSA Code (Life-Saving Appliances Code) ile birlikte uygulanır. Cankurtaran sandal ve sal gereksinimleri, piroteknik işaretler, kişisel koruma ekipmanları.
+Chapter III – Life-Saving Appliances: applied together with the LSA Code (Life-Saving Appliances Code). Requirements for lifeboats and liferafts, pyrotechnic signals and personal protective equipment.
 
-Bölüm IV – Radyo Haberleşmesi: GMDSS gereksinimleri. Deniz alanları (A1-A4) ve zorunlu ekipman.
+Chapter IV – Radiocommunications: the GMDSS requirements. Sea areas (A1-A4) and the mandatory equipment.
 
-Bölüm V – Seyir Emniyeti: Seyir cihazları, rota servisleri (routing), gemi raporlama sistemleri, VDR, AIS, ECDIS gereksinimleri.
+Chapter V – Safety of Navigation: navigational equipment, routeing services, ship reporting systems, VDR, AIS and ECDIS requirements.
 
-Bölüm VI – Yük Taşıma: Yük güvenliği, dökme yük (IMSBC Code) ve konteyner doğrulanmış ağırlığı (VGM).
+Chapter VI – Carriage of Cargoes: cargo safety, solid bulk cargoes (the IMSBC Code) and the verified gross mass of containers (VGM).
 
-Bölüm VII – Tehlikeli Yük: IMDG Code, INF Code.
+Chapter VII – Carriage of Dangerous Goods: the IMDG Code, the INF Code.
 
-Bölüm VIII – Nükleer Gemiler.
+Chapter VIII – Nuclear Ships.
 
-Bölüm IX – Gemi İşletme Yönetimi: ISM Code zorunluluğu.
+Chapter IX – Management for the Safe Operation of Ships: the ISM Code requirement.
 
-Bölüm X – Yüksek Hızlı Tekneler: HSC Code.
+Chapter X – Safety Measures for High-Speed Craft: the HSC Code.
 
-Bölüm XI-1 – Özel Tedbirler: Geliştirilmiş sörvey, tanıma numarası (IMO Number).
+Chapter XI-1 – Special Measures to Enhance Maritime Safety: the enhanced survey programme, the ship identification number (IMO Number).
 
-Bölüm XI-2 – Deniz Güvenliği: ISPS Code zorunluluğu.
+Chapter XI-2 – Special Measures to Enhance Maritime Security: the ISPS Code requirement.
 
-Bölüm XII – Dökme Yük Gemileri İçin Ek Tedbirler.
+Chapter XII – Additional Safety Measures for Bulk Carriers.
 
-Bölüm XIII – Doğrulama ve Uyum: IMO üye devlet denetim şeması (IMSAS).
+Chapter XIII – Verification of Compliance: the IMO Member State Audit Scheme (IMSAS).
 
-Bölüm XIV – Kutup Bölgeleri: Polar Code zorunluluğu.`,
+Chapter XIV – Safety Measures for Ships Operating in Polar Waters: the Polar Code requirement.`,
     keyPoints: [
       "SOLAS 14 bölümden oluşur ve tüm güvenlik konularını kapsar",
       "Bölüm II-1 yapı, II-2 yangın, III can kurtarma, IV radyo, V seyir emniyetini düzenler",
@@ -297,29 +297,29 @@ Bölüm XIV – Kutup Bölgeleri: Polar Code zorunluluğu.`,
   "solas-certificates": {
     title: "SOLAS Sertifikaları",
     introduction: "SOLAS kapsamında gemilere çeşitli sertifikalar verilir ve bu sertifikalar düzenli sörveylerle geçerlilikleri doğrulanır.",
-    content: `TEMEL SOLAS SERTİFİKALARI:
+    content: `THE PRINCIPAL SOLAS CERTIFICATES:
 
-1. Yolcu Gemisi Güvenlik Sertifikası (Passenger Ship Safety Certificate): Yolcu gemilerinin SOLAS gereksinimlerine uygunluğunu belgeler. 12 aylık geçerlilik süresi vardır.
+1. Passenger Ship Safety Certificate: certifies that a passenger ship complies with the SOLAS requirements. It is valid for 12 months.
 
-2. Yük Gemisi Yapı Güvenlik Sertifikası (Cargo Ship Safety Construction Certificate): Yük gemilerinin yapısal standartlara uygunluğunu belgeler. 5 yıl geçerlidir, yıllık sörvey şartıyla.
+2. Cargo Ship Safety Construction Certificate: certifies that a cargo ship complies with the structural standards. Valid for 5 years, subject to annual survey.
 
-3. Yük Gemisi Donanım Güvenlik Sertifikası (Cargo Ship Safety Equipment Certificate): Can kurtarma, yangın söndürme ve seyir donanımlarının uygunluğunu belgeler. 5 yıl geçerlidir.
+3. Cargo Ship Safety Equipment Certificate: certifies the compliance of the life-saving, fire fighting and navigational equipment. Valid for 5 years.
 
-4. Yük Gemisi Radyo Güvenlik Sertifikası (Cargo Ship Safety Radio Certificate): GMDSS ekipmanlarının uygunluğunu belgeler. 5 yıl geçerlidir.
+4. Cargo Ship Safety Radio Certificate: certifies the compliance of the GMDSS equipment. Valid for 5 years.
 
-5. Uluslararası Gemi Güvenlik Sertifikası (ISSC – International Ship Security Certificate): ISPS Code uyumunu belgeler. 5 yıl geçerlidir.
+5. ISSC (International Ship Security Certificate): certifies compliance with the ISPS Code. Valid for 5 years.
 
-6. SMC (Safety Management Certificate): ISM Code kapsamında geminin SMS'e uygunluğunu belgeler. 5 yıl geçerlidir.
+6. SMC (Safety Management Certificate): certifies the ship's compliance with the SMS under the ISM Code. Valid for 5 years.
 
-7. DOC (Document of Compliance): ISM Code kapsamında şirketin uygunluğunu belgeler.
+7. DOC (Document of Compliance): certifies the company's compliance under the ISM Code.
 
-SÖRVEY TÜRLERİ:
+TYPES OF SURVEY:
 
-Initial Survey: Geminin hizmete girmeden önce yapılan ilk sörveyi.
-Annual Survey: Yıllık denetim; sertifika geçerliliğinin korunması için zorunludur.
-Intermediate Survey: 5 yıllık süre içinde (2. veya 3. yılda) yapılan ara sörvey.
-Renewal Survey: Sertifika yenilenmesi için yapılan kapsamlı sörvey.
-Additional Survey: Onarım, değişiklik veya hasar sonrası yapılan ek sörvey.`,
+Initial Survey: the first survey, carried out before the ship enters service.
+Annual Survey: the yearly inspection; mandatory for the certificate to remain valid.
+Intermediate Survey: the survey carried out within the 5-year period (in the 2nd or 3rd year).
+Renewal Survey: the comprehensive survey carried out to renew the certificate.
+Additional Survey: the extra survey carried out after a repair, alteration or damage.`,
     keyPoints: [
       "Yolcu gemisi sertifikası 12 ay, yük gemisi sertifikaları 5 yıl geçerlidir",
       "Yıllık sörvey sertifika geçerliliğinin korunması için zorunludur",
@@ -330,33 +330,33 @@ Additional Survey: Onarım, değişiklik veya hasar sonrası yapılan ek sörvey
   "solas-surveys": {
     title: "Sörvey ve Denetimler",
     introduction: "Gemi güvenlik sertifikalarının geçerliliği, düzenli aralıklarla yapılan sörveylerle sürdürülür.",
-    content: `SÖRVEY SİSTEMİ:
+    content: `THE SURVEY SYSTEM:
 
-Harmonize sörvey ve sertifika sistemi (HSSC), tüm zorunlu sörvey tarihlerinin uyumlaştırılmasını sağlar. Bu sistem sayesinde geminin farklı sertifikaları için yapılan sörveyler mümkün olduğunca birleştirilerek operasyonel kesinti en aza indirilir.
+The harmonized system of survey and certification (HSSC) aligns all the mandatory survey dates. Under this system the surveys for the ship's various certificates are combined as far as possible, keeping operational interruption to a minimum.
 
-BAYRAK DEVLETİ DENETİMİ:
+FLAG STATE INSPECTION:
 
-Bayrak devleti, gemisinin uluslararası standartlara uygunluğunu sağlamakla yükümlüdür. Bu denetimleri doğrudan veya yetkilendirilmiş sınıflandırma kuruluşları (RO – Recognized Organization) aracılığıyla gerçekleştirir.
+The flag State is responsible for ensuring that its ships comply with the international standards. It carries out these inspections directly or through authorised classification societies (ROs – Recognized Organizations).
 
-LİMAN DEVLETİ DENETİMİ (PSC):
+PORT STATE CONTROL (PSC):
 
-Port State Control, yabancı bayraklı gemilerin limandaki denetimini kapsar. Paris MoU, Tokyo MoU gibi bölgesel anlaşmalar çerçevesinde uygulanır.
+Port State Control covers the inspection of foreign-flagged ships in port. It is applied within the framework of regional agreements such as the Paris MoU and the Tokyo MoU.
 
-PSC denetiminde kontrol edilen başlıca hususlar:
-- Sertifikaların geçerliliği ve güncelliği
-- Mürettebat yeterlilikleri ve nöbet düzenlemeleri
-- Can kurtarma ve yangın söndürme ekipmanlarının çalışır durumda olması
-- Seyir cihazlarının durumu
-- ISM ve ISPS Code uyumu
-- Çevresel gereksinimler (MARPOL)
+The main matters checked in a PSC inspection:
+- The validity and currency of the certificates
+- Crew competence and watchkeeping arrangements
+- That the life-saving and fire fighting equipment is in working order
+- The condition of the navigational equipment
+- Compliance with the ISM and ISPS Codes
+- Environmental requirements (MARPOL)
 
-TUTMA (DETENTION):
+DETENTION:
 
-Gemide "clearly hazardous" (açıkça tehlikeli) eksiklik tespit edilirse gemi tutulur. Tutma, gemi işletmecisi için ciddi mali ve itibar kaybına neden olur. Tutma oranları şirketin ve bayrak devletinin hedefleme profilini doğrudan etkiler.
+If a "clearly hazardous" deficiency is found on board the ship is detained. Detention causes serious financial and reputational loss to the ship operator. Detention rates directly affect the targeting profile of the company and the flag State.
 
-SERTİFİKA UZATMA:
+CERTIFICATE EXTENSION:
 
-Zorunlu hallerde sertifika süresi en fazla 3 ay uzatılabilir. Uzatma istisnai durumlarda uygulanır ve normal bir uygulama olarak kabul edilmez.`,
+Where unavoidable, a certificate may be extended by a maximum of 3 months. Extension is applied in exceptional circumstances and is not regarded as normal practice.`,
     keyPoints: [
       "Harmonize sörvey sistemi operasyonel kesintileri azaltır",
       "PSC denetiminde tutma (detention) ciddi sonuçlar doğurur",
@@ -367,21 +367,21 @@ Zorunlu hallerde sertifika süresi en fazla 3 ay uzatılabilir. Uzatma istisnai 
   "solas-amendments": {
     title: "Güncel Değişiklikler ve Uygulamalar",
     introduction: "SOLAS sözleşmesi, denizcilik teknolojisindeki gelişmelere ve kazalardan çıkarılan derslere bağlı olarak sürekli güncellenmektedir.",
-    content: `SON DÖNEM ÖNEMLİ DEĞİŞİKLİKLER:
+    content: `RECENT MAJOR AMENDMENTS:
 
-VGM (Verified Gross Mass) – 2016: SOLAS Bölüm VI, Kural 2 değişikliği ile konteyner brüt ağırlıklarının doğrulanmış olarak bildirilmesi zorunlu hale gelmiştir. MSC Flaminia ve diğer konteyner gemisi kazaları bu düzenlemenin tetikleyicisi olmuştur.
+VGM (Verified Gross Mass) – 2016: the amendment to SOLAS Chapter VI, Regulation 2 made the declaration of a verified gross mass for containers mandatory. The MSC Flaminia and other container ship casualties triggered this regulation.
 
-ECDIS Zorunluluğu: SOLAS Bölüm V, Kural 19.2 ile yeni gemilerde ECDIS kullanımı aşamalı olarak zorunlu hale gelmiştir. Kağıt harita kullanımı yedek olarak devam edebilir.
+ECDIS requirement: under SOLAS Chapter V, Regulation 19.2 the use of ECDIS became mandatory on new ships in stages. Paper charts may continue to be carried as a back-up.
 
-Polar Code – 2017: SOLAS Bölüm XIV ile kutup bölgelerinde seyreden gemiler için yapısal, operasyonel ve çevresel gereksinimler belirlenmiştir.
+The Polar Code – 2017: SOLAS Chapter XIV set structural, operational and environmental requirements for ships operating in polar waters.
 
-IGF Code – 2017: Doğal gaz veya düşük parlama noktalı yakıt kullanan gemiler için güvenlik gereksinimleri.
+The IGF Code – 2017: safety requirements for ships using natural gas or other low-flashpoint fuels.
 
-SOLAS III/17.1 (Cankurtaran Sandal Bakımı): Cankurtaran sandalların periyodik bakım ve servis gereksinimleri güncellenmiştir. Üretici onaylı servis istasyonu zorunluluğu getirilmiştir.
+SOLAS III/17.1 (lifeboat maintenance): the requirements for the periodic maintenance and servicing of lifeboats were updated. Servicing by a maker-approved station became mandatory.
 
-Siber Güvenlik – MSC.428(98): ISM Code kapsamında siber risk yönetiminin SMS'e entegre edilmesi zorunlu hale gelmiştir (1 Ocak 2021 itibariyle).
+Cyber security – MSC.428(98): the integration of cyber risk management into the SMS became mandatory under the ISM Code (from 1 January 2021).
 
-SOLAS II-1/3-12 (Hedeflenmiş Yapısal Standartlar – GBS): Yeni tanker ve dökme yük gemilerinin yapısal tasarımının hedef bazlı standartlara uygun olması zorunluluğu.`,
+SOLAS II-1/3-12 (Goal-Based Standards – GBS): the requirement that the structural design of new tankers and bulk carriers complies with goal-based standards.`,
     keyPoints: [
       "VGM (2016): Konteyner brüt ağırlıklarının doğrulanması zorunludur",
       "Polar Code (2017): Kutup bölgelerinde seyreden gemiler için ek gereksinimler",
@@ -396,32 +396,32 @@ SOLAS II-1/3-12 (Hedeflenmiş Yapısal Standartlar – GBS): Yeni tanker ve dök
   "fire-theory": {
     title: "Yangın Teorisi ve Yanma Kimyası",
     introduction: "Yangın, yanıcı madde, oksijen ve tutuşma enerjisinin bir arada bulunmasıyla başlayan kontrolsüz bir yanma reaksiyonudur.",
-    content: `YANMA TEORİSİ:
+    content: `COMBUSTION THEORY:
 
-Yanma, bir maddenin oksijenle ekzotermik (ısı açığa çıkaran) reaksiyona girmesidir. Bu reaksiyonun başlayabilmesi için üç unsurun aynı anda mevcut olması gerekir:
+Combustion is the exothermic (heat-releasing) reaction of a substance with oxygen. Three elements must be present at the same time for this reaction to start:
 
-1. Yanıcı madde (fuel): Katı, sıvı veya gaz formunda olabilir. Sıvı yakıtlar doğrudan yanmaz; yüzeylerinden buharlaşan gazlar yanar.
+1. Fuel: it may be solid, liquid or gas. Liquid fuels do not burn directly; the vapours evaporating from their surface burn.
 
-2. Oksijen: Atmosferde hacimce %21 oranında bulunur. Yanma için minimum %16 oksijen konsantrasyonu gereklidir. %16'nın altında çoğu yanıcı madde yanmaz.
+2. Oxygen: present in the atmosphere at 21% by volume. A minimum oxygen concentration of 16% is needed for combustion. Below 16% most combustible substances will not burn.
 
-3. Tutuşma enerjisi (ısı): Yanıcı maddeyi tutuşma sıcaklığına ulaştıracak enerji kaynağı. Kıvılcım, sıcak yüzey, elektrik arkı, sürtünme gibi kaynaklar.
+3. Ignition energy (heat): the energy source that raises the fuel to its ignition temperature. Sources such as a spark, a hot surface, an electrical arc or friction.
 
-YANGIN TEMELİNDE DÖRT UNSURLU MODEL:
+THE FOUR-ELEMENT MODEL:
 
-Modern yangın teorisi, üçgene ek olarak "zincirleme kimyasal reaksiyon" unsurunu da içerir. Bu dört unsurlu model "yangın dörtgeni" (fire tetrahedron) olarak adlandırılır. Halon gibi söndürücüler kimyasal reaksiyonu keserek yangını söndürür.
+Modern fire theory adds a fourth element, the "chain chemical reaction", to the triangle. This four-element model is called the fire tetrahedron. Extinguishing agents such as halon put a fire out by breaking the chemical reaction.
 
-TUTUŞMA SICAKLIĞI VE PARLAMA NOKTASI:
+IGNITION TEMPERATURE AND FLASH POINT:
 
-Flash Point (Parlama Noktası): Sıvı yakıtın yüzeyinden yeterli buhar oluşturarak bir dış ateş kaynağıyla kısa süreli alevlenmeye yol açtığı en düşük sıcaklık. HFO için >60°C, benzin için -43°C'dir.
+Flash Point: the lowest temperature at which a liquid fuel gives off enough vapour from its surface to flash momentarily on contact with an external source of ignition. It is >60°C for HFO and -43°C for petrol.
 
-Fire Point (Yangın Noktası): Sürekli yanmanın başladığı sıcaklık. Parlama noktasından birkaç derece yüksektir.
+Fire Point: the temperature at which sustained burning begins. It is a few degrees above the flash point.
 
-Auto-Ignition Temperature (Kendiliğinden Tutuşma Sıcaklığı): Dış ateş kaynağı olmaksızın maddenin kendiliğinden tutuştuğu sıcaklık. Dizel yakıt için yaklaşık 210°C'dir.
+Auto-Ignition Temperature: the temperature at which a substance ignites spontaneously without an external source of ignition. It is about 210°C for diesel oil.
 
-YANMA ÜRÜNLERİ:
+PRODUCTS OF COMBUSTION:
 
-Tam yanma: CO₂ + H₂O + ısı oluşur. Yeterli oksijen mevcuttur.
-Eksik yanma: CO (karbon monoksit) + kurum + zehirli gazlar oluşur. Yetersiz oksijen ortamında gerçekleşir. Denizde yangın ölümlerinin %75'inden fazlası duman zehirlenmesinden kaynaklanır.`,
+Complete combustion: CO₂ + H₂O + heat. Sufficient oxygen is present.
+Incomplete combustion: CO (carbon monoxide) + soot + toxic gases. It occurs where oxygen is insufficient. More than 75% of fire deaths at sea are caused by smoke inhalation.`,
     keyPoints: [
       "Yangın üçgeni: yakıt + oksijen + ısı; dörtgen: + zincirleme reaksiyon",
       "Minimum %16 O₂ konsantrasyonu gerekli, inerting %5'in altına düşürür",
@@ -432,25 +432,25 @@ Eksik yanma: CO (karbon monoksit) + kurum + zehirli gazlar oluşur. Yetersiz oks
   "fire-classes": {
     title: "Yangın Sınıfları ve Söndürme Yöntemleri",
     introduction: "Yangınlar, yanan maddeye göre sınıflandırılır ve her sınıf için uygun söndürme yöntemi farklıdır.",
-    content: `YANGIN SINIFLARI:
+    content: `CLASSES OF FIRE:
 
-Sınıf A – Katı Maddeler: Ahşap, kumaş, kağıt, plastik gibi organik katıların yangınıdır. Soğutma prensibiyle söndürülür. Su en etkili söndürücüdür. Korlar kalabilir, tekrar alevlenme riski vardır.
+Class A – Solid materials: fires in organic solids such as wood, cloth, paper and plastic. Extinguished by cooling. Water is the most effective agent. Embers can remain and there is a risk of re-ignition.
 
-Sınıf B – Yanıcı Sıvılar: Yakıt, yağ, boya, çözücü gibi yanıcı sıvıların yangınıdır. Boğma prensibiyle söndürülür. Köpük (foam), CO₂, kuru kimyevi toz kullanılır. Su ile söndürülmez; su sıçratarak yangını yayabilir.
+Class B – Flammable liquids: fires in flammable liquids such as fuel, oil, paint and solvents. Extinguished by smothering. Foam, CO₂ and dry chemical powder are used. Not extinguished with water; water can spread the fire by splashing.
 
-Sınıf C – Yanıcı Gazlar: LPG, LNG, asetilen gibi gazların yangınıdır. Gaz akışı kesilmeden söndürme yapılmaz, aksi halde patlama riski doğar. Kuru kimyevi toz, CO₂.
+Class C – Flammable gases: fires in gases such as LPG, LNG and acetylene. The fire is not extinguished until the gas flow has been shut off, otherwise there is a risk of explosion. Dry chemical powder, CO₂.
 
-Sınıf D – Yanıcı Metaller: Alüminyum, magnezyum, titanyum, sodyum. Özel kuru toz söndürücüler gerekir. Su kesinlikle kullanılmaz, şiddetli reaksiyona girebilir.
+Class D – Combustible metals: aluminium, magnesium, titanium, sodium. Special dry powder extinguishers are needed. Water must never be used; it can react violently.
 
-Sınıf E/F – Elektrik / Pişirme Yağları: Elektrik yangınında önce enerji kesilir, sonra CO₂ veya kuru toz kullanılır. Pişirme yağı yangınlarında ıslak kimyevi söndürücüler kullanılır.
+Class E/F – Electrical / cooking oils: in an electrical fire the power is isolated first, then CO₂ or dry powder is used. Wet chemical extinguishers are used for cooking oil fires.
 
-GEMİDE YANGIN TEHLİKE BÖLGELERİ:
+FIRE RISK AREAS ON BOARD:
 
-Makine dairesi: En yüksek yangın riski. Yakıt sızıntısının sıcak yüzeyle teması başlıca nedendir. Sabit CO₂ veya FM-200 sistemi mevcuttur.
-Mutfak (galley): Pişirme yağı yangını riski. Sabit söndürme sistemi zorunludur.
-Yük ambarları: Dökme yük yangını, konteyner yangını. CO₂ inerting veya su spreyi.
-Boyahane: Yanıcı boya ve çözücüler. Havalandırma ve depolama kuralları kritiktir.
-Akomodasyon: Sigara, elektrik arızası. Duman dedektörleri ve sprinkler sistemi.`,
+Engine room: the highest fire risk. Fuel leaking onto a hot surface is the main cause. A fixed CO₂ or FM-200 system is fitted.
+Galley: the risk of a cooking oil fire. A fixed extinguishing system is mandatory.
+Cargo holds: bulk cargo fires and container fires. CO₂ inerting or water spray.
+Paint store: flammable paints and solvents. The ventilation and storage rules are critical.
+Accommodation: smoking, electrical faults. Smoke detectors and a sprinkler system.`,
     keyPoints: [
       "Sınıf B yangınlarda su kesinlikle kullanılmaz – sıçratır ve yayar",
       "Sınıf C yangınlarda gaz akışı kesilmeden söndürme yapılmaz",
@@ -461,30 +461,30 @@ Akomodasyon: Sigara, elektrik arızası. Duman dedektörleri ve sprinkler sistem
   "fire-detection": {
     title: "Yangın Algılama ve Alarm Sistemleri",
     introduction: "Yangının erken tespit edilmesi, etkili müdahalenin ve can kaybının önlenmesinin temel koşuludur.",
-    content: `ALGILAMA PRENSİPLERİ:
+    content: `DETECTION PRINCIPLES:
 
-Duman Dedektörleri:
-- İyonizasyon tipi: Radyoaktif kaynak (Americium-241) kullanır. Duman partikülleri iyonizasyon akımını bozarak alarm verir. Hızlı yanan, az duman üreten yangınlarda etkilidir.
-- Fotoelektrik (optik) tip: Işık saçılması prensibine dayanır. Duman partikülleri ışığı saçtığında fotosensör alarm verir. Ağır duman üreten yangınlarda daha duyarlıdır.
-- Lazer tipi: En hassas tip. Çok erken aşamada duman tespiti yapabilir.
+Smoke detectors:
+- Ionisation type: uses a radioactive source (Americium-241). Smoke particles disturb the ionisation current and raise the alarm. Effective in fast-burning fires that produce little smoke.
+- Photoelectric (optical) type: based on the principle of light scattering. When smoke particles scatter the light the photosensor raises the alarm. More sensitive to fires producing dense smoke.
+- Laser type: the most sensitive. It can detect smoke at a very early stage.
 
-Isı Dedektörleri:
-- Sabit sıcaklık tipi: Belirli bir sıcaklığa (genellikle 57°C veya 72°C) ulaşıldığında alarm verir.
-- Hız artış tipi (rate-of-rise): Sıcaklık artış hızı belirli bir eşiği aştığında alarm verir. Normalde 8-10°C/dakika.
-- Kombine tip: Her iki prensibi birleştirir.
+Heat detectors:
+- Fixed temperature type: raises the alarm when a set temperature (usually 57°C or 72°C) is reached.
+- Rate-of-rise type: raises the alarm when the rate of temperature increase exceeds a set threshold. Normally 8-10°C/minute.
+- Combined type: combines both principles.
 
-Alev Dedektörleri:
-- UV (ultraviyole) sensör: Alevin yaydığı UV radyasyonu algılar.
-- IR (kızılötesi) sensör: Alevin yaydığı IR radyasyonu algılar.
-- UV/IR kombine: Yanlış alarm oranını azaltır.
+Flame detectors:
+- UV (ultraviolet) sensor: detects the UV radiation emitted by a flame.
+- IR (infrared) sensor: detects the IR radiation emitted by a flame.
+- Combined UV/IR: reduces the false alarm rate.
 
-YANGIN ALARM SİSTEMİ:
+THE FIRE ALARM SYSTEM:
 
-Yangın alarm paneli köprüüstünde bulunur. Bölgesel (zone) alarm gösterimi sağlar. Her bölgenin alarm durumu ayrı olarak izlenir. SOLAS II-2'ye göre yangın algılama ve alarm sistemi sürekli izlenmelidir. Yedek güç kaynağı en az 36 saat kapasiteli olmalıdır.
+The fire alarm panel is on the bridge. It provides a zonal alarm display. The alarm status of each zone is monitored separately. Under SOLAS II-2 the fire detection and alarm system must be continuously monitored. The back-up power supply must have a capacity of at least 36 hours.
 
-DUMAN ÖRNEKLEMELİ SİSTEM:
+SAMPLE SMOKE DETECTION SYSTEM:
 
-Yük ambarlarında kullanılan aspirasyon tipi sistemdir. Boru hattı ile her bölmeden hava örneği çekilerek merkezi dedektörde analiz edilir. Konteyner gemilerinde ve Ro-Ro araç güvertelerinde yaygındır.`,
+An aspirating type system used in cargo holds. Air samples are drawn from each compartment through a pipeline and analysed at a central detector. Common on container ships and Ro-Ro vehicle decks.`,
     keyPoints: [
       "İyonizasyon dedektörü hızlı yanan, optik dedektör yoğun dumanlı yangınlarda etkilidir",
       "Yangın alarm paneli köprüüstünde bulunur ve bölgesel gösterim sağlar",
@@ -495,26 +495,26 @@ Yük ambarlarında kullanılan aspirasyon tipi sistemdir. Boru hattı ile her b�
   "portable-extinguishers": {
     title: "Taşınabilir Söndürücüler",
     introduction: "Taşınabilir yangın söndürücüler, yangının başlangıç aşamasında müdahale için kullanılan ilk savunma hattıdır.",
-    content: `SÖNDÜRÜCÜ TİPLERİ:
+    content: `TYPES OF EXTINGUISHER:
 
-Su Söndürücü (9 litre): Sınıf A yangınlarda kullanılır. Soğutma prensibiyle çalışır. Elektrik yangınlarında ve sıvı yangınlarda kullanılmaz.
+Water extinguisher (9 litres): used on Class A fires. Works by cooling. Not used on electrical or liquid fires.
 
-Köpük Söndürücü (9 litre): Sınıf A ve B yangınlarda kullanılır. Yüzey örtme ve soğutma prensibiyle çalışır. AFFF (Aqueous Film Forming Foam) tipik köpük türüdür.
+Foam extinguisher (9 litres): used on Class A and B fires. Works by blanketing the surface and cooling. AFFF (Aqueous Film Forming Foam) is the typical foam type.
 
-Kuru Kimyevi Toz Söndürücü (9 kg): Tüm sınıf yangınlarda kullanılabilir (ABC tipi). Kimyasal reaksiyonu kesme prensibiyle çalışır. Yeniden alevlenmeyi önlemez; soğutma etkisi düşüktür.
+Dry chemical powder extinguisher (9 kg): can be used on all classes of fire (ABC type). Works by breaking the chemical reaction. It does not prevent re-ignition; its cooling effect is low.
 
-CO₂ Söndürücü (5 kg): Sınıf B ve elektrik yangınlarında kullanılır. Boğma prensibiyle çalışır. Artık bırakmaz; elektronik ve mekanik ekipman alanlarında tercih edilir. Kapalı alanda kullanımda boğulma riski mevcuttur.
+CO₂ extinguisher (5 kg): used on Class B and electrical fires. Works by smothering. It leaves no residue and is preferred in areas with electronic and mechanical equipment. There is a risk of asphyxiation if it is used in an enclosed space.
 
-KULLANIM TEKNİĞİ (PASS YÖNTEMİ):
+TECHNIQUE OF USE (THE PASS METHOD):
 
-P – Pull: Pimi çekin.
-A – Aim: Hortumu yangının tabanına yöneltin.
-S – Squeeze: Tetik kolunu sıkın.
-S – Sweep: Süpürme hareketi ile tabana doğru yayarak söndürün.
+P – Pull: pull the pin.
+A – Aim: aim the nozzle at the base of the fire.
+S – Squeeze: squeeze the lever.
+S – Sweep: extinguish by sweeping across the base of the fire.
 
-YERLEŞTİRME KURALLARI:
+SITING RULES:
 
-SOLAS II-2'ye göre taşınabilir söndürücüler belirli aralıklarla ve erişilebilir konumlarda yerleştirilmelidir. Makine dairesinde en az bir köpük söndürücü bulunmalıdır. Mutfakta yanıcı yağ söndürücüsü zorunludur. Söndürücüler yıllık bakıma ve periyodik basınç testine tabidir.`,
+Under SOLAS II-2 portable extinguishers must be sited at defined intervals in accessible positions. There must be at least one foam extinguisher in the engine room. A cooking oil extinguisher is mandatory in the galley. Extinguishers are subject to annual maintenance and periodic pressure testing.`,
     keyPoints: [
       "CO₂ söndürücü artık bırakmaz, elektronik alanlarda tercih edilir",
       "PASS tekniği: Çek – Yönelt – Sık – Süpür",
@@ -525,33 +525,33 @@ SOLAS II-2'ye göre taşınabilir söndürücüler belirli aralıklarla ve eriş
   "fixed-fire-systems": {
     title: "Sabit Söndürme Sistemleri",
     introduction: "Sabit yangın söndürme sistemleri, özellikle makine dairesi ve yük ambarları gibi büyük bölmelerdeki yangınlarla mücadelede kullanılır.",
-    content: `CO₂ SABİT SİSTEM:
+    content: `THE FIXED CO₂ SYSTEM:
 
-Makine dairesi ve yük ambarlarında kullanılır. Yangını oksijen konsantrasyonunu düşürerek söndürür. Boşaltma öncesi bölmedeki tüm personel tahliye edilmelidir – CO₂ ölümcüldür.
+Used in the engine room and cargo holds. It extinguishes the fire by reducing the oxygen concentration. All personnel must be evacuated from the space before release – CO₂ is fatal.
 
-CO₂ sistemi bileşenleri: Yüksek basınçlı CO₂ tüpleri (genellikle CO₂ odasında), pilot tüp, ana valf, alarm sistemi, dağıtım boruları ve nozullar. Makine dairesinde boşaltma öncesi 20 saniyelik sesli ve görsel ön alarm verilir.
+CO₂ system components: high-pressure CO₂ cylinders (usually in the CO₂ room), a pilot cylinder, the main valve, the alarm system, distribution pipes and nozzles. A 20-second audible and visual pre-alarm is given before release into the engine room.
 
-CO₂ miktarı hesabı (FSS Code Bölüm 5): Makine dairesi için, en büyük makine mahallinin brüt hacminin %40'ı (kapsam/casing hariç) veya toplam hacminin %35'i (casing dahil) — hangisi büyükse o esas alınır; yük ambarları için en büyük ambar brüt hacminin %30'u oranında CO₂ gereklidir. Makine mahallinde gerekli gazın %85'i ilk 2 dakikada boşaltılabilmelidir.
+Calculating the quantity of CO₂ (FSS Code Chapter 5): for the engine room, 40% of the gross volume of the largest machinery space (excluding the casing) or 35% of the total volume (including the casing) — whichever is the greater; for cargo holds, CO₂ equal to 30% of the gross volume of the largest hold is required. In a machinery space 85% of the required gas must be capable of being released within the first 2 minutes.
 
-KÖPÜK (FOAM) SİSTEMİ:
+THE FOAM SYSTEM:
 
-Tanker güvertesinde ve makine dairesinde kullanılır. Yüzey örtme ve soğutma prensibiyle çalışır.
+Used on tanker decks and in the engine room. It works by blanketing the surface and cooling.
 
-Düşük genleşmeli köpük (expansion ratio <20): Tanker güverte söndürmesinde kullanılır.
-Orta genleşmeli köpük (20-200): Makine dairesi ve kapalı alanlar.
-Yüksek genleşmeli köpük (>200): Büyük hacimli kapalı alanlarda kullanılır.
+Low expansion foam (expansion ratio <20): used for tanker deck fire fighting.
+Medium expansion foam (20-200): engine rooms and enclosed spaces.
+High expansion foam (>200): used in large enclosed volumes.
 
-SU SPRİNKLER SİSTEMİ:
+THE WATER SPRINKLER SYSTEM:
 
-Yolcu gemilerinde akomodasyon alanlarında zorunludur. Otomatik çalışır; sprinkler başlıkları belirli sıcaklıkta (genellikle 68°C veya 79°C) aktive olur. Cam ampul veya fusible link ile tetiklenir.
+Mandatory in the accommodation areas of passenger ships. It works automatically; the sprinkler heads activate at a set temperature (usually 68°C or 79°C). They are triggered by a glass bulb or a fusible link.
 
-SU SİSİ (WATER MIST) SİSTEMİ:
+THE WATER MIST SYSTEM:
 
-Küçük su damlacıkları ile büyük soğutma yüzeyi oluşturur. Düşük su tüketimi. Makine dairesi ve yaşam alanlarında kullanılır. Halon alternatifi olarak geliştirilmiştir.
+Fine water droplets create a large cooling surface. Low water consumption. Used in engine rooms and accommodation spaces. Developed as an alternative to halon.
 
 FM-200 (HFC-227ea):
 
-Temiz söndürücü gaz. Halon 1301'in çevre dostu alternatifi. Kimyasal reaksiyonu kesme ve soğutma prensibiyle çalışır. Artık bırakmaz. Kontrol odaları ve elektronik ekipman alanlarında kullanılır.`,
+A clean extinguishing gas. The environmentally friendly alternative to Halon 1301. It works by breaking the chemical reaction and by cooling. It leaves no residue. Used in control rooms and areas with electronic equipment.`,
     keyPoints: [
       "CO₂ sistemi boşaltma öncesi 20 saniyelik ön alarm zorunludur",
       "CO₂ ölümcüldür, bölmedeki tüm personel tahliye edilmelidir",
@@ -559,43 +559,43 @@ Temiz söndürücü gaz. Halon 1301'in çevre dostu alternatifi. Kimyasal reaksi
       "Su sisi (water mist) halon alternatifi olarak yaygınlaşmaktadır",
     ],
     warnings: [
-      "CO₂ boşaltma öncesi bölmede insan olmadığından EMİN olunmalıdır",
-      "CO₂ odasına giriş prosedürleri sıkı şekilde uygulanmalıdır",
+      "Before releasing CO₂ you must be CERTAIN that there is nobody in the space",
+      "The procedures for entering the CO₂ room must be applied strictly",
     ],
   },
   "fire-fighting-proc": {
     title: "Yangınla Mücadele Prosedürleri",
     introduction: "Gemide yangınla etkili mücadele, organize ekip çalışması ve standart prosedürlerin uygulanmasını gerektirir.",
-    content: `YANGIN ALARM PROSEDÜRÜ:
+    content: `THE FIRE ALARM PROCEDURE:
 
-1. Yangını keşfeden kişi derhal alarm verir ve köprüüstünü bilgilendirir.
-2. Yangının yeri, türü ve büyüklüğü rapor edilir.
-3. Genel alarm çalınır (7 kısa + 1 uzun düdük).
-4. Mürettebat yangın istasyonlarına koşar ve görev dağılımına uygun pozisyon alır.
+1. Whoever discovers the fire raises the alarm at once and informs the bridge.
+2. The location, type and size of the fire are reported.
+3. The general alarm is sounded (7 short blasts + 1 prolonged blast).
+4. The crew go to their fire stations and take up the positions set out in the muster list.
 
-BOUNDARY COOLING (SINIR SOĞUTMA):
+BOUNDARY COOLING:
 
-Yangının komşu bölmelere yayılmasını önlemek için yangın bulunan bölmenin sınır perdeleri (bulkhead, güverte) dışarıdan su ile soğutulur. Bu uygulama yapısal bütünlüğün korunması için kritiktir.
+To prevent the fire spreading to adjacent compartments, the boundaries (bulkheads, decks) of the compartment on fire are cooled with water from outside. This is critical to preserving structural integrity.
 
-MAKİNE DAİRESİ YANGINI:
+AN ENGINE ROOM FIRE:
 
-1. Yakıt vanalarını kapat (quick closing valves).
-2. Havalandırmayı durdur, damperları kapat.
-3. Bölmedeki personeli tahliye et.
-4. Sabit söndürme sistemini devreye al (CO₂ veya FM-200).
-5. Sınır soğutma uygula.
-6. Yangının söndüğünden emin olmadan bölmeyi açma.
+1. Close the fuel valves (quick closing valves).
+2. Stop the ventilation and close the dampers.
+3. Evacuate all personnel from the space.
+4. Release the fixed extinguishing system (CO₂ or FM-200).
+5. Apply boundary cooling.
+6. Do not open the space until you are sure the fire is out.
 
-YANGIN EKİP ORGANİZASYONU:
+FIRE TEAM ORGANISATION:
 
-No. 1 Ekip (Taarruz): Tam donanımlı yangın söndürme kıyafeti, SCBA (nefes cihazı), yangın hortumu ile müdahale.
-No. 2 Ekip (Yedek/Destek): No. 1 ekibin yedek ekibidir. Sınır soğutma ve lojistik destek.
-No. 3 Ekip (Teknik): Havalandırma kontrolü, vana operasyonları, pompa kontrolü.
-Tıbbi ekip: İlk yardım müdahalesi.
+Team No. 1 (attack): responds in full fire fighting outfit with SCBA (breathing apparatus) and a fire hose.
+Team No. 2 (back-up/support): the back-up team for Team No. 1. Boundary cooling and logistic support.
+Team No. 3 (technical): ventilation control, valve operations, pump control.
+Medical team: first aid.
 
-SCBA KULLANIMI:
+USING SCBA:
 
-Self-Contained Breathing Apparatus, kapalı devre nefes cihazıdır. Yangına müdahale eden personel SCBA takmak zorundadır. Tüp kapasitesi genellikle 30 dakikadır. Giriş öncesi tüp basıncı kontrol edilir. Buddy system (ikili çalışma) zorunludur.`,
+Self-Contained Breathing Apparatus is a closed-circuit breathing set. Personnel fighting a fire must wear SCBA. The cylinder capacity is usually 30 minutes. The cylinder pressure is checked before entry. The buddy system (working in pairs) is mandatory.`,
     keyPoints: [
       "Genel yangın alarmı: 7 kısa + 1 uzun düdük",
       "Makine dairesi yangınında önce yakıt vanaları kapatılır",
@@ -603,46 +603,46 @@ Self-Contained Breathing Apparatus, kapalı devre nefes cihazıdır. Yangına m�
       "Sınır soğutma yangının yayılmasını önlemek için kritiktir",
     ],
     warnings: [
-      "Yangının söndüğünden emin olmadan bölme açılmamalıdır – flashback riski",
+      "The space must not be opened until you are sure the fire is out – the risk of flashback",
       "SCBA olmadan duman dolu alana girilmez",
     ],
   },
   "engine-room-fire": {
     title: "Makine Dairesi Yangınları",
     introduction: "Makine dairesi, gemide en yüksek yangın riskine sahip bölgedir. Yakıt sızıntısı, sıcak yüzeyler ve elektrik arızaları başlıca yangın nedenleridir.",
-    content: `BAŞLICA NEDENLER:
+    content: `THE MAIN CAUSES:
 
-1. Yakıt sızıntısı: Yüksek basınçlı yakıt hattı arızası, flanş sızıntısı veya conta kaçağı sonucu yakıtın sıcak yüzeye (egzoz manifoldu, turboşarj gövdesi) teması. Sıcak yüzey sıcaklığı 220°C'yi aştığında HFO parlama noktasını çoktan geçmiş olur.
+1. Fuel leakage: fuel reaching a hot surface (exhaust manifold, turbocharger casing) after a failure of a high-pressure fuel line, a flange leak or a gasket leak. When a hot surface exceeds 220°C, HFO is already well past its flash point.
 
-2. Yağ sızıntısı: Yağlama yağı veya hidrolik yağ sızıntısı.
+2. Oil leakage: a leak of lubricating oil or hydraulic oil.
 
-3. Elektrik arızası: Kablo izolasyonu bozulması, gevşek bağlantılar, aşırı yük.
+3. Electrical fault: breakdown of cable insulation, loose connections, overload.
 
-4. Ekonomizer yangını: Kurum (soot) birikimi sonucu ekonomizer içinde yangın çıkması.
+4. Economizer fire: a fire inside the economizer caused by a build-up of soot.
 
-5. Scavenge fire: Süpürme havası kanalında yağ ve karbon birikimi sonucu yangın.
+5. Scavenge fire: a fire caused by a build-up of oil and carbon in the scavenge air trunk.
 
-ÖNLEME TEDBİRLERİ:
+PREVENTIVE MEASURES:
 
-Yakıt hattı lagging (ısı yalıtımı): Sıcak yüzeylerin yalıtılması, sızıntı halinde yakıtın sıcak yüzeye ulaşmasını geciktirir.
-Drip tray: Sızıntı toplama tavası; yakıt ve yağ kaçaklarını toplar.
-Quick closing valves: Uzaktan kumandalı hızlı kapama vanaları; yangında yakıt akışını keser.
-Düzenli bakım: Flanş, conta, hortum ve bağlantıların periyodik kontrolü.
-Temizlik: Yağ birikintilerinin düzenli temizlenmesi.
+Fuel line lagging (thermal insulation): lagging hot surfaces delays fuel reaching them in the event of a leak.
+Drip trays: leakage collection trays; they catch fuel and oil leaks.
+Quick closing valves: remotely operated valves; they cut off the fuel flow in a fire.
+Regular maintenance: periodic checks of flanges, gaskets, hoses and connections.
+Cleanliness: regular removal of oil accumulations.
 
-ACİL MÜDAHALE:
+EMERGENCY RESPONSE:
 
-1. Quick closing valve'ları kapat
-2. Yakıt pompalarını durdur
-3. Havalandırma fanlarını durdur, yangın damperlerini kapat
-4. Personeli tahliye et
-5. CO₂ veya FM-200 sistemini devreye al
-6. Sınır soğutma başlat
-7. Makineyi tam olarak izole et
+1. Close the quick closing valves
+2. Stop the fuel pumps
+3. Stop the ventilation fans and close the fire dampers
+4. Evacuate personnel
+5. Release the CO₂ or FM-200 system
+6. Start boundary cooling
+7. Isolate the machinery completely
 
-REİGNITION RİSKİ:
+THE RISK OF RE-IGNITION:
 
-Yangın söndürüldükten sonra sıcak yüzeyler soğumadan bölme açılırsa taze hava girişiyle reignition (yeniden tutuşma) oluşabilir. Bölme en az 24 saat kapalı tutulmalı ve sıcaklık ölçümleri yapılmalıdır.`,
+If the space is opened after the fire has been extinguished but before the hot surfaces have cooled, the fresh air can cause re-ignition. The space must be kept closed for at least 24 hours and temperature readings must be taken.`,
     keyPoints: [
       "Makine dairesi yangınlarının %90'ı yakıt/yağ sızıntısından kaynaklanır",
       "Sıcak yüzey sıcaklığı >220°C ise HFO tutuşma riski yüksektir",
@@ -650,46 +650,46 @@ Yangın söndürüldükten sonra sıcak yüzeyler soğumadan bölme açılırsa 
       "Quick closing valve'lar düzenli test edilmelidir",
     ],
     warnings: [
-      "Söndürme sonrası reignition riski nedeniyle bölme erken açılmamalıdır",
-      "Lagging (yalıtım) hasarlıysa derhal onarılmalıdır",
+      "The space must not be opened early because of the risk of re-ignition after extinguishing",
+      "Damaged lagging (insulation) must be repaired immediately",
     ],
   },
   "fire-drills": {
     title: "Yangın Tatbikatları ve SOLAS Gereksinimleri",
     introduction: "SOLAS III/19.3 gereği yangın tatbikatları düzenli aralıklarla yapılmalı ve tüm mürettebatın katılımı sağlanmalıdır.",
-    content: `TATBİKAT SIKLIĞI:
+    content: `FREQUENCY OF DRILLS:
 
-SOLAS Bölüm III, Kural 19.3.2: Her mürettebat üyesi ayda en az bir yangın tatbikatına katılmalıdır. Mürettebatın %25'inden fazlası bir önceki ay o gemideki tatbikatlara katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde tatbikat yapılmalıdır.
+SOLAS Chapter III, Regulation 19.3.2: every crew member must take part in at least one fire drill each month. If more than 25% of the crew did not take part in the drills on that ship in the previous month, a drill must be held within 24 hours of the ship leaving port.
 
-ZORUNLU TATBİKAT TAKVİMİ (SOLAS III/19.3; yolcu gemilerinde III/30.2):
-- Gemiyi terk (abandon ship) tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
-- Yangın tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
-- Her cankurtarma sandalı denize indirilip suda manevra ettirilmeli: en az 3 ayda 1 (III/19.3.4.3).
-- Kurtarma botu (rescue boat) denize indirilip manevra ettirilmeli: mümkün olduğunca ayda 1, her hâlükârda en az 3 ayda 1 (III/19.3.4.4).
-- Serbest düşüşlü (free-fall) sandal: en az 6 ayda 1 fiili veya benzetilmiş (simulated) indirme tatbikatı.
-- Kapalı alana giriş ve kurtarma tatbikatı: en az 2 ayda 1 (SOLAS III/19.3.3).
-- Her mürettebat üyesi 1 ay içinde bir gemiyi terk tatbikatına katılmalıdır.
+THE MANDATORY DRILL SCHEDULE (SOLAS III/19.3; III/30.2 on passenger ships):
+- Abandon ship drill: at least once a month on cargo ships; weekly on passenger ships.
+- Fire drill: at least once a month on cargo ships; weekly on passenger ships.
+- Every lifeboat must be launched and manoeuvred in the water: at least once every 3 months (III/19.3.4.3).
+- The rescue boat must be launched and manoeuvred: monthly where practicable, and in any case at least once every 3 months (III/19.3.4.4).
+- Free-fall lifeboat: an actual or simulated launching drill at least once every 6 months.
+- Enclosed space entry and rescue drill: at least once every 2 months (SOLAS III/19.3.3).
+- Every crew member must take part in an abandon ship drill within one month.
 
-TATBİKAT İÇERİĞİ:
+DRILL CONTENT:
 
-1. Genel alarm çalınması ve mürettebatın yangın istasyonlarına toplanması
-2. Yangın ekiplerinin tam donanımlı olarak hazırlanması
-3. SCBA kullanımı ve kontrolleri
-4. Yangın hortumu açma, bağlama ve kullanma
-5. Yangın pompası ve sabit söndürme sistemi kontrolü
-6. Havalandırma ve yangın damper kontrolü
-7. Quick closing valve operasyonu
-8. Boundary cooling uygulaması
-9. Acil kaçış yollarının kontrolü
-10. İlk yardım müdahalesi
+1. Sounding the general alarm and mustering the crew at their fire stations
+2. Preparing the fire teams in full outfit
+3. Use and checking of SCBA
+4. Running out, connecting and using a fire hose
+5. Checking the fire pump and the fixed extinguishing system
+6. Ventilation and fire damper control
+7. Operating the quick closing valves
+8. Applying boundary cooling
+9. Checking the emergency escape routes
+10. First aid response
 
-KAYIT VE DOKÜMANTASYON:
+RECORDS AND DOCUMENTATION:
 
-Tüm tatbikatlar Official Log Book'a kaydedilir. Tarihi, süresi, senaryo detayları, katılımcılar ve tespit edilen eksiklikler yazılır. PSC denetiminde tatbikat kayıtları kontrol edilir. Eksiklik durumunda detainable deficiency olarak işlem yapılabilir.
+All drills are entered in the Official Log Book. The date, duration, scenario details, participants and any deficiencies found are recorded. Drill records are checked in PSC inspections. A shortcoming may be treated as a detainable deficiency.
 
-SENARYOLAR:
+SCENARIOS:
 
-Tatbikatlar farklı senaryolarla yapılmalıdır: makine dairesi yangını, galley yangını, akomodasyon yangını, yük ambarı yangını. Her senaryo için farklı söndürme yöntemleri ve ekip koordinasyonu uygulanmalıdır.`,
+Drills must be run with different scenarios: an engine room fire, a galley fire, an accommodation fire, a cargo hold fire. Different extinguishing methods and team coordination must be practised for each scenario.`,
     keyPoints: [
       "Yangın tatbikatı en az ayda bir yapılmalıdır (SOLAS III/19.3)",
       "Mürettebatın %25'i değişirse 24 saat içinde tatbikat zorunludur",
@@ -704,22 +704,22 @@ Tatbikatlar farklı senaryolarla yapılmalıdır: makine dairesi yangını, gall
   "lsa-overview": {
     title: "LSA Code Genel Yapısı",
     introduction: "LSA Code (Life-Saving Appliances Code), SOLAS Bölüm III'ün uygulanması için teknik standartları belirler.",
-    content: `LSA CODE YAPISI:
+    content: `THE STRUCTURE OF THE LSA CODE:
 
-LSA Code, can kurtarma araçlarının tasarım, performans ve test gereksinimlerini kapsar. SOLAS Bölüm III kurallarının zorunlu kıldığı tüm can kurtarma ekipmanlarının teknik özelliklerini tanımlar.
+The LSA Code covers the design, performance and testing requirements for life-saving appliances. It defines the technical specifications of all the life-saving equipment required by the SOLAS Chapter III regulations.
 
-TEMEL KATEGORİLER:
+THE MAIN SECTIONS:
 
-Bölüm I – Genel: Uygulama alanı, tanımlar.
-Bölüm II – Kişisel Can Kurtarma Araçları: Can yeleği, can simidi, dalma elbisesi (immersion suit), thermal protective aid (TPA).
-Bölüm III – Görsel İşaretler: Piroteknik araçlar (paraşüt fişeği, el meşalesi, duman işareti).
-Bölüm IV – Cankurtaran Araçları: Cankurtaran sandal ve sal gereksinimleri.
-Bölüm V – İndirme ve Binme Düzenleri: Davit, vinç ve indirme sistemleri.
-Bölüm VI – Diğer: Fırlatma tipi kurtarma araçları.
+Chapter I – General: scope and definitions.
+Chapter II – Personal life-saving appliances: lifejackets, lifebuoys, immersion suits and thermal protective aids (TPA).
+Chapter III – Visual signals: pyrotechnics (rocket parachute flares, hand flares, smoke signals).
+Chapter IV – Survival craft: requirements for lifeboats and liferafts.
+Chapter V – Launching and embarkation appliances: davits, winches and launching systems.
+Chapter VI – Other appliances: line-throwing appliances.
 
-GENEL GEREKSINIMLER:
+GENERAL REQUIREMENTS:
 
-Tüm can kurtarma araçları deniz koşullarına, UV ışınlarına, sıcaklık değişimlerine ve yağmur suyuna dayanıklı olmalıdır. Retroreflektif bant ile donatılmalıdır. Tüm kişisel can kurtarma araçları IMO onaylı olmalı ve periyodik bakım/test kayıtları tutulmalıdır.`,
+All life-saving appliances must be resistant to the marine environment, UV radiation, temperature variation and rainwater. They must be fitted with retro-reflective tape. All personal life-saving appliances must be IMO approved and records of periodic maintenance/testing must be kept.`,
     keyPoints: [
       "LSA Code, SOLAS III'ün uygulama standardıdır",
       "Tüm LSA ekipmanları IMO onaylı ve retroreflektif bantlı olmalıdır",
@@ -730,35 +730,35 @@ Tüm can kurtarma araçları deniz koşullarına, UV ışınlarına, sıcaklık 
   "lifeboats": {
     title: "Cankurtaran Sandal Tipleri ve Donanımı",
     introduction: "Cankurtaran sandallar, gemiyi terk etme durumunda tüm mürettebat ve yolcuları barındırmak üzere tasarlanmış kapalı veya yarı kapalı teknelerdir.",
-    content: `SANDAL TİPLERİ:
+    content: `TYPES OF LIFEBOAT:
 
-Tamamen kapalı sandal (Totally Enclosed Lifeboat – TELB): SOLAS gereği yük gemilerinde standart tiptir. Devrilme durumunda kendini düzeltebilir (self-righting). Motor, su pompası, havalandırma, ilk yardım malzemesi ve gıda/su bulunur.
+Totally Enclosed Lifeboat (TELB): the standard type on cargo ships under SOLAS. It is self-righting if it capsizes. It has an engine, a water spray pump, ventilation, first aid equipment and food/water.
 
-Kısmi kapalı sandal: Yolcu gemilerinde bulunabilir.
+Partially enclosed lifeboat: may be found on passenger ships.
 
-Serbest düşme sandalı (Free-fall Lifeboat): Tanker ve dökme yük gemilerinde kıç güverteye monte edilir. Belirli bir yükseklikten serbest düşüşle denize atılır. Minimum 1.0g serbest düşüş kapasitesi. Mürettebat özel koltuklara emniyet kemerleri ile bağlanır.
+Free-fall lifeboat: mounted on the after deck of tankers and bulk carriers. It is launched into the sea by free fall from a given height. Minimum free-fall capability of 1.0g. The crew are secured in special seats with harnesses.
 
-SANDAL DONANIMII:
+LIFEBOAT EQUIPMENT:
 
-Zorunlu donanım listesi (kısmi):
-- Motor (6 knot hız kapasitesi)
-- El ve mekanik dümen
-- Pusula ve deniz haritası
-- Yiyecek (10.000 kJ/kişi) ve tatlı su (3 litre/kişi)
-- İlk yardım seti
-- Piroteknik işaretler (4 paraşüt fişeği, 6 el meşalesi, 2 yüzen duman işareti — LSA Code 4.4.8)
-- Radar reflektörü veya SART
-- El feneri ve pil
-- Denizaltı fişeği (2 adet)
-- Kürek, yüzdürme kemeri
-- Deniz çapası (sea anchor)
-- Hayatta kalma el kitabı
+The mandatory equipment list (in part):
+- Engine (capable of 6 knots)
+- Hand and mechanical steering
+- Compass and chart
+- Food (10,000 kJ per person) and fresh water (3 litres per person)
+- First aid kit
+- Pyrotechnic signals (4 rocket parachute flares, 6 hand flares, 2 buoyant smoke signals — LSA Code 4.4.8)
+- Radar reflector or SART
+- Torch and batteries
+- Signalling flares (2)
+- Oars, buoyant lifelines
+- Sea anchor
+- Survival manual
 
-KAPASİTE HESABI:
+CAPACITY CALCULATION:
 
-Yük gemilerinde: Her borda için tüm mürettebatı alacak kapasitede sandal bulunmalıdır. Yani toplam sandal kapasitesi mürettebat sayısının 2 katıdır.
+On cargo ships: there must be lifeboat capacity for the whole crew on each side. The total lifeboat capacity is therefore twice the number of crew.
 
-Yolcu gemilerinde: Farklı gereksinimler uygulanır; sandal + sal kombinasyonu ile toplam kapasite sağlanır.`,
+On passenger ships: different requirements apply; the total capacity is provided by a combination of lifeboats and liferafts.`,
     keyPoints: [
       "Yük gemilerinde her bordada tam mürettebat kapasiteli sandal zorunludur",
       "Serbest düşme sandalı tanker ve dökme yük gemilerinde tercih edilir",
@@ -769,25 +769,25 @@ Yolcu gemilerinde: Farklı gereksinimler uygulanır; sandal + sal kombinasyonu i
   "liferafts": {
     title: "Cankurtaran Salları ve SOLAS Gereksinimleri",
     introduction: "Cankurtaran salları, cankurtaran sandalların kullanılamadığı veya ek kapasite gerektiği durumlarda kullanılan şişirilebilir can kurtarma araçlarıdır.",
-    content: `SAL TİPLERİ:
+    content: `TYPES OF LIFERAFT:
 
-SOLAS A Tipi (Davitli): Davit ile indirilen sal. Yolcu gemilerinde ve büyük yük gemilerinde bulunur. İndirme hızı kontrollüdür.
+SOLAS Type A (davit-launched): a raft launched by davit. Found on passenger ships and large cargo ships. The launching speed is controlled.
 
-SOLAS B Tipi (Atmalı): Geminin borda yüksekliğinden denize atılarak şişirilen sal. Otomatik şişirme mekanizması ile donatılmıştır. Geminin batması durumunda hidrostatik serbest bırakma ünitesi (HRU) ile otomatik olarak serbest kalır ve şişer.
+SOLAS Type B (throw-overboard): a raft thrown into the sea from the ship's side and inflated. It is fitted with an automatic inflation mechanism. If the ship founders, the hydrostatic release unit (HRU) frees it automatically and it inflates.
 
-HİDROSTATİK SERBEST BIRAKMA (HRU):
+THE HYDROSTATIC RELEASE UNIT (HRU):
 
-HRU, gemi 2-4 metre derinliğe battığında su basıncı ile otomatik olarak aktive olur. Bağlama kelepçesini serbest bırakır, sal yüzeye çıkar ve painter halatının gerilmesiyle otomatik şişer. Can salı her 12 ayda bir yetkili serviste bakımdan geçirilir; HRU ise bakımı yapılmayan (disposable) bir parçadır ve üzerinde işaretli son kullanma tarihinde, normalde 2 yılda bir yenilenir.
+The HRU is activated automatically by water pressure when the ship sinks to a depth of 2-4 metres. It releases the securing strap, the raft floats to the surface and inflates automatically as the painter comes taut. The liferaft is serviced at an approved station every 12 months; the HRU is a disposable item that is not serviced and is renewed by the expiry date marked on it, normally every 2 years.
 
-SAL DONANIMI:
+LIFERAFT EQUIPMENT:
 
-Zorunlu donanım SOLAS Pack A veya B olarak ikiye ayrılır:
-Pack A (24 saatten uzun): Su, gıda, kürek, deniz çapası, ilk yardım, piroteknik, tamir takımı, pompa, fener.
-Pack B (24 saate kadar): Daha az gıda/su, temel piroteknik ve donanım.
+The mandatory equipment is divided into SOLAS Pack A or Pack B:
+Pack A (for voyages over 24 hours): water, food, paddles, sea anchor, first aid, pyrotechnics, repair kit, pump, torch.
+Pack B (for voyages up to 24 hours): less food/water, basic pyrotechnics and equipment.
 
-BAKIM VE SERVİS:
+MAINTENANCE AND SERVICING:
 
-Şişirilebilir sallar 12 ayda bir yetkili servis istasyonunda bakıma tabi tutulmalıdır. 5 yılda bir tam test. HRU periyodik olarak değiştirilir. Bakımlar sertifikalı personel tarafından yapılmalıdır.`,
+Inflatable liferafts must be serviced at an approved service station every 12 months. A full test every 5 years. The HRU is replaced periodically. Servicing must be carried out by certified personnel.`,
     keyPoints: [
       "HRU, gemi 2-4 m derinliğe battığında otomatik olarak salı serbest bırakır",
       "Can salı 12 ayda bir serviste bakım görür; HRU bakımsız (disposable) parçadır, normalde 2 yılda bir yenilenir",
@@ -798,25 +798,25 @@ BAKIM VE SERVİS:
   "rescue-boats": {
     title: "Kurtarma Botları",
     introduction: "Kurtarma botları (rescue boats), denize düşen kişilerin veya denizde sürüklenen can kurtarma araçlarının toplanması için tasarlanmış hızlı ve manevra kabiliyeti yüksek teknelerdir.",
-    content: `KURTARMA BOTU GEREKSİNİMLERİ:
+    content: `RESCUE BOAT REQUIREMENTS:
 
-SOLAS III/17.1 gereği her gemide en az bir kurtarma botu bulunmalıdır. Kurtarma botu cankurtaran sandal yerine geçebilir; bu durumda sandal kapasitesi buna göre düzenlenir.
+Under SOLAS III/17.1 every ship must carry at least one rescue boat. A rescue boat may also count as a lifeboat; in that case the lifeboat capacity is arranged accordingly.
 
-TEKNİK ÖZELLİKLER:
+TECHNICAL CHARACTERISTICS:
 
-Minimum 6 knot hız kapasitesi. En az 5 kişi taşıma kapasitesi (1 yaralı yatırılabilmeli). Rijit veya şişirilebilir gövde. Self-righting özelliği (devrilme sonrası kendini düzeltme). Çekme kancası ve emniyet hattı. Motor: Dıştan takma veya içten.
+A minimum speed of 6 knots. Capacity for at least 5 persons (with room for one casualty lying down). A rigid or inflated hull. Self-righting capability. A towing hook and a lifeline. Engine: outboard or inboard.
 
-KULLANIM ALANLARI:
+USES:
 
-1. Denize düşen kişinin kurtarılması (MOB)
-2. Denizde sürüklenen salların toplanması
-3. Kıyıya yakın arama operasyonları
-4. SAR destek operasyonları
-5. Kılavuz transferi (pilot ladder ile birlikte)
+1. Recovering a person overboard (MOB)
+2. Collecting liferafts drifting at sea
+3. Inshore search operations
+4. SAR support operations
+5. Pilot transfer (together with the pilot ladder)
 
-İNDİRME VE BIRAKMA:
+LAUNCHING AND RELEASE:
 
-Kurtarma botu, davit sistemi ile hızlıca indirilebilmelidir. SOLAS gereği 5 dakika içinde indirilmesi ve hazır hale getirilmesi gerekir. Denize düşme alarmı verildiğinde kurtarma botu ekibi derhal göreve hazırlanmalıdır.`,
+The rescue boat must be capable of being launched quickly by its davit system. SOLAS requires it to be launched and made ready within 5 minutes. When the man overboard alarm is given the rescue boat crew must prepare immediately.`,
     keyPoints: [
       "Her gemide en az bir kurtarma botu zorunludur (SOLAS III/17.1)",
       "5 dakika içinde denize indirilebilmelidir",
@@ -827,30 +827,30 @@ Kurtarma botu, davit sistemi ile hızlıca indirilebilmelidir. SOLAS gereği 5 d
   "personal-lsa": {
     title: "Kişisel Can Kurtarma Teçhizatı",
     introduction: "Kişisel can kurtarma teçhizatı, denize düşme veya gemiyi terk etme durumunda bireyin hayatta kalma şansını artıran ekipmanlardır.",
-    content: `CAN YELEĞİ (LIFE JACKET):
+    content: `LIFEJACKET:
 
-SOLAS gereği gemideki her kişi için bir can yeleği, ayrıca vardiya pozisyonlarında ek yelek bulundurulmalıdır. Yolcu gemilerinde çocuk yelekleri de zorunludur.
+SOLAS requires a lifejacket for every person on board, plus additional jackets at the watch positions. Children's lifejackets are also mandatory on passenger ships.
 
-Performans gereksinimleri: Bilinci kapalı kişiyi 5 saniye içinde ağzı su yüzeyinin üstünde kalacak şekilde yüzü yukarı (sırtüstü) güvenli pozisyona çevirebilmeli. En az 15.5 kg kaldırma kuvveti. Düdük, ışık (1 cd, 8 saat) ve retroreflektif bant ile donatılmış olmalı.
+Performance requirements: it must turn an unconscious person into a safe face-up position with the mouth clear of the water within 5 seconds. At least 15.5 kg of buoyancy. It must be fitted with a whistle, a light (1 cd, 8 hours) and retro-reflective tape.
 
-CAN SİMİDİ (LIFE BUOY):
+LIFEBUOY:
 
-Asgari can simidi sayısı gemi boyuna göre belirlenir. En az 2 adedi her bordada, hızla denize bırakılabilir konumda. En az yarısı MOB (man-overboard) ışığı ile, en az 2 adedi ayrıca otomatik duman işareti ile donatılmış olmalı; en az 1 adedi 30 metre yüzer halatlı (buoyant line) olmalıdır.
+The minimum number of lifebuoys is set by the length of the ship. At least 2 on each side, stowed so that they can be released quickly. At least half must be fitted with a man-overboard (MOB) light and at least 2 also with an automatic smoke signal; at least 1 must have a 30-metre buoyant line.
 
-Asgari sayı tablosu (SOLAS III):
-- Yük gemileri (Kural 32): <100 m = 8; 100-150 m = 10; 150-200 m = 12; ≥200 m = 14.
-- Yolcu gemileri (Kural 22): <60 m = 8; 60-120 m = 12; 120-180 m = 18; 180-240 m = 24; ≥240 m = 30.
+Minimum numbers (SOLAS III):
+- Cargo ships (Regulation 32): <100 m = 8; 100-150 m = 10; 150-200 m = 12; ≥200 m = 14.
+- Passenger ships (Regulation 22): <60 m = 8; 60-120 m = 12; 120-180 m = 18; 180-240 m = 24; ≥240 m = 30.
 
-PİROTEKNİK İŞARETLER (Gemi seviyesi):
-Köprüüstünde veya yakınında en az 12 paraşütlü işaret fişeği (rocket parachute flare) bulundurulur (SOLAS III/6.3). Bu, her filikada bulunan piroteknik donanımdan (4 paraşütlü işaret fişeği, 6 el maytabı, 2 yüzer duman işareti) ayrıdır.
+PYROTECHNIC SIGNALS (ship level):
+At least 12 rocket parachute flares are carried on or near the bridge (SOLAS III/6.3). These are separate from the pyrotechnics carried in each lifeboat (4 rocket parachute flares, 6 hand flares, 2 buoyant smoke signals).
 
-DALMA ELBİSESİ (IMMERSION SUIT):
+IMMERSION SUIT:
 
-Soğuk sularda gemiyi terk etme durumunda vücut ısısını korumak için tasarlanmıştır. Dar su geçirmez elbise. Vücut sıcaklığı kaybını 6 saat boyunca 2°C'nin altında tutar. Can yeleği olmadan 70 N kaldırma kuvveti sağlar. SOLAS gereği soğuk sularda seyreden gemilerde zorunludur.
+Designed to preserve body heat when abandoning ship in cold water. A close-fitting watertight suit. It keeps the fall in body temperature below 2°C for 6 hours. It provides 70 N of buoyancy without a lifejacket. Mandatory under SOLAS on ships operating in cold waters.
 
-TERMAL KORUYUCU (TPA – Thermal Protective Aid):
+THERMAL PROTECTIVE AID (TPA):
 
-Su geçirmez, rüzgar geçirmez torba şeklinde giysi. İmmersion suit bulunmayan kişiler için salda veya sandalda kullanılır. Vücut ısı kaybını yavaşlatır.`,
+A waterproof, windproof bag-shaped garment. Used in a liferaft or lifeboat by persons without an immersion suit. It slows the loss of body heat.`,
     keyPoints: [
       "Her kişi için bir can yeleği + vardiya pozisyonlarında ek yelek zorunludur",
       "Can yeleği 5 saniye içinde yüzüstü pozisyon sağlamalıdır",
@@ -861,21 +861,21 @@ Su geçirmez, rüzgar geçirmez torba şeklinde giysi. İmmersion suit bulunmaya
   "pyrotechnics": {
     title: "Piroteknik İşaret Araçları",
     introduction: "Piroteknik işaret araçları, denizde tehlike durumunda görsel sinyal vererek kurtarma operasyonlarını yönlendirmek için kullanılır.",
-    content: `PİROTEKNİK TÜRLER:
+    content: `TYPES OF PYROTECHNIC:
 
-PARAŞÜT FİŞEĞİ (Rocket Parachute Flare): En az 300 metre yüksekliğe fırlatılır. Paraşütle inerek en az 40 saniye boyunca minimum 30.000 kandela kırmızı ışık yayar. Gece ve gündüz görülebilir. 40 km mesafeden tespit edilebilir. Rüzgara karşı hafif eğik açı ile ateşlenir.
+ROCKET PARACHUTE FLARE: fired to a height of at least 300 metres. It descends by parachute, burning red at a minimum of 30,000 candela for at least 40 seconds. Visible by day and night. It can be seen from 40 km. It is fired at a slight angle into the wind.
 
-EL MESALESİ (Hand Flare): El ile tutulan kırmızı meşale. En az 1 dakika boyunca 15.000 kandela ışık yayar. Yakın mesafe işaretlemesi için kullanılır. Kurtarma helikopteri veya gemisine konum göstermek için etkilidir.
+HAND FLARE: a red flare held in the hand. It burns at 15,000 candela for at least 1 minute. Used for marking a position at short range. Effective for showing your position to a rescue helicopter or ship.
 
-YÜZEN DUMAN İŞARETİ (Buoyant Smoke Signal): Turuncu renkli duman yayar. En az 3 dakika süreyle etkilidir. Gündüz saatlerinde kullanılır. Deniz yüzeyine bırakılır, rüzgar yönünde duman yayılır.
+BUOYANT SMOKE SIGNAL: emits orange smoke. Effective for at least 3 minutes. Used in daylight. It is put into the water and the smoke drifts downwind.
 
-KULLANIM KURALLARI:
+RULES OF USE:
 
-Piroteknik araçlar seri numarası ve son kullanma tarihi ile etiketlenmiştir. Son kullanma tarihinden sonra kullanılmamalıdır (ancak gemide yedek olarak bulundurulabilir). Kullanırken rüzgarın yönüne dikkat edilmelidir. Paraşüt fişeği rüzgar altına doğru ateşlenmeli, yanarak gemiye düşmesi önlenmelidir.
+Pyrotechnics are marked with a serial number and an expiry date. They must not be used after the expiry date (although they may be kept on board as spares). The wind direction must be watched when using them. A rocket parachute flare must be fired to leeward so that it does not fall burning onto the ship.
 
-STCW GEREKSİNİMLERİ:
+STCW REQUIREMENTS:
 
-Tüm gemiadamları piroteknik araçların kullanımı konusunda eğitim almak zorundadır. Tatbikat sırasında süresi dolmuş piroteknik araçlarla pratik yapılabilir.`,
+All seafarers must be trained in the use of pyrotechnics. Expired pyrotechnics may be used for practice during drills.`,
     keyPoints: [
       "Paraşüt fişeği 300 m yüksekliğe fırlatılır, 40+ saniye yanar",
       "El meşalesi yakın mesafe, paraşüt fişeği uzak mesafe için kullanılır",
@@ -886,23 +886,23 @@ Tüm gemiadamları piroteknik araçların kullanımı konusunda eğitim almak zo
   "lsa-maintenance": {
     title: "LSA Bakım ve Muayene",
     introduction: "Can kurtarma araçlarının güvenilirliği, düzenli bakım, muayene ve test ile sağlanır. SOLAS III/20 bakım gereksinimlerini tanımlar.",
-    content: `HAFTALIK KONTROLLER:
+    content: `WEEKLY CHECKS:
 
-Her hafta tüm can kurtarma araçları ve indirme donanımı görsel olarak kontrol edilir. Can sandal motorları çalıştırılır (en az 3 dakika). Quick closing valve'lar, indirme teleri ve kancalar kontrol edilir. Kayıtlar Log Book'a işlenir.
+All life-saving appliances and launching gear are inspected visually every week. The lifeboat engines are run (at least 3 minutes). The quick closing valves, falls and hooks are checked. The results are entered in the log book.
 
-AYLIK KONTROLLER:
+MONTHLY CHECKS:
 
-Can yeleği, can simidi, piroteknik stokları kontrol edilir. EPIRB ve SART test edilir. Radyo ekipmanı test edilir. Acil aydınlatma kontrol edilir.
+Lifejackets, lifebuoys and pyrotechnic stocks are checked. The EPIRB and SART are tested. The radio equipment is tested. The emergency lighting is checked.
 
-YILLIK KONTROLLER:
+ANNUAL CHECKS:
 
-Davit ve vinçlerin yük testi (5 yılda bir). Wire rope'ların muayenesi ve değişim kaydı. Cankurtaran sandallarının tam fonksiyonel testi (motor, donanım, su geçirmezlik).
+Load testing of davits and winches (every 5 years). Inspection of the wire ropes and the record of renewal. Full functional testing of the lifeboats (engine, equipment, watertightness).
 
-SANDAL BAKIM:
+LIFEBOAT MAINTENANCE:
 
-Haftalık motor çalıştırma. Aylık donanım kontrolü. Yıllık üretici onaylı servis. Davit vinç yağlama ve wire muayene. On-load ve off-load release gear testi.
+Weekly engine running. Monthly equipment check. Annual maker-approved servicing. Greasing the davit winch and inspecting the wires. Testing the on-load and off-load release gear.
 
-ÖNEMLİ NOT: MSC.1/Circ.1206 gereği cankurtaran sandallarının bakımı üretici yetkili servis istasyonları tarafından yapılmalıdır. Yetkilendirilmemiş bakım güvenlik riski oluşturur ve SOLAS ihlali sayılır.`,
+IMPORTANT NOTE: under MSC.1/Circ.1206 lifeboats must be serviced by maker-authorised service stations. Unauthorised servicing creates a safety risk and is a SOLAS breach.`,
     keyPoints: [
       "Haftalık motor çalıştırma, aylık donanım kontrolü zorunludur",
       "Sandal bakımı üretici yetkili servis istasyonları tarafından yapılmalıdır",
@@ -917,20 +917,20 @@ Haftalık motor çalıştırma. Aylık donanım kontrolü. Yıllık üretici ona
   "abandon-decision": {
     title: "Terk Kararı ve Yetki Zinciri",
     introduction: "Gemiyi terk etme kararı, en son çare olarak verilir ve yalnızca gemi kaptanının yetkisindedir.",
-    content: `KARAR SÜRECİ:
+    content: `THE DECISION PROCESS:
 
-Gemiyi terk etme kararı, geminin artık mürettebat ve yolcuların güvenliğini sağlayamayacağı durumda verilir. Kaptan, tüm alternatifleri değerlendirdikten sonra bu kararı verir. Temel kural: "Gemi, cankurtaran sandaldan daha büyük bir cankurtaran sandalıdır" – gemide kalma her zaman tercih edilir, terk etme son çaredir.
+The decision to abandon ship is taken when the ship can no longer provide for the safety of the crew and passengers. The master takes this decision after weighing all the alternatives. The basic rule: "the ship is a bigger lifeboat than the lifeboat" – staying on board is always preferable and abandoning ship is the last resort.
 
-TERK KARARININ VERİLDİĞİ DURUMLAR:
+WHEN THE DECISION TO ABANDON IS TAKEN:
 
-1. Kontrol edilemeyen yangın
-2. Geniş çaplı su alma ve batma riski
-3. Yapısal bütünlüğün ciddi tehlikede olması
-4. Kontrol edilemeyen gaz sızıntısı veya kimyasal tehlike
+1. An uncontrollable fire
+2. Extensive flooding and the risk of foundering
+3. Structural integrity seriously in doubt
+4. An uncontrollable gas leak or chemical hazard
 
-YETKİ ZİNCİRİ:
+THE CHAIN OF AUTHORITY:
 
-Terk kararı yalnızca kaptan tarafından verilir. Kaptanın yokluğu veya görev yapamaz durumda olması halinde başkaptan (chief officer) bu yetkiyi devralır. Terk emri genel alarm ve PA sistemiyle tüm gemiye duyurulur.`,
+The decision to abandon ship is taken by the master alone. If the master is absent or unable to act, the chief officer assumes this authority. The order to abandon is announced throughout the ship by the general alarm and the PA system.`,
     keyPoints: [
       "Gemiyi terk etme kararı yalnızca kaptan tarafından verilir",
       "Gemi en büyük cankurtaran aracıdır – terk etme son çaredir",
@@ -941,28 +941,28 @@ Terk kararı yalnızca kaptan tarafından verilir. Kaptanın yokluğu veya göre
   "muster-stations": {
     title: "Toplanma İstasyonları ve Görev Dağılımı",
     introduction: "Acil durum toplanma istasyonları ve mürettebat görev dağılımı, Muster List (Emergency Station Bill) ile belirlenir.",
-    content: `MUSTER LIST:
+    content: `THE MUSTER LIST:
 
-SOLAS III/8 gereği her gemide bir Muster List bulunmalıdır. Görev dağılımı mürettebat listesine göre hazırlanır ve herkesin görevi açık şekilde tanımlanır. Muster List, köprüüstü, makine dairesi kontrol odası ve mürettebat yaşam alanlarında asılı olmalıdır.
+Under SOLAS III/8 every ship must have a muster list. The allocation of duties is drawn up against the crew list and every person's duty is clearly defined. The muster list must be posted on the bridge, in the engine control room and in the crew accommodation.
 
-GÖREV GRUPLARI:
+DUTY GROUPS:
 
-1. Köprüüstü ekibi: Haberleşme, alarm kontrolü, seyir güvenliği
-2. Makine dairesi ekibi: Yakıt kesme, havalandırma kontrolü, pompa operasyonu
-3. Can kurtarma ekibi: Sandal/sal hazırlama ve indirme
-4. Yangın ekibi: Yangınla mücadele
-5. Tıbbi ekip: İlk yardım, tıbbi müdahale
-6. Yolcu rehberlik ekibi (yolcu gemilerinde): Yolcuları toplanma noktalarına yönlendirme
+1. Bridge team: communications, alarm control, safety of navigation
+2. Engine room team: shutting off fuel, ventilation control, pump operation
+3. Survival craft team: preparing and launching the boats/rafts
+4. Fire team: fire fighting
+5. Medical team: first aid, medical response
+6. Passenger guidance team (on passenger ships): directing passengers to the muster stations
 
-TOPLANMA İSTASYONLARI:
+MUSTER STATIONS:
 
-Her toplanma noktası açıkça işaretlenmiş ve aydınlatılmış olmalıdır. IMO sembolleri kullanılır. Toplanma istasyonundan embarkasyon (binme) noktasına erişim kolay olmalıdır.
+Every muster station must be clearly marked and lit. IMO symbols are used. Access from the muster station to the embarkation point must be easy.
 
-ALARM İŞARETLERİ:
+ALARM SIGNALS:
 
-Genel alarm: 7 kısa + 1 uzun düdük sesi
-Yangın alarmı: Sürekli çalan zil/düdük
-Gemiyi terk alarmı: Genel alarm + PA ile terk emri`,
+General alarm: 7 short blasts + 1 prolonged blast
+Fire alarm: a continuously ringing bell/whistle
+Abandon ship: the general alarm plus the order to abandon over the PA`,
     keyPoints: [
       "Muster List (Acil Durum Görev Listesi) her gemide zorunludur",
       "Genel alarm: 7 kısa + 1 uzun düdük sesi",
@@ -973,21 +973,21 @@ Gemiyi terk alarmı: Genel alarm + PA ile terk emri`,
   "abandon-procedure": {
     title: "Gemiyi Terk Prosedürü",
     introduction: "Gemiyi terk etme prosedürü, kaptan emri ile başlayan ve standart adımlarla yürütülen hayati bir süreçtir.",
-    content: `TERK PROSEDÜRÜ ADIMLARI:
+    content: `THE ABANDON SHIP PROCEDURE, STEP BY STEP:
 
-1. HAZIRLIK: Kaptan terk kararı verir ve genel alarm çalınır. MAYDAY çağrısı yapılır. EPIRB aktive edilir. SART hazırlanır.
+1. PREPARATION: the master gives the order to abandon and the general alarm is sounded. A MAYDAY call is made. The EPIRB is activated. The SART is made ready.
 
-2. TOPLANMA: Mürettebat ve yolcular toplanma istasyonlarına gelir. Can yelekleri giyilir. Yoklama yapılır. İmmersion suit giyme durumu değerlendirilir.
+2. MUSTERING: crew and passengers go to the muster stations. Lifejackets are put on. A roll call is taken. Whether to don immersion suits is assessed.
 
-3. EMBARKASYON: Sandal/sal ekipleri görev yerlerine geçer. Davit sistemleri hazırlanır. Embarkasyon merdiveni veya rampa kullanılır. Öncelik: yaralılar, çocuklar, kadınlar, yaşlılar.
+3. EMBARKATION: the boat/raft crews go to their stations. The davit systems are prepared. The embarkation ladder or ramp is used. Priority: the injured, children, women, the elderly.
 
-4. BIRAKMA: Davit ile kontrollü indirme. Sandal denize ulaştığında kanca serbest bırakılır (on-load release). Sal atılır (throw-over veya davit indirme). Serbest düşme sandal ise release mekanizması aktive edilir.
+4. LAUNCHING: controlled lowering by davit. The hooks are released when the boat reaches the water (on-load release). Rafts are launched (thrown overboard or lowered by davit). For a free-fall lifeboat the release mechanism is activated.
 
-5. UZAKLAŞMA: Sandallar ve sallar gemiden en az 200 metre uzaklaşır (emme etkisi ve patlama riski). Sal ve sandallar bir araya toplanır. Deniz çapası atılır. Hayatta kalma prosedürleri başlatılır.
+5. CLEARING THE SHIP: the boats and rafts move at least 200 metres away from the ship (suction effect and the risk of explosion). The rafts and boats gather together. The sea anchor is streamed. Survival procedures begin.
 
-ÖNEMLİ İLKELER:
+IMPORTANT PRINCIPLES:
 
-Gemiden denize atlamak son çaredir. Atlanacaksa: can yeleği sıkıca bağlanır, ağız ve burun bir elle kapatılır, ayaklar birleştirilir, maksimum 5 metreden atlanır. Rüzgar altı tarafından atlanır.`,
+Jumping into the sea from the ship is a last resort. If you must jump: the lifejacket is secured tightly, the mouth and nose are covered with one hand, the feet are held together and the jump is from no more than 5 metres. Jump from the lee side.`,
     keyPoints: [
       "MAYDAY çağrısı ve EPIRB aktivasyonu ilk adımlardır",
       "Gemiden en az 200 metre uzaklaşılmalıdır",
@@ -998,31 +998,31 @@ Gemiden denize atlamak son çaredir. Atlanacaksa: can yeleği sıkıca bağlanı
   "launching-boats": {
     title: "Sandal ve Sal İndirme Teknikleri",
     introduction: "Cankurtaran sandal ve sallarının güvenli ve hızlı şekilde denize indirilmesi, düzenli eğitim ve tatbikat gerektiren kritik bir beceridir.",
-    content: `SANDAL İNDİRME (DAVİT İLE):
+    content: `LAUNCHING A LIFEBOAT (BY DAVIT):
 
-1. Sandal örtüsü açılır, gripe'ler serbest bırakılır.
-2. Embarkasyon (binme) yapılır. Personel tam donanımlı olarak biner.
-3. Davit kolu çevrilerek sandal borda dışına çıkarılır.
-4. Wire fren kontrol edilir, sandal kontrollü olarak denize indirilir.
-5. Deniz yüzeyinde kanca serbest bırakılır (on-load release).
-6. Painter (bağlama halatı) kesilir.
-7. Motor çalıştırılır, gemiden uzaklaşılır.
+1. The boat cover is removed and the gripes are released.
+2. Embarkation takes place. The crew board fully equipped.
+3. The davit arm is turned to swing the boat outboard.
+4. The wire brake is checked and the boat is lowered to the water under control.
+5. The hooks are released at the water surface (on-load release).
+6. The painter is cut.
+7. The engine is started and the boat clears the ship.
 
-SERBEST DÜŞME SANDALI:
+THE FREE-FALL LIFEBOAT:
 
-1. Mürettebat özel koltulklara oturur, emniyet kemerlerini bağlar.
-2. Kaptan terk emri onaylar.
-3. Release mekanizması aktive edilir.
-4. Sandal rampadan kayarak serbest düşüşle denize iner.
-5. Su ile temasta şok absorbe edilir.
-6. Motor çalıştırılır, gemiden uzaklaşılır.
+1. The crew sit in the special seats and fasten their harnesses.
+2. The master confirms the order to abandon.
+3. The release mechanism is activated.
+4. The boat slides down the ramp and enters the water in free fall.
+5. The impact with the water is absorbed.
+6. The engine is started and the boat clears the ship.
 
-SAL İNDİRME:
+LAUNCHING A LIFERAFT:
 
-Atmalı sal: Konteyner tutucusu serbest bırakılır, sal denize atılır, painter halatı çekilerek şişirilir. HRU ile otomatik bırakma da mümkündür.
-Davitli sal: Davit ile kontrollü indirilir, embarkasyon güverte seviyesinde yapılır.
+Throw-overboard raft: the container securing is released, the raft is thrown into the sea and inflated by pulling the painter. Automatic release by HRU is also possible.
+Davit-launched raft: lowered under control by davit, with embarkation at deck level.
 
-ÖNEMLİ: On-load release mekanizması, sandalın su üzerindeyken ağırlık altında kancadan kurtulmasını sağlar. Bu mekanizmanın düzgün çalışması hayati önem taşır. Düzenli test ve bakım zorunludur.`,
+IMPORTANT: the on-load release mechanism allows the boat to be released from the hooks under load while it is in the water. The correct operation of this mechanism is vital. Regular testing and maintenance are mandatory.`,
     keyPoints: [
       "On-load release mekanizmasının düzgün çalışması hayati önemdedir",
       "Serbest düşme sandalında emniyet kemeri bağlanması zorunludur",
@@ -1033,25 +1033,25 @@ Davitli sal: Davit ile kontrollü indirilir, embarkasyon güverte seviyesinde ya
   "survival-at-sea": {
     title: "Denizde Hayatta Kalma",
     introduction: "Gemiyi terk ettikten sonra kurtarılana kadar geçen sürede hayatta kalma, fiziksel ve psikolojik hazırlık gerektirir.",
-    content: `HAYATTA KALMA ÖNCELİKLERİ:
+    content: `SURVIVAL PRIORITIES:
 
-1. KORUMA: Hipotermi, güneş çarpması ve yaralanmadan korunma. İmmersion suit veya TPA kullanımı. Sal tentesinin kapatılması.
-2. YER BİLDİRME: EPIRB, SART, piroteknik işaretler, ayna (heliograph), düdük.
-3. SU: Tatlı su yönetimi en kritik unsurdur. Yetişkin kişi günde minimum 0.5 litre suyla hayatta kalabilir. İlk 24 saat su içilmez (vücut deposu yeterlidir).
-4. GIDA: Acil gıda rasyonu. Protein sindirimi su tüketimini artırdığından, su kısıtlı ise balık yenmemelidir.
+1. PROTECTION: protection from hypothermia, sunstroke and injury. Use of an immersion suit or TPA. Closing the raft canopy.
+2. LOCATION: EPIRB, SART, pyrotechnics, a heliograph mirror, a whistle.
+3. WATER: managing the fresh water is the most critical element. An adult can survive on a minimum of 0.5 litres of water a day. No water is drunk in the first 24 hours (the body's reserves are sufficient).
+4. FOOD: emergency food rations. Because digesting protein increases water consumption, fish must not be eaten when water is short.
 
-HİPOTERMİ:
+HYPOTHERMIA:
 
-Vücut çekirdek sıcaklığının 35°C'nin altına düşmesidir. Su, havadan 25 kat daha hızlı ısı iletir. 15°C sudaki bir kişi can yeleği ile 4-6 saat, immersion suit ile 12+ saat hayatta kalabilir.
+Hypothermia is a fall in the body's core temperature below 35°C. Water conducts heat 25 times faster than air. A person in water at 15°C can survive for 4-6 hours in a lifejacket and 12+ hours in an immersion suit.
 
-HEAT (Yardım) Pozisyonu: Bacaklar göğse çekilir, kollar vücuda sarılır. Vücut ısı kaybını %50 azaltır.
-HUDDLE Pozisyonu: Grup halinde birbirine sarılma. Isı kaybını daha da azaltır.
+The HELP position: the legs are drawn up to the chest and the arms wrapped around the body. It reduces heat loss by 50%.
+The HUDDLE position: huddling together as a group. It reduces heat loss still further.
 
-PSİKOLOJİK FAKTÖRLER:
+PSYCHOLOGICAL FACTORS:
 
-Liderlik: Sandalda/salda bir kişi lider olarak belirlenir.
-Görev dağılımı: Nöbet, su dağıtımı, gözcülük gibi görevler.
-Moral: Hayatta kalma iradesi en önemli faktördür. Çaresizlik duygusuna kapılmamak için düzenli aktivite ve iletişim sürdürülür.`,
+Leadership: one person is appointed leader in the boat/raft.
+Allocation of duties: watchkeeping, water distribution, lookout.
+Morale: the will to survive is the single most important factor. Regular activity and communication are maintained to keep despair at bay.`,
     keyPoints: [
       "HEAT pozisyonu ısı kaybını %50 azaltır",
       "Su yönetimi en kritik hayatta kalma faktörüdür",
@@ -1062,40 +1062,40 @@ Moral: Hayatta kalma iradesi en önemli faktördür. Çaresizlik duygusuna kapı
   "hypothermia": {
     title: "Hipotermi ve Soğuk Su Şoku",
     introduction: "Hipotermi, denizde can kaybının en önemli nedenlerinden biridir. Vücut çekirdek sıcaklığının 35°C'nin altına düşmesi olarak tanımlanır.",
-    content: `HİPOTERMİ EVRELERİ:
+    content: `STAGES OF HYPOTHERMIA:
 
-Hafif hipotermi (35-32°C): Titreme, el becerisi kaybı, kas sertliği. Kişi bilinçlidir ancak karar verme yeteneği azalmıştır.
+Mild hypothermia (35-32°C): shivering, loss of manual dexterity, muscle stiffness. The person is conscious but their judgement is impaired.
 
-Orta hipotermi (32-28°C): Titreme durur, şiddetli kas sertliği, bilinç bulanıklığı, uyuşukluk. Kalp ritim bozuklukları başlayabilir.
+Moderate hypothermia (32-28°C): shivering stops, severe muscle rigidity, confusion, drowsiness. Cardiac arrhythmias may begin.
 
-Ağır hipotermi (28°C altı): Bilinç kaybı, düzensiz kalp atışı, solunumun yavaşlaması. Ölüm riski çok yüksektir.
+Severe hypothermia (below 28°C): loss of consciousness, irregular heartbeat, slowed breathing. The risk of death is very high.
 
-SOĞUK SU ŞOKU (Cold Shock Response):
+COLD SHOCK RESPONSE:
 
-Soğuk suya ani daldırma ilk 1-3 dakikada soğuk su şokuna neden olur: İstemsiz nefes alma refleksi (gasping), hiperventilasyon, kalp hızında ani artış. Bu dönemde boğulma riski en yüksektir. Can yeleği bu aşamada hayat kurtarır.
+Sudden immersion in cold water causes cold shock in the first 1-3 minutes: an involuntary gasp reflex, hyperventilation and a sudden rise in heart rate. The risk of drowning is highest during this period. A lifejacket saves lives at this stage.
 
-HAYATTA KALMA SÜRELERİ (yaklaşık):
+SURVIVAL TIMES (approximate):
 
-Su sıcaklığı → Can yeleği ile ortalama hayatta kalma süresi:
-0-2°C → 15-45 dakika
-2-4°C → 30-90 dakika
-4-10°C → 1-3 saat
-10-15°C → 2-6 saat
-15-20°C → 6-12 saat
-20°C üzeri → Belirsiz (uzun süre)
+Water temperature → average survival time with a lifejacket:
+0-2°C → 15-45 minutes
+2-4°C → 30-90 minutes
+4-10°C → 1-3 hours
+10-15°C → 2-6 hours
+15-20°C → 6-12 hours
+Above 20°C → indefinite (a long time)
 
-İLK YARDIM:
+FIRST AID:
 
-1. Kişi yavaşça sudan çıkarılır (rescue collapse riski)
-2. Islak giysiler çıkarılır, kuru örtü/battaniye ile sarılır
-3. Pasif ısıtma uygulanır (vücut kendi ısısıyla ısınır)
-4. Sıcak tatlı içecek verilebilir (bilinç açıksa)
-5. Aktif dış ısıtma uygulanmaz (afterdrop riski)
-6. Kalp masajı ve CPR yalnızca belirtiler tamamen kaybolmuşsa uygulanır
+1. The person is lifted from the water slowly (the risk of rescue collapse)
+2. Wet clothing is removed and they are wrapped in a dry cover/blanket
+3. Passive rewarming is applied (the body warms with its own heat)
+4. A warm sweet drink may be given (if conscious)
+5. Active external rewarming is not applied (the risk of afterdrop)
+6. Chest compressions and CPR are given only if all signs of life have gone
 
 RESCUE COLLAPSE:
 
-Sudan çıkarıldıktan sonraki ilk dakikalarda tansiyon düşmesi ve kalp durması riski. Kişi yatay pozisyonda çıkarılmalı ve ani hareketlerden kaçınılmalıdır.`,
+The risk of a drop in blood pressure and cardiac arrest in the first minutes after recovery from the water. The person must be lifted horizontally and sudden movement avoided.`,
     keyPoints: [
       "Soğuk su şoku ilk 1-3 dakikada boğulma riski yaratır",
       "Can yeleği soğuk su şoku sırasında hayat kurtarır",
@@ -1103,8 +1103,8 @@ Sudan çıkarıldıktan sonraki ilk dakikalarda tansiyon düşmesi ve kalp durma
       "Rescue collapse: sudan çıkışta kalp durması riski – yatay pozisyonda çıkarın",
     ],
     warnings: [
-      "Hipotermik kişiye alkol verilmez – damar genişlemesi ısı kaybını artırır",
-      "Aktif dış ısıtma (sıcak su torbası vb.) afterdrop riski nedeniyle tehlikelidir",
+      "Never give alcohol to a hypothermic casualty – vasodilation increases heat loss",
+      "Active external rewarming (hot water bottles, etc.) is dangerous because of the risk of afterdrop",
     ],
   },
 
@@ -1114,25 +1114,25 @@ Sudan çıkarıldıktan sonraki ilk dakikalarda tansiyon düşmesi ve kalp durma
   "first-aid-basics": {
     title: "Temel İlk Yardım Prensipleri",
     introduction: "Denizde ilk yardım, tıbbi yardıma ulaşmanın sınırlı olduğu ortamda yaralanma ve hastalıklara ilk müdahaleyi kapsar.",
-    content: `DR ABC PRENSİBİ:
+    content: `THE DR ABC PRINCIPLE:
 
-D – Danger (Tehlike): Olay yerinin güvenliğini değerlendir. Kendi güvenliğin önceliklidir.
-R – Response (Yanıt): Kişinin bilincini kontrol et. Omuzlarından hafifçe sarsarak ve sesli çağırarak yanıt ara.
-A – Airway (Hava Yolu): Hava yolunun açık olduğundan emin ol. Baş geri, çene yukarı.
-B – Breathing (Solunum): Solunumu kontrol et. Bak, dinle, hisset (10 saniye).
-C – Circulation (Dolaşım): Nabız kontrolü. Büyük kanama varsa baskı uygula.
+D – Danger: assess the safety of the scene. Your own safety comes first.
+R – Response: check the casualty's level of consciousness. Shake the shoulders gently and call out for a response.
+A – Airway: make sure the airway is open. Head back, chin up.
+B – Breathing: check for breathing. Look, listen and feel (10 seconds).
+C – Circulation: check the pulse. Apply pressure to any major bleeding.
 
-ÖNCELİK SIRALAMA (TRIAGE):
+TRIAGE:
 
-Birden fazla yaralı varsa öncelik sıralaması yapılır:
-Kırmızı (acil): Hayati tehlike, hemen müdahale
-Sarı (geciktirilebilir): Ciddi yaralanma, stabil
-Yeşil (hafif): Ayaktan tedavi
-Siyah: Hayati belirtisi yok
+Where there is more than one casualty, priorities are set:
+Red (immediate): life-threatening, treat at once
+Yellow (delayed): serious injury, stable
+Green (minor): walking wounded
+Black: no signs of life
 
-GEMİDE TIBBI ORGANİZASYON:
+MEDICAL ORGANISATION ON BOARD:
 
-Kaptan gemideki tıbbi müdahaleden sorumludur (MLC 2006, STCW). Gemide eğitimli ilk yardımcı bulunmalıdır. Ship Captain's Medical Guide referans kitaptır. Tele-tıbbi danışmanlık (TMAS) 24 saat hizmet verir.`,
+The master is responsible for medical care on board (MLC 2006, STCW). A trained first-aider must be carried. The Ship Captain's Medical Guide is the reference book. Telemedical advice (TMAS) is available 24 hours a day.`,
     keyPoints: [
       "DR ABC: Tehlike → Yanıt → Hava yolu → Solunum → Dolaşım",
       "Triage: Kırmızı (acil), Sarı (geciktirilebilir), Yeşil (hafif)",
@@ -1143,27 +1143,27 @@ Kaptan gemideki tıbbi müdahaleden sorumludur (MLC 2006, STCW). Gemide eğitiml
   "cpr-procedure": {
     title: "CPR ve Temel Yaşam Desteği",
     introduction: "CPR (Kardiyopulmoner Resüsitasyon), kalp durması durumunda hayat kurtaran temel yaşam desteği uygulamasıdır.",
-    content: `CPR PROSEDÜRÜ (YETİŞKİN):
+    content: `THE CPR PROCEDURE (ADULT):
 
-1. Güvenliği kontrol et, yanıt ara.
-2. Yanıt yoksa yardım çağır ve AED (varsa) getirt.
-3. Hava yolunu aç (baş geri, çene yukarı).
-4. Solunum kontrolü (10 saniye). Normal solunum yoksa CPR başlat.
-5. 30 göğüs basısı uygula:
-   - El topuğu göğüs kemiğinin alt yarısına
-   - 5-6 cm derinlikte bası
-   - Dakikada 100-120 bası hızı
-6. 2 kurtarma nefesi ver.
-7. 30:2 oranında devam et.
-8. AED geldiğinde hemen kullan.
+1. Check for danger, look for a response.
+2. If there is no response, call for help and have an AED (if available) brought.
+3. Open the airway (head back, chin up).
+4. Check for breathing (10 seconds). If breathing is not normal, start CPR.
+5. Give 30 chest compressions:
+   - The heel of the hand on the lower half of the breastbone
+   - Compress to a depth of 5-6 cm
+   - At a rate of 100-120 compressions a minute
+6. Give 2 rescue breaths.
+7. Continue at a ratio of 30:2.
+8. Use the AED as soon as it arrives.
 
-AED (OTOMATİK DIŞ DEFİBRİLATÖR):
+AED (AUTOMATED EXTERNAL DEFIBRILLATOR):
 
-SOLAS gereği belirli gemilerde AED bulunmalıdır. Cihaz sesli komutlarla kullanıcıyı yönlendirir. Elektrot pedleri göğse yapıştırılır. Cihaz kalp ritmini analiz eder ve gerekirse şok verilmesini önerir.
+Under SOLAS an AED must be carried on certain ships. The device guides the user with voice prompts. The electrode pads are placed on the chest. The device analyses the heart rhythm and advises a shock if required.
 
-ÖNEMLİ NOTLAR:
+IMPORTANT NOTES:
 
-CPR'a başlandıktan sonra tıbbi ekip gelene kadar veya kişi solunmaya başlayana kadar devam edilir. Yorulma durumunda başka bir kişi ile değişim yapılır. CPR kalitesi (derinlik ve hız) en önemli faktördür. Göğüs basıları arasında göğsün tam olarak geri yükselmesine izin verilmelidir.`,
+Once started, CPR is continued until medical help arrives or the casualty starts breathing. Change over with another person when you tire. The quality of CPR (depth and rate) is the most important factor. The chest must be allowed to recoil fully between compressions.`,
     keyPoints: [
       "CPR oranı: 30 bası + 2 nefes",
       "Bası derinliği 5-6 cm, hız dakikada 100-120",
@@ -1174,25 +1174,25 @@ CPR'a başlandıktan sonra tıbbi ekip gelene kadar veya kişi solunmaya başlay
   "bleeding-fractures": {
     title: "Kanama Kontrolü ve Kırık Müdahalesi",
     introduction: "Ciddi kanama ve kırıklar, gemide sık karşılaşılan yaralanma türleridir ve doğru ilk yardım müdahalesi hayati önem taşır.",
-    content: `KANAMA KONTROLÜ:
+    content: `CONTROLLING BLEEDING:
 
-Doğrudan baskı: Temiz bezle yara üzerine sıkı baskı uygula. En etkili yöntemdir.
-Elevasyon: Kanayan uzvu kalp seviyesinin üzerine kaldır.
-Basınç noktaları: Arter basınç noktalarına baskı (brakial, femoral arter).
-Turnike: Son çare olarak, yaşamı tehdit eden ekstremite kanamasında uygulanır. Uygulama zamanı yazılır.
+Direct pressure: press firmly on the wound with a clean dressing. This is the most effective method.
+Elevation: raise the bleeding limb above the level of the heart.
+Pressure points: press on the arterial pressure points (brachial, femoral artery).
+Tourniquet: applied as a last resort for life-threatening limb bleeding. The time of application is recorded.
 
-KIRIK MÜDAHALESİ:
+TREATING FRACTURES:
 
-Açık kırık: Kemik dışarı çıkmış veya yara açılmış. Steril bezle ört, splint uygula. Kemiği yerine itmeye çalışma.
-Kapalı kırık: Dış yara yok. Şişlik, ağrı, şekil bozukluğu. Splint ile sabitle.
+Open fracture: the bone protrudes or the wound is open. Cover with a sterile dressing and apply a splint. Do not try to push the bone back.
+Closed fracture: no external wound. Swelling, pain, deformity. Immobilise with a splint.
 
-Splint uygulama kuralları: Kırığın üstünden ve altından eklemleri içerecek şekilde sabitle. Dolaşımı kontrol et (nabız, renk, his). Taşıma öncesi immobilize et.
+Rules for applying a splint: immobilise so as to include the joints above and below the fracture. Check the circulation (pulse, colour, sensation). Immobilise before moving the casualty.
 
-ÖZEL DURUMLAR:
+SPECIAL CASES:
 
-Omurga yaralanması şüphesi: Kişiyi hareket ettirme. Baş-boyun-gövde hizasını koru. Log-roll tekniği ile taşı.
-Pelvis kırığı: Bacakları bağla, hareketsiz tut.
-Kaburga kırığı: Ağrılı tarafa yatır, destekle.`,
+Suspected spinal injury: do not move the casualty. Keep the head, neck and body in line. Move using the log-roll technique.
+Pelvic fracture: bind the legs together and keep the casualty still.
+Rib fracture: lay the casualty on the injured side and support it.`,
     keyPoints: [
       "Doğrudan baskı en etkili kanama kontrol yöntemidir",
       "Turnike son çare olarak uygulanır, zaman kaydedilir",
@@ -1203,36 +1203,36 @@ Kaburga kırığı: Ağrılı tarafa yatır, destekle.`,
   "burns-treatment": {
     title: "Yanık Tedavisi",
     introduction: "Yanıklar, gemide makine dairesi, mutfak ve kimyasal madde operasyonlarında sıkça karşılaşılan yaralanma türüdür.",
-    content: `YANIK DERECELERİ:
+    content: `DEGREES OF BURN:
 
-1. Derece: Yüzeysel kızarıklık, ağrı. Sadece epidermis etkilenmiştir. Güneş yanığı gibi.
-2. Derece: Su toplama (bül), şiddetli ağrı. Dermise uzanan hasar. Enfeksiyon riski.
-3. Derece: Deri tam kalınlıkta hasar görmüştür. Beyaz/siyah renk, ağrı yok (sinir uçları hasarlı).
+1st degree: superficial redness and pain. Only the epidermis is affected. Like sunburn.
+2nd degree: blistering and severe pain. Damage extending into the dermis. Risk of infection.
+3rd degree: full-thickness damage to the skin. White/black in colour, no pain (the nerve endings are destroyed).
 
-İLK YARDIM:
+FIRST AID:
 
-1. Kişiyi tehlike kaynağından uzaklaştır.
-2. Yanan giysiyi söndür (dur-yere yat-yuvarlan).
-3. Yanık bölgesini en az 20 dakika soğuk (ılık) suyla soğut. Buz uygulanmaz.
-4. Takı ve sıkı giysileri (şişmeden önce) çıkar.
-5. Steril, yapışmaz bezle ört. Cling film kullanılabilir.
-6. Su toplamalarını (bülleri) patlatma.
-7. Merhem, yağ veya krem sürme.
+1. Remove the casualty from the source of danger.
+2. Put out burning clothing (stop-drop-roll).
+3. Cool the burn with cool (tepid) water for at least 20 minutes. Do not apply ice.
+4. Remove jewellery and tight clothing (before swelling starts).
+5. Cover with a sterile, non-adherent dressing. Cling film may be used.
+6. Do not burst blisters.
+7. Do not apply ointment, oil or cream.
 
-YANIK ALANI HESABI (Wallace'ın 9'lar Kuralı):
+CALCULATING THE BURN AREA (Wallace's Rule of Nines):
 
-Baş ve boyun: %9
-Her kol: %9
-Göğüs (ön): %18
-Sırt: %18
-Her bacak: %18
-Perine: %1
+Head and neck: 9%
+Each arm: 9%
+Chest (front): 18%
+Back: 18%
+Each leg: 18%
+Perineum: 1%
 
-Yanık alanı %15'i aşan yetişkinlerde (çocuklarda %10) sıvı replasmanı gereklidir. IV sıvı başlanmalıdır. TMAS ile irtibat kurulmalıdır.
+Adults with burns over 15% of the body surface (10% in children) need fluid replacement. IV fluids must be started. TMAS must be contacted.
 
-KİMYASAL YANIK:
+CHEMICAL BURNS:
 
-Kimyasal maddeyi bol su ile yıka (en az 20 dakika). Etkilenen giysileri çıkar. Nötralize etmeye çalışma. Madde güvenlik veri formunu (MSDS/SDS) kontrol et.`,
+Wash the chemical off with plenty of water (at least 20 minutes). Remove contaminated clothing. Do not try to neutralise it. Check the material safety data sheet (MSDS/SDS).`,
     keyPoints: [
       "Yanık en az 20 dakika soğuk suyla soğutulmalıdır",
       "Yanık alanı %15'i aşarsa IV sıvı replasmanı gerekir",
@@ -1243,25 +1243,25 @@ Kimyasal maddeyi bol su ile yıka (en az 20 dakika). Etkilenen giysileri çıkar
   "medical-chest": {
     title: "Gemi Sağlık Sandığı (Medical Chest)",
     introduction: "Her ticari gemide, ILO/WHO standartlarına uygun tıbbi malzeme ve ilaç bulundurulması zorunludur.",
-    content: `YASAL DAYANAK:
+    content: `THE LEGAL BASIS:
 
-MLC 2006 (Maritime Labour Convention), Standard A4.1 gereği her gemide yeterli tıbbi malzeme bulundurulmalıdır. Gemi sağlık sandığının içeriği geminin seyir bölgesi, mürettebat sayısı ve sefer süresine göre belirlenir.
+Under MLC 2006 (the Maritime Labour Convention), Standard A4.1, every ship must carry adequate medical supplies. The contents of the ship's medical chest are determined by the ship's trading area, the number of crew and the length of the voyage.
 
-SINIFLANDIRMA:
+CLASSIFICATION:
 
-Kategori A: Kıyıdan uzak, uzun seyir yapan gemiler. En kapsamlı ilaç ve malzeme listesi.
-Kategori B: Kıyıya yakın seyir. Orta düzey malzeme.
-Kategori C: Kısa mesafe, liman yakını. Temel malzeme.
+Category A: ships making long voyages far from the coast. The most comprehensive list of medicines and equipment.
+Category B: coastal voyages. A medium level of supplies.
+Category C: short distance, close to port. Basic supplies.
 
-İÇERİK ÖRNEKLERİ:
+EXAMPLES OF CONTENTS:
 
-İlaçlar: Ağrı kesici, antibiyotik, anti-emetik, antihistaminik, adrenalin, kalp ilaçları, göz/kulak damlaları, sıtma ilacı.
-Malzemeler: Bandaj, atel, sargı, steril gazlı bez, IV set, kateter, enjektör, dikiş seti, oksijen seti.
-Cihazlar: Tansiyon aleti, stetoskop, termometre, oksimetre, AED.
+Medicines: analgesics, antibiotics, anti-emetics, antihistamines, adrenaline, cardiac medication, eye/ear drops, antimalarials.
+Supplies: bandages, splints, dressings, sterile gauze, IV sets, catheters, syringes, suture sets, oxygen sets.
+Instruments: sphygmomanometer, stethoscope, thermometer, oximeter, AED.
 
-KONTROL VE YENİLEME:
+CHECKING AND REPLENISHMENT:
 
-İlaçların son kullanma tarihleri düzenli kontrol edilir. Kullanılan malzeme en kısa sürede yenilenir. Sağlık sandığı periyodik PSC ve bayrak devleti denetimine tabidir.`,
+The expiry dates of the medicines are checked regularly. Items used are replaced as soon as possible. The medical chest is subject to periodic PSC and flag State inspection.`,
     keyPoints: [
       "MLC 2006 gereği her gemide tıbbi malzeme zorunludur",
       "Seyir bölgesine göre Kategori A, B, C olarak sınıflandırılır",
@@ -1272,33 +1272,33 @@ KONTROL VE YENİLEME:
   "telemedical": {
     title: "Tele-Tıbbi Danışmanlık (TMAS)",
     introduction: "TMAS (Telemedical Maritime Assistance Service), gemilere 24 saat uzaktan tıbbi danışmanlık hizmeti sunan sistemdir.",
-    content: `TMAS SİSTEMİ:
+    content: `THE TMAS SYSTEM:
 
-TMAS, sahilde konuşlanmış tıbbi profesyonellerin, gemideki hasta veya yaralı mürettebat için uzaktan tanı, tedavi ve tahliye kararı vermesini sağlayan hizmettir. Hizmet ücretsizdir ve 7/24 kullanılabilir.
+TMAS is a service through which shore-based medical professionals provide remote diagnosis, treatment and evacuation decisions for sick or injured crew on board. The service is free and available 24/7.
 
-İLETİŞİM KANALLARI:
+COMMUNICATION CHANNELS:
 
-VHF, MF/HF radyo, INMARSAT uydu telefonu veya e-posta ile iletişim kurulabilir. Medikal formlar standart format ile iletilir.
+Contact can be made by VHF, MF/HF radio, INMARSAT satellite telephone or email. Medical forms are transmitted in a standard format.
 
-BİLDİRİM İÇERİĞİ:
+WHAT TO REPORT:
 
-Hastanın yaşı, cinsiyeti, görev pozisyonu
-Şikayet ve semptomlar
-Vital bulgular (nabız, tansiyon, sıcaklık, solunum sayısı)
-Uygulanan ilk yardım
-Mevcut ilaçlar ve alerjiler
-Geminin pozisyonu ve en yakın limana mesafesi
+The patient's age, sex and rank
+Complaints and symptoms
+Vital signs (pulse, blood pressure, temperature, respiratory rate)
+The first aid given
+Current medication and allergies
+The ship's position and distance to the nearest port
 
-TMAS KARARLARI:
+TMAS DECISIONS:
 
-1. Gemide tedavi devam edilebilir
-2. Rota değişikliği ile limana yanaşma önerilir
-3. Helikopter ile tahliye (MEDEVAC) gerekir
-4. Denizde başka gemiden tıbbi destek alınması
+1. Treatment can continue on board
+2. A change of route to put into port is recommended
+3. Evacuation by helicopter (MEDEVAC) is required
+4. Medical support is obtained from another ship at sea
 
-MEDEVAC KARARI:
+THE MEDEVAC DECISION:
 
-Tıbbi tahliye kararı TMAS doktorunun önerisi ve kaptanın onayı ile verilir. Helikopter tahliyesi için geminin pozisyonu, hava koşulları ve helikopter menzili değerlendirilir. Sahil güvenlik koordinasyonu sağlanır.`,
+The decision to evacuate is taken on the recommendation of the TMAS doctor and with the master's approval. For a helicopter evacuation the ship's position, the weather and the helicopter's range are assessed. Coordination with the coastguard is arranged.`,
     keyPoints: [
       "TMAS 24 saat ücretsiz tıbbi danışmanlık hizmeti sunar",
       "Medikal raporlar standart format ile iletilir",
@@ -1313,25 +1313,25 @@ Tıbbi tahliye kararı TMAS doktorunun önerisi ve kaptanın onayı ile verilir.
   "sar-system": {
     title: "SAR Sistemi ve IAMSAR Manual",
     introduction: "SAR (Search and Rescue), denizde tehlikedeki kişilerin aranması ve kurtarılmasına yönelik uluslararası koordineli operasyondur.",
-    content: `YASAL ÇERÇEVE:
+    content: `THE LEGAL FRAMEWORK:
 
-SAR Convention (1979): Denizde arama ve kurtarma hizmetlerinin düzenlenmesini öngörür. Dünya denizleri SAR bölgelerine ayrılmıştır ve her kıyı devleti kendi bölgesinde SAR koordinasyonu sağlamakla yükümlüdür.
+The SAR Convention (1979): provides for the organisation of search and rescue services at sea. The world's seas are divided into SAR regions and each coastal State is responsible for SAR coordination in its own region.
 
-SOLAS V/33.1: Denizdeki kişilerin kurtarılmasına yönelik gemilerin yükümlülüklerini tanımlar. Her geminin kaptan, tehlike çağrısına cevap vermekle yükümlüdür.
+SOLAS V/33.1: sets out ships' obligations towards persons in distress at sea. Every master is obliged to respond to a distress call.
 
-IAMSAR MANUAL:
+THE IAMSAR MANUAL:
 
-IAMSAR (International Aeronautical and Maritime Search and Rescue Manual) üç ciltten oluşur:
-Cilt I: Organizasyon ve yönetim (devletler için)
-Cilt II: Görev koordinasyonu (RCC/MRCC için)
-Cilt III: Mobil vasıtalar (gemiler ve uçaklar için). Her ticari gemide bulunması zorunludur.
+IAMSAR (the International Aeronautical and Maritime Search and Rescue Manual) is in three volumes:
+Volume I: Organization and Management (for States)
+Volume II: Mission Co-ordination (for RCCs/MRCCs)
+Volume III: Mobile Facilities (for ships and aircraft). It must be carried on every merchant ship.
 
-SAR ORGANİZASYONU:
+SAR ORGANISATION:
 
-MRCC (Maritime Rescue Coordination Centre): Kıyı devletinin SAR koordinasyon merkezi.
-SMC (SAR Mission Coordinator): Operasyonun genel koordinatörü (MRCC'de).
-OSC (On-Scene Coordinator): Olay yerindeki koordinatör (genellikle ilk ulaşan geminin kaptanı).
-SRU (Search and Rescue Unit): Arama ve kurtarma birimi.`,
+MRCC (Maritime Rescue Coordination Centre): the coastal State's SAR coordination centre.
+SMC (SAR Mission Coordinator): the overall coordinator of the operation (at the MRCC).
+OSC (On-Scene Coordinator): the coordinator at the scene (usually the master of the first ship to arrive).
+SRU (Search and Rescue Unit): a search and rescue unit.`,
     keyPoints: [
       "Her ticari gemide IAMSAR Cilt III bulunması zorunludur",
       "MRCC kıyı devletinin SAR koordinasyon merkezidir",
@@ -1343,21 +1343,21 @@ SRU (Search and Rescue Unit): Arama ve kurtarma birimi.`,
     title: "Arama Desenleri (Search Patterns)",
     introduction: "SAR operasyonlarında kullanılan arama desenleri, kayıp kişi veya nesnenin olası konumuna, arama alanının genişliğine ve mevcut araçlara göre seçilir.",
     image: "/diagrams/seamanship/arama-desenleri.svg",
-    content: `ARAMA DESENLERİ:
+    content: `SEARCH PATTERNS:
 
-EXPANDING SQUARE SEARCH (SS): Genişleyen kare arama. Tek araçla aramada kullanılır. Kayıp konumunun nispeten kesin bilindiği durumlarda etkilidir. Merkez noktadan başlayarak giderek büyüyen kare spiral şeklinde arama yapılır.
+EXPANDING SQUARE SEARCH (SS): used when searching with a single unit. Effective where the position of the casualty is known relatively accurately. The search starts at a datum point and spirals outwards in progressively larger squares.
 
-SECTOR SEARCH (VS): Sektör arama. Kayıp konumunun iyi bilindiği ve arama alanının küçük olduğu durumlarda. Merkez noktadan farklı açılarda dışarı doğru arama yapılır.
+SECTOR SEARCH (VS): used where the position of the casualty is well known and the search area is small. The search runs outwards from a datum point on different headings.
 
-PARALLEL TRACK SEARCH (PS): Paralel iz arama. Geniş alanda, birden fazla araçla aramada kullanılır. Araçlar paralel rotalar üzerinde ilerler. En yaygın kullanılan büyük alan arama desenidir.
+PARALLEL TRACK SEARCH (PS): used to search a large area with several units. The units run on parallel tracks. It is the most widely used pattern for large areas.
 
-CREEPING LINE AHEAD (CS): Sürünen hat arama. Akıntı veya rüzgar yönünde, tek araçla uzun ve dar bir alanda arama. Paralel izler akıntı yönüne dik açı ile geçilir.
+CREEPING LINE AHEAD (CS): a search of a long, narrow area with a single unit, along the direction of the current or wind. The parallel legs are run at right angles to the direction of the current.
 
-TRACK LINE SEARCH: Hat üzeri arama. Kayıp geminin bilinen rotası üzerinde arama. İleri ve geri geçişlerle rota hattı taranır.
+TRACK LINE SEARCH: a search along the known route of the missing ship. The track is swept on outward and return legs.
 
-ARAMA GENİŞLİĞİ (SWEEP WIDTH):
+SWEEP WIDTH:
 
-Arama genişliği, hava koşulları, görüş mesafesi, dalga yüksekliği ve aranan nesnenin büyüklüğüne göre belirlenir. IAMSAR Cilt III'te sweep width tabloları bulunur.`,
+The sweep width is set by the weather, visibility, wave height and the size of the object being sought. Sweep width tables are given in IAMSAR Volume III.`,
     keyPoints: [
       "Expanding Square: tek araç, kesin konum tahmini",
       "Parallel Track: geniş alan, çoklu araç",
@@ -1368,26 +1368,26 @@ Arama genişliği, hava koşulları, görüş mesafesi, dalga yüksekliği ve ar
   "on-scene-coordinator": {
     title: "Olay Yeri Koordinatörü (OSC)",
     introduction: "OSC (On-Scene Coordinator), SAR olay yerine ilk ulaşan veya MRCC tarafından atanan geminin kaptanıdır ve olay yerindeki tüm araçları koordine eder.",
-    content: `OSC GÖREVLERİ:
+    content: `THE OSC'S DUTIES:
 
-1. Arama alanının belirlenmesi ve araçların dağıtımı
-2. Arama deseninin seçimi ve uygulanması
-3. Bulunan kişilerin kurtarılmasının koordinasyonu
-4. Durum raporlarının SMC'ye iletilmesi
-5. İletişim planının oluşturulması
-6. Kurtarılan kişilerin bakım ve transferi
+1. Defining the search area and allocating the units
+2. Choosing and applying the search pattern
+3. Coordinating the rescue of persons found
+4. Passing situation reports to the SMC
+5. Setting up the communications plan
+6. Care and transfer of the survivors
 
-OSC ATANMASI:
+APPOINTING THE OSC:
 
-Genellikle olay yerine ilk ulaşan geminin kaptanı OSC olarak görev yapar. MRCC, daha uygun bir geminin gelmesiyle OSC görevini devredebilir. Askeri gemi veya sahil güvenlik gemisi öncelikli olarak OSC atanır.
+The master of the first ship to arrive on scene usually acts as OSC. The MRCC may hand the OSC role over when a more suitable ship arrives. A naval or coastguard vessel is appointed OSC in preference.
 
-OSC RAPORLAMASI:
+OSC REPORTING:
 
-OSC, arama ilerlemesini düzenli olarak MRCC'ye raporlar. SITREP (Situation Report) formatı kullanılır. Rapor içeriği: arama alanı, bulunan kişi sayısı, hava koşulları, yakıt durumu, diğer araçların durumu.
+The OSC reports the progress of the search to the MRCC at regular intervals. The SITREP (Situation Report) format is used. The report covers: the search area, the number of persons found, the weather, the fuel situation and the status of the other units.
 
-ARAMA SONLANDIRMA:
+TERMINATING THE SEARCH:
 
-Arama sonlandırma kararı MRCC tarafından verilir. OSC, MRCC onayı olmadan aramayı sonlandırmaz. Tüm araçlar aramayı aynı anda sonlandırır.`,
+The decision to terminate the search is taken by the MRCC. The OSC does not terminate the search without the MRCC's approval. All units terminate the search at the same time.`,
     keyPoints: [
       "OSC olay yerindeki tüm araçları koordine eder",
       "OSC genellikle ilk ulaşan geminin kaptanıdır",
@@ -1398,25 +1398,25 @@ Arama sonlandırma kararı MRCC tarafından verilir. OSC, MRCC onayı olmadan ar
   "person-overboard": {
     title: "Denize Düşme ve MOB Prosedürü",
     introduction: "Denize düşme (Man Overboard – MOB), gemide en acil müdahale gerektiren durumlardan biridir.",
-    content: `İLK TEDBİRLER:
+    content: `IMMEDIATE ACTIONS:
 
-1. "Adam denize!" çığlığı at
-2. Can simidini denize at (MOB ışığı ve duman işaretli)
-3. Köprüüstünü bilgilendir
-4. MOB butonuna bas (GPS pozisyonu kaydeder)
-5. Gözcü tayin et – düşen kişiyi gözden kaybetme
+1. Shout "Man overboard!"
+2. Throw a lifebuoy (with MOB light and smoke signal)
+3. Inform the bridge
+4. Press the MOB button (it records the GPS position)
+5. Post a lookout – do not lose sight of the person in the water
 
-MANEVRA TEKNİKLERİ:
+MANOEUVRES:
 
-WILLIAMSON TURN: En yaygın kullanılan MOB manevrası. Dümen tam bir tarafa kırılır, gemi 60° dönünce dümen diğer tarafa tam kırılır. Gemi orijinal rotanın tam ters yönünde dönerek düşme noktasına geri gelir. Kısıtlı görüşte etkilidir.
+WILLIAMSON TURN: the most commonly used MOB manoeuvre. The helm is put hard over to one side and, when the ship has turned 60°, hard over to the other side. The ship turns onto the exact reciprocal of the original course and returns along the same track. Effective in restricted visibility.
 
-ANDERSON TURN: Dümen tam bir tarafa kırılır ve gemi 270° dönüş yapar. Hızlı geri dönüş sağlar. İyi görüş koşullarında tercih edilir.
+ANDERSON TURN: the helm is put hard over to one side and the ship turns through 270°. It gives the fastest return. Preferred in good visibility.
 
-SCHARNOW TURN: Dümen bir tarafa kırılır, gemi orijinal rotasından 240° dönünce diğer tarafa kırılır. Büyük gemilerde düşme noktasına en doğru yaklaşımı sağlar.
+SCHARNOW TURN: the helm is put over to one side and, when the ship has turned 240° from the original course, over to the other side. It gives the most accurate approach to the position on large ships.
 
-KURTARMA:
+RECOVERY:
 
-Kişiye rüzgar altından yaklaş. Motor kur durumuna al (pervane yaralanma riski). Kurtarma botu indir veya halat/merdiven uzat. Hipotermik kişiyi yatay pozisyonda çıkar.`,
+Approach the person from downwind. Put the engine to neutral (the risk of propeller injury). Launch the rescue boat, or pass a line or ladder. Lift a hypothermic casualty out horizontally.`,
     keyPoints: [
       "MOB butonuna hemen basarak GPS pozisyonu kaydet",
       "Williamson Turn: kısıtlı görüşte en etkili manevra",
@@ -1427,29 +1427,29 @@ Kişiye rüzgar altından yaklaş. Motor kur durumuna al (pervane yaralanma risk
   "helicopter-ops": {
     title: "Helikopter Operasyonları",
     introduction: "Helikopter operasyonları, tıbbi tahliye (MEDEVAC) ve SAR kapsamında denizde kişi transferi için yapılır.",
-    content: `HAZIRLIK:
+    content: `PREPARATION:
 
-1. Helikopter operasyonu için güverte hazırlanır: gevşek malzeme sabitlenir, antenler alınır.
-2. Yangın söndürme ekipmanı hazır tutulur.
-3. Rüzgar yönü ve hızı belirlenir.
-4. Gemi, rüzgarı pruva omuzluğundan (port quarter) alacak şekilde seyir yapar.
-5. Haberleşme kanalı belirlenir (genellikle VHF Ch. 16 veya SAR kanalı).
+1. The deck is prepared for the helicopter operation: loose gear is secured and aerials are lowered.
+2. Fire fighting equipment is kept ready.
+3. The wind direction and speed are established.
+4. The ship steers so as to take the wind on the port bow/quarter as instructed.
+5. The communication channel is agreed (usually VHF Ch. 16 or a SAR channel).
 
-HI-LINE PROSEDÜRÜ:
+THE HI-LINE PROCEDURE:
 
-Helikopterden gönderilen guide hattı (hi-line) güverteye bırakılır. Gemiden bu hat ele alınır – GEMİYE BAĞLANMAZ (statik elektrik boşalmasına izin ver). Hat üzerinden vinç kancası yönlendirilir. Kişi vinçle helikoptere alınır.
+The guide line (hi-line) sent down from the helicopter is lowered to the deck. It is taken in hand on board – IT IS NEVER MADE FAST TO THE SHIP (allow the static charge to discharge). The winch hook is guided down along the line. The person is lifted into the helicopter by the winch.
 
 DOUBLE LIFT:
 
-Kurtarıcı personel helikopterden iner, yaralıyı sedyeye sabitler ve birlikte vinçle alınır.
+A rescue crew member is lowered from the helicopter, secures the casualty in a stretcher and is lifted with them.
 
-GÜVENLİK KURALLARI:
+SAFETY RULES:
 
-Helikopter bıçaklarına yaklaşma mesafesi minimum 5 metre.
-Helikopter pilotunun talimatlarına uyulur.
-İniş alanı en az 5 x 5 metre açık alan.
-Gece operasyonlarında iniş alanı aydınlatılır ama pilot gözü kamaştırılmaz.
-Hi-line kesinlikle gemiye bağlanmaz, irgattan geçirilmez.`,
+The minimum approach distance to the helicopter rotors is 5 metres.
+The helicopter pilot's instructions are followed.
+The landing area must be a clear space of at least 5 x 5 metres.
+For night operations the landing area is lit but the pilot must not be dazzled.
+The hi-line is never made fast to the ship or led through a winch.`,
     keyPoints: [
       "Hi-line gemiye bağlanmaz – statik elektrik riski",
       "Rüzgar pruva omuzluğundan alınacak şekilde seyir yapılır",
@@ -1457,8 +1457,8 @@ Hi-line kesinlikle gemiye bağlanmaz, irgattan geçirilmez.`,
       "Gece operasyonlarında pilot gözü kamaştırılmamalıdır",
     ],
     warnings: [
-      "Hi-line kesinlikle ırgat veya babaya bağlanmaz",
-      "Statik elektrik boşalması için hat önce suya veya güverteye temas ettirilir",
+      "The hi-line must never be made fast to a winch or a bitt",
+      "The line is first touched to the water or the deck to discharge the static charge",
     ],
   },
 
@@ -1468,28 +1468,28 @@ Hi-line kesinlikle gemiye bağlanmaz, irgattan geçirilmez.`,
   "gmdss-overview": {
     title: "GMDSS Genel Yapısı ve Deniz Alanları",
     introduction: "GMDSS (Global Maritime Distress and Safety System), denizde tehlike ve güvenlik haberleşmesini küresel ölçekte güvence altına alan sistemdir.",
-    content: `GMDSS GELİŞİMİ:
+    content: `THE DEVELOPMENT OF GMDSS:
 
-GMDSS, 1 Şubat 1999'da tam olarak yürürlüğe girmiştir. SOLAS Bölüm IV ile zorunlu kılınmıştır. Önceki Morse ve radyotelefon tabanlı sistemi değiştirmiştir. Temel prensip: tehlike çağrısının otomatik olarak kıyı istasyonlarına ve yakın gemilere ulaşmasını garanti etmektir.
+GMDSS came fully into force on 1 February 1999. It is mandatory under SOLAS Chapter IV. It replaced the earlier Morse and radiotelephone based system. The basic principle is to guarantee that a distress alert reaches shore stations and nearby ships automatically.
 
-DENİZ ALANLARI:
+SEA AREAS:
 
-A1 Alanı: En az bir VHF kıyı istasyonunun (DSC) kapsama alanında olan bölge. Tipik olarak kıyıdan 20-30 deniz mili.
+Area A1: within the coverage of at least one VHF coast station with DSC. Typically 20-30 nautical miles from the coast.
 
-A2 Alanı: VHF kapsamı dışında kalan ancak en az bir MF kıyı istasyonunun (DSC) kapsama alanındaki bölge. Tipik olarak kıyıdan 100-150 deniz mili.
+Area A2: outside VHF coverage but within the coverage of at least one MF coast station with DSC. Typically 100-150 nautical miles from the coast.
 
-A3 Alanı: A1 ve A2 dışında kalan ancak INMARSAT jeostasyoner uydu kapsamındaki bölge. Yaklaşık 70°N – 70°S enlemberi arasındaki tüm denizler.
+Area A3: outside A1 and A2 but within the coverage of an INMARSAT geostationary satellite. Approximately all seas between latitudes 70°N and 70°S.
 
-A4 Alanı: A1, A2 ve A3 dışında kalan bölge. Kutup bölgeleri. HF radyo zorunludur.
+Area A4: outside A1, A2 and A3. The polar regions. HF radio is mandatory.
 
-ZORUNLU EKİPMAN:
+MANDATORY EQUIPMENT:
 
-Tüm SOLAS gemileri: VHF (DSC, Ch.16, Ch.70), NAVTEX, EPIRB (406 MHz), SART veya AIS-SART, iki yönlü VHF telsiz (en az 3 adet, su geçirmez).
+All SOLAS ships: VHF (DSC, Ch.16, Ch.70), NAVTEX, EPIRB (406 MHz), SART or AIS-SART, two-way VHF radios (at least 3, waterproof).
 
-A1 ek: VHF DSC yeterlidir.
-A1+A2 ek: MF DSC (2187.5 kHz).
-A1+A2+A3 ek: INMARSAT-C veya HF DSC.
-A4 ek: MF/HF DSC zorunlu.`,
+A1 additionally: VHF DSC is sufficient.
+A1+A2 additionally: MF DSC (2187.5 kHz).
+A1+A2+A3 additionally: INMARSAT-C or HF DSC.
+A4 additionally: MF/HF DSC is mandatory.`,
     keyPoints: [
       "GMDSS 1 Şubat 1999'da tam yürürlüğe girmiştir",
       "A1: VHF (20-30 nm), A2: MF (100-150 nm), A3: INMARSAT, A4: HF (kutup)",
@@ -1502,24 +1502,24 @@ A4 ek: MF/HF DSC zorunlu.`,
     introduction: "EPIRB ve SART, denizde tehlike durumunda konum bildirimi ve arama işaretlemesi sağlayan kritik GMDSS bileşenleridir.",
     content: `EPIRB (Emergency Position Indicating Radio Beacon):
 
-406 MHz frekansında çalışır. COSPAS-SARSAT uydu sistemi aracılığıyla tehlike sinyali gönderir. Manuel veya otomatik (HRU ile) aktive edilir. Konum bilgisi dahili GPS ile sağlanır (doğruluk ~100 m). Batarya ömrü: minimum 48 saat sürekli sinyal.
+Operates on 406 MHz. It transmits a distress signal through the COSPAS-SARSAT satellite system. It is activated manually or automatically (by HRU). Position information is provided by an internal GPS (accuracy ~100 m). Battery life: a minimum of 48 hours of continuous transmission.
 
-Kayıt: Her EPIRB ulusal denizcilik otoritesine kayıtlı olmalıdır. Kayıt bilgileri: gemi adı, çağrı işareti, MMSI, acil durum iletişim bilgileri.
+Registration: every EPIRB must be registered with the national maritime authority. The registration details: ship's name, call sign, MMSI and emergency contact details.
 
-HRU ile EPIRB: Gemi 2-4 m derinliğe battığında HRU otomatik olarak EPIRB'i serbest bırakır. EPIRB yüzeye çıkar ve otomatik aktive olur.
+EPIRB with HRU: when the ship sinks to a depth of 2-4 m the HRU releases the EPIRB automatically. The EPIRB floats to the surface and activates automatically.
 
 SART (Search and Rescue Transponder):
 
-9 GHz (X-band) radar sinyaline cevap verir. Kurtarma gemisinin radarında 12 adet eşit aralıklı nokta olarak görünür (yaklaştıkça daireler haline dönüşür). Batarya: 96 saat bekleme + 8 saat aktif sinyal.
+It responds to a 9 GHz (X-band) radar signal. It appears on the rescue vessel's radar as 12 evenly spaced dots (which become arcs as the vessel closes). Battery: 96 hours on standby plus 8 hours transmitting.
 
 AIS-SART:
 
-AIS sistemi üzerinden konum bilgisi gönderir. ECDIS ve AIS ekranlarında özel sembol ile görünür. Geleneksel SART'ın alternatifi olarak kabul edilmektedir. S-band radarlarla çalışan gemilerde avantajlıdır.
+It transmits position information over the AIS system. It appears with a special symbol on ECDIS and AIS displays. It is accepted as an alternative to the traditional SART. It is advantageous on ships fitted with S-band radar.
 
-BAKIMLARI:
+MAINTENANCE:
 
-EPIRB: Yıllık bakım, batarya değişimi (üretici tavsiyesine göre, genellikle 5 yılda bir), HRU değişimi (2 yılda bir).
-SART: Aylık test (test modunda), yıllık bakım.`,
+EPIRB: annual maintenance, battery replacement (as recommended by the maker, usually every 5 years), HRU replacement (every 2 years).
+SART: monthly test (in test mode), annual maintenance.`,
     keyPoints: [
       "EPIRB 406 MHz ile COSPAS-SARSAT uydularına sinyal gönderir",
       "SART radarada 12 nokta olarak görünür",
@@ -1530,31 +1530,31 @@ SART: Aylık test (test modunda), yıllık bakım.`,
   "dsc-vhf": {
     title: "DSC ve VHF Haberleşmesi",
     introduction: "DSC (Digital Selective Calling), GMDSS'in temel bileşeni olarak otomatik dijital çağrı sistemidir.",
-    content: `DSC SİSTEMİ:
+    content: `THE DSC SYSTEM:
 
-DSC, belirli bir istasyonu veya tüm istasyonları dijital olarak çağırmak için kullanılır. Tehlike, aciliyet, emniyet ve rutin çağrı kategorileri vardır.
+DSC is used to call a particular station or all stations digitally. There are distress, urgency, safety and routine call categories.
 
-VHF DSC: Kanal 70 üzerinde otomatik tehlike çağrısı gönderir. Çağrıya MMSI, pozisyon, tehlike türü ve zaman bilgisi eklenir. Çağrı alındığında sesli ve görsel alarm verir.
+VHF DSC: sends an automatic distress alert on Channel 70. The MMSI, position, nature of distress and time are included in the alert. When an alert is received an audible and visual alarm is given.
 
-TEHLİKE ÇAĞRISI PROSEDÜRÜ:
+THE DISTRESS ALERT PROCEDURE:
 
-1. DSC tehlike butonunun kapağını aç
-2. Tehlike türünü seç (yangın, batma, terk gemi, vb.)
-3. Butonu 5 saniye basılı tut
-4. DSC çağrısı otomatik olarak Ch.70'te gönderilir
-5. Çağrı her 4 dakikada bir otomatik tekrarlanır
-6. Onay alındığında VHF Ch.16'ya geç ve sesli MAYDAY mesajı ver
+1. Lift the cover of the DSC distress button
+2. Select the nature of the distress (fire, sinking, abandoning ship, etc.)
+3. Hold the button down for 5 seconds
+4. The DSC alert is transmitted automatically on Ch.70
+5. The alert repeats automatically every 4 minutes
+6. When it is acknowledged, switch to VHF Ch.16 and pass the spoken MAYDAY message
 
-MAYDAY MESAJI FORMATI:
+THE MAYDAY MESSAGE FORMAT:
 
-"MAYDAY MAYDAY MAYDAY, this is [gemi adı] [gemi adı] [gemi adı], MAYDAY [gemi adı], MMSI [numara], my position is [enlem/boylam], I am [tehlike türü], I require [yardım türü], [mürettebat sayısı] persons on board, over."
+"MAYDAY MAYDAY MAYDAY, this is [ship's name] [ship's name] [ship's name], MAYDAY [ship's name], MMSI [number], my position is [latitude/longitude], I am [nature of distress], I require [assistance required], [number of crew] persons on board, over."
 
-VHF KANALLARI:
+VHF CHANNELS:
 
-Ch.16 (156.800 MHz): Uluslararası tehlike, aciliyet ve emniyet kanalı
-Ch.70: DSC çağrı kanalı
-Ch.13: Köprüüstü-köprüüstü manevra haberleşmesi
-Ch.06: Gemi arası haberleşme`,
+Ch.16 (156.800 MHz): the international distress, urgency and safety channel
+Ch.70: the DSC calling channel
+Ch.13: bridge-to-bridge manoeuvring communications
+Ch.06: ship-to-ship communications`,
     keyPoints: [
       "VHF Ch.70: DSC dijital çağrı kanalı, Ch.16: sesli tehlike kanalı",
       "DSC tehlike çağrısı MMSI, pozisyon ve tehlike türünü içerir",
@@ -1565,26 +1565,26 @@ Ch.06: Gemi arası haberleşme`,
   "inmarsat": {
     title: "INMARSAT ve Uydu Sistemleri",
     introduction: "INMARSAT, denizde uydu üzerinden haberleşme hizmeti sunan ve GMDSS'in A3 alanı bileşeni olan küresel uydu sistemidir.",
-    content: `INMARSAT SİSTEMİ:
+    content: `THE INMARSAT SYSTEM:
 
-4 adet jeostasyoner uydu ile 70°N – 70°S arasında kesintisiz kapsama sağlar. Ses, veri, faks ve tehlike çağrısı hizmetleri sunar.
+Four geostationary satellites provide continuous coverage between 70°N and 70°S. It offers voice, data, fax and distress alerting services.
 
 INMARSAT-C:
 
-Metin tabanlı haberleşme (store and forward). Çift yönlü mesajlaşma ve tehlike çağrısı. EGC (Enhanced Group Call) ile SafetyNET bilgileri alınır. GMDSS A3 alanı için yeterlidir. Kompakt, düşük maliyetli.
+Text-based communication (store and forward). Two-way messaging and distress alerting. SafetyNET information is received through EGC (Enhanced Group Call). It is sufficient for GMDSS Area A3. Compact and low cost.
 
 INMARSAT Fleet Broadband:
 
-Yüksek hızlı veri, ses ve video iletişimi. GMDSS işlevi ile birleştirilmiş. Geniş bant internet erişimi sağlar.
+High-speed data, voice and video communication. Combined with a GMDSS function. It provides broadband internet access.
 
 SafetyNET:
 
-INMARSAT-C üzerinden MSI (Maritime Safety Information) yayınlarını iletir. Meteorolojik uyarılar, NAVAREA navigasyon uyarıları, SAR bilgileri ve korsan uyarıları yayınlanır. NAVTEX kapsamı dışındaki bölgelerde zorunludur.
+It broadcasts MSI (Maritime Safety Information) over INMARSAT-C. Meteorological warnings, NAVAREA navigational warnings, SAR information and piracy warnings are transmitted. It is mandatory in areas outside NAVTEX coverage.
 
-DİĞER UYDU SİSTEMLERİ:
+OTHER SATELLITE SYSTEMS:
 
-COSPAS-SARSAT: EPIRB sinyallerini alan tehlike uydu sistemi. LEO (alçak yörünge) ve MEO uyduları ile küresel kapsama.
-Iridium: 66 LEO uydu ile kutuplar dahil küresel kapsama. GMDSS modernizasyonu kapsamında onaylanmıştır.`,
+COSPAS-SARSAT: the distress satellite system that receives EPIRB signals. Global coverage using LEO (low earth orbit) and MEO satellites.
+Iridium: global coverage including the poles with 66 LEO satellites. Approved as part of the modernisation of GMDSS.`,
     keyPoints: [
       "INMARSAT 70°N – 70°S arasında kapsama sağlar",
       "INMARSAT-C metin tabanlı, GMDSS A3 yeterli",
@@ -1595,34 +1595,34 @@ Iridium: 66 LEO uydu ile kutuplar dahil küresel kapsama. GMDSS modernizasyonu k
   "navtex": {
     title: "NAVTEX ve Güvenlik Bilgileri",
     introduction: "NAVTEX (Navigational Telex), kıyı istasyonlarından otomatik olarak navigasyon ve meteoroloji uyarılarını alan GMDSS bileşenidir.",
-    content: `NAVTEX SİSTEMİ:
+    content: `THE NAVTEX SYSTEM:
 
-518 kHz (uluslararası, İngilizce) ve 490 kHz (ulusal dil) frekanslarında yayın yapar. Otomatik olarak alır ve yazdırır. Kapsama alanı: kıyıdan yaklaşık 300-400 deniz mili (A2 alanı sınırı).
+It broadcasts on 518 kHz (international, in English) and 490 kHz (national language). It receives and prints automatically. Coverage: approximately 300-400 nautical miles from the coast (the limit of Area A2).
 
-MESAJ FORMATI:
+MESSAGE FORMAT:
 
-Her NAVTEX mesajı 4 karakterli bir başlık ile tanımlanır:
-1. karakter: Yayın istasyonu kimliği (A-Z)
-2. karakter: Mesaj kategorisi
-3-4. karakter: Mesaj sıra numarası (01-99)
+Every NAVTEX message is identified by a 4-character header:
+1st character: the transmitting station identity (A-Z)
+2nd character: the message category
+3rd-4th characters: the message serial number (01-99)
 
-MESAJ KATEGORİLERİ:
+MESSAGE CATEGORIES:
 
-A – Navigasyon uyarıları
-B – Meteoroloji uyarıları
-C – Buz haberleri
-D – SAR bilgileri
-E – Meteoroloji tahminleri
-F – Pilot hizmeti bilgileri
-G-Z – Diğer
+A – Navigational warnings
+B – Meteorological warnings
+C – Ice reports
+D – SAR information
+E – Meteorological forecasts
+F – Pilot service messages
+G-Z – Other
 
-CİHAZ AYARLARI:
+RECEIVER SETTINGS:
 
-Kullanıcı, hangi istasyonlardan ve hangi kategorilerden mesaj almak istediğini seçebilir. Ancak A (navigasyon uyarısı), B (meteoroloji uyarısı), D (SAR) ve L (navigasyon uyarısı ek) kategorileri kapatılamaz – her zaman alınır.
+The user can select which stations and which categories to receive. But categories A (navigational warnings), B (meteorological warnings), D (SAR) and L (additional navigational warnings) cannot be switched off – they are always received.
 
 WWNWS (World Wide Navigational Warning Service):
 
-Dünya 21 NAVAREA'ya bölünmüştür. Her NAVAREA koordinatörü bölgesindeki navigasyon uyarılarını yayınlar. NAVTEX bu uyarıların kıyısal dağıtım aracıdır.`,
+The world is divided into 21 NAVAREAs. Each NAVAREA coordinator issues the navigational warnings for its region. NAVTEX is the coastal means of distributing these warnings.`,
     keyPoints: [
       "NAVTEX 518 kHz (İngilizce) ve 490 kHz (ulusal dil) frekanslarında çalışır",
       "A, B, D ve L kategorileri kapatılamaz – her zaman alınır",
@@ -1633,34 +1633,34 @@ Dünya 21 NAVAREA'ya bölünmüştür. Her NAVAREA koordinatörü bölgesindeki 
   "distress-comm": {
     title: "Tehlike, Aciliyet ve Emniyet Haberleşmesi",
     introduction: "Deniz haberleşmesinde üç öncelik seviyesi tanımlanmıştır: tehlike (distress), aciliyet (urgency) ve emniyet (safety).",
-    content: `TEHLİKE (DISTRESS) – MAYDAY:
+    content: `DISTRESS – MAYDAY:
 
-En yüksek öncelik. Gemi veya kişi ciddi ve yakın tehlike altındadır ve acil yardım gereklidir.
-Prosedür: DSC Ch.70 tehlike çağrısı + VHF Ch.16 MAYDAY mesajı.
-Tüm istasyonlar MAYDAY çağrısını duymak ve cevap vermekle yükümlüdür.
+The highest priority. A ship or person is in grave and imminent danger and requires immediate assistance.
+Procedure: a DSC distress alert on Ch.70 plus a MAYDAY message on VHF Ch.16.
+All stations are obliged to listen out for and respond to a MAYDAY call.
 
-Tehlike türleri: Batma, yangın, terk gemi, kara oturma, çarpışma, sürüklenme, korsan saldırısı.
+Types of distress: sinking, fire, abandoning ship, grounding, collision, drifting, piracy attack.
 
-ACİLİYET (URGENCY) – PAN PAN:
+URGENCY – PAN PAN:
 
-İkinci öncelik. Gemi veya kişi güvenliği tehlikede ancak acil tehlike henüz oluşmamıştır.
-"PAN PAN PAN PAN PAN PAN, all stations, this is [gemi adı]..."
-Örnekler: Makine arızası (sürüklenme riski), denize düşme, acil tıbbi yardım ihtiyacı.
+The second priority. The safety of a ship or person is at risk but immediate danger has not yet arisen.
+"PAN PAN PAN PAN PAN PAN, all stations, this is [ship's name]..."
+Examples: machinery breakdown (the risk of drifting), a person overboard, the need for urgent medical assistance.
 
-EMNİYET (SAFETY) – SECURITE:
+SAFETY – SECURITE:
 
-Üçüncü öncelik. Navigasyon veya meteoroloji güvenlik bilgisi iletimi.
+The third priority. The transmission of navigational or meteorological safety information.
 "SECURITE SECURITE SECURITE, all stations..."
-Örnekler: Buz uyarısı, sürüklenen konteyner, fener arızası, fırtına uyarısı.
+Examples: an ice warning, a drifting container, a light out of order, a storm warning.
 
 MAYDAY RELAY:
 
-Tehlikedeki geminin kendisi çağrı yapamıyorsa, başka bir gemi onun adına MAYDAY Relay gönderir:
-"MAYDAY RELAY MAYDAY RELAY MAYDAY RELAY, this is [relay gemi adı], following received from [tehlikedeki gemi]..."
+If the ship in distress cannot transmit for herself, another ship transmits a MAYDAY Relay on her behalf:
+"MAYDAY RELAY MAYDAY RELAY MAYDAY RELAY, this is [relaying ship's name], following received from [ship in distress]..."
 
-YANLIŞ TEHLİKE ÇAĞRISI:
+FALSE DISTRESS ALERTS:
 
-Yanlışlıkla gönderilen tehlike çağrısı derhal iptal edilmelidir. VHF Ch.16'da: "All stations, this is [gemi adı], cancel my distress alert of [tarih/saat], MMSI [numara]."`,
+A distress alert sent by mistake must be cancelled at once. On VHF Ch.16: "All stations, this is [ship's name], cancel my distress alert of [date/time], MMSI [number]."`,
     keyPoints: [
       "MAYDAY: ciddi ve yakın tehlike, en yüksek öncelik",
       "PAN PAN: güvenlik tehlikede ama acil tehlike yok",
@@ -1675,29 +1675,29 @@ Yanlışlıkla gönderilen tehlike çağrısı derhal iptal edilmelidir. VHF Ch.
   "ism-code": {
     title: "ISM Code Yapısı ve Gereklilikleri",
     introduction: "ISM Code (International Safety Management Code), gemilerin güvenli işletilmesi ve deniz kirliliğinin önlenmesi için sistematik bir yönetim çerçevesi oluşturur.",
-    content: `ISM CODE AMACI:
+    content: `THE PURPOSE OF THE ISM CODE:
 
-SOLAS Bölüm IX ile zorunlu kılınmıştır. Güvenli gemi operasyonunu sağlamak ve deniz kirliliğini önlemek için şirketin yönetim sistemini yapılandırır.
+Mandatory under SOLAS Chapter IX. It structures the company's management system so as to ensure safe ship operation and prevent marine pollution.
 
-ISM CODE YAPISI (16 Bölüm):
+THE STRUCTURE OF THE ISM CODE (16 sections):
 
-1. Genel: Amaç, uygulama alanı, tanımlar.
-2. Güvenlik ve çevre koruma politikası.
-3. Şirketin sorumlulukları ve yetkileri.
-4. Designated Person Ashore (DPA): Kıyıda atanmış kişi, gemi ile yönetim arasındaki güvenlik bağlantısı.
-5. Kaptan sorumlulukları ve yetkileri.
-6. Kaynaklar ve personel: Eğitim, yeterlilik, tatbikatlar.
-7. Gemi operasyonlarına yönelik planların hazırlanması.
-8. Acil duruma hazırlık.
-9. Uygunsuzlukların (non-conformity), kazaların ve tehlikeli durumların raporlanması ve analizi.
-10. Gemi ve ekipman bakımı.
-11. Dokümantasyon.
-12. Şirket doğrulaması, gözden geçirme ve değerlendirme.
+1. General: purpose, application, definitions.
+2. Safety and environmental protection policy.
+3. Company responsibilities and authority.
+4. Designated Person Ashore (DPA): the person ashore who provides the safety link between the ship and the management.
+5. Master's responsibility and authority.
+6. Resources and personnel: training, competence, drills.
+7. Development of plans for shipboard operations.
+8. Emergency preparedness.
+9. Reports and analysis of non-conformities, accidents and hazardous occurrences.
+10. Maintenance of the ship and equipment.
+11. Documentation.
+12. Company verification, review and evaluation.
 
-SERTİFİKALAR:
+CERTIFICATES:
 
-DOC (Document of Compliance): Şirketin ISM Code'a uygun SMS (Safety Management System) kurduğunu belgeler. 5 yıl geçerli, yıllık doğrulama.
-SMC (Safety Management Certificate): Geminin SMS'e uygun işletildiğini belgeler. 5 yıl geçerli, ara sörvey ile.`,
+DOC (Document of Compliance): certifies that the company has established an SMS (Safety Management System) complying with the ISM Code. Valid for 5 years, with annual verification.
+SMC (Safety Management Certificate): certifies that the ship is operated in accordance with the SMS. Valid for 5 years, with an intermediate verification.`,
     keyPoints: [
       "ISM Code SOLAS IX ile zorunludur",
       "DPA: şirket ve gemi arasında güvenlik bağlantısı",
@@ -1708,24 +1708,24 @@ SMC (Safety Management Certificate): Geminin SMS'e uygun işletildiğini belgele
   "sms-system": {
     title: "SMS (Safety Management System)",
     introduction: "SMS, ISM Code'un gerektirdiği güvenlik yönetim sistemidir ve şirketin tüm denizcilik operasyonlarını kapsayan dokümante edilmiş bir yönetim çerçevesidir.",
-    content: `SMS BİLEŞENLERİ:
+    content: `COMPONENTS OF THE SMS:
 
-Güvenlik ve çevre politikası: Şirketin güvenlik taahhüdünü ifade eder.
-Prosedürler ve talimatlar: Operasyonel prosedürler, acil durum planları, bakım prosedürleri.
-Risk değerlendirmesi: Operasyonlar öncesi risk analizi yapılması.
-İç denetim: Düzenli aralıklarla SMS'in etkinliğinin değerlendirilmesi.
-Yönetim gözden geçirmesi: Üst yönetimin SMS performansını değerlendirmesi.
+Safety and environmental policy: states the company's safety commitment.
+Procedures and instructions: operational procedures, emergency plans, maintenance procedures.
+Risk assessment: analysing the risk before an operation.
+Internal audit: evaluating the effectiveness of the SMS at regular intervals.
+Management review: senior management's evaluation of SMS performance.
 
-GEMİDEKİ UYGULAMA:
+IMPLEMENTATION ON BOARD:
 
-Master's Review: Kaptan, SMS'in etkinliğini düzenli olarak değerlendirir ve şirkete rapor eder.
-Shipboard drill: Tatbikatlar SMS prosedürlerine uygun olarak yapılır.
-Near miss raporlama: Kazaya ramak kala olayların raporlanması güvenlik kültürünün göstergesidir.
-Non-conformity takibi: Tespit edilen uygunsuzluklar düzeltici eylem ile kapatılır.
+Master's review: the master evaluates the effectiveness of the SMS at regular intervals and reports to the company.
+Shipboard drills: drills are carried out in accordance with the SMS procedures.
+Near-miss reporting: reporting near misses is a sign of a healthy safety culture.
+Non-conformity follow-up: non-conformities found are closed out with corrective action.
 
-DOKÜMAN YÖNETİMİ:
+DOCUMENT MANAGEMENT:
 
-SMS dokümanları kontrollü (controlled) ve kontrolsüz (uncontrolled) olarak sınıflandırılır. Gemideki dokümanlar güncel tutulmalıdır. Eski versiyonlar kaldırılmalıdır. Elektronik SMS sistemleri yaygınlaşmaktadır.`,
+SMS documents are classified as controlled and uncontrolled. The documents on board must be kept up to date. Superseded versions must be removed. Electronic SMS systems are becoming widespread.`,
     keyPoints: [
       "SMS tüm operasyonel prosedürleri ve acil durum planlarını kapsar",
       "Near miss raporlama güvenlik kültürünün temel göstergesidir",
@@ -1736,29 +1736,29 @@ SMS dokümanları kontrollü (controlled) ve kontrolsüz (uncontrolled) olarak s
   "isps-code": {
     title: "ISPS Code ve Güvenlik Seviyeleri",
     introduction: "ISPS Code (International Ship and Port Facility Security Code), gemilerin ve liman tesislerinin güvenliğini sağlamak amacıyla 11 Eylül 2001 sonrası oluşturulmuş uluslararası güvenlik çerçevesidir.",
-    content: `ISPS CODE YAPISI:
+    content: `THE STRUCTURE OF THE ISPS CODE:
 
-SOLAS Bölüm XI-2 ile zorunlu kılınmıştır. 1 Temmuz 2004'te yürürlüğe girmiştir. Part A (zorunlu) ve Part B (tavsiye niteliğinde) olmak üzere iki bölümden oluşur.
+Mandatory under SOLAS Chapter XI-2. It entered into force on 1 July 2004. It consists of two parts: Part A (mandatory) and Part B (recommendatory).
 
-GÜVENLİK SEVİYELERİ:
+SECURITY LEVELS:
 
-Security Level 1 (Normal): Normal operasyonel güvenlik önlemleri. Gemi ve liman tesisi günlük güvenlik prosedürlerini uygular.
+Security Level 1 (normal): normal operational security measures. The ship and the port facility apply their day-to-day security procedures.
 
-Security Level 2 (Artırılmış): Güvenlik tehdidinin arttığı durumlarda. Ek güvenlik önlemleri uygulanır: arttırılmış erişim kontrolü, ek devriye, kısıtlı alanların güçlendirilmiş korunması.
+Security Level 2 (heightened): applied where the security threat has increased. Additional security measures are taken: increased access control, extra patrols, strengthened protection of restricted areas.
 
-Security Level 3 (Olağanüstü): Muhtemel veya yakın güvenlik tehlikesi. Maksimum güvenlik önlemleri. Hükümet otoritelerinin yönlendirmesiyle hareket edilir.
+Security Level 3 (exceptional): a probable or imminent security incident. Maximum security measures. Action is taken under the direction of the government authorities.
 
-ZORUNLU BELGELER:
+MANDATORY DOCUMENTS:
 
-SSP (Ship Security Plan): Gemi güvenlik planı. Tüm güvenlik seviyelerinde uygulanacak prosedürleri tanımlar.
-SSA (Ship Security Assessment): Gemi güvenlik değerlendirmesi. Risklerin ve zayıflıkların analizi.
-ISSC (International Ship Security Certificate): Geminin ISPS Code'a uygunluğunu belgeler.
+SSP (Ship Security Plan): defines the procedures to be applied at every security level.
+SSA (Ship Security Assessment): the analysis of risks and vulnerabilities.
+ISSC (International Ship Security Certificate): certifies the ship's compliance with the ISPS Code.
 
-GÖREVLİ KİŞİLER:
+APPOINTED PERSONS:
 
-SSO (Ship Security Officer): Gemi güvenlik zabiti. Genellikle başkaptan.
-CSO (Company Security Officer): Şirket güvenlik sorumlusu.
-PFSO (Port Facility Security Officer): Liman tesisi güvenlik sorumlusu.`,
+SSO (Ship Security Officer): usually the chief officer.
+CSO (Company Security Officer).
+PFSO (Port Facility Security Officer).`,
     keyPoints: [
       "Üç güvenlik seviyesi: Level 1 (normal), Level 2 (artırılmış), Level 3 (olağanüstü)",
       "SSP (Gemi Güvenlik Planı) tüm seviyeleri kapsar",
@@ -1771,36 +1771,36 @@ PFSO (Port Facility Security Officer): Liman tesisi güvenlik sorumlusu.`,
     introduction: "ISPS Code kapsamında güvenlik sorumluluğu gemi, şirket ve liman tesisi düzeyinde atanmış kişilere dağıtılmıştır.",
     content: `SSO (Ship Security Officer):
 
-Gemi güvenlik zabitinin görevleri:
-1. SSP'nin (Ship Security Plan) uygulanması ve sürdürülmesi
-2. Gemi güvenlik değerlendirmesinin güncellenmesi
-3. Güvenlik eğitim ve tatbikatlarının düzenlenmesi
-4. Güvenlik olaylarının raporlanması
-5. Erişim kontrolünün denetimi
-6. CSO ile düzenli iletişim
-7. Güvenlik seviyesi değişikliklerinin uygulanması
+The duties of the ship security officer:
+1. Implementing and maintaining the SSP (Ship Security Plan)
+2. Keeping the ship security assessment up to date
+3. Arranging security training and drills
+4. Reporting security incidents
+5. Supervising access control
+6. Regular communication with the CSO
+7. Implementing changes of security level
 
 CSO (Company Security Officer):
 
-Şirket güvenlik sorumlusunun görevleri:
-1. SSA'ların yaptırılması ve güncellenmesi
-2. SSP'lerin hazırlanması ve onaylatılması
-3. SSO'ların atanması ve eğitiminin sağlanması
-4. İç denetimlerin yürütülmesi
-5. Güvenlik seviyesi değişikliklerinin gemilere bildirilmesi
-6. Bayrak devleti ve liman devleti ile güvenlik iletişimi
+The duties of the company security officer:
+1. Having the SSAs carried out and updated
+2. Preparing the SSPs and having them approved
+3. Appointing and training the SSOs
+4. Conducting internal audits
+5. Notifying the ships of changes of security level
+6. Security liaison with the flag State and the port State
 
 PFSO (Port Facility Security Officer):
 
-Liman tesisi güvenlik sorumlusunun görevleri:
-1. Liman tesisi güvenlik planının (PFSP) uygulanması
-2. Gemi-liman arayüz güvenliğinin koordinasyonu
-3. DoS (Declaration of Security) düzenlenmesi
-4. Güvenlik tatbikatlarının düzenlenmesi
+The duties of the port facility security officer:
+1. Implementing the port facility security plan (PFSP)
+2. Coordinating security at the ship/port interface
+3. Completing the Declaration of Security (DoS)
+4. Arranging security drills
 
-DOS (Declaration of Security):
+THE DECLARATION OF SECURITY (DoS):
 
-Gemi ve liman tesisi arasında güvenlik sorumlulukların paylaşımını belgeleyen yazılı beyan. Güvenlik seviyeleri farklı olduğunda veya yüksek riskli operasyonlarda düzenlenir.`,
+A written declaration recording the division of security responsibilities between the ship and the port facility. It is completed where the security levels differ or for high-risk operations.`,
     keyPoints: [
       "SSO gemide SSP'yi uygular, CSO şirket genelinde koordine eder",
       "DoS gemi-liman arası güvenlik sorumluluklarını belgelemektedir",
@@ -1811,21 +1811,21 @@ Gemi ve liman tesisi arasında güvenlik sorumlulukların paylaşımını belgel
   "security-assessment": {
     title: "Gemi Güvenlik Değerlendirmesi (SSA)",
     introduction: "SSA (Ship Security Assessment), geminin güvenlik zayıflıklarının ve olası tehditlerin sistematik analizi ile güvenlik planının temelini oluşturur.",
-    content: `SSA SÜRECİ:
+    content: `THE SSA PROCESS:
 
-1. ÖN DEĞERLENDİRME: Mevcut güvenlik önlemlerinin tespiti, geminin fiziksel yapısı ve operasyonel profili.
+1. PRELIMINARY ASSESSMENT: identifying the existing security measures, the ship's physical structure and its operational profile.
 
-2. TEHDİT ANALİZİ: Geminin seyir bölgesine ve yük tipine göre olası güvenlik tehditleri: korsan/silahlı soygun, terör, kaçak yolcu, kaçakçılık, sabotaj, siber saldırı.
+2. THREAT ANALYSIS: the security threats possible for the ship's trading area and cargo type: piracy/armed robbery, terrorism, stowaways, smuggling, sabotage, cyber attack.
 
-3. ZAFIYET ANALİZİ: Erişim noktaları, güvenlik ekipmanı durumu, gözetleme sistemleri, aydınlatma, iletişim kapasitesi, mürettebat eğitim seviyesi.
+3. VULNERABILITY ANALYSIS: access points, the condition of the security equipment, surveillance systems, lighting, communications capability, the level of crew training.
 
-4. RİSK DEĞERLENDİRMESİ: Tehdit olasılığı × etkisi = risk seviyesi. Risk matrisi ile öncelikli alanlar belirlenir.
+4. RISK ASSESSMENT: probability of the threat × its impact = the level of risk. Priority areas are identified with a risk matrix.
 
-5. KARŞI ÖNLEMLER: Her risk için uygun güvenlik önlemleri önerilir ve SSP'ye dahil edilir.
+5. COUNTERMEASURES: appropriate security measures are proposed for each risk and included in the SSP.
 
-SSA ÇIKTILARI:
+OUTPUTS OF THE SSA:
 
-SSA sonuçları doğrudan SSP'nin (Ship Security Plan) oluşturulmasında ve güncellenmesinde kullanılır. SSA gizli bir dokümandır ve yetkisiz kişilere gösterilmez. SSA düzenli olarak (özellikle gemi ticareti veya seyir bölgesi değiştiğinde) güncellenir.`,
+The results of the SSA are used directly in creating and updating the SSP (Ship Security Plan). The SSA is a confidential document and is not shown to unauthorised persons. The SSA is updated regularly (particularly when the ship's trade or trading area changes).`,
     keyPoints: [
       "SSA: tehdit analizi + zafiyet analizi + risk değerlendirmesi",
       "SSA gizli dokümandır, yetkisiz kişilere gösterilmez",
@@ -1840,25 +1840,25 @@ SSA sonuçları doğrudan SSP'nin (Ship Security Plan) oluşturulmasında ve gü
   "water-entry": {
     title: "Suya Giriş Teknikleri",
     introduction: "Gemiyi terk ederken suya güvenli giriş, ilk anlardaki yaralanma ve boğulma riskini azaltmak için doğru teknik uygulamayı gerektirir.",
-    content: `SUYA GİRİŞ YÖNTEMLERİ:
+    content: `METHODS OF ENTERING THE WATER:
 
-1. EMBARKASYON MERDİVENİ/RAMPA: En güvenli yöntem. Sandal veya sala doğrudan bindirme. Islak ellere ve kaygan yüzeylere dikkat.
+1. EMBARKATION LADDER/RAMP: the safest method. Boarding a lifeboat or liferaft directly. Watch for wet hands and slippery surfaces.
 
-2. ATLAMA (son çare): Maksimum 5 metreden. Can yeleği sıkıca bağlı olmalı. Bir elle ağız ve burunu kapat. Diğer elle can yeleğini tut. Ayaklar birleşik. Dik pozisyonda atla. Rüzgar altı tarafından atla. Gemiden en az 3 metre uzağa atla (emme etkisi).
+2. JUMPING (a last resort): from no more than 5 metres. The lifejacket must be firmly secured. Cover the mouth and nose with one hand. Hold the lifejacket down with the other hand. Keep the feet together. Jump upright. Jump from the lee side. Jump at least 3 metres clear of the ship (suction effect).
 
-3. SÜZÜLME: Ip veya merdiven ile kontrollü iniş. Eldivenle kavrama yüzeyi iyileştirilir.
+3. CLIMBING DOWN: a controlled descent by rope or ladder. Gloves improve the grip.
 
-GEMİDEN UZAKLAŞMA:
+CLEARING THE SHIP:
 
-Suya girdikten sonra derhal gemiden uzaklaşılmalıdır:
-- Emme etkisi (batma sırasında)
-- Patlama riski (yakıt tankları)
-- Dökülme (debris) riski
-En az 200 metre uzaklaşılmalıdır.
+Once in the water you must get clear of the ship at once because of:
+- The suction effect (as she sinks)
+- The risk of explosion (fuel tanks)
+- The risk of falling debris
+Get at least 200 metres clear.
 
-CAN YELEĞİ İLE YÜZME:
+SWIMMING IN A LIFEJACKET:
 
-Can yeleği suya girmeden önce giyilir ve sıkıca bağlanır. Suda can yeleği ile sırt üstü pozisyon alınır. Enerji tasarrufu için gereksiz yüzme yapılmaz. HEAT pozisyonu (bacaklar göğse, kollar vücuda sarılı) ısı kaybını yavaşlatır.`,
+The lifejacket is put on and secured before entering the water. In the water, adopt a face-up position in the lifejacket. Do not swim unnecessarily, to conserve energy. The HELP position (legs drawn up to the chest, arms wrapped around the body) slows heat loss.`,
     keyPoints: [
       "Atlama son çare olarak, max 5 metreden, rüzgar altından yapılır",
       "Gemiden en az 200 metre uzaklaşılmalıdır",
@@ -1869,28 +1869,28 @@ Can yeleği suya girmeden önce giyilir ve sıkıca bağlanır. Suda can yeleği
   "flotation-aids": {
     title: "Yüzme ve Batmama Teknikleri",
     introduction: "Can yeleği olmadan veya hasarlı can yeleği ile suda kalma durumunda batmama teknikleri hayat kurtarabilir.",
-    content: `DROWNPROOFING TEKNİĞİ:
+    content: `THE DROWNPROOFING TECHNIQUE:
 
-Can yeleği yoksa veya hasarlıysa uygulanan enerji tasarruflu yüzme tekniğidir:
-1. Derin nefes al, yüzünü suya daldır
-2. Kolları ve bacakları gevşet (denizyıldızı pozisyonu)
-3. Hava bittiğinde başını kaldır, nefes al
-4. Tekrarla
+An energy-saving floating technique used where there is no lifejacket or it is damaged:
+1. Take a deep breath and put your face in the water
+2. Relax the arms and legs (the starfish position)
+3. When you run out of air, lift your head and breathe
+4. Repeat
 
-Bu teknik saatlerce suda kalmayı mümkün kılar çünkü enerji harcamasını minimize eder.
+This technique makes it possible to stay in the water for hours because it minimises energy expenditure.
 
 TREADING WATER:
 
-Ayakta suda kalma. Bacaklar bisiklet çevirme hareketi, eller yatay düzlemde küçük daireler çizer. Daha fazla enerji harcar ama baş su üzerinde kalır.
+Staying upright in the water. The legs make a cycling movement and the hands describe small horizontal circles. It uses more energy but keeps the head clear of the water.
 
-GRUP TEKNİKLERİ:
+GROUP TECHNIQUES:
 
-HUDDLE: Grup halinde birbirine sarılma. En az 3 kişi ile uygulanır. Merkeze çocuklar ve zayıf yüzücüler alınır. Isı kaybını önemli ölçüde azaltır.
+HUDDLE: huddling together as a group. Used with at least 3 people. Children and weak swimmers are placed in the centre. It reduces heat loss considerably.
 
-GİYSİ İLE YÜZDÜRME:
+USING CLOTHING FOR BUOYANCY:
 
-Pantolon: Bacakları bağla, havaya doldur, boyunun etrafına sarılarak geçici yüzdürme aracı olarak kullan.
-Gömlek: Düğmeleri kapat, havaya doldur.`,
+Trousers: knot the legs, fill them with air and use them around the neck as a temporary flotation aid.
+Shirt: fasten the buttons and fill it with air.`,
     keyPoints: [
       "Drownproofing: enerji tasarruflu, saatlerce suda kalma tekniği",
       "HUDDLE: grup ısınması, merkeze zayıf yüzücüler alınır",
@@ -1901,27 +1901,27 @@ Gömlek: Düğmeleri kapat, havaya doldur.`,
   "raft-survival": {
     title: "Salda Hayatta Kalma",
     introduction: "Cankurtaran salına bindikten sonra organize bir hayatta kalma planı uygulamak, kurtarılana kadar geçen sürede sağ kalma şansını artırır.",
-    content: `İLK EYLEMLER:
+    content: `FIRST ACTIONS:
 
-1. YARALANMA KONTROLÜ: Yaralılara ilk yardım uygula.
-2. SU YÖNETİMİ: Su dağıtım planı oluştur. İlk 24 saat su içme (vücut deposu yeterli).
-3. SAL KONTROLÜ: Hava odalarını kontrol et, sal tabanını kuru tut, deniz çapası at, tente kapat.
-4. GÖZCÜLÜK: Sürekli gözcü tut. Piroteknik araçları kurtarma aracı görüldüğünde kullan.
-5. LİDERLİK: Lider belirle, görev dağılımı yap, moral koru.
+1. CHECK FOR INJURIES: give first aid to the injured.
+2. WATER MANAGEMENT: draw up a water distribution plan. Do not drink water in the first 24 hours (the body's reserves are sufficient).
+3. CHECK THE RAFT: check the buoyancy chambers, keep the raft floor dry, stream the sea anchor and close the canopy.
+4. LOOKOUT: keep a continuous lookout. Use pyrotechnics only when a rescue unit is sighted.
+5. LEADERSHIP: appoint a leader, allocate duties, keep morale up.
 
-SU RASYONU:
+WATER RATIONING:
 
-Minimum günlük su ihtiyacı: 0.5 litre (hayatta kalma). Normal ihtiyaç: 2-3 litre. Yağmur suyu toplama sistemi kurulur. Deniz suyu içilmez – dehidrasyon hızlanır. Tuzdan arındırma kiti (desalination) varsa kullanılır.
+Minimum daily water requirement: 0.5 litres (for survival). Normal requirement: 2-3 litres. A rainwater collection system is set up. Sea water must not be drunk – it accelerates dehydration. A desalination kit is used if one is carried.
 
-GIDA YÖNETİMİ:
+FOOD MANAGEMENT:
 
-Acil gıda rasyonu eşit olarak dağıtılır. Su kısıtlıysa protein (balık) yenmemelidir – protein sindirimi su tüketimini artırır. Karbonhidrat tercih edilir.
+Emergency rations are shared out equally. If water is short, protein (fish) must not be eaten – digesting protein increases water consumption. Carbohydrates are preferred.
 
-KORUNMA:
+PROTECTION:
 
-Güneş çarpmasından korunma: Tente kapalı, ıslak bez ile serinleme.
-Soğuktan korunma: TPA (Thermal Protective Aid), ıslak giysi çıkarma, grup ısınması.
-Tuzlu su yarası: Tuzlu su ile temas eden yaraları tatlı su ile yıka.`,
+Protection from sunstroke: keep the canopy closed, cool down with a wet cloth.
+Protection from the cold: TPA (Thermal Protective Aid), remove wet clothing, group warming.
+Salt water sores: wash wounds that have been in contact with sea water with fresh water.`,
     keyPoints: [
       "İlk 24 saat su içilmez, sonra günlük 0.5 litre minimum",
       "Deniz suyu kesinlikle içilmez – dehidrasyonu hızlandırır",
@@ -1932,26 +1932,26 @@ Tuzlu su yarası: Tuzlu su ile temas eden yaraları tatlı su ile yıka.`,
   "signaling-rescue": {
     title: "İşaret Verme ve Kurtarılma",
     introduction: "Denizde kurtarılabilmek için etkin işaret verme teknikleri ve kurtarma operasyonuna hazırlık hayati önemdedir.",
-    content: `İŞARET VERME ARAÇLARI:
+    content: `MEANS OF SIGNALLING:
 
-1. SART/AIS-SART: Radar sinyaline otomatik yanıt. En etkili elektronik işaret aracı.
-2. EPIRB: Uydu aracılığıyla konum bildirimi. Aktive edildiğinde SAR koordinasyon merkezi bilgilendirilir.
-3. Paraşüt fişeği: Gece ve gündüz, uzak mesafeden görülebilir (40+ km).
-4. El meşalesi: Yakın mesafede, kurtarma aracına yön gösterme.
-5. Duman işareti: Gündüz saatlerinde turuncu duman.
-6. Heliograph (ayna): Güneş ışığını yansıtarak uçağa/gemiye sinyal.
-7. Düdük: Ses işareti, kısa mesafe.
-8. El feneri: Gece, SOS (... --- ...) sinyali.
+1. SART/AIS-SART: an automatic response to a radar signal. The most effective electronic means of signalling.
+2. EPIRB: position notification by satellite. When activated, the SAR coordination centre is informed.
+3. Rocket parachute flare: visible by day and night at long range (40+ km).
+4. Hand flare: shows the rescue unit your position at short range.
+5. Smoke signal: orange smoke, for daylight use.
+6. Heliograph (mirror): signals to an aircraft/ship by reflecting sunlight.
+7. Whistle: an audible signal at short range.
+8. Torch: at night, the SOS signal (... --- ...).
 
-KURTARILMA HAZIRLIĞI:
+PREPARING FOR RESCUE:
 
-Helikopter yaklaştığında: Piroteknik kullanma – rotor rüzgarıyla sal ters dönebilir. Hi-line talimatlarına uy. Sırayla vinçle alınma. İlk önce yaralılar.
+As the helicopter approaches: do not use pyrotechnics – the rotor downwash can capsize the raft. Follow the hi-line instructions. Be lifted by the winch in turn. The injured first.
 
-Gemi yaklaştığında: Sal gözetleme hattı tarafına yaklaştırılır. Merdiven veya ağ ile çıkılır. Kendi başına çıkamayan kişilere yardım edilir.
+As a ship approaches: the raft is brought to the lee side. Board by ladder or scrambling net. Those who cannot climb unaided are helped.
 
-KURTARMA SONRASI:
+AFTER RESCUE:
 
-Hipotermik kişiler dikkatle taşınır (rescue collapse riski). Sıvı-gıda yavaş verilir. Tıbbi değerlendirme yapılır.`,
+Hypothermic casualties are moved carefully (the risk of rescue collapse). Fluids and food are given slowly. A medical assessment is made.`,
     keyPoints: [
       "SART ve EPIRB en etkili elektronik işaret araçlarıdır",
       "Heliograph güneşli günlerde uçağa işaret vermede çok etkilidir",
@@ -1962,30 +1962,30 @@ Hipotermik kişiler dikkatle taşınır (rescue collapse riski). Sıvı-gıda ya
   "food-water-survival": {
     title: "Yiyecek ve Su Yönetimi",
     introduction: "Denizde hayatta kalma süresinin en kritik belirleyicisi su yönetimidir. İnsan vücudu susuz 3-5 gün, gıdasız 3-4 hafta dayanabilir.",
-    content: `SU YÖNETİMİ:
+    content: `WATER MANAGEMENT:
 
-İlk 24 saat: Su dağıtılmaz (vücut deposu yeterli, bulantı ve kusma olasılığı).
-2-4. gün: Günde 0.5 litre (hayatta kalma dozu).
-4+ gün: Duruma göre artırılabilir (yağmur suyu toplanırsa).
+The first 24 hours: no water is issued (the body's reserves are sufficient and there is a risk of nausea and vomiting).
+Days 2-4: 0.5 litres a day (the survival ration).
+Day 4 onwards: may be increased as circumstances allow (if rainwater is collected).
 
-Su tasarrufu kuralları:
-- Gereksiz konuşmayı azalt
-- Fiziksel aktiviteyi sınırla
-- Gün ortasında gölgede kal
-- Deniz suyu içme (böbrek yetmezliği hızlanır)
-- İdrar içme (zehirli atık madde konsantrasyonu artar)
+Rules for conserving water:
+- Reduce unnecessary talking
+- Limit physical activity
+- Stay in the shade in the middle of the day
+- Do not drink sea water (it accelerates kidney failure)
+- Do not drink urine (the concentration of toxic waste products increases)
 
-YAĞMUR SUYU TOPLAMA:
+COLLECTING RAINWATER:
 
-Sal tentesi yağmur suyu toplama sistemine sahiptir. İlk yağmuru toplamadan önce tuz tabakası yıkansın diye birkaç dakika beklenir. Toplanan su kaplar ve plastik torbalarda depolanır.
+The raft canopy has a rainwater collection system. Wait a few minutes before collecting the first rain so that the salt layer is washed off. The water collected is stored in containers and plastic bags.
 
-GIDA YÖNETİMİ:
+FOOD MANAGEMENT:
 
-Acil rasyonlar eşit olarak dağıtılır. Karbonhidrat zengin gıdalar tercih edilir (su tüketimini artırmaz). Çiğ balık yenilebilir ancak su kısıtlıysa protein sindirimi su tüketimini artırır.
+Emergency rations are shared out equally. Carbohydrate-rich foods are preferred (they do not increase water consumption). Raw fish can be eaten, but if water is short, digesting protein increases water consumption.
 
-DENİZ SUYU ARINDIRILMASI:
+DESALINATING SEA WATER:
 
-Solar still: Güneş enerjisi ile buharlaştırma-yoğuşturma prensibiyle tatlı su üretimi. Desalination kiti: Kimyasal veya mekanik yöntemle tuz giderme.`,
+Solar still: producing fresh water by evaporation and condensation using solar energy. Desalination kit: removing salt by a chemical or mechanical method.`,
     keyPoints: [
       "İlk 24 saat su verilmez, sonra günlük 0.5 litre minimum",
       "Deniz suyu ve idrar kesinlikle içilmez",
@@ -2000,27 +2000,27 @@ Solar still: Güneş enerjisi ile buharlaştırma-yoğuşturma prensibiyle tatl�
   "enclosed-space-risks": {
     title: "Kapalı Alan Riskleri ve Tehlikeli Atmosfer",
     introduction: "Kapalı alan (enclosed space) kazaları, denizcilik sektöründe en sık ölüm nedenlerinden biridir. Oksijen yetersizliği, zehirli gaz veya patlayıcı atmosfer hayati tehlike oluşturur.",
-    content: `KAPALI ALAN TANIMI:
+    content: `DEFINITION OF AN ENCLOSED SPACE:
 
-Sınırlı giriş-çıkış noktası olan, sürekli insan çalışması için tasarlanmamış, tehlikeli atmosfer oluşma riski bulunan kapalı bölme. Örnekler: ballast tankları, yakıt tankları, kargo tankları, koferdamlar, boş bölmeler, zincir dolabı, boya deposu.
+A closed compartment with limited means of entry and exit, not designed for continuous occupancy, in which a hazardous atmosphere may develop. Examples: ballast tanks, fuel tanks, cargo tanks, cofferdams, void spaces, the chain locker and the paint store.
 
-TEHLİKELİ ATMOSFER:
+HAZARDOUS ATMOSPHERES:
 
-Oksijen yetersizliği: Normal %20.9 O₂. Tehlikeli: <%19.5. Ölümcül: <%16. Paslanma, organik madde çürümesi ve inert gaz oksijeni tüketir.
+Oxygen deficiency: normal is 20.9% O₂. Hazardous: <19.5%. Fatal: <16%. Rusting, decomposition of organic matter and inert gas consume oxygen.
 
-Oksijen fazlalığı: >%23.5 O₂. Yanıcı maddelerin tutuşma riski artar.
+Oxygen enrichment: >23.5% O₂. The risk of combustible materials igniting increases.
 
-Zehirli gazlar:
-- H₂S (Hidrojen sülfür): Çürüme sonucu oluşur. >10 ppm tehlikeli, >100 ppm ölümcül. Kokusu yüksek konsantrasyonda algılanamaz (sinir felci).
-- CO (Karbon monoksit): Eksik yanma ürünü. >35 ppm tehlikeli.
-- CO₂ (Karbondioksit): Fermantasyon, inert gaz kalıntısı. >0.5% tehlikeli.
-- SO₂ (Kükürt dioksit): Kükürtlü yakıt yanma ürünü.
+Toxic gases:
+- H₂S (hydrogen sulphide): produced by decomposition. >10 ppm hazardous, >100 ppm fatal. At high concentrations its smell cannot be detected (olfactory paralysis).
+- CO (carbon monoxide): a product of incomplete combustion. >35 ppm hazardous.
+- CO₂ (carbon dioxide): fermentation, inert gas residues. >0.5% hazardous.
+- SO₂ (sulphur dioxide): a combustion product of sulphur-bearing fuel.
 
-Patlayıcı atmosfer: Yanıcı gaz konsantrasyonunun LEL (Lower Explosive Limit) ile UEL (Upper Explosive Limit) arasında olması.
+Explosive atmosphere: a flammable gas concentration between the LEL (Lower Explosive Limit) and the UEL (Upper Explosive Limit).
 
-İSTATİSTİKLER:
+STATISTICS:
 
-IMO verilerine göre kapalı alan kazalarında ölümlerin çoğu kurtarma girişimi sırasında oluşmaktadır. İlk kurban için eğitimsiz ve donanımsız kurtarma girişimi ikinci ve üçüncü kurbanlara yol açmaktadır.`,
+According to IMO data, most deaths in enclosed space accidents occur during rescue attempts. An untrained and unequipped attempt to rescue the first casualty produces a second and a third.`,
     keyPoints: [
       "O₂ < %19.5 tehlikeli, < %16 ölümcüldür",
       "H₂S yüksek konsantrasyonda koku algısını yok eder",
@@ -2028,38 +2028,38 @@ IMO verilerine göre kapalı alan kazalarında ölümlerin çoğu kurtarma giri�
       "Ballast tankları, yakıt tankları, koferdamlar kapalı alan örnekleridir",
     ],
     warnings: [
-      "Eğitimsiz ve donanımsız kurtarma girişimi YAPILMAZ",
-      "Atmosfer testi yapılmadan kapalı alana girilmez",
+      "NEVER attempt a rescue untrained and without equipment",
+      "Never enter an enclosed space without testing the atmosphere",
     ],
   },
   "entry-permit": {
     title: "Giriş İzin Sistemi (Entry Permit)",
     introduction: "Kapalı alana giriş, sistematik bir izin prosedürü ile kontrol altına alınır. Entry Permit, ISM Code ve şirket SMS prosedürleri gereği zorunludur.",
-    content: `GİRİŞ İZNİ PROSEDÜRÜ:
+    content: `THE ENTRY PERMIT PROCEDURE:
 
-1. Risk değerlendirmesi yapılır (kimin, neden, ne zaman gireceği).
-2. Bölme havalandırılır (en az 24 saat veya yeterli süre).
-3. Atmosfer testi yapılır: O₂, LEL, H₂S, CO ölçümleri.
-4. Test sonuçları "güvenli" ise giriş izin belgesi düzenlenir.
-5. Belge yetkili kişi (kaptan veya chief officer) tarafından onaylanır.
-6. Giriş yapan personel ve gözcü (standby person) belirlenir.
-7. İletişim aracı (VHF veya kablolu) temin edilir.
-8. Kurtarma ekipmanı (SCBA, harness, tripod) hazırlanır.
+1. A risk assessment is made (who is entering, why and when).
+2. The space is ventilated (at least 24 hours, or long enough).
+3. The atmosphere is tested: O₂, LEL, H₂S and CO measurements.
+4. If the test results are "safe", an entry permit is issued.
+5. The permit is authorised by a responsible person (the master or chief officer).
+6. The persons entering and the standby person are named.
+7. A means of communication (VHF or hard-wired) is provided.
+8. Rescue equipment (SCBA, harness, tripod) is made ready.
 
-ENTRY PERMİT İÇERİĞİ:
+CONTENTS OF THE ENTRY PERMIT:
 
-Bölme adı ve konumu
-Giriş amacı ve tahmini süre
-Atmosfer test sonuçları (O₂, LEL, H₂S, CO)
-Havalandırma durumu
-Giren personel isimleri
-Gözcü (standby person) ismi
-Kurtarma ekipmanı durumu
-Yetkili onayı ve zaman damgası
+The name and location of the space
+The purpose of entry and the estimated duration
+The atmosphere test results (O₂, LEL, H₂S, CO)
+The ventilation status
+The names of those entering
+The name of the standby person
+The status of the rescue equipment
+The authorisation and time stamp
 
-İPTAL KOŞULLARI:
+CANCELLATION:
 
-Atmosfer değişikliği şüphesi, havalandırma kesintisi, acil durum alarmı veya izin süresinin dolması halinde bölme derhal terk edilir.`,
+The space is evacuated immediately if there is any suspicion of a change in the atmosphere, an interruption of ventilation, an emergency alarm, or if the permit expires.`,
     keyPoints: [
       "Atmosfer testi olmadan kapalı alana giriş kesinlikle yasaktır",
       "Gözcü (standby person) her zaman bölme girişinde hazır bulunmalıdır",
@@ -2070,31 +2070,31 @@ Atmosfer değişikliği şüphesi, havalandırma kesintisi, acil durum alarmı v
   "atmosphere-testing": {
     title: "Atmosfer Testi ve Ölçüm Cihazları",
     introduction: "Kapalı alana giriş öncesi atmosfer testi yapılması zorunludur. Doğru ölçüm cihazı kullanımı ve kalibrasyon kritik önemdedir.",
-    content: `ÖLÇÜLEN PARAMETRELER:
+    content: `PARAMETERS MEASURED:
 
-1. Oksijen (O₂): Güvenli aralık: %20.9 (±%1). Minimum güvenli: %19.5.
-2. Yanıcı gaz (LEL): Güvenli: <%1 LEL. Uyarı: >%10 LEL.
-3. Hidrojen sülfür (H₂S): Güvenli: <5 ppm. TWA: 10 ppm. STEL: 15 ppm.
-4. Karbon monoksit (CO): Güvenli: <25 ppm. TWA: 35 ppm.
+1. Oxygen (O₂): safe range: 20.9% (±1%). Minimum safe: 19.5%.
+2. Flammable gas (LEL): safe: <1% LEL. Warning: >10% LEL.
+3. Hydrogen sulphide (H₂S): safe: <5 ppm. TWA: 10 ppm. STEL: 15 ppm.
+4. Carbon monoxide (CO): safe: <25 ppm. TWA: 35 ppm.
 
-ÖLÇÜM CİHAZLARI:
+MEASURING INSTRUMENTS:
 
-Multi-gas dedektör (4 gazlı): O₂, LEL, H₂S, CO'yu aynı anda ölçer. En yaygın kullanılan cihaz. Kişisel taşınabilir tip ve pompalı uzaktan örneklemeli tip mevcuttur.
+Multi-gas detector (4 gas): measures O₂, LEL, H₂S and CO at the same time. The most commonly used instrument. Personal portable and pump-operated remote sampling types are available.
 
-Pompalı tip: Uzun hortum ile bölmeye girmeden atmosfer örneği çekilir. Giriş öncesi test için gereklidir.
+Pump type: an atmosphere sample is drawn through a long hose without entering the space. It is required for pre-entry testing.
 
-Kişisel dedektör: Giriş yapan personelin üzerinde taşıdığı, sürekli ölçüm yapan ve alarm veren cihaz.
+Personal detector: an instrument carried by the person entering, measuring continuously and alarming.
 
-KALİBRASYON:
+CALIBRATION:
 
-Cihazlar üretici tavsiyesine göre düzenli olarak kalibre edilmelidir (genellikle 6 ayda bir veya kullanım öncesi). Kalibrasyon gazları ile doğrulama yapılır. Kalibrasyon kayıtları tutulur.
+Instruments must be calibrated regularly as recommended by the maker (usually every 6 months or before use). They are verified with calibration gases. Calibration records are kept.
 
-TEST PROSEDÜRÜ:
+TEST PROCEDURE:
 
-1. Havalandırmayı durdur (gerçek atmosferi ölç).
-2. Pompalı cihazla bölmenin üst, orta ve alt seviyelerinden ölçüm yap (H₂S yukarıda, ağır gazlar altta birikir).
-3. Sonuçları Entry Permit'e kaydet.
-4. Giriş sırasında kişisel dedektör ile sürekli izleme yap.`,
+1. Stop the ventilation (to measure the true atmosphere).
+2. Take readings at the top, middle and bottom of the space with the pump instrument (H₂S collects high up, heavy gases at the bottom).
+3. Record the results on the entry permit.
+4. Monitor continuously with a personal detector while inside.`,
     keyPoints: [
       "Test bölmenin üst, orta ve alt seviyelerinden yapılmalıdır",
       "Havalandırma durdurularak gerçek atmosfer ölçülmelidir",
@@ -2105,28 +2105,28 @@ TEST PROSEDÜRÜ:
   "rescue-from-enclosed": {
     title: "Kapalı Alandan Kurtarma Prosedürü",
     introduction: "Kapalı alanda bilinç kaybı veya kaza durumunda kurtarma operasyonu, önceden planlanmış ve tatbikatla pekiştirilmiş prosedürlere uygun yürütülmelidir.",
-    content: `KURTARMA PRENSİPLERİ:
+    content: `RESCUE PRINCIPLES:
 
-1. ALARM VER: Gözcü (standby person) derhal alarm verir ve köprüüstünü bilgilendirir.
-2. KENDİN GİRME: Eğitimsiz ve SCBA'sız kurtarma girişimi YAPMA. İkinci kurban olma riski çok yüksektir.
-3. EĞİTİMLİ EKİP: Kurtarma ekibi SCBA ile donanır.
-4. HARNESS VE HALAT: Kurtarılacak kişiye harness takılır, tripod veya davit ile çıkarılır.
+1. RAISE THE ALARM: the standby person raises the alarm at once and informs the bridge.
+2. DO NOT GO IN YOURSELF: NEVER attempt a rescue untrained and without SCBA. The risk of becoming the second casualty is very high.
+3. A TRAINED TEAM: the rescue team is equipped with SCBA.
+4. HARNESS AND LINE: a harness is fitted to the casualty and they are lifted out with a tripod or davit.
 
-KURTARMA EKİPMANI:
+RESCUE EQUIPMENT:
 
-SCBA (Self-Contained Breathing Apparatus): 30 dakika kapasiteli nefes cihazı.
-EEBD (Emergency Escape Breathing Device): 10-15 dakikalık kaçış cihazı. Kurtarma için yetersizdir; yalnızca kaçış için kullanılır.
-Tripod ve vinç: Dikey erişimli bölmelerde (tank manholu) kişiyi çıkarmak için.
-Stretcher (sedye): Yaralı taşıma.
-İletişim: Sürekli iletişim hattı.
+SCBA (Self-Contained Breathing Apparatus): a 30-minute breathing set.
+EEBD (Emergency Escape Breathing Device): a 10-15 minute escape device. It is inadequate for rescue; it is only for escape.
+Tripod and winch: for lifting a person out of a space with vertical access (a tank manhole).
+Stretcher: for carrying a casualty.
+Communications: a continuous communication link.
 
-TATBİKAT:
+DRILLS:
 
-SOLAS gereği kapalı alan kurtarma tatbikatı en az 2 ayda bir yapılmalıdır. Tatbikat gerçekçi senaryo ile uygulanır. SCBA kullanımı, harness takma, tripod kullanımı pratik edilir.
+Under SOLAS an enclosed space rescue drill must be held at least once every 2 months. The drill is run with a realistic scenario. Use of SCBA, fitting a harness and use of a tripod are practised.
 
-PSC DENETİMİNDE:
+IN PSC INSPECTIONS:
 
-Kapalı alan giriş prosedürü, ekipman durumu ve tatbikat kayıtları PSC denetimlerinde kontrol edilir. Eksiklikler detainable deficiency olabilir.`,
+The enclosed space entry procedure, the condition of the equipment and the drill records are checked in PSC inspections. Shortcomings can be detainable deficiencies.`,
     keyPoints: [
       "SCBA'sız kurtarma girişimi YAPILMAZ – ikinci kurban riski",
       "Kapalı alan kurtarma tatbikatı en az 2 ayda bir yapılmalıdır",
@@ -2134,8 +2134,8 @@ Kapalı alan giriş prosedürü, ekipman durumu ve tatbikat kayıtları PSC dene
       "Tripod ve harness dikey erişimli bölmelerde zorunludur",
     ],
     warnings: [
-      "Eğitimsiz kurtarma girişimi en sık ölüm nedenidir",
-      "EEBD kurtarma operasyonu için KESİNLİKLE yeterli değildir",
+      "An untrained rescue attempt is the most frequent cause of death",
+      "An EEBD is NEVER adequate for a rescue operation",
     ],
   },
 
@@ -2145,35 +2145,35 @@ Kapalı alan giriş prosedürü, ekipman durumu ve tatbikat kayıtları PSC dene
   "eebd": {
     title: "EEBD – Acil Kaçış Solunum Cihazı",
     introduction: "EEBD (Emergency Escape Breathing Device), duman veya zehirli gazla dolu bir mahalden GÜVENLİ bir bölgeye KAÇIŞ için kullanılan, kısa süreli solunum havası sağlayan taşınabilir bir cihazdır. Yangın söndürme veya kurtarma için KULLANILMAZ.",
-    content: `EEBD NEDİR?
+    content: `WHAT IS AN EEBD?
 
-EEBD, bir kişinin tehlikeli atmosferden (duman, sıcak gaz, oksijen yetersizliği) acil kaçışı sırasında solunum havası sağlar. Genellikle bir hava/oksijen kaynağı ve başı tamamen örten bir başlık (hood) veya yüz maskesinden oluşur. Başlık, gözleri ve yüzü dumandan korur.
+An EEBD provides breathing air while a person escapes from a hazardous atmosphere (smoke, hot gases, oxygen deficiency). It normally consists of an air/oxygen supply and a hood covering the whole head, or a face mask. The hood protects the eyes and face from smoke.
 
-YASAL DAYANAK:
+THE LEGAL BASIS:
 
-SOLAS Bölüm II-2, Kural 13 (kaçış yolları) ve FSS Code Bölüm 3 EEBD gereksinimlerini düzenler. EEBD'ler en az 10 dakika kullanım süresi sağlamalıdır.
+SOLAS Chapter II-2, Regulation 13 (means of escape) and FSS Code Chapter 3 set out the EEBD requirements. EEBDs must provide at least 10 minutes of use.
 
-TAŞIMA GEREKSİNİMLERİ:
+CARRIAGE REQUIREMENTS:
 
-- Yaşam mahallerinde (accommodation) acil kaçış için EEBD bulundurulur.
-- Makine mahallerinde en az iki adet EEBD, normal çalışma istasyonlarına yakın ve çıkış yollarında bulunur.
-- Her EEBD'nin konumu yangın kontrol planında işaretlenir.
-- Eğitim amaçlı ayrı bir EEBD (training unit) bulundurulur; servis ömrünü tüketmemek için gerçek cihazlar tatbikatta kullanılmaz.
+- EEBDs are carried in the accommodation for emergency escape.
+- At least two EEBDs are carried in machinery spaces, close to the normal working stations and on the escape routes.
+- The location of every EEBD is marked on the fire control plan.
+- A separate training unit is carried; the actual devices are not used in drills so that their service life is not consumed.
 
-EEBD KULLANIM İLKELERİ:
+PRINCIPLES OF USE:
 
-1. Başlığı tak ve hava akışını başlat.
-2. Eğilerek, en kısa kaçış yolundan güvenli bölgeye ilerle.
-3. Süre kısıtlıdır (≈10-15 dk); zaman kaybetme.
-4. Güvenli bölgeye ulaşınca cihazı çıkar.
+1. Don the hood and start the air flow.
+2. Keeping low, make for a safe area by the shortest escape route.
+3. The duration is limited (≈10-15 min); do not waste time.
+4. Remove the device once you reach a safe area.
 
-EEBD ile SCBA FARKI:
+THE DIFFERENCE BETWEEN AN EEBD AND SCBA:
 
-EEBD yalnızca KAÇIŞ içindir; kapalı/oksijensiz mahalle GİRİŞ, yangın söndürme veya kurtarma operasyonu için KULLANILMAZ. Bu amaçlar için SCBA (bağımsız solunum cihazı) gereklidir. EEBD'nin süresi ve koruması bu görevler için yetersizdir.
+An EEBD is for ESCAPE only; it is NOT USED to ENTER an enclosed or oxygen-deficient space, to fight fire or for a rescue operation. SCBA (self-contained breathing apparatus) is required for those tasks. The duration and protection of an EEBD are inadequate for them.
 
-BAKIM VE KONTROL:
+MAINTENANCE AND CHECKS:
 
-EEBD basınç göstergesi (varsa) düzenli kontrol edilir, mühür (seal) sağlamlığı denetlenir, son kullanma/servis tarihi takip edilir. Mühür kırıksa veya basınç düşükse cihaz "out of service" işaretlenir ve değiştirilir.`,
+The EEBD pressure gauge (where fitted) is checked regularly, the seal is inspected and the expiry/service date is monitored. If the seal is broken or the pressure is low the device is marked "out of service" and replaced.`,
     keyPoints: [
       "EEBD yalnızca KAÇIŞ içindir – yangın söndürme/kurtarma için kullanılmaz",
       "En az 10 dakika solunum havası sağlar (FSS Code Bölüm 3)",
@@ -2181,40 +2181,40 @@ EEBD basınç göstergesi (varsa) düzenli kontrol edilir, mühür (seal) sağla
       "Eğitim için ayrı training unit kullanılır; gerçek cihaz tatbikatta tüketilmez",
     ],
     warnings: [
-      "EEBD ile oksijensiz/kapalı mahalle GİRİLMEZ – bu SCBA görevidir",
-      "Mührü kırık veya basıncı düşük EEBD derhal değiştirilmelidir",
+      "NEVER enter an oxygen-deficient or enclosed space with an EEBD – that is a job for SCBA",
+      "An EEBD with a broken seal or low pressure must be replaced immediately",
     ],
   },
   "scba": {
     title: "SCBA – Bağımsız Solunum Cihazı",
     introduction: "SCBA (Self-Contained Breathing Apparatus), kullanıcının ortam havasından bağımsız olarak basınçlı hava soluduğu, yangın söndürme ve kapalı/tehlikeli mahalle giriş için kullanılan tam korumalı solunum cihazıdır.",
-    content: `SCBA BİLEŞENLERİ:
+    content: `SCBA COMPONENTS:
 
-- Yüksek basınçlı hava tüpü (genellikle 6-9 litre, 200-300 bar).
-- Basınç düşürücü regülatör ve talep valfi (demand valve).
-- Tam yüz maskesi (full face mask).
-- Sırt taşıma sistemi (harness ve back plate).
-- Basınç göstergesi ve düşük basınç düdüğü (low-pressure warning whistle).
+- A high-pressure air cylinder (usually 6-9 litres at 200-300 bar).
+- A pressure-reducing regulator and a demand valve.
+- A full face mask.
+- A carrying system (harness and back plate).
+- A pressure gauge and a low-pressure warning whistle.
 
-KAPASİTE VE SÜRE:
+CAPACITY AND DURATION:
 
-FSS Code Bölüm 3'e göre SCBA en az 1200 litre serbest hava veya 30 dakika kullanım kapasitesine sahip olmalıdır. Gerçek kullanım süresi; iş yükü, solunum hızı ve kişiye göre değişir; ağır eforda süre belirgin biçimde kısalır.
+Under FSS Code Chapter 3 an SCBA must have a capacity of at least 1200 litres of free air or 30 minutes of use. The actual duration varies with the workload, breathing rate and the individual; under heavy exertion it is significantly shorter.
 
-İTFAİYECİ TEÇHİZATININ PARÇASI:
+PART OF THE FIREMAN'S OUTFIT:
 
-SCBA, itfaiyeci teçhizatının (fireman's outfit) zorunlu parçasıdır. Her teçhizat için yeterli yedek dolum/şişe bulundurulur (gemide en az 2 yedek dolu tüp veya dolum kompresörü).
+SCBA is a mandatory part of the fireman's outfit. Sufficient spare charges/cylinders are carried for each outfit (at least 2 spare charged cylinders on board, or a charging compressor).
 
-KULLANIM PRENSİPLERİ:
+PRINCIPLES OF USE:
 
-1. Giriş öncesi tüp basıncını ve maske sızdırmazlığını kontrol et.
-2. Düşük basınç düdüğünün çaldığı eşiği bil (dönüş için kalan süre).
-3. Buddy system (ikili çalışma) zorunludur; ekip dışarıdan kontrol edilir.
-4. Hava yarıya inmeden dönüş planı yap (içeri girişte harcanan = dönüşte gereken).
-5. Kullanım sonrası tüpü doldur, maske ve regülatörü temizle/dezenfekte et.
+1. Check the cylinder pressure and the mask seal before entry.
+2. Know the pressure at which the low-pressure whistle sounds (the time left to return).
+3. The buddy system (working in pairs) is mandatory; the team is monitored from outside.
+4. Plan to turn back before the air is half used (the air used going in = the air needed to come out).
+5. Recharge the cylinder after use and clean/disinfect the mask and regulator.
 
-BAKIM:
+MAINTENANCE:
 
-Tüpler periyodik hidrostatik teste (genellikle 5 yılda bir) tabidir. Maske, regülatör ve düdük her kullanım öncesi/sonrası kontrol edilir. Kayıtlar tutulur.`,
+Cylinders are subject to periodic hydrostatic testing (usually every 5 years). The mask, regulator and whistle are checked before and after every use. Records are kept.`,
     keyPoints: [
       "SCBA en az 1200 L hava / 30 dk kapasiteli olmalıdır (FSS Code Bölüm 3)",
       "İtfaiyeci teçhizatının zorunlu parçasıdır; yedek dolum bulundurulur",
@@ -2222,39 +2222,39 @@ Tüpler periyodik hidrostatik teste (genellikle 5 yılda bir) tabidir. Maske, re
       "Tüpler periyodik hidrostatik teste tabidir",
     ],
     warnings: [
-      "Hava yarıya inmeden dönüş başlatılmalı – giriş kadar dönüş havası gerekir",
-      "Maske sızdırmazlık kontrolü yapılmadan tehlikeli atmosfere girilmez",
+      "Start back before the air is half used – you need as much air to come out as to go in",
+      "Never enter a hazardous atmosphere without carrying out a mask seal check",
     ],
   },
   "firemans-outfit": {
     title: "İtfaiyeci Teçhizatı (Fireman's Outfit)",
     introduction: "İtfaiyeci teçhizatı, yangına müdahale eden personeli ısı, alev ve dumandan koruyan kişisel koruyucu giysi ile solunum cihazından oluşan zorunlu bir setdir (SOLAS II-2 / FSS Code Bölüm 3).",
-    content: `TEÇHİZAT BİLEŞENLERİ:
+    content: `COMPONENTS OF THE OUTFIT:
 
-A) Kişisel donanım:
-- Isıya ve dumana dayanıklı koruyucu giysi (yüzeyden ısı iletimini sınırlar, su geçirmez dış katman).
-- Çizme ve eldiven (elektrik yalıtkanı, ısıya dayanıklı).
-- Kafa, boyun ve yanları koruyan kask (helmet).
-- Elektrikli emniyet lambası: en az 3 saat çalışma süreli.
-- Yangın baltası (fireman's axe), elektrik yalıtkan saplı.
+A) Personal equipment:
+- Protective clothing resistant to heat and smoke (it limits heat conduction from the surface and has a waterproof outer layer).
+- Boots and gloves (electrically insulating, heat resistant).
+- A helmet protecting the head, neck and sides.
+- An electric safety lamp with a burning period of at least 3 hours.
+- A fireman's axe with an electrically insulated handle.
 
-B) Solunum cihazı:
-- SCBA (bağımsız basınçlı hava solunum cihazı).
+B) Breathing apparatus:
+- SCBA (self-contained compressed air breathing apparatus).
 
-C) Cankurtaran hattı (lifeline):
-- Ateşe dayanıklı, en az 30 m, kanca ile teçhizata bağlanabilir; ekiple iletişim/geri çekme için.
+C) Lifeline:
+- Fire resistant, at least 30 m long, capable of being attached to the outfit by a hook; used for communication with the team and for withdrawal.
 
-GEMİDE BULUNDURULMASI GEREKEN SAYI:
+NUMBERS TO BE CARRIED:
 
-SOLAS II-2 Kural 10.10, gemi tipi ve büyüklüğüne göre asgari teçhizat sayısını belirler. Yük gemilerinde genellikle en az 2 itfaiyeci teçhizatı bulunur; yolcu gemilerinde mahal/uzunluğa göre sayı artar. Tankerlerde ek teçhizat gerekebilir.
+SOLAS II-2 Regulation 10.10 sets the minimum number of outfits by ship type and size. Cargo ships generally carry at least 2 fireman's outfits; on passenger ships the number increases with the spaces and length. Additional outfits may be required on tankers.
 
-SAKLAMA VE ERİŞİM:
+STOWAGE AND ACCESS:
 
-Teçhizatlar birbirinden uzak, kolay erişilebilir ve işaretli konumlarda saklanır; biri bir yangında erişilemez olursa diğeri kullanılabilsin diye dağıtılır. Konumları yangın kontrol planında gösterilir.
+The outfits are stowed apart from each other in readily accessible, marked positions; they are distributed so that if one becomes inaccessible in a fire the other can still be used. Their positions are shown on the fire control plan.
 
-BAKIM VE KONTROL:
+MAINTENANCE AND CHECKS:
 
-Giysi, eldiven, çizme ve kaskın bütünlüğü; lamba şarjı ve süresi; SCBA tüp basıncı ve maske durumu düzenli kontrol edilir ve kayıt tutulur.`,
+The integrity of the clothing, gloves, boots and helmet; the charge and duration of the lamp; and the SCBA cylinder pressure and mask condition are checked regularly and recorded.`,
     keyPoints: [
       "Set = koruyucu giysi + çizme/eldiven + kask + emniyet lambası (≥3 saat) + balta + SCBA + lifeline",
       "SOLAS II-2/10.10 asgari sayıyı belirler; yük gemisinde genellikle ≥2",
@@ -2265,31 +2265,31 @@ Giysi, eldiven, çizme ve kaskın bütünlüğü; lamba şarjı ve süresi; SCBA
   "fire-fighting-equipment": {
     title: "Yangın Devresi, Hidrant, Hortum ve Nozullar",
     introduction: "Gemideki sabit yangın su devresi (fire main); pompalar, ana boru hattı, hidrantlar, hortumlar ve nozullar ile uluslararası sahil bağlantısından oluşur ve yangına su ile müdahalenin temelini sağlar (SOLAS II-2 Kural 10).",
-    content: `YANGIN POMPALARI:
+    content: `FIRE PUMPS:
 
-- Ana yangın pompaları: Gemi tipine göre sayı ve kapasitesi belirlenir; gerekli debiyi ve hidrant basıncını sağlar.
-- Acil yangın pompası (emergency fire pump): Makine dairesi devre dışı kalsa bile su sağlayabilmek için makine dairesi dışında, ayrı bir mahalde ve bağımsız güç kaynaklı olarak bulunur.
+- Main fire pumps: the number and capacity are set by ship type; they provide the required flow and hydrant pressure.
+- Emergency fire pump: located outside the machinery space, in a separate compartment with an independent power source, so that water can be supplied even if the machinery space is out of action.
 
-YANGIN ANA DEVRESİ (FIRE MAIN):
+THE FIRE MAIN:
 
-Pompalardan beslenen, güverteler boyunca uzanan basınçlı su hattıdır. İzolasyon valfleri ile hasarlı bölüm ayrılabilir, devre çalışmaya devam eder.
+The pressurised water line running along the decks, supplied by the pumps. Isolating valves allow a damaged section to be cut out while the main keeps working.
 
-HİDRANTLAR:
+HYDRANTS:
 
-Hidrantlar, gemideki herhangi bir noktaya en az iki su jeti ulaşacak şekilde yerleştirilir (biri tek hortum boyundan). Her hidrantta gerekli minimum basınç sağlanmalıdır.
+Hydrants are sited so that at least two jets of water can reach any part of the ship (one from a single length of hose). The required minimum pressure must be available at every hydrant.
 
-HORTUMLAR VE NOZULLAR:
+HOSES AND NOZZLES:
 
-- Yangın hortumları her hidrantın yanında, bağlantıya hazır bulunur. Uzunlukları mahale göre standarttır.
-- Nozullar çift amaçlıdır (dual-purpose): tam jet (jet) ve sprey/sis (spray) modları. Standart nozul çapları yaklaşık 12 mm, 16 mm ve 19 mm'dir. Kapatma (shut-off) özelliği bulunur.
+- Fire hoses are kept ready for connection beside every hydrant. Their lengths are standardised for the space.
+- Nozzles are dual-purpose: jet and spray/fog. The standard nozzle sizes are about 12 mm, 16 mm and 19 mm. They have a shut-off facility.
 
-ULUSLARARASI SAHİL BAĞLANTISI (INTERNATIONAL SHORE CONNECTION):
+THE INTERNATIONAL SHORE CONNECTION:
 
-Gemi yangın devresine karadan veya başka bir gemiden su basılabilmesi için standart ölçülü bir bağlantı flanşıdır. Her gemide en az bir adet bulunur. Standart boyutları (dış çap 178 mm, cıvata daire çapı 132 mm vb.) tüm dünyada aynıdır; böylece liman/itfaiye teçhizatı gemiye bağlanabilir.
+A standard-dimension connecting flange that allows water to be supplied to the ship's fire main from ashore or from another ship. At least one is carried on every ship. The standard dimensions (outside diameter 178 mm, bolt circle diameter 132 mm, etc.) are the same worldwide, so that port/fire brigade equipment can be connected to the ship.
 
-KONTROL VE BAKIM:
+CHECKS AND MAINTENANCE:
 
-Pompalar, izolasyon valfleri, hidrant valfleri, hortum contaları ve nozullar haftalık/aylık kontrol edilir. Sızıntı, çatlak veya korozyon defect olarak raporlanır.`,
+The pumps, isolating valves, hydrant valves, hose gaskets and nozzles are checked weekly/monthly. Leaks, cracks or corrosion are reported as defects.`,
     keyPoints: [
       "Acil yangın pompası makine dairesi dışında, bağımsız güç kaynaklıdır",
       "Her noktaya en az iki su jeti ulaşmalı (SOLAS II-2/10)",
@@ -2300,32 +2300,32 @@ Pompalar, izolasyon valfleri, hidrant valfleri, hortum contaları ve nozullar ha
   "structural-fire-protection": {
     title: "Yapısal Yangın Koruması (A/B/C Sınıfı Bölmeler)",
     introduction: "Yapısal yangın koruması, geminin perde ve güvertelerinin yangının yayılmasını geciktirecek şekilde sınıflandırılması ve yalıtılması prensibine dayanır (SOLAS II-2). Amaç, yangını kaynağında sınırlamak ve kaçış yollarını korumaktır.",
-    content: `BÖLME SINIFLARI:
+    content: `DIVISION CLASSES:
 
-A SINIFI (A-Class) bölmeler:
-- Çelik veya eşdeğer malzemeden yapılır, uygun şekilde takviyelidir.
-- 60 dakikalık standart yangın testi boyunca duman ve alev geçişini önler (bütünlük).
-- Yalıtım seviyesine göre alt sınıflara ayrılır: A-60, A-30, A-15, A-0. Sayı, test başlangıcından itibaren ısının diğer yüzde ortalama 140°C (veya herhangi bir noktada 180°C) artışını geciktirdiği DAKİKA sayısıdır. A-0'da yalıtım şartı yoktur (yalnız bütünlük).
+CLASS A divisions:
+- Constructed of steel or equivalent material, suitably stiffened.
+- They prevent the passage of smoke and flame for 60 minutes of the standard fire test (integrity).
+- They are subdivided by level of insulation: A-60, A-30, A-15, A-0. The number is the number of MINUTES for which the division delays the average temperature on the unexposed side rising by 140°C (or by 180°C at any one point) from the start of the test. A-0 has no insulation requirement (integrity only).
 
-B SINIFI (B-Class) bölmeler:
-- Yanmaz malzemeden yapılır; 30 dakika boyunca alev geçişini önler.
-- Yalıtıma göre B-15 ve B-0 olarak ayrılır.
+CLASS B divisions:
+- Constructed of non-combustible materials; they prevent the passage of flame for 30 minutes.
+- Subdivided by insulation into B-15 and B-0.
 
-C SINIFI (C-Class) bölmeler:
-- Yanmaz malzemeden yapılır; ısı geçişi veya alev için belirli bir süre şartı yoktur.
+CLASS C divisions:
+- Constructed of non-combustible materials; there is no requirement for a period of heat or flame resistance.
 
-ANA DİKEY BÖLGELER (MAIN VERTICAL ZONES):
+MAIN VERTICAL ZONES:
 
-Gemi, A sınıfı bölmelerle ana dikey yangın bölgelerine ayrılır (yolcu gemilerinde uzunluk ve alan sınırı vardır). Böylece bir bölgedeki yangın komşu bölgelere kolayca yayılamaz.
+The ship is divided into main vertical fire zones by Class A divisions (there are length and area limits on passenger ships). A fire in one zone therefore cannot spread easily to the adjacent zones.
 
-YANGIN KAPILARI VE DAMPERLER:
+FIRE DOORS AND DAMPERS:
 
-- Yangın kapıları (fire doors): A/B sınıfı bölmelerdeki geçişlerde, kendiliğinden kapanan ve köprüden uzaktan kapatılabilen tiptedir.
-- Yangın damperleri (fire dampers): Havalandırma kanallarında, yangın bölmesi sınırından geçişte yangının kanal üzerinden yayılmasını önler.
+- Fire doors: at openings in Class A/B divisions, of the self-closing type and capable of being closed remotely from the bridge.
+- Fire dampers: in ventilation ducts where they pass through a fire boundary, to prevent fire spreading through the duct.
 
-KAÇIŞ YOLLARININ KORUNMASI:
+PROTECTING THE ESCAPE ROUTES:
 
-Merdiven kovaları ve kaçış yolları, yangın bölmeleriyle korunarak duman ve aleve karşı güvenli tahliye sağlanır.`,
+Stairway enclosures and escape routes are protected by fire divisions to provide safe evacuation from smoke and flame.`,
     keyPoints: [
       "A sınıfı: çelik, 60 dk bütünlük; A-60/A-30/A-15/A-0 ısı geçişi süresine göre",
       "B sınıfı: 30 dk, B-15/B-0; C sınıfı: yanmaz, süre şartı yok",
@@ -2336,32 +2336,32 @@ Merdiven kovaları ve kaçış yolları, yangın bölmeleriyle korunarak duman v
   "fire-control-plan": {
     title: "Yangın Kontrol Planı (Fire Control Plan)",
     introduction: "Yangın kontrol planı, geminin yangın güvenliği düzeneğini gösteren, her güverte için kalıcı olarak sergilenen bir şemadır. Acil durumda mürettebata ve karadan gelen itfaiyecilere yol gösterir (SOLAS II-2 Kural 15).",
-    content: `PLANDA NELER GÖSTERİLİR?
+    content: `WHAT THE PLAN SHOWS:
 
-- Kontrol istasyonları (control stations).
-- A ve B sınıfı bölmelerle ayrılmış yangın bölümleri.
-- Yangın algılama ve alarm sistemleri.
-- Sprinkler ve sabit söndürme (CO₂, köpük vb.) sistemleri.
-- Taşınabilir söndürücüler, hidrantlar, hortumlar ve uluslararası sahil bağlantısı.
-- Kaçış yolları, merdiven kovaları ve toplanma istasyonları.
-- Havalandırma sistemleri, fan kumandaları ve yangın damperlerinin konumu.
-- EEBD, SCBA ve itfaiyeci teçhizatının konumu.
+- Control stations.
+- The fire sections separated by Class A and B divisions.
+- Fire detection and alarm systems.
+- Sprinkler and fixed extinguishing systems (CO₂, foam, etc.).
+- Portable extinguishers, hydrants, hoses and the international shore connection.
+- Escape routes, stairway enclosures and muster stations.
+- Ventilation systems, fan controls and the positions of the fire dampers.
+- The positions of the EEBDs, SCBA and fireman's outfits.
 
-SEMBOLLER:
+SYMBOLS:
 
-Plan, IMO tarafından standartlaştırılmış grafik semboller (IMO Kararı A.952(23)) ile çizilir; böylece her milletten itfaiyeci planı okuyabilir.
+The plan is drawn using the graphical symbols standardised by the IMO (IMO Resolution A.952(23)), so that firefighters of any nationality can read it.
 
-KARA İTFAİYESİ İÇİN KOPYA:
+A COPY FOR THE SHORE FIRE BRIGADE:
 
-SOLAS II-2/15.2.4 gereği planın bir kopyası, güverte evi (deckhouse) dışında, belirgin işaretli ve hava şartlarına dayanıklı (weathertight) bir muhafaza içinde bulundurulur. Böylece karadan gelen itfaiye ekibi gemiye girmeden plana ulaşabilir.
+Under SOLAS II-2/15.2.4 a copy of the plan is kept outside the deckhouse in a prominently marked weathertight enclosure. A shore fire team can therefore reach the plan without boarding the ship.
 
-GÜNCELLİK:
+KEEPING IT UP TO DATE:
 
-Plan, gemide yapılan değişikliklerle (ekipman ekleme/çıkarma) güncel tutulmalıdır. Eski/yanlış plan denetimde bulgu doğurur ve acil durumda yanıltıcıdır.
+The plan must be kept up to date as changes are made on board (equipment added or removed). An out-of-date or incorrect plan is a finding in an inspection and is misleading in an emergency.
 
-KULLANIM:
+USE:
 
-Familiarization sırasında yeni mürettebata yangın istasyonları, kaçış yolları ve ekipman konumları plan üzerinden gösterilir.`,
+During familiarisation, new crew members are shown the fire stations, escape routes and equipment positions on the plan.`,
     keyPoints: [
       "Yangın kontrol planı her güvertede kalıcı sergilenir (SOLAS II-2/15)",
       "IMO A.952(23) standart sembolleri kullanılır",
@@ -2372,31 +2372,31 @@ Familiarization sırasında yeni mürettebata yangın istasyonları, kaçış yo
   "immersion-suit-tpa": {
     title: "Dalma Elbisesi ve Termal Koruyucu (TPA)",
     introduction: "Dalma elbisesi (immersion suit) ve termal koruyucu (Thermal Protective Aid – TPA), soğuk suda hipotermiyi geciktirerek hayatta kalma süresini uzatan kişisel ısı koruma araçlarıdır (LSA Code Bölüm 2).",
-    content: `DALMA ELBİSESİ (IMMERSION SUIT):
+    content: `IMMERSION SUIT:
 
-Su geçirmez, ısı yalıtımlı, tüm vücudu (eller ve ayaklar dahil) örten tek parça elbisedir. Soğuk suda vücut ısısının korunmasını sağlar.
+A waterproof, thermally insulated one-piece suit covering the whole body (including hands and feet). It preserves body heat in cold water.
 
-Performans gereksinimleri (LSA Code 2.3):
-- Yardımsız olarak 2 dakika içinde giyilebilmeli.
-- Giyildikten sonra 5 metre yükseklikten suya atlanabilmeli; su girişi olmamalı.
-- İçinde yüzülebilmeli, can salına çıkılabilmeli.
-- Yalıtımlı tip: 0-2°C suda 1 saat boyunca vücut iç sıcaklığının 2°C'den fazla düşmesini önlemeli.
-- Yalıtımsız (yalnız su geçirmez) tipte ayrıca uygun can yeleği gerekebilir; yalıtımlı tip yeterli yüzdürmeyi sağlayabilir.
+Performance requirements (LSA Code 2.3):
+- It must be capable of being donned unassisted within 2 minutes.
+- Once donned, it must be possible to jump into the water from a height of 5 metres without water entering.
+- It must be possible to swim in it and to board a liferaft.
+- Insulated type: in water of 0-2°C it must prevent the body core temperature falling by more than 2°C over 1 hour.
+- An uninsulated (waterproof only) type may also require a suitable lifejacket; an insulated type may provide sufficient buoyancy on its own.
 
-Bulundurma: SOLAS gereği genellikle gemideki her kişi için bir dalma elbisesi; ayrıca vardiya/uzak çalışma istasyonları için ek elbiseler.
+Carriage: SOLAS generally requires an immersion suit for every person on board, plus additional suits for watch/remote working stations.
 
-TERMAL KORUYUCU (TPA – THERMAL PROTECTIVE AID):
+THERMAL PROTECTIVE AID (TPA):
 
-Düşük ısı iletkenliğine sahip, su geçirmez malzemeden yapılan, başı hariç tüm vücudu örten bir tulum/örtüdür. Can salı veya filikada, ıslak olmayan kazazedede konveksiyon ve buharlaşma yoluyla ısı kaybını azaltır.
+A bag or suit made of waterproof material with low thermal conductivity, covering the whole body except the head. In a liferaft or lifeboat it reduces the heat loss of a dry survivor by convection and evaporation.
 
-Özellikleri (LSA Code 2.5):
-- -30°C ile +20°C hava sıcaklıklarında kullanılabilmeli.
-- Can salı/filikadaki donanım listesinde belirli sayıda bulundurulur.
-- Dalma elbisesinin yerine geçmez; TPA esas olarak sudan çıkmış kazazede içindir.
+Characteristics (LSA Code 2.5):
+- It must be usable in air temperatures from -30°C to +20°C.
+- A defined number are carried in the liferaft/lifeboat equipment list.
+- It does not replace an immersion suit; a TPA is primarily for a survivor who is out of the water.
 
-FARK:
+THE DIFFERENCE:
 
-Dalma elbisesi SUDA korur; TPA sudan çıkmış (sal/filika içindeki) kişide ısı kaybını azaltır.`,
+An immersion suit protects IN the water; a TPA reduces heat loss for a person who is out of the water (in a raft/boat).`,
     keyPoints: [
       "Dalma elbisesi 2 dakikada yardımsız giyilebilmeli (LSA Code 2.3)",
       "Yalıtımlı tip: 0-2°C suda 1 saatte iç sıcaklık düşüşü <2°C",
@@ -2404,39 +2404,39 @@ Dalma elbisesi SUDA korur; TPA sudan çıkmış (sal/filika içindeki) kişide �
       "TPA dalma elbisesinin yerine geçmez",
     ],
     warnings: [
-      "Islak kişide TPA tek başına yetersizdir; önce kuruluk/su tahliyesi sağlanmalı",
+      "A TPA alone is not enough for a wet survivor; they must first be dried/the water drained",
     ],
   },
   "mes": {
     title: "Deniz Tahliye Sistemi (MES)",
     introduction: "MES (Marine Evacuation System), çok sayıda kişinin gemiden can sallarına hızlı ve güvenli biçimde inmesini sağlayan, kaydırak (slide) veya tahliye kanalı (chute) ile platform/can sallarından oluşan bir tahliye sistemidir (LSA Code Bölüm 6). Özellikle yüksek fribordlu yolcu gemilerinde kullanılır.",
-    content: `MES NEDİR?
+    content: `WHAT IS AN MES?
 
-Yüksek bordalı gemilerde kişilerin doğrudan can sallarına inmesi zordur. MES, gemi ile deniz seviyesi arasında bir kaydırak veya kapalı kanal kurar; kişiler bu yoldan bir platforma veya doğrudan büyük kapasiteli can sallarına iner.
+On ships with a high freeboard it is difficult for people to get down directly into liferafts. An MES sets up a slide or an enclosed chute between the ship and the sea; people descend by this route to a platform, or directly into large-capacity liferafts.
 
-TİPLER:
+TYPES:
 
-- Kaydıraklı (slide) sistem: Şişme bir kaydırak ile kişiler platforma/sala iner.
-- Kanal (chute) sistem: Dikey, kapalı esnek bir kanal içinden kontrollü iniş yapılır; yüksek fribordlarda tercih edilir.
+- Slide system: people descend to the platform/raft down an inflatable slide.
+- Chute system: a controlled descent inside a vertical, enclosed flexible chute; preferred where the freeboard is high.
 
-PERFORMANS:
+PERFORMANCE:
 
-LSA Code 6.2, MES'in belirli süre içinde gerekli sayıda kişiyi tahliye edebilmesini, deniz koşullarında çalışmasını ve şişme/kurulum sürelerini şart koşar. Sistem köprüden/güverteden hızla devreye alınabilmelidir.
+LSA Code 6.2 requires the MES to evacuate the required number of persons within a set time, to work in a seaway, and sets inflation/deployment times. The system must be capable of being deployed quickly from the bridge/deck.
 
-KULLANIM AKIŞI:
+HOW IT IS USED:
 
-1. Toplanma istasyonunda yolcular yönlendirilir.
-2. MES devreye alınır; platform/sallar şişer ve konumlanır.
-3. Kişiler kaydırak/kanaldan platforma/sala iner.
-4. Sallar dolunca gemiden ayrılır.
+1. Passengers are directed at the muster station.
+2. The MES is deployed; the platform/rafts inflate and take up position.
+3. People descend by slide/chute to the platform/raft.
+4. Once full, the rafts cast off from the ship.
 
-BAKIM:
+MAINTENANCE:
 
-MES periyodik servis ve testlere tabidir (yıllık kontroller, 5 yıllık load test dahil). Servis yetkili istasyonlarca yapılır; kayıtlar tutulur.
+The MES is subject to periodic servicing and testing (annual checks, including a 5-yearly load test). Servicing is carried out by approved stations; records are kept.
 
-AVANTAJI:
+THE ADVANTAGE:
 
-Çok sayıda kişiyi kısa sürede ve filika indirme manevrası gerektirmeden tahliye eder; özellikle büyük yolcu gemilerinde kritik öneme sahiptir.`,
+It evacuates a large number of people in a short time without the need to launch lifeboats; it is critically important on large passenger ships.`,
     keyPoints: [
       "MES = kaydırak/kanal + platform/can salı; yüksek fribordlu yolcu gemilerinde",
       "Slide ve chute tipleri vardır; chute yüksek bordada tercih edilir",
@@ -2447,31 +2447,31 @@ AVANTAJI:
   "line-throwing": {
     title: "Halat Atma Aparatı (Line-Throwing Appliance)",
     introduction: "Halat atma aparatı, tehlikedeki bir gemiye, kişiye veya kıyıya ince bir halat (ip) ulaştırarak ardından daha kalın halat/çekme bağlantısı kurulmasını sağlayan bir kurtarma aracıdır (LSA Code Bölüm 7).",
-    content: `KULLANIM AMACI:
+    content: `PURPOSE:
 
-İlk ince halatın hedefe ulaştırılması, ardından bu halatla daha kalın bir halatın veya çekme/transfer hattının çekilmesini sağlar. Gemiden gemiye veya gemiden kıyıya bağlantı, yedekleme ve kurtarma operasyonlarında kullanılır.
+It gets a first light line to the target, which is then used to haul across a heavier line or a towing/transfer line. It is used for ship-to-ship or ship-to-shore connection, towing and rescue operations.
 
-GEREKSİNİMLER (LSA Code 7.1):
+REQUIREMENTS (LSA Code 7.1):
 
-- Atış mesafesi: Sakin havada en az 230 metre halatı yeterli doğrulukla atabilmeli.
-- Donanım: En az 4 adet fırlatma roketi/projektili ve 4 adet halat (line) bulundurulur.
-- Halatların kopma mukavemeti yeterli olmalı; nemden korunmalı.
-- Su geçirmez muhafazada saklanır; kullanım talimatı paket üzerinde ve okunaklı olmalı.
+- Throwing range: it must be capable of throwing a line at least 230 metres with reasonable accuracy in calm weather.
+- Equipment: at least 4 projectiles/rockets and 4 lines are carried.
+- The lines must have adequate breaking strength and be protected from damp.
+- It is stored in a watertight container; the instructions for use must be on the pack and legible.
 
-TİPLER:
+TYPES:
 
-- Roketle (rocket-type) çalışan piroteknik aparatlar yaygındır.
-- Bazı tiplerde tabanca benzeri fırlatıcı kullanılır.
+- Rocket-type pyrotechnic appliances are common.
+- Some types use a pistol-like launcher.
 
-GÜVENLİK:
+SAFETY:
 
-- Piroteknik içerdiği için yalnız eğitimli personel kullanmalı.
-- Atış doğrultusunda insan/parlayıcı madde bulunmamalı.
-- Son kullanma tarihi takip edilir; süresi dolan üniteler usulüne uygun bertaraf edilir.
+- Because it contains pyrotechnics, only trained personnel may use it.
+- There must be no person or flammable material in the line of fire.
+- The expiry date is monitored; expired units are disposed of properly.
 
-BAKIM:
+MAINTENANCE:
 
-Su geçirmez ambalaj bütünlüğü, son kullanma tarihi ve adet sayımı periyodik olarak (LSA envanter kontrolünde) doğrulanır.`,
+The integrity of the watertight packaging, the expiry date and the number carried are verified periodically (in the LSA inventory check).`,
     keyPoints: [
       "Sakin havada en az 230 m halat atabilmeli (LSA Code 7.1)",
       "En az 4 roket/projektil ve 4 halat bulundurulur",
@@ -2479,8 +2479,8 @@ Su geçirmez ambalaj bütünlüğü, son kullanma tarihi ve adet sayımı periyo
       "Piroteknik içerir; yalnız eğitimli personel kullanır",
     ],
     warnings: [
-      "Atış doğrultusunda kişi veya parlayıcı madde bulunmamalı",
-      "Son kullanma tarihi geçmiş üniteler güvenle bertaraf edilmeli",
+      "There must be no person or flammable material in the line of fire",
+      "Expired units must be disposed of safely",
     ],
   },
 
@@ -2490,33 +2490,33 @@ Su geçirmez ambalaj bütünlüğü, son kullanma tarihi ve adet sayımı periyo
   "ppe": {
     title: "Kişisel Koruyucu Donanım (KKD/PPE)",
     introduction: "Kişisel koruyucu donanım (PPE), iş kazalarına karşı son savunma hattıdır. Tehlike kaynağında giderilemediğinde kişiyi korur; ancak hiçbir zaman mühendislik/yönetimsel önlemlerin yerine geçmez.",
-    content: `KKD KATEGORİLERİ:
+    content: `PPE CATEGORIES:
 
-- Baş koruması: Baret (helmet) – düşen cisim, çarpma.
-- Ayak koruması: Çelik burunlu güvenlik ayakkabısı/çizme – ezilme, kayma, delinme.
-- El koruması: Eldiven – kesik, ısı, kimyasal, titreşim (göreve uygun tip).
-- Göz/yüz koruması: Gözlük, yüz siperi – kıvılcım, talaş, kimyasal sıçrama.
-- İşitme koruması: Kulak tıkacı/kulaklık – >85 dBA gürültü ortamlarında (makine dairesi).
-- Solunum koruması: Toz maskesi, yarım/tam yüz maskesi, SCBA (tehlikeye göre).
-- Vücut koruması: Tulum/iş elbisesi, alev geciktirici giysi, kimyasal tulum.
-- Yüksekte çalışma: Tam vücut emniyet kemeri (full body harness) ve bağlantı/lanyard.
-- Görünürlük: Reflektörlü yelek (güverte/liman operasyonları).
-- Su üstü çalışma: Can yeleği / çalışma yelekleri (work vest).
+- Head protection: helmet – falling objects, impact.
+- Foot protection: steel toe-capped safety shoes/boots – crushing, slipping, puncture.
+- Hand protection: gloves – cuts, heat, chemicals, vibration (the type suited to the job).
+- Eye/face protection: goggles, face shield – sparks, swarf, chemical splash.
+- Hearing protection: ear plugs/defenders – in noise above 85 dBA (engine room).
+- Respiratory protection: dust mask, half/full face mask, SCBA (according to the hazard).
+- Body protection: overalls/working clothes, flame-retardant clothing, chemical suit.
+- Work at height: full body harness and lanyard.
+- Visibility: high-visibility vest (deck/port operations).
+- Work over water: lifejacket / work vest.
 
-KONTROL HİYERARŞİSİ İÇİNDE YERİ:
+ITS PLACE IN THE HIERARCHY OF CONTROL:
 
-Risk kontrolünde sıralama: 1) Tehlikeyi yok et, 2) İkame et, 3) Mühendislik önlemi, 4) Yönetimsel önlem, 5) PPE. PPE EN SON sıradadır; tek başına yeterli sayılmaz.
+The order of risk control: 1) eliminate the hazard, 2) substitute, 3) engineering controls, 4) administrative controls, 5) PPE. PPE comes LAST; it is not regarded as sufficient on its own.
 
-YASAL/SİSTEMSEL DAYANAK:
+THE LEGAL/SYSTEM BASIS:
 
-ISM Code kapsamındaki güvenlik yönetim sistemi (SMS) ve MLC 2006, uygun PPE sağlanmasını, eğitimini ve kullanımını şart koşar. PPE ücretsiz sağlanır.
+The safety management system (SMS) under the ISM Code and MLC 2006 require suitable PPE to be provided, together with training in its use. PPE is provided free of charge.
 
-DOĞRU KULLANIM:
+CORRECT USE:
 
-- Göreve ve tehlikeye uygun tip seçilir (örn. kaynakta kaynak maskesi + alev geciktirici giysi).
-- Doğru beden/uyum; hasarlı PPE kullanılmaz, değiştirilir.
-- Bakım, temizlik ve saklama talimatlara uygun yapılır.
-- Toolbox talk ve familiarization ile kullanım pekiştirilir.`,
+- The type is chosen to suit the job and the hazard (e.g. a welding mask plus flame-retardant clothing for welding).
+- Correct size/fit; damaged PPE is not used but replaced.
+- Maintenance, cleaning and storage follow the instructions.
+- Its use is reinforced through toolbox talks and familiarisation.`,
     keyPoints: [
       "PPE kontrol hiyerarşisinde EN SON önlemdir; tek başına yeterli değildir",
       "Göreve uygun tip seçilir; hasarlı PPE kullanılmaz",
@@ -2527,36 +2527,36 @@ DOĞRU KULLANIM:
   "permit-to-work": {
     title: "Çalışma İzni Sistemi ve Sıcak İş İzni",
     introduction: "Çalışma izni (permit-to-work) sistemi, yüksek riskli işlerin ancak tehlikeler değerlendirilip kontrol altına alındıktan sonra, yazılı izinle ve sorumluların onayıyla yapılmasını güvence altına alan resmi bir kontrol mekanizmasıdır.",
-    content: `İZİN GEREKTİREN BAŞLICA İŞLER:
+    content: `THE MAIN WORK REQUIRING A PERMIT:
 
-- Sıcak iş (hot work): Kaynak, taşlama, kesme – kıvılcım/alev üreten işler.
-- Kapalı/tank mahalline giriş (enclosed space entry).
-- Yüksekte ve borda dışında çalışma (working aloft / overside).
-- Elektrik işleri ve enerji izolasyonu (Lock-Out/Tag-Out – LOTO).
-- Soğutucu/kimyasal hatlarda iş, basınçlı sistemlerde iş.
+- Hot work: welding, grinding, cutting – work producing sparks/flame.
+- Enclosed space/tank entry.
+- Working aloft and overside.
+- Electrical work and energy isolation (Lock-Out/Tag-Out – LOTO).
+- Work on refrigerant/chemical lines and on pressurised systems.
 
-SICAK İŞ İZNİ (HOT WORK PERMIT):
+THE HOT WORK PERMIT:
 
-- Belirlenmiş atölye dışındaki tüm sıcak işler için izin gerekir.
-- Tankerlerde ve yanıcı atmosfer riskli mahallerde gaz ölçümü (gas-free / gaz testi) zorunludur; "gas-free certificate" alınır.
-- Çevredeki yanıcı maddeler uzaklaştırılır, yangın nöbetçisi (fire watch) ve söndürücü hazır bulunur.
-- İş bitiminde alan kontrol edilir; gizli tutuşma (smouldering) için bekleme süresi uygulanır.
+- A permit is required for all hot work outside a designated workshop.
+- On tankers and in spaces with a risk of a flammable atmosphere, gas measurement (gas-free/gas testing) is mandatory; a gas-free certificate is obtained.
+- Flammable materials in the vicinity are removed, and a fire watch and an extinguisher are on hand.
+- The area is checked on completion; a waiting period is applied for smouldering.
 
-İZİN AKIŞI:
+THE PERMIT PROCESS:
 
-1. İşi yapacak kişi izin talep eder.
-2. Tehlikeler ve kontroller (risk assessment) belirlenir.
-3. Yetkili kişi (genellikle ilgili zabit/Master onayı) kontrolleri doğrular ve izni verir.
-4. İzin süre ve kapsamla sınırlıdır; koşullar değişirse iptal edilir.
-5. İş bitince izin kapatılır ve kayıt tutulur.
+1. The person doing the work applies for a permit.
+2. The hazards and controls (risk assessment) are identified.
+3. A responsible person (usually the relevant officer with the master's approval) verifies the controls and issues the permit.
+4. The permit is limited in time and scope; it is cancelled if the conditions change.
+5. When the work is finished the permit is closed out and recorded.
 
-ENERJİ İZOLASYONU (LOTO):
+ENERGY ISOLATION (LOTO):
 
-Bakımdan önce makine/elektrik enerjisi kesilir, kilitlenir ve etiketlenir; yanlışlıkla devreye girmesi önlenir. İş bitiminde sadece izolasyonu yapan kişi kilidi açar.
+Before maintenance the machinery/electrical supply is isolated, locked and tagged so that it cannot be started inadvertently. When the work is finished only the person who applied the isolation removes the lock.
 
-GEMİ-KARA ARAYÜZÜ:
+THE SHIP/SHORE INTERFACE:
 
-İzin sistemi, ISM/SMS prosedürleriyle ve PSC denetimleriyle uyumlu yürütülür; kayıtlar denetlenir.`,
+The permit system is operated in line with the ISM/SMS procedures and PSC inspections; the records are audited.`,
     keyPoints: [
       "Permit-to-work yüksek riskli işleri yazılı izin ve onayla kontrol eder",
       "Atölye dışı sıcak iş için izin + gaz testi (tankerde gas-free) zorunludur",
@@ -2564,42 +2564,42 @@ GEMİ-KARA ARAYÜZÜ:
       "Enerji izolasyonu LOTO ile yapılır; kilidi yalnız uygulayan açar",
     ],
     warnings: [
-      "İzinsiz sıcak iş veya kapalı mahal girişi ciddi kaza/ölüm nedenidir",
-      "Koşullar değişirse izin derhal iptal edilmeli",
+      "Hot work or enclosed space entry without a permit is a serious cause of accidents and deaths",
+      "If conditions change the permit must be cancelled immediately",
     ],
   },
   "risk-assessment": {
     title: "Risk Değerlendirmesi ve JSA",
     introduction: "Risk değerlendirmesi, bir işteki tehlikeleri önceden belirleyip olasılık ve şiddetine göre değerlendirerek uygun kontrol önlemlerini almak için yapılan sistematik bir süreçtir. ISM Code gemilerde risk değerlendirmesini zorunlu kılar.",
-    content: `TEMEL KAVRAMLAR:
+    content: `BASIC CONCEPTS:
 
-- Tehlike (hazard): Zarar verme potansiyeli olan kaynak/durum (örn. dönen parça, yüksek basınç, kaygan zemin).
-- Risk: Zararın gerçekleşme olasılığı ile şiddetinin birleşimi (Risk = Olasılık × Şiddet).
+- Hazard: a source or situation with the potential to cause harm (e.g. a rotating part, high pressure, a slippery deck).
+- Risk: the combination of the likelihood of harm occurring and its severity (Risk = Likelihood × Severity).
 
-RİSK DEĞERLENDİRME ADIMLARI:
+RISK ASSESSMENT STEPS:
 
-1. Tehlikeleri belirle.
-2. Kimin/neyin zarar görebileceğini belirle.
-3. Riski değerlendir (olasılık × şiddet; risk matrisi kullanılır).
-4. Kontrol önlemlerine karar ver (kontrol hiyerarşisi).
-5. Bulguları kaydet ve uygula.
-6. Gözden geçir ve güncelle (koşul değişince).
+1. Identify the hazards.
+2. Identify who or what may be harmed.
+3. Evaluate the risk (likelihood × severity; a risk matrix is used).
+4. Decide the control measures (the hierarchy of control).
+5. Record the findings and implement them.
+6. Review and update (when conditions change).
 
-KONTROL HİYERARŞİSİ:
+THE HIERARCHY OF CONTROL:
 
-1) Tehlikeyi yok et → 2) İkame et → 3) Mühendislik kontrolü (koruma, havalandırma) → 4) Yönetimsel kontrol (prosedür, eğitim, izin) → 5) PPE. Üst sıradaki önlemler tercih edilir.
+1) Eliminate the hazard → 2) Substitute → 3) Engineering controls (guarding, ventilation) → 4) Administrative controls (procedure, training, permit) → 5) PPE. The measures higher up the list are preferred.
 
 JSA / JHA (Job Safety/Hazard Analysis):
 
-Belirli bir işi adımlara ayırıp her adımın tehlikesini ve kontrolünü inceleyen pratik bir yöntemdir. Genellikle işten hemen önce, ilgili ekip tarafından doldurulur.
+A practical method that breaks a particular job into steps and examines the hazard and the control at each step. It is usually completed by the team concerned immediately before the work.
 
 TOOLBOX TALK:
 
-İşe başlamadan ekiple yapılan kısa güvenlik brifingidir; JSA sonuçları, izinler ve özel tehlikeler paylaşılır.
+A short safety briefing held with the team before starting work; the results of the JSA, the permits and any special hazards are shared.
 
-ISM BAĞLANTISI:
+THE ISM LINK:
 
-ISM Code, şirketten ve gemiden faaliyetlerine ilişkin riskleri değerlendirmesini ve önlem almasını ister. Risk değerlendirme kayıtları SMS'in parçasıdır ve denetlenir.`,
+The ISM Code requires the company and the ship to assess the risks of their activities and take precautions. Risk assessment records are part of the SMS and are audited.`,
     keyPoints: [
       "Risk = Olasılık × Şiddet; risk matrisi ile değerlendirilir",
       "Kontrol hiyerarşisi: yok et > ikame > mühendislik > yönetimsel > PPE",
@@ -2610,33 +2610,33 @@ ISM Code, şirketten ve gemiden faaliyetlerine ilişkin riskleri değerlendirmes
   "damage-control": {
     title: "Hasar Kontrolü ve Su Geçirmez Bütünlük",
     introduction: "Hasar kontrolü, çarpışma, karaya oturma veya su alma sonrası geminin batmadan ve devrilmeden kalmasını sağlamak için su geçirmez bütünlüğün korunması ve su girişinin sınırlandırılması faaliyetlerini kapsar (SOLAS Bölüm II-1).",
-    content: `SU GEÇİRMEZ BÜTÜNLÜK:
+    content: `WATERTIGHT INTEGRITY:
 
-Gemi, su geçirmez perdelerle (bulkhead) bölmelere ayrılır. Bir bölme su alsa bile diğerleri kuru kalır ve gemi yüzer durumda kalır (rezerv sephiye/reserve buoyancy).
+The ship is divided into compartments by watertight bulkheads. Even if one compartment floods the others stay dry and the ship stays afloat (reserve buoyancy).
 
-- Çatışma perdesi (collision bulkhead): Baş taraftaki ilk su geçirmez perde; baş çarpışmada su girişini sınırlar.
-- Su geçirmez kapılar (watertight doors): Köprüden uzaktan kapatılabilir; konum göstergesi köprüdedir. Denizde kapalı tutulması esastır.
+- Collision bulkhead: the first watertight bulkhead forward; it limits the ingress of water in a head-on collision.
+- Watertight doors: they can be closed remotely from the bridge; the position indicator is on the bridge. They must be kept closed at sea.
 
-YÜZME GÜVENLİĞİ KAVRAMLARI:
+FLOTATION SAFETY CONCEPTS:
 
-- Rezerv sephiye (reserve buoyancy): Su hattı üstündeki su geçirmez hacim; su alındığında batmayı geciktirir.
-- Bölmelendirme (subdivision) ve hasar stabilitesi: Belirli sayıda bölme su alsa da geminin ayakta kalmasını sağlayacak şekilde tasarlanır.
-- Çapraz su basma (cross-flooding): Tek bordadan su alındığında karşı bölmeye kontrollü su alarak meyli azaltma düzeni.
+- Reserve buoyancy: the watertight volume above the waterline; it delays foundering when water is taken in.
+- Subdivision and damage stability: the ship is designed to stay afloat with a defined number of compartments flooded.
+- Cross-flooding: an arrangement for reducing the list when water is taken in on one side, by admitting water in a controlled way to the compartment on the other side.
 
-HASAR KONTROL PLANI VE EL KİTABI:
+THE DAMAGE CONTROL PLAN AND BOOKLET:
 
-SOLAS II-1 Kural 19 gereği gemide hasar kontrol planı (damage control plan) ve el kitabı (booklet) bulunur. Bunlarda su geçirmez sınırlar, açıklıklar, kapatma düzenekleri ve bilge/balast düzenlemeleri gösterilir.
+Under SOLAS II-1 Regulation 19 a damage control plan and booklet are carried on board. They show the watertight boundaries, the openings, the closing arrangements and the bilge/ballast arrangements.
 
-MÜDAHALE FAALİYETLERİ:
+RESPONSE ACTIONS:
 
-1. Su girişini tespit et ve sınırla (kapatma, takviye, geçici tıkaç/yama).
-2. Su geçirmez kapı/açıklıkları kapat.
-3. Bilge ve balast pompalarıyla su tahliyesi/dengeleme.
-4. Stabilite ve trimi izle; gerekirse yetkili otoriteyi/şirketi bilgilendir.
+1. Locate and limit the ingress of water (closing, shoring, a temporary plug/patch).
+2. Close the watertight doors and openings.
+3. Pump out and balance the water with the bilge and ballast pumps.
+4. Monitor stability and trim; inform the competent authority/the company if necessary.
 
-BİLGE SİSTEMİ:
+THE BILGE SYSTEM:
 
-Bilge sistemi, bölmelerde biriken suyu tahliye eder; alarmlar ve pompalar düzenli test edilir.`,
+The bilge system drains water that collects in the compartments; the alarms and pumps are tested regularly.`,
     keyPoints: [
       "Su geçirmez bölmelendirme + rezerv sephiye batmayı önler (SOLAS II-1)",
       "Çatışma perdesi baş çarpışmada su girişini sınırlar",
@@ -2644,37 +2644,37 @@ Bilge sistemi, bölmelerde biriken suyu tahliye eder; alarmlar ve pompalar düze
       "Hasar kontrol planı/el kitabı (SOLAS II-1/19) gemide bulundurulur",
     ],
     warnings: [
-      "Açık bırakılan su geçirmez kapı, kademeli su basmaya ve hızlı batmaya yol açar",
+      "A watertight door left open leads to progressive flooding and rapid foundering",
     ],
   },
   "mooring-safety-snapback": {
     title: "Bağlama Güvenliği ve Snap-Back Bölgeleri",
     introduction: "Bağlama (mooring) operasyonları, gemide en sık ciddi yaralanma yaşanan işlerden biridir. Gergin halatın kopması (snap-back) ve yüksek gerilim altındaki ekipman ölümcül kazalara yol açabilir. OCIMF MEG4 bu alanda referans kılavuzdur.",
-    content: `SNAP-BACK NEDİR?
+    content: `WHAT IS SNAP-BACK?
 
-Gergin bir bağlama halatı koptuğunda, biriken elastik enerji açığa çıkar ve halatın uçları kırbaç gibi geri savrulur (snap-back). Bu savrulma ölümcül olabilir. Sentetik halatlar yüksek enerji depolar; çelik teller daha az gerilir ama kopmada yine tehlikelidir.
+When a mooring line under tension parts, the stored elastic energy is released and the ends of the line whip back (snap-back). This whipping can be fatal. Synthetic ropes store a great deal of energy; wire ropes stretch less but are still dangerous when they part.
 
-SNAP-BACK BÖLGELERİ:
+SNAP-BACK ZONES:
 
-Halat geometrisine (makara/fairlead, kapstan/winch hizası) göre, kopan halatın savrulabileceği tehlikeli alanlardır. Bu bölgelerde durulmaz. Not: Modern yaklaşımda (MEG4) güvertenin TAMAMI potansiyel tehlike alanı sayılır; eski tip boyalı "snap-back zone" işaretleri yanıltıcı olabileceğinden genel farkındalık esastır.
+These are the dangerous areas into which a parted line could whip, determined by the geometry of the line (rollers/fairleads, the line of the capstan/winch). No one stands in these areas. Note: the modern approach (MEG4) treats the WHOLE deck as a potential danger area; the old painted "snap-back zone" markings can be misleading, so general awareness is what matters.
 
-GÜVENLİK İLKELERİ:
+SAFETY PRINCIPLES:
 
-- Gergin halatın "bight" (kıvrımı) içinde veya doğrultusunda durma.
-- Yük altındaki halata el/ayak yaklaştırma; eldiven sıkışmasına dikkat et.
-- Winch freni doğru ayarlı olmalı; fren ilk kayma noktasında halatı koruyacak şekilde test edilmeli.
-- Halat ve kuyruk (tail) durumu kontrol edilir; aşınmış/yorulmuş halat değiştirilir.
-- Uygun PPE: baret, güvenlik ayakkabısı, eldiven, reflektörlü yelek.
+- Never stand in the bight of a line under tension or in line with it.
+- Keep hands and feet away from a line under load; watch for gloves being drawn in.
+- The winch brake must be correctly set; it must be tested so that it renders at the designed slip point.
+- The condition of the line and the tail is checked; worn/fatigued line is replaced.
+- Appropriate PPE: helmet, safety shoes, gloves, high-visibility vest.
 
-İLETİŞİM VE ORGANİZASYON:
+COMMUNICATION AND ORGANISATION:
 
-- Baş/kıç istasyonları ile köprü arasında net iletişim (telsiz) kurulur.
-- Operasyon öncesi toolbox talk: roller, tehlike alanları, kaçış yolları.
-- Yeterli ve dinlenmiş personel; aceleye getirilmez.
+- Clear communication (radio) between the forward/aft stations and the bridge.
+- A toolbox talk before the operation: roles, danger areas, escape routes.
+- Sufficient and rested personnel; the operation is never rushed.
 
-EKİPMAN:
+EQUIPMENT:
 
-Bitt, fairlead, roller, winch, stoper (stopper) ve halat kuyrukları düzenli kontrol/bakım görür; sertifikalı ekipman kullanılır.`,
+Bitts, fairleads, rollers, winches, stoppers and rope tails are regularly checked and maintained; certified equipment is used.`,
     keyPoints: [
       "Snap-back: kopan gergin halatın ölümcül geri savrulmasıdır",
       "MEG4 yaklaşımında tüm güverte tehlike alanı sayılır – bight içinde durulmaz",
@@ -2682,8 +2682,8 @@ Bitt, fairlead, roller, winch, stoper (stopper) ve halat kuyrukları düzenli ko
       "Net iletişim, toolbox talk ve uygun PPE esastır",
     ],
     warnings: [
-      "Gergin halatın doğrultusunda/bight içinde durmak ölümcüldür",
-      "Aşınmış/yorulmuş halat ve yanlış fren ayarı kopma riskini artırır",
+      "Standing in line with, or in the bight of, a line under tension is fatal",
+      "Worn/fatigued line and an incorrectly set brake increase the risk of parting",
     ],
   },
 };
