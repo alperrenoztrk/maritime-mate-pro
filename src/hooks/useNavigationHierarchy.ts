@@ -77,7 +77,6 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/calculations',
   },
   { pattern: /^\/machine-calculations$/, parent: () => '/calculations' },
-  { pattern: /^\/machinery$/, parent: () => '/library' },
 
   // ── Calculations hub ───────────────────────────────────────
   // /calculations/<cat>/<sec> → /calculations
