@@ -62,6 +62,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataScenario.ts",
   "src/data/machineQuizDataTopicFill1.ts",
   "src/data/machineQuizDataTopicFill2.ts",
+  "src/data/machineQuizDataTopicFill3.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -94,6 +95,8 @@ const MACHINE_EXPECTED_OVERRIDES = {
   "cooling-hvac": 176,
   "energy-efficiency": 191,
   automation: 187,
+  maintenance: 187,
+  "engine-room-ops": 187,
 };
 
 /** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
