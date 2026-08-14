@@ -16,6 +16,7 @@ import { machineQuizQuestionsTopicFill2 } from "./machineQuizDataTopicFill2";
 import { machineQuizQuestionsTopicFill3 } from "./machineQuizDataTopicFill3";
 import { machineQuizQuestionsTopicFill4 } from "./machineQuizDataTopicFill4";
 import { machineQuizQuestionsTopicFill5 } from "./machineQuizDataTopicFill5";
+import { machineQuizQuestionsTopicFill6 } from "./machineQuizDataTopicFill6";
 
 /**
  * Aynı konu slug'ı hem taban hem devam bankasında bulunduğundan sığ spread
@@ -59,6 +60,7 @@ export const allMachineQuizQuestions: Record<string, QuizQuestion[]> = mergeBank
   machineQuizQuestionsTopicFill3,
   machineQuizQuestionsTopicFill4,
   machineQuizQuestionsTopicFill5,
+  machineQuizQuestionsTopicFill6,
 );
 
 export function getMachineQuizQuestions(topicSlug: string): QuizQuestion[] {
