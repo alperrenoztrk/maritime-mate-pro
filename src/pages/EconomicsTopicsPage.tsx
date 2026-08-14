@@ -351,7 +351,7 @@ Kiracı tarafı: navlun, yükleme/boşaltma masrafları (anlaşmaya bağlı)
 SÖZLEŞME: Voyage charter party (C/P) formu kullanılır. Yaygın formlar: GENCON (genel kargo), ASBATANKVOY (tanker).`,
     formula: {
       name: "Voyage Charter Navlun Hesabı",
-      expression: "Toplam Navlun = Yük Miktarı (ton) × Navlun Oranı ($/ton)",
+      expression: "Total Freight = Cargo Quantity (ton) × Freight Rate ($/ton)",
       description: "Navlun oranı piyasa koşullarına göre belirlenir. Yük miktarı B/L (konşimento) üzerindeki miktardır.",
     },
     examples: [
@@ -406,7 +406,7 @@ BALTIME: Alternatif form
 SHELLTIME: Tankerler için`,
     formula: {
       name: "Time Charter Hire Hesabı",
-      expression: "Toplam Hire = Günlük Hire ($/gün) × Charter Süresi (gün)",
+      expression: "Total Hire = Daily Hire ($/day) × Charter Period (day)",
       description: "Off-hire günleri toplam süreden düşülür.",
     },
     examples: [
@@ -546,7 +546,7 @@ Toplam: navlunun %5'i standart komisyon oranıdır.
 Net Navlun = Brüt Navlun × (1 − komisyon oranı)`,
     formula: {
       name: "Net Navlun Hesabı",
-      expression: "Net Navlun = Brüt Navlun × (1 − Komisyon %)",
+      expression: "Net Freight = Gross Freight × (1 − Commission %)",
       description: "Standart komisyon: %3,75 address commission + %1,25 brokerage = %5 toplam.",
     },
     examples: [
@@ -589,7 +589,7 @@ Denizde geçen gün = Mesafe (deniz mili) / Hız (knot) / 24
 TCE hesaplamasında yakıt maliyeti en büyük değişken kalemdir. Denizde tüketim ve limanda tüketim ayrı hesaplanır.`,
     formula: {
       name: "TCE Hesaplaması",
-      expression: "TCE = (Navlun − Sefer Maliyetleri) / Sefer Süresi",
+      expression: "TCE = (Freight − Voyage Costs) / Voyage Duration",
       description: "TCE $/gün bazında hesaplanır. Tüm voyage charter tekliflerini time charter bazında karşılaştırmak için kullanılır.",
     },
     examples: [
@@ -640,7 +640,7 @@ GÜNCELLEME:
 Flat rate'ler her yıl 1 Ocak'ta güncellenir. Güncelleme yakıt fiyatları, liman masrafları ve kanal ücretlerindeki değişimleri yansıtır.`,
     formula: {
       name: "Worldscale Navlun Hesabı",
-      expression: "Navlun = (WS Oranı / 100) × Flat Rate ($/ton)",
+      expression: "Freight = (WS Rate / 100) × Flat Rate ($/ton)",
       description: "WS100 = flat rate (başabaş). WS oranı piyasa koşullarına göre değişir.",
     },
     examples: [
@@ -682,7 +682,7 @@ Toplam Yakıt Maliyeti = Toplam Yakıt (ton) × Yakıt Fiyatı ($/ton)
 Denizde geçen gün = Mesafe (NM) / (Hız (knot) × 24)`,
     formula: {
       name: "Yakıt Maliyeti Hesabı",
-      expression: "Yakıt Maliyeti = [(Ddeniz × Cdeniz) + (Dliman × Climan)] × Fiyat",
+      expression: "Fuel Cost = [(Dsea × Csea) + (Dport × Cport)] × Price",
       description: "D: gün sayısı, C: günlük tüketim (ton/gün), Fiyat: $/ton. Yakıt türüne göre ayrı hesaplanmalıdır.",
     },
     examples: [
@@ -731,7 +731,7 @@ SHINC (Sundays and Holidays Included): Pazar ve tatiller dahil
 Laytime sayımı, geçerli NOR (Notice of Readiness) verildikten sonra, charter party'de belirtilen süre kadar bekledikten sonra başlar.`,
     formula: {
       name: "Oran Bazlı Laytime Hesabı",
-      expression: "Laytime (gün) = Yük Miktarı (ton) / Yükleme Oranı (ton/gün)",
+      expression: "Laytime (day) = Cargo Quantity (ton) / Loading Rate (ton/day)",
       description: "WWD of 24 consecutive hours SHEX UU (en yaygın laytime tanımı). UU = Unless Used.",
     },
     examples: [
@@ -818,7 +818,7 @@ Toplam laytime = yükleme + boşaltma izin süresi
 Toplam kullanılan = yükleme + boşaltma fiili süresi`,
     formula: {
       name: "Demurrage Hesabı",
-      expression: "Demurrage ($) = Aşılan Süre (gün) × Demurrage Oranı ($/gün)",
+      expression: "Demurrage ($) = Exceeded Time (day) × Demurrage Rate ($/day)",
       description: "Once on demurrage, always on demurrage kuralı geçerlidir; kesintisiz running days sayılır.",
     },
     examples: [
@@ -862,7 +862,7 @@ DESPATCH MANTIĞI:
 Gemi erken ayrılırsa armatör bir sonraki sefere daha erken başlayabilir. Ancak despatch oranı demurrage oranının yarısıdır; bu da armatörün gecikmeden daha fazla zarara uğradığını yansıtır.`,
     formula: {
       name: "Despatch Hesabı",
-      expression: "Despatch = Tasarruf Edilen Süre × (Demurrage Oranı / 2)",
+      expression: "Despatch = Time Saved × (Demurrage Rate / 2)",
       description: "Half demurrage standardı. All time saved veya working time saved olarak hesaplanabilir.",
     },
     examples: [
@@ -1007,7 +1007,7 @@ ROI = Yıllık Net Kâr / Gemi Yatırım Değeri × 100
 Denizcilik sektöründe iyi bir ROI genellikle %8-15 aralığındadır.`,
     formula: {
       name: "Başabaş TCE",
-      expression: "Başabaş TCE = OPEX/gün + Sermaye Maliyeti/gün",
+      expression: "Breakeven TCE = OPEX/day + Capital Cost/day",
       description: "Geminin masraflarını karşılayabilmesi için gereken minimum günlük gelir.",
     },
     bulletPoints: [
@@ -1123,7 +1123,7 @@ Tipik LDT: Gemi DWT'sinin %15-25'i
 Hurda fiyatı: $350-550/LDT (piyasa koşullarına göre)`,
     formula: {
       name: "Doğrusal Amortisman",
-      expression: "Yıllık Amortisman = (Maliyet − Hurda Değeri) / Ekonomik Ömür",
+      expression: "Annual Depreciation = (Cost − Scrap Value) / Economic Life",
       description: "Standart ekonomik ömür: 25 yıl. Hurda değeri LDT × $/LDT ile tahmin edilir.",
     },
     examples: [

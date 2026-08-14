@@ -68,7 +68,7 @@ const DraftSurveyDensity = () => {
             {
               title: "Density Correction",
               accent: "teal",
-              lines: [{ formula: "Düzeltme = Deplasman × ((ρ - ρ₀) / ρ₀)" }],
+              lines: [{ formula: "Correction = Displacement × ((ρ - ρ₀) / ρ₀)" }],
             },
           ]}
           symbolsNote={

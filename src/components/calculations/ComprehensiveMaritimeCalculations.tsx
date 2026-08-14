@@ -739,8 +739,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaKG = (w * heightDiff) / delta; // meters
     setCraneVerticalResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, craneVertical: [
-      { step: 1, title: "Formula", formula: "ΔKG = (w × (hcunda - hyük)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
-      { step: 2, title: "height difference", formula: `hcunda - hyük = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
+      { step: 1, title: "Formula", formula: "ΔKG = (w × (hcargo - hlift)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
+      { step: 2, title: "height difference", formula: `hcargo - hlift = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
       { step: 3, title: "Placement of values", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
       { step: 4, title: "Result", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));

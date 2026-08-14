@@ -40,7 +40,7 @@ const content8: ContentMap = {
               "60 = (n × 4) / 120",
               "n = (60 × 120) / 4"
             ],
-            result: "n = 1800 d/d. Jeneratör dakikada 1800 devir hızında dönmelidir."
+            result: "n = 1800 r/min. The generator must rotate at 1800 revolutions per minute."
           }
         },
         {
@@ -78,7 +78,7 @@ const content8: ContentMap = {
             "Jeneratör verimi çıkış gücünün giriş gücüne oranıdır. Kayıplar; bakır kayıpları, demir kayıpları, mekanik kayıplar ve sürükleme kayıplarından oluşur."
           ],
           formula: {
-            expression: "η = (Pçıkış / Pgiriş) × 100 = Pçıkış / (Pçıkış + Pkayıp) × 100",
+            expression: "η = (Pout / Pin) × 100 = Pout / (Pout + Ploss) × 100",
             variables: [
               "η = verim (%)",
               "Pçıkış = elektrik çıkış gücü (kW)",
@@ -94,7 +94,7 @@ const content8: ContentMap = {
               "η = 1000 / (1000 + 80) × 100",
               "η = 1000 / 1080 × 100"
             ],
-            result: "η ≈ %92,6. Jeneratör verimi %92,6'dır."
+            result: "η ≈ 92.6%. The generator efficiency is 92.6%."
           }
         }
       ],
@@ -121,7 +121,7 @@ const content8: ContentMap = {
           heading: "Gerilim Regülasyon Hesabı",
           paragraphs: [],
           formula: {
-            expression: "VR% = ((Vboşta − Vtamyük) / Vtamyük) × 100",
+            expression: "VR% = ((Vno-load − Vfull-load) / Vfull-load) × 100",
             variables: [
               "VR% = gerilim regülasyonu (%)",
               "Vboşta = boşta çalışma gerilimi (V)",
@@ -135,7 +135,7 @@ const content8: ContentMap = {
               "VR% = ((462 − 440) / 440) × 100",
               "VR% = (22 / 440) × 100"
             ],
-            result: "VR% = %5,0. Gerilim regülasyonu %5'tir; AVR ile ±%0,5'e düşürülür."
+            result: "VR% = 5.0%. Voltage regulation is 5%; it is reduced to ±0.5% with an AVR."
           }
         },
         {
@@ -172,7 +172,7 @@ const content8: ContentMap = {
           heading: "Droop Ayarı",
           paragraphs: [],
           formula: {
-            expression: "Droop% = ((fboşta − ftamyük) / fnominal) × 100",
+            expression: "Droop% = ((fnoload − ffull_load) / fnominal) × 100",
             variables: [
               "Droop% = frekans düşümü yüzdesi",
               "fboşta = boşta frekans (Hz)",
@@ -187,7 +187,7 @@ const content8: ContentMap = {
               "Droop% = ((61,5 − 60) / 60) × 100",
               "Droop% = (1,5 / 60) × 100"
             ],
-            result: "Droop% = %2,5. Standart gemi jeneratörlerinde %3-5 arası droop değeri kullanılır."
+            result: "Droop% = 2.5%. A droop value between 3-5% is used in standard ship generators."
           }
         },
         {
@@ -450,7 +450,7 @@ const content8: ContentMap = {
               "A = (1,732 × 50 × 80 × 0,8 × 0,0175) / 26,4",
               "A = 96,99 / 26,4 ≈ 3,67 mm²"
             ],
-            result: "Gerilim düşümü kriterine göre hesaplanan kesit yaklaşık 3,67 mm²'dir; bir üst standart kesit olan 4 mm² seçilir (akım taşıma kapasitesi ayrıca kontrol edilmelidir)."
+            result: "The cross-section calculated according to the voltage drop criterion is approximately 3.67 mm²; a next standard cross-section of 4 mm² is selected (current carrying capacity must also be checked)."
           }
         },
         {
@@ -589,7 +589,7 @@ const content8: ContentMap = {
               "440V: I = 5.000.000 / (1,732 × 440 × 0,85) = 5.000.000 / 647,5 ≈ 7722 A",
               "6600V: I = 5.000.000 / (1,732 × 6600 × 0,85) = 5.000.000 / 9713 ≈ 515 A"
             ],
-            result: "6,6kV sistemde akım 515 A iken 440V sistemde 7722 A'dır; kablo kesiti ve maliyet büyük ölçüde azalır."
+            result: "Current is 515 A in a 6.6kV system, while it is 7722 A in a 440V system; cable cross-section and cost are significantly reduced."
           }
         },
         {
@@ -675,7 +675,7 @@ const content8: ContentMap = {
               "Inominal = S / (√3 × V) = 800.000 / (1,732 × 440) = 1050 A",
               "Ikd = Inominal / X''d(pu) = 1050 / 0,12"
             ],
-            result: "Ikd ≈ 8750 A. Bara kısa devre akımı 8750 A seviyesindedir; devre kesicinin kesme kapasitesi bu değerin üzerinde olmalıdır."
+            result: "Ikd ≈ 8750 A. The busbar short circuit current is at 8750 A; the circuit breaker's breaking capacity must be above this value."
           }
         },
         {
@@ -724,7 +724,7 @@ const content8: ContentMap = {
           heading: "Ters Güç Güç Hesabı",
           paragraphs: [],
           formula: {
-            expression: "Pters = V × I × cosφ (negatif yönde)",
+            expression: "Preverse = V × I × cosφ (in negative direction)",
             variables: [
               "Pters = ters güç (kW)",
               "V = gerilim (V)",
@@ -847,7 +847,7 @@ const content8: ContentMap = {
               "ns = 120 × 60 / 4 = 1800 d/d",
               "s = (1800 − 1740) / 1800 × 100"
             ],
-            result: "s = %3,33. Tam yükte tipik kayma değeri %2-5 arasındadır."
+            result: "s = 3.33%. Typical slip value at full load is between 2-5%."
           }
         },
         {
@@ -1230,7 +1230,7 @@ const content8: ContentMap = {
               "C = (2000 × 2) / (24 × 0,90 × 0,8)",
               "C = 4000 / 17,28"
             ],
-            result: "C ≈ 231 Ah. %20 deşarj derinliği sınırı ile fiili kapasite 231/0,8 ≈ 289 Ah seçilmelidir."
+            result: "C ≈ 231 Ah. With a 20% depth of discharge limit, the actual capacity should be selected as 231/0.8 ≈ 289 Ah."
           }
         }
       ],

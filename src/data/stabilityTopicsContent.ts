@@ -577,7 +577,7 @@ Kaldırma kuvveti:
             description: "Batmış hacim hesabı"
           },
           {
-            formula: "Δtatlı = Δdeniz × (ρdeniz / ρtatlı)",
+            formula: "Δfresh = Δsea × (ρsea / ρfresh)",
             description: "Tatlı su dönüşümü"
           }
         ],
@@ -1090,7 +1090,7 @@ Eğim testinden elde edilen sonuçlar:
             description: "Eğim testinden GM hesabı"
           },
           {
-            formula: "tan θ = sapma / ip uzunluğu",
+            formula: "tan θ = deviation / rope length",
             description: "Sarkaç tipi inclinometer açı ölçümü"
           },
           {
@@ -1597,7 +1597,7 @@ Tipik bir GZ eğrisi:
             description: "GZ hesabı (Cross Curves yöntemi)"
           },
           {
-            formula: "tan(eğim)θ=0 = GM",
+            formula: "tan(heel)θ=0 = GM",
             description: "GZ eğrisinin 0°'deki eğimi GM'e eşittir"
           },
           {
@@ -2331,11 +2331,11 @@ Toplam FSM = Orijinal FSM / n²
 - Yük tankları (tankerler) için özel dikkat`,
         formulas: [
           {
-            formula: "FSMbölünmüş = FSMorijinal / n²",
+            formula: "FSMdivided = FSMoriginal / n²",
             description: "n adet boyuna bölme sonrası toplam FSM"
           },
           {
-            formula: "FSM2bölme = FSM / 4",
+            formula: "FSM2compartments = FSM / 4",
             description: "2 bölme ile toplam FSM 1/4'e düşer"
           }
         ],
@@ -2406,7 +2406,7 @@ GMeff = 1.20 - 0.124 = 1.076 m`,
             description: "Efektif GM hesabı"
           },
           {
-            formula: "idikdörtgen = l × b³ / 12",
+            formula: "irectangle = l × b³ / 12",
             description: "Dikdörtgen tank atalet momenti"
           },
           {
@@ -2601,7 +2601,7 @@ LCF'nin arkasına ağırlık → Kıça trim`,
             description: "MCT hesabı"
           },
           {
-            formula: "Trim değişimi = Trimming moment / MCT1cm",
+            formula: "Trim change = Trimming moment / MCT1cm",
             description: "Trim değişimi hesabı (cm)"
           },
           {
@@ -2832,7 +2832,7 @@ Draft survey hesaplarında:
 4. Hidrostatik tablolardan deplasman okunur`,
         formulas: [
           {
-            formula: "Düzeltme = (Mesafe × Trim) / LBP",
+            formula: "Correction = (Distance × Trim) / LBP",
             description: "Draft düzeltme formülü"
           },
           {
@@ -2853,7 +2853,7 @@ Draft survey hesaplarında:
         keyPoints: [
           "LCF trim hareketinin pivot noktasıdır",
           "Draft markaları genellikle perpendikülerlerde değildir",
-          "Düzeltme = (Mesafe × Trim) / LBP",
+          "Correction = (Distance × Trim) / LBP",
           "True mean draft LCF konumunda hesaplanır"
         ],
         practicalTips: [
@@ -2923,11 +2923,11 @@ Tipik permeabilite değerleri:
 - Yaşam mahalleri: μ ≈ 0.95`,
         formulas: [
           {
-            formula: "Dolacak su = Bölme hacmi × μ × ρ",
+            formula: "Water to be filled = Compartment volume × μ × ρ",
             description: "Bölmeye girecek su miktarı"
           },
           {
-            formula: "Yeni Δ = Eski Δ + Basan su ağırlığı",
+            formula: "New Δ = Old Δ + Bilged water weight",
             description: "Eklenen ağırlık yöntemi"
           }
         ],
@@ -2995,7 +2995,7 @@ GMeff = GM - FSM / Δ
 IMO hasarlı stabilite kriterlerini kontrol et`,
         formulas: [
           {
-            formula: "Vlost = Bölme hacmi × μ",
+            formula: "Vlost = Compartment volume × μ",
             description: "Kaybedilen kaldırma hacmi"
           },
           {
@@ -3003,7 +3003,7 @@ IMO hasarlı stabilite kriterlerini kontrol et`,
             description: "Yeni KG hesabı (eklenen ağırlık yöntemi)"
           },
           {
-            formula: "GMhasarlı = KMyeni - KGyeni - FSM / Δyeni",
+            formula: "GMdamaged = KMnew - KGnew - FSM / Δnew",
             description: "Hasarlı GM hesabı"
           }
         ],
@@ -3642,11 +3642,11 @@ SGISC, beş temel dinamik başarısızlık modunu ele alır:
             description: "Parametrik yalpa olasılık indeksi"
           },
           {
-            formula: "ΔGM / GMmean < KritikDeğer",
+            formula: "ΔGM / GMmean < CriticalValue",
             description: "Level 1 pure loss kontrolü"
           },
           {
-            formula: "Froude No. < 0.3 (surf-riding için)",
+            formula: "Froude No. < 0.3 (for surf-riding)",
             description: "Surf-riding kırılganlık kontrolü"
           }
         ],
@@ -3781,7 +3781,7 @@ GM = 7,85 − 5,90 = 1,95 m`,
             description: "Toplam deplasma hesabı"
           },
           {
-            formula: "DWT = Kargo + Yakıt + Su + Stores",
+            formula: "DWT = Cargo + Fuel + Water + Stores",
             description: "Deadweight bileşenleri"
           },
           {
@@ -3843,7 +3843,7 @@ GMeff = 0,35 − 0,053 = 0,297 m
 IMO minimum GM₀ ≥ 0,15 m kriterini sağlıyor; ancak güvenlik marjı çok düşüktür. Rüzgâr heeling momenti ve dinamik etkiler hesaba katıldığında bu yükleme durumu kritik olarak değerlendirilir.`,
         formulas: [
           {
-            formula: "GMkritik = GMmin + GüvenlikMarjı",
+            formula: "GMcritical = GMmin + SafetyMargin",
             description: "Kritik GM hesabı"
           },
           {
@@ -4041,7 +4041,7 @@ Burada m yükün kütlesi, a beklenen maksimum ivme (gemi hareketlerinden kaynak
 **Lokal yapısal yük kontrolü**, ağır yüklerin güverte veya ambar tabanına uyguladığı basıncın izin verilen sınırlar içinde kalmasını sağlar. Güverte yük kapasitesi genellikle ton/m² cinsinden ifade edilir ve dunnage (ahşap yastıklar) kullanılarak yük dağılımı optimize edilir.`,
         formulas: [
           {
-            formula: "Mvinç = W × R × cos(θ)",
+            formula: "Mwinch = W × R × cos(θ)",
             description: "Vinç operasyonu yatırıcı momenti"
           },
           {
@@ -4090,7 +4090,7 @@ IMDG Code'a göre ayrıştırma (segregation) kuralları, uyumsuz maddelerin bir
 Acil durum hazırlığı kapsamında, EmS (Emergency Schedule) prosedürleri her tehlikeli madde için tanımlanmıştır. Yangın söndürme, dökülme müdahalesi ve ilk yardım prosedürleri, geminin stabilite durumunu da göz önünde bulundurmalıdır. Özellikle yangın söndürme suyunun stabilite üzerindeki etkisi önceden hesaplanmalı ve jettison (denize atma) kararı için eşik değerler belirlenmelidir.`,
         formulas: [
           {
-            formula: "Vgenleşme = V₀ × β × ΔT",
+            formula: "Vexpansion = V₀ × β × ΔT",
             description: "Sıvı termal genleşme hesabı"
           },
           {
@@ -4622,7 +4622,7 @@ Bu basitleştirilmiş örnekte sınırlar aşılmamıştır; ancak gerçek gemil
             description: "Eğilme momenti integrali"
           },
           {
-            formula: "Net yük = Ağırlık dağılımı − Kaldırma dağılımı",
+            formula: "Net load = Weight distribution − Buoyancy distribution",
             description: "Birim uzunluk başına net yük"
           }
         ],

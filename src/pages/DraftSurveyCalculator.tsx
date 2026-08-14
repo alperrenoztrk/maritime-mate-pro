@@ -80,17 +80,17 @@ const DraftSurveyCalculator = () => {
             {
               title: "Su Çekimi Değişimi",
               accent: "blue",
-              lines: [{ formula: "Ağırlık Değişimi = (Son - İlk) × TPC" }],
+              lines: [{ formula: "Weight Change = (Final - Initial) × TPC" }],
             },
             {
               title: "Trim",
               accent: "teal",
-              lines: [{ formula: "Trim % = (Kıç - Baş) / LPP × 100" }],
+              lines: [{ formula: "Trim % = (Aft - Forward) / LPP × 100" }],
             },
             {
               title: "Deplasman Düzeltmesi",
               accent: "purple",
-              lines: [{ formula: "Düzeltilmiş = Deplasman × (Gerçek Yoğunluk / 1.025)" }],
+              lines: [{ formula: "Corrected = Displacement × (Actual Density / 1.025)" }],
             },
           ]}
         />
