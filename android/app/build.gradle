@@ -39,10 +39,10 @@ android {
         applicationId "com.marinersbook.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        // package.json "version" ile birlikte artırın (2.5.71 -> 20571).
+        // package.json "version" ile birlikte artırın (2.5.72 -> 20572).
         // src/lib/appVersion.ts içindeki BUILD_NUMBER ile eşleşmeli.
-        versionCode 20571
-        versionName "2.5.71"
+        versionCode 20572
+        versionName "2.5.72"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [admobAppId: resolvedAdmobAppId]
         aaptOptions {

@@ -1,7 +1,7 @@
 {
   "name": "maritime-calculator",
   "private": true,
-  "version": "2.5.70",
+  "version": "2.5.72",
   "type": "module",
   "browserslist": [
     "Android >= 6",

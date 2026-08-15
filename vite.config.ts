@@ -19,31 +19,43 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 // tamamen engellenir. Reklam/analitik web'de etkinleştirilirse ilgili Google
 // alan adlarının buraya eklenmesi gerekir (Android'de AdMob native çalışır,
 // CSP'den etkilenmez).
-const PRODUCTION_CSP = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "form-action 'self'",
-  `script-src 'self' 'wasm-unsafe-eval' ${cspHashes.map((h) => `'sha256-${h}'`).join(" ")}`,
-  // Splash ekranı inline <style> + runtime CSS-in-JS için unsafe-inline gerekli.
-  // Google Fonts kaynakları kaldırıldı: Inter ve JetBrains Mono artık
-  // public/fonts altından self-host ediliyor, uygulama hiçbir yazı tipini
-  // üçüncü taraftan çekmiyor.
-  "style-src 'self' 'unsafe-inline'",
-  "font-src 'self' data:",
-  // Ders içerikleri onlarca farklı eğitim sitesinden görsel gösteriyor;
-  // görseller pasif içerik olduğundan https: genelinde serbest bırakıldı.
-  "img-src 'self' data: blob: https:",
-  "media-src 'self' blob: https:",
-  // translate.googleapis.com: RouteTranslationGate'in çalışma zamanı makine
-  // çevirisi (eksik sözlük girdileri) istemciden bu uca gider.
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://oauth.lovable.app https://*.lovable.app https://*.lovable.dev https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://api.bigdatacloud.net https://translate.googleapis.com",
-  "frame-src https://accounts.google.com https://www.youtube-nocookie.com https://www.youtube.com https://www.openstreetmap.org",
-  "worker-src 'self' blob:",
-  "manifest-src 'self'",
-].join("; ");
+//
+// Native (Capacitor) profili: Android WebView, köprü script'ini (window.Capacitor,
+// plugin proxy'leri) çalışma anında inline <script> olarak enjekte eder. CSP
+// Level 2+ kuralı gereği script-src'de hash varsa 'unsafe-inline' YOK SAYILIR;
+// bu yüzden native profilde legacy plugin hash'leri (native'de plugin zaten
+// devre dışı, hash'ler ölü) tamamen çıkarılır ve 'unsafe-inline' verilir.
+// Diğer direktifler (object-src, connect-src, frame-src ...) native'de de korunur.
+const buildCsp = (isNative: boolean) =>
+  [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "form-action 'self'",
+    isNative
+      ? "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'"
+      : `script-src 'self' 'wasm-unsafe-eval' ${cspHashes.map((h) => `'sha256-${h}'`).join(" ")}`,
+    // Splash ekranı inline <style> + runtime CSS-in-JS için unsafe-inline gerekli.
+    // Google Fonts kaynakları kaldırıldı: Inter ve JetBrains Mono artık
+    // public/fonts altından self-host ediliyor, uygulama hiçbir yazı tipini
+    // üçüncü taraftan çekmiyor.
+    "style-src 'self' 'unsafe-inline'",
+    "font-src 'self' data:",
+    // Ders içerikleri onlarca farklı eğitim sitesinden görsel gösteriyor;
+    // görseller pasif içerik olduğundan https: genelinde serbest bırakıldı.
+    "img-src 'self' data: blob: https:",
+    "media-src 'self' blob: https:",
+    // translate.googleapis.com: RouteTranslationGate'in çalışma zamanı makine
+    // çevirisi (eksik sözlük girdileri) istemciden bu uca gider.
+    // https://localhost: Capacitor Android'in kendi origin'i ve CapacitorHttp /
+    // _capacitor_file_ köprü istekleri buradan geçer.
+    `connect-src 'self'${isNative ? " https://localhost" : ""} https://*.supabase.co wss://*.supabase.co https://oauth.lovable.app https://*.lovable.app https://*.lovable.dev https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://api.bigdatacloud.net https://translate.googleapis.com`,
+    "frame-src https://accounts.google.com https://www.youtube-nocookie.com https://www.youtube.com https://www.openstreetmap.org",
+    "worker-src 'self' blob:",
+    "manifest-src 'self'",
+  ].join("; ");
 
-function cspPlugin(): Plugin {
+function cspPlugin(isNative: boolean): Plugin {
   return {
     name: "inject-csp-meta",
     apply: "build",
@@ -54,7 +66,7 @@ function cspPlugin(): Plugin {
         tags: [
           {
             tag: "meta",
-            attrs: { "http-equiv": "Content-Security-Policy", content: PRODUCTION_CSP },
+            attrs: { "http-equiv": "Content-Security-Policy", content: buildCsp(isNative) },
             injectTo: "head-prepend",
           },
         ],
@@ -62,6 +74,7 @@ function cspPlugin(): Plugin {
     },
   };
 }
+
 
 // Workbox'ın precache manifesti sessizce boşalabiliyor: glob bağımlılık zinciri
 // bozulduğunda ("An error occurred when globbing for files") build yalnızca uyarı
@@ -134,7 +147,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    cspPlugin(),
+    cspPlugin(mode === "native"),
     mcpPlugin(),
     mode !== "native" && VitePWA({
       registerType: "autoUpdate",
