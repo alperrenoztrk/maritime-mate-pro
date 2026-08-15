@@ -147,7 +147,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    cspPlugin(),
+    cspPlugin(mode === "native"),
     mcpPlugin(),
     mode !== "native" && VitePWA({
       registerType: "autoUpdate",
