@@ -79,14 +79,21 @@ jobs:
       # yeterli olsun diye aktarım burada bırakıldı. Anahtar açık ama kimlik
       # secret'ları boşsa Google'ın resmi TEST reklamlarına düşülür — yani
       # secret eklenmeden üretilen AAB gerçek reklam göstermez, gelir üretmez.
-      - name: Build web (Vite)
+      #
+      # ÖNEMLİ: Burada `npm run build` DEĞİL, `npm run build:native` kullanılır.
+      # vite.config.ts içinde PWA service worker ve @vitejs/plugin-legacy
+      # yalnızca `mode !== "native"` iken devreye girer. Web build'i Capacitor
+      # WebView'ine paketlenirse gereksiz service worker ve ES5/nomodule ağacı
+      # da paketlenir; bu, uygulamanın açılışta beyaz ekranda kalmasına yol
+      # açabilir.
+      - name: Build web (Vite, native profile)
         env:
           VITE_ADS_ENABLED: ${{ vars.ADS_ENABLED }}
           VITE_ADMOB_BANNER_ID_ANDROID: ${{ secrets.ADMOB_BANNER_ID_ANDROID }}
           VITE_ADMOB_INTERSTITIAL_ID_ANDROID: ${{ secrets.ADMOB_INTERSTITIAL_ID_ANDROID }}
           VITE_ADMOB_BANNER_ID_IOS: ${{ secrets.ADMOB_BANNER_ID_IOS }}
           VITE_ADMOB_INTERSTITIAL_ID_IOS: ${{ secrets.ADMOB_INTERSTITIAL_ID_IOS }}
-        run: npm run build
+        run: npm run build:native
 
       - name: Sync Capacitor
         run: npx cap sync android
