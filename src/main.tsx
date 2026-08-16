@@ -43,7 +43,7 @@ const paintDiagnostic = (headline: string, error?: unknown, source?: string, lin
 
   const render = () => {
     document.documentElement.style.background = '#000';
-    document.body.replaceChildren();
+    document.body.textContent = '';
     Object.assign(document.body.style, {
       margin: '0',
       minHeight: '100vh',
