@@ -4,8 +4,8 @@
 // and the iOS build number (CFBundleVersion).
 
 export const APP_NAME = "Mariner's Book";
-export const APP_VERSION = "2.5.73";
-export const BUILD_NUMBER = 20573;
+export const APP_VERSION = "2.5.74";
+export const BUILD_NUMBER = 20574;
 export const PACKAGE_ID = "com.marinersbook.app";
 export const MIN_SDK = 23;
 export const TARGET_SDK = 36;
