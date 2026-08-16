@@ -193,9 +193,6 @@ export default function GuidedLessonSession() {
               <>
                 <CheckCircle2 className="mx-auto h-16 w-16 text-emerald-500" />
                 <h2 className="mt-4 text-2xl font-bold text-foreground">You have completed the topic!</h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  You have read all the chapters. You can ask questions to the AI trainer to reinforce it.
-                </p>
               </>
             )}
 

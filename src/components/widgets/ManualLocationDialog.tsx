@@ -92,9 +92,6 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Manuel Konum Gir</DialogTitle>
-          <DialogDescription>
-            Ondalık (41.0082) veya DMS (41° 0′ 29.5″ K) formatında girebilirsin.
-          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-3 py-2">

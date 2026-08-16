@@ -224,9 +224,6 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
                 <h4 className="font-bold text-sm text-purple-900 dark:text-purple-100">
                   Meteorolojik Uydu Kanalları
                 </h4>
-                <p className="text-xs text-purple-700 dark:text-purple-300">
-                  Tespit için kullanılan spektral bantlar
-                </p>
               </div>
             </div>
             

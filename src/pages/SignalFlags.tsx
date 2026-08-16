@@ -218,9 +218,6 @@ export default function SignalFlagsPage() {
                 <h2 className="text-base font-semibold text-foreground">
                   Sık Kullanılan İki Harfli Gruplar
                 </h2>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  Beyond the single-letter signals, the two-letter groups carry most of the safety and emergency messages.
-                </p>
               </div>
               <div>
                 {COMMON_FLAG_GROUPS.map((group) => (

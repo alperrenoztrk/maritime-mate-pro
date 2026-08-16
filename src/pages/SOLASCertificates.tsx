@@ -118,9 +118,6 @@ const SOLASCertificatesPage = () => {
             <AlertCircle className="w-10 h-10" />
             <div>
               <CardTitle>Kritik Hatırlatma</CardTitle>
-              <CardDescription className="text-emerald-100">
-                Survey gecikmeleri limanda tutulmaya, para cezasına veya sigorta kapsamının daralmasına yol açabilir.
-              </CardDescription>
             </div>
           </CardHeader>
         </Card>

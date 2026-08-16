@@ -145,7 +145,6 @@ export default function PassagePlanPage() {
         <section className="space-y-6 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold text-foreground">1️⃣ APPRAISAL – DEĞERLENDİRME AŞAMASI</h2>
-            <p className="text-sm text-muted-foreground">Bu seyre çıkmadan önce neyle karşılaşabileceğini öngörme aşaması.</p>
             <p className="text-sm text-primary">Appraisal çıktısı: “Bu seyrin risk haritası”.</p>
           </div>
 
@@ -166,7 +165,6 @@ export default function PassagePlanPage() {
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold text-foreground">2️⃣ PLANNING – PLANLAMA AŞAMASI</h2>
-            <p className="text-sm text-muted-foreground">Asıl passage planın hazırlandığı, rota ve operasyon parametrelerinin netleştiği aşama.</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -251,7 +249,6 @@ export default function PassagePlanPage() {
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-foreground">Örnek Passage Plan: Port Weller → Port Huron (Upbound)</h2>
-          <p className="text-sm text-muted-foreground">Great Lakes Pilotage Authority - District No. 2</p>
           <div className="grid gap-4">
             {Array.from({ length: 44 }, (_, i) => i + 1).map((page) => (
               <div key={page} className="rounded-xl border border-border/50 bg-slate-900/60 p-2 overflow-hidden">

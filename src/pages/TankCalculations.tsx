@@ -72,9 +72,6 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-[#2F5BFF]">Su Altı Hacim Hesaplama</h3>
                   <p className="text-sm text-muted-foreground">V = A × h</p>
-                  <p className="text-xs text-muted-foreground bg-primary/5 p-2 rounded">
-                    <strong>Amaç:</strong> A simple rectangular formula is used for the tank volume. This formula is suitable for practical tank calculations.
-                  </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="tankArea">Tank Alanı A [m²]</Label>

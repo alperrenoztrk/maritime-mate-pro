@@ -18,9 +18,6 @@ export default function StabilityCalculationsPage() {
               <Calculator className="h-5 w-5 text-primary" />
               <h2 className="text-lg font-semibold text-foreground">İnteraktif Stabilite Hesaplamaları</h2>
             </div>
-            <p className="text-sm text-muted-foreground">
-              GM, KG, serbest yüzey ve yatma etkilerini sahada kullanılan hesaplamalarla deneyimleyin.
-            </p>
             <div className="mt-4">
               <InteractiveStabilityTools />
             </div>
