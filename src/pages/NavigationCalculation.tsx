@@ -2824,7 +2824,7 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
         const dLonDeg = (distanceNm * Math.sin(toRadians(courseTrue))) / (60 * Math.cos(toRadians(meanLatDeg)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Sonucu:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Result:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
             <SolutionSteps
               steps={[
                 `dLat = (Distance × cos(Course)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
