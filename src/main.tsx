@@ -27,15 +27,23 @@ const diagnosticLines = () => {
   ];
 };
 
-const paintDiagnostic = (headline: string, error?: unknown, source?: string, line?: number, column?: number) => {
-  const normalized = error instanceof Error ? error : new Error(String(error ?? 'Unknown error'));
-  const stack = normalized.stack?.split('\n').slice(0, 5) ?? [];
-  const stackLocation = normalized.stack?.match(/(?:https?|capacitor|file):[^\s)]+:\d+:\d+/)?.[0];
+const paintDiagnostic = (
+  headline: string,
+  error?: unknown,
+  source?: string,
+  line?: number,
+  column?: number,
+  preserveBody = false,
+) => {
+  const normalized = error === undefined
+    ? undefined
+    : error instanceof Error ? error : new Error(String(error));
+  const stack = normalized?.stack?.split('\n').slice(0, 5) ?? [];
+  const stackLocation = normalized?.stack?.match(/(?:https?|capacitor|file):[^\s)]+:\d+:\d+/)?.[0];
   const location = source ? `${source}:${line ?? '?'}:${column ?? '?'}` : stackLocation ?? 'unavailable';
   const output = [
     headline,
-    `message: ${normalized.message}`,
-    `location: ${location}`,
+    ...(normalized ? [`message: ${normalized.message}`, `location: ${location}`] : []),
     ...stack,
     '',
     ...diagnosticLines(),
@@ -43,7 +51,7 @@ const paintDiagnostic = (headline: string, error?: unknown, source?: string, lin
 
   const render = () => {
     document.documentElement.style.background = '#000';
-    document.body.textContent = '';
+    if (!preserveBody) document.body.textContent = '';
     Object.assign(document.body.style, {
       margin: '0',
       minHeight: '100vh',
@@ -63,6 +71,14 @@ const paintDiagnostic = (headline: string, error?: unknown, source?: string, lin
       overflowWrap: 'anywhere',
       userSelect: 'text',
       WebkitUserSelect: 'text',
+      ...(preserveBody ? {
+        position: 'fixed',
+        inset: '0',
+        zIndex: '2147483647',
+        overflow: 'auto',
+        background: '#000',
+        color: '#fff',
+      } : {}),
     });
     document.body.appendChild(pre);
   };
@@ -82,7 +98,7 @@ window.onunhandledrejection = (event) => {
 
 const paintMountReached = () => {
   if (!shouldShowBootDiagnostics) return;
-  paintDiagnostic('boot: reached mount');
+  paintDiagnostic('boot: reached mount', undefined, undefined, undefined, undefined, true);
 };
 
 async function bootstrap() {
