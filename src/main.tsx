@@ -10,18 +10,28 @@ const diagnosticWindow = window as DiagnosticWindow;
 const diagnosticMode = import.meta.env.MODE;
 const shouldShowBootDiagnostics = diagnosticMode === 'native';
 
-const diagnosticLines = () => [
-  `typeof window.Capacitor: ${typeof diagnosticWindow.Capacitor}`,
-  `window.Capacitor?.isNativePlatform?.(): ${String(diagnosticWindow.Capacitor?.isNativePlatform?.())}`,
-  `import.meta.env.MODE: ${diagnosticMode}`,
-  `document.readyState: ${document.readyState}`,
-  `VITE_SUPABASE_URL[0..30]: ${(import.meta.env.VITE_SUPABASE_URL ?? '').slice(0, 30)}`,
-];
+const diagnosticLines = () => {
+  let isNativePlatform = 'unavailable';
+  try {
+    isNativePlatform = String(diagnosticWindow.Capacitor?.isNativePlatform?.());
+  } catch (error) {
+    isNativePlatform = `threw: ${error instanceof Error ? error.message : String(error)}`;
+  }
+
+  return [
+    `typeof window.Capacitor: ${typeof diagnosticWindow.Capacitor}`,
+    `window.Capacitor?.isNativePlatform?.(): ${isNativePlatform}`,
+    `import.meta.env.MODE: ${diagnosticMode}`,
+    `document.readyState: ${document.readyState}`,
+    `VITE_SUPABASE_URL[0..30]: ${(import.meta.env.VITE_SUPABASE_URL ?? '').slice(0, 30)}`,
+  ];
+};
 
 const paintDiagnostic = (headline: string, error?: unknown, source?: string, line?: number, column?: number) => {
   const normalized = error instanceof Error ? error : new Error(String(error ?? 'Unknown error'));
   const stack = normalized.stack?.split('\n').slice(0, 5) ?? [];
-  const location = source ? `${source}:${line ?? '?'}:${column ?? '?'}` : 'unavailable';
+  const stackLocation = normalized.stack?.match(/(?:https?|capacitor|file):[^\s)]+:\d+:\d+/)?.[0];
+  const location = source ? `${source}:${line ?? '?'}:${column ?? '?'}` : stackLocation ?? 'unavailable';
   const output = [
     headline,
     `message: ${normalized.message}`,
