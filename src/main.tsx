@@ -1,18 +1,131 @@
-// MUST be first: installs a crash-proof Web Storage guard before any other
-// module touches localStorage at import time (preview iframes can make storage
-// access throw, which otherwise crashes the app before React mounts).
-import './lib/safeStorage'
-import { safeLocalStorage } from './lib/safeStorage'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { FONT_SCALES, type FontSizeKey } from './contexts/font-size-context'
-import { weatherPreloader } from './services/weatherPreloader'
-import { registerOfflineSupport } from './serviceWorkerRegistration'
-import { AppRoot } from './AppRoot'
+type CapacitorDiagnostic = {
+  isNativePlatform?: () => boolean;
+};
 
-if (window.location.hostname === 'www.nauticalleap.com') {
-  window.location.replace(`https://nauticalleap.com${window.location.pathname}${window.location.search}${window.location.hash}`);
-}
+type DiagnosticWindow = Window & {
+  Capacitor?: CapacitorDiagnostic;
+};
+
+const diagnosticWindow = window as DiagnosticWindow;
+const diagnosticMode = import.meta.env.MODE;
+const shouldShowBootDiagnostics = diagnosticMode === 'native';
+
+const diagnosticLines = () => {
+  let isNativePlatform = 'unavailable';
+  try {
+    isNativePlatform = String(diagnosticWindow.Capacitor?.isNativePlatform?.());
+  } catch (error) {
+    isNativePlatform = `threw: ${error instanceof Error ? error.message : String(error)}`;
+  }
+
+  return [
+    `typeof window.Capacitor: ${typeof diagnosticWindow.Capacitor}`,
+    `window.Capacitor?.isNativePlatform?.(): ${isNativePlatform}`,
+    `import.meta.env.MODE: ${diagnosticMode}`,
+    `document.readyState: ${document.readyState}`,
+    `VITE_SUPABASE_URL[0..30]: ${(import.meta.env.VITE_SUPABASE_URL ?? '').slice(0, 30)}`,
+  ];
+};
+
+const paintDiagnostic = (
+  headline: string,
+  error?: unknown,
+  source?: string,
+  line?: number,
+  column?: number,
+  preserveBody = false,
+) => {
+  const normalized = error === undefined
+    ? undefined
+    : error instanceof Error ? error : new Error(String(error));
+  const stack = normalized?.stack?.split('\n').slice(0, 5) ?? [];
+  const stackLocation = normalized?.stack?.match(/(?:https?|capacitor|file):[^\s)]+:\d+:\d+/)?.[0];
+  const location = source ? `${source}:${line ?? '?'}:${column ?? '?'}` : stackLocation ?? 'unavailable';
+  const output = [
+    headline,
+    ...(normalized ? [`message: ${normalized.message}`, `location: ${location}`] : []),
+    ...stack,
+    '',
+    ...diagnosticLines(),
+  ].join('\n');
+
+  const render = () => {
+    document.documentElement.style.background = '#000';
+    if (!preserveBody) document.body.textContent = '';
+    Object.assign(document.body.style, {
+      margin: '0',
+      minHeight: '100vh',
+      background: '#000',
+      color: '#fff',
+      fontSize: '16px',
+      fontFamily: 'monospace',
+      userSelect: 'text',
+      WebkitUserSelect: 'text',
+    });
+    const pre = document.createElement('pre');
+    pre.textContent = output;
+    Object.assign(pre.style, {
+      margin: '0',
+      padding: '20px',
+      whiteSpace: 'pre-wrap',
+      overflowWrap: 'anywhere',
+      userSelect: 'text',
+      WebkitUserSelect: 'text',
+      ...(preserveBody ? {
+        position: 'fixed',
+        inset: '0',
+        zIndex: '2147483647',
+        overflow: 'auto',
+        background: '#000',
+        color: '#fff',
+      } : {}),
+    });
+    document.body.appendChild(pre);
+  };
+
+  if (document.body) render();
+  else document.addEventListener('DOMContentLoaded', render, { once: true });
+};
+
+window.onerror = (message, source, line, column, error) => {
+  paintDiagnostic('boot: window.onerror', error ?? message, source, line, column);
+  return true;
+};
+
+window.onunhandledrejection = (event) => {
+  paintDiagnostic('boot: unhandled rejection', event.reason);
+};
+
+const paintMountReached = () => {
+  if (!shouldShowBootDiagnostics) return;
+  paintDiagnostic('boot: reached mount', undefined, undefined, undefined, undefined, true);
+};
+
+async function bootstrap() {
+  // This is deliberately the first import. Every remaining dependency is
+  // loaded only after the global crash screen above has been installed.
+  const { safeLocalStorage } = await import('./lib/safeStorage');
+  const [
+    { createRoot },
+    { createElement },
+    { FONT_SCALES },
+    { weatherPreloader },
+    { registerOfflineSupport },
+    { AppRoot },
+  ] = await Promise.all([
+    import('react-dom/client'),
+    import('react'),
+    import('./contexts/font-size-context'),
+    import('./services/weatherPreloader'),
+    import('./serviceWorkerRegistration'),
+    import('./AppRoot'),
+    import('./index.css'),
+  ]);
+
+  if (window.location.hostname === 'www.nauticalleap.com') {
+    window.location.replace(`https://nauticalleap.com${window.location.pathname}${window.location.search}${window.location.hash}`);
+    return;
+  }
 
 console.log('[Main] Starting Maritime Calculator App v2...');
 
@@ -35,33 +148,40 @@ console.log('[Main] Starting Maritime Calculator App v2...');
 
 // Apply a manual saved font size before first paint. Dynamic Type is read from
 // the native iOS bridge as soon as FontSizeProvider mounts.
-try {
-  const storedFontSize = safeLocalStorage.getItem('maritime-ui-font-size') as FontSizeKey | null;
-  if (storedFontSize && storedFontSize in FONT_SCALES) {
-    document.documentElement.style.setProperty('--font-scale', String(FONT_SCALES[storedFontSize]));
-    document.documentElement.setAttribute('data-font-size', storedFontSize);
-    document.documentElement.setAttribute('data-font-size-source', storedFontSize === 'system' ? 'system' : 'manual');
+  try {
+    const storedFontSize = safeLocalStorage.getItem('maritime-ui-font-size');
+    if (storedFontSize && storedFontSize in FONT_SCALES) {
+      const scale = FONT_SCALES[storedFontSize as keyof typeof FONT_SCALES];
+      document.documentElement.style.setProperty('--font-scale', String(scale));
+      document.documentElement.setAttribute('data-font-size', storedFontSize);
+      document.documentElement.setAttribute('data-font-size-source', storedFontSize === 'system' ? 'system' : 'manual');
+    }
+  } catch (e) {
+    console.warn('[Main] Font size could not be applied:', e);
   }
-} catch (e) {
-  console.warn('[Main] Yazı boyutu uygulanamadı:', e);
-}
 
 // Register service worker for offline support (production only — skipped in dev/iframe).
-registerOfflineSupport();
+  void registerOfflineSupport();
 
-const container = document.getElementById("root");
-if (!container) {
-  throw new Error('Root element not found');
-}
+  const container = document.getElementById("root");
+  if (!container) {
+    throw new Error('Root element not found');
+  }
 
 // Background weather preload — never blocks the splash screen.
-try {
-  weatherPreloader.preloadWeatherData();
-} catch (e) {
-  console.warn('[Main] Weather preload başlatılamadı:', e);
-}
+  try {
+    void weatherPreloader.preloadWeatherData();
+  } catch (e) {
+    console.warn('[Main] Weather preload could not start:', e);
+  }
 
-createRoot(container).render(<AppRoot />);
+  try {
+    createRoot(container).render(createElement(AppRoot));
+    paintMountReached();
+  } catch (error) {
+    paintDiagnostic('boot: React render failed', error);
+    return;
+  }
 
 const hideSplash = () => {
   const splash = document.getElementById('splash-root');
@@ -90,4 +210,9 @@ const splashEl = document.getElementById('splash-root');
 splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, splashHideDelay + 400);
+  setTimeout(hideSplash, splashHideDelay + 400);
+}
+
+void bootstrap().catch((error) => {
+  paintDiagnostic('boot: bootstrap failed', error);
+});
