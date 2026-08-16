@@ -146,18 +146,18 @@ const CALC_TITLES: Record<CalcId, string> = {
   compass: "Compass Conversions",
   cpa: "CPA / TCPA",
   radar: "Radar Plot (Target Course/Speed)",
-  colreg: "COLREG Durum & Manevra",
+  colreg: "COLREG Situation & Manoeuvre",
   sight: "Sight Reduction",
-  astro: "Astronomik Seyir (Almanac + LOP)",
+  astro: "Celestial Navigation (Almanac + LOP)",
   bearings: "Bearing Calculations",
   fix: "Fixing Position",
   distance: "Distance Calculations",
-  tides: "Gelgit + UKC",
-  safety: "Seyir Emniyeti (Squat/UKC)",
+  tides: "Tides + UKC",
+  safety: "Navigation Safety (Squat/UKC)",
   passage: "Passage Plan (Leg ETA)",
   ecdis: "ECDIS (XTD / Look-ahead)",
   turning: "Turning Calculations",
-  weather: "Hava Durumu",
+  weather: "Weather",
   celestial: "Celestial Navigation",
   emergency: "Acil Durum",
 };
@@ -1651,7 +1651,7 @@ export default function NavigationCalculationPage() {
               <div className="text-sm font-semibold">Remaining Time / Remaining Distance</div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label htmlFor="b-total">Planlanan Toplam (NM)</Label>
+                  <Label htmlFor="b-total">Planned Total (NM)</Label>
                   <Input id="b-total" type="number" value={basicInputs.plannedTotalNm} onChange={(e) => setBasicInputs({ ...basicInputs, plannedTotalNm: e.target.value })} />
                 </div>
                 <div>
@@ -1714,7 +1714,7 @@ export default function NavigationCalculationPage() {
               <Input id="comp-compass" type="number" placeholder="" value={compassInputs.compass} onChange={(e) => setCompassInputs({ ...compassInputs, compass: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="comp-variation">Varyasyon (°) (e.g. 2E / 2W)</Label>
+              <Label htmlFor="comp-variation">Variation (°) (e.g. 2E / 2W)</Label>
               <Input
                 id="comp-variation"
                 type="text"
@@ -1725,7 +1725,7 @@ export default function NavigationCalculationPage() {
               />
             </div>
             <div>
-              <Label htmlFor="comp-deviation">Deviasyon (°) (e.g. 1E / 1W)</Label>
+              <Label htmlFor="comp-deviation">Deviation (°) (e.g. 1E / 1W)</Label>
               <Input
                 id="comp-deviation"
                 type="text"
@@ -1824,7 +1824,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="space-y-4">
             <div>
-              <Label htmlFor="colreg-rb">Relative Bearing (°) (0=pruva, 90=sancak beam)</Label>
+              <Label htmlFor="colreg-rb">Relative Bearing (°) (0=bow, 90=starboard beam)</Label>
               <Input id="colreg-rb" type="number" value={colregInputs.relativeBearing} onChange={(e) => setColregInputs({ ...colregInputs, relativeBearing: e.target.value })} />
             </div>
             <div className="text-xs text-muted-foreground">This screen is for quick classification; the final COLREG decision must be confirmed with AIS/ARPA/lights and the surrounding conditions.</div>
@@ -2227,7 +2227,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30">
-              <h4 className="font-semibold mb-3">Gelgit Tablosu</h4>
+              <h4 className="font-semibold mb-3">Tide Table</h4>
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <Label htmlFor="tt-low">Low Water (m)</Label>
@@ -2381,7 +2381,7 @@ export default function NavigationCalculationPage() {
 
             {tideTable.length > 0 && (
               <div className="rounded border p-3 bg-muted/30">
-                <h4 className="font-semibold mb-3">12 Saatlik Gelgit Tablosu</h4>
+                <h4 className="font-semibold mb-3">12-Hour Tide Table</h4>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-xs">
                     <thead>
@@ -2389,7 +2389,7 @@ export default function NavigationCalculationPage() {
                         <th className="text-left p-2">Time</th>
                         <th className="text-left p-2">Height (m)</th>
                         <th className="text-left p-2">Change</th>
-                        <th className="text-left p-2">Durumu</th>
+                        <th className="text-left p-2">State</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2662,7 +2662,7 @@ export default function NavigationCalculationPage() {
                 </div>
                 {gcResults.vertexLat !== null && (
                   <div>
-                    <span className="text-muted-foreground" data-translatable>Vertex Enlemi:</span>
+                    <span className="text-muted-foreground" data-translatable>Vertex Latitude:</span>
                     <div className="font-mono font-semibold">{formatDecimalAsDMS(gcResults.vertexLat, true)}</div>
                   </div>
                 )}
@@ -2673,7 +2673,7 @@ export default function NavigationCalculationPage() {
                   `Central angle (Δσ) = ${gcResults.distanceDeg.toFixed(4)}°`,
                   `Distance = Δσ × 60 = ${gcResults.distanceDeg.toFixed(4)} × 60 = ${gcResults.distance.toFixed(2)} NM`,
                   `Initial bearing = ${gcResults.initialCourse.toFixed(1)}°, final bearing = ${gcResults.finalCourse.toFixed(1)}°`,
-                  ...(gcResults.vertexLat !== null ? [`Vertex enlemi = ${formatDecimalAsDMS(gcResults.vertexLat, true)}`] : []),
+                  ...(gcResults.vertexLat !== null ? [`Vertex latitude = ${formatDecimalAsDMS(gcResults.vertexLat, true)}`] : []),
                 ]}
               />
               {Array.isArray(gcResults.waypoints) && gcResults.waypoints.length > 0 && (
@@ -2752,7 +2752,7 @@ Distance: ${rhumbResults.distance.toFixed(2)} nm\nConstant Bearing: ${rhumbResul
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-dLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nBearing: ${planeResults.courseDeg.toFixed(1)}°\nDistance: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
+dLat: ${planeResults.dLatMin.toFixed(2)} min\nDeparture: ${planeResults.depMin.toFixed(2)} min\nBearing: ${planeResults.courseDeg.toFixed(1)}°\nDistance: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
             <SolutionSteps
               steps={[
                 `Mean latitude: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
@@ -2824,14 +2824,14 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
         const dLonDeg = (distanceNm * Math.sin(toRadians(courseTrue))) / (60 * Math.cos(toRadians(meanLatDeg)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Sonucu:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Result:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
             <SolutionSteps
               steps={[
                 `dLat = (Distance × cos(Course)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
                 `Mean latitude: φm = φ1 + dLat/2 = ${meanLatDeg.toFixed(4)}°`,
                 `dLon = (Distance × sin(Course)) / (60 × cos(φm)) = ${dLonDeg.toFixed(4)}°`,
-                `Yeni enlem = φ1 + dLat = ${formatSigned(startLat + dLatDeg, 4)}°`,
-                `Yeni boylam = λ1 + dLon = ${formatSigned(startLon + dLonDeg, 4)}°`,
+                `New latitude = φ1 + dLat = ${formatSigned(startLat + dLatDeg, 4)}°`,
+                `New longitude = λ1 + dLon = ${formatSigned(startLon + dLonDeg, 4)}°`,
               ]}
             />
           </div>
@@ -2866,7 +2866,7 @@ Mean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMi
         }
         if (basicResults.timeConv) {
           steps.push(`ZT = UTC + ZD = ${basicResults.timeConv.utcIso} + ${basicResults.timeConv.zoneOffsetHours}h = ${basicResults.timeConv.zoneIso}`);
-          steps.push(`Longitude time: ${basicResults.timeConv.lonDeg.toFixed(2)}° → ${basicResults.timeConv.lonMinutes.toFixed(1)} dk`);
+          steps.push(`Longitude time: ${basicResults.timeConv.lonDeg.toFixed(2)}° → ${basicResults.timeConv.lonMinutes.toFixed(1)} min`);
           steps.push(`LMT = UTC + longitude in minutes = ${basicResults.timeConv.lmtIso}`);
         }
         return (
@@ -2878,7 +2878,7 @@ Conversion: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso 
 Time Remaining: ${basicResults.remaining.remainingTimeHours.toFixed(2)} h` : ""}${basicResults.timeConv ? `
 
 Time Conversion:
-UTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} minutes\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
+UTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nLongitude: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} minutes\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
             <SolutionSteps steps={steps} />
           </div>
         );
@@ -2923,7 +2923,7 @@ Compass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.m
                 `Deviation (Dev) = ${formatSigned(deviation ?? 0, 1)}°, Variation (Var) = ${formatSigned(variation ?? 0, 1)}°`,
                 `M = C + Dev = ${compassResults.compassDeg.toFixed(1)} + ${formatSigned(deviation ?? 0, 1)} = ${compassResults.magneticDeg.toFixed(1)}°`,
                 `T = M + Var = ${compassResults.magneticDeg.toFixed(1)} + ${formatSigned(variation ?? 0, 1)} = ${compassResults.trueDeg.toFixed(1)}°`,
-                `Toplam hata = Var + Dev = ${compassResults.totalError.toFixed(1)}°`,
+                `Total error = Var + Dev = ${compassResults.totalError.toFixed(1)}°`,
               ]}
             />
           </div>
@@ -2952,12 +2952,12 @@ Compass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.m
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-CPA Distance: ${cpaResults.cpaNm.toFixed(2)} nm\nTCPA: ${cpaResults.tcpaMin.toFixed(1)} dk`}</pre>
+CPA Distance: ${cpaResults.cpaNm.toFixed(2)} nm\nTCPA: ${cpaResults.tcpaMin.toFixed(1)} min`}</pre>
             <SolutionSteps
               steps={[
                 `Initial relative position: R0x = d×sin(Brg) = ${distance.toFixed(2)}×sin(${bearing.toFixed(1)}°) = ${R0x.toFixed(3)}, R0y = d×cos(Brg) = ${R0y.toFixed(3)}`,
                 `Relative velocity: Vr = Vt - Vo → Vrx=${Vrx.toFixed(3)}, Vry=${Vry.toFixed(3)}`,
-                `TCPA (h) = - (R0·Vr) / |Vr|² = ${tcpaHours.toFixed(3)} h = ${(tcpaHours * 60).toFixed(1)} dk`,
+                `TCPA (h) = - (R0·Vr) / |Vr|² = ${tcpaHours.toFixed(3)} h = ${(tcpaHours * 60).toFixed(1)} min`,
                 `CPA vector: Rcpa = R0 + Vr×TCPA → CPA = √(x²+y²) = ${Math.sqrt(cpaX * cpaX + cpaY * cpaY).toFixed(2)} NM`,
               ]}
             />
