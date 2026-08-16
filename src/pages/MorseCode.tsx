@@ -107,9 +107,6 @@ function MorseTranslator() {
     <section className="overflow-hidden rounded-2xl border border-border/50 bg-card/60">
       <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
         <h2 className="text-base font-semibold text-foreground">Metin → Mors Çevirici</h2>
-        <p className="mt-0.5 text-xs text-muted-foreground">
-          Type a ship name, a call sign or a short message; see and hear its Morse equivalent letter by letter.
-        </p>
       </div>
 
       <div className="space-y-3 p-4">

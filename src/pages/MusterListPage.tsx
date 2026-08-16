@@ -468,9 +468,6 @@ export default function MusterListPage() {
             </span>
             <div>
               <h2 className="text-sm font-bold text-foreground">Gerçek gemi cetveli kontrolü</h2>
-              <p className="text-micro text-muted-foreground">
-                Kaptan onayı öncesi temel SOLAS kapsamı
-              </p>
             </div>
           </div>
 
