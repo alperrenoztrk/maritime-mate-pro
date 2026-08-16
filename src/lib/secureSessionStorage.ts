@@ -60,20 +60,39 @@ const isNative = (): boolean => {
  * çalışmak yeğdir. Bu durum konsola bir kez yazılır.
  */
 let degradedToLocalStorage = !isNative();
-let pluginPromise: Promise<SecureStorageApi | null> | null = null;
+
+/**
+ * KRİTİK: Capacitor eklenti nesnesi bir Proxy'dir ve üzerindeki HER özellik
+ * erişimi native çağrıya çevrilir — `then` dahil. Bu yüzden eklenti nesnesi
+ * asla doğrudan bir Promise'ten döndürülmemeli/await edilmemelidir; aksi
+ * hâlde Promise çözümlemesi `plugin.then`'i okur ve Android'de
+ * "SecureStorage.then() is not implemented" hatasıyla açılış patlar.
+ * Çözüm: nesneyi bir sarmalayıcı içinde taşı.
+ */
+type PluginBox = { storage: SecureStorageApi | null };
+let pluginPromise: Promise<PluginBox> | null = null;
 
 const loadPlugin = async (): Promise<SecureStorageApi | null> => {
   if (degradedToLocalStorage) return null;
   if (!pluginPromise) {
     pluginPromise = import("@aparajita/capacitor-secure-storage")
-      .then((mod) => mod.SecureStorage as unknown as SecureStorageApi)
-      .catch((err: unknown) => {
+      .then((mod): PluginBox => ({
+        storage: (mod.SecureStorage as unknown as SecureStorageApi) ?? null,
+      }))
+      .catch((err: unknown): PluginBox => {
         degrade("eklenti yüklenemedi", err);
-        return null;
+        return { storage: null };
       });
   }
-  return pluginPromise;
+  try {
+    const box = await pluginPromise;
+    return box.storage;
+  } catch (err) {
+    degrade("eklenti kutusu çözülemedi", err);
+    return null;
+  }
 };
+
 
 const degrade = (reason: string, err?: unknown) => {
   if (degradedToLocalStorage) return;
