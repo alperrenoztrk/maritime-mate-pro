@@ -72,8 +72,8 @@ let degradedToLocalStorage = !isNative();
 type PluginBox = { storage: SecureStorageApi | null };
 let pluginPromise: Promise<PluginBox> | null = null;
 
-const loadPlugin = async (): Promise<SecureStorageApi | null> => {
-  if (degradedToLocalStorage) return null;
+const loadPlugin = async (): Promise<PluginBox> => {
+  if (degradedToLocalStorage) return { storage: null };
   if (!pluginPromise) {
     pluginPromise = import("@aparajita/capacitor-secure-storage")
       .then((mod): PluginBox => ({
@@ -85,11 +85,14 @@ const loadPlugin = async (): Promise<SecureStorageApi | null> => {
       });
   }
   try {
-    const box = await pluginPromise;
-    return box.storage;
+    // Keep the Capacitor Proxy boxed across the async boundary. Returning
+    // `box.storage` directly from this async function would make Promise
+    // resolution inspect `SecureStorage.then`, which Capacitor turns into a
+    // native plugin call and leaves startup hanging on Android.
+    return await pluginPromise;
   } catch (err) {
     degrade("eklenti kutusu çözülemedi", err);
-    return null;
+    return { storage: null };
   }
 };
 
@@ -113,7 +116,7 @@ const degrade = (reason: string, err?: unknown) => {
  */
 const nativeAdapter: AsyncKeyValueStorage = {
   getItem: async (key) => {
-    const plugin = await loadPlugin();
+    const { storage: plugin } = await loadPlugin();
     if (!plugin) return localStorageAdapter.getItem(key);
 
     try {
@@ -142,7 +145,7 @@ const nativeAdapter: AsyncKeyValueStorage = {
   },
 
   setItem: async (key, value) => {
-    const plugin = await loadPlugin();
+    const { storage: plugin } = await loadPlugin();
     if (!plugin) return localStorageAdapter.setItem(key, value);
     try {
       await plugin.setItem(key, value);
@@ -155,7 +158,7 @@ const nativeAdapter: AsyncKeyValueStorage = {
   },
 
   removeItem: async (key) => {
-    const plugin = await loadPlugin();
+    const { storage: plugin } = await loadPlugin();
     // Çıkışta her iki yerden de silinsin: göç öncesi kalıntı kalmasın.
     safeLocalStorage.removeItem(key);
     if (!plugin) return;
