@@ -33,7 +33,6 @@ const paintDiagnostic = (
   source?: string,
   line?: number,
   column?: number,
-  preserveBody = false,
 ) => {
   const normalized = error === undefined
     ? undefined
@@ -51,7 +50,7 @@ const paintDiagnostic = (
 
   const render = () => {
     document.documentElement.style.background = '#000';
-    if (!preserveBody) document.body.textContent = '';
+    document.body.textContent = '';
     Object.assign(document.body.style, {
       margin: '0',
       minHeight: '100vh',
@@ -71,14 +70,6 @@ const paintDiagnostic = (
       overflowWrap: 'anywhere',
       userSelect: 'text',
       WebkitUserSelect: 'text',
-      ...(preserveBody ? {
-        position: 'fixed',
-        inset: '0',
-        zIndex: '2147483647',
-        overflow: 'auto',
-        background: '#000',
-        color: '#fff',
-      } : {}),
     });
     document.body.appendChild(pre);
   };
@@ -103,12 +94,6 @@ window.onerror = (message, source, line, column, error) => {
 window.onunhandledrejection = (event) => {
   if (!shouldPaintCrash()) return;
   paintDiagnostic('boot: unhandled rejection', event.reason);
-};
-
-const paintMountReached = () => {
-  appHasMounted = true;
-  if (!shouldShowBootDiagnostics) return;
-  paintDiagnostic('boot: reached mount', undefined, undefined, undefined, undefined, true);
 };
 
 async function bootstrap() {
@@ -187,7 +172,9 @@ console.log('[Main] Starting Maritime Calculator App v2...');
 
   try {
     createRoot(container).render(createElement(AppRoot));
-    paintMountReached();
+    // Boot diagnostics are failure-only. Once React accepts the root render,
+    // leave the application visible and stop replacing it with native debug UI.
+    appHasMounted = true;
   } catch (error) {
     paintDiagnostic('boot: React render failed', error);
     return;

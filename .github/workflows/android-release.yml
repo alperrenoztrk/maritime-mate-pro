@@ -72,6 +72,9 @@ jobs:
       - name: Guard native secure-storage loading
         run: npm run test:secure-storage
 
+      - name: Guard native boot completion
+        run: npm run test:native-boot
+
       - name: Run topic coverage quality gate
         run: npm run check:topic-coverage
 
