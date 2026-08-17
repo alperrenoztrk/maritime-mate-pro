@@ -184,8 +184,7 @@
     "brace-expansion@2": "^2.0.2",
     "brace-expansion@3": "^3.0.1",
     "brace-expansion@4": "^4.0.1",
-    "picomatch@2": "^2.3.2",
-    "picomatch@4": "^4.0.5"
+    "picomatch": "^4.0.5"
   },
   "resolutions": {
     "tmp": "^0.2.4",
@@ -194,7 +193,6 @@
     "brace-expansion@2": "^2.0.2",
     "brace-expansion@3": "^3.0.1",
     "brace-expansion@4": "^4.0.1",
-    "picomatch@2": "^2.3.2",
-    "picomatch@4": "^4.0.5"
+    "picomatch": "^4.0.5"
   }
 }
