@@ -75,4 +75,5 @@
   <url><loc>https://nauticalleap.com/maritime-news</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
   <url><loc>https://nauticalleap.com/privacy-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://nauticalleap.com/terms-of-use.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://nauticalleap.com/delete-account.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
