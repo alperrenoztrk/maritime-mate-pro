@@ -41,8 +41,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         // package.json "version" ile birlikte artırın (2.5.74 -> 20574).
         // src/lib/appVersion.ts içindeki BUILD_NUMBER ile eşleşmeli.
-        versionCode 20577
-        versionName "2.5.77"
+        versionCode 20578
+        versionName "2.5.78"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [admobAppId: resolvedAdmobAppId]
         aaptOptions {
