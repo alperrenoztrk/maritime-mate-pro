@@ -87,16 +87,26 @@ const paintDiagnostic = (
   else document.addEventListener('DOMContentLoaded', render, { once: true });
 };
 
+// Boot diagnostics are a native-debugging aid only. On the web (and after the
+// app has mounted) an unhandled error must never blank the page — React's
+// ErrorBoundary and the browser default handle those.
+let appHasMounted = false;
+
+const shouldPaintCrash = () => shouldShowBootDiagnostics && !appHasMounted;
+
 window.onerror = (message, source, line, column, error) => {
+  if (!shouldPaintCrash()) return false;
   paintDiagnostic('boot: window.onerror', error ?? message, source, line, column);
   return true;
 };
 
 window.onunhandledrejection = (event) => {
+  if (!shouldPaintCrash()) return;
   paintDiagnostic('boot: unhandled rejection', event.reason);
 };
 
 const paintMountReached = () => {
+  appHasMounted = true;
   if (!shouldShowBootDiagnostics) return;
   paintDiagnostic('boot: reached mount', undefined, undefined, undefined, undefined, true);
 };
