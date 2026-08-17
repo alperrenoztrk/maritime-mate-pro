@@ -1,7 +1,7 @@
 {
   "name": "maritime-calculator",
   "private": true,
-  "version": "2.5.76",
+  "version": "2.5.77",
   "type": "module",
   "browserslist": [
     "Android >= 6",
@@ -69,7 +69,8 @@
     "i18n:all": "npm run i18n:extract && npm run i18n:generate && npm run i18n:check -- --strict",
     "i18n:verify": "npm run test:i18n-extractor && npm run test:i18n-terms && npm run test:i18n-barrier && npm run i18n:check -- --strict && npm run i18n:audit-terms -- --lang=en --strict --max-errors=0 && npm run i18n:audit-terms -- --strict --max-errors=126 && npm run i18n:repair-en -- --check",
     "check:design-system": "node scripts/check-design-system.mjs",
-    "check:native-build": "node scripts/check-native-build.mjs"
+    "check:native-build": "node scripts/check-native-build.mjs",
+    "test:secure-storage": "node --test scripts/secure-storage-regression.test.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",
