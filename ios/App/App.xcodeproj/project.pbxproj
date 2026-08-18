@@ -10,7 +10,6 @@
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
 		504EC3081FED79650016851F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC3071FED79650016851F /* AppDelegate.swift */; };
-		A100000000000000000000F2 /* ScreenProtectionPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000F1 /* ScreenProtectionPlugin.swift */; };
 		A200000000000000000000F2 /* ContentSizePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000000000000000000F1 /* ContentSizePlugin.swift */; };
 		A300000000000000000000F2 /* SystemSymbolsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300000000000000000000F1 /* SystemSymbolsPlugin.swift */; };
 		504EC30D1FED79650016851F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30B1FED79650016851F /* Main.storyboard */; };
@@ -25,7 +24,6 @@
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
 		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A100000000000000000000F1 /* ScreenProtectionPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenProtectionPlugin.swift; sourceTree = "<group>"; };
 		A200000000000000000000F1 /* ContentSizePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizePlugin.swift; sourceTree = "<group>"; };
 		A300000000000000000000F1 /* SystemSymbolsPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSymbolsPlugin.swift; sourceTree = "<group>"; };
 		504EC30C1FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			children = (
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
-				A100000000000000000000F1 /* ScreenProtectionPlugin.swift */,
 				A200000000000000000000F1 /* ContentSizePlugin.swift */,
 				A300000000000000000000F1 /* SystemSymbolsPlugin.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -219,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
-				A100000000000000000000F2 /* ScreenProtectionPlugin.swift in Sources */,
 				A200000000000000000000F2 /* ContentSizePlugin.swift in Sources */,
 				A300000000000000000000F2 /* SystemSymbolsPlugin.swift in Sources */,
 			);

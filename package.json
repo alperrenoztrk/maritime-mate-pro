@@ -71,7 +71,8 @@
     "check:design-system": "node scripts/check-design-system.mjs",
     "check:native-build": "node scripts/check-native-build.mjs",
     "test:secure-storage": "node --test scripts/secure-storage-regression.test.mjs",
-    "test:native-boot": "node --test scripts/native-boot-regression.test.mjs"
+    "test:native-boot": "node --test scripts/native-boot-regression.test.mjs",
+    "test:screenshot-capture": "node --test scripts/screenshot-capture-regression.test.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",

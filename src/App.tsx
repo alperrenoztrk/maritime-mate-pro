@@ -20,7 +20,6 @@ import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
-import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { AppNavBar } from "@/components/AppNavBar";
 import { AppTabBar } from "@/components/AppTabBar";
 import { EdgeSwipeBack } from "@/components/EdgeSwipeBack";
@@ -526,11 +525,6 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  // App-wide screenshot / screen-recording blocking (native only).
-  // Android: FLAG_SECURE (fully blocks). iOS: blanks captures + app-switcher
-  // blur + screenshot detection. No-op on web.
-  useScreenProtection();
-
   // Apply the global maritime design language to every page.
   // Adds a body-scoped class that neutralizes per-page light backgrounds
   // (see index.css .marine-global rules) so the fixed shell shows through.
