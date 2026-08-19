@@ -25,8 +25,8 @@
   - AdMob `APPLICATION_ID` meta-verisi eklendi (şimdilik Google'ın **TEST** App ID'si — eksik olsaydı uygulama açılışta çökerdi)
   - AAB'de dil bölünmesi kapatıldı (uygulama içi dil değiştirme bozulmasın diye)
 - **iOS platformu eklendi** (`ios/`) — bundle ID, sürüm (2.5.70 / 20570), izin açıklamaları (kamera, fotoğraf kitaplığı, izleme/ATT), AdMob iOS TEST App ID, `ITSAppUsesNonExemptEncryption=false`, SKAdNetwork girdisi.
-- **İkon + splash setleri üretildi** — `resources/icon.svg` kaynağından `npm run assets:generate` ile:
-  - Android: tüm yoğunluklar için `ic_launcher`, `ic_launcher_round`, adaptif foreground + lacivert arka plan
+- **İkon + splash setleri üretildi** — `resources/icon-mark.png` + `resources/logo-full.png` kaynaklarından `npm run assets:generate` ile:
+  - Android: tüm yoğunluklar için `ic_launcher`, `ic_launcher_round`, adaptif foreground + beyaz arka plan (logo zemini beyaz)
   - iOS: 1024 AppIcon, 2732×2732 splash
   - Mağaza görselleri: `resources/store/play-icon-512.png`, `play-feature-graphic-1024x500.png`, `app-store-icon-1024.png`
 - **Gizlilik politikası sayfası** — `public/privacy-policy.html` (TR + EN), hesap silme/veri silme bölümü dahil (Play zorunluluğu).
@@ -233,4 +233,4 @@ Her mağaza sürümünde birlikte artırın:
 3. `android/app/build.gradle` → `versionCode`, `versionName`
 4. `ios/App/App.xcodeproj/project.pbxproj` → `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION`
 
-İkon değişirse: `resources/icon.svg` düzenleyin → `npm run assets:generate`.
+İkon değişirse: `resources/icon-mark.png` (amblem) ve `resources/logo-full.png` (amblem + yazı) dosyalarını değiştirin → `npm run assets:generate`.

@@ -163,7 +163,7 @@ export default defineConfig(({ mode }) => ({
         "app-icon-192.png",
         "app-icon-512.png",
         "robots.txt",
-        "maritime-logo.svg",
+        "maritime-logo.png",
         "maritime-background.svg",
         "maritime-home-background.svg",
         "nautical-chart-background.svg",
@@ -182,7 +182,6 @@ export default defineConfig(({ mode }) => ({
         start_url: "/",
         scope: "/",
         icons: [
-          { src: "/maritime-logo.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
           { src: "/app-icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
           { src: "/app-icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
         ],
