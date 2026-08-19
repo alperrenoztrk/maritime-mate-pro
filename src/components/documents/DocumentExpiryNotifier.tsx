@@ -19,15 +19,15 @@ async function showDeviceNotification(title: string, body: string): Promise<void
       if (registration) {
         await registration.showNotification(title, {
           body,
-          icon: "/maritime-logo.svg",
-          badge: "/maritime-logo.svg",
+          icon: "/maritime-logo.png",
+          badge: "/maritime-logo.png",
           tag: "maritime-document-expiry",
           data: { url: "/beta/documents" },
         });
         return;
       }
     }
-    new Notification(title, { body, icon: "/maritime-logo.svg", tag: "maritime-document-expiry" });
+    new Notification(title, { body, icon: "/maritime-logo.png", tag: "maritime-document-expiry" });
   } catch {
     // Uygulama içi uyarı zaten gösterildiği için cihaz bildirimi hatası sessiz kalır.
   }
