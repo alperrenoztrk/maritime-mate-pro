@@ -44,13 +44,9 @@ export function NewsPanel() {
   return (
     <section aria-labelledby="home-news-title" className="space-y-3">
       <div className="flex items-center justify-between gap-3 px-1">
-        <div>
-          <h2 id="home-news-title" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em] text-foreground">
-            <Newspaper className="h-5 w-5 text-primary" />
-            Denizcilik Haberleri
-          </h2>
-          <p className="mt-0.5 text-caption text-muted-foreground">Current headlines from the industry</p>
-        </div>
+        <h2 id="home-news-title" className="text-xl font-semibold tracking-[-0.02em] text-foreground">
+          Denizcilik Haberleri
+        </h2>
         <Link to="/maritime-news" className="inline-flex min-h-11 items-center gap-0.5 rounded-xl px-2 text-sm font-semibold text-primary hover:bg-primary/10">
           All
           <ChevronRight className="h-4 w-4" />

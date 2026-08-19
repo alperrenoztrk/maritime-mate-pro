@@ -91,6 +91,7 @@ const Settings = () => {
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Unknown");
 
   const fontSizeLabels: Partial<Record<FontSizeKey, string>> = {
+    system: "System",
     normal: "Normal",
     large: "Large",
   };

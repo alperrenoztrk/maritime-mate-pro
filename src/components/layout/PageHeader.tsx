@@ -13,8 +13,6 @@ interface PageHeaderProps {
 
 export function PageHeader({
   title,
-  icon: Icon,
-  iconClassName,
   className,
   actions,
   variant = "default",
@@ -29,26 +27,12 @@ export function PageHeader({
         className
       )}
     >
-      <div className="flex min-w-0 items-center gap-3">
-        {Icon ? (
-          <span
-            aria-hidden
-            className={cn(
-              "surface-2 grid shrink-0 place-items-center rounded-xl border text-primary",
-              isCompact ? "h-10 w-10" : "h-11 w-11",
-            )}
-          >
-            <Icon
-              className={cn(isCompact ? "h-5 w-5" : "h-6 w-6", iconClassName)}
-            />
-          </span>
-        ) : null}
-
+      <div className="flex min-w-0 items-center">
         <h1
           data-page-title
           className={cn(
-            isCompact ? "text-lg" : "text-3xl sm:text-4xl",
-            "min-w-0 text-balance font-bold leading-tight tracking-[-0.025em] text-foreground",
+            isCompact ? "text-xl" : "text-[2.125rem] sm:text-4xl",
+            "min-w-0 text-balance font-bold leading-[1.08] tracking-[-0.035em] text-foreground",
           )}
         >
           {title}

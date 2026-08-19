@@ -57,6 +57,7 @@ requireText(shared, "font-book", "kapak yazısının kitap yazı tipi");
 // bölüyordu; kapak yazısı tiresiz kalmalı ve punto başlığa göre seçilmeli.
 requireText(shared, "[hyphens:none]", "kapak yazısında tirenin kapalı olması");
 requireText(shared, "coverTitleSize", "kapak yazısının başlık uzunluğuna göre ölçeklenmesi");
+requireText(shared, 'name="xmark.circle.fill"', "ortak arama alanında temizleme işlevi");
 // Başlık cildin üstüne doğrudan basılıyor; arkasındaki koyu deri etiket plakası
 // kaldırıldı, okunurluk harflerin kabartma gölgesinden geliyor.
 forbidText(shared, "rgba(26,18,11,0.95)", "başlık arkasındaki koyu etiket zemini");
@@ -104,7 +105,6 @@ for (const [label, source] of [
   ["Personel", crew],
   ["Köprüüstü", bridge],
   ["Alıştırmalar", exercises],
-  ["Regülasyonlar", regulations],
 ]) {
   requireText(source, "LibraryBookCard", `${label} kitap kapağı görünümü`);
 }
@@ -115,12 +115,19 @@ for (const [label, source] of [
 for (const [label, source] of [
   ["Gemi Sistemleri", systems],
   ["Hesaplamalar", calculations],
+  ["Regülasyonlar", regulations],
 ]) {
   requireText(source, "InsetGroupedList", `${label} iOS gruplanmış liste görünümü`);
   requireText(source, "LibraryCompactCard", `${label} kompakt tarama satırları`);
 }
 
+forbidText(regulations, "LibraryBookCard", "regülasyonlarda dekoratif 3B kitap kartı");
+forbidText(regulations, "badge={regulationItems.filter", "regülasyon kategori sayaç rozeti");
+requireText(regulations, "useSearchParams", "regülasyon arama ve kategori derin bağlantıları");
+requireText(regulations, "onBack={activeCategory ? closeCategory : undefined}", "regülasyon kategori içi geri davranışı");
+
 forbidText(lessons, "category.subtitle", "ders kapaklarında gereksiz açıklama");
+forbidText(lessons, "entry.description", "ders kitaplığı başlık altı açıklaması");
 forbidText(operations, "ship.description", "operasyon kapaklarında gereksiz açıklama");
 forbidText(operations, "badge={", "operasyon kapaklarında sayısal rozet");
 requireText(systems, "badge={shipSystemsData", "sistem satırlarında konu sayısı");

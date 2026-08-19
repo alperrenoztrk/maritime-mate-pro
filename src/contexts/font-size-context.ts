@@ -12,15 +12,17 @@ export const FONT_SCALES: Record<FontSizeKey, number> = {
   max: 2,
 };
 
-// Only two sizes are offered: Normal and Large.
 export const FONT_SIZE_OPTIONS: { key: FontSizeKey; label: string }[] = [
+  { key: "system", label: "System" },
   { key: "normal", label: "Normal" },
   { key: "large", label: "Large" },
 ];
 
-/** Collapses legacy stored preferences onto the two supported sizes. */
+/** Collapses legacy stored preferences onto the supported sizes. */
 export const normalizeFontSize = (value: string | null | undefined): FontSizeKey =>
-  value === "large" || value === "xlarge" || value === "accessibility" || value === "max"
+  value === "system"
+    ? "system"
+    : value === "large" || value === "xlarge" || value === "accessibility" || value === "max"
     ? "large"
     : "normal";
 
@@ -31,7 +33,7 @@ export interface FontSizeContextValue {
 }
 
 const initialState: FontSizeContextValue = {
-  fontSize: "normal",
+  fontSize: "system",
   setFontSize: () => null,
 };
 

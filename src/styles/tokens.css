@@ -149,7 +149,6 @@
   border: 1px solid var(--surface-border-strong);
   border-radius: var(--radius-xl);
   background: var(--surface-2);
-  box-shadow: var(--shadow-1);
 }
 
 .inset-grouped-list > .ios-list-row {
@@ -166,6 +165,14 @@
 .inset-grouped-list > .ios-list-row:hover {
   border-color: var(--surface-border);
   background: hsl(var(--foreground) / 0.035);
+}
+
+.ios-disclosure-row > summary::-webkit-details-marker {
+  display: none;
+}
+
+.inset-grouped-list > .ios-disclosure-row[open] {
+  background: hsl(var(--foreground) / 0.025);
 }
 
 .library-page-title {

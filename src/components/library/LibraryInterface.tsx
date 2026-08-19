@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { ArrowLeft, ChevronRight, Search } from "lucide-react";
+import { ArrowLeft, ChevronRight, Search, XCircle } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { AppSymbol } from "@/components/ui/AppSymbol";
 import { hapticImpact, hapticSelection } from "@/lib/haptics";
@@ -8,16 +8,7 @@ import { accentGradient, accentTone } from "./libraryAccent";
 import { hasHierarchicalBack } from "@/lib/appNavigation";
 
 
-export function LibraryPageShell({
-  title,
-  children,
-  icon: HeaderIcon,
-  backHref,
-  onBack,
-  backLabel = "come back",
-  maxWidth = "max-w-6xl",
-  headerAside,
-}: {
+type LibraryPageShellProps = {
   title: string;
   children: ReactNode;
   icon?: LucideIcon;
@@ -26,7 +17,17 @@ export function LibraryPageShell({
   backLabel?: string;
   maxWidth?: string;
   headerAside?: ReactNode;
-}) {
+};
+
+export function LibraryPageShell({
+  title,
+  children,
+  backHref,
+  onBack,
+  backLabel = "come back",
+  maxWidth = "max-w-6xl",
+  headerAside,
+}: LibraryPageShellProps) {
   const { pathname } = useLocation();
   const rootSpacing = hasHierarchicalBack(pathname)
     ? "pt-3"
@@ -43,7 +44,7 @@ export function LibraryPageShell({
         onBack?.();
       }}
       aria-label={backLabel}
-      className="surface-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border text-muted-foreground transition-colors duration-control hover:text-foreground active:bg-primary/10"
+      className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-primary transition-colors duration-control hover:bg-primary/10 active:bg-primary/15"
     >
       <AppSymbol name="arrow.left" fallback={ArrowLeft} className="h-5 w-5" />
     </button>
@@ -56,12 +57,7 @@ export function LibraryPageShell({
       <div className={`relative mx-auto flex ${maxWidth} flex-col gap-5 sm:gap-6`}>
         <header className="flex min-h-11 items-center gap-3 pb-1">
           {backControl}
-          <div className="flex min-w-0 flex-1 items-center gap-3">
-            {HeaderIcon && (
-              <span className="surface-2 hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl border sm:inline-flex">
-                <HeaderIcon className="h-5 w-5 text-primary" />
-              </span>
-            )}
+          <div className="flex min-w-0 flex-1 items-center">
             <h1 data-page-title className="library-page-title min-w-0 font-bold leading-[1.08] tracking-[-0.035em] text-foreground">{title}</h1>
           </div>
           {headerAside}
@@ -87,7 +83,6 @@ export function LibraryEntryCard({
   to?: string;
   onClick?: () => void;
   badge?: string | number;
-  description?: string;
 }) {
   const className =
     "ios-list-row surface-2 group flex min-h-[4.75rem] w-full items-center rounded-xl border px-4 py-3 text-left transition-[background-color,border-color,transform] duration-control ease-out-ios hover:border-primary/20 active:scale-[0.985]";
@@ -299,6 +294,7 @@ export function LibraryBookCard({
     <Link
       to={to}
       aria-label={title}
+      onClick={() => hapticImpact("light")}
       className="group block min-w-0 rounded-xl p-1 outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
     >
       <div className="relative aspect-[3/4] w-full">
@@ -396,8 +392,24 @@ export function LibrarySearchField({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        className="surface-3 h-11 w-full rounded-xl border pl-10 pr-4 text-base text-foreground outline-none transition-[border-color,box-shadow] duration-control placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/15"
+        enterKeyHint="search"
+        autoCorrect="off"
+        spellCheck={false}
+        className={`surface-3 h-11 w-full rounded-xl border pl-10 text-base text-foreground outline-none transition-[border-color,box-shadow] duration-control placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/15 ${value ? "pr-12" : "pr-4"}`}
       />
+      {value && (
+        <button
+          type="button"
+          aria-label="Arama metnini temizle"
+          onClick={() => {
+            hapticSelection();
+            onChange("");
+          }}
+          className="absolute right-0 top-0 inline-flex h-11 w-11 items-center justify-center rounded-xl text-muted-foreground transition-colors duration-control hover:text-foreground active:bg-primary/10"
+        >
+          <AppSymbol name="xmark.circle.fill" fallback={XCircle} className="h-5 w-5" />
+        </button>
+      )}
     </div>
   );
 }
