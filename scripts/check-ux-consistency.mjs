@@ -133,6 +133,41 @@ assert(
   !regulationDetailPage.includes("open={chapterIndex === 0}"),
   "RegulationDetailPage: the first chapter must be collapsed on initial page entry",
 );
+for (const requiredPattern of ["LibraryPageShell", "InsetGroupedList", "DisclosureRow"]) {
+  assert(
+    regulationDetailPage.includes(requiredPattern),
+    `RegulationDetailPage: missing simplified iOS regulation primitive ${requiredPattern}`,
+  );
+}
+for (const removedPattern of [
+  "description=",
+  "bg-gradient-to",
+  "İçerik haritası",
+  "kapsamlı ders bölümü",
+  "Gemide kullanım ilkesi",
+]) {
+  assert(
+    !regulationDetailPage.includes(removedPattern),
+    `RegulationDetailPage: removed regulation clutter returned: ${removedPattern}`,
+  );
+}
+
+const sharedPageHeader = read("src/components/layout/PageHeader.tsx");
+assert(
+  !sharedPageHeader.includes("<Icon") && !sharedPageHeader.includes("surface-2 grid"),
+  "PageHeader: decorative title icon returned",
+);
+const courseTopicHeader = read("src/components/courseContent/CourseTopicHeader.tsx");
+assert(
+  !courseTopicHeader.includes("TopicIcon") && courseTopicHeader.includes("data-page-title"),
+  "CourseTopicHeader: title must stay text-only and discoverable by the global iOS navigation bar",
+);
+for (const [file, removedCopy] of [
+  ["src/components/widgets/HomeWidgetGrid.tsx", "Günlük seyir ve çevre bilgileri"],
+  ["src/components/home/NewsPanel.tsx", "Current headlines from the industry"],
+]) {
+  assert(!read(file).includes(removedCopy), `${file}: heading subtitle returned: ${removedCopy}`);
+}
 
 const moonPage = read("src/pages/MoonPhases.tsx");
 assert(!moonPage.includes('title="Ana Sayfa"'), "MoonPhases: home shortcut remains");

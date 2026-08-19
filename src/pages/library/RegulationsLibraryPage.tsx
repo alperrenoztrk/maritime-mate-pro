@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   ClipboardList,
   Globe,
@@ -11,7 +12,7 @@ import {
 } from "lucide-react";
 import { regulationItems, type RegulationCategory } from "@/data/regulationItems";
 import {
-  LibraryBookCard,
+  LibraryCompactCard,
   LibraryEntryCard,
   LibraryPageShell,
   LibrarySearchField,
@@ -66,9 +67,32 @@ const searchableText = (item: (typeof regulationItems)[number]) =>
 const searchIndex = new Map(regulationItems.map((item) => [item.slug, searchableText(item)]));
 
 export default function RegulationsLibraryPage() {
-  const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<RegulationCategory | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("q") ?? "";
+  const requestedCategory = searchParams.get("category");
+  const activeCategory = categories.some((entry) => entry.category === requestedCategory)
+    ? (requestedCategory as RegulationCategory)
+    : null;
   const normalizedQuery = normalize(query.trim());
+
+  const updateQuery = (value: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (value.trim()) next.set("q", value);
+    else next.delete("q");
+    setSearchParams(next, { replace: true });
+  };
+
+  const openCategory = (category: RegulationCategory) => {
+    const next = new URLSearchParams(searchParams);
+    next.set("category", category);
+    setSearchParams(next);
+  };
+
+  const closeCategory = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("category");
+    setSearchParams(next, { replace: true });
+  };
 
   const filteredItems = useMemo(
     () =>
@@ -83,10 +107,16 @@ export default function RegulationsLibraryPage() {
   const showCategoryLibrary = !activeCategory && !normalizedQuery;
 
   return (
-    <LibraryPageShell title="Regülasyonlar" icon={Scale}>
+    <LibraryPageShell
+      title={activeCategory ?? "Regülasyonlar"}
+      icon={Scale}
+      onBack={activeCategory ? closeCategory : undefined}
+      backLabel="Kategoriler"
+      maxWidth="max-w-4xl"
+    >
       <LibrarySearchField
         value={query}
-        onChange={setQuery}
+        onChange={updateQuery}
         placeholder="SOLAS, MARPOL, PSC veya sertifika ara…"
         ariaLabel="Search regulations"
       />
@@ -99,44 +129,32 @@ export default function RegulationsLibraryPage() {
               title={entry.category}
               icon={entry.icon}
               accent={entry.accent}
-              badge={regulationItems.filter((item) => item.category === entry.category).length}
-              onClick={() => setActiveCategory(entry.category)}
+              onClick={() => openCategory(entry.category)}
             />
           ))}
         </InsetGroupedList>
       ) : (
-        <section className="space-y-4">
-          <div className="flex items-center gap-3">
-            <LibrarySectionHeading badge={filteredItems.length}>
-              {activeCategory ?? "Arama Sonuçları"}
-            </LibrarySectionHeading>
-            {activeCategory && (
-              <button
-                type="button"
-                onClick={() => setActiveCategory(null)}
-                className="rounded-xl border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
-              >
-                Kategoriler
-              </button>
-            )}
-          </div>
-
+        <section className="space-y-3">
+          {!activeCategory && (
+            <LibrarySectionHeading>Arama Sonuçları</LibrarySectionHeading>
+          )}
           {filteredItems.length > 0 ? (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <InsetGroupedList columns={2}>
               {filteredItems.map((item) => {
                 const category = categories.find((entry) => entry.category === item.category) ?? categories[0];
                 return (
-                  <LibraryBookCard
+                  <LibraryCompactCard
                     key={item.slug}
                     to={`/regulations/${item.slug}`}
                     title={item.label}
+                    icon={category.icon}
                     accent={category.accent}
                   />
                 );
               })}
-            </div>
+            </InsetGroupedList>
           ) : (
-            <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
+            <div className="px-5 py-12 text-center text-sm text-muted-foreground">
               Aramanızla eşleşen regülasyon bulunamadı.
             </div>
           )}

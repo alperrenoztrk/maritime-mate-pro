@@ -42,14 +42,12 @@ export default function LessonsLibraryPage() {
       title: "Güverte Kitaplığı",
       icon: Ship,
       accent: "accent-ocean",
-      description: "Seyir, stabilite, yük, emniyet ve köprüüstü dersleri",
     },
     {
       id: "machine" as const,
       title: "Makine Kitaplığı",
       icon: Wrench,
       accent: "accent-slate",
-      description: "Makine, elektrik, termodinamik ve bakım dersleri",
     },
   ];
 
@@ -103,7 +101,6 @@ export default function LessonsLibraryPage() {
                   title={entry.title}
                   icon={entry.icon}
                   accent={entry.accent}
-                  description={entry.description}
                   onClick={() => openView(entry.id)}
                 />
               ))}

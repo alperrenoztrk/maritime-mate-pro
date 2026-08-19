@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Capacitor } from "@capacitor/core";
 import { safeLocalStorage } from "@/lib/safeStorage";
+import { ContentSize, type ContentSizeChange } from "@/plugins/contentSize";
 import {
   FONT_SCALES,
   FontSizeContext,
@@ -25,17 +27,20 @@ type FontSizeProviderProps = {
   storageKey?: string;
 };
 
-function applyScale(size: FontSizeKey) {
+const normalizeSystemScale = (scale: number) =>
+  Number.isFinite(scale) ? Math.min(2, Math.max(0.875, scale)) : 1;
+
+function applyScale(size: FontSizeKey, systemScale = 1) {
   const root = window.document.documentElement;
-  const scale = FONT_SCALES[size] ?? 1;
+  const scale = size === "system" ? normalizeSystemScale(systemScale) : FONT_SCALES[size] ?? 1;
   root.style.setProperty("--font-scale", String(scale));
   root.setAttribute("data-font-size", size);
-  root.setAttribute("data-font-size-source", "manual");
+  root.setAttribute("data-font-size-source", size === "system" ? "system" : "manual");
 }
 
 export function FontSizeProvider({
   children,
-  defaultFontSize = "normal",
+  defaultFontSize = "system",
   storageKey = "maritime-ui-font-size",
   ...props
 }: FontSizeProviderProps) {
@@ -45,7 +50,36 @@ export function FontSizeProvider({
   });
 
   useEffect(() => {
-    applyScale(fontSize);
+    if (
+      fontSize !== "system" ||
+      !Capacitor.isNativePlatform() ||
+      Capacitor.getPlatform() !== "ios"
+    ) {
+      applyScale(fontSize);
+      return;
+    }
+
+    let disposed = false;
+    let listener: { remove: () => Promise<void> } | undefined;
+    const applyNativeScale = ({ scale }: ContentSizeChange) => {
+      if (!disposed) applyScale("system", scale);
+    };
+
+    applyScale("system");
+    void ContentSize.getCurrent().then(applyNativeScale).catch(() => {
+      // The default system scale is already applied while the native bridge starts.
+    });
+    void ContentSize.addListener("contentSizeChanged", applyNativeScale).then((handle) => {
+      if (disposed) void handle.remove();
+      else listener = handle;
+    }).catch(() => {
+      // Browser previews and older native builds safely remain at the default scale.
+    });
+
+    return () => {
+      disposed = true;
+      if (listener) void listener.remove();
+    };
   }, [fontSize]);
 
 

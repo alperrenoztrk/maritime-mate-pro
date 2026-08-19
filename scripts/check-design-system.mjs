@@ -195,6 +195,12 @@ assert(
   "primary library/tool surfaces must keep the shared inset-grouped list treatment",
 );
 assert(
+  read("src/pages/library/RegulationsLibraryPage.tsx").includes("LibraryCompactCard") &&
+    read("src/pages/RegulationDetailPage.tsx").includes("ios-disclosure-row") &&
+    read("src/components/library/LibraryInterface.tsx").includes('name="xmark.circle.fill"'),
+  "regulations and shared search must keep the compact iOS list/disclosure interactions",
+);
+assert(
   !/\bglass-widget\b|animate-neon-glow|animate-float/.test(read("src/index.css")),
   "src/index.css: legacy glass/neon/continuous-float widget styling must stay removed",
 );
