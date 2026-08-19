@@ -547,9 +547,12 @@ const App = () => {
                   <DocumentExpiryNotifier />
                   <AskAIPopup />
                   <LanguageChangeOverlay />
-                  <GlobalMaritimeBackground />
                   <div className="min-h-screen text-foreground overflow-x-hidden">
                     <BrowserRouter>
+                      {/* Inside the router on purpose: the backdrop reads the
+                          current path so the drifting waves render on the home
+                          page only. The gradient itself stays on every route. */}
+                      <GlobalMaritimeBackground />
                       {/* Every route change starts the new page at the top —
                           the previous page's scroll offset is never carried
                           over. Must sit inside the router. */}
