@@ -37,7 +37,7 @@ const safetyFormulas = [
       "K: nozzle factor",
       "P: pressure (bar)"
     ],
-    note: "The K value is taken from the manufacturer's catalogue for the nozzle type."
+    note: "The K value is taken from the manufacturer's catalog for the nozzle type."
   },
   {
     title: "Fire Water Capacity",

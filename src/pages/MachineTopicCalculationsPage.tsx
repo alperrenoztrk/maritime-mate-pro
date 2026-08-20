@@ -38,9 +38,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "LMTD Calculation",
       description: "Calculates the logarithmic average temperature difference in the heat exchanger (counterflow).",
       inputs: [
-        { key: "t1i", label: "Hot Inlet", unit: "°C", placeholder: "90" },
-        { key: "t1o", label: "Hot Outlet", unit: "°C", placeholder: "60" },
-        { key: "t2i", label: "Cold Inlet", unit: "°C", placeholder: "20" },
+        { key: "t1i", label: "Hot inlet", unit: "°C", placeholder: "90" },
+        { key: "t1o", label: "Hot outlet", unit: "°C", placeholder: "60" },
+        { key: "t2i", label: "Cold inlet", unit: "°C", placeholder: "20" },
         { key: "t2o", label: "Cold Outlet", unit: "°C", placeholder: "50" },
       ],
       calculate: (v) => {
@@ -101,7 +101,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const q = v.m * v.c * v.dt;
         return [
           { label: "Heat Quantity (Q)", value: `${q.toFixed(1)} kJ` },
-          { label: "Heat Quantity", value: `${(q / 3600).toFixed(2)} kWh` },
+          { label: "Heat quantity", value: `${(q / 3600).toFixed(2)} kWh` },
         ];
       },
     },
@@ -225,7 +225,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Calculates the NPSH value present at the pump suction.",
       inputs: [
         { key: "pa", label: "Atmospheric Pressure", unit: "kPa", placeholder: "101.325" },
-        { key: "pv", label: "Vapour Pressure", unit: "kPa", placeholder: "2.34" },
+        { key: "pv", label: "Vapor Pressure", unit: "kPa", placeholder: "2.34" },
         { key: "hs", label: "Suction Lift (+/−)", unit: "m", placeholder: "3" },
         { key: "hf", label: "Suction Line Loss", unit: "m", placeholder: "0.5" },
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
@@ -285,7 +285,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "pmi", label: "Mean Indicated Pressure (Pmi)", unit: "bar", placeholder: "18" },
         { key: "l", label: "Stroke (L)", unit: "m", placeholder: "2.5" },
         { key: "a", label: "Piston Area (A)", unit: "m²", placeholder: "0.35" },
-        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "100" },
+        { key: "n", label: "Speed(n)", unit: "rpm", placeholder: "100" },
         { key: "k", label: "Number of Cylinders (k)", unit: "units", placeholder: "6" },
       ],
       calculate: (v) => {
@@ -496,7 +496,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Estimates the minimum oil film thickness with the Sommerfeld number.",
       inputs: [
         { key: "mu", label: "Oil Viscosity (μ)", unit: "Pa·s", placeholder: "0.05" },
-        { key: "n", label: "Speed (n)", unit: "rps", placeholder: "5" },
+        { key: "n", label: "Speed(n)", unit: "rps", placeholder: "5" },
         { key: "p", label: "Unit Load (P)", unit: "MPa", placeholder: "3" },
         { key: "c", label: "Bearing Clearance (c)", unit: "mm", placeholder: "0.1" },
         { key: "r", label: "Shaft Radius (r)", unit: "mm", placeholder: "100" },
@@ -615,7 +615,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "Generator Frequency",
       description: "calculates the generator frequency with the formula f = (n × P) / 120.",
       inputs: [
-        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "720" },
+        { key: "n", label: "Speed(n)", unit: "rpm", placeholder: "720" },
         { key: "p", label: "Number of Poles (P)", unit: "", placeholder: "10" },
       ],
       calculate: (v) => {
@@ -1037,7 +1037,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Calculates SOx emissions from fuel sulfur content.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "100" },
-        { key: "s", label: "Sulphur Content", unit: "%", placeholder: "0.5" },
+        { key: "s", label: "Sulfur Content", unit: "%", placeholder: "0.5" },
       ],
       calculate: (v) => {
         // SO₂ = 2 × S% × FC (kütle oranı: S→SO₂ çarpan ≈ 2)
@@ -1155,7 +1155,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [
           { label: "Risk Score", value: `${risk}` },
           { label: "Risk Level", value: level },
-          { label: "Risk Colour", value: color },
+          { label: "Risk Color", value: color },
         ];
       },
     },
@@ -1171,7 +1171,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const status = ltif < 1 ? "Very Good" : ltif < 3 ? "good" : ltif < 5 ? "Medium" : "bad";
         return [
           { label: "LTIF", value: ltif.toFixed(2) },
-          { label: "Assessment", value: status },
+          { label: "Evaluation", value: status },
         ];
       },
     },

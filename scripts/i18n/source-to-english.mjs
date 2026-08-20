@@ -303,7 +303,11 @@ const TEMPLATE_RE = /`((?:\\.|[^\\`])*)`/g;
 // function's ">" across several lines of TypeScript to the next block "{" and
 // rewrites it as copy — which is how "a !== undefined && b !== undefined" once
 // became "a !== undefined &amp;&amp; b !== undefined".
-const JSX_TEXT_RE = /([>}])([^<>{}=;"'`]+)(?=[<{])/g;
+// An apostrophe is copy, not code: Turkish possessives ("Pupa'dan") and English
+// contractions both carry one, and excluding it hid a whole class of labels
+// from this scan. A code fragment that reaches here still carries "=", ";", a
+// double quote or a backtick, or reads as an expression.
+const JSX_TEXT_RE = /([>}])([^<>{}=;"`]+)(?=[<{])/g;
 const EXPRESSION_RE = /&&|\|\||=>|\?\.|\bnew\b|\breturn\b/;
 const hasLetter = (value) => /\p{L}/u.test(value);
 const isJsxCopy = (value) => hasLetter(value) && !EXPRESSION_RE.test(value);

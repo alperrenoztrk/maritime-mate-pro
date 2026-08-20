@@ -278,7 +278,7 @@ export default function StabilityGrainCalculationPage() {
                 <p>Keep GHM and FSM tables with you and cross-check the results.</p>
               </div>
               <div className="rounded-lg border border-dashed border-border/70 bg-background/80 p-3 text-xs text-muted-foreground">
-                Bu rehber, gerçek yükleme bilgisayarının yerini tutmaz; tüm hesapları resmi kayıtlarla doğrulayın.
+                This guide does not replace the ship's loading computer; verify every calculation against the official records.
               </div>
             </CardContent>
           </Card>
@@ -406,7 +406,7 @@ export default function StabilityGrainCalculationPage() {
                         {usableVolume && (
                           <Alert className="bg-amber-50 border-amber-200">
                             <AlertDescription>
-                              <p className="font-semibold">Kullanılabilir Hacim = Ambar Hacmi × (1 - BS)</p>
+                              <p className="font-semibold">Usable Volume = Hold Volume × (1 - BS)</p>
                               <p className="text-lg font-bold text-amber-700">
                                 Usable Volume = {usableVolume} m³
                               </p>
@@ -635,7 +635,7 @@ export default function StabilityGrainCalculationPage() {
                                 {parseFloat(heelingAngle) <= 12 ? (
                                   <span className="text-green-700">✓ Within the IMO limit (≤ 12°)</span>
                                 ) : (
-                                  <span className="text-red-700">✗ IMO limitini aşıyor (&gt; 12°)</span>
+                                  <span className="text-red-700">✗ Exceeds the IMO limit (&gt; 12°)</span>
                                 )}
                               </p>
                             </AlertDescription>
@@ -745,7 +745,7 @@ export default function StabilityGrainCalculationPage() {
                                 {parseFloat(correctedGM) >= 0.30 ? (
                                   <span className="text-green-700">✓ Above IMO minimum value (≥ 0.30 m)</span>
                                 ) : (
-                                  <span className="text-red-700">✗ IMO minimum değerinin altında (&lt; 0.30 m)</span>
+                                  <span className="text-red-700">✗ Below the IMO minimum (&lt; 0.30 m)</span>
                                 )}
                               </p>
                             </AlertDescription>
@@ -855,7 +855,7 @@ export default function StabilityGrainCalculationPage() {
                           <ul className="space-y-1 text-xs">
                             <li>• Verify all parameters before grain loading</li>
                             <li>• Check shift volumes values from IMO Grain Code table</li>
-                            <li>• Gerekirse ballast suyu ile GM'i artırın</li>
+                            <li>• Increase GM with ballast water if necessary</li>
                             <li>• Use a separator between cargo hold compartments</li>
                             <li>• Cross-check with the loading computer</li>
                             <li>• Constantly monitor heel angle during loading</li>

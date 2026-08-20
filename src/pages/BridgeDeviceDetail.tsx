@@ -100,7 +100,7 @@ export default function BridgeDeviceDetailPage() {
         <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4 text-sm text-foreground shadow-inner sm:p-6">
           <p className="mb-2 text-base font-semibold text-primary">Why is it important?</p>
           <p className="text-muted-foreground">
-            {device.name} module helps bridge teams carry out the task safely, methodically and in a way that can be documented. This summary is a quick orientation for newly joined officers and a reference guide for experienced watchkeepers preparing for drills and inspections.
+            {device.name} the module helps bridge teams carry out the task safely, methodically and in a way that can be documented. This summary is a quick orientation for newly joined officers and a reference guide for experienced watchkeepers preparing for drills and inspections.
           </p>
         </div>
       </div>

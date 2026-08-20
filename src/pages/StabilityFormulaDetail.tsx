@@ -100,7 +100,7 @@ GM change:
 Batma = w / TPC`,
   },
   "draft-duzeltme": {
-    title: "3.3. Forward/Aft Draft Correction",
+    title: "3.3. Forward/After Draft Correction",
     group: "Longitudinal Equilibrium Calculations",
     image: "/diagrams/stability/trim.svg",
     imageAlt: "Distributing the trim between the forward and after draft marks",

@@ -46,7 +46,7 @@ const REASONS: Array<{ value: AiReportReason; label: string; hint: string }> = [
     label: "Disturbing content",
     hint: "Insults, hate speech or inappropriate language",
   },
-  { value: "other", label: "Other", hint: "A problem other than the above" },
+  { value: "other", label: "Others", hint: "A problem other than the above" },
 ];
 
 interface ReportAiContentButtonProps {

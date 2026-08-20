@@ -538,8 +538,8 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="two-stroke">Two Stroke</SelectItem>
-                      <SelectItem value="four-stroke">Four Stroke</SelectItem>
+                      <SelectItem value="two-stroke">Two Strokes</SelectItem>
+                      <SelectItem value="four-stroke">Four Strokes</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -1051,7 +1051,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.pressureDrop.toFixed(0)} kPa</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Event</Label>
+                  <Label className="text-sm font-medium">Events</Label>
                   <p className="text-lg font-semibold">{result.effectiveness.toFixed(0)}%</p>
                 </div>
               </div>

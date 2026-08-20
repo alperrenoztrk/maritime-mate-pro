@@ -74,7 +74,7 @@ const sections: RuleSection[] = [
       {
         heading: 'What can be added',
         items: [
-          'Leakage scenarios: sensitivity analyses covering the free surface, KG change and heeling moment effects in the event of a cargo leak.',
+          'Leakage scenarios: sensitivity analyzes covering the free surface, KG change and heeling moment effects in the event of a cargo leak.',
           'Evaporation effects: methods that account for the effect of evaporation on mass/density and KG for volatile cargoes.'
         ]
       },
@@ -134,7 +134,7 @@ const sections: RuleSection[] = [
   {
     title: 'OSV / SPS — Offshore Supply and Special Purpose Ships',
     rules: [
-      'The IS Code criteria form the baseline; depending on the cargo and personnel density, Administrations generally require a minimum GM ≥ 0.15 m.',
+      'The IS Code criteria form the baseline; Depending on the cargo and personnel density, Administrations generally require a minimum GM ≥ 0.15 m.',
       'Additional margins and operational limits are applied for cargo deck free surface and high KG effects.'
     ],
     sources: [
@@ -248,7 +248,7 @@ export default function StabilityRules() {
           <CardContent>
             <div className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Stabilite bilginizi test edin! Quiz'de otomatik geçiş yoktur, önceki ve sonraki butonları kullanarak kendi hızınızda ilerleyebilirsiniz.
+                Test your stability knowledge! There is no automatic transition in the quiz, you can proceed at your own pace using the previous and next buttons.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3">

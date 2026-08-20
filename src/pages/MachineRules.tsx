@@ -12,7 +12,7 @@ const ruleCategories = [
       {
         subtitle: "Sulfur Limits",
         content: [
-          "Global sulphur limit: 0.50% m/m (from 1 January 2020)",
+          "Global sulfur limit: 0.50% m/m (from 1 January 2020)",
           "In ECAs: 0.10% m/m",
           "Use of compatible fuel or scrubber is mandatory",
           "BDN and fuel sample should be kept for 3 years",
@@ -179,7 +179,7 @@ const ruleCategories = [
     ],
   },
   {
-    title: "Emergency Procedures",
+    title: "Emergency procedures",
     icon: AlertTriangle,
     color: "text-red-600",
     bgColor: "bg-red-100 dark:bg-red-900/20",

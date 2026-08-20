@@ -162,7 +162,7 @@ async function extractAccessError(error: unknown): Promise<AIAccessError | null>
       const body = await context.clone().json();
       if (body?.code === 'AI_QUOTA_EXCEEDED') {
         return new AIAccessError(
-          'Bu ayki yapay zekâ kullanım hakkınız doldu. Pro paket ile aylık kotanızı artırabilirsiniz (Ayarlar → Mariner\'s Book Pro).',
+          'You have used this month\'s AI allowance. The Pro package raises your monthly quota (Settings → Mariner\'s Book Pro).',
           'AI_QUOTA_EXCEEDED',
         );
       }

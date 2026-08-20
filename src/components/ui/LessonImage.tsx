@@ -25,7 +25,7 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
   // Vektörler çözünürlükten bağımsızdır: bir SVG hangi boyutta çizilirse
   // çizilsin keskin kalır. Aşağıdaki düşük çözünürlük kısıtı yalnızca raster
   // kaynaklar içindir; SVG'lere uygulanırsa diyagramlar gereksiz yere küçülür
-  // (viewBox'ı is width/height'ı olmayan SVG'Scanner ~300x150'lik
+  // (viewBox'i is width/height'ı olmayan SVG'Scanner ~300x150'lik
   // varsayılan bir intrinsic boyut bildirir).
   const isVector = /\.svg(?:[?#]|$)/i.test(src ?? "");
 

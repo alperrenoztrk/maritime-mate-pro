@@ -196,7 +196,7 @@ export default function LocationSelector() {
                 </div>
               ) : query.length >= 2 ? (
                 <div className="text-center py-8">
-                  <p className="text-muted-foreground">"{query}" için sonuç bulunamadı</p>
+                  <p className="text-muted-foreground">No results for &quot;{query}&quot;</p>
                   <p className="text-sm text-muted-foreground mt-2">
                     Try a different search term
                   </p>

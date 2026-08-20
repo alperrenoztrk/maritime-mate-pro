@@ -440,7 +440,7 @@ const DetailedMeteorology = () => {
           <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="systems">Air Systems</TabsTrigger>
             <TabsTrigger value="clouds">Clouds</TabsTrigger>
-            <TabsTrigger value="pressure">Pressure Systems</TabsTrigger>
+            <TabsTrigger value="pressure">Pressure systems</TabsTrigger>
             <TabsTrigger value="storms">Types of Storms</TabsTrigger>
             <TabsTrigger value="satellite">Satellite Images</TabsTrigger>
             <TabsTrigger value="navtex">NAVTEX Warnings</TabsTrigger>
@@ -485,7 +485,7 @@ const DetailedMeteorology = () => {
                       <Badge variant="outline" className="text-xs border-red-400 text-red-700 dark:text-red-300">Cb: Vertical development (storm)</Badge>
                     </div>
                     <div className="text-xs space-y-1">
-                      <p><strong>Sailor's Note:</strong> CL bulutlar görüşü hızla düşürür (sis/yağış); CM bulutlar cephe yaklaşımının habercisi olabilir; CH bulutlar uzak/orta vadede hava değişimini işaret eder; Cb ise şiddetli fırtına, ani rüzgar ve dolu riskidir.</p>
+                      <p><strong>Sailor's Note:</strong> CL clouds cut visibility quickly (fog/precipitation); CM clouds can announce an approaching front; CH clouds point to a change of weather in the medium to long term; Cb means a risk of severe squalls, sudden wind and hail.</p>
                     </div>
                   </AlertDescription>
                 </Alert>
@@ -1095,13 +1095,13 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <AlertTriangle className="h-5 w-5 text-red-600" />
-                    Emergency Procedures
+                    Emergency procedures
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Alert className="border-red-200 bg-red-50">
                       <AlertTriangle className="h-4 w-4 text-red-600" />
                       <AlertDescription>
-                        <strong>Storm Approach:</strong> Seek a safe harbour immediately, reduce speed, secure all equipment and move personnel to safe areas.
+                        <strong>Storm Approach:</strong> Seek a safe harbor immediately, reduce speed, secure all equipment and move personnel to safe areas.
                       </AlertDescription>
                     </Alert>
                     

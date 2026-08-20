@@ -136,7 +136,7 @@ const formulaCategories = [
     ],
   },
   {
-    title: "Compressed Air",
+    title: "Compressed air",
     icon: Gauge,
     color: "text-cyan-600",
     bgColor: "bg-cyan-100 dark:bg-cyan-900/20",

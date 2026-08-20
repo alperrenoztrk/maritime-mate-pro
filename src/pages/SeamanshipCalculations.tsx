@@ -247,7 +247,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
             if (!result) return null;
             return (
               <div className="bg-blue-50 rounded-lg p-4 space-y-1">
-                <p className="text-sm text-slate-600">Tutma Kuvveti = Ağırlık × Katsayı ({result.coeff})</p>
+                <p className="text-sm text-slate-600">Holding Power = Weight × Coefficient ({result.coeff})</p>
                 <p className="text-2xl font-bold text-[#2F5BFF]">{result.holdingPower} ton</p>
               </div>
             );

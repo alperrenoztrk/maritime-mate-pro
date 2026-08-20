@@ -245,7 +245,7 @@ export const AdvancedSOLASChecker = () => {
                 onChange={(e) => setVesselData(prev => ({ ...prev, gemi_tipi: e.target.value }))}
               >
                 <option value="cargo">Cargo Ship</option>
-                <option value="passenger">Cruise Ship</option>
+                <option value="passenger">Cruise ship</option>
                 <option value="tanker">Tanker</option>
                 <option value="container">Container Ship</option>
               </select>
@@ -486,7 +486,7 @@ export const AdvancedSOLASChecker = () => {
               {!criteriaResults.gm.passed && (
                 <div className="p-3 border border-red-200 rounded-lg bg-red-50 dark:bg-red-950/20">
                   <p className="text-sm text-red-800 dark:text-red-200">
-                    <strong>GM Insufficient:</strong> Ballast ayarlaması yaparak KG'lower or KM'yi artırın.
+                    <strong>GM Insufficient:</strong> Increase KG'lower or KM by making ballast adjustment.
                   </p>
                 </div>
               )}

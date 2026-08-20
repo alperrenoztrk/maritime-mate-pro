@@ -15,7 +15,7 @@ const formulas = [
       {
         name: "SOx Emission",
         formula: "SOx (kg) = Fuel (tonnes) × S% × 20 × 2",
-        description: "S%: fuel sulphur content (per cent), 2: the SO₂/S conversion factor",
+        description: "S%: fuel sulfur content (per cent), 2: the SO₂/S conversion factor",
         example: "0.5% sulphur, 100 tonnes of fuel → 200 kg of SOx"
       },
       {
@@ -96,7 +96,7 @@ const formulas = [
       {
         name: "VLSFO (Very Low Sulfur FO)",
         formula: "CF = 3.151 tonnes CO₂ per tonne of fuel",
-        description: "Low sulphur fuel (0.5% max)",
+        description: "Low sulfur fuel (0.5% max)",
         example: ""
       },
       {

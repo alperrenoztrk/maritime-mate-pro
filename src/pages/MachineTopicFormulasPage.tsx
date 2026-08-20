@@ -117,7 +117,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Cooling System",
       formulas: [
-        { name: "Heat Rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
+        { name: "Heat rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
         { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Tipik ΔT: HT devresi 5–8°C, LT devresi 10–15°C" },
       ],
     },
@@ -127,7 +127,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Generator Calculations",
       formulas: [
         { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: line voltage (V), I: line current (A), cos(φ): power factor" },
-        { name: "Frequency-Speed Relation", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
+        { name: "Frequency-Speed Relationship", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
         { name: "Generator Efficiency", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
       ],
     },
@@ -258,7 +258,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Fire Triangle", formula: "Fuel + Oxygen + Heat = Fire", variables: "Removing one element extinguishes the fire" },
         { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)", variables: "V: korunan hacim (m³), SOLAS II-2/Reg.10" },
-        { name: "Foam Quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
+        { name: "Foam quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
       ],
     },
     {
@@ -279,7 +279,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       ],
     },
     {
-      title: "Waste Management",
+      title: "Waste management",
       formulas: [
         { name: "OWS Discharge Limit", formula: "Oil concentration ≤ 15 ppm", variables: "MARPOL Annex I: the oily water separator discharge standard" },
         { name: "Sewage Treatment", formula: "BOD₅ effluent ≤ 25 mg/L", variables: "MARPOL Annex IV: the sewage treatment effluent quality" },
@@ -295,7 +295,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       ],
     },
     {
-      title: "Human Factors",
+      title: "Human factors",
       formulas: [
         { name: "Fatigue Index", formula: "FI = f(hours of work, rest, sleep quality)", variables: "STCW: min 10 hours of rest per 24 hours, min 77 hours per 7 days" },
         { name: "Watchkeeping Effectiveness", formula: "η_watch = Tasks completed / Tasks planned", variables: "A low ratio indicates an unbalanced workload or a lack of competence" },

@@ -8,7 +8,7 @@ const meteorologyRules = [
     icon: FileText,
     rules: [
       "Current meteorological data must be used when preparing the passage plan.",
-      "Weather forecasts and routeing recommendations must be taken into account.",
+      "Weather forecasts and routing recommendations must be taken into account.",
       "Alternative routes must be planned for severe weather conditions.",
       "Meteorological data and forecasts must be kept in the voyage plan file."
     ]
@@ -18,7 +18,7 @@ const meteorologyRules = [
     icon: CloudSun,
     rules: [
       "An avoidance plan is essential on routes where severe weather is expected.",
-      "Weather routeing services should be used.",
+      "Weather routing services should be used.",
       "Cargo safety and fuel economy must be balanced when selecting the route.",
       "The 500 nm rule: if a tropical cyclone is within 500 nm, a route change must be considered."
     ]

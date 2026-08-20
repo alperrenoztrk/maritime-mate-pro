@@ -1689,7 +1689,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="ct-course">Desired Course (°)</Label>
+              <Label htmlFor="ct-course">Desire Course (°)</Label>
               <Input id="ct-course" type="number" placeholder="045" value={currentInputs.course} onChange={(e) => setCurrentInputs({ ...currentInputs, course: e.target.value })} />
             </div>
             <div>
@@ -2127,7 +2127,7 @@ export default function NavigationCalculationPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                 <div className="sm:col-span-3">
-                  <Label htmlFor="tide-forecast-query">Port / city</Label>
+                  <Label htmlFor="tide-forecast-query">Port/city</Label>
                   <Input
                     id="tide-forecast-query"
                     placeholder="e.g. Izmir, Antalya, English Channel..."
@@ -2533,7 +2533,7 @@ export default function NavigationCalculationPage() {
               <Input id="turn-change" type="number" placeholder="90" value={turningInputs.courseChange} onChange={(e) => setTurningInputs({ ...turningInputs, courseChange: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="turn-speed">Speed (knot)</Label>
+              <Label htmlFor="turn-speed">Speed (knots)</Label>
               <Input id="turn-speed" type="number" placeholder="" value={turningInputs.speed} onChange={(e) => setTurningInputs({ ...turningInputs, speed: e.target.value })} />
             </div>
           </div>
@@ -2555,7 +2555,7 @@ export default function NavigationCalculationPage() {
               <Input id="weather-area" type="number" placeholder="" value={weatherInputs.windArea} onChange={(e) => setWeatherInputs({ ...weatherInputs, windArea: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="weather-ship">Ship Speed (knot)</Label>
+              <Label htmlFor="weather-ship">Ship Speed (knots)</Label>
               <Input id="weather-ship" type="number" placeholder="" value={weatherInputs.shipSpeed} onChange={(e) => setWeatherInputs({ ...weatherInputs, shipSpeed: e.target.value })} />
             </div>
           </div>
@@ -2626,11 +2626,11 @@ export default function NavigationCalculationPage() {
               <Input id="emergency-distance" type="number" placeholder="" value={emergencyInputs.distance} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, distance: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="emergency-rescue">Rescue Speed (knot)</Label>
+              <Label htmlFor="emergency-rescue">Rescue Speed (knots)</Label>
               <Input id="emergency-rescue" type="number" placeholder="" value={emergencyInputs.rescueSpeed} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, rescueSpeed: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="emergency-drift">Drift Speed (knot)</Label>
+              <Label htmlFor="emergency-drift">Drift Speed (knots)</Label>
               <Input id="emergency-drift" type="number" placeholder="" value={emergencyInputs.driftSpeed} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, driftSpeed: e.target.value })} />
             </div>
           </div>

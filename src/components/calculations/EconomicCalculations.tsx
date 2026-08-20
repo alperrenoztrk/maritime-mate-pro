@@ -83,8 +83,8 @@ export const EconomicCalculations = () => {
     });
     setCalcSteps(prev => ({ ...prev, tce: [
       { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "Time Equivalent Rental (TCE) calculates daily earnings" },
-      { step: 2, title: "Net freight account", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
-      { step: 3, title: "TCE account", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
+      { step: 2, title: "Net freight calculation", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
+      { step: 3, title: "TCE calculation", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
     ] }));
   };
 
@@ -139,7 +139,7 @@ export const EconomicCalculations = () => {
       { step: 2, title: "Time difference calculation", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} clock` },
     ];
     if (timeDifference > 0) {
-      demSteps.push({ step: 3, title: "Demurrage account", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Demurrage calculation", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
     } else if (timeDifference < 0) {
       demSteps.push({ step: 3, title: "Despatch account", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
     } else {
@@ -288,7 +288,7 @@ export const EconomicCalculations = () => {
               />
             </div>
             <div>
-              <Label htmlFor="layTime">Lay Time (Hour)</Label>
+              <Label htmlFor="layTime">Laytime (Hour)</Label>
               <Input
                 id="layTime"
                 type="number"
@@ -388,7 +388,7 @@ export const EconomicCalculations = () => {
               />
             </div>
             <div>
-              <Label htmlFor="portCosts">Port Expenses ($)</Label>
+              <Label htmlFor="portCosts">Port costs ($)</Label>
               <Input
                 id="portCosts"
                 type="number"

@@ -25,7 +25,7 @@ export function HomeWidgetGrid() {
         <div className="px-1">
           <h2 id="home-widgets-title" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em] text-foreground">
             <Gauge className="h-5 w-5 text-primary" />
-            Canlı Widget&rsquo;lar
+            Live widgets
           </h2>
           <p className="mt-0.5 text-caption text-muted-foreground">Daily navigation and environmental information</p>
         </div>

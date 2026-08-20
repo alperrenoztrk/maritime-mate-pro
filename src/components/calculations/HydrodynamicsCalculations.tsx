@@ -602,7 +602,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 8,
-          title: "Heave amplitude",
+          title: "Heavy amplitude",
           formula: "z = Hw x 0.7",
           substitution: `z = ${data.waveHeight} x 0.7`,
           result: `z = ${motions.heaveAmplitude.toFixed(2)} m`,
@@ -1044,7 +1044,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-2xl font-bold text-purple-600">{result.rollAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Tangage Amplitude</Label>
+                  <Label className="text-sm font-medium">Pitch Amplitude</Label>
                   <p className="text-2xl font-bold text-green-700">{result.pitchAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>

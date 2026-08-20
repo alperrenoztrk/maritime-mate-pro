@@ -134,7 +134,7 @@ const Formulas = () => {
             className="text-xl sm:text-2xl font-bold text-foreground leading-tight break-words"
             data-translatable
           >
-            Mark'a Sor
+            Ask Mark
           </h1>
         </div>
       </div>
@@ -210,7 +210,7 @@ Example questions:
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span data-translatable>AI'ya Sor</span>
+                    <span data-translatable>Ask AI</span>
                   </>
                 )}
               </Button>
@@ -332,7 +332,7 @@ Example questions:
                               }).catch(() => {});
                             } else {
                               navigator.clipboard.writeText(`Soru: ${question}\n\nCevap: ${aiResponse}`);
-                              toast.success("The share text has been copied.");
+                              toast.success("The shared text has been copied.");
                             }
                           }}
                           style={{

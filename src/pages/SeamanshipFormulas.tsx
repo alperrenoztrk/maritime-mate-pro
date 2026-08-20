@@ -35,7 +35,7 @@ const seamanshipFormulas = [
       "s: Yatay mesafe",
       "a: Katenary parametresi"
     ],
-    note: "Catenary analysis requires complex calculation; tables are used in practice."
+    note: "Catenary analysis requires complex calculation; Tables are used in practice."
   },
   {
     title: "Anchor Holding Force",

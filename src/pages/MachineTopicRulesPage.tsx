@@ -24,7 +24,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
     ]},
     { title: "Exhaust and Waste Heat Recovery (WHRS)", source: { code: "MARPOL Annex VI / SOLAS II-2", detail: "Exhaust gas boiler and efficiency" }, rules: [
       { subtitle: "Exhaust Gas Economizer", content: ["Dry/wet cleaning procedures should be applied against the risk of soot fire.", "At low load the economizer inlet temperature should be monitored for dew point and acid corrosion"] },
-      { subtitle: "Waste Heat Evaluation", content: ["Atık ısı; tatlı su üreteci, yakıt/yağ ısıtma ve buhar üretimine yönlendirilerek verim artırılır"] },
+      { subtitle: "Waste Heat Evaluation", content: ["Waste heat is directed to the fresh water generator, to fuel/oil heating and to steam production, which raises overall efficiency"] },
     ]},
   ],
   "fluid-mechanics": [
@@ -78,7 +78,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
       { subtitle: "Lubrication System", content: ["LO pressure must be protected by low pressure alarm and automatic stop", "LO filter pressure difference should be monitored and an alarm should be given in case of by-pass."] },
       { subtitle: "Cooling System", content: ["Temperature and pressure are monitored in central cooling (HT/LT) circuits", "Seawater system is kept well maintained with anti-fouling/anodic protection"] },
     ]},
-    { title: "Steering Gear", source: { code: "SOLAS II-1/Reg.29", detail: "Steering gear yedeklilik" }, rules: [
+    { title: "Steering gear", source: { code: "SOLAS II-1/Reg.29", detail: "Steering gear yedeklilik" }, rules: [
       { subtitle: "Redundancy and Performance", content: ["The main steering gear must be able to move the rudder 35°–35° (opposite) in 28 seconds.", "Auxiliary steering gear or two independent power units must be provided"] },
       { subtitle: "Testing and Drill", content: ["Steering gear must be tested within 12 hours before departure", "Emergency steering drills should be performed every 3 months"] },
     ]},

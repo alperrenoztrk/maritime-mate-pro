@@ -399,7 +399,7 @@ export default function DraftSurveyComparative() {
                     <p><strong>Displacement Change:</strong> {comparison.displacementChange.toFixed(2)} ton</p>
                     <p><strong>Trend:</strong> 
                       <span className={`ml-1 ${
-                        comparison.trend === 'Artış' ? 'text-green-600 dark:text-green-400' :
+                        comparison.trend === 'Increase' ? 'text-green-600 dark:text-green-400' :
                         comparison.trend === 'Decrease' ? 'text-red-600 dark:text-red-400' :
                         'text-gray-600 dark:text-gray-400'
                       }`}>

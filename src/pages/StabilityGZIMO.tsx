@@ -209,7 +209,7 @@ export default function StabilityGZIMO() {
                 <div><strong>GM₀:</strong> ≥ 0.15 m (for small cargo ships)</div>
                 <div><strong>Vanishing Angle:</strong> ≥ 30° (preferably ≥ 60°)</div>
                 <div className="text-xs text-muted-foreground mt-2">
-                  Bu kriterler IMO MSC.267(85) ve SOLAS 2009'a göre temel gereksinimlerdir
+                  These criteria are essential requirements according to IMO MSC.267(85) and SOLAS 2009
                 </div>
               </AlertDescription>
             </Alert>

@@ -89,12 +89,12 @@ const TideCalculationTutorial = () => {
             <div className="space-y-3">
               <h3 className="text-base font-semibold">6) Transition time and UKC evaluation</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Total depth</strong> = Harita derinliği + Gelgit yüksekliği.</li>
-                <li><strong>Safe depth</strong> = Toplam derinlik − Draft − Squat − Emniyet payı.</li>
+                <li><strong>Total depth</strong> = Charted depth + Height of tide.</li>
+                <li><strong>Safe depth</strong> = Total depth − Draft − Squat − Safety margin.</li>
                 <li>If there is a negative result, the time or route for the passage/operation is replanned.</li>
               </ul>
               <div className="rounded border bg-muted/30 p-3 text-xs">
-                Harita derinliği + Gelgit yüksekliği = Gemi draftı + Omurga altı emniyet payı
+                Charted depth + Height of tide = Ship's draft + Under-keel clearance
               </div>
             </div>
 
@@ -123,9 +123,9 @@ const TideCalculationTutorial = () => {
               <ol className="list-decimal pl-5 space-y-1">
                 <li>Mark points HW and LW on the chart, creating the tidal height line.</li>
                 <li>Fill in the hourly intervals on the hour axis, starting from the HW hour.</li>
-                <li>15:00’dan dik çık; gelgit eğrisiyle kesişimden gelgit doğrusuna paralel çiz.</li>
+                <li>Go up vertically from 15:00; from the intersection with the tidal curve, draw a line parallel to the range line.</li>
                 <li>Go up from the intersection and read the height on the “HW Hts m” scale.</li>
-                <li>Range, spring değerine yakınsa düz eğri; neap’e yakınsa kesik eğri kullan.</li>
+                <li>Use the solid curve when the range is close to springs, the dashed curve when it is close to neaps.</li>
               </ol>
               <p className="text-xs text-muted-foreground">
                 With this method, the approximate tide height for 15:00 is found and added to the chart depth.

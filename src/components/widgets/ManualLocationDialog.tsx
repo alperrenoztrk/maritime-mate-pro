@@ -131,7 +131,7 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
 
         <DialogFooter className="flex-col-reverse gap-2 sm:flex-row sm:justify-between">
           <Button type="button" variant="ghost" onClick={handleClear}>
-            Temizle (GPS'e dön)
+            Clear (return to GPS)
           </Button>
           <div className="flex gap-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>

@@ -179,7 +179,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
         <div className="flex items-center gap-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
           <Info className="h-4 w-4 text-blue-600" />
           <span className="text-sm text-blue-800">
-            Quiz'de otomatik geçiş yoktur. Önceki ve sonraki butonları kullanarak kendi hızınızda ilerleyebilirsiniz.
+            There is no auto-pass in the quiz. You can progress at your own pace using the previous and next buttons.
           </span>
         </div>
       </CardHeader>
@@ -269,7 +269,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                 onClick={finishQuiz}
                 className="gap-2"
               >
-                Quiz'i Bitir
+                Finish Quiz
                 <CheckCircle className="h-4 w-4" />
               </Button>
             ) : (

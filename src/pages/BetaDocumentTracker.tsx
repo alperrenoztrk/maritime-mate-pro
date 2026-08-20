@@ -386,7 +386,7 @@ export default function BetaDocumentTracker() {
           <div className="mt-3 flex items-start gap-2 rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 text-micro text-muted-foreground">
             <ShieldCheck className="mt-0.5 h-4 w-4 flex-none text-blue-500" />
             <p>
-              Fotoğraf yapay zekâ ile tarih çıkarımı için işlenir ve özel hesap arşivinizde saklanır. Sonuçlar resmi belge yerine geçmez; düşük güvenli okumalar açıkça işaretlenir.
+              The photo is processed by AI to read the dates and is kept in your private account archive. The results do not replace the official document; low-confidence readings are marked clearly.
             </p>
           </div>
         </section>
@@ -538,7 +538,7 @@ export default function BetaDocumentTracker() {
         </section>
 
         <footer className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3 text-micro text-muted-foreground">
-          Hatırlatmalar 180, 90, 30, 7 ve 1 günlük aralıklara girildiğinde; ayrıca son gün ve süre dolduğunda bir kez gösterilir. Resmî geçerlilik kontrolünde daima belgenin aslını esas alın.
+          Reminders are shown once as the document enters the 180, 90, 30, 7 and 1 day marks, and again on the last day and on expiry. Always check validity against the original document.
         </footer>
       </div>
     </div>

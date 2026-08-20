@@ -192,7 +192,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "dynamic-righting-moment", title: "Dynamic righting moment", hasContent: true },
       { id: "area-concept", title: "Concept of space", hasContent: true },
       { id: "static-vs-dynamic", title: "Static and dynamic stability difference", hasContent: true },
-      { id: "wave-effect", title: "Wave effect", hasContent: true },
+      { id: "wave-effect", title: "Wave effects", hasContent: true },
       { id: "wind-effect", title: "Wind effect", hasContent: true },
     ],
   },

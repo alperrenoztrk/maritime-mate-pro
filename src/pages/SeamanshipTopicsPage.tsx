@@ -2230,7 +2230,7 @@ RECORDS AND DOCUMENTATION:
 
 All drills are entered in the log book. The date, scenario, participants and assessment notes are recorded. Drill records are checked in PSC inspections. Missing drill records can be grounds for detention.`,
     bulletPoints: [
-      "Fire drill: at least one a month for every crew member (SOLAS III/19.3.2)",
+      "Fire drill: at least one month for every crew member (SOLAS III/19.3.2)",
       "Crew joining the ship: LSA/FFE training within 2 weeks at the latest (SOLAS III/19.4.1)",
       "BA clothing, hose opening, use of extinguishers are included in the drill.",
       "All drills are recorded in the logbook; Controlled in PSC",
@@ -3416,7 +3416,7 @@ export default function SeamanshipTopicsPage() {
                       className="group inline-flex items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-500/20 dark:text-amber-400"
                     >
                       <Eye className="h-4 w-4" />
-                      Gemici Bağları'nı aç
+                      Open Seamanship knots
                       <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </div>

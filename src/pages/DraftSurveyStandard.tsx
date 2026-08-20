@@ -168,7 +168,7 @@ export default function DraftSurveyStandard() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Implications (tonne)</CardTitle>
+          <CardTitle>Implications (tone)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

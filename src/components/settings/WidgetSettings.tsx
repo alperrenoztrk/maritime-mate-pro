@@ -12,7 +12,7 @@ export function WidgetSettings() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <LayoutGrid className="w-5 h-5" />
-          <span data-translatable>Ana Sayfa Widget'ları</span>
+          <span data-translatable>Home Page Widgets</span>
         </CardTitle>
       </CardHeader>
       <CardContent>

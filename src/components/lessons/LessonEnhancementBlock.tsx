@@ -102,7 +102,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
             >
               <div className="bg-sky-500/10 px-4 py-3">
                 <p className="text-micro font-bold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">
-                  Example {i + 1}
+                  Examples {i + 1}
                 </p>
                 <p className="mt-1 text-sm font-semibold leading-relaxed text-foreground">
                   {ex.scenario}

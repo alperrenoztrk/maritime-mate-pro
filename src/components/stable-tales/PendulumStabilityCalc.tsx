@@ -119,8 +119,8 @@ export const PendulumStabilityCalc = () => {
                 </div>
                 <div className="text-center">
                   <Badge variant={
-                    results.dogruluk === 'Yüksek' ? 'default' : 
-                    results.dogruluk === 'Orta' ? 'secondary' : 'destructive'
+                    results.dogruluk === 'High' ? 'default' : 
+                    results.dogruluk === 'Medium' ? 'secondary' : 'destructive'
                   }>
                     {results.dogruluk}
                   </Badge>
@@ -141,7 +141,7 @@ export const PendulumStabilityCalc = () => {
             <CardContent className="space-y-3">
               <div className="p-4 bg-muted rounded-lg">
                 <h4 className="font-medium mb-2">Formula Used:</h4>
-                <p className="font-mono text-sm">θ = arcsin(sapma / sarkaç_uzunluğu)</p>
+                <p className="font-mono text-sm">θ = arcsin(deflection / pendulum_length)</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

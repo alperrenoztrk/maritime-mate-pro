@@ -81,7 +81,7 @@ const cargoTopics: CargoMainTopic[] = [
       { id: "css-code", title: "CSS Code requirements", hasContent: true },
       { id: "lashing-equipment", title: "Tying equipment", hasContent: true },
       { id: "lashing-calc", title: "Cargo securing force calculations", hasContent: true },
-      { id: "container-lashing", title: "Containercargo securing systems", hasContent: true },
+      { id: "container-lashing", title: "Containercargo security systems", hasContent: true },
       { id: "heavy-lift-lashing", title: "Heavy cargo securing", hasContent: true },
     ],
   },

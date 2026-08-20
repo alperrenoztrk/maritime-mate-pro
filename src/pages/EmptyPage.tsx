@@ -343,7 +343,7 @@ const EmptyPage = () => {
                   <Smartphone className="h-4 w-4" /> Navigation Methods:
                 </p>
                 <p className="flex items-start gap-2"><MoveHorizontal className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Scroll:</strong> Switch between categories by swiping the page left/right</span></p>
-                <p className="flex items-start gap-2"><MousePointerClick className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Click:</strong> Ekranın sağ %35&apos;ine tıklayarak ileri, sol %35&apos;ine tıklayarak geri gidin</span></p>
+                <p className="flex items-start gap-2"><MousePointerClick className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Click:</strong> Tap the right 35% of the screen to go forward, the left 35% to go back</span></p>
               </div>
             </DialogDescription>
           </DialogHeader>

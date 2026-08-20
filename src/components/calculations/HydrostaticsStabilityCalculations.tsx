@@ -2621,7 +2621,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* 8. Yalpa Periyodu */}
           <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">8. Roll Period</h4>
+            <h4 className="font-semibold mb-3">8.Roll Period</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <Label htmlFor="roll-breadth">Width (B) [m]</Label>

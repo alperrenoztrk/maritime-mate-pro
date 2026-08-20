@@ -1151,7 +1151,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       { step: 1, title: "Formula", formula: "d = (Port + Starboard) / 2", explanation: "Port and starboard side drafts are averaged for each position" },
       { step: 2, title: "chief draft", formula: `dF = (${pf.toFixed(3)} + ${sf.toFixed(3)}) / 2`, result: `dF = ${dF.toFixed(3)} m` },
       { step: 3, title: "Mid draft", formula: `dM = (${pm.toFixed(3)} + ${sm.toFixed(3)}) / 2`, result: `dM = ${dM.toFixed(3)} m` },
-      { step: 4, title: "aft draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
+      { step: 4, title: "aphtha draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
     ] }));
     toast({ title: "Average Drafts", description: `dF=${dF.toFixed(3)}, dM=${dM.toFixed(3)}, dA=${dA.toFixed(3)} m` });
   };
@@ -1200,7 +1200,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>Aft Draft (dA) - m</Label>
                     <Input
                       type="number"
-                      placeholder="aft draft"
+                      placeholder="aphtha draft"
                       value={hoggingSaggingInputs.draftAft}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftAft: e.target.value }))}
                     />
@@ -2201,7 +2201,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {loadHeightResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-indigo-500">
-                    <p className="font-mono text-lg">Müsaade Edilen Yük Yüksekliği = {loadHeightResult.toFixed(2)} m</p>
+                    <p className="font-mono text-lg">Permissible Load Height = {loadHeightResult.toFixed(2)} m</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["loadHeight"] || []} />
@@ -2319,10 +2319,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
                   <div><Label>Head Port</Label><Input type="number" value={avgDraftsInputs.portForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portForward: e.target.value}))} /></div>
                   <div><Label>Mediocre Port</Label><Input type="number" value={avgDraftsInputs.portMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portMidship: e.target.value}))} /></div>
-                  <div><Label>Aft Port</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
+                  <div><Label>Aphthous Port</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
                   <div><Label>Head Starboard</Label><Input type="number" value={avgDraftsInputs.starboardForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardForward: e.target.value}))} /></div>
                   <div><Label>Mediocre Starboard</Label><Input type="number" value={avgDraftsInputs.starboardMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardMidship: e.target.value}))} /></div>
-                  <div><Label>Aft Starboard</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
+                  <div><Label>Aphthous Starboard</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
                 </div>
                 <div className="flex justify-end mt-3"><Button onClick={calculateAverageDrafts}><Calculator className="w-4 h-4 mr-2" />Calculate</Button></div>
                 {avgDraftsResults && (

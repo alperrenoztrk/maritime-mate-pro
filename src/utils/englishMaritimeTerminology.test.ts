@@ -8,8 +8,8 @@ import {
   repairEnglishMaritimeTerminology,
 } from './englishMaritimeTerminology.ts';
 
-test('all 134 audited terminology families have a regression rule', () => {
-  const expected = Array.from({ length: 134 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
+test('all 142 audited terminology families have a regression rule', () => {
+  const expected = Array.from({ length: 142 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
   assert.deepEqual([...new Set(ENGLISH_TERMINOLOGY_RULES.map(({ id }) => id))].sort(), expected);
 });
 

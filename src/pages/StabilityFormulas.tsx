@@ -228,7 +228,7 @@ GZ (large angles):    GZ(φ) = KN(φ) − KG · sin φ  (KN from the tables)`}</
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="curves" className="scroll-mt-24">Statical Stability Curves</CardTitle>
+            <CardTitle id="curves" className="scroll-mt-24">Static Stability Curves</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">

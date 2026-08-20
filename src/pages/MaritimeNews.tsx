@@ -249,7 +249,7 @@ const MaritimeNews = () => {
       onTouchEnd={handleTouchEnd}
     >
       <Helmet>
-        <title>Mariner's Book — Denizcilik Haberleri</title>
+        <title>Mariner's Book — Maritime News</title>
         <meta
           name="description"
           content="Current news from the maritime world; headlines, sources and in-app reading in a newspaper format."
@@ -351,7 +351,7 @@ const MaritimeNews = () => {
                 <div className="gz-kicker">Announcement from the Printing House</div>
                 <h2 className="gz-headline text-xl">Today's edition is delayed</h2>
                 <div className="gz-notice">
-                  Haberler alınamadı; hatlar onarılır onarılmaz baskıya devam edilecektir. Biraz sonra tekrar deneyin.
+                  The news could not be fetched; the presses roll again as soon as the lines are repaired. Please try again shortly.
                   <div className="mt-1 break-words text-micro not-italic opacity-80">
                     {query.error instanceof Error ? query.error.message : "Unknown error"}
                   </div>

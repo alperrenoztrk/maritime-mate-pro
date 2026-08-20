@@ -371,7 +371,7 @@ export const WeatherMapDrawing = () => {
 
           {/* Tool Selection */}
           <div className="space-y-3">
-            <h3 className="font-semibold text-sm">Pressure Systems</h3>
+            <h3 className="font-semibold text-sm">Pressure systems</h3>
             <div className="flex flex-wrap gap-2">
               <Button
                 variant={activeTool === "select" ? "default" : "outline"}

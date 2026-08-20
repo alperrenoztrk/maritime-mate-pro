@@ -730,7 +730,7 @@ export default function RegulationDetailPage() {
               <div>
                 <h2 className="font-bold text-foreground">Principle of use on board</h2>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  In an inspection, show the ship-specific practice rather than a memorised sentence: which provision applies, who is responsible, how the operation is carried out, which record is created and how safety is preserved in the event of a failure?
+                  In an inspection, show the ship-specific practice rather than a memorized sentence: which provision applies, who is responsible, how the operation is carried out, which record is created and how safety is preserved in the event of a failure?
                 </p>
               </div>
             </section>

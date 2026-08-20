@@ -75,7 +75,7 @@ const TOOLS: CalcTool[] = [
   { id: "seamanship-calc", title: "Seamanship Calculations", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
   { id: "diesel-engines", title: "Diesel Engines", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
   { id: "thermodynamics", title: "Thermodynamics", icon: Thermometer, to: "/machine/thermodynamics/calculations", category: "machine" },
-  { id: "fuel-technology", title: "Fuel Technology", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+  { id: "fuel-technology", title: "Fuel technology", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
   { id: "cooling-hvac", title: "Cooling and HVAC", icon: Gauge, to: "/machine/cooling-hvac/calculations", category: "machine" },
   { id: "machine-elements", title: "Machine Elements", icon: Layers, to: "/machine/machine-elements/calculations", category: "machine" },
   { id: "emissions-machine", title: "Emission and Environment", icon: Flame, to: "/machine/environment-machine/calculations", category: "machine" },

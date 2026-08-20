@@ -49,7 +49,7 @@ const CATEGORY_MAP: Array<[string, string]> = [
   ["/beta", "Beta"],
 ];
 
-export const FALLBACK_CATEGORY = "Other";
+export const FALLBACK_CATEGORY = "Others";
 
 export function deriveCategory(pathname: string): string {
   for (const [prefix, label] of CATEGORY_MAP) {

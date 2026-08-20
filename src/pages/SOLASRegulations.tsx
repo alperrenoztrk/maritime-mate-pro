@@ -117,7 +117,7 @@ const SOLASRegulationsPage = () => {
             <div className="bg-white/70 dark:bg-slate-900/60 rounded-lg p-4 border border-blue-50">
               <p className="font-semibold text-blue-700 mb-2">Documentation</p>
               <p className="text-muted-foreground">
-                Plan, çizim ve sertifika revizyon numaraları dijital arşivde tutulmalı; köprüüstünde basılı acil durum versiyonları bulunmalı.
+                Plan, drawing and certificate revision numbers must be held in the digital archive, and printed emergency versions must be available on the bridge.
               </p>
             </div>
             <div className="bg-white/70 dark:bg-slate-900/60 rounded-lg p-4 border border-blue-50">

@@ -78,10 +78,10 @@ function createFallbackNews(language: unknown): MaritimeNewsResponse {
       mode: edition.mode,
     },
     items: [{
-      title: `${edition.countryName} denizcilik haberlerini aç`,
+      title: `Open ${edition.countryName} maritime news`,
       link: url,
       source: `Google News · ${edition.countryName}`,
-      summary: "Haber servisine geçici olarak ulaşılamadı. Seçili dile ait güncel yerel kaynakları açabilirsiniz.",
+      summary: "The news service is temporarily unreachable. You can open the current local sources for the selected language.",
     }],
     sources: [{ id: `fallback-${edition.language}`, name: `Google News · ${edition.countryName}`, url }],
   };
@@ -106,7 +106,7 @@ function toStringSafe(value: unknown): string {
 function normalizeResponse(data: unknown): MaritimeNewsResponse {
   // Some runtimes can return non-JSON or unexpected shapes (e.g. { error: "..." }).
   if (!isObject(data)) {
-    throw new Error("Haber servisi beklenmeyen yanıt döndürdü.");
+    throw new Error("The news service returned an unexpected response.");
   }
 
   // Edge function error path: { error: message }
@@ -164,7 +164,7 @@ function normalizeResponse(data: unknown): MaritimeNewsResponse {
   // If all upstream feeds failed, treat it as an error so the UI retries instead of caching an empty list all day.
   if (items.length === 0 && errors && errors.length > 0) {
     const first = errors[0];
-    throw new Error(first?.error || "Haber kaynaklarına erişilemedi.");
+    throw new Error(first?.error || "The news sources could not be reached.");
   }
 
   return { fetchedAt, items, errors, sources, locale };
@@ -178,7 +178,7 @@ function getFunctionBaseUrl(): string {
   // Fallback: use supabase client URL
   const client = supabase as unknown as SupabaseClientInternals;
   const fallback = client.supabaseUrl;
-  if (!fallback) throw new Error("Backend URL bulunamadı.");
+  if (!fallback) throw new Error("Backend URL not found.");
   return fallback;
 }
 
@@ -212,7 +212,7 @@ export function getAnonKey(): string {
   // Fallback to the generated Supabase client key when env is not injected (common in some builds/webviews).
   const client = supabase as unknown as SupabaseClientInternals;
   const fallback = client.supabaseKey || client.anonKey;
-  if (!fallback) throw new Error("Backend anahtarı bulunamadı.");
+  if (!fallback) throw new Error("Backend key not found.");
   return fallback;
 }
 
@@ -268,7 +268,7 @@ export async function fetchMaritimeNews(
       if (!res.ok) {
         const text = await res.text().catch(() => "");
         console.error("📰 [MaritimeNews] HTTP error:", { status: res.status, text });
-        throw new Error(text || `Haber servisi hata döndürdü (${res.status}).`);
+        throw new Error(text || `The news service returned an error (${res.status}).`);
       }
 
       const data = (await res.json().catch(() => null)) as unknown;
@@ -277,7 +277,7 @@ export async function fetchMaritimeNews(
       const message = err instanceof Error ? err.message : String(err);
       const withTimeout =
         err instanceof DOMException && err.name === "AbortError"
-          ? `Zaman aşımı (${timeoutMs} ms)`
+          ? `Timed out (${timeoutMs} ms)`
           : message;
       errors.push(`${url}: ${withTimeout}`);
       console.warn("📰 [MaritimeNews] Failed endpoint, trying next", { url, message: withTimeout });
@@ -289,6 +289,6 @@ export async function fetchMaritimeNews(
   return {
     ...createFallbackNews(language),
     fetchedAt: new Date().toISOString(),
-    errors: errors.map((e, i) => ({ source: `Uç nokta ${i + 1}`, error: e })),
+    errors: errors.map((e, i) => ({ source: `Endpoint ${i + 1}`, error: e })),
   };
 }

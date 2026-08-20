@@ -202,7 +202,7 @@ export const DrydockStabilityCalc = () => {
           </div>
 
           <div className="space-y-3">
-            <Label className="text-base font-medium">Destek Noktaları (Pupa'dan itibaren mesafe - m)</Label>
+            <Label className="text-base font-medium">Support Points (distance from stern - m)</Label>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {drydockData.destek_noktalari.map((nokta, index) => (
                 <div key={index} className="flex gap-2">
@@ -310,7 +310,7 @@ export const DrydockStabilityCalc = () => {
               <div className="p-4 bg-muted rounded-lg">
                 <h5 className="font-medium mb-2">Critical GM Formula:</h5>
                 <p className="font-mono text-sm mb-2">
-                  GM_kritik = 0.05 + (ortalama_destek_aralığı / 100)
+                  GM_critical = 0.05 + (mean_block_spacing / 100)
                 </p>
                 <p className="text-xs text-muted-foreground">
                   This is the simplified formula. Structural analysis is required for actual calculation.

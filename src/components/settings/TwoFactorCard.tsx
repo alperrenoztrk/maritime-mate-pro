@@ -107,7 +107,7 @@ export const TwoFactorCard = () => {
         ) : enabled ? (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              On. At sign-in you are asked for the 6-digit code from your authenticator app in addition to your password.
+              Ten. At sign-in you are asked for the 6-digit code from your authenticator app in addition to your password.
             </p>
             {factors.map((factor) => (
               <Button

@@ -333,7 +333,7 @@ export default function DraftSurveyBunker() {
                 * Temperature correction applied (0.06%/°C)
               </p>
               <p className="text-sm text-muted-foreground">
-                * Hacim 15°C'de hesaplanmıştır
+                * Volume calculated at 15°C
               </p>
             </div>
           </CardContent>

@@ -207,7 +207,7 @@ export default function BuoyagePage() {
                   Light Character Abbreviations
                 </h2>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  At night you recognise a mark by its light rhythm, not by the colour of its body. If the rhythm you see does not match the signature on the chart, either you are looking at the wrong light or your position assumption is wrong.
+                  At night you recognize a mark by its light rhythm, not by the color of its body. If the rhythm you see does not match the signature on the chart, either you are looking at the wrong light or your position assumption is wrong.
                 </p>
               </div>
               <div>

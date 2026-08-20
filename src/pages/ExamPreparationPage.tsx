@@ -121,7 +121,7 @@ const examModules = [
     borderColor: "border-sky-500/30",
     questions: meteorologyQuestions,
     description: "Wind, pressure systems, storm, waves, fog",
-    topics: ["Beaufort", "Pressure Systems", "Tropical Meteorology", "Facades", "Waves"]
+    topics: ["Beaufort", "Pressure systems", "Tropical Meteorology", "Facades", "Waves"]
   }
 ];
 

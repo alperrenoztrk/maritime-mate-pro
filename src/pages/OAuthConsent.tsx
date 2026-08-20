@@ -102,7 +102,7 @@ const OAuthConsent = () => {
               : "Confirm the connection"}
           </CardTitle>
           <CardDescription className="text-sm">
-            Bu uygulamanın Mariner's Book hesabınızı sizin adınıza kullanmasına izin verirsiniz.
+            You consent to this application using your Mariner's Book account on your behalf.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

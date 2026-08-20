@@ -468,7 +468,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                   {loadPoints.map((load, index) => (
                     <div key={index} className="grid grid-cols-4 gap-3 p-3 border rounded-lg">
                       <div>
-                        <Label className="text-xs">Pozisyon (AP'den) [m]</Label>
+                        <Label className="text-xs">Position (from AP) [m]</Label>
                         <Input
                           type="number"
                           value={load.position}
@@ -651,7 +651,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
 
                     <div className="p-3 bg-muted rounded-lg">
                       <div className="text-sm">
-                        <strong>Critical Section:</strong> AP'den {result.criticalSection.toFixed(1)}m
+                        <strong>Critical Section:</strong> From AP {result.criticalSection.toFixed(1)}m
                       </div>
                     </div>
 
@@ -730,7 +730,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                     
                     {shearBendingData.length > 0 && (
                       <div>
-                        <h4 className="font-semibold mb-3">Critical Values</h4>
+                        <h4 className="font-semibold mb-3">Critical values</h4>
                         <div className="grid grid-cols-3 gap-4 text-sm">
                           <div>
                             <strong>Max Positive Torque:</strong> 

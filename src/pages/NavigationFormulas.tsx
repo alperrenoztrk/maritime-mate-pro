@@ -119,7 +119,7 @@ export default function NavigationFormulasPage() {
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <ol className="list-decimal pl-4 space-y-2">
-              <li><strong>Basic navigation:</strong> speed–distance–time, knot ↔ km/h ↔ m/s conversions, ETA/ETD, remaining time and distance, average speed and SMG/DMG calculations.</li>
+              <li><strong>Basic navigation:</strong> speed–distance–time, knots ↔ km/h ↔ m/s conversions, ETA/ETD, remaining time and distance, average speed and SMG/DMG calculations.</li>
               <li><strong>Course and bearings:</strong> plane sailing, departure, D.Lat/D.Long, middle latitude sailing, true/magnetic/compass course, chart scale and verifying the track by bearings.</li>
               <li><strong>Latitude and longitude:</strong> determining the direction of dLat/dLong, the 1° = 60 NM relation, converting longitude to NM with cos φ, and the distance between two points.</li>
               <li><strong>On the chart:</strong> using parallel rules and dividers, true course and distance → time conversion, and checking after chart corrections.</li>
@@ -150,8 +150,8 @@ export default function NavigationFormulasPage() {
               <li><strong>Nautical Almanac:</strong> GHA/LHA, declination, refraction and parallax corrections; sunrise/sunset and meridian passage data.</li>
               <li><strong>Sight Reduction Tables (HO-249/HO-229):</strong> using the tables to solve for the intercept and azimuth.</li>
               <li><strong>Deviation card and compass error log:</strong> magnetic and compass corrections and verification of the TVMDC chain.</li>
-              <li><strong>Chart catalogue and corrections:</strong> the current chart/ENC list, the NM/UWN/SNW bulletins and the ECDIS route check output.</li>
-              <li><strong>Current and wind reference sheets:</strong> leeway angle coefficients, manoeuvring diagrams and advance/transfer and wheel-over tables.</li>
+              <li><strong>Chart catalog and corrections:</strong> the current chart/ENC list, the NM/UWN/SNW bulletins and the ECDIS route check output.</li>
+              <li><strong>Current and wind reference sheets:</strong> leeway angle coefficients, maneuvering diagrams and advance/transfer and wheel-over tables.</li>
             </ul>
           </CardContent>
         </Card>
@@ -210,7 +210,7 @@ R ≈ 3440.065 nm`}</pre>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>θ: the central angle between the two positions</li>
                   <li>φ₁, φ₂: the latitudes of departure and arrival</li>
-                  <li>Δλ: the difference of longitude</li>
+                  <li>Δλ: the difference of length</li>
                 </ul>
               </div>
               <div className="bg-muted/30 rounded p-3 space-y-2">

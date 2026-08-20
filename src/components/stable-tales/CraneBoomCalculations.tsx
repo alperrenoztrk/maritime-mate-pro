@@ -281,7 +281,7 @@ export const CraneBoomCalculations = () => {
                   ΔGM = -W × (h_hook - h_load)² / (Δ + W)
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Burada: W = Yük ağırlığı, h_kanca = Kanca yüksekliği, h_yük = Yük yüksekliği, Δ = Deplasman
+                  Where: W = load weight, h_kanca = hook height, h_yük = load height, Δ = displacement
                 </p>
               </div>
 

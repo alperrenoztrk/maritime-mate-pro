@@ -46,7 +46,7 @@ export const ProGate = ({ children, feature, fallback }: ProGateProps) => {
         </p>
         <Button size="sm" className="gap-2 bg-amber-500 text-black hover:bg-amber-400" onClick={() => navigate("/pro")}>
           <Crown className="w-4 h-4" />
-          <span data-translatable>Pro'ya geç</span>
+          <span data-translatable>Switch to Pro</span>
         </Button>
       </CardContent>
     </Card>

@@ -209,7 +209,7 @@ const ProPage = () => {
                     onClick={() => window.open(getPlaySubscriptionManagementUrl(PRODUCT_IDS.yearly), "_blank")}
                   >
                     <ExternalLink className="w-4 h-4" />
-                    <span data-translatable>Aboneliği Google Play'de yönet</span>
+                    <span data-translatable>Manage subscription on Google Play</span>
                   </Button>
                 )}
                 <Button variant="ghost" size="sm" className="gap-2" onClick={() => void refresh()}>
@@ -224,7 +224,7 @@ const ProPage = () => {
                 <Card className="border-blue-500/40 bg-blue-500/10">
                   <CardContent className="py-3 text-sm">
                     <span data-translatable>
-                      Satın alma yalnızca Google Play'den indirilen Android uygulamasında yapılabilir.
+                      Purchases can only be made in the Android app downloaded from Google Play.
                     </span>
                   </CardContent>
                 </Card>
@@ -333,7 +333,7 @@ const ProPage = () => {
                     bağlantı verilmesini bekliyor; özet burada, tamamı şartlarda. */}
                 <p className="text-xs text-muted-foreground mt-2 max-w-xl mx-auto">
                   <span data-translatable>
-                    Ödemeler Google Play hesabınızdan alınır. Abonelikler dönem sonunda otomatik yenilenir; dilediğiniz zaman Google Play &gt; Abonelikler bölümünden iptal edebilirsiniz. Ömür boyu paket tek seferlik ödemedir ve sınırsız yapay zekâ kotası içermez.
+                    Payments are taken from your Google Play account. Subscriptions renew automatically at the end of each period; you can cancel any time under Google Play &gt; Subscriptions. The lifetime package is a one-off payment and does not include an unlimited AI quota.
                   </span>{" "}
                   <span data-translatable>Refunds are subject to the Google Play refund policy. See full terms and conditions.</span>{" "}
                   <a
