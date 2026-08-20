@@ -36,7 +36,7 @@ export const PendulumStabilityCalc = () => {
         sarkac_uzunlugu: sarkacData.sarkac_uzunlugu,
         sapma: sarkacData.sapma,
         hata_marji: Math.abs(Math.sin(meyil_acisi * Math.PI / 180) - sarkacData.sapma / sarkacData.sarkac_uzunlugu) * 100,
-        dogruluk: meyil_acisi < 15 ? 'Yüksek' : meyil_acisi < 30 ? 'Orta' : 'Düşük'
+        dogruluk: meyil_acisi < 15 ? 'High' : meyil_acisi < 30 ? 'Medium' : 'Low'
       };
       
       setResults(calculatedResults);
@@ -46,7 +46,7 @@ export const PendulumStabilityCalc = () => {
       
     } catch (error) {
       console.error("Pendulum calculation error:", error);
-      toast.error("Sarkaç hesaplaması sırasında bir hata oluştu!");
+      toast.error("An error occurred during the pendulum calculation!");
     }
   };
 
@@ -56,13 +56,13 @@ export const PendulumStabilityCalc = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Sarkaç Metodu ile Meyil Açısı Ölçümü
+            Heel Angle Measurement with Pendulum Method
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label>Sarkaç Uzunluğu (m)</Label>
+              <Label>Pendulum Length (m)</Label>
               <Input
                 type="number"
                 step="0.01"
@@ -73,12 +73,12 @@ export const PendulumStabilityCalc = () => {
                 }))}
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Sarkaç ipinin uzunluğu (genellikle 0.5-2.0 m arası)
+                Length of pendulum string (usually between 0.5-2.0 m)
               </p>
             </div>
             
             <div>
-              <Label>Sapma Miktarı (m)</Label>
+              <Label>Deviation Amount (m)</Label>
               <Input
                 type="number"
                 step="0.001"
@@ -89,14 +89,14 @@ export const PendulumStabilityCalc = () => {
                 }))}
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Sarkaç ağırlığının düşeyden sapma miktarı
+                The amount of deviation of the pendulum weight from the vertical
               </p>
             </div>
           </div>
 
           <Button onClick={calculatePendulum} className="w-full">
             <Calculator className="mr-2 h-4 w-4" />
-            Meyil Açısını Hesapla
+            Calculate Heel Angle
           </Button>
         </CardContent>
       </Card>
@@ -105,7 +105,7 @@ export const PendulumStabilityCalc = () => {
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Sarkaç Metodu Sonuçları</CardTitle>
+              <CardTitle>Pendulum Method Results</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -115,20 +115,20 @@ export const PendulumStabilityCalc = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-secondary">{results.hata_marji.toFixed(2)}%</p>
-                  <p className="text-sm text-muted-foreground">Hata Marjı</p>
+                  <p className="text-sm text-muted-foreground">Margin of Error</p>
                 </div>
                 <div className="text-center">
                   <Badge variant={
-                    results.dogruluk === 'Yüksek' ? 'default' : 
-                    results.dogruluk === 'Orta' ? 'secondary' : 'destructive'
+                    results.dogruluk === 'High' ? 'default' : 
+                    results.dogruluk === 'Medium' ? 'secondary' : 'destructive'
                   }>
                     {results.dogruluk}
                   </Badge>
-                  <p className="text-sm text-muted-foreground mt-1">Doğruluk</p>
+                  <p className="text-sm text-muted-foreground mt-1">Accuracy</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold">{(results.sapma / results.sarkac_uzunlugu).toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">Sin(θ) Değeri</p>
+                  <p className="text-sm text-muted-foreground">Sin(θ) Value</p>
                 </div>
               </div>
             </CardContent>
@@ -136,38 +136,38 @@ export const PendulumStabilityCalc = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Ölçüm Detayları</CardTitle>
+              <CardTitle>Measurement Details</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="p-4 bg-muted rounded-lg">
-                <h4 className="font-medium mb-2">Kullanılan Formül:</h4>
-                <p className="font-mono text-sm">θ = arcsin(sapma / sarkaç_uzunluğu)</p>
+                <h4 className="font-medium mb-2">Formula Used:</h4>
+                <p className="font-mono text-sm">θ = arcsin(deflection / pendulum_length)</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium">Girilen Değerler</h5>
-                  <p>Sarkaç Uzunluğu: {sarkacData.sarkac_uzunlugu} m</p>
-                  <p>Sapma: {sarkacData.sapma} m</p>
+                  <h5 className="font-medium">Entered Values</h5>
+                  <p>Pendulum Length: {sarkacData.sarkac_uzunlugu} m</p>
+                  <p>Deviation: {sarkacData.sapma} m</p>
                 </div>
                 
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium">Doğruluk Kriterleri</h5>
-                  <p>0-15°: Yüksek doğruluk</p>
-                  <p>15-30°: Orta doğruluk</p>
-                  <p>30°+: Düşük doğruluk</p>
+                  <h5 className="font-medium">Accuracy Criteria</h5>
+                  <p>0-15°: High accuracy</p>
+                  <p>15-30°: Medium accuracy</p>
+                  <p>30°+: Low accuracy</p>
                 </div>
               </div>
 
               <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                 <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">
-                  Uygulama Notları:
+                  Application Notes:
                 </h5>
                 <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                  <li>• Sarkaç ölçümü sakin deniz durumunda yapılmalıdır</li>
-                  <li>• Rüzgar etkisi minimize edilmelidir</li>
-                  <li>• Birden fazla ölçüm alarak ortalama hesaplanmalıdır</li>
-                  <li>• Sarkaç uzunluğu càlışma alanına uygun seçilmelidir</li>
+                  <li>• Pendulum measurement should be done in calm sea condition</li>
+                  <li>• Wind effect should be minimized</li>
+                  <li>• The average should be calculated by taking more than one measurement</li>
+                  <li>• Pendulum length should be chosen according to the working area.</li>
                 </ul>
               </div>
             </CardContent>

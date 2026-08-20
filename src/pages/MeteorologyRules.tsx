@@ -8,7 +8,7 @@ const meteorologyRules = [
     icon: FileText,
     rules: [
       "Current meteorological data must be used when preparing the passage plan.",
-      "Weather forecasts and routeing recommendations must be taken into account.",
+      "Weather forecasts and routing recommendations must be taken into account.",
       "Alternative routes must be planned for severe weather conditions.",
       "Meteorological data and forecasts must be kept in the voyage plan file."
     ]
@@ -18,7 +18,7 @@ const meteorologyRules = [
     icon: CloudSun,
     rules: [
       "An avoidance plan is essential on routes where severe weather is expected.",
-      "Weather routeing services should be used.",
+      "Weather routing services should be used.",
       "Cargo safety and fuel economy must be balanced when selecting the route.",
       "The 500 nm rule: if a tropical cyclone is within 500 nm, a route change must be considered."
     ]
@@ -34,7 +34,7 @@ const meteorologyRules = [
     ]
   },
   {
-    title: "WMO Denizcilik Servisleri",
+    title: "WMO Maritime Services",
     icon: Scale,
     rules: [
       "NAVTEX warnings must be monitored.",
@@ -52,13 +52,13 @@ export default function MeteorologyRulesPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Scale className="h-4 w-4" />
-            Meteoroloji Kuralları
+            Meteorology Rules
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-            Meteoroloji Kuralları
+            Meteorology Rules
           </h1>
         </div>
 

@@ -35,7 +35,7 @@ export default function DraftSurveyStandard() {
     const { lengthBP, breadth, forwardDraft, midshipDraft, aftDraft, density, ballast, fuel, freshWater, stores } = inputs;
     
     if (!lengthBP || !breadth || !forwardDraft || !midshipDraft || !aftDraft) {
-      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -66,14 +66,14 @@ export default function DraftSurveyStandard() {
       cargoWeight
     });
 
-    toast({ title: "Calculation Completed", description: "Draft survey sonuçları hesaplandı" });
+    toast({ title: "Calculation Completed", description: "Draft survey results were calculated" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold">Standart Draft Survey</h1>
+          <h1 className="text-2xl font-bold">Standard Draft Survey</h1>
         </div>
       </div>
 
@@ -81,7 +81,7 @@ export default function DraftSurveyStandard() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Ship className="h-5 w-5" />
-            Gemi Özellikleri
+            Ship Features
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -93,7 +93,7 @@ export default function DraftSurveyStandard() {
                 type="number"
                 value={inputs.lengthBP}
                 onChange={(e) => setInputs(prev => ({ ...prev, lengthBP: e.target.value }))}
-                placeholder="Dikmeler arası uzunluk"
+                placeholder="Length between uprights"
               />
             </div>
             <div>
@@ -103,7 +103,7 @@ export default function DraftSurveyStandard() {
                 type="number"
                 value={inputs.breadth}
                 onChange={(e) => setInputs(prev => ({ ...prev, breadth: e.target.value }))}
-                placeholder="Moulded genişlik"
+                placeholder="Molded width"
               />
             </div>
             <div>
@@ -124,13 +124,13 @@ export default function DraftSurveyStandard() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Scale className="h-5 w-5" />
-            Draft Okumaları
+            Draft Readings
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label htmlFor="forwardDraft">Baş Draft (m)</Label>
+              <Label htmlFor="forwardDraft">Head Draft (m)</Label>
               <Input
                 id="forwardDraft"
                 type="number"
@@ -141,7 +141,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="midshipDraft">Orta Draft (m)</Label>
+              <Label htmlFor="midshipDraft">Medium Draft (m)</Label>
               <Input
                 id="midshipDraft"
                 type="number"
@@ -152,7 +152,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="aftDraft">Kıç Draft (m)</Label>
+              <Label htmlFor="aftDraft">Aft Draft (m)</Label>
               <Input
                 id="aftDraft"
                 type="number"
@@ -168,12 +168,12 @@ export default function DraftSurveyStandard() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Çıkarımlar (ton)</CardTitle>
+          <CardTitle>Implications (tone)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="ballast">Balast Suyu</Label>
+              <Label htmlFor="ballast">Ballast Water</Label>
               <Input
                 id="ballast"
                 type="number"
@@ -193,7 +193,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="freshWater">Tatlı Su</Label>
+              <Label htmlFor="freshWater">Fresh Water</Label>
               <Input
                 id="freshWater"
                 type="number"
@@ -203,7 +203,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="stores">Erzak/Yedek</Label>
+              <Label htmlFor="stores">Supplies/Reserves</Label>
               <Input
                 id="stores"
                 type="number"
@@ -226,19 +226,19 @@ export default function DraftSurveyStandard() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FileText className="h-5 w-5" />
-              Hesaplama Sonuçları
+              Calculation Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p><strong>Ortalama su çekimi:</strong> {result.meanDraft.toFixed(3)} m</p>
-                <p><strong>Deplasman:</strong> {result.displacement.toFixed(2)} ton</p>
+                <p><strong>Average draft:</strong> {result.meanDraft.toFixed(3)} m</p>
+                <p><strong>Displacement</strong> {result.displacement.toFixed(2)} ton</p>
               </div>
               <div className="space-y-2">
                 <p><strong>Deadweight:</strong> {result.deadweight.toFixed(2)} ton</p>
                 <p className="text-lg font-bold text-green-600 dark:text-green-400">
-                  <strong>Kargo Ağırlığı:</strong> {result.cargoWeight.toFixed(2)} ton
+                  <strong>Shipping Weight:</strong> {result.cargoWeight.toFixed(2)} ton
                 </p>
               </div>
             </div>

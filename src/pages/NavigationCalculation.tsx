@@ -159,7 +159,7 @@ const CALC_TITLES: Record<CalcId, string> = {
   turning: "Turning Calculations",
   weather: "Weather",
   celestial: "Celestial Navigation",
-  emergency: "Acil Durum",
+  emergency: "Emergency",
 };
 
 type GreatCircleResults = ReturnType<typeof calculateGreatCircle> & {
@@ -1402,7 +1402,7 @@ export default function NavigationCalculationPage() {
                   <Input id="gc-wp-step" type="number" value={gcInputs.wpStepNm} onChange={(e) => setGcInputs({ ...gcInputs, wpStepNm: e.target.value })} />
                 </div>
                 <div>
-                  <Label htmlFor="gc-wp-seg">Segments (alternatif)</Label>
+                  <Label htmlFor="gc-wp-seg">Segments (alternative)</Label>
                   <Input id="gc-wp-seg" type="number" value={gcInputs.wpSegments} onChange={(e) => setGcInputs({ ...gcInputs, wpSegments: e.target.value })} />
                 </div>
               </div>
@@ -1514,7 +1514,7 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="chart-cm">Haritada Uzunluk (cm)</Label>
+                <Label htmlFor="chart-cm">Length on Chart (cm)</Label>
                 <Input
                   id="chart-cm"
                   type="number"
@@ -1603,7 +1603,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">Knot ↔ km/h ↔ m/s</div>
+              <div className="text-sm font-semibold">Knots ↔ km/h ↔ m/s</div>
               <div className="grid grid-cols-3 gap-4 items-end">
                 <div>
                   <Label htmlFor="b-conv-value">Value</Label>
@@ -1689,7 +1689,7 @@ export default function NavigationCalculationPage() {
         return (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="ct-course">Desired Course (°)</Label>
+              <Label htmlFor="ct-course">Desire Course (°)</Label>
               <Input id="ct-course" type="number" placeholder="045" value={currentInputs.course} onChange={(e) => setCurrentInputs({ ...currentInputs, course: e.target.value })} />
             </div>
             <div>
@@ -1842,7 +1842,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="sight-dec"
-              label="Deklinasyon"
+              label="Declination"
               value={sightInputs.dec}
               onChange={(val) => setSightInputs({ ...sightInputs, dec: val })}
               isLatitude={true}
@@ -2087,7 +2087,7 @@ export default function NavigationCalculationPage() {
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="dip">Dip (Horizon) Distance</SelectItem>
+                  <SelectItem value="dip">Bottom (Horizon) Distance</SelectItem>
                   <SelectItem value="radar">Radar Horizon</SelectItem>
                   <SelectItem value="light">Light Visibility</SelectItem>
                 </SelectContent>
@@ -2111,7 +2111,7 @@ export default function NavigationCalculationPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="tide-hour">Saat (1-6)</Label>
+                <Label htmlFor="tide-hour">Hour (1-6)</Label>
                 <Input id="tide-hour" type="number" min={1} max={6} placeholder="" value={tideInputs.hour} onChange={(e) => setTideInputs({ ...tideInputs, hour: e.target.value })} />
               </div>
               <div>
@@ -2122,12 +2122,12 @@ export default function NavigationCalculationPage() {
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="text-sm font-semibold">Liman ara (Yerel veri)</div>
-                <div className="text-xs text-muted-foreground">Offline uyumlu • Paketli liman listesi</div>
+                <div className="text-sm font-semibold">Search port (Local data)</div>
+                <div className="text-xs text-muted-foreground">Offline compatible • Packaged port list</div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                 <div className="sm:col-span-3">
-                  <Label htmlFor="tide-forecast-query">Port / city</Label>
+                  <Label htmlFor="tide-forecast-query">Port/city</Label>
                   <Input
                     id="tide-forecast-query"
                     placeholder="e.g. Izmir, Antalya, English Channel..."
@@ -2203,7 +2203,7 @@ export default function NavigationCalculationPage() {
                       <table className="w-full border-collapse text-xs">
                         <thead>
                           <tr className="border-b">
-                            <th className="text-left p-2">Olay</th>
+                            <th className="text-left p-2">Incident</th>
                             <th className="text-left p-2">Date</th>
                             <th className="text-left p-2">Time</th>
                             <th className="text-left p-2">Height (m)</th>
@@ -2267,7 +2267,7 @@ export default function NavigationCalculationPage() {
             </div>
 
             <div className="rounded border p-3 bg-muted/30 space-y-3">
-              <div className="text-sm font-semibold">HW / LW → Height of Tide (UTC)</div>
+              <div className="text-sm font-semibold">HW/LW → Height of Tide (UTC)</div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="hot-lw-time">LW Time (UTC)</Label>
@@ -2430,7 +2430,7 @@ export default function NavigationCalculationPage() {
                 <Input id="safe-speed" type="number" value={safetyInputs.speedKn} onChange={(e) => setSafetyInputs({ ...safetyInputs, speedKn: e.target.value })} />
               </div>
               <div>
-                <Label htmlFor="safe-cb">Cb</Label>
+                <Label htmlFor="safe-cb">C b</Label>
                 <Input id="safe-cb" type="number" value={safetyInputs.blockCoeff} onChange={(e) => setSafetyInputs({ ...safetyInputs, blockCoeff: e.target.value })} />
               </div>
               <div>
@@ -2533,7 +2533,7 @@ export default function NavigationCalculationPage() {
               <Input id="turn-change" type="number" placeholder="90" value={turningInputs.courseChange} onChange={(e) => setTurningInputs({ ...turningInputs, courseChange: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="turn-speed">Speed (knot)</Label>
+              <Label htmlFor="turn-speed">Speed (knots)</Label>
               <Input id="turn-speed" type="number" placeholder="" value={turningInputs.speed} onChange={(e) => setTurningInputs({ ...turningInputs, speed: e.target.value })} />
             </div>
           </div>
@@ -2555,7 +2555,7 @@ export default function NavigationCalculationPage() {
               <Input id="weather-area" type="number" placeholder="" value={weatherInputs.windArea} onChange={(e) => setWeatherInputs({ ...weatherInputs, windArea: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="weather-ship">Ship Speed (knot)</Label>
+              <Label htmlFor="weather-ship">Ship Speed (knots)</Label>
               <Input id="weather-ship" type="number" placeholder="" value={weatherInputs.shipSpeed} onChange={(e) => setWeatherInputs({ ...weatherInputs, shipSpeed: e.target.value })} />
             </div>
           </div>
@@ -2586,7 +2586,7 @@ export default function NavigationCalculationPage() {
             />
             <CoordinateInput
               id="celestial-dec"
-              label="Deklinasyon"
+              label="Declination"
               value={celestialInputs.dec}
               onChange={(val) => setCelestialInputs({ ...celestialInputs, dec: val })}
               isLatitude={true}
@@ -2626,11 +2626,11 @@ export default function NavigationCalculationPage() {
               <Input id="emergency-distance" type="number" placeholder="" value={emergencyInputs.distance} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, distance: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="emergency-rescue">Rescue Speed (knot)</Label>
+              <Label htmlFor="emergency-rescue">Rescue Speed (knots)</Label>
               <Input id="emergency-rescue" type="number" placeholder="" value={emergencyInputs.rescueSpeed} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, rescueSpeed: e.target.value })} />
             </div>
             <div>
-              <Label htmlFor="emergency-drift">Drift Speed (knot)</Label>
+              <Label htmlFor="emergency-drift">Drift Speed (knots)</Label>
               <Input id="emergency-drift" type="number" placeholder="" value={emergencyInputs.driftSpeed} onChange={(e) => setEmergencyInputs({ ...emergencyInputs, driftSpeed: e.target.value })} />
             </div>
           </div>
@@ -2685,7 +2685,7 @@ export default function NavigationCalculationPage() {
                       <thead>
                         <tr className="border-b">
                           <th className="text-left p-2">#</th>
-                          <th className="text-left p-2">Lat</th>
+                          <th className="text-left p-2">Latin</th>
                           <th className="text-left p-2">Lon</th>
                         </tr>
                       </thead>
@@ -3234,7 +3234,7 @@ Height: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of 
                       <th className="text-left p-2">Leg</th>
                       <th className="text-left p-2">Dist (NM)</th>
                       <th className="text-left p-2">SOG (kn)</th>
-                      <th className="text-left p-2">Dur (h)</th>
+                      <th className="text-left p-2">Stop (h)</th>
                       <th className="text-left p-2">Start</th>
                       <th className="text-left p-2">ETA</th>
                     </tr>
@@ -3253,7 +3253,7 @@ Height: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of 
                   </tbody>
                 </table>
               </div>
-              <div className="text-xs text-muted-foreground mt-2">Toplam mesafe: <span className="font-mono">{passageResults.totalDistanceNm.toFixed(2)} NM</span></div>
+              <div className="text-xs text-muted-foreground mt-2">Total distance: <span className="font-mono">{passageResults.totalDistanceNm.toFixed(2)} NM</span></div>
               <SolutionSteps
                 title="Leg ETA Steps"
                 steps={[

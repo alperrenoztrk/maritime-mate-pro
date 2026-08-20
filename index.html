@@ -18,11 +18,11 @@
     <meta name="author" content="Mariner's Book" />
     <meta name="google-site-verification" content="_Ah6SqnV73Q0bWyfXZKuGNfKHo9mBYbAIZvU-wmO55g" />
     <link rel="canonical" href="https://nauticalleap.com/" />
-    <!-- Inter ve JetBrains Mono artık self-host (bkz. src/index.css @font-face
-         blokları ve public/fonts). Google Fonts'a giden stylesheet ve iki
-         preconnect kaldırıldı: ilk açılış artık üçüncü taraf bir isteğe
-         bağlı değil ve Capacitor paketi çevrimdışı ilk açılışta da doğru
-         yazı tipiyle çiziyor. -->
+    <!-- Inter and JetBrains Mono are self-hosted now (see the @font-face
+         blocks in src/index.css and public/fonts). The stylesheet that went to
+         Google Fonts and its two preconnects are gone: first paint no longer
+         depends on a third-party request, and the Capacitor bundle draws with
+         the right typeface even on a first offline launch. -->
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nauticalleap.com/" />
@@ -282,9 +282,10 @@
     </div>
 
     <div id="root"></div>
-    <!-- Splash bekçisi: uygulama paketi açılmazsa kullanıcıyı splash ekranında
-         kilitli bırakmaz. Klasik script — modül paketini çökerten hatalardan
-         etkilenmemesi ve üretim CSP'sine takılmaması için ayrı dosyada. -->
+    <!-- Splash watchdog: it keeps a user from being stranded on the splash
+         screen when the app bundle fails to open. A classic script in its own
+         file, so an error that kills the module bundle cannot affect it and the
+         production CSP does not block it. -->
     <script src="/splash-watchdog.js" defer></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>

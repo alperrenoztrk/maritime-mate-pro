@@ -4,7 +4,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "ism-code",
     label: "ISM Code – Uluslararası Emniyet Yönetimi",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Gemi ve şirket düzeyinde emniyet yönetim sistemi (SMS) kurulması, uygulanması ve sürekli iyileştirilmesi için çerçeve sağlar.",
     history: "1987 Herald of Free Enterprise faciasından sonra geliştirilen ISM Code, 1993'te kabul edilmiş ve SOLAS Chapter IX olarak 1998'de zorunlu hale gelmiştir. 2002'de revize edilerek dokümantasyon ve yönetim gözden geçirmesi güçlendirilmiştir. 2021'de siber güvenlik gereklilikleri SMS kapsamına eklenmiştir.",
     applicability: [
@@ -110,7 +110,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "isps-code",
     label: "ISPS Code – Gemi ve Liman Tesisi Güvenliği",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Deniz güvenliği tehditlerine karşı gemi ve liman tesislerinin korunması için risk değerlendirmesi, güvenlik planları ve prosedürler belirler.",
     history: "11 Eylül 2001 saldırıları sonrasında IMO hızla harekete geçmiş ve ISPS Code 2002'de kabul edilerek 2004'te yürürlüğe girmiştir. SOLAS Chapter XI-2 olarak entegre edilmiş olan kod, Part A (zorunlu) ve Part B (tavsiye – çoğu ülke tarafından zorunlu uygulanan) olmak üzere iki bölümden oluşur.",
     applicability: [
@@ -203,7 +203,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "imsbc-code",
     label: "IMSBC Code – Dökme Katı Yük Kuralları",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Dökme katı yükün güvenli taşınması için sınıflandırma, istif, trimming ve özel önlemler belirler; liquefy olabilen ve kimyasal tehlike taşıyan yükleri kapsar.",
     history: "Önceden BC Code olarak bilinen düzenleme, 2008'de IMSBC Code olarak revize edilmiş ve 2011'de SOLAS Chapter VI kapsamında zorunlu hale getirilmiştir. Her 2 yılda güncellenen kod, 350'den fazla yük profilini ve taşıma koşullarını detaylı bir şekilde listeler.",
     applicability: [
@@ -296,7 +296,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "imdg-code",
     label: "IMDG Code – Tehlikeli Madde Taşımacılığı",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Tehlikeli maddelerin deniz yoluyla taşınmasında sınıflandırma, ambalajlama, işaretleme, belgelendirme ve ayrım kurallarını düzenler.",
     history: "İlk olarak 1965'te tavsiye niteliğinde yayımlanan IMDG Code, 2004'ten itibaren SOLAS Chapter VII kapsamında zorunlu hale gelmiştir. Her 2 yılda güncellenir; güncel baskı Amendment 42-24'tür. 3.500'den fazla tehlikeli madde listelenmiştir.",
     applicability: [
@@ -384,7 +384,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "igs-code",
     label: "IGS Code – Inert Gaz Sistemleri",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Tanker gemilerinde kargo tanklarının inert gaz ile korunması için sistem tasarımı, işletme ve bakım standartlarını belirler.",
     history: "1970'lerdeki büyük tanker patlamalarından (Mactra 1969, Marpessa 1969, Kong Haakon VII 1978) sonra geliştirilmiş olan inert gaz sistemi gereklilikleri, SOLAS Chapter II-2'ye entegre edilmiştir. IGS Code bu sistemlerin tasarım ve işletme detaylarını düzenler.",
     applicability: [
@@ -467,7 +467,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "igf-code",
     label: "IGF Code – Gaz Yakıtlı Gemiler",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "LNG ve diğer düşük parlama noktalı gazlarla çalışan gemilerin tasarım, inşa ve işletme güvenliği için risk tabanlı yaklaşım ve teknik standartlar sağlar.",
     history: "Gemilerde alternatif yakıt kullanımının artmasıyla 2015'te kabul edilen IGF Code, 2017'de yürürlüğe girmiştir. Şu anda öncelikle LNG yakıtını kapsar; metanol ve diğer yakıtlar için geçici kılavuzlar (MSC.1/Circ.1621) mevcuttur. Amonyak yakıt kılavuzları hazırlanmaktadır.",
     applicability: [
@@ -553,7 +553,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "bc-code",
     label: "BC Code – Dökme Yük Gemileri Güvenliği",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Dökme yük gemilerinin yapısal güvenliği, yükleme/boşaltma prosedürleri ve stabilite için ek gereklilikler belirler.",
     history: "1990'lardaki dökme yük gemisi kayıpları (Derbyshire 1980, MV Flare 1998) SOLAS Chapter XII'nin 1997'de eklenmesini ve BC Code'un güçlendirilmesini sağlamıştır. 2011'de IMSBC Code yürürlüğe girince BC Code dökme yük gemisi yapısal gerekliliklerine odaklanmıştır.",
     applicability: [
@@ -626,7 +626,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "ics-code",
     label: "IBC Code – Kimyasal Tankerler",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Kimyasal tanker gemilerinin tasarım, inşa ve tehlikeli kimyasal madde taşımacılığı için güvenlik standartlarını düzenler.",
     history: "IBC Code (International Code for the Construction and Equipment of Ships Carrying Dangerous Chemicals in Bulk) 1986'da SOLAS Chapter VII ve MARPOL Ek II kapsamında zorunlu hale gelmiştir. 2007'de kapsamlı revizyon yapılarak NLS sınıflandırması güncellenmiştir. 1986 öncesi gemiler için BCH Code uygulanır.",
     applicability: [
@@ -711,7 +711,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "igc-code",
     label: "IGC Code – Gaz Tankerleri",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Sıvılaştırılmış gaz (LNG, LPG vb.) taşıyan tankerlerin tasarım, inşa ve işletme güvenliği için kapsamlı teknik standartlar sağlar.",
     history: "1986'da SOLAS Chapter VII kapsamında zorunlu kılınan IGC Code, sıvılaştırılmış gaz taşımacılığının özel risklerini ele alır. 2016 revize baskısı (MSC.370(93)) güncel standarttır ve özellikle risk değerlendirmesi ve alternatif tasarım yaklaşımlarını güçlendirmiştir.",
     applicability: [
@@ -796,7 +796,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "lsa-code",
     label: "LSA Code – Can Kurtarma Araçları",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Can filikaları, can salları, kişisel can kurtarma teçhizatı ve indirme düzeneklerinin tasarım, performans ve test standartlarını belirler.",
     history: "LSA Code (Life-Saving Appliances Code), SOLAS Chapter III'ün teknik detaylarını içerir. 1996'da kabul edilmiş ve düzenli olarak MSC sirkülerleri ile güncellenmiştir. Can kurtarma araçlarının tasarım ve performans standardı olarak tüm gemi inşa ve donatım süreçlerine referans oluşturur.",
     applicability: [
@@ -879,7 +879,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "fss-code",
     label: "FSS Code – Yangın Güvenlik Sistemleri",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Sabit yangın söndürme, algılama ve alarm sistemlerinin tasarım, kurulum, test ve bakım standartlarını düzenler.",
     history: "FSS Code (Fire Safety Systems Code), SOLAS Chapter II-2'nin teknik detaylarını içerir. 2001'de kabul edilmiş ve çeşitli MSC kararları ile güncellenmiştir. Yangın güvenlik sistemlerinin tasarım ve performans standardı olarak tüm gemi tiplerinde referans alınır.",
     applicability: [
@@ -960,7 +960,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "css-code",
     label: "CSS Code – Yüklerin Bağlanması",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Kargonun güvenli istiflenmesi, sabitlenmesi ve lashing düzenlemelerinin genel ilkelerini belirler; Cargo Securing Manual referansıdır.",
     history: "CSS Code (Code of Safe Practice for Cargo Stowage and Securing) ilk olarak IMO Assembly Resolution A.714(17) ile kabul edilmiştir. 2002'de MSC/Circ.1026 ile güncellenen ek standartlar, lashing kuvvet hesaplamaları ve konteyner bağlama detaylarını içerir. SOLAS Chapter VI ve VII'ye referans oluşturur.",
     applicability: [
@@ -1044,7 +1044,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "grain-code",
     label: "Grain Code – Tahıl Taşıma Kuralları",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "Dökme tahıl taşımacılığında stabilite hesapları, serbest yüzey etkisi ve istif gerekliliklerini düzenler.",
     history: "SOLAS Chapter VI ile referanslanan International Grain Code, tahıl yükünün kaymasından kaynaklanan stabilite tehlikelerini ele alır. 1991'de kabul edilen mevcut versiyonu, tahılın serbest yüzey etkisini minimize etmek için hesaplama yöntemleri ve istif gereklilikleri belirler. Document of Authorization belgesi geminin tahıl taşıma yetkinliğini onaylar.",
     applicability: [
@@ -1126,7 +1126,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "iamsar",
     label: "IAMSAR – Arama Kurtarma Rehberi",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview: "IMO/ICAO ortak arama kurtarma operasyon rehberi; arama şekilleri, koordinasyon ve gemiden yapılacak yardım prosedürlerini içerir.",
     history: "IAMSAR (International Aeronautical and Maritime Search and Rescue Manual), IMO ve ICAO tarafından ortaklaşa yayımlanan 3 ciltlik bir rehberdir. İlk olarak 1998'de MERSAR ve IMOSAR rehberlerinin birleştirilmesiyle oluşturulmuştur. Her 3 yılda güncellenir.",
     applicability: [
@@ -1201,7 +1201,7 @@ export const safetyCodes: RegulationItem[] = [
   {
     slug: "isgott",
     label: "ISGOTT – Petrol Tankeri ve Terminal Emniyet Rehberi",
-    category: "Emniyet Kodları",
+    category: "Safety Codes",
     overview:
       "Petrol ve ürün tankerleri ile bunlara hizmet veren terminallerde güvenli operasyonun endüstri standardı kabul edilen rehberi; gemi-sahil arayüzü, statik elektrik, gaz tehlikeleri, kargo/bunker operasyonları ve yangın önlemeyi kapsar.",
     history:

@@ -65,7 +65,7 @@ export function DocumentExpiryNotifier() {
           description: body,
           duration: 9000,
           action: {
-            label: "Belgeler",
+            label: "Documents",
             onClick: () => window.location.assign("/beta/documents"),
           },
         });

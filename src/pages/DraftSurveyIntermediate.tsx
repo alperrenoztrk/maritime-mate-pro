@@ -46,7 +46,7 @@ export default function DraftSurveyIntermediate() {
     if (!initialDrafts.forward || !initialDrafts.midship || !initialDrafts.aft ||
         !intermediateDrafts.forward || !intermediateDrafts.midship || !intermediateDrafts.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -91,20 +91,20 @@ export default function DraftSurveyIntermediate() {
       projectedFinalDraft
     });
 
-    toast({ title: "Calculation Completed", description: "Ara draft analizi yapıldı" });
+    toast({ title: "Calculation Completed", description: "Intermediate draft analysis was made" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
 <div>
-          <h1 className="text-2xl font-bold">Ara Draft Ölçümü</h1>
+          <h1 className="text-2xl font-bold">Intermediate Draft Measurement</h1>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Gemi Özellikleri</CardTitle>
+          <CardTitle>Ship Features</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -143,11 +143,11 @@ export default function DraftSurveyIntermediate() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="text-blue-600 dark:text-blue-400">Başlangıç Draftları (m)</CardTitle>
+            <CardTitle className="text-blue-600 dark:text-blue-400">Starting Drafts (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="initial-forward">Baş Draft</Label>
+              <Label htmlFor="initial-forward">Chief Draft</Label>
               <Input
                 id="initial-forward"
                 type="number"
@@ -161,7 +161,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="initial-midship">Orta Draft</Label>
+              <Label htmlFor="initial-midship">Medium Draft</Label>
               <Input
                 id="initial-midship"
                 type="number"
@@ -175,7 +175,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="initial-aft">Kıç Draft</Label>
+              <Label htmlFor="initial-aft">Aft Draft</Label>
               <Input
                 id="initial-aft"
                 type="number"
@@ -193,11 +193,11 @@ export default function DraftSurveyIntermediate() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-orange-600 dark:text-orange-400">Mevcut Draftlar (m)</CardTitle>
+            <CardTitle className="text-orange-600 dark:text-orange-400">Current Drafts (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="intermediate-forward">Baş Draft</Label>
+              <Label htmlFor="intermediate-forward">Chief Draft</Label>
               <Input
                 id="intermediate-forward"
                 type="number"
@@ -211,7 +211,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="intermediate-midship">Orta Draft</Label>
+              <Label htmlFor="intermediate-midship">Medium Draft</Label>
               <Input
                 id="intermediate-midship"
                 type="number"
@@ -225,7 +225,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="intermediate-aft">Kıç Draft</Label>
+              <Label htmlFor="intermediate-aft">Aft Draft</Label>
               <Input
                 id="intermediate-aft"
                 type="number"
@@ -244,12 +244,12 @@ export default function DraftSurveyIntermediate() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Zaman Bilgileri</CardTitle>
+          <CardTitle>Timestamps</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label htmlFor="initial-time">Başlangıç Saati</Label>
+              <Label htmlFor="initial-time">Start Time</Label>
               <Input
                 id="initial-time"
                 type="time"
@@ -261,7 +261,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="intermediate-time">Mevcut Saat</Label>
+              <Label htmlFor="intermediate-time">Current Time</Label>
               <Input
                 id="intermediate-time"
                 type="time"
@@ -273,7 +273,7 @@ export default function DraftSurveyIntermediate() {
               />
             </div>
             <div>
-              <Label htmlFor="estimated-completion">Tahmini Toplam Kargo (ton)</Label>
+              <Label htmlFor="estimated-completion">Estimated Total Cargo (tons)</Label>
               <Input
                 id="estimated-completion"
                 type="number"
@@ -291,7 +291,7 @@ export default function DraftSurveyIntermediate() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Ara Durum Analizi Yap
+        Perform Interim Situation Analysis
       </Button>
 
       {result && (
@@ -299,30 +299,30 @@ export default function DraftSurveyIntermediate() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Activity className="h-5 w-5" />
-              Ara Draft Analiz Sonuçları
+              Interim Draft Analysis Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p><strong>Su çekimi değişimi:</strong> {result.draftChange.toFixed(3)} m</p>
-                <p><strong>İşlenen Kargo:</strong> {result.cargoHandled.toFixed(2)} ton</p>
-                <p><strong>İşlem Hızı:</strong> {result.handlingRate.toFixed(1)} ton/saat</p>
+                <p><strong>Draft change:</strong> {result.draftChange.toFixed(3)} m</p>
+                <p><strong>Cargo Processed:</strong> {result.cargoHandled.toFixed(2)} ton</p>
+                <p><strong>Processing Speed:</strong> {result.handlingRate.toFixed(1)} tons/hour</p>
               </div>
               <div className="space-y-2">
                 <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
-                  <strong>Tahmini Bitiş:</strong> {result.estimatedCompletion}
+                  <strong>Estimated End:</strong> {result.estimatedCompletion}
                 </p>
-                <p><strong>Tahmini Son Draft:</strong> {result.projectedFinalDraft.toFixed(3)} m</p>
+                <p><strong>Predicted Final Draft:</strong> {result.projectedFinalDraft.toFixed(3)} m</p>
               </div>
             </div>
             
             <div className="mt-4 p-3 bg-white dark:bg-gray-600 rounded">
               <p className="text-sm text-muted-foreground">
-                * Mevcut işlem hızına göre tahmini bitiş saati hesaplanmıştır
+                * Estimated end time calculated based on current transaction speed
               </p>
               <p className="text-sm text-muted-foreground">
-                * Hava şartları ve operasyonel faktörler değişimi etkileyebilir
+                * Weather conditions and operational factors may affect the change
               </p>
             </div>
           </CardContent>

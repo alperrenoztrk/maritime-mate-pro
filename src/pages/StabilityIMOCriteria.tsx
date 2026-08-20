@@ -88,7 +88,7 @@ export default function StabilityIMOCriteriaPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="maxGZ">Maksimum GZ (m)</Label>
+              <Label htmlFor="maxGZ">Maximum GZ (m)</Label>
               <Input
                 id="maxGZ"
                 type="number"
@@ -100,7 +100,7 @@ export default function StabilityIMOCriteriaPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="angleMaxGZ">Max GZ Açısı (derece)</Label>
+              <Label htmlFor="angleMaxGZ">Max GZ Angle (degrees)</Label>
               <Input
                 id="angleMaxGZ"
                 type="number"
@@ -113,7 +113,7 @@ export default function StabilityIMOCriteriaPage() {
 
           {results && (
             <div className="space-y-3 mt-6">
-              <h4 className="font-semibold mb-3">IMO Kriter Kontrolü</h4>
+              <h4 className="font-semibold mb-3">IMO Criteria Control</h4>
               
               <Alert variant={results.gmCheck.pass ? "default" : "destructive"}>
                 <div className="flex items-center gap-2">
@@ -137,7 +137,7 @@ export default function StabilityIMOCriteriaPage() {
                     <XCircle className="h-4 w-4" />
                   )}
                   <AlertDescription>
-                    0-30° Alan ≥ {results.area030Check.required} m·rad: {results.area030Check.value.toFixed(3)} m·rad{" "}
+                    Area 0–30° ≥ {results.area030Check.required} m·rad: {results.area030Check.value.toFixed(3)} m·rad{" "}
                     {results.area030Check.pass ? "✓" : "✗"}
                   </AlertDescription>
                 </div>
@@ -151,7 +151,7 @@ export default function StabilityIMOCriteriaPage() {
                     <XCircle className="h-4 w-4" />
                   )}
                   <AlertDescription>
-                    0-40° Alan ≥ {results.area040Check.required} m·rad: {results.area040Check.value.toFixed(3)} m·rad{" "}
+                    Area 0–40° ≥ {results.area040Check.required} m·rad: {results.area040Check.value.toFixed(3)} m·rad{" "}
                     {results.area040Check.pass ? "✓" : "✗"}
                   </AlertDescription>
                 </div>
@@ -165,7 +165,7 @@ export default function StabilityIMOCriteriaPage() {
                     <XCircle className="h-4 w-4" />
                   )}
                   <AlertDescription>
-                    30-40° Alan ≥ {results.area3040Check.required} m·rad: {results.area3040Check.value.toFixed(3)} m·rad{" "}
+                    Area 30–40° ≥ {results.area3040Check.required} m·rad: {results.area3040Check.value.toFixed(3)} m·rad{" "}
                     {results.area3040Check.pass ? "✓" : "✗"}
                   </AlertDescription>
                 </div>
@@ -193,7 +193,7 @@ export default function StabilityIMOCriteriaPage() {
                     <XCircle className="h-4 w-4" />
                   )}
                   <AlertDescription>
-                    Max GZ Açısı ≥ {results.angleMaxGZCheck.required}°: {results.angleMaxGZCheck.value.toFixed(1)}°{" "}
+                    Max GZ Angle ≥ {results.angleMaxGZCheck.required}°: {results.angleMaxGZCheck.value.toFixed(1)}°{" "}
                     {results.angleMaxGZCheck.pass ? "✓" : "✗"}
                   </AlertDescription>
                 </div>

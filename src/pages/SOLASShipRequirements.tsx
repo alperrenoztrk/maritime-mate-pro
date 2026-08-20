@@ -5,9 +5,9 @@ import { Anchor } from "lucide-react";
 
 const requirementGroups = [
   {
-    title: "Yapısal & Stabilite",
-    badge: "Bölüm II-1",
-    description: "Bölmelendirme, su alma senaryoları ve hasar stabilitesi gereklilikleri.",
+    title: "Structural & Stability",
+    badge: "Part II-1",
+    description: "Compartmentation, dewatering scenarios and damage stability requirements.",
     items: [
       "Watertight subdivision lines and door plans must be available digitally",
       "The Damage Control Booklet must be kept up to date on the bridge",
@@ -18,7 +18,7 @@ const requirementGroups = [
   {
     title: "Fire Safety",
     badge: "Chapter II-2",
-    description: "Yangın bölmeleri, sprinkler/ drencher sistemleri, sabit gazlı söndürme ve algılama ekipmanları.",
+    description: "Fire compartments, sprinkler/drencher systems, fixed gas extinguishing and detection equipment.",
     items: [
       "A copy of the Fire Control Plan for each zone and glow-in-the-dark cards",
       "CO₂ room access, locking and counting systems are in working order",
@@ -27,9 +27,9 @@ const requirementGroups = [
     readiness: 76,
   },
   {
-    title: "Can Kurtarma & Tahliye",
-    badge: "Bölüm III",
-    description: "Filikalar, can salları, MES sistemleri ve muster düzenlemeleri.",
+    title: "Lifesaving & Evacuation",
+    badge: "Part III",
+    description: "Lifeboats, liferafts, MES systems and muster arrangements.",
     items: [
       "Five-yearly load test certificates for the lifeboats and davits are on file",
       "MES deployment drill videos and checklists are retained",
@@ -38,9 +38,9 @@ const requirementGroups = [
     readiness: 88,
   },
   {
-    title: "Seyir ve Haberleşme",
-    badge: "Bölüm V",
-    description: "Navigasyon ekipmanları, kayıt cihazları, seyir defterleri ve GMDSS prosedürleri.",
+    title: "Navigation and Communication",
+    badge: "Part V",
+    description: "Navigation equipment, recorders, logbooks and GMDSS procedures.",
     items: [
       "BNWAS, VDR and ECDIS function test reports within 90 days",
       "The passage plan templates have been revised to SOLAS requirements",
@@ -59,9 +59,9 @@ const SOLASShipRequirementsPage = () => {
           <div className="flex items-center justify-center gap-3">
             <Anchor className="h-12 w-12 text-indigo-600 dark:text-indigo-400" />
             <div>
-              <p className="text-sm uppercase tracking-wider text-indigo-600 dark:text-indigo-300">Teknik Gereklilikler</p>
+              <p className="text-sm uppercase tracking-wider text-indigo-600 dark:text-indigo-300">Technical Requirements</p>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                SOLAS Gemi Gereksinimleri
+                SOLAS Ship Requirements
               </h1>
             </div>
           </div>
@@ -74,7 +74,7 @@ const SOLASShipRequirementsPage = () => {
               <CardHeader className="space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="text-xs">{group.badge}</Badge>
-                  <span className="text-xs text-muted-foreground">Hazırlık: %{group.readiness}</span>
+                  <span className="text-xs text-muted-foreground">Preparation: %{group.readiness}</span>
                 </div>
                 <CardTitle>{group.title}</CardTitle>
                 <Progress value={group.readiness} className="h-2" />

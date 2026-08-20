@@ -88,7 +88,7 @@ function loadImage(file: File): Promise<HTMLImageElement> {
     };
     image.onerror = () => {
       URL.revokeObjectURL(url);
-      reject(new DocumentTrackerError("INVALID_FILE", "Fotoğraf okunamadı."));
+      reject(new DocumentTrackerError("INVALID_FILE", "The photo could not be read."));
     };
     image.src = url;
   });
@@ -99,7 +99,7 @@ function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
     canvas.toBlob(
       (blob) => {
         if (blob) resolve(blob);
-        else reject(new DocumentTrackerError("INVALID_FILE", "Fotoğraf hazırlanamadı."));
+        else reject(new DocumentTrackerError("INVALID_FILE", "The photo could not be prepared."));
       },
       "image/jpeg",
       JPEG_QUALITY,
@@ -111,7 +111,7 @@ function blobToDataUrl(blob: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(String(reader.result));
-    reader.onerror = () => reject(new DocumentTrackerError("INVALID_FILE", "Fotoğraf okunamadı."));
+    reader.onerror = () => reject(new DocumentTrackerError("INVALID_FILE", "The photo could not be read."));
     reader.readAsDataURL(blob);
   });
 }
@@ -126,10 +126,10 @@ async function sha256(blob: Blob): Promise<string> {
 
 export async function prepareDocumentImage(file: File): Promise<PreparedImage> {
   if (!file.type.startsWith("image/")) {
-    throw new DocumentTrackerError("INVALID_FILE", "Yalnızca fotoğraf yükleyebilirsiniz.");
+    throw new DocumentTrackerError("INVALID_FILE", "You can only upload photos.");
   }
   if (file.size > MAX_SOURCE_FILE_BYTES) {
-    throw new DocumentTrackerError("FILE_TOO_LARGE", "Fotoğraf 15 MB'den küçük olmalıdır.");
+    throw new DocumentTrackerError("FILE_TOO_LARGE", "The photo must be less than 15 MB.");
   }
 
   const image = await loadImage(file);
@@ -139,7 +139,7 @@ export async function prepareDocumentImage(file: File): Promise<PreparedImage> {
   canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
   const context = canvas.getContext("2d");
   if (!context) {
-    throw new DocumentTrackerError("INVALID_FILE", "Fotoğraf işlenemedi.");
+    throw new DocumentTrackerError("INVALID_FILE", "The photo could not be processed.");
   }
   context.fillStyle = "#ffffff";
   context.fillRect(0, 0, canvas.width, canvas.height);
@@ -149,7 +149,7 @@ export async function prepareDocumentImage(file: File): Promise<PreparedImage> {
   if (blob.size > MAX_PROCESSED_BYTES) {
     throw new DocumentTrackerError(
       "FILE_TOO_LARGE",
-      "Fotoğraf sıkıştırıldıktan sonra hâlâ çok büyük. Daha düşük çözünürlük deneyin.",
+      "The photo is still too large after being compressed. Try lower resolution.",
     );
   }
 
@@ -164,7 +164,7 @@ async function analyzeDocument(dataUrl: string): Promise<DocumentAnalysis> {
   if (error || !data?.analysis) {
     throw new DocumentTrackerError(
       "ANALYSIS_FAILED",
-      data?.error || error?.message || "Belge yapay zekâ tarafından okunamadı.",
+      data?.error || error?.message || "The document could not be read by artificial intelligence.",
     );
   }
   return data.analysis as DocumentAnalysis;
@@ -186,10 +186,10 @@ export async function createDocumentFromPhoto(
     .eq("content_hash", prepared.hash)
     .maybeSingle();
   if (duplicateCheckError) {
-    throw new DocumentTrackerError("SAVE_FAILED", "Belge arşivi kontrol edilemedi.");
+    throw new DocumentTrackerError("SAVE_FAILED", "The document archive could not be checked.");
   }
   if (existing) {
-    throw new DocumentTrackerError("DUPLICATE", "Bu fotoğraf daha önce eklenmiş.");
+    throw new DocumentTrackerError("DUPLICATE", "This photo was added before.");
   }
 
   onStage?.("analyzing");
@@ -205,7 +205,7 @@ export async function createDocumentFromPhoto(
       upsert: false,
     });
   if (uploadError) {
-    throw new DocumentTrackerError("UPLOAD_FAILED", "Belge fotoğrafı güvenli arşive yüklenemedi.");
+    throw new DocumentTrackerError("UPLOAD_FAILED", "The document photo could not be uploaded to the secure archive.");
   }
 
   onStage?.("saving");
@@ -238,7 +238,7 @@ export async function createDocumentFromPhoto(
   if (saveError || !saved) {
     await supabase.storage.from(DOCUMENT_BUCKET).remove([imagePath]);
     if (saveError?.code === "23505") {
-      throw new DocumentTrackerError("DUPLICATE", "Bu fotoğraf daha önce eklenmiş.");
+      throw new DocumentTrackerError("DUPLICATE", "This photo was added before.");
     }
     throw new DocumentTrackerError("SAVE_FAILED", "Belge bilgileri kaydedilemedi.");
   }
@@ -274,6 +274,6 @@ export async function getDocumentImageUrl(imagePath: string): Promise<string> {
   const { data, error } = await supabase.storage
     .from(DOCUMENT_BUCKET)
     .createSignedUrl(imagePath, 60);
-  if (error || !data?.signedUrl) throw error ?? new Error("Fotoğraf açılamadı");
+  if (error || !data?.signedUrl) throw error ?? new Error("Photo could not be opened");
   return data.signedUrl;
 }

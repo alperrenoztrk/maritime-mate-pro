@@ -47,7 +47,7 @@ export function NewsPanel() {
         <div>
           <h2 id="home-news-title" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em] text-foreground">
             <Newspaper className="h-5 w-5 text-primary" />
-            Denizcilik Haberleri
+            Maritime News
           </h2>
           <p className="mt-0.5 text-caption text-muted-foreground">Current headlines from the industry</p>
         </div>

@@ -35,7 +35,7 @@ export const GMCalculator = () => {
   const getStabilityStatus = () => {
     if (gm > 1.5) return { status: "Very Good", color: "bg-green-500" };
     if (gm > 0.5) return { status: "Normal", color: "bg-blue-500" };
-    if (gm > 0) return { status: "Düşük", color: "bg-yellow-500" };
+    if (gm > 0) return { status: "Low", color: "bg-yellow-500" };
     return { status: "Kritik!", color: "bg-red-500" };
   };
 
@@ -46,14 +46,14 @@ export const GMCalculator = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Calculator className="h-5 w-5 text-primary" />
-          GM Hesaplama Aracı
+          GM Calculation Tool
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-3">
             <div className="space-y-1.5">
-              <Label className="text-xs">Keel Noktası (K) - metre</Label>
+              <Label className="text-xs">Keel Point (K) - meters</Label>
               <div className="flex items-center gap-2">
                 <Slider
                   value={[keel]}
@@ -68,7 +68,7 @@ export const GMCalculator = () => {
             </div>
             
             <div className="space-y-1.5">
-              <Label className="text-xs">Buoyancy Center (B) - metre</Label>
+              <Label className="text-xs">Buoyancy Center (B) - meters</Label>
               <div className="flex items-center gap-2">
                 <Slider
                   value={[buoyancyCenter]}
@@ -83,7 +83,7 @@ export const GMCalculator = () => {
             </div>
             
             <div className="space-y-1.5">
-              <Label className="text-xs">Metacenter (M) - metre</Label>
+              <Label className="text-xs">Metacenter (M) - meters</Label>
               <div className="flex items-center gap-2">
                 <Slider
                   value={[metacenter]}
@@ -98,7 +98,7 @@ export const GMCalculator = () => {
             </div>
             
             <div className="space-y-1.5">
-              <Label className="text-xs">Gravity Center (G) - metre</Label>
+              <Label className="text-xs">Gravity Center (G) - meters</Label>
               <div className="flex items-center gap-2">
                 <Slider
                   value={[gravityCenter]}
@@ -114,7 +114,7 @@ export const GMCalculator = () => {
           </div>
           
           <div className="bg-muted/50 rounded-lg p-3 space-y-3">
-            <h4 className="font-semibold text-sm">Hesaplama Sonuçları</h4>
+            <h4 className="font-semibold text-sm">Calculation Results</h4>
             
             <div className="space-y-1.5 text-sm">
               <div className="flex justify-between">
@@ -139,12 +139,12 @@ export const GMCalculator = () => {
             <div className="flex items-center gap-2">
               <Badge className={stabilityStatus.color}>{stabilityStatus.status}</Badge>
               <span className="text-xs text-muted-foreground">
-                {gm > 0 ? "Gemi stabil" : "Gemi unstabil!"}
+                {gm > 0 ? "The ship is stable" : "The ship is unstable!"}
               </span>
             </div>
             
             <div className="text-micro text-muted-foreground pt-2 border-t border-border/30">
-              <p><strong>Formül:</strong> GM = KM - KG</p>
+              <p><strong>Formula:</strong> GM = KM - KG</p>
             </div>
           </div>
         </div>
@@ -167,13 +167,13 @@ export const FreeSurfaceCalculator = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Waves className="h-5 w-5 text-primary" />
-          Serbest Yüzey Etkisi (FSE)
+          Free Surface Effect (FSE)
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <Label className="text-xs">Tank Uzunluğu (l) - m</Label>
+            <Label className="text-xs">Tank Length (l) - m</Label>
             <Input
               type="number"
               value={tankLength}
@@ -183,7 +183,7 @@ export const FreeSurfaceCalculator = () => {
           </div>
           
           <div className="space-y-1.5">
-            <Label className="text-xs">Tank Genişliği (b) - m</Label>
+            <Label className="text-xs">Tank Width (b) - m</Label>
             <Input
               type="number"
               value={tankBreadth}
@@ -193,7 +193,7 @@ export const FreeSurfaceCalculator = () => {
           </div>
           
           <div className="space-y-1.5">
-            <Label className="text-xs">Sıvı Yoğunluğu (ρ) - t/m³</Label>
+            <Label className="text-xs">Liquid Density (ρ) - t/m³</Label>
             <Input
               type="number"
               step="0.001"
@@ -204,7 +204,7 @@ export const FreeSurfaceCalculator = () => {
           </div>
           
           <div className="space-y-1.5">
-            <Label className="text-xs">Deplassman (Δ) - ton</Label>
+            <Label className="text-xs">Displacement (Δ) – tons</Label>
             <Input
               type="number"
               value={displacement}
@@ -224,13 +224,13 @@ export const FreeSurfaceCalculator = () => {
             <div className="flex items-start gap-2">
               <AlertTriangle className="h-4 w-4 text-yellow-500 shrink-0 mt-0.5" />
               <p className="text-xs text-yellow-700 dark:text-yellow-400">
-                Bu tank nedeniyle GM {fse.toFixed(4)} m azalır
+                GM because of this tank {fse.toFixed(4)} m decreases
               </p>
             </div>
           </div>
           
           <p className="text-micro text-muted-foreground mt-2">
-            <strong>Formül:</strong> FSE = (l × b³ × ρ) / (12 × Δ)
+            <strong>Formula:</strong> FSE = (l × b³ × ρ) / (12 × Δ)
           </p>
         </div>
       </CardContent>
@@ -254,7 +254,7 @@ export const WeightShiftCalculator = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Scale className="h-5 w-5 text-primary" />
-          Ağırlık Kaydırma
+          Weight Shift
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -270,7 +270,7 @@ export const WeightShiftCalculator = () => {
           </div>
           
           <div className="space-y-1.5">
-            <Label className="text-xs">Mesafe (d) - m</Label>
+            <Label className="text-xs">Distance (d) - m</Label>
             <Input
               type="number"
               value={distance}
@@ -280,7 +280,7 @@ export const WeightShiftCalculator = () => {
           </div>
           
           <div className="space-y-1.5">
-            <Label className="text-xs">Deplassman (W) - ton</Label>
+            <Label className="text-xs">Displacement (W) - tons</Label>
             <Input
               type="number"
               value={displacement}
@@ -290,7 +290,7 @@ export const WeightShiftCalculator = () => {
           </div>
           
           <div className="space-y-1.5">
-            <Label className="text-xs">Mevcut GM - m</Label>
+            <Label className="text-xs">Current GM - m</Label>
             <Input
               type="number"
               step="0.1"
@@ -303,12 +303,12 @@ export const WeightShiftCalculator = () => {
         
         <div className="bg-muted/50 rounded-lg p-3 space-y-2">
           <div className="flex justify-between items-center text-sm">
-            <span className="text-muted-foreground">G Kayması (GG₁):</span>
+            <span className="text-muted-foreground">G Shift (GG₁):</span>
             <span className="font-mono font-bold text-primary">{gg1.toFixed(4)} m</span>
           </div>
           
           <div className="flex justify-between items-center text-sm">
-            <span className="text-muted-foreground">Meyil Açısı (θ):</span>
+            <span className="text-muted-foreground">Heel Angle (θ):</span>
             <span className="font-mono font-bold text-primary">{heelAngleDeg.toFixed(2)}°</span>
           </div>
           
@@ -320,7 +320,7 @@ export const WeightShiftCalculator = () => {
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
               )}
               <span className={`text-xs ${heelAngleDeg > 5 ? 'text-red-700 dark:text-red-400' : 'text-green-700 dark:text-green-400'}`}>
-                {heelAngleDeg > 5 ? 'Yüksek meyil!' : 'Kabul edilebilir'}
+                {heelAngleDeg > 5 ? 'High elevation!' : 'Acceptable'}
               </span>
             </div>
           </div>
@@ -339,9 +339,9 @@ export const IMOCriteriaChecker = () => {
   const [gm0, setGm0] = useState<number>(0.18);
   
   const criteria = [
-    { name: "0°-30° Alan", value: area30, min: 0.055, unit: "m·rad", passed: area30 >= 0.055 },
-    { name: "0°-40° Alan", value: area40, min: 0.09, unit: "m·rad", passed: area40 >= 0.09 },
-    { name: "30°-40° Alan", value: area3040, min: 0.03, unit: "m·rad", passed: area3040 >= 0.03 },
+    { name: "0°-30° Range", value: area30, min: 0.055, unit: "m·rad", passed: area30 >= 0.055 },
+    { name: "0°-40° Range", value: area40, min: 0.09, unit: "m·rad", passed: area40 >= 0.09 },
+    { name: "30°-40° Area", value: area3040, min: 0.03, unit: "m·rad", passed: area3040 >= 0.03 },
     { name: "GZ @ 30°", value: gz30, min: 0.2, unit: "m", passed: gz30 >= 0.2 },
     { name: "GM₀", value: gm0, min: 0.15, unit: "m", passed: gm0 >= 0.15 },
   ];
@@ -353,13 +353,13 @@ export const IMOCriteriaChecker = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Target className="h-5 w-5 text-primary" />
-          IMO Kriter Kontrolü
+          IMO Criteria Control
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           <div className="space-y-1">
-            <Label className="text-micro">0°-30° Alan</Label>
+            <Label className="text-micro">0°-30° Range</Label>
             <Input
               type="number"
               step="0.001"
@@ -369,7 +369,7 @@ export const IMOCriteriaChecker = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-micro">0°-40° Alan</Label>
+            <Label className="text-micro">0°-40° Range</Label>
             <Input
               type="number"
               step="0.001"
@@ -379,7 +379,7 @@ export const IMOCriteriaChecker = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-micro">30°-40° Alan</Label>
+            <Label className="text-micro">30°-40° Area</Label>
             <Input
               type="number"
               step="0.001"
@@ -434,7 +434,7 @@ export const IMOCriteriaChecker = () => {
               <AlertTriangle className="h-4 w-4 text-red-500" />
             )}
             <span className={`text-xs font-bold ${allPassed ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
-              {allPassed ? 'Tüm kriterler sağlanıyor' : 'Bazı kriterler sağlanmıyor!'}
+              {allPassed ? 'All criteria are met' : 'Some criteria are not met!'}
             </span>
           </div>
         </div>
@@ -467,7 +467,7 @@ export const GrainStabilityCalculator = () => {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <Label className="text-xs">Kayma Hacmi (V) - m³</Label>
+            <Label className="text-xs">Slip Volume (V) - m³</Label>
             <Input
               type="number"
               value={shiftVolume}
@@ -488,7 +488,7 @@ export const GrainStabilityCalculator = () => {
           </div>
 
           <div className="space-y-1.5">
-            <Label className="text-xs">Tahıl Yoğunluğu (ρ) - t/m³</Label>
+            <Label className="text-xs">Grain Density (ρ) - t/m³</Label>
             <Input
               type="number"
               step="0.01"
@@ -499,7 +499,7 @@ export const GrainStabilityCalculator = () => {
           </div>
 
           <div className="space-y-1.5">
-            <Label className="text-xs">Deplasman (Δ) - ton</Label>
+            <Label className="text-xs">Displacement (Δ) – tonne</Label>
             <Input
               type="number"
               value={displacement}
@@ -526,7 +526,7 @@ export const GrainStabilityCalculator = () => {
             <span className="font-mono font-bold text-primary">{ghm.toFixed(2)} t·m</span>
           </div>
           <div className="flex justify-between items-center text-sm">
-            <span className="text-muted-foreground">Yatma Açısı (θ):</span>
+            <span className="text-muted-foreground">Angle of heel (θ):</span>
             <span className="font-mono font-bold text-primary">{heelingAngle.toFixed(2)}°</span>
           </div>
           <div className={`mt-2 rounded p-2 ${passesIMO ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
@@ -537,7 +537,7 @@ export const GrainStabilityCalculator = () => {
                 <AlertTriangle className="h-4 w-4 text-red-500" />
               )}
               <span className={`text-xs ${passesIMO ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
-                {passesIMO ? 'IMO limiti içinde (≤ 12°)' : 'IMO limiti aşıldı (> 12°)'}
+                {passesIMO ? 'Within IMO limit (≤ 12°)' : 'IMO limit exceeded (> 12°)'}
               </span>
             </div>
           </div>
@@ -557,14 +557,14 @@ export const ShipVisualization = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Ship className="h-5 w-5 text-primary" />
-          İnteraktif Gemi Simülasyonu
+          Interactive Ship Simulation
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 space-y-3">
             <div className="space-y-1.5">
-              <Label className="text-xs">Meyil (Heel): {heelAngle}°</Label>
+              <Label className="text-xs">Heel: {heelAngle}°</Label>
               <Slider
                 value={[heelAngle]}
                 onValueChange={(v) => setHeelAngle(v[0])}
@@ -592,7 +592,7 @@ export const ShipVisualization = () => {
               className="w-full h-7 text-xs"
             >
               <RotateCcw className="h-3 w-3 mr-1" />
-              Sıfırla
+              Reset
             </Button>
           </div>
           
@@ -623,16 +623,16 @@ export const ShipVisualization = () => {
         
         <div className="grid grid-cols-2 gap-2 text-xs">
           <div className={`p-2 rounded ${Math.abs(heelAngle) > 15 ? 'bg-red-500/10' : 'bg-green-500/10'}`}>
-            <p className="font-semibold">Meyil</p>
+            <p className="font-semibold">Heel</p>
             <p className="text-muted-foreground">
               {Math.abs(heelAngle) <= 5 ? 'Normal' : 
-               Math.abs(heelAngle) <= 15 ? 'Dikkat' : 'Tehlikeli!'}
+               Math.abs(heelAngle) <= 15 ? 'Attention' : 'Dangerous!'}
             </p>
           </div>
           <div className={`p-2 rounded ${Math.abs(trimAngle) > 5 ? 'bg-yellow-500/10' : 'bg-green-500/10'}`}>
             <p className="font-semibold">Trim</p>
             <p className="text-muted-foreground">
-              {trimAngle > 0 ? 'Baş Trim' : trimAngle < 0 ? 'Kıç Trim' : 'Düz'}
+              {trimAngle > 0 ? 'Head Trim' : trimAngle < 0 ? 'Stern Trim' : 'Straight'}
             </p>
           </div>
         </div>
@@ -648,7 +648,7 @@ export const InteractiveStabilityTools = () => {
       <TabsList className="grid w-full grid-cols-6 h-auto">
         <TabsTrigger value="simulation" className="text-xs py-1.5 px-1">
           <Ship className="h-3 w-3 mr-1 hidden sm:inline" />
-          Simülasyon
+          Simulation
         </TabsTrigger>
         <TabsTrigger value="gm" className="text-xs py-1.5 px-1">
           <Calculator className="h-3 w-3 mr-1 hidden sm:inline" />
@@ -668,7 +668,7 @@ export const InteractiveStabilityTools = () => {
         </TabsTrigger>
         <TabsTrigger value="grain" className="text-xs py-1.5 px-1">
           <Wheat className="h-3 w-3 mr-1 hidden sm:inline" />
-          Tahıl
+          Grain
         </TabsTrigger>
       </TabsList>
       

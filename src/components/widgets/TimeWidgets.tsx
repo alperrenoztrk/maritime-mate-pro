@@ -29,7 +29,7 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
         <div className="relative text-center space-y-2 w-full">
           <Clock className="h-6 w-6 text-primary mx-auto" />
-          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">ULUSAL</div>
+          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">NATIONAL</div>
           <div className="font-mono text-3xl font-bold tracking-tight text-foreground">
             {nationalTime}
           </div>
@@ -85,7 +85,7 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
               <Sunrise className="h-8 w-8 text-orange-500" />
             </div>
           </div>
-          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Gündoğumu</div>
+          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Sunrise</div>
           <div className="font-mono text-2xl font-bold text-foreground">{sunriseTime}</div>
         </div>
       </Card>
@@ -103,7 +103,7 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
               <Sunset className="h-8 w-8 text-indigo-500" />
             </div>
           </div>
-          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Günbatımı</div>
+          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Sunset</div>
           <div className="font-mono text-2xl font-bold text-foreground">{sunsetTime}</div>
         </div>
       </Card>

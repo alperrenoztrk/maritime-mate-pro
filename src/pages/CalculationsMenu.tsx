@@ -5,7 +5,7 @@ export default function CalculationsMenu() {
   return (
     <>
       <SEO
-        title="Mariner's Book — Denizcilik Hesaplamaları"
+        title="Mariner's Book — Nautical Calculations"
         description="Interactive maritime calculation tools for navigation, stability, cargo and engineering; unit converters and practical formulas."
         path="/calculations"
       />

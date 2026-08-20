@@ -40,72 +40,72 @@ const econTopics: EconMainTopic[] = [
   {
     id: "shipping-market",
     number: 1,
-    title: "Denizcilik Piyasası",
+    title: "Maritime Market",
     icon: TrendingUp,
     subtopics: [
-      { id: "market-overview", title: "Denizcilik piyasası genel yapısı", hasContent: true },
-      { id: "supply-demand", title: "Arz-talep dengesi ve fiyat oluşumu", hasContent: true },
-      { id: "shipping-cycles", title: "Denizcilik çevrimleri (shipping cycles)", hasContent: true },
-      { id: "market-indices", title: "BDI ve piyasa endeksleri", hasContent: true },
+      { id: "market-overview", title: "General structure of the maritime market", hasContent: true },
+      { id: "supply-demand", title: "Supply-demand balance and price formation", hasContent: true },
+      { id: "shipping-cycles", title: "Shipping cycles", hasContent: true },
+      { id: "market-indices", title: "BDI and market indices", hasContent: true },
     ],
   },
   {
     id: "chartering",
     number: 2,
-    title: "Charter (Kiralama) Türleri",
+    title: "Charter Types",
     icon: FileCheck,
     subtopics: [
-      { id: "voyage-charter", title: "Voyage Charter (sefer kiralaması)", hasContent: true },
-      { id: "time-charter", title: "Time Charter (zaman kiralaması)", hasContent: true },
-      { id: "bareboat-charter", title: "Bareboat Charter (çıplak gövde kiralaması)", hasContent: true },
+      { id: "voyage-charter", title: "Voyage Charter", hasContent: true },
+      { id: "time-charter", title: "Time Charter", hasContent: true },
+      { id: "bareboat-charter", title: "Bareboat Charter (bare hull rental)", hasContent: true },
       { id: "coa", title: "COA (Contract of Affreightment)", hasContent: true },
     ],
   },
   {
     id: "freight-calculation",
     number: 3,
-    title: "Navlun ve TCE Hesaplama",
+    title: "Freight and TCE Calculation",
     icon: DollarSign,
     subtopics: [
-      { id: "freight-basics", title: "Navlun kavramı ve hesaplama", hasContent: true },
-      { id: "tce-calculation", title: "TCE (Time Charter Equivalent) hesaplama", hasContent: true },
-      { id: "worldscale", title: "Worldscale sistemi", hasContent: true },
-      { id: "bunker-cost", title: "Yakıt maliyeti hesaplaması", hasContent: true },
+      { id: "freight-basics", title: "Freight concept and calculation", hasContent: true },
+      { id: "tce-calculation", title: "TCE (Time Charter Equivalent) calculation", hasContent: true },
+      { id: "worldscale", title: "Worldscale system", hasContent: true },
+      { id: "bunker-cost", title: "Fuel cost calculation", hasContent: true },
     ],
   },
   {
     id: "laytime-demurrage",
     number: 4,
-    title: "Laytime ve Demurrage",
+    title: "Laytime and Demurrage",
     icon: Clock,
     subtopics: [
-      { id: "laytime-basics", title: "Laytime kavramı ve hesaplama", hasContent: true },
+      { id: "laytime-basics", title: "Laytime concept and calculation", hasContent: true },
       { id: "notice-of-readiness", title: "Notice of Readiness (NOR)", hasContent: true },
-      { id: "demurrage-calc", title: "Demurrage hesaplaması", hasContent: true },
-      { id: "despatch", title: "Despatch (erken yükleme/boşaltma primi)", hasContent: true },
+      { id: "demurrage-calc", title: "Demurrage calculation", hasContent: true },
+      { id: "despatch", title: "Despatch (early loading/unloading bonus)", hasContent: true },
     ],
   },
   {
     id: "voyage-estimation",
     number: 5,
-    title: "Sefer Tahmini ve Maliyet Analizi",
+    title: "Voyage Estimation and Cost Analysis",
     icon: Ship,
     subtopics: [
-      { id: "voyage-costs", title: "Sefer maliyetleri ve bileşenleri", hasContent: true },
-      { id: "voyage-estimation-calc", title: "Sefer tahmini hesaplama", hasContent: true },
-      { id: "profit-loss", title: "Kâr-zarar analizi", hasContent: true },
+      { id: "voyage-costs", title: "Expedition costs and components", hasContent: true },
+      { id: "voyage-estimation-calc", title: "Voyage estimate calculation", hasContent: true },
+      { id: "profit-loss", title: "Profit-loss analysis", hasContent: true },
     ],
   },
   {
     id: "ship-finance",
     number: 6,
-    title: "Gemi Finansmanı ve Değerleme",
+    title: "Ship Financing and Valuation",
     icon: Landmark,
     subtopics: [
-      { id: "ship-acquisition", title: "Gemi edinim yöntemleri", hasContent: true },
-      { id: "ship-valuation", title: "Gemi değerleme yöntemleri", hasContent: true },
-      { id: "depreciation", title: "Amortisman hesaplaması", hasContent: true },
-      { id: "ship-sale-purchase", title: "Gemi alım-satımı (S&P) ve Saleform/MOA", hasContent: true },
+      { id: "ship-acquisition", title: "Ship acquisition methods", hasContent: true },
+      { id: "ship-valuation", title: "Ship valuation methods", hasContent: true },
+      { id: "depreciation", title: "Depreciation calculation", hasContent: true },
+      { id: "ship-sale-purchase", title: "Ship buying and selling (S&P) and Saleform/MOA", hasContent: true },
     ],
   },
   {
@@ -114,22 +114,22 @@ const econTopics: EconMainTopic[] = [
     title: "Marine Insurance",
     icon: Scale,
     subtopics: [
-      { id: "hull-machinery", title: "Tekne ve Makine (H&M) sigortası", hasContent: true },
-      { id: "pi-club", title: "P&I Kulüpleri ve sorumluluk sigortası", hasContent: true },
-      { id: "cargo-insurance", title: "Yük sigortası ve klozlar", hasContent: true },
-      { id: "general-average", title: "Müşterek Avarya ve York-Antwerp Kuralları", hasContent: true },
+      { id: "hull-machinery", title: "Hull and Machinery (H&M) insurance", hasContent: true },
+      { id: "pi-club", title: "P&I Clubs and liability insurance", hasContent: true },
+      { id: "cargo-insurance", title: "Cargo insurance and clauses", hasContent: true },
+      { id: "general-average", title: "General Average and York-Antwerp Rules", hasContent: true },
     ],
   },
   {
     id: "maritime-contracts",
     number: 8,
-    title: "Denizcilik Sözleşmeleri ve Hukuk",
+    title: "Maritime Contracts and Law",
     icon: Briefcase,
     subtopics: [
-      { id: "charter-party", title: "Charter party formları", hasContent: true },
-      { id: "bill-of-lading", title: "Konşimento (Bill of Lading)", hasContent: true },
-      { id: "maritime-claims", title: "Denizcilik alacakları ve tahkim", hasContent: true },
-      { id: "incoterms", title: "Incoterms ve teslim şekilleri", hasContent: true },
+      { id: "charter-party", title: "Charter party forms", hasContent: true },
+      { id: "bill-of-lading", title: "Bill of Lading", hasContent: true },
+      { id: "maritime-claims", title: "Maritime claims and arbitration", hasContent: true },
+      { id: "incoterms", title: "Incoterms and delivery methods", hasContent: true },
     ],
   },
 ];
@@ -150,8 +150,8 @@ const topicContents: Record<string, TopicContent> = {
   // BÖLÜM 1 - DENİZCİLİK PİYASASI
   // =====================================================
   "market-overview": {
-    title: "Denizcilik Piyasası Genel Yapısı",
-    introduction: "Denizcilik piyasası, dünya ticaretinin %80'inden fazlasının taşındığı, arz ve talebin sürekli değiştiği küresel bir ekonomik ekosistemdir.",
+    title: "General Structure of the Maritime Market",
+    introduction: "The shipping market is a global economic ecosystem where more than 80% of world trade is transported and where supply and demand are constantly changing.",
     content: `MARKET STRUCTURE:
 
 The shipping market consists of four sub-markets:
@@ -175,19 +175,19 @@ MARKET PARTICIPANTS:
 - Broker: the person/firm acting as intermediary between owner and charterer
 - Operator: the party operating the ship commercially`,
     bulletPoints: [
-      "4 alt piyasa: navlun, ikinci el, yeni inşa, hurda",
-      "Navlun oranları arz-talep dengesine göre belirlenir",
-      "Broker armatör ile kiracı arasında aracılık yapar",
+      "4 sub markets: freight, second hand, new build, scrap",
+      "Freight rates are determined according to the supply-demand balance",
+      "Broker acts as an intermediary between shipowner and charterer",
     ],
     keyPoints: [
-      "Dünya ticaretinin %80+'ı denizyoluyla taşınır",
-      "Gemi fiyatları ve navlun oranları birbirleriyle koreledir",
-      "Yeni inşa siparişleri gelecek beklentilerine bağlıdır; teslim 2-4 yıl",
+      "80%+ of world trade is transported by sea",
+      "Ship prices and freight rates are correlated with each other",
+      "New construction orders depend on future expectations; delivery 2-4 years",
     ],
   },
   "supply-demand": {
-    title: "Arz-Talep Dengesi ve Fiyat Oluşumu",
-    introduction: "Denizcilik piyasasında navlun oranları, mevcut gemi tonajı (arz) ile taşınacak yük miktarı (talep) arasındaki dengeye göre oluşur.",
+    title: "Supply-Demand Balance and Price Formation",
+    introduction: "Freight rates in the maritime market are formed according to the balance between the available ship tonnage (supply) and the amount of cargo to be transported (demand).",
     content: `THE SUPPLY SIDE:
 
 Supply is the total carrying capacity of the world merchant fleet (on a DWT basis).
@@ -218,19 +218,19 @@ Demand > Supply → freight rates rise (firm market)
 
 In shipping, supply is inelastic in the short term (building a new ship takes 2-4 years); changes in demand therefore cause extreme volatility in prices.`,
     bulletPoints: [
-      "Arz = mevcut filo kapasitesi; kısa vadede esnek değildir",
-      "Talep = ton-mil cinsinden ticaret hacmi",
-      "Arz esneksizliği navlun dalgalanmalarının temel sebebidir",
+      "Supply = available fleet capacity; inelastic in the short run",
+      "Demand = trade volume in ton-miles",
+      "Supply inelasticity is the main reason for freight fluctuations",
     ],
     keyPoints: [
-      "Slow steaming efektif arzı azaltarak navlunları destekler",
-      "Ton-mil = yük miktarı × taşıma mesafesi; mesafe arttıkça talep artar",
-      "Yeni gemi siparişi 2-4 yıl sonra arzı artırır; gecikme etkisi",
+      "Slow steaming supports freight by reducing effective supply",
+      "Ton-mile = cargo quantity × transport distance; Demand increases as distance increases",
+      "New ship orders increase supply after 2-4 years; delay effect",
     ],
   },
   "shipping-cycles": {
-    title: "Denizcilik Çevrimleri (Shipping Cycles)",
-    introduction: "Denizcilik piyasası, tarihsel olarak 7-10 yıllık çevrimlerle yükseliş ve düşüş dönemleri yaşar.",
+    title: "Shipping Cycles",
+    introduction: "The shipping market historically experiences boom and bust periods on 7-10 year cycles.",
     content: `PHASES OF THE CYCLE:
 
 Martin Stopford's classic shipping cycle model has four phases:
@@ -257,19 +257,19 @@ STRATEGIC IMPLICATION:
 
 The golden rule of the cycle is to buy at the trough and sell at the peak. In practice most owners do the opposite: they order when the market is strong and are forced to sell when it is weak.`,
     bulletPoints: [
-      "4 aşama: dip → toparlanma → zirve → düşüş",
-      "Tipik çevrim süresi 7-10 yıl",
-      "2008: BDI 11.793 → 663 (%94 düşüş) tarihin en sert çöküşü",
+      "4 phases: bottom → recovery → peak → decline",
+      "Typical cycle time 7-10 years",
+      "2008: BDI 11,793 → 663 (94% drop) worst crash in history",
     ],
     keyPoints: [
-      "Zirvedeki aşırı sipariş, bir sonraki düşüşün temel sebebidir",
-      "Arz esneksizliği çevrimlerin şiddetini artırır",
-      "Stopford modeli denizcilik ekonomisinin temel çerçevesidir",
+      "Overordering at the top is the main reason for the next decline",
+      "Supply inelasticity increases the severity of cycles",
+      "The Stopford model is the basic framework of maritime economics",
     ],
   },
   "market-indices": {
-    title: "BDI ve Piyasa Endeksleri",
-    introduction: "Baltic Dry Index (BDI), dökme yük navlun piyasasının en önemli göstergesi olup küresel ticaret aktivitesinin barometresi olarak kabul edilir.",
+    title: "BDI and Market Indices",
+    introduction: "Baltic Dry Index (BDI) is the most important indicator of the bulk freight market and is considered a barometer of global trade activity.",
     content: `BDI (BALTIC DRY INDEX):
 
 The BDI is published daily in London by the Baltic Exchange. It is a weighted average of four sub-indices:
@@ -297,19 +297,19 @@ THE ECONOMIC SIGNIFICANCE OF THE BDI:
 
 Because the BDI is not open to speculation (an empty ship carries no cargo) it is regarded as reflecting real economic activity. It is therefore used as a leading indicator in macroeconomic analysis and commodity markets.`,
     formula: {
-      name: "BDI Hesaplaması (Basitleştirilmiş)",
+      name: "BDI Calculation (Simplified)",
       expression: "BDI = (BCI + BPI + BSI + BHSI) / 4",
-      description: "Her alt endeks belirli rotalardaki günlük T/C oranlarının ortalamasıdır. 1985 = 1.000 puan referans.",
+      description: "Each sub-index is the average of daily T/C rates on specific routes. 1985 = 1,000 points reference.",
     },
     bulletPoints: [
-      "BDI 4 alt endeksten oluşur: BCI, BPI, BSI, BHSI",
-      "Baltic Exchange Londra'da günlük yayınlar",
-      "Spekülasyona açık olmadığı için gerçek aktiviteyi yansıtır",
+      "BDI consists of 4 sub-indices: BCI, BPI, BSI, BHSI",
+      "Baltic Exchange daily publications in London",
+      "It reflects real activity as it is not open to speculation",
     ],
     keyPoints: [
-      "BDI = dökme yük piyasası; BDTI = tanker piyasası",
-      "BDI makroekonomik öncü gösterge olarak kabul edilir",
-      "Capesize gemiler BDI'nin en volatil bileşenidir",
+      "BDI = bulk cargo market; BDTI = tanker market",
+      "BDI is considered a macroeconomic leading indicator",
+      "Capesize ships are the most volatile component of BDI",
     ],
   },
 
@@ -317,8 +317,8 @@ Because the BDI is not open to speculation (an empty ship carries no cargo) it i
   // BÖLÜM 2 - CHARTER TÜRLERİ
   // =====================================================
   "voyage-charter": {
-    title: "Voyage Charter (Sefer Kiralaması)",
-    introduction: "Voyage charter, armatörün belirli bir yükü belirli bir limandan diğerine taşımayı taahhüt ettiği kiralama türüdür.",
+    title: "Voyage Charter",
+    introduction: "Voyage charter is a type of charter in which the shipowner undertakes to transport a specific cargo from one specific port to another.",
     content: `STRUCTURE OF A VOYAGE CHARTER:
 
 In a voyage charter the owner:
@@ -352,9 +352,9 @@ Charterer's side: freight, loading/discharging costs (as agreed)
 
 CONTRACT: A voyage charter party (C/P) form is used. Common forms: GENCON (general cargo), ASBATANKVOY (tanker).`,
     formula: {
-      name: "Voyage Charter Navlun Hesabı",
+      name: "Voyage Charter Freight Calculation",
       expression: "Total Freight = Cargo Quantity (tonnes) × Freight Rate ($/tonne)",
-      description: "Navlun oranı piyasa koşullarına göre belirlenir. Yük miktarı B/L (konşimento) üzerindeki miktardır.",
+      description: "The freight rate is determined by market conditions. The cargo quantity is the amount on the B/L (bill of lading).",
     },
     examples: [
       {
@@ -363,19 +363,19 @@ CONTRACT: A voyage charter party (C/P) form is used. Common forms: GENCON (gener
       },
     ],
     bulletPoints: [
-      "Armatör yakıt, mürettebat ve liman masraflarını karşılar",
-      "Navlun genellikle $/ton bazında hesaplanır",
-      "GENCON en yaygın voyage charter party formudur",
+      "The shipowner covers fuel, crew and port expenses",
+      "Freight is usually calculated on a $/ton basis",
+      "GENCON is the most common form of voyage charter party",
     ],
     keyPoints: [
-      "Voyage charter'da operasyonel risk armatöre aittir",
-      "Laytime aşımı demurrage'a yol açar",
-      "Lump sum freight yük miktarından bağımsız sabit ücrettir",
+      "In Voyage charter, operational risk belongs to the shipowner.",
+      "Exceeding laytime leads to demurrage",
+      "Lump sum freight is a fixed fee independent of the cargo quantity.",
     ],
   },
   "time-charter": {
-    title: "Time Charter (Zaman Kiralaması)",
-    introduction: "Time charter, armatörün gemiyi belirli bir süre için kiracının emrine verdiği kiralama türüdür; kiracı yakıt ve liman masraflarını üstlenir.",
+    title: "Time Charter",
+    introduction: "Time charter is a type of rental in which the shipowner puts the ship at the disposal of the charterer for a certain period of time; The charterer bears fuel and port costs.",
     content: `STRUCTURE OF A TIME CHARTER:
 
 The owner:
@@ -407,9 +407,9 @@ NYPE (New York Produce Exchange): the most widely used time charter party form
 BALTIME: an alternative form
 SHELLTIME: for tankers`,
     formula: {
-      name: "Time Charter Hire Hesabı",
+      name: "Time Charter Hire Calculation",
       expression: "Total Hire = Daily Hire ($/day) × Charter Duration (days)",
-      description: "Off-hire günleri toplam süreden düşülür.",
+      description: "Off-hire days are deducted from the total time.",
     },
     examples: [
       {
@@ -418,19 +418,19 @@ SHELLTIME: for tankers`,
       },
     ],
     bulletPoints: [
-      "Kiracı yakıt ve liman masraflarını karşılar",
-      "Hire $/gün bazında belirlenir",
-      "Off-hire: gemi hazır olmadığında hire ödenmez",
+      "Charterer covers fuel and port expenses",
+      "Hire is based on $/day",
+      "Off-hire: hire is not paid when the ship is not ready",
     ],
     keyPoints: [
-      "Time charter'da ticari risk kiracıya, teknik risk armatöre aittir",
-      "NYPE en yaygın time charter party formudur",
-      "Off-hire klozu charter party'nin en çok tartışılan bölümüdür",
+      "In time charter, commercial risk belongs to the charterer and technical risk belongs to the shipowner.",
+      "NYPE is the most common time charter party form",
+      "Off-hire clause is the most discussed part of the charter party.",
     ],
   },
   "bareboat-charter": {
-    title: "Bareboat Charter (Çıplak Gövde Kiralaması)",
-    introduction: "Bareboat charter, armatörün gemiyi mürettebatsız ve donanımsız olarak kiracıya teslim ettiği, kiracının geminin tam operasyonel kontrolünü üstlendiği kiralama türüdür.",
+    title: "Bareboat Charter",
+    introduction: "Bareboat charter is a type of rental in which the shipowner delivers the ship to the charterer without crew and equipment, and the charterer assumes full operational control of the ship.",
     content: `STRUCTURE OF A BAREBOAT CHARTER:
 
 In this type of charter the bareboat charterer is effectively the disponent owner of the ship (operating it as if the owner).
@@ -458,19 +458,19 @@ This structure is similar to an operating lease.
 
 CONTRACT: BARECON (the BIMCO Bareboat Charter Party) is the most common form.`,
     bulletPoints: [
-      "Kiracı mürettebat dahil tüm masrafları karşılar",
-      "Kiracı geminin disponent owner'ıdır",
-      "Genellikle uzun vadeli (5-20 yıl) sözleşmedir",
+      "Charterer covers all expenses including crew",
+      "The charterer is the non-disponent owner of the ship.",
+      "It is usually a long-term (5-20 years) contract",
     ],
     keyPoints: [
-      "Bareboat charter'da tüm risk kiracıya aittir",
-      "Finansman aracı olarak yaygın kullanılır (hire-purchase)",
-      "BARECON BIMCO'nun standart bareboat formudur",
+      "In bareboat charter, all risk belongs to the charterer.",
+      "Widely used as a financing tool (hire-purchase)",
+      "BARECON is BIMCO's standard bareboat form",
     ],
   },
   "coa": {
     title: "COA (Contract of Affreightment)",
-    introduction: "COA, belirli bir süre içinde belirli miktarda yükün taşınmasını taahhüt eden uzun vadeli navlun sözleşmesidir; belirli bir gemi belirlenmez.",
+    introduction: "COA is a long-term freight contract that promises to transport a certain amount of freight within a certain period of time; No specific ship is identified.",
     content: `STRUCTURE OF A COA:
 
 Under a COA the owner undertakes to carry a defined total quantity of cargo (for example 500,000 tonnes a year) on a defined route within a defined period (for example 1-3 years). The carriage is performed over several voyages.
@@ -503,14 +503,14 @@ WHERE IT IS USED:
 
 It is common for high-volume, regularly shipped commodities such as iron ore, coal and bauxite. The major mining companies (BHP, Rio Tinto, Vale) use COAs.`,
     bulletPoints: [
-      "COA'da belirli bir gemi değil, taşıma taahhüdü vardır",
-      "Uzun vadeli gelir güvencesi sağlar",
-      "Demir cevheri, kömür gibi büyük hacimli emtialarda yaygın",
+      "COA contains a commitment to transport, not a specific ship",
+      "Provides long-term income security",
+      "Common in large volume commodities such as iron ore and coal",
     ],
     keyPoints: [
-      "COA = uzun vadeli navlun sözleşmesi; gemi belirtilmez",
-      "Armatörün substitution hakkı vardır",
-      "Piyasa riski her iki taraf için de mevcuttur",
+      "COA = long-term freight contract; ship not specified",
+      "The shipowner has the right to substitution",
+      "Market risk exists for both parties",
     ],
   },
 
@@ -518,8 +518,8 @@ It is common for high-volume, regularly shipped commodities such as iron ore, co
   // BÖLÜM 3 - NAVLUN VE TCE
   // =====================================================
   "freight-basics": {
-    title: "Navlun Kavramı ve Hesaplama",
-    introduction: "Navlun (freight), deniz yoluyla yük taşıma karşılığında ödenen ücrettir ve denizcilik ekonomisinin temel gelir kalemini oluşturur.",
+    title: "Freight Concept and Calculation",
+    introduction: "Freight is the fee paid for transporting cargo by sea and constitutes the basic income item of the maritime economy.",
     content: `TYPES OF FREIGHT:
 
 1. Unit freight: calculated on a $/tonne, $/m³ or $/TEU basis.
@@ -547,9 +547,9 @@ Total: 5% of the freight is the standard commission rate.
 
 Net Freight = Gross Freight × (1 − commission rate)`,
     formula: {
-      name: "Net Navlun Hesabı",
+      name: "Net Freight Calculation",
       expression: "Net Freight = Gross Freight × (1 − Commission %)",
-      description: "Standart komisyon: %3,75 address commission + %1,25 brokerage = %5 toplam.",
+      description: "Standard commission: 3.75% address commission + 1.25% brokerage = 5% total.",
     },
     examples: [
       {
@@ -558,19 +558,19 @@ Net Freight = Gross Freight × (1 − commission rate)`,
       },
     ],
     bulletPoints: [
-      "4 navlun türü: birim, lump sum, Worldscale, TCE",
-      "Standart komisyon: %3,75 address + %1,25 brokerage = %5",
-      "Freight prepaid veya collect olarak ödenebilir",
+      "4 freight types: unit, lump sum, Worldscale, TCE",
+      "Standard commission: 3.75% address + 1.25% brokerage = 5%",
+      "Freight can be paid as prepaid or collect",
     ],
     keyPoints: [
-      "Net navlun = brüt navlun − komisyonlar",
-      "B/L miktarı navlun hesaplamasının temelini oluşturur",
-      "Lump sum navlun stowage factor riskini kiracıya yükler",
+      "Net freight = gross freight − commissions",
+      "B/L quantity forms the basis of freight calculation",
+      "Lump sum freight puts the stowage factor risk on the charterer",
     ],
   },
   "tce-calculation": {
-    title: "TCE (Time Charter Equivalent) Hesaplama",
-    introduction: "TCE, voyage charter gelirlerini günlük bazda time charter eşdeğerine dönüştüren ve farklı seferlerin kârlılığını karşılaştırmaya yarayan temel performans göstergesidir.",
+    title: "TCE (Time Charter Equivalent) Calculation",
+    introduction: "TCE is a key performance indicator that converts voyage charter revenues into time charter equivalent on a daily basis and helps compare the profitability of different voyages.",
     content: `THE TCE FORMULA:
 
 TCE = (Net Freight Income − Voyage Costs) / Voyage Duration (days)
@@ -590,9 +590,9 @@ Days at sea = Distance (nautical miles) / Speed (knots) / 24
 
 Fuel cost is the largest variable item in the TCE calculation. Consumption at sea and consumption in port are calculated separately.`,
     formula: {
-      name: "TCE Hesaplaması",
+      name: "TCE Calculation",
       expression: "TCE = (Freight − Voyage Costs) / Voyage Duration",
-      description: "TCE $/gün bazında hesaplanır. Tüm voyage charter tekliflerini time charter bazında karşılaştırmak için kullanılır.",
+      description: "TCE is calculated on a $/day basis. It is used to compare all voyage charter offers on a time charter basis.",
     },
     examples: [
       {
@@ -601,19 +601,19 @@ Fuel cost is the largest variable item in the TCE calculation. Consumption at se
       },
     ],
     bulletPoints: [
-      "TCE = (Net Navlun − Sefer Maliyetleri) / Sefer Süresi",
-      "Yakıt en büyük değişken maliyettir",
-      "TCE farklı seferlerin kârlılığını karşılaştırır",
+      "TCE = (Net Freight − Voyage Costs) / Voyage Duration",
+      "Fuel is the largest variable cost",
+      "TCE compares the profitability of different voyages",
     ],
     keyPoints: [
-      "TCE > Time Charter hire → voyage charter daha kârlı",
-      "TCE hesabında komisyonlar net navlundan düşülmüş olmalıdır",
-      "Denizde geçen gün = mesafe / hız / 24",
+      "TCE > Time Charter hire → voyage charter is more profitable",
+      "In TCE calculation, commissions must be deducted from net freight",
+      "Days at sea = distance / speed / 24",
     ],
   },
   "worldscale": {
-    title: "Worldscale Sistemi",
-    introduction: "Worldscale, tanker navlun piyasasında kullanılan ve her rota için referans navlun oranı belirleyen standart bir fiyatlandırma sistemidir.",
+    title: "Worldscale System",
+    introduction: "Worldscale is a standard pricing system used in the tanker freight market that establishes a reference freight rate for each route.",
     content: `WHAT IS WORLDSCALE?
 
 Worldscale (WS) is a reference rate table updated every year by the Worldscale Association. For each route a base freight rate ($/tonne) known as the "flat rate" (WS100) is set.
@@ -641,9 +641,9 @@ UPDATING:
 
 The flat rates are updated every year on 1 January. The update reflects changes in fuel prices, port costs and canal dues.`,
     formula: {
-      name: "Worldscale Navlun Hesabı",
+      name: "Worldscale Freight Calculation",
       expression: "Freight = (WS Rate / 100) × Flat Rate ($/tonne)",
-      description: "WS100 = flat rate (başabaş). WS oranı piyasa koşullarına göre değişir.",
+      description: "WS100 = flat rate (breakeven). WS rate varies according to market conditions.",
     },
     examples: [
       {
@@ -652,19 +652,19 @@ The flat rates are updated every year on 1 January. The update reflects changes 
       },
     ],
     bulletPoints: [
-      "WS100 = flat rate = standart başabaş noktası",
-      "Piyasa oranı WS yüzdesi olarak ifade edilir",
-      "Flat rate'ler her yıl 1 Ocak'ta güncellenir",
+      "WS100 = flat rate = standard breakeven point",
+      "Market rate expressed as a percentage of WS",
+      "Flat rates are updated on January 1 each year",
     ],
     keyPoints: [
-      "Worldscale tanker piyasasının evrensel dilidir",
-      "WS > 100 armatör kârlı; WS < 100 düşük kâr/zarar",
-      "Flat rate standart 75.000 DWT tanker bazında hesaplanır",
+      "Worldscale is the universal language of the tanker market",
+      "WS > 100 shipowners are profitable; WS < 100 low profit/loss",
+      "Flat rate is calculated on a standard 75,000 DWT tanker basis",
     ],
   },
   "bunker-cost": {
-    title: "Yakıt Maliyeti Hesaplaması",
-    introduction: "Yakıt (bunker) maliyeti, sefer giderlerinin en büyük kalemini oluşturur ve navlun kârlılığını doğrudan etkiler.",
+    title: "Fuel Cost Calculation",
+    introduction: "Fuel (bunker) cost constitutes the largest item of voyage expenses and directly affects freight profitability.",
     content: `FUEL TYPES AND PRICES:
 
 HFO (Heavy Fuel Oil): high sulphur (3.5%), the cheapest. Requires a scrubber.
@@ -683,9 +683,9 @@ Total Fuel Cost = Total Fuel (tonnes) × Fuel Price ($/tonne)
 
 Days at sea = Distance (NM) / (Speed (knots) × 24)`,
     formula: {
-      name: "Yakıt Maliyeti Hesabı",
+      name: "Fuel Cost Calculation",
       expression: "Fuel Cost = [(Dsea × Csea) + (Dport × Cport)] × Price",
-      description: "D: gün sayısı, C: günlük tüketim (ton/gün), Fiyat: $/ton. Yakıt türüne göre ayrı hesaplanmalıdır.",
+      description: "D: number of days, C: daily consumption (ton/day), Price: $/ton. It should be calculated separately according to fuel type.",
     },
     examples: [
       {
@@ -694,14 +694,14 @@ Days at sea = Distance (NM) / (Speed (knots) × 24)`,
       },
     ],
     bulletPoints: [
-      "VLSFO (0,50%) standart yakıt; LSMGO (0,10%) ECA yakıtı",
-      "Yakıt, sefer maliyetlerinin genellikle %50-70'ini oluşturur",
-      "Hız düşürme (slow steaming) yakıt maliyetini önemli ölçüde azaltır",
+      "VLSFO (0.50%) standard fuel; LSMGO (0.10%) ECA fuel",
+      "Fuel typically accounts for 50-70% of voyage costs",
+      "Speed reduction (slow steaming) significantly reduces fuel costs",
     ],
     keyPoints: [
-      "Yakıt tüketimi hızın küpüyle orantılıdır (yaklaşık)",
-      "ECA bölgelerinde LSMGO kullanımı maliyeti %30-50 artırabilir",
-      "Bunker fiyatları bölgeye göre önemli farklılıklar gösterir (Singapore, Rotterdam, Fujairah)",
+      "Fuel consumption is proportional to the cube of the speed (approximately)",
+      "Using LSMGO in ECA regions can increase costs by 30-50%",
+      "Bunker prices vary significantly by region (Singapore, Rotterdam, Fujairah)",
     ],
   },
 
@@ -709,8 +709,8 @@ Days at sea = Distance (NM) / (Speed (knots) × 24)`,
   // BÖLÜM 4 - LAYTIME VE DEMURRAGE
   // =====================================================
   "laytime-basics": {
-    title: "Laytime Kavramı ve Hesaplama",
-    introduction: "Laytime, charter party'de yükleme ve/veya boşaltma için izin verilen süredir; bu sürenin aşılması demurrage'a yol açar.",
+    title: "Laytime Concept and Calculation",
+    introduction: "Laytime is the time allowed for loading and/or unloading on a charter party; Exceeding this period will lead to demurrage.",
     content: `DEFINITION OF LAYTIME:
 
 Laytime is the free time the charterer may use to load and/or discharge the ship. It is stated in the charter party in days or hours.
@@ -732,9 +732,9 @@ SHINC (Sundays and Holidays Included): Sundays and holidays are included
 
 Laytime starts after a valid NOR (Notice of Readiness) has been tendered and the waiting period stated in the charter party has elapsed.`,
     formula: {
-      name: "Oran Bazlı Laytime Hesabı",
+      name: "Rate Based Laytime Calculation",
       expression: "Laytime (days) = Cargo Quantity (tonnes) / Loading Rate (tonnes/day)",
-      description: "WWD of 24 consecutive hours SHEX UU (en yaygın laytime tanımı). UU = Unless Used.",
+      description: "WWD of 24 consecutive hours SHEX UU (most common laytime definition). UU = Unless Used.",
     },
     examples: [
       {
@@ -743,19 +743,19 @@ Laytime starts after a valid NOR (Notice of Readiness) has been tendered and the
       },
     ],
     bulletPoints: [
-      "Running days: 7/24; WWD: hava uygun iş günleri; SHEX: tatil hariç",
-      "Laytime NOR'dan belirli süre sonra başlar",
-      "UU (Unless Used): tatilde çalışılırsa laytime'dan düşülmez",
+      "Running days: 7/24; WWD: weather permitting business days; SHEX: except holiday",
+      "Laytime starts after certain time from NOR",
+      "UU (Unless Used): if worked on holiday, it is not deducted from laytime",
     ],
     keyPoints: [
-      "Laytime hesabı demurrage/despatch'ın temelini oluşturur",
-      "WWD SHEX UU en yaygın laytime tanımıdır",
-      "EIU (Even If Used): tatilde çalışılsa bile laytime durur",
+      "Laytime calculation forms the basis of demurrage/despatch",
+      "WWD SHEX UU is the most common laytime definition",
+      "EIU (Even If Used): laytime stops even if worked on holiday",
     ],
   },
   "notice-of-readiness": {
     title: "Notice of Readiness (NOR)",
-    introduction: "NOR, geminin yükleme/boşaltma için tüm yönleriyle hazır olduğunu kiracıya bildiren yazılı bildirimdir ve laytime sayımının başlamasını tetikler.",
+    introduction: "NOR is a written notification informing the charterer that the ship is fully ready for loading/unloading and triggers the start of laytime counting.",
     content: `WHAT IS A NOR?
 
 The Notice of Readiness (NOR) is the formal document by which the master or the agent notifies the charterer that the ship is ready to load/discharge.
@@ -783,19 +783,19 @@ WIPON (Whether In Port Or Not): the NOR is valid even if the ship is not within 
 
 The WIBON clause is an important protection in the owner's favour; waiting for a berth then consumes laytime.`,
     bulletPoints: [
-      "NOR geminin hazır olduğunu bildiren resmi belgedir",
-      "NOR sonrası genellikle 6 saat bekleme ile laytime başlar",
-      "WIBON: rıhtım beklemesinde bile NOR geçerlidir",
+      "NOR is the official document stating that the ship is ready.",
+      "After NOR, laytime usually starts with a 6-hour wait.",
+      "WIBON: NOR is valid even during dock waiting",
     ],
     keyPoints: [
-      "NOR geçerliliği laytime hesabının başlangıç noktasıdır",
-      "WIBON klozu armatörü rıhtım bekleme riskinden korur",
-      "NOR'un charter party'deki koşullara tam uyması zorunludur",
+      "NOR validity is the starting point of laytime calculation",
+      "WIBON clause protects the shipowner from the risk of dock waiting",
+      "It is mandatory for NOR to fully comply with the conditions of the charter party",
     ],
   },
   "demurrage-calc": {
-    title: "Demurrage Hesaplaması",
-    introduction: "Demurrage, laytime'ın aşılması durumunda kiracının armatöre ödediği gecikme tazminatıdır.",
+    title: "Demurrage Calculation",
+    introduction: "Demurrage is the delay compensation paid by the charterer to the shipowner in case the laytime is exceeded.",
     content: `CALCULATING DEMURRAGE:
 
 Demurrage = Time Exceeded (days) × Demurrage Rate ($/day)
@@ -819,9 +819,9 @@ In some charter parties the loading and discharging laytime is combined (reversi
 Total laytime = loading + discharging time allowed
 Total used = actual loading + discharging time`,
     formula: {
-      name: "Demurrage Hesabı",
+      name: "Demurrage Calculation",
       expression: "Demurrage ($) = Time Exceeded (days) × Demurrage Rate ($/day)",
-      description: "Once on demurrage, always on demurrage kuralı geçerlidir; kesintisiz running days sayılır.",
+      description: "The once on demurrage, always on demurrage rule applies; Uninterrupted running days are counted.",
     },
     examples: [
       {
@@ -830,19 +830,19 @@ Total used = actual loading + discharging time`,
       },
     ],
     bulletPoints: [
-      "Demurrage = aşılan gün × oran",
-      "Once on demurrage, always on demurrage kuralı",
-      "Reversible laytime: yükleme ve boşaltma süresi birleştirilebilir",
+      "Demurrage = days exceeded × rate",
+      "Once on demurrage, always on demurrage rule",
+      "Reversible laytime: loading and unloading time can be combined",
     ],
     keyPoints: [
-      "Demurrage oranı genellikle T/C hire'dan yüksektir; caydırıcı etkisi vardır",
-      "Demurrage başladıktan sonra SHEX kuralı uygulanmaz",
-      "Reversible laytime armatör lehine esneklik sağlar",
+      "Demurrage rate is generally higher than T/C hire; has a deterrent effect",
+      "SHEX rule does not apply after demurrage begins",
+      "Reversible laytime provides flexibility in favor of the shipowner",
     ],
   },
   "despatch": {
-    title: "Despatch (Erken Yükleme/Boşaltma Primi)",
-    introduction: "Despatch, laytime'ın altında sürede yükleme/boşaltma tamamlandığında armatörün kiracıya ödediği primdir.",
+    title: "Despatch (Early Loading/Unloading Bonus)",
+    introduction: "Despatch is the premium paid by the shipowner to the charterer when loading/unloading is completed below the laytime.",
     content: `CALCULATING DESPATCH:
 
 Despatch = Time Saved (days) × Despatch Rate ($/day)
@@ -863,9 +863,9 @@ THE LOGIC OF DESPATCH:
 
 If the ship leaves early the owner can start the next voyage sooner. But the despatch rate is half the demurrage rate, reflecting the fact that the owner loses more from a delay than it gains from time saved.`,
     formula: {
-      name: "Despatch Hesabı",
+      name: "Despatch Calculation",
       expression: "Despatch = Time Saved × (Demurrage Rate / 2)",
-      description: "Half demurrage standardı. All time saved veya working time saved olarak hesaplanabilir.",
+      description: "Half demurrage standard. It can be calculated as all time saved or working time saved.",
     },
     examples: [
       {
@@ -874,14 +874,14 @@ If the ship leaves early the owner can start the next voyage sooner. But the des
       },
     ],
     bulletPoints: [
-      "Despatch oranı = demurrage oranının yarısı (standart)",
-      "All time saved: tatiller dahil; working time saved: yalnızca iş günleri",
-      "Despatch kiracıyı hızlı operasyona teşvik eder",
+      "Despatch rate = half of demurrage rate (standard)",
+      "All time saved: including holidays; working time saved: working days only",
+      "Despatch encourages charterers to fast operation",
     ],
     keyPoints: [
-      "Half demurrage = despatch oranı piyasa standardıdır",
-      "All time saved armatör için daha maliyetli; kiracı için daha avantajlı",
-      "Despatch hakı charter party'de açıkça belirtilmelidir",
+      "Half demurrage = despatch rate is market standard",
+      "All time saved is more costly for the shipowner; More advantageous for the charterer",
+      "The right to despatch must be clearly stated in the charter party.",
     ],
   },
 
@@ -889,8 +889,8 @@ If the ship leaves early the owner can start the next voyage sooner. But the des
   // BÖLÜM 5 - SEFER TAHMİNİ
   // =====================================================
   "voyage-costs": {
-    title: "Sefer Maliyetleri ve Bileşenleri",
-    introduction: "Gemi işletme maliyetleri sabit ve değişken kalemlerden oluşur; sefer değerlendirmesinde tüm maliyet bileşenlerinin doğru hesaplanması kârlılık analizinin temelidir.",
+    title: "Expedition Costs and Components",
+    introduction: "Ship operating costs consist of fixed and variable items; Accurate calculation of all cost components in voyage evaluation is the basis of profitability analysis.",
     content: `COST CATEGORIES:
 
 1. OPERATING COSTS (OPEX):
@@ -921,19 +921,19 @@ The variable costs directly related to a particular voyage.
 - Brokerage (1.25%)
 Total: 5% of the freight`,
     bulletPoints: [
-      "OPEX: mürettebat, sigorta, bakım – gemi çalışmasa da devam eder",
-      "Yakıt sefer maliyetlerinin %50-70'ini oluşturur",
-      "Sermaye maliyetleri kredi ödeme planına bağlıdır",
+      "OPEX: crew, insurance, maintenance – continues even if the ship is not operating",
+      "Fuel accounts for 50-70% of voyage costs",
+      "Capital costs depend on loan repayment schedule",
     ],
     keyPoints: [
-      "Günlük maliyet = OPEX + Sermaye maliyeti amortismanı",
-      "Başabaş TCE = OPEX/gün + Sermaye/gün",
-      "Kanal geçiş ücretleri büyük gemilerde $500.000+ olabilir",
+      "Daily cost = OPEX + Capital cost depreciation",
+      "Breakeven TCE = OPEX/day + Capital/day",
+      "Canal transit fees can be $500,000+ on large ships",
     ],
   },
   "voyage-estimation-calc": {
-    title: "Sefer Tahmini Hesaplama",
-    introduction: "Sefer tahmini (voyage estimation), bir seferin kârlılığını önceden hesaplamak için yapılan sistematik maliyet-gelir analizidir.",
+    title: "Voyage Estimation Calculation",
+    introduction: "Voyage estimation is a systematic cost-income analysis to calculate the profitability of a voyage in advance.",
     content: `VOYAGE ESTIMATION STEPS:
 
 1. INCOME:
@@ -964,19 +964,19 @@ Daily Profit = TCE − OPEX/day − Capital cost/day`,
       },
     ],
     bulletPoints: [
-      "6 adım: gelir → süre → yakıt → liman → TCE → kârlılık",
-      "TCE > OPEX + sermaye ise sefer kârlıdır",
-      "Deniz günü hesabı: mesafe / (hız × 24)",
+      "6 steps: revenue → duration → fuel → port → TCE → profitability",
+      "If TCE > OPEX + capital, the trip is profitable",
+      "Sea day calculation: distance / (speed × 24)",
     ],
     keyPoints: [
-      "Negatif TCE bile geminin lay-up'tan daha iyi olabileceği anlamına gelebilir",
-      "Sefer tahmini spreadsheet veya yazılımlarla yapılır",
-      "Hız ve yakıt tüketimi arasındaki ilişki (yaklaşık küp kuralı) kritiktir",
+      "Even negative TCE could mean ship could be better than lay-up",
+      "Voyage estimation is made using spreadsheets or software.",
+      "The relationship between speed and fuel consumption (approximate cube rule) is critical",
     ],
   },
   "profit-loss": {
-    title: "Kâr-Zarar Analizi",
-    introduction: "Denizcilik işletmeciliğinde kâr-zarar analizi, sefer bazlı ve dönemsel bazda yapılarak geminin ekonomik performansı değerlendirilir.",
+    title: "Profit-Loss Analysis",
+    introduction: "In maritime business, profit-loss analysis is made on a voyage-based and periodic basis and the economic performance of the ship is evaluated.",
     content: `VOYAGE-BASED ANALYSIS:
 
 Voyage Profit/Loss = Net Freight − (Voyage Costs + OPEX × Voyage Duration + Capital Cost × Voyage Duration)
@@ -1008,19 +1008,19 @@ ROI = Annual Net Profit / Ship Investment Value × 100
 
 In the shipping industry a good ROI is generally in the range of 8-15%.`,
     formula: {
-      name: "Başabaş TCE",
+      name: "Breakeven TCE",
       expression: "Break-even TCE = OPEX/day + Capital Cost/day",
-      description: "Geminin masraflarını karşılayabilmesi için gereken minimum günlük gelir.",
+      description: "The minimum daily income required to cover the ship's expenses.",
     },
     bulletPoints: [
-      "TCE > başabaş → kârlı sefer; TCE < OPEX → lay-up değerlendirilmeli",
-      "Sefer bazlı ve dönemsel analiz birlikte yapılmalıdır",
-      "ROI hedefi: %8-15 aralığı",
+      "TCE > breakeven → profitable trip; TCE < OPEX → lay-up should be evaluated",
+      "Trip-based and periodic analysis should be done together",
+      "ROI target: 8-15% range",
     ],
     keyPoints: [
-      "Zarar eden seferde bile sermaye maliyetinin kısmen karşılanması lay-up'tan iyidir",
-      "Başabaş TCE karar vermede en kritik eşik değerdir",
-      "Spot piyasa vs. T/C kararı risk-getiri dengesine bağlıdır",
+      "Even in a loss-making campaign, partial coverage of capital costs is better than lay-up",
+      "Breakeven TCE is the most critical threshold value in decision making",
+      "Spot market etc. T/C decision depends on risk-return balance",
     ],
   },
 
@@ -1028,8 +1028,8 @@ In the shipping industry a good ROI is generally in the range of 8-15%.`,
   // BÖLÜM 6 - GEMİ FİNANSMANI
   // =====================================================
   "ship-acquisition": {
-    title: "Gemi Edinim Yöntemleri",
-    introduction: "Gemi edinimi, öz sermaye, banka kredisi, leasing veya farklı finansman yapılarıyla gerçekleştirilebilir; her yöntemin avantaj ve riskleri farklıdır.",
+    title: "Ship Acquisition Methods",
+    introduction: "Ship acquisition can be accomplished through equity capital, bank loan, leasing or different financing structures; Each method has different advantages and risks.",
     content: `METHODS OF ACQUISITION:
 
 1. EQUITY: direct purchase from the company's own resources. The risk lies entirely with the company but there is no interest burden.
@@ -1050,19 +1050,19 @@ Newbuilding: yard price + supervision + delivery time (2-4 years). Advantage: fu
 
 Second-hand: immediate delivery. Advantage: immediate income. Disadvantage: maintenance risk, older regulations, shorter remaining economic life.`,
     bulletPoints: [
-      "Banka kredisi en yaygın; LTV %60-70, vade 5-12 yıl",
-      "Leasing = bareboat charter + satın alma opsiyonu",
-      "Yeni inşa teslim süresi 2-4 yıl; ikinci el hemen teslim",
+      "Bank loan is the most common; LTV 60-70%, maturity 5-12 years",
+      "Leasing = bareboat charter + purchase option",
+      "New construction delivery time is 2-4 years; second hand immediate delivery",
     ],
     keyPoints: [
-      "Gemi ipoteği (mortgage) bankanın temel teminatıdır",
-      "LTV oranı gemi değerindeki düşüşlerden etkilenir; covenant riski",
-      "Piyasa zirvesinde ikinci el, dipte yeni inşa tercih edilir",
+      "Ship mortgage (mortgage) is the bank's basic collateral",
+      "The LTV ratio is affected by declines in ship value; covenant risk",
+      "Second hand is preferred at the market peak, new construction is preferred at the bottom",
     ],
   },
   "ship-valuation": {
-    title: "Gemi Değerleme Yöntemleri",
-    introduction: "Gemi değerlemesi, alım-satım, kredi, sigorta ve muhasebe amaçlarıyla farklı yöntemlerle yapılır.",
+    title: "Ship Valuation Methods",
+    introduction: "Ship valuation is done by different methods for purchasing-selling, credit, insurance and accounting purposes.",
     content: `VALUATION METHODS:
 
 1. MARKET VALUE:
@@ -1091,19 +1091,19 @@ FACTORS AFFECTING SHIP VALUE:
 - Special equipment (ice class, scrubber, BWTS)
 - Maintenance condition and class records`,
     bulletPoints: [
-      "Piyasa değeri: benzer gemi satışlarıyla karşılaştırma",
-      "Hurda değeri = LDT × $/LDT, minimum değerdir",
-      "DCF gelecek nakit akışlarını bugünkü değere indirger",
+      "Market value: comparison with similar ship sales",
+      "Scrap value = LDT × $/LDT is the minimum value",
+      "DCF discounts future cash flows to present value",
     ],
     keyPoints: [
-      "Gemi yaşı değerin en kritik belirleyicisidir",
-      "Navlun piyasası yükseldiğinde gemi değerleri de artar",
-      "Banka LTV hesabında genellikle charter-free piyasa değeri kullanılır",
+      "Ship age is the most critical determinant of value",
+      "When the freight market rises, ship values also increase",
+      "Charter-free market value is usually used in bank LTV calculation",
     ],
   },
   "depreciation": {
-    title: "Amortisman Hesaplaması",
-    introduction: "Amortisman, geminin ekonomik ömrü boyunca maliyetinin sistematik olarak giderleştirilmesidir ve vergi planlamasında önemli bir araçtır.",
+    title: "Depreciation Calculation",
+    introduction: "Depreciation is the systematic expense of the cost of a ship over its economic life and is an important tool in tax planning.",
     content: `DEPRECIATION METHODS:
 
 1. STRAIGHT-LINE DEPRECIATION:
@@ -1124,9 +1124,9 @@ Scrap value = LDT × estimated scrap price
 Typical LDT: 15-25% of the ship's DWT
 Scrap price: $350-550/LDT (depending on market conditions)`,
     formula: {
-      name: "Doğrusal Amortisman",
+      name: "Linear Depreciation",
       expression: "Annual Depreciation = (Cost − Scrap Value) / Economic Life",
-      description: "Standart ekonomik ömür: 25 yıl. Hurda değeri LDT × $/LDT ile tahmin edilir.",
+      description: "Standard economic life: 25 years. Scrap value is estimated by LDT × $/LDT.",
     },
     examples: [
       {
@@ -1135,14 +1135,14 @@ Scrap price: $350-550/LDT (depending on market conditions)`,
       },
     ],
     bulletPoints: [
-      "Doğrusal amortisman en yaygın; standart ömür 25 yıl",
+      "Straight-line depreciation is the most common; standard life 25 years",
       "Scrap value = LDT × $/LDT",
-      "Günlük amortisman başabaş TCE hesabında kullanılır",
+      "Daily depreciation is used in the breakeven TCE calculation",
     ],
     keyPoints: [
-      "Amortisman nakit çıkışı yaratmaz; vergi avantajı sağlar",
-      "LDT genellikle DWT'nin %15-25'i kadardır",
-      "Özel düzenlemeler (EEDI, scrubber) geriye dönük değer artırabilir",
+      "Depreciation does not create cash outflow; provides tax advantage",
+      "LDT is usually 15-25% of DWT",
+      "Special regulations (EEDI, scrubber) can increase retroactive value",
     ],
   },
 
@@ -1150,8 +1150,8 @@ Scrap price: $350-550/LDT (depending on market conditions)`,
   // BÖLÜM 7 - DENİZ SİGORTASI
   // =====================================================
   "hull-machinery": {
-    title: "Tekne ve Makine (H&M) Sigortası",
-    introduction: "H&M (Hull & Machinery) sigortası, geminin fiziksel hasarlarını, çarpışma sorumluluğunun bir kısmını ve kurtarma masraflarını teminat altına alır.",
+    title: "Hull and Machinery (H&M) Insurance",
+    introduction: "H&M (Hull & Machinery) insurance covers physical damage to the ship, part of the collision liability and salvage costs.",
     content: `SCOPE OF H&M INSURANCE:
 
 Hull and Machinery insurance protects the physical structure of the ship against marine risks.
@@ -1184,19 +1184,19 @@ FACTORS DETERMINING THE PREMIUM:
 - Loss record
 - The insured value of the ship`,
     bulletPoints: [
-      "H&M geminin fiziksel hasarını ve çarpışma sorumluluğunun 3/4'ünü kapsar",
-      "Agreed value poliçede sabit olarak belirlenir",
-      "ITC Hulls standart H&M klozudur",
+      "H&M covers physical damage to the ship and 3/4 of collision liability",
+      "Agreed value is determined as a fixed value in the policy.",
+      "ITC Hulls is the standard H&M clause",
     ],
     keyPoints: [
-      "3/4 RDC: çarpışma sorumluluğunun 3/4'ü H&M, 1/4'ü P&I",
-      "Deductible her hasarda sigortalının üstlendiği muafiyet tutarıdır",
-      "Gemi yaşı ve hasar geçmişi prim oranını doğrudan etkiler",
+      "3/4 RDC: 3/4 of collision liability H&M, 1/4 P&I",
+      "Deductible is the deductible amount assumed by the insured for each damage.",
+      "Ship age and damage history directly affect the premium rate",
     ],
   },
   "pi-club": {
-    title: "P&I Kulüpleri ve Sorumluluk Sigortası",
-    introduction: "P&I (Protection and Indemnity) kulüpleri, armatörlerin üçüncü şahıslara karşı sorumluluklarını karşılayan karşılıklı sigorta kuruluşlarıdır.",
+    title: "P&I Clubs and Liability Insurance",
+    introduction: "P&I (Protection and Indemnity) clubs are mutual insurance organizations that cover shipowners' liabilities towards third parties.",
     content: `WHAT IS A P&I CLUB?
 
 P&I clubs are mutual insurance associations formed by shipowners together. They are not for profit.
@@ -1225,19 +1225,19 @@ SPECIAL FEATURES:
 2. Supplementary Call: an additional call can be levied if claims are heavy
 3. Unlimited cover: there is no limit of cover for most risks`,
     bulletPoints: [
-      "P&I = karşılıklı sigorta; kâr amacı gütmez",
-      "International Group dünya filosunun %90+'ını sigorta eder",
-      "Kirlilik sorumluluğu P&I kapsamındadır",
+      "P&I = mutual insurance; non-profit",
+      "International Group insures 90%+ of the world's fleet",
+      "Pollution liability is covered by P&I",
     ],
     keyPoints: [
-      "P&I çarpışma sorumluluğunun H&M kapsamı dışındaki 1/4'ünü karşılar",
-      "Büyük hasarlarda kulüpler arası pooling mekanizması çalışır",
-      "P&I sertifikası liman giriş şartıdır (CLC, BWR sertifikaları)",
+      "P&I covers 1/4 of collision liability outside H&M coverage",
+      "Inter-club pooling mechanism works in case of major damages",
+      "P&I certificate is a port entry requirement (CLC, BWR certificates)",
     ],
   },
   "cargo-insurance": {
-    title: "Yük Sigortası ve Klozlar",
-    introduction: "Yük sigortası, taşınan yükün deniz rizikoları nedeniyle uğrayacağı hasar veya kayıpları teminat altına alır.",
+    title: "Cargo Insurance and Clauses",
+    introduction: "Cargo insurance covers the damage or loss that the transported cargo may suffer due to maritime risks.",
     content: `CARGO INSURANCE CLAUSES:
 
 The Institute Cargo Clauses (ICC) offer cover at three levels:
@@ -1265,14 +1265,14 @@ GENERAL AVERAGE:
 
 This is a concept unique to maritime law. Voluntary sacrifices made to save the ship and the cargo (jettison of cargo, salvage remuneration) are shared proportionally between all the interests involved. The York-Antwerp Rules apply.`,
     bulletPoints: [
-      "ICC (A): all risks; ICC (B): named perils; ICC (C): minimum kapsam",
-      "Sigorta değeri: CIF + %10 standart",
-      "Genel avarya: fedakârlık masrafları orantılı paylaşılır",
+      "ICC (A): all risks; ICC (B): named perils; ICC (C): minimum coverage",
+      "Insurance value: CIF + 10% standard",
+      "General average: sacrifice costs are shared proportionately",
     ],
     keyPoints: [
-      "ICC (A) en yaygın yük sigortası klozudur",
-      "Savaş ve grev riskleri standart klozlarda kapsanmaz; ek kloz gerekir",
-      "Genel avarya York-Antwerp Rules'a göre hesaplanır",
+      "ICC (A) is the most common cargo insurance clause",
+      "War and strike risks are not covered in standard clauses; additional clause required",
+      "General average is calculated according to the York-Antwerp Rules",
     ],
   },
 
@@ -1280,8 +1280,8 @@ This is a concept unique to maritime law. Voluntary sacrifices made to save the 
   // BÖLÜM 8 - SÖZLEŞMELER VE HUKUK
   // =====================================================
   "charter-party": {
-    title: "Charter Party Formları",
-    introduction: "Charter party, armatör ile kiracı arasındaki kiralama sözleşmesidir; standart formlar BIMCO ve diğer kuruluşlar tarafından hazırlanır.",
+    title: "Charter Party Forms",
+    introduction: "Charter party is a rental agreement between the shipowner and the charterer; standard forms are prepared by BIMCO and other organizations.",
     content: `THE PRINCIPAL FORMS:
 
 VOYAGE CHARTER PARTY:
@@ -1312,19 +1312,19 @@ BIMCO:
 
 The Baltic and International Maritime Council is the most important source of shipping contract forms. It has published more than 100 standard forms and clauses.`,
     bulletPoints: [
-      "GENCON: genel kargo, NYPE: time charter, BARECON: bareboat",
-      "BIMCO 100'den fazla standart form yayınlamıştır",
-      "Arbitration genellikle Londra veya New York'ta yapılır",
+      "GENCON: general cargo, NYPE: time charter, BARECON: bareboat",
+      "BIMCO has published more than 100 standard forms",
+      "Arbitration usually takes place in London or New York",
     ],
     keyPoints: [
-      "Charter party'nin en kritik klozları: laytime, demurrage, off-hire, withdrawal",
-      "NYPE Clause 8 (off-hire) ve Clause 11 (withdrawal) en çok tartışılan bölümlerdir",
-      "Rider clauses: standart forma eklenen özel klozlardır",
+      "The most critical clauses of the charter party: laytime, demurrage, off-hire, withdrawal",
+      "NYPE Clause 8 (off-hire) and Clause 11 (withdrawal) are the most discussed sections",
+      "Rider clauses: special clauses added to the standard form",
     ],
   },
   "bill-of-lading": {
-    title: "Konşimento (Bill of Lading)",
-    introduction: "Konşimento (B/L), deniz taşımacılığında yükün teslim alındığını belgeleyen, taşıma sözleşmesinin kanıtı olan ve mülkiyet devri sağlayan kıymetli evraktır.",
+    title: "Bill of Lading",
+    introduction: "Bill of Lading (B/L) is a negotiable document that documents the receipt of the cargo in maritime transportation, is proof of the transportation contract and ensures the transfer of ownership.",
     content: `THE 3 FUNCTIONS OF A BILL OF LADING:
 
 1. RECEIPT: it is evidence that the cargo has been loaded on board, or received for carriage. The quantity, condition and description of the cargo are stated in the B/L.
@@ -1346,19 +1346,19 @@ THE HAGUE-VISBY RULES:
 
 They set out the carrier's minimum liability for the cargo. The carrier must perform its obligation of seaworthiness.`,
     bulletPoints: [
-      "B/L: makbuz + sözleşme kanıtı + mülkiyet belgesidir",
-      "Clean B/L: hasar kaydı yok; claused B/L: hasar/eksik kaydı var",
-      "Order B/L ciro ile devredilebilir; straight B/L devredilemez",
+      "B/L: is receipt + proof of contract + proof of ownership",
+      "Clean B/L: no damage record; claused B/L: there is damage/missing record",
+      "Order B/L is transferable by endorsement; straight B/L non-transferable",
     ],
     keyPoints: [
-      "B/L'nin mülkiyet belgesi özelliği onu kıymetli evrak yapar",
-      "Hague-Visby Rules taşıyanın asgari sorumluluğunu belirler",
-      "Letter of Credit (akreditif) işlemlerinde clean shipped B/L istenir",
+      "The ownership document feature of B/L makes it a negotiable instrument.",
+      "Hague-Visby Rules determine the minimum liability of the carrier",
+      "In Letter of Credit transactions, clean shipped B/L is required.",
     ],
   },
   "maritime-claims": {
-    title: "Denizcilik Alacakları ve Tahkim",
-    introduction: "Denizcilik uyuşmazlıkları genellikle tahkim (arbitration) yoluyla çözülür; denizcilik alacakları geminin tutuklanmasına (arrest) yol açabilir.",
+    title: "Maritime Claims and Arbitration",
+    introduction: "Maritime disputes are generally resolved through arbitration; Maritime claims may lead to the arrest of the ship.",
     content: `MARITIME CLAIMS:
 
 A maritime claim covers all legal claims arising out of maritime trade.
@@ -1392,14 +1392,14 @@ The main arbitration centres:
 
 English law is the most widely applied legal system in shipping contracts.`,
     bulletPoints: [
-      "Gemi tutuklaması (arrest) denizcilik alacaklarının teminatıdır",
-      "Londra (LMAA) en yaygın denizcilik tahkim merkezidir",
-      "İngiliz hukuku denizcilik sözleşmelerinde standart tercihtir",
+      "Ship arrest is the guarantee of maritime receivables.",
+      "London (LMAA) is the most common maritime arbitration center",
+      "English law is the standard choice in maritime contracts",
     ],
     keyPoints: [
-      "Mürettebat alacakları en öncelikli denizcilik alacaklarındandır",
-      "Tahkim kararları 1958 New York Sözleşmesi ile uluslararası uygulanabilir",
-      "Charter party'deki arbitration klozu yargı yetkisini belirler",
+      "Crew receivables are among the top priority maritime receivables.",
+      "Arbitral awards are internationally enforceable under the 1958 New York Convention",
+      "The arbitration clause in the charter party determines jurisdiction",
     ],
   },
 
@@ -1407,8 +1407,8 @@ English law is the most widely applied legal system in shipping contracts.`,
   // EK BAŞLIKLAR (2. tur domain taraması)
   // =====================================================
   "incoterms": {
-    title: "Incoterms ve Teslim Şekilleri",
-    introduction: "Incoterms (International Commercial Terms), ICC tarafından yayımlanan ve uluslararası ticarette alıcı ile satıcı arasında masraf, risk ve sorumlulukların hangi noktada el değiştirdiğini standartlaştıran teslim kurallarıdır. Navlun, sigorta ve risk kimde sorusunun yanıtını belirler.",
+    title: "Incoterms and Delivery Methods",
+    introduction: "Incoterms (International Commercial Terms) are delivery rules published by ICC that standardize at what point costs, risks and responsibilities change hands between buyer and seller in international trade. Freight, insurance and risk determine the answer to the question.",
     content: `WHY DO THEY MATTER?
 
 Incoterms define clearly who pays the carriage cost, at what point the risk of damage or loss passes to the buyer and who arranges insurance. In shipping they form the basis of the commercial flow together with the contract of carriage and the bill of lading.
@@ -1428,20 +1428,20 @@ THE DISTINCTION BETWEEN RISK AND COST:
 
 An important subtlety: under some terms (CFR/CIF) the seller pays the freight/insurance, yet RISK passes to the buyer much earlier (on loading); the points at which cost and risk transfer can be different.`,
     bulletPoints: [
-      "Incoterms masraf, risk ve sigorta sorumluluğunun geçiş noktasını tanımlar.",
-      "FAS/FOB/CFR/CIF deniz taşımacılığına özgü terimlerdir.",
-      "Konteyner/multimodalde FCA/CIP tercih edilir.",
-      "CFR/CIF'te risk yüklemede geçer ama navlun satıcıdadır.",
+      "Incoterms define the transition point for costs, risks and insurance liability.",
+      "FAS/FOB/CFR/CIF are terms specific to maritime transportation.",
+      "FCA/CIP is preferred in container/multimodal.",
+      "In CFR/CIF, the risk is in the loading, but the freight is on the seller.",
     ],
     keyPoints: [
-      "Incoterms 'navlun/sigorta/risk kimde?' sorusunu standartlaştırır.",
-      "Masraf ve risk geçiş noktaları farklı olabilir (özellikle CIF/CFR).",
-      "ICC tarafından yayımlanır ve sözleşmede açıkça atıf yapılır.",
+      "Incoterms 'freight/insurance/who bears the risk?' standardizes the question.",
+      "Cost and risk transition points may differ (especially CIF/CFR).",
+      "It is published by the ICC and is explicitly referenced in the contract.",
     ],
   },
   "general-average": {
-    title: "Müşterek Avarya ve York-Antwerp Kuralları",
-    introduction: "Müşterek avarya (General Average – GA), ortak deniz sefer macerasını (gemi + yük) bir tehlikeden kurtarmak için bilerek ve makul biçimde yapılan olağanüstü fedakârlık ve masrafların, kurtarılan tüm menfaatler (gemi, yük, navlun) arasında oranlı olarak paylaşılması ilkesidir.",
+    title: "General Average and York-Antwerp Rules",
+    introduction: "General average (GA) is the principle of sharing proportionately among all saved interests (ship, cargo, freight) the extraordinary sacrifices and expenses made knowingly and reasonably to save the common sea voyage adventure (ship + cargo) from a danger.",
     content: `THE BASIC PRINCIPLE:
 
 A deliberate sacrifice made at a time of danger (for example jettisoning part of the cargo when aground, water damage caused in fighting a fire, expenditure incurred for salvage) is not borne by one party alone, because the sacrifice is made to save the common interest. The cost is therefore shared between all the values saved.
@@ -1467,20 +1467,20 @@ THE DIFFERENCE FROM PARTICULAR AVERAGE:
 
 Particular average is accidental damage borne only by the party that suffers it; it is not shared. General average is the sharing of a deliberate sacrifice.`,
     bulletPoints: [
-      "GA: ortak tehlikede yapılan kasıtlı fedakârlığın tüm menfaatlerce paylaşımı.",
-      "Koşullar: gerçek ortak tehlike + kasıtlı + makul + olağanüstü.",
-      "York-Antwerp Rules GA hesaplama çerçevesidir.",
-      "Average adjuster katkı paylarını hesaplar; GA bond/deposit alınır.",
+      "GA: sharing of deliberate sacrifice made in common danger by all interests.",
+      "Conditions: actual common danger + intentional + reasonable + extraordinary.",
+      "York-Antwerp Rules is the GA calculation framework.",
+      "Average adjuster calculates contribution margins; GA bond/deposit is taken.",
     ],
     keyPoints: [
-      "GA kasıtlı fedakârlığı paylaştırır; özel avarya paylaştırılmaz.",
-      "Çoğu sözleşme GA için York-Antwerp Rules'a atıf yapar.",
-      "GA katkısı genellikle yük sigortasınca karşılanır.",
+      "GA apportions intentional sacrifice; Private average is not apportioned.",
+      "Most contracts make reference to the York-Antwerp Rules for GA.",
+      "GA contribution is usually covered by cargo insurance.",
     ],
   },
   "ship-sale-purchase": {
-    title: "Gemi Alım-Satımı (S&P) ve Saleform/MOA",
-    introduction: "İkinci el gemi alım-satımı (Sale and Purchase – S&P), denizcilik piyasasının önemli bir koludur. İşlem, üzerinde anlaşılan bir satış sözleşmesi (Memorandum of Agreement – MOA, genellikle Norwegian Saleform) ile yürütülür.",
+    title: "Ship Trading (S&P) and Saleform/MOA",
+    introduction: "Second-hand ship trading (Sale and Purchase – S&P) is an important branch of the maritime market. The transaction is carried out by an agreed upon sales contract (Memorandum of Agreement – MOA, usually Norwegian Saleform).",
     content: `THE S&P PROCESS:
 
 1. Market research and identification of candidate ships (through a broker).
@@ -1505,15 +1505,15 @@ RELATIONSHIP WITH VALUATION:
 
 The S&P price is set by the state of the market and the age/type/condition and earning potential of the ship (it is linked to the ship valuation methods).`,
     bulletPoints: [
-      "S&P işlemi MOA (genellikle Norwegian Saleform) ile yürütülür.",
-      "Muayene + sınıf/belge incelemesi + (gerekirse) havuzlama yapılır.",
-      "Deposit genellikle %10; teslim Protocol of Delivery ile olur.",
-      "Gemi sınıfı korunmuş ve ipotek/hacizden ari teslim edilir.",
+      "The S&P transaction is executed with MOA (usually Norwegian Saleform).",
+      "Inspection + class/document review + pooling (if necessary) is performed.",
+      "Deposit is usually 10%; Delivery is made via Protocol of Delivery.",
+      "The ship class is delivered preserved and free from mortgages/liens.",
     ],
     keyPoints: [
-      "MOA fiyat, muayene, teslim ve durum şartlarını belirler.",
-      "Teslimde bayrak/tescil/ipotek işlemleri eşgüdümlü yürür.",
-      "S&P fiyatı gemi değerleme ve piyasa ile bağlantılıdır.",
+      "MOA establishes price, inspection, delivery and condition requirements.",
+      "Upon delivery, flag/registration/mortgage procedures are carried out in coordination.",
+      "The S&P price is linked to ship valuation and the market.",
     ],
   },
 };
@@ -1555,7 +1555,7 @@ export default function EconomicsTopicsPage() {
                 <TrendingUp className="h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Deniz İşletmeciliği</h1>
+                <h1 className="text-xl font-bold text-foreground">Maritime Management</h1>
               </div>
             </div>
           </div>
@@ -1614,9 +1614,9 @@ export default function EconomicsTopicsPage() {
               </div>
               <div className="grid gap-2 sm:grid-cols-3">
                 {[
-                  { title: "Ekonomi Hesaplamaları", href: "/economics" },
+                  { title: "Economic Calculations", href: "/economics" },
                   { title: "Formulas", href: "/formulas" },
-                  { title: "Tüm Dersler", href: "/lessons" },
+                  { title: "All Lessons", href: "/lessons" },
                 ].map((resource, index) => (
                   <Link
                     key={index}
@@ -1670,7 +1670,7 @@ export default function EconomicsTopicsPage() {
 
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
                   <div className="bg-muted/50 rounded-xl p-4 space-y-2">
-                    <h3 className="font-semibold text-foreground mb-3">Önemli Noktalar</h3>
+                    <h3 className="font-semibold text-foreground mb-3">Highlights</h3>
                     {currentContent.bulletPoints.map((point, index) => (
                       <div key={index} className="flex items-start gap-2">
                         <span className="w-2 h-2 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
@@ -1696,11 +1696,11 @@ export default function EconomicsTopicsPage() {
 
                 {currentContent.examples && currentContent.examples.length > 0 && (
                   <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                    <h3 className="font-semibold text-foreground mb-2">Sayısal Örnek</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Numerical Example</h3>
                     {currentContent.examples.map((example, index) => (
                       <div key={index} className="text-sm text-foreground">
-                        <p className="font-medium">Soru: {example.problem}</p>
-                        <p className="text-muted-foreground mt-1">Çözüm: {example.solution}</p>
+                        <p className="font-medium">Question: {example.problem}</p>
+                        <p className="text-muted-foreground mt-1">Solution: {example.solution}</p>
                       </div>
                     ))}
                   </div>
@@ -1710,7 +1710,7 @@ export default function EconomicsTopicsPage() {
                   <div className="bg-indigo-500/5 rounded-xl p-4">
                     <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5 text-indigo-500" />
-                      Anahtar Bilgiler
+                      Key Information
                     </h3>
                     <div className="space-y-2">
                       {currentContent.keyPoints.map((point, index) => (

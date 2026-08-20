@@ -136,7 +136,7 @@ export const startEnrollment = async (
     friendlyName: name,
   });
   if (error || !data) {
-    return { data: null, error: (error as Error) ?? new Error("Kayıt başlatılamadı") };
+    return { data: null, error: (error as Error) ?? new Error("Recording failed to start") };
   }
   return {
     data: { factorId: data.id, qrCode: data.totp.qr_code, secret: data.totp.secret },
@@ -160,7 +160,7 @@ export const confirmEnrollment = async (
 export const verifyChallenge = async (code: string): Promise<{ error: Error | null }> => {
   const factors = await listVerifiedFactors();
   const factor = factors[0];
-  if (!factor) return { error: new Error("Kayıtlı doğrulayıcı bulunamadı") };
+  if (!factor) return { error: new Error("No registered validators found") };
 
   const { error } = await supabase.auth.mfa.challengeAndVerify({
     factorId: factor.id,

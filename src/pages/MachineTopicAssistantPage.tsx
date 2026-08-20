@@ -71,7 +71,7 @@ const topicAssistantConfig: Record<string, { quickPrompts: string[]; systemPromp
       "What should be done if the pressures in the refrigeration system are higher than normal?",
       "Is a changeover from R-134a to R-290 possible?",
       "What are the temperature settings for the provision cold rooms?",
-      "Klima sisteminde nem kontrolü nasıl sağlanır?",
+      "How to control humidity in the air conditioning system?",
     ],
     systemPrompt: "You are an expert in marine refrigeration and air conditioning systems. You provide guidance on refrigeration cycles, refrigerants, provision cooling, reefer cargo and air conditioning systems. Detect the language the user asked the question in and answer in that same language.",
   },

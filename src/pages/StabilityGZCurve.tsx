@@ -31,7 +31,7 @@ export default function StabilityGZCurvePage() {
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="gm">GM (Metasentrik Yükseklik) (m)</Label>
+              <Label htmlFor="gm">GM (Metacentric Height) (m)</Label>
               <Input
                 id="gm"
                 type="number"
@@ -43,7 +43,7 @@ export default function StabilityGZCurvePage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="heelAngle">Yatma Açısı (derece)</Label>
+              <Label htmlFor="heelAngle">Angle of heel (degrees)</Label>
               <Input
                 id="heelAngle"
                 type="number"
@@ -56,17 +56,17 @@ export default function StabilityGZCurvePage() {
 
           {gz && (
             <div className="mt-6 p-4 bg-primary/10 rounded-lg">
-              <h4 className="font-semibold mb-3 text-primary">Hesaplama Sonucu</h4>
+              <h4 className="font-semibold mb-3 text-primary">Calculation Result</h4>
               <p className="text-2xl font-bold">{gz} m</p>
-              <p className="text-sm text-muted-foreground mt-1">Stabilite Kolu (GZ)</p>
+              <p className="text-sm text-muted-foreground mt-1">Stability Arm (GZ)</p>
             </div>
           )}
 
           <div className="mt-6 p-4 bg-muted rounded-lg">
-            <h4 className="font-semibold mb-2 text-sm">Formül:</h4>
+            <h4 className="font-semibold mb-2 text-sm">Formula:</h4>
             <p className="text-xs font-mono">GZ = GM × sin(θ)</p>
             <p className="text-xs text-muted-foreground mt-2">
-              θ: Yatma açısı (radyan cinsinden)
+              θ: Angle of heel (in radians)
             </p>
           </div>
         </CardContent>

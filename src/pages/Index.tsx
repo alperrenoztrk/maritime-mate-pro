@@ -8,8 +8,8 @@ import { prefersReducedMotion } from "@/hooks/useAppMotion";
 
 const VIEWS = [
   { id: "overview", label: "Summary" },
-  { id: "news", label: "Haberler" },
-  { id: "widgets", label: "Widget'lar" },
+  { id: "news", label: "News" },
+  { id: "widgets", label: "Widgets" },
 ] as const;
 
 type ViewId = (typeof VIEWS)[number]["id"];

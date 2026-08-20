@@ -19,11 +19,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function CargoAssistantPage() {
   return (
     <AssistantInterface
-      title="Yük Elleçleme ve İstifleme Asistanı"
-      badge="Kargo Asistanı"
+      title="Cargo Handling and Stacking Assistant"
+      badge="Cargo Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Kargo operasyonu, trim/stabilite veya IMDG ile ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding cargo operation, trim/stability or IMDG..."
       icon={Boxes}
       accentGradient="from-amber-600 via-orange-600 to-rose-600"
       iconColor="text-amber-600 dark:text-amber-400"

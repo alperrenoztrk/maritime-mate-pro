@@ -138,7 +138,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       weatherUrl.searchParams.set("timezone", "auto");
 
       const res = await fetch(weatherUrl.toString());
-      if (!res.ok) throw new Error(`Hava verisi alınamadı (${res.status})`);
+      if (!res.ok) throw new Error(`Weather data could not be received (${res.status})`);
       const json = (await res.json()) as WeatherResponse;
       const cur = json.current ?? {};
       const sunriseIso = json.daily?.sunrise?.[0];
@@ -198,7 +198,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       let seaLikeName: string | undefined;
       if (!cityLikeName) {
         const informative = reverseJson?.localityInfo?.informative || [];
-        const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "körfez"];
+        const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "gulf"];
         for (const keyword of waterKeywords) {
           const match = informative.find((x) => {
             const desc = (x.description || "").toLowerCase();
@@ -252,12 +252,12 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
   }, [fetchReverse, fetchWeather, haversineMeters, movementReverseThresholdM, movementWeatherThresholdM]);
 
   const requestOnce = useCallback(async () => {
-    console.log("🌤️ Hava durumu verisi alınmaya başlandı...");
+    console.log("🌤️ Weather data has started to be received...");
     
     // Check if we have preloaded data first
     const preloadedData = weatherPreloader.getPreloadedData();
     if (preloadedData) {
-      console.log("✅ Preload edilmiş hava durumu verisi kullanılıyor");
+      console.log("✅ Preloaded weather data is used");
       setData({
         temperatureC: preloadedData.temperatureC,
         humidityPct: preloadedData.humidityPct,
@@ -293,7 +293,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
 
     const preloadError = weatherPreloader.getPreloadError();
     if (preloadError) {
-      console.log("⚠️ Preload hatası mevcut, normal yükleme yapılıyor:", preloadError);
+      console.log("⚠️ There is a preload error, normal loading is being done:", preloadError);
     }
     
     if (!preloadedData) setLoading(true);
@@ -302,7 +302,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       // İzin daha önce reddedilmişse tekrar sormayız: kullanıcı her açılışta
       // izin diyaloğuyla karşılaşmasın (bkz. src/lib/geolocationPermission.ts).
       if (!(await shouldRequestLocation())) {
-        throw new Error("Konum izni verilmemiş");
+        throw new Error("Location permission not granted");
       }
       markLocationPrompted();
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
@@ -315,11 +315,11 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         console.log("📍 Konum bilgisi isteniyor...");
         navigator.geolocation.getCurrentPosition(
           (pos) => {
-            console.log("✅ Konum alındı:", pos.coords.latitude, pos.coords.longitude);
+            console.log("✅ Location received:", pos.coords.latitude, pos.coords.longitude);
             resolve(pos);
           },
           (err) => {
-            console.error("❌ Konum alınamadı:", err.message);
+            console.error("❌ Failed to get location:", err.message);
             reject(err);
           },
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
@@ -336,20 +336,20 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       setAccuracyMeters(typeof position.coords.accuracy === "number" ? position.coords.accuracy : null);
       setLocationSource("gps");
       setPositionTimestamp(position.timestamp ?? Date.now());
-      console.log("🌤️ Hava durumu ve konum verisi alınıyor...");
+      console.log("🌤️ Receiving weather and location data...");
       await Promise.allSettled([
         fetchWeather(lat, lon),
         fetchReverse(lat, lon),
       ]);
       setIsFallbackLocation(false);
-      console.log("✅ Hava durumu verisi başarıyla alındı");
+      console.log("✅ Weather data received successfully");
       return dataRef.current;
     } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : "Bilinmeyen hata";
+      const message = e instanceof Error ? e.message : "Unknown error";
       if (preloadedData && !preloadedData.isFallbackLocation) {
         // A valid device fix is already on screen. Do not replace it with a
         // less precise IP estimate just because the refinement timed out.
-        console.warn("⚠️ Taze GPS düzeltmesi alınamadı; ön yüklenen cihaz konumu korunuyor:", message);
+        console.warn("⚠️ Could not get fresh GPS fix; booted device location is preserved:", message);
         setError(null);
         return dataRef.current;
       }
@@ -369,7 +369,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         setError(null);
         return dataRef.current;
       }
-      console.warn("⚠️ GPS reddedildi, IP tabanlı konum deneniyor:", message);
+      console.warn("⚠️ GPS rejected, trying IP based location:", message);
       // IP-based geolocation fallback — far more accurate than a hardcoded city
       try {
         const ipRes = await fetch("https://ipapi.co/json/");
@@ -392,7 +392,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         setError(null);
         return dataRef.current;
       } catch (ipErr) {
-        console.error("❌ IP tabanlı konum da başarısız:", ipErr);
+        console.error("❌ IP based location also fails:", ipErr);
         setError(message);
         setIsFallbackLocation(true);
         return null;

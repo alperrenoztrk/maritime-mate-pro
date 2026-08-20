@@ -57,7 +57,7 @@ export default function SailorKnotsPage() {
         {/* Header */}
         <div className="mb-2 flex items-center gap-2">
           <Anchor className="h-7 w-7 text-amber-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">Gemici Bağları</h1>
+          <h1 className="text-3xl font-bold md:text-4xl">Seamanship knots</h1>
         </div>
 
         {/* Search */}
@@ -66,16 +66,16 @@ export default function SailorKnotsPage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Bağ ara (ör. izbarço, bowline, demir)…"
+            placeholder="Search knots (e.g. bowline, anchor)…"
             className="pl-9 pr-9"
-            aria-label="Bağ ara"
+            aria-label="Search for a vineyard"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
               className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
-              aria-label="Aramayı temizle"
+              aria-label="Clear search"
             >
               <X className="h-4 w-4" />
             </button>
@@ -108,7 +108,7 @@ export default function SailorKnotsPage() {
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
             <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Farklı bir arama terimi deneyin veya kategori filtresini temizleyin.
+              Try a different search term or clear the category filter.
             </p>
           </div>
         ) : (
@@ -122,7 +122,7 @@ export default function SailorKnotsPage() {
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
                     <span className="shrink-0 text-micro text-muted-foreground">
-                      {knots.length} bağ
+                      {knots.length} bond
                     </span>
                   </div>
                 </div>

@@ -154,7 +154,7 @@ export default function GuidedLessonSession() {
               <Heart className="h-4 w-4 fill-rose-500" /> {hearts}
             </span>
           ) : (
-            <span className="text-xs font-medium text-muted-foreground">Rehberli Okuma</span>
+            <span className="text-xs font-medium text-muted-foreground">Guided Reading</span>
           )}
         </div>
       </div>
@@ -171,7 +171,7 @@ export default function GuidedLessonSession() {
                 <Trophy className="mx-auto h-16 w-16 text-amber-500" />
                 <h2 className="mt-4 text-2xl font-bold text-foreground">Session Completed!</h2>
                 <div className="mt-3 text-5xl font-bold text-primary">%{percent}</div>
-                <p className="mt-2 text-sm text-muted-foreground">{correct} / {answeredTotal} doğru</p>
+                <p className="mt-2 text-sm text-muted-foreground">{correct} / {answeredTotal} true</p>
                 {weakSections.length > 0 ? (
                   <div className="mt-5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-left">
                     <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
@@ -224,7 +224,7 @@ export default function GuidedLessonSession() {
                   topicTitle={content.title}
                 />
                 <Button onClick={advance} className="mt-6 w-full">
-                  {lastStep ? "Bitir" : "Got it, continue."} <ArrowRight className="ml-2 h-4 w-4" />
+                  {lastStep ? "Finish" : "Got it, continue."} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </>
             ) : current?.kind === "quiz" ? (

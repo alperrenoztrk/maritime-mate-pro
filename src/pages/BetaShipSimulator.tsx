@@ -19,14 +19,14 @@ export default function BetaShipSimulator() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">
-                3D Gemi Stabilite Simülasyonu
+                3D Ship Stability Simulation
               </h1>
             </div>
           </div>
         </header>
 
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-800 dark:text-amber-200">
-          <strong className="font-semibold">Uyarı:</strong> Beta features are experimental. Use the simulation output for training purposes and verify it against official calculations before making real stability decisions.
+          <strong className="font-semibold">Warning:</strong> Beta features are experimental. Use the simulation output for training purposes and verify it against official calculations before making real stability decisions.
         </div>
 
         <section className="rounded-2xl border border-border/60 bg-card/90 p-5">

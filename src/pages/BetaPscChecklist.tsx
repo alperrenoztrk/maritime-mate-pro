@@ -33,7 +33,7 @@ const STATUS_OPTIONS: {
   { value: "ok", label: "Compliant", icon: Check, active: "bg-emerald-600 text-white" },
   {
     value: "deficiency",
-    label: "Eksik",
+    label: "Missing",
     icon: AlertTriangle,
     active: "bg-red-600 text-white",
   },
@@ -77,10 +77,10 @@ export default function BetaPscChecklist() {
   };
 
   const handleReset = () => {
-    if (!window.confirm("Tüm işaretlemeler silinsin mi?")) return;
+    if (!window.confirm("Delete all markups?")) return;
     clearState();
     setState({});
-    toast.success("Kontrol listesi sıfırlandı.");
+    toast.success("The checklist has been reset.");
   };
 
   const handleExport = async () => {
@@ -89,10 +89,10 @@ export default function BetaPscChecklist() {
       const blob = await buildPscReport(state, vesselName, inspectionDate);
       const safe = (vesselName || "vessel").replace(/[^\p{L}\p{N}_-]+/gu, "_");
       downloadBlob(blob, `PSC_hazirlik_${safe}.xlsx`);
-      toast.success("Rapor indirildi.");
+      toast.success("The report has been downloaded.");
     } catch (e) {
       console.error(e);
-      toast.error("Rapor oluşturulamadı.");
+      toast.error("The report could not be created.");
     } finally {
       setExporting(false);
     }
@@ -117,7 +117,7 @@ export default function BetaPscChecklist() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">
-                PSC Denetim Hazırlık Listesi
+                PSC inspection Preparation List
               </h1>
             </div>
           </div>
@@ -126,16 +126,16 @@ export default function BetaPscChecklist() {
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/90 p-5">
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="space-y-1.5">
-              <Label htmlFor="psc-vessel">Gemi adı</Label>
+              <Label htmlFor="psc-vessel">Ship name</Label>
               <Input
                 id="psc-vessel"
                 value={vesselName}
                 onChange={(e) => setVesselName(e.target.value)}
-                placeholder="M/V Örnek"
+                placeholder="M/V Example"
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="psc-date">Denetim tarihi</Label>
+              <Label htmlFor="psc-date">Audit date</Label>
               <Input
                 id="psc-date"
                 type="date"
@@ -147,7 +147,7 @@ export default function BetaPscChecklist() {
 
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground">
-              <span>İlerleme: {progressPct}%</span>
+              <span>Progress: {progressPct}%</span>
               <span>
                 {summary.total - summary.pending}/{summary.total} items
               </span>
@@ -160,16 +160,16 @@ export default function BetaPscChecklist() {
             </div>
             <div className="flex flex-wrap gap-3 pt-1 text-micro font-medium">
               <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
-                <Check className="h-3.5 w-3.5" /> Uygun: {summary.ok}
+                <Check className="h-3.5 w-3.5" /> Suitable: {summary.ok}
               </span>
               <span className="inline-flex items-center gap-1 text-red-600 dark:text-red-400">
-                <AlertTriangle className="h-3.5 w-3.5" /> Eksik: {summary.deficiency}
+                <AlertTriangle className="h-3.5 w-3.5" /> Missing: {summary.deficiency}
               </span>
               <span className="inline-flex items-center gap-1 text-slate-500">
                 <MinusCircle className="h-3.5 w-3.5" /> N/A: {summary.na}
               </span>
               <span className="inline-flex items-center gap-1 text-muted-foreground">
-                Bekleyen: {summary.pending}
+                Pending: {summary.pending}
               </span>
             </div>
           </div>
@@ -182,11 +182,11 @@ export default function BetaPscChecklist() {
               className="bg-emerald-600 text-white hover:bg-emerald-700"
             >
               <Download className="mr-2 h-4 w-4" />
-              {exporting ? "Hazırlanıyor…" : "Excel rapor indir"}
+              {exporting ? "Getting ready…" : "Download Excel report"}
             </Button>
             <Button onClick={handleReset} size="sm" variant="outline">
               <RotateCcw className="mr-2 h-4 w-4" />
-              Sıfırla
+              Reset
             </Button>
           </div>
         </section>
@@ -194,7 +194,7 @@ export default function BetaPscChecklist() {
         {summary.deficiency > 0 && (
           <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-4 text-xs text-red-700 dark:text-red-300">
             <strong className="font-semibold">{summary.deficiency} eksiklik</strong>{" "}
-            işaretlendi. Denetimden önce düzeltici faaliyet planlayın.
+            marked. Plan corrective action before the inspection.
           </div>
         )}
 
@@ -263,7 +263,7 @@ export default function BetaPscChecklist() {
                         <Input
                           value={itemState?.note ?? ""}
                           onChange={(e) => setNote(item.id, e.target.value)}
-                          placeholder="Eksiklik notu / düzeltici faaliyet…"
+                          placeholder="Deficiency note / corrective action…"
                           className="mt-2 h-8 text-xs"
                         />
                       )}
@@ -276,7 +276,7 @@ export default function BetaPscChecklist() {
         })}
 
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-800 dark:text-amber-200">
-          <strong className="font-semibold">Uyarı:</strong> This list is for preparation purposes only and is not an official inspection form. Check marks are stored on this device only. Always verify any additional requirements specific to your vessel type and trading area against the relevant convention texts.
+          <strong className="font-semibold">Warning:</strong> This list is for preparation purposes only and is not an official inspection form. Check marks are stored on this device only. Always verify any additional requirements specific to your vessel type and trading area against the relevant convention texts.
         </div>
       </div>
 

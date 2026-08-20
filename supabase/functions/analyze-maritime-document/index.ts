@@ -70,7 +70,7 @@ function validIsoDate(value: unknown): string | null {
 }
 
 function normalizeAnalysis(raw: RawAnalysis) {
-  const documentType = cleanText(raw.documentType, 100) ?? "Diğer denizcilik belgesi";
+  const documentType = cleanText(raw.documentType, 100) ?? "Other maritime certificate";
   const title = cleanText(raw.title, 160) ?? documentType;
   const issueDate = validIsoDate(raw.issueDate);
   const expiryDate = validIsoDate(raw.expiryDate);
@@ -80,9 +80,9 @@ function normalizeAnalysis(raw: RawAnalysis) {
     ? raw.warnings.map((item) => cleanText(item, 180)).filter((item): item is string => Boolean(item)).slice(0, 4)
     : [];
 
-  if (!expiryDate && !noExpiry) warnings.unshift("Son geçerlilik tarihi güvenilir biçimde okunamadı.");
+  if (!expiryDate && !noExpiry) warnings.unshift("The expiry date could not be read reliably.");
   if (issueDate && expiryDate && issueDate > expiryDate) {
-    warnings.unshift("Okunan düzenlenme tarihi son geçerlilik tarihinden sonra; fotoğrafı kontrol edin.");
+    warnings.unshift("The read issuance date is after the expiry date; check the photo.");
   }
 
   const reviewRequired = confidence < 0.78 || (!expiryDate && !noExpiry) || (issueDate && expiryDate && issueDate > expiryDate);
@@ -158,7 +158,7 @@ async function analyze(imageDataUrl: string): Promise<RawAnalysis> {
             parameters: {
               type: "object",
               properties: {
-                documentType: { type: "string", description: "Concise document category in Turkish." },
+                documentType: { type: "string", description: "Concise document category in English." },
                 title: { type: "string", description: "Visible certificate/document title, in its original language when clear." },
                 documentNumber: { type: "string", description: "Document or certificate number; empty when unreadable." },
                 holderName: { type: "string", description: "Holder's visible name; empty when unreadable." },
@@ -211,7 +211,7 @@ async function analyze(imageDataUrl: string): Promise<RawAnalysis> {
 Deno.serve(async (req) => {
   const cors = getCorsHeaders(req.headers.get("origin"));
   if (req.method === "OPTIONS") return new Response(null, { headers: cors });
-  if (req.method !== "POST") return errorResponse(cors, 405, "Yalnızca POST isteği desteklenir.");
+  if (req.method !== "POST") return errorResponse(cors, 405, "Only POST request is supported.");
 
   const auth = await validateAuth(req);
   if (!auth.user) return unauthorizedResponse(cors, auth.error ?? undefined);
@@ -228,7 +228,7 @@ Deno.serve(async (req) => {
     body.imageDataUrl.length > MAX_DATA_URL_LENGTH ||
     !ALLOWED_IMAGE.test(body.imageDataUrl)
   ) {
-    return errorResponse(cors, 400, "Geçerli ve 5 MB'den küçük bir JPG, PNG veya WebP fotoğrafı yükleyin.");
+    return errorResponse(cors, 400, "Upload a valid JPG, PNG or WebP photo that is less than 5 MB.");
   }
 
   try {
@@ -253,7 +253,7 @@ Deno.serve(async (req) => {
     logError("analyze-maritime-document", error);
     const status = (error as { status?: number })?.status;
     if (status === 429) return errorResponse(cors, 429, GENERIC_ERRORS.RATE_LIMIT);
-    if (status === 402) return errorResponse(cors, 402, "Yapay zekâ servis kotası doldu.");
+    if (status === 402) return errorResponse(cors, 402, "Artificial intelligence service quota has been reached.");
     return errorResponse(cors, 500);
   }
 });

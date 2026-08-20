@@ -4,7 +4,7 @@ import { Scale, Shield, FileText, Anchor } from "lucide-react";
 
 const seamanshipRules = [
   {
-    title: "COLREG Kısım B - Manevra Kuralları",
+    title: "COLREG Part B - Rules of Maneuvering",
     icon: Anchor,
     rules: [
       "Rule 5: a proper look-out must be maintained at all times.",
@@ -15,7 +15,7 @@ const seamanshipRules = [
     ]
   },
   {
-    title: "ISM Kodu",
+    title: "ISM Code",
     icon: FileText,
     rules: [
       "A Safety Management System (SMS) must be implemented.",
@@ -37,7 +37,7 @@ const seamanshipRules = [
     ]
   },
   {
-    title: "Liman ve Terminal Talimatları",
+    title: "Port and Terminal Instructions",
     icon: Scale,
     rules: [
       "Port Information Book kontrol edilmelidir.",
@@ -56,13 +56,13 @@ export default function SeamanshipRulesPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Scale className="h-4 w-4" />
-            Gemicilik Kuralları
+            Seamanship Rules
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
-            Gemicilik Kuralları
+            Seamanship Rules
           </h1>
         </div>
 

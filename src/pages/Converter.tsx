@@ -21,12 +21,12 @@ const CATEGORIES: {
     label: "Distance",
     icon: Ruler,
     units: [
-      { label: "Deniz Mili (NM)", toBase: (v) => v * 1852, fromBase: (v) => v / 1852 },
-      { label: "Kilometre (km)", toBase: (v) => v * 1000, fromBase: (v) => v / 1000 },
-      { label: "Metre (m)", toBase: (v) => v, fromBase: (v) => v },
+      { label: "Nautical Miles (NM)", toBase: (v) => v * 1852, fromBase: (v) => v / 1852 },
+      { label: "Kilometer (km)", toBase: (v) => v * 1000, fromBase: (v) => v / 1000 },
+      { label: "Meter (m)", toBase: (v) => v, fromBase: (v) => v },
       { label: "Feet (ft)", toBase: (v) => v * 0.3048, fromBase: (v) => v / 0.3048 },
-      { label: "Yarda (yd)", toBase: (v) => v * 0.9144, fromBase: (v) => v / 0.9144 },
-      { label: "Kablo (cable)", toBase: (v) => v * 185.2, fromBase: (v) => v / 185.2 },
+      { label: "Yard (yd)", toBase: (v) => v * 0.9144, fromBase: (v) => v / 0.9144 },
+      { label: "Cable", toBase: (v) => v * 185.2, fromBase: (v) => v / 185.2 },
       { label: "Fathom", toBase: (v) => v * 1.8288, fromBase: (v) => v / 1.8288 },
     ],
   },
@@ -46,7 +46,7 @@ const CATEGORIES: {
     label: "Weight",
     icon: Droplets,
     units: [
-      { label: "Metrik Ton (MT)", toBase: (v) => v * 1000, fromBase: (v) => v / 1000 },
+      { label: "Metric Ton (MT)", toBase: (v) => v * 1000, fromBase: (v) => v / 1000 },
       { label: "Long Ton (LT)", toBase: (v) => v * 1016.047, fromBase: (v) => v / 1016.047 },
       { label: "Short Ton (ST)", toBase: (v) => v * 907.185, fromBase: (v) => v / 907.185 },
       { label: "Kilogram (kg)", toBase: (v) => v, fromBase: (v) => v },
@@ -58,10 +58,10 @@ const CATEGORIES: {
     label: "Volume",
     icon: Droplets,
     units: [
-      { label: "Metreküp (m³)", toBase: (v) => v, fromBase: (v) => v },
-      { label: "Litre (L)", toBase: (v) => v / 1000, fromBase: (v) => v * 1000 },
-      { label: "US Galon", toBase: (v) => v * 0.00378541, fromBase: (v) => v / 0.00378541 },
-      { label: "Imperial Galon", toBase: (v) => v * 0.00454609, fromBase: (v) => v / 0.00454609 },
+      { label: "Cubic meters (m³)", toBase: (v) => v, fromBase: (v) => v },
+      { label: "Liter (L)", toBase: (v) => v / 1000, fromBase: (v) => v * 1000 },
+      { label: "US Gallon", toBase: (v) => v * 0.00378541, fromBase: (v) => v / 0.00378541 },
+      { label: "Imperial Gallon", toBase: (v) => v * 0.00454609, fromBase: (v) => v / 0.00454609 },
       { label: "Barrel (bbl)", toBase: (v) => v * 0.158987, fromBase: (v) => v / 0.158987 },
       { label: "Feet³ (ft³)", toBase: (v) => v * 0.0283168, fromBase: (v) => v / 0.0283168 },
     ],
@@ -82,7 +82,7 @@ const CATEGORIES: {
     icon: Wind,
     units: [
       { label: "Bar", toBase: (v) => v, fromBase: (v) => v },
-      { label: "mbar / hPa", toBase: (v) => v / 1000, fromBase: (v) => v * 1000 },
+      { label: "mbar/hPa", toBase: (v) => v / 1000, fromBase: (v) => v * 1000 },
       { label: "PSI", toBase: (v) => v * 0.0689476, fromBase: (v) => v / 0.0689476 },
       { label: "atm", toBase: (v) => v * 1.01325, fromBase: (v) => v / 1.01325 },
       { label: "mmHg", toBase: (v) => v * 0.00133322, fromBase: (v) => v / 0.00133322 },
@@ -116,7 +116,7 @@ function ConverterSection({ cat }: { cat: typeof CATEGORIES[0] }) {
       </CardHeader>
       <CardContent className="space-y-3">
         <div className="space-y-2">
-          <Label className="text-xs text-muted-foreground">Kaynak Birim</Label>
+          <Label className="text-xs text-muted-foreground">Source Unit</Label>
           <Select value={String(fromIdx)} onValueChange={(v) => setFromIdx(Number(v))}>
             <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -128,7 +128,7 @@ function ConverterSection({ cat }: { cat: typeof CATEGORIES[0] }) {
           <Input
             type="text"
             inputMode="decimal"
-            placeholder="Değer girin"
+            placeholder="Enter value"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             className="h-9 text-sm"
@@ -145,7 +145,7 @@ function ConverterSection({ cat }: { cat: typeof CATEGORIES[0] }) {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-xs text-muted-foreground">Hedef Birim</Label>
+          <Label className="text-xs text-muted-foreground">Target Unit</Label>
           <Select value={String(toIdx)} onValueChange={(v) => setToIdx(Number(v))}>
             <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -174,19 +174,19 @@ export default function ConverterPage() {
       <div className="min-h-screen bg-background px-4 pb-24 pt-6">
         <div className="mx-auto max-w-lg space-y-5">
           <div>
-            <h1 className="text-xl font-bold tracking-tight text-foreground">Birim Dönüştürücü</h1>
+            <h1 className="text-xl font-bold tracking-tight text-foreground">Unit Converter</h1>
             </div>
 
           <Tabs defaultValue="distance">
             <TabsList className="grid w-full grid-cols-3 mb-4">
-              <TabsTrigger value="distance" className="text-xs">Mesafe</TabsTrigger>
-              <TabsTrigger value="speed" className="text-xs">Hız</TabsTrigger>
+              <TabsTrigger value="distance" className="text-xs">Distance</TabsTrigger>
+              <TabsTrigger value="speed" className="text-xs">Speed</TabsTrigger>
               <TabsTrigger value="weight" className="text-xs">Weight</TabsTrigger>
             </TabsList>
             <TabsList className="grid w-full grid-cols-3 mb-4">
-              <TabsTrigger value="volume" className="text-xs">Hacim</TabsTrigger>
-              <TabsTrigger value="temperature" className="text-xs">Sıcaklık</TabsTrigger>
-              <TabsTrigger value="pressure" className="text-xs">Basınç</TabsTrigger>
+              <TabsTrigger value="volume" className="text-xs">Volume</TabsTrigger>
+              <TabsTrigger value="temperature" className="text-xs">temperature</TabsTrigger>
+              <TabsTrigger value="pressure" className="text-xs">pressure</TabsTrigger>
             </TabsList>
 
             {CATEGORIES.map((cat) => (

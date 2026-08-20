@@ -134,7 +134,7 @@ export function rateLimitResponse(
   retryAfterSec: number,
 ): Response {
   return new Response(
-    JSON.stringify({ error: "Çok fazla istek. Lütfen bekleyin." }),
+    JSON.stringify({ error: "Too many requests. Please wait." }),
     {
       status: 429,
       headers: {

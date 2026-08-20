@@ -50,7 +50,7 @@ export function useHourlyWeather() {
       url.searchParams.set("end_date", date);
 
       const res = await fetch(url.toString());
-      if (!res.ok) throw new Error(`Saatlik hava tahmini alınamadı (${res.status})`);
+      if (!res.ok) throw new Error(`Hourly weather forecast could not be received (${res.status})`);
       
       const json = await res.json();
       const hourly = json.hourly || {};
@@ -72,7 +72,7 @@ export function useHourlyWeather() {
       
       setData(hourlyData);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Bilinmeyen hata";
+      const message = error instanceof Error ? error.message : "Unknown error";
       setError(message);
     } finally {
       setLoading(false);

@@ -141,7 +141,7 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
      const imo = analysis.imoCriteria;
      const ok = imo?.compliance;
      const lines = [
-       `Uygunluk: ${ok? 'Uygun' : 'not suitable'}`,
+       `Uygunluk: ${ok? 'Suitable' : 'not suitable'}`,
        `Alan(0–30°): ${imo.area0to30.toFixed(3)} mrad (≥0.055)`,
        `Alan(0–40°): ${imo.area0to40.toFixed(3)} mrad (≥0.09)`,
        `Max GZ: ${imo.maxGz.toFixed(3)} m (≥0.20)`,
@@ -211,8 +211,8 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
                      <div><Label>BM (m)</Label><Input value={gmBM} onChange={(e)=> setGmBM(e.target.value)} /></div>
                      <div><Label>KG (m)</Label><Input value={gmKG} onChange={(e)=> setGmKG(e.target.value)} /></div>
                      <div className="md:col-span-3 text-xs text-muted-foreground">Or enter L,B,T for approximately:</div>
-                     <div><Label>L (m)</Label><Input value={approxL} onChange={(e)=> setApproxL(e.target.value)} /></div>
-                     <div><Label>B (m)</Label><Input value={approxB} onChange={(e)=> setApproxB(e.target.value)} /></div>
+                     <div><Label>L(m)</Label><Input value={approxL} onChange={(e)=> setApproxL(e.target.value)} /></div>
+                     <div><Label>B(m)</Label><Input value={approxB} onChange={(e)=> setApproxB(e.target.value)} /></div>
                      <div><Label>Water Draft (m)</Label><Input value={approxT} onChange={(e)=> setApproxT(e.target.value)} /></div>
                      <div className="md:col-span-3"><Button onClick={computeGM}>Calculate</Button></div>
                    </div>
@@ -233,10 +233,10 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
                        <div><Label>B</Label><Input value={geo.breadth} onChange={(e)=> setGeo({...geo, breadth: parseFloat(e.target.value)})} /></div>
                        <div><Label>D</Label><Input value={geo.depth} onChange={(e)=> setGeo({...geo, depth: parseFloat(e.target.value)})} /></div>
                        <div><Label>T</Label><Input value={geo.draft} onChange={(e)=> setGeo({...geo, draft: parseFloat(e.target.value)})} /></div>
-                       <div><Label>Cb</Label><Input value={geo.blockCoefficient} onChange={(e)=> setGeo({...geo, blockCoefficient: parseFloat(e.target.value)})} /></div>
+                       <div><Label>C b</Label><Input value={geo.blockCoefficient} onChange={(e)=> setGeo({...geo, blockCoefficient: parseFloat(e.target.value)})} /></div>
                        <div><Label>KG</Label><Input value={kg} onChange={(e)=> setKg(e.target.value)} /></div>
                      </div>
-                     <Button onClick={computeIMO}><Shield className="h-4 w-4 mr-1" /> Kontrol</Button>
+                     <Button onClick={computeIMO}><Shield className="h-4 w-4 mr-1" /> Control</Button>
                    </div>
                  )}
 

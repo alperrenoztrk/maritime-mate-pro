@@ -5,12 +5,12 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
  * Generic error messages to avoid information leakage
  */
 export const GENERIC_ERRORS = {
-  UNAUTHORIZED: 'Kimlik doğrulama gerekli',
-  FORBIDDEN: 'Bu işlem için yetkiniz yok',
-  SERVICE_ERROR: 'Servis geçici olarak kullanılamıyor',
-  INVALID_INPUT: 'Geçersiz istek parametreleri',
-  RATE_LIMIT: 'Çok fazla istek. Lütfen bekleyin.',
-  NOT_CONFIGURED: 'Servis yapılandırma hatası',
+  UNAUTHORIZED: 'Authentication required',
+  FORBIDDEN: 'You are not authorized for this action',
+  SERVICE_ERROR: 'The service is temporarily unavailable',
+  INVALID_INPUT: 'Invalid request parameters',
+  RATE_LIMIT: 'Too many requests. Please wait.',
+  NOT_CONFIGURED: 'Service configuration error',
 } as const;
 
 /**

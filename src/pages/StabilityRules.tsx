@@ -72,9 +72,9 @@ const sections: RuleSection[] = [
     ],
     extras: [
       {
-        heading: 'Eklenebilecekler',
+        heading: 'What can be added',
         items: [
-          'Leakage scenarios: sensitivity analyses covering the free surface, KG change and heeling moment effects in the event of a cargo leak.',
+          'Leakage scenarios: sensitivity analyzes covering the free surface, KG change and heeling moment effects in the event of a cargo leak.',
           'Evaporation effects: methods that account for the effect of evaporation on mass/density and KG for volatile cargoes.'
         ]
       },
@@ -134,7 +134,7 @@ const sections: RuleSection[] = [
   {
     title: 'OSV / SPS — Offshore Supply and Special Purpose Ships',
     rules: [
-      'The IS Code criteria form the baseline; depending on the cargo and personnel density, Administrations generally require a minimum GM ≥ 0.15 m.',
+      'The IS Code criteria form the baseline; Depending on the cargo and personnel density, Administrations generally require a minimum GM ≥ 0.15 m.',
       'Additional margins and operational limits are applied for cargo deck free surface and high KG effects.'
     ],
     sources: [
@@ -216,11 +216,11 @@ export default function StabilityRules() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <Button variant="ghost" size="sm" className="gap-2" onClick={handleBackToRules}>
-              Kurallara Dön
+              Back to Rules
             </Button>
             <div className="text-sm text-muted-foreground">
-              {selectedCategory === 'all' ? 'Tüm Sorular' : 
-               selectedCategory === 'random' ? 'Rastgele Sorular' : 
+              {selectedCategory === 'all' ? 'All Questions' : 
+               selectedCategory === 'random' ? 'Random Questions' : 
                selectedCategory}
             </div>
           </div>
@@ -242,23 +242,23 @@ export default function StabilityRules() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <GraduationCap className="h-5 w-5" /> Stabilite Quiz
+              <GraduationCap className="h-5 w-5" /> Stability Quiz
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Stabilite bilginizi test edin! Quiz'de otomatik geçiş yoktur, önceki ve sonraki butonları kullanarak kendi hızınızda ilerleyebilirsiniz.
+                Test your stability knowledge! There is no automatic transition in the quiz, you can proceed at your own pace using the previous and next buttons.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1">
                   <Select value={selectedCategory} onValueChange={handleCategoryChange}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Kategori seçin" />
+                      <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Tüm Sorular ({stabilityQuestions.length})</SelectItem>
+                      <SelectItem value="all">All Questions ({stabilityQuestions.length})</SelectItem>
                       {categories.map(category => {
                         const count = getQuestionsByCategory(category).length;
                         return (
@@ -274,11 +274,11 @@ export default function StabilityRules() {
                 <div className="flex gap-2">
                   <Button onClick={handleStartQuiz} className="gap-2">
                     <GraduationCap className="h-4 w-4" />
-                    Quiz Başlat
+                    Start Quiz
                   </Button>
                   <Button variant="outline" onClick={handleRandomQuiz} className="gap-2">
                     <Shuffle className="h-4 w-4" />
-                    Rastgele 10
+                    Random 10
                   </Button>
                 </div>
               </div>
@@ -289,7 +289,7 @@ export default function StabilityRules() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5" /> Stabilite Kuralları (Özet ve Kaynakça)
+              <BookOpen className="h-5 w-5" /> Stability Rules (Summary and Bibliography)
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -313,7 +313,7 @@ export default function StabilityRules() {
                     </div>
                   ))}
                   <div className="text-xs mt-2">
-                    Kaynaklar:{' '}
+                    Sources:{' '}
                     {sec.sources.map((s, i) => (
                       <span key={s.href}>
                         <a href={s.href} target="_blank" rel="noreferrer" className="underline">{s.label}</a>
@@ -323,7 +323,7 @@ export default function StabilityRules() {
                   </div>
                 </div>
               ))}
-              <p className="text-xs text-muted-foreground">Not: Bu sayfa özet niteliğindedir. Nihai doğrulama için ilgili IMO kodlarının güncel onaylı baskılarına başvurunuz.</p>
+              <p className="text-xs text-muted-foreground">Note: This page is a summary. For final verification, refer to the current approved editions of the relevant IMO codes.</p>
             </div>
           </CardContent>
         </Card>

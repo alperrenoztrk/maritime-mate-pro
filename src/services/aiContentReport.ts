@@ -44,7 +44,7 @@ export interface AiContentReportInput {
 
 export class NotSignedInError extends Error {
   constructor() {
-    super('Bildirim göndermek için oturum açmanız gerekir.');
+    super('You must be logged in to send notifications.');
     this.name = 'NotSignedInError';
   }
 }
@@ -59,7 +59,7 @@ export async function submitAiContentReport(input: AiContentReportInput): Promis
   if (!userId) throw new NotSignedInError();
 
   const reportedContent = clip(input.content, CONTENT_LIMIT);
-  if (!reportedContent) throw new Error('Bildirilecek bir yanıt bulunamadı.');
+  if (!reportedContent) throw new Error('No response to report.');
 
   const { error } = await supabase.from('ai_content_reports').insert({
     user_id: userId,

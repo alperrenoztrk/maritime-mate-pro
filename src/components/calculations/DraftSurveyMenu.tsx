@@ -16,7 +16,7 @@ const DraftSurveyMenu = () => {
 
   const draftCalculations = [
     {
-      title: "Standart Draft Survey",
+      title: "Standard Draft Survey",
       description: "General cargo draft calculation",
       icon: Ship,
       path: "/draft-survey-standard",
@@ -31,7 +31,7 @@ const DraftSurveyMenu = () => {
     },
     {
       title: "Ballast Calculation",
-      description: "Balast suyu draft etkisi",
+      description: "Ballast water draft effect",
       icon: Waves,
       path: "/draft-survey-ballast",
       color: "bg-cyan-50 dark:bg-cyan-950 hover:bg-cyan-100 dark:hover:bg-cyan-900"
@@ -51,7 +51,7 @@ const DraftSurveyMenu = () => {
       color: "bg-amber-50 dark:bg-amber-950 hover:bg-amber-100 dark:hover:bg-amber-900"
     },
     {
-      title: "Analiz & Rapor",
+      title: "Analysis & Report",
       description: "Result analysis and reporting",
       icon: FileText,
       path: "/draft-survey-analysis",

@@ -39,7 +39,7 @@ const MoonPhaseVisual = ({ phasePosition, size = 176 }: { phasePosition: number;
       width={size}
       height={size}
       role="img"
-      aria-label="Ay fazı görseli"
+      aria-label="Moon phase image"
       className="mx-auto drop-shadow-[0_0_35px_rgba(226,232,255,0.35)]"
     >
       <defs>
@@ -96,7 +96,7 @@ const MoonPhases = () => {
     let phaseName = "";
 
     if (phasePosition < 0.0625) {
-      phaseName = "Yeni Ay";
+      phaseName = "new moon";
     } else if (phasePosition < 0.1875) {
       phaseName = "Hilal";
     } else if (phasePosition < 0.3125) {
@@ -112,7 +112,7 @@ const MoonPhases = () => {
     } else if (phasePosition < 0.9375) {
       phaseName = "Son Hilal";
     } else {
-      phaseName = "Yeni Ay";
+      phaseName = "new moon";
     }
 
     setMoonPhase({
@@ -149,7 +149,7 @@ const MoonPhases = () => {
         <div className="mb-8">
           <Moon className="w-16 h-16 text-white mx-auto mb-4" />
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
-            Ay Fazları
+            Moon Phases
           </h1>
         </div>
 
@@ -166,7 +166,7 @@ const MoonPhases = () => {
 
           {/* Phase percentage */}
           <p className="text-lg text-white/80 mb-6">
-            Döngü: %{moonPhase.percentage}
+            Cycle: %{moonPhase.percentage}
           </p>
 
           {/* Progress bar */}

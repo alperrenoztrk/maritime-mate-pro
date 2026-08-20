@@ -4,7 +4,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "psc",
     label: "PSC – Liman Devleti Kontrolü",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Liman devletlerinin yabancı bayraklı gemileri uluslararası standartlara uyum açısından denetlemesi; eksiklik ve alıkoyma riski taşır.",
     history: "PSC kavramı SOLAS ve MARPOL sözleşmelerinde yer almakla birlikte, sistematik uygulama 1982 Paris MoU ile başlamıştır. UNCLOS Madde 218-220 liman devletinin denetim yetkisini tanımlar. Günümüzde 9 bölgesel MoU (Paris, Tokyo, Indian Ocean, Mediterranean, Viña del Mar, Riyadh, Black Sea, Abuja, Caribbean) dünya çapında PSC koordinasyonu sağlamaktadır. IMO Resolution A.1138(31) global PSC prosedürlerini belirler.",
     applicability: [
@@ -100,7 +100,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "flag-state",
     label: "Flag State Inspection – Bayrak Devleti Denetimi",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Bayrak devletinin kendi gemilerini uluslararası sözleşmelere uyum açısından denetlemesi; yetkilendirme, survey ve sertifikasyon süreçlerini kapsar.",
     history: "Bayrak devleti sorumluluğu UNCLOS (Birleşmiş Milletler Deniz Hukuku Sözleşmesi) Madde 94 ve IMO sözleşmelerinin temel ilkesidir. Her devlet, bayrağını taşıyan gemilerin uluslararası standartlara uyumunu sağlamakla yükümlüdür. IMO III Code (Instruments Implementation Code) kapsamında 2016'dan itibaren bayrak devletlerinin performansı zorunlu denetim altına alınmıştır (IMO Member State Audit Scheme – IMSAS). RO Code ile klas kuruluşlarının yetkilendirilmesi ve denetimi düzenlenmektedir.",
     applicability: [
@@ -183,7 +183,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "class-survey",
     label: "Class Survey – Klas Denetimi",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Klas kuruluşunun geminin yapısal ve mekanik bütünlüğünü değerlendirmesi; klas notasyonu ve sertifikasyonu için gereklidir.",
     history: "Denizcilik klas kuruluşları 1760'ta Lloyd's Coffee House'da başlayan gemi değerlendirmesiyle ortaya çıkmıştır. Lloyd's Register (1764) dünyanın ilk klas kuruluşudur. Günümüzde IACS (International Association of Classification Societies) üyesi 11 büyük klas kuruluşu dünya ticaret filosunun %90'ından fazlasını sınıflandırır. Klas kuruluşları hem bağımsız klas denetimi yapar hem de bayrak devleti adına RO olarak sertifikasyon hizmeti verir.",
     applicability: [
@@ -270,7 +270,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "vetting",
     label: "Vetting Inspection – Kiralayan Denetimi",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Petrol şirketleri ve charterer'ların gemileri SIRE, CDI, OVID gibi standartlara göre denetlemesi; ticari kabul için kritik öneme sahiptir.",
     history: "SIRE (Ship Inspection Report Programme) 1993'te OCIMF (Oil Companies International Marine Forum) tarafından tanker emniyetini değerlendirmek amacıyla başlatılmıştır. 2023'te köklü bir güncellemeyle SIRE 2.0'a geçilmiş; tablet tabanlı, algoritma destekli ve CAQ (Computer Assisted Questioning) formatına sahip daha kapsamlı bir denetim sistemi uygulanmaya başlanmıştır. CDI (Chemical Distribution Institute) 1994'te kimyasal tankerler için başlatılmıştır.",
     applicability: [
@@ -356,7 +356,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "rightship",
     label: "RightShip – Gemi Değerlendirme",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Dökme yük gemilerinin emniyet ve çevre performansını değerlendiren bağımsız platform; charterer kabulü için yaygın kullanılır.",
     history: "RightShip 2001'de BHP Billiton, Rio Tinto ve Cargill tarafından dökme yük gemilerinin emniyet değerlendirmesi amacıyla kurulmuştur. Başlangıçta emniyet odaklı olan platform, 2020'de GHG Rating ekleyerek çevresel performansı da değerlendirmeye başlamıştır. Günümüzde dökme yük, genel kargo ve konteyner gemileri için standart ticari kabul aracıdır. 2023'te Safety Score sistemi güncellenerek daha detaylı risk değerlendirmesi yapılmaya başlanmıştır.",
     applicability: [
@@ -432,7 +432,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "esp",
     label: "ESP – Geliştirilmiş Sörvey Programı",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Dökme yük ve tanker gemilerinin yapısal bütünlüğünü değerlendirmek için geliştirilmiş denetim prosedürlerini belirler.",
     history: "IACS tarafından geliştirilen ESP (Enhanced Survey Programme), 1990'lardaki yapısal arızalar ve gemi kayıplarının ardından zorunlu kılınmıştır. Özellikle MV Derbyshire (1980) ve MV Flare (1998) gibi yapısal arıza kaynaklı kayıplar ESP'nin geliştirilmesine katkı sağlamıştır. SOLAS Chapter XI-1 Kural 2'de referans verilmektedir. ESP, standart klas survey'inin ötesinde ek yapısal değerlendirme gereklilikleri getirir.",
     applicability: [
@@ -514,7 +514,7 @@ export const surveyRegulations: RegulationItem[] = [
   {
     slug: "dry-dock",
     label: "Dry Dock Survey – Kuru Havuz Denetimi",
-    category: "Denetim & Sörvey",
+    category: "Inspection & Survey",
     overview: "Geminin su altı kısmının periyodik olarak kuru havuzda denetlenmesini ve bakım/onarım gerekliliklerini kapsar.",
     history: "Kuru havuz denetimi, geminin su altı kısmının (gövde, pervane, dümen, deniz bağlantıları) fiziksel muayenesini sağlayan temel bakım ve denetim sürecidir. SOLAS Kural I/10 ve klas kuralları kapsamında zorunludur. Alternatif olarak belirli koşullarda su altı denetimi (In-Water Survey – IWS) kabul edilebilir. Kuru havuz maliyetleri geminin en büyük bakım gider kalemlerinden biridir.",
     applicability: [
@@ -601,7 +601,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "smc",
     label: "SMC – Emniyet Yönetim Sertifikası",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "ISM Code kapsamında geminin emniyet yönetim sistemini uyguladığını belgeleyen sertifika; DOC ile birlikte zorunludur.",
     history: "SMC (Safety Management Certificate), ISM Code'un uygulanmasıyla 1998'den itibaren tüm yolcu gemileri ve 500 GT üzeri kargo gemileri için zorunlu hale gelmiştir. ISM Code, Herald of Free Enterprise (1987) ve Scandinavian Star (1990) felaketlerinin ardından geliştirilen emniyet yönetim sistemi standardıdır. SMC her bir gemi için ayrı ayrı düzenlenirken, DOC (Document of Compliance) şirketi kapsar.",
     applicability: [
@@ -682,7 +682,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "issc",
     label: "ISSC – Gemi Güvenlik Sertifikası",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "ISPS Code kapsamında geminin güvenlik önlemlerini uyguladığını belgeleyen sertifika; SSP uyumu ve güvenlik ekipmanı gerektirir.",
     history: "ISSC (International Ship Security Certificate), 11 Eylül 2001 terör saldırılarının ardından geliştirilen ISPS Code kapsamında 1 Temmuz 2004'ten itibaren zorunlu hale gelmiştir. SOLAS Chapter XI-2 tarafından düzenlenen bu sertifika, geminin terörizm ve güvenlik tehditlerine karşı korunma önlemlerini uyguladığını belgeler.",
     applicability: [
@@ -768,7 +768,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "mlc-cert",
     label: "MLC Certificate – Denizcilik Çalışma Sertifikası",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "MLC 2006 kapsamında geminin çalışma ve yaşam koşullarını sağladığını belgeleyen sertifika; DMLC ile birlikte zorunludur.",
     history: "MLC 2006 (Maritime Labour Convention), 2006'da ILO tarafından kabul edilmiş ve 20 Ağustos 2013'te yürürlüğe girmiştir. Daha önce 68 ayrı ILO sözleşmesini ve tavsiyesini birleştiren kapsamlı bir 'süper sözleşme'dir. SOLAS, MARPOL ve STCW ile birlikte denizciliğin dört temel sözleşmesinden biri kabul edilir. MLC Certificate ve DMLC, 500 GT ve üzeri uluslararası sefer yapan tüm gemilerde zorunludur.",
     applicability: [
@@ -847,7 +847,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "iopp-cert",
     label: "IOPP Certificate – Petrol Kirliliği Önleme Belgesi",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "MARPOL Ek I kapsamında geminin petrol kirliliği önleme ekipmanı ve prosedürlerini belgeleyen sertifika.",
     history: "IOPP Certificate (International Oil Pollution Prevention Certificate), MARPOL 73/78 Ek I kapsamında düzenlenmektedir. 400 GT ve üzeri tüm gemiler ve tüm petrol tankerleri için zorunludur. Sertifika, geminin petrol kirliliği önleme ekipmanlarının MARPOL Ek I'e uygunluğunu belgeler. Supplement (Form A – tanker olmayan, Form B – tankerler) sertifikanın ayrılmaz parçasıdır.",
     applicability: [
@@ -926,7 +926,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "safety-equipment-cert",
     label: "Safety Equipment Certificate – Emniyet Teçhizat Belgesi",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "SOLAS gereği gemideki can kurtarma, yangın söndürme ve seyir güvenliği teçhizatının yeterliliğini belgeleyen sertifika.",
     history: "Safety Equipment Certificate (Cargo Ship Safety Equipment Certificate), SOLAS 1974 kapsamında düzenlenmektedir. Gemideki can kurtarma teçhizatı (LSA Code), yangın söndürme sistemleri (FSS Code) ve seyir teçhizatının (SOLAS Chapter V) uluslararası standartlara uygunluğunu belgeler. 500 GT ve üzeri kargo gemileri için zorunludur (yolcu gemileri için Passenger Ship Safety Certificate kapsar).",
     applicability: [
@@ -1003,7 +1003,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "safety-radio-cert",
     label: "Safety Radio Certificate – Telsiz Emniyet Belgesi",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "GMDSS telsiz ekipmanının SOLAS Chapter IV gerekliliklerine uygunluğunu belgeleyen sertifika.",
     history: "Safety Radio Certificate (Cargo Ship Safety Radio Certificate), GMDSS'nin (Global Maritime Distress and Safety System) 1999'da tam olarak uygulanmaya başlamasıyla zorunlu hale gelmiştir. SOLAS Chapter IV kapsamında düzenlenir. Geminin seyir bölgesine (Sea Area A1-A4) göre asgari telsiz teçhizatı gereklilikleri belirlenir.",
     applicability: [
@@ -1082,7 +1082,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "safety-construction-cert",
     label: "Safety Construction Certificate – İnşa Emniyet Belgesi",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "Gemi gövdesi, makineleri ve elektrik tesislerinin SOLAS Chapter II-1 ve II-2 gerekliliklerine uygunluğunu belgelendirir.",
     history: "Safety Construction Certificate (Cargo Ship Safety Construction Certificate), SOLAS 1974 kapsamında 500 GT ve üzeri kargo gemileri için zorunlu olarak düzenlenmektedir. Geminin yapısal tasarımı, bölmeleme, stabilite, makine, elektrik ve yangın bütünlüğü standartlarına uygunluğunu belgeler. Genellikle klas kuruluşu tarafından bayrak devleti adına (RO olarak) düzenlenir.",
     applicability: [
@@ -1162,7 +1162,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "iapp-cert",
     label: "IAPP Certificate – Hava Kirliliği Önleme Belgesi",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "MARPOL Ek VI kapsamında geminin hava emisyonları, yakıt kalitesi ve enerji verimliliği gerekliliklerine uyumunu belgelendirir.",
     history: "IAPP Certificate (International Air Pollution Prevention Certificate), MARPOL Ek VI'nın 2005'te yürürlüğe girmesiyle zorunlu hale gelmiştir. 400 GT ve üzeri gemiler ile tüm sabit ve yüzer sondaj platformları için düzenlenir. NOx (azot oksitler), SOx (kükürt oksitler), ODS (ozon tabakasını incelten maddeler), VOC (uçucu organik bileşikler) ve enerji verimliliği (EEXI/CII) gerekliliklerini kapsar.",
     applicability: [
@@ -1245,7 +1245,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "tonnage-cert",
     label: "Tonnage Certificate – Tonaj Belgesi",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "ITC 69 kapsamında geminin brüt ve net tonajının ölçüm sonuçlarını belgeleyen sertifika; liman harçları ve uluslararası gerekliliklere referans oluşturur.",
     history: "International Tonnage Certificate, ITC 69 (International Convention on Tonnage Measurement of Ships, 1969) kapsamında düzenlenmektedir. 1982'de yürürlüğe giren sözleşme, gemilerin brüt tonaj (GT) ve net tonaj (NT) hesaplaması için uluslararası standart oluşturmuştur. GT ve NT değerleri liman harçları, kılavuzluk ücretleri, emniyet gereklilikleri (SOLAS eşikleri), manning gereklilikleri ve vergilendirme için referans olarak kullanılır.",
     applicability: [
@@ -1320,7 +1320,7 @@ export const certificateRegulations: RegulationItem[] = [
   {
     slug: "dmlc",
     label: "DMLC – Denizcilik Çalışma Beyanı",
-    category: "Gemi Sertifikaları",
+    category: "Ship Certificates",
     overview: "MLC 2006 kapsamında bayrak devleti gerekliliklerini (Bölüm I) ve şirket uyum önlemlerini (Bölüm II) belgeleyen iki parçalı deklarasyon.",
     history: "DMLC (Declaration of Maritime Labour Compliance), MLC 2006'nın sertifikasyon mekanizmasının temel parçasıdır. MLC Certificate'ın eki olarak gemide bulundurulması zorunludur. Part I bayrak devleti tarafından, Part II şirket tarafından hazırlanır. 14 MLC denetim alanında hem ulusal gereklilikleri hem de şirket uyum planlarını bir arada belgeleyen benzersiz bir iki parçalı sistemdir.",
     applicability: [

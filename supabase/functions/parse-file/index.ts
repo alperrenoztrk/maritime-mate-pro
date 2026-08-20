@@ -33,7 +33,7 @@ serve(async (req) => {
       await assertSafeUrl(fileUrl);
       fileResponse = await safeFetch(fileUrl, {}, { maxRedirects: 3, timeoutMs: 15000 });
     } catch {
-      return errorResponse(corsHeaders, 400, 'Geçersiz veya izin verilmeyen dosya URL');
+      return errorResponse(corsHeaders, 400, 'Invalid or disallowed file URL');
     }
     if (!fileResponse.ok) {
       return errorResponse(corsHeaders, 400, 'Dosya indirilemedi');
@@ -60,7 +60,7 @@ serve(async (req) => {
       extractedData = parseCSV(text);
     } else if (fileType.includes('spreadsheet') || fileType.includes('excel') || 
                fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
-      extractedContent = `[Excel dosyası: ${fileName}]\nBu dosya bir Excel tablosudur. İçeriğini görüntülemek için dosyayı CSV formatına dönüştürmeniz önerilir.`;
+      extractedContent = `[Excel file: ${fileName}]\nThis file is an Excel table. It is recommended to convert the file to CSV format to view its contents.`;
       extractedData = { type: 'excel', fileName, needsConversion: true };
     } else if (fileType === 'application/pdf' || fileName.endsWith('.pdf')) {
       const arrayBuffer = await fileResponse.arrayBuffer();
@@ -69,20 +69,20 @@ serve(async (req) => {
       extractedData = { type: 'pdf', fileName, size: uint8Array.length };
     } else if (fileType.includes('word') || fileType.includes('document') ||
                fileName.endsWith('.docx') || fileName.endsWith('.doc')) {
-      extractedContent = `[Word dosyası: ${fileName}]\nBu dosya bir Word belgesidir.`;
+      extractedContent = `[Word file: ${fileName}]\nThis file is a Word document.`;
       extractedData = { type: 'word', fileName };
     } else if (fileType.startsWith('image/')) {
-      extractedContent = `[Görsel: ${fileName}]\nTür: ${fileType}\nBu dosya bir görseldir.`;
+      extractedContent = `[Image: ${fileName}]\nType: ${fileType}\nThis file is an image.`;
       extractedData = { type: 'image', fileName, mimeType: fileType };
     } else {
-      extractedContent = `[Dosya: ${fileName}]\nBu dosya türü doğrudan okunamıyor.`;
+      extractedContent = `[Dosya: ${fileName}]\nThis file type cannot be read directly.`;
       extractedData = { type: 'unknown', fileName, mimeType: fileType };
     }
 
     // Limit content length for AI context
     const maxLength = 15000;
     if (extractedContent.length > maxLength) {
-      extractedContent = extractedContent.substring(0, maxLength) + '\n\n[...içerik kırpıldı]';
+      extractedContent = extractedContent.substring(0, maxLength) + '\n\n[...content trimmed]';
     }
 
     return new Response(
@@ -98,14 +98,14 @@ serve(async (req) => {
 
   } catch (error) {
     logError('parse-file', error);
-    return errorResponse(corsHeaders, 500, 'Dosya işlenemedi');
+    return errorResponse(corsHeaders, 500, 'The file could not be processed');
   }
 });
 
 function parseCSV(text: string): { headers: string[]; rows: string[][]; summary: string } {
   const lines = text.trim().split('\n');
   if (lines.length === 0) {
-    return { headers: [], rows: [], summary: 'Boş CSV dosyası' };
+    return { headers: [], rows: [], summary: 'Blank CSV file' };
   }
 
   const headers = lines[0].split(/[,;\t]/).map(h => h.trim().replace(/^["']|["']$/g, ''));
@@ -116,7 +116,7 @@ function parseCSV(text: string): { headers: string[]; rows: string[][]; summary:
   return {
     headers,
     rows,
-    summary: `${headers.length} sütun, ${lines.length - 1} satır`
+    summary: `${headers.length} column, ${lines.length - 1} line`
   };
 }
 
@@ -148,11 +148,11 @@ function extractPDFText(uint8Array: Uint8Array, fileName: string): string {
     }
     
     if (textMatches.length > 0) {
-      return `[PDF: ${fileName}]\n\nÇıkarılan metin:\n${textMatches.join('\n').substring(0, 10000)}`;
+      return `[PDF: ${fileName}]\n\nExtracted text:\n${textMatches.join('\n').substring(0, 10000)}`;
     }
     
-    return `[PDF: ${fileName}]\nBu PDF dosyasından metin çıkarılamadı.`;
+    return `[PDF: ${fileName}]\nCould not extract text from this PDF file.`;
   } catch {
-    return `[PDF: ${fileName}]\nPDF dosyası işlenirken hata oluştu.`;
+    return `[PDF: ${fileName}]\nAn error occurred while processing the PDF file.`;
   }
 }

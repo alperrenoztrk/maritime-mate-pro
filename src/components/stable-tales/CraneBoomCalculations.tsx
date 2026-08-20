@@ -65,11 +65,11 @@ export const CraneBoomCalculations = () => {
         stabilityColor = 'secondary';
         recommendations.push('Careful operation recommended');
       } else if (yeni_gm >= 0.05) {
-        stabilityStatus = 'Riskli';
+        stabilityStatus = 'Risky';
         stabilityColor = 'destructive';
         recommendations.push('URGENT: Stop the operation!');
       } else {
-        stabilityStatus = 'Tehlikeli';
+        stabilityStatus = 'Dangerous';
         stabilityColor = 'destructive';
         recommendations.push('DANGER: Negative GM - Operation prohibited!');
       }
@@ -101,7 +101,7 @@ export const CraneBoomCalculations = () => {
 
     } catch (error) {
       console.error("Crane calculation error:", error);
-      toast.error("Kren hesaplaması sırasında bir hata oluştu!");
+      toast.error("An error occurred during the crane calculation!");
     }
   };
 
@@ -112,13 +112,13 @@ export const CraneBoomCalculations = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings className="h-5 w-5" />
-            Kren/Bumba Operasyon Analizi
+            Crane/Dumb Operation Analysis
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <Label>Deplasman (ton)</Label>
+              <Label>Displacement (tons)</Label>
               <Input
                 type="number"
                 value={vesselData.deplasman}
@@ -144,7 +144,7 @@ export const CraneBoomCalculations = () => {
               />
             </div>
             <div>
-              <Label>Başlangıç GM (m)</Label>
+              <Label>Starting GM (m)</Label>
               <Input
                 type="number"
                 step="0.01"
@@ -159,12 +159,12 @@ export const CraneBoomCalculations = () => {
       {/* Kren/Bumba Parametreleri */}
       <Card>
         <CardHeader>
-          <CardTitle>Kren/Bumba Operasyon Parametreleri</CardTitle>
+          <CardTitle>Crane/Dumb Operation Parameters</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label>Yük Ağırlığı (ton)</Label>
+              <Label>Load Weight (ton)</Label>
               <Input
                 type="number"
                 step="0.1"
@@ -172,12 +172,12 @@ export const CraneBoomCalculations = () => {
                 onChange={(e) => setCraneData(prev => ({ ...prev, yuk_agirligi: Number(e.target.value) }))}
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Kaldırılan yükün ağırlığı
+                Weight of the lifted load
               </p>
             </div>
             
             <div>
-              <Label>Kancayı Yüksekliği (m)</Label>
+              <Label>Hook Height (m)</Label>
               <Input
                 type="number"
                 step="0.1"
@@ -185,12 +185,12 @@ export const CraneBoomCalculations = () => {
                 onChange={(e) => setCraneData(prev => ({ ...prev, yukseklik_cunda: Number(e.target.value) }))}
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Kren kancasının keel üzerindeki yüksekliği
+                Height of crane hook above keel
               </p>
             </div>
             
             <div>
-              <Label>Yük Yüksekliği (m)</Label>
+              <Label>Load Height (m)</Label>
               <Input
                 type="number"
                 step="0.1"
@@ -198,14 +198,14 @@ export const CraneBoomCalculations = () => {
                 onChange={(e) => setCraneData(prev => ({ ...prev, yuk_yuksekligi: Number(e.target.value) }))}
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Yükün nihai yerleştirileceği yükseklik
+                Height at which the load will be placed
               </p>
             </div>
           </div>
 
           <Button onClick={calculateCraneEffect} className="w-full mt-4">
             <Calculator className="mr-2 h-4 w-4" />
-            Kren Operasyonu Analizi Yap
+            Perform Crane Operation Analysis
           </Button>
         </CardContent>
       </Card>
@@ -221,44 +221,44 @@ export const CraneBoomCalculations = () => {
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />
                 )}
-                Kren Operasyon Analizi Sonuçları
+                Crane Operation Analysis Results
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary">{results.yeni_gm.toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">Yeni GM (m)</p>
+                  <p className="text-sm text-muted-foreground">New GM (m)</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-secondary">{results.gm_degisimi.toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">GM Değişimi (m)</p>
+                  <p className="text-sm text-muted-foreground">GM Change (m)</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold">{results.virtual_kg_artis.toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">Virtual KG Artışı (m)</p>
+                  <p className="text-sm text-muted-foreground">Virtual KG Increment (m)</p>
                 </div>
                 <div className="text-center">
                   <Badge variant={results.stabilityColor === 'destructive' ? 'destructive' : results.stabilityColor === 'secondary' ? 'secondary' : 'default'}>
                     {results.stabilityStatus}
                   </Badge>
-                  <p className="text-sm text-muted-foreground mt-1">Stabilite Durumu</p>
+                  <p className="text-sm text-muted-foreground mt-1">Stability Status</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium mb-2">Güvenlik Değerlendirmesi</h5>
-                  <p className="text-sm">Operasyon Durumu: <strong>{results.operasyon_durumu}</strong></p>
-                  <p className="text-sm">Güvenlik Marjı: <strong>{results.güvenlik_marjı.toFixed(3)}m</strong></p>
+                  <h5 className="font-medium mb-2">Security Assessment</h5>
+                  <p className="text-sm">Operation Status: <strong>{results.operasyon_durumu}</strong></p>
+                  <p className="text-sm">Margin of Safety: <strong>{results.güvenlik_marjı.toFixed(3)}m</strong></p>
                   <p className="text-sm">Minimum GM: <strong>0.150m</strong></p>
                 </div>
                 
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium mb-2">Operasyon Parametreleri</h5>
-                  <p className="text-sm">Yük: {craneData.yuk_agirligi} ton</p>
-                  <p className="text-sm">Kanca Yüksekliği: {craneData.yukseklik_cunda}m</p>
-                  <p className="text-sm">Yük Yüksekliği: {craneData.yuk_yuksekligi}m</p>
+                  <h5 className="font-medium mb-2">Operation Parameters</h5>
+                  <p className="text-sm">Load: {craneData.yuk_agirligi} ton</p>
+                  <p className="text-sm">Hook Height: {craneData.yukseklik_cunda}m</p>
+                  <p className="text-sm">Load Height: {craneData.yuk_yuksekligi}m</p>
                 </div>
               </div>
             </CardContent>
@@ -266,7 +266,7 @@ export const CraneBoomCalculations = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Öneriler ve Uyarılar</CardTitle>
+              <CardTitle>Recommendations and Warnings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {results.recommendations.map((rec: string, index: number) => (
@@ -276,24 +276,24 @@ export const CraneBoomCalculations = () => {
               ))}
 
               <div className="p-4 bg-muted rounded-lg">
-                <h5 className="font-medium mb-2">Kullanılan Formül:</h5>
+                <h5 className="font-medium mb-2">Formula Used:</h5>
                 <p className="font-mono text-sm mb-2">
                   ΔGM = -W × (h_hook - h_load)² / (Δ + W)
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Burada: W = Yük ağırlığı, h_kanca = Kanca yüksekliği, h_yük = Yük yüksekliği, Δ = Deplasman
+                  Where: W = load weight, h_kanca = hook height, h_yük = load height, Δ = displacement
                 </p>
               </div>
 
               <div className="p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg">
                 <h5 className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">
-                  Güvenlik Protokolü:
+                  Security Protocol:
                 </h5>
                 <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
                   <li>• GM &lt; 0.15m ise operasyon DURDURULMALIDIR</li>
-                  <li>• Operasyon öncesi ballast ayarlaması yapılmalıdır</li>
-                  <li>• Hava koşulları değerlendirilmelidir</li>
-                  <li>• Sürekli stabilite monitörleme gereklidir</li>
+                  <li>• Ballast adjustment should be made before the operation.</li>
+                  <li>• Weather conditions should be evaluated</li>
+                  <li>• Continuous Stability monitoring is required</li>
                 </ul>
               </div>
             </CardContent>

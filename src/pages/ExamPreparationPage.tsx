@@ -48,13 +48,13 @@ import type { QuizQuestion } from "@/types/quiz";
 const examModules = [
   {
     id: "stability",
-    title: "Stabilite",
+    title: "Stability",
     icon: Anchor,
     color: "from-blue-500 to-cyan-500",
     bgColor: "bg-blue-500/10",
     borderColor: "border-blue-500/30",
     questions: stabilityQuestions,
-    description: "IS Code, GZ eğrileri, serbest yüzey, hasarlı stabilite",
+    description: "IS Code, GZ curves, free surface, damaged stability",
     topics: ["IS Code 2008", "Grain Code", "GZ/KN", "Free Surface", "Damage Stability"]
   },
   {
@@ -65,12 +65,12 @@ const examModules = [
     bgColor: "bg-emerald-500/10",
     borderColor: "border-emerald-500/30",
     questions: navigationQuestions,
-    description: "Pusula, plotting, COLREG, astronomik seyir, GNSS",
-    topics: ["Pusula Hesaplamaları", "Akıntı & Rüzgar", "COLREG", "Elektronik Seyir", "Astronomik Seyir"]
+    description: "Compass, plotting, COLREG, astronomical navigation, GNSS",
+    topics: ["Compass Calculations", "Current & Wind", "COLREG", "Electronic Navigation", "Astronomical Navigation"]
   },
   {
     id: "safety",
-    title: "Emniyet",
+    title: "Safety",
     icon: Shield,
     color: "from-red-500 to-orange-500",
     bgColor: "bg-red-500/10",
@@ -81,47 +81,47 @@ const examModules = [
   },
   {
     id: "cargo",
-    title: "Kargo",
+    title: "Cargo",
     icon: Box,
     color: "from-amber-500 to-yellow-500",
     bgColor: "bg-amber-500/10",
     borderColor: "border-amber-500/30",
     questions: cargoQuestions,
-    description: "IMSBC, IMDG, Grain Code, Draft Survey, Konteyner",
-    topics: ["IMSBC", "IMDG", "Draft Survey", "Grain", "Konteyner"]
+    description: "IMSBC, IMDG, Grain Code, Draft Survey, Container",
+    topics: ["IMSBC", "IMDG", "Draft survey", "Grain", "Container"]
   },
   {
     id: "seamanship",
-    title: "Gemicilik",
+    title: "Seamanship",
     icon: Ship,
     color: "from-violet-500 to-purple-500",
     bgColor: "bg-violet-500/10",
     borderColor: "border-violet-500/30",
     questions: seamanshipQuestions,
-    description: "Demirleme, palamar, düğümler, manevra, iş emniyeti",
-    topics: ["Demirleme", "Palamar", "Düğümler", "COLREG", "İş Emniyeti"]
+    description: "Anchoring, mooring, knots, maneuvering, work safety",
+    topics: ["Anchorage", "Mooring line", "Nodes", "COLREG", "Work Safety"]
   },
   {
     id: "machine",
-    title: "Makine",
+    title: "Engine",
     icon: Cog,
     color: "from-slate-500 to-zinc-500",
     bgColor: "bg-slate-500/10",
     borderColor: "border-slate-500/30",
     questions: machineQuestions,
-    description: "Ana makine, yakıt sistemi, elektrik, kazan, bakım",
-    topics: ["Ana Makine", "Fuel System", "Elektrik & Jeneratör", "MARPOL", "Bakım"]
+    description: "Main engine, fuel system, electricity, boiler, maintenance",
+    topics: ["Main engine", "Fuel System", "Electricity & Generator", "MARPOL", "Maintenance"]
   },
   {
     id: "meteorology",
-    title: "Meteoroloji",
+    title: "Meteorology",
     icon: Cloud,
     color: "from-sky-500 to-indigo-500",
     bgColor: "bg-sky-500/10",
     borderColor: "border-sky-500/30",
     questions: meteorologyQuestions,
-    description: "Rüzgar, basınç sistemleri, fırtına, dalgalar, sis",
-    topics: ["Beaufort", "Pressure Systems", "Tropikal Meteoroloji", "Cepheler", "Dalgalar"]
+    description: "Wind, pressure systems, storm, waves, fog",
+    topics: ["Beaufort", "Pressure systems", "Tropical Meteorology", "Facades", "Waves"]
   }
 ];
 
@@ -129,8 +129,8 @@ const examModules = [
 const examPresets = [
   {
     id: "quick",
-    title: "Hızlı Test",
-    description: "10 soruluk hızlı değerlendirme",
+    title: "Quick Test",
+    description: "10-question quick assessment",
     icon: Zap,
     count: 10,
     time: 10,
@@ -138,8 +138,8 @@ const examPresets = [
   },
   {
     id: "standard",
-    title: "Standart Sınav",
-    description: "25 soruluk kapsamlı test",
+    title: "Standard Exam",
+    description: "Comprehensive test with 25 questions",
     icon: Target,
     count: 25,
     time: 30,
@@ -147,8 +147,8 @@ const examPresets = [
   },
   {
     id: "full",
-    title: "Tam Sınav",
-    description: "50 soruluk derinlemesine sınav",
+    title: "Full Exam",
+    description: "50-question in-depth exam",
     icon: Award,
     count: 50,
     time: 60,
@@ -156,8 +156,8 @@ const examPresets = [
   },
   {
     id: "marathon",
-    title: "Maraton",
-    description: "100 soruluk zorlu maraton",
+    title: "Marathon",
+    description: "Challenging marathon of 100 questions",
     icon: Trophy,
     count: 100,
     time: 120,
@@ -169,8 +169,8 @@ const examPresets = [
 const deckOfficerExams = [
   {
     id: "3rd-officer",
-    title: "3. Zabit Sınavı",
-    description: "Vardiya Zabiti yeterliliği",
+    title: "3rd Officer Exam",
+    description: "Officer of the Watch qualification",
     modules: ["navigation", "stability", "safety", "seamanship", "meteorology"],
     questionDistribution: { navigation: 30, stability: 25, safety: 20, seamanship: 15, meteorology: 10 },
     totalQuestions: 50,
@@ -179,8 +179,8 @@ const deckOfficerExams = [
   },
   {
     id: "2nd-officer",
-    title: "2. Zabit Sınavı",
-    description: "Baş Vardiya Zabiti yeterliliği",
+    title: "2nd Officer Exam",
+    description: "Chief Watchkeeping Officer qualification",
     modules: ["navigation", "stability", "safety", "cargo", "seamanship"],
     questionDistribution: { navigation: 25, stability: 25, safety: 20, cargo: 20, seamanship: 10 },
     totalQuestions: 50,
@@ -189,8 +189,8 @@ const deckOfficerExams = [
   },
   {
     id: "chief-officer",
-    title: "1. Zabit Sınavı",
-    description: "Birinci Zabit yeterliliği",
+    title: "1st Officer Exam",
+    description: "Chief Officer qualification",
     modules: ["navigation", "stability", "safety", "cargo", "seamanship"],
     questionDistribution: { navigation: 20, stability: 30, safety: 15, cargo: 25, seamanship: 10 },
     totalQuestions: 60,
@@ -199,8 +199,8 @@ const deckOfficerExams = [
   },
   {
     id: "master",
-    title: "Kaptan Sınavı",
-    description: "Gemi Kaptanı yeterliliği",
+    title: "Master Exam",
+    description: "Ship Master qualification",
     modules: ["navigation", "stability", "safety", "cargo", "seamanship", "meteorology"],
     questionDistribution: { navigation: 20, stability: 25, safety: 15, cargo: 20, seamanship: 10, meteorology: 10 },
     totalQuestions: 75,
@@ -318,7 +318,7 @@ export default function ExamPreparationPage() {
       const examName = selectedModule 
         ? examModules.find(m => m.id === selectedModule)?.title || 'Quiz'
         : selectedPreset
-          ? examPresets.find(p => p.id === selectedPreset)?.title || 'Sınav'
+          ? examPresets.find(p => p.id === selectedPreset)?.title || 'Exam'
           : selectedOfficerExam
             ? deckOfficerExams.find(e => e.id === selectedOfficerExam)?.title || 'Officer Examination'
             : 'Quiz';
@@ -369,7 +369,7 @@ export default function ExamPreparationPage() {
             <div className="flex items-center gap-3">
               <GraduationCap className="h-6 w-6 text-primary" />
               <h1 className="text-xl font-bold">{currentExamTitle}</h1>
-              <Badge variant="secondary">{quizQuestions.length} Soru</Badge>
+              <Badge variant="secondary">{quizQuestions.length} Question</Badge>
             </div>
             <Button variant="outline" size="sm" onClick={resetQuiz}>
               <RotateCcw className="h-4 w-4 mr-2" />
@@ -397,13 +397,13 @@ export default function ExamPreparationPage() {
                 <GraduationCap className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-xl font-bold">Sınav Hazırlık Merkezi</h1>
+                <h1 className="text-xl font-bold">Exam Preparation Center</h1>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Badge variant="outline" className="gap-1">
                 <BookOpen className="h-3 w-3" />
-                {totalQuestions} Soru
+                {totalQuestions} Question
               </Badge>
               <Button 
                 variant="ghost" 
@@ -412,7 +412,7 @@ export default function ExamPreparationPage() {
                 className="gap-1"
               >
                 <Shuffle className="h-4 w-4" />
-                Karıştır
+                Mix
               </Button>
             </div>
           </div>
@@ -430,7 +430,7 @@ export default function ExamPreparationPage() {
               <CardContent className="flex items-center justify-between p-4">
                 <div className="flex items-center gap-3">
                   <Trophy className="h-5 w-5 text-primary" />
-                  <span>Son Sonuç:</span>
+                  <span>Final Result:</span>
                   <span className="font-bold text-lg">
                     {lastScore.score}/{lastScore.total}
                   </span>
@@ -451,19 +451,19 @@ export default function ExamPreparationPage() {
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="modules" className="gap-2">
               <BookOpen className="h-4 w-4" />
-              Modüller
+              Modules
             </TabsTrigger>
             <TabsTrigger value="presets" className="gap-2">
               <Target className="h-4 w-4" />
-              Hızlı Sınav
+              Quick Quiz
             </TabsTrigger>
             <TabsTrigger value="officer" className="gap-2">
               <Award className="h-4 w-4" />
-              Zabit Sınavları
+              Officer Exams
             </TabsTrigger>
             <TabsTrigger value="stats" className="gap-2">
               <BarChart3 className="h-4 w-4" />
-              İstatistikler
+              Statistics
             </TabsTrigger>
           </TabsList>
 
@@ -515,7 +515,7 @@ export default function ExamPreparationPage() {
                             className="flex-1"
                             onClick={() => startModuleQuiz(module.id, 10)}
                           >
-                            10 Soru
+                            10 Questions
                           </Button>
                           <Button 
                             size="sm" 
@@ -523,7 +523,7 @@ export default function ExamPreparationPage() {
                             className="flex-1"
                             onClick={() => startModuleQuiz(module.id, 25)}
                           >
-                            25 Soru
+                            25 Questions
                           </Button>
                           <Button 
                             size="sm"
@@ -589,7 +589,7 @@ export default function ExamPreparationPage() {
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Shuffle className="h-5 w-5" />
-                  Karışık Konu Sınavı
+                  Mixed Subject Exam
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -600,7 +600,7 @@ export default function ExamPreparationPage() {
                       variant="outline"
                       onClick={() => startPresetExam(examPresets.find(p => p.count === count)?.id || "standard")}
                     >
-                      {count} Soru
+                      {count} Question
                     </Button>
                   ))}
                 </div>
@@ -654,14 +654,14 @@ export default function ExamPreparationPage() {
                                 </span>
                                 <span className="flex items-center gap-1">
                                   <Award className="h-4 w-4" />
-                                  Geçme: %{exam.passingScore}
+                                  Pass: %{exam.passingScore}
                                 </span>
                               </div>
                               <Button 
                                 className="gap-2"
                                 onClick={() => startOfficerExam(exam.id)}
                               >
-                                Sınava Başla
+                                Start Exam
                                 <ChevronRight className="h-4 w-4" />
                               </Button>
                             </div>
@@ -680,9 +680,9 @@ export default function ExamPreparationPage() {
                 <div className="flex items-start gap-3">
                   <GraduationCap className="h-5 w-5 text-primary mt-0.5" />
                   <div className="text-sm text-muted-foreground space-y-1">
-                    <p><strong>Note:</strong> Bu sınavlar gerçek STCW sınavlarını simüle etmektedir.</p>
-                    <p>Soru dağılımları IMO yeterlilik tabloları baz alınarak hazırlanmıştır.</p>
-                    <p>Gerçek sınavlarda sözlü ve pratik değerlendirmeler de bulunur.</p>
+                    <p><strong>Note:</strong> These exams simulate real STCW exams.</p>
+                    <p>Question distributions have been prepared based on IMO qualification tables.</p>
+                    <p>Real exams also include oral and practical assessments.</p>
                   </div>
                 </div>
               </CardContent>
@@ -695,7 +695,7 @@ export default function ExamPreparationPage() {
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <BookOpen className="h-5 w-5" />
-              Soru Havuzu İstatistikleri
+              Question Pool Statistics
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -715,7 +715,7 @@ export default function ExamPreparationPage() {
             </div>
             <div className="mt-4 pt-4 border-t text-center">
               <div className="text-2xl font-bold text-primary">{totalQuestions}</div>
-              <div className="text-sm text-muted-foreground">Toplam Soru</div>
+              <div className="text-sm text-muted-foreground">Total Question</div>
             </div>
           </CardContent>
         </Card>

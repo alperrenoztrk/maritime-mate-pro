@@ -21,7 +21,7 @@ export default function StabilityPracticalPage() {
           </Link>
           <Link to="/stability/practical/ghm">
             <Button variant="outline" className="w-full justify-start gap-3 py-6 text-lg">
-              <BarChart3 className="h-5 w-5" /> GHM Hesaplama
+              <BarChart3 className="h-5 w-5" /> GHM Calculation
             </Button>
           </Link>
         </div>

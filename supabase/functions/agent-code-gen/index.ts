@@ -92,22 +92,22 @@ function validateGeneratedCode(code: string): CodeValidation {
   };
 }
 
-const SYSTEM_PROMPT = `Sen Mariner's Book uygulaması için bir AI kod üretici asistansın. 
-Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React/TypeScript bileşenleri üretiyorsun.
+const SYSTEM_PROMPT = `You are an AI code generator assistant for the Mariner's Book app.
+You produce React/TypeScript components for maritime calculations, tables, charts and subject explanations.
 
-## Kurallar:
-1. SADECE React fonksiyonel bileşeni üret
-2. TypeScript kullan
-3. Tailwind CSS kullan (semantic token'lar: bg-background, text-foreground, bg-primary, etc.)
-4. shadcn/ui bileşenlerini kullan (Card, Button, Input, Label, etc.)
-5. Grafikler için Recharts kullan
-6. Animasyonlar için Framer Motion kullan
-7. Kod TEMİZ ve OKUNAKLI olmalı
-8. Denizcilik terminolojisi DOĞRU olmalı
-9. Formüller DOĞRU olmalı
-10. GÜVENLİK: eval, fetch, localStorage, window.location gibi tehlikeli API'ler KULLANMA
+## Rules:
+1. Produce ONLY a React function component
+2. Use TypeScript
+3. Use Tailwind CSS (semantic tokens: bg-background, text-foreground, bg-primary, etc.)
+4. Use shadcn/ui components (Card, Button, Input, Label, etc.)
+5. Use Recharts for charts
+6. Use Framer Motion for animations
+7. The code must be CLEAN and READABLE
+8. The maritime terminology must be CORRECT
+9. The formulas must be CORRECT
+10. SECURITY: do NOT use dangerous APIs such as eval, fetch, localStorage or window.location
 
-## Mevcut Scope (bunları import etmeden kullanabilirsin):
+## Available scope (you can use these without importing them):
 - React, useState, useEffect, useMemo, useCallback
 - motion (framer-motion)
 - Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
@@ -115,19 +115,20 @@ Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React
 - LineChart, BarChart, PieChart, AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Line, Bar, Pie, Area
 - Calculator, Anchor, Ship, Navigation, Compass, Map, Waves
 
-## Denizcilik Formülleri:
+## Maritime formulas:
 - GM = KM - KG (Metacentric Height)
-- GZ = GM × sin(θ) (Righting Lever - küçük açılar için)
-- Trim = (Aft Draft - Fwd Draft) (Trim hesabı)
+- GZ = GM × sin(θ) (Righting Lever - for small angles)
+- Trim = (Aft Draft - Fwd Draft) (trim calculation)
 - TPC = (Awl × ρ) / 100 (Tonnes Per Centimetre)
 - MTC = (Δ × GML) / (100 × L) (Moment to Change Trim)
 - Displacement = L × B × T × Cb × ρ
 - Great Circle Distance = 60 × arccos(sin(lat1)×sin(lat2) + cos(lat1)×cos(lat2)×cos(dlon))
 
-## Çıktı Formatı:
-Önce kısa bir açıklama yaz, sonra \`\`\`tsx ile kod bloğu başlat.
-Kod bloğu SADECE React bileşeni içermeli, import ifadeleri OLMAMALI.
-Bileşen adı açıklayıcı olmalı (örn: GMCalculator, GreatCircleChart).`;
+## Output format:
+Write a short explanation first, then open a code block with \`\`\`tsx.
+The code block must contain ONLY the React component, with NO import statements.
+The component name must be descriptive (e.g. GMCalculator, GreatCircleChart).
+Write every explanation and every user-visible string in the generated component in English.`;
 
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
@@ -209,8 +210,8 @@ serve(async (req) => {
         logError('agent-code-gen', `Code validation failed: ${validation.violations.join(', ')}`);
         return new Response(
           JSON.stringify({ 
-            error: 'Üretilen kod güvenlik kontrolünden geçemedi',
-            message: 'Kod potansiyel olarak tehlikeli kalıplar içeriyor. Lütfen isteğinizi yeniden düzenleyin.',
+            error: 'The generated code did not pass the security check',
+            message: 'The code contains potentially dangerous patterns. Please rearrange your request.',
             violations: validation.violations.length
           }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -237,7 +238,7 @@ function buildPrompt(prompt: string, context?: { componentType?: string; categor
   let fullPrompt = prompt;
 
   if (context?.componentType) {
-    fullPrompt += `\n\nBileşen tipi: ${context.componentType}`;
+    fullPrompt += `\n\nComponent type: ${context.componentType}`;
   }
   if (context?.category) {
     fullPrompt += `\nKategori: ${context.category}`;
@@ -246,9 +247,9 @@ function buildPrompt(prompt: string, context?: { componentType?: string; categor
     // Validate existing code too
     const validation = validateGeneratedCode(context.existingCode);
     if (!validation.isValid) {
-      fullPrompt += `\n\n[Mevcut kod güvenlik nedeniyle dahil edilemedi]`;
+      fullPrompt += `\n\n[Current code could not be included for security reasons]`;
     } else {
-      fullPrompt += `\n\nMevcut kod (düzenle):\n\`\`\`tsx\n${context.existingCode}\n\`\`\``;
+      fullPrompt += `\n\nCurrent code (edit it):\n\`\`\`tsx\n${context.existingCode}\n\`\`\``;
     }
   }
 
@@ -258,22 +259,22 @@ function buildPrompt(prompt: string, context?: { componentType?: string; categor
 function detectComponentType(prompt: string, code?: string): string {
   const lowerPrompt = prompt.toLowerCase();
   
-  if (lowerPrompt.includes('hesapla') || lowerPrompt.includes('formül') || lowerPrompt.includes('calculator')) {
+  if (lowerPrompt.includes('calculate') || lowerPrompt.includes('formula') || lowerPrompt.includes('calculator')) {
     return 'calculation';
   }
   if (lowerPrompt.includes('grafik') || lowerPrompt.includes('chart') || lowerPrompt.includes('diagram')) {
     return 'chart';
   }
-  if (lowerPrompt.includes('tablo') || lowerPrompt.includes('table') || lowerPrompt.includes('liste')) {
+  if (lowerPrompt.includes('tablo') || lowerPrompt.includes('table') || lowerPrompt.includes('list')) {
     return 'table';
   }
-  if (lowerPrompt.includes('konu') || lowerPrompt.includes('anlatım') || lowerPrompt.includes('açıklama')) {
+  if (lowerPrompt.includes('subject') || lowerPrompt.includes('narration') || lowerPrompt.includes('description')) {
     return 'topic';
   }
   if (lowerPrompt.includes('animasyon') || lowerPrompt.includes('animation') || lowerPrompt.includes('hareket')) {
     return 'animation';
   }
-  if (lowerPrompt.includes('form') || lowerPrompt.includes('giriş') || lowerPrompt.includes('input')) {
+  if (lowerPrompt.includes('form') || lowerPrompt.includes('login') || lowerPrompt.includes('input')) {
     return 'form';
   }
 
@@ -289,10 +290,10 @@ function detectCategory(prompt: string): string {
   if (lowerPrompt.includes('seyir') || lowerPrompt.includes('navigasyon') || lowerPrompt.includes('rota') || lowerPrompt.includes('great circle')) {
     return 'navigation';
   }
-  if (lowerPrompt.includes('güvenlik') || lowerPrompt.includes('safety') || lowerPrompt.includes('solas') || lowerPrompt.includes('marpol')) {
+  if (lowerPrompt.includes('security') || lowerPrompt.includes('safety') || lowerPrompt.includes('solas') || lowerPrompt.includes('marpol')) {
     return 'safety';
   }
-  if (lowerPrompt.includes('yük') || lowerPrompt.includes('cargo') || lowerPrompt.includes('kargo') || lowerPrompt.includes('stowage')) {
+  if (lowerPrompt.includes('load') || lowerPrompt.includes('cargo') || lowerPrompt.includes('kargo') || lowerPrompt.includes('stowage')) {
     return 'cargo';
   }
   if (lowerPrompt.includes('makine') || lowerPrompt.includes('engine') || lowerPrompt.includes('motor')) {

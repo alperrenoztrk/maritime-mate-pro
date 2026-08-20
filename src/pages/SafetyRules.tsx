@@ -4,7 +4,7 @@ import { Scale, Shield, Flame, LifeBuoy } from "lucide-react";
 
 const safetyRules = [
   {
-    title: "SOLAS Bölüm II-2 - Yangın Güvenliği",
+    title: "SOLAS Part II-2 - Fire Safety",
     icon: Flame,
     rules: [
       "Fire detection and alarm systems are mandatory.",
@@ -15,7 +15,7 @@ const safetyRules = [
     ]
   },
   {
-    title: "LSA Kodu - Can Kurtarma Donanımları",
+    title: "LSA Code - Life-saving Equipment",
     icon: LifeBuoy,
     rules: [
       "Liferafts and lifeboats must be serviced regularly.",
@@ -26,7 +26,7 @@ const safetyRules = [
     ]
   },
   {
-    title: "ISM Kodu",
+    title: "ISM Code",
     icon: Shield,
     rules: [
       "The DOC (Document of Compliance) must be valid for the company.",
@@ -37,7 +37,7 @@ const safetyRules = [
     ]
   },
   {
-    title: "ISPS Kodu - Güvenlik",
+    title: "ISPS Code - Security",
     icon: Scale,
     rules: [
       "The ISSC (International Ship Security Certificate) must be valid.",
@@ -56,13 +56,13 @@ export default function SafetyRulesPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Scale className="h-4 w-4" />
-            Emniyet Kuralları
+            Safety Rules
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 bg-clip-text text-transparent">
-            Emniyet Kuralları
+            Safety Rules
           </h1>
         </div>
 

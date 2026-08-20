@@ -345,7 +345,7 @@ Ask a detailed question and I will provide you with calculations and explanation
             ) : (
               <>
                 <Send className="w-4 h-4" />
-                Sor
+                Ask
               </>
             )}
           </Button>
@@ -398,11 +398,11 @@ Ask a detailed question and I will provide you with calculations and explanation
         {/* Recent Questions */}
         {conversationHistory.length > 0 && (
           <div className="space-y-2">
-            <h4 className="text-sm font-medium text-muted-foreground">Son Sorular:</h4>
+            <h4 className="text-sm font-medium text-muted-foreground">Latest Questions:</h4>
             <div className="space-y-2 max-h-32 overflow-y-auto">
               {conversationHistory.slice(0, 3).map((entry, index) => (
                 <div key={index} className="text-xs p-2 bg-muted rounded border-l-2 border-primary/30">
-                  <div className="font-medium text-foreground">S: {entry.question}</div>
+                  <div className="font-medium text-foreground">Q: {entry.question}</div>
                   <div className="text-muted-foreground mt-1 truncate">
                     A: {entry.answer.substring(0, 80)}...
                   </div>

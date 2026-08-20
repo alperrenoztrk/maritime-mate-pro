@@ -40,79 +40,79 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
   {
     id: "basics",
     number: 1,
-    title: "Akışkan Özellikleri ve Basınç",
+    title: "Fluid Properties and Pressure",
     icon: Gauge,
     subtopics: [
-      { id: "fluid-definition", title: "Akışkan tanımı ve sınıflandırma", hasContent: true },
-      { id: "density-viscosity", title: "Yoğunluk, özgül ağırlık ve viskozite", hasContent: true },
-      { id: "pressure-pascal", title: "Basınç ve Pascal prensibi", hasContent: true },
-      { id: "hydrostatic-pressure", title: "Hidrostatik basınç dağılımı", hasContent: true },
+      { id: "fluid-definition", title: "Fluid definition and classification", hasContent: true },
+      { id: "density-viscosity", title: "Density, specific gravity and viscosity", hasContent: true },
+      { id: "pressure-pascal", title: "Pressure and Pascal's principle", hasContent: true },
+      { id: "hydrostatic-pressure", title: "Hydrostatic pressure distribution", hasContent: true },
     ],
   },
   {
     id: "continuity",
     number: 2,
-    title: "Süreklilik ve Enerji Denklemleri",
+    title: "Continuity and Energy Equations",
     icon: Activity,
     subtopics: [
       { id: "continuity-equation", title: "Continuity equation (Q = A·V)", hasContent: true },
-      { id: "bernoulli", title: "Bernoulli denklemi", hasContent: true },
-      { id: "energy-losses", title: "Enerji çizgisi ve kayıp terimleri", hasContent: true },
+      { id: "bernoulli", title: "Bernoulli equation", hasContent: true },
+      { id: "energy-losses", title: "Energy line and loss terms", hasContent: true },
     ],
   },
   {
     id: "flow-regimes",
     number: 3,
-    title: "Akış Rejimleri ve Reynolds",
+    title: "Flow Regimes and Reynolds",
     icon: Waves,
     subtopics: [
-      { id: "laminar-turbulent", title: "Laminer ve türbülanslı akış", hasContent: true },
-      { id: "reynolds", title: "Reynolds sayısı ve kritik değerler", hasContent: true },
-      { id: "velocity-profile", title: "Hız profilleri", hasContent: true },
+      { id: "laminar-turbulent", title: "Laminar and turbulent flow", hasContent: true },
+      { id: "reynolds", title: "Reynolds number and critical values", hasContent: true },
+      { id: "velocity-profile", title: "Speed profiles", hasContent: true },
     ],
   },
   {
     id: "pipe-flow",
     number: 4,
-    title: "Boru Akışı ve Kayıplar",
+    title: "Pipe Flow and Losses",
     icon: Ruler,
     subtopics: [
-      { id: "darcy-weisbach", title: "Darcy–Weisbach eşitliği", hasContent: true },
-      { id: "friction-factor", title: "Sürtünme faktörü ve Moody diyagramı", hasContent: true },
-      { id: "minor-losses", title: "Lokal kayıplar", hasContent: true },
+      { id: "darcy-weisbach", title: "Darcy–Weisbach equation", hasContent: true },
+      { id: "friction-factor", title: "Friction factor and Moody diagram", hasContent: true },
+      { id: "minor-losses", title: "Local losses", hasContent: true },
     ],
   },
   {
     id: "pumps",
     number: 5,
-    title: "Pompa ve Sistem Eğrileri",
+    title: "Pump and System Curves",
     icon: Zap,
     subtopics: [
-      { id: "pump-curves", title: "Pompa karakteristik eğrileri", hasContent: true },
-      { id: "npsh-cavitation", title: "NPSH ve kavitasyon", hasContent: true },
-      { id: "pump-power", title: "Pompa güç hesabı", hasContent: true },
+      { id: "pump-curves", title: "Pump characteristic curves", hasContent: true },
+      { id: "npsh-cavitation", title: "NPSH and cavitation", hasContent: true },
+      { id: "pump-power", title: "Pump power calculation", hasContent: true },
     ],
   },
   {
     id: "flow-measurement",
     number: 6,
-    title: "Debi Ölçümü ve Enstrümantasyon",
+    title: "Flow Measurement and Instrumentation",
     icon: BarChart3,
     subtopics: [
-      { id: "venturi-orifice", title: "Venturi ve orifis prensibi", hasContent: true },
-      { id: "pitot", title: "Pitot tüpü ile hız ölçümü", hasContent: true },
-      { id: "meter-selection", title: "Debi ölçer seçimi", hasContent: true },
+      { id: "venturi-orifice", title: "Venturi and orifice principle", hasContent: true },
+      { id: "pitot", title: "Velocity measurement with Pitot tube", hasContent: true },
+      { id: "meter-selection", title: "Flow meter selection", hasContent: true },
     ],
   },
   {
     id: "marine-applications",
     number: 7,
-    title: "Denizcilik Uygulamaları",
+    title: "Marine Applications",
     icon: Anchor,
     subtopics: [
-      { id: "ballast-bilge", title: "Balast ve sintine devreleri", hasContent: true },
-      { id: "cooling-circuits", title: "Soğutma suyu devreleri", hasContent: true },
-      { id: "fire-main", title: "Yangın hattı hidrolikleri", hasContent: true },
+      { id: "ballast-bilge", title: "Ballast and bilge circuits", hasContent: true },
+      { id: "cooling-circuits", title: "Cooling water circuits", hasContent: true },
+      { id: "fire-main", title: "Fire line hydraulics", hasContent: true },
     ],
   },
 ];
@@ -157,7 +157,7 @@ export default function FluidMechanicsTopicsPage() {
                 <Waves className="h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Akışkanlar Mekaniği</h1>
+                <h1 className="text-xl font-bold text-foreground">Fluid Mechanics</h1>
               </div>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function FluidMechanicsTopicsPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-card hover:text-foreground"
               >
                 <BookOpen className="h-4 w-4" />
-                Tüm Derslere Dön
+                Return to All Lessons
               </Link>
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function FluidMechanicsTopicsPage() {
 
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
                   <div className="space-y-2 rounded-xl bg-muted/50 p-4">
-                    <h3 className="mb-3 font-semibold text-foreground">Önemli Noktalar</h3>
+                    <h3 className="mb-3 font-semibold text-foreground">Highlights</h3>
                     {currentContent.bulletPoints.map((point, index) => (
                       <div key={index} className="flex items-start gap-2">
                         <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />

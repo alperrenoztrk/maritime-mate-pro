@@ -91,7 +91,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       ],
     },
     {
-      title: "Yanma ve Enjeksiyon",
+      title: "Combustion and Injection",
       formulas: [
         { name: "Excess Air Ratio", formula: "λ = m_air,actual / m_air,stoichiometric", variables: "λ > 1: lean mixture (typical diesel λ = 1.5–2.5)" },
         { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Tipik: 300–1.000 bar (mekanik), 1.500–2.500 bar (common rail)" },
@@ -117,7 +117,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Cooling System",
       formulas: [
-        { name: "Heat Rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
+        { name: "Heat rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
         { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Tipik ΔT: HT devresi 5–8°C, LT devresi 10–15°C" },
       ],
     },
@@ -127,7 +127,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Generator Calculations",
       formulas: [
         { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: line voltage (V), I: line current (A), cos(φ): power factor" },
-        { name: "Frequency-Speed Relation", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
+        { name: "Frequency-Speed Relationship", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
         { name: "Generator Efficiency", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
       ],
     },
@@ -187,7 +187,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Ohm's Law", formula: "V = I × R", variables: "V: voltage (V), I: current (A), R: resistance (Ω)" },
         { name: "Three Phase Power", formula: "P = √3 × VL × IL × cos(φ)", variables: "VL: line voltage, IL: line current, cos(φ): power factor" },
-        { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Birim: VAR (Volt-Amper Reaktif)" },
+        { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Unit: VAR (Volt-Ampere Reactive)" },
         { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Birim: VA (Volt-Amper)" },
       ],
     },
@@ -205,8 +205,8 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Measurement and Sensors",
       formulas: [
         { name: "Accuracy", formula: "Error (%) = ((Measured − True) / True) × 100", variables: "Acceptable: ±0.5% (temperature), ±1% (pressure), ±2% (flow)" },
-        { name: "Termokupl EMF", formula: "V = S × ΔT", variables: "S: Seebeck coefficient (μV/°C), ΔT: temperature difference" },
-        { name: "RTD Direnci", formula: "R(T) = R₀ × (1 + αT)", variables: "R₀: resistance at 0 °C (Pt100 → 100 Ω), α: temperature coefficient" },
+        { name: "Thermocouple EMF", formula: "V = S × ΔT", variables: "S: Seebeck coefficient (μV/°C), ΔT: temperature difference" },
+        { name: "RTD Resistance", formula: "R(T) = R₀ × (1 + αT)", variables: "R₀: resistance at 0 °C (Pt100 → 100 Ω), α: temperature coefficient" },
       ],
     },
     {
@@ -248,7 +248,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Oil Analysis",
       formulas: [
         { name: "TBN (Total Base Number)", formula: "TBN limit = the manufacturer's recommendation (usually min 20 mg KOH/g)", variables: "Low TBN: reduced acid neutralisation capacity" },
-        { name: "Demir (Fe) Konsantrasyonu", formula: "Fe limit ≤ 100 ppm (normal wear)", variables: "> 150 ppm: abnormal wear, investigation required" },
+        { name: "Iron (Fe) Concentration", formula: "Fe limit ≤ 100 ppm (normal wear)", variables: "> 150 ppm: abnormal wear, investigation required" },
       ],
     },
   ],
@@ -258,14 +258,14 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Fire Triangle", formula: "Fuel + Oxygen + Heat = Fire", variables: "Removing one element extinguishes the fire" },
         { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)", variables: "V: korunan hacim (m³), SOLAS II-2/Reg.10" },
-        { name: "Foam Quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
+        { name: "Foam quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
       ],
     },
     {
       title: "Explosion Risk",
       formulas: [
         { name: "LEL/UEL", formula: "Explosive range: LEL < concentration < UEL", variables: "Fuel vapour: LEL ~1%, UEL ~6% by volume" },
-        { name: "Flash Point", formula: "T_flash ≥ 60 °C (fuel required by SOLAS)", variables: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
+        { name: "Flash point", formula: "T_flash ≥ 60 °C (fuel required by SOLAS)", variables: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
       ],
     },
   ],
@@ -279,7 +279,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       ],
     },
     {
-      title: "Waste Management",
+      title: "Waste management",
       formulas: [
         { name: "OWS Discharge Limit", formula: "Oil concentration ≤ 15 ppm", variables: "MARPOL Annex I: the oily water separator discharge standard" },
         { name: "Sewage Treatment", formula: "BOD₅ effluent ≤ 25 mg/L", variables: "MARPOL Annex IV: the sewage treatment effluent quality" },
@@ -295,7 +295,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       ],
     },
     {
-      title: "Human Factors",
+      title: "Human factors",
       formulas: [
         { name: "Fatigue Index", formula: "FI = f(hours of work, rest, sleep quality)", variables: "STCW: min 10 hours of rest per 24 hours, min 77 hours per 7 days" },
         { name: "Watchkeeping Effectiveness", formula: "η_watch = Tasks completed / Tasks planned", variables: "A low ratio indicates an unbalanced workload or a lack of competence" },

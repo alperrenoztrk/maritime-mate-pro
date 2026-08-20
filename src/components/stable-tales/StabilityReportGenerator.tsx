@@ -64,7 +64,7 @@ Master            : ${reportData.kaptan_adi}
 Liman             : ${reportData.liman}
 Tarih             : ${reportData.tarih}
 Sefer No          : ${reportData.voyage_no}
-Rapor Tipi        : ${reportData.rapor_tipi === 'departure' ? 'Hareket Öncesi' : reportData.rapor_tipi === 'arrival' ? 'Varış Sonrası' : 'Operasyonel'}
+Rapor Tipi        : ${reportData.rapor_tipi === 'departure' ? 'Before Movement' : reportData.rapor_tipi === 'arrival' ? 'Post Arrival' : 'Operational'}
 
 LOADING CONDITION
 -----------------
@@ -137,11 +137,11 @@ Stable Tales - Maritime Stability System
       setGeneratedReport(report);
       setReportGenerated(true);
       
-      toast.success("Stabilite raporu başarıyla oluşturuldu!");
+      toast.success("Stability report created successfully!");
       
     } catch (error) {
       console.error("Report generation error:", error);
-      toast.error("Rapor oluşturma sırasında bir hata oluştu!");
+      toast.error("An error occurred while generating the report!");
     }
   };
 
@@ -153,7 +153,7 @@ Stable Tales - Maritime Stability System
     a.download = `Stabilite_Raporu_${reportData.gemi_adi.replace(/\s+/g, '_')}_${reportData.tarih}.txt`;
     a.click();
     URL.revokeObjectURL(url);
-    toast.success("Rapor indirildi!");
+    toast.success("The report has been downloaded!");
   };
 
   // HTML escape function to prevent XSS
@@ -183,7 +183,7 @@ Stable Tales - Maritime Stability System
       `);
       printWindow.document.close();
       printWindow.print();
-      toast.success("Rapor yazdırılıyor...");
+      toast.success("Report printing...");
     }
   };
 
@@ -193,7 +193,7 @@ Stable Tales - Maritime Stability System
     const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
     
     window.location.href = mailtoLink;
-    toast.success("E-posta istemciniz açılıyor...");
+    toast.success("Your email client is opening...");
   };
 
   return (
@@ -203,27 +203,27 @@ Stable Tales - Maritime Stability System
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5" />
-            Stabilite Raporu Oluşturucu
+            Stability Report Generator
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
-              <Label>Gemi Adı</Label>
+              <Label>Ship Name</Label>
               <Input
                 value={reportData.gemi_adi}
                 onChange={(e) => setReportData(prev => ({ ...prev, gemi_adi: e.target.value }))}
               />
             </div>
             <div>
-              <Label>Kaptan Adı</Label>
+              <Label>Master Name</Label>
               <Input
                 value={reportData.kaptan_adi}
                 onChange={(e) => setReportData(prev => ({ ...prev, kaptan_adi: e.target.value }))}
               />
             </div>
             <div>
-              <Label>Liman</Label>
+              <Label>Port</Label>
               <Input
                 value={reportData.liman}
                 onChange={(e) => setReportData(prev => ({ ...prev, liman: e.target.value }))}
@@ -238,23 +238,23 @@ Stable Tales - Maritime Stability System
               />
             </div>
             <div>
-              <Label>Sefer No</Label>
+              <Label>Voyage Number</Label>
               <Input
                 value={reportData.voyage_no}
                 onChange={(e) => setReportData(prev => ({ ...prev, voyage_no: e.target.value }))}
               />
             </div>
             <div>
-              <Label>Rapor Tipi</Label>
+              <Label>Report Type</Label>
               <select
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 value={reportData.rapor_tipi}
                 onChange={(e) => setReportData(prev => ({ ...prev, rapor_tipi: e.target.value }))}
               >
-                <option value="departure">Hareket Öncesi</option>
-                <option value="arrival">Varış Sonrası</option>
-                <option value="operational">Operasyonel</option>
-                <option value="emergency">Acil Durum</option>
+                <option value="departure">Before Movement</option>
+                <option value="arrival">Post Arrival</option>
+                <option value="operational">Operational</option>
+                <option value="emergency">Emergency</option>
               </select>
             </div>
           </div>
@@ -264,12 +264,12 @@ Stable Tales - Maritime Stability System
       {/* Gemi Teknik Bilgileri */}
       <Card>
         <CardHeader>
-          <CardTitle>Gemi Teknik Bilgileri</CardTitle>
+          <CardTitle>Ship Technical Information</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <Label>Deplasman (ton)</Label>
+              <Label>Displacement (tons)</Label>
               <Input
                 type="number"
                 value={vesselData.deplasman}
@@ -320,14 +320,14 @@ Stable Tales - Maritime Stability System
               />
             </div>
             <div>
-              <Label>IMO No</Label>
+              <Label>IMO No.</Label>
               <Input
                 value={vesselData.imo_no}
                 onChange={(e) => setVesselData(prev => ({ ...prev, imo_no: e.target.value }))}
               />
             </div>
             <div>
-              <Label>Çağrı İşareti</Label>
+              <Label>Call Sign</Label>
               <Input
                 value={vesselData.call_sign}
                 onChange={(e) => setVesselData(prev => ({ ...prev, call_sign: e.target.value }))}
@@ -340,11 +340,11 @@ Stable Tales - Maritime Stability System
       {/* Ek Notlar */}
       <Card>
         <CardHeader>
-          <CardTitle>Ek Notlar ve Açıklamalar</CardTitle>
+          <CardTitle>Additional Notes and Explanations</CardTitle>
         </CardHeader>
         <CardContent>
           <Textarea
-            placeholder="Stabilite ile ilgili ek notlar, özel durumlar, dikkat edilmesi gereken hususlar..."
+            placeholder="Additional notes about Stability, special situations, points to be taken into consideration..."
             rows={4}
             value={reportData.ek_notlar}
             onChange={(e) => setReportData(prev => ({ ...prev, ek_notlar: e.target.value }))}
@@ -357,7 +357,7 @@ Stable Tales - Maritime Stability System
         <CardContent className="pt-6">
           <Button onClick={generateReport} className="w-full" size="lg">
             <FileText className="mr-2 h-5 w-5" />
-            Stabilite Raporu Oluştur
+            Generate Stability Report
           </Button>
         </CardContent>
       </Card>
@@ -367,19 +367,19 @@ Stable Tales - Maritime Stability System
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Oluşturulan Rapor</CardTitle>
+              <CardTitle>Generated Report</CardTitle>
               <div className="flex gap-2">
                 <Button onClick={downloadReport} size="sm" variant="outline">
                   <Download className="mr-2 h-4 w-4" />
-                  İndir
+                  Download
                 </Button>
                 <Button onClick={printReport} size="sm" variant="outline">
                   <Printer className="mr-2 h-4 w-4" />
-                  Yazdır
+                  Print
                 </Button>
                 <Button onClick={emailReport} size="sm" variant="outline">
                   <Mail className="mr-2 h-4 w-4" />
-                  E-posta Gönder
+                  Send Email
                 </Button>
               </div>
             </CardHeader>

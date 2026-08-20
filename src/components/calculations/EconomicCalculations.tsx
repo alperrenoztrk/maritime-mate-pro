@@ -83,8 +83,8 @@ export const EconomicCalculations = () => {
     });
     setCalcSteps(prev => ({ ...prev, tce: [
       { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "Time Equivalent Rental (TCE) calculates daily earnings" },
-      { step: 2, title: "Net freight account", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
-      { step: 3, title: "TCE account", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
+      { step: 2, title: "Net freight calculation", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
+      { step: 3, title: "TCE calculation", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
     ] }));
   };
 
@@ -139,7 +139,7 @@ export const EconomicCalculations = () => {
       { step: 2, title: "Time difference calculation", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} clock` },
     ];
     if (timeDifference > 0) {
-      demSteps.push({ step: 3, title: "Demurrage account", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Demurrage calculation", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
     } else if (timeDifference < 0) {
       demSteps.push({ step: 3, title: "Despatch account", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
     } else {
@@ -177,8 +177,8 @@ export const EconomicCalculations = () => {
     });
     setCalcSteps(prev => ({ ...prev, voyage: [
       { step: 1, title: "gross revenue account", formula: "Gross Revenue = Cargo Amount × Freight Rate", substitution: `Gross Revenue = ${quantity.toLocaleString()} × $${rate}`, result: `Gross Revenue = $${grossRevenue.toLocaleString()}` },
-      { step: 2, title: "Toplam maliyet", formula: "Total Cost = Fuel + Port Expenses", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
-      { step: 3, title: "Net kâr", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
+      { step: 2, title: "Total cost", formula: "Total Cost = Fuel + Port Expenses", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
+      { step: 3, title: "Net profit", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
       { step: 4, title: "profit margin", formula: "Profit Margin = (Net Profit / Gross Revenue) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = %${profitMargin.toFixed(1)}` },
     ] }));
   };
@@ -202,11 +202,11 @@ export const EconomicCalculations = () => {
                 type="number"
                 value={grossFreight}
                 onChange={(e) => setGrossFreight(e.target.value)}
-                placeholder="Toplam navlun geliri"
+                placeholder="Total Freight Revenue"
               />
             </div>
             <div>
-              <Label htmlFor="voyageExpenses">Sefer Giderleri ($)</Label>
+              <Label htmlFor="voyageExpenses">Expedition Expenses ($)</Label>
               <Input
                 id="voyageExpenses"
                 type="number"
@@ -240,7 +240,7 @@ export const EconomicCalculations = () => {
                     <span className="ml-2">${tceResult.grossFreight.toLocaleString()}</span>
                   </div>
                   <div>
-                    <span className="font-medium">Net Navlun:</span>
+                    <span className="font-medium">Net Freight:</span>
                     <span className="ml-2">${tceResult.netFreight.toLocaleString()}</span>
                   </div>
                   <div className="col-span-2">
@@ -284,11 +284,11 @@ export const EconomicCalculations = () => {
                 type="number"
                 value={demurrageRate}
                 onChange={(e) => setDemurrageRate(e.target.value)}
-                placeholder="Saatlik oran"
+                placeholder="Hourly rate"
               />
             </div>
             <div>
-              <Label htmlFor="layTime">Lay Time (Hour)</Label>
+              <Label htmlFor="layTime">Laytime (Hour)</Label>
               <Input
                 id="layTime"
                 type="number"
@@ -318,7 +318,7 @@ export const EconomicCalculations = () => {
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="font-medium">Tip:</span>
+                    <span className="font-medium">Type:</span>
                     <Badge variant={demurrageResult.status === 'bonus' ? 'default' :
                                   demurrageResult.status === 'penalty' ? 'destructive' : 'outline'}
                            className="ml-2">
@@ -326,7 +326,7 @@ export const EconomicCalculations = () => {
                     </Badge>
                   </div>
                   <div>
-                    <span className="font-medium">Tutar:</span>
+                    <span className="font-medium">Amount:</span>
                     <span className="ml-2 font-bold">${demurrageResult.amount.toFixed(2)}</span>
                   </div>
                   <div className="col-span-2">
@@ -352,7 +352,7 @@ export const EconomicCalculations = () => {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-lg">
             <TrendingUp className="w-5 h-5 text-blue-500" />
-            Sefer Ekonomisi
+            Expedition Economy
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -364,7 +364,7 @@ export const EconomicCalculations = () => {
                 type="number"
                 value={cargoQuantity}
                 onChange={(e) => setCargoQuantity(e.target.value)}
-                placeholder="Ton"
+                placeholder="Tonne"
               />
             </div>
             <div>
@@ -388,7 +388,7 @@ export const EconomicCalculations = () => {
               />
             </div>
             <div>
-              <Label htmlFor="portCosts">Port Expenses ($)</Label>
+              <Label htmlFor="portCosts">Port costs ($)</Label>
               <Input
                 id="portCosts"
                 type="number"
@@ -400,7 +400,7 @@ export const EconomicCalculations = () => {
           </div>
           
           <Button onClick={calculateVoyageEconomics} className="w-full">
-            Analiz Et
+            Analyze
           </Button>
 
           {voyageResult && (
@@ -412,11 +412,11 @@ export const EconomicCalculations = () => {
                     <span className="ml-2">${voyageResult.grossRevenue.toLocaleString()}</span>
                   </div>
                   <div>
-                    <span className="font-medium">Toplam Maliyet:</span>
+                    <span className="font-medium">Total Cost:</span>
                     <span className="ml-2">${voyageResult.totalCosts.toLocaleString()}</span>
                   </div>
                   <div>
-                    <span className="font-medium">Net Kâr:</span>
+                    <span className="font-medium">Net Profit:</span>
                     <span className={`ml-2 font-bold ${voyageResult.netProfit >= 0 ? 'text-green-700' : 'text-red-700'}`}>
                       ${voyageResult.netProfit.toLocaleString()}
                     </span>

@@ -18,11 +18,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function SeamanshipAssistantPage() {
   return (
     <AssistantInterface
-      title="Gemicilik Asistanı"
-      badge="Gemicilik Asistanı"
+      title="Maritime Assistant"
+      badge="Maritime Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Gemicilik, operasyon veya PTW süreçleriyle ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding seamanship, operations or PTW processes..."
       icon={ShipWheel}
       accentGradient="from-emerald-600 via-teal-600 to-blue-600"
       iconColor="text-emerald-600 dark:text-emerald-400"

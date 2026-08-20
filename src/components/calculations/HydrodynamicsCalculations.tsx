@@ -436,7 +436,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       const resistanceSteps: CalculationStep[] = [
         {
           step: 1,
-          title: "Hiz Donusumu (knot -> m/s)",
+          title: "Speed Conversion (knots -> m/s)",
           formula: "V = Vknot x 0.514",
           substitution: `V = ${data.shipSpeed} x 0.514`,
           result: `V = ${speedMS.toFixed(3)} m/s`,
@@ -444,7 +444,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 2,
-          title: "Froude Sayisi",
+          title: "Froude Number",
           formula: "Fn = V / sqrt(g x L)",
           substitution: `Fn = ${speedMS.toFixed(3)} / sqrt(${g} x ${data.shipLength})`,
           result: `Fn = ${dimensionless.froudeNumber.toFixed(4)}`,
@@ -452,7 +452,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 3,
-          title: "Reynolds Sayisi",
+          title: "Reynolds Number",
           formula: "Rn = V x L / v",
           substitution: `Rn = ${speedMS.toFixed(3)} x ${data.shipLength} / ${nu}`,
           result: `Rn = ${dimensionless.reynoldsNumber.toExponential(3)}`,
@@ -460,7 +460,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 4,
-          title: "Surtunme Direnci Katsayisi (ITTC-57)",
+          title: "Friction Resistance Coefficient (ITTC-57)",
           formula: "Cf = 0.075 / (log10(Rn) - 2)^2",
           substitution: `Cf = 0.075 / (log10(${dimensionless.reynoldsNumber.toExponential(3)}) - 2)^2`,
           result: `Cf = ${(0.075 / Math.pow(Math.log10(dimensionless.reynoldsNumber) - 2, 2)).toExponential(4)}`,
@@ -468,15 +468,15 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 5,
-          title: "Form Faktoru (1+k)",
+          title: "Form Factor (1+k)",
           formula: "(1+k) = 1 + 0.93 x (Cb/Cp)^0.92 x (0.95-Cp)^(-0.521) x (1-Cp+0.0225xLCB)^0.6906",
           substitution: `(1+k) = 1 + 0.93 x (${data.blockCoefficient}/${data.prismaticCoefficient})^0.92 x (0.95-${data.prismaticCoefficient})^(-0.521) x (1-${data.prismaticCoefficient}+0.0225x${data.lcbPosition})^0.6906`,
           result: `(1+k) = ${resistance.formFactor.toFixed(4)}`,
-          explanation: "Form faktoru, govde seklinin surtunme direncine etkisini ifade eder."
+          explanation: "Form factor expresses the effect of body shape on friction resistance."
         },
         {
           step: 6,
-          title: "Viskoz Direnc",
+          title: "Viscous Resistance",
           formula: "Rv = 0.5 x rho x S x V^2 x Cf x (1+k) / 1000",
           substitution: `Rv = 0.5 x ${rho} x ${data.wetSurfaceArea} x ${speedMS.toFixed(3)}^2 x Cf x ${resistance.formFactor.toFixed(4)} / 1000`,
           result: `Rv = ${resistance.viscousResistance.toFixed(2)} kN`,
@@ -484,15 +484,15 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 7,
-          title: "Dalga Direnci (Holtrop-Mennen Yaklasimi)",
+          title: "Wave Resistance (Holtrop-Mennen Approximation)",
           formula: "Rw = C1 x C2 x rho x g x D / 1000 x Fn^2 x exp(-0.034 x Fn^(-3.29))",
           substitution: `Rw = C1 x C2 x ${rho} x ${g} x ${data.displacement} / 1000 x ${dimensionless.froudeNumber.toFixed(4)}^2 x exp(-0.034 x ${dimensionless.froudeNumber.toFixed(4)}^(-3.29))`,
           result: `Rw = ${resistance.waveResistance.toFixed(2)} kN`,
-          explanation: "Dalga direnci, geminin su yuzeyinde olusturdugu dalgalardan kaynaklanan direnc bilesenidir."
+          explanation: "Wave resistance is the resistance component resulting from the waves created by the ship on the water surface."
         },
         {
           step: 8,
-          title: "Toplam Direnc",
+          title: "Total Resistance",
           formula: "Rt = Rv + Rw",
           substitution: `Rt = ${resistance.viscousResistance.toFixed(2)} + ${resistance.waveResistance.toFixed(2)}`,
           result: `Rt = ${resistance.totalResistance.toFixed(2)} kN`,
@@ -500,7 +500,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 9,
-          title: "Iz Katsayisi",
+          title: "Wake fraction",
           formula: "w = 0.25 x Cb + 0.15",
           substitution: `w = 0.25 x ${data.blockCoefficient} + 0.15`,
           result: `w = ${propulsion.wakeDeduction.toFixed(4)}`,
@@ -508,15 +508,15 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 10,
-          title: "Itki Azalma Katsayisi",
+          title: "Impulse Decay Coefficient",
           formula: "t = 0.15 x Cb + 0.1",
           substitution: `t = 0.15 x ${data.blockCoefficient} + 0.1`,
           result: `t = ${propulsion.thrustDeduction.toFixed(4)}`,
-          explanation: "Itki azalma katsayisi, pervanenin emme etkisiyle artan direnci ifade eder."
+          explanation: "Thrust reduction coefficient refers to the resistance increased by the suction effect of the propeller."
         },
         {
           step: 11,
-          title: "Govde Verimi",
+          title: "Hull efficiency",
           formula: "etaH = (1 - t) / (1 - w)",
           substitution: `etaH = (1 - ${propulsion.thrustDeduction.toFixed(4)}) / (1 - ${propulsion.wakeDeduction.toFixed(4)})`,
           result: `etaH = ${(propulsion.hullEfficiency).toFixed(2)}%`,
@@ -524,7 +524,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 12,
-          title: "Pervane Verimi",
+          title: "Propeller Efficiency",
           formula: "etaO = (Kt / Kq) x (J / 2pi)",
           substitution: `etaO calculated (using Wageningen B-series approach)`,
           result: `etaO = ${propulsion.propellerEfficiency.toFixed(2)}%`,
@@ -532,11 +532,11 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 13,
-          title: "Toplam Sevk Verimi",
+          title: "Total Shipment Efficiency",
           formula: "etaD = etaO x etaH x etaR / 10000",
           substitution: `etaD = ${propulsion.propellerEfficiency.toFixed(2)} x ${propulsion.hullEfficiency.toFixed(2)} x ${propulsion.relativeRotativeEfficiency.toFixed(2)} / 10000`,
           result: `etaD = ${propulsion.totalPropulsiveEfficiency.toFixed(2)}%`,
-          explanation: "Toplam sevk verimi, tum verimlilik bilesenlerinin carpimini ifade eder."
+          explanation: "Total dispatch efficiency refers to the product of all efficiency components."
         }
       ];
 
@@ -546,15 +546,15 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       const motionSteps: CalculationStep[] = [
         {
           step: 1,
-          title: "Dalga Frekans",
+          title: "Wave Frequency",
           formula: "omega = 2pi / T",
           substitution: `omega = 2pi / ${data.wavePeriod}`,
           result: `omega = ${omega.toFixed(4)} rad/s`,
-          explanation: "Dalga frekans, dalga periyodundan hesaplanir."
+          explanation: "Wave frequency is calculated from the wave period."
         },
         {
           step: 2,
-          title: "Dalga Sayisi",
+          title: "Wave Number",
           formula: "k = omega^2 / g",
           substitution: `k = ${omega.toFixed(4)}^2 / ${g}`,
           result: `k = ${kWave.toFixed(6)} 1/m`,
@@ -562,7 +562,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 3,
-          title: "Karsilasma Frekans",
+          title: "Encounter Frequency",
           formula: "omegae = omega - omega^2 x V / g x cos(mu)",
           substitution: `omegae = ${omega.toFixed(4)} - ${omega.toFixed(4)}^2 x ${speedMS.toFixed(3)} / ${g} x cos(${data.waveDirection}deg)`,
           result: `omegae = ${motions.encounterFrequency.toFixed(4)} rad/s`,
@@ -570,47 +570,47 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 4,
-          title: "Yalpa Dogal Frekansi",
+          title: "Roll Natural Frequency",
           formula: "omegaroll = 2pi / Troll",
           substitution: `omegaroll = 2pi / ${data.naturalRollPeriod}`,
           result: `omegaroll = ${(2 * Math.PI / data.naturalRollPeriod).toFixed(4)} rad/s`,
-          explanation: "Yalpa dogal frekansi, geminin serbest yalpa periyodundan elde edilir."
+          explanation: "The natural roll frequency is obtained from the ship's free roll period."
         },
         {
           step: 5,
-          title: "Yalpa RAO (Tepki Genlik Operatoru)",
+          title: "Roll RAO (Response Amplitude Operator)",
           formula: "RAOroll = Hw / (1 + (omegae / omegaroll)^2)",
           substitution: `RAOroll = ${data.waveHeight} / (1 + (${motions.encounterFrequency.toFixed(4)} / ${(2 * Math.PI / data.naturalRollPeriod).toFixed(4)})^2)`,
           result: `RAOroll = ${(data.waveHeight / (1 + Math.pow(motions.encounterFrequency / (2 * Math.PI / data.naturalRollPeriod), 2))).toFixed(4)}`,
-          explanation: "RAO, dalga yuksekligine karsilik gelen hareket genligini verir."
+          explanation: "RAO gives the amplitude of motion corresponding to the wave height."
         },
         {
           step: 6,
-          title: "Yalpa Genligi",
+          title: "Roll Amplitude",
           formula: "phi = RAOroll x atan(GM / kxx) x 180/pi",
           substitution: `phi = RAO x atan(${data.metacentricHeight} / ${data.radiusOfGyration}) x 180/pi`,
           result: `phi = ${motions.rollAmplitude.toFixed(2)} derece`,
-          explanation: "Yalpa genligi, dalga kosullarinda geminin enine sallanma miktarini ifade eder."
+          explanation: "Roll amplitude refers to the amount of transverse rolling of the ship under wave conditions."
         },
         {
           step: 7,
-          title: "Tangage Genligi",
+          title: "Pitch Width",
           formula: "theta = Hw x k x L / 4 x 180/pi",
           substitution: `theta = ${data.waveHeight} x ${kWave.toFixed(6)} x ${data.shipLength} / 4 x 180/pi`,
           result: `theta = ${motions.pitchAmplitude.toFixed(2)} derece`,
-          explanation: "Tangage genligi, geminin boyuna eksen etrafindaki sallanma miktarini ifade eder."
+          explanation: "Pitch amplitude refers to the amount of sway of the ship around the longitudinal axis."
         },
         {
           step: 8,
-          title: "Dalip Cikma Genligi",
+          title: "Heavy amplitude",
           formula: "z = Hw x 0.7",
           substitution: `z = ${data.waveHeight} x 0.7`,
           result: `z = ${motions.heaveAmplitude.toFixed(2)} m`,
-          explanation: "Dalip cikma genligi, geminin dusey dogrultudaki hareket genligini ifade eder."
+          explanation: "Heave amplitude refers to the amplitude of movement of the ship in the vertical direction."
         },
         {
           step: 9,
-          title: "Dusey Ivme",
+          title: "Vertical acceleration",
           formula: "av = omegae^2 x z",
           substitution: `av = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.heaveAmplitude.toFixed(2)}`,
           result: `av = ${motions.verticalAcceleration.toFixed(3)} m/s^2`,
@@ -618,11 +618,11 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 10,
-          title: "Yanal Ivme",
+          title: "Lateral Acceleration",
           formula: "al = omegae^2 x phi x B/2 / 180 x pi",
           substitution: `al = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.rollAmplitude.toFixed(2)} x ${data.shipBeam}/2 / 180 x pi`,
           result: `al = ${motions.lateralAcceleration.toFixed(3)} m/s^2`,
-          explanation: "Yanal ivme, yalpa hareketinden kaynaklanan yan ivmedir."
+          explanation: "Lateral acceleration is the lateral acceleration resulting from roll motion."
         }
       ];
 
@@ -632,7 +632,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       const seakeepingSteps: CalculationStep[] = [
         {
           step: 1,
-          title: "Slamming Parametresi",
+          title: "Slamming Parameter",
           formula: "Sp = V x Hw / L^2",
           substitution: `Sp = ${speedMS.toFixed(3)} x ${data.waveHeight} / ${data.shipLength}^2`,
           result: `Sp = ${slammingParameter.toExponential(4)}`,
@@ -640,51 +640,51 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 2,
-          title: "Slamming Olasiligi (Ochi Metodu)",
+          title: "Slamming Probability (Ochi Method)",
           formula: "Pslam = min(100, Sp x 50)",
           substitution: `Pslam = min(100, ${slammingParameter.toExponential(4)} x 50)`,
           result: `Pslam = ${slamming.slammingProbability.toFixed(2)}%`,
-          explanation: "Slamming olasiligi %5'in uzerinde ise slamming riski vardir."
+          explanation: "If the probability of slamming is above 5%, there is a risk of slamming."
         },
         {
           step: 3,
-          title: "Dalga Etki Kuvveti",
+          title: "Wave Impact Force",
           formula: "Fimpact = 0.5 x rho x V^2 x B x Hw",
           substitution: `Fimpact = 0.5 x ${rho} x ${speedMS.toFixed(3)}^2 x ${data.shipBeam} x ${data.waveHeight}`,
           result: `Fimpact = ${slamming.waveImpactForce.toFixed(1)} N`,
-          explanation: "Dalga etki kuvveti, dalgalarin govdeye uyguladi dinamik kuvvettir."
+          explanation: "Wave impact force is the dynamic force applied by waves to the body."
         },
         {
           step: 4,
-          title: "Ilave Dalga Direnci (Gerritsma-Beukelman)",
+          title: "Additional Wave Resistance (Gerritsma-Beukelman)",
           formula: "Raw = Caw x 0.5 x rho x g x Hw^2 x B / 1000",
           substitution: `Raw calculation: made using wave number, wave height, ship dimensions and wave direction`,
           result: `Raw = ${addedRes.addedResistance.toFixed(2)} kN`,
-          explanation: "Ilave dalga direnci, dalgali denizde artan direnci ifade eder."
+          explanation: "Additional wave resistance refers to increased resistance in rough seas."
         },
         {
           step: 5,
-          title: "Hiz Kaybi",
+          title: "Loss of Speed",
           formula: "DeltaV = (Raw / Peng) x 100",
           substitution: `DeltaV = (${addedRes.addedResistance.toFixed(2)} / ${data.enginePower}) x 100`,
           result: `DeltaV = ${addedRes.speedLoss.toFixed(2)}%`,
-          explanation: "Dalgali denizde motor gucune oranla beklenen hiz kaybi yuzdesidir."
+          explanation: "It is the expected percentage loss of speed in relation to engine power in rough seas."
         },
         {
           step: 6,
-          title: "Denizcilik Indeksi",
+          title: "Maritime Index",
           formula: "SI = 10 - cezalar (yalpa, ivme, slamming, hiz kaybi)",
           substitution: `SI = 10 - (yalpa>${motions.rollAmplitude.toFixed(1)}>20? -2) - (ivme -2) - (slam -3) - (hiz kaybi -2)`,
           result: `SI = ${seakeepingIndex.toFixed(1)} / 10`,
-          explanation: "Denizcilik indeksi, genel denizcilik performansini 0-10 arasinda puanlar."
+          explanation: "The maritime index scores overall maritime performance on a scale of 0-10."
         },
         {
           step: 7,
-          title: "Operabilite Indeksi",
+          title: "Operability Index",
           formula: "OI = max(0, 100 - DeltaV x 2 - Pslam)",
           substitution: `OI = max(0, 100 - ${addedRes.speedLoss.toFixed(2)} x 2 - ${slamming.slammingProbability.toFixed(2)})`,
           result: `OI = ${operabilityIndex.toFixed(1)}%`,
-          explanation: "Operabilite indeksi, geminin mevcut kosullarda ne kadar etkili calisabilecegini gosterir."
+          explanation: "The operability index shows how effectively the ship can operate under current conditions."
         }
       ];
 
@@ -692,7 +692,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       const powerSteps: CalculationStep[] = [
         {
           step: 1,
-          title: "Efektif Guc (PE)",
+          title: "Effective Power (PE)",
           formula: "PE = Rt x V",
           substitution: `PE = ${resistance.totalResistance.toFixed(2)} x ${speedMS.toFixed(3)}`,
           result: `PE = ${effectivePower.toFixed(1)} kW`,
@@ -700,7 +700,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 2,
-          title: "Itki Gucu (PT)",
+          title: "Thrust Power (PT)",
           formula: "PT = PE / etaH",
           substitution: `PT = ${effectivePower.toFixed(1)} / ${(propulsion.hullEfficiency / 100).toFixed(4)}`,
           result: `PT = ${thrustPower.toFixed(1)} kW`,
@@ -708,7 +708,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 3,
-          title: "Teslim Edilen Guc (PD)",
+          title: "Power Delivered (PD)",
           formula: "PD = PT / etaO",
           substitution: `PD = ${thrustPower.toFixed(1)} / ${(propulsion.propellerEfficiency / 100).toFixed(4)}`,
           result: `PD = ${deliveredPower.toFixed(1)} kW`,
@@ -724,8 +724,8 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       });
 
       toast({
-        title: "Hesaplama Tamamlandi",
-        description: "Hidrodinamik hesaplamalar basariyla tamamlandi.",
+        title: "Calculation Completed",
+        description: "Hydrodynamic calculations have been completed successfully.",
       });
     } catch (error) {
       toast({
@@ -746,16 +746,16 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Waves className="h-5 w-5" />
-            Hidrodinamik Hesaplamalar
+            Hydrodynamic Calculations
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue={initialTab || "ship"} className="w-full">
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="ship">ship</TabsTrigger>
-              <TabsTrigger value="propulsion">Sevk</TabsTrigger>
-              <TabsTrigger value="waves">Dalgalar</TabsTrigger>
-              <TabsTrigger value="motion">Hareket</TabsTrigger>
+              <TabsTrigger value="propulsion">Shipment</TabsTrigger>
+              <TabsTrigger value="waves">Waves</TabsTrigger>
+              <TabsTrigger value="motion">Movement</TabsTrigger>
             </TabsList>
 
             <TabsContent value="ship" className="space-y-4">
@@ -791,7 +791,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="displacement">Deplasман (ton)</Label>
+                  <Label htmlFor="displacement">Displacement (tons)</Label>
                   <Input
                     id="displacement"
                     type="number"
@@ -844,7 +844,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="propellerRPM">Pervane RPM</Label>
+                  <Label htmlFor="propellerRPM">Propeller RPM</Label>
                   <Input
                     id="propellerRPM"
                     type="number"
@@ -896,7 +896,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="waveLength">Dalga Boyu (m)</Label>
+                  <Label htmlFor="waveLength">Wavelength (m)</Label>
                   <Input
                     id="waveLength"
                     type="number"
@@ -905,7 +905,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="wavePeriod">Dalga Periyodu (s)</Label>
+                  <Label htmlFor="wavePeriod">Wave Period (s)</Label>
                   <Input
                     id="wavePeriod"
                     type="number"
@@ -1010,11 +1010,11 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-2xl font-bold text-red-600">{result.totalResistance.toFixed(1)} kN</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Dalga Direnci</Label>
+                  <Label className="text-sm font-medium">Wave Resistance</Label>
                   <p className="text-2xl font-bold text-orange-700">{result.waveResistance.toFixed(1)} kN</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Pervane Verimi</Label>
+                  <Label className="text-sm font-medium">Propeller Efficiency</Label>
                   <p className="text-lg font-semibold">{result.propellerEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
@@ -1022,7 +1022,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-lg font-semibold">{result.hullEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Toplam Sevk Verimi</Label>
+                  <Label className="text-sm font-medium">Total Shipment Efficiency</Label>
                   <p className="text-lg font-semibold">{result.totalPropulsiveEfficiency.toFixed(1)}%</p>
                 </div>
               </div>
@@ -1044,7 +1044,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-2xl font-bold text-purple-600">{result.rollAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Tangage Amplitude</Label>
+                  <Label className="text-sm font-medium">Pitch Amplitude</Label>
                   <p className="text-2xl font-bold text-green-700">{result.pitchAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>
@@ -1084,7 +1084,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-2xl font-bold text-info">{result.seakeepingIndex.toFixed(1)}/10</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Konfor Seviyesi</Label>
+                  <Label className="text-sm font-medium">Comfort Level</Label>
                   <Badge variant={
                     result.comfortLevel === 'excellent' ? 'default' :
                     result.comfortLevel === 'good' ? 'secondary' :
@@ -1093,7 +1093,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   }>
                     {result.comfortLevel === 'excellent' ? 'excellent' :
                      result.comfortLevel === 'good' ? 'good' :
-                     result.comfortLevel === 'fair' ? 'Orta' :
+                     result.comfortLevel === 'fair' ? 'Medium' :
                      result.comfortLevel === 'poor' ? 'bad' : 'Very Bad'}
                   </Badge>
                 </div>

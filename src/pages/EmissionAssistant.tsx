@@ -20,11 +20,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function EmissionAssistant() {
   return (
     <AssistantInterface
-      title="Çevre Asistanı"
-      badge="Çevre Asistanı"
+      title="Environmental Assistant"
+      badge="Environmental Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Çevre yönetimi, emisyon hesaplamaları, MARPOL gereklilikleri hakkında sorularınızı yazın..."
+      placeholder="Write your questions about environmental management, emission calculations, MARPOL requirements..."
       icon={Leaf}
       accentGradient="from-emerald-600 via-green-600 to-teal-600"
       iconColor="text-emerald-600 dark:text-emerald-400"

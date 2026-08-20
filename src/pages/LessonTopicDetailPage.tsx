@@ -128,7 +128,7 @@ export default function LessonTopicDetailPage() {
           <section className="surface-2 rounded-2xl border p-5 shadow-elev-1">
             <div className="mb-4 flex items-center gap-2">
               <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
+              <h2 className="font-semibold text-foreground">Highlights</h2>
             </div>
             <ul className="space-y-2">
               {content.keyPoints.map((point, index) => (

@@ -240,8 +240,8 @@ const Auth = () => {
                         I forgot my password / set password
                       </button>
                       <p className="mt-2 text-micro text-muted-foreground">
-                        If you created your account with Google, you do not have a password. without password
-                        You can use the login link or set a password here.
+                        If you created your account with Google, you do not have a password. Use the
+                        passwordless sign-in link, or set a password here.
                       </p>
                     </div>
                   </div>
@@ -336,7 +336,7 @@ const EmailPasswordFields = ({
 }) => (
   <>
     <div className="space-y-1.5">
-      <Label htmlFor="email">E-posta</Label>
+      <Label htmlFor="email">Email</Label>
       <div className="relative">
         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <Input

@@ -155,7 +155,7 @@ serve(async (req) => {
           return errorResponse(corsHeaders, 429, GENERIC_ERRORS.RATE_LIMIT);
         }
         if (translated.status === 403) {
-          return errorResponse(corsHeaders, 403, 'Translate API erişimi reddedildi. API anahtarı veya kotayı kontrol edin.');
+          return errorResponse(corsHeaders, 403, 'Translate API access denied. Check API key or quota.');
         }
         return errorResponse(corsHeaders, 500, GENERIC_ERRORS.SERVICE_ERROR);
       }

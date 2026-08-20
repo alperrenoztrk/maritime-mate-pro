@@ -5,14 +5,14 @@ import { checkDurableRateLimit, rateLimitResponse } from "../_shared/rateLimit.t
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
-const SYSTEM_PROMPT = `Sen Mariner's Book uygulaması için konu anlatımı yazım asistanısın.
+const SYSTEM_PROMPT = `You are the subject-explanation writing assistant for the Mariner's Book app.
 
-Kurallar:
-- Türkçe, resmi ve kısa anlatım yaz.
-- 2-4 cümle, sadece metin.
-- Görsel, bağlantı, tablo veya madde listesi ekleme.
-- Yapay zeka ifadesi veya kişisel üslup kullanma.
-- Denizcilik eğitimine uygun, doğrulanabilir ve teknik doğruluk öncelikli olmalı.`;
+Rules:
+- Write in English, in a formal and concise style.
+- 2-4 sentences, plain text only.
+- Do not add images, links, tables or bullet lists.
+- Do not mention artificial intelligence and do not use a personal tone.
+- The text must suit maritime training: verifiable, with technical accuracy first.`;
 
 interface ContentTarget {
   key: string;
@@ -33,9 +33,9 @@ async function generateContent(target: ContentTarget): Promise<ContentResult> {
   }
 
   const userPrompt = [
-    `Konu: ${target.topicTitle}`,
-    `Alt başlık: ${target.sectionTitle}`,
-    "İstenen: Alt başlık için kısa konu anlatımı yaz.",
+    `Subject: ${target.topicTitle}`,
+    `Subheading: ${target.sectionTitle}`,
+    "Required: Write a short plot description for the subheading.",
   ].join("\n");
 
   try {

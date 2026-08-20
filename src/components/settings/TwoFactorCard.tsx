@@ -42,7 +42,7 @@ export const TwoFactorCard = () => {
     try {
       const { data, error } = await startEnrollment();
       if (error || !data) {
-        toast.error(error?.message || "İki adımlı doğrulama başlatılamadı");
+        toast.error(error?.message || "Two-step verification failed to start");
         return;
       }
       setEnrollment(data);
@@ -63,7 +63,7 @@ export const TwoFactorCard = () => {
         setCode("");
         return;
       }
-      toast.success("İki adımlı doğrulama açıldı");
+      toast.success("Two-step verification turned on");
       setEnrollment(null);
       setCode("");
       await refresh();
@@ -77,10 +77,10 @@ export const TwoFactorCard = () => {
     try {
       const { error } = await removeFactor(factorId);
       if (error) {
-        toast.error(error.message || "İki adımlı doğrulama kapatılamadı");
+        toast.error(error.message || "Two-step verification could not be turned off");
         return;
       }
-      toast.success("İki adımlı doğrulama kapatıldı");
+      toast.success("Two-step verification is turned off");
       await refresh();
     } finally {
       setBusy(false);
@@ -107,7 +107,7 @@ export const TwoFactorCard = () => {
         ) : enabled ? (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              On. At sign-in you are asked for the 6-digit code from your authenticator app in addition to your password.
+              Ten. At sign-in you are asked for the 6-digit code from your authenticator app in addition to your password.
             </p>
             {factors.map((factor) => (
               <Button
@@ -132,12 +132,12 @@ export const TwoFactorCard = () => {
                 zaten açık (bkz. vite.config.ts). */}
             <img
               src={enrollment.qrCode}
-              alt="İki adımlı doğrulama QR kodu"
+              alt="Two-step verification QR code"
               className="mx-auto h-44 w-44 rounded-lg bg-white p-2"
             />
             <div className="space-y-1.5">
               <Label className="text-xs text-muted-foreground">
-                QR okutamıyorsanız bu anahtarı elle girin
+                If you cannot scan the QR, enter this key manually
               </Label>
               <code className="block break-all rounded bg-muted px-2 py-1.5 text-micro">
                 {enrollment.secret}
@@ -170,7 +170,7 @@ export const TwoFactorCard = () => {
                 Cancel
               </Button>
               <Button type="submit" size="sm" className="flex-1" disabled={busy || code.length !== 6}>
-                {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Onayla"}
+                {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Confirm"}
               </Button>
             </div>
           </form>
@@ -181,7 +181,7 @@ export const TwoFactorCard = () => {
             </p>
             <Button variant="outline" size="sm" className="w-full gap-2" disabled={busy} onClick={handleStart}>
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}
-              Etkinleştir
+              Activate
             </Button>
           </>
         )}

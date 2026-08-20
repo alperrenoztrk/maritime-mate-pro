@@ -29,7 +29,7 @@ const safetyFormulas = [
     note: "In practice: 40% of the volume × 1.5 kg/m³ for a machinery space"
   },
   {
-    title: "Su Sisi Debisi",
+    title: "Water Mist Flow Rate",
     icon: Droplets,
     formula: "Q = K × √P",
     variables: [
@@ -37,7 +37,7 @@ const safetyFormulas = [
       "K: nozzle factor",
       "P: pressure (bar)"
     ],
-    note: "The K value is taken from the manufacturer's catalogue for the nozzle type."
+    note: "The K value is taken from the manufacturer's catalog for the nozzle type."
   },
   {
     title: "Fire Water Capacity",

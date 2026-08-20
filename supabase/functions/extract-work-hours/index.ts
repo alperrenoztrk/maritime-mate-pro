@@ -96,12 +96,12 @@ async function extractCrew(images: ImageInput[]) {
       {
         role: "system",
         content:
-          "Sen bir gemi personel listesi okuyucususun. Görselden personel isim ve rütbelerini çıkar. Sadece tool kullan.",
+          "You are a ship crew list reader. Remove personnel names and ranks from the image. Just use tools.",
       },
       {
         role: "user",
         content: [
-          { type: "text", text: "Bu görsellerdeki personel listesini çıkar:" },
+          { type: "text", text: "Get the staff list in these images:" },
           ...imageContent(images),
         ],
       },
@@ -111,7 +111,7 @@ async function extractCrew(images: ImageInput[]) {
         type: "function",
         function: {
           name: "return_crew",
-          description: "Personel listesini döner.",
+          description: "Returns the staff list.",
           parameters: {
             type: "object",
             properties: {
@@ -146,14 +146,14 @@ async function extractPreviousMonth(images: ImageInput[]) {
       {
         role: "system",
         content:
-          "Sen STCW çalışma saati tablosu okuyucususun. Önceki ay özetinden her personel için toplam çalışma ve dinlenme saatlerini çıkar.",
+          "You are the STCW working hours table reader. Subtract the total working and rest hours for each staff member from the previous month's summary.",
       },
       {
         role: "user",
         content: [
           {
             type: "text",
-            text: "Önceki ay çalışma saati tablosunu kişi bazında özetle:",
+            text: "Summarize the previous month's working hours table by person:",
           },
           ...imageContent(images),
         ],
@@ -164,7 +164,7 @@ async function extractPreviousMonth(images: ImageInput[]) {
         type: "function",
         function: {
           name: "return_previous_month",
-          description: "Önceki ay özetini döner.",
+          description: "Returns a summary of the previous month.",
           parameters: {
             type: "object",
             properties: {
@@ -212,14 +212,14 @@ async function extractLogbook(
       {
         role: "system",
         content:
-          "Sen gemi jurnali (deck logbook) okuyucususun. Vardiya ve çalışma kayıtlarını gün ve saat bazında çıkarırsın. Saat aralıklarını mutlaka HH:MM-HH:MM formatında döndür. Şüphede kalırsan o kaydı 'lowConfidence' işaretle.",
+          "You are a deck logbook reader. You can extract Watch and work records based on day and time. Be sure to return time ranges in HH:MM-HH:MM format. If in doubt, mark that entry as 'lowConfidence'.",
       },
       {
         role: "user",
         content: [
           {
             type: "text",
-            text: `Ay: ${monthLabel}. Bilinen personel (referans): ${crewHint}. Aşağıdaki jurnal sayfalarından her personelin çalışma dilimlerini çıkar.`,
+            text: `Month: ${monthLabel}. Known crew (reference): ${crewHint}. Extract each crew member's working periods from the log pages below.`,
           },
           ...imageContent(images),
         ],
@@ -230,7 +230,7 @@ async function extractLogbook(
         type: "function",
         function: {
           name: "return_logbook",
-          description: "Jurnal kayıtlarını döner.",
+          description: "Returns journal entries.",
           parameters: {
             type: "object",
             properties: {
@@ -347,7 +347,7 @@ Deno.serve(async (req) => {
       return errorResponse(
         cors,
         402,
-        "AI kredisi bitti. Workspace ayarlarından kredi ekleyin.",
+        "AI credits expired. Add credits from Workspace settings.",
       );
     return errorResponse(cors, 500);
   }

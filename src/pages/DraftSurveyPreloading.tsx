@@ -41,7 +41,7 @@ export default function DraftSurveyPreloading() {
     const { drafts, vesselParticulars, consumables } = inputs;
     
     if (!drafts.forward || !drafts.midship || !drafts.aft || !vesselParticulars.tpc) {
-      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -81,25 +81,25 @@ export default function DraftSurveyPreloading() {
       stability
     });
 
-    toast({ title: "Calculation Completed", description: "Yükleme öncesi kontrol yapıldı" });
+    toast({ title: "Calculation Completed", description: "Checked before loading" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold">Yükleme Öncesi Kontrol</h1>
+          <h1 className="text-2xl font-bold">Pre-Loading Check</h1>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Mevcut Draftlar (m)</CardTitle>
+          <CardTitle>Current Drafts (m)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label htmlFor="forward">Baş Draft</Label>
+              <Label htmlFor="forward">Chief Draft</Label>
               <Input
                 id="forward"
                 type="number"
@@ -113,7 +113,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="midship">Orta Draft</Label>
+              <Label htmlFor="midship">Medium Draft</Label>
               <Input
                 id="midship"
                 type="number"
@@ -127,7 +127,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="aft">Kıç Draft</Label>
+              <Label htmlFor="aft">Aft Draft</Label>
               <Input
                 id="aft"
                 type="number"
@@ -146,7 +146,7 @@ export default function DraftSurveyPreloading() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Gemi Özellikleri</CardTitle>
+          <CardTitle>Ship Features</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -160,7 +160,7 @@ export default function DraftSurveyPreloading() {
                   ...prev, 
                   vesselParticulars: { ...prev.vesselParticulars, lbp: e.target.value }
                 }))}
-                placeholder="Uzunluk"
+                placeholder="Length"
               />
             </div>
             <div>
@@ -191,7 +191,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="displacement">Deplasman (ton)</Label>
+              <Label htmlFor="displacement">Displacement (tons)</Label>
               <Input
                 id="displacement"
                 type="number"
@@ -204,7 +204,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="deadweight">Deadweight (ton)</Label>
+              <Label htmlFor="deadweight">Deadweight (tons)</Label>
               <Input
                 id="deadweight"
                 type="number"
@@ -222,7 +222,7 @@ export default function DraftSurveyPreloading() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Tüketilebilir Maddeler (ton)</CardTitle>
+          <CardTitle>Consumables (tons)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -240,7 +240,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="freshWater">Tatlı Su</Label>
+              <Label htmlFor="freshWater">Fresh Water</Label>
               <Input
                 id="freshWater"
                 type="number"
@@ -253,7 +253,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="ballast">Balast</Label>
+              <Label htmlFor="ballast">Ballast</Label>
               <Input
                 id="ballast"
                 type="number"
@@ -266,7 +266,7 @@ export default function DraftSurveyPreloading() {
               />
             </div>
             <div>
-              <Label htmlFor="stores">Erzak</Label>
+              <Label htmlFor="stores">Rations</Label>
               <Input
                 id="stores"
                 type="number"
@@ -284,7 +284,7 @@ export default function DraftSurveyPreloading() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Kontrol Et
+        Check
       </Button>
 
       {result && (
@@ -292,29 +292,29 @@ export default function DraftSurveyPreloading() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5" />
-              Yükleme Öncesi Kontrol Sonuçları
+              Pre-Loading Check Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p><strong>Mevcut Deplasman:</strong> {result.currentDisplacement.toFixed(2)} ton</p>
-                <p><strong>Kullanılabilir Kapasite:</strong> {result.availableCapacity.toFixed(2)} ton</p>
+                <p><strong>Current Displacement:</strong> {result.currentDisplacement.toFixed(2)} ton</p>
+                <p><strong>Available Capacity:</strong> {result.availableCapacity.toFixed(2)} ton</p>
               </div>
               <div className="space-y-2">
                 <p className="text-xl font-bold text-green-600 dark:text-green-400">
-                  <strong>Önerilen Yük:</strong> {result.recommendedLoad.toFixed(2)} ton
+                  <strong>Recommended Load:</strong> {result.recommendedLoad.toFixed(2)} ton
                 </p>
-                <p><strong>Stabilite Durumu:</strong> {result.stability}</p>
+                <p><strong>Stability Status:</strong> {result.stability}</p>
               </div>
             </div>
             
             <div className="mt-4 p-3 bg-white dark:bg-gray-600 rounded">
               <p className="text-sm text-muted-foreground">
-                * Önerilen yük miktarı %10 güvenlik faktörü ile hesaplanmıştır
+                * Recommended cargo quantity is calculated with a 10% safety factor
               </p>
               <p className="text-sm text-muted-foreground">
-                * Yükleme öncesi trim ve stabilite kontrolü yapınız
+                * Check trim and stability before loading
               </p>
             </div>
           </CardContent>

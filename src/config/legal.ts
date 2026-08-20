@@ -1,54 +1,54 @@
 /**
- * Yasal doküman adresleri.
+ * Legal document addresses.
  *
- * Aynı adresler iki yerde geçiyor: giriş ekranı (hesap açmadan önce okunabilsin
- * diye) ve Ayarlar. Google Play hem mağaza kaydında hem uygulama içinde bu
- * bağlantıları arıyor; abonelik içeren uygulamalarda gizlilik politikasının
- * yanında kullanım şartları da beklenir. Bu yüzden adresler tek bir yerden
- * yönetilir.
+ * The same addresses appear in two places: the sign-in screen (so they can be
+ * read before an account exists) and Settings. Google Play looks for these
+ * links both in the store listing and inside the app; for an app with
+ * subscriptions the terms of use are expected next to the privacy policy. They
+ * are therefore managed from one place.
  *
- * Sayfaların kaynağı repoda: public/privacy-policy.html, public/terms-of-use.html
+ * The pages themselves live in the repo: public/privacy-policy.html,
+ * public/terms-of-use.html. Each page carries the English text first and keeps
+ * the Turkish text below it as the data controller's own record.
  */
 export const PRIVACY_POLICY_URL = "https://nauticalleap.com/privacy-policy.html";
 
 /**
- * Play Console → Data safety → Data deletion alanına girilecek adres.
+ * The address entered in Play Console → Data safety → Data deletion.
  *
- * Politikanın tamamı yerine doğrudan "Hesap ve Veri Silme" bölümüne iner;
- * inceleyen kişinin silme yönteminde sayfayı taraması gerekmez. Anchor,
- * privacy-policy.html'deki `id="hesap-ve-veri-silme"` başlığına bağlıdır —
- * başlık id'si değişirse burası da güncellenmeli.
+ * It goes straight to the "Account and Data Deletion" section instead of the
+ * whole policy, so a reviewer does not have to scan the page for the deletion
+ * method. The anchor is tied to `id="account-and-data-deletion"` in
+ * privacy-policy.html — if that heading id changes, this must change with it.
  */
-export const DATA_DELETION_URL = `${PRIVACY_POLICY_URL}#hesap-ve-veri-silme`;
+export const DATA_DELETION_URL = `${PRIVACY_POLICY_URL}#account-and-data-deletion`;
 
 /**
- * Kullanım şartları. Abonelik koşulları (otomatik yenileme, iptal, iade),
- * ömür boyu paketin kapsamı, yapay zekâ kotası ve çıktılarının bağlayıcı
- * olmadığı, içeriğin eğitim amaçlı olduğu ve seyir emniyeti kararlarında
- * resmi kaynakların esas alınacağı buradadır.
+ * Terms of use. The subscription conditions (auto-renewal, cancellation,
+ * refunds), the scope of the lifetime package, the AI quota and the fact that
+ * its output is not binding, that the content is for training purposes and that
+ * official sources govern navigational safety decisions are all here.
  */
 export const TERMS_OF_USE_URL = "https://nauticalleap.com/terms-of-use.html";
 
 /**
- * Yasal sayfaların dile göre doğru bölümüne inen adresi üretir.
+ * Address of the section of a legal page that matches the given language.
  *
- * Her iki doküman da tek sayfada önce Türkçe, sonra İngilizce metni taşır.
- * Uygulamanın varsayılan dili İngilizce (bkz. LanguageContext'teki
- * DEFAULT_LANGUAGE), dolayısıyla adresi olduğu gibi vermek ilk kez açan
- * kullanıcıyı okuyamayacağı Türkçe metnin başına indirir. Türkçe dışındaki
- * her dilde İngilizce bölüme (`#en`) inilir — desteklenen diğer diller için
- * ayrı çeviri bulunmadığından İngilizce en yakın okunabilir karşılıktır.
+ * Both documents carry the English text first and the Turkish text below it.
+ * The app itself ships no Turkish, so every language lands on the English
+ * section — which is the top of the page — and only an explicit Turkish
+ * preference reaches the Turkish record further down.
  */
 function localizedLegalUrl(baseUrl: string, language: string): string {
-  return language === "tr" ? baseUrl : `${baseUrl}#en`;
+  return language === "tr" ? `${baseUrl}#tr` : `${baseUrl}#en`;
 }
 
-/** Gizlilik politikasının, verilen dile uygun bölümüne inen adresi. */
+/** Address of the privacy policy section matching the given language. */
 export function getPrivacyPolicyUrl(language: string): string {
   return localizedLegalUrl(PRIVACY_POLICY_URL, language);
 }
 
-/** Kullanım şartlarının, verilen dile uygun bölümüne inen adresi. */
+/** Address of the terms of use section matching the given language. */
 export function getTermsOfUseUrl(language: string): string {
   return localizedLegalUrl(TERMS_OF_USE_URL, language);
 }

@@ -63,32 +63,32 @@ const STATUS_STYLE: Record<
   { label: string; badge: string; border: string }
 > = {
   expired: {
-    label: "Süresi doldu",
+    label: "Expired",
     badge: "border-red-500/40 bg-red-500/15 text-red-700 dark:text-red-300",
     border: "border-red-500/45",
   },
   critical: {
-    label: "Acil",
+    label: "Urgent",
     badge: "border-orange-500/40 bg-orange-500/15 text-orange-700 dark:text-orange-300",
     border: "border-orange-500/45",
   },
   warning: {
-    label: "Yaklaşıyor",
+    label: "Approaching",
     badge: "border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-300",
     border: "border-amber-500/40",
   },
   upcoming: {
-    label: "Planla",
+    label: "Plan",
     badge: "border-yellow-500/40 bg-yellow-500/10 text-yellow-700 dark:text-yellow-300",
     border: "border-yellow-500/30",
   },
   valid: {
-    label: "Geçerli",
+    label: "Valid",
     badge: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
     border: "border-emerald-500/25",
   },
   unknown: {
-    label: "Kontrol gerekli",
+    label: "Control required",
     badge: "border-slate-500/40 bg-slate-500/10 text-slate-700 dark:text-slate-300",
     border: "border-slate-500/35",
   },
@@ -144,7 +144,7 @@ export default function BetaDocumentTracker() {
     try {
       setDocuments(sortByExpiry(await fetchDocuments(user.id)));
     } catch {
-      toast.error("Belge arşivi yüklenemedi");
+      toast.error("Failed to load document archive");
     } finally {
       setLoading(false);
     }
@@ -224,9 +224,9 @@ export default function BetaDocumentTracker() {
     try {
       await deleteDocument(document);
       setDocuments((current) => current.filter((item) => item.id !== document.id));
-      toast.success("Belge silindi");
+      toast.success("Document deleted");
     } catch {
-      toast.error("Belge silinemedi");
+      toast.error("Document could not be deleted");
     }
   };
 
@@ -239,7 +239,7 @@ export default function BetaDocumentTracker() {
       else window.location.assign(url);
     } catch {
       popup?.close();
-      toast.error("Belge fotoğrafı açılamadı");
+      toast.error("Could not open document photo");
     }
   };
 
@@ -247,8 +247,8 @@ export default function BetaDocumentTracker() {
     if (!("Notification" in window)) return;
     const permission = await Notification.requestPermission();
     setNotificationPermission(permission);
-    if (permission === "granted") toast.success("Belge hatırlatma bildirimleri açıldı");
-    if (permission === "denied") toast.error("Bildirim izni reddedildi. Cihaz ayarlarından açabilirsiniz.");
+    if (permission === "granted") toast.success("Document reminder notifications turned on");
+    if (permission === "denied") toast.error("Notification permission denied. You can turn it on from device settings.");
   };
 
   if (authLoading) {
@@ -264,9 +264,9 @@ export default function BetaDocumentTracker() {
       <div className="min-h-screen px-4 py-12">
         <div className="mx-auto max-w-md rounded-3xl border border-border/60 bg-card/95 p-7 text-center shadow-xl">
           <LockKeyhole className="mx-auto h-11 w-11 text-amber-500" />
-          <h1 className="mt-4 text-xl font-bold">Kişisel belge kasası</h1>
+          <h1 className="mt-4 text-xl font-bold">Personal document safe</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Fotoğraflarınızı yalnızca sizin hesabınıza bağlı, özel bir arşivde tutmak için giriş yapın.
+            Sign in to keep your photos in a private archive linked only to your account.
           </p>
           <Button className="mt-6 w-full" onClick={() => navigate("/auth?next=/beta/documents")}>
             Sign in
@@ -283,18 +283,18 @@ export default function BetaDocumentTracker() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-500/35 bg-amber-500/10 px-3 py-1 text-micro font-bold uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
-                <Sparkles className="h-3 w-3" /> Beta · Yapay zekâ
+                <Sparkles className="h-3 w-3" /> Beta · Artificial intelligence
               </div>
-              <h1 className="text-2xl font-bold text-foreground">Belge ve Sertifika Takibi</h1>
+              <h1 className="text-2xl font-bold text-foreground">Document and Certificate Tracking</h1>
             </div>
             {notificationPermission !== "unsupported" && notificationPermission !== "granted" && (
               <Button variant="outline" size="sm" className="gap-2" onClick={enableNotifications}>
-                <Bell className="h-4 w-4" /> Bildirimleri aç
+                <Bell className="h-4 w-4" /> Turn on notifications
               </Button>
             )}
             {notificationPermission === "granted" && (
               <div className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-700 dark:text-emerald-300">
-                <BellRing className="h-4 w-4" /> Hatırlatmalar açık
+                <BellRing className="h-4 w-4" /> Reminders are on
               </div>
             )}
           </div>
@@ -308,7 +308,7 @@ export default function BetaDocumentTracker() {
           >
             <CalendarClock className="h-5 w-5 text-amber-500" />
             <div className="mt-2 text-xl font-bold">{counts.attention}</div>
-            <div className="text-micro text-muted-foreground sm:text-xs">Yaklaşan / dolan</div>
+            <div className="text-micro text-muted-foreground sm:text-xs">Approaching / approaching</div>
           </button>
           <button
             type="button"
@@ -317,7 +317,7 @@ export default function BetaDocumentTracker() {
           >
             <CheckCircle2 className="h-5 w-5 text-emerald-500" />
             <div className="mt-2 text-xl font-bold">{counts.valid}</div>
-            <div className="text-micro text-muted-foreground sm:text-xs">Geçerli</div>
+            <div className="text-micro text-muted-foreground sm:text-xs">Valid</div>
           </button>
           <button
             type="button"
@@ -326,7 +326,7 @@ export default function BetaDocumentTracker() {
           >
             <AlertTriangle className="h-5 w-5 text-slate-500" />
             <div className="mt-2 text-xl font-bold">{counts.unknown}</div>
-            <div className="text-micro text-muted-foreground sm:text-xs">Kontrol gerekli</div>
+            <div className="text-micro text-muted-foreground sm:text-xs">Control required</div>
           </button>
         </section>
 
@@ -334,7 +334,7 @@ export default function BetaDocumentTracker() {
           <div
             role="button"
             tabIndex={0}
-            aria-label="Belge fotoğrafı yükle"
+            aria-label="Upload document photo"
             onClick={() => !processing && inputRef.current?.click()}
             onKeyDown={(event) => {
               if ((event.key === "Enter" || event.key === " ") && !processing) inputRef.current?.click();
@@ -365,10 +365,10 @@ export default function BetaDocumentTracker() {
               </div>
             )}
             <p className="mt-3 text-sm font-semibold">
-              {processing ? "Fotoğraflar işleniyor…" : "Belge fotoğrafını çekin veya galeriden seçin"}
+              {processing ? "Photos are being processed…" : "Take document photo or select from gallery"}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              JPG, PNG veya WebP · en fazla {MAX_DOCUMENT_FILES} fotoğraf
+              JPG, PNG or WebP up to {MAX_DOCUMENT_FILES} photo
             </p>
             <input
               ref={inputRef}
@@ -386,7 +386,7 @@ export default function BetaDocumentTracker() {
           <div className="mt-3 flex items-start gap-2 rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 text-micro text-muted-foreground">
             <ShieldCheck className="mt-0.5 h-4 w-4 flex-none text-blue-500" />
             <p>
-              Fotoğraf yapay zekâ ile tarih çıkarımı için işlenir ve özel hesap arşivinizde saklanır. Sonuçlar resmi belge yerine geçmez; düşük güvenli okumalar açıkça işaretlenir.
+              The photo is processed by AI to read the dates and is kept in your private account archive. The results do not replace the official document; low-confidence readings are marked clearly.
             </p>
           </div>
         </section>
@@ -394,7 +394,7 @@ export default function BetaDocumentTracker() {
         {jobs.length > 0 && (
           <section className="space-y-2 rounded-2xl border border-border/60 bg-card/90 p-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold">Yükleme durumu</h2>
+              <h2 className="text-sm font-semibold">Upload status</h2>
               {!processing && (
                 <button type="button" onClick={() => setJobs([])} className="text-xs text-muted-foreground hover:text-foreground">
                   Temizle
@@ -423,14 +423,14 @@ export default function BetaDocumentTracker() {
 
         <section className="space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className="text-base font-semibold">Belge kasası</h2>
+            <h2 className="text-base font-semibold">Document safe</h2>
             <div className="flex flex-wrap gap-1.5">
               {(
                 [
                   ["all", "All"],
                   ["attention", "Upcoming"],
-                  ["valid", "Geçerli"],
-                  ["unknown", "Kontrol"],
+                  ["valid", "Valid"],
+                  ["unknown", "Control"],
                 ] as const
               ).map(([key, label]) => (
                 <button
@@ -472,7 +472,7 @@ export default function BetaDocumentTracker() {
                           </span>
                           {document.review_required && (
                             <span className="rounded-full border border-slate-500/30 bg-slate-500/10 px-2 py-0.5 text-micro font-medium text-slate-600 dark:text-slate-300">
-                              AI sonucunu kontrol edin
+                              Check AI result
                             </span>
                           )}
                         </div>
@@ -486,37 +486,37 @@ export default function BetaDocumentTracker() {
 
                     <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
                       <div className="rounded-xl bg-background/50 p-2.5">
-                        <div className="text-micro uppercase tracking-wide text-muted-foreground">Son geçerlilik</div>
-                        <div className="mt-1 font-semibold">{document.no_expiry ? "Süresiz" : formatDate(document.expiry_date)}</div>
+                        <div className="text-micro uppercase tracking-wide text-muted-foreground">Expiration date</div>
+                        <div className="mt-1 font-semibold">{document.no_expiry ? "Indefinitely" : formatDate(document.expiry_date)}</div>
                       </div>
                       <div className="rounded-xl bg-background/50 p-2.5">
-                        <div className="text-micro uppercase tracking-wide text-muted-foreground">Durum</div>
+                        <div className="text-micro uppercase tracking-wide text-muted-foreground">Status</div>
                         <div className="mt-1 font-semibold">{state.label}</div>
                       </div>
                     </div>
 
                     <dl className="mt-3 space-y-1.5 text-micro">
                       {document.document_number && (
-                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge no.</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.document_number}</dd></div>
+                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Document no.</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.document_number}</dd></div>
                       )}
                       {document.holder_name && (
-                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge sahibi</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.holder_name}</dd></div>
+                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Document holder</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.holder_name}</dd></div>
                       )}
                       {document.issuing_authority && (
-                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Düzenleyen</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.issuing_authority}</dd></div>
+                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Edited by</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.issuing_authority}</dd></div>
                       )}
-                      <div className="flex justify-between gap-3"><dt className="text-muted-foreground">AI güveni</dt><dd className="font-medium">%{Math.round(document.confidence * 100)}</dd></div>
+                      <div className="flex justify-between gap-3"><dt className="text-muted-foreground">AI trust</dt><dd className="font-medium">%{Math.round(document.confidence * 100)}</dd></div>
                     </dl>
 
                     {(document.warnings?.length > 0 || document.review_required) && (
                       <div className="mt-3 rounded-xl border border-amber-500/20 bg-amber-500/5 p-2.5 text-micro text-amber-800 dark:text-amber-200">
-                        {document.warnings?.[0] || "Belgedeki tarihi özgün fotoğrafla karşılaştırın."}
+                        {document.warnings?.[0] || "Compare the date on the document with the original photo."}
                       </div>
                     )}
 
                     <div className="mt-4 flex gap-2 border-t border-border/50 pt-3">
                       <Button variant="outline" size="sm" className="flex-1 gap-1.5" onClick={() => void handleView(document)}>
-                        <Eye className="h-3.5 w-3.5" /> Fotoğraf
+                        <Eye className="h-3.5 w-3.5" /> Photo
                       </Button>
                       <Button
                         variant="ghost"
@@ -538,7 +538,7 @@ export default function BetaDocumentTracker() {
         </section>
 
         <footer className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3 text-micro text-muted-foreground">
-          Hatırlatmalar 180, 90, 30, 7 ve 1 günlük aralıklara girildiğinde; ayrıca son gün ve süre dolduğunda bir kez gösterilir. Resmî geçerlilik kontrolünde daima belgenin aslını esas alın.
+          Reminders are shown once as the document enters the 180, 90, 30, 7 and 1 day marks, and again on the last day and on expiry. Always check validity against the original document.
         </footer>
       </div>
     </div>

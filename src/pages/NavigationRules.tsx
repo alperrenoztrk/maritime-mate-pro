@@ -19,9 +19,9 @@ const sections: RuleSection[] = [
     rules: [
       "Rule 5 — Look-out: every vessel must at all times maintain a proper look-out by sight and hearing.",
       "Rule 6 — Safe Speed: every vessel must proceed at a safe speed that allows proper and effective action to be taken to avoid collision.",
-      "Rule 7 — Risk of Collision: all available means must be used to determine whether a risk of collision exists; if the compass bearing does not appreciably change, a risk of collision is deemed to exist.",
+      "Rule 7 — Risk of Collision: all available means must be used to determine whether a risk of collision exists; If the compass bearing does not appreciably change, a risk of collision is deemed to exist.",
       "Rule 8 — Action to Avoid Collision: any alteration of course and/or speed must be made in ample time, in accordance with good seamanship and be readily apparent.",
-      "Rule 9 — Narrow Channels: vessels must keep as near to the starboard side of a narrow channel or fairway as is safe and practicable.",
+      "Rule 9 — Narrow Channels: vessels must keep as near to the starboard side of a narrow channel or fairway as is safe and practical.",
       "Rule 10 — Traffic Separation Schemes (TSS): vessels must proceed in the appropriate traffic lane in the general direction of traffic flow.",
       "Rule 12 — Sailing Vessels: the vessel with the wind on the port side must keep out of the way of the vessel with the wind on the starboard side.",
       "Rule 13 — Overtaking: a vessel overtaking another shall keep out of the way of the vessel being overtaken. A vessel approaching from more than 22.5° abaft the beam is deemed to be overtaking.",
@@ -40,7 +40,7 @@ const sections: RuleSection[] = [
     rules: [
       "Power-driven vessel: masthead light, sidelights and sternlight.",
       "Vessels of 50 m and over: two masthead lights (fore and main), the lower one forward and the higher one aft.",
-      "Sailing vessel: sidelights and sternlight only. Optional: red over green all-round lights at the masthead.",
+      "Sailing vessel: sidelights and sternlights only. Optional: red over green all-round lights at the masthead.",
       "Vessel at anchor: an all-round white light forward; vessels over 50 m also show an additional white light aft.",
       "Towing operation: additional masthead lights in a vertical line; three when the length of the tow exceeds 200 m.",
       "Restricted in ability to manoeuvre (RAM): red-white-red lights in a vertical line (or ball-diamond-ball by day).",
@@ -56,7 +56,7 @@ const sections: RuleSection[] = [
     rules: [
       "Lateral Marks (Region A): port hand — red can/cylinder, starboard hand — green cone.",
       "Lateral Marks (Region B): the colours are reversed; port hand — green, starboard hand — red.",
-      "Cardinal marks: black and yellow colouring and topmarks according to the quadrant (N-E-S-W) in which the danger lies.",
+      "Cardinal marks: black and yellow coloring and topmarks according to the quadrant (N-E-S-W) in which the danger lies.",
       "North cardinal: black above yellow; two cones pointing up. Pass to the north of the danger.",
       "South cardinal: yellow above black; two cones pointing down. Pass to the south of the danger.",
       "East cardinal: black-yellow-black; two cones base to base. Pass to the east.",
@@ -119,7 +119,7 @@ export default function NavigationRulesPage() {
       <div className="min-h-screen bg-background px-4 pb-24 pt-6">
         <div className="mx-auto max-w-lg space-y-4">
           <div>
-            <h1 className="text-xl font-bold tracking-tight text-foreground">Seyir Kuralları</h1>
+            <h1 className="text-xl font-bold tracking-tight text-foreground">Navigation Rules</h1>
             </div>
 
           <div className="space-y-2.5">

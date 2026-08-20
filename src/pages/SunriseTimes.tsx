@@ -99,7 +99,7 @@ export default function SunriseTimes() {
 
       setDays(list);
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Bilinmeyen hata");
+      setError(error instanceof Error ? error.message : "Unknown error");
     } finally {
       setLoading(false);
     }
@@ -120,7 +120,7 @@ export default function SunriseTimes() {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <SunriseIcon className="h-6 w-6 text-orange-500" />
-            30 Günlük Gündoğumu Saatleri
+            30 Days of Sunrise Times
           </h1>
           <div></div>
         </div>
@@ -133,7 +133,7 @@ export default function SunriseTimes() {
                 {headerLocation ? (
                   <span className="notranslate" translate="no">{headerLocation}</span>
                 ) : (
-                  "Konum alınıyor..."
+                  "Getting location..."
                 )}
               </span>
             </div>
@@ -150,7 +150,7 @@ export default function SunriseTimes() {
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
                   </svg>
                 </div>
-                <p className="text-muted-foreground">Gündoğumu saatleri yükleniyor...</p>
+                <p className="text-muted-foreground">Sunrise times are loading...</p>
               </div>
             </CardContent>
           </Card>
@@ -158,7 +158,7 @@ export default function SunriseTimes() {
           <Card className="border-destructive/20 shadow-lg">
             <CardContent className="pt-6">
               <div className="text-center py-8">
-                <p className="text-destructive font-semibold mb-2">Veri alınamadı</p>
+                <p className="text-destructive font-semibold mb-2">Failed to retrieve data</p>
                 <p className="text-muted-foreground text-sm">{error}</p>
               </div>
             </CardContent>
@@ -166,7 +166,7 @@ export default function SunriseTimes() {
         ) : days.length > 0 ? (
           <Card className="border-border/20 shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg">Önümüzdeki 30 Gün</CardTitle>
+              <CardTitle className="text-lg">Next 30 Days</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -185,7 +185,7 @@ export default function SunriseTimes() {
           <Card className="border-border/20 shadow-lg">
             <CardContent className="pt-6">
               <div className="text-center py-8 text-muted-foreground">
-                Veri bulunamadı. Lütfen daha sonra tekrar deneyin veya konumu değiştirin.
+                No data found. Please try again later or change the location.
               </div>
             </CardContent>
           </Card>

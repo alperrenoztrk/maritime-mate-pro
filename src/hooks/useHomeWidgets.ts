@@ -16,12 +16,12 @@ export interface HomeWidgetMeta {
 }
 
 export const AVAILABLE_WIDGETS: HomeWidgetMeta[] = [
-  { id: "clock-national", label: "Yerel Saat", description: "Bulunduğun bölgenin saati", size: "small" },
-  { id: "clock-gmt", label: "GMT / UTC", description: "Greenwich ortalama zamanı", size: "small" },
-  { id: "weather", label: "Hava Durumu", description: "Sıcaklık ve durum", size: "small" },
-  { id: "wind", label: "Rüzgâr", description: "Yön ve hız (kt)", size: "small" },
-  { id: "location", label: "Konum", description: "Enlem / boylam (DMS)", size: "medium" },
-  { id: "sun", label: "Güneş", description: "Doğuş & batış saatleri", size: "medium" },
+  { id: "clock-national", label: "Local Time", description: "Time in your area", size: "small" },
+  { id: "clock-gmt", label: "GMT/UTC", description: "Greenwich mean time", size: "small" },
+  { id: "weather", label: "Weather", description: "Temperature and condition", size: "small" },
+  { id: "wind", label: "wind", description: "Direction and speed (kt)", size: "small" },
+  { id: "location", label: "Location", description: "Latitude/longitude (DMS)", size: "medium" },
+  { id: "sun", label: "Sun", description: "Sunrise & sunset times", size: "medium" },
 ];
 
 const STORAGE_KEY = "marine-home-widgets-v1";

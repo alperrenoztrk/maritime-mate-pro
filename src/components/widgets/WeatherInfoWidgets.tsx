@@ -95,7 +95,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               {weatherDescription}
             </div>
             <div className="text-xs text-muted-foreground uppercase tracking-wide">
-              7 günlük tahmin için tıklayın
+              Click for 7-day forecast
             </div>
           </div>
         </Card>
@@ -106,7 +106,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Sıcaklık</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">temperature</div>
               <div className="text-2xl font-bold text-foreground">
                 {temperature?.toFixed(1)}°C
               </div>
@@ -130,7 +130,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Nem</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Humidity</div>
               <div className="text-2xl font-bold text-foreground">
                 {humidity}%
               </div>
@@ -154,7 +154,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Basınç</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">pressure</div>
               <div className="text-2xl font-bold text-foreground">
                 {pressure} hPa
               </div>
@@ -178,7 +178,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-sheet" />
           <div className="relative flex items-center justify-between">
             <div className="space-y-1">
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Rüzgar</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Wind</div>
               <div className="text-xl font-bold text-foreground">
                 {windSpeed?.toFixed(1)} kt
               </div>
@@ -210,7 +210,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
       <Dialog open={forecastOpen} onOpenChange={setForecastOpen}>
         <DialogContent className="max-w-md max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>7 Günlük Hava Durumu Tahmini</DialogTitle>
+            <DialogTitle>7 Day Weather Forecast</DialogTitle>
           </DialogHeader>
           
           {forecastLoading ? (
@@ -262,7 +262,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
             </div>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
-              Hava durumu tahmini yüklenemedi
+              Weather forecast could not be loaded
             </div>
           )}
         </DialogContent>
@@ -292,7 +292,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               <div>
                 <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                   <Thermometer className="w-4 h-4" />
-                  Sıcaklık (°C)
+                  Temperature (°C)
                 </h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={hourlyData}>
@@ -307,7 +307,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <YAxis />
                     <Tooltip 
                       labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
-                      formatter={(value: number) => [`${value.toFixed(1)}°C`, 'Sıcaklık']}
+                      formatter={(value: number) => [`${value.toFixed(1)}°C`, 'temperature']}
                     />
                     <Line 
                       type="monotone" 
@@ -325,7 +325,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               <div>
                 <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                   <Droplets className="w-4 h-4" />
-                  Nem (%)
+                  Humidity (%)
                 </h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={hourlyData}>
@@ -340,7 +340,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <YAxis />
                     <Tooltip 
                       labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
-                      formatter={(value: number) => [`${value.toFixed(0)}%`, 'Nem']}
+                      formatter={(value: number) => [`${value.toFixed(0)}%`, 'Humidity']}
                     />
                     <Line 
                       type="monotone" 
@@ -358,7 +358,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               <div>
                 <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                   <Wind className="w-4 h-4" />
-                  Rüzgar Hızı (kt)
+                  Wind Speed (kt)
                 </h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={hourlyData}>
@@ -373,7 +373,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <YAxis />
                     <Tooltip 
                       labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
-                      formatter={(value: number) => [`${value.toFixed(1)} kt`, 'Rüzgar']}
+                      formatter={(value: number) => [`${value.toFixed(1)} kt`, 'Wind']}
                     />
                     <Line 
                       type="monotone" 
@@ -391,7 +391,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
               <div>
                 <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                   <Droplets className="w-4 h-4" />
-                  Yağış (mm)
+                  Precipitation (mm)
                 </h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={hourlyData}>
@@ -406,7 +406,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     <YAxis />
                     <Tooltip 
                       labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
-                      formatter={(value: number) => [`${value.toFixed(1)} mm`, 'Yağış']}
+                      formatter={(value: number) => [`${value.toFixed(1)} mm`, 'Precipitation']}
                     />
                     <Line 
                       type="monotone" 
@@ -422,7 +422,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
 
               {/* Saatlik Detay Tablosu */}
               <div className="pt-4 border-t">
-                <h3 className="text-sm font-semibold mb-3">Saatlik Detaylar</h3>
+                <h3 className="text-sm font-semibold mb-3">Hourly Details</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-h-64 overflow-y-auto">
                   {hourlyData.map((hour, index) => (
                     <Card key={index} className="p-3">
@@ -434,20 +434,20 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                       </div>
                       <div className="text-xs space-y-1">
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground">Sıc:</span>
+                          <span className="text-muted-foreground">Temp:</span>
                           <span className="font-semibold">{hour.temperature.toFixed(1)}°</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground">Nem:</span>
+                          <span className="text-muted-foreground">Humidity:</span>
                           <span className="font-semibold">{hour.humidity.toFixed(0)}%</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground">Rüz:</span>
+                          <span className="text-muted-foreground">Wind:</span>
                           <span className="font-semibold">{hour.windSpeed.toFixed(0)} kt</span>
                         </div>
                         {hour.precipitation > 0 && (
                           <div className="flex items-center justify-between text-blue-500">
-                            <span>Yağış:</span>
+                            <span>Precipitation:</span>
                             <span className="font-semibold">{hour.precipitation.toFixed(1)} mm</span>
                           </div>
                         )}
@@ -459,7 +459,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
             </div>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
-              Saatlik hava durumu verisi yüklenemedi
+              Could not load hourly weather data
             </div>
           )}
         </DialogContent>

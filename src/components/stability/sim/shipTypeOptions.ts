@@ -1,9 +1,9 @@
 import type { ShipType } from "./ShipModel3D";
 
 export const shipTypeOptions: { value: ShipType; label: string; description: string }[] = [
-  { value: "container", label: "Konteyner", description: "Güverteyi dolduran konteyner istifleri, kıç üstü yaşam mahalli." },
-  { value: "tanker", label: "Tanker", description: "Alçak düz güverte, boru hatları ve manifoldlar." },
-  { value: "bulk", label: "Dökme", description: "İri ambar kapakları ve merkez hattı vinçleri." },
-  { value: "roro", label: "Ro-Ro", description: "Yüksek araç güvertesi ve kıç rampa düzeni." },
-  { value: "passenger", label: "Yolcu", description: "Çok katlı üst yapı ve yaşam alanları." },
+  { value: "container", label: "Container", description: "Container stacks filling the deck, living quarters above Stern." },
+  { value: "tanker", label: "Tanker", description: "Low flat Deck, pipelines and manifolds." },
+  { value: "bulk", label: "Bulk", description: "Bulky Cargo hold covers and centreline winches." },
+  { value: "roro", label: "Ro-Ro", description: "High vehicle deck and Stern ramp layout." },
+  { value: "passenger", label: "Passenger", description: "Multi-storey superstructure and living spaces." },
 ];

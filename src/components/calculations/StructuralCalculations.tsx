@@ -178,7 +178,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
   const calculateStructural = () => {
     if (!structuralData.L || !structuralData.displacement || !structuralData.sectionModulus) {
       toast({
-        title: "Eksik Veri",
+        title: "Missing Data",
         description: "Enter the required structural parameters.",
         variant: "destructive"
       });
@@ -308,7 +308,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       },
       {
         step: 6,
-        title: "Maksimum hogging (kabarma) momenti",
+        title: "Maximum hogging moment",
         formula: "Mhogging = |min(M(x))| x 9.81",
         substitution: `Mhogging = |${(maxHoggingMoment / 9.81).toFixed(0)}| x 9.81`,
         result: `Mhogging = ${maxHoggingMoment.toFixed(0)} kN.m`,
@@ -414,7 +414,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
               <TabsTrigger value="loads">Load Distribution</TabsTrigger>
               <TabsTrigger value="properties">Structural Features</TabsTrigger>
               <TabsTrigger value="analysis">Analysis Results</TabsTrigger>
-              <TabsTrigger value="diagrams">Diyagramlar</TabsTrigger>
+              <TabsTrigger value="diagrams">Diagrams</TabsTrigger>
             </TabsList>
 
             <TabsContent value="loads" className="space-y-6">
@@ -430,7 +430,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="displacement">Deplasman [ton]</Label>
+                  <Label htmlFor="displacement">Displacement [ton]</Label>
                   <Input
                     id="displacement"
                     type="number"
@@ -468,7 +468,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                   {loadPoints.map((load, index) => (
                     <div key={index} className="grid grid-cols-4 gap-3 p-3 border rounded-lg">
                       <div>
-                        <Label className="text-xs">Pozisyon (AP'den) [m]</Label>
+                        <Label className="text-xs">Position (from AP) [m]</Label>
                         <Input
                           type="number"
                           value={load.position}
@@ -490,8 +490,8 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                           value={load.type}
                           onChange={(e) => updateLoadPoint(index, 'type', e.target.value as LoadPoint["type"])}
                         >
-                          <option value="cargo">Kargo</option>
-                          <option value="ballast">Balast</option>
+                          <option value="cargo">Cargo</option>
+                          <option value="ballast">Ballast</option>
                           <option value="fuel">fuel</option>
                           <option value="structure">structure</option>
                         </select>
@@ -571,7 +571,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="momentOfInertia">Atalet Momenti [cm⁴]</Label>
+                      <Label htmlFor="momentOfInertia">Moment of Inertia [cm⁴]</Label>
                       <Input
                         id="momentOfInertia"
                         type="number"
@@ -624,7 +624,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-2xl font-bold">{result.maxShearForce.toFixed(0)}</div>
-                        <div className="text-sm text-muted-foreground">Max Kesme (kN)</div>
+                        <div className="text-sm text-muted-foreground">Max Shear (kN)</div>
                       </div>
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-2xl font-bold">{result.safetyFactor.toFixed(2)}</div>
@@ -641,17 +641,17 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-lg font-bold">{result.maxShearStress.toFixed(1)} N/mm²</div>
-                        <div className="text-sm text-muted-foreground">Max Kesme Gerilmesi</div>
+                        <div className="text-sm text-muted-foreground">Max Shear Stress</div>
                       </div>
                       <div className="text-center p-3 bg-muted rounded-lg">
                         <div className="text-lg font-bold">{result.deflection.toFixed(1)} mm</div>
-                        <div className="text-sm text-muted-foreground">Max Deformasyon</div>
+                        <div className="text-sm text-muted-foreground">Max Deformation</div>
                       </div>
                     </div>
 
                     <div className="p-3 bg-muted rounded-lg">
                       <div className="text-sm">
-                        <strong>Kritik Kesit:</strong> AP'den {result.criticalSection.toFixed(1)}m
+                        <strong>Critical Section:</strong> From AP {result.criticalSection.toFixed(1)}m
                       </div>
                     </div>
 
@@ -730,18 +730,18 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                     
                     {shearBendingData.length > 0 && (
                       <div>
-                        <h4 className="font-semibold mb-3">Critical Values</h4>
+                        <h4 className="font-semibold mb-3">Critical values</h4>
                         <div className="grid grid-cols-3 gap-4 text-sm">
                           <div>
-                            <strong>Max Pozitif Moment:</strong> 
+                            <strong>Max Positive Torque:</strong> 
                             {Math.max(...shearBendingData.map(p => p.bendingMoment)).toFixed(0)} kN.m
                           </div>
                           <div>
-                            <strong>Max Negatif Moment:</strong> 
+                            <strong>Max Negative Torque:</strong> 
                             {Math.min(...shearBendingData.map(p => p.bendingMoment)).toFixed(0)} kN.m
                           </div>
                           <div>
-                            <strong>Max Kesme Kuvveti:</strong> 
+                            <strong>Max Shear force:</strong> 
                             {Math.max(...shearBendingData.map(p => Math.abs(p.shearForce))).toFixed(0)} kN
                           </div>
                         </div>
@@ -755,7 +755,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Zap className="h-5 w-5" />
-                    Gerilme Analizi
+                    Stress Analysis
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -763,16 +763,16 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                     <h4>Formulas Used:</h4>
                     <ul>
                       <li><strong>Bending Stress:</strong> σ = M / Z</li>
-                      <li><strong>Kesme Gerilmesi:</strong> τ = Q / A</li>
+                      <li><strong>Shear Stress:</strong> τ = Q / A</li>
                       <li><strong>Deflection:</strong> δ = 5wL⁴/(384EI)</li>
                       <li><strong>Safety Factor:</strong> SF = σy / σmax</li>
                     </ul>
                     
-                    <h4>Kritik Kontroller:</h4>
+                    <h4>Critical Controls:</h4>
                     <ul>
-                      <li>Eğilme gerilmesi {'<'} Akma dayanımı</li>
-                      <li>Kesme gerilmesi {'<'} 0.6 × Yield strength</li>
-                      <li>Deflection {'<'} L/300 (Comfort kriteri)</li>
+                      <li>Bending stress {'<'} Yield strength</li>
+                      <li>Shear stress {'<'} 0.6 × Yield strength</li>
+                      <li>Deflection {'<'} L/300 (Comfort criterion)</li>
                       <li>Safety factor ≥ 2.0</li>
                     </ul>
                   </div>

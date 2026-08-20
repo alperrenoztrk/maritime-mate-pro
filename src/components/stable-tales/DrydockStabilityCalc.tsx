@@ -88,7 +88,7 @@ export const DrydockStabilityCalc = () => {
         güvenlik_rengi = 'secondary';
         öneriler.push('Careful operation recommended');
       } else {
-        güvenlik_durumu = 'Riskli';
+        güvenlik_durumu = 'Risky';
         güvenlik_rengi = 'destructive';
         öneriler.push('URGENT: measures to increase GM must be taken!');
         öneriler.push('Ballast adjustment required');
@@ -123,7 +123,7 @@ export const DrydockStabilityCalc = () => {
 
     } catch (error) {
       console.error("Drydock calculation error:", error);
-      toast.error("Havuz hesaplaması sırasında bir hata oluştu!");
+      toast.error("An error occurred during pool calculation!");
     }
   };
 
@@ -134,13 +134,13 @@ export const DrydockStabilityCalc = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Anchor className="h-5 w-5" />
-            Kuru Havuz Stabilite Analizi
+            Dry Dock Stability Analysis
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div>
-              <Label>Deplasman (ton)</Label>
+              <Label>Displacement (tons)</Label>
               <Input
                 type="number"
                 value={vesselData.deplasman}
@@ -188,12 +188,12 @@ export const DrydockStabilityCalc = () => {
       {/* Havuz ve Destek Noktaları */}
       <Card>
         <CardHeader>
-          <CardTitle>Havuz Konfigürasyonu</CardTitle>
-          <Button onClick={addSupportPoint} size="sm">Destek Noktası Ekle</Button>
+          <CardTitle>Pool Configuration</CardTitle>
+          <Button onClick={addSupportPoint} size="sm">Add Support Point</Button>
         </CardHeader>
         <CardContent>
           <div className="mb-4">
-            <Label>Havuz Uzunluğu (m)</Label>
+            <Label>Pool Length (m)</Label>
             <Input
               type="number"
               value={drydockData.havuz_uzunlugu}
@@ -202,13 +202,13 @@ export const DrydockStabilityCalc = () => {
           </div>
 
           <div className="space-y-3">
-            <Label className="text-base font-medium">Destek Noktaları (Pupa'dan itibaren mesafe - m)</Label>
+            <Label className="text-base font-medium">Support Points (distance from stern - m)</Label>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {drydockData.destek_noktalari.map((nokta, index) => (
                 <div key={index} className="flex gap-2">
                   <Input
                     type="number"
-                    placeholder="Mesafe (m)"
+                    placeholder="Distance (m)"
                     value={nokta}
                     onChange={(e) => {
                       const newNoktalari = [...drydockData.destek_noktalari];
@@ -230,7 +230,7 @@ export const DrydockStabilityCalc = () => {
 
           <Button onClick={calculateDrydock} className="w-full mt-4">
             <Calculator className="mr-2 h-4 w-4" />
-            Havuz Stabilite Analizi Yap
+            Perform Pool Stability Analysis
           </Button>
         </CardContent>
       </Card>
@@ -246,50 +246,50 @@ export const DrydockStabilityCalc = () => {
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />
                 )}
-                Havuz Operasyon Analizi Sonuçları
+                Pool Operation Analysis Results
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary">{results.kritik_gm.toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">Kritik GM (m)</p>
+                  <p className="text-sm text-muted-foreground">Critical GM (m)</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-secondary">{results.mevcut_gm.toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">Mevcut GM (m)</p>
+                  <p className="text-sm text-muted-foreground">Current GM (m)</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold">{results.güvenlik_marjı.toFixed(3)}</p>
-                  <p className="text-sm text-muted-foreground">Güvenlik Marjı (m)</p>
+                  <p className="text-sm text-muted-foreground">Margin of Safety (m)</p>
                 </div>
                 <div className="text-center">
                   <Badge variant={results.güvenlik_rengi === 'destructive' ? 'destructive' : results.güvenlik_rengi === 'secondary' ? 'secondary' : 'default'}>
                     {results.güvenlik_durumu}
                   </Badge>
-                  <p className="text-sm text-muted-foreground mt-1">Güvenlik Durumu</p>
+                  <p className="text-sm text-muted-foreground mt-1">Security Status</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium mb-2">Destek Analizi</h5>
-                  <p className="text-sm">Destek Sayısı: <strong>{results.destek_sayisi}</strong></p>
-                  <p className="text-sm">Ortalama Aralık: <strong>{results.ortalama_aralik.toFixed(1)}m</strong></p>
-                  <p className="text-sm">Max Aralık: <strong>{results.maksimum_aralik.toFixed(1)}m</strong></p>
+                  <h5 className="font-medium mb-2">Support Analysis</h5>
+                  <p className="text-sm">Number of Supports: <strong>{results.destek_sayisi}</strong></p>
+                  <p className="text-sm">Average Range: <strong>{results.ortalama_aralik.toFixed(1)}m</strong></p>
+                  <p className="text-sm">Max Range: <strong>{results.maksimum_aralik.toFixed(1)}m</strong></p>
                 </div>
                 
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium mb-2">Stabilite Değerleri</h5>
-                  <p className="text-sm">GM Oranı: <strong>{results.gm_orani.toFixed(2)}</strong></p>
-                  <p className="text-sm">Kren Momenti: <strong>{results.kren_momenti.toFixed(0)} kN.m</strong></p>
-                  <p className="text-sm">Min GM Oranı: <strong>1.00</strong></p>
+                  <h5 className="font-medium mb-2">Stability Values</h5>
+                  <p className="text-sm">GM Rate: <strong>{results.gm_orani.toFixed(2)}</strong></p>
+                  <p className="text-sm">Crane Moment: <strong>{results.kren_momenti.toFixed(0)} kN.m</strong></p>
+                  <p className="text-sm">Min GM Rate: <strong>1.00</strong></p>
                 </div>
                 
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium mb-2">Havuz Parametreleri</h5>
-                  <p className="text-sm">Havuz Uzunluğu: {drydockData.havuz_uzunlugu}m</p>
-                  <p className="text-sm">Gemi LOA: {vesselData.loa}m</p>
+                  <h5 className="font-medium mb-2">Pool Parameters</h5>
+                  <p className="text-sm">Pool Length: {drydockData.havuz_uzunlugu}m</p>
+                  <p className="text-sm">Ship LOA: {vesselData.loa}m</p>
                   <p className="text-sm">BOA: {vesselData.boa}m</p>
                 </div>
               </div>
@@ -298,7 +298,7 @@ export const DrydockStabilityCalc = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Öneriler ve Uyarılar</CardTitle>
+              <CardTitle>Recommendations and Warnings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {results.öneriler.map((öneri: string, index: number) => (
@@ -308,25 +308,25 @@ export const DrydockStabilityCalc = () => {
               ))}
 
               <div className="p-4 bg-muted rounded-lg">
-                <h5 className="font-medium mb-2">Kritik GM Formülü:</h5>
+                <h5 className="font-medium mb-2">Critical GM Formula:</h5>
                 <p className="font-mono text-sm mb-2">
-                  GM_kritik = 0.05 + (ortalama_destek_aralığı / 100)
+                  GM_critical = 0.05 + (mean_block_spacing / 100)
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Bu basitleştirilmiş formüldür. Gerçek hesaplama için yapısal analiz gereklidir.
+                  This is the simplified formula. Structural analysis is required for actual calculation.
                 </p>
               </div>
 
               <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-lg">
                 <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">
-                  Havuz Güvenlik Protokolü:
+                  Pool Security Protocol:
                 </h5>
                 <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
                   <li>• GM &lt; Kritik GM ise havuz operasyonu YASAKLI</li>
-                  <li>• Destek noktaları eşit aralıklarla yerleştirilmeli</li>
-                  <li>• Su boşaltma işlemi dikkatli yapılmalı</li>
-                  <li>• Sürekli stabilite monitörleme şart</li>
-                  <li>• Acil durum planı hazır bulundurulmalı</li>
+                  <li>• Support points should be placed at equal intervals</li>
+                  <li>• Water draining should be done carefully.</li>
+                  <li>• Continuous Stability monitoring is a must</li>
+                  <li>• An emergency plan should be kept ready</li>
                 </ul>
               </div>
             </CardContent>

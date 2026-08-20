@@ -143,7 +143,7 @@ export function AskAIPopup() {
             <div className="flex min-h-14 items-center justify-between border-b px-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
-                <span className="text-base font-semibold text-foreground">Referans Notu</span>
+                <span className="text-base font-semibold text-foreground">Reference Note</span>
               </div>
               <button
                 type="button"

@@ -823,7 +823,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         for (const src of harvested) recordSeen(src);
         markHarvestedFor(languageCode, HARVEST_VERSION);
       } catch (error) {
-        console.warn('Route harvest sırasında hata:', error);
+        console.warn('Error during route harvest:', error);
       }
     }
 
@@ -902,7 +902,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     try {
       await runBulkTranslation(languageCode);
     } catch (error) {
-      console.error('Toplu çeviri sırasında hata:', error);
+      console.error('Error during batch translation:', error);
     }
 
     localStorage.setItem('preferredLanguage', languageCode);
@@ -912,11 +912,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     window.setTimeout(() => {
       setIsChangingLanguage(false);
       setChangePhase('idle');
-      const titleTr = 'Dil Değiştirildi';
-      const descTr = 'Uygulama dili başarıyla değiştirildi';
+      // The fallback is what the user reads when the pack has not settled, so
+      // it has to be the English copy, not a Turkish source string.
+      const title = 'Language Changed';
+      const description = 'Application language changed successfully';
       toast({
-        title: getStaticTranslation(titleTr, languageCode) ?? titleTr,
-        description: getStaticTranslation(descTr, languageCode) ?? descTr,
+        title: getStaticTranslation(title, languageCode) ?? title,
+        description: getStaticTranslation(description, languageCode) ?? description,
       });
     }, 300);
   };
@@ -930,11 +932,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     localStorage.removeItem('preferredLanguage');
     setCurrentLanguage(DEFAULT_LANGUAGE);
 
-    const titleTr = 'Ayarlar Sıfırlandı';
-    const descTr  = 'Dil ayarları varsayılan değerlere döndürüldü';
+    const title = 'Settings Reset';
+    const description = 'Language settings have been restored to their defaults';
     toast({
-      title: getStaticTranslation(titleTr, DEFAULT_LANGUAGE) ?? titleTr,
-      description: getStaticTranslation(descTr, DEFAULT_LANGUAGE) ?? descTr,
+      title: getStaticTranslation(title, DEFAULT_LANGUAGE) ?? title,
+      description: getStaticTranslation(description, DEFAULT_LANGUAGE) ?? description,
     });
   };
 

@@ -109,7 +109,7 @@ const FaceBody = memo(function FaceBody() {
         fontFamily={FACE_FONT}
         textAnchor="middle"
       >
-        RÜZGÂR YÖNÜ
+        WIND DIRECTION
       </text>
 
       {/* Göbeğin altına basılı fırıldak silueti — fotoğraftaki oval çizim */}

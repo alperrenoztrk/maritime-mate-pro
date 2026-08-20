@@ -406,6 +406,17 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-132', label: 'charter kiracı must be charterer', source: /kiracı/iu, wrong: /\b(?:tenant|lessee)s?\b/giu, replacement: asPluralTerm('charterer', 'charterers') },
   { id: 'T-133', label: 'Donatan must be shipowner', source: /donatan/iu, wrong: /\boutfitter\b/giu, replacement: asTerm('shipowner') },
   { id: 'T-134', label: 'Lay Time must be laytime', source: /lay\s*time/iu, wrong: /\bLay\s+Time\b/g, replacement: 'Laytime' },
+  // Found while migrating the interface layer out of Turkish: short labels give
+  // the engine no context, so a seakeeping table came back reading "Yaw
+  // Amplitude" for roll and "Trace Coefficient" for the wake fraction.
+  { id: 'T-135', label: 'Kıç pik must be after peak', source: /k[ıi]ç\s*pik|aft\s*peak/iu, wrong: /\bcanker\s+peak\b/giu, replacement: asTerm('Aft Peak') },
+  { id: 'T-136', label: 'Yalpa must be roll', source: /yalpa/iu, wrong: /\byaw\b/giu, replacement: asTerm('roll') },
+  { id: 'T-137', label: 'Baş vurma must be pitch', source: /(?:ba[şs]\s*vurma|tangage)/iu, wrong: /\btangage\b/giu, replacement: asTerm('pitch') },
+  { id: 'T-138', label: 'İz katsayısı must be wake fraction', source: /[İIıi]z\s*katsay/iu, wrong: /\btrace\s+coefficient\b/giu, replacement: asTerm('wake fraction') },
+  { id: 'T-139', label: 'Gövde verimi must be hull efficiency', source: /g[öo]vde\s*verim/iu, wrong: /\bstem\s+efficiency\b/giu, replacement: asTerm('hull efficiency') },
+  { id: 'T-140', label: 'Düşey ivme must be vertical acceleration', source: /d[üu][şs]ey\s*ivme/iu, wrong: /\bdusey\s+acceleration\b/giu, replacement: asTerm('vertical acceleration') },
+  { id: 'T-141', label: 'Dalıp çıkma must be heave', source: /dal[ıi]p\s*[çc][ıi]kma/iu, wrong: /\bdiving\s+amplitude\b/giu, replacement: asTerm('heave amplitude') },
+  { id: 'T-142', label: 'cargo ton must stay a tonne', source: /\bton\b/iu, wrong: /\btones?\b/giu, replacement: asPluralTerm('tonne', 'tonnes') },
 ];
 
 // Technical/formula strings that were incorrectly classified as language-

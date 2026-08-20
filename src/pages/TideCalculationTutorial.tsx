@@ -8,12 +8,12 @@ const TideCalculationTutorial = () => {
     <MobileLayout>
       <div className="space-y-4">
         <div className="text-sm text-muted-foreground flex items-center gap-2">
-          <Waves className="h-4 w-4" /> Gelgit Hesabı — Hesabın Yapılışı
+          <Waves className="h-4 w-4" /> Tide Calculation — Making the Calculation
         </div>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle>Gelgit hesabını adım adım yapma kılavuzu</CardTitle>
+            <CardTitle>Step-by-step guide to calculating tides</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6 text-sm leading-6">
             <div className="space-y-2">
@@ -25,123 +25,123 @@ const TideCalculationTutorial = () => {
             <Separator />
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">1) Gerekli verileri topla</h3>
+              <h3 className="text-base font-semibold">1) Collect necessary data</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Seçilen liman için HW (High Water) ve LW (Low Water) zamanları ve yükseklikleri.</li>
-                <li>Gelgit tablosundaki referans tarih ve saat dilimi (UTC/GMT veya yerel).</li>
-                <li>Harita derinliği (Charted Depth) ve referans datum (CD) bilgisi.</li>
-                <li>Gerekiyorsa ikincil liman düzeltmeleri (time/height corrections).</li>
+                <li>HW (High Water) and LW (Low Water) times and altitudes for the selected port.</li>
+                <li>Reference date and time zone (UTC/GMT or local) in the tide table.</li>
+                <li>Chart depth (Charted Depth) and reference datum (CD) information.</li>
+                <li>Secondary port corrections (time/height corrections), if necessary.</li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">2) Liman türünü belirle ve düzeltmeleri uygula</h3>
+              <h3 className="text-base font-semibold">2) Determine port type and apply corrections</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Standart liman:</strong> HW/LW değerleri doğrudan kullanılır.</li>
-                <li><strong>İkincil liman:</strong> tablo veya notlarda verilen zaman/yükseklik düzeltmeleri eklenir.</li>
-                <li>Düzeltme sonrası HW/LW değerlerini tekrar yaz ve aralığı (Range) hesapla.</li>
+                <li><strong>Standard port:</strong> HW/LW values are used directly.</li>
+                <li><strong>Secondary port:</strong> time/altitude corrections given in tables or notes are added.</li>
+                <li>After the correction, rewrite the HW/LW values and calculate the range.</li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">3) Standart limanda istenen saat için gelgit yüksekliği</h3>
+              <h3 className="text-base font-semibold">3) Tide height for the desired time in the standard port</h3>
               <p>
                 The standard approach is to divide the HW-LW interval into 6 equal hours and use the hourly rise/fall percentage from the “Rule of Twelfths”. Alternatively, on a tidal curve you can join the LW and HW points, draw the tidal height line and read the height at the required time off the graph.
               </p>
               <div className="rounded border bg-muted/30 p-3">
-                <div className="font-semibold">Rule of Twelfths — saatlik katkılar</div>
+                <div className="font-semibold">Rule of Twelfths — hourly contributions</div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs mt-2">
-                  <div>1. saat: 1/12</div>
-                  <div>2. saat: 2/12</div>
-                  <div>3. saat: 3/12</div>
-                  <div>4. saat: 3/12</div>
-                  <div>5. saat: 2/12</div>
-                  <div>6. saat: 1/12</div>
+                  <div>1st hour: 1/12</div>
+                  <div>2nd hour: 2/12</div>
+                  <div>3rd hour: 3/12</div>
+                  <div>4th hour: 3/12</div>
+                  <div>5th hour: 2/12</div>
+                  <div>6th hour: 1/12</div>
                 </div>
               </div>
               <ul className="list-disc pl-5 space-y-1">
-                <li>LW’den itibaren kaçıncı saatte olduğunu bul.</li>
-                <li>Range × (toplam oran) ile gelgit yüksekliğini hesapla.</li>
-                <li>LW yüksekliğine ekleyerek istenen saat yüksekliğini elde et.</li>
-                <li>Range, spring/near değerlerine yakınsa grafik eğrisini buna göre seç.</li>
+                <li>Find out what time it is from LW.</li>
+                <li>Calculate tide height by Range × (total rate).</li>
+                <li>Add to LW height to get desired clock height.</li>
+                <li>If the range is close to spring/near values, select the chart curve accordingly.</li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">4) Standart limanda istenen gelgit yüksekliği için zaman</h3>
+              <h3 className="text-base font-semibold">4) Time for desired tide height in standard port</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>İstenen yükseklik ile LW arasındaki farkı hesapla.</li>
-                <li>Bu farkın, Range içindeki yüzdesini bul.</li>
-                <li>Rule of Twelfths kademelerine göre yaklaşık saat dilimini belirle.</li>
-                <li>Gerekirse grafikli yöntemle (gelgit eğrisi) daha hassas okuma yap.</li>
+                <li>Calculate the difference between the desired height and LW.</li>
+                <li>Find the percentage of this difference in Range.</li>
+                <li>Determine the approximate time zone according to Rule of Twelfths levels.</li>
+                <li>If necessary, take a more precise reading using the graphical method (tide curve).</li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">5) İkincil limanda zaman ve yükseklik düzeltmesi</h3>
+              <h3 className="text-base font-semibold">5) Time and altitude correction in secondary port</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Önce bağlı olunan standart limanın HW/LW değerlerini çıkar.</li>
-                <li>İkincil liman tablolarındaki zaman ve yükseklik düzeltmelerini uygula.</li>
-                <li>Düzeltilmiş HW/LW ile standart liman adımlarını aynen uygula.</li>
+                <li>First, extract the HW/LW values of the connected standard port.</li>
+                <li>Apply time and elevation corrections to secondary port tables.</li>
+                <li>Follow standard port steps exactly with corrected HW/LW.</li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">6) Geçiş zamanı ve UKC değerlendirmesi</h3>
+              <h3 className="text-base font-semibold">6) Transition time and UKC evaluation</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Toplam derinlik</strong> = Harita derinliği + Gelgit yüksekliği.</li>
-                <li><strong>Güvenli derinlik</strong> = Toplam derinlik − Draft − Squat − Emniyet payı.</li>
-                <li>Negatif sonuç varsa geçiş/operasyon için zaman veya rota yeniden planlanır.</li>
+                <li><strong>Total depth</strong> = Charted depth + Height of tide.</li>
+                <li><strong>Safe depth</strong> = Total depth − Draft − Squat − Safety margin.</li>
+                <li>If there is a negative result, the time or route for the passage/operation is replanned.</li>
               </ul>
               <div className="rounded border bg-muted/30 p-3 text-xs">
-                Harita derinliği + Gelgit yüksekliği = Gemi draftı + Omurga altı emniyet payı
+                Charted depth + Height of tide = Ship's draft + Under-keel clearance
               </div>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">7) Gelgit akıntısı hesabı (tidal stream)</h3>
+              <h3 className="text-base font-semibold">7) Tidal current calculation (tidal stream)</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>İlgili bölgenin gelgit akıntı haritasından en yakın harf kutucuğunu seç.</li>
-                <li>Tabloda HW’den önce/sonra saat ofsetine göre hız ve yön değerini oku.</li>
-                <li>İstenen saat için uygun tablo satırını kullanarak akıntı set ve süratini bul.</li>
+                <li>Select the closest letter box from the tidal current chart of that area.</li>
+                <li>Read the speed and direction value according to the clock offset before/after HW in the table.</li>
+                <li>Find the current set and speed using the appropriate table row for the desired time.</li>
               </ul>
             </div>
 
             <Separator />
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">Uygulama örneği — standart liman</h3>
+              <h3 className="text-base font-semibold">Application example — standard port</h3>
               <p>
-                Örnek veri seti ile istenen saat için gelgit yüksekliği hesaplama:
+                Tidal height calculation for desired time with sample data set:
               </p>
               <div className="rounded border bg-muted/30 p-3 space-y-2">
-                <div><strong>Tarih:</strong> 20 Nisan</div>
-                <div><strong>HW:</strong> 11:38 — 5,5 m</div>
-                <div><strong>LW:</strong> 18:25 — 1,0 m</div>
-                <div><strong>İstenen saat:</strong> 15:00</div>
+                <div><strong>Date:</strong> 20 April</div>
+                <div><strong>HW:</strong> 11:38 — 5.5m</div>
+                <div><strong>LW:</strong> 18:25 — 1.0 m</div>
+                <div><strong>Requested time:</strong> 15:00</div>
               </div>
               <ol className="list-decimal pl-5 space-y-1">
-                <li>HW ve LW noktalarını grafikte işaretle, gelgit yükseklik doğrusunu oluştur.</li>
-                <li>Saat eksenine HW saatinden başlayarak saatlik aralıkları doldur.</li>
-                <li>15:00’dan dik çık; gelgit eğrisiyle kesişimden gelgit doğrusuna paralel çiz.</li>
-                <li>Kesişimden yukarı çıkarak “HW Hts m” ölçeğinde yüksekliği oku.</li>
-                <li>Range, spring değerine yakınsa düz eğri; neap’e yakınsa kesik eğri kullan.</li>
+                <li>Mark points HW and LW on the chart, creating the tidal height line.</li>
+                <li>Fill in the hourly intervals on the hour axis, starting from the HW hour.</li>
+                <li>Go up vertically from 15:00; from the intersection with the tidal curve, draw a line parallel to the range line.</li>
+                <li>Go up from the intersection and read the height on the “HW Hts m” scale.</li>
+                <li>Use the solid curve when the range is close to springs, the dashed curve when it is close to neaps.</li>
               </ol>
               <p className="text-xs text-muted-foreground">
-                Bu yöntemle 15:00 için yaklaşık gelgit yüksekliği bulunur ve harita derinliğine eklenir.
+                With this method, the approximate tide height for 15:00 is found and added to the chart depth.
               </p>
             </div>
 
             <Separator />
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold">Kontrol listesi (hızlı doğrulama)</h3>
+              <h3 className="text-base font-semibold">Checklist (quick verification)</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Saat dilimi karışıklığı var mı? (UTC/GMT vs. yerel)</li>
-                <li>LW mi HW mi baz alındı doğru mu?</li>
-                <li>İkincil liman düzeltmesi unutuldu mu?</li>
-                <li>Range ve işaret (+/−) tutarlı mı?</li>
-                <li>UKC için emniyet payı ekli mi?</li>
+                <li>Is there time zone confusion? (UTC/GMT etc. local)</li>
+                <li>Is it based on LW or HW, correct?</li>
+                <li>Secondary port fix forgotten?</li>
+                <li>Are range and sign (+/−) consistent?</li>
+                <li>Is there a safety margin added for UKC?</li>
               </ul>
             </div>
           </CardContent>

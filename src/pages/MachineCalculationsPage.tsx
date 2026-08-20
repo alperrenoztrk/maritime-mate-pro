@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button";
 
 const onboardMachines = [
   {
-    name: "Ana Makine (Sevk Sistemi)",
+    name: "Main engine (Propulsion System)",
     detail: "Main diesel engine, steam/gas turbine or diesel-electric propulsion",
     description:
-      "Geminin ana tahrik sistemini oluşturur; pervane, şaft hattı ve kumanda zinciriyle entegre çalışır. Yakıt kalitesi, yağlama basıncı ve ana yatak sıcaklıkları performans için kritik parametrelerdir.",
+      "It forms the main propulsion system of the ship; It works integrated with the propeller, shaft line and control chain. Fuel quality, lubrication pressure and main bearing temperatures are critical parameters for performance.",
     manual: [
       "Before the watch: check the oil level, the sea/oil cooling water circuits and the fuel viscosity heating.",
       "Start-up: verify that the turning gear is disengaged and that the lube oil pressure and jacket water temperature are within operating limits.",
@@ -24,7 +24,7 @@ const onboardMachines = [
     name: "Auxiliary Machinery",
     detail: "Auxiliary diesel and emergency generators, shaft generator",
     description:
-      "Gemi elektriğini sağlayan yardımcı dizel jeneratörler ve acil jeneratör, kritik sistemlerin kesintisiz beslenmesi için yedekli çalışır. Yük paylaşımı ve otomatik devre alma kabiliyetleri önemlidir.",
+      "Auxiliary diesel generators and emergency generators that provide ship electricity operate in redundancy to ensure uninterrupted supply of critical systems. Load sharing and automatic commissioning capabilities are important.",
     manual: [
       "Complete the oil, cooling water, fuel and air/fog tests before starting.",
       "Keep harmonic/reactive loads balanced by monitoring generator load sharing.",
@@ -33,10 +33,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Elektrik & Güç Sistemleri",
+    name: "Electrical & Power Systems",
     detail: "Main/emergency switchboard, UPS, transformers and battery banks",
     description:
-      "Ana ve acil switchboard üzerinden güç dağıtımı yapılır; kritik devreler UPS ve bataryalarla korunur. Toprak kaçağı, kısa devre ve frekans/voltaj sapmaları anlık izlenmelidir.",
+      "Power distribution is done through the main and emergency switchboard; critical circuits are protected by UPS and batteries. Earth leakage, short circuit and frequency/voltage deviations should be monitored instantly.",
     manual: [
       "Apply the busbar synchronisation and breaker opening/closing sequences according to the procedure.",
       "Monitor harmonic distortion and voltage balance during load transfer; check overheating busbars with a thermal camera.",
@@ -45,10 +45,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Yakıt & Yağ Sistemleri",
+    name: "Fuel & Oil Systems",
     detail: "Fuel/lube oil separators, day tanks, transfer and supply pumps",
     description:
-      "Ana makine ve jeneratörlere temiz, uygun viskozitede yakıt/yağ sağlar. Separatörler su ve partikülü ayırır; günlük tank seviyeleri geminin trim/stabilitesini de etkileyebilir.",
+      "It provides clean, appropriate viscosity fuel/oil to the main machinery and generators. Separators separate water and particulate; Daily tank levels can also affect the trim/stability of the ship.",
     manual: [
       "Set the pre-separator heater according to the grade of fuel; make sure the bowl speed is at its nominal value.",
       "Apply an automatic shut-off and a lookout against the risk of overflow when transferring between day tanks.",
@@ -57,10 +57,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Pompalar",
+    name: "Pumps",
     detail: "Bilge, ballast, fire, cooling water and fresh/sea water pumps",
     description:
-      "Gemideki tüm akışkan transferlerinin bel kemiğidir; yangın, balast ve soğutma pompaları farklı görevlerde çalışır. Kavitasyon, titreşim ve sızıntı erken arıza göstergeleridir.",
+      "It is the backbone of all fluid transfers on board; Fire, ballast and cooling pumps work in different roles. Cavitation, vibration and leakage are early indicators of failure.",
     manual: [
       "Check the suction/discharge valves and any venting needs before starting each pump.",
       "Follow the tank sequence on the ballast pumps according to the stability plan; test the fire pumps weekly.",
@@ -69,10 +69,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Soğutma & HVAC",
+    name: "Refrigeration & HVAC",
     detail: "Central cooling circuit, HVAC, cold stores and reefer systems",
     description:
-      "Ana/yardımcı makine jacket water ve merkezi soğutma devreleri, güverte ve yaşam mahallini iklimlendiren HVAC ile entegre çalışır. Reefer konteyner beslemeleri sıcaklık hassasiyetlidir.",
+      "The main/auxiliary engine jacket water and central cooling circuits work integrated with the HVAC that air-conditions the deck and living space. Reefer container feeds are temperature sensitive.",
     manual: [
       "Monitor the central cooling plate heat exchangers by differential pressure and clean them when necessary.",
       "Check the HVAC filters and damper settings monthly; adjust the fresh air ratio according to the CO₂ sensors.",
@@ -81,10 +81,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Kazanlar (Boiler)",
+    name: "Boilers",
     detail: "Auxiliary boiler and EGB; heating, fuel viscosity and steam demand",
     description:
-      "Yardımcı kazanlar ve egzoz gaz kazanı, yakıt ısıtma, tank ısıtma ve yaşam mahalli buhar ihtiyacını sağlar. Yanma ayarı, su seviyesi kontrolü ve blow-down kritik güvenlik noktalarıdır.",
+      "Auxiliary boilers and exhaust gas boilers provide fuel heating, tank heating and living space steam needs. Combustion adjustment, water level control and blow-down are critical safety points.",
     manual: [
       "Verify the steam/air pressure and viscosity required for fuel atomisation before starting up.",
       "Test the low water level and high steam pressure alarms periodically; observe the feed water pumps.",
@@ -93,10 +93,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Emniyet & Kontrol Sistemleri",
+    name: "Safety & Control Systems",
     detail: "Fire detection/CO₂, ECR operation, alarm and monitoring systems",
     description:
-      "Makine dairesi otomasyon sistemi, alarm ve emniyet kilitlemeleriyle tüm ekipmanı izler. Uzaktan izleme (AMS), acil durdurma istasyonları ve gaz söndürme sistemleri koordineli çalışmalıdır.",
+      "The engine room automation system monitors all equipment with alarms and safety interlocks. Remote monitoring (AMS), emergency stop stations and gas extinguishing systems must work in coordination.",
     manual: [
       "Use the alarm panel inhibit/override modes only where the procedure requires it; log any changes made.",
       "Verify the CO₂/FM200 system isolation valves, pull pins and siren tests periodically.",
@@ -105,10 +105,10 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Güverte Makineleri",
+    name: "Deck Machines",
     detail: "Windlass, mooring winch, crane, capstan and Ro-Ro ramps",
     description:
-      "Güverte operasyonlarında yük kaldırma ve bağlama ekipmanlarının güvenli çalışması kritik önemdedir. Hidrolik sistemler, fren bandı ayarları ve acil durdurma istasyonları düzenli kontrol ister.",
+      "Safe operation of load lifting and lashing equipment is critical in deck operations. Hydraulic systems, brake band settings and emergency stop stations require regular checks.",
     manual: [
       "Check the limit switches, oil levels and safety pins before the operation; barrier off the working area.",
       "Verify the mooring winch brake tests and the SWL labels periodically, and grease the wire ropes.",
@@ -124,7 +124,7 @@ export default function MachineCalculationsPage() {
   return (
     <MobileLayout>
       <CalculationGridScreen
-        eyebrow="Makine"
+        eyebrow="Engine"
         title="Machine Calculations"
       >
         <Card className="border-border/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
@@ -132,10 +132,10 @@ export default function MachineCalculationsPage() {
             <div className="flex flex-wrap items-center justify-between gap-3">
               <CardTitle className="flex items-center gap-2 text-lg text-[#2F5BFF]">
                 <Wrench className="h-5 w-5" />
-                Gemideki Makineler
+                Machinery on Board
               </CardTitle>
               <Button variant="outline" onClick={() => setShowMachines((prev) => !prev)}>
-                {showMachines ? "Listeyi Gizle" : "Tüm Makineleri Göster"}
+                {showMachines ? "Hide List" : "Show All Machines"}
               </Button>
             </div>
           </CardHeader>
@@ -154,7 +154,7 @@ export default function MachineCalculationsPage() {
                     </div>
                     <div className="rounded-lg bg-slate-50 px-3 py-2 text-slate-700 dark:bg-slate-900/40">
                       <p className="text-micro font-semibold uppercase tracking-wide text-[#2F5BFF]">
-                        Kullanım kılavuzu
+                        User manual
                       </p>
                       <ul className="mt-2 space-y-1 text-xs leading-relaxed text-slate-700 dark:text-slate-300">
                         {machine.manual.map((step) => (
@@ -176,7 +176,7 @@ export default function MachineCalculationsPage() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-xl text-[#2F5BFF]">
               <Wrench className="h-6 w-6" />
-              Makine Hesaplama Modülü
+              Machine Calculation Module
             </CardTitle>
           </CardHeader>
           <CardContent>

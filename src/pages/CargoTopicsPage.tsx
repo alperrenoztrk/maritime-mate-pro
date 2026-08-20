@@ -46,101 +46,101 @@ const cargoTopics: CargoMainTopic[] = [
   {
     id: "cargo-intro",
     number: 1,
-    title: "Yük Elleçleme Temelleri",
+    title: "Cargo Handling Fundamentals",
     icon: Package,
     subtopics: [
-      { id: "cargo-handling-def", title: "Yük elleçlemenin tanımı ve önemi", hasContent: true },
-      { id: "cargo-types", title: "Yük türleri ve sınıflandırması", hasContent: true },
-      { id: "cargo-planning", title: "Yük planlaması esasları", hasContent: true },
-      { id: "cargo-docs", title: "Yük belgeleri ve dokümantasyon", hasContent: true },
-      { id: "cargo-safety-general", title: "Yükleme operasyonlarında güvenlik", hasContent: true },
-      { id: "cargo-gear-swl", title: "Gemi yük donanımı, vinç/derrick ve SWL", hasContent: true },
+      { id: "cargo-handling-def", title: "Definition and importance of cargo handling", hasContent: true },
+      { id: "cargo-types", title: "Cargo types and classification", hasContent: true },
+      { id: "cargo-planning", title: "Load planning principles", hasContent: true },
+      { id: "cargo-docs", title: "Freight documents and documentation", hasContent: true },
+      { id: "cargo-safety-general", title: "Safety in loading operations", hasContent: true },
+      { id: "cargo-gear-swl", title: "Ship cargo equipment, crane/derrick and SWL", hasContent: true },
     ],
   },
   {
     id: "stowage",
     number: 2,
-    title: "İstifleme Prensipleri",
+    title: "Stacking Principles",
     icon: Boxes,
     subtopics: [
-      { id: "stowage-principles", title: "Genel istifleme prensipleri", hasContent: true },
-      { id: "stowage-factor", title: "İstifleme faktörü (Stowage Factor)", hasContent: true },
-      { id: "broken-stowage", title: "Broken Stowage kavramı", hasContent: true },
-      { id: "cargo-compatibility", title: "Yük uyumluluk tablosu", hasContent: true },
-      { id: "ventilation", title: "Ambar havalandırması", hasContent: true },
-      { id: "dunnage", title: "Dunnage (altlık) kullanımı", hasContent: true },
+      { id: "stowage-principles", title: "General stowing principles", hasContent: true },
+      { id: "stowage-factor", title: "Stowage Factor", hasContent: true },
+      { id: "broken-stowage", title: "Concept of Broken Stowage", hasContent: true },
+      { id: "cargo-compatibility", title: "Load compatibility table", hasContent: true },
+      { id: "ventilation", title: "Cargo hold ventilation", hasContent: true },
+      { id: "dunnage", title: "Dunnage use", hasContent: true },
     ],
   },
   {
     id: "lashing-securing",
     number: 3,
-    title: "Yük Bağlama ve Sabitleme (Lashing & Securing)",
+    title: "Load Lashing & Securing",
     icon: Anchor,
     subtopics: [
-      { id: "lashing-principles", title: "Bağlama prensipleri ve kuvvetler", hasContent: true },
-      { id: "css-code", title: "CSS Code gereksinimleri", hasContent: true },
-      { id: "lashing-equipment", title: "Bağlama ekipmanları", hasContent: true },
-      { id: "lashing-calc", title: "Bağlama kuvveti hesapları", hasContent: true },
-      { id: "container-lashing", title: "Konteyner bağlama sistemleri", hasContent: true },
-      { id: "heavy-lift-lashing", title: "Ağır yük bağlama", hasContent: true },
+      { id: "lashing-principles", title: "Cargo securing principles and forces", hasContent: true },
+      { id: "css-code", title: "CSS Code requirements", hasContent: true },
+      { id: "lashing-equipment", title: "Tying equipment", hasContent: true },
+      { id: "lashing-calc", title: "Cargo securing force calculations", hasContent: true },
+      { id: "container-lashing", title: "Containercargo security systems", hasContent: true },
+      { id: "heavy-lift-lashing", title: "Heavy cargo securing", hasContent: true },
     ],
   },
   {
     id: "draft-survey",
     number: 4,
-    title: "Draft Survey",
+    title: "Draft survey",
     icon: Ruler,
     subtopics: [
-      { id: "draft-survey-intro", title: "Draft survey amacı ve prensibi", hasContent: true },
-      { id: "draft-reading", title: "Draft okuma teknikleri", hasContent: true },
-      { id: "mean-draft", title: "Ortalama draft hesabı", hasContent: true },
-      { id: "trim-correction", title: "Trim düzeltmeleri", hasContent: true },
+      { id: "draft-survey-intro", title: "Purpose and principle of draft survey", hasContent: true },
+      { id: "draft-reading", title: "Draft reading techniques", hasContent: true },
+      { id: "mean-draft", title: "Average draft calculation", hasContent: true },
+      { id: "trim-correction", title: "Trim fixes", hasContent: true },
       { id: "density-correction", title: "Density correction", hasContent: true },
-      { id: "deductibles", title: "Düşülen değerler (Deductibles)", hasContent: true },
+      { id: "deductibles", title: "Deductibles", hasContent: true },
     ],
   },
   {
     id: "bulk-cargo",
     number: 5,
-    title: "Dökme Yükler ve IMSBC Code",
+    title: "Bulk Cargoes and IMSBC Code",
     icon: BarChart3,
     subtopics: [
-      { id: "bulk-types", title: "Dökme yük türleri", hasContent: true },
-      { id: "imsbc-code", title: "IMSBC Code genel yapısı", hasContent: true },
-      { id: "tml-fmp", title: "TML ve FMP kavramları", hasContent: true },
-      { id: "group-a-cargoes", title: "Grup A yükler (liquefiable)", hasContent: true },
-      { id: "group-b-cargoes", title: "Grup B yükler (kimyasal tehlike)", hasContent: true },
-      { id: "trimming-bulk", title: "Dökme yük trimlenmesi", hasContent: true },
-      { id: "blu-code", title: "BLU Code: dökme yük yükleme/boşaltma ve gemi-sahil kontrolü", hasContent: true },
-      { id: "hold-preparation", title: "Ambar hazırlığı ve temizliği", hasContent: true },
+      { id: "bulk-types", title: "Bulk cargo types", hasContent: true },
+      { id: "imsbc-code", title: "IMSBC Code general structure", hasContent: true },
+      { id: "tml-fmp", title: "TML and FMP concepts", hasContent: true },
+      { id: "group-a-cargoes", title: "Group A loads (liquefiable)", hasContent: true },
+      { id: "group-b-cargoes", title: "Group B loads (chemical hazard)", hasContent: true },
+      { id: "trimming-bulk", title: "Bulk cargo trimming", hasContent: true },
+      { id: "blu-code", title: "BLU Code: bulk cargo loading/unloading and ship-shore control", hasContent: true },
+      { id: "hold-preparation", title: "Cargo hold preparation and cleaning", hasContent: true },
     ],
   },
   {
     id: "dangerous-goods",
     number: 6,
-    title: "Tehlikeli Yükler ve IMDG Code",
+    title: "Dangerous Cargoes and IMDG Code",
     icon: AlertTriangle,
     subtopics: [
-      { id: "imdg-classes", title: "IMDG sınıfları ve alt sınıflar", hasContent: true },
-      { id: "imdg-labeling", title: "Etiketleme ve işaretleme", hasContent: true },
-      { id: "imdg-segregation", title: "Ayrım tablosu (Segregation Table)", hasContent: true },
-      { id: "imdg-stowage", title: "Tehlikeli yük istifleme kuralları", hasContent: true },
-      { id: "imdg-docs", title: "Tehlikeli yük belgeleri", hasContent: true },
-      { id: "imdg-emergency", title: "Tehlikeli yük acil müdahale", hasContent: true },
+      { id: "imdg-classes", title: "IMDG classes and subclasses", hasContent: true },
+      { id: "imdg-labeling", title: "Labeling and marking", hasContent: true },
+      { id: "imdg-segregation", title: "Segregation Table", hasContent: true },
+      { id: "imdg-stowage", title: "Dangerous cargo stowing rules", hasContent: true },
+      { id: "imdg-docs", title: "Dangerous cargo documents", hasContent: true },
+      { id: "imdg-emergency", title: "Dangerous cargo emergency response", hasContent: true },
     ],
   },
   {
     id: "container-ops",
     number: 7,
-    title: "Konteyner Operasyonları",
+    title: "Container Operations",
     icon: Container,
     subtopics: [
-      { id: "container-types", title: "Konteyner tipleri ve boyutları", hasContent: true },
+      { id: "container-types", title: "Container types and sizes", hasContent: true },
       { id: "container-weight", title: "VGM (Verified Gross Mass)", hasContent: true },
-      { id: "container-stowage-plan", title: "Bay plan ve istifleme planı", hasContent: true },
-      { id: "reefer-containers", title: "Reefer konteynerler", hasContent: true },
-      { id: "oog-cargo", title: "OOG (Out of Gauge) yükler", hasContent: true },
-      { id: "container-inspection", title: "Konteyner muayene ve kontrolü", hasContent: true },
+      { id: "container-stowage-plan", title: "Bay plan and stowing plan", hasContent: true },
+      { id: "reefer-containers", title: "Reefer containers", hasContent: true },
+      { id: "oog-cargo", title: "Installs OOG (Out of Gauge)", hasContent: true },
+      { id: "container-inspection", title: "Container inspection and control", hasContent: true },
     ],
   },
   {
@@ -149,68 +149,68 @@ const cargoTopics: CargoMainTopic[] = [
     title: "Tanker Operations",
     icon: Droplets,
     subtopics: [
-      { id: "tanker-types", title: "Tanker tipleri", hasContent: true },
-      { id: "loading-discharging", title: "Yükleme ve tahliye operasyonu", hasContent: true },
-      { id: "ullage-sounding", title: "Ullage ve sounding ölçümleri", hasContent: true },
-      { id: "cargo-calc-tanker", title: "Tanker yük hesaplamaları", hasContent: true },
-      { id: "tank-cleaning", title: "Tank temizliği ve COW", hasContent: true },
-      { id: "ig-system", title: "Inert gas sistemi", hasContent: true },
-      { id: "gas-carrier-igc", title: "Gaz taşıyıcılar ve IGC Code (LNG/LPG)", hasContent: true },
-      { id: "isgott-tanker-safety", title: "ISGOTT ve tanker emniyeti (statik elektrik, gaz, ship-shore checklist)", hasContent: true },
+      { id: "tanker-types", title: "Tanker types", hasContent: true },
+      { id: "loading-discharging", title: "Loading and unloading operation", hasContent: true },
+      { id: "ullage-sounding", title: "Ullage and sounding measurements", hasContent: true },
+      { id: "cargo-calc-tanker", title: "Tanker load calculations", hasContent: true },
+      { id: "tank-cleaning", title: "Tank cleaning and COW", hasContent: true },
+      { id: "ig-system", title: "Inert gas system", hasContent: true },
+      { id: "gas-carrier-igc", title: "Gas carriers and IGC Code (LNG/LPG)", hasContent: true },
+      { id: "isgott-tanker-safety", title: "ISGOTT and tanker safety (static electricity, gas, ship-shore checklist)", hasContent: true },
     ],
   },
   {
     id: "grain-cargo",
     number: 9,
-    title: "Tahıl Yükleri ve Grain Code",
+    title: "Grain Loads and Grain Code",
     icon: Scale,
     subtopics: [
-      { id: "grain-code-intro", title: "International Grain Code yapısı", hasContent: true },
-      { id: "grain-shift", title: "Tahıl kayması ve yüzey etkisi", hasContent: true },
+      { id: "grain-code-intro", title: "International Grain Code structure", hasContent: true },
+      { id: "grain-shift", title: "Grain shifting and surface effect", hasContent: true },
       { id: "grain-heeling-moment", title: "Volumetric Heeling Moment", hasContent: true },
-      { id: "grain-stability-criteria", title: "Tahıl stabilite kriterleri", hasContent: true },
-      { id: "grain-securing", title: "Tahıl yükünün sabitlenmesi", hasContent: true },
-      { id: "grain-loading-plan", title: "Tahıl yükleme planı hazırlanması", hasContent: true },
+      { id: "grain-stability-criteria", title: "Grain stability criteria", hasContent: true },
+      { id: "grain-securing", title: "Securing the grain load", hasContent: true },
+      { id: "grain-loading-plan", title: "Preparation of grain loading plan", hasContent: true },
     ],
   },
   {
     id: "special-cargoes",
     number: 10,
-    title: "Özel Yükler",
+    title: "Special Loads",
     icon: Ship,
     subtopics: [
-      { id: "timber-deck", title: "Kereste güverte yükleri", hasContent: true },
-      { id: "load-line-marks", title: "Yükleme hattı işaretleri (TF/F/T/S/W/WNA)", hasContent: true },
-      { id: "livestock", title: "Canlı hayvan taşımacılığı", hasContent: true },
-      { id: "ro-ro-cargo", title: "Ro-Ro yük operasyonları", hasContent: true },
-      { id: "steel-cargo", title: "Çelik ve ağır yük taşıma", hasContent: true },
-      { id: "project-cargo", title: "Proje yükleri", hasContent: true },
+      { id: "timber-deck", title: "Timber deck loads", hasContent: true },
+      { id: "load-line-marks", title: "Load line markings (TF/F/T/S/W/WNA)", hasContent: true },
+      { id: "livestock", title: "Live animal transportation", hasContent: true },
+      { id: "ro-ro-cargo", title: "Ro-Ro cargo operations", hasContent: true },
+      { id: "steel-cargo", title: "Steel and heavy load handling", hasContent: true },
+      { id: "project-cargo", title: "Project loads", hasContent: true },
     ],
   },
   {
     id: "cargo-care",
     number: 11,
-    title: "Yük Bakımı ve Hasar Önleme",
+    title: "Cargo Maintenance and Damage Prevention",
     icon: Shield,
     subtopics: [
-      { id: "cargo-damage-types", title: "Yük hasar türleri", hasContent: true },
-      { id: "sweat-damage", title: "Terleme hasarı (Ship vs Cargo Sweat)", hasContent: true },
-      { id: "moisture-control", title: "Nem kontrolü ve dew point", hasContent: true },
-      { id: "cargo-claims", title: "Yük hasarı talepleri ve sorumluluk", hasContent: true },
-      { id: "hague-visby", title: "Hague-Visby kuralları", hasContent: true },
+      { id: "cargo-damage-types", title: "Load damage types", hasContent: true },
+      { id: "sweat-damage", title: "Sweat damage (Ship vs Cargo Sweat)", hasContent: true },
+      { id: "moisture-control", title: "Humidity control and dew point", hasContent: true },
+      { id: "cargo-claims", title: "Cargo damage claims and liability", hasContent: true },
+      { id: "hague-visby", title: "Hague-Visby rules", hasContent: true },
     ],
   },
   {
     id: "cargo-safety-regs",
     number: 12,
-    title: "Yük Emniyeti ve Uluslararası Kurallar",
+    title: "Cargo securing and International Rules",
     icon: BookMarked,
     subtopics: [
-      { id: "solas-cargo", title: "SOLAS Bölüm VI ve VII", hasContent: true },
-      { id: "marpol-cargo", title: "MARPOL ve yük operasyonları", hasContent: true },
-      { id: "psc-cargo-findings", title: "PSC yük denetimleri ve bulgular", hasContent: true },
-      { id: "ism-cargo", title: "ISM Code ve yük operasyonları", hasContent: true },
-      { id: "cargo-incidents", title: "Yük kazaları ve alınan dersler", hasContent: true },
+      { id: "solas-cargo", title: "SOLAS Chapters VI and VII", hasContent: true },
+      { id: "marpol-cargo", title: "MARPOL and cargo operations", hasContent: true },
+      { id: "psc-cargo-findings", title: "PSC load inspections and findings", hasContent: true },
+      { id: "ism-cargo", title: "ISM Code and cargo operations", hasContent: true },
+      { id: "cargo-incidents", title: "Cargo accidents and lessons learned", hasContent: true },
     ],
   },
 ];
@@ -232,8 +232,8 @@ const topicContents: Record<string, TopicContent> = {
   // BÖLÜM 1 - YÜK ELLEÇLEME TEMELLERİ
   // =====================================================
   "cargo-handling-def": {
-    title: "Yük Elleçlemenin Tanımı ve Önemi",
-    introduction: "Yük elleçleme, yükün gemiye alınması, istiflenmesi, taşınması ve boşaltılması süreçlerinin tamamını kapsayan denizcilik operasyonudur.",
+    title: "Definition and Importance of Cargo Handling",
+    introduction: "Cargo handling is a maritime operation that covers the entire process of taking the cargo on board, stowing, transporting and unloading it.",
     content: `Cargo handling is the fundamental operational process of sea transport. It covers every stage from the cargo's origin to the ship, its carriage on board and its discharge at the destination.
 
 The main aims of cargo handling:
@@ -252,20 +252,20 @@ The master is responsible overall for cargo operations. The chief officer manage
 
 Three fundamental constraints are considered in cargo operations: the ship's structural strength, its stability and its trim. All three parameters must be kept within safe limits at the same time.`,
     bulletPoints: [
-      "Yük elleçleme = yükleme + taşıma + boşaltma sürecinin tamamı",
-      "Kaptan genel sorumlu, Baş zabit operasyonel sorumludur",
-      "Yapısal dayanım, stabilite ve trim eş zamanlı kontrol edilir",
-      "Yük planı her sefer için hazırlanır",
+      "Cargo handling = the entire process of loading + transport + unloading",
+      "The Master has overall responsibility, the chief officer has operational responsibility",
+      "Structural strength, stability and trim are checked simultaneously",
+      "Cargo plan is prepared for each voyage",
     ],
     keyPoints: [
-      "Yükleme planı operasyona başlamadan önce tamamlanmalıdır",
-      "Stabilite hesapları her ara yükleme durumunda kontrol edilmelidir",
-      "Yük operasyonları uluslararası kurallara tabidir (SOLAS, IMDG, IMSBC)",
+      "The loading plan must be completed before starting the operation",
+      "Stability calculations should be checked in every intermediate loading situation.",
+      "Cargo operations are subject to international rules (SOLAS, IMDG, IMSBC)",
     ],
   },
   "cargo-types": {
-    title: "Yük Türleri ve Sınıflandırması",
-    introduction: "Deniz yoluyla taşınan yükler fiziksel özelliklerine, taşıma şekline ve tehlike sınıflarına göre sınıflandırılır.",
+    title: "Load Types and Classification",
+    introduction: "Cargoes transported by sea are classified according to their physical properties, mode of transportation and hazard classes.",
     content: `BY PHYSICAL PROPERTIES:
 1. General cargo: cargo in pieces, packaged or bundled. Cases, drums, pallets.
 2. Dry bulk: granular, unpackaged. Grain, coal, ore, cement.
@@ -290,20 +290,20 @@ BY HAZARD CLASS (IMDG):
 - Class 8: Corrosives
 - Class 9: Miscellaneous dangerous substances`,
     bulletPoints: [
-      "Dökme kuru, dökme sıvı, genel yük ve gaz ana kategorilerdir",
-      "IMDG Code 9 tehlike sınıfı tanımlar",
-      "Taşıma şekli gemi tipini belirler",
-      "Her yük türünün kendine özel elleçleme prosedürü vardır",
+      "Bulk dry, bulk liquid, general cargo and gas are the main categories",
+      "IMDG Code defines 9 hazard classes",
+      "Mode of transport determines ship type",
+      "Each type of cargo has its own specific handling procedure",
     ],
     keyPoints: [
-      "Yük sınıflandırması doğru ekipman ve prosedür seçimi için kritiktir",
-      "Tehlikeli yükler özel etiketleme ve ayrım kurallarına tabidir",
-      "Yük karakteristiği istifleme planını doğrudan etkiler",
+      "Load classification is critical for correct equipment and procedure selection",
+      "Dangerous loads are subject to special labeling and separation rules",
+      "Load characteristic directly affects stowing plan",
     ],
   },
   "cargo-planning": {
-    title: "Yük Planlaması Esasları",
-    introduction: "Yük planlaması, geminin güvenli ve verimli yüklenmesini sağlamak için yapılan sistematik hazırlık sürecidir.",
+    title: "Load Planning Principles",
+    introduction: "Load planning is the systematic preparation process to ensure safe and efficient loading of the ship.",
     content: `Cargo planning takes the following factors into account:
 
 1. SHIP CAPACITY:
@@ -334,15 +334,15 @@ BY HAZARD CLASS (IMDG):
 - The dangerous goods segregation table
 - The risk of sweat and contamination`,
     bulletPoints: [
-      "Yük planı DWT, hacim, stabilite ve yapısal limitlere göre hazırlanır",
-      "Tahliye sırası göz önünde bulundurulur",
-      "Yük uyumluluğu kontrol edilir",
-      "Ara durumlar dahil tüm aşamalar hesaplanır",
+      "Cargo plan is prepared according to DWT, volume, stability and structural limits",
+      "Evacuation order is taken into account",
+      "Load compatibility is checked",
+      "All stages are calculated, including intermediate states",
     ],
     keyPoints: [
-      "Yükleme planı kaptan onayı olmadan uygulanmaz",
-      "Her yükleme durumunda stabilite güvenli sınırlarda olmalıdır",
-      "Boyuna mukavemet (shear force ve bending moment) kontrol edilmelidir",
+      "Loading plan is not implemented without Master's approval",
+      "Stability must be within safe limits in every loading situation",
+      "Longitudinal strength (shear force and bending moment) should be checked",
     ],
     warnings: [
       "Exceeding the structural limits can break the ship's back",
@@ -350,8 +350,8 @@ BY HAZARD CLASS (IMDG):
     ],
   },
   "cargo-docs": {
-    title: "Yük Belgeleri ve Dokümantasyon",
-    introduction: "Yük operasyonlarında kullanılan belgeler, yükün yasal, ticari ve operasyonel takibi için zorunludur.",
+    title: "Cargo Documents and Documentation",
+    introduction: "Documents used in cargo operations are mandatory for legal, commercial and operational tracking of the cargo.",
     content: `THE PRINCIPAL CARGO DOCUMENTS:
 
 1. BILL OF LADING (B/L):
@@ -378,20 +378,20 @@ The first receipt evidencing that the cargo has been taken on board and its cond
 8. LETTER OF PROTEST:
 The letter of objection issued when cargo is received damaged, or in circumstances such as bad weather.`,
     bulletPoints: [
-      "Konşimento taşımanın en önemli yasal belgesidir",
-      "Yükleme planı operasyonel referans belgesidir",
-      "DG Manifest tehlikeli yük taşıyan tüm gemilerde zorunludur",
-      "Letter of Protest zamanında düzenlenmeli ve imzalatılmalıdır",
+      "Bill of lading is the most important legal document of transportation.",
+      "The loading plan is an operational reference document",
+      "DG Manifest is mandatory on all ships carrying dangerous cargo",
+      "Letter of Protest must be prepared and signed on time",
     ],
     keyPoints: [
-      "Belgeler yükleme öncesinde hazır olmalıdır",
-      "Konşimento üzerindeki yük tanımları dikkatle kontrol edilmelidir",
-      "Hasar durumunda Letter of Protest derhal düzenlenmelidir",
+      "Documents must be ready prior to upload",
+      "Freight descriptions on the bill of lading should be checked carefully",
+      "In case of damage, Letter of Protest must be issued immediately",
     ],
   },
   "cargo-safety-general": {
-    title: "Yükleme Operasyonlarında Güvenlik",
-    introduction: "Yükleme ve tahliye operasyonları yüksek riskli süreçlerdir ve sıkı güvenlik prosedürleri gerektirir.",
+    title: "Safety in Loading Operations",
+    introduction: "Loading and unloading operations are high-risk processes and require strict safety procedures.",
     content: `SAFETY BEFORE THE OPERATION:
 - Checking the cleanliness of the holds and deck
 - Checking the ventilation system
@@ -417,15 +417,15 @@ SOLAS REQUIREMENTS:
 - Oxygen measurement (enclosed space)
 - The fire patrol programme`,
     bulletPoints: [
-      "SWL aşılmamalı, vinç güvenlik sistemleri aktif tutulmalıdır",
-      "Kapalı alan girişinde atmosfer ölçümü zorunludur",
-      "Yük altında kesinlikle durulmamalıdır",
-      "Rüzgar limitleri aşıldığında operasyon durdurulmalıdır",
+      "SWL should not be exceeded, crane safety systems should be kept active",
+      "Atmosphere measurement is mandatory at the entrance of closed areas",
+      "Never stand under load",
+      "Operation must be stopped when wind limits are exceeded",
     ],
     keyPoints: [
-      "Güvenlik her zaman operasyonel verimlilikten önce gelir",
-      "Kapalı alanlara giriş izin prosedürüne tabidir",
-      "Vinç operatörü ve sapancı arasında sürekli iletişim şarttır",
+      "Safety always comes before operational efficiency",
+      "Entry to closed areas is subject to permit procedure",
+      "Constant communication between crane operator and slinger is essential",
     ],
     warnings: [
       "The risk of loss of life in enclosed space entry is high",
@@ -437,8 +437,8 @@ SOLAS REQUIREMENTS:
   // BÖLÜM 2 - İSTİFLEME PRENSİPLERİ
   // =====================================================
   "stowage-principles": {
-    title: "Genel İstifleme Prensipleri",
-    introduction: "İstifleme, yükün gemide güvenli, verimli ve hasarsız taşınmasını sağlayacak şekilde yerleştirilmesidir.",
+    title: "General Stacking Principles",
+    introduction: "Stowage is the placement of cargo in a way that ensures safe, efficient and damage-free transportation on the ship.",
     content: `THE GOLDEN RULES OF STOWAGE:
 
 1. SAFETY: the cargo must not shift throughout the voyage. Lashing and securing must be adequate.
@@ -461,20 +461,20 @@ STOWAGE ORDER:
 
 Stowing heavy cargo low down gives a low KG and therefore good stability.`,
     bulletPoints: [
-      "Ağır yükler alta, hafif yükler üste yerleştirilir",
-      "Uyumsuz yükler birbirinden ayrılmalıdır",
-      "Yapısal yük limitleri asla aşılmamalıdır",
-      "Tahliye sırası istifleme planını belirler",
+      "Heavy loads are placed at the bottom, light loads at the top",
+      "Incompatible loads must be separated from each other",
+      "Structural load limits should never be exceeded",
+      "Discharge order determines stowing plan",
     ],
     keyPoints: [
-      "İstifleme güvenlik, stabilite ve verimlilik dengesini gözetir",
-      "Her yükün altına uygun dunnage yerleştirilmelidir",
-      "İstifleme planı kaptan onayına tabidir",
+      "Stacking balances safety, stability and efficiency",
+      "Appropriate dunnage should be placed under each load.",
+      "Stowage plan is subject to Master approval",
     ],
   },
   "stowage-factor": {
-    title: "İstifleme Faktörü (Stowage Factor)",
-    introduction: "İstifleme faktörü, bir ton yükün gemide kapladığı hacmi ifade eder ve yük planlamasının temel parametresidir.",
+    title: "Stowage Factor",
+    introduction: "Stowage factor refers to the volume occupied by one ton of cargo on the ship and is the basic parameter of cargo planning.",
     content: `The stowage factor (SF) is the volume one tonne of cargo occupies on board.
 
 Unit: m³/t or ft³/ton
@@ -497,15 +497,15 @@ A high SF = bulky cargo; the volume fills before the deadweight (measurement car
 
 Whether the cargo will fit is checked by comparing this against the ship's bale/grain capacity.`,
     bulletPoints: [
-      "SF = Bir ton yükün kapladığı hacim (m³/t)",
-      "Düşük SF: Ağır yük, deadweight sınırlayıcı",
-      "Yüksek SF: Hacimli yük, kapasite sınırlayıcı",
-      "Gereken hacim = Yük miktarı × SF",
+      "SF = Volume occupied by one ton of cargo (m³/t)",
+      "Low SF: Heavy load, deadweight limiting",
+      "High SF: Bulky load, capacity limiting",
+      "Required volume = Cargo quantity × SF",
     ],
     formula: {
-      name: "Gerekli Ambar Hacmi",
+      name: "Required Cargo hold Volume",
       expression: "V = W × SF",
-      description: "V: Gerekli hacim (m³), W: Yük miktarı (ton), SF: İstifleme faktörü (m³/t)",
+      description: "V: Required volume (m³), W: Cargo quantity (ton), SF: Stacking factor (m³/t)",
     },
     examples: [
       {
@@ -514,14 +514,14 @@ Whether the cargo will fit is checked by comparing this against the ship's bale/
       },
     ],
     keyPoints: [
-      "SF, yükün ambalaj durumuna göre değişir",
-      "Bale capacity paketli yükler, grain capacity dökme yükler için kullanılır",
-      "Broken stowage SF hesabına eklenerek gerçek hacim bulunur",
+      "SF varies depending on the packaging status of the cargo",
+      "Bale capacity is used for packaged loads, grain capacity is used for bulk loads.",
+      "Actual volume is found by adding Broken Stowage to SF calculation.",
     ],
   },
   "broken-stowage": {
-    title: "Broken Stowage Kavramı",
-    introduction: "Broken stowage, yükün şekli ve ambar geometrisi nedeniyle kullanılamayan ambar hacmini ifade eder.",
+    title: "Concept of Broken Stowage",
+    introduction: "Broken stowage refers to the cargo hold volume that cannot be used due to the shape of the cargo and the cargo hold geometry.",
     content: `Broken stowage is the space unavoidably left between cargoes, and between the cargo and the hold boundaries, inside a hold.
 
 WHY IT ARISES:
@@ -542,15 +542,15 @@ Usable volume = Hold volume × (1 – broken stowage %)
 
 The higher the broken stowage, the less cargo fits into the same hold. This loss must always be allowed for in the cargo plan.`,
     bulletPoints: [
-      "Broken stowage = ambar içinde kullanılamayan boşluk",
-      "Dökme yüklerde %2–5, kasalı yüklerde %15–25 oranında",
-      "Kullanılabilir hacim = Ambar hacmi × (1 – BS%)",
-      "Yük planlamasında broken stowage mutlaka hesaplanmalıdır",
+      "Broken stowage = unusable space in the cargo hold",
+      "2-5% for bulk cargo, 15-25% for cased cargo",
+      "Available volume = Cargo hold volume × (1 – BS%)",
+      "Broken stowage must be calculated in load planning.",
     ],
     formula: {
-      name: "Kullanılabilir Hacim",
+      name: "Available Volume",
       expression: "Vnet = Vambar × (1 − BS)",
-      description: "Vnet: Kullanılabilir hacim, Vambar: Ambar brüt hacmi, BS: Broken stowage oranı (ondalık)",
+      description: "Vnet: Available volume, Vambar: Cargo hold gross volume, BS: Broken stowage rate (decimal)",
     },
     examples: [
       {
@@ -560,8 +560,8 @@ The higher the broken stowage, the less cargo fits into the same hold. This loss
     ],
   },
   "cargo-compatibility": {
-    title: "Yük Uyumluluk Tablosu",
-    introduction: "Farklı yüklerin aynı ambarda veya bitişik ambarlarda taşınabilirliği uyumluluk kurallarına tabidir.",
+    title: "Load Compatibility Table",
+    introduction: "The transport of different loads in the same cargo hold or in adjacent cargo holds is subject to compatibility rules.",
     content: `REASONS FOR CARGO INCOMPATIBILITY:
 - Transfer of odour (taint)
 - The effect of moisture and sweat
@@ -582,20 +582,20 @@ LEVELS OF SEGREGATION:
 
 For dangerous goods the IMDG Code segregation table applies.`,
     bulletPoints: [
-      "Koku, nem ve kimyasal uyumluluk kontrol edilmelidir",
-      "Uyumsuz yükler ayrı ambarlara yerleştirilir",
-      "IMDG ayrım tablosu tehlikeli yükler için zorunludur",
-      "Gıda yükleri kimyasallardan uzak tutulmalıdır",
+      "Odor, moisture and chemical compatibility should be checked",
+      "Incompatible loads are placed in separate cargo holds",
+      "IMDG separation table is mandatory for dangerous cargoes",
+      "Food loads should be kept away from chemicals",
     ],
     keyPoints: [
-      "Yük uyumluluğu yükleme planının temel parametresidir",
-      "Kontaminasyon hasarı gemiyi mali sorumlu yapabilir",
-      "Baş zabit uyumluluk tablosunu kontrol etmelidir",
+      "Load compatibility is the key parameter of the loading plan",
+      "Contamination damage could make the ship financially liable",
+      "The chief officer must check the compatibility table",
     ],
   },
   "ventilation": {
-    title: "Ambar Havalandırması",
-    introduction: "Ambar havalandırması, yük terleme hasarını önlemek ve güvenli atmosferi korumak için uygulanan prosedürdür.",
+    title: "Cargo hold Ventilation",
+    introduction: "Hold ventilation is the procedure implemented to prevent cargo sweating damage and maintain a safe atmosphere.",
     content: `THE PURPOSE OF VENTILATION:
 1. To prevent sweat damage
 2. To remove carbon dioxide, methane and other gases
@@ -619,20 +619,20 @@ When the ship's steel structure cools, the moist hold air condenses on the shell
 CARGO SWEAT:
 Warm moist air condenses on a cold cargo surface.`,
     bulletPoints: [
-      "Dew point karşılaştırması havalandırma kararını belirler",
-      "Gemi terleme: Çelik yapı soğuduğunda oluşur",
-      "Yük terleme: Sıcak hava soğuk yüke temas ettiğinde oluşur",
-      "Tahıl yüklerinde havalandırma özel önem taşır",
+      "Dew point comparison determines ventilation decision",
+      "Ship sweating: Occurs when the steel structure cools",
+      "Load transpiration: Occurs when hot air comes into contact with cold load",
+      "Ventilation is of particular importance in grain loads",
     ],
     keyPoints: [
-      "Havalandırma günlüğü tutulmalı ve kayıt altına alınmalıdır",
-      "Yağmurlu havada havalandırma kapanır",
-      "Dew point ölçümleri düzenli yapılmalıdır",
+      "A ventilation log should be kept and recorded.",
+      "Ventilation closes in rainy weather",
+      "Dew point measurements should be made regularly",
     ],
   },
   "dunnage": {
-    title: "Dunnage (Altlık) Kullanımı",
-    introduction: "Dunnage, yükü ambar tabanından, duvarlarından ve diğer yüklerden ayırmak için kullanılan koruyucu malzemedir.",
+    title: "Dunnage Usage",
+    introduction: "Dunnage is the protective material used to separate cargo from the cargo hold floor, walls and other cargo.",
     content: `TYPES OF DUNNAGE:
 - Wooden boards and pieces of timber
 - Polythene sheeting
@@ -654,15 +654,15 @@ RULES OF APPLICATION:
 - Cross-laying improves air circulation
 - Thicker dunnage is used under heavy cargoes`,
     bulletPoints: [
-      "Dunnage yükü nem, sürtünme ve hasardan korur",
-      "Minimum 25 mm kalınlığında ahşap kullanılır",
-      "Çapraz döşeme hava dolaşımı sağlar",
-      "Temiz ve kuru malzeme kullanılmalıdır",
+      "Dunnage protects the load from moisture, friction and damage",
+      "Minimum 25 mm thick wood is used",
+      "Cross flooring provides air circulation",
+      "Clean and dry materials should be used",
     ],
     keyPoints: [
-      "Dunnage maliyeti yük hasar tazminatından çok düşüktür",
-      "Her yükleme öncesi yeterli dunnage stoku kontrol edilmelidir",
-      "Uygun dunnage kullanımı sigorta açısından önemlidir",
+      "Dunnage cost is much lower than cargo damage compensation",
+      "Adequate dunnage stock should be checked before each loading.",
+      "The use of appropriate dunnage is important for insurance",
     ],
   },
 
@@ -670,8 +670,8 @@ RULES OF APPLICATION:
   // BÖLÜM 3 - LASHING & SECURING
   // =====================================================
   "lashing-principles": {
-    title: "Bağlama Prensipleri ve Kuvvetler",
-    introduction: "Yük bağlama, deniz koşullarında yüke etki eden ivme kuvvetlerine karşı yükü sabit tutmak için uygulanan prosedürdür.",
+    title: "Binding Principles and Forces",
+    introduction: "Load lashing is the procedure applied to keep the load constant against the acceleration forces acting on the load in sea conditions.",
     content: `THE FORCES ACTING ON CARGO AT SEA:
 The motion of the ship subjects the cargo to acceleration forces in three directions:
 
@@ -694,15 +694,15 @@ Safety factor: minimum 1.5
 
 Friction also helps to resist the cargo sliding. The coefficient of friction between steel and steel is about 0.3.`,
     bulletPoints: [
-      "Enine kuvvetler en büyük bağlama ihtiyacını oluşturur",
-      "Bağlama kuvveti kayma kuvvetinin 1.5 katı olmalıdır",
-      "Sürtünme katsayısı hesaba dahil edilir",
-      "CSS Code hesap yöntemlerini belirler",
+      "Transverse forces create the greatest clamping requirement",
+      "The binding force should be 1.5 times the sliding force",
+      "The coefficient of friction is included in the calculation",
+      "CSS Code determines calculation methods",
     ],
     keyPoints: [
-      "Bağlama hesabı operasyon öncesi yapılmalıdır",
-      "Seyir sırasında bağlamaların kontrolü zorunludur",
-      "Kötü hava öncesi ek bağlama yapılabilir",
+      "Binding calculation must be made before the operation",
+      "It is mandatory to check the moorings while sailing.",
+      "Additional tying can be done before bad weather",
     ],
     warnings: [
       "Inadequate securing leads to the cargo shifting and toppling",
@@ -710,8 +710,8 @@ Friction also helps to resist the cargo sliding. The coefficient of friction bet
     ],
   },
   "css-code": {
-    title: "CSS Code Gereksinimleri",
-    introduction: "CSS Code (Code of Safe Practice for Cargo Stowage and Securing), IMO tarafından yayımlanan yük istifleme ve bağlama güvenlik kurallarıdır.",
+    title: "CSS Code Requirements",
+    introduction: "CSS Code (Code of Safe Practice for Cargo Stowage and Securing) is the cargo stowing and lashing safety rules published by IMO.",
     content: `THE STRUCTURE OF THE CSS CODE:
 A code of practice adopted by IMO Resolution A.714(17) and updated regularly.
 
@@ -729,20 +729,20 @@ ANNEXES TO THE CSS CODE:
 THE ANNEX 13 CALCULATION METHOD:
 It compares the effect of the acceleration forces on the cargo with the capacity of the securing equipment to resist them.`,
     bulletPoints: [
-      "Her gemide Cargo Securing Manual (CSM) zorunludur",
-      "Bağlama noktalarının kapasiteleri belgelenmelidir",
-      "MSL değerleri ekipman üzerinde belirtilmelidir",
-      "Annex 13 ileri bağlama hesaplarını tanımlar",
+      "Cargo Securing Manual (CSM) is mandatory on every ship",
+      "The capacities of the mooring points must be documented",
+      "MSL values must be stated on the equipment",
+      "Annex 13 defines forward linking calculations",
     ],
     keyPoints: [
-      "CSM gemi özelinde hazırlanır ve klas onayı gerektirir",
-      "PSC denetimlerinde CSM ve uygulaması kontrol edilir",
-      "Yeni ekipman eklendiğinde CSM güncellenmelidir",
+      "CSM is prepared specifically for the ship and requires class approval.",
+      "CSM and its application are checked in PSC inspections",
+      "CSM must be updated whenever new equipment is added",
     ],
   },
   "lashing-equipment": {
-    title: "Bağlama Ekipmanları",
-    introduction: "Yük bağlama ekipmanları, her birinin belirli kapasitesi (MSL) olan ve yükü gemiye sabitleyen malzemelerdir.",
+    title: "Securing Equipment",
+    introduction: "Cargo lashing equipment are materials that each have a certain capacity (MSL) and secure the cargo to the ship.",
     content: `THE PRINCIPAL SECURING EQUIPMENT:
 
 1. LASHING CHAIN:
@@ -774,20 +774,20 @@ It compares the effect of the acceleration forces on the cargo with the capacity
 - The SWL values are shown on the ship's plan
 - Regular inspection and maintenance are mandatory`,
     bulletPoints: [
-      "Zincir MSL: Kopma yükünün %50'si",
-      "Çelik halat MSL: Kopma yükünün %80'i",
-      "Her ekipmanın MSL etiketi okunmalıdır",
-      "Hasarlı ekipman kullanılmamalıdır",
+      "Chain MSL: 50% of breaking load",
+      "Wire rope MSL: 80% of breaking load",
+      "The MSL label of each equipment must be read",
+      "Damaged equipment should not be used",
     ],
     keyPoints: [
-      "MSL değerleri CSS Code'a göre belirlenir",
-      "Ekipman bakımı ve sertifikası zorunludur",
-      "Bağlama açısı etkin kuvveti azaltır (kuvvet = MSL × cos θ)",
+      "MSL values are determined according to CSS Code",
+      "Equipment maintenance and certification is mandatory",
+      "The clamping angle reduces the effective force (force = MSL × cos θ)",
     ],
   },
   "lashing-calc": {
-    title: "Bağlama Kuvveti Hesapları",
-    introduction: "Bağlama kuvveti hesabı, yüke etki eden kayma kuvvetlerini ve bağlama ekipmanının karşılama kapasitesini karşılaştırır.",
+    title: "Binding Force Calculations",
+    introduction: "Lashing force calculation compares the shear forces acting on the load and the resisting capacity of the lashing equipment.",
     content: `THE BASIC CALCULATION PRINCIPLE:
 
 Total securing capacity ≥ Safety factor × Sliding force
@@ -812,15 +812,15 @@ A large angle = a low effective force
 
 The ideal lashing angle: between 30° and 60°`,
     bulletPoints: [
-      "Bağlama kapasitesi kayma kuvvetinin 1.5 katı olmalıdır",
-      "Bağlama açısı etkin kuvveti doğrudan etkiler",
-      "Sürtünme kuvveti bağlama ihtiyacını azaltır",
-      "İdeal bağlama açısı 30°–60° arasıdır",
+      "Binding capacity should be 1.5 times the sliding force",
+      "Clamping angle directly affects the effective force",
+      "Frictional force reduces the need for fastening",
+      "The ideal tying angle is between 30°–60°",
     ],
     formula: {
-      name: "Etkin Bağlama Kuvveti",
+      name: "Effective Binding Force",
       expression: "Fetkin = MSL × cos α",
-      description: "Fetkin: Etkin yatay kuvvet, MSL: Maksimum sabitleme yükü, α: Bağlama açısı",
+      description: "Fetkin: Effective horizontal force, MSL: Maximum fastening load, α: Fastening angle",
     },
     examples: [
       {
@@ -829,14 +829,14 @@ The ideal lashing angle: between 30° and 60°`,
       },
     ],
     keyPoints: [
-      "Bağlama açısı küçüldükçe etkin kuvvet artar",
-      "Her iki taraftaki bağlama simetrik olmalıdır",
-      "Hesap sonuçları CSM'ye kaydedilmelidir",
+      "As the clamping angle decreases, the effective force increases",
+      "The binding on both sides must be symmetrical",
+      "Calculation results must be recorded in CSM",
     ],
   },
   "container-lashing": {
-    title: "Konteyner Bağlama Sistemleri",
-    introduction: "Konteyner bağlama, twist lock, lashing bar ve stacking cone gibi standart ekipmanlarla gerçekleştirilir.",
+    title: "Container Lashing Systems",
+    introduction: "Container lashing is performed with standard equipment such as twist lock, lashing bar and stacking cone.",
     content: `CONTAINER SECURING EQUIPMENT:
 
 1. TWIST LOCK (manual & automatic):
@@ -859,20 +859,20 @@ HEIGHT LIMITS:
 Heavy containers are stowed low and light ones high.
 Reefer containers are kept in positions where the power connections are accessible.`,
     bulletPoints: [
-      "Twist lock en temel konteyner sabitleme elemanıdır",
-      "Güverte üstü 2.–3. kata kadar lashing bar uygulanır",
-      "Ağır konteynerler alta, hafifler üste yerleştirilir",
-      "Reefer konteynerler elektrik bağlantısına yakın konumlandırılır",
+      "Twist lock is the most basic container fastening element",
+      "Above deck 2nd–3rd. Lashing bar is applied up to",
+      "Heavy containers are placed at the bottom, light ones are placed at the top",
+      "Reefer containers are positioned close to the electrical connection",
     ],
     keyPoints: [
-      "Automatic twist lock operasyonu hızlandırır",
-      "Lashing bar'ların sertifikası kontrol edilmelidir",
-      "VGM (Verified Gross Mass) bilgisi istifleme planında kullanılır",
+      "Automatic twist lock speeds up operation",
+      "The certificate of Lashing bars should be checked",
+      "VGM (Verified Gross Mass) information is used in the stowing plan",
     ],
   },
   "heavy-lift-lashing": {
-    title: "Ağır Yük Bağlama",
-    introduction: "Ağır yükler (heavy lift), standart bağlama yöntemlerinin ötesinde özel hesap ve ekipman gerektiren yüklerdir.",
+    title: "Heavy Load Lashing",
+    introduction: "Heavy loads (heavy lifts) are loads that require special calculations and equipment beyond standard fastening methods.",
     content: `DEFINITION OF HEAVY LIFT:
 Generally cargoes weighing more than 50 tonnes as a single piece. Transformers, generators, industrial equipment and cranes fall into this category.
 
@@ -896,15 +896,15 @@ SECURING ARRANGEMENT:
 STOPPERS AND CHOCKS:
 Steel stoppers or wooden chocks are fitted to prevent the cargo sliding.`,
     bulletPoints: [
-      "Güverte dayanımı ilk kontrol noktasıdır",
-      "Spreader plaka yük dağılımı sağlar",
-      "CSS Code Annex 13 hesap yöntemi uygulanır",
-      "Stopper ve chock kayma önlemek için kullanılır",
+      "Deck strength is the first check point",
+      "Spreader plate provides load distribution",
+      "CSS Code Annex 13 calculation method is applied",
+      "Stopper and chock are used to prevent slipping",
     ],
     keyPoints: [
-      "Ağır yük operasyonlarında stabilite önceden hesaplanmalıdır",
-      "Welding pad kullanımı klas onayına tabi olabilir",
-      "Bağlama düzeni kaptan ve terminal koordinasyonuyla belirlenir",
+      "Stability in heavy cargo operations must be calculated in advance",
+      "Use of welding pad may be subject to class approval",
+      "The mooring order is determined by the coordination of the Master and the terminal.",
     ],
     warnings: [
       "If the deck strength is exceeded there is a risk of structural damage",
@@ -916,8 +916,8 @@ Steel stoppers or wooden chocks are fitted to prevent the cargo sliding.`,
   // BÖLÜM 4 - DRAFT SURVEY
   // =====================================================
   "draft-survey-intro": {
-    title: "Draft Survey Amacı ve Prensibi",
-    introduction: "Draft survey, geminin su çekimindeki (draft) değişimden yola çıkarak yüklenen veya boşaltılan yük miktarını hesaplama yöntemidir.",
+    title: "Draft Survey Purpose and Principle",
+    introduction: "Draft survey is a method of calculating the amount of cargo loaded or unloaded based on the change in draft of the ship.",
     content: `A draft survey is based on Archimedes' principle:
 
 The weight of the water a body displaces is equal to the weight of that body.
@@ -939,20 +939,20 @@ STEPS:
 
 The draft survey is the most common method of establishing the commercial quantity of bulk cargoes.`,
     bulletPoints: [
-      "Draft survey Arşimet prensibine dayanır",
-      "Yük = Son deplasman − İlk deplasman − Düşülenler",
-      "Prova, pupa ve orta olmak üzere 6 nokta okunur",
-      "Dökme yük ticaretinde standart miktar tespit yöntemidir",
+      "Draft survey is based on Archimedes principle",
+      "Load = Final displacement − Initial displacement − Deductions",
+      "6 points are read: proof, pupa and middle.",
+      "It is the standard quantity determination method in bulk cargo trade.",
     ],
     keyPoints: [
-      "Draft survey bağımsız bir surveyor tarafından yapılabilir",
-      "Ticari anlaşmazlıklarda referans belgedir",
-      "Doğruluk ±0.5% mertebesindedir (iyi koşullarda)",
+      "Draft survey can be done by an independent surveyor",
+      "It is a reference document in commercial disputes",
+      "Accuracy is within ±0.5% (under good conditions)",
     ],
   },
   "draft-reading": {
-    title: "Draft Okuma Teknikleri",
-    introduction: "Draft okumaları, geminin pruva (baş), pupa (kıç) ve orta noktalarında sancak ve iskele tarafından yapılan su çekimi ölçümleridir.",
+    title: "Draft Reading Techniques",
+    introduction: "Draft readings are the draft measurements made from the starboard and port side of the ship at the bow (head), stern and midpoints.",
     content: `READING POINTS:
 The draft is read at 6 points:
 - Forward starboard (FS), forward port (FP)
@@ -977,20 +977,20 @@ READING DIFFICULTIES:
 
 It is important that the readings are taken at the same time. Readings must not be taken while ballast transfer or loading is in progress.`,
     bulletPoints: [
-      "6 noktadan eş zamanlı okuma yapılır",
-      "Dalga ortalaması alınarak net değer bulunur",
-      "Metrik ve imperial okuma kuralları farklıdır",
-      "Ballast transferi sırasında okuma yapılmamalıdır",
+      "Simultaneous reading is made from 6 points",
+      "The net value is found by averaging the wave",
+      "Metric and imperial reading rules are different",
+      "Reading should not be taken during ballast transfer",
     ],
     keyPoints: [
-      "Doğru okuma, doğru hesabın temelidir",
-      "Gece okumalarında yeterli aydınlatma sağlanmalıdır",
-      "Her okuma kayıt altına alınmalıdır",
+      "Accurate reading is the basis of correct calculation",
+      "Adequate lighting should be provided for night readings.",
+      "Every reading should be recorded",
     ],
   },
   "mean-draft": {
-    title: "Ortalama Draft Hesabı",
-    introduction: "Ortalama draft, geminin trim ve eğimini dikkate alarak tek bir temsili draft değerine ulaşmayı amaçlar.",
+    title: "Average Draft Calculation",
+    introduction: "Average draft aims to arrive at a single representative draft value, taking into account the ship's trim and pitch.",
     content: `THREE MEAN METHODS:
 
 1. MEAN OF MEANS:
@@ -1010,15 +1010,15 @@ DETECTING HOGGING AND SAGGING:
 
 The quarter mean draft gives a more accurate displacement, particularly where there is marked hogging or sagging.`,
     bulletPoints: [
-      "Düz durumda aritmetik ortalama kullanılır",
-      "Hogging/sagging varsa QM draft tercih edilir",
+      "In the straight case the arithmetic mean is used",
+      "If there is hogging/sagging, QM draft is preferred",
       "QM = (dF + 6×dM + dA) / 8",
-      "Hogging: Ortası yukarı, Sagging: Ortası aşağı",
+      "Hogging: Middle up, Sagging: Middle down",
     ],
     formula: {
       name: "Quarter Mean Draft",
       expression: "dQM = (dF + 6 × dM + dA) / 8",
-      description: "dQM: Quarter mean draft, dF: Pruva (baş) draft, dM: Orta draft, dA: Pupa draft",
+      description: "dQM: Quarter mean draft, dF: Bow draft, dM: Medium draft, dA: Stern draft",
     },
     examples: [
       {
@@ -1028,8 +1028,8 @@ The quarter mean draft gives a more accurate displacement, particularly where th
     ],
   },
   "trim-correction": {
-    title: "Trim Düzeltmeleri",
-    introduction: "Trim düzeltmeleri, geminin trimli olduğu durumlarda hidrostatik tablolardan okunan deplasmanın doğru değere getirilmesi için uygulanır.",
+    title: "Trim Fixes",
+    introduction: "Trim corrections are applied to bring the displacement read from the hydrostatic tables to the correct value when the ship is trimmed.",
     content: `TRIM:
 Trim = dA − dF
 
@@ -1054,20 +1054,20 @@ TOTAL DISPLACEMENT:
 
 The trim corrections make a significant difference particularly at large trims (more than 1 metre).`,
     bulletPoints: [
-      "Birinci düzeltme LCF pozisyonundan kaynaklanır",
-      "İkinci düzeltme her zaman pozitiftir",
-      "Toplam deplasman = Tablo değeri + Δ₁ + Δ₂",
-      "Büyük trimlerde düzeltmeler kritik öneme sahiptir",
+      "The first correction comes from the LCF position",
+      "The second correction is always positive",
+      "Total displacement = Table value + Δ₁ + Δ₂",
+      "Corrections are critical on large trims",
     ],
     formula: {
-      name: "Birinci Trim Düzeltmesi",
+      name: "First Trim Correction",
       expression: "Δ₁ = (Trim × LCF × TPC × 100) / LBP",
-      description: "LCF: Yüzerlik merkezi ortadan uzaklık, TPC: Ton/cm, LBP: İki perpendikül arası uzunluk",
+      description: "LCF: Distance from center of buoyancy, TPC: Ton/cm, LBP: Length between two perpendicles",
     },
   },
   "density-correction": {
     title: "Density Correction",
-    introduction: "Hidrostatik tablolar tuzlu deniz suyu (1.025 t/m³) için hazırlanır; farklı yoğunluktaki sularda düzeltme gerekir.",
+    introduction: "Hydrostatic tables are prepared for salty seawater (1.025 t/m³); Correction is required for water of different densities.",
     content: `The hydrostatic tables are drawn up for a density of 1.025 t/m³.
 
 Dock water can be of a different density:
@@ -1088,15 +1088,15 @@ Measuring the density:
 
 In water of lower density the ship floats deeper (reads a greater draft) but the displacement does not change.`,
     bulletPoints: [
-      "Tablolar 1.025 t/m³ için hazırlanmıştır",
-      "Farklı yoğunlukta düzeltme zorunludur",
-      "Δdüz = Δtablo × (ρdock / 1.025)",
-      "Hidrometre ile yoğunluk ölçülür",
+      "Tables are prepared for 1.025 t/m³",
+      "Correction of different intensity is mandatory",
+      "Δflat = Δtable × (ρdock / 1.025)",
+      "Density is measured with a hydrometer",
     ],
     formula: {
       name: "Density Correction",
       expression: "Δcorrected = Δtable × (ρdock / 1.025)",
-      description: "ρdock: Liman suyu yoğunluğu (t/m³). Düşük yoğunlukta deplasman azaltılır.",
+      description: "ρdock: Port water density (t/m³). At low density, displacement is reduced.",
     },
     examples: [
       {
@@ -1106,8 +1106,8 @@ In water of lower density the ship floats deeper (reads a greater draft) but the
     ],
   },
   "deductibles": {
-    title: "Düşülen Değerler (Deductibles)",
-    introduction: "Draft survey sonucunda hesaplanan deplasmanlardan ballast, yakıt, tatlı su ve diğer sıvıların ağırlığı düşülerek net yük miktarı bulunur.",
+    title: "Deductibles",
+    introduction: "The net cargo quantity is calculated by deducting the weight of ballast, fuel, fresh water and other liquids from the displacements calculated as a result of the draft survey.",
     content: `The net cargo calculation:
 Cargo = (Δfinal − Δinitial) − (deductibles_final − deductibles_initial)
 
@@ -1133,15 +1133,15 @@ MEASUREMENT ACCURACY:
 - Ballast tanks are kept full or empty where possible
 - The ballast remaining on board (ROB) is calculated carefully`,
     bulletPoints: [
-      "Ballast, yakıt, tatlı su ve sabitler düşülür",
-      "Her tank ayrı ölçülür",
-      "Sıcaklık düzeltmesi yakıtta zorunludur",
-      "Constant değeri genellikle sabit kabul edilir",
+      "Ballast, fuel, fresh water and fixed items are deducted",
+      "Each tank is measured separately",
+      "Temperature correction is mandatory for fuel",
+      "Constant value is generally considered constant",
     ],
     keyPoints: [
-      "Deductibles hatası doğrudan yük miktarını etkiler",
-      "Ballast tanklarının boş olduğu kontrol edilmelidir",
-      "Yakıt yoğunluğu sıcaklığa göre düzeltilmelidir",
+      "Deductibles error directly affects the cargo quantity",
+      "It should be checked that ballast tanks are empty",
+      "Fuel density must be corrected for temperature",
     ],
   },
 
@@ -1149,8 +1149,8 @@ MEASUREMENT ACCURACY:
   // BÖLÜM 5 - DÖKME YÜKLER VE IMSBC CODE
   // =====================================================
   "bulk-types": {
-    title: "Dökme Yük Türleri",
-    introduction: "Dökme yükler tanecikli yapıda olup ambalajsız olarak geminin ambarlarına doğrudan yüklenen katı malzemelerdir.",
+    title: "Bulk Cargo Types",
+    introduction: "Bulk cargoes are solid materials that have a granular structure and are loaded directly into the holds of the ship without packaging.",
     content: `THE PRINCIPAL BULK CARGOES:
 
 1. ORES:
@@ -1185,20 +1185,20 @@ The IMSBC Code divides all bulk cargoes into three groups:
 - Group B: cargoes with a chemical hazard
 - Group C: cargoes that fall into neither Group A nor Group B`,
     bulletPoints: [
-      "Cevherler çok ağır (düşük SF), tahıllar hacimlidir (yüksek SF)",
-      "Kömür kendiliğinden yanma ve metan riski taşır",
-      "IMSBC Code dökme yükleri A, B, C gruplarına ayırır",
-      "Grup A yükler sıvılaşma riski taşır",
+      "Ores are very heavy (low SF), grains are bulky (high SF)",
+      "Coal poses risk of spontaneous combustion and methane",
+      "IMSBC Code divides bulk cargo into groups A, B, C",
+      "Group A loads carry the risk of liquefaction",
     ],
     keyPoints: [
-      "Her dökme yükün IMSBC Code'daki veri sayfası kontrol edilmelidir",
-      "Yükleme öncesi yükün nem içeriği belirlenmelidir",
-      "Grup A yüklerde TML ve FMP sertifikası zorunludur",
+      "The data sheet of each bulk cargo in the IMSBC Code should be checked",
+      "The moisture content of the cargo must be determined before loading.",
+      "TML and FMP certificates are mandatory for Group A loads",
     ],
   },
   "imsbc-code": {
-    title: "IMSBC Code Genel Yapısı",
-    introduction: "IMSBC Code (International Maritime Solid Bulk Cargoes Code), dökme katı yüklerin güvenli taşınmasını düzenleyen zorunlu uluslararası koddur.",
+    title: "IMSBC Code General Structure",
+    introduction: "IMSBC Code (International Maritime Solid Bulk Cargoes Code) is the mandatory international code that regulates the safe transportation of bulk solid cargo.",
     content: `THE STRUCTURE OF THE IMSBC CODE:
 
 Mandatory under SOLAS Chapter VI, this code sets out the rules for the safe carriage of solid bulk cargoes.
@@ -1225,20 +1225,20 @@ EACH CARGO HAS A DATA SHEET CONTAINING:
 - Precautions during carriage
 - Emergency procedures`,
     bulletPoints: [
-      "SOLAS Bölüm VI ile zorunlu kılınmıştır",
-      "Her yükün kendine özel veri sayfası vardır",
-      "Yükler A, B ve C gruplarına ayrılır",
-      "Kod düzenli olarak güncellenir (amendments)",
+      "Required by SOLAS Chapter VI",
+      "Each load has its own data sheet",
+      "Loads are divided into groups A, B and C",
+      "The code is updated regularly (amendments)",
     ],
     keyPoints: [
-      "Yükleme öncesi IMSBC veri sayfası mutlaka incelenmelidir",
-      "Kod kapsamında olmayan yük için bayrak devleti iznı gerekir",
-      "PSC denetimlerinde IMSBC uyumu kontrol edilir",
+      "The IMSBC data sheet must be examined before loading.",
+      "Flag state permit is required for cargo not covered by the code",
+      "IMSBC compliance is checked during PSC inspections",
     ],
   },
   "tml-fmp": {
-    title: "TML ve FMP Kavramları",
-    introduction: "TML (Transportable Moisture Limit) ve FMP (Flow Moisture Point), dökme yüklerin sıvılaşma riskini değerlendirmek için kullanılan kritik parametrelerdir.",
+    title: "TML and FMP Concepts",
+    introduction: "TML (Transportable Moisture Limit) and FMP (Flow Moisture Point) are critical parameters used to evaluate the liquefaction risk of bulk cargoes.",
     content: `WHAT IS LIQUEFACTION?
 Some bulk cargoes (fine-grained minerals and ores) can begin to behave like a liquid under the vibration and motion of the ship. This causes the cargo to shift to one side and the ship to capsize.
 
@@ -1258,20 +1258,20 @@ THE CONTROL MECHANISM:
 THE CAN TEST (a practical test):
 A can is half filled with the cargo and struck on a table 25 times. If free moisture appears on the surface the cargo must not be loaded.`,
     bulletPoints: [
-      "Sıvılaşma = Dökme yükün sıvı gibi davranması",
+      "Liquefaction = Bulk cargo acting like a liquid",
       "TML = FMP × 0.9",
-      "Nem içeriği ≤ TML olmalıdır",
-      "Can testi pratik kontrol yöntemidir",
+      "Moisture content must be ≤ TML",
+      "Life test is a practical control method",
     ],
     formula: {
-      name: "Taşınabilir Nem Limiti",
+      name: "Portable Humidity Limit",
       expression: "TML = FMP × 0.9",
-      description: "TML: Taşınabilir nem limiti (%), FMP: Akışkan nem noktası (%)",
+      description: "TML: Portable humidity limit (%), FMP: Fluid humidity point (%).",
     },
     keyPoints: [
-      "TML sertifikası yükleme öncesi alınmalıdır",
-      "Can testi basit ama etkili bir kontrol yöntemidir",
-      "Yağmur altında yükleme nem oranını artırabilir",
+      "TML certificate must be obtained before loading",
+      "Can test is a simple but effective control method",
+      "Installing under rain can increase humidity",
     ],
     warnings: [
       "Cargo with a moisture content above the TML must never be loaded",
@@ -1279,8 +1279,8 @@ A can is half filled with the cargo and struck on a table 25 times. If free mois
     ],
   },
   "group-a-cargoes": {
-    title: "Grup A Yükler (Liquefiable)",
-    introduction: "Grup A yükler, belirli nem oranı üzerinde sıvılaşma riski taşıyan ve özel önlemlerle taşınması gereken dökme yüklerdir.",
+    title: "Group A Loads (Liquefiable)",
+    introduction: "Group A cargoes are bulk cargoes that pose a risk of liquefaction above a certain humidity level and must be transported with special precautions.",
     content: `EXAMPLES OF GROUP A CARGOES:
 - Nickel ore
 - Iron ore fines
@@ -1304,15 +1304,15 @@ PRECAUTIONS DURING THE VOYAGE:
 PAST CASUALTIES:
 The capsizing of ships loaded with nickel ore led to the Group A cargo rules in the IMSBC Code being tightened.`,
     bulletPoints: [
-      "Nikel cevheri ve ince demir cevheri en riskli Grup A yüklerdir",
-      "TML sertifikası ve nem testi zorunludur",
-      "Can testi yükleme öncesi uygulanmalıdır",
-      "Geçmiş kazalar kuralların sıkılaşmasına yol açmıştır",
+      "Nickel ore and fine iron ore are the riskiest Group A cargoes",
+      "TML certification and moisture test are mandatory",
+      "Life test should be applied before loading",
+      "Past accidents have led to tightening of rules",
     ],
     keyPoints: [
-      "Kaptan yükü reddetme hakkına sahiptir",
-      "Yağmur altında yükleme yapmaktan kaçınılmalıdır",
-      "Ambar bilge pompası sistemi kontrol edilmelidir",
+      "The Master has the right to refuse the cargo",
+      "Loading in the rain should be avoided",
+      "Cargo hold bilge pump system should be checked",
     ],
     warnings: [
       "The liquefaction of Group A cargoes has caused the most fatal cargo casualties worldwide",
@@ -1320,8 +1320,8 @@ The capsizing of ships loaded with nickel ore led to the Group A cargo rules in 
     ],
   },
   "group-b-cargoes": {
-    title: "Grup B Yükler (Kimyasal Tehlike)",
-    introduction: "Grup B yükler kimyasal tehlike arz eden dökme katı yüklerdir ve özel taşıma kurallarına tabidir.",
+    title: "Group B Cargoes (Chemical Hazard)",
+    introduction: "Group B loads are bulk solid loads that pose chemical hazards and are subject to special transportation rules.",
     content: `EXAMPLES OF GROUP B CARGOES AND THEIR HAZARDS:
 
 1. COAL:
@@ -1349,15 +1349,15 @@ COMMON PRECAUTIONS:
 - Fire prevention measures
 - Compliance with the ventilation rules`,
     bulletPoints: [
-      "Kömür: Metan, self-heating ve oksijen tüketimi riski",
-      "DRI: Su temasında hidrojen üretir",
-      "Kükürt: Yanıcı toz ve SO₂ riski",
-      "Gaz ölçüm cihazları hazır tutulmalıdır",
+      "Coal: Risk of methane, self-heating and oxygen depletion",
+      "DRI: Produces hydrogen on contact with water",
+      "Sulfur: Risk of flammable dust and SO₂",
+      "Gas measuring devices should be kept ready",
     ],
     keyPoints: [
-      "Grup B yüklerin IMSBC veri sayfası dikkatle okunmalıdır",
-      "Kapalı alan girişi prosedürü mutlaka uygulanmalıdır",
-      "Yangın dedektörleri aktif tutulmalıdır",
+      "The IMSBC data sheet for Group B loads should be read carefully",
+      "Confined space entry procedure must be followed",
+      "Fire detectors should be kept active",
     ],
     warnings: [
       "The oxygen level in a coal hold can fall; entry can be fatal",
@@ -1365,8 +1365,8 @@ COMMON PRECAUTIONS:
     ],
   },
   "trimming-bulk": {
-    title: "Dökme Yük Trimlenmesi",
-    introduction: "Trimleme, dökme yükün ambar içinde düzgün yayılmasını sağlamak için yapılan seviyeleme işlemidir.",
+    title: "Bulk Cargo Trimming",
+    introduction: "Trimming is the leveling process performed to ensure proper distribution of bulk cargo within the cargo hold.",
     content: `THE PURPOSE OF TRIMMING:
 Bulk cargo piles up in a cone. A heap forms under the loading conveyor and the sides of the hold are left empty. This:
 - Increases the risk of the cargo shifting
@@ -1386,15 +1386,15 @@ Untrimmed cargo can shift at sea and, even if it does not capsize the ship, can 
 
 Trimming is particularly critical for grain cargoes; the Grain Code sets specific trimming requirements.`,
     bulletPoints: [
-      "Dökme yük konik yığılır, trimleme ile seviyelenir",
-      "SOLAS trimleme zorunluluğu getirir",
-      "Mekanik, konveyör veya grab ile yapılır",
-      "Trimlenmemiş yük kayma riski taşır",
+      "Bulk cargo is stacked conically and leveled by trimming",
+      "SOLAS requires trimming",
+      "Made by mechanical, conveyor or grab",
+      "Untrimmed load poses a risk of slipping",
     ],
     keyPoints: [
-      "Trimleme maliyeti stabilite kazasından çok düşüktür",
-      "Tahıl yüklerinde Grain Code trimleme kuralları uygulanır",
-      "Trimleme derecesi IMSBC veri sayfasında belirtilir",
+      "Trimming cost is much lower than stability accident",
+      "Grain Code trimming rules apply to grain loads",
+      "The degree of trimming is stated in the IMSBC data sheet",
     ],
   },
 
@@ -1402,8 +1402,8 @@ Trimming is particularly critical for grain cargoes; the Grain Code sets specifi
   // BÖLÜM 6 - TEHLİKELİ YÜKLER VE IMDG CODE
   // =====================================================
   "imdg-classes": {
-    title: "IMDG Sınıfları ve Alt Sınıflar",
-    introduction: "IMDG Code, tehlikeli yükleri 9 ana sınıfa ayırır. Her sınıfın kendine özel tehlike özellikleri, istifleme ve bağlama kuralları vardır.",
+    title: "IMDG Classes and Subclasses",
+    introduction: "IMDG Code divides dangerous cargo into 9 main classes. Each class has its own hazard characteristics, stowing and tying rules.",
     content: `IMDG HAZARD CLASSES:
 
 Class 1: EXPLOSIVES
@@ -1441,20 +1441,20 @@ Class 8: CORROSIVE SUBSTANCES
 
 Class 9: MISCELLANEOUS DANGEROUS SUBSTANCES`,
     bulletPoints: [
-      "9 ana sınıf ve çok sayıda alt sınıf mevcuttur",
-      "Her maddenin UN numarası vardır",
-      "Paketleme grubu (PG I, II, III) tehlike seviyesini belirtir",
-      "UN numarası ile IMDG Code'dan detaylı bilgiye ulaşılır",
+      "9 main classes and many subclasses available",
+      "Every substance has a UN number",
+      "Packaging group (PG I, II, III) indicates the hazard level",
+      "Detailed information can be obtained from the UN number and IMDG Code.",
     ],
     keyPoints: [
-      "UN numarası tehlikeli yük tanımlama anahtarıdır",
-      "Aynı sınıftaki maddeler bile farklı kurallara tabi olabilir",
-      "IMDG Code iki yılda bir güncellenir",
+      "UN number is the dangerous cargo identification key",
+      "Even substances in the same class may be subject to different rules",
+      "IMDG Code is updated every two years",
     ],
   },
   "imdg-labeling": {
-    title: "Etiketleme ve İşaretleme",
-    introduction: "Tehlikeli yüklerin doğru etiketlenmesi ve işaretlenmesi, güvenli elleçleme ve acil müdahale için zorunludur.",
+    title: "Labeling and Marking",
+    introduction: "Correct labeling and marking of dangerous cargo is mandatory for safe handling and emergency response.",
     content: `LABELLING REQUIREMENTS:
 
 1. HAZARD LABELS:
@@ -1480,20 +1480,20 @@ The substance's official transport name in the IMDG Code.
 - Orientation arrows (this way up)
 - Limited/excepted quantity marks`,
     bulletPoints: [
-      "Tehlike etiketi minimum 100×100 mm boyutunda",
-      "Konteyner placard'ı dört yüze yapıştırılır",
-      "UN numarası her pakette görünür olmalı",
-      "Proper Shipping Name IMDG Code'a göre yazılır",
+      "Hazard label minimum size 100×100 mm",
+      "Container placard is pasted on four sides",
+      "UN number must be visible on every package",
+      "Proper Shipping Name is written according to IMDG Code",
     ],
     keyPoints: [
-      "Eksik veya yanlış etiketleme PSC tutulma nedenidir",
-      "Acil müdahale ekibi etiketten tehlikeyi tanır",
-      "Marine pollutant işareti çevresel riski gösterir",
+      "Incomplete or incorrect labeling is a reason for PSC detention",
+      "Emergency response team recognizes danger from the tag",
+      "Marine pollutant sign indicates environmental risk",
     ],
   },
   "imdg-segregation": {
-    title: "Ayrım Tablosu (Segregation Table)",
-    introduction: "IMDG Code segregation table, farklı sınıftaki tehlikeli yüklerin gemide birbirine olan minimum uzaklığını belirler.",
+    title: "Segregation Table",
+    introduction: "IMDG Code segregation table determines the minimum distance between different classes of dangerous cargo on the ship.",
     image: "/diagrams/seamanship/imdg-ayrim.svg",
     content: `SEGREGATION LEVELS (from the lowest to the highest):
 
@@ -1519,15 +1519,15 @@ X = see the segregation rules (special cases)
 3 = Separated by a complete compartment
 4 = Separated longitudinally`,
     bulletPoints: [
-      "4 ayrım seviyesi mevcuttur (1 en düşük, 4 en yüksek)",
-      "Tablo IMDG sınıflarının kesişimine göre okunur",
-      "Güverte üstü ve altı için farklı kurallar uygulanabilir",
-      "X işareti özel durum kontrolü gerektirir",
+      "4 discrimination levels available (1 lowest, 4 highest)",
+      "The table is read according to the intersection of IMDG classes",
+      "Different rules may apply for above and below deck",
+      "X sign requires exception check",
     ],
     keyPoints: [
-      "Ayrım tablosu yükleme planının temel referansıdır",
-      "Yanlış ayrım PSC tutulma ve sigorta ihlali nedenidir",
-      "Tablo güncel IMDG Code sürümünden kontrol edilmelidir",
+      "The separation table is the basic reference of the loading plan",
+      "Incorrect discrimination is a cause of PSC detention and insurance violation",
+      "The table should be checked from the current IMDG Code version",
     ],
     warnings: [
       "Stowing incompatible dangerous goods close together can cause fire and explosion",
@@ -1535,8 +1535,8 @@ X = see the segregation rules (special cases)
     ],
   },
   "imdg-stowage": {
-    title: "Tehlikeli Yük İstifleme Kuralları",
-    introduction: "Tehlikeli yüklerin istiflenmesi IMDG Code'un belirlediği özel kurallara tabidir ve sınıfa göre güverte üstü veya altı yerleşim belirlenmiştir.",
+    title: "Dangerous Cargo Stacking Rules",
+    introduction: "Stowing of dangerous cargo is subject to special rules determined by the IMDG Code, and placement above or below deck is determined according to the class.",
     content: `STOWAGE CATEGORIES:
 
 The IMDG Code assigns a stowage category to every substance:
@@ -1559,20 +1559,20 @@ ON CONTAINER SHIPS:
 DG containers are marked specially on the bay plan.
 Segregation distances are calculated in container lengths (TEU).`,
     bulletPoints: [
-      "İstifleme kategorisi A-E arası değişir",
-      "Yaşam mahalline ve yiyeceklere uzaklık zorunludur",
-      "Yangın söndürme ekipmanına erişim korunmalıdır",
-      "DG konteynerler bay planında işaretlenir",
+      "Stacking category varies from A to E",
+      "Distance from living quarters and food is mandatory",
+      "Access to fire-fighting equipment must be protected",
+      "DG containers are marked on the bay plan",
     ],
     keyPoints: [
-      "Her DG maddesinin IMDG Code'daki istifleme kategorisi kontrol edilmelidir",
-      "İstifleme kategorisi ile ayrım tablosu birlikte uygulanır",
-      "Kaptan DG Manifest'i onaylamadan yükleme yapılmaz",
+      "The stowing category of each DG substance in the IMDG Code must be checked",
+      "Stacking category and separation table are applied together",
+      "Loading will not be done without the Master approving the DG Manifest.",
     ],
   },
   "imdg-docs": {
-    title: "Tehlikeli Yük Belgeleri",
-    introduction: "Tehlikeli yük taşımacılığında doğru ve eksiksiz dokümantasyon hem yasal zorunluluk hem de güvenlik gereğidir.",
+    title: "Dangerous Cargo Documents",
+    introduction: "Accurate and complete documentation in dangerous cargo transportation is both a legal obligation and a safety requirement.",
     content: `MANDATORY DOCUMENTS:
 
 1. DG DECLARATION:
@@ -1596,20 +1596,20 @@ The first aid guide for contact with dangerous substances.
 The plan showing the positions of the DG cargoes on board.
 Provided to the port authority.`,
     bulletPoints: [
-      "DG Declaration yükleyici sorumluluğundadır",
-      "DG Manifest SOLAS gereği zorunludur",
-      "EmS ve MFAG acil durum rehberleridir",
-      "DG stowage plan liman otoritesine verilir",
+      "DG Declaration is the responsibility of the installer",
+      "DG Manifest is mandatory according to SOLAS",
+      "EmS and MFAG are emergency guides",
+      "DG stowage plan is given to port authority",
     ],
     keyPoints: [
-      "Belge eksikliği yükleme reddine yol açar",
-      "Yanlış beyan yapan yükleyici yasal sorumludur",
-      "Belgeler gemide erişilebilir yerde tutulmalıdır",
+      "Lack of documentation leads to loading rejection",
+      "The installer who makes a false declaration is legally responsible",
+      "Documents must be kept in an accessible place on board",
     ],
   },
   "imdg-emergency": {
-    title: "Tehlikeli Yük Acil Müdahale",
-    introduction: "Tehlikeli yük kazalarında doğru ve hızlı müdahale can ve mal kaybını önlemek için kritik öneme sahiptir.",
+    title: "Dangerous Cargo Emergency Response",
+    introduction: "Correct and rapid intervention in dangerous cargo accidents is critical to prevent loss of life and property.",
     content: `TYPES OF EMERGENCY:
 1. Fire (the most common)
 2. Leakage / spillage
@@ -1636,15 +1636,15 @@ A special allocation of duties for DG emergencies must appear in the muster list
 DRILLS:
 DG emergency drills must be held regularly.`,
     bulletPoints: [
-      "EmS kodu F (yangın) ve S (dökülme) bölümlerinden oluşur",
-      "Mürettebat güvenliği en önceliklidir",
-      "Rüzgar üstünde kalınmalı, uygun KKD giyilmelidir",
-      "MRCC'ye derhal bilgi verilmelidir",
+      "The EmS code consists of parts F (fire) and S (spill)",
+      "Crew safety is top priority",
+      "Stay above wind and wear appropriate PPE",
+      "MRCC must be notified immediately",
     ],
     keyPoints: [
-      "EmS Guide ve MFAG köprüüstünde hazır tutulmalıdır",
-      "DG acil durum tatbikatları düzenli yapılmalıdır",
-      "Denize kirlilik durumunda MARPOL bildirim zorunluluğu vardır",
+      "EmS Guide and MFAG should be kept ready on the bridge",
+      "DG emergency drills should be held regularly",
+      "In case of pollution to the sea, MARPOL notification is mandatory.",
     ],
     warnings: [
       "Using the wrong extinguishing agent can make the situation worse",
@@ -1656,8 +1656,8 @@ DG emergency drills must be held regularly.`,
   // BÖLÜM 7 - KONTEYNER OPERASYONLARI
   // =====================================================
   "container-types": {
-    title: "Konteyner Tipleri ve Boyutları",
-    introduction: "Konteynerler ISO standartlarına göre üretilir ve taşınacak yükün özelliğine göre farklı tiplerde tasarlanmıştır.",
+    title: "Container Types and Dimensions",
+    introduction: "Containers are produced according to ISO standards and are designed in different types according to the characteristics of the load to be transported.",
     content: `STANDARD DIMENSIONS:
 
 20' container (1 TEU):
@@ -1686,19 +1686,19 @@ CONTAINER TYPES:
 - Platform: base only`,
     bulletPoints: [
       "20' = 1 TEU, 40' = 2 TEU",
-      "Standart ve High Cube en yaygın tiplerdir",
-      "Reefer konteynerler sürekli elektrik gerektirir",
-      "Flat rack ve open top özel yükler içindir",
+      "Standard and High Cube are the most common types",
+      "Reefer containers require constant electricity",
+      "Flat rack and open top are for special loads",
     ],
     keyPoints: [
-      "Maksimum brüt ağırlık 30,480 kg'dır (ISO)",
-      "VGM doğrulaması zorunludur (SOLAS)",
-      "Konteyner CSC plakası geçerlilik tarihi kontrol edilmelidir",
+      "Maximum gross weight is 30,480 kg (ISO)",
+      "VGM verification is mandatory (SOLAS)",
+      "Container CSC plate validity date should be checked",
     ],
   },
   "container-weight": {
     title: "VGM (Verified Gross Mass)",
-    introduction: "VGM, SOLAS zorunluluğu gereği her konteynerin yükleme öncesi doğrulanmış brüt ağırlığıdır.",
+    introduction: "VGM is the verified gross weight of each container before loading, as required by SOLAS obligation.",
     content: `WHAT IS THE VGM?
 Mandatory since 2016 under SOLAS Chapter VI, Regulation 2. The actual gross mass of every container must be verified before loading.
 
@@ -1724,20 +1724,20 @@ Incorrect weight information leads to:
 - The crane capacity being exceeded
 - The stability calculation being wrong`,
     bulletPoints: [
-      "VGM 2016'dan bu yana SOLAS ile zorunludur",
-      "Tartım veya hesaplama yöntemiyle belirlenir",
-      "VGM olmadan konteyner yüklenmez",
-      "Yükleyici VGM'den sorumludur",
+      "VGM is mandatory with SOLAS since 2016",
+      "Determined by weighing or calculation method",
+      "Without VGM the container will not be loaded",
+      "The installer is responsible for VGM",
     ],
     keyPoints: [
-      "VGM eksikliği PSC tutulma nedenidir",
-      "Yanlış VGM stabilite kazalarına yol açar",
-      "Kaptan VGM'siz konteyneri reddetme hakkına sahiptir",
+      "VGM deficiency is the cause of PSC detention",
+      "Incorrect VGM leads to stability accidents",
+      "The Master has the right to reject the container without VGM",
     ],
   },
   "container-stowage-plan": {
-    title: "Bay Plan ve İstifleme Planı",
-    introduction: "Bay plan, konteyner gemisinde her konteynerin üç boyutlu yerleşim pozisyonunu gösteren standart istifleme planıdır.",
+    title: "Bay Plan and Stacking Plan",
+    introduction: "Bay plan is the standard stowing plan that shows the three-dimensional placement position of each container on a container ship.",
     content: `THE BAY PLAN NUMBERING SYSTEM:
 
 A six-digit position code: BAY – ROW – TIER
@@ -1766,20 +1766,20 @@ PLANNING CRITERIA:
 - Reefer power connections
 - Stability and trim optimisation`,
     bulletPoints: [
-      "Bay-Row-Tier üç boyutlu konum sistemidir",
+      "Bay-Row-Tier is a three-dimensional location system",
       "An odd bay = 20', an even bay = 40'",
-      "Sancak tek, iskele tarafı çift row numarası alır",
-      "Ambar içi tier 02'den, güverte üstü 82'den başlar",
+      "Starboard side receives odd row number, port side receives even row number.",
+      "Inside the hold starts at tier 02, above deck at tier 82",
     ],
     keyPoints: [
-      "Bay plan istifleme planlamasının temel aracıdır",
-      "Planlama yazılımları stabilite kontrolü yapar",
-      "Her liman için ayrı yükleme/boşaltma planı hazırlanır",
+      "Bay plan is the basic tool of stowage planning",
+      "Planning software performs stability checks",
+      "A separate loading/unloading plan is prepared for each port.",
     ],
   },
   "reefer-containers": {
-    title: "Reefer Konteynerler",
-    introduction: "Reefer konteynerler, sıcaklık kontrollü yük taşımak için tasarlanmış soğutma üniteli özel konteynerlerdir.",
+    title: "Reefer Containers",
+    introduction: "Reefer containers are special containers with cooling units designed to carry temperature-controlled cargo.",
     content: `REEFER CONTAINER FEATURES:
 - An integral refrigeration/heating unit
 - Temperature range: -30°C to +30°C
@@ -1822,20 +1822,20 @@ POSITIONING:
 - Sufficient clearance for air circulation
 - On deck or in dedicated reefer bays`,
     bulletPoints: [
-      "Sıcaklık aralığı -30°C ile +30°C",
-      "380/440V, 3 faz elektrik beslemesi gerekir",
-      "Günde en az 2 kez sıcaklık kontrolü yapılır",
-      "PTI kontrolü yükleme öncesi zorunludur",
+      "Temperature range -30°C to +30°C",
+      "380/440V, 3 phase electricity supply required",
+      "Temperature checks are made at least twice a day",
+      "PTI check is mandatory before loading",
     ],
     keyPoints: [
-      "Reefer arızası yükün tamamının kaybına yol açabilir",
-      "Yedek elektrik bağlantısı planlanmalıdır",
-      "Havalandırma ayarı yük türüne göre yapılır",
+      "Reefer failure can lead to loss of entire load",
+      "Backup electrical connection must be planned",
+      "Ventilation adjustment is made according to load type",
     ],
   },
   "oog-cargo": {
-    title: "OOG (Out of Gauge) Yükler",
-    introduction: "OOG yükler, standart konteyner boyutlarını aşan ve özel planlama gerektiren yüklerdir.",
+    title: "OOG (Out of Gauge) Loads",
+    introduction: "OOG loads are loads that exceed standard container dimensions and require special planning.",
     content: `TYPES OF OOG:
 - Over-height
 - Over-width
@@ -1859,20 +1859,20 @@ OOG cargo is marked specially on the bay plan.
 The overhang dimensions must be declared to the nearest centimetre.
 The crane capacity must be checked.`,
     bulletPoints: [
-      "OOG yükler standart boyutları aşar",
-      "Flat rack ve open top en yaygın taşıma araçlarıdır",
-      "Üzerine başka konteyner konulmaz",
-      "Taşma boyutları hassas bildirilmelidir",
+      "OOG loads exceed standard dimensions",
+      "Flat rack and open top are the most common transportation vehicles",
+      "No other containers can be placed on top",
+      "Overflow dimensions must be reported precisely",
     ],
     keyPoints: [
-      "OOG yükler ek navlun gerektirir",
-      "Bağlama hesabı CSS Code'a göre yapılır",
-      "Planlama aşamasında terminalle koordinasyon şarttır",
+      "OOG loads require additional freight",
+      "Linking calculation is made according to CSS Code",
+      "Coordination with the terminal is essential during the planning phase",
     ],
   },
   "container-inspection": {
-    title: "Konteyner Muayene ve Kontrolü",
-    introduction: "Konteyner muayenesi, güvenli taşıma ve yasal uyumluluk için yükleme öncesi ve sırasında yapılan kontrolleri kapsar.",
+    title: "Container Inspection and Control",
+    introduction: "Container inspection includes checks before and during loading for safe transportation and legal compliance.",
     content: `CHECKING THE CSC PLATE:
 Every container must have a CSC (Container Safety Convention) approval plate.
 What to check:
@@ -1897,15 +1897,15 @@ PACKING CHECK:
 REJECTION CRITERIA:
 A container with structural damage, a missing CSC plate, water leaks or an identified safety risk is rejected.`,
     bulletPoints: [
-      "CSC plakası her konteynerde olmalıdır",
-      "Fiziksel muayene yapı, taban, kapı ve çatıyı kapsar",
-      "Hasarlı konteyner reddedilmelidir",
-      "Paketleme kontrolü yük güvenliği için kritiktir",
+      "CSC plate must be on every container",
+      "Physical inspection covers the structure, floor, door and roof",
+      "Damaged container should be rejected",
+      "Packaging control is critical for load safety",
     ],
     keyPoints: [
-      "CSC plakası olmayan konteyner taşınamaz",
-      "Konteyner hasarı yük taleplerine yol açar",
-      "Muayene bulguları kayıt altına alınmalıdır",
+      "Containers without CSC plate cannot be transported",
+      "Container damage leads to cargo claims",
+      "Examination findings should be recorded",
     ],
   },
 
@@ -1913,8 +1913,8 @@ A container with structural damage, a missing CSC plate, water leaks or an ident
   // BÖLÜM 8 - TANKER OPERASYONLARI
   // =====================================================
   "tanker-types": {
-    title: "Tanker Tipleri",
-    introduction: "Tankerler taşıdıkları sıvı yükün özelliğine göre farklı tiplerde inşa edilir ve her tipin kendine özel operasyonel kuralları vardır.",
+    title: "Tanker Types",
+    introduction: "Tankers are built in different types depending on the characteristics of the liquid cargo they carry, and each type has its own operational rules.",
     content: `TANKER TYPES:
 
 1. CRUDE OIL TANKERS:
@@ -1951,22 +1951,22 @@ On gas carriers the type of cargo containment system determines the requirement 
 - Independent Type C: a pressure vessel (cylindrical/spherical); design vapour pressure generally ≥ 2 bar. NO SECONDARY BARRIER IS REQUIRED. Used on small and medium gas carriers carrying fully pressurised/semi-pressurised LPG and ethylene.
 - Membrane tanks: a thin steel/invar membrane (the primary barrier) supported by insulation; it includes a FULL secondary barrier. Common on LNG carriers (GTT Mark III, NO96). The design pressure is low (< 0.25 bar).`,
     bulletPoints: [
-      "Ham petrol, ürün, kimyasal, LNG ve LPG ana tanker tipleridir",
-      "VLCC 200,000 DWT üzeri en büyük tankerdir",
-      "Kimyasal tankerler IMO Tip 1, 2 ve 3 olarak sınıflandırılır",
-      "LNG tankerleri -162°C'de yük taşır",
-      "IGC tank tipleri: A (tam ikincil bariyer), B (kısmi), C (basınçlı, bariyer yok), membran (LNG)",
+      "Crude oil, product, chemical, LNG and LPG are the main tanker types",
+      "VLCC is the largest tanker over 200,000 DWT",
+      "Chemical tankers are classified as IMO Type 1, 2 and 3",
+      "LNG tankers carry cargo at -162°C",
+      "IGC tank types: A (full secondary barrier), B (partial), C (pressurized, no barrier), membrane (LNG)",
     ],
     keyPoints: [
-      "Her tanker tipi farklı uluslararası koda tabidir",
-      "Tank kaplamalar yük uyumluluğunu belirler",
-      "Tanker personeli özel eğitim almalıdır (STCW)",
-      "Tip C ikincil bariyer gerektirmez; Tip A tam, Tip B kısmi bariyer ister",
+      "Each tanker type is subject to different international codes",
+      "Tank coatings determine load compatibility",
+      "Tanker personnel must receive special training (STCW)",
+      "Type C does not require a secondary barrier; Type A requires full barrier, Type B requires partial barrier",
     ],
   },
   "loading-discharging": {
-    title: "Yükleme ve Tahliye Operasyonu",
-    introduction: "Tanker yükleme ve tahliye operasyonları yüksek risk içerir ve sistematik prosedürlere göre yürütülür.",
+    title: "Loading and Unloading Operation",
+    introduction: "Tanker loading and unloading operations involve high risk and are carried out according to systematic procedures.",
     content: `BEFORE LOADING:
 1. The Ship/Shore Safety Checklist is completed
 2. The manifold connections are checked
@@ -1994,15 +1994,15 @@ SOLAS REQUIREMENTS:
 - Gas measurements
 - Fire prevention measures`,
     bulletPoints: [
-      "Ship/Shore Safety Checklist zorunludur",
-      "Başlangıçta düşük debi ile yükleme yapılır",
-      "Topping off aşamasında debi azaltılır",
-      "Tahliyede ballast alımı stabilite için gereklidir",
+      "Ship/Shore Safety Checklist is mandatory",
+      "Initially loaded with low flow rate",
+      "Flow rate is reduced during the topping off phase",
+      "Ballast removal during evacuation is necessary for stability.",
     ],
     keyPoints: [
-      "Statik elektrik ilk 30 dakikada en tehlikelidir",
-      "Tank boşalma sırası stabiliteye göre belirlenir",
-      "Ship/Shore iletişimi sürekli açık tutulmalıdır",
+      "Static electricity is most dangerous in the first 30 minutes",
+      "Tank emptying order is determined by stability",
+      "Ship/Shore communication must be kept open at all times",
     ],
     warnings: [
       "A manifold leak can cause a fire and an environmental disaster",
@@ -2010,8 +2010,8 @@ SOLAS REQUIREMENTS:
     ],
   },
   "ullage-sounding": {
-    title: "Ullage ve Sounding Ölçümleri",
-    introduction: "Ullage ve sounding, tanklardaki sıvı seviyesini belirlemek için kullanılan iki temel ölçüm yöntemidir.",
+    title: "Ullage and Sounding Measurements",
+    introduction: "Ullage and sounding are two basic measurement methods used to determine the liquid level in tanks.",
     content: `ULLAGE:
 The empty distance from the top of the tank to the liquid surface.
 Ullage = tank depth − liquid level
@@ -2038,20 +2038,20 @@ Weight = Volume × Density
 TRIM CORRECTION:
 The ship being trimmed affects the liquid level. The tank calibration tables include a trim correction.`,
     bulletPoints: [
-      "Ullage = Boş mesafe (üstten), Sounding = Dolu mesafe (alttan)",
-      "Ullage + Sounding = Tank yüksekliği",
-      "Hacim tank kalibrasyon tablosundan okunur",
-      "Sıcaklık ve trim düzeltmeleri uygulanır",
+      "Ullage = Empty distance (from above), Sounding = Full distance (from below)",
+      "Ullage + Sounding = Tank height",
+      "Volume is read from tank calibration table",
+      "Temperature and trim corrections are applied",
     ],
     formula: {
-      name: "Yük Ağırlığı",
+      name: "Load Weight",
       expression: "W = V × ρ",
-      description: "W: Yük ağırlığı (ton), V: Düzeltilmiş hacim (m³), ρ: Yoğunluk (t/m³)",
+      description: "W: Load weight (ton), V: Corrected volume (m³), ρ: Density (t/m³)",
     },
   },
   "cargo-calc-tanker": {
-    title: "Tanker Yük Hesaplamaları",
-    introduction: "Tanker yük miktarı, sıvı seviye ölçümleri, sıcaklık düzeltmeleri ve yoğunluk verileri kullanılarak hesaplanır.",
+    title: "Tanker Load Calculations",
+    introduction: "The tanker load quantity is calculated using liquid level measurements, temperature corrections and density data.",
     content: `CALCULATION STEPS:
 
 1. ULLAGE/SOUNDING MEASUREMENT:
@@ -2078,20 +2078,20 @@ ASTM TABLES:
 - Table 56: density conversion
 - Table 6: API gravity conversion`,
     bulletPoints: [
-      "GOV → NOV → GSV → Ağırlık sırası izlenir",
-      "VCF sıcaklık düzeltme faktörüdür (ASTM Table 54)",
-      "Yoğunluk 15°C referans sıcaklığında kullanılır",
-      "ASTM tabloları standart hesaplama referansıdır",
+      "GOV → NOV → GSV → Weight order is followed",
+      "VCF is the temperature correction factor (ASTM Table 54)",
+      "Density is used at a reference temperature of 15°C",
+      "ASTM tables are standard calculation reference",
     ],
     formula: {
-      name: "Standart Hacim",
+      name: "Standard Volume",
       expression: "GSV = GOV × VCF",
-      description: "GSV: Standart hacim, GOV: Gözlenen hacim, VCF: Hacim düzeltme faktörü (ASTM Table 54)",
+      description: "GSV: Standard volume, GOV: Observed volume, VCF: Volume correction factor (ASTM Table 54)",
     },
   },
   "tank-cleaning": {
-    title: "Tank Temizliği ve COW",
-    introduction: "Tank temizliği, bir sonraki yüke hazırlık veya onarım için tankların yıkanması ve gazdan arındırılması işlemidir.",
+    title: "Tank Cleaning and COW",
+    introduction: "Tank cleaning is the process of washing and degassing tanks in preparation for the next load or for repair.",
     content: `CLEANING METHODS:
 
 1. COW (Crude Oil Washing):
@@ -2117,15 +2117,15 @@ LEL must be < 1% and O₂ > 21%.
 THE WALL WASH TEST:
 After cleaning, a sample taken from the tank wall is used to check that the cleaning is adequate.`,
     bulletPoints: [
-      "COW ham petrol tankerleri için MARPOL zorunluluğudur",
-      "Gazfree: LEL < %1 ve O₂ > %21",
-      "Wall wash testi temizlik doğrulaması yapar",
-      "Kimyasal tankerlerde uygun ajan seçimi kritiktir",
+      "COW is a MARPOL requirement for crude oil tankers",
+      "Gasfree: LEL < 1% and O₂ > 21%",
+      "Wall wash test verifies cleanliness",
+      "Appropriate agent selection is critical in chemical tankers",
     ],
     keyPoints: [
-      "Tank temizliği sırasında kapalı alan prosedürü uygulanır",
-      "İnert atmosfer altında COW yapılır",
-      "Temizlik suyu MARPOL kurallarına göre bertaraf edilir",
+      "Confined space procedure is applied during tank cleaning",
+      "COW is done under inert atmosphere",
+      "Cleaning water is disposed of according to MARPOL rules",
     ],
     warnings: [
       "Entering a tank that has not been gas-freed is fatal",
@@ -2133,8 +2133,8 @@ After cleaning, a sample taken from the tank wall is used to check that the clea
     ],
   },
   "ig-system": {
-    title: "Inert Gas Sistemi",
-    introduction: "Inert gas sistemi, tank atmosferindeki oksijeni düşürerek patlama riskini ortadan kaldıran güvenlik sistemidir.",
+    title: "Inert Gas System",
+    introduction: "The inert gas system is a safety system that eliminates the risk of explosion by reducing the oxygen in the tank atmosphere.",
     content: `PURPOSE:
 To prevent flammable hydrocarbon vapours exploding by reducing the oxygen content of the tank atmosphere below 8%.
 
@@ -2161,15 +2161,15 @@ SYSTEM COMPONENTS:
 - P/V valve and breaker
 - The IG distribution line`,
     bulletPoints: [
-      "IG oksijeni %8 altına düşürür",
-      "Inerting, purging, gas-freeing ve topping up uygulamaları vardır",
-      "20,000+ DWT ham petrol tankerlerinde zorunludur",
-      "Deck seal IG hattının geri akışını engeller",
+      "IG reduces oxygen below 8%",
+      "It has inerting, purging, gas-freeing and topping up applications.",
+      "Mandatory on 20,000+ DWT crude oil tankers",
+      "Deck seal prevents IG line backflow",
     ],
     keyPoints: [
-      "IG sistemi SOLAS ve MARPOL gereği zorunludur",
-      "Sistem arızası durumunda operasyon durdurulmalıdır",
-      "O₂ ölçümü sürekli yapılmalıdır",
+      "IG system is mandatory according to SOLAS and MARPOL",
+      "In case of system failure, operation must be stopped",
+      "O₂ measurement should be done continuously",
     ],
     warnings: [
       "Tank operations must not be carried out while the IG system is out of service",
@@ -2181,8 +2181,8 @@ SYSTEM COMPONENTS:
   // BÖLÜM 9 - TAHIL YÜKLERİ VE GRAIN CODE
   // =====================================================
   "grain-code-intro": {
-    title: "International Grain Code Yapısı",
-    introduction: "International Grain Code, tahıl yüklerinin denizde güvenli taşınmasını düzenleyen ve SOLAS kapsamında zorunlu olan uluslararası koddur.",
+    title: "International Grain Code Structure",
+    introduction: "International Grain Code is the international code that regulates the safe transportation of grain cargo at sea and is mandatory under SOLAS.",
     content: `The Grain Code, made mandatory under SOLAS Chapter VI, sets out the rules for the safe carriage of grain cargoes.
 
 SCOPE:
@@ -2207,20 +2207,20 @@ It contains:
 
 Approval by the flag State or an authorised classification society is mandatory.`,
     bulletPoints: [
-      "SOLAS Bölüm VI kapsamında zorunludur",
-      "Grain Loading Booklet her gemide bulunmalıdır",
-      "VHM tabloları heeling moment hesabı için kullanılır",
-      "Bayrak devleti veya klas onayı zorunludur",
+      "Mandatory under SOLAS Chapter VI",
+      "Grain Loading Booklet should be available on every ship",
+      "VHM tables are used for heeling moment calculation",
+      "Flag state or class approval is mandatory",
     ],
     keyPoints: [
-      "Tahıl taşıma onayı olmayan gemi tahıl yükleyemez",
-      "Grain Code'un güncellenen ekleri takip edilmelidir",
-      "Stabilite kriterleri genel yük gemilerinden farklıdır",
+      "A ship without approval to carry grain cannot load grain.",
+      "Grain Code's updated supplements should be followed",
+      "Stability criteria differ from general cargo ships",
     ],
   },
   "grain-shift": {
-    title: "Tahıl Kayması ve Yüzey Etkisi",
-    introduction: "Tahıl yükü, geminin salınımı sırasında kayarak bir tarafa toplanabilir ve tehlikeli list oluşturabilir.",
+    title: "Grain Shift and Surface Effect",
+    introduction: "The grain cargo may slide and gather to one side during the ship's oscillation, creating a hazardous list.",
     content: `THE SHIFTING MECHANISM:
 Grain particles are not firmly bound to each other. As the ship rolls:
 1. The particles flow towards the low side
@@ -2243,15 +2243,15 @@ PRECAUTIONS:
 2. Using shifting boards or feeders in partly filled holds
 3. Trimming the cargo surface and overstowing it with bagged grain`,
     bulletPoints: [
-      "Tahıl geri akmaz, kayma etkisi kümülatiftir",
-      "Tam dolu ambar kayma riskini minimize eder",
-      "Kısmen dolu ambar en tehlikeli durumdur",
-      "Shifting board veya silo ile sabitleme yapılır",
+      "Grain does not flow back, sliding effect is cumulative",
+      "Fully filled cargo hold minimizes the risk of slipping",
+      "Partially full cargo hold is the most dangerous situation",
+      "Fixation is done with shifting board or silo",
     ],
     keyPoints: [
-      "Tahıl kayması alabora riskinin önemli nedenlerinden biridir",
-      "Kısmen dolu ambar sayısı minimize edilmelidir",
-      "Yük yüzeyi trimlenmelidir",
+      "Grain shifting is a major cause of capsize risk",
+      "The number of partially filled cargo holds should be minimized",
+      "The load surface must be trimmed",
     ],
     warnings: [
       "A partly filled hold presents the greatest risk of grain shifting",
@@ -2260,7 +2260,7 @@ PRECAUTIONS:
   },
   "grain-heeling-moment": {
     title: "Volumetric Heeling Moment",
-    introduction: "VHM (Volumetric Heeling Moment), tahıl yükünün kayması sonucu oluşan yatma momentini ifade eden hesaplama parametresidir.",
+    introduction: "VHM (Volumetric Heeling Moment) is the calculation parameter that expresses the heeling moment resulting from the shifting of the grain load.",
     content: `The VHM calculation is made with data taken from the Grain Loading Booklet.
 
 The VHM is calculated separately for each hold and the values are added together.
@@ -2285,20 +2285,20 @@ THE CHECK:
 GHM must be ≤ the allowable heeling moment.
 The allowable heeling moment is determined by the ship's stability condition.`,
     bulletPoints: [
-      "VHM her ambar için ayrı ayrı hesaplanır",
-      "Tam dolu ambar VHM'si düşük, kısmen dolu ambar VHM'si yüksektir",
-      "Toplam VHM tüm ambarların toplamıdır",
-      "GHM ≤ Allowable Heeling Moment olmalıdır",
+      "VHM is calculated separately for each cargo hold",
+      "Fully full cargo hold VHM is low, partially full cargo hold VHM is high",
+      "Total VHM is the sum of all cargo holds",
+      "GHM must be ≤ Allowable Heeling Moment",
     ],
     formula: {
-      name: "Tahıl Yatma Açısı",
+      name: "Grain Lying Angle",
       expression: "θ = (57.3 × GHM) / (Δ × GM)",
-      description: "θ: Yatma açısı (°), GHM: Grain Heeling Moment (t-m), Δ: Deplasman (ton), GM: Metasantrik yükseklik (m)",
+      description: "θ: Angle of heel (°), GHM: Grain Heeling Moment (t-m), Δ: Displacement (tons), GM: Metacentric height (m)",
     },
   },
   "grain-stability-criteria": {
     title: "Grain Stability Criteria",
-    introduction: "Grain Code, tahıl taşıyan gemiler için genel stabilite kriterlerinden daha sıkı özel kriterler belirler.",
+    introduction: "The Grain Code establishes specific criteria for grain-carrying ships that are more stringent than the general stability criteria.",
     content: `GRAIN CODE STABILITY CRITERIA:
 
 1. ANGLE OF HEEL:
@@ -2322,20 +2322,20 @@ THE CHECKING PROCESS:
 
 If the stability criteria are not met the loading plan must be revised.`,
     bulletPoints: [
-      "List açısı ≤ 12° (veya güverte girme açısının %40'ı)",
+      "List angle ≤ 12° (or 40% of deck penetration angle)",
       "Residual area ≥ 0.075 m-rad",
-      "GM₀ ≥ 0.30 m (FSE düzeltmesi sonrası)",
-      "Üç kriter birlikte sağlanmalıdır",
+      "GM₀ ≥ 0.30 m (after FSE correction)",
+      "Three criteria must be met together",
     ],
     keyPoints: [
-      "Grain Code kriterleri genel IMO kriterlerinden farklıdır",
-      "Yükleme planı kriterleri sağlamıyorsa revize edilmelidir",
-      "Grain Loading Booklet hesaplamaların temel referansıdır",
+      "Grain Code criteria differ from general IMO criteria",
+      "If the loading plan does not meet the criteria, it should be revised",
+      "Grain Loading Booklet is the essential reference for calculations",
     ],
   },
   "grain-securing": {
-    title: "Tahıl Yükünün Sabitlenmesi",
-    introduction: "Tahıl yükü, kayma riskini azaltmak için ambar içinde çeşitli yöntemlerle sabitlenir.",
+    title: "Securing the Grain Load",
+    introduction: "The grain load is secured within the cargo hold by various methods to reduce the risk of shifting.",
     content: `SECURING METHODS:
 
 1. SHIFTING BOARDS:
@@ -2361,20 +2361,20 @@ A PARTLY FILLED HOLD:
 No more than two holds may be partly filled (a Grain Code restriction).
 Shifting boards or bagging are mandatory in these holds.`,
     bulletPoints: [
-      "Shifting board tahılın kaymasını mekanik olarak engeller",
-      "Longitudinal division VHM'yi azaltır",
-      "Kısmen dolu ambarlarda bagging minimum 150 mm",
-      "En fazla iki ambar kısmen dolu olabilir",
+      "Shifting board mechanically prevents grain from shifting",
+      "Longitudinal division reduces VHM",
+      "Bagging minimum 150 mm in partially filled cargo holds",
+      "A maximum of two cargo holds can be partially full",
     ],
     keyPoints: [
-      "Sabitlenme yöntemi Grain Loading Booklet'te belirtilir",
-      "Shifting board dayanımı hesaplanmalıdır",
-      "Kısmen dolu ambar sayısı minimize edilmelidir",
+      "The fixing method is specified in the Grain Loading Booklet",
+      "Shifting board strength must be calculated",
+      "The number of partially filled cargo holds should be minimized",
     ],
   },
   "grain-loading-plan": {
-    title: "Tahıl Yükleme Planı Hazırlanması",
-    introduction: "Tahıl yükleme planı, geminin stabilitesini ve Grain Code kriterlerini sağlayacak şekilde sistematik olarak hazırlanır.",
+    title: "Preparation of Grain Loading Plan",
+    introduction: "The grain loading plan is prepared systematically to ensure the stability of the ship and the Grain Code criteria.",
     content: `STEPS IN PREPARING THE PLAN:
 
 1. SHIP DATA:
@@ -2407,15 +2407,15 @@ Shifting boards or bagging are mandatory in these holds.`,
 
 The plan must also cover all the intermediate loading conditions.`,
     bulletPoints: [
-      "Hafif gemi ağırlığı ve ambar kapasiteleri temel verilerdir",
-      "Tam ve kısmen dolu ambar kararı stabiliteye göre verilir",
-      "Grain Code formu doldurulur ve onaylanır",
-      "Ara durumlar dahil tüm aşamalar kontrol edilir",
+      "Light ship weight and hold capacities are basic data",
+      "Full and partially full cargo hold decision is made based on stability",
+      "Grain Code form is filled and approved",
+      "All stages are checked, including intermediate states",
     ],
     keyPoints: [
-      "Yükleme planı kaptan ve surveyor onayı olmadan uygulanmaz",
-      "Grain Code kriterleri her aşamada sağlanmalıdır",
-      "Plan değişikliği durumunda hesaplar yenilenir",
+      "The loading plan is not implemented without the approval of the Master and surveyor.",
+      "Grain Code criteria must be met at every stage",
+      "Calculations are renewed in case of plan change",
     ],
   },
 
@@ -2423,8 +2423,8 @@ The plan must also cover all the intermediate loading conditions.`,
   // BÖLÜM 10-12 ANA KONULAR (Özet içerikler)
   // =====================================================
   "timber-deck": {
-    title: "Kereste Güverte Yükleri",
-    introduction: "Kereste güverte yükleri, özel istifleme ve bağlama kurallarına tabi olan ve geminin stabilitesini önemli ölçüde etkileyen yüklerdir.",
+    title: "Timber Deck Loads",
+    introduction: "Timber deck loads are loads that are subject to special stowage and lashing rules and significantly affect the stability of the ship.",
     content: `THE TIMBER CODE (Code of Safe Practice for Ships Carrying Timber Deck Cargoes):
 
 STOWAGE RULES:
@@ -2449,20 +2449,20 @@ FREEBOARD:
 The timber load line differs from the normal load line.
 Ships carrying timber deck cargo are permitted a deeper loading (additional reserve buoyancy).`,
     bulletPoints: [
-      "Yükseklik gemi genişliğinin 1/3'ünü geçmemelidir",
-      "Her 3 metrede bir bağlama zorunludur",
-      "Islanan kereste ağırlığı %15-25 artabilir",
-      "Timber Load Line daha derin yükleme izni verir",
+      "Height should not exceed 1/3 of the ship's width",
+      "Tie-downs are mandatory every 3 metres.",
+      "Wetted lumber weight can increase by 15-25%",
+      "Timber Load Line allows deeper loading",
     ],
     keyPoints: [
-      "Kereste ıslandığında GM tehlikeli seviyelere düşebilir",
-      "Seyir sırasında bağlama sıklıkla kontrol edilmelidir",
-      "Güvenli geçiş yolları korunmalıdır",
+      "GM can drop to dangerous levels when timber gets wet",
+      "Mooring should be checked frequently while sailing",
+      "Safe passageways must be maintained",
     ],
   },
   "load-line-marks": {
-    title: "Yükleme Hattı İşaretleri (TF/F/T/S/W/WNA)",
-    introduction: "Yükleme hattı (load line / Plimsoll) işaretleri, Uluslararası Yükleme Hattı Sözleşmesi (1966 / 1988 Protokolü) uyarınca geminin farklı bölge ve mevsimlerde izin verilen azami yükleme draftını (asgari fribordu) gösterir.",
+    title: "Load Line Markings (TF/F/T/S/W/WNA)",
+    introduction: "Load line (Plimsoll) marks indicate the maximum loading draft (minimum freeboard) of the ship in different regions and seasons in accordance with the International Load Line Convention (1966 / 1988 Protocol).",
     image: "/diagrams/seamanship/load-line-isaretleri.svg",
     content: `THE LOAD LINE MARK:
 The disc (ring) on the ship's side amidships, with the horizontal line through its centre, shows the Summer (S) line. The initials of the assigning classification society appear beside the disc. The horizontal "comb" lines forward of the vertical line attached to the disc are the seasonal/zonal load lines.
@@ -2484,21 +2484,21 @@ THE INTERVALS:
 THE DECK LINE AND FREEBOARD:
 The vertical distance between the deck line and the summer (S) line is the summer freeboard. The load lines are used together with the seasonal zones on the world chart (tropical, summer, winter, seasonal areas); the ship must not exceed the line appropriate to the zone and season it is in.`,
     bulletPoints: [
-      "S (Yaz) hattı referanstır ve diskin merkezinden geçer",
-      "TF en derin, WNA en sığ yükleme hattıdır",
-      "T ve W, S'den yaz draftının 1/48'i kadar uzaktadır",
-      "FWA = Deplasman / (4 × TPC); tatlı suda draft FWA kadar artar",
+      "The S (Write) line is the reference and passes through the center of the disk",
+      "TF is the deepest, WNA is the shallowest loading line",
+      "T and W are 1/48th of the summer draft away from S",
+      "FWA = Displacement / (4 × TPC); In fresh water, draft increases by FWA",
     ],
     keyPoints: [
-      "Yükleme Hattı Sözleşmesi 1966 / 1988 Protokolü kapsamındadır",
-      "Disk yanındaki harfler atayan klas kuruluşunu gösterir",
-      "Gemi, bulunduğu bölge ve mevsimin yükleme hattını aşamaz",
-      "Yeterli fribord = yeterli rezerv sephiye (reserve buoyancy)",
+      "Covered by the Load Line Convention 1966/1988 Protocol",
+      "Letters next to the disk indicate the assigning class organization",
+      "The ship cannot exceed the loading line for its region and season.",
+      "Sufficient freeboard = sufficient reserve buoyancy",
     ],
   },
   "livestock": {
-    title: "Canlı Hayvan Taşımacılığı",
-    introduction: "Canlı hayvan taşımacılığı, hayvan refahı ve gemi güvenliği açısından özel düzenlemelere tabidir.",
+    title: "Live Animal Transportation",
+    introduction: "Transport of live animals is subject to special regulations for animal welfare and ship safety.",
     content: `The carriage of live animals is governed by the WOAH (World Organisation for Animal Health) and by national legislation.
 
 REQUIREMENTS:
@@ -2517,20 +2517,20 @@ PENNING:
 The animals are divided into pens to prevent a mass shift.
 The size of the pens is determined by the species.`,
     bulletPoints: [
-      "Yeterli havalandırma, su ve yem zorunludur",
-      "Hayvan hareketi stabiliteyi etkiler",
-      "Bölmelere ayırma toplu kayma riskini azaltır",
-      "Veteriner bakımı sağlanmalıdır",
+      "Adequate ventilation, water and feed are mandatory",
+      "Animal movement affects stability",
+      "Compartmentalization reduces the risk of mass slides",
+      "Veterinary care should be provided",
     ],
     keyPoints: [
-      "Hayvan refahı uluslararası düzenlemelere tabidir",
-      "Stabilite hesabında hayvan hareketi dikkate alınmalıdır",
-      "Drenaj sistemi hijyen için kritiktir",
+      "Animal welfare is subject to international regulations",
+      "Animal movement must be taken into calculation in stability calculations",
+      "Drainage system is critical for hygiene",
     ],
   },
   "ro-ro-cargo": {
-    title: "Ro-Ro Yük Operasyonları",
-    introduction: "Ro-Ro gemilerinde yükler tekerlekli araçlar olarak gemiye alınır ve çıkarılır; özel bağlama ve stabilite kontrolü gerektirir.",
+    title: "Ro-Ro Cargo operations",
+    introduction: "On Ro-Ro ships, cargo is taken on and off the ship as wheeled vehicles; Requires specialcargo securing and stability control.",
     content: `RO-RO LOADING:
 Cargo is driven on board over a ramp on its own wheels or by a tug master.
 
@@ -2557,15 +2557,15 @@ SAFETY:
 - Fire detection and extinguishing systems
 - Keeping the watertight doors closed`,
     bulletPoints: [
-      "Araçlar rampa ile yüklenir/boşaltılır",
-      "Her araç minimum 4 noktadan bağlanır",
-      "Yüksek KG ve açık güverte alanları stabilite riski oluşturur",
-      "Su geçirmez kapılar seyirde kapalı tutulmalıdır",
+      "Vehicles are loaded/unloaded via ramp",
+      "Each vehicle is connected from a minimum of 4 points",
+      "High KG and open deck areas pose a stability risk",
+      "Watertight doors must be kept closed while underway",
     ],
     keyPoints: [
-      "Ro-Ro gemileri özellikle hasarlı stabilite açısından hassastır",
-      "Herald of Free Enterprise kazası Ro-Ro güvenlik kurallarını sıkılaştırmıştır",
-      "Bow/stern door kapatılmadan seyir başlamaz",
+      "Ro-Ro ships are particularly vulnerable to damaged stability",
+      "Herald of Free Enterprise accident has tightened Ro-Ro safety rules",
+      "Cruising does not start until the bow/stern door is closed.",
     ],
     warnings: [
       "Sailing with the bow door open has had fatal consequences",
@@ -2573,8 +2573,8 @@ SAFETY:
     ],
   },
   "steel-cargo": {
-    title: "Çelik ve Ağır Yük Taşıma",
-    introduction: "Çelik ürünleri yüksek yoğunluklu yüklerdir ve istifleme, bağlama ve yapısal dayanım açısından özel dikkat gerektirir.",
+    title: "Steel and Heavy Load Transport",
+    introduction: "Steel products are high-intensity loads and require special attention in terms of stowing, lashing and structural strength.",
     content: `TYPES OF STEEL PRODUCT:
 - Steel coil
 - Steel plate
@@ -2599,20 +2599,20 @@ Because steel has a high density (SF ~ 0.3–0.5 m³/t):
 - It is compared against the tank top strength
 - The load is spread with dunnage where necessary`,
     bulletPoints: [
-      "Steel coil göz aşağı veya göz yana istif edilir",
-      "Her coil bağımsız olarak bağlanmalıdır",
-      "Ambar tabanı yük yoğunluğu limiti kontrol edilmelidir",
-      "Dunnage ile yük dağılımı sağlanır",
+      "Steel coil is stowage eye down or eye to side",
+      "Each coil must be connected independently",
+      "Cargo hold floor load density limit should be checked",
+      "Load distribution is achieved with Dunnage",
     ],
     keyPoints: [
-      "Çelik düşük SF'li ağır yüktür, deadweight belirleyicidir",
-      "Kayma riski yüksektir, bağlama kritiktir",
-      "Spreader veya dunnage yük dağılımı sağlar",
+      "Steel is heavy load with low SF, deadweight is decisive",
+      "Risk of slipping is high, cargo securing is critical",
+      "Spreader or dunnage provides load distribution",
     ],
   },
   "project-cargo": {
-    title: "Proje Yükleri",
-    introduction: "Proje yükleri, boyut ve ağırlık olarak standart dışı olan, özel planlama ve elleçleme gerektiren tekil yüklerdir.",
+    title: "Project Loads",
+    introduction: "Project loads are individual loads that are non-standard in size and weight and require special planning and handling.",
     content: `EXAMPLES OF PROJECT CARGO:
 - Wind turbine blades
 - Oil platform modules
@@ -2637,20 +2637,20 @@ OPERATIONAL RISKS:
 
 Every project cargo is unique and requires individual planning.`,
     bulletPoints: [
-      "Her proje yükü benzersizdir, standart prosedür yoktur",
-      "Vinç kapasitesi ve güverte dayanımı kontrol edilir",
-      "Kaldırma sırasında stabilite kritiktir",
-      "Rüzgar etkisi büyük yüzey alanlı yüklerde hesaplanmalıdır",
+      "Each project load is unique, there is no standard procedure",
+      "Crane capacity and deck strength are checked",
+      "Stability is critical during lifting",
+      "Wind effect should be calculated for loads with large surface areas",
     ],
     keyPoints: [
-      "Proje yükü planlaması haftalar/aylar öncesinden başlar",
-      "Marine warranty surveyor onayı gerekebilir",
-      "Stabilite her aşamada kontrol edilmelidir",
+      "Project load planning starts weeks/months in advance",
+      "Marine warranty surveyor approval may be required",
+      "Stability must be checked at every stage",
     ],
   },
   "cargo-damage-types": {
-    title: "Yük Hasar Türleri",
-    introduction: "Deniz taşımacılığında yükler çeşitli nedenlerle hasar görebilir ve bu hasarlar ticari kayıplara yol açar.",
+    title: "Load Damage Types",
+    introduction: "In maritime transportation, cargo may be damaged for various reasons and these damages lead to commercial losses.",
     content: `THE PRINCIPAL TYPES OF DAMAGE:
 
 1. PHYSICAL DAMAGE:
@@ -2684,20 +2684,20 @@ Every project cargo is unique and requires individual planning.`,
 PREVENTING DAMAGE:
 Correct stowage, suitable dunnage, ventilation control and cargo care.`,
     bulletPoints: [
-      "Fiziksel, nem, kontaminasyon, sıcaklık ve biyolojik hasar ana kategorilerdir",
-      "Nem hasarı en yaygın hasar türüdür",
-      "Doğru istifleme ve dunnage hasarı önler",
-      "Havalandırma kontrolü terlemeyi engeller",
+      "Physical, moisture, contamination, temperature and biological damage are the main categories",
+      "Moisture damage is the most common type of damage",
+      "Correct stowing and dunnage prevents damage",
+      "Ventilation control prevents sweating",
     ],
     keyPoints: [
-      "Hasar önleme maliyeti tazminat maliyetinden çok düşüktür",
-      "Yükleme sırasında yük durumu kayıt altına alınmalıdır",
-      "Hasar tespit edildiğinde Letter of Protest düzenlenmelidir",
+      "The cost of loss prevention is much lower than the cost of compensation",
+      "The load status should be recorded during loading",
+      "Letter of Protest must be issued when damage is detected",
     ],
   },
   "sweat-damage": {
-    title: "Terleme Hasarı (Ship vs Cargo Sweat)",
-    introduction: "Terleme, sıcaklık farkı nedeniyle ambar veya yük yüzeyinde nem yoğunlaşması olup yaygın bir yük hasar nedenidir.",
+    title: "Sweat Damage (Ship vs Cargo Sweat)",
+    introduction: "Sweating is moisture condensation on the cargo hold or cargo surface due to temperature differences and is a common cause of cargo damage.",
     content: `TWO TYPES OF SWEAT:
 
 1. SHIP SWEAT:
@@ -2721,20 +2721,20 @@ PREVENTION:
 - Cargo sweat: do not ventilate when entering a warm region
 - Use of desiccants (silica gel, calcium chloride)`,
     bulletPoints: [
-      "Gemi terleme: Sıcaktan soğuğa seyirde oluşur",
-      "Yük terleme: Soğuktan sıcağa seyirde oluşur",
-      "Dew point ölçümü havalandırma kararını belirler",
-      "Nem emici malzeme ek koruma sağlar",
+      "Ship sweating: Occurs when sailing from hot to cold",
+      "Cargo sweating: Occurs when traveling from cold to hot",
+      "Dew point measurement determines ventilation decision",
+      "Moisture-wicking material provides additional protection",
     ],
     keyPoints: [
-      "Havalandırma günlüğü tutulmalıdır",
-      "Dew point ölçüm cihazı gemide bulunmalıdır",
-      "Yanlış havalandırma kararı terlemeyi artırabilir",
+      "A ventilation log should be kept",
+      "Dew point measuring device must be on board",
+      "Wrong ventilation decision can increase sweating",
     ],
   },
   "moisture-control": {
-    title: "Nem Kontrolü ve Dew Point",
-    introduction: "Nem kontrolü, yük hasarını önlemek için ambar atmosferinin dew point ölçümüne dayalı yönetim sürecidir.",
+    title: "Humidity Control and Dew Point",
+    introduction: "Humidity control is the management process based on dew point measurement of the cargo hold atmosphere to prevent cargo damage.",
     content: `DEW POINT:
 The temperature at which air of a given humidity begins to condense when it is cooled.
 
@@ -2749,20 +2749,20 @@ RECORDS:
 A dew point measurement must be taken every watch and entered in the log book.
 These records are evidence in the event of a damage claim.`,
     bulletPoints: [
-      "Dew point = Nemin yoğuşmaya başladığı sıcaklık",
-      "Psikrometre veya elektronik cihaz ile ölçülür",
-      "Dış dew point < Yük sıcaklığı → Havalandır",
-      "Ölçüm ve kayıt hasar taleplerinde delil niteliğindedir",
+      "Dew point = The temperature at which moisture begins to condense",
+      "Measured with a psychrometer or electronic device",
+      "Outdoor dew point < Load temperature → Ventilate",
+      "Measurement and recording are evidence in damage claims.",
     ],
     keyPoints: [
-      "Her vardiyada ölçüm yapılmalıdır",
-      "Kayıtlar dava sürecinde kritik önemdedir",
-      "Havalandırma kararı bilimsel verilere dayandırılmalıdır",
+      "Measurements should be taken every watch",
+      "Records are critical in litigation",
+      "Ventilation decisions should be based on scientific data",
     ],
   },
   "cargo-claims": {
-    title: "Yük Hasarı Talepleri ve Sorumluluk",
-    introduction: "Yük hasarı talepleri, taşıyıcının sorumluluğunu ve tazminat yükümlülüğünü belirleyen uluslararası kurallara göre değerlendirilir.",
+    title: "Cargo Damage Claims and Liability",
+    introduction: "Cargo damage claims are evaluated according to international rules that determine the carrier's liability and liability for compensation.",
     content: `THE BASIS OF LIABILITY:
 
 Under the Hague-Visby Rules the carrier is bound:
@@ -2787,20 +2787,20 @@ THE SHIP'S STAFF RESPONSIBILITIES:
 DOCUMENTATION:
 Good documentation protects the carrier. Photographs, records and letters of protest are critically important.`,
     bulletPoints: [
-      "Hague-Visby Rules taşıyıcı sorumluluğunu belirler",
-      "Taşıyıcı gemiyi denize elverişli tutmakla yükümlüdür",
-      "Bazı durumlarda taşıyıcı muafiyet kazanır",
-      "Belgelendirme sorumluluk tespitinde kritiktir",
+      "Hague-Visby Rules determine carrier liability",
+      "The carrier is obliged to keep the ship seaworthy",
+      "In some cases the carrier gains exemption",
+      "Documentation is critical in determining liability",
     ],
     keyPoints: [
-      "Letter of Protest zamanında düzenlenmelidir",
-      "Fotoğraf ve kayıtlar dava delili olarak kullanılır",
-      "Kaptan yükleme koşulları hakkında itiraz hakkına sahiptir",
+      "Letter of Protest must be issued in time",
+      "Photographs and recordings are used as case evidence",
+      "The Master has the right to object to the loading conditions",
     ],
   },
   "hague-visby": {
     title: "Hague-Visby Rules",
-    introduction: "Hague-Visby Rules, deniz yoluyla yük taşımacılığında taşıyıcının hak ve sorumluluklarını düzenleyen temel uluslararası sözleşmedir.",
+    introduction: "Hague-Visby Rules is the basic international agreement that regulates the rights and responsibilities of the carrier in sea freight transportation.",
     content: `THE BASIC PRINCIPLES:
 
 1. APPLICATION:
@@ -2825,20 +2825,20 @@ They apply to charter parties where a bill of lading is issued.
 
 The Rotterdam Rules and the Hamburg Rules are alternative conventions, but Hague-Visby is the most widely accepted.`,
     bulletPoints: [
-      "Konşimento ile taşınan uluslararası taşımalarda geçerli",
-      "Sorumluluk sınırı 666.67 SDR/paket veya 2 SDR/kg",
-      "Dava açma süresi 1 yıl",
-      "17 muafiyet nedeni tanımlanmıştır",
+      "Valid for international transportation carried by bill of lading",
+      "Liability limit 666.67 SDR/pack or 2 SDR/kg",
+      "Time to file a lawsuit: 1 year",
+      "17 exemption reasons identified",
     ],
     keyPoints: [
-      "Hague-Visby en yaygın kabul gören deniz taşımacılık sözleşmesidir",
-      "Due diligence yükümlülüğü kritik öneme sahiptir",
-      "Navigasyon hatası muafiyeti tartışmalı bir maddedir",
+      "Hague-Visby is the most widely accepted maritime transport contract",
+      "Due diligence obligation is critical",
+      "Navigation error exemption is a controversial clause",
     ],
   },
   "solas-cargo": {
-    title: "SOLAS Bölüm VI ve VII",
-    introduction: "SOLAS (Safety of Life at Sea) Bölüm VI genel yük taşımacılığını, Bölüm VII tehlikeli yük taşımacılığını düzenler.",
+    title: "SOLAS Chapters VI and VII",
+    introduction: "SOLAS (Safety of Life at Sea) Chapter VI regulates general cargo transport and Chapter VII regulates dangerous cargo transport.",
     content: `CHAPTER VI – CARRIAGE OF CARGOES:
 
 Regulation 1: Application
@@ -2862,20 +2862,20 @@ IMPORTANT REQUIREMENTS:
 - The dangerous goods declaration and manifest
 - Hold entry procedures`,
     bulletPoints: [
-      "Bölüm VI genel yük, Bölüm VII tehlikeli yük kurallarını içerir",
-      "VGM zorunluluğu Bölüm VI kapsamındadır",
-      "Ambalajlı DG: IMDG Code, Dökme DG: IMSBC Code",
-      "Cargo Securing Manual tüm gemilerde zorunludur",
+      "Chapter VI contains rules for general cargo, Chapter VII contains rules for dangerous cargo",
+      "VGM obligation falls under Chapter VI",
+      "Packaged DG: IMDG Code, Bulk DG: IMSBC Code",
+      "Cargo Securing Manual is mandatory on all ships",
     ],
     keyPoints: [
-      "SOLAS yük taşımacılığının temel yasal çerçevesidir",
-      "Yükleyici doğru yük bilgisi vermekle yükümlüdür",
-      "Kaptan güvenli olmayan yükü reddetme hakkına sahiptir",
+      "SOLAS is the basic legal framework for freight transport",
+      "The loader is obliged to provide accurate load information.",
+      "The Master has the right to reject unsafe cargo",
     ],
   },
   "marpol-cargo": {
-    title: "MARPOL ve Yük Operasyonları",
-    introduction: "MARPOL, yük operasyonlarından kaynaklanan deniz kirliliğini önlemeyi amaçlayan uluslararası sözleşmedir.",
+    title: "MARPOL and Cargo operations",
+    introduction: "MARPOL is the international convention that aims to prevent marine pollution caused by cargo operations.",
     content: `THE MARPOL ANNEXES AND CARGO:
 
 ANNEX I – OIL POLLUTION:
@@ -2901,20 +2901,20 @@ ANNEX V – GARBAGE:
 - Discharge restrictions
 - The Garbage Management Plan`,
     bulletPoints: [
-      "Ek I petrol, Ek II kimyasal, Ek III ambalajlı zararlı maddeler",
-      "COW tankerler için MARPOL zorunluluğudur",
-      "Oil/Cargo Record Book tutulmalıdır",
-      "Marine Pollutant işareti Ek III kapsamındadır",
+      "Annex I petroleum, Annex II chemicals, Annex III packaged harmful substances",
+      "COW is a MARPOL requirement for tankers",
+      "Oil/Cargo Record Book must be kept",
+      "The Marine Pollutant mark is included in Annex III",
     ],
     keyPoints: [
-      "MARPOL ihlali ağır cezai yaptırımlar gerektirir",
-      "Kayıt defterleri PSC denetimlerinde kontrol edilir",
-      "Liman atık alım tesisleri kullanılmalıdır",
+      "Violation of MARPOL requires severe criminal sanctions",
+      "Logbooks are checked during PSC inspections",
+      "Port waste reception facilities should be used",
     ],
   },
   "psc-cargo-findings": {
-    title: "PSC Yük Denetimleri ve Bulgular",
-    introduction: "Port State Control (PSC) denetimleri, yük güvenliğine ilişkin eksiklikleri tespit eder ve ciddi bulgularda gemiyi tutabilir.",
+    title: "PSC Load Inspections and Findings",
+    introduction: "Port State Control (PSC) inspections detect deficiencies in cargo security and may detain the ship in cases of serious findings.",
     content: `PSC INSPECTION AREAS:
 
 1. DOCUMENT CHECKS:
@@ -2943,20 +2943,20 @@ ANNEX V – GARBAGE:
 Where the ship is found to present a safety risk it is not given clearance to sail.
 The ship stays in port until the deficiencies are rectified.`,
     bulletPoints: [
-      "Belge ve fiziksel kontroller eş zamanlı yapılır",
-      "Yetersiz lashing ve DG ayrım ihlali yaygın bulgulardır",
-      "CSM güncelliği kontrol edilir",
-      "Tutulma operasyonel ve mali kayba yol açar",
+      "Document and physical checks are carried out simultaneously",
+      "Inadequate lashing and DG discrimination violation are common findings",
+      "CSM update is checked",
+      "Eclipse leads to operational and financial loss",
     ],
     keyPoints: [
-      "Düzenli iç denetim PSC bulgularını önler",
-      "CSM ve DG belgeleri güncel tutulmalıdır",
-      "Bağlama ekipmanları sertifikalı olmalıdır",
+      "Regular internal audit prevents PSC findings",
+      "CSM and DG documents must be kept up to date",
+      "Securing equipment must be certified",
     ],
   },
   "ism-cargo": {
-    title: "ISM Code ve Yük Operasyonları",
-    introduction: "ISM Code, yük operasyonlarının sistematik ve güvenli yürütülmesi için prosedür ve sorumlulukları tanımlar.",
+    title: "ISM Code and Cargo Operations",
+    introduction: "The ISM Code defines procedures and responsibilities for the systematic and safe conduct of cargo operations.",
     content: `THE ISM CODE AND CARGO:
 
 The ISM Code (International Safety Management Code) requires all shipboard operations to be managed through systematic procedures.
@@ -2985,20 +2985,20 @@ The records are retained for audit and investigation.
 Personnel taking part in cargo operations must be trained.
 Drills must be held regularly.`,
     bulletPoints: [
-      "ISM Code yük operasyonları için prosedür zorunluluğu getirir",
-      "Kaptan yük güvenliğinin genel sorumlusudur",
-      "Tüm operasyonlar kayıt altına alınır",
-      "Personel eğitimi ve tatbikat zorunludur",
+      "ISM Code imposes procedural requirements for cargo operations",
+      "The Master is the general responsible for cargo security.",
+      "All operations are recorded",
+      "Staff training and drills are mandatory",
     ],
     keyPoints: [
-      "ISM prosedürleri şirket SMS'inin parçasıdır",
-      "Prosedür ihlali ISM audit bulgusuna yol açar",
-      "Sürekli iyileştirme prensibi uygulanır",
+      "ISM procedures are part of company SMS",
+      "Procedure violation leads to ISM audit finding",
+      "The principle of continuous improvement is applied",
     ],
   },
   "cargo-incidents": {
-    title: "Yük Kazaları ve Alınan Dersler",
-    introduction: "Tarihsel yük kazaları, mevcut güvenlik kurallarının oluşturulmasında belirleyici olmuş ve önemli dersler ortaya koymuştur.",
+    title: "Freight Accidents and Lessons Learned",
+    introduction: "Historical freight accidents have been decisive in establishing current safety rules and have revealed important lessons.",
     content: `MAJOR CARGO CASUALTIES:
 
 1. MV DERBYSHIRE (1980):
@@ -3026,15 +3026,15 @@ Drills must be held regularly.`,
 - Drifted at sea for months
 - Outcome: the DG container stowage rules were updated`,
     bulletPoints: [
-      "MV Derbyshire: Hatch cover standartlarını değiştirdi",
-      "Herald of Free Enterprise: ISM Code'u doğurdu",
-      "Nikel cevheri kazaları: IMSBC kurallarını sıkılaştırdı",
-      "MSC Flaminia: DG istifleme kurallarını güncelledi",
+      "MV Derbyshire: Changed hatch cover standards",
+      "Herald of Free Enterprise: gave rise to the ISM Code",
+      "Nickel ore accidents: IMSBC tightens rules",
+      "MSC Flaminia: DG updates stowage rules",
     ],
     keyPoints: [
-      "Her büyük kaza uluslararası kural değişikliğine yol açmıştır",
-      "Kaza analizi güvenlik kültürünün temelidir",
-      "Lessons learned paylaşımı tekrarı önler",
+      "Every major accident has led to international rule changes",
+      "Accident analysis is the basis of safety culture",
+      "Sharing lessons learned prevents repetition",
     ],
     warnings: [
       "The safety rules were written after lives were lost",
@@ -3046,8 +3046,8 @@ Drills must be held regularly.`,
   // EK BAŞLIKLAR (2. tur domain taraması)
   // =====================================================
   "cargo-gear-swl": {
-    title: "Gemi Yük Donanımı, Vinç/Derrick ve SWL",
-    introduction: "Gemi yük donanımı; vinçler (crane), bumbalar (derrick) ve bunların aksesuarlarından (halat, makara, kanca, kilit) oluşur. Her bir donanımın güvenle kaldırabileceği yük, SWL (Safe Working Load) ile sınırlandırılmıştır ve kayıt altına alınır.",
+    title: "Ship Cargo Rig, Crane/Derrick and SWL",
+    introduction: "Ship cargo equipment; It consists of cranes, derricks and their accessories (rope, pulley, hook, shackle). The load that each piece of equipment can safely handle is limited by SWL (Safe Working Load) and recorded.",
     content: `SWL (SAFE WORKING LOAD):
 
 The SWL is the maximum load a lifting appliance can safely carry in normal use. It is set by applying a safety factor to the breaking load of the gear and is marked legibly on the appliance.
@@ -3072,15 +3072,15 @@ SAFE USE:
 
 The SWL must not be exceeded; no one must stand under a suspended load; shock loading must be avoided; the increase in leg forces in an angled lift must be taken into account.`,
     bulletPoints: [
-      "SWL, donanımın güvenle kaldırabileceği maksimum yüktür ve işaretlenir.",
-      "Sistemin kapasitesini en zayıf eleman belirler.",
-      "Tüm donanım Cargo Gear Register'da sertifikalı olarak kayıtlıdır.",
-      "Proof load test ~5 yılda bir, ayrıntılı muayene yıllık yapılır.",
+      "SWL is the maximum load that the equipment can safely handle and is marked.",
+      "The weakest element determines the capacity of the system.",
+      "All equipment is registered as certified in the Cargo Gear Register.",
+      "Proof load testing is done ~every 5 years, detailed inspection is done annually.",
     ],
     keyPoints: [
-      "SWL aşılmaz; kopma yüküne güvenlik katsayısı uygulanır.",
-      "ILO 152 ve SOLAS, kaldırma donanımı kayıt ve testini gerektirir.",
-      "Açılı kaldırmada bacak kuvvetleri artar.",
+      "SWL is impenetrable; A factor of safety is applied to the breaking load.",
+      "ILO 152 and SOLAS require registration and testing of lifting equipment.",
+      "Leg strength increases in angled lifting.",
     ],
     warnings: [
       "Never stand under a suspended load; a shock load can part the gear",
@@ -3088,8 +3088,8 @@ The SWL must not be exceeded; no one must stand under a suspended load; shock lo
     ],
   },
   "blu-code": {
-    title: "BLU Code: Dökme Yük Yükleme/Boşaltma ve Gemi-Sahil Kontrolü",
-    introduction: "BLU Code (Code of Practice for the Safe Loading and Unloading of Bulk Carriers), dökme yük gemilerinde aşırı/dengesiz yüklemenin neden olduğu yapısal hasar ve batma kazalarını önlemek için gemi ile terminal arasındaki güvenli yükleme/boşaltma uygulamasını düzenler.",
+    title: "BLU Code: Bulk Cargo Loading/Unloading and Ship-Shore Control",
+    introduction: "BLU Code (Code of Practice for the Safe Loading and Unloading of Bulk Carriers) regulates the safe loading/unloading practice between the ship and the terminal to prevent structural damage and sinking accidents caused by excessive/unbalanced loading on bulk carriers.",
     content: `PURPOSE:
 
 On bulk carriers, rapid and unbalanced loading can create excessive shear force and bending moment, straining the hull structure and even breaking the ship's back. The BLU Code standardises ship/terminal coordination in order to manage these risks.
@@ -3113,15 +3113,15 @@ LESSONS FROM CASUALTIES:
 
 Many bulk carrier losses have been caused by an incorrect loading sequence and excessive local loading; the BLU Code grew out of that experience.`,
     bulletPoints: [
-      "Hızlı/dengesiz yükleme aşırı shear force ve bending moment oluşturur.",
-      "Gemi-terminal üzerinde anlaşılan yükleme planı hazırlar.",
-      "Ship-Shore Safety Checklist ve net iletişim zorunludur.",
-      "Loading computer ile stres limitleri sürekli izlenir.",
+      "Rapid/unbalanced loading creates excessive shear force and bending moment.",
+      "The ship-terminal prepares the agreed upon loading plan.",
+      "Ship-Shore Safety Checklist and clear communication are mandatory.",
+      "Stress limits are constantly monitored with the loading computer.",
     ],
     keyPoints: [
-      "BLU Code dökme yük yükleme/boşaltmasında yapısal güvenliği hedefler.",
-      "Yükleme hızı deballasting kapasitesiyle senkronize edilir.",
-      "Alternate hold loading kısıtlarına uyulmalıdır.",
+      "BLU Code targets structural safety in bulk cargo loading/unloading.",
+      "Loading speed is synchronized with deballasting capacity.",
+      "Alternate hold loading restrictions must be followed.",
     ],
     warnings: [
       "Unplanned or excessive local loading can permanently deform the hull or break the ship's back",
@@ -3129,8 +3129,8 @@ Many bulk carrier losses have been caused by an incorrect loading sequence and e
     ],
   },
   "hold-preparation": {
-    title: "Ambar Hazırlığı ve Temizliği",
-    introduction: "Yeni yük öncesi ambar hazırlığı; yük hasarını, kontaminasyonu ve yük taleplerini (claims) önlemenin temelidir. Gerekli temizlik standardı, taşınacak yüke ve önceki yüke göre belirlenir.",
+    title: "Cargo hold Preparation and Cleaning",
+    introduction: "Cargo hold preparation before new load; It is the basis for preventing cargo damage, contamination and cargo claims. The required standard of cleaning is determined by the load to be transported and the previous load.",
     content: `CLEANLINESS STANDARDS:
 
 - Hospital clean (grain clean): the highest standard; the hold completely clean, dry, odour-free and free of rust and residues of the previous cargo. Required for grain and sensitive cargoes.
@@ -3150,20 +3150,20 @@ INSPECTION AND APPROVAL:
 
 For some cargoes (particularly grain) an independent surveyor inspects the hold and passes it. Inadequate preparation leads to serious claims for cargo damage and contamination.`,
     bulletPoints: [
-      "Standartlar: hospital/grain clean > normal clean > shovel clean.",
-      "Önceki yük artığı, tuz ve nem hassas yüklerde hasar yaratır.",
-      "Sintine kuyuları ve süzgeçler temizlenip test edilir.",
-      "Hatch cover sızdırmazlığı kontrol edilir.",
+      "Standards: hospital/grain clean > normal clean > shovel clean.",
+      "Previous load residue, salt and moisture cause damage to sensitive loads.",
+      "Bilge wells and strainers are cleaned and tested.",
+      "Hatch cover tightness is checked.",
     ],
     keyPoints: [
-      "Gerekli temizlik standardı yeni yüke göre belirlenir.",
-      "Tahıl/hassas yüklerde sörveyör onayı gerekebilir.",
-      "Yetersiz hazırlık yük hasarı ve tazminat talebi doğurur.",
+      "The required cleaning standard is determined by the new load.",
+      "Surveyor approval may be required for grain/sensitive loads.",
+      "Inadequate preparation will result in cargo damage and compensation claims.",
     ],
   },
   "gas-carrier-igc": {
-    title: "Gaz Taşıyıcılar ve IGC Code (LNG/LPG)",
-    introduction: "Sıvılaştırılmış gaz taşıyıcılar (LNG/LPG), gazı düşük sıcaklık ve/veya yüksek basınçta sıvı hâlde taşır. Bu gemiler IGC Code (International Code for the Construction and Equipment of Ships Carrying Liquefied Gases in Bulk) gereksinimlerine tabidir.",
+    title: "Gas Carriers and IGC Code (LNG/LPG)",
+    introduction: "Liquefied gas carriers (LNG/LPG) transport gas in liquid form at low temperature and/or high pressure. These ships are subject to the requirements of the IGC Code (International Code for the Construction and Equipment of Ships Carrying Liquefied Gases in Bulk).",
     content: `CARGO CONDITIONS:
 
 - Fully pressurised: the gas at ambient temperature in high-pressure tanks (usually small LPG carriers).
@@ -3187,15 +3187,15 @@ HAZARDS AND SAFETY:
 - Asphyxiation: the gas displaces oxygen.
 - An ESD (Emergency Shutdown) system, gas detectors and special PPE are mandatory.`,
     bulletPoints: [
-      "Koşullar: tam basınçlı / yarı basınçlı / tam soğutmalı.",
-      "Tank tipleri: Type A/B/C ve membran; ikincil bariyer şarttır.",
-      "Boil-off: LPG'de reliquefaction, LNG'de yakıt olarak kullanım.",
-      "IGC Code yapı ve donanım gereksinimlerini belirler.",
+      "Conditions: fully pressurized / half pressurized / fully cooled.",
+      "Tank types: Type A/B/C and membrane; secondary barrier is essential.",
+      "Boil-off: Reliquefaction in LPG, use as fuel in LNG.",
+      "IGC Code determines structure and hardware requirements.",
     ],
     keyPoints: [
-      "LNG ≈ -163 °C, LPG ≈ -42 °C taşınır.",
-      "Başlıca tehlikeler: parlayıcılık, kriyojenik soğuk, boğulma.",
-      "ESD, gaz dedeksiyonu ve özel KKD zorunludur.",
+      "LNG is carried at ≈ -163°C, LPG at ≈ -42°C.",
+      "Main hazards: flammability, cryogenic cold, suffocation.",
+      "ESD, gas detection and special PPE are mandatory.",
     ],
     warnings: [
       "Contact with a cryogenic liquid causes severe burns and brittle fracture in steel",
@@ -3203,8 +3203,8 @@ HAZARDS AND SAFETY:
     ],
   },
   "isgott-tanker-safety": {
-    title: "ISGOTT ve Tanker Emniyeti",
-    introduction: "ISGOTT (International Safety Guide for Oil Tankers and Terminals), petrol tankerleri ve terminallerinde güvenli operasyonun endüstri standardı rehberidir. Statik elektrik, parlayıcı buhar ve gemi-sahil arayüzü kaynaklı riskleri yönetir.",
+    title: "ISGOTT and Tanker Safety",
+    introduction: "ISGOTT (International Safety Guide for Oil Tankers and Terminals) is the industry standard guide to safe operation on oil tankers and terminals. It manages risks arising from static electricity, flammable vapor and ship-shore interface.",
     content: `THE STATIC ELECTRICITY HAZARD:
 
 The movement of the liquid inside pipes and tanks builds up a static charge. If the accumulated charge discharges as a spark in a flammable vapour atmosphere it can cause ignition. Precautions: limiting the loading rate at the start (initial slow loading), preventing free fall and splashing, static-safe use of measuring equipment (sounding) and appropriate relaxation times.
@@ -3225,15 +3225,15 @@ OPERATIONAL PRECAUTIONS:
 - Preventing overflow and spillage; drip trays and scupper plugs.
 - A continuous deck watch and readiness to respond quickly.`,
     bulletPoints: [
-      "Statik elektrik birikimi parlayıcı ortamda tutuşma riski yaratır.",
-      "Inert gas, tank oksijenini düşürerek yanmayı önler (ISGOTT temeli).",
-      "Ship/Shore Safety Check List operasyon öncesi doldurulur.",
-      "İlk yükleme yavaş yapılır (initial slow loading).",
+      "Accumulation of static electricity creates a risk of ignition in a flammable environment.",
+      "Inert gas prevents combustion by reducing tank oxygen (ISGOTT basis).",
+      "Ship/Shore Safety Check List is filled out before the operation.",
+      "Initial loading is done slowly (initial slow loading).",
     ],
     keyPoints: [
-      "ISGOTT petrol tankeri/terminal operasyonlarının endüstri rehberidir.",
-      "Statik, parlayıcı buhar ve gemi-sahil arayüzü ana risklerdir.",
-      "Inert gas ve gaz ölçümü emniyetin temelidir.",
+      "ISGOTT is the industry guide to oil tanker/terminal operations.",
+      "Static, flammable vapor and ship-shore interface are the main risks.",
+      "Inert gas and gas measurement are the basis of safety.",
     ],
     warnings: [
       "Flammable vapour + a spark = an explosion; sources of ignition are strictly controlled",
@@ -3281,7 +3281,7 @@ export default function CargoTopicsPage() {
                 <Package className="h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Yük Elleçleme ve İstifleme</h1>
+                <h1 className="text-xl font-bold text-foreground">Cargo Handling and Stacking</h1>
               </div>
             </div>
           </div>
@@ -3342,8 +3342,8 @@ export default function CargoTopicsPage() {
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
-                  { title: "Yük Hesaplamaları", href: "/cargo/calculations" },
-                  { title: "Draft Survey Formülleri", href: "/cargo/formulas" },
+                  { title: "Load Calculations", href: "/cargo/calculations" },
+                  { title: "Draft Survey Formulas", href: "/cargo/formulas" },
                 ].map((resource, index) => (
                   <Link
                     key={index}
@@ -3415,7 +3415,7 @@ export default function CargoTopicsPage() {
                 {/* Bullet Points */}
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
                   <div className="bg-muted/50 rounded-xl p-4 space-y-2">
-                    <h3 className="font-semibold text-foreground mb-3">Önemli Noktalar</h3>
+                    <h3 className="font-semibold text-foreground mb-3">Highlights</h3>
                     {currentContent.bulletPoints.map((point, index) => (
                       <div key={index} className="flex items-start gap-2">
                         <span className="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0" />
@@ -3443,11 +3443,11 @@ export default function CargoTopicsPage() {
                 {/* Examples */}
                 {currentContent.examples && currentContent.examples.length > 0 && (
                   <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                    <h3 className="font-semibold text-foreground mb-2">Sayısal Örnek</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Numerical Example</h3>
                     {currentContent.examples.map((example, index) => (
                       <div key={index} className="text-sm text-foreground">
-                        <p className="font-medium">Soru: {example.problem}</p>
-                        <p className="text-muted-foreground mt-1">Çözüm: {example.solution}</p>
+                        <p className="font-medium">Question: {example.problem}</p>
+                        <p className="text-muted-foreground mt-1">Solution: {example.solution}</p>
                       </div>
                     ))}
                   </div>
@@ -3458,7 +3458,7 @@ export default function CargoTopicsPage() {
                   <div className="bg-amber-500/5 rounded-xl p-4">
                     <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5 text-amber-500" />
-                      Anahtar Bilgiler
+                      Key Information
                     </h3>
                     <div className="space-y-2">
                       {currentContent.keyPoints.map((point, index) => (

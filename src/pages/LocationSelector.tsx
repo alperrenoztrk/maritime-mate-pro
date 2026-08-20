@@ -95,7 +95,7 @@ export default function LocationSelector() {
 
   const handleUseDeviceLocation = () => {
     setSelectedLocation(null);
-    toast.success("Cihaz konumu kullanılacak");
+    toast.success("Device location will be used");
     navigate(returnTo);
   };
 
@@ -104,7 +104,7 @@ export default function LocationSelector() {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-center">
-          <h1 className="text-2xl font-bold text-foreground">Konum Seçici</h1>
+          <h1 className="text-2xl font-bold text-foreground">Location Picker</h1>
         </div>
 
         {/* Current Location */}
@@ -112,7 +112,7 @@ export default function LocationSelector() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-foreground">
               <MapPin className="h-5 w-5 text-primary" />
-              Mevcut Konum
+              Current Location
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -121,17 +121,17 @@ export default function LocationSelector() {
                 {locationLabel ? (
                   <span className="notranslate" translate="no">{locationLabel}</span>
                 ) : (
-                  "Konum bilgisi alınıyor..."
+                  "Retrieving location information..."
                 )}
               </p>
               {isFallbackLocation && (
                 <p className="text-xs text-amber-500 mt-1">
-                  Konum alınamadı. Varsayılan konum gösteriliyor.
+                  Location could not be obtained. The default location is shown.
                 </p>
               )}
             </div>
             <Button variant="outline" onClick={handleUseDeviceLocation}>
-              Cihaz konumunu kullan
+              Use device location
             </Button>
           </CardContent>
         </Card>
@@ -141,7 +141,7 @@ export default function LocationSelector() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-foreground">
               <Search className="h-5 w-5 text-primary" />
-              Yeni Konum Ara
+              Search New Location
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -149,7 +149,7 @@ export default function LocationSelector() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Şehir, ülke veya bölge adı girin..."
+                placeholder="Enter a city, country or region name..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="pl-10 text-base"
@@ -157,7 +157,7 @@ export default function LocationSelector() {
             </div>
             
             <p className="text-sm text-muted-foreground">
-              Örnek: Istanbul, Tokyo, New York, Paris, London
+              Example: Istanbul, Tokyo, New York, Paris, London
             </p>
           </CardContent>
         </Card>
@@ -166,7 +166,7 @@ export default function LocationSelector() {
         {query.length >= 2 && (
           <Card className="border-border/20 shadow-lg">
             <CardHeader>
-              <CardTitle className="text-foreground">Arama Sonuçları</CardTitle>
+              <CardTitle className="text-foreground">Search Results</CardTitle>
             </CardHeader>
             <CardContent>
               {loading ? (
@@ -177,11 +177,11 @@ export default function LocationSelector() {
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
                     </svg>
                   </div>
-                  <p className="text-muted-foreground">Konumlar aranıyor...</p>
+                  <p className="text-muted-foreground">Searching for locations...</p>
                 </div>
               ) : error ? (
                 <div className="text-center py-8">
-                  <p className="text-destructive font-semibold mb-2">Arama hatası</p>
+                  <p className="text-destructive font-semibold mb-2">Search error</p>
                   <p className="text-muted-foreground text-sm">{error}</p>
                 </div>
               ) : results.length > 0 ? (
@@ -196,9 +196,9 @@ export default function LocationSelector() {
                 </div>
               ) : query.length >= 2 ? (
                 <div className="text-center py-8">
-                  <p className="text-muted-foreground">"{query}" için sonuç bulunamadı</p>
+                  <p className="text-muted-foreground">No results for &quot;{query}&quot;</p>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Farklı bir arama terimi deneyin
+                    Try a different search term
                   </p>
                 </div>
               ) : null}

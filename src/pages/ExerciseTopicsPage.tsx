@@ -11,7 +11,7 @@ export default function ExerciseTopicsPage() {
   if (!category) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Kategori bulunamadı</p>
+        <p className="text-muted-foreground">Category not found</p>
       </div>
     );
   }

@@ -15,16 +15,16 @@ export default function NavigationFormulasPage() {
         { id: "gc", title: "Great Circle" },
         { id: "rhumb", title: "Rhumb Line (Mercator)" },
         { id: "plane", title: "Plane Sailing" },
-        { id: "time-eta", title: "Zaman ve ETA" },
+        { id: "time-eta", title: "Time and ETA" },
         { id: "current", title: "Current Triangle (CTS)" },
         { id: "compass", title: "Compass Conversions" },
         { id: "cpa", title: "CPA / TCPA" },
-        { id: "colreg", title: "COLREG Manevra" },
-        { id: "position", title: "Konum Tespiti" },
+        { id: "colreg", title: "COLREG Maneuver" },
+        { id: "position", title: "Location Detection" },
         { id: "bearings", title: "Bearing Calculations" },
         { id: "distance", title: "Distance Calculations" },
         { id: "turning", title: "Turning Calculations" },
-        { id: "safety", title: "Seyir Emniyeti" },
+        { id: "safety", title: "Navigational Safety" },
         { id: "passage", title: "Passage Plan" }
       ]
     },
@@ -37,7 +37,7 @@ export default function NavigationFormulasPage() {
     {
       header: "3. Meteorology and Environmental Factors",
       items: [
-        { id: "weather", title: "Hava Durumu" },
+        { id: "weather", title: "Weather" },
         { id: "tides", title: "Tide Calculations" }
       ]
     },
@@ -47,11 +47,11 @@ export default function NavigationFormulasPage() {
         { id: "pilotage", title: "Coastal Navigation" },
         { id: "celestial", title: "Celestial Navigation" },
         { id: "sight", title: "Sight Reduction" },
-        { id: "ecdis", title: "ECDIS Kontrolleri" }
+        { id: "ecdis", title: "ECDIS Controls" }
       ]
     },
     {
-      header: "5. Acil Durum",
+      header: "5. Emergency",
       items: [
         { id: "emergency", title: "Emergency Formulas" }
       ]
@@ -119,7 +119,7 @@ export default function NavigationFormulasPage() {
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <ol className="list-decimal pl-4 space-y-2">
-              <li><strong>Basic navigation:</strong> speed–distance–time, knot ↔ km/h ↔ m/s conversions, ETA/ETD, remaining time and distance, average speed and SMG/DMG calculations.</li>
+              <li><strong>Basic navigation:</strong> speed–distance–time, knots ↔ km/h ↔ m/s conversions, ETA/ETD, remaining time and distance, average speed and SMG/DMG calculations.</li>
               <li><strong>Course and bearings:</strong> plane sailing, departure, D.Lat/D.Long, middle latitude sailing, true/magnetic/compass course, chart scale and verifying the track by bearings.</li>
               <li><strong>Latitude and longitude:</strong> determining the direction of dLat/dLong, the 1° = 60 NM relation, converting longitude to NM with cos φ, and the distance between two points.</li>
               <li><strong>On the chart:</strong> using parallel rules and dividers, true course and distance → time conversion, and checking after chart corrections.</li>
@@ -150,8 +150,8 @@ export default function NavigationFormulasPage() {
               <li><strong>Nautical Almanac:</strong> GHA/LHA, declination, refraction and parallax corrections; sunrise/sunset and meridian passage data.</li>
               <li><strong>Sight Reduction Tables (HO-249/HO-229):</strong> using the tables to solve for the intercept and azimuth.</li>
               <li><strong>Deviation card and compass error log:</strong> magnetic and compass corrections and verification of the TVMDC chain.</li>
-              <li><strong>Chart catalogue and corrections:</strong> the current chart/ENC list, the NM/UWN/SNW bulletins and the ECDIS route check output.</li>
-              <li><strong>Current and wind reference sheets:</strong> leeway angle coefficients, manoeuvring diagrams and advance/transfer and wheel-over tables.</li>
+              <li><strong>Chart catalog and corrections:</strong> the current chart/ENC list, the NM/UWN/SNW bulletins and the ECDIS route check output.</li>
+              <li><strong>Current and wind reference sheets:</strong> leeway angle coefficients, maneuvering diagrams and advance/transfer and wheel-over tables.</li>
             </ul>
           </CardContent>
         </Card>
@@ -210,7 +210,7 @@ R ≈ 3440.065 nm`}</pre>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>θ: the central angle between the two positions</li>
                   <li>φ₁, φ₂: the latitudes of departure and arrival</li>
-                  <li>Δλ: the difference of longitude</li>
+                  <li>Δλ: the difference of length</li>
                 </ul>
               </div>
               <div className="bg-muted/30 rounded p-3 space-y-2">
@@ -286,7 +286,7 @@ MP = 7915.7045 · log₁₀tan(45° + φ/2) − 23.0133 · sinφ`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('time-eta')} className="cursor-pointer" aria-expanded={isOpen('time-eta')}>
               <CardTitle id="time-eta" className="scroll-mt-24 flex items-center justify-between">
-                Zaman ve ETA
+                Time and ETA
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('time-eta') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -378,7 +378,7 @@ dCPA = |R + Vrel · tCPA|`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('colreg')} className="cursor-pointer" aria-expanded={isOpen('colreg')}>
               <CardTitle id="colreg" className="scroll-mt-24 flex items-center justify-between">
-                COLREG Manevra
+                COLREG Maneuver
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('colreg') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -433,7 +433,7 @@ Note: the luminous range depends on the nominal intensity of the light and the m
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('position')} className="cursor-pointer" aria-expanded={isOpen('position')}>
               <CardTitle id="position" className="scroll-mt-24 flex items-center justify-between">
-                Konum Tespiti
+                Location Detection
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('position') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -521,7 +521,7 @@ Diameter ≈ 4-5 × the ship's length; in practice the values from the manoeuvri
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('safety')} className="cursor-pointer" aria-expanded={isOpen('safety')}>
               <CardTitle id="safety" className="scroll-mt-24 flex items-center justify-between">
-                Seyir Emniyeti
+                Navigational Safety
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('safety') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -607,7 +607,7 @@ A constant range → a safe passage`}</pre>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('weather')} className="cursor-pointer" aria-expanded={isOpen('weather')}>
               <CardTitle id="weather" className="scroll-mt-24 flex items-center justify-between">
-                Hava Durumu
+                Weather
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('weather') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -774,7 +774,7 @@ Tables: the HO-249/HO-229 sight reduction tables and Nautical Almanac data.`}</p
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('ecdis')} className="cursor-pointer" aria-expanded={isOpen('ecdis')}>
               <CardTitle id="ecdis" className="scroll-mt-24 flex items-center justify-between">
-                ECDIS Kontrolleri
+                ECDIS Controls
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('ecdis') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>
@@ -795,11 +795,11 @@ BRM: anti-grounding alarm, cross-track alarm, ETA per leg`}</pre>
 
         {/* 5. Acil Durum */}
         <div className="space-y-4">
-          <div className="text-sm font-semibold text-primary px-1">5. Acil Durum</div>
+          <div className="text-sm font-semibold text-primary px-1">5. Emergency</div>
           <Card className="shadow">
             <CardHeader onClick={() => toggleSection('emergency')} className="cursor-pointer" aria-expanded={isOpen('emergency')}>
               <CardTitle id="emergency" className="scroll-mt-24 flex items-center justify-between">
-                Acil Durum
+                Emergency
                 <ChevronDown className={"h-4 w-4 transition-transform " + (isOpen('emergency') ? "rotate-180" : "")} />
               </CardTitle>
             </CardHeader>

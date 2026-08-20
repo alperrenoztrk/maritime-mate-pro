@@ -22,7 +22,7 @@ const Engine = () => {
         <FormulaCard
           sections={[
             {
-              title: "Güç Formülleri",
+              title: "Power Formulas",
               accent: "blue",
               lines: [
                 { label: "Braking Power", formula: "BHP = IHP × ηmech" },
@@ -31,25 +31,25 @@ const Engine = () => {
               ],
             },
             {
-              title: "Yakıt Formülleri",
+              title: "Fuel Formulas",
               accent: "green",
               lines: [
-                { label: "SFOC Interpolasyon", formula: "SFOC = a × Load² + b × Load + c" },
+                { label: "SFOC Interpolation", formula: "SFOC = a × Load² + b × Load + c" },
                 { label: "Fuel Consumption", formula: "FC = Power × SFOC / 1000" },
                 { label: "Daily Consumption", formula: "Daily = FC × 24" },
               ],
             },
             {
-              title: "Isı Transfer Formülleri",
+              title: "Heat Transfer Formulas",
               accent: "orange",
               lines: [
-                { label: "Isı Değişim Alanı", formula: "A = Q / (U × LMTD)" },
+                { label: "Heat Exchange Area", formula: "A = Q / (U × LMTD)" },
                 { label: "LMTD", formula: "LMTD = (ΔT₁ - ΔT₂) / ln(ΔT₁/ΔT₂)" },
                 { label: "Heat Load", formula: "Q = m × cp × ΔT" },
               ],
             },
             {
-              title: "Emisyon Formülleri",
+              title: "Emission Formulas",
               accent: "red",
               lines: [
                 { label: "NOx Emission", formula: "NOx = EF × FC × CF" },
@@ -58,24 +58,24 @@ const Engine = () => {
               ],
             },
             {
-              title: "Verimlilik Formülleri",
+              title: "Efficiency Formulas",
               accent: "purple",
               lines: [
-                { label: "Termal Verimlilik", formula: "ηth = P / (FC × LCV)" },
-                { label: "Genel Verimlilik", formula: "ηtotal = ηth × ηmech × ηprop" },
+                { label: "Thermal Efficiency", formula: "ηth = P / (FC × LCV)" },
+                { label: "Overall Efficiency", formula: "ηtotal = ηth × ηmech × ηprop" },
                 { label: "EEOI", formula: "EEOI = CO₂ / (Cargo × Distance)" },
               ],
             },
           ]}
           symbolsNote={
             <>
-              <strong>Semboller:</strong>
+              <strong>Symbols:</strong>
               <br />
-              P: güç, η: verimlilik, FC: yakıt tüketimi
+              P: power, η: efficiency, FC: fuel consumption
               <br />
-              Q: ısı, U: ısı transfer katsayısı, LMTD: log ort. sıc. farkı
+              Q: heat, U: heat transfer coefficient, LMTD: log avg. temp. difference
               <br />
-              EF: emisyon faktörü, CF: karbon faktörü
+              EF: emission factor, CF: carbon factor
             </>
           }
         />
@@ -83,7 +83,7 @@ const Engine = () => {
       below={
         <>
           <DiagramViewer
-            title="Makine Sistemi Akış Diyagramı"
+            title="Machine System Flow Diagram"
             data={{
               mcrPower: 8500,
               currentLoad: 75,
@@ -95,7 +95,7 @@ const Engine = () => {
           />
 
           <div className="text-center text-sm text-muted-foreground">
-            Motor performansı, yakıt verimlilik analizi ve güç hesaplamaları
+            Engine performance, fuel efficiency analysis and power calculations
           </div>
         </>
       }
@@ -104,7 +104,7 @@ const Engine = () => {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-xl">
             <Cog className="h-6 w-6 text-sky-600 dark:text-sky-400" />
-            Makine Hesaplama Modülü
+            Machine Calculation Module
           </CardTitle>
         </CardHeader>
         <CardContent>

@@ -22,7 +22,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   thermodynamics: [
     {
       name: "Carnot Efficiency",
-      description: "Sıcak ve soğuk kaynak sıcaklıkları ile Carnot çevrim verimini hesaplar.",
+      description: "Calculates Carnot cycle efficiency with hot and cold source temperatures.",
       inputs: [
         { key: "th", label: "Hot Reservoir (TH)", unit: "°C", placeholder: "500" },
         { key: "tl", label: "Cold Reservoir (TL)", unit: "°C", placeholder: "30" },
@@ -35,12 +35,12 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "LMTD Hesabı",
-      description: "Isı eşanjöründe logaritmik ortalama sıcaklık farkını hesaplar (karşı akış).",
+      name: "LMTD Calculation",
+      description: "Calculates the logarithmic average temperature difference in the heat exchanger (counterflow).",
       inputs: [
-        { key: "t1i", label: "Hot Inlet", unit: "°C", placeholder: "90" },
-        { key: "t1o", label: "Hot Outlet", unit: "°C", placeholder: "60" },
-        { key: "t2i", label: "Cold Inlet", unit: "°C", placeholder: "20" },
+        { key: "t1i", label: "Hot inlet", unit: "°C", placeholder: "90" },
+        { key: "t1o", label: "Hot outlet", unit: "°C", placeholder: "60" },
+        { key: "t2i", label: "Cold inlet", unit: "°C", placeholder: "20" },
         { key: "t2o", label: "Cold Outlet", unit: "°C", placeholder: "50" },
       ],
       calculate: (v) => {
@@ -53,7 +53,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Heat Exchanger Area",
-      description: "Q = U × A × LMTD formülünden gerekli ısı transfer alanını hesaplar.",
+      description: "Calculates the required heat transfer area from the formula Q = U × A × LMTD.",
       inputs: [
         { key: "q", label: "Heat Load (Q)", unit: "kW", placeholder: "500" },
         { key: "u", label: "Overall Heat Transfer Coefficient (U)", unit: "W/m²·K", placeholder: "2500" },
@@ -66,7 +66,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Diesel Cycle Efficiency",
-      description: "Sıkıştırma oranı ve kesme oranından Diesel çevrim verimini hesaplar.",
+      description: "Calculates Diesel cycle efficiency from compression ratio and cutoff ratio.",
       inputs: [
         { key: "r", label: "Compression Ratio (r)", unit: "", placeholder: "18" },
         { key: "rc", label: "Cut-off Ratio (ρ)", unit: "", placeholder: "2.5" },
@@ -78,8 +78,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Otto Çevrim Verimi",
-      description: "Sıkıştırma oranından Otto çevrim verimini hesaplar.",
+      name: "Otto Cycle Efficiency",
+      description: "Calculates the Otto cycle efficiency from the compression ratio.",
       inputs: [
         { key: "r", label: "Compression Ratio (r)", unit: "", placeholder: "10" },
         { key: "gamma", label: "Specific Heat Ratio (γ)", unit: "", placeholder: "1.4" },
@@ -90,8 +90,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Isı Miktarı Hesabı",
-      description: "Q = m × c × ΔT formülüyle ısı miktarını hesaplar.",
+      name: "Heat Amount Calculation",
+      description: "It calculates the amount of heat with the formula Q = m × c × ΔT.",
       inputs: [
         { key: "m", label: "Mass (m)", unit: "kg", placeholder: "1000" },
         { key: "c", label: "Specific Heat (c)", unit: "kJ/kg·K", placeholder: "4.18" },
@@ -101,13 +101,13 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const q = v.m * v.c * v.dt;
         return [
           { label: "Heat Quantity (Q)", value: `${q.toFixed(1)} kJ` },
-          { label: "Heat Quantity", value: `${(q / 3600).toFixed(2)} kWh` },
+          { label: "Heat quantity", value: `${(q / 3600).toFixed(2)} kWh` },
         ];
       },
     },
     {
       name: "Entropy Change",
-      description: "ΔS = Q/T formülüyle entropi değişimini hesaplar.",
+      description: "Calculates the entropy change with the formula ΔS = Q/T.",
       inputs: [
         { key: "q", label: "Heat Quantity (Q)", unit: "kJ", placeholder: "500" },
         { key: "t", label: "Temperature (T)", unit: "°C", placeholder: "100" },
@@ -137,8 +137,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Isı İletimi (Fourier)",
-      description: "Q = k × A × ΔT / L ile düz duvar ısı iletimini hesaplar.",
+      name: "Heat Conduction (Fourier)",
+      description: "Calculates the straight wall heat conduction with Q = k × A × ΔT / L.",
       inputs: [
         { key: "k", label: "Thermal Conductivity (k)", unit: "W/m·K", placeholder: "50" },
         { key: "a", label: "Area (A)", unit: "m²", placeholder: "2" },
@@ -147,14 +147,14 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (v) => {
         const q = (v.k * v.a * v.dt) / v.l;
-        return [{ label: "Isı Akısı (Q)", value: `${(q / 1000).toFixed(2)} kW` }];
+        return [{ label: "Heat Flux (Q)", value: `${(q / 1000).toFixed(2)} kW` }];
       },
     },
   ],
   "fluid-mechanics": [
     {
       name: "Reynolds Number",
-      description: "Akış rejimini belirlemek için Reynolds sayısını hesaplar.",
+      description: "Calculates the Reynolds number to determine the flow regime.",
       inputs: [
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
         { key: "v", label: "Velocity (v)", unit: "m/s", placeholder: "2" },
@@ -163,7 +163,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (vals) => {
         const re = (vals.rho * vals.v * vals.d) / vals.mu;
-        const regime = re < 2300 ? "Laminer" : re < 4000 ? "transition" : "Turbulent";
+        const regime = re < 2300 ? "Laminar" : re < 4000 ? "transition" : "Turbulent";
         return [
           { label: "Reynolds Number", value: re.toFixed(0) },
           { label: "Flow Regime", value: regime },
@@ -172,7 +172,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Pump Power",
-      description: "Santrifüj pompa gücünü hesaplar.",
+      description: "Calculates centrifugal pump power.",
       inputs: [
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1025" },
         { key: "q", label: "Flow Rate (Q)", unit: "m³/h", placeholder: "100" },
@@ -187,7 +187,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Bernoulli Equation",
-      description: "İki nokta arasında Bernoulli denklemini uygulayarak basınç veya hız hesaplar.",
+      description: "Calculates pressure or velocity by applying Bernoulli's equation between two points.",
       inputs: [
         { key: "p1", label: "P₁ (Pressure)", unit: "kPa", placeholder: "200" },
         { key: "v1", label: "v₁ (Velocity)", unit: "m/s", placeholder: "2" },
@@ -202,8 +202,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Darcy-Weisbach Basınç Kaybı",
-      description: "Boru hattında sürtünme kaynaklı basınç kaybını hesaplar.",
+      name: "Darcy-Weisbach Pressure Loss",
+      description: "Calculates the pressure loss caused by friction in the pipeline.",
       inputs: [
         { key: "f", label: "Friction Factor (f)", unit: "", placeholder: "0.02" },
         { key: "l", label: "Pipe Length (L)", unit: "m", placeholder: "50" },
@@ -221,11 +221,11 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "NPSH Hesabı",
-      description: "Pompa emişinde mevcut NPSH değerini hesaplar.",
+      name: "NPSH Calculation",
+      description: "Calculates the NPSH value present at the pump suction.",
       inputs: [
         { key: "pa", label: "Atmospheric Pressure", unit: "kPa", placeholder: "101.325" },
-        { key: "pv", label: "Vapour Pressure", unit: "kPa", placeholder: "2.34" },
+        { key: "pv", label: "Vapor Pressure", unit: "kPa", placeholder: "2.34" },
         { key: "hs", label: "Suction Lift (+/−)", unit: "m", placeholder: "3" },
         { key: "hf", label: "Suction Line Loss", unit: "m", placeholder: "0.5" },
         { key: "rho", label: "Density (ρ)", unit: "kg/m³", placeholder: "1000" },
@@ -236,8 +236,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Devamlılık Denklemi",
-      description: "A₁V₁ = A₂V₂ ile boru daraltma/genişletmede hız hesabı.",
+      name: "Continuity Equation",
+      description: "Speed calculation in pipe narrowing/expansion with A₁V₁ = A₂V₂.",
       inputs: [
         { key: "d1", label: "Diameter 1 (D₁)", unit: "m", placeholder: "0.2" },
         { key: "v1", label: "Velocity 1 (V₁)", unit: "m/s", placeholder: "2" },
@@ -256,7 +256,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Affinity Laws",
-      description: "Pompa/fan hız değişiminde debi, basınç ve güç ilişkisini hesaplar.",
+      description: "Calculates the relationship between flow rate, pressure and power when pump/fan speed changes.",
       inputs: [
         { key: "n1", label: "Current Speed (n₁)", unit: "rpm", placeholder: "1450" },
         { key: "n2", label: "New Speed (n₂)", unit: "rpm", placeholder: "1200" },
@@ -280,12 +280,12 @@ const topicCalculations: Record<string, CalcTool[]> = {
   "diesel-engines": [
     {
       name: "Indicated Power (IHP)",
-      description: "Ana makinenin indike gücünü hesaplar. P = (Pmi × L × A × n × k) / 60",
+      description: "Calculates the indicated power of the main engine. P = (Pmi × L × A × n × k) / 60",
       inputs: [
         { key: "pmi", label: "Mean Indicated Pressure (Pmi)", unit: "bar", placeholder: "18" },
         { key: "l", label: "Stroke (L)", unit: "m", placeholder: "2.5" },
         { key: "a", label: "Piston Area (A)", unit: "m²", placeholder: "0.35" },
-        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "100" },
+        { key: "n", label: "Speed(n)", unit: "rpm", placeholder: "100" },
         { key: "k", label: "Number of Cylinders (k)", unit: "units", placeholder: "6" },
       ],
       calculate: (v) => {
@@ -295,8 +295,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "SFOC Hesabı",
-      description: "Özgül yakıt tüketimini hesaplar.",
+      name: "SFOC Calculation",
+      description: "Calculates specific fuel consumption.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "kg/hour", placeholder: "5000" },
         { key: "bhp", label: "Brake Power (BHP)", unit: "kW", placeholder: "25000" },
@@ -308,7 +308,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Brake Power (BHP)",
-      description: "İndike güçten fren gücünü hesaplar: BHP = IHP × ηmek",
+      description: "Calculates brake power from indicated power: BHP = IHP × ηmek",
       inputs: [
         { key: "ihp", label: "Indicated Power (IHP)", unit: "kW", placeholder: "12000" },
         { key: "eta", label: "Mechanical Efficiency (η_mech)", unit: "%", placeholder: "90" },
@@ -323,8 +323,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Termal Verim",
-      description: "Motor termal verimini hesaplar: η = (BHP × 3600) / (ṁf × LCV)",
+      name: "Thermal Efficiency",
+      description: "Calculates motor thermal efficiency: η = (BHP × 3600) / (ṁf × LCV)",
       inputs: [
         { key: "bhp", label: "Brake Power (BHP)", unit: "kW", placeholder: "10000" },
         { key: "fc", label: "Fuel Consumption (ṁf)", unit: "kg/hour", placeholder: "1850" },
@@ -337,7 +337,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Mean Effective Pressure (MEP)",
-      description: "BMEP veya IMEP hesabı: MEP = (P × 60) / (Vs × n × k)",
+      description: "BMEP or IMEP calculation: MEP = (P × 60) / (Vs × n × k)",
       inputs: [
         { key: "p", label: "Power (P)", unit: "kW", placeholder: "10000" },
         { key: "bore", label: "Cylinder Bore", unit: "m", placeholder: "0.5" },
@@ -369,7 +369,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Compression Ratio",
-      description: "Silindir geometrisinden sıkıştırma oranını hesaplar.",
+      description: "Calculates the compression ratio from the cylinder geometry.",
       inputs: [
         { key: "bore", label: "Cylinder Bore", unit: "mm", placeholder: "500" },
         { key: "stroke", label: "Stroke", unit: "mm", placeholder: "2000" },
@@ -386,7 +386,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Excess Air Ratio (λ)",
-      description: "Gerçek hava/yakıt oranını stokiyometrik orana bölerek λ hesaplar.",
+      description: "Calculates λ by dividing the actual air/fuel ratio by the stoichiometric ratio.",
       inputs: [
         { key: "afr", label: "Actual Air/Fuel Ratio", unit: "kg/kg", placeholder: "42" },
         { key: "stoich", label: "Stoichiometric Ratio", unit: "kg/kg", placeholder: "14.7" },
@@ -396,7 +396,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const status = lambda < 1 ? "Rich Mixture" : lambda > 1.5 ? "Lean Mixture" : "Normal Range";
         return [
           { label: "Excess Air Ratio (λ)", value: lambda.toFixed(2) },
-          { label: "Durum", value: status },
+          { label: "Status", value: status },
         ];
       },
     },
@@ -404,7 +404,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   "ship-systems": [
     {
       name: "Fuel Consumption",
-      description: "Seyir süresine göre toplam yakıt tüketimini hesaplar.",
+      description: "Calculates total fuel consumption based on cruising time.",
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
         { key: "bhp", label: "BHP", unit: "kW", placeholder: "15000" },
@@ -417,7 +417,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Rudder Torque",
-      description: "Joessel formülüyle dümen torkunu hesaplar.",
+      description: "Calculates the steering torque with the Joessel formula.",
       inputs: [
         { key: "a", label: "Rudder Area (A)", unit: "m²", placeholder: "12" },
         { key: "v", label: "Vessel Speed (V)", unit: "knot", placeholder: "15" },
@@ -438,7 +438,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Propeller Thrust",
-      description: "Pervane tarafından üretilen itme kuvvetini hesaplar.",
+      description: "Calculates the thrust produced by the propeller.",
       inputs: [
         { key: "rho", label: "Sea Water Density", unit: "kg/m³", placeholder: "1025" },
         { key: "d", label: "Propeller Diameter", unit: "m", placeholder: "6" },
@@ -453,7 +453,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Hydraulic Cylinder Force",
-      description: "Basınç ve piston alanından silindir kuvvetini hesaplar.",
+      description: "Calculates cylinder force from pressure and piston area.",
       inputs: [
         { key: "p", label: "Pressure", unit: "bar", placeholder: "200" },
         { key: "d", label: "Piston Diameter", unit: "mm", placeholder: "150" },
@@ -468,8 +468,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Walther Viskozite-Sıcaklık",
-      description: "Walther denklemiyle farklı sıcaklıktaki viskoziteyi tahmin eder.",
+      name: "Walther Viscosity-Temperature",
+      description: "It predicts the viscosity at different temperatures with the Walther equation.",
       inputs: [
         { key: "v1", label: "Viscosity @T₁", unit: "cSt", placeholder: "380" },
         { key: "t1", label: "Temperature T₁", unit: "°C", placeholder: "50" },
@@ -493,10 +493,10 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Oil Film Thickness",
-      description: "Sommerfeld sayısı ile minimum yağ film kalınlığını tahmin eder.",
+      description: "Estimates the minimum oil film thickness with the Sommerfeld number.",
       inputs: [
         { key: "mu", label: "Oil Viscosity (μ)", unit: "Pa·s", placeholder: "0.05" },
-        { key: "n", label: "Speed (n)", unit: "rps", placeholder: "5" },
+        { key: "n", label: "Speed(n)", unit: "rps", placeholder: "5" },
         { key: "p", label: "Unit Load (P)", unit: "MPa", placeholder: "3" },
         { key: "c", label: "Bearing Clearance (c)", unit: "mm", placeholder: "0.1" },
         { key: "r", label: "Shaft Radius (r)", unit: "mm", placeholder: "100" },
@@ -515,7 +515,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   auxiliary: [
     {
       name: "Generator Power (3 Phase)",
-      description: "Üç fazlı jeneratör elektrik gücünü hesaplar.",
+      description: "Three-phase generator calculates electrical power.",
       inputs: [
         { key: "v", label: "Line Voltage (V)", unit: "V", placeholder: "440" },
         { key: "i", label: "Line Current (I)", unit: "A", placeholder: "500" },
@@ -531,7 +531,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Boiler Steam Production",
-      description: "Kazan buhar üretim kapasitesini hesaplar.",
+      description: "Calculates boiler steam production capacity.",
       inputs: [
         { key: "q", label: "Fuel Heat Input", unit: "kW", placeholder: "2000" },
         { key: "eta", label: "Boiler Efficiency", unit: "%", placeholder: "85" },
@@ -544,7 +544,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Separator Capacity",
-      description: "Santrifüj separatör akış kapasitesini hesaplar.",
+      description: "Calculates centrifugal separator flow capacity.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "litres/h", placeholder: "3000" },
         { key: "factor", label: "Safety Factor", unit: "", placeholder: "1.2" },
@@ -557,7 +557,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Compressor Volumetric Flow Rate",
-      description: "Pistonlu kompresör hacimsel debisini hesaplar.",
+      description: "Calculates the piston compressor volumetric flow rate.",
       inputs: [
         { key: "bore", label: "Cylinder Bore", unit: "mm", placeholder: "250" },
         { key: "stroke", label: "Stroke", unit: "mm", placeholder: "200" },
@@ -577,7 +577,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Fresh Water Production (Evaporator)",
-      description: "Vakumlu evaporatör ile tatlı su üretim miktarını hesaplar.",
+      description: "Calculates the amount of fresh water production with vacuum evaporator.",
       inputs: [
         { key: "qAvail", label: "Available Heat", unit: "kW", placeholder: "300" },
         { key: "hfg", label: "Heat of Evaporation (under vacuum)", unit: "kJ/kg", placeholder: "2400" },
@@ -595,7 +595,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   electrical: [
     {
       name: "Voltage Drop",
-      description: "Kablo gerilim düşümünü hesaplar.",
+      description: "Calculates cable voltage drop.",
       inputs: [
         { key: "i", label: "Current (I)", unit: "A", placeholder: "100" },
         { key: "r", label: "Resistance per Unit Length (R)", unit: "Ω/km", placeholder: "0.5" },
@@ -613,9 +613,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Generator Frequency",
-      description: "f = (n × P) / 120 formülüyle jeneratör frekansını hesaplar.",
+      description: "calculates the generator frequency with the formula f = (n × P) / 120.",
       inputs: [
-        { key: "n", label: "Speed (n)", unit: "rpm", placeholder: "720" },
+        { key: "n", label: "Speed(n)", unit: "rpm", placeholder: "720" },
         { key: "p", label: "Number of Poles (P)", unit: "", placeholder: "10" },
       ],
       calculate: (v) => {
@@ -625,10 +625,10 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Short Circuit Current",
-      description: "Kısa devre akımı hesabı: Isc = V / Z",
+      description: "Short circuit current calculation: Isc = V / Z",
       inputs: [
         { key: "v", label: "Line Voltage", unit: "V", placeholder: "440" },
-        { key: "z", label: "Empedans (Z)", unit: "Ω", placeholder: "0.05" },
+        { key: "z", label: "Impedance (Z)", unit: "Ω", placeholder: "0.05" },
       ],
       calculate: (v) => {
         const isc = v.v / (Math.sqrt(3) * v.z);
@@ -637,7 +637,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Transformer Turns Ratio",
-      description: "Transformatör dönüşüm oranı ve ikincil değerleri hesaplar.",
+      description: "Calculates transformer transformation ratio and secondary values.",
       inputs: [
         { key: "v1", label: "Primary Voltage (V₁)", unit: "V", placeholder: "440" },
         { key: "v2", label: "Secondary Voltage (V₂)", unit: "V", placeholder: "220" },
@@ -654,7 +654,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Insulation Resistance",
-      description: "Minimum izolasyon direnci kontrolü. IR = Vtest / Ikaçak",
+      description: "Minimum insulation resistance check. IR = Vtest / Leak",
       inputs: [
         { key: "vtest", label: "Test Voltage", unit: "V", placeholder: "500" },
         { key: "ileak", label: "Leakage Current", unit: "mA", placeholder: "0.5" },
@@ -664,13 +664,13 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const status = ir >= 1000 ? "Compliant (≥1 MΩ)" : ir >= 100 ? "Caution (100 kΩ–1 MΩ)" : "Tehlikeli (<100kΩ)";
         return [
           { label: "Insulation Resistance", value: `${(ir / 1000).toFixed(2)} MΩ` },
-          { label: "Durum", value: status },
+          { label: "Status", value: status },
         ];
       },
     },
     {
       name: "Reactive Power",
-      description: "Aktif güç ve güç faktöründen reaktif gücü hesaplar.",
+      description: "Calculates reactive power from active power and power factor.",
       inputs: [
         { key: "p", label: "Active Power (P)", unit: "kW", placeholder: "300" },
         { key: "pf", label: "Power Factor (cos φ)", unit: "", placeholder: "0.8" },
@@ -689,8 +689,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
   ],
   "cooling-hvac": [
     {
-      name: "COP Hesabı",
-      description: "Soğutma sistemi performans katsayısını hesaplar.",
+      name: "COP Calculation",
+      description: "Calculates the cooling system performance coefficient.",
       inputs: [
         { key: "ql", label: "Cooling Capacity (QL)", unit: "kW", placeholder: "50" },
         { key: "wc", label: "Compressor Power (W)", unit: "kW", placeholder: "15" },
@@ -706,7 +706,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Refrigerant Flow Rate",
-      description: "Soğutucu akışkan kütle debisini hesaplar: ṁ = QL / (h₁ - h₄)",
+      description: "Calculates the refrigerant mass flow rate: ṁ = QL / (h₁ - h₄)",
       inputs: [
         { key: "ql", label: "Cooling Capacity (QL)", unit: "kW", placeholder: "50" },
         { key: "h1", label: "Evaporator Outlet (h₁)", unit: "kJ/kg", placeholder: "400" },
@@ -718,8 +718,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Soğutma Yükü Hesabı",
-      description: "Soğuk hava deposu soğutma yükünü hesaplar.",
+      name: "Cooling Load Calculation",
+      description: "Calculates the cold storage cooling load.",
       inputs: [
         { key: "vol", label: "Store Volume", unit: "m³", placeholder: "200" },
         { key: "tout", label: "Outside Temperature", unit: "°C", placeholder: "35" },
@@ -738,7 +738,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Carnot COP (Refrigeration)",
-      description: "İdeal Carnot soğutma COP değerini hesaplar.",
+      description: "Calculates the ideal Carnot cooling COP value.",
       inputs: [
         { key: "tl", label: "Cold Space (TL)", unit: "°C", placeholder: "-18" },
         { key: "th", label: "Hot Space (TH)", unit: "°C", placeholder: "35" },
@@ -752,7 +752,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Compressor Work",
-      description: "Soğutma kompresörünün iş değerini hesaplar: W = ṁ × (h₂ - h₁)",
+      description: "Calculates the duty value of the refrigeration compressor: W = ṁ × (h₂ - h₁)",
       inputs: [
         { key: "mdot", label: "Mass Flow Rate (ṁ)", unit: "kg/s", placeholder: "0.5" },
         { key: "h1", label: "Compressor Inlet (h₁)", unit: "kJ/kg", placeholder: "400" },
@@ -765,7 +765,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Dehumidification Capacity",
-      description: "Klima sisteminde nem alma kapasitesini hesaplar.",
+      description: "Calculates the dehumidification capacity in the air conditioning system.",
       inputs: [
         { key: "q", label: "Air Flow Rate", unit: "m³/h", placeholder: "5000" },
         { key: "w1", label: "Inlet Humidity Ratio (W₁)", unit: "g/kg", placeholder: "14" },
@@ -784,8 +784,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
   ],
   "fuel-technology": [
     {
-      name: "CCAI Hesabı",
-      description: "Yakıt aromatiklik indeksini hesaplar (ISO 8217).",
+      name: "CCAI Account",
+      description: "Calculates the fuel aromaticity index (ISO 8217).",
       inputs: [
         { key: "d", label: "Density at 15 °C (D)", unit: "kg/m³", placeholder: "991" },
         { key: "v", label: "Viscosity at 50 °C (ν)", unit: "cSt", placeholder: "380" },
@@ -795,13 +795,13 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const quality = ccai < 840 ? "good" : ccai < 870 ? "Acceptable" : "Poor ignition quality";
         return [
           { label: "CCAI", value: ccai.toFixed(0) },
-          { label: "Kalite", value: quality },
+          { label: "Quality", value: quality },
         ];
       },
     },
     {
       name: "Fuel Heating Temperature",
-      description: "HFO enjeksiyon viskozitesi için gerekli ısıtma sıcaklığını tahmin eder.",
+      description: "Predicts the heating temperature required for HFO injection viscosity.",
       inputs: [
         { key: "v50", label: "Viscosity @50 °C", unit: "cSt", placeholder: "380" },
         { key: "vTarget", label: "Target Viscosity", unit: "cSt", placeholder: "15" },
@@ -814,7 +814,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Fuel Density Correction",
-      description: "Sıcaklık farkına göre yakıt yoğunluğunu düzeltir.",
+      description: "It corrects the fuel density according to the temperature difference.",
       inputs: [
         { key: "d15", label: "Density @15 °C", unit: "kg/m³", placeholder: "991" },
         { key: "t", label: "Current Temperature", unit: "°C", placeholder: "130" },
@@ -827,7 +827,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Bunker Quantity Calculation",
-      description: "Seyir süresi ve tüketime göre bunker ihtiyacını hesaplar.",
+      description: "Calculates bunker need based on navigation duration and consumption.",
       inputs: [
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "185" },
         { key: "p", label: "Engine Power", unit: "kW", placeholder: "10000" },
@@ -849,7 +849,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   maintenance: [
     {
       name: "MTBF and Availability",
-      description: "Ekipman güvenilirlik ve kullanılabilirlik hesabı.",
+      description: "Equipment reliability and availability calculation.",
       inputs: [
         { key: "hours", label: "Total Running Time", unit: "clock", placeholder: "8760" },
         { key: "failures", label: "Number of Failures", unit: "units", placeholder: "3" },
@@ -869,7 +869,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Liner Wear Rate",
-      description: "Silindir layneri aşınma oranını hesaplar.",
+      description: "Calculates the cylinder liner wear rate.",
       inputs: [
         { key: "d0", label: "Original Diameter", unit: "mm", placeholder: "500" },
         { key: "d1", label: "Measured Diameter", unit: "mm", placeholder: "500.8" },
@@ -889,15 +889,15 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Oil Analysis Trend",
-      description: "Yağ metal partikül trendinden bakım ihtiyacını değerlendirir.",
+      description: "Evaluates maintenance need from oil metal particle trend.",
       inputs: [
         { key: "fe", label: "Iron (Fe)", unit: "ppm", placeholder: "45" },
         { key: "cu", label: "Copper (Cu)", unit: "ppm", placeholder: "12" },
-        { key: "sn", label: "Kalay (Sn)", unit: "ppm", placeholder: "5" },
+        { key: "sn", label: "Tin (Sn)", unit: "ppm", placeholder: "5" },
         { key: "tbn", label: "TBN", unit: "mg KOH/g", placeholder: "25" },
       ],
       calculate: (v) => {
-        const feStatus = v.fe < 50 ? "Normal" : v.fe < 100 ? "Caution" : "Kritik";
+        const feStatus = v.fe < 50 ? "Normal" : v.fe < 100 ? "Caution" : "Critical";
         const tbnStatus = v.tbn > 20 ? "Normal" : v.tbn > 10 ? "Caution" : "Replace";
         return [
           { label: "Fe Status", value: `${v.fe} ppm → ${feStatus}` },
@@ -908,7 +908,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Reliability R(t)",
-      description: "Üstel dağılım ile zaman bazlı güvenilirlik hesabı: R(t) = e^(-t/MTBF)",
+      description: "Time-based reliability calculation with exponential distribution: R(t) = e^(-t/MTBF)",
       inputs: [
         { key: "mtbf", label: "MTBF", unit: "clock", placeholder: "5000" },
         { key: "t", label: "Target Time (t)", unit: "clock", placeholder: "1000" },
@@ -925,8 +925,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
   ],
   "energy-efficiency": [
     {
-      name: "CII Hesabı (AER)",
-      description: "Yıllık karbon yoğunluğu göstergesini hesaplar.",
+      name: "CII Calculation (AER)",
+      description: "Calculates the annual carbon intensity indicator.",
       inputs: [
         { key: "co2", label: "Total CO₂ Emission", unit: "tonnes", placeholder: "25000" },
         { key: "dwt", label: "DWT", unit: "tonnes", placeholder: "50000" },
@@ -938,8 +938,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "EEDI Hesabı",
-      description: "Enerji Verimlilik Tasarım İndeksini hesaplar.",
+      name: "EEDI Calculation",
+      description: "Calculates the Energy Efficiency Design Index.",
       inputs: [
         { key: "p", label: "Engine Power (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
@@ -953,8 +953,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "EEOI Hesabı",
-      description: "Enerji Verimlilik Operasyonel Göstergesini hesaplar.",
+      name: "EEOI Calculation",
+      description: "Calculates the Energy Efficiency Operational Indicator.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "500" },
         { key: "cf", label: "CO₂ Factor", unit: "", placeholder: "3.114" },
@@ -967,8 +967,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Hız Azaltma ile Yakıt Tasarrufu",
-      description: "Hız azaltmanın yakıt tüketimine etkisi (Küp Kuralı).",
+      name: "Fuel Savings with Speed Reduction",
+      description: "Effect of speed reduction on fuel consumption (Cube Rule).",
       inputs: [
         { key: "v1", label: "Current Speed", unit: "knot", placeholder: "14" },
         { key: "v2", label: "New Speed", unit: "knot", placeholder: "12" },
@@ -984,8 +984,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "EEXI Hesabı",
-      description: "Mevcut gemiler için Enerji Verimlilik İndeksini hesaplar.",
+      name: "EEXI Calculation",
+      description: "Calculates the Energy Efficiency Index for existing ships.",
       inputs: [
         { key: "pme", label: "Main Engine Power (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfocMe", label: "Main Engine SFOC", unit: "g/kW·h", placeholder: "175" },
@@ -1002,7 +1002,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Waste Heat Recovery (WHRS)",
-      description: "Egzoz gazından geri kazanılabilir enerjiyi hesaplar.",
+      description: "Calculates the recoverable energy from exhaust gas.",
       inputs: [
         { key: "mexh", label: "Exhaust Flow Rate", unit: "kg/s", placeholder: "30" },
         { key: "texhIn", label: "Exhaust Inlet Temperature", unit: "°C", placeholder: "350" },
@@ -1022,8 +1022,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
   ],
   "environment-machine": [
     {
-      name: "CO₂ Emisyon Hesabı",
-      description: "Yakıt tüketiminden CO₂ emisyonunu hesaplar.",
+      name: "CO₂ Emission Calculation",
+      description: "Calculates CO₂ emissions from fuel consumption.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "100" },
         { key: "cf", label: "Carbon Factor (Cf)", unit: "t CO₂/t fuel", placeholder: "3.114" },
@@ -1033,11 +1033,11 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "SOx Emisyon Hesabı",
-      description: "Yakıt kükürt içeriğinden SOx emisyonunu hesaplar.",
+      name: "SOx Emission Calculation",
+      description: "Calculates SOx emissions from fuel sulfur content.",
       inputs: [
         { key: "fc", label: "Fuel Consumption", unit: "tonnes", placeholder: "100" },
-        { key: "s", label: "Sulphur Content", unit: "%", placeholder: "0.5" },
+        { key: "s", label: "Sulfur Content", unit: "%", placeholder: "0.5" },
       ],
       calculate: (v) => {
         // SO₂ = 2 × S% × FC (kütle oranı: S→SO₂ çarpan ≈ 2)
@@ -1050,8 +1050,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Yağlı Su Separator (OWS) Kapasite",
-      description: "15 ppm OWS gerekli debi ve tank kapasitesini hesaplar.",
+      name: "Oily Water Separator (OWS) Capacity",
+      description: "15 ppm OWS calculates the required flow rate and tank capacity.",
       inputs: [
         { key: "bilge", label: "Daily Bilge Water Generation", unit: "m³/day", placeholder: "5" },
         { key: "hours", label: "OWS Operating Time", unit: "hours/day", placeholder: "8" },
@@ -1066,7 +1066,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Ballast Water Treatment Capacity",
-      description: "D-2 standardına uygun arıtma kapasitesini hesaplar.",
+      description: "Calculates the treatment capacity in accordance with the D-2 standard.",
       inputs: [
         { key: "tankVol", label: "Total Ballast Volume", unit: "m³", placeholder: "15000" },
         { key: "pumpRate", label: "Ballast Pump Flow Rate", unit: "m³/hour", placeholder: "500" },
@@ -1083,11 +1083,11 @@ const topicCalculations: Record<string, CalcTool[]> = {
   ],
   "engine-room-safety": [
     {
-      name: "CO₂ Miktar Hesabı",
-      description: "Sabit CO₂ söndürme sistemi için gerekli miktarı hesaplar (SOLAS Ch. II-2).",
+      name: "CO₂ Quantity Calculation",
+      description: "Calculates the amount required for a fixed CO₂ extinguishing system (SOLAS Ch. II-2).",
       inputs: [
         { key: "vol", label: "Protected Volume", unit: "m³", placeholder: "2000" },
-        { key: "factor", label: "Yoğunluk Faktörü", unit: "kg/m³", placeholder: "0.56" },
+        { key: "factor", label: "Density Factor", unit: "kg/m³", placeholder: "0.56" },
       ],
       calculate: (v) => {
         const mass = v.vol * v.factor;
@@ -1100,7 +1100,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Ventilation Flow Rate",
-      description: "Makine dairesi havalandırma gereksinimini hesaplar.",
+      description: "Calculates the engine room ventilation requirement.",
       inputs: [
         { key: "p", label: "Total Engine Power", unit: "kW", placeholder: "15000" },
         { key: "vol", label: "Machinery Space Volume", unit: "m³", placeholder: "2500" },
@@ -1116,8 +1116,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Kapalı Alan Oksijen Hesabı",
-      description: "Kapalı alana giriş öncesi oksijen yeterliliğini kontrol eder.",
+      name: "Indoor Oxygen Calculation",
+      description: "It checks the oxygen adequacy before entering the closed area.",
       inputs: [
         { key: "o2", label: "Measured O₂", unit: "%", placeholder: "20.8" },
         { key: "h2s", label: "H₂S", unit: "ppm", placeholder: "0" },
@@ -1143,41 +1143,41 @@ const topicCalculations: Record<string, CalcTool[]> = {
   erm: [
     {
       name: "Risk Assessment",
-      description: "Olasılık × Şiddet ile risk seviyesini hesaplar.",
+      description: "Calculates the risk level with Probability × Severity.",
       inputs: [
         { key: "prob", label: "Likelihood (1–5)", unit: "", placeholder: "3" },
         { key: "sev", label: "Severity (1–5)", unit: "", placeholder: "4" },
       ],
       calculate: (v) => {
         const risk = v.prob * v.sev;
-        const level = risk <= 4 ? "Low" : risk <= 9 ? "Orta" : risk <= 15 ? "High" : "Very High";
-        const color = risk <= 4 ? "Green" : risk <= 9 ? "Yellow" : risk <= 15 ? "Turuncu" : "Red";
+        const level = risk <= 4 ? "Low" : risk <= 9 ? "Medium" : risk <= 15 ? "High" : "Very High";
+        const color = risk <= 4 ? "Green" : risk <= 9 ? "Yellow" : risk <= 15 ? "Turuncu" : "Rejection";
         return [
           { label: "Risk Score", value: `${risk}` },
           { label: "Risk Level", value: level },
-          { label: "Risk Colour", value: color },
+          { label: "Risk Color", value: color },
         ];
       },
     },
     {
       name: "Accident Frequency Rate (LTIF)",
-      description: "Lost Time Injury Frequency oranını hesaplar.",
+      description: "Calculates the Lost Time Injury Frequency rate.",
       inputs: [
         { key: "lti", label: "Number of Lost Time Injuries", unit: "", placeholder: "2" },
         { key: "hours", label: "Total Hours Worked", unit: "clock", placeholder: "500000" },
       ],
       calculate: (v) => {
         const ltif = (v.lti / v.hours) * 1e6;
-        const status = ltif < 1 ? "Very Good" : ltif < 3 ? "good" : ltif < 5 ? "Orta" : "bad";
+        const status = ltif < 1 ? "Very Good" : ltif < 3 ? "good" : ltif < 5 ? "Medium" : "bad";
         return [
           { label: "LTIF", value: ltif.toFixed(2) },
-          { label: "Assessment", value: status },
+          { label: "Evaluation", value: status },
         ];
       },
     },
     {
       name: "Fatigue Index",
-      description: "IMO yorgunluk yönetimi için çalışma/dinlenme saatlerini değerlendirir.",
+      description: "IMO evaluates work/rest hours for fatigue management.",
       inputs: [
         { key: "workHours", label: "Daily Work", unit: "clock", placeholder: "14" },
         { key: "restHours", label: "Daily Rest", unit: "clock", placeholder: "10" },
@@ -1186,7 +1186,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const ratio = v.workHours / v.restHours;
         const fatigue = Math.min(100, ratio * v.days * 3);
-        const status = fatigue < 30 ? "Low" : fatigue < 60 ? "Orta" : fatigue < 80 ? "High" : "Kritik";
+        const status = fatigue < 30 ? "Low" : fatigue < 60 ? "Medium" : fatigue < 80 ? "High" : "Critical";
         const mclCompliant = v.workHours <= 14 && v.restHours >= 10;
         return [
           { label: "Fatigue Index", value: `${fatigue.toFixed(0)}%` },
@@ -1197,7 +1197,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Watchkeeping Effectiveness",
-      description: "Vardiya düzeninin operasyonel etkinliğini değerlendirir.",
+      description: "Evaluates the operational effectiveness of the watch pattern.",
       inputs: [
         { key: "crew", label: "Engine Room Personnel", unit: "persons", placeholder: "8" },
         { key: "watchHours", label: "Watch Duration", unit: "clock", placeholder: "4" },
@@ -1221,9 +1221,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
   "machine-elements": [
     {
       name: "Shaft Diameter (Torsion)",
-      description: "Belirli tork ve izin verilen kayma gerilmesi için minimum mil çapını hesaplar.",
+      description: "Calculates the minimum shaft diameter for given torque and allowable shear stress.",
       inputs: [
-        { key: "t", label: "Tork (T)", unit: "N·m", placeholder: "50000" },
+        { key: "t", label: "Torque (T)", unit: "N·m", placeholder: "50000" },
         { key: "tau", label: "Allowable τ", unit: "MPa", placeholder: "60" },
       ],
       calculate: (v) => {
@@ -1234,7 +1234,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Bearing Life (L₁₀)",
-      description: "Rulman temel ömür hesabı: L₁₀ = (C/P)^p × 10⁶ devir",
+      description: "Bearing basic life calculation: L₁₀ = (C/P)^p × 10⁶ revolutions",
       inputs: [
         { key: "c", label: "Dynamic Load Rating (C)", unit: "kN", placeholder: "120" },
         { key: "p", label: "Equivalent Load (P)", unit: "kN", placeholder: "30" },
@@ -1252,7 +1252,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Gear Speed Ratio",
-      description: "Dişli çark devir ve tork aktarımını hesaplar.",
+      description: "The gear wheel calculates speed and torque transmission.",
       inputs: [
         { key: "z1", label: "Driving Tooth Count (Z₁)", unit: "", placeholder: "20" },
         { key: "z2", label: "Driven Tooth Count (Z₂)", unit: "", placeholder: "60" },
@@ -1272,7 +1272,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Weld Seam Stress",
-      description: "Alın ve köşe kaynağı gerilme kontrolü.",
+      description: "Butt and fillet weld stress control.",
       inputs: [
         { key: "f", label: "Applied Force (F)", unit: "kN", placeholder: "200" },
         { key: "l", label: "Weld Length (L)", unit: "mm", placeholder: "200" },
@@ -1284,7 +1284,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const status = stress < 100 ? "Compliant" : stress < 160 ? "Caution" : "Excessive";
         return [
           { label: "Weld Stress", value: `${stress.toFixed(1)} MPa` },
-          { label: "Durum", value: status },
+          { label: "Status", value: status },
         ];
       },
     },
@@ -1292,7 +1292,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   automation: [
     {
       name: "4-20 mA Conversion",
-      description: "Ölçüm değerini 4-20 mA sinyaline dönüştürür.",
+      description: "It converts the measurement value into a 4-20 mA signal.",
       inputs: [
         { key: "x", label: "Measured Value", unit: "", placeholder: "75" },
         { key: "xmin", label: "Range Min", unit: "", placeholder: "0" },
@@ -1308,11 +1308,11 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "RTD Sıcaklık Hesabı",
-      description: "Pt100 RTD direncinden sıcaklık hesabı: Rt = R₀(1 + αΔT)",
+      name: "RTD Temperature Calculation",
+      description: "Temperature calculation from Pt100 RTD resistor: Rt = R₀(1 + αΔT)",
       inputs: [
         { key: "rt", label: "Measured Resistance (Rt)", unit: "Ω", placeholder: "138.5" },
-        { key: "r0", label: "R₀ (0°C direnci)", unit: "Ω", placeholder: "100" },
+        { key: "r0", label: "R₀ (resistance at 0°C)", unit: "Ω", placeholder: "100" },
         { key: "alpha", label: "α coefficient", unit: "1/°C", placeholder: "0.00385" },
       ],
       calculate: (v) => {
@@ -1322,7 +1322,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "PID Controller Output",
-      description: "PID kontrolör çıkış sinyalini hesaplar.",
+      description: "Calculates the PID controller output signal.",
       inputs: [
         { key: "sp", label: "Setpoint (SP)", unit: "", placeholder: "50" },
         { key: "pv", label: "Process Value (PV)", unit: "", placeholder: "45" },
@@ -1343,8 +1343,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Thermocouple EMF → Sıcaklık",
-      description: "K-tipi thermocouple EMF değerinden sıcaklığı tahmin eder.",
+      name: "Thermocouple EMF → Temperature",
+      description: "K-type thermocouple estimates temperature from EMF value.",
       inputs: [
         { key: "emf", label: "Measured EMF", unit: "mV", placeholder: "12.2" },
       ],
@@ -1356,7 +1356,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Accuracy / Error Calculation",
-      description: "Ölçüm cihazı doğruluğunu ve hata yüzdesini hesaplar.",
+      description: "Calculates meter accuracy and percentage error.",
       inputs: [
         { key: "measured", label: "Measured Value", unit: "", placeholder: "102" },
         { key: "actual", label: "True Value", unit: "", placeholder: "100" },
@@ -1377,7 +1377,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
   "engine-room-ops": [
     {
       name: "Remaining Fuel Endurance",
-      description: "Mevcut yakıt stokuyla tahmini çalışma süresini hesaplar.",
+      description: "Calculates estimated run time with current fuel stock.",
       inputs: [
         { key: "stock", label: "Fuel Stock", unit: "tonnes", placeholder: "500" },
         { key: "rate", label: "Consumption Rate", unit: "tons/day", placeholder: "30" },
@@ -1391,8 +1391,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Seyire Hazırlık Kontrol Listesi Süresi",
-      description: "Seyir hazırlığı için tahmini süreyi hesaplar.",
+      name: "Navigation Preparation Checklist Duration",
+      description: "Calculates the estimated time for navigation preparation.",
       inputs: [
         { key: "engines", label: "Number of Engines", unit: "", placeholder: "2" },
         { key: "gens", label: "Number of Generators", unit: "", placeholder: "3" },
@@ -1412,7 +1412,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Lubricating Oil Consumption Monitoring",
-      description: "Silindir ve sistem yağı tüketimini hesaplar.",
+      description: "Calculates cylinder and system oil consumption.",
       inputs: [
         { key: "cylOil", label: "Cylinder Oil Consumption", unit: "g/kW·h", placeholder: "0.7" },
         { key: "bhp", label: "Engine Power", unit: "kW", placeholder: "15000" },
@@ -1429,7 +1429,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Engine Warm-up Time",
-      description: "Soğuk motorun servis sıcaklığına ulaşma süresini tahmin eder.",
+      description: "Estimates the time it takes for a cold engine to reach service temperature.",
       inputs: [
         { key: "mass", label: "Engine Block Mass", unit: "tonnes", placeholder: "200" },
         { key: "cp", label: "Specific Heat (steel)", unit: "kJ/kg·K", placeholder: "0.5" },
@@ -1447,8 +1447,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       },
     },
     {
-      name: "Yağ Basınç Kontrol",
-      description: "Motor yağ basıncının kabul edilebilir aralıkta olup olmadığını kontrol eder.",
+      name: "Oil Pressure Control",
+      description: "Checks whether engine oil pressure is within the acceptable range.",
       inputs: [
         { key: "pMeasured", label: "Measured Pressure", unit: "bar", placeholder: "4.2" },
         { key: "pMin", label: "Minimum Allowable", unit: "bar", placeholder: "2.5" },
@@ -1459,7 +1459,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Low" : v.pMeasured > v.pMax ? "High" : "Normal";
         const margin = ((v.pMeasured - v.pAlarm) / v.pAlarm) * 100;
         return [
-          { label: "Durum", value: status },
+          { label: "Status", value: status },
           { label: "Alarm Margin", value: `${margin.toFixed(1)}%` },
           { label: "Range", value: `${v.pMin}–${v.pMax} bar` },
         ];
@@ -1544,7 +1544,7 @@ export default function MachineTopicCalculationsPage() {
   if (!topic || !calcs || calcs.length === 0) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Hesaplama aracı bulunamadı</p>
+        <p className="text-muted-foreground">Calculator not found</p>
       </div>
     );
   }

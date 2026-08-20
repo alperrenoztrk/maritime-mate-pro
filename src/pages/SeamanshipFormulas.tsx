@@ -35,10 +35,10 @@ const seamanshipFormulas = [
       "s: Yatay mesafe",
       "a: Katenary parametresi"
     ],
-    note: "Catenary analysis requires complex calculation; tables are used in practice."
+    note: "Catenary analysis requires complex calculation; Tables are used in practice."
   },
   {
-    title: "Demir Tutma Kuvveti",
+    title: "Anchor Holding Force",
     icon: Anchor,
     formula: "Holding Power = Anchor Weight × Holding Coefficient",
     variables: [
@@ -66,7 +66,7 @@ const seamanshipFormulas = [
       "Normal conditions: 5:1 - 7:1",
       "Storm conditions: 10:1 or more"
     ],
-    note: "Daha uzun scope = daha iyi tutma kuvveti"
+    note: "Longer scope = better holding force"
   }
 ];
 

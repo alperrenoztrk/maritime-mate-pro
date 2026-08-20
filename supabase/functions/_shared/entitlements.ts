@@ -134,7 +134,7 @@ export function quotaExceededResponse(
 ): Response {
   return new Response(
     JSON.stringify({
-      error: 'Aylık yapay zekâ kullanım hakkınız doldu.',
+      error: 'Your monthly artificial intelligence usage allowance has expired.',
       code: 'AI_QUOTA_EXCEEDED',
       quota: { tier: quota.tier, used: quota.used, limit: quota.limit, remaining: quota.remaining, period: quota.period },
     }),

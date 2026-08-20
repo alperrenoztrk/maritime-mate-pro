@@ -155,7 +155,7 @@ export function LessonTeachCard({
             )}
             {section.example.result && (
               <p className="rounded-md bg-emerald-500/10 px-3 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300">
-                Sonuç: {section.example.result}
+                Result: {section.example.result}
               </p>
             )}
           </div>

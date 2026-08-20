@@ -26,7 +26,7 @@ export function OfflineStatusBanner() {
       </div>
       <div className="mt-1 flex items-center gap-2 text-xs opacity-90">
         <AlertTriangle className="h-3 w-3" />
-        Veri güncellik tarihi: {offlineDataMeta.lastUpdated} · {offlineDataMeta.notes}
+        Data update date: {offlineDataMeta.lastUpdated} · {offlineDataMeta.notes}
       </div>
     </div>
   );

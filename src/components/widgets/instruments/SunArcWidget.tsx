@@ -42,11 +42,11 @@ export function SunArcWidget({ sunrise, sunset, progress, cloudCoverPct }: SunAr
       readout={
         <div className="iw-split">
           <span className="iw-readout-cell">
-            <span className="iw-sub">Doğuş</span>
+            <span className="iw-sub">Sunrise</span>
             <span className="iw-digital notranslate" translate="no">{sunrise}</span>
           </span>
           <span className="iw-readout-cell">
-            <span className="iw-sub">Batış</span>
+            <span className="iw-sub">Sunset</span>
             <span className="iw-digital notranslate" translate="no">{sunset}</span>
           </span>
         </div>

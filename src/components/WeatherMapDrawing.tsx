@@ -105,8 +105,8 @@ export const WeatherMapDrawing = () => {
     setCurrentPoints([]);
 
     const names: Record<string, string> = {
-      "cold-front": "Cold Front",
-      "warm-front": "Warm Front",
+      "cold-front": "Cold front",
+      "warm-front": "Warm front",
       "stationary-front": "Stationary Front",
       "occluded-front": "Occluded Front",
       "isobar": `${isobarPressure} hPa Isobar`
@@ -122,7 +122,7 @@ export const WeatherMapDrawing = () => {
     setElements([]);
     setSelectedId(null);
     toast({
-      title: "Harita Temizlendi",
+      title: "Chart Cleared",
       description: "All drawings deleted",
     });
   };
@@ -371,7 +371,7 @@ export const WeatherMapDrawing = () => {
 
           {/* Tool Selection */}
           <div className="space-y-3">
-            <h3 className="font-semibold text-sm">Pressure Systems</h3>
+            <h3 className="font-semibold text-sm">Pressure systems</h3>
             <div className="flex flex-wrap gap-2">
               <Button
                 variant={activeTool === "select" ? "default" : "outline"}
@@ -404,7 +404,7 @@ export const WeatherMapDrawing = () => {
 
             <Separator />
 
-            <h3 className="font-semibold text-sm">Cepheler</h3>
+            <h3 className="font-semibold text-sm">Facades</h3>
             <div className="flex flex-wrap gap-2">
               <Button
                 variant={activeTool === "cold-front" ? "default" : "outline"}
@@ -413,7 +413,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Snowflake className="h-4 w-4 text-blue-500" />
-                Cold Front
+                Cold front
               </Button>
               <Button
                 variant={activeTool === "warm-front" ? "default" : "outline"}
@@ -422,7 +422,7 @@ export const WeatherMapDrawing = () => {
                 className="gap-2"
               >
                 <Sun className="h-4 w-4 text-red-500" />
-                Warm Front
+                Warm front
               </Button>
               <Button
                 variant={activeTool === "stationary-front" ? "default" : "outline"}
@@ -528,14 +528,14 @@ export const WeatherMapDrawing = () => {
                 <div className="w-6 h-0.5 bg-blue-500"></div>
                 <div className="w-0 h-0 border-l-4 border-r-4 border-b-8 border-l-transparent border-r-transparent border-b-blue-500"></div>
               </div>
-              <span className="text-sm">Cold Front</span>
+              <span className="text-sm">Cold front</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center">
                 <div className="w-6 h-0.5 bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
               </div>
-              <span className="text-sm">Warm Front</span>
+              <span className="text-sm">Warm front</span>
             </div>
           </div>
 

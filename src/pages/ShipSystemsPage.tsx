@@ -67,13 +67,13 @@ export default function ShipSystemsPage() {
       <LibrarySearchField
         value={query}
         onChange={setQuery}
-        placeholder="Konu veya ekipman ara…"
-        ariaLabel="Gemi sistemlerinde ara"
+        placeholder="Search for subject or equipment…"
+        ariaLabel="Search ship systems"
       />
 
       {normalizedQuery ? (
         <section className="space-y-3">
-          <LibrarySectionHeading badge={hits.length}>Arama Sonuçları</LibrarySectionHeading>
+          <LibrarySectionHeading badge={hits.length}>Search Results</LibrarySectionHeading>
           {hits.length > 0 ? (
             <InsetGroupedList columns={2}>
               {hits.map((hit) => (
@@ -89,7 +89,7 @@ export default function ShipSystemsPage() {
             </InsetGroupedList>
           ) : (
             <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
-              Eşleşen konu bulunamadı.
+              No matching topics found.
             </div>
           )}
         </section>

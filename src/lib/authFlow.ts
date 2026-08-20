@@ -159,7 +159,7 @@ export const startGoogleSignIn = async (nextPath = "/"): Promise<{ error: Error 
   if (error) return { error: error as Error };
 
   if (native) {
-    if (!data?.url) return { error: new Error("Google giriş adresi alınamadı.") };
+    if (!data?.url) return { error: new Error("Google login address could not be obtained.") };
     const { Browser } = await import("@capacitor/browser");
     await Browser.open({ url: data.url, presentationStyle: "popover" });
   }
@@ -214,7 +214,7 @@ export const finishOAuthFromUrl = async (
 };
 
 /**
- * PKCE code verifier'ı Supabase'in yazdığı yerden okur. Native kabukta bu
+ * PKCE code verifier'i Supabase'in yazdığı yerden okur. Native kabukta bu
  * artık Keystore/Keychain olduğu için erişim asenkrondur; adaptör üzerinden
  * gitmek iki platformda da doğru kaynağa bakmayı garanti eder
  * (bkz. src/lib/secureSessionStorage.ts).

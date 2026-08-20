@@ -31,7 +31,7 @@ export default function MachineTopicDetailPage() {
       <MobileLayout>
       <div className="flex min-h-[60svh] items-center justify-center">
         <div className="space-y-3 text-center">
-          <p className="text-muted-foreground">{decodedTitleOrId || "Konu detayı"}</p>
+          <p className="text-muted-foreground">{decodedTitleOrId || "Topic detail"}</p>
         </div>
       </div>
       </MobileLayout>
@@ -54,10 +54,10 @@ export default function MachineTopicDetailPage() {
           {content.level && (
             <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-micro font-semibold uppercase text-primary">
               {content.level === "foundation"
-                ? "Temel"
+                ? "Basic"
                 : content.level === "operational"
-                  ? "Operasyonel"
-                  : "İleri"}
+                  ? "Operational"
+                  : "Next"}
             </span>
           )}
         </div>
@@ -90,7 +90,7 @@ export default function MachineTopicDetailPage() {
             {section.example && (
               <div className="space-y-2 rounded-lg border border-blue-500/30 bg-blue-500/5 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-400">
-                  Sayısal Örnek
+                  Numerical Example
                 </p>
                 <p className="text-sm font-medium text-foreground/90">{section.example.problem}</p>
                 {section.example.steps?.map((step, stepIndex) => (
@@ -171,7 +171,7 @@ export default function MachineTopicDetailPage() {
           <section className="rounded-xl border border-border/40 bg-card/60 p-5">
             <div className="mb-4 flex items-center gap-2">
               <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
+              <h2 className="font-semibold text-foreground">Highlights</h2>
             </div>
             <ul className="space-y-2">
               {content.keyPoints.map((point, index) => (

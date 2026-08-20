@@ -6,7 +6,7 @@ export default function StabilityShearingBendingPage() {
   return (
     <MobileLayout>
       <CalculationGridScreen
-        eyebrow="Stabilite"
+        eyebrow="Stability"
         title="Shear Force & Bending Moment"
       >
         <StructuralCalculations initialTab="diagrams" />

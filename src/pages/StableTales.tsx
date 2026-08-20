@@ -12,18 +12,18 @@ export default function StableTalesPage() {
       <div className="space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold gradient-text">
-            Stable Tales - Gelişmiş Gemi Stabilite Analizi
+            Stable Tales - Advanced Ship Stability Analysis
           </h1>
         </div>
 
         <Tabs defaultValue="calculator" className="space-y-6">
           <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
-            <TabsTrigger value="calculator">Ana Hesaplama</TabsTrigger>
-            <TabsTrigger value="pendulum">Sarkaç Metodu</TabsTrigger>
-            <TabsTrigger value="crane">Kren/Bumba</TabsTrigger>
-            <TabsTrigger value="drydock">Havuz Operasyonu</TabsTrigger>
-            <TabsTrigger value="solas">SOLAS Kriterleri</TabsTrigger>
-            <TabsTrigger value="report">Rapor Oluştur</TabsTrigger>
+            <TabsTrigger value="calculator">Main Calculation</TabsTrigger>
+            <TabsTrigger value="pendulum">Pendulum Method</TabsTrigger>
+            <TabsTrigger value="crane">Crane/Dumbar</TabsTrigger>
+            <TabsTrigger value="drydock">Pool Operation</TabsTrigger>
+            <TabsTrigger value="solas">SOLAS Criteria</TabsTrigger>
+            <TabsTrigger value="report">Create Report</TabsTrigger>
           </TabsList>
 
           <TabsContent value="calculator" className="space-y-4">

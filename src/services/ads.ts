@@ -64,7 +64,7 @@ function warn(message: string, error?: unknown): void {
 /**
  * Ayarlardaki "reklam tercihleri" girişi gerekli mi?
  *
- * `PrivacyOptionsRequirementStatus` enum'ı eklentinin genel API'sinden
+ * `PrivacyOptionsRequirementStatus` enum'public API of the plugin'sinden
  * dışa aktarılmıyor (yalnızca alanın tipinde görünüyor), bu yüzden karşılaştırma
  * enum'un metin değeri üzerinden yapılır.
  */
@@ -125,7 +125,7 @@ async function runInitialize(): Promise<AdsState> {
       state.npa = shouldUseNonPersonalized(consent);
     }
   } catch (error) {
-    warn('onay bilgisi alınamadı, reklamlar kapalı kalıyor', error);
+    warn('Confirmation information could not be received, ads remain closed', error);
     state.canRequestAds = false;
   }
 
@@ -140,7 +140,7 @@ async function runInitialize(): Promise<AdsState> {
       const finalStatus = await AdMob.trackingAuthorizationStatus();
       if (finalStatus.status !== 'authorized') state.npa = true;
     } catch (error) {
-      warn('izleme izni sorgulanamadı', error);
+      warn('tracking permission could not be queried', error);
       state.npa = true;
     }
   }
@@ -150,7 +150,7 @@ async function runInitialize(): Promise<AdsState> {
     await AdMob.initialize({ initializeForTesting: isUsingTestAds() });
     state.initialized = true;
   } catch (error) {
-    warn('AdMob başlatılamadı', error);
+    warn('AdMob failed to start', error);
     state.initialized = false;
     state.canRequestAds = false;
   }
@@ -174,7 +174,7 @@ export async function initializeAds(): Promise<boolean> {
   return result.initialized && result.canRequestAds;
 }
 
-/** Ayarlarda "reklam tercihlerini yönet" girişi gösterilmeli mi? */
+/** Ayarlarda "manage ad preferences" girişi gösterilmeli mi? */
 export function isPrivacyOptionsRequired(): boolean {
   return state.privacyOptionsRequired;
 }
@@ -196,7 +196,7 @@ export async function openPrivacyOptionsForm(): Promise<boolean> {
     if (!state.canRequestAds) await hideBanner();
     return true;
   } catch (error) {
-    warn('gizlilik seçenekleri formu açılamadı', error);
+    warn('privacy options form could not be opened', error);
     return false;
   }
 }
@@ -248,7 +248,7 @@ export async function showBanner(): Promise<void> {
     });
     bannerVisible = true;
   } catch (error) {
-    warn('banner gösterilemedi', error);
+    warn('banner could not be displayed', error);
     bannerVisible = false;
     setBannerHeight(0);
   }
@@ -274,7 +274,7 @@ export async function removeBanner(): Promise<void> {
   try {
     await AdMob.removeBanner();
   } catch (error) {
-    warn('banner kaldırılamadı', error);
+    warn('banner could not be removed', error);
   }
 }
 
@@ -302,7 +302,7 @@ export async function prepareInterstitial(): Promise<void> {
     });
     interstitialReady = true;
   } catch (error) {
-    warn('geçiş reklamı hazırlanamadı', error);
+    warn('Interstitial could not be prepared', error);
     interstitialReady = false;
   } finally {
     interstitialPreparing = false;
@@ -340,7 +340,7 @@ export async function maybeShowInterstitial(): Promise<boolean> {
     void prepareInterstitial();
     return true;
   } catch (error) {
-    warn('geçiş reklamı gösterilemedi', error);
+    warn('interstitial failed to show', error);
     interstitialReady = false;
     void prepareInterstitial();
     return false;

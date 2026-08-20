@@ -64,11 +64,11 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
     const lonNum = parseCoordinate(lon, false);
 
     if (latNum == null || !Number.isFinite(latNum) || latNum < -90 || latNum > 90) {
-      toast.error("Geçersiz enlem değeri (-90 ile 90 arası olmalı)");
+      toast.error("Invalid latitude value (must be between -90 and 90)");
       return;
     }
     if (lonNum == null || !Number.isFinite(lonNum) || lonNum < -180 || lonNum > 180) {
-      toast.error("Geçersiz boylam değeri (-180 ile 180 arası olmalı)");
+      toast.error("Invalid longitude value (must be between -180 and 180)");
       return;
     }
 
@@ -77,13 +77,13 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
       longitude: lonNum,
       locationLabel: label.trim() || `${latNum.toFixed(4)}, ${lonNum.toFixed(4)}`,
     });
-    toast.success("Konum kaydedildi");
+    toast.success("Location saved");
     onOpenChange(false);
   };
 
   const handleClear = () => {
     setSelectedLocation(null);
-    toast.success("Manuel konum temizlendi — GPS / IP kullanılacak");
+    toast.success("Manual location cleared — GPS/IP will be used");
     onOpenChange(false);
   };
 
@@ -91,39 +91,39 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Manuel Konum Gir</DialogTitle>
+          <DialogTitle>Enter Location Manually</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-3 py-2">
           <div className="space-y-1.5">
-            <Label htmlFor="manual-lat">Enlem (Latitude)</Label>
+            <Label htmlFor="manual-lat">Latitude</Label>
             <Input
               id="manual-lat"
               value={lat}
               onChange={(e) => setLat(e.target.value)}
-              placeholder="41.0082  veya  41 0 29.5 K"
+              placeholder="41.0082 or 41 0 29.5 K"
               inputMode="text"
               autoComplete="off"
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="manual-lon">Boylam (Longitude)</Label>
+            <Label htmlFor="manual-lon">Longitude</Label>
             <Input
               id="manual-lon"
               value={lon}
               onChange={(e) => setLon(e.target.value)}
-              placeholder="28.9784  veya  28 58 42 D"
+              placeholder="28.9784 or 28 58 42 D"
               inputMode="text"
               autoComplete="off"
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="manual-label">Etiket (opsiyonel)</Label>
+            <Label htmlFor="manual-label">Label (optional)</Label>
             <Input
               id="manual-label"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
-              placeholder="İstanbul Boğazı"
+              placeholder="Bosphorus"
               maxLength={60}
             />
           </div>
@@ -131,7 +131,7 @@ export function ManualLocationDialog({ open, onOpenChange }: Props) {
 
         <DialogFooter className="flex-col-reverse gap-2 sm:flex-row sm:justify-between">
           <Button type="button" variant="ghost" onClick={handleClear}>
-            Temizle (GPS'e dön)
+            Clear (return to GPS)
           </Button>
           <div className="flex gap-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>

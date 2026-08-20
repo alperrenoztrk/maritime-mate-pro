@@ -54,7 +54,7 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
         ) : (
           <span className="inline-flex items-center gap-1 text-micro text-muted-foreground">
             <Volume2 className="h-3.5 w-3.5" />
-            Düdükle verilmez
+            Not given by whistle
           </span>
         )}
       </div>
@@ -62,7 +62,7 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{signal.meaning}</p>
 
       {signal.interval ? (
-        <p className="mt-1 text-xs font-medium text-foreground">Aralık: {signal.interval}</p>
+        <p className="mt-1 text-xs font-medium text-foreground">Range: {signal.interval}</p>
       ) : null}
 
       {signal.note ? (
@@ -108,13 +108,13 @@ export default function SoundSignalsPage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-2 flex items-center gap-2">
           <Volume2 className="h-7 w-7 text-amber-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">Ses İşaretleri</h1>
+          <h1 className="text-3xl font-bold md:text-4xl">Sound Signals</h1>
         </div>
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Kural 32 tanımları:</span> a short blast lasts about 1 second and a prolonged blast 4-6 seconds.{" "}
-            <span className="font-semibold text-foreground">Kural 33 cihazlar:</span> vessels of 12 m and above carry a whistle, those of 20 m and above also a bell, and those of 100 m and above additionally a gong. Vessels of less than 12 m are not obliged to give these signals; however, they must make some other efficient sound signal at intervals of not more than 2 minutes.
+            <span className="font-semibold text-foreground">Rule 32 definitions:</span> a short blast lasts about 1 second and a prolonged blast 4-6 seconds.{" "}
+            <span className="font-semibold text-foreground">Rule 33 devices:</span> vessels of 12 m and above carry a whistle, those of 20 m and above also a bell, and those of 100 m and above additionally a gong. Vessels of less than 12 m are not obliged to give these signals; however, they must make some other efficient sound signal at intervals of not more than 2 minutes.
           </p>
         </div>
 
@@ -124,16 +124,16 @@ export default function SoundSignalsPage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="İşaret ara (ör. tornistan, kısıtlı görüş, demirde)…"
+            placeholder="Look for signs (e.g. astern, limited visibility, at anchor)…"
             className="pl-9 pr-9"
-            aria-label="Ses işareti ara"
+            aria-label="Search for sound sign"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
               className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
-              aria-label="Aramayı temizle"
+              aria-label="Clear search"
             >
               <X className="h-4 w-4" />
             </button>
@@ -143,7 +143,7 @@ export default function SoundSignalsPage() {
         {totalMatches === 0 ? (
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
             <p className="text-sm font-medium text-foreground">No results found</p>
-            <p className="mt-1 text-xs text-muted-foreground">Farklı bir arama terimi deneyin.</p>
+            <p className="mt-1 text-xs text-muted-foreground">Try a different search term.</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -156,7 +156,7 @@ export default function SoundSignalsPage() {
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
                     <span className="shrink-0 text-micro text-muted-foreground">
-                      {signals.length} işaret
+                      {signals.length} sign
                     </span>
                   </div>
                 </div>

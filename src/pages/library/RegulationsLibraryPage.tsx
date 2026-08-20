@@ -24,12 +24,12 @@ const categories: Array<{
   icon: LucideIcon;
   accent: string;
 }> = [
-  { category: "IMO Sözleşmeleri", icon: Globe, accent: "accent-ocean" },
-  { category: "Emniyet Kodları", icon: Shield, accent: "accent-amber" },
-  { category: "Çevresel Düzenlemeler", icon: Leaf, accent: "accent-teal" },
-  { category: "Denetim & Sörvey", icon: Search, accent: "accent-ocean" },
-  { category: "Gemi Sertifikaları", icon: ClipboardList, accent: "accent-deep" },
-  { category: "Bölgesel Düzenlemeler", icon: MapIcon, accent: "accent-slate" },
+  { category: "IMO Conventions", icon: Globe, accent: "accent-ocean" },
+  { category: "Safety Codes", icon: Shield, accent: "accent-amber" },
+  { category: "Environmental Regulations", icon: Leaf, accent: "accent-teal" },
+  { category: "Inspection & Survey", icon: Search, accent: "accent-ocean" },
+  { category: "Ship Certificates", icon: ClipboardList, accent: "accent-deep" },
+  { category: "Regional Regulations", icon: MapIcon, accent: "accent-slate" },
 ];
 
 const normalize = (value: string) =>
@@ -83,11 +83,11 @@ export default function RegulationsLibraryPage() {
   const showCategoryLibrary = !activeCategory && !normalizedQuery;
 
   return (
-    <LibraryPageShell title="Regülasyonlar" icon={Scale}>
+    <LibraryPageShell title="Regulations" icon={Scale}>
       <LibrarySearchField
         value={query}
         onChange={setQuery}
-        placeholder="SOLAS, MARPOL, PSC veya sertifika ara…"
+        placeholder="Search for SOLAS, MARPOL, PSC or certificate…"
         ariaLabel="Search regulations"
       />
 
@@ -108,7 +108,7 @@ export default function RegulationsLibraryPage() {
         <section className="space-y-4">
           <div className="flex items-center gap-3">
             <LibrarySectionHeading badge={filteredItems.length}>
-              {activeCategory ?? "Arama Sonuçları"}
+              {activeCategory ?? "Search Results"}
             </LibrarySectionHeading>
             {activeCategory && (
               <button
@@ -116,7 +116,7 @@ export default function RegulationsLibraryPage() {
                 onClick={() => setActiveCategory(null)}
                 className="rounded-xl border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
               >
-                Kategoriler
+                Categories
               </button>
             )}
           </div>
@@ -137,7 +137,7 @@ export default function RegulationsLibraryPage() {
             </div>
           ) : (
             <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
-              Aramanızla eşleşen regülasyon bulunamadı.
+              No regulations matching your search were found.
             </div>
           )}
         </section>

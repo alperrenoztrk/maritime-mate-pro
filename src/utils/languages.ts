@@ -27,7 +27,6 @@ export const languages: Language[] = [
   { code: 'ro', name: 'Română', flag: '🇷🇴' },
   { code: 'ru', name: 'Русский', flag: '🇷🇺' },
   { code: 'sv', name: 'Svenska', flag: '🇸🇪' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
   { code: 'uk', name: 'Українська', flag: '🇺🇦' },
   { code: 'zh-CN', name: '中文 (简体)', flag: '🇨🇳' },
 

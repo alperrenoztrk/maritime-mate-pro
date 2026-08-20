@@ -44,49 +44,49 @@ interface CalcTool {
 type Category = "navigation" | "stability" | "machine" | "ship-systems" | "converter";
 
 const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent: string }> = {
-  navigation: { title: "Navigasyon ve Seyir", icon: Compass, accent: "accent-ocean" },
-  stability: { title: "Yük ve Stabilite", icon: Scale, accent: "accent-teal" },
-  machine: { title: "Makine ve Tüketim", icon: Wrench, accent: "accent-slate" },
+  navigation: { title: "Navigation and Navigation", icon: Compass, accent: "accent-ocean" },
+  stability: { title: "Load and Stability", icon: Scale, accent: "accent-teal" },
+  machine: { title: "Machinery and Consumption", icon: Wrench, accent: "accent-slate" },
   "ship-systems": { title: "Ship Systems", icon: Anchor, accent: "accent-amber" },
-  converter: { title: "Formüller ve Dönüştürücüler", icon: Zap, accent: "accent-deep" },
+  converter: { title: "Formulas and Converters", icon: Zap, accent: "accent-deep" },
 };
 
 const QUICK_TOOLS: CalcTool[] = [
-  { id: "draft", title: "Draft Hesabı", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "trim", title: "Stabilite / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
-  { id: "fuel", title: "Yakıt Tüketimi", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
-  { id: "voyage", title: "Sefer Süresi", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "draft", title: "Draft Calculation", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "trim", title: "Stability / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
+  { id: "fuel", title: "Fuel Consumption", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+  { id: "voyage", title: "Voyage Duration", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
   { id: "cargo", title: "Load Distribution", icon: Layers, to: "/cargo/calculations", category: "stability" },
-  { id: "converter", title: "Birim Dönüştürücü", icon: Zap, to: "/converter", category: "converter" },
+  { id: "converter", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
 ];
 
 const TOOLS: CalcTool[] = [
-  { id: "draft-survey", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "preloading", title: "Ön Yükleme", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
+  { id: "draft-survey", title: "Draft survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "preloading", title: "Preload", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
   { id: "ballast", title: "Ballast Calculation", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
-  { id: "density", title: "Yoğunluk Düzeltme", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
+  { id: "density", title: "Density Correction", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
   { id: "bunker", title: "Bunker Survey", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
-  { id: "stability-calc", title: "Stabilite Hesapları", icon: Scale, to: "/stability/calculations", category: "stability" },
-  { id: "tank", title: "Tank Hesapları", icon: Anchor, to: "/tank", category: "stability" },
-  { id: "imo-criteria", title: "IMO Kriterleri", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
-  { id: "nav-calc", title: "Seyir Hesapları", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "stability-calc", title: "Stability Calculations", icon: Scale, to: "/stability/calculations", category: "stability" },
+  { id: "tank", title: "Tank Calculation", icon: Anchor, to: "/tank", category: "stability" },
+  { id: "imo-criteria", title: "IMO Criteria", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
+  { id: "nav-calc", title: "Navigation Calculations", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
   { id: "passage", title: "Passage Plan", icon: Compass, to: "/passage-plan", category: "navigation" },
-  { id: "tides", title: "Gelgit Hesabı", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },
-  { id: "seamanship-calc", title: "Gemicilik Hesapları", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
-  { id: "diesel-engines", title: "Dizel Motorlar", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
-  { id: "thermodynamics", title: "Termodinamik", icon: Thermometer, to: "/machine/thermodynamics/calculations", category: "machine" },
-  { id: "fuel-technology", title: "Yakıt Teknolojisi", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
-  { id: "cooling-hvac", title: "Soğutma ve HVAC", icon: Gauge, to: "/machine/cooling-hvac/calculations", category: "machine" },
-  { id: "machine-elements", title: "Makine Elemanları", icon: Layers, to: "/machine/machine-elements/calculations", category: "machine" },
-  { id: "emissions-machine", title: "Emisyon ve Çevre", icon: Flame, to: "/machine/environment-machine/calculations", category: "machine" },
-  { id: "deck-machinery", title: "Güverte Makineleri", icon: Anchor, to: "/ship-systems/deck-machinery", category: "ship-systems" },
-  { id: "nav-systems", title: "Seyir Sistemleri ve Cihazları", icon: Compass, to: "/ship-systems/nav-systems", category: "ship-systems" },
-  { id: "main-engine", title: "Ana Makine / Tahrik Sistemi", icon: Wrench, to: "/ship-systems/main-engine", category: "ship-systems" },
-  { id: "auxiliary", title: "Yardımcı Makineler", icon: Gauge, to: "/ship-systems/auxiliary", category: "ship-systems" },
-  { id: "unit-conv", title: "Birim Dönüştürücü", icon: Zap, to: "/converter", category: "converter" },
-  { id: "nav-formulas", title: "Navigasyon Formülleri", icon: Compass, to: "/navigation/formulas", category: "converter" },
-  { id: "stab-formulas", title: "Stabilite Formülleri", icon: Scale, to: "/stability/formulas", category: "converter" },
-  { id: "cargo-formulas", title: "Draft Survey Standartları", icon: Ruler, to: "/cargo/formulas", category: "converter" },
+  { id: "tides", title: "Tidal Calculation", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },
+  { id: "seamanship-calc", title: "Seamanship Calculations", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
+  { id: "diesel-engines", title: "Diesel Engines", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
+  { id: "thermodynamics", title: "Thermodynamics", icon: Thermometer, to: "/machine/thermodynamics/calculations", category: "machine" },
+  { id: "fuel-technology", title: "Fuel technology", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+  { id: "cooling-hvac", title: "Cooling and HVAC", icon: Gauge, to: "/machine/cooling-hvac/calculations", category: "machine" },
+  { id: "machine-elements", title: "Machine Elements", icon: Layers, to: "/machine/machine-elements/calculations", category: "machine" },
+  { id: "emissions-machine", title: "Emission and Environment", icon: Flame, to: "/machine/environment-machine/calculations", category: "machine" },
+  { id: "deck-machinery", title: "Deck Machines", icon: Anchor, to: "/ship-systems/deck-machinery", category: "ship-systems" },
+  { id: "nav-systems", title: "Navigational Systems and Devices", icon: Compass, to: "/ship-systems/nav-systems", category: "ship-systems" },
+  { id: "main-engine", title: "Main engine / Drive System", icon: Wrench, to: "/ship-systems/main-engine", category: "ship-systems" },
+  { id: "auxiliary", title: "Auxiliary machinery", icon: Gauge, to: "/ship-systems/auxiliary", category: "ship-systems" },
+  { id: "unit-conv", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
+  { id: "nav-formulas", title: "Navigation Formulas", icon: Compass, to: "/navigation/formulas", category: "converter" },
+  { id: "stab-formulas", title: "Stability Formulas", icon: Scale, to: "/stability/formulas", category: "converter" },
+  { id: "cargo-formulas", title: "Draft Survey Standards", icon: Ruler, to: "/cargo/formulas", category: "converter" },
 ];
 
 const ALL_TOOLS = [...QUICK_TOOLS, ...TOOLS].filter(
@@ -142,7 +142,7 @@ function ToolCard({
       </Link>
       <button
         type="button"
-        aria-label={favorite ? "Remove from favourites" : "Favorilere ekle"}
+        aria-label={favorite ? "Remove from favourites" : "Add to favorites"}
         aria-pressed={favorite}
         onClick={(event) => {
           event.preventDefault();
@@ -207,8 +207,8 @@ export default function CalculationsLibraryPage() {
       <LibrarySearchField
         value={query}
         onChange={setQuery}
-        placeholder="Hesaplama ara…"
-        ariaLabel="Hesaplamalarda ara"
+        placeholder="Search for calculations…"
+        ariaLabel="Search calculations"
       />
 
       {!activeCategory && !normalizedQuery && (
@@ -230,7 +230,7 @@ export default function CalculationsLibraryPage() {
 
           {favoriteTools.length > 0 && (
             <section className="space-y-3">
-              <LibrarySectionHeading badge={favoriteTools.length}>Favoriler</LibrarySectionHeading>
+              <LibrarySectionHeading badge={favoriteTools.length}>Favorites</LibrarySectionHeading>
               <InsetGroupedList columns={2}>
                 {favoriteTools.map((tool) => (
                   <LibraryCompactCard
@@ -247,7 +247,7 @@ export default function CalculationsLibraryPage() {
 
           {recentTools.length > 0 && (
             <section className="space-y-3">
-              <LibrarySectionHeading>Son Kullanılan</LibrarySectionHeading>
+              <LibrarySectionHeading>Recently Used</LibrarySectionHeading>
               <InsetGroupedList columns={2}>
                 {recentTools.map((tool) => (
                   <LibraryCompactCard
@@ -266,7 +266,7 @@ export default function CalculationsLibraryPage() {
 
       <section className="space-y-4">
         <LibrarySectionHeading badge={visibleTools.length}>
-          {normalizedQuery ? "Arama Sonuçları" : activeMeta?.title ?? "Hızlı Araçlar"}
+          {normalizedQuery ? "Search Results" : activeMeta?.title ?? "Quick Tools"}
         </LibrarySectionHeading>
         {visibleTools.length > 0 ? (
           <InsetGroupedList columns={2}>
@@ -281,7 +281,7 @@ export default function CalculationsLibraryPage() {
           </InsetGroupedList>
         ) : (
           <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
-            Aramanızla eşleşen hesaplama bulunamadı.
+            No calculations were found matching your search.
           </div>
         )}
       </section>

@@ -48,7 +48,7 @@ function env(key: string): string | undefined {
  * ise reklamlar etkin sayılır; tanımsız, boş veya başka her değer reklamları
  * tamamen kapatır.
  *
- * "Kimlik yok" ile "reklam yok" bilinçli olarak ayrı kararlardır: kimlikler
+ * "no ID" ile "no ads" bilinçli olarak ayrı kararlardır: kimlikler
  * boş bırakıldığında TEST reklamına düşmek geliştirmede doğru, ancak mağaza
  * sürümünde AdMob politikası ihlalidir. Reklamsız yayınlanacak bir sürümde bu
  * anahtar kapalı bırakılır ve `areAdsSupported()` üzerinden tüm reklam yolları
@@ -84,7 +84,7 @@ export function getAdPlatform(): AdPlatform | null {
  *
  * `isTesting` bayrağı buradan türetilir: gerçek bir birim kimliğini
  * `isTesting: true` ile istemek AdMob politikasına aykırıdır, bu yüzden
- * "test birimi kullan" ve "test modunda çalış" kararı tek yerde birleştirilir.
+ * "test birimi kullan" ve "run in test mode" kararı tek yerde birleştirilir.
  */
 export function isUsingTestAds(): boolean {
   const platform = getAdPlatform();

@@ -33,11 +33,11 @@ interface CategorySection {
 
 const bridgeNavigationTasks: TaskRow[] = [
   { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O", href: "/passage-plan" },
-  { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O", slug: "vardiya-tutma" },
-  { task: "Radar / ARPA takibi", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "radar-arpa-takibi" },
-  { task: "COLREG uygulama", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "colreg-uygulama" },
-  { task: "Decision to call the master", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "kaptani-cagirma-karari" },
-  { task: "Logbook doldurma", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "logbook-doldurma" },
+  { task: "Watch keeping", responsible: "Master", worker: "2/O – 3/O", slug: "vardiya-tutma" },
+  { task: "Radar / ARPA takibi", responsible: "Watch officer", worker: "Watch officer", slug: "radar-arpa-takibi" },
+  { task: "COLREG uygulama", responsible: "Watch officer", worker: "Watch officer", slug: "colreg-uygulama" },
+  { task: "Decision to call the master", responsible: "Watch officer", worker: "Watch officer", slug: "kaptani-cagirma-karari" },
+  { task: "Logbook doldurma", responsible: "Watch officer", worker: "Watch officer", slug: "logbook-doldurma" },
   { task: "Pilot embark/disembark", responsible: "Master", worker: "2/O–3/O", slug: "pilot-embark-disembark" },
   { task: "Navigation in restricted waters", responsible: "Master", worker: "Master + OOW", slug: "kisitli-sularda-seyir" },
   { task: "GMDSS distress call", responsible: "Master", worker: "2/O", slug: "gmdss-acil-cagri" },
@@ -56,7 +56,7 @@ const navigationTasks: TaskRow[] = [
 ];
 
 const cargoTasks: TaskRow[] = [
-  { task: "Yük planı", responsible: "Chief Officer", worker: "C/O", slug: "yuk-plani" },
+  { task: "Cargo plan", responsible: "Chief Officer", worker: "C/O", slug: "yuk-plani" },
   { task: "Loading / Discharging", responsible: "Chief Officer", worker: "3/O", slug: "loading-discharging" },
   { task: "Draft survey", responsible: "C/O", worker: "3/O", slug: "draft-survey" },
   { task: "Tank sounding", responsible: "C/O", worker: "3/O", slug: "tank-sounding" },
@@ -69,10 +69,10 @@ const cargoTasks: TaskRow[] = [
 const safetyTasks: TaskRow[] = [
   { task: "Safety Officer", responsible: "3. Kaptan", slug: "safety-officer" },
   { task: "Fire equipment", responsible: "3/O", slug: "yangin-ekipmanlari" },
-  { task: "Can kurtarma araçları", responsible: "3/O", slug: "can-kurtarma-araclari" },
+  { task: "Lifesaving equipment", responsible: "3/O", slug: "can-kurtarma-araclari" },
   { task: "Weekly / Monthly checks", responsible: "3/O", slug: "weekly-monthly-checks" },
   { task: "Drill organizasyonu", responsible: "3/O", slug: "drill-organizasyonu" },
-  { task: "Muster list", responsible: "Master", slug: "muster-list" },
+  { task: "Customer list", responsible: "Master", slug: "muster-list" },
   { task: "ISM records", responsible: "Master + C/O", slug: "ism-kayitlari" },
   { task: "ISPS (security)", responsible: "Master", slug: "isps-guvenlik" },
   { task: "Security watch", responsible: "3/O", slug: "security-watch" },
@@ -90,10 +90,10 @@ const maintenanceTasks: TaskRow[] = [
 const personnelTasks: TaskRow[] = [
   { task: "Daily work plan", responsible: "Chief Officer", slug: "gunluk-is-plani" },
   { task: "Deck crew", responsible: "C/O", slug: "guverte-personeli" },
-  { task: "Disiplin", responsible: "Master", slug: "disiplin" },
+  { task: "Discipline", responsible: "Master", slug: "disiplin" },
   { task: "Occupational safety", responsible: "3/O", slug: "is-guvenligi" },
   { task: "Yeni personel oryantasyonu", responsible: "3/O", slug: "yeni-personel-oryantasyonu" },
-  { task: "Eğitim", responsible: "Master + C/O", slug: "egitim" },
+  { task: "Education", responsible: "Master + C/O", slug: "egitim" },
 ];
 
 const documentationTasks: TaskRow[] = [
@@ -107,7 +107,7 @@ const documentationTasks: TaskRow[] = [
 
 const emergencyTasks: TaskRow[] = [
   { task: "fire", responsible: "Master", slug: "yangin-acil" },
-  { task: "Can kurtarma", responsible: "3/O", slug: "can-kurtarma-acil" },
+  { task: "Lifesaving", responsible: "3/O", slug: "can-kurtarma-acil" },
   { task: "Adam denize", responsible: "Master", slug: "adam-denize" },
   { task: "Collision", responsible: "Master", slug: "collision-acil" },
   { task: "Grounding", responsible: "Master", slug: "grounding-acil" },
@@ -117,13 +117,13 @@ const emergencyTasks: TaskRow[] = [
 ];
 
 const engineRoomTasks: TaskRow[] = [
-  { task: "Ana makine operasyonu", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "ana-makine-operasyonu" },
+  { task: "Main engine operation", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "ana-makine-operasyonu" },
   { task: "Auxiliary machinery maintenance", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "yardimci-makine-bakimi" },
   { task: "Generator operation", responsible: "2nd Engineer", worker: "3/E – Oiler", slug: "jenerator-operasyonu" },
-  { task: "Yakıt transferi", responsible: "Chief Engineer", worker: "3/E", slug: "yakit-transferi" },
+  { task: "Fuel transfer", responsible: "Chief Engineer", worker: "3/E", slug: "yakit-transferi" },
   { task: "Lubrication system", responsible: "2nd Engineer", worker: "4/E – Oiler", slug: "yaglama-sistemi" },
-  { task: "Soğutma sistemi", responsible: "2nd Engineer", worker: "3/E", slug: "sogutma-sistemi" },
-  { task: "Balast operasyonu", responsible: "Chief Engineer", worker: "3/E", slug: "balast-operasyonu" },
+  { task: "Cooling system", responsible: "2nd Engineer", worker: "3/E", slug: "sogutma-sistemi" },
+  { task: "Ballast operation", responsible: "Chief Engineer", worker: "3/E", slug: "balast-operasyonu" },
   { task: "Bilge pump", responsible: "3rd Engineer", worker: "4/E – Oiler", slug: "sintine-pompasi" },
   { task: "Separator operation", responsible: "3rd Engineer", worker: "4/E", slug: "separator-calistirma" },
   { task: "Kazan operasyonu", responsible: "2nd Engineer", worker: "3/E", slug: "kazan-operasyonu" },
@@ -133,7 +133,7 @@ const engineRoomTasks: TaskRow[] = [
   { task: "Otomasyon sistemleri", responsible: "Chief Engineer", worker: "Electrician", slug: "otomasyon-sistemleri" },
   { task: "Spare parts management", responsible: "Chief Engineer", worker: "2/E", slug: "spare-parts-yonetimi" },
   { task: "Makine logbook", responsible: "Chief Engineer", worker: "Duty engineer", slug: "makine-logbook" },
-  { task: "PMS kayıtları", responsible: "2nd Engineer", worker: "All engineers", slug: "pms-kayitlari" },
+  { task: "PMS records", responsible: "2nd Engineer", worker: "All engineers", slug: "pms-kayitlari" },
   { task: "Bunkering operasyonu", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "bunkering-operasyonu" },
   { task: "LO/FO analizleri", responsible: "Chief Engineer", worker: "2/E", slug: "lo-fo-analizleri" },
   { task: "Engine room cleaning", responsible: "Chief Engineer", worker: "Oiler – Wiper", slug: "makine-dairesi-temizligi" },
@@ -143,15 +143,15 @@ const engineRoomTasks: TaskRow[] = [
 ];
 
 const categories: CategorySection[] = [
-  { icon: Anchor, title: "Seyir ve Köprüüstü İşleri", tasks: bridgeNavigationTasks, accent: "from-blue-500 to-indigo-700" },
-  { icon: Map, title: "Navigasyon ve Harita İşleri", tasks: navigationTasks, accent: "from-cyan-500 to-blue-700" },
-  { icon: Package, title: "Yük Operasyonları", tasks: cargoTasks, accent: "from-amber-500 to-orange-700" },
-  { icon: Flame, title: "Emniyet ve ISM / ISPS", tasks: safetyTasks, accent: "from-rose-500 to-red-700" },
-  { icon: Wrench, title: "Güverte Bakım ve Onarım", tasks: maintenanceTasks, accent: "from-slate-500 to-zinc-700" },
-  { icon: Users, title: "Personel ve Disiplin", tasks: personnelTasks, accent: "from-violet-500 to-indigo-700" },
-  { icon: FileText, title: "Dokümantasyon ve Denetim", tasks: documentationTasks, accent: "from-teal-500 to-cyan-700" },
-  { icon: Siren, title: "Acil Durumlar", tasks: emergencyTasks, accent: "from-orange-500 to-rose-700" },
-  { icon: Cog, title: "Makine Dairesi İşleri", tasks: engineRoomTasks, accent: "from-slate-600 to-slate-900" },
+  { icon: Anchor, title: "Navigation and Bridge Works", tasks: bridgeNavigationTasks, accent: "from-blue-500 to-indigo-700" },
+  { icon: Map, title: "Navigation and Chart Works", tasks: navigationTasks, accent: "from-cyan-500 to-blue-700" },
+  { icon: Package, title: "Cargo operations", tasks: cargoTasks, accent: "from-amber-500 to-orange-700" },
+  { icon: Flame, title: "Safety and ISM / ISPS", tasks: safetyTasks, accent: "from-rose-500 to-red-700" },
+  { icon: Wrench, title: "Deck Maintenance and Repair", tasks: maintenanceTasks, accent: "from-slate-500 to-zinc-700" },
+  { icon: Users, title: "Personnel and Discipline", tasks: personnelTasks, accent: "from-violet-500 to-indigo-700" },
+  { icon: FileText, title: "Documentation and Audit", tasks: documentationTasks, accent: "from-teal-500 to-cyan-700" },
+  { icon: Siren, title: "Emergencies", tasks: emergencyTasks, accent: "from-orange-500 to-rose-700" },
+  { icon: Cog, title: "Engine Room Works", tasks: engineRoomTasks, accent: "from-slate-600 to-slate-900" },
 ];
 
 const taskHref = (task: TaskRow) => task.href ?? (task.slug ? `/ship-tasks/${task.slug}` : "#");
@@ -160,7 +160,7 @@ export default function ShipTasksLibraryPage() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   return (
-    <LibraryPageShell title="Gemide Yapılan İşler" icon={FileText}>
+    <LibraryPageShell title="Work Done on the Ship" icon={FileText}>
       <section className="space-y-3">
         {categories.map((category, categoryIndex) => {
           const expanded = expandedCategory === category.title;

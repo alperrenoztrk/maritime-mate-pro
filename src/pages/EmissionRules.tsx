@@ -10,9 +10,9 @@ const rules = [
     icon: Scale,
     sections: [
       {
-        subtitle: "Sulphur Limits (SOx)",
+        subtitle: "Sulfur Limits (SOx)",
         rules: [
-          "Global sulphur limit: 0.50% m/m (from 1 January 2020)",
+          "Global sulfur limit: 0.50% m/m (from 1 January 2020)",
           "In ECAs: 0.10% m/m",
           "Alternative: the use of an approved exhaust gas cleaning system (scrubber)",
           "Fuel changeover procedure: records must be kept when entering and leaving an ECA"
@@ -46,7 +46,7 @@ const rules = [
         subtitle: "D-1 Standard (Exchange)",
         rules: [
           "At least 200 nautical miles from the nearest land",
-          "The water depth must be at least 200 metres",
+          "The water depth must be at least 200 meters",
           "At least 95% of the ballast water must be exchanged",
           "Methods: sequential, flow-through or dilution"
         ]
@@ -119,7 +119,7 @@ const rules = [
         rules: [
           "Mandatory for ships of 5000 GT and above",
           "Annual fuel consumption reporting",
-          "Distance travelled and hours under way",
+          "Distance traveled and hours under way",
           "SEEMP Part II documentation"
         ]
       },
@@ -129,7 +129,7 @@ const rules = [
           "Ships of 5000 GT and above calling at EU ports",
           "CO₂ emissions, fuel consumption and distance",
           "Annual verification and reporting",
-          "Publicly available emission data"
+          "Publicly available emissions data"
         ]
       }
     ]
@@ -170,7 +170,7 @@ export default function EmissionRules() {
             <Scale className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
           </div>
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
-            Çevre Kuralları
+            Environmental Rules
           </h1>
         </div>
 

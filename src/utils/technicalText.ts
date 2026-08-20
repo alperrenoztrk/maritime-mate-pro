@@ -1,3 +1,5 @@
+import { hasTurkishText } from './turkishText';
+
 // Protection layer for technical/mathematical source text.
 //
 // The app is authored in Turkish and every other language is machine
@@ -36,11 +38,12 @@ const MASK_RE = /xq(\d+)qx/g;
 /** Symbols that only appear in formulas / measurements. */
 const MATH_SYMBOLS = /[=√∑Σ∫∂≈≤≥×÷°′″⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉Δδθφλμρηπω±·]/u;
 
-// A formula may still contain a user-facing Turkish label. These words were
-// previously swallowed by the pure-formula heuristic, leaving strings such as
-// "Açı (°)", "Hız 1 (V₁)" and "Sıcaklık Farkı (T₁−T₂)" untranslated.
-const TRANSLATABLE_TECHNICAL_LABEL_RE =
-  /(?:^|[^\p{L}])(?:açı|açılar|hız|başlangıç|varış|enlem|boylam|doğu|batı|kuzey|güney|farkı|sıcaklık|yoğunluk|sıvı|yatak|ömrü|ölçümü|kurs|kerteriz|mevki|birim|genlik|çap|deplasman|kargo|yük|ambar|su|rüzgâr|rüzgar|hesaplanır|kesişim|doğrultu|dik|arası|ile|veya)(?=$|[^\p{L}])/iu;
+// A formula may still carry user-facing Turkish ("Açı (°)", "Hız 1 (V₁)",
+// "≥3 mil (öğütülmüş ≤25 mm)"). Anything the shared detector reads as Turkish
+// has prose in it and must go to the translator: a formula is only language
+// independent once nothing in it is left to translate. A hand-listed set of
+// labels used to stand here and pinned 44 mixed strings to Turkish for good,
+// because the list could never keep up with the corpus.
 
 /**
  * True when a string is a formula rather than prose, and therefore must be
@@ -54,7 +57,7 @@ export const isTechnicalString = (value: string): boolean => {
   const text = value.trim();
   if (!text) return false;
   if (!MATH_SYMBOLS.test(text)) return false;
-  if (TRANSLATABLE_TECHNICAL_LABEL_RE.test(text)) return false;
+  if (hasTurkishText(text)) return false;
 
   // Words of 4+ letters that are not known math functions count as prose.
   const words = text.match(/\p{L}{4,}/gu) ?? [];

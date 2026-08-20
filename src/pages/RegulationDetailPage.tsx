@@ -81,7 +81,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
     <SectionHeader
       icon={<BookOpen className="h-4 w-4" />}
       eyebrow="Textbook narrative"
-      title="Kapsamlı konu anlatımı"
+      title="Comprehensive subject explanation"
       description="Read the chapters, which progress from the legal framework to the logic of the article, and from the shipboard equivalent to case resolution. Each chapter closes with a reference, a common mistake and an operational outcome."
     />
     <div className="space-y-5">
@@ -98,7 +98,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
               <h3 className="text-base font-black leading-snug text-foreground sm:text-xl">{entry.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{entry.introduction}</p>
               <p className="mt-2 text-micro font-bold uppercase tracking-[0.14em] text-primary">
-                {entry.sections.length} alt konu · Açmak/kapatmak için dokunun
+                {entry.sections.length} subtopic · Tap to turn on/off
               </p>
             </div>
             <ChevronDown className="mt-2 h-5 w-5 shrink-0 text-primary transition group-open:rotate-180" />
@@ -126,7 +126,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                 </div>
 
                 {narrativeSection.references && narrativeSection.references.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2" aria-label="İlgili kural ve kaynaklar">
+                  <div className="mt-4 flex flex-wrap gap-2" aria-label="Related rules and resources">
                     {narrativeSection.references.map((reference) => (
                       <span
                         key={reference}
@@ -142,7 +142,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                   <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.07] p-3 sm:p-4">
                     <p className="mb-1 flex items-center gap-2 text-xs font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
                       <ShipWheel className="h-4 w-4" />
-                      Gemideki karşılığı
+                      Equivalent on board
                     </p>
                     <p className="text-sm leading-7 text-muted-foreground">{narrativeSection.shipboardMeaning}</p>
                   </div>
@@ -152,7 +152,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                   <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] p-3 sm:p-4">
                     <p className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-wide text-amber-600 dark:text-amber-400">
                       <AlertTriangle className="h-4 w-4" />
-                      Sık karıştırılan noktalar
+                      Frequently confused points
                     </p>
                     <ul className="space-y-1.5 text-sm leading-relaxed text-muted-foreground">
                       {narrativeSection.commonMistakes.map((mistake) => (
@@ -169,21 +169,21 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
                   <div className="mt-4 overflow-hidden rounded-xl border border-violet-500/25 bg-violet-500/[0.05]">
                     <div className="border-b border-violet-500/15 bg-violet-500/[0.08] px-4 py-3">
                       <p className="text-micro font-black uppercase tracking-[0.16em] text-violet-600 dark:text-violet-400">
-                        Vaka analizi
+                        Case analysis
                       </p>
                       <h5 className="mt-1 font-black text-foreground">{narrativeSection.scenario.title}</h5>
                     </div>
                     <div className="grid gap-3 p-4 lg:grid-cols-3">
                       <div>
-                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-muted-foreground">Durum</p>
+                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-muted-foreground">Status</p>
                         <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.situation}</p>
                       </div>
                       <div>
-                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-violet-600 dark:text-violet-400">Kural analizi</p>
+                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-violet-600 dark:text-violet-400">Rule analysis</p>
                         <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.analysis}</p>
                       </div>
                       <div>
-                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Doğru yaklaşım</p>
+                        <p className="mb-1 text-micro font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Right approach</p>
                         <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.correctApproach}</p>
                       </div>
                     </div>
@@ -194,7 +194,7 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
 
             {entry.chapterTakeaways && entry.chapterTakeaways.length > 0 && (
               <div className="rounded-xl border border-primary/20 bg-primary/[0.06] p-4">
-                <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-primary">Bölüm sonu kazanımları</p>
+                <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-primary">End-of-Department achievements</p>
                 <ul className="grid gap-2 text-sm text-muted-foreground md:grid-cols-2">
                   {entry.chapterTakeaways.map((takeaway) => (
                     <li key={takeaway} className="flex gap-2">
@@ -220,7 +220,7 @@ const DetailedSections = ({ sections }: { sections: RegulationDetailedSection[] 
     <SectionHeader
       icon={<GraduationCap className="h-4 w-4" />}
       eyebrow="Kuramsal temel"
-      title="Hızlı kuramsal harita"
+      title="Fast theoretical chart"
       description="After the comprehensive lesson, revise the main concepts quickly with the existing summary sections."
     />
     <div className="space-y-4">
@@ -247,7 +247,7 @@ const LearningObjectives = ({ objectives }: { objectives: string[] }) => (
     <SectionHeader
       icon={<ListChecks className="h-4 w-4" />}
       eyebrow="Reading route"
-      title="Bu içeriğin sonunda neyi yapabilmelisiniz?"
+      title="What should you be able to do by the end of this content?"
     />
     <div className="grid gap-3 md:grid-cols-2">
       {objectives.map((objective, index) => (
@@ -267,7 +267,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
     <SectionHeader
       icon={<ShipWheel className="h-4 w-4" />}
       eyebrow="Kuraldan operasyona"
-      title="Gemide nasıl uygulanır?"
+      title="How is it implemented on board?"
       description="Follow each requirement through its legal basis, safety rationale, responsible roles, objective evidence and verification steps."
     />
     <div className="space-y-4">
@@ -296,11 +296,11 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
 
           <div className="space-y-4 p-4 sm:p-5">
             <div>
-              <p className="mb-1 text-xs font-bold uppercase tracking-wide text-foreground">Gereklilik</p>
+              <p className="mb-1 text-xs font-bold uppercase tracking-wide text-foreground">Necessity</p>
               <p className="text-sm leading-7 text-muted-foreground">{entry.requirement}</p>
             </div>
             <div className="rounded-xl border border-amber-500/20 bg-amber-500/[0.07] p-3">
-              <p className="mb-1 text-xs font-bold uppercase tracking-wide text-amber-600 dark:text-amber-400">Neden önemli?</p>
+              <p className="mb-1 text-xs font-bold uppercase tracking-wide text-amber-600 dark:text-amber-400">Why is it important?</p>
               <p className="text-sm leading-relaxed text-muted-foreground">{entry.rationale}</p>
             </div>
 
@@ -308,7 +308,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
               <div>
                 <h4 className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
                   <FileCheck2 className="h-4 w-4 text-emerald-500" />
-                  Gemide beklenen objektif kanıt
+                  Objective evidence expected on board
                 </h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   {entry.onboardEvidence.map((evidence) => (
@@ -322,7 +322,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
               <div>
                 <h4 className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
                   <ClipboardCheck className="h-4 w-4 text-sky-500" />
-                  Nasıl doğrulanır?
+                  How to verify?
                 </h4>
                 <ol className="space-y-2 text-sm text-muted-foreground">
                   {entry.verification.map((step, stepIndex) => (
@@ -340,7 +340,7 @@ const OperationalRequirements = ({ requirements }: { requirements: RegulationOpe
             <div className="flex gap-2 rounded-xl border border-destructive/20 bg-destructive/[0.06] p-3">
               <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-destructive" />
               <div>
-                <p className="text-xs font-bold text-destructive">Yaygın başarısızlık</p>
+                <p className="text-xs font-bold text-destructive">Widespread failure</p>
                 <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{entry.commonFailure}</p>
               </div>
             </div>
@@ -359,7 +359,7 @@ const ComplianceCycle = ({ stages }: { stages: RegulationComplianceStage[] }) =>
     <SectionHeader
       icon={<GitBranch className="h-4 w-4" />}
       eyebrow="Continuity"
-      title="Beş aşamalı uyum döngüsü"
+      title="Five-stage adaptation cycle"
       description="Instead of a one-off inspection preparation, build a lasting system that runs from applicability through to change management."
     />
     <div className="space-y-3">
@@ -379,7 +379,7 @@ const ComplianceCycle = ({ stages }: { stages: RegulationComplianceStage[] }) =>
           </ul>
           <div className="rounded-lg bg-emerald-500/[0.08] p-3">
             <p className="mb-1 text-micro font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
-              Çıktı
+              Output
             </p>
             <p className="text-xs leading-relaxed text-muted-foreground">{stage.outputs.join(" · ")}</p>
           </div>
@@ -394,7 +394,7 @@ const InspectionQuestions = ({ questions }: { questions: RegulationInspectionQue
     <SectionHeader
       icon={<HelpCircle className="h-4 w-4" />}
       eyebrow="PSC · Survey · Oral exam preparation"
-      title="Denetçinin sorabileceği kritik sorular"
+      title="Critical questions the auditor can ask"
       description="See not only the text of the answer but also the evidence that has to be shown and the red flags that can trigger a detailed inspection."
     />
     <div className="space-y-3">
@@ -410,11 +410,11 @@ const InspectionQuestions = ({ questions }: { questions: RegulationInspectionQue
           <div className="grid gap-4 border-t border-border/50 p-4 md:grid-cols-2">
             <div className="space-y-4">
               <div>
-                <p className="mb-1 text-xs font-black uppercase tracking-wide text-primary">Beklenen cevap çerçevesi</p>
+                <p className="mb-1 text-xs font-black uppercase tracking-wide text-primary">Expected response frame</p>
                 <p className="text-sm leading-relaxed text-muted-foreground">{entry.expectedAnswer}</p>
               </div>
               <div>
-                <p className="mb-2 text-xs font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Gösterilecek kanıt</p>
+                <p className="mb-2 text-xs font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Evidence to show</p>
                 <div className="flex flex-wrap gap-2">
                   {entry.evidence.map((evidence) => (
                     <span key={evidence} className="rounded-lg border border-emerald-500/20 bg-emerald-500/[0.08] px-2.5 py-1 text-xs text-muted-foreground">
@@ -425,7 +425,7 @@ const InspectionQuestions = ({ questions }: { questions: RegulationInspectionQue
               </div>
             </div>
             <div className="rounded-xl border border-destructive/20 bg-destructive/[0.06] p-3">
-              <p className="mb-2 text-xs font-black uppercase tracking-wide text-destructive">Kırmızı bayraklar</p>
+              <p className="mb-2 text-xs font-black uppercase tracking-wide text-destructive">Red flags</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {entry.redFlags.map((flag) => (
                   <li key={flag} className="flex gap-2">
@@ -446,7 +446,7 @@ const KeyArticlesTable = ({ articles }: { articles: RegulationKeyArticle[] }) =>
   <section id="temel-bolumler" className="scroll-mt-20 space-y-3 rounded-xl border border-border/60 bg-card/70 p-4 shadow-sm">
     <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
       <BookOpen className="h-4 w-4 text-primary" />
-      <h2>Temel bölümler ve kural haritası</h2>
+      <h2>Basic sections and rules map</h2>
     </div>
     <div className="grid gap-2 md:grid-cols-2">
       {articles.map((article) => (
@@ -466,7 +466,7 @@ const AmendmentTimeline = ({ amendments }: { amendments: RegulationAmendment[] }
   <section id="degisiklikler" className="scroll-mt-20 space-y-3 rounded-xl border border-border/60 bg-card/70 p-4 shadow-sm">
     <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
       <Clock className="h-4 w-4 text-primary" />
-      <h2>Önemli değişiklikler</h2>
+      <h2>Major changes</h2>
     </div>
     <div className="relative space-y-3 pl-4 before:absolute before:left-[7px] before:top-1 before:h-[calc(100%-8px)] before:w-px before:bg-primary/30">
       {amendments.map((amendment) => (
@@ -484,7 +484,7 @@ const AmendmentTimeline = ({ amendments }: { amendments: RegulationAmendment[] }
 
 const Glossary = ({ terms }: { terms: RegulationTerm[] }) => (
   <section id="terimler" className="scroll-mt-20">
-    <SectionHeader icon={<BookOpen className="h-4 w-4" />} eyebrow="Terminoloji" title="Operasyonel sözlük" />
+    <SectionHeader icon={<BookOpen className="h-4 w-4" />} eyebrow="Terminoloji" title="Operational dictionary" />
     <dl className="grid gap-3 md:grid-cols-2">
       {terms.map((entry) => (
         <div key={entry.term} className="rounded-xl border border-border/60 bg-card/70 p-4">
@@ -492,7 +492,7 @@ const Glossary = ({ terms }: { terms: RegulationTerm[] }) => (
           <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{entry.definition}</dd>
           {entry.practicalNote && (
             <dd className="mt-2 rounded-lg bg-primary/[0.07] p-2 text-xs leading-relaxed text-foreground/75">
-              <strong>Pratik not:</strong> {entry.practicalNote}
+              <strong>Practical note:</strong> {entry.practicalNote}
             </dd>
           )}
         </div>
@@ -509,7 +509,7 @@ const RelatedRegulations = ({ slugs }: { slugs: string[] }) => {
     <section className="space-y-2 rounded-xl border border-border/60 bg-card/70 p-4 shadow-sm">
       <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
         <GitBranch className="h-4 w-4 text-primary" />
-        <h2>İlişkili regülasyonlar</h2>
+        <h2>Associated regulations</h2>
       </div>
       <div className="flex flex-wrap gap-2">
         {related.map((entry) => (
@@ -530,11 +530,11 @@ const SourceStatus = ({ status }: { status: RegulationSourceStatus }) => (
   <section id="kaynak-durumu" className="scroll-mt-20 rounded-2xl border border-sky-500/25 bg-sky-500/[0.06] p-4 sm:p-6">
     <div className="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-500">Kaynak ve güncellik</p>
-        <h2 className="mt-1 text-lg font-black text-foreground">Son kaynak kontrolü: {status.reviewedThrough}</h2>
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-500">Source and timeliness</p>
+        <h2 className="mt-1 text-lg font-black text-foreground">Final source check: {status.reviewedThrough}</h2>
       </div>
       <span className="rounded-full border border-sky-500/25 bg-sky-500/10 px-3 py-1 text-micro font-bold text-sky-500">
-        Resmî metin ayrıca doğrulanmalı
+        The official text must also be verified
       </span>
     </div>
     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{status.caution}</p>
@@ -565,7 +565,7 @@ export default function RegulationDetailPage() {
   if (!regulation) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 py-12 text-center">
-        <p className="text-lg font-semibold text-foreground">Regülasyon bilgisi bulunamadı</p>
+        <p className="text-lg font-semibold text-foreground">No regulation information found</p>
       </div>
     );
   }
@@ -573,7 +573,7 @@ export default function RegulationDetailPage() {
   const toc = [
     regulation.learningObjectives?.length && ["ogrenme-hedefleri", "Learning objectives"],
     regulation.narrativeChapters?.length && ["kapsamli-ders", "Comprehensive lesson"],
-    regulation.detailedSections?.length && ["konu-anlatimi", "Hızlı kuramsal harita"],
+    regulation.detailedSections?.length && ["konu-anlatimi", "Fast theoretical chart"],
     regulation.operationalRequirements?.length && ["gemi-uygulamasi", "Gemide uygulama"],
     regulation.complianceStages?.length && ["uyum-dongusu", "Compliance cycle"],
     regulation.inspectionQuestions?.length && ["denetim-sorulari", "Inspection questions"],
@@ -603,16 +603,16 @@ export default function RegulationDetailPage() {
             </div>
             <div className="flex flex-wrap gap-2 text-micro font-semibold text-muted-foreground">
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
-                {regulation.narrativeChapters?.length || 0} kapsamlı ders bölümü
+                {regulation.narrativeChapters?.length || 0} comprehensive course section
               </span>
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
-                {regulation.narrativeChapters?.reduce((total, entry) => total + entry.sections.length, 0) || 0} alt konu
+                {regulation.narrativeChapters?.reduce((total, entry) => total + entry.sections.length, 0) || 0} subtopic
               </span>
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
-                {regulation.operationalRequirements?.length || 0} operasyonel gereklilik
+                {regulation.operationalRequirements?.length || 0} operational requirement
               </span>
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
-                {regulation.inspectionQuestions?.length || 0} denetim sorusu
+                {regulation.inspectionQuestions?.length || 0} audit question
               </span>
             </div>
           </div>
@@ -620,8 +620,8 @@ export default function RegulationDetailPage() {
 
         <div className="grid items-start gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
           <aside className="hidden lg:sticky lg:top-5 lg:block">
-            <nav className="rounded-2xl border border-border/60 bg-card/75 p-3 shadow-sm" aria-label="İçerik haritası">
-              <p className="px-2 pb-2 text-micro font-black uppercase tracking-[0.2em] text-muted-foreground">İçerik haritası</p>
+            <nav className="rounded-2xl border border-border/60 bg-card/75 p-3 shadow-sm" aria-label="Breadcrumb">
+              <p className="px-2 pb-2 text-micro font-black uppercase tracking-[0.2em] text-muted-foreground">Breadcrumb</p>
               <ul className="space-y-1">
                 {toc.map(([id, label], index) => (
                   <li key={id}>
@@ -640,7 +640,7 @@ export default function RegulationDetailPage() {
               <section className="rounded-xl border border-border/60 bg-card/70 p-4 shadow-sm">
                 <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
                   <Scale className="h-4 w-4 text-primary" />
-                  <h2>Tarihçe ve sistem içindeki yeri</h2>
+                  <h2>History and place in the system</h2>
                 </div>
                 <p className="mt-2 text-sm leading-7 text-muted-foreground">{regulation.history}</p>
               </section>
@@ -660,7 +660,7 @@ export default function RegulationDetailPage() {
 
             {regulation.applicability && regulation.applicability.length > 0 && (
               <DetailList
-                title="Uygulama kapsamı"
+                title="Scope of application"
                 items={regulation.applicability}
                 icon={<BookOpen className="h-4 w-4 text-primary" />}
               />
@@ -679,8 +679,8 @@ export default function RegulationDetailPage() {
             )}
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <DetailList title="Temel odak alanları" items={regulation.essentials} />
-              <DetailList title="Kritik aksiyonlar" items={regulation.actions} />
+              <DetailList title="Key focus areas" items={regulation.essentials} />
+              <DetailList title="Critical actions" items={regulation.actions} />
             </div>
 
             {regulation.keyArticles && regulation.keyArticles.length > 0 && (
@@ -695,7 +695,7 @@ export default function RegulationDetailPage() {
 
             {regulation.penalties && regulation.penalties.length > 0 && (
               <DetailList
-                title="Yaptırımlar, operasyonel sonuçlar ve detention riski"
+                title="Sanctions, operational consequences and detention risk"
                 items={regulation.penalties}
                 icon={<AlertTriangle className="h-4 w-4 text-destructive" />}
               />
@@ -710,7 +710,7 @@ export default function RegulationDetailPage() {
             ) : (
               regulation.resources && (
                 <section className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4 text-sm text-foreground shadow-inner sm:p-6">
-                  <p className="mb-3 text-base font-semibold text-primary">Kaynaklar ve bağlantılar</p>
+                  <p className="mb-3 text-base font-semibold text-primary">Sources and links</p>
                   <ul className="space-y-2 text-muted-foreground">
                     {regulation.resources.map((resource) => (
                       <li key={resource.href} className="flex items-center gap-2">
@@ -728,9 +728,9 @@ export default function RegulationDetailPage() {
             <section className="flex gap-3 rounded-2xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
               <Users className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
               <div>
-                <h2 className="font-bold text-foreground">Gemide kullanım ilkesi</h2>
+                <h2 className="font-bold text-foreground">Principle of use on board</h2>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  In an inspection, show the ship-specific practice rather than a memorised sentence: which provision applies, who is responsible, how the operation is carried out, which record is created and how safety is preserved in the event of a failure?
+                  In an inspection, show the ship-specific practice rather than a memorized sentence: which provision applies, who is responsible, how the operation is carried out, which record is created and how safety is preserved in the event of a failure?
                 </p>
               </div>
             </section>

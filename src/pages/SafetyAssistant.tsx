@@ -18,11 +18,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function SafetyAssistantPage() {
   return (
     <AssistantInterface
-      title="Emniyet Asistanı"
-      badge="Emniyet Asistanı"
+      title="Safety Assistant"
+      badge="Safety Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Emniyet, denetim veya tatbikat planlamasıyla ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding safety, inspection or drill planning..."
       icon={ShieldCheck}
       accentGradient="from-rose-600 via-orange-600 to-amber-600"
       iconColor="text-rose-600 dark:text-rose-400"

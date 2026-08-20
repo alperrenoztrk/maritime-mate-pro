@@ -249,19 +249,19 @@ const MaritimeNews = () => {
       onTouchEnd={handleTouchEnd}
     >
       <Helmet>
-        <title>Mariner's Book — Denizcilik Haberleri</title>
+        <title>Mariner's Book — Maritime News</title>
         <meta
           name="description"
           content="Current news from the maritime world; headlines, sources and in-app reading in a newspaper format."
         />
         <link rel="canonical" href="https://nauticalleap.com/maritime-news" />
-        <meta property="og:title" content="Mariner's Book — Denizcilik Haberleri" />
+        <meta property="og:title" content="Mariner's Book — Maritime News" />
         <meta property="og:description" content="Current news from the maritime world; featured headlines compiled by source." />
         <meta property="og:url" content="https://nauticalleap.com/maritime-news" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Denizcilik Haberleri",
+          name: "Maritime News",
           url: "https://nauticalleap.com/maritime-news",
           isPartOf: { "@type": "WebSite", name: "Mariner's Book", url: "https://nauticalleap.com/" },
           about: "Maritime industry news aggregated from trusted sources",
@@ -286,35 +286,35 @@ const MaritimeNews = () => {
           <div className="gz-grain" aria-hidden="true" />
 
           {/* ── Manşet bloğu ──
-              Üstteki geniş boşluk, sayfanın üzerinde duran genel "geri" düğmesinin
+              Üstteki geniş boşluk, sayfanın üzerinde duran genel "back" düğmesinin
               kulaklıkların üstüne binmemesi için. */}
           <header className="relative px-4 pt-11 sm:px-8 sm:pt-6">
             <div className="gz-rule-thin" aria-hidden="true" />
             <div className="mt-2 flex items-center justify-center gap-2 sm:gap-3">
               <div className="gz-ear">
-                Sabah
+                Morning
                 <br />
-                Baskısı
+                Edition
               </div>
               <div className="min-w-0 flex-1 text-center">
                 <h1 className="gz-masthead notranslate" translate="no" lang="en">
-                  Mariner&rsquo;s Post<span className="sr-only"> — Denizcilik Haberleri</span>
+                  Mariner&rsquo;s Post<span className="sr-only"> — Maritime News</span>
                 </h1>
               </div>
               <div className="gz-ear">
-                Kuruluşu
+                Establishment
                 <br />
                 {FOUNDED_YEAR}
               </div>
             </div>
-            <div className="gz-masthead-sub">DENİZCİLİK DÜNYASININ HAVADİSLERİ</div>
+            <div className="gz-masthead-sub">NEWS OF THE MARITIME WORLD</div>
             <div className="gz-rule-double mt-2" aria-hidden="true" />
             <div className="gz-dateline">
               <span>{dateline}</span>
               <span className="hidden sm:inline">
-                Cilt {volume} — Sayı {issueNo}
+                Skin {volume} — Number {issueNo}
               </span>
-              <span>Fiyatı 25 Kuruş</span>
+              <span>Price 25 Kurus</span>
             </div>
             <div className="gz-rule-hair" aria-hidden="true" />
             <div className="gz-dateline" style={{ justifyContent: "center", gap: 12 }}>
@@ -322,7 +322,7 @@ const MaritimeNews = () => {
               {pressTime ? (
                 <>
                   <span aria-hidden="true">·</span>
-                  <span>Baskıya veriliş {pressTime}</span>
+                  <span>Submission to print {pressTime}</span>
                 </>
               ) : null}
             </div>
@@ -343,31 +343,31 @@ const MaritimeNews = () => {
                   ))}
                 </div>
                 <p className="pt-3 text-center text-micro italic" style={{ color: "var(--gz-ink-faint)" }}>
-                  Baskı makinesi çalışıyor…
+                  The printing machine is running…
                 </p>
               </div>
             ) : query.isError ? (
               <div className="space-y-3 py-4">
-                <div className="gz-kicker">Matbaadan Duyuru</div>
-                <h2 className="gz-headline text-xl">Bugünkü baskı gecikti</h2>
+                <div className="gz-kicker">Announcement from the Printing House</div>
+                <h2 className="gz-headline text-xl">Today's edition is delayed</h2>
                 <div className="gz-notice">
-                  Haberler alınamadı; hatlar onarılır onarılmaz baskıya devam edilecektir. Biraz sonra tekrar deneyin.
+                  The news could not be fetched; the presses roll again as soon as the lines are repaired. Please try again shortly.
                   <div className="mt-1 break-words text-micro not-italic opacity-80">
-                    {query.error instanceof Error ? query.error.message : "Bilinmeyen hata"}
+                    {query.error instanceof Error ? query.error.message : "Unknown error"}
                   </div>
                 </div>
               </div>
             ) : items.length === 0 ? (
               <div className="space-y-3 py-4">
-                <div className="gz-kicker">Matbaadan Duyuru</div>
-                <div className="gz-notice">Şu anda dizilecek havadis bulunamadı. Telgraf hattı sessiz.</div>
+                <div className="gz-kicker">Announcement from the Printing House</div>
+                <div className="gz-notice">No news to list at this time. The telegraph line is silent.</div>
               </div>
             ) : (
               <>
                 {/* Manşet haber — başlık, ara başlık, künye cetveli, sütunlara akan gövde */}
                 {lead ? (
-                  <section aria-label="Manşet haber">
-                    <div className="gz-kicker">Günün Manşeti</div>
+                  <section aria-label="Headline news">
+                    <div className="gz-kicker">Headline of the Day</div>
                     <button type="button" className="gz-tap mt-2" onClick={() => openItem(lead)}>
                       <h2 className="gz-headline text-[clamp(1.5rem,6.6vw,2.3rem)]">{lead.title}</h2>
                       {leadDeck ? (
@@ -406,10 +406,10 @@ const MaritimeNews = () => {
                             {softHyphenate(leadBody)}
                             {leadBodyFull.length > 1100 ? "…" : ""}
                           </p>
-                          <div className="gz-jump mt-1">(Devamı için dokunun ⟶)</div>
+                          <div className="gz-jump mt-1">(Tap for more ⟶)</div>
                         </>
                       ) : (
-                        <div className="gz-jump mt-1.5">(Haberin tamamı için dokunun ⟶)</div>
+                        <div className="gz-jump mt-1.5">(Tap for the full news ⟶)</div>
                       )}
                     </button>
                   </section>
@@ -420,8 +420,8 @@ const MaritimeNews = () => {
                 {/* İkinci sıra haberler — kart ızgarası değil, sürekli sütun dizgisi.
                     Klişe yalnızca ilk iki haberde: gerçek ön sayfada her habere
                     fotoğraf konmaz. */}
-                <section className="mt-3" aria-label="Diğer haberler">
-                  {secondaries.length > 0 ? <div className="gz-kicker">Denizden Havadisler</div> : null}
+                <section className="mt-3" aria-label="Other news">
+                  {secondaries.length > 0 ? <div className="gz-kicker">News from the Sea</div> : null}
                   {/* Künye ve ilan kutuları da sütun akışının içinde: gerçek gazetede
                       kutular sayfanın dışında değil, dizginin arasında durur — ayrıca
                       sütunların dengelenmesini sağlayıp altta boşluk bırakmaz. */}
@@ -450,23 +450,23 @@ const MaritimeNews = () => {
                       ))}
 
                     <div className="gz-box mb-3 break-inside-avoid">
-                      <div className="gz-box-title">Bu Nüshada</div>
+                      <div className="gz-box-title">In this copy</div>
                       <ul className="space-y-1 text-[9.5px] leading-[1.35]">
                         <li className="flex justify-between gap-2">
-                          <span>Manşet</span>
+                          <span>Headline</span>
                           <span>{lead ? 1 : 0} haber</span>
                         </li>
                         <li className="flex justify-between gap-2">
-                          <span>Denizden Havadisler</span>
+                          <span>News from the Sea</span>
                           <span>{secondaries.length} haber</span>
                         </li>
                         <li className="flex justify-between gap-2">
-                          <span>Telgraf</span>
+                          <span>Telegram</span>
                           <span>{briefs.length} havadis</span>
                         </li>
                         {sourceCount > 0 ? (
                           <li className="flex justify-between gap-2">
-                            <span>Kaynak</span>
+                            <span>Source</span>
                             <span>{sourceCount} gazete</span>
                           </li>
                         ) : null}
@@ -474,12 +474,12 @@ const MaritimeNews = () => {
                     </div>
 
                     <Link to="/book" className="gz-box mb-3 block break-inside-avoid text-inherit">
-                      <div className="gz-box-title">İlan</div>
+                      <div className="gz-box-title">Advertisement</div>
                       <p className="text-[9.5px] italic leading-[1.45]">
                         <span className="notranslate not-italic" translate="no" lang="en">
                           Mariner&rsquo;s Book
                         </span>{" "}
-                        — denizcilik dersleri, stabilite hesaplayıcıları, COLREG ve sözlük. Kitabı açmak için dokunun.
+                        — sailing lessons, stability calculators, COLREG and glossary. Tap to open the book.
                       </p>
                     </Link>
                   </div>
@@ -487,9 +487,9 @@ const MaritimeNews = () => {
 
                 {/* Kısa havadisler — cetvelli telgraf departmanı */}
                 {briefs.length > 0 ? (
-                  <section className="mt-4" aria-label="Kısa haberler">
+                  <section className="mt-4" aria-label="Short news">
                     <div className="gz-box">
-                      <div className="gz-box-title">Telgraf Haberleri</div>
+                      <div className="gz-box-title">Telegraph News</div>
                       <ul className="gz-cols gz-cols--2">
                         {briefs.map((it) => (
                           <li
@@ -522,9 +522,9 @@ const MaritimeNews = () => {
                     Mariner&rsquo;s Post
                   </span>
                   <span aria-hidden="true">·</span>
-                  <span>Sayfa 1</span>
+                  <span>Page 1</span>
                   <span aria-hidden="true">·</span>
-                  <span>Sayı {issueNo}</span>
+                  <span>Number {issueNo}</span>
                 </div>
               </>
             )}
