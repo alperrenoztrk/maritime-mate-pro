@@ -33,7 +33,7 @@ function isMissingBucket(error: unknown): boolean {
  * Kullanıcının bucket klasörünü sayfa sayfa, alt klasörlere inerek boşaltır.
  *
  * Tek `list()` çağrısı en fazla bir sayfa döndürür; sayfalamadan silmek
- * eşiğin üzerindeki dosyaları geride bırakır ve "tüm verileriniz silindi"
+ * eşiğin üzerindeki dosyaları geride bırakır ve "all your data has been deleted"
  * beyanını ihlal eder. Silinen dosyalar listeden düştüğü için her turda ilk
  * sayfayı istemek yeterlidir.
  *
@@ -107,7 +107,7 @@ Deno.serve(async (req) => {
         // Bucket bu ortamda tanımlı değilse silinecek bir şey de yoktur.
         // Diğer hatalar yutulmamalı: storage'da auth silmeye bağlı bir
         // cascade yok, yani sessizce geçmek belge fotoğraflarını geride
-        // bırakıp kullanıcıya "silindi" demek olur.
+        // bırakıp kullanıcıya "deleted" demek olur.
         if (!isMissingBucket(e)) throw e;
       }
     }

@@ -67,7 +67,7 @@ serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ error: "Hesaplama sonucu bulunamadı" }),
+      JSON.stringify({ error: "Calculation result not found" }),
       { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {

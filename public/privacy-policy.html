@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gizlilik Politikası / Privacy Policy – Mariner's Book</title>
+  <title>Privacy Policy – Mariner's Book</title>
   <style>
     :root { color-scheme: light dark; }
     body {
@@ -30,90 +30,6 @@
   </style>
 </head>
 <body>
-  <h1 id="tr">Gizlilik Politikası – Mariner's Book</h1>
-  <p class="meta">Yürürlük tarihi: 14 Ağustos 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Nautical Leap · İletişim: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
-  <p class="meta">Ayrıca bkz. <a href="/terms-of-use.html">Kullanım Şartları</a>.</p>
-
-  <h2 id="genel-bakis">1. Genel Bakış</h2>
-  <p>Mariner's Book ("Uygulama"), denizcilik profesyonelleri ve öğrencileri için hesaplama, eğitim ve belge takip aracıdır. Bu politika, Uygulamayı kullandığınızda hangi verilerin işlendiğini, kimlerle paylaşıldığını, ne kadar süre saklandığını ve haklarınızı açıklar.</p>
-
-  <h2 id="islenen-veriler">2. İşlenen Veriler ve Amaçları</h2>
-  <table>
-    <tr><th>Veri</th><th>Amaç</th><th>Hukuki dayanak (KVKK/GDPR)</th></tr>
-    <tr><td>E-posta, ad, profil fotoğrafı, giriş sağlayıcısı</td><td>Hesap oluşturma ve oturum yönetimi</td><td>Sözleşmenin ifası</td></tr>
-    <tr><td><strong>Denizcilik belgeleri:</strong> belge fotoğrafı, belge numarası, belge sahibinin adı, veren kurum/ülke, düzenleme ve son geçerlilik tarihleri, yapay zekâ analiz çıktısı</td><td>Belge geçerlilik takibi (Belge Takip özelliği; yalnızca sizin başlattığınız yüklemelerde)</td><td>Açık rıza</td></tr>
-    <tr><td>Sınav/quiz sonuçları, soru bazlı cevaplar, kategori performans istatistikleri</td><td>İlerleme takibi</td><td>Sözleşmenin ifası</td></tr>
-    <tr><td>Satın alma bilgileri (satın alma jetonu, sipariş no, abonelik durumu)</td><td>Pro üyeliğin doğrulanması</td><td>Sözleşmenin ifası</td></tr>
-    <tr><td>Yapay zekâ kullanım sayacı</td><td>Kota yönetimi ve kötüye kullanımın önlenmesi</td><td>Meşru menfaat</td></tr>
-    <tr><td>Kullanıcı tarafından üretilen bileşenler/dosya yüklemeleri</td><td>İlgili özelliklerin çalışması</td><td>Sözleşmenin ifası</td></tr>
-    <tr><td><strong>Konum:</strong> GPS koordinatları (izin verirseniz) ve IP tabanlı yaklaşık konum</td><td>Hava durumu, gelgit ve seyir hesaplamaları</td><td>Açık rıza / meşru menfaat</td></tr>
-    <tr><td>Yapay zekâ sohbet metinleri</td><td>Soru-cevap ve eğitim desteği</td><td>Açık rıza</td></tr>
-    <tr><td><strong>Yapay zekâ içeriği bildirimleri:</strong> bildirdiğiniz yapay zekâ yanıtı, ilgili sorunuz, bildirim nedeni ve eklediğiniz not</td><td>Zararlı veya yanlış yapay zekâ çıktısının incelenmesi (yalnızca "Bu yanıtı bildir" düğmesine bastığınızda)</td><td>Meşru menfaat / yasal yükümlülük</td></tr>
-    <tr><td>Reklam kimliği (yalnızca ücretsiz pakette, mobil)</td><td>Reklam gösterimi</td><td>Açık rıza (UMP onay formu)</td></tr>
-  </table>
-  <p><strong>Toplanmayan veriler:</strong> Analitik/çökme izleme SDK'sı, kişiler, mikrofon, takvim, sağlık verisi.</p>
-  <p><strong>Konum hakkında:</strong> Uygulama <code>ACCESS_FINE_LOCATION</code> ve <code>ACCESS_COARSE_LOCATION</code> izinlerini kullanır. Konumunuz sunucularımızda saklanmaz; yalnızca ilgili hesaplama/hava durumu servislerine anlık olarak iletilir. İzni cihaz ayarlarından her zaman kapatabilirsiniz; konum kapalıyken uygulamayı manuel konum girerek kullanabilirsiniz.</p>
-  <p><strong>Yapay zekâ sohbetleri:</strong> Sohbet geçmişi sunucularımızda saklanmaz, yalnızca cihazınızın yerel deposunda tutulur. Ancak yanıt üretmek için mesaj içeriği aşağıdaki servis sağlayıcılara iletilir. <strong>Tek istisna:</strong> bir yanıtı "Bu yanıtı bildir" düğmesiyle bildirmeyi seçerseniz, yalnızca o yanıt ve ilgili sorunuz inceleme amacıyla sunucularımıza kaydedilir.</p>
-
-  <h2 id="ucuncu-taraflar">3. Veri Aktarılan Üçüncü Taraflar</h2>
-  <table>
-    <tr><th>Taraf</th><th>Aktarılan veri</th></tr>
-    <tr><td>Supabase (Lovable Cloud) – barındırma, kimlik doğrulama, veritabanı, dosya depolama</td><td>Bölüm 2'deki saklanan tüm veriler</td></tr>
-    <tr><td>Lovable AI Gateway</td><td>Yapay zekâ istekleri: sohbet metinleri, belge fotoğrafları, çalışma saati verileri (Google Gemini'ye yönlendirilir)</td></tr>
-    <tr><td>Google Gemini</td><td>Yapay zekâ istekleri (yukarıdakiyle aynı içerik)</td></tr>
-    <tr><td>Google Cloud Translation</td><td>Dil değiştirildiğinde ekrandaki metinler</td></tr>
-    <tr><td>Google Play Developer API</td><td>Satın alma jetonu (abonelik doğrulaması)</td></tr>
-    <tr><td>Google AdMob</td><td>Reklam kimliği, cihaz bilgisi (yalnızca ücretsiz pakette)</td></tr>
-    <tr><td>Wolfram Alpha</td><td>Hesaplama sorguları</td></tr>
-    <tr><td>Open-Meteo</td><td>Koordinatlar (hava durumu)</td></tr>
-    <tr><td>BigDataCloud</td><td>Koordinatlar (yer adı çözümleme)</td></tr>
-    <tr><td>ipapi.co</td><td>IP adresi (konum izni yokken yaklaşık konum)</td></tr>
-    <tr><td>r.jina.ai</td><td>Okumak istediğiniz haber makalesinin adresi</td></tr>
-    <tr><td>Google Hesapları (Google ile giriş)</td><td>Google ile giriş yapmayı seçerseniz: e-posta adresi, ad, profil fotoğrafı</td></tr>
-    <tr><td>YouTube (gizlilik korumalı gömme)</td><td>Uygulama içindeki bir videoyu oynattığınızda IP adresi</td></tr>
-    <tr><td>OpenStreetMap</td><td>Harita görüntülendiğinde IP adresi</td></tr>
-    <tr><td>Ders içeriklerindeki görsellerin barındırıldığı üçüncü taraf siteler (ör. Wikimedia Commons, Unsplash ve çeşitli denizcilik eğitim siteleri)</td><td>İlgili ders sayfasını açtığınızda görsel doğrudan kaynağından yüklenir ve o site IP adresinizi görür</td></tr>
-  </table>
-  <p>Veriler satılmaz ve reklam profilleme amacıyla (AdMob dışında) paylaşılmaz. Bu sağlayıcıların bir kısmı Avrupa Birliği ve Türkiye dışında bulunabilir; aktarım standart sözleşme hükümleri ve sağlayıcıların gizlilik taahhütleri kapsamında yapılır.</p>
-  <p>Harici görseller hakkında: Ders sayfalarındaki bazı görseller kendi sunucularımızda değil, kaynak sitelerinde barındırılır. Bu siteler tarafımızca yönetilmez; yalnızca görseli sunmak için gereken teknik bilgiyi (IP adresi, tarayıcı bilgisi) görürler ve kendilerine ait gizlilik politikalarına tabidirler. Bu sitelere tarafımızdan hesap veya belge veriniz aktarılmaz.</p>
-
-  <h2 id="belgelerin-korunmasi">4. Belgelerin Korunması</h2>
-  <ul>
-    <li>Belge fotoğrafları herkese kapalı (private) bir depolama alanında tutulur; yalnızca kısa süreli imzalı bağlantılarla ve yalnızca size gösterilir.</li>
-    <li>Veritabanı erişimi satır düzeyi güvenlik (RLS) ile sınırlandırılmıştır: her kullanıcı yalnızca kendi kayıtlarına erişir.</li>
-    <li>Tüm veri aktarımı HTTPS ile şifrelenir; veriler sunucu tarafında disk düzeyinde şifreli saklanır.</li>
-    <li>Belge ekranındaki kişisel alanlar çeviri servisine gönderilmez.</li>
-  </ul>
-
-  <h2 id="saklama-sureleri">5. Saklama Süreleri</h2>
-  <ul>
-    <li>Hesap ve profil verisi: hesap silinene kadar.</li>
-    <li>Belgeler ve belge fotoğrafları: siz silene veya hesabınızı kapatana kadar.</li>
-    <li>Sınav sonuçları ve istatistikler: hesap silinene kadar.</li>
-    <li>Satın alma kayıtları: hesap silinene kadar. Hesabınızı sildiğinizde uygulamadaki satın alma kaydınız da silinir; ödeme ve fatura kayıtları Google Play tarafında kendi saklama sürelerine tabidir.</li>
-    <li>Yapay zekâ sohbet geçmişi: yalnızca cihazınızda; uygulama verilerini temizlediğinizde silinir.</li>
-    <li>Yapay zekâ içeriği bildirimleri: hesap silinene kadar.</li>
-  </ul>
-
-  <h2 id="hesap-ve-veri-silme">6. Hesap ve Veri Silme</h2>
-  <p>Uygulama içinde <strong>Ayarlar → Hesap → "Hesabımı sil"</strong> adımlarıyla hesabınızı ve tüm verilerinizi kalıcı olarak silebilirsiniz. Silme işlemi profilinizi, sınav sonuçlarınızı, istatistiklerinizi, belge kayıtlarınızı, belge fotoğraflarınızı, yüklediğiniz dosyaları, ürettiğiniz bileşenleri, kota sayacınızı, yapay zekâ içeriği bildirimlerinizi ve giriş bilgilerinizi kapsar ve geri alınamaz.</p>
-  <p><strong>Aboneliğiniz varsa:</strong> Hesabınızı silmek Google Play aboneliğinizi iptal etmez. Ödemenin durması için aboneliği <strong>Google Play &gt; Abonelikler</strong> bölümünden ayrıca iptal etmeniz gerekir.</p>
-  <p>Alternatif olarak <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a> adresine yazarak silme veya veri kopyası talebinde bulunabilirsiniz; talepler en geç 30 gün içinde yanıtlanır.</p>
-
-  <h2 id="haklariniz">7. Haklarınız</h2>
-  <p>KVKK m.11 ve GDPR kapsamında; verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, taşınabilirlik ve itiraz haklarına sahipsiniz. Rızaya dayalı işlemelerde (belge yükleme, konum, yapay zekâ, reklam) rızanızı istediğiniz zaman geri çekebilirsiniz. Başvurularınızı yukarıdaki e-posta adresine iletebilir, sonuçtan memnun kalmazsanız yetkili veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
-
-  <h2 id="cocuklarin-gizliligi">8. Çocukların Gizliliği</h2>
-  <p>Uygulama 13 yaş altı çocuklara yönelik değildir ve bilerek 13 yaş altı kullanıcılardan veri toplamaz.</p>
-
-  <h2 id="degisiklikler">9. Değişiklikler</h2>
-  <p>Bu politika güncellenebilir; önemli değişiklikler bu sayfada ve uygulama içinde duyurulur.</p>
-
-  <h2 id="iletisim">10. İletişim</h2>
-  <p><a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
-
-  <hr>
-
   <h1 id="en">Privacy Policy – Mariner's Book</h1>
   <p class="meta">Effective date: August 14, 2026 · Package: com.marinersbook.app · Data controller: Nautical Leap · Contact: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
   <p class="meta">See also the <a href="/terms-of-use.html#en">Terms of Use</a>.</p>
@@ -195,5 +111,90 @@
 
   <h2 id="contact">10. Contact</h2>
   <p><a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+
+  <hr>
+
+  <h1 id="tr" lang="tr">Gizlilik Politikası – Mariner's Book</h1>
+  <p class="meta">Yürürlük tarihi: 14 Ağustos 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Nautical Leap · İletişim: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+  <p class="meta">Ayrıca bkz. <a href="/terms-of-use.html">Kullanım Şartları</a>.</p>
+
+  <h2 id="genel-bakis">1. Genel Bakış</h2>
+  <p>Mariner's Book ("Uygulama"), denizcilik profesyonelleri ve öğrencileri için hesaplama, eğitim ve belge takip aracıdır. Bu politika, Uygulamayı kullandığınızda hangi verilerin işlendiğini, kimlerle paylaşıldığını, ne kadar süre saklandığını ve haklarınızı açıklar.</p>
+
+  <h2 id="islenen-veriler">2. İşlenen Veriler ve Amaçları</h2>
+  <table>
+    <tr><th>Veri</th><th>Amaç</th><th>Hukuki dayanak (KVKK/GDPR)</th></tr>
+    <tr><td>E-posta, ad, profil fotoğrafı, giriş sağlayıcısı</td><td>Hesap oluşturma ve oturum yönetimi</td><td>Sözleşmenin ifası</td></tr>
+    <tr><td><strong>Denizcilik belgeleri:</strong> belge fotoğrafı, belge numarası, belge sahibinin adı, veren kurum/ülke, düzenleme ve son geçerlilik tarihleri, yapay zekâ analiz çıktısı</td><td>Belge geçerlilik takibi (Belge Takip özelliği; yalnızca sizin başlattığınız yüklemelerde)</td><td>Açık rıza</td></tr>
+    <tr><td>Sınav/quiz sonuçları, soru bazlı cevaplar, kategori performans istatistikleri</td><td>İlerleme takibi</td><td>Sözleşmenin ifası</td></tr>
+    <tr><td>Satın alma bilgileri (satın alma jetonu, sipariş no, abonelik durumu)</td><td>Pro üyeliğin doğrulanması</td><td>Sözleşmenin ifası</td></tr>
+    <tr><td>Yapay zekâ kullanım sayacı</td><td>Kota yönetimi ve kötüye kullanımın önlenmesi</td><td>Meşru menfaat</td></tr>
+    <tr><td>Kullanıcı tarafından üretilen bileşenler/dosya yüklemeleri</td><td>İlgili özelliklerin çalışması</td><td>Sözleşmenin ifası</td></tr>
+    <tr><td><strong>Konum:</strong> GPS koordinatları (izin verirseniz) ve IP tabanlı yaklaşık konum</td><td>Hava durumu, gelgit ve seyir hesaplamaları</td><td>Açık rıza / meşru menfaat</td></tr>
+    <tr><td>Yapay zekâ sohbet metinleri</td><td>Soru-cevap ve eğitim desteği</td><td>Açık rıza</td></tr>
+    <tr><td><strong>Yapay zekâ içeriği bildirimleri:</strong> bildirdiğiniz yapay zekâ yanıtı, ilgili sorunuz, bildirim nedeni ve eklediğiniz not</td><td>Zararlı veya yanlış yapay zekâ çıktısının incelenmesi (yalnızca "Bu yanıtı bildir" düğmesine bastığınızda)</td><td>Meşru menfaat / yasal yükümlülük</td></tr>
+    <tr><td>Reklam kimliği (yalnızca ücretsiz pakette, mobil)</td><td>Reklam gösterimi</td><td>Açık rıza (UMP onay formu)</td></tr>
+  </table>
+  <p><strong>Toplanmayan veriler:</strong> Analitik/çökme izleme SDK'sı, kişiler, mikrofon, takvim, sağlık verisi.</p>
+  <p><strong>Konum hakkında:</strong> Uygulama <code>ACCESS_FINE_LOCATION</code> ve <code>ACCESS_COARSE_LOCATION</code> izinlerini kullanır. Konumunuz sunucularımızda saklanmaz; yalnızca ilgili hesaplama/hava durumu servislerine anlık olarak iletilir. İzni cihaz ayarlarından her zaman kapatabilirsiniz; konum kapalıyken uygulamayı manuel konum girerek kullanabilirsiniz.</p>
+  <p><strong>Yapay zekâ sohbetleri:</strong> Sohbet geçmişi sunucularımızda saklanmaz, yalnızca cihazınızın yerel deposunda tutulur. Ancak yanıt üretmek için mesaj içeriği aşağıdaki servis sağlayıcılara iletilir. <strong>Tek istisna:</strong> bir yanıtı "Bu yanıtı bildir" düğmesiyle bildirmeyi seçerseniz, yalnızca o yanıt ve ilgili sorunuz inceleme amacıyla sunucularımıza kaydedilir.</p>
+
+  <h2 id="ucuncu-taraflar">3. Veri Aktarılan Üçüncü Taraflar</h2>
+  <table>
+    <tr><th>Taraf</th><th>Aktarılan veri</th></tr>
+    <tr><td>Supabase (Lovable Cloud) – barındırma, kimlik doğrulama, veritabanı, dosya depolama</td><td>Bölüm 2'deki saklanan tüm veriler</td></tr>
+    <tr><td>Lovable AI Gateway</td><td>Yapay zekâ istekleri: sohbet metinleri, belge fotoğrafları, çalışma saati verileri (Google Gemini'ye yönlendirilir)</td></tr>
+    <tr><td>Google Gemini</td><td>Yapay zekâ istekleri (yukarıdakiyle aynı içerik)</td></tr>
+    <tr><td>Google Cloud Translation</td><td>Dil değiştirildiğinde ekrandaki metinler</td></tr>
+    <tr><td>Google Play Developer API</td><td>Satın alma jetonu (abonelik doğrulaması)</td></tr>
+    <tr><td>Google AdMob</td><td>Reklam kimliği, cihaz bilgisi (yalnızca ücretsiz pakette)</td></tr>
+    <tr><td>Wolfram Alpha</td><td>Hesaplama sorguları</td></tr>
+    <tr><td>Open-Meteo</td><td>Koordinatlar (hava durumu)</td></tr>
+    <tr><td>BigDataCloud</td><td>Koordinatlar (yer adı çözümleme)</td></tr>
+    <tr><td>ipapi.co</td><td>IP adresi (konum izni yokken yaklaşık konum)</td></tr>
+    <tr><td>r.jina.ai</td><td>Okumak istediğiniz haber makalesinin adresi</td></tr>
+    <tr><td>Google Hesapları (Google ile giriş)</td><td>Google ile giriş yapmayı seçerseniz: e-posta adresi, ad, profil fotoğrafı</td></tr>
+    <tr><td>YouTube (gizlilik korumalı gömme)</td><td>Uygulama içindeki bir videoyu oynattığınızda IP adresi</td></tr>
+    <tr><td>OpenStreetMap</td><td>Harita görüntülendiğinde IP adresi</td></tr>
+    <tr><td>Ders içeriklerindeki görsellerin barındırıldığı üçüncü taraf siteler (ör. Wikimedia Commons, Unsplash ve çeşitli denizcilik eğitim siteleri)</td><td>İlgili ders sayfasını açtığınızda görsel doğrudan kaynağından yüklenir ve o site IP adresinizi görür</td></tr>
+  </table>
+  <p>Veriler satılmaz ve reklam profilleme amacıyla (AdMob dışında) paylaşılmaz. Bu sağlayıcıların bir kısmı Avrupa Birliği ve Türkiye dışında bulunabilir; aktarım standart sözleşme hükümleri ve sağlayıcıların gizlilik taahhütleri kapsamında yapılır.</p>
+  <p>Harici görseller hakkında: Ders sayfalarındaki bazı görseller kendi sunucularımızda değil, kaynak sitelerinde barındırılır. Bu siteler tarafımızca yönetilmez; yalnızca görseli sunmak için gereken teknik bilgiyi (IP adresi, tarayıcı bilgisi) görürler ve kendilerine ait gizlilik politikalarına tabidirler. Bu sitelere tarafımızdan hesap veya belge veriniz aktarılmaz.</p>
+
+  <h2 id="belgelerin-korunmasi">4. Belgelerin Korunması</h2>
+  <ul>
+    <li>Belge fotoğrafları herkese kapalı (private) bir depolama alanında tutulur; yalnızca kısa süreli imzalı bağlantılarla ve yalnızca size gösterilir.</li>
+    <li>Veritabanı erişimi satır düzeyi güvenlik (RLS) ile sınırlandırılmıştır: her kullanıcı yalnızca kendi kayıtlarına erişir.</li>
+    <li>Tüm veri aktarımı HTTPS ile şifrelenir; veriler sunucu tarafında disk düzeyinde şifreli saklanır.</li>
+    <li>Belge ekranındaki kişisel alanlar çeviri servisine gönderilmez.</li>
+  </ul>
+
+  <h2 id="saklama-sureleri">5. Saklama Süreleri</h2>
+  <ul>
+    <li>Hesap ve profil verisi: hesap silinene kadar.</li>
+    <li>Belgeler ve belge fotoğrafları: siz silene veya hesabınızı kapatana kadar.</li>
+    <li>Sınav sonuçları ve istatistikler: hesap silinene kadar.</li>
+    <li>Satın alma kayıtları: hesap silinene kadar. Hesabınızı sildiğinizde uygulamadaki satın alma kaydınız da silinir; ödeme ve fatura kayıtları Google Play tarafında kendi saklama sürelerine tabidir.</li>
+    <li>Yapay zekâ sohbet geçmişi: yalnızca cihazınızda; uygulama verilerini temizlediğinizde silinir.</li>
+    <li>Yapay zekâ içeriği bildirimleri: hesap silinene kadar.</li>
+  </ul>
+
+  <h2 id="hesap-ve-veri-silme">6. Hesap ve Veri Silme</h2>
+  <p>Uygulama içinde <strong>Ayarlar → Hesap → "Hesabımı sil"</strong> adımlarıyla hesabınızı ve tüm verilerinizi kalıcı olarak silebilirsiniz. Silme işlemi profilinizi, sınav sonuçlarınızı, istatistiklerinizi, belge kayıtlarınızı, belge fotoğraflarınızı, yüklediğiniz dosyaları, ürettiğiniz bileşenleri, kota sayacınızı, yapay zekâ içeriği bildirimlerinizi ve giriş bilgilerinizi kapsar ve geri alınamaz.</p>
+  <p><strong>Aboneliğiniz varsa:</strong> Hesabınızı silmek Google Play aboneliğinizi iptal etmez. Ödemenin durması için aboneliği <strong>Google Play &gt; Abonelikler</strong> bölümünden ayrıca iptal etmeniz gerekir.</p>
+  <p>Alternatif olarak <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a> adresine yazarak silme veya veri kopyası talebinde bulunabilirsiniz; talepler en geç 30 gün içinde yanıtlanır.</p>
+
+  <h2 id="haklariniz">7. Haklarınız</h2>
+  <p>KVKK m.11 ve GDPR kapsamında; verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, taşınabilirlik ve itiraz haklarına sahipsiniz. Rızaya dayalı işlemelerde (belge yükleme, konum, yapay zekâ, reklam) rızanızı istediğiniz zaman geri çekebilirsiniz. Başvurularınızı yukarıdaki e-posta adresine iletebilir, sonuçtan memnun kalmazsanız yetkili veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
+
+  <h2 id="cocuklarin-gizliligi">8. Çocukların Gizliliği</h2>
+  <p>Uygulama 13 yaş altı çocuklara yönelik değildir ve bilerek 13 yaş altı kullanıcılardan veri toplamaz.</p>
+
+  <h2 id="degisiklikler">9. Değişiklikler</h2>
+  <p>Bu politika güncellenebilir; önemli değişiklikler bu sayfada ve uygulama içinde duyurulur.</p>
+
+  <h2 id="iletisim">10. İletişim</h2>
+  <p><a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+
 </body>
 </html>

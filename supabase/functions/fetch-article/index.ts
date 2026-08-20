@@ -227,7 +227,7 @@ serve(async (req: Request) => {
       await assertSafeUrl(url);
     } catch {
       return new Response(
-        JSON.stringify({ error: "Geçersiz veya izin verilmeyen URL." }),
+        JSON.stringify({ error: "Invalid or disallowed URL." }),
         { status: 400, headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }
@@ -319,8 +319,8 @@ serve(async (req: Request) => {
           content: "",
           warning:
             response.status === 403 || response.status === 401
-              ? "Kaynak site içeriği uygulama içinde okumayı engelliyor. Haberi tarayıcıda açabilirsiniz."
-              : `Kaynak yanıt vermedi (${response.status}). Haberi tarayıcıda açabilirsiniz.`,
+              ? "The source site blocks content from being read within the app. You can open the news in the browser."
+              : `Source did not respond (${response.status}). You can open the news in the browser.`,
         }),
         { headers: { ...corsHeaders, "content-type": "application/json" } }
       );
@@ -333,7 +333,7 @@ serve(async (req: Request) => {
     if (contentType && !/text\/html|application\/xhtml|text\/plain|xml/.test(contentType)) {
       await response.body?.cancel().catch(() => {});
       return new Response(
-        JSON.stringify({ error: "Desteklenmeyen içerik türü." }),
+        JSON.stringify({ error: "Unsupported content type." }),
         { status: 415, headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }
@@ -342,7 +342,7 @@ serve(async (req: Request) => {
 
     if (!html || html.length < 100) {
       return new Response(
-        JSON.stringify({ error: "İçerik alınamadı." }),
+        JSON.stringify({ error: "Could not retrieve content." }),
         { status: 502, headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }
@@ -355,7 +355,7 @@ serve(async (req: Request) => {
       return new Response(
         JSON.stringify({
           ...article,
-          warning: "İçerik çok kısa, kaynak site içerik çıkarmayı engelliyor olabilir.",
+          warning: "The content is too short, the source site may be blocking content extraction.",
         }),
         { headers: { ...corsHeaders, "content-type": "application/json" } }
       );
@@ -370,7 +370,7 @@ serve(async (req: Request) => {
 
     // Generic message only — internal error details must not leak to clients.
     return new Response(
-      JSON.stringify({ error: isTimeout ? "Zaman aşımı — kaynak çok yavaş yanıt veriyor." : "Makale alınamadı." }),
+      JSON.stringify({ error: isTimeout ? "Timeout — the resource is responding too slowly." : "The article could not be retrieved." }),
       { status: 500, headers: { ...corsHeaders, "content-type": "application/json" } }
     );
   }

@@ -150,7 +150,7 @@ export interface VerifiedSubscription {
 
 export async function verifySubscription(purchaseToken: string): Promise<VerifiedSubscription | null> {
   const resp = await playApiFetch(`/purchases/subscriptionsv2/tokens/${encodeURIComponent(purchaseToken)}`);
-  if (resp.status === 404 || resp.status === 410) return null; // token geçersiz/bilinmiyor
+  if (resp.status === 404 || resp.status === 410) return null; // token invalid/unknown
   if (!resp.ok) throw new Error(`subscriptionsv2.get failed: ${resp.status}`);
   const data = await resp.json();
 
@@ -194,7 +194,7 @@ export async function acknowledgeSubscription(productId: string, purchaseToken: 
 export interface VerifiedProduct {
   kind: 'product';
   productId: string;
-  purchaseState: number;         // 0 satın alındı, 1 iptal, 2 beklemede
+  purchaseState: number;         // 0 purchased, 1 cancelled, 2 pending
   acknowledged: boolean;
   orderId: string | null;
   obfuscatedAccountId: string | null;

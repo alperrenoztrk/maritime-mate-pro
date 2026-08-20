@@ -411,19 +411,19 @@ export async function explainCalculation(
   entry: Pick<CourseEntry, 'name' | 'formula' | 'note'>,
   vals: Record<string, number>,
   steps: CalcStep[],
-  language: string = 'tr',
+  language: string = 'en',
   question?: string,
 ): Promise<string> {
   const langName = getLanguageDisplayName(language);
 
-  const system = `Sen denizcilik fakültesinde (güverte ve makine dersleri: seyir, gemi stabilitesi, meteoroloji, yük işlemleri, emniyet, termodinamik, akışkanlar mekaniği, dizel makineler, elektrik vb.) ders veren deneyimli bir eğitmensin. Görevin, öğrenciye verilen formülü ve çözüm adımlarını SADE, anlaşılır ve öğretici biçimde açıklamak.
+  const system = `You are an experienced lecturer at a maritime faculty (deck and engine subjects: navigation, ship stability, meteorology, cargo operations, safety, thermodynamics, fluid mechanics, diesel engines, electrics and so on). Your task is to explain the given formula and the solution steps to the student in a PLAIN, clear and instructive way.
 
-KURALLAR:
-- SANA VERİLEN sayısal adımlar ve sonuçlar DOĞRUDUR; bunları DEĞİŞTİRME, yeni sayı UYDURMA.
-- Her adımın NEDEN yapıldığını (mantığını) ve denizcilik pratiğindeki anlamını açıkla.
-- Kısa tut: madde madde, gereksiz tekrar yok. Formüldeki sembolleri ve birimleri açıkça tanımla.
-- Yaygın öğrenci hatalarına (işaret kuralları, birim dönüşümleri, varsayımlar) dikkat çek.
-- ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.`;
+RULES:
+- The numerical steps and results YOU ARE GIVEN ARE CORRECT; do NOT change them and do NOT invent new numbers.
+- Explain WHY each step is taken (its reasoning) and what it means in seagoing practice.
+- Keep it short: bullet points, no needless repetition. Define the symbols and units in the formula explicitly.
+- Point out the common student mistakes (sign conventions, unit conversions, assumptions).
+- MANDATORY: your ENTIRE answer must be in ${langName} (language code: ${language}).`;
 
   const stepsText = steps
     .map((s, i) => {
@@ -492,24 +492,24 @@ const LEVEL_GUIDANCE: Record<TutorLevel, string> = {
 export async function askLessonTutor(
   context: LessonTutorContext,
   messages: AIMessage[],
-  language: string = 'tr',
+  language: string = 'en',
 ): Promise<string> {
   const langName = getLanguageDisplayName(language);
   const level = context.level ?? 'normal';
 
-  const system = `Sen denizcilik fakültesinde ders veren deneyimli bir eğitmensin (güverte ve makine dersleri). Şu anda öğrenciye "${context.topicTitle}" konusunu öğretiyorsun.
+  const system = `You are an experienced lecturer at a maritime faculty (deck and engine subjects). You are currently teaching the student the subject "${context.topicTitle}".
 
-GÖREVİN: Öğrencinin bu konuyu OKULDAN DAHA İYİ kavramasını sağlamak; teoriyi gemi pratiğine bağlamak.
+YOUR TASK: to make the student understand this subject BETTER THAN AT SCHOOL, and to connect the theory to shipboard practice.
 
-KURALLAR:
-- Yanıtlarını ÖNCELİKLE aşağıda verilen DERS İÇERİĞİNE ve bilinen denizcilik standartlarına (COLREG, SOLAS, STCW, IMO yayınları) dayandır.
-- Ders içeriğinde olmayan bir şey sorulursa ve emin değilsen UYDURMA; "bu ders içeriğinde yok" de ve doğru kaynağa/yayına yönlendir.
-- Sayı, kural numarası veya formül verirken doğru ol; emin değilsen belirt.
+RULES:
+- Base your answers PRIMARILY on the LESSON CONTENT given below and on the recognised maritime standards (COLREG, SOLAS, STCW, IMO publications).
+- If something outside the lesson content is asked and you are not sure, do NOT invent it; say that it is not in this lesson content and point to the correct source/publication.
+- Be accurate when giving a number, a rule number or a formula; say so if you are not sure.
 - ${LEVEL_GUIDANCE[level]}
-- Kısa ve öğretici tut: gerektiğinde madde madde. Mümkünse "gemide bunun anlamı" şeklinde pratik bir bağ kur.
-- ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.
+- Keep it short and instructive: bullet points where useful. Where possible make a practical link — "what this means on board".
+- MANDATORY: your ENTIRE answer must be in ${langName} (language code: ${language}).
 
-DERS İÇERİĞİ ("${context.topicTitle}"):
+LESSON CONTENT ("${context.topicTitle}"):
 ${context.lessonText}`;
 
   try {
@@ -517,6 +517,6 @@ ${context.lessonText}`;
   } catch (e) {
     if (e instanceof AIAccessError) return e.message;
     console.error('Lesson tutor AI error:', e);
-    return 'Şu anda eğitmen asistanına ulaşılamıyor. Lütfen biraz sonra tekrar deneyin. Bu arada ders anlatımını ve çözümlü örnekleri inceleyebilirsiniz.';
+    return 'The tutor assistant cannot be reached right now. Please try again shortly. In the meantime you can work through the lesson text and the worked examples.';
   }
 }

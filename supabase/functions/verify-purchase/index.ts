@@ -1,7 +1,7 @@
 // Google Play satın alma doğrulama ucu.
 //
 // İstemci (Capacitor PlayBilling eklentisi) satın alma tamamlanınca veya
-// "satın alımları geri yükle" akışında purchaseToken'ları buraya gönderir.
+// "restore purchases" akışında purchaseToken'ları buraya gönderir.
 // Sunucu her token'ı Google Play Developer API ile doğrular, sonucu
 // user_entitlements tablosunda oturumdaki kullanıcıya bağlar ve gerekiyorsa
 // satın almayı onaylar (acknowledge). İstemciden gelen hiçbir "Pro" iddiasına
@@ -54,7 +54,7 @@ interface PurchaseResult {
  * Alan yalnızca uygulama içi satın alma akışında dolu gelir. Play Console
  * promosyon kodları, obfuscatedAccountId eklenmeden önceki sürümlerle yapılmış
  * satın alımlar ve bazı geri yükleme akışları null döndürür; bu durumda tek
- * dayanağımız "token başka hesaba bağlı mı" kontrolü olduğu için satın almayı
+ * dayanağımız "Is the token linked to another account?" kontrolü olduğu için satın almayı
  * reddetmiyoruz (aksi hâlde eski müşteriler Pro'yu geri yükleyemezdi).
  */
 function accountIdMismatch(obfuscatedAccountId: string | null, userId: string): boolean {
@@ -65,7 +65,7 @@ const ACCOUNT_MISMATCH_RESULT = {
   status: 'account_mismatch',
   active: false,
   expiresAt: null,
-  error: 'Bu satın alma başka bir hesaba bağlı',
+  error: 'This purchase is linked to another account',
 } as const;
 
 function mapSubscriptionState(state: SubscriptionState): string {
@@ -129,7 +129,7 @@ serve(async (req) => {
       const isSub = subsIds.includes(p.productId);
       const isLifetime = lifetimeIds.includes(p.productId);
       if (!isSub && !isLifetime) {
-        results.push({ productId: p.productId, status: 'unknown_product', active: false, expiresAt: null, error: 'Bilinmeyen ürün' });
+        results.push({ productId: p.productId, status: 'unknown_product', active: false, expiresAt: null, error: 'unknown product' });
         continue;
       }
 
@@ -143,7 +143,7 @@ serve(async (req) => {
         .maybeSingle();
       if (existingError) throw new Error(existingError.message);
       if (existing && existing.user_id !== user.id) {
-        results.push({ productId: p.productId, status: 'token_in_use', active: false, expiresAt: null, error: 'Bu satın alma başka bir hesaba bağlı' });
+        results.push({ productId: p.productId, status: 'token_in_use', active: false, expiresAt: null, error: 'This purchase is linked to another account' });
         continue;
       }
 
@@ -151,14 +151,14 @@ serve(async (req) => {
         if (isSub) {
           const verified = await verifySubscription(p.purchaseToken);
           if (!verified) {
-            results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Satın alma doğrulanamadı' });
+            results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Purchase could not be verified' });
             continue;
           }
           // subscriptionsv2 gerçek productId'yi döndürür; istemcinin
           // bildirdiğiyle çelişiyorsa Google'ınkini esas al.
           const productId = verified.productId || p.productId;
           if (!subsIds.includes(productId)) {
-            results.push({ productId, status: 'unknown_product', active: false, expiresAt: null, error: 'Bilinmeyen ürün' });
+            results.push({ productId, status: 'unknown_product', active: false, expiresAt: null, error: 'unknown product' });
             continue;
           }
           if (accountIdMismatch(verified.obfuscatedAccountId, user.id)) {
@@ -197,7 +197,7 @@ serve(async (req) => {
         } else {
           const verified = await verifyProduct(p.productId, p.purchaseToken);
           if (!verified) {
-            results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Satın alma doğrulanamadı' });
+            results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Purchase could not be verified' });
             continue;
           }
           if (accountIdMismatch(verified.obfuscatedAccountId, user.id)) {
