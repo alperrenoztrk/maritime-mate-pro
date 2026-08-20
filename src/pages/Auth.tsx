@@ -240,8 +240,8 @@ const Auth = () => {
                         I forgot my password / set password
                       </button>
                       <p className="mt-2 text-micro text-muted-foreground">
-                        If you created your account with Google, you do not have a password. without password
-                        You can use the login link or set a password here.
+                        If you created your account with Google, you do not have a password. Use the
+                        passwordless sign-in link, or set a password here.
                       </p>
                     </div>
                   </div>
