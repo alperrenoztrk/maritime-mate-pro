@@ -193,18 +193,18 @@ const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Keep the launch surface only through the first committed React frame. iOS
-// already supplies a native LaunchScreen, so the web layer must not replay a
-// second narrative or block the first useful interaction.
-const splashHideDelay = prefersReducedMotion ? 1000 : 1120;
+// Keep the launch surface only through the first committed React frame. Both
+// platforms already show a native launch image and index.html continues it
+// unchanged, so all that is left here is to cover React's first paint and get
+// out of the way — the launch is one picture that fades once, never a second
+// screen the user has to sit through. This budget is an invariant; see
+// scripts/check-design-system.mjs.
+const splashHideDelay = prefersReducedMotion ? 0 : 120;
 
-document.getElementById('splash-root')?.classList.add('splash-brief');
-
+// Nothing restyles #splash-root on the way out: it painted its final form with
+// the document, and the only change it ever sees is `splash-hide`. Anything
+// else applied here would land mid-launch as a visible flash.
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
-
-// A tap should never be ignored: let people skip straight into the app.
-const splashEl = document.getElementById('splash-root');
-splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
 
 // Hard safety net in case the rAF callback never fires.
   setTimeout(hideSplash, splashHideDelay + 400);

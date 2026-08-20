@@ -13,6 +13,7 @@
 // dosya referanslarını yüklemez.
 import { Resvg } from '@resvg/resvg-js';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { deflateSync } from 'node:zlib';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -116,6 +117,182 @@ function renderSplash(w, h) {
     ${artEl(logoFull, cardX + padX, cardY + padY, logoW, logoH)}
   </svg>`;
   return new Resvg(svg).render().asPng();
+}
+
+// ---------- Web splash logo (inlined into index.html) ----------
+// index.html has to keep drawing the native launch image for the few frames
+// between the WebView opening and React's first commit. That means the logo
+// must be there on the FIRST painted frame — an <img> that is still being
+// fetched shows an empty white card instead — so the art is inlined as a data
+// URI rather than referenced. To keep the critical HTML small it is rendered
+// small, flattened onto the card's white (dropping the alpha channel) and
+// quantised to a 256-colour palette: ~16 KB instead of the ~97 KB source.
+const SPLASH_LOGO_WIDTH = 420;
+const SPLASH_LOGO_COLORS = 256;
+
+let crcTable;
+function crc32(buf) {
+  if (!crcTable) {
+    crcTable = new Uint32Array(256);
+    for (let n = 0; n < 256; n += 1) {
+      let c = n;
+      for (let k = 0; k < 8; k += 1) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+      crcTable[n] = c >>> 0;
+    }
+  }
+  let crc = 0xffffffff;
+  for (let i = 0; i < buf.length; i += 1) crc = crcTable[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8);
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function pngChunk(type, data) {
+  const length = Buffer.alloc(4);
+  length.writeUInt32BE(data.length);
+  const body = Buffer.concat([Buffer.from(type, 'ascii'), data]);
+  const crc = Buffer.alloc(4);
+  crc.writeUInt32BE(crc32(body));
+  return Buffer.concat([length, body, crc]);
+}
+
+// Median cut: split the colour cloud along its widest axis until there are
+// `count` boxes, then average each one. Good enough for flat brand art, where
+// the only gradients are anti-aliasing ramps.
+function medianCut(pixels, count) {
+  const spread = (box) => {
+    const min = [255, 255, 255];
+    const max = [0, 0, 0];
+    for (const p of box) {
+      for (let i = 0; i < 3; i += 1) {
+        if (p[i] < min[i]) min[i] = p[i];
+        if (p[i] > max[i]) max[i] = p[i];
+      }
+    }
+    return [max[0] - min[0], max[1] - min[1], max[2] - min[2]];
+  };
+  let boxes = [pixels];
+  while (boxes.length < count) {
+    boxes.sort((a, b) => {
+      const [ar, ag, ab] = spread(b);
+      const [br, bg, bb] = spread(a);
+      return ar * ag * ab - br * bg * bb;
+    });
+    const box = boxes.shift();
+    if (!box || box.length < 2) {
+      if (box) boxes.push(box);
+      break;
+    }
+    const [dr, dg, db] = spread(box);
+    const axis = dr >= dg && dr >= db ? 0 : dg >= db ? 1 : 2;
+    box.sort((a, b) => a[axis] - b[axis]);
+    const mid = box.length >> 1;
+    boxes.push(box.slice(0, mid), box.slice(mid));
+  }
+  return boxes
+    .filter((box) => box && box.length)
+    .map((box) => {
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      for (const p of box) {
+        r += p[0];
+        g += p[1];
+        b += p[2];
+      }
+      return [Math.round(r / box.length), Math.round(g / box.length), Math.round(b / box.length)];
+    });
+}
+
+function splashLogoPng() {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${logoFull.width} ${logoFull.height}">
+    ${artEl(logoFull, 0, 0, logoFull.width, logoFull.height)}
+  </svg>`;
+  const raster = new Resvg(svg, { fitTo: { mode: 'width', value: SPLASH_LOGO_WIDTH } }).render();
+  const { width, height, pixels } = raster;
+
+  // Flatten onto the card's white; the logo never appears off that card.
+  const opaque = [];
+  for (let i = 0; i < pixels.length; i += 4) {
+    const a = pixels[i + 3] / 255;
+    opaque.push([
+      Math.round(pixels[i] * a + 255 * (1 - a)),
+      Math.round(pixels[i + 1] * a + 255 * (1 - a)),
+      Math.round(pixels[i + 2] * a + 255 * (1 - a)),
+    ]);
+  }
+
+  const palette = medianCut(opaque.slice(), SPLASH_LOGO_COLORS);
+  const nearest = new Map();
+  const indexed = Buffer.alloc(width * height);
+  for (let i = 0; i < opaque.length; i += 1) {
+    const [r, g, b] = opaque[i];
+    const key = (r << 16) | (g << 8) | b;
+    let best = nearest.get(key);
+    if (best === undefined) {
+      let bestDistance = Infinity;
+      for (let k = 0; k < palette.length; k += 1) {
+        const q = palette[k];
+        // Luma-ish weighting: green errors show most, blue least.
+        const d = (r - q[0]) ** 2 * 3 + (g - q[1]) ** 2 * 6 + (b - q[2]) ** 2;
+        if (d < bestDistance) {
+          bestDistance = d;
+          best = k;
+        }
+      }
+      nearest.set(key, best);
+    }
+    indexed[i] = best;
+  }
+
+  // Filter type 0 per scanline: palette indices are not numerically adjacent,
+  // so the usual delta filters make them compress worse, not better.
+  const rawScanlines = Buffer.alloc(height * (width + 1));
+  for (let y = 0; y < height; y += 1) {
+    rawScanlines[y * (width + 1)] = 0;
+    indexed.copy(rawScanlines, y * (width + 1) + 1, y * width, y * width + width);
+  }
+
+  const ihdr = Buffer.alloc(13);
+  ihdr.writeUInt32BE(width, 0);
+  ihdr.writeUInt32BE(height, 4);
+  ihdr[8] = 8; // bit depth
+  ihdr[9] = 3; // colour type: indexed
+  const plte = Buffer.alloc(palette.length * 3);
+  palette.forEach((c, i) => {
+    plte[i * 3] = c[0];
+    plte[i * 3 + 1] = c[1];
+    plte[i * 3 + 2] = c[2];
+  });
+
+  return {
+    width,
+    height,
+    png: Buffer.concat([
+      Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+      pngChunk('IHDR', ihdr),
+      pngChunk('PLTE', plte),
+      pngChunk('IDAT', deflateSync(rawScanlines, { level: 9 })),
+      pngChunk('IEND', Buffer.alloc(0)),
+    ]),
+  };
+}
+
+// Rewrites the <img> between the splash-logo markers in index.html.
+function writeSplashLogoIntoIndexHtml() {
+  const indexPath = join(root, 'index.html');
+  const html = readFileSync(indexPath, 'utf8');
+  const startMarker = '<!-- splash-logo:start';
+  const endMarker = '<!-- splash-logo:end -->';
+  const start = html.indexOf(startMarker);
+  const end = html.indexOf(endMarker);
+  if (start === -1 || end === -1) {
+    throw new Error('index.html: splash-logo markers are missing — the launch surface cannot be regenerated.');
+  }
+  const headerEnd = html.indexOf('-->', start) + 3;
+  const { width, height, png } = splashLogoPng();
+  const tag = `<img class="splash-logo" src="data:image/png;base64,${png.toString('base64')}" width="${width}" height="${height}" alt="">`;
+  const next = `${html.slice(0, headerEnd)}\n        ${tag}\n        ${html.slice(end)}`;
+  writeFileSync(indexPath, next);
+  console.log('✓', `index.html (inline splash logo, ${(png.length / 1024).toFixed(1)} KB)`);
 }
 
 // Sosyal paylaşım kartı: solda beyaz kart içinde logo, sağda metin.
@@ -240,5 +417,6 @@ write('public/app-icon-192.png', renderIcon(192));
 write('public/app-icon-512.png', renderIcon(512));
 write('public/maritime-logo.png', renderIcon(512));
 write('public/og-image.png', renderOgImage());
+writeSplashLogoIntoIndexHtml();
 
 console.log('\nTamamlandı. Android res/, iOS Assets.xcassets, resources/store ve public/ güncellendi.');

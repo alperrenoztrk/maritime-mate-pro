@@ -18,8 +18,9 @@
 (function () {
   "use strict";
 
-  // Normal açılış ~4.2sn (splash animasyonu) sürüyor. Yavaş cihazlarda ilk
-  // render'a pay bırakmak için bunun çok üstünde bir eşik kullanılır.
+  // Splash artık yalnızca ilk React karesini örtüyor (bkz. src/main.tsx,
+  // 120 ms). Eşik yine de çok yüksek tutuluyor: burada ölçülen şey animasyon
+  // değil, yavaş cihazlarda uygulama paketinin açılma süresi.
   var BOOT_TIMEOUT_MS = 15000;
   var RECOVERY_ID = "splash-watchdog-recovery";
 
@@ -107,7 +108,9 @@
     overlay.id = RECOVERY_ID;
     overlay.style.cssText =
       "position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;" +
-      "padding:24px;box-sizing:border-box;background:radial-gradient(ellipse at 50% 40%,#0a2a55 0%,#041530 55%,#020a14 100%);" +
+      // Açılış görselinin degradesiyle aynı: bekçi splash'ı kaldırıp yerine
+      // geçtiği için arka planın değişmemesi gerekir.
+      "padding:24px;box-sizing:border-box;background:linear-gradient(180deg,#0e5f91 0%,#061d3d 100%);" +
       "font-family:Inter,system-ui,-apple-system,sans-serif;";
 
     var card = document.createElement("div");

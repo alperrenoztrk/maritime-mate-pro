@@ -23,7 +23,7 @@ npm run dev -- --host 127.0.0.1 --port 5183   # dev server, ready in ~1s
 Global playwright lives at `/opt/node22/lib/node_modules/playwright/index.mjs`; launch chromium with `executablePath: '/opt/pw-browsers/chromium'`. Use a mobile viewport (390×844).
 
 Gotchas:
-- The splash screen (static HTML in `index.html`) plays ~4.9s on every full page load before the app is interactive. `waitForTimeout(6000)` after `goto`.
+- The splash screen (static HTML in `index.html`) is a still launch image that fades 120 ms after React's first commit, so it costs nothing — but the bundle itself still takes a moment. `waitForTimeout(3000)` after `goto` is plenty.
 - An in-app auto-translation layer (`RouteTranslationGate`) rewrites visible text AND aria-labels to English in the test browser regardless of `locale: 'tr-TR'`. **Select by `href`, CSS class, or DOM structure — never by Turkish text or aria-label.** (e.g. the global back pill is `div.fixed.left-3 button`.)
 - External fetches (weather, news, Supabase) fail in the sandbox with ERR_CONNECTION_RESET — harmless noise, filter it from console output.
 - Homepage is a 3-page horizontal snap pager (news / home / widgets); it starts centered on "home".
