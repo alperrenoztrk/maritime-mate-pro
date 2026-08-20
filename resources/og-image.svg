@@ -13,14 +13,11 @@
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
   <path d="M0 520 C190 452 350 578 540 514 C730 450 890 576 1080 512 C1126 496 1165 499 1200 511 V630 H0 Z" fill="#38bdf8" opacity="0.1"/>
-  <g transform="translate(102 112) scale(0.39)">
-    <path d="M174 292 C298 268 414 302 512 382 V782 C415 716 299 690 174 716 Z" fill="#f8fafc"/>
-    <path d="M850 292 C726 268 610 302 512 382 V782 C609 716 725 690 850 716 Z" fill="#dbeafe"/>
-    <path d="M512 382 V782" fill="none" stroke="#7dd3fc" stroke-width="18" stroke-linecap="round"/>
-    <circle cx="512" cy="488" r="142" fill="#08264d" stroke="#f4c75a" stroke-width="22"/>
-    <path d="M512 350 L568 492 L512 466 L456 492 Z" fill="#fff"/>
-    <path d="M512 626 L456 484 L512 510 L568 484 Z" fill="#f4c75a"/>
-  </g>
+  <!-- Logo yuvası: içerik `npm run assets:generate` sırasında
+       resources/icon.svg'deki #icon-mark grubunun knockout (koyu zemin)
+       varyantıyla doldurulur. Logo tek kaynaktan gelsin diye burada
+       kopyalanmaz. -->
+  <g id="og-logo-slot" transform="translate(102 112) scale(0.39)"></g>
   <text x="530" y="275" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Mariner’s Book</text>
   <text x="534" y="337" fill="#bae6fd" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="27" font-weight="500">Denizcilik eğitimi ve operasyonel araçlar</text>
   <rect x="534" y="383" width="168" height="48" rx="24" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.2"/>

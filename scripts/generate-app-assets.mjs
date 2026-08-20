@@ -16,46 +16,41 @@ const ogSvgPath = join(root, 'resources/og-image.svg');
 const BG_TOP = '#0e5f91';
 const BG_BOTTOM = '#061d3d';
 
-// Arka plan karesi ve dalga dokusu olmadan yalnızca dümen simidi logosu.
-// (Dalga path'leri 1024 kutusuna kırpıldığı için şeffaf/degrade zeminlerde
-// dikdörtgen artefakt oluşturur.)
-const logoOnly = iconSvg
-  .replace(/<rect width="1024" height="1024"[^/]*\/>/g, '')
-  .replace(/<path d="M0 8[^/]*\/>/g, '')
-  .replace(/<\/?svg[^>]*>/g, '');
+// Zeminsiz logo: yalnızca resources/icon.svg içindeki `#icon-mark` grubu.
+// Grup düz path listesi tutar (iç içe <g> yok), bu yüzden ilk </g> grubu kapatır.
+function extractMark(svg) {
+  const mark = svg.match(/<g id="icon-mark"[\s\S]*?<\/g>/);
+  if (!mark) throw new Error('resources/icon.svg içinde <g id="icon-mark"> bulunamadı.');
+  return mark[0];
+}
+
+const logoOnly = extractMark(iconSvg);
 
 function recolorSvg(svg, palette) {
   return svg.replace(/#[0-9a-f]{6}/gi, color => palette[color.toLowerCase()] ?? color);
 }
 
 const darkIconSvg = recolorSvg(iconSvg, {
-  '#0e5f91': '#082f58',
-  '#0b3768': '#061d3d',
-  '#061d3d': '#020b18',
-  '#38bdf8': '#0ea5e9',
-  '#e0f2fe': '#7dd3fc',
-  '#08264d': '#03152d',
+  '#ffffff': '#08182c',
+  '#042e57': '#f4f8fd',
+  '#007885': '#3bb4c2',
+  '#bf9131': '#e3b455',
 });
 
 // iOS uses the luminance of this grayscale artwork when the user chooses a
 // tinted Home Screen. Broad, high-contrast shapes survive system tinting far
-// better than feeding the full-colour icon into that mode.
+// better than feeding the full-colour icon into that mode, so the mark is kept
+// bright against a dark ground.
 const tintedIconSvg = recolorSvg(iconSvg, {
-  '#0e5f91': '#e2e2e7',
-  '#0b3768': '#c7c7cc',
-  '#061d3d': '#aeaeb2',
   '#ffffff': '#1c1c1e',
-  '#f8fafc': '#242426',
-  '#dbeafe': '#2c2c2e',
-  '#bfdbfe': '#3a3a3c',
-  '#7dd3fc': '#636366',
-  '#38bdf8': '#f2f2f7',
-  '#e0f2fe': '#ffffff',
-  '#08264d': '#f2f2f7',
-  '#fde68a': '#57575a',
-  '#e7a62b': '#3a3a3c',
-  '#020617': '#000000',
+  '#042e57': '#f2f2f7',
+  '#007885': '#aeaeb2',
+  '#bf9131': '#8e8e93',
 });
+
+// Koyu zeminler (splash, og-image) logonun ters/knockout kullanımını ister:
+// lacivert çizgiler beyaza döner, turkuaz ve altın parlatılır.
+const logoKnockout = extractMark(darkIconSvg);
 
 function renderIcon(size) {
   return new Resvg(iconSvg, { fitTo: { mode: 'width', value: size } }).render().asPng();
@@ -65,11 +60,12 @@ function renderIconVariant(svg, size) {
   return new Resvg(svg, { fitTo: { mode: 'width', value: size } }).render().asPng();
 }
 
-// Adaptif ikon foreground'u: içerik, Android'in %66 güvenli alanına sığacak
-// şekilde küçültülmüş; arka plan şeffaf (renk @color/ic_launcher_background).
+// Adaptif ikon foreground'u: logo, Android'in %66 güvenli alanına sığacak
+// şekilde ölçeklenir (0.78 x kutunun %78'i ≈ %61); arka plan şeffaf kalır
+// (renk @color/ic_launcher_background).
 function renderForeground(size) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-    <g transform="translate(512 512) scale(0.62) translate(-512 -512)">
+    <g transform="translate(512 512) scale(0.78) translate(-512 -512)">
       ${logoOnly}
     </g>
   </svg>`;
@@ -79,7 +75,7 @@ function renderForeground(size) {
 // Splash: verilen boyutta degrade arka plan + ortalanmış logo.
 function renderSplash(w, h) {
   const logoSize = Math.round(Math.min(w, h) * 0.42);
-  const inner = logoOnly;
+  const inner = logoKnockout;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
     <defs>
       <linearGradient id="sbg" x1="0" y1="0" x2="0" y2="1">
@@ -91,6 +87,33 @@ function renderSplash(w, h) {
     <g transform="translate(${(w - logoSize) / 2} ${(h - logoSize) / 2}) scale(${logoSize / 1024})">${inner}</g>
   </svg>`;
   return new Resvg(svg).render().asPng();
+}
+
+// Çok boyutlu .ico: her giriş gömülü PNG olarak yazılır (tüm güncel
+// tarayıcılar destekler), böylece favicon da tek kaynaktan türer.
+function buildIco(sizes) {
+  const images = sizes.map(size => ({ size, png: renderIcon(size) }));
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0); // reserved
+  header.writeUInt16LE(1, 2); // type: icon
+  header.writeUInt16LE(images.length, 4);
+
+  let offset = 6 + images.length * 16;
+  const entries = images.map(({ size, png }) => {
+    const entry = Buffer.alloc(16);
+    entry.writeUInt8(size >= 256 ? 0 : size, 0);
+    entry.writeUInt8(size >= 256 ? 0 : size, 1);
+    entry.writeUInt8(0, 2); // palette girişi yok
+    entry.writeUInt8(0, 3); // reserved
+    entry.writeUInt16LE(1, 4); // color planes
+    entry.writeUInt16LE(32, 6); // bits per pixel
+    entry.writeUInt32LE(png.length, 8);
+    entry.writeUInt32LE(offset, 12);
+    offset += png.length;
+    return entry;
+  });
+
+  return Buffer.concat([header, ...entries, ...images.map(i => i.png)]);
 }
 
 function write(relPath, buf) {
@@ -145,6 +168,7 @@ write('resources/store/play-icon-512.png', renderIcon(512));
 write('resources/store/play-feature-graphic-1024x500.png', renderSplash(1024, 500));
 write('resources/store/app-store-icon-1024.png', renderIcon(1024));
 write('public/favicon.png', renderIcon(64));
+write('public/favicon.ico', buildIco([16, 32, 48]));
 write('public/apple-touch-icon.png', renderIcon(180));
 write('public/app-icon-192.png', renderIcon(192));
 write('public/app-icon-512.png', renderIcon(512));
@@ -157,7 +181,15 @@ write(
 );
 
 if (existsSync(ogSvgPath)) {
-  const ogSvg = readFileSync(ogSvgPath, 'utf8');
+  // Logo, og-image.svg içinde kopyalanmaz; boş `#og-logo-slot` grubu burada
+  // knockout varyantla doldurulur.
+  const ogSvg = readFileSync(ogSvgPath, 'utf8').replace(
+    /(<g id="og-logo-slot"[^>]*>)(<\/g>)/,
+    (_, open, close) => `${open}${logoKnockout}${close}`,
+  );
+  if (!ogSvg.includes('icon-mark')) {
+    throw new Error('resources/og-image.svg içinde boş <g id="og-logo-slot"> bulunamadı.');
+  }
   write('public/og-image.png', new Resvg(ogSvg).render().asPng());
 }
 

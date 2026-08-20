@@ -1,51 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <!-- Mariner's Book master app icon. Keep the geometry broad and the number
-       of details low: this artwork must remain legible at notification size. -->
-  <defs>
-    <linearGradient id="icon-bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0e5f91"/>
-      <stop offset="0.55" stop-color="#0b3768"/>
-      <stop offset="1" stop-color="#061d3d"/>
-    </linearGradient>
-    <linearGradient id="page-left" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#dbeafe"/>
-    </linearGradient>
-    <linearGradient id="page-right" x1="1" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="1" stop-color="#bfdbfe"/>
-    </linearGradient>
-    <linearGradient id="icon-gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fde68a"/>
-      <stop offset="1" stop-color="#e7a62b"/>
-    </linearGradient>
-    <radialGradient id="top-light" cx="0.28" cy="0.12" r="0.86">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="book-shadow" x="-20%" y="-20%" width="140%" height="155%">
-      <feDropShadow dx="0" dy="26" stdDeviation="28" flood-color="#020617" flood-opacity="0.32"/>
-    </filter>
-  </defs>
+  <!-- Mariner's Book ana uygulama ikonu. Tüm ikon/splash/mağaza görselleri bu
+       dosyadan `npm run assets:generate` ile türetilir; logoyu değiştirmek için
+       yalnızca burayı güncellemek yeterli.
 
-  <rect width="1024" height="1024" fill="url(#icon-bg)"/>
-  <rect width="1024" height="1024" fill="url(#top-light)"/>
-
-  <!-- Quiet waterline: texture without adding a second symbol. -->
-  <path d="M0 808 C142 754 268 862 410 808 C552 754 678 862 820 808 C894 780 960 794 1024 822 V1024 H0 Z" fill="#38bdf8" opacity="0.12"/>
-  <path d="M0 872 C150 820 274 914 424 866 C574 818 698 912 848 864 C914 843 971 850 1024 874 V1024 H0 Z" fill="#e0f2fe" opacity="0.08"/>
-
-  <!-- Open book: two broad pages and one clear central fold. -->
-  <g filter="url(#book-shadow)">
-    <path d="M174 292 C298 268 414 302 512 382 V782 C415 716 299 690 174 716 Z" fill="url(#page-left)"/>
-    <path d="M850 292 C726 268 610 302 512 382 V782 C609 716 725 690 850 716 Z" fill="url(#page-right)"/>
-    <path d="M512 382 V782" fill="none" stroke="#7dd3fc" stroke-width="18" stroke-linecap="round" opacity="0.72"/>
+       Yapı sözleşmesi (scripts/generate-app-assets.mjs buna dayanır):
+       - `#icon-bg`   : tam sayfa zemin, yalnız bu dikdörtgen.
+       - `#icon-mark` : zeminden bağımsız, saydam üzerine basılabilen logo.
+       Renk paleti aynı zamanda koyu/tinted varyantların yeniden renklendirme
+       anahtarıdır: #FFFFFF zemin, #042E57 lacivert, #007885 turkuaz, #BF9131 altın. -->
+  <rect id="icon-bg" width="1024" height="1024" fill="#FFFFFF"/>
+  <g id="icon-mark" transform="translate(-428.338 936.015) scale(0.150094 -0.150094)" fill-rule="evenodd">
+    <!-- Açık kitabın turkuaz sayfa kenarları ve dalga. -->
+    <path fill="#007885" d="M3920 2314 c0 -21 18 -95 39 -164 22 -69 47 -153 56 -186 l17 -62 81 -17 c122 -26 446 -118 577 -164 446 -155 854 -396 1157 -685 92 -88 116 -106 142 -106 70 0 26 91 -152 313 -254 317 -615 600 -1026 807 -207 104 -707 280 -843 297 l-48 6 0 -39z M8490 2329 c-383 -117 -486 -154 -682 -244 -496 -229 -918 -575 -1213 -996 -86 -121 -99 -169 -47 -169 22 0 47 18 110 79 417 406 926 670 1637 851 l220 56 57 189 c31 105 57 205 57 223 1 31 -1 32 -36 31 -21 0 -67 -9 -103 -20z M4660 785 c-181 -27 -344 -84 -505 -176 -70 -40 -75 -45 -75 -76 0 -30 3 -33 28 -33 16 0 60 11 98 24 257 87 522 106 774 56 204 -41 331 -90 660 -255 316 -159 431 -194 630 -195 201 0 332 41 667 208 279 141 382 182 544 222 290 71 533 63 820 -26 46 -14 101 -28 122 -31 37 -5 37 -5 37 30 0 32 -5 38 -68 76 -206 124 -471 191 -757 191 -276 -1 -543 -63 -838 -196 -387 -175 -476 -203 -583 -183 -75 14 -169 48 -301 110 -337 159 -549 227 -803 258 -111 14 -343 12 -450 -4z"/>
+    <!-- Altın gönder: markanın tek vurgu rengi. -->
+    <path fill="#BF9131" d="M6245 5498 c-5 -15 -73 -394 -145 -803 -28 -159 -69 -391 -91 -515 -66 -372 -99 -577 -99 -614 0 -33 3 -36 28 -36 16 0 96 35 182 79 l154 79 95 -48 c53 -26 125 -64 159 -84 76 -43 122 -48 122 -13 0 37 -122 756 -296 1750 l-38 217 -34 0 c-18 0 -35 -6 -37 -12z"/>
+    <!-- Pusula çemberi, rüzgâr gülü, gemi baş omuzluğu ve sayfalar. -->
+    <path fill="#042E57" d="M5965 5050 c-152 -27 -258 -57 -390 -110 -255 -102 -438 -223 -636 -420 -298 -297 -478 -671 -534 -1107 -7 -51 -6 -53 17 -52 32 0 167 25 173 31 3 3 15 54 26 114 107 567 499 1041 1034 1252 116 45 238 79 344 96 l75 11 18 85 c9 47 17 93 18 103 0 21 -14 21 -145 -3z M6450 5053 c1 -10 9 -56 18 -102 l18 -85 119 -23 c344 -68 628 -224 881 -484 149 -153 257 -317 341 -517 45 -107 113 -348 113 -401 0 -43 19 -57 97 -70 107 -16 103 -18 103 35 0 66 -44 277 -81 386 -38 114 -124 297 -186 398 -285 461 -766 782 -1288 860 -38 5 -85 12 -102 15 -27 5 -33 3 -33 -12z M5270 4117 c0 -13 149 -234 326 -484 52 -73 94 -137 94 -142 0 -12 -14 -15 -110 -30 -36 -5 -399 -64 -808 -132 -635 -104 -742 -124 -740 -138 3 -13 104 -33 553 -108 303 -50 563 -92 578 -92 22 -1 53 21 140 100 132 119 303 250 442 341 l100 64 13 85 c18 129 22 120 -70 188 -527 386 -518 380 -518 348z M7139 4047 c-62 -46 -186 -136 -274 -201 -88 -65 -166 -121 -172 -123 -19 -8 -14 -87 12 -210 3 -14 48 -50 133 -106 178 -118 502 -381 502 -408 0 -18 99 -5 630 84 442 75 545 95 548 108 3 16 5 16 -1393 245 -263 43 -265 43 -265 56 0 5 65 103 143 217 215 308 277 401 277 411 0 22 -32 6 -141 -73z M6114 3471 c-325 -168 -560 -331 -766 -532 -141 -138 -148 -150 -148 -267 l0 -94 -80 -87 c-96 -104 -124 -141 -156 -203 -33 -65 -31 -74 22 -106 377 -222 683 -483 931 -792 88 -109 209 -287 258 -377 61 -113 59 -151 53 932 -3 542 -8 989 -11 992 -8 7 -154 -38 -287 -89 -145 -56 -408 -184 -507 -246 -88 -55 -103 -61 -103 -37 0 28 246 208 426 313 148 86 497 252 529 252 52 0 510 -236 685 -353 191 -127 317 -237 272 -237 -5 0 -58 30 -118 66 -117 71 -327 176 -448 224 -134 53 -277 100 -306 100 -26 0 -27 -2 -33 -67 -4 -38 -7 -481 -7 -985 0 -790 2 -918 14 -918 8 0 17 8 21 19 12 39 154 254 245 372 251 325 584 614 945 821 36 21 61 42 63 54 5 34 -70 145 -165 245 l-93 96 0 91 c0 50 -5 103 -10 117 -33 86 -323 344 -560 497 -152 99 -481 279 -507 278 -5 0 -76 -36 -159 -79z M4410 2986 c0 -99 62 -339 131 -506 l40 -96 100 -44 c83 -36 102 -41 110 -29 24 37 21 61 -19 142 -81 164 -129 306 -155 462 l-13 80 -85 17 c-115 23 -109 25 -109 -26z M8035 3013 c-44 -8 -83 -17 -86 -21 -3 -4 -13 -50 -23 -102 -24 -131 -68 -264 -134 -403 -47 -100 -54 -122 -46 -145 14 -39 39 -38 135 6 l85 39 31 69 c48 109 91 246 118 379 28 137 32 196 13 194 -7 -1 -49 -8 -93 -16z M3643 1863 c4 -15 276 -600 432 -930 26 -57 52 -103 57 -103 5 0 22 6 37 14 59 31 267 97 374 118 97 20 142 23 342 23 240 0 297 -6 476 -51 212 -52 457 -156 658 -277 52 -31 98 -57 103 -57 63 0 -228 312 -461 494 -486 379 -973 583 -1780 747 -223 45 -246 47 -238 22z M8750 1859 c-572 -116 -896 -215 -1251 -382 -388 -182 -737 -446 -1017 -767 -103 -118 -110 -154 -19 -92 113 77 343 192 507 252 435 161 947 161 1339 0 54 -22 102 -40 107 -40 5 1 31 49 59 108 341 736 425 919 425 929 0 17 -35 15 -150 -8z"/>
   </g>
-
-  <!-- Compass medallion. Gold is reserved for the one actionable focal mark. -->
-  <circle cx="512" cy="488" r="142" fill="#08264d" stroke="url(#icon-gold)" stroke-width="22"/>
-  <circle cx="512" cy="488" r="108" fill="none" stroke="#ffffff" stroke-width="8" opacity="0.22"/>
-  <path d="M512 350 L568 492 L512 466 L456 492 Z" fill="#ffffff"/>
-  <path d="M512 626 L456 484 L512 510 L568 484 Z" fill="url(#icon-gold)"/>
-  <circle cx="512" cy="488" r="20" fill="#ffffff"/>
 </svg>
