@@ -35,11 +35,11 @@ export default function StabilityFormulasPage() {
               <div className="space-y-2">
                 <div className="text-sm font-semibold text-primary px-1">2. Transverse Balance Calculations</div>
                 <div className="flex flex-wrap gap-2">
-                  <Link to="/stability/formulas/moment-kg"><Button variant="outline" size="sm">2.1 Moment ve KG</Button></Link>
-                  <Link to="/stability/formulas/gm-shifting"><Button variant="outline" size="sm">2.2 Shifting ile GM</Button></Link>
+                  <Link to="/stability/formulas/moment-kg"><Button variant="outline" size="sm">2.1 Torque and KG</Button></Link>
+                  <Link to="/stability/formulas/gm-shifting"><Button variant="outline" size="sm">2.2 GM with Shifting</Button></Link>
                   <Link to="/stability/formulas/meyil-acisi"><Button variant="outline" size="sm">2.3 Heel Angle</Button></Link>
-                  <Link to="/stability/formulas/kreyn-gm"><Button variant="outline" size="sm">2.4 Bumba/Kreyn ile GM</Button></Link>
-                  <Link to="/stability/formulas/havuzlama-gm"><Button variant="outline" size="sm">2.5 Havuzlamada Kritik GM</Button></Link>
+                  <Link to="/stability/formulas/kreyn-gm"><Button variant="outline" size="sm">2.4 GM with boom/crane</Button></Link>
+                  <Link to="/stability/formulas/havuzlama-gm"><Button variant="outline" size="sm">2.5 Critical GM in Pooling</Button></Link>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ export default function StabilityFormulasPage() {
               <div className="space-y-2">
                 <div className="text-sm font-semibold text-primary px-1">5. Other Calculations</div>
                 <div className="flex flex-wrap gap-2">
-                  <Link to="/stability/formulas/duba-tank-hacim"><Button variant="outline" size="sm">5.1 Duba/Tank Hacmi</Button></Link>
+                  <Link to="/stability/formulas/duba-tank-hacim"><Button variant="outline" size="sm">5.1 Pontoon/Tank Volume</Button></Link>
                   <Link to="/stability/formulas/blok-katsayisi"><Button variant="outline" size="sm">5.2 Block Coefficient</Button></Link>
                   <Link to="/stability/formulas/fwa-yogunluk"><Button variant="outline" size="sm">5.3 Density Difference and FWA</Button></Link>
                 </div>
@@ -75,13 +75,13 @@ export default function StabilityFormulasPage() {
 
               {/* 6. SOLAS Stabilite Kriterleri */}
               <div className="space-y-2">
-                <div className="text-sm font-semibold text-primary px-1">6. SOLAS Stabilite Kriterleri</div>
+                <div className="text-sm font-semibold text-primary px-1">6. SOLAS Stability Criteria</div>
                 <div className="flex flex-wrap gap-2">
                   <Link to="/stability/formulas/kumelenme-acisi"><Button variant="outline" size="sm">6.1 Grain Heeling Angle</Button></Link>
-                  <Link to="/stability/formulas/gz-kn"><Button variant="outline" size="sm">6.2 GZ Kolu (KN)</Button></Link>
-                  <Link to="/stability/formulas/simpson-alan"><Button variant="outline" size="sm">6.3 Simpson Alan</Button></Link>
-                  <Link to="/stability/formulas/fsm"><Button variant="outline" size="sm">6.4 FSM</Button></Link>
-                  <Link to="/stability/formulas/yalpa-periyodu"><Button variant="outline" size="sm">6.5 Yalpa Periyodu</Button></Link>
+                  <Link to="/stability/formulas/gz-kn"><Button variant="outline" size="sm">6.2 GZ Arm (KN)</Button></Link>
+                  <Link to="/stability/formulas/simpson-alan"><Button variant="outline" size="sm">6.3 Simpson Field</Button></Link>
+                  <Link to="/stability/formulas/fsm"><Button variant="outline" size="sm">6.4FSM</Button></Link>
+                  <Link to="/stability/formulas/yalpa-periyodu"><Button variant="outline" size="sm">6.5 Roll Period</Button></Link>
                   <Link to="/stability/formulas/yarali-stabilite"><Button variant="outline" size="sm">6.6 Damage Stability</Button></Link>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function StabilityFormulasPage() {
                     <td className="p-2 font-mono">Trim = Ta − Tf</td>
                   </tr>
                   <tr className="border-t">
-                    <td className="p-2">MCT 1 cm</td>
+                    <td className="p-2">MCT 1cm</td>
                     <td className="p-2">—</td>
                     <td className="p-2 font-mono">MCT<sub>1cm</sub> ≈ (Δ · GM<sub>L</sub> / L) · 0.01 ≈ (ρ · I<sub>TL</sub> / L) · 0.01 (or from the stability booklet)</td>
                   </tr>

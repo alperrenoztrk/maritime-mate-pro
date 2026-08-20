@@ -6,8 +6,8 @@ export const SEARCH_SCOPES: ReadonlyArray<{ id: SearchScopeId; label: string }> 
   { id: "all", label: "All" },
   { id: "learn", label: "Dersler" },
   { id: "tools", label: "tools" },
-  { id: "reference", label: "Kaynaklar" },
-  { id: "operations", label: "Operasyonlar" },
+  { id: "reference", label: "Resources" },
+  { id: "operations", label: "Operations" },
 ];
 
 const startsWithAny = (path: string, roots: string[]) =>
@@ -72,17 +72,20 @@ export const matchesSearchScope = (item: SearchItem, scope: SearchScopeId) =>
   scope === "all" || (item.path !== "/" && searchItemScope(item) === scope);
 
 export const displaySearchCategory = (item: SearchItem): string => {
+  // The category on the item comes from the lesson data, which is authored in
+  // Turkish and translated at render time; the labels returned below are the
+  // app's own copy and are therefore written in English.
   if (item.category !== "Genel") return item.category;
-  if (item.path === "/") return "Home Page";
+  if (item.path === "/") return "Home";
   const scope = searchItemScope(item);
-  if (scope === "learn") return "Dersler";
-  if (scope === "tools") return "tools";
-  if (startsWithAny(item.path, ["/ship-operations", "/ship-tasks"])) return "Operasyonlar";
-  if (startsWithAny(item.path, ["/crew"])) return "Personel";
+  if (scope === "learn") return "Lessons";
+  if (scope === "tools") return "Tools";
+  if (startsWithAny(item.path, ["/ship-operations", "/ship-tasks"])) return "Operations";
+  if (startsWithAny(item.path, ["/crew"])) return "Personnel";
   if (startsWithAny(item.path, ["/ship-systems", "/bridge", "/glossary", "/regulations"])) {
-    return "Kaynaklar";
+    return "Resources";
   }
-  return "Genel";
+  return "General";
 };
 
 export const dedupeSearchItems = (items: SearchItem[]): SearchItem[] => {

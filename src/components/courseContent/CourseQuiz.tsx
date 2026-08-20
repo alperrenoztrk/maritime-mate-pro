@@ -109,7 +109,7 @@ export function CourseQuiz({
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg">Question</CardTitle>
-                <span className="text-sm text-muted-foreground">Skor: %{percent}</span>
+                <span className="text-sm text-muted-foreground">Score: %{percent}</span>
               </div>
             </CardHeader>
             <CardContent className="space-y-6">

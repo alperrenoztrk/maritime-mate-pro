@@ -88,23 +88,23 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
     return (
       <Card className="w-full max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-center">Quiz Tamamlandı!</CardTitle>
+          <CardTitle className="text-center">Quiz Completed!</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="text-center space-y-4">
             <div className="text-6xl font-bold text-primary">{percentage}%</div>
             <div className="text-lg">
-              {score} / {totalQuestions} doğru cevap
+              {score} / {totalQuestions} correct answer
             </div>
             <div className="text-sm text-muted-foreground">
-              {percentage >= 80 ? "Tebrikler! Mükemmel bir performans!" : 
-               percentage >= 60 ? "İyi bir sonuç! Biraz daha çalışarak daha iyi olabilir." :
-               "Daha fazla çalışma gerekiyor. Tekrar deneyin!"}
+              {percentage >= 80 ? "Congratulations! An excellent performance!" : 
+               percentage >= 60 ? "A good result! It could get better with a little more work." :
+               "More work is needed. Try again!"}
             </div>
           </div>
           
           <div className="space-y-4">
-            <h3 className="font-semibold">Soru Detayları:</h3>
+            <h3 className="font-semibold">Question Details:</h3>
             {questions.map((question, index) => {
               const userAnswer = selectedAnswers[question.id];
               const isCorrect = userAnswer === question.correctAnswer;
@@ -122,10 +122,10 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                         {index + 1}. {question.question}
                       </div>
                       <div className="text-sm text-muted-foreground mt-1">
-                        Sizin cevabınız: {question.options[userAnswer]} 
+                        Your answer: {question.options[userAnswer]} 
                         {!isCorrect && (
                           <span className="text-green-600 block">
-                            Doğru cevap: {question.options[question.correctAnswer]}
+                            Correct answer: {question.options[question.correctAnswer]}
                           </span>
                         )}
                       </div>
@@ -156,7 +156,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
     return (
       <Card className="w-full max-w-4xl mx-auto">
         <CardContent className="text-center py-8">
-          <div className="text-muted-foreground">Henüz soru yüklenmedi.</div>
+          <div className="text-muted-foreground">No questions have been uploaded yet.</div>
         </CardContent>
       </Card>
     );
@@ -167,7 +167,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg">
-            Soru {currentQuestionIndex + 1} / {totalQuestions}
+            Question {currentQuestionIndex + 1} / {totalQuestions}
           </CardTitle>
           <div className="text-sm text-muted-foreground">
             {currentQuestion.category}
@@ -251,7 +251,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
             className="gap-2"
           >
             <ChevronLeft className="h-4 w-4" />
-            Önceki Soru
+            Previous Question
           </Button>
           
           <div className="flex gap-2">
@@ -260,7 +260,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                 variant="secondary"
                 onClick={showCurrentQuestionResult}
               >
-                Cevabı Göster
+                Show Answer
               </Button>
             )}
             
@@ -288,10 +288,10 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
         {/* Question status and navigation info */}
         <div className="text-center space-y-2">
           <div className="text-xs text-muted-foreground">
-            Yanıtlanmış sorular: {Object.keys(selectedAnswers).length} / {totalQuestions}
+            Answered questions: {Object.keys(selectedAnswers).length} / {totalQuestions}
           </div>
           <div className="text-xs text-muted-foreground">
-            Navigasyon: Önceki/Sonraki butonları ile sorular arasında geçiş yapabilirsiniz
+            Navigation: You can switch between questions with the Previous/Next buttons
           </div>
         </div>
       </CardContent>

@@ -19,11 +19,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function MachineAssistant() {
   return (
     <AssistantInterface
-      title="Makine Asistanı"
-      badge="Makine Asistanı"
+      title="Machine Assistant"
+      badge="Machine Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Makine sistemi ile ilgili sorunuzu veya arızayı yazın..."
+      placeholder="Write your question or malfunction regarding the machine system..."
       icon={Wrench}
       accentGradient="from-slate-600 via-zinc-600 to-slate-800"
       iconColor="text-slate-700 dark:text-slate-300"

@@ -10,7 +10,7 @@ export default function ShipTaskDetailPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background px-4">
         <div className="text-center space-y-4">
-          <h1 className="text-xl font-bold text-foreground">İş bulunamadı</h1>
+          <h1 className="text-xl font-bold text-foreground">No job found</h1>
         </div>
       </div>
     );
@@ -39,14 +39,14 @@ export default function ShipTaskDetailPage() {
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm font-bold text-foreground">
               <BookOpen className="h-4 w-4 text-primary" />
-              Tanım
+              Description
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">{task.definition}</p>
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm font-bold text-foreground">
               <Shield className="h-4 w-4 text-primary" />
-              Önem
+              Importance
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">{task.importance}</p>
           </div>
@@ -56,7 +56,7 @@ export default function ShipTaskDetailPage() {
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <ClipboardCheck className="h-4 w-4 text-primary" />
-            Prosedür Adımları
+            Procedure Steps
           </div>
           <div className="space-y-3">
             {task.procedures.map((p) => (
@@ -77,14 +77,14 @@ export default function ShipTaskDetailPage() {
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <Users className="h-4 w-4 text-primary" />
-            Sorumluluk Matrisi
+            Responsibility Matrix
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-border/50 text-left">
-                  <th className="py-2 pr-4 font-semibold text-foreground">Pozisyon</th>
-                  <th className="py-2 font-semibold text-primary">Görevler</th>
+                  <th className="py-2 pr-4 font-semibold text-foreground">Position</th>
+                  <th className="py-2 font-semibold text-primary">Quests</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
@@ -103,7 +103,7 @@ export default function ShipTaskDetailPage() {
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <Scale className="h-4 w-4 text-primary" />
-            İlgili Mevzuat
+            Relevant Legislation
           </div>
           <ul className="space-y-1.5">
             {task.regulations.map((reg) => (
@@ -119,14 +119,14 @@ export default function ShipTaskDetailPage() {
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <ClipboardCheck className="h-4 w-4 text-primary" />
-            Kontrol Listesi
+            Checklist
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-border/50 text-left">
-                  <th className="py-2 pr-4 font-semibold text-foreground">Madde</th>
-                  <th className="py-2 font-semibold text-primary">Sorumlu</th>
+                  <th className="py-2 pr-4 font-semibold text-foreground">Matter</th>
+                  <th className="py-2 font-semibold text-primary">Responsible</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
@@ -145,7 +145,7 @@ export default function ShipTaskDetailPage() {
         <section className="rounded-2xl border border-amber-500/30 bg-amber-50/50 p-5 shadow-sm dark:border-amber-500/20 dark:bg-amber-950/20">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground mb-2">
             <Lightbulb className="h-4 w-4 text-amber-500" />
-            Pratik İpucu
+            Quick Tip
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">{task.practicalTip}</p>
         </section>

@@ -53,7 +53,7 @@ export function SystemArchitectureDiagram({ title, stages }: Props) {
           </div>
         ))}
         <p className="px-1 text-micro leading-relaxed text-muted-foreground">
-          Emniyet, alarm ve kayıt sonucu kontrol kararına geri beslenir.
+          The safety, alarm and recording result is fed back into the control decision.
         </p>
       </div>
 
@@ -64,9 +64,9 @@ export function SystemArchitectureDiagram({ title, stages }: Props) {
           role="img"
           aria-labelledby={`${markerId}-title ${markerId}-desc`}
         >
-          <title id={`${markerId}-title`}>{title} sistem mimarisi</title>
+          <title id={`${markerId}-title`}>{title} system architecture</title>
           <desc id={`${markerId}-desc`}>
-            Ekipmanın kaynak ve girdiden dönüşüm, kontrol, çıktı ve emniyet-kayıt aşamasına uzanan veri veya enerji akışı.
+            The data or energy flow of equipment from source and input to conversion, control, output and safety-recording.
           </desc>
           <defs>
             <linearGradient id={gradientId} x1="0" x2="1">

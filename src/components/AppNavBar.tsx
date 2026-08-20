@@ -18,13 +18,13 @@ const KNOWN_TITLES: Array<[RegExp, string]> = [
   [/^\/calculations$/, "tools"],
   [/^\/library$/, "bookshelf"],
   [/^\/search$/, "Search"],
-  [/^\/crew$/, "Personel"],
+  [/^\/crew$/, "Personnel"],
   [/^\/bridge$/, "bridge"],
   [/^\/ship-systems$/, "Ship Systems"],
   [/^\/ship-tasks$/, "Ship Missions"],
-  [/^\/ship-operations$/, "Operasyonlar"],
+  [/^\/ship-operations$/, "Operations"],
   [/^\/glossary$/, "dictionary"],
-  [/^\/regulations$/, "Mevzuat"],
+  [/^\/regulations$/, "Legislation"],
   [/^\/settings$/, "Settings"],
 ];
 

@@ -61,7 +61,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
   
   const [ballastTanks, setBallastTanks] = useState<BallastTank[]>([
     { name: "No.1 DB Port", capacity: 450, currentLevel: 85, LCG: 120, TCG: -8, VCG: 2.5, pumpRate: 150 },
-    { name: "No.1 DB Starboard", capacity: 450, currentLevel: 85, LCG: 120, TCG: 8, VCG: 2.5, pumpRate: 150 },
+    { name: "No.1DB Starboard", capacity: 450, currentLevel: 85, LCG: 120, TCG: 8, VCG: 2.5, pumpRate: 150 },
     { name: "No.2 DB Port", capacity: 380, currentLevel: 70, LCG: 90, TCG: -9, VCG: 2.8, pumpRate: 120 },
     { name: "No.2 DB Starboard", capacity: 380, currentLevel: 70, LCG: 90, TCG: 9, VCG: 2.8, pumpRate: 120 },
     { name: "Fore Peak", capacity: 200, currentLevel: 95, LCG: 135, TCG: 0, VCG: 4.0, pumpRate: 80 },
@@ -127,7 +127,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
   const calculateBallastTransfer = () => {
     if (!operation.tankFrom || !operation.tankTo || !operation.volume) {
       toast({
-        title: "Eksik Veri",
+        title: "Missing Data",
         description: "Enter transfer details.",
         variant: "destructive"
       });
@@ -343,10 +343,10 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="tanks">Tank Durumu</TabsTrigger>
+              <TabsTrigger value="tanks">Tank Status</TabsTrigger>
               <TabsTrigger value="operations">Transfer Transactions</TabsTrigger>
               <TabsTrigger value="exchange">Ballast Change</TabsTrigger>
-              <TabsTrigger value="compliance">BWMC Uygunluk</TabsTrigger>
+              <TabsTrigger value="compliance">BWMC Eligibility</TabsTrigger>
             </TabsList>
 
             <TabsContent value="tanks" className="space-y-6">
@@ -356,13 +356,13 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg">{tank.name}</CardTitle>
                       <CardDescription>
-                        Kapasite: {tank.capacity}m³ | Pompa: {tank.pumpRate}m³/h
+                        Capacity: {tank.capacity}m³ | Pump: {tank.pumpRate}m³/h
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                         <div>
-                          <Label htmlFor={`level-${index}`}>Seviye (%)</Label>
+                          <Label htmlFor={`level-${index}`}>Level (%)</Label>
                           <Input
                             id={`level-${index}`}
                             type="number"
@@ -376,7 +376,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                           <div className="text-sm font-bold">
                             {(tank.capacity * tank.currentLevel / 100).toFixed(0)}m³
                           </div>
-                          <div className="text-xs text-muted-foreground">Mevcut Hacim</div>
+                          <div className="text-xs text-muted-foreground">Available Volume</div>
                         </div>
                         <div className="text-center p-2 bg-muted rounded">
                           <div className="text-sm font-bold">
@@ -402,21 +402,21 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Toplam Balast Durumu</CardTitle>
+                  <CardTitle>Total Ballast Status</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-2xl font-bold">{calculateTotalBallast().toFixed(0)}t</div>
-                      <div className="text-sm text-muted-foreground">Toplam Balast</div>
+                      <div className="text-sm text-muted-foreground">Total Ballast</div>
                     </div>
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-2xl font-bold">{calculateBallastCG().LCG.toFixed(1)}m</div>
-                      <div className="text-sm text-muted-foreground">Balast LCG</div>
+                      <div className="text-sm text-muted-foreground">Ballast LCG</div>
                     </div>
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-2xl font-bold">{calculateBallastCG().TCG.toFixed(2)}m</div>
-                      <div className="text-sm text-muted-foreground">Balast TCG</div>
+                      <div className="text-sm text-muted-foreground">Ballast TCG</div>
                     </div>
                     <div className="text-center p-3 bg-muted rounded-lg">
                       <div className="text-2xl font-bold">{calculateFreeSurfaceEffect().toFixed(3)}m</div>
@@ -438,7 +438,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="tankFrom">Kaynak Tank</Label>
+                      <Label htmlFor="tankFrom">Source Tank</Label>
                       <select 
                         id="tankFrom"
                         className="w-full p-2 border rounded"
@@ -454,7 +454,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="tankTo">Hedef Tank</Label>
+                      <Label htmlFor="tankTo">Target Tank</Label>
                       <select 
                         id="tankTo"
                         className="w-full p-2 border rounded"
@@ -473,7 +473,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="volume">Transfer Hacmi [m³]</Label>
+                      <Label htmlFor="volume">Transfer Volume [m³]</Label>
                       <Input
                         id="volume"
                         type="number"
@@ -493,7 +493,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                         <option value="">Select Purpose</option>
                         <option value="trim">Trim Correction</option>
                         <option value="stability">Stability Increase</option>
-                        <option value="draft">Draft Ayarlama</option>
+                        <option value="draft">Draft Adjustment</option>
                         <option value="list">List Correction</option>
                       </select>
                     </div>
@@ -565,12 +565,12 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="p-4 bg-info-muted rounded-lg">
-                    <h4 className="font-semibold text-info-muted-foreground mb-2">BWM Convention Gereklilikleri</h4>
+                    <h4 className="font-semibold text-info-muted-foreground mb-2">BWM Convention Requirements</h4>
                     <ul className="text-sm text-info-muted-foreground space-y-1">
-                      <li>• Balast değişimi kıyıdan {'>'} 200 nm uzaklıkta</li>
-                      <li>• Su derinliği {'>'} 200 metre</li>
+                      <li>• Ballast change from shore {'>'} 200 nm away</li>
+                      <li>• Water depth {'>'} 200 meters</li>
                       <li>• 95% volumetric change minimum</li>
-                      <li>• Pompalama oranı {'>'} 3 kez tank hacmi</li>
+                      <li>• Pumping rate {'>'} 3 times tank volume</li>
                       <li>• Ballast Water Record Book registration is mandatory</li>
                     </ul>
                   </div>
@@ -624,7 +624,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="font-semibold mb-3">Sistem Gereklilikleri</h4>
+                      <h4 className="font-semibold mb-3">System Requirements</h4>
                       <div className="space-y-2">
                         <label className="flex items-center space-x-2">
                           <input 
@@ -640,7 +640,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                             checked={bwmcData.treatmentRequired || false}
                             onChange={(e) => setBwmcData({...bwmcData, treatmentRequired: e.target.checked})}
                           />
-                          <span className="text-sm">BWM sistemi mevcut</span>
+                          <span className="text-sm">BWM system available</span>
                         </label>
                         <label className="flex items-center space-x-2">
                           <input 
@@ -656,7 +656,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                             checked={bwmcData.portStateCompliance || false}
                             onChange={(e) => setBwmcData({...bwmcData, portStateCompliance: e.target.checked})}
                           />
-                          <span className="text-sm">Port State Control uygun</span>
+                          <span className="text-sm">Port State Control suitable</span>
                         </label>
                       </div>
                     </div>
@@ -665,11 +665,11 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                       <h4 className="font-semibold mb-3">Discharge Standards (D-2)</h4>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between p-2 bg-muted rounded">
-                          <span>Organizmalar ≥10-50 μm:</span>
+                          <span>Organisms ≥10-50 μm:</span>
                           <span>&lt;10 organizma/m³</span>
                         </div>
                         <div className="flex justify-between p-2 bg-muted rounded">
-                          <span>Organizmalar ≥50 μm:</span>
+                          <span>Organisms ≥50 μm:</span>
                           <span>&lt;10 organizma/ml</span>
                         </div>
                         <div className="flex justify-between p-2 bg-muted rounded">

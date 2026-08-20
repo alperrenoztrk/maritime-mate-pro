@@ -76,7 +76,7 @@ export function TopicExerciseQuestionSet({
           <div>
             <p className="text-3xl font-bold text-primary">%{percentage}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              {correctCount} / {questionCount} doğru cevap
+              {correctCount} / {questionCount} correct answer
             </p>
           </div>
           <Button onClick={restart} className="w-full sm:w-auto">
@@ -88,7 +88,7 @@ export function TopicExerciseQuestionSet({
         <div className="space-y-4">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>
-              Soru {current + 1} / {questionCount}
+              Question {current + 1} / {questionCount}
             </span>
             <span>{question.category}</span>
           </div>

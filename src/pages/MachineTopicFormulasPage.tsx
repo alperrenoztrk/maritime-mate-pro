@@ -91,7 +91,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       ],
     },
     {
-      title: "Yanma ve Enjeksiyon",
+      title: "Combustion and Injection",
       formulas: [
         { name: "Excess Air Ratio", formula: "λ = m_air,actual / m_air,stoichiometric", variables: "λ > 1: lean mixture (typical diesel λ = 1.5–2.5)" },
         { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Tipik: 300–1.000 bar (mekanik), 1.500–2.500 bar (common rail)" },
@@ -187,7 +187,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Ohm's Law", formula: "V = I × R", variables: "V: voltage (V), I: current (A), R: resistance (Ω)" },
         { name: "Three Phase Power", formula: "P = √3 × VL × IL × cos(φ)", variables: "VL: line voltage, IL: line current, cos(φ): power factor" },
-        { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Birim: VAR (Volt-Amper Reaktif)" },
+        { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Unit: VAR (Volt-Ampere Reactive)" },
         { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Birim: VA (Volt-Amper)" },
       ],
     },
@@ -205,8 +205,8 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Measurement and Sensors",
       formulas: [
         { name: "Accuracy", formula: "Error (%) = ((Measured − True) / True) × 100", variables: "Acceptable: ±0.5% (temperature), ±1% (pressure), ±2% (flow)" },
-        { name: "Termokupl EMF", formula: "V = S × ΔT", variables: "S: Seebeck coefficient (μV/°C), ΔT: temperature difference" },
-        { name: "RTD Direnci", formula: "R(T) = R₀ × (1 + αT)", variables: "R₀: resistance at 0 °C (Pt100 → 100 Ω), α: temperature coefficient" },
+        { name: "Thermocouple EMF", formula: "V = S × ΔT", variables: "S: Seebeck coefficient (μV/°C), ΔT: temperature difference" },
+        { name: "RTD Resistance", formula: "R(T) = R₀ × (1 + αT)", variables: "R₀: resistance at 0 °C (Pt100 → 100 Ω), α: temperature coefficient" },
       ],
     },
     {
@@ -248,7 +248,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Oil Analysis",
       formulas: [
         { name: "TBN (Total Base Number)", formula: "TBN limit = the manufacturer's recommendation (usually min 20 mg KOH/g)", variables: "Low TBN: reduced acid neutralisation capacity" },
-        { name: "Demir (Fe) Konsantrasyonu", formula: "Fe limit ≤ 100 ppm (normal wear)", variables: "> 150 ppm: abnormal wear, investigation required" },
+        { name: "Iron (Fe) Concentration", formula: "Fe limit ≤ 100 ppm (normal wear)", variables: "> 150 ppm: abnormal wear, investigation required" },
       ],
     },
   ],
@@ -265,7 +265,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Explosion Risk",
       formulas: [
         { name: "LEL/UEL", formula: "Explosive range: LEL < concentration < UEL", variables: "Fuel vapour: LEL ~1%, UEL ~6% by volume" },
-        { name: "Flash Point", formula: "T_flash ≥ 60 °C (fuel required by SOLAS)", variables: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
+        { name: "Flash point", formula: "T_flash ≥ 60 °C (fuel required by SOLAS)", variables: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
       ],
     },
   ],

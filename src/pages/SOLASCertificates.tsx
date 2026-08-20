@@ -15,7 +15,7 @@ const certificates = [
     name: "Safety Equipment Certificate",
     validity: "5 Years · Intermediate survey in years 2 and 3",
     authority: "Flag State / Authorised Class",
-    focus: ["Can kurtarma araçları", "Fire systems", "Emergency communications"],
+    focus: ["Lifesaving equipment", "Fire systems", "Emergency communications"],
   },
   {
     name: "Safety Radio Certificate",
@@ -32,10 +32,10 @@ const certificates = [
 ];
 
 const renewalMatrix = [
-  { item: "Annual Safety Survey", maxDelay: "3 ay", documents: "Certificate copy, deficiency closure reports" },
-  { item: "Ara Survey (Safety Equipment)", maxDelay: "3 ay", documents: "Lifeboat load test reports, CO₂ system tests" },
-  { item: "GMDSS Survey", maxDelay: "30 gün", documents: "Radio Log, EPIRB / SART test certificates" },
-  { item: "ISPS Verification", maxDelay: "6 ay", documents: "Drill records, security alerts, SSP revision" },
+  { item: "Annual Safety Survey", maxDelay: "3 months", documents: "Certificate copy, deficiency closure reports" },
+  { item: "Ara Survey (Safety Equipment)", maxDelay: "3 months", documents: "Lifeboat load test reports, CO₂ system tests" },
+  { item: "GMDSS Survey", maxDelay: "30 days", documents: "Radio Log, EPIRB / SART test certificates" },
+  { item: "ISPS Verification", maxDelay: "6 months", documents: "Drill records, security alerts, SSP revision" },
 ];
 
 const SOLASCertificatesPage = () => {
@@ -47,9 +47,9 @@ const SOLASCertificatesPage = () => {
           <div className="flex items-center justify-center gap-3">
             <ShieldCheck className="h-12 w-12 text-emerald-600 dark:text-emerald-400" />
             <div>
-              <p className="text-sm uppercase tracking-wider text-emerald-600 dark:text-emerald-300">Uyumluluk</p>
+              <p className="text-sm uppercase tracking-wider text-emerald-600 dark:text-emerald-300">Compatibility</p>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-                SOLAS Sertifikaları & Yenileme Takibi
+                SOLAS Certificates &amp; Renewal Tracking
               </h1>
             </div>
           </div>
@@ -76,9 +76,9 @@ const SOLASCertificatesPage = () => {
                 </p>
                 <Separator />
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Son survey raporu ve eksiklik kapanış listesi saklanmalı</li>
-                  <li>• Sertifika PDF + fiziksel kopya aynı revizyonda olmalı</li>
-                  <li>• Dijital takip için expiry uyarıları oluşturun</li>
+                  <li>• The last survey report and deficiency closure list should be kept.</li>
+                  <li>• Certificate PDF + physical copy must be of the same revision</li>
+                  <li>• Create expiry alerts for digital monitoring</li>
                 </ul>
               </CardContent>
             </Card>
@@ -88,15 +88,15 @@ const SOLASCertificatesPage = () => {
         {/* Renewal Matrix */}
         <Card className="border-emerald-200/70 shadow-xl shadow-emerald-500/10">
           <CardHeader>
-            <CardTitle>Yenileme / Survey Takvimi</CardTitle>
+            <CardTitle>Renewal / Survey Calendar</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>İşlem</TableHead>
-                  <TableHead>En Fazla Gecikme</TableHead>
-                  <TableHead>Hazırlanacak Dokümanlar</TableHead>
+                  <TableHead>Transaction</TableHead>
+                  <TableHead>Maximum Latency</TableHead>
+                  <TableHead>Documents to be Prepared</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -117,7 +117,7 @@ const SOLASCertificatesPage = () => {
           <CardHeader className="flex flex-row items-center gap-3">
             <AlertCircle className="w-10 h-10" />
             <div>
-              <CardTitle>Kritik Hatırlatma</CardTitle>
+              <CardTitle>Critical Reminder</CardTitle>
             </div>
           </CardHeader>
         </Card>

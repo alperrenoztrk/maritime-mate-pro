@@ -37,7 +37,7 @@ export function useLocationSearch() {
         );
         
         if (!response.ok) {
-          throw new Error('Konum araması başarısız');
+          throw new Error('Location search failed');
         }
         
         const data = await response.json() as LocationSearchResponse;
@@ -57,7 +57,7 @@ export function useLocationSearch() {
           setResults([]);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Bilinmeyen hata');
+        setError(err instanceof Error ? err.message : 'Unknown error');
         setResults([]);
       } finally {
         setLoading(false);

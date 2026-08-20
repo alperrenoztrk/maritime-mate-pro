@@ -86,7 +86,7 @@ const Settings = () => {
     "";
 
   const providerLabels: Record<string, string> = {
-    email: "E-posta",
+    email: "Email",
   };
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Unknown");
 
@@ -249,7 +249,7 @@ const Settings = () => {
                       >
                         <Trash2 className="w-4 h-4" />
                         <span data-translatable>
-                          {deleting ? "Siliniyor..." : confirmDelete ? "Yes, delete my account permanently" : "delete my account"}
+                          {deleting ? "Deleting..." : confirmDelete ? "Yes, delete my account permanently" : "delete my account"}
                         </span>
                       </Button>
                       {confirmDelete && !deleting && (

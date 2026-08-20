@@ -8,7 +8,7 @@ export default function StabilityCalculationsPage() {
   return (
     <MobileLayout>
       <CalculationGridScreen
-        eyebrow="Stabilite"
+        eyebrow="Stability"
         title="Stability Calculations"
       >
         <div className="space-y-8">
@@ -16,7 +16,7 @@ export default function StabilityCalculationsPage() {
           <section className="rounded-2xl border border-border/50 bg-card/80 p-5">
             <div className="mb-3 flex items-center gap-2">
               <Calculator className="h-5 w-5 text-primary" />
-              <h2 className="text-lg font-semibold text-foreground">İnteraktif Stabilite Hesaplamaları</h2>
+              <h2 className="text-lg font-semibold text-foreground">Interactive Stability Calculations</h2>
             </div>
             <div className="mt-4">
               <InteractiveStabilityTools />

@@ -296,7 +296,7 @@ export function AppSearchExperience({
           <button
             type="button"
             onClick={() => setQuery("")}
-            aria-label="Arama metnini temizle"
+            aria-label="Clear search text"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors duration-control hover:bg-muted hover:text-foreground"
           >
             <AppSymbol name="xmark" fallback={X} className="h-4 w-4" />
@@ -306,7 +306,7 @@ export function AppSearchExperience({
 
       <div
         role="group"
-        aria-label="Arama kapsamı"
+        aria-label="Search scope"
         className="search-scope-strip flex gap-1 overflow-x-auto border-b border-border/60 px-2 py-1.5"
       >
         {SEARCH_SCOPES.map((scope) => {
@@ -344,7 +344,7 @@ export function AppSearchExperience({
           <>
             <div className="flex min-h-9 items-center px-3 pb-1 pt-1">
               <p className="min-w-0 flex-1 text-micro font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Son kullanılanlar
+                Recently used
               </p>
               <button
                 type="button"
@@ -372,7 +372,7 @@ export function AppSearchExperience({
         {results.length === 0 && !showRecent ? (
           <div className="flex min-h-48 items-center justify-center px-6 text-center text-sm text-muted-foreground">
             {tokens.length > 0 && !deepIndex
-              ? "İçerik dizini yükleniyor…"
+              ? "Loading content directory…"
               : "No results found"}
           </div>
         ) : (
@@ -386,19 +386,19 @@ export function AppSearchExperience({
 
       <div className="flex min-h-10 items-center border-t border-border/60 px-4 text-micro text-muted-foreground">
         <div className="search-keyboard-hints items-center gap-4" aria-hidden>
-          <span>↑↓ gezin</span>
-          <span>↵ aç</span>
-          <span>esc temizle</span>
+          <span>navigate ↑↓</span>
+          <span>↵ open</span>
+          <span>clear esc</span>
         </div>
         {!deepIndex && (
           <span className="ml-auto flex items-center gap-1.5">
             <Loader2 className="h-3 w-3 animate-spin" aria-hidden />
-            İçerik dizini yükleniyor
+            Loading content directory
           </span>
         )}
         {deepIndex && (
           <span className="ml-auto" aria-live="polite">
-            {navigableItems.length} sonuç
+            {navigableItems.length} result
           </span>
         )}
       </div>

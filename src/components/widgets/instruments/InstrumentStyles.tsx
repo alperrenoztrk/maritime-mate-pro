@@ -1,5 +1,5 @@
 /**
- * Fotoğraf tabanlı enstrüman widget'larının ortak CSS'i (`iw-` prefix).
+ * Fotoğraf tabanlı enstrüman widget'Common CSS of'i (`iw-` prefix).
  * HomeWidgetGrid tarafından bir kez render edilir; bileşenler yalnızca sınıfları kullanır.
  *
  * İş bölümü: gövdeyi FOTOĞRAF verir, okuma yüzeyini SVG çizer (bkz.

@@ -31,7 +31,7 @@ export const MfaChallengeForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (code.trim().length !== 6) {
-      toast.error("6 haneli kodu girin");
+      toast.error("Enter 6 digit code");
       return;
     }
     setBusy(true);

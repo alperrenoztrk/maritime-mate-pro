@@ -99,7 +99,7 @@ const OAuthConsent = () => {
           <CardTitle className="text-xl">
             {details?.client?.name
               ? `Approve the ${details.client.name} connection`
-              : "Bağlantıyı onaylayın"}
+              : "Confirm the connection"}
           </CardTitle>
           <CardDescription className="text-sm">
             Bu uygulamanın Mariner's Book hesabınızı sizin adınıza kullanmasına izin verirsiniz.
@@ -113,15 +113,15 @@ const OAuthConsent = () => {
           )}
           {!details && !error && (
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <Loader2 className="w-4 h-4 animate-spin" /> Yükleniyor…
+              <Loader2 className="w-4 h-4 animate-spin" /> Loading…
             </div>
           )}
           {details && (
             <>
               <div className="rounded-md border border-border/50 p-3 text-sm space-y-1">
-                <div className="font-medium">İstemci</div>
+                <div className="font-medium">Client</div>
                 <div className="text-muted-foreground">
-                  {details.client?.name ?? "Bilinmeyen istemci"}
+                  {details.client?.name ?? "Unknown client"}
                 </div>
                 {details.client?.redirect_uris?.[0] && (
                   <div className="text-xs text-muted-foreground break-all">
@@ -130,10 +130,10 @@ const OAuthConsent = () => {
                 )}
               </div>
               <div className="rounded-md border border-border/50 p-3 text-sm">
-                <div className="font-medium mb-1">Verilen erişim</div>
+                <div className="font-medium mb-1">Granted access</div>
                 <ul className="text-muted-foreground text-xs space-y-1 list-disc list-inside">
-                  <li>Uygulamanın etkin araçlarını hesabınız adına çağırabilir.</li>
-                  <li>Uygulama izinleri ve arka uç politikaları geçerli olmaya devam eder.</li>
+                  <li>It can call the application's active tools on behalf of your account.</li>
+                  <li>App permissions and backend policies continue to apply.</li>
                 </ul>
               </div>
               <div className="flex gap-2 pt-2">
@@ -142,7 +142,7 @@ const OAuthConsent = () => {
                   disabled={busy}
                   onClick={() => decide(true)}
                 >
-                  Onayla
+                  Confirm
                 </Button>
                 <Button
                   className="flex-1"
@@ -150,7 +150,7 @@ const OAuthConsent = () => {
                   disabled={busy}
                   onClick={() => decide(false)}
                 >
-                  Reddet
+                  Reject
                 </Button>
               </div>
             </>

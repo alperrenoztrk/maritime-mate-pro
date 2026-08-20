@@ -5,50 +5,50 @@ import { Flame, Radio, LifeBuoy } from "lucide-react";
 
 const equipmentSets = [
   {
-    title: "Can Kurtarma Donanımı",
+    title: "Lifesaving Equipment",
     icon: LifeBuoy,
-    badge: "Bölüm III",
-    summary: "Filika, can salı, MES ve kişisel ekipman envanteri.",
+    badge: "Part III",
+    summary: "Lifeboat, liferaft, MES and personal equipment inventory.",
     checks: [
       "Compliance with the persons-per-lifeboat capacity × 1.25 rule",
       "The latest service dates of the HRUs and painter buoys are on record",
       "The number and size distribution of immersion suits and lifejackets is adequate",
     ],
     stock: [
-      { label: "Filika", qty: "2 x 70 pers.", status: "Operasyonel" },
-      { label: "Can Salı", qty: "6 x 25 pers.", status: "Servis 2026" },
-      { label: "MES", qty: "2 set", status: "Drill 2025-01" },
+      { label: "Lifeboat", qty: "2 x 70 pers.", status: "Operational" },
+      { label: "Liferaft", qty: "6 x 25 pers.", status: "Servis 2026" },
+      { label: "MES", qty: "2 sets", status: "Drill 2025-01" },
     ],
   },
   {
-    title: "Yangın Söndürme Sistemleri",
+    title: "Fire Extinguishing Systems",
     icon: Flame,
     badge: "Chapter II-2",
-    summary: "Sabit ve taşınabilir yangın söndürme donanımı.",
+    summary: "Fixed and portable fire extinguishing equipment.",
     checks: [
       "The CO₂ room is sealed and the bottle weight/mass records are available",
       "Sprinkler/drencher pumps appear in the weekly test logs",
       "Monthly checklist plus annual service labels for the portable extinguishers",
     ],
     stock: [
-      { label: "CO₂ Sabit Sistem", qty: "1 set (45 bottles)", status: "Test 2024-11" },
-      { label: "Foam Monitor", qty: "2 adet", status: "Nozzle temiz" },
-      { label: "Taşınabilir Tüp", qty: "48 adet", status: "%100 dolu" },
+      { label: "CO₂ Constant System", qty: "1 set (45 bottles)", status: "Test 2024-11" },
+      { label: "Foam Monitor", qty: "2 pieces", status: "Nozzle temiz" },
+      { label: "Portable Tube", qty: "48 adet", status: "%100 dolu" },
     ],
   },
   {
-    title: "Acil Haberleşme & Navigasyon",
+    title: "Emergency Communication & Navigation",
     icon: Radio,
     badge: "Chapters IV - V",
-    summary: "GMDSS ekipmanı, alarmlar ve seyir yardımcıları.",
+    summary: "GMDSS equipment, alarms and navigational aids.",
     checks: [
       "Self-test logs for the SART, EPIRB and handheld VHF radios",
       "Daily approval signatures for BNWAS, GMDSS and NAVTEX",
       "Emergency lighting UPS / battery records tested every 6 months",
     ],
     stock: [
-      { label: "EPIRB", qty: "1 adet", status: "Battery due 2027" },
-      { label: "SART", qty: "2 adet", status: "Test 2025-02" },
+      { label: "EPIRB", qty: "1 piece", status: "Battery due 2027" },
+      { label: "SART", qty: "2 pieces", status: "Test 2025-02" },
       { label: "Handheld GMDSS", qty: "3 adet", status: "Spare batteries ready" },
     ],
   },
@@ -63,9 +63,9 @@ const SOLASSafetyEquipmentPage = () => {
           <div className="flex items-center justify-center gap-3">
             <LifeBuoy className="h-12 w-12 text-orange-600 dark:text-orange-400" />
             <div>
-              <p className="text-sm uppercase tracking-widest text-orange-600 dark:text-orange-300">Acil Durum</p>
+              <p className="text-sm uppercase tracking-widest text-orange-600 dark:text-orange-300">Emergency</p>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 via-red-500 to-rose-500 bg-clip-text text-transparent">
-                SOLAS Güvenlik Ekipmanları
+                SOLAS Security Equipment
               </h1>
             </div>
           </div>
@@ -84,7 +84,7 @@ const SOLASSafetyEquipmentPage = () => {
               </CardHeader>
               <CardContent className="space-y-4 text-sm text-muted-foreground">
                 <div>
-                  <p className="font-semibold text-orange-700 mb-2">Kontrol Listesi</p>
+                  <p className="font-semibold text-orange-700 mb-2">Checklist</p>
                   <ul className="space-y-1">
                     {set.checks.map((check) => (
                       <li key={check} className="flex gap-2">
@@ -96,7 +96,7 @@ const SOLASSafetyEquipmentPage = () => {
                 </div>
                 <Separator />
                 <div>
-                  <p className="font-semibold text-orange-700 mb-2">Envanter Durumu</p>
+                  <p className="font-semibold text-orange-700 mb-2">Inventory Status</p>
                   <div className="space-y-2">
                     {set.stock.map((item) => (
                       <div key={item.label} className="flex items-center justify-between rounded-lg bg-white/80 dark:bg-slate-900/50 px-3 py-2">

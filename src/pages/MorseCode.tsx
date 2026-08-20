@@ -106,15 +106,15 @@ function MorseTranslator() {
   return (
     <section className="overflow-hidden rounded-2xl border border-border/50 bg-card/60">
       <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
-        <h2 className="text-base font-semibold text-foreground">Metin → Mors Çevirici</h2>
+        <h2 className="text-base font-semibold text-foreground">Text → Morse Converter</h2>
       </div>
 
       <div className="space-y-3 p-4">
         <Input
           value={text}
           onChange={(event) => setText(event.target.value)}
-          placeholder="Ör. TCA veya MAYDAY"
-          aria-label="Morsa çevrilecek metin"
+          placeholder="Ex. TCA or MAYDAY"
+          aria-label="Text to be converted to morse"
           maxLength={60}
         />
 
@@ -196,12 +196,12 @@ export default function MorseCodePage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-2 flex items-center gap-2">
           <Radio className="h-7 w-7 text-sky-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">Mors Alfabesi</h1>
+          <h1 className="text-3xl font-bold md:text-4xl">Morse Code</h1>
         </div>
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Zamanlama kuralı:</span> a dot is 1 unit, a dash 3 units, the gap between the elements of the same letter 1 unit, between letters 3 units and between words 7 units. These ratios stay constant however the speed changes; Morse is read by sending the ratio correctly, not by sending it “fast” or “slow”.
+            <span className="font-semibold text-foreground">Timing rule:</span> a dot is 1 unit, a dash 3 units, the gap between the elements of the same letter 1 unit, between letters 3 units and between words 7 units. These ratios stay constant however the speed changes; Morse is read by sending the ratio correctly, not by sending it “fast” or “slow”.
           </p>
         </div>
 
@@ -211,16 +211,16 @@ export default function MorseCodePage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Harf, kod veya anlam ara (ör. SOS, denize adam düştü)…"
+            placeholder="Search for letters, codes or meanings (e.g. SOS, man overboard)…"
             className="pl-9 pr-9"
-            aria-label="Mors kodu ara"
+            aria-label="Search for morse code"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
               className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
-              aria-label="Aramayı temizle"
+              aria-label="Clear search"
             >
               <X className="h-4 w-4" />
             </button>
@@ -252,7 +252,7 @@ export default function MorseCodePage() {
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
             <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Farklı bir arama terimi deneyin veya grup filtresini temizleyin.
+              Try a different search term or clear the group filter.
             </p>
           </div>
         ) : (
@@ -266,7 +266,7 @@ export default function MorseCodePage() {
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
                     <span className="shrink-0 text-micro text-muted-foreground">
-                      {entries.length} kayıt
+                      {entries.length} registration
                     </span>
                   </div>
                 </div>

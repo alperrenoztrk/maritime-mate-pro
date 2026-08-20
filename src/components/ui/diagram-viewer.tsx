@@ -62,17 +62,17 @@ export const DiagramViewer = ({
       if (response.success && response.diagram) {
         setDiagram(response.diagram);
         toast({
-          title: "Diyagram Oluşturuldu",
-          description: "Diyagramınız başarıyla hazırlandı.",
+          title: "Diagram Created",
+          description: "Your diagram has been prepared successfully.",
         });
       } else {
         throw new Error(response.error || 'Diagram generation failed');
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Bilinmeyen bir hata oluştu';
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
       setError(errorMessage);
       toast({
-        title: "Diyagram Hatası",
+        title: "Diagram Error",
         description: errorMessage,
         variant: "destructive"
       });
@@ -95,8 +95,8 @@ export const DiagramViewer = ({
     URL.revokeObjectURL(url);
     
     toast({
-      title: "İndirildi",
-      description: "Diyagram SVG formatında indirildi.",
+      title: "Downloaded",
+      description: "The diagram was downloaded in SVG format.",
     });
   };
 
@@ -125,7 +125,7 @@ export const DiagramViewer = ({
                     className="gap-2"
                   >
                     <Download className="h-4 w-4" />
-                    İndir
+                    Download
                   </Button>
                   <Button 
                     variant="outline" 
@@ -134,7 +134,7 @@ export const DiagramViewer = ({
                     className="gap-2"
                   >
                     <Maximize2 className="h-4 w-4" />
-                    {isFullscreen ? 'Küçült' : 'enlarge'}
+                    {isFullscreen ? 'Reduce' : 'enlarge'}
                   </Button>
                 </>
               )}
@@ -148,12 +148,12 @@ export const DiagramViewer = ({
                 {isLoading ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Oluşturuluyor...
+                    Creating...
                   </>
                 ) : (
                   <>
                     <RefreshCw className="h-4 w-4" />
-                    {diagram ? 'Yenile' : 'Diyagram Oluştur'}
+                    {diagram ? 'Refresh' : 'Create Diagram'}
                   </>
                 )}
               </Button>
@@ -165,7 +165,7 @@ export const DiagramViewer = ({
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
               <p className="text-red-700 text-sm">
-                <strong>Hata:</strong> {error}
+                <strong>Error:</strong> {error}
               </p>
             </div>
           )}
@@ -174,9 +174,9 @@ export const DiagramViewer = ({
             <div className="flex flex-col items-center justify-center py-12 space-y-4">
               <Loader2 className="h-8 w-8 animate-spin text-blue-600 dark:text-blue-400" />
               <div className="text-center">
-                <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Diyagram Oluşturuluyor...</p>
+                <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Creating Diagram...</p>
                 <p className="text-sm text-gray-500 mt-1">
-                  Bu işlem 10-30 saniye sürebilir
+                  This process may take 10-30 seconds
                 </p>
               </div>
             </div>
@@ -200,7 +200,7 @@ export const DiagramViewer = ({
               </div>
               
               <div className="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
-                <span>Teknik Diyagram Sistemi</span>
+                <span>Technical Diagram System</span>
               </div>
             </div>
           )}
@@ -211,9 +211,9 @@ export const DiagramViewer = ({
                 <BarChart3 className="h-8 w-8 text-blue-600" aria-hidden />
               </div>
               <div className="text-center">
-                <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Diyagram Hazır Değil</p>
+                <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Diagram Not Ready</p>
                 <p className="text-sm text-gray-500 mt-1">
-                  Hesaplama verilerinizi analiz ederek teknik diyagram oluşturun
+                  Create technical diagram by analyzing your calculation data
                 </p>
               </div>
             </div>

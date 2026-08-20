@@ -145,8 +145,8 @@ const DetailedMeteorology = () => {
     },
     {
       id: 'cold-front',
-      name: 'Cold Front',
-      nameTr: 'Cold Front',
+      name: 'Cold front',
+      nameTr: 'Cold front',
       type: 'front',
       description: 'Boundary between cold and warm air masses',
       characteristics: [
@@ -170,8 +170,8 @@ const DetailedMeteorology = () => {
     },
     {
       id: 'warm-front',
-      name: 'Warm Front',
-      nameTr: 'Warm Front',
+      name: 'Warm front',
+      nameTr: 'Warm front',
       type: 'front',
       description: 'Boundary where warm air overrides cold air',
       characteristics: [
@@ -396,24 +396,24 @@ const DetailedMeteorology = () => {
             <div className="flex items-center justify-center gap-3">
               <Cloud className="h-12 w-12 text-blue-600 dark:text-blue-400 animate-pulse" />
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                Meteoroloji Konu Anlatımı
+                Meteorology Subject Explanation
               </h1>
             </div>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              USCG ve SeaVision kaynaklarından derlenen kapsamlı meteoroloji rehberi
+              Comprehensive meteorology guide compiled from USCG and SeaVision sources
             </p>
             <div className="flex items-center justify-center gap-3 flex-wrap">
               <Badge className="bg-blue-600 text-white">
                 <BookOpen className="h-3 w-3 mr-1" />
-                Kapsamlı Rehber
+                Comprehensive Guide
               </Badge>
               <Badge variant="outline" className="border-blue-600 text-blue-600">
                 <Clock className="h-3 w-3 mr-1" />
-                ~45 dakika
+                ~45 minutes
               </Badge>
               <Badge variant="secondary">
                 <Shield className="h-3 w-3 mr-1" />
-                Güvenlik Odaklı
+                Security Focused
               </Badge>
             </div>
           </div>
@@ -426,10 +426,10 @@ const DetailedMeteorology = () => {
             </div>
             <div className="flex-1 space-y-2">
               <div className="font-bold text-blue-900 dark:text-blue-100 flex items-center gap-2">
-                Veri Kaynakları
+                Data Sources
               </div>
               <p className="text-sm text-blue-800 dark:text-blue-200">
-                Bu konu anlatımı <span className="font-semibold">US Coast Guard (USCG)</span> and 
+                This topic is explained <span className="font-semibold">US Coast Guard (USCG)</span> and 
                 <span className="font-semibold"> SeaVision</span> meteorological data. All information has been prepared in line with maritime safety standards.
               </p>
             </div>
@@ -438,15 +438,15 @@ const DetailedMeteorology = () => {
 
         <Tabs defaultValue="systems" className="w-full">
           <TabsList className="grid w-full grid-cols-9">
-            <TabsTrigger value="systems">Hava Sistemleri</TabsTrigger>
-            <TabsTrigger value="clouds">Bulutlar</TabsTrigger>
+            <TabsTrigger value="systems">Air Systems</TabsTrigger>
+            <TabsTrigger value="clouds">Clouds</TabsTrigger>
             <TabsTrigger value="pressure">Pressure Systems</TabsTrigger>
-            <TabsTrigger value="storms">Fırtına Türleri</TabsTrigger>
-            <TabsTrigger value="satellite">Uydu Görüntüleri</TabsTrigger>
-            <TabsTrigger value="navtex">NAVTEX Uyarıları</TabsTrigger>
-            <TabsTrigger value="drawing">Hava Haritası</TabsTrigger>
-            <TabsTrigger value="forecasting">Tahmin Yöntemleri</TabsTrigger>
-            <TabsTrigger value="safety">Güvenlik Rehberi</TabsTrigger>
+            <TabsTrigger value="storms">Types of Storms</TabsTrigger>
+            <TabsTrigger value="satellite">Satellite Images</TabsTrigger>
+            <TabsTrigger value="navtex">NAVTEX Warnings</TabsTrigger>
+            <TabsTrigger value="drawing">Weather Chart</TabsTrigger>
+            <TabsTrigger value="forecasting">Estimation Methods</TabsTrigger>
+            <TabsTrigger value="safety">Security Guide</TabsTrigger>
           </TabsList>
 
           {/* Satellite Tab */}
@@ -470,7 +470,7 @@ const DetailedMeteorology = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Cloud className="h-6 w-6 text-sky-600" />
-                  Bulut Atlası (Gerçek Görseller + CH/CM/CL)
+                  Cloud Atlas (Actual Images + CH/CM/CL)
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -479,13 +479,13 @@ const DetailedMeteorology = () => {
                   <Info className="h-4 w-4 text-blue-700 dark:text-blue-300" />
                   <AlertDescription className="text-sm">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <Badge variant="secondary" className="text-xs">CH: Yüksek bulutlar</Badge>
-                      <Badge variant="secondary" className="text-xs">CM: Orta seviye bulutlar</Badge>
-                      <Badge variant="secondary" className="text-xs">CL: Alçak bulutlar</Badge>
-                      <Badge variant="outline" className="text-xs border-red-400 text-red-700 dark:text-red-300">Cb: Dikey gelişimli (fırtına)</Badge>
+                      <Badge variant="secondary" className="text-xs">CH: High clouds</Badge>
+                      <Badge variant="secondary" className="text-xs">CM: Mid-level clouds</Badge>
+                      <Badge variant="secondary" className="text-xs">CL: Low clouds</Badge>
+                      <Badge variant="outline" className="text-xs border-red-400 text-red-700 dark:text-red-300">Cb: Vertical development (storm)</Badge>
                     </div>
                     <div className="text-xs space-y-1">
-                      <p><strong>Denizci Notu:</strong> CL bulutlar görüşü hızla düşürür (sis/yağış); CM bulutlar cephe yaklaşımının habercisi olabilir; CH bulutlar uzak/orta vadede hava değişimini işaret eder; Cb ise şiddetli fırtına, ani rüzgar ve dolu riskidir.</p>
+                      <p><strong>Sailor's Note:</strong> CL bulutlar görüşü hızla düşürür (sis/yağış); CM bulutlar cephe yaklaşımının habercisi olabilir; CH bulutlar uzak/orta vadede hava değişimini işaret eder; Cb ise şiddetli fırtına, ani rüzgar ve dolu riskidir.</p>
                     </div>
                   </AlertDescription>
                 </Alert>
@@ -494,7 +494,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-3">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Badge variant="outline" className="border-blue-400 text-blue-800 dark:text-blue-200">CL</Badge>
-                    Alçak Bulutlar (0-2 km)
+                    Low Clouds (0-2 km)
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     {cloudTypesByLevel.low.map((c) => (
@@ -507,7 +507,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-3">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Badge variant="outline" className="border-green-400 text-green-800 dark:text-green-200">CM</Badge>
-                    Orta Bulutlar (2-7 km)
+                    Middle Clouds (2-7 km)
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     {cloudTypesByLevel.middle.map((c) => (
@@ -520,7 +520,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-3">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Badge variant="outline" className="border-purple-400 text-purple-800 dark:text-purple-200">CH</Badge>
-                    Yüksek Bulutlar (5-13 km)
+                    High Clouds (5-13 km)
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     {cloudTypesByLevel.high.map((c) => (
@@ -532,8 +532,8 @@ const DetailedMeteorology = () => {
                 {/* Vertical Development */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Badge variant="destructive" className="text-white">Cb</Badge>
-                    Dikey Gelişimli Bulutlar (Fırtına)
+                    <Badge variant="destructive" className="text-white">C b</Badge>
+                    Vertical Development Clouds (Storm)
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     {cloudTypesByLevel.vertical.map((c) => (
@@ -551,7 +551,7 @@ const DetailedMeteorology = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="h-6 w-6 text-blue-600" />
-                  Hava Sistemleri ve Denizcilik Etkileri
+                  Weather Systems and Maritime Effects
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -572,8 +572,8 @@ const DetailedMeteorology = () => {
                               {getSafetyIcon(system.safetyLevel)}
                               <span className="ml-1">
                                 {system.safetyLevel === 'safe' ? 'safe' :
-                                 system.safetyLevel === 'caution' ? 'Dikkatli' :
-                                 system.safetyLevel === 'dangerous' ? 'Tehlikeli' : 'Çok Tehlikeli'}
+                                 system.safetyLevel === 'caution' ? 'Careful' :
+                                 system.safetyLevel === 'dangerous' ? 'Dangerous' : 'Very Dangerous'}
                               </span>
                             </Badge>
                           </div>
@@ -597,7 +597,7 @@ const DetailedMeteorology = () => {
                             <div>
                               <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
                                 <BarChart3 className="h-4 w-4" />
-                                Özellikler
+                                Features
                               </h4>
                               <ul className="text-sm space-y-1">
                                 {system.characteristics.map((char, index) => (
@@ -612,20 +612,20 @@ const DetailedMeteorology = () => {
                             <div>
                               <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
                                 <Navigation className="h-4 w-4" />
-                                Denizcilik Etkileri
+                                Maritime Influences
                               </h4>
                               <div className="space-y-2 text-sm">
                                 <div className="flex items-center gap-2">
                                   <Wind className="h-3 w-3 text-blue-600" />
-                                  <span><strong>Rüzgar:</strong> {system.windSpeed}</span>
+                                  <span><strong>Wind:</strong> {system.windSpeed}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <Eye className="h-3 w-3 text-blue-600" />
-                                  <span><strong>Görüş:</strong> {system.visibility}</span>
+                                  <span><strong>Opinion:</strong> {system.visibility}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <Waves className="h-3 w-3 text-blue-600" />
-                                  <span><strong>Deniz Durumu:</strong> {system.seaState}</span>
+                                  <span><strong>Sea State:</strong> {system.seaState}</span>
                                 </div>
                               </div>
                             </div>
@@ -634,7 +634,7 @@ const DetailedMeteorology = () => {
                           <div>
                             <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
                               <AlertTriangle className="h-4 w-4" />
-                              Güvenlik Önerileri
+                              Security Recommendations
                             </h4>
                             <ul className="text-sm space-y-1">
                               {system.recommendations.map((rec, index) => (
@@ -660,7 +660,7 @@ const DetailedMeteorology = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BarChart3 className="h-6 w-6 text-green-600" />
-                  Basınç Sistemleri ve Denizcilik
+                  Pressure Systems and Maritime
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -680,7 +680,7 @@ const DetailedMeteorology = () => {
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <h4 className="font-semibold text-sm mb-2">Özellikler</h4>
+                            <h4 className="font-semibold text-sm mb-2">Features</h4>
                             <ul className="text-sm space-y-1">
                               {system.characteristics.map((char, index) => (
                                 <li key={index} className="flex items-start gap-2">
@@ -692,7 +692,7 @@ const DetailedMeteorology = () => {
                           </div>
                           
                           <div>
-                            <h4 className="font-semibold text-sm mb-2">Denizcilik Etkileri</h4>
+                            <h4 className="font-semibold text-sm mb-2">Maritime Influences</h4>
                             <ul className="text-sm space-y-1">
                               {system.maritimeEffects.map((effect, index) => (
                                 <li key={index} className="flex items-start gap-2">
@@ -707,11 +707,11 @@ const DetailedMeteorology = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div className="flex items-center gap-2">
                             <Wind className="h-4 w-4 text-blue-600" />
-                            <span className="text-sm"><strong>Rüzgar:</strong> {system.windPattern}</span>
+                            <span className="text-sm"><strong>Wind:</strong> {system.windPattern}</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <Eye className="h-4 w-4 text-blue-600" />
-                            <span className="text-sm"><strong>Görüş:</strong> {system.visibility}</span>
+                            <span className="text-sm"><strong>Opinion:</strong> {system.visibility}</span>
                           </div>
                         </div>
                         
@@ -740,7 +740,7 @@ const DetailedMeteorology = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Zap className="h-6 w-6 text-red-600" />
-                  Fırtına Türleri ve Sınıflandırma
+                  Storm Types and Classification
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -764,7 +764,7 @@ const DetailedMeteorology = () => {
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <h4 className="font-semibold text-sm mb-2">Özellikler</h4>
+                            <h4 className="font-semibold text-sm mb-2">Features</h4>
                             <ul className="text-sm space-y-1">
                               {storm.characteristics.map((char, index) => (
                                 <li key={index} className="flex items-start gap-2">
@@ -776,9 +776,9 @@ const DetailedMeteorology = () => {
                           </div>
                           
                           <div>
-                            <h4 className="font-semibold text-sm mb-2">Oluşum</h4>
+                            <h4 className="font-semibold text-sm mb-2">Formation</h4>
                             <p className="text-sm">{storm.formation}</p>
-                            <h4 className="font-semibold text-sm mb-2 mt-3">Takip</h4>
+                            <h4 className="font-semibold text-sm mb-2 mt-3">Tracking</h4>
                             <p className="text-sm">{storm.tracking}</p>
                           </div>
                         </div>
@@ -786,12 +786,12 @@ const DetailedMeteorology = () => {
                         <Alert className="border-red-200 bg-red-50">
                           <AlertTriangle className="h-4 w-4 text-red-600" />
                           <AlertDescription>
-                            <strong>Denizcilik Tehlikesi:</strong> {storm.maritimeDanger}
+                            <strong>Maritime Hazard:</strong> {storm.maritimeDanger}
                           </AlertDescription>
                         </Alert>
                         
                         <div>
-                          <h4 className="font-semibold text-sm mb-2">Güvenlik Önlemleri</h4>
+                          <h4 className="font-semibold text-sm mb-2">Safety Precautions</h4>
                           <ul className="text-sm space-y-1">
                             {storm.safetyMeasures.map((measure, index) => (
                               <li key={index} className="flex items-start gap-2">
@@ -805,7 +805,7 @@ const DetailedMeteorology = () => {
                         <div className="bg-red-100 p-3 rounded-lg">
                           <div className="flex items-center gap-2">
                             <AlertTriangle className="h-5 w-5 text-red-600" />
-                            <span className="font-semibold text-red-800">Tahliye:</span>
+                            <span className="font-semibold text-red-800">Evacuation:</span>
                           </div>
                           <p className="text-sm text-red-700 mt-1">{storm.evacuation}</p>
                         </div>
@@ -823,7 +823,7 @@ const DetailedMeteorology = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Satellite className="h-6 w-6 text-purple-600" />
-                  Meteoroloji Tahmin Yöntemleri
+                  Meteorology Forecast Methods
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -832,61 +832,61 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Satellite className="h-5 w-5 text-purple-600" />
-                    Uydu Görüntüleme
+                    Satellite Imaging
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="border-purple-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Görünür Spektrum (VIS)</CardTitle>
+                        <CardTitle className="text-base">Visible Spectrum (VIS)</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Gündüz bulut yapıları</li>
-                          <li>• Bulut kalınlığı analizi</li>
-                          <li>• Fırtına gelişimi takibi</li>
-                          <li>• Deniz yüzeyi gözlemi</li>
+                          <li>• Daytime cloud structures</li>
+                          <li>• Cloud thickness analysis</li>
+                          <li>• Storm development tracking</li>
+                          <li>• Sea surface observation</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-purple-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Kızılötesi (IR)</CardTitle>
+                        <CardTitle className="text-base">Infrared (IR)</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Gece/gündüz sürekli gözlem</li>
-                          <li>• Bulut yüksekliği tespiti</li>
-                          <li>• Sıcaklık analizi</li>
-                          <li>• Fırtına tepesi tespiti</li>
+                          <li>• Continuous observation day/night</li>
+                          <li>• Cloud height detection</li>
+                          <li>• Temperature analysis</li>
+                          <li>• Storm top detection</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-purple-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Su Buharı (WV)</CardTitle>
+                        <CardTitle className="text-base">Water Vapor (WV)</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Atmosferik nem analizi</li>
-                          <li>• Jet stream takibi</li>
-                          <li>• Cephe sistemleri</li>
-                          <li>• Üst seviye rüzgarlar</li>
+                          <li>• Atmospheric humidity analysis</li>
+                          <li>• Jet stream tracking</li>
+                          <li>• Facade systems</li>
+                          <li>• Upper level winds</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-purple-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Mikrodalga</CardTitle>
+                        <CardTitle className="text-base">Microwave</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Yağış tespiti</li>
-                          <li>• Bulut içi su içeriği</li>
-                          <li>• Tropik siklon analizi</li>
-                          <li>• Deniz yüzeyi sıcaklığı</li>
+                          <li>• Rainfall detection</li>
+                          <li>• Inner cloud water content</li>
+                          <li>• Tropical cyclone analysis</li>
+                          <li>• Sea surface temperature</li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -899,7 +899,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-purple-600" />
-                    Hava Durumu Modelleri
+                    Weather Models
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card className="border-blue-200">
@@ -908,38 +908,38 @@ const DetailedMeteorology = () => {
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Küresel kapsam</li>
-                          <li>• 15 km çözünürlük</li>
-                          <li>• 16 gün tahmin</li>
-                          <li>• 6 saatlik güncellemeler</li>
+                          <li>• Global coverage</li>
+                          <li>• 15 km resolution</li>
+                          <li>• 16 days forecast</li>
+                          <li>• 6 hourly updates</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-blue-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">ECMWF (Avrupa)</CardTitle>
+                        <CardTitle className="text-base">ECMWF (Europe)</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Yüksek doğruluk</li>
-                          <li>• 9 km çözünürlük</li>
-                          <li>• 10 gün tahmin</li>
-                          <li>• 12 saatlik güncellemeler</li>
+                          <li>• High accuracy</li>
+                          <li>• 9 km resolution</li>
+                          <li>• 10 days forecast</li>
+                          <li>• 12-hour updates</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-blue-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">WRF (Yerel)</CardTitle>
+                        <CardTitle className="text-base">WRF (Local)</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Yüksek çözünürlük</li>
-                          <li>• 1-3 km çözünürlük</li>
-                          <li>• 48 saat tahmin</li>
-                          <li>• Detaylı yerel analiz</li>
+                          <li>• High resolution</li>
+                          <li>• 1-3 km resolution</li>
+                          <li>• 48 hour forecast</li>
+                          <li>• Detailed local analysis</li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -952,7 +952,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Navigation className="h-5 w-5 text-purple-600" />
-                    Denizcilik Meteoroloji Servisleri
+                    Maritime Meteorological Services
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="border-green-200">
@@ -961,10 +961,10 @@ const DetailedMeteorology = () => {
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• VHF hava durumu yayınları</li>
-                          <li>• Günlük denizcilik tahminleri</li>
-                          <li>• Fırtına uyarıları</li>
-                          <li>• Navigasyon güvenliği</li>
+                          <li>• VHF weather broadcasts</li>
+                          <li>• Daily marine forecasts</li>
+                          <li>• Storm warnings</li>
+                          <li>• Navigation security</li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -975,10 +975,10 @@ const DetailedMeteorology = () => {
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Detaylı deniz tahminleri</li>
-                          <li>• Dalga yüksekliği modelleri</li>
-                          <li>• Akıntı tahminleri</li>
-                          <li>• Tropik siklon takibi</li>
+                          <li>• Detailed marine forecasts</li>
+                          <li>• Wave height models</li>
+                          <li>• Current forecasts</li>
+                          <li>• Tropical cyclone tracking</li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -994,7 +994,7 @@ const DetailedMeteorology = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Shield className="h-6 w-6 text-green-600" />
-                  Denizcilik Güvenlik Rehberi
+                  Maritime Safety Guide
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -1003,33 +1003,33 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <BookOpen className="h-5 w-5 text-green-600" />
-                    Seyir Öncesi Planlama
+                    Pre-navigation Planning
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="border-green-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Hava Durumu Analizi</CardTitle>
+                        <CardTitle className="text-base">Weather Analysis</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• 72 saatlik tahmin incelemesi</li>
-                          <li>• Basınç haritaları analizi</li>
-                          <li>• Rüzgar ve dalga tahminleri</li>
-                          <li>• Alternatif rota planlaması</li>
+                          <li>• 72 hour forecast review</li>
+                          <li>• Pressure charts analysis</li>
+                          <li>• Wind and wave forecasts</li>
+                          <li>• Alternative route planning</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-green-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Güvenlik Kontrolü</CardTitle>
+                        <CardTitle className="text-base">Security Check</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Acil durum ekipmanları</li>
-                          <li>• İletişim sistemleri</li>
-                          <li>• Navigasyon cihazları</li>
-                          <li>• Güvenlik donanımları</li>
+                          <li>• Emergency equipment</li>
+                          <li>• Communication systems</li>
+                          <li>• Navigation devices</li>
+                          <li>• Safety equipment</li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -1042,47 +1042,47 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Clock className="h-5 w-5 text-green-600" />
-                    Seyir Sırasında İzleme
+                    Monitoring While Cruising
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card className="border-blue-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Sürekli İzleme</CardTitle>
+                        <CardTitle className="text-base">Continuous Monitoring</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Barometrik basınç takibi</li>
-                          <li>• Rüzgar yönü ve hızı</li>
-                          <li>• Görüş mesafesi</li>
-                          <li>• Deniz durumu</li>
+                          <li>• Barometric pressure monitoring</li>
+                          <li>• Wind direction and speed</li>
+                          <li>• View distance</li>
+                          <li>• Sea state</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-blue-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Uyarı Sinyalleri</CardTitle>
+                        <CardTitle className="text-base">Warning Signals</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Ani basınç düşüşü</li>
-                          <li>• Rüzgar yönü değişimi</li>
-                          <li>• Görüş azalması</li>
-                          <li>• Dalga yüksekliği artışı</li>
+                          <li>• Sudden pressure drop</li>
+                          <li>• Wind direction change</li>
+                          <li>• Decreased vision</li>
+                          <li>• Wave height increase</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-blue-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Acil Durum</CardTitle>
+                        <CardTitle className="text-base">Emergency</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• Güvenli liman arama</li>
-                          <li>• Hız azaltma</li>
-                          <li>• Personel güvenliği</li>
-                          <li>• İletişim kurma</li>
+                          <li>• Seeking a safe haven</li>
+                          <li>• Speed reduction</li>
+                          <li>• Personnel safety</li>
+                          <li>• Communicate</li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -1095,20 +1095,20 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <AlertTriangle className="h-5 w-5 text-red-600" />
-                    Acil Durum Prosedürleri
+                    Emergency Procedures
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Alert className="border-red-200 bg-red-50">
                       <AlertTriangle className="h-4 w-4 text-red-600" />
                       <AlertDescription>
-                        <strong>Fırtına Yaklaşımı:</strong> Seek a safe harbour immediately, reduce speed, secure all equipment and move personnel to safe areas.
+                        <strong>Storm Approach:</strong> Seek a safe harbour immediately, reduce speed, secure all equipment and move personnel to safe areas.
                       </AlertDescription>
                     </Alert>
                     
                     <Alert className="border-orange-200 bg-orange-50">
                       <AlertTriangle className="h-4 w-4 text-orange-600" />
                       <AlertDescription>
-                        <strong>Görüş Kaybı:</strong> Use radar, reduce speed, sound the fog signal and report your position on VHF.
+                        <strong>Loss of Vision:</strong> Use radar, reduce speed, sound the fog signal and report your position on VHF.
                       </AlertDescription>
                     </Alert>
                   </div>
@@ -1120,26 +1120,26 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Target className="h-5 w-5 text-green-600" />
-                    İletişim ve Yardım
+                    Contact and Help
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="border-purple-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Acil İletişim</CardTitle>
+                        <CardTitle className="text-base">Emergency Contact</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
-                          <li>• VHF Kanal 16 (156.8 MHz)</li>
-                          <li>• EPIRB aktivasyonu</li>
-                          <li>• Satelit telefon</li>
-                          <li>• AIS acil durum sinyali</li>
+                          <li>• VHF Channel 16 (156.8 MHz)</li>
+                          <li>• EPIRB activation</li>
+                          <li>• Satellite phone</li>
+                          <li>• AIS emergency signal</li>
                         </ul>
                       </CardContent>
                     </Card>
                     
                     <Card className="border-purple-200">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base">Bilgi Kaynakları</CardTitle>
+                        <CardTitle className="text-base">Information Resources</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="text-sm space-y-1">
@@ -1163,7 +1163,7 @@ const DetailedMeteorology = () => {
             This guide has been compiled from US Coast Guard and SeaVision meteorological data. All information has been prepared in line with maritime safety standards.
           </p>
           <p className="mt-2">
-            <strong>Önemli:</strong> Weather forecasts can change. Follow the latest information before and during the passage.
+            <strong>Important:</strong> Weather forecasts can change. Follow the latest information before and during the passage.
           </p>
         </div>
       </div>

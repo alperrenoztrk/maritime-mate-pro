@@ -41,42 +41,42 @@ export class HydrostaticCalculations {
   private static readonly SIMPLIFIED_CALCULATION_RISKS: SimplifiedCalculationRisk[] = [
     {
       id: "bonjean_station_sine",
-      title: "Bonjean eğrileri (sinüs istasyon yaklaşımı)",
-      summary: "Kesit alanları sinusoidal dağılımla tahmin ediliyor.",
-      impact: "Gerçek omurga formu ve gövde hatları için hacim/moment sapması oluşabilir.",
-      nextStep: "Gövde formu girdileriyle istasyon bazlı gerçek kesit alanları hesapla.",
+      title: "Bonjean curves (sine station approximation)",
+      summary: "Cross-sectional areas are estimated with a sinusoidal distribution.",
+      impact: "Volume/moment deviation may occur for actual Keel form and hull lines.",
+      nextStep: "Calculate station-based actual cross-sectional areas with hull form inputs.",
       relatedFunctions: ["generateBonjeanCurves", "calculateSectionalArea"]
     },
     {
       id: "centerpoints_fixed",
       title: "LCB/VCB/LCF sabit oranlar",
-      summary: "Merkezler yarım boy ve yarım draft ile temsil ediliyor.",
-      impact: "Trim/list ve GM hesaplarında konum hatası büyüyebilir.",
-      nextStep: "Bonjean ve trim integrasyonundan gerçek merkezler çıkar.",
+      summary: "Centers are represented by half size and half draft.",
+      impact: "Position error may increase in trim/list and GM calculations.",
+      nextStep: "From the integration of Bonjean and trim the real centers emerge.",
       relatedFunctions: ["calculateCenterPoints", "calculateHydrostaticCoefficients"]
     },
     {
       id: "gz_wall_sided",
-      title: "GZ (wall-sided) yaklaşımı",
-      summary: "GZ, basit sinüs terimi ve genişlik düzeltmesi ile hesaplanıyor.",
-      impact: "Büyük açılarda KN eğrisi etkileri eksik kalır.",
-      nextStep: "KN tablosu/çapraz eğriler ile GZ entegrasyonunu uygula.",
+      title: "GZ (wall-sided) approach",
+      summary: "GZ is calculated with the simple sine term and width correction.",
+      impact: "At large angles, KN curve effects remain incomplete.",
+      nextStep: "Apply GZ integration with KN table/cross curves.",
       relatedFunctions: ["calculateGZ", "generateGZCurve"]
     },
     {
       id: "downflooding_fixed",
-      title: "Downflooding/equalized sabit açılar",
-      summary: "Downflooding ve equalized açıları sabit değerlerle veriliyor.",
-      impact: "Gerçek açıklıklar ve açıklık konumlarına bağlı riskler gözden kaçabilir.",
-      nextStep: "Yapısal açıklık verilerine göre hesaplama ekle.",
+      title: "Downflooding/equalized fixed angles",
+      summary: "Downflooding and equalized angles are given with fixed values.",
+      impact: "Actual vulnerabilities and risks associated with vulnerability locations may be overlooked.",
+      nextStep: "Add calculation based on structural clearance data.",
       relatedFunctions: ["calculateDownfloodingAngle", "calculateEqualizedAngle"]
     },
     {
       id: "weather_criterion_scalar",
-      title: "Weather criterion basit katsayı",
-      summary: "Max GZ üzerinden tek katsayı ile basitleştirme yapılıyor.",
-      impact: "SOLAS/IMO rüzgar kriteri enerji dengesi doğru temsil edilmez.",
-      nextStep: "Heeling work ve downflooding sınırı ile enerji denklemi uygula.",
+      title: "Weather criterion simple coefficient",
+      summary: "Simplification is made with a single coefficient via Max GZ.",
+      impact: "The SOLAS/IMO wind criterion energy balance is not represented correctly.",
+      nextStep: "Apply energy equation with heeling work and downflooding limit.",
       relatedFunctions: ["calculateWeatherCriterion", "checkWeatherCriterion"]
     }
   ];
@@ -1321,11 +1321,11 @@ export class HydrostaticCalculations {
     return (dF + dA) / 2;
   }
 
-  static detectHoggingSagging(dF: number, measuredDM: number, dA: number): 'Hogging' | 'Sagging' | 'Düz' {
+  static detectHoggingSagging(dF: number, measuredDM: number, dA: number): 'Hogging' | 'Sagging' | 'Straight' {
     const meanEnds = (dF + dA) / 2;
     if (meanEnds > measuredDM) return 'Hogging';
     if (meanEnds < measuredDM) return 'Sagging';
-    return 'Düz';
+    return 'Straight';
   }
 
   // 2) ENİNE – Temel bağıntılar ve yardımcılar
@@ -1380,7 +1380,7 @@ export class HydrostaticCalculations {
   static ghmFromVhm(vhm: number, sf: number): number { return sf !== 0 ? vhm / sf : 0; }
   static simpsonOneThird(h: number, y: number[]): number {
     const n = y.length - 1;
-    if (n < 2 || n % 2 === 1) throw new Error('1/3 kuralı için çift bölme (tek nokta sayısı) gerekir');
+    if (n < 2 || n % 2 === 1) throw new Error('The 1/3 rule requires double division (odd number of points)');
     let sum = y[0] + y[y.length - 1];
     for (let i = 1; i < y.length - 1; i++) sum += (i % 2 === 1 ? 4 : 2) * y[i];
     return (h / 3) * sum;

@@ -46,8 +46,8 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
     if (!overview) return 'No data yet';
     switch (overview.recentTrend) {
       case 'improving': return 'Improving';
-      case 'declining': return 'Düşüyor';
-      default: return 'Stabil';
+      case 'declining': return 'Falling';
+      default: return 'Stable';
     }
   }, [overview]);
 
@@ -68,9 +68,9 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
       <Card className="border-dashed">
         <CardContent className="flex flex-col items-center justify-center py-12 text-center">
           <BookOpen className="h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="font-semibold text-lg mb-2">İlerleme Takibi</h3>
+          <h3 className="font-semibold text-lg mb-2">Progress Tracking</h3>
           <p className="text-sm text-muted-foreground max-w-sm">
-            Quiz sonuçlarınızı kaydetmek ve ilerlemenizi takip etmek için giriş yapın.
+            Log in to save your quiz results and track your progress.
           </p>
         </CardContent>
       </Card>
@@ -108,9 +108,9 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
       <Card className="border-dashed">
         <CardContent className="flex flex-col items-center justify-center py-12 text-center">
           <Target className="h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="font-semibold text-lg mb-2">Henüz Quiz Tamamlanmadı</h3>
+          <h3 className="font-semibold text-lg mb-2">Quiz Not Completed Yet</h3>
           <p className="text-sm text-muted-foreground max-w-sm">
-            İlerlemenizi takip etmek için bir quiz tamamlayın.
+            Complete a quiz to track your progress.
           </p>
         </CardContent>
       </Card>
@@ -133,7 +133,7 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                   <BarChart3 className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Toplam Quiz</p>
+                  <p className="text-sm text-muted-foreground">Total Quiz</p>
                   <p className="text-2xl font-bold">{overview.totalQuizzes}</p>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Ortalama Skor</p>
+                  <p className="text-sm text-muted-foreground">Average Score</p>
                   <p className="text-2xl font-bold">%{overview.averageScore}</p>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                   <Trophy className="h-5 w-5 text-amber-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">En İyi Skor</p>
+                  <p className="text-sm text-muted-foreground">Best Score</p>
                   <p className="text-2xl font-bold">%{overview.bestScore}</p>
                 </div>
               </div>
@@ -213,13 +213,13 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-500" />
-                Geliştirilmesi Gereken Konular
+                Issues that need improvement
               </CardTitle>
             </CardHeader>
             <CardContent>
               {overview.weakestCategories.length === 0 ? (
                 <p className="text-sm text-muted-foreground text-center py-4">
-                  Henüz yeterli veri yok (en az 3 soru gerekli)
+                  Not enough data yet (at least 3 questions required)
                 </p>
               ) : (
                 <div className="space-y-4">
@@ -238,8 +238,8 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                       </div>
                       <Progress value={cat.accuracy} className="h-2" />
                       <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>{cat.correct_answers}/{cat.total_questions} doğru</span>
-                        <span>{cat.wrong_answers} yanlış</span>
+                        <span>{cat.correct_answers}/{cat.total_questions} true</span>
+                        <span>{cat.wrong_answers} wrong</span>
                       </div>
                     </div>
                   ))}
@@ -259,13 +259,13 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Flame className="h-5 w-5 text-green-500" />
-                Güçlü Olduğunuz Konular
+                Your Strengths
               </CardTitle>
             </CardHeader>
             <CardContent>
               {overview.strongestCategories.length === 0 ? (
                 <p className="text-sm text-muted-foreground text-center py-4">
-                  Henüz yeterli veri yok (en az 3 soru gerekli)
+                  Not enough data yet (at least 3 questions required)
                 </p>
               ) : (
                 <div className="space-y-4">
@@ -284,8 +284,8 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                       </div>
                       <Progress value={cat.accuracy} className="h-2" />
                       <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>{cat.correct_answers}/{cat.total_questions} doğru</span>
-                        <span>{cat.wrong_answers} yanlış</span>
+                        <span>{cat.correct_answers}/{cat.total_questions} true</span>
+                        <span>{cat.wrong_answers} wrong</span>
                       </div>
                     </div>
                   ))}
@@ -306,7 +306,7 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <Clock className="h-5 w-5" />
-              Son Quiz Sonuçları
+              Latest Quiz Results
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -367,21 +367,21 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
                 <p className="text-3xl font-bold text-primary">{overview.totalQuestions}</p>
-                <p className="text-sm text-muted-foreground">Toplam Soru</p>
+                <p className="text-sm text-muted-foreground">Total Question</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-green-500">{overview.totalCorrect}</p>
-                <p className="text-sm text-muted-foreground">Doğru Cevap</p>
+                <p className="text-sm text-muted-foreground">Correct Answer</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-red-500">
                   {overview.totalQuestions - overview.totalCorrect}
                 </p>
-                <p className="text-sm text-muted-foreground">Yanlış Cevap</p>
+                <p className="text-sm text-muted-foreground">Wrong Answer</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-amber-500">{categoryStats.length}</p>
-                <p className="text-sm text-muted-foreground">Çalışılan Konu</p>
+                <p className="text-sm text-muted-foreground">Subject Studied</p>
               </div>
             </div>
           </CardContent>

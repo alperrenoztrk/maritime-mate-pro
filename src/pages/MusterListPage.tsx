@@ -54,17 +54,17 @@ const SIGNAL_META: Record<
   { label: string; className: string }
 > = {
   solas: {
-    label: "Standart SOLAS alarmı",
+    label: "Standard SOLAS alarm",
     className:
       "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
   },
   "master-order": {
-    label: "Kaptan emri",
+    label: "Master order",
     className:
       "border-rose-500/30 bg-rose-500/10 text-rose-700 dark:text-rose-300",
   },
   "ship-specific": {
-    label: "Gemiye özel işaret",
+    label: "Special sign for the ship",
     className:
       "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
   },
@@ -141,12 +141,12 @@ export default function MusterListPage() {
 
           <h1 className="mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-micro font-semibold uppercase tracking-[0.2em] text-primary">
             <ShieldAlert className="h-3.5 w-3.5" />
-            MUSTER LIST
+            CUSTOMER LIST
           </h1>
         </header>
 
         <nav
-          aria-label="Acil durum türü"
+          aria-label="Emergency type"
           className="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-7 print:hidden"
         >
           {musterEmergencies.map((emergency) => {
@@ -220,7 +220,7 @@ export default function MusterListPage() {
             <div className="rounded-xl border border-border/50 bg-background/70 p-4">
               <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-foreground">
                 <ClipboardCheck className="h-4 w-4 text-primary" />
-                İlk hareketler
+                First movements
               </div>
               <ol className="space-y-2.5">
                 {activeEmergency.firstActions.map((action, index) => (
@@ -243,7 +243,7 @@ export default function MusterListPage() {
                 <CalendarClock className="h-4 w-4" />
               </span>
               <div>
-                <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Talim Başlıkları</h2>
+                <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Training Headings</h2>
                 <p className="mt-1 text-micro leading-relaxed text-muted-foreground">
                   These are the periodic mandatory drill names; “General Drill” or “General Alarm Drill” is not a SOLAS drill title. The general emergency alarm is the signal that starts these drills.
                 </p>
@@ -263,7 +263,7 @@ export default function MusterListPage() {
                   </span>
                   {!drill.isStandalone && (
                     <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 text-micro font-bold uppercase tracking-wide text-amber-700 dark:text-amber-300">
-                      Ayrı talim değildir
+                      It is not a separate drill
                     </span>
                   )}
                 </div>
@@ -273,11 +273,11 @@ export default function MusterListPage() {
                 </p>
                 <dl className="mt-3 space-y-2 text-micro leading-relaxed">
                   <div>
-                    <dt className="font-bold text-foreground">Kapsam</dt>
+                    <dt className="font-bold text-foreground">Scope</dt>
                     <dd className="text-muted-foreground">{drill.applicability}</dd>
                   </div>
                   <div>
-                    <dt className="font-bold text-foreground">Periyot</dt>
+                    <dt className="font-bold text-foreground">Period</dt>
                     <dd className="text-muted-foreground">{drill.frequency}</dd>
                   </div>
                 </dl>
@@ -299,7 +299,7 @@ export default function MusterListPage() {
             <input
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Rütbe, ekip, görev yeri veya ekipman ara…"
+              placeholder="Search for rank, team, duty station or equipment…"
               className="h-11 w-full rounded-xl border border-border/60 bg-card/85 pl-9 pr-3 text-sm text-foreground shadow-sm outline-none transition placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/15"
             />
           </label>
@@ -308,9 +308,9 @@ export default function MusterListPage() {
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
           <span>
             <strong className="text-foreground">{visibleAssignments}</strong> crew ranks ·{" "}
-            <strong className="text-foreground">{groups.length}</strong> acil durum ekibi
+            <strong className="text-foreground">{groups.length}</strong> emergency team
           </span>
-          <span className="print:hidden">Kartlardaki rütbe bağlantıları mevcut görev detaylarını açar.</span>
+          <span className="print:hidden">Rank links on cards open available mission details.</span>
         </div>
 
         {groups.length > 0 ? (
@@ -328,7 +328,7 @@ export default function MusterListPage() {
                     <div>
                       <h2 className="text-sm font-bold text-foreground">{group.team}</h2>
                       <p className="text-micro text-muted-foreground">
-                        {group.rows.length} görev pozisyonu
+                        {group.rows.length} duty position
                       </p>
                     </div>
                   </div>
@@ -359,7 +359,7 @@ export default function MusterListPage() {
                         <div className="rounded-lg border border-border/40 bg-card/60 p-2.5">
                           <dt className="mb-1 flex items-center gap-1.5 text-micro font-semibold uppercase tracking-wide text-muted-foreground">
                             <MapPin className="h-3 w-3" />
-                            İlk istasyon
+                            First station
                           </dt>
                           <dd className="font-medium leading-relaxed text-foreground">
                             {assignment.initialStation}
@@ -368,7 +368,7 @@ export default function MusterListPage() {
                         <div className="rounded-lg border border-border/40 bg-card/60 p-2.5">
                           <dt className="mb-1 flex items-center gap-1.5 text-micro font-semibold uppercase tracking-wide text-muted-foreground">
                             <ShieldAlert className="h-3 w-3" />
-                            Operasyon yeri
+                            Operation location
                           </dt>
                           <dd className="font-medium leading-relaxed text-foreground">
                             {duty.station}
@@ -377,7 +377,7 @@ export default function MusterListPage() {
                         <div className="rounded-lg border border-border/40 bg-card/60 p-2.5 sm:col-span-2">
                           <dt className="mb-1 flex items-center gap-1.5 text-micro font-semibold uppercase tracking-wide text-muted-foreground">
                             <Radio className="h-3 w-3" />
-                            Rapor verir
+                            Reports
                           </dt>
                           <dd className="font-medium leading-relaxed text-foreground">
                             {duty.reportsTo}
@@ -393,7 +393,7 @@ export default function MusterListPage() {
 
                       <div className="mt-4">
                         <h3 className="mb-2 text-micro font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                          Görev sırası
+                          Task order
                         </h3>
                         <ol className="space-y-2.5">
                           {duty.actions.map((action, index) => (
@@ -410,7 +410,7 @@ export default function MusterListPage() {
                       {duty.equipment && duty.equipment.length > 0 && (
                         <div className="mt-4 border-t border-border/40 pt-3">
                           <div className="mb-2 text-micro font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                            Atanmış donanım
+                            Dedicated hardware
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {duty.equipment.map((equipment) => (
@@ -429,13 +429,13 @@ export default function MusterListPage() {
                         <div className="mt-4 space-y-2 border-t border-border/40 pt-3 text-micro leading-relaxed">
                           {assignment.substitute && (
                             <p className="text-foreground/80">
-                              <span className="font-bold text-foreground">Kritik görev yedeği:</span>{" "}
+                              <span className="font-bold text-foreground">Mission critical backup:</span>{" "}
                               {assignment.substitute}
                             </p>
                           )}
                           {assignment.readinessResponsibility && (
                             <p className="text-foreground/80">
-                              <span className="font-bold text-foreground">Hazır bulundurma:</span>{" "}
+                              <span className="font-bold text-foreground">Keeping ready:</span>{" "}
                               {assignment.readinessResponsibility}
                             </p>
                           )}
@@ -450,13 +450,13 @@ export default function MusterListPage() {
         ) : (
           <div className="rounded-2xl border border-dashed border-border bg-card/60 p-8 text-center">
             <Search className="mx-auto h-6 w-6 text-muted-foreground" />
-            <p className="mt-3 text-sm font-semibold text-foreground">Eşleşen görev bulunamadı</p>
+            <p className="mt-3 text-sm font-semibold text-foreground">No matching tasks found</p>
             <button
               type="button"
               onClick={() => setSearchQuery("")}
               className="mt-2 text-xs font-semibold text-primary hover:underline"
             >
-              Aramayı temizle
+              Clear search
             </button>
           </div>
         )}
@@ -467,7 +467,7 @@ export default function MusterListPage() {
               <ClipboardCheck className="h-4 w-4" />
             </span>
             <div>
-              <h2 className="text-sm font-bold text-foreground">Gerçek gemi cetveli kontrolü</h2>
+              <h2 className="text-sm font-bold text-foreground">Real ship ruler control</h2>
             </div>
           </div>
 
@@ -493,7 +493,7 @@ export default function MusterListPage() {
         </section>
 
         <footer className="rounded-2xl border border-border/50 bg-card/60 p-4 text-micro text-muted-foreground print:border-slate-300 print:bg-white">
-          <p className="font-semibold text-foreground">Başlıca dayanaklar</p>
+          <p className="font-semibold text-foreground">Main bases</p>
           <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
             {musterReferences.map((reference) => (
               <li key={reference} className="flex items-start gap-2 leading-relaxed">

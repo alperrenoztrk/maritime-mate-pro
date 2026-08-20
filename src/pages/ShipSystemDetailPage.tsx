@@ -30,7 +30,7 @@ export default function ShipSystemDetailPage() {
     return (
       <MobileLayout>
         <div className="flex min-h-screen items-center justify-center bg-background">
-          <p className="text-muted-foreground">İçerik bulunamadı.</p>
+          <p className="text-muted-foreground">Content not found.</p>
         </div>
       </MobileLayout>
     );

@@ -8,10 +8,10 @@ import { scrollToTop } from "@/lib/scrollToTop";
 
 const calloutMeta: Record<CrewTaskCallout["type"], { Icon: typeof AlertTriangle; cls: string; label: string }> = {
   warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Warning" },
-  reference:  { Icon: BookMarked,    cls: "border-blue-500/40 bg-blue-500/10 text-blue-900 dark:text-blue-200", label: "Referans" },
+  reference:  { Icon: BookMarked,    cls: "border-blue-500/40 bg-blue-500/10 text-blue-900 dark:text-blue-200", label: "Reference" },
   tip:        { Icon: Lightbulb,     cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200", label: "hint" },
   example:    { Icon: FileText,      cls: "border-violet-500/40 bg-violet-500/10 text-violet-900 dark:text-violet-200", label: "Example" },
-  regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Mevzuat" },
+  regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Legislation" },
 };
 
 export default function CrewTaskDeepDive() {
@@ -42,7 +42,7 @@ export default function CrewTaskDeepDive() {
   if (!role || !taskMeta) {
     return (
       <div className="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-4 px-4 text-center">
-        <h1 className="text-xl font-bold">Görev bulunamadı</h1>
+        <h1 className="text-xl font-bold">Task not found</h1>
       </div>
     );
   }
@@ -59,15 +59,15 @@ export default function CrewTaskDeepDive() {
 
         {loading && (
           <div className="flex items-center justify-center gap-2 rounded-xl border border-border/40 bg-card/60 p-8 text-sm text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin" /> İçerik yükleniyor…
+            <Loader2 className="h-4 w-4 animate-spin" /> Content loading…
           </div>
         )}
 
         {!loading && !content && (
           <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 text-center">
-            <p className="text-sm font-semibold text-foreground">Bu görev için detaylı anlatım hazırlanıyor.</p>
+            <p className="text-sm font-semibold text-foreground">A detailed explanation is being prepared for this mission.</p>
             <p className="mt-2 text-xs text-muted-foreground">
-              Şimdilik özet açıklama ile yetinmeniz gerekiyor. Yakında tam anlatım yayımlanacak.
+              For now, you have to settle for the summary explanation. The full narrative will be published soon.
             </p>
             <p className="mt-4 rounded-lg border border-border/40 bg-background/60 p-4 text-left text-sm leading-relaxed">
               {taskMeta.description}
@@ -182,7 +182,7 @@ export default function CrewTaskDeepDive() {
                   disabled={activeChapter === 0}
                   className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
                 >
-                  <ChevronLeft className="h-4 w-4" /> Önceki
+                  <ChevronLeft className="h-4 w-4" /> Previous
                 </button>
                 <span className="text-xs text-muted-foreground">
                   {activeChapter + 1} / {content.chapters.length}
@@ -192,14 +192,14 @@ export default function CrewTaskDeepDive() {
                   disabled={activeChapter === content.chapters.length - 1}
                   className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
                 >
-                  Sonraki <ChevronRight className="h-4 w-4" />
+                  Next <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
             </article>
 
             {content.sources && content.sources.length > 0 && (
               <aside className="rounded-2xl border border-border/40 bg-card/60 p-5 text-xs text-muted-foreground">
-                <div className="mb-2 font-semibold text-foreground">Kaynaklar</div>
+                <div className="mb-2 font-semibold text-foreground">Resources</div>
                 <ul className="list-disc space-y-1 pl-5">
                   {content.sources.map((s, i) => (
                     <li key={i}>{s}</li>

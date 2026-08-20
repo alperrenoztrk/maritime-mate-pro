@@ -336,7 +336,7 @@ const EmailPasswordFields = ({
 }) => (
   <>
     <div className="space-y-1.5">
-      <Label htmlFor="email">E-posta</Label>
+      <Label htmlFor="email">Email</Label>
       <div className="relative">
         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <Input

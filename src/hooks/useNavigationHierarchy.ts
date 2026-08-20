@@ -25,7 +25,7 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/',
   },
 
-  // ── Exercises (Alıştırmalar) ───────────────────────────────
+  // ── Exercises ───────────────────────────────
   {
     pattern: /^\/exercises\/([^/]+)\/topics\/([^/]+)\/learn$/,
     parent: (match) => `/exercises/${match[1]}/topics/${match[2]}`,
@@ -59,7 +59,7 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/ship-operations\/([^/]+)$/, parent: () => '/ship-operations' },
   { pattern: /^\/ship-operations$/, parent: () => '/library' },
 
-  // ── Machine: topic detayları ───────────────────────────────
+  // ── Machine: topic details ───────────────────────────────
   // /machine/<topic>/topics/<sub> → /machine/<topic>/topics
   {
     pattern: /^\/machine\/([^/]+)\/topics\/([^/]+)$/,
@@ -71,7 +71,7 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/machine\/([^/]+)\/(topics|calculations|formulas|rules|assistant|quiz)$/,
     parent: () => '/lessons',
   },
-  // Eski /machine/<section> sayfaları → Hesaplamalar
+  // Eski /machine/<section> pages → Calculations
   {
     pattern: /^\/machine\/(calculations|formulas|rules|assistant|quiz)$/,
     parent: () => '/calculations',
@@ -106,7 +106,7 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/stability\/practical\/(tank|fwa|ghm)$/,
     parent: () => '/stability/practical',
   },
-  // Tüm stability alt sayfaları → Hesaplamalar (üst menü)
+  // All stability subpages → Calculations (top menu)
   {
     pattern: /^\/stability\/(assistant|rules|gz-imo|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
     parent: () => '/calculations',
@@ -166,7 +166,7 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/library$/, parent: () => '/' },
   { pattern: /^\/search$/, parent: () => '/' },
 
-  // ── Diğer hesaplama sayfaları ──────────────────────────────
+  // ── Other calculation pages ──────────────────────────────
   { pattern: /^\/ballast$/, parent: () => '/calculations' },
   { pattern: /^\/tank$/, parent: () => '/calculations' },
   { pattern: /^\/engine$/, parent: () => '/calculations' },
@@ -188,7 +188,7 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/moon-phases$/, parent: () => '/' },
   { pattern: /^\/clock$/, parent: () => '/' },
 
-  // ── Genel üst seviye ───────────────────────────────────────
+  // ── General upper level ───────────────────────────────────────
   { pattern: /^\/settings$/, parent: () => '/' },
   { pattern: /^\/maritime-news$/, parent: () => '/' },
   { pattern: /^\/passage-plan$/, parent: () => '/library' },

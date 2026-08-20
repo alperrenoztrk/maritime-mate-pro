@@ -155,7 +155,7 @@ export default function SignalTonePlayer({
       >
         {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
         <Volume2 className="h-3.5 w-3.5" />
-        <span className="text-xs">{playing ? "Durdur" : "play"}</span>
+        <span className="text-xs">{playing ? "Stop" : "play"}</span>
       </Button>
 
       {label ? <span className="text-xs text-muted-foreground">{label}</span> : null}

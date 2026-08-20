@@ -43,17 +43,17 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
       case 'high':
         return <Badge variant="destructive" className="gap-1">
           <AlertTriangle className="h-3 w-3" />
-          Yüksek Risk
+          High Risk
         </Badge>;
       case 'medium':
         return <Badge variant="outline" className="border-orange-500 text-orange-700 gap-1">
           <Info className="h-3 w-3" />
-          Orta Risk
+          Medium Risk
         </Badge>;
       case 'low':
         return <Badge variant="secondary" className="gap-1">
           <Info className="h-3 w-3" />
-          Düşük Risk
+          Low Risk
         </Badge>;
       default:
         return null;
@@ -168,7 +168,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
           <div className="bg-white dark:bg-gray-800/50 dark:bg-gray-700/50 rounded-lg p-3 space-y-2">
             <h4 className="font-semibold text-sm flex items-center gap-1">
               <Info className="h-4 w-4" />
-              Özellikler
+              Features
             </h4>
             <ul className="text-xs space-y-1">
               {cloud.characteristics.map((char, index) => (
@@ -190,7 +190,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
         )}>
           <Navigation className="h-4 w-4" />
           <AlertDescription className="text-sm">
-            <span className="font-semibold">Denizcilik Önemi:</span> {cloud.maritimeImportance}
+            <span className="font-semibold">Maritime Importance:</span> {cloud.maritimeImportance}
           </AlertDescription>
         </Alert>
 
@@ -198,17 +198,17 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
         <div className="grid grid-cols-3 gap-2 text-xs">
           <div className="bg-white dark:bg-gray-800/50 dark:bg-gray-700/50 rounded p-2 text-center">
             <Eye className="h-4 w-4 mx-auto mb-1 text-gray-600 dark:text-gray-400" />
-            <div className="font-semibold">Görüş</div>
+            <div className="font-semibold">Opinion</div>
             <div className="text-gray-700 dark:text-gray-300">{cloud.visibility}</div>
           </div>
           <div className="bg-white dark:bg-gray-800/50 dark:bg-gray-700/50 rounded p-2 text-center">
             <Wind className="h-4 w-4 mx-auto mb-1 text-gray-600 dark:text-gray-400" />
-            <div className="font-semibold">Rüzgar</div>
+            <div className="font-semibold">Wind</div>
             <div className="text-gray-700 dark:text-gray-300">{cloud.wind}</div>
           </div>
           <div className="bg-white dark:bg-gray-800/50 dark:bg-gray-700/50 rounded p-2 text-center">
             <Droplets className="h-4 w-4 mx-auto mb-1 text-gray-600 dark:text-gray-400" />
-            <div className="font-semibold">Yağış</div>
+            <div className="font-semibold">Precipitation</div>
             <div className="text-gray-700 dark:text-gray-300">{cloud.precipitation}</div>
           </div>
         </div>
@@ -222,7 +222,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
               </div>
               <div>
                 <h4 className="font-bold text-sm text-purple-900 dark:text-purple-100">
-                  Meteorolojik Uydu Kanalları
+                  Meteorological Satellite Channels
                 </h4>
               </div>
             </div>
@@ -247,7 +247,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
                   <Target className="h-5 w-5 shrink-0 text-yellow-700 dark:text-yellow-300" aria-hidden />
                   <div className="flex-1">
                     <div className="font-bold text-xs text-yellow-900 dark:text-yellow-100 mb-1">
-                      ÖNERİLEN PRİMER KANAL
+                      RECOMMENDED PRIMARY CHANNEL
                     </div>
                     <div className="text-xs text-yellow-800 dark:text-yellow-200 font-medium">
                       {cloud.bestDetectionChannel}
@@ -259,7 +259,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
             
             <div className="text-xs text-purple-600 dark:text-purple-300 italic pt-2 border-t border-purple-200 dark:border-purple-700">
               <Lightbulb className="mr-1 inline h-3.5 w-3.5 align-[-2px]" aria-hidden />
-              Bu kanallar EUMETSAT MSG uydu sisteminin spektral bantlarıdır
+              These channels are the spectral bands of the EUMETSAT MSG satellite system
             </div>
           </div>
         )}

@@ -79,7 +79,7 @@ export default function StabilityGZIMO() {
     <div className="container mx-auto p-6 space-y-4">
       <Card>
         <CardHeader>
-          <CardTitle>GZ Eğrisi ve IMO Kriterleri</CardTitle>
+          <CardTitle>GZ Curve and IMO Criteria</CardTitle>
           {/* Mod Seçimi */}
           <div className="flex gap-2 mt-4">
             <Button
@@ -90,7 +90,7 @@ export default function StabilityGZIMO() {
                 setAdvancedMode(false);
               }}
             >
-              Temel
+              Basic
             </Button>
             <Button
               variant={advancedMode ? "default" : "outline"}
@@ -100,14 +100,14 @@ export default function StabilityGZIMO() {
                 setBasicMode(false);
               }}
             >
-              İleri
+              Next
             </Button>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           {!!errors.length && (
             <Alert variant="destructive">
-              <AlertTitle>Girdi Hatası</AlertTitle>
+              <AlertTitle>Input Error</AlertTitle>
               <AlertDescription>
                 <ul className="list-disc ml-4">
                   {errors.map((e, i) => (<li key={i}>{e}</li>))}
@@ -120,7 +120,7 @@ export default function StabilityGZIMO() {
           {basicMode && (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div>
-                <Label>Uzunluk LBP (m)</Label>
+                <Label>Length LBP (m)</Label>
                 <Input type="number" value={geometry.length} onChange={handleChange('length')} />
               </div>
               <div>
@@ -132,7 +132,7 @@ export default function StabilityGZIMO() {
                 <Input type="number" value={geometry.draft} onChange={handleChange('draft')} />
               </div>
               <div>
-                <Label>Cb</Label>
+                <Label>C b</Label>
                 <Input type="number" step="0.01" value={geometry.blockCoefficient} onChange={handleChange('blockCoefficient')} />
               </div>
               <div>
@@ -146,7 +146,7 @@ export default function StabilityGZIMO() {
           {advancedMode && (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div>
-                <Label>Uzunluk LBP (m)</Label>
+                <Label>Length LBP (m)</Label>
                 <Input type="number" value={geometry.length} onChange={handleChange('length')} />
               </div>
               <div>
@@ -154,7 +154,7 @@ export default function StabilityGZIMO() {
                 <Input type="number" value={geometry.breadth} onChange={handleChange('breadth')} />
               </div>
               <div>
-                <Label>Derinlik D (m)</Label>
+                <Label>Depth D (m)</Label>
                 <Input type="number" value={geometry.depth} onChange={handleChange('depth')} />
               </div>
               <div>
@@ -162,7 +162,7 @@ export default function StabilityGZIMO() {
                 <Input type="number" value={geometry.draft} onChange={handleChange('draft')} />
               </div>
               <div>
-                <Label>Cb</Label>
+                <Label>C b</Label>
                 <Input type="number" step="0.01" value={geometry.blockCoefficient} onChange={handleChange('blockCoefficient')} />
               </div>
               <div>
@@ -178,7 +178,7 @@ export default function StabilityGZIMO() {
                 <Input type="number" step="0.01" value={geometry.prismaticCoefficient} onChange={handleChange('prismaticCoefficient')} />
               </div>
               <div>
-                <Label>Cvp</Label>
+                <Label>Ans.</Label>
                 <Input type="number" step="0.01" value={geometry.verticalPrismaticCoefficient} onChange={handleChange('verticalPrismaticCoefficient')} />
               </div>
               <div>
@@ -194,20 +194,20 @@ export default function StabilityGZIMO() {
             <Button variant="outline" className="gap-2" onClick={handleExportCsv}><Download className="h-4 w-4" /> CSV</Button>
             <Button variant="ghost" onClick={() => { setData(null); setImo(null); setErrors([]); }}>Temizle</Button>
             <Button variant="outline" onClick={() => setShowInfo(!showInfo)}>
-              {showInfo ? 'Bilgiyi Gizle' : 'IMO Bilgileri ve Kriterler'}
+              {showInfo ? 'Hide Information' : 'IMO Information and Criteria'}
             </Button>
           </div>
 
           {showInfo && (
             <Alert>
-              <AlertTitle>IMO Stabilite Kriterleri ve Formüller</AlertTitle>
+              <AlertTitle>IMO Stability Criteria and Formulas</AlertTitle>
               <AlertDescription className="space-y-2 text-sm">
                 <div><strong>Area 0-30°:</strong> ≥ 0.055 m·rad (3.15 m·derece)</div>
                 <div><strong>Area 0-40°:</strong> ≥ 0.090 m·rad (5.16 m·derece)</div>
                 <div><strong>Area 30-40°:</strong> ≥ 0.030 m·rad (1.72 m·derece)</div>
-                <div><strong>Max GZ:</strong> ≥ 0.20 m ve 30° veya daha büyük açıda</div>
-                <div><strong>GM₀:</strong> ≥ 0.15 m (küçük yük gemileri için)</div>
-                <div><strong>Vanishing Angle:</strong> ≥ 30° (tercihen ≥ 60°)</div>
+                <div><strong>Max GZ:</strong> ≥ 0.20 m and at an angle of 30° or greater</div>
+                <div><strong>GM₀:</strong> ≥ 0.15 m (for small cargo ships)</div>
+                <div><strong>Vanishing Angle:</strong> ≥ 30° (preferably ≥ 60°)</div>
                 <div className="text-xs text-muted-foreground mt-2">
                   Bu kriterler IMO MSC.267(85) ve SOLAS 2009'a göre temel gereksinimlerdir
                 </div>
@@ -241,11 +241,11 @@ export default function StabilityGZIMO() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Maks GZ</div>
+                  <div className="text-xs text-muted-foreground">Max GZ</div>
                   <div className="text-xl font-semibold">{data.maxGz.toFixed(3)} m</div>
                 </div>
                 <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Maks GZ Açısı</div>
+                  <div className="text-xs text-muted-foreground">Max GZ Angle</div>
                   <div className="text-xl font-semibold">{data.maxGzAngle}°</div>
                 </div>
                 <div className="rounded-md border p-3">
@@ -256,32 +256,32 @@ export default function StabilityGZIMO() {
 
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                 <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Alan (0–30°)</div>
+                  <div className="text-xs text-muted-foreground">Area (0–30°)</div>
                   <div className="text-xl font-semibold">{imo.area0to30.toFixed(3)} m·rad</div>
                 </div>
                 <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Alan (0–40°)</div>
+                  <div className="text-xs text-muted-foreground">Area (0–40°)</div>
                   <div className="text-xl font-semibold">{imo.area0to40.toFixed(3)} m·rad</div>
                 </div>
                 <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Alan (30–40°)</div>
+                  <div className="text-xs text-muted-foreground">Area (30–40°)</div>
                   <div className="text-xl font-semibold">{imo.area30to40.toFixed(3)} m·rad</div>
                 </div>
                 <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Uygunluk</div>
+                  <div className="text-xs text-muted-foreground">Eligibility</div>
                   <div className="text-xl font-semibold">{complianceText}</div>
                 </div>
               </div>
 
               {/* Basit GZ tablo önizlemesi */}
               <div className="rounded-md border p-3 overflow-auto max-h-80">
-                <div className="text-sm font-semibold mb-2">GZ Eğrisi (0–90°)</div>
+                <div className="text-sm font-semibold mb-2">GZ Curve (0–90°)</div>
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-muted-foreground">
                       <th className="text-left p-1">Angle (°)</th>
                       <th className="text-left p-1">GZ (m)</th>
-                      <th className="text-left p-1">Moment (kNm)</th>
+                      <th className="text-left p-1">Torque (kNm)</th>
                     </tr>
                   </thead>
                   <tbody>

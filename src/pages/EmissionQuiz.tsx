@@ -16,79 +16,79 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "CO₂ emisyonu hesaplamasında kullanılan temel iki parametre nedir?",
+    question: "What are the two main parameters used in CO₂ emission calculation?",
     options: [
-      "Draft ve trim değerleri",
-      "Yakıt tüketimi ve karbon faktörü (CF)",
-      "Rüzgâr hızı ve dalga yüksekliği",
-      "Motor devri ve tork"
+      "Draft and trim values",
+      "Fuel consumption and carbon factor (CF)",
+      "Wind speed and wave height",
+      "Engine speed and torque"
     ],
     correctAnswer: 1,
-    explanation: "CO₂ = Yakıt tüketimi (ton) × CF. Karbon faktörü yakıt türüne göre değişir (HFO: 3.114, MGO: 3.206)."
+    explanation: "CO₂ = Fuel consumption (tonnes) × CF. Carbon factor varies depending on fuel type (HFO: 3.114, MGO: 3.206)."
   },
   {
     id: 2,
-    question: "2020'den itibaren geçerli olan global kükürt limiti nedir?",
+    question: "What is the global sulfur limit effective from 2020?",
     options: [
-      "%3.5 m/m",
-      "%1.0 m/m",
-      "%0.50 m/m",
-      "%0.10 m/m"
+      "3.5% m/m",
+      "1.0% m/m",
+      "0.50% m/m",
+      "0.10% m/m"
     ],
     correctAnswer: 2,
-    explanation: "IMO 2020 kuralı ile global kükürt limiti %0.50 m/m olarak belirlenmiştir. ECA bölgelerinde %0.10 m/m uygulanır."
+    explanation: "With the IMO 2020 rule, the global sulfur limit is determined as 0.50% m/m. 0.10% m/m is applied in ECA zones."
   },
   {
     id: 3,
-    question: "CII (Carbon Intensity Indicator) hangi derecelendirme sistemini kullanır?",
+    question: "Which rating system does CII (Carbon Intensity Indicator) use?",
     options: [
-      "1-5 arası sayısal",
-      "A-E arası harf",
-      "Düşük-Orta-Yüksek",
-      "Yeşil-Sarı-Kırmızı"
+      "Numeric from 1 to 5",
+      "Letter A to E",
+      "Low-Medium-High",
+      "Green-Yellow-Red"
     ],
     correctAnswer: 1,
-    explanation: "CII, A (en iyi) ile E (en kötü) arasında harf derecelendirmesi kullanır. D veya E alan gemiler düzeltici aksiyon planı sunmalıdır."
+    explanation: "CII uses letter ratings from A (best) to E (worst). Ships receiving D or E must submit a corrective action plan."
   },
   {
     id: 4,
-    question: "Balast suyu değişimi (D-1 standardı) için minimum mesafe ve derinlik ne olmalıdır?",
+    question: "What should be the minimum distance and depth for ballast water exchange (D-1 standard)?",
     options: [
-      "50 nm, 50 m",
-      "100 nm, 100 m",
-      "200 nm, 200 m",
-      "300 nm, 300 m"
+      "50nm, 50m",
+      "100nm, 100m",
+      "200nm, 200m",
+      "300nm, 300m"
     ],
     correctAnswer: 2,
-    explanation: "D-1 standardına göre balast değişimi karadan en az 200 deniz mili uzakta ve 200 metre derinlikte yapılmalıdır."
+    explanation: "According to the D-1 standard, ballast replacement must be done at least 200 nautical miles from land and at a depth of 200 meters."
   },
   {
     id: 5,
-    question: "MARPOL Annex V'e göre plastik atıklar için denize deşarj kuralı nedir?",
+    question: "What is the discharge rule for plastic waste into the sea according to MARPOL Annex V?",
     options: [
-      "Karadan 12 nm sonra deşarj edilebilir",
-      "Karadan 25 nm sonra deşarj edilebilir",
-      "Tamamen yasaktır",
-      "Öğütülmüşse deşarj edilebilir"
+      "Can be discharged after 12 nm from land",
+      "Can be discharged after 25 nm from land",
+      "It is completely prohibited",
+      "Can be discharged if ground"
     ],
     correctAnswer: 2,
-    explanation: "Plastik atıkların denize deşarjı her koşulda ve her bölgede YASAKTIR."
+    explanation: "Discharge of plastic waste into the sea is PROHIBITED under all conditions and in all regions."
   },
   {
     id: 6,
-    question: "NOx emisyonu için Tier III standardı hangi bölgelerde zorunludur?",
+    question: "In which regions is the Tier III standard for NOx emissions mandatory?",
     options: [
-      "Tüm denizlerde",
-      "Sadece karasuları içinde",
-      "NECA (NOx Emission Control Areas) bölgelerinde",
-      "Sadece limanlarda"
+      "In all seas",
+      "Only within territorial waters",
+      "In NECA (NOx Emission Control Areas) regions",
+      "Only in ports"
     ],
     correctAnswer: 2,
-    explanation: "Tier III, 2016 sonrası inşa edilen gemiler için NECA bölgelerinde (Kuzey Amerika, Karayipler vb.) zorunludur."
+    explanation: "Tier III is mandatory in NECA regions (North America, Caribbean, etc.) for ships built after 2016."
   },
   {
     id: 7,
-    question: "EEXI sertifikası hangi tarihten itibaren zorunludur?",
+    question: "From what date is EEXI certification mandatory?",
     options: [
       "2020",
       "2021",
@@ -96,23 +96,23 @@ const questions: Question[] = [
       "2025"
     ],
     correctAnswer: 2,
-    explanation: "EEXI (Energy Efficiency Existing Ship Index) mevcut gemiler için 2023'ten itibaren zorunludur."
+    explanation: "EEXI (Energy Efficiency Existing Ship Index) is mandatory for existing ships from 2023."
   },
   {
     id: 8,
-    question: "Sintine suyu deşarjı için maksimum yağ içeriği ne olmalıdır?",
+    question: "What should be the maximum oil content for bilge water discharge?",
     options: [
       "5 ppm",
-      "10 ppm",
-      "15 ppm",
-      "25 ppm"
+      "10ppm",
+      "15ppm",
+      "25ppm"
     ],
     correctAnswer: 2,
-    explanation: "Sintine suyu deşarjı için yağ içeriği 15 ppm'den az olmalı ve onaylı yağ filtreleme ekipmanı kullanılmalıdır."
+    explanation: "For bilge water discharge, the oil content must be less than 15 ppm and approved oil filtration equipment must be used."
   },
   {
     id: 9,
-    question: "LNG yakıtının karbon faktörü (CF) nedir?",
+    question: "What is the carbon factor (CF) of LNG fuel?",
     options: [
       "3.114",
       "3.206",
@@ -120,19 +120,19 @@ const questions: Question[] = [
       "1.375"
     ],
     correctAnswer: 2,
-    explanation: "LNG için CF = 2.750 ton CO₂/ton yakıt. Bu değer HFO (3.114) ve MGO'dan (3.206) düşüktür."
+    explanation: "CF for LNG = 2,750 tonnes CO₂/tonne fuel. This value is lower than HFO (3.114) and MGO (3.206)."
   },
   {
     id: 10,
-    question: "IMO DCS (Data Collection System) hangi gemiler için zorunludur?",
+    question: "For which ships is IMO DCS (Data Collection System) mandatory?",
     options: [
-      "Tüm gemiler",
-      "400 GT üstü gemiler",
-      "5000 GT üstü gemiler",
-      "Sadece tankerler"
+      "All ships",
+      "Ships over 400 GT",
+      "Ships over 5000 GT",
+      "Tankers only"
     ],
     correctAnswer: 2,
-    explanation: "IMO DCS, 5000 GT ve üzeri uluslararası sefer yapan gemiler için zorunludur."
+    explanation: "IMO DCS is mandatory for ships of 5000 GT and above operating international voyages."
   }
 ];
 
@@ -191,7 +191,7 @@ export default function EmissionQuiz() {
             <Leaf className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
           </div>
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
-            Çevre Quiz
+            Environment Quiz
           </h1>
         </div>
 
@@ -199,8 +199,8 @@ export default function EmissionQuiz() {
           <Card className="border-border/60 bg-card/85 animate-fade-in">
             <CardHeader>
               <div className="flex justify-between items-center">
-                <CardTitle className="text-lg">Soru {currentQuestion + 1}/{questions.length}</CardTitle>
-                <span className="text-sm text-muted-foreground">Puan: {score}</span>
+                <CardTitle className="text-lg">Question {currentQuestion + 1}/{questions.length}</CardTitle>
+                <span className="text-sm text-muted-foreground">Score: {score}</span>
               </div>
               <div className="w-full bg-muted rounded-full h-2 mt-2">
                 <div 
@@ -264,9 +264,9 @@ export default function EmissionQuiz() {
             <CardContent className="pt-8 pb-8 space-y-6">
               <Trophy className="h-16 w-16 mx-auto text-amber-500" />
               <div>
-                <h2 className="text-2xl font-bold text-foreground">Quiz Tamamlandı!</h2>
+                <h2 className="text-2xl font-bold text-foreground">Quiz Completed!</h2>
                 <p className="text-muted-foreground mt-2">
-                  {questions.length} sorudan {score} tanesini doğru yanıtladınız
+                  {questions.length} sorudan {score} you answered one correctly
                 </p>
               </div>
 
@@ -275,7 +275,7 @@ export default function EmissionQuiz() {
               </div>
 
               <p className="text-sm text-muted-foreground">
-                {score >= 8 ? "Mükemmel! Çevre konusunda uzman seviyesindesiniz." :
+                {score >= 8 ? "Perfect! You are an expert on the environment." :
                  score >= 6 ? "Good morning my baby! With a little more work you can become perfect." :
                  "It is recommended that you study more."}
               </p>

@@ -14,228 +14,228 @@ interface RuleCategory {
 
 export const machineTopicRules: Record<string, RuleCategory[]> = {
   thermodynamics: [
-    { title: "SOLAS – Makine Dairesi Isı Yönetimi", source: { code: "SOLAS II-2/Reg.4", detail: "Hot surface and fuel leakage protection" }, rules: [
-      { subtitle: "Isı Yalıtımı", content: ["Yüzey sıcaklığı 220°C'yi aşan borular ve yüzeyler yalıtılmalıdır (SOLAS II-2/Reg.4)", "Yakıt sızıntısının sıcak yüzeylere temasını önleyecek koruma sacları gereklidir", "Egzoz manifold ve turboşarjer çevreleri düzenli kontrol edilmelidir"] },
-      { subtitle: "Isıtıcılar ve Isı Eşanjörleri", content: ["Buhar ısıtıcılarında emniyet valfi ve basınç göstergesi zorunludur", "Isı eşanjörlerinde bimetal termometre veya RTD ile sürekli sıcaklık izleme gereklidir"] },
+    { title: "SOLAS – Engine Room Thermal Management", source: { code: "SOLAS II-2/Reg.4", detail: "Hot surface and fuel leakage protection" }, rules: [
+      { subtitle: "Thermal Insulation", content: ["Pipes and surfaces with surface temperatures exceeding 220°C must be insulated (SOLAS II-2/Reg.4)", "Protection plates are required to prevent fuel leakage from contacting hot surfaces.", "Exhaust manifold and turbocharger surroundings should be checked regularly"] },
+      { subtitle: "Heaters and Heat Exchangers", content: ["Safety valve and pressure gauge are mandatory in steam heaters", "Continuous temperature monitoring with bimetallic thermometer or RTD is required in heat exchangers"] },
     ]},
-    { title: "Basınçlı Kaplar ve Buhar Sistemleri", source: { code: "Class Rules (IACS) / PED", detail: "Pressure equipment design and testing" }, rules: [
-      { subtitle: "Emniyet Valfleri", content: ["Buhar kazanlarında en az iki emniyet valfi bulunmalıdır", "Set basıncı tasarım basıncını aşmayacak şekilde ayarlanır (tipik ±%3)", "Valf açma kapasitesi tam yük buhar üretimini karşılamalıdır"] },
-      { subtitle: "Periyodik Test", content: ["Basınçlı kaplar için periyodik hidrostatik test: ≈ 1,5 × çalışma basıncı", "Su seviye göstergeleri ve düşük-su alarmı/kesme test edilmelidir"] },
+    { title: "Pressure Vessels and Steam Systems", source: { code: "Class Rules (IACS) / PED", detail: "Pressure equipment design and testing" }, rules: [
+      { subtitle: "Safety Valves", content: ["Steam boilers must have at least two safety valves", "The set pressure is adjusted so that it does not exceed the design pressure (typically ±3%)", "Valve opening capacity must accommodate full load steam production"] },
+      { subtitle: "Periodic Test", content: ["Periodic hydrostatic test for pressure vessels: ≈ 1.5 × working pressure", "Water level indicators and low-water alarm/cutout should be tested"] },
     ]},
-    { title: "Egzoz ve Atık Isı Geri Kazanım (WHRS)", source: { code: "MARPOL Annex VI / SOLAS II-2", detail: "Exhaust gas boiler and efficiency" }, rules: [
-      { subtitle: "Egzoz Gaz Ekonomizeri", content: ["Soot fire (kurum yangını) riskine karşı kuru/ıslak temizleme prosedürleri uygulanmalıdır", "Düşük yükte ekonomizer giriş sıcaklığı çiy noktası ve asit korozyonu açısından izlenmelidir"] },
-      { subtitle: "Atık Isı Değerlendirmesi", content: ["Atık ısı; tatlı su üreteci, yakıt/yağ ısıtma ve buhar üretimine yönlendirilerek verim artırılır"] },
+    { title: "Exhaust and Waste Heat Recovery (WHRS)", source: { code: "MARPOL Annex VI / SOLAS II-2", detail: "Exhaust gas boiler and efficiency" }, rules: [
+      { subtitle: "Exhaust Gas Economizer", content: ["Dry/wet cleaning procedures should be applied against the risk of soot fire.", "At low load the economizer inlet temperature should be monitored for dew point and acid corrosion"] },
+      { subtitle: "Waste Heat Evaluation", content: ["Atık ısı; tatlı su üreteci, yakıt/yağ ısıtma ve buhar üretimine yönlendirilerek verim artırılır"] },
     ]},
   ],
   "fluid-mechanics": [
-    { title: "Pompa ve Boru Standartları", source: { code: "SOLAS II-1/Reg.21", detail: "Bilge pumping arrangements" }, rules: [
-      { subtitle: "SOLAS – Sintine Pompaları", content: ["En az 2 bağımsız pompa gereklidir (SOLAS II-1/Reg.21)", "Acil sintine pompası makine dairesi dışından çalıştırılabilmelidir", "Sintine borusu çapı: d = 25 + 1,68√(L(B+D)) mm"] },
-      { subtitle: "Basınçlı Kaplar", content: ["Hava tankları klas kuruluşu sertifikalı olmalıdır", "Emniyet valfi set basıncı: nominal basıncın %10 fazlası", "Periyodik hidrostatik test: 1,5 × çalışma basıncı"] },
+    { title: "Pump and Pipe Standards", source: { code: "SOLAS II-1/Reg.21", detail: "Bilge pumping arrangements" }, rules: [
+      { subtitle: "SOLAS – Bilge Pumps", content: ["At least 2 independent pumps required (SOLAS II-1/Reg.21)", "The emergency bilge pump must be able to be operated from outside the engine room.", "Bilge pipe diameter: d = 25 + 1.68√(L(B+D)) mm"] },
+      { subtitle: "Pressure Vessels", content: ["Air tanks must be certified by the classification society", "Safety valve set pressure: 10% more than nominal pressure", "Periodic hydrostatic test: 1.5 × working pressure"] },
     ]},
-    { title: "Balast ve Boru Devreleri", source: { code: "SOLAS II-1 / BWM Convention", detail: "Ballast arrangement and treatment" }, rules: [
-      { subtitle: "Balast Sistemi", content: ["Balast pompaları ve borulaması yeterli yedeklilikte olmalıdır", "Ballast Water Management Convention (D-2) gereği arıtma sistemi kapasitesi balast pompa debisini karşılamalıdır"] },
-      { subtitle: "Vana ve İzolasyon", content: ["Su geçmez bölmeler arası borularda uygun izolasyon valfleri bulunmalıdır", "Cross-flooding tertibatları damage control planına uygun olmalıdır"] },
+    { title: "Ballast and Pipe Circuits", source: { code: "SOLAS II-1 / BWM Convention", detail: "Ballast arrangement and treatment" }, rules: [
+      { subtitle: "Ballast System", content: ["Ballast pumps and piping must have sufficient redundancy", "In accordance with the Ballast Water Management Convention (D-2), the treatment system capacity must meet the ballast pump flow rate."] },
+      { subtitle: "Valve and Insulation", content: ["Suitable isolation valves must be present in pipes between watertight compartments.", "Cross-flooding devices must comply with the damage control plan"] },
     ]},
-    { title: "Kavitasyon ve Basınçlı Hava", source: { code: "Klas / IACS UR", detail: "Pump NPSH and air circuit" }, rules: [
-      { subtitle: "NPSH ve Kavitasyon", content: ["Mevcut NPSH > gerekli NPSH olmalıdır; aksi halde kavitasyon ve aşınma oluşur", "Emme tarafı filtre/strainer basınç farkı izlenmelidir"] },
-      { subtitle: "Basınçlı Hava Devresi", content: ["Marş havası tankları en az iki adet ve toplam 12 ardışık marş kapasiteli olmalıdır (Klas)", "Hava devresinde emniyet valfi ve drenaj (su/yağ ayırıcı) bulunmalıdır"] },
+    { title: "Cavitation and Compressed Air", source: { code: "Class / IACS UR", detail: "Pump NPSH and air circuit" }, rules: [
+      { subtitle: "NPSH and Cavitation", content: ["Available NPSH > required NPSH; otherwise cavitation and wear will occur", "Suction side filter/strainer pressure difference should be monitored"] },
+      { subtitle: "Compressed Air Circuit", content: ["Starting air tanks must be at least two and have a total capacity of 12 consecutive starts (Class)", "There must be a safety valve and drainage (water/oil separator) in the air circuit."] },
     ]},
   ],
   "machine-elements": [
-    { title: "Malzeme ve Yapı Standartları", source: { code: "IACS UR M / ISO 10816-6", detail: "Material, shafting and vibration" }, rules: [
-      { subtitle: "Klas Gereklilikleri", content: ["Şaft hattı malzemeleri klas onaylı çelik olmalıdır", "Pervane şaftı çapı klas formülleriyle hesaplanır (IACS UR M68)", "Pervane malzemesi: CU1–CU4 sınıflandırmasına göre seçilir"] },
-      { subtitle: "Titreşim Limitleri", content: ["ISO 10816-6: gemi makineleri titreşim sınıflandırması", "Alarm: 11,2 mm/s (rms), Tehlike: 18 mm/s (rms)", "Torsiyonel titreşim analizi: barred speed range uygulaması"] },
+    { title: "Material and Construction Standards", source: { code: "IACS UR M / ISO 10816-6", detail: "Material, shafting and vibration" }, rules: [
+      { subtitle: "Class Requirements", content: ["Shaft line materials must be class approved steel", "Propeller shaft diameter is calculated by class formulas (IACS UR M68)", "Impeller material: Selected according to CU1–CU4 classification"] },
+      { subtitle: "Vibration Limits", content: ["ISO 10816-6: ship machinery vibration classification", "Alarm: 11.2 mm/s (rms), Danger: 18 mm/s (rms)", "Torsional vibration analysis: barred speed range application"] },
     ]},
-    { title: "Şaft, Yatak ve Pervane", source: { code: "IACS UR M68 / class rules", detail: "Propulsion system components" }, rules: [
-      { subtitle: "Şaft Boyutlandırma", content: ["Ara ve kuyruk şaftı çapları klas burulma/eğilme formülleriyle doğrulanır", "Stern tube yatak aşınması (wear-down) ölçülmeli, sınır değerleri izlenmelidir"] },
-      { subtitle: "Yatak ve Yağlama", content: ["Beyaz metal (white metal) yatak sıcaklığı izlenmeli, sınır aşımında alarm verilmelidir", "Yağlama film kalınlığı için minimum devir/sıcaklık koşulları korunmalıdır"] },
+    { title: "Shaft, Bearing and Propeller", source: { code: "IACS UR M68 / class rules", detail: "Propulsion system components" }, rules: [
+      { subtitle: "Shaft Sizing", content: ["Intermediate and tail shaft diameters are verified by classy torsional/bending formulas", "Stern tube bearing wear-down should be measured and limit values should be monitored"] },
+      { subtitle: "Bearing and Lubrication", content: ["White metal bearing temperature should be monitored and an alarm should be given if the limit is exceeded.", "Minimum speed/temperature conditions for lubrication film thickness must be maintained"] },
     ]},
-    { title: "Bağlantı Elemanları ve Muayene", source: { code: "Class / NDT standards", detail: "Bolting, welding and non-destructive examination" }, rules: [
-      { subtitle: "Cıvata ve Kaynak", content: ["Kritik cıvatalar tork/germe değerleriyle, üretici talimatına göre sıkılmalıdır", "Kaynak dikişleri onaylı prosedür (WPS) ve kalifiye kaynakçı ile yapılmalıdır"] },
-      { subtitle: "Tahribatsız Muayene (NDT)", content: ["Kritik bölgelerde MPI/UT/PT ile çatlak kontrolü periyodik yapılır", "Bulgular klas sörveyörüne raporlanır ve kayıt altına alınır"] },
+    { title: "Fasteners and Inspection", source: { code: "Class / NDT standards", detail: "Bolting, welding and non-destructive examination" }, rules: [
+      { subtitle: "Bolt and Weld", content: ["Critical bolts must be tightened to torque/tension values according to the manufacturer's instructions", "Welding seams must be done by approved procedure (WPS) and qualified welder"] },
+      { subtitle: "Non-Destructive Testing (NDT)", content: ["Crack control is carried out periodically with MPI/UT/PT in critical areas.", "Findings are reported to the class surveyor and recorded"] },
     ]},
   ],
   "diesel-engines": [
-    { title: "MARPOL Annex VI – Emisyon", source: { code: "MARPOL Annex VI Reg.13", detail: "NOx Tier I/II/III limits" }, rules: [
-      { subtitle: "NOx Limitleri", content: ["Tier I: ≤ 17 g/kWh (n < 130 rpm)", "Tier II: ≤ 14,4 g/kWh (n < 130 rpm)", "Tier III (ECA): ≤ 3,4 g/kWh (n < 130 rpm) — SCR veya EGR gerektirir"] },
-      { subtitle: "Motor Sertifikasyonu", content: ["EIAPP sertifikası her motor için zorunludur", "Teknik dosya (Technical File) gemide bulunmalıdır", "Motor parametreleri dosyadaki değerlerden sapmamalıdır"] },
+    { title: "MARPOL Annex VI – Emissions", source: { code: "MARPOL Annex VI Reg.13", detail: "NOx Tier I/II/III limits" }, rules: [
+      { subtitle: "NOx Limits", content: ["Tier I: ≤ 17 g/kWh (n < 130 rpm)", "Tier II: ≤ 14.4 g/kWh (n < 130 rpm)", "Tier III (ECA): ≤ 3.4 g/kWh (n < 130 rpm) — requires SCR or EGR"] },
+      { subtitle: "Engine Certification", content: ["EIAPP certification is mandatory for every engine", "Technical file must be on board", "Engine parameters should not deviate from the values in the file"] },
     ]},
-    { title: "Üretici ve Klas Gereklilikleri", source: { code: "Maker / Class PMS", detail: "Periodic maintenance intervals" }, rules: [
-      { subtitle: "Periyodik Kontroller", content: ["Silindir kapağı: her 8.000–16.000 çalışma saatinde kontrol", "Piston ve segman: her 16.000–24.000 saatte değişim/kontrol", "Krank yatakları: her 24.000 saatte krankcase açılarak kontrol"] },
-      { subtitle: "Performans İzleme", content: ["Maksimum yanma basıncı (Pmax), egzoz sıcaklıkları ve SFOC trend olarak izlenmelidir", "İndikatör diyagramı/PMI ile silindir dengesi kontrol edilir"] },
+    { title: "Manufacturer and Class Requirements", source: { code: "Maker / Class PMS", detail: "Periodic maintenance intervals" }, rules: [
+      { subtitle: "Periodic Checks", content: ["Cylinder head: check every 8,000–16,000 operating hours", "Piston and ring: change/check every 16,000–24,000 hours", "Crank bearings: checked by opening the crankcase every 24,000 hours"] },
+      { subtitle: "Performance Monitoring", content: ["Maximum combustion pressure (Pmax), exhaust temperatures and SFOC should be monitored as a trend", "Cylinder balance is checked with indicator diagram/PMI"] },
     ]},
-    { title: "Krank Karteri ve Emniyet Tertibatı", source: { code: "SOLAS II-1 / IACS UR M", detail: "Explosion protection and safety" }, rules: [
-      { subtitle: "Krank Karteri Koruması", content: ["≥ 200 mm çapındaki motorlarda krank karteri patlama tahliye valfi (relief valve) zorunludur", "Oil Mist Detector (OMD) veya yatak sıcaklık izleme sistemi bulunmalıdır"] },
-      { subtitle: "Marş Havası Güvenliği", content: ["Marş hava manifoldunda alev tutucu (flame arrester) ve patlama tahliyesi bulunmalıdır", "Aşırı hız (overspeed) koruması ve acil durdurma test edilmelidir"] },
+    { title: "Crankcase and Safety Device", source: { code: "SOLAS II-1 / IACS UR M", detail: "Explosion protection and safety" }, rules: [
+      { subtitle: "Crankcase Protection", content: ["A crankcase explosion relief valve is mandatory for engines with a diameter of ≥ 200 mm", "Must have Oil Mist Detector (OMD) or bearing temperature monitoring system"] },
+      { subtitle: "Starter Air Safety", content: ["There must be a flame arrester and explosion vent in the starter air manifold.", "Overspeed protection and emergency stop should be tested"] },
     ]},
   ],
   "ship-systems": [
-    { title: "Yakıt Sistemi Kuralları", source: { code: "ISO 8217 / MARPOL Annex I", detail: "Fuel quality and tank arrangement" }, rules: [
-      { subtitle: "ISO 8217 Yakıt Standardı", content: ["Bunker yakıtı ISO 8217 spesifikasyonlarına uygun olmalıdır", "BDN (Bunker Delivery Note) 3 yıl saklanmalıdır", "Yakıt numunesi MARPOL tahtında en az 12 ay muhafaza edilir"] },
-      { subtitle: "Yakıt Tankları", content: ["Çift cidarlı yakıt tankı: 600 DWT üzeri gemilerde zorunlu (MARPOL Annex I)", "Quick-closing valve: tüm yakıt tanklarında zorunlu", "Taşma alarmı ve yüksek seviye alarmı gereklidir"] },
+    { title: "Fuel System Rules", source: { code: "ISO 8217 / MARPOL Annex I", detail: "Fuel quality and tank arrangement" }, rules: [
+      { subtitle: "ISO 8217 Fuel Standard", content: ["Bunker fuel must comply with ISO 8217 specifications", "BDN (Bunker Delivery Note) must be kept for 3 years", "The fuel sample is kept under MARPOL for at least 12 months"] },
+      { subtitle: "Fuel Tanks", content: ["Double-walled fuel tank: Mandatory on ships over 600 DWT (MARPOL Annex I)", "Quick-closing valve: mandatory on all fuel tanks", "Overflow alarm and high level alarm are required"] },
     ]},
-    { title: "Yağlama ve Soğutma Sistemleri", source: { code: "Class Rules / Maker", detail: "LO and cooling circuit" }, rules: [
-      { subtitle: "Lubrication System", content: ["LO basıncı düşük basınç alarmı ve otomatik durdurma ile korunmalıdır", "LO filtre basınç farkı izlenmeli, by-pass durumunda alarm verilmelidir"] },
-      { subtitle: "Cooling System", content: ["Merkezi soğutma (HT/LT) devrelerinde sıcaklık ve basınç izlenir", "Deniz suyu sistemi anti-fouling/anodik koruma ile bakımlı tutulur"] },
+    { title: "Lubrication and Cooling Systems", source: { code: "Class Rules / Maker", detail: "LO and cooling circuit" }, rules: [
+      { subtitle: "Lubrication System", content: ["LO pressure must be protected by low pressure alarm and automatic stop", "LO filter pressure difference should be monitored and an alarm should be given in case of by-pass."] },
+      { subtitle: "Cooling System", content: ["Temperature and pressure are monitored in central cooling (HT/LT) circuits", "Seawater system is kept well maintained with anti-fouling/anodic protection"] },
     ]},
-    { title: "Dümen Donanımı", source: { code: "SOLAS II-1/Reg.29", detail: "Steering gear yedeklilik" }, rules: [
-      { subtitle: "Yedeklilik ve Performans", content: ["Ana dümen donanımı dümeni 35°–35° (karşı) 28 sn'de basabilmelidir", "Yardımcı dümen donanımı veya iki bağımsız güç ünitesi bulunmalıdır"] },
-      { subtitle: "Test ve Tatbikat", content: ["Kalkıştan önce 12 saat içinde dümen donanımı test edilmelidir", "Acil dümen tutma tatbikatı 3 ayda bir yapılmalıdır"] },
+    { title: "Steering Gear", source: { code: "SOLAS II-1/Reg.29", detail: "Steering gear yedeklilik" }, rules: [
+      { subtitle: "Redundancy and Performance", content: ["The main steering gear must be able to move the rudder 35°–35° (opposite) in 28 seconds.", "Auxiliary steering gear or two independent power units must be provided"] },
+      { subtitle: "Testing and Drill", content: ["Steering gear must be tested within 12 hours before departure", "Emergency steering drills should be performed every 3 months"] },
     ]},
   ],
   auxiliary: [
-    { title: "Yardımcı Makine Kuralları", source: { code: "SOLAS II-1/Reg.44", detail: "Emergency power and boiler safety" }, rules: [
-      { subtitle: "Jeneratör", content: ["Acil jeneratör 45 saniye içinde otomatik devreye girmelidir (SOLAS II-1/Reg.44)", "Acil jeneratör yakıt kapasitesi: min 18 saat (yolcu), min 18 saat (yük)", "Paralel çalışmada ters güç koruma (reverse power relay) zorunludur"] },
-      { subtitle: "Kazan", content: ["Emniyet valfi: set basıncın %3'ü içinde açmalıdır", "Su seviye alarmı: düşük-düşük seviyede otomatik kapama", "Alev izleme (flame eye): 5 saniye içinde alev yoksa yakıt kesintisi"] },
+    { title: "Auxiliary Machinery Rules", source: { code: "SOLAS II-1/Reg.44", detail: "Emergency power and boiler safety" }, rules: [
+      { subtitle: "Generator", content: ["The emergency generator must be activated automatically within 45 seconds (SOLAS II-1/Reg.44)", "Emergency generator fuel capacity: min 18 hours (passenger), min 18 hours (load)", "Reverse power relay is mandatory in parallel operation"] },
+      { subtitle: "Boiler", content: ["Safety valve: should open within 3% of set pressure", "Water level alarm: automatic shut-off at low-low level", "Flame monitoring (flame eye): If there is no flame within 5 seconds, fuel cut off"] },
     ]},
-    { title: "Separatör ve Hava Kompresörleri", source: { code: "MARPOL Annex I / Klas", detail: "OWS and compressed air" }, rules: [
-      { subtitle: "Yağlı Su Separatörü (OWS)", content: ["15 ppm alarm ve otomatik üç-yollu valf ile deniz deşarjı durdurulmalıdır", "OWS çıkış konsantrasyonu ≤ 15 ppm; Oil Record Book Part I kaydı tutulur"] },
-      { subtitle: "Hava Kompresörü", content: ["Marş havası tankları toplam 12 ardışık marş kapasiteli olmalıdır", "Emniyet valfi, drenaj ve aşırı sıcaklık koruması bulunmalıdır"] },
+    { title: "Separators and Air Compressors", source: { code: "MARPOL Annex I / Class", detail: "OWS and compressed air" }, rules: [
+      { subtitle: "Oily Water Separator (OWS)", content: ["Sea discharge must be stopped with 15 ppm alarm and automatic three-way valve", "OWS outlet concentration ≤ 15 ppm; Oil Record Book Part I record is kept"] },
+      { subtitle: "Air Compressor", content: ["Starting air tanks must have a total capacity of 12 consecutive starts", "There must be a safety valve, drainage and overtemperature protection."] },
     ]},
-    { title: "Tatlı Su ve Hidrofor", source: { code: "Class / Health Regulations", detail: "Drinking water and evaporator" }, rules: [
-      { subtitle: "Fresh Water Generator", content: ["Limanlara/kıyıya yakın bölgelerde (genelde < 12 nm) evaporatör çalıştırılmamalıdır", "Üretilen su mineralizasyon/dezenfeksiyon (UV veya klorlama) ile içilebilir hale getirilir"] },
-      { subtitle: "Hidrofor Sistemi", content: ["İçme suyu tankları kapalı ve kontamine olmayacak şekilde havalandırılmalıdır", "Periyodik su analizi (mikrobiyolojik) yapılmalıdır"] },
+    { title: "Fresh Water and Hydrophore", source: { code: "Class / Health Regulations", detail: "Drinking water and evaporator" }, rules: [
+      { subtitle: "Fresh Water Generator", content: ["The evaporator should not be operated in areas close to ports/shores (usually < 12 nm)", "Produced water is made drinkable by mineralization/disinfection (UV or chlorination)"] },
+      { subtitle: "Hydrophore System", content: ["Drinking water tanks should be closed and ventilated to avoid contamination.", "Periodic water analysis (microbiological) should be performed"] },
     ]},
   ],
   "fuel-technology": [
-    { title: "Yakıt Kalite ve Yönetim Kuralları", source: { code: "MARPOL Annex VI Reg.14/18", detail: "Sulphur limit and fuel quality" }, rules: [
-      { subtitle: "MARPOL Annex VI – Kükürt", content: ["Global kükürt limiti: %0,50 m/m (2020 sonrası)", "ECA bölgeleri: %0,10 m/m", "Scrubber kullanımında yıkama suyu kriterleri: pH ≥ 6,5, PAH ≤ 50 μg/L"] },
-      { subtitle: "Yakıt Değişim Prosedürü", content: ["HFO → MGO geçişinde sıcaklık farkı max 2°C/dk olmalıdır", "Termal şok riski: ani soğuma pompa ve enjektörlere zarar verir", "Değişim süresi ve tanklar seyir jurnalinde kayıt altına alınmalıdır"] },
+    { title: "Fuel Quality and Management Rules", source: { code: "MARPOL Annex VI Reg.14/18", detail: "Sulphur limit and fuel quality" }, rules: [
+      { subtitle: "MARPOL Annex VI – Sulfur", content: ["Global sulfur limit: 0.50% m/m (after 2020)", "ECA zones: 0.10% m/m", "Washing water criteria when using scrubber: pH ≥ 6.5, PAH ≤ 50 μg/L"] },
+      { subtitle: "Fuel Change Procedure", content: ["The temperature difference in the HFO → MGO transition should be maximum 2°C/min", "Risk of thermal shock: sudden cooling damages pumps and injectors", "Change time and tanks must be recorded in the logbook."] },
     ]},
-    { title: "Bunker Operasyonu", source: { code: "MARPOL Annex VI Reg.18 / ISGOTT", detail: "BDN, sampling and safety" }, rules: [
-      { subtitle: "Bunker Prosedürü", content: ["Bunker öncesi checklist, kör tapa kontrolü ve SOPEP/dökülme ekipmanı hazır olmalıdır", "Manifold çevresinde drip tray ve scupper tıpaları yerinde olmalıdır"] },
-      { subtitle: "BDN ve Numune", content: ["BDN en az 3 yıl saklanır; MARPOL numunesi mühürlü olarak en az 12 ay muhafaza edilir", "Numune alma sürekli damlatma (drip) yöntemiyle temsil edici olmalıdır"] },
+    { title: "Operation Bunker", source: { code: "MARPOL Annex VI Reg.18 / ISGOTT", detail: "BDN, sampling and safety" }, rules: [
+      { subtitle: "Bunker Procedure", content: ["Pre-bunker checklist, blind plug control and SOPEP/spill equipment must be ready", "Drip tray and scupper stoppers must be in place around the manifold."] },
+      { subtitle: "BDN and Sample", content: ["BDN is stored for at least 3 years; MARPOL sample is kept sealed for at least 12 months", "Sampling should be representative by continuous drip method."] },
     ]},
-    { title: "ISO 8217 Spesifikasyonu", source: { code: "ISO 8217", detail: "Marine fuel spesifikasyon parametreleri" }, rules: [
-      { subtitle: "Kritik Parametreler", content: ["Viskozite, yoğunluk, kükürt, su, kül, CCAI ve sediment (TSP) sınır değerleri kontrol edilir", "Cat fines (Al+Si) ≤ 60 mg/kg (teslim); motor girişinde tipik hedef ≤ 15 mg/kg"] },
-      { subtitle: "Uyumsuz Yakıt", content: ["Spesifikasyon dışı yakıt için tedarikçiye bildirim ve gerekirse de-bunkering değerlendirilir", "Stabilite/uyumsuzluk (sludge) riskine karşı farklı yakıtların karışımından kaçınılır"] },
+    { title: "ISO 8217 Specification", source: { code: "ISO 8217", detail: "Marine fuel spesifikasyon parametreleri" }, rules: [
+      { subtitle: "Critical Parameters", content: ["Viscosity, density, sulfur, water, ash, CCAI and sediment (TSP) limit values are checked", "Cat fines (Al+Si) ≤ 60 mg/kg (delivered); Typical target at engine inlet ≤ 15 mg/kg"] },
+      { subtitle: "Incompatible Fuel", content: ["Notification to the supplier for out-of-specification fuel and de-bunkering if necessary is evaluated", "Mixing of different fuels is avoided due to the risk of instability/sludge"] },
     ]},
   ],
   "cooling-hvac": [
-    { title: "Soğutucu Akışkan Kuralları", source: { code: "Kigali / Montreal Protocol", detail: "HFC reduction and leak management" }, rules: [
-      { subtitle: "Kigali Değişikliği (Montreal Protokolü)", content: ["HFC akışkanların (R-134a, R-404A) kademeli azaltılması zorunludur", "Yeni sistemlerde düşük GWP akışkanlar tercih edilmelidir (R-290, R-744)", "Kaçak tespiti: yıllık kontrol ve kayıt zorunludur"] },
-      { subtitle: "SOLAS – Soğutma Güvenliği", content: ["Soğutucu gaz kaçak alarmı: makine kontrol odasında gösterilmelidir", "NH₃ (R-717) sistemlerinde solunum cihazı ve alarm sistemi zorunludur", "Makine dairesi ventilatörleri kaçak durumunda otomatik devreye girmelidir"] },
+    { title: "Refrigerant Rules", source: { code: "Kigali / Montreal Protocol", detail: "HFC reduction and leak management" }, rules: [
+      { subtitle: "Kigali Amendment (Montreal Protocol)", content: ["Gradual reduction of HFC fluids (R-134a, R-404A) is mandatory", "Low GWP fluids should be preferred in new systems (R-290, R-744)", "Leak detection: annual inspection and registration is mandatory"] },
+      { subtitle: "SOLAS – Refrigeration Safety", content: ["Refrigerant gas leak alarm: should be displayed in the machine control room", "Breathing apparatus and alarm system are mandatory in NH₃ (R-717) systems", "Engine room ventilators should be activated automatically in case of leakage"] },
     ]},
-    { title: "Gıda Soğutma ve Hijyen", source: { code: "SOLAS / Health Regulations", detail: "Cold store and food safety" }, rules: [
-      { subtitle: "Soğuk Depo Sıcaklıkları", content: ["Donmuş gıda depoları tipik ≤ −18°C tutulur; sıcaklık sürekli izlenmelidir", "Farklı gıda grupları için ayrı soğutma odaları/sıcaklıkları sağlanmalıdır"] },
-      { subtitle: "Hijyen ve Bakım", content: ["Defrost ve temizlik periyodik yapılmalı, drenajlar açık tutulmalıdır", "Sıcaklık kayıtları (data logger) tutulmalıdır"] },
+    { title: "Food Cooling and Hygiene", source: { code: "SOLAS / Health Regulations", detail: "Cold store and food safety" }, rules: [
+      { subtitle: "Cold Storage Temperatures", content: ["Frozen food stores are typically kept ≤ −18°C; temperature must be constantly monitored", "Separate cooling rooms/temperatures should be provided for different food groups"] },
+      { subtitle: "Hygiene and Maintenance", content: ["Defrosting and cleaning should be done periodically and drains should be kept open.", "Temperature records (data logger) should be kept"] },
     ]},
-    { title: "Klima ve Havalandırma (HVAC)", source: { code: "ISO 7547 / Klas", detail: "Comfort air conditioning and space ventilation" }, rules: [
-      { subtitle: "Konfor Klima", content: ["Yaşam mahalleri için tasarım sıcaklık ve nem koşulları (ISO 7547) sağlanmalıdır", "Taze hava debisi ve filtrasyon iç hava kalitesi için yeterli olmalıdır"] },
-      { subtitle: "Makine Dairesi Havalandırması", content: ["Yanma havası ve mahal soğutması için yeterli fan kapasitesi bulunmalıdır", "Yangında ventilatör uzaktan durdurma ve damper kapatma sağlanmalıdır"] },
+    { title: "Air Conditioning and Ventilation (HVAC)", source: { code: "ISO 7547 / Class", detail: "Comfort air conditioning and space ventilation" }, rules: [
+      { subtitle: "Comfort Air Conditioning", content: ["Design temperature and humidity conditions (ISO 7547) must be met for living spaces", "Fresh air flow and filtration should be sufficient for indoor air quality"] },
+      { subtitle: "Engine Room Ventilation", content: ["There must be sufficient fan capacity for combustion air and space cooling.", "Ventilator remote stop and damper closure should be provided in case of fire"] },
     ]},
   ],
   electrical: [
-    { title: "IEC 60092 – Gemi Elektrik Standartları", source: { code: "IEC 60092 / SOLAS II-1", detail: "Distribution and emergency power" }, rules: [
-      { subtitle: "Dağıtım Sistemi", content: ["Ana dağıtım sistemi genellikle IT (izole nötr) topraklı olmalıdır", "Toprak kaçağı izleme cihazı zorunludur (IEC 60092-502)", "Selektif koruma: kademe ayarları doğru yapılmalıdır"] },
-      { subtitle: "Acil Güç", content: ["Acil switchboard ana switchboard'dan ayrı bölmede bulunmalıdır", "Acil güç kaynakları: navigasyon ışıkları, alarm sistemleri, acil aydınlatma, yangın pompaları", "Geçiş süresi: 45 saniye içinde tam yük beslemesi (SOLAS II-1/Reg.44)"] },
+    { title: "IEC 60092 – Ship Electrical Standards", source: { code: "IEC 60092 / SOLAS II-1", detail: "Distribution and emergency power" }, rules: [
+      { subtitle: "Distribution System", content: ["The main distribution system should usually be IT (isolated neutral) grounded", "Earth leakage monitoring device is mandatory (IEC 60092-502)", "Selective protection: step settings must be made correctly"] },
+      { subtitle: "Emergency Power", content: ["Emergency switchboard must be located in a separate compartment from the main switchboard.", "Emergency power sources: navigation lights, alarm systems, emergency lighting, fire pumps", "Transition time: full load supply within 45 seconds (SOLAS II-1/Reg.44)"] },
     ]},
-    { title: "Akü ve Acil Aydınlatma", source: { code: "SOLAS II-1 / III", detail: "Transitional emergency power and lighting" }, rules: [
-      { subtitle: "Akü Sistemleri", content: ["Akü odası uygun şekilde havalandırılmalı (hidrojen birikimi önlenmeli)", "Geçici acil güç kaynağı (akü) acil jeneratör devreye girene kadar besleme sağlar"] },
-      { subtitle: "Acil Aydınlatma ve İşaret", content: ["Kaçış yolları ve toplanma yerlerinde acil aydınlatma süresi gereği karşılanmalıdır", "Düşük konumlu aydınlatma (LLL) ve işaretlemeler bakımlı olmalıdır"] },
+    { title: "Battery and Emergency Lighting", source: { code: "SOLAS II-1 / III", detail: "Transitional emergency power and lighting" }, rules: [
+      { subtitle: "Battery Systems", content: ["The battery room must be properly ventilated (hydrogen accumulation must be prevented)", "Temporary emergency power supply (battery) provides power until the emergency generator is activated"] },
+      { subtitle: "Emergency Lighting and Sign", content: ["Emergency lighting duration must be met in escape routes and assembly areas.", "Low-lying lighting (LLL) and markings must be well-maintained"] },
     ]},
-    { title: "Yüksek Gerilim (HV) Emniyeti", source: { code: "IEC 60092-503", detail: "HV system safety" }, rules: [
-      { subtitle: "HV Çalışma Güvenliği", content: ["HV ekipmanda çalışma için permit-to-work, izolasyon ve topraklama (LOTO) uygulanır", "Yetkili personel ve uygun KKD (ark flash) gereklidir"] },
-      { subtitle: "Koruma ve Topraklama", content: ["Kilitleme (interlock) ve test/ölçüm prosedürleri uygulanmalıdır", "Toprak hatası ve aşırı akım koruması selektif ayarlanmalıdır"] },
+    { title: "High Voltage (HV) Safety", source: { code: "IEC 60092-503", detail: "HV system safety" }, rules: [
+      { subtitle: "HV Operation Safety", content: ["Permit-to-work, isolation and grounding (LOTO) applies for work on HV equipment", "Qualified personnel and appropriate PPE (arc flash) required"] },
+      { subtitle: "Protection and Grounding", content: ["Interlocking and test/measurement procedures must be applied", "Ground fault and overcurrent protection must be set selectively"] },
     ]},
   ],
   automation: [
-    { title: "Otomasyon Standartları", source: { code: "SOLAS II-1/Reg.51 / IACS UR E", detail: "Alarm and UMS requirements" }, rules: [
-      { subtitle: "Alarm Sistemi (SOLAS II-1/Reg.51)", content: ["Alarm sistemi bağımsız güç kaynağına sahip olmalıdır", "Kabul edilmemiş alarm 30 dakikada tekrar uyarı vermelidir", "Kabin alarmı: kritik alarmlar mürettebat kamaralarına iletilmelidir"] },
-      { subtitle: "Periyodsuz Makine Dairesi (UMS)", content: ["UMS sertifikası için tüm kritik parametreler izlenmelidir", "Köprüüstü alarm paneli: ana makine, jeneratör ve tank seviyeleri", "Fire detection: makine dairesi yangın algılama bağımsız olmalıdır"] },
+    { title: "Automation Standards", source: { code: "SOLAS II-1/Reg.51 / IACS UR E", detail: "Alarm and UMS requirements" }, rules: [
+      { subtitle: "Alarm System (SOLAS II-1/Reg.51)", content: ["The alarm system must have independent power supply", "Unacknowledged alarm must alert again in 30 minutes", "Cabin alarm: critical alarms must be transmitted to crew quarters"] },
+      { subtitle: "Periodless Engine Room (UMS)", content: ["All critical parameters must be monitored for UMS certification", "Bridge alarm panel: main engine, generator and tank levels", "Fire detection: engine room fire detection must be independent"] },
     ]},
-    { title: "İzleme ve Kontrol Sistemleri", source: { code: "IACS UR E10/E22", detail: "Sensors, PLC and type approval" }, rules: [
-      { subtitle: "Sensör ve Ölçüm", content: ["Kritik ölçümlerde yedeklilik (redundancy) ve hata güvenli (fail-safe) tasarım uygulanır", "Sensör kalibrasyonu periyodik yapılmalı ve kayıt tutulmalıdır"] },
-      { subtitle: "PLC/DCS ve Tip Onayı", content: ["Kontrol donanımı klas tip onaylı (EMC, çevresel test) olmalıdır", "Yazılım değişiklikleri yönetim altında (versiyon kontrol) yapılmalıdır"] },
+    { title: "Monitoring and Control Systems", source: { code: "IACS UR E10/E22", detail: "Sensors, PLC and type approval" }, rules: [
+      { subtitle: "Sensor and Measurement", content: ["Redundancy and fail-safe design is applied in critical measurements", "Sensor calibration should be done periodically and records should be kept."] },
+      { subtitle: "PLC/DCS and Type Approval", content: ["Control equipment must be class type approved (EMC, environmental testing)", "Software changes must be made under management (version control)"] },
     ]},
-    { title: "Siber Güvenlik (OT)", source: { code: "IMO MSC-FAL.1/Circ.3 / IACS UR E26-E27", detail: "Ship cyber risk management" }, rules: [
-      { subtitle: "Risk Yönetimi", content: ["Siber riskler SMS (ISM) kapsamında değerlendirilmelidir (2021 sonrası)", "OT/IT ağ ayrımı ve erişim kontrolü uygulanmalıdır"] },
-      { subtitle: "Süreklilik ve Yedekleme", content: ["Kritik sistem yapılandırmaları yedeklenmeli, geri yükleme test edilmelidir", "USB/taşınabilir medya ve uzaktan erişim kontrol altında tutulmalıdır"] },
+    { title: "Cyber Security (OT)", source: { code: "IMO MSC-FAL.1/Circ.3 / IACS UR E26-E27", detail: "Ship cyber risk management" }, rules: [
+      { subtitle: "Risk Management", content: ["Cyber risks should be evaluated within the scope of SMS (ISM) (after 2021)", "OT/IT network separation and access control must be implemented"] },
+      { subtitle: "Continuity and Backup", content: ["Critical system configurations should be backed up, restoration tested", "USB/portable media and remote access must be kept under control"] },
     ]},
   ],
   "engine-room-ops": [
-    { title: "Operasyon Kuralları", source: { code: "STCW A-VIII/2 / ISM Code", detail: "Watchkeeping and procedures" }, rules: [
-      { subtitle: "STCW – Vardiya Tutma", content: ["Makine vardiyası: STCW Code A-VIII/2 bölümüne göre düzenlenir", "Min. dinlenme: 10 saat/24 saat periyodunda", "Vardiya devir teslimi: tüm çalışan sistemlerin durumu aktarılmalıdır"] },
-      { subtitle: "ISM Code – Prosedürler", content: ["Tüm kritik operasyonlar için yazılı prosedür bulunmalıdır", "Prosedür sapmaları raporlanmalı ve kök neden analizi yapılmalıdır", "Acil durum tatbikatları: aylık yapılmalı ve kaydedilmelidir"] },
+    { title: "Operation Rules", source: { code: "STCW A-VIII/2 / ISM Code", detail: "Watchkeeping and procedures" }, rules: [
+      { subtitle: "STCW – Watch Keeping", content: ["Machinery watch: Regulated in accordance with STCW Code A-VIII/2", "Min. rest: in a 10 hour/24 hour period", "Watch handover: the status of all running systems must be transferred"] },
+      { subtitle: "ISM Code – Procedures", content: ["There must be a written procedure for all critical operations.", "Procedure deviations should be reported and root cause analysis performed", "Emergency drills: should be conducted monthly and recorded"] },
     ]},
-    { title: "Çalışma ve Dinlenme Saatleri", source: { code: "STCW A-VIII/1 / MLC 2006", detail: "Fatigue prevention" }, rules: [
-      { subtitle: "Dinlenme Limitleri", content: ["Min. 10 saat dinlenme/24 saat ve 77 saat/7 gün sağlanmalıdır", "Dinlenme en çok iki parçaya bölünebilir; bir parça ≥ 6 saat olmalıdır"] },
-      { subtitle: "Kayıt ve İzleme", content: ["Çalışma/dinlenme saatleri kaydı tutulmalı ve denetime hazır olmalıdır", "İstisnalar (exemption) yönetmelik sınırları içinde kalmalıdır"] },
+    { title: "Working and Rest Hours", source: { code: "STCW A-VIII/1 / MLC 2006", detail: "Fatigue prevention" }, rules: [
+      { subtitle: "Rest Limits", content: ["Min. 10 hours rest/24 hours and 77 hours/7 days should be provided", "Rest can be divided into two parts at most; one piece must be ≥ 6 hours"] },
+      { subtitle: "Recording and Monitoring", content: ["A record of working/rest hours must be kept and be available for audit.", "Exceptions must remain within the limits of the regulation."] },
     ]},
-    { title: "Manevra ve Köprü-Makine Koordinasyonu", source: { code: "ISM / Bridge-Engine Procedures", detail: "Stand-by and communications" }, rules: [
-      { subtitle: "Stand-by Operasyonu", content: ["Manevra öncesi ana makine, dümen ve yardımcılar test edilmeli (pre-arrival checklist)", "Telegraph/komut uyumu ve geri besleme doğrulanmalıdır"] },
-      { subtitle: "İletişim", content: ["Köprü-makine arası net komut ve onay (closed-loop) iletişimi uygulanır", "Kritik durumlar (blackout, kontrol kaybı) için acil prosedürler hazır olmalıdır"] },
+    { title: "Maneuvering and Bridge-Machine Coordination", source: { code: "ISM / Bridge-Engine Procedures", detail: "Stand-by and communications" }, rules: [
+      { subtitle: "Stand-by Operation", content: ["Main engine, rudder and auxiliaries should be tested before the maneuver (pre-arrival checklist).", "Telegraph/command compliance and feedback must be verified"] },
+      { subtitle: "Contact", content: ["Clear command and confirmation (closed-loop) communication between the bridge and the machine is implemented", "Emergency procedures should be ready for critical situations (blackout, loss of control)"] },
     ]},
   ],
   maintenance: [
-    { title: "Bakım Kuralları", source: { code: "Class Rules / ISM Code", detail: "PMS and survey regime" }, rules: [
-      { subtitle: "Klas Gereklilikleri", content: ["PMS (Planned Maintenance System): tüm ekipman bakım kayıtları tutulmalıdır", "Özel survey (Special Survey): her 5 yılda bir tam kapsamlı kontrol", "Intermediate survey: 2,5 yıl ± 6 ay aralığında", "Continuous survey: belirli makine grupları sıralı olarak kontrol edilir"] },
-      { subtitle: "ISM Code – Bakım", content: ["Kritik ekipman tanımlanmalı ve öncelikli bakım planına alınmalıdır", "Bakım kayıtlarında: tarih, yapılan iş, yedek parça, ölçüm sonuçları", "Arıza ve yakın-arıza (near-miss) olayları raporlanmalıdır"] },
+    { title: "Maintenance Rules", source: { code: "Class Rules / ISM Code", detail: "PMS and survey regime" }, rules: [
+      { subtitle: "Class Requirements", content: ["PMS (Planned Maintenance System): all equipment maintenance records must be kept", "Special survey: full comprehensive check every 5 years", "Intermediate survey: within 2.5 years ± 6 months", "Continuous survey: specific groups of machines are checked sequentially"] },
+      { subtitle: "ISM Code – Maintenance", content: ["Critical equipment should be identified and placed on a priority maintenance plan", "In maintenance records: date, work done, spare parts, measurement results", "Malfunction and near-miss events must be reported"] },
     ]},
-    { title: "Sörvey Rejimi ve Durum İzleme", source: { code: "IACS / Klas", detail: "Survey types and CBM" }, rules: [
-      { subtitle: "Survey Tipleri", content: ["Yıllık (Annual), Ara (Intermediate) ve Özel (Special/Renewal) sörveyler periyodik yapılır", "Karina (drydocking) sörveyi tipik 5 yılda iki kez (en çok 36 ay arayla)"] },
-      { subtitle: "Durum Bazlı Bakım (CBM)", content: ["Titreşim, yağ analizi ve termografi ile durum izleme yapılır", "Onaylı PMS/CM düzeni ile sörvey kredisi alınabilir (klas onayı şart)"] },
+    { title: "Survey Regime and Condition Monitoring", source: { code: "IACS / Class", detail: "Survey types and CBM" }, rules: [
+      { subtitle: "Survey Types", content: ["Annual, Intermediate and Special/Renewal surveys are carried out periodically", "Hull (drydocking) survey typically twice every 5 years (maximum 36 months apart)"] },
+      { subtitle: "Condition Based Maintenance (CBM)", content: ["Condition monitoring via vibration, oil analysis and thermography", "Survey credit can be obtained with the approved PMS/CM scheme (class approval required)"] },
     ]},
-    { title: "Yedek Parça ve Kritik Ekipman", source: { code: "ISM Code", detail: "Critical equipment and spares" }, rules: [
-      { subtitle: "Kritik Ekipman Yönetimi", content: ["Ani arızada güvenliği etkileyen ekipman 'kritik' tanımlanır ve test rejimine alınır", "Yedek/standby ekipman için periyodik çalıştırma (changeover) yapılır"] },
-      { subtitle: "Yedek Parça Stoğu", content: ["Klas/idare tarafından istenen minimum yedek parça gemide bulundurulur", "Stok seviyeleri ve teslim süreleri PMS ile takip edilir"] },
+    { title: "Spare Parts and Critical Equipment", source: { code: "ISM Code", detail: "Critical equipment and spares" }, rules: [
+      { subtitle: "Critical Equipment Management", content: ["Equipment that affects safety in case of sudden failure is defined as 'critical' and placed in the testing regime", "Periodic operation (changeover) is performed for spare/standby equipment."] },
+      { subtitle: "Spare Parts Stock", content: ["Minimum spare parts required by the class/management are kept on board.", "Stock levels and delivery times are tracked via PMS"] },
     ]},
   ],
   "engine-room-safety": [
-    { title: "Makine Dairesi Güvenlik Kuralları", source: { code: "SOLAS II-2", detail: "Fire safety and emergency shutdown" }, rules: [
-      { subtitle: "SOLAS II-2 – Yangın Güvenliği", content: ["Makine dairesi A-60 sınıfı bölmelerle çevrilmelidir", "Sabit CO₂ veya FM-200 söndürme sistemi zorunludur", "Hızlı kapatma (quick-closing) valfleri makine dairesi dışından çalışmalıdır", "Ventilatör kapatma: makine dairesi dışından durdurulabilmelidir"] },
-      { subtitle: "Acil Durdurma", content: ["Ana makine acil durdurma: köprüüstünden ve makine kontrol odasından", "Yakıt pompaları: makine dairesi dışından durdurulabilmeli", "Ventilatörler: yangın durumunda otomatik veya uzaktan kapatılmalı"] },
+    { title: "Engine Room Safety Rules", source: { code: "SOLAS II-2", detail: "Fire safety and emergency shutdown" }, rules: [
+      { subtitle: "SOLAS II-2 – Fire Safety", content: ["The engine room must be surrounded by A-60 class partitions", "Fixed CO₂ or FM-200 extinguishing system is mandatory", "Quick-closing valves must operate from outside the engine room", "Ventilator shutdown: must be able to be stopped from outside the engine room"] },
+      { subtitle: "Emergency Stop", content: ["Main engine emergency stop: from the bridge and machine control room", "Fuel pumps: must be able to be stopped from outside the engine room", "Ventilators: must be shut down automatically or remotely in case of fire"] },
     ]},
-    { title: "Kapalı Alana Giriş", source: { code: "SOLAS III/19 / IMO Res.A.1050(27)", detail: "Enclosed space entry" }, rules: [
-      { subtitle: "Atmosfer Ölçümü", content: ["Girişten önce O₂ ≥ %20,9, toksik gaz ve LEL ölçümü yapılmalıdır", "Ölçüm çoklu seviyelerde (üst/orta/alt) ve sürekli izlemeyle desteklenmelidir"] },
-      { subtitle: "Permit ve Tatbikat", content: ["Permit-to-work, gözcü (stand-by) ve kurtarma planı zorunludur", "Kapalı alana giriş ve kurtarma tatbikatı 2 ayda bir yapılmalıdır (SOLAS III/19)"] },
+    { title: "Entry to Confined Space", source: { code: "SOLAS III/19 / IMO Res.A.1050(27)", detail: "Enclosed space entry" }, rules: [
+      { subtitle: "Atmosphere Measurement", content: ["O₂ ≥ 20.9%, toxic gas and LEL should be measured before entry", "Measurement should be supported at multiple levels (top/middle/bottom) and continuous monitoring"] },
+      { subtitle: "Permit and Drill", content: ["Permit-to-work, stand-by and rescue plan are mandatory", "Confined space entry and rescue drills should be carried out every 2 months (SOLAS III/19)"] },
     ]},
-    { title: "Sabit Söndürme Sistemleri (FSS)", source: { code: "FSS Code", detail: "Fixed fire fighting" }, rules: [
-      { subtitle: "Gazlı/Köpüklü Sistemler", content: ["CO₂ salımı öncesi sesli/ışıklı uyarı ve gecikme (time delay) bulunmalıdır", "Salım öncesi mahal tahliyesi ve ventilatör/yakıt kesintisi sağlanmalıdır"] },
-      { subtitle: "Su Esaslı Sistemler", content: ["Yerel uygulamalı (local application) su sisi sistemleri yüksek riskli ekipmanı korur", "Sistem basınç/akış testleri periyodik yapılmalıdır"] },
+    { title: "Fixed Suppression Systems (FSS)", source: { code: "FSS Code", detail: "Fixed fire fighting" }, rules: [
+      { subtitle: "Gas/Foam Systems", content: ["There must be an audio/light warning and time delay before CO₂ release.", "Prior to release, space evacuation and ventilator/fuel interruption must be ensured."] },
+      { subtitle: "Water Based Systems", content: ["Local application water mist systems protect high-risk equipment", "System pressure/flow tests should be performed periodically"] },
     ]},
   ],
   "environment-machine": [
-    { title: "MARPOL – Makine İlgili Hükümler", source: { code: "MARPOL Annex I/IV/VI", detail: "Oil, waste water and air emissions" }, rules: [
-      { subtitle: "Annex I – Yağlı Atıklar", content: ["15 ppm OWS: denize deşarj limiti", "Sludge tank: tüm gemilerde zorunlu", "Oil Record Book Part I: makine bölümü kayıtları tutulmalıdır", "400 GT üzeri gemiler: OWS veya yağ filtre cihazı zorunlu"] },
-      { subtitle: "Annex IV – Atık Su", content: ["Arıtma tesisi çıkışı: coliform ≤ 250/100mL", "12 deniz milinden yakın: arıtılmamış deşarj yasaktır", "3 deniz milinden yakın: arıtılmış bile olsa deşarj yasaktır (kıyıya yakın)"] },
-      { subtitle: "Annex VI – Hava Kirliliği", content: ["ODS (ozon tabakasını incelten maddeler): yeni kullanımı yasaktır", "Shipboard incineration: liman ve kıyıda yasaktır (bazı maddeler her yerde)", "IAPP sertifikası: 400 GT üzeri gemilerde zorunlu"] },
+    { title: "MARPOL – Machinery Related Provisions", source: { code: "MARPOL Annex I/IV/VI", detail: "Oil, waste water and air emissions" }, rules: [
+      { subtitle: "Annex I – Oily Wastes", content: ["15 ppm OWS: discharge limit into the sea", "Sludge tank: mandatory on all ships", "Oil Record Book Part I: engine room records should be kept", "Ships over 400 GT: OWS or oil filter device mandatory"] },
+      { subtitle: "Annex IV – Wastewater", content: ["Treatment plant effluent: coliform ≤ 250/100mL", "Closer than 12 nautical miles: untreated discharge prohibited", "Closer than 3 nautical miles: discharge is prohibited, even treated (near shore)"] },
+      { subtitle: "Annex VI – Air Pollution", content: ["ODS (ozone depleting substances): new use prohibited", "Shipboard incineration: prohibited in port and shore (some items everywhere)", "IAPP certification: Mandatory for ships over 400 GT"] },
     ]},
-    { title: "Enerji ve Emisyon İzleme", source: { code: "MARPOL Annex VI Ch.4", detail: "EEXI, CII and reporting" }, rules: [
-      { subtitle: "EEXI / CII", content: ["EEXI (verimlilik endeksi) ve yıllık CII (A–E derecelendirme) gerekleri sağlanmalıdır", "D/E derecesi alan gemiler düzeltici eylem planı (SEEMP Part III) hazırlar"] },
-      { subtitle: "Veri Raporlama", content: ["IMO DCS (≥ 5.000 GT) ve EU MRV kapsamında yakıt/CO₂ verisi raporlanır", "Bunker tüketim ve mesafe verileri doğrulanabilir şekilde tutulur"] },
+    { title: "Energy and Emissions Monitoring", source: { code: "MARPOL Annex VI Ch.4", detail: "EEXI, CII and reporting" }, rules: [
+      { subtitle: "EEXI / CII", content: ["EEXI (efficiency index) and annual CII (A–E rating) requirements must be met", "Ships rated D/E prepare a corrective action plan (SEEMP Part III)"] },
+      { subtitle: "Data Reporting", content: ["Fuel/CO₂ data reported under IMO DCS (≥ 5,000 GT) and EU MRV", "Bunker consumption and distance data are kept verifiable"] },
     ]},
-    { title: "Atık ve Madde Yönetimi", source: { code: "MARPOL Annex V/VI", detail: "Garbage, ozone and VOC" }, rules: [
-      { subtitle: "Çöp Yönetimi (Annex V)", content: ["Garbage Management Plan ve Garbage Record Book bulundurulur", "Plastik denize deşarjı kesinlikle yasaktır"] },
-      { subtitle: "Ozon ve VOC", content: ["ODS Record Book tutulur; soğutucu kaçakları kayıt altına alınır", "Tankerlerde VOC yönetim planı (uygunsa) uygulanır"] },
+    { title: "Waste and Substance Management", source: { code: "MARPOL Annex V/VI", detail: "Garbage, ozone and VOC" }, rules: [
+      { subtitle: "Garbage Management (Annex V)", content: ["Garbage Management Plan and Garbage Record Book are kept", "Discharge of plastic into the sea is strictly prohibited."] },
+      { subtitle: "Ozone and VOC", content: ["ODS Record Book is kept; Refrigerant leaks are recorded", "VOC management plan (if appropriate) applied on tankers"] },
     ]},
   ],
   erm: [
-    { title: "ERM Kuralları ve Standartları", source: { code: "STCW A-III / ISM Code", detail: "ERM competence and human factors" }, rules: [
-      { subtitle: "STCW – ERM Yeterlilikleri", content: ["STCW Code A-III/1 ve A-III/2: makine zabitlerinin ERM yeterliliği", "Liderlik ve takım çalışması: yeterlilik değerlendirmesinde zorunlu", "Durumsal farkındalık ve karar verme becerileri değerlendirilir"] },
-      { subtitle: "ISM Code – İnsan Faktörü", content: ["İş güvenliği değerlendirmesi: her operasyon öncesi yapılmalıdır", "Yorgunluk yönetimi: çalışma ve dinlenme saatleri kayıt altındadır (MLC 2006)", "İletişim: makine ekibi ve köprüüstü arasında etkili iletişim protokolü"] },
+    { title: "ERM Rules and Standards", source: { code: "STCW A-III / ISM Code", detail: "ERM competence and human factors" }, rules: [
+      { subtitle: "STCW – ERM Competencies", content: ["STCW Code A-III/1 and A-III/2: ERM qualification of engine officers", "Leadership and teamwork: mandatory in competency assessment", "Situational awareness and decision-making skills are evaluated"] },
+      { subtitle: "ISM Code – Human Factor", content: ["Occupational safety assessment: should be carried out before each operation", "Fatigue management: working and rest hours are recorded (MLC 2006)", "Communication: effective communication protocol between engine crew and bridge"] },
     ]},
-    { title: "Takım Çalışması ve İletişim", source: { code: "STCW A-III/1-2", detail: "Resource management" }, rules: [
-      { subtitle: "Takım Yönetimi", content: ["Görev dağılımı, önceliklendirme ve iş yükü dengelenmesi yapılır", "Otorite gradyanı düşürülerek (assertiveness) güvenli geri bildirim teşvik edilir"] },
-      { subtitle: "Brifing ve Debrief", content: ["Kritik operasyon öncesi brifing, sonrası debrief uygulanır", "Closed-loop iletişim ile komut/onay doğrulanır"] },
+    { title: "Teamwork and Communication", source: { code: "STCW A-III/1-2", detail: "Resource management" }, rules: [
+      { subtitle: "Team Management", content: ["Task distribution, prioritization and workload balancing are done", "Safe feedback is encouraged by lowering the authority gradient (assertiveness)"] },
+      { subtitle: "Briefing and Debrief", content: ["A critical pre-operation briefing and post-debrief are applied.", "Command/confirmation is verified with closed-loop communication"] },
     ]},
-    { title: "Yorgunluk ve Karar Verme", source: { code: "MLC 2006 / IMO Fatigue Guidelines", detail: "Human performance" }, rules: [
-      { subtitle: "Yorgunluk Yönetimi", content: ["Dinlenme saatleri limitlerine uyulmalı, yorgunluk riski değerlendirilmelidir", "Vardiya planlaması ve uyku hijyeni dikkate alınmalıdır"] },
-      { subtitle: "Karar Verme", content: ["Durumsal farkındalık kaybı (fixation, complacency) belirtileri izlenir", "Yapılandırılmış karar yöntemleriyle riskler değerlendirilir"] },
+    { title: "Fatigue and Decision Making", source: { code: "MLC 2006 / IMO Fatigue Guidelines", detail: "Human performance" }, rules: [
+      { subtitle: "Fatigue Management", content: ["Rest hour limits should be observed and the risk of fatigue should be assessed.", "Watch planning and sleep hygiene should be taken into account"] },
+      { subtitle: "Decision Making", content: ["Signs of loss of situational awareness (fixation, complacency) are monitored", "Risks are evaluated with structured decision methods"] },
     ]},
   ],
   "energy-efficiency": [
-    { title: "Enerji Verimliliği Düzenlemeleri", source: { code: "MARPOL Annex VI Ch.4", detail: "EEDI/EEXI/CII/SEEMP" }, rules: [
-      { subtitle: "MARPOL Annex VI – Bölüm 4", content: ["EEDI: 2013 sonrası kontrat edilen yeni gemiler için zorunlu", "EEXI: 2023 sonrası tüm mevcut gemiler (400 GT üzeri) için zorunlu", "CII: yıllık karbon yoğunluğu değerlendirmesi (A–E derecelendirme)", "SEEMP Part III: CII hesabı ve iyileştirme planı zorunlu"] },
-      { subtitle: "EU MRV ve IMO DCS", content: ["EU MRV: AB limanlarına uğrayan gemiler CO₂ verisi raporlar", "IMO DCS: 5.000 GT üzeri gemiler yakıt tüketimi bildirir", "Her iki sistem de yıllık bazda veri toplar ve raporlar"] },
+    { title: "Energy Efficiency Regulations", source: { code: "MARPOL Annex VI Ch.4", detail: "EEDI/EEXI/CII/SEEMP" }, rules: [
+      { subtitle: "MARPOL Annex VI – Part 4", content: ["EEDI: Mandatory for new ships contracted after 2013", "EEXI: Mandatory for all existing ships (over 400 GT) after 2023", "CII: annual carbon intensity assessment (A–E rating)", "SEEMP Part III: CII calculation and improvement plan mandatory"] },
+      { subtitle: "EU MRV and IMO DCS", content: ["EU MRV: Ships calling at EU ports report CO₂ data", "IMO DCS: Ships over 5,000 GT report fuel consumption", "Both systems collect and report data on an annual basis"] },
     ]},
-    { title: "EEXI / CII Uygulaması", source: { code: "IMO MEPC.328(76)/MEPC.336(76)", detail: "Calculation and rating" }, rules: [
-      { subtitle: "EEXI Hesabı", content: ["EEXI, gemi tipine bağlı gerekli (required) değerin altında olmalıdır", "Uyum için EPL/ShaPoLi (güç sınırlama) gibi teknik önlemler uygulanabilir"] },
-      { subtitle: "CII Derecelendirme", content: ["Yıllık operasyonel CII A–E ile derecelendirilir; eşik değerler her yıl sıkılaşır", "Üç yıl üst üste D veya bir kez E alan gemi düzeltici plan sunmalıdır"] },
+    { title: "EEXI/CII Application", source: { code: "IMO MEPC.328(76)/MEPC.336(76)", detail: "Calculation and rating" }, rules: [
+      { subtitle: "EEXI Calculation", content: ["EEXI must be below the required value depending on the ship type", "Technical measures such as EPL/ShaPoLi (power limiting) may be applied for compliance"] },
+      { subtitle: "CII Rating", content: ["Annual operational CII is rated A–E; Thresholds get tighter every year", "A ship that has received a D for three consecutive years or an E once must submit a corrective plan"] },
     ]},
-    { title: "Operasyonel Verimlilik", source: { code: "SEEMP / Best Practice", detail: "Fuel and energy saving" }, rules: [
-      { subtitle: "Seyir Optimizasyonu", content: ["Trim, hız (slow steaming) ve rota/hava optimizasyonu ile tüketim düşürülür", "Tekne/pervane temizliği ve hull performance izlenir"] },
-      { subtitle: "Enerji Geri Kazanım", content: ["Atık ısı geri kazanım (WHRS) ve verimli yardımcı yük yönetimi uygulanır", "Shore power (soğuk ütüleme) uygun limanlarda kullanılır"] },
+    { title: "Operational Efficiency", source: { code: "SEEMP / Best Practice", detail: "Fuel and energy saving" }, rules: [
+      { subtitle: "Navigation Optimization", content: ["Consumption is reduced with trim, speed (slow steaming) and route/weather optimization", "Boat/propeller cleanliness and hull performance are monitored"] },
+      { subtitle: "Energy Recovery", content: ["Waste heat recovery (WHRS) and efficient auxiliary load management are applied", "Shore power (cold ironing) is used in suitable ports"] },
     ]},
   ],
 };

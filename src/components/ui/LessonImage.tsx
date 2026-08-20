@@ -25,7 +25,7 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
   // Vektörler çözünürlükten bağımsızdır: bir SVG hangi boyutta çizilirse
   // çizilsin keskin kalır. Aşağıdaki düşük çözünürlük kısıtı yalnızca raster
   // kaynaklar içindir; SVG'lere uygulanırsa diyagramlar gereksiz yere küçülür
-  // (viewBox'ı olup width/height'ı olmayan SVG'lerde tarayıcı ~300x150'lik
+  // (viewBox'ı is width/height'ı olmayan SVG'Scanner ~300x150'lik
   // varsayılan bir intrinsic boyut bildirir).
   const isVector = /\.svg(?:[?#]|$)/i.test(src ?? "");
 
@@ -55,7 +55,7 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
       >
         <ImageOff className="h-8 w-8 opacity-60" />
         <span className="px-3 text-center text-xs">
-          {alt ? `Image could not be loaded: ${alt}` : "Görsel yüklenemedi"}
+          {alt ? `Image could not be loaded: ${alt}` : "Image could not be loaded"}
         </span>
       </div>
     );
@@ -65,7 +65,7 @@ export function LessonImage({ src, alt, className, onClick, bare = false }: Less
   return (
     <img
       src={currentSrc}
-      alt={alt || "Görsel"}
+      alt={alt || "Visual"}
       onError={handleError}
       onLoad={(event) => {
         if (bare || isVector) return;

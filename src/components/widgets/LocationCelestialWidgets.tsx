@@ -87,23 +87,23 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
               <div className="flex-1 min-w-0 space-y-3">
                 <div>
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
-                    Konum
+                    Location
                   </div>
                   <div className="text-lg font-bold text-foreground truncate">
                     {effectiveLabel ? (
                       <span className="notranslate" translate="no">{effectiveLabel}</span>
                     ) : (
-                      "Bilinmiyor"
+                      "Unknown"
                     )}
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="surface-widget rounded-lg p-2 space-y-0.5">
-                    <div className="text-muted-foreground uppercase tracking-wide">Enlem</div>
+                    <div className="text-muted-foreground uppercase tracking-wide">Latitude</div>
                     <div className="font-mono font-semibold text-foreground">{latitudeDMS}</div>
                   </div>
                   <div className="surface-widget rounded-lg p-2 space-y-0.5">
-                    <div className="text-muted-foreground uppercase tracking-wide">Boylam</div>
+                    <div className="text-muted-foreground uppercase tracking-wide">Longitude</div>
                     <div className="font-mono font-semibold text-foreground">{longitudeDMS}</div>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
                 <MapPreview
                   latitude={mapLatitude!}
                   longitude={mapLongitude!}
-                  locationLabel={effectiveLabel || "Konum"}
+                  locationLabel={effectiveLabel || "Location"}
                   height="180px"
                   zoom={10}
                 />
@@ -153,7 +153,7 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
               <MapPreview
                 latitude={mapLatitude!}
                 longitude={mapLongitude!}
-                locationLabel={effectiveLabel || "Konum"}
+                locationLabel={effectiveLabel || "Location"}
                 height="100%"
                 zoom={13}
               />

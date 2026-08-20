@@ -77,7 +77,7 @@ function writeCache(cache: EntitlementCache): void {
 /**
  * Çevrimdışı paket kararı: sunucuya ulaşılamadığında son eşitlenmiş veriye
  * güvenilir. Abonelik yenilemeleri çevrimdışında görülemeyeceği için süre
- * kısıtı expires_at yerine "son eşitlemeden bu yana geçen gün" ile konur.
+ * kısıtı expires_at yerine "Days since last sync" ile konur.
  */
 function tierFromCache(cache: EntitlementCache, now: Date = new Date()): Tier {
   const hadLifetime = cache.rows.some(
@@ -166,14 +166,14 @@ export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
   }, [refresh]);
 
   const purchase = useCallback(async (plan: ProPlan): Promise<Tier> => {
-    if (!user) throw new Error("Satın alma için giriş yapmalısınız");
+    if (!user) throw new Error("You must be logged in to purchase");
     const result = await purchasePlan(plan, user.id);
     await refresh();
     return result.tier;
   }, [user, refresh]);
 
   const restore = useCallback(async (): Promise<Tier> => {
-    if (!user) throw new Error("Geri yükleme için giriş yapmalısınız");
+    if (!user) throw new Error("You must be logged in to restore");
     const result = await restorePurchases();
     await refresh();
     return result.tier;

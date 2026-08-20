@@ -38,7 +38,7 @@ const REASONS: Array<{ value: AiReportReason; label: string; hint: string }> = [
   },
   {
     value: "unsafe",
-    label: "Emniyetsiz tavsiye",
+    label: "Unsafe advice",
     hint: "If implemented, it puts life, property or environmental safety at risk.",
   },
   {
@@ -108,7 +108,7 @@ export function ReportAiContentButton({
         className={`inline-flex items-center gap-1 text-micro transition-colors ${triggerClass} ${className}`}
       >
         <Flag className="h-3 w-3" />
-        Bildir
+        Report
       </button>
 
       <Dialog open={open} onOpenChange={(next) => !sending && setOpen(next)}>
@@ -130,7 +130,7 @@ export function ReportAiContentButton({
           </DialogHeader>
 
           <fieldset className="space-y-2" disabled={sending}>
-            <legend className="sr-only">Bildirim nedeni</legend>
+            <legend className="sr-only">Reason for notification</legend>
             {REASONS.map((r) => (
               <label
                 key={r.value}
@@ -171,7 +171,7 @@ export function ReportAiContentButton({
             </Button>
             <Button onClick={handleSubmit} disabled={sending}>
               {sending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {sending ? "Sending…" : "Bildir"}
+              {sending ? "Sending…" : "Report"}
             </Button>
           </DialogFooter>
         </DialogContent>

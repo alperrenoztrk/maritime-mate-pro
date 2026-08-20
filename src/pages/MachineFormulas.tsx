@@ -35,7 +35,7 @@ const formulaCategories = [
         variables: "ηprop: pervane verimi (0.55-0.70)",
       },
       {
-        name: "Tork",
+        name: "Torque",
         formula: "T = (P × 60) / (2π × n)",
         variables: "P: power (W), n: speed (rpm)",
       },
@@ -101,7 +101,7 @@ const formulaCategories = [
         variables: "Q: heat load (kW)",
       },
       {
-        name: "NTU (Transfer Birimi)",
+        name: "NTU (Transfer Unit)",
         formula: "NTU = U × A / (m × cp)",
         variables: "For the heat exchanger effectiveness",
       },
@@ -164,28 +164,28 @@ const formulaCategories = [
     ],
   },
   {
-    title: "Verimlilik",
+    title: "Efficiency",
     icon: Calculator,
     color: "text-green-600",
     bgColor: "bg-green-100 dark:bg-green-900/20",
     formulas: [
       {
-        name: "Termal Verimlilik",
+        name: "Thermal Efficiency",
         formula: "ηth = P / (FC × LCV)",
         variables: "LCV: lower calorific value (kJ/kg)",
       },
       {
-        name: "Mekanik Verimlilik",
+        name: "Mechanical Efficiency",
         formula: "ηmech = BHP / IHP",
         variables: "Typical value: 0.85-0.92",
       },
       {
-        name: "Pervane Verimi",
+        name: "Propeller Efficiency",
         formula: "ηprop = EHP / DHP",
         variables: "Typical value: 0.55-0.70",
       },
       {
-        name: "Genel Verimlilik",
+        name: "Overall Efficiency",
         formula: "ηtotal = EHP / (FC × LCV)",
         variables: "Including all losses",
       },

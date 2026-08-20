@@ -71,7 +71,7 @@ Heel angle:
 GG₁ = (w × (h_head − h_load)) / Δ`,
   },
   "havuzlama-gm": {
-    title: "2.5. Havuzlamada Kritik GM",
+    title: "2.5. Critical GM in Docking",
     group: "Transverse Equilibrium Calculations",
     image: "/diagrams/stability/metasantr-gm.svg",
     imageAlt: "Metacentric height, which the upthrust P reduces during docking",
@@ -111,14 +111,14 @@ Correction = (Distance × Trim) / LBD`,
   // 4. Draft Survey
   "mmm-draft": {
     title: "4.1. MMM Draft",
-    group: "Draft Survey",
+    group: "Draft survey",
     image: "/diagrams/seamanship/load-line-isaretleri.svg",
     imageAlt: "Draft marks read on the ship's side for the mean of means",
     content: `MMM = (dF + dA + 6 × dM) / 8`,
   },
   "trim-duzeltmeleri": {
     title: "4.2. Trim Corrections",
-    group: "Draft Survey",
+    group: "Draft survey",
     image: "/diagrams/stability/trim.svg",
     imageAlt: "Trim and the position of LCF, on which both trim corrections depend",
     content: `First trim correction:
@@ -129,7 +129,7 @@ Second trim correction:
   },
   "yogunluk-duzeltmesi": {
     title: "4.3. Density Correction",
-    group: "Draft Survey",
+    group: "Draft survey",
     image: "/diagrams/kaldirma-merkezi.svg",
     imageAlt: "Buoyancy and displacement, which change with water density",
     content: `Δρ = ((ρ / 1.025) − 1) × Δ`,
@@ -196,7 +196,7 @@ A = (3h/8) · (y0 + 3y1 + 3y2 + y3)`,
     content: `GG₁ = (L × B³) / (12 × V) × (ρ_liquid / ρ_sea) × (1 / n²)`,
   },
   "yalpa-periyodu": {
-    title: "6.5. Yalpa Periyodu",
+    title: "6.5. Roll Period",
     group: "SOLAS Stabilite Kriterleri",
     image: "/diagrams/stability/metasantr-gm.svg",
     imageAlt: "Rolling period is governed by GM — a stiff ship rolls quickly",

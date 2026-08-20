@@ -1048,7 +1048,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const P = (mct1cm * trim) / lbp; // t
     const dGM = (P * km) / Delta; // m
     setDockGMResult({ P, dGM });
-    toast({ title: 'Havuzlama ΔGM', description: `ΔGM ≈ ${dGM.toFixed(4)} m` });
+    toast({ title: 'Docking ΔGM', description: `ΔGM ≈ ${dGM.toFixed(4)} m` });
   };
 
   const calculateTrimChangeFromMoments = () => {
@@ -1072,7 +1072,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     }
     const sinkageCm = w / tpc;
     setParallelSinkageResult(sinkageCm);
-    toast({ title: 'Parallel Subduction/Exit', description: `${sinkageCm.toFixed(2)} cm` });
+    toast({ title: 'Parallel Sinkage/Rise', description: `${sinkageCm.toFixed(2)} cm` });
   };
 
   const calculateDraftChangeLCF = () => {
@@ -1323,7 +1323,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
   const inputFieldCatalog = [
     {
-      title: "Hidrostatik",
+      title: "Hydrostatic",
       items: [
         "Hacim V (m³)",
         "Water density ρsw (t/m³)",
@@ -1342,7 +1342,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         "GM (m)",
         "GM to GZ (m)",
         "Angle φ (°)",
-        "Deplasman Δ (t)",
+        "Displacement Δ (t)",
         "Weight w(t)",
         "Mesafe d/y (m)",
         "Hook/Load height h (m)",
@@ -1383,7 +1383,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       ]
     },
     {
-      title: "Pratik Hesaplar",
+      title: "Practical Calculations",
       items: [
         "Tank L/B/H (m)",
         "Density ρ (t/m³)",
@@ -1397,7 +1397,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       ]
     },
     {
-      title: "Hasar Stabilitesi",
+      title: "Damage Stability",
       items: [
         "Partition name",
         "Volume submerged in water (m³)",
@@ -1480,7 +1480,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 Risk: {item.impact}
               </p>
               <p className="mt-1 text-xs">
-                Önerilen adım: {item.nextStep}
+                Recommended step: {item.nextStep}
               </p>
             </div>
           ))}
@@ -1493,7 +1493,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Waves className="h-5 w-5" />
-            Hidrostatik Hesaplamalar
+            Hydrostatic Calculations
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -1504,11 +1504,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">Deplasman Hesaplama (Δ = V × ρsw)</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
               <div>
-                <Label htmlFor="volume">Hacim (m³)</Label>
+                <Label htmlFor="volume">Volume (m³)</Label>
                 <Input
                   id="volume"
                   type="number"
-                  placeholder="Hacim"
+                  placeholder="Volume"
                   value={displacementInputs.volume}
                   onChange={(e) => setDisplacementInputs(prev => ({ ...prev, volume: e.target.value }))}
                 />
@@ -1542,11 +1542,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">Draft Hesaplama (T = V / Awp)</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
               <div>
-                <Label htmlFor="draft-volume">Hacim (m³)</Label>
+                <Label htmlFor="draft-volume">Volume (m³)</Label>
                 <Input
                   id="draft-volume"
                   type="number"
-                  placeholder="Hacim"
+                  placeholder="Volume"
                   value={draftInputs.volume}
                   onChange={(e) => setDraftInputs(prev => ({ ...prev, volume: e.target.value }))}
                 />
@@ -1624,7 +1624,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-green-700 dark:text-green-300">
             <Shield className="h-5 w-5" />
-            Stabilite Hesaplamalar
+            Stability Calculations
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -1684,13 +1684,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-mono text-lg">GM = {gmResult.toFixed(3)} m</p>
                   <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
-                    Uygun
+                    Suitable
                   </span>
                 </div>
                 <p className="text-sm mt-1">
                   {gmResult > 0 ? 
-                    <span className="text-green-600 dark:text-green-400">✓ Pozitif stabilite</span> : 
-                    <span className="text-red-600 dark:text-red-400">⚠ Negatif stabilite</span>
+                    <span className="text-green-600 dark:text-green-400">✓ Positive Stability</span> : 
+                    <span className="text-red-600 dark:text-red-400">⚠ Negative Stability</span>
                   }
                 </p>
               </div>
@@ -1749,7 +1749,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-mono text-lg">GZ = {gzResult.toFixed(4)} m</p>
                   <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
-                    Uygun
+                    Suitable
                   </span>
                 </div>
               </div>
@@ -1767,11 +1767,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={gmShiftInputs.weight} onChange={(e)=> setGmShiftInputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
-                <Label>Mesafe d (m)</Label>
+                <Label>Distance d (m)</Label>
                 <Input value={gmShiftInputs.distance} onChange={(e)=> setGmShiftInputs(p=>({...p, distance: e.target.value}))} />
               </div>
               <div>
-                <Label>Deplasman Δ (t)</Label>
+                <Label>Displacement Δ (t)</Label>
                 <Input value={gmShiftInputs.displacement} onChange={(e)=> setGmShiftInputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <Button onClick={calculateGMShift} className="w-full md:col-span-2">
@@ -1797,15 +1797,15 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">Heeling Angle (GZ = w·y/Δ, tanθ = GZ/GM)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
-                <Label>w (t)</Label>
+                <Label>w(t)</Label>
                 <Input value={heelAngle2Inputs.weight} onChange={(e)=> setHeelAngle2Inputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
-                <Label>y (m)</Label>
+                <Label>y(m)</Label>
                 <Input value={heelAngle2Inputs.lever} onChange={(e)=> setHeelAngle2Inputs(p=>({...p, lever: e.target.value}))} />
               </div>
               <div>
-                <Label>Δ (t)</Label>
+                <Label>Δ(t)</Label>
                 <Input value={heelAngle2Inputs.displacement} onChange={(e)=> setHeelAngle2Inputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <div>
@@ -1836,11 +1836,11 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">GG₁ with derrick (GG₁ = w·(hhook − hload)/Δ)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
-                <Label>w (t)</Label>
+                <Label>w(t)</Label>
                 <Input value={craneGG1Inputs.weight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
-                <Label>hkanca (m)</Label>
+                <Label>hook (m)</Label>
                 <Input value={craneGG1Inputs.hookHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, hookHeight: e.target.value}))} />
               </div>
               <div>
@@ -1848,7 +1848,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={craneGG1Inputs.loadHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, loadHeight: e.target.value}))} />
               </div>
               <div>
-                <Label>Δ (t)</Label>
+                <Label>Δ(t)</Label>
                 <Input value={craneGG1Inputs.displacement} onChange={(e)=> setCraneGG1Inputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <Button onClick={calculateCraneGG1} className="w-full">
@@ -1871,7 +1871,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Drydock critical GM */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Havuzlamada Kritik GM</h4>
+            <h4 className="font-semibold mb-3">Critical in Docking GM</h4>
             <p className="text-xs opacity-70 mb-2">P = MCT(1cm) × Trim(cm) / LBP; ΔGM = (P × KM)/Δ</p>
             <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
               <div>
@@ -1891,7 +1891,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={dockGMInputs.km} onChange={(e)=> setDockGMInputs(p=>({...p, km: e.target.value}))} />
               </div>
               <div>
-                <Label>Δ (t)</Label>
+                <Label>Δ(t)</Label>
                 <Input value={dockGMInputs.displacement} onChange={(e)=> setDockGMInputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <Button onClick={calculateDockCriticalGM} className="w-full">
@@ -1925,7 +1925,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Wrench className="h-5 w-5" />
-            Pratik Hesaplar
+            Practical Calculations
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -1937,15 +1937,15 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
               <div>
-                <Label>L (m)</Label>
+                <Label>L(m)</Label>
                 <Input value={tankInputs.length} onChange={(e)=> setTankInputs(p=>({...p, length: e.target.value}))} />
               </div>
               <div>
-                <Label>B (m)</Label>
+                <Label>B(m)</Label>
                 <Input value={tankInputs.breadth} onChange={(e)=> setTankInputs(p=>({...p, breadth: e.target.value}))} />
               </div>
               <div>
-                <Label>H (m)</Label>
+                <Label>H(m)</Label>
                 <Input value={tankInputs.height} onChange={(e)=> setTankInputs(p=>({...p, height: e.target.value}))} />
               </div>
               <div>
@@ -1973,7 +1973,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
-                <Label>Δ (t)</Label>
+                <Label>Δ(t)</Label>
                 <Input value={fwaCalcInputs.displacement} onChange={(e)=> setFwaCalcInputs(p=>({...p, displacement: e.target.value}))} />
               </div>
               <div>
@@ -2022,7 +2022,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           <div className="bg-emerald-50 dark:bg-gray-700 p-4 rounded-lg">
             <h4 className="mb-3 flex items-center gap-2 text-2xl font-bold text-blue-700 drop-shadow-sm">
               <BarChart3 className="h-6 w-6 text-blue-700" />
-              GHM Hesaplama (VHM / SF)
+              GHM Calculation (VHM/SF)
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-end">
               <div>
@@ -2087,7 +2087,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="length">L - Uzunluk (m)</Label>
+                <Label htmlFor="length">L - Length (m)</Label>
                 <Input
                   id="length"
                   type="number"
@@ -2125,7 +2125,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="list-distance">Mesafe (m)</Label>
+                <Label htmlFor="list-distance">Distance (m)</Label>
                 <Input
                   id="list-distance"
                   type="number"
@@ -2135,7 +2135,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="list-displacement">Deplasman (ton)</Label>
+                <Label htmlFor="list-displacement">Displacement (tons)</Label>
                 <Input
                   id="list-displacement"
                   type="number"
@@ -2214,7 +2214,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             {lollResult !== null && (
               <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
                 <p className="font-mono text-lg">Angle of Loll = {lollResult.toFixed(2)}°</p>
-                <p className="text-sm mt-1 text-red-600 dark:text-red-400">⚠ GM {'<'} 0 durumunda geçerli</p>
+                <p className="text-sm mt-1 text-red-600 dark:text-red-400">⚠ GM {'<'} Valid at state 0</p>
               </div>
             )}
           </div>
@@ -2314,7 +2314,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="shift-distance">Enine Mesafe (d) [m]</Label>
+                <Label htmlFor="shift-distance">Transverse Distance (d) [m]</Label>
                 <Input
                   id="shift-distance"
                   type="number"
@@ -2324,7 +2324,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="shift-displacement">Deplasman (Δ) [t]</Label>
+                <Label htmlFor="shift-displacement">Displacement (Δ) [t]</Label>
                 <Input
                   id="shift-displacement"
                   type="number"
@@ -2464,7 +2464,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="gz-kn">KN [m] (opsiyonel)</Label>
+                <Label htmlFor="gz-kn">KN [m] (optional)</Label>
                 <Input
                   id="gz-kn"
                   type="number"
@@ -2514,7 +2514,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="wind-area">Yanal Alan (A) [m²]</Label>
+                <Label htmlFor="wind-area">Lateral Area (A) [m²]</Label>
                 <Input
                   id="wind-area"
                   type="number"
@@ -2524,7 +2524,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="wind-lever">Kol (z) [m]</Label>
+                <Label htmlFor="wind-lever">Arm (z) [m]</Label>
                 <Input
                   id="wind-lever"
                   type="number"
@@ -2534,7 +2534,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="wind-displacement">Deplasman [t]</Label>
+                <Label htmlFor="wind-displacement">Displacement [t]</Label>
                 <Input
                   id="wind-displacement"
                   type="number"
@@ -2583,7 +2583,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="incl-displacement">Deplasman (Δ) [t]</Label>
+                <Label htmlFor="incl-displacement">Displacement (Δ) [t]</Label>
                 <Input
                   id="incl-displacement"
                   type="number"
@@ -2621,7 +2621,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* 8. Yalpa Periyodu */}
           <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">8. Yalpa Periyodu</h4>
+            <h4 className="font-semibold mb-3">8. Roll Period</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <Label htmlFor="roll-breadth">Width (B) [m]</Label>
@@ -2661,7 +2661,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             {rollPeriodResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-teal-500">
                 <div className="text-sm">
-                  <div><strong>Yalpa Periyodu:</strong> {rollPeriodResults.period.toFixed(2)} saniye</div>
+                  <div><strong>Roll Period:</strong> {rollPeriodResults.period.toFixed(2)} saniye</div>
                   <div className="text-xs mt-1 text-teal-600 dark:text-teal-400">
                     T = 2π·k/√(g·GMcorr)
                   </div>
@@ -2681,7 +2681,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="loll2-gm">GM (negatif) [m]</Label>
+                <Label htmlFor="loll2-gm">GM (negative) [m]</Label>
                 <Input
                   id="loll2-gm"
                   type="number"
@@ -2749,7 +2749,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={parallelSinkageInputs.tpc} onChange={(e)=> setParallelSinkageInputs(p=>({...p, tpc: e.target.value}))} />
               </div>
               <Button onClick={calculateParallelSinkage} className="w-full md:col-span-3">
-                <Calculator className="w-4 h-4 mr-2" /> Paralel Batma (cm)
+                <Calculator className="w-4 h-4 mr-2" /> Parallel Sinkage (cm)
               </Button>
             </div>
             {parallelSinkageResult!==null && (
@@ -2763,7 +2763,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <Input value={draftChangeLCFInputs.dTrimCm} onChange={(e)=> setDraftChangeLCFInputs(p=>({...p, dTrimCm: e.target.value}))} />
               </div>
               <Button onClick={calculateDraftChangeLCF} className="w-full md:col-span-4">
-                <Calculator className="w-4 h-4 mr-2" /> LCF Mastoride ΔdF/ΔdA
+                <Calculator className="w-4 h-4 mr-2" /> LCF-based ΔdF/ΔdA
               </Button>
             </div>
             {draftChangeLCFResult && (
@@ -2774,7 +2774,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             )}
             <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end mt-4">
               <div>
-                <Label>Mesafe (m)</Label>
+                <Label>Distance (m)</Label>
                 <Input value={draftCorrectionInputs.distance} onChange={(e)=> setDraftCorrectionInputs(p=>({...p, distance: e.target.value}))} />
               </div>
               <div>
@@ -2822,7 +2822,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 </h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
-                    <Label htmlFor="length">Uzunluk (m)</Label>
+                    <Label htmlFor="length">Length (m)</Label>
                     <Input
                       id="length"
                       type="number"
@@ -2842,7 +2842,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                     <InputError message={geometryValidation.breadth.error} />
                   </div>
                   <div>
-                    <Label htmlFor="depth">Derinlik (m)</Label>
+                    <Label htmlFor="depth">Depth (m)</Label>
                     <Input
                       id="depth"
                       type="number"
@@ -2893,7 +2893,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   </h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>Deplasman:</span>
+                      <span>Displacement</span>
                       <span className="font-medium">{analysis.hydrostatic.displacement.toFixed(2)} t</span>
                     </div>
                     <div className="flex justify-between">
@@ -2922,13 +2922,13 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
                   <h4 className="font-semibold mb-3 flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
-                    IMO Kriterleri
+                    IMO Criteria
                   </h4>
                   {solasCriteriaStatus && (
                     <div className="mb-3 flex items-center justify-between rounded-md bg-white/70 px-3 py-2 text-xs font-semibold dark:bg-gray-600/60">
                       <span>General Evaluation</span>
                       <span className={`rounded-full px-2 py-1 ${solasCriteriaStatus.ok ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200' : 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-200'}`}>
-                        {solasCriteriaStatus.ok ? 'Uygun' : 'Uygunsuz'}
+                        {solasCriteriaStatus.ok ? 'Suitable' : 'Inappropriate'}
                       </span>
                     </div>
                   )}
@@ -2947,35 +2947,35 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   )}
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>Alan (0-30°):</span>
+                      <span>Range (0-30°):</span>
                       <span className="flex items-center gap-2 font-medium">
                         <span className={`${analysis.imoCriteria.area0to30 >= 0.055 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.area0to30.toFixed(3)} mrad
                         </span>
                         <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.area0to30 >= 0.055 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
-                          {analysis.imoCriteria.area0to30 >= 0.055 ? 'Uygun' : 'Uygunsuz'}
+                          {analysis.imoCriteria.area0to30 >= 0.055 ? 'Suitable' : 'Inappropriate'}
                         </span>
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Alan (0-40°):</span>
+                      <span>Range (0-40°):</span>
                       <span className="flex items-center gap-2 font-medium">
                         <span className={`${analysis.imoCriteria.area0to40 >= 0.09 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.area0to40.toFixed(3)} mrad
                         </span>
                         <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.area0to40 >= 0.09 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
-                          {analysis.imoCriteria.area0to40 >= 0.09 ? 'Uygun' : 'Uygunsuz'}
+                          {analysis.imoCriteria.area0to40 >= 0.09 ? 'Suitable' : 'Inappropriate'}
                         </span>
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Maksimum GZ:</span>
+                      <span>Maximum GZ:</span>
                       <span className="flex items-center gap-2 font-medium">
                         <span className={`${analysis.imoCriteria.maxGz >= 0.20 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.maxGz.toFixed(3)} m
                         </span>
                         <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.maxGz >= 0.2 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
-                          {analysis.imoCriteria.maxGz >= 0.2 ? 'Uygun' : 'Uygunsuz'}
+                          {analysis.imoCriteria.maxGz >= 0.2 ? 'Suitable' : 'Inappropriate'}
                         </span>
                       </span>
                     </div>
@@ -2986,7 +2986,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                           {analysis.imoCriteria.initialGM.toFixed(3)} m
                         </span>
                         <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.initialGM >= 0.15 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
-                          {analysis.imoCriteria.initialGM >= 0.15 ? 'Uygun' : 'Uygunsuz'}
+                          {analysis.imoCriteria.initialGM >= 0.15 ? 'Suitable' : 'Inappropriate'}
                         </span>
                       </span>
                     </div>
@@ -2997,7 +2997,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                           {solasCriteriaStatus?.weatherCriterionOk ? 'Provided' : 'Not provided'}
                         </span>
                         <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${solasCriteriaStatus?.weatherCriterionOk ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
-                          {solasCriteriaStatus?.weatherCriterionOk ? 'Uygun' : 'Uygunsuz'}
+                          {solasCriteriaStatus?.weatherCriterionOk ? 'Suitable' : 'Inappropriate'}
                         </span>
                       </span>
                     </div>
@@ -3019,7 +3019,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <th className="py-1 pr-4 align-top break-words">FSM (proxy)</th>
                         <th className="py-1 pr-4 align-top break-words">Correction (m)</th>
                         <th className="py-1 pr-4 align-top break-words max-w-[8rem]">Calculation Steps</th>
-                        <th className="py-1 pr-4 align-top break-words max-w-[8rem]">Kaynak</th>
+                        <th className="py-1 pr-4 align-top break-words max-w-[8rem]">Source</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -3036,7 +3036,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   </table>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
-                  <div className="flex justify-between"><span>Toplam FSC</span><span className="font-mono">{totalFSC.toFixed(4)} m</span></div>
+                  <div className="flex justify-between"><span>Total FSC</span><span className="font-mono">{totalFSC.toFixed(4)} m</span></div>
                   <div className="flex justify-between"><span>Home GM</span><span className="font-mono">{analysis.stability.gm.toFixed(3)} m</span></div>
                   <div className="flex justify-between"><span>Adjusted GM</span><span className="font-mono">{correctedGM.toFixed(3)} m</span></div>
                 </div>
@@ -3080,7 +3080,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   <div className="mt-2 text-xs text-amber-900/90 dark:text-amber-100/90">
                     <div className="font-semibold">Formula</div>
                     <div>GMcorr = GM − ΣFSC; ΔKG = FSM / Δ</div>
-                    <div className="mt-1 font-semibold">Anlam</div>
+                    <div className="mt-1 font-semibold">Meaning</div>
                     <div>Free surface correction reduces GM.</div>
                   </div>
                 </div>
@@ -3099,7 +3099,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                     <span className="font-medium">{analysis.stability.vanishingAngle.toFixed(1)}°</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Stabilite Kalitesi:</span>
+                    <span>Stability Quality:</span>
                     <span className="font-medium">{analysis.dynamicStability.stabilityQuality.toFixed(3)}</span>
                   </div>
                 </div>
@@ -3121,7 +3121,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                           const payloadData = payload[0]?.payload ?? {};
                           return (
                             <div className="rounded-lg border border-border bg-background p-3 shadow-lg">
-                              <div className="font-medium">Açı: {label}°</div>
+                              <div className="font-medium">Angle: {label}°</div>
                               <div className="text-sm text-emerald-600">GZ: {payloadData.gz?.toFixed(3)} m</div>
                               <div className="text-sm text-sky-600">Moment: {payloadData.rightingMoment?.toFixed(0)} kN·m</div>
                             </div>
@@ -3160,7 +3160,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="mt-4 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
                   <div className="font-semibold">Formula</div>
                   <div>GZ(φ) = KN(φ) − KG · sinφ; RM = Δ · GZ</div>
-                  <div className="mt-1 font-semibold">Anlam</div>
+                  <div className="mt-1 font-semibold">Meaning</div>
                   <div>GZ is the rectifier arm, RM is the rectifier moment.</div>
                 </div>
               </div>
@@ -3187,9 +3187,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                           toast({ title: 'Error', description: 'Invalid KN CSV', variant: 'destructive' });
                         }
                       } catch (e) {
-                        toast({ title: 'Error', description: 'CSV parse edilemedi', variant: 'destructive' });
+                        toast({ title: 'Error', description: 'CSV could not be parsed', variant: 'destructive' });
                       }
-                    }}>Uygula</Button>
+                    }}>Apply</Button>
                     <Button variant="outline" onClick={() => { setCrossCurvesText(''); setCrossCurvesSet(undefined); }}>Temizle</Button>
                   </div>
                 </div>
@@ -3198,7 +3198,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
                     Weather Criterion (Simplified)
                     <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
-                      Riskli
+                      Risky
                     </span>
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2 items-end">
@@ -3207,7 +3207,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                       <Input type="number" value={weatherInputs.pressure} onChange={(e)=> setWeatherInputs(p=>({...p, pressure:e.target.value}))} />
                     </div>
                     <div>
-                      <Label>Alan A (m²)</Label>
+                      <Label>Area A (m²)</Label>
                       <Input type="number" value={weatherInputs.area} onChange={(e)=> setWeatherInputs(p=>({...p, area:e.target.value}))} />
                     </div>
                     <div>
@@ -3286,9 +3286,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   toast({ title: 'Error', description: 'Invalid Bonjean JSON', variant: 'destructive' });
                 }
               } catch (e) {
-                toast({ title: 'Error', description: 'JSON parse edilemedi', variant: 'destructive' });
+                toast({ title: 'Error', description: 'Could not parse JSON', variant: 'destructive' });
               }
-            }}>Uygula</Button>
+            }}>Apply</Button>
             <Button variant="outline" onClick={() => { setBonjeanText(''); setBonjeanSet(undefined); }}>Temizle</Button>
           </div>
         </CardContent>
@@ -3312,7 +3312,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-rose-700 dark:text-rose-300">
             <AlertTriangle className="h-5 w-5" />
-            Hasar Stabilitesi
+            Damage Stability
           </CardTitle>
         </CardHeader>
         <CardContent>

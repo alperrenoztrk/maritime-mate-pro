@@ -7,7 +7,7 @@ const StructuralCalculationsPage = () => {
     <MobileLayout>
       <CalculationGridScreen
         eyebrow="Structural"
-        title="Yapısal Hesaplamalar"
+        title="Structural Calculations"
       >
         <StructuralCalculations />
       </CalculationGridScreen>

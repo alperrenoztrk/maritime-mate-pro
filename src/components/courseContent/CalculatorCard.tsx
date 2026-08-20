@@ -178,7 +178,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
         )}
         {entry.source && (
           <p className="text-micro text-muted-foreground">
-            Kaynak: {entry.source.code}
+            Source: {entry.source.code}
             {entry.source.detail ? ` — ${entry.source.detail}` : ""}
           </p>
         )}

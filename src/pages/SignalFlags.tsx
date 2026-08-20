@@ -112,7 +112,7 @@ export default function SignalFlagsPage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-2 flex items-center gap-2">
           <Flag className="h-7 w-7 text-sky-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">İşaret Bayrakları</h1>
+          <h1 className="text-3xl font-bold md:text-4xl">Signal Flags</h1>
         </div>
 
         {/* Search */}
@@ -121,16 +121,16 @@ export default function SignalFlagsPage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Bayrak ara (ör. kılavuz, denize adam düştü, Oscar)…"
+            placeholder="Search for flags (e.g. pilot, man overboard, Oscar)…"
             className="pl-9 pr-9"
-            aria-label="İşaret bayrağı ara"
+            aria-label="Search for signal flag"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
               className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
-              aria-label="Aramayı temizle"
+              aria-label="Clear search"
             >
               <X className="h-4 w-4" />
             </button>
@@ -162,7 +162,7 @@ export default function SignalFlagsPage() {
           <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
             <p className="text-sm font-medium text-foreground">No results found</p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Farklı bir arama terimi deneyin veya filtreyi temizleyin.
+              Try a different search term or clear the filter.
             </p>
           </div>
         ) : (
@@ -192,18 +192,18 @@ export default function SignalFlagsPage() {
             {/* İkame kuralı — bayrakların kendisi kadar sınavda çıkan kısım. */}
             <section className="overflow-hidden rounded-2xl border border-border/50 bg-card/60">
               <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
-                <h2 className="text-base font-semibold text-foreground">İkame Flaması Kuralı</h2>
+                <h2 className="text-base font-semibold text-foreground">Substitution Flag Rule</h2>
               </div>
               <div className="space-y-2 p-4 text-sm leading-relaxed text-muted-foreground">
                 <p>
                   When the same letter or numeral is needed a second time within a hoist, a substitute pennant is hoisted instead of carrying a second set of flags on board. The substitute pennant{" "}
                   <span className="font-medium text-foreground">
-                    yalnızca kendi sınıfındaki bayrağı
+                    only flag in its own class
                   </span>{" "}
                   repeats: a substitute among the letter flags counts the letters, and a substitute among the numeral pennants counts the numerals.
                 </p>
                 <p>
-                  Örnek: <span className="font-mono font-semibold text-foreground">“ANNA”</span>{" "}
+                  Example: <span className="font-mono font-semibold text-foreground">“ANNA”</span>{" "}
                   hoist, A-N-(2nd substitute)-(1st substitute) is flown. The 2nd substitute repeats the second flag of its own class (N), and the 1st substitute repeats the first flag (A).
                 </p>
                 <p>
@@ -216,7 +216,7 @@ export default function SignalFlagsPage() {
             <section className="overflow-hidden rounded-2xl border border-border/50 bg-card/60">
               <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                 <h2 className="text-base font-semibold text-foreground">
-                  Sık Kullanılan İki Harfli Gruplar
+                  Frequently Used Two-Letter Groups
                 </h2>
               </div>
               <div>

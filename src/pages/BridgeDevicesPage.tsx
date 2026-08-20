@@ -4,7 +4,7 @@ import { LibraryBookCard, LibraryPageShell } from "@/components/library/LibraryI
 
 export default function BridgeDevicesPage() {
   return (
-    <LibraryPageShell title="Köprüüstü Aygıtları" icon={Radar}>
+    <LibraryPageShell title="Bridge Devices" icon={Radar}>
       <section className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {bridgeDevices.map((device) => (
           <LibraryBookCard

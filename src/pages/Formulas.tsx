@@ -157,13 +157,13 @@ const Formulas = () => {
                 {geminiApiStatus === 'working' && (
                   <div className="flex items-center gap-1 text-green-600">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-xs font-medium">Aktif</span>
+                    <span className="text-xs font-medium">Active</span>
                   </div>
                 )}
                 {geminiApiStatus === 'error' && (
                   <div className="flex items-center gap-1 text-amber-600">
                     <AlertTriangle className="w-4 h-4" />
-                    <span className="text-xs font-medium">API Key Gerekli</span>
+                    <span className="text-xs font-medium">API Key Required</span>
                   </div>
                 )}
               </div>
@@ -293,7 +293,7 @@ Example questions:
                                   <body>
                                     <h1>Maritime Calculator - AI Response</h1>
                                     <div class="question">
-                                      <strong>Soru:</strong> ${question}
+                                      <strong>Question:</strong> ${question}
                                     </div>
                                     <div class="answer">
                                       ${aiResponse.replace(/\n/g, '<br>')}
@@ -520,7 +520,7 @@ Example questions:
                     onClick={() => setQuestion("Calculate the displacement of a vessel 100 metres long, 20 metres in beam and with a draft of 8 metres")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Deplasman hesaplama
+                    • Displacement calculation
                   </button>
                   <button 
                     onClick={() => setQuestion("What is 50 knots in km/h?")}
@@ -552,13 +552,13 @@ Example questions:
                     onClick={() => setQuestion("MARPOL Annex VI emisyon limitleri nedir?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • MARPOL gereksinimleri
+                    • MARPOL requirements
                   </button>
                   <button 
                     onClick={() => setQuestion("What are the wind speed and wave height at Beaufort 7?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
-                    • Meteoroloji
+                    • Meteorology
                   </button>
                   <button 
                     onClick={() => setQuestion("What are IMDG Code Class 3 dangerous goods?")}

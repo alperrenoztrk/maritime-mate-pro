@@ -27,7 +27,7 @@ export default function BridgeDeviceDetailPage() {
   if (!device) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 py-12 text-center">
-        <p className="text-lg font-semibold text-foreground">Cihaz bulunamadı</p>
+        <p className="text-lg font-semibold text-foreground">Device not found</p>
       </div>
     );
   }
@@ -48,27 +48,27 @@ export default function BridgeDeviceDetailPage() {
               <DeviceIcon className="h-6 w-6" />
             </span>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">Köprüüstü Aygıtı</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">Bridge Device</p>
               <h1 className="text-3xl font-black text-foreground sm:text-4xl">{device.name}</h1>
             </div>
           </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <SectionList title="Görev ve kullanım alanları" items={device.duties} />
-          <SectionList title="Operasyon adımları" items={device.operations} />
-          <SectionList title="İzleme ve emniyet" items={device.monitoring} />
-          <SectionList title="Entegrasyon ve iş akışı" items={device.integration} />
+          <SectionList title="Duties and areas of use" items={device.duties} />
+          <SectionList title="Operation steps" items={device.operations} />
+          <SectionList title="Monitoring and safety" items={device.monitoring} />
+          <SectionList title="Integration and workflow" items={device.integration} />
         </div>
 
         <div className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-micro font-semibold uppercase tracking-[0.2em] text-primary/80">Örnek görseller</p>
-              <h2 className="text-lg font-bold text-foreground">{device.name} köprüüstü perspektifleri</h2>
+              <p className="text-micro font-semibold uppercase tracking-[0.2em] text-primary/80">Sample images</p>
+              <h2 className="text-lg font-bold text-foreground">{device.name} bridge perspectives</h2>
             </div>
             <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-              {device.images.length} fotoğraf
+              {device.images.length} photo
             </span>
           </div>
 
@@ -87,7 +87,7 @@ export default function BridgeDeviceDetailPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60" />
                 </div>
                 <figcaption className="flex items-center justify-between px-3 py-2 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Köprüüstü detayı</span>
+                  <span className="font-medium text-foreground">Bridge detail</span>
                   <span className="rounded-md bg-primary/10 px-2 py-1 text-micro font-semibold uppercase tracking-wide text-primary">
                     {device.name}
                   </span>
@@ -98,7 +98,7 @@ export default function BridgeDeviceDetailPage() {
         </div>
 
         <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4 text-sm text-foreground shadow-inner sm:p-6">
-          <p className="mb-2 text-base font-semibold text-primary">Neden önemli?</p>
+          <p className="mb-2 text-base font-semibold text-primary">Why is it important?</p>
           <p className="text-muted-foreground">
             {device.name} module helps bridge teams carry out the task safely, methodically and in a way that can be documented. This summary is a quick orientation for newly joined officers and a reference guide for experienced watchkeepers preparing for drills and inspections.
           </p>

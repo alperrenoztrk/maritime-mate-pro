@@ -56,7 +56,7 @@ export function useWeatherForecast(lat?: number, lon?: number) {
       forecastUrl.searchParams.set("forecast_days", "7");
 
       const res = await fetch(forecastUrl.toString());
-      if (!res.ok) throw new Error(`Hava tahmini alınamadı (${res.status})`);
+      if (!res.ok) throw new Error(`Weather forecast could not be received (${res.status})`);
       
       const json = await res.json();
       const daily = json.daily || {};
@@ -77,7 +77,7 @@ export function useWeatherForecast(lat?: number, lon?: number) {
       
       setData(forecastData);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Bilinmeyen hata";
+      const message = error instanceof Error ? error.message : "Unknown error";
       setError(message);
     } finally {
       setLoading(false);
@@ -125,7 +125,7 @@ export function useHourlyForecast(lat?: number, lon?: number, targetDate?: strin
       forecastUrl.searchParams.set("end_date", date);
 
       const res = await fetch(forecastUrl.toString());
-      if (!res.ok) throw new Error(`Saatlik hava tahmini alınamadı (${res.status})`);
+      if (!res.ok) throw new Error(`Hourly weather forecast could not be received (${res.status})`);
       
       const json = await res.json();
       const hourly = json.hourly || {};
@@ -141,7 +141,7 @@ export function useHourlyForecast(lat?: number, lon?: number, targetDate?: strin
       
       setData(hourlyData);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Bilinmeyen hata";
+      const message = error instanceof Error ? error.message : "Unknown error";
       setError(message);
     } finally {
       setLoading(false);

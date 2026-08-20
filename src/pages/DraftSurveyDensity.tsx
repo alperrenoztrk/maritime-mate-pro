@@ -56,7 +56,7 @@ const DraftSurveyDensity = () => {
       title="Density Correction"
       icon={BarChart3}
       hero={{
-        title: "Draft Survey",
+        title: "Draft survey",
         imageSrc: containerShip,
         imageAlt: "Container ship aerial view",
       }}
@@ -73,7 +73,7 @@ const DraftSurveyDensity = () => {
           ]}
           symbolsNote={
             <>
-              ρ: gerçek su yoğunluğu, ρ₀: standart yoğunluk (genelde 1.025 t/m³)
+              ρ: actual water density, ρ₀: standard density (usually 1.025 t/m³)
             </>
           }
         />
@@ -81,7 +81,7 @@ const DraftSurveyDensity = () => {
       below={
         <CalculationCard>
           <CardHeader>
-            <CardTitle>Yoğunluk Düzeltmesi Hakkında</CardTitle>
+            <CardTitle>About Density Correction</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
@@ -95,13 +95,13 @@ const DraftSurveyDensity = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BarChart3 className="h-5 w-5" />
-            Yoğunluk Düzeltme Hesaplama
+            Density Correction Calculation
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="seawater-density">Deniz Suyu Yoğunluğu (t/m³)</Label>
+              <Label htmlFor="seawater-density">Sea Water Density (t/m³)</Label>
               <Input
                 id="seawater-density"
                 type="number"
@@ -112,7 +112,7 @@ const DraftSurveyDensity = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="standard-density">Standart Yoğunluk (t/m³)</Label>
+              <Label htmlFor="standard-density">Standard Density (t/m³)</Label>
               <Input
                 id="standard-density"
                 type="number"
@@ -122,7 +122,7 @@ const DraftSurveyDensity = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="displacement">Deplasman (ton)</Label>
+              <Label htmlFor="displacement">Displacement (tons)</Label>
               <Input
                 id="displacement"
                 type="number"
@@ -135,18 +135,18 @@ const DraftSurveyDensity = () => {
           </div>
 
           <Button onClick={calculateDensityCorrection} className="w-full">
-            Yoğunluk Düzeltmesini Hesapla
+            Calculate Density Correction
           </Button>
 
           {correction !== null && (
             <div className="mt-4 rounded-lg border border-sky-200/50 dark:border-sky-500/20 bg-sky-50/70 dark:bg-sky-900/15 p-4">
-              <h3 className="text-lg font-semibold">Hesaplama Sonucu</h3>
+              <h3 className="text-lg font-semibold">Calculation Result</h3>
               <div className="space-y-2 mt-2">
                 <p className="text-lg font-semibold">
                   Density Correction: <span className="text-sky-700 dark:text-sky-300">{correction.toFixed(2)} ton</span>
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {correction > 0 ? "Pozitif düzeltme (ekleme)" : "Negatif düzeltme (çıkarma)"}
+                  {correction > 0 ? "Positive correction (addition)" : "Negative correction (subtraction)"}
                 </p>
               </div>
             </div>

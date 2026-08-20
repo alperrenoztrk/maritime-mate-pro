@@ -11,21 +11,21 @@ export default function DraftSurveyComparative() {
   
   const [inputs, setInputs] = useState({
     survey1: {
-      name: "İlk Ölçüm",
+      name: "First Measurement",
       forward: "",
       midship: "",
       aft: "",
       date: ""
     },
     survey2: {
-      name: "İkinci Ölçüm",
+      name: "Second Measurement",
       forward: "",
       midship: "",
       aft: "",
       date: ""
     },
     survey3: {
-      name: "Üçüncü Ölçüm",
+      name: "Third Measurement",
       forward: "",
       midship: "",
       aft: "",
@@ -58,7 +58,7 @@ export default function DraftSurveyComparative() {
     const tpc = parseFloat(vesselParticulars.tpc);
     
     if (!tpc) {
-      toast({ title: "Error", description: "TPC değerini girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter the TPC value", variant: "destructive" });
       return;
     }
 
@@ -67,7 +67,7 @@ export default function DraftSurveyComparative() {
     );
 
     if (surveys.length < 2) {
-      toast({ title: "Error", description: "En az 2 ölçüm değeri girin", variant: "destructive" });
+      toast({ title: "Error", description: "Enter at least 2 measurement values", variant: "destructive" });
       return;
     }
 
@@ -93,8 +93,8 @@ export default function DraftSurveyComparative() {
       const draftChange = current.meanDraft - prev.meanDraft;
       const displacementChange = current.displacement - prev.displacement;
       
-      let trend = "Sabit";
-      if (draftChange > 0.05) trend = "Artış";
+      let trend = "Fixed";
+      if (draftChange > 0.05) trend = "Increase";
       else if (draftChange < -0.05) trend = "Decrease";
       
       comparisons.push({
@@ -111,20 +111,20 @@ export default function DraftSurveyComparative() {
       comparisons
     });
 
-    toast({ title: "Calculation Completed", description: "Karşılaştırmalı analiz yapıldı" });
+    toast({ title: "Calculation Completed", description: "Comparative analysis was made" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold">Karşılaştırmalı Analiz</h1>
+          <h1 className="text-2xl font-bold">Comparative Analysis</h1>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Gemi Özellikleri</CardTitle>
+          <CardTitle>Ship Features</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -163,12 +163,12 @@ export default function DraftSurveyComparative() {
       {/* Survey 1 */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-blue-600 dark:text-blue-400">İlk Ölçüm</CardTitle>
+          <CardTitle className="text-blue-600 dark:text-blue-400">First Measurement</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="survey1-name">Ölçüm Adı</Label>
+              <Label htmlFor="survey1-name">Measurement Name</Label>
               <Input
                 id="survey1-name"
                 value={inputs.survey1.name}
@@ -176,11 +176,11 @@ export default function DraftSurveyComparative() {
                   ...prev, 
                   survey1: { ...prev.survey1, name: e.target.value }
                 }))}
-                placeholder="İlk Ölçüm"
+                placeholder="First Measurement"
               />
             </div>
             <div>
-              <Label htmlFor="survey1-forward">Baş Draft (m)</Label>
+              <Label htmlFor="survey1-forward">Head Draft (m)</Label>
               <Input
                 id="survey1-forward"
                 type="number"
@@ -194,7 +194,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey1-midship">Orta Draft (m)</Label>
+              <Label htmlFor="survey1-midship">Medium Draft (m)</Label>
               <Input
                 id="survey1-midship"
                 type="number"
@@ -208,7 +208,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey1-aft">Kıç Draft (m)</Label>
+              <Label htmlFor="survey1-aft">Aft Draft (m)</Label>
               <Input
                 id="survey1-aft"
                 type="number"
@@ -228,12 +228,12 @@ export default function DraftSurveyComparative() {
       {/* Survey 2 */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-green-600 dark:text-green-400">İkinci Ölçüm</CardTitle>
+          <CardTitle className="text-green-600 dark:text-green-400">Second Measurement</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="survey2-name">Ölçüm Adı</Label>
+              <Label htmlFor="survey2-name">Measurement Name</Label>
               <Input
                 id="survey2-name"
                 value={inputs.survey2.name}
@@ -241,11 +241,11 @@ export default function DraftSurveyComparative() {
                   ...prev, 
                   survey2: { ...prev.survey2, name: e.target.value }
                 }))}
-                placeholder="İkinci Ölçüm"
+                placeholder="Second Measurement"
               />
             </div>
             <div>
-              <Label htmlFor="survey2-forward">Baş Draft (m)</Label>
+              <Label htmlFor="survey2-forward">Head Draft (m)</Label>
               <Input
                 id="survey2-forward"
                 type="number"
@@ -259,7 +259,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey2-midship">Orta Draft (m)</Label>
+              <Label htmlFor="survey2-midship">Medium Draft (m)</Label>
               <Input
                 id="survey2-midship"
                 type="number"
@@ -273,7 +273,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey2-aft">Kıç Draft (m)</Label>
+              <Label htmlFor="survey2-aft">Aft Draft (m)</Label>
               <Input
                 id="survey2-aft"
                 type="number"
@@ -293,12 +293,12 @@ export default function DraftSurveyComparative() {
       {/* Survey 3 */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-orange-600 dark:text-orange-400">Üçüncü Ölçüm (İsteğe Bağlı)</CardTitle>
+          <CardTitle className="text-orange-600 dark:text-orange-400">Third Measurement (Optional)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="survey3-name">Ölçüm Adı</Label>
+              <Label htmlFor="survey3-name">Measurement Name</Label>
               <Input
                 id="survey3-name"
                 value={inputs.survey3.name}
@@ -306,11 +306,11 @@ export default function DraftSurveyComparative() {
                   ...prev, 
                   survey3: { ...prev.survey3, name: e.target.value }
                 }))}
-                placeholder="Üçüncü Ölçüm"
+                placeholder="Third Measurement"
               />
             </div>
             <div>
-              <Label htmlFor="survey3-forward">Baş Draft (m)</Label>
+              <Label htmlFor="survey3-forward">Head Draft (m)</Label>
               <Input
                 id="survey3-forward"
                 type="number"
@@ -324,7 +324,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey3-midship">Orta Draft (m)</Label>
+              <Label htmlFor="survey3-midship">Medium Draft (m)</Label>
               <Input
                 id="survey3-midship"
                 type="number"
@@ -338,7 +338,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey3-aft">Kıç Draft (m)</Label>
+              <Label htmlFor="survey3-aft">Aft Draft (m)</Label>
               <Input
                 id="survey3-aft"
                 type="number"
@@ -357,7 +357,7 @@ export default function DraftSurveyComparative() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Karşılaştırmalı Analiz Yap
+        Perform Comparative Analysis
       </Button>
 
       {result && (
@@ -366,7 +366,7 @@ export default function DraftSurveyComparative() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BarChart3 className="h-5 w-5" />
-                Ölçüm Sonuçları
+                Measurement Results
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -374,9 +374,9 @@ export default function DraftSurveyComparative() {
                 {result.surveys.map((survey, index) => (
                   <div key={index} className="p-3 bg-white dark:bg-gray-600 rounded">
                     <h4 className="font-semibold">{survey.name}</h4>
-                    <p><strong>Ortalama su çekimi:</strong> {survey.meanDraft.toFixed(3)} m</p>
-                    <p><strong>Deplasman:</strong> {survey.displacement.toFixed(2)} ton</p>
-                    <p><strong>Trim:</strong> {survey.trimByHead.toFixed(3)} m {survey.trimByHead >= 0 ? "(Baş trim)" : "(Kıç trim)"}</p>
+                    <p><strong>Average draft:</strong> {survey.meanDraft.toFixed(3)} m</p>
+                    <p><strong>Displacement</strong> {survey.displacement.toFixed(2)} ton</p>
+                    <p><strong>Trim:</strong> {survey.trimByHead.toFixed(3)} m {survey.trimByHead >= 0 ? "(head trim)" : "(Stern trim)"}</p>
                   </div>
                 ))}
               </div>
@@ -387,7 +387,7 @@ export default function DraftSurveyComparative() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <TrendingUp className="h-5 w-5" />
-                Karşılaştırma Sonuçları
+                Comparison Results
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -395,8 +395,8 @@ export default function DraftSurveyComparative() {
                 <div key={index} className="p-3 bg-white dark:bg-gray-600 rounded">
                   <h4 className="font-semibold">{comparison.from} → {comparison.to}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <p><strong>Su çekimi değişimi:</strong> {comparison.draftChange.toFixed(3)} m</p>
-                    <p><strong>Deplasman Değişimi:</strong> {comparison.displacementChange.toFixed(2)} ton</p>
+                    <p><strong>Draft change:</strong> {comparison.draftChange.toFixed(3)} m</p>
+                    <p><strong>Displacement Change:</strong> {comparison.displacementChange.toFixed(2)} ton</p>
                     <p><strong>Trend:</strong> 
                       <span className={`ml-1 ${
                         comparison.trend === 'Artış' ? 'text-green-600 dark:text-green-400' :

@@ -119,7 +119,7 @@ export default function NavigationRulesPage() {
       <div className="min-h-screen bg-background px-4 pb-24 pt-6">
         <div className="mx-auto max-w-lg space-y-4">
           <div>
-            <h1 className="text-xl font-bold tracking-tight text-foreground">Seyir Kuralları</h1>
+            <h1 className="text-xl font-bold tracking-tight text-foreground">Navigation Rules</h1>
             </div>
 
           <div className="space-y-2.5">

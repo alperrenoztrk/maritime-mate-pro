@@ -131,7 +131,7 @@ export const cloudTypes: CloudType[] = [
     id: 'cumulonimbus',
     name: 'Cumulonimbus',
     nameTr: 'cumulonimbus',
-    code: 'Cb',
+    code: 'C b',
     mgmCode: 'CL 3,9',
     level: 'vertical',
     altitude: '0.5-16 km',
@@ -234,7 +234,7 @@ export const cloudTypes: CloudType[] = [
     bestDetectionChannel: 'Ch1 (VIS0.6) - Visual of middle cloud structures'
   },
 
-  // YÜKSEK BULUTLAR (5-13 km)
+  // HIGH CLOUDS (5-13 km)
   {
     id: 'cirrus',
     name: 'Cirrus',
@@ -314,7 +314,7 @@ export const cloudTypes: CloudType[] = [
     bestDetectionChannel: 'Ch3 (NIR1.6) - Thin ice clouds, cloud phase detection'
   },
 
-  // ÖZEL BULUTLAR
+  // SPECIAL CLOUDS
   {
     id: 'mammatus',
     name: 'Mammatus',
@@ -485,11 +485,11 @@ export const cloudTypes: CloudType[] = [
     characteristics: [
       'wavy base',
       'sea wave view',
-      'Nadir',
+      'Rare',
       'sign of turbulence'
     ],
     maritimeImportance: 'Atmospheric instability, variable conditions',
-    visibility: 'Orta',
+    visibility: 'Medium',
     wind: 'Variable',
     precipitation: 'possible',
     danger: 'medium',
@@ -541,7 +541,7 @@ export const cloudTypes: CloudType[] = [
       'Yapay bulut'
     ],
     maritimeImportance: 'Information about the upper atmosphere humidity status',
-    visibility: 'Etkilemez',
+    visibility: 'Does not affect',
     wind: 'top level',
     precipitation: 'None',
     danger: 'low',

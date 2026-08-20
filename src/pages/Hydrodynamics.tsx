@@ -8,16 +8,16 @@ import { CalculationCard } from "@/components/ui/calculation-card";
 const Hydrodynamics = () => {
   return (
     <CalculationLayout
-      title="Hidrodinamik Hesaplamalar"
+      title="Hydrodynamic Calculations"
       icon={Waves}
       hero={{
-        title: "Hidrodinamik Hesaplamalar",
+        title: "Hydrodynamic Calculations",
         imageSrc: oceanWaves,
         imageAlt: "Ocean Waves",
       }}
       below={
         <div className="text-center text-sm text-muted-foreground">
-          Su direnci, gemi güç gereksinimleri, dalga analizleri ve daha fazlası
+          Water resistance, ship power requirements, wave analysis and more
         </div>
       }
     >
@@ -25,7 +25,7 @@ const Hydrodynamics = () => {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-xl">
             <Waves className="h-6 w-6 text-sky-600 dark:text-sky-400" />
-            Hidrodinamik Hesaplama Modülü
+            Hydrodynamic Calculation Module
           </CardTitle>
         </CardHeader>
         <CardContent>

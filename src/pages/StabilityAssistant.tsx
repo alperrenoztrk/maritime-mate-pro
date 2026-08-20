@@ -22,7 +22,7 @@ export default function StabilityAssistantPage() {
       badge="Stability Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Stabilite hesapları, FSC veya IMO kriterleriyle ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding stability calculations, FSC or IMO criteria..."
       icon={Shield}
       accentGradient="from-cyan-600 via-teal-600 to-emerald-600"
       iconColor="text-cyan-700 dark:text-cyan-400"

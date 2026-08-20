@@ -126,7 +126,7 @@ export const SEIKO_CLOCK: InstrumentPhoto = {
     "radial-gradient(ellipse 35.38% 35.38% at 49.31% 51.05%, #000 0 98%, transparent 100%)," +
     " radial-gradient(ellipse 38.63% 5.42% at 49.31% 51.05%, #000 0 94%, transparent 100%)",
   credit: {
-    title: "Seiko köprüüstü saati",
+    title: "Seiko bridge watch",
     author: "User archive",
     license: "Supplied by the app owner",
   },
@@ -154,7 +154,7 @@ export const WIND_GAUGE: InstrumentPhoto = {
   crop: { x: 0.54956, y: 0.22071, w: 0.40646, h: 0.4944 },
   aspect: SMALL_ASPECT,
   credit: {
-    title: "Koshin rüzgâr hız/yön paneli",
+    title: "Koshin wind speed/direction panel",
     author: "User archive",
     license: "Supplied by the app owner",
   },
@@ -220,11 +220,11 @@ export const PORTHOLE_GLASS: EllipseAnchor = { cx: 0.4938, cy: 0.5093, rx: 0.225
  */
 export const GPS: InstrumentPhoto = {
   src: gpsPhoto,
-  alt: "SGN-500 GPS/GLONASS alıcısı",
+  alt: "SGN-500 GPS/GLONASS receiver",
   crop: { x: 0, y: 0.05556, w: 1, h: 0.80351 },
   aspect: 1.8,
   credit: {
-    title: "SGN-500 GPS/GLONASS alıcısı",
+    title: "SGN-500 GPS/GLONASS receiver",
     author: "User archive",
     license: "Supplied by the app owner",
   },

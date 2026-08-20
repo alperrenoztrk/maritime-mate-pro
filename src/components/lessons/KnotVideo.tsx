@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 
 interface KnotVideoProps {
   videoId: string;
-  /** Accessible label, e.g. "İzbarço Bağları (Bowline)". */
+  /** Accessible label, e.g. "Bowline Ties (Bowline)". */
   title: string;
   /** Local diagram used as the poster / offline fallback. */
   poster: string;

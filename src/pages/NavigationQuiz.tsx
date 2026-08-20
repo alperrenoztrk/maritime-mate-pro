@@ -29,16 +29,16 @@ export default function NavigationQuizPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <ListChecks className="h-5 w-5" />
-            Seyir Quiz
+            Navigation Quiz
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <span>Toplam soru havuzu: {maxCount}</span>
+            <span>Total question pool: {maxCount}</span>
             <span>•</span>
-            <span>Görüntülenen: {count} questions</span>
+            <span>Displayed: {count} questions</span>
             <span>•</span>
-            <span>Temel ve uygulamalı karışık</span>
+            <span>Mixed basic and applied</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -49,12 +49,12 @@ export default function NavigationQuizPage() {
                 size="sm"
                 onClick={() => setCount(Math.min(c, maxCount))}
               >
-                {c} Soru
+                {c} Question
               </Button>
             ))}
             <Button variant="secondary" size="sm" className="gap-2" onClick={() => setSeed(Date.now())}>
               <Shuffle className="h-4 w-4" />
-              Yeniden Karıştır
+              Remix
             </Button>
           </div>
         </CardContent>

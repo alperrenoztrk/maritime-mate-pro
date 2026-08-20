@@ -1,7 +1,7 @@
 import { useEffect, useId } from 'react';
 
 /**
- * Registry of the "yazı" (article / long-form reading) surfaces that are
+ * Registry of the "writing" (article / long-form reading) surfaces that are
  * currently open on top of a page: the full-screen topic articles, the news
  * reader, and anything else that puts a text in front of the user.
  *

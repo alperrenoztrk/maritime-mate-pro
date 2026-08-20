@@ -49,7 +49,7 @@ export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean =
       // İzin reddedilmişse yeniden sorma.
       void shouldRequestLocation().then((allowed) => {
         if (!allowed) {
-          setError("Konum izni verilmemiş");
+          setError("Location permission not granted");
           return;
         }
         if (cancelled || watchId !== null) return;
@@ -61,7 +61,7 @@ export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean =
       watchId = navigator.geolocation.watchPosition(
         (pos) => {
           if (cancelled) return;
-          // GPS intervalMs'den daha sık veri üretirse state'i boğmamak için kısıtla;
+          // GPS intervalMs'If it produces data more frequently than state'i boğmamak için kısıtla;
           // %20 tolerans, ~1 Hz gelen fix'lerin zamanlama titremesiyle düşmesini önler
           const now = Date.now();
           if (now - lastUpdateRef.current < intervalMs * 0.8) return;

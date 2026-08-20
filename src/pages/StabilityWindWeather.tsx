@@ -44,7 +44,7 @@ export default function StabilityWindWeatherPage() {
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="windSpeed">Rüzgar Hızı (m/s)</Label>
+              <Label htmlFor="windSpeed">Wind Speed (m/s)</Label>
               <Input
                 id="windSpeed"
                 type="number"
@@ -58,7 +58,7 @@ export default function StabilityWindWeatherPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="projectedArea">Projeksiyon Alanı (m²)</Label>
+              <Label htmlFor="projectedArea">Projection Area (m²)</Label>
               <Input
                 id="projectedArea"
                 type="number"
@@ -72,7 +72,7 @@ export default function StabilityWindWeatherPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="leverArm">Kol Uzunluğu (m)</Label>
+              <Label htmlFor="leverArm">Arm Length (m)</Label>
               <Input
                 id="leverArm"
                 type="number"
@@ -87,7 +87,7 @@ export default function StabilityWindWeatherPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="displacement">Deplasman (ton)</Label>
+              <Label htmlFor="displacement">Displacement (tons)</Label>
               <Input
                 id="displacement"
                 type="number"
@@ -103,28 +103,28 @@ export default function StabilityWindWeatherPage() {
 
           {result && (
             <div className="mt-6 p-4 bg-primary/10 rounded-lg">
-              <h4 className="font-semibold mb-3 text-primary">Hesaplama Sonuçları</h4>
+              <h4 className="font-semibold mb-3 text-primary">Calculation Results</h4>
               <div className="space-y-2 text-sm">
                 <p>
-                  <strong>Rüzgar Basıncı:</strong> {result.windPressure} N/m²
+                  <strong>Wind Pressure:</strong> {result.windPressure} N/m²
                 </p>
                 <p>
-                  <strong>Rüzgar Kuvveti:</strong> {result.windForce} N
+                  <strong>Wind Force:</strong> {result.windForce} N
                 </p>
                 <p>
-                  <strong>Yatma Momenti:</strong> {result.heelMoment} N·m
+                  <strong>Listing Moment:</strong> {result.heelMoment} N·m
                 </p>
               </div>
             </div>
           )}
 
           <div className="mt-6 p-4 bg-muted rounded-lg">
-            <h4 className="font-semibold mb-2 text-sm">Formüller:</h4>
+            <h4 className="font-semibold mb-2 text-sm">Formulas:</h4>
             <p className="text-xs font-mono">P = 0.0613 × V²</p>
             <p className="text-xs font-mono mt-1">F = P × A</p>
             <p className="text-xs font-mono mt-1">M = F × h</p>
             <p className="text-xs text-muted-foreground mt-2">
-              P: Rüzgar basıncı, V: Rüzgar hızı, A: Alan, h: Kol uzunluğu
+              P: Wind pressure, V: Wind speed, A: Area, h: Arm length
             </p>
           </div>
         </CardContent>

@@ -49,7 +49,7 @@ export default function CrewHierarchyPage() {
   }
 
   return (
-    <LibraryPageShell title="Gemi Personeli" icon={Users}>
+    <LibraryPageShell title="Ship Personnel" icon={Users}>
       <InsetGroupedList columns={2}>
         <LibraryEntryCard
           title="Muster List"

@@ -284,7 +284,7 @@ const EmptyPage = () => {
   if (error) {
     return (
       <div className={`min-h-screen ${oceanTheme.background} flex items-center justify-center p-6`}>
-        <div className="text-red-600 text-center">Hata: {error}</div>
+        <div className="text-red-600 text-center">Error: {error}</div>
       </div>
     );
   }
@@ -329,27 +329,27 @@ const EmptyPage = () => {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-2xl text-blue-900">
               <Compass className="h-6 w-6 text-blue-700" />
-              Hoş Geldiniz!
+              Welcome!
             </DialogTitle>
             <DialogDescription className="text-base text-blue-800 space-y-3 pt-2">
-              <p className="font-medium">Widget sayfasında 3 farklı kategori bulunmaktadır:</p>
+              <p className="font-medium">There are 3 different categories on the widget page:</p>
               <ul className="space-y-2 list-none">
-                <li className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-blue-700" /> <strong>Zaman Bilgileri</strong></li>
-                <li className="flex items-center gap-2"><CloudSun className="h-4 w-4 text-blue-700" /> <strong>Hava Durumu</strong></li>
-                <li className="flex items-center gap-2"><Globe2 className="h-4 w-4 text-blue-700" /> <strong>Konum</strong></li>
+                <li className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-blue-700" /> <strong>Timestamps</strong></li>
+                <li className="flex items-center gap-2"><CloudSun className="h-4 w-4 text-blue-700" /> <strong>Weather</strong></li>
+                <li className="flex items-center gap-2"><Globe2 className="h-4 w-4 text-blue-700" /> <strong>Location</strong></li>
               </ul>
               <div className="pt-3 space-y-2 border-t border-blue-300">
                 <p className="flex items-center gap-2 font-semibold text-blue-900">
-                  <Smartphone className="h-4 w-4" /> Gezinme Yöntemleri:
+                  <Smartphone className="h-4 w-4" /> Navigation Methods:
                 </p>
-                <p className="flex items-start gap-2"><MoveHorizontal className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Kaydırma:</strong> Sayfayı sağa/sola kaydırarak kategoriler arası geçiş yapın</span></p>
-                <p className="flex items-start gap-2"><MousePointerClick className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Tıklama:</strong> Ekranın sağ %35&apos;ine tıklayarak ileri, sol %35&apos;ine tıklayarak geri gidin</span></p>
+                <p className="flex items-start gap-2"><MoveHorizontal className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Scroll:</strong> Switch between categories by swiping the page left/right</span></p>
+                <p className="flex items-start gap-2"><MousePointerClick className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" /> <span><strong>Click:</strong> Ekranın sağ %35&apos;ine tıklayarak ileri, sol %35&apos;ine tıklayarak geri gidin</span></p>
               </div>
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-2 pt-2">
             <Button onClick={handleCloseTutorial} className="bg-blue-600 hover:bg-blue-700 text-white">
-              Anladım, Başlayalım!
+              Got it, Let's get started!
             </Button>
           </div>
         </DialogContent>
@@ -359,7 +359,7 @@ const EmptyPage = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
 
           <TabsContent value="time" className="space-y-4 animate-fade-in mt-0">
-            <h2 className={`flex items-center gap-2 text-xl font-semibold ${oceanTheme.textColor} mb-4`}><Clock3 className="h-5 w-5" /> Zaman Bilgileri</h2>
+            <h2 className={`flex items-center gap-2 text-xl font-semibold ${oceanTheme.textColor} mb-4`}><Clock3 className="h-5 w-5" /> Timestamps</h2>
             <div data-widget-container>
               <TimeWidgets
                 nationalTime={nationalTime}
@@ -373,7 +373,7 @@ const EmptyPage = () => {
           </TabsContent>
 
           <TabsContent value="weather" className="space-y-4 animate-fade-in mt-0">
-            <h2 className={`flex items-center gap-2 text-xl font-semibold ${oceanTheme.textColor} mb-4`}><CloudSun className="h-5 w-5" /> Hava Durumu</h2>
+            <h2 className={`flex items-center gap-2 text-xl font-semibold ${oceanTheme.textColor} mb-4`}><CloudSun className="h-5 w-5" /> Weather</h2>
             <div data-widget-container>
               <WeatherInfoWidgets
                 temperature={data?.temperatureC}
@@ -392,7 +392,7 @@ const EmptyPage = () => {
           </TabsContent>
 
           <TabsContent value="location" className="space-y-4 animate-fade-in mt-0">
-            <h2 className={`flex items-center gap-2 text-xl font-semibold ${oceanTheme.textColor} mb-4`}><Globe2 className="h-5 w-5" /> Konum</h2>
+            <h2 className={`flex items-center gap-2 text-xl font-semibold ${oceanTheme.textColor} mb-4`}><Globe2 className="h-5 w-5" /> Location</h2>
             <div data-widget-container>
               <LocationCelestialWidgets
                 locationLabel={locationLabel}

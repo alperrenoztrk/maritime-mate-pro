@@ -96,7 +96,7 @@ class WeatherPreloader {
     this.isPreloading = true;
     this.preloadError = null;
     
-    console.log("🌤️ [Preloader] Splash screen sırasında hava durumu verisi alınıyor...");
+    console.log("🌤️ [Preloader] Receiving weather data during splash screen...");
     
     try {
       // Get current position with fallback
@@ -108,12 +108,12 @@ class WeatherPreloader {
         // İzin reddedilmişse hiç sorma: kullanıcı her açılışta izin diyaloğu
         // görmesin (bkz. src/lib/geolocationPermission.ts).
         if (!(await shouldRequestLocation())) {
-          throw new Error("Konum izni verilmemiş");
+          throw new Error("Location permission not granted");
         }
         const position = await new Promise<GeolocationPosition>((resolve, reject) => {
           console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
           if (!("geolocation" in navigator)) {
-            console.warn("⚠️ [Preloader] Konum servisi desteklenmiyor, fallback kullanılacak");
+            console.warn("⚠️ [Preloader] Location service not supported, fallback will be used");
             reject(new Error("Konum servisi desteklenmiyor"));
             return;
           }
@@ -121,11 +121,11 @@ class WeatherPreloader {
           console.log("📍 [Preloader] Konum bilgisi isteniyor (5s timeout)...");
           navigator.geolocation.getCurrentPosition(
             (pos) => {
-              console.log("✅ [Preloader] Konum alındı:", pos.coords.latitude, pos.coords.longitude);
+              console.log("✅ [Preloader] Location received:", pos.coords.latitude, pos.coords.longitude);
               resolve(pos);
             },
             (err) => {
-              console.warn("⚠️ [Preloader] Konum alınamadı:", err.message);
+              console.warn("⚠️ [Preloader] Failed to get location:", err.message);
               reject(err);
             },
             { enableHighAccuracy: false, timeout: 5000, maximumAge: 300000 } // 5s timeout, 5 min cache
@@ -142,19 +142,19 @@ class WeatherPreloader {
       } catch {
         const cached = readCachedPosition();
         if (cached && Date.now() - cached.timestamp < LAST_POSITION_MAX_AGE_MS) {
-          console.log("📍 [Preloader] Son bilinen konum kullanılıyor");
+          console.log("📍 [Preloader] Using last known location");
           lat = cached.latitude;
           lon = cached.longitude;
         } else {
           // Use fallback coordinates if geolocation fails
-          console.log("📍 [Preloader] Fallback koordinatlar kullanılıyor (İstanbul)");
+          console.log("📍 [Preloader] Fallback coordinates are used (Istanbul)");
           lat = this.defaultCoords.latitude;
           lon = this.defaultCoords.longitude;
           isFallbackLocation = true;
         }
       }
 
-      console.log("🌤️ [Preloader] Hava durumu ve konum verisi paralel olarak alınıyor...");
+      console.log("🌤️ [Preloader] Weather and location data are received in parallel...");
       
       // Fetch weather and location data in parallel
       const [weatherResult, locationResult] = await Promise.allSettled([
@@ -168,13 +168,13 @@ class WeatherPreloader {
       if (weatherResult.status === 'fulfilled') {
         weatherData = weatherResult.value;
       } else {
-        console.error("❌ [Preloader] Hava durumu alınamadı:", weatherResult.reason);
+        console.error("❌ [Preloader] Failed to get weather forecast:", weatherResult.reason);
       }
 
       if (locationResult.status === 'fulfilled') {
         locationLabel = locationResult.value;
       } else {
-        console.warn("⚠️ [Preloader] Konum etiketi alınamadı:", locationResult.reason);
+        console.warn("⚠️ [Preloader] Failed to get location tag:", locationResult.reason);
       }
 
       if (weatherData) {
@@ -183,14 +183,14 @@ class WeatherPreloader {
           locationLabel: locationLabel || undefined,
           isFallbackLocation,
         };
-        console.log("✅ [Preloader] Hava durumu verisi başarıyla preload edildi");
+        console.log("✅ [Preloader] Weather data preloaded successfully");
         return this.preloadedData;
       } else {
-        throw new Error("Hava durumu verisi alınamadı");
+        throw new Error("Could not receive weather data");
       }
     } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : "Bilinmeyen hata";
-      console.error("❌ [Preloader] Hava durumu preload hatası:", message);
+      const message = e instanceof Error ? e.message : "Unknown error";
+      console.error("❌ [Preloader] Weather preload error:", message);
       this.preloadError = message;
       return null;
     } finally {
@@ -226,7 +226,7 @@ class WeatherPreloader {
     weatherUrl.searchParams.set("timezone", "auto");
 
     const res = await fetch(weatherUrl.toString());
-    if (!res.ok) throw new Error(`Hava verisi alınamadı (${res.status})`);
+    if (!res.ok) throw new Error(`Weather data could not be received (${res.status})`);
     const json = (await res.json()) as WeatherResponse;
     const cur = json.current ?? {};
     const sunriseIso = json.daily?.sunrise?.[0];
@@ -277,7 +277,7 @@ class WeatherPreloader {
       let seaLikeName: string | undefined;
       if (!cityLikeName) {
         const informative = reverseJson?.localityInfo?.informative || [];
-        const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "körfez"];
+        const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "gulf"];
         for (const keyword of waterKeywords) {
           const match = informative.find((x) => {
             const desc = (x.description || "").toLowerCase();

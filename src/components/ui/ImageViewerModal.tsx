@@ -60,7 +60,7 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
             <button
               onClick={handleZoomOut}
               className="rounded-full bg-white/10 p-2.5 text-white transition-colors hover:bg-white/20"
-              aria-label="Küçült"
+              aria-label="Reduce"
             >
               <ZoomOut className="h-5 w-5" />
             </button>
@@ -74,7 +74,7 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
             <button
               onClick={handleRotate}
               className="rounded-full bg-white/10 p-2.5 text-white transition-colors hover:bg-white/20"
-              aria-label="Döndür"
+              aria-label="Rotate"
             >
               <RotateCw className="h-5 w-5" />
             </button>
@@ -95,14 +95,14 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
             <div className="flex flex-col items-center justify-center gap-3 rounded-xl bg-white/5 p-10 text-white/80">
               <ImageOff className="h-12 w-12 opacity-70" />
               <span className="max-w-xs text-center text-sm">
-                {alt ? `Image could not be loaded: ${alt}` : "Görsel yüklenemedi"}
+                {alt ? `Image could not be loaded: ${alt}` : "Image could not be loaded"}
               </span>
             </div>
           ) : (
             <motion.img
               key={stage}
               src={displaySrc}
-              alt={alt || "Görsel"}
+              alt={alt || "Visual"}
               onError={handleImgError}
               referrerPolicy="no-referrer"
               className="max-h-[90vh] max-w-[90vw] object-contain select-none"

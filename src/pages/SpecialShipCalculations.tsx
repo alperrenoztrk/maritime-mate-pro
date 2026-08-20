@@ -7,7 +7,7 @@ const SpecialShipCalculationsPage = () => {
     <MobileLayout>
       <CalculationGridScreen
         eyebrow="Special Ships"
-        title="Özel Gemi Hesaplamaları"
+        title="Special Ship Calculations"
       >
         <SpecialShipCalculations />
       </CalculationGridScreen>

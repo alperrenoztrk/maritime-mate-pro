@@ -81,14 +81,14 @@ export const StableTalesCalculator = () => {
       
       // Status mesajı
       if (calculationResults.solas_uygunluk.genel_uygunluk) {
-        toast.success("Tüm SOLAS kriterleri sağlandı!");
+        toast.success("All SOLAS criteria met!");
       } else {
-        toast.error("Bazı SOLAS kriterleri sağlanmadı!");
+        toast.error("Some SOLAS criteria were not met!");
       }
       
     } catch (error) {
       console.error("Calculation error:", error);
-      toast.error("Hesaplama sırasında bir hata oluştu!");
+      toast.error("An error occurred during calculation!");
     }
   };
 
@@ -99,12 +99,12 @@ export const StableTalesCalculator = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Ship className="h-5 w-5" />
-            Gemi Temel Bilgileri
+            Ship Basic Information
           </CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
-            <Label>Gemi Adı</Label>
+            <Label>Ship Name</Label>
             <Input
               type="text"
               value={vesselData.gemi_adi}
@@ -112,7 +112,7 @@ export const StableTalesCalculator = () => {
             />
           </div>
           <div>
-            <Label>Deplasman (ton)</Label>
+            <Label>Displacement (tons)</Label>
             <Input
               type="number"
               value={vesselData.deplasman}
@@ -145,13 +145,13 @@ export const StableTalesCalculator = () => {
         {/* Yükler */}
         <Card>
           <CardHeader>
-            <CardTitle>Yük Bilgileri</CardTitle>
-            <Button onClick={addYuk} size="sm">Yük Ekle</Button>
+            <CardTitle>Freight Information</CardTitle>
+            <Button onClick={addYuk} size="sm">Add Load</Button>
           </CardHeader>
           <CardContent className="space-y-4">
             {yukler.map((yuk, index) => (
               <div key={index} className="p-4 border rounded-lg space-y-2">
-                <h4 className="font-medium">Yük {index + 1}</h4>
+                <h4 className="font-medium">load {index + 1}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label>Weight (ton)</Label>
@@ -184,7 +184,7 @@ export const StableTalesCalculator = () => {
                   size="sm"
                   onClick={() => setYukler(prev => prev.filter((_, i) => i !== index))}
                 >
-                  Kaldır
+                  Remove
                 </Button>
               </div>
             ))}
@@ -194,8 +194,8 @@ export const StableTalesCalculator = () => {
         {/* Tanklar */}
         <Card>
           <CardHeader>
-            <CardTitle>Tank Bilgileri</CardTitle>
-            <Button onClick={addTank} size="sm">Tank Ekle</Button>
+            <CardTitle>Tank Information</CardTitle>
+            <Button onClick={addTank} size="sm">Add Tank</Button>
           </CardHeader>
           <CardContent className="space-y-4">
             {tanklar.map((tank, index) => (
@@ -203,7 +203,7 @@ export const StableTalesCalculator = () => {
                 <h4 className="font-medium">Tank {index + 1}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <Label>Uzunluk (m)</Label>
+                    <Label>Length (m)</Label>
                     <Input
                       type="number"
                       value={tank.uzunluk}
@@ -227,7 +227,7 @@ export const StableTalesCalculator = () => {
                     />
                   </div>
                   <div>
-                    <Label>Doluluk Oranı</Label>
+                    <Label>Occupancy Rate</Label>
                     <Input
                       type="number"
                       step="0.01"
@@ -242,7 +242,7 @@ export const StableTalesCalculator = () => {
                     />
                   </div>
                   <div>
-                    <Label>Sıvı Yoğunluğu (t/m³)</Label>
+                    <Label>Liquid Density (t/m³)</Label>
                     <Input
                       type="number"
                       step="0.001"
@@ -260,7 +260,7 @@ export const StableTalesCalculator = () => {
                   size="sm"
                   onClick={() => setTanklar(prev => prev.filter((_, i) => i !== index))}
                 >
-                  Kaldır
+                  Remove
                 </Button>
               </div>
             ))}
@@ -273,7 +273,7 @@ export const StableTalesCalculator = () => {
         <CardContent className="pt-6">
           <Button onClick={calculateStability} className="w-full" size="lg">
             <Calculator className="mr-2 h-5 w-5" />
-            Stabilite Analizi Yap
+            Perform Stability Analysis
           </Button>
         </CardContent>
       </Card>
@@ -290,7 +290,7 @@ export const StableTalesCalculator = () => {
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />
                 )}
-                Stabilite Analizi Sonuçları
+                Stability Analysis Results
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -309,7 +309,7 @@ export const StableTalesCalculator = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-primary">{results.yalpa_periyodu.toFixed(1)}s</p>
-                  <p className="text-sm text-muted-foreground">Yalpa Periyodu</p>
+                  <p className="text-sm text-muted-foreground">Roll Period</p>
                 </div>
               </div>
             </CardContent>
@@ -318,7 +318,7 @@ export const StableTalesCalculator = () => {
           {/* SOLAS Kriterleri */}
           <Card>
             <CardHeader>
-              <CardTitle>SOLAS Kriterleri Kontrolü</CardTitle>
+              <CardTitle>SOLAS Criteria Control</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -346,7 +346,7 @@ export const StableTalesCalculator = () => {
           {gzCurve.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>GZ Eğrisi</CardTitle>
+                <CardTitle>GZ Curve</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="h-80">
@@ -366,7 +366,7 @@ export const StableTalesCalculator = () => {
                           const payloadData = payload[0]?.payload ?? {};
                           return (
                             <div className="rounded-lg border border-border bg-background p-3 shadow-lg">
-                              <div className="font-medium">Açı: {label}°</div>
+                              <div className="font-medium">Angle: {label}°</div>
                               <div className="text-sm text-emerald-600">GZ: {payloadData.gz?.toFixed(3)} m</div>
                               <div className="text-sm text-sky-600">Moment: {payloadData.rightingMoment?.toFixed(0)} t·m</div>
                             </div>
@@ -408,7 +408,7 @@ export const StableTalesCalculator = () => {
                 <div className="mt-3 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
                   <div className="font-semibold">Formula</div>
                   <div>GZ(φ) = GM · sinφ; RM = Δ · GZ</div>
-                  <div className="mt-1 font-semibold">Anlam</div>
+                  <div className="mt-1 font-semibold">Meaning</div>
                   <div>GZ is the rectifier arm, RM is the rectifier moment.</div>
                 </div>
               </CardContent>

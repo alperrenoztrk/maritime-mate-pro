@@ -60,9 +60,9 @@ const Glossary = () => {
   const showCategoryLibrary = !activeCategory && !search.trim();
 
   return (
-    <LibraryPageShell title="Denizcilik Terimleri Sözlüğü" icon={BookOpenText}>
+    <LibraryPageShell title="Dictionary of Maritime Terms" icon={BookOpenText}>
       <SEO
-        title="Mariner's Book — Denizcilik Terimleri Sözlüğü"
+        title="Mariner's Book — Dictionary of Maritime Terms"
         description="Maritime glossary: learn maritime concepts quickly with category filters and search."
         path="/glossary"
       />
@@ -70,7 +70,7 @@ const Glossary = () => {
       <LibrarySearchField
         value={search}
         onChange={updateSearch}
-        placeholder="Terim ara…"
+        placeholder="Search term…"
         ariaLabel="Denizcilik terimlerinde ara"
       />
 
@@ -91,7 +91,7 @@ const Glossary = () => {
         <section className="space-y-4">
           <div className="flex items-center gap-3">
             <LibrarySectionHeading badge={filteredTerms.length}>
-              {activeCategory ?? "Arama Sonuçları"}
+              {activeCategory ?? "Search Results"}
             </LibrarySectionHeading>
             {activeCategory && (
               <button
@@ -99,7 +99,7 @@ const Glossary = () => {
                 onClick={() => updateCategory(null)}
                 className="surface-1 min-h-11 rounded-xl border px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-control hover:text-foreground"
               >
-                Kategoriler
+                Categories
               </button>
             )}
           </div>
@@ -122,7 +122,7 @@ const Glossary = () => {
               ))}
             </div>
           ) : (
-            <EmptyState icon={SearchX} title="Aradığınız terim bulunamadı." />
+            <EmptyState icon={SearchX} title="The term you were looking for was not found." />
           )}
         </section>
       )}

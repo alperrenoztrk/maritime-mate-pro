@@ -2,7 +2,7 @@
  * Oturum jetonu için donanım destekli depolama.
  *
  * Supabase oturumu (access + refresh token) varsayılan olarak WebView
- * localStorage'ında düz metin durur. Root'lanmış/jailbreak edilmiş bir
+ * localStorage'The plain text remains. root'lanmış/jailbreak edilmiş bir
  * cihazda ya da cihaza bulaşmış bir kötü amaçlı yazılım için bu dosya
  * doğrudan okunabilir: `allowBackup=false` yalnızca yedek yolunu kapatır,
  * yerel dosya erişimini değil.
@@ -80,7 +80,7 @@ const loadPlugin = async (): Promise<PluginBox> => {
         storage: (mod.SecureStorage as unknown as SecureStorageApi) ?? null,
       }))
       .catch((err: unknown): PluginBox => {
-        degrade("eklenti yüklenemedi", err);
+        degrade("plugin failed to load", err);
         return { storage: null };
       });
   }
@@ -90,7 +90,7 @@ const loadPlugin = async (): Promise<PluginBox> => {
     // `SecureStorage.then`, which Capacitor dispatches as a native method.
     return await pluginPromise;
   } catch (err) {
-    degrade("eklenti kutusu çözülemedi", err);
+    degrade("plugin box could not be resolved", err);
     return { storage: null };
   }
 };
@@ -100,8 +100,8 @@ const degrade = (reason: string, err?: unknown) => {
   if (degradedToLocalStorage) return;
   degradedToLocalStorage = true;
   console.warn(
-    `[secureSessionStorage] Güvenli depolama devre dışı (${reason}); ` +
-      "oturum jetonu localStorage'a yazılacak.",
+    `[secureSessionStorage] Secure storage disabled (${reason}); ` +
+      "The session token will be written to localStorage.",
     err,
   );
 };
@@ -126,7 +126,7 @@ const nativeAdapter: AsyncKeyValueStorage = {
       // kilidi değişikliği). Şifreli kopya okunamıyorsa aşağıdaki göç yoluna
       // düşeriz; orada da bir şey yoksa null döner ve kullanıcı yeniden
       // giriş yapar — sessizce eski oturuma dönmekten iyisi budur.
-      console.warn("[secureSessionStorage] Okuma başarısız.", err);
+      console.warn("[secureSessionStorage] Read failed.", err);
     }
 
     // Tek seferlik göç: sürüm yükseltmesinde localStorage'da duran oturumu
@@ -138,7 +138,7 @@ const nativeAdapter: AsyncKeyValueStorage = {
       await plugin.setItem(key, legacy);
       safeLocalStorage.removeItem(key);
     } catch (err) {
-      console.warn("[secureSessionStorage] Oturum göçü başarısız.", err);
+      console.warn("[secureSessionStorage] Session migration failed.", err);
     }
     return legacy;
   },
@@ -151,7 +151,7 @@ const nativeAdapter: AsyncKeyValueStorage = {
       // Göç yarıda kaldıysa düz metin kopya geride kalmasın.
       safeLocalStorage.removeItem(key);
     } catch (err) {
-      degrade("yazma başarısız", err);
+      degrade("write failed", err);
       await localStorageAdapter.setItem(key, value);
     }
   },
@@ -164,7 +164,7 @@ const nativeAdapter: AsyncKeyValueStorage = {
     try {
       await plugin.removeItem(key);
     } catch (err) {
-      console.warn("[secureSessionStorage] Silme başarısız.", err);
+      console.warn("[secureSessionStorage] Deletion failed.", err);
     }
   },
 };

@@ -46,7 +46,7 @@ export default function DraftSurveyBunker() {
     if (!beforeBunkering.forward || !beforeBunkering.midship || !beforeBunkering.aft ||
         !afterBunkering.forward || !afterBunkering.midship || !afterBunkering.aft ||
         !vesselData.tpc || !fuelSpecs.density) {
-      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -79,7 +79,7 @@ export default function DraftSurveyBunker() {
       fuelDensityCorrection: correctedDensity
     });
 
-    toast({ title: "Calculation Completed", description: "Bunker tonajı hesaplandı" });
+    toast({ title: "Calculation Completed", description: "Bunker tonnage calculated" });
   };
 
   return (
@@ -94,7 +94,7 @@ export default function DraftSurveyBunker() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Gauge className="h-5 w-5" />
-            Gemi Özellikleri
+            Ship Features
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -123,7 +123,7 @@ export default function DraftSurveyBunker() {
                   ...prev, 
                   vesselData: { ...prev.vesselData, lbp: e.target.value }
                 }))}
-                placeholder="Uzunluk"
+                placeholder="Length"
               />
             </div>
             <div>
@@ -147,13 +147,13 @@ export default function DraftSurveyBunker() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Fuel className="h-5 w-5" />
-            Yakıt Özellikleri
+            Fuel Specifications
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label htmlFor="density">Yakıt Yoğunluğu (ton/m³)</Label>
+              <Label htmlFor="density">Fuel Density (ton/m³)</Label>
               <Input
                 id="density"
                 type="number"
@@ -167,7 +167,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="temperature">Sıcaklık (°C)</Label>
+              <Label htmlFor="temperature">Temperature (°C)</Label>
               <Input
                 id="temperature"
                 type="number"
@@ -180,7 +180,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="viscosity">Viskozite (cSt) - Opsiyonel</Label>
+              <Label htmlFor="viscosity">Viscosity (cSt) - Optional</Label>
               <Input
                 id="viscosity"
                 type="number"
@@ -189,7 +189,7 @@ export default function DraftSurveyBunker() {
                   ...prev, 
                   fuelSpecs: { ...prev.fuelSpecs, viscosity: e.target.value }
                 }))}
-                placeholder="Viskozite"
+                placeholder="Viscosity"
               />
             </div>
           </div>
@@ -199,11 +199,11 @@ export default function DraftSurveyBunker() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="text-red-600 dark:text-red-400">Bunker Öncesi Draftlar (m)</CardTitle>
+            <CardTitle className="text-red-600 dark:text-red-400">Pre-Bunker Drafts (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="before-forward">Baş Draft</Label>
+              <Label htmlFor="before-forward">Chief Draft</Label>
               <Input
                 id="before-forward"
                 type="number"
@@ -217,7 +217,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="before-midship">Orta Draft</Label>
+              <Label htmlFor="before-midship">Medium Draft</Label>
               <Input
                 id="before-midship"
                 type="number"
@@ -231,7 +231,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="before-aft">Kıç Draft</Label>
+              <Label htmlFor="before-aft">Aft Draft</Label>
               <Input
                 id="before-aft"
                 type="number"
@@ -249,11 +249,11 @@ export default function DraftSurveyBunker() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-green-600 dark:text-green-400">Bunker Sonrası Draftlar (m)</CardTitle>
+            <CardTitle className="text-green-600 dark:text-green-400">Post-Bunker Drafts (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="after-forward">Baş Draft</Label>
+              <Label htmlFor="after-forward">Chief Draft</Label>
               <Input
                 id="after-forward"
                 type="number"
@@ -267,7 +267,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="after-midship">Orta Draft</Label>
+              <Label htmlFor="after-midship">Medium Draft</Label>
               <Input
                 id="after-midship"
                 type="number"
@@ -281,7 +281,7 @@ export default function DraftSurveyBunker() {
               />
             </div>
             <div>
-              <Label htmlFor="after-aft">Kıç Draft</Label>
+              <Label htmlFor="after-aft">Aft Draft</Label>
               <Input
                 id="after-aft"
                 type="number"
@@ -300,7 +300,7 @@ export default function DraftSurveyBunker() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Bunker Tonajını Hesapla
+        Calculate Bunker Tonnage
       </Button>
 
       {result && (
@@ -308,29 +308,29 @@ export default function DraftSurveyBunker() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
-              Bunker Hesaplama Sonuçları
+              Bunker Calculation Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p><strong>Su çekimi değişimi:</strong> {result.draftChange.toFixed(3)} m</p>
-                <p><strong>Deplasman Değişimi:</strong> {result.displacementChange.toFixed(2)} ton</p>
-                <p><strong>Düzeltilmiş Yoğunluk:</strong> {result.fuelDensityCorrection.toFixed(3)} ton/m³</p>
+                <p><strong>Draft change:</strong> {result.draftChange.toFixed(3)} m</p>
+                <p><strong>Displacement Change:</strong> {result.displacementChange.toFixed(2)} ton</p>
+                <p><strong>Corrected Density:</strong> {result.fuelDensityCorrection.toFixed(3)} ton/m³</p>
               </div>
               <div className="space-y-2">
                 <p className="text-xl font-bold text-orange-600 dark:text-orange-400">
-                  <strong>Bunker Ağırlığı:</strong> {result.bunkerWeight.toFixed(2)} ton
+                  <strong>Bunker Weight:</strong> {result.bunkerWeight.toFixed(2)} ton
                 </p>
                 <p className="text-lg font-semibold">
-                  <strong>Bunker Hacmi:</strong> {result.bunkerVolume.toFixed(2)} m³
+                  <strong>Bunker Volume:</strong> {result.bunkerVolume.toFixed(2)} m³
                 </p>
               </div>
             </div>
             
             <div className="mt-4 p-3 bg-white dark:bg-gray-600 rounded">
               <p className="text-sm text-muted-foreground">
-                * Sıcaklık düzeltmesi uygulanmıştır (0.06%/°C)
+                * Temperature correction applied (0.06%/°C)
               </p>
               <p className="text-sm text-muted-foreground">
                 * Hacim 15°C'de hesaplanmıştır

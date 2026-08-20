@@ -18,11 +18,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function NavigationAssistantPage() {
   return (
     <AssistantInterface
-      title="Seyir Asistanı"
-      badge="Seyir Asistanı"
+      title="Navigation Assistant"
+      badge="Navigation Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Seyir hesapları, COLREG veya rota planıyla ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding voyage calculations, COLREG or route plan..."
       icon={Compass}
       accentGradient="from-blue-600 to-indigo-600"
       iconColor="text-blue-600 dark:text-blue-400"

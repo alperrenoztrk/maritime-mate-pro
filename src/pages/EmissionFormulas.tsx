@@ -25,7 +25,7 @@ const formulas = [
         example: "For a Tier II engine, EF ≈ 14.4 g/kWh"
       },
       {
-        name: "PM Emisyonu",
+        name: "PM Emission",
         formula: "PM (kg) = Fuel (tonnes) × EF_PM",
         description: "EF_PM: particulate matter emission factor (kg per tonne of fuel)",
         example: "For HFO, EF_PM ≈ 1.5 kg/tonne"
@@ -77,7 +77,7 @@ const formulas = [
         example: "3000 nm at 15 knots and 40 tonnes/day → 333 tonnes"
       },
       {
-        name: "Enerji (kWh)",
+        name: "Energy (kWh)",
         formula: "E = P (kW) × t (h)",
         description: "For generator load analysis",
         example: "500 kW × 24 hours = 12,000 kWh"
@@ -94,7 +94,7 @@ const formulas = [
         example: ""
       },
       {
-        name: "VLSFO (Very Low Sulphur FO)",
+        name: "VLSFO (Very Low Sulfur FO)",
         formula: "CF = 3.151 tonnes CO₂ per tonne of fuel",
         description: "Low sulphur fuel (0.5% max)",
         example: ""

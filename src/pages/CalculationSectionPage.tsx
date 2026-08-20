@@ -15,10 +15,10 @@ export default function CalculationSectionPage() {
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
         <Card className="max-w-md w-full">
           <CardHeader>
-            <CardTitle>İçerik bulunamadı</CardTitle>
+            <CardTitle>Content not found</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
-            <p>İstediğiniz kategori veya bölüm mevcut değil.</p>
+            <p>The category or section you requested is not available.</p>
           </CardContent>
         </Card>
       </div>
@@ -40,7 +40,7 @@ export default function CalculationSectionPage() {
             <Button asChild>
               <Link to={section.href} className="gap-2">
                 <BookOpenCheck className="h-4 w-4" />
-                Modüle git
+                Go to module
               </Link>
             </Button>
           )}
@@ -54,7 +54,7 @@ export default function CalculationSectionPage() {
         {!fallback ? (
           <Card className="border-dashed">
             <CardHeader>
-              <CardTitle>Bu bölüm hazır</CardTitle>
+              <CardTitle>This section is ready</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground">
               <p>
@@ -130,7 +130,7 @@ export default function CalculationSectionPage() {
             {fallback.assistantTips && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Asistan Prompt Şablonları</CardTitle>
+                  <CardTitle>Assistant Prompt Templates</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {fallback.assistantTips.map((tip, idx) => (
@@ -146,7 +146,7 @@ export default function CalculationSectionPage() {
             {fallback.quiz && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Örnek Quiz</CardTitle>
+                  <CardTitle>Sample Quiz</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="font-semibold text-foreground">{fallback.quiz.question}</p>
@@ -158,7 +158,7 @@ export default function CalculationSectionPage() {
                     ))}
                   </div>
                   <div className="rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-500/30 p-4 text-sm">
-                    <p className="font-semibold text-emerald-800 dark:text-emerald-200">Doğru Cevap: {fallback.quiz.answer}</p>
+                    <p className="font-semibold text-emerald-800 dark:text-emerald-200">Correct Answer: {fallback.quiz.answer}</p>
                     <p className="text-muted-foreground mt-1">{fallback.quiz.explanation}</p>
                   </div>
                 </CardContent>
@@ -172,11 +172,11 @@ export default function CalculationSectionPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Info className="h-5 w-5" />
-                İçerik Bilgisi
+                Content Information
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-sm">Bu bölüm için hazırlanan bilgi kısa sürede güncellenecektir.</p>
+              <p className="text-muted-foreground text-sm">The information prepared for this section will be updated shortly.</p>
             </CardContent>
           </Card>
         )}

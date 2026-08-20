@@ -27,7 +27,7 @@ export default function ExercisesPage() {
             key={category.key}
             title={category.title}
             accent={category.accent}
-            note="Yakında"
+            note="Soon"
           />
         ),
       )}
@@ -39,7 +39,7 @@ export default function ExercisesPage() {
       <section className="space-y-4">
         <LibrarySectionHeading badge={deck.length}>
           <span className="inline-flex items-center gap-2">
-            <Ship className="h-5 w-5 text-primary" /> Güverte
+            <Ship className="h-5 w-5 text-primary" /> Deck
           </span>
         </LibrarySectionHeading>
         {renderLibrary(deck)}
@@ -48,7 +48,7 @@ export default function ExercisesPage() {
       <section className="space-y-4">
         <LibrarySectionHeading badge={machine.length}>
           <span className="inline-flex items-center gap-2">
-            <Wrench className="h-5 w-5 text-primary" /> Makine
+            <Wrench className="h-5 w-5 text-primary" /> Engine
           </span>
         </LibrarySectionHeading>
         {renderLibrary(machine)}

@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
 
       if (error) {
-        toast.error(error.message || "Google ile giriş tamamlanamadı");
+        toast.error(error.message || "Failed to complete login with Google");
         return;
       }
 

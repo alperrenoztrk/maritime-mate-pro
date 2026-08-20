@@ -4,7 +4,7 @@ import { Scale, AlertTriangle, FileText, Ship } from "lucide-react";
 
 const cargoRules = [
   {
-    title: "IMSBC Kodu",
+    title: "IMSBC Code",
     icon: FileText,
     rules: [
       "Transportable Moisture Limit (TML) and Flow Moisture Point (FMP) checks are mandatory.",
@@ -24,7 +24,7 @@ const cargoRules = [
     ]
   },
   {
-    title: "ISGOTT & Terminal Prosedürleri",
+    title: "ISGOTT & Terminal Procedures",
     icon: AlertTriangle,
     rules: [
       "Gas measurements must be taken before the manifold is opened.",
@@ -34,7 +34,7 @@ const cargoRules = [
     ]
   },
   {
-    title: "SOLAS Gereklilikleri",
+    title: "SOLAS Requirements",
     icon: Scale,
     rules: [
       "VGM (Verified Gross Mass) is mandatory for container loading.",
@@ -52,13 +52,13 @@ export default function CargoRulesPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Scale className="h-4 w-4" />
-            Kargo Kuralları
+            Shipping Rules
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-rose-600 bg-clip-text text-transparent">
-            Yük Elleçleme ve İstifleme Kuralları
+            Cargo Handling and Stacking Rules
           </h1>
         </div>
 

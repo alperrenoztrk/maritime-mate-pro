@@ -57,7 +57,7 @@ export default function DraftSurveyBallast() {
     if (!beforeBallast.forward || !beforeBallast.midship || !beforeBallast.aft ||
         !afterBallast.forward || !afterBallast.midship || !afterBallast.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -91,20 +91,20 @@ export default function DraftSurveyBallast() {
       tankDistribution
     });
 
-    toast({ title: "Calculation Completed", description: "Balast ölçümü hesaplandı" });
+    toast({ title: "Calculation Completed", description: "Ballast measurement calculated" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
 <div>
-          <h1 className="text-2xl font-bold">Balast Ölçümü</h1>
+          <h1 className="text-2xl font-bold">Ballast Measurement</h1>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Gemi Özellikleri</CardTitle>
+          <CardTitle>Ship Features</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -143,11 +143,11 @@ export default function DraftSurveyBallast() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="text-red-600 dark:text-red-400">Balast Öncesi Su Çekimleri (m)</CardTitle>
+            <CardTitle className="text-red-600 dark:text-red-400">Pre-Ballast Water Withdrawals (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="before-forward">Baş Su Çekimi</Label>
+              <Label htmlFor="before-forward">Head Draft</Label>
               <Input
                 id="before-forward"
                 type="number"
@@ -161,7 +161,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="before-midship">Orta Su Çekimi</Label>
+              <Label htmlFor="before-midship">Medium Draft</Label>
               <Input
                 id="before-midship"
                 type="number"
@@ -175,7 +175,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="before-aft">Kıç Su Çekimi</Label>
+              <Label htmlFor="before-aft">Aft Draft</Label>
               <Input
                 id="before-aft"
                 type="number"
@@ -193,11 +193,11 @@ export default function DraftSurveyBallast() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-blue-600 dark:text-blue-400">Balast Sonrası Su Çekimleri (m)</CardTitle>
+            <CardTitle className="text-blue-600 dark:text-blue-400">Post-Ballast Draft (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="after-forward">Baş Su Çekimi</Label>
+              <Label htmlFor="after-forward">Head Draft</Label>
               <Input
                 id="after-forward"
                 type="number"
@@ -211,7 +211,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="after-midship">Orta Su Çekimi</Label>
+              <Label htmlFor="after-midship">Medium Draft</Label>
               <Input
                 id="after-midship"
                 type="number"
@@ -225,7 +225,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="after-aft">Kıç Su Çekimi</Label>
+              <Label htmlFor="after-aft">Aft Draft</Label>
               <Input
                 id="after-aft"
                 type="number"
@@ -244,7 +244,7 @@ export default function DraftSurveyBallast() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Balast Tank Dağılımı (m³)</CardTitle>
+          <CardTitle>Ballast Tank Distribution (m³)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -275,7 +275,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="no1Hold">No.1 Ambar</Label>
+              <Label htmlFor="no1Hold">No.1 Cargo hold</Label>
               <Input
                 id="no1Hold"
                 type="number"
@@ -288,7 +288,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="no2Hold">No.2 Ambar</Label>
+              <Label htmlFor="no2Hold">No.2 Cargo hold</Label>
               <Input
                 id="no2Hold"
                 type="number"
@@ -301,7 +301,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="no3Hold">No.3 Ambar</Label>
+              <Label htmlFor="no3Hold">No.3 Cargo hold</Label>
               <Input
                 id="no3Hold"
                 type="number"
@@ -314,7 +314,7 @@ export default function DraftSurveyBallast() {
               />
             </div>
             <div>
-              <Label htmlFor="no4Hold">No.4 Ambar</Label>
+              <Label htmlFor="no4Hold">No.4 Cargo hold</Label>
               <Input
                 id="no4Hold"
                 type="number"
@@ -332,7 +332,7 @@ export default function DraftSurveyBallast() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Balast Hesapla
+        Calculate Ballast
       </Button>
 
       {result && (
@@ -340,17 +340,17 @@ export default function DraftSurveyBallast() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Droplets className="h-5 w-5" />
-              Balast Hesaplama Sonuçları
+              Ballast Calculation Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p><strong>Su Çekimi Değişimi:</strong> {result.draftChange.toFixed(3)} m</p>
-                <p><strong>Balast Ağırlığı:</strong> {result.ballastWeight.toFixed(2)} ton</p>
+                <p><strong>Draft Change:</strong> {result.draftChange.toFixed(3)} m</p>
+                <p><strong>Ballast Weight:</strong> {result.ballastWeight.toFixed(2)} ton</p>
               </div>
               <div className="space-y-2">
-                <p><strong>Balast Hacmi:</strong> {result.ballastVolume.toFixed(2)} m³</p>
+                <p><strong>Ballast Volume:</strong> {result.ballastVolume.toFixed(2)} m³</p>
               </div>
             </div>
           </CardContent>

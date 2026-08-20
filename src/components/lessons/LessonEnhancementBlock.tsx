@@ -91,7 +91,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
               <Sigma className="h-4 w-4" />
             </div>
             <h3 className="text-sm font-bold text-foreground">
-              Çözümlü Örnekler ({data.workedExamples.length})
+              Solved Examples ({data.workedExamples.length})
             </h3>
           </div>
 
@@ -102,7 +102,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
             >
               <div className="bg-sky-500/10 px-4 py-3">
                 <p className="text-micro font-bold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">
-                  Örnek {i + 1}
+                  Example {i + 1}
                 </p>
                 <p className="mt-1 text-sm font-semibold leading-relaxed text-foreground">
                   {ex.scenario}
@@ -112,7 +112,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
               <div className="grid gap-4 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
                 <div className="rounded-lg border border-border/40 bg-background/60 p-3">
                   <p className="text-micro font-bold uppercase tracking-wider text-muted-foreground">
-                    Verilenler
+                    Given
                   </p>
                   <ul className="mt-2 space-y-1.5">
                     {ex.given.map((g, j) => (

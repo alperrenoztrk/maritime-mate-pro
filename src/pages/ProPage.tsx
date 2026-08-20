@@ -53,9 +53,9 @@ interface PlanCardData {
 }
 
 const PLAN_CARDS: PlanCardData[] = [
-  { plan: "yearly", title: "Pro Yıllık", period: "/ year", highlight: true, note: "En avantajlı" },
-  { plan: "monthly", title: "Pro Aylık", period: "/ ay", highlight: false },
-  { plan: "lifetime", title: "Ömür Boyu", period: "one-off payment", highlight: false, note: "Sınırsız AI hariç" },
+  { plan: "yearly", title: "Pro Annual", period: "/ year", highlight: true, note: "Most advantageous" },
+  { plan: "monthly", title: "Pro Monthly", period: "/ ay", highlight: false },
+  { plan: "lifetime", title: "Lifetime", period: "one-off payment", highlight: false, note: "Except unlimited AI" },
 ];
 
 const ProPage = () => {
@@ -82,7 +82,7 @@ const ProPage = () => {
           const loaded = await fetchProOffers();
           if (mounted) setOffers(loaded);
         } catch {
-          if (mounted) toast.error("Fiyat bilgileri yüklenemedi. Lütfen tekrar deneyin.");
+          if (mounted) toast.error("Price information could not be loaded. Please try again.");
         }
       }
     })();
@@ -106,9 +106,9 @@ const ProPage = () => {
     try {
       const newTier = await purchase(plan);
       if (newTier === "pro" || newTier === "lifetime") {
-        toast.success("Pro erişiminiz açıldı. İyi seyirler! ⚓");
+        toast.success("Your Pro access has been opened. Enjoy watching! ⚓");
       } else {
-        toast.error("Satın alma doğrulanamadı. Lütfen 'Satın almaları geri yükle'yi deneyin.");
+        toast.error("The purchase could not be verified. Please try 'Restore purchases'.");
       }
     } catch (e) {
       if (isUserCanceled(e)) {
@@ -116,10 +116,10 @@ const ProPage = () => {
       } else if (e instanceof BillingPendingError) {
         toast.info(e.message);
       } else if (e instanceof BillingNotConfiguredError) {
-        // Sunucu yapılandırma hatası: "tekrar deneyin" demek yanıltıcı olur.
+        // Sunucu yapılandırma hatası: "try again" demek yanıltıcı olur.
         toast.error(e.message, { duration: 10_000 });
       } else {
-        toast.error("Satın alma tamamlanamadı. Lütfen tekrar deneyin.");
+        toast.error("The purchase could not be completed. Please try again.");
       }
     } finally {
       setBusyPlan(null);
@@ -135,12 +135,12 @@ const ProPage = () => {
     try {
       const newTier = await restore();
       if (newTier === "pro" || newTier === "lifetime") {
-        toast.success("Satın almalarınız geri yüklendi.");
+        toast.success("Your purchases have been restored.");
       } else {
-        toast.info("Bu Google hesabında geri yüklenecek satın alma bulunamadı.");
+        toast.info("No purchases were found to restore in this Google account.");
       }
     } catch {
-      toast.error("Geri yükleme başarısız oldu. İnternet bağlantınızı kontrol edin.");
+      toast.error("Restore failed. Check your internet connection.");
     } finally {
       setRestoring(false);
     }
@@ -160,7 +160,7 @@ const ProPage = () => {
             </div>
             <p className="text-muted-foreground text-sm">
               <span data-translatable>
-                Tüm kitaplar, gelişmiş hesaplamalar ve yapay zekâ asistanı ile denizcilik bilgin hep yanında — gemide çevrimdışıyken bile.
+                With all the books, advanced calculations, and an AI assistant, your marine savant is always with you — even offline on board.
               </span>
             </p>
           </div>
@@ -170,7 +170,7 @@ const ProPage = () => {
               <CardContent className="flex items-center gap-3 py-3 text-sm">
                 <WifiOff className="w-4 h-4 shrink-0 text-amber-400" />
                 <span data-translatable>
-                  Çevrimdışı mod: Pro durumunuz son eşitlemeden hatırlanıyor. Bağlantı kurulunca otomatik güncellenir.
+                  Offline mode: Your Pro status is remembered from the last sync. It is automatically updated when the connection is established.
                 </span>
               </CardContent>
             </Card>
@@ -192,13 +192,13 @@ const ProPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-emerald-400">
                   {tier === "lifetime" ? <InfinityIcon className="w-5 h-5" /> : <Crown className="w-5 h-5" />}
-                  <span data-translatable>{tier === "lifetime" ? "Ömür Boyu erişiminiz etkin" : "Pro aboneliğiniz etkin"}</span>
+                  <span data-translatable>{tier === "lifetime" ? "Your Lifetime access is active" : "Your Pro subscription is active"}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 {lastSyncedAt && (
                   <p className="text-muted-foreground">
-                    <span data-translatable>Son eşitleme</span>: {new Date(lastSyncedAt).toLocaleString()}
+                    <span data-translatable>Last sync</span>: {new Date(lastSyncedAt).toLocaleString()}
                   </p>
                 )}
                 {tier === "pro" && (
@@ -214,7 +214,7 @@ const ProPage = () => {
                 )}
                 <Button variant="ghost" size="sm" className="gap-2" onClick={() => void refresh()}>
                   <RefreshCw className="w-4 h-4" />
-                  <span data-translatable>Durumu yenile</span>
+                  <span data-translatable>Refresh status</span>
                 </Button>
               </CardContent>
             </Card>
@@ -261,7 +261,7 @@ const ProPage = () => {
                             </div>
                           ) : (
                             <div className="text-sm text-muted-foreground">
-                              <span data-translatable>{billingReady ? "Fiyat yükleniyor…" : "Fiyat Google Play'de"}</span>
+                              <span data-translatable>{billingReady ? "Price is loading…" : "Price on Google Play"}</span>
                             </div>
                           )}
                         </div>
@@ -278,7 +278,7 @@ const ProPage = () => {
                           ) : (
                             <Crown className="w-4 h-4" />
                           )}
-                          <span data-translatable>{!user ? "Giriş yap ve satın al" : "Satın al"}</span>
+                          <span data-translatable>{!user ? "Log in and buy" : "Buy"}</span>
                         </Button>
                       </CardContent>
                     </Card>
@@ -291,7 +291,7 @@ const ProPage = () => {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base flex items-center gap-2">
                       <Crown className="w-4 h-4 text-amber-400" />
-                      <span data-translatable>Pro ile gelenler</span>
+                      <span data-translatable>What comes with Pro</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -308,7 +308,7 @@ const ProPage = () => {
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base">
-                      <span data-translatable>Ücretsiz pakette her zaman</span>
+                      <span data-translatable>Always in the free package</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -327,7 +327,7 @@ const ProPage = () => {
               <div className="text-center">
                 <Button variant="ghost" size="sm" className="gap-2" disabled={restoring} onClick={() => void handleRestore()}>
                   <RefreshCw className={`w-4 h-4 ${restoring ? "animate-spin" : ""}`} />
-                  <span data-translatable>Satın almaları geri yükle</span>
+                  <span data-translatable>Restore purchases</span>
                 </Button>
                 {/* Play, abonelik satın alma ekranında koşulların tam metnine
                     bağlantı verilmesini bekliyor; özet burada, tamamı şartlarda. */}
@@ -335,7 +335,7 @@ const ProPage = () => {
                   <span data-translatable>
                     Ödemeler Google Play hesabınızdan alınır. Abonelikler dönem sonunda otomatik yenilenir; dilediğiniz zaman Google Play &gt; Abonelikler bölümünden iptal edebilirsiniz. Ömür boyu paket tek seferlik ödemedir ve sınırsız yapay zekâ kotası içermez.
                   </span>{" "}
-                  <span data-translatable>İadeler Google Play iade politikasına tabidir. Koşulların tamamı için bkz.</span>{" "}
+                  <span data-translatable>Refunds are subject to the Google Play refund policy. See full terms and conditions.</span>{" "}
                   <a
                     href={getTermsOfUseUrl(currentLanguage)}
                     target="_blank"

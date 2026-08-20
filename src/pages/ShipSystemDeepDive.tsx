@@ -32,10 +32,10 @@ import { scrollToTop } from "@/lib/scrollToTop";
 
 const calloutMeta: Record<ShipSystemCallout["type"], { Icon: typeof AlertTriangle; cls: string; label: string }> = {
   warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Warning" },
-  reference:  { Icon: BookMarked,    cls: "border-blue-500/40 bg-blue-500/10 text-blue-900 dark:text-blue-200", label: "Referans" },
+  reference:  { Icon: BookMarked,    cls: "border-blue-500/40 bg-blue-500/10 text-blue-900 dark:text-blue-200", label: "Reference" },
   tip:        { Icon: Lightbulb,     cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200", label: "hint" },
   example:    { Icon: FileText,      cls: "border-violet-500/40 bg-violet-500/10 text-violet-900 dark:text-violet-200", label: "Example" },
-  regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Mevzuat" },
+  regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Legislation" },
 };
 
 export default function ShipSystemDeepDive() {
@@ -121,7 +121,7 @@ export default function ShipSystemDeepDive() {
 
           {loading && (
             <div className="flex items-center justify-center gap-2 rounded-xl border border-border/40 bg-card/60 p-8 text-sm text-muted-foreground">
-              <Loader2 className="h-4 w-4 animate-spin" /> İçerik yükleniyor…
+              <Loader2 className="h-4 w-4 animate-spin" /> Content loading…
             </div>
           )}
 
@@ -239,7 +239,7 @@ export default function ShipSystemDeepDive() {
                       disabled={activePage === 0}
                       className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
                     >
-                      <ChevronLeft className="h-4 w-4" /> Önceki
+                      <ChevronLeft className="h-4 w-4" /> Previous
                     </button>
                     <span className="text-xs text-muted-foreground">
                       {activePage + 1} / {totalPages}
@@ -249,7 +249,7 @@ export default function ShipSystemDeepDive() {
                       disabled={activePage === totalPages - 1}
                       className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
                     >
-                      Sonraki <ChevronRight className="h-4 w-4" />
+                      Next <ChevronRight className="h-4 w-4" />
                     </button>
                   </div>
                 )}
@@ -257,7 +257,7 @@ export default function ShipSystemDeepDive() {
 
               {content?.sources && content.sources.length > 0 && (
                 <aside className="rounded-2xl border border-border/40 bg-card/60 p-5 text-xs text-muted-foreground">
-                  <div className="mb-2 font-semibold text-foreground">Kaynaklar</div>
+                  <div className="mb-2 font-semibold text-foreground">Resources</div>
                   <ul className="list-disc space-y-1 pl-5">
                     {content.sources.map((s, i) => (
                       <li key={i}>{s}</li>
@@ -301,7 +301,7 @@ function SystemSummary({
 }) {
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-xl font-bold text-foreground">Konu Özeti</h2>
+      <h2 className="text-xl font-bold text-foreground">Plot Summary</h2>
 
       {longFormMissing && (
         <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-xs leading-relaxed text-muted-foreground">
@@ -318,13 +318,13 @@ function SystemSummary({
           <div className="grid gap-2 sm:grid-cols-2">
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-3">
               <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold text-primary">
-                <Activity className="h-4 w-4" /> Sistemin görevi
+                <Activity className="h-4 w-4" /> Task of the system
               </div>
               <p className="text-caption leading-relaxed text-foreground/85">{guide.purpose}</p>
             </div>
             <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3">
               <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold text-amber-700 dark:text-amber-300">
-                <ShieldCheck className="h-4 w-4" /> Ne yapmaz / sınırı
+                <ShieldCheck className="h-4 w-4" /> What doesn't/limit
               </div>
               <p className="text-caption leading-relaxed text-foreground/85">{guide.boundary}</p>
             </div>
@@ -349,8 +349,8 @@ function SystemSummary({
                 />
               </button>
               <figcaption className="border-t border-border/20 px-3 py-2 text-micro leading-relaxed text-muted-foreground">
-                <span className="font-semibold text-foreground/80">Gerçek ekipman fotoğrafı: </span>
-                {guide.photoCaption ?? "Fotoğraf yalnız örnek bir fiziksel kurulumu gösterir; üretici, model ve gemiye özgü donanım onaylı plan ve kullanım kitabından doğrulanır."}
+                <span className="font-semibold text-foreground/80">Real equipment photo: </span>
+                {guide.photoCaption ?? "The photo only shows an example physical installation; The manufacturer, model and ship-specific equipment are verified from the approved plan and operation book."}
               </figcaption>
             </figure>
           )}
@@ -359,7 +359,7 @@ function SystemSummary({
             <div className="flex items-start gap-2">
               <UserRoundCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <div>
-                <p className="text-xs font-semibold text-foreground">Sorumluluk ve komuta zinciri</p>
+                <p className="text-xs font-semibold text-foreground">Chain of responsibility and command</p>
                 <p className="mt-1 text-caption leading-relaxed text-foreground/80">{guide.responsibleRole}</p>
               </div>
             </div>
@@ -367,10 +367,10 @@ function SystemSummary({
 
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { title: "Hazırlık", Icon: ClipboardCheck, items: guide.prepare, className: "border-blue-500/20 bg-blue-500/5 text-blue-700 dark:text-blue-300" },
-              { title: "İşletmede izlenecekler", Icon: Eye, items: guide.monitor, className: "border-cyan-500/20 bg-cyan-500/5 text-cyan-700 dark:text-cyan-300" },
-              { title: "Çapraz doğrulama", Icon: CheckCircle2, items: guide.verify, className: "border-emerald-500/20 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300" },
-              { title: "Durdur ve yükselt", Icon: AlertOctagon, items: guide.stopAndEscalate, className: "border-destructive/25 bg-destructive/5 text-destructive" },
+              { title: "Preparation", Icon: ClipboardCheck, items: guide.prepare, className: "border-blue-500/20 bg-blue-500/5 text-blue-700 dark:text-blue-300" },
+              { title: "Things to watch in business", Icon: Eye, items: guide.monitor, className: "border-cyan-500/20 bg-cyan-500/5 text-cyan-700 dark:text-cyan-300" },
+              { title: "Cross validation", Icon: CheckCircle2, items: guide.verify, className: "border-emerald-500/20 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300" },
+              { title: "Stop and raise", Icon: AlertOctagon, items: guide.stopAndEscalate, className: "border-destructive/25 bg-destructive/5 text-destructive" },
             ].map(({ title, Icon, items, className }) => (
               <section key={title} className={`rounded-xl border p-3 ${className}`}>
                 <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold">
@@ -423,7 +423,7 @@ function SystemSummary({
 
             {sec.example && (
               <div className="rounded-lg border border-accent/30 bg-accent/5 p-3 space-y-2">
-                <p className="text-xs font-semibold text-accent-foreground">Örnek: {sec.example.problem}</p>
+                <p className="text-xs font-semibold text-accent-foreground">Example: {sec.example.problem}</p>
                 {sec.example.steps.map((s, si2) => (
                   <p key={si2} className="text-caption font-mono text-foreground/80">{s}</p>
                 ))}
@@ -436,7 +436,7 @@ function SystemSummary({
       {/* Çalışma Prensibi */}
       {topic.workingPrinciple && topic.workingPrinciple.length > 0 && (
         <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 space-y-1">
-          <p className="text-xs font-semibold text-primary mb-1">Çalışma Prensibi</p>
+          <p className="text-xs font-semibold text-primary mb-1">Working Principle</p>
           {topic.workingPrinciple.map((wp, wi) => (
             <p key={wi} className="text-caption text-foreground/80 leading-relaxed">• {wp}</p>
           ))}
@@ -446,7 +446,7 @@ function SystemSummary({
       {/* Kullanım */}
       {topic.operation && topic.operation.length > 0 && (
         <div className="rounded-lg border border-border/30 bg-card/40 p-3 space-y-1">
-          <p className="text-xs font-semibold text-foreground mb-1">Kullanım</p>
+          <p className="text-xs font-semibold text-foreground mb-1">Usage</p>
           {topic.operation.map((op, oi) => (
             <p key={oi} className="text-caption text-foreground/80 leading-relaxed">{oi + 1}. {op}</p>
           ))}
@@ -456,14 +456,14 @@ function SystemSummary({
       {/* Olası Arızalar ve Müdahale */}
       {topic.faults && topic.faults.length > 0 && (
         <div className="flex flex-col gap-1.5">
-          <p className="text-xs font-semibold text-destructive">Olası Arızalar ve Müdahale</p>
+          <p className="text-xs font-semibold text-destructive">Possible Malfunctions and Intervention</p>
           <div className="overflow-x-auto rounded-lg border border-destructive/20">
             <table className="w-full text-xs">
               <thead>
                 <tr className="bg-destructive/10">
-                  <th className="px-2 py-1.5 text-left font-medium text-destructive">Arıza</th>
-                  <th className="px-2 py-1.5 text-left font-medium text-destructive">Sebep</th>
-                  <th className="px-2 py-1.5 text-left font-medium text-destructive">Yapılacak</th>
+                  <th className="px-2 py-1.5 text-left font-medium text-destructive">malfunction</th>
+                  <th className="px-2 py-1.5 text-left font-medium text-destructive">Reason</th>
+                  <th className="px-2 py-1.5 text-left font-medium text-destructive">To be done</th>
                 </tr>
               </thead>
               <tbody>
@@ -483,7 +483,7 @@ function SystemSummary({
       {/* Önlemler ve Emniyet */}
       {topic.precautions && topic.precautions.length > 0 && (
         <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 space-y-1">
-          <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">Önlemler ve Emniyet</p>
+          <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">Precautions and Safety</p>
           {topic.precautions.map((pc, pci) => (
             <p key={pci} className="text-caption text-foreground/80 leading-relaxed">• {pc}</p>
           ))}
@@ -493,7 +493,7 @@ function SystemSummary({
       {/* Önemli Noktalar */}
       {topic.keyPoints && topic.keyPoints.length > 0 && (
         <div className="rounded-lg bg-muted/20 p-3 space-y-1">
-          <p className="text-xs font-semibold text-muted-foreground mb-1">Önemli Noktalar</p>
+          <p className="text-xs font-semibold text-muted-foreground mb-1">Highlights</p>
           {topic.keyPoints.map((kp, ki) => (
             <p key={ki} className="text-caption text-foreground/70">• {kp}</p>
           ))}
@@ -504,7 +504,7 @@ function SystemSummary({
         <div className="grid gap-2 sm:grid-cols-2">
           <section className="rounded-xl border border-border/30 bg-card/50 p-3">
             <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-foreground">
-              <ClipboardCheck className="h-4 w-4 text-primary" /> Kayıt ve objektif kanıt
+              <ClipboardCheck className="h-4 w-4 text-primary" /> Record and objective evidence
             </h3>
             <div className="space-y-1.5">
               {guide.records.map((record, recordIndex) => (
@@ -514,7 +514,7 @@ function SystemSummary({
           </section>
           <section className="rounded-xl border border-border/30 bg-card/50 p-3">
             <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-foreground">
-              <Scale className="h-4 w-4 text-primary" /> Dayanak ve gemiye özel kaynak
+              <Scale className="h-4 w-4 text-primary" /> Base and ship-specific welding
             </h3>
             <div className="space-y-2">
               {guide.references.map((reference, referenceIndex) => (

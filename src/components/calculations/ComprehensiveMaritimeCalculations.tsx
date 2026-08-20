@@ -766,10 +766,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const drydockSteps: CalculationStep[] = [
       { step: 1, title: "Formula", formula: "P = (MCT1cm × Trimcm) / t", explanation: "Dry dock keel pressure (P) is the product of MCT1cm and trim divided by the wedge distance" },
       { step: 2, title: "Placement of values", formula: `P = (${mct1cm.toFixed(2)} × ${trimCm.toFixed(2)}) / ${t.toFixed(2)}`, substitution: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}` },
-      { step: 3, title: "P sonucu", formula: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}`, result: `P = ${P.toFixed(2)} ton` },
+      { step: 3, title: "P result", formula: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}`, result: `P = ${P.toFixed(2)} ton` },
     ];
     if (gmCritical != null) {
-      drydockSteps.push({ step: 4, title: "Kritik GM", formula: "GMk = (P × KM) / Δ", substitution: `GMk = (${P.toFixed(2)} × ${km.toFixed(3)}) / ${delta.toFixed(2)}`, result: `GMk = ${gmCritical.toFixed(3)} m` });
+      drydockSteps.push({ step: 4, title: "Critical GM", formula: "GMk = (P × KM) / Δ", substitution: `GMk = (${P.toFixed(2)} × ${km.toFixed(3)}) / ${delta.toFixed(2)}`, result: `GMk = ${gmCritical.toFixed(3)} m` });
     }
     setCalcSteps(prev => ({ ...prev, drydockReaction: drydockSteps }));
     toast({ title: "Calculation Completed", description: `P = ${P.toFixed(2)} ton${gmCritical != null ? `, GM_k = ${gmCritical.toFixed(3)} m` : ''}` });
@@ -824,7 +824,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setPontoonResult(deltaDraft);
     setCalcSteps(prev => ({ ...prev, pontoon: [
       { step: 1, title: "Formula", formula: "Δd = W / ((L×B - Adjusted) × ρ)", explanation: "Draft increase in injured state depends on effective area and density" },
-      { step: 2, title: "Etkin alan", formula: `Aactive = L×B - Adjustable = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
+      { step: 2, title: "Active area", formula: `Aactive = L×B - Adjustable = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
       { step: 3, title: "Result", formula: `Δd = ${w.toFixed(2)} / (${effectiveArea.toFixed(2)} × ${rho.toFixed(3)})`, result: `Δd = ${deltaDraft.toFixed(3)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `Δd = ${deltaDraft.toFixed(3)} m` });
@@ -1113,7 +1113,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       { step: 2, title: "Position correction", formula: `Pozisyon: ${metricDraftInputs.position} → Correction = ${offset.toFixed(2)} m` },
       { step: 3, title: "Result", formula: `Draft = ${base.toFixed(2)} + ${offset.toFixed(2)}`, result: `Draft = ${value.toFixed(2)} m` }
     ] }));
-    toast({ title: "Draft Okuma (Metre)", description: `${value.toFixed(2)} m` });
+    toast({ title: "Draft Reading (Meters)", description: `${value.toFixed(2)} m` });
   };
 
   const calculateImperialDraftReading = () => {
@@ -1132,7 +1132,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       { step: 3, title: "total inches", formula: `${baseFt.toFixed(0)} × 12 + ${inches} = ${totalInches.toFixed(0)} inch` },
       { step: 4, title: "Result", formula: `${totalInches.toFixed(0)} inch = ${feet} ft ${remInches.toFixed(0)} in`, result: `Draft = ${feet} ft ${remInches.toFixed(0)} in` }
     ] }));
-    toast({ title: "Draft Okuma (Kraliyet)", description: `${feet} ft ${remInches.toFixed(0)} in` });
+    toast({ title: "Draft Reading (Royal)", description: `${feet} ft ${remInches.toFixed(0)} in` });
   };
 
   const calculateAverageDrafts = () => {
@@ -1150,10 +1150,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setCalcSteps(prev => ({ ...prev, avgDrafts: [
       { step: 1, title: "Formula", formula: "d = (Port + Starboard) / 2", explanation: "Port and starboard side drafts are averaged for each position" },
       { step: 2, title: "chief draft", formula: `dF = (${pf.toFixed(3)} + ${sf.toFixed(3)}) / 2`, result: `dF = ${dF.toFixed(3)} m` },
-      { step: 3, title: "Orta draft", formula: `dM = (${pm.toFixed(3)} + ${sm.toFixed(3)}) / 2`, result: `dM = ${dM.toFixed(3)} m` },
+      { step: 3, title: "Mid draft", formula: `dM = (${pm.toFixed(3)} + ${sm.toFixed(3)}) / 2`, result: `dM = ${dM.toFixed(3)} m` },
       { step: 4, title: "aft draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
     ] }));
-    toast({ title: "Ortalama Draftlar", description: `dF=${dF.toFixed(3)}, dM=${dM.toFixed(3)}, dA=${dA.toFixed(3)} m` });
+    toast({ title: "Average Drafts", description: `dF=${dF.toFixed(3)}, dM=${dM.toFixed(3)}, dA=${dA.toFixed(3)} m` });
   };
 
   return (
@@ -1169,9 +1169,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <TabsTrigger value="draft">4. Draft Survey</TabsTrigger>
           )}
           <TabsTrigger value="density">5. Pontoon and Density Calculations</TabsTrigger>
-          <TabsTrigger value="solas">6. SOLAS Stabilite Kriterleri</TabsTrigger>
+          <TabsTrigger value="solas">6. SOLAS Stability Criteria</TabsTrigger>
           <TabsTrigger value="load">7. Load Calculations</TabsTrigger>
-          <TabsTrigger value="practical">8. Pratik Hesaplar</TabsTrigger>
+          <TabsTrigger value="practical">8. Practical Calculations</TabsTrigger>
         </TabsList>
 
         {/* 1. Giriş - Hogging ve Sagging Tespiti */}
@@ -1206,10 +1206,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Vasat Draft (dM) - m</Label>
+                    <Label>Mediocre Draft (dM) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Vasat draft"
+                      placeholder="Mediocre draft"
                       value={hoggingSaggingInputs.draftMidship}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftMidship: e.target.value }))}
                     />
@@ -1273,10 +1273,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">New KG = Total Moment / Total Weight</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>Toplam Moment (ton.m)</Label>
+                    <Label>Total Moment (ton.m)</Label>
                     <Input
                       type="number"
-                      placeholder="Toplam moment"
+                      placeholder="Total moment"
                       value={newKGInputs.totalMoment}
                       onChange={(e) => setNewKGInputs(prev => ({ ...prev, totalMoment: e.target.value }))}
                     />
@@ -1308,7 +1308,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Heel Angle (θ) = tan⁻¹(GZ/GM) or tan⁻¹(Heeling Moment / Δ×GM)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>GZ (m) - opsiyonel</Label>
+                    <Label>GZ (m) - optional</Label>
                     <Input
                       type="number"
                       placeholder="GZ"
@@ -1335,10 +1335,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Deplasman (ton)</Label>
+                    <Label>Displacement (tons)</Label>
                     <Input
                       type="number"
-                      placeholder="Deplasman"
+                      placeholder="Displacement"
                       value={heelAngleInputs.displacement}
                       onChange={(e) => setHeelAngleInputs(prev => ({ ...prev, displacement: e.target.value }))}
                     />
@@ -1365,11 +1365,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="w" value={gg1Inputs.weight} onChange={(e)=> setGg1Inputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Mesafe d (m)</Label>
+                    <Label>Distance d (m)</Label>
                     <Input type="number" placeholder="d" value={gg1Inputs.distance} onChange={(e)=> setGg1Inputs(p=>({...p, distance:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Deplasman Δ (ton)</Label>
+                    <Label>Displacement Δ (ton)</Label>
                     <Input type="number" placeholder="Δ" value={gg1Inputs.displacement} onChange={(e)=> setGg1Inputs(p=>({...p, displacement:e.target.value}))} />
                   </div>
                   <Button onClick={calculateGG1} className="w-full">
@@ -1391,11 +1391,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Pendulum Length (m)</Label>
-                    <Input type="number" placeholder="Uzunluk" value={pendulumInputs.pendulumLength} onChange={(e)=> setPendulumInputs(p=>({...p, pendulumLength:e.target.value}))} />
+                    <Input type="number" placeholder="Length" value={pendulumInputs.pendulumLength} onChange={(e)=> setPendulumInputs(p=>({...p, pendulumLength:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Sapma (m)</Label>
-                    <Input type="number" placeholder="Sapma" value={pendulumInputs.deflection} onChange={(e)=> setPendulumInputs(p=>({...p, deflection:e.target.value}))} />
+                    <Label>Deviation (m)</Label>
+                    <Input type="number" placeholder="Deviation" value={pendulumInputs.deflection} onChange={(e)=> setPendulumInputs(p=>({...p, deflection:e.target.value}))} />
                   </div>
                   <Button onClick={calculatePendulumAngle} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
@@ -1433,10 +1433,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Deplasman (Δ) - ton</Label>
+                    <Label>Displacement (Δ) – tonne</Label>
                     <Input
                       type="number"
-                      placeholder="Deplasman"
+                      placeholder="Displacement"
                       value={craneGMInputs.displacement}
                       onChange={(e) => setCraneGMInputs(prev => ({ ...prev, displacement: e.target.value }))}
                     />
@@ -1471,7 +1471,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="Starting height of the load" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Deplasman Δ (ton)</Label>
+                    <Label>Displacement Δ (ton)</Label>
                     <Input type="number" placeholder="Δ" value={craneVerticalInputs.displacement} onChange={(e)=> setCraneVerticalInputs(p=>({...p, displacement:e.target.value}))} />
                   </div>
                   <Button onClick={calculateCraneVertical} className="w-full">
@@ -1492,11 +1492,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">FSM = (L × B³ / 12) × ρ; ΔKG = FSM / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
                   <div>
-                    <Label>L (m)</Label>
+                    <Label>L(m)</Label>
                     <Input type="number" placeholder="L" value={fsmRectInputs.length} onChange={(e)=> setFsmRectInputs(p=>({...p, length:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>B (m)</Label>
+                    <Label>B(m)</Label>
                     <Input type="number" placeholder="B" value={fsmRectInputs.breadth} onChange={(e)=> setFsmRectInputs(p=>({...p, breadth:e.target.value}))} />
                   </div>
                   <div>
@@ -1504,7 +1504,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="1.025" value={fsmRectInputs.rho} onChange={(e)=> setFsmRectInputs(p=>({...p, rho:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Δ (ton) - opsiyonel</Label>
+                    <Label>Δ (tonne) - optional</Label>
                     <Input type="number" placeholder="Δ" value={fsmRectInputs.displacement} onChange={(e)=> setFsmRectInputs(p=>({...p, displacement:e.target.value}))} />
                   </div>
                   <Button onClick={calculateFSMRect} className="w-full">
@@ -1580,7 +1580,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" value={momentInputs.weight} onChange={(e)=> setMomentInputs(p=>({...p, weight: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>KG Mesafesi (m)</Label>
+                    <Label>KG Distance (m)</Label>
                     <Input type="number" value={momentInputs.kgDistance} onChange={(e)=> setMomentInputs(p=>({...p, kgDistance: e.target.value}))} />
                   </div>
                   <Button onClick={calculateMoment} className="w-full"><Calculator className="w-4 h-4 mr-2" />Moment = w×KG</Button>
@@ -1590,15 +1590,15 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end mt-4">
                   <div>
-                    <Label>w (t)</Label>
+                    <Label>w(t)</Label>
                     <Input type="number" value={deltaGMShiftInputs.weight} onChange={(e)=> setDeltaGMShiftInputs(p=>({...p, weight: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>d (m)</Label>
+                    <Label>d(m)</Label>
                     <Input type="number" value={deltaGMShiftInputs.distance} onChange={(e)=> setDeltaGMShiftInputs(p=>({...p, distance: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Δ (t)</Label>
+                    <Label>Δ(t)</Label>
                     <Input type="number" value={deltaGMShiftInputs.displacement} onChange={(e)=> setDeltaGMShiftInputs(p=>({...p, displacement: e.target.value}))} />
                   </div>
                   <Button onClick={calculateDeltaGMShift} className="w-full"><Calculator className="w-4 h-4 mr-2" />ΔGM = w×d/Δ</Button>
@@ -1608,15 +1608,15 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end mt-4">
                   <div>
-                    <Label>w (t)</Label>
+                    <Label>w(t)</Label>
                     <Input type="number" value={heelWyInputs.weight} onChange={(e)=> setHeelWyInputs(p=>({...p, weight: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>y (m)</Label>
+                    <Label>y(m)</Label>
                     <Input type="number" value={heelWyInputs.lever} onChange={(e)=> setHeelWyInputs(p=>({...p, lever: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Δ (t)</Label>
+                    <Label>Δ(t)</Label>
                     <Input type="number" value={heelWyInputs.displacement} onChange={(e)=> setHeelWyInputs(p=>({...p, displacement: e.target.value}))} />
                   </div>
                   <div>
@@ -1652,10 +1652,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Trim Change = Total Torque / MCT</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>Toplam Moment (ton.m)</Label>
+                    <Label>Total Moment (ton.m)</Label>
                     <Input
                       type="number"
-                      placeholder="Toplam moment"
+                      placeholder="Total moment"
                       value={trimChangeInputs.totalMoment}
                       onChange={(e) => setTrimChangeInputs(prev => ({ ...prev, totalMoment: e.target.value }))}
                     />
@@ -1731,10 +1731,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Mesafe (m)</Label>
+                    <Label>Distance (m)</Label>
                     <Input
                       type="number"
-                      placeholder="Mesafe"
+                      placeholder="Distance"
                       value={draftCorrectionInputs.distance}
                       onChange={(e) => setDraftCorrectionInputs(prev => ({ ...prev, distance: e.target.value }))}
                     />
@@ -1798,19 +1798,19 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Cb = V / (L × B × d)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Hacim (V) - m³</Label>
+                    <Label>Volume (V) - m³</Label>
                     <Input
                       type="number"
-                      placeholder="Hacim"
+                      placeholder="Volume"
                       value={blockCoefficientInputs.volume}
                       onChange={(e) => setBlockCoefficientInputs(prev => ({ ...prev, volume: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Uzunluk (L) - m</Label>
+                    <Label>Length (L) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Uzunluk"
+                      placeholder="Length"
                       value={blockCoefficientInputs.length}
                       onChange={(e) => setBlockCoefficientInputs(prev => ({ ...prev, length: e.target.value }))}
                     />
@@ -1851,10 +1851,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">FWA = Δ / (4 × TPC)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>Deplasman (Δ) - ton</Label>
+                    <Label>Displacement (Δ) – tonne</Label>
                     <Input
                       type="number"
-                      placeholder="Deplasman"
+                      placeholder="Displacement"
                       value={fwaInputs.displacement}
                       onChange={(e) => setFwaInputs(prev => ({ ...prev, displacement: e.target.value }))}
                     />
@@ -1886,10 +1886,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">New Displacement = Δ × ρnew / ρold</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Deplasman (Δ) - ton</Label>
+                    <Label>Displacement (Δ) – tonne</Label>
                     <Input
                       type="number"
-                      placeholder="Deplasman"
+                      placeholder="Displacement"
                       value={densityChangeInputs.displacement}
                       onChange={(e) => setDensityChangeInputs(prev => ({ ...prev, displacement: e.target.value }))}
                     />
@@ -1934,16 +1934,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="Weight" value={pontoonInputs.weight} onChange={(e)=> setPontoonInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Boy (m)</Label>
-                    <Input type="number" placeholder="Uzunluk" value={pontoonInputs.length} onChange={(e)=> setPontoonInputs(p=>({...p, length:e.target.value}))} />
+                    <Label>Height (m)</Label>
+                    <Input type="number" placeholder="Length" value={pontoonInputs.length} onChange={(e)=> setPontoonInputs(p=>({...p, length:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>En (m)</Label>
-                    <Input type="number" placeholder="En" value={pontoonInputs.breadth} onChange={(e)=> setPontoonInputs(p=>({...p, breadth:e.target.value}))} />
+                    <Label>Width (m)</Label>
+                    <Input type="number" placeholder="Most" value={pontoonInputs.breadth} onChange={(e)=> setPontoonInputs(p=>({...p, breadth:e.target.value}))} />
                   </div>
                   <div>
                     <Label>Wounded Area (m²)</Label>
-                    <Input type="number" placeholder="Alan" value={pontoonInputs.damagedArea} onChange={(e)=> setPontoonInputs(p=>({...p, damagedArea:e.target.value}))} />
+                    <Input type="number" placeholder="Area" value={pontoonInputs.damagedArea} onChange={(e)=> setPontoonInputs(p=>({...p, damagedArea:e.target.value}))} />
                   </div>
                   <div>
                     <Label>ρ (ton/m³)</Label>
@@ -1971,7 +1971,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-red-700 dark:text-red-300">
                 <AlertTriangle className="h-5 w-5" />
-                6. SOLAS Stabilite Kriterleri
+                6. SOLAS Stability Criteria
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -1990,10 +1990,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Deplasman (Δ) - ton</Label>
+                    <Label>Displacement (Δ) – tonne</Label>
                     <Input
                       type="number"
-                      placeholder="Deplasman"
+                      placeholder="Displacement"
                       value={grainHeelInputs.displacement}
                       onChange={(e) => setGrainHeelInputs(prev => ({ ...prev, displacement: e.target.value }))}
                     />
@@ -2016,7 +2016,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
                     <p className="font-mono text-lg">Angle of Loll = {grainHeelResult.toFixed(1)}°</p>
                     <p className="text-sm mt-1">
-                      {grainHeelResult <= 12 ? "✓ SOLAS Uygun" : "✗ Not SOLAS Conforming - Exceeds 12°"}
+                      {grainHeelResult <= 12 ? "✓ SOLAS Suitable" : "✗ Not SOLAS Conforming - Exceeds 12°"}
                     </p>
                   </div>
                 )}
@@ -2074,10 +2074,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">FSM = L × B³ / (12 × V)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Uzunluk (L) - m</Label>
+                    <Label>Length (L) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Uzunluk"
+                      placeholder="Length"
                       value={freeSurfaceInputs.length}
                       onChange={(e) => setFreeSurfaceInputs(prev => ({ ...prev, length: e.target.value }))}
                     />
@@ -2092,10 +2092,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Hacim (V) - m³</Label>
+                    <Label>Volume (V) - m³</Label>
                     <Input
                       type="number"
-                      placeholder="Hacim"
+                      placeholder="Volume"
                       value={freeSurfaceInputs.volume}
                       onChange={(e) => setFreeSurfaceInputs(prev => ({ ...prev, volume: e.target.value }))}
                     />
@@ -2119,7 +2119,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">T = Cb × B / √GM</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Cb</Label>
+                    <Label>C b</Label>
                     <Input
                       type="number"
                       placeholder="Block coefficient"
@@ -2268,22 +2268,22 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                8. Pratik Hesaplar
+                8. Practical Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="bg-slate-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Draft Okuma (Metrik)</h4>
+                <h4 className="font-semibold mb-3">Draft Reading (Metric)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
                     <Label>Base Value (m)</Label>
                     <Input type="number" value={metricDraftInputs.baseMeters} onChange={(e)=> setMetricDraftInputs(p=>({...p, baseMeters: e.target.value}))} />
                   </div>
                   <div className="md:col-span-2">
-                    <Label>Pozisyon</Label>
+                    <Label>Position</Label>
                     <div className="grid grid-cols-3 gap-2">
-                      <Button variant={metricDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'alt'}))}>Alt</Button>
-                      <Button variant={metricDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'orta'}))}>Orta (+5cm)</Button>
+                      <Button variant={metricDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'alt'}))}>Bottom</Button>
+                      <Button variant={metricDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'orta'}))}>Medium (+5cm)</Button>
                       <Button variant={metricDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'top'}))}>Top (+10cm)</Button>
                     </div>
                   </div>
@@ -2294,17 +2294,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
               </div>
 
               <div className="bg-slate-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Draft Okuma (Kraliyet)</h4>
+                <h4 className="font-semibold mb-3">Draft Reading (Royal)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
                     <Label>Base Value (ft)</Label>
                     <Input type="number" value={imperialDraftInputs.baseFeet} onChange={(e)=> setImperialDraftInputs(p=>({...p, baseFeet: e.target.value}))} />
                   </div>
                   <div className="md:col-span-2">
-                    <Label>Pozisyon</Label>
+                    <Label>Position</Label>
                     <div className="grid grid-cols-3 gap-2">
-                      <Button variant={imperialDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'alt'}))}>Alt</Button>
-                      <Button variant={imperialDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'orta'}))}>Orta (+3in)</Button>
+                      <Button variant={imperialDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'alt'}))}>Bottom</Button>
+                      <Button variant={imperialDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'orta'}))}>Medium (+3in)</Button>
                       <Button variant={imperialDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'top'}))}>Top (+6in)</Button>
                     </div>
                   </div>
@@ -2315,13 +2315,13 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
               </div>
 
               <div className="bg-slate-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Ortalama Draftlar</h4>
+                <h4 className="font-semibold mb-3">Average Drafts</h4>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
                   <div><Label>Head Port</Label><Input type="number" value={avgDraftsInputs.portForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portForward: e.target.value}))} /></div>
-                  <div><Label>Vasat Port</Label><Input type="number" value={avgDraftsInputs.portMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portMidship: e.target.value}))} /></div>
+                  <div><Label>Mediocre Port</Label><Input type="number" value={avgDraftsInputs.portMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portMidship: e.target.value}))} /></div>
                   <div><Label>Aft Port</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
                   <div><Label>Head Starboard</Label><Input type="number" value={avgDraftsInputs.starboardForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardForward: e.target.value}))} /></div>
-                  <div><Label>Vasat Starboard</Label><Input type="number" value={avgDraftsInputs.starboardMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardMidship: e.target.value}))} /></div>
+                  <div><Label>Mediocre Starboard</Label><Input type="number" value={avgDraftsInputs.starboardMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardMidship: e.target.value}))} /></div>
                   <div><Label>Aft Starboard</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
                 </div>
                 <div className="flex justify-end mt-3"><Button onClick={calculateAverageDrafts}><Calculator className="w-4 h-4 mr-2" />Calculate</Button></div>

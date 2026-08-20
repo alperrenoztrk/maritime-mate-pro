@@ -10,7 +10,7 @@ export default function StabilityPracticalGHMPage() {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
             <Wrench className="h-5 w-5" />
-            <h1 className="text-xl font-bold">GHM Hesaplama</h1>
+            <h1 className="text-xl font-bold">GHM Calculation</h1>
           </div>
           <HydrostaticsStabilityCalculations singleMode section="practical" practicalCalc="ghm" />
         </div>

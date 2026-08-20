@@ -30,7 +30,7 @@ export default function MachineTopicRulesView() {
             <div>
               <h1 className="text-xl font-bold text-foreground">{topic.title}</h1>
               <p className="text-sm text-muted-foreground flex items-center gap-1">
-                <BookOpen className="h-3.5 w-3.5" /> Kurallar
+                <BookOpen className="h-3.5 w-3.5" /> Rules
               </p>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function MachineTopicRulesView() {
             </div>
             {category.source && (
               <p className="text-xs text-muted-foreground pl-7">
-                Kaynak: {category.source.code}
+                Source: {category.source.code}
                 {category.source.detail ? ` — ${category.source.detail}` : ""}
               </p>
             )}

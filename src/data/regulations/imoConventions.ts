@@ -4,7 +4,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "solas",
     label: "SOLAS – Denizde Can Emniyeti",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "Uluslararası deniz taşımacılığında can emniyeti için temel gereklilikleri belirler; gemi inşası, teçhizat, operasyon ve sertifikasyon standartlarını kapsar. İlk versiyonu 1914'te Titanic faciası sonrasında kabul edilen SOLAS, denizcilik tarihinin en önemli sözleşmesidir ve sürekli güncellenmektedir.",
     history:
@@ -145,7 +145,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "marpol",
     label: "MARPOL – Deniz Kirliliğinin Önlenmesi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "Gemilerden kaynaklanan deniz kirliliğinin önlenmesi için uluslararası standartları belirler; altı ek ile petrol, kimyasal, atık, çöp, hava emisyonları düzenler. MARPOL 73/78, deniz çevre korumasının temel taşıdır.",
     history:
@@ -263,7 +263,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "stcw",
     label: "STCW – Gemi Adamları Eğitim Standardı",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "Gemi adamlarının eğitim, belgelendirme ve vardiya tutma standartlarını düzenler; yeterlilik sertifikaları, yenileme gereklilikleri ve dinlenme saatlerini kapsar.",
     history:
@@ -374,7 +374,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "mlc",
     label: "MLC 2006 – Denizcilik Çalışma Sözleşmesi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "ILO tarafından kabul edilen ve 'denizcilerin haklar bildirgesi' olarak anılan sözleşme; gemi adamlarının çalışma ve yaşam koşullarını, sözleşme hakları, ücret, çalışma saatleri, konaklama, sağlık ve sosyal güvenlik standartlarını kapsar.",
     history:
@@ -463,7 +463,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "bwm",
     label: "BWM – Balast Suyu Yönetimi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "Balast suyu ile taşınan zararlı organizmaların yayılmasını önlemek için arıtma ve yönetim standartlarını belirler; BWMS kurulumu ve işletme gerekliliklerini kapsar.",
     history:
@@ -550,7 +550,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "llc",
     label: "LLC – Yük Hattı Sözleşmesi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "Gemilerin güvenli yükleme limitlerini belirleyen yük hattı işaretleri ve freeboard hesaplamalarını düzenler; mevsimsel ve bölgesel yükleme sınırlarını kapsar.",
     history:
@@ -639,7 +639,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "colreg",
     label: "COLREG – Denizde Çatışmayı Önleme",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview:
       "Denizde gemilerin birbirlerinden kaçınma kurallarını, seyir ışıkları, şekil ve ses işaretlerini düzenler; tüm deniz araçları için zorunlu uyum gerektirir.",
     history:
@@ -754,7 +754,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "itc-69",
     label: "ITC 69 – Tonaj Ölçümü Sözleşmesi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview: "Gemilerin brüt ve net tonajlarının evrensel ve tutarlı biçimde ölçülmesi için kurallar koyar; liman harçları, güvenlik gereklilikleri ve manning hesaplamalarına temel oluşturur.",
     history: "1969'da kabul edilen ve 1982'de yürürlüğe giren ITC 69, farklı ulusal tonaj ölçüm sistemlerini tek bir uluslararası standart altında birleştirmiştir. Önceki Moorsom sistemi hacim bazlı olmasına rağmen tutarsız uygulamalara yol açıyordu. Geçiş süreci 1994'te tamamlanmış ve tüm uluslararası sefer yapan gemiler ITC 69'a göre ölçülmüştür.",
     applicability: [
@@ -835,7 +835,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "sar-convention",
     label: "SAR – Arama ve Kurtarma Sözleşmesi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview: "Denizde arama ve kurtarma operasyonlarının koordinasyonunu, SRR bölgelerini ve MRCC işbirliği çerçevesini düzenler.",
     history: "1979'da kabul edilen SAR Sözleşmesi, denizde arama ve kurtarma operasyonlarının uluslararası koordinasyonunu sağlamak amacıyla oluşturulmuştur. 1998'de revize edilerek operasyonel prosedürler güncellenmiştir. ICAO ile ortak çalışarak havacılık ve denizcilik SAR'ını entegre eden IAMSAR Manual'in temelini oluşturur.",
     applicability: [
@@ -916,7 +916,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "fal-convention",
     label: "FAL – Deniz Trafiğinin Kolaylaştırılması",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview: "Gemilerin limanlara giriş/çıkışında gereken belge ve prosedürleri basitleştirerek uluslararası deniz ticaretini kolaylaştırır.",
     history: "1965'te kabul edilen FAL Sözleşmesi, limanlarla ilgili bürokratik işlemleri en aza indirmek amacıyla oluşturulmuştur. 2019 değişiklikleri ile Maritime Single Window (elektronik belge sistemi) zorunluluğu getirilmiştir. En son FAL 14 (2024) güncellemesi ile dijital sertifika değişim standartları kabul edilmiştir.",
     applicability: [
@@ -1003,7 +1003,7 @@ export const imoConventions: RegulationItem[] = [
   {
     slug: "sua-convention",
     label: "SUA – Denizde Yasadışı Eylemlerin Önlenmesi",
-    category: "IMO Sözleşmeleri",
+    category: "IMO Conventions",
     overview: "Gemilere karşı korsanlık, terörizm ve diğer yasadışı eylemlerin önlenmesi, bastırılması ve yargılanması için hukuki çerçeve sağlar.",
     history: "1988'de Achille Lauro gemisi kaçırma olayı sonrasında kabul edilen SUA Sözleşmesi, denizde terörizm ve yasadışı eylemlere karşı hukuki çerçeve sağlamıştır. 2005 Protokolü ile kitle imha silahlarının deniz yoluyla taşınmasının önlenmesi ve boarding yetkileri eklenmiştir.",
     applicability: [

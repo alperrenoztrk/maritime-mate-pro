@@ -4,7 +4,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "paris-mou",
     label: "Paris MoU – Avrupa PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Avrupa ve Kuzey Atlantik limanlarında PSC denetimlerini koordine eden bölgesel mutabakat zaptı; risk tabanlı hedefleme ve CIC kampanyaları yürütür.",
     history: "1982'de kurulan Paris MoU, liman devleti kontrolü denetimlerinin bölgesel düzeyde koordinasyonunu sağlayan dünyanın ilk ve en kapsamlı mutabakat zaptıdır. Hague Memorandum'un (1978) devamı olarak kurulmuştur. 27 üye devlet (tüm AB kıyı devletleri + Kanada, İzlanda, Norveç, Rusya, UK) ile dünyanın en yoğun deniz trafiği bölgelerini kapsar. 2011'de NIR (New Inspection Regime) uygulamaya geçmiş ve risk tabanlı hedefleme sistemi oluşturulmuştur. Yıllık yaklaşık 18.000 denetim gerçekleştirilir.",
     applicability: [
@@ -85,7 +85,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "tokyo-mou",
     label: "Tokyo MoU – Asya-Pasifik PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Asya-Pasifik bölgesindeki liman devletleri arasında PSC koordinasyonunu sağlayan bölgesel mutabakat zaptı.",
     history: "1993'te kurulan Tokyo MoU, Asya-Pasifik bölgesindeki 21 üye devletin PSC denetimlerini koordine eder. Dünyanın en yoğun deniz trafiği bölgelerinden birini kapsayan Tokyo MoU, yıllık yaklaşık 30.000+ denetim gerçekleştirir. NIR (New Inspection Regime) 2014'te uygulanmaya başlamıştır. Paris MoU ile yakın işbirliği içinde olup ortak CIC kampanyaları yürütür.",
     applicability: [
@@ -165,7 +165,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "uscg",
     label: "USCG – ABD Sahil Güvenlik Denetimleri",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "ABD limanlarında USCG tarafından yapılan kapsamlı denetimler; QUALSHIP 21 programı ve sıkı uyum gereklilikleri içerir.",
     history: "ABD, Paris veya Tokyo MoU üyesi değildir; kendi bağımsız ve genellikle daha sıkı PSC rejimini uygular. USCG (United States Coast Guard) denetimleri, uluslararası sözleşmelere ek olarak ABD federal yasaları kapsamında da yürütülür. QUALSHIP 21 (Quality Shipping for the 21st Century) programı 2001'de başlatılmış olup, yüksek performanslı gemilere denetim kolaylığı sağlar. ABD, denizcilik çevre ihlallerinde (APPS) cezai yaptırım uygulayan en sıkı ülkelerden biridir.",
     applicability: [
@@ -249,7 +249,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "riyadh-mou",
     label: "Riyadh MoU – Körfez PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Basra Körfezi ve Kızıldeniz bölgesindeki liman devletleri arasında PSC koordinasyonunu sağlayan bölgesel mutabakat zaptı.",
     history: "2005'te kurulan Riyadh MoU, Basra Körfezi, Arap Denizi ve Kızıldeniz bölgesindeki 6 üye devletin PSC denetimlerini koordine eder. Üye devletler: Bahreyn, Kuveyt, Umman, Katar, Suudi Arabistan ve BAE. Bölge, dünya petrol trafiğinin önemli bir kısmını barındırır. Diğer MoU'larla karşılaştırıldığında görece yeni bir organizasyondur.",
     applicability: [
@@ -324,7 +324,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "black-sea-mou",
     label: "Black Sea MoU – Karadeniz PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Karadeniz limanlarındaki PSC denetimlerini koordine eder; risk temelli denetim ve ortak kampanyalar yürütür.",
     history: "2000'de kurulan Black Sea MoU, Karadeniz'e kıyısı olan 6 ülkenin PSC denetimlerini koordine eder: Bulgaristan, Gürcistan, Romanya, Rusya, Türkiye ve Ukrayna. Paris MoU ile yakın işbirliği içindedir ve AB üyesi ülkeler (Bulgaristan, Romanya) aynı zamanda Paris MoU üyesidir. Türkiye, hem Black Sea MoU hem de Mediterranean MoU üyesidir.",
     applicability: [
@@ -399,7 +399,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "indian-ocean-mou",
     label: "Indian Ocean MoU – Hint Okyanusu PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Hint Okyanusu bölgesindeki liman devletleri arasında PSC koordinasyonunu sağlayan bölgesel mutabakat zaptı.",
     history: "1998'de kurulan Indian Ocean MoU, Hint Okyanusu ve çevresindeki ülkelerin PSC işbirliğini sağlar. Üye devletler arasında Avustralya, Hindistan, İran, Güney Afrika, Kenya, Tanzanya, Mozambik, Sri Lanka, Myanmar, Mauritius, Eritre, Maldivler, Sudan, Yemen, Bangladeş, Umman ve Fransa (La Réunion) bulunmaktadır. Bölge, Süveyş-Malakka arasındaki stratejik deniz yollarını kapsar.",
     applicability: [
@@ -474,7 +474,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "mediterranean-mou",
     label: "Mediterranean MoU – Akdeniz PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Akdeniz limanlarında PSC denetim koordinasyonu ve uyum standartlarını belirleyen bölgesel anlaşma.",
     history: "1997'de kurulan Mediterranean MoU, Akdeniz'e kıyısı olan ülkelerin PSC denetimlerini koordine eder. Üye devletler arasında Kuzey Afrika ülkeleri (Cezayir, Mısır, Libya, Fas, Tunus), Doğu Akdeniz ülkeleri (İsrail, Lübnan, Türkiye), Malta ve Kıbrıs bulunmaktadır. Paris MoU ile yakın işbirliği içindedir ve AB üyesi olan Akdeniz ülkeleri (Malta, Kıbrıs) aynı zamanda Paris MoU üyesidir.",
     applicability: [
@@ -549,7 +549,7 @@ export const regionalRegulations: RegulationItem[] = [
   {
     slug: "vina-del-mar",
     label: "Viña del Mar Agreement – Latin Amerika PSC",
-    category: "Bölgesel Düzenlemeler",
+    category: "Regional Regulations",
     overview: "Latin Amerika bölgesindeki liman devletlerinin PSC denetimlerini koordine etmesini sağlayan bölgesel anlaşma.",
     history: "1992'de kurulan Viña del Mar Agreement, Latin Amerika'nın ilk PSC bölgesel anlaşmasıdır. 14 üye devlet ile Güney ve Orta Amerika limanlarındaki denetimleri koordine eder. Anlaşma, Paris MoU modelinden esinlenmiştir. Bölgede denetim kapasitesi ve standardizasyon çalışmaları IMO teknik yardım programlarıyla desteklenmektedir.",
     applicability: [

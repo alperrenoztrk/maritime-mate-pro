@@ -48,8 +48,8 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
     });
     
     toast({
-      title: "Başarılı!",
-      description: "Sounding Table hesaplamaları tamamlandı!"
+      title: "Successful!",
+      description: "Sounding Table calculations complete!"
     });
   };
 
@@ -57,7 +57,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
     <MobileLayout>
       <CalculationGridScreen
         eyebrow="Tank"
-        title="Tank Hesaplamaları"
+        title="Tank Calculations"
       >
         <Card className="bg-card border-border shadow-lg">
           <CardContent className="pt-6">
@@ -70,11 +70,11 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
 
               <TabsContent value="sounding" className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Su Altı Hacim Hesaplama</h3>
+                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Underwater Volume Calculation</h3>
                   <p className="text-sm text-muted-foreground">V = A × h</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="tankArea">Tank Alanı A [m²]</Label>
+                      <Label htmlFor="tankArea">Tank Area A [m²]</Label>
                       <Input
                         id="tankArea"
                         type="number"
@@ -85,7 +85,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="liquidHeight">Sıvı Yüksekliği h [m]</Label>
+                      <Label htmlFor="liquidHeight">Liquid Height h [m]</Label>
                       <Input
                         id="liquidHeight"
                         type="number"
@@ -101,11 +101,11 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                 <Separator />
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Ağırlık Hesaplama</h3>
+                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Weight Calculation</h3>
                   <p className="text-sm text-muted-foreground">W = V × ρ</p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="volume_weight">Hacim V [m³]</Label>
+                      <Label htmlFor="volume_weight">Volume V [m³]</Label>
                       <Input
                         id="volume_weight"
                         type="number"
@@ -116,7 +116,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="liquidDensity">Sıvı Yoğunluğu ρ [kg/m³]</Label>
+                      <Label htmlFor="liquidDensity">Liquid Density ρ [kg/m³]</Label>
                       <Input
                         id="liquidDensity"
                         type="number"
@@ -127,19 +127,19 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="tankType">Tank Tipi</Label>
+                      <Label htmlFor="tankType">Tank Type</Label>
                       <Select
                         value={tankData.tankType || ''}
                         onValueChange={(value) => setTankData({...tankData, tankType: value as TankData["tankType"]})}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Tank tipi seçin" />
+                          <SelectValue placeholder="Select tank type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="fuel">Yakıt Tankı</SelectItem>
-                          <SelectItem value="ballast">Balast Tankı</SelectItem>
-                          <SelectItem value="freshwater">Tatlı Su Tankı</SelectItem>
-                          <SelectItem value="cargo">Kargo Tankı</SelectItem>
+                          <SelectItem value="fuel">Fuel Tank</SelectItem>
+                          <SelectItem value="ballast">Ballast Tank</SelectItem>
+                          <SelectItem value="freshwater">Fresh Water Tank</SelectItem>
+                          <SelectItem value="cargo">Cargo Tank</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -149,11 +149,11 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                 <Separator />
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Moment Hesaplama</h3>
+                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Moment Calculation</h3>
                   <p className="text-sm text-muted-foreground">M = V × h/2</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="volume_moment">Hacim V [m³]</Label>
+                      <Label htmlFor="volume_moment">Volume V [m³]</Label>
                       <Input
                         id="volume_moment"
                         type="number"
@@ -164,7 +164,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="liquidHeight_moment">Sıvı Yüksekliği h [m]</Label>
+                      <Label htmlFor="liquidHeight_moment">Liquid Height h [m]</Label>
                       <Input
                         id="liquidHeight_moment"
                         type="number"
@@ -188,22 +188,22 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
 
                 {soundingResults && (
                   <div className="space-y-4 p-4 bg-primary/5 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#1d3e8a]">Sounding Table Sonuçları</h3>
+                    <h3 className="text-lg font-semibold text-[#1d3e8a]">Sounding Table Results</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="space-y-2">
-                        <Label className="text-sm font-medium">Su Altı Hacim (V)</Label>
+                        <Label className="text-sm font-medium">Underwater Volume (V)</Label>
                         <div className="text-lg font-bold text-[#2F5BFF]">
                           {soundingResults.volume.toFixed(1)} m³
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-sm font-medium">Ağırlık (W)</Label>
+                        <Label className="text-sm font-medium">Weight (W)</Label>
                         <div className="text-lg font-bold text-[#2F5BFF]">
                           {soundingResults.weight.toFixed(1)} ton
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-sm font-medium">Moment (M)</Label>
+                        <Label className="text-sm font-medium">Torque (M)</Label>
                         <div className="text-lg font-bold text-[#2F5BFF]">
                           {soundingResults.moment.toFixed(1)} ton.m
                         </div>

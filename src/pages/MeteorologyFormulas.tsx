@@ -26,7 +26,7 @@ const meteorologyFormulas = [
     note: "Under standard conditions (15 °C, 1013.25 hPa) ρ ≈ 1.225 kg/m³"
   },
   {
-    title: "Derin Su Dalgaboyu",
+    title: "Deep Water Wavelength",
     icon: Waves,
     formula: "L = (g · T²) / (2π)",
     variables: [
@@ -35,7 +35,7 @@ const meteorologyFormulas = [
       "T: Dalga periyodu (s)",
       "π ≈ 3.14159"
     ],
-    note: "Derin su: Derinlik > L/2"
+    note: "Deep water: Depth > L/2"
   },
   {
     title: "Wave Speed (Deep Water)",

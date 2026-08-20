@@ -1,10 +1,10 @@
 export type RegulationCategory =
-  | "IMO Sözleşmeleri"
-  | "Emniyet Kodları"
-  | "Çevresel Düzenlemeler"
-  | "Denetim & Sörvey"
-  | "Gemi Sertifikaları"
-  | "Bölgesel Düzenlemeler";
+  | "IMO Conventions"
+  | "Safety Codes"
+  | "Environmental Regulations"
+  | "Inspection & Survey"
+  | "Ship Certificates"
+  | "Regional Regulations";
 
 export type RegulationAmendment = {
   year: string;

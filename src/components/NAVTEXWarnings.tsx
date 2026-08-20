@@ -61,7 +61,7 @@ const NAVTEX_STATIONS = [
   { id: "IZMIR", name: "Izmir (Turkey)", lat: 38.4192, lon: 27.1287 },
   { id: "ANTALYA", name: "Antalya (Türkiye)", lat: 36.8969, lon: 30.7133 },
   { id: "SAMSUN", name: "Samsun (Türkiye)", lat: 41.2867, lon: 36.33 },
-  { id: "ATHENS", name: "Athens (Greece)", lat: 37.9838, lon: 23.7275 },
+  { id: "ATHENS", name: "Athens (Greek)", lat: 37.9838, lon: 23.7275 },
 ] as const;
 
 const getCurrentWeatherSynopsis = (data: OpenMeteoMarineWeather): string => {
@@ -251,7 +251,7 @@ export const NAVTEXWarnings = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <Ship className="h-5 w-5 text-blue-600" />
-                Aktif Mesajlar ({messages.length})
+                Active Messages ({messages.length})
               </h3>
               <Badge variant="outline" className="gap-1">
                 <Clock className="h-3 w-3" />
@@ -309,8 +309,8 @@ export const NAVTEXWarnings = () => {
                       {message.content}
                     </div>
                     <div className="mt-3 pt-3 border-t flex items-center justify-between text-xs text-muted-foreground">
-                      <span>Geçerlilik: {new Date(message.validFrom).toLocaleString('tr-TR')}</span>
-                      <span>Bitiş: {new Date(message.validUntil).toLocaleString('tr-TR')}</span>
+                      <span>Validity: {new Date(message.validFrom).toLocaleString('tr-TR')}</span>
+                      <span>Finish: {new Date(message.validUntil).toLocaleString('tr-TR')}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -323,7 +323,7 @@ export const NAVTEXWarnings = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Shield className="h-5 w-5 text-blue-600" />
-                NAVTEX Mesaj Kategorileri
+                NAVTEX Message Categories
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">

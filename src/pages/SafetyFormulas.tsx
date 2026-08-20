@@ -29,7 +29,7 @@ const safetyFormulas = [
     note: "In practice: 40% of the volume × 1.5 kg/m³ for a machinery space"
   },
   {
-    title: "Su Sisi Debisi",
+    title: "Water Mist Flow Rate",
     icon: Droplets,
     formula: "Q = K × √P",
     variables: [

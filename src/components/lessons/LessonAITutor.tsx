@@ -11,13 +11,13 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
  * "Dersler Beta" — derse gömülü adaptif AI eğitmen paneli.
  *
  * O konunun anlatımına topraklanır (lessonText). Hızlı aksiyon butonları
- * önceden hazır promptlar gönderir; "Daha basit anlat" seviyeyi düşürerek
+ * önceden hazır promptlar gönderir; "Explain it more simply" seviyeyi düşürerek
  * adaptifliği sağlar. Tüm çağrılar `askLessonTutor` → `gemini-chat` üzerinden.
  */
 type QuickAction = { label: string; prompt: string; level?: TutorLevel };
 
 const QUICK_ACTIONS: QuickAction[] = [
-  { label: "Daha basit anlat", prompt: "Explain this topic from the beginning, in very simple language and with an everyday analogy.", level: "basit" },
+  { label: "Explain it more simply", prompt: "Explain this topic from the beginning, in very simple language and with an everyday analogy.", level: "basit" },
   { label: "ask me a question", prompt: "To test whether I understand this topic, ask me one question and wait for my answer." },
   { label: "What is its application on the ship?", prompt: "Explain the practical application of this topic on a real ship/shift with a concrete example." },
   { label: "What is the common mistake?", prompt: "Explain the most common mistakes made by officers/students in this regard and how to avoid them." },

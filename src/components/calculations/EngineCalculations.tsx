@@ -423,12 +423,12 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
           { step: 1, title: "brake power", formula: "BP = Indicated Power × Mechanical Efficiency / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
           { step: 2, title: "electric power", formula: "EP = BP × Generator Efficiency / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
           { step: 3, title: "Indicated thermal efficiency", formula: "ηi = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `ηi = ${indicatedThermalEfficiency.toFixed(1)}%` },
-          { step: 4, title: "Toplam verim", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
+          { step: 4, title: "Total yield", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
         ],
         emissions: [
-          { step: 1, title: "NOx emisyonu", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
-          { step: 2, title: "SOx emisyonu", formula: "SOx = 2 × S% × FC", explanation: `Sulfur content:%${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
-          { step: 3, title: "CO₂ emisyonu", formula: "CO₂ = FC × Emission Factor", explanation: `${data.fuelType} emission factor used`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} tons/day` },
+          { step: 1, title: "NOx emission", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
+          { step: 2, title: "SOx emission", formula: "SOx = 2 × S% × FC", explanation: `Sulfur content:%${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
+          { step: 3, title: "CO₂ emissions", formula: "CO₂ = FC × Emission Factor", explanation: `${data.fuelType} emission factor used`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} tons/day` },
         ],
         changeover: [
           { step: 1, title: "Transition time", formula: "Time = Preheat + (Pipe Volume / Flow Rate)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} dakika` },
@@ -476,12 +476,12 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         <CardContent>
           <Tabs defaultValue={initialTab || "engine"} className="w-full">
             <TabsList className="grid w-full grid-cols-6">
-              <TabsTrigger value="engine">Ana Makine</TabsTrigger>
+              <TabsTrigger value="engine">Main engine</TabsTrigger>
               <TabsTrigger value="fuel">Fuel System</TabsTrigger>
               <TabsTrigger value="cooling">cooling</TabsTrigger>
               <TabsTrigger value="changeover">transition</TabsTrigger>
               <TabsTrigger value="heat">Heat Exchanger</TabsTrigger>
-              <TabsTrigger value="tanks">Tanklar</TabsTrigger>
+              <TabsTrigger value="tanks">Tanks</TabsTrigger>
             </TabsList>
 
             <TabsContent value="engine" className="space-y-4">
@@ -505,7 +505,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="engineRPM">Motor RPM</Label>
+                  <Label htmlFor="engineRPM">Engine RPM</Label>
                   <Input
                     id="engineRPM"
                     type="number"
@@ -532,7 +532,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="engineType">Motor Tipi</Label>
+                  <Label htmlFor="engineType">Engine Type</Label>
                   <Select value={data.engineType} onValueChange={(value) => updateData('engineType', value as 'four-stroke' | 'two-stroke')}>
                     <SelectTrigger>
                       <SelectValue />
@@ -566,7 +566,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="mechanicalEfficiency">Mekanik Verim (%)</Label>
+                  <Label htmlFor="mechanicalEfficiency">Mechanical Efficiency (%)</Label>
                   <Input
                     id="mechanicalEfficiency"
                     type="number"
@@ -859,7 +859,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardContent className="space-y-4">
               <div className="grid grid-cols-4 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Mevcut SFOC</Label>
+                  <Label className="text-sm font-medium">Current SFOC</Label>
                   <p className="text-2xl font-bold text-info">{result.currentSFOC.toFixed(1)} g/kWh</p>
                 </div>
                 <div>
@@ -869,7 +869,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-2xl font-bold text-orange-700">{result.dailyConsumption.toFixed(1)} ton</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Toplam Verim</Label>
+                  <Label className="text-sm font-medium">Total Yield</Label>
                   <p className="text-2xl font-bold text-purple-600">{result.overallEfficiency.toFixed(1)}%</p>
                 </div>
               </div>
@@ -921,44 +921,44 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Activity className="h-5 w-5" />
-                MARPOL Annex VI Emisyonlar
+                MARPOL Annex VI Emissions
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">NOx Emisyonu</Label>
+                  <Label className="text-sm font-medium">NOx Emission</Label>
                   <p className="text-lg font-semibold">{result.noxEmissionRate.toFixed(2)} g/kWh</p>
                   <p className="text-xs text-muted-foreground">
                     Limit (Tier {data.requiredNoxTier}, RPM {data.engineRPM}): {result.noxLimit.toFixed(2)} g/kWh
                   </p>
                   <Badge variant={result.noxCompliance === 'compliant' ? 'default' : 
                                  result.noxCompliance === 'marginal' ? 'secondary' : 'destructive'}>
-                    {result.noxCompliance === 'compliant' ? 'Uygun' :
+                    {result.noxCompliance === 'compliant' ? 'Suitable' :
                      result.noxCompliance === 'marginal' ? 'on the border' : 'Not Suitable'}
                   </Badge>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">SOx Emisyonu</Label>
+                  <Label className="text-sm font-medium">SOx Emission</Label>
                   <p className="text-lg font-semibold">{result.soxEmissionRate.toFixed(2)} g/kWh</p>
                   <Badge variant={result.soxCompliance === 'compliant' ? 'default' : 
                                  result.soxCompliance === 'marginal' ? 'secondary' : 'destructive'}>
-                    {result.soxCompliance === 'compliant' ? 'Uygun' :
+                    {result.soxCompliance === 'compliant' ? 'Suitable' :
                      result.soxCompliance === 'marginal' ? 'on the border' : 'Not Suitable'}
                   </Badge>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">CO₂ Emisyonu</Label>
-                  <p className="text-lg font-semibold">{(result.co2DailyEmission/1000).toFixed(1)} ton/gün</p>
+                  <Label className="text-sm font-medium">CO₂ Emission</Label>
+                  <p className="text-lg font-semibold">{(result.co2DailyEmission/1000).toFixed(1)} tons/day</p>
                 </div>
                 <div>
                   <Label className="text-sm font-medium">MARPOL Tier</Label>
                   <Badge variant="outline">Tier {result.marpolTier}</Badge>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">ECA Uyumluluk</Label>
+                  <Label className="text-sm font-medium">ECA Compliance</Label>
                   <Badge variant={result.ecaCompliance ? 'default' : 'destructive'}>
-                    {result.ecaCompliance ? 'Uyumlu' : 'Not Compatible'}
+                    {result.ecaCompliance ? 'Compatible' : 'Not Compatible'}
                   </Badge>
                 </div>
                 <div>
@@ -989,7 +989,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.fuelWasteVolume.toFixed(0)} L</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Tahmini Maliyet</Label>
+                  <Label className="text-sm font-medium">Estimated Cost</Label>
                   <p className="text-lg font-semibold">${result.changeoverCost.toFixed(0)}</p>
                 </div>
               </div>
@@ -1035,7 +1035,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Gerekli Alan</Label>
+                  <Label className="text-sm font-medium">Required Space</Label>
                   <p className="text-lg font-semibold">{result.heatExchangerArea.toFixed(1)} m²</p>
                 </div>
                 <div>
@@ -1051,7 +1051,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.pressureDrop.toFixed(0)} kPa</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Etkinlik</Label>
+                  <Label className="text-sm font-medium">Event</Label>
                   <p className="text-lg font-semibold">{result.effectiveness.toFixed(0)}%</p>
                 </div>
               </div>
@@ -1079,11 +1079,11 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Waste Water Production</Label>
-                  <p className="text-lg font-semibold">{result.bilgeGenerationRate.toFixed(1)} L/gün</p>
+                  <p className="text-lg font-semibold">{result.bilgeGenerationRate.toFixed(1)} L/day</p>
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Bilge Production</Label>
-                  <p className="text-lg font-semibold">{result.sludgeGenerationRate.toFixed(1)} L/gün</p>
+                  <p className="text-lg font-semibold">{result.sludgeGenerationRate.toFixed(1)} L/day</p>
                 </div>
               </div>
               <CalculationSteps steps={calcSteps["tanks"] || []} />

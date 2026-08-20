@@ -19,11 +19,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function EconomicsAssistantPage() {
   return (
     <AssistantInterface
-      title="Ticari Operasyonlar Asistanı"
+      title="Business Operations Assistant"
       badge="Shipping Business Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="Charter, navlun/TCE, laytime/demurrage veya sefer ekonomisi ile ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding charter, freight/TCE, laytime/demurrage or voyage economy..."
       icon={TrendingUp}
       accentGradient="from-amber-500 via-yellow-500 to-orange-600"
       iconColor="text-amber-600 dark:text-amber-400"

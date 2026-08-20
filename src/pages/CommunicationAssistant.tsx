@@ -18,11 +18,11 @@ Detect the language the user asked the question in and answer in that same langu
 export default function CommunicationAssistantPage() {
   return (
     <AssistantInterface
-      title="Haberleşme Asistanı"
-      badge="Haberleşme Asistanı"
+      title="Communication Assistant"
+      badge="Communication Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
-      placeholder="GMDSS, VHF/DSC veya acil durum haberleşmesiyle ilgili sorunuzu yazın..."
+      placeholder="Write your question regarding GMDSS, VHF/DSC or emergency communications..."
       icon={Radio}
       accentGradient="from-cyan-500 via-blue-500 to-indigo-500"
       iconColor="text-cyan-600 dark:text-cyan-400"

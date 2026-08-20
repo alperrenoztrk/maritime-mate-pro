@@ -151,7 +151,7 @@ export interface ChronometerFaceProps {
   minutes: number;
   seconds: number;
   variant: "local" | "gmt";
-  /** Kadrandaki iki basılı satır: üstte 12'nin altına, altta 6'nın üstüne. */
+  /** Kadrandaki iki basılı satır: üstte 12'below, below 6'nın üstüne. */
   inscription: [string, string];
 }
 
@@ -181,7 +181,7 @@ export function ChronometerFace({ hours, minutes, seconds, variant, inscription 
       <g clipPath={`url(#${gmt ? "iwd-clip-gmt" : "iwd-clip-local"})`}>
         <DialFurniture p={p} gmt={gmt} />
 
-        {/* Basılı satırlar — fotoğrafta marka 12'nin, ülke adı 6'nın yanındadır */}
+        {/* Basılı satırlar — fotoğrafta marka 12'country name of 6'nın yanındadır */}
         <text
           x={C}
           y={60}

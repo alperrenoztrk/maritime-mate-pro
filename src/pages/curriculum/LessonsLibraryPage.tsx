@@ -14,9 +14,9 @@ import {
 const LESSONS_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Course",
-  name: "Mariner's Book — Denizcilik Dersleri",
+  name: "Mariner's Book — Sailing Lessons",
   description:
-    "Güverte ve makine kitaplıklarından oluşan yapılandırılmış operasyonel denizcilik eğitimi.",
+    "Structured operational maritime training consisting of deck and machinery libraries.",
   provider: {
     "@type": "Organization",
     name: "Mariner's Book",
@@ -39,17 +39,17 @@ export default function LessonsLibraryPage() {
   const entryCards = [
     {
       id: "deck" as const,
-      title: "Güverte Kitaplığı",
+      title: "Deck Library",
       icon: Ship,
       accent: "accent-ocean",
-      description: "Seyir, stabilite, yük, emniyet ve köprüüstü dersleri",
+      description: "Navigation, Stability, load, safety and Bridge lessons",
     },
     {
       id: "machine" as const,
-      title: "Makine Kitaplığı",
+      title: "Machine Library",
       icon: Wrench,
       accent: "accent-slate",
-      description: "Makine, elektrik, termodinamik ve bakım dersleri",
+      description: "Mechanical, electrical, thermodynamics and maintenance courses",
     },
   ];
 
@@ -61,7 +61,7 @@ export default function LessonsLibraryPage() {
       accent: "accent-teal",
     },
     {
-      title: "Sınava Hazırlık",
+      title: "Exam Preparation",
       to: "/exam-preparation",
       icon: GraduationCap,
       accent: "accent-deep",
@@ -76,9 +76,9 @@ export default function LessonsLibraryPage() {
     <LibraryPageShell
       title={
         activeView === "deck"
-          ? "Güverte Kitaplığı"
+          ? "Deck Library"
           : activeView === "machine"
-            ? "Makine Kitaplığı"
+            ? "Machine Library"
             : "Dersler"
       }
       icon={activeView === "deck" ? Ship : activeView === "machine" ? Wrench : BookOpenText}
@@ -86,7 +86,7 @@ export default function LessonsLibraryPage() {
       backLabel="Back to the lessons home screen"
     >
       <SEO
-        title="Mariner's Book — Denizcilik Dersleri"
+        title="Mariner's Book — Sailing Lessons"
         description="Structured maritime lessons in the deck and engine libraries."
         path="/lessons"
         jsonLd={LESSONS_JSONLD}
@@ -95,7 +95,7 @@ export default function LessonsLibraryPage() {
       {!activeView ? (
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
           <section className="space-y-3">
-            <LibrarySectionHeading>Kitaplıklar</LibrarySectionHeading>
+            <LibrarySectionHeading>Bookcases</LibrarySectionHeading>
             <InsetGroupedList columns={2}>
               {entryCards.map((entry) => (
                 <LibraryEntryCard
@@ -111,7 +111,7 @@ export default function LessonsLibraryPage() {
           </section>
 
           <section className="space-y-3">
-            <LibrarySectionHeading>Pratik</LibrarySectionHeading>
+            <LibrarySectionHeading>Practical</LibrarySectionHeading>
             <InsetGroupedList columns={2}>
               {practiceEntries.map((entry) => (
                 <LibraryCompactCard key={entry.to} {...entry} />

@@ -115,18 +115,18 @@ export const Stability3DSim = () => {
   return (
     <Card className="border-primary/20 shadow-sm">
       <CardHeader className="pb-3">
-        <CardTitle className="text-base">3B Stabilite Simülasyonu</CardTitle>
+        <CardTitle className="text-base">3D Stability Simulation</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Ship-type selector */}
         <div className="flex flex-col gap-2 rounded-lg border border-border/40 bg-muted/30 p-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
-            <Label className="text-xs font-semibold">Gemi Tipi</Label>
+            <Label className="text-xs font-semibold">Ship Type</Label>
             <span className="hidden text-micro text-muted-foreground sm:inline">{activeShip?.description}</span>
           </div>
           <Select value={shipType} onValueChange={(v) => setShipType(v as ShipType)}>
             <SelectTrigger className="h-8 w-full text-xs sm:w-44">
-              <SelectValue placeholder="Gemi tipi seç" />
+              <SelectValue placeholder="Select ship type" />
             </SelectTrigger>
             <SelectContent>
               {shipTypeOptions.map((o) => (
@@ -195,7 +195,7 @@ export const Stability3DSim = () => {
 
           {/* Interaction hint */}
           <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-micro text-muted-foreground shadow-sm">
-            Sürükle: döndür · Kaydır: yakınlaş
+            Drag: rotate · Pan: zoom in
           </div>
 
           {/* Live readout - top left */}
@@ -207,12 +207,12 @@ export const Stability3DSim = () => {
               <div className="my-1 border-t border-border/30" />
               <Row label="GZ" value={`${gz.toFixed(3)} m`} />
               <Row
-                label="Meyil"
+                label="Heel"
                 value={`${heelDeg.toFixed(1)}°`}
                 color={nearCapsize ? "#ef4444" : deckImmersed ? "#f59e0b" : undefined}
               />
               <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : "∞"} s`} />
-              <Row label="Rüzgâr" value={windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m` : "—"} />
+              <Row label="wind" value={windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m` : "—"} />
             </div>
           </div>
 
@@ -252,10 +252,10 @@ export const Stability3DSim = () => {
           <Label className="mb-1.5 flex items-center justify-between text-xs">
             <span className="flex items-center gap-1.5 font-semibold text-sky-600 dark:text-sky-300">
               <Wind className="h-3.5 w-3.5" />
-              Rüzgâr / Yalpa Momenti
+              Wind / Roll Moment
             </span>
             <span className="font-mono">
-              {windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m → ${absHeel.toFixed(1)}°` : "Sakin"}
+              {windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m → ${absHeel.toFixed(1)}°` : "Calm"}
             </span>
           </Label>
           <Slider
@@ -305,7 +305,7 @@ export const Stability3DSim = () => {
         <div className="rounded-lg border border-border/40 bg-muted/30 p-3">
           <div className="mb-2 flex items-center gap-2">
             <Info className="h-3.5 w-3.5 text-primary" />
-            <span className="text-xs font-semibold text-foreground">IMO A.749 Stabilite Kriterleri</span>
+            <span className="text-xs font-semibold text-foreground">IMO A.749 Stability Criteria</span>
             <Badge
               variant={imo.overallPass ? "default" : "destructive"}
               className="ml-auto text-micro px-1.5 py-0"
@@ -372,7 +372,7 @@ function SimLoadingFallback() {
     <div className="flex h-full items-center justify-center">
       <div className="text-center">
         <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-        <p className="text-xs text-muted-foreground">3D simülasyon yükleniyor…</p>
+        <p className="text-xs text-muted-foreground">3D simulation loading…</p>
       </div>
     </div>
   );

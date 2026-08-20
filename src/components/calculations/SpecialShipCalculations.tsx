@@ -132,7 +132,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
     setCalcSteps(prev => ({ ...prev, lng: [
       { step: 1, title: "Formula", formula: "Total Loss = (Daily Boil-off% / 100) × Capacity × Day", explanation: "LNG evaporation loss calculation" },
       { step: 2, title: "Placement of values", formula: `Loss = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Total Loss = ${totalBoilOff.toFixed(1)} m³` },
-      { step: 3, title: "Kalan kargo", formula: "Remaining = Capacity - Total Loss", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
+      { step: 3, title: "Remaining cargo", formula: "Remaining = Capacity - Total Loss", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
       { step: 4, title: "Loss percentage", formula: "Loss% = (Total Loss/Capacity) × 100", substitution: `Loss% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Loss = %${lossPercentage.toFixed(2)}` },
     ] }));
   };
@@ -222,13 +222,13 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <Label htmlFor="cargoTankVolume">Tank Hacmi (m³)</Label>
+                  <Label htmlFor="cargoTankVolume">Tank Volume (m³)</Label>
                   <Input
                     id="cargoTankVolume"
                     type="number"
                     value={cargoTankVolume}
                     onChange={(e) => setCargoTankVolume(e.target.value)}
-                    placeholder="Tank kapasitesi"
+                    placeholder="Tank capacity"
                   />
                 </div>
                 <div>
@@ -302,13 +302,13 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <Label htmlFor="lngTankCapacity">Tank Kapasitesi (m³)</Label>
+                  <Label htmlFor="lngTankCapacity">Tank Capacity (m³)</Label>
                   <Input
                     id="lngTankCapacity"
                     type="number"
                     value={lngTankCapacity}
                     onChange={(e) => setLngTankCapacity(e.target.value)}
-                    placeholder="LNG tank kapasitesi"
+                    placeholder="LNG tank capacity"
                   />
                 </div>
                 <div>
@@ -346,7 +346,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         <span className="ml-2">{lngResult.totalBoilOff.toFixed(1)} m³</span>
                       </div>
                       <div>
-                        <span className="font-medium">Kalan Kargo:</span>
+                        <span className="font-medium">Remaining Cargo:</span>
                         <span className="ml-2">{lngResult.remainingCargo.toFixed(1)} m³</span>
                       </div>
                       <div>
@@ -358,7 +358,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         </Badge>
                       </div>
                       <div>
-                        <span className="font-medium">Durum:</span>
+                        <span className="font-medium">Status:</span>
                         <span className="ml-2 capitalize">{lngResult.status}</span>
                       </div>
                     </div>
@@ -376,7 +376,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Container className="w-5 h-5 text-green-500" />
-                Konteyner Stack Limiti
+                Container Stack Limit
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -388,7 +388,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                     type="number"
                     value={containerWeight}
                     onChange={(e) => setContainerWeight(e.target.value)}
-                    placeholder="Ton/konteyner"
+                    placeholder="Tons/container"
                   />
                 </div>
                 <div>
@@ -408,7 +408,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                     type="number"
                     value={deckCapacity}
                     onChange={(e) => setDeckCapacity(e.target.value)}
-                    placeholder="Maksimum kapasite"
+                    placeholder="Maximum capacity"
                   />
                 </div>
               </div>
@@ -434,7 +434,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         <span className="ml-2">{containerResult.maxSafeHeight} adet</span>
                       </div>
                       <div>
-                        <span className="font-medium">Durum:</span>
+                        <span className="font-medium">Status:</span>
                         <Badge variant={containerResult.status === 'safe' ? 'default' :
                                       containerResult.status === 'caution' ? 'outline' : 'destructive'}
                                className="ml-2">
@@ -482,7 +482,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                     type="number"
                     value={axleNumber}
                     onChange={(e) => setAxleNumber(e.target.value)}
-                    placeholder="Toplam axle"
+                    placeholder="Total axle"
                   />
                 </div>
                 <div>
@@ -514,7 +514,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         <span className="ml-2">{roroResult.safetyMargin.toFixed(1)}%</span>
                       </div>
                       <div>
-                        <span className="font-medium">Durum:</span>
+                        <span className="font-medium">Status:</span>
                         <Badge variant={roroResult.status === 'safe' ? 'default' : 'destructive'}
                                className="ml-2">
                           {roroResult.status}

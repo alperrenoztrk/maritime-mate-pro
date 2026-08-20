@@ -30,7 +30,7 @@ export function WidgetSettings() {
                     className="h-6 w-6"
                     onClick={() => move(entry.id, -1)}
                     disabled={idx === 0}
-                    aria-label="Yukarı taşı"
+                    aria-label="Move up"
                   >
                     <ChevronUp className="h-4 w-4" />
                   </Button>
@@ -41,7 +41,7 @@ export function WidgetSettings() {
                     className="h-6 w-6"
                     onClick={() => move(entry.id, 1)}
                     disabled={idx === entries.length - 1}
-                    aria-label="Aşağı taşı"
+                    aria-label="Move down"
                   >
                     <ChevronDown className="h-4 w-4" />
                   </Button>

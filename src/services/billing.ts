@@ -68,7 +68,7 @@ async function verifyOnServer(purchases: Array<{ productId: string; purchaseToke
   if (error) {
     // 503 = sunucuda GOOGLE_PLAY_SERVICE_ACCOUNT_JSON tanımlı değil. Bu bir
     // ağ hatası değil, dağıtım hatasıdır: tekrar denemek düzeltmez ve
-    // kullanıcıya "tekrar deneyin" demek yanıltıcı olur. Ayrı bir hata
+    // kullanıcıya "try again" demek yanıltıcı olur. Ayrı bir hata
     // tipiyle yüzeye çıkarılır (bkz. scripts/check-play-billing-config.mjs).
     if (readStatus(error) === 503) throw new BillingNotConfiguredError();
     throw error;
@@ -112,7 +112,7 @@ export async function purchasePlan(plan: ProPlan, userId: string): Promise<Verif
         // Bekleyen ödeme (ör. banka onayı): tamamlanınca geri yükleme ile bağlanır.
         throw new BillingPendingError();
       }
-      throw new Error('Satın alma tamamlanamadı');
+      throw new Error('The purchase could not be completed');
     }
     return await verifyOnServer(completed.flatMap((p) => toVerifyInput(p, type)));
   } catch (e) {
@@ -154,7 +154,7 @@ export function isUserCanceled(e: unknown): boolean {
 
 export class BillingPendingError extends Error {
   constructor() {
-    super('Ödemeniz beklemede. Onaylandığında Pro erişiminiz otomatik açılacak.');
+    super('Your payment is pending. Once approved, your Pro access will be opened automatically.');
     this.name = 'BillingPendingError';
   }
 }
@@ -163,14 +163,14 @@ export class BillingPendingError extends Error {
  * Sunucuda Play Developer API kimlik bilgisi yok: satın alma doğrulanamaz.
  *
  * Google, onaylanmayan (acknowledge edilmeyen) satın almayı 3 gün içinde
- * otomatik iade eder; kullanıcıya bunu söylemek "tekrar deneyin" demekten
+ * otomatik iade eder; kullanıcıya bunu söylemek "try again" demekten
  * hem doğru hem de dürüsttür.
  */
 export class BillingNotConfiguredError extends Error {
   constructor() {
     super(
-      'Satın alma doğrulama servisi şu anda yapılandırılmamış. Ücret tahsil edildiyse ' +
-      'Google 3 gün içinde otomatik iade eder. Lütfen destekle iletişime geçin.',
+      'The purchase verification service is not currently configured. If the fee has been collected' +
+      'Google automatically returns it within 3 days. Please contact support.',
     );
     this.name = 'BillingNotConfiguredError';
   }

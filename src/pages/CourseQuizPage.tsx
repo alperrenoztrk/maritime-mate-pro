@@ -11,7 +11,7 @@ export default function CourseQuizPage() {
   if (!topic || questions.length === 0) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Alıştırma bulunamadı</p>
+        <p className="text-muted-foreground">No exercise found</p>
       </div>
     );
   }

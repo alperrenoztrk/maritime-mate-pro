@@ -167,7 +167,7 @@ export const SatelliteImageryViewer = () => {
                 className="gap-2"
               >
                 <RefreshCw className="h-4 w-4" />
-                Yenile
+                Refresh
               </Button>
               <Button
                 variant={autoRefresh ? "default" : "outline"}
@@ -193,7 +193,7 @@ export const SatelliteImageryViewer = () => {
                 </p>
                 <div className="flex items-center gap-2 text-xs">
                   <Clock className="h-3 w-3" />
-                  Son güncelleme: {lastUpdate.toLocaleTimeString('tr-TR')}
+                  Last update: {lastUpdate.toLocaleTimeString('tr-TR')}
                 </div>
               </div>
             </AlertDescription>
@@ -213,14 +213,14 @@ export const SatelliteImageryViewer = () => {
               onClick={() => setSelectedRegion('europe')}
               className="flex-1"
             >
-              Avrupa / Akdeniz
+              Europe / Mediterranean
             </Button>
             <Button
               variant={selectedRegion === 'full-disk' ? 'default' : 'outline'}
               onClick={() => setSelectedRegion('full-disk')}
               className="flex-1"
             >
-              Tam Disk (Afrika + Avrupa)
+              Full Disc (Africa + Europe)
             </Button>
           </div>
         </CardContent>
@@ -291,7 +291,7 @@ export const SatelliteImageryViewer = () => {
                     <div className="text-white text-sm space-y-1">
                       <div className="font-semibold">{channel.name}</div>
                       <div className="text-xs opacity-90">
-                        {selectedRegion === 'europe' ? 'Avrupa / Akdeniz' : 'Tam Disk'} • Updated: {lastUpdate.toLocaleTimeString('tr-TR')}
+                        {selectedRegion === 'europe' ? 'Europe / Mediterranean' : 'Full Disc'} • Updated: {lastUpdate.toLocaleTimeString('tr-TR')}
                       </div>
                     </div>
                   </div>
@@ -311,40 +311,40 @@ export const SatelliteImageryViewer = () => {
                 <div className="space-y-2 text-sm text-yellow-900 dark:text-yellow-100">
                   {channel.id === 'rgb' && (
                     <>
-                      <p><strong>Beyaz/Parlak Alanlar:</strong> Thick clouds, systems that often carry precipitation</p>
-                      <p><strong>Gri Tonlar:</strong> Orta seviye bulutlar</p>
-                      <p><strong>Mavi Alanlar:</strong> Clear sea surfaces, no clouds</p>
+                      <p><strong>White/Bright Areas:</strong> Thick clouds, systems that often carry precipitation</p>
+                      <p><strong>Gray Shades:</strong> Mid-level clouds</p>
+                      <p><strong>Blue Areas:</strong> Clear sea surfaces, no clouds</p>
                       <p><strong>Green/Brown:</strong> land surfaces</p>
                     </>
                   )}
                   {channel.id === 'ir108' && (
                     <>
-                      <p><strong>Beyaz/Parlak:</strong> Very cold cloud tops (high clouds, storms)</p>
-                      <p><strong>Gri:</strong> moderate temperature clouds</p>
-                      <p><strong>Koyu/Siyah:</strong> Hot surfaces (open sea, land)</p>
+                      <p><strong>White/Bright:</strong> Very cold cloud tops (high clouds, storms)</p>
+                      <p><strong>Grey:</strong> moderate temperature clouds</p>
+                      <p><strong>Dark/Black:</strong> Hot surfaces (open sea, land)</p>
                       <p><strong>Note:</strong> Available 24 hours a day, ideal for night viewing</p>
                     </>
                   )}
                   {channel.id === 'wv' && (
                     <>
-                      <p><strong>Beyaz Alanlar:</strong> Humid air masses, upper level humidity</p>
-                      <p><strong>Koyu Alanlar:</strong> dry air masses</p>
-                      <p><strong>Spiraller:</strong> Jet stream and low pressure systems</p>
+                      <p><strong>White Areas:</strong> Humid air masses, upper level humidity</p>
+                      <p><strong>Dark Areas:</strong> dry air masses</p>
+                      <p><strong>Spirals:</strong> Jet stream and low pressure systems</p>
                       <p><strong>Usage:</strong> To monitor storm development and air mass movements</p>
                     </>
                   )}
                   {channel.id === 'vis' && (
                     <>
-                      <p><strong>Beyaz:</strong> Thick clouds, high reflection</p>
-                      <p><strong>Gri:</strong> Thin clouds, fog, haze</p>
-                      <p><strong>Koyu:</strong> Open sea, no clouds</p>
+                      <p><strong>White:</strong> Thick clouds, high reflection</p>
+                      <p><strong>Grey:</strong> Thin clouds, fog, haze</p>
+                      <p><strong>Dark:</strong> Open sea, no clouds</p>
                       <p><strong>Limitation:</strong> Only available during daylight hours</p>
                     </>
                   )}
                   {channel.id === 'ir039' && (
                     <>
-                      <p><strong>Beyaz:</strong> Low clouds and fog (night)</p>
-                      <p><strong>Siyah Noktalar:</strong> fire detection</p>
+                      <p><strong>White:</strong> Low clouds and fog (night)</p>
+                      <p><strong>Black Spots:</strong> fire detection</p>
                       <p><strong>Usage:</strong> Night fog and low stratus cloud detection</p>
                       <p><strong>Special:</strong> Best channel for sea fog</p>
                     </>
@@ -353,7 +353,7 @@ export const SatelliteImageryViewer = () => {
                     <>
                       <p><strong>Red/Orange:</strong> tropical air masses</p>
                       <p><strong>Blue/Green:</strong> polar air masses</p>
-                      <p><strong>Yellow/White:</strong> Kuru stratosferik hava</p>
+                      <p><strong>Yellow/White:</strong> Dry stratospheric air</p>
                       <p><strong>Usage:</strong> Front analysis and storm forecasting</p>
                     </>
                   )}

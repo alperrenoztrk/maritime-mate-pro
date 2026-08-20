@@ -6,8 +6,8 @@ const SafetyCalculationsPage = () => {
   return (
     <MobileLayout>
       <CalculationGridScreen
-        eyebrow="Güvenlik"
-        title="Güvenlik Hesaplamaları"
+        eyebrow="Security"
+        title="Security Calculations"
       >
         <SafetyCalculations />
       </CalculationGridScreen>

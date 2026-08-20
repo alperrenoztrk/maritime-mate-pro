@@ -187,14 +187,14 @@ export default function StabilityGrainCalculationPage() {
     },
     {
       id: "cargo",
-      label: "Yüklenebilir Tahıl",
+      label: "Loadable Grain",
       value: loadableResult ? `${loadableResult.loadable} ton` : "—",
       helper: "Δ - (Lightship + consumables)",
       status: null
     },
     {
       id: "heel",
-      label: "Yatma Açısı",
+      label: "Angle of heel",
       value: heelingAngle ? `${heelingAngle}°` : "—",
       helper: "IMO limiti ≤ 12°",
       status: heelingAngle ? parseFloat(heelingAngle) <= 12 : null
@@ -221,7 +221,7 @@ export default function StabilityGrainCalculationPage() {
                   <Anchor className="h-6 w-6" />
                 </div>
                 <div>
-                  <CardTitle className="text-2xl">Tahıl Stabilite Hesaplamaları (IMO Grain Code)</CardTitle>
+                  <CardTitle className="text-2xl">Grain Stability Calculations (IMO Grain Code)</CardTitle>
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -229,14 +229,14 @@ export default function StabilityGrainCalculationPage() {
                   IMO Grain Code
                 </Badge>
                 <Badge variant="outline" className="border-dashed">
-                  5 ana hesap modülü
+                  5 main calculation modules
                 </Badge>
                 <Badge className={imoIsCompliant ? "bg-green-100 text-green-800 hover:bg-green-100" : "bg-red-100 text-red-800 hover:bg-red-100"}>
-                  {imoIsCompliant ? "Stabilite Uygun" : "İyileştirme Gerekli"}
+                  {imoIsCompliant ? "Stability Suitable" : "Improvement Required"}
                 </Badge>
               </div>
               <p className="text-sm text-muted-foreground">
-                Yük bilgilerini girdikçe aşağıdaki göstergeler ve sekmeler anlık olarak güncellenir.
+                As you enter load information, the indicators and tabs below are instantly updated.
               </p>
             </CardHeader>
             <CardContent>
@@ -251,7 +251,7 @@ export default function StabilityGrainCalculationPage() {
                         variant="secondary"
                         className={`mt-2 w-fit ${stat.status ? "bg-green-100 text-green-800 hover:bg-green-100" : "bg-red-100 text-red-800 hover:bg-red-100"}`}
                       >
-                        {stat.status ? "Compliant" : "Riskli"}
+                        {stat.status ? "Compliant" : "Risky"}
                       </Badge>
                     )}
                   </div>
@@ -262,20 +262,20 @@ export default function StabilityGrainCalculationPage() {
 
           <Card className="border-border/60 bg-muted/30 shadow-sm">
             <CardHeader>
-              <CardTitle className="text-lg">Hazırlık Kontrol Listesi</CardTitle>
+              <CardTitle className="text-lg">Preparation Checklist</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-muted-foreground">
               <div className="rounded-lg bg-background p-3 shadow-sm">
-                <p className="font-semibold text-foreground">1. Kargo bilgileri</p>
-                <p>Stowage factor, yoğunluk ve broken stowage değerlerini teyit edin.</p>
+                <p className="font-semibold text-foreground">1. Shipping information</p>
+                <p>Confirm the stowage factor, density and broken stowage values.</p>
               </div>
               <div className="rounded-lg bg-background p-3 shadow-sm">
-                <p className="font-semibold text-foreground">2. Geminin durumu</p>
-                <p>Lightship, displacement, ballast ve tüketim kalemlerini güncel tutun.</p>
+                <p className="font-semibold text-foreground">2. Ship condition</p>
+                <p>Keep lightship, displacement, ballast and consumption items up to date.</p>
               </div>
               <div className="rounded-lg bg-background p-3 shadow-sm">
-                <p className="font-semibold text-foreground">3. IMO kriterleri</p>
-                <p>GHM ve FSM tablolarını yanınızda bulundurun, sonuçları cross-check edin.</p>
+                <p className="font-semibold text-foreground">3. IMO criteria</p>
+                <p>Keep GHM and FSM tables with you and cross-check the results.</p>
               </div>
               <div className="rounded-lg border border-dashed border-border/70 bg-background/80 p-3 text-xs text-muted-foreground">
                 Bu rehber, gerçek yükleme bilgisayarının yerini tutmaz; tüm hesapları resmi kayıtlarla doğrulayın.
@@ -287,33 +287,33 @@ export default function StabilityGrainCalculationPage() {
 
       <Card className="border-border/70 shadow-lg">
         <CardHeader>
-          <CardTitle>Detaylı Hesap Motoru</CardTitle>
+          <CardTitle>Detailed Calculation Engine</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
                 {/* Tab 1: Stowage Factor */}
                 <section id="grain-stowage" className="scroll-mt-28 space-y-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">1️⃣ Stowage Factor (SF) – Yığma Faktörü</CardTitle>
+                      <CardTitle className="text-lg">1️⃣ Stowage Factor (SF)</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label>Yük Hacmi (m³)</Label>
+                          <Label>Load Volume (m³)</Label>
                           <Input
                             type="number"
                             value={volume || ""}
                             onChange={(e) => setVolume(parseFloat(e.target.value) || 0)}
-                            placeholder="Örnek: 1000"
+                            placeholder="Example: 1000"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>Yük Ağırlığı (ton)</Label>
+                          <Label>Load Weight (ton)</Label>
                           <Input
                             type="number"
                             value={weight || ""}
                             onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
-                            placeholder="Örnek: 740"
+                            placeholder="Example: 740"
                           />
                         </div>
                       </div>
@@ -334,7 +334,7 @@ export default function StabilityGrainCalculationPage() {
                       <Separator />
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold">2️⃣ Gereken Hacim Hesabı</h4>
+                        <h4 className="font-semibold">2️⃣ Required Volume Calculation</h4>
                         <div className="space-y-2">
                           <Label>Stowage Factor (m³/ton)</Label>
                           <Input
@@ -342,10 +342,10 @@ export default function StabilityGrainCalculationPage() {
                             step="0.01"
                             value={stowageFactor || ""}
                             onChange={(e) => setStowageFactor(parseFloat(e.target.value) || 0)}
-                            placeholder="Tipik: 1.35"
+                            placeholder="Typical: 1.35"
                           />
                           <p className="text-xs text-muted-foreground">
-                            Tipik değerler: Buğday 1.25-1.35, Mısır 1.40-1.50, Arpa 1.45-1.55 m³/ton
+                            Typical values: Wheat 1.25-1.35, Corn 1.40-1.50, Barley 1.45-1.55 m³/ton
                           </p>
                         </div>
 
@@ -364,7 +364,7 @@ export default function StabilityGrainCalculationPage() {
                       <Separator />
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold">3️⃣ Maksimum Tahıl Miktarı</h4>
+                        <h4 className="font-semibold">3️⃣ Maximum Amount of Grain</h4>
                         {maxWeight && (
                           <Alert className="bg-purple-50 border-purple-200">
                             <AlertDescription>
@@ -380,15 +380,15 @@ export default function StabilityGrainCalculationPage() {
                       <Separator />
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold">4️⃣ Broken Stowage – Kayıp Hacim</h4>
+                        <h4 className="font-semibold">4️⃣ Broken Stowage – Lost Volume</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label>Ambar Hacmi (m³)</Label>
+                            <Label>Cargo hold Volume (m³)</Label>
                             <Input
                               type="number"
                               value={holdVolume || ""}
                               onChange={(e) => setHoldVolume(parseFloat(e.target.value) || 0)}
-                              placeholder="Örnek: 10000"
+                              placeholder="Example: 10000"
                             />
                           </div>
                           <div className="space-y-2">
@@ -398,7 +398,7 @@ export default function StabilityGrainCalculationPage() {
                               step="0.1"
                               value={brokenStowage || ""}
                               onChange={(e) => setBrokenStowage(parseFloat(e.target.value) || 0)}
-                              placeholder="Tahıl için genelde 0%"
+                              placeholder="Usually 0% for grain"
                             />
                           </div>
                         </div>
@@ -422,12 +422,12 @@ export default function StabilityGrainCalculationPage() {
                 <section id="grain-cargo" className="scroll-mt-28 space-y-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">5️⃣ Yük Kapasitesi Hesaplamaları</CardTitle>
+                      <CardTitle className="text-lg">5️⃣ Load Capacity Calculations</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label>Displacement (ton)</Label>
+                          <Label>Displacement (tonne)</Label>
                           <Input
                             type="number"
                             value={displacement || ""}
@@ -467,7 +467,7 @@ export default function StabilityGrainCalculationPage() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>Stores (ton)</Label>
+                          <Label>Stores (tons)</Label>
                           <Input
                             type="number"
                             value={stores || ""}
@@ -495,7 +495,7 @@ export default function StabilityGrainCalculationPage() {
                       <Separator />
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold">Draft / Trim Etkisi</h4>
+                        <h4 className="font-semibold">Draft/Trim Effect</h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div className="space-y-2">
                             <Label>TPI (ton/inch)</Label>
@@ -516,7 +516,7 @@ export default function StabilityGrainCalculationPage() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Draft Değişimi (inch/cm)</Label>
+                            <Label>Draft Change (inch/cm)</Label>
                             <Input
                               type="number"
                               step="0.1"
@@ -563,9 +563,9 @@ export default function StabilityGrainCalculationPage() {
                             type="number"
                             value={shiftVolume || ""}
                             onChange={(e) => setShiftVolume(parseFloat(e.target.value) || 0)}
-                            placeholder="IMO tablosundan"
+                            placeholder="From IMO table"
                           />
-                          <p className="text-xs text-muted-foreground">IMO Grain Code shift volumes tablosundan alınır</p>
+                          <p className="text-xs text-muted-foreground">IMO Grain Code is taken from the shift volumes table</p>
                         </div>
                         <div className="space-y-2">
                           <Label>ΔKG (m)</Label>
@@ -574,17 +574,17 @@ export default function StabilityGrainCalculationPage() {
                             step="0.01"
                             value={deltaKG || ""}
                             onChange={(e) => setDeltaKG(parseFloat(e.target.value) || 0)}
-                            placeholder="Kayma sonucu KG artışı"
+                            placeholder="KG increase as a result of slipping"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>Tahıl Yoğunluğu (ton/m³)</Label>
+                          <Label>Grain Density (ton/m³)</Label>
                           <Input
                             type="number"
                             step="0.01"
                             value={grainDensity || ""}
                             onChange={(e) => setGrainDensity(parseFloat(e.target.value) || 0)}
-                            placeholder="Tipik: 0.8"
+                            placeholder="Typical: 0.8"
                           />
                         </div>
                       </div>
@@ -603,7 +603,7 @@ export default function StabilityGrainCalculationPage() {
                       <Separator />
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold">7️⃣ Heeling Angle (Yatma Açısı)</h4>
+                        <h4 className="font-semibold">7️⃣ Heeling Angle</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label>GM (m)</Label>
@@ -615,7 +615,7 @@ export default function StabilityGrainCalculationPage() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Displacement (ton)</Label>
+                            <Label>Displacement (tonne)</Label>
                             <Input
                               type="number"
                               value={displacement || ""}
@@ -633,7 +633,7 @@ export default function StabilityGrainCalculationPage() {
                               </p>
                               <p className="text-sm mt-2">
                                 {parseFloat(heelingAngle) <= 12 ? (
-                                  <span className="text-green-700">✓ IMO limiti içinde (≤ 12°)</span>
+                                  <span className="text-green-700">✓ Within the IMO limit (≤ 12°)</span>
                                 ) : (
                                   <span className="text-red-700">✗ IMO limitini aşıyor (&gt; 12°)</span>
                                 )}
@@ -650,13 +650,13 @@ export default function StabilityGrainCalculationPage() {
                 <section id="grain-stability" className="scroll-mt-28 space-y-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">8️⃣ FSM (Free Surface Moment) – Tahıl İçin</CardTitle>
+                      <CardTitle className="text-lg">8️⃣ FSM (Free Surface Moment) – For Grain</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <Alert className="bg-blue-50 border-blue-200">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>
-                          Tahıl, sıvı gibi tam free surface vermez. FSM genelde IMO Grain Code tablosundan okunur.
+                          Grain does not give a completely free surface like liquid. FSM is generally read from the IMO Grain Code table.
                         </AlertDescription>
                       </Alert>
 
@@ -679,7 +679,7 @@ export default function StabilityGrainCalculationPage() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>Yoğunluk (ton/m³)</Label>
+                          <Label>Density (ton/m³)</Label>
                           <Input
                             type="number"
                             step="0.01"
@@ -743,7 +743,7 @@ export default function StabilityGrainCalculationPage() {
                               </p>
                               <p className="text-sm mt-2">
                                 {parseFloat(correctedGM) >= 0.30 ? (
-                                  <span className="text-green-700">✓ IMO minimum değerinin üstünde (≥ 0.30 m)</span>
+                                  <span className="text-green-700">✓ Above IMO minimum value (≥ 0.30 m)</span>
                                 ) : (
                                   <span className="text-red-700">✗ IMO minimum değerinin altında (&lt; 0.30 m)</span>
                                 )}
@@ -766,17 +766,17 @@ export default function StabilityGrainCalculationPage() {
                       <Alert className="bg-blue-50 border-blue-200">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>
-                          <p className="font-semibold mb-2">IMO Grain Code Kriterleri:</p>
+                          <p className="font-semibold mb-2">IMO Grain Code Criteria:</p>
                           <ul className="space-y-1 text-sm">
                             <li>• Initial GM corrected ≥ 0.30 m</li>
                             <li>• Angle of heel ≤ 12°</li>
-                            <li>• Area under GZ curve ≥ 0.075 m·rad (toplam alan)</li>
+                            <li>• Area under GZ curve ≥ 0.075 m·rad (total area)</li>
                           </ul>
                         </AlertDescription>
                       </Alert>
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold text-lg">Stabilite Kontrol Sonuçları</h4>
+                        <h4 className="font-semibold text-lg">Stability Check Results</h4>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <Card className={imoCriteria.gmPass ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50"}>
@@ -793,7 +793,7 @@ export default function StabilityGrainCalculationPage() {
                                     {imoCriteria.gmValue || "—"} m
                                   </p>
                                   <p className="text-xs mt-1">
-                                    {imoCriteria.gmPass ? "✓ ≥ 0.30 m" : "✗ < 0.30 m"}
+                                    {imoCriteria.gmPass ? "✓ ≥ 0.30m" : "✗ < 0.30 m"}
                                   </p>
                                 </div>
                               </div>
@@ -829,19 +829,19 @@ export default function StabilityGrainCalculationPage() {
                                 <>
                                   <CheckCircle2 className="h-6 w-6 text-green-600" />
                                   <div>
-                                    <p className="font-bold text-green-700 text-lg">Stabilite Uygun</p>
-                                    <p className="text-sm text-green-600">Gemi IMO Grain Code kriterlerini sağlıyor</p>
+                                    <p className="font-bold text-green-700 text-lg">Stability Suitable</p>
+                                    <p className="text-sm text-green-600">The ship meets IMO Grain Code criteria</p>
                                   </div>
                                 </>
                               ) : (
                                 <>
                                   <XCircle className="h-6 w-6 text-red-600" />
                                   <div>
-                                    <p className="font-bold text-red-700 text-lg">Stabilite Uygun Değil</p>
+                                    <p className="font-bold text-red-700 text-lg">Stability Unsuitable</p>
                                     <p className="text-sm text-red-600">
-                                      {!imoCriteria.gmPass && "GM düşük. "}
-                                      {!imoCriteria.anglePass && "Yatma açısı yüksek. "}
-                                      Ballast ayarlaması gerekebilir.
+                                      {!imoCriteria.gmPass && "GM is low."}
+                                      {!imoCriteria.anglePass && "The lean angle is high."}
+                                      Ballast adjustment may be required.
                                     </p>
                                   </div>
                                 </>
@@ -853,12 +853,12 @@ export default function StabilityGrainCalculationPage() {
                         <div className="p-4 bg-muted rounded-lg">
                           <h5 className="font-semibold mb-2 text-sm">Suggestions</h5>
                           <ul className="space-y-1 text-xs">
-                            <li>• Tahıl yüklemesi öncesi tüm parametreleri doğrulayın</li>
-                            <li>• IMO Grain Code tablosundan shift volumes değerlerini kontrol edin</li>
+                            <li>• Verify all parameters before grain loading</li>
+                            <li>• Check shift volumes values from IMO Grain Code table</li>
                             <li>• Gerekirse ballast suyu ile GM'i artırın</li>
-                            <li>• Ambar bölmeleri arasına separator (ayırıcı) kullanın</li>
-                            <li>• Loading computer ile cross-check yapın</li>
-                            <li>• Yükleme sırasında heel açısını sürekli izleyin</li>
+                            <li>• Use a separator between cargo hold compartments</li>
+                            <li>• Cross-check with the loading computer</li>
+                            <li>• Constantly monitor heel angle during loading</li>
                           </ul>
                         </div>
                       </div>

@@ -254,7 +254,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                 className="mt-1.5 flex items-baseline justify-between gap-3 pr-10 text-[8.5px]"
                 style={{ fontVariant: "small-caps", letterSpacing: ".13em", color: "var(--gz-ink-soft)" }}
               >
-                <span>Sayfa {innerPageNo(item?.link)}</span>
+                <span>Page {innerPageNo(item?.link)}</span>
                 <span
                   className="notranslate text-lg leading-none"
                   translate="no"
@@ -269,7 +269,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
 
               <DialogHeader className="mt-3 space-y-2 text-left">
                 <DialogTitle className="gz-headline text-[clamp(1.35rem,5.6vw,1.9rem)] leading-[1.12]">
-                  {item?.title ?? "Haber"}
+                  {item?.title ?? "News"}
                 </DialogTitle>
                 <DialogDescription className="sr-only">News detail</DialogDescription>
                 {/* Byline satırı */}
@@ -314,7 +314,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                   <span className="gz-photo-wrap block aspect-[16/9] w-full">
                     <img
                       src={heroImage}
-                      alt={item?.title ?? "Haber"}
+                      alt={item?.title ?? "News"}
                       className="gz-photo"
                       loading="eager"
                       decoding="async"

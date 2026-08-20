@@ -54,33 +54,33 @@ export function getDocumentExpiryState(
   now: Date = new Date(),
 ): ExpiryState {
   if (noExpiry) {
-    return { status: "valid", daysRemaining: null, label: "Süresiz" };
+    return { status: "valid", daysRemaining: null, label: "Indefinitely" };
   }
 
   const daysRemaining = daysUntilExpiry(expiryDate, now);
   if (daysRemaining === null) {
-    return { status: "unknown", daysRemaining: null, label: "Tarih okunamadı" };
+    return { status: "unknown", daysRemaining: null, label: "Date could not be read" };
   }
   if (daysRemaining < 0) {
     return {
       status: "expired",
       daysRemaining,
-      label: `${Math.abs(daysRemaining)} gün önce süresi doldu`,
+      label: `${Math.abs(daysRemaining)} expired days ago`,
     };
   }
   if (daysRemaining === 0) {
-    return { status: "critical", daysRemaining, label: "Bugün sona eriyor" };
+    return { status: "critical", daysRemaining, label: "Ends today" };
   }
   if (daysRemaining <= 30) {
-    return { status: "critical", daysRemaining, label: `${daysRemaining} gün kaldı` };
+    return { status: "critical", daysRemaining, label: `${daysRemaining} days left` };
   }
   if (daysRemaining <= 90) {
-    return { status: "warning", daysRemaining, label: `${daysRemaining} gün kaldı` };
+    return { status: "warning", daysRemaining, label: `${daysRemaining} days left` };
   }
   if (daysRemaining <= 180) {
-    return { status: "upcoming", daysRemaining, label: `${daysRemaining} gün kaldı` };
+    return { status: "upcoming", daysRemaining, label: `${daysRemaining} days left` };
   }
-  return { status: "valid", daysRemaining, label: `${daysRemaining} gün kaldı` };
+  return { status: "valid", daysRemaining, label: `${daysRemaining} days left` };
 }
 
 export function isReminderDue(

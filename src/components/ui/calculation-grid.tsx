@@ -49,7 +49,7 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
         <div className="rounded-lg border border-slate-800/60 bg-slate-950/60 p-3 text-xs text-slate-200">
           <div className="font-medium text-slate-100">Formula</div>
           <div translate="no" className="notranslate mt-1 leading-relaxed text-slate-300">{formulaMeta.formula}</div>
-          <div className="mt-3 font-medium text-slate-100">Kaynak</div>
+          <div className="mt-3 font-medium text-slate-100">Source</div>
           {formulaMeta.sourceUrl ? (
             <a
               href={formulaMeta.sourceUrl}

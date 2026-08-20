@@ -955,21 +955,21 @@ const deepProfiles: Record<string, RegulationEnhancement> = {
 };
 
 const categoryRoles: Record<RegulationCategory, string[]> = {
-  "IMO Sözleşmeleri": ["Kaptan", "İlgili departman amiri", "Şirket uyum/operasyon birimi"],
-  "Emniyet Kodları": ["Kaptan", "Baş zabit", "Başmühendis", "İşi yapan ekip"],
-  "Çevresel Düzenlemeler": ["Kaptan", "Başmühendis", "Baş zabit", "Şirket çevre birimi"],
-  "Denetim & Sörvey": ["Kaptan", "Başmühendis", "Baş zabit", "Şirket teknik/uyum birimi"],
-  "Gemi Sertifikaları": ["Kaptan", "Sertifikadan sorumlu departman", "Şirket/klas koordinatörü"],
-  "Bölgesel Düzenlemeler": ["Kaptan", "Köprüüstü ekibi", "Şirket operasyon birimi", "Yerel acente"],
+  "IMO Conventions": ["Kaptan", "İlgili departman amiri", "Şirket uyum/operasyon birimi"],
+  "Safety Codes": ["Kaptan", "Baş zabit", "Başmühendis", "İşi yapan ekip"],
+  "Environmental Regulations": ["Kaptan", "Başmühendis", "Baş zabit", "Şirket çevre birimi"],
+  "Inspection & Survey": ["Kaptan", "Başmühendis", "Baş zabit", "Şirket teknik/uyum birimi"],
+  "Ship Certificates": ["Kaptan", "Sertifikadan sorumlu departman", "Şirket/klas koordinatörü"],
+  "Regional Regulations": ["Kaptan", "Köprüüstü ekibi", "Şirket operasyon birimi", "Yerel acente"],
 };
 
 const categoryEvidence: Record<RegulationCategory, string[]> = {
-  "IMO Sözleşmeleri": ["Geçerli sertifika ve ekleri", "Onaylı plan/prosedür", "Tarihli operasyon ve test kayıtları"],
-  "Emniyet Kodları": ["Gemiye özgü prosedür", "Risk değerlendirmesi/checklist", "Bakım, test ve familiarization kaydı"],
-  "Çevresel Düzenlemeler": ["Uygulanabilir sertifika/plan", "Record book ve teslim fişleri", "Ekipman trend, alarm ve bakım kaydı"],
-  "Denetim & Sörvey": ["Survey/inspection report", "Açık-kapalı bulgu listesi", "Düzeltici faaliyet ve etkinlik kanıtı"],
-  "Gemi Sertifikaları": ["Sertifika aslı ve supplement", "Survey status", "Sertifikayı destekleyen ekipman/kayıt"],
-  "Bölgesel Düzenlemeler": ["Pre-arrival bildirimleri", "Yerel circular/port requirement", "Voyage ve compliance kayıtları"],
+  "IMO Conventions": ["Geçerli sertifika ve ekleri", "Onaylı plan/prosedür", "Tarihli operasyon ve test kayıtları"],
+  "Safety Codes": ["Gemiye özgü prosedür", "Risk değerlendirmesi/checklist", "Bakım, test ve familiarization kaydı"],
+  "Environmental Regulations": ["Uygulanabilir sertifika/plan", "Record book ve teslim fişleri", "Ekipman trend, alarm ve bakım kaydı"],
+  "Inspection & Survey": ["Survey/inspection report", "Açık-kapalı bulgu listesi", "Düzeltici faaliyet ve etkinlik kanıtı"],
+  "Ship Certificates": ["Sertifika aslı ve supplement", "Survey status", "Sertifikayı destekleyen ekipman/kayıt"],
+  "Regional Regulations": ["Pre-arrival bildirimleri", "Yerel circular/port requirement", "Voyage ve compliance kayıtları"],
 };
 
 const uniqueStrings = (items: (string | undefined)[]) =>

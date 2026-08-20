@@ -6,7 +6,7 @@ interface InstrumentFrameProps {
   /**
    * Pirinç plakadaki başlık — isteğe bağlı.
    *
-   * Cihazların çoğunda yok: gerçek bir köprüüstü saatinin üstünde "YEREL SAAT"
+   * Cihazların çoğunda yok: gerçek bir köprüüstü saatinin üstünde "LOCAL TIME"
    * yazmaz, kadranın kendisi zaten saattir. Plaka yalnız yazısı olmadan ne
    * olduğu anlaşılmayan bir yüzey için anlamlı.
    */

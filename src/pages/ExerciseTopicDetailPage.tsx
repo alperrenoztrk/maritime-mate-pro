@@ -90,7 +90,7 @@ export default function ExerciseTopicDetailPage() {
           className="flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3 text-base font-semibold text-primary-foreground shadow-elev-1 transition-[background-color,transform] duration-control ease-out-ios hover:bg-primary/90 active:scale-[0.98]"
         >
           <Play className="h-4 w-4" />
-          {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
+          {flow ? "Start Learning (tell first → ask mixed)" : "Start Guided Reading"}
         </Link>
 
         {content.sections.map((section, index) => {
@@ -115,7 +115,7 @@ export default function ExerciseTopicDetailPage() {
           <section className="rounded-xl border border-border/40 bg-card/60 p-5">
             <div className="mb-4 flex items-center gap-2">
               <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
+              <h2 className="font-semibold text-foreground">Highlights</h2>
             </div>
             <ul className="space-y-2">
               {content.keyPoints.map((point, index) => (

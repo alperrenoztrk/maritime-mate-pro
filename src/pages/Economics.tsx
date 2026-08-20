@@ -13,7 +13,7 @@ const Economics = () => {
         <div className="mb-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-              Deniz İşletmeciliğinde Ticari Operasyonlar
+              Commercial Operations in Maritime Business
             </h1>
           </div>
         </div>

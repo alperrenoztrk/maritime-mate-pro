@@ -18,7 +18,7 @@ import { disposeHullGeometries } from "./sim/hullGeometry";
 import { disposeAllShipTextures } from "./sim/proceduralTextures";
 
 /**
- * "3D Gemi Simülasyonu" card on the Stability Calculations page.
+ * "3D Ship Simulation" card on the Stability Calculations page.
  *
  * Renders the SAME realistic vessel scene as the beta ship simulator
  * (ShipScene3D: lofted hull with bulbous bow, stepped superstructure, Gerstner
@@ -57,7 +57,7 @@ function SimErrorFallback() {
     <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center">
       <AlertTriangle className="h-6 w-6 text-amber-400" />
       <p className="text-xs text-muted-foreground">
-        3D görüntüleme bu cihazda başlatılamadı (WebGL desteklenmiyor olabilir).
+        3D rendering could not be started on this device (WebGL may not be supported).
       </p>
     </div>
   );
@@ -68,7 +68,7 @@ function LoadingFallback() {
     <div className="flex h-full items-center justify-center">
       <div className="text-center">
         <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-        <p className="text-xs text-muted-foreground">3D model yükleniyor…</p>
+        <p className="text-xs text-muted-foreground">3D model loading…</p>
       </div>
     </div>
   );
@@ -101,19 +101,19 @@ export const Ship3DVisualization = () => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Move3d className="h-5 w-5 text-primary" />
-          3D Gemi Simülasyonu
+          3D Ship Simulation
         </CardTitle>
         <CardDescription className="text-xs">
-          Mouse ile döndür, kaydır ve yakınlaştır. Geminin tipini seçerek farklı üst yapı ve güverte düzenlerini inceleyin.
+          Rotate, pan and zoom with the mouse. Select the type of ship and examine the different superstructure and Deck layouts.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-col gap-2 rounded-lg border border-border/40 bg-muted/40 p-3 text-xs">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <Label className="text-xs font-semibold">Gemi Tipi</Label>
+            <Label className="text-xs font-semibold">Ship Type</Label>
             <Select value={shipType} onValueChange={(value) => setShipType(value as ShipType)}>
               <SelectTrigger className="h-8 w-full sm:w-48 text-xs">
-                <SelectValue placeholder="Gemi tipi seç" />
+                <SelectValue placeholder="Select ship type" />
               </SelectTrigger>
               <SelectContent>
                 {shipTypeOptions.map((option) => (
@@ -179,21 +179,21 @@ export const Ship3DVisualization = () => {
           <div className="absolute bottom-2 left-2 space-y-0.5 rounded bg-background/80 px-2 py-1 text-micro">
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-red-500" />
-              <span>G - Ağırlık Merkezi</span>
+              <span>G - Center of Gravity</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-blue-500" />
-              <span>B - Kaldırma Merkezi</span>
+              <span>B - Lift Center</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-green-500" />
-              <span>M - Metasantr</span>
+              <span>M - Metacentre</span>
             </div>
           </div>
 
           {/* Angle display */}
           <div className="absolute right-2 top-2 rounded bg-background/80 px-2 py-1 font-mono text-micro">
-            <div>Meyil: {heelAngle}°</div>
+            <div>Heel {heelAngle}°</div>
             <div>Trim: {trimAngle}°</div>
           </div>
         </div>
@@ -202,13 +202,13 @@ export const Ship3DVisualization = () => {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="space-y-1.5">
             <Label className="flex justify-between text-xs">
-              <span>Meyil (Heel)</span>
+              <span>Heel</span>
               <span className="font-mono">{heelAngle}°</span>
             </Label>
             <Slider value={[heelAngle]} onValueChange={(v) => setHeelAngle(v[0])} min={-45} max={45} step={1} />
             <div className="flex justify-between text-micro text-muted-foreground">
-              <span>İskele -45°</span>
-              <span>Sancak +45°</span>
+              <span>Pier -45°</span>
+              <span>Starboard +45°</span>
             </div>
           </div>
 
@@ -219,8 +219,8 @@ export const Ship3DVisualization = () => {
             </Label>
             <Slider value={[trimAngle]} onValueChange={(v) => setTrimAngle(v[0])} min={-10} max={10} step={0.5} />
             <div className="flex justify-between text-micro text-muted-foreground">
-              <span>Kıç Trim -10°</span>
-              <span>Baş Trim +10°</span>
+              <span>Stern Trim -10°</span>
+              <span>Head Trim +10°</span>
             </div>
           </div>
         </div>
@@ -228,7 +228,7 @@ export const Ship3DVisualization = () => {
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleReset} className="h-8 flex-1 text-xs">
             <RotateCcw className="mr-1 h-3 w-3" />
-            Açıları Sıfırla
+            Reset Angles
           </Button>
         </div>
 
@@ -242,9 +242,9 @@ export const Ship3DVisualization = () => {
                   : "border border-green-500/30 bg-green-500/10"
             }`}
           >
-            <p className="font-semibold">Meyil Durumu</p>
+            <p className="font-semibold">Heel Status</p>
             <p className="text-muted-foreground">
-              {Math.abs(heelAngle) <= 5 ? "✓ Normal" : Math.abs(heelAngle) <= 15 ? "⚠ Dikkat" : "⚠ Tehlikeli!"}
+              {Math.abs(heelAngle) <= 5 ? "✓ Normal" : Math.abs(heelAngle) <= 15 ? "⚠ Attention" : "⚠ Dangerous!"}
             </p>
           </div>
           <div
@@ -252,9 +252,9 @@ export const Ship3DVisualization = () => {
               Math.abs(trimAngle) > 5 ? "border border-yellow-500/30 bg-yellow-500/10" : "border border-green-500/30 bg-green-500/10"
             }`}
           >
-            <p className="font-semibold">Trim Durumu</p>
+            <p className="font-semibold">Trim Status</p>
             <p className="text-muted-foreground">
-              {trimAngle > 2 ? "Baş Trim" : trimAngle < -2 ? "Kıç Trim" : "✓ Düz Omurga"}
+              {trimAngle > 2 ? "Head Trim" : trimAngle < -2 ? "Stern Trim" : "✓ Plain Keel"}
             </p>
           </div>
         </div>

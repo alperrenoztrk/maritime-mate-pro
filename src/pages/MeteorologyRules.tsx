@@ -34,7 +34,7 @@ const meteorologyRules = [
     ]
   },
   {
-    title: "WMO Denizcilik Servisleri",
+    title: "WMO Maritime Services",
     icon: Scale,
     rules: [
       "NAVTEX warnings must be monitored.",
@@ -52,13 +52,13 @@ export default function MeteorologyRulesPage() {
         <div className="flex items-center justify-between">
 <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Scale className="h-4 w-4" />
-            Meteoroloji Kuralları
+            Meteorology Rules
           </div>
         </div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-            Meteoroloji Kuralları
+            Meteorology Rules
           </h1>
         </div>
 

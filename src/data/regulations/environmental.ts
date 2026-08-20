@@ -4,7 +4,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "eexi",
     label: "EEXI – Enerji Verimliliği Tasarım İndeksi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Mevcut gemilerin enerji verimliliğini değerlendiren teknik indeks; 2023'ten itibaren zorunlu, geminin CO₂ emisyon performansını ölçer.",
     history: "EEDI (Energy Efficiency Design Index) 2013'te yeni gemiler için zorunlu hale getirilmiştir. EEXI ise EEDI'nin mevcut gemilere uyarlanmış versiyonu olarak MEPC 76'da (2021) kabul edilmiş ve 1 Ocak 2023'te yürürlüğe girmiştir. EEDI Phase 0'dan Phase 3'e kadar kademeli sıkılaştırma uygulanmış olup, Phase 3 (2025) en sıkı gereklilikleri içerir. EEXI ise mevcut gemilerin tek seferde karşılaması gereken sabit bir eşik değeridir.",
     applicability: [
@@ -88,7 +88,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "cii",
     label: "CII – Karbon Yoğunluğu Göstergesi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Geminin yıllık operasyonel karbon verimliliğini ölçen gösterge; A-E arası derecelendirme ile performans izlenir, düşük performans iyileştirme planı gerektirir.",
     history: "CII, EEXI ile birlikte 2021'de MEPC 76'da kabul edilmiş ve 1 Ocak 2023'te yürürlüğe girmiştir. Yıllık operasyonel verilere dayanan bu gösterge, gemilerin gerçek deniz performansını ölçer. EEXI teknik (tasarım) verimliliği ölçerken, CII operasyonel verimliliği ölçer. 2026'da kapsamlı bir framework gözden geçirmesi planlanmaktadır ve CII hesaplama metodolojisinde değişiklikler beklenmektedir.",
     applicability: [
@@ -173,7 +173,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "eu-ets",
     label: "EU ETS – AB Emisyon Ticaret Sistemi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "AB limanlarına uğrayan gemilerin CO₂ emisyonlarını kapsayan karbon fiyatlandırma mekanizması; 2024'ten itibaren kademeli uygulama başlar.",
     history: "EU ETS 2005'te endüstriyel sektörler için başlatılmış, dünyanın en büyük karbon ticaret sistemidir. Denizcilik sektörü, 'Fit for 55' paketi kapsamında 2024'te sisteme dahil edilmiştir. EU MRV (Monitoring, Reporting and Verification) düzenlemesi 2018'den beri denizcilik emisyon verisi toplamaktadır ve EU ETS'nin altyapısını oluşturmuştur. Sisteme dahil edilen ilk IMO dışı bölgesel düzenlemedir.",
     applicability: [
@@ -261,7 +261,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "fueleu-maritime",
     label: "FuelEU Maritime – AB Yakıt Standardı",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "AB limanlarına uğrayan gemilerin kullandığı yakıtların sera gazı yoğunluğunu kademeli olarak azaltmayı hedefleyen AB düzenlemesi.",
     history: "EU Green Deal ve Fit for 55 paketinin parçası olarak 2023'te kabul edilen FuelEU Maritime (Tüzük 2023/1805), 1 Ocak 2025'ten itibaren uygulanmaktadır. EU ETS'den farklı olarak karbon fiyatlandırması yerine yakıtın sera gazı yoğunluğuna limit koyar (yakıt standardı yaklaşımı). Bu düzenleme alternatif yakıtlara geçişi hızlandırmayı hedefler ve denizcilik sektöründe ilk Well-to-Wake düzenlemesidir.",
     applicability: [
@@ -348,7 +348,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "imo-dcs",
     label: "IMO DCS – Veri Toplama Sistemi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "5000 GT üzeri gemilerin yakıt tüketimi ve CO₂ emisyon verilerini toplama ve raporlama sistemi; MARPOL Ek VI kapsamında zorunludur.",
     history: "2016'da MEPC 70'de kabul edilen IMO DCS (Data Collection System), MARPOL Ek VI Kural 22A kapsamında 2019'dan itibaren veri toplamaya başlamıştır. CII hesaplamasının temelini oluşturan bu sistem, IMO'nun küresel emisyon envanterinin oluşturulmasını sağlar. EU MRV ile benzer amaçlara hizmet eder ancak global kapsamlıdır. Toplanan veriler anonim olarak IMO GISIS veritabanında yayımlanır.",
     applicability: [
@@ -424,7 +424,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "imo-2020",
     label: "IMO 2020 – Kükürt Limiti",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Gemi yakıtlarındaki kükürt içeriğini %0.50 m/m ile sınırlayan küresel düzenleme; ECA bölgelerinde %0.10 m/m limiti geçerlidir.",
     history: "MARPOL Ek VI Kural 14 kapsamındaki küresel kükürt limiti, kademeli olarak düşürülmüştür: %4.50 → %3.50 (2012) → %0.50 (1 Ocak 2020). ECA bölgelerinde: %1.50 → %1.00 (2010) → %0.10 (2015). 2020 değişikliği denizcilik yakıt piyasasını temelden dönüştürmüş, HSFO'dan VLSFO/LSFO'ya geçişi zorunlu kılmıştır. 1 Mart 2020'den itibaren scrubber'sız gemilerde uyumsuz yakıtın bulundurulması da (carriage ban) yasaklanmıştır.",
     applicability: [
@@ -512,7 +512,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "polar-code",
     label: "Polar Code – Kutup Suları Kuralları",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Kutup sularında seyreden gemiler için ek emniyet ve çevre koruma gerekliliklerini belirler; buz sınıfı, ekipman ve operasyon planlamasını kapsar.",
     history: "Kutup sularında artan deniz trafiği (Kuzey Deniz Yolu ve Kuzeybatı Geçidi) nedeniyle IMO, kapsamlı bir kutup kodu geliştirmiştir. 2014'te MSC 94 ve MEPC 68'de kabul edilen Polar Code, 1 Ocak 2017'de yürürlüğe girmiştir. SOLAS Chapter XIV (emniyet bölümü) ve MARPOL Ek I, II, IV, V (çevre bölümü) kapsamında zorunlu kılınmıştır. Antarktik bölgede ayrıca Antarctic Treaty System ve IAATO kuralları da geçerlidir.",
     applicability: [
@@ -595,7 +595,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "ghg-strategy",
     label: "IMO GHG Strategy – Sera Gazı Stratejisi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "IMO'nun denizcilik sektöründen kaynaklanan sera gazı emisyonlarını azaltmak için belirlediği hedefler ve uygulama yol haritasını içerir.",
     history: "İlk IMO GHG Stratejisi 2018'de MEPC 72'de kabul edilmiştir. 2023'te MEPC 80'de revize strateji kabul edilerek hedefler önemli ölçüde güçlendirilmiştir: 2050'de net sıfır emisyon hedefi benimsenmiştir. Bu strateji, Paris İklim Anlaşması'nın denizcilik sektörüne yansımasıdır. Denizcilik sektörü küresel CO₂ emisyonlarının yaklaşık %2.5-3'ünden sorumludur. IMO, bu hedeflere ulaşmak için hem teknik (yakıt standardı) hem piyasa tabanlı (karbon vergilendirme) önlemler geliştirmektedir.",
     applicability: [
@@ -676,7 +676,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "oprc",
     label: "OPRC – Petrol Kirliliğine Hazırlık ve Müdahale",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Denizde petrol sızıntılarına karşı hazırlık, müdahale planları ve uluslararası işbirliği çerçevesini düzenler.",
     history: "1990'da kabul edilen OPRC Sözleşmesi, 1989 Exxon Valdez (Alaska) kazasının ardından acil ihtiyaç olarak hazırlanmış ve 1995'te yürürlüğe girmiştir. 2000'de HNS (Hazardous and Noxious Substances) kapsamını da içeren OPRC-HNS Protokolü eklenmiştir (2007'de yürürlüğe girdi). Sözleşme, ulusal ve uluslararası düzeyde kirlilik müdahale kapasitesinin oluşturulmasını ve sürdürülmesini zorunlu kılar.",
     applicability: [
@@ -760,7 +760,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "afs",
     label: "AFS Convention – Anti-fouling Sistemleri Sözleşmesi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Gemilerin su altı boyalarında (anti-fouling) kullanılan zararlı kimyasalların, özellikle TBT (tributyltin) bileşiklerinin yasaklanmasını düzenler.",
     history: "TBT (tributyltin) içeren anti-fouling boyalar, deniz organizmalarına ve ekosisteme ciddi zarar verdiği tespit edildikten sonra IMO, AFS Sözleşmesi'ni 2001'de kabul etmiştir. 1 Ocak 2003'te TBT uygulaması ve 1 Ocak 2008'de TBT bulunduran boyaların tamamen yasaklanması öngörülmüştür. Sözleşme 17 Eylül 2008'de yürürlüğe girmiştir. 2023'te cybutryne de yasaklanan maddeler listesine eklenmiştir.",
     applicability: [
@@ -839,7 +839,7 @@ export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "bwm",
     label: "BWM Convention – Balast Suyu Yönetimi",
-    category: "Çevresel Düzenlemeler",
+    category: "Environmental Regulations",
     overview: "Gemilerin balast suyu ile taşınan istilacı deniz organizmalarının önlenmesi için balast suyu yönetim standartları ve arıtma gerekliliklerini belirler.",
     history: "Balast suyu ile taşınan istilacı türlerin küresel deniz ekosistemlerine verdiği zararın (karides, midye, kolera bakterisi vb.) fark edilmesiyle IMO, BWM Sözleşmesi'ni 2004'te kabul etmiştir. Uzun onay süreci sonrasında 8 Eylül 2017'de yürürlüğe girmiştir. Sözleşme iki temel standart belirler: D-1 (balast suyu değişimi) ve D-2 (arıtma – BWMS). 2024'e kadar tüm gemilerin D-2 standardına geçmesi hedeflenmişken, geçiş süresi gemi yaşı ve sertifika döngüsüne göre uzatılmıştır.",
     applicability: [

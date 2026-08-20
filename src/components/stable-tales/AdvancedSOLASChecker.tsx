@@ -171,7 +171,7 @@ export const AdvancedSOLASChecker = () => {
       
     } catch (error) {
       console.error("SOLAS check error:", error);
-      toast.error("SOLAS kriterleri kontrolü sırasında bir hata oluştu!");
+      toast.error("An error occurred during the SOLAS criteria check!");
     }
   };
 
@@ -181,7 +181,7 @@ export const AdvancedSOLASChecker = () => {
       area_0_30: 'Alan 0-30°',
       area_0_40: 'Alan 0-40°',
       area_30_40: 'Alan 30-40°',
-      max_gz: 'Maksimum GZ',
+      max_gz: 'Maximum GZ',
       gz_angle: 'Max GZ Angle'
     };
     return names[key] || key;
@@ -206,13 +206,13 @@ export const AdvancedSOLASChecker = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Gelişmiş SOLAS Kriter Kontrolü
+            Advanced SOLAS Criteria Check
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div>
-              <Label>Deplasman (ton)</Label>
+              <Label>Displacement (tons)</Label>
               <Input
                 type="number"
                 value={vesselData.deplasman}
@@ -238,35 +238,35 @@ export const AdvancedSOLASChecker = () => {
               />
             </div>
             <div>
-              <Label>Gemi Tipi</Label>
+              <Label>Ship Type</Label>
               <select
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 value={vesselData.gemi_tipi}
                 onChange={(e) => setVesselData(prev => ({ ...prev, gemi_tipi: e.target.value }))}
               >
-                <option value="cargo">Kargo Gemisi</option>
-                <option value="passenger">Yolcu Gemisi</option>
+                <option value="cargo">Cargo Ship</option>
+                <option value="passenger">Cruise Ship</option>
                 <option value="tanker">Tanker</option>
-                <option value="container">Konteyner Gemisi</option>
+                <option value="container">Container Ship</option>
               </select>
             </div>
             <div>
-              <Label>Hizmet Alanı</Label>
+              <Label>Service Area</Label>
               <select
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 value={vesselData.hizmet_alani}
                 onChange={(e) => setVesselData(prev => ({ ...prev, hizmet_alani: e.target.value }))}
               >
-                <option value="unrestricted">Sınırsız</option>
-                <option value="restricted">Sınırlı</option>
-                <option value="coastal">Kıyı Seferleri</option>
+                <option value="unrestricted">unlimited</option>
+                <option value="restricted">Limited</option>
+                <option value="coastal">Coastal Expeditions</option>
               </select>
             </div>
           </div>
 
           <Button onClick={checkSOLASCriteria} className="w-full mt-4">
             <Calculator className="mr-2 h-4 w-4" />
-            SOLAS Kriterlerini Kontrol Et
+            Check SOLAS Criteria
           </Button>
         </CardContent>
       </Card>
@@ -283,36 +283,36 @@ export const AdvancedSOLASChecker = () => {
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />
                 )}
-                SOLAS Uygunluk Durumu
+                SOLAS Availability Status
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center">
                   <p className="text-4xl font-bold text-primary">{criteriaResults.overall.score.toFixed(1)}%</p>
-                  <p className="text-sm text-muted-foreground">Genel Skor</p>
+                  <p className="text-sm text-muted-foreground">Overall Score</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-secondary">
                     {criteriaResults.overall.passed}/{criteriaResults.overall.total}
                   </p>
-                  <p className="text-sm text-muted-foreground">Geçen Kriter</p>
+                  <p className="text-sm text-muted-foreground">Passing Criterion</p>
                 </div>
                 <div className="text-center">
                   <Badge variant={criteriaResults.overall.compliant ? "default" : "destructive"}>
                     {criteriaResults.overall.compliant ? "UYGUN" : "NOT SUITABLE"}
                   </Badge>
-                  <p className="text-sm text-muted-foreground mt-1">Genel Durum</p>
+                  <p className="text-sm text-muted-foreground mt-1">General Condition</p>
                 </div>
                 <div className="text-center">
                   <p className="text-2xl font-bold">{vesselData.gemi_tipi.toUpperCase()}</p>
-                  <p className="text-sm text-muted-foreground">Gemi Tipi</p>
+                  <p className="text-sm text-muted-foreground">Ship Type</p>
                 </div>
               </div>
 
               <div className="mb-4">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Genel Uygunluk</span>
+                  <span className="text-sm font-medium">General Compatibility</span>
                   <span className="text-sm text-muted-foreground">{criteriaResults.overall.score.toFixed(1)}%</span>
                 </div>
                 <Progress value={criteriaResults.overall.score} className="h-3" />
@@ -323,7 +323,7 @@ export const AdvancedSOLASChecker = () => {
           {/* Detaylı Kriter Sonuçları */}
           <Card>
             <CardHeader>
-              <CardTitle>Detaylı Kriter Analizi</CardTitle>
+              <CardTitle>Detailed Criteria Analysis</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -340,19 +340,19 @@ export const AdvancedSOLASChecker = () => {
                     
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span>Mevcut Değer:</span>
+                        <span>Current Value:</span>
                         <span className="font-medium">
                           {criterion.value.toFixed(3)} {getCriterionUnit(key)}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span>Gerekli Minimum:</span>
+                        <span>Minimum Required:</span>
                         <span className="font-medium">
                           {criterion.required.toFixed(3)} {getCriterionUnit(key)}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span>Güvenlik Marjı:</span>
+                        <span>Margin of Safety:</span>
                         <span className={`font-medium ${criterion.value >= criterion.required ? 'text-green-600' : 'text-red-600'}`}>
                           {(criterion.value - criterion.required).toFixed(3)} {getCriterionUnit(key)}
                         </span>
@@ -361,7 +361,7 @@ export const AdvancedSOLASChecker = () => {
 
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-xs font-medium">Skor</span>
+                        <span className="text-xs font-medium">Score</span>
                         <span className="text-xs text-muted-foreground">{criterion.score.toFixed(1)}%</span>
                       </div>
                       <Progress value={criterion.score} className="h-2" />
@@ -377,13 +377,13 @@ export const AdvancedSOLASChecker = () => {
           {gzCurve.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>GZ Eğrisi ve SOLAS Alanları</CardTitle>
+                <CardTitle>GZ Curve and SOLAS Areas</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* GZ Curve */}
                   <div>
-                    <h4 className="font-medium mb-3">GZ Eğrisi</h4>
+                    <h4 className="font-medium mb-3">GZ Curve</h4>
                     <div className="h-64">
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={gzCurve.filter(p => p.aci <= 60)}>
@@ -396,7 +396,7 @@ export const AdvancedSOLASChecker = () => {
                               const payloadData = payload[0]?.payload ?? {};
                               return (
                                 <div className="rounded-lg border border-border bg-background p-3 shadow-lg">
-                                  <div className="font-medium">Açı: {label}°</div>
+                                  <div className="font-medium">Angle: {label}°</div>
                                   <div className="text-sm text-emerald-600">GZ: {payloadData.gz?.toFixed(3)} m</div>
                                   <div className="text-sm text-sky-600">Moment: {payloadData.rightingMoment?.toFixed(0)} t·m</div>
                                 </div>
@@ -426,14 +426,14 @@ export const AdvancedSOLASChecker = () => {
                     <div className="mt-3 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
                       <div className="font-semibold">Formula</div>
                       <div>GZ(φ) = GM · sinφ; RM = Δ · GZ</div>
-                      <div className="mt-1 font-semibold">Anlam</div>
+                      <div className="mt-1 font-semibold">Meaning</div>
                       <div>GZ is the rectifier arm, RM is the rectifier moment.</div>
                     </div>
                   </div>
 
                   {/* Area Curve */}
                   <div>
-                    <h4 className="font-medium mb-3">Kümülatif Alan Eğrisi</h4>
+                    <h4 className="font-medium mb-3">Cumulative Area Curve</h4>
                     <div className="h-64">
                       <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={gzCurve.filter(p => p.aci <= 60)}>
@@ -446,8 +446,8 @@ export const AdvancedSOLASChecker = () => {
                               const payloadData = payload[0]?.payload ?? {};
                               return (
                                 <div className="rounded-lg border border-border bg-background p-3 shadow-lg">
-                                  <div className="font-medium">Açı: {label}°</div>
-                                  <div className="text-sm text-amber-600">Alan: {payloadData.area?.toFixed(4)} m·rad</div>
+                                  <div className="font-medium">Angle: {label}°</div>
+                                  <div className="text-sm text-amber-600">Area: {payloadData.area?.toFixed(4)} m·rad</div>
                                   <div className="text-sm text-emerald-600">GZ: {payloadData.gz?.toFixed(3)} m</div>
                                   <div className="text-sm text-sky-600">Moment: {payloadData.rightingMoment?.toFixed(0)} t·m</div>
                                 </div>
@@ -468,8 +468,8 @@ export const AdvancedSOLASChecker = () => {
                     <div className="mt-3 rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-xs text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
                       <div className="font-semibold">Formula</div>
                       <div>Alan(0–30°) ≥ 0.055 m·rad; Alan(0–40°) ≥ 0.090 m·rad; Max GZ ≥ 0.20 m</div>
-                      <div className="mt-1 font-semibold">Anlam</div>
-                      <div>IS Code alan ve GZ sınırları için görsel kontrol.</div>
+                      <div className="mt-1 font-semibold">Meaning</div>
+                      <div>Visual check for IS Code area and GZ boundaries.</div>
                     </div>
                   </div>
                 </div>
@@ -480,13 +480,13 @@ export const AdvancedSOLASChecker = () => {
           {/* Öneriler */}
           <Card>
             <CardHeader>
-              <CardTitle>Stabilite Geliştirme Önerileri</CardTitle>
+              <CardTitle>Stability Development Suggestions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {!criteriaResults.gm.passed && (
                 <div className="p-3 border border-red-200 rounded-lg bg-red-50 dark:bg-red-950/20">
                   <p className="text-sm text-red-800 dark:text-red-200">
-                    <strong>GM Yetersiz:</strong> Ballast ayarlaması yaparak KG'yi düşürün veya KM'yi artırın.
+                    <strong>GM Insufficient:</strong> Ballast ayarlaması yaparak KG'lower or KM'yi artırın.
                   </p>
                 </div>
               )}
@@ -494,7 +494,7 @@ export const AdvancedSOLASChecker = () => {
               {!criteriaResults.area_0_30.passed && (
                 <div className="p-3 border border-red-200 rounded-lg bg-red-50 dark:bg-red-950/20">
                   <p className="text-sm text-red-800 dark:text-red-200">
-                    <strong>0-30° Alanı Yetersiz:</strong> İlk stabilite artırıcı önlemler alın.
+                    <strong>0-30° Area Inadequate:</strong> Take initial Stability enhancing measures.
                   </p>
                 </div>
               )}
@@ -502,16 +502,16 @@ export const AdvancedSOLASChecker = () => {
               {!criteriaResults.max_gz.passed && (
                 <div className="p-3 border border-red-200 rounded-lg bg-red-50 dark:bg-red-950/20">
                   <p className="text-sm text-red-800 dark:text-red-200">
-                    <strong>Maksimum GZ Yetersiz:</strong> Ağırlık dağılımını gözden geçirin.
+                    <strong>Maximum GZ Insufficient:</strong> Review weight distribution.
                   </p>
                 </div>
               )}
 
               <div className="p-4 bg-muted rounded-lg">
-                <h5 className="font-medium mb-2">SOLAS Kriter Referansları:</h5>
+                <h5 className="font-medium mb-2">SOLAS Criterion References:</h5>
                 <ul className="text-sm space-y-1">
-                  <li>• SOLAS Ch.II-1, Reg.25 - Genel Stabilite Kriterleri</li>
-                  <li>• IMO Resolution A.749(18) - Stabilite Kod</li>
+                  <li>• SOLAS Ch.II-1, Reg.25 - General Stability Criteria</li>
+                  <li>• IMO Resolution A.749(18) - Stability Code</li>
                   <li>• MSC.267(85) - 2008 IS Code</li>
                   <li>• National Administration Requirements</li>
                 </ul>

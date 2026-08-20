@@ -1136,37 +1136,37 @@ const categoryContext: Record<
   RegulationCategory,
   { purpose: string; implementation: string; evidence: string; failure: string }
 > = {
-  "IMO Sözleşmeleri": {
+  "IMO Conventions": {
     purpose: "uluslararası asgari standardı bayrak devleti uygulaması, gemi sertifikasyonu ve liman devleti kontrolü üzerinden ortaklaştırır",
     implementation: "kuralı gemi tipi, tonaj, inşa tarihi ve sefer durumuna göre onaylı plan, ekipman, prosedür ve yetkin personele dönüştürmektir",
     evidence: "sertifika ve supplement, onaylı plan/manual, operasyon logu, test-bakım kaydı ve mürettebatın uygulamalı açıklaması",
     failure: "geçerli belgenin gemideki gerçek konfigürasyon veya personel uygulamasıyla uyuşmaması",
   },
-  "Emniyet Kodları": {
+  "Safety Codes": {
     purpose: "yüksek riskli gemi, yük veya operasyon için ana sözleşmedeki hedefi ayrıntılı teknik ve operasyonel bariyerlere dönüştürür",
     implementation: "code hükmünü gemiye özgü risk değerlendirmesi, limit, checklist, bakım standardı ve acil durum adımıyla işletmektir",
     evidence: "uygunluk belgesi, onaylı operasyon manualı, risk değerlendirmesi, izin/checklist, cihaz trendi ve tatbikat kaydı",
     failure: "genel checklist tamamlanmış görünürken code'a özgü limit veya tehlikenin sahada yönetilmemesi",
   },
-  "Çevresel Düzenlemeler": {
+  "Environmental Regulations": {
     purpose: "kirletici veya istilacı etkinin kaynağını, gemideki işlem yolunu, deşarj/emisyon şartını ve kayıt zincirini kontrol eder",
     implementation: "madde/atık akışını kaynaktan tanka, arıtma ekipmanına, nihai bertarafa ve record book kaydına kadar izlemektir",
     evidence: "sertifika, plan, record book, tank/ölçüm verisi, alarm-ekipman kaydı, numune ve reception facility belgesi",
     failure: "kayıtlı miktar ve yöntemin tank bakiyesi, cihaz trendi veya teslim fişiyle fiziksel olarak uzlaşmaması",
   },
-  "Denetim & Sörvey": {
+  "Inspection & Survey": {
     purpose: "gemi, şirket, bayrak, klas ve liman devleti arasındaki bağımsız doğrulama ve bulgu kapatma sistemini tanımlar",
     implementation: "sörvey kapsamını doğru planlamak, gerçek kondisyonu göstermek, bulguyu riskine göre yönetmek ve kalıcı kapanışı kanıtlamaktır",
     evidence: "survey/inspection report, status, condition/recommendation listesi, defect kaydı, düzeltici faaliyet ve etkinlik kontrolü",
     failure: "bulgunun kâğıt üzerinde kapanmış görünmesine rağmen aynı fiziksel veya sistemik eksikliğin sürmesi",
   },
-  "Gemi Sertifikaları": {
+  "Ship Certificates": {
     purpose: "belirli bir tasarım, ekipman, yönetim veya operasyon standardının yetkili sörveyle doğrulandığını görünür kılar",
     implementation: "sertifikanın kapsam, ek, endorsement ve koşullarını gemideki gerçek ekipman/operasyonla sürekli aynı tutmaktır",
     evidence: "sertifika aslı, supplement/record of equipment, survey status, onay yazısı ve sertifikayı destekleyen saha kaydı",
     failure: "ana sertifika tarihi geçerliyken eki, onayı, sörvey penceresi veya gerçek gemi durumunun farklı olması",
   },
-  "Bölgesel Düzenlemeler": {
+  "Regional Regulations": {
     purpose: "belirli kıyı devleti, liman veya deniz alanının trafik, çevre, emniyet ve bildirim risklerine ek kontrol getirir",
     implementation: "güncel yerel kuralı passage/pre-arrival planına, gemi operasyonuna, acente iletişimine ve zamanında bildirime çevirmektir",
     evidence: "güncel circular/port information, pre-arrival form, voyage logu, izin/onay, acente-otorite yazışması ve operasyon kaydı",

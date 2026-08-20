@@ -91,7 +91,7 @@ export default function WeatherForecast() {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-foreground">5 Günlük Hava Tahmini</h1>
+          <h1 className="text-2xl font-bold text-foreground">5 Day Weather Forecast</h1>
           <div></div>
         </div>
 
@@ -103,13 +103,13 @@ export default function WeatherForecast() {
                 {selectedLocationName || locationLabel ? (
                   <span className="notranslate" translate="no">{selectedLocationName || locationLabel}</span>
                 ) : (
-                  "Konum bilgisi alınıyor..."
+                  "Retrieving location information..."
                 )}
               </h2>
               <p className="text-sm text-muted-foreground">
                 {Number.isFinite(lat) && Number.isFinite(lon) 
                   ? `${lat.toFixed(4)}°, ${lon.toFixed(4)}°`
-                  : "Koordinat bilgisi alınıyor..."
+                  : "Receiving coordinate information..."
                 }
               </p>
             </div>
@@ -127,7 +127,7 @@ export default function WeatherForecast() {
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
                   </svg>
                 </div>
-                <p className="text-muted-foreground">Hava tahmini yükleniyor...</p>
+                <p className="text-muted-foreground">Weather forecast is loading...</p>
               </div>
             </CardContent>
           </Card>
@@ -135,7 +135,7 @@ export default function WeatherForecast() {
           <Card className="border-destructive/20 shadow-lg">
             <CardContent className="pt-6">
               <div className="text-center py-8">
-                <p className="text-destructive font-semibold mb-2">Hava tahmini alınamadı</p>
+                <p className="text-destructive font-semibold mb-2">Weather forecast could not be received</p>
                 <p className="text-muted-foreground text-sm">{error}</p>
               </div>
             </CardContent>
@@ -167,7 +167,7 @@ export default function WeatherForecast() {
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
                           <Thermometer className="h-5 w-5 text-info" />
-                          <span className="text-sm font-medium text-muted-foreground">Sıcaklık</span>
+                          <span className="text-sm font-medium text-muted-foreground">temperature</span>
                         </div>
                         <div className="space-y-1">
                           <p className="text-xl font-bold text-foreground">
@@ -183,7 +183,7 @@ export default function WeatherForecast() {
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
                           <Wind className="h-5 w-5 text-success" />
-                          <span className="text-sm font-medium text-muted-foreground">Rüzgar</span>
+                          <span className="text-sm font-medium text-muted-foreground">Wind</span>
                         </div>
                         <div className="space-y-1">
                           <p className="text-lg font-semibold text-foreground">
@@ -200,13 +200,13 @@ export default function WeatherForecast() {
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
                           <CloudRain className="h-5 w-5 text-accent" />
-                          <span className="text-sm font-medium text-muted-foreground">Yağış</span>
+                          <span className="text-sm font-medium text-muted-foreground">Precipitation</span>
                         </div>
                         <div className="space-y-1">
                           <p className="text-lg font-semibold text-foreground">
                             {day.precipitationSum > 0 ? `${day.precipitationSum.toFixed(1)} mm` : "None"}
                           </p>
-                          <p className="text-xs text-muted-foreground">Toplam</p>
+                          <p className="text-xs text-muted-foreground">Total</p>
                         </div>
                       </div>
 
@@ -230,7 +230,7 @@ export default function WeatherForecast() {
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center gap-2 text-lg">
                         <Clock className="h-5 w-5 text-primary" />
-                        Saatlik Tahmin - {formatDate(day.date, index)}
+                        Hourly Forecast - {formatDate(day.date, index)}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -242,11 +242,11 @@ export default function WeatherForecast() {
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
                             </svg>
                           </div>
-                          <span className="ml-3 text-muted-foreground">Saatlik veriler yükleniyor...</span>
+                          <span className="ml-3 text-muted-foreground">Hourly data is loading...</span>
                         </div>
                       ) : hourlyError ? (
                         <div className="text-center py-8">
-                          <p className="text-destructive font-semibold mb-2">Saatlik veriler alınamadı</p>
+                          <p className="text-destructive font-semibold mb-2">Hourly data could not be retrieved</p>
                           <p className="text-muted-foreground text-sm">{hourlyError}</p>
                         </div>
                       ) : hourlyData ? (

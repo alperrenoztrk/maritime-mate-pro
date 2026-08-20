@@ -8,7 +8,7 @@ import { Gauge } from "lucide-react";
 
 /**
  * Ana sayfanın widget sayfası: canlı enstrümanlar düz ızgarada gösterilir.
- * Hangi widget'ların açık olduğu ve sıraları Ayarlar → Ana Sayfa Widget'ları
+ * Hangi widget'Open and order of s: Settings → Home Page Widget'ları
  * tarafında saklanır (useHomeWidgets).
  */
 export function HomeWidgetGrid() {
@@ -27,7 +27,7 @@ export function HomeWidgetGrid() {
             <Gauge className="h-5 w-5 text-primary" />
             Canlı Widget&rsquo;lar
           </h2>
-          <p className="mt-0.5 text-caption text-muted-foreground">Günlük seyir ve çevre bilgileri</p>
+          <p className="mt-0.5 text-caption text-muted-foreground">Daily navigation and environmental information</p>
         </div>
         <div className="grid grid-cols-2 items-start gap-3 sm:grid-cols-4">
           {enabled.map((id: HomeWidgetId) => (

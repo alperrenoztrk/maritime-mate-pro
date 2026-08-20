@@ -68,17 +68,17 @@ const DraftSurveyCalculator = () => {
       title="Calculator"
       icon={Calculator}
       hero={{
-        title: "Draft Survey",
+        title: "Draft survey",
         imageSrc: cargoShip,
         imageAlt: "Cargo ship at sea",
       }}
       maxWidthClassName="max-w-6xl"
       rightRail={
         <FormulaCard
-          title="Hızlı Formüller"
+          title="Quick Formulas"
           sections={[
             {
-              title: "Su Çekimi Değişimi",
+              title: "Draft Change",
               accent: "blue",
               lines: [{ formula: "Weight Change = (Final - Initial) × TPC" }],
             },
@@ -88,7 +88,7 @@ const DraftSurveyCalculator = () => {
               lines: [{ formula: "Trim % = (Aft - Fwd) / LPP × 100" }],
             },
             {
-              title: "Deplasman Düzeltmesi",
+              title: "Displacement Correction",
               accent: "purple",
               lines: [{ formula: "Corrected = Displacement × (Actual Density / 1.025)" }],
             },
@@ -100,21 +100,21 @@ const DraftSurveyCalculator = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calculator className="h-5 w-5" />
-            Su çekimi hesaplama araçları
+            Draft calculation tools
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="draft-change" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="draft-change">Su çekimi değişimi</TabsTrigger>
-              <TabsTrigger value="trim">Trim Hesaplama</TabsTrigger>
-              <TabsTrigger value="displacement">Deplasman</TabsTrigger>
+              <TabsTrigger value="draft-change">Draft change</TabsTrigger>
+              <TabsTrigger value="trim">Trim Calculation</TabsTrigger>
+              <TabsTrigger value="displacement">Displacement</TabsTrigger>
             </TabsList>
 
             <TabsContent value="draft-change" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="initial-draft">İlk Su Çekimi (m)</Label>
+                  <Label htmlFor="initial-draft">First Draw (m)</Label>
                   <Input
                     id="initial-draft"
                     type="number"
@@ -125,7 +125,7 @@ const DraftSurveyCalculator = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="final-draft">Son Su Çekimi (m)</Label>
+                  <Label htmlFor="final-draft">Final Draw (m)</Label>
                   <Input
                     id="final-draft"
                     type="number"
@@ -149,12 +149,12 @@ const DraftSurveyCalculator = () => {
               </div>
               
               <Button onClick={calculateDraftChange} className="w-full">
-                Su çekimi değişimini hesapla
+                Calculate draft change
               </Button>
 
               {draftResult !== null && (
                 <div className="text-center p-4 bg-secondary/20 rounded-lg">
-                  <p className="text-sm text-muted-foreground">Ağırlık Değişimi</p>
+                  <p className="text-sm text-muted-foreground">Weight Change</p>
                   <p className="text-xl font-semibold">{draftResult.toFixed(2)} ton</p>
                 </div>
               )}
@@ -163,7 +163,7 @@ const DraftSurveyCalculator = () => {
             <TabsContent value="trim" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="forward-draft">Baş Su Çekimi (m)</Label>
+                  <Label htmlFor="forward-draft">Head Draft (m)</Label>
                   <Input
                     id="forward-draft"
                     type="number"
@@ -174,7 +174,7 @@ const DraftSurveyCalculator = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="aft-draft">Kıç Su Çekimi (m)</Label>
+                  <Label htmlFor="aft-draft">Aft Draft (m)</Label>
                   <Input
                     id="aft-draft"
                     type="number"
@@ -185,7 +185,7 @@ const DraftSurveyCalculator = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lpp">LPP (m)</Label>
+                  <Label htmlFor="lpp">LPP(m)</Label>
                   <Input
                     id="lpp"
                     type="number"
@@ -198,15 +198,15 @@ const DraftSurveyCalculator = () => {
               </div>
               
               <Button onClick={calculateTrim} className="w-full">
-                Trim Hesapla
+                Calculate Trim
               </Button>
 
               {trimResult !== null && (
                 <div className="text-center p-4 bg-secondary/20 rounded-lg">
-                  <p className="text-sm text-muted-foreground">Trim Oranı</p>
+                  <p className="text-sm text-muted-foreground">Trim Rate</p>
                   <p className="text-xl font-semibold">{trimResult.toFixed(3)}%</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    {trimResult > 0 ? "Kıç Trim" : "Baş Trim"}
+                    {trimResult > 0 ? "Stern Trim" : "Head Trim"}
                   </p>
                 </div>
               )}
@@ -215,7 +215,7 @@ const DraftSurveyCalculator = () => {
             <TabsContent value="displacement" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="mean-draft">Ortalama Su Çekimi (m)</Label>
+                  <Label htmlFor="mean-draft">Average Draft (m)</Label>
                   <Input
                     id="mean-draft"
                     type="number"
@@ -226,7 +226,7 @@ const DraftSurveyCalculator = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="water-density">Su Yoğunluğu (t/m³)</Label>
+                  <Label htmlFor="water-density">Water Density (t/m³)</Label>
                   <Input
                     id="water-density"
                     type="number"
@@ -236,7 +236,7 @@ const DraftSurveyCalculator = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="displacement">Deplasman (ton)</Label>
+                  <Label htmlFor="displacement">Displacement (tons)</Label>
                   <Input
                     id="displacement"
                     type="number"
@@ -249,12 +249,12 @@ const DraftSurveyCalculator = () => {
               </div>
               
               <Button onClick={calculateDisplacement} className="w-full">
-                Düzeltilmiş Deplasman Hesapla
+                Calculate Corrected Displacement
               </Button>
 
               {displacementResult !== null && (
                 <div className="text-center p-4 bg-secondary/20 rounded-lg">
-                  <p className="text-sm text-muted-foreground">Düzeltilmiş Deplasman</p>
+                  <p className="text-sm text-muted-foreground">Corrected Displacement</p>
                   <p className="text-xl font-semibold">{displacementResult.toFixed(2)} ton</p>
                 </div>
               )}

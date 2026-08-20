@@ -25,9 +25,9 @@ interface AppShortcut {
 const APPS: AppShortcut[] = [
   { label: "Dersler", to: "/lessons", icon: BookOpen },
   { label: "Exercises", to: "/exercises", icon: Sparkles },
-  { label: "Personel", to: "/crew", icon: Users },
+  { label: "Personnel", to: "/crew", icon: Users },
   { label: "Ship Systems", to: "/ship-systems", icon: Ship },
-  { label: "Operasyonlar", to: "/ship-operations", icon: ClipboardList },
+  { label: "Operations", to: "/ship-operations", icon: ClipboardList },
   { label: "dictionary", to: "/glossary", icon: BookA },
   { label: "Beta", to: "/beta", icon: FlaskConical },
   { label: "Notes", to: "/notes", icon: StickyNote },

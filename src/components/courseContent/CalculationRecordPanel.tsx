@@ -94,7 +94,7 @@ export function CalculationRecordPanel({ record }: { record: CalculationRecord }
           </div>
         )}
         <div>
-          <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Kaynak izi</p>
+          <p className="text-micro font-semibold uppercase tracking-wide text-muted-foreground">Weld trace</p>
           <p className="mt-1 text-muted-foreground">
             {record.source?.code ?? "Source not specified"}
             {record.source?.detail ? ` — ${record.source.detail}` : ""}

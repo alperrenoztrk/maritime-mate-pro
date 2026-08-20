@@ -44,7 +44,7 @@ export default function DraftSurveyPostdischarge() {
     if (!beforeDischarge.forward || !beforeDischarge.midship || !beforeDischarge.aft ||
         !afterDischarge.forward || !afterDischarge.midship || !afterDischarge.aft ||
         !vesselParticulars.tpc) {
-      toast({ title: "Error", description: "Lütfen tüm gerekli alanları doldurun", variant: "destructive" });
+      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
       return;
     }
 
@@ -71,20 +71,20 @@ export default function DraftSurveyPostdischarge() {
       remainingCargo: actualRemaining
     });
 
-    toast({ title: "Calculation Completed", description: "Boşaltma sonrası analiz yapıldı" });
+    toast({ title: "Calculation Completed", description: "Post-discharge analysis was performed" });
   };
 
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex items-center gap-4 mb-6">
 <div>
-          <h1 className="text-2xl font-bold">Boşaltma Sonrası Kontrol</h1>
+          <h1 className="text-2xl font-bold">Post-Unloading Control</h1>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Gemi Özellikleri</CardTitle>
+          <CardTitle>Ship Features</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -123,11 +123,11 @@ export default function DraftSurveyPostdischarge() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="text-orange-600 dark:text-orange-400">Boşaltma Öncesi Draftlar (m)</CardTitle>
+            <CardTitle className="text-orange-600 dark:text-orange-400">Pre-Unloading Drafts (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="before-forward">Baş Draft</Label>
+              <Label htmlFor="before-forward">Chief Draft</Label>
               <Input
                 id="before-forward"
                 type="number"
@@ -141,7 +141,7 @@ export default function DraftSurveyPostdischarge() {
               />
             </div>
             <div>
-              <Label htmlFor="before-midship">Orta Draft</Label>
+              <Label htmlFor="before-midship">Medium Draft</Label>
               <Input
                 id="before-midship"
                 type="number"
@@ -155,7 +155,7 @@ export default function DraftSurveyPostdischarge() {
               />
             </div>
             <div>
-              <Label htmlFor="before-aft">Kıç Draft</Label>
+              <Label htmlFor="before-aft">Aft Draft</Label>
               <Input
                 id="before-aft"
                 type="number"
@@ -173,11 +173,11 @@ export default function DraftSurveyPostdischarge() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-green-600 dark:text-green-400">Boşaltma Sonrası Draftlar (m)</CardTitle>
+            <CardTitle className="text-green-600 dark:text-green-400">Post Discharge Drafts (m)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="after-forward">Baş Draft</Label>
+              <Label htmlFor="after-forward">Chief Draft</Label>
               <Input
                 id="after-forward"
                 type="number"
@@ -191,7 +191,7 @@ export default function DraftSurveyPostdischarge() {
               />
             </div>
             <div>
-              <Label htmlFor="after-midship">Orta Draft</Label>
+              <Label htmlFor="after-midship">Medium Draft</Label>
               <Input
                 id="after-midship"
                 type="number"
@@ -205,7 +205,7 @@ export default function DraftSurveyPostdischarge() {
               />
             </div>
             <div>
-              <Label htmlFor="after-aft">Kıç Draft</Label>
+              <Label htmlFor="after-aft">Aft Draft</Label>
               <Input
                 id="after-aft"
                 type="number"
@@ -224,12 +224,12 @@ export default function DraftSurveyPostdischarge() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Kalan Kargo Kontrolü (ton)</CardTitle>
+          <CardTitle>Remaining Cargo Control (tons)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="estimated-remaining">Tahmini Kalan</Label>
+              <Label htmlFor="estimated-remaining">Estimated Remaining</Label>
               <Input
                 id="estimated-remaining"
                 type="number"
@@ -242,7 +242,7 @@ export default function DraftSurveyPostdischarge() {
               />
             </div>
             <div>
-              <Label htmlFor="actual-remaining">Gerçek Kalan</Label>
+              <Label htmlFor="actual-remaining">True Remainder</Label>
               <Input
                 id="actual-remaining"
                 type="number"
@@ -260,7 +260,7 @@ export default function DraftSurveyPostdischarge() {
 
       <Button onClick={calculate} className="w-full" size="lg">
         <Calculator className="h-4 w-4 mr-2" />
-        Boşaltma Analizi Yap
+        Perform Discharge Analysis
       </Button>
 
       {result && (
@@ -268,31 +268,31 @@ export default function DraftSurveyPostdischarge() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingDown className="h-5 w-5" />
-              Boşaltma Sonrası Analiz Sonuçları
+              Post-Discharge Analysis Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p><strong>Draft Azalması:</strong> {result.draftChange.toFixed(3)} m</p>
+                <p><strong>Draft Reduction:</strong> {result.draftChange.toFixed(3)} m</p>
                 <p className="text-xl font-bold text-orange-600 dark:text-orange-400">
-                  <strong>Boşaltılan Kargo:</strong> {result.dischargedWeight.toFixed(2)} ton
+                  <strong>Unloaded Cargo:</strong> {result.dischargedWeight.toFixed(2)} ton
                 </p>
               </div>
               <div className="space-y-2">
-                <p><strong>Boşaltma Verimliliği:</strong> {result.dischargeEfficiency.toFixed(1)}%</p>
-                <p><strong>Kalan Kargo:</strong> {result.remainingCargo.toFixed(2)} ton</p>
+                <p><strong>Discharge Efficiency:</strong> {result.dischargeEfficiency.toFixed(1)}%</p>
+                <p><strong>Remaining Cargo:</strong> {result.remainingCargo.toFixed(2)} ton</p>
               </div>
             </div>
             
             <div className="mt-4 p-3 bg-white dark:bg-gray-600 rounded">
               <p className="text-sm text-muted-foreground">
-                * Draft değişimi ile boşaltılan miktar hesaplanmıştır
+                * The amount discharged by draft change is calculated
               </p>
               <p className="text-sm text-muted-foreground">
-                * {result.dischargeEfficiency >= 95 ? "Boşaltma verimliliği mükemmel" : 
-                   result.dischargeEfficiency >= 90 ? "Boşaltma verimliliği iyi" : 
-                   "Boşaltma verimliliği geliştirilmeli"}
+                * {result.dischargeEfficiency >= 95 ? "Discharge efficiency is excellent" : 
+                   result.dischargeEfficiency >= 90 ? "Discharging efficiency is good" : 
+                   "Discharge efficiency should be improved"}
               </p>
             </div>
           </CardContent>

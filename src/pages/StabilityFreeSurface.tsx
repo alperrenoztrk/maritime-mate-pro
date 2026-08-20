@@ -10,7 +10,7 @@ export default function StabilityFreeSurfacePage(){
       title="Free Surface Effect"
       icon={Waves}
       hero={{
-        title: "Stabilite",
+        title: "Stability",
         imageSrc: yacht,
         imageAlt: "Yacht in clear water",
       }}

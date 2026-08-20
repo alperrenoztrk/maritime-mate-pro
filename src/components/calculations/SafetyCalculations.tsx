@@ -487,12 +487,12 @@ export const SafetyCalculations = () => {
           { step: 2, title: "Hose access", formula: "Reach = √(2 × P × g) × factor", result: `Access = ${fireFighting.fireReach.toFixed(1)} m` },
         ],
         lsa: [
-          { step: 1, title: "Toplam can kurtarma kapasitesi", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Toplam = ${lsa.totalLifeSavingCapacity} person (On board: ${data.totalPersonsOnBoard})` },
+          { step: 1, title: "Total lifesaving capacity", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Toplam = ${lsa.totalLifeSavingCapacity} person (On board: ${data.totalPersonsOnBoard})` },
           { step: 2, title: "SOLAS compliance", formula: "Capacity ≥ Number of People on Board", result: lsa.lsaCompliance ? "UYGUN" : "NOT SUITABLE" },
         ],
         freeboard: [
           { step: 1, title: "freeboard account", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Real = ${freeboard.actualFreeboard.toFixed(2)} m` },
-          { step: 2, title: "Uygunluk", formula: "Actual Freeboard ≥ Minimum Freeboard", result: freeboard.freeboardCompliance ? "UYGUN" : "NOT SUITABLE" },
+          { step: 2, title: "Eligibility", formula: "Actual Freeboard ≥ Minimum Freeboard", result: freeboard.freeboardCompliance ? "UYGUN" : "NOT SUITABLE" },
         ],
       });
       toast({
@@ -524,11 +524,11 @@ export const SafetyCalculations = () => {
         <CardContent>
           <Tabs defaultValue="anchoring" className="w-full">
             <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="anchoring">Demir</TabsTrigger>
+              <TabsTrigger value="anchoring">Anchor</TabsTrigger>
               <TabsTrigger value="fire">fire</TabsTrigger>
-              <TabsTrigger value="lifesaving">Can Kurtarma</TabsTrigger>
+              <TabsTrigger value="lifesaving">Lifesaving</TabsTrigger>
               <TabsTrigger value="freeboard">Freeboard</TabsTrigger>
-              <TabsTrigger value="emergency">Acil Durum</TabsTrigger>
+              <TabsTrigger value="emergency">Emergency</TabsTrigger>
             </TabsList>
 
             <TabsContent value="anchoring" className="space-y-4">
@@ -562,7 +562,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="seaState">Deniz Durumu (0-9)</Label>
+                  <Label htmlFor="seaState">Sea State (0-9)</Label>
                   <Input
                     id="seaState"
                     type="number"
@@ -816,7 +816,7 @@ export const SafetyCalculations = () => {
                   <p className="text-lg font-semibold">{result.safetyFactor.toFixed(1)}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Demir Durumu</Label>
+                  <Label className="text-sm font-medium">Anchor Status</Label>
                   <Badge variant={
                     result.anchoringStatus === 'safe' ? 'default' :
                     result.anchoringStatus === 'marginal' ? 'secondary' : 'destructive'
@@ -850,10 +850,10 @@ export const SafetyCalculations = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label className="text-sm font-medium">Water Flow</Label>
-                  <p className="text-2xl font-bold text-red-600">{result.fireWaterFlow.toFixed(0)} L/dk</p>
+                  <p className="text-2xl font-bold text-red-600">{result.fireWaterFlow.toFixed(0)} L/min</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Pompa Verimi</Label>
+                  <Label className="text-sm font-medium">Pump Efficiency</Label>
                   <p className="text-2xl font-bold text-orange-600">{result.firePumpEfficiency.toFixed(1)}%</p>
                 </div>
                 <div>
@@ -869,7 +869,7 @@ export const SafetyCalculations = () => {
                   }>
                     {result.fireReadiness === 'excellent' ? 'excellent' :
                      result.fireReadiness === 'good' ? 'good' :
-                     result.fireReadiness === 'fair' ? 'Orta' : 'Yetersiz'}
+                     result.fireReadiness === 'fair' ? 'Medium' : 'Insufficient'}
                   </Badge>
                 </div>
               </div>
@@ -891,12 +891,12 @@ export const SafetyCalculations = () => {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Toplam Can Botu Kapasitesi</Label>
-                  <p className="text-2xl font-bold text-info">{result.totalLifeboatCapacity} kişi</p>
+                  <Label className="text-sm font-medium">Total Lifeboat Capacity</Label>
+                  <p className="text-2xl font-bold text-info">{result.totalLifeboatCapacity} person</p>
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Total Life Raft Capacity</Label>
-                  <p className="text-2xl font-bold text-green-600">{result.totalLifeRaftCapacity} kişi</p>
+                  <p className="text-2xl font-bold text-green-600">{result.totalLifeRaftCapacity} person</p>
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Evacuation Time</Label>
@@ -905,7 +905,7 @@ export const SafetyCalculations = () => {
                 <div>
                   <Label className="text-sm font-medium">SOLAS Compliance</Label>
                   <Badge variant={result.lsaCompliance ? 'default' : 'destructive'}>
-                    {result.lsaCompliance ? 'Uygun' : 'Not Suitable'}
+                    {result.lsaCompliance ? 'Suitable' : 'Not Suitable'}
                   </Badge>
                 </div>
               </div>
@@ -927,7 +927,7 @@ export const SafetyCalculations = () => {
                   <p className="text-2xl font-bold text-info">{result.minimumFreeboard.toFixed(0)} mm</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Mevcut Freeboard</Label>
+                  <Label className="text-sm font-medium">Current Freeboard</Label>
                   <p className="text-2xl font-bold text-green-600">{result.actualFreeboard.toFixed(0)} mm</p>
                 </div>
                 <div>
@@ -937,7 +937,7 @@ export const SafetyCalculations = () => {
                 <div>
                   <Label className="text-sm font-medium">Freeboard Eligibility</Label>
                   <Badge variant={result.freeboardCompliance ? 'default' : 'destructive'}>
-                    {result.freeboardCompliance ? 'Uygun' : 'Not Suitable'}
+                    {result.freeboardCompliance ? 'Suitable' : 'Not Suitable'}
                   </Badge>
                 </div>
               </div>
@@ -1055,7 +1055,7 @@ function StandaloneFireCalcs() {
             <Input type="number" placeholder="6.5" value={foamInputs.rate} onChange={(e) => setFoamInputs(p => ({ ...p, rate: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Korunan Alan (m²)</Label>
+            <Label className="text-xs">Protected Area (m²)</Label>
             <Input type="number" placeholder="500" value={foamInputs.area} onChange={(e) => setFoamInputs(p => ({ ...p, area: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
@@ -1075,7 +1075,7 @@ function StandaloneFireCalcs() {
         <CardHeader className="pb-2">
           <CardTitle className="text-base flex items-center gap-2">
             <Droplets className="h-4 w-4" />
-            Su Sisi Debisi
+            Water Mist Flow Rate
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -1090,7 +1090,7 @@ function StandaloneFireCalcs() {
           {mistResult && (
             <div className="bg-primary/5 rounded-lg p-3">
               <span className="text-xs text-muted-foreground">Nozul Debisi (Q = K × √P):</span>
-              <p className="text-lg font-bold">{mistResult} L/dk</p>
+              <p className="text-lg font-bold">{mistResult} L/min</p>
             </div>
           )}
         </CardContent>
@@ -1105,7 +1105,7 @@ function StandaloneFireCalcs() {
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="space-y-1">
-            <Label className="text-xs">Pompa Debisi (m³/h)</Label>
+            <Label className="text-xs">Pump Flow (m³/h)</Label>
             <Input type="number" placeholder="150" value={waterInputs.q} onChange={(e) => setWaterInputs(p => ({ ...p, q: e.target.value }))} className="h-9" />
           </div>
           <div className="space-y-1">
@@ -1118,7 +1118,7 @@ function StandaloneFireCalcs() {
           </div>
           {waterResult && (
             <div className="bg-primary/5 rounded-lg p-3">
-              <span className="text-xs text-muted-foreground">Toplam Kapasite:</span>
+              <span className="text-xs text-muted-foreground">Total Capacity:</span>
               <p className="text-lg font-bold">{waterResult} m³</p>
             </div>
           )}

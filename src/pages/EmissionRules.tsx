@@ -170,7 +170,7 @@ export default function EmissionRules() {
             <Scale className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
           </div>
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
-            Çevre Kuralları
+            Environmental Rules
           </h1>
         </div>
 

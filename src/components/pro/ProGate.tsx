@@ -41,7 +41,7 @@ export const ProGate = ({ children, feature, fallback }: ProGateProps) => {
           {feature ? (
             <span data-translatable>{`${feature} Pro paketine dahildir.`}</span>
           ) : (
-            <span data-translatable>Bu içerik Pro paketine dahildir.</span>
+            <span data-translatable>This content is included in the Pro package.</span>
           )}
         </p>
         <Button size="sm" className="gap-2 bg-amber-500 text-black hover:bg-amber-400" onClick={() => navigate("/pro")}>

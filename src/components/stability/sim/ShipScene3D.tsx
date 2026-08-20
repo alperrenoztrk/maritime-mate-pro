@@ -30,7 +30,7 @@ export interface ShipScene3DProps {
   shipType: ShipType;
   /** Target heel in radians; + heels to starboard (group rotation.x). */
   heelRad: number;
-  /** Trim in radians; + = bow down ("baş trim"). Applied as rotation.z = -trim. */
+  /** Trim in radians; + = bow down ("head trim"). Applied as rotation.z = -trim. */
   trimRad?: number;
   /** Real draft in metres; 6.5 puts the boot-top on the waterline. */
   draftM?: number;

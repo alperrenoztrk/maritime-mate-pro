@@ -25,10 +25,10 @@ const shipTypes = [
   { value: "tanker", label: "Tanker", ciiRef: 5247 },
   { value: "container", label: "Container Ship", ciiRef: 1984 },
   { value: "general_cargo", label: "General Cargo", ciiRef: 588 },
-  { value: "gas_carrier", label: "Gas Carrier", ciiRef: 8714 },
+  { value: "gas_carrier", label: "Gas carrier", ciiRef: 8714 },
   { value: "lng_carrier", label: "LNG Carrier", ciiRef: 9827 },
   { value: "ro_ro", label: "Ro-Ro Cargo", ciiRef: 1686 },
-  { value: "cruise", label: "Cruise Ship", ciiRef: 930 },
+  { value: "cruise", label: "Cruise ship", ciiRef: 930 },
 ];
 
 export default function EmissionCalculationsPage() {
@@ -58,7 +58,7 @@ export default function EmissionCalculationsPage() {
     const deadweight = parseFloat(dwt.replace(",", "."));
 
     if (isNaN(fuel) || isNaN(dist) || isNaN(deadweight) || fuel <= 0 || dist <= 0 || deadweight <= 0) {
-      toast.error("Lütfen tüm değerleri doğru girin");
+      toast.error("Please enter all values correctly");
       return;
     }
 
@@ -77,7 +77,7 @@ export default function EmissionCalculationsPage() {
     else if (cii <= 1.18) ciiRating = "D";
 
     setResult({ co2, cii, ciiRating, aer });
-    toast.success("Hesaplama tamamlandı");
+    toast.success("Calculation completed");
   };
 
   const calculateEEXI = () => {
@@ -87,14 +87,14 @@ export default function EmissionCalculationsPage() {
     const speed = parseFloat(eexiData.speed.replace(",", "."));
 
     if (isNaN(power) || isNaN(sfc) || isNaN(capacity) || isNaN(speed) || power <= 0 || sfc <= 0 || capacity <= 0 || speed <= 0) {
-      toast.error("Lütfen tüm değerleri doğru girin");
+      toast.error("Please enter all values correctly");
       return;
     }
 
     const cf = carbonFactors[fuelType];
     const eexi = (power * cf * sfc) / (capacity * speed);
     setEexiResult(eexi);
-    toast.success("EEXI hesaplandı");
+    toast.success("EEXI calculated");
   };
 
   const getCiiColor = (rating: string) => {
@@ -111,8 +111,8 @@ export default function EmissionCalculationsPage() {
   return (
     <MobileLayout>
       <CalculationGridScreen
-        eyebrow="Emisyon"
-        title="CO₂, CII & EEXI Hesaplamaları"
+        eyebrow="Emission"
+        title="CO₂, CII & EEXI Calculations"
       >
         <Card className="bg-card border-border shadow-lg">
           <CardContent className="pt-6 space-y-6">
@@ -127,13 +127,13 @@ export default function EmissionCalculationsPage() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
                       <TrendingDown className="h-5 w-5" />
-                      CO₂ Emisyonu ve CII Hesaplama
+                      CO₂ Emission and CII Calculation
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label>Gemi Tipi</Label>
+                        <Label>Ship Type</Label>
                         <Select value={shipType} onValueChange={setShipType}>
                           <SelectTrigger>
                             <SelectValue />
@@ -165,7 +165,7 @@ export default function EmissionCalculationsPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Yakıt Tüketimi (ton/yıl)</Label>
+                        <Label>Fuel Consumption (ton/year)</Label>
                         <Input
                           type="text"
                           value={fuelConsumption}
@@ -174,7 +174,7 @@ export default function EmissionCalculationsPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Kat Edilen Mesafe (nm/yıl)</Label>
+                        <Label>Distance Traveled (nm/year)</Label>
                         <Input
                           type="text"
                           value={distance}
@@ -203,7 +203,7 @@ export default function EmissionCalculationsPage() {
                     {result && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
                         <div className="p-4 rounded-xl bg-primary/5">
-                          <p className="text-sm text-muted-foreground">Yıllık CO₂ Emisyonu</p>
+                          <p className="text-sm text-muted-foreground">Annual CO₂ Emission</p>
                           <p className="text-2xl font-bold text-[#2F5BFF]">
                             {result.co2.toLocaleString("tr-TR", { maximumFractionDigits: 2 })} ton
                           </p>
@@ -217,19 +217,19 @@ export default function EmissionCalculationsPage() {
                         </div>
 
                         <div className="p-4 rounded-xl bg-primary/5">
-                          <p className="text-sm text-muted-foreground">CII Değeri</p>
+                          <p className="text-sm text-muted-foreground">CII Value</p>
                           <p className="text-2xl font-bold text-[#2F5BFF]">
                             {result.cii.toFixed(3)}
                           </p>
                         </div>
 
                         <div className={`p-4 rounded-xl ${getCiiColor(result.ciiRating)}`}>
-                          <p className="text-sm opacity-80">CII Derecesi</p>
+                          <p className="text-sm opacity-80">CII Degree</p>
                           <p className="text-3xl font-bold">{result.ciiRating}</p>
                           {(result.ciiRating === "D" || result.ciiRating === "E") && (
                             <p className="text-xs mt-1 flex items-center gap-1">
                               <AlertTriangle className="h-3 w-3" />
-                              Düzeltici aksiyon gerekli
+                              Corrective action required
                             </p>
                           )}
                         </div>
@@ -244,7 +244,7 @@ export default function EmissionCalculationsPage() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
                       <Ship className="h-5 w-5" />
-                      EEXI Hesaplama
+                      EEXI Calculation
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
@@ -266,7 +266,7 @@ export default function EmissionCalculationsPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Ana Makine Gücü (kW)</Label>
+                        <Label>Main engine Power (kW)</Label>
                         <Input
                           type="text"
                           value={eexiData.power}
@@ -284,7 +284,7 @@ export default function EmissionCalculationsPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Kapasite (DWT/GT)</Label>
+                        <Label>Capacity (DWT/GT)</Label>
                         <Input
                           type="text"
                           value={eexiData.capacity}
@@ -293,7 +293,7 @@ export default function EmissionCalculationsPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Referans Hız (knot)</Label>
+                        <Label>Reference Speed (knots)</Label>
                         <Input
                           type="text"
                           value={eexiData.speed}
@@ -307,12 +307,12 @@ export default function EmissionCalculationsPage() {
                       className="w-full bg-[#2F5BFF] hover:bg-[#2F5BFF]/90"
                     >
                       <Calculator className="h-4 w-4 mr-2" />
-                      EEXI Hesapla
+                      Calculate EEXI
                     </Button>
 
                     {eexiResult !== null && (
                       <div className="p-6 rounded-xl bg-primary/5 text-center">
-                        <p className="text-sm text-muted-foreground mb-2">Hesaplanan EEXI</p>
+                        <p className="text-sm text-muted-foreground mb-2">Calculated EEXI</p>
                         <p className="text-4xl font-bold text-[#2F5BFF]">
                           {eexiResult.toFixed(4)}
                         </p>
