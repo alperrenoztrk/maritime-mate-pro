@@ -269,14 +269,9 @@
           .ship-lift{animation:none !important;transform:scale(1.7) translate(-20%,-8%);}
           .ship-wake{animation:none !important;opacity:.7;}
         }
-        .splash-brief .splash-stage,.splash-brief .splash-tag,.splash-brief .splash-sea{display:none;}
-        .splash-brief .splash-bg{background:#f2f2f7;}
-        .splash-brief .splash-bg::after{display:none;}
-        .splash-brief .splash-title{animation:none;opacity:1;transform:none;background:none;color:#111114;-webkit-text-fill-color:currentColor;font-size:1rem;letter-spacing:.14em;}
-        @media (prefers-color-scheme:dark){
-          .splash-brief .splash-bg{background:#0b0b0f;}
-          .splash-brief .splash-title{color:#f5f5f7;}
-        }
+        /* Legacy "brief" variant removed: the app is dark-theme only and the
+           full choreography is now allowed to finish before the splash hides. */
+
 
       </style>
     </div>
