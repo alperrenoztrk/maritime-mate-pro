@@ -131,7 +131,7 @@ export const cloudTypes: CloudType[] = [
     id: 'cumulonimbus',
     name: 'Cumulonimbus',
     nameTr: 'cumulonimbus',
-    code: 'C b',
+    code: 'Cb',
     mgmCode: 'CL 3,9',
     level: 'vertical',
     altitude: '0.5-16 km',

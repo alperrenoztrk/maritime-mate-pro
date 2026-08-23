@@ -17,19 +17,19 @@ export const NOTES_UPDATED_EVENT = "marine-notes-updated";
 // Ordered list — first match wins. Exact segment match so "/machine"
 // doesn't swallow "/machinery" or "/machine-calculations".
 const CATEGORY_MAP: Array<[string, string]> = [
-  ["/lessons", "Dersler"],
+  ["/lessons", "Lessons"],
   ["/exercises", "Exercises"],
   ["/crew", "Personnel"],
   ["/ship-tasks", "Personnel"],
   ["/ship-systems", "Ship Systems"],
   ["/bridge", "Ship Systems"],
   ["/ship-operations", "Operations"],
-  ["/glossary", "dictionary"],
-  ["/regulations", "Kurallar ve Mevzuat"],
-  ["/solas", "Kurallar ve Mevzuat"],
+  ["/glossary", "Dictionary"],
+  ["/regulations", "Rules & Regulations"],
+  ["/solas", "Rules & Regulations"],
   ["/stability", "Stability"],
   ["/navigation", "Navigation"],
-  ["/cargo", "Freight Transactions"],
+  ["/cargo", "Cargo Operations"],
   ["/meteorology", "Meteorology"],
   ["/safety", "Safety"],
   ["/seamanship", "Seamanship"],
@@ -38,18 +38,49 @@ const CATEGORY_MAP: Array<[string, string]> = [
   ["/economics", "Economy"],
   ["/environment", "Environment"],
   ["/emissions", "Environment"],
-  ["/calculations", "Hesaplamalar"],
-  ["/converter", "Hesaplamalar"],
-  ["/tank", "Hesaplamalar"],
-  ["/ballast", "Hesaplamalar"],
-  ["/engine", "Hesaplamalar"],
-  ["/hydrodynamics", "Hesaplamalar"],
-  ["/structural", "Hesaplamalar"],
-  ["/special-ships", "Hesaplamalar"],
+  ["/calculations", "Calculations"],
+  ["/converter", "Calculations"],
+  ["/tank", "Calculations"],
+  ["/ballast", "Calculations"],
+  ["/engine", "Calculations"],
+  ["/hydrodynamics", "Calculations"],
+  ["/structural", "Calculations"],
+  ["/special-ships", "Calculations"],
   ["/beta", "Beta"],
 ];
 
-export const FALLBACK_CATEGORY = "Others";
+export const FALLBACK_CATEGORY = "Other";
+
+// Legacy labels (Turkish or earlier English wording) stored on existing notes.
+// Mapped on read so old notes merge into the current English headers instead of
+// showing duplicate sections.
+const LEGACY_CATEGORY_ALIASES: Record<string, string> = {
+  Dersler: "Lessons",
+  Personel: "Personnel",
+  Operasyonlar: "Operations",
+  "Gemi Sistemleri": "Ship Systems",
+  Stabilite: "Stability",
+  Seyir: "Navigation",
+  "Yük İşlemleri": "Cargo Operations",
+  "Freight Transactions": "Cargo Operations",
+  Meteoroloji: "Meteorology",
+  Güvenlik: "Safety",
+  Gemicilik: "Seamanship",
+  Makine: "Engine",
+  Ekonomi: "Economy",
+  Çevre: "Environment",
+  Hesaplamalar: "Calculations",
+  "Kurallar ve Mevzuat": "Rules & Regulations",
+  Sözlük: "Dictionary",
+  dictionary: "Dictionary",
+  Alıştırmalar: "Exercises",
+  Diğer: "Other",
+  Others: "Other",
+};
+
+export function normalizeCategory(category: string): string {
+  return LEGACY_CATEGORY_ALIASES[category] ?? category;
+}
 
 export function deriveCategory(pathname: string): string {
   for (const [prefix, label] of CATEGORY_MAP) {
@@ -95,6 +126,7 @@ export function getNotes(): SavedNote[] {
           typeof n.text === "string" &&
           typeof n.category === "string"
       )
+      .map((n) => ({ ...n, category: normalizeCategory(n.category) }))
       .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   } catch {
     return [];
