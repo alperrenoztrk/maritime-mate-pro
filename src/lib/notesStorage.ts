@@ -126,6 +126,7 @@ export function getNotes(): SavedNote[] {
           typeof n.text === "string" &&
           typeof n.category === "string"
       )
+      .map((n) => ({ ...n, category: normalizeCategory(n.category) }))
       .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   } catch {
     return [];
