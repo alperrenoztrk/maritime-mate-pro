@@ -193,14 +193,13 @@ const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Keep the launch surface only through the first committed React frame. iOS
-// already supplies a native LaunchScreen, so the web layer must not replay a
-// second narrative or block the first useful interaction.
-const splashHideDelay = prefersReducedMotion ? 1000 : 1120;
-
-document.getElementById('splash-root')?.classList.add('splash-brief');
+// The splash choreography (book opening -> ship -> title -> sea) runs on
+// delays out to ~3.2s. Cutting it off mid-animation is what made the launch
+// look broken, so let it finish before fading out.
+const splashHideDelay = prefersReducedMotion ? 900 : 3600;
 
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
+
 
 // A tap should never be ignored: let people skip straight into the app.
 const splashEl = document.getElementById('splash-root');
