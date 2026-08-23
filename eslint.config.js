@@ -5,7 +5,17 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "supabase/functions/mcp/index.ts"] },
+  {
+    ignores: [
+      "dist",
+      "supabase/functions/mcp/index.ts",
+      // Auto-generated integration files — not hand-edited, so lint rules
+      // (e.g. prefer-const) must not fail the release pipeline on them.
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/previewAuthStorage.ts",
+      "src/integrations/supabase/types.ts",
+    ],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
