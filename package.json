@@ -29,6 +29,7 @@
     "cap:add:ios": "npx cap add ios",
     "cap:sync": "npx cap sync",
     "assets:generate": "node scripts/generate-app-assets.mjs",
+    "assets:play-feature": "node scripts/generate-play-feature-graphic.mjs",
     "android:bundle": "npm run build:native && npx cap sync android && cd android && ./gradlew bundleRelease",
     "cap:open:android": "npx cap open android",
     "cap:run:android": "npx cap run android",
