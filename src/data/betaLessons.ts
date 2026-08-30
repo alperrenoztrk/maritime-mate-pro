@@ -217,6 +217,7 @@ const RULE_TOPIC_OVERRIDES: Record<string, Record<string, string>> = {
     "COLREG Kısım B — Manevra Kuralları": "Manevra ve Gemi Hareketi",
     "COLREG Kısım C/D — Fenerler, Şekiller, Sesli İşaretler": "Köprüüstü Vardiyası ve Gözcülük",
     "Demirleme ve Bağlama — İyi Gemicilik": "Bağlama (Mooring) Operasyonları",
+    "Dynamic Positioning (DP) and Offshore Operations": "Manevra ve Gemi Hareketi",
     "ISM Kodu — Güvenli İşletim": "Köprüüstü Vardiyası ve Gözcülük",
     "ISPS Kodu": "Köprüüstü Vardiyası ve Gözcülük",
     "Liman, VTS ve Pilotaj": "Pilot Transferi ve Pilot Merdiveni",
@@ -504,211 +505,121 @@ export function getBetaModules(key?: string): BetaModule[] {
   });
 }
 
-/** Eski düz liste API'si korunur; artık tekrarları ayıklanmış kanonik başlıkları döndürür. */
-export function getBetaTopicTitles(key?: string): string[] {
-  if (!key) return [];
-  return [
-    ...getCurriculumTopicRefs(key).map((topic) => topic.title),
-    ...getCurriculumSupplementTopics(key).map((topic) => topic.title),
-  ];
+export function getBetaCategories(): BetaCategory[] {
+  return calculationCategories
+    .filter((category) => DECK_CONTENT_KEYS.includes(category.id) || isMachine(category.id))
+    .map((category) => {
+      const enabled =
+        DECK_CONTENT_KEYS.includes(category.id) ||
+        (isMachine(category.id) && getCurriculumModules(category.id).length > 0);
+      return {
+        key: category.id,
+        title: category.title,
+        subtitle: category.subtitle,
+        icon: category.icon,
+        accent: category.accent,
+        group: isMachine(category.id) ? "machine" : "deck",
+        enabled,
+        topicCount: getBetaModules(category.id).reduce((sum, module) => sum + module.topicCount, 0),
+        moduleCount: getBetaModules(category.id).length,
+      };
+    });
 }
 
-/** URL ve ilerleme kaydı için başlıktan bağımsız, kararlı konu kimlikleri. */
-export function getBetaTopicIds(key?: string): string[] {
-  if (!key) return [];
-  return [
-    ...getCurriculumTopicRefs(key).map((topic) => topic.id),
-    ...getCurriculumSupplementTopics(key).map((topic) => topic.id),
-  ];
-}
-
-function mapMachineTopic(
-  slug: string,
-  sourceTitle: string,
-  metadata?: ReturnType<typeof getCurriculumTopicById>,
-): BetaTopic | null {
-  const content = getMachineSubTopicContent(slug, sourceTitle);
-  if (!content) return null;
-  return {
-    id: metadata?.id,
-    title: metadata?.title ?? content.title,
-    sourceTitle,
-    moduleId: metadata
-      ? getCurriculumModules(`machine-${slug}`).find((module) =>
-          module.topics.some((topic) => topic.id === metadata.id),
-        )?.id
-      : undefined,
-    level: metadata?.level,
-    introduction: content.introduction,
-    sections: content.sections.map((section, index) => ({
-      id: makeSectionId(metadata?.id, index),
-      title: displaySectionTitle(section.heading),
-      sourceTitle: section.heading,
-      content: section.paragraphs.join("\n\n"),
-      bulletPoints: section.bulletPoints,
-      formula: section.formula
-        ? {
-            text: section.formula.expression,
-            description:
-              section.formula.variables && section.formula.variables.length
-                ? section.formula.variables.join(" · ")
-                : undefined,
-          }
-        : undefined,
-      image: section.diagram?.src,
-      imageAlt: section.diagram?.alt,
-      example: section.example
-        ? {
-            problem: section.example.problem,
-            steps: section.example.steps,
-            result: section.example.result,
-          }
-        : undefined,
-      table: section.table,
-    })),
-    keyPoints: content.keyPoints,
-  };
-}
-
-function mapStabilityTopic(
-  sourceTitle: string,
-  metadata?: ReturnType<typeof getCurriculumTopicById>,
-): BetaTopic | null {
-  for (const module of stabilityTopicsData) {
-    const subtopic = module.subtopics.find((item) => item.title === sourceTitle);
-    if (!subtopic) continue;
-    const baseTitle = metadata?.title ?? subtopic.title.replace(/^\d+(?:\.\d+)*\.?\s*/, "");
-    const sections: BetaSection[] = [
-      {
-        id: makeSectionId(metadata?.id, 0),
-        title: baseTitle,
-        sourceTitle: subtopic.title,
-        content: subtopic.content,
-        bulletPoints: [...(subtopic.practicalTips ?? []), ...(subtopic.warnings ?? [])],
-      },
-    ];
-    const formulas = subtopic.formulas ?? [];
-    formulas.forEach((formula, index) =>
-      sections.push({
-        id: makeSectionId(metadata?.id, sections.length),
-        title: formulas.length > 1 ? `${baseTitle} — Formül ${index + 1}` : `${baseTitle} — Formül`,
-        sourceTitle: formulas.length > 1 ? `Formül ${index + 1}` : "Formül",
-        content: "",
-        formula: { text: formula.formula, description: formula.description },
-      }),
-    );
-    const examples = subtopic.examples ?? [];
-    examples.forEach((example, index) =>
-      sections.push({
-        id: makeSectionId(metadata?.id, sections.length),
-        title:
-          examples.length > 1
-            ? `${baseTitle} — Çözümlü Örnek ${index + 1}`
-            : `${baseTitle} — Çözümlü Örnek`,
-        sourceTitle: examples.length > 1 ? `Çözümlü Örnek ${index + 1}` : "Çözümlü Örnek",
-        content: "",
-        example: { problem: example.problem, solution: example.solution },
-      }),
-    );
-    return {
-      id: metadata?.id,
-      title: baseTitle,
-      sourceTitle,
-      moduleId: module.id,
-      level: metadata?.level,
-      sections,
-      keyPoints: subtopic.keyPoints,
-    };
+export function getBetaTopic(key?: string, topicId?: string): BetaTopic | null {
+  if (!key || !topicId) return null;
+  const curriculumTopic = resolveCurriculumTopic(key, topicId);
+  if (curriculumTopic) {
+    const refs = getCurriculumTopicRefs(curriculumTopic.id);
+    const source = refs[0];
+    if (source?.kind === "deck") {
+      if (source.categoryKey === "stability") {
+        const topic = stabilityTopicsData.find((item) => item.id === source.legacyTopicId);
+        if (!topic) return null;
+        return mergeRulesIntoTopic(key, {
+          id: curriculumTopic.id,
+          title: curriculumTopic.title,
+          sourceTitle: topic.title,
+          moduleId: curriculumTopic.moduleId,
+          level: curriculumTopic.level,
+          introduction: topic.description,
+          sections: topic.sections.map((section, index) => ({
+            id: makeSectionId(curriculumTopic.id, index),
+            title: displaySectionTitle(section.title),
+            sourceTitle: section.title,
+            content: section.content,
+            bulletPoints: section.bulletPoints,
+            formula: section.formula,
+            image: section.image,
+            imageAlt: section.imageAlt,
+            example: section.example,
+            table: section.table,
+          })),
+        });
+      }
+      const topics = getTopicContentsByCategory(source.categoryKey);
+      const topic = topics.find((item) => item.id === source.legacyTopicId);
+      if (!topic) return null;
+      return mergeRulesIntoTopic(key, {
+        id: curriculumTopic.id,
+        title: curriculumTopic.title,
+        sourceTitle: topic.title,
+        moduleId: curriculumTopic.moduleId,
+        level: curriculumTopic.level,
+        introduction: topic.description,
+        sections: topic.sections.map((section, index) => ({
+          id: makeSectionId(curriculumTopic.id, index),
+          title: displaySectionTitle(section.title),
+          sourceTitle: section.title,
+          content: section.content,
+          bulletPoints: section.bulletPoints,
+          formula: section.formula,
+          image: section.image,
+          imageAlt: section.imageAlt,
+          example: section.example,
+          table: section.table,
+        })),
+      });
+    }
+    if (source?.kind === "machine") {
+      const content = getMachineSubTopicContent(source.machineSlug, source.legacyTopicTitle);
+      if (!content) return null;
+      return mergeRulesIntoTopic(key, {
+        id: curriculumTopic.id,
+        title: curriculumTopic.title,
+        sourceTitle: source.legacyTopicTitle,
+        moduleId: curriculumTopic.moduleId,
+        level: curriculumTopic.level,
+        introduction: content.description,
+        sections: content.sections.map((section, index) => ({
+          id: makeSectionId(curriculumTopic.id, index),
+          title: displaySectionTitle(section.title),
+          sourceTitle: section.title,
+          content: section.content,
+          bulletPoints: section.bulletPoints,
+          formula: section.formula,
+          image: section.image,
+          imageAlt: section.imageAlt,
+          example: section.example,
+          table: section.table,
+        })),
+      });
+    }
   }
-  return null;
-}
 
-function mapDeckTopic(
-  key: string,
-  sourceTitle: string,
-  metadata?: ReturnType<typeof getCurriculumTopicById>,
-): BetaTopic | null {
-  const topic = getTopicContentsByCategory(key)[sourceTitle];
-  if (!topic) return null;
-  const moduleId = metadata
-    ? getCurriculumModules(key).find((module) =>
-        module.topics.some((item) => item.id === metadata.id),
-      )?.id
-    : undefined;
-  return {
-    id: metadata?.id,
-    title: metadata?.title ?? topic.title,
-    sourceTitle,
-    moduleId,
-    level: metadata?.level,
-    introduction: topic.introduction,
-    sections: topic.sections.map((section, index) => ({
-      id: makeSectionId(metadata?.id, index),
-      title: displaySectionTitle(section.title),
-      sourceTitle: section.title,
-      content: section.content,
-      bulletPoints: section.bulletPoints,
-      formula: section.formula
-        ? { text: section.formula.text, description: section.formula.description }
-        : undefined,
-      image: section.image,
-      imageAlt: section.imageAlt,
-    })),
-    keyPoints: topic.keyPoints,
-  };
-}
-
-/**
- * Başlık, eski başlık alias'ı veya sabit topic id kabul eder.
- * Böylece eski deep-link ve localStorage ilerleme kayıtları bozulmaz.
- */
-export function getBetaTopic(key?: string, titleOrId?: string): BetaTopic | null {
-  if (!key || !titleOrId) return null;
-
-  const supplement = getCurriculumSupplementTopic(key, titleOrId);
-  if (supplement) return mergeRulesIntoTopic(key, mapSupplementTopic(supplement));
-
-  const metadata = getCurriculumTopicById(titleOrId) ?? resolveCurriculumTopic(key, titleOrId);
-  const sourceTitle = metadata?.sourceTitle ?? titleOrId;
-  const topic = isMachine(key)
-    ? mapMachineTopic(machineSlug(key), sourceTitle, metadata)
-    : key === "stability"
-      ? mapStabilityTopic(sourceTitle, metadata)
-      : DECK_CONTENT_KEYS.includes(key)
-        ? mapDeckTopic(key, sourceTitle, metadata)
-        : null;
-
-  return topic ? mergeRulesIntoTopic(key, topic) : null;
+  const supplemental = getCurriculumSupplementTopic(key, topicId);
+  return supplemental ? mergeRulesIntoTopic(key, mapSupplementTopic(supplemental)) : null;
 }
 
 export function getBetaTopicById(topicId?: string): BetaTopic | null {
-  const supplement = getCurriculumSupplementTopicById(topicId);
-  if (supplement) {
-    return mergeRulesIntoTopic(supplement.category, mapSupplementTopic(supplement));
+  if (!topicId) return null;
+  const curriculumTopic = getCurriculumTopicById(topicId);
+  if (curriculumTopic) {
+    const course = getCurriculumCourse(curriculumTopic.courseId);
+    return course ? getBetaTopic(course.categoryKey, curriculumTopic.id) : null;
   }
 
-  const topic = getCurriculumTopicById(topicId);
-  return topic ? getBetaTopic(topic.sourceCategory, topic.id) : null;
+  const supplemental = getCurriculumSupplementTopicById(topicId);
+  if (!supplemental) return null;
+  return mergeRulesIntoTopic(supplemental.categoryKey, mapSupplementTopic(supplemental));
 }
-
-export function getBetaCategories(): BetaCategory[] {
-  return calculationCategories.map((category) => {
-    const key = category.id as string;
-    const course = getCurriculumCourse(key);
-    const group: "deck" | "machine" = isMachine(key) ? "machine" : "deck";
-    const topicCount = getBetaTopicTitles(key).length;
-    return {
-      key,
-      title: course?.title ?? category.title,
-      subtitle: course?.subtitle ?? category.subtitle,
-      icon: category.icon,
-      accent: category.accent,
-      group,
-      enabled: topicCount > 0,
-      topicCount,
-      moduleCount: course?.modules.length ?? 0,
-    };
-  });
-}
-
-export const hasBetaContent = (key?: string): boolean => getBetaTopicTitles(key).length > 0;
