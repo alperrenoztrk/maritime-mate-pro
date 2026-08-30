@@ -2,9 +2,11 @@ import { ShieldAlert } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Engine Room Safety — single source course content.
- * Formulas and calculators are merged into a SINGLE list; entries carrying
- * `calculate` appear on both the Formulas and the Calculations page.
+ * Engine Room Safety — educational/reference calculations.
+ *
+ * Safety-critical calculators must never authorize work or entry. Vessel SMS,
+ * permits, approved fire-control documentation, maker instructions and the
+ * responsible officer/master remain the operational authority.
  */
 export const engineRoomSafety: CourseTopic = {
   key: "engine-room-safety",
@@ -14,7 +16,7 @@ export const engineRoomSafety: CourseTopic = {
   group: "machine",
   intro:
     "Fire and explosion risk, fixed CO₂ extinguishing, ventilation and enclosed space " +
-    "entry safety. Each formula is followed by the calculator that uses the same formula.",
+    "entry safety. Calculations are training/reference aids and do not replace approved ship procedures.",
   entries: [
     {
       id: "fire-triangle",
@@ -23,51 +25,57 @@ export const engineRoomSafety: CourseTopic = {
       formula: "Fuel + Oxygen + Heat = Fire",
       variables: [
         { symbol: "Fuel", label: "Combustible material" },
-        { symbol: "Oksijen", label: "Oxidiser (air)" },
+        { symbol: "Oxygen", label: "Oxidiser" },
         { symbol: "Heat", label: "Ignition energy" },
       ],
-      source: { code: "Fire triangle — principle of combustion", detail: "Removing one element extinguishes the fire" },
-      note: "The presence of each element is entered as 1 (present) / 0 (absent); the oxygen is taken as the ambient percentage. Fire risk exists when all three are present.",
+      source: { code: "Combustion principle", detail: "Fuel, oxidiser and sufficient ignition energy are required for combustion" },
+      note: "This is a conceptual teaching aid. A single generic oxygen percentage cannot determine whether a particular fuel/mixture can burn; flammability depends on the substance, concentration, temperature and other conditions.",
       inputs: [
         { key: "fuel", label: "Combustible Material (1 = present, 0 = absent)", unit: "", placeholder: "1" },
-        { key: "o2", label: "Oxygen Content", unit: "%", placeholder: "20.9" },
+        { key: "o2", label: "Measured Oxygen", unit: "%", placeholder: "20.9" },
         { key: "heat", label: "Ignition Source (1 = present, 0 = absent)", unit: "", placeholder: "1" },
       ],
       calculate: (v) => {
-        const fuelOk = v.fuel >= 1;
-        const oxyOk = v.o2 >= 15; // below ~15% most combustion cannot be sustained
-        const heatOk = v.heat >= 1;
-        const risk = fuelOk && oxyOk && heatOk;
-        const present = [fuelOk && "Fuel", oxyOk && "Oksijen", heatOk && "Heat"].filter(Boolean).join(" + ") || "—";
+        const fuelPresent = v.fuel >= 1;
+        const heatPresent = v.heat >= 1;
+        const oxygenPresent = v.o2 > 0;
+        const present = [fuelPresent && "Fuel", oxygenPresent && "Oxygen", heatPresent && "Heat"].filter(Boolean).join(" + ") || "—";
         return [
-          { label: "Elements Present", value: present },
-          { label: "Fire Risk", value: risk ? "PRESENT (triangle complete)" : "Absent (an element is missing)" },
+          { label: "Elements Indicated", value: present },
+          {
+            label: "Assessment",
+            value: fuelPresent && heatPresent && oxygenPresent
+              ? "Combustion elements indicated — evaluate the actual fuel/atmosphere"
+              : "One or more basic combustion elements not indicated",
+          },
         ];
       },
     },
     {
       id: "co2-quantity",
-      name: "CO₂ Quantity (by Volume)",
+      name: "CO₂ Mass from Selected Free-Gas Ratio",
       group: "Fire Safety",
-      formula: "mCO₂ = (Vhacim × %40) / 0,56 m³/kg",
+      formula: "mCO₂ = (V × selected free-gas ratio) / 0.56 m³/kg",
       variables: [
-        { symbol: "Vhacim", label: "Protected volume", unit: "m³" },
-        { symbol: "%40", label: "Minimum free CO₂ volume ratio", unit: "—" },
-        { symbol: "0,56", label: "CO₂ specific volume", unit: "m³/kg" },
-        { symbol: "mCO₂", label: "Required CO₂ mass", unit: "kg" },
+        { symbol: "V", label: "Volume used for the selected approved design method", unit: "m³" },
+        { symbol: "ratio", label: "Selected free CO₂ volume ratio", unit: "%" },
+        { symbol: "0.56", label: "Free CO₂ specific volume used by the FSS Code calculation", unit: "m³/kg" },
+        { symbol: "mCO₂", label: "Calculated CO₂ mass", unit: "kg" },
       ],
-      source: { code: "Fixed CO₂ extinguishing system (SOLAS Ch. II-2 / FSS Code)" },
-      note: "For machinery spaces the free CO₂ volume must be ≥ 40% of the gross volume; the CO₂ specific volume is 0.56 m³/kg. A standard cylinder capacity of 45 kg is assumed and the number of cylinders is rounded up.",
+      source: { code: "SOLAS II-2 / FSS Code Chapter 5", detail: "Fixed gas fire-extinguishing systems" },
+      note: "Reference calculation only. Machinery-space CO₂ sizing is not established by one universal 40% input alone; the applicable FSS Code gross-volume method, approved system design, connected casing volume and other system requirements govern. Use the ratio and volume from the vessel's approved fire-control/system documentation.",
       inputs: [
-        { key: "vol", label: "Protected Volume", unit: "m³", placeholder: "2000" },
-        { key: "ratio", label: "Free CO₂ Volume Ratio", unit: "%", placeholder: "40" },
+        { key: "vol", label: "Applicable Design Volume", unit: "m³", placeholder: "2000" },
+        { key: "ratio", label: "Selected Free CO₂ Ratio", unit: "%", placeholder: "40" },
       ],
       calculate: (v) => {
+        if (v.vol <= 0 || v.ratio <= 0) {
+          return [{ label: "Error", value: "Volume and selected ratio must be positive" }];
+        }
         const mass = (v.vol * (v.ratio / 100)) / 0.56;
-        const bottles = Math.ceil(mass / 45); // standard 45 kg cylinder
         return [
-          { label: "Required CO₂ Quantity", value: `${mass.toFixed(0)} kg` },
-          { label: "Required Number of Cylinders (45 kg)", value: `${bottles} cylinders` },
+          { label: "Calculated CO₂ Mass", value: `${mass.toFixed(0)} kg` },
+          { label: "Use", value: "Reference only — verify against the approved fixed CO₂ system" },
         ];
       },
     },
@@ -78,15 +86,15 @@ export const engineRoomSafety: CourseTopic = {
       formula: "V_foam = A × t × application rate",
       variables: [
         { symbol: "A", label: "Protected area", unit: "m²" },
-        { symbol: "t", label: "Application time", unit: "dk" },
-        { symbol: "applicationrate", label: "Application rate", unit: "L/m²·dk" },
+        { symbol: "t", label: "Application time", unit: "min" },
+        { symbol: "application rate", label: "Application rate from the applicable approved system requirement", unit: "L/m²·min" },
       ],
-      source: { code: "Fixed foam extinguishing system design (SOLAS / FSS Code)" },
-      note: "Foam solution volume = area × time × application rate (given in L; ÷1000 = m³).",
+      source: { code: "SOLAS II-2 / FSS Code", detail: "Fixed foam system — use the rate/time applicable to the approved system" },
+      note: "The arithmetic converts area × time × selected application rate to foam-solution volume. It does not establish the required regulatory application rate or system capacity for a specific ship.",
       inputs: [
         { key: "a", label: "Protected Area (A)", unit: "m²", placeholder: "300" },
-        { key: "t", label: "Application Time (t)", unit: "dk", placeholder: "5" },
-        { key: "rate", label: "Application Rate", unit: "L/m²·dk", placeholder: "6.5" },
+        { key: "t", label: "Application Time (t)", unit: "min", placeholder: "5" },
+        { key: "rate", label: "Approved Application Rate", unit: "L/m²·min", placeholder: "6.5" },
       ],
       calculate: (v) => {
         const vol = v.a * v.t * v.rate;
@@ -98,27 +106,27 @@ export const engineRoomSafety: CourseTopic = {
     },
     {
       id: "engine-room-ventilation",
-      name: "Ventilation Flow Rate",
+      name: "Ventilation Flow Estimate",
       group: "Fire Safety",
-      formula: "Q̇_air = P_engine × 2.5 ; Air changes = Q̇_air / V_space",
+      formula: "Illustrative air demand = engine power × selected factor",
       variables: [
-        { symbol: "Pmotor", label: "Total engine power", unit: "kW" },
-        { symbol: "Vhacim", label: "Machinery space volume", unit: "m³" },
-        { symbol: "Q̇_air", label: "Combustion air requirement", unit: "m³/h" },
+        { symbol: "P", label: "Total engine power", unit: "kW" },
+        { symbol: "V", label: "Machinery space volume", unit: "m³" },
       ],
-      source: { code: "Engine room ventilation — combustion air requirement", detail: "Approximately ~2.5 m³/kW·hour of air required" },
-      note: "The calculation is approximate; the manufacturer's and class rules govern.",
+      source: { code: "Engineering estimate", detail: "Manufacturer, class and approved ventilation design govern" },
+      note: "The default factor is an illustrative engineering estimate, not a statutory minimum. Use maker combustion-air data and the vessel's approved machinery-space ventilation design for operational decisions.",
       inputs: [
         { key: "p", label: "Total Engine Power", unit: "kW", placeholder: "15000" },
         { key: "vol", label: "Machinery Space Volume", unit: "m³", placeholder: "2500" },
       ],
       calculate: (v) => {
-        // Approximately ~2.5 m³/kW·h of air required per engine
-        const airForCombustion = v.p * 2.5; // m³/saat
+        if (v.vol <= 0) return [{ label: "Error", value: "Space volume must be positive" }];
+        const airForCombustion = v.p * 2.5;
         const ventChanges = airForCombustion / v.vol;
         return [
-          { label: "Combustion Air Requirement", value: `${airForCombustion.toFixed(0)} m³/h` },
-          { label: "Air Change Rate", value: `${ventChanges.toFixed(1)} /h` },
+          { label: "Illustrative Air Demand", value: `${airForCombustion.toFixed(0)} m³/h` },
+          { label: "Equivalent Air Change Rate", value: `${ventChanges.toFixed(1)} /h` },
+          { label: "Use", value: "Training estimate — not an approved ventilation set-point" },
         ];
       },
     },
@@ -126,82 +134,91 @@ export const engineRoomSafety: CourseTopic = {
       id: "lel-uel",
       name: "LEL / UEL (Explosive Range)",
       group: "Explosion Risk",
-      formula: "LEL < konsantrasyon < UEL",
+      formula: "LEL ≤ concentration ≤ UEL",
       variables: [
-        { symbol: "LEL", label: "Lower explosive limit (fuel vapour ~1%)", unit: "% by volume" },
-        { symbol: "UEL", label: "Upper explosive limit (fuel vapour ~6%)", unit: "% by volume" },
+        { symbol: "LEL", label: "Lower explosive/flammable limit for the specific substance", unit: "% by volume" },
+        { symbol: "UEL", label: "Upper explosive/flammable limit for the specific substance", unit: "% by volume" },
       ],
-      source: { code: "Explosive limits (LEL/UEL) — flammable vapour concentration" },
-      note: "If the measured vapour concentration lies between the LEL and the UEL, the mixture is explosive (dangerous).",
+      source: { code: "Flammability limits", detail: "Use substance-specific SDS/maker data and calibrated detector interpretation" },
+      note: "Values above the UEL are not 'safe': dilution with air can bring a rich mixture back through the flammable range. Confirm the actual substance, detector scale and atmosphere before interpreting readings.",
       inputs: [
         { key: "conc", label: "Measured Concentration", unit: "% by volume", placeholder: "3" },
-        { key: "lel", label: "Lower Explosive Limit (LEL)", unit: "% by volume", placeholder: "1" },
-        { key: "uel", label: "Upper Explosive Limit (UEL)", unit: "% by volume", placeholder: "6" },
+        { key: "lel", label: "Lower Flammable Limit (LFL/LEL)", unit: "% by volume", placeholder: "1" },
+        { key: "uel", label: "Upper Flammable Limit (UFL/UEL)", unit: "% by volume", placeholder: "6" },
       ],
       calculate: (v) => {
         let status: string;
-        if (v.conc < v.lel) status = "Too lean (below the LEL) — will not ignite";
-        else if (v.conc > v.uel) status = "Too rich (above the UEL) — will not ignite";
-        else status = "EXPLOSIVE RANGE — DANGEROUS";
+        if (v.conc < v.lel) status = "Below the entered LEL — verify substance, detector and changing conditions";
+        else if (v.conc > v.uel) status = "Above the entered UEL — rich mixture; may become flammable when diluted";
+        else status = "WITHIN ENTERED FLAMMABLE RANGE";
         return [
-          { label: "Konsantrasyon", value: `${v.conc} % by volume` },
+          { label: "Concentration", value: `${v.conc} % by volume` },
           { label: "Assessment", value: status },
         ];
       },
     },
     {
       id: "flash-point",
-      name: "Flash Point",
+      name: "Flash Point Check against Entered Limit",
       group: "Explosion Risk",
-      formula: "T_flash ≥ 60 °C (fuel required by SOLAS)",
+      formula: "Margin = measured flash point − entered applicable limit",
       variables: [
-        { symbol: "Tflash", label: "Flash point", unit: "°C" },
+        { symbol: "Tflash", label: "Measured/certified flash point", unit: "°C" },
+        { symbol: "Limit", label: "Applicable minimum selected from the governing requirement", unit: "°C" },
       ],
-      source: { code: "Fuel flash point requirement (SOLAS II-2/Reg.4)", detail: "HFO: ~65 °C, MGO: ~60 °C (minimum requirement)" },
-      note: "The fuel flash point must be ≥ 60 °C (exceptions such as emergency generators ≥ 43 °C). The margin of the measured value to the limit is calculated.",
+      source: { code: "SOLAS II-2/Reg.4", detail: "Fuel-oil flash-point requirements include defined exceptions and applicability" },
+      note: "The common 60 °C requirement has exceptions and application conditions. The calculator only compares against the limit entered by the user; it does not determine which regulatory limit applies to the installation.",
       inputs: [
-        { key: "tflash", label: "Measured Flash Point", unit: "°C", placeholder: "65" },
-        { key: "limit", label: "Required Minimum", unit: "°C", placeholder: "60" },
+        { key: "tflash", label: "Measured/Certified Flash Point", unit: "°C", placeholder: "65" },
+        { key: "limit", label: "Applicable Entered Minimum", unit: "°C", placeholder: "60" },
       ],
       calculate: (v) => {
         const margin = v.tflash - v.limit;
         return [
-          { label: "Margin to the Limit", value: `${margin.toFixed(1)} °C` },
-          { label: "Uygunluk", value: margin >= 0 ? "COMPLIANT" : "NON-COMPLIANT (below the limit)" },
+          { label: "Margin to Entered Limit", value: `${margin.toFixed(1)} °C` },
+          { label: "Comparison", value: margin >= 0 ? "Meets the entered minimum" : "Below the entered minimum" },
+          { label: "Regulatory Status", value: "Not determined by this comparison alone" },
         ];
       },
     },
     {
       id: "enclosed-space-oxygen",
-      name: "Enclosed Space Oxygen / Gas Check",
+      name: "Enclosed Space Atmosphere Screening",
       group: "Explosion Risk",
-      formula: "O₂ ≥ 20,9% ; H₂S < 10 ppm ; CO < 25 ppm ; LEL < %1",
+      formula: "O₂ ≈ 21% vol; LFL ≤ 1%; toxic gases ≤ 50% of the applicable OEL",
       variables: [
-        { symbol: "O₂", label: "Oxygen content", unit: "%" },
-        { symbol: "H₂S", label: "Hydrogen sulphide", unit: "ppm" },
-        { symbol: "CO", label: "Carbon monoxide", unit: "ppm" },
-        { symbol: "LEL", label: "Percentage of the lower explosive limit", unit: "%" },
+        { symbol: "O₂", label: "Oxygen content", unit: "% vol" },
+        { symbol: "LFL", label: "Flammable atmosphere reading", unit: "% LFL" },
+        { symbol: "OEL", label: "Applicable occupational exposure limit for each toxic gas", unit: "ppm or applicable unit" },
       ],
-      source: { code: "Enclosed space entry — atmosphere measurement limits (SOLAS / IMO Res.A.1050)" },
-      note: "Entry into an enclosed space must not be made unless all the limits are met.",
+      source: { code: "IMO Resolution A.1050(27)", detail: "Revised Recommendations for Entering Enclosed Spaces Aboard Ships, sections 5–8" },
+      note: "Atmosphere readings alone never authorize entry. IMO guidance also requires hazard assessment, isolation, ventilation, calibrated multi-level testing, authorization/permit, communications, attendant and rescue arrangements as applicable. National requirements and the vessel SMS may set different safe atmosphere ranges.",
       inputs: [
-        { key: "o2", label: "Measured O₂", unit: "%", placeholder: "20.8" },
-        { key: "h2s", label: "H₂S", unit: "ppm", placeholder: "0" },
-        { key: "co", label: "CO", unit: "ppm", placeholder: "5" },
-        { key: "lel", label: "LEL", unit: "%", placeholder: "0" },
+        { key: "o2", label: "Measured O₂", unit: "% vol", placeholder: "21.0" },
+        { key: "lel", label: "Flammable Gas Reading", unit: "% LFL", placeholder: "0" },
+        { key: "h2s", label: "Measured H₂S", unit: "ppm", placeholder: "0" },
+        { key: "h2sOel", label: "Applicable H₂S OEL", unit: "ppm", placeholder: "10" },
+        { key: "co", label: "Measured CO", unit: "ppm", placeholder: "5" },
+        { key: "coOel", label: "Applicable CO OEL", unit: "ppm", placeholder: "25" },
       ],
       calculate: (v) => {
-        const o2Ok = v.o2 >= 20.9;
-        const h2sOk = v.h2s < 10;
-        const coOk = v.co < 25;
-        const lelOk = v.lel < 1;
-        const safe = o2Ok && h2sOk && coOk && lelOk;
+        const o2Ok = Math.abs(v.o2 - 21) <= 0.2;
+        const lelOk = v.lel <= 1;
+        const h2sOk = v.h2s <= v.h2sOel * 0.5;
+        const coOk = v.co <= v.coOel * 0.5;
+        const atmosphericCriteriaMet = o2Ok && lelOk && h2sOk && coOk;
         return [
-          { label: "O₂ Status", value: `${v.o2}% → ${o2Ok ? "Acceptable" : "INSUFFICIENT"}` },
-          { label: "H₂S Status", value: `${v.h2s} ppm → ${h2sOk ? "Acceptable" : "DANGEROUS"}` },
-          { label: "CO Status", value: `${v.co} ppm → ${coOk ? "Acceptable" : "DANGEROUS"}` },
-          { label: "LEL Status", value: `${v.lel}% → ${lelOk ? "Acceptable" : "DANGEROUS"}` },
-          { label: "Overall Assessment", value: safe ? "ENTRY PERMITTED" : "ENTRY NOT PERMITTED" },
+          { label: "O₂ Screening", value: `${v.o2}% vol → ${o2Ok ? "near the IMO entry reference value" : "outside the entered screening band"}` },
+          { label: "Flammable Gas", value: `${v.lel}% LFL → ${lelOk ? "at/below 1% LFL" : "above 1% LFL"}` },
+          { label: "H₂S Screening", value: `${v.h2s} ppm → ${h2sOk ? "at/below 50% of entered OEL" : "above 50% of entered OEL"}` },
+          { label: "CO Screening", value: `${v.co} ppm → ${coOk ? "at/below 50% of entered OEL" : "above 50% of entered OEL"}` },
+          {
+            label: "Atmosphere Screening",
+            value: atmosphericCriteriaMet
+              ? "Entered atmospheric criteria met — this does NOT authorize entry"
+              : "Entered atmospheric criteria not met — do not treat the space as ready for normal entry",
+          },
+          { label: "Entry Authorization", value: "Must come from the vessel's enclosed-space entry procedure/permit and responsible person" },
         ];
       },
     },
