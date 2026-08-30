@@ -1,179 +1,189 @@
-# Gemi Enine Stabilite Hesaplama Sistemi
+# Maritime Mate Pro / Mariner's Book
 
-Bu proje, gemi enine stabilitesi ile ilgili tüm hesaplamaları yapabilen kapsamlı bir Python uygulamasıdır. SOLAS ve IMO kriterlerine uygun hesaplamalar yapar ve detaylı raporlama sağlar.
+Maritime Mate Pro is a React + Vite + Capacitor maritime education and onboard-reference application. The project combines deck and engine-room learning content, formulas/calculators, regulatory references, operational check material, question banks and mobile-oriented workflows in one codebase.
 
-## 🚢 Özellikler
+> **Safety boundary:** this application is an educational/reference tool. It does not replace the vessel's approved manuals, loading computer/stability booklet, maker instructions, company SMS, flag Administration requirements, class rules, Master's/Chief Engineer's orders or the current official text of IMO instruments.
 
-### Temel Stabilite Hesaplamaları
-- GM (Metasantr yüksekliği) hesaplama
-- KM ve KG hesaplamaları
-- KB ve BM ilişkisi
+## Main knowledge areas
 
-### Yük Operasyonları
-- Yükleme/tahliye sonrası yeni KG hesaplama
-- GM değişimi analizi
-- Çoklu yük operasyonları desteği
+### Deck
+- Navigation and COLREG reference
+- Bridge equipment and ECDIS/radar/AIS/GMDSS topics
+- Stability and hydrostatics
+- Cargo handling, IMSBC/Grain/IMDG reference
+- Seamanship, anchoring and mooring
+- Safety, LSA/FFA and emergency topics
+- Meteorology and marine environment
+- Communications
 
-### Meyil Hesaplamaları
-- Yük hareketi ile meyil açısı
-- Sarkaç ile meyil ölçümü
-- GZ (doğrultucu kol) hesaplama
-- Meyil momenti analizi
+### Engine room
+- Thermodynamics and fluid mechanics
+- Machine elements
+- Marine diesel engines
+- Ship and auxiliary systems
+- Fuel and lubricating-oil topics
+- Cooling/HVAC
+- Electrical and automation
+- Engine-room operations and safety
+- Maintenance and ERM
+- Energy efficiency and environmental topics
 
-### Kren/Bumba Operasyonları
-- Yük kaldırma sırasında GM değişimi
-- Kritik yükseklik analizi
-- Güvenlik kontrolü
+## Regulatory content governance
 
-### Serbest Yüzey Etkisi (FSM)
-- Tank bazlı FSM hesaplama
-- GM düzeltmesi
-- Çoklu tank analizi
+Maritime rules change and their applicability depends on vessel characteristics. Content must therefore distinguish between:
 
-### Stabilite Analizleri
-- Yalpa periyodu hesaplama
-- GZ eğrisi oluşturma
-- KN'den GZ hesaplama
-- Dinamik stabilite alanı (Simpson kuralı)
+- **Learning theory** — concepts and worked examples
+- **Reference information** — quick factual lookup
+- **Operational guidance** — procedures that still require vessel/SMS verification
+- **Regulatory information** — exact instrument/applicability must be retained
+- **Vessel/manufacturer-specific information** — never generalized as a universal IMO limit
 
-### SOLAS Kriterleri
-- Minimum GM kontrolü (0.15m / 0.30m)
-- GZ eğrisi alan kontrolleri
-- Maksimum GZ ve açı kontrolleri
+Safety-critical calculators must not return conclusions such as `SAFE`, `COMPLIANT`, `ENTRY PERMITTED` or equivalent unless the complete governing criteria are actually represented. A numeric comparison should instead state what was compared and what remains to be verified.
 
-### Özel Durumlar
-- Havuzda kritik GM hesabı
-- Yaralı stabilite (duba örneği)
-- P kuvveti (takarya tepkisi) hesabı
+### 2026 reference baseline
 
-## 🛠️ Kurulum
+The regulatory dataset is being maintained against current official IMO publications and effective amendments. Examples include:
 
-1. Python 3.8 veya üzeri sürümün yüklü olduğundan emin olun.
+- SOLAS 2024 consolidated publication baseline, with later amendments/supplements checked separately
+- Modernized GMDSS framework in force from 1 January 2024
+- GMDSS Manual 2024
+- NAVTEX Manual 2023
+- IAMSAR Manual 2025; amendments applicable from 1 January 2026
+- IMDG Code 2024 Edition, Amendment 42-24; mandatory from 1 January 2026
+- 2008 IS Code as amended
 
-2. Gerekli paketleri yükleyin:
+The repository must not treat a publication-edition label alone as proof that every embedded rule is current. Clause-level applicability remains required.
+
+## Tech stack
+
+- React 18
+- TypeScript
+- Vite
+- Capacitor 7 (Android/iOS)
+- Tailwind CSS
+- React Router
+- Supabase client
+- React Query
+- Framer Motion
+
+## Development
+
+Install dependencies:
+
 ```bash
-pip install -r requirements.txt
+npm install
 ```
 
-## 🚀 Kullanım
-
-### Streamlit Uygulaması (Web Arayüzü)
+Run the web development server:
 
 ```bash
-streamlit run streamlit_app.py
+npm run dev
 ```
 
-Uygulama varsayılan olarak `http://localhost:8501` adresinde açılacaktır.
-
-### Test ve Örnekler
-
-Test dosyasını çalıştırarak tüm hesaplama örneklerini görebilirsiniz:
+Type-check:
 
 ```bash
-python test_stability.py
+npm run typecheck
 ```
 
-### Python Modülü Olarak Kullanım
+Lint:
 
-```python
-from stability_calculator import EnineStabiliteHesaplama, YukBilgisi
-
-# Temel hesaplama
-hesaplama = EnineStabiliteHesaplama(
-    deplasman=10000,  # ton
-    km=8.5,           # m
-    kg=6.5            # m
-)
-
-print(f"GM: {hesaplama.gm} m")
-
-# Yük operasyonu
-yukler = [
-    YukBilgisi(agirlik=200, kg=12.0),
-    YukBilgisi(agirlik=150, kg=2.0)
-]
-
-yeni_kg = hesaplama.yeni_kg_hesapla(yukler)
-print(f"Yeni KG: {yeni_kg} m")
+```bash
+npm run lint
 ```
 
-## 📊 Formüller
+Production build:
 
-### Temel Formüller
-
-- **GM Hesaplama**: `GM = KM - KG`
-- **KM Hesaplama**: `KM = KB + BM`
-- **Yeni KG**: `KG_yeni = Σ(Ağırlık × KG) / Σ(Ağırlık)`
-- **GG₁ (Yük Hareketi)**: `GG₁ = (w × d) / Δ`
-- **Meyil Açısı**: `tan φ = GZ / GM`
-- **GZ Hesaplama**: `GZ = KN - KG × sin φ`
-
-### Serbest Yüzey Etkisi
-
-- **FSM (Dikdörtgen Tank)**: `FSM = (L × B³ × ρ) / 12`
-- **GM Küçülmesi**: `GG₁ = FSM / Δ`
-
-### Yalpa Periyodu
-
-- **T**: `T = C × B / √GM`
-
-## 📋 Dosya Yapısı
-
-```
-├── stability_calculator.py    # Ana hesaplama modülü
-├── streamlit_app.py          # Web arayüzü
-├── test_stability.py         # Test ve örnekler
-├── requirements.txt          # Gerekli paketler
-└── README.md                # Bu dosya
+```bash
+npm run build
 ```
 
-## 🔍 Özellik Detayları
+Native-mode build:
 
-### Streamlit Arayüzü Sekmeleri
+```bash
+npm run build:native
+```
 
-1. **Temel Hesaplamalar**: GM, KM, KG hesaplamaları ve SOLAS kontrolleri
-2. **Yük Operasyonları**: Yükleme/tahliye simülasyonları
-3. **Kren/Bumba İşlemleri**: Yük kaldırma güvenlik analizi
-4. **Serbest Yüzey Etkisi**: Tank FSM hesaplamaları
-5. **Meyil Hesaplamaları**: Meyil açısı ve yalpa periyodu
-6. **GZ Eğrisi ve SOLAS**: Stabilite eğrisi analizi
-7. **Rapor**: Detaylı stabilite raporu oluşturma
+## Validation commands
 
-### Test Fonksiyonları
+The repository includes dedicated checks for content, formulas, navigation, localization and native regressions. Useful commands include:
 
-- `test_temel_hesaplamalar()`: Temel GM, KM, KG testleri
-- `test_yuk_operasyonlari()`: Yük ekleme/çıkarma testleri
-- `test_meyil_hesaplamalari()`: Meyil açısı testleri
-- `test_bumba_kren()`: Kren operasyonu testleri
-- `test_serbest_yuzey()`: FSM hesaplama testleri
-- `test_yalpa_periyodu()`: Yalpa karakteristiği testleri
-- `test_gz_egri_solas()`: GZ eğrisi ve SOLAS testleri
-- `test_kritik_gm_havuz()`: Havuz operasyonu testleri
+```bash
+npm run test:formulas
+npm run test:validation
+npm run check:topic-coverage
+npm run check:topic-schema
+npm run check:operational-curriculum
+npm run check:curriculum-hierarchy
+npm run check:rule-integration
+npm run i18n:verify
+npm run test:native-boot
+npm run test:secure-storage
+```
 
-## 📚 Referanslar
+Run `npm run typecheck` and the relevant targeted checks before merging content or calculation changes.
 
-- SOLAS (Safety of Life at Sea) Chapter II-1
-- IMO Intact Stability Code
-- Gemi Stabilitesi Prensipleri
+## Native development
 
-## 📝 Notlar
+Synchronize Capacitor platforms:
 
-- Tüm hesaplamalar metrik sistemde yapılmaktadır
-- Açılar derece cinsinden girilir, radyana çevrilir
-- Deniz suyu yoğunluğu varsayılan: 1.025 ton/m³
-- Simpson kuralı için tek sayıda (en az 3) değer gereklidir
+```bash
+npm run cap:sync
+```
 
-## ⚠️ Uyarılar
+Build Android bundle:
 
-Bu yazılım eğitim ve referans amaçlıdır. Gerçek gemi operasyonlarında kullanmadan önce:
-- Hesaplamaları kontrol edin
-- Yetkili denizcilik otoritelerinin onayını alın
-- Güncel SOLAS ve IMO kriterlerini takip edin
+```bash
+npm run android:bundle
+```
 
-## 🤝 Katkıda Bulunma
+Build/sync iOS project:
 
-Geliştirme önerileri ve hata bildirimleri için issue açabilirsiniz.
+```bash
+npm run build:ios
+```
 
-## 📄 Lisans
+## Knowledge architecture
 
-Bu proje eğitim amaçlı olarak geliştirilmiştir.
+Course/formula content is centered under:
+
+```text
+src/data/courseContent/
+```
+
+Regulatory mapping is maintained under:
+
+```text
+src/data/compliance/
+```
+
+Operational/reference datasets such as bridge-device material and other domain data are maintained under:
+
+```text
+src/data/
+```
+
+Hydrostatic and other calculation services live under:
+
+```text
+src/services/
+```
+
+## Maritime-content contribution rules
+
+When adding or changing maritime information:
+
+1. Prefer current official IMO/ILO/flag/class/manufacturer sources over secondary summaries.
+2. Record the actual convention/code/regulation or other source context where practical.
+3. State applicability: ship type, GT, construction date, cargo, sea area, equipment configuration or other relevant condition.
+4. Do not convert company/SMS practice into a universal SOLAS/IMO requirement.
+5. Do not invent minimum/maximum values to make a calculator produce a pass/fail result.
+6. For maker-dependent machinery or bridge equipment, make the dependency explicit.
+7. For stability, cargo and life-saving compliance, direct operational verification to the vessel's approved documentation.
+8. For enclosed-space entry, gas readings alone must never authorize entry.
+9. Keep formula units explicit and dimensionally consistent.
+10. Add/update validation coverage when a safety-critical calculation changes.
+
+## Disclaimer
+
+Maritime Mate Pro can support learning, revision and structured reference, but responsibility for safe navigation, engineering operation, cargo work and statutory compliance remains with the qualified personnel using the vessel's approved procedures and authoritative documentation.
