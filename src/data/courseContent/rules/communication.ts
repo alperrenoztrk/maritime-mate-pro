@@ -3,49 +3,49 @@ import type { RuleGroup } from "@/data/courseContent/types";
 /**
  * GMDSS / radio communication rules.
  *
- * The content is based on real, cited regulations:
- *  - SOLAS Chapter IV (Global Maritime Distress and Safety System — GMDSS)
- *  - ITU Radio Regulations
- *  - IMO standart muhabere usulleri
- *
- * No invented rules; the statements are at principle level and accurate.
+ * Sea-area definitions and watchkeeping wording reflect the modernized GMDSS
+ * framework in force from 1 January 2024. Exact carriage and duplication
+ * arrangements depend on SOLAS chapter IV applicability and the ship's approved
+ * radio installation.
  */
 export const communicationRules: RuleGroup[] = [
   {
     title: "GMDSS Sea Areas and Carriage Requirements",
     source: {
       code: "SOLAS Chapter IV",
-      detail: "Global Maritime Distress and Safety System (GMDSS)",
+      detail: "Modernized GMDSS; see current IMO GMDSS guidance and COMSAR.1/Circ.32/Rev.3",
       url: "https://www.imo.org/en/OurWork/Safety/Pages/RadiocommunicationsAndSearchAndRescue.aspx",
     },
     rules: [
       {
         subtitle: "Definition of the Sea Areas",
         content: [
-          "A1: the area within the DSC (Digital Selective Calling) coverage of at least one VHF coast station; generally about 20-30 nautical miles from the coast.",
-          "A2: the area, excluding A1, within the DSC coverage of at least one MF coast station; typically about 100-150 nautical miles from the coast.",
-          "A3: the area, excluding A1 and A2, within the coverage of Inmarsat geostationary satellites (roughly between 70°N and 70°S).",
-          "A4: the areas outside A1, A2 and A3, essentially the polar regions. HF communication is mandatory there.",
+          "A1: an area within the radiotelephone coverage of at least one VHF coast station in which continuous DSC alerting is available, as defined by a Contracting Government.",
+          "A2: an area, excluding A1, within the radiotelephone coverage of at least one MF coast station in which continuous DSC alerting is available, as defined by a Contracting Government.",
+          "A3: an area, excluding A1 and A2, within the coverage of a recognized mobile satellite service supported by the ship earth station carried on board, in which continuous alerting is available.",
+          "A4: an area outside A1, A2 and A3.",
+          "Do not define A3 solely as 'Inmarsat coverage between about 70°N and 70°S'. IMO recognizes more than one mobile satellite system for GMDSS and the operational A3 area depends on the recognized service supported by the ship earth station carried.",
         ],
       },
       {
-        subtitle: "Minimum Equipment Carriage by Sea Area",
+        subtitle: "Carriage Principle by Sea Area",
         content: [
-          "All ships carry VHF DSC, a NAVTEX receiver (in areas where the NAVTEX service is provided), a SART, portable VHF sets and a satellite EPIRB.",
-          "A1: VHF DSC may be sufficient; ships proceeding beyond A1 additionally require MF or satellite equipment.",
-          "A2: VHF + MF DSC equipment.",
-          "A3: VHF + MF/HF, or a combination of VHF + MF + Inmarsat (satellite).",
-          "A4: VHF + MF/HF DSC (HF is mandatory as there is no satellite coverage).",
+          "All SOLAS ships to which chapter IV applies carry the GMDSS equipment required by the applicable sea area and regulations, including VHF DSC capability, distress locating equipment, portable survival-craft communications and means to receive Maritime Safety Information (MSI) and SAR-related information.",
+          "A1 operation relies on VHF DSC/radiotelephony together with the other chapter IV equipment applicable to the ship.",
+          "A2 operation additionally requires the applicable MF DSC/radiotelephony capability or another arrangement permitted by current SOLAS chapter IV.",
+          "A3 operation requires a recognized mobile satellite service ship earth station and/or other radio installation as permitted by the current SOLAS chapter IV carriage options and duplication requirements.",
+          "A4 operation requires MF/HF capability with the applicable DSC watchkeeping arrangements because the ship is outside A1, A2 and the supported A3 recognized mobile satellite service coverage.",
+          "The exact primary/duplicate equipment arrangement must be checked against the ship's sea-area certificate, approved radio installation and current SOLAS chapter IV requirements; this summary is not a carriage compliance checklist.",
         ],
       },
       {
         subtitle: "Basic GMDSS Functions",
         content: [
-          "Transmission of distress alerts ship to shore, shore to ship and ship to ship.",
-          "Arama-kurtarma (SAR) koordinasyon ve sahada (on-scene) muhabere.",
-          "Locating signals (homing — SART, AIS-SART).",
-          "Broadcast of Maritime Safety Information (MSI) and general communications.",
-          "Bridge-to-bridge communications.",
+          "Transmission and reception of distress alerts by the methods required for the sea area and equipment fitted.",
+          "Search-and-rescue (SAR) coordinating communications and on-scene communications.",
+          "Locating and homing functions using approved search-and-rescue locating devices such as radar SART or AIS-SART, as fitted.",
+          "Reception of Maritime Safety Information (MSI) and SAR-related information.",
+          "General radiocommunications and bridge-to-bridge communications.",
         ],
       },
     ],
@@ -54,93 +54,94 @@ export const communicationRules: RuleGroup[] = [
     title: "Distress, Urgency and Safety Communications",
     source: {
       code: "ITU Radio Regulations",
-      detail: "Articles 32-33: distress, urgency and safety priorities",
+      detail: "Distress, urgency and safety priorities and procedures",
     },
     rules: [
       {
         subtitle: "Order of Priority and Signal Words",
         content: [
-          "MAYDAY (distress): indicates that a vessel or person is in grave and imminent danger and requires immediate assistance; it has the highest priority.",
-          "PAN-PAN (urgency): indicates a very urgent message concerning the safety of a vessel or person without imminent danger (e.g. medical assistance, steering failure).",
-          "SÉCURITÉ (safety): indicates messages concerning navigational safety or important meteorological warnings.",
-          "The signal word is repeated three times at the start of the call.",
+          "MAYDAY (distress): indicates grave and imminent danger to a ship, aircraft, other vehicle or person and a requirement for immediate assistance; distress has the highest priority.",
+          "PAN-PAN (urgency): indicates a very urgent message concerning the safety of a ship, aircraft, other vehicle or person where distress priority is not justified.",
+          "SÉCURITÉ (safety): indicates an important navigational or meteorological warning or another safety communication.",
+          "The spoken signal word is normally repeated three times at the start of the radiotelephony call in accordance with the applicable procedure.",
         ],
       },
       {
-        subtitle: "MAYDAY Call Format",
+        subtitle: "MAYDAY Message Content",
         content: [
-          "\"MAYDAY\" is spoken three times.",
-          "\"THIS IS\" followed by the vessel's name/call sign/MMSI is repeated three times.",
-          "The position of the vessel in distress is given (latitude/longitude, or a bearing and distance from a prominent point).",
-          "The nature of the distress (fire, sinking, collision etc.) and the kind of assistance required are stated.",
-          "The number of persons on board and any other useful information may be added; the message ends with \"OVER\".",
+          "A radiotelephony distress call/message identifies the distress priority, the station in distress and its position, then states the nature of distress and assistance required.",
+          "Include persons on board and other information useful to SAR when relevant and available.",
+          "Where a DSC distress alert has been transmitted, the subsequent distress traffic is conducted on the associated radiotelephony frequency/channel or other frequency directed by the coordinating station.",
         ],
       },
       {
-        subtitle: "Distress Frequencies",
+        subtitle: "Common Distress and Calling Frequencies",
         content: [
-          "VHF Channel 16 (156.8 MHz): the radiotelephone distress, safety and calling frequency.",
-          "VHF Channel 70 (156.525 MHz): used only for VHF DSC distress and safety calls; no voice communication.",
-          "MF 2182 kHz: the radiotelephone distress frequency; MF 2187.5 kHz: the DSC distress frequency.",
-          "Distress traffic control is normally exercised by the station coordinating the incident (RCC/CRS).",
+          "VHF Channel 70 (156.525 MHz): DSC only; voice traffic is not permitted on Channel 70.",
+          "VHF Channel 16 (156.8 MHz): radiotelephony distress, urgency, safety and calling in accordance with the Radio Regulations and local requirements.",
+          "MF 2187.5 kHz: DSC distress and safety frequency; MF 2182 kHz: associated radiotelephony distress and safety frequency.",
+          "MF/HF GMDSS uses additional DSC and radiotelephony frequencies. The frequencies watched and used depend on sea area, time, position, equipment and the current GMDSS watchkeeping requirements.",
         ],
       },
     ],
   },
   {
-    title: "DSC, MSI ve NAVTEX",
+    title: "DSC, MSI and NAVTEX",
     source: {
-      code: "ITU Radio Regulations",
-      detail: "The DSC system; IMO NAVTEX/MSI principles",
+      code: "ITU Radio Regulations / IMO NAVTEX Manual",
+      detail: "DSC procedures; MSI reception; NAVTEX Manual 2023 framework",
     },
     rules: [
       {
         subtitle: "Digital Selective Calling (DSC)",
         content: [
-          "DSC is used to send distress alerts and establish calls with predefined digital messages; every station has a unique 9-digit MMSI number.",
-          "After a distress alert is sent, communications are moved to an appropriate working frequency (VHF 16 or MF 2182 kHz).",
-          "Where possible, the nature of the distress and the vessel's position should be entered manually; otherwise the system sends an \"undesignated\" alert.",
+          "DSC is used for automated alerting and call establishment for distress, urgency, safety and routine communications as applicable. Maritime stations are identified by an MMSI.",
+          "A DSC distress alert is followed by distress communications on the appropriate associated frequency/channel unless another working frequency is directed.",
+          "Position and time should be supplied automatically from the ship's navigation source where required and verified; nature of distress is selected when time and circumstances permit.",
         ],
       },
       {
         subtitle: "NAVTEX and Maritime Safety Information (MSI)",
         content: [
-          "NAVTEX is an automatic narrow band direct printing (NBDP) service on 518 kHz (international, in English) and 490 kHz (in the national language).",
-          "Typical coverage is about 200-400 nautical miles from the coast; messages with the identifiers A, B, C, D and L (navigational/meteorological warnings, SAR information) cannot be rejected and are always printed.",
-          "Offshore MSI is provided in areas A3/A4 by the satellite based Enhanced Group Call (EGC / SafetyNET) service.",
+          "NAVTEX is an automatic service for promulgation of MSI and SAR-related information. International NAVTEX normally uses 518 kHz in English; other frequencies/services may be used for national NAVTEX.",
+          "NAVTEX subject indicator characters A (navigational warnings), B (meteorological warnings), D (SAR information and piracy/armed-attack warnings) and L (additional navigational warnings) cannot be deselected on compliant receivers.",
+          "Subject indicator C (ice reports) is not one of the mandatory non-deselectable categories; it may be deselected where the receiver and operational requirements permit.",
+          "Outside NAVTEX coverage, MSI and SAR-related information may be received through the recognized mobile satellite service or other approved means fitted for the ship and sea area (for example SafetyNET/SafetyCast services as applicable).",
         ],
       },
     ],
   },
   {
-    title: "EPIRB / SART, the Radio Log and False Alerts",
+    title: "EPIRB / SART, Radio Watchkeeping and False Alerts",
     source: {
-      code: "SOLAS Chapter IV",
-      detail: "Regulations 15-17: maintenance, watchkeeping and records; ITU procedures",
+      code: "SOLAS Chapter IV / ITU Radio Regulations",
+      detail: "Current GMDSS watchkeeping, records, maintenance and false-alert procedures",
     },
     rules: [
       {
-        subtitle: "EPIRB and SART Carriage and Testing",
+        subtitle: "EPIRB and Search-and-Rescue Locating Devices",
         content: [
-          "The satellite EPIRB operates through the 406 MHz Cospas-Sarsat system; it is buoyant, fitted with a float-free arrangement and activates automatically when immersed.",
-          "The SART (Search and Rescue Transponder) shows the position of the liferaft/vessel as a line of dots on a 9 GHz (X-band) radar display; an AIS-SART instead broadcasts the position over AIS.",
-          "The EPIRB and SART are tested regularly using the built-in test function; the battery expiry date and the release mechanism are checked periodically.",
+          "406 MHz satellite EPIRBs operate through the Cospas-Sarsat system and must be registered, maintained and tested in accordance with the approved equipment instructions and applicable SOLAS requirements.",
+          "Radar SART responds to 9 GHz X-band radar interrogation. AIS-SART is a different device and transmits search-and-rescue locating information over AIS.",
+          "Built-in tests must be performed only in the approved test mode. Battery and float-free/release arrangements are checked against their marked expiry/service dates and the ship's maintenance schedule.",
         ],
       },
       {
         subtitle: "Radio Watchkeeping and the Log",
         content: [
-          "While at sea, ships maintain a continuous watch on VHF Channel 70, on MF/HF DSC 2187.5 kHz in the relevant areas, and on satellite EGC.",
-          "GMDSS related events are entered in the Radio Log: summaries of distress/urgency/safety traffic, equipment tests, battery checks and significant incidents.",
-          "To keep the equipment operational, the appropriate method is chosen from at-sea repair, shore-based maintenance or duplication of equipment.",
+          "At sea, maintain the radio watches required by SOLAS chapter IV for the equipment and sea area. VHF DSC watch on Channel 70 is a core requirement for SOLAS GMDSS ships.",
+          "Where MF DSC watch is required, 2187.5 kHz is monitored. For A4 MF/HF installations, continuous DSC watch includes 2187.5 kHz and 8414.5 kHz and, depending on time of day and geographical position, at least one of 4207.5, 6312, 12577 or 16804.5 kHz, in accordance with current GMDSS requirements.",
+          "Maintain the required means of receiving MSI and SAR-related information for the area in which the ship is navigating.",
+          "Enter distress, urgency and safety communications and other records required by SOLAS/Radio Regulations/ship procedures in the radio log, including relevant equipment tests and defects.",
+          "Maintenance availability is achieved by the methods applicable to the ship, such as duplication of equipment, shore-based maintenance and/or at-sea electronic maintenance as required by the regulations and sea area.",
         ],
       },
       {
         subtitle: "Cancelling a False Distress Alert",
         content: [
-          "If a distress alert is transmitted inadvertently it must be cancelled immediately; the alert must never be ignored.",
-          "A false DSC alert is cancelled by voice on the relevant frequency (e.g. VHF 16), giving the vessel's name, call sign/MMSI and the words \"cancel my distress alert\".",
-          "False alerts sent via Inmarsat or an EPIRB are cancelled by notifying the relevant coast control station/RCC.",
+          "An inadvertently transmitted distress alert must be cancelled promptly using the procedure applicable to the equipment and service; it must not simply be ignored.",
+          "For a VHF/MF/HF DSC false alert, reset the equipment as appropriate and broadcast a cancellation on the associated distress radiotelephony frequency/channel, identifying the ship and the false alert in accordance with the prescribed procedure.",
+          "For satellite or EPIRB false alerts, notify the appropriate coast station, service provider and/or RCC using the approved cancellation procedure as soon as possible.",
         ],
       },
     ],
