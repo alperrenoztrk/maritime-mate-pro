@@ -1,143 +1,138 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
 /**
- * Cargo handling and stowage rules.
+ * Cargo handling and stowage reference.
  *
- * The content is taken from real, cited regulations:
- *  - IMSBC Code (International Maritime Solid Bulk Cargoes Code)
- *  - International Grain Code
- *  - IMDG Code (dangerous goods)
- *  - CSS Code / Annex 13 (cargo securing, lashing)
- *  - ISGOTT and terminal procedures
- *  - SOLAS gereklilikleri (VGM, CSM)
- *  - MARPOL Annex I/II/V (cargo residues)
- *
- * No invented rules; the references have been preserved.
+ * Apply the exact cargo schedule, shipper documentation, approved Cargo Securing
+ * Manual/Grain Loading Manual, vessel limitations and current statutory edition.
+ * Summaries below are not cargo-acceptance certificates or loading permission.
  */
 export const cargoRules: RuleGroup[] = [
   {
     title: "IMSBC Code — Solid Bulk Cargoes",
     source: {
       code: "IMSBC Code",
-      detail: "International Maritime Solid Bulk Cargoes Code (SOLAS VI/VII)",
+      detail: "International Maritime Solid Bulk Cargoes Code (SOLAS Chapters VI/VII) — use the current applicable schedule/amendments",
     },
     rules: [
       {
-        subtitle: "Carriage Requirements and Declarations",
+        subtitle: "Cargo Information and Classification",
         content: [
-          "Transportable Moisture Limit (TML) and Flow Moisture Point (FMP) checks are mandatory.",
-          "The cargo must be classified correctly (Group A: may liquefy, Group B: chemical hazard, Group C: neither A nor B).",
-          "The shipper's declaration and the certificates (TML, moisture content) must be complete.",
-          "The special carriage requirements and hazardous properties (BCSN — Bulk Cargo Shipping Name) must be taken into account.",
+          "Before loading, the master must receive the cargo information required by SOLAS/IMSBC in sufficient time to take necessary precautions for proper stowage and safe carriage.",
+          "Use the exact Bulk Cargo Shipping Name (BCSN), cargo group and individual schedule. Group A cargoes present a liquefaction/dynamic-separation hazard; Group B cargoes possess chemical hazards; Group C cargoes are neither Group A nor Group B under the Code classification.",
+          "TML/FMP documentation is not universally required for every bulk cargo. Moisture-content and TML requirements apply to relevant Group A cargoes in accordance with the Code and the cargo's schedule.",
+          "Required test certificates, sampling dates, moisture declarations and other shipper information must meet the Code's timing/method requirements for the specific cargo.",
         ],
       },
       {
-        subtitle: "Liquefaction Risk",
+        subtitle: "Liquefaction / Dynamic Separation Risk",
         content: [
-          "For Group A cargoes the actual moisture content must be below the TML; otherwise the cargo must not be loaded.",
-          "The can test may be used on board as a quick check of the tendency to liquefy.",
-          "A liquefied cargo behaves like a free surface and can cause a sudden shift and capsize; loading must be refused.",
+          "Where the Code requires TML control, cargo must not be accepted for loading when the certified moisture content exceeds the applicable TML, except where an alternative carriage provision expressly permitted by the Code applies.",
+          "An onboard 'can test' is only a supplementary indication of possible excess moisture. It does not replace the shipper's valid certificates, laboratory testing or the master's obligations under the IMSBC Code.",
+          "If visual observations, can-test indications, weather exposure or cargo condition create doubt about the validity of the declared moisture condition, stop/withhold acceptance and resolve the concern through the Code/SMS process before continuing.",
+          "Liquefaction or dynamic separation can cause rapid cargo shift and severe loss of stability. Response must follow the cargo schedule, vessel SMS and master's authority; a simplified app calculation must not authorize loading.",
         ],
       },
     ],
   },
   {
-    title: "International Grain Code — Grain Cargoes",
+    title: "International Grain Code — Grain in Bulk",
     source: {
       code: "International Grain Code",
-      detail: "SOLAS Chapter VI, Part C",
+      detail: "SOLAS Chapter VI, Part C — use approved ship-specific grain information",
     },
     rules: [
       {
-        subtitle: "Grain Stability Criteria",
+        subtitle: "Stability Criteria",
         content: [
-          "Corrected GM (GM_corr) ≥ 0.30 m (including free surface and grain shift).",
-          "The angle of heel due to grain shift must be ≤ 12° (or the deck edge immersion angle, whichever is less).",
-          "The residual area under the GZ curve must be ≥ 0.075 m·rad.",
+          "For a loading condition subject to the Grain Code, the corrected initial GM after applicable free-surface effects must be at least 0.30 m.",
+          "The angle of heel due to the assumed grain-shift moment must not exceed 12° or, where less, the angle at which the deck edge is immersed.",
+          "The residual area between the heeling-arm and righting-arm curves, up to the prescribed limiting angle, must be at least 0.075 m·rad.",
+          "All criteria are applied together using the approved grain-heeling moments and ship stability data; meeting one number alone does not establish compliance.",
         ],
       },
       {
-        subtitle: "Loading, Trimming and Documentation",
+        subtitle: "Loading and Documentation",
         content: [
-          "The Document of Authorization (DOA) and the approved Grain Loading Manual must be carried on board.",
-          "Trimming and heeling moment calculations must be carried out for both filled and partly filled holds.",
-          "The void spaces and shifting moments are taken from the tables in the regulation.",
+          "Use the ship's approved grain loading information and Document of Authorization where required by the Code/Administration.",
+          "Filled and partly filled compartments must be assessed using the applicable assumed volumetric heeling moments and required securing/trimming arrangements.",
+          "Any exemptions, specially suitable compartments or alternative arrangements must be supported by the exact approved documentation; they must not be inferred from a generic summary.",
         ],
       },
     ],
   },
   {
-    title: "IMDG Code — Dangerous Goods",
+    title: "IMDG Code — Dangerous Goods in Packaged Form",
     source: {
-      code: "IMDG Code",
-      detail: "International Maritime Dangerous Goods Code (SOLAS VII / MARPOL Annex III)",
+      code: "IMDG Code 2024 Edition (Amendment 42-24)",
+      detail: "Mandatory from 1 January 2026 (SOLAS VII / MARPOL Annex III)",
     },
     rules: [
       {
         subtitle: "Classification and Documentation",
         content: [
-          "Dangerous goods are divided into 9 classes and identified by a UN number and a Proper Shipping Name.",
-          "The Dangerous Goods Declaration and the Container/Vehicle Packing Certificate must be complete.",
-          "The marking, labelling and placarding requirements must be met.",
+          "Dangerous goods must be classified, identified and documented using the applicable UN number, Proper Shipping Name, class/division, packing group where assigned, marine-pollutant status and other particulars required by the current IMDG Code.",
+          "Packages, IBCs, tanks, freight containers and cargo transport units must meet the applicable packing, marking, labelling, placarding and certification requirements.",
+          "Dangerous-goods transport documentation and, where applicable, the container/vehicle packing certificate must be complete and consistent with the actual cargo.",
         ],
       },
       {
-        subtitle: "Stowage and Segregation",
+        subtitle: "Stowage, Segregation and Emergency Information",
         content: [
-          "The stowage and segregation tables (away from / separated from) must be complied with.",
-          "The manifest/Dangerous Goods List and the stowage plan must be available on board.",
-          "The EmS (Emergency Schedules) and the MFAG must be carried for emergency response to fire and spillage.",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Cargo Securing — CSS Code and CSM",
-    source: {
-      code: "CSS Code / Annex 13",
-      detail: "Cargo Stowage and Securing; Cargo Securing Manual (SOLAS VI/5, VII/5)",
-    },
-    rules: [
-      {
-        subtitle: "Principles of Lashing Calculations",
-        content: [
-          "The acceleration factors (longitudinal, transverse, vertical) are selected from the Annex 13 tables according to the ship's length and service speed.",
-          "The MSL (Maximum Securing Load) and the friction coefficients (steel/steel ≈ 0.10, steel/timber ≈ 0.30) are taken into account.",
-          "The methods and equipment set out in the approved Cargo Securing Manual must be used.",
-        ],
-      },
-      {
-        subtitle: "VGM and Container Cargoes",
-        content: [
-          "The VGM (Verified Gross Mass) is mandatory for container shipments (SOLAS VI/2).",
-          "The stowage plan must not exceed the stack weight and lashing limits.",
-          "The stability booklet limits and the line of sight requirements (SOLAS V/22) must be maintained.",
+          "Apply the individual Dangerous Goods List entry plus the current stowage and segregation provisions; generic phrases such as 'away from' or 'separated from' are not interchangeable and have defined meanings.",
+          "The special list/manifest or stowage plan required by SOLAS must identify dangerous goods and their location on board and be available for emergency use.",
+          "Use the current IMDG Code Supplement emergency information, including EmS and MFAG where applicable, together with the vessel's emergency procedures.",
         ],
       },
     ],
   },
   {
-    title: "Tanker ve Terminal — ISGOTT",
+    title: "Cargo Securing — CSS Code and Approved CSM",
     source: {
-      code: "ISGOTT",
-      detail: "International Safety Guide for Oil Tankers and Terminals",
+      code: "CSS Code / Cargo Securing Manual",
+      detail: "SOLAS Chapters VI/VII and the ship's approved Cargo Securing Manual",
     },
     rules: [
       {
-        subtitle: "Ship/Shore Interface and Safety Checks",
+        subtitle: "Securing Principles",
         content: [
-          "The Ship/Shore Safety Checklist must be completed before loading/discharging.",
-          "Gas measurements must be taken before the manifold is opened.",
-          "Hot work permits must be issued in coordination with the terminal.",
-          "The Emergency Shutdown (ESD) procedures must be ready.",
+          "Cargo must be stowed and secured throughout the voyage in accordance with the ship's approved Cargo Securing Manual (CSM) and the requirements applicable to the cargo and securing arrangement.",
+          "When a CSS Code calculation method is used, acceleration factors, MSL/CS values, friction coefficients, geometry and safety factors must come from the applicable method/approved CSM and the actual materials/conditions.",
+          "Do not treat generic friction coefficients such as steel/steel 0.10 or steel/timber 0.30 as universally valid; surface condition, dunnage material, contamination and the approved calculation method govern.",
         ],
       },
       {
-        subtitle: "Static Electricity and Inert Gas",
+        subtitle: "Packed Containers and VGM",
         content: [
-          "The tank atmosphere must be kept at O₂ ≤ 8% by volume with the inert gas system.",
-          "A low initial loading rate is used at the start of loading because of the static accumulation risk.",
-          "The bonding/earthing rules and the prevention of splash filling must be observed.",
+          "A packed container subject to SOLAS VI/2 must have a verified gross mass (VGM) obtained by an approved method before it is loaded, subject to the regulation's defined scope/exceptions.",
+          "Container stack weights, lashing forces, permissible positions and any operational restrictions must remain within the approved loading/securing system limits.",
+          "Cargo stowage must also preserve applicable stability, visibility, access, fire-safety and dangerous-goods requirements.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Oil Tanker / Terminal Interface — ISGOTT and Ship/Terminal Procedures",
+    source: {
+      code: "ISGOTT / applicable SOLAS, MARPOL and terminal requirements",
+      detail: "Industry guidance must be used together with statutory and ship/terminal procedures",
+    },
+    rules: [
+      {
+        subtitle: "Ship/Shore Interface",
+        content: [
+          "Complete the applicable ship/shore safety checklist and establish agreed communications, transfer rates/pressures, tank plan, emergency-stop arrangements and responsibilities before cargo transfer.",
+          "Atmosphere testing, line-up, valve status, scupper/containment arrangements and pollution-prevention readiness must be completed as required by the cargo operation, terminal rules and vessel SMS.",
+          "Hot work or other incompatible simultaneous operations require the applicable permit, risk assessment and ship/terminal authorization; a generic checklist item is not permission to proceed.",
+          "Emergency shutdown/stop actions must match the actual ship/shore system and agreed procedure; ESD capability and terminology vary by tanker/terminal installation.",
+        ],
+      },
+      {
+        subtitle: "Inert Gas and Static-Electricity Controls",
+        content: [
+          "For tanks/ships to which SOLAS inert-gas requirements apply, maintain the cargo-tank atmosphere and inert-gas supply within the applicable statutory and vessel-system oxygen/pressure limits; the commonly cited ≤8% tank oxygen criterion is not a universal rule for every tanker operation or vessel.",
+          "Initial loading rates, splash-filling precautions, settling times, sampling/gauging restrictions and static-electricity controls depend on cargo conductivity, tank condition, operation and ISGOTT/terminal procedures.",
+          "Electrical isolation/continuity arrangements at the ship/shore connection must follow the approved terminal/ship interface practice; do not improvise bonding or earthing arrangements from a generic app statement.",
         ],
       },
     ],
@@ -145,16 +140,16 @@ export const cargoRules: RuleGroup[] = [
   {
     title: "Cargo Residues — MARPOL",
     source: {
-      code: "MARPOL Annex I / II / V",
-      detail: "Discharge rules for oil, noxious liquid substances and solid waste",
+      code: "MARPOL Annexes I / II / V",
+      detail: "Use the annex, cargo/product category, ship type, voyage area and approved procedures applicable to the residue",
     },
     rules: [
       {
         subtitle: "Discharge and Record Keeping",
         content: [
-          "The discharge criteria for oily cargo residues (Annex I) and NLS residues (Annex II) must be complied with.",
-          "The Cargo Record Book / Oil Record Book Part II entries must be maintained.",
-          "A Garbage Record Book and proper disposal are required for solid cargo residues (Annex V).",
+          "Oil cargo residues/slops, noxious liquid substance residues and solid-bulk cargo residues are governed by different MARPOL annexes and conditions; do not apply one discharge rule across cargo types.",
+          "Make Oil Record Book Part II and/or Cargo Record Book entries exactly when required for the ship and operation, using the approved procedures and correct operation codes.",
+          "Annex V cargo-residue discharge depends on factors including whether the residue is harmful to the marine environment (HME), cleaning agents/additives, special-area status and the complete Annex V conditions.",
         ],
       },
     ],
