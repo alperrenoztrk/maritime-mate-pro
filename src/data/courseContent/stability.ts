@@ -3,11 +3,11 @@ import { HydrostaticCalculations } from "@/services/hydrostaticCalculations";
 import type { CourseTopic } from "./types";
 
 /**
- * Stability — single source course content.
- * Real formulas (IMO IS Code / SOLAS / Grain Code) and the calculators LINKED to
- * them in a single list. Where possible the calculators delegate to the existing
- * `HydrostaticCalculations` service methods, so the formula text and the
- * calculation use exactly the same mathematics.
+ * Stability — educational/reference course content.
+ *
+ * Formula tools support training and transparent arithmetic. They do not replace
+ * the vessel's approved stability booklet/loading computer, Grain Loading Manual,
+ * class/Administration requirements or the complete applicable IMO criteria.
  */
 export const stability: CourseTopic = {
   key: "stability",
@@ -16,8 +16,8 @@ export const stability: CourseTopic = {
   accent: "from-blue-500 via-indigo-500 to-blue-600",
   group: "deck",
   intro:
-    "Transverse/longitudinal equilibrium, free surface effect and IMO stability criteria. " +
-    "Each formula is followed by the tool that calculates it.",
+    "Transverse/longitudinal equilibrium, free surface effect and IMO stability reference calculations. " +
+    "Full loading-condition compliance must be verified with the vessel's approved stability information.",
   advancedTool: { label: "Advanced Stability Tools", href: "/stability/calculations" },
   entries: [
     {
@@ -29,17 +29,21 @@ export const stability: CourseTopic = {
         { symbol: "KM", label: "Height from keel to metacentre", unit: "m" },
         { symbol: "KG", label: "Height from keel to centre of gravity", unit: "m" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "MSC.267(85), Part A" },
+      source: { code: "IMO 2008 IS Code", detail: "Initial GM is only one part of the applicable stability criteria" },
+      note: "A positive or numerically large GM does not by itself establish a compliant or safe loading condition. GZ-area/lever criteria, downflooding, weather criterion, free-surface corrections and ship-specific approved limits must also be checked.",
       inputs: [
         { key: "km", label: "KM", unit: "m", placeholder: "8.5" },
         { key: "kg", label: "KG", unit: "m", placeholder: "7.2" },
       ],
       calculate: (v) => {
         const gm = v.km - v.kg;
-        const durum = gm > 0.15 ? "Adequate (≥0.15 m)" : gm > 0 ? "Low" : "NEGATIVE — unstable";
+        const indicator = gm <= 0
+          ? "Non-positive initial GM indicated — investigate the loading condition immediately"
+          : "Positive initial GM indicated — verify the complete approved stability criteria";
         return [
           { label: "GM", value: `${gm.toFixed(3)} m` },
-          { label: "Durum", value: durum },
+          { label: "Initial GM Indicator", value: indicator },
+          { label: "Compliance", value: "Not determined from GM alone" },
         ];
       },
     },
@@ -52,14 +56,15 @@ export const stability: CourseTopic = {
         { symbol: "GM", label: "Metacentric height", unit: "m" },
         { symbol: "θ", label: "Heel angle (< ~15°)", unit: "°" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Small angle approximation" },
+      source: { code: "Ship stability", detail: "Small-angle approximation" },
+      note: "Small-angle approximation only. Use the vessel's approved GZ/KN data for actual stability assessment at larger angles.",
       inputs: [
         { key: "gm", label: "GM", unit: "m", placeholder: "1.2" },
         { key: "theta", label: "Heel Angle (θ)", unit: "°", placeholder: "10" },
       ],
       calculate: (v) => {
         const gz = v.gm * Math.sin((v.theta * Math.PI) / 180);
-        return [{ label: "GZ", value: `${gz.toFixed(3)} m` }];
+        return [{ label: "Approximate GZ", value: `${gz.toFixed(3)} m` }];
       },
     },
     {
@@ -72,7 +77,7 @@ export const stability: CourseTopic = {
         { symbol: "KG", label: "Height of centre of gravity", unit: "m" },
         { symbol: "θ", label: "Heel angle", unit: "°" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "MSC.267(85), 2.2" },
+      source: { code: "Ship stability / approved cross curves", detail: "Use KN values applicable to the actual displacement/condition" },
       inputs: [
         { key: "kn", label: "KN", unit: "m", placeholder: "3.2" },
         { key: "kg", label: "KG", unit: "m", placeholder: "7.2" },
@@ -93,7 +98,7 @@ export const stability: CourseTopic = {
         { symbol: "d", label: "Vertical shift distance", unit: "m" },
         { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Weight movement effect" },
+      source: { code: "Ship stability", detail: "Vertical weight-shift moment relation" },
       inputs: [
         { key: "w", label: "Weight (w)", unit: "t", placeholder: "50" },
         { key: "d", label: "Shift Distance (d)", unit: "m", placeholder: "4" },
@@ -115,7 +120,8 @@ export const stability: CourseTopic = {
         { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GM", label: "Metacentric height", unit: "m" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Fixed weight heel relation" },
+      source: { code: "Ship stability", detail: "Small-angle fixed-weight heel relation" },
+      note: "This relation is a simplified small-angle calculation. Use approved stability data for operational loading decisions.",
       inputs: [
         { key: "w", label: "Weight (w)", unit: "t", placeholder: "80" },
         { key: "y", label: "Transverse Distance (y)", unit: "m", placeholder: "6" },
@@ -124,7 +130,7 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const theta = HydrostaticCalculations.calculateListAngleFromShift(v.w, v.y, v.disp, v.gm);
-        return [{ label: "Heel Angle (θ)", value: `${theta.toFixed(2)} °` }];
+        return [{ label: "Approximate Heel Angle (θ)", value: `${theta.toFixed(2)} °` }];
       },
     },
     {
@@ -134,11 +140,12 @@ export const stability: CourseTopic = {
       formula: "GG₁ = w × (h_head − h_load) / Δ",
       variables: [
         { symbol: "w", label: "Lifted load", unit: "t" },
-        { symbol: "hcunda", label: "Davit/derrick head height", unit: "m" },
+        { symbol: "h_head", label: "Davit/derrick head height", unit: "m" },
         { symbol: "h_load", label: "Initial height of the load", unit: "m" },
         { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Load lifting effect (KG rise)" },
+      source: { code: "Ship stability", detail: "Suspended-weight effect" },
+      note: "When a weight is suspended, treat its effective centre as the point of suspension for the applicable stability calculation. Verify crane/lifting limits and approved loading data separately.",
       inputs: [
         { key: "w", label: "Load (w)", unit: "t", placeholder: "20" },
         { key: "hhook", label: "Derrick Head Height", unit: "m", placeholder: "18" },
@@ -152,23 +159,32 @@ export const stability: CourseTopic = {
     },
     {
       id: "angle-of-loll",
-      name: "Angle of Loll",
+      name: "Angle of Loll — Vessel-Specific Determination",
       group: "Transverse Equilibrium",
-      formula: "φloll = arccos(KG / KM)",
+      formula: "Determine from the actual GZ / cross-curve relationship for the negative-initial-GM condition",
       variables: [
         { symbol: "KG", label: "Height of centre of gravity", unit: "m" },
-        { symbol: "KM", label: "Metacentre height", unit: "m" },
+        { symbol: "KM", label: "Initial transverse metacentre height at the condition", unit: "m" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Negative/near-zero initial GM" },
-      note: "Meaningful only when KG ≥ KM (negative initial GM).",
+      source: { code: "Ship stability", detail: "Angle of loll occurs after negative initial GM until the hull develops a positive righting lever" },
+      note: "There is no general φ = arccos(KG/KM) angle-of-loll formula. KG and KM alone cannot determine the loll angle because KM/GZ varies with heel and hull geometry. Use the vessel's actual GZ/KN/cross-curve data or approved stability software.",
       inputs: [
         { key: "kg", label: "KG", unit: "m", placeholder: "8.6" },
-        { key: "km", label: "KM", unit: "m", placeholder: "8.5" },
+        { key: "km", label: "Initial KM", unit: "m", placeholder: "8.5" },
       ],
       calculate: (v) => {
-        const loll = HydrostaticCalculations.calculateAngleOfLoll(v.kg, v.km);
-        if (loll <= 0) return [{ label: "Result", value: "Vessel stable (KG < KM), no loll" }];
-        return [{ label: "Angle of Loll", value: `${loll.toFixed(2)} °` }];
+        const gm = v.km - v.kg;
+        if (gm >= 0) {
+          return [
+            { label: "Initial GM", value: `${gm.toFixed(3)} m` },
+            { label: "Assessment", value: "Negative initial GM is not indicated by the entered KG/KM values" },
+          ];
+        }
+        return [
+          { label: "Initial GM", value: `${gm.toFixed(3)} m` },
+          { label: "Assessment", value: "Negative initial GM indicated" },
+          { label: "Angle of Loll", value: "Cannot be calculated from KG and KM alone — use actual GZ/KN data" },
+        ];
       },
     },
     {
@@ -180,7 +196,7 @@ export const stability: CourseTopic = {
         { symbol: "Moment", label: "Longitudinal moment causing trim", unit: "t·m" },
         { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
       ],
-      source: { code: "Hydrostatics — trim calculation" },
+      source: { code: "Ship hydrostatics — trim calculation" },
       inputs: [
         { key: "moment", label: "Trimming Moment", unit: "t·m", placeholder: "1500" },
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
@@ -198,7 +214,7 @@ export const stability: CourseTopic = {
       id: "parallel-sinkage",
       name: "Parallel Sinkage/Rise",
       group: "Longitudinal Equilibrium",
-      formula: "Batma (cm) = w / TPC",
+      formula: "Draft change (cm) = w / TPC",
       variables: [
         { symbol: "w", label: "Weight loaded/discharged", unit: "t" },
         { symbol: "TPC", label: "Tonnes per centimetre", unit: "t/cm" },
@@ -211,7 +227,7 @@ export const stability: CourseTopic = {
       calculate: (v) => {
         if (v.tpc <= 0) return [{ label: "Error", value: "TPC must be positive" }];
         const cm = v.w / v.tpc;
-        return [{ label: "Parallel Sinkage", value: `${cm.toFixed(1)} cm` }];
+        return [{ label: "Parallel Draft Change", value: `${cm.toFixed(1)} cm` }];
       },
     },
     {
@@ -222,9 +238,10 @@ export const stability: CourseTopic = {
       variables: [
         { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
         { symbol: "Trim", label: "Initial trim", unit: "cm" },
-        { symbol: "l", label: "Distance between LCF and the aft perpendicular", unit: "m" },
+        { symbol: "l", label: "Distance between LCF and the relevant support/reference point", unit: "m" },
       ],
-      source: { code: "Hydrostatics — docking analysis" },
+      source: { code: "Docking hydrostatics", detail: "Simplified initial reaction estimate" },
+      note: "Docking is vessel- and dock-plan-specific. Use the approved docking plan and detailed reaction/strength calculations for real operations.",
       inputs: [
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
         { key: "trim", label: "Trim", unit: "cm", placeholder: "40" },
@@ -232,7 +249,7 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const p = HydrostaticCalculations.calculateDockReactionP(v.mct, v.trim, v.l);
-        return [{ label: "Reaction Force (P)", value: `${p.toFixed(1)} t` }];
+        return [{ label: "Illustrative Reaction Force (P)", value: `${p.toFixed(1)} t` }];
       },
     },
     {
@@ -246,7 +263,8 @@ export const stability: CourseTopic = {
         { symbol: "ρ", label: "Liquid density", unit: "t/m³" },
         { symbol: "Δ", label: "Displacement", unit: "t" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Free surface correction (FSC)" },
+      source: { code: "Ship stability", detail: "Ideal rectangular-tank free-surface moment" },
+      note: "Ideal rectangular-tank calculation. For actual loading conditions use the tank's approved free-surface moment/correction data from the stability booklet/loading computer.",
       inputs: [
         { key: "l", label: "Tank Length (L)", unit: "m", placeholder: "12" },
         { key: "b", label: "Tank Breadth (B)", unit: "m", placeholder: "10" },
@@ -295,8 +313,8 @@ export const stability: CourseTopic = {
       source: { code: "Hull form — block coefficient definition" },
       inputs: [
         { key: "vol", label: "Volume (∇)", unit: "m³", placeholder: "11700" },
-        { key: "l", label: "Boy (L)", unit: "m", placeholder: "150" },
-        { key: "b", label: "En (B)", unit: "m", placeholder: "22" },
+        { key: "l", label: "Length (L)", unit: "m", placeholder: "150" },
+        { key: "b", label: "Breadth (B)", unit: "m", placeholder: "22" },
         { key: "t", label: "Draft (T)", unit: "m", placeholder: "8" },
       ],
       calculate: (v) => {
@@ -312,11 +330,11 @@ export const stability: CourseTopic = {
       group: "Free Surface and Hydrostatics",
       formula: "FWA (mm) = Δ / (4 × TPC)",
       variables: [
-        { symbol: "Δ", label: "Displacement", unit: "t" },
-        { symbol: "TPC", label: "Tonnes per centimetre (salt water)", unit: "t/cm" },
+        { symbol: "Δ", label: "Displacement at summer load waterline", unit: "t" },
+        { symbol: "TPC", label: "Tonnes per centimetre at summer load waterline in salt water", unit: "t/cm" },
       ],
-      source: { code: "Load Line / hydrostatics — FWA" },
-      note: "The result is in mm (classic FWA relation).",
+      source: { code: "International Convention on Load Lines / hydrostatics", detail: "Classic FWA relation with the applicable load-line references" },
+      note: "Use the vessel's approved hydrostatic/load-line data for statutory loading decisions.",
       inputs: [
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "tpc", label: "TPC", unit: "t/cm", placeholder: "25" },
@@ -329,24 +347,25 @@ export const stability: CourseTopic = {
     },
     {
       id: "roll-period",
-      name: "Rolling Period",
+      name: "Rolling Period Estimate",
       group: "Free Surface and Hydrostatics",
-      formula: "T = C × B / √GM",
+      formula: "T ≈ C × B / √GM",
       variables: [
-        { symbol: "C", label: "Coefficient (depends on Cb, ≈0.7)" },
+        { symbol: "C", label: "Empirical coefficient/model input" },
         { symbol: "B", label: "Breadth", unit: "m" },
         { symbol: "GM", label: "Metacentric height", unit: "m" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Weather criterion — rolling period" },
+      source: { code: "Empirical stability relation", detail: "Coefficient depends on vessel characteristics/method" },
+      note: "Approximate teaching/diagnostic relation only. Do not infer statutory GM or stability compliance from roll period alone.",
       inputs: [
-        { key: "cb", label: "Block Coefficient (Cb)", unit: "", placeholder: "0.7" },
+        { key: "cb", label: "Coefficient Input", unit: "", placeholder: "0.7" },
         { key: "b", label: "Breadth (B)", unit: "m", placeholder: "22" },
         { key: "gm", label: "GM", unit: "m", placeholder: "1.2" },
       ],
       calculate: (v) => {
         const t = HydrostaticCalculations.calculateRollPeriodSimplified(v.cb, v.b, v.gm);
         if (t <= 0) return [{ label: "Error", value: "GM and B must be positive" }];
-        return [{ label: "Rolling Period (T)", value: `${t.toFixed(1)} s` }];
+        return [{ label: "Estimated Rolling Period (T)", value: `${t.toFixed(1)} s` }];
       },
     },
     {
@@ -359,7 +378,7 @@ export const stability: CourseTopic = {
         { symbol: "dA", label: "Aft draft", unit: "m" },
         { symbol: "dM", label: "Midships draft", unit: "m" },
       ],
-      source: { code: "UN ECE Draft Survey Code", detail: "Mean of means (quarter mean)" },
+      source: { code: "Draft-survey practice", detail: "Mean-of-means approximation; apply actual mark corrections and approved hydrostatics" },
       inputs: [
         { key: "df", label: "Forward Draft (dF)", unit: "m", placeholder: "7.80" },
         { key: "da", label: "Aft Draft (dA)", unit: "m", placeholder: "8.20" },
@@ -372,47 +391,47 @@ export const stability: CourseTopic = {
     },
     {
       id: "density-correction",
-      name: "Density Correction",
+      name: "Illustrative Density Effect",
       group: "Draft Survey",
-      formula: "Δρ = ((ρ / 1.025) − 1) × Δ",
+      formula: "Entered relation: Δρ = ((ρ / 1.025) − 1) × Δ",
       variables: [
         { symbol: "ρ", label: "Dock water density", unit: "t/m³" },
-        { symbol: "Δ", label: "Salt water displacement", unit: "t" },
+        { symbol: "Δ", label: "Reference salt-water displacement", unit: "t" },
       ],
-      source: { code: "UN ECE Draft Survey Code", detail: "Density correction" },
+      source: { code: "Draft-survey reference", detail: "Actual displacement correction uses vessel hydrostatics and measured water density" },
+      note: "Use the vessel's hydrostatic tables/curves and the accepted draft-survey method for cargo quantity determination; this simplified relation is not a substitute.",
       inputs: [
         { key: "rho", label: "Water Density (ρ)", unit: "t/m³", placeholder: "1.012" },
-        { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
+        { key: "disp", label: "Reference Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
         const corr = (v.rho / 1.025 - 1) * v.disp;
-        return [{ label: "Density Correction (Δρ)", value: `${corr.toFixed(1)} t` }];
+        return [{ label: "Illustrative Density Difference", value: `${corr.toFixed(1)} t` }];
       },
     },
     {
       id: "grain-heel",
-      name: "Grain Heeling Angle",
+      name: "Approximate Grain Heeling Angle",
       group: "SOLAS Criteria",
-      formula: "θ = (57.3 × GHM) / (Δ × GM)",
+      formula: "θ ≈ (57.3 × GHM) / (Δ × GM)",
       variables: [
-        { symbol: "GHM", label: "Grain heeling moment", unit: "t·m" },
+        { symbol: "GHM", label: "Assumed grain heeling moment", unit: "t·m" },
         { symbol: "Δ", label: "Displacement", unit: "t" },
-        { symbol: "GM", label: "Corrected GM", unit: "m" },
+        { symbol: "GM", label: "Corrected GM used for the approximation", unit: "m" },
       ],
-      source: { code: "International Grain Code", detail: "SOLAS Chapter VI" },
-      note: "Approximate heeling angle; the Code limit is ≤ 12°.",
+      source: { code: "International Grain Code", detail: "Approximation only; approved Grain Loading Manual governs" },
+      note: "The Grain Code heel criterion is not the only requirement. The allowable heel is limited by the Code and deck-edge immersion as applicable, and corrected GM plus residual dynamic stability must also be verified using the approved grain calculation.",
       inputs: [
         { key: "ghm", label: "Grain Heeling Moment (GHM)", unit: "t·m", placeholder: "800" },
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
-        { key: "gm", label: "GM", unit: "m", placeholder: "1.5" },
+        { key: "gm", label: "Corrected GM", unit: "m", placeholder: "1.5" },
       ],
       calculate: (v) => {
         if (v.disp <= 0 || v.gm <= 0) return [{ label: "Error", value: "Δ and GM must be positive" }];
         const theta = (57.3 * v.ghm) / (v.disp * v.gm);
-        const durum = theta <= 12 ? "Compliant (≤12°)" : "Limit exceeded (>12°)";
         return [
-          { label: "Heeling Angle (θ)", value: `${theta.toFixed(2)} °` },
-          { label: "Durum", value: durum },
+          { label: "Approximate Heeling Angle (θ)", value: `${theta.toFixed(2)} °` },
+          { label: "Grain Compliance", value: "Not determined by this angle estimate alone" },
         ];
       },
     },
@@ -425,8 +444,8 @@ export const stability: CourseTopic = {
         { symbol: "h", label: "Equal spacing between ordinates" },
         { symbol: "yᵢ", label: "Ordinate values (e.g. GZ)" },
       ],
-      source: { code: "Numerical integration (area under the GZ curve)" },
-      note: "Simpson's first rule with 5 equally spaced ordinates (y₀…y₄): A = (h/3)·(y₀ + 4y₁ + 2y₂ + 4y₃ + y₄).",
+      source: { code: "Numerical integration", detail: "Area under an equally spaced ordinate set" },
+      note: "Simpson's first rule with 5 equally spaced ordinates (y₀…y₄): A = (h/3)·(y₀ + 4y₁ + 2y₂ + 4y₃ + y₄). If integrating a GZ curve using degrees, convert angular spacing to radians before comparing with m·rad stability criteria.",
       inputs: [
         { key: "h", label: "Spacing (h)", unit: "", placeholder: "0.2" },
         { key: "y0", label: "Ordinate y₀", unit: "", placeholder: "0" },
@@ -441,7 +460,6 @@ export const stability: CourseTopic = {
         return [{ label: "Area (A)", value: area.toFixed(4) }];
       },
     },
-    // ---- Calculators added from the topic text ----
     {
       id: "km",
       name: "Metacentre Height (KM)",
@@ -471,7 +489,7 @@ export const stability: CourseTopic = {
         { symbol: "ρ", label: "Water density", unit: "t/m³" },
       ],
       source: { code: "Ship hydrostatics — TPC definition" },
-      note: "The tonnage required for a 1 cm change of draft.",
+      note: "For actual loading/draft calculations use TPC applicable to the ship's actual draft from approved hydrostatic data where available.",
       inputs: [
         { key: "awp", label: "Waterplane Area (Awp)", unit: "m²", placeholder: "2400" },
         { key: "rho", label: "Water Density (ρ)", unit: "t/m³", placeholder: "1.025" },
@@ -488,10 +506,10 @@ export const stability: CourseTopic = {
       formula: "DWA = FWA × (1025 − ρ) / 25",
       variables: [
         { symbol: "FWA", label: "Fresh water allowance", unit: "mm" },
-        { symbol: "ρ", label: "Harbour/dock water density", unit: "kg/m³" },
+        { symbol: "ρ", label: "Dock water density", unit: "kg/m³" },
       ],
-      source: { code: "Load Line — dock water correction" },
-      note: "ρ is entered in kg/m³ (1000–1025). The result is in mm.",
+      source: { code: "Load Line / hydrostatics", detail: "Dock-water correction relation" },
+      note: "Use the ship's assigned FWA and applicable load-line references for statutory loading decisions.",
       inputs: [
         { key: "fwa", label: "FWA", unit: "mm", placeholder: "200" },
         { key: "rho", label: "Dock Water Density (ρ)", unit: "kg/m³", placeholder: "1012" },
@@ -505,14 +523,14 @@ export const stability: CourseTopic = {
       id: "volume-displacement",
       name: "Volumetric Displacement and Buoyancy Force",
       group: "Free Surface and Hydrostatics",
-      formula: "∇ = Δ / ρ ;  Y = ρ × g × ∇",
+      formula: "∇ = Δ / ρ ;  F = Δ × g",
       variables: [
-        { symbol: "Δ", label: "Displacement", unit: "t" },
+        { symbol: "Δ", label: "Displacement mass", unit: "t" },
         { symbol: "ρ", label: "Water density", unit: "t/m³" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9.81 m/s²" },
       ],
       source: { code: "Archimedes' principle" },
-      note: "The buoyancy force is given in kN (Y = ρ·g·∇, g = 9.81 m/s²).",
+      note: "At static equilibrium buoyancy force equals vessel weight. A tonne-force conversion is represented here as approximately 9.81 kN per tonne.",
       inputs: [
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "rho", label: "Water Density (ρ)", unit: "t/m³", placeholder: "1.025" },
@@ -520,33 +538,38 @@ export const stability: CourseTopic = {
       calculate: (v) => {
         if (v.rho <= 0) return [{ label: "Error", value: "Density must be positive" }];
         const vol = v.disp / v.rho;
-        const buoyancy = v.rho * 9.81 * vol; // t·m/s² = kN
+        const buoyancy = v.disp * 9.81;
         return [
           { label: "Underwater Volume (∇)", value: `${vol.toFixed(1)} m³` },
-          { label: "Buoyancy Force (Y)", value: `${buoyancy.toFixed(0)} kN` },
+          { label: "Buoyancy Force", value: `${buoyancy.toFixed(0)} kN` },
         ];
       },
     },
     {
       id: "fresh-water-disp",
-      name: "Displacement in Fresh Water",
+      name: "Same Vessel Mass in Different Water Density",
       group: "Free Surface and Hydrostatics",
-      formula: "Δfresh = Δsea × (ρsea / ρfresh)",
+      formula: "For a fixed ship loading condition, displacement mass remains constant; displaced volume changes as ∇ = Δ / ρ",
       variables: [
-        { symbol: "Δ_sea", label: "Salt water displacement", unit: "t" },
-        { symbol: "ρ_sea", label: "Sea water density", unit: "t/m³" },
-        { symbol: "ρfresh", label: "Fresh water density", unit: "t/m³" },
+        { symbol: "Δ", label: "Ship displacement mass", unit: "t" },
+        { symbol: "ρ", label: "Water density", unit: "t/m³" },
       ],
-      source: { code: "Ship hydrostatics — density conversion" },
+      source: { code: "Archimedes' principle" },
+      note: "A ship's mass/displacement in tonnes does not increase simply because it moves from salt water to fresh water. The displaced volume and draft increase in lower-density water. The previous density-ratio formula incorrectly changed vessel mass.",
       inputs: [
-        { key: "disp", label: "Sea Water Displacement", unit: "t", placeholder: "12000" },
-        { key: "rhosea", label: "Sea Water Density", unit: "t/m³", placeholder: "1.025" },
-        { key: "rhofresh", label: "Fresh Water Density", unit: "t/m³", placeholder: "1.000" },
+        { key: "disp", label: "Ship Displacement Mass", unit: "t", placeholder: "12000" },
+        { key: "rhosea", label: "Reference Water Density", unit: "t/m³", placeholder: "1.025" },
+        { key: "rhofresh", label: "New Water Density", unit: "t/m³", placeholder: "1.000" },
       ],
       calculate: (v) => {
-        if (v.rhofresh <= 0) return [{ label: "Error", value: "Fresh water density must be positive" }];
-        const disp = v.disp * (v.rhosea / v.rhofresh);
-        return [{ label: "Fresh Water Displacement", value: `${disp.toFixed(0)} t` }];
+        if (v.rhosea <= 0 || v.rhofresh <= 0) return [{ label: "Error", value: "Water densities must be positive" }];
+        const referenceVolume = v.disp / v.rhosea;
+        const newVolume = v.disp / v.rhofresh;
+        return [
+          { label: "Displacement Mass", value: `${v.disp.toFixed(0)} t (unchanged)` },
+          { label: "Reference Displaced Volume", value: `${referenceVolume.toFixed(1)} m³` },
+          { label: "New Displaced Volume", value: `${newVolume.toFixed(1)} m³` },
+        ];
       },
     },
     {
@@ -555,22 +578,22 @@ export const stability: CourseTopic = {
       group: "Transverse Equilibrium",
       formula: "MR = Δ × GZ",
       variables: [
-        { symbol: "Δ", label: "Displacement", unit: "t" },
+        { symbol: "Δ", label: "Displacement mass", unit: "t" },
         { symbol: "GZ", label: "Righting lever", unit: "m" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Righting moment" },
+      source: { code: "Ship stability", detail: "Often expressed as t·m for stability calculations; multiply by g for force-moment units" },
       inputs: [
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "gz", label: "Righting Lever (GZ)", unit: "m", placeholder: "0.35" },
       ],
       calculate: (v) => {
         const mr = v.disp * v.gz;
-        return [{ label: "Righting Moment (MR)", value: `${mr.toFixed(0)} t·m` }];
+        return [{ label: "Righting Moment", value: `${mr.toFixed(0)} t·m` }];
       },
     },
     {
       id: "wall-sided-gz",
-      name: "Large Angle GZ (Wall-sided Formula)",
+      name: "Wall-Sided GZ Approximation",
       group: "Transverse Equilibrium",
       formula: "GZ = sin θ × (GM + ½ × BM × tan²θ)",
       variables: [
@@ -578,8 +601,8 @@ export const stability: CourseTopic = {
         { symbol: "BM", label: "Metacentric radius", unit: "m" },
         { symbol: "θ", label: "Heel angle", unit: "°" },
       ],
-      source: { code: "Ship stability — wall-sided formula" },
-      note: "Assumes a wall-sided hull; extends the small angle approximation to moderate angles.",
+      source: { code: "Ship stability — wall-sided approximation" },
+      note: "Valid only where the wall-sided approximation is appropriate. Use approved KN/GZ data rather than this approximation for compliance assessment.",
       inputs: [
         { key: "gm", label: "GM", unit: "m", placeholder: "1.2" },
         { key: "bm", label: "BM", unit: "m", placeholder: "4.2" },
@@ -588,22 +611,21 @@ export const stability: CourseTopic = {
       calculate: (v) => {
         const r = (v.theta * Math.PI) / 180;
         const gz = Math.sin(r) * (v.gm + 0.5 * v.bm * Math.tan(r) ** 2);
-        return [{ label: "GZ", value: `${gz.toFixed(3)} m` }];
+        return [{ label: "Approximate GZ", value: `${gz.toFixed(3)} m` }];
       },
     },
     {
       id: "new-kg-loading",
-      name: "New KG After Loading",
+      name: "New KG After Loading/Discharging",
       group: "Transverse Equilibrium",
       formula: "KG₁ = (Δ₀ × KG₀ + w × kg) / (Δ₀ + w)",
       variables: [
         { symbol: "Δ₀", label: "Initial displacement", unit: "t" },
         { symbol: "KG₀", label: "Initial KG", unit: "m" },
-        { symbol: "w", label: "Weight loaded (− discharged)", unit: "t" },
+        { symbol: "w", label: "Weight loaded (negative if discharged)", unit: "t" },
         { symbol: "kg", label: "KG of the weight", unit: "m" },
       ],
-      source: { code: "Ship stability — moment method (KG)" },
-      note: "Enter w as negative when discharging weight.",
+      source: { code: "Ship stability — vertical moment method" },
       inputs: [
         { key: "disp0", label: "Initial Displacement (Δ₀)", unit: "t", placeholder: "10000" },
         { key: "kg0", label: "Initial KG (KG₀)", unit: "m", placeholder: "7.2" },
@@ -667,13 +689,14 @@ export const stability: CourseTopic = {
       variables: [
         { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GML", label: "Longitudinal metacentric height", unit: "m" },
-        { symbol: "L", label: "Hull length (LBP)", unit: "m" },
+        { symbol: "L", label: "Length between perpendiculars/reference length", unit: "m" },
       ],
       source: { code: "Ship hydrostatics — MCT1cm" },
+      note: "For real loading calculations use MCT1cm from the vessel's approved hydrostatic data at the relevant displacement/draft where available.",
       inputs: [
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "gml", label: "GML", unit: "m", placeholder: "172" },
-        { key: "l", label: "Hull Length (L)", unit: "m", placeholder: "150" },
+        { key: "l", label: "Reference Length (L)", unit: "m", placeholder: "150" },
       ],
       calculate: (v) => {
         if (v.l <= 0) return [{ label: "Error", value: "The length must be positive" }];
@@ -685,15 +708,15 @@ export const stability: CourseTopic = {
       id: "trim-from-lcg",
       name: "Trim from LCG/LCB",
       group: "Longitudinal Equilibrium",
-      formula: "Trimming moment = Δ × (LCG − LCB) ;  Trim = Moment / MCT1cm",
+      formula: "Trimming moment = Δ × (LCG − LCB) ; Trim = Moment / MCT1cm",
       variables: [
         { symbol: "Δ", label: "Displacement", unit: "t" },
-        { symbol: "LCG", label: "Longitudinal centre of gravity (from aft)", unit: "m" },
-        { symbol: "LCB", label: "Longitudinal centre of buoyancy (from aft)", unit: "m" },
+        { symbol: "LCG", label: "Longitudinal centre of gravity", unit: "m" },
+        { symbol: "LCB", label: "Longitudinal centre of buoyancy", unit: "m" },
         { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
       ],
       source: { code: "Ship hydrostatics — trim calculation" },
-      note: "A positive result means trim by the head, a negative result means trim by the stern.",
+      note: "Sign convention depends on the selected longitudinal reference and convention. Keep LCG/LCB references consistent with the vessel's hydrostatic data.",
       inputs: [
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
         { key: "lcg", label: "LCG", unit: "m", placeholder: "75.5" },
@@ -706,7 +729,7 @@ export const stability: CourseTopic = {
         const trimCm = moment / v.mct;
         return [
           { label: "Trimming Moment", value: `${moment.toFixed(0)} t·m` },
-          { label: "Trim", value: `${trimCm.toFixed(1)} cm (${(trimCm / 100).toFixed(3)} m)` },
+          { label: "Trim Change by Entered Convention", value: `${trimCm.toFixed(1)} cm (${(trimCm / 100).toFixed(3)} m)` },
         ];
       },
     },
@@ -714,65 +737,66 @@ export const stability: CourseTopic = {
       id: "trim-distribution",
       name: "Trim Distribution (Forward/Aft Draft Change)",
       group: "Longitudinal Equilibrium",
-      formula: "ΔTF = ΔTrim × da/L ;  ΔTA = ΔTrim × df/L",
+      formula: "ΔTF = ΔTrim × da/L ; ΔTA = ΔTrim × df/L",
       variables: [
         { symbol: "ΔTrim", label: "Total trim change", unit: "cm" },
-        { symbol: "df", label: "Distance from the LCF to the forward perpendicular", unit: "m" },
-        { symbol: "da", label: "Distance from the LCF to the aft perpendicular", unit: "m" },
-        { symbol: "L", label: "Hull length (LBP)", unit: "m" },
+        { symbol: "df", label: "Distance from LCF to forward perpendicular", unit: "m" },
+        { symbol: "da", label: "Distance from LCF to aft perpendicular", unit: "m" },
+        { symbol: "L", label: "Length between perpendiculars", unit: "m" },
       ],
-      source: { code: "Ship hydrostatics — trim distribution (LCF)" },
-      note: "The trim change is distributed to the forward/aft drafts about the LCF.",
+      source: { code: "Ship hydrostatics — trim distribution about LCF" },
+      note: "The magnitude is distributed about the LCF; apply the correct sign convention for trim by bow/stern when converting to actual forward/aft drafts.",
       inputs: [
         { key: "dtrim", label: "Trim Change (ΔTrim)", unit: "cm", placeholder: "30" },
         { key: "df", label: "LCF–Forward Distance (df)", unit: "m", placeholder: "72" },
         { key: "da", label: "LCF–Aft Distance (da)", unit: "m", placeholder: "78" },
-        { key: "l", label: "Hull Length (L)", unit: "m", placeholder: "150" },
+        { key: "l", label: "LBP (L)", unit: "m", placeholder: "150" },
       ],
       calculate: (v) => {
         if (v.l <= 0) return [{ label: "Error", value: "The length must be positive" }];
         const dtf = (v.dtrim * v.da) / v.l;
         const dta = (v.dtrim * v.df) / v.l;
         return [
-          { label: "Forward Draft Change (ΔTF)", value: `${dtf.toFixed(2)} cm` },
-          { label: "Aft Draft Change (ΔTA)", value: `${dta.toFixed(2)} cm` },
+          { label: "Forward Share Magnitude", value: `${dtf.toFixed(2)} cm` },
+          { label: "Aft Share Magnitude", value: `${dta.toFixed(2)} cm` },
         ];
       },
     },
     {
       id: "weight-for-trim",
-      name: "Weight Required for a Desired Trim",
+      name: "Weight Shift Required for a Desired Trim Change",
       group: "Longitudinal Equilibrium",
       formula: "w = (ΔTrim × MCT1cm) / d",
       variables: [
         { symbol: "ΔTrim", label: "Desired trim change", unit: "cm" },
         { symbol: "MCT", label: "Moment to change trim by 1 cm", unit: "t·m/cm" },
-        { symbol: "d", label: "Longitudinal distance from the weight to the LCF", unit: "m" },
+        { symbol: "d", label: "Longitudinal distance through which the weight is shifted", unit: "m" },
       ],
       source: { code: "Ship hydrostatics — weight shift for trim" },
+      note: "This relation is for shifting an existing weight longitudinally by distance d. Loading/discharging a weight is a different calculation because it also changes displacement and parallel sinkage/rise.",
       inputs: [
-        { key: "dtrim", label: "Desired Trim (ΔTrim)", unit: "cm", placeholder: "20" },
+        { key: "dtrim", label: "Desired Trim Change", unit: "cm", placeholder: "20" },
         { key: "mct", label: "MCT (1 cm)", unit: "t·m/cm", placeholder: "120" },
-        { key: "d", label: "Distance (d)", unit: "m", placeholder: "40" },
+        { key: "d", label: "Shift Distance (d)", unit: "m", placeholder: "40" },
       ],
       calculate: (v) => {
         if (v.d <= 0) return [{ label: "Error", value: "The distance must be positive" }];
         const w = (v.dtrim * v.mct) / v.d;
-        return [{ label: "Weight to Shift/Load (w)", value: `${w.toFixed(1)} t` }];
+        return [{ label: "Weight to Shift (w)", value: `${w.toFixed(1)} t` }];
       },
     },
     {
       id: "gm-from-roll",
-      name: "GM from the Rolling Period",
+      name: "Approximate GM from Rolling Period",
       group: "Free Surface and Hydrostatics",
       formula: "GM ≈ (C × B / T)²",
       variables: [
-        { symbol: "C", label: "Coefficient (≈0.7–0.8)" },
+        { symbol: "C", label: "Empirical vessel/method coefficient" },
         { symbol: "B", label: "Breadth", unit: "m" },
-        { symbol: "T", label: "Rolling period", unit: "s" },
+        { symbol: "T", label: "Observed rolling period", unit: "s" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Inverse of the rolling period relation" },
-      note: "Approximate GM estimate from the observed rolling period (rolling test).",
+      source: { code: "Empirical rolling-period method", detail: "Use the coefficient prescribed for the vessel/method if this estimate is used" },
+      note: "Approximate indication only. It must not replace an approved inclining/stability calculation or loading-computer result and must not produce a compliance conclusion.",
       inputs: [
         { key: "c", label: "Coefficient (C)", unit: "", placeholder: "0.7" },
         { key: "b", label: "Breadth (B)", unit: "m", placeholder: "22" },
@@ -781,19 +805,22 @@ export const stability: CourseTopic = {
       calculate: (v) => {
         if (v.t <= 0) return [{ label: "Error", value: "The period must be positive" }];
         const gm = ((v.c * v.b) / v.t) ** 2;
-        return [{ label: "Approximate GM", value: `${gm.toFixed(3)} m` }];
+        return [
+          { label: "Approximate GM", value: `${gm.toFixed(3)} m` },
+          { label: "Status", value: "Empirical estimate only" },
+        ];
       },
     },
     {
       id: "log-decrement",
       name: "Logarithmic Decrement and Damping Ratio",
       group: "Free Surface and Hydrostatics",
-      formula: "δ = ln(θ₁ / θ₂) ;  ζ ≈ δ / (2π)",
+      formula: "δ = ln(θ₁ / θ₂) ; ζ ≈ δ / (2π)",
       variables: [
-        { symbol: "θ₁", label: "First of the successive roll amplitudes", unit: "°" },
+        { symbol: "θ₁", label: "First of successive roll amplitudes", unit: "°" },
         { symbol: "θ₂", label: "Next roll amplitude", unit: "°" },
       ],
-      source: { code: "Roll damping — logarithmic decrement" },
+      source: { code: "Oscillation theory — logarithmic decrement", detail: "Small-damping approximation for ζ" },
       inputs: [
         { key: "a1", label: "First Amplitude (θ₁)", unit: "°", placeholder: "12" },
         { key: "a2", label: "Next Amplitude (θ₂)", unit: "°", placeholder: "9" },
@@ -804,28 +831,28 @@ export const stability: CourseTopic = {
         const zeta = delta / (2 * Math.PI);
         return [
           { label: "Logarithmic Decrement (δ)", value: delta.toFixed(4) },
-          { label: "Damping Ratio (ζ)", value: zeta.toFixed(4) },
+          { label: "Approximate Damping Ratio (ζ)", value: zeta.toFixed(4) },
         ];
       },
     },
     {
       id: "weather-criterion",
-      name: "Weather Criterion Wind Heeling Levers",
+      name: "Weather Criterion — Wind Heeling Lever Components",
       group: "SOLAS Criteria",
-      formula: "lw1 = (P × A × Z) / (1000 × g × Δ) ;  lw2 = 1.5 × lw1",
+      formula: "lw1 = (P × A × Z) / (1000 × g × Δ) ; lw2 = 1.5 × lw1",
       variables: [
-        { symbol: "P", label: "Wind pressure (≈504 Pa)", unit: "Pa" },
-        { symbol: "A", label: "Lateral windage area", unit: "m²" },
-        { symbol: "Z", label: "Vertical distance between the centroid of the area and ½ draft", unit: "m" },
+        { symbol: "P", label: "Wind pressure selected by the applicable IS Code method", unit: "Pa" },
+        { symbol: "A", label: "Projected lateral windage area above waterline", unit: "m²" },
+        { symbol: "Z", label: "Applicable vertical lever defined by the Code method", unit: "m" },
         { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9.81 m/s²" },
       ],
-      source: { code: "IMO IS Code 2008", detail: "Weather criterion, 2.3" },
-      note: "lw1 is the steady wind heeling lever, lw2 is the gust heeling lever.",
+      source: { code: "IMO 2008 IS Code", detail: "Severe wind and rolling criterion — use the full current method" },
+      note: "This computes only wind-heeling lever components from entered inputs. Full weather-criterion compliance additionally requires the prescribed equilibrium/roll angles and GZ/heeling-area comparison (area b ≥ area a), with all applicable corrections and approved ship data.",
       inputs: [
-        { key: "p", label: "Wind Pressure (P)", unit: "Pa", placeholder: "504" },
+        { key: "p", label: "Applicable Wind Pressure (P)", unit: "Pa", placeholder: "504" },
         { key: "a", label: "Lateral Area (A)", unit: "m²", placeholder: "1200" },
-        { key: "z", label: "Vertical Distance (Z)", unit: "m", placeholder: "6" },
+        { key: "z", label: "Vertical Lever (Z)", unit: "m", placeholder: "6" },
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
       ],
       calculate: (v) => {
@@ -835,27 +862,29 @@ export const stability: CourseTopic = {
         return [
           { label: "Steady Wind Lever (lw1)", value: `${lw1.toFixed(4)} m` },
           { label: "Gust Wind Lever (lw2)", value: `${lw2.toFixed(4)} m` },
+          { label: "Weather-Criterion Compliance", value: "Not determined by these two lever values alone" },
         ];
       },
     },
     {
       id: "flooding-rate",
-      name: "Flooding Rate and Time for a Damaged Compartment",
+      name: "Idealized Flooding Rate and Time",
       group: "SOLAS Criteria",
-      formula: "Q = A × C × √(2gh) ;  t = V / Q",
+      formula: "Q = A × C × √(2gh) ; t = V / Q",
       variables: [
-        { symbol: "A", label: "Hole/opening area", unit: "m²" },
-        { symbol: "C", label: "Discharge coefficient (≈0.6)" },
-        { symbol: "h", label: "Water head (pressure head)", unit: "m" },
+        { symbol: "A", label: "Opening area", unit: "m²" },
+        { symbol: "C", label: "Assumed discharge coefficient" },
+        { symbol: "h", label: "Assumed constant water head", unit: "m" },
         { symbol: "V", label: "Volume to be flooded", unit: "m³" },
         { symbol: "g", label: "Gravitational acceleration", unit: "9.81 m/s²" },
       ],
-      source: { code: "Damage stability — Torricelli flow relation" },
+      source: { code: "Torricelli/orifice-flow estimate", detail: "Not a SOLAS damage-stability flooding simulation" },
+      note: "Idealized constant-head estimate only. Real progressive flooding depends on changing head, compartment geometry, permeability, air escape, cross-flooding, openings, trim/heel and structural damage. Do not use this value for damage-stability survival decisions.",
       inputs: [
         { key: "a", label: "Opening Area (A)", unit: "m²", placeholder: "0.5" },
         { key: "c", label: "Discharge Coefficient (C)", unit: "", placeholder: "0.6" },
-        { key: "h", label: "Water Head (h)", unit: "m", placeholder: "4" },
-        { key: "vol", label: "Volume to be Flooded (V)", unit: "m³", placeholder: "300" },
+        { key: "h", label: "Assumed Water Head (h)", unit: "m", placeholder: "4" },
+        { key: "vol", label: "Volume (V)", unit: "m³", placeholder: "300" },
       ],
       calculate: (v) => {
         if (v.h < 0) return [{ label: "Error", value: "The water head cannot be negative" }];
@@ -863,8 +892,9 @@ export const stability: CourseTopic = {
         if (q <= 0) return [{ label: "Error", value: "Flow rate is zero" }];
         const t = v.vol / q;
         return [
-          { label: "Flooding Rate (Q)", value: `${q.toFixed(3)} m³/s` },
-          { label: "Flooding Time (t)", value: `${t.toFixed(0)} s (${(t / 60).toFixed(1)} dk)` },
+          { label: "Idealized Flooding Rate (Q)", value: `${q.toFixed(3)} m³/s` },
+          { label: "Idealized Time (t)", value: `${t.toFixed(0)} s (${(t / 60).toFixed(1)} min)` },
+          { label: "Damage-Stability Status", value: "Not determined by this estimate" },
         ];
       },
     },
