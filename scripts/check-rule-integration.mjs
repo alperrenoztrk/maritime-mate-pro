@@ -1,8 +1,102 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { join } from "node:path";
 import { createServer } from "vite";
 
 const assert = (condition, message) => {
   if (!condition) throw new Error(message);
+};
+
+const walkFiles = (dir) => {
+  const files = [];
+  for (const name of readdirSync(dir)) {
+    const path = join(dir, name);
+    if (statSync(path).isDirectory()) files.push(...walkFiles(path));
+    else files.push(path);
+  }
+  return files;
+};
+
+const checkMaritimeSafetyRegressions = () => {
+  const roots = ["src/data/courseContent", "src/data/compliance"];
+  const files = roots.flatMap((root) => walkFiles(root)).filter((path) => /\.(ts|tsx)$/.test(path));
+  const corpus = files.map((path) => ({ path, text: readFileSync(path, "utf8") }));
+
+  const forbidden = [
+    {
+      pattern: /φloll\s*=\s*arccos\s*\(\s*KG\s*\/\s*KM\s*\)/i,
+      reason: "invalid general angle-of-loll formula arccos(KG/KM)",
+    },
+    {
+      pattern: /10\s*%\s*of\s*(?:the\s*)?draft\s*or\s*0\.6\s*m/i,
+      reason: "universal UKC 10%/0.6 m threshold",
+    },
+    {
+      pattern: /ENTRY\s+PERMITTED/i,
+      reason: "calculator/content must not authorize enclosed-space entry",
+    },
+    {
+      pattern: /SOLAS\s+COMPLIANT/i,
+      reason: "incomplete calculator must not declare SOLAS compliance",
+    },
+    {
+      pattern: /Adequate\s*\(\s*≥?\s*0\.15\s*m\s*\)/i,
+      reason: "GM alone must not be labelled adequate",
+    },
+    {
+      pattern: /Compliant\s*\(\s*≤\s*12°\s*\)/i,
+      reason: "grain heel angle alone must not declare compliance",
+    },
+    {
+      pattern: /mass\s*=\s*V\s*[×*]\s*0\.56\s*kg\s*\/\s*m(?:³|3)/i,
+      reason: "0.56 m³/kg is specific volume, not a kg/m³ multiplier",
+    },
+    {
+      pattern: /A3\s*:.*(?:70\s*°?\s*N|70N).*(?:70\s*°?\s*S|70S)/is,
+      reason: "modern GMDSS A3 must not be defined solely by legacy Inmarsat latitude coverage",
+    },
+    {
+      pattern: /NAVTEX[^\n]*(?:A[^\n]*B[^\n]*C[^\n]*D[^\n]*L|C[^\n]*(?:cannot|must not)[^\n]*(?:reject|deselect))/i,
+      reason: "NAVTEX C is not one of the mandatory non-deselectable A/B/D/L subjects",
+    },
+  ];
+
+  for (const { path, text } of corpus) {
+    for (const { pattern, reason } of forbidden) {
+      assert(!pattern.test(text), `Maritime safety regression in ${path}: ${reason}`);
+    }
+  }
+
+  const regulationMatrix = readFileSync("src/data/compliance/regulationMatrix.ts", "utf8");
+  assert(
+    regulationMatrix.includes("IMDG Code 2024 Edition (Amdt 42-24)"),
+    "Regulation matrix must retain the IMDG 2024 / Amendment 42-24 baseline",
+  );
+  assert(
+    regulationMatrix.includes("IAMSAR Manual Vol. III, 2025 Edition"),
+    "Regulation matrix must retain the IAMSAR 2025 baseline",
+  );
+  assert(
+    regulationMatrix.includes("CO2_FREE_GAS_SPECIFIC_VOLUME_M3_KG: 0.56"),
+    "Regulation matrix must identify 0.56 as CO₂ free-gas specific volume (m³/kg)",
+  );
+
+  const enclosedSpace = readFileSync("src/data/courseContent/engine-room-safety.ts", "utf8");
+  assert(
+    enclosedSpace.includes("does NOT authorize entry"),
+    "Enclosed-space calculator must explicitly state that atmosphere screening does not authorize entry",
+  );
+  assert(
+    enclosedSpace.includes("Entry Authorization"),
+    "Enclosed-space calculator must direct authorization to vessel procedure/permit",
+  );
+
+  const safety = readFileSync("src/data/courseContent/safety.ts", "utf8");
+  assert(
+    safety.includes('value: "Not determined by nominal capacity sum alone"'),
+    "LSA nominal capacity calculator must not claim SOLAS compliance",
+  );
+
+  console.log(`Maritime safety regression checks OK: ${files.length} content files scanned.`);
 };
 
 const vite = await createServer({
@@ -58,7 +152,6 @@ try {
 
       assignment.group.rules.forEach((rule, index) => {
         const integrated = integratedSections[index];
-        // Maddeler madde listesi olarak aktarılır; eski düz metin biçimi de kabul edilir.
         const integratedText = [
           integrated.content ?? "",
           ...(integrated.bulletPoints ?? []),
@@ -81,6 +174,8 @@ try {
 
   const musterList = readFileSync("src/pages/MusterListPage.tsx", "utf8");
   assert(!musterList.includes("Yazdır"), "Role cetvelinde Yazdır eylemi hâlâ bulunuyor");
+
+  checkMaritimeSafetyRegressions();
 
   console.log(
     `Rule integration OK: ${groupCount} grup, ${sectionCount} anlatım bölümü, ${itemCount} madde.`,
