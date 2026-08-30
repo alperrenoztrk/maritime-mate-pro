@@ -1,19 +1,38 @@
 import type { RuleGroup } from "@/data/courseContent/types";
 
+/**
+ * Stability regulatory reference.
+ *
+ * General criteria are shown only where they are broadly applicable. Ship-type,
+ * construction-date, cargo and Administration-specific criteria must be checked
+ * against the approved stability information/loading instrument and the current
+ * applicable IMO instrument.
+ */
 export const stabilityRules: RuleGroup[] = [
   {
     title: "2008 IS Code — Intact Stability",
-    source: { code: "IMO 2008 IS Code (MSC.267(85))", url: "https://www.imo.org/en/publications" },
+    source: {
+      code: "IMO 2008 IS Code (MSC.267(85), as amended)",
+      url: "https://www.imo.org/en/OurWork/Safety/Pages/ShipDesignAndStability-default.aspx",
+    },
     rules: [
       {
-        subtitle: "Kriterler",
+        subtitle: "General Criteria — Use with the Approved Stability Information",
         content: [
-          "Area under the GZ curve: 0°–30° ≥ 0.055 m·rad; 0°–40° (or up to the downflooding angle) ≥ 0.090 m·rad; 30°–40° ≥ 0.030 m·rad.",
-          "Maximum GZ ≥ 0.20 m occurring at an angle θ ≥ 30°.",
-          "Initial GM (GM0) ≥ 0.15 m (typical minimum for steel dry cargo, general cargo vessels etc.).",
-          "The range of positive stability must be at least 30°; the deck edge should preferably immerse beyond 30°.",
-          "Weather Criterion: in a 26–40 m/s wind the angle of equilibrium θw ≤ 16° or 80% of θ_deck, whichever is less.",
-          "Weather Criterion: the residual GZ area up to the same limiting angle must show a margin of at least 40% against the wind heeling energy.",
+          "For ships to which the general 2008 IS Code criteria apply, the area under the GZ curve should not be less than 0.055 m·rad up to 30° and 0.090 m·rad up to 40°, or the downflooding angle if that angle is less than 40°; the area between 30° and 40° (or the downflooding angle if less than 40°) should not be less than 0.030 m·rad.",
+          "The righting lever (GZ) should be at least 0.20 m at an angle of heel equal to or greater than 30° where this general criterion is applicable.",
+          "The initial transverse metacentric height GM₀ should not be less than 0.15 m under the general criterion, but meeting GM alone never proves that a loading condition is compliant.",
+          "The maximum righting-lever angle and any alternative criteria must be checked against the current amended 2008 IS Code and the ship's approved stability documentation; do not infer compliance from one isolated GZ/GM value.",
+          "Downflooding openings, free-surface corrections, trim, loading condition, icing where applicable and any ship-type-specific criteria must be included exactly as required by the approved stability booklet/loading computer.",
+        ],
+      },
+      {
+        subtitle: "Severe Wind and Rolling Criterion (Weather Criterion)",
+        content: [
+          "The weather criterion evaluates the combined effects of steady beam wind, rolling to windward and a gust wind heeling lever; it is not a generic 'wind speed 26–40 m/s' check.",
+          "Under the criterion, the steady-wind equilibrium angle φ₀ should not exceed 16° or 80% of the deck-edge immersion angle, whichever is less, subject to the full Code method and any applicable Administration provisions.",
+          "The energy-area requirement is expressed by the Code as area b being equal to or greater than area a on the prescribed GZ/heeling-lever construction; it is not a universal '40% residual margin' rule.",
+          "Use the ship's approved stability software/booklet for weather-criterion compliance. A simplified calculator without the complete approved inputs must not return 'compliant'.",
         ],
       },
     ],
@@ -25,170 +44,155 @@ export const stabilityRules: RuleGroup[] = [
       {
         subtitle: "Grain Stability Requirements",
         content: [
-          "Corrected GM (GM_corr) ≥ 0.30 m (including free surface and grain shift corrections).",
-          "The angle of heel due to grain shift must be θ ≤ 12°, or the deck edge immersion angle, whichever is less.",
-          "The criteria in the approved Grain Loading Manual must be verified for every loading condition and the Document of Authorization (DOA) must be carried on board.",
+          "For grain cargoes, verify the loading condition against the International Grain Code and the ship's approved grain loading information/Document of Authorization where required.",
+          "The corrected initial GM, heel caused by assumed grain shift and residual stability area must satisfy the applicable Grain Code criteria after all required free-surface and grain-shift corrections.",
+          "Do not use a generic GM value alone as proof of grain compliance; the complete approved grain calculation and loading condition govern.",
         ],
       },
     ],
   },
   {
-    title: "SOLAS II‑1 — Probabilistic Damage Stability",
-    source: { code: "SOLAS 1974, Chapter II‑1", url: "https://www.imo.org/en/publications" },
+    title: "SOLAS II-1 — Subdivision and Damage Stability",
+    source: { code: "SOLAS 1974, Chapter II-1", url: "https://www.imo.org/en/OurWork/Safety/Pages/ShipDesignAndStability-default.aspx" },
     rules: [
       {
-        subtitle: "Probabilistic Method and Criteria",
+        subtitle: "Probabilistic Damage Stability",
         content: [
-          "Probabilistic method: A = Σ(s × p), where s is the probability of survival after the damage and p is the probability of that damage occurring (depending on the length and position of the compartment).",
-          "R is the \"required\" value given in the regulation's tables as a function of the ship's length.",
-          "Criterion: A ≥ R must be satisfied; otherwise the subdivision/stability is considered inadequate.",
-          "In the final damaged condition, including free surface and trim effects, the conditions for launching liferafts and for access must remain satisfied.",
-          "The Damage Control Plan/Booklet must be on board; watertight doors, their remote controls and the sounding points must be shown on the plan.",
+          "For ships subject to the probabilistic subdivision and damage-stability framework, the attained subdivision index A must be not less than the required subdivision index R, using the calculation method applicable to the ship.",
+          "Damage-stability verification includes the relevant survival factors, flooding stages, permeability, free-surface effects, trim, heel, watertight integrity and other conditions prescribed by SOLAS II-1 and the approved damage-stability information.",
+          "A and R are not practical stand-alone onboard hand-calculation criteria; use the ship's approved stability documentation/instrument and the correct construction-date applicability.",
+          "Damage Control Plan/Booklet information and watertight closing arrangements must remain consistent with the approved subdivision and damage-control documentation.",
         ],
       },
     ],
   },
   {
-    title: "Timber Deck Cargo Code — Deck Timber",
+    title: "Timber Deck Cargo Code",
     source: { code: "2011 Timber Deck Cargo Code", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "Deck Timber Cargo Requirements",
+        subtitle: "Deck Timber Cargo",
         content: [
-          "The stack height/slope and the securing arrangements (stanchions, wires, hoops) must be verified by MSL based calculations.",
-          "Operating instructions for heavy weather: deck drainage, deck access and visibility conditions must be maintained.",
-          "For the sample loading conditions an additional safety margin over the IS Code criteria must be maintained.",
+          "Timber deck cargo introduces loading, securing, visibility, access, drainage, windage and stability considerations that must be assessed under the Timber Deck Cargo Code and the ship's approved Cargo Securing Manual/stability information.",
+          "Do not apply generic stack-height, lashing or stability-margin values without the vessel-specific approved arrangement and the Code provisions applicable to the voyage and cargo.",
         ],
       },
     ],
   },
   {
-    title: "IBC/IGC — Chemical and Gas Tankers",
+    title: "IBC / IGC — Chemical and Gas Tankers",
     source: { code: "IBC Code / IGC Code", url: "https://www.imo.org/en/publications" },
     rules: [
       {
         subtitle: "Stability Requirements",
         content: [
-          "The intact and damage stability requirements (survival capability) applicable to the cargo type must be satisfied.",
-          "Every approved loading condition must be verified with the stability instrument; the model/verification certificates must be up to date.",
-        ],
-      },
-      {
-        subtitle: "Eklenebilecekler",
-        content: [
-          "Leakage scenarios: sensitivity analyses covering the free surface, KG change and heeling moment effects in the event of a cargo leak.",
-          "Evaporation effects: methods that account for the effect of evaporation on mass/density and KG for volatile cargoes.",
-        ],
-      },
-      {
-        subtitle: "Items Requiring Update",
-        content: [
-          "Cargo types: additional stability requirements to be added for new chemical and gas cargo types (in line with the latest IBC/IGC amendments).",
+          "Chemical and gas tankers must satisfy the intact and damage-stability requirements applicable to the ship and products carried under the relevant IBC/IGC Code provisions and SOLAS.",
+          "Verify each operational loading condition with the approved loading/stability instrument and the vessel's approved loading manual; cargo density, free surface, filling restrictions and damage assumptions are product/ship specific.",
+          "Do not introduce generic leakage or evaporation formulas as regulatory stability criteria unless they are part of the ship's approved design or loading method.",
         ],
       },
     ],
   },
   {
     title: "Polar Code — Polar Waters Operations",
-    source: { code: "Polar Code (MSC.385(94))", url: "https://www.imo.org/en/publications" },
+    source: { code: "International Code for Ships Operating in Polar Waters (Polar Code)", url: "https://www.imo.org/en/OurWork/Safety/Pages/polar-code.aspx" },
     rules: [
       {
-        subtitle: "Polar Waters Requirements",
+        subtitle: "Polar Stability Considerations",
         content: [
-          "The KG rise due to icing must be retained and an adequate GM and GZ margin maintained.",
-          "The operational limitations and emergency procedures set out in the PWOM must be applied.",
+          "Where icing allowances or other polar operational limitations apply, include them in stability assessment exactly as required by the applicable Polar Code provisions, Administration requirements and the ship's approved Polar Water Operational Manual (PWOM).",
+          "Operational limitations in the PWOM and stability documentation take precedence over generic icing/GM assumptions.",
         ],
       },
     ],
   },
   {
-    title: "CSS Code (Annex 13) — Values Underlying CSM Lashing Calculations",
-    source: { code: "CSS Code, Annex 13", url: "https://www.imo.org/en/publications" },
+    title: "CSS Code / Cargo Securing Manual",
+    source: { code: "Code of Safe Practice for Cargo Stowage and Securing (CSS Code)", url: "https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx" },
     rules: [
       {
-        subtitle: "Lashing Calculation Values",
+        subtitle: "Securing Calculations",
         content: [
-          "Typical friction coefficients: steel/steel μ ≈ 0.10; steel/timber μ ≈ 0.30; timber/timber μ ≈ 0.40; rubber/steel μ ≈ 0.60 (assuming dry, grease-free surfaces).",
-          "The MSL (Maximum Securing Load) and the acceleration factors (longitudinal, transverse, vertical) are selected from the Annex 13 tables according to the ship's length and service speed.",
+          "Use the securing method, acceleration assumptions, friction coefficients, MSL/CS values and safety factors prescribed by the applicable CSS Code method and the ship's approved Cargo Securing Manual.",
+          "Friction coefficients and securing capacities are condition- and material-dependent; a generic coefficient must not be presented as universally valid for all surfaces, contamination states or securing arrangements.",
         ],
       },
     ],
   },
   {
-    title: "Stockholm Agreement — Ro‑Ro Passenger Ships (Regional Additional Requirements)",
-    source: { code: "Stockholm Agreement (Ro‑Ro Passenger Ships)", url: "https://www.imo.org/en/publications" },
+    title: "Ro-Ro Passenger Ships — Regional/Additional Damage Stability",
+    source: { code: "SOLAS / applicable regional instruments such as the Stockholm Agreement", url: "https://www.imo.org/en/OurWork/Safety/Pages/ShipDesignAndStability-default.aspx" },
     rules: [
       {
-        subtitle: "Additional Damage Stability Requirements",
+        subtitle: "Additional Requirements",
         content: [
-          "Effect of water accumulation on the vehicle deck: typically taken into account with a water height of 0.50 m (according to the tables in the instrument) and an appropriate permeability.",
-          "The condition A ≥ R must be maintained in the damage stability assessment including water accumulation; the liferaft/evacuation conditions must remain satisfied.",
+          "Ro-ro passenger ships may be subject to additional regional damage-stability requirements, including assessment of water accumulation on the ro-ro deck. Applicability depends on ship, service and regional instrument.",
+          "Do not apply a single assumed water height or A/R statement outside the exact method and applicability of the governing instrument and approved stability information.",
         ],
       },
     ],
   },
   {
-    title: "Fishing Vessels — Safety Code (2005/2012) and the Cape Town Agreement",
-    source: { code: "FAO/ILO/IMO Code of Safety for Fishermen & Fishing Vessels (2005/2012); Cape Town Agreement (2012)", url: "https://www.imo.org/en/OurWork/Safety/Pages/CTA.aspx" },
+    title: "Fishing Vessels",
+    source: { code: "Applicable fishing-vessel safety instrument / Administration requirements", url: "https://www.imo.org/en/OurWork/Safety/Pages/FishingVessels-default.aspx" },
     rules: [
       {
-        subtitle: "Fishing Vessel Stability Requirements",
+        subtitle: "Fishing Vessel Stability",
         content: [
-          "The typical minimum initial GM (GM0) is ≥ 0.35 m (the Administration's instructions, which depend on length and design, govern).",
-          "The GZ area criteria are largely consistent with the IS Code (e.g. 0°–30° ≥ 0.055 m·rad).",
-          "An additional GM margin and operational limitations must be applied for low freeboard and icing risk.",
+          "Fishing-vessel stability criteria depend on vessel length, design, operating area and the instrument or Administration requirements applicable to that vessel.",
+          "Do not present a generic GM ≥ 0.35 m as a universal fishing-vessel rule. Use the approved stability information and the exact flag/Administration criteria.",
         ],
       },
     ],
   },
   {
     title: "OSV / SPS — Offshore Supply and Special Purpose Ships",
-    source: { code: "OSV Code (2006/2020); SPS Code (2008)", url: "https://www.imo.org/en/publications" },
+    source: { code: "Applicable OSV/SPS/IS Code requirements", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "OSV/SPS Stability Requirements",
+        subtitle: "OSV/SPS Stability",
         content: [
-          "The IS Code criteria form the baseline; depending on the cargo and personnel density, Administrations generally require a minimum GM ≥ 0.15 m.",
-          "Additional margins and operational limits are applied for cargo deck free surface and high KG effects.",
+          "Offshore supply and special-purpose ships require stability assessment against the exact IMO/Administration code applicable to the vessel, including any criteria associated with deck cargo, liquids carried in bulk, personnel and special operations.",
+          "Do not treat GM ≥ 0.15 m as a universal OSV/SPS operational acceptance criterion; the approved stability booklet/loading computer and vessel-specific limitations govern.",
         ],
       },
     ],
   },
   {
-    title: "HSC Code — High Speed Craft",
-    source: { code: "HSC Code (1994/2000)", url: "https://www.imo.org/en/publications" },
+    title: "HSC Code — High-Speed Craft",
+    source: { code: "1994/2000 HSC Code as applicable", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "High Speed Craft Requirements",
+        subtitle: "High-Speed Craft",
         content: [
-          "Under the passenger crowding/turning test the static heel angle is typically limited to ≤ 10°.",
-          "The minimum GM is ≥ 0.15 m in most configurations, but specific stability tests are applied depending on the speed, hull type and seakeeping requirements.",
+          "High-speed craft use dedicated HSC Code intact/damage-stability and operational criteria that depend on craft type and design.",
+          "Do not use a generic GM or heel-angle number as a substitute for the approved HSC stability assessment and operating limitations.",
         ],
       },
     ],
   },
   {
     title: "MODU Code — Mobile Offshore Drilling Units",
-    source: { code: "MODU Code (2009)", url: "https://www.imo.org/en/publications" },
+    source: { code: "2009 MODU Code as applicable", url: "https://www.imo.org/en/publications" },
     rules: [
       {
-        subtitle: "MODU Stability Requirements",
+        subtitle: "MODU Stability",
         content: [
-          "Wind speeds: typically 36 m/s for the operating condition and an equivalent 51.5 m/s for the storm/survival condition; the heeling moment is taken accordingly.",
-          "An adequate safety margin is demonstrated by comparing the righting and heeling moment curves; the range of positive stability and the air gap are checked.",
+          "MODU stability is evaluated using unit-specific righting/heeling characteristics, environmental criteria, operating/survival conditions and approved operating manuals under the applicable MODU Code and coastal/flag requirements.",
+          "Generic wind speeds or air-gap statements must not be used as universal operational limits outside the exact approved MODU criteria.",
         ],
       },
     ],
   },
   {
-    title: "Load Line (LL) — Links to the Load Line Convention",
-    source: { code: "International Load Line Convention (1966/1988)", url: "https://www.imo.org/en/publications" },
+    title: "Load Line Convention — Freeboard and Downflooding",
+    source: { code: "International Convention on Load Lines, 1966 / 1988 Protocol, as amended", url: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Load-Lines.aspx" },
     rules: [
       {
-        subtitle: "Freeboard and Downflooding Angle Links",
+        subtitle: "Links to Stability",
         content: [
-          "The minimum freeboard and the integrity of hatches/superstructures, the downflooding angles and the possible paths of water ingress are limiting factors in the stability analysis.",
-          "The downflooding angle in the stability booklet must be consistent with the ship's integrity conditions and must not conflict with the Load Line markings.",
+          "Freeboard, closing appliances, weathertight/watertight integrity and downflooding points interact directly with the assumptions used in the approved stability assessment.",
+          "Use the downflooding angle and integrity conditions defined by the approved stability information; do not infer them from deck-edge immersion or Load Line marks alone.",
         ],
       },
     ],
