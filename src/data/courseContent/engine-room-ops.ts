@@ -2,9 +2,11 @@ import { ClipboardCheck } from "lucide-react";
 import type { CourseTopic } from "./types";
 
 /**
- * Engine Room Operations — single source course content.
- * Formulas and calculators are merged into a SINGLE list; entries carrying
- * `calculate` appear on both the Formulas and the Calculations page.
+ * Engine Room Operations — educational/reference calculations.
+ *
+ * Operational limits, start-up sequences, warm-up targets, alarm values and
+ * preparation lead-times are engine-/ship-specific. Maker manuals, PMS, chief
+ * engineer's standing orders and the vessel SMS remain authoritative.
  */
 export const engineRoomOps: CourseTopic = {
   key: "engine-room-ops",
@@ -13,54 +15,56 @@ export const engineRoomOps: CourseTopic = {
   accent: "from-emerald-500 via-teal-500 to-cyan-500",
   group: "machine",
   intro:
-    "Fuel and lubricating oil consumption monitoring, start-up and operating parameters. " +
-    "Each formula is followed by the calculator that uses the same formula.",
+    "Fuel and lubricating-oil consumption monitoring, start-up planning and operating-parameter reference tools. " +
+    "Vessel and manufacturer limits must be used for operational decisions.",
   entries: [
     {
       id: "fuel-consumption-rate",
       name: "Fuel Consumption Rate",
       group: "Operating Parameters",
-      formula: "FCrate = FCtotal / Voyage time",
+      formula: "FCrate = FCtotal / elapsed time",
       variables: [
-        { symbol: "FCtoplam", label: "Total fuel consumption", unit: "tonnes" },
-        { symbol: "Voyage time", label: "Elapsed time", unit: "days or hours" },
-        { symbol: "FCrate", label: "Consumption rate", unit: "tonnes/day or tonnes/hour" },
+        { symbol: "FCtotal", label: "Total fuel consumption", unit: "tonnes" },
+        { symbol: "time", label: "Elapsed time", unit: "days" },
+        { symbol: "FCrate", label: "Average consumption rate", unit: "tonnes/day" },
       ],
-      source: { code: "Operational fuel consumption monitoring" },
-      note: "The total consumption is entered in tonnes and the time in days; the daily and hourly consumption rates are calculated.",
+      source: { code: "Operational fuel-consumption arithmetic" },
+      note: "Average historical rate only. Fuel planning must also account for machinery configuration, weather, speed/load profile, fuel changeover, unusable quantities, reserve policy and voyage contingency.",
       inputs: [
-        { key: "total", label: "Total Fuel (FCtotal)", unit: "tonnes", placeholder: "180" },
-        { key: "days", label: "Passage Time", unit: "days", placeholder: "12" },
+        { key: "total", label: "Total Fuel Consumed", unit: "tonnes", placeholder: "180" },
+        { key: "days", label: "Elapsed Time", unit: "days", placeholder: "12" },
       ],
       calculate: (v) => {
         if (v.days <= 0) return [{ label: "Error", value: "The time must be positive" }];
         const perDay = v.total / v.days;
         return [
-          { label: "Daily Consumption", value: `${perDay.toFixed(2)} tonnes/day` },
-          { label: "Hourly Consumption", value: `${(perDay / 24).toFixed(3)} tonnes/h` },
+          { label: "Average Daily Consumption", value: `${perDay.toFixed(2)} tonnes/day` },
+          { label: "Average Hourly Consumption", value: `${(perDay / 24).toFixed(3)} tonnes/h` },
         ];
       },
     },
     {
       id: "remaining-fuel-range",
-      name: "Remaining Fuel Endurance",
+      name: "Fuel Endurance from Entered Average Rate",
       group: "Operating Parameters",
-      formula: "Endurance = Fuel stock / FCrate",
+      formula: "Endurance = usable fuel stock / assumed average rate",
       variables: [
-        { symbol: "Fuel_stock", label: "Available fuel stock", unit: "tonnes" },
-        { symbol: "FCrate", label: "Consumption rate", unit: "tonnes/day" },
-        { symbol: "Range", label: "Estimated operating time", unit: "days" },
+        { symbol: "Fuel stock", label: "Usable fuel quantity entered for the estimate", unit: "tonnes" },
+        { symbol: "Rate", label: "Assumed average consumption rate", unit: "tonnes/day" },
       ],
-      source: { code: "Operational fuel planning" },
+      source: { code: "Operational planning estimate" },
+      note: "This is not a bunker-reserve or voyage-sufficiency determination. Use tank soundings/ROB, unusable quantities, all consumers, fuel grades, reserve policy and expected operating profile.",
       inputs: [
-        { key: "stock", label: "Fuel Stock", unit: "tonnes", placeholder: "500" },
-        { key: "rate", label: "Consumption Rate", unit: "tonnes/day", placeholder: "30" },
+        { key: "stock", label: "Usable Fuel Stock Entered", unit: "tonnes", placeholder: "500" },
+        { key: "rate", label: "Assumed Consumption Rate", unit: "tonnes/day", placeholder: "30" },
       ],
       calculate: (v) => {
+        if (v.rate <= 0) return [{ label: "Error", value: "The consumption rate must be positive" }];
         const days = v.stock / v.rate;
         return [
-          { label: "Estimated Range", value: `${days.toFixed(1)} days` },
-          { label: "Hours", value: `${(days * 24).toFixed(0)} h` },
+          { label: "Estimated Endurance", value: `${days.toFixed(1)} days` },
+          { label: "Estimated Hours", value: `${(days * 24).toFixed(0)} h` },
+          { label: "Status", value: "Planning estimate only" },
         ];
       },
     },
@@ -68,111 +72,126 @@ export const engineRoomOps: CourseTopic = {
       id: "lube-oil-consumption",
       name: "Lubricating Oil Consumption Monitoring",
       group: "Operating Parameters",
-      formula: "Oil_consumption = SLOC × BHP × t",
+      formula: "Oil consumption = SLOC × power × running time",
       variables: [
-        { symbol: "SLOC", label: "Specific lubricating oil consumption", unit: "g/kW·h" },
-        { symbol: "BHP", label: "Engine power", unit: "kW" },
+        { symbol: "SLOC", label: "Specific lubricating-oil consumption from maker/operational data", unit: "g/kW·h" },
+        { symbol: "P", label: "Average applicable engine power", unit: "kW" },
         { symbol: "t", label: "Running time", unit: "h" },
-        { symbol: "Oil_consumption", label: "Total oil consumption", unit: "g (→ kg/tonne)" },
       ],
-      source: { code: "Specific lubricating oil consumption (SLOC) monitoring", detail: "Normal: 0,6–1,2 g/kW·h" },
+      source: { code: "Specific lubricating-oil consumption arithmetic", detail: "Expected SLOC is engine, oil-feed strategy and maker specific" },
+      note: "Do not use a generic 'normal' SLOC band. Compare calculated/observed consumption with the engine maker's guidance, feed-rate strategy and vessel trend data.",
       inputs: [
-        { key: "cylOil", label: "Cylinder Oil Consumption", unit: "g/kW·h", placeholder: "0.7" },
-        { key: "bhp", label: "Engine Power", unit: "kW", placeholder: "15000" },
+        { key: "cylOil", label: "Specific Oil Consumption", unit: "g/kW·h", placeholder: "0.7" },
+        { key: "bhp", label: "Average Applicable Power", unit: "kW", placeholder: "15000" },
         { key: "hours", label: "Operating Time", unit: "h", placeholder: "720" },
       ],
       calculate: (v) => {
-        const consumption = (v.cylOil * v.bhp * v.hours) / 1e6; // ton
-        const dailyRate = consumption / (v.hours / 24);
+        if (v.hours <= 0) return [{ label: "Error", value: "Operating time must be positive" }];
+        const consumptionTonnes = (v.cylOil * v.bhp * v.hours) / 1e6;
+        const dailyTonnes = consumptionTonnes / (v.hours / 24);
         return [
-          { label: "Total Cylinder Oil", value: `${(consumption * 1000).toFixed(0)} kg` },
-          { label: "Daily Consumption", value: `${(dailyRate * 1000).toFixed(1)} kg/day` },
+          { label: "Calculated Oil Consumption", value: `${(consumptionTonnes * 1000).toFixed(0)} kg` },
+          { label: "Average Daily Consumption", value: `${(dailyTonnes * 1000).toFixed(1)} kg/day` },
         ];
       },
     },
     {
       id: "startup-checklist-time",
-      name: "Time to Prepare for Sea",
+      name: "Prepare-for-Sea Lead-Time Planner",
       group: "Start-up",
-      formula: "t_total = max(t_preheat, t_LO) + (n_engine·15 + n_gen·10) + 30 min",
+      formula: "Required lead time = vessel-specific sequence and parallel/serial task durations",
       variables: [
-        { symbol: "t_preheat", label: "Pre-heating time", unit: "dk" },
-        { symbol: "tLO", label: "LO circulation time", unit: "dk" },
-        { symbol: "nmotor", label: "Number of engines" },
-        { symbol: "njen", label: "Number of generators" },
+        { symbol: "t_preheat", label: "Required pre-heating duration from ship/maker procedure", unit: "min" },
+        { symbol: "t_LO", label: "Required lubricating-oil circulation duration", unit: "min" },
+        { symbol: "t_checks", label: "Other vessel-specific preparation/check duration", unit: "min" },
       ],
-      source: { code: "Engine room procedure for preparing for sea" },
-      note: "The start-up time is approximate: 15 min per engine, 10 min per generator, plus 30 min for checks.",
+      source: { code: "Vessel-specific engine-room prepare-for-sea procedure" },
+      note: "The former formula added invented 15 min/engine, 10 min/generator and a fixed 30 min check allowance. There is no universal maritime standard for those times. Enter only durations required by the installed machinery procedures and actual work plan.",
       inputs: [
-        { key: "engines", label: "Number of Engines", unit: "", placeholder: "2" },
-        { key: "gens", label: "Number of Generators", unit: "", placeholder: "3" },
-        { key: "preHeat", label: "Pre-heating Time", unit: "min", placeholder: "60" },
-        { key: "loCirc", label: "LO Circulation", unit: "min", placeholder: "30" },
+        { key: "preHeat", label: "Required Pre-heating", unit: "min", placeholder: "60" },
+        { key: "loCirc", label: "Required LO Circulation", unit: "min", placeholder: "30" },
+        { key: "other", label: "Other Sequential Checks/Tasks", unit: "min", placeholder: "30" },
       ],
       calculate: (v) => {
-        const totalPreheat = Math.max(v.preHeat, v.loCirc);
-        const startupTime = v.engines * 15 + v.gens * 10; // dakika
-        const total = totalPreheat + startupTime + 30; // +30 dk kontrol
+        if (v.preHeat < 0 || v.loCirc < 0 || v.other < 0) {
+          return [{ label: "Error", value: "Durations cannot be negative" }];
+        }
+        const parallelPreparation = Math.max(v.preHeat, v.loCirc);
+        const total = parallelPreparation + v.other;
         return [
-          { label: "Preparation", value: `${totalPreheat} min` },
-          { label: "Start-up", value: `${startupTime} min` },
-          { label: "Total Time", value: `${total} min` },
+          { label: "Parallel Pre-conditions", value: `${parallelPreparation.toFixed(0)} min` },
+          { label: "Other Sequential Tasks", value: `${v.other.toFixed(0)} min` },
+          { label: "Planned Lead Time", value: `${total.toFixed(0)} min` },
+          { label: "Operational Authority", value: "Verify sequence/timing against maker manuals, PMS and vessel procedure" },
         ];
       },
     },
     {
       id: "engine-warmup-time",
-      name: "Engine Warm-up Time",
+      name: "Idealized Thermal Warm-up Estimate",
       group: "Start-up",
-      formula: "t = (m · cp · ΔT) / Q̇_heater",
+      formula: "t = (m × cp × ΔT) / heater power",
       variables: [
-        { symbol: "m", label: "Engine block mass", unit: "kg" },
-        { symbol: "cp", label: "Specific heat (steel)", unit: "kJ/kg·K" },
+        { symbol: "m", label: "Effective heated mass assumed by the model", unit: "kg" },
+        { symbol: "cp", label: "Assumed effective specific heat", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Temperature rise", unit: "K" },
-        { symbol: "Q̇_heater", label: "Heater power", unit: "kW" },
+        { symbol: "Q̇", label: "Effective heat input", unit: "kW" },
       ],
-      source: { code: "Sensible heat relation — main engine pre-heating", detail: "Turning gear: min 1 hour; jacket water → 60 °C" },
-      note: "The mass is entered in tonnes and converted to kg in the calculation (×1000).",
+      source: { code: "Sensible-heat engineering estimate", detail: "Not a maker start-permission calculation" },
+      note: "Real machinery warm-up is a transient heat-transfer process involving cooling-water/oil circuits, heat losses, component gradients and maker limits. No universal 'turning gear 1 hour' or 'jacket water 60 °C' limit is asserted here.",
       inputs: [
-        { key: "mass", label: "Engine Block Mass", unit: "tonnes", placeholder: "200" },
-        { key: "cp", label: "Specific Heat (steel)", unit: "kJ/kg·K", placeholder: "0.5" },
+        { key: "mass", label: "Effective Heated Mass", unit: "tonnes", placeholder: "200" },
+        { key: "cp", label: "Effective Specific Heat", unit: "kJ/kg·K", placeholder: "0.5" },
         { key: "tStart", label: "Initial Temperature", unit: "°C", placeholder: "20" },
-        { key: "tTarget", label: "Target Temperature", unit: "°C", placeholder: "60" },
-        { key: "qHeater", label: "Heater Power", unit: "kW", placeholder: "150" },
+        { key: "tTarget", label: "Target Temperature from Procedure", unit: "°C", placeholder: "60" },
+        { key: "qHeater", label: "Effective Heater Power", unit: "kW", placeholder: "150" },
       ],
       calculate: (v) => {
-        const energy = v.mass * 1000 * v.cp * (v.tTarget - v.tStart);
-        const timeH = energy / (v.qHeater * 3600);
+        if (v.qHeater <= 0) return [{ label: "Error", value: "Heater power must be positive" }];
+        if (v.tTarget < v.tStart) return [{ label: "Error", value: "Target temperature must not be below initial temperature for a warm-up estimate" }];
+        const energyKJ = v.mass * 1000 * v.cp * (v.tTarget - v.tStart);
+        const timeH = energyKJ / (v.qHeater * 3600);
         return [
-          { label: "Required Energy", value: `${(energy / 3600).toFixed(0)} kWh` },
-          { label: "Estimated Warm-up Time", value: `${(timeH * 60).toFixed(0)} min` },
+          { label: "Idealized Heat Requirement", value: `${(energyKJ / 3600).toFixed(0)} kWh` },
+          { label: "Idealized Warm-up Time", value: `${(timeH * 60).toFixed(0)} min` },
+          { label: "Status", value: "Thermal estimate only — maker start conditions govern" },
         ];
       },
     },
     {
       id: "lube-oil-pressure-check",
-      name: "Lubricating Oil Pressure Check",
+      name: "Lubricating Oil Pressure Check against Entered Maker Limits",
       group: "Start-up",
-      formula: "P_oil ≥ P_min (manufacturer's value)",
+      formula: "Compare measured pressure with maker/SMS alarm and operating limits",
       variables: [
         { symbol: "P_oil", label: "Measured oil pressure", unit: "bar" },
-        { symbol: "Pmin", label: "Minimum allowable pressure", unit: "bar" },
-        { symbol: "Palarm", label: "Alarm pressure", unit: "bar" },
+        { symbol: "Pmin", label: "Minimum operating pressure from maker/ship data", unit: "bar" },
+        { symbol: "Pmax", label: "Maximum operating pressure from maker/ship data", unit: "bar" },
+        { symbol: "Palarm", label: "Low-pressure alarm/set point from approved data", unit: "bar" },
       ],
-      source: { code: "Manufacturer's lubrication system limits", detail: "Typical: 3–5 bar (at low speed), 5–8 bar (at full load)" },
+      source: { code: "Installed-engine manufacturer manual / alarm list / vessel procedure" },
+      note: "No generic 3–5 or 5–8 bar range is assumed. Enter only limits verified for the installed engine and operating condition.",
       inputs: [
         { key: "pMeasured", label: "Measured Pressure", unit: "bar", placeholder: "4.2" },
-        { key: "pMin", label: "Minimum Allowable", unit: "bar", placeholder: "2.5" },
-        { key: "pMax", label: "Maximum Allowable", unit: "bar", placeholder: "6.0" },
-        { key: "pAlarm", label: "Alarm Value", unit: "bar", placeholder: "2.0" },
+        { key: "pMin", label: "Verified Minimum Operating", unit: "bar", placeholder: "2.5" },
+        { key: "pMax", label: "Verified Maximum Operating", unit: "bar", placeholder: "6.0" },
+        { key: "pAlarm", label: "Verified Low Alarm", unit: "bar", placeholder: "2.0" },
       ],
       calculate: (v) => {
-        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Low" : v.pMeasured > v.pMax ? "High" : "Normal";
+        if (v.pAlarm <= 0) return [{ label: "Error", value: "Entered alarm pressure must be positive" }];
+        const status = v.pMeasured < v.pAlarm
+          ? "Below entered alarm set-point"
+          : v.pMeasured < v.pMin
+            ? "Below entered operating minimum"
+            : v.pMeasured > v.pMax
+              ? "Above entered operating maximum"
+              : "Within entered operating range";
         const margin = ((v.pMeasured - v.pAlarm) / v.pAlarm) * 100;
         return [
-          { label: "Durum", value: status },
-          { label: "Alarm Margin", value: `${margin.toFixed(1)}%` },
-          { label: "Range", value: `${v.pMin}–${v.pMax} bar` },
+          { label: "Comparison", value: status },
+          { label: "Margin above Entered Low Alarm", value: `${margin.toFixed(1)}%` },
+          { label: "Entered Operating Range", value: `${v.pMin}–${v.pMax} bar` },
+          { label: "Operational Status", value: "Confirm with actual machinery alarms, trends and maker procedure" },
         ];
       },
     },
