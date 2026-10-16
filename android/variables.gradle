@@ -1,5 +1,7 @@
 ext {
-    minSdkVersion = 23
+    // Play otomatik koruma ("Google Play ile korunanlar") en az API 24 istiyor;
+    // 23 ile yüklenen paket Play Console tarafından reddediliyor (Ekim 2026).
+    minSdkVersion = 24
     // Play, 31 Ağustos 2026'dan itibaren yeni uygulama ve tüm güncellemelerden
     // API 36 (Android 16) hedeflemesini istiyor. compileSdk 36 en az AGP 8.9.1
     // gerektirir (bkz. android/build.gradle) ve Gradle 8.11.1 ile uyumludur.
