@@ -10,7 +10,7 @@ import { registerPlugin } from '@capacitor/core';
  * Pro erişimi vermez.
  *
  * Platform davranışı:
- *  - **Android:** Play Billing Library 7 üzerinden gerçek akış.
+ *  - **Android:** Play Billing Library 9 üzerinden gerçek akış.
  *  - **Web / iOS:** kullanılamaz; `isAvailable()` false döner, diğer
  *    çağrılar hata fırlatır. (iOS için ileride StoreKit eklenecek.)
  */

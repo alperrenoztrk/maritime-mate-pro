@@ -9,7 +9,7 @@ Ana teklif yıllık aboneliktir. Reklam (AdMob) ana gelir değil, yalnızca
 
 ```
 Android uygulaması
-  └─ PlayBillingPlugin (native, Billing Library 7)
+  └─ PlayBillingPlugin (native, Billing Library 9)
        └─ satın alma / geri yükleme → purchaseToken
             └─ Supabase edge function: verify-purchase
                  ├─ Google Play Developer API ile doğrular

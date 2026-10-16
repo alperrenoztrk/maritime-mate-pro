@@ -11,6 +11,7 @@ import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
+import com.android.billingclient.api.QueryProductDetailsResult;
 import com.android.billingclient.api.QueryPurchasesParams;
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
@@ -50,6 +51,10 @@ public class PlayBillingPlugin extends Plugin implements PurchasesUpdatedListene
             .enablePendingPurchases(
                 PendingPurchasesParams.newBuilder().enableOneTimeProducts().build()
             )
+            // Billing 8+: bağlantı koparsa kütüphane bir sonraki API çağrısında
+            // kendisi yeniden bağlanır. onBillingServiceDisconnected içinde elle
+            // startConnection çağrılmamalıdır (Google'ın önerisi).
+            .enableAutoServiceReconnection()
             .build();
     }
 
@@ -141,7 +146,10 @@ public class PlayBillingPlugin extends Plugin implements PurchasesUpdatedListene
                 .setProductList(productList)
                 .build();
 
-            billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
+            // Billing 8+: sonuç QueryProductDetailsResult olarak gelir. Bulunamayan
+            // ürünler (ör. Play Console'da henüz etkin olmayan) ayrı listede döner;
+            // önceki sürümle aynı davranış için JS'e yalnızca bulunanlar iletilir.
+            billingClient.queryProductDetailsAsync(params, (BillingResult billingResult, QueryProductDetailsResult queryResult) -> {
                 if (billingResult.getResponseCode() != BillingClient.BillingResponseCode.OK) {
                     call.reject(
                         "Ürün bilgileri alınamadı: " + billingResult.getDebugMessage(),
@@ -150,6 +158,7 @@ public class PlayBillingPlugin extends Plugin implements PurchasesUpdatedListene
                     return;
                 }
 
+                List<ProductDetails> productDetailsList = queryResult.getProductDetailsList();
                 JSArray products = new JSArray();
                 for (ProductDetails details : productDetailsList) {
                     productDetailsCache.put(details.getProductId(), details);
