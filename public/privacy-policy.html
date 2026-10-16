@@ -31,7 +31,7 @@
 </head>
 <body>
   <h1 id="en">Privacy Policy – Mariner's Book</h1>
-  <p class="meta">Effective date: August 14, 2026 · Package: com.marinersbook.app · Data controller: Nautical Leap · Contact: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+  <p class="meta">Effective date: August 14, 2026 · Last updated: October 16, 2026 · Package: com.marinersbook.app · Data controller: Nautical Leap · Contact: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
   <p class="meta">See also the <a href="/terms-of-use.html#en">Terms of Use</a>.</p>
 
   <h2 id="overview">1. Overview</h2>
@@ -49,9 +49,12 @@
     <tr><td><strong>Location:</strong> GPS coordinates (with permission) and IP-based approximate location</td><td>Weather, tide and navigation calculations</td><td>Consent / legitimate interest</td></tr>
     <tr><td>AI chat messages</td><td>Q&amp;A and study support</td><td>Consent</td></tr>
     <tr><td><strong>AI content reports:</strong> the AI answer you report, the related prompt, the reason and any note you add</td><td>Reviewing harmful or inaccurate AI output (only when you press "Report this answer")</td><td>Legitimate interest / legal obligation</td></tr>
-    <tr><td>Advertising ID (free tier, mobile only)</td><td>Serving ads</td><td>Consent (UMP form)</td></tr>
   </table>
-  <p><strong>Not collected:</strong> analytics/crash SDKs, contacts, microphone, calendar, health data.</p>
+  <!-- Ads are disabled (VITE_ADS_ENABLED off, AD_ID permission removed in AndroidManifest.xml).
+       When ads are enabled, restore the "Advertising ID" row here and the "Google AdMob" row in
+       section 3 (both languages), and update the Play Console Ads, Advertising ID and Data safety
+       declarations in the same release. -->
+  <p><strong>Not collected:</strong> advertising ID, analytics/crash SDKs, contacts, microphone, calendar, health data. The App currently shows no ads.</p>
   <p><strong>About location:</strong> The App requests <code>ACCESS_FINE_LOCATION</code> and <code>ACCESS_COARSE_LOCATION</code>. Your location is not stored on our servers; it is sent to the weather/geocoding services only at the moment of the request. You can revoke the permission at any time and enter a location manually instead.</p>
   <p><strong>AI chats:</strong> Chat history is stored only in your device's local storage, never on our servers. Message content is however transmitted to the providers listed below to generate answers. <strong>One exception:</strong> if you choose to report an answer using the "Report this answer" button, that answer and the related prompt are saved to our servers for review.</p>
 
@@ -63,7 +66,6 @@
     <tr><td>Google Gemini</td><td>AI requests (same content)</td></tr>
     <tr><td>Google Cloud Translation</td><td>On-screen text when you switch language</td></tr>
     <tr><td>Google Play Developer API</td><td>Purchase token (subscription verification)</td></tr>
-    <tr><td>Google AdMob</td><td>Advertising ID, device data (free tier only)</td></tr>
     <tr><td>Wolfram Alpha</td><td>Calculation queries</td></tr>
     <tr><td>Open-Meteo</td><td>Coordinates (weather)</td></tr>
     <tr><td>BigDataCloud</td><td>Coordinates (reverse geocoding)</td></tr>
@@ -74,7 +76,7 @@
     <tr><td>OpenStreetMap</td><td>IP address when a map is displayed</td></tr>
     <tr><td>Third-party sites hosting images used in lesson content (e.g. Wikimedia Commons, Unsplash and various maritime training sites)</td><td>When you open the relevant lesson page the image loads directly from its source, so that site sees your IP address</td></tr>
   </table>
-  <p>We do not sell your data and do not share it for advertising profiling other than AdMob. Some providers operate outside the EU/Turkey; transfers rely on standard contractual clauses and provider privacy commitments.</p>
+  <p>We do not sell your data and do not share it for advertising or profiling. Some providers operate outside the EU/Turkey; transfers rely on standard contractual clauses and provider privacy commitments.</p>
   <p>About external images: Some images on lesson pages are hosted on their source sites rather than our servers. We do not control those sites; they only see the technical information needed to serve the image (IP address, browser information) and are governed by their own privacy policies. We do not transmit your account or document data to them.</p>
 
   <h2 id="protection-of-documents">4. Protection of Documents</h2>
@@ -93,6 +95,7 @@
     <li>Purchase records: until the account is deleted. Deleting your account also deletes the purchase record held in the App; payment and invoice records remain subject to Google Play's own retention periods.</li>
     <li>AI chat history: device-only; removed when you clear app data.</li>
     <li>AI content reports: until the account is deleted.</li>
+    <li>Server backups: data deleted from the live system is permanently removed from backups within 30 days.</li>
   </ul>
 
   <h2 id="account-and-data-deletion">6. Account and Data Deletion</h2>
@@ -101,7 +104,7 @@
   <p>You may also email <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a> to request deletion or a copy of your data; requests are handled within 30 days.</p>
 
   <h2 id="your-rights">7. Your Rights</h2>
-  <p>Under GDPR and Turkish KVKK you have the right to access, rectify, erase, restrict, port and object to the processing of your data. Where processing is based on consent (documents, location, AI, ads) you may withdraw it at any time. Contact us at the address above; you may also lodge a complaint with your supervisory authority.</p>
+  <p>Under GDPR and Turkish KVKK you have the right to access, rectify, erase, restrict, port and object to the processing of your data. Where processing is based on consent (documents, location, AI) you may withdraw it at any time. Contact us at the address above; you may also lodge a complaint with your supervisory authority.</p>
 
   <h2 id="childrens-privacy">8. Children's Privacy</h2>
   <p>The App is not directed at children under 13 and does not knowingly collect data from them.</p>
@@ -115,7 +118,7 @@
   <hr>
 
   <h1 id="tr" lang="tr">Gizlilik Politikası – Mariner's Book</h1>
-  <p class="meta">Yürürlük tarihi: 14 Ağustos 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Nautical Leap · İletişim: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
+  <p class="meta">Yürürlük tarihi: 14 Ağustos 2026 · Son güncelleme: 16 Ekim 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Nautical Leap · İletişim: <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a></p>
   <p class="meta">Ayrıca bkz. <a href="/terms-of-use.html">Kullanım Şartları</a>.</p>
 
   <h2 id="genel-bakis">1. Genel Bakış</h2>
@@ -133,9 +136,8 @@
     <tr><td><strong>Konum:</strong> GPS koordinatları (izin verirseniz) ve IP tabanlı yaklaşık konum</td><td>Hava durumu, gelgit ve seyir hesaplamaları</td><td>Açık rıza / meşru menfaat</td></tr>
     <tr><td>Yapay zekâ sohbet metinleri</td><td>Soru-cevap ve eğitim desteği</td><td>Açık rıza</td></tr>
     <tr><td><strong>Yapay zekâ içeriği bildirimleri:</strong> bildirdiğiniz yapay zekâ yanıtı, ilgili sorunuz, bildirim nedeni ve eklediğiniz not</td><td>Zararlı veya yanlış yapay zekâ çıktısının incelenmesi (yalnızca "Bu yanıtı bildir" düğmesine bastığınızda)</td><td>Meşru menfaat / yasal yükümlülük</td></tr>
-    <tr><td>Reklam kimliği (yalnızca ücretsiz pakette, mobil)</td><td>Reklam gösterimi</td><td>Açık rıza (UMP onay formu)</td></tr>
   </table>
-  <p><strong>Toplanmayan veriler:</strong> Analitik/çökme izleme SDK'sı, kişiler, mikrofon, takvim, sağlık verisi.</p>
+  <p><strong>Toplanmayan veriler:</strong> Reklam kimliği, analitik/çökme izleme SDK'sı, kişiler, mikrofon, takvim, sağlık verisi. Uygulama şu anda reklam göstermez.</p>
   <p><strong>Konum hakkında:</strong> Uygulama <code>ACCESS_FINE_LOCATION</code> ve <code>ACCESS_COARSE_LOCATION</code> izinlerini kullanır. Konumunuz sunucularımızda saklanmaz; yalnızca ilgili hesaplama/hava durumu servislerine anlık olarak iletilir. İzni cihaz ayarlarından her zaman kapatabilirsiniz; konum kapalıyken uygulamayı manuel konum girerek kullanabilirsiniz.</p>
   <p><strong>Yapay zekâ sohbetleri:</strong> Sohbet geçmişi sunucularımızda saklanmaz, yalnızca cihazınızın yerel deposunda tutulur. Ancak yanıt üretmek için mesaj içeriği aşağıdaki servis sağlayıcılara iletilir. <strong>Tek istisna:</strong> bir yanıtı "Bu yanıtı bildir" düğmesiyle bildirmeyi seçerseniz, yalnızca o yanıt ve ilgili sorunuz inceleme amacıyla sunucularımıza kaydedilir.</p>
 
@@ -147,7 +149,6 @@
     <tr><td>Google Gemini</td><td>Yapay zekâ istekleri (yukarıdakiyle aynı içerik)</td></tr>
     <tr><td>Google Cloud Translation</td><td>Dil değiştirildiğinde ekrandaki metinler</td></tr>
     <tr><td>Google Play Developer API</td><td>Satın alma jetonu (abonelik doğrulaması)</td></tr>
-    <tr><td>Google AdMob</td><td>Reklam kimliği, cihaz bilgisi (yalnızca ücretsiz pakette)</td></tr>
     <tr><td>Wolfram Alpha</td><td>Hesaplama sorguları</td></tr>
     <tr><td>Open-Meteo</td><td>Koordinatlar (hava durumu)</td></tr>
     <tr><td>BigDataCloud</td><td>Koordinatlar (yer adı çözümleme)</td></tr>
@@ -158,7 +159,7 @@
     <tr><td>OpenStreetMap</td><td>Harita görüntülendiğinde IP adresi</td></tr>
     <tr><td>Ders içeriklerindeki görsellerin barındırıldığı üçüncü taraf siteler (ör. Wikimedia Commons, Unsplash ve çeşitli denizcilik eğitim siteleri)</td><td>İlgili ders sayfasını açtığınızda görsel doğrudan kaynağından yüklenir ve o site IP adresinizi görür</td></tr>
   </table>
-  <p>Veriler satılmaz ve reklam profilleme amacıyla (AdMob dışında) paylaşılmaz. Bu sağlayıcıların bir kısmı Avrupa Birliği ve Türkiye dışında bulunabilir; aktarım standart sözleşme hükümleri ve sağlayıcıların gizlilik taahhütleri kapsamında yapılır.</p>
+  <p>Veriler satılmaz ve reklam veya profilleme amacıyla paylaşılmaz. Bu sağlayıcıların bir kısmı Avrupa Birliği ve Türkiye dışında bulunabilir; aktarım standart sözleşme hükümleri ve sağlayıcıların gizlilik taahhütleri kapsamında yapılır.</p>
   <p>Harici görseller hakkında: Ders sayfalarındaki bazı görseller kendi sunucularımızda değil, kaynak sitelerinde barındırılır. Bu siteler tarafımızca yönetilmez; yalnızca görseli sunmak için gereken teknik bilgiyi (IP adresi, tarayıcı bilgisi) görürler ve kendilerine ait gizlilik politikalarına tabidirler. Bu sitelere tarafımızdan hesap veya belge veriniz aktarılmaz.</p>
 
   <h2 id="belgelerin-korunmasi">4. Belgelerin Korunması</h2>
@@ -177,6 +178,7 @@
     <li>Satın alma kayıtları: hesap silinene kadar. Hesabınızı sildiğinizde uygulamadaki satın alma kaydınız da silinir; ödeme ve fatura kayıtları Google Play tarafında kendi saklama sürelerine tabidir.</li>
     <li>Yapay zekâ sohbet geçmişi: yalnızca cihazınızda; uygulama verilerini temizlediğinizde silinir.</li>
     <li>Yapay zekâ içeriği bildirimleri: hesap silinene kadar.</li>
+    <li>Sunucu yedekleri: canlı sistemden silinen veriler yedeklerden en geç 30 gün içinde kalıcı olarak silinir.</li>
   </ul>
 
   <h2 id="hesap-ve-veri-silme">6. Hesap ve Veri Silme</h2>
@@ -185,7 +187,7 @@
   <p>Alternatif olarak <a href="mailto:nauticalleapapps@gmail.com">nauticalleapapps@gmail.com</a> adresine yazarak silme veya veri kopyası talebinde bulunabilirsiniz; talepler en geç 30 gün içinde yanıtlanır.</p>
 
   <h2 id="haklariniz">7. Haklarınız</h2>
-  <p>KVKK m.11 ve GDPR kapsamında; verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, taşınabilirlik ve itiraz haklarına sahipsiniz. Rızaya dayalı işlemelerde (belge yükleme, konum, yapay zekâ, reklam) rızanızı istediğiniz zaman geri çekebilirsiniz. Başvurularınızı yukarıdaki e-posta adresine iletebilir, sonuçtan memnun kalmazsanız yetkili veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
+  <p>KVKK m.11 ve GDPR kapsamında; verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, taşınabilirlik ve itiraz haklarına sahipsiniz. Rızaya dayalı işlemelerde (belge yükleme, konum, yapay zekâ) rızanızı istediğiniz zaman geri çekebilirsiniz. Başvurularınızı yukarıdaki e-posta adresine iletebilir, sonuçtan memnun kalmazsanız yetkili veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
 
   <h2 id="cocuklarin-gizliligi">8. Çocukların Gizliliği</h2>
   <p>Uygulama 13 yaş altı çocuklara yönelik değildir ve bilerek 13 yaş altı kullanıcılardan veri toplamaz.</p>
