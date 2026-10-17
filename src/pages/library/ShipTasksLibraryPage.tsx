@@ -72,7 +72,7 @@ const safetyTasks: TaskRow[] = [
   { task: "Lifesaving equipment", responsible: "3/O", slug: "can-kurtarma-araclari" },
   { task: "Weekly / Monthly checks", responsible: "3/O", slug: "weekly-monthly-checks" },
   { task: "Drill organizasyonu", responsible: "3/O", slug: "drill-organizasyonu" },
-  { task: "Customer list", responsible: "Master", slug: "muster-list" },
+  { task: "Muster list", responsible: "Master", slug: "muster-list" },
   { task: "ISM records", responsible: "Master + C/O", slug: "ism-kayitlari" },
   { task: "ISPS (security)", responsible: "Master", slug: "isps-guvenlik" },
   { task: "Security watch", responsible: "3/O", slug: "security-watch" },

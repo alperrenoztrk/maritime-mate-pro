@@ -114,7 +114,25 @@ kanalından kurun (yerel derlemede satın alma akışı açılmaz).
 
 ## 5. İçerik kapılama
 
-Pro'ya alınacak her ekran/bileşen `ProGate` ile sarılır:
+**Kilitler build-time anahtara bağlıdır ve varsayılan KAPALIDIR**
+(`src/config/proGating.ts`). Kapalı test boyunca (Ekim 2026) testçiler her
+şeyi açık görür. **Üretime gidecek AAB'yi derlemeden önce** GitHub →
+Settings → Secrets and variables → Actions → Variables altında
+`PRO_GATING_ENABLED=true` tanımlanır; CI bunu `VITE_PRO_GATING_ENABLED`
+olarak Vite'a geçirir. Web (Lovable) derlemesinde anahtar yoktur: web'de
+satın alma olmadığı için kilit de yoktur.
+
+Kilitli olanlar (anahtar açıkken, Pro olmayan kullanıcıya):
+
+| Kapsam | Rotalar / bileşenler |
+|---|---|
+| Kitaplık | `/lessons/:key/topics…`, `/machine/:slug/topics…`, `/meteorology/topics` — `FREE_LIBRARY_KEYS` hariç (navigation, safety, machine-engine-room-safety) |
+| Quizler ve sınav hazırlığı | tüm `…/quiz` rotaları, `/exam-preparation` (Exercises ücretsiz) |
+| Gelişmiş hesaplamalar | `/stability/{analysis,gz-imo,grain,grain-calculation,shearing-bending,gz-curve,wind-weather,imo-criteria}`, draft survey paketi (`/cargo/calculations/{draft-survey,preloading,intermediate,postdischarge,comparative}`), stabilite araçlarındaki IMO ve Grain sekmeleri |
+| 3D | stabilite araçlarındaki 3D simülasyon sekmesi, `/beta/ship-simulator` |
+
+Rota kapıları `src/App.tsx` içinde `ProRoute` / `LibraryBookRoute` ile,
+sayfa içi parçalar `ProGate` ile sarılır:
 
 ```tsx
 import { ProGate } from "@/components/pro/ProGate";

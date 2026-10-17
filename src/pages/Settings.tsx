@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun, Crown, Infinity as InfinityIcon } from "lucide-react";
 import { hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -33,7 +33,7 @@ const Settings = () => {
   // RequireAuth already keeps anonymous visitors out of this page and carries
   // the return path, so no local redirect is needed here.
   const { user, signOut } = useAuth();
-  const { hasProAccess } = useEntitlement();
+  const { hasProAccess, tier } = useEntitlement();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -156,6 +156,42 @@ const Settings = () => {
           </div>
 
           <div className="grid gap-6">
+            {/* Mariner's Book Pro — the in-app route to the paywall. The AI
+                quota message points users here ("Settings → Mariner's Book
+                Pro"), so the title must keep this exact wording. */}
+            <Card className={hasProAccess ? "border-emerald-500/40" : "border-amber-400/50"}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {tier === "lifetime" ? (
+                    <InfinityIcon className="h-5 w-5 text-emerald-500" />
+                  ) : (
+                    <Crown className={hasProAccess ? "h-5 w-5 text-emerald-500" : "h-5 w-5 text-amber-500"} />
+                  )}
+                  <span className="notranslate" translate="no">Mariner&rsquo;s Book Pro</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap items-center justify-between gap-3">
+                <p className="min-w-0 flex-1 basis-56 text-sm text-muted-foreground">
+                  <span data-translatable>
+                    {tier === "lifetime"
+                      ? "Your Lifetime access is active."
+                      : hasProAccess
+                        ? "Your Pro subscription is active."
+                        : "See the plans and prices, or restore a purchase you made before."}
+                  </span>
+                </p>
+                <Button
+                  size="sm"
+                  variant={hasProAccess ? "outline" : "default"}
+                  className={hasProAccess ? "gap-2" : "gap-2 bg-amber-500 text-black hover:bg-amber-400"}
+                  onClick={() => navigate("/pro")}
+                >
+                  <Crown className="h-4 w-4" />
+                  <span data-translatable>{hasProAccess ? "Manage membership" : "See Pro plans"}</span>
+                </Button>
+              </CardContent>
+            </Card>
+
             {/* Account */}
             <Card>
               <CardHeader>

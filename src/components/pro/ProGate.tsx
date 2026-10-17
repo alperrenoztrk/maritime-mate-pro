@@ -4,6 +4,7 @@ import { Crown, Lock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEntitlement } from "@/contexts/useEntitlement";
+import { PRO_GATING_ENABLED } from "@/config/proGating";
 
 interface ProGateProps {
   children: ReactNode;
@@ -26,6 +27,8 @@ export const ProGate = ({ children, feature, fallback }: ProGateProps) => {
   const { hasProAccess, loading } = useEntitlement();
   const navigate = useNavigate();
 
+  // Kilitler build-time anahtara bağlı (src/config/proGating.ts).
+  if (!PRO_GATING_ENABLED) return <>{children}</>;
   if (hasProAccess) return <>{children}</>;
   if (loading) return null;
   if (fallback) return <>{fallback}</>;
@@ -39,7 +42,7 @@ export const ProGate = ({ children, feature, fallback }: ProGateProps) => {
         </div>
         <p className="text-sm text-muted-foreground max-w-sm">
           {feature ? (
-            <span data-translatable>{`${feature} Pro paketine dahildir.`}</span>
+            <span data-translatable>{`${feature} is included in the Pro package.`}</span>
           ) : (
             <span data-translatable>This content is included in the Pro package.</span>
           )}

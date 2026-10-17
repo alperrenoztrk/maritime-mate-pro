@@ -16,7 +16,7 @@ import {
   BillingNotConfiguredError,
   type ProOffers,
 } from "@/services/billing";
-import { getPlaySubscriptionManagementUrl, PRODUCT_IDS, type ProPlan } from "@/config/products";
+import { getPlaySubscriptionManagementUrl, type ProPlan } from "@/config/products";
 import { getTermsOfUseUrl } from "@/config/legal";
 import { useLanguage } from "@/contexts/useLanguage";
 
@@ -32,7 +32,7 @@ const PRO_FEATURES = [
   "All books and professional content",
   "Advanced calculations and simulations",
   "All quizzes and exam preparation modules",
-  "3D ship systems",
+  "3D stability and ship simulations",
   "A high monthly quota on the AI assistant",
 ];
 
@@ -41,7 +41,7 @@ const FREE_FEATURES = [
   "Basic COLREG and safety content",
   "Selected books and basic calculators",
   "News and weather",
-  "Limited quiz and AI quota",
+  "Exercises and a limited monthly AI quota",
 ];
 
 interface PlanCardData {
@@ -54,8 +54,8 @@ interface PlanCardData {
 
 const PLAN_CARDS: PlanCardData[] = [
   { plan: "yearly", title: "Pro Annual", period: "/ year", highlight: true, note: "Most advantageous" },
-  { plan: "monthly", title: "Pro Monthly", period: "/ ay", highlight: false },
-  { plan: "lifetime", title: "Lifetime", period: "one-off payment", highlight: false, note: "Except unlimited AI" },
+  { plan: "monthly", title: "Pro Monthly", period: "/ month", highlight: false },
+  { plan: "lifetime", title: "Lifetime", period: "one-off payment", highlight: false, note: "Lower monthly AI quota" },
 ];
 
 const ProPage = () => {
@@ -106,7 +106,7 @@ const ProPage = () => {
     try {
       const newTier = await purchase(plan);
       if (newTier === "pro" || newTier === "lifetime") {
-        toast.success("Your Pro access has been opened. Enjoy watching! ⚓");
+        toast.success("Your Pro access is now active. ⚓");
       } else {
         toast.error("The purchase could not be verified. Please try 'Restore purchases'.");
       }
@@ -206,7 +206,7 @@ const ProPage = () => {
                     variant="outline"
                     size="sm"
                     className="gap-2"
-                    onClick={() => window.open(getPlaySubscriptionManagementUrl(PRODUCT_IDS.yearly), "_blank")}
+                    onClick={() => window.open(getPlaySubscriptionManagementUrl(), "_blank")}
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span data-translatable>Manage subscription on Google Play</span>
@@ -333,7 +333,7 @@ const ProPage = () => {
                     bağlantı verilmesini bekliyor; özet burada, tamamı şartlarda. */}
                 <p className="text-xs text-muted-foreground mt-2 max-w-xl mx-auto">
                   <span data-translatable>
-                    Payments are taken from your Google Play account. Subscriptions renew automatically at the end of each period; you can cancel any time under Google Play &gt; Subscriptions. The lifetime package is a one-off payment and does not include an unlimited AI quota.
+                    Payments are taken from your Google Play account. Subscriptions renew automatically at the end of each period; you can cancel any time under Google Play &gt; Subscriptions. The lifetime package is a one-off payment and comes with a lower monthly AI quota than the subscription.
                   </span>{" "}
                   <span data-translatable>Refunds are subject to the Google Play refund policy. See full terms and conditions.</span>{" "}
                   <a

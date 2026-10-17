@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { ArrowLeft, ChevronRight, Search } from "lucide-react";
+import { ArrowLeft, ChevronRight, Lock, Search } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { AppSymbol } from "@/components/ui/AppSymbol";
 import { hapticImpact, hapticSelection } from "@/lib/haptics";
@@ -290,19 +290,27 @@ export function LibraryBookCard({
   title,
   accent,
   to,
+  locked = false,
 }: {
   title: string;
   accent: string;
   to: string;
+  /** Pro book shown to a free user: a lock badge on the cover. */
+  locked?: boolean;
 }) {
   return (
     <Link
       to={to}
-      aria-label={title}
+      aria-label={locked ? `${title} (Pro)` : title}
       className="group block min-w-0 rounded-xl p-1 outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
     >
       <div className="relative aspect-[3/4] w-full">
         <LibraryBookCase title={title} accent={accent} />
+        {locked ? (
+          <span className="absolute right-1.5 top-1.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-black shadow-sm">
+            <Lock className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+        ) : null}
       </div>
       <span className="mt-2 block line-clamp-2 min-h-[2.5rem] px-1 text-center text-sm font-semibold leading-snug text-foreground">
         {title}

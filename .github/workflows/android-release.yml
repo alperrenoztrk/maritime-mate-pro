@@ -96,6 +96,10 @@ jobs:
       # açabilir.
       - name: Build web (Vite, native profile)
         env:
+          # Pro kilitleri (varsayılan KAPALI, bkz. src/config/proGating.ts).
+          # Kapalı test boyunca kapalı kalır; üretime gidecek AAB'den önce
+          # Settings > Variables > PRO_GATING_ENABLED=true yapılır.
+          VITE_PRO_GATING_ENABLED: ${{ vars.PRO_GATING_ENABLED }}
           VITE_ADS_ENABLED: ${{ vars.ADS_ENABLED }}
           VITE_ADMOB_BANNER_ID_ANDROID: ${{ secrets.ADMOB_BANNER_ID_ANDROID }}
           VITE_ADMOB_INTERSTITIAL_ID_ANDROID: ${{ secrets.ADMOB_INTERSTITIAL_ID_ANDROID }}

@@ -141,7 +141,7 @@ export default function MusterListPage() {
 
           <h1 className="mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-micro font-semibold uppercase tracking-[0.2em] text-primary">
             <ShieldAlert className="h-3.5 w-3.5" />
-            CUSTOMER LIST
+            MUSTER LIST
           </h1>
         </header>
 

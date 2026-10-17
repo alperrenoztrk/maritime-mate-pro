@@ -19,6 +19,9 @@ import {
   Wheat
 } from "lucide-react";
 import { Ship3DVisualization } from "./Ship3DVisualization";
+import { ProGate } from "@/components/pro/ProGate";
+import { useEntitlement } from "@/contexts/useEntitlement";
+import { PRO_GATING_ENABLED } from "@/config/proGating";
 
 // GM Calculator Component
 export const GMCalculator = () => {
@@ -643,8 +646,12 @@ export const ShipVisualization = () => {
 
 // Main Interactive Tools Panel
 export const InteractiveStabilityTools = () => {
+  const { hasProAccess } = useEntitlement();
+  // The 3D simulation, IMO criteria and grain tabs are Pro; open on the first
+  // free tab for users who would otherwise land on a lock card.
+  const startTab = PRO_GATING_ENABLED && !hasProAccess ? "gm" : "simulation";
   return (
-    <Tabs defaultValue="simulation" className="w-full">
+    <Tabs defaultValue={startTab} className="w-full">
       <TabsList className="grid w-full grid-cols-6 h-auto">
         <TabsTrigger value="simulation" className="text-xs py-1.5 px-1">
           <Ship className="h-3 w-3 mr-1 hidden sm:inline" />
@@ -673,7 +680,9 @@ export const InteractiveStabilityTools = () => {
       </TabsList>
       
       <TabsContent value="simulation" className="mt-3">
-        <Ship3DVisualization />
+        <ProGate feature="The 3D stability simulation">
+          <Ship3DVisualization />
+        </ProGate>
       </TabsContent>
       
       <TabsContent value="gm" className="mt-3">
@@ -689,11 +698,15 @@ export const InteractiveStabilityTools = () => {
       </TabsContent>
       
       <TabsContent value="imo" className="mt-3">
-        <IMOCriteriaChecker />
+        <ProGate feature="The IMO criteria check">
+          <IMOCriteriaChecker />
+        </ProGate>
       </TabsContent>
 
       <TabsContent value="grain" className="mt-3">
-        <GrainStabilityCalculator />
+        <ProGate feature="The grain stability calculation">
+          <GrainStabilityCalculator />
+        </ProGate>
       </TabsContent>
     </Tabs>
   );

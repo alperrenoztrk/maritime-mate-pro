@@ -2,6 +2,8 @@ import { useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
 import { BookOpenText, ClipboardCheck, GraduationCap, Ship, Wrench } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { useEntitlement } from "@/contexts/useEntitlement";
+import { PRO_GATING_ENABLED, isFreeLibraryKey } from "@/config/proGating";
 import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import {
   LibraryBookCard,
@@ -32,6 +34,8 @@ export default function LessonsLibraryPage() {
   const activeView: LibraryView | null =
     requestedView === "deck" || requestedView === "machine" ? requestedView : null;
   const betaCategories = getBetaCategories();
+  const { hasProAccess, loading: entitlementLoading } = useEntitlement();
+  const showLocks = PRO_GATING_ENABLED && !entitlementLoading && !hasProAccess;
 
   const openView = (view: LibraryView) => setSearchParams({ library: view });
   const closeView = () => setSearchParams({});
@@ -134,6 +138,7 @@ export default function LessonsLibraryPage() {
                 to={href}
                 title={category.title}
                 accent={category.accent}
+                locked={showLocks && !isFreeLibraryKey(category.key)}
               />
             );
           })}
