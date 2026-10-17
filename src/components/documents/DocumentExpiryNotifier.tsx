@@ -66,7 +66,13 @@ export function DocumentExpiryNotifier() {
           duration: 9000,
           action: {
             label: "Documents",
-            onClick: () => window.location.assign("/beta/documents"),
+            // This notifier sits outside the router, so it cannot call
+            // navigate(). Pushing history and firing popstate lets
+            // BrowserRouter pick up the route without reloading the app.
+            onClick: () => {
+              window.history.pushState({}, "", "/beta/documents");
+              window.dispatchEvent(new PopStateEvent("popstate"));
+            },
           },
         });
         await showDeviceNotification("Mariner's Book — Document reminder", body);

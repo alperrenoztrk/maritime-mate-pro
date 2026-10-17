@@ -14,55 +14,65 @@ import { useNavigate } from "react-router-dom";
 const DraftSurveyMenu = () => {
   const navigate = useNavigate();
 
+  // Every entry must point at a real route (see App.tsx, /cargo/calculations/*).
+  // The old /draft-survey-* paths did not exist and silently fell back to the
+  // home page.
   const draftCalculations = [
     {
-      title: "Standard Draft Survey",
-      description: "General cargo draft calculation",
+      title: "Draft Survey (Fast)",
+      description: "Displacement and cargo quantity from the drafts",
+      icon: Calculator,
+      path: "/cargo/calculations/draft-survey",
+      color: "bg-indigo-50 dark:bg-indigo-950 hover:bg-indigo-100 dark:hover:bg-indigo-900"
+    },
+    {
+      title: "Preparation Before Loading",
+      description: "Initial survey before cargo work starts",
       icon: Ship,
-      path: "/draft-survey-standard",
+      path: "/cargo/calculations/preloading",
       color: "bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900"
     },
     {
-      title: "Bunker Measurement",
-      description: "Fuel tonnage calculation",
+      title: "Mid-Phase Tracking",
+      description: "Intermediate survey during loading or discharge",
       icon: Gauge,
-      path: "/draft-survey-bunker",
+      path: "/cargo/calculations/intermediate",
       color: "bg-orange-50 dark:bg-orange-950 hover:bg-orange-100 dark:hover:bg-orange-900"
     },
     {
-      title: "Ballast Calculation",
-      description: "Ballast water draft effect",
+      title: "Post-Unloading Control",
+      description: "Final survey after discharge",
+      icon: FileText,
+      path: "/cargo/calculations/postdischarge",
+      color: "bg-rose-50 dark:bg-rose-950 hover:bg-rose-100 dark:hover:bg-rose-900"
+    },
+    {
+      title: "Draft Survey Comparison",
+      description: "Compare initial and final surveys",
+      icon: BarChart3,
+      path: "/cargo/calculations/comparative",
+      color: "bg-purple-50 dark:bg-purple-950 hover:bg-purple-100 dark:hover:bg-purple-900"
+    },
+    {
+      title: "Ballast & Trim Balance",
+      description: "Ballast water and trim effect",
       icon: Waves,
-      path: "/draft-survey-ballast",
+      path: "/cargo/calculations/ballast",
       color: "bg-cyan-50 dark:bg-cyan-950 hover:bg-cyan-100 dark:hover:bg-cyan-900"
     },
     {
       title: "Density Correction",
-      description: "Seawater density effect",
-      icon: BarChart3,
-      path: "/draft-survey-density",
-      color: "bg-purple-50 dark:bg-purple-950 hover:bg-purple-100 dark:hover:bg-purple-900"
-    },
-    {
-      title: "Port Account",
-      description: "Port specific calculations",
+      description: "Dock water density effect",
       icon: Anchor,
-      path: "/draft-survey-port",
+      path: "/cargo/calculations/density",
       color: "bg-amber-50 dark:bg-amber-950 hover:bg-amber-100 dark:hover:bg-amber-900"
     },
     {
-      title: "Analysis & Report",
-      description: "Result analysis and reporting",
-      icon: FileText,
-      path: "/draft-survey-analysis",
-      color: "bg-rose-50 dark:bg-rose-950 hover:bg-rose-100 dark:hover:bg-rose-900"
-    },
-    {
-      title: "Calculator",
-      description: "Quick draft calculations",
-      icon: Calculator,
-      path: "/draft-survey-calculator",
-      color: "bg-indigo-50 dark:bg-indigo-950 hover:bg-indigo-100 dark:hover:bg-indigo-900"
+      title: "Bunker and Fuel Difference",
+      description: "Fuel and stores on board",
+      icon: Gauge,
+      path: "/cargo/calculations/bunker",
+      color: "bg-orange-50 dark:bg-orange-950 hover:bg-orange-100 dark:hover:bg-orange-900"
     }
   ];
 

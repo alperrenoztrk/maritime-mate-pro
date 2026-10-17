@@ -454,26 +454,26 @@ const MaritimeNews = () => {
                       <ul className="space-y-1 text-[9.5px] leading-[1.35]">
                         <li className="flex justify-between gap-2">
                           <span>Headline</span>
-                          <span>{lead ? 1 : 0} haber</span>
+                          <span>{lead ? 1 : 0} {lead ? "story" : "stories"}</span>
                         </li>
                         <li className="flex justify-between gap-2">
                           <span>News from the Sea</span>
-                          <span>{secondaries.length} haber</span>
+                          <span>{secondaries.length} {secondaries.length === 1 ? "story" : "stories"}</span>
                         </li>
                         <li className="flex justify-between gap-2">
                           <span>Telegram</span>
-                          <span>{briefs.length} havadis</span>
+                          <span>{briefs.length} {briefs.length === 1 ? "brief" : "briefs"}</span>
                         </li>
                         {sourceCount > 0 ? (
                           <li className="flex justify-between gap-2">
                             <span>Source</span>
-                            <span>{sourceCount} gazete</span>
+                            <span>{sourceCount} {sourceCount === 1 ? "paper" : "papers"}</span>
                           </li>
                         ) : null}
                       </ul>
                     </div>
 
-                    <Link to="/book" className="gz-box mb-3 block break-inside-avoid text-inherit">
+                    <Link to="/lessons" className="gz-box mb-3 block break-inside-avoid text-inherit">
                       <div className="gz-box-title">Advertisement</div>
                       <p className="text-[9.5px] italic leading-[1.45]">
                         <span className="notranslate not-italic" translate="no" lang="en">
