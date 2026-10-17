@@ -27,9 +27,9 @@ type AppTab = {
 
 const TABS: AppTab[] = [
   { id: "home", label: "Home Page", to: "/", symbol: "house", selectedSymbol: "house.fill", fallback: House },
-  { id: "learn", label: "learn", to: "/lessons", symbol: "book", selectedSymbol: "book.fill", fallback: BookOpenText },
-  { id: "tools", label: "tools", to: "/calculations", symbol: "function", fallback: Calculator },
-  { id: "library", label: "library", to: "/library", symbol: "books.vertical", selectedSymbol: "books.vertical.fill", fallback: LibraryBig },
+  { id: "learn", label: "Learn", to: "/lessons", symbol: "book", selectedSymbol: "book.fill", fallback: BookOpenText },
+  { id: "tools", label: "Tools", to: "/calculations", symbol: "function", fallback: Calculator },
+  { id: "library", label: "Library", to: "/library", symbol: "books.vertical", selectedSymbol: "books.vertical.fill", fallback: LibraryBig },
   { id: "search", label: "Search", to: "/search", symbol: "magnifyingglass", fallback: Search },
 ];
 

@@ -359,7 +359,7 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/:topicKey/formulas" element={<PageTransition><CourseFormulasPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/calculations" element={<PageTransition><CourseCalculationsPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/rules" element={<Navigate to="../topics" relative="path" replace />} />
-        <Route path="/lessons/:topicKey/quiz" element={<PageTransition><ProRoute feature="Quizzes"><CourseQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/lessons/:topicKey/quiz" element={<PageTransition><ProRoute feature="The quiz section"><CourseQuizPage /></ProRoute></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LibraryBookRoute><LessonTopicsPage /></LibraryBookRoute></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LibraryBookRoute><LessonTopicDetailPage /></LibraryBookRoute></PageTransition>} />
         {/* Alıştırmalar — orijinal /lessons route'larına dokunulmadan eklendi */}
@@ -387,13 +387,13 @@ const AnimatedRoutes = () => {
         {/* Stability sub-routes */}
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />
         <Route path="/stability/rules" element={<Navigate to="/lessons/stability/topics" replace />} />
-        <Route path="/stability/gz-imo" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityGZIMO /></ProRoute></PageTransition>} />
-        <Route path="/stability/grain" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityGrainPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/gz-imo" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityGZIMO /></ProRoute></PageTransition>} />
+        <Route path="/stability/grain" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityGrainPage /></ProRoute></PageTransition>} />
         <Route path="/stability/gm" element={<PageTransition><StabilityGMPage /></PageTransition>} />
         <Route path="/stability/weight-shift" element={<PageTransition><StabilityWeightShiftPage /></PageTransition>} />
         <Route path="/stability/free-surface" element={<PageTransition><StabilityFreeSurfacePage /></PageTransition>} />
         <Route path="/stability/gz" element={<PageTransition><StabilityGZPage /></PageTransition>} />
-        <Route path="/stability/analysis" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityAnalysisPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/analysis" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityAnalysisPage /></ProRoute></PageTransition>} />
         <Route path="/stability/stable-tales" element={<PageTransition><StableTalesPage /></PageTransition>} />
         <Route path="/stability/formulas" element={<PageTransition><StabilityFormulasPage /></PageTransition>} />
         <Route path="/stability/formulas/:id" element={<PageTransition><StabilityFormulaDetailPage /></PageTransition>} />
@@ -403,21 +403,21 @@ const AnimatedRoutes = () => {
         <Route path="/stability/practical/fwa" element={<PageTransition><StabilityPracticalFWAPage /></PageTransition>} />
         <Route path="/stability/practical/ghm" element={<PageTransition><StabilityPracticalGHMPage /></PageTransition>} />
 
-        <Route path="/stability/quiz" element={<PageTransition><ProRoute feature="Quizzes"><StabilityQuizPage /></ProRoute></PageTransition>} />
-        <Route path="/stability/shearing-bending" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityShearingBendingPage /></ProRoute></PageTransition>} />
-        <Route path="/stability/grain-calculation" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityGrainCalculationPage /></ProRoute></PageTransition>} />
-        <Route path="/stability/gz-curve" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityGZCurvePage /></ProRoute></PageTransition>} />
-        <Route path="/stability/wind-weather" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityWindWeatherPage /></ProRoute></PageTransition>} />
-        <Route path="/stability/imo-criteria" element={<PageTransition><ProRoute feature="Advanced stability calculations"><StabilityIMOCriteriaPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/quiz" element={<PageTransition><ProRoute feature="The quiz section"><StabilityQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/shearing-bending" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityShearingBendingPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/grain-calculation" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityGrainCalculationPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/gz-curve" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityGZCurvePage /></ProRoute></PageTransition>} />
+        <Route path="/stability/wind-weather" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityWindWeatherPage /></ProRoute></PageTransition>} />
+        <Route path="/stability/imo-criteria" element={<PageTransition><ProRoute feature="This advanced stability calculation"><StabilityIMOCriteriaPage /></ProRoute></PageTransition>} />
         <Route path="/safety" element={<PageTransition><SafetyCalculationsPage /></PageTransition>} />
         <Route path="/meteorology/topics" element={<PageTransition><LibraryBookRoute bookKey="meteorology"><DetailedMeteorology /></LibraryBookRoute></PageTransition>} />
         <Route path="/tank" element={<PageTransition><TankCalculationsPage /></PageTransition>} />
         <Route path="/cargo/calculations" element={<PageTransition><CargoCalculationsPage /></PageTransition>} />
-        <Route path="/cargo/calculations/draft-survey" element={<PageTransition><ProRoute feature="Draft survey calculations"><DraftSurveyCalculator /></ProRoute></PageTransition>} />
-        <Route path="/cargo/calculations/preloading" element={<PageTransition><ProRoute feature="Draft survey calculations"><DraftSurveyPreloading /></ProRoute></PageTransition>} />
-        <Route path="/cargo/calculations/intermediate" element={<PageTransition><ProRoute feature="Draft survey calculations"><DraftSurveyIntermediate /></ProRoute></PageTransition>} />
-        <Route path="/cargo/calculations/postdischarge" element={<PageTransition><ProRoute feature="Draft survey calculations"><DraftSurveyPostdischarge /></ProRoute></PageTransition>} />
-        <Route path="/cargo/calculations/comparative" element={<PageTransition><ProRoute feature="Draft survey calculations"><DraftSurveyComparative /></ProRoute></PageTransition>} />
+        <Route path="/cargo/calculations/draft-survey" element={<PageTransition><ProRoute feature="The draft survey suite"><DraftSurveyCalculator /></ProRoute></PageTransition>} />
+        <Route path="/cargo/calculations/preloading" element={<PageTransition><ProRoute feature="The draft survey suite"><DraftSurveyPreloading /></ProRoute></PageTransition>} />
+        <Route path="/cargo/calculations/intermediate" element={<PageTransition><ProRoute feature="The draft survey suite"><DraftSurveyIntermediate /></ProRoute></PageTransition>} />
+        <Route path="/cargo/calculations/postdischarge" element={<PageTransition><ProRoute feature="The draft survey suite"><DraftSurveyPostdischarge /></ProRoute></PageTransition>} />
+        <Route path="/cargo/calculations/comparative" element={<PageTransition><ProRoute feature="The draft survey suite"><DraftSurveyComparative /></ProRoute></PageTransition>} />
         <Route path="/cargo/calculations/ballast" element={<PageTransition><DraftSurveyBallast /></PageTransition>} />
         <Route path="/cargo/calculations/density" element={<PageTransition><DraftSurveyDensity /></PageTransition>} />
         <Route path="/cargo/calculations/bunker" element={<PageTransition><DraftSurveyBunker /></PageTransition>} />
@@ -425,11 +425,11 @@ const AnimatedRoutes = () => {
 
         <Route path="/cargo/rules" element={<Navigate to="/lessons/cargo/topics" replace />} />
         <Route path="/cargo/assistant" element={<PageTransition><CargoAssistantPage /></PageTransition>} />
-        <Route path="/cargo/quiz" element={<PageTransition><ProRoute feature="Quizzes"><CargoQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/cargo/quiz" element={<PageTransition><ProRoute feature="The quiz section"><CargoQuizPage /></ProRoute></PageTransition>} />
         <Route path="/meteorology/formulas" element={<PageTransition><MeteorologyFormulasPage /></PageTransition>} />
         <Route path="/meteorology/rules" element={<Navigate to="/lessons/meteorology/topics" replace />} />
         <Route path="/meteorology/assistant" element={<PageTransition><MeteorologyAssistantPage /></PageTransition>} />
-        <Route path="/meteorology/quiz" element={<PageTransition><ProRoute feature="Quizzes"><MeteorologyQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/meteorology/quiz" element={<PageTransition><ProRoute feature="The quiz section"><MeteorologyQuizPage /></ProRoute></PageTransition>} />
         <Route path="/communication/assistant" element={<PageTransition><CommunicationAssistantPage /></PageTransition>} />
         <Route path="/communication/flags" element={<PageTransition><SignalFlagsPage /></PageTransition>} />
         <Route path="/communication/morse" element={<PageTransition><MorseCodePage /></PageTransition>} />
@@ -444,7 +444,7 @@ const AnimatedRoutes = () => {
         <Route path="/environment/formulas" element={<PageTransition><EmissionFormulas /></PageTransition>} />
         <Route path="/environment/rules" element={<Navigate to="/lessons/environment/topics" replace />} />
         <Route path="/environment/assistant" element={<PageTransition><EmissionAssistant /></PageTransition>} />
-        <Route path="/environment/quiz" element={<PageTransition><ProRoute feature="Quizzes"><EmissionQuiz /></ProRoute></PageTransition>} />
+        <Route path="/environment/quiz" element={<PageTransition><ProRoute feature="The quiz section"><EmissionQuiz /></ProRoute></PageTransition>} />
         <Route path="/solas/regulations" element={<PageTransition><SOLASRegulationsPage /></PageTransition>} />
         <Route path="/solas/certificates" element={<PageTransition><SOLASCertificatesPage /></PageTransition>} />
         <Route path="/solas/ship-requirements" element={<PageTransition><SOLASShipRequirementsPage /></PageTransition>} />
@@ -458,18 +458,18 @@ const AnimatedRoutes = () => {
         <Route path="/seamanship/formulas" element={<PageTransition><SeamanshipFormulasPage /></PageTransition>} />
         <Route path="/seamanship/rules" element={<Navigate to="/lessons/seamanship/topics" replace />} />
         <Route path="/seamanship/assistant" element={<PageTransition><SeamanshipAssistantPage /></PageTransition>} />
-        <Route path="/seamanship/quiz" element={<PageTransition><ProRoute feature="Quizzes"><SeamanshipQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/seamanship/quiz" element={<PageTransition><ProRoute feature="The quiz section"><SeamanshipQuizPage /></ProRoute></PageTransition>} />
 
         <Route path="/safety/formulas" element={<PageTransition><SafetyFormulasPage /></PageTransition>} />
         <Route path="/safety/rules" element={<Navigate to="/lessons/safety/topics" replace />} />
         <Route path="/safety/assistant" element={<PageTransition><SafetyAssistantPage /></PageTransition>} />
-        <Route path="/safety/quiz" element={<PageTransition><ProRoute feature="Quizzes"><SafetyQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/safety/quiz" element={<PageTransition><ProRoute feature="The quiz section"><SafetyQuizPage /></ProRoute></PageTransition>} />
 
         <Route path="/machine/calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
         <Route path="/machine/formulas" element={<PageTransition><MachineFormulasPage /></PageTransition>} />
         <Route path="/machine/rules" element={<Navigate to="/lessons?library=machine" replace />} />
         <Route path="/machine/assistant" element={<PageTransition><MachineAssistantPage /></PageTransition>} />
-        <Route path="/machine/quiz" element={<PageTransition><ProRoute feature="Quizzes"><MachineQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/machine/quiz" element={<PageTransition><ProRoute feature="The quiz section"><MachineQuizPage /></ProRoute></PageTransition>} />
         {/* Machine topic sub-routes */}
         <Route path="/machine/:topicSlug/topics" element={<PageTransition><LibraryBookRoute><MachineTopicLessonsPage /></LibraryBookRoute></PageTransition>} />
         <Route path="/machine/:topicSlug/calculations" element={<PageTransition><MachineTopicCalculationsPage /></PageTransition>} />
@@ -477,7 +477,7 @@ const AnimatedRoutes = () => {
         <Route path="/machine/:topicSlug/rules" element={<Navigate to="../topics" relative="path" replace />} />
         <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/topics/:subTopicTitle" element={<PageTransition><LibraryBookRoute><MachineTopicDetailPage /></LibraryBookRoute></PageTransition>} />
-        <Route path="/machine/:topicSlug/quiz" element={<PageTransition><ProRoute feature="Quizzes"><MachineTopicQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/machine/:topicSlug/quiz" element={<PageTransition><ProRoute feature="The quiz section"><MachineTopicQuizPage /></ProRoute></PageTransition>} />
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />
         <Route path="/navigation/tide-tutorial" element={<PageTransition><TideCalculationTutorial /></PageTransition>} />
@@ -489,10 +489,10 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
         
         <Route path="/navigation/assistant" element={<PageTransition><NavigationAssistantPage /></PageTransition>} />
-        <Route path="/navigation/quiz" element={<PageTransition><ProRoute feature="Quizzes"><NavigationQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/navigation/quiz" element={<PageTransition><ProRoute feature="The quiz section"><NavigationQuizPage /></ProRoute></PageTransition>} />
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
         <Route path="/economics/assistant" element={<PageTransition><EconomicsAssistantPage /></PageTransition>} />
-        <Route path="/economics/quiz" element={<PageTransition><ProRoute feature="Quizzes"><EconomicsQuizPage /></ProRoute></PageTransition>} />
+        <Route path="/economics/quiz" element={<PageTransition><ProRoute feature="The quiz section"><EconomicsQuizPage /></ProRoute></PageTransition>} />
         <Route path="/empty-page" element={<PageTransition><EmptyPage /></PageTransition>} />
         <Route path="/moon-phases" element={<PageTransition><MoonPhases /></PageTransition>} />
         <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />

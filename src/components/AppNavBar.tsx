@@ -13,17 +13,17 @@ const COLLAPSE_AT = 44;
 
 const KNOWN_TITLES: Array<[RegExp, string]> = [
   [/^\/$/, "Mariner's Book"],
-  [/^\/lessons$/, "learn"],
+  [/^\/lessons$/, "Learn"],
   [/^\/exercises$/, "Exercises"],
-  [/^\/calculations$/, "tools"],
-  [/^\/library$/, "bookshelf"],
+  [/^\/calculations$/, "Tools"],
+  [/^\/library$/, "Library"],
   [/^\/search$/, "Search"],
   [/^\/crew$/, "Personnel"],
-  [/^\/bridge$/, "bridge"],
+  [/^\/bridge$/, "Bridge"],
   [/^\/ship-systems$/, "Ship Systems"],
   [/^\/ship-tasks$/, "Ship Missions"],
   [/^\/ship-operations$/, "Operations"],
-  [/^\/glossary$/, "dictionary"],
+  [/^\/glossary$/, "Dictionary"],
   [/^\/regulations$/, "Legislation"],
   [/^\/settings$/, "Settings"],
 ];

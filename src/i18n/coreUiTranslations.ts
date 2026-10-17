@@ -54,6 +54,17 @@ const SHELL_SOURCE_TO_INDEX: Readonly<Record<string, number>> = {
   "Uygulamada ara": 6,
   Geri: 7,
   "Geri dön": 7,
+  // English interface sources (the app shell copy is authored in English
+  // since the Turkish-removal rewrite); same slots as the Turkish keys.
+  "Main sections": 0,
+  "Home Page": 1,
+  Home: 1,
+  Learn: 2,
+  Tools: 3,
+  Library: 4,
+  Search: 5,
+  "Search in the app": 6,
+  Back: 7,
 };
 
 // Order: main sections, home, learn, tools, library, search, search in app, back.
