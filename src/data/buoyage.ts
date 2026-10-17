@@ -15,6 +15,8 @@
 
 import cardinalMarksDiagram from "@/assets/navigation/real/cardinal-marks-diagram.svg";
 import isolatedDangerBeacon from "@/assets/navigation/real/isolated-danger-beacon.jpg";
+import lateralMarksRegionA from "@/assets/navigation/real/lateral-marks-region-a.jpg";
+import safeWaterMark from "@/assets/navigation/real/safe-water-mark.jpg";
 
 export type BuoyCategory = "lateral" | "cardinal" | "isolated" | "safeWater" | "special" | "wreck";
 
@@ -54,6 +56,8 @@ export const BUOY_CATEGORY_LABELS: Record<
 > = {
   lateral: {
     title: "Lateral (Yanal) İşaretler",
+    image: lateralMarksRegionA,
+    imageAlt: "IALA Region A: a red port hand mark with a can topmark (left) and a green starboard hand mark with a cone topmark (right)",
     description:
       "Bir kanalın veya geçiş hattının kenarlarını tarif eder; emniyetli suyu çizgisel olarak tanımlar. Renk anlamı IALA bölgesine göre TERSTİR — önce hangi bölgede olduğunuzu bilmeniz gerekir.",
   },
@@ -73,6 +77,8 @@ export const BUOY_CATEGORY_LABELS: Record<
   },
   safeWater: {
     title: "Emniyetli Su İşareti",
+    image: safeWaterMark,
+    imageAlt: "A safe water mark: red and white vertical stripes with a single red sphere as topmark",
     description:
       "Çevresi emniyetli su olan bir noktayı gösterir: kanal orta hattı, yaklaşım (landfall) noktası veya ayrım hattı. 'Doğru yerdeyim' teyidi verir.",
   },

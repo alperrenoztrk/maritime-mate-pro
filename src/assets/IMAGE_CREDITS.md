@@ -91,6 +91,18 @@ gelmektedir. Yayın öncesi kullanım haklarının doğrulanması gerekir.
 | `lessons/epirb-gps.jpg` | [EPIRB (2).jpg](https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg) | Marwan Mohamad | CC BY-SA 4.0 |
 | `navigation/real/earth-seasons-orbit.svg` | [Orbital relations of the Solstice, Equinox & Intervening Seasons.svg](https://commons.wikimedia.org/wiki/File:Orbital_relations_of_the_Solstice%2C_Equinox_%26_Intervening_Seasons.svg) | Colivine | CC0 |
 | `bridge/ecdis-radar-console.jpg` | [Cap San Diego Brücke Radar ECDIS.jpg](https://commons.wikimedia.org/wiki/File:Cap_San_Diego_Br%C3%BCcke_Radar_ECDIS.jpg) | Michael Krahe | CC BY-SA 4.0 |
+| `navigation/real/lateral-marks-region-a.jpg` | [Port hand navigation buoy 'Charlie' - geograph.org.uk - 7232918.jpg](https://commons.wikimedia.org/wiki/File:Port_hand_navigation_buoy_%27Charlie%27_-_geograph.org.uk_-_7232918.jpg) | Ian Paterson | CC BY-SA 2.0 |
+| `navigation/real/lateral-marks-region-a.jpg` | [Starboard hand navigation buoy 'No 5' - geograph.org.uk - 7232910.jpg](https://commons.wikimedia.org/wiki/File:Starboard_hand_navigation_buoy_%27No_5%27_-_geograph.org.uk_-_7232910.jpg) | Ian Paterson | CC BY-SA 2.0 |
+| `navigation/real/safe-water-mark.jpg` | [Limfjord safe water mark.jpg](https://commons.wikimedia.org/wiki/File:Limfjord_safe_water_mark.jpg) | Paul Fox | CC BY-SA 2.0 |
+| `seamanship/lifeboat-davit.jpg` | [Lifeboat 1.JPG](https://commons.wikimedia.org/wiki/File:Lifeboat_1.JPG) | ~riley | CC BY-SA 3.0 |
+| `seamanship/lifeboat-freefall.jpg` | [Freefall lifeboat of the Bulk carrier Queen Sapphire at the Kwinana Bulk Terminal, June 2024 01.jpg](https://commons.wikimedia.org/wiki/File:Freefall_lifeboat_of_the_Bulk_carrier_Queen_Sapphire_at_the_Kwinana_Bulk_Terminal%2C_June_2024_01.jpg) | Calistemon | CC BY-SA 4.0 |
+| `seamanship/anchor-stockless.jpg` | [Admiralty standard stockless anchor 01.jpg](https://commons.wikimedia.org/wiki/File:Admiralty_standard_stockless_anchor_01.jpg) | Pratishkhedekar | CC BY-SA 4.0 |
+| `navigation/real/earth-lighting-june-solstice.png` | [Earth-lighting-summer-solstice EN.png](https://commons.wikimedia.org/wiki/File:Earth-lighting-summer-solstice_EN.png) | Image by Przemyslaw "Blueshade" Idzkiewicz | CC BY-SA 2.0 |
+| `navigation/real/loxodrome-orthodrome.svg` | [LoxodromeConstAngle.svg](https://commons.wikimedia.org/wiki/File:LoxodromeConstAngle.svg) | derivative work: McSush (talk) Loxodrome2.jpg: Roterraecher | CC BY-SA 2.5 |
+| `lessons/draft-marks-metric.jpg` | [733 how-deep.jpg](https://commons.wikimedia.org/wiki/File:733_how-deep.jpg) | Brinki | CC BY-SA 2.0 |
+| `lessons/ship-binnacle.jpg` | [Ship Binnacle.jpg](https://commons.wikimedia.org/wiki/File:Ship_Binnacle.jpg) | Worldwidewebb77 | CC BY 4.0 |
 
 Raster görseller uygulama boyutu için en uzun kenarı 1600 px olacak şekilde küçültülmüştür.
 `navigation/real/latitude-longitude-earth.svg` dosyasında yalnızca İngilizce etiketler bırakılmıştır.
+`navigation/real/lateral-marks-region-a.jpg` iki fotoğrafın (iskele ve sancak işareti) yan yana birleştirilmesiyle oluşturulmuştur; üzerine yazı eklenmemiştir.
+`ship-systems/hatch-cover.jpg` (kredisi `ship-systems/CREDITS.md` içinde) denizcilik sayfasındaki ambar kapakları konusunda da kullanılır.

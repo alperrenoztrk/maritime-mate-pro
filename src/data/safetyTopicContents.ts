@@ -10,6 +10,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
 import lsaPersonalImage from "@/assets/seamanship/lsa-personal.jpg";
 import fireExtinguishersImage from "@/assets/seamanship/fire-extinguishers.jpg";
+import lifeboatDavitImage from "@/assets/seamanship/lifeboat-davit.jpg";
 
 export const safetyTopicContents: Record<string, TopicDetailContent> = {
   "SOLAS ve Emniyet Yönetimi (ISM)": {
@@ -53,6 +54,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Filikalar (Lifeboats) ve Kapasite",
+        image: lifeboatDavitImage,
+        imageAlt: "A totally enclosed lifeboat stowed in its davits on the boat deck of a cargo ship",
         content:
           "Filikalar, gemi terkinde toplu tahliye için kullanılan, motorlu ve genellikle tam kapalı (totally enclosed) teknelerdir. SOLAS, gemideki toplam kişi sayısını karşılayacak filika kapasitesi ister; yük gemilerinde tipik düzen, her iki bordada toplam kişiyi alacak filika ya da bir tarafta serbest düşmeli (free-fall) filikadır. Her filika; motor, içme suyu, gıda rasyonu, ilk yardım, işaret fişekleri, kürek ve seyir ekipmanı ile donatılır. Free-fall filikalar baştan kıça eğimli bir rampadan suya bırakılır ve hızlı tahliye sağlar.",
       },

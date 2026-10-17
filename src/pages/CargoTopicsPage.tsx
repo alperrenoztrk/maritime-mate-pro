@@ -27,6 +27,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
+import draftMarksMetric from "@/assets/lessons/draft-marks-metric.jpg";
 
 interface CargoSubTopic {
   id: string;
@@ -952,6 +953,7 @@ The draft survey is the most common method of establishing the commercial quanti
   },
   "draft-reading": {
     title: "Draft Reading Techniques",
+    image: draftMarksMetric,
     introduction: "Draft readings are the draft measurements made from the starboard and port side of the ship at the bow (head), stern and midpoints.",
     content: `READING POINTS:
 The draft is read at 6 points:

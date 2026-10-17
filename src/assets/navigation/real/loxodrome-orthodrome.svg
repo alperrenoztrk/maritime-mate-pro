@@ -1,0 +1,67 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="600" height="440" version="1.1"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title></title>
+<defs>
+<style type="text/css">
+circle, path, line{
+  fill: none;
+  stroke-width: 2px;
+  stroke: black;
+}
+.angle{stroke-width: 2px; stroke: red; fill: none;}
+.angletext{font-family: serif; font-size: 22px; fill: red;}
+.dotshadow{font-family: sans-serif; font-size: 25px; stroke-width: 4px; stroke: #fff;}
+.dot{font-family: sans-serif; font-size: 25px; fill: #000;}
+</style>
+<polyline points="0 0 -1 -3 0 -2 1 -3 0 0" id="arrow" style="fill: #ccc; stroke-width: 0.2px; stroke: #000;" />
+</defs>
+
+<rect x="0" y="0" width="600" height="440" style="fill: #fff"/>
+
+<circle cx="220" cy="220" r="200"/>
+<path d="M 20 220 C 20 300 420 300 420 220"/>
+<line x1="220" y1="20" x2="220" y2="420" />
+<path d="M 20 220 C 70 360 380 350 420 220" transform="rotate(140 220 220)"/>
+
+<path d="M 100 60 Q 220 30 340 60" />
+
+<path d="M 50 254 C 45 110 200 30 295 35" />
+<path d="M 390 254 C 395 110 240 30 145 35" />
+
+<path d="M 120 273 C 118 130 215 30 262 24" />
+<path d="M 320 273 C 322 130 225 30 178 24" />
+
+<path d="M 101 200 Q 280 150 330 77" />
+
+<path d="M 135 175 q 10 5 10 12" class="angle" />
+<path d="M 220 143 q 10 2 12 9" class="angle" />
+<path d="M 275 110 q 10 -2 19 5" class="angle" />
+<path d="M 305 88 q 10 -4 15 2" class="angle" />
+
+<text x="140" y="205" class="angletext">η</text>
+<text x="230" y="173" class="angletext">η</text>
+<text x="293" y="135" class="angletext">η</text>
+<text x="323" y="100" class="angletext">η</text>
+
+<text x="80" y="200" class="dotshadow">A</text>
+<text x="80" y="200" class="dot">A</text>
+<text x="340" y="90" class="dotshadow">B</text>
+<text x="340" y="90" class="dot">B</text>
+<text x="190" y="44" class="dotshadow">N</text>
+<text x="190" y="44" class="dot">N</text>
+
+<ellipse cx="188" cy="120" rx="4" ry="6" transform="rotate(30)" style="fill:#ff0; stroke-width: 1px; stroke: black;" />
+<ellipse cx="40" cy="336" rx="4" ry="6" transform="rotate(-70)" style="fill:#ff0; stroke-width: 1px; stroke: black;" />
+<ellipse cx="220" cy="45" rx="6" ry="4" style="fill:#ff0; stroke-width: 1px; stroke: black;" />
+
+<text x="430" y="40" class="dot">Orthodrome</text>
+<text x="430" y="140" class="dot">Loxodrome</text>
+<line x1="430" y1="35" x2="303" y2="75" style="stroke-width: 1px; stroke: black;" />
+<line x1="430" y1="135" x2="307" y2="104" style="stroke-width: 1px; stroke: black;" />
+<use xlink:href="#arrow" transform="translate(303 75) rotate(70) scale(4)" />
+<use xlink:href="#arrow" transform="translate(307 104) rotate(103) scale(4)" />
+</svg>

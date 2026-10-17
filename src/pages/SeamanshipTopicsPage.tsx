@@ -40,6 +40,10 @@ import photoLiferaftCanister from "@/assets/seamanship/liferaft-canister.jpg";
 import photoLsaPersonal from "@/assets/seamanship/lsa-personal.jpg";
 import photoRudderPropeller from "@/assets/seamanship/rudder-propeller.jpg";
 import photoSteeringGear from "@/assets/seamanship/steering-gear.jpg";
+import photoAnchorStockless from "@/assets/seamanship/anchor-stockless.jpg";
+import photoLifeboatDavit from "@/assets/seamanship/lifeboat-davit.jpg";
+import photoLifeboatFreefall from "@/assets/seamanship/lifeboat-freefall.jpg";
+import photoHatchCovers from "@/assets/ship-systems/hatch-cover.jpg";
 import photoDeckCrane from "@/assets/seamanship/deck-crane.jpg";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
@@ -89,7 +93,7 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
   {
     id: "anchoring",
     number: 3,
-    title: "Anchorage and Anchor Equipment",
+    title: "Anchoring and Anchor Equipment",
     icon: Anchor,
     subtopics: [
       { id: "anchor-types", title: "Anchor types and properties", hasContent: true },
@@ -104,12 +108,12 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
   {
     id: "mooring",
     number: 4,
-    title: "Mooring and Mooring",
+    title: "Mooring Operations",
     icon: MapPin,
     subtopics: [
       { id: "mooring-lines", title: "Mooring lines and their names", hasContent: true },
-      { id: "mooring-equipment", title: "Clamping hardware (bollards, pulleys)", hasContent: true },
-      { id: "mooring-procedure", title: "Docking and mooring procedure", hasContent: true },
+      { id: "mooring-equipment", title: "Mooring fittings (bollards, fairleads)", hasContent: true },
+      { id: "mooring-procedure", title: "Berthing and mooring procedure", hasContent: true },
       { id: "mooring-winches", title: "Windlasses and winches", hasContent: true },
       { id: "mooring-safety", title: "Safety in mooring operations", hasContent: true },
       { id: "single-buoy-mooring", title: "Single buoy mooring (SBM/SPM)", hasContent: true },
@@ -751,6 +755,15 @@ The proof load (PL) is the test load applied after manufacture. It is usually tw
   "anchor-types": {
     title: "Anchor Types and Properties",
     introduction: "The irons used in ships are produced in different types according to their structure and holding strength; The selection is made according to the seabed structure and ship tonnage.",
+    photos: [
+      {
+        src: photoAnchorStockless,
+        title: "Stockless (Hall type) anchor",
+        caption: "The stockless anchor used on most merchant ships: the flukes pivot about the crown, so the anchor can be heaved right up into the hawse pipe.",
+        alt: "A large black stockless anchor with two pivoting flukes, displayed upright on a tiled plinth.",
+        credit: "Photo: Pratishkhedekar / Wikimedia Commons, CC BY-SA 4.0",
+      },
+    ],
     content: `THE MAIN TYPES OF ANCHOR:
 
 STOCKLESS ANCHOR (Hall anchor): the type most widely used on merchant ships. The flukes pivot about the crown. It can be stowed in the hawse pipe. It develops a holding power of 3-5 times its own weight.
@@ -1630,6 +1643,15 @@ In derrick operations the weakest element (rope, block, shackle) determines the 
   "hatch-covers": {
     title: "Hatch Covers and Types",
     introduction: "Hatch covers are structural elements that ensure watertight closure of cargo holds and are of critical importance for ship safety.",
+    photos: [
+      {
+        src: photoHatchCovers,
+        title: "Side-rolling hatch covers on a bulk carrier",
+        caption: "The hatch cover panels are rolled to both sides on their rails, leaving the holds open; the coamings and the cross-deck between the holds are visible.",
+        alt: "View forward from the bridge of a bulk carrier at sea: red hatch cover panels rolled aside to port and starboard over a row of open cargo holds.",
+        credit: "Photo: Yagerq / Wikimedia Commons, CC0",
+      },
+    ],
     content: `TYPES OF HATCH COVER:
 
 1. Hydraulic folding: the panels are folded open by hydraulic cylinders. Common on modern bulk carriers.
@@ -1744,6 +1766,22 @@ Under the ISM Code all maintenance is planned, carried out and recorded within t
   "lifeboat-types": {
     title: "Lifeboat Types and Equipment",
     introduction: "Lifeboats are SOLAS approved rescue vehicles designed to protect the lives of crew and passengers in case of ship abandonment.",
+    photos: [
+      {
+        src: photoLifeboatDavit,
+        title: "Totally enclosed lifeboat in its davits",
+        caption: "An orange totally enclosed lifeboat stowed in its davits on the boat deck of a cargo ship.",
+        alt: "An orange totally enclosed lifeboat hanging in its davits beside the accommodation of a cargo ship.",
+        credit: "Photo: ~riley / Wikimedia Commons, CC BY-SA 3.0",
+      },
+      {
+        src: photoLifeboatFreefall,
+        title: "Free-fall lifeboat",
+        caption: "A free-fall lifeboat on its launching ramp at the stern of a bulk carrier; on release it slides down the ramp and drops into the sea.",
+        alt: "An orange free-fall lifeboat on an inclined launching ramp above the stern of a bulk carrier alongside a terminal.",
+        credit: "Photo: Calistemon / Wikimedia Commons, CC BY-SA 4.0",
+      },
+    ],
     content: `TYPES OF LIFEBOAT:
 
 1. Open lifeboat: an open boat. The old standard; no longer fitted on newly built ships.

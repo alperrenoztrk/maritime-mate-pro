@@ -11,7 +11,9 @@ import { useMemo } from "react";
  * Metnin kendisi değiştirilmez, yalnız yapısı çıkarılır.
  */
 
-type OrderedItem = { label: string; body?: string };
+// `n` keeps the number written in the source text: items separated by blank
+// lines end up in separate blocks, and counting per block would show 1, 1, 1.
+type OrderedItem = { label: string; body?: string; n?: number };
 
 type Block =
   | { kind: "heading"; text: string }
@@ -82,7 +84,7 @@ function parseLessonText(text: string): Block[] {
         flush();
         current = { kind: "ordered", items: [] };
       }
-      current.items.push({ label: ordered[2].trim() });
+      current.items.push({ label: ordered[2].trim(), n: Number(ordered[1]) });
       continue;
     }
 
@@ -210,7 +212,7 @@ export function StructuredLessonText({
                   return (
                     <li key={`${key}-${itemIndex}`} className="flex items-start gap-3">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-primary/10 text-micro font-bold text-primary">
-                        {itemIndex + 1}
+                        {item.n ?? itemIndex + 1}
                       </span>
                       <div className="space-y-1 text-sm leading-relaxed text-foreground/80">
                         {item.body ? (

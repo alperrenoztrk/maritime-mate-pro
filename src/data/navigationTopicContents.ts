@@ -25,6 +25,10 @@ import magneticDeclinationImg from "@/assets/navigation/real/magnetic-declinatio
 import tssCrossingRule10 from "@/assets/navigation/real/tss-crossing-rule10.svg";
 import earthSeasonsOrbit from "@/assets/navigation/real/earth-seasons-orbit.svg";
 import ecdisRadarConsole from "@/assets/bridge/ecdis-radar-console.jpg";
+import earthLightingJuneSolstice from "@/assets/navigation/real/earth-lighting-june-solstice.png";
+import loxodromeOrthodrome from "@/assets/navigation/real/loxodrome-orthodrome.svg";
+import shipBinnacleImg from "@/assets/lessons/ship-binnacle.jpg";
+import lateralMarksRegionA from "@/assets/navigation/real/lateral-marks-region-a.jpg";
 
 
 export interface TopicSection {
@@ -104,6 +108,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Eksen Eğikliği (Obliquity)",
+        image: earthLightingJuneSolstice,
+        imageAlt: "Sunlight on the Earth at the June solstice: the tilted axis puts the Arctic Circle in daylight and the Antarctic Circle in darkness",
         content: "Dünya'nın dönme ekseni, yörünge düzlemine dik olan eksene göre yaklaşık 23.5° eğiktir. Bu eğiklik nedeniyle ekinoks ve solstis olayları meydana gelir.",
         bulletPoints: [
           "21 Mart: İlkbahar ekinoksu (Vernal Equinox)",
@@ -1752,6 +1758,8 @@ Bu fark orta enlemlerde sınırlı, yüksek enlemlerde ise belirgin hâle gelir.
     sections: [
       {
         title: "Kavramsal Karşılaştırma",
+        image: loxodromeOrthodrome,
+        imageAlt: "A great circle (orthodrome) and a rhumb line (loxodrome) between A and B; the rhumb line crosses every meridian at the same angle η",
         content: `Büyük dairede kurs sürekli değişir; rhumb line’da kurs sabittir. Bu nedenle büyük daire “yakıt ve süre” avantajı, rhumb line ise “uygulama sadeliği” avantajı sunar. Modern ECDIS ve rota planlama sistemleri, büyük daireyi ara noktalara bölerek rhumb line segmentleri şeklinde uygular; böylece sahada **hibrit** bir yöntem ortaya çıkar.
 
 
@@ -2401,6 +2409,8 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       },
       {
         title: "Lateral işaretler ve haritadaki gösterimi",
+        image: lateralMarksRegionA,
+        imageAlt: "IALA Region A: a red port hand mark with a can topmark (left) and a green starboard hand mark with a cone topmark (right)",
         content: "Lateral işaretler, bir kanalın veya geçiş hattının kenarlarını tarif eder ve emniyetli suyu çizgisel olarak tanımlar. IALA A’da iskele işareti kırmızıdır ve tipik olarak silindirik (can) biçim ve buna karşılık gelen üst marka mantığını taşır; sancak işareti yeşildir ve tipik olarak konik (conical) biçim ve üst marka mantığı ile eşleştirilir. Haritada lateral işaretin sembolü, bunun şamandıra mı yoksa sabit beacon mı olduğunu, ışıklı mı ışıksız mı olduğunu ve bazen işaretin karakterini tek bakışta ayırmaya yarayacak şekilde çizilir. Lateral işaretin ışığı varsa haritada yanında ışık karakteristiği yazılır; bu yazı “yanıyor” demek değildir, gece ayırt etmenin şifresidir.",
       },
       {
@@ -11578,6 +11588,8 @@ Kesişim noktası = Running Fix (10:30)
       },
       {
         title: "Tashih (Compass Adjustment) ve Katsayılar",
+        image: shipBinnacleImg,
+        imageAlt: "A ship's binnacle with the red and green quadrantal spheres on either side of the magnetic compass",
         content: "Pusula sapması, pusula etrafına yerleştirilen düzeltici mıknatıs ve yumuşak demir parçalarıyla azaltılır. Sapma matematiksel olarak katsayılarla (A, B, C, D, E) ifade edilir. B ve C katsayıları kalıcı mıknatıslarla, D katsayısı yanlardaki yumuşak demir küreler (quadrantal spheres) ile, dikey indüklenmiş manyetizma ise Flinders bar ile düzeltilir. Yalpa hatası için heeling mıknatısı kullanılır. Kalan sapma, gemi tüm yönlere döndürülerek (swinging ship) ölçülür ve deviation kartına işlenir.",
         bulletPoints: [
           "B, C katsayıları: kalıcı mıknatıslarla düzeltilir.",
