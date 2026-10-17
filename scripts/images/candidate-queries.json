@@ -1,0 +1,337 @@
+[
+ {
+  "id": "cloud-stratus",
+  "search": "stratus cloud layer filetype:bitmap filew:>1500",
+  "max": 16
+ },
+ {
+  "id": "cloud-stratocumulus",
+  "search": "stratocumulus filetype:bitmap filew:>1500",
+  "max": 16
+ },
+ {
+  "id": "cloud-cumulonimbus",
+  "search": "cumulonimbus incus anvil filetype:bitmap filew:>1500",
+  "max": 16
+ },
+ {
+  "id": "cloud-castellanus",
+  "search": "altocumulus castellanus filetype:bitmap filew:>1200",
+  "max": 16
+ },
+ {
+  "id": "cloud-cirrostratus",
+  "search": "cirrostratus filetype:bitmap filew:>1500",
+  "max": 16
+ },
+ {
+  "id": "cloud-nimbostratus",
+  "search": "nimbostratus filetype:bitmap filew:>1500",
+  "max": 16
+ },
+ {
+  "id": "cloud-fractus",
+  "search": "fractus cloud filetype:bitmap filew:>1200",
+  "max": 16
+ },
+ {
+  "id": "cloud-mammatus",
+  "search": "mammatus filetype:bitmap filew:>1500",
+  "max": 16
+ },
+ {
+  "id": "beaufort-scale",
+  "search": "Beaufort scale sea state",
+  "max": 24
+ },
+ {
+  "id": "air-masses",
+  "search": "air mass source regions map",
+  "max": 16
+ },
+ {
+  "id": "orig-sbeacons",
+  "titles": [
+   "Sbeacons.jpg",
+   "ICS-flags.png",
+   "Airmassesorigin.png",
+   "Beaufort scale 4.jpg"
+  ],
+  "max": 4
+ },
+ {
+  "id": "epirb",
+  "search": "EPIRB beacon filetype:bitmap filew:>1200",
+  "max": 16
+ },
+ {
+  "id": "sart",
+  "search": "search and rescue transponder SART",
+  "max": 12
+ },
+ {
+  "id": "lifeboat-enclosed",
+  "search": "totally enclosed lifeboat davit ship filetype:bitmap",
+  "max": 16
+ },
+ {
+  "id": "lifeboat-freefall",
+  "search": "free fall lifeboat ship stern filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "hatch-covers",
+  "search": "hatch covers bulk carrier deck filetype:bitmap",
+  "max": 16
+ },
+ {
+  "id": "anchor-stockless",
+  "search": "stockless anchor ship hawse filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "anchor-danforth",
+  "search": "Danforth anchor filetype:bitmap",
+  "max": 10
+ },
+ {
+  "id": "anchor-admiralty",
+  "search": "admiralty pattern anchor stock filetype:bitmap",
+  "max": 10
+ },
+ {
+  "id": "anchor-ac14",
+  "search": "AC-14 anchor high holding power",
+  "max": 10
+ },
+ {
+  "id": "mooring-ropes",
+  "search": "mooring lines ship bollard rope filetype:bitmap",
+  "max": 16
+ },
+ {
+  "id": "autopilot",
+  "search": "ship autopilot steering control bridge filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "bnwas",
+  "search": "bridge navigational watch alarm system",
+  "max": 10
+ },
+ {
+  "id": "pilot-ladder",
+  "search": "pilot ladder ship boarding filetype:bitmap",
+  "max": 16
+ },
+ {
+  "id": "compass-rose",
+  "search": "compass rose degrees filetype:drawing",
+  "max": 16
+ },
+ {
+  "id": "magnetic-declination",
+  "search": "magnetic declination diagram filetype:drawing",
+  "max": 16
+ },
+ {
+  "id": "time-zones",
+  "search": "world time zones map",
+  "max": 16
+ },
+ {
+  "id": "lat-long",
+  "search": "latitude and longitude of the earth diagram filetype:drawing",
+  "max": 16
+ },
+ {
+  "id": "celestial-sphere",
+  "search": "celestial sphere declination hour angle diagram filetype:drawing",
+  "max": 16
+ },
+ {
+  "id": "relative-bearing",
+  "search": "relative bearing navigation diagram",
+  "max": 12
+ },
+ {
+  "id": "chart-symbols",
+  "search": "nautical chart symbols INT 1",
+  "max": 16
+ },
+ {
+  "id": "iala-buoyage",
+  "search": "IALA buoyage system region A lateral cardinal",
+  "max": 16
+ },
+ {
+  "id": "sector-light",
+  "search": "sector light lighthouse red white green",
+  "max": 12
+ },
+ {
+  "id": "leading-lights",
+  "search": "leading lights range lights harbour filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "racon",
+  "search": "racon radar beacon",
+  "max": 10
+ },
+ {
+  "id": "light-characteristics",
+  "search": "light characteristics lighthouse flashing occulting diagram",
+  "max": 12
+ },
+ {
+  "id": "intercept-method",
+  "search": "intercept method celestial navigation line of position",
+  "max": 12
+ },
+ {
+  "id": "stability-metacentre",
+  "search": "metacentric height ship stability diagram filetype:drawing",
+  "max": 12
+ },
+ {
+  "id": "stability-gz",
+  "search": "righting arm curve GZ stability",
+  "max": 12
+ },
+ {
+  "id": "draft-marks",
+  "search": "ship draft marks hull numbers filetype:bitmap",
+  "max": 16
+ },
+ {
+  "id": "load-line",
+  "search": "Plimsoll line load line mark ship hull filetype:bitmap",
+  "max": 16
+ },
+ {
+  "id": "buoy-north-cardinal",
+  "search": "north cardinal buoy filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-south-cardinal",
+  "search": "south cardinal buoy filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-east-cardinal",
+  "search": "east cardinal buoy filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-west-cardinal",
+  "search": "west cardinal buoy filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-lateral-port",
+  "search": "port lateral buoy red can filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-lateral-starboard",
+  "search": "starboard lateral buoy green cone filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-safe-water",
+  "search": "safe water mark buoy red white filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-isolated-danger",
+  "search": "isolated danger mark buoy filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "buoy-special",
+  "search": "special mark yellow buoy filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "iala-cardinal-diagram",
+  "search": "cardinal marks IALA diagram filetype:drawing",
+  "max": 12
+ },
+ {
+  "id": "axial-tilt",
+  "search": "axial tilt earth obliquity diagram filetype:drawing",
+  "max": 12
+ },
+ {
+  "id": "seasons",
+  "search": "earth orbit seasons diagram solstice equinox filetype:drawing",
+  "max": 12
+ },
+ {
+  "id": "great-circle",
+  "search": "great circle rhumb line diagram filetype:drawing",
+  "max": 12
+ },
+ {
+  "id": "mercator",
+  "search": "Mercator projection world map filetype:drawing",
+  "max": 10
+ },
+ {
+  "id": "tidal-datums",
+  "search": "tidal datums chart datum diagram",
+  "max": 12
+ },
+ {
+  "id": "spring-neap",
+  "search": "spring tide neap tide moon sun diagram filetype:drawing",
+  "max": 12
+ },
+ {
+  "id": "gps-constellation",
+  "search": "GPS satellite constellation",
+  "max": 12
+ },
+ {
+  "id": "imdg-labels",
+  "search": "ADR dangerous goods placard class label filetype:drawing",
+  "max": 24
+ },
+ {
+  "id": "tss",
+  "search": "traffic separation scheme chart",
+  "max": 10
+ },
+ {
+  "id": "tropical-cyclone-semicircle",
+  "search": "tropical cyclone dangerous semicircle navigable diagram",
+  "max": 10
+ },
+ {
+  "id": "ecdis",
+  "search": "ECDIS electronic chart display bridge filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "engine-telegraph",
+  "search": "ship engine order telegraph bridge filetype:bitmap",
+  "max": 12
+ },
+ {
+  "id": "vts-centre",
+  "search": "vessel traffic service centre operators",
+  "max": 10
+ },
+ {
+  "id": "day-shapes",
+  "search": "day shape ball cone ship mast COLREG",
+  "max": 10
+ },
+ {
+  "id": "wave-parameters",
+  "search": "wave height wavelength period diagram filetype:drawing",
+  "max": 10
+ }
+]

@@ -1,0 +1,38 @@
+name: Commons images
+
+# Looks up or downloads freely licensed Wikimedia Commons images for the lessons.
+# Runs only by hand. Results come back as an artifact; nothing is committed here,
+# because every image is checked by a person before it goes into src/assets.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "candidates = list and preview options, fetch = download chosen files"
+        type: choice
+        options: [candidates, fetch]
+        default: candidates
+      input:
+        description: "JSON file in the repo (queries for candidates, manifest for fetch)"
+        default: scripts/images/candidate-queries.json
+
+permissions:
+  contents: read
+
+jobs:
+  commons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run Commons tool
+        run: node scripts/images/commons-tool.mjs "${{ inputs.mode }}" "${{ inputs.input }}" out
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: commons-${{ inputs.mode }}
+          path: out
+          retention-days: 7
