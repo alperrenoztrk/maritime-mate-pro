@@ -15,8 +15,10 @@ on:
         description: "JSON file in the repo (queries for candidates, manifest for fetch)"
         default: scripts/images/candidate-queries.json
 
+# contents: write is needed only to store the result as a git blob (see the
+# last step). No branch, tag or commit is created.
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   commons:
@@ -36,3 +38,15 @@ jobs:
           name: commons-${{ inputs.mode }}
           path: out
           retention-days: 7
+      # Some environments can reach the GitHub API but not artifact storage.
+      # The same result is stored as a loose git blob (no ref points at it, so
+      # git gc removes it later) and its id is reported as an annotation.
+      - name: Store result as git blob
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tar -czf result.tgz -C out .
+          python3 -c "import base64,json,sys; json.dump({'content': base64.b64encode(open('result.tgz','rb').read()).decode(), 'encoding': 'base64'}, open('blob.json','w'))"
+          sha=$(gh api "repos/${{ github.repository }}/git/blobs" --input blob.json -q .sha)
+          echo "::notice title=commons-result-blob::$sha $(stat -c%s result.tgz)"
