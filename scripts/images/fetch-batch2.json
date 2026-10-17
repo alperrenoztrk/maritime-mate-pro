@@ -1,0 +1,54 @@
+[
+ {
+  "commons": "Port hand navigation buoy 'Charlie' - geograph.org.uk - 7232918.jpg",
+  "dest": "navigation/real/lateral-port-region-a.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Starboard hand navigation buoy 'No 5' - geograph.org.uk - 7232910.jpg",
+  "dest": "navigation/real/lateral-starboard-region-a.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Limfjord safe water mark.jpg",
+  "dest": "navigation/real/safe-water-mark.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Lifeboat 1.JPG",
+  "dest": "seamanship/lifeboat-davit.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Freefall lifeboat of the Bulk carrier Queen Sapphire at the Kwinana Bulk Terminal, June 2024 01.jpg",
+  "dest": "seamanship/lifeboat-freefall.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Admiralty standard stockless anchor 01.jpg",
+  "dest": "seamanship/anchor-stockless.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "J38 614 Stockanker.jpg",
+  "dest": "seamanship/anchor-admiralty-stocked.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Earth-lighting-summer-solstice EN.png",
+  "dest": "navigation/real/earth-lighting-june-solstice.png"
+ },
+ {
+  "commons": "LoxodromeConstAngle.svg",
+  "dest": "navigation/real/loxodrome-orthodrome.svg"
+ },
+ {
+  "commons": "733 how-deep.jpg",
+  "dest": "lessons/draft-marks-metric.jpg"
+ },
+ {
+  "commons": "Ship Binnacle.jpg",
+  "dest": "lessons/ship-binnacle.jpg",
+  "width": 1600
+ }
+]
