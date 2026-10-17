@@ -227,7 +227,7 @@ export default function DraftSurveyPreloading() {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="fuel">fuel</Label>
+              <Label htmlFor="fuel">Fuel</Label>
               <Input
                 id="fuel"
                 type="number"

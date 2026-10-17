@@ -752,10 +752,10 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         <CardContent>
           <Tabs defaultValue={initialTab || "ship"} className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="ship">ship</TabsTrigger>
-              <TabsTrigger value="propulsion">Shipment</TabsTrigger>
+              <TabsTrigger value="ship">Ship</TabsTrigger>
+              <TabsTrigger value="propulsion">Propulsion</TabsTrigger>
               <TabsTrigger value="waves">Waves</TabsTrigger>
-              <TabsTrigger value="motion">Movement</TabsTrigger>
+              <TabsTrigger value="motion">Motion</TabsTrigger>
             </TabsList>
 
             <TabsContent value="ship" className="space-y-4">
@@ -1048,7 +1048,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
                   <p className="text-2xl font-bold text-green-700">{result.pitchAmplitude.toFixed(1)}°</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">diving in</Label>
+                  <Label className="text-sm font-medium">Heave Amplitude</Label>
                   <p className="text-2xl font-bold text-info">{result.heaveAmplitude.toFixed(1)} m</p>
                 </div>
                 <div>

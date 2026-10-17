@@ -525,7 +525,7 @@ export const SafetyCalculations = () => {
           <Tabs defaultValue="anchoring" className="w-full">
             <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="anchoring">Anchor</TabsTrigger>
-              <TabsTrigger value="fire">fire</TabsTrigger>
+              <TabsTrigger value="fire">Fire</TabsTrigger>
               <TabsTrigger value="lifesaving">Lifesaving</TabsTrigger>
               <TabsTrigger value="freeboard">Freeboard</TabsTrigger>
               <TabsTrigger value="emergency">Emergency</TabsTrigger>

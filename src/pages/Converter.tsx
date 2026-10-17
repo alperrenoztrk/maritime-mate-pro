@@ -185,8 +185,8 @@ export default function ConverterPage() {
             </TabsList>
             <TabsList className="grid w-full grid-cols-3 mb-4">
               <TabsTrigger value="volume" className="text-xs">Volume</TabsTrigger>
-              <TabsTrigger value="temperature" className="text-xs">temperature</TabsTrigger>
-              <TabsTrigger value="pressure" className="text-xs">pressure</TabsTrigger>
+              <TabsTrigger value="temperature" className="text-xs">Temperature</TabsTrigger>
+              <TabsTrigger value="pressure" className="text-xs">Pressure</TabsTrigger>
             </TabsList>
 
             {CATEGORIES.map((cat) => (

@@ -183,7 +183,7 @@ export default function DraftSurveyStandard() {
               />
             </div>
             <div>
-              <Label htmlFor="fuel">fuel</Label>
+              <Label htmlFor="fuel">Fuel</Label>
               <Input
                 id="fuel"
                 type="number"

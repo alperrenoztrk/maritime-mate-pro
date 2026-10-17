@@ -478,8 +478,8 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <TabsList className="grid w-full grid-cols-6">
               <TabsTrigger value="engine">Main engine</TabsTrigger>
               <TabsTrigger value="fuel">Fuel System</TabsTrigger>
-              <TabsTrigger value="cooling">cooling</TabsTrigger>
-              <TabsTrigger value="changeover">transition</TabsTrigger>
+              <TabsTrigger value="cooling">Cooling</TabsTrigger>
+              <TabsTrigger value="changeover">Changeover</TabsTrigger>
               <TabsTrigger value="heat">Heat Exchanger</TabsTrigger>
               <TabsTrigger value="tanks">Tanks</TabsTrigger>
             </TabsList>
