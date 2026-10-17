@@ -40,11 +40,11 @@ function BuoyCard({ mark }: { mark: BuoyMark }) {
           <dd className="text-foreground">{mark.colour}</dd>
         </div>
         <div className="flex gap-1.5">
-          <dt className="shrink-0 font-medium text-muted-foreground">Format:</dt>
+          <dt className="shrink-0 font-medium text-muted-foreground">Shape:</dt>
           <dd className="text-foreground">{mark.shape}</dd>
         </div>
         <div className="flex gap-1.5">
-          <dt className="shrink-0 font-medium text-muted-foreground">Peak sign:</dt>
+          <dt className="shrink-0 font-medium text-muted-foreground">Topmark:</dt>
           <dd className="text-foreground">{mark.topmark ?? "None"}</dd>
         </div>
         <div className="flex gap-1.5">
@@ -99,7 +99,7 @@ export default function BuoyagePage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-2 flex items-center gap-2">
           <LifeBuoy className="h-7 w-7 text-emerald-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">IALA Buoy System</h1>
+          <h1 className="text-3xl font-bold md:text-4xl">IALA Maritime Buoyage System</h1>
         </div>
 
         {/* Region toggle — the single most important control on this page. */}
@@ -123,7 +123,7 @@ export default function BuoyagePage() {
                   <span className="block text-sm font-semibold text-foreground">Region {value}</span>
                   <span className="block text-micro leading-tight text-muted-foreground">
                     {value === "A"
-                      ? "Europe, Africa, most of Asia, Australia — Turkey is here"
+                      ? "Europe, Africa, most of Asia, Australia — Türkiye is here"
                       : "North and South America, Japan, Korea, Philippines"}
                   </span>
                 </button>
@@ -132,8 +132,8 @@ export default function BuoyagePage() {
           </div>
           <p className="mt-2 text-micro leading-relaxed text-muted-foreground">
             {region === "A"
-              ? "Zone A: when entering the port, RED stays port and GREEN stays starboard."
-              : "Zone B: when entering the port, RED stays to starboard and GREEN stays to port (“red right returning”)."}
+              ? "Region A: entering from seaward, keep RED marks to port and GREEN marks to starboard."
+              : "Region B: entering from seaward, keep RED marks to starboard and GREEN marks to port (“red right returning”)."}
           </p>
         </div>
 
@@ -143,9 +143,9 @@ export default function BuoyagePage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Look for signs (e.g. cardinal, wreck, safe water)…"
+            placeholder="Search marks (e.g. cardinal, wreck, safe water)…"
             className="pl-9 pr-9"
-            aria-label="Look for buoy sign"
+            aria-label="Search buoyage marks"
           />
           {query && (
             <button
@@ -175,7 +175,7 @@ export default function BuoyagePage() {
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
                     <span className="shrink-0 text-micro text-muted-foreground">
-                      {marks.length} sign
+                      {marks.length} {marks.length === 1 ? "mark" : "marks"}
                     </span>
                   </div>
                 </div>

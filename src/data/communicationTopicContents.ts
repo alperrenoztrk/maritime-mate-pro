@@ -5,6 +5,8 @@ import dscPanelImage from "@/assets/bridge/dsc-panel.jpg";
 import navtexImage from "@/assets/bridge/navtex-receiver.jpg";
 import inmarsatImage from "@/assets/bridge/inmarsat-terminal.jpg";
 import aisDisplayImage from "@/assets/bridge/ais-display.jpg";
+import epirbImage from "@/assets/lessons/epirb-gps.jpg";
+import engineTelegraphImage from "@/assets/lessons/engine-order-telegraph.jpg";
 
 export const communicationTopicContents: Record<string, TopicDetailContent> = {
   "GMDSS Mimarisi ve Deniz Alanları": {
@@ -186,6 +188,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "EPIRB Çalışma Prensibi",
+        image: epirbImage,
+        imageAlt: "A 406 MHz Cospas-Sarsat GPS EPIRB with its antenna",
         content:
           "406 MHz EPIRB, COSPAS-SARSAT uydu sistemi üzerinden tehlike sinyali iletir. Sinyal, geminin kimliğini (MMSI veya kayıt numarası), GPS pozisyonunu (GPS modüllü ise) ve tehlike durumunu içerir. COSPAS-SARSAT uyduları bu sinyali alarak ilgili MRCC'ye (Maritime Rescue Coordination Centre) ileten LUT (Local User Terminal) istasyonlarına aktarır. GPS entegreli EPIRB ile konum doğruluğu yaklaşık 100 m'ye iner; GPS'siz modellerde Doppler etkisiyle konum belirlenir, bu daha yavaş ve daha az doğrudur (2–5 km). EPIRB, ek olarak 121.5 MHz homing sinyali yayarak uçak ve helikopterlerin yakın mesafede yönlenmesini sağlar.",
       },
@@ -743,6 +747,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Köprüüstü–Makine Haberleşmesi ve Telgraf",
+        image: engineTelegraphImage,
+        imageAlt: "An engine order telegraph dial with the ahead, astern, stop, stand by and finished with engine orders",
         content:
           "Köprüüstü ile makine dairesi arasındaki ana komut bağlantısı makine telgrafıdır (engine telegraph); modern gemilerde elektronik telgraf, istenen makine komutunu (örn. Half Ahead, Stop, Full Astern) hem köprüüstünde hem makine kontrol odasında eşzamanlı gösterir ve onaylar. Telgrafın yanında köprüüstü ile makine kontrol odası arasında telefon ve interkom bağlantısı bulunur. Köprü-makine komutlarının kapalı döngüyle (komutun makine tarafından tekrar edilip onaylanması) yürütülmesi yanlış manevrayı önler. Manevra sırasında verilen tüm makine komutları otomatik kaydedici (engine movement recorder / bell book) ile kayıt altına alınır.",
       },

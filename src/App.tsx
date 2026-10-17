@@ -130,6 +130,7 @@ const SOLASCertificatesPage = lazy(() => import("./pages/SOLASCertificates"));
 const SOLASShipRequirementsPage = lazy(() => import("./pages/SOLASShipRequirements"));
 const SOLASSafetyEquipmentPage = lazy(() => import("./pages/SOLASSafetyEquipment"));
 const BridgeDeviceDetailPage = lazy(() => import("./pages/BridgeDeviceDetail"));
+const ImageCreditsPage = lazy(() => import("./pages/ImageCredits"));
 const WeatherForecast = lazy(() => import("./pages/WeatherForecast"));
 const SunsetTimes = lazy(() => import("./pages/SunsetTimes"));
 const SunriseTimes = lazy(() => import("./pages/SunriseTimes"));
@@ -496,6 +497,7 @@ const AnimatedRoutes = () => {
         <Route path="/empty-page" element={<PageTransition><EmptyPage /></PageTransition>} />
         <Route path="/moon-phases" element={<PageTransition><MoonPhases /></PageTransition>} />
         <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
+        <Route path="/image-credits" element={<PageTransition><ImageCreditsPage /></PageTransition>} />
         <Route path="/formulas" element={<PageTransition><Formulas /></PageTransition>} />
         <Route path="/regulations" element={<PageTransition><Regulations /></PageTransition>} />
         <Route path="/regulations/:slug" element={<PageTransition><RegulationDetailPage /></PageTransition>} />

@@ -13,6 +13,9 @@
 // ihbarları güncellenene kadar kullanılan geçici işarettir.
 
 
+import cardinalMarksDiagram from "@/assets/navigation/real/cardinal-marks-diagram.svg";
+import isolatedDangerBeacon from "@/assets/navigation/real/isolated-danger-beacon.jpg";
+
 export type BuoyCategory = "lateral" | "cardinal" | "isolated" | "safeWater" | "special" | "wreck";
 
 /** IALA bölgeleri: lateral işaretlerin renkleri bölgeye göre yer değiştirir. */
@@ -56,11 +59,15 @@ export const BUOY_CATEGORY_LABELS: Record<
   },
   cardinal: {
     title: "Kardinal İşaretler",
+    image: cardinalMarksDiagram,
+    imageAlt: "IALA cardinal marks placed around a danger, with their colours, topmarks and light characters",
     description:
       "Kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli suyun HANGİ YÖNDE olduğunu söyler. Her iki IALA bölgesinde de aynıdır.",
   },
   isolated: {
     title: "İzole Tehlike İşareti",
+    image: isolatedDangerBeacon,
+    imageAlt: "An isolated danger beacon: black with a red band and two black spheres as topmark",
     description:
       "Çevresinde dolaşılabilir su bulunan tekil bir tehlikenin (kaya, batık, sığlık) üzerine veya hemen yanına konur.",
   },
@@ -221,7 +228,7 @@ export const BUOY_MARKS: BuoyMark[] = [
     topmark: "İki siyah koni, ikisi de AŞAĞI bakar (▼▼)",
     light: "Beyaz — VQ (6) + LFl 10s veya Q (6) + LFl 15s",
     instruction: "Tehlikenin GÜNEYİNDEN geçin.",
-    note: "Altılı gruptan sonraki UZUN çakar, altıncı ile yedinciyi ayırt etmek için konmuştur; güneyin imzasıdır.",
+    note: "Altılı gruptan sonraki UZUN çakar, altılı grubun üçlü veya dokuzlu grupla karıştırılmasını önlemek için konmuştur; güneyin imzasıdır.",
   },
   {
     id: "cardinal-west",
@@ -271,7 +278,7 @@ export const BUOY_MARKS: BuoyMark[] = [
     colour: "Sarı",
     shape: "İsteğe bağlı — ancak seyir işaretleriyle karışmamalı",
     topmark: "Tek sarı X (çarpı) işareti",
-    light: "Sarı — Fl Y, Fl (4) Y, Mo(A) Y gibi, seyir işaretleriyle karışmayan karakterde",
+    light: "Sarı — Fl Y, Fl (4) Y, Fl (5) Y gibi, seyir işaretleriyle karışmayan karakterde",
     instruction:
       "Seyir tehlikesi bildirmez; özel amaçlı bir alanın sınırını gösterir. Harita ve seyir ihbarlarından o alanın ne olduğunu okuyun.",
     note: "Kablo/boru hattı, atık boşaltma sahası, askeri atış alanı, ölçüm cihazı (ODAS), yarış parkuru, akvakültür sahası.",

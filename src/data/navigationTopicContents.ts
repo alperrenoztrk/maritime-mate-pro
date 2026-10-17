@@ -18,6 +18,13 @@ const earthOblate = earthBlueMarble; // NASA Apollo-tip Earth görüntüsü
 import echoSounderImg from "@/assets/bridge/echo-sounder.jpg";
 import gyroCompassImg from "@/assets/bridge/gyro-compass.jpg";
 import polarIceImg from "@/assets/lessons/polar-ice-navigation.jpg";
+import cardinalMarksDiagram from "@/assets/navigation/real/cardinal-marks-diagram.svg";
+import latitudeLongitudeEarth from "@/assets/navigation/real/latitude-longitude-earth.svg";
+import latitudeLinesImg from "@/assets/navigation/real/latitude-lines.svg";
+import magneticDeclinationImg from "@/assets/navigation/real/magnetic-declination.svg";
+import tssCrossingRule10 from "@/assets/navigation/real/tss-crossing-rule10.svg";
+import earthSeasonsOrbit from "@/assets/navigation/real/earth-seasons-orbit.svg";
+import ecdisRadarConsole from "@/assets/bridge/ecdis-radar-console.jpg";
 
 
 export interface TopicSection {
@@ -85,6 +92,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Dünya'nın Güneş Etrafındaki Dönüşü (Revolüsyon)",
+        image: earthSeasonsOrbit,
+        imageAlt: "Earth's orbit around the Sun with the solstices, the equinoxes and the season in each hemisphere",
         content: "Dünya, Güneş etrafında yaklaşık 365 gün 6 saatte bir tur atar. Bu hareket sırasında Dünya'nın dönme ekseni, yörünge düzlemine yaklaşık 23.5° eğiktir.",
         bulletPoints: [
           "Mevsimler oluşur",
@@ -350,6 +359,8 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
     sections: [
       {
         title: "Koordinat Sistemine Genel Bakış",
+        image: latitudeLongitudeEarth,
+        imageAlt: "Latitude measured north and south of the equator, longitude measured east and west of the prime meridian",
         content: "Dünya üzerindeki herhangi bir noktayı tanımlamak için iki temel referans çizgisi kullanılır: Ekvator ve Greenwich Meridyeni. Bu iki çizginin kesişimi, koordinat sisteminin başlangıç noktasını oluşturur.",
         bulletPoints: [
           "Enlem çizgileri (paraleller) ekvatora paralel yatay dairelerdir",
@@ -377,6 +388,8 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem Paralelleri",
+        image: latitudeLinesImg,
+        imageAlt: "Parallels of latitude every 15° from the equator to the North Pole",
         content: "Enlemler, ekvatora paralel daireler hâlinde çizilir ve bu nedenle paraleller olarak adlandırılır. Her paralel dairesi, ekvatordan uzaklaştıkça küçülür.",
         bulletPoints: [
           "Geminin kuzey–güney konumunu belirler",
@@ -476,6 +489,8 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Paraleller ve Enlem Çizgileri",
+        image: latitudeLinesImg,
+        imageAlt: "Parallels of latitude every 15° from the equator to the North Pole",
         content: "Enlemler, ekvatora paralel hayali dairelerdir ve bu yüzden paralel olarak adlandırılırlar. Ekvator en büyük paraleldir; kutuplara yaklaştıkça paralellerin çevresi küçülür.",
         bulletPoints: [
           "Paraleller birbirini kesmez",
@@ -1427,6 +1442,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
     sections: [
       {
         title: "Tanım ve Temel Referans",
+        image: magneticDeclinationImg,
+        imageAlt: "Magnetic north (Nm) lies at an angle δ, the variation, from true north (Ng)",
         content: "Manyetik pusula, elektriksel veya elektronik sistemlere ihtiyaç duymadan yön tayini sağlar. Bu pratiklik, değişken bir referansla çalışıldığı gerçeğini ortadan kaldırmaz; manyetik kuzey daima değişen bir doğrultudur.",
       },
       {
@@ -2392,11 +2409,13 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       },
       {
         title: "Kardinal işaretler ve emniyetli su yönü",
+        image: cardinalMarksDiagram,
+        imageAlt: "IALA cardinal marks placed around a danger, with their colours, topmarks and light characters",
         content: "Kardinal işaretler kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli su yönünü tarif eder. Mantık yönseldir: kuzey kardinali tehlikenin kuzeyinden geç der, doğu kardinali doğusundan geç der, güney kardinali güneyinden geç der, batı kardinali batısından geç der. Bu işaretlerin haritadaki sembolü renk bandını ve üst markayı ima eder; fakat sahada en kritik kısım gece tanımadır, çünkü ışık ritmi yön bilgisini taşır.",
       },
       {
         title: "Kardinal ışık imzaları",
-        content: "Kuzey kardinal, pratikte “kesintisiz seri” hissi veren bir ritimle tanınır ve haritada çoğunlukla Q veya VQ ile ifade edilir. Doğu kardinalin imzası üçlü gruptur; Fl(3), Q(3) veya VQ(3). Güney kardinalin imzası altılı grup artı uzun çakardır; Q(6)+LFl veya VQ(6)+LFl. Batı kardinalin imzası dokuzlu gruptur; Q(9) veya VQ(9). Haritada bir kardinal işaret yanında “VQ(6)+LFl 15s” yazdığını düşünelim. Bu ifade güney kardinali işaret eder. 15 saniyelik periyot içinde altı kısa çok hızlı çakar ve bir uzun çakar vardır; düzen tekrar eder. Buradaki doğru karar, “işareti nasıl bırakırım” gibi slogan düzeyinde değil, “tehlikenin güneyinden emniyetli geçiş yapılır” mantığıyla verilir. Harita üzerindeki tehlike sembolüyle birlikte okunduğunda, geçiş hattı netleşir.",
+        content: "Kuzey kardinal, pratikte “kesintisiz seri” hissi veren bir ritimle tanınır ve haritada çoğunlukla Q veya VQ ile ifade edilir. Doğu kardinalin imzası üçlü gruptur; Q(3) veya VQ(3). Güney kardinalin imzası altılı grup artı uzun çakardır; Q(6)+LFl veya VQ(6)+LFl. Batı kardinalin imzası dokuzlu gruptur; Q(9) veya VQ(9). Haritada bir kardinal işaret yanında “VQ(6)+LFl 10s” yazdığını düşünelim. Bu ifade güney kardinali işaret eder. 10 saniyelik periyot içinde altı kısa çok hızlı çakar ve bir uzun çakar vardır; düzen tekrar eder. Buradaki doğru karar, “işareti nasıl bırakırım” gibi slogan düzeyinde değil, “tehlikenin güneyinden emniyetli geçiş yapılır” mantığıyla verilir. Harita üzerindeki tehlike sembolüyle birlikte okunduğunda, geçiş hattı netleşir.",
       },
       {
         title: "İzole tehlike, emniyetli su ve özel işaretler",
@@ -9654,6 +9673,8 @@ Kesişim noktası = Running Fix (10:30)
     sections: [
       {
         title: "ECDIS Bileşenleri ve Veri Kaynakları",
+        image: ecdisRadarConsole,
+        imageAlt: "Radar and ECDIS displays at the navigation console of a ship's bridge",
         content:
           "ECDIS, birkaç temel bileşenden oluşur. ENC (Electronic Navigational Chart): UKHO, NOAA veya diğer yetkili hidrografik kurumlar tarafından üretilen vektörel seyir haritasıdır. IHO S-57 standardına göre kodlanır; derinlikler, tehlikeler, yardımcı seyir işaretleri, kıyı yapıları gibi katmanlardan oluşur. ECDIS bu katmanları seçilebilir biçimde gösterir.\n\nSensör entegrasyonu: ECDIS, GPS/GNSS (konum), giroscope (heading), log (hız/mesafe), AIS ve radar verilerini entegre eder. Gemi simgesi gerçek zamanlı konum ve başı gösterecek biçimde haritada hareket eder. NAVTEX ve SafetyNET uyarıları ECDIS'e beslenebilir. Bazı ECDIS sistemleri radar görüntüsünü de haritanın üzerine bindirerek radar/chart overlay sunar.",
       },
@@ -11287,6 +11308,8 @@ Kesişim noktası = Running Fix (10:30)
       },
       {
         title: "Kural 10 — Trafik Ayırım Düzenleri (TSS)",
+        image: tssCrossingRule10,
+        imageAlt: "Crossing a traffic lane with the heading at right angles to the traffic flow, with and without a current; a diagonal heading is wrong",
         content:
           "Kural 10, IMO tarafından kabul edilen trafik ayırım düzenlerinde uygulanır; ancak gemiyi diğer kurallardaki yükümlülüklerinden muaf tutmaz. Düzeni kullanan gemi, uygun trafik şeridinde trafiğin genel akış yönünde ilerler; ayırım hattından veya ayırım bölgesinden uzak durur. Şeride yanlardan girerken/çıkarken mümkün olan en küçük açıyla, uçlardan ise normal şekilde girer/çıkar. Şeridi geçmek zorunda kalınırsa, genel trafik akış yönüne mümkün olduğunca dik bir pruva ile geçilir.",
         bulletPoints: [

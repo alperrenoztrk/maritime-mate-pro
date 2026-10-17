@@ -12,6 +12,11 @@ import pyrocumulusImage from '@/assets/clouds/pyrocumulus.jpg';
 import contrailsImage from '@/assets/clouds/contrails.jpg';
 import virgaImage from '@/assets/clouds/virga.jpg';
 import kelvinHelmholtzImage from '@/assets/clouds/kelvin-helmholtz.jpg';
+import cirrostratusHaloImage from '@/assets/clouds/cirrostratus-halo.jpg';
+import nimbostratusImage from '@/assets/clouds/nimbostratus-pannus.jpg';
+import stratocumulusImage from '@/assets/clouds/stratocumulus-layer.jpg';
+import cumulonimbusImage from '@/assets/clouds/cumulonimbus-incus.jpg';
+import mammatusImage from '@/assets/clouds/mammatus-pouches.jpg';
 
 // Fallback (genel fırtına bulutu) — sadece gerektiğinde kullanılmalı
 
@@ -68,6 +73,7 @@ export const cloudTypes: CloudType[] = [
   {
     id: 'stratocumulus',
     name: 'Stratocumulus',
+    imageUrl: stratocumulusImage,
     nameTr: 'stratocumulus',
     code: 'Sc',
     mgmCode: 'CL 5',
@@ -119,6 +125,7 @@ export const cloudTypes: CloudType[] = [
   {
     id: 'cumulonimbus',
     name: 'Cumulonimbus',
+    imageUrl: cumulonimbusImage,
     nameTr: 'cumulonimbus',
     code: 'Cb',
     mgmCode: 'CL 3,9',
@@ -144,6 +151,7 @@ export const cloudTypes: CloudType[] = [
   {
     id: 'nimbostratus',
     name: 'Nimbostratus',
+    imageUrl: nimbostratusImage,
     nameTr: 'Nimbostratus',
     code: 'Ns',
     mgmCode: 'CM 2',
@@ -277,6 +285,7 @@ export const cloudTypes: CloudType[] = [
   {
     id: 'cirrostratus',
     name: 'Cirrostratus',
+    imageUrl: cirrostratusHaloImage,
     nameTr: 'cirrostratus',
     code: 'Cs',
     mgmCode: 'CH',
@@ -304,6 +313,7 @@ export const cloudTypes: CloudType[] = [
   {
     id: 'mammatus',
     name: 'Mammatus',
+    imageUrl: mammatusImage,
     nameTr: 'mammatus',
     code: 'Mam',
     mgmCode: 'private',

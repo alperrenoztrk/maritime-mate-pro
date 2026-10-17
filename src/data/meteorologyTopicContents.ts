@@ -25,6 +25,11 @@ import cycloneSectionImage from "@/assets/meteorology/cyclone-vertical-section.j
 import buysBallotImage from "@/assets/meteorology/buys-ballot-law.svg";
 import advectionFogImage from "@/assets/meteorology/advection-fog.jpg";
 import worldCurrentsImage from "@/assets/meteorology/world-surface-currents.jpg";
+import cirrostratusHaloImage from "@/assets/clouds/cirrostratus-halo.jpg";
+import nimbostratusImage from "@/assets/clouds/nimbostratus-pannus.jpg";
+import stratocumulusImage from "@/assets/clouds/stratocumulus-layer.jpg";
+import cumulonimbusImage from "@/assets/clouds/cumulonimbus-incus.jpg";
+import mammatusImage from "@/assets/clouds/mammatus-pouches.jpg";
 
 // Diğer derslerden yeniden kullanılan görseller.
 
@@ -966,6 +971,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Cirrostratus (Cs) — Hale Yapan Örtü",
+        image: cirrostratusHaloImage,
+        imageAlt: "A thin cirrostratus veil with a 22° halo around the sun",
         content:
           "Cirrostratus, gökyüzünü süt beyazı ince bir tül gibi kaplayan buz kristali örtüsüdür. En ayırt edici özelliği, güneş veya ay etrafında 22 derecelik hale (halo) oluşturmasıdır; ışık, altıgen buz kristallerinde kırılarak bu halkayı üretir. Hale görülmesi klasik bir kötü hava işaretidir: cirrostratus örtüsü tipik olarak sıcak cephenin 500–1000 km önünde uzanır ve genellikle 12–36 saat içinde altostratus ve ardından nimbostratus yağışının geleceğini haber verir. 'Güneş halesi, fırtına habercisi' deyişi bu mekanizmaya dayanır. Cirrostratus kalınlaşıp alçalıyorsa cephe yaklaşıyor demektir; barometre eğilimi ile birlikte doğrulanmalıdır.",
       },
@@ -1004,6 +1011,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Nimbostratus (Ns) — Sürekli Yağış Bulutu",
+        image: nimbostratusImage,
+        imageAlt: "A thick, uniform grey nimbostratus layer with ragged pannus beneath it",
         content:
           "Nimbostratus, koyu gri, kalın ve şekilsiz bir yağış bulutudur; tabanı yağışla birlikte 2 km'nin altına iner ve güneşi tamamen kapatır. Adındaki 'nimbus' kökü yağış getirdiğini söyler: saatlerce, bazen bir gün boyunca süren orta şiddette ve sürekli yağmur veya kar üretir. Cb sağanağından farkı yağışın karakteridir: Ns yağışı süreklidir ve ani rüzgâr değişimi içermez, Cb yağışı ise kısa, şiddetli ve gustludur. Denizci için Ns'nin asıl riski görüştür: yağış ve bulut tabanının alçalması görüşü 1–3 mile düşürebilir; bulut altında oluşan parçalı stratus fractus (scud) bulutları görüşü daha da kısıtlar. Ns hakimiyetinde kısıtlı görüş prosedürlerine hazır olunmalıdır.",
       },
@@ -1033,6 +1042,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Stratocumulus (Sc) — Yumrulu Tabaka",
+        image: stratocumulusImage,
+        imageAlt: "A low stratocumulus layer of grey and white rolls with gaps of light",
         content:
           "Stratocumulus, gri-beyaz büyük yumrular ve merdaneler halinde, araları yer yer açık bir alçak tabaka bulutudur; dünyada en yaygın görülen bulut cinsidir ve özellikle okyanusların yüksek basınç bölgelerinde geniş alanlar kaplar. Genellikle kötü hava getirmez; en fazla hafif çise veya kısa süreli zayıf sağanak üretir. Meteorolojik anlamı gizlidir: Sc tabakası çoğu zaman bir sıcaklık inversiyonunun (yükselmeyi durduran kapak) altında oluşur. Bu kapak konveksiyonu bastırdığından hava kararlıdır; ancak aynı inversiyon nem ve pusun alt katmanda hapsolmasına yol açar, görüş orta seviyede kalır. Cumulus bulutlarının akşam saatlerinde yayılıp Sc'ye dönüşmesi normal ve zararsız bir günlük döngüdür.",
       },
@@ -1069,6 +1080,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Cumulonimbus (Cb) — Oraj Bulutu",
+        image: cumulonimbusImage,
+        imageAlt: "A mature cumulonimbus with a spreading anvil (incus) top",
         content:
           "Cumulonimbus, tabanı deniz seviyesine yakın, tepesi tropopoza (12 km ve üzeri) ulaşabilen dev konvektif buluttur; tepesi buzlaşarak yassılaşır ve karakteristik örs (anvil) biçimini alır. Denizcinin karşılaşabileceği en tehlikeli buluttur ve tüm şiddetli hava olaylarını tek başına üretebilir: gök gürültüsü ve yıldırım, ani ve şiddetli sağanak, dolu, 50 knotu aşabilen gust'lar, mikropatlama (downburst) ve hortum/su hortumu. En kritik tehlike gust front'tur: Cb içindeki soğuk iniş akıntısı (downdraft) yüzeye çarpıp yayılır ve bulutun 10–15 mil önünde, yağış başlamadan önce ani rüzgâr şifti ve şiddetlenmesi yaratır. Rüzgâr yönü Cb yaklaşırken 180 dereceye kadar dönebilir. Cb'ler tek hücre halinde veya soğuk cephe önünde squall hattı olarak organize biçimde gelir.",
       },
@@ -1093,6 +1106,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Mammatus — Torba Bulutlar",
+        image: mammatusImage,
+        imageAlt: "Mammatus pouches hanging from the underside of a cloud base",
         content:
           "Mammatus, bulut tabanından aşağı sarkan torba veya kese biçimli çıkıntılardır; en çarpıcı haliyle cumulonimbus örsünün altında görülür. Normal bulut tabanları yükselen havayla düz biçimlenirken, mammatus batan soğuk ve nemli havanın ürünüdür — yani atmosferin o katmanında güçlü iniş akıntıları ve şiddetli türbülans vardır. Mammatus görülmesi çoğu zaman yakınlarda olgun, güçlü bir Cb hücresi olduğu anlamına gelir; fırtınanın önünde de arkasında da görülebilir. Denizci için mesaj: bölgedeki konvektif sistem şiddetlidir, ani gust ve rüzgâr şifti riski yüksektir; sistem geçmiş görünse bile tedbir korunmalıdır.",
       },

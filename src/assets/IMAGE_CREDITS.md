@@ -76,3 +76,21 @@ gelmektedir. Yayın öncesi kullanım haklarının doğrulanması gerekir.
 | `instruments/seiko-marine-clock.jpg` | Seiko köprüüstü saati | Kullanıcı arşivi |
 | `instruments/wind-indicator.jpg` | Koshin rüzgâr hız/yön paneli | Kullanıcı arşivi |
 | `instruments/gps-receiver.webp` | Samyung SGN-500 GPS/GLONASS alıcısı | Kullanıcı arşivi |
+| `clouds/cumulonimbus-incus.jpg` | [Cumulonimbus incus over Warsaw, Poland.jpg](https://commons.wikimedia.org/wiki/File:Cumulonimbus_incus_over_Warsaw%2C_Poland.jpg) | Kamil Nowacki | CC BY-SA 4.0 |
+| `clouds/cirrostratus-halo.jpg` | [2024-03-01 - Cirrostratus - halo (22 deg) centered on sun - DSN2151-1.jpg](https://commons.wikimedia.org/wiki/File:2024-03-01_-_Cirrostratus_-_halo_%2822_deg%29_centered_on_sun_-_DSN2151-1.jpg) | Franz van Duns | CC BY 4.0 |
+| `clouds/nimbostratus-pannus.jpg` | [Nimbostratus pannus.jpg](https://commons.wikimedia.org/wiki/File:Nimbostratus_pannus.jpg) | GerritR | CC BY-SA 4.0 |
+| `clouds/mammatus-pouches.jpg` | [Mammatus-11.03.2021.jpg](https://commons.wikimedia.org/wiki/File:Mammatus-11.03.2021.jpg) | Sascha1405 | CC BY-SA 4.0 |
+| `clouds/stratocumulus-layer.jpg` | [Stratocumulus cloud 01.jpg](https://commons.wikimedia.org/wiki/File:Stratocumulus_cloud_01.jpg) | Indrajit Das | CC BY-SA 4.0 |
+| `navigation/real/cardinal-marks-diagram.svg` | [Cardinal mark diagram.svg](https://commons.wikimedia.org/wiki/File:Cardinal_mark_diagram.svg) | Denelson83 | CC BY-SA 2.0 de |
+| `navigation/real/isolated-danger-beacon.jpg` | [Porec IMG 8570.jpg](https://commons.wikimedia.org/wiki/File:Porec_IMG_8570.jpg) | Bjoertvedt | CC BY-SA 4.0 |
+| `navigation/real/latitude-longitude-earth.svg` | [Latitude and Longitude of the Earth.svg](https://commons.wikimedia.org/wiki/File:Latitude_and_Longitude_of_the_Earth.svg) | Djexplo | CC0 |
+| `navigation/real/latitude-lines.svg` | [Latitude lines color.svg](https://commons.wikimedia.org/wiki/File:Latitude_lines_color.svg) | source: Pearson Scott Foresman, donated to the Wikimedia … | Public domain |
+| `navigation/real/magnetic-declination.svg` | [Magnetic declination.svg](https://commons.wikimedia.org/wiki/File:Magnetic_declination.svg) | odder | CC BY-SA 3.0 |
+| `navigation/real/tss-crossing-rule10.svg` | [VTG.svg](https://commons.wikimedia.org/wiki/File:VTG.svg) | Arne Hückelheim | CC BY-SA 3.0 |
+| `lessons/engine-order-telegraph.jpg` | [航海用車鐘.jpg](https://commons.wikimedia.org/wiki/File:%E8%88%AA%E6%B5%B7%E7%94%A8%E8%BB%8A%E9%90%98.jpg) | 丘崈 | CC0 |
+| `lessons/epirb-gps.jpg` | [EPIRB (2).jpg](https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg) | Marwan Mohamad | CC BY-SA 4.0 |
+| `navigation/real/earth-seasons-orbit.svg` | [Orbital relations of the Solstice, Equinox & Intervening Seasons.svg](https://commons.wikimedia.org/wiki/File:Orbital_relations_of_the_Solstice%2C_Equinox_%26_Intervening_Seasons.svg) | Colivine | CC0 |
+| `bridge/ecdis-radar-console.jpg` | [Cap San Diego Brücke Radar ECDIS.jpg](https://commons.wikimedia.org/wiki/File:Cap_San_Diego_Br%C3%BCcke_Radar_ECDIS.jpg) | Michael Krahe | CC BY-SA 4.0 |
+
+Raster görseller uygulama boyutu için en uzun kenarı 1600 px olacak şekilde küçültülmüştür.
+`navigation/real/latitude-longitude-earth.svg` dosyasında yalnızca İngilizce etiketler bırakılmıştır.
