@@ -1,0 +1,71 @@
+[
+ {
+  "commons": "Cumulonimbus incus over Warsaw, Poland.jpg",
+  "dest": "clouds/cumulonimbus-incus.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "2024-03-01 - Cirrostratus - halo (22 deg) centered on sun - DSN2151-1.jpg",
+  "dest": "clouds/cirrostratus-halo.jpg",
+  "width": 1200
+ },
+ {
+  "commons": "Nimbostratus pannus.jpg",
+  "dest": "clouds/nimbostratus-pannus.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Mammatus-11.03.2021.jpg",
+  "dest": "clouds/mammatus-pouches.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Stratocumulus cloud 01.jpg",
+  "dest": "clouds/stratocumulus-layer.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Cardinal mark diagram.svg",
+  "dest": "navigation/real/cardinal-marks-diagram.svg"
+ },
+ {
+  "commons": "Porec IMG 8570.jpg",
+  "dest": "navigation/real/isolated-danger-beacon.jpg",
+  "width": 1200
+ },
+ {
+  "commons": "Latitude and Longitude of the Earth.svg",
+  "dest": "navigation/real/latitude-longitude-earth.svg"
+ },
+ {
+  "commons": "Latitude lines color.svg",
+  "dest": "navigation/real/latitude-lines.svg"
+ },
+ {
+  "commons": "Magnetic declination.svg",
+  "dest": "navigation/real/magnetic-declination.svg"
+ },
+ {
+  "commons": "VTG.svg",
+  "dest": "navigation/real/tss-crossing-rule10.svg"
+ },
+ {
+  "commons": "航海用車鐘.jpg",
+  "dest": "lessons/engine-order-telegraph.jpg",
+  "width": 1400
+ },
+ {
+  "commons": "EPIRB (2).jpg",
+  "dest": "lessons/epirb-gps.jpg",
+  "width": 1200
+ },
+ {
+  "commons": "Orbital relations of the Solstice, Equinox & Intervening Seasons.svg",
+  "dest": "navigation/real/earth-seasons-orbit.svg"
+ },
+ {
+  "commons": "Cap San Diego Brücke Radar ECDIS.jpg",
+  "dest": "bridge/ecdis-radar-console.jpg",
+  "width": 1600
+ }
+]

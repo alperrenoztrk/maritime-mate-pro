@@ -1,0 +1,257 @@
+[
+ {
+  "id": "stratus-2",
+  "search": "stratus nebulosus grey layer sky",
+  "max": 16
+ },
+ {
+  "id": "stratus-3",
+  "search": "\"stratus opacus\" OR \"stratus cloud\" overcast low",
+  "max": 16
+ },
+ {
+  "id": "fractus-2",
+  "search": "stratus fractus pannus rain shreds",
+  "max": 12
+ },
+ {
+  "id": "castellanus-2",
+  "search": "castellanus turrets cloud",
+  "max": 12
+ },
+ {
+  "id": "safe-water-2",
+  "search": "safe water mark",
+  "max": 16
+ },
+ {
+  "id": "safe-water-3",
+  "search": "fairway buoy red white vertical stripes",
+  "max": 12
+ },
+ {
+  "id": "lateral-port-2",
+  "search": "port hand buoy",
+  "max": 12
+ },
+ {
+  "id": "lateral-port-3",
+  "search": "red lateral buoy can topmark",
+  "max": 12
+ },
+ {
+  "id": "lateral-stbd-2",
+  "search": "starboard hand buoy",
+  "max": 12
+ },
+ {
+  "id": "lateral-stbd-3",
+  "search": "green lateral buoy cone topmark",
+  "max": 12
+ },
+ {
+  "id": "compass-rose-en",
+  "search": "compass rose 360 degrees english",
+  "max": 16
+ },
+ {
+  "id": "axial-tilt-2",
+  "titles": [
+   "AxialTiltObliquity.png",
+   "Axial tilt vs tropical and polar circles.svg",
+   "Earth-lighting-summer-solstice EN.png",
+   "Earth-lighting-winter-solstice EN.png"
+  ],
+  "max": 4
+ },
+ {
+  "id": "celestial-sphere-2",
+  "search": "celestial sphere celestial equator ecliptic declination english",
+  "max": 12
+ },
+ {
+  "id": "hatch-2",
+  "search": "hatch cover bulk carrier",
+  "max": 16
+ },
+ {
+  "id": "hatch-3",
+  "search": "MacGregor hatch cover",
+  "max": 12
+ },
+ {
+  "id": "lifeboat-2",
+  "search": "lifeboat davit cargo ship",
+  "max": 16
+ },
+ {
+  "id": "lifeboat-3",
+  "search": "freefall lifeboat",
+  "max": 16
+ },
+ {
+  "id": "anchor-hall",
+  "search": "Hall anchor stockless",
+  "max": 12
+ },
+ {
+  "id": "autopilot-2",
+  "search": "autopilot ship bridge",
+  "max": 12
+ },
+ {
+  "id": "day-shapes-2",
+  "search": "day shape black ball anchored vessel",
+  "max": 12
+ },
+ {
+  "id": "great-circle-2",
+  "search": "great circle route rhumb line map",
+  "max": 12
+ },
+ {
+  "id": "great-circle-3",
+  "search": "orthodrome loxodrome",
+  "max": 12
+ },
+ {
+  "id": "spring-neap-2",
+  "search": "spring tide neap tide",
+  "max": 12
+ },
+ {
+  "id": "imdg-2",
+  "search": "dangerous goods label class flammable liquid",
+  "max": 24
+ },
+ {
+  "id": "draft-marks-2",
+  "search": "draught marks ship hull",
+  "max": 16
+ },
+ {
+  "id": "load-line-2",
+  "search": "load line mark ship Plimsoll",
+  "max": 16
+ },
+ {
+  "id": "mooring-2",
+  "search": "mooring winch ship mooring lines deck",
+  "max": 12
+ },
+ {
+  "id": "radar-ppi",
+  "search": "marine radar display ARPA",
+  "max": 12
+ },
+ {
+  "id": "sextant",
+  "search": "marine sextant",
+  "max": 12
+ },
+ {
+  "id": "gyro-repeater",
+  "search": "gyro compass repeater ship bridge",
+  "max": 12
+ },
+ {
+  "id": "magnetic-compass",
+  "search": "ship magnetic compass binnacle",
+  "max": 12
+ },
+ {
+  "id": "chart-paper",
+  "search": "nautical chart navigation plotting parallel rule dividers",
+  "max": 16
+ },
+ {
+  "id": "beaufort-2",
+  "search": "Beaufort wind force sea state photograph",
+  "max": 16
+ },
+ {
+  "id": "wind-sea-swell",
+  "search": "ocean swell waves open sea",
+  "max": 12
+ },
+ {
+  "id": "tropical-cyclone",
+  "search": "hurricane satellite image eye",
+  "max": 12
+ },
+ {
+  "id": "fog-sea",
+  "search": "sea fog ship",
+  "max": 12
+ },
+ {
+  "id": "oil-spill",
+  "search": "oil spill response boom ship",
+  "max": 12
+ },
+ {
+  "id": "ballast-water",
+  "search": "ballast water treatment system ship",
+  "max": 10
+ },
+ {
+  "id": "bulk-carrier",
+  "search": "bulk carrier ship at sea",
+  "max": 12
+ },
+ {
+  "id": "container-ship",
+  "search": "container ship at sea",
+  "max": 12
+ },
+ {
+  "id": "chemical-tanker",
+  "search": "chemical tanker ship",
+  "max": 12
+ },
+ {
+  "id": "lng-carrier",
+  "search": "LNG carrier",
+  "max": 8
+ },
+ {
+  "id": "roro",
+  "search": "ro-ro ship ramp",
+  "max": 10
+ },
+ {
+  "id": "gmdss-console",
+  "search": "GMDSS console ship radio",
+  "max": 12
+ },
+ {
+  "id": "vhf-handheld",
+  "search": "marine VHF radio handheld",
+  "max": 10
+ },
+ {
+  "id": "navtex",
+  "search": "NAVTEX receiver",
+  "max": 8
+ },
+ {
+  "id": "liferaft",
+  "search": "liferaft canister ship",
+  "max": 10
+ },
+ {
+  "id": "fire-extinguisher-ship",
+  "search": "ship fire extinguisher engine room fire fighting",
+  "max": 10
+ },
+ {
+  "id": "immersion-suit",
+  "search": "immersion suit survival",
+  "max": 10
+ },
+ {
+  "id": "lifejacket",
+  "search": "SOLAS lifejacket",
+  "max": 10
+ }
+]
