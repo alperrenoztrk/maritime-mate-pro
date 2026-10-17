@@ -9,11 +9,9 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
  * `sectionTitles` ile birebir eşleşir.
  */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
-import hatchCoversImage from "@/assets/seamanship/hatch-covers.jpg";
 import bulkCarrierImage from "@/assets/ships/bulk-carrier.jpg";
 import containerShipImage from "@/assets/ships/container-ship.jpg";
 import deckCraneImage from "@/assets/seamanship/deck-crane.jpg";
-import roroShipImage from "@/assets/ships/roro-ship.jpg";
 
 export const cargoTopicContents: Record<string, TopicDetailContent> = {
   "İstif Faktörü ve Broken Stowage": {
@@ -25,8 +23,6 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "İstif Faktörü Tanımı ve Hesabı",
         content:
           "İstif faktörü, yükün birim ağırlığının kapladığı hacimdir: SF = V / W. Düşük SF'li yükler (örn. demir cevheri ~0.4 m³/t) ağır ve yoğundur; gemi hacim dolmadan deadweight sınırına ulaşır (deadweight cargo). Yüksek SF'li yükler (örn. pamuk ~2.0 m³/t, kereste) hafif ve hacimlidir; gemi ağırlık sınırına ulaşmadan ambar dolar (measurement/volume cargo). Yük için gereken hacim V = W × SF formülüyle bulunur. Planlamada önce hangi sınıra (ağırlık ya da hacim) önce ulaşılacağı belirlenir; bu, ambar doluluk stratejisini ve gelir optimizasyonunu yönlendirir.",
-        image: hatchCoversImage,
-        imageAlt: "Cargo hold hatch covers on a bulk carrier",
         formula: {
           text: "V = W × SF",
           description: "V: gereken hacim (m³), W: yük ağırlığı (t), SF: istif faktörü (m³/t)",
@@ -105,8 +101,6 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Arşimet Prensibi ve Deplasman",
         content:
           "Yüzen bir gemi, batan hacmi kadar suyun ağırlığına eşit bir kaldırma kuvvetiyle desteklenir. Dolayısıyla geminin toplam ağırlığı (deplasman, Δ), o draftta yer değiştirdiği su ağırlığına eşittir. Draft survey, yükleme öncesi ve sonrası deplasman farkından yük ağırlığını bulur: Yük = Δsonra − Δönce. Deplasman, geminin hidrostatik tablolarından (ya da deplasman ölçeğinden) ortalama drafta karşılık gelen değer okunarak elde edilir.",
-        image: "/diagrams/seamanship/load-line-isaretleri.svg",
-        imageAlt: "Load line marks read on the ship's side during a draft survey",
         formula: {
           text: "Yük = Δsonra − Δönce",
           description: "Δ: ilgili draftta okunan deplasman (ton); fark yüklenen/boşaltılan yük miktarıdır",
@@ -229,8 +223,6 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Yükü Etkileyen Kuvvetler",
         content:
           "Denizde yüke etki eden kuvvetler geminin altı serbestlik derecesindeki hareketinden doğar: yalpa (roll) en büyük enine ivmeyi, baş-kıç vurma (pitch) ve dalıp çıkma (heave) boyuna ve dikine ivmeleri yaratır. CSS Code, gemi büyüklüğü ve hıza göre tasarım ivmelerini (g cinsinden) tablolar hâlinde verir. Bağlama hesabı, yükün ağırlığından doğan atalet kuvvetlerinin (enine, boyuna, dikine) bağlama ve sürtünme dirençleriyle dengelenmesini sağlar. En kritik yön genellikle enine (yalpa) yöndür.",
-        image: roroShipImage,
-        imageAlt: "Ro-Ro cargo secured and lashed under the CSS Code",
       },
       {
         title: "Sürtünme ve Bağlama Direnci",
@@ -305,8 +297,6 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlike Sınıfları",
         content:
           "IMDG Code maddeleri 9 ana sınıfa ayırır: 1 Patlayıcılar, 2 Gazlar (yanıcı/yanıcı olmayan/zehirli), 3 Yanıcı sıvılar, 4 Yanıcı katılar / kendiliğinden yanan / su ile yanıcı gaz çıkaran, 5 Oksitleyiciler ve organik peroksitler, 6 Zehirli ve bulaşıcı maddeler, 7 Radyoaktif maddeler, 8 Aşındırıcılar (korozif), 9 Muhtelif tehlikeli maddeler (deniz kirleticiler dâhil). Her madde, dört haneli UN numarası ve uygun sevkiyat adı (Proper Shipping Name) ile tanımlanır; bazı maddeler ek tehlike (subsidiary risk) taşır.",
-        image: "/diagrams/seamanship/imdg-ayrim.svg",
-        imageAlt: "IMDG Code segregation table for dangerous goods",
       },
       {
         title: "Ambalajlama, İşaretleme ve Belgeler",

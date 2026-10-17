@@ -19,13 +19,13 @@ import generator from "@/assets/ship-systems/generator.jpg";
 import boiler from "@/assets/ship-systems/boiler.jpg";
 import separator from "@/assets/ship-systems/separator.jpg";
 import compressor from "@/assets/ship-systems/compressor.jpg";
-import pump from "@/assets/ship-systems/pump.jpg";
 import freshwaterGenerator from "@/assets/ship-systems/freshwater-generator.jpg";
 
 // Maps category → array of images in topic order
-export const shipSystemImages: Record<string, string[]> = {
+// A slot is undefined when no photo of exactly that subject is available yet.
+export const shipSystemImages: Record<string, (string | undefined)[]> = {
   "deck-machinery": [windlass, deckCrane, mooringWinch, hatchCover, capstan],
   "nav-systems": [radar, ecdis, ais, gps, compass, echoSounder],
   "main-engine": [twoStrokeEngine, fourStrokeEngine, shaftLine, propeller, rudder],
-  "auxiliary": [generator, boiler, separator, compressor, pump, freshwaterGenerator],
+  "auxiliary": [generator, boiler, separator, compressor, undefined, freshwaterGenerator],
 };

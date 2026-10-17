@@ -295,7 +295,7 @@ export function LibraryBookCard({
   title: string;
   accent: string;
   to: string;
-  /** Pro book shown to a free user: a lock badge on the cover. */
+  /** Pro book shown to a free user: a lock mark on the cover. */
   locked?: boolean;
 }) {
   return (

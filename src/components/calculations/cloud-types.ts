@@ -1,28 +1,19 @@
 // Import cloud images
-import stratusImage from '@/assets/clouds/stratus.jpg';
-import stratocumulusImage from '@/assets/clouds/stratocumulus.jpg';
 import cumulusImage from '@/assets/clouds/cumulus.jpg';
-import cumulonimbusImage from '@/assets/clouds/cumulonimbus.jpg';
-import nimbostratusImage from '@/assets/clouds/nimbostratus.jpg';
 import altostratusImage from '@/assets/clouds/altostratus.jpg';
 import altocumulusImage from '@/assets/clouds/altocumulus.jpg';
 import cirrusImage from '@/assets/clouds/cirrus.jpg';
 import cirrocumulusImage from '@/assets/clouds/cirrocumulus.jpg';
-import cirrostratusImage from '@/assets/clouds/cirrostratus.jpg';
-import mammatusImage from '@/assets/clouds/mammatus.jpg';
 import lenticularisImage from '@/assets/clouds/lenticularis.jpg';
 import arcusImage from '@/assets/clouds/arcus.jpg';
-import fractusImage from '@/assets/clouds/fractus.jpg';
 import tubaImage from '@/assets/clouds/tuba.jpg';
 import asperitasImage from '@/assets/clouds/asperitas.jpg';
-import castellanusImage from '@/assets/clouds/castellanus.jpg';
 import pyrocumulusImage from '@/assets/clouds/pyrocumulus.jpg';
 import contrailsImage from '@/assets/clouds/contrails.jpg';
 import virgaImage from '@/assets/clouds/virga.jpg';
 import kelvinHelmholtzImage from '@/assets/clouds/kelvin-helmholtz.jpg';
 
 // Fallback (genel fırtına bulutu) — sadece gerektiğinde kullanılmalı
-import stormCloudsImage from '@/assets/weather/storm-clouds.jpg';
 
 export interface CloudType {
   id: string;
@@ -71,7 +62,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'Hafif (< 10 knot)',
     precipitation: 'Drizzle or light snow',
     danger: 'high',
-    imageUrl: stratusImage,
     satelliteChannels: ['Ch1 (VIS0.6)', 'Ch9 (IR10.8)', 'Ch12 (HRV)'],
     bestDetectionChannel: 'Ch1 (VIS0.6) - Best channel for low low clouds'
   },
@@ -97,7 +87,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'Orta (10-20 knot)',
     precipitation: 'Light rain or snow spray',
     danger: 'low',
-    imageUrl: stratocumulusImage,
     satelliteChannels: ['Ch1 (VIS0.6)', 'Ch2 (VIS0.8)', 'Ch12 (HRV)'],
     bestDetectionChannel: 'Ch12 (HRV) - For high resolution vision'
   },
@@ -149,7 +138,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'Very powerful (> 35 knots)',
     precipitation: 'Heavy rain, hail, snow',
     danger: 'high',
-    imageUrl: cumulonimbusImage,
     satelliteChannels: ['Ch4 (IR3.9)', 'Ch9 (IR10.8)', 'Ch10 (IR12.0)'],
     bestDetectionChannel: 'Ch4 (IR3.9) - Storm top detection, day/night'
   },
@@ -175,7 +163,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'Medium-strong (15-30 knots)',
     precipitation: 'Continuous moderate/heavy rain',
     danger: 'medium',
-    imageUrl: nimbostratusImage,
     satelliteChannels: ['Ch9 (IR10.8)', 'Ch10 (IR12.0)', 'Ch5 (WV6.2)'],
     bestDetectionChannel: 'Ch10 (IR12.0) - Thick precipitation clouds'
   },
@@ -309,7 +296,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'getting stronger',
     precipitation: 'within 12-24 hours',
     danger: 'medium',
-    imageUrl: cirrostratusImage,
     satelliteChannels: ['Ch5 (WV6.2)', 'Ch11 (IR13.4)', 'Ch3 (NIR1.6)'],
     bestDetectionChannel: 'Ch3 (NIR1.6) - Thin ice clouds, cloud phase detection'
   },
@@ -337,7 +323,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'very variable',
     precipitation: 'severe soon',
     danger: 'high',
-    imageUrl: mammatusImage,
     satelliteChannels: ['Ch4 (IR3.9)', 'Ch9 (IR10.8)', 'Ch12 (HRV)'],
     bestDetectionChannel: 'Ch4 (IR3.9) - Storm structures and details'
   },
@@ -389,7 +374,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'Artan',
     precipitation: 'within 6-12 hours',
     danger: 'medium',
-    imageUrl: castellanusImage,
     satelliteChannels: ['Ch1 (VIS0.6)', 'Ch7 (IR8.7)', 'Ch9 (IR10.8)'],
     bestDetectionChannel: 'Ch1 (VIS0.6) - Tower cloud structures'
   },
@@ -415,7 +399,6 @@ export const cloudTypes: CloudType[] = [
     wind: 'strong',
     precipitation: 'ongoing',
     danger: 'medium',
-    imageUrl: fractusImage,
     satelliteChannels: ['Ch1 (VIS0.6)', 'Ch9 (IR10.8)', 'Ch12 (HRV)'],
     bestDetectionChannel: 'Ch12 (HRV) - Fractured cloud fragments'
   },

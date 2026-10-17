@@ -1342,7 +1342,6 @@ SRU (Search and Rescue Unit): a search and rescue unit.`,
   "sar-patterns": {
     title: "Search Patterns",
     introduction: "Search patterns used in SAR operations are selected based on the possible location of the missing person or object, the width of the search area, and the available tools.",
-    image: "/diagrams/seamanship/arama-desenleri.svg",
     content: `SEARCH PATTERNS:
 
 EXPANDING SQUARE SEARCH (SS): used when searching with a single unit. Effective where the position of the casualty is known relatively accurately. The search starts at a datum point and spirals outwards in progressively larger squares.

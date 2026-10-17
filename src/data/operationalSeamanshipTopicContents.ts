@@ -195,8 +195,6 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         title: "Ana Yapısal Elemanlar",
         content:
           "Keel, shell plating, deck plating, frames, beams, girders, longitudinals, floors ve bulkheads tekne yüklerini taşır. Double bottom; tank, boru ve yapısal derinlik sağlar. Collision bulkhead baş hasarında su yayılımını sınırlar. Watertight bulkhead ve kapılar hasar kontrolünün pasif bariyeridir.",
-        image: "/diagrams/seamanship/gemi-kisimlari.svg",
-        imageAlt: "Principal structural parts of a ship",
       },
       {
         title: "Boyuna Mukavemet: Hogging ve Sagging",

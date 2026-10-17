@@ -2,7 +2,6 @@ import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Cog } from "lucide-react";
 import { EngineCalculations } from "@/components/calculations/EngineCalculations";
 import { DiagramViewer } from "@/components/ui/diagram-viewer";
-import shipBridge from "@/assets/maritime/ship-bridge.jpg";
 import { CalculationLayout } from "@/components/layout/CalculationLayout";
 import { CalculationCard } from "@/components/ui/calculation-card";
 import { FormulaCard } from "@/components/ui/formula-card";
@@ -12,11 +11,6 @@ const Engine = () => {
     <CalculationLayout
       title="Machine Calculations"
       icon={Cog}
-      hero={{
-        title: "Machine Calculations",
-        imageSrc: shipBridge,
-        imageAlt: "Ship Bridge Control Panel",
-      }}
       maxWidthClassName="max-w-6xl"
       rightRail={
         <FormulaCard

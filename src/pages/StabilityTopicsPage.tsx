@@ -27,12 +27,6 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Stabilite diyagramları (public/diagrams altındaki vektör çizimler)
-const metacenterDiagram = "/diagrams/stability/metasantr-gm.svg";
-const gzCurveDiagram = "/diagrams/stability/gz-egrisi.svg";
-const freeSurfaceEffect = "/diagrams/stability/serbest-yuzey.svg";
-const rightingMomentDiagram = "/diagrams/dogrultma-kolu.svg";
-const trimDiagram = "/diagrams/stability/trim.svg";
-const damageStabilityDiagram = "/diagrams/stability/yara-stabilitesi.svg";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
@@ -426,13 +420,6 @@ Negative GM = an unstable ship, danger!`,
     content: `The metacentre (M) is the point at which the vertical drawn through the new position of the centre of buoyancy (B), when the ship heels through a very small angle, intersects the ship's centreline. This point determines whether or not a righting moment is produced at small angles.
 
 The position of the metacentre is determined by the distance BM, calculated from the waterplane moment of inertia and the immersed volume. BM is the vertical distance between B and M and is sensitive to the shape of the waterplane.`,
-    images: [
-      {
-        src: metacenterDiagram,
-        alt: "Metacentre and GM diagram",
-        caption: "Figure: the points K, B, G and M in a midship section, and the GM distance",
-      },
-    ],
     bulletPoints: [
       "Point M is considered fixed at small angles of repose",
       "BM distance depends on waterline geometry",
@@ -984,13 +971,6 @@ The classical method involves the following steps:
 4) The process is repeated for all angles to build the curve.
 
 In modern practice this process is carried out automatically by stability software; but the results must be consistent with the stability booklet and the hydrostatic tables.`,
-    images: [
-      {
-        src: gzCurveDiagram,
-        alt: "GZ curve diagram",
-        caption: "Figure: a typical GZ curve - righting lever against angle of heel",
-      },
-    ],
     bulletPoints: [
       "GZ curve is calculated separately for each loading case",
       "Hydrostatic tables and stability software are used",
@@ -1203,13 +1183,6 @@ RM = Δ × GZ
 When this moment is positive it acts to bring the ship upright. When it is negative it increases the heel.
 
 The righting moment is the fundamental measure of a ship's stability. The IMO criteria require a minimum righting capacity at defined angles.`,
-    images: [
-      {
-        src: rightingMomentDiagram,
-        alt: "Righting moment diagram",
-        caption: "Figure: the points G and B and the righting lever GZ in a heeled ship",
-      },
-    ],
     bulletPoints: [
       "Calculated with the formula RM = Δ × GZ",
       "Positive RM straightens the ship",
@@ -1432,13 +1405,6 @@ The free surface effect:
 - Tank subdivisions (longitudinal or transverse) reduce the effect
 
 Every partly filled tank creates a free surface effect: fuel, ballast, fresh water, cargo oil.`,
-    images: [
-      {
-        src: freeSurfaceEffect,
-        alt: "Free surface effect diagram",
-        caption: "Figure: liquid shifting in a partially filled tank and the virtual rise of KG",
-      },
-    ],
     bulletPoints: [
       "Partially full tank = Free surface effect",
       "Fluid movement virtually raises KG",
@@ -1718,13 +1684,6 @@ If the trim is negative: trim by the head
 If the trim is 0: even keel
 
 Trim affects the ship's performance, propeller efficiency and deck wetness. Optimum trim values are established in commercial operations.`,
-    images: [
-      {
-        src: trimDiagram,
-        alt: "Trim diagram",
-        caption: "Figure: ship in profile - forward and aft drafts and the resulting trim",
-      },
-    ],
     bulletPoints: [
       "Trim = T aft - T fore",
       "Positive trim = Aft trim",
@@ -2236,13 +2195,6 @@ The permeability factor (μ) shows how much of the compartment can fill with wat
 - Empty tanks: μ = 0.95
 
 Flooded volume = Actual volume × μ`,
-    images: [
-      {
-        src: damageStabilityDiagram,
-        alt: "Damage stability diagram",
-        caption: "Figure: a damaged compartment, water ingress and the resulting list",
-      },
-    ],
     bulletPoints: [
       "Reserve buoyancy = Water-resistant volume above the waterline",
       "Permeability (μ) varies by compartment",

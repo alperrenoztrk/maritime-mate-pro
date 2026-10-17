@@ -11,8 +11,6 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 import tugImage from "@/assets/lessons/tug-assisting.jpg";
 import pilotLadderImage from "@/assets/lessons/pilot-ladder.jpg";
 import knotsImage from "@/assets/seamanship/knots-display.jpg";
-import hatchCoversImage from "@/assets/seamanship/hatch-covers.jpg";
-import bridgeWatchImage from "@/assets/seamanship/bridge-watch.jpg";
 import wireRopeImage from "@/assets/seamanship/wire-rope.jpg";
 
 export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
@@ -61,8 +59,6 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Demir Donanımı ve Türleri",
         content:
           "Demir donanımı; demir (anchor), zincir (chain cable), ırgat (windlass), zincirlik (chain locker) ve loça/kovan (hawse pipe) ile stoperlerden oluşur. Yaygın demir tipi, stoksuz (stockless) demirdir; tırnakları (flukes) zemine gömülerek tutar. Zincir, baklalar hâlinde 'kilit' (shackle/shot — genellikle 27.5 m) uzunluklarına bölünür ve renk işaretleriyle salınan miktar izlenir. Demirin tutuş gücü ağırlığından çok zincirin dipte yatay yatması ve demirin zemine gömülmesiyle sağlanır.",
-        image: "/diagrams/seamanship/demir-tipleri.svg",
-        imageAlt: "Types of anchor used at sea",
       },
       {
         title: "Kaloma (Scope) ve Tutuş",
@@ -101,8 +97,6 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Bağlama Halatları ve Düzeni",
         content:
           "Standart bağlama düzeni farklı görevdeki halatlardan oluşur. Baş ve kıç açmazları (head/stern lines) gemiyi rıhtıma çeker; spring halatlar (baş ve kıç spring) geminin boyuna (ileri-geri) hareketini engeller; breast halatlar gemiyi rıhtıma dik tutar. İyi bir düzen, halatları mümkün olduğunca uzun ve simetrik yerleştirir; uzun halat aynı geminin hareketinde daha az gerilim değişimi yaşar. Aynı serviste farklı malzemeden halat karıştırmak (örn. naylon + HMPE) yükü eşit paylaşmadığından önerilmez.",
-        image: "/diagrams/seamanship/palamar-duzeni.svg",
-        imageAlt: "Standard mooring line arrangement alongside a berth",
       },
       {
         title: "Irgat, Vinç ve Gergi Yönetimi",
@@ -209,8 +203,6 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Su Geçmezlik vs. Hava Koşullarına Dayanıklılık",
         content:
           "İki kavram ayrılır. Watertight (su geçirmez) bölmeler ve kapılar, belirli su basıncına karşı her iki yönde su geçişini önler; hasarlı stabilitede bölmelemeyi sağlar (örn. tekne içi su geçmez kapılar). Weathertight (hava koşullarına dayanıklı) açıklıklar ise normal deniz koşullarında üstten gelen suyun geçişini önler ancak basınç altında değil (örn. ambar kapakları, güverte kapıları). Hangi açıklığın hangi standartta olması gerektiği konumuna ve işlevine göre belirlenir.",
-        image: hatchCoversImage,
-        imageAlt: "Weathertight hatch covers closed over a hold",
       },
       {
         title: "Ambar Kapakları (Hatch Covers)",
@@ -281,8 +273,6 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Gözcülük (Lookout) — COLREG Kural 5",
         content:
           "COLREG Kural 5, her geminin görme, işitme ve mevcut tüm uygun araçlarla (radar, ARPA, AIS, dürbün) sürekli ve uygun bir gözcülük tutmasını ister. Amaç, durumu ve çatışma riskini tam değerlendirmektir. Gözcülük yalnızca radar ekranına bakmak değil, görsel ve işitsel uyanıklığı da kapsar. Gece veya kısıtlı görüşte ayrı bir gözcü (dedicated lookout) atanır; vardiya zabiti tek başına gözcü görevini yalnızca gündüz, uygun koşullarda ve geçici olarak üstlenebilir.",
-        image: bridgeWatchImage,
-        imageAlt: "Officer of the watch keeping a lookout from the bridge",
       },
       {
         title: "Vardiya Devir-Teslimi ve Sorumluluk",
@@ -321,8 +311,6 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         title: "Dönme Dairesi ve Pivot Noktası",
         content:
           "Gemi dümen kırdığında bir dönme dairesi (turning circle) çizer; bunun büyüklüğü 'tactical diameter' ve 'advance/transfer' ile tanımlanır. Gemi, etrafında döndüğü görünür bir nokta olan pivot noktası (pivot point) etrafında döner; ileri yolda pivot noktası baştan yaklaşık geminin boyunun 1/4'ü kadar geride, tornistanda ise kıça yakın olur. Pivot noktasının yeri, dümen ve römorkör kuvvetlerinin yaratacağı dönme momentini belirler; manevra kararları buna göre verilir.",
-        image: "/diagrams/seamanship/donme-dairesi.svg",
-        imageAlt: "Turning circle with advance, transfer and tactical diameter",
       },
       {
         title: "Durma Mesafesi ve Atalet",

@@ -29,25 +29,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";
 
 // Gemicilik gerçekçi fotoğraflar
-import photoRopeTypes from "@/assets/seamanship/rope-types.jpg";
 import photoWireRope from "@/assets/seamanship/wire-rope.jpg";
-import photoAnchorTypes from "@/assets/seamanship/anchor-types.jpg";
 import photoAnchorChain from "@/assets/seamanship/anchor-chain.jpg";
 import photoKnotsDisplay from "@/assets/seamanship/knots-display.jpg";
-import photoShipPartsOverview from "@/assets/seamanship/ship-parts-overview.jpg";
 import photoMooringEquipment from "@/assets/seamanship/mooring-equipment.jpg";
 import photoWindlass from "@/assets/seamanship/windlass.jpg";
 // Etap 1B - eklenen gerçekçi fotoğraflar
 import photoFireExtinguishers from "@/assets/seamanship/fire-extinguishers.jpg";
-import photoCo2System from "@/assets/seamanship/co2-system.jpg";
-import photoLifeboatEnclosed from "@/assets/seamanship/lifeboat-enclosed.jpg";
 import photoLiferaftCanister from "@/assets/seamanship/liferaft-canister.jpg";
 import photoLsaPersonal from "@/assets/seamanship/lsa-personal.jpg";
 import photoRudderPropeller from "@/assets/seamanship/rudder-propeller.jpg";
 import photoSteeringGear from "@/assets/seamanship/steering-gear.jpg";
 import photoDeckCrane from "@/assets/seamanship/deck-crane.jpg";
-import photoHatchCovers from "@/assets/seamanship/hatch-covers.jpg";
-import photoBridgeWatch from "@/assets/seamanship/bridge-watch.jpg";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
@@ -295,15 +288,6 @@ The STCW (Standards of Training, Certification and Watchkeeping) Convention defi
   "ship-parts": {
     title: "Ship Parts and Terminology",
     introduction: "Knowing the ship's structural elements and sections with correct terminology is a basic requirement for the effective conduct of deck operations.",
-    image: "/diagrams/seamanship/gemi-kisimlari.svg",
-    photos: [
-      {
-        src: photoShipPartsOverview,
-        title: "Modern bulk carrier (side view)",
-        caption: "The bulbous bow, raised forecastle, hatch covers, aft accommodation block, bridge and funnel are all visible in one frame.",
-        alt: "A large bulk carrier under way at sea in side profile; the red underwater hull, black side shell, white accommodation block and flush hatch covers stand out.",
-      },
-    ],
     content: `THE MAIN PARTS OF A SHIP:
 
 BOW: the forward part of the ship. The form of the bow determines its wave-breaking performance. The main bow types: vertical stem, bulbous bow, clipper bow, raked bow. A bulbous bow reduces wave resistance by 5-15% and so saves fuel.
@@ -474,15 +458,6 @@ Port State Control inspectors check the validity of these certificates first. An
   "rope-types": {
     title: "Rope Types and Materials",
     introduction: "Ropes used on ships are classified according to their materials and structures; Each type has different mechanical properties and usage areas.",
-    image: "/diagrams/seamanship/halat-yapilari.svg",
-    photos: [
-      {
-        src: photoRopeTypes,
-        title: "Common rope materials (side by side)",
-        caption: "Four ropes of the same diameter: white double-braid nylon, yellow polypropylene (which floats), brown natural-fiber manila and blue polyester. The differences in construction and layout are clear.",
-        alt: "Four different ropes laid side by side on a wooden deck: nylon, polypropylene, manila and polyester, each a different colour and construction.",
-      },
-    ],
     table: {
       title: "Rope Material Comparison Chart",
       headers: ["Material", "Specific Gravity", "Elongation (%)", "Wet Strength", "Area of Use"],
@@ -776,15 +751,6 @@ The proof load (PL) is the test load applied after manufacture. It is usually tw
   "anchor-types": {
     title: "Anchor Types and Properties",
     introduction: "The irons used in ships are produced in different types according to their structure and holding strength; The selection is made according to the seabed structure and ship tonnage.",
-    image: "/diagrams/seamanship/demir-tipleri.svg",
-    photos: [
-      {
-        src: photoAnchorTypes,
-        title: "Comparison of common anchor types",
-        caption: "Left to right: Hall stockless (the merchant ship standard), AC-14 high holding power (modern HHP), Danforth fluke (holds in soft ground) and Admiralty stocked (the classic stocked type).",
-        alt: "Four different ships' anchors lined up on a quay, each with a different shank, fluke and stock arrangement.",
-      },
-    ],
     content: `THE MAIN TYPES OF ANCHOR:
 
 STOCKLESS ANCHOR (Hall anchor): the type most widely used on merchant ships. The flukes pivot about the crown. It can be stowed in the hawse pipe. It develops a holding power of 3-5 times its own weight.
@@ -817,7 +783,6 @@ A merchant ship normally carries two bower anchors (forward) and one spare ancho
   "anchor-chain": {
     title: "Anchor Chain and Connections",
     introduction: "Anchor chain is a heavy steel chain that attaches the anchor to the ship and increases the holding force during anchoring.",
-    image: "/diagrams/seamanship/zincir-isaretleme.svg",
     photos: [
       {
         src: photoAnchorChain,
@@ -1039,7 +1004,6 @@ Two anchors can be used when heavy weather is expected. Two methods:
   "anchoring-maneuvers": {
     title: "Anchoring Maneuvering Techniques",
     introduction: "Anchoring maneuver; It is done with different techniques depending on the swing area, bottom grip, air/current and harbor layout. Correct technique determines the safe swing and firm hold of the ship.",
-    image: "/diagrams/seamanship/demirleme-manevralari.svg",
     content: `THE APPROACH:
 The ship always approaches the anchorage HEAD TO whichever is the stronger, the wind or the current. The ship is stopped over the position, or the anchor is let go while she is making very slight sternway, so that the chain does not pile up on the anchor. The chain is snubbed under control and the anchor is confirmed to be brought up.
 
@@ -1085,7 +1049,6 @@ The two anchors are laid at an angle of 60-90°; this limits the swing and impro
   "mooring-lines": {
     title: "Mooring lines and Nomenclatures",
     introduction: "Mooring lines used for secure mooring of the ship to the dock are named according to their locations and functions.",
-    image: "/diagrams/seamanship/palamar-duzeni.svg",
     photos: [
       {
         src: photoMooringEquipment,
@@ -1320,7 +1283,6 @@ SBM operations are standardised in the OCIMF publication "SBM and SPM – Guidel
   // =====================================================
   "rudder-types": {
     title: "Rudder Types and Structures",
-    image: "/diagrams/seamanship/dumen-tipleri.svg",
     introduction: "The rudder is the primary maneuvering element that allows the ship to change direction; Its type and size directly affect the ship's maneuverability.",
     photos: [
       {
@@ -1403,7 +1365,6 @@ If the main steering gear fails, the changeover to the auxiliary system must be 
   },
   "turning-circle": {
     title: "Turning Circle and Maneuver Characteristics",
-    image: "/diagrams/seamanship/donme-dairesi.svg",
     introduction: "The turning circle is the path drawn by the ship when it makes a 360° turn with full rudder angle and defines the maneuverability of the ship.",
     content: `TURNING CIRCLE PARAMETERS:
 
@@ -1497,7 +1458,6 @@ IMO STANDARD: head reach ≤ 15 ship lengths (MSC.137(76))`,
   },
   "squat-effect": {
     title: "Squat Effect and Shallow Water Effects",
-    image: "/diagrams/seamanship/squat-etkisi.svg",
     introduction: "Squat is the sinking (draft increase) of the ship under the influence of underwater pressure changes while moving in shallow water or narrow channel.",
     content: `THE PHYSICS OF SQUAT:
 
@@ -1670,14 +1630,6 @@ In derrick operations the weakest element (rope, block, shackle) determines the 
   "hatch-covers": {
     title: "Hatch Covers and Types",
     introduction: "Hatch covers are structural elements that ensure watertight closure of cargo holds and are of critical importance for ship safety.",
-    photos: [
-      {
-        src: photoHatchCovers,
-        title: "Folding type (folding) steel hatch covers",
-        caption: "Blue folding hatch covers on a bulk carrier, opened and closed by hydraulic actuators. Weathertightness is achieved by a rubber gasket seating on the coaming together with a compression bar.",
-        alt: "Large blue folding hatch covers, hydraulic cylinders and the hatch coaming on the deck of a bulk carrier.",
-      },
-    ],
     content: `TYPES OF HATCH COVER:
 
 1. Hydraulic folding: the panels are folded open by hydraulic cylinders. Common on modern bulk carriers.
@@ -1792,14 +1744,6 @@ Under the ISM Code all maintenance is planned, carried out and recorded within t
   "lifeboat-types": {
     title: "Lifeboat Types and Equipment",
     introduction: "Lifeboats are SOLAS approved rescue vehicles designed to protect the lives of crew and passengers in case of ship abandonment.",
-    photos: [
-      {
-        src: photoLifeboatEnclosed,
-        title: "Totally enclosed lifeboat (TEMPSC) — hanging davit",
-        caption: "A bright orange totally enclosed (TEMPSC) lifeboat hanging in its davits on the boat deck of a cargo ship. SOLAS requires capacity for 100% of the total complement on each side.",
-        alt: "A bright orange totally enclosed lifeboat hanging in its davit on the ship's side, with the grey hull behind.",
-      },
-    ],
     content: `TYPES OF LIFEBOAT:
 
 1. Open lifeboat: an open boat. The old standard; no longer fitted on newly built ships.
@@ -2030,7 +1974,6 @@ The timing of flares is critical; they must not be used until a ship or aircraft
   // =====================================================
   "fire-triangle": {
     title: "Fire Triangle and Fire Classes",
-    image: "/diagrams/seamanship/yangin-sinifi.svg",
     introduction: "Fire begins with the combination of heat, fuel and oxygen; Eliminating any of these three elements extinguishes the fire.",
     content: `THE FIRE TRIANGLE:
 
@@ -2135,14 +2078,6 @@ Under SOLAS II-2/10 a sufficient number of extinguishers must be provided on eve
   "fixed-systems": {
     title: "Fixed Extinguishing Systems (CO₂, Foam, Water)",
     introduction: "Fixed fire extinguishing systems are designed to control fires in large areas such as engine rooms, cargo holds and pump rooms.",
-    photos: [
-      {
-        src: photoCo2System,
-        title: "Fixed CO₂ extinguishing system cylinder room",
-        caption: "A fixed CO₂ system for engine room fires: high-pressure red CO₂ cylinders connected to the manifold and release valves. An audible and visual alarm with a 20-second delay before discharge allows personnel to evacuate.",
-        alt: "Two rows of large red high-pressure CO₂ cylinders and the manifold piping in a white-ceilinged compartment.",
-      },
-    ],
     content: `FIXED SYSTEMS:
 
 1. CO₂ system: used in machinery spaces and cargo holds. The CO₂ cylinders are stored in a separate CO₂ room. When the system is released all personnel in the space must have been evacuated (risk of death). There is a two-man release safety mechanism.
@@ -2278,14 +2213,6 @@ THE OFFICER OF THE WATCH'S RESPONSIBILITIES:
   "bridge-organization": {
     title: "Bridge Organization (BRM)",
     introduction: "Bridge Resource Management (BRM) is a management system that ensures coordinated and effective work of the bridge team.",
-    photos: [
-      {
-        src: photoBridgeWatch,
-        title: "Modern bridge and navigational watch",
-        caption: "The officer of the watch, in uniform, appraising the situation using ECDIS and the X/S-band radars. The bridge equipment — ECDIS, ARPA radar, GPS, AIS, autopilot and VHF — is arranged to STCW BRM standards.",
-        alt: "Interior view of a modern ship's bridge; radar and ECDIS displays, a wooden helm, and a uniformed officer looking out towards the horizon.",
-      },
-    ],
     content: `BRM PRINCIPLES:
 
 1. Teamwork: open communication and a clear division of duties between the master, the officer of the watch and the lookout.
@@ -2806,7 +2733,6 @@ Rule 18 – Responsibilities between vessels: the order of priority according to
   "buoyage-iala": {
     title: "IALA Buoy System",
     introduction: "The IALA (International Association of Marine Aids to Navigation) buoy system ensures that navigation aids are implemented as a standard worldwide.",
-    image: "/diagrams/seamanship/kardinal-samandiralar.svg",
     content: `IALA REGIONS:
 
 Region A: Europe, Africa, most of Asia, Australia

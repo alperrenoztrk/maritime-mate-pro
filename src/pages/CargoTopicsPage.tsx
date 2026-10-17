@@ -1494,7 +1494,6 @@ The substance's official transport name in the IMDG Code.
   "imdg-segregation": {
     title: "Segregation Table",
     introduction: "IMDG Code segregation table determines the minimum distance between different classes of dangerous cargo on the ship.",
-    image: "/diagrams/seamanship/imdg-ayrim.svg",
     content: `SEGREGATION LEVELS (from the lowest to the highest):
 
 1. "AWAY FROM":
@@ -2463,7 +2462,6 @@ Ships carrying timber deck cargo are permitted a deeper loading (additional rese
   "load-line-marks": {
     title: "Load Line Markings (TF/F/T/S/W/WNA)",
     introduction: "Load line (Plimsoll) marks indicate the maximum loading draft (minimum freeboard) of the ship in different regions and seasons in accordance with the International Load Line Convention (1966 / 1988 Protocol).",
-    image: "/diagrams/seamanship/load-line-isaretleri.svg",
     content: `THE LOAD LINE MARK:
 The disc (ring) on the ship's side amidships, with the horizontal line through its centre, shows the Summer (S) line. The initials of the assigning classification society appear beside the disc. The horizontal "comb" lines forward of the vertical line attached to the disc are the seasonal/zonal load lines.
 

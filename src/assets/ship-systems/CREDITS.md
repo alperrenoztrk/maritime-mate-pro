@@ -18,4 +18,3 @@ Wikimedia Commons üzerinden özgür lisanslarla alınmıştır. Lisans gereği 
 | generator.jpg | [Engine room, ferry Bastø IV 05.JPG](https://commons.wikimedia.org/wiki/File%3AEngine_room%2C_ferry_Bast%C3%B8_IV_05.JPG) | Ulflarsen | CC BY-SA 4.0 |
 | boiler.jpg | [Virginia V (ship, 1922) engine room 21 - boiler.jpg](https://commons.wikimedia.org/wiki/File%3AVirginia_V_%28ship%2C_1922%29_engine_room_21_-_boiler.jpg) | Joe Mabel | CC BY-SA 4.0 |
 | separator.jpg | [FuelOilSeparator020.JPG](https://commons.wikimedia.org/wiki/File%3AFuelOilSeparator020.JPG) | Ciacho5 | CC BY-SA 3.0 |
-| pump.jpg | [Engine room, ferry Bastø IV 08.JPG](https://commons.wikimedia.org/wiki/File%3AEngine_room%2C_ferry_Bast%C3%B8_IV_08.JPG) | Ulflarsen | CC BY-SA 4.0 |

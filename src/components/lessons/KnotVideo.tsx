@@ -5,8 +5,8 @@ interface KnotVideoProps {
   videoId: string;
   /** Accessible label, e.g. "Bowline Ties (Bowline)". */
   title: string;
-  /** Local diagram used as the poster / offline fallback. */
-  poster: string;
+  /** Local still used as the poster / offline fallback, when there is one. */
+  poster?: string;
   credit: string;
 }
 
@@ -44,13 +44,19 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
             className="group absolute inset-0 h-full w-full"
             aria-label={`${title} Play tying video`}
           >
-            <img
-              src={thumbFailed ? poster : thumb}
-              onError={() => setThumbFailed(true)}
-              alt={`${title} Preview of link`}
-              className={`h-full w-full ${thumbFailed ? "bg-white object-contain" : "object-cover"}`}
-              loading="lazy"
-            />
+            {thumbFailed && !poster ? (
+              <span className="flex h-full w-full items-center justify-center px-4 text-center text-sm text-white/80">
+                {title}
+              </span>
+            ) : (
+              <img
+                src={thumbFailed ? poster : thumb}
+                onError={() => setThumbFailed(true)}
+                alt={`${title} Preview of link`}
+                className={`h-full w-full ${thumbFailed ? "bg-white object-contain" : "object-cover"}`}
+                loading="lazy"
+              />
+            )}
             <span className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/15" />
             <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600/90 shadow-lg ring-4 ring-white/25 transition-transform group-hover:scale-110">
               <Play className="ml-0.5 h-6 w-6 fill-white text-white" />

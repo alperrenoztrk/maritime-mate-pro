@@ -496,15 +496,9 @@ for (const rel of svgFiles) {
 }
 
 // E. src/assets ve public/diagrams altındaki kopya çiftleri eşit kalmalı.
-const DUPLICATE_PAIRS = [
-  "compass.svg",
-  "ecdis-display.svg",
-  "gps-satellites.svg",
-  "great-circle-vs-rhumb.svg",
-  "iala-lateral-marks.svg",
-  "mercator-projection.svg",
-  "tide-current.svg",
-];
+// public/diagrams was removed together with the code-drawn diagrams, so no
+// duplicate pairs remain. Add a file name here if a copy is ever reintroduced.
+const DUPLICATE_PAIRS = [];
 const md5 = (p) => crypto.createHash("md5").update(fs.readFileSync(p)).digest("hex");
 for (const name of DUPLICATE_PAIRS) {
   const a = path.join(root, "src/assets/navigation", name);

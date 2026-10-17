@@ -7,7 +7,6 @@ import { BarChart3 } from "lucide-react";
 import { CalculationLayout } from "@/components/layout/CalculationLayout";
 import { CalculationCard } from "@/components/ui/calculation-card";
 import { FormulaCard } from "@/components/ui/formula-card";
-import containerShip from "@/assets/maritime/container-ship-aerial.jpg";
 
 const DraftSurveyDensity = () => {
   const [seawaterDensity, setSeawaterDensity] = useState("");
@@ -55,11 +54,6 @@ const DraftSurveyDensity = () => {
     <CalculationLayout
       title="Density Correction"
       icon={BarChart3}
-      hero={{
-        title: "Draft survey",
-        imageSrc: containerShip,
-        imageAlt: "Container ship aerial view",
-      }}
       maxWidthClassName="max-w-6xl"
       rightRail={
         <FormulaCard

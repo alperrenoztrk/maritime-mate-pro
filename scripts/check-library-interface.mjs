@@ -145,7 +145,7 @@ for (const [label, source] of [
 }
 
 // Operasyon listesi satır içi açılmaz: başlık doğrudan detaylı anlatıma gider,
-// amaç/prosedür/mevzuat blokları orada "Operasyon Özeti" olarak okunur.
+// amaç/prosedür/mevzuat blokları orada "Operation Summary" olarak okunur.
 requireText(
   operationDetail,
   "/ship-operations/${shipType}/${activeDepartment}/${index}",
@@ -156,7 +156,7 @@ forbidText(operationDetail, "Detaylı Anlatımı Aç", "operasyon listesinde ayr
 forbidText(operationDetail, 'type="multiple"', "operasyon çoklu açık bölüm davranışı");
 requireText(
   read("src/pages/ShipOperationDeepDive.tsx"),
-  "Operasyon Özeti",
+  "Operation Summary",
   "listeden taşınan operasyon özeti",
 );
 requireText(tasks, "expandedCategory", "gemi görevleri tek açık bölüm davranışı");

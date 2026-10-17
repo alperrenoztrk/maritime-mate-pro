@@ -12,8 +12,6 @@
 // Marking Buoy) dahildir; yeni bir batık tespit edildiğinde harita ve seyir
 // ihbarları güncellenene kadar kullanılan geçici işarettir.
 
-import isolatedDangerImage from "@/assets/navigation/isolated-danger-mark.svg";
-import safeWaterImage from "@/assets/navigation/safe-water-mark.svg";
 
 export type BuoyCategory = "lateral" | "cardinal" | "isolated" | "safeWater" | "special" | "wreck";
 
@@ -55,29 +53,21 @@ export const BUOY_CATEGORY_LABELS: Record<
     title: "Lateral (Yanal) İşaretler",
     description:
       "Bir kanalın veya geçiş hattının kenarlarını tarif eder; emniyetli suyu çizgisel olarak tanımlar. Renk anlamı IALA bölgesine göre TERSTİR — önce hangi bölgede olduğunuzu bilmeniz gerekir.",
-    image: "/diagrams/navigation/iala-lateral-marks.svg",
-    imageAlt: "IALA lateral marks for Region A and Region B side by side",
   },
   cardinal: {
     title: "Kardinal İşaretler",
     description:
       "Kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli suyun HANGİ YÖNDE olduğunu söyler. Her iki IALA bölgesinde de aynıdır.",
-    image: "/diagrams/seamanship/kardinal-samandiralar.svg",
-    imageAlt: "North, east, south and west cardinal marks with their topmarks and colour bands",
   },
   isolated: {
     title: "İzole Tehlike İşareti",
     description:
       "Çevresinde dolaşılabilir su bulunan tekil bir tehlikenin (kaya, batık, sığlık) üzerine veya hemen yanına konur.",
-    image: isolatedDangerImage,
-    imageAlt: "Isolated danger mark with two black spheres as its topmark",
   },
   safeWater: {
     title: "Emniyetli Su İşareti",
     description:
       "Çevresi emniyetli su olan bir noktayı gösterir: kanal orta hattı, yaklaşım (landfall) noktası veya ayrım hattı. 'Doğru yerdeyim' teyidi verir.",
-    image: safeWaterImage,
-    imageAlt: "Safe water mark with red and white vertical stripes and a single red sphere topmark",
   },
   special: {
     title: "Özel İşaretler",

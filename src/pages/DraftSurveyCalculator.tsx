@@ -8,7 +8,6 @@ import { Calculator } from "lucide-react";
 import { CalculationLayout } from "@/components/layout/CalculationLayout";
 import { CalculationCard } from "@/components/ui/calculation-card";
 import { FormulaCard } from "@/components/ui/formula-card";
-import cargoShip from "@/assets/maritime/cargo-ship-ocean.jpg";
 
 const DraftSurveyCalculator = () => {
   
@@ -67,11 +66,6 @@ const DraftSurveyCalculator = () => {
     <CalculationLayout
       title="Calculator"
       icon={Calculator}
-      hero={{
-        title: "Draft survey",
-        imageSrc: cargoShip,
-        imageAlt: "Cargo ship at sea",
-      }}
       maxWidthClassName="max-w-6xl"
       rightRail={
         <FormulaCard

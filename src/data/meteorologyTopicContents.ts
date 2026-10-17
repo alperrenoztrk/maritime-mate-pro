@@ -3,16 +3,9 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 // Bulut görselleri — Bulut Atlası (DetailedMeteorology) ile aynı asset seti
 import cirrusImage from "@/assets/clouds/cirrus.jpg";
 import cirrocumulusImage from "@/assets/clouds/cirrocumulus.jpg";
-import cirrostratusImage from "@/assets/clouds/cirrostratus.jpg";
 import altocumulusImage from "@/assets/clouds/altocumulus.jpg";
 import altostratusImage from "@/assets/clouds/altostratus.jpg";
-import nimbostratusImage from "@/assets/clouds/nimbostratus.jpg";
-import stratusImage from "@/assets/clouds/stratus.jpg";
-import stratocumulusImage from "@/assets/clouds/stratocumulus.jpg";
-import fractusImage from "@/assets/clouds/fractus.jpg";
 import cumulusImage from "@/assets/clouds/cumulus.jpg";
-import cumulonimbusImage from "@/assets/clouds/cumulonimbus.jpg";
-import mammatusImage from "@/assets/clouds/mammatus.jpg";
 import arcusImage from "@/assets/clouds/arcus.jpg";
 import tubaImage from "@/assets/clouds/tuba.jpg";
 import lenticularisImage from "@/assets/clouds/lenticularis.jpg";
@@ -27,10 +20,6 @@ import windBarbsImage from "@/assets/meteorology/wind-barbs.svg";
 import surfaceAnalysisImage from "@/assets/meteorology/surface-analysis-chart.png";
 import pressureCentresImage from "@/assets/meteorology/pressure-centres-circulation.svg";
 import geostrophicWindImage from "@/assets/meteorology/geostrophic-wind.svg";
-import airMassImage from "@/assets/meteorology/air-mass-source-regions.png";
-import beaufort4Image from "@/assets/meteorology/beaufort-force-4.jpg";
-import beaufort8Image from "@/assets/meteorology/beaufort-force-8.jpg";
-import beaufort11Image from "@/assets/meteorology/beaufort-force-11.jpg";
 import cycloneEyeImage from "@/assets/meteorology/cyclone-eye-satellite.jpg";
 import cycloneSectionImage from "@/assets/meteorology/cyclone-vertical-section.jpg";
 import buysBallotImage from "@/assets/meteorology/buys-ballot-law.svg";
@@ -38,10 +27,6 @@ import advectionFogImage from "@/assets/meteorology/advection-fog.jpg";
 import worldCurrentsImage from "@/assets/meteorology/world-surface-currents.jpg";
 
 // Diğer derslerden yeniden kullanılan görseller.
-import windDriftImage from "@/assets/navigation/yon-wind-drift.png";
-import radarDisplayImage from "@/assets/navigation/radar-display.svg";
-import tideCurrentImage from "@/assets/navigation/tide-current.svg";
-import weatherSystemsImage from "@/assets/navigation/weather-systems.svg";
 
 export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
   "Basınç merkezleri (alçak/yüksek)": {
@@ -115,8 +100,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Hava Kütlesi Sınıflandırması",
         content:
           "Hava kütleleri iki temel eksende sınıflandırılır. İlk eksen kaynak bölgenin enlemidir: kutupsal (P) veya tropikal (T). İkinci eksen kaynak yüzeydir: denizel (m – maritime) veya karasal (c – continental). Böylece dört ana tip ortaya çıkar: karasal kutupsal (cP), denizel kutupsal (mP), karasal tropikal (cT) ve denizel tropikal (mT). Bunlara ek olarak Arktik (A) ve Ekvatoral (E) kütleler de tanımlanır. Her tipin karakteristik sıcaklık ve nem profili farklıdır: mT kütle sıcak ve nemli olup sis riski taşırken, cP kütle soğuk ve kuru olup ani soğuma ve güçlü rüzgâr üretebilir.",
-        image: airMassImage,
-        imageAlt: "Source regions of the main air masses",
       },
       {
         title: "Kütle Dönüşümü ve Stabilite Etkisi",
@@ -182,8 +165,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tanımlar ve Vektörel İlişki",
         content:
           "Gerçek rüzgâr (True Wind – TW), sabit bir referans noktasından ölçülen rüzgârdır; yönü ve hızı geminin hareketinden bağımsızdır. Görünen rüzgâr (Apparent Wind – AW), geminin kendi hareket vektörü ile gerçek rüzgâr vektörünün bileşenidir. Gemi rüzgâra doğru seyrettiğinde görünen rüzgâr hızı gerçek rüzgârdan fazla, rüzgâr arkadan estiğinde ise düşük ölçülür. Vektörel çözümleme için geminin seyir hızı (STW veya SOG) ve başı (heading) ile görünen rüzgâr açısı ve hızı kullanılarak gerçek rüzgâr hesaplanır. Modern gemilerde bu hesaplama otomatik yapılır, ancak sensör arızası durumunda manuel hesaplama bilgisi hayati önem taşır.",
-        image: windDriftImage,
-        imageAlt: "Vector relationship between true wind, apparent wind and the ship's course",
       },
       {
         title: "Operasyonel Önem",
@@ -212,22 +193,16 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Skalanın Yapısı",
         content:
           "Sir Francis Beaufort tarafından 1805'te geliştirilen skala, 0 (sakin) ile 12 (kasırga) arasında 13 kademeden oluşur. Her kademe belirli bir rüzgâr hızı aralığına ve deniz yüzeyi belirtisine karşılık gelir. Örneğin Force 4 (11–16 knot) için 'küçük dalgalar belirginleşir, beyaz köpükler oluşmaya başlar' tanımı yapılır. Force 7 (28–33 knot) için 'deniz kabarmaya başlar, rüzgâr yönündeki köpük çizgileri belirginleşir.' Force 10 (48–55 knot) ve üzeri fırtına koşullarında deniz yüzeyi beyaz köpükle kaplanır ve görüş yağışla sınırlanır.",
-        image: beaufort4Image,
-        imageAlt: "Sea state at Beaufort force 4 — small waves with frequent white horses",
       },
       {
         title: "Deniz Durumu (Sea State) ile İlişki",
         content:
           "Beaufort skalası doğrudan rüzgâr hızını sınıflar; ancak dalga yüksekliği rüzgâr hızına ek olarak rüzgârın esme süresine (duration) ve açık deniz mesafesine (fetch) bağlıdır. Bu nedenle Force 6 rüzgâr farklı bölgelerde çok farklı dalga yükseklikleri üretebilir. Douglas deniz durumu skalası dalga yüksekliğini ayrıca sınıflandırır ve Beaufort ile birlikte kullanılır. Vardiya kayıtlarında her iki skalanın da tutarlı şekilde kaydedilmesi, trend analizi ve rota değerlendirmesi için gereklidir.",
-        image: beaufort8Image,
-        imageAlt: "Sea state at Beaufort force 8 — moderately high waves with spindrift",
       },
       {
         title: "Köprüüstü Kullanımı",
         content:
           "Beaufort skalası, vardiya defteri girişlerinde, hava raporlarında ve kaptan brifinglerinde standart referans olarak kullanılır. Özellikle gece ve yağışlı koşullarda görsel deniz yüzeyi değerlendirmesi zorlaşır; bu durumlarda dalga ses düzeyi, sıçrama karakteri ve gemi hareketleri gibi dolaylı göstergeler yardımcı olur. Güverte operasyon limitleri (crane operasyonu, pilot transferi, supply boat yaklaşması) genellikle Beaufort kademesine referans verilerek belirlenir. Tutarsız Beaufort kayıtları, önceki vardiyalarla karşılaştırmayı ve trend takibini bozar; bu nedenle standardize gözlem eğitimi önemlidir.",
-        image: beaufort11Image,
-        imageAlt: "Sea state at Beaufort force 11 — exceptionally high waves and reduced visibility",
       },
     ],
     keyPoints: [
@@ -247,8 +222,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tanımlar",
         content:
           "Dalga yüksekliği (H), dalga çukurundan tepesine olan dikey mesafedir. Deniz durumu değerlendirmesinde kullanılan anlamlı dalga yüksekliği (Hs veya H₁/₃), gözlenen en yüksek dalgaların üçte birinin ortalamasıdır ve hem gözlem hem uydu/model verileriyle ifade edilir. Dalga periyodu (T), ardışık iki dalga tepesinin aynı noktadan geçme süresidir (saniye cinsinden). Dalgaboyu (λ) ve dalga hızı (c) periyottan türetilir: derin suda λ ≈ 1.56 × T² (metre) ve c ≈ 1.56 × T (m/s).",
-        image: "/diagrams/meteorology/dalga-parametreleri.svg",
-        imageAlt: "Wave height, wavelength and period defined on a wave profile",
       },
       {
         title: "Gemi Hareketlerine Etkisi",
@@ -278,8 +251,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Wind Sea Karakteristiği",
         content:
           "Wind sea, yerel rüzgâr tarafından aktif olarak oluşturulan dalgalardır. Rüzgâr esiş yönüyle hemen hemen aynı doğrultuda ilerler. Periyodu genellikle kısa (3–8 s), formu düzensiz ve dik eğimlidir. Rüzgâr durduğunda veya yön değiştirdiğinde wind sea hızla sönümlenir. Wind sea'nin dalga yüksekliği; rüzgâr hızı, esiş süresi ve fetch mesafesi tarafından belirlenir.",
-        image: "/diagrams/meteorology/dalga-parametreleri.svg",
-        imageAlt: "Short steep wind sea compared with long regular swell",
       },
       {
         title: "Swell Karakteristiği",
@@ -446,8 +417,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yarım Daire Tanımı",
         content:
           "Kuzey Yarım Kürede siklonun hareket yönünün sağ tarafı 'tehlikeli yarım daire' (dangerous semicircle), sol tarafı ise 'seyir yapılabilir yarım daire' (navigable semicircle) olarak adlandırılır. Güney Yarım Kürede bu durum tersine döner. Tehlikeli yarım dairede, siklonun hareket hızı (translasyon) dönel rüzgâra eklenerek toplam rüzgâr hızı artar. Ayrıca bu yarım dairede bulunan bir gemi, rüzgâr etkisiyle siklonun yoluna doğru sürüklenir. Seyir yapılabilir yarım dairede ise translasyon hızı dönel rüzgârdan çıkarılır, net rüzgâr hızı nispeten düşüktür ve rüzgâr gemiyi siklon yolundan uzaklaştırma eğilimindedir.",
-        image: "/diagrams/meteorology/tehlikeli-yarim-daire.svg",
-        imageAlt: "Dangerous and navigable semicircles either side of a tropical cyclone track",
       },
       {
         title: "Konum Belirleme Yöntemleri",
@@ -513,8 +482,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yarım Daireye Göre Manevra",
         content:
           "Tehlikeli yarım dairede bulunan gemi, rüzgârı sancak baş omuzluğuna alarak mümkün olan en yüksek emniyetli hızla siklondan uzaklaşır. Seyir yapılabilir yarım dairede ise rüzgâr kıç omuzluktan alınarak siklonun gerisine geçilir. Siklonun doğrudan yolunda (path) bulunan gemi, hızla yolun dışına çıkmayı hedefler. Tüm bu manevralarda deniz durumu, yük emniyeti ve makine kapasitesi sınırlamalarını göz önünde bulundurmak gerekir; aşırı hızla seyir, slamming ve yapısal hasara yol açabilir.",
-        image: "/diagrams/meteorology/tehlikeli-yarim-daire.svg",
-        imageAlt: "Avoiding action based on which semicircle of the storm the ship is in",
       },
       {
         title: "BRM ve Ekip Koordinasyonu",
@@ -616,8 +583,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Ses İşaretleri ve Ek Tedbirler",
         content:
           "COLREG Kural 35 uyarınca kısıtlı görüşte ses işaretleri zorunludur. Makine ile seyir halindeki gemi 2 dakikada bir uzun düdük; yol üzerinde makinesi çalışır ancak yol yapmayan gemi 2 dakikada bir art arda iki uzun düdük; dümeni tutmayan gemi, sürüklenen gemi, yelkenlide ve balıkçıda art arda bir uzun iki kısa düdük verilir. Demirdeki gemi her 1 dakikada çan çalar. Ses işaretlerinin zamanında başlatılması hukuki yükümlülüktür. Ek olarak, tüm seyir ışıkları yakılır, AIS durumu kontrol edilir ve uyarı mesajları yayınlanabilir.",
-        image: "/diagrams/navigation/ses-isaretleri.svg",
-        imageAlt: "Sound signals prescribed for restricted visibility",
       },
     ],
     keyPoints: [
@@ -637,8 +602,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Radar Kullanımı ve Ayarlar",
         content:
           "Kısıtlı görüşte radar, birincil hedef tespit aracıdır. Gain, sea clutter ve rain clutter kontrolleri mevcut koşullara göre optimize edilmelidir. Aşırı gain küçük hedeflerin clutter içinde kaybolmasına, yetersiz gain ise hedef kaçırılmasına neden olur. Her iki menzil (S-band ve X-band mevcutsa) birlikte kullanılmalıdır: X-band küçük hedefleri daha iyi çözerken, S-band yağış clutter'ından daha az etkilenir. ARPA (Automatic Radar Plotting Aid) ile tüm hedefler için CPA ve TCPA hesaplanır; kritik eşik değerleri (genellikle CPA < 1–2 NM) alarm olarak ayarlanır.",
-        image: radarDisplayImage,
-        imageAlt: "Radar display with targets and range rings",
       },
       {
         title: "Radar Kör Sektörleri ve Sınırlamalar",
@@ -649,8 +612,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Ses İşaretleri Detayı",
         content:
           "COLREG Kural 33 ve 35, ses işaretlerinin detaylarını düzenler. Makineyle seyir halindeki gemi 2 dakikada bir uzun düdük verir (4–6 saniye). Durağan ancak makinesi çalışan gemi art arda iki uzun düdük verir. Dümeni tutmayan, manevra kabiliyeti kısıtlı, draft'ından dolayı kısıtlı, yelkenli ve balıkçı gemileri bir uzun ve iki kısa düdük verir. Çekilen gemi (mevcutsa) çeken geminin hemen ardından bir uzun üç kısa düdük verir. Demirdeki gemi baş tarafında hızlı çan çalar (5 saniye, dakikada bir); 100 m'den uzun gemilerde ek olarak kıç tarafında gong çalınır. Bu işaretlerin doğru ve zamanında verilmesi hem emniyet hem de hukuki sorumluluk açısından zorunludur.",
-        image: "/diagrams/navigation/ses-isaretleri.svg",
-        imageAlt: "Sound signal patterns and their meanings",
       },
     ],
     keyPoints: [
@@ -706,8 +667,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Vektörel Çözümleme",
         content:
           "Akıntılı seyirde CTS (course to steer) hesaplaması vektörel olarak yapılır. İstenen iz rotası (track), akıntı vektörü ve gemi hız vektörü bir üçgen oluşturur. Akıntı yönü ve hızı bilinen veya ölçülen değer olarak alınır; istenen iz üzerinde kalabilmek için dümen kursuna uygulanacak düzeltme bu üçgenden çıkarılır. Leeway (rüzgâr kayması) ayrı bir bileşendir ve akıntıyla karıştırılmamalıdır; özellikle yüksek freeboard'lu gemilerde leeway etkisi belirgin olabilir.",
-        image: tideCurrentImage,
-        imageAlt: "Set and drift resolved as a vector on the ship's course",
       },
       {
         title: "Operasyonel Uygulama",
@@ -732,8 +691,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "ETA Hesabında Akıntı Etkisi",
         content:
           "Geminin STW'si (speed through water) sabit tutulsa bile, karşı akıntı SOG'u (speed over ground) düşürür. Örneğin 14 knot STW ile seyreden ve 2 knot karşı akıntıya maruz kalan geminin SOG'u yaklaşık 12 knot olur. 1000 deniz millik bir seferde bu fark yaklaşık 12 saatlik ETA gecikmesine dönüşür. Sefer planı hazırlanırken, rota boyunca beklenen akıntı değerleri segmentlere bölünerek her segment için ayrı SOG hesaplanmalıdır. Güncel pilot chart verileri ve oşinografik tahminler kullanılarak en iyi, beklenen ve en kötü senaryo ETA'ları hesaplanır.",
-        image: "/diagrams/navigation/eta-diyagrami.svg",
-        imageAlt: "Effect of current on speed made good and the resulting ETA",
       },
       {
         title: "Yakıt Tüketimi Üzerine Etkisi",
@@ -794,8 +751,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Temel Semboller",
         content:
           "İzobarlar: sürekli eğriler, genellikle 4 hPa aralıkla, basınç değerleri üzerinde yazılıdır. Alçak basınç merkezi 'L' veya 'A' (Alçak), yüksek basınç merkezi 'H' veya 'Y' (Yüksek) ile gösterilir. Cepheler renkli çizgilerle belirtilir: soğuk cephe mavi üçgenlerle, sıcak cephe kırmızı yarım dairelerle, oklüde cephe her ikisinin birleşimiyle, stasyoner cephe karşılıklı üçgen ve yarım dairelerle gösterilir. Trough (oluk) kesik çizgiyle, ridge (sırt) zigzag çizgiyle temsil edilir.",
-        image: "/diagrams/meteorology/sinoptik-sembol-lejanti.svg",
-        imageAlt: "Synoptic chart symbols: isobars, high and low centres, fronts, trough and ridge",
       },
       {
         title: "Rüzgâr Barb'ları ve İstasyon Modeli",
@@ -867,8 +822,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Deniz Durumu Tahmini",
         content:
           "Rüzgâr hızı belirlendikten sonra, rüzgârın esme süresi ve fetch mesafesi değerlendirilerek dalga gelişimi tahmin edilir. Tam gelişmiş denizde dalga yüksekliği yalnızca rüzgâr hızına bağlıdır. Ancak çoğu durumda deniz tam gelişmemiştir; fetch veya süre sınırlıdır. Pratik amaçla, rüzgâr hızı, esiş süresi ve fetch'in üçünden en küçüğü dalga gelişimini sınırlayan faktördür. Swell bileşeni bu hesaplamanın dışındadır ve ayrıca değerlendirilmelidir. Deniz durumu tahmini yapılırken yerel topografik etkiler (ada, burun, sığ su) dikkate alınmalıdır.",
-        image: "/diagrams/meteorology/dalga-parametreleri.svg",
-        imageAlt: "Wave height, period and wavelength used when estimating sea state",
       },
       {
         title: "Gözlem ile Doğrulama",
@@ -895,8 +848,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Risk Tanımlama ve Sınıflandırma",
         content:
           "Rota üzerinde meteorolojik risk değerlendirmesi, olasılık ve etki matrisine dayalı olarak yapılır. Her rota segmenti için beklenen hava koşulları, dalga yüksekliği, görüş, rüzgâr hızı ve akıntı parametreleri değerlendirilir. Risk seviyesi düşük (yeşil), orta (sarı), yüksek (kırmızı) olarak kodlanır. Tetikleyici limitler önceden tanımlanır: örneğin Force 7 üzeri rüzgâr, 4 m üzeri dalga yüksekliği veya 2 NM altı görüş gibi eşik değerler belirlenir.",
-        image: weatherSystemsImage,
-        imageAlt: "Weather systems marked along a planned route",
       },
       {
         title: "Görsel İşaretleme ve İletişim",
@@ -925,8 +876,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlike Mesajları (SOLAS V/31)",
         content:
           "Tehlikeli buz, tehlikeli terk edilmiş gemi (derelict) veya seyre doğrudan tehlike oluşturan başka bir engelle karşılaşan; tropikal fırtınaya rastlayan; üst yapılarda ağır buzlanmaya yol açan, fırtına şiddetinde rüzgârla birlikte donma altı hava sıcaklığı yaşayan; ya da hakkında fırtına ihbarı alınmamış 10 Bofor ve üzeri rüzgârla karşılaşan her geminin kaptanı, bu bilgiyi elindeki tüm imkânlarla yakındaki gemilere ve ilk ulaşabildiği yetkili makama iletmekle yükümlüdür.",
-        image: "/diagrams/meteorology/solas-v-tehlike-mesajlari.svg",
-        imageAlt: "SOLAS V/31 dangers to be reported and the content of a V/32 tropical storm message",
         bulletPoints: [
           "Tehlikeli buz / buzdağı.",
           "Tehlikeli terk edilmiş gemi (derelict) veya seyir engeli.",
@@ -981,8 +930,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Yükseklik Katları ve Kategoriler",
         content:
           "Bulutlar taban yüksekliğine göre üç kata ayrılır; orta enlemlerde yüksek bulutlar 6–13 km (buz kristali), orta seviye bulutlar 2–7 km (su damlacığı ve buz karışımı), alçak bulutlar 0–2 km (su damlacığı) bandında bulunur. Cumulus ve cumulonimbus ise tabanı alçak katta olmasına rağmen dikeyde birkaç katı birden aşabildiğinden ayrı bir 'dikey gelişimli' kategori olarak ele alınır; olgun bir Cb tropopoza (12 km ve üzeri) kadar uzanabilir. Synoptik hava raporlarında ve VOS gözlemlerinde bulutlar bu katlara karşılık gelen CH (yüksek), CM (orta) ve CL (alçak) kod rakamlarıyla raporlanır. Nimbostratus orta katta sınıflandırılır ancak tabanı çoğu zaman alçak kata sarkar.",
-        image: cirrostratusImage,
-        imageAlt: "Cirrostratus as a thin high-level veil",
       },
       {
         title: "Köprüüstünde Bulut Gözlemi ve Raporlama",
@@ -1021,8 +968,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Cirrostratus (Cs) — Hale Yapan Örtü",
         content:
           "Cirrostratus, gökyüzünü süt beyazı ince bir tül gibi kaplayan buz kristali örtüsüdür. En ayırt edici özelliği, güneş veya ay etrafında 22 derecelik hale (halo) oluşturmasıdır; ışık, altıgen buz kristallerinde kırılarak bu halkayı üretir. Hale görülmesi klasik bir kötü hava işaretidir: cirrostratus örtüsü tipik olarak sıcak cephenin 500–1000 km önünde uzanır ve genellikle 12–36 saat içinde altostratus ve ardından nimbostratus yağışının geleceğini haber verir. 'Güneş halesi, fırtına habercisi' deyişi bu mekanizmaya dayanır. Cirrostratus kalınlaşıp alçalıyorsa cephe yaklaşıyor demektir; barometre eğilimi ile birlikte doğrulanmalıdır.",
-        image: cirrostratusImage,
-        imageAlt: "A thin cirrostratus veil forming a halo around the sun",
       },
       {
         title: "Denizci Yorumu: Yüksek Bulut Sekansı",
@@ -1061,8 +1006,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Nimbostratus (Ns) — Sürekli Yağış Bulutu",
         content:
           "Nimbostratus, koyu gri, kalın ve şekilsiz bir yağış bulutudur; tabanı yağışla birlikte 2 km'nin altına iner ve güneşi tamamen kapatır. Adındaki 'nimbus' kökü yağış getirdiğini söyler: saatlerce, bazen bir gün boyunca süren orta şiddette ve sürekli yağmur veya kar üretir. Cb sağanağından farkı yağışın karakteridir: Ns yağışı süreklidir ve ani rüzgâr değişimi içermez, Cb yağışı ise kısa, şiddetli ve gustludur. Denizci için Ns'nin asıl riski görüştür: yağış ve bulut tabanının alçalması görüşü 1–3 mile düşürebilir; bulut altında oluşan parçalı stratus fractus (scud) bulutları görüşü daha da kısıtlar. Ns hakimiyetinde kısıtlı görüş prosedürlerine hazır olunmalıdır.",
-        image: nimbostratusImage,
-        imageAlt: "A dark grey nimbostratus layer giving continuous precipitation",
       },
       {
         title: "Operasyonel Değerlendirme",
@@ -1087,22 +1030,16 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Stratus (St) — Düz Gri Tabaka",
         content:
           "Stratus, gökyüzünü alçak, düz ve şekilsiz gri bir tabaka halinde kaplayan buluttur; tabanı çoğu zaman 500 metrenin altındadır ve yüzeye değdiğinde adı sise dönüşür — sis, yerdeki stratus'tan başka bir şey değildir. Deniz üzerinde en sık, sıcak ve nemli havanın soğuk deniz yüzeyi üzerine akmasıyla (adveksiyon) oluşur; bu nedenle adveksiyon sisi ile aynı koşulların ürünüdür. Yağış olarak yalnızca çise (drizzle) üretebilir. Denizci için kritik göstergedir: stratus tabanının alçalması sise geçişin habercisidir; görüş sürekli izlenmeli, sis işaretleri ve radar gözcülüğü hazır bulundurulmalıdır. Stabil hava kütlesinin (sıcak kütlenin soğuk deniz üzerinde soğuması) tipik bulutudur.",
-        image: stratusImage,
-        imageAlt: "Stratus as a low, featureless grey layer",
       },
       {
         title: "Stratocumulus (Sc) — Yumrulu Tabaka",
         content:
           "Stratocumulus, gri-beyaz büyük yumrular ve merdaneler halinde, araları yer yer açık bir alçak tabaka bulutudur; dünyada en yaygın görülen bulut cinsidir ve özellikle okyanusların yüksek basınç bölgelerinde geniş alanlar kaplar. Genellikle kötü hava getirmez; en fazla hafif çise veya kısa süreli zayıf sağanak üretir. Meteorolojik anlamı gizlidir: Sc tabakası çoğu zaman bir sıcaklık inversiyonunun (yükselmeyi durduran kapak) altında oluşur. Bu kapak konveksiyonu bastırdığından hava kararlıdır; ancak aynı inversiyon nem ve pusun alt katmanda hapsolmasına yol açar, görüş orta seviyede kalır. Cumulus bulutlarının akşam saatlerinde yayılıp Sc'ye dönüşmesi normal ve zararsız bir günlük döngüdür.",
-        image: stratocumulusImage,
-        imageAlt: "A lumpy grey-and-white stratocumulus layer",
       },
       {
         title: "Stratus Fractus — Parçalanmış Kötü Hava Bulutları",
         content:
           "Fractus, stratus veya cumulus'un rüzgârla yırtılmış, düzensiz parçalar halindeki türüdür. Kötü hava sırasında Ns veya Cb tabanının altında hızla sürüklenen bu alçak parçalara denizcilikte 'scud' denir. Kendileri tehlike üretmez ama iki şeyi gösterir: alt katmanın neme doyduğunu ve yüzey rüzgârının kuvvetli olduğunu. Yağış bulutunun altında scud görülmesi, bulut tabanının pratikte daha da alçak olduğu ve görüşün aniden düşebileceği anlamına gelir. Fırtına sonrasında gökyüzünde kalan fractus parçaları ise sistemin geçtiğini ve havanın toparlanmakta olduğunu gösterir.",
-        image: fractusImage,
-        imageAlt: "Low fractus (scud) clouds torn apart by the wind",
       },
       {
         title: "Görüş ve Seyir Etkisi",
@@ -1134,15 +1071,11 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Cumulonimbus (Cb) — Oraj Bulutu",
         content:
           "Cumulonimbus, tabanı deniz seviyesine yakın, tepesi tropopoza (12 km ve üzeri) ulaşabilen dev konvektif buluttur; tepesi buzlaşarak yassılaşır ve karakteristik örs (anvil) biçimini alır. Denizcinin karşılaşabileceği en tehlikeli buluttur ve tüm şiddetli hava olaylarını tek başına üretebilir: gök gürültüsü ve yıldırım, ani ve şiddetli sağanak, dolu, 50 knotu aşabilen gust'lar, mikropatlama (downburst) ve hortum/su hortumu. En kritik tehlike gust front'tur: Cb içindeki soğuk iniş akıntısı (downdraft) yüzeye çarpıp yayılır ve bulutun 10–15 mil önünde, yağış başlamadan önce ani rüzgâr şifti ve şiddetlenmesi yaratır. Rüzgâr yönü Cb yaklaşırken 180 dereceye kadar dönebilir. Cb'ler tek hücre halinde veya soğuk cephe önünde squall hattı olarak organize biçimde gelir.",
-        image: cumulonimbusImage,
-        imageAlt: "A mature cumulonimbus (thunderstorm cloud) with an anvil top",
       },
       {
         title: "Cb Yaklaşırken Köprüüstü Tedbirleri",
         content:
           "Cb veya squall hattı yaklaşırken tedbirler yağış değil rüzgâr eksenlidir; çünkü ilk darbe gust front ile gelir. Radar, yağış hücrelerinin tespiti ve hareket vektörünün çıkarılması için etkin kullanılır (hücreler radarda parlak, yüksek yoğunluklu eko verir). Güvertedeki personel içeri alınır, bumbalar/kreynler emniyete alınır, açık ambar kapakları kapatılır. Rüzgârın aniden yön değiştirip şiddetleneceği varsayılarak geminin rüzgâr üstü/altı durumu değerlendirilir; demirde ise demir taraması riski için makine hazır bulundurulur. Yıldırım riski nedeniyle açık güvertede anten ve yüksek nokta çalışmaları durdurulur. Küçük hücreler görsel ve radar takibiyle rotadan taviz vermeden atlatılabilir; organize squall hattı ise hattın zayıf noktasından, mümkünse dik açıyla geçilir.",
-        image: mammatusImage,
-        imageAlt: "Mammatus beneath a Cb anvil, indicating severe turbulence",
       },
     ],
     keyPoints: [
@@ -1162,8 +1095,6 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Mammatus — Torba Bulutlar",
         content:
           "Mammatus, bulut tabanından aşağı sarkan torba veya kese biçimli çıkıntılardır; en çarpıcı haliyle cumulonimbus örsünün altında görülür. Normal bulut tabanları yükselen havayla düz biçimlenirken, mammatus batan soğuk ve nemli havanın ürünüdür — yani atmosferin o katmanında güçlü iniş akıntıları ve şiddetli türbülans vardır. Mammatus görülmesi çoğu zaman yakınlarda olgun, güçlü bir Cb hücresi olduğu anlamına gelir; fırtınanın önünde de arkasında da görülebilir. Denizci için mesaj: bölgedeki konvektif sistem şiddetlidir, ani gust ve rüzgâr şifti riski yüksektir; sistem geçmiş görünse bile tedbir korunmalıdır.",
-        image: mammatusImage,
-        imageAlt: "Pouch-shaped mammatus hanging from the cloud base",
       },
       {
         title: "Arcus (Shelf Cloud) — Squall Hattının Ön Duvarı",

@@ -67,12 +67,6 @@ const MANIFEST = [
   // ── Basınç, izobar, hava kütlesi ──────────────────────────────────────────
   { commons: "High and low pressure N and S.svg", file: "pressure-centres-circulation.svg" },
   { commons: "Geostrophic Wind Diagram.svg", file: "geostrophic-wind.svg" },
-  { commons: "Airmassesorigin.png", file: "air-mass-source-regions.png", thumbWidth: 600 },
-
-  // ── Rüzgâr / deniz durumu ─────────────────────────────────────────────────
-  { commons: "Beaufort scale 4.jpg", file: "beaufort-force-4.jpg", thumbWidth: 800 },
-  { commons: "Beaufort scale 8.jpg", file: "beaufort-force-8.jpg", thumbWidth: 800 },
-  { commons: "Beaufort scale 11.jpg", file: "beaufort-force-11.jpg", thumbWidth: 800 },
 
   // ── Tropik siklon ─────────────────────────────────────────────────────────
   { commons: "Yutu 2018-10-28 0515Z (alternate).jpg", file: "cyclone-eye-satellite.jpg", thumbWidth: 800 },
@@ -97,9 +91,6 @@ const MANIFEST = [
   },
 
   // ══ Diğer dersler → src/assets/lessons/ ═══════════════════════════════════
-  // Haberleşme
-  { dir: "lessons", commons: "Sbeacons.jpg", file: "epirb-sart.jpg", thumbWidth: 720 },
-  { dir: "lessons", commons: "ICS-flags.png", file: "signal-flags-chart.png", thumbWidth: 540 },
   // Gemicilik
   {
     dir: "lessons",
@@ -115,21 +106,7 @@ const MANIFEST = [
   },
   // Yük
   { dir: "lessons", commons: "LNG-carrier.Galea.wmt.jpg", file: "lng-carrier.jpg", thumbWidth: 1000 },
-  // Çevre
-  {
-    dir: "lessons",
-    commons: "Oil spill drill 140408-N-WF272-031.jpg",
-    file: "oil-spill-response.jpg",
-    thumbWidth: 1000,
-  },
   // Seyir
-  {
-    dir: "lessons",
-    commons:
-      "The view aft from a Royal Navy destroyer on an escort patrol in heavy seas in the Atlantic, October 1941. A5677.jpg",
-    file: "heavy-weather.jpg",
-    thumbWidth: 1000,
-  },
   {
     dir: "lessons",
     commons: "Icebreakers Louis S. St-Laurent and Healy in the Arctic Ocean.jpg",
@@ -418,14 +395,8 @@ const CREDITS_FOOTER = {
   meteorology: [
     "## Elle çizilen diyagramlar",
     "",
-    "Serbest lisanslı uygun bir karşılığı bulunmayan konular için diyagramlar",
-    "depo içinde `public/diagrams/meteorology/` altında çizilmiştir:",
-    "",
-    "| Dosya | Konu |",
-    "| --- | --- |",
-    "| `sinoptik-sembol-lejanti.svg` | İzobar, alçak/yüksek merkez, dört cephe tipi, trough ve ridge sembolleri (NWS sembol geometrisi esas alındı) |",
-    "| `tehlikeli-yarim-daire.svg` | Tropik siklonun tehlikeli ve seyredilebilir yarım daireleri |",
-    "| `dalga-parametreleri.svg` | Dalga yüksekliği/boyu/periyodu ve wind sea – swell ayrımı |",
+    "Kaldırıldı. Kod ile çizilen diyagramlar (eski `public/diagrams/`) uygulamadan",
+    "çıkarıldı; yalnızca kaynağı ve lisansı belli gerçek görseller kullanılır.",
   ],
 };
 

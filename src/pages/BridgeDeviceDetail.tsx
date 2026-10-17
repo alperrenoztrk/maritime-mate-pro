@@ -61,41 +61,31 @@ export default function BridgeDeviceDetailPage() {
           <SectionList title="Integration and workflow" items={device.integration} />
         </div>
 
-        <div className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p className="text-micro font-semibold uppercase tracking-[0.2em] text-primary/80">Sample images</p>
-              <h2 className="text-lg font-bold text-foreground">{device.name} bridge perspectives</h2>
-            </div>
-            <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-              {device.images.length} photo
-            </span>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            {device.images.map((url, index) => (
-              <figure
-                key={url}
-                className="group overflow-hidden rounded-xl border border-border/60 bg-gradient-to-br from-background/80 to-card shadow-sm"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <LessonImage
-                    src={url}
-                    alt={`${device.name} sample image ${index + 1}`}
-                    className="h-full w-full object-cover transition duration-sheet group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60" />
-                </div>
-                <figcaption className="flex items-center justify-between px-3 py-2 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Bridge detail</span>
-                  <span className="rounded-md bg-primary/10 px-2 py-1 text-micro font-semibold uppercase tracking-wide text-primary">
+        {/* Only real photos of this exact device are listed; devices without one show no photo block. */}
+        {device.images.length > 0 && (
+          <div className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm">
+            <p className="text-micro font-semibold uppercase tracking-[0.2em] text-primary/80">Photo</p>
+            <div className={device.images.length > 1 ? "grid gap-3 sm:grid-cols-2" : "grid gap-3"}>
+              {device.images.map((url) => (
+                <figure
+                  key={url}
+                  className="overflow-hidden rounded-xl border border-border/60 bg-muted/40 shadow-sm"
+                >
+                  <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden">
+                    <LessonImage
+                      src={url}
+                      alt={device.name}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <figcaption className="px-3 py-2 text-xs font-medium text-foreground">
                     {device.name}
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4 text-sm text-foreground shadow-inner sm:p-6">
           <p className="mb-2 text-base font-semibold text-primary">Why is it important?</p>
