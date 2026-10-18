@@ -1,0 +1,11 @@
+{
+ "Özel alanda 'normal' kural geçmez": {
+  "en": "The 'normal' rule does not apply in a Special Area",
+  "de": "In einem Sondergebiet gilt die ‚normale‘ Regel nicht",
+  "fr": "En zone spéciale, la règle « normale » ne s'applique pas",
+  "es": "En una zona especial no rige la regla «normal»",
+  "it": "In una zona speciale la regola «normale» non vale",
+  "pt": "Em área especial a regra «normal» não se aplica",
+  "nl": "In een bijzonder gebied geldt de ‘normale’ regel niet"
+ }
+}

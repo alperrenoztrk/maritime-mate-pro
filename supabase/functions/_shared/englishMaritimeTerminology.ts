@@ -417,6 +417,11 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-140', label: 'Düşey ivme must be vertical acceleration', source: /d[üu][şs]ey\s*ivme/iu, wrong: /\bdusey\s+acceleration\b/giu, replacement: asTerm('vertical acceleration') },
   { id: 'T-141', label: 'Dalıp çıkma must be heave', source: /dal[ıi]p\s*[çc][ıi]kma/iu, wrong: /\bdiving\s+amplitude\b/giu, replacement: asTerm('heave amplitude') },
   { id: 'T-142', label: 'cargo ton must stay a tonne', source: /\bton\b/iu, wrong: /\btones?\b/giu, replacement: asPluralTerm('tonne', 'tonnes') },
+  { id: 'T-143', label: 'MARPOL özel alan must be special area', source: /^(?![\s\S]*(?:kamara|kişisel|mahremiyet|özel hayat|özel eşya|privacy))[\s\S]*özel\s+(?:alan|bölge)/iu, wrong: /\bprivate\s+(?:areas?|zones?|spaces?|domains?)\b/giu, replacement: asPluralTerm('special area', 'special areas') },
+  { id: 'T-144', label: 'mil (distance) must be miles, not mils', source: /\bmil(?:den|de|e|lik)?\b/iu, wrong: /(?<=\d\s?)mils\b/giu, replacement: asTerm('miles') },
+  { id: 'T-145', label: 'IMO Res. (resolution) must not become a figure caption', source: /\bRes\.\s*(?:[A-Z]|\d|—|–)/u, wrong: /\b(?:Pic|Fig|Photo)\.(?=\s*(?:[A-Z]|\d|—|–))/gu, replacement: () => 'Res.' },
+  { id: 'T-146', label: 'muster (list, station) must not become customer', source: /\bmuster/iu, wrong: /\bcustomers?\b/giu, replacement: asPluralTerm('muster', 'musters') },
+  { id: 'T-147', label: 'Emniyet beside SÉCURITÉ is safety, not security', source: /^(?=[\s\S]*emniyet)(?=[\s\S]*S[ÉE]CURIT[ÉE])/iu, wrong: /\bsecurity\b/giu, replacement: asTerm('safety') },
 ];
 
 // Technical/formula strings that were incorrectly classified as language-

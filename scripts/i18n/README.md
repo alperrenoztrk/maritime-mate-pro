@@ -89,6 +89,19 @@ context-dependent Turkish gets mistranslated ("Demir" → "iron" instead of
   deterministic per-language terminology, applied at build time AND at runtime
   (the runtime consults it before the shipped dictionary, see
   `resolveLocally` in `src/contexts/LanguageContext.tsx`).
+- `verified/*.json` (loaded by `verified-corrections.mjs`) — pages checked by
+  hand (knots, sound signals, buoyage texts, terminology fixes). Languages a
+  pack does not list get its checked English unless the entry says
+  `"fill": false`. `i18n:fix` also inserts verified keys a dictionary lacks.
+- `sense-error-rules.mjs` — word-sense errors that machine translation makes
+  with maritime terms ("bağ" → vineyard, "demir" → iron, "kıç" → a body part,
+  a whistle "blast" → explosion, "draft survey" → document draft, a "cardinal"
+  mark → the bird or the church title, "port side" → harbour) and Turkish
+  words left in translations. A rule fires only when the source uses the term
+  in its maritime sense and the translation shows the everyday sense.
+  `i18n:fix` replaces such an entry with the English text; report with
+  `npm run i18n:scan-senses` (`-- --samples=5` for examples, `-- --check` to
+  fail on any hit).
 
 ## Notes
 

@@ -12,6 +12,10 @@
  *      and ALL-CAPS styling of the Turkish source label is preserved.
  *   3. Inline maritime corrections (applyMaritimeCorrections) — fixes leftover
  *      Turkish terms / known-bad tokens inside longer translated strings.
+ *   4. Word-sense errors and Turkish leftovers (sense-error-rules.mjs): a machine
+ *      translation that uses the everyday sense of a maritime term ("vineyard"
+ *      for bağ, "iron" for demir, "explosion" for a whistle blast) is replaced
+ *      with the English text.
  *
  * Run whenever the glossary or the corrections file changes:
  *   npm run i18n:fix
@@ -30,6 +34,7 @@ import {
 } from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 import { VERIFIED_KEYS } from './verified-corrections.mjs';
+import { findSenseErrors, findTranslationDefects, findTurkishLeftovers } from './sense-error-rules.mjs';
 import { repairEnglishMaritimeTerminology } from '../../src/utils/englishMaritimeTerminology.ts';
 
 const repoRoot = process.cwd();
@@ -40,8 +45,22 @@ const onlyLangs = langArg ? langArg.slice('--lang='.length).split(',').map((s) =
 const files = fs
   .readdirSync(OUT_DIR)
   .filter((f) => f.endsWith('.json'))
-  .filter((f) => !onlyLangs || onlyLangs.includes(f.replace(/\.json$/, '')));
+  .filter((f) => !onlyLangs || onlyLangs.includes(f.replace(/\.json$/, '')))
+  // English first: the other languages fall back to its (already fixed) text.
+  .sort((a, b) => (a === 'en.json' ? -1 : b === 'en.json' ? 1 : a.localeCompare(b)));
 let grandTotal = 0;
+let grandFallbacks = 0;
+let EN = JSON.parse(fs.readFileSync(path.join(OUT_DIR, 'en.json'), 'utf8'));
+
+// An English entry is a safe fallback when it has no wrong-sense hit and is
+// not itself left in Turkish.
+const englishFallback = (key) => {
+  const text = EN[key];
+  if (typeof text !== 'string' || !text.trim()) return undefined;
+  if (findSenseErrors(key, text, 'en').length) return undefined;
+  if (findTurkishLeftovers(text).length > 3) return undefined;
+  return text;
+};
 
 for (const file of files) {
   const lang = file.replace(/\.json$/, '');
@@ -49,6 +68,7 @@ for (const file of files) {
   const dict = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
   let changed = 0;
+  let fallbacks = 0;
   // Verified keys a dictionary does not have yet (new or rewritten source
   // strings) are added; without this they would go to the live translator.
   for (const key of VERIFIED_KEYS) {
@@ -91,6 +111,16 @@ for (const file of files) {
 
     if (lang === 'en') next = repairEnglishMaritimeTerminology(key, next);
 
+    // 4. Word-sense errors and Turkish leftovers (scripts/i18n/sense-error-rules.mjs)
+    // in machine output: show the English text instead of a wrong translation.
+    if (lang !== 'en' && correction === undefined && findTranslationDefects(key, next, lang, EN[key]).length) {
+      const fallback = englishFallback(key);
+      if (fallback !== undefined && fallback !== next) {
+        next = fallback;
+        fallbacks++;
+      }
+    }
+
     if (next !== value) {
       dict[key] = next;
       changed++;
@@ -101,7 +131,9 @@ for (const file of files) {
     fs.writeFileSync(filePath, JSON.stringify(dict, null, 0) + '\n');
   }
   grandTotal += changed;
-  console.log(`${lang.padEnd(6)} ${changed} entries fixed`);
+  grandFallbacks += fallbacks;
+  if (lang === 'en') EN = dict;
+  console.log(`${lang.padEnd(6)} ${changed} entries fixed (${fallbacks} wrong-sense entries now in English)`);
 }
 
-console.log(`\n✅ Done. ${grandTotal} dictionary entries corrected across ${files.length} languages.`);
+console.log(`\n✅ Done. ${grandTotal} dictionary entries corrected across ${files.length} languages (${grandFallbacks} wrong-sense entries now in English).`);

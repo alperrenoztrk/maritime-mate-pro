@@ -8,8 +8,8 @@ import {
   repairEnglishMaritimeTerminology,
 } from './englishMaritimeTerminology.ts';
 
-test('all 142 audited terminology families have a regression rule', () => {
-  const expected = Array.from({ length: 142 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
+test('all 147 audited terminology families have a regression rule', () => {
+  const expected = Array.from({ length: 147 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
   assert.deepEqual([...new Set(ENGLISH_TERMINOLOGY_RULES.map(({ id }) => id))].sort(), expected);
 });
 
@@ -61,6 +61,13 @@ test('high-risk maritime mistranslations are repaired source-aware', () => {
     ['Kazan baca kaybı', 'Boiler chimney loss', 'Boiler stack loss'],
     ['Demir dipte', 'Iron at the bottom', 'Anchor at the bottom'],
     ['Ro-Ro yük bağlama planı', 'Ro-Ro cargo binding plan', 'Ro-Ro cargo securing plan'],
+    ['Bilge water deşarjı özel alanlarda nasıl yapılır?', 'How is Bilge water discharged in private areas?', 'How is Bilge water discharged in special areas?'],
+    ['Kamara, mürettebatın özel alanıdır.', "The cabin is the crew's private space.", "The cabin is the crew's private space."],
+    ['≥3 milden deşarj edilebilir', 'can be discharged from ≥3 mils', 'can be discharged from ≥3 miles'],
+    ['4.2 Pilot ladder güvenliği — IMO Res. A.1045(27)', '4.2 Pilot ladder safety — IMO Fig. A.1045(27)', '4.2 Pilot ladder safety — IMO Res. A.1045(27)'],
+    ['Muster listesi ve acil durum planında rollerin önceden tanımlanmasıyla', 'By pre-defining roles in the customer list and emergency plan', 'By pre-defining roles in the muster list and emergency plan'],
+    ['Emniyet Haberleşmesi (SECURITE)', 'Security Communications (SECURITE)', 'Safety Communications (SECURITE)'],
+    ['Halatın ucu (mooring) babaya bağlanır', 'The end of the line is made fast to the bollard in mooring', 'The end of the line is made fast to the bollard in mooring'],
     [
       'CO₂ boşaltma öncesi personel tahliyesi hayati önemdedir.',
       'Personnel discharge before CO₂ discharge is vital.',

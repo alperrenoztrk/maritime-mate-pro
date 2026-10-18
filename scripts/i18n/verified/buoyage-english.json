@@ -1,0 +1,170 @@
+{
+ "Kırmızı iskelede kalır": {
+  "en": "Red is kept to port"
+ },
+ "Silindirik (can), sütun veya spar": {
+  "en": "Can, pillar or spar"
+ },
+ "Tek kırmızı silindir (can)": {
+  "en": "Single red can"
+ },
+ "Kırmızı; her karakter olabilir (Fl R, Q R, Oc R, LFl R…)": {
+  "en": "Red; any rhythm (Fl R, Q R, Oc R, LFl R…)"
+ },
+ "Limana/kanala girerken (yön akıntı ve kanal yönüyle tanımlanır) bu işaret İSKELE tarafınızda kalmalıdır.": {
+  "en": "When entering a harbour or channel (the direction of buoyage), keep this mark on your PORT side."
+ },
+ "Konik, sütun veya spar": {
+  "en": "Conical, pillar or spar"
+ },
+ "Tek yeşil koni, ucu yukarı": {
+  "en": "Single green cone, point up"
+ },
+ "Yeşil; her karakter olabilir": {
+  "en": "Green; any rhythm"
+ },
+ "Limana/kanala girerken bu işaret SANCAK tarafınızda kalmalıdır.": {
+  "en": "When entering a harbour or channel, keep this mark on your STARBOARD side."
+ },
+ "Kırmızı, üzerinde geniş yeşil yatay bant": {
+  "en": "Red with one broad green horizontal band"
+ },
+ "Tek kırmızı silindir": {
+  "en": "Single red can"
+ },
+ "Kırmızı, kompozit grup çakar: Fl (2+1) R": {
+  "en": "Red, composite group flashing: Fl (2+1) R"
+ },
+ "Kanal ikiye ayrılıyor. ANA (tercihli) kanal sancağınızda kalıyor; işareti iskelenizde bırakarak ana kanalda kalırsınız.": {
+  "en": "The channel divides. The MAIN (preferred) channel is to starboard; keep the mark to port to stay in the main channel."
+ },
+ "Yeşil, üzerinde geniş kırmızı yatay bant": {
+  "en": "Green with one broad red horizontal band"
+ },
+ "Yeşil, kompozit grup çakar: Fl (2+1) G": {
+  "en": "Green, composite group flashing: Fl (2+1) G"
+ },
+ "Ana kanal iskelenizde kalıyor; işareti sancağınızda bırakırsınız.": {
+  "en": "The main channel is to port; keep the mark to starboard."
+ },
+ "Tek yeşil silindir (can)": {
+  "en": "Single green can"
+ },
+ "Limana/kanala girerken bu işaret İSKELE tarafınızda kalmalıdır.": {
+  "en": "When entering a harbour or channel, keep this mark on your PORT side."
+ },
+ "Tek kırmızı koni, ucu yukarı": {
+  "en": "Single red cone, point up"
+ },
+ "Kırmızı; her karakter olabilir": {
+  "en": "Red; any rhythm"
+ },
+ "Tek yeşil silindir": {
+  "en": "Single green can"
+ },
+ "Ana kanal sancağınızda kalıyor; işareti iskelenizde bırakırsınız.": {
+  "en": "The main channel is to starboard; keep the mark to port."
+ },
+ "Üstte siyah, altta sarı (S/Sa)": {
+  "en": "Black above yellow (BY)"
+ },
+ "Sütun (pillar) veya spar": {
+  "en": "Pillar or spar"
+ },
+ "İki siyah koni, ikisi de YUKARI bakar (▲▲)": {
+  "en": "Two black cones, both pointing UP (▲▲)"
+ },
+ "Beyaz — VQ veya Q (kesintisiz hızlı/çok hızlı çakar)": {
+  "en": "White — VQ or Q (continuous very quick or quick flashing)"
+ },
+ "Tehlikenin KUZEYİNDEN geçin.": {
+  "en": "Pass to the NORTH of the danger."
+ },
+ "Siyah, ortada geniş sarı bant (S/Sa/S)": {
+  "en": "Black with a broad yellow band in the middle (BYB)"
+ },
+ "İki siyah koni, tabanları birbirine bakar (▲▼)": {
+  "en": "Two black cones, base to base (▲▼)"
+ },
+ "Tehlikenin DOĞUSUNDAN geçin.": {
+  "en": "Pass to the EAST of the danger."
+ },
+ "Üstte sarı, altta siyah (Sa/S)": {
+  "en": "Yellow above black (YB)"
+ },
+ "İki siyah koni, ikisi de AŞAĞI bakar (▼▼)": {
+  "en": "Two black cones, both pointing DOWN (▼▼)"
+ },
+ "Tehlikenin GÜNEYİNDEN geçin.": {
+  "en": "Pass to the SOUTH of the danger."
+ },
+ "Sarı, ortada geniş siyah bant (Sa/S/Sa)": {
+  "en": "Yellow with a broad black band in the middle (YBY)"
+ },
+ "İki siyah koni, uçları birbirine bakar — 'kadeh' (▼▲)": {
+  "en": "Two black cones, point to point — 'wineglass' (▼▲)"
+ },
+ "Tehlikenin BATISINDAN geçin.": {
+  "en": "Pass to the WEST of the danger."
+ },
+ "Siyah, üzerinde bir veya daha fazla geniş kırmızı yatay bant": {
+  "en": "Black with one or more broad red horizontal bands"
+ },
+ "İki siyah küre, düşey olarak üst üste": {
+  "en": "Two black spheres, one above the other"
+ },
+ "Tam üzerinde durduğu tehlikeden uzak durun; çevresindeki su dolaşılabilir.": {
+  "en": "Keep clear of the danger it stands on; the water around it is navigable."
+ },
+ "Kırmızı-beyaz dikey şeritli": {
+  "en": "Red and white vertical stripes"
+ },
+ "Küresel, sütun veya spar": {
+  "en": "Spherical, pillar or spar"
+ },
+ "Tek kırmızı küre (sütun/spar biçiminde)": {
+  "en": "Single red sphere (on pillar or spar marks)"
+ },
+ "Çevresi emniyetli sudur; üzerinden veya yakınından geçilebilir. Kanal orta hattını ya da yaklaşım noktasını gösterir.": {
+  "en": "There is safe water all around it; it may be passed on either side or close to. It marks a channel centre line or a landfall position."
+ },
+ "İsteğe bağlı — ancak seyir işaretleriyle karışmamalı": {
+  "en": "Optional — but must not conflict with navigational marks"
+ },
+ "Tek sarı X (çarpı) işareti": {
+  "en": "Single yellow X (St Andrew's cross)"
+ },
+ "Sarı — Fl Y, Fl (4) Y, Fl (5) Y gibi, seyir işaretleriyle karışmayan karakterde": {
+  "en": "Yellow — a rhythm that cannot be confused with navigational marks, such as Fl Y, Fl (4) Y or Fl (5) Y"
+ },
+ "Seyir tehlikesi bildirmez; özel amaçlı bir alanın sınırını gösterir. Harita ve seyir ihbarlarından o alanın ne olduğunu okuyun.": {
+  "en": "It does not indicate a navigational danger; it marks the limit of a special area. Check the chart and navigational warnings for what the area is."
+ },
+ "Eşit sayıda mavi ve sarı DİKEY şerit (en az 4, en fazla 8 şerit)": {
+  "en": "Equal numbers of blue and yellow VERTICAL stripes (at least 4, at most 8)"
+ },
+ "Dik duran sarı haç (+)": {
+  "en": "Upright yellow cross (+)"
+ },
+ "Dönüşümlü mavi ve sarı — Al Oc BuY 3s (1 sn mavi, 0.5 sn karanlık, 1 sn sarı, 0.5 sn karanlık)": {
+  "en": "Alternating blue and yellow — Al Oc BuY 3s (1 s blue, 0.5 s dark, 1 s yellow, 0.5 s dark)"
+ },
+ "Yeni tespit edilmiş ve henüz haritaya işlenmemiş bir batığı işaretler. İşaretten uzak durun; geçiş için haritaya değil, seyir ihbarına ve VTS bilgisine güvenin.": {
+  "en": "Marks a newly found wreck that is not yet on the chart. Keep clear of the mark; for your passage rely on navigational warnings and VTS information, not on the chart."
+ },
+ "Beyaz — VQ (3) 5s veya Q (3) 10s": {
+  "en": "White — VQ (3) 5s or Q (3) 10s"
+ },
+ "Beyaz — VQ (6) + LFl 10s veya Q (6) + LFl 15s": {
+  "en": "White — VQ (6) + LFl 10s or Q (6) + LFl 15s"
+ },
+ "Beyaz — VQ (9) 10s veya Q (9) 15s": {
+  "en": "White — VQ (9) 10s or Q (9) 15s"
+ },
+ "Beyaz — Fl (2)": {
+  "en": "White — Fl (2)"
+ },
+ "Beyaz — Iso, Oc, LFl 10s veya Mo(A) (● ▬)": {
+  "en": "White — Iso, Oc, LFl 10s or Mo(A) (● ▬)"
+ }
+}
