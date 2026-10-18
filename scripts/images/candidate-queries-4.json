@@ -1,0 +1,17 @@
+[
+ { "id": "cat-castellanus-2", "category": "Castellanus clouds", "max": 24 },
+ { "id": "cat-castellanus-3", "category": "Altocumulus castellanus clouds", "max": 24 },
+ { "id": "search-castellanus", "search": "\"altocumulus castellanus\"", "max": 24 },
+ { "id": "cat-beaufort-2", "category": "Beaufort wind force scale", "max": 24 },
+ { "id": "cat-sea-states", "category": "Sea states", "max": 24 },
+ { "id": "search-beaufort", "search": "\"Beaufort force\" sea state photograph", "max": 24 },
+ { "id": "cat-yellow-buoys", "category": "Yellow buoys", "max": 24 },
+ { "id": "cat-special-marks-iala", "category": "Special marks (IALA)", "max": 16 },
+ { "id": "search-special-mark", "search": "IALA special mark yellow buoy X topmark", "max": 16 },
+ { "id": "cat-dg-labels", "category": "Labels of dangerous goods", "max": 24 },
+ { "id": "cat-dg-labels-2", "category": "Dangerous goods signs", "max": 24 },
+ { "id": "cat-dg-labels-3", "category": "ADR placards", "max": 24 },
+ { "id": "search-dg-labels", "search": "dangerous goods label class svg UN transport", "max": 24 },
+ { "id": "cat-fractus-2", "category": "Pannus clouds", "max": 16 },
+ { "id": "search-scud", "search": "\"fractus\" scud cloud", "max": 16 }
+]
