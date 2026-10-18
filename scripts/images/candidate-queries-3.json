@@ -1,0 +1,19 @@
+[
+ { "id": "cat-stratus", "category": "Stratus clouds", "max": 24 },
+ { "id": "cat-stratus-nebulosus", "category": "Stratus nebulosus", "max": 16 },
+ { "id": "cat-stratus-fractus", "category": "Stratus fractus", "max": 16 },
+ { "id": "cat-fractus", "category": "Fractus clouds", "max": 16 },
+ { "id": "cat-cumulus-fractus", "category": "Cumulus fractus", "max": 16 },
+ { "id": "cat-castellanus", "category": "Altocumulus castellanus", "max": 24 },
+ { "id": "cat-beaufort", "category": "Beaufort scale", "max": 24 },
+ { "id": "cat-air-masses", "category": "Air masses", "max": 16 },
+ { "id": "cat-compass-roses", "category": "Compass roses", "max": 24 },
+ { "id": "cat-special-marks", "category": "IALA special marks", "max": 16 },
+ { "id": "cat-special-marks-2", "category": "Special marks", "max": 16 },
+ { "id": "cat-hazmat-labels", "category": "Dangerous goods labels", "max": 24 },
+ { "id": "cat-adr-labels", "category": "ADR labels", "max": 24 },
+ { "id": "cat-hazard-transport", "category": "Hazard symbols for transport", "max": 24 },
+ { "id": "cat-autopilot", "category": "Autopilots", "max": 16 },
+ { "id": "search-ship-autopilot", "search": "ship autopilot steering control bridge filetype:bitmap filew:>1200", "max": 16 },
+ { "id": "search-bnwas", "search": "BNWAS bridge navigational watch alarm", "max": 12 }
+]
