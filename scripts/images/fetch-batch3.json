@@ -1,0 +1,25 @@
+[
+ {
+  "commons": "2019-11-30 12 58 05 Stratus clouds over a field along Old Ox Road in the Dulles section of Sterling, Loudoun County, Virginia.jpg",
+  "dest": "clouds/stratus-layer.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Air masses.svg",
+  "dest": "meteorology/air-mass-source-regions.svg"
+ },
+ {
+  "commons": "Bowditch1916p15CompassRose.png",
+  "dest": "navigation/real/compass-card-bowditch.png",
+  "width": 1600
+ },
+ {
+  "commons": "Compass Rose 32 Points.png",
+  "dest": "navigation/real/compass-rose-32-points.png",
+  "width": 1303
+ },
+ {
+  "commons": "Compass Card.svg",
+  "dest": "navigation/real/compass-card.svg"
+ }
+]
