@@ -1,0 +1,2522 @@
+{
+ "categories": {
+  "Gemicilik": "Sens marin",
+  "Seyir": "Navigation",
+  "Stabilite": "Stabilité",
+  "Makine": "Machine",
+  "Kargo": "Cargaison",
+  "Güvenlik": "Sécurité",
+  "Meteoroloji": "Météorologie",
+  "Hidrodinamik": "Hydrodynamique",
+  "Halatçılık": "Matelotage",
+  "Elektrik & Elektronik": "Électricité et électronique",
+  "Hukuk & Mevzuat": "Droit et réglementation",
+  "Liman & Manevra": "Port et manœuvre"
+ },
+ "terms": {
+  "Viyalamak": [
+   "Steady (ordre à la barre)",
+   "Ramener la barre pour que le cap du navire reste sur la route ordonnée ; l'ordre « Viya! » (Steady!) demande au timonier de maintenir le cap sur cette route."
+  ],
+  "Küpeşte": [
+   "Pavois",
+   "La rambarde pleine ou le bordé qui borde le pont ; il empêche les personnes à bord de tomber à la mer."
+  ],
+  "Borda": [
+   "Muraille",
+   "Le bordé latéral du navire ; on parle du côté bâbord ou du côté tribord."
+  ],
+  "İskele (Port)": [
+   "Bâbord",
+   "Le côté gauche du navire en regardant vers l'avant ; signalé de nuit par le feu de côté rouge."
+  ],
+  "Sancak": [
+   "Tribord",
+   "Le côté droit du navire en regardant vers l'avant ; signalé de nuit par le feu de côté vert."
+  ],
+  "Pruva": [
+   "Avant (proue)",
+   "L'extrémité avant du navire, profilée pour fendre l'eau et affronter les vagues."
+  ],
+  "Kıç": [
+   "Arrière (poupe)",
+   "L'extrémité arrière du navire, où se trouvent le gouvernail et l'hélice."
+  ],
+  "Omurga (Keel)": [
+   "Quille",
+   "La pièce de structure principale qui court de l'avant à l'arrière au fond du navire ; l'épine dorsale de la coque."
+  ],
+  "Postalar (Frames)": [
+   "Couples",
+   "Pièces de structure transversales placées perpendiculairement à la quille ; elles donnent sa forme à la coque."
+  ],
+  "Güverte (Deck)": [
+   "Pont",
+   "Un niveau horizontal du navire ; on y circule, on y travaille et on y transporte de la cargaison."
+  ],
+  "Ambar (Hold)": [
+   "Cale",
+   "Un espace fermé sous le pont destiné au transport de la cargaison."
+  ],
+  "Sintine (Bilge)": [
+   "Sentine",
+   "La partie la plus basse de l'intérieur de la coque, entre la quille et la muraille, où s'accumulent les eaux d'infiltration."
+  ],
+  "Baca (Funnel)": [
+   "Cheminée",
+   "La structure qui évacue hors du navire les gaz d'échappement de la salle des machines ; ses couleurs identifient aussi la compagnie maritime."
+  ],
+  "Köprü Üstü (Bridge)": [
+   "Passerelle",
+   "Le centre de commandement du navire : l'espace fermé qui abrite les équipements de navigation, de manœuvre et de communication."
+  ],
+  "Kamarot": [
+   "Steward",
+   "Membre d'équipage chargé de l'entretien et du nettoyage des cabines des passagers ou de l'équipage."
+  ],
+  "Lostromo (Bosun)": [
+   "Maître d'équipage",
+   "Le plus ancien du personnel d'exécution du pont ; responsable du matelotage, de la peinture et de l'entretien du pont."
+  ],
+  "Vardiya": [
+   "Quart",
+   "La période de service assurée par le personnel du navire ; généralement organisée en quatre heures de quart et huit heures de repos (4-8) ou six heures de quart et six de repos (6-6)."
+  ],
+  "Alabanda": [
+   "Hard over",
+   "Mettre la barre à son angle maximal ; donné par les ordres « hard a-port » ou « hard a-starboard »."
+  ],
+  "Alesta": [
+   "Stand by",
+   "Un ordre maritime qui signifie « soyez paré »."
+  ],
+  "Apiko": [
+   "À pic (Up and down)",
+   "Le moment où la chaîne d'ancre est verticale et où l'ancre est sur le point de déraper du fond."
+  ],
+  "Baş Bodoslama": [
+   "Étrave",
+   "La pièce de structure à l'extrémité avant de la proue, qui s'élève verticalement depuis la quille."
+  ],
+  "Kıç Bodoslama": [
+   "Étambot",
+   "La pièce de structure à l'extrémité arrière, qui s'élève verticalement depuis la quille."
+  ],
+  "Borda Feneri": [
+   "Feux de côté",
+   "Les feux de navigation placés à bâbord et à tribord du navire ; rouge à bâbord, vert à tribord."
+  ],
+  "Çarmık": [
+   "Haubans",
+   "Cordages ou câbles tendus entre le mât et le bord du navire pour soutenir le mât ; les enfléchures permettent à l'équipage de monter dans la mâture."
+  ],
+  "Matafora": [
+   "Bossoir",
+   "Un dispositif mécanique en forme de grue servant à mettre à l'eau les embarcations de sauvetage et les canots de secours."
+  ],
+  "Karakol": [
+   "Veille",
+   "La surveillance assurée pour repérer tout ce qui peut affecter la sécurité de la navigation du navire."
+  ],
+  "Grandi": [
+   "Grand-voile",
+   "La voile principale, généralement la plus grande, établie sur le grand mât."
+  ],
+  "Flama": [
+   "Flamme",
+   "Un pavillon long et étroit utilisé pour la signalisation."
+  ],
+  "Çıma": [
+   "Courant (d'un cordage)",
+   "L'extrémité libre d'un cordage, la partie que l'on manœuvre pour faire un nœud ou passer l'amarre."
+  ],
+  "Babafingo": [
+   "Perroquet",
+   "Sur les voiliers à gréement carré, la voile établie au-dessus du hunier, en haut du mât."
+  ],
+  "Bocurgat (Windlass)": [
+   "Guindeau",
+   "La machine installée sur le gaillard d'avant pour virer et filer la chaîne d'ancre."
+  ],
+  "Palamar": [
+   "Amarre",
+   "Le nom général des cordages utilisés pour amarrer le navire à un poste à quai ou à une bouée."
+  ],
+  "Kaptan Köşkü": [
+   "Timonerie",
+   "La partie de la passerelle où se tient le capitaine et d'où sont donnés les ordres de navigation."
+  ],
+  "Çamaşırlık": [
+   "Buanderie",
+   "Le local où l'équipage lave son linge ; un compartiment séparé sur les grands navires."
+  ],
+  "Karantina Bayrağı": [
+   "Pavillon de quarantaine (pavillon Q)",
+   "Le pavillon jaune Q ; il signifie « Mon navire est indemne et je demande la libre pratique ». Un navire arrivant le hisse jusqu'à l'obtention de la libre pratique."
+  ],
+  "Volta": [
+   "Tourner une amarre",
+   "Assurer un cordage en prenant des tours autour d'un bollard ou de bittes."
+  ],
+  "Bağ (Knot)": [
+   "Nœud",
+   "Une attache faite en nouant un cordage sur lui-même ou sur un autre cordage."
+  ],
+  "Ek (Splice)": [
+   "Épissure",
+   "Une jonction permanente faite en entrelaçant les torons des extrémités de cordages."
+  ],
+  "Kasa Bağı": [
+   "Épissure à œil",
+   "Une épissure qui forme un œil (boucle) permanent à l'extrémité d'un cordage."
+  ],
+  "Camadan": [
+   "Prendre un ris (nœud plat)",
+   "Réduire la surface d'une voile en en rassemblant une partie et en l'attachant ; le nœud plat utilisé pour cela s'appelle le nœud de ris."
+  ],
+  "Palanga": [
+   "Palan",
+   "Un ensemble de poulies et de cordage qui démultiplie l'effort de traction."
+  ],
+  "Makara (Block)": [
+   "Poulie",
+   "Un réa monté dans une caisse dans laquelle passe un cordage ; elle change la direction de l'effort ou, combinée dans un palan, le démultiplie."
+  ],
+  "Kıstırma (Stopper)": [
+   "Bosse",
+   "Un dispositif qui retient un cordage ou une chaîne sous tension afin de pouvoir le tourner sur des bittes ou un taquet."
+  ],
+  "Yeke": [
+   "Barre franche",
+   "Le levier qui sert à orienter le gouvernail à la main ; utilisé pour gouverner directement les petites embarcations."
+  ],
+  "Baba (Bollard)": [
+   "Bollard",
+   "Un poteau vertical court et solide, sur le quai ou à bord, sur lequel on tourne les amarres."
+  ],
+  "Bite (Bitt)": [
+   "Bittes",
+   "Une paire de poteaux solides sur le pont autour desquels on tourne les amarres."
+  ],
+  "Sapan (Sling)": [
+   "Élingue",
+   "Un montage en câble ou en cordage synthétique servant à attacher une charge au crochet de levage."
+  ],
+  "Mevki (Position)": [
+   "Position",
+   "L'emplacement d'un navire à un instant donné, exprimé en latitude et en longitude."
+  ],
+  "DGPS": [
+   "DGPS",
+   "GPS différentiel : positionnement par satellite amélioré à une précision métrique ou meilleure grâce aux corrections de stations de référence."
+  ],
+  "Kerteriz (Bearing)": [
+   "Relèvement",
+   "La direction de l'observateur vers un objet ; mesurée au compas et exprimée en degrés."
+  ],
+  "Rota (Course)": [
+   "Cap / route",
+   "La direction dans laquelle le navire est gouverné ou prévoit d'aller ; mesurée dans le sens des aiguilles d'une montre à partir du nord."
+  ],
+  "Büyük Daire Seyri (Great Circle)": [
+   "Navigation orthodromique",
+   "Naviguer le long d'un arc de grand cercle, le plus court chemin entre deux points de la surface terrestre."
+  ],
+  "Loksodrom (Rhumb Line)": [
+   "Loxodromie",
+   "Une ligne qui coupe tous les méridiens sous le même angle ; la route suivie lorsque le cap au compas n'est pas modifié."
+  ],
+  "Meridyen": [
+   "Méridien",
+   "Un demi-cercle imaginaire allant du pôle Nord au pôle Sud ; il définit la longitude."
+  ],
+  "Paralel": [
+   "Parallèle",
+   "Un cercle imaginaire parallèle à l'équateur ; il définit la latitude."
+  ],
+  "Enlem (Latitude)": [
+   "Latitude",
+   "La distance angulaire d'un lieu au nord ou au sud de l'équateur, mesurée de 0° à 90°."
+  ],
+  "Boylam (Longitude)": [
+   "Longitude",
+   "La distance angulaire d'un lieu à l'est ou à l'ouest du méridien de Greenwich, mesurée de 0° à 180°."
+  ],
+  "Deniz Mili (Nautical Mile)": [
+   "Mille marin",
+   "L'unité de distance égale à une minute d'arc de latitude ; 1852 mètres."
+  ],
+  "Knot": [
+   "Nœud (vitesse)",
+   "L'unité de vitesse en mer : un mille marin par heure."
+  ],
+  "ETA (Estimated Time of Arrival)": [
+   "ETA (heure estimée d'arrivée)",
+   "L'heure à laquelle le navire doit arriver dans un port ou à une position donnée."
+  ],
+  "ETD (Estimated Time of Departure)": [
+   "ETD (heure estimée de départ)",
+   "L'heure à laquelle le navire doit quitter le port."
+  ],
+  "AIS (Automatic Identification System)": [
+   "AIS (système d'identification automatique)",
+   "Un système radio qui transmet automatiquement l'identité, la position, la route et la vitesse du navire."
+  ],
+  "ECDIS": [
+   "ECDIS",
+   "Système de visualisation des cartes électroniques et d'information ; lorsqu'il répond aux règles d'emport, il est admis comme équivalent aux cartes papier."
+  ],
+  "Radar": [
+   "Radar",
+   "Équipement qui utilise les ondes radio pour détecter la position, la distance et le mouvement des objets environnants."
+  ],
+  "ARPA": [
+   "ARPA",
+   "Aide de pointage radar automatique ; calcule automatiquement la route, la vitesse et le point de rapprochement maximal des cibles suivies."
+  ],
+  "CPA (Closest Point of Approach)": [
+   "CPA (point de rapprochement maximal)",
+   "La plus petite distance prévue à laquelle deux navires se croiseront."
+  ],
+  "TCPA (Time to CPA)": [
+   "TCPA (temps jusqu'au CPA)",
+   "Le temps prévu restant avant que deux navires n'atteignent leur point de rapprochement maximal."
+  ],
+  "Pusula Hatası (Compass Error)": [
+   "Variation (erreur du compas)",
+   "La différence totale entre le nord indiqué par le compas et le nord vrai ; la somme de la déclinaison et de la déviation."
+  ],
+  "Sapma (Variation)": [
+   "Déclinaison magnétique",
+   "L'angle entre le nord vrai et le nord magnétique ; il change avec la position géographique."
+  ],
+  "İnhiraf (Deviation)": [
+   "Déviation",
+   "La différence entre le nord magnétique et le nord du compas, causée par le fer et l'acier du navire lui-même."
+  ],
+  "Seyir Planı (Passage Plan)": [
+   "Plan de voyage",
+   "Un plan détaillé de poste à poste, établi pour que le navire puisse effectuer le voyage en sécurité."
+  ],
+  "Waypoint": [
+   "Point de route (waypoint)",
+   "Un point intermédiaire de changement de route ou de contrôle fixé dans le plan de voyage."
+  ],
+  "Dümen Açısı": [
+   "Angle de barre",
+   "L'angle dont le gouvernail est tourné vers bâbord ou tribord à partir de la position zéro."
+  ],
+  "Derinlik Ölçer (Echo Sounder)": [
+   "Sondeur",
+   "Équipement qui mesure la profondeur d'eau sous le navire en envoyant des impulsions sonores vers le fond."
+  ],
+  "Fener (Lighthouse)": [
+   "Phare",
+   "Un feu, fixé sur la côte ou en mer, qui guide les navires."
+  ],
+  "Şamandıra (Buoy)": [
+   "Bouée",
+   "Une marque flottante mouillée à la surface de la mer pour aider à la sécurité de la navigation."
+  ],
+  "IALA İşaretleme Sistemi": [
+   "Système de balisage maritime AISM",
+   "Les règles internationales des bouées et marques ; divisé en région A et région B."
+  ],
+  "Kıyı Seyri (Coastal Navigation)": [
+   "Navigation côtière",
+   "Navigation près de la côte à l'aide de repères visuels et d'aides électroniques."
+  ],
+  "Açık Deniz Seyri (Ocean Navigation)": [
+   "Navigation hauturière",
+   "Navigation loin des côtes à l'aide des astres et des systèmes électroniques."
+  ],
+  "GPS": [
+   "GPS",
+   "Système de positionnement mondial ; donne la position, la vitesse et l'heure à partir des signaux des satellites."
+  ],
+  "Gyro Pusula": [
+   "Gyrocompas",
+   "Un compas qui utilise la rotation de la Terre pour indiquer le nord vrai ; mécanique ou à capteurs optiques (laser / fibre optique)."
+  ],
+  "Manyetik Pusula": [
+   "Compas magnétique",
+   "Le compas traditionnel, qui indique le nord selon le champ magnétique terrestre."
+  ],
+  "Running Fix": [
+   "Point par relèvements successifs",
+   "Une position obtenue à partir de deux relèvements du même objet pris à des moments différents."
+  ],
+  "Cross Bearing": [
+   "Point par relèvements croisés",
+   "Une position obtenue à partir de relèvements de deux objets ou plus pris au même moment."
+  ],
+  "Set & Drift": [
+   "Set and drift",
+   "L'effet du courant sur le navire : le « set » est la direction du courant, le « drift » sa vitesse."
+  ],
+  "Leeway": [
+   "Dérive",
+   "Le déplacement latéral du navire hors de sa route sous l'effet du vent."
+  ],
+  "GM (Metasentrik Yükseklik)": [
+   "GM (hauteur métacentrique)",
+   "La distance verticale entre le centre de gravité G et le métacentre M ; la principale mesure de la stabilité initiale."
+  ],
+  "Serbest Yüzey Etkisi": [
+   "Effet de carène liquide",
+   "La perte de GM causée par le liquide qui se déplace dans des citernes partiellement remplies."
+  ],
+  "Ağırlık Merkezleri (KG)": [
+   "Centre de gravité (KG)",
+   "La distance verticale du centre de gravité du navire au-dessus de la quille ; une valeur critique dans les calculs de stabilité."
+  ],
+  "Trim": [
+   "Assiette",
+   "L'inclinaison longitudinale du navire ; assiette sur le nez ou assiette sur l'arrière."
+  ],
+  "Deplasman (Displacement)": [
+   "Déplacement",
+   "Le poids de l'eau déplacée par le navire ; exprimé en tonnes."
+  ],
+  "Yüzdürme Merkezi (B – Buoyancy)": [
+   "Centre de carène (B)",
+   "Le centre géométrique du volume immergé de la coque."
+  ],
+  "GZ (Doğrultucu Kol)": [
+   "GZ (bras de levier de redressement)",
+   "La distance horizontale entre le centre de gravité et la ligne d'action de la poussée lorsque le navire est incliné."
+  ],
+  "BM (Metasentrik Yarıçap)": [
+   "BM (rayon métacentrique)",
+   "La distance entre le centre de carène B et le métacentre M ; BM = I / ∇."
+  ],
+  "KB": [
+   "KB",
+   "La distance verticale de la quille au centre de carène."
+  ],
+  "KM": [
+   "KM",
+   "La distance verticale de la quille au métacentre ; KM = KB + BM."
+  ],
+  "KG": [
+   "KG",
+   "La distance verticale de la quille au centre de gravité du navire."
+  ],
+  "Doğrultucu Moment": [
+   "Moment de redressement",
+   "Le moment qui ramène un navire incliné à la verticale ; M = Δ × GZ."
+  ],
+  "Devrilme Momenti": [
+   "Moment inclinant",
+   "Le moment des forces extérieures qui inclinent le navire ; causé par le vent, les vagues ou le ripage de la cargaison."
+  ],
+  "Denge Açısı (Angle of Loll)": [
+   "Angle of loll",
+   "L'angle de gîte auquel se stabilise un navire dont le GM initial est négatif."
+  ],
+  "Dinamik Stabilite": [
+   "Stabilité dynamique",
+   "L'aire sous la courbe GZ ; elle représente le travail nécessaire pour incliner le navire."
+  ],
+  "Statik Stabilite Eğrisi (GZ Curve)": [
+   "Courbe de stabilité statique (courbe GZ)",
+   "Un graphique de GZ en fonction de l'angle de gîte ; l'outil de base de l'évaluation de la stabilité."
+  ],
+  "TPC (Tonnes Per Centimetre)": [
+   "TPC (tonnes par centimètre d'immersion)",
+   "Le poids qui modifie le tirant d'eau moyen d'un centimètre."
+  ],
+  "MCT (Moment to Change Trim)": [
+   "MCTC (Moment to change trim)",
+   "Le moment qui modifie l'assiette d'un centimètre ; utilisé dans les calculs d'assiette."
+  ],
+  "LCG (Longitudinal Centre of Gravity)": [
+   "LCG (position longitudinale du centre de gravité)",
+   "La position avant-arrière du centre de gravité."
+  ],
+  "LCB (Longitudinal Centre of Buoyancy)": [
+   "LCB (position longitudinale du centre de carène)",
+   "La position avant-arrière du centre de carène."
+  ],
+  "İnklinasyon Deneyi (Inclining Test)": [
+   "Essai d'inclinaison",
+   "Un essai au cours duquel des poids connus sont déplacés d'un bord à l'autre du pont pour déterminer le KG du navire."
+  ],
+  "Permeabilite": [
+   "Perméabilité",
+   "La proportion d'un espace qui peut être remplie d'eau ; utilisée dans les calculs de stabilité après avarie."
+  ],
+  "Floodable Length": [
+   "Longueur envahissable",
+   "La plus grande longueur d'un compartiment qui peut être envahie sans que le navire ne s'enfonce au-delà de la ligne de surimmersion."
+  ],
+  "Yük Kaydırma": [
+   "Ripage de la cargaison",
+   "Un déplacement de la cargaison qui déplace le centre de gravité ; il peut provoquer une gîte dangereuse."
+  ],
+  "Karina (Hull)": [
+   "Œuvres vives",
+   "La partie de la coque située sous la flottaison."
+  ],
+  "Su Çekimi (Draft)": [
+   "Tirant d'eau",
+   "La distance verticale de la flottaison au bas de la quille."
+  ],
+  "Fribord (Freeboard)": [
+   "Franc-bord",
+   "La distance verticale de la flottaison au pont ; un franc-bord suffisant est essentiel à la navigabilité."
+  ],
+  "Plimsoll Markası": [
+   "Marque de franc-bord (disque Plimsoll)",
+   "Les marques sur la muraille qui indiquent le tirant d'eau maximal autorisé selon les saisons et les eaux."
+  ],
+  "Kavitasyon": [
+   "Cavitation",
+   "La formation puis l'implosion de bulles de vapeur dans un liquide lorsque la pression descend sous la pression de vapeur."
+  ],
+  "Dizel Motor (Marine Diesel)": [
+   "Moteur diesel marin",
+   "Un moteur à combustion interne à allumage par compression, utilisé comme propulsion principale de la plupart des navires."
+  ],
+  "Turboşarj (Turbocharger)": [
+   "Turbocompresseur",
+   "Un ensemble entraîné par les gaz d'échappement qui fournit de l'air comprimé aux cylindres ; il augmente la puissance et le rendement du moteur."
+  ],
+  "SFOC (Specific Fuel Oil Consumption)": [
+   "SFOC (consommation spécifique de combustible)",
+   "La quantité de combustible consommée par le moteur par unité de puissance produite ; exprimée en g/kWh."
+  ],
+  "Separatör (Purifier)": [
+   "Séparateur (purificateur)",
+   "Une centrifugeuse qui sépare l'eau et les solides du combustible et de l'huile de graissage."
+  ],
+  "Yağlama Sistemi": [
+   "Circuit de graissage",
+   "Le circuit qui fait circuler l'huile pour réduire le frottement entre les pièces du moteur et des machines."
+  ],
+  "Soğutma Sistemi": [
+   "Circuit de refroidissement",
+   "Les circuits d'eau douce et d'eau de mer qui empêchent la surchauffe du moteur principal et des auxiliaires."
+  ],
+  "Kazan (Boiler)": [
+   "Chaudière",
+   "Un récipient sous pression qui chauffe l'eau et produit de la vapeur pour les auxiliaires et le chauffage."
+  ],
+  "Jeneratör": [
+   "Génératrice",
+   "Une machine qui transforme l'énergie mécanique en énergie électrique et alimente le réseau de bord."
+  ],
+  "Şaft (Shaft)": [
+   "Arbre d'hélice",
+   "L'arbre qui transmet la rotation du moteur principal à l'hélice."
+  ],
+  "Pervane (Propeller)": [
+   "Hélice",
+   "Un ensemble de pales qui, en tournant, produit une poussée et fait avancer ou reculer le navire."
+  ],
+  "Dümen (Rudder)": [
+   "Gouvernail",
+   "Le safran mobile à l'arrière, que l'on oriente pour modifier la route du navire."
+  ],
+  "Bow Thruster": [
+   "Propulseur d'étrave",
+   "Une hélice placée dans un tunnel transversal à l'avant ; elle améliore la manœuvre à faible vitesse."
+  ],
+  "Stern Tube": [
+   "Tube d'étambot",
+   "Le tube par lequel l'arbre d'hélice sort de la coque ; il contient les paliers et les joints d'étanchéité de l'arbre."
+  ],
+  "Yardımcı Motor": [
+   "Moteur auxiliaire",
+   "Un moteur de bord qui produit l'électricité et entraîne les systèmes auxiliaires."
+  ],
+  "Emercensi Jeneratör": [
+   "Groupe électrogène de secours",
+   "Le groupe qui démarre et alimente les consommateurs essentiels en cas de panne de la source principale d'énergie électrique."
+  ],
+  "Egzoz Gazı Temizleme (Scrubber)": [
+   "Système d'épuration des gaz d'échappement (scrubber)",
+   "Une installation qui élimine les oxydes de soufre des gaz d'échappement par lavage."
+  ],
+  "Balast Pompası": [
+   "Pompe de ballast",
+   "La pompe qui remplit d'eau de mer les ballasts et les vide."
+  ],
+  "Sintine Pompası": [
+   "Pompe de cale",
+   "La pompe qui recueille et évacue les eaux de cale."
+  ],
+  "OWS (Oil Water Separator)": [
+   "Séparateur d'eaux mazouteuses (OWS)",
+   "Une installation qui sépare les hydrocarbures des eaux de cale afin de pouvoir les rejeter dans la limite légale de 15 ppm."
+  ],
+  "İncineratör (Yakma Fırını)": [
+   "Incinérateur",
+   "Un four qui brûle à haute température les déchets solides et les boues d'hydrocarbures produits à bord."
+  ],
+  "Kompresör": [
+   "Compresseur d'air",
+   "Une machine qui produit l'air comprimé pour le démarrage des moteurs et les systèmes pneumatiques."
+  ],
+  "Piston": [
+   "Piston",
+   "La pièce du moteur qui monte et descend dans le cylindre et transforme la pression des gaz en travail mécanique."
+  ],
+  "Silindir Gömleği (Cylinder Liner)": [
+   "Chemise de cylindre",
+   "La chemise en acier remplaçable placée dans le bloc-cylindres, dans laquelle se déplace le piston."
+  ],
+  "Süpap (Valve)": [
+   "Soupape (moteur)",
+   "Une pièce mécanique qui ouvre et ferme les passages d'admission et d'échappement du moteur."
+  ],
+  "Dökme Yük (Bulk Cargo)": [
+   "Vrac",
+   "Cargaison, comme le grain, le charbon ou le minerai, chargée directement dans la cale sans emballage."
+  ],
+  "Konteyner": [
+   "Conteneur",
+   "Une caisse métallique normalisée (20 pieds, 40 pieds) servant au transport des marchandises."
+  ],
+  "TEU (Twenty-foot Equivalent Unit)": [
+   "EVP (équivalent vingt pieds, TEU)",
+   "L'équivalent d'un conteneur de 20 pieds ; l'unité de référence pour la capacité des navires et des terminaux."
+  ],
+  "Stowage Factor": [
+   "Coefficient d'arrimage",
+   "Le volume occupé dans la cale par une tonne de cargaison ; exprimé en m³/t."
+  ],
+  "Broken Stowage": [
+   "Broken stowage",
+   "La part de l'espace de cale qui ne peut pas être utilisée à cause des vides entre les colis."
+  ],
+  "Dunnage": [
+   "Fardage",
+   "Bois, planches, nattes ou sacs gonflables qui protègent la cargaison de l'humidité, des dommages et du déplacement."
+  ],
+  "Lashing": [
+   "Saisissage",
+   "Assujettir la cargaison avec des saisines pour qu'elle ne ripe pas en mer."
+  ],
+  "Manifest": [
+   "Manifeste",
+   "Le document qui énumère toute la cargaison transportée à bord."
+  ],
+  "Bill of Lading (Konşimento)": [
+   "Connaissement",
+   "Un document émis par le transporteur : reçu de la cargaison embarquée, preuve du contrat de transport et titre représentatif de la marchandise."
+  ],
+  "Ambar Kapağı (Hatch Cover)": [
+   "Panneau de cale",
+   "Le couvercle en acier qui ferme une écoutille de cale de façon étanche aux intempéries."
+  ],
+  "Grain Stability": [
+   "Stabilité des cargaisons de grains",
+   "L'évaluation de la stabilité face au risque que le grain ripe en mer et provoque une gîte dangereuse."
+  ],
+  "IMDG Code": [
+   "Code IMDG",
+   "Le Code maritime international des marchandises dangereuses : les règles du transport par mer des marchandises dangereuses en colis."
+  ],
+  "IMSBC Code": [
+   "Code IMSBC",
+   "Le Code de l'OMI pour le transport sûr des cargaisons solides en vrac."
+  ],
+  "Draft Survey": [
+   "Draft survey",
+   "Une méthode qui calcule le poids de la cargaison chargée ou déchargée à partir des lectures de tirant d'eau du navire."
+  ],
+  "Ullage": [
+   "Creux (ullage)",
+   "L'espace vide dans une citerne, mesuré de la surface du liquide jusqu'au plafond de la citerne."
+  ],
+  "Sounding": [
+   "Sondage",
+   "La hauteur de liquide dans une citerne, mesurée depuis le fond de la citerne."
+  ],
+  "Deadweight (DWT)": [
+   "Port en lourd (DWT)",
+   "Le poids total que le navire peut porter : cargaison, combustible, eau, vivres et équipage."
+  ],
+  "Lightweight": [
+   "Poids lège",
+   "Le poids propre du navire sans cargaison, combustible, eau ni approvisionnements."
+  ],
+  "Tonnage (Gross / Net)": [
+   "Jauge (brute / nette)",
+   "Mesures du volume intérieur du navire : la jauge brute concerne tout le navire, la jauge nette les espaces à cargaison."
+  ],
+  "Reefer Konteyner": [
+   "Conteneur frigorifique (reefer)",
+   "Un conteneur muni de son propre groupe frigorifique pour les cargaisons à température dirigée."
+  ],
+  "Tanker": [
+   "Navire-citerne",
+   "Un navire destiné au transport en vrac de cargaisons liquides (pétrole, produits chimiques, GPL/GNL)."
+  ],
+  "RoRo (Roll-on Roll-off)": [
+   "Roulier (Ro-Ro)",
+   "Un navire sur lequel les véhicules et la cargaison roulante embarquent et débarquent par une rampe."
+  ],
+  "SOLAS": [
+   "SOLAS",
+   "La Convention internationale pour la sauvegarde de la vie humaine en mer ; elle fixe les normes de construction, d'équipement et d'exploitation des navires."
+  ],
+  "MARPOL": [
+   "MARPOL",
+   "La Convention internationale pour la prévention de la pollution par les navires."
+  ],
+  "ISM Code": [
+   "Code ISM",
+   "Le Code international de gestion de la sécurité ; la norme de gestion de la sécurité de l'exploitation des navires."
+  ],
+  "ISPS Code": [
+   "Code ISPS",
+   "Le Code international pour la sûreté des navires et des installations portuaires ; des mesures contre les menaces à la sûreté comme le terrorisme."
+  ],
+  "Can Yeleği (Life Jacket)": [
+   "Brassière de sauvetage",
+   "Équipement individuel qui maintient une personne à flot dans l'eau ; obligatoire pour chaque personne à bord."
+  ],
+  "Can Simidi (Life Buoy)": [
+   "Bouée de sauvetage",
+   "Un anneau flottant lancé à une personne tombée à l'eau."
+  ],
+  "Filika (Lifeboat)": [
+   "Embarcation de sauvetage",
+   "Une embarcation fermée qui sert à évacuer l'équipage et les passagers lors de l'abandon du navire."
+  ],
+  "Can Salı (Life Raft)": [
+   "Radeau de sauvetage",
+   "Un engin de survie gonflable ; il se gonfle automatiquement ou manuellement."
+  ],
+  "EPIRB": [
+   "RLS (EPIRB)",
+   "Radiobalise de localisation des sinistres ; elle émet une alerte de détresse par satellite."
+  ],
+  "SART": [
+   "SART (répondeur radar)",
+   "Répondeur radar de recherche et de sauvetage ; il fait apparaître sa position sur l'écran radar des navires et aéronefs qui recherchent."
+  ],
+  "GMDSS": [
+   "SMDSM (GMDSS)",
+   "Système mondial de détresse et de sécurité en mer."
+  ],
+  "MOB (Man Overboard)": [
+   "Homme à la mer (MOB)",
+   "L'urgence où une personne tombe à l'eau ; la manœuvre de récupération et les procédures sont lancées immédiatement."
+  ],
+  "Muster Station": [
+   "Poste de rassemblement",
+   "L'endroit où l'équipage et les passagers se rassemblent en cas d'urgence."
+  ],
+  "Fire Drill": [
+   "Exercice d'incendie",
+   "Un exercice pratique au cours duquel l'équipage s'entraîne aux procédures de lutte contre l'incendie."
+  ],
+  "Abandon Ship Drill": [
+   "Exercice d'abandon du navire",
+   "Un exercice de rassemblement et de mise à l'eau des embarcations et radeaux de sauvetage."
+  ],
+  "SCBA": [
+   "ARI (appareil respiratoire isolant)",
+   "Appareil respiratoire autonome utilisé pour entrer dans les espaces clos et pour la lutte contre l'incendie."
+  ],
+  "CO₂ Söndürme Sistemi": [
+   "Installation fixe d'extinction au CO₂",
+   "Une installation fixe au dioxyde de carbone qui éteint les incendies dans la salle des machines et les cales."
+  ],
+  "Köpüklü Söndürme": [
+   "Installation d'extinction à mousse",
+   "Une installation d'extinction à base de mousse pour les feux de liquides inflammables."
+  ],
+  "Yangın Tulumbası (Fire Pump)": [
+   "Pompe d'incendie",
+   "Une pompe qui alimente en eau sous pression le collecteur d'incendie et les manches ; il existe des pompes d'incendie principales et de secours."
+  ],
+  "Emercensi Dümen": [
+   "Appareil à gouverner de secours",
+   "Le moyen de gouverner le navire lorsque l'appareil à gouverner principal est en panne."
+  ],
+  "SOPEP": [
+   "SOPEP",
+   "Plan d'urgence de bord contre la pollution par les hydrocarbures ; les mesures à prendre après un déversement d'hydrocarbures."
+  ],
+  "Enclosed Space Entry": [
+   "Entrée dans un espace clos",
+   "La procédure pour entrer dans un espace clos ; elle exige une mesure de l'atmosphère, une ventilation et une surveillance."
+  ],
+  "Hot Work Permit": [
+   "Permis de feu",
+   "Une autorisation écrite exigée avant des travaux par points chauds comme le soudage ou l'oxycoupage."
+  ],
+  "Buharlaşma (Evaporation)": [
+   "Évaporation",
+   "Le passage de l'eau de l'état liquide à l'état gazeux en absorbant de la chaleur ; il influence l'humidité et le temps."
+  ],
+  "Dew Point (Çiy Noktası)": [
+   "Point de rosée",
+   "La température à laquelle l'air doit être refroidi pour être saturé, de sorte que la condensation commence."
+  ],
+  "Beaufort Skalası": [
+   "Échelle de Beaufort",
+   "L'échelle internationale qui classe la force du vent de 0 à 12."
+  ],
+  "Tropikal Siklon": [
+   "Cyclone tropical",
+   "Une tempête tournante qui se forme sur les mers chaudes, avec des vents violents et de fortes pluies."
+  ],
+  "Kasırga (Hurricane)": [
+   "Ouragan",
+   "Un cyclone tropical dont les vents atteignent 64 nœuds ou plus, dans l'Atlantique et le Pacifique Nord-Est."
+  ],
+  "Tayfun (Typhoon)": [
+   "Typhon",
+   "Un cyclone tropical de force ouragan dans le Pacifique Nord-Ouest."
+  ],
+  "Barometrik Basınç": [
+   "Pression atmosphérique",
+   "Le poids de l'atmosphère en un lieu donné ; mesuré en hPa (mbar)."
+  ],
+  "Antisiklon (High Pressure)": [
+   "Anticyclone",
+   "Une zone de haute pression ; elle apporte généralement un temps stable et beau."
+  ],
+  "Siklon (Low Pressure)": [
+   "Dépression",
+   "Une zone de basse pression ; associée au vent, à la pluie et à la tempête."
+  ],
+  "Cephe (Front)": [
+   "Front",
+   "La zone limite où se rencontrent des masses d'air de température et d'humidité différentes."
+  ],
+  "Sis (Fog)": [
+   "Brouillard",
+   "Condensation de la vapeur d'eau près de la surface qui réduit la visibilité à moins de 1000 mètres."
+  ],
+  "Deniz Suyu Sıcaklığı (SST)": [
+   "Température de surface de la mer (SST)",
+   "La température de la surface de la mer ; importante pour la prévision du temps et la formation des cyclones tropicaux."
+  ],
+  "Trade Winds (Alize Rüzgârları)": [
+   "Alizés",
+   "Les vents réguliers de nord-est et de sud-est des tropiques."
+  ],
+  "Gel-Git (Tide)": [
+   "Marée",
+   "La montée et la descente périodiques du niveau de la mer, causées par l'attraction de la Lune et du Soleil."
+  ],
+  "Spring Tide (Büyük Gel-Git)": [
+   "Vive-eau",
+   "La marée de plus grand marnage, à la nouvelle et à la pleine lune, lorsque les attractions du Soleil et de la Lune s'additionnent."
+  ],
+  "Neap Tide (Küçük Gel-Git)": [
+   "Morte-eau",
+   "La marée de plus faible marnage, au premier et au dernier quartier, lorsque le Soleil et la Lune tirent à angle droit."
+  ],
+  "Swell (Ölü Deniz)": [
+   "Houle",
+   "Vagues de longue période qui se sont éloignées de leur zone de formation et sont devenues régulières."
+  ],
+  "Navtex": [
+   "NAVTEX",
+   "Un système qui reçoit automatiquement les avertissements de navigation et de météorologie sous forme de texte imprimé ou affiché."
+  ],
+  "Rüzgâr Gülü": [
+   "Rose des vents",
+   "Un diagramme qui montre en un lieu la fréquence et la force du vent selon chaque direction."
+  ],
+  "İzobar": [
+   "Isobare",
+   "Une ligne sur la carte météorologique qui relie les points de même pression atmosphérique."
+  ],
+  "Dalga Yükü (Wave Load)": [
+   "Charges dues aux vagues",
+   "Les charges dynamiques que les vagues exercent sur la coque ; utilisées dans les calculs de tenue à la mer et de résistance structurelle."
+  ],
+  "Direnç (Resistance)": [
+   "Résistance à l'avancement",
+   "La force totale qui s'oppose au déplacement du navire dans l'eau ; principalement la résistance de frottement et la résistance de vagues."
+  ],
+  "Sürtünme Direnci (Frictional Resistance)": [
+   "Résistance de frottement",
+   "La part de la résistance due au frottement entre la coque et l'eau."
+  ],
+  "Dalga Direnci (Wave Resistance)": [
+   "Résistance de vagues",
+   "La part de la résistance due à l'énergie dépensée pour créer le système de vagues du navire."
+  ],
+  "Froude Sayısı": [
+   "Nombre de Froude",
+   "Un nombre sans dimension qui relie la vitesse du navire à la formation des vagues ; Fn = V / √(g × L)."
+  ],
+  "Reynolds Sayısı": [
+   "Nombre de Reynolds",
+   "Un nombre sans dimension qui caractérise l'écoulement ; il distingue l'écoulement laminaire de l'écoulement turbulent."
+  ],
+  "İtme Kuvveti (Thrust)": [
+   "Poussée",
+   "La force produite par l'hélice en rotation, qui propulse le navire."
+  ],
+  "Wake Fraction": [
+   "Coefficient de sillage",
+   "La différence relative entre la vitesse du navire et la vitesse de l'eau qui arrive sur l'hélice."
+  ],
+  "Thrust Deduction": [
+   "Coefficient de succion",
+   "La part de la poussée de l'hélice perdue parce que l'hélice en fonctionnement augmente la résistance de la coque."
+  ],
+  "Propulsive Efficiency": [
+   "Rendement propulsif",
+   "L'efficacité avec laquelle la puissance du moteur est convertie en puissance utile pour faire avancer le navire ; le produit des rendements de coque, d'hélice et autres."
+  ],
+  "Squat Effect": [
+   "Squat",
+   "L'enfoncement et le changement d'assiette d'un navire en eau peu profonde, qui augmentent avec la vitesse ; les navires pleins (Cb élevé) s'enfoncent plutôt de l'avant, les navires fins plutôt de l'arrière."
+  ],
+  "Bank Effect": [
+   "Effet de berge",
+   "Dans un chenal étroit, la berge proche aspire l'arrière et repousse l'avant."
+  ],
+  "Slamming": [
+   "Tossage (slamming)",
+   "Le choc violent de l'avant sur la surface de l'eau dans la mer formée ; il provoque de fortes charges sur la structure."
+  ],
+  "Broaching": [
+   "Broaching",
+   "Par mer de l'arrière, le navire vient en travers des vagues de façon incontrôlée ; il y a risque de chavirement."
+  ],
+  "Parametrik Rolling": [
+   "Roulis paramétrique",
+   "Un roulis fort et rapidement croissant lorsque la période de rencontre des vagues vaut environ la moitié de la période propre de roulis du navire."
+  ],
+  "Added Mass": [
+   "Masse ajoutée",
+   "L'effet de masse supplémentaire de l'eau qui doit être accélérée avec le navire lorsque sa vitesse ou son mouvement change."
+  ],
+  "Sinkage & Trim": [
+   "Enfoncement et changement d'assiette",
+   "L'enfoncement et le changement d'assiette d'un navire en marche, qui augmentent avec la vitesse en eau peu profonde."
+  ],
+  "Boundary Layer": [
+   "Couche limite",
+   "La mince couche d'eau contre la coque dans laquelle la vitesse de l'écoulement passe de zéro à celle de l'écoulement libre."
+  ],
+  "Ana Şalt (Main Switchboard)": [
+   "Tableau principal",
+   "Le tableau électrique central qui distribue l'énergie des génératrices."
+  ],
+  "Shore Connection": [
+   "Branchement électrique à quai",
+   "L'alimentation du navire par le réseau terrestre au port, qui permet d'arrêter les génératrices."
+  ],
+  "UPS": [
+   "ASI (alimentation sans interruption)",
+   "Maintient les équipements essentiels en service en cas de coupure de courant."
+  ],
+  "VHF Telsiz": [
+   "Radio VHF",
+   "Un poste radio en très haute fréquence pour les communications maritimes à courte distance."
+  ],
+  "MF/HF Telsiz": [
+   "Radio MF/HF",
+   "Une installation radio pour les communications maritimes à moyenne et longue distance."
+  ],
+  "Inmarsat": [
+   "Inmarsat",
+   "Le système satellitaire qui fournit aux navires des communications vocales, de données et de détresse."
+  ],
+  "Log (Hız Ölçer)": [
+   "Loch",
+   "Un appareil qui mesure la vitesse du navire par rapport à l'eau ou au fond."
+  ],
+  "Anemometre": [
+   "Anémomètre",
+   "Un appareil qui mesure la vitesse et la direction du vent."
+  ],
+  "Voyage Data Recorder (VDR)": [
+   "VDR (enregistreur des données du voyage)",
+   "Un appareil qui enregistre les données de navigation, de machine et de passerelle ; la « boîte noire » du navire."
+  ],
+  "Autopilot": [
+   "Pilote automatique",
+   "Un système de gouverne électronique qui maintient automatiquement le navire au cap réglé."
+  ],
+  "COLREG": [
+   "COLREG (RIPAM)",
+   "Le Règlement international pour prévenir les abordages en mer ; les règles de conduite des navires lorsqu'ils se rencontrent."
+  ],
+  "STCW": [
+   "STCW",
+   "La Convention internationale sur les normes de formation des gens de mer, de délivrance des brevets et de veille."
+  ],
+  "MLC 2006": [
+   "MLC 2006",
+   "La Convention du travail maritime ; elle régit les conditions de travail et de vie des gens de mer."
+  ],
+  "Flag State (Bayrak Devleti)": [
+   "État du pavillon",
+   "L'État où le navire est immatriculé ; il est responsable de la surveillance technique et de la sécurité du navire."
+  ],
+  "Port State Control (PSC)": [
+   "Contrôle par l'État du port",
+   "L'inspection des navires étrangers au port pour vérifier qu'ils respectent les normes internationales."
+  ],
+  "Class Survey (Klas Denetimi)": [
+   "Visite de classe",
+   "Une visite périodique de la société de classification pour contrôler la coque et les machines."
+  ],
+  "P&I Club": [
+   "P&I Club",
+   "Une mutuelle d'assurance qui couvre la responsabilité des armateurs envers les tiers."
+  ],
+  "Charter Party": [
+   "Charte-partie",
+   "Le contrat d'affrètement d'un navire ; au voyage, à temps ou coque nue."
+  ],
+  "Salvage (Kurtarma)": [
+   "Assistance",
+   "Le sauvetage d'un navire ou de sa cargaison en danger ; une assistance réussie ouvre droit à une rémunération d'assistance."
+  ],
+  "General Average (Müşterek Avarya)": [
+   "Avarie commune",
+   "Le principe selon lequel les sacrifices et les dépenses faits pour sauver le navire et la cargaison d'un péril commun sont supportés par tous les intéressés."
+  ],
+  "Demurrage": [
+   "Surestaries",
+   "La somme convenue, payée lorsque le navire est retenu au-delà du temps de chargement ou de déchargement accordé."
+  ],
+  "Despatch": [
+   "Prime de célérité (despatch)",
+   "La somme gagnée lorsque le chargement ou le déchargement est terminé avant la fin des staries."
+  ],
+  "NOR (Notice of Readiness)": [
+   "NOR (Notice of Readiness)",
+   "L'avis écrit du capitaine indiquant que le navire est prêt à charger ou à décharger."
+  ],
+  "Lay Time (Starya Süresi)": [
+   "Staries",
+   "Le temps accordé pour le chargement et le déchargement."
+  ],
+  "LOF (Lloyd's Open Form)": [
+   "LOF (Lloyd's Open Form)",
+   "Le contrat type d'assistance fondé sur le principe « no cure, no pay » (pas de résultat, pas de rémunération)."
+  ],
+  "Yanaşma (Berthing)": [
+   "Accostage",
+   "Amener le navire de façon contrôlée le long d'un quai ou d'un appontement et l'y amarrer."
+  ],
+  "Kalkma (Unberthing)": [
+   "Appareillage (du quai)",
+   "Larguer les amarres et quitter le poste à quai."
+  ],
+  "Demir Atma (Anchoring)": [
+   "Mouillage",
+   "Mouiller l'ancre sur le fond pour que le navire garde sa position."
+  ],
+  "Demir Alma (Weighing Anchor)": [
+   "Lever l'ancre",
+   "Virer l'ancre hors du fond et mettre fin au mouillage."
+  ],
+  "Römorkör (Tug)": [
+   "Remorqueur",
+   "Un petit navire puissant qui aide les grands navires à manœuvrer au port."
+  ],
+  "Kılavuz Kaptan (Pilot)": [
+   "Pilote",
+   "Une personne connaissant les eaux locales qui monte à bord et conseille le capitaine à la passerelle à l'entrée et à la sortie du port."
+  ],
+  "Pilot Merdiveni": [
+   "Échelle de pilote",
+   "Une échelle de corde mise à la mer le long du bord pour permettre au pilote de monter à bord."
+  ],
+  "Çıpa (Anchor)": [
+   "Ancre",
+   "La pièce lourde qui maintient le navire en position en s'accrochant au fond ; types courants : Hall, AC-14, Danforth."
+  ],
+  "Zincir (Chain)": [
+   "Chaîne d'ancre",
+   "La lourde chaîne en acier qui relie l'ancre au navire ; sa longueur se mesure en maillons."
+  ],
+  "Posa (Shackle)": [
+   "Maillon (longueur de chaîne)",
+   "L'unité de longueur de la chaîne d'ancre ; un maillon vaut 27,5 mètres (15 brasses)."
+  ],
+  "Usturmaça (Fender)": [
+   "Défense",
+   "Un amortisseur placé entre le navire et le quai pour absorber les chocs."
+  ],
+  "Swing Circle": [
+   "Cercle d'évitage",
+   "Le cercle dans lequel un navire au mouillage peut éviter sous l'effet du vent et du courant ; il détermine la distance de sécurité au mouillage."
+  ],
+  "Turning Circle": [
+   "Cercle de giration",
+   "Le cercle que décrit le navire lorsqu'il tourne avec toute la barre ; une mesure de sa manœuvrabilité."
+  ],
+  "Advance & Transfer": [
+   "Advance and transfer",
+   "Les distances parcourues par le navire vers l'avant (advance) et latéralement (transfer) après la mise de la barre."
+  ],
+  "Crash Stop": [
+   "Crash stop",
+   "En urgence, arrêter le navire en passant de en avant toute à en arrière toute."
+  ],
+  "Dead Slow": [
+   "Dead slow",
+   "L'ordre machine au régime le plus bas (dead slow ahead / dead slow astern) ; utilisé en manœuvre."
+  ],
+  "VTS (Vessel Traffic Service)": [
+   "VTS (service de trafic maritime)",
+   "Un service à terre qui surveille et organise le trafic des navires dans les ports et les eaux resserrées."
+  ],
+  "Kanal Seyrüseferi": [
+   "Transit d'un canal",
+   "Le passage par des voies navigables artificielles comme les canaux de Suez et de Panama ; avec des règles particulières et un pilotage obligatoire."
+  ],
+  "Dry Dock (Havuz)": [
+   "Cale sèche (forme de radoub)",
+   "Une forme vidée de son eau pour permettre de réparer les œuvres vives du navire."
+  ],
+  "Şamandıraya Bağlanma": [
+   "Amarrage sur bouée",
+   "Amarrer le navire avec des aussières à une bouée d'amarrage fixe au lieu de mouiller."
+  ],
+  "Amade": [
+   "Paré à appareiller",
+   "Le navire est prêt à prendre la mer ; toutes les vérifications sont terminées."
+  ],
+  "Demir Yeri (Anchorage)": [
+   "Zone de mouillage",
+   "Une zone désignée offrant une profondeur et un fond adaptés au mouillage."
+  ],
+  "Enine Perde (Bulkhead)": [
+   "Cloison transversale",
+   "Une séparation verticale de la structure qui divise la coque en compartiments étanches."
+  ],
+  "Forkastel (Forecastle)": [
+   "Gaillard d'avant",
+   "La partie surélevée du pont à l'avant ; elle porte les apparaux de mouillage et d'amarrage."
+  ],
+  "Güverte Ambarı (Tweendeck)": [
+   "Entrepont",
+   "Un pont intermédiaire entre la cale basse et le pont supérieur ; utilisé pour les marchandises diverses."
+  ],
+  "Havuzlama (Dry Docking)": [
+   "Mise en cale sèche",
+   "Faire entrer le navire en cale sèche pour entretenir et réparer les œuvres vives."
+  ],
+  "Koferdamı (Cofferdam)": [
+   "Cofferdam",
+   "Un espace vide étroit entre deux citernes ou compartiments, prévu pour empêcher les fuites de l'un vers l'autre."
+  ],
+  "Lumboz (Porthole)": [
+   "Hublot",
+   "Une fenêtre ronde dans la muraille du navire qui donne lumière et aération."
+  ],
+  "Manika": [
+   "Manche à air",
+   "L'ouverture d'un conduit de ventilation sur le pont ; en forme de champignon ou de col de cygne."
+  ],
+  "Mayıstra": [
+   "Grand-voile",
+   "La plus grande voile, établie sur le grand mât ; la principale voile motrice d'un voilier."
+  ],
+  "Neta": [
+   "Shipshape",
+   "Ordre et propreté sur le pont ; tout le matériel non fixé est saisi."
+  ],
+  "Orsalamak": [
+   "Lofer",
+   "Faire venir l'avant d'un voilier vers le lit du vent."
+  ],
+  "Pupa": [
+   "Arrière",
+   "L'extrémité arrière du navire ; un vent arrière souffle exactement de l'arrière."
+  ],
+  "Safra (Ballast)": [
+   "Ballast",
+   "Eau de mer ou poids solides embarqués dans des citernes pour donner au navire la stabilité, le tirant d'eau et l'assiette nécessaires."
+  ],
+  "Uskuna (Schooner)": [
+   "Goélette",
+   "Un voilier à deux mâts ou plus portant des voiles longitudinales."
+  ],
+  "Mercator Projeksiyonu": [
+   "Projection de Mercator",
+   "Une projection cartographique cylindrique sur laquelle les loxodromies sont des droites ; les surfaces sont de plus en plus agrandies vers les hautes latitudes."
+  ],
+  "Gnomonic Projeksiyon": [
+   "Projection gnomonique",
+   "Une projection cartographique sur laquelle les grands cercles sont des droites ; utilisée pour préparer la navigation orthodromique."
+  ],
+  "Dead Reckoning (Tahmini Seyir)": [
+   "Navigation à l'estime (DR)",
+   "Déterminer la position du navire à partir de la dernière position connue en utilisant uniquement la route et la vitesse surface."
+  ],
+  "Fix (Kesin Mevki)": [
+   "Point observé",
+   "Une position fiable obtenue par observation ou par des aides électroniques."
+  ],
+  "Estimated Position (EP)": [
+   "Estimated position (EP)",
+   "Une position estimée à partir de l'estime, corrigée du courant et du vent ; moins fiable qu'un point observé."
+  ],
+  "DLat (Enlem Değişimi)": [
+   "Différence de latitude",
+   "La différence de latitude entre deux positions ; exprimée en minutes d'arc."
+  ],
+  "DLong (Boylam Değişimi)": [
+   "Différence de longitude",
+   "La différence de longitude entre deux positions ; exprimée en minutes d'arc."
+  ],
+  "Departure": [
+   "Écart (departure)",
+   "La distance est-ouest en milles marins correspondant à une différence de longitude ; écart = D.Long × cos(Lat)."
+  ],
+  "Vertex (Tepe Noktası)": [
+   "Vertex",
+   "Le point d'un grand cercle le plus proche du pôle ; la route y atteint sa latitude la plus élevée."
+  ],
+  "Composite Great Circle": [
+   "Composite great circle",
+   "Une route composée de grands cercles et d'un parallèle afin de ne pas dépasser une latitude limite."
+  ],
+  "Course Made Good (CMG)": [
+   "Course made good (CMG)",
+   "La direction réellement suivie par le navire, compte tenu des effets du courant et du vent."
+  ],
+  "Speed Made Good (SMG)": [
+   "Speed made good (SMG)",
+   "La vitesse réellement obtenue par rapport au fond, compte tenu de l'effet du courant."
+  ],
+  "Chart Datum": [
+   "Zéro des cartes",
+   "Le niveau de référence à partir duquel sont comptées les sondes portées sur les cartes ; généralement la plus basse mer astronomique (LAT)."
+  ],
+  "Sextant": [
+   "Sextant",
+   "Un instrument optique qui mesure l'angle entre un astre et l'horizon ; utilisé en navigation astronomique."
+  ],
+  "Chronometer": [
+   "Chronomètre",
+   "Une horloge précise qui conserve l'heure de Greenwich ; indispensable pour déterminer la longitude."
+  ],
+  "Nautical Almanac": [
+   "Éphémérides nautiques",
+   "La publication annuelle qui donne les positions quotidiennes des astres (angle horaire à Greenwich, déclinaison)."
+  ],
+  "Sight Reduction Tables": [
+   "Sight reduction tables",
+   "Tables précalculées utilisées pour résoudre les observations de navigation astronomique."
+  ],
+  "Height of Eye": [
+   "Hauteur d'œil",
+   "La hauteur de l'œil de l'observateur au-dessus de la surface de la mer ; utilisée dans les corrections de hauteur au sextant."
+  ],
+  "Dip (Ufuk Alçalması)": [
+   "Dépression apparente de l'horizon",
+   "L'angle entre l'horizontale vraie et l'horizon visible, dû à la hauteur d'œil de l'observateur."
+  ],
+  "Index Error": [
+   "Erreur d'index",
+   "L'erreur du sextant qui existe lorsque les miroirs d'index et d'horizon ne sont pas parallèles au zéro."
+  ],
+  "Azimut": [
+   "Azimut",
+   "La direction horizontale d'un astre ou d'un objet, mesurée dans le sens des aiguilles d'une montre à partir du nord."
+  ],
+  "Amplitude": [
+   "Amplitude",
+   "L'angle entre l'est ou l'ouest vrai et la direction du Soleil ou d'un autre astre à son lever ou à son coucher."
+  ],
+  "Intercept (Aradaki Fark)": [
+   "Intercept",
+   "La différence entre la hauteur observée et la hauteur calculée ; utilisée pour tracer la droite de hauteur."
+  ],
+  "Position Line (Mevki Doğrusu)": [
+   "Ligne de position",
+   "Une ligne, obtenue par une observation, sur laquelle se trouve le navire ; deux lignes de position qui se coupent donnent un point."
+  ],
+  "Under Keel Clearance (UKC)": [
+   "Pied de pilote (UKC)",
+   "La hauteur d'eau de sécurité entre le dessous de la quille et le fond."
+  ],
+  "Traffic Separation Scheme (TSS)": [
+   "Dispositif de séparation du trafic (DST)",
+   "Une mesure d'organisation du trafic qui sépare les courants de circulation opposés en voies."
+  ],
+  "Precautionary Area": [
+   "Zone de prudence",
+   "Une zone délimitée où les navires doivent naviguer avec une prudence particulière ; souvent là où se rejoignent des voies de circulation."
+  ],
+  "Tidal Stream": [
+   "Courant de marée",
+   "Le mouvement horizontal de l'eau dû à la marée ; sa direction et sa vitesse changent au cours du cycle de marée."
+  ],
+  "Chart Correction": [
+   "Correction des cartes",
+   "La mise à jour des cartes marines avec les informations publiées dans les Avis aux navigateurs."
+  ],
+  "Notice to Mariners (NtM)": [
+   "Avis aux navigateurs",
+   "Avis publiés périodiquement pour tenir à jour les cartes et les ouvrages nautiques."
+  ],
+  "Metacenter (M)": [
+   "Métacentre (M)",
+   "Aux petits angles de gîte, le point où la ligne d'action de la poussée coupe le plan longitudinal du navire."
+  ],
+  "Vanishing Angle": [
+   "Angle of vanishing stability",
+   "L'angle d'inclinaison auquel GZ redevient nul ; au-delà, le navire n'a plus de bras de levier de redressement."
+  ],
+  "Range of Stability": [
+   "Range of stability",
+   "La plage d'inclinaison sur laquelle GZ reste positif ; une plage étendue signifie une grande marge de sécurité."
+  ],
+  "Righting Lever Maximum": [
+   "Bras de levier de redressement maximal",
+   "La plus grande valeur de la courbe GZ, où la résistance du navire à l'inclinaison est la plus forte."
+  ],
+  "Cross Curves of Stability": [
+   "Courbes pantocarènes",
+   "Courbes donnant KN à angles d'inclinaison fixes pour différents déplacements."
+  ],
+  "Intact Stability": [
+   "Stabilité à l'état intact",
+   "La stabilité du navire non endommagé ; elle doit satisfaire aux critères minimaux fixés par l'OMI."
+  ],
+  "Damage Stability": [
+   "Stabilité après avarie",
+   "La stabilité du navire lorsqu'un ou plusieurs compartiments sont envahis."
+  ],
+  "Subdivision": [
+   "Compartimentage",
+   "La division de la coque en compartiments par des cloisons étanches ; il protège le navire contre le naufrage."
+  ],
+  "Margin Line": [
+   "Ligne de surimmersion",
+   "Une ligne tracée à 76 mm sous la face supérieure du pont de cloisonnement en abord ; dans les calculs d'avarie, la flottaison ne doit pas la dépasser."
+  ],
+  "Heel (Yatma)": [
+   "Inclinaison transversale (heel)",
+   "Une inclinaison transversale du navire due à une force extérieure comme le vent, un poids déplacé ou une giration."
+  ],
+  "List": [
+   "Gîte permanente (list)",
+   "Une inclinaison transversale qui persiste pour des causes internes, comme une cargaison ou le contenu de citernes décentré."
+  ],
+  "Loll": [
+   "Loll",
+   "L'état d'un navire à GM initial négatif qui se stabilise à un angle de loll ; une situation extrêmement dangereuse."
+  ],
+  "Waterplane Area": [
+   "Surface de flottaison",
+   "La surface délimitée par la flottaison ; utilisée dans les calculs de TPC et de BM."
+  ],
+  "Block Coefficient (Cb)": [
+   "Coefficient de bloc (Cb)",
+   "Une mesure du remplissage de la coque : le volume immergé divisé par longueur × largeur × tirant d'eau."
+  ],
+  "Midship Coefficient (Cm)": [
+   "Coefficient du maître-couple (Cm)",
+   "Le rapport entre la surface immergée du maître-couple et largeur × tirant d'eau."
+  ],
+  "Prismatic Coefficient (Cp)": [
+   "Coefficient prismatique (Cp)",
+   "Le rapport entre le volume immergé et la surface du maître-couple × longueur ; il influe sur la résistance et la vitesse."
+  ],
+  "Crosshead (Çapraz Kafa)": [
+   "Crosse",
+   "Dans les moteurs deux temps lents, l'articulation coulissante qui relie la tige de piston à la bielle."
+  ],
+  "Crankshaft (Krank Mili)": [
+   "Vilebrequin",
+   "L'arbre principal du moteur qui transforme le mouvement alternatif des pistons en rotation."
+  ],
+  "Camshaft (Kam Mili)": [
+   "Arbre à cames",
+   "L'arbre dont les cames commandent le calage des soupapes et des pompes à combustible."
+  ],
+  "Connecting Rod (Biyel Kolu)": [
+   "Bielle",
+   "La pièce qui relie le piston (ou la crosse) au vilebrequin et transforme le mouvement alternatif en rotation."
+  ],
+  "Fuel Injector (Enjektör)": [
+   "Injecteur",
+   "L'organe qui pulvérise le combustible finement dans le cylindre sous haute pression."
+  ],
+  "Exhaust Valve (Egzoz Süpabı)": [
+   "Soupape d'échappement",
+   "La soupape qui laisse sortir les gaz brûlés du cylindre."
+  ],
+  "Scavenging (Süpürme)": [
+   "Balayage",
+   "Chasser les gaz brûlés du cylindre et le remplir d'air frais."
+  ],
+  "Deaerator": [
+   "Dégazeur",
+   "Un appareil qui élimine l'oxygène et les gaz dissous de l'eau d'alimentation de la chaudière pour éviter la corrosion."
+  ],
+  "Economizer": [
+   "Économiseur",
+   "Un échangeur de chaleur qui utilise la chaleur des gaz d'échappement pour réchauffer l'eau d'alimentation de la chaudière ou produire de la vapeur."
+  ],
+  "Evaporator (Tatlı Su Üreteci)": [
+   "Bouilleur (évaporateur)",
+   "Un appareil qui produit de l'eau douce en évaporant de l'eau de mer, généralement avec la chaleur perdue du moteur ou de la vapeur basse pression."
+  ],
+  "Oily Water Separator (OWS)": [
+   "Séparateur d'eaux mazouteuses (OWS)",
+   "Le séparateur qui ramène la teneur en hydrocarbures des eaux de cale sous 15 ppm afin qu'elles puissent être rejetées légalement."
+  ],
+  "Sewage Treatment Plant": [
+   "Installation de traitement des eaux usées",
+   "L'installation qui traite biologiquement ou chimiquement les eaux usées du navire avant leur rejet."
+  ],
+  "Ballast Water Treatment (BWTS)": [
+   "Système de traitement des eaux de ballast (BWTS)",
+   "Un système qui tue ou élimine les organismes et agents pathogènes contenus dans les eaux de ballast pour empêcher leur propagation."
+  ],
+  "Stern Tube Seal": [
+   "Joint du tube d'étambot",
+   "Le joint qui empêche l'eau d'entrer là où l'arbre d'hélice traverse la coque."
+  ],
+  "Controllable Pitch Propeller (CPP)": [
+   "Hélice à pas variable",
+   "Une hélice dont l'angle des pales peut être modifié ; la poussée est réglée tandis que le régime du moteur reste constant."
+  ],
+  "Fixed Pitch Propeller (FPP)": [
+   "Hélice à pas fixe",
+   "L'hélice traditionnelle à pales fixes ; la poussée est réglée par le régime et le sens de rotation du moteur."
+  ],
+  "Reduction Gear (Dişli Kutusu)": [
+   "Réducteur",
+   "Une boîte d'engrenages qui ramène la vitesse d'un moteur rapide à la vitesse nécessaire à l'hélice."
+  ],
+  "Heat Exchanger (Isı Değiştirici)": [
+   "Échangeur de chaleur",
+   "Un appareil qui transfère la chaleur entre deux fluides ; utilisé dans les circuits de refroidissement et de chauffage."
+  ],
+  "Centrifugal Pump": [
+   "Pompe centrifuge",
+   "Une pompe à roue tournante qui déplace le liquide par force centrifuge ; courante pour le refroidissement et le ballast."
+  ],
+  "Positive Displacement Pump": [
+   "Pompe volumétrique",
+   "Une pompe qui déplace un volume fixe de liquide à chaque course ou tour ; utilisée pour l'huile de graissage et le transfert de combustible."
+  ],
+  "Air Compressor (Hava Kompresörü)": [
+   "Compresseur d'air de lancement",
+   "Un compresseur qui produit de l'air comprimé à environ 30 bar pour le lancement du moteur principal et les systèmes de commande."
+  ],
+  "Indicator Diagram": [
+   "Diagramme d'indicateur",
+   "Un diagramme pression-volume du cylindre ; utilisé pour l'analyse des performances et la recherche de pannes."
+  ],
+  "Mean Effective Pressure (MEP)": [
+   "Pression moyenne effective (PME)",
+   "La pression effective moyenne dans le cylindre sur un cycle ; utilisée pour calculer la puissance du moteur."
+  ],
+  "Brake Power": [
+   "Puissance effective",
+   "La puissance mesurée à l'arbre de sortie du moteur ; exprimée en kW."
+  ],
+  "Indicated Power": [
+   "Puissance indiquée",
+   "La puissance développée dans les cylindres, calculée à partir de la pression des gaz ; les pertes mécaniques ne sont pas déduites."
+  ],
+  "Thermal Efficiency": [
+   "Rendement thermique",
+   "La part de l'énergie calorifique du combustible transformée en travail mécanique ; exprimée en pourcentage."
+  ],
+  "LSA Code": [
+   "Recueil LSA",
+   "Le Recueil international de règles relatives aux engins de sauvetage ; normes pour les embarcations et radeaux de sauvetage, les brassières et les autres engins de sauvetage."
+  ],
+  "FSS Code": [
+   "Recueil FSS",
+   "Le Recueil international de règles applicables aux systèmes de protection contre l'incendie ; normes pour les dispositifs de détection et d'extinction."
+  ],
+  "IAMSAR Manual": [
+   "Manuel IAMSAR",
+   "Le Manuel international de recherche et de sauvetage aéronautiques et maritimes ; il fixe les procédures des opérations SAR."
+  ],
+  "Williamson Turn": [
+   "Manœuvre de Williamson",
+   "Une manœuvre d'homme à la mer qui ramène le navire sur son propre sillage, en sens inverse."
+  ],
+  "Scharnow Turn": [
+   "Manœuvre de Scharnow",
+   "Une manœuvre d'homme à la mer utilisée lorsque la personne a disparu depuis un certain temps (action différée)."
+  ],
+  "Anderson Turn": [
+   "Manœuvre d'Anderson",
+   "Une manœuvre d'homme à la mer rapide, en une seule giration, pour les navires à faible rayon de giration (action immédiate)."
+  ],
+  "Immersion Suit": [
+   "Combinaison d'immersion",
+   "Une combinaison intégrale étanche et isolante qui protège celui qui la porte dans l'eau froide."
+  ],
+  "Thermal Protective Aid (TPA)": [
+   "Moyen de protection thermique (TPA)",
+   "Un sac ou une combinaison en matériau étanche qui réduit la déperdition de chaleur du corps dans un radeau ou une embarcation de sauvetage."
+  ],
+  "Pyrotechnic Signals": [
+   "Signaux pyrotechniques de détresse",
+   "Signaux de détresse comme les fusées à parachute, les feux à main et les signaux fumigènes flottants."
+  ],
+  "EEBD (Emergency Escape Breathing Device)": [
+   "EEBD (appareil respiratoire pour l'évacuation d'urgence)",
+   "Un appareil respiratoire portatif qui fournit de l'air pendant une courte durée pour s'échapper d'une atmosphère dangereuse."
+  ],
+  "Fixed Fire Detection System": [
+   "Dispositif fixe de détection et d'alarme d'incendie",
+   "Un dispositif fixe qui détecte l'incendie à l'aide de détecteurs de fumée, de chaleur ou de flamme et donne l'alarme."
+  ],
+  "Sprinkler System": [
+   "Installation de sprinklers",
+   "Une installation d'eau diffusée qui se déclenche automatiquement lorsque la chaleur ouvre les têtes de sprinklers ; obligatoire sur les navires à passagers."
+  ],
+  "Inert Gas System (IGS)": [
+   "Installation de gaz inerte (IGS)",
+   "Une installation qui remplit les citernes à cargaison des navires-citernes d'un gaz pauvre en oxygène pour empêcher les explosions."
+  ],
+  "Permit to Work": [
+   "Permis de travail",
+   "Une autorisation écrite délivrée avant des travaux dangereux comme les travaux par points chauds, l'entrée dans un espace clos ou le travail en hauteur."
+  ],
+  "Risk Assessment": [
+   "Évaluation des risques",
+   "Un examen systématique qui identifie les dangers d'un travail et planifie les mesures de maîtrise."
+  ],
+  "Toolbox Meeting": [
+   "Toolbox meeting",
+   "Une courte réunion de sécurité avant le travail, au cours de laquelle les dangers et les précautions sont expliqués à l'équipe."
+  ],
+  "Near Miss Report": [
+   "Rapport de quasi-accident",
+   "Le compte rendu d'un événement qui aurait pu provoquer un accident ; important pour développer une culture de sécurité."
+  ],
+  "Yoğunlaşma (Condensation)": [
+   "Condensation",
+   "La transformation de la vapeur d'eau en liquide lors du refroidissement ; le processus à l'origine des nuages, du brouillard et de la rosée."
+  ],
+  "Adveksiyon Sisi": [
+   "Brouillard d'advection",
+   "Brouillard qui se forme lorsque de l'air chaud et humide passe au-dessus d'une mer plus froide."
+  ],
+  "Radyasyon Sisi": [
+   "Brouillard de rayonnement",
+   "Brouillard qui se forme la nuit sur terre lorsque le sol se refroidit et que l'air au-dessus atteint son point de rosée."
+  ],
+  "Coriolis Kuvveti": [
+   "Force de Coriolis",
+   "La force apparente due à la rotation de la Terre ; elle dévie les vents et les courants vers la droite dans l'hémisphère Nord et vers la gauche dans l'hémisphère Sud."
+  ],
+  "Geostrofik Rüzgâr": [
+   "Vent géostrophique",
+   "Le vent théorique qui souffle parallèlement aux isobares lorsque la force du gradient de pression et la force de Coriolis s'équilibrent."
+  ],
+  "Konveksiyon": [
+   "Convection",
+   "Mouvement vertical de l'air lorsque l'air chauffé s'élève et se refroidit ; il produit des cumulus et des averses."
+  ],
+  "Soğuk Cephe": [
+   "Front froid",
+   "La limite où une masse d'air froid s'engage sous une masse d'air chaud et la soulève."
+  ],
+  "Sıcak Cephe": [
+   "Front chaud",
+   "La limite où une masse d'air chaud s'élève lentement au-dessus d'une masse d'air froid."
+  ],
+  "Oklüzyon Cephesi": [
+   "Occlusion (front occlus)",
+   "Un front qui se forme lorsque le front froid rattrape le front chaud et soulève l'air chaud au-dessus de la surface."
+  ],
+  "Hava Kütlesi": [
+   "Masse d'air",
+   "Un grand volume d'air de température et d'humidité semblables sur une vaste étendue."
+  ],
+  "Jet Stream": [
+   "Courant-jet",
+   "Une bande étroite de vent très fort près de la tropopause ; il peut atteindre 200 à 300 nœuds."
+  ],
+  "ITCZ (Ekvatoral Konverjans)": [
+   "ZCIT (zone de convergence intertropicale)",
+   "La ceinture tropicale où se rencontrent les alizés des deux hémisphères ; une zone de fortes pluies et d'orages."
+  ],
+  "Fetch": [
+   "Fetch",
+   "La distance de mer libre sur laquelle le vent souffle sans obstacle ; elle détermine directement la taille des vagues."
+  ],
+  "Significant Wave Height (Hs)": [
+   "Hauteur significative des vagues (Hs)",
+   "La hauteur moyenne du tiers des vagues les plus hautes ; la principale mesure de l'état de la mer."
+  ],
+  "Typhoon Signal": [
+   "Signal de typhon",
+   "Un signal d'avertissement qui annonce l'approche d'un cyclone tropical."
+  ],
+  "Buys Ballot Kuralı": [
+   "Loi de Buys-Ballot",
+   "Dans l'hémisphère Nord, si l'on se tient dos au vent, la basse pression se trouve à gauche."
+  ],
+  "Squall (Bora)": [
+   "Grain",
+   "Une augmentation brusque et de courte durée du vent ; souvent accompagnée de fortes pluies et d'une mauvaise visibilité."
+  ],
+  "Waterspout (Hortum)": [
+   "Trombe marine",
+   "Une colonne d'air tourbillonnante au-dessus de la mer, suspendue à un cumulonimbus et qui aspire des embruns."
+  ],
+  "Bulbous Bow (Bodoslama Bülbü)": [
+   "Bulbe d'étrave",
+   "Un bulbe en saillie vers l'avant sous la flottaison à l'étrave ; il réduit la résistance de vagues et économise le combustible."
+  ],
+  "Bilge Keel": [
+   "Quille de roulis",
+   "Un aileron fixé le long du bouchain pour amortir le roulis."
+  ],
+  "Stabilizer Fin": [
+   "Stabilisateur à ailerons",
+   "Un aileron actif en saillie sur la coque qui réduit automatiquement le roulis en mer."
+  ],
+  "Slip (Kayma)": [
+   "Recul de l'hélice",
+   "La différence entre l'avance théorique et l'avance réelle de l'hélice ; exprimée en pourcentage."
+  ],
+  "Pitch (Hatve)": [
+   "Pas (de l'hélice)",
+   "La distance dont une hélice avancerait théoriquement en un tour."
+  ],
+  "Cavitation": [
+   "Cavitation de l'hélice",
+   "Des bulles de vapeur qui se forment sur les pales de l'hélice là où la pression chute, puis implosent ; elles provoquent de l'érosion et une perte de rendement."
+  ],
+  "Interaction Effect": [
+   "Interaction",
+   "Les forces hydrodynamiques entre deux navires qui passent près l'un de l'autre."
+  ],
+  "Shallow Water Effect": [
+   "Effet des petits fonds",
+   "En eau peu profonde, l'écoulement sous le navire s'accélère et la pression baisse ; le navire s'enfonce et gouverne moins bien."
+  ],
+  "Trim Optimization": [
+   "Optimisation de l'assiette",
+   "Choisir l'assiette pour laquelle le navire a la plus faible résistance ; elle économise le combustible."
+  ],
+  "Alternator": [
+   "Alternateur",
+   "Une génératrice qui produit du courant alternatif ; à bord, généralement 440 V 60 Hz ou 380 V 50 Hz."
+  ],
+  "Transformer": [
+   "Transformateur",
+   "Un appareil électromagnétique qui élève ou abaisse une tension alternative."
+  ],
+  "Circuit Breaker (Şalter)": [
+   "Disjoncteur",
+   "Un interrupteur de protection qui ouvre automatiquement le circuit en cas de surintensité ou de court-circuit."
+  ],
+  "Frequency Converter": [
+   "Convertisseur de fréquence",
+   "Un équipement électronique qui convertit la fréquence et la tension, par exemple pour un branchement électrique à quai."
+  ],
+  "Synchroscope": [
+   "Synchronoscope",
+   "Un instrument qui indique, avant le couplage, si la fréquence et la phase d'une génératrice à coupler concordent avec celles des barres."
+  ],
+  "AVR (Automatic Voltage Regulator)": [
+   "Régulateur automatique de tension (AVR)",
+   "Le circuit qui maintient constante la tension de sortie de la génératrice."
+  ],
+  "Earth Fault Monitor": [
+   "Contrôleur d'isolement",
+   "Un instrument qui détecte les défauts d'isolement à la masse dans un réseau isolé (non relié à la terre)."
+  ],
+  "Motor Starter": [
+   "Démarreur de moteur",
+   "Le circuit qui démarre un moteur électrique de façon contrôlée en limitant le courant de démarrage."
+  ],
+  "PLC (Programmable Logic Controller)": [
+   "Automate programmable (PLC)",
+   "Un contrôleur programmable utilisé pour la commande des machines et des procédés dans l'automatisation du navire."
+  ],
+  "SCADA": [
+   "SCADA",
+   "Logiciel de surveillance et de commande centralisées de la salle des machines et des systèmes auxiliaires."
+  ],
+  "BWM Convention": [
+   "Convention BWM",
+   "La Convention sur la gestion des eaux de ballast ; elle vise à empêcher la propagation d'organismes par les eaux de ballast des navires."
+  ],
+  "SEEMP": [
+   "SEEMP",
+   "Plan de gestion de l'efficacité énergétique du navire ; le plan obligatoire des mesures d'efficacité énergétique en exploitation."
+  ],
+  "EEDI": [
+   "EEDI",
+   "Indice nominal de rendement énergétique ; la norme de conception obligatoire pour l'efficacité CO₂ des navires neufs."
+  ],
+  "CII Rating": [
+   "Notation CII",
+   "Indicateur d'intensité carbone ; note de A à E l'efficacité carbone annuelle d'un navire en exploitation."
+  ],
+  "DOC (Document of Compliance)": [
+   "DOC (document de conformité)",
+   "Le certificat du Code ISM qui atteste que le système de gestion de la sécurité de la compagnie est conforme."
+  ],
+  "SMC (Safety Management Certificate)": [
+   "SMC (certificat de gestion de la sécurité)",
+   "Le certificat du Code ISM délivré au navire, qui atteste que son système de gestion de la sécurité est conforme."
+  ],
+  "IOPP Certificate": [
+   "Certificat IOPP",
+   "Le Certificat international de prévention de la pollution par les hydrocarbures, délivré en application de l'Annexe I de MARPOL."
+  ],
+  "Load Line Certificate": [
+   "Certificat de franc-bord",
+   "Le certificat qui confirme les lignes de charge et les francs-bords assignés au navire."
+  ],
+  "Safety Equipment Certificate": [
+   "Certificat de sécurité du matériel d'armement",
+   "Le certificat qui atteste que les engins de sauvetage et le matériel de protection contre l'incendie sont conformes à SOLAS."
+  ],
+  "Tonnage Certificate": [
+   "Certificat de jauge",
+   "Le certificat qui indique la jauge brute et la jauge nette du navire."
+  ],
+  "Grain Loading Diagram": [
+   "Grain loading diagram",
+   "Un diagramme qui montre l'effet d'une cargaison de grains sur la stabilité selon le remplissage des cales."
+  ],
+  "Lashing Calculator": [
+   "Lashing calculator",
+   "Un outil de calcul des efforts sur les saisines des conteneurs et de la cargaison."
+  ],
+  "Cargo Securing Manual (CSM)": [
+   "Manuel d'assujettissement de la cargaison (CSM)",
+   "Le manuel obligatoire, propre au navire, sur les procédures et le matériel d'assujettissement de la cargaison."
+  ],
+  "Ventilation Hold": [
+   "Ventilation des cales",
+   "Aérer les cales pour maîtriser l'humidité et la température ; elle empêche la buée et la condensation."
+  ],
+  "Sweat (Terleme)": [
+   "Sweat",
+   "Condensation sur la cargaison ou sur la structure de la cale due aux écarts de température ; on distingue la buée de cargaison et la buée de cale."
+  ],
+  "TML (Transportable Moisture Limit)": [
+   "TML (limite d'humidité admissible aux fins du transport)",
+   "La teneur en humidité maximale à laquelle une cargaison solide en vrac susceptible de se liquéfier peut être transportée en sécurité."
+  ],
+  "Flow Moisture Point (FMP)": [
+   "FMP (Flow Moisture Point)",
+   "La teneur en humidité à laquelle une cargaison solide en vrac commence à se comporter comme un liquide ; TML = 0,9 × FMP."
+  ],
+  "Liquefaction": [
+   "Liquéfaction",
+   "Une cargaison solide en vrac qui se met à se comporter comme un liquide sous l'effet des vibrations et des mouvements du navire ; elle peut entraîner une perte de stabilité et le chavirement."
+  ],
+  "Fumigation": [
+   "Fumigation",
+   "Détruire les insectes et les nuisibles dans la cargaison au moyen d'un gaz toxique."
+  ],
+  "Classification Survey": [
+   "Visite de classification",
+   "Une inspection technique de la structure et de l'équipement du navire par la société de classification à intervalles fixés."
+  ],
+  "Damage Report (Hasar Raporu)": [
+   "Rapport d'avarie",
+   "Un relevé écrit des dommages ou des manquants constatés sur la cargaison."
+  ],
+  "Letter of Protest": [
+   "Lettre de protestation",
+   "Une lettre formelle qui conteste des dommages à la cargaison, un retard ou des conditions inadaptées."
+  ],
+  "Dangerous Goods Declaration": [
+   "Déclaration de marchandises dangereuses",
+   "Le document par lequel le chargeur déclare la classe, les propriétés et les informations d'urgence des marchandises dangereuses."
+  ],
+  "Mediterranean Mooring": [
+   "Amarrage à la méditerranéenne",
+   "S'amarrer l'arrière au quai, l'avant tenu par les ancres ; courant en Méditerranée."
+  ],
+  "Single Point Mooring (SPM)": [
+   "SPM (Single Point Mooring)",
+   "Une bouée au large à laquelle un navire-citerne s'amarre par un seul point pendant le chargement ou le déchargement."
+  ],
+  "Parallel Body": [
+   "Corps cylindrique",
+   "La partie centrale de la coque sur laquelle la section transversale reste identique."
+  ],
+  "Pivot Point": [
+   "Point pivot",
+   "Le point autour duquel le navire semble tourner ; en marche avant, il se situe bien sur l'avant."
+  ],
+  "Tactical Diameter": [
+   "Diamètre tactique",
+   "La distance dont le navire s'est écarté latéralement de sa route initiale après avoir tourné de 180° avec toute la barre."
+  ],
+  "Kick (Başlangıç Sapması)": [
+   "Kick",
+   "Juste après la mise de la barre, l'arrière s'écarte du sens de la giration et le navire se déplace brièvement latéralement dans le sens opposé."
+  ],
+  "Transverse Thrust": [
+   "Effet de pas",
+   "La poussée latérale de l'hélice sur l'arrière ; elle détermine le comportement du navire à faible vitesse."
+  ],
+  "Approach Speed": [
+   "Vitesse d'accostage",
+   "La vitesse latérale du navire vers le poste pendant l'accostage ; elle ne doit pas dépasser ce que les défenses peuvent absorber."
+  ],
+  "STS Operation": [
+   "Opération STS",
+   "Transbordement navire à navire : deux navires se placent bord à bord pour transférer une cargaison."
+  ],
+  "Alabora": [
+   "Chavirement",
+   "Un navire ou une embarcation qui se retourne complètement, la quille hors de l'eau."
+  ],
+  "Arma": [
+   "Gréement",
+   "Sur les voiliers, l'ensemble des mâts, vergues, haubans, étais et cordages."
+  ],
+  "Ayna Kıç": [
+   "Arrière à tableau",
+   "Un arrière terminé par une surface plane et verticale ; très répandu sur les cargos modernes."
+  ],
+  "Demir Taramak": [
+   "Chasser sur son ancre",
+   "L'ancre ne tient pas et glisse sur le fond ; causé par une mauvaise tenue du fond ou une touée insuffisante."
+  ],
+  "Duba": [
+   "Ponton",
+   "Une plate-forme flottante à fond plat, avec ou sans propulsion propre ; utilisée pour le transbordement de cargaison, comme débarcadère ou comme plate-forme de travail."
+  ],
+  "Gemiadamı": [
+   "Gens de mer",
+   "Toute personne employée à bord d'un navire, à quelque titre que ce soit ; comprend le capitaine, les officiers et le personnel d'exécution."
+  ],
+  "Iskarmoz": [
+   "Tolet",
+   "Sur les petites embarcations, la cheville ou la fourche sur le plat-bord contre laquelle s'appuie l'aviron pour ramer."
+  ],
+  "Kontra": [
+   "Contre-barre",
+   "Mettre la barre du bord opposé pour arrêter l'abattée du navire."
+  ],
+  "Tayfa": [
+   "Matelot (rating)",
+   "Un membre d'équipage du service pont ou machine qui n'est pas officier."
+  ],
+  "Kazık Bağı (Clove Hitch)": [
+   "Nœud de cabestan",
+   "Un nœud utilisé pour tourner un cordage sur un poteau ou un bollard ; rapide à faire et à défaire."
+  ],
+  "Gemici Bağı (Bowline)": [
+   "Nœud de chaise",
+   "Un nœud qui forme à l'extrémité d'un cordage une boucle fixe qui ne glisse pas et ne se resserre pas ; le nœud de base du marin."
+  ],
+  "Yoma (Sheet Bend)": [
+   "Nœud d'écoute",
+   "Un nœud utilisé pour réunir deux cordages, même de diamètres différents."
+  ],
+  "Balıkçı Bağı (Fisherman's Knot)": [
+   "Nœud de pêcheur",
+   "Un nœud solide utilisé pour réunir définitivement deux lignes."
+  ],
+  "Figure of Eight": [
+   "Nœud en huit",
+   "Un nœud d'arrêt qui empêche l'extrémité d'un cordage de filer hors d'une poulie ou d'un trou."
+  ],
+  "Constrictor Bağı": [
+   "Nœud constricteur",
+   "Un nœud qui serre très fortement un objet rond ; utilisé par exemple pour fixer un tuyau."
+  ],
+  "Rolling Hitch": [
+   "Rolling hitch",
+   "Un nœud à friction fait sur un cordage ou un espar, qui résiste à une traction dans sa longueur ; utilisé pour soulager un cordage sous tension."
+  ],
+  "Kısa Ek (Short Splice)": [
+   "Épissure courte",
+   "Réunir définitivement deux extrémités de cordage en entrelaçant leurs torons ; le diamètre du cordage augmente."
+  ],
+  "Uzun Ek (Long Splice)": [
+   "Épissure longue",
+   "Une épissure qui réunit deux cordages sans augmenter leur diamètre ; utilisée lorsque le cordage doit passer dans une poulie."
+  ],
+  "Koçboynuzu": [
+   "Taquet",
+   "Une ferrure métallique à deux cornes sur laquelle on tourne un cordage."
+  ],
+  "Panama Chock": [
+   "Chaumard Panama",
+   "Un chaumard fermé en abord par lequel passent les amarres ; exigé pour le transit du canal de Panama."
+  ],
+  "Çıma Halatı (Heaving Line)": [
+   "Touline",
+   "Une ligne légère à extrémité lestée, lancée à terre ou à un autre navire pour passer les amarres."
+  ],
+  "Sentetik Halat": [
+   "Cordage synthétique",
+   "Cordage en fibres synthétiques comme le nylon, le polyester, le polypropylène ou le HMPE."
+  ],
+  "Tel Halat (Wire Rope)": [
+   "Câble d'acier",
+   "Câble à haute résistance fait de fils d'acier ; utilisé pour les grues, les mâts de charge et l'assujettissement de la cargaison."
+  ],
+  "SWL (Safe Working Load)": [
+   "CMU (charge maximale d'utilisation, SWL)",
+   "La charge maximale qu'un câble, une chaîne ou un accessoire de levage peut lever ou retenir en utilisation normale."
+  ],
+  "MBL (Minimum Breaking Load)": [
+   "MBL (charge de rupture minimale)",
+   "La plus petite force pour laquelle un câble ou une chaîne neufs est garanti de ne pas rompre ; le coefficient de sécurité est MBL divisé par SWL."
+  ],
+  "Snap Back Zone": [
+   "Snap-back zone",
+   "La zone dangereuse dans laquelle une amarre sous tension peut revenir en fouettant si elle se rompt."
+  ],
+  "Doubling the Angle": [
+   "Doubling the angle on the bow",
+   "Déterminer la distance d'un objet en notant le moment où son gisement double ; la distance parcourue entre les deux relèvements est égale à la distance de l'objet."
+  ],
+  "Four Point Bearing": [
+   "Four point bearing",
+   "Déterminer la distance d'un objet à partir de relèvements à 45° et à 90° de l'avant ; la distance parcourue est égale à la distance par le travers."
+  ],
+  "Special Mark (Özel İşaret)": [
+   "Marque spéciale",
+   "Dans le système AISM, une marque jaune qui signale une zone ou une particularité spéciale, comme une zone de câbles ou de tir."
+  ],
+  "Cardinal Mark": [
+   "Marque cardinale",
+   "Dans le système AISM, une marque placée au nord, à l'est, au sud ou à l'ouest d'un danger ; elle indique de quel côté se trouvent les eaux saines."
+  ],
+  "Isolated Danger Mark": [
+   "Marque de danger isolé",
+   "Dans le système AISM, une marque placée sur un danger de faible étendue entouré d'eaux navigables."
+  ],
+  "Safe Water Mark": [
+   "Marque d'eaux saines",
+   "Dans le système AISM, une marque à bandes verticales rouges et blanches qui indique des eaux saines tout autour ; utilisée comme marque d'atterrissage ou de milieu de chenal."
+  ],
+  "Liman Yanaşma Feneri": [
+   "Feux d'alignement",
+   "Feux à l'entrée d'un port qui, vus l'un par l'autre, marquent l'axe d'un chenal ou la ligne d'approche sûre."
+  ],
+  "Racon": [
+   "Racon",
+   "Un répondeur radar qui répond à une impulsion radar et fait apparaître un signal codé sur l'écran radar."
+  ],
+  "Radar Shadow": [
+   "Zone d'ombre radar",
+   "La zone aveugle derrière les grands objets, que le faisceau radar ne peut pas atteindre."
+  ],
+  "Lubber Line": [
+   "Ligne de foi",
+   "La ligne fixe sur la cuvette du compas ou sur l'écran radar qui matérialise l'axe du navire."
+  ],
+  "Pelorus": [
+   "Taximètre (pelorus)",
+   "Un instrument de visée utilisé pour prendre des relèvements ; il n'a pas de compas magnétique propre."
+  ],
+  "Rate of Turn Indicator": [
+   "Indicateur de vitesse de giration",
+   "Un instrument qui indique la vitesse à laquelle le navire tourne, en degrés par minute ; exigé par SOLAS sur les navires d'une jauge brute de 50 000 et plus."
+  ],
+  "Speed Log": [
+   "Loch (vitesse et distance)",
+   "Un instrument qui mesure la vitesse du navire par rapport à l'eau ou au fond ; à effet Doppler ou électromagnétique."
+  ],
+  "Parallel Indexing": [
+   "Parallel indexing",
+   "Une technique radar : des lignes tracées parallèlement à la route prévue à une distance fixée d'une cible fixe servent à surveiller la position du navire."
+  ],
+  "Stiff Ship (Sert Gemi)": [
+   "Stiff ship",
+   "Un navire à GM élevé ; il roule vite et violemment et est inconfortable, bien que sa stabilité initiale soit forte."
+  ],
+  "Tender Ship (Yumuşak Gemi)": [
+   "Tender ship",
+   "Un navire à faible GM ; il roule lentement avec une longue période, et le risque de chavirement est plus grand."
+  ],
+  "Hogging": [
+   "Arc (hogging)",
+   "Le milieu du navire se cintre vers le haut et les extrémités s'abaissent ; cela crée des contraintes dans la structure."
+  ],
+  "Sagging": [
+   "Contre-arc (sagging)",
+   "Le milieu du navire se cintre vers le bas et les extrémités se relèvent ; l'inverse de l'arc."
+  ],
+  "Still Water Bending Moment": [
+   "Moment fléchissant en eau calme",
+   "Le moment fléchissant longitudinal dû à la répartition des poids et de la poussée en eau calme ; la base des calculs de résistance longitudinale."
+  ],
+  "Wave Bending Moment": [
+   "Moment fléchissant dû aux vagues",
+   "Le moment fléchissant supplémentaire qui s'exerce sur la coque au passage des vagues."
+  ],
+  "Torsional Stress": [
+   "Contrainte de torsion",
+   "Contrainte due aux charges qui tordent la coque ; particulièrement critique sur les grands porte-conteneurs."
+  ],
+  "FWA (Fresh Water Allowance)": [
+   "FWA (Fresh Water Allowance)",
+   "L'augmentation du tirant d'eau lorsque le navire passe de l'eau de mer à l'eau douce ; exprimée en mm."
+  ],
+  "DWA (Dock Water Allowance)": [
+   "DWA (Dock Water Allowance)",
+   "La correction de tirant d'eau pour la densité de l'eau du port, comprise entre celle de l'eau douce et celle de l'eau de mer."
+  ],
+  "Displacement Table": [
+   "Table de déplacement",
+   "Une table hydrostatique donnant le déplacement du navire pour différents tirants d'eau."
+  ],
+  "Hydrostatic Curves": [
+   "Courbes hydrostatiques",
+   "Courbes qui donnent des valeurs comme TPC, MCTC, LCB et LCF en fonction du tirant d'eau."
+  ],
+  "KN Curves": [
+   "Courbes KN (pantocarènes)",
+   "KN porté en fonction du déplacement pour des angles d'inclinaison fixes."
+  ],
+  "Wall-Sided Formula": [
+   "Wall-sided formula",
+   "GZ = sin θ × (GM + ½ BM tan² θ) ; donne GZ pour un navire à murailles verticales, valable jusqu'à l'immersion du livet de pont ou l'émersion du bouchain."
+  ],
+  "Bilge Radius": [
+   "Rayon de bouchain",
+   "Le rayon du bordé arrondi là où le fond du navire rejoint la muraille."
+  ],
+  "Shifting Boards": [
+   "Bardis",
+   "Cloisons longitudinales verticales installées dans les cales pour empêcher le ripage d'une cargaison de grains."
+  ],
+  "Grain Heeling Moment": [
+   "Moment inclinant dû au grain",
+   "Le moment inclinant dû à un ripage supposé de la cargaison de grains ; limité par le Recueil international sur les grains de l'OMI."
+  ],
+  "Blowdown": [
+   "Purge de la chaudière",
+   "L'extraction contrôlée d'eau de la chaudière pour réduire sa teneur en matières dissoutes."
+  ],
+  "Cylinder Lubrication": [
+   "Graissage des cylindres",
+   "Dans les moteurs deux temps, le circuit séparé qui lubrifie la chemise de cylindre et les segments de piston."
+  ],
+  "Crankcase Explosion": [
+   "Explosion de carter",
+   "Une explosion dangereuse provoquée lorsque le brouillard d'huile du carter est enflammé par un point chaud."
+  ],
+  "Oil Mist Detector (OMD)": [
+   "Détecteur de brouillard d'huile (OMD)",
+   "Un détecteur qui surveille la concentration de brouillard d'huile dans le carter et avertit avant qu'une explosion ne puisse se produire."
+  ],
+  "Scavenge Fire": [
+   "Incendie de caisse d'air de balayage",
+   "Un incendie dans l'espace d'air de balayage causé par l'inflammation de dépôts d'huile et de calamine."
+  ],
+  "Stuffing Box": [
+   "Presse-étoupe",
+   "Une garniture d'étanchéité là où un arbre ou une tige traverse un carter ou une cloison."
+  ],
+  "Governor (Regülatör)": [
+   "Régulateur de vitesse",
+   "Le dispositif qui ajuste automatiquement l'alimentation en combustible pour maintenir constant le régime du moteur quand la charge varie."
+  ],
+  "Indicator Card": [
+   "Diagramme d'indicateur",
+   "Le diagramme pression-volume relevé sur un cylindre ; utilisé pour évaluer les performances du moteur et rechercher les défauts."
+  ],
+  "Compression Ratio": [
+   "Taux de compression",
+   "Le volume du cylindre avec le piston au point mort bas divisé par le volume au point mort haut."
+  ],
+  "Clearance Volume": [
+   "Volume mort",
+   "Le volume qui reste dans le cylindre lorsque le piston est au point mort haut."
+  ],
+  "TDC (Top Dead Centre)": [
+   "PMH (point mort haut)",
+   "La position la plus haute du piston dans le cylindre."
+  ],
+  "BDC (Bottom Dead Centre)": [
+   "PMB (point mort bas)",
+   "La position la plus basse du piston dans le cylindre."
+  ],
+  "Lub Oil Crosshead": [
+   "Graissage des crosses",
+   "L'alimentation en huile des paliers de crosse ; elle nécessite de l'huile à haute pression."
+  ],
+  "Plate Cooler": [
+   "Réfrigérant à plaques",
+   "Un échangeur de chaleur à plaques ; il transfère la chaleur entre l'eau de mer et l'eau douce."
+  ],
+  "Relief Valve": [
+   "Soupape de décharge",
+   "Une soupape de sûreté qui s'ouvre automatiquement en cas de surpression pour protéger le circuit."
+  ],
+  "Thermostat": [
+   "Vanne thermostatique",
+   "Un organe de régulation automatique qui maintient la température de l'eau de refroidissement dans une plage réglée."
+  ],
+  "Jacket Water": [
+   "Eau de refroidissement des chemises",
+   "Le circuit de refroidissement à l'eau douce autour des cylindres du moteur ; un circuit fermé."
+  ],
+  "Expansion Tank": [
+   "Caisse d'expansion",
+   "La caisse en charge du circuit d'eau de refroidissement ; elle absorbe la dilatation de l'eau qui chauffe et permet à l'air de s'échapper."
+  ],
+  "Sea Chest": [
+   "Boîte à mer",
+   "Un renfoncement dans les œuvres vives, fermé par une grille, par lequel l'eau de mer est aspirée."
+  ],
+  "Zinc Anode (Kurban Anot)": [
+   "Anode sacrificielle (anode de zinc)",
+   "Une anode en zinc fixée sur les œuvres vives, qui se corrode à la place de l'acier et empêche la corrosion galvanique."
+  ],
+  "ICCP": [
+   "Protection cathodique par courant imposé (ICCP)",
+   "Un système actif qui protège la coque contre la corrosion au moyen d'un courant fourni par une source extérieure."
+  ],
+  "Tank Top": [
+   "Plafond de double fond",
+   "Le bordé supérieur du double fond ; il forme le sol de la cale et porte le poids de la cargaison."
+  ],
+  "Tweendeck": [
+   "Entrepont",
+   "Un pont intermédiaire entre la cale basse et le pont supérieur ; il offre un espace d'arrimage supplémentaire pour les marchandises diverses."
+  ],
+  "Feeder Vessel": [
+   "Feeder",
+   "Un petit porte-conteneurs qui transporte les conteneurs entre de petits ports et les ports d'éclatement desservis par les grands navires."
+  ],
+  "FCL (Full Container Load)": [
+   "FCL (Full Container Load)",
+   "Un conteneur dont tout le contenu appartient à un seul chargeur."
+  ],
+  "LCL (Less than Container Load)": [
+   "LCL (Less than Container Load)",
+   "Un conteneur rempli des marchandises de plusieurs chargeurs."
+  ],
+  "Outturn Report": [
+   "Outturn report",
+   "Un relevé des quantités et de l'état de la cargaison après le déchargement."
+  ],
+  "Bagging": [
+   "Ensachage",
+   "Mettre une cargaison en vrac dans des sacs pour le transport."
+  ],
+  "Ship's Figures": [
+   "Ship's figures",
+   "La quantité de cargaison déterminée par le bord au moyen d'un draft survey ; comparée aux chiffres de terre."
+  ],
+  "Shore Figures": [
+   "Shore figures",
+   "La quantité de cargaison déterminée par les bascules de terre ; un écart avec les chiffres du bord peut entraîner un litige."
+  ],
+  "Loading Computer": [
+   "Ordinateur de chargement",
+   "Un système informatique de bord qui calcule l'état de chargement, la stabilité et la résistance longitudinale."
+  ],
+  "COW (Crude Oil Washing)": [
+   "Lavage au pétrole brut (COW)",
+   "Laver les citernes à cargaison d'un pétrolier de brut avec la cargaison de brut elle-même ; exigé par MARPOL."
+  ],
+  "Inert Gas (Asal Gaz)": [
+   "Gaz inerte",
+   "Gaz à faible teneur en oxygène ; utilisé dans les citernes à cargaison des navires-citernes pour empêcher les explosions."
+  ],
+  "Cargo Plan (Yükleme Planı)": [
+   "Plan de chargement",
+   "Le plan qui indique où est arrimée chaque partie de la cargaison ; établi en tenant compte de la stabilité et de l'ordre des escales."
+  ],
+  "Bay Plan": [
+   "Bay plan",
+   "Sur les porte-conteneurs, le plan détaillé qui indique la position d'arrimage de chaque conteneur dans chaque baie."
+  ],
+  "Segregation": [
+   "Séparation",
+   "Tenir éloignées les unes des autres, aux distances exigées, les classes de marchandises dangereuses incompatibles."
+  ],
+  "DSC (Digital Selective Calling)": [
+   "ASN (appel sélectif numérique, DSC)",
+   "Un système des radios VHF, MF et HF permettant d'envoyer des alertes de détresse automatiques et d'appeler des stations."
+  ],
+  "Inmarsat-C": [
+   "Inmarsat-C",
+   "Un terminal de communication par satellite fondé sur les messages ; utilisé pour les alertes de détresse et la réception des renseignements sur la sécurité maritime."
+  ],
+  "LRIT": [
+   "LRIT",
+   "Identification et suivi des navires à grande distance ; les positions des navires sont transmises à leur État du pavillon, qui les suit."
+  ],
+  "SSAS": [
+   "SSAS",
+   "Système d'alerte de sûreté du navire ; envoie discrètement une alerte à terre en cas de menace pour la sûreté, comme la piraterie."
+  ],
+  "Foam Monitor": [
+   "Canon à mousse",
+   "Un canon à mousse ou à eau, fixe ou portatif, installé sur le pont et de grande portée."
+  ],
+  "Quick-Closing Valve": [
+   "Vanne à fermeture rapide",
+   "Une vanne de caisse à combustible ou à huile qui peut être fermée à distance en cas d'incendie."
+  ],
+  "Fire Damper": [
+   "Volet coupe-feu",
+   "Un volet dans un conduit de ventilation qui se ferme pour empêcher l'incendie de se propager par le conduit."
+  ],
+  "Watertight Door": [
+   "Porte étanche",
+   "Une porte dans une cloison étanche ; elle peut être fermée localement ou à distance."
+  ],
+  "Muster List": [
+   "Rôle d'appel",
+   "La liste officielle des tâches et des postes de chaque personne à bord en cas d'urgence."
+  ],
+  "Emergency Towing Arrangement": [
+   "Dispositif de remorquage d'urgence",
+   "Le matériel de remorquage tenu prêt à l'avant et à l'arrière pour que le navire puisse être remorqué en cas d'urgence."
+  ],
+  "Lifeboat Releasing Gear": [
+   "Dispositif de largage des embarcations de sauvetage",
+   "Le mécanisme qui libère l'embarcation de sauvetage des garants du bossoir ; il existe des types à largage en charge et hors charge."
+  ],
+  "Free-Fall Lifeboat": [
+   "Embarcation de sauvetage à chute libre",
+   "Une embarcation de sauvetage fermée mise à l'eau en glissant sur une rampe à l'arrière puis en tombant librement à la mer."
+  ],
+  "Rescue Boat": [
+   "Canot de secours",
+   "Une embarcation rapide utilisée pour récupérer les personnes à la mer et rassembler les radeaux de sauvetage."
+  ],
+  "Line Throwing Appliance": [
+   "Appareil lance-amarre",
+   "Un appareil qui lance une ligne vers un autre navire ou vers une personne lors des opérations de sauvetage."
+  ],
+  "DPA (Designated Person Ashore)": [
+   "DPA (personne désignée à terre)",
+   "La personne à terre désignée en application du Code ISM pour assurer le lien entre le navire et la compagnie en matière de sécurité."
+  ],
+  "Katabatik Rüzgâr": [
+   "Vent catabatique",
+   "Un vent dû à l'écoulement de l'air froid qui descend par gravité depuis les hauteurs."
+  ],
+  "Anabatik Rüzgâr": [
+   "Vent anabatique",
+   "Un vent qui remonte une pente réchauffée par le soleil pendant la journée."
+  ],
+  "Sea Breeze (Deniz Meltemi)": [
+   "Brise de mer",
+   "Un vent local qui souffle de la mer vers la terre pendant la journée, car la terre se réchauffe plus vite que la mer."
+  ],
+  "Land Breeze (Kara Meltemi)": [
+   "Brise de terre",
+   "Un vent local qui souffle de la terre vers la mer la nuit, car la terre se refroidit plus vite que la mer."
+  ],
+  "Monsun": [
+   "Mousson",
+   "Un système de vents à grande échelle qui change de direction avec les saisons ; le plus fort sur l'océan Indien."
+  ],
+  "Mistral": [
+   "Mistral",
+   "Un vent du nord froid et sec qui souffle du sud de la France sur la Méditerranée."
+  ],
+  "Poyraz": [
+   "Poyraz",
+   "Un vent de nord-est froid et sec en Turquie ; fort dans les régions de Marmara et de la mer Noire."
+  ],
+  "Lodos": [
+   "Lodos",
+   "Un vent de sud ou de sud-ouest chaud et humide en Turquie ; fort en mer Égée et en Marmara."
+  ],
+  "Tramontana": [
+   "Tramontane",
+   "Un vent froid du nord ou du nord-ouest en Méditerranée."
+  ],
+  "Douglas Deniz Durumu Skalası": [
+   "Échelle de Douglas",
+   "Une échelle qui classe l'état de la mer de 0 à 9 selon la hauteur des vagues."
+  ],
+  "Tropopoz": [
+   "Tropopause",
+   "La limite entre la troposphère et la stratosphère ; la limite supérieure des phénomènes météorologiques."
+  ],
+  "Bağıl Nem": [
+   "Humidité relative",
+   "La quantité de vapeur d'eau dans l'air en pourcentage du maximum qu'il pourrait contenir à cette température."
+  ],
+  "Sling Psikrometresi": [
+   "Psychromètre à fronde",
+   "Un instrument à thermomètres sec et mouillé, que l'on fait tourner dans l'air pour mesurer l'humidité relative."
+  ],
+  "Kümülonimbus (Cb)": [
+   "Cumulonimbus (Cb)",
+   "Un nuage d'orage très développé verticalement ; il produit tonnerre, éclairs, grêle et fortes pluies."
+  ],
+  "Sirrus (Ci)": [
+   "Cirrus (Ci)",
+   "Un nuage fin et élevé composé de cristaux de glace ; généralement associé au beau temps, il peut annoncer l'arrivée d'un front."
+  ],
+  "Stratus (St)": [
+   "Stratus (St)",
+   "Une couche nuageuse basse et grise ; elle donne de la bruine et une mauvaise visibilité."
+  ],
+  "Okta": [
+   "Octa",
+   "L'unité de nébulosité : huitièmes du ciel couverts, de 0 (ciel clair) à 8 (ciel couvert)."
+  ],
+  "METAR": [
+   "METAR",
+   "Le format codé normalisé des observations météorologiques régulières des aéroports et des stations côtières."
+  ],
+  "Form Factor (1+k)": [
+   "Facteur de forme (1+k)",
+   "Un facteur qui exprime l'augmentation de la résistance de frottement due à la forme de la coque ; utilisé dans la méthode Holtrop-Mennen."
+  ],
+  "Wave Pattern Resistance": [
+   "Wave pattern resistance",
+   "La composante de la résistance due à l'énergie contenue dans le système de vagues du navire."
+  ],
+  "Appendage Resistance": [
+   "Résistance des appendices",
+   "La résistance supplémentaire due aux appendices comme le gouvernail, les stabilisateurs et les quilles de roulis."
+  ],
+  "Air Resistance": [
+   "Résistance de l'air",
+   "La résistance aérodynamique de la coque et des superstructures hors de l'eau."
+  ],
+  "Effective Power (PE)": [
+   "Puissance de remorquage (PE)",
+   "La puissance nécessaire pour vaincre la résistance du navire à une vitesse donnée ; PE = R × V."
+  ],
+  "Delivered Power (PD)": [
+   "Puissance délivrée (PD)",
+   "La puissance fournie à l'hélice ; la puissance qui reste après les pertes de la ligne d'arbres."
+  ],
+  "Quasi-Propulsive Coefficient (QPC)": [
+   "Coefficient quasi propulsif (QPC)",
+   "Le rendement propulsif global ; le produit du rendement de carène, du rendement relatif de rotation et du rendement en eau libre."
+  ],
+  "Open Water Efficiency": [
+   "Rendement en eau libre",
+   "Le rendement de l'hélice fonctionnant en eau libre, sans l'influence de la coque."
+  ],
+  "Hull Efficiency": [
+   "Rendement de carène",
+   "Calculé par (1-t)/(1-w), où t est le coefficient de succion et w le coefficient de sillage."
+  ],
+  "Rudder Area Ratio": [
+   "Rapport de surface du gouvernail",
+   "La surface du gouvernail rapportée à la surface latérale immergée ; généralement au moins 1,5 à 2 % environ pour une bonne manœuvrabilité."
+  ],
+  "Resistance Test": [
+   "Essai de résistance",
+   "Un essai en bassin de carènes au cours duquel une maquette est remorquée pour mesurer sa résistance."
+  ],
+  "Propeller Open Water Test": [
+   "Essai d'hélice en eau libre",
+   "Un essai d'une hélice modèle en conditions d'eau libre pour déterminer KT, KQ et η₀."
+  ],
+  "Self-Propulsion Test": [
+   "Essai d'autopropulsion",
+   "Un essai de maquette au cours duquel la maquette est propulsée par sa propre hélice pour simuler les conditions de service."
+  ],
+  "Preferential Trip": [
+   "Délestage (preferential trip)",
+   "Le débranchement automatique des consommateurs non essentiels lorsqu'une génératrice est surchargée."
+  ],
+  "Dead Ship Condition": [
+   "Dead ship condition",
+   "L'état dans lequel toute l'énergie est perdue ; le rétablissement se fait avec le groupe électrogène de secours et les batteries."
+  ],
+  "Power Management System (PMS)": [
+   "Power Management System (PMS)",
+   "Le système de commande qui démarre et arrête automatiquement les génératrices et répartit la charge entre elles."
+  ],
+  "Load Sharing": [
+   "Répartition de charge",
+   "Des génératrices couplées en parallèle se partagent la charge à parts égales ou proportionnellement à leur puissance nominale."
+  ],
+  "Synchronization": [
+   "Couplage",
+   "Raccorder une génératrice aux barres lorsque sa tension, sa fréquence et sa phase concordent."
+  ],
+  "Reverse Power Protection": [
+   "Protection contre le retour de puissance",
+   "Un relais de protection qui déclenche une génératrice lorsqu'elle commence à absorber de la puissance des barres et à fonctionner en moteur."
+  ],
+  "VFD (Variable Frequency Drive)": [
+   "Variateur de fréquence (VFD)",
+   "Un variateur qui règle la vitesse d'un moteur électrique en modifiant la fréquence d'alimentation ; il économise l'énergie sur les pompes et les ventilateurs."
+  ],
+  "Soft Starter": [
+   "Démarreur progressif",
+   "Un circuit électronique qui démarre un moteur électrique en douceur en augmentant progressivement la tension."
+  ],
+  "Star-Delta Starter": [
+   "Démarrage étoile-triangle",
+   "Un mode de démarrage où le moteur tourne d'abord en couplage étoile puis passe en triangle, ce qui réduit le courant de démarrage."
+  ],
+  "Megger Test": [
+   "Mesure d'isolement (megger)",
+   "Une mesure de la résistance d'isolement sous une tension d'essai élevée ; le résultat est exprimé en MΩ."
+  ],
+  "Navtex Receiver": [
+   "Récepteur NAVTEX",
+   "Un récepteur qui capte automatiquement sur 518 kHz les avertissements de navigation et de météorologie, et les imprime ou les affiche."
+  ],
+  "S-Band / X-Band Radar": [
+   "Radar bande S et bande X",
+   "Bande S (10 cm) : portée plus longue et meilleures performances sous la pluie. Bande X (3 cm) : meilleure résolution et détection des SART."
+  ],
+  "Gyro Repeater": [
+   "Répétiteur de gyrocompas",
+   "Un répétiteur commandé par le gyrocompas maître, utilisé pour lire le cap et prendre des relèvements à d'autres emplacements."
+  ],
+  "BNWAS": [
+   "BNWAS",
+   "Système d'alarme de quart à la passerelle ; un système obligatoire qui vérifie à intervalles réguliers que l'officier de quart est vigilant."
+  ],
+  "MARPOL Ek I": [
+   "MARPOL Annexe I",
+   "Prévention de la pollution par les hydrocarbures ; exige notamment le registre des hydrocarbures et un dispositif de filtrage des hydrocarbures."
+  ],
+  "MARPOL Ek II": [
+   "MARPOL Annexe II",
+   "Règles relatives à la prévention de la pollution par les substances liquides nocives transportées en vrac."
+  ],
+  "MARPOL Ek III": [
+   "MARPOL Annexe III",
+   "Prévention de la pollution par les substances nuisibles transportées par mer en colis."
+  ],
+  "MARPOL Ek IV": [
+   "MARPOL Annexe IV",
+   "Règles relatives à la prévention de la pollution par les eaux usées des navires."
+  ],
+  "MARPOL Ek V": [
+   "MARPOL Annexe V",
+   "Prévention de la pollution par les ordures des navires ; des interdictions de rejet plus strictes s'appliquent dans les zones spéciales."
+  ],
+  "MARPOL Ek VI": [
+   "MARPOL Annexe VI",
+   "Prévention de la pollution de l'atmosphère par les navires ; limites pour les émissions de SOx, de NOx et de CO₂."
+  ],
+  "ECA (Emission Control Area)": [
+   "ECA (zone de contrôle des émissions)",
+   "Une zone maritime où la teneur en soufre du combustible ne doit pas dépasser 0,10 % (ECA SOx) et/ou où s'appliquent les limites NOx Tier III (ECA NOx)."
+  ],
+  "SECA": [
+   "SECA",
+   "Zone de contrôle des émissions de soufre ; la teneur en soufre du combustible utilisé est limitée à 0,10 %."
+  ],
+  "NECA": [
+   "NECA",
+   "Zone de contrôle des émissions de NOx ; une zone où s'appliquent les limites NOx Tier III."
+  ],
+  "SIRE (Ship Inspection Report)": [
+   "SIRE (Ship Inspection Report Programme)",
+   "Le programme d'inspection des navires-citernes et des transporteurs de gaz géré par l'OCIMF."
+  ],
+  "CDI (Chemical Distribution Institute)": [
+   "CDI (Chemical Distribution Institute)",
+   "Le programme d'inspection des navires-citernes pour produits chimiques et des terminaux."
+  ],
+  "Rightship": [
+   "RightShip",
+   "Un programme de vetting et de notation de la sécurité, principalement pour les vraquiers."
+  ],
+  "IHM (Inventory of Hazardous Materials)": [
+   "IHM (inventaire des matières dangereuses)",
+   "Le document qui répertorie les matières dangereuses à bord, exigé par la Convention de Hong Kong et le règlement de l'UE sur le recyclage des navires."
+  ],
+  "Continuous Synopsis Record (CSR)": [
+   "Fiche synoptique continue (CSR)",
+   "Un relevé de l'historique du navire : nom, pavillon, propriétaires et classe ; exigé par le chapitre XI-1 de SOLAS."
+  ],
+  "SMS (Safety Management System)": [
+   "SMS (système de gestion de la sécurité)",
+   "Le système de politiques et de procédures de sécurité de la compagnie et du navire en application du Code ISM."
+  ],
+  "Warping": [
+   "Déhalage",
+   "Déplacer le navire le long du quai au moyen de ses amarres, avec ses propres treuils ou une aide de terre."
+  ],
+  "Kedging": [
+   "Kedging",
+   "Déplacer un navire en portant une petite ancre (ancre à jet) au loin et en virant dessus."
+  ],
+  "Stern First Approach": [
+   "Accostage par l'arrière",
+   "Approcher le poste l'arrière en premier ; utilisé dans les espaces restreints et pour l'amarrage à la méditerranéenne."
+  ],
+  "Wheel Over Point (WOP)": [
+   "Wheel over point (WOP)",
+   "Le point où la barre doit être mise pour effectuer un changement de route, déterminé à partir de l'avance et du transfert du navire."
+  ],
+  "Dragging Anchor": [
+   "Chasser sur son ancre",
+   "L'ancre ne tient pas sur le fond et glisse ; cela exige une alarme et une action immédiate."
+  ],
+  "Holding Ground": [
+   "Tenue du fond",
+   "La façon dont le fond retient l'ancre : la vase et le sable tiennent bien, la roche et le corail mal."
+  ],
+  "Scope (Zincir Uzunluğu)": [
+   "Touée",
+   "Le rapport entre la longueur de chaîne filée et la profondeur d'eau ; environ 5 à 7 fois est recommandé pour une bonne tenue."
+  ],
+  "Let Go (Demir Bırak)": [
+   "Let go (the anchor)",
+   "L'ordre de desserrer le frein du guindeau pour que l'ancre tombe sur le fond."
+  ],
+  "Short Stay": [
+   "Short stay",
+   "Pendant le virage, la chaîne d'ancre a été raccourcie et descend en forte pente ; l'étape qui précède « up and down »."
+  ],
+  "Long Stay": [
+   "Long stay",
+   "La chaîne d'ancre est longue et part presque à l'horizontale ; signe que l'ancre tient bien."
+  ],
+  "Breast Line": [
+   "Traversier",
+   "Une amarre passée perpendiculairement à l'axe du navire ; elle empêche le navire de s'écarter du quai."
+  ],
+  "Spring Line": [
+   "Garde",
+   "Une amarre passée en diagonale qui empêche le navire d'avancer ou de reculer le long du quai ; il y a des gardes avant et arrière."
+  ],
+  "Head Line": [
+   "Pointe avant",
+   "Une amarre passée de l'avant vers l'avant, jusqu'au quai."
+  ],
+  "Stern Line": [
+   "Pointe arrière",
+   "Une amarre passée de l'arrière vers l'arrière, jusqu'au quai."
+  ],
+  "Bow Stopper": [
+   "Stoppeur de chaîne",
+   "La ferrure du gaillard d'avant qui bloque la chaîne d'ancre et soulage le guindeau de sa charge."
+  ],
+  "Single Up": [
+   "Single up",
+   "L'ordre, avant le départ, de réduire l'amarrage à une seule amarre à chaque poste."
+  ],
+  "All Fast": [
+   "All fast",
+   "Le compte rendu que toutes les amarres sont tournées ; la manœuvre d'accostage est terminée."
+  ],
+  "Stand By Engine": [
+   "Stand by engine",
+   "L'ordre à la salle des machines de préparer la machine pour la manœuvre."
+  ],
+  "Finished With Engine (FWE)": [
+   "Finished with engine (FWE)",
+   "L'ordre au transmetteur indiquant que la machine n'est plus nécessaire ; généralement donné après l'accostage ou le mouillage."
+  ]
+ }
+}

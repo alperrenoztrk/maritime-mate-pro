@@ -1,0 +1,2522 @@
+{
+ "categories": {
+  "Gemicilik": "Zeemanschap",
+  "Seyir": "Navigatie",
+  "Stabilite": "Stabiliteit",
+  "Makine": "Scheepswerktuigkunde",
+  "Kargo": "Lading",
+  "Güvenlik": "Veiligheid",
+  "Meteoroloji": "Meteorologie",
+  "Hidrodinamik": "Hydrodynamica",
+  "Halatçılık": "Touwwerk",
+  "Elektrik & Elektronik": "Elektrotechniek en elektronica",
+  "Hukuk & Mevzuat": "Recht en regelgeving",
+  "Liman & Manevra": "Haven en manoeuvreren"
+ },
+ "terms": {
+  "Viyalamak": [
+   "Steady (roercommando)",
+   "Het roer terugnemen zodat de kop van het schip op de opgedragen koers blijft; het commando ‘Viya!’ (Steady!) zegt de roerganger dat hij de kop van het schip vast op die koers moet houden."
+  ],
+  "Küpeşte": [
+   "Verschansing",
+   "De dichte reling of beplating langs de rand van het dek; voorkomt dat mensen aan boord overboord vallen."
+  ],
+  "Borda": [
+   "Scheepszijde",
+   "De zijbeplating van het schip; men spreekt van de bakboordzijde of de stuurboordzijde."
+  ],
+  "İskele (Port)": [
+   "Bakboord",
+   "De linkerkant van het schip, naar voren kijkend; 's nachts aangegeven door het rode boordlicht."
+  ],
+  "Sancak": [
+   "Stuurboord",
+   "De rechterkant van het schip, naar voren kijkend; 's nachts aangegeven door het groene boordlicht."
+  ],
+  "Pruva": [
+   "Boeg",
+   "Het voorste deel van het schip, zo gevormd dat het het water klieft en de golven opvangt."
+  ],
+  "Kıç": [
+   "Hek (achterschip)",
+   "Het achterste deel van het schip, waar het roer en de schroef zich bevinden."
+  ],
+  "Omurga (Keel)": [
+   "Kiel",
+   "Het belangrijkste constructiedeel dat van voor naar achter langs de bodem van het schip loopt; de ruggengraat van de romp."
+  ],
+  "Postalar (Frames)": [
+   "Spanten",
+   "Dwarse constructiedelen die haaks op de kiel staan; ze geven de romp zijn vorm."
+  ],
+  "Güverte (Deck)": [
+   "Dek",
+   "Een horizontaal niveau van het schip; om over te lopen, op te werken en lading op te vervoeren."
+  ],
+  "Ambar (Hold)": [
+   "Laadruim",
+   "Een afgesloten ruimte onder dek voor het vervoer van lading."
+  ],
+  "Sintine (Bilge)": [
+   "Bilge",
+   "Het laagste deel van de binnenkant van de romp, tussen de kiel en de scheepszijde, waar lekwater zich verzamelt."
+  ],
+  "Baca (Funnel)": [
+   "Schoorsteen",
+   "De constructie die de uitlaatgassen van de machinekamer naar buiten afvoert; de kleuren ervan geven ook de rederij aan."
+  ],
+  "Köprü Üstü (Bridge)": [
+   "Brug",
+   "Het commandocentrum van het schip: de afgesloten ruimte met de apparatuur voor navigatie, manoeuvreren en communicatie."
+  ],
+  "Kamarot": [
+   "Steward",
+   "Bemanningslid dat zorgt voor het verzorgen en schoonhouden van de hutten van passagiers of bemanning."
+  ],
+  "Lostromo (Bosun)": [
+   "Bootsman",
+   "Het hoogste niet-officiersbemanningslid aan dek; verantwoordelijk voor touwwerk, schilderwerk en dekonderhoud."
+  ],
+  "Vardiya": [
+   "Wacht",
+   "De diensttijd van het scheepspersoneel; meestal georganiseerd als vier uur wacht en acht uur vrij (4-8) of zes uur wacht en zes uur vrij (6-6)."
+  ],
+  "Alabanda": [
+   "Hard over",
+   "Het roer naar de grootste uitslag leggen; gegeven met de commando's ‘hard a-port’ of ‘hard a-starboard’."
+  ],
+  "Alesta": [
+   "Stand by",
+   "Een maritiem commando dat ‘klaarstaan’ betekent."
+  ],
+  "Apiko": [
+   "Up and down",
+   "Het moment waarop de ankerketting verticaal staat en het anker op het punt staat uit de bodem los te breken."
+  ],
+  "Baş Bodoslama": [
+   "Voorsteven",
+   "Het constructiedeel aan het uiterste voorschip, dat verticaal oprijst vanaf de kiel."
+  ],
+  "Kıç Bodoslama": [
+   "Achtersteven",
+   "Het constructiedeel aan het achtereinde, dat verticaal oprijst vanaf de kiel."
+  ],
+  "Borda Feneri": [
+   "Boordlichten",
+   "De navigatielichten aan bakboord en stuurboord van het schip; rood aan bakboord, groen aan stuurboord."
+  ],
+  "Çarmık": [
+   "Want",
+   "Touwen of draden tussen de mast en de scheepszijde die de mast steunen; met de weeflijnen kan de bemanning de mast in klimmen."
+  ],
+  "Matafora": [
+   "Davit",
+   "Een kraanachtige constructie waarmee reddingsboten en hulpverleningsboten te water worden gelaten."
+  ],
+  "Karakol": [
+   "Uitkijk",
+   "Het uitkijken naar alles wat de veilige navigatie van het schip kan beïnvloeden."
+  ],
+  "Grandi": [
+   "Grootzeil",
+   "Het hoofdzeil, meestal het grootste zeil, gevoerd aan de grote mast."
+  ],
+  "Flama": [
+   "Wimpel",
+   "Een lange, smalle vlag die voor seinen wordt gebruikt."
+  ],
+  "Çıma": [
+   "Tamp",
+   "Het losse eind van een lijn, het deel dat wordt bewogen bij het leggen van een knoop of het overgeven van de lijn."
+  ],
+  "Babafingo": [
+   "Bramzeil",
+   "Op vierkant getuigde zeilschepen het zeil boven het marszeil, hoog in de mast."
+  ],
+  "Bocurgat (Windlass)": [
+   "Ankerlier",
+   "De machine op de bak waarmee de ankerketting wordt ingehaald en gevierd."
+  ],
+  "Palamar": [
+   "Meertros",
+   "De algemene naam voor de lijnen waarmee het schip aan een ligplaats of een meerboei wordt vastgemaakt."
+  ],
+  "Kaptan Köşkü": [
+   "Stuurhuis",
+   "Het deel van de brug waar de kapitein staat en van waaruit de navigatieorders worden gegeven."
+  ],
+  "Çamaşırlık": [
+   "Wasserij",
+   "De ruimte waar de bemanning haar kleding wast; een aparte ruimte op grote schepen."
+  ],
+  "Karantina Bayrağı": [
+   "Quarantainevlag (Q-vlag)",
+   "De gele vlag Q; betekent ‘Mijn schip is gezond en ik verzoek om vrije pratique’. Een aankomend schip voert haar tot vrije pratique is verleend."
+  ],
+  "Volta": [
+   "Beleggen",
+   "Een lijn vastzetten door slagen om een bolder of beting te leggen."
+  ],
+  "Bağ (Knot)": [
+   "Knoop",
+   "Een verbinding die ontstaat door een lijn om zichzelf of om een andere lijn te knopen."
+  ],
+  "Ek (Splice)": [
+   "Splits",
+   "Een blijvende verbinding die wordt gemaakt door de strengen van de lijneinden door elkaar te steken."
+  ],
+  "Kasa Bağı": [
+   "Oogsplits",
+   "Een splits die aan het eind van een lijn een blijvend oog (lus) vormt."
+  ],
+  "Camadan": [
+   "Reven (rifknoop)",
+   "Het zeiloppervlak verkleinen door een deel van het zeil in te nemen en vast te binden; de platte knoop die daarvoor wordt gebruikt is de rifknoop."
+  ],
+  "Palanga": [
+   "Takel",
+   "Een combinatie van blokken en touw die de trekkracht vergroot."
+  ],
+  "Makara (Block)": [
+   "Blok",
+   "Een schijf in een huis waarover een lijn loopt; verandert de trekrichting of vergroot, in een takel, de kracht."
+  ],
+  "Kıstırma (Stopper)": [
+   "Stopper",
+   "Een hulpmiddel dat een lijn of ketting onder spanning vasthoudt, zodat die op een beting of kikker kan worden belegd."
+  ],
+  "Yeke": [
+   "Helmstok",
+   "De hefboom waarmee het roer met de hand wordt bewogen; gebruikt om kleine boten direct te sturen."
+  ],
+  "Baba (Bollard)": [
+   "Bolder",
+   "Een korte, stevige verticale paal op de kade of aan boord waarop de meertrossen worden belegd."
+  ],
+  "Bite (Bitt)": [
+   "Beting",
+   "Een paar stevige palen op het dek waaromheen de meertrossen worden belegd."
+  ],
+  "Sapan (Sling)": [
+   "Strop",
+   "Een samenstel van staaldraad of kunststof touw waarmee een last aan de hijshaak wordt bevestigd."
+  ],
+  "Mevki (Position)": [
+   "Positie",
+   "De plaats van een schip op een bepaald moment, uitgedrukt in breedte en lengte."
+  ],
+  "DGPS": [
+   "DGPS",
+   "Differentiële GPS: satellietplaatsbepaling die met correcties van referentiestations tot meternauwkeurigheid of beter wordt verbeterd."
+  ],
+  "Kerteriz (Bearing)": [
+   "Peiling",
+   "De richting van de waarnemer naar een object; gemeten met het kompas en uitgedrukt in graden."
+  ],
+  "Rota (Course)": [
+   "Koers",
+   "De richting waarin het schip wordt gestuurd of volgens plan gaat; gemeten met de wijzers van de klok mee vanaf het noorden."
+  ],
+  "Büyük Daire Seyri (Great Circle)": [
+   "Grootcirkelnavigatie",
+   "Varen langs de boog van een grootcirkel, de kortste afstand tussen twee punten op het aardoppervlak."
+  ],
+  "Loksodrom (Rhumb Line)": [
+   "Loxodroom",
+   "Een lijn die alle meridianen onder dezelfde hoek snijdt; de route die wordt gevolgd als de kompaskoers niet wordt veranderd."
+  ],
+  "Meridyen": [
+   "Meridiaan",
+   "Een denkbeeldige halve cirkel van de noordpool naar de zuidpool; bepaalt de lengte."
+  ],
+  "Paralel": [
+   "Breedteparallel",
+   "Een denkbeeldige cirkel evenwijdig aan de evenaar; bepaalt de breedte."
+  ],
+  "Enlem (Latitude)": [
+   "Breedte",
+   "De hoekafstand van een plaats ten noorden of ten zuiden van de evenaar, gemeten van 0° tot 90°."
+  ],
+  "Boylam (Longitude)": [
+   "Lengte",
+   "De hoekafstand van een plaats ten oosten of ten westen van de meridiaan van Greenwich, gemeten van 0° tot 180°."
+  ],
+  "Deniz Mili (Nautical Mile)": [
+   "Zeemijl",
+   "De afstandseenheid gelijk aan één boogminuut breedte; 1852 meter."
+  ],
+  "Knot": [
+   "Knoop (snelheid)",
+   "De snelheidseenheid op zee: één zeemijl per uur."
+  ],
+  "ETA (Estimated Time of Arrival)": [
+   "ETA (verwachte aankomsttijd)",
+   "Het tijdstip waarop het schip naar verwachting in een haven of op een bepaalde positie aankomt."
+  ],
+  "ETD (Estimated Time of Departure)": [
+   "ETD (verwachte vertrektijd)",
+   "Het tijdstip waarop het schip naar verwachting de haven verlaat."
+  ],
+  "AIS (Automatic Identification System)": [
+   "AIS (automatisch identificatiesysteem)",
+   "Een radiosysteem dat automatisch de identiteit, positie, koers en snelheid van het schip uitzendt."
+  ],
+  "ECDIS": [
+   "ECDIS",
+   "Elektronisch kaartweergave- en informatiesysteem; als het aan de uitrustingsregels voldoet, wordt het als gelijkwaardig aan papieren kaarten aanvaard."
+  ],
+  "Radar": [
+   "Radar",
+   "Apparatuur die met radiogolven de positie, afstand en beweging van omringende objecten bepaalt."
+  ],
+  "ARPA": [
+   "ARPA",
+   "Automatisch radarplothulpmiddel; berekent automatisch koers, snelheid en dichtste nadering van gevolgde doelen."
+  ],
+  "CPA (Closest Point of Approach)": [
+   "CPA (dichtste nadering)",
+   "De voorspelde kleinste afstand waarop twee schepen elkaar zullen passeren."
+  ],
+  "TCPA (Time to CPA)": [
+   "TCPA (tijd tot CPA)",
+   "De voorspelde tijd die nog resteert tot twee schepen hun dichtste nadering bereiken."
+  ],
+  "Pusula Hatası (Compass Error)": [
+   "Miswijzing (kompasfout)",
+   "Het totale verschil tussen het noorden dat het kompas aanwijst en het ware noorden; de som van variatie en deviatie."
+  ],
+  "Sapma (Variation)": [
+   "Variatie",
+   "De hoek tussen het ware noorden en het magnetische noorden; verandert met de geografische positie."
+  ],
+  "İnhiraf (Deviation)": [
+   "Deviatie",
+   "Het verschil tussen het magnetische noorden en het kompasnoorden, veroorzaakt door het ijzer en staal van het schip zelf."
+  ],
+  "Seyir Planı (Passage Plan)": [
+   "Reisplan (passage plan)",
+   "Een gedetailleerd plan van ligplaats tot ligplaats, opgesteld zodat het schip de reis veilig kan maken."
+  ],
+  "Waypoint": [
+   "Waypoint",
+   "Een tussenliggend draai- of controlepunt dat in het reisplan is vastgelegd."
+  ],
+  "Dümen Açısı": [
+   "Roerhoek",
+   "De hoek waarover het roer vanuit de middenstand naar bakboord of stuurboord is gedraaid."
+  ],
+  "Derinlik Ölçer (Echo Sounder)": [
+   "Echolood",
+   "Apparatuur die de waterdiepte onder het schip meet door geluidspulsen naar de bodem te sturen."
+  ],
+  "Fener (Lighthouse)": [
+   "Vuurtoren",
+   "Een licht, vast aan de kust of op zee, dat schepen leidt."
+  ],
+  "Şamandıra (Buoy)": [
+   "Boei",
+   "Een drijvend merkteken dat aan het zeeoppervlak is verankerd om de veilige navigatie te ondersteunen."
+  ],
+  "IALA İşaretleme Sistemi": [
+   "IALA-betonningsstelsel",
+   "De internationale regels voor boeien en bakens; verdeeld in regio A en regio B."
+  ],
+  "Kıyı Seyri (Coastal Navigation)": [
+   "Kustnavigatie",
+   "Navigatie dicht bij de kust met visuele referenties en elektronische hulpmiddelen."
+  ],
+  "Açık Deniz Seyri (Ocean Navigation)": [
+   "Oceaannavigatie",
+   "Navigatie ver van de kust met hemellichamen en elektronische systemen."
+  ],
+  "GPS": [
+   "GPS",
+   "Global Positioning System; geeft positie, snelheid en tijd uit de signalen van satellieten."
+  ],
+  "Gyro Pusula": [
+   "Gyrokompas",
+   "Een kompas dat de draaiing van de aarde gebruikt om het ware noorden aan te wijzen; mechanisch of met optische (laser-/glasvezel)sensoren."
+  ],
+  "Manyetik Pusula": [
+   "Magnetisch kompas",
+   "Het traditionele kompas, dat het noorden aanwijst volgens het magnetisch veld van de aarde."
+  ],
+  "Running Fix": [
+   "Verzeilde peiling",
+   "Een positie die wordt bepaald uit twee peilingen van hetzelfde object op verschillende tijdstippen."
+  ],
+  "Cross Bearing": [
+   "Kruispeiling",
+   "Een positie die wordt bepaald uit peilingen van twee of meer objecten op hetzelfde moment."
+  ],
+  "Set & Drift": [
+   "Stroom (richting en snelheid)",
+   "Het effect van de stroom op het schip: de richting en de snelheid van de stroom."
+  ],
+  "Leeway": [
+   "Drift",
+   "De zijwaartse verplaatsing van het schip uit zijn koers door de wind."
+  ],
+  "GM (Metasentrik Yükseklik)": [
+   "GM (metacentrische hoogte)",
+   "De verticale afstand tussen het gewichtszwaartepunt G en het metacentrum M; de belangrijkste maat voor de aanvangsstabiliteit."
+  ],
+  "Serbest Yüzey Etkisi": [
+   "Effect van vrije vloeistofoppervlakken",
+   "Het verlies aan GM door vloeistof die beweegt in gedeeltelijk gevulde tanks."
+  ],
+  "Ağırlık Merkezleri (KG)": [
+   "Gewichtszwaartepunt (KG)",
+   "De verticale afstand van het gewichtszwaartepunt van het schip boven de kiel; een kritieke waarde in stabiliteitsberekeningen."
+  ],
+  "Trim": [
+   "Trim",
+   "De langsscheepse helling van het schip; koplast of stuurlast."
+  ],
+  "Deplasman (Displacement)": [
+   "Waterverplaatsing",
+   "Het gewicht van het water dat door het schip wordt verplaatst; uitgedrukt in ton."
+  ],
+  "Yüzdürme Merkezi (B – Buoyancy)": [
+   "Drukkingspunt (B)",
+   "Het geometrische middelpunt van het ondergedompelde volume van de romp."
+  ],
+  "GZ (Doğrultucu Kol)": [
+   "GZ (stabiliteitsarm)",
+   "De horizontale afstand tussen het gewichtszwaartepunt en de werklijn van de opwaartse kracht wanneer het schip helt."
+  ],
+  "BM (Metasentrik Yarıçap)": [
+   "BM (metacentrische straal)",
+   "De afstand tussen het drukkingspunt B en het metacentrum M; BM = I / ∇."
+  ],
+  "KB": [
+   "KB",
+   "De verticale afstand van de kiel tot het drukkingspunt."
+  ],
+  "KM": [
+   "KM",
+   "De verticale afstand van de kiel tot het metacentrum; KM = KB + BM."
+  ],
+  "KG": [
+   "KG",
+   "De verticale afstand van de kiel tot het gewichtszwaartepunt van het schip."
+  ],
+  "Doğrultucu Moment": [
+   "Oprichtend moment",
+   "Het moment dat een hellend schip weer rechtop brengt; M = Δ × GZ."
+  ],
+  "Devrilme Momenti": [
+   "Hellend moment",
+   "Het moment van de uitwendige krachten die het schip laten hellen; veroorzaakt door wind, golven of het verschuiven van lading."
+  ],
+  "Denge Açısı (Angle of Loll)": [
+   "Angle of loll",
+   "De helling waarbij een schip met negatieve aanvangs-GM tot rust komt."
+  ],
+  "Dinamik Stabilite": [
+   "Dynamische stabiliteit",
+   "Het oppervlak onder de GZ-kromme; geeft de arbeid aan die nodig is om het schip te laten hellen."
+  ],
+  "Statik Stabilite Eğrisi (GZ Curve)": [
+   "Statische stabiliteitskromme (GZ-kromme)",
+   "Een grafiek van GZ tegen de hellingshoek; het basisinstrument voor de beoordeling van de stabiliteit."
+  ],
+  "TPC (Tonnes Per Centimetre)": [
+   "TPC (ton per centimeter inzinking)",
+   "Het gewicht dat de gemiddelde diepgang één centimeter verandert."
+  ],
+  "MCT (Moment to Change Trim)": [
+   "MCTC (Moment to change trim)",
+   "Het moment dat de trim één centimeter verandert; gebruikt in trimberekeningen."
+  ],
+  "LCG (Longitudinal Centre of Gravity)": [
+   "LCG (langsscheepse ligging van het gewichtszwaartepunt)",
+   "De positie van het gewichtszwaartepunt in langsscheepse richting."
+  ],
+  "LCB (Longitudinal Centre of Buoyancy)": [
+   "LCB (langsscheepse ligging van het drukkingspunt)",
+   "De positie van het drukkingspunt in langsscheepse richting."
+  ],
+  "İnklinasyon Deneyi (Inclining Test)": [
+   "Hellingproef",
+   "Een proef waarbij bekende gewichten over het dek worden verplaatst om de KG van het schip te bepalen."
+  ],
+  "Permeabilite": [
+   "Permeabiliteit",
+   "Het deel van een ruimte dat door water kan worden gevuld; gebruikt bij lekstabiliteitsberekeningen."
+  ],
+  "Floodable Length": [
+   "Floodable length",
+   "De grootste lengte van een compartiment die kan vollopen zonder dat het schip verder wegzinkt dan de margin line."
+  ],
+  "Yük Kaydırma": [
+   "Verschuiven van de lading",
+   "Een beweging van de lading die het gewichtszwaartepunt verplaatst; kan een gevaarlijke slagzij veroorzaken."
+  ],
+  "Karina (Hull)": [
+   "Onderwaterschip",
+   "Het deel van de romp onder de waterlijn."
+  ],
+  "Su Çekimi (Draft)": [
+   "Diepgang",
+   "De verticale afstand van de waterlijn tot de onderkant van de kiel."
+  ],
+  "Fribord (Freeboard)": [
+   "Vrijboord",
+   "De verticale afstand van de waterlijn tot het dek; voldoende vrijboord is essentieel voor de zeewaardigheid."
+  ],
+  "Plimsoll Markası": [
+   "Uitwateringsmerk (Plimsollmerk)",
+   "De merken op de scheepszijde die de grootste toegestane diepgang voor verschillende seizoenen en wateren aangeven."
+  ],
+  "Kavitasyon": [
+   "Cavitatie",
+   "Het ontstaan en imploderen van dampbellen in een vloeistof wanneer de druk onder de dampspanning daalt."
+  ],
+  "Dizel Motor (Marine Diesel)": [
+   "Scheepsdieselmotor",
+   "Een verbrandingsmotor met compressieontsteking, gebruikt als hoofdvoortstuwing van de meeste schepen."
+  ],
+  "Turboşarj (Turbocharger)": [
+   "Turbocompressor",
+   "Een door de uitlaatgassen aangedreven eenheid die perslucht aan de cilinders levert; verhoogt het vermogen en het rendement van de motor."
+  ],
+  "SFOC (Specific Fuel Oil Consumption)": [
+   "SFOC (specifiek brandstofverbruik)",
+   "De hoeveelheid brandstof die de motor per eenheid geleverd vermogen verbruikt; uitgedrukt in g/kWh."
+  ],
+  "Separatör (Purifier)": [
+   "Separator",
+   "Een centrifuge die water en vaste deeltjes uit brandstof en smeerolie scheidt."
+  ],
+  "Yağlama Sistemi": [
+   "Smeeroliesysteem",
+   "Het systeem dat olie rondpompt om de wrijving tussen motor- en machinedelen te verminderen."
+  ],
+  "Soğutma Sistemi": [
+   "Koelsysteem",
+   "De zoetwater- en zeewaterkringen die oververhitting van de hoofdmotor en de hulpwerktuigen voorkomen."
+  ],
+  "Kazan (Boiler)": [
+   "Ketel",
+   "Een drukvat dat water verhit en stoom produceert voor hulpwerktuigen en verwarming."
+  ],
+  "Jeneratör": [
+   "Generator",
+   "Een machine die mechanische energie omzet in elektrische energie en het boordnet voedt."
+  ],
+  "Şaft (Shaft)": [
+   "Schroefas",
+   "De as die de draaiing van de hoofdmotor op de schroef overbrengt."
+  ],
+  "Pervane (Propeller)": [
+   "Schroef",
+   "Een bladenrad dat bij het draaien stuwkracht levert en het schip vooruit of achteruit drijft."
+  ],
+  "Dümen (Rudder)": [
+   "Roer",
+   "Het beweegbare roerblad aan het achterschip dat wordt gelegd om de koers van het schip te veranderen."
+  ],
+  "Bow Thruster": [
+   "Boegschroef",
+   "Een schroef in een dwarse tunnel in de boeg; verbetert het manoeuvreren bij lage snelheid."
+  ],
+  "Stern Tube": [
+   "Schroefaskoker",
+   "De koker waardoor de schroefas de romp verlaat; bevat de aslagers en afdichtingen."
+  ],
+  "Yardımcı Motor": [
+   "Hulpmotor",
+   "Een motor aan boord die stroom opwekt en hulpsystemen aandrijft."
+  ],
+  "Emercensi Jeneratör": [
+   "Noodgenerator",
+   "De generator die start en de essentiële verbruikers voedt als de hoofdstroomvoorziening uitvalt."
+  ],
+  "Egzoz Gazı Temizleme (Scrubber)": [
+   "Uitlaatgasreiniger (scrubber)",
+   "Een installatie die zwaveloxiden door wassen uit de uitlaatgassen verwijdert."
+  ],
+  "Balast Pompası": [
+   "Ballastpomp",
+   "De pomp waarmee zeewater in de ballasttanks wordt genomen en eruit wordt gepompt."
+  ],
+  "Sintine Pompası": [
+   "Lenspomp",
+   "De pomp waarmee bilgewater wordt verzameld en gelensd."
+  ],
+  "OWS (Oil Water Separator)": [
+   "Olie-waterscheider (OWS)",
+   "Een installatie die olie van bilgewater scheidt, zodat het binnen de wettelijke grens van 15 ppm kan worden geloosd."
+  ],
+  "İncineratör (Yakma Fırını)": [
+   "Verbrandingsoven",
+   "Een oven die vast afval en oliehoudend slib van aan boord bij hoge temperatuur verbrandt."
+  ],
+  "Kompresör": [
+   "Luchtcompressor",
+   "Een machine die perslucht maakt voor het starten van motoren en voor pneumatische systemen."
+  ],
+  "Piston": [
+   "Zuiger",
+   "Het motoronderdeel dat in de cilinder op en neer beweegt en de gasdruk omzet in mechanische arbeid."
+  ],
+  "Silindir Gömleği (Cylinder Liner)": [
+   "Cilindervoering",
+   "De vervangbare stalen voering in het cilinderblok waarin de zuiger beweegt."
+  ],
+  "Süpap (Valve)": [
+   "Klep (motor)",
+   "Een mechanisch onderdeel dat de inlaat- en uitlaatkanalen van de motor opent en sluit."
+  ],
+  "Dökme Yük (Bulk Cargo)": [
+   "Stortgoed",
+   "Lading zoals graan, kolen of erts die zonder verpakking direct in het ruim wordt geladen."
+  ],
+  "Konteyner": [
+   "Container",
+   "Een gestandaardiseerde metalen laadkist (20 ft, 40 ft) voor het vervoer van goederen."
+  ],
+  "TEU (Twenty-foot Equivalent Unit)": [
+   "TEU (Twenty-foot Equivalent Unit)",
+   "Het equivalent van een 20-voetscontainer; de standaardeenheid voor de capaciteit van schepen en terminals."
+  ],
+  "Stowage Factor": [
+   "Stuwagefactor",
+   "Het volume dat één ton lading in het ruim inneemt; uitgedrukt in m³/t."
+  ],
+  "Broken Stowage": [
+   "Broken stowage",
+   "Het deel van de ruimruimte dat niet kan worden benut door de lege ruimten tussen de colli."
+  ],
+  "Dunnage": [
+   "Stuwhout (dunnage)",
+   "Hout, planken, matten of luchtzakken die de lading beschermen tegen vocht, schade en verschuiven."
+  ],
+  "Lashing": [
+   "Sjorren",
+   "De lading met sjorringen vastzetten zodat ze op zee niet verschuift."
+  ],
+  "Manifest": [
+   "Manifest",
+   "Het document dat alle aan boord vervoerde lading opsomt."
+  ],
+  "Bill of Lading (Konşimento)": [
+   "Cognossement",
+   "Een door de vervoerder afgegeven document: ontvangstbewijs voor de verscheepte lading, bewijs van de vervoerovereenkomst en waardepapier voor de goederen."
+  ],
+  "Ambar Kapağı (Hatch Cover)": [
+   "Luikdeksel",
+   "Het stalen deksel dat een laadluik weerdicht afsluit."
+  ],
+  "Grain Stability": [
+   "Graanstabiliteit",
+   "De stabiliteitsbeoordeling voor het risico dat graan op zee verschuift en een gevaarlijke slagzij veroorzaakt."
+  ],
+  "IMDG Code": [
+   "IMDG-code",
+   "De International Maritime Dangerous Goods Code: de voorschriften voor het vervoer van verpakte gevaarlijke stoffen over zee."
+  ],
+  "IMSBC Code": [
+   "IMSBC-code",
+   "De IMO-code voor het veilig vervoer van vaste stortladingen."
+  ],
+  "Draft Survey": [
+   "Draft survey",
+   "Een methode die het gewicht van geladen of geloste lading berekent uit de diepgangsaflezingen van het schip."
+  ],
+  "Ullage": [
+   "Ullage",
+   "De lege ruimte in een tank, gemeten van het vloeistofoppervlak tot de tankbovenkant."
+  ],
+  "Sounding": [
+   "Tankpeiling",
+   "De vloeistofhoogte in een tank, gemeten vanaf de tankbodem."
+  ],
+  "Deadweight (DWT)": [
+   "Draagvermogen (DWT)",
+   "Het totale gewicht dat het schip kan dragen: lading, brandstof, water, proviand en bemanning."
+  ],
+  "Lightweight": [
+   "Leeggewicht",
+   "Het eigen gewicht van het schip zonder lading, brandstof, water en voorraden."
+  ],
+  "Tonnage (Gross / Net)": [
+   "Tonnage (bruto / netto)",
+   "Maten voor het inwendige volume van het schip: de brutotonnage betreft het hele schip, de nettotonnage de laadruimten."
+  ],
+  "Reefer Konteyner": [
+   "Koelcontainer (reefer)",
+   "Een container met een eigen koelinstallatie voor lading met geregelde temperatuur."
+  ],
+  "Tanker": [
+   "Tanker",
+   "Een schip voor het vervoer van vloeibare lading in bulk (olie, chemicaliën, LPG/LNG)."
+  ],
+  "RoRo (Roll-on Roll-off)": [
+   "Ro-ro-schip",
+   "Een schip waarop voertuigen en rollende lading over een oprit aan en van boord rijden."
+  ],
+  "SOLAS": [
+   "SOLAS",
+   "Het Internationaal Verdrag voor de beveiliging van mensenlevens op zee; stelt normen voor bouw, uitrusting en gebruik van schepen."
+  ],
+  "MARPOL": [
+   "MARPOL",
+   "Het Internationaal Verdrag ter voorkoming van verontreiniging door schepen."
+  ],
+  "ISM Code": [
+   "ISM-code",
+   "De International Safety Management Code; de norm voor het veiligheidsbeheer bij de exploitatie van schepen."
+  ],
+  "ISPS Code": [
+   "ISPS-code",
+   "De International Ship and Port Facility Security Code; maatregelen tegen beveiligingsdreigingen zoals terrorisme."
+  ],
+  "Can Yeleği (Life Jacket)": [
+   "Reddingsvest",
+   "Persoonlijke uitrusting die een persoon in het water drijvend houdt; verplicht voor iedere persoon aan boord."
+  ],
+  "Can Simidi (Life Buoy)": [
+   "Reddingsboei",
+   "Een ringvormig drijfmiddel dat naar een persoon in het water wordt gegooid."
+  ],
+  "Filika (Lifeboat)": [
+   "Reddingsboot",
+   "Een gesloten boot waarmee bemanning en passagiers bij het verlaten van het schip worden geëvacueerd."
+  ],
+  "Can Salı (Life Raft)": [
+   "Reddingsvlot",
+   "Een opblaasbaar overlevingsvaartuig; wordt automatisch of met de hand opgeblazen."
+  ],
+  "EPIRB": [
+   "EPIRB",
+   "Emergency Position-Indicating Radio Beacon; zendt via satelliet een noodalarm uit."
+  ],
+  "SART": [
+   "SART",
+   "Search and Rescue Transponder; maakt zijn positie zichtbaar op de radarschermen van zoekende schepen en luchtvaartuigen."
+  ],
+  "GMDSS": [
+   "GMDSS",
+   "Global Maritime Distress and Safety System; het wereldwijde maritieme nood- en veiligheidssysteem."
+  ],
+  "MOB (Man Overboard)": [
+   "Man overboord (MOB)",
+   "De noodsituatie waarbij een persoon in het water valt; de reddingsmanoeuvre en procedures worden direct ingezet."
+  ],
+  "Muster Station": [
+   "Verzamelplaats",
+   "De plaats waar bemanning en passagiers zich in een noodsituatie verzamelen."
+  ],
+  "Fire Drill": [
+   "Brandoefening",
+   "Een praktische oefening waarin de bemanning de brandbestrijdingsprocedures traint."
+  ],
+  "Abandon Ship Drill": [
+   "Oefening schip verlaten",
+   "Een oefening in verzamelen en het te water laten van reddingsboten en reddingsvlotten."
+  ],
+  "SCBA": [
+   "Ademluchttoestel (SCBA)",
+   "Onafhankelijk ademhalingstoestel voor het betreden van besloten ruimten en voor brandbestrijding."
+  ],
+  "CO₂ Söndürme Sistemi": [
+   "Vaste CO₂-blusinstallatie",
+   "Een vaste kooldioxide-installatie die branden in de machinekamer en de laadruimen blust."
+  ],
+  "Köpüklü Söndürme": [
+   "Schuimblusinstallatie",
+   "Een blusinstallatie op basis van schuim voor branden van brandbare vloeistoffen."
+  ],
+  "Yangın Tulumbası (Fire Pump)": [
+   "Brandbluspomp",
+   "Een pomp die de brandleiding en de slangen van water onder druk voorziet; er zijn hoofd- en noodbrandbluspompen."
+  ],
+  "Emercensi Dümen": [
+   "Noodstuurinrichting",
+   "Het middel om het schip te sturen als de hoofdstuurinrichting uitvalt."
+  ],
+  "SOPEP": [
+   "SOPEP",
+   "Shipboard Oil Pollution Emergency Plan; de maatregelen na het vrijkomen van olie."
+  ],
+  "Enclosed Space Entry": [
+   "Betreden van besloten ruimten",
+   "De procedure voor het betreden van een besloten ruimte; vereist meting van de atmosfeer, ventilatie en toezicht."
+  ],
+  "Hot Work Permit": [
+   "Vergunning voor heet werk",
+   "Een schriftelijke toestemming die nodig is vóór heet werk zoals lassen of snijbranden."
+  ],
+  "Buharlaşma (Evaporation)": [
+   "Verdamping",
+   "De overgang van water van vloeibaar naar gasvormig onder opname van warmte; beïnvloedt vochtigheid en weer."
+  ],
+  "Dew Point (Çiy Noktası)": [
+   "Dauwpunt",
+   "De temperatuur waartoe lucht moet afkoelen om verzadigd te raken, zodat condensatie begint."
+  ],
+  "Beaufort Skalası": [
+   "Schaal van Beaufort",
+   "De internationale schaal die de windkracht indeelt van 0 tot 12."
+  ],
+  "Tropikal Siklon": [
+   "Tropische cycloon",
+   "Een draaiende storm die boven warme zeeën ontstaat, met orkaanwinden en zware regen."
+  ],
+  "Kasırga (Hurricane)": [
+   "Orkaan",
+   "Een tropische cycloon met winden van 64 knopen of meer in de Atlantische Oceaan en het noordoosten van de Stille Oceaan."
+  ],
+  "Tayfun (Typhoon)": [
+   "Tyfoon",
+   "Een tropische cycloon met orkaankracht in het noordwesten van de Stille Oceaan."
+  ],
+  "Barometrik Basınç": [
+   "Luchtdruk",
+   "Het gewicht van de atmosfeer op een bepaalde plaats; gemeten in hPa (mbar)."
+  ],
+  "Antisiklon (High Pressure)": [
+   "Hogedrukgebied",
+   "Een gebied met hoge luchtdruk; brengt meestal stabiel, mooi weer."
+  ],
+  "Siklon (Low Pressure)": [
+   "Lagedrukgebied (depressie)",
+   "Een gebied met lage luchtdruk; gaat samen met wind, regen en storm."
+  ],
+  "Cephe (Front)": [
+   "Front",
+   "De grenszone waar luchtmassa's met verschillende temperatuur en vochtigheid elkaar ontmoeten."
+  ],
+  "Sis (Fog)": [
+   "Mist",
+   "Condensatie van waterdamp dicht bij het oppervlak die het zicht tot minder dan 1000 meter beperkt."
+  ],
+  "Deniz Suyu Sıcaklığı (SST)": [
+   "Zeewatertemperatuur (SST)",
+   "De temperatuur van het zeeoppervlak; belangrijk voor de weersverwachting en het ontstaan van tropische cyclonen."
+  ],
+  "Trade Winds (Alize Rüzgârları)": [
+   "Passaatwinden",
+   "De bestendige noordoost- en zuidoostwinden van de tropen."
+  ],
+  "Gel-Git (Tide)": [
+   "Getij",
+   "Het periodiek stijgen en dalen van de zeespiegel, veroorzaakt door de aantrekking van maan en zon."
+  ],
+  "Spring Tide (Büyük Gel-Git)": [
+   "Springtij",
+   "Het getij met het grootste verval, bij nieuwe en volle maan, wanneer de aantrekking van zon en maan samenvalt."
+  ],
+  "Neap Tide (Küçük Gel-Git)": [
+   "Doodtij",
+   "Het getij met het kleinste verval, bij eerste en laatste kwartier, wanneer zon en maan haaks op elkaar trekken."
+  ],
+  "Swell (Ölü Deniz)": [
+   "Deining",
+   "Golven met een lange periode die zich van hun ontstaansgebied hebben verwijderd en regelmatig zijn geworden."
+  ],
+  "Navtex": [
+   "NAVTEX",
+   "Een systeem dat nautische en meteorologische waarschuwingen automatisch als afgedrukte of weergegeven tekst ontvangt."
+  ],
+  "Rüzgâr Gülü": [
+   "Windroos",
+   "Een diagram dat laat zien hoe vaak en hoe hard de wind op een plaats uit elke richting waait."
+  ],
+  "İzobar": [
+   "Isobaar",
+   "Een lijn op de weerkaart die plaatsen met gelijke luchtdruk verbindt."
+  ],
+  "Dalga Yükü (Wave Load)": [
+   "Golfbelasting",
+   "De dynamische belastingen van golven op de romp; gebruikt in zeegangs- en sterkteberekeningen."
+  ],
+  "Direnç (Resistance)": [
+   "Weerstand",
+   "De totale kracht die de beweging van het schip door het water tegenwerkt; vooral wrijvingsweerstand en golfweerstand."
+  ],
+  "Sürtünme Direnci (Frictional Resistance)": [
+   "Wrijvingsweerstand",
+   "Het deel van de weerstand dat ontstaat door wrijving tussen romp en water."
+  ],
+  "Dalga Direnci (Wave Resistance)": [
+   "Golfweerstand",
+   "Het deel van de weerstand dat ontstaat door de energie die nodig is om het golfsysteem van het schip op te wekken."
+  ],
+  "Froude Sayısı": [
+   "Getal van Froude",
+   "Een dimensieloos getal dat de scheepssnelheid aan de golfvorming koppelt; Fn = V / √(g × L)."
+  ],
+  "Reynolds Sayısı": [
+   "Getal van Reynolds",
+   "Een dimensieloos getal dat de stroming kenmerkt; onderscheidt laminaire van turbulente stroming."
+  ],
+  "İtme Kuvveti (Thrust)": [
+   "Stuwkracht",
+   "De kracht die de draaiende schroef levert en die het schip voortstuwt."
+  ],
+  "Wake Fraction": [
+   "Volgstroomgetal",
+   "Het relatieve verschil tussen de scheepssnelheid en de snelheid van het water dat de schroef bereikt."
+  ],
+  "Thrust Deduction": [
+   "Zoggetal",
+   "Het deel van de schroefstuwkracht dat verloren gaat doordat de werkende schroef de weerstand van de romp verhoogt."
+  ],
+  "Propulsive Efficiency": [
+   "Voortstuwingsrendement",
+   "Hoe doeltreffend het motorvermogen wordt omgezet in nuttig vermogen om het schip voort te bewegen; het product van romp-, schroef- en andere rendementen."
+  ],
+  "Squat Effect": [
+   "Squat",
+   "Het inzinken en de trimverandering van een schip dat in ondiep water vaart, die met de snelheid toenemen; volle schepen (hoge Cb) zakken eerder voor in, slanke schepen eerder achter."
+  ],
+  "Bank Effect": [
+   "Oevereffect",
+   "In een smal vaarwater zuigt de nabije oever het achterschip aan en drukt de boeg af."
+  ],
+  "Slamming": [
+   "Slamming",
+   "Het hevig neerslaan van de boeg op het wateroppervlak in zware zee; veroorzaakt grote belastingen op de constructie."
+  ],
+  "Broaching": [
+   "Broaching",
+   "Bij achterinkomende zee draait het schip ongecontroleerd dwars op de golven; er is kapseisgevaar."
+  ],
+  "Parametrik Rolling": [
+   "Parametrisch rollen",
+   "Sterk en snel toenemend rollen wanneer de ontmoetingsperiode van de golven ongeveer de helft is van de eigen rolperiode van het schip."
+  ],
+  "Added Mass": [
+   "Toegevoegde massa",
+   "Het extra massa-effect van het water dat met het schip moet worden versneld wanneer snelheid of beweging verandert."
+  ],
+  "Sinkage & Trim": [
+   "Inzinking en trim",
+   "Het inzinken en de trimverandering van een varend schip, die in ondiep water met de snelheid toenemen."
+  ],
+  "Boundary Layer": [
+   "Grenslaag",
+   "De dunne waterlaag langs de romp waarin de stroomsnelheid oploopt van nul tot die van de vrije stroming."
+  ],
+  "Ana Şalt (Main Switchboard)": [
+   "Hoofdschakelbord",
+   "Het centrale schakelbord waarmee de stroom van de generatoren wordt verdeeld."
+  ],
+  "Shore Connection": [
+   "Walstroomaansluiting",
+   "De voeding van het schip vanuit het walnet in de haven, zodat de generatoren kunnen worden stilgezet."
+  ],
+  "UPS": [
+   "UPS",
+   "Uninterruptible Power Supply; houdt essentiële apparatuur bij een stroomstoring in bedrijf."
+  ],
+  "VHF Telsiz": [
+   "Marifoon (VHF)",
+   "Een radio op zeer hoge frequentie voor maritieme communicatie op korte afstand."
+  ],
+  "MF/HF Telsiz": [
+   "MF/HF-radio",
+   "Een radio-installatie voor maritieme communicatie op middellange en lange afstand."
+  ],
+  "Inmarsat": [
+   "Inmarsat",
+   "Het satellietsysteem dat schepen spraak-, data- en noodverbindingen biedt."
+  ],
+  "Log (Hız Ölçer)": [
+   "Log",
+   "Een instrument dat de snelheid van het schip door het water of over de grond meet."
+  ],
+  "Anemometre": [
+   "Windmeter (anemometer)",
+   "Een instrument dat windsnelheid en windrichting meet."
+  ],
+  "Voyage Data Recorder (VDR)": [
+   "VDR (Voyage Data Recorder)",
+   "Een apparaat dat navigatie-, machine- en brugdata vastlegt; de ‘zwarte doos’ van het schip."
+  ],
+  "Autopilot": [
+   "Stuurautomaat",
+   "Een elektronisch stuursysteem dat het schip automatisch op de ingestelde koers houdt."
+  ],
+  "COLREG": [
+   "COLREG (BVA)",
+   "De Bepalingen ter voorkoming van aanvaring op zee; de regels voor het gedrag van schepen die elkaar ontmoeten."
+  ],
+  "STCW": [
+   "STCW",
+   "Het Internationaal Verdrag betreffende de normen voor zeevarenden inzake opleiding, diplomering en wachtdienst."
+  ],
+  "MLC 2006": [
+   "MLC 2006",
+   "Het Verdrag betreffende maritieme arbeid; regelt de arbeids- en leefomstandigheden van zeevarenden."
+  ],
+  "Flag State (Bayrak Devleti)": [
+   "Vlaggenstaat",
+   "De staat waar het schip is geregistreerd; verantwoordelijk voor het technische en veiligheidstoezicht op het schip."
+  ],
+  "Port State Control (PSC)": [
+   "Havenstaatcontrole (PSC)",
+   "De inspectie van buitenlandse schepen in de haven om na te gaan of ze aan de internationale normen voldoen."
+  ],
+  "Class Survey (Klas Denetimi)": [
+   "Klasse-inspectie",
+   "Een periodieke inspectie door het classificatiebureau om romp en machines te controleren."
+  ],
+  "P&I Club": [
+   "P&I Club",
+   "Een onderlinge verzekeraar die de aansprakelijkheid van reders tegenover derden dekt."
+  ],
+  "Charter Party": [
+   "Charterpartij",
+   "De overeenkomst voor het charteren van een schip; als reis-, tijd- of rompbevrachting."
+  ],
+  "Salvage (Kurtarma)": [
+   "Berging",
+   "Het redden van een schip of zijn lading uit gevaar; een geslaagde berging geeft recht op hulploon."
+  ],
+  "General Average (Müşterek Avarya)": [
+   "Averij-grosse",
+   "Het beginsel dat opofferingen en kosten om schip en lading uit gemeenschappelijk gevaar te redden door alle belanghebbenden worden gedragen."
+  ],
+  "Demurrage": [
+   "Overliggeld (demurrage)",
+   "Het overeengekomen bedrag dat wordt betaald als het schip langer wordt opgehouden dan de toegestane laad- of lostijd."
+  ],
+  "Despatch": [
+   "Despatch",
+   "Het bedrag dat wordt verdiend als het laden of lossen vóór het einde van de ligtijd klaar is."
+  ],
+  "NOR (Notice of Readiness)": [
+   "NOR (Notice of Readiness)",
+   "De schriftelijke melding van de kapitein dat het schip gereed is om te laden of te lossen."
+  ],
+  "Lay Time (Starya Süresi)": [
+   "Ligtijd (laytime)",
+   "De toegestane tijd voor laden en lossen."
+  ],
+  "LOF (Lloyd's Open Form)": [
+   "LOF (Lloyd's Open Form)",
+   "Het standaard bergingscontract volgens het beginsel ‘no cure, no pay’ (geen resultaat, geen betaling)."
+  ],
+  "Yanaşma (Berthing)": [
+   "Afmeren",
+   "Het schip gecontroleerd langs een kade of steiger brengen en vastmaken."
+  ],
+  "Kalkma (Unberthing)": [
+   "Ontmeren",
+   "De trossen losgooien en van de ligplaats vertrekken."
+  ],
+  "Demir Atma (Anchoring)": [
+   "Ankeren",
+   "Het anker op de zeebodem laten vallen zodat het schip zijn positie houdt."
+  ],
+  "Demir Alma (Weighing Anchor)": [
+   "Anker lichten",
+   "Het anker van de zeebodem ophalen en het ankeren beëindigen."
+  ],
+  "Römorkör (Tug)": [
+   "Sleepboot",
+   "Een klein, krachtig vaartuig dat grote schepen helpt bij het manoeuvreren in de haven."
+  ],
+  "Kılavuz Kaptan (Pilot)": [
+   "Loods",
+   "Een persoon met plaatselijke kennis die aan boord komt en de kapitein op de brug adviseert bij het binnenlopen en uitvaren."
+  ],
+  "Pilot Merdiveni": [
+   "Loodsladder",
+   "Een touwladder die langs de scheepszijde wordt uitgehangen zodat de loods aan boord kan komen."
+  ],
+  "Çıpa (Anchor)": [
+   "Anker",
+   "Het zware uitrustingsstuk dat het schip op zijn plaats houdt door in de zeebodem te grijpen; gangbare typen zijn Hall, AC-14 en Danforth."
+  ],
+  "Zincir (Chain)": [
+   "Ankerketting",
+   "De zware stalen ketting die het anker met het schip verbindt; de lengte wordt gemeten in kettinglengten (shackles)."
+  ],
+  "Posa (Shackle)": [
+   "Shackle (kettinglengte)",
+   "De lengte-eenheid van de ankerketting; één shackle is 27,5 meter (15 vadem)."
+  ],
+  "Usturmaça (Fender)": [
+   "Stootwil (fender)",
+   "Een buffer tussen schip en kade die de stoot opvangt."
+  ],
+  "Swing Circle": [
+   "Zwaaicirkel",
+   "De cirkel waarin een ten anker liggend schip met wind en stroom kan zwaaien; bepaalt de veilige ankerafstand."
+  ],
+  "Turning Circle": [
+   "Draaicirkel",
+   "De cirkel die het schip beschrijft bij een draai met volle roeruitslag; een maat voor de manoeuvreerbaarheid."
+  ],
+  "Advance & Transfer": [
+   "Advance and transfer",
+   "De afstanden die het schip na het roerleggen naar voren (advance) en zijwaarts (transfer) aflegt."
+  ],
+  "Crash Stop": [
+   "Crash stop",
+   "In een noodsituatie het schip stoppen door van volle kracht vooruit naar volle kracht achteruit te gaan."
+  ],
+  "Dead Slow": [
+   "Dead slow",
+   "Het machinecommando met het laagste toerental (dead slow ahead / dead slow astern); gebruikt bij het manoeuvreren."
+  ],
+  "VTS (Vessel Traffic Service)": [
+   "VTS (verkeersbegeleiding)",
+   "Een walgebonden dienst die het scheepvaartverkeer in havens en beperkte vaarwateren bewaakt en regelt."
+  ],
+  "Kanal Seyrüseferi": [
+   "Kanaalpassage",
+   "De doorvaart door kunstmatige vaarwegen zoals het Suezkanaal en het Panamakanaal; met bijzondere voorschriften en loodsplicht."
+  ],
+  "Dry Dock (Havuz)": [
+   "Droogdok",
+   "Een dok dat wordt leeggepompt zodat het onderwaterschip kan worden hersteld."
+  ],
+  "Şamandıraya Bağlanma": [
+   "Afmeren aan een boei",
+   "Het schip met trossen aan een vaste meerboei vastmaken in plaats van te ankeren."
+  ],
+  "Amade": [
+   "Zeeklaar",
+   "Het schip is klaar om uit te varen; alle controles zijn afgerond."
+  ],
+  "Demir Yeri (Anchorage)": [
+   "Ankerplaats",
+   "Een aangewezen gebied met geschikte waterdiepte en bodem om te ankeren."
+  ],
+  "Enine Perde (Bulkhead)": [
+   "Dwarsschot",
+   "Een verticale constructiewand die de romp in waterdichte compartimenten verdeelt."
+  ],
+  "Forkastel (Forecastle)": [
+   "Bak (voorschip)",
+   "Het verhoogde deel van het dek bij de boeg; daar staan de anker- en meeruitrusting."
+  ],
+  "Güverte Ambarı (Tweendeck)": [
+   "Tussendek",
+   "Een dek tussen het onderruim en het bovendek; gebruikt voor stukgoed."
+  ],
+  "Havuzlama (Dry Docking)": [
+   "Dokken",
+   "Het schip in het droogdok brengen om het onderwaterschip te onderhouden en te herstellen."
+  ],
+  "Koferdamı (Cofferdam)": [
+   "Kofferdam",
+   "Een smalle lege ruimte tussen twee tanks of compartimenten, bedoeld om lekkage van de ene naar de andere te voorkomen."
+  ],
+  "Lumboz (Porthole)": [
+   "Patrijspoort",
+   "Een rond venster in de scheepszijde dat licht en ventilatie geeft."
+  ],
+  "Manika": [
+   "Luchtkoker",
+   "De opening van een ventilatiekanaal aan dek; paddenstoel- of zwanenhalsvormig."
+  ],
+  "Mayıstra": [
+   "Grootzeil",
+   "Het grootste zeil, gevoerd aan de grote mast; het belangrijkste voortstuwende zeil van een zeilschip."
+  ],
+  "Neta": [
+   "Shipshape",
+   "Orde en netheid aan dek; alle losse spullen worden zeevast gezet."
+  ],
+  "Orsalamak": [
+   "Oploeven",
+   "De boeg van een zeilvaartuig naar de wind toe draaien."
+  ],
+  "Pupa": [
+   "Hek (achterschip)",
+   "Het achterste deel van het schip; wind van achteren waait recht van achteren in."
+  ],
+  "Safra (Ballast)": [
+   "Ballast",
+   "Zeewater of vaste gewichten in tanks die het schip de vereiste stabiliteit, diepgang en trim geven."
+  ],
+  "Uskuna (Schooner)": [
+   "Schoener",
+   "Een zeilschip met twee of meer masten en langsscheepse zeilen."
+  ],
+  "Mercator Projeksiyonu": [
+   "Mercatorprojectie",
+   "Een cilindrische kaartprojectie waarop loxodromen rechte lijnen zijn; oppervlakken worden naar hoge breedten steeds sterker vergroot."
+  ],
+  "Gnomonic Projeksiyon": [
+   "Gnomonische projectie",
+   "Een kaartprojectie waarop grootcirkels rechte lijnen zijn; gebruikt voor het plannen van grootcirkelnavigatie."
+  ],
+  "Dead Reckoning (Tahmini Seyir)": [
+   "Gegist bestek (DR)",
+   "De positie van het schip bepalen vanaf de laatst bekende positie met alleen koers en snelheid door het water."
+  ],
+  "Fix (Kesin Mevki)": [
+   "Waargenomen positie",
+   "Een betrouwbare positie die door waarneming of met elektronische hulpmiddelen is bepaald."
+  ],
+  "Estimated Position (EP)": [
+   "Estimated position (EP)",
+   "Een uit het gegist bestek geschatte positie, gecorrigeerd voor stroom en wind; minder betrouwbaar dan een waargenomen positie."
+  ],
+  "DLat (Enlem Değişimi)": [
+   "Breedteverschil",
+   "Het verschil in breedte tussen twee posities; uitgedrukt in boogminuten."
+  ],
+  "DLong (Boylam Değişimi)": [
+   "Lengteverschil",
+   "Het verschil in lengte tussen twee posities; uitgedrukt in boogminuten."
+  ],
+  "Departure": [
+   "Afwijking (departure)",
+   "De oost-westafstand in zeemijlen die overeenkomt met een lengteverschil; afwijking = D.Long × cos(breedte)."
+  ],
+  "Vertex (Tepe Noktası)": [
+   "Vertex",
+   "Het punt van een grootcirkel dat het dichtst bij de pool ligt; daar bereikt de route haar hoogste breedte."
+  ],
+  "Composite Great Circle": [
+   "Composite great circle",
+   "Een route uit grootcirkels en een breedteparallel om een grensbreedte niet te overschrijden."
+  ],
+  "Course Made Good (CMG)": [
+   "Course made good (CMG)",
+   "De werkelijk afgelegde richting van het schip, inclusief de invloed van stroom en wind."
+  ],
+  "Speed Made Good (SMG)": [
+   "Speed made good (SMG)",
+   "De werkelijk behaalde snelheid over de grond, inclusief de invloed van de stroom."
+  ],
+  "Chart Datum": [
+   "Reductievlak (kaartnul)",
+   "Het referentievlak waarop de kaartdiepten zijn betrokken; meestal het laagste astronomische getij (LAT)."
+  ],
+  "Sextant": [
+   "Sextant",
+   "Een optisch instrument dat de hoek tussen een hemellichaam en de kim meet; gebruikt in de astronomische navigatie."
+  ],
+  "Chronometer": [
+   "Chronometer",
+   "Een nauwkeurige klok die de Greenwich-tijd bijhoudt; onmisbaar voor het bepalen van de lengte."
+  ],
+  "Nautical Almanac": [
+   "Nautical Almanac",
+   "De jaarlijkse uitgave met de dagelijkse posities van de hemellichamen (uurhoek Greenwich, declinatie)."
+  ],
+  "Sight Reduction Tables": [
+   "Sight reduction tables",
+   "Vooraf berekende tafels voor het uitwerken van astronomische waarnemingen."
+  ],
+  "Height of Eye": [
+   "Ooghoogte",
+   "De hoogte van het oog van de waarnemer boven het zeeoppervlak; gebruikt bij de correctie van de sextanthoogte."
+  ],
+  "Dip (Ufuk Alçalması)": [
+   "Kimduiking",
+   "De hoek tussen het ware horizontale vlak en de zichtbare kim, veroorzaakt door de ooghoogte van de waarnemer."
+  ],
+  "Index Error": [
+   "Indexfout",
+   "De sextantfout die optreedt als de index- en kimspiegel bij de nulstand niet evenwijdig zijn."
+  ],
+  "Azimut": [
+   "Azimut",
+   "De horizontale richting van een hemellichaam of object, gemeten met de wijzers van de klok mee vanaf het noorden."
+  ],
+  "Amplitude": [
+   "Amplitude",
+   "De hoek tussen het ware oosten of westen en de richting van de zon of een ander hemellichaam bij opkomst of ondergang."
+  ],
+  "Intercept (Aradaki Fark)": [
+   "Intercept (hoogteverschil)",
+   "Het verschil tussen de waargenomen en de berekende hoogte; gebruikt om de hoogtelijn te tekenen."
+  ],
+  "Position Line (Mevki Doğrusu)": [
+   "Positielijn",
+   "Een uit een waarneming verkregen lijn waarop het schip zich bevindt; twee snijdende positielijnen geven een positie."
+  ],
+  "Under Keel Clearance (UKC)": [
+   "Kielspeling (UKC)",
+   "De veilige waterdiepte tussen de onderkant van de kiel en de zeebodem."
+  ],
+  "Traffic Separation Scheme (TSS)": [
+   "Verkeersscheidingsstelsel (VSS)",
+   "Een routeringsmaatregel die tegengestelde verkeersstromen in vaarbanen scheidt."
+  ],
+  "Precautionary Area": [
+   "Voorzorgsgebied",
+   "Een afgebakend gebied waar schepen met bijzondere voorzichtigheid moeten varen; vaak waar vaarbanen samenkomen."
+  ],
+  "Tidal Stream": [
+   "Getijstroom",
+   "De horizontale waterbeweging door het getij; richting en sterkte veranderen in de loop van het getij."
+  ],
+  "Chart Correction": [
+   "Kaartcorrectie",
+   "Het bijwerken van zeekaarten met de informatie uit de Berichten aan Zeevarenden."
+  ],
+  "Notice to Mariners (NtM)": [
+   "Berichten aan Zeevarenden (BaZ)",
+   "Periodiek gepubliceerde berichten om zeekaarten en nautische publicaties actueel te houden."
+  ],
+  "Metacenter (M)": [
+   "Metacentrum (M)",
+   "Bij kleine hellingshoeken het punt waar de werklijn van de opwaartse kracht het langsscheepse middenvlak snijdt."
+  ],
+  "Vanishing Angle": [
+   "Angle of vanishing stability",
+   "De hellingshoek waarbij GZ weer nul wordt; daarboven heeft het schip geen oprichtende arm meer."
+  ],
+  "Range of Stability": [
+   "Range of stability",
+   "Het hellingsbereik waarin GZ positief blijft; een groot bereik betekent een grote veiligheidsmarge."
+  ],
+  "Righting Lever Maximum": [
+   "Maximale stabiliteitsarm",
+   "De grootste waarde van de GZ-kromme, waar de weerstand van het schip tegen hellen het grootst is."
+  ],
+  "Cross Curves of Stability": [
+   "KN-krommen",
+   "Krommen die KN bij vaste hellingshoeken voor verschillende waterverplaatsingen geven."
+  ],
+  "Intact Stability": [
+   "Intacte stabiliteit",
+   "De stabiliteit van het onbeschadigde schip; moet voldoen aan de minimumcriteria van de IMO."
+  ],
+  "Damage Stability": [
+   "Lekstabiliteit",
+   "De stabiliteit van het schip wanneer een of meer compartimenten zijn volgelopen."
+  ],
+  "Subdivision": [
+   "Compartimentering",
+   "Het verdelen van de romp in compartimenten door waterdichte schotten; beschermt het schip tegen zinken."
+  ],
+  "Margin Line": [
+   "Margin line",
+   "Een lijn 76 mm onder de bovenkant van het schottendek aan de zijde; bij lekberekeningen mag de waterlijn er niet boven komen."
+  ],
+  "Heel (Yatma)": [
+   "Helling (heel)",
+   "Een dwarsscheepse helling van het schip door een uitwendige kracht zoals wind, een verschoven gewicht of een draai."
+  ],
+  "List": [
+   "Slagzij (list)",
+   "Een blijvende dwarsscheepse helling door inwendige oorzaken, zoals uit het midden geplaatste lading of tankinhoud."
+  ],
+  "Loll": [
+   "Loll",
+   "De toestand van een schip met negatieve aanvangs-GM dat onder een blijvende hellingshoek (angle of loll) tot rust komt; een uiterst gevaarlijke toestand."
+  ],
+  "Waterplane Area": [
+   "Waterlijnoppervlak",
+   "Het door de waterlijn omsloten oppervlak; gebruikt in TPC- en BM-berekeningen."
+  ],
+  "Block Coefficient (Cb)": [
+   "Blokcoëfficiënt (Cb)",
+   "Een maat voor de volheid van de romp: het onderwatervolume gedeeld door lengte × breedte × diepgang."
+  ],
+  "Midship Coefficient (Cm)": [
+   "Grootspantcoëfficiënt (Cm)",
+   "De verhouding tussen het ondergedompelde grootspantoppervlak en breedte × diepgang."
+  ],
+  "Prismatic Coefficient (Cp)": [
+   "Prismatische coëfficiënt (Cp)",
+   "De verhouding tussen het onderwatervolume en grootspantoppervlak × lengte; beïnvloedt weerstand en snelheid."
+  ],
+  "Crosshead (Çapraz Kafa)": [
+   "Kruiskop",
+   "Bij langzaamlopende tweetaktmotoren het glijdende scharnier dat de zuigerstang met de drijfstang verbindt."
+  ],
+  "Crankshaft (Krank Mili)": [
+   "Krukas",
+   "De hoofdas van de motor die de heen-en-weergaande beweging van de zuigers omzet in een draaiende beweging."
+  ],
+  "Camshaft (Kam Mili)": [
+   "Nokkenas",
+   "De as waarvan de nokken de timing van de kleppen en de brandstofpompen bepalen."
+  ],
+  "Connecting Rod (Biyel Kolu)": [
+   "Drijfstang",
+   "De stang die de zuiger (of kruiskop) met de krukas verbindt en de heen-en-weergaande beweging omzet in draaiing."
+  ],
+  "Fuel Injector (Enjektör)": [
+   "Verstuiver",
+   "Het onderdeel dat de brandstof onder hoge druk fijn verdeeld in de cilinder spuit."
+  ],
+  "Exhaust Valve (Egzoz Süpabı)": [
+   "Uitlaatklep",
+   "De klep die de verbrande gassen uit de cilinder laat."
+  ],
+  "Scavenging (Süpürme)": [
+   "Spoelen",
+   "De verbrande gassen uit de cilinder verdrijven en de cilinder met verse lucht vullen."
+  ],
+  "Deaerator": [
+   "Ontgasser",
+   "Een installatie die opgeloste zuurstof en gassen uit het ketelvoedingwater verwijdert om corrosie te voorkomen."
+  ],
+  "Economizer": [
+   "Economiser",
+   "Een warmtewisselaar die met de warmte van de uitlaatgassen het ketelvoedingwater voorverwarmt of stoom maakt."
+  ],
+  "Evaporator (Tatlı Su Üreteci)": [
+   "Zoetwatermaker (verdamper)",
+   "Een installatie die zoet water maakt door zeewater te verdampen, meestal met restwarmte van de motor of lagedrukstoom."
+  ],
+  "Oily Water Separator (OWS)": [
+   "Olie-waterscheider (OWS)",
+   "De scheider die het oliegehalte van bilgewater onder 15 ppm brengt zodat het wettelijk mag worden geloosd."
+  ],
+  "Sewage Treatment Plant": [
+   "Rioolwaterzuiveringsinstallatie",
+   "De installatie die het sanitair afvalwater van het schip vóór lozing biologisch of chemisch behandelt."
+  ],
+  "Ballast Water Treatment (BWTS)": [
+   "Ballastwaterbehandelingssysteem (BWTS)",
+   "Een systeem dat organismen en ziekteverwekkers in ballastwater doodt of verwijdert om hun verspreiding te voorkomen."
+  ],
+  "Stern Tube Seal": [
+   "Schroefasafdichting",
+   "De afdichting die water buiten houdt waar de schroefas door de romp gaat."
+  ],
+  "Controllable Pitch Propeller (CPP)": [
+   "Verstelbare schroef (CPP)",
+   "Een schroef waarvan de bladhoek kan worden versteld; de stuwkracht wordt geregeld terwijl het motortoerental gelijk blijft."
+  ],
+  "Fixed Pitch Propeller (FPP)": [
+   "Vaste schroef (FPP)",
+   "De traditionele schroef met vaste bladen; de stuwkracht wordt geregeld met toerental en draairichting van de motor."
+  ],
+  "Reduction Gear (Dişli Kutusu)": [
+   "Reductiekast",
+   "Een tandwielkast die het toerental van een snellopende motor terugbrengt tot het toerental dat de schroef nodig heeft."
+  ],
+  "Heat Exchanger (Isı Değiştirici)": [
+   "Warmtewisselaar",
+   "Een apparaat dat warmte tussen twee vloeistoffen overdraagt; gebruikt in koel- en verwarmingskringen."
+  ],
+  "Centrifugal Pump": [
+   "Centrifugaalpomp",
+   "Een pomp met een draaiende waaier die vloeistof door middelpuntvliedende kracht verplaatst; gangbaar voor koeling en ballast."
+  ],
+  "Positive Displacement Pump": [
+   "Verdringerpomp",
+   "Een pomp die per slag of omwenteling een vast volume vloeistof verplaatst; gebruikt voor smeerolie en het verpompen van brandstof."
+  ],
+  "Air Compressor (Hava Kompresörü)": [
+   "Startluchtcompressor",
+   "Een compressor die perslucht van ongeveer 30 bar maakt voor het starten van de hoofdmotor en voor regelsystemen."
+  ],
+  "Indicator Diagram": [
+   "Indicateurdiagram",
+   "Een druk-volumediagram van de cilinder; gebruikt voor prestatieanalyse en storingzoeken."
+  ],
+  "Mean Effective Pressure (MEP)": [
+   "Gemiddelde effectieve druk",
+   "De gemiddelde effectieve druk in de cilinder over één arbeidscyclus; gebruikt om het motorvermogen te berekenen."
+  ],
+  "Brake Power": [
+   "Effectief vermogen",
+   "Het vermogen gemeten aan de uitgaande as van de motor; uitgedrukt in kW."
+  ],
+  "Indicated Power": [
+   "Geïndiceerd vermogen",
+   "Het in de cilinders ontwikkelde vermogen, berekend uit de gasdruk; de mechanische verliezen zijn niet afgetrokken."
+  ],
+  "Thermal Efficiency": [
+   "Thermisch rendement",
+   "Het deel van de warmte-energie van de brandstof dat in mechanische arbeid wordt omgezet; uitgedrukt in procenten."
+  ],
+  "LSA Code": [
+   "LSA-code",
+   "De International Life-Saving Appliance Code; normen voor reddingsboten, reddingsvlotten, reddingsvesten en andere reddingsmiddelen."
+  ],
+  "FSS Code": [
+   "FSS-code",
+   "De International Code for Fire Safety Systems; normen voor branddetectie- en blussystemen."
+  ],
+  "IAMSAR Manual": [
+   "IAMSAR-handboek",
+   "Het International Aeronautical and Maritime Search and Rescue Manual; legt de procedures voor SAR-operaties vast."
+  ],
+  "Williamson Turn": [
+   "Williamson-turn",
+   "Een man-overboordmanoeuvre die het schip in tegengestelde richting terugbrengt op zijn eigen koerslijn."
+  ],
+  "Scharnow Turn": [
+   "Scharnow-turn",
+   "Een man-overboordmanoeuvre die wordt gebruikt als de persoon al enige tijd vermist is (vertraagde actie)."
+  ],
+  "Anderson Turn": [
+   "Anderson-turn",
+   "Een snelle man-overboordmanoeuvre met één enkele draai, voor schepen met een kleine draaicirkel (directe actie)."
+  ],
+  "Immersion Suit": [
+   "Overlevingspak",
+   "Een waterdicht, geïsoleerd pak voor het hele lichaam dat de drager in koud water beschermt."
+  ],
+  "Thermal Protective Aid (TPA)": [
+   "Thermisch beschermingsmiddel (TPA)",
+   "Een zak of pak van waterdicht materiaal dat in een reddingsvlot of reddingsboot het warmteverlies van het lichaam beperkt."
+  ],
+  "Pyrotechnic Signals": [
+   "Pyrotechnische noodsignalen",
+   "Noodsignalen zoals valschermsignalen, handstakellichten en drijvende rooksignalen."
+  ],
+  "EEBD (Emergency Escape Breathing Device)": [
+   "EEBD (Emergency Escape Breathing Device)",
+   "Een draagbaar ademhalingstoestel dat korte tijd lucht levert om uit een gevaarlijke atmosfeer te ontsnappen."
+  ],
+  "Fixed Fire Detection System": [
+   "Vast branddetectie- en brandalarmsysteem",
+   "Een vast systeem dat brand ontdekt met rook-, warmte- of vlammelders en alarm geeft."
+  ],
+  "Sprinkler System": [
+   "Sprinklerinstallatie",
+   "Een watersproei-installatie die automatisch in werking treedt wanneer warmte de sprinklerkoppen opent; verplicht op passagiersschepen."
+  ],
+  "Inert Gas System (IGS)": [
+   "Inertgasinstallatie (IGS)",
+   "Een installatie die de ladingtanks van tankers met zuurstofarm gas vult om explosies te voorkomen."
+  ],
+  "Permit to Work": [
+   "Werkvergunning",
+   "Een schriftelijke vergunning die wordt afgegeven vóór gevaarlijk werk zoals heet werk, het betreden van besloten ruimten of werken op hoogte."
+  ],
+  "Risk Assessment": [
+   "Risicobeoordeling",
+   "Een systematische beoordeling die de gevaren van een werk in kaart brengt en de beheersmaatregelen plant."
+  ],
+  "Toolbox Meeting": [
+   "Toolboxmeeting",
+   "Een korte veiligheidsbespreking vóór het werk, waarin de gevaren en voorzorgsmaatregelen aan het team worden uitgelegd."
+  ],
+  "Near Miss Report": [
+   "Bijna-ongevalmelding",
+   "De melding van een gebeurtenis die tot een ongeval had kunnen leiden; belangrijk voor het opbouwen van een veiligheidscultuur."
+  ],
+  "Yoğunlaşma (Condensation)": [
+   "Condensatie",
+   "De overgang van waterdamp naar vloeistof bij afkoeling; het proces achter wolken, mist en dauw."
+  ],
+  "Adveksiyon Sisi": [
+   "Advectiemist",
+   "Mist die ontstaat wanneer warme, vochtige lucht over een kouder zeeoppervlak trekt."
+  ],
+  "Radyasyon Sisi": [
+   "Stralingsmist",
+   "Mist die 's nachts boven land ontstaat wanneer de grond afkoelt en de lucht erboven haar dauwpunt bereikt."
+  ],
+  "Coriolis Kuvveti": [
+   "Corioliskracht",
+   "De schijnkracht door de draaiing van de aarde; buigt winden en stromen op het noordelijk halfrond naar rechts en op het zuidelijk halfrond naar links af."
+  ],
+  "Geostrofik Rüzgâr": [
+   "Geostrofische wind",
+   "De theoretische wind die evenwijdig aan de isobaren waait wanneer de drukgradiëntkracht en de corioliskracht in evenwicht zijn."
+  ],
+  "Konveksiyon": [
+   "Convectie",
+   "Verticale luchtbeweging waarbij verwarmde lucht opstijgt en afkoelt; veroorzaakt stapelwolken en buien."
+  ],
+  "Soğuk Cephe": [
+   "Koufront",
+   "De grens waar een koude luchtmassa onder een warme luchtmassa schuift en die optilt."
+  ],
+  "Sıcak Cephe": [
+   "Warmtefront",
+   "De grens waar een warme luchtmassa langzaam over een koude luchtmassa opglijdt."
+  ],
+  "Oklüzyon Cephesi": [
+   "Occlusie",
+   "Een front dat ontstaat wanneer het koufront het warmtefront inhaalt en de warme lucht van het aardoppervlak optilt."
+  ],
+  "Hava Kütlesi": [
+   "Luchtmassa",
+   "Een grote hoeveelheid lucht met vergelijkbare temperatuur en vochtigheid boven een groot gebied."
+  ],
+  "Jet Stream": [
+   "Straalstroom",
+   "Een smalle band van zeer harde wind nabij de tropopauze; kan 200-300 knopen bereiken."
+  ],
+  "ITCZ (Ekvatoral Konverjans)": [
+   "ITCZ (intertropische convergentiezone)",
+   "De tropische gordel waar de passaatwinden van beide halfronden samenkomen; een gebied met zware regen en onweer."
+  ],
+  "Fetch": [
+   "Strijklengte (fetch)",
+   "De afstand open zee waarover de wind ongehinderd waait; bepaalt rechtstreeks de grootte van de golven."
+  ],
+  "Significant Wave Height (Hs)": [
+   "Significante golfhoogte (Hs)",
+   "De gemiddelde hoogte van het hoogste derde deel van de golven; de belangrijkste maat voor de zeegang."
+  ],
+  "Typhoon Signal": [
+   "Tyfoonsignaal",
+   "Een waarschuwingssignaal dat de nadering van een tropische cycloon aankondigt."
+  ],
+  "Buys Ballot Kuralı": [
+   "Wet van Buys Ballot",
+   "Op het noordelijk halfrond ligt de lage druk links als je met je rug naar de wind staat."
+  ],
+  "Squall (Bora)": [
+   "Squall",
+   "Een plotselinge, kortdurende sterke toename van de wind; vaak met zware regen en slecht zicht."
+  ],
+  "Waterspout (Hortum)": [
+   "Waterhoos",
+   "Een draaiende windkolom boven zee die aan een cumulonimbuswolk hangt en buiswater opzuigt."
+  ],
+  "Bulbous Bow (Bodoslama Bülbü)": [
+   "Bulbsteven",
+   "Een naar voren uitstekende bulb onder de waterlijn aan de boeg; verkleint de golfweerstand en bespaart brandstof."
+  ],
+  "Bilge Keel": [
+   "Kimkiel",
+   "Een vin langs de kim die het rollen dempt."
+  ],
+  "Stabilizer Fin": [
+   "Vinstabilisator",
+   "Een actieve vin die uit de scheepszijde steekt en het rollen op zee automatisch vermindert."
+  ],
+  "Slip (Kayma)": [
+   "Schroefslip",
+   "Het verschil tussen de theoretische en de werkelijke voortgang van de schroef; uitgedrukt in procenten."
+  ],
+  "Pitch (Hatve)": [
+   "Spoed (schroef)",
+   "De afstand die een schroef theoretisch in één omwenteling vooruitkomt."
+  ],
+  "Cavitation": [
+   "Schroefcavitatie",
+   "Dampbellen die op de schroefbladen ontstaan waar de druk daalt en daarna imploderen; veroorzaken erosie en rendementsverlies."
+  ],
+  "Interaction Effect": [
+   "Interactie",
+   "De hydrodynamische krachten tussen twee schepen die dicht langs elkaar varen."
+  ],
+  "Shallow Water Effect": [
+   "Ondiepwatereffect",
+   "In ondiep water versnelt de stroming onder het schip en daalt de druk; het schip zinkt in en stuurt slechter."
+  ],
+  "Trim Optimization": [
+   "Trimoptimalisatie",
+   "De trim kiezen waarbij het schip de kleinste weerstand heeft; bespaart brandstof."
+  ],
+  "Alternator": [
+   "Wisselstroomgenerator",
+   "Een generator die wisselstroom opwekt; op schepen meestal 440 V 60 Hz of 380 V 50 Hz."
+  ],
+  "Transformer": [
+   "Transformator",
+   "Een elektromagnetisch apparaat dat wisselspanning verhoogt of verlaagt."
+  ],
+  "Circuit Breaker (Şalter)": [
+   "Vermogensschakelaar",
+   "Een beveiligingsschakelaar die de stroomkring bij overstroom of kortsluiting automatisch onderbreekt."
+  ],
+  "Frequency Converter": [
+   "Frequentieomvormer",
+   "Elektronische apparatuur die frequentie en spanning omzet, bijvoorbeeld voor een walstroomaansluiting."
+  ],
+  "Synchroscope": [
+   "Synchronoscoop",
+   "Een instrument dat vóór het parallelschakelen aangeeft of frequentie en fase van een bij te schakelen generator overeenkomen met de rail."
+  ],
+  "AVR (Automatic Voltage Regulator)": [
+   "Automatische spanningsregelaar (AVR)",
+   "De schakeling die de uitgangsspanning van de generator constant houdt."
+  ],
+  "Earth Fault Monitor": [
+   "Aardfoutbewaking",
+   "Een instrument dat aardfouten ontdekt in een geïsoleerd (niet geaard) net."
+  ],
+  "Motor Starter": [
+   "Motorstarter",
+   "De schakeling die een elektromotor gecontroleerd laat aanlopen door de aanloopstroom te beperken."
+  ],
+  "PLC (Programmable Logic Controller)": [
+   "PLC (programmeerbare logische besturing)",
+   "Een programmeerbare besturing voor machine- en procesbesturing in de scheepsautomatisering."
+  ],
+  "SCADA": [
+   "SCADA",
+   "Software voor centrale bewaking en besturing van de machinekamer en de hulpsystemen."
+  ],
+  "BWM Convention": [
+   "BWM-verdrag",
+   "Het Ballastwaterverdrag; heeft tot doel de verspreiding van organismen via het ballastwater van schepen te voorkomen."
+  ],
+  "SEEMP": [
+   "SEEMP",
+   "Ship Energy Efficiency Management Plan; het verplichte plan voor operationele energie-efficiëntiemaatregelen."
+  ],
+  "EEDI": [
+   "EEDI",
+   "Energy Efficiency Design Index; de verplichte ontwerpnorm voor de CO₂-efficiëntie van nieuwe schepen."
+  ],
+  "CII Rating": [
+   "CII-rating",
+   "Carbon Intensity Indicator; beoordeelt de jaarlijkse operationele koolstofefficiëntie van een schip van A tot E."
+  ],
+  "DOC (Document of Compliance)": [
+   "DOC (Document of Compliance)",
+   "Het certificaat onder de ISM-code dat aantoont dat het veiligheidsbeheersysteem van de rederij voldoet."
+  ],
+  "SMC (Safety Management Certificate)": [
+   "SMC (Safety Management Certificate)",
+   "Het certificaat onder de ISM-code dat aan het schip wordt afgegeven en aantoont dat het veiligheidsbeheersysteem aan boord voldoet."
+  ],
+  "IOPP Certificate": [
+   "IOPP-certificaat",
+   "Het Internationaal certificaat ter voorkoming van verontreiniging door olie, afgegeven onder MARPOL Bijlage I."
+  ],
+  "Load Line Certificate": [
+   "Uitwateringscertificaat",
+   "Het certificaat dat de aan het schip toegekende uitwateringsmerken en vrijboorden bevestigt."
+  ],
+  "Safety Equipment Certificate": [
+   "Safety Equipment Certificate",
+   "Het certificaat dat bevestigt dat de reddingsmiddelen en de brandveiligheidsuitrusting aan SOLAS voldoen."
+  ],
+  "Tonnage Certificate": [
+   "Meetbrief",
+   "Het certificaat met de bruto- en nettotonnage van het schip."
+  ],
+  "Grain Loading Diagram": [
+   "Grain loading diagram",
+   "Een diagram dat het effect van graanlading op de stabiliteit bij verschillende ruimvullingen laat zien."
+  ],
+  "Lashing Calculator": [
+   "Lashing calculator",
+   "Een hulpmiddel om de krachten op container- en ladingsjorringen te berekenen."
+  ],
+  "Cargo Securing Manual (CSM)": [
+   "Cargo Securing Manual (CSM)",
+   "Het verplichte, scheepsspecifieke handboek over de procedures en middelen voor het vastzetten van lading."
+  ],
+  "Ventilation Hold": [
+   "Ruimventilatie",
+   "Het ventileren van de laadruimen om vochtigheid en temperatuur te beheersen; voorkomt zweet en condensatie."
+  ],
+  "Sweat (Terleme)": [
+   "Sweat",
+   "Condensatie op de lading of op de ruimconstructie door temperatuurverschillen; men onderscheidt ladingzweet en scheepszweet."
+  ],
+  "TML (Transportable Moisture Limit)": [
+   "TML (Transportable Moisture Limit)",
+   "Het hoogste vochtgehalte waarbij een vaste stortlading die kan vervloeien veilig kan worden vervoerd."
+  ],
+  "Flow Moisture Point (FMP)": [
+   "FMP (Flow Moisture Point)",
+   "Het vochtgehalte waarbij een vaste stortlading zich als een vloeistof begint te gedragen; TML = 0,9 × FMP."
+  ],
+  "Liquefaction": [
+   "Liquefactie",
+   "Een vaste stortlading die zich door trillingen en scheepsbewegingen als een vloeistof gaat gedragen; kan leiden tot verlies van stabiliteit en kapseizen."
+  ],
+  "Fumigation": [
+   "Begassing",
+   "Het doden van insecten en ongedierte in de lading met een giftig gas."
+  ],
+  "Classification Survey": [
+   "Classificatie-inspectie",
+   "Een technische inspectie van de constructie en uitrusting van het schip door het classificatiebureau op vaste tijden."
+  ],
+  "Damage Report (Hasar Raporu)": [
+   "Schaderapport",
+   "Een schriftelijk verslag van schade of tekorten die aan de lading zijn vastgesteld."
+  ],
+  "Letter of Protest": [
+   "Protestbrief (letter of protest)",
+   "Een formele brief waarin bezwaar wordt gemaakt tegen ladingschade, vertraging of ongeschikte omstandigheden."
+  ],
+  "Dangerous Goods Declaration": [
+   "Verklaring gevaarlijke stoffen",
+   "Het document waarin de verlader klasse, eigenschappen en noodinformatie van gevaarlijke stoffen verklaart."
+  ],
+  "Mediterranean Mooring": [
+   "Mediterranean mooring",
+   "Met het hek naar de kade afmeren terwijl de boeg door de ankers wordt gehouden; gebruikelijk in de Middellandse Zee."
+  ],
+  "Single Point Mooring (SPM)": [
+   "SPM (Single Point Mooring)",
+   "Een boei buitengaats waaraan een tanker tijdens laden of lossen op één punt afmeert."
+  ],
+  "Parallel Body": [
+   "Evenwijdig middenschip",
+   "Het middelste deel van de romp waarover de dwarsdoorsnede gelijk blijft."
+  ],
+  "Pivot Point": [
+   "Draaipunt (pivot point)",
+   "Het punt waarom het schip lijkt te draaien; bij vooruitvaren ligt het ver naar voren."
+  ],
+  "Tactical Diameter": [
+   "Tactische diameter",
+   "De afstand waarover het schip zijdelings van zijn oorspronkelijke koerslijn is verplaatst na een draai van 180° met volle roeruitslag."
+  ],
+  "Kick (Başlangıç Sapması)": [
+   "Kick",
+   "Direct na het roerleggen zwaait het achterschip van de draairichting weg en beweegt het schip kort zijwaarts in de tegenovergestelde richting."
+  ],
+  "Transverse Thrust": [
+   "Schroefeffect",
+   "De zijwaartse druk van de schroef op het achterschip; bepaalt het manoeuvreergedrag bij lage snelheid."
+  ],
+  "Approach Speed": [
+   "Aanlegsnelheid",
+   "De zijwaartse snelheid van het schip naar de ligplaats bij het aanleggen; mag niet groter zijn dan wat de fenders kunnen opvangen."
+  ],
+  "STS Operation": [
+   "STS-overslag",
+   "Ship-to-ship-overslag: twee schepen liggen langszij van elkaar om lading over te slaan."
+  ],
+  "Alabora": [
+   "Kapseizen",
+   "Een schip of boot slaat volledig om, zodat de kiel boven water komt."
+  ],
+  "Arma": [
+   "Tuigage",
+   "Op zeilschepen het geheel van masten, ra's, wanten, stagen en touwwerk."
+  ],
+  "Ayna Kıç": [
+   "Spiegelhek",
+   "Een hek met een vlakke, verticale afsluiting; veel toegepast op moderne vrachtschepen."
+  ],
+  "Demir Taramak": [
+   "Krabbend anker",
+   "Het anker houdt niet en sleept over de bodem; oorzaak is slechte ankergrond of te weinig ketting."
+  ],
+  "Duba": [
+   "Ponton",
+   "Een drijvend platform met platte bodem, met of zonder eigen voortstuwing; gebruikt voor overslag, als aanlegsteiger of als werkplatform."
+  ],
+  "Gemiadamı": [
+   "Zeevarende",
+   "Iedereen die in welke functie dan ook aan boord van een schip werkzaam is; inclusief kapitein, officieren en gezellen."
+  ],
+  "Iskarmoz": [
+   "Dol",
+   "Op kleine boten de pen of vork op het boord waartegen de riem bij het roeien steunt."
+  ],
+  "Kontra": [
+   "Tegenroer",
+   "Het roer naar de andere kant leggen om het draaien van het schip op te vangen."
+  ],
+  "Tayfa": [
+   "Gezel (rating)",
+   "Een bemanningslid van de dek- of machinedienst dat geen officier is."
+  ],
+  "Kazık Bağı (Clove Hitch)": [
+   "Mastworp",
+   "Een steek waarmee een lijn aan een paal of bolder wordt vastgemaakt; snel te leggen en los te maken."
+  ],
+  "Gemici Bağı (Bowline)": [
+   "Paalsteek",
+   "Een knoop die aan het eind van een lijn een vast oog vormt dat niet slipt en niet dichttrekt; de basisknoop van de zeeman."
+  ],
+  "Yoma (Sheet Bend)": [
+   "Schootsteek",
+   "Een knoop waarmee twee lijnen worden verbonden, ook als ze verschillend dik zijn."
+  ],
+  "Balıkçı Bağı (Fisherman's Knot)": [
+   "Vissersknoop",
+   "Een sterke knoop waarmee twee lijnen blijvend worden verbonden."
+  ],
+  "Figure of Eight": [
+   "Achtknoop",
+   "Een stopknoop die voorkomt dat het eind van een lijn door een blok of gat uitloopt."
+  ],
+  "Constrictor Bağı": [
+   "Constrictor knot",
+   "Een knoop die een rond voorwerp zeer strak omklemt; bijvoorbeeld om een slang vast te zetten."
+  ],
+  "Rolling Hitch": [
+   "Stoppersteek",
+   "Een klemsteek op een lijn of rondhout die houdt tegen trek in de lengterichting; gebruikt om een belaste lijn te ontlasten."
+  ],
+  "Kısa Ek (Short Splice)": [
+   "Korte splits",
+   "Twee lijneinden blijvend verbinden door hun strengen door elkaar te steken; de lijn wordt dikker."
+  ],
+  "Uzun Ek (Long Splice)": [
+   "Lange splits",
+   "Een splits die twee lijnen verbindt zonder dat de dikte toeneemt; gebruikt waar de lijn door een blok moet lopen."
+  ],
+  "Koçboynuzu": [
+   "Kikker",
+   "Een metalen beslag met twee hoorns waarop een lijn wordt belegd."
+  ],
+  "Panama Chock": [
+   "Panama chock",
+   "Een gesloten verhaalkluis in de scheepszijde waardoor de meertrossen lopen; vereist voor de doorvaart van het Panamakanaal."
+  ],
+  "Çıma Halatı (Heaving Line)": [
+   "Werplijn",
+   "Een lichte lijn met een verzwaard eind die naar de wal of een ander vaartuig wordt gegooid om de meertrossen over te geven."
+  ],
+  "Sentetik Halat": [
+   "Kunststof touw",
+   "Touw van kunstvezels zoals nylon, polyester, polypropyleen of HMPE."
+  ],
+  "Tel Halat (Wire Rope)": [
+   "Staaldraad",
+   "Touw met hoge sterkte, gemaakt van staaldraden; gebruikt voor kranen, laadbomen en het sjorren van lading."
+  ],
+  "SWL (Safe Working Load)": [
+   "SWL (veilige werklast)",
+   "De grootste last die een draad, ketting of hijsmiddel bij normaal gebruik mag hijsen of houden."
+  ],
+  "MBL (Minimum Breaking Load)": [
+   "MBL (minimale breekkracht)",
+   "De kleinste kracht waarbij een nieuwe draad of ketting gegarandeerd niet breekt; de veiligheidsfactor is MBL gedeeld door SWL."
+  ],
+  "Snap Back Zone": [
+   "Snap-back zone",
+   "Het gevaarlijke gebied waarin een meertros onder spanning terug kan zwiepen als hij breekt."
+  ],
+  "Doubling the Angle": [
+   "Doubling the angle on the bow",
+   "De afstand tot een object bepalen door te noteren wanneer de relatieve peiling verdubbelt; de afgelegde afstand tussen de twee peilingen is gelijk aan de afstand tot het object."
+  ],
+  "Four Point Bearing": [
+   "Four point bearing",
+   "De afstand tot een object bepalen uit peilingen op 45° en 90° van de boeg; de afgelegde afstand is gelijk aan de dwarsafstand."
+  ],
+  "Special Mark (Özel İşaret)": [
+   "Bijzonder teken",
+   "In het IALA-stelsel een geel teken dat een bijzonder gebied of object aangeeft, zoals een kabelgebied of een schietgebied."
+  ],
+  "Cardinal Mark": [
+   "Cardinaal teken",
+   "In het IALA-stelsel een teken ten noorden, oosten, zuiden of westen van een gevaar; geeft aan aan welke kant het veilige water ligt."
+  ],
+  "Isolated Danger Mark": [
+   "Teken voor losliggend gevaar",
+   "In het IALA-stelsel een teken op een gevaar van beperkte omvang dat rondom door bevaarbaar water is omgeven."
+  ],
+  "Safe Water Mark": [
+   "Veilig-vaarwaterteken",
+   "In het IALA-stelsel een teken met rode en witte verticale banen dat rondom veilig water aangeeft; gebruikt als aanloop- of midvaarwaterteken."
+  ],
+  "Liman Yanaşma Feneri": [
+   "Geleidelichten",
+   "Lichten bij een haveningang die, in lijn gezien, het midden van een vaargeul of de veilige aanlooplijn aangeven."
+  ],
+  "Racon": [
+   "Racon",
+   "Een radartransponder die op een radarpuls antwoordt en een gecodeerd teken op het radarscherm geeft."
+  ],
+  "Radar Shadow": [
+   "Radarschaduw",
+   "Het blinde gebied achter grote objecten dat de radarbundel niet kan bereiken."
+  ],
+  "Lubber Line": [
+   "Zeilstreep",
+   "De vaste streep op de kompasketel of op het radarbeeld die de kop van het schip aangeeft."
+  ],
+  "Pelorus": [
+   "Pelorus",
+   "Een vizierinstrument om peilingen te nemen; heeft geen eigen magnetisch kompas."
+  ],
+  "Rate of Turn Indicator": [
+   "Draaisnelheidsmeter (ROTI)",
+   "Een instrument dat aangeeft hoe snel het schip draait, in graden per minuut; volgens SOLAS verplicht op schepen van 50.000 GT en meer."
+  ],
+  "Speed Log": [
+   "Log (snelheid en afstand)",
+   "Een instrument dat de snelheid van het schip door het water of over de grond meet; Doppler of elektromagnetisch."
+  ],
+  "Parallel Indexing": [
+   "Parallel indexing",
+   "Een radartechniek: lijnen evenwijdig aan de geplande koerslijn op vaste afstand van een vast doel dienen om de positie van het schip te bewaken."
+  ],
+  "Stiff Ship (Sert Gemi)": [
+   "Stijf schip",
+   "Een schip met een grote GM; het rolt snel en heftig en is oncomfortabel, hoewel de aanvangsstabiliteit groot is."
+  ],
+  "Tender Ship (Yumuşak Gemi)": [
+   "Rank schip",
+   "Een schip met een kleine GM; het rolt langzaam met een lange periode en het kapseisgevaar is groter."
+  ],
+  "Hogging": [
+   "Hogging (opbuiging)",
+   "Het midden van het schip buigt omhoog en de einden zakken; veroorzaakt spanningen in de constructie."
+  ],
+  "Sagging": [
+   "Sagging (doorbuiging)",
+   "Het midden van het schip buigt omlaag en de einden komen omhoog; het tegenovergestelde van hogging."
+  ],
+  "Still Water Bending Moment": [
+   "Stilwaterbuigend moment",
+   "Het langsscheepse buigend moment door de verdeling van gewicht en opwaartse kracht in vlak water; de basis van de sterkteberekening."
+  ],
+  "Wave Bending Moment": [
+   "Golfbuigend moment",
+   "Het extra buigend moment dat bij het passeren van golven op de romp werkt."
+  ],
+  "Torsional Stress": [
+   "Torsiespanning",
+   "Spanning door wringende belastingen op de romp; vooral kritiek bij grote containerschepen."
+  ],
+  "FWA (Fresh Water Allowance)": [
+   "FWA (Fresh Water Allowance)",
+   "De toename van de diepgang wanneer het schip van zout naar zoet water gaat; uitgedrukt in mm."
+  ],
+  "DWA (Dock Water Allowance)": [
+   "DWA (Dock Water Allowance)",
+   "De diepgangscorrectie voor de dichtheid van havenwater tussen zoet en zout water."
+  ],
+  "Displacement Table": [
+   "Waterverplaatsingstabel",
+   "Een hydrostatische tabel met de waterverplaatsing van het schip bij verschillende diepgangen."
+  ],
+  "Hydrostatic Curves": [
+   "Hydrostatische krommen (carènediagram)",
+   "Krommen die waarden als TPC, MCTC, LCB en LCF tegen de diepgang geven."
+  ],
+  "KN Curves": [
+   "KN-krommen",
+   "KN uitgezet tegen de waterverplaatsing voor vaste hellingshoeken."
+  ],
+  "Wall-Sided Formula": [
+   "Wall-sided formula",
+   "GZ = sin θ × (GM + ½ BM tan² θ); geeft GZ voor een schip met verticale zijden, geldig tot de dekrand onderloopt of de kim boven water komt."
+  ],
+  "Bilge Radius": [
+   "Kimstraal",
+   "De straal van de gebogen beplating waar de scheepsbodem in de zijde overgaat."
+  ],
+  "Shifting Boards": [
+   "Shifting boards",
+   "Verticale langsscheepse schotten in de laadruimen die verschuiven van graanlading voorkomen."
+  ],
+  "Grain Heeling Moment": [
+   "Hellend moment door graan",
+   "Het hellend moment door een aangenomen verschuiving van graanlading; begrensd door de IMO-graancode."
+  ],
+  "Blowdown": [
+   "Spuien van de ketel",
+   "Het gecontroleerd aflaten van ketelwater om het gehalte aan opgeloste stoffen te verlagen."
+  ],
+  "Cylinder Lubrication": [
+   "Cilindersmering",
+   "Bij tweetaktmotoren het aparte systeem dat de cilindervoering en de zuigerveren smeert."
+  ],
+  "Crankcase Explosion": [
+   "Carterexplosie",
+   "Een gevaarlijke explosie wanneer oliemist in het carter door een heet punt wordt ontstoken."
+  ],
+  "Oil Mist Detector (OMD)": [
+   "Oliemistdetector (OMD)",
+   "Een detector die de oliemistconcentratie in het carter bewaakt en waarschuwt voordat een explosie kan ontstaan."
+  ],
+  "Scavenge Fire": [
+   "Spoelluchtbrand",
+   "Een brand in de spoelluchtruimte door ontsteking van olie- en koolafzettingen."
+  ],
+  "Stuffing Box": [
+   "Pakkingbus",
+   "Een afdichting met pakking waar een as of stang door een huis of schot gaat."
+  ],
+  "Governor (Regülatör)": [
+   "Toerenregelaar",
+   "De inrichting die de brandstoftoevoer automatisch aanpast om het toerental van de motor bij lastwisselingen constant te houden."
+  ],
+  "Indicator Card": [
+   "Indicateurdiagram",
+   "Het druk-volumediagram dat van een cilinder wordt genomen; gebruikt om de motorprestaties te beoordelen en storingen te vinden."
+  ],
+  "Compression Ratio": [
+   "Compressieverhouding",
+   "Het cilindervolume met de zuiger in het onderste dode punt gedeeld door het volume in het bovenste dode punt."
+  ],
+  "Clearance Volume": [
+   "Compressieruimte",
+   "Het volume dat in de cilinder overblijft als de zuiger in het bovenste dode punt staat."
+  ],
+  "TDC (Top Dead Centre)": [
+   "BDP (bovenste dode punt)",
+   "De hoogste stand van de zuiger in de cilinder."
+  ],
+  "BDC (Bottom Dead Centre)": [
+   "ODP (onderste dode punt)",
+   "De laagste stand van de zuiger in de cilinder."
+  ],
+  "Lub Oil Crosshead": [
+   "Kruiskopsmering",
+   "De smeerolietoevoer naar de kruiskoplagers; vereist olie onder hoge druk."
+  ],
+  "Plate Cooler": [
+   "Platenkoeler",
+   "Een warmtewisselaar van het platentype; draagt warmte over tussen zeewater en zoet water."
+  ],
+  "Relief Valve": [
+   "Overdrukventiel",
+   "Een veiligheidsklep die bij overdruk automatisch opent en het systeem beschermt."
+  ],
+  "Thermostat": [
+   "Thermostatische klep",
+   "Een automatisch regelorgaan dat de koelwatertemperatuur binnen een ingesteld bereik houdt."
+  ],
+  "Jacket Water": [
+   "Cilinderkoelwater",
+   "De zoetwaterkoelkring rond de cilinders van de motor; een gesloten kring."
+  ],
+  "Expansion Tank": [
+   "Expansietank",
+   "De hoogtank van de koelwaterkring; vangt het uitzetten van het water bij opwarming op en laat lucht ontsnappen."
+  ],
+  "Sea Chest": [
+   "Zeekist",
+   "Een uitsparing in het onderwaterschip, afgedekt met een rooster, waardoor zeewater wordt aangezogen."
+  ],
+  "Zinc Anode (Kurban Anot)": [
+   "Opofferingsanode (zinkanode)",
+   "Een zinkanode op het onderwaterschip die in plaats van het staal corrodeert en galvanische corrosie voorkomt."
+  ],
+  "ICCP": [
+   "Kathodische bescherming met opgedrukte stroom (ICCP)",
+   "Een actief systeem dat de romp met stroom uit een externe bron tegen corrosie beschermt."
+  ],
+  "Tank Top": [
+   "Binnenbodem (tanktop)",
+   "De bovenste beplating van de dubbele bodem; vormt de vloer van het ruim en draagt het gewicht van de lading."
+  ],
+  "Tweendeck": [
+   "Tussendek",
+   "Een dek tussen het onderruim en het bovendek; geeft extra stuwruimte voor stukgoed."
+  ],
+  "Feeder Vessel": [
+   "Feederschip",
+   "Een klein containerschip dat containers vervoert tussen kleinere havens en de hubhavens die door grote schepen worden aangelopen."
+  ],
+  "FCL (Full Container Load)": [
+   "FCL (Full Container Load)",
+   "Een container waarvan de hele inhoud aan één verlader toebehoort."
+  ],
+  "LCL (Less than Container Load)": [
+   "LCL (Less than Container Load)",
+   "Een container met goederen van meerdere verladers."
+  ],
+  "Outturn Report": [
+   "Outturn report",
+   "Een telling- en toestandsrapport van de lading na het lossen."
+  ],
+  "Bagging": [
+   "Afzakken",
+   "Stortgoed in zakken doen voor het vervoer."
+  ],
+  "Ship's Figures": [
+   "Ship's figures",
+   "De door het schip met een draft survey bepaalde ladinghoeveelheid; wordt vergeleken met de walcijfers."
+  ],
+  "Shore Figures": [
+   "Shore figures",
+   "De met de walweegschalen bepaalde ladinghoeveelheid; een verschil met de scheepscijfers kan tot een geschil leiden."
+  ],
+  "Loading Computer": [
+   "Beladingscomputer",
+   "Een computersysteem aan boord dat beladingstoestand, stabiliteit en langsscheepse sterkte berekent."
+  ],
+  "COW (Crude Oil Washing)": [
+   "Ruwe-oliewassing (COW)",
+   "Het wassen van de ladingtanks van een ruwe-olietanker met de ruwe-olielading zelf; vereist door MARPOL."
+  ],
+  "Inert Gas (Asal Gaz)": [
+   "Inert gas",
+   "Gas met een laag zuurstofgehalte; gebruikt in de ladingtanks van tankers om explosies te voorkomen."
+  ],
+  "Cargo Plan (Yükleme Planı)": [
+   "Stuwplan",
+   "Het plan dat laat zien waar elk deel van de lading is gestuwd; opgesteld met het oog op stabiliteit en de volgorde van de havens."
+  ],
+  "Bay Plan": [
+   "Bayplan",
+   "Op containerschepen het gedetailleerde plan met de stuwplaats van elke container in elke bay."
+  ],
+  "Segregation": [
+   "Scheiding",
+   "Onverenigbare klassen gevaarlijke stoffen op de voorgeschreven afstanden van elkaar gescheiden houden."
+  ],
+  "DSC (Digital Selective Calling)": [
+   "DSC (digitale selectieve oproep)",
+   "Een systeem op VHF-, MF- en HF-radio's om automatische noodalarmen uit te zenden en stations op te roepen."
+  ],
+  "Inmarsat-C": [
+   "Inmarsat-C",
+   "Een berichtgebaseerde satellietcommunicatieterminal; gebruikt voor noodalarmen en het ontvangen van maritieme veiligheidsinformatie."
+  ],
+  "LRIT": [
+   "LRIT",
+   "Long-Range Identification and Tracking; de posities van schepen worden aan hun vlaggenstaat gemeld en door die staat gevolgd."
+  ],
+  "SSAS": [
+   "SSAS",
+   "Ship Security Alert System; zendt bij een beveiligingsdreiging zoals piraterij heimelijk een alarm naar de wal."
+  ],
+  "Foam Monitor": [
+   "Schuimkanon",
+   "Een vast of draagbaar schuim- of waterkanon aan dek met een grote worplengte."
+  ],
+  "Quick-Closing Valve": [
+   "Snelsluitklep",
+   "Een klep op een brandstof- of olietank die bij brand op afstand kan worden gesloten."
+  ],
+  "Fire Damper": [
+   "Brandklep",
+   "Een klep in een ventilatiekanaal die sluit zodat brand zich niet via het kanaal verspreidt."
+  ],
+  "Watertight Door": [
+   "Waterdichte deur",
+   "Een deur in een waterdicht schot; kan ter plaatse of op afstand worden gesloten."
+  ],
+  "Muster List": [
+   "Rampenrol",
+   "De officiële lijst van taken en posten van iedere persoon aan boord in een noodsituatie."
+  ],
+  "Emergency Towing Arrangement": [
+   "Noodsleepvoorziening",
+   "De sleepuitrusting die voor en achter gereed wordt gehouden zodat het schip in een noodsituatie kan worden gesleept."
+  ],
+  "Lifeboat Releasing Gear": [
+   "Ontkoppelinrichting van de reddingsboot",
+   "Het mechanisme dat de reddingsboot van de davittakels losmaakt; er zijn typen die onder last en zonder last ontkoppelen."
+  ],
+  "Free-Fall Lifeboat": [
+   "Vrijevalreddingsboot",
+   "Een gesloten reddingsboot die via een helling aan het achterschip afglijdt en vrij in zee valt."
+  ],
+  "Rescue Boat": [
+   "Hulpverleningsboot",
+   "Een snelle boot om personen uit het water te halen en reddingsvlotten bijeen te brengen."
+  ],
+  "Line Throwing Appliance": [
+   "Lijnwerptoestel",
+   "Een toestel dat bij reddingsoperaties een lijn naar een ander schip of naar een persoon schiet."
+  ],
+  "DPA (Designated Person Ashore)": [
+   "DPA (Designated Person Ashore)",
+   "De onder de ISM-code aangewezen persoon aan de wal die in veiligheidszaken de verbinding vormt tussen schip en rederij."
+  ],
+  "Katabatik Rüzgâr": [
+   "Katabatische wind",
+   "Een wind die ontstaat doordat koude lucht onder invloed van de zwaartekracht van hoger gelegen terrein naar beneden stroomt."
+  ],
+  "Anabatik Rüzgâr": [
+   "Anabatische wind",
+   "Een wind die overdag een door de zon verwarmde helling op waait."
+  ],
+  "Sea Breeze (Deniz Meltemi)": [
+   "Zeewind",
+   "Een plaatselijke wind die overdag van zee naar land waait, omdat het land sneller opwarmt dan de zee."
+  ],
+  "Land Breeze (Kara Meltemi)": [
+   "Landwind",
+   "Een plaatselijke wind die 's nachts van land naar zee waait, omdat het land sneller afkoelt dan de zee."
+  ],
+  "Monsun": [
+   "Moesson",
+   "Een grootschalig windsysteem dat met de seizoenen van richting omkeert; het sterkst boven de Indische Oceaan."
+  ],
+  "Mistral": [
+   "Mistral",
+   "Een koude, droge noordenwind die vanuit Zuid-Frankrijk over de Middellandse Zee waait."
+  ],
+  "Poyraz": [
+   "Poyraz",
+   "Een koude, droge noordoostenwind in Turkije; sterk in het gebied van de Zee van Marmara en de Zwarte Zee."
+  ],
+  "Lodos": [
+   "Lodos",
+   "Een warme, vochtige zuiden- of zuidwestenwind in Turkije; sterk in de Egeïsche Zee en de Zee van Marmara."
+  ],
+  "Tramontana": [
+   "Tramontane",
+   "Een koude noorden- of noordwestenwind in de Middellandse Zee."
+  ],
+  "Douglas Deniz Durumu Skalası": [
+   "Schaal van Douglas",
+   "Een schaal die de zeegang naar golfhoogte indeelt van 0 tot 9."
+  ],
+  "Tropopoz": [
+   "Tropopauze",
+   "De grens tussen troposfeer en stratosfeer; de bovengrens van het weer."
+  ],
+  "Bağıl Nem": [
+   "Relatieve vochtigheid",
+   "De hoeveelheid waterdamp in de lucht als percentage van het maximum dat de lucht bij die temperatuur kan bevatten."
+  ],
+  "Sling Psikrometresi": [
+   "Slingerpsychrometer",
+   "Een instrument met een droge en een natte thermometer dat door de lucht wordt geslingerd om de relatieve vochtigheid te meten."
+  ],
+  "Kümülonimbus (Cb)": [
+   "Cumulonimbus (Cb)",
+   "Een hoog opgetorende onweerswolk; brengt donder, bliksem, hagel en zware regen."
+  ],
+  "Sirrus (Ci)": [
+   "Cirrus (Ci)",
+   "Een dunne, hoge wolk van ijskristallen; meestal bij mooi weer, maar kan een naderend front aankondigen."
+  ],
+  "Stratus (St)": [
+   "Stratus (St)",
+   "Een lage, grijze wolkenlaag; geeft motregen en slecht zicht."
+  ],
+  "Okta": [
+   "Okta",
+   "De eenheid voor bewolking: achtsten van de hemel die bedekt zijn, van 0 (onbewolkt) tot 8 (geheel bewolkt)."
+  ],
+  "METAR": [
+   "METAR",
+   "Het gestandaardiseerde gecodeerde formaat voor routinematige weerwaarnemingen van luchthavens en kuststations."
+  ],
+  "Form Factor (1+k)": [
+   "Vormfactor (1+k)",
+   "Een factor die aangeeft hoeveel de rompvorm de wrijvingsweerstand verhoogt; gebruikt in de methode van Holtrop-Mennen."
+  ],
+  "Wave Pattern Resistance": [
+   "Wave pattern resistance",
+   "Het weerstandsdeel dat voortkomt uit de energie in het golfsysteem van het schip."
+  ],
+  "Appendage Resistance": [
+   "Aanhangselweerstand",
+   "De extra weerstand door aanhangsels zoals het roer, vinstabilisatoren en kimkielen."
+  ],
+  "Air Resistance": [
+   "Luchtweerstand",
+   "De aerodynamische weerstand van romp en opbouw boven water."
+  ],
+  "Effective Power (PE)": [
+   "Effectief vermogen (PE)",
+   "Het vermogen dat nodig is om de weerstand van het schip bij een gegeven snelheid te overwinnen; PE = R × V."
+  ],
+  "Delivered Power (PD)": [
+   "Afgegeven vermogen (PD)",
+   "Het aan de schroef geleverde vermogen; het vermogen dat na de asleidingverliezen overblijft."
+  ],
+  "Quasi-Propulsive Coefficient (QPC)": [
+   "Quasi-propulsive coefficient (QPC)",
+   "Het totale voortstuwingsrendement; het product van het romprendement, het relatief rotatief rendement en het open-waterrendement."
+  ],
+  "Open Water Efficiency": [
+   "Open-waterrendement",
+   "Het rendement van de schroef die in vrij water werkt, zonder invloed van de romp."
+  ],
+  "Hull Efficiency": [
+   "Romprendement",
+   "Berekend als (1-t)/(1-w), waarbij t het zoggetal en w het volgstroomgetal is."
+  ],
+  "Rudder Area Ratio": [
+   "Roeroppervlakteverhouding",
+   "Het roeroppervlak als deel van het ondergedompelde lateraal oppervlak; voor goede manoeuvreerbaarheid meestal ten minste ongeveer 1,5-2%."
+  ],
+  "Resistance Test": [
+   "Weerstandsproef",
+   "Een proef in een sleeptank waarbij een scheepsmodel wordt gesleept om de weerstand te meten."
+  ],
+  "Propeller Open Water Test": [
+   "Open-waterproef",
+   "Een proef met een modelschroef in open water om KT, KQ en η₀ te bepalen."
+  ],
+  "Self-Propulsion Test": [
+   "Zelfvoortstuwingsproef",
+   "Een modelproef waarbij het model door zijn eigen schroef wordt voortgestuwd om de bedrijfsomstandigheden na te bootsen."
+  ],
+  "Preferential Trip": [
+   "Preferential trip",
+   "Het automatisch afschakelen van niet-essentiële verbruikers wanneer een generator overbelast is."
+  ],
+  "Dead Ship Condition": [
+   "Dead ship condition",
+   "De toestand waarin alle energie is weggevallen; het herstel gebeurt met de noodgenerator en de accu's."
+  ],
+  "Power Management System (PMS)": [
+   "Power Management System (PMS)",
+   "Het besturingssysteem dat de generatoren automatisch start en stopt en de last over hen verdeelt."
+  ],
+  "Load Sharing": [
+   "Lastverdeling",
+   "Parallel lopende generatoren verdelen de last gelijk of naar verhouding van hun nominaal vermogen."
+  ],
+  "Synchronization": [
+   "Synchroniseren",
+   "Een bij te schakelen generator op de rail aansluiten wanneer spanning, frequentie en fase overeenkomen."
+  ],
+  "Reverse Power Protection": [
+   "Reverse power protection",
+   "Een beveiligingsrelais dat een generator afschakelt wanneer die vermogen uit de rail gaat opnemen en als motor gaat draaien."
+  ],
+  "VFD (Variable Frequency Drive)": [
+   "Frequentieregelaar (VFD)",
+   "Een aandrijving die het toerental van een elektromotor regelt door de voedingsfrequentie te veranderen; bespaart energie bij pompen en ventilatoren."
+  ],
+  "Soft Starter": [
+   "Softstarter",
+   "Een elektronische schakeling die een elektromotor zacht laat aanlopen door de spanning geleidelijk te verhogen."
+  ],
+  "Star-Delta Starter": [
+   "Ster-driehoekschakeling",
+   "Een aanloopmethode waarbij de motor eerst in ster draait en dan naar driehoek omschakelt, waardoor de aanloopstroom kleiner wordt."
+  ],
+  "Megger Test": [
+   "Isolatiemeting (megger)",
+   "Een meting van de isolatieweerstand met een hoge meetspanning; het resultaat wordt in MΩ gegeven."
+  ],
+  "Navtex Receiver": [
+   "NAVTEX-ontvanger",
+   "Een ontvanger die nautische en meteorologische waarschuwingen op 518 kHz automatisch ontvangt en afdrukt of weergeeft."
+  ],
+  "S-Band / X-Band Radar": [
+   "S-band- en X-bandradar",
+   "S-band (10 cm): groter bereik en betere prestaties bij regen. X-band (3 cm): hogere resolutie en detecteert SART's."
+  ],
+  "Gyro Repeater": [
+   "Gyrorepeater",
+   "Een door het moedergyrokompas aangestuurde kompasaanwijzer, gebruikt om op andere plaatsen de koers af te lezen en peilingen te nemen."
+  ],
+  "BNWAS": [
+   "BNWAS",
+   "Bridge Navigational Watch Alarm System; een verplicht systeem dat met tussenpozen controleert of de wachtdoende officier alert is."
+  ],
+  "MARPOL Ek I": [
+   "MARPOL Bijlage I",
+   "Voorkoming van verontreiniging door olie; vereist onder meer het olierecordboek en een oliefilterinstallatie."
+  ],
+  "MARPOL Ek II": [
+   "MARPOL Bijlage II",
+   "Regels ter voorkoming van verontreiniging door schadelijke vloeistoffen die in bulk worden vervoerd."
+  ],
+  "MARPOL Ek III": [
+   "MARPOL Bijlage III",
+   "Voorkoming van verontreiniging door schadelijke stoffen die in verpakte vorm over zee worden vervoerd."
+  ],
+  "MARPOL Ek IV": [
+   "MARPOL Bijlage IV",
+   "Regels ter voorkoming van verontreiniging door sanitair afvalwater van schepen."
+  ],
+  "MARPOL Ek V": [
+   "MARPOL Bijlage V",
+   "Voorkoming van verontreiniging door vuilnis van schepen; in speciale gebieden gelden strengere lozingsverboden."
+  ],
+  "MARPOL Ek VI": [
+   "MARPOL Bijlage VI",
+   "Voorkoming van luchtverontreiniging door schepen; grenzen voor de uitstoot van SOx, NOx en CO₂."
+  ],
+  "ECA (Emission Control Area)": [
+   "ECA (Emission Control Area)",
+   "Een zeegebied waar het zwavelgehalte van de brandstof niet hoger mag zijn dan 0,10% (SOx-ECA) en/of de NOx-grenzen van Tier III gelden (NOx-ECA)."
+  ],
+  "SECA": [
+   "SECA",
+   "Sulphur Emission Control Area; het zwavelgehalte van de gebruikte brandstof is beperkt tot 0,10%."
+  ],
+  "NECA": [
+   "NECA",
+   "NOx Emission Control Area; een gebied waar de NOx-grenzen van Tier III gelden."
+  ],
+  "SIRE (Ship Inspection Report)": [
+   "SIRE (Ship Inspection Report Programme)",
+   "Het inspectieprogramma voor tankers en gastankers van OCIMF."
+  ],
+  "CDI (Chemical Distribution Institute)": [
+   "CDI (Chemical Distribution Institute)",
+   "Het inspectieprogramma voor chemicaliëntankers en terminals."
+  ],
+  "Rightship": [
+   "RightShip",
+   "Een vetting- en veiligheidsbeoordelingsprogramma, vooral voor droge-bulkschepen."
+  ],
+  "IHM (Inventory of Hazardous Materials)": [
+   "IHM (Inventory of Hazardous Materials)",
+   "Het document met de gevaarlijke materialen aan boord, vereist door het Verdrag van Hongkong en de EU-verordening scheepsrecycling."
+  ],
+  "Continuous Synopsis Record (CSR)": [
+   "Continuous Synopsis Record (CSR)",
+   "Een overzicht van de geschiedenis van het schip wat betreft naam, vlag, eigenaren en klasse; vereist door SOLAS hoofdstuk XI-1."
+  ],
+  "SMS (Safety Management System)": [
+   "SMS (veiligheidsbeheersysteem)",
+   "Het stelsel van veiligheidsbeleid en procedures van rederij en schip onder de ISM-code."
+  ],
+  "Warping": [
+   "Verhalen",
+   "Het schip met zijn eigen trossen langs de ligplaats verplaatsen, met de eigen lieren of met hulp vanaf de wal."
+  ],
+  "Kedging": [
+   "Kedging",
+   "Een schip verplaatsen door een klein anker (werpanker) uit te brengen en daarop in te halen."
+  ],
+  "Stern First Approach": [
+   "Achteruit aanleggen",
+   "De ligplaats met het hek eerst naderen; gebruikt in beperkte ruimten en bij Mediterranean mooring."
+  ],
+  "Wheel Over Point (WOP)": [
+   "Wheel over point (WOP)",
+   "Het punt waarop het roer voor een koerswijziging moet worden gelegd, bepaald uit de advance en transfer van het schip."
+  ],
+  "Dragging Anchor": [
+   "Krabbend anker",
+   "Het anker houdt niet in de bodem en sleept mee; vereist alarm en direct ingrijpen."
+  ],
+  "Holding Ground": [
+   "Ankergrond",
+   "Hoe goed de bodem het anker houdt: modder en zand houden goed, rots en koraal slecht."
+  ],
+  "Scope (Zincir Uzunluğu)": [
+   "Scope",
+   "De verhouding tussen de gestoken kettinglengte en de waterdiepte; voor goed houden wordt ongeveer 5 tot 7 keer aanbevolen."
+  ],
+  "Let Go (Demir Bırak)": [
+   "Let go (the anchor)",
+   "Het commando om de rem van de ankerlier los te zetten zodat het anker naar de bodem valt."
+  ],
+  "Short Stay": [
+   "Short stay",
+   "Bij het ophalen van het anker is de ketting ingekort en loopt steil naar beneden; de fase vóór ‘up and down’."
+  ],
+  "Long Stay": [
+   "Long stay",
+   "De ankerketting is lang en loopt bijna horizontaal uit; een teken dat het anker goed houdt."
+  ],
+  "Breast Line": [
+   "Dwarstros",
+   "Een meertros die haaks op de langsscheepse hartlijn van het schip loopt; voorkomt dat het schip van de ligplaats af beweegt."
+  ],
+  "Spring Line": [
+   "Spring",
+   "Een schuin lopende meertros die voorkomt dat het schip langs de ligplaats vooruit of achteruit beweegt; er zijn voor- en achterspringen."
+  ],
+  "Head Line": [
+   "Voortros",
+   "Een meertros die vanaf de boeg naar voren naar de ligplaats loopt."
+  ],
+  "Stern Line": [
+   "Achtertros",
+   "Een meertros die vanaf het hek naar achteren naar de ligplaats loopt."
+  ],
+  "Bow Stopper": [
+   "Kettingstopper",
+   "Het beslag op de bak dat de ankerketting vastzet en de last van de ankerlier neemt."
+  ],
+  "Single Up": [
+   "Single up",
+   "Het commando vóór vertrek om de vastmaak op elke positie tot één tros terug te brengen."
+  ],
+  "All Fast": [
+   "All fast",
+   "De melding dat alle meertrossen zijn belegd; het aanlegmanoeuvre is klaar."
+  ],
+  "Stand By Engine": [
+   "Stand by engine",
+   "Het commando aan de machinekamer om de machine klaar te maken voor het manoeuvreren."
+  ],
+  "Finished With Engine (FWE)": [
+   "Finished with engine (FWE)",
+   "Het telegraafcommando dat de machine niet meer nodig is; meestal gegeven na het afmeren of ankeren."
+  ]
+ }
+}
