@@ -28,6 +28,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 // Stabilite diyagramları (public/diagrams altındaki vektör çizimler)
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { BodyPortal } from "@/components/layout/BodyPortal";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
@@ -661,10 +662,10 @@ Diagram: the movement of G in the opposite direction after the weight is removed
     bulletPoints: [
       "Displacement decreases, draft decreases",
       "Point G shifts in the opposite direction of the removed load",
-      "Lifting weights at altitude improves stability",
+      "Removing weight from high up improves stability",
     ],
     formula: {
-      name: "New KG with Weight Subtraction",
+      name: "New KG after Weight Removal",
       expression: "KG₁ = (Δ × KG₀ - w × kg) / (Δ - w)",
       description: "Δ: initial displacement (t), KG₀: initial KG (m), w: removed weight (t), kg: vertical position of removed load (m)",
     },
@@ -3353,16 +3354,17 @@ export default function StabilityTopicsPage() {
       </div>
 
       {/* Full Screen Content Modal */}
+      <BodyPortal>
       <AnimatePresence>
         {selectedTopic && currentContent && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background"
+            className="fixed inset-0 z-50 flex flex-col bg-background"
           >
             {/* Modal Header */}
-            <div className="relative z-10 bg-background/95 border-b border-border">
+            <div className="relative z-10 shrink-0 bg-background/95 border-b border-border pt-[var(--safe-top)]">
               <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto">
                 <h2 className="text-lg font-bold text-foreground truncate pr-4">
                   {currentContent.title}
@@ -3377,8 +3379,8 @@ export default function StabilityTopicsPage() {
             </div>
 
             {/* Modal Content */}
-            <ScrollArea className="h-[calc(100vh-60px)]">
-              <div className="p-4 space-y-6 pb-20 max-w-4xl mx-auto">
+            <ScrollArea className="min-h-0 flex-1">
+              <div className="p-4 space-y-6 pb-[calc(5rem+var(--safe-bottom))] max-w-4xl mx-auto">
                 {/* Introduction */}
                 <div className="bg-primary/5 rounded-xl p-4 border-l-4 border-primary">
                   <p className="text-foreground font-medium leading-relaxed">
@@ -3463,7 +3465,7 @@ export default function StabilityTopicsPage() {
                           key={index}
                           className="flex items-start gap-2 text-sm text-foreground"
                         >
-                          <span className="text-primary font-bold">{index + 1}.</span>
+                          <span className="text-primary font-bold shrink-0 whitespace-nowrap tabular-nums">{`${index + 1}.`}</span>
                           <span>{point}</span>
                         </div>
                       ))}
@@ -3496,6 +3498,7 @@ export default function StabilityTopicsPage() {
           </motion.div>
         )}
       </AnimatePresence>
+      </BodyPortal>
     </div>
   );
 }

@@ -86,7 +86,13 @@ export const getStaticTranslation = (
 ): string | null => {
   const dict = loadedDictionaries[languageCode];
   if (!dict) return null;
-  return dict[normalizedSource] ?? null;
+  const exact = dict[normalizedSource];
+  if (exact !== undefined) return exact;
+  // Kaynakta çok satırlı yazılmış metinler (ör. "GM < 0 → …\nGM = 0 – …")
+  // sözlüğe tek boşlukla girer; DOM'daki metin düğümü ise satır sonlarını
+  // korur. Bu yüzden çevirisi hazır olan metin ekranda Türkçe kalıyordu.
+  if (!/\s\s|[\n\t]/.test(normalizedSource)) return null;
+  return dict[normalizedSource.replace(/\s+/g, ' ')] ?? null;
 };
 
 /**

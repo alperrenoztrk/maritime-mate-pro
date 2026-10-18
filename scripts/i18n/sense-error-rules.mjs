@@ -360,6 +360,14 @@ SENSE_ERROR_RULES.push(
       de: s('armbanduhr|taschenuhr'),
     },
   },
+  {
+    // Göksel seyirde "kronometre" Greenwich zamanını tutan deniz kronometresidir;
+    // İngilizcede "stopwatch" (süre ölçen saat) başka bir alettir.
+    id: 'kronometre-stopwatch',
+    label: 'marine chronometer (kronometre) rendered as a stopwatch',
+    src: /kronometre/iu,
+    wrong: { en: s('stop ?watch') },
+  },
 
   {
     id: 'special-area-private',

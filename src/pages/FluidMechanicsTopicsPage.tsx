@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { BodyPortal } from "@/components/layout/BodyPortal";
 import { fluidMechanicsTopicContents } from "@/data/fluidMechanicsContent";
 import type { FluidTopicContent } from "@/data/fluidMechanicsContent";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
@@ -247,15 +248,16 @@ export default function FluidMechanicsTopicsPage() {
         </ScrollArea>
       </div>
 
+      <BodyPortal>
       <AnimatePresence>
         {selectedTopic && currentContent && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background"
+            className="fixed inset-0 z-50 flex flex-col bg-background"
           >
-            <div className="relative z-10 border-b border-border bg-background/95">
+            <div className="relative z-10 shrink-0 border-b border-border bg-background/95 pt-[var(--safe-top)]">
               <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
                 <h2 className="truncate pr-4 text-lg font-bold text-foreground">
                   {currentContent.title}
@@ -269,8 +271,8 @@ export default function FluidMechanicsTopicsPage() {
               </div>
             </div>
 
-            <ScrollArea className="h-[calc(100vh-60px)]">
-              <div className="mx-auto max-w-4xl space-y-6 p-4 pb-20">
+            <ScrollArea className="min-h-0 flex-1">
+              <div className="mx-auto max-w-4xl space-y-6 p-4 pb-[calc(5rem+var(--safe-bottom))]">
                 <div className="rounded-xl border-l-4 border-primary bg-primary/5 p-4">
                   <p className="font-medium leading-relaxed text-foreground">
                     {currentContent.introduction}
@@ -328,6 +330,7 @@ export default function FluidMechanicsTopicsPage() {
           </motion.div>
         )}
       </AnimatePresence>
+      </BodyPortal>
     </div>
   );
 }

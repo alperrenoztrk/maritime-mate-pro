@@ -12,10 +12,12 @@ test('flags the everyday sense of maritime terms', () => {
   assert.deepEqual(findSenseErrors('4. Draft Survey', '4. Entwurf einer Umfrage', 'de'), ['draft-document']);
   assert.deepEqual(findSenseErrors('After spring', 'Nach dem Frühling', 'de'), ['spring-season']);
   assert.deepEqual(findSenseErrors('Hog durumunda', '豚の場合', 'ja'), ['hog-pig']);
+  assert.deepEqual(findSenseErrors('Greenwich zamanı kronometreden okunur.', 'Greenwich time is read from a stopwatch.', 'en'), ['kronometre-stopwatch']);
 });
 
 test('leaves correct maritime translations alone', () => {
   assert.deepEqual(findSenseErrors('Demir sahası', 'Ankerplatz', 'de'), []);
+  assert.deepEqual(findSenseErrors('Greenwich zamanı kronometreden okunur.', 'Greenwich time is read from the chronometer.', 'en'), []);
   assert.deepEqual(findSenseErrors('Light on the port quarter!', 'Licht an Backbord achtern!', 'de'), []);
   assert.deepEqual(findSenseErrors('Batı kardinal', 'Westkardinalzeichen', 'de'), []);
   assert.deepEqual(findSenseErrors('4. Draft Survey', '4. Tiefgangsbesichtigung', 'de'), []);

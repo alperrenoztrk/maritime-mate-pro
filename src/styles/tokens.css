@@ -207,6 +207,24 @@
   height: calc(var(--safe-top) + 3.5rem);
 }
 
+/* Android 15+ (targetSdk 35+) WebView'i kenardan kenara çizer: durum çubuğu ve
+   üç tuşlu gezinme çubuğu saydamdır, sayfa yazısı ve görseller altlarından
+   geçip simgelerle üst üste biniyordu. Bu iki şerit çubuk alanlarını uygulama
+   zeminiyle boyar. Inset'ler 0 olduğunda (eski Android, tarayıcı) yükseklik
+   de 0'dır. */
+html[data-native-platform="android"] body::before,
+html[data-native-platform="android"] body::after {
+  content: "";
+  position: fixed;
+  z-index: 60;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background: hsl(var(--background));
+}
+html[data-native-platform="android"] body::before { top: 0; height: var(--safe-top); }
+html[data-native-platform="android"] body::after { bottom: 0; height: var(--safe-bottom); }
+
 .app-tabbar {
   position: fixed;
   z-index: 45;

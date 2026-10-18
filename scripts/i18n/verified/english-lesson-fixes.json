@@ -1,0 +1,78 @@
+{
+ "Zamanla boylam": {
+  "fill": false,
+  "en": "Longitude from Time"
+ },
+ "Zamanla Boylam Tayini": {
+  "fill": false,
+  "en": "Finding Longitude from Time"
+ },
+ "Zamanla Boylam — Göksel Seyir (Görsel Aşamalı)": {
+  "fill": false,
+  "en": "Longitude from Time — Celestial Navigation (Step by Step, with Figures)"
+ },
+ "Formüller (zamanla boylam — ders uyumlu)": {
+  "fill": false,
+  "en": "Formulas (longitude from time — as used in the lesson)"
+ },
+ "Zamanla boylam tayini, Dünya'nın kendi ekseni etrafındaki dönüşü ile": {
+  "fill": false,
+  "en": "Finding longitude from time rests on the Earth's rotation about its axis and the direct use of the"
+ },
+ "ilişkisinin doğrudan kullanılmasına dayanır. Bu yöntemde amaç,": {
+  "fill": false,
+  "en": "relationship. The aim of this method is to"
+ },
+ "Zamanla boylam tayini, Dünya’nın kendi ekseni etrafındaki dönüşü ile zaman arasındaki sabit ilişkiye dayanır. Yerel meridyenden geçen bir gök cisminin zamanı ile Greenwich meridyenindeki aynı olayın zamanı karşılaştırıldığında, iki meridyen arasındaki açısal fark doğrudan boylamı verir. Bu yöntem, göksel seyirde zaman bilgisinin neden merkezi bir rol oynadığını açık biçimde ortaya koyar.": {
+  "fill": false,
+  "en": "Finding longitude from time rests on the fixed relationship between time and the Earth's rotation about its axis. When the time at which a celestial body crosses the local meridian is compared with the time of the same event at the Greenwich meridian, the angular difference between the two meridians gives the longitude directly. This method shows clearly why time plays a central role in celestial navigation."
+ },
+ "Zamanla boylam yöntemi teorik olarak nettir; ancak pratikte kronometre hatası, gözlem anının yanlış tespiti ve düzeltilmiş yükseklik hataları boylam sonucunu doğrudan etkiler. Bu nedenle yöntem, açık denizde kontrol amaçlı güvenilir bir araç olmakla birlikte, tek başına dar alan seyri için yeterli emniyeti sağlamaz.": {
+  "fill": false,
+  "en": "Finding longitude from time is clear in theory; in practice, however, chronometer error, a wrongly noted time of observation and errors in the corrected altitude act directly on the longitude obtained. So although the method is a reliable check in the open sea, on its own it does not give enough safety for navigation in confined waters."
+ },
+ "2. Kronometre ve Saatler": {
+  "fill": false,
+  "en": "2. Chronometers and Clocks"
+ },
+ "Dünya 24 saatte 360° döndüğü için zaman farkı doğrudan boylam farkına karşılık gelir. Bu sabit oran, kronometre zamanını yerel zamanla karşılaştırarak boylam bulmayı mümkün kılar.": {
+  "fill": false,
+  "en": "Since the Earth rotates 360° in 24 hours, the time difference directly corresponds to the longitude difference. This constant ratio makes it possible to find longitude by comparing chronometer time to local time."
+ },
+ "Greenwich meridyeni ve gözlemcinin yerel meridyeni birlikte düşünülür. Greenwich zamanı kronometreden okunur. Yerel zaman ise astronomik bir olaya (çoğunlukla Güneş’in yerel meridyenden geçişi) bağlanır. Burada kritik nokta, yerel zamanın": {
+  "fill": false,
+  "en": "The Greenwich meridian and the observer's local meridian are considered together. Greenwich time is read from the chronometer. Local time is connected to an astronomical event (usually the passage of the Sun through the local meridian). The critical point here is that local time"
+ },
+ "Hs okununca ölçüm anı kronometreden not edilir; sextant kullanımı burada biter, hesaplama başlar.": {
+  "fill": false,
+  "en": "When Hs is read, the time of the observation is taken from the chronometer; this is where the use of the sextant ends and the calculation begins."
+ },
+ "Kronometrenin sıfırlandığı an": {
+  "fill": false,
+  "en": "The moment the chronometer is reset"
+ },
+ "okunur ve aynı anda kronometreden gözlem zamanı kaydedilir. Bu değer henüz mevki tayini değildir; sextant kullanımı burada biter. Bundan sonra yapılan tüm işlemler bu ölçümün düzeltmeye ve yoruma tabi tutulmasıdır. Sextant doğru kullanılmadığında, hesaplar ne kadar düzgün yapılırsa yapılsın sonuç güvenilir olmaz.": {
+  "fill": false,
+  "en": "is read and the observation time is recorded from the chronometer at the same time. This value is not yet a position determination; The use of sextant ends here. All subsequent operations are subject to correction and interpretation of this measurement. If the sextant is not used correctly, the results will not be reliable, no matter how properly the calculations are made."
+ },
+ "olduğu andır. Bu an, yerel meridyen geçişidir. Aynı anda kronometrede okunan Greenwich zamanı not edilir. Boylam hesabının tek girişi bu zaman farkıdır.": {
+  "fill": false,
+  "en": "it's the moment it happens. This moment is the local meridian crossing. At the same time, the Greenwich time read on the chronometer is noted. This time difference is the only input into the longitude calculation."
+ },
+ "Ölçüm tamamlandığında sextanttan okunan değer alet yüksekliği (Hs) olarak adlandırılır. Hs henüz geometrik bir yükseklik değildir. Bu aşamada ölçüm tamamlanır; hesaplama henüz başlamaz. Ölçüm anına ait zaman bilgisi (UTC) bu noktada kronometreden not edilir.": {
+  "fill": false,
+  "en": "When the measurement is complete, the value read from the sextant is called the sextant altitude (Hs). Hs is not yet a geometric altitude. At this stage the measurement is complete; the calculation has not yet started. The time of the observation (UTC) is taken from the chronometer at this point."
+ },
+ "Yerel meridyenden Güneş geçişi anı yerel saatle 12:00 olarak belirlensin. Aynı anda kronometrede okunan Greenwich zamanı 09:40 olsun. Zaman farkı 2 saat 20 dakika olduğundan boylam yaklaşık 35° bulunur ve yerel zaman Greenwich’ten ileri olduğundan sonuç doğu boylamıdır.": {
+  "fill": false,
+  "en": "Let the moment of Sun transit through the local meridian be determined as 12:00 local time. Let Greenwich time read on the chronometer be 09:40 at the same time. Since the time difference is 2 hours and 20 minutes, the longitude is found to be approximately 35°, and since the local time is ahead of Greenwich, the result is east longitude."
+ },
+ "Yerel öğle anında kronometrede okunan Greenwich zamanı": {
+  "fill": false,
+  "en": "Greenwich time read on the chronometer at local noon"
+ },
+ "Yerel zaman, gök cisminin yerel meridyenden geçişine (yerel öğle) veya belirli bir saat açısına göre belirlenir. Greenwich zamanı ise kronometre ile okunur. İki zaman arasındaki fark doğrudan boylamı verir; işaret, doğu veya batı yönünü belirler.": {
+  "fill": false,
+  "en": "Local time is determined by the passage of a celestial body over the local meridian (local noon) or a certain hour angle. Greenwich time is read with the chronometer. The difference between two times directly gives longitude; The sign determines the east or west direction."
+ }
+}

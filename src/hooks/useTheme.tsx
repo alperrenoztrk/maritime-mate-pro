@@ -56,8 +56,13 @@ export function ThemeProvider({
       void import("@capacitor/status-bar")
         .then(({ StatusBar, Style }) => {
           if (!Capacitor.isNativePlatform()) return;
-          void StatusBar.setStyle({ style: next === "dark" ? Style.Light : Style.Dark });
+          // Style.Dark = açık renk simgeler (koyu zemin), Style.Light = koyu
+          // renk simgeler (açık zemin). Ters verilince koyu temada saat ve
+          // pil simgeleri koyu zeminde kayboluyordu.
+          void StatusBar.setStyle({ style: next === "dark" ? Style.Dark : Style.Light });
           if (Capacitor.getPlatform() === "android") {
+            // tokens.css'teki sistem çubuğu şeritleri bu işarete bağlı.
+            root.dataset.nativePlatform = "android";
             void StatusBar.setBackgroundColor({ color: next === "dark" ? "#111318" : "#f8fafb" });
           }
         })

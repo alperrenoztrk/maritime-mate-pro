@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { BodyPortal } from "@/components/layout/BodyPortal";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
@@ -1636,15 +1637,16 @@ export default function EconomicsTopicsPage() {
         </ScrollArea>
       </div>
 
+      <BodyPortal>
       <AnimatePresence>
         {selectedTopic && currentContent && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background"
+            className="fixed inset-0 z-50 flex flex-col bg-background"
           >
-            <div className="relative z-10 bg-background/95 border-b border-border">
+            <div className="relative z-10 shrink-0 bg-background/95 border-b border-border pt-[var(--safe-top)]">
               <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto">
                 <h2 className="text-lg font-bold text-foreground truncate pr-4">
                   {currentContent.title}
@@ -1658,8 +1660,8 @@ export default function EconomicsTopicsPage() {
               </div>
             </div>
 
-            <ScrollArea className="h-[calc(100vh-60px)]">
-              <div className="p-4 space-y-6 pb-20 max-w-4xl mx-auto">
+            <ScrollArea className="min-h-0 flex-1">
+              <div className="p-4 space-y-6 pb-[calc(5rem+var(--safe-bottom))] max-w-4xl mx-auto">
                 <div className="bg-indigo-500/10 rounded-xl p-4 border-l-4 border-indigo-500">
                   <p className="text-foreground font-medium leading-relaxed">
                     {currentContent.introduction}
@@ -1715,7 +1717,7 @@ export default function EconomicsTopicsPage() {
                     <div className="space-y-2">
                       {currentContent.keyPoints.map((point, index) => (
                         <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-indigo-600 dark:text-indigo-400 font-bold">{index + 1}.</span>
+                          <span className="text-indigo-600 dark:text-indigo-400 font-bold shrink-0 whitespace-nowrap tabular-nums">{`${index + 1}.`}</span>
                           <span>{point}</span>
                         </div>
                       ))}
@@ -1744,6 +1746,7 @@ export default function EconomicsTopicsPage() {
           </motion.div>
         )}
       </AnimatePresence>
+      </BodyPortal>
     </div>
   );
 }
