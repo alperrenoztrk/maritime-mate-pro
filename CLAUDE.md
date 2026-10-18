@@ -84,3 +84,14 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   `verified/` altına eklenerek geri açılabilir.
 - ~79 metnin (Pro ekranları, görsel altyazıları) hiçbir dilde sözlük karşılığı
   yok; canlı çeviriye gidiyor.
+- Sözlükte olmayan metin canlı Google çevirisine (gtx) gider; servis 429
+  verirse veya ağ yoksa ekranda Türkçe kalır. Çıkarıcının kaçırdığı
+  ders/SOLAS/STCW/COLREG metinleri
+  `scripts/i18n/verified/english-leftover-texts.json` paketinde (İngilizce, diğer
+  dillere İngilizce dolgu). Yeni ekranda Türkçe kalırsa çözüm buraya eklemektir.
+- `paragraphs` alanı çıkarıcıda bilinçli olarak yok: ~6.700 Türkçe paragraf
+  (`machineTopicDetailContent*.ts`, `shipSystemsData.ts`, `crewTasks/`) sözlükte
+  yok, tamamen canlı çeviriye bağlı.
+- Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
+  çevrilir; bozuk bitişte kaynak cümledeki vurgu kaldırılıp cümle tek parça
+  çevrilir (Türkçe arayüz sunulmadığı için görünmez).

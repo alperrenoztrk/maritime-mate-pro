@@ -305,7 +305,7 @@ export const imoConventions: RegulationItem[] = [
       { id: "Chapter I", title: "Genel Hükümler", summary: "Tanımlar, sertifika tanınması, idari gereklilikler ve geçiş hükümleri." },
       { id: "Chapter II", title: "Kaptan ve Güverte Bölümü", summary: "Kaptan, baş zabit ve vardiya zabiti yeterlilik standartları, seyir ve kargo yönetimi yetkinlikleri." },
       { id: "Chapter III", title: "Makine Bölümü", summary: "Başmakinist, ikinci makinist ve vardiya mühendisi yeterlilik standartları." },
-      { id: "Chapter III-A", title: "Elektro-Teknik Zabitleri", summary: "ETO (Electro-Technical Officer) yeterlilik ve eğitim gereklilikleri." },
+      { id: "Regulation III/6", title: "Elektro-Teknik Zabitleri", summary: "ETO (Electro-Technical Officer) yeterlilik ve eğitim gereklilikleri." },
       { id: "Chapter IV", title: "Telsiz Haberleşme", summary: "GMDSS operatör yeterlilikleri ve sertifikasyon." },
       { id: "Chapter V", title: "Özel Eğitim Gereklilikleri", summary: "Tanker, ro-ro, yolcu gemisi ve IGF Code kapsamındaki özel eğitimler." },
       { id: "Chapter VI", title: "Acil Durum ve Emniyet", summary: "BST, ileri yangın söndürme, tıbbi ilk yardım ve survival craft eğitimleri." },

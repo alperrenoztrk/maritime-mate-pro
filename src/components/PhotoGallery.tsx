@@ -121,7 +121,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
           role="dialog"
           aria-modal="true"
           aria-label={active.title}
-          className="fixed inset-0 z-[100] flex flex-col bg-background/95"
+          className="app-content-overlay fixed inset-0 z-[100] flex flex-col bg-background/95"
           onClick={close}
         >
           <div className="flex items-center justify-between border-b border-border/40 px-4 py-3">

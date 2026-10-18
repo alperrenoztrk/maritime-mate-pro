@@ -646,25 +646,25 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Zamanla Boylam — Göksel Seyir (Görsel Aşamalı)",
-        content: `Zamanla boylam tayini, Dünya'nın kendi ekseni etrafındaki dönüşü ile **zaman–açı** ilişkisinin doğrudan kullanılmasına dayanır. Bu yöntemde amaç, **yerel zaman** ile **Greenwich zamanı** arasındaki farktan **boylamı** elde etmektir. Anlatım, hesaplama adımlarını **aşama aşama ve görseller üzerinden** izler.
+        content: `Zamanla boylam tayini, Dünya'nın kendi ekseni etrafındaki dönüşü ile zaman–açı ilişkisinin doğrudan kullanılmasına dayanır. Bu yöntemde amaç, yerel zaman ile Greenwich zamanı arasındaki farktan boylamı elde etmektir. Anlatım, hesaplama adımlarını aşama aşama ve görseller üzerinden izler.
 
 
 
 **Aşama 1: Referans zamanların kurulması**  
-Greenwich meridyeni ve gözlemcinin yerel meridyeni birlikte düşünülür. Greenwich zamanı kronometreden okunur. Yerel zaman ise astronomik bir olaya (çoğunlukla Güneş’in yerel meridyenden geçişi) bağlanır. Burada kritik nokta, yerel zamanın **olaya göre** belirlenmesidir; saat ayarına göre değil.
+Greenwich meridyeni ve gözlemcinin yerel meridyeni birlikte düşünülür. Greenwich zamanı kronometreden okunur. Yerel zaman ise astronomik bir olaya (çoğunlukla Güneş’in yerel meridyenden geçişi) bağlanır. Burada kritik nokta, yerel zamanın olaya göre belirlenmesidir; saat ayarına göre değil.
 
 
 
 **Aşama 2: Yerel öğle anının belirlenmesi**  
-Yerel öğle, Güneş’in gün içindeki yüksekliğinin **maksimum** olduğu andır. Bu an, yerel meridyen geçişidir. Aynı anda kronometrede okunan Greenwich zamanı not edilir. Boylam hesabının tek girişi bu zaman farkıdır.
+Yerel öğle, Güneş’in gün içindeki yüksekliğinin maksimum olduğu andır. Bu an, yerel meridyen geçişidir. Aynı anda kronometrede okunan Greenwich zamanı not edilir. Boylam hesabının tek girişi bu zaman farkıdır.
 
 
 
 **Aşama 3: Zaman farkının açıya çevrilmesi**  
-Dünya 24 saatte 360° döndüğü için zaman doğrudan açıya çevrilebilir. Bu aşamada trigonometrik hesap yoktur; yalnızca **sabit dönüşüm** kullanılır.
+Dünya 24 saatte 360° döndüğü için zaman doğrudan açıya çevrilebilir. Bu aşamada trigonometrik hesap yoktur; yalnızca sabit dönüşüm kullanılır.
 
 **Aşama 4: Doğu–batı yorumunun yapılması**  
-Yerel olay Greenwich’ten **daha erken** gerçekleşmişse gözlemci **doğu** boylamındadır; **daha geç** gerçekleşmişse **batı** boylamındadır. Bu yorum yapılmadan bulunan açı tek başına anlamlı değildir.
+Yerel olay Greenwich’ten daha erken gerçekleşmişse gözlemci doğu boylamındadır; daha geç gerçekleşmişse batı boylamındadır. Bu yorum yapılmadan bulunan açı tek başına anlamlı değildir.
 
 **Formüller (zamanla boylam — ders uyumlu)**  
 360° = 24 saat  
@@ -674,18 +674,18 @@ Yerel olay Greenwich’ten **daha erken** gerçekleşmişse gözlemci **doğu** 
 **Boylam bağıntısı:** λ = Δt × 15°
 
 **İşaret kuralı**  
-Yerel zaman Greenwich’ten ileri → **Doğu boylam**  
-Yerel zaman Greenwich’ten geri → **Batı boylam**
+Yerel zaman Greenwich’ten ileri → Doğu boylam  
+Yerel zaman Greenwich’ten geri → Batı boylam
 
 **Örnek uygulama (görsel mantıkla)**  
-Yerel öğle anında kronometrede okunan Greenwich zamanı **09:48:00** olsun. Yerel öğle, yerel saatle **12:00:00** kabul edilir.
+Yerel öğle anında kronometrede okunan Greenwich zamanı 09:48:00 olsun. Yerel öğle, yerel saatle 12:00:00 kabul edilir.
 
-Δt = 12:00:00 − 09:48:00 = **2 saat 12 dakika**  
+Δt = 12:00:00 − 09:48:00 = 2 saat 12 dakika  
 2 saat × 15° = 30°  
 12 dakika × 15′ = 180′ = 3°  
 **λ = 33°**
 
-Yerel olay Greenwich’ten **daha geç** gerçekleştiği için boylam **batıdır**. Sonuç: Gemi yaklaşık **33° Batı boylamındadır**.
+Yerel olay Greenwich’ten daha erken gerçekleştiği için boylam doğudur. Sonuç: Gemi yaklaşık 33° Doğu boylamındadır.
 
 Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etkilidir. Ancak birkaç saniyelik zaman hatasının dahi mil mertebesinde boylam hatası üretebildiği unutulmamalıdır; bu nedenle sonuçlar diğer göksel verilerle birlikte kontrol edilmelidir.`
       },
@@ -866,7 +866,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
       },
       {
         title: "Departure’ın Harita Üzerindeki Anlamı",
-        content: `Departure, harita üzerinde doğrudan ölçülen bir değer değildir; **hesaplanan** bir büyüklüktür. Harita üzerinde enlem çizgileri DLat’i temsil ederken, departure boylam doğrultusundaki yatay hareketi temsil eder. Ancak boylam aralıkları enleme bağlı olarak değiştiği için, departure doğrudan boylam skalasından okunmaz; önce hesaplanır, ardından boylam değişimi hesaplarında kullanılır.
+        content: `Departure, harita üzerinde doğrudan ölçülen bir değer değildir; hesaplanan bir büyüklüktür. Harita üzerinde enlem çizgileri DLat’i temsil ederken, departure boylam doğrultusundaki yatay hareketi temsil eder. Ancak boylam aralıkları enleme bağlı olarak değiştiği için, departure doğrudan boylam skalasından okunmaz; önce hesaplanır, ardından boylam değişimi hesaplarında kullanılır.
 
 
 
@@ -2156,7 +2156,7 @@ Bununla birlikte ticari denizciliğin büyük bölümü Mercator projeksiyonlu h
         title: "Mercator Projeksiyonun Seyir Hesaplarına Etkisi",
         content: `Rota ölçümü, mesafe ölçümü, ölü hesap mevkii ilerletme, kerteriz kesişimi ve harita üzerinden yapılan tüm klasik seyir hesapları Mercator projeksiyon varsayımıyla çalışır. Bu projeksiyon olmadan, harita üzerindeki düz çizgi ile denizde tutulan rota arasında doğrudan bir ilişki kurulamazdı.
 
-Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; **seyir matematiğinin çalıştığı zemin** olarak kabul edilir.
+Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; seyir matematiğinin çalıştığı zemin olarak kabul edilir.
 
 
 
@@ -3721,7 +3721,7 @@ Fix’tir
 * Eğitim ve sınav uygulamaları
 * Elektronik sistemlerin teyidi
 
-Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir mevki tayin yöntemidir ve diğer tüm fix tekniklerinin **referans noktası** olarak kabul edilir.`
+Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir mevki tayin yöntemidir ve diğer tüm fix tekniklerinin referans noktası olarak kabul edilir.`
       }
     ]
   },
@@ -4591,7 +4591,7 @@ Mean Lat = (Lat₁ + Lat₂) / 2
 D.Long = Dep / cos Mean Lat
 ════════════════════
 
-* Sonuç **dakika (′)** cinsindedir
+* Sonuç dakika (′) cinsindedir
 * E (+), W (−) olarak işaretlenir
 
 ---
@@ -4874,8 +4874,8 @@ Kerteriz / Mesafe / Transit
 = Fix
 ════════════════════
 
-* Clearing Line, **emniyeti**
-* İkinci LOP, **mevkii** sağlar
+* Clearing Line, emniyeti
+* İkinci LOP, mevkii sağlar
 
 ---
 
@@ -4936,8 +4936,8 @@ Clearing Line, klasik seyrüseferde **fix sağlamaz**, ancak geminin **tehlikede
 ### Temel Prensip
 
 * Yüksekliği bilinen bir obje seçilir
-* Objeye ait **düşey açı (Vertical Angle)** ölçülür
-* Trigonometrik ilişki ile **mesafe** hesaplanır
+* Objeye ait düşey açı (Vertical Angle) ölçülür
+* Trigonometrik ilişki ile mesafe hesaplanır
 
 ⬛ **Ana İlke**
 
@@ -4982,7 +4982,7 @@ Effective Height
 D = Effective Height / tan θ
 ════════════════════
 
-* Sonuç **metre** cinsindendir
+* Sonuç metre cinsindendir
 * Deniz mili için dönüşüm gerekir
 
 ⬛ **Birim Dönüşümü**
@@ -5187,7 +5187,7 @@ Akıntının 3 knot olduğu bir bölgede, GPS’e bakılarak yapılan yaklaşma 
 
 ### Temel Prensip
 
-* İki mevki arasındaki **D.Lat** ve **D.Long** bulunur
+* İki mevki arasındaki D.Lat ve D.Long bulunur
 * Boylam farkı, **Mean Latitude** ile düzeltilerek **Departure** elde edilir
 * Dik seyir üçgeninden **Course** ve **Distance** hesaplanır
 
@@ -5263,7 +5263,7 @@ Dep = D.Long × cos Mean Lat
 ════════════════════
 
 * Paralel üzerindeki **gerçek doğu–batı mesafesi**
-* Sonuç **dakika (′)** cinsindedir
+* Sonuç dakika (′) cinsindedir
 
 ---
 
@@ -6269,7 +6269,7 @@ Dead Reckoning ve Estimated Position, klasik seyrüseferde **her an kullanılan*
 
 * İstenen **CMG** ve gemi sürati bilinir
 * Akıntının **Set** ve **Drift**’i bilinir
-* Akıntı telafi edilerek **CTS** bulunur
+* Akıntı telafi edilerek CTS bulunur
 
 ⬛ **Ana İlke**
 
@@ -6456,7 +6456,7 @@ Course to Steer, klasik seyrüseferde **akıntının fiilen telafi edildiği**, 
 ### Temel Prensip
 
 * Course ve Distance bilinir
-* Seyir üçgeninden **D.Lat** ve **Departure** bulunur
+* Seyir üçgeninden D.Lat ve Departure bulunur
 * Departure kullanılarak **D.Long** hesaplanır
 * Başlangıç mevkiine eklenerek **varış mevkii** elde edilir
 
@@ -6497,7 +6497,7 @@ D.Lat = D × cos C
 
 * Kuzeye doğru → **N (+)**
 * Güneye doğru → **S (−)**
-* Sonuç **dakika (′)** cinsindedir
+* Sonuç dakika (′) cinsindedir
 
 ---
 
@@ -6869,7 +6869,7 @@ Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uz
 
 ### Temel Prensip
 
-* Aynı anda alınan **kerterizler** kullanılır
+* Aynı anda alınan kerterizler kullanılır
 * Her kerteriz bir **LOP (Line of Position)** üretir
 * LOP’ların kesişimi → **Fix**
 
@@ -6913,7 +6913,7 @@ BB = B ± 180°
 
 * En az **iki sabit obje** gerekir
 * Kerterizler **aynı anda** alınmalıdır
-* Kesişim açısı **keskin** olmalıdır
+* Kesişim açısı keskin olmalıdır
 
 ⬛ **Geometrik Kural**
 
@@ -7059,7 +7059,7 @@ Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** 
 * **D.Lat** ve **D.Long** hesaplanır
 * Ortalama enlem bulunur
 * **Departure** elde edilir
-* Seyir üçgeninden **Course** ve **Distance** bulunur
+* Seyir üçgeninden Course ve Distance bulunur
 
 ⬛ **Ana İlke**
 
@@ -7137,7 +7137,7 @@ Mean Lat = (Lat₁ + Lat₂) / 2
 Dep = D.Long × cos Mean Lat
 ════════════════════
 
-* Sonuç **dakika (′)** cinsindedir
+* Sonuç dakika (′) cinsindedir
 
 ---
 
@@ -7889,22 +7889,22 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       {
         title: "Aşama 1: Girdilerin hazırlanması (AP merkezli)",
         content:
-          "Azimut hesabı **her zaman varsayılan mevkiye (AP)** göre yapılır. Gerekli bilgiler: gök cisminin **deklinasyonu (δ)**, gözlemcinin **enlemi (φ)** ve gök cisminin **yerel saat açısı (LHA)**. Bu üç bilgi, astronomik almanak ve zaman–açı ilişkisi üzerinden bulunur; bu aşamada henüz yön çizimi yapılmaz."
+          "Azimut hesabı her zaman varsayılan mevkiye (AP) göre yapılır. Gerekli bilgiler: gök cisminin deklinasyonu (δ), gözlemcinin enlemi (φ) ve gök cisminin yerel saat açısı (LHA). Bu üç bilgi, astronomik almanak ve zaman–açı ilişkisi üzerinden bulunur; bu aşamada henüz yön çizimi yapılmaz."
       },
       {
         title: "Aşama 2: Tablodan Zn’nin okunması (Sight Reduction mantığı)",
         content:
-          "AP merkezli soyut göksel üçgen pratikte **Sight Reduction Tables (HO-249/HO-229)** ile çözülür. Tablolar, verilen φ, δ ve LHA için **Hc** (teorik yükseklik) ve **Zn** (azimut) değerlerini **doğrudan** verir. Bu aşamada trigonometrik işlem yapılmaz; Zn **okunan** bir değerdir."
+          "AP merkezli soyut göksel üçgen pratikte Sight Reduction Tables (HO-249/HO-229) ile çözülür. Tablolar, verilen φ, δ ve LHA için Hc (teorik yükseklik) ve Zn (azimut) değerlerini doğrudan verir. Bu aşamada trigonometrik işlem yapılmaz; Zn okunan bir değerdir."
       },
       {
         title: "Aşama 3: Doğu–batı kontrolü (Zn’nin yerleştirilmesi)",
         content:
-          "Gök cisminin **doğuda mı batıda mı** olduğu bilgisi LHA’dan gelir. Tablodan okunan azimut açısı, bu bilgiye göre **gerçek kuzeyden saat yönünde** yerleştirilir.\n\n- **LHA 0°–180° → gök cismi batıda**\n- **LHA 180°–360° → gök cismi doğuda**\n\nZn’nin yanlış yarımküreye yerleştirilmesi, azimut hatalarının en yaygın nedenidir."
+          "Gök cisminin doğuda mı batıda mı olduğu bilgisi LHA’dan gelir. Tablodan okunan azimut açısı, bu bilgiye göre gerçek kuzeyden saat yönünde yerleştirilir.\n\n- LHA 0°–180° → gök cismi batıda\n- LHA 180°–360° → gök cismi doğuda\n\nZn’nin yanlış yarımküreye yerleştirilmesi, azimut hatalarının en yaygın nedenidir."
       },
       {
         title: "Aşama 4: Zn’nin LOP ile ilişkilendirilmesi",
         content:
-          "Zn doğrultusu çizilir; bunun **LOP’un kendisi olmadığı** özellikle vurgulanır. LOP, Zn’ye **dik** çizilir. Böylece azimutun görevi tamamlanır: Zn yalnızca **yön referansı** sağlar.",
+          "Zn doğrultusu çizilir; bunun LOP’un kendisi olmadığı özellikle vurgulanır. LOP, Zn’ye dik çizilir. Böylece azimutun görevi tamamlanır: Zn yalnızca yön referansı sağlar.",
         formula: {
           text: "LOP doğrultusu = Zn ± 90°",
           description: "LOP, azimut doğrultusuna dik çizilir."
@@ -7918,7 +7918,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       {
         title: "Örnek uygulama (tablo mantığıyla Zn yorumu)",
         content:
-          "Varsayılan mevki enlemi **36° N** olsun. Gök cisminin deklinasyonu **12° N** ve **LHA = 245°** olsun. Sight Reduction Tables kullanılarak bu değerler için **Zn = 118°** okunmuş olsun.\n\nLHA 180°’den büyük olduğu için gök cismi **doğudadır**. Zn, gerçek kuzeyden saat yönünde **118°** olarak yerleştirilir. Harita üzerinde AP’den 118° doğrultusunda bir bakış doğrultusu çizilir. LOP, bu doğrultuya **dik** olarak çizilecektir.\n\nAzimut doğru hesaplanıp doğru yarımkürede yerleştirilmediği sürece, intercept mesafesi doğru olsa bile mevki hattı yanlış konumlanır. Bu nedenle göksel seyirde azimut, **hesaptan çok yorum disiplini** gerektirir."
+          "Varsayılan mevki enlemi 36° N olsun. Gök cisminin deklinasyonu 12° S ve LHA = 300° olsun. Sight Reduction Tables kullanılarak bu değerler için Zn = 118° okunmuş olsun.\n\nLHA 180°’den büyük olduğu için gök cismi doğudadır. Zn, gerçek kuzeyden saat yönünde 118° olarak yerleştirilir. Harita üzerinde AP’den 118° doğrultusunda bir bakış doğrultusu çizilir. LOP, bu doğrultuya dik olarak çizilecektir.\n\nAzimut doğru hesaplanıp doğru yarımkürede yerleştirilmediği sürece, intercept mesafesi doğru olsa bile mevki hattı yanlış konumlanır. Bu nedenle göksel seyirde azimut, hesaptan çok yorum disiplini gerektirir."
       }
     ],
     keyPoints: [
@@ -7935,7 +7935,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
     sections: [
       {
         title: "Vertex’in Seyirdeki Önemi",
-        content: `Vertex, büyük daire rotasının **kutba en yakın** olduğu noktadır. Büyük daire, en kısa yol olduğu için yüksek enlemlere doğru “yukarı kıvrılır”; bu kıvrılma sınırının bilinmemesi, gemiyi istenmeyen meteorolojik ve operasyonel koşullara sokabilir.
+        content: `Vertex, büyük daire rotasının kutba en yakın olduğu noktadır. Büyük daire, en kısa yol olduğu için yüksek enlemlere doğru “yukarı kıvrılır”; bu kıvrılma sınırının bilinmemesi, gemiyi istenmeyen meteorolojik ve operasyonel koşullara sokabilir.
 
 
 
@@ -7943,7 +7943,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       },
       {
         title: "Geometrik Tanım",
-        content: `Vertex noktası, büyük daire yayının bir paraleli **teğet geçtiği** konumdur. Bu noktada enlem değişimi anlık olarak sıfıra yaklaşır ve rota doğrultusu **doğu–batı** yönüne en çok yaklaşan halini alır.
+        content: `Vertex noktası, büyük daire yayının bir paraleli teğet geçtiği konumdur. Bu noktada enlem değişimi anlık olarak sıfıra yaklaşır ve rota doğrultusu doğu–batı yönüne en çok yaklaşan halini alır.
 
 `
       },
@@ -7951,7 +7951,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
         title: "Vertex Enlemi (Maksimum Enlem) Formülü",
         content: "En pratik yaklaşım, başlangıç enlemi ve başlangıç kursu üzerinden vertex enlemini bulmaktır. Mutlak değer, maksimum enlem büyüklüğünü verir; işaret, rota yarımküresi ve seyir yönüne göre değerlendirilir.",
         formula: {
-          text: "sin φv = |sin C₁| × cos φ₁",
+          text: "cos φv = |sin C₁| × cos φ₁",
           description: "φv: vertex enlemi, C₁: başlangıç kursu, φ₁: başlangıç enlemi."
         }
       },
@@ -7961,22 +7961,22 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
         bulletPoints: [
           "Başlangıç enlemi φ₁ ve başlangıç kursu C₁ belirlenir.",
           "sin C₁ ve cos φ₁ hesaplanır.",
-          "sin φv = |sin C₁| × cos φ₁ bulunur.",
-          "φv = arcsin(sin φv) ile maksimum enlem elde edilir.",
+          "cos φv = |sin C₁| × cos φ₁ bulunur.",
+          "φv = arccos(cos φv) ile maksimum enlem elde edilir.",
           "Yarımküre ve rota yönüne göre işaret değerlendirilir."
         ]
       },
       {
         title: "Örnek Hesap – Maksimum Enlem",
-        content: `Bir gemi **37° N** enleminden büyük daire seyrine başlıyor ve başlangıç kursu **55°** olsun.
+        content: `Bir gemi 37° N enleminden büyük daire seyrine başlıyor ve başlangıç kursu 55° olsun.
 
 sin 55° ≈ 0.819  
 cos 37° ≈ 0.799  
 
-sin φv = 0.819 × 0.799 ≈ 0.654  
-φv ≈ **40.9°**
+cos φv = 0.819 × 0.799 ≈ 0.654  
+φv ≈ **49.1°**
 
-Bu sonuç, geminin büyük daire seyri boyunca yaklaşık **40.9° N** enleminin üzerine çıkmayacağını gösterir. Kış sezonunda Kuzey Atlantik gibi bölgelerde bu değer kabul edilebilir sınırın üstündeyse rota **composite** veya **limit enlem** yaklaşımıyla revize edilmelidir.`
+Bu sonuç, geminin büyük daire seyri boyunca yaklaşık 49.1° N enleminin üzerine çıkmayacağını gösterir. Kış sezonunda Kuzey Atlantik gibi bölgelerde bu değer kabul edilebilir sınırın üstündeyse rota composite veya limit enlem yaklaşımıyla revize edilmelidir.`
       },
       {
         title: "Operasyonel Değerlendirme",
@@ -7986,12 +7986,12 @@ Bu sonuç, geminin büyük daire seyri boyunca yaklaşık **40.9° N** enleminin
 * Fırtına kuşağı ve dalga rejimi
 * Trafik yoğunluğu ve rota kısıtları
 
-Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan uygulanmaz; **composite great circle** veya **limit enlem** planlaması tercih edilir.`
+Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan uygulanmaz; composite great circle veya limit enlem planlaması tercih edilir.`
       }
     ],
     keyPoints: [
       "Vertex, büyük daire yayının kutba en yakın ve en yüksek enleme ulaştığı noktadır.",
-      "sin φv = |sin C₁| × cos φ₁ bağıntısı pratikte en sık kullanılan yöntemdir.",
+      "cos φv = |sin C₁| × cos φ₁ bağıntısı pratikte en sık kullanılan yöntemdir.",
       "Vertex enlemi, meteoroloji ve buz riski açısından rota emniyetinin temel kontrolüdür.",
       "Riskli enlemler için composite rota veya limit enlem yaklaşımı uygulanır."
     ]
@@ -8316,13 +8316,13 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Aşama 2: İkinci LOP’un Eklenmesi – 2 LOP Fix",
         content:
-          "İkinci bir gök cismi gözlemi ile ikinci LOP çizilir. İki LOP’un **kesiştiği nokta**, her iki gözlemin aynı anda doğru olabildiği tek konumdur ve **2 LOP fix** olarak kabul edilir.\n\n" +
+          "İkinci bir gök cismi gözlemi ile ikinci LOP çizilir. İki LOP’un **kesiştiği nokta**, her iki gözlemin aynı anda doğru olabildiği tek konumdur ve 2 LOP fix olarak kabul edilir.\n\n" +
           "Kesişim açısı kritik önemdedir: Açının **dar** olması durumunda küçük ölçüm hataları mevkiyi ciddi şekilde kaydırır. Bu nedenle 2 LOP fix için **dik veya dikliğe yakın** kesişim tercih edilir."
       },
       {
         title: "Aşama 3: Üçüncü LOP’un Eklenmesi – 3 LOP Fix",
         content:
-          "Üçüncü bir gök cisminden elde edilen LOP eklendiğinde, üç hat çoğu zaman tek noktada kesişmez. Bunun yerine küçük bir üçgen oluşur. Bu üçgen **cocked hat** olarak adlandırılır.\n\n" +
+          "Üçüncü bir gök cisminden elde edilen LOP eklendiğinde, üç hat çoğu zaman tek noktada kesişmez. Bunun yerine küçük bir üçgen oluşur. Bu üçgen cocked hat olarak adlandırılır.\n\n" +
           "Gemi mevkiinin bu üçgenin içinde olduğu kabul edilir. Üçgenin alanı, gözlemlerin tutarlılığını ve zaman bilgisinin doğruluğunu doğrudan gösterir: **küçük cocked hat** güvenilir fix, **büyük cocked hat** sistematik hata göstergesidir."
       },
       {

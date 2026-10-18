@@ -49,6 +49,13 @@ const TURKISH_WORDS = [
   'kullanici', 'hesabim', 'profil', 'giris', 'cikis', 'dosya', 'klasor',
   'sart', 'sartlar', 'kisim', 'derece', 'aci', 'boyut', 'agirlik', 'yukseklik',
   'genislik', 'uzunluk', 'derinlik', 'mesafe', 'hiz', 'yon', 'nokta', 'cizgi', 'duzey',
+  // navigation / calculation labels that survive in formula lines
+  // ("1° boylam = 4 dakika", "Enlem φ₁ = 35° Kuzey", "+2 ila +4°C")
+  'boylam', 'enlem', 'kuzey', 'guney', 'dogu', 'bati', 'dakika', 'saniye', 'ila',
+  'yeni', 'eski', 'mevcut', 'mevki', 'kerteriz', 'hakiki', 'orta', 'ortalama',
+  'kriter', 'alan', 'hacim', 'kol', 'debi', 'kuvvet', 'verim', 'yatay', 'dusey',
+  'zincir', 'gerilim', 'gerilimi', 'katsayi', 'fark', 'farki', 'merkez', 'merkezi',
+  'kalinlik', 'yatma', 'bayrak', 'tehlikeli', 'kapasite',
   // question words
   'nedir', 'nasil', 'neden', 'hangi', 'nerede', 'kac',
 ];

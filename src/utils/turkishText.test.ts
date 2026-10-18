@@ -53,6 +53,9 @@ test('formulas carrying Turkish prose stay translatable', () => {
     'Boş bölme: μ ≈ 0.97',
     'GZmax ≥ 0.20 m (θ ≥ 30° için)',
     'İki kerterizde 30°, üçte 10°',
+    '1° boylam = 4 dakika',
+    'Enlem φ₁ = 35° Kuzey',
+    '+2 ila +4°C',
   ];
   for (const value of mixed) assert.equal(isTechnicalString(value), false, value);
 });

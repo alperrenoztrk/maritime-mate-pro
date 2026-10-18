@@ -198,7 +198,7 @@ const content3: ContentMap = {
       title: "Taze Hava ve Egzoz Havalandırma",
       introduction: "Gemi havalandırma sistemi, yaşam ve çalışma alanlarına taze hava sağlarken kirli havayı dışarı atar.",
       sections: [
-        { heading: "Taze Hava Gereklilikleri", paragraphs: ["IMO/SOLAS kurallarına göre yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanmalıdır.", "Makine dairesi havalandırması hem personel sağlığı hem motorların yanma havası ihtiyacı için gereklidir. Aksiyal veya santrifüj fanlar kullanılır."] },
+        { heading: "Taze Hava Gereklilikleri", paragraphs: ["Yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanmalıdır.", "Makine dairesi havalandırması hem personel sağlığı hem motorların yanma havası ihtiyacı için gereklidir. Aksiyal veya santrifüj fanlar kullanılır."] },
         { heading: "Egzoz Havalandırma", paragraphs: ["Tuvalet, mutfak, atölye ve akü odası gibi bölmeler bağımsız egzoz havalandırma sistemine sahiptir.", "Makine dairesi acil havalandırma kapanması (ventilation flap) yangın durumunda CO₂ söndürme etkinliğini sağlamak için zorunludur."] }
       ],
       keyPoints: ["Makine dairesi havalandırma kapasitesi motor gücüne göre hesaplanır.", "Yangın durumunda tüm havalandırma kapatılabilmelidir.", "Patlama riski olan bölgelerde ex-proof fan kullanılır."]
@@ -323,7 +323,7 @@ const content3: ContentMap = {
       introduction: "Gemi basınçlı hava sistemi, ana makine başlatma, kontrol havası ve servis havası ihtiyacını karşılar. Pistonlu kompresörler standart tiptir.",
       sections: [
         { heading: "Çok Kademeli Pistonlu Kompresör", paragraphs: ["Ana makine başlatma havası kompresörü genellikle 2 veya 3 kademeli, su soğutmalı, pistonlu tiptir. Çıkış basıncı 25-30 bar.", "Her kademe arasında ara soğutucu (intercooler) ve su ayırıcı (moisture separator) bulunur. Son kademeden sonra son soğutucu (aftercooler) yer alır."] },
-        { heading: "Kapasite ve Gereklilikler", paragraphs: ["SOLAS gereği en az 2 adet başlatma havası kompresörü bulunmalıdır. Toplam kapasite, ana makineyi başlatma havası şişelerini 1 saat içinde doldurabilmelidir.", "Başlatma havası şişe kapasitesi ana motoru art arda en az 12 kez çalıştırabilmelidir."] }
+        { heading: "Kapasite ve Gereklilikler", paragraphs: ["Klas kuralları gereği en az 2 adet başlatma havası kompresörü bulunmalıdır. Toplam kapasite, ana makineyi başlatma havası şişelerini 1 saat içinde doldurabilmelidir.", "Başlatma havası şişe kapasitesi ana motoru art arda en az 12 kez çalıştırabilmelidir."] }
       ],
       keyPoints: ["Kompresör emme filtresi temiz tutulmalıdır.", "Otomatik boşaltma (auto-drain) nem birikimini önler.", "Hava şişeleri 5 yılda bir iç muayene ve 10 yılda bir hidrostatik teste tabi tutulur."]
     },
@@ -331,7 +331,7 @@ const content3: ContentMap = {
       title: "Hava Tankları ve Emniyet Düzenlemeleri",
       introduction: "Başlatma havası şişeleri yüksek basınçlı (25-30 bar) basınçlı kaplar olup güvenlik düzenlemeleri kritik öneme sahiptir.",
       sections: [
-        { heading: "Tank Gereklilikleri", paragraphs: ["SOLAS gereği en az 2 adet bağımsız başlatma havası şişesi bulunmalıdır. Her biri toplam kapasitenin yarısını sağlamalıdır.", "Emniyet supabı, manometre, drenaj valfi ve izolasyon valfleri standart donanımdır."] },
+        { heading: "Tank Gereklilikleri", paragraphs: ["Klas kuralları gereği en az 2 adet bağımsız başlatma havası şişesi bulunmalıdır. Her biri toplam kapasitenin yarısını sağlamalıdır.", "Emniyet supabı, manometre, drenaj valfi ve izolasyon valfleri standart donanımdır."] },
         { heading: "Muayene Takvimi", paragraphs: [], table: { headers: ["Muayene", "Periyot", "Açıklama"], rows: [["Dış muayene", "Yıllık", "Görsel kontrol, korozyon"], ["İç muayene", "5 yıl", "Temizlik sonrası iç yüzey kontrolü"], ["Hidrostatik test", "10 yıl", "1.5 × çalışma basıncı ile basınç testi"], ["Emniyet supabı", "Yıllık", "Çalışma basıncında açma testi"]] } }
       ],
       keyPoints: ["Şişe içinde nem birikimi korozyona neden olur; düzenli drenaj yapılmalıdır.", "Aşırı korozyonlu şişeler kullanımdan çekilir.", "Emniyet supabı ayarı çalışma basıncının %10 üzerindedir."]

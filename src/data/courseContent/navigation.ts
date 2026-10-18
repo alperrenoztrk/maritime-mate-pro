@@ -968,7 +968,7 @@ export const navigation: CourseTopic = {
       id: "gc-vertex-lat",
       name: "Great Circle Vertex Latitude",
       group: "Latitude, Longitude and Distance",
-      formula: "sin φv = |sin C₁| × cos φ₁",
+      formula: "cos φv = |sin C₁| × cos φ₁",
       variables: [
         { symbol: "C₁", label: "Initial course", unit: "°" },
         { symbol: "φ₁", label: "Departure latitude", unit: "°" },
@@ -981,8 +981,8 @@ export const navigation: CourseTopic = {
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
-        const sinPv = Math.abs(Math.sin(rad(v.c1))) * Math.cos(rad(v.lat1));
-        const pv = (Math.asin(Math.min(1, sinPv)) * 180) / Math.PI;
+        const cosPv = Math.abs(Math.sin(rad(v.c1))) * Math.cos(rad(v.lat1));
+        const pv = (Math.acos(Math.min(1, cosPv)) * 180) / Math.PI;
         return [{ label: "Vertex Latitude (φv)", value: `${pv.toFixed(2)} °` }];
       },
     },

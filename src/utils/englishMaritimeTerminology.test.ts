@@ -52,6 +52,7 @@ test('high-risk maritime mistranslations are repaired source-aware', () => {
     ['Bağlama halatı adedi', 'Number of mooring ropes', 'Number of mooring lines'],
     ['Hakiki rota', 'Genuine route', 'True course'],
     ['Akıntısız seyir', 'Smooth sailing', 'Navigation without current'],
+    ['Akıntıda trafik akışına dik heading', 'Heading at right angles to the traffic flow in a current', 'Heading at right angles to the traffic flow in a current'],
     ['İki devir', 'Two cycles', 'Two revolutions'],
     ['Gemi gövdesi', 'Ship body', 'Ship hull'],
     ['Ana makine yatağı', 'Main engine bed', 'Main engine bearing'],

@@ -21,7 +21,7 @@ const content5: ContentMap = {
       title: "Acil Jeneratör ve SOLAS Gereklilikleri",
       introduction: "Acil jeneratör, ana güç kaybında hayati önemdeki ekipmanların çalışmasını sağlayan bağımsız güç kaynağıdır.",
       sections: [
-        { heading: "SOLAS Reg. II-1/42-44 Gereklilikleri", paragraphs: ["Acil jeneratör makine dairesi dışında, ana yangın sınırının üzerinde konumlandırılmalıdır.", "Ana güç kaybından itibaren 45 saniye içinde otomatik devreye girmelidir.", "Yakıt tankı en az 18 saat kesintisiz çalışma kapasitesinde olmalıdır (yolcu gemileri: 36 saat)."] },
+        { heading: "SOLAS Reg. II-1/42-44 Gereklilikleri", paragraphs: ["Acil jeneratör makine dairesi dışında, en üst sürekli güvertenin üzerinde konumlandırılmalıdır.", "Ana güç kaybından itibaren 45 saniye içinde otomatik devreye girmelidir.", "Yakıt tankı en az 18 saat kesintisiz çalışma kapasitesinde olmalıdır (yolcu gemileri: 36 saat)."] },
         { heading: "Beslenmesi Gereken Kritik Yükler", paragraphs: [], table: { headers: ["Yük", "Süre"], rows: [["Seyir fenerleri", "18/36 saat"], ["Acil yangın pompası", "18/36 saat"], ["Dümen makinesi (bir set)", "18/36 saat"], ["GMDSS", "18/36 saat"], ["Genel alarm ve PA sistemi", "18/36 saat"], ["Acil aydınlatma", "18/36 saat"], ["Su geçirmez kapılar", "18/36 saat"], ["Yangın algılama", "18/36 saat"]] } }
       ],
       keyPoints: ["Acil jeneratör haftalık test çalıştırması yapılmalıdır.", "Otomatik başlatma sistemi (air start veya battery start) güvenilir olmalıdır.", "Acil jeneratör yakıt sistemi bağımsız olmalıdır."]

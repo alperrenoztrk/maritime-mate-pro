@@ -347,7 +347,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-073', label: 'Seyir jurnali must be deck logbook', source: /seyir\s+(?:jurnal|günlü|log)/iu, wrong: /\b(?:cruise|navigation)\s+log(?:\s*book|book)?\b/giu, replacement: asTerm('deck logbook') },
   { id: 'T-074', label: 'navigation mevki must be position', source: /mevki/iu, wrong: /\b(?:location|place)\b/giu, replacement: asTerm('position') },
   { id: 'T-075', label: 'navigation fener must be light', source: /fener/iu, wrong: /\blanterns?\b/iu, repair: navigationLightRepair },
-  { id: 'T-076', label: 'sea akıntı must be current', source: /akıntı/iu, wrong: /\bflows?\b/giu, applies: (source) => !CURRENT_SOURCE_EXCLUSION_RE.test(source), replacement: asPluralTerm('current', 'currents') },
+  { id: 'T-076', label: 'sea akıntı must be current', source: /akıntı/iu, wrong: /(?<!traffic\s)\bflows?\b/giu, applies: (source) => !CURRENT_SOURCE_EXCLUSION_RE.test(source), replacement: asPluralTerm('current', 'currents') },
   { id: 'T-077', label: 'Dev abbreviation must be preserved', source: /(?:^|[^\p{L}\p{N}])Dev(?![\p{L}\p{N}])/u, wrong: /\bgiant\b/giu, replacement: 'Dev' },
   { id: 'T-078', label: 'maritime çatışma must be collision', source: /çatışma/iu, wrong: /\bconflicts?\b/giu, applies: (source) => !NON_COLLISION_CONFLICT_SOURCE_RE.test(source), replacement: asPluralTerm('collision', 'collisions') },
   { id: 'T-079', label: 'Baş açısı/yönü must be heading', source: /baş\s+(?:açısı|yönü)/iu, wrong: /\bhead\s+(?:angle|direction)\b/giu, replacement: (m) => /angle/i.test(m) ? matchCase(m, 'heading angle') : matchCase(m, 'heading') },

@@ -16,7 +16,7 @@ const equipmentSets = [
     ],
     stock: [
       { label: "Lifeboat", qty: "2 x 70 pers.", status: "Operational" },
-      { label: "Liferaft", qty: "6 x 25 pers.", status: "Servis 2026" },
+      { label: "Liferaft", qty: "6 x 25 pers.", status: "Serviced 2026" },
       { label: "MES", qty: "2 sets", status: "Drill 2025-01" },
     ],
   },
@@ -31,9 +31,9 @@ const equipmentSets = [
       "Monthly checklist plus annual service labels for the portable extinguishers",
     ],
     stock: [
-      { label: "CO₂ Constant System", qty: "1 set (45 bottles)", status: "Test 2024-11" },
-      { label: "Foam Monitor", qty: "2 pieces", status: "Nozzle temiz" },
-      { label: "Portable Tube", qty: "48 adet", status: "%100 dolu" },
+      { label: "Fixed CO₂ System", qty: "1 set (45 bottles)", status: "Test 2024-11" },
+      { label: "Foam Monitor", qty: "2 pieces", status: "Nozzles clean" },
+      { label: "Portable Extinguishers", qty: "48 pieces", status: "100% charged" },
     ],
   },
   {
@@ -49,7 +49,7 @@ const equipmentSets = [
     stock: [
       { label: "EPIRB", qty: "1 piece", status: "Battery due 2027" },
       { label: "SART", qty: "2 pieces", status: "Test 2025-02" },
-      { label: "Handheld GMDSS", qty: "3 adet", status: "Spare batteries ready" },
+      { label: "Handheld GMDSS", qty: "3 pieces", status: "Spare batteries ready" },
     ],
   },
 ];

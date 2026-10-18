@@ -3372,7 +3372,7 @@ export default function CargoTopicsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col bg-background"
+            className="app-content-overlay fixed inset-0 z-50 flex flex-col bg-background"
           >
             {/* Modal Header */}
             <div className="relative z-10 shrink-0 bg-background/95 border-b border-border pt-[var(--safe-top)]">

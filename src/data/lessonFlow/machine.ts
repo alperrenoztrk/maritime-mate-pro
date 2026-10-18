@@ -4978,7 +4978,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Çok Kademeli Pistonlu Kompresör", "Kapasite ve Gereklilikler"] }],
     questions: [
       { id: 1, sectionRef: "Çok Kademeli Pistonlu Kompresör", category: MAK, question: "Ana makine başlatma havası kompresörünün çıkış basıncı nedir?", options: ["25-30 bar", "2-3 bar", "100 bar", "5 bar"], correctAnswer: 0, explanation: "Başlatma havası kompresörü genellikle 2-3 kademeli, su soğutmalı pistonlu tiptir; çıkış 25-30 bar. Kademeler arası intercooler ve su ayırıcı bulunur." },
-      { id: 2, sectionRef: "Kapasite ve Gereklilikler", category: MAK, question: "SOLAS gereği kaç başlatma havası kompresörü bulunmalıdır?", options: ["En az 2 adet", "1 adet", "5 adet", "Gerekmez"], correctAnswer: 0, explanation: "SOLAS gereği en az 2 kompresör bulunur; toplam kapasite şişeleri 1 saatte doldurabilmeli, şişeler ana motoru art arda en az 12 kez çalıştırabilmelidir." },
+      { id: 2, sectionRef: "Kapasite ve Gereklilikler", category: MAK, question: "Klas kuralları gereği kaç başlatma havası kompresörü bulunmalıdır?", options: ["En az 2 adet", "1 adet", "5 adet", "Gerekmez"], correctAnswer: 0, explanation: "Klas kuralları gereği en az 2 kompresör bulunur; toplam kapasite şişeleri 1 saatte doldurabilmeli, şişeler ana motoru art arda en az 12 kez çalıştırabilmelidir." },
     ],
   },
   {
@@ -4986,7 +4986,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Hava tankları ve emniyet düzenlemeleri",
     blocks: [{ sectionTitles: ["Tank Gereklilikleri", "Muayene Takvimi"] }],
     questions: [
-      { id: 1, sectionRef: "Tank Gereklilikleri", category: MAK, question: "SOLAS gereği başlatma havası şişeleri nasıl olmalıdır?", options: ["En az 2 bağımsız şişe; her biri toplam kapasitenin yarısını sağlamalı", "Tek büyük şişe", "Üç eşit şişe", "Şişe gerekmez"], correctAnswer: 0, explanation: "En az 2 bağımsız şişe bulunur, her biri toplam kapasitenin yarısını sağlar; emniyet supabı, manometre, drenaj ve izolasyon valfleri standarttır." },
+      { id: 1, sectionRef: "Tank Gereklilikleri", category: MAK, question: "Klas kuralları gereği başlatma havası şişeleri nasıl olmalıdır?", options: ["En az 2 bağımsız şişe; her biri toplam kapasitenin yarısını sağlamalı", "Tek büyük şişe", "Üç eşit şişe", "Şişe gerekmez"], correctAnswer: 0, explanation: "En az 2 bağımsız şişe bulunur, her biri toplam kapasitenin yarısını sağlar; emniyet supabı, manometre, drenaj ve izolasyon valfleri standarttır." },
       { id: 2, sectionRef: "Muayene Takvimi", category: MAK, question: "Hava tankının hidrostatik testi hangi periyot ve basınçta yapılır?", options: ["10 yılda bir, 1.5 × çalışma basıncı", "Yılda bir, 0.5 × basınç", "Hiç", "Aylık, çalışma basıncı"], correctAnswer: 0, explanation: "Dış muayene yıllık, iç muayene 5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncıyla yapılır; emniyet supabı yıllık test edilir." },
     ],
   },
@@ -5031,7 +5031,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Acil jeneratör ve SOLAS gereklilikleri",
     blocks: [{ sectionTitles: ["SOLAS Reg. II-1/42-44 Gereklilikleri", "Beslenmesi Gereken Kritik Yükler"] }],
     questions: [
-      { id: 1, sectionRef: "SOLAS Reg. II-1/42-44 Gereklilikleri", category: MAK, question: "Acil jeneratör nereye konumlandırılmalıdır?", options: ["Makine dairesi dışında, ana yangın sınırının üzerinde", "Makine dairesinin merkezinde", "Yakıt tankı içinde", "Köprüüstünde"], correctAnswer: 0, explanation: "Acil jeneratör makine dairesi dışında, ana yangın sınırının üzerinde olmalı ve güç kaybından 45 saniye içinde devreye girmelidir; yakıt en az 18 saat (yolcuda 36)." },
+      { id: 1, sectionRef: "SOLAS Reg. II-1/42-44 Gereklilikleri", category: MAK, question: "Acil jeneratör nereye konumlandırılmalıdır?", options: ["Makine dairesi dışında, en üst sürekli güvertenin üzerinde", "Makine dairesinin merkezinde", "Yakıt tankı içinde", "Köprüüstünde"], correctAnswer: 0, explanation: "Acil jeneratör makine dairesi dışında, en üst sürekli güvertenin üzerinde olmalı ve güç kaybından 45 saniye içinde devreye girmelidir; yakıt en az 18 saat (yolcuda 36)." },
       { id: 2, sectionRef: "Beslenmesi Gereken Kritik Yükler", category: MAK, question: "Aşağıdakilerden hangisi acil jeneratörden beslenmesi gereken kritik yüktür?", options: ["Dümen makinesi (bir set), GMDSS ve seyir fenerleri", "Yüzme havuzu pompası", "Kamara TV'leri", "Mutfak fırını"], correctAnswer: 0, explanation: "Kritik yükler: seyir fenerleri, acil yangın pompası, dümen (bir set), GMDSS, genel alarm/PA, acil aydınlatma, su geçirmez kapılar ve yangın algılama." },
     ],
   },
@@ -5517,7 +5517,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Taze hava ve egzoz havalandırma",
     blocks: [{ sectionTitles: ["Taze Hava Gereklilikleri", "Egzoz Havalandırma"] }],
     questions: [
-      { id: 1, sectionRef: "Taze Hava Gereklilikleri", category: MAK, question: "Yaşam alanlarında kişi başına minimum taze hava ne kadar olmalıdır?", options: ["30 m³/h", "1 m³/h", "300 m³/h", "Gerekmez"], correctAnswer: 0, explanation: "IMO/SOLAS kurallarına göre yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanır; makine dairesi havalandırması yanma havası ihtiyacı için de gereklidir." },
+      { id: 1, sectionRef: "Taze Hava Gereklilikleri", category: MAK, question: "Yaşam alanlarında kişi başına minimum taze hava ne kadar olmalıdır?", options: ["30 m³/h", "1 m³/h", "300 m³/h", "Gerekmez"], correctAnswer: 0, explanation: "Yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanır; makine dairesi havalandırması yanma havası ihtiyacı için de gereklidir." },
       { id: 2, sectionRef: "Egzoz Havalandırma", category: MAK, question: "Makine dairesi ventilation flap (havalandırma kapağı) neden zorunludur?", options: ["Yangında CO₂ söndürme etkinliğini sağlamak için", "Soğutma için", "Estetik için", "Hiçbir nedenle"], correctAnswer: 0, explanation: "Tuvalet/mutfak/atölye bağımsız egzoz havalandırmaya sahiptir; makine dairesi acil havalandırma kapanması (flap) yangında CO₂ söndürme etkinliği için zorunludur." },
     ],
   },

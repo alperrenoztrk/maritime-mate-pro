@@ -654,7 +654,15 @@ html[data-font-size="max"] .library-page-title {
   }
   .app-tabbar__icon { width: 2.25rem; flex: 0 0 2.25rem; }
   .app-tabbar__label { font-size: 0.9375rem; }
-  .app-tabbar-visible .route-presence-frame { padding-left: var(--app-sidebar-reserve); }
+  /* Boşluk padding değil margin ile bırakılır: çerçeve transform taşıdığı için
+     içindeki fixed öğeler çerçeveye göre konumlanır; padding'li çerçevede bunlar
+     yan menünün altına uzanıp yazıyı örtüyordu. */
+  .app-tabbar-visible .route-presence-frame {
+    margin-left: var(--app-sidebar-reserve);
+    width: calc(100% - var(--app-sidebar-reserve));
+  }
+  /* body'ye portal edilen tam ekran okuma katmanları da yan menünün sağında başlar. */
+  .app-tabbar-visible .app-content-overlay { left: var(--app-sidebar-reserve); }
   .app-tabbar-visible .app-navbar { left: var(--app-sidebar-reserve); }
   .app-tabbar-visible .app-edge-swipe { left: var(--app-sidebar-reserve); }
 }

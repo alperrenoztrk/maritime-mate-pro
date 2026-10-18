@@ -255,7 +255,7 @@ export default function FluidMechanicsTopicsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col bg-background"
+            className="app-content-overlay fixed inset-0 z-50 flex flex-col bg-background"
           >
             <div className="relative z-10 shrink-0 border-b border-border bg-background/95 pt-[var(--safe-top)]">
               <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">

@@ -2194,7 +2194,7 @@ Genişlik (b) küp ile girdiği için:
         content: `Tank geometrisi, serbest yüzey etkisinin şiddetini belirleyen en önemli faktörlerden biridir.
 
 **Genişlik Etkisi (b³)**
-- Tank genişliği iki katına çıkarsa FSM **8 kat** artar.
+- Tank genişliği iki katına çıkarsa FSM 8 kat artar.
 - Bu nedenle geniş sığ tanklar en riskli tanklardır.
 
 **Boyuna Bölmelendirme (Longitudinal Bulkhead)**
@@ -2847,7 +2847,7 @@ Draft survey hesaplarında:
         examples: [
           {
             problem: "LBP = 180 m, LCF = 85 m (AP'den). Baş draft markası FP'nin 3 m gerisinde. Okunan baş draft = 6.20 m, kıç draft = 7.80 m. Düzeltilmiş baş draftı bulun.",
-            solution: "Trim = 7.80 - 6.20 = 1.60 m (kıç trimli). Düzeltme = (3 × 1.60) / 180 = 0.027 m. Marka içeride, kıça trim → TFP = 6.20 + 0.027 = 6.227 m"
+            solution: "Trim = 7.80 - 6.20 = 1.60 m (kıç trimli). Düzeltme = (3 × 1.60) / 180 = 0.027 m. Marka FP'nin gerisinde ve trim kıça → TFP = 6.20 − 0.027 = 6.173 m"
           }
         ],
         keyPoints: [

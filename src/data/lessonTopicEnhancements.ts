@@ -952,7 +952,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
   // ──────────────────────────────────────────────────────────────────────
   "navigation|UKC + gelgit hesapları": {
     deepDive:
-      "Under-Keel Clearance (UKC), geminin omurgası ile deniz tabanı arasındaki anlık serbest derinliktir. UKC karar süreci dört bileşenin toplamıdır: (1) charted depth, (2) gelgit yüksekliği, (3) eksiltici faktörler (draught, squat, heel, dalga-trough, atmosferik basınç, swell), (4) güvenlik marjı (şirket SMS politikası; tipik %10 draught veya minimum 0.5–1.0 m). IMO MSC.232(82) ve birçok bayrak idaresi minimum UKC politikasını şart koşar. Squat — sığ ve dar sularda hızla artan dinamik çökme — kritik tehlikedir; Barrass formülü pratikte en yaygın kullanılan tahmindir.",
+      "Under-Keel Clearance (UKC), geminin omurgası ile deniz tabanı arasındaki anlık serbest derinliktir. UKC karar süreci dört bileşenin toplamıdır: (1) charted depth, (2) gelgit yüksekliği, (3) eksiltici faktörler (draught, squat, heel, dalga-trough, atmosferik basınç, swell), (4) güvenlik marjı (şirket SMS politikası; tipik %10 draught veya minimum 0.5–1.0 m). Birçok bayrak idaresi ve şirket SMS'i minimum UKC politikasını şart koşar. Squat — sığ ve dar sularda hızla artan dinamik çökme — kritik tehlikedir; Barrass formülü pratikte en yaygın kullanılan tahmindir.",
     coreFormula: {
       text: "UKC = Charted depth + Tide − Draught − Squat − Heel − Safety Margin",
       description:
