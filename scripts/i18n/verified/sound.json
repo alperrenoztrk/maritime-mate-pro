@@ -1,0 +1,794 @@
+{
+ "Manevra ve İkaz İşaretleri (Kural 34)": {
+  "en": "Manoeuvring and Warning Signals (Rule 34)",
+  "de": "Manöver- und Warnsignale (Regel 34)",
+  "fr": "Signaux de manœuvre et d'avertissement (Règle 34)",
+  "es": "Señales de maniobra y de advertencia (Regla 34)",
+  "it": "Segnali di manovra e di avvertimento (Regola 34)",
+  "pt": "Sinais de manobra e de advertência (Regra 34)",
+  "nl": "Manoeuvre- en waarschuwingsseinen (Voorschrift 34)"
+ },
+ "Birbirini GÖREN gemiler arasında kullanılır. Motorlu gemi, izin verilen veya gerekli bir manevrayı yaparken niyetini düdükle bildirir. Bu işaretler, aynı sayıda çakışla beyaz all-round ışıkla da desteklenebilir.": {
+  "en": "Used between vessels IN SIGHT of one another. A power-driven vessel manoeuvring as authorised or required indicates her intention by whistle. These signals may be supplemented by the same number of flashes of an all-round white light.",
+  "de": "Werden zwischen Fahrzeugen verwendet, die einander SEHEN. Ein Maschinenfahrzeug, das ein zulässiges oder vorgeschriebenes Manöver ausführt, kündigt seine Absicht mit der Pfeife an. Diese Signale können durch die gleiche Anzahl von Blitzen eines weißen Rundumlichts ergänzt werden.",
+  "fr": "Utilisés entre navires EN VUE l'un de l'autre. Un navire à propulsion mécanique qui effectue une manœuvre autorisée ou exigée signale son intention au sifflet. Ces signaux peuvent être complétés par le même nombre d'éclats d'un feu blanc visible sur tout l'horizon.",
+  "es": "Se usan entre buques que se ESTÁN VIENDO. Un buque de propulsión mecánica que efectúa una maniobra autorizada o exigida indica su intención con el pito. Estas señales pueden complementarse con el mismo número de destellos de una luz blanca todo horizonte.",
+  "it": "Si usano tra navi IN VISTA l'una dell'altra. Una nave a propulsione meccanica che esegue una manovra consentita o richiesta indica la propria intenzione con il fischio. Questi segnali possono essere integrati dallo stesso numero di lampi di una luce bianca visibile per tutto l'orizzonte.",
+  "pt": "Usados entre embarcações que ESTÃO À VISTA uma da outra. Uma embarcação de propulsão mecânica que executa uma manobra autorizada ou exigida indica a sua intenção com o apito. Esses sinais podem ser complementados pelo mesmo número de lampejos de uma luz branca circular.",
+  "nl": "Worden gebruikt tussen schepen die elkaar ZIEN. Een werktuiglijk voortbewogen schip dat een toegestane of vereiste manoeuvre uitvoert, geeft zijn voornemen aan met de fluit. Deze seinen kunnen worden aangevuld met hetzelfde aantal flitsen van een rondom zichtbaar wit licht."
+ },
+ "Dar Kanal Geçiş İşaretleri (Kural 34(c))": {
+  "en": "Overtaking Signals in a Narrow Channel (Rule 34(c))",
+  "de": "Überholsignale im engen Fahrwasser (Regel 34(c))",
+  "fr": "Signaux de dépassement dans un chenal étroit (Règle 34(c))",
+  "es": "Señales de alcance en un paso estrecho (Regla 34(c))",
+  "it": "Segnali di sorpasso in un passaggio stretto (Regola 34(c))",
+  "pt": "Sinais de ultrapassagem em canal estreito (Regra 34(c))",
+  "nl": "Oploopseinen in een nauw vaarwater (Voorschrift 34(c))"
+ },
+ "Dar kanal veya su yolunda geçme (overtaking) niyeti ve buna verilen onay. Kural 9(e) uyarınca geçilecek gemi de kendi onayını vermek zorundadır.": {
+  "en": "The intention to overtake in a narrow channel or fairway, and the agreement to it. Under Rule 9(e), the vessel to be overtaken must also give her agreement.",
+  "de": "Die Absicht, in einem engen Fahrwasser oder einer Fahrrinne zu überholen, und die Zustimmung dazu. Nach Regel 9(e) muss auch das zu überholende Fahrzeug seine Zustimmung geben.",
+  "fr": "L'intention de rattraper un navire dans un chenal étroit ou une voie d'accès, et l'accord donné. Selon la Règle 9(e), le navire rattrapé doit aussi donner son accord.",
+  "es": "La intención de alcanzar a otro buque en un paso o canal angosto, y la conformidad con ella. Según la Regla 9(e), el buque alcanzado también debe dar su conformidad.",
+  "it": "L'intenzione di raggiungere un'altra nave in un passaggio stretto o in un canale, e l'assenso relativo. Secondo la Regola 9(e), anche la nave da raggiungere deve dare il proprio assenso.",
+  "pt": "A intenção de ultrapassar em um canal estreito ou via de acesso, e a concordância com ela. Pela Regra 9(e), a embarcação a ser ultrapassada também deve dar a sua concordância.",
+  "nl": "Het voornemen om in een nauw vaarwater of vaargeul op te lopen, en de instemming daarmee. Volgens Voorschrift 9(e) moet ook het op te lopen schip zijn instemming geven."
+ },
+ "Kısıtlı Görüşte İşaretler (Kural 35)": {
+  "en": "Signals in Restricted Visibility (Rule 35)",
+  "de": "Schallsignale bei verminderter Sicht (Regel 35)",
+  "fr": "Signaux par visibilité réduite (Règle 35)",
+  "es": "Señales con visibilidad reducida (Regla 35)",
+  "it": "Segnali con visibilità ridotta (Regola 35)",
+  "pt": "Sinais com visibilidade restrita (Regra 35)",
+  "nl": "Seinen bij beperkt zicht (Voorschrift 35)"
+ },
+ "Kısıtlı görüş alanında VEYA yakınında, gece-gündüz fark etmeksizin verilir. Karşıdaki gemi görülmese bile bu işaretler zorunludur.": {
+  "en": "Given in OR near an area of restricted visibility, by day or by night. These signals are mandatory even when the other vessel cannot be seen.",
+  "de": "Werden in einem Gebiet mit verminderter Sicht ODER in dessen Nähe gegeben, bei Tag wie bei Nacht. Diese Signale sind vorgeschrieben, auch wenn das andere Fahrzeug nicht zu sehen ist.",
+  "fr": "Émis dans une zone de visibilité réduite OU près d'une telle zone, de jour comme de nuit. Ces signaux sont obligatoires même si l'autre navire n'est pas visible.",
+  "es": "Se dan dentro de una zona de visibilidad reducida O cerca de ella, de día o de noche. Estas señales son obligatorias aunque no se vea al otro buque.",
+  "it": "Si danno in una zona di visibilità ridotta O nelle sue vicinanze, di giorno e di notte. Questi segnali sono obbligatori anche se l'altra nave non si vede.",
+  "pt": "Dados dentro de uma área de visibilidade restrita OU perto dela, de dia ou de noite. Esses sinais são obrigatórios mesmo que a outra embarcação não esteja à vista.",
+  "nl": "Worden gegeven in OF nabij een gebied met beperkt zicht, overdag en 's nachts. Deze seinen zijn verplicht, ook als het andere schip niet te zien is."
+ },
+ "Demirde ve Karaya Oturmuş Gemi (Kural 35)": {
+  "en": "Vessel at Anchor and Vessel Aground (Rule 35)",
+  "de": "Fahrzeug vor Anker und auf Grund sitzendes Fahrzeug (Regel 35)",
+  "fr": "Navire au mouillage et navire échoué (Règle 35)",
+  "es": "Buque fondeado y buque varado (Regla 35)",
+  "it": "Nave all'ancora e nave incagliata (Regola 35)",
+  "pt": "Embarcação fundeada e embarcação encalhada (Regra 35)",
+  "nl": "Schip ten anker en schip aan de grond (Voorschrift 35)"
+ },
+ "Düdük yerine çan (ve büyük gemilerde gong) kullanılır. 100 m ve üzeri gemilerde çan başta, gong kıçta çalınır.": {
+  "en": "A bell (and, in larger vessels, a gong) is used instead of the whistle. In vessels of 100 m and over, the bell is rung in the fore part and the gong is sounded in the after part.",
+  "de": "Statt der Pfeife wird die Glocke (und auf größeren Fahrzeugen der Gong) verwendet. Auf Fahrzeugen von 100 m Länge und mehr wird die Glocke im Vorschiff und der Gong im Achterschiff geschlagen.",
+  "fr": "On utilise la cloche (et, sur les grands navires, le gong) au lieu du sifflet. Sur les navires de 100 m et plus, la cloche est sonnée à l'avant et le gong à l'arrière.",
+  "es": "Se usa la campana (y, en los buques grandes, el gong) en lugar del pito. En los buques de 100 m o más, la campana suena en la parte de proa y el gong en la de popa.",
+  "it": "Al posto del fischio si usa la campana (e, sulle navi più grandi, il gong). Sulle navi di 100 m e oltre, la campana si suona a prua e il gong a poppa.",
+  "pt": "Usa-se o sino (e, nas embarcações maiores, o gongo) em vez do apito. Nas embarcações de 100 m ou mais, o sino é tocado na parte de vante e o gongo na parte de ré.",
+  "nl": "In plaats van de fluit worden de klok (en op grotere schepen de gong) gebruikt. Op schepen van 100 m en meer wordt de klok op het voorschip en de gong op het achterschip geluid."
+ },
+ "Tehlike İşaretleri (Kural 37 / Ek IV)": {
+  "en": "Distress Signals (Rule 37 / Annex IV)",
+  "de": "Notzeichen (Regel 37 / Anlage IV)",
+  "fr": "Signaux de détresse (Règle 37 / Annexe IV)",
+  "es": "Señales de socorro (Regla 37 / Anexo IV)",
+  "it": "Segnali di pericolo (Regola 37 / Allegato IV)",
+  "pt": "Sinais de perigo (Regra 37 / Anexo IV)",
+  "nl": "Noodseinen (Voorschrift 37 / Bijlage IV)"
+ },
+ "Yalnızca gerçek ve yakın tehlikede, yardım talebiyle kullanılır. Kural 34(d)'deki beş kısa düdükle KARIŞTIRILMAMALIDIR — o bir şüphe/ikaz işaretidir.": {
+  "en": "Used only in real and imminent danger, to request assistance. NOT to be confused with the five short blasts of Rule 34(d) — that is a doubt/warning signal.",
+  "de": "Nur in echter, unmittelbarer Gefahr verwenden, um Hilfe anzufordern. NICHT zu verwechseln mit den fünf kurzen Tönen nach Regel 34(d) — das ist ein Zweifels-/Warnsignal.",
+  "fr": "À n'utiliser qu'en cas de danger réel et imminent, pour demander assistance. À NE PAS confondre avec les cinq sons brefs de la Règle 34(d) — c'est un signal de doute/d'avertissement.",
+  "es": "Solo se usan en peligro real e inminente, para pedir ayuda. NO deben confundirse con las cinco pitadas cortas de la Regla 34(d): esa es una señal de duda/advertencia.",
+  "it": "Si usano solo in caso di pericolo reale e imminente, per chiedere aiuto. NON vanno confusi con i cinque suoni brevi della Regola 34(d): quello è un segnale di dubbio/avvertimento.",
+  "pt": "Usados apenas em perigo real e iminente, para pedir socorro. NÃO devem ser confundidos com os cinco apitos curtos da Regra 34(d) — esse é um sinal de dúvida/advertência.",
+  "nl": "Alleen gebruiken bij werkelijk en dreigend gevaar, om hulp te vragen. NIET verwarren met de vijf korte stoten van Voorschrift 34(d) — dat is een twijfel-/waarschuwingssein."
+ },
+ "Rotamı sancağa değiştiriyorum": {
+  "en": "I am altering my course to starboard",
+  "de": "Ich ändere meinen Kurs nach Steuerbord",
+  "fr": "Je viens sur tribord",
+  "es": "Caigo a estribor",
+  "it": "Accosto a dritta",
+  "pt": "Estou guinando para estibordo",
+  "nl": "Ik verander mijn koers naar stuurboord"
+ },
+ "1 kısa": {
+  "en": "1 short",
+  "de": "1 kurzer Ton",
+  "fr": "1 son bref",
+  "es": "1 corta",
+  "it": "1 breve",
+  "pt": "1 curto",
+  "nl": "1 korte stoot"
+ },
+ "Rotamı sancak tarafa değiştiriyorum.": {
+  "en": "I am altering my course to starboard.",
+  "de": "Ich ändere meinen Kurs nach Steuerbord.",
+  "fr": "Je viens sur tribord.",
+  "es": "Caigo a estribor.",
+  "it": "Accosto a dritta.",
+  "pt": "Estou guinando para estibordo.",
+  "nl": "Ik verander mijn koers naar stuurboord."
+ },
+ "Kural 34(a)": {
+  "en": "Rule 34(a)",
+  "de": "Regel 34(a)",
+  "fr": "Règle 34(a)",
+  "es": "Regla 34(a)",
+  "it": "Regola 34(a)",
+  "pt": "Regra 34(a)",
+  "nl": "Voorschrift 34(a)"
+ },
+ "Rotamı iskeleye değiştiriyorum": {
+  "en": "I am altering my course to port",
+  "de": "Ich ändere meinen Kurs nach Backbord",
+  "fr": "Je viens sur bâbord",
+  "es": "Caigo a babor",
+  "it": "Accosto a sinistra",
+  "pt": "Estou guinando para bombordo",
+  "nl": "Ik verander mijn koers naar bakboord"
+ },
+ "2 kısa": {
+  "en": "2 short",
+  "de": "2 kurze Töne",
+  "fr": "2 sons brefs",
+  "es": "2 cortas",
+  "it": "2 brevi",
+  "pt": "2 curtos",
+  "nl": "2 korte stoten"
+ },
+ "Rotamı iskele tarafa değiştiriyorum.": {
+  "en": "I am altering my course to port.",
+  "de": "Ich ändere meinen Kurs nach Backbord.",
+  "fr": "Je viens sur bâbord.",
+  "es": "Caigo a babor.",
+  "it": "Accosto a sinistra.",
+  "pt": "Estou guinando para bombordo.",
+  "nl": "Ik verander mijn koers naar bakboord."
+ },
+ "Tornistan çalışıyorum": {
+  "en": "I am operating astern propulsion",
+  "de": "Meine Maschine geht rückwärts",
+  "fr": "Je bats en arrière",
+  "es": "Estoy dando atrás",
+  "it": "Sto dando macchina indietro",
+  "pt": "Minhas máquinas estão dando atrás",
+  "nl": "Ik sla achteruit"
+ },
+ "3 kısa": {
+  "en": "3 short",
+  "de": "3 kurze Töne",
+  "fr": "3 sons brefs",
+  "es": "3 cortas",
+  "it": "3 brevi",
+  "pt": "3 curtos",
+  "nl": "3 korte stoten"
+ },
+ "Makinelerim tornistan (geri) çalışıyor.": {
+  "en": "My engines are going astern.",
+  "de": "Meine Maschine geht rückwärts.",
+  "fr": "Mes machines battent en arrière.",
+  "es": "Mis máquinas están dando atrás.",
+  "it": "Le mie macchine stanno andando indietro.",
+  "pt": "Minhas máquinas estão dando atrás.",
+  "nl": "Mijn machines slaan achteruit."
+ },
+ "Dikkat: 'geri gidiyorum' değil, 'makinelerim tornistan çalışıyor' demektir. Gemi hâlâ ileri yol alıyor olabilir.": {
+  "en": "Note: it does not mean 'I am moving astern'; it means 'my engines are going astern'. The vessel may still be making headway.",
+  "de": "Achtung: Es bedeutet nicht „ich fahre rückwärts“, sondern „meine Maschine geht rückwärts“. Das Fahrzeug kann noch Fahrt voraus machen.",
+  "fr": "Attention : cela ne veut pas dire « je recule », mais « mes machines battent en arrière ». Le navire peut encore avoir de l'erre en avant.",
+  "es": "Atención: no significa «voy hacia atrás», sino «mis máquinas están dando atrás». El buque puede seguir teniendo arrancada avante.",
+  "it": "Attenzione: non significa «sto andando indietro», ma «le mie macchine stanno andando indietro». La nave può avere ancora abbrivio in avanti.",
+  "pt": "Atenção: não significa «estou indo para trás», e sim «minhas máquinas estão dando atrás». A embarcação ainda pode ter seguimento para vante.",
+  "nl": "Let op: het betekent niet ‘ik vaar achteruit’, maar ‘mijn machines slaan achteruit’. Het schip kan nog vooruitvaart hebben."
+ },
+ "Şüphe / ikaz işareti": {
+  "en": "Doubt / warning signal",
+  "de": "Zweifels- / Warnsignal",
+  "fr": "Signal de doute / d'avertissement",
+  "es": "Señal de duda / advertencia",
+  "it": "Segnale di dubbio / avvertimento",
+  "pt": "Sinal de dúvida / advertência",
+  "nl": "Twijfel- / waarschuwingssein"
+ },
+ "En az 5 kısa ve hızlı": {
+  "en": "At least 5 short and rapid",
+  "de": "Mindestens 5 kurze, rasch aufeinanderfolgende Töne",
+  "fr": "Au moins 5 sons brefs et rapides",
+  "es": "Por lo menos 5 cortas y rápidas",
+  "it": "Almeno 5 brevi e rapidi",
+  "pt": "Pelo menos 5 curtos e rápidos",
+  "nl": "Ten minste 5 korte, snel opeenvolgende stoten"
+ },
+ "Karşı geminin niyetini anlamıyorum VEYA çatışmadan kaçınmak için yeterli önlem aldığından şüphe ediyorum.": {
+  "en": "I do not understand the intentions of the other vessel, OR I am in doubt whether she is taking sufficient action to avoid collision.",
+  "de": "Ich verstehe die Absicht des anderen Fahrzeugs nicht ODER ich bezweifle, dass es ausreichend handelt, um einen Zusammenstoß zu vermeiden.",
+  "fr": "Je ne comprends pas les intentions de l'autre navire OU je doute qu'il manœuvre suffisamment pour éviter l'abordage.",
+  "es": "No entiendo las intenciones del otro buque O dudo de que esté maniobrando lo suficiente para evitar el abordaje.",
+  "it": "Non capisco le intenzioni dell'altra nave OPPURE dubito che stia manovrando a sufficienza per evitare la collisione.",
+  "pt": "Não entendo as intenções da outra embarcação OU duvido que ela esteja manobrando o suficiente para evitar o abalroamento.",
+  "nl": "Ik begrijp de bedoeling van het andere schip niet OF ik twijfel eraan of het voldoende doet om een aanvaring te voorkomen."
+ },
+ "Kural 34(d)": {
+  "en": "Rule 34(d)",
+  "de": "Regel 34(d)",
+  "fr": "Règle 34(d)",
+  "es": "Regla 34(d)",
+  "it": "Regola 34(d)",
+  "pt": "Regra 34(d)",
+  "nl": "Voorschrift 34(d)"
+ },
+ "Bu bir TEHLİKE işareti DEĞİLDİR. En az beş kısa ve hızlı ışık çakışıyla desteklenebilir.": {
+  "en": "This is NOT a distress signal. It may be supplemented by at least five short and rapid flashes of light.",
+  "de": "Dies ist KEIN Notzeichen. Es kann durch mindestens fünf kurze, rasch aufeinanderfolgende Lichtblitze ergänzt werden.",
+  "fr": "Ce n'est PAS un signal de détresse. Il peut être complété par au moins cinq éclats lumineux brefs et rapides.",
+  "es": "NO es una señal de socorro. Puede complementarse con por lo menos cinco destellos cortos y rápidos.",
+  "it": "NON è un segnale di pericolo. Può essere integrato da almeno cinque lampi di luce brevi e rapidi.",
+  "pt": "NÃO é um sinal de perigo. Pode ser complementado por pelo menos cinco lampejos curtos e rápidos.",
+  "nl": "Dit is GEEN noodsein. Het kan worden aangevuld met ten minste vijf korte, snel opeenvolgende lichtflitsen."
+ },
+ "Görüşü kapalı dönemece yaklaşırken": {
+  "en": "Nearing a bend obscured from view",
+  "de": "Annäherung an eine unübersichtliche Krümmung",
+  "fr": "Approche d'un coude masqué",
+  "es": "Aproximación a un recodo sin visibilidad",
+  "it": "Avvicinamento a una curva senza visibilità",
+  "pt": "Aproximação de uma curva sem visibilidade",
+  "nl": "Naderen van een onoverzichtelijke bocht"
+ },
+ "1 uzun": {
+  "en": "1 prolonged",
+  "de": "1 langer Ton",
+  "fr": "1 son prolongé",
+  "es": "1 larga",
+  "it": "1 prolungato",
+  "pt": "1 longo",
+  "nl": "1 lange stoot"
+ },
+ "Araya giren engel nedeniyle görülemeyen bir dönemece veya kanal bölgesine yaklaşıyorum.": {
+  "en": "I am nearing a bend or an area of a channel where other vessels may be obscured by an intervening obstruction.",
+  "de": "Ich nähere mich einer Krümmung oder einem Abschnitt des Fahrwassers, in dem andere Fahrzeuge durch ein Sichthindernis verdeckt sein können.",
+  "fr": "J'approche d'un coude ou d'une partie du chenal où d'autres navires peuvent être masqués par un obstacle.",
+  "es": "Me aproximo a un recodo o a una zona de un canal donde otros buques pueden quedar ocultos por un obstáculo interpuesto.",
+  "it": "Mi sto avvicinando a una curva o a un tratto di canale in cui altre navi possono essere nascoste da un ostacolo interposto.",
+  "pt": "Estou me aproximando de uma curva ou de um trecho do canal onde outras embarcações podem estar encobertas por um obstáculo.",
+  "nl": "Ik nader een bocht of een gedeelte van het vaarwater waar andere schepen door een tussenliggende hindernis aan het zicht onttrokken kunnen zijn."
+ },
+ "Kural 34(e)": {
+  "en": "Rule 34(e)",
+  "de": "Regel 34(e)",
+  "fr": "Règle 34(e)",
+  "es": "Regla 34(e)",
+  "it": "Regola 34(e)",
+  "pt": "Regra 34(e)",
+  "nl": "Voorschrift 34(e)"
+ },
+ "Duyan gemi aynı işaretle (1 uzun) cevap verir.": {
+  "en": "A vessel that hears it answers with the same signal (1 prolonged).",
+  "de": "Ein Fahrzeug, das es hört, antwortet mit demselben Signal (1 langer Ton).",
+  "fr": "Le navire qui l'entend répond par le même signal (1 son prolongé).",
+  "es": "El buque que la oye contesta con la misma señal (1 larga).",
+  "it": "La nave che lo sente risponde con lo stesso segnale (1 prolungato).",
+  "pt": "A embarcação que o ouvir responde com o mesmo sinal (1 longo).",
+  "nl": "Een schip dat het hoort, antwoordt met hetzelfde sein (1 lange stoot)."
+ },
+ "Sancağınızdan geçmek istiyorum": {
+  "en": "I intend to overtake you on your starboard side",
+  "de": "Ich beabsichtige, Sie an Ihrer Steuerbordseite zu überholen",
+  "fr": "Je compte vous rattraper sur tribord",
+  "es": "Pretendo alcanzarle por su banda de estribor",
+  "it": "Intendo raggiungervi sulla vostra dritta",
+  "pt": "Pretendo ultrapassá-lo pelo seu bordo de estibordo",
+  "nl": "Ik ben voornemens u aan uw stuurboordzijde op te lopen"
+ },
+ "2 uzun + 1 kısa": {
+  "en": "2 prolonged + 1 short",
+  "de": "2 lange + 1 kurzer Ton",
+  "fr": "2 sons prolongés + 1 son bref",
+  "es": "2 largas + 1 corta",
+  "it": "2 prolungati + 1 breve",
+  "pt": "2 longos + 1 curto",
+  "nl": "2 lange + 1 korte stoot"
+ },
+ "Dar kanalda sizi sancak tarafınızdan geçmek niyetindeyim.": {
+  "en": "In a narrow channel, I intend to overtake you on your starboard side.",
+  "de": "Im engen Fahrwasser beabsichtige ich, Sie an Ihrer Steuerbordseite zu überholen.",
+  "fr": "Dans un chenal étroit, je compte vous rattraper sur votre tribord.",
+  "es": "En un paso estrecho, pretendo alcanzarle por su banda de estribor.",
+  "it": "In un passaggio stretto, intendo raggiungervi e sorpassarvi sulla vostra dritta.",
+  "pt": "Em um canal estreito, pretendo ultrapassá-lo pelo seu bordo de estibordo.",
+  "nl": "In een nauw vaarwater ben ik voornemens u aan uw stuurboordzijde op te lopen."
+ },
+ "Kural 34(c)(i)": {
+  "en": "Rule 34(c)(i)",
+  "de": "Regel 34(c)(i)",
+  "fr": "Règle 34(c)(i)",
+  "es": "Regla 34(c)(i)",
+  "it": "Regola 34(c)(i)",
+  "pt": "Regra 34(c)(i)",
+  "nl": "Voorschrift 34(c)(i)"
+ },
+ "İskelenizden geçmek istiyorum": {
+  "en": "I intend to overtake you on your port side",
+  "de": "Ich beabsichtige, Sie an Ihrer Backbordseite zu überholen",
+  "fr": "Je compte vous rattraper sur bâbord",
+  "es": "Pretendo alcanzarle por su banda de babor",
+  "it": "Intendo raggiungervi sulla vostra sinistra",
+  "pt": "Pretendo ultrapassá-lo pelo seu bordo de bombordo",
+  "nl": "Ik ben voornemens u aan uw bakboordzijde op te lopen"
+ },
+ "2 uzun + 2 kısa": {
+  "en": "2 prolonged + 2 short",
+  "de": "2 lange + 2 kurze Töne",
+  "fr": "2 sons prolongés + 2 sons brefs",
+  "es": "2 largas + 2 cortas",
+  "it": "2 prolungati + 2 brevi",
+  "pt": "2 longos + 2 curtos",
+  "nl": "2 lange + 2 korte stoten"
+ },
+ "Dar kanalda sizi iskele tarafınızdan geçmek niyetindeyim.": {
+  "en": "In a narrow channel, I intend to overtake you on your port side.",
+  "de": "Im engen Fahrwasser beabsichtige ich, Sie an Ihrer Backbordseite zu überholen.",
+  "fr": "Dans un chenal étroit, je compte vous rattraper sur votre bâbord.",
+  "es": "En un paso estrecho, pretendo alcanzarle por su banda de babor.",
+  "it": "In un passaggio stretto, intendo raggiungervi e sorpassarvi sulla vostra sinistra.",
+  "pt": "Em um canal estreito, pretendo ultrapassá-lo pelo seu bordo de bombordo.",
+  "nl": "In een nauw vaarwater ben ik voornemens u aan uw bakboordzijde op te lopen."
+ },
+ "Onay (geçebilirsiniz)": {
+  "en": "Agreement (you may overtake)",
+  "de": "Zustimmung (Sie können überholen)",
+  "fr": "Accord (vous pouvez me rattraper)",
+  "es": "Conformidad (puede alcanzarme)",
+  "it": "Assenso (potete sorpassare)",
+  "pt": "Concordância (pode ultrapassar)",
+  "nl": "Instemming (u kunt oplopen)"
+ },
+ "uzun-kısa-uzun-kısa": {
+  "en": "prolonged-short-prolonged-short",
+  "de": "lang-kurz-lang-kurz",
+  "fr": "prolongé-bref-prolongé-bref",
+  "es": "larga-corta-larga-corta",
+  "it": "prolungato-breve-prolungato-breve",
+  "pt": "longo-curto-longo-curto",
+  "nl": "lang-kort-lang-kort"
+ },
+ "Geçme niyetinizi kabul ediyorum.": {
+  "en": "I agree to your intention to overtake.",
+  "de": "Ich bin mit Ihrer Überholabsicht einverstanden.",
+  "fr": "Je suis d'accord avec votre intention de me rattraper.",
+  "es": "Estoy de acuerdo con su intención de alcanzarme.",
+  "it": "Sono d'accordo con la vostra intenzione di sorpassarmi.",
+  "pt": "Concordo com a sua intenção de me ultrapassar.",
+  "nl": "Ik stem in met uw voornemen om op te lopen."
+ },
+ "Kural 34(c)(ii)": {
+  "en": "Rule 34(c)(ii)",
+  "de": "Regel 34(c)(ii)",
+  "fr": "Règle 34(c)(ii)",
+  "es": "Regla 34(c)(ii)",
+  "it": "Regola 34(c)(ii)",
+  "pt": "Regra 34(c)(ii)",
+  "nl": "Voorschrift 34(c)(ii)"
+ },
+ "Bu kalıp mors alfabesinde 'C' harfidir (▬ ● ▬ ●) — ICS'te C bayrağı da 'olumlu/evet' demektir. Tesadüf değil, aynı mantığın devamıdır.": {
+  "en": "This pattern is the letter 'C' in Morse code (▬ ● ▬ ●) — in the International Code of Signals, flag C also means 'affirmative/yes'. This is no coincidence; it follows the same logic.",
+  "de": "Dieses Muster ist der Buchstabe „C“ im Morsealphabet (▬ ● ▬ ●) — im Internationalen Signalbuch bedeutet auch die Flagge C „ja/bejahend“. Das ist kein Zufall, sondern dieselbe Logik.",
+  "fr": "Ce motif correspond à la lettre « C » en morse (▬ ● ▬ ●) — dans le Code international de signaux, le pavillon C signifie aussi « affirmatif/oui ». Ce n'est pas un hasard, c'est la même logique.",
+  "es": "Este patrón es la letra «C» en código Morse (▬ ● ▬ ●); en el Código internacional de señales, la bandera C también significa «afirmativo/sí». No es casualidad: sigue la misma lógica.",
+  "it": "Questa sequenza è la lettera «C» nell'alfabeto Morse (▬ ● ▬ ●); nel Codice internazionale dei segnali anche la bandiera C significa «affermativo/sì». Non è un caso: segue la stessa logica.",
+  "pt": "Esta sequência é a letra «C» em código Morse (▬ ● ▬ ●) — no Código internacional de sinais, a bandeira C também significa «afirmativo/sim». Não é coincidência; segue a mesma lógica.",
+  "nl": "Dit patroon is de letter ‘C’ in morse (▬ ● ▬ ●) — in het Internationaal Seinboek betekent ook vlag C ‘bevestigend/ja’. Dat is geen toeval, het volgt dezelfde logica."
+ },
+ "Yolda olan motorlu gemi": {
+  "en": "Power-driven vessel making way",
+  "de": "Maschinenfahrzeug, das Fahrt durchs Wasser macht",
+  "fr": "Navire à propulsion mécanique faisant route",
+  "es": "Buque de propulsión mecánica con arrancada",
+  "it": "Nave a propulsione meccanica in moto",
+  "pt": "Embarcação de propulsão mecânica com seguimento",
+  "nl": "Werktuiglijk voortbewogen schip dat vaart loopt"
+ },
+ "Motorlu gemi, suya göre yol alıyor.": {
+  "en": "A power-driven vessel making way through the water.",
+  "de": "Ein Maschinenfahrzeug, das Fahrt durchs Wasser macht.",
+  "fr": "Un navire à propulsion mécanique faisant route sur l'eau.",
+  "es": "Un buque de propulsión mecánica con arrancada.",
+  "it": "Una nave a propulsione meccanica che si muove rispetto all'acqua.",
+  "pt": "Uma embarcação de propulsão mecânica com seguimento na água.",
+  "nl": "Een werktuiglijk voortbewogen schip dat vaart door het water loopt."
+ },
+ "Kural 35(a)": {
+  "en": "Rule 35(a)",
+  "de": "Regel 35(a)",
+  "fr": "Règle 35(a)",
+  "es": "Regla 35(a)",
+  "it": "Regola 35(a)",
+  "pt": "Regra 35(a)",
+  "nl": "Voorschrift 35(a)"
+ },
+ "En fazla 2 dakikada bir": {
+  "en": "At intervals of not more than 2 minutes",
+  "de": "In Abständen von höchstens 2 Minuten",
+  "fr": "À des intervalles ne dépassant pas 2 minutes",
+  "es": "A intervalos que no excedan de 2 minutos",
+  "it": "A intervalli non superiori a 2 minuti",
+  "pt": "A intervalos não superiores a 2 minutos",
+  "nl": "Met tussenpozen van ten hoogste 2 minuten"
+ },
+ "Durmuş, yol almayan motorlu gemi": {
+  "en": "Power-driven vessel stopped, making no way",
+  "de": "Maschinenfahrzeug, gestoppt, ohne Fahrt durchs Wasser",
+  "fr": "Navire à propulsion mécanique stoppé, sans erre",
+  "es": "Buque de propulsión mecánica parado y sin arrancada",
+  "it": "Nave a propulsione meccanica ferma, senza abbrivio",
+  "pt": "Embarcação de propulsão mecânica parada, sem seguimento",
+  "nl": "Werktuiglijk voortbewogen schip, gestopt, zonder vaart"
+ },
+ "2 uzun": {
+  "en": "2 prolonged",
+  "de": "2 lange Töne",
+  "fr": "2 sons prolongés",
+  "es": "2 largas",
+  "it": "2 prolungati",
+  "pt": "2 longos",
+  "nl": "2 lange stoten"
+ },
+ "Motorlu gemi yolda, ancak suya göre yol almıyor (stopped, making no way).": {
+  "en": "A power-driven vessel under way but stopped and making no way through the water.",
+  "de": "Ein Maschinenfahrzeug in Fahrt, das gestoppt hat und keine Fahrt durchs Wasser macht.",
+  "fr": "Un navire à propulsion mécanique en route mais stoppé et n'ayant pas d'erre.",
+  "es": "Un buque de propulsión mecánica en navegación pero parado y sin arrancada.",
+  "it": "Una nave a propulsione meccanica in navigazione ma ferma e senza abbrivio rispetto all'acqua.",
+  "pt": "Uma embarcação de propulsão mecânica em movimento, mas parada e sem seguimento na água.",
+  "nl": "Een werktuiglijk voortbewogen schip dat onderweg is, maar gestopt is en geen vaart door het water loopt."
+ },
+ "Kural 35(b)": {
+  "en": "Rule 35(b)",
+  "de": "Regel 35(b)",
+  "fr": "Règle 35(b)",
+  "es": "Regla 35(b)",
+  "it": "Regola 35(b)",
+  "pt": "Regra 35(b)",
+  "nl": "Voorschrift 35(b)"
+ },
+ "En fazla 2 dakikada bir; iki düdük arası yaklaşık 2 saniye": {
+  "en": "At intervals of not more than 2 minutes, with about 2 seconds between the two blasts",
+  "de": "In Abständen von höchstens 2 Minuten, mit etwa 2 Sekunden zwischen den beiden Tönen",
+  "fr": "À des intervalles ne dépassant pas 2 minutes, avec environ 2 secondes entre les deux sons",
+  "es": "A intervalos que no excedan de 2 minutos, con unos 2 segundos entre ambas pitadas",
+  "it": "A intervalli non superiori a 2 minuti, con circa 2 secondi tra i due suoni",
+  "pt": "A intervalos não superiores a 2 minutos, com cerca de 2 segundos entre os dois apitos",
+  "nl": "Met tussenpozen van ten hoogste 2 minuten, met ongeveer 2 seconden tussen de twee stoten"
+ },
+ "NUC / RAM / CBD / yelkenli / balıkçı / çeken-iten gemi": {
+  "en": "NUC / RAM / CBD / sailing / fishing / towing or pushing vessel",
+  "de": "Manövrierunfähig / manövrierbehindert / tiefgangbehindert / Segelfahrzeug / fischend / schleppend oder schiebend",
+  "fr": "Navire non maître de sa manœuvre / à capacité de manœuvre restreinte / handicapé par son tirant d'eau / à voile / en pêche / remorquant ou poussant",
+  "es": "Sin gobierno / maniobra restringida / restringido por su calado / de vela / pesquero / remolcando o empujando",
+  "it": "Nave che non governa / con manovrabilità limitata / condizionata dall'immersione / a vela / intenta alla pesca / che rimorchia o spinge",
+  "pt": "Sem governo / manobra restrita / restrita pelo calado / a vela / pescando / rebocando ou empurrando",
+  "nl": "NUC / RAM / CBD / zeilschip / vissend / slepend of duwend schip"
+ },
+ "1 uzun + 2 kısa": {
+  "en": "1 prolonged + 2 short",
+  "de": "1 langer + 2 kurze Töne",
+  "fr": "1 son prolongé + 2 sons brefs",
+  "es": "1 larga + 2 cortas",
+  "it": "1 prolungato + 2 brevi",
+  "pt": "1 longo + 2 curtos",
+  "nl": "1 lange + 2 korte stoten"
+ },
+ "Kumandadan aciz, manevra kabiliyeti kısıtlı, draftından kısıtlı, yelkenli, balıkçılık yapan veya başka bir gemiyi çeken/iten gemi.": {
+  "en": "A vessel not under command, restricted in her ability to manoeuvre, constrained by her draught, sailing, engaged in fishing, or towing or pushing another vessel.",
+  "de": "Ein manövrierunfähiges, manövrierbehindertes oder tiefgangbehindertes Fahrzeug, ein Segelfahrzeug, ein fischendes Fahrzeug oder ein Fahrzeug, das ein anderes schleppt oder schiebt.",
+  "fr": "Un navire qui n'est pas maître de sa manœuvre, à capacité de manœuvre restreinte, handicapé par son tirant d'eau, à voile, en train de pêcher, ou en train de remorquer ou de pousser un autre navire.",
+  "es": "Un buque sin gobierno, con capacidad de maniobra restringida, restringido por su calado, de vela, dedicado a la pesca, o remolcando o empujando a otro buque.",
+  "it": "Una nave che non governa, con manovrabilità limitata, condizionata dalla propria immersione, a vela, intenta alla pesca, oppure che rimorchia o spinge un'altra nave.",
+  "pt": "Uma embarcação sem governo, com capacidade de manobra restrita, restrita devido ao seu calado, a vela, engajada na pesca, ou rebocando ou empurrando outra embarcação.",
+  "nl": "Een onmanoeuvreerbaar schip, een schip dat beperkt is in zijn manoeuvreerbaarheid of door zijn diepgang, een zeilschip, een vissend schip, of een schip dat een ander schip sleept of duwt."
+ },
+ "Kural 35(c)": {
+  "en": "Rule 35(c)",
+  "de": "Regel 35(c)",
+  "fr": "Règle 35(c)",
+  "es": "Regla 35(c)",
+  "it": "Regola 35(c)",
+  "pt": "Regra 35(c)",
+  "nl": "Voorschrift 35(c)"
+ },
+ "Altı farklı durumun tek bir ortak işareti vardır; hangisi olduğunu ses değil, radar/görsel bilgi ayırt eder.": {
+  "en": "Six different situations share one signal; which one it is must be told from radar or visual information, not from the sound.",
+  "de": "Sechs verschiedene Fälle haben ein gemeinsames Signal; welcher vorliegt, unterscheiden Radar- oder Sichtinformationen, nicht der Ton.",
+  "fr": "Six situations différentes partagent un même signal ; c'est l'information radar ou visuelle, et non le son, qui permet de savoir laquelle.",
+  "es": "Seis situaciones distintas comparten una sola señal; cuál de ellas es lo indica la información del radar o visual, no el sonido.",
+  "it": "Sei situazioni diverse hanno un unico segnale in comune; quale sia lo dicono le informazioni radar o visive, non il suono.",
+  "pt": "Seis situações diferentes compartilham um único sinal; qual delas é, quem diz é a informação do radar ou visual, não o som.",
+  "nl": "Zes verschillende situaties hebben één gemeenschappelijk sein; welke het is, blijkt uit radar- of visuele informatie, niet uit het geluid."
+ },
+ "Çekilen (manlı) gemi": {
+  "en": "Vessel towed (if manned)",
+  "de": "Geschlepptes Fahrzeug (wenn besetzt)",
+  "fr": "Navire remorqué (s'il a un équipage)",
+  "es": "Buque remolcado (si está tripulado)",
+  "it": "Nave rimorchiata (se con equipaggio)",
+  "pt": "Embarcação rebocada (se tripulada)",
+  "nl": "Gesleept schip (indien bemand)"
+ },
+ "1 uzun + 3 kısa": {
+  "en": "1 prolonged + 3 short",
+  "de": "1 langer + 3 kurze Töne",
+  "fr": "1 son prolongé + 3 sons brefs",
+  "es": "1 larga + 3 cortas",
+  "it": "1 prolungato + 3 brevi",
+  "pt": "1 longo + 3 curtos",
+  "nl": "1 lange + 3 korte stoten"
+ },
+ "Çekilen gemi; yedek dizisinde birden fazla gemi varsa yalnızca sonuncusu verir.": {
+  "en": "A vessel being towed; if more than one vessel is towed, only the last one gives it.",
+  "de": "Ein geschlepptes Fahrzeug; werden mehrere Fahrzeuge geschleppt, gibt nur das letzte das Signal.",
+  "fr": "Un navire remorqué ; si plusieurs navires sont remorqués, seul le dernier émet le signal.",
+  "es": "Un buque remolcado; si se remolca más de un buque, solo la da el último.",
+  "it": "Una nave rimorchiata; se le navi rimorchiate sono più di una, il segnale lo dà solo l'ultima.",
+  "pt": "Uma embarcação rebocada; se houver mais de uma embarcação rebocada, só a última dá o sinal.",
+  "nl": "Een gesleept schip; worden meerdere schepen gesleept, dan geeft alleen het laatste het sein."
+ },
+ "Kural 35(e)": {
+  "en": "Rule 35(e)",
+  "de": "Regel 35(e)",
+  "fr": "Règle 35(e)",
+  "es": "Regla 35(e)",
+  "it": "Regola 35(e)",
+  "pt": "Regra 35(e)",
+  "nl": "Voorschrift 35(e)"
+ },
+ "Çeken geminin işaretinden hemen sonra": {
+  "en": "Immediately after the signal of the towing vessel",
+  "de": "Unmittelbar nach dem Signal des schleppenden Fahrzeugs",
+  "fr": "Immédiatement après le signal du navire remorqueur",
+  "es": "Inmediatamente después de la señal del buque remolcador",
+  "it": "Subito dopo il segnale della nave rimorchiatrice",
+  "pt": "Imediatamente após o sinal da embarcação rebocadora",
+  "nl": "Direct na het sein van het slepende schip"
+ },
+ "Kılavuz gemisi kimlik işareti": {
+  "en": "Pilot vessel identity signal",
+  "de": "Erkennungssignal eines Lotsenfahrzeugs",
+  "fr": "Signal d'identification d'un bateau-pilote",
+  "es": "Señal de identificación de una embarcación de practicaje",
+  "it": "Segnale di identificazione della pilotina",
+  "pt": "Sinal de identificação de embarcação de praticagem",
+  "nl": "Herkenningssein van een loodsvaartuig"
+ },
+ "4 kısa": {
+  "en": "4 short",
+  "de": "4 kurze Töne",
+  "fr": "4 sons brefs",
+  "es": "4 cortas",
+  "it": "4 brevi",
+  "pt": "4 curtos",
+  "nl": "4 korte stoten"
+ },
+ "Kılavuzluk görevi yapan gemi, kimliğini bildirmek için verebilir.": {
+  "en": "A pilot vessel on pilotage duty may give it to identify herself.",
+  "de": "Ein Lotsenfahrzeug im Lotsendienst kann es geben, um sich zu erkennen zu geben.",
+  "fr": "Un bateau-pilote en service de pilotage peut l'émettre pour s'identifier.",
+  "es": "Una embarcación de practicaje en servicio puede darla para identificarse.",
+  "it": "Una pilotina in servizio di pilotaggio può darlo per farsi riconoscere.",
+  "pt": "Uma embarcação de praticagem em serviço pode dá-lo para se identificar.",
+  "nl": "Een loodsvaartuig in loodsdienst kan het geven om zich bekend te maken."
+ },
+ "Kural 35(k)": {
+  "en": "Rule 35(k)",
+  "de": "Regel 35(k)",
+  "fr": "Règle 35(k)",
+  "es": "Regla 35(k)",
+  "it": "Regola 35(k)",
+  "pt": "Regra 35(k)",
+  "nl": "Voorschrift 35(k)"
+ },
+ "İsteğe bağlıdır ve diğer zorunlu işaretlere EK olarak verilir.": {
+  "en": "It is optional and is given IN ADDITION to the other required signals.",
+  "de": "Es ist freiwillig und wird ZUSÄTZLICH zu den übrigen vorgeschriebenen Signalen gegeben.",
+  "fr": "Il est facultatif et s'ajoute aux autres signaux obligatoires.",
+  "es": "Es optativa y se da ADEMÁS de las demás señales obligatorias.",
+  "it": "È facoltativo e si dà IN AGGIUNTA agli altri segnali obbligatori.",
+  "pt": "É facultativo e é dado ALÉM dos outros sinais obrigatórios.",
+  "nl": "Het is facultatief en wordt AANVULLEND op de andere verplichte seinen gegeven."
+ },
+ "Demirde gemi": {
+  "en": "Vessel at anchor",
+  "de": "Fahrzeug vor Anker",
+  "fr": "Navire au mouillage",
+  "es": "Buque fondeado",
+  "it": "Nave all'ancora",
+  "pt": "Embarcação fundeada",
+  "nl": "Schip ten anker"
+ },
+ "Yaklaşık 5 saniye hızlı çan çalma": {
+  "en": "Bell rung rapidly for about 5 seconds",
+  "de": "Glocke etwa 5 Sekunden lang rasch geläutet",
+  "fr": "Cloche tintée rapidement pendant environ 5 secondes",
+  "es": "Campana tocada rápidamente durante unos 5 segundos",
+  "it": "Campana suonata rapidamente per circa 5 secondi",
+  "pt": "Sino tocado rapidamente por cerca de 5 segundos",
+  "nl": "Klok ongeveer 5 seconden snel geluid"
+ },
+ "Gemi demirdedir.": {
+  "en": "The vessel is at anchor.",
+  "de": "Das Fahrzeug liegt vor Anker.",
+  "fr": "Le navire est au mouillage.",
+  "es": "El buque está fondeado.",
+  "it": "La nave è all'ancora.",
+  "pt": "A embarcação está fundeada.",
+  "nl": "Het schip ligt ten anker."
+ },
+ "Kural 35(g)": {
+  "en": "Rule 35(g)",
+  "de": "Regel 35(g)",
+  "fr": "Règle 35(g)",
+  "es": "Regla 35(g)",
+  "it": "Regola 35(g)",
+  "pt": "Regra 35(g)",
+  "nl": "Voorschrift 35(g)"
+ },
+ "En fazla 1 dakikada bir": {
+  "en": "At intervals of not more than 1 minute",
+  "de": "In Abständen von höchstens 1 Minute",
+  "fr": "À des intervalles ne dépassant pas 1 minute",
+  "es": "A intervalos que no excedan de 1 minuto",
+  "it": "A intervalli non superiori a 1 minuto",
+  "pt": "A intervalos não superiores a 1 minuto",
+  "nl": "Met tussenpozen van ten hoogste 1 minuut"
+ },
+ "100 m ve üzeri gemilerde çan baş tarafta çalınır, hemen ardından kıçta yaklaşık 5 saniye gong çalınır. Yaklaşan gemiyi uyarmak için ayrıca 1 kısa + 1 uzun + 1 kısa düdük verilebilir.": {
+  "en": "In vessels of 100 m and over, the bell is rung in the fore part, immediately followed by the gong sounded rapidly for about 5 seconds in the after part. To warn an approaching vessel, 1 short + 1 prolonged + 1 short blast may also be sounded.",
+  "de": "Auf Fahrzeugen von 100 m Länge und mehr wird die Glocke im Vorschiff geläutet, unmittelbar danach wird im Achterschiff etwa 5 Sekunden lang rasch der Gong geschlagen. Zur Warnung eines sich nähernden Fahrzeugs können zusätzlich 1 kurzer + 1 langer + 1 kurzer Ton gegeben werden.",
+  "fr": "Sur les navires de 100 m et plus, la cloche est tintée à l'avant, puis immédiatement le gong est sonné rapidement à l'arrière pendant environ 5 secondes. Pour avertir un navire qui s'approche, on peut en outre émettre 1 son bref + 1 son prolongé + 1 son bref.",
+  "es": "En los buques de 100 m o más, la campana se toca en la parte de proa e inmediatamente después se toca rápidamente el gong en la de popa durante unos 5 segundos. Para advertir a un buque que se aproxima, se puede dar además 1 corta + 1 larga + 1 corta.",
+  "it": "Sulle navi di 100 m e oltre, la campana si suona a prua e subito dopo si suona rapidamente il gong a poppa per circa 5 secondi. Per avvertire una nave in avvicinamento si possono dare inoltre 1 breve + 1 prolungato + 1 breve.",
+  "pt": "Nas embarcações de 100 m ou mais, o sino é tocado na parte de vante e, logo em seguida, o gongo é tocado rapidamente na parte de ré por cerca de 5 segundos. Para advertir uma embarcação que se aproxima, podem ser dados também 1 curto + 1 longo + 1 curto.",
+  "nl": "Op schepen van 100 m en meer wordt de klok op het voorschip geluid, direct gevolgd door ongeveer 5 seconden snel slaan op de gong op het achterschip. Om een naderend schip te waarschuwen kunnen daarnaast 1 korte + 1 lange + 1 korte stoot worden gegeven."
+ },
+ "Karaya oturmuş gemi": {
+  "en": "Vessel aground",
+  "de": "Auf Grund sitzendes Fahrzeug",
+  "fr": "Navire échoué",
+  "es": "Buque varado",
+  "it": "Nave incagliata",
+  "pt": "Embarcação encalhada",
+  "nl": "Schip aan de grond"
+ },
+ "3 ayrı vuruş + hızlı çan + 3 ayrı vuruş": {
+  "en": "3 separate strokes + rapid bell + 3 separate strokes",
+  "de": "3 einzelne Schläge + rasches Läuten + 3 einzelne Schläge",
+  "fr": "3 coups séparés + cloche rapide + 3 coups séparés",
+  "es": "3 golpes separados + campana rápida + 3 golpes separados",
+  "it": "3 colpi separati + campana rapida + 3 colpi separati",
+  "pt": "3 badaladas separadas + sino rápido + 3 badaladas separadas",
+  "nl": "3 afzonderlijke slagen + snel luiden + 3 afzonderlijke slagen"
+ },
+ "Gemi karaya oturmuştur.": {
+  "en": "The vessel is aground.",
+  "de": "Das Fahrzeug sitzt auf Grund.",
+  "fr": "Le navire est échoué.",
+  "es": "El buque está varado.",
+  "it": "La nave è incagliata.",
+  "pt": "A embarcação está encalhada.",
+  "nl": "Het schip zit aan de grond."
+ },
+ "Kural 35(h)": {
+  "en": "Rule 35(h)",
+  "de": "Regel 35(h)",
+  "fr": "Règle 35(h)",
+  "es": "Regla 35(h)",
+  "it": "Regola 35(h)",
+  "pt": "Regra 35(h)",
+  "nl": "Voorschrift 35(h)"
+ },
+ "Demir işaretindeki hızlı çan çalmanın hemen ÖNCESİNDE ve SONRASINDA üçer ayrı ve belirgin vuruş yapılır.": {
+  "en": "Three separate and distinct strokes on the bell are given immediately BEFORE and AFTER the rapid ringing of the bell used at anchor.",
+  "de": "Unmittelbar VOR und NACH dem raschen Läuten der Glocke wie vor Anker werden drei getrennte und deutliche Glockenschläge gegeben.",
+  "fr": "Trois coups de cloche séparés et distincts sont frappés immédiatement AVANT et APRÈS le tintement rapide de la cloche utilisé au mouillage.",
+  "es": "Inmediatamente ANTES y DESPUÉS del repique rápido de campana del buque fondeado se dan tres golpes de campana separados y claros.",
+  "it": "Subito PRIMA e DOPO il suono rapido della campana usato all'ancora si danno tre colpi di campana separati e distinti.",
+  "pt": "Imediatamente ANTES e DEPOIS do toque rápido do sino usado no fundeio, são dadas três badaladas separadas e distintas.",
+  "nl": "Direct VÓÓR en NA het snelle luiden van de klok zoals ten anker worden drie afzonderlijke en duidelijke slagen op de klok gegeven."
+ },
+ "Sürekli sis düdüğü": {
+  "en": "Continuous fog signal",
+  "de": "Dauerton mit einem Nebelsignalgerät",
+  "fr": "Son continu d'un appareil de signalisation sonore",
+  "es": "Sonido continuo de un aparato de niebla",
+  "it": "Suono continuo di un apparecchio da nebbia",
+  "pt": "Som contínuo de um aparelho de sinais de cerração",
+  "nl": "Aanhoudend mistsein"
+ },
+ "Aralıksız, sürekli ses": {
+  "en": "Uninterrupted, continuous sound",
+  "de": "Ununterbrochener Dauerton",
+  "fr": "Son continu, sans interruption",
+  "es": "Sonido continuo, sin interrupción",
+  "it": "Suono continuo, senza interruzioni",
+  "pt": "Som contínuo, sem interrupção",
+  "nl": "Onafgebroken, aanhoudend geluid"
+ },
+ "Tehlike altındayım ve yardıma ihtiyacım var.": {
+  "en": "I am in distress and require assistance.",
+  "de": "Ich bin in Not und benötige Hilfe.",
+  "fr": "Je suis en détresse et j'ai besoin d'assistance.",
+  "es": "Estoy en peligro y necesito ayuda.",
+  "it": "Sono in pericolo e ho bisogno di assistenza.",
+  "pt": "Estou em perigo e preciso de socorro.",
+  "nl": "Ik ben in nood en heb hulp nodig."
+ },
+ "Kural 37 / Ek IV": {
+  "en": "Rule 37 / Annex IV",
+  "de": "Regel 37 / Anlage IV",
+  "fr": "Règle 37 / Annexe IV",
+  "es": "Regla 37 / Anexo IV",
+  "it": "Regola 37 / Allegato IV",
+  "pt": "Regra 37 / Anexo IV",
+  "nl": "Voorschrift 37 / Bijlage IV"
+ },
+ "Herhangi bir sis işareti cihazının aralıksız çalıştırılması bir tehlike işaretidir.": {
+  "en": "A continuous sounding with any fog-signalling apparatus is a distress signal.",
+  "de": "Ein Dauerton mit irgendeinem Nebelsignalgerät ist ein Notzeichen.",
+  "fr": "Le son continu produit par tout appareil de signalisation sonore par temps de brume est un signal de détresse.",
+  "es": "El sonido continuo de cualquier aparato de señales de niebla es una señal de socorro.",
+  "it": "Il suono continuo di qualsiasi apparecchio per segnali da nebbia è un segnale di pericolo.",
+  "pt": "O som contínuo de qualquer aparelho de sinais de cerração é um sinal de perigo.",
+  "nl": "Een aanhoudend geluid met een willekeurig mistseintoestel is een noodsein."
+ },
+ "Mors ile SOS": {
+  "en": "SOS in Morse code",
+  "de": "SOS im Morsealphabet",
+  "fr": "SOS en morse",
+  "es": "SOS en código Morse",
+  "it": "SOS in codice Morse",
+  "pt": "SOS em código Morse",
+  "nl": "SOS in morse"
+ },
+ "▪▪▪ ▬▬▬ ▪▪▪ (harf araları verilmeden)": {
+  "en": "▪▪▪ ▬▬▬ ▪▪▪ (without gaps between the letters)",
+  "de": "▪▪▪ ▬▬▬ ▪▪▪ (ohne Pausen zwischen den Buchstaben)",
+  "fr": "▪▪▪ ▬▬▬ ▪▪▪ (sans séparer les lettres)",
+  "es": "▪▪▪ ▬▬▬ ▪▪▪ (sin separar las letras)",
+  "it": "▪▪▪ ▬▬▬ ▪▪▪ (senza separare le lettere)",
+  "pt": "▪▪▪ ▬▬▬ ▪▪▪ (sem separar as letras)",
+  "nl": "▪▪▪ ▬▬▬ ▪▪▪ (zonder pauzes tussen de letters)"
+ },
+ "Ses, ışık veya telsiz — herhangi bir yolla gönderilebilir. Tek bir grup olarak, harfler ayrılmadan verilir.": {
+  "en": "It can be sent by any means — sound, light or radio. It is given as a single group, without separating the letters.",
+  "de": "Kann auf jede Weise gegeben werden — mit Schall, Licht oder Funk. Es wird als eine einzige Gruppe gegeben, ohne die Buchstaben zu trennen.",
+  "fr": "Il peut être transmis par tout moyen — son, lumière ou radio. Il est émis comme un seul groupe, sans séparer les lettres.",
+  "es": "Puede transmitirse por cualquier medio: sonido, luz o radio. Se da como un solo grupo, sin separar las letras.",
+  "it": "Può essere trasmesso con qualsiasi mezzo: suono, luce o radio. Si dà come un unico gruppo, senza separare le lettere.",
+  "pt": "Pode ser enviado por qualquer meio — som, luz ou rádio. É dado como um único grupo, sem separar as letras.",
+  "nl": "Het kan op elke manier worden gegeven — met geluid, licht of radio. Het wordt als één groep gegeven, zonder de letters te scheiden."
+ },
+ "Dakikada bir top/silah atışı": {
+  "en": "A gun fired at intervals of about a minute",
+  "de": "Kanonenschuss in Abständen von etwa einer Minute",
+  "fr": "Coup de canon tiré à intervalles d'environ une minute",
+  "es": "Disparo de cañón a intervalos de un minuto aproximadamente",
+  "it": "Colpo di cannone sparato a intervalli di circa un minuto",
+  "pt": "Disparo de canhão a intervalos de cerca de um minuto",
+  "nl": "Kanonschot met tussenpozen van ongeveer een minuut"
+ },
+ "Yaklaşık 1 dakika arayla tek atış": {
+  "en": "A single shot about every minute",
+  "de": "Ein einzelner Schuss etwa jede Minute",
+  "fr": "Un seul coup environ toutes les minutes",
+  "es": "Un solo disparo cada minuto aproximadamente",
+  "it": "Un solo colpo circa ogni minuto",
+  "pt": "Um único disparo a cada minuto, aproximadamente",
+  "nl": "Eén schot ongeveer elke minuut"
+ }
+}

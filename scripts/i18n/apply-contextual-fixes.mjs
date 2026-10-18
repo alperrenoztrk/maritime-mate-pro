@@ -3,8 +3,10 @@
  * Applies the contextual translation layer to the SHIPPED locale dictionaries
  * (public/locales/*.json) in place, without re-running machine translation:
  *
- *   1. Curated contextual corrections (scripts/i18n/contextual-corrections.mjs)
- *      — human-verified whole-string fixes, highest priority.
+ *   1. Curated contextual corrections (scripts/i18n/contextual-corrections.mjs,
+ *      including the verified packs in scripts/i18n/verified/) — human-verified
+ *      whole-string fixes, highest priority. Verified keys missing from a
+ *      dictionary are inserted.
  *   2. Maritime glossary whole-string overrides (getMaritimeTranslationOverride)
  *      — deterministic professional terminology per language. Trailing-colon
  *      and ALL-CAPS styling of the Turkish source label is preserved.
@@ -27,6 +29,7 @@ import {
   renderAbbreviationOnly,
 } from '../../src/utils/protectedTerms.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
+import { VERIFIED_KEYS } from './verified-corrections.mjs';
 import { repairEnglishMaritimeTerminology } from '../../src/utils/englishMaritimeTerminology.ts';
 
 const repoRoot = process.cwd();
@@ -46,6 +49,15 @@ for (const file of files) {
   const dict = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
   let changed = 0;
+  // Verified keys a dictionary does not have yet (new or rewritten source
+  // strings) are added; without this they would go to the live translator.
+  for (const key of VERIFIED_KEYS) {
+    const text = CONTEXTUAL_CORRECTIONS[key]?.[lang];
+    if (dict[key] === undefined && text !== undefined) {
+      dict[key] = text;
+      changed++;
+    }
+  }
   for (const [key, value] of Object.entries(dict)) {
     if (key.startsWith('__') || typeof value !== 'string') continue;
 

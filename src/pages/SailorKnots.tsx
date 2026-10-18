@@ -15,7 +15,9 @@ type Filter = "all" | KnotCategory;
 
 const FILTER_CHIPS: { value: Filter; label: string }[] = [
   { value: "all", label: "All" },
-  ...KNOT_CATEGORY_ORDER.map((c) => ({ value: c, label: KNOT_CATEGORY_LABELS[c].title.split(" ")[0] })),
+  // Full category titles: single Turkish words such as "Bağlar" are ambiguous
+  // on their own and translate to unrelated words.
+  ...KNOT_CATEGORY_ORDER.map((c) => ({ value: c, label: KNOT_CATEGORY_LABELS[c].title })),
 ];
 
 const norm = (s: string) =>
@@ -66,9 +68,9 @@ export default function SailorKnotsPage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search knots (e.g. bowline, anchor)…"
+            placeholder="Search knots…"
             className="pl-9 pr-9"
-            aria-label="Search for a vineyard"
+            aria-label="Search knots"
           />
           {query && (
             <button
@@ -121,8 +123,8 @@ export default function SailorKnotsPage() {
                 <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-micro text-muted-foreground">
-                      {knots.length} bond
+                    <span translate="no" className="notranslate shrink-0 text-micro text-muted-foreground">
+                      {knots.length}
                     </span>
                   </div>
                 </div>

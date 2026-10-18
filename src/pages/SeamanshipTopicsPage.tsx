@@ -1256,7 +1256,7 @@ The OCIMF Mooring Equipment Guidelines (MEG4) are the comprehensive reference fo
   },
   "single-buoy-mooring": {
     title: "Single Buoy Mooring (SBM/SPM)",
-    introduction: "Single PointCargo securing (SPM) is a buoycargo securing system used for tankers to load/unload in the open sea.",
+    introduction: "Single Point Mooring (SPM) is a buoy mooring system used by tankers to load and discharge in the open sea.",
     content: `SYSTEM LAYOUT:
 
 An SPM/SBM (Single Buoy Mooring) consists of a large buoy anchored to the seabed. The tanker secures her bow to this buoy and can weathervane freely with the wind and current.

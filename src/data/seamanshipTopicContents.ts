@@ -29,7 +29,7 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Temel Düğümler (Knots)",
         content:
-          "Birkaç temel düğüm her gemicinin bilmesi gerekendir. İzbarço (bowman's knot / bowline): halatın ucunda sabit, sıkışmayan bir göz oluşturur; can kurtarma ve bağlamada yaygındır. Camadan bağı (reef knot): iki eşit halatı geçici bağlar; yüke gelince sıkışıp çözülmesi gerektiğinde kullanılır (yük taşıyan kritik bağlantılarda güvenilmez). Kropi/sekiz bağı (figure-eight): halat ucunun blok/halkalardan kaçmasını önler. Volta ve kazık bağı (round turn and two half hitches, clove hitch): halatı bir babaya/direğe geçici bağlamak için kullanılır. Doğru düğüm, yük altında tutmalı ve gerektiğinde kolayca çözülebilmelidir.",
+          "Birkaç temel düğüm her gemicinin bilmesi gerekendir. İzbarço (bowline): halatın ucunda sabit, sıkışmayan bir göz oluşturur; can kurtarma ve bağlamada yaygındır. Camadan bağı (reef knot): iki eşit halatı geçici bağlar; yüke gelince sıkışıp çözülmesi gerektiğinde kullanılır (yük taşıyan kritik bağlantılarda güvenilmez). Kropi/sekiz bağı (figure-eight): halat ucunun blok/halkalardan kaçmasını önler. Volta ve kazık bağı (round turn and two half hitches, clove hitch): halatı bir babaya/direğe geçici bağlamak için kullanılır. Doğru düğüm, yük altında tutmalı ve gerektiğinde kolayca çözülebilmelidir.",
       },
       {
         title: "Dikişler (Splices) ve Sonlandırma",

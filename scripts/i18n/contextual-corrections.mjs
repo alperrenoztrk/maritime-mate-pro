@@ -21,8 +21,13 @@
 // Key = exact Turkish source string (same normalizeSource/trim as the runtime),
 // value = per-language corrected translation. Languages not listed fall back to
 // the maritime glossary override or the machine translation.
+//
+// Whole pages checked by hand (knots, sound signals, terminology fixes) live
+// in scripts/i18n/verified/ and are merged in below.
 
-export const CONTEXTUAL_CORRECTIONS = {
+import { withVerifiedCorrections } from './verified-corrections.mjs';
+
+const CURATED_CORRECTIONS = {
   // ── Settings/account: bare "Hesap" is Account, never Calculation ─────────
   // Calculation content uses the explicit "Hesaplama" source label. Cover all
   // shipped languages so a regeneration also repairs already-cached bad values.
@@ -435,3 +440,5 @@ export const CONTEXTUAL_CORRECTIONS = {
     'zh-CN': 'Marine Technologies Bridge Mate DP 系列和分布式架构',
   },
 };
+
+export const CONTEXTUAL_CORRECTIONS = withVerifiedCorrections(CURATED_CORRECTIONS);

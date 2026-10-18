@@ -118,7 +118,7 @@ export const SAILOR_KNOTS: SailorKnot[] = [
     nameEn: "Figure-of-Eight",
     aka: ["Kropi Bağı", "Sekiz Düğümü"],
     category: "durdurucu",
-    use: "Çımaya atılan durdurucu (stopper) düğümdür; halatın bloktan, makaradan veya kilometreden kaçmasını önler. Yük altında bile kolay çözülür.",
+    use: "Çımaya atılan durdurucu (stopper) düğümdür; halatın bloktan, makaradan veya bir delikten kaçmasını önler. Yük altında bile kolay çözülür.",
     strengthLoss: "~%25 dayanım kaybı",
     videoId: "EtzeIQjcKEs",
     videoCredit: GROG,
@@ -127,7 +127,7 @@ export const SAILOR_KNOTS: SailorKnot[] = [
       { title: "Çımayı arkadan dola", description: "Çımayı bedenin arkasından dolayarak '8' şeklini başlatın." },
       { title: "Kasadan geçirip çek", description: "Çımayı ilk kasanın içinden geçirip her iki taraftan çekerek sekizi sıkın." },
     ],
-    tip: "Basit kazık (overhand) düğümünün aksine sekizli, yük altında sıkışsa bile rahat çözülür — bu yüzden tercih edilir. Türkçede çoğu zaman 'Kropi bağı' olarak da anılır.",
+    tip: "Adi düğümün (overhand) aksine sekizli, yük altında sıkışsa bile rahat çözülür — bu yüzden tercih edilir. Türkçede çoğu zaman 'Kropi bağı' olarak da anılır.",
   },
   {
     id: "reef-knot",

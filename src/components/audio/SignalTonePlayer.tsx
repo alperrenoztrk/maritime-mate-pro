@@ -151,11 +151,11 @@ export default function SignalTonePlayer({
         size={size === "sm" ? "sm" : "default"}
         onClick={playing ? stop : play}
         className="gap-1.5"
-        aria-label={playing ? "Sesi durdur" : `Play sound signal${label ? `: ${label}` : ""}`}
+        aria-label={playing ? "Stop sound" : `Play sound signal${label ? `: ${label}` : ""}`}
       >
         {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
         <Volume2 className="h-3.5 w-3.5" />
-        <span className="text-xs">{playing ? "Stop" : "play"}</span>
+        <span className="text-xs">{playing ? "Stop" : "Play"}</span>
       </Button>
 
       {label ? <span className="text-xs text-muted-foreground">{label}</span> : null}

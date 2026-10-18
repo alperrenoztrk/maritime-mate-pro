@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 
 interface KnotVideoProps {
   videoId: string;
-  /** Accessible label, e.g. "Bowline Ties (Bowline)". */
+  /** English knot name, e.g. "Bowline"; also shown when the thumbnail cannot load. */
   title: string;
   /** Local still used as the poster / offline fallback, when there is one. */
   poster?: string;
@@ -42,17 +42,17 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
             type="button"
             onClick={() => setPlaying(true)}
             className="group absolute inset-0 h-full w-full"
-            aria-label={`${title} Play tying video`}
+            aria-label={`Play tying video: ${title}`}
           >
             {thumbFailed && !poster ? (
-              <span className="flex h-full w-full items-center justify-center px-4 text-center text-sm text-white/80">
+              <span translate="no" className="notranslate flex h-full w-full items-center justify-center px-4 text-center text-sm text-white/80">
                 {title}
               </span>
             ) : (
               <img
                 src={thumbFailed ? poster : thumb}
                 onError={() => setThumbFailed(true)}
-                alt={`${title} Preview of link`}
+                alt={`${title} — video preview`}
                 className={`h-full w-full ${thumbFailed ? "bg-white object-contain" : "object-cover"}`}
                 loading="lazy"
               />

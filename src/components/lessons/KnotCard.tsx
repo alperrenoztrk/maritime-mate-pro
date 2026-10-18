@@ -1,6 +1,7 @@
 import { Lightbulb } from "lucide-react";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SAILOR_KNOTS_BY_ID } from "@/data/sailorKnots";
+import { useLanguage } from "@/contexts/useLanguage";
 import KnotVideo from "./KnotVideo";
 
 interface KnotCardProps {
@@ -13,17 +14,27 @@ interface KnotCardProps {
  * instructions (çıma / beden / kasa terminolojisiyle), usage, strength loss and
  * a practical tip. Every video is sourced from a reputable channel and was
  * checked to be live and embeddable. Must be rendered inside an <Accordion>.
+ *
+ * The Turkish name is the translation key, so it renders in the reader's
+ * language. The English name is shown beside it for other languages, and the
+ * Turkish names are listed untranslated for crews who know them that way.
  */
 export default function KnotCard({ knotId }: KnotCardProps) {
+  const { currentLanguage } = useLanguage();
   const def = SAILOR_KNOTS_BY_ID[knotId];
   if (!def) return null;
+  const turkishNames = [def.name, ...(def.aka ?? [])];
 
   return (
     <AccordionItem value={def.id} className="border-b border-border/40 last:border-b-0">
       <AccordionTrigger className="px-3 py-3 hover:no-underline">
         <div className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 pr-2 text-left">
           <span className="text-sm font-semibold text-foreground">{def.name}</span>
-          <span className="text-micro text-muted-foreground">{def.nameEn}</span>
+          {currentLanguage !== "en" && (
+            <span translate="no" className="notranslate text-micro text-muted-foreground">
+              {def.nameEn}
+            </span>
+          )}
         </div>
       </AccordionTrigger>
 
@@ -31,25 +42,25 @@ export default function KnotCard({ knotId }: KnotCardProps) {
         {/* Knot-tying video (click to play) */}
         <KnotVideo
           videoId={def.videoId}
-          title={`${def.name} (${def.nameEn})`}
+          title={def.nameEn}
           poster={def.image}
           credit={def.videoCredit}
         />
 
-        {/* Alternate names */}
-        {def.aka && def.aka.length > 0 && (
-          <div className="mb-3 flex flex-wrap items-center gap-1.5">
-            <span className="text-micro uppercase tracking-wide text-muted-foreground/70">Other name</span>
-            {def.aka.map((name) => (
-              <span
-                key={name}
-                className="rounded-full bg-muted/50 px-2 py-0.5 text-micro text-muted-foreground"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        )}
+        {/* Turkish names (never translated) */}
+        <div className="mb-3 flex flex-wrap items-center gap-1.5">
+          <span className="text-micro uppercase tracking-wide text-muted-foreground/70">Turkish names</span>
+          {turkishNames.map((name) => (
+            <span
+              key={name}
+              lang="tr"
+              translate="no"
+              className="notranslate rounded-full bg-muted/50 px-2 py-0.5 text-micro text-muted-foreground"
+            >
+              {name}
+            </span>
+          ))}
+        </div>
 
         {/* Steps */}
         <ol className="space-y-2.5">

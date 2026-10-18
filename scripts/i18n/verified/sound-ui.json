@@ -1,0 +1,111 @@
+{
+ "Sound Signals": {
+  "fill": false,
+  "en": "Sound Signals",
+  "de": "Schallsignale",
+  "fr": "Signaux sonores",
+  "es": "Señales acústicas",
+  "it": "Segnali acustici",
+  "pt": "Sinais sonoros",
+  "nl": "Geluidsseinen",
+  "ja": "音響信号"
+ },
+ "Rule 32:": {
+  "en": "Rule 32:",
+  "de": "Regel 32:",
+  "fr": "Règle 32 :",
+  "es": "Regla 32:",
+  "it": "Regola 32:",
+  "pt": "Regra 32:",
+  "nl": "Voorschrift 32:"
+ },
+ "Rule 33:": {
+  "en": "Rule 33:",
+  "de": "Regel 33:",
+  "fr": "Règle 33 :",
+  "es": "Regla 33:",
+  "it": "Regola 33:",
+  "pt": "Regra 33:",
+  "nl": "Voorschrift 33:"
+ },
+ "A short blast lasts about 1 second; a prolonged blast lasts 4 to 6 seconds.": {
+  "en": "A short blast lasts about 1 second; a prolonged blast lasts 4 to 6 seconds.",
+  "de": "Ein kurzer Ton dauert etwa 1 Sekunde, ein langer Ton 4 bis 6 Sekunden.",
+  "fr": "Un son bref dure environ 1 seconde ; un son prolongé dure de 4 à 6 secondes.",
+  "es": "Una pitada corta dura alrededor de 1 segundo; una pitada larga dura de 4 a 6 segundos.",
+  "it": "Un suono breve dura circa 1 secondo; un suono prolungato dura da 4 a 6 secondi.",
+  "pt": "Um apito curto dura cerca de 1 segundo; um apito longo dura de 4 a 6 segundos.",
+  "nl": "Een korte stoot duurt ongeveer 1 seconde; een lange stoot duurt 4 tot 6 seconden."
+ },
+ "Vessels of 12 m or more carry a whistle, vessels of 20 m or more also a bell, and vessels of 100 m or more in addition a gong. Vessels under 12 m need not carry these appliances but must have some other means of making an efficient sound signal; in restricted visibility they give it at intervals of not more than 2 minutes (Rule 35(j)).": {
+  "en": "Vessels of 12 m or more carry a whistle, vessels of 20 m or more also a bell, and vessels of 100 m or more in addition a gong. Vessels under 12 m need not carry these appliances but must have some other means of making an efficient sound signal; in restricted visibility they give it at intervals of not more than 2 minutes (Rule 35(j)).",
+  "de": "Fahrzeuge von 12 m Länge und mehr führen eine Pfeife, Fahrzeuge von 20 m und mehr zusätzlich eine Glocke und Fahrzeuge von 100 m und mehr außerdem einen Gong. Fahrzeuge unter 12 m brauchen diese Geräte nicht zu führen, müssen aber ein anderes Mittel zum Geben eines wirksamen Schallsignals haben; bei verminderter Sicht geben sie es in Abständen von höchstens 2 Minuten (Regel 35(j)).",
+  "fr": "Les navires de 12 m ou plus ont un sifflet, ceux de 20 m ou plus aussi une cloche et ceux de 100 m ou plus en outre un gong. Les navires de moins de 12 m ne sont pas tenus d'avoir ces appareils, mais doivent disposer d'un autre moyen d'émettre un signal sonore efficace ; par visibilité réduite, ils l'émettent à des intervalles ne dépassant pas 2 minutes (Règle 35(j)).",
+  "es": "Los buques de 12 m o más llevan pito; los de 20 m o más, además campana; y los de 100 m o más, además gong. Los buques de menos de 12 m no están obligados a llevar estos aparatos, pero deben disponer de otro medio para hacer una señal acústica eficaz; con visibilidad reducida la emiten a intervalos que no excedan de 2 minutos (Regla 35(j)).",
+  "it": "Le navi di 12 m o più hanno un fischio, quelle di 20 m o più anche una campana e quelle di 100 m o più in aggiunta un gong. Le navi di lunghezza inferiore a 12 m non sono obbligate ad avere questi apparecchi, ma devono disporre di un altro mezzo per emettere un segnale sonoro efficace; con visibilità ridotta lo emettono a intervalli non superiori a 2 minuti (Regola 35(j)).",
+  "pt": "Embarcações de 12 m ou mais têm apito; as de 20 m ou mais, também sino; e as de 100 m ou mais, além disso, gongo. Embarcações com menos de 12 m não são obrigadas a ter esses aparelhos, mas devem dispor de outro meio de fazer um sinal sonoro eficaz; com visibilidade restrita, fazem-no a intervalos não superiores a 2 minutos (Regra 35(j)).",
+  "nl": "Schepen van 12 m en meer voeren een fluit, schepen van 20 m en meer ook een klok en schepen van 100 m en meer daarnaast een gong. Schepen korter dan 12 m hoeven deze toestellen niet te voeren, maar moeten een ander middel hebben om een doeltreffend geluidssein te geven; bij beperkt zicht geven zij dat met tussenpozen van ten hoogste 2 minuten (Voorschrift 35(j))."
+ },
+ "Search signals (e.g. astern, restricted visibility, at anchor)…": {
+  "en": "Search signals (e.g. astern, restricted visibility, at anchor)…",
+  "de": "Signale suchen (z. B. rückwärts, verminderte Sicht, vor Anker)…",
+  "fr": "Rechercher un signal (p. ex. en arrière, visibilité réduite, au mouillage)…",
+  "es": "Buscar señales (p. ej. atrás, visibilidad reducida, fondeado)…",
+  "it": "Cerca segnali (es. indietro, visibilità ridotta, all'ancora)…",
+  "pt": "Pesquisar sinais (ex.: atrás, visibilidade restrita, fundeado)…",
+  "nl": "Seinen zoeken (bijv. achteruit, beperkt zicht, ten anker)…"
+ },
+ "Search sound signals": {
+  "en": "Search sound signals",
+  "de": "Schallsignale suchen",
+  "fr": "Rechercher des signaux sonores",
+  "es": "Buscar señales acústicas",
+  "it": "Cerca segnali acustici",
+  "pt": "Pesquisar sinais sonoros",
+  "nl": "Geluidsseinen zoeken"
+ },
+ "Play": {
+  "en": "Play",
+  "de": "Abspielen",
+  "fr": "Écouter",
+  "es": "Reproducir",
+  "it": "Riproduci",
+  "pt": "Reproduzir",
+  "nl": "Afspelen",
+  "ja": "再生",
+  "zh-CN": "播放",
+  "ko": "재생",
+  "ru": "Воспроизвести",
+  "uk": "Відтворити",
+  "pl": "Odtwórz",
+  "sv": "Spela upp",
+  "no": "Spill av",
+  "da": "Afspil",
+  "fi": "Toista",
+  "cs": "Přehrát",
+  "hu": "Lejátszás",
+  "ro": "Redare",
+  "el": "Αναπαραγωγή",
+  "bg": "Възпроизвеждане",
+  "ar": "تشغيل",
+  "hi": "चलाएँ"
+ },
+ "Interval:": {
+  "en": "Interval:",
+  "de": "Intervall:",
+  "fr": "Intervalle :",
+  "es": "Intervalo:",
+  "it": "Intervallo:",
+  "pt": "Intervalo:",
+  "nl": "Interval:"
+ },
+ "Not given by whistle": {
+  "en": "Not given by whistle",
+  "de": "Wird nicht mit der Pfeife gegeben",
+  "fr": "Non émis au sifflet",
+  "es": "No se emite con el pito",
+  "it": "Non si emette con il fischio",
+  "pt": "Não é dado com o apito",
+  "nl": "Wordt niet met de fluit gegeven"
+ }
+}

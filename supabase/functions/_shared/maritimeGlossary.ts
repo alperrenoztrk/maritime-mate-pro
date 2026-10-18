@@ -300,7 +300,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Gassa d’amante', pt: 'Lais de guia', nl: 'Paalsteek', ru: 'Беседочный узел',
       ja: 'もやい結び', ko: '바우라인 매듭', 'zh-CN': '称人结', ar: 'عقدة بولين', hi: 'बोलाइन गाँठ',
       sv: 'Pålstek', no: 'Pålestikk', da: 'Pælestik', fi: 'Paalusolmu', pl: 'Węzeł ratowniczy',
-      cs: 'Dračí smyčka', hu: 'Palstek', ro: 'Nod de scaun', el: 'Καντηλίτσα', bg: 'Беседочен възел',
+      cs: 'Dračí smyčka', ro: 'Nod de scaun', el: 'Καντηλίτσα', bg: 'Беседочен възел',
       uk: 'Беседковий вузол',
     },
   },
@@ -308,11 +308,11 @@ export const maritimeTerms: MaritimeTerm[] = [
     tr: 'Kazık Bağı',
     aliases: ['Kazık bağı', 'Kazık Düğümü'],
     translations: {
-      en: 'Clove hitch', de: 'Webleinstek', fr: 'Nœud de cabestan', es: 'Ballestrinque',
+      en: 'Clove Hitch', de: 'Webleinstek', fr: 'Nœud de cabestan', es: 'Ballestrinque',
       it: 'Nodo parlato', pt: 'Volta de fiel', nl: 'Mastworp', ru: 'Выбленочный узел',
-      ja: '巻き結び', ko: '까베스땅 매듭', 'zh-CN': '卷结', ar: 'عقدة الخشبة', hi: 'क्लोव हिच',
+      ja: '巻き結び', ko: '까베스땅 매듭', 'zh-CN': '卷结', hi: 'क्लोव हिच',
       sv: 'Dubbelt halvslag', no: 'Dobbelt halvstikk', da: 'Dobbelt halvstik', fi: 'Siansorkka', pl: 'Wyblinka',
-      cs: 'Lodní uzel', hu: 'Szorítóhurok', ro: 'Nod de parâmă', el: 'Σταυρόκομπος', bg: 'Избленъчен възел',
+      cs: 'Lodní uzel',
       uk: 'Вибленковий вузол',
     },
   },
@@ -398,11 +398,25 @@ export const maritimeTerms: MaritimeTerm[] = [
   },
   {
     tr: 'Seyir Feneri',
-    aliases: ['Seyir feneri', 'Borda Feneri', 'Borda feneri'],
+    aliases: ['Seyir feneri'],
     translations: {
       en: 'Navigation light', de: 'Positionslaterne', fr: 'Feu de navigation',
       es: 'Luz de navegación', it: 'Fanale di navigazione',
       pt: 'Luz de navegação', nl: 'Navigatielicht', ru: 'Ходовой огонь',
+      ja: '航海灯', ko: '항해등', 'zh-CN': '航行灯', ar: 'ضوء ملاحي', sv: 'Lanterna',
+      no: 'Lanterne', da: 'Lanterne', fi: 'Kulkuvalo', pl: 'Światło nawigacyjne', cs: 'Navigační světlo',
+      hu: 'Helyzetjelző fény', ro: 'Lumină de navigație', el: 'Φανός ναυσιπλοΐας', bg: 'Навигационна светлина', uk: 'Ходовий вогонь',
+    },
+  },
+  {
+    // Borda feneri = the red/green sidelights. Languages without a checked
+    // specific term keep the general navigation-light term.
+    tr: 'Borda Feneri',
+    aliases: ['Borda feneri'],
+    translations: {
+      en: 'Sidelights', de: 'Seitenlichter', fr: 'Feux de côté',
+      es: 'Luces de costado', it: 'Fanali laterali',
+      pt: 'Luzes de bordos', nl: 'Boordlichten', ru: 'Ходовой огонь',
       ja: '航海灯', ko: '항해등', 'zh-CN': '航行灯', ar: 'ضوء ملاحي', sv: 'Lanterna',
       no: 'Lanterne', da: 'Lanterne', fi: 'Kulkuvalo', pl: 'Światło nawigacyjne', cs: 'Navigační světlo',
       hu: 'Helyzetjelző fény', ro: 'Lumină de navigație', el: 'Φανός ναυσιπλοΐας', bg: 'Навигационна светлина', uk: 'Ходовий вогонь',
@@ -655,14 +669,15 @@ export const maritimeTerms: MaritimeTerm[] = [
     },
   },
   {
+    // Anchor cable vertical, anchor about to break out: "up and down"
+    // (not "at short stay", which is an earlier stage of heaving).
     tr: 'Apiko',
     translations: {
-      en: 'At short stay', de: 'Anker steht senkrecht', fr: 'À pic',
-      es: 'A pique', it: 'A picco', pt: 'A pique', nl: 'Anker is kort',
+      en: 'Up and down', de: 'Anker steht senkrecht', fr: 'À pic',
+      es: 'A pique', it: 'A picco', pt: 'A pique',
       ru: 'Панер',
-      ja: 'アピーク', ko: '업피크', 'zh-CN': '起锚到位', sv: 'Stagända ankare', no: 'Loddrett anker',
+      ja: 'アピーク', ko: '업피크', no: 'Loddrett anker',
       da: 'Op og ned', pl: 'Kotwica pionowo', ro: 'Ancora la pic', el: 'Άγκυρα κατακόρυφη', bg: 'Котва на пик',
-      uk: 'Якір встав',
     },
   },
   {
@@ -1702,7 +1717,7 @@ export const maritimeTerms: MaritimeTerm[] = [
     tr: 'Camadan Bağı',
     aliases: ['Camadan bağı', 'Camadan'],
     translations: {
-      en: 'Reef knot', de: 'Kreuzknoten', fr: 'Nœud plat', es: 'Nudo llano',
+      en: 'Reef Knot', de: 'Kreuzknoten', fr: 'Nœud plat', es: 'Nudo llano',
       it: 'Nodo piano', pt: 'Nó direito', nl: 'Platte knoop', ru: 'Прямой узел',
       ja: '本結び', 'zh-CN': '平结',
       sv: 'Råbandsknop', no: 'Båtmannsknop', da: 'Råbåndsknob', fi: 'Merimiessolmu',

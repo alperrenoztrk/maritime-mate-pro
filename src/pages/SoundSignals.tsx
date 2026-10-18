@@ -62,7 +62,7 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{signal.meaning}</p>
 
       {signal.interval ? (
-        <p className="mt-1 text-xs font-medium text-foreground">Range: {signal.interval}</p>
+        <p className="mt-1 text-xs font-medium text-foreground">Interval: {signal.interval}</p>
       ) : null}
 
       {signal.note ? (
@@ -113,8 +113,14 @@ export default function SoundSignalsPage() {
 
         <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Rule 32 definitions:</span> a short blast lasts about 1 second and a prolonged blast 4-6 seconds.{" "}
-            <span className="font-semibold text-foreground">Rule 33 devices:</span> vessels of 12 m and above carry a whistle, those of 20 m and above also a bell, and those of 100 m and above additionally a gong. Vessels of less than 12 m are not obliged to give these signals; however, they must make some other efficient sound signal at intervals of not more than 2 minutes.
+            <span className="font-semibold text-foreground">Rule 32:</span>{" "}
+            <span>A short blast lasts about 1 second; a prolonged blast lasts 4 to 6 seconds.</span>
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            <span className="font-semibold text-foreground">Rule 33:</span>{" "}
+            <span>
+              Vessels of 12 m or more carry a whistle, vessels of 20 m or more also a bell, and vessels of 100 m or more in addition a gong. Vessels under 12 m need not carry these appliances but must have some other means of making an efficient sound signal; in restricted visibility they give it at intervals of not more than 2 minutes (Rule 35(j)).
+            </span>
           </p>
         </div>
 
@@ -124,9 +130,9 @@ export default function SoundSignalsPage() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Look for signs (e.g. astern, limited visibility, at anchor)…"
+            placeholder="Search signals (e.g. astern, restricted visibility, at anchor)…"
             className="pl-9 pr-9"
-            aria-label="Search for sound sign"
+            aria-label="Search sound signals"
           />
           {query && (
             <button
@@ -155,8 +161,8 @@ export default function SoundSignalsPage() {
                 <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-micro text-muted-foreground">
-                      {signals.length} sign
+                    <span translate="no" className="notranslate shrink-0 text-micro text-muted-foreground">
+                      {signals.length}
                     </span>
                   </div>
                 </div>

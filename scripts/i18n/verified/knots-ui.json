@@ -1,0 +1,64 @@
+{
+ "Seamanship knots": {
+  "en": "Seamanship knots",
+  "de": "Seemannsknoten",
+  "fr": "Nœuds marins",
+  "es": "Nudos marineros",
+  "it": "Nodi marinareschi",
+  "pt": "Nós de marinheiro",
+  "nl": "Zeemansknopen"
+ },
+ "Search knots…": {
+  "en": "Search knots…",
+  "de": "Knoten suchen…",
+  "fr": "Rechercher un nœud…",
+  "es": "Buscar nudos…",
+  "it": "Cerca nodi…",
+  "pt": "Pesquisar nós…",
+  "nl": "Knopen zoeken…"
+ },
+ "Search knots": {
+  "en": "Search knots",
+  "de": "Knoten suchen",
+  "fr": "Rechercher un nœud",
+  "es": "Buscar nudos",
+  "it": "Cerca nodi",
+  "pt": "Pesquisar nós",
+  "nl": "Knopen zoeken"
+ },
+ "Turkish names": {
+  "en": "Turkish names",
+  "de": "Türkische Namen",
+  "fr": "Noms turcs",
+  "es": "Nombres en turco",
+  "it": "Nomi turchi",
+  "pt": "Nomes em turco",
+  "nl": "Turkse namen"
+ },
+ "Clear search": {
+  "en": "Clear search",
+  "de": "Suche löschen",
+  "fr": "Effacer la recherche",
+  "es": "Borrar búsqueda",
+  "it": "Cancella ricerca",
+  "pt": "Limpar pesquisa",
+  "nl": "Zoekopdracht wissen",
+  "ja": "検索をクリア",
+  "zh-CN": "清除搜索",
+  "ko": "검색 지우기",
+  "ru": "Очистить поиск",
+  "uk": "Очистити пошук",
+  "pl": "Wyczyść wyszukiwanie",
+  "sv": "Rensa sökning",
+  "no": "Tøm søk",
+  "da": "Ryd søgning",
+  "fi": "Tyhjennä haku",
+  "cs": "Vymazat hledání",
+  "hu": "Keresés törlése",
+  "ro": "Șterge căutarea",
+  "el": "Εκκαθάριση αναζήτησης",
+  "bg": "Изчистване на търсенето",
+  "ar": "مسح البحث",
+  "hi": "खोज साफ़ करें"
+ }
+}

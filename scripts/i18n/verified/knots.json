@@ -1,0 +1,1550 @@
+{
+ "Durdurucu ve Bağlama Düğümleri": {
+  "en": "Stopper and Binding Knots",
+  "de": "Stopper- und Bindeknoten",
+  "fr": "Nœuds d'arrêt et de liaison",
+  "es": "Nudos de tope y de atadura",
+  "it": "Nodi d'arresto e di legatura",
+  "pt": "Nós de batente e de amarração",
+  "nl": "Stop- en bindknopen"
+ },
+ "Çımayı durdurur veya iki ucu birbirine bağlar": {
+  "en": "Stops the working end or ties two ends together",
+  "de": "Sichert das lose Ende oder verbindet zwei Enden miteinander",
+  "fr": "Arrête le courant ou relie deux extrémités entre elles",
+  "es": "Detiene el chicote o une dos extremos entre sí",
+  "it": "Ferma il corrente o lega due estremità tra loro",
+  "pt": "Trava o chicote ou une duas pontas",
+  "nl": "Houdt het losse eind tegen of verbindt twee einden met elkaar"
+ },
+ "Kasalar": {
+  "en": "Loops",
+  "de": "Schlaufen",
+  "fr": "Boucles",
+  "es": "Gazas",
+  "it": "Gasse",
+  "pt": "Alças",
+  "nl": "Lussen"
+ },
+ "Halatın ucunda kaymayan sabit bir kasa (göz) oluşturur": {
+  "en": "Forms a fixed loop (eye) at the end of a rope that does not slip",
+  "de": "Bildet am Tauende eine feste Schlaufe (Auge), die nicht rutscht",
+  "fr": "Forme au bout d'un cordage une boucle (œil) fixe qui ne glisse pas",
+  "es": "Forma en el extremo de un cabo una gaza (ojo) fija que no se corre",
+  "it": "Forma all'estremità di una cima una gassa (occhio) fissa che non scorre",
+  "pt": "Forma na ponta de um cabo uma alça (olhal) fixa que não corre",
+  "nl": "Vormt aan het eind van een lijn een vaste lus (oog) die niet slipt"
+ },
+ "Bağlar": {
+  "en": "Hitches",
+  "de": "Steks",
+  "fr": "Nœuds d'amarrage",
+  "es": "Vueltas",
+  "it": "Volte",
+  "pt": "Voltas",
+  "nl": "Steken"
+ },
+ "Halatı bir nesneye (baba, ring, çubuk, koç boynuzu) bağlar": {
+  "en": "Makes a rope fast to an object (bollard, ring, rail, cleat)",
+  "de": "Macht ein Tau an einem Gegenstand fest (Poller, Ring, Reling, Klampe)",
+  "fr": "Amarre un cordage à un objet (bollard, anneau, barre, taquet)",
+  "es": "Hace firme un cabo a un objeto (noray, argolla, barra, cornamusa)",
+  "it": "Dà volta a una cima su un oggetto (bitta, anello, tubo, galloccia)",
+  "pt": "Prende um cabo a um objeto (cabeço, argola, barra, cunho)",
+  "nl": "Maakt een lijn vast aan een voorwerp (bolder, ring, stang, kikker)"
+ },
+ "Eklemeler": {
+  "en": "Bends",
+  "de": "Verbindungsknoten",
+  "fr": "Ajuts",
+  "es": "Nudos de empalme",
+  "it": "Nodi di giunzione",
+  "pt": "Emendas",
+  "nl": "Verbindingsknopen"
+ },
+ "İki ayrı halatı uç uca birleştirir": {
+  "en": "Joins two separate ropes end to end",
+  "de": "Verbindet zwei getrennte Taue Ende an Ende",
+  "fr": "Réunit deux cordages bout à bout",
+  "es": "Une dos cabos separados por sus extremos",
+  "it": "Unisce due cime separate testa a testa",
+  "pt": "Une dois cabos separados pelas pontas",
+  "nl": "Verbindt twee afzonderlijke lijnen eind aan eind"
+ },
+ "Kısaltmalar": {
+  "en": "Shortenings",
+  "de": "Verkürzungen",
+  "fr": "Raccourcissements",
+  "es": "Acortamientos",
+  "it": "Accorciamenti",
+  "pt": "Encurtamentos",
+  "nl": "Inkortingen"
+ },
+ "Halatı kesmeden kısaltır veya yıpranmış kısmı yükten kurtarır": {
+  "en": "Shortens a rope without cutting it or takes the load off a worn section",
+  "de": "Verkürzt ein Tau, ohne es zu schneiden, oder nimmt die Last von einer beschädigten Stelle",
+  "fr": "Raccourcit un cordage sans le couper ou soulage une partie usée de la charge",
+  "es": "Acorta un cabo sin cortarlo o quita la carga de una parte desgastada",
+  "it": "Accorcia una cima senza tagliarla o toglie il carico da una parte usurata",
+  "pt": "Encurta um cabo sem cortá-lo ou tira a carga de um trecho desgastado",
+  "nl": "Kort een lijn in zonder hem door te snijden of haalt de last van een versleten stuk"
+ },
+ "Adi Düğüm": {
+  "en": "Overhand Knot",
+  "de": "Überhandknoten",
+  "fr": "Nœud simple",
+  "es": "Nudo simple",
+  "it": "Nodo semplice",
+  "pt": "Nó simples",
+  "nl": "Overhand knot"
+ },
+ "Tüm denizci bağlarının temelini oluşturan en basit durdurucu düğümdür. Çımanın makara/blok gözünden kaçmasını ve halatın fitillerine ayrılıp dağılmasını geçici olarak önler.": {
+  "en": "The simplest stopper knot and the basis of all seamanship knots. It temporarily stops the working end from running out through a sheave or block and keeps the rope from unlaying into its strands.",
+  "de": "Der einfachste Stopperknoten und die Grundlage aller Seemannsknoten. Er verhindert vorübergehend, dass das lose Ende durch eine Scheibe oder einen Block ausrauscht, und dass sich das Tau in seine Kardeele aufdreht.",
+  "fr": "Le plus simple des nœuds d'arrêt et la base de tous les nœuds marins. Il empêche provisoirement le courant de filer hors d'un réa ou d'une poulie et le cordage de se décommettre en torons.",
+  "es": "El nudo de tope más sencillo y la base de todos los nudos marineros. Impide de forma provisional que el chicote se escape por una roldana o un motón y que el cabo se descolche en sus cordones.",
+  "it": "Il nodo d'arresto più semplice e la base di tutti i nodi marinareschi. Impedisce temporaneamente che il corrente sfili da una puleggia o da un bozzello e che la cima si scommetta nei suoi legnoli.",
+  "pt": "O nó de batente mais simples e a base de todos os nós de marinharia. Impede temporariamente que o chicote escape por uma roldana ou um moitão e que o cabo se descoche em suas pernas.",
+  "nl": "De eenvoudigste stopknoop en de basis van alle zeemansknopen. Voorkomt tijdelijk dat het losse eind door een schijf of blok uitloopt en dat de lijn in haar strengen uiteenvalt."
+ },
+ "~%60 dayanım kaybı": {
+  "en": "~60% loss of strength",
+  "de": "~60 % Festigkeitsverlust",
+  "fr": "~60 % de perte de résistance",
+  "es": "~60 % de pérdida de resistencia",
+  "it": "~60 % di perdita di resistenza",
+  "pt": "~60 % de perda de resistência",
+  "nl": "~60% sterkteverlies"
+ },
+ "Kasa oluştur": {
+  "en": "Make a loop",
+  "de": "Schlaufe legen",
+  "fr": "Faire une boucle",
+  "es": "Hacer un seno",
+  "it": "Fare un'asola",
+  "pt": "Fazer uma alça",
+  "nl": "Een lus leggen"
+ },
+ "Çımayı bedenin üzerinden geçirerek küçük bir kasa (göz) oluşturun.": {
+  "en": "Pass the working end over the standing part to make a small loop (eye).",
+  "de": "Das lose Ende über die feste Part führen und eine kleine Schlaufe (Auge) legen.",
+  "fr": "Passer le courant par-dessus le dormant pour former une petite boucle (œil).",
+  "es": "Pasar el chicote por encima del firme para formar un pequeño seno (ojo).",
+  "it": "Passare il corrente sopra il dormiente per formare una piccola asola (occhio).",
+  "pt": "Passar o chicote por cima da parte firme do cabo para formar uma pequena alça (olhal).",
+  "nl": "Het losse eind over het staande deel leggen zodat een kleine lus (oog) ontstaat."
+ },
+ "Çımayı içinden geçir": {
+  "en": "Pass the working end through",
+  "de": "Das lose Ende durchstecken",
+  "fr": "Passer le courant",
+  "es": "Pasar el chicote",
+  "it": "Passare il corrente",
+  "pt": "Passar o chicote",
+  "nl": "Het losse eind doorsteken"
+ },
+ "Çımayı oluşan kasanın içinden geçirin.": {
+  "en": "Pass the working end through the loop.",
+  "de": "Das lose Ende durch die Schlaufe stecken.",
+  "fr": "Passer le courant dans la boucle.",
+  "es": "Pasar el chicote por dentro del seno.",
+  "it": "Passare il corrente dentro l'asola.",
+  "pt": "Passar o chicote por dentro da alça.",
+  "nl": "Het losse eind door de lus steken."
+ },
+ "Çekip sıkın": {
+  "en": "Pull tight",
+  "de": "Festziehen",
+  "fr": "Souquer",
+  "es": "Tirar y apretar",
+  "it": "Tirare e stringere",
+  "pt": "Puxar e apertar",
+  "nl": "Aantrekken"
+ },
+ "Çımayı ve bedeni ters yönlerde çekerek düğümü sıkın.": {
+  "en": "Pull the working end and the standing part in opposite directions to tighten the knot.",
+  "de": "Loses Ende und feste Part in entgegengesetzte Richtungen ziehen, um den Knoten festzuziehen.",
+  "fr": "Tirer le courant et le dormant en sens opposés pour serrer le nœud.",
+  "es": "Tirar del chicote y del firme en sentidos opuestos para apretar el nudo.",
+  "it": "Tirare il corrente e il dormiente in direzioni opposte per stringere il nodo.",
+  "pt": "Puxar o chicote e a parte firme em sentidos opostos para apertar o nó.",
+  "nl": "Het losse eind en het staande deel in tegengestelde richting trekken om de knoop aan te trekken."
+ },
+ "Yük altında çok sıkışır ve zor çözülür; kalıcı durdurucu gerektiğinde sekizli (kropi) düğümü tercih edin. Buna rağmen birçok bağın yapı taşı olduğu için ilk öğrenilmesi gereken düğümdür.": {
+  "en": "It jams hard under load and is difficult to untie; where a lasting stopper is needed, use the figure-of-eight knot instead. Even so, it is the first knot to learn because it is the building block of many others.",
+  "de": "Unter Last zieht er sich sehr fest zu und lässt sich schwer lösen; wo ein dauerhafter Stopper nötig ist, besser den Achtknoten verwenden. Trotzdem ist er der erste Knoten, den man lernen sollte, weil er der Baustein vieler anderer ist.",
+  "fr": "Il se bloque fortement sous charge et se défait difficilement ; lorsqu'un arrêt durable est nécessaire, préférer le nœud en huit. Il reste néanmoins le premier nœud à apprendre, car il est à la base de nombreux autres.",
+  "es": "Se aprieta mucho con carga y cuesta deshacerlo; cuando se necesite un tope duradero, es mejor el nudo de ocho. Aun así, es el primer nudo que hay que aprender, porque es la base de muchos otros.",
+  "it": "Sotto carico si stringe molto ed è difficile da sciogliere; quando serve un arresto duraturo, è meglio il nodo Savoia. È comunque il primo nodo da imparare, perché è la base di molti altri.",
+  "pt": "Sob carga ele aperta muito e é difícil de desfazer; quando for preciso um batente duradouro, prefira o nó em oito. Mesmo assim, é o primeiro nó a aprender, porque é a base de muitos outros.",
+  "nl": "Onder belasting trekt hij zich zeer vast en is hij moeilijk los te maken; waar een blijvende stopknoop nodig is, kies dan de achtknoop. Toch is het de eerste knoop om te leren, omdat hij de bouwsteen van veel andere is."
+ },
+ "Sekizli Düğüm": {
+  "en": "Figure-of-Eight Knot",
+  "de": "Achtknoten",
+  "fr": "Nœud en huit",
+  "es": "Nudo de ocho",
+  "it": "Nodo Savoia (nodo a otto)",
+  "pt": "Nó em oito",
+  "nl": "Achtknoop"
+ },
+ "Çımaya atılan durdurucu (stopper) düğümdür; halatın bloktan, makaradan veya bir delikten kaçmasını önler. Yük altında bile kolay çözülür.": {
+  "en": "A stopper knot tied in the working end; it stops the rope from running out through a block, a sheave or a hole. It is easy to untie even after being under load.",
+  "de": "Ein Stopperknoten im losen Ende; er verhindert, dass das Tau durch einen Block, eine Scheibe oder ein Loch ausrauscht. Er lässt sich auch nach Belastung leicht lösen.",
+  "fr": "Nœud d'arrêt fait sur le courant ; il empêche le cordage de filer hors d'une poulie, d'un réa ou d'un trou. Il se défait facilement, même après avoir été chargé.",
+  "es": "Nudo de tope hecho en el chicote; impide que el cabo se escape por un motón, una roldana o un orificio. Se deshace con facilidad incluso después de haber trabajado.",
+  "it": "Nodo d'arresto fatto sul corrente; impedisce alla cima di sfilare da un bozzello, una puleggia o un foro. Si scioglie facilmente anche dopo essere stato sotto carico.",
+  "pt": "Nó de batente feito no chicote; impede que o cabo escape por um moitão, uma roldana ou um furo. Desfaz-se com facilidade mesmo depois de ter trabalhado sob carga.",
+  "nl": "Een stopknoop in het losse eind; voorkomt dat de lijn door een blok, een schijf of een gat uitloopt. Is ook na belasting gemakkelijk los te maken."
+ },
+ "~%25 dayanım kaybı": {
+  "en": "~25% loss of strength",
+  "de": "~25 % Festigkeitsverlust",
+  "fr": "~25 % de perte de résistance",
+  "es": "~25 % de pérdida de resistencia",
+  "it": "~25 % di perdita di resistenza",
+  "pt": "~25 % de perda de resistência",
+  "nl": "~25% sterkteverlies"
+ },
+ "Çımayla beden halatının üzerinde bir kasa (göz) oluşturun.": {
+  "en": "With the working end, make a loop (eye) over the standing part.",
+  "de": "Mit dem losen Ende eine Schlaufe (Auge) über der festen Part legen.",
+  "fr": "Avec le courant, former une boucle (œil) par-dessus le dormant.",
+  "es": "Con el chicote, formar un seno (ojo) por encima del firme.",
+  "it": "Con il corrente, formare un'asola (occhio) sopra il dormiente.",
+  "pt": "Com o chicote, formar uma alça (olhal) por cima da parte firme do cabo.",
+  "nl": "Met het losse eind een lus (oog) over het staande deel leggen."
+ },
+ "Çımayı arkadan dola": {
+  "en": "Take the working end round the back",
+  "de": "Das lose Ende hinten herumführen",
+  "fr": "Passer le courant derrière",
+  "es": "Pasar el chicote por detrás",
+  "it": "Passare il corrente dietro",
+  "pt": "Passar o chicote por trás",
+  "nl": "Het losse eind achterlangs voeren"
+ },
+ "Çımayı bedenin arkasından dolayarak '8' şeklini başlatın.": {
+  "en": "Take the working end round behind the standing part to start the '8' shape.",
+  "de": "Das lose Ende hinter der festen Part herumführen und so die Form der „8“ beginnen.",
+  "fr": "Passer le courant derrière le dormant pour commencer la forme du « 8 ».",
+  "es": "Pasar el chicote por detrás del firme para empezar la forma del «8».",
+  "it": "Passare il corrente dietro il dormiente per iniziare la forma dell'«8».",
+  "pt": "Passar o chicote por trás da parte firme para começar a forma do «8».",
+  "nl": "Het losse eind achter het staande deel langs voeren om de vorm van de ‘8’ te beginnen."
+ },
+ "Kasadan geçirip çek": {
+  "en": "Pass through the loop and pull",
+  "de": "Durch die Schlaufe stecken und ziehen",
+  "fr": "Passer dans la boucle et tirer",
+  "es": "Pasar por el seno y tirar",
+  "it": "Passare nell'asola e tirare",
+  "pt": "Passar pela alça e puxar",
+  "nl": "Door de lus steken en trekken"
+ },
+ "Çımayı ilk kasanın içinden geçirip her iki taraftan çekerek sekizi sıkın.": {
+  "en": "Pass the working end through the first loop and pull on both sides to tighten the eight.",
+  "de": "Das lose Ende durch die erste Schlaufe stecken und an beiden Seiten ziehen, um die Acht festzuziehen.",
+  "fr": "Passer le courant dans la première boucle et tirer des deux côtés pour serrer le huit.",
+  "es": "Pasar el chicote por el primer seno y tirar de ambos lados para apretar el ocho.",
+  "it": "Passare il corrente nella prima asola e tirare da entrambi i lati per stringere l'otto.",
+  "pt": "Passar o chicote pela primeira alça e puxar dos dois lados para apertar o oito.",
+  "nl": "Het losse eind door de eerste lus steken en aan beide kanten trekken om de acht aan te trekken."
+ },
+ "Adi düğümün (overhand) aksine sekizli, yük altında sıkışsa bile rahat çözülür — bu yüzden tercih edilir. Türkçede çoğu zaman 'Kropi bağı' olarak da anılır.": {
+  "en": "Unlike the overhand knot, the figure-of-eight is easy to untie even after it has jammed under load — that is why it is preferred. In Turkish it is often also called 'Kropi bağı'.",
+  "de": "Anders als der Überhandknoten lässt sich der Achtknoten auch dann leicht lösen, wenn er sich unter Last festgezogen hat — deshalb wird er bevorzugt. Im Türkischen heißt er oft auch „Kropi bağı“.",
+  "fr": "Contrairement au nœud simple, le nœud en huit se défait facilement même après s'être bloqué sous charge — c'est pourquoi on le préfère. En turc, on l'appelle aussi souvent « Kropi bağı ».",
+  "es": "A diferencia del nudo simple, el nudo de ocho se deshace fácilmente aunque se haya apretado con carga; por eso se prefiere. En turco también se le suele llamar «Kropi bağı».",
+  "it": "A differenza del nodo semplice, il nodo Savoia si scioglie facilmente anche se si è stretto sotto carico: per questo è preferito. In turco è spesso chiamato anche «Kropi bağı».",
+  "pt": "Ao contrário do nó simples, o nó em oito desfaz-se com facilidade mesmo depois de apertar sob carga — por isso é o preferido. Em turco também é muito chamado de «Kropi bağı».",
+  "nl": "Anders dan de overhand knot is de achtknoop ook na vastlopen onder belasting gemakkelijk los te maken — daarom heeft hij de voorkeur. In het Turks wordt hij vaak ook ‘Kropi bağı’ genoemd."
+ },
+ "Camadan Bağı": {
+  "en": "Reef Knot",
+  "de": "Kreuzknoten",
+  "fr": "Nœud plat",
+  "es": "Nudo llano (nudo de rizo)",
+  "it": "Nodo piano",
+  "pt": "Nó direito",
+  "nl": "Platte knoop"
+ },
+ "Aynı çaptaki iki halatın çımasını birbirine bağlar (binding/bağlama düğümü). Yelken ve branda toplamada yaygındır.": {
+  "en": "Ties together the working ends of two ropes of the same size (a binding knot). Widely used for reefing sails and tying up covers.",
+  "de": "Verbindet die losen Enden zweier gleich dicker Taue (ein Bindeknoten). Weit verbreitet beim Reffen von Segeln und Zusammenbinden von Persenningen.",
+  "fr": "Relie les courants de deux cordages de même diamètre (nœud de liaison). Très utilisé pour prendre des ris et ferler les bâches.",
+  "es": "Une los chicotes de dos cabos de la misma mena (nudo de atadura). Muy usado para tomar rizos y aferrar lonas.",
+  "it": "Lega i correnti di due cime dello stesso diametro (nodo di legatura). Molto usato per prendere i terzaroli e legare i teloni.",
+  "pt": "Une os chicotes de dois cabos da mesma bitola (nó de amarração). Muito usado para rizar velas e amarrar lonas.",
+  "nl": "Verbindt de losse einden van twee even dikke lijnen (een bindknoop). Veel gebruikt bij het reven van zeilen en het vastbinden van kleden."
+ },
+ "~%55 dayanım kaybı": {
+  "en": "~55% loss of strength",
+  "de": "~55 % Festigkeitsverlust",
+  "fr": "~55 % de perte de résistance",
+  "es": "~55 % de pérdida de resistencia",
+  "it": "~55 % di perdita di resistenza",
+  "pt": "~55 % de perda de resistência",
+  "nl": "~55% sterkteverlies"
+ },
+ "Sol çımayı sağ çımanın üzerinden": {
+  "en": "Left end over the right end",
+  "de": "Linkes Ende über das rechte",
+  "fr": "Courant gauche sur le droit",
+  "es": "Chicote izquierdo sobre el derecho",
+  "it": "Corrente sinistro sopra il destro",
+  "pt": "Chicote esquerdo sobre o direito",
+  "nl": "Linker eind over het rechter"
+ },
+ "Sol çımayı sağ çımanın üzerinden alıp altından geçirin (sol-sağ).": {
+  "en": "Take the left working end over the right one and pass it under (left over right).",
+  "de": "Das linke lose Ende über das rechte legen und darunter durchführen (links über rechts).",
+  "fr": "Passer le courant gauche par-dessus le droit puis dessous (gauche sur droite).",
+  "es": "Pasar el chicote izquierdo por encima del derecho y luego por debajo (izquierdo sobre derecho).",
+  "it": "Passare il corrente sinistro sopra il destro e poi sotto (sinistro sopra destro).",
+  "pt": "Passar o chicote esquerdo por cima do direito e depois por baixo (esquerdo sobre direito).",
+  "nl": "Het linker losse eind over het rechter leggen en eronderdoor halen (links over rechts)."
+ },
+ "Sağ çımayı sol çımanın üzerinden": {
+  "en": "Right end over the left end",
+  "de": "Rechtes Ende über das linke",
+  "fr": "Courant droit sur le gauche",
+  "es": "Chicote derecho sobre el izquierdo",
+  "it": "Corrente destro sopra il sinistro",
+  "pt": "Chicote direito sobre o esquerdo",
+  "nl": "Rechter eind over het linker"
+ },
+ "Şimdi sağ çımayı sol çımanın üzerinden alıp altından geçirin (sağ-sol).": {
+  "en": "Now take the right working end over the left one and pass it under (right over left).",
+  "de": "Jetzt das rechte lose Ende über das linke legen und darunter durchführen (rechts über links).",
+  "fr": "Passer maintenant le courant droit par-dessus le gauche puis dessous (droite sur gauche).",
+  "es": "Ahora pasar el chicote derecho por encima del izquierdo y luego por debajo (derecho sobre izquierdo).",
+  "it": "Ora passare il corrente destro sopra il sinistro e poi sotto (destro sopra sinistro).",
+  "pt": "Agora passar o chicote direito por cima do esquerdo e depois por baixo (direito sobre esquerdo).",
+  "nl": "Nu het rechter losse eind over het linker leggen en eronderdoor halen (rechts over links)."
+ },
+ "İki çifti çekip sıkın": {
+  "en": "Pull both pairs tight",
+  "de": "Beide Paare festziehen",
+  "fr": "Souquer les deux paires",
+  "es": "Apretar los dos pares",
+  "it": "Stringere le due coppie",
+  "pt": "Apertar os dois pares",
+  "nl": "Beide paren aantrekken"
+ },
+ "Her iki çımayı birden çekin; yatık, simetrik bir düğüm oluşur. Çımalar bedenle aynı tarafta çıkmalıdır.": {
+  "en": "Pull on both working ends together; a flat, symmetrical knot is formed. The working ends must come out on the same side as the standing parts.",
+  "de": "An beiden losen Enden gleichzeitig ziehen; es entsteht ein flacher, symmetrischer Knoten. Die losen Enden müssen auf derselben Seite wie die festen Parten herauskommen.",
+  "fr": "Tirer sur les deux courants à la fois ; il se forme un nœud plat et symétrique. Les courants doivent sortir du même côté que les dormants.",
+  "es": "Tirar de los dos chicotes a la vez; se forma un nudo plano y simétrico. Los chicotes deben salir por el mismo lado que los firmes.",
+  "it": "Tirare entrambi i correnti insieme; si forma un nodo piatto e simmetrico. I correnti devono uscire dallo stesso lato dei dormienti.",
+  "pt": "Puxar os dois chicotes ao mesmo tempo; forma-se um nó achatado e simétrico. Os chicotes devem sair do mesmo lado que as partes firmes.",
+  "nl": "Aan beide losse einden tegelijk trekken; er ontstaat een platte, symmetrische knoop. De losse einden moeten aan dezelfde kant uitkomen als de staande delen."
+ },
+ "Yük taşıyan eklerde güvenilir DEĞİLDİR; farklı çaplı halatlarda kayar. Sadece toparlama/bağlama işi içindir, can emniyetinde kullanmayın.": {
+  "en": "It is NOT reliable for joining ropes that carry a load; it slips when the ropes are of different sizes. Use it only for binding and tying up, never for life-safety work.",
+  "de": "Er ist NICHT zuverlässig, um belastete Taue zu verbinden; bei unterschiedlich dicken Tauen rutscht er. Nur zum Binden und Zusammenzurren verwenden, niemals zur Sicherung von Menschen.",
+  "fr": "Il n'est PAS fiable pour relier des cordages qui travaillent ; il glisse si les cordages sont de diamètres différents. Ne l'utiliser que pour lier et ferler, jamais pour la sécurité des personnes.",
+  "es": "NO es fiable para unir cabos que trabajan; se corre si los cabos son de distinta mena. Úselo solo para atar y aferrar, nunca para la seguridad de las personas.",
+  "it": "NON è affidabile per unire cime che lavorano sotto carico; scorre se le cime hanno diametri diversi. Usarlo solo per legare e raccogliere, mai per la sicurezza delle persone.",
+  "pt": "NÃO é confiável para unir cabos que trabalham sob carga; corre quando os cabos têm bitolas diferentes. Use-o apenas para amarrar e recolher, nunca para a segurança de pessoas.",
+  "nl": "Hij is NIET betrouwbaar om belaste lijnen te verbinden; bij lijnen van verschillende dikte slipt hij. Gebruik hem alleen om te binden en op te ruimen, nooit voor de veiligheid van personen."
+ },
+ "İzbarço Bağı": {
+  "en": "Bowline",
+  "de": "Palstek",
+  "fr": "Nœud de chaise",
+  "es": "As de guía",
+  "it": "Gassa d'amante",
+  "pt": "Lais de guia",
+  "nl": "Paalsteek"
+ },
+ "Halatın ucunda yük altında sıkışmayan, kolayca çözülebilen sabit bir kasa (göz) oluşturur. Can kurtarma, palamar geçirme ve genel amaçlı kullanımda en önemli denizcilik düğümüdür.": {
+  "en": "Forms a fixed loop (eye) at the end of a rope that does not jam under load and is easy to untie. The most important seamanship knot for rescue, passing mooring lines and general use.",
+  "de": "Bildet am Tauende eine feste Schlaufe (Auge), die sich unter Last nicht zuzieht und leicht zu lösen ist. Der wichtigste Seemannsknoten für Rettung, das Übergeben von Festmacherleinen und den allgemeinen Gebrauch.",
+  "fr": "Forme au bout d'un cordage une boucle (œil) fixe qui ne se resserre pas sous charge et se défait facilement. Le nœud marin le plus important pour le sauvetage, le passage des amarres et l'usage courant.",
+  "es": "Forma en el extremo de un cabo una gaza (ojo) fija que no se cierra con carga y se deshace con facilidad. El nudo marinero más importante para el salvamento, el paso de amarras y el uso general.",
+  "it": "Forma all'estremità di una cima una gassa (occhio) fissa che non si stringe sotto carico ed è facile da sciogliere. Il nodo marinaresco più importante per il salvataggio, per passare i cavi d'ormeggio e per l'uso generale.",
+  "pt": "Forma na ponta de um cabo uma alça (olhal) fixa que não aperta sob carga e é fácil de desfazer. O nó de marinharia mais importante para salvamento, para passar espias e para uso geral.",
+  "nl": "Vormt aan het eind van een lijn een vaste lus (oog) die onder belasting niet dichttrekt en gemakkelijk los te maken is. De belangrijkste zeemansknoop voor redding, het overgeven van meertrossen en algemeen gebruik."
+ },
+ "~%40 dayanım kaybı": {
+  "en": "~40% loss of strength",
+  "de": "~40 % Festigkeitsverlust",
+  "fr": "~40 % de perte de résistance",
+  "es": "~40 % de pérdida de resistencia",
+  "it": "~40 % di perdita di resistenza",
+  "pt": "~40 % de perda de resistência",
+  "nl": "~40% sterkteverlies"
+ },
+ "Beden üzerinde küçük kasa": {
+  "en": "Small loop in the standing part",
+  "de": "Kleine Schlaufe in der festen Part",
+  "fr": "Petite boucle sur le dormant",
+  "es": "Pequeño seno en el firme",
+  "it": "Piccola asola sul dormiente",
+  "pt": "Pequena alça na parte firme",
+  "nl": "Kleine lus in het staande deel"
+ },
+ "Bedeni serili tutun ve üzerinde küçük bir kasa (tavşan deliği) oluşturun; çıma üstte kalsın.": {
+  "en": "Hold the standing part out and make a small loop (the rabbit hole) in it, with the working end on top.",
+  "de": "Die feste Part ausgelegt halten und darin eine kleine Schlaufe (das Kaninchenloch) legen, das lose Ende oben.",
+  "fr": "Tenir le dormant étendu et y former une petite boucle (le terrier du lapin), le courant au-dessus.",
+  "es": "Mantener el firme extendido y formar en él un pequeño seno (la madriguera del conejo), con el chicote por encima.",
+  "it": "Tenere il dormiente disteso e formarvi una piccola asola (la tana del coniglio), con il corrente sopra.",
+  "pt": "Manter a parte firme estendida e formar nela uma pequena alça (a toca do coelho), com o chicote por cima.",
+  "nl": "Het staande deel gestrekt houden en er een kleine lus (het konijnenhol) in leggen, met het losse eind bovenop."
+ },
+ "Kasadan yukarı çık": {
+  "en": "Up through the loop",
+  "de": "Von unten durch die Schlaufe",
+  "fr": "Remonter dans la boucle",
+  "es": "Subir por el seno",
+  "it": "Salire attraverso l'asola",
+  "pt": "Subir pela alça",
+  "nl": "Omhoog door de lus"
+ },
+ "Çımayı (tavşan) kasanın içinden aşağıdan yukarıya doğru geçirin.": {
+  "en": "Pass the working end (the rabbit) up through the loop from underneath.",
+  "de": "Das lose Ende (das Kaninchen) von unten nach oben durch die Schlaufe stecken.",
+  "fr": "Passer le courant (le lapin) dans la boucle, de bas en haut.",
+  "es": "Pasar el chicote (el conejo) por el seno de abajo arriba.",
+  "it": "Passare il corrente (il coniglio) nell'asola dal basso verso l'alto.",
+  "pt": "Passar o chicote (o coelho) pela alça de baixo para cima.",
+  "nl": "Het losse eind (het konijn) van onderen naar boven door de lus steken."
+ },
+ "Bedenin arkasından dola": {
+  "en": "Round the back of the standing part",
+  "de": "Hinter der festen Part herum",
+  "fr": "Faire le tour du dormant",
+  "es": "Rodear el firme por detrás",
+  "it": "Girare dietro il dormiente",
+  "pt": "Contornar a parte firme por trás",
+  "nl": "Achter het staande deel langs"
+ },
+ "Çımayı beden halatının (ağaç) arkasından dolayın.": {
+  "en": "Take the working end round behind the standing part (the tree).",
+  "de": "Das lose Ende hinter der festen Part (dem Baum) herumführen.",
+  "fr": "Passer le courant derrière le dormant (l'arbre).",
+  "es": "Pasar el chicote por detrás del firme (el árbol).",
+  "it": "Passare il corrente dietro il dormiente (l'albero).",
+  "pt": "Passar o chicote por trás da parte firme (a árvore).",
+  "nl": "Het losse eind achter het staande deel (de boom) langs voeren."
+ },
+ "Kasadan geri sok": {
+  "en": "Back down through the loop",
+  "de": "Zurück durch die Schlaufe",
+  "fr": "Redescendre dans la boucle",
+  "es": "Volver a bajar por el seno",
+  "it": "Ridiscendere nell'asola",
+  "pt": "Descer de novo pela alça",
+  "nl": "Terug omlaag door de lus"
+ },
+ "Çımayı tekrar aynı kasanın içinden aşağı doğru geçirin.": {
+  "en": "Pass the working end back down through the same small loop.",
+  "de": "Das lose Ende wieder nach unten durch dieselbe kleine Schlaufe stecken.",
+  "fr": "Repasser le courant vers le bas dans la même petite boucle.",
+  "es": "Volver a pasar el chicote hacia abajo por el mismo seno pequeño.",
+  "it": "Ripassare il corrente verso il basso nella stessa piccola asola.",
+  "pt": "Passar o chicote de novo para baixo pela mesma alça pequena.",
+  "nl": "Het losse eind weer naar beneden door dezelfde kleine lus steken."
+ },
+ "Bedeni ve oluşan büyük kasayı ters yönde çekerek düğümü sıkın; kasa istenen boyutta sabitlenir.": {
+  "en": "Pull the standing part and the large loop in opposite directions to tighten the knot; the loop stays fixed at the size you want.",
+  "de": "Feste Part und große Schlaufe in entgegengesetzte Richtungen ziehen, um den Knoten festzuziehen; die Schlaufe bleibt in der gewünschten Größe fest.",
+  "fr": "Tirer le dormant et la grande boucle en sens opposés pour serrer le nœud ; la boucle reste fixée à la taille voulue.",
+  "es": "Tirar del firme y de la gaza grande en sentidos opuestos para apretar el nudo; la gaza queda fija al tamaño deseado.",
+  "it": "Tirare il dormiente e la gassa grande in direzioni opposte per stringere il nodo; la gassa resta fissa alla misura voluta.",
+  "pt": "Puxar a parte firme e a alça grande em sentidos opostos para apertar o nó; a alça fica fixa no tamanho desejado.",
+  "nl": "Het staande deel en de grote lus in tegengestelde richting trekken om de knoop aan te trekken; de lus blijft vast op de gewenste grootte."
+ },
+ "Hatırlatma: tavşan delikten çıkar, ağacın etrafından dolaşır, deliğe geri girer. Çımanın kasanın İÇ tarafında kalması doğru izbarçonun işaretidir.": {
+  "en": "Remember: the rabbit comes out of the hole, goes round the tree and goes back down the hole. The working end lying on the INSIDE of the loop is the sign of a correct bowline.",
+  "de": "Merkhilfe: Das Kaninchen kommt aus dem Loch, läuft um den Baum und geht zurück ins Loch. Liegt das lose Ende INNERHALB der Schlaufe, ist der Palstek richtig.",
+  "fr": "Moyen mnémotechnique : le lapin sort du terrier, fait le tour de l'arbre et rentre dans le terrier. Le courant situé à l'INTÉRIEUR de la boucle est le signe d'un nœud de chaise correct.",
+  "es": "Recuerde: el conejo sale de la madriguera, rodea el árbol y vuelve a entrar en la madriguera. Que el chicote quede por DENTRO de la gaza es la señal de un as de guía correcto.",
+  "it": "Promemoria: il coniglio esce dalla tana, gira attorno all'albero e rientra nella tana. Il corrente che resta all'INTERNO della gassa è il segno di una gassa d'amante corretta.",
+  "pt": "Lembrete: o coelho sai da toca, dá a volta na árvore e volta para a toca. O chicote ficar do lado de DENTRO da alça é o sinal de um lais de guia correto.",
+  "nl": "Ezelsbruggetje: het konijn komt uit het hol, loopt om de boom en gaat terug het hol in. Ligt het losse eind AAN DE BINNENKANT van de lus, dan is de paalsteek goed."
+ },
+ "Kazık Bağı": {
+  "en": "Clove Hitch",
+  "de": "Webeleinstek",
+  "fr": "Nœud de cabestan",
+  "es": "Ballestrinque",
+  "it": "Nodo parlato",
+  "pt": "Volta de fiel",
+  "nl": "Mastworp"
+ },
+ "Halatı bir babaya, baraya, çubuğa veya küpeşteye geçici olarak bağlamak için kullanılır. Hızlı atılır ve hızlı çözülür.": {
+  "en": "Used to make a rope fast temporarily to a bollard, a rail, a post or a handrail. Quick to tie and quick to release.",
+  "de": "Dient dazu, ein Tau vorübergehend an einem Poller, einer Stange, einem Pfahl oder einer Reling festzumachen. Schnell zu stecken und schnell zu lösen.",
+  "fr": "Sert à amarrer provisoirement un cordage à un bollard, une barre, un poteau ou une main courante. Rapide à faire et à défaire.",
+  "es": "Se usa para hacer firme un cabo de forma provisional a un noray, una barra, un poste o un pasamanos. Rápido de hacer y de deshacer.",
+  "it": "Serve a dar volta temporaneamente a una cima su una bitta, un tubo, un palo o un corrimano. Rapido da fare e da sciogliere.",
+  "pt": "Usada para prender temporariamente um cabo a um cabeço, uma barra, um poste ou um corrimão. Rápida de fazer e de desfazer.",
+  "nl": "Wordt gebruikt om een lijn tijdelijk vast te maken aan een bolder, een stang, een paal of een reling. Snel te leggen en snel los te maken."
+ },
+ "İlk volta": {
+  "en": "First turn",
+  "de": "Erster Törn",
+  "fr": "Premier tour",
+  "es": "Primera vuelta",
+  "it": "Primo giro",
+  "pt": "Primeira volta",
+  "nl": "Eerste slag"
+ },
+ "Halatı direğin/çubuğun etrafından bir kez dolayın.": {
+  "en": "Take the rope once round the post or rail.",
+  "de": "Das Tau einmal um den Pfahl oder die Stange legen.",
+  "fr": "Passer une fois le cordage autour du poteau ou de la barre.",
+  "es": "Dar una vuelta con el cabo alrededor del poste o de la barra.",
+  "it": "Passare la cima una volta attorno al palo o al tubo.",
+  "pt": "Dar uma volta com o cabo em torno do poste ou da barra.",
+  "nl": "De lijn één keer om de paal of de stang leggen."
+ },
+ "Çaprazlayıp ikinci volta": {
+  "en": "Cross over for the second turn",
+  "de": "Kreuzen für den zweiten Törn",
+  "fr": "Croiser pour le second tour",
+  "es": "Cruzar para la segunda vuelta",
+  "it": "Incrociare per il secondo giro",
+  "pt": "Cruzar para a segunda volta",
+  "nl": "Kruisen voor de tweede slag"
+ },
+ "İlk dönüşün üzerinden çaprazlayarak ikinci voltayı atın.": {
+  "en": "Cross over the first turn and take the second turn.",
+  "de": "Über den ersten Törn kreuzen und den zweiten Törn legen.",
+  "fr": "Croiser par-dessus le premier tour et faire le second tour.",
+  "es": "Cruzar por encima de la primera vuelta y dar la segunda vuelta.",
+  "it": "Incrociare sopra il primo giro e fare il secondo giro.",
+  "pt": "Cruzar por cima da primeira volta e dar a segunda volta.",
+  "nl": "Over de eerste slag kruisen en de tweede slag leggen."
+ },
+ "Çımayı altından geçirip sıkın": {
+  "en": "Tuck the working end under and pull tight",
+  "de": "Das lose Ende unterstecken und festziehen",
+  "fr": "Engager le courant dessous et souquer",
+  "es": "Pasar el chicote por debajo y apretar",
+  "it": "Passare il corrente sotto e stringere",
+  "pt": "Passar o chicote por baixo e apertar",
+  "nl": "Het losse eind eronder steken en aantrekken"
+ },
+ "Çımayı son dönüşün altından geçirip her iki yönden çekerek kilitleyin.": {
+  "en": "Tuck the working end under the last turn and pull both ways to lock it.",
+  "de": "Das lose Ende unter den letzten Törn stecken und in beide Richtungen ziehen, um ihn zu sichern.",
+  "fr": "Engager le courant sous le dernier tour et tirer dans les deux sens pour le bloquer.",
+  "es": "Pasar el chicote por debajo de la última vuelta y tirar en ambos sentidos para bloquearlo.",
+  "it": "Passare il corrente sotto l'ultimo giro e tirare in entrambe le direzioni per bloccarlo.",
+  "pt": "Passar o chicote por baixo da última volta e puxar nos dois sentidos para travar.",
+  "nl": "Het losse eind onder de laatste slag steken en in beide richtingen trekken om hem vast te zetten."
+ },
+ "Tek başına güvenilir değildir; çımalar serbest kalırsa veya yük yön değiştirirse çözülebilir. Kritik bağlamada ek emniyet voltasıyla destekleyin.": {
+  "en": "It is not reliable on its own; it can come undone if the ends work loose or the pull changes direction. For critical work, back it up with an extra securing hitch.",
+  "de": "Allein ist er nicht zuverlässig; er kann sich lösen, wenn die Enden lose werden oder die Zugrichtung wechselt. Bei wichtigen Arbeiten mit einem zusätzlichen Sicherungsschlag ergänzen.",
+  "fr": "Il n'est pas fiable seul ; il peut se défaire si les bouts prennent du mou ou si l'effort change de direction. Pour un travail important, le compléter par une demi-clé de sécurité.",
+  "es": "No es fiable por sí solo; puede soltarse si los chicotes quedan flojos o si el tiro cambia de dirección. En trabajos críticos, refuércelo con un medio cote de seguridad.",
+  "it": "Da solo non è affidabile; può sciogliersi se i correnti si allentano o se il tiro cambia direzione. Nei lavori critici, rinforzarlo con un mezzo collo di sicurezza.",
+  "pt": "Sozinha não é confiável; pode se soltar se os chicotes ficarem frouxos ou se o esforço mudar de direção. Em trabalhos críticos, reforce-a com um cote de segurança.",
+  "nl": "Alleen is hij niet betrouwbaar; hij kan losraken als de einden los gaan zitten of de trekrichting verandert. Zet hem bij kritiek werk extra vast met een halve steek."
+ },
+ "İki Yarım Anele": {
+  "en": "Two Half Hitches",
+  "de": "Zwei halbe Schläge",
+  "fr": "Deux demi-clés",
+  "es": "Dos medios cotes",
+  "it": "Due mezzi colli",
+  "pt": "Dois cotes",
+  "nl": "Twee halve steken"
+ },
+ "Halatı bir baraya, ringe, babaya veya ağaca hızlıca bağlar. Kendi bedeni üzerine atılan iki yarım anele, yük bindikçe sıkışarak tutan kayar bir kasa oluşturur.": {
+  "en": "Quickly makes a rope fast to a rail, a ring, a bollard or a tree. The two half hitches tied round the rope's own standing part form a sliding loop that tightens as the load comes on.",
+  "de": "Macht ein Tau schnell an einer Stange, einem Ring, einem Poller oder einem Baum fest. Die zwei halben Schläge um die eigene feste Part bilden eine laufende Schlaufe, die sich unter Last zuzieht.",
+  "fr": "Amarre rapidement un cordage à une barre, un anneau, un bollard ou un arbre. Les deux demi-clés faites autour du dormant forment une boucle coulante qui se serre quand la charge arrive.",
+  "es": "Hace firme rápidamente un cabo a una barra, una argolla, un noray o un árbol. Los dos medios cotes dados sobre el propio firme forman una gaza corrediza que se aprieta al entrar la carga.",
+  "it": "Dà volta rapidamente a una cima su un tubo, un anello, una bitta o un albero. I due mezzi colli fatti attorno al proprio dormiente formano un'asola scorsoia che si stringe quando arriva il carico.",
+  "pt": "Prende rapidamente um cabo a uma barra, uma argola, um cabeço ou uma árvore. Os dois cotes dados em torno da própria parte firme formam uma alça corrediça que aperta quando a carga entra.",
+  "nl": "Maakt een lijn snel vast aan een stang, een ring, een bolder of een boom. De twee halve steken om het eigen staande deel vormen een schuiflus die strakker trekt naarmate de belasting toeneemt."
+ },
+ "Halatı nesneden geçir": {
+  "en": "Pass the rope round the object",
+  "de": "Das Tau um den Gegenstand führen",
+  "fr": "Passer le cordage autour de l'objet",
+  "es": "Pasar el cabo alrededor del objeto",
+  "it": "Passare la cima attorno all'oggetto",
+  "pt": "Passar o cabo em torno do objeto",
+  "nl": "De lijn om het voorwerp voeren"
+ },
+ "Çımayı baranın/ringin etrafından veya içinden geçirin.": {
+  "en": "Pass the working end round or through the rail or ring.",
+  "de": "Das lose Ende um die Stange oder durch den Ring führen.",
+  "fr": "Passer le courant autour de la barre ou dans l'anneau.",
+  "es": "Pasar el chicote alrededor de la barra o por dentro de la argolla.",
+  "it": "Passare il corrente attorno al tubo o dentro l'anello.",
+  "pt": "Passar o chicote em torno da barra ou por dentro da argola.",
+  "nl": "Het losse eind om de stang of door de ring voeren."
+ },
+ "Birinci yarım anele": {
+  "en": "First half hitch",
+  "de": "Erster halber Schlag",
+  "fr": "Première demi-clé",
+  "es": "Primer medio cote",
+  "it": "Primo mezzo collo",
+  "pt": "Primeiro cote",
+  "nl": "Eerste halve steek"
+ },
+ "Çımayı beden halatının etrafından dolayıp oluşan gözden geçirerek ilk yarım aneleyi atın.": {
+  "en": "Take the working end round the standing part and through the loop formed to make the first half hitch.",
+  "de": "Das lose Ende um die feste Part und durch die entstandene Schlaufe führen: der erste halbe Schlag.",
+  "fr": "Passer le courant autour du dormant puis dans la boucle formée : c'est la première demi-clé.",
+  "es": "Pasar el chicote alrededor del firme y por el seno formado: el primer medio cote.",
+  "it": "Passare il corrente attorno al dormiente e dentro l'asola formata: è il primo mezzo collo.",
+  "pt": "Passar o chicote em torno da parte firme e pela alça formada: é o primeiro cote.",
+  "nl": "Het losse eind om het staande deel en door de ontstane lus voeren: de eerste halve steek."
+ },
+ "İkinci yarım anele": {
+  "en": "Second half hitch",
+  "de": "Zweiter halber Schlag",
+  "fr": "Seconde demi-clé",
+  "es": "Segundo medio cote",
+  "it": "Secondo mezzo collo",
+  "pt": "Segundo cote",
+  "nl": "Tweede halve steek"
+ },
+ "Aynı yönde ikinci yarım aneleyi atın; beden üzerinde bir kazık bağı oluşur.": {
+  "en": "Make the second half hitch in the same direction; together they form a clove hitch on the standing part.",
+  "de": "Den zweiten halben Schlag in derselben Richtung legen; zusammen bilden sie einen Webeleinstek auf der festen Part.",
+  "fr": "Faire la seconde demi-clé dans le même sens ; ensemble, elles forment un nœud de cabestan sur le dormant.",
+  "es": "Dar el segundo medio cote en el mismo sentido; juntos forman un ballestrinque sobre el firme.",
+  "it": "Fare il secondo mezzo collo nello stesso verso; insieme formano un nodo parlato sul dormiente.",
+  "pt": "Dar o segundo cote no mesmo sentido; juntos eles formam uma volta de fiel na parte firme.",
+  "nl": "De tweede halve steek in dezelfde richting leggen; samen vormen ze een mastworp op het staande deel."
+ },
+ "Kaydırıp sıkın": {
+  "en": "Slide up and tighten",
+  "de": "Heranschieben und festziehen",
+  "fr": "Faire glisser et souquer",
+  "es": "Deslizar y apretar",
+  "it": "Far scorrere e stringere",
+  "pt": "Deslizar e apertar",
+  "nl": "Aanschuiven en aantrekken"
+ },
+ "Aneleleri nesneye doğru kaydırıp bedeni çekerek sıkın.": {
+  "en": "Slide the hitches up to the object and pull on the standing part to tighten.",
+  "de": "Die Schläge an den Gegenstand heranschieben und an der festen Part ziehen, um sie festzuziehen.",
+  "fr": "Faire glisser les demi-clés jusqu'à l'objet et tirer sur le dormant pour les serrer.",
+  "es": "Deslizar los cotes hasta el objeto y tirar del firme para apretarlos.",
+  "it": "Far scorrere i mezzi colli fino all'oggetto e tirare il dormiente per stringerli.",
+  "pt": "Deslizar os cotes até o objeto e puxar a parte firme para apertá-los.",
+  "nl": "De steken tegen het voorwerp aanschuiven en aan het staande deel trekken om ze aan te trekken."
+ },
+ "İki anele de mutlaka AYNI yönde atılmalıdır; ters yönde atılırsa zayıf ve güvensiz olur. Ağır veya sürekli yükte önce bir tam tur ekleyin — bu sizi camadan voltasına götürür.": {
+  "en": "Both half hitches must be made in the SAME direction; made in opposite directions they are weak and unsafe. For a heavy or steady load, add a full turn first — that gives you the round turn and two half hitches.",
+  "de": "Beide halben Schläge müssen in DERSELBEN Richtung gelegt werden; in entgegengesetzter Richtung sind sie schwach und unsicher. Bei schwerer oder dauernder Last zuerst einen vollen Törn legen — so entsteht der Rundtörn mit zwei halben Schlägen.",
+  "fr": "Les deux demi-clés doivent être faites dans le MÊME sens ; faites en sens contraire, elles sont faibles et peu sûres. Pour une charge lourde ou permanente, faire d'abord un tour complet — on obtient alors le tour mort et deux demi-clés.",
+  "es": "Los dos medios cotes deben darse en el MISMO sentido; en sentidos opuestos son débiles e inseguros. Con una carga pesada o continua, dé antes una vuelta completa: así se obtiene la vuelta redonda y dos medios cotes.",
+  "it": "I due mezzi colli devono essere fatti nello STESSO verso; in versi opposti sono deboli e insicuri. Con un carico pesante o continuo, fare prima un giro completo: si ottiene così la volta tonda e due mezzi colli.",
+  "pt": "Os dois cotes devem ser dados no MESMO sentido; em sentidos opostos ficam fracos e inseguros. Com carga pesada ou contínua, dê antes uma volta completa — assim se obtém a volta redonda e dois cotes.",
+  "nl": "Beide halve steken moeten in DEZELFDE richting worden gelegd; in tegengestelde richting zijn ze zwak en onveilig. Leg bij zware of aanhoudende belasting eerst een volle slag — zo krijg je de rondtorn met twee halve steken."
+ },
+ "Camadan Voltası": {
+  "en": "Round Turn and Two Half Hitches",
+  "de": "Rundtörn mit zwei halben Schlägen",
+  "fr": "Tour mort et deux demi-clés",
+  "es": "Vuelta redonda y dos medios cotes",
+  "it": "Volta tonda e due mezzi colli",
+  "pt": "Volta redonda e dois cotes",
+  "nl": "Rondtorn met twee halve steken"
+ },
+ "Bir halatı baraya, ringe veya babaya emniyetle bağlar. Tam tur yükü taşır, iki yarım anele düğümü kilitler. Yük altında bile bağlanıp çözülebilir.": {
+  "en": "Makes a rope securely fast to a rail, a ring or a bollard. The round turn takes the load and the two half hitches lock the knot. It can be tied and untied even under load.",
+  "de": "Macht ein Tau sicher an einer Stange, einem Ring oder einem Poller fest. Der Rundtörn nimmt die Last auf, die zwei halben Schläge sichern den Knoten. Er lässt sich auch unter Last legen und lösen.",
+  "fr": "Amarre solidement un cordage à une barre, un anneau ou un bollard. Le tour mort reprend la charge et les deux demi-clés bloquent le nœud. Il peut être fait et défait même sous charge.",
+  "es": "Hace firme con seguridad un cabo a una barra, una argolla o un noray. La vuelta redonda soporta la carga y los dos medios cotes bloquean el nudo. Puede hacerse y deshacerse incluso con carga.",
+  "it": "Dà volta in modo sicuro a una cima su un tubo, un anello o una bitta. La volta tonda sostiene il carico e i due mezzi colli bloccano il nodo. Si può fare e sciogliere anche sotto carico.",
+  "pt": "Prende com segurança um cabo a uma barra, uma argola ou um cabeço. A volta redonda suporta a carga e os dois cotes travam o nó. Pode ser feita e desfeita mesmo sob carga.",
+  "nl": "Maakt een lijn veilig vast aan een stang, een ring of een bolder. De rondtorn neemt de last op en de twee halve steken zetten de knoop vast. Hij kan ook onder belasting worden gelegd en losgemaakt."
+ },
+ "Tam tur (round turn)": {
+  "en": "Round turn",
+  "de": "Rundtörn",
+  "fr": "Tour mort",
+  "es": "Vuelta redonda",
+  "it": "Volta tonda",
+  "pt": "Volta redonda",
+  "nl": "Rondtorn"
+ },
+ "Halatı baranın/ringin etrafından iki kez dolayın; bu tam tur yükü taşır.": {
+  "en": "Take the rope twice round the rail or ring; this round turn takes the load.",
+  "de": "Das Tau zweimal um die Stange oder den Ring legen; dieser Rundtörn nimmt die Last auf.",
+  "fr": "Passer deux fois le cordage autour de la barre ou de l'anneau ; ce tour mort reprend la charge.",
+  "es": "Dar dos vueltas con el cabo alrededor de la barra o la argolla; esta vuelta redonda soporta la carga.",
+  "it": "Passare la cima due volte attorno al tubo o all'anello; questa volta tonda sostiene il carico.",
+  "pt": "Dar duas voltas com o cabo em torno da barra ou da argola; esta volta redonda suporta a carga.",
+  "nl": "De lijn twee keer om de stang of de ring leggen; deze rondtorn neemt de last op."
+ },
+ "Çımayı beden halatının etrafından dolayarak ilk yarım aneleyi atın.": {
+  "en": "Take the working end round the standing part to make the first half hitch.",
+  "de": "Das lose Ende um die feste Part führen und den ersten halben Schlag legen.",
+  "fr": "Passer le courant autour du dormant pour faire la première demi-clé.",
+  "es": "Pasar el chicote alrededor del firme para dar el primer medio cote.",
+  "it": "Passare il corrente attorno al dormiente per fare il primo mezzo collo.",
+  "pt": "Passar o chicote em torno da parte firme para dar o primeiro cote.",
+  "nl": "Het losse eind om het staande deel voeren voor de eerste halve steek."
+ },
+ "Aynı yönde ikinci yarım aneleyi atıp çekerek kilitleyin.": {
+  "en": "Make the second half hitch in the same direction and pull it tight to lock.",
+  "de": "Den zweiten halben Schlag in derselben Richtung legen und festziehen, um den Knoten zu sichern.",
+  "fr": "Faire la seconde demi-clé dans le même sens et souquer pour bloquer.",
+  "es": "Dar el segundo medio cote en el mismo sentido y apretar para bloquear.",
+  "it": "Fare il secondo mezzo collo nello stesso verso e stringere per bloccare.",
+  "pt": "Dar o segundo cote no mesmo sentido e apertar para travar.",
+  "nl": "De tweede halve steek in dezelfde richting leggen en aantrekken om hem vast te zetten."
+ },
+ "Tam tur sürtünmeyle yükü tuttuğu için, gergin bir halatı bağlarken iki yarım aneleyi rahatça atabilirsiniz — bu yüzden iki yarım aneleden daha emniyetlidir.": {
+  "en": "Because the round turn holds the load by friction, you can tie the two half hitches calmly even on a line under tension — that is why it is safer than two half hitches alone.",
+  "de": "Weil der Rundtörn die Last durch Reibung hält, lassen sich die zwei halben Schläge auch an einem belasteten Tau in Ruhe legen — deshalb ist er sicherer als zwei halbe Schläge allein.",
+  "fr": "Comme le tour mort retient la charge par frottement, on peut faire tranquillement les deux demi-clés même sur un cordage sous tension — c'est pourquoi il est plus sûr que deux demi-clés seules.",
+  "es": "Como la vuelta redonda sujeta la carga por rozamiento, los dos medios cotes pueden darse con calma incluso en un cabo tenso; por eso es más seguro que dos medios cotes solos.",
+  "it": "Poiché la volta tonda trattiene il carico per attrito, i due mezzi colli si possono fare con calma anche su una cima in tensione: per questo è più sicura dei soli due mezzi colli.",
+  "pt": "Como a volta redonda segura a carga por atrito, os dois cotes podem ser dados com calma mesmo num cabo sob tensão — por isso é mais segura que os dois cotes sozinhos.",
+  "nl": "Omdat de rondtorn de last door wrijving vasthoudt, kun je de twee halve steken rustig leggen, ook aan een lijn onder spanning — daarom is hij veiliger dan twee halve steken alleen."
+ },
+ "Koç Boynuzuna Volta": {
+  "en": "Cleat Hitch",
+  "de": "Klampenschlag",
+  "fr": "Tour de taquet",
+  "es": "Vuelta de cornamusa",
+  "it": "Volta di galloccia",
+  "pt": "Volta no cunho",
+  "nl": "Beleg op een kikker"
+ },
+ "Palamar, şamandıra veya yat halatını güverte koç boynuzuna (cleat) emniyetle bağlar. Yük altında sıkıca tutar, gerektiğinde hızlıca çözülür.": {
+  "en": "Makes a mooring line, buoy line or yacht line securely fast to a deck cleat. It holds firmly under load and can be released quickly when needed.",
+  "de": "Macht eine Festmacherleine, Bojenleine oder Yachtleine sicher an einer Deckklampe fest. Hält unter Last fest und lässt sich bei Bedarf schnell lösen.",
+  "fr": "Tourne solidement une amarre, une ligne de bouée ou une amarre de yacht sur un taquet de pont. Il tient bien sous charge et se largue rapidement en cas de besoin.",
+  "es": "Hace firme con seguridad una amarra, un cabo de boya o un cabo de yate a una cornamusa de cubierta. Sujeta bien con carga y se larga con rapidez cuando hace falta.",
+  "it": "Dà volta in modo sicuro a un cavo d'ormeggio, a una cima di boa o a una cima da yacht su una galloccia di coperta. Tiene bene sotto carico e si molla rapidamente quando serve.",
+  "pt": "Prende com segurança uma espia, um cabo de boia ou um cabo de iate a um cunho de convés. Segura firme sob carga e solta rapidamente quando necessário.",
+  "nl": "Maakt een meertros, boeilijn of jachtlijn veilig vast op een dekkikker. Houdt stevig onder belasting en is bij nood snel los te gooien."
+ },
+ "Uzak boynuzdan tam tur": {
+  "en": "Round turn from the far horn",
+  "de": "Rundtörn vom hinteren Horn",
+  "fr": "Tour depuis la corne éloignée",
+  "es": "Vuelta por el cuerno más alejado",
+  "it": "Giro dal corno lontano",
+  "pt": "Volta pelo braço mais distante",
+  "nl": "Slag om de verste hoorn"
+ },
+ "Halatı önce koç boynuzunun uzak (karşı) boynuzundan dolayarak tam bir tur atın.": {
+  "en": "First take the rope round the far horn of the cleat to make a full turn.",
+  "de": "Das Tau zuerst um das hintere (entfernte) Horn der Klampe führen und einen vollen Törn legen.",
+  "fr": "Passer d'abord le cordage autour de la corne éloignée du taquet pour faire un tour complet.",
+  "es": "Pasar primero el cabo por el cuerno más alejado de la cornamusa para dar una vuelta completa.",
+  "it": "Passare prima la cima attorno al corno più lontano della galloccia per fare un giro completo.",
+  "pt": "Passar primeiro o cabo pelo braço mais distante do cunho para dar uma volta completa.",
+  "nl": "De lijn eerst om de verste hoorn van de kikker voeren voor een volle slag."
+ },
+ "Sekiz şeklinde sarımlar": {
+  "en": "Figure-of-eight turns",
+  "de": "Kreuzschläge in Achterform",
+  "fr": "Tours en huit",
+  "es": "Vueltas en ocho",
+  "it": "Giri a otto",
+  "pt": "Voltas em oito",
+  "nl": "Kruisslagen in een acht"
+ },
+ "Halatı boynuzların üzerine '8' şeklinde çapraz sarımlar atın.": {
+  "en": "Take crossing turns over the horns in a figure-of-eight.",
+  "de": "Kreuzschläge in Form einer Acht über die Hörner legen.",
+  "fr": "Faire des tours croisés en huit sur les cornes.",
+  "es": "Dar vueltas cruzadas en forma de ocho sobre los cuernos.",
+  "it": "Fare giri incrociati a forma di otto sopra i corni.",
+  "pt": "Dar voltas cruzadas em forma de oito sobre os braços.",
+  "nl": "Kruisslagen in de vorm van een acht over de hoorns leggen."
+ },
+ "Kilit volta ile sabitle": {
+  "en": "Finish with a locking hitch",
+  "de": "Mit einem Kopfschlag abschließen",
+  "fr": "Terminer par une clé",
+  "es": "Terminar con una vuelta de bloqueo",
+  "it": "Chiudere con un collo di blocco",
+  "pt": "Terminar com uma volta de trava",
+  "nl": "Afsluiten met een kopslag"
+ },
+ "Son sarımda ters bir kasa (kilit volta) atarak çımayı kilitleyin; çıma boynuzdan sarkmasın.": {
+  "en": "On the last turn, make a reversed loop (locking hitch) to lock the working end; do not leave the end hanging off the horn.",
+  "de": "Beim letzten Schlag eine umgedrehte Schlaufe (Kopfschlag) legen, um das lose Ende zu sichern; das Ende nicht vom Horn herabhängen lassen.",
+  "fr": "Au dernier tour, faire une boucle retournée (clé) pour bloquer le courant ; ne pas laisser le bout pendre de la corne.",
+  "es": "En la última vuelta, hacer un seno invertido (vuelta de bloqueo) para bloquear el chicote; no dejar el chicote colgando del cuerno.",
+  "it": "All'ultimo giro, fare un'asola rovesciata (collo di blocco) per bloccare il corrente; non lasciare il corrente penzolare dal corno.",
+  "pt": "Na última volta, fazer uma alça invertida (volta de trava) para travar o chicote; não deixar o chicote pendurado no braço.",
+  "nl": "Bij de laatste slag een omgekeerde lus (kopslag) leggen om het losse eind vast te zetten; laat het eind niet van de hoorn afhangen."
+ },
+ "Tek bir kilit volta yeterlidir; fazlası halatı yük altında çözmeyi zorlaştırır. İlk turu daima uzak boynuzdan başlatın.": {
+  "en": "One locking turn is sufficient; extra turns make the line harder to release under load. Always start the first turn around the far horn.",
+  "de": "Ein Kopfschlag genügt; mehr erschweren das Lösen der Leine unter Last. Den ersten Törn immer am hinteren Horn beginnen.",
+  "fr": "Une seule clé suffit ; davantage rend l'amarre difficile à larguer sous charge. Toujours commencer le premier tour par la corne éloignée.",
+  "es": "Basta con una vuelta de bloqueo; más dificultan largar el cabo con carga. Empiece siempre la primera vuelta por el cuerno más alejado.",
+  "it": "Basta un solo collo di blocco; di più rendono difficile mollare la cima sotto carico. Iniziare sempre il primo giro dal corno più lontano.",
+  "pt": "Uma única volta de trava basta; mais do que isso dificulta soltar o cabo sob carga. Comece sempre a primeira volta pelo braço mais distante.",
+  "nl": "Eén kopslag is genoeg; meer maakt het moeilijk om de lijn onder belasting los te gooien. Begin de eerste slag altijd om de verste hoorn."
+ },
+ "Barbarişka Bağı": {
+  "en": "Rolling Hitch",
+  "de": "Stopperstek",
+  "fr": "Rolling hitch",
+  "es": "Rolling hitch",
+  "it": "Rolling hitch",
+  "pt": "Rolling hitch",
+  "nl": "Stoppersteek"
+ },
+ "Bir halatı, çekiş yönü neredeyse paralelken başka bir gergin halata veya baraya kaymadan bağlar. Irgatta/vinçte sıkışan yüklü bir halatın yükünü almak (stoper koymak) için gemide standart bağdır.": {
+  "en": "Makes a rope fast to another rope under tension, or to a rail, so that it does not slip when the pull is almost parallel to it. The standard hitch on board for taking the load off a loaded rope jammed on a windlass or winch (putting on a stopper).",
+  "de": "Macht ein Tau an einem anderen, belasteten Tau oder an einer Stange so fest, dass es nicht rutscht, wenn der Zug fast parallel dazu verläuft. Der Standardstek an Bord, um die Last von einem belasteten, auf einer Winde oder einem Spill festgefahrenen Tau zu nehmen (einen Stopper setzen).",
+  "fr": "Amarre un cordage sur un autre cordage sous tension, ou sur une barre, de façon qu'il ne glisse pas quand l'effort est presque parallèle. Le nœud de référence à bord pour soulager un cordage chargé et bloqué sur un guindeau ou un treuil (frapper une bosse).",
+  "es": "Hace firme un cabo a otro cabo en tensión, o a una barra, de modo que no se corra cuando el tiro es casi paralelo. Es la vuelta habitual a bordo para quitar la carga de un cabo trabajando que ha quedado mordido en un molinete o un chigre (dar una boza).",
+  "it": "Dà volta a una cima su un'altra cima in tensione, o su un tubo, in modo che non scorra quando il tiro è quasi parallelo. È il nodo standard a bordo per togliere il carico da una cima in tiro rimasta morsa su un salpancore o un verricello (mettere una bozza).",
+  "pt": "Prende um cabo a outro cabo sob tensão, ou a uma barra, de modo que não corra quando o esforço é quase paralelo. É a volta padrão a bordo para tirar a carga de um cabo sob tensão preso num molinete ou guincho (passar uma boça).",
+  "nl": "Maakt een lijn zo vast aan een andere lijn onder spanning, of aan een stang, dat hij niet slipt wanneer de trek bijna evenwijdig loopt. De standaardsteek aan boord om de last te halen van een belaste lijn die op een lier of spil vastzit (een stopper zetten)."
+ },
+ "Yük tarafına iki volta": {
+  "en": "Two turns towards the load",
+  "de": "Zwei Törns zur Lastseite",
+  "fr": "Deux tours côté charge",
+  "es": "Dos vueltas hacia la carga",
+  "it": "Due giri verso il carico",
+  "pt": "Duas voltas para o lado da carga",
+  "nl": "Twee slagen naar de lastkant"
+ },
+ "Çımayı ana halatın/baranın etrafına, yükün geleceği tarafa doğru iki kez dolayın; her volta bir öncekinin üzerine binsin.": {
+  "en": "Take the working end twice round the main rope or rail towards the side the load will come from; each turn rides over the previous one.",
+  "de": "Das lose Ende zweimal um das Haupttau oder die Stange legen, zu der Seite hin, von der die Last kommt; jeder Törn liegt über dem vorigen.",
+  "fr": "Passer deux fois le courant autour du cordage principal ou de la barre, vers le côté d'où viendra la charge ; chaque tour chevauche le précédent.",
+  "es": "Dar dos vueltas con el chicote alrededor del cabo principal o de la barra, hacia el lado del que vendrá la carga; cada vuelta monta sobre la anterior.",
+  "it": "Passare il corrente due volte attorno alla cima principale o al tubo, verso il lato da cui arriverà il carico; ogni giro si sovrappone al precedente.",
+  "pt": "Dar duas voltas com o chicote em torno do cabo principal ou da barra, para o lado de onde virá a carga; cada volta passa por cima da anterior.",
+  "nl": "Het losse eind twee keer om de hoofdlijn of de stang leggen, naar de kant waar de last vandaan komt; elke slag ligt over de vorige."
+ },
+ "Çaprazla ve karşıya geç": {
+  "en": "Cross over to the other side",
+  "de": "Auf die andere Seite kreuzen",
+  "fr": "Croiser de l'autre côté",
+  "es": "Cruzar al otro lado",
+  "it": "Incrociare sull'altro lato",
+  "pt": "Cruzar para o outro lado",
+  "nl": "Naar de andere kant kruisen"
+ },
+ "Çımayı iki voltanın üzerinden çaprazlayarak yükün ters tarafına geçirin.": {
+  "en": "Cross the working end over the two turns to the side away from the load.",
+  "de": "Das lose Ende über die zwei Törns auf die der Last abgewandte Seite führen.",
+  "fr": "Croiser le courant par-dessus les deux tours vers le côté opposé à la charge.",
+  "es": "Cruzar el chicote por encima de las dos vueltas hacia el lado contrario a la carga.",
+  "it": "Incrociare il corrente sopra i due giri verso il lato opposto al carico.",
+  "pt": "Cruzar o chicote por cima das duas voltas para o lado oposto à carga.",
+  "nl": "Het losse eind over de twee slagen naar de kant tegenover de last voeren."
+ },
+ "Yarım anele ile kilitle": {
+  "en": "Lock with a half hitch",
+  "de": "Mit einem halben Schlag sichern",
+  "fr": "Bloquer par une demi-clé",
+  "es": "Bloquear con un medio cote",
+  "it": "Bloccare con un mezzo collo",
+  "pt": "Travar com um cote",
+  "nl": "Vastzetten met een halve steek"
+ },
+ "Kazık bağında olduğu gibi bir yarım anele atıp çımayı altından geçirin ve sıkın.": {
+  "en": "Make a half hitch as in a clove hitch, tuck the working end under it and pull tight.",
+  "de": "Einen halben Schlag wie beim Webeleinstek legen, das lose Ende darunter stecken und festziehen.",
+  "fr": "Faire une demi-clé comme dans un nœud de cabestan, engager le courant dessous et souquer.",
+  "es": "Dar un medio cote como en el ballestrinque, pasar el chicote por debajo y apretar.",
+  "it": "Fare un mezzo collo come nel nodo parlato, passare il corrente sotto e stringere.",
+  "pt": "Dar um cote como na volta de fiel, passar o chicote por baixo e apertar.",
+  "nl": "Een halve steek leggen zoals bij de mastworp, het losse eind eronder steken en aantrekken."
+ },
+ "Yükü yavaşça bindir": {
+  "en": "Apply the load slowly",
+  "de": "Langsam belasten",
+  "fr": "Mettre la charge doucement",
+  "es": "Aplicar la carga despacio",
+  "it": "Mettere il carico lentamente",
+  "pt": "Aplicar a carga devagar",
+  "nl": "De last langzaam opbrengen"
+ },
+ "Yükü bindirmeden önce voltaların düzgün oturduğunu kontrol edin; bağ paralel çekişte kaymadan tutar.": {
+  "en": "Before applying the load, check that the turns are lying neatly; the hitch then holds against a parallel pull without slipping.",
+  "de": "Vor dem Belasten prüfen, dass die Törns sauber liegen; dann hält der Stek bei parallelem Zug, ohne zu rutschen.",
+  "fr": "Avant de mettre la charge, vérifier que les tours sont bien en place ; le nœud tient alors sans glisser sous un effort parallèle.",
+  "es": "Antes de aplicar la carga, compruebe que las vueltas están bien asentadas; así la vuelta aguanta un tiro paralelo sin correrse.",
+  "it": "Prima di mettere il carico, controllare che i giri siano ben assestati; il nodo tiene allora senza scorrere sotto un tiro parallelo.",
+  "pt": "Antes de aplicar a carga, verifique se as voltas estão bem assentadas; assim a volta segura sem correr sob esforço paralelo.",
+  "nl": "Controleer vóór het belasten of de slagen netjes liggen; dan houdt de steek bij evenwijdige trek zonder te slippen."
+ },
+ "İki voltayı daima yükün geleceği tarafa atın — bağın kaymamasını sağlayan bu voltalardır. Modern kaygan (polyester/dyneema) halatlarda bir volta daha ekleyin.": {
+  "en": "Always make the two turns towards the side the load comes from — they are what stop the hitch slipping. On modern slippery ropes (polyester/Dyneema), add one more turn.",
+  "de": "Die zwei Törns immer zur Seite legen, von der die Last kommt — sie verhindern das Rutschen. Bei modernen, glatten Tauen (Polyester/Dyneema) einen Törn mehr legen.",
+  "fr": "Toujours faire les deux tours du côté d'où vient la charge — ce sont eux qui empêchent le nœud de glisser. Sur les cordages modernes glissants (polyester/Dyneema), ajouter un tour.",
+  "es": "Dé siempre las dos vueltas hacia el lado del que viene la carga: son ellas las que impiden que se corra. En cabos modernos resbaladizos (poliéster/Dyneema), añada una vuelta más.",
+  "it": "Fare sempre i due giri verso il lato da cui arriva il carico: sono loro a impedire che il nodo scorra. Sulle cime moderne scivolose (poliestere/Dyneema), aggiungere un giro.",
+  "pt": "Dê sempre as duas voltas para o lado de onde vem a carga — são elas que impedem que a volta corra. Em cabos modernos escorregadios (poliéster/Dyneema), acrescente mais uma volta.",
+  "nl": "Leg de twee slagen altijd naar de kant waar de last vandaan komt — zij voorkomen dat de steek slipt. Leg bij moderne, gladde lijnen (polyester/Dyneema) een slag extra."
+ },
+ "Dülger Bağı": {
+  "en": "Timber Hitch",
+  "de": "Zimmermannsstek",
+  "fr": "Nœud de bois",
+  "es": "Vuelta de braza",
+  "it": "Nodo d'anguilla",
+  "pt": "Timber hitch",
+  "nl": "Timmermanssteek"
+ },
+ "Seren, bumba, kütük gibi silindirik cisimleri sarıp çekmek, yedeklemek veya kaldırmak için kullanılır. Yük altında sıkıca tutar, yük kalkınca kendiliğinden gevşeyip kolayca çözülür.": {
+  "en": "Used to grip and haul, tow or lift round objects such as spars, booms and logs. It holds firmly under load and loosens by itself when the load comes off, so it is easy to untie.",
+  "de": "Dient dazu, runde Gegenstände wie Spieren, Bäume und Stämme zu umfassen und zu holen, zu schleppen oder zu heben. Hält unter Last fest und lockert sich von selbst, wenn die Last weg ist, sodass er leicht zu lösen ist.",
+  "fr": "Sert à saisir puis haler, remorquer ou hisser des objets ronds comme des espars, des bômes ou des billes de bois. Il tient bien sous charge et se relâche de lui-même quand la charge disparaît, ce qui le rend facile à défaire.",
+  "es": "Se usa para abrazar y halar, remolcar o izar objetos redondos como perchas, botavaras o troncos. Sujeta bien con carga y se afloja sola al desaparecer la carga, por lo que se deshace con facilidad.",
+  "it": "Serve ad abbracciare e poi alare, rimorchiare o sollevare oggetti cilindrici come aste, bome e tronchi. Tiene bene sotto carico e si allenta da solo quando il carico viene meno, quindi si scioglie facilmente.",
+  "pt": "Usada para abraçar e então alar, rebocar ou içar objetos cilíndricos como vergas, retrancas e toras. Segura firme sob carga e afrouxa sozinha quando a carga sai, por isso é fácil de desfazer.",
+  "nl": "Wordt gebruikt om ronde voorwerpen zoals rondhouten, gieken en boomstammen te omvatten en te halen, te slepen of te hijsen. Houdt stevig onder belasting en komt vanzelf los als de last eraf is, zodat hij gemakkelijk los te maken is."
+ },
+ "Cismi dola": {
+  "en": "Go round the object",
+  "de": "Um den Gegenstand legen",
+  "fr": "Entourer l'objet",
+  "es": "Rodear el objeto",
+  "it": "Girare attorno all'oggetto",
+  "pt": "Envolver o objeto",
+  "nl": "Om het voorwerp leggen"
+ },
+ "Halatı çekilecek cismin (seren, kütük) etrafından dolayın.": {
+  "en": "Take the rope round the object to be hauled (a spar or log).",
+  "de": "Das Tau um den zu holenden Gegenstand (Spiere oder Stamm) legen.",
+  "fr": "Passer le cordage autour de l'objet à haler (espar ou bille de bois).",
+  "es": "Pasar el cabo alrededor del objeto que se va a halar (percha o tronco).",
+  "it": "Passare la cima attorno all'oggetto da alare (asta o tronco).",
+  "pt": "Passar o cabo em torno do objeto a ser alado (verga ou tora).",
+  "nl": "De lijn om het te halen voorwerp (rondhout of stam) leggen."
+ },
+ "Bedenin etrafından geçir": {
+  "en": "Pass round the standing part",
+  "de": "Um die feste Part führen",
+  "fr": "Passer autour du dormant",
+  "es": "Pasar alrededor del firme",
+  "it": "Passare attorno al dormiente",
+  "pt": "Passar em torno da parte firme",
+  "nl": "Om het staande deel voeren"
+ },
+ "Çımayı beden halatının etrafından dolayıp geri getirin.": {
+  "en": "Take the working end round the standing part and bring it back.",
+  "de": "Das lose Ende um die feste Part führen und zurückholen.",
+  "fr": "Passer le courant autour du dormant et le ramener.",
+  "es": "Pasar el chicote alrededor del firme y traerlo de vuelta.",
+  "it": "Passare il corrente attorno al dormiente e riportarlo indietro.",
+  "pt": "Passar o chicote em torno da parte firme e trazê-lo de volta.",
+  "nl": "Het losse eind om het staande deel voeren en terughalen."
+ },
+ "Kendi voltasına sar": {
+  "en": "Twist round itself",
+  "de": "Um sich selbst verdrehen",
+  "fr": "Enrouler sur lui-même",
+  "es": "Enrollar sobre sí mismo",
+  "it": "Avvolgere su se stesso",
+  "pt": "Enrolar sobre si mesmo",
+  "nl": "Om zichzelf draaien"
+ },
+ "Çımayı kendi voltasının içine, cisim boyunca 3-4 kez sarıp kıstırın.": {
+  "en": "Twist the working end round its own part 3–4 times along the object and tuck it in.",
+  "de": "Das lose Ende 3–4 Mal entlang des Gegenstands um seinen eigenen Teil wickeln und einklemmen.",
+  "fr": "Enrouler le courant 3 ou 4 fois sur lui-même le long de l'objet et le coincer.",
+  "es": "Enrollar el chicote 3 o 4 veces sobre su propia parte a lo largo del objeto y acuñarlo.",
+  "it": "Avvolgere il corrente 3-4 volte su se stesso lungo l'oggetto e incastrarlo.",
+  "pt": "Enrolar o chicote 3 a 4 vezes sobre a própria parte ao longo do objeto e prendê-lo.",
+  "nl": "Het losse eind 3–4 keer langs het voorwerp om zijn eigen deel draaien en vastklemmen."
+ },
+ "Yükleyip kontrol et": {
+  "en": "Load and check",
+  "de": "Belasten und prüfen",
+  "fr": "Charger et vérifier",
+  "es": "Cargar y comprobar",
+  "it": "Caricare e controllare",
+  "pt": "Carregar e verificar",
+  "nl": "Belasten en controleren"
+ },
+ "Bedeni çekin; sarımlar cisme yapışarak sıkışır ve bağ kilitlenir.": {
+  "en": "Pull on the standing part; the twists bite on the object and the hitch locks.",
+  "de": "An der festen Part ziehen; die Windungen greifen am Gegenstand und der Stek sitzt fest.",
+  "fr": "Tirer sur le dormant ; les tours mordent sur l'objet et le nœud se bloque.",
+  "es": "Tirar del firme; las vueltas muerden sobre el objeto y el nudo queda bloqueado.",
+  "it": "Tirare il dormiente; gli avvolgimenti mordono sull'oggetto e il nodo si blocca.",
+  "pt": "Puxar a parte firme; as voltas mordem o objeto e o nó trava.",
+  "nl": "Aan het staande deel trekken; de windingen klemmen op het voorwerp en de steek zit vast."
+ },
+ "Sarımlar yük binince sıkıştığı için bağın tutması sürekli gerginliğe bağlıdır. Uzun bir cismi yedeklerken çekilen uca ayrıca bir yarım anele atın (dülger + yarım anele).": {
+  "en": "Because the turns jam under load, the hitch holds only under continuous tension. When towing a long object, add a half hitch at the end being pulled (timber hitch + half hitch).",
+  "de": "Weil die Windungen nur unter Last greifen, hängt der Halt von gleichmäßigem Zug ab. Beim Schleppen eines langen Gegenstands am gezogenen Ende zusätzlich einen halben Schlag legen (Zimmermannsstek mit halbem Schlag).",
+  "fr": "Comme les tours ne serrent que sous charge, la tenue dépend d'une traction constante. Pour remorquer un objet long, ajouter une demi-clé à l'extrémité tirée (nœud de bois et demi-clé).",
+  "es": "Como las vueltas solo aprietan con carga, la sujeción depende de una tensión constante. Para remolcar un objeto largo, añada un medio cote en el extremo del que se tira (vuelta de braza y medio cote).",
+  "it": "Poiché gli avvolgimenti stringono solo sotto carico, la tenuta dipende da una tensione costante. Per rimorchiare un oggetto lungo, aggiungere un mezzo collo all'estremità tirata (nodo d'anguilla e mezzo collo).",
+  "pt": "Como as voltas só apertam sob carga, a fixação depende de tensão constante. Ao rebocar um objeto comprido, acrescente um cote na ponta puxada (timber hitch com cote).",
+  "nl": "Omdat de windingen alleen onder belasting klemmen, hangt het houden af van constante spanning. Leg bij het slepen van een lang voorwerp ook een halve steek aan het eind waaraan getrokken wordt (timmermanssteek met halve steek)."
+ },
+ "Demir Bağı": {
+  "en": "Anchor Bend",
+  "de": "Ankerstek",
+  "fr": "Nœud de grappin",
+  "es": "Anchor bend",
+  "it": "Anchor bend",
+  "pt": "Anchor bend",
+  "nl": "Ankersteek"
+ },
+ "Halatı demir bedenine (anchor) veya ringe güvenle bağlar. Islanınca ve yük altında sıkışmaz; sarsıntılı yüke dayanıklıdır.": {
+  "en": "Makes a rope securely fast to an anchor shackle or a ring. It does not jam when wet or under load and stands up well to jerking loads.",
+  "de": "Macht ein Tau sicher an einem Ankerschäkel oder einem Ring fest. Er zieht sich nass oder unter Last nicht fest und hält ruckartigen Belastungen gut stand.",
+  "fr": "Amarre solidement un cordage à une manille d'ancre ou à un anneau. Il ne se bloque pas lorsqu'il est mouillé ou chargé et résiste bien aux à-coups.",
+  "es": "Hace firme con seguridad un cabo a un grillete de ancla o a una argolla. No se aprieta en exceso mojado o con carga y resiste bien los tirones.",
+  "it": "Dà volta in modo sicuro a una cima su un grillo dell'ancora o su un anello. Non si stringe eccessivamente quando è bagnato o sotto carico e resiste bene agli strappi.",
+  "pt": "Prende com segurança um cabo a uma manilha de âncora ou a uma argola. Não aperta demais quando molhado ou sob carga e resiste bem a trancos.",
+  "nl": "Maakt een lijn veilig vast aan een ankersluiting of een ring. Trekt nat of onder belasting niet vast en is goed bestand tegen rukbelasting."
+ },
+ "Ringden iki kez geçir": {
+  "en": "Pass twice through the ring",
+  "de": "Zweimal durch den Ring führen",
+  "fr": "Passer deux fois dans l'anneau",
+  "es": "Pasar dos veces por la argolla",
+  "it": "Passare due volte nell'anello",
+  "pt": "Passar duas vezes pela argola",
+  "nl": "Twee keer door de ring voeren"
+ },
+ "Halatı ring/demir içinden iki kez geçirerek bir tam tur (round turn) oluşturun; turu gevşek bırakın.": {
+  "en": "Pass the rope twice through the ring or anchor shackle to make a round turn; leave the turn slack.",
+  "de": "Das Tau zweimal durch den Ring oder den Ankerschäkel führen und so einen Rundtörn legen; den Törn lose lassen.",
+  "fr": "Passer deux fois le cordage dans l'anneau ou la manille d'ancre pour faire un tour mort ; laisser le tour lâche.",
+  "es": "Pasar el cabo dos veces por la argolla o el grillete del ancla para formar una vuelta redonda; dejar la vuelta floja.",
+  "it": "Passare la cima due volte nell'anello o nel grillo dell'ancora per fare una volta tonda; lasciare il giro lento.",
+  "pt": "Passar o cabo duas vezes pela argola ou pela manilha da âncora para formar uma volta redonda; deixar a volta frouxa.",
+  "nl": "De lijn twee keer door de ring of de ankersluiting voeren voor een rondtorn; de slag losjes laten."
+ },
+ "İlk aneleyi turun içinden": {
+  "en": "First hitch through the turn",
+  "de": "Erster Schlag durch den Törn",
+  "fr": "Première clé dans le tour",
+  "es": "Primer cote por dentro de la vuelta",
+  "it": "Primo collo dentro il giro",
+  "pt": "Primeiro cote por dentro da volta",
+  "nl": "Eerste steek door de slag"
+ },
+ "Çımayı beden halatının etrafından dolayıp az önce oluşan turların içinden geçirin.": {
+  "en": "Take the working end round the standing part and pass it through the turns you have just made.",
+  "de": "Das lose Ende um die feste Part führen und durch die soeben gelegten Törns stecken.",
+  "fr": "Passer le courant autour du dormant puis à travers les tours qui viennent d'être faits.",
+  "es": "Pasar el chicote alrededor del firme y por dentro de las vueltas que se acaban de dar.",
+  "it": "Passare il corrente attorno al dormiente e dentro i giri appena fatti.",
+  "pt": "Passar o chicote em torno da parte firme e por dentro das voltas recém-feitas.",
+  "nl": "Het losse eind om het staande deel voeren en door de zojuist gelegde slagen steken."
+ },
+ "İkinci anele + emniyet": {
+  "en": "Second hitch and seizing",
+  "de": "Zweiter Schlag und Bändsel",
+  "fr": "Seconde clé et amarrage",
+  "es": "Segundo cote y ligada",
+  "it": "Secondo collo e legatura",
+  "pt": "Segundo cote e botão",
+  "nl": "Tweede steek en bendsel"
+ },
+ "Beden üzerine bir yarım anele daha atarak kilitleyin; çımayı ince halatla bedene sürce (seizing) yaparak emniyete alın.": {
+  "en": "Add another half hitch around the standing part, then seize the working end to the standing part with small stuff.",
+  "de": "Mit einem weiteren halben Schlag um die feste Part sichern; das lose Ende mit dünnem Garn an der festen Part anbändseln.",
+  "fr": "Bloquer par une demi-clé de plus autour du dormant ; assurer le courant en le surliant au dormant avec du fil fin.",
+  "es": "Bloquear con un medio cote más alrededor del firme; asegurar el chicote ligándolo al firme con un cabo fino.",
+  "it": "Bloccare con un altro mezzo collo attorno al dormiente; assicurare il corrente legandolo al dormiente con una sagola sottile.",
+  "pt": "Travar com mais um cote em torno da parte firme; prender o chicote à parte firme com um botão de linha fina.",
+  "nl": "Vastzetten met nog een halve steek om het staande deel; het losse eind met dun garen aan het staande deel vastbendselen."
+ },
+ "İlk yarım aneleyi tam turun İÇİNDEN geçirmek bu bağı camadan voltasından ayırır ve sarsıntılı yükte tutmasını sağlar.": {
+  "en": "Passing the first half hitch THROUGH the round turn is what makes this knot different from the round turn and two half hitches, and what lets it hold under jerking loads.",
+  "de": "Dass der erste halbe Schlag DURCH den Rundtörn geführt wird, unterscheidet diesen Knoten vom Rundtörn mit zwei halben Schlägen und lässt ihn bei ruckartiger Last halten.",
+  "fr": "C'est le passage de la première demi-clé À TRAVERS le tour mort qui distingue ce nœud du tour mort et deux demi-clés et lui permet de tenir sous les à-coups.",
+  "es": "Pasar el primer medio cote POR DENTRO de la vuelta redonda es lo que distingue este nudo de la vuelta redonda y dos medios cotes, y lo que le permite aguantar los tirones.",
+  "it": "Passare il primo mezzo collo DENTRO la volta tonda è ciò che distingue questo nodo dalla volta tonda e due mezzi colli e gli permette di tenere sotto strappi.",
+  "pt": "Passar o primeiro cote POR DENTRO da volta redonda é o que diferencia este nó da volta redonda e dois cotes e o que lhe permite segurar sob trancos.",
+  "nl": "Dat de eerste halve steek DOOR de rondtorn wordt gestoken, onderscheidt deze knoop van de rondtorn met twee halve steken en zorgt dat hij bij rukbelasting houdt."
+ },
+ "Sancak Bağı": {
+  "en": "Sheet Bend",
+  "de": "Schotstek",
+  "fr": "Nœud d'écoute",
+  "es": "Vuelta de escota",
+  "it": "Nodo di scotta",
+  "pt": "Nó de escota",
+  "nl": "Schootsteek"
+ },
+ "Farklı çaptaki iki halatı birleştirir. Kalın halatla bir gözcük yapılır, ince halat içinden geçirilip kıstırılır. Denizcilikte 'sancak bağı' olarak da bilinir.": {
+  "en": "Joins two ropes of different sizes. A bight is made in the thicker rope and the thinner rope is passed through it and tucked under itself.",
+  "de": "Verbindet zwei Taue unterschiedlicher Dicke. Im dickeren Tau wird eine Bucht gelegt, das dünnere Tau wird hindurchgeführt und unter sich selbst eingeklemmt.",
+  "fr": "Réunit deux cordages de diamètres différents. On fait une ganse dans le plus gros cordage, on y passe le plus fin et on le coince sous lui-même.",
+  "es": "Une dos cabos de distinta mena. Se hace un seno con el cabo más grueso y el más fino se pasa por él y se acuña bajo sí mismo.",
+  "it": "Unisce due cime di diametro diverso. Con la cima più grossa si fa un doppino; la cima più sottile vi viene passata dentro e bloccata sotto se stessa.",
+  "pt": "Une dois cabos de bitolas diferentes. Faz-se um seio no cabo mais grosso; o mais fino passa por dentro dele e fica preso sob si mesmo.",
+  "nl": "Verbindt twee lijnen van verschillende dikte. In de dikkere lijn wordt een bocht gemaakt; de dunnere lijn wordt erdoor gestoken en onder zichzelf geklemd."
+ },
+ "~%45 dayanım kaybı": {
+  "en": "~45% loss of strength",
+  "de": "~45 % Festigkeitsverlust",
+  "fr": "~45 % de perte de résistance",
+  "es": "~45 % de pérdida de resistencia",
+  "it": "~45 % di perdita di resistenza",
+  "pt": "~45 % de perda de resistência",
+  "nl": "~45% sterkteverlies"
+ },
+ "Kalın halatla gözcük": {
+  "en": "Bight in the thick rope",
+  "de": "Bucht im dicken Tau",
+  "fr": "Ganse dans le gros cordage",
+  "es": "Seno en el cabo grueso",
+  "it": "Doppino nella cima grossa",
+  "pt": "Seio no cabo grosso",
+  "nl": "Bocht in de dikke lijn"
+ },
+ "Kalın halatla bir gözcük (bight) oluşturun.": {
+  "en": "Make a bight in the thicker rope.",
+  "de": "Im dickeren Tau eine Bucht legen.",
+  "fr": "Faire une ganse dans le plus gros cordage.",
+  "es": "Hacer un seno con el cabo más grueso.",
+  "it": "Fare un doppino con la cima più grossa.",
+  "pt": "Fazer um seio no cabo mais grosso.",
+  "nl": "Een bocht maken in de dikkere lijn."
+ },
+ "İnce halatı içinden geçir": {
+  "en": "Pass the thin rope through",
+  "de": "Das dünne Tau durchführen",
+  "fr": "Passer le cordage fin",
+  "es": "Pasar el cabo fino",
+  "it": "Passare la cima sottile",
+  "pt": "Passar o cabo fino",
+  "nl": "De dunne lijn doorsteken"
+ },
+ "İnce halatın çımasını gözcüğün içinden aşağıdan yukarı geçirin.": {
+  "en": "Pass the working end of the thinner rope up through the bight from underneath.",
+  "de": "Das lose Ende des dünneren Taus von unten nach oben durch die Bucht führen.",
+  "fr": "Passer le courant du cordage fin dans la ganse, de bas en haut.",
+  "es": "Pasar el chicote del cabo fino por el seno de abajo arriba.",
+  "it": "Passare il corrente della cima sottile nel doppino dal basso verso l'alto.",
+  "pt": "Passar o chicote do cabo fino pelo seio de baixo para cima.",
+  "nl": "Het losse eind van de dunnere lijn van onderen naar boven door de bocht steken."
+ },
+ "İki bacağın arkasından dola": {
+  "en": "Round the back of both legs",
+  "de": "Hinter beiden Schenkeln herum",
+  "fr": "Faire le tour des deux brins",
+  "es": "Rodear los dos ramales",
+  "it": "Girare dietro i due rami",
+  "pt": "Contornar os dois ramos",
+  "nl": "Achter beide benen langs"
+ },
+ "İnce halatı gözcüğün iki bacağının arkasından dolayın.": {
+  "en": "Take the thinner rope round behind both legs of the bight.",
+  "de": "Das dünnere Tau hinter beiden Schenkeln der Bucht herumführen.",
+  "fr": "Passer le cordage fin derrière les deux brins de la ganse.",
+  "es": "Pasar el cabo fino por detrás de los dos ramales del seno.",
+  "it": "Passare la cima sottile dietro i due rami del doppino.",
+  "pt": "Passar o cabo fino por trás dos dois ramos do seio.",
+  "nl": "De dunnere lijn achter beide benen van de bocht langs voeren."
+ },
+ "Kendi altına kıstırıp çek": {
+  "en": "Tuck under itself and pull",
+  "de": "Unter sich selbst einklemmen und ziehen",
+  "fr": "Coincer sous lui-même et souquer",
+  "es": "Acuñar bajo sí mismo y tirar",
+  "it": "Bloccare sotto se stessa e tirare",
+  "pt": "Prender sob si mesmo e puxar",
+  "nl": "Onder zichzelf klemmen en trekken"
+ },
+ "Çımayı kendi beden halatının altına kıstırıp çekin.": {
+  "en": "Tuck the working end under its own standing part and pull tight.",
+  "de": "Das lose Ende unter seine eigene feste Part stecken und festziehen.",
+  "fr": "Coincer le courant sous son propre dormant et souquer.",
+  "es": "Acuñar el chicote bajo su propio firme y apretar.",
+  "it": "Bloccare il corrente sotto il proprio dormiente e stringere.",
+  "pt": "Prender o chicote sob a sua própria parte firme e apertar.",
+  "nl": "Het losse eind onder zijn eigen staande deel klemmen en aantrekken."
+ },
+ "İki çıma AYNI tarafta çıkmalı; ters taraflarda çıkarsa düğüm zayıf 'sol kıstırma' olur ve kayabilir. Yük altında uçları gergin tutun.": {
+  "en": "Both working ends must come out on the SAME side; if they come out on opposite sides you have a weak left-handed sheet bend that can slip. Keep the ends taut under load.",
+  "de": "Beide losen Enden müssen auf DERSELBEN Seite herauskommen; kommen sie auf entgegengesetzten Seiten heraus, ist es ein schwacher, linker Schotstek, der rutschen kann. Die Enden unter Last straff halten.",
+  "fr": "Les deux courants doivent sortir du MÊME côté ; s'ils sortent de côtés opposés, on obtient un nœud d'écoute gaucher, faible, qui peut glisser. Garder les bouts tendus sous charge.",
+  "es": "Los dos chicotes deben salir por el MISMO lado; si salen por lados opuestos, resulta una vuelta de escota zurda, débil, que puede correrse. Mantenga los chicotes tensos con carga.",
+  "it": "I due correnti devono uscire dallo STESSO lato; se escono da lati opposti si ottiene un nodo di scotta mancino, debole, che può scorrere. Tenere i correnti tesi sotto carico.",
+  "pt": "Os dois chicotes devem sair do MESMO lado; se saírem de lados opostos, forma-se um nó de escota canhoto, fraco, que pode correr. Mantenha os chicotes tesos sob carga.",
+  "nl": "Beide losse einden moeten aan DEZELFDE kant uitkomen; komen ze aan tegengestelde kanten uit, dan ontstaat een zwakke, linkse schootsteek die kan slippen. Houd de einden onder belasting strak."
+ },
+ "Çifte Sancak Bağı": {
+  "en": "Double Sheet Bend",
+  "de": "Doppelter Schotstek",
+  "fr": "Nœud d'écoute double",
+  "es": "Vuelta de escota doble",
+  "it": "Nodo di scotta doppio",
+  "pt": "Nó de escota dobrado",
+  "nl": "Dubbele schootsteek"
+ },
+ "Çapları çok farklı, ıslak veya kaygan iki halatı emniyetle ekler. Sancak bağının çift voltalı hâlidir; ikinci volta bağın kayma ihtimalini büyük ölçüde azaltır.": {
+  "en": "Securely joins two ropes of very different sizes, or ropes that are wet or slippery. It is the sheet bend with a second turn; the extra turn greatly reduces the chance of slipping.",
+  "de": "Verbindet sicher zwei Taue sehr unterschiedlicher Dicke oder nasse bzw. glatte Taue. Es ist der Schotstek mit einem zweiten Törn; der zusätzliche Törn verringert die Gefahr des Rutschens erheblich.",
+  "fr": "Réunit solidement deux cordages de diamètres très différents, ou des cordages mouillés ou glissants. C'est le nœud d'écoute avec un second tour ; ce tour supplémentaire réduit fortement le risque de glissement.",
+  "es": "Une con seguridad dos cabos de mena muy distinta, o cabos mojados o resbaladizos. Es la vuelta de escota con una segunda vuelta; esa vuelta adicional reduce mucho el riesgo de que se corra.",
+  "it": "Unisce in modo sicuro due cime di diametro molto diverso, oppure bagnate o scivolose. È il nodo di scotta con un secondo giro; il giro in più riduce molto il rischio di scorrimento.",
+  "pt": "Une com segurança dois cabos de bitolas muito diferentes, ou cabos molhados ou escorregadios. É o nó de escota com uma segunda volta; a volta extra reduz muito o risco de correr.",
+  "nl": "Verbindt veilig twee lijnen van sterk verschillende dikte, of natte of gladde lijnen. Het is de schootsteek met een tweede slag; de extra slag verkleint de kans op slippen aanzienlijk."
+ },
+ "İnce halatı geçir ve dola": {
+  "en": "Pass the thin rope through and round",
+  "de": "Das dünne Tau durchführen und herumlegen",
+  "fr": "Passer le cordage fin et faire le tour",
+  "es": "Pasar y rodear con el cabo fino",
+  "it": "Passare e girare la cima sottile",
+  "pt": "Passar e contornar com o cabo fino",
+  "nl": "De dunne lijn doorsteken en omvoeren"
+ },
+ "İnce halatın çımasını gözcüğün içinden geçirip iki bacağın arkasından dolayın ve kendi bedeninin altına kıstırın (tek sancak bağı).": {
+  "en": "Pass the working end of the thinner rope through the bight, take it round behind both legs and tuck it under its own standing part (a single sheet bend).",
+  "de": "Das lose Ende des dünneren Taus durch die Bucht führen, hinter beiden Schenkeln herumlegen und unter seine eigene feste Part stecken (einfacher Schotstek).",
+  "fr": "Passer le courant du cordage fin dans la ganse, le faire passer derrière les deux brins et le coincer sous son propre dormant (nœud d'écoute simple).",
+  "es": "Pasar el chicote del cabo fino por el seno, rodear por detrás los dos ramales y acuñarlo bajo su propio firme (vuelta de escota sencilla).",
+  "it": "Passare il corrente della cima sottile nel doppino, girarlo dietro i due rami e bloccarlo sotto il proprio dormiente (nodo di scotta semplice).",
+  "pt": "Passar o chicote do cabo fino pelo seio, contornar por trás os dois ramos e prendê-lo sob a sua própria parte firme (nó de escota simples).",
+  "nl": "Het losse eind van de dunnere lijn door de bocht steken, achter beide benen langs voeren en onder zijn eigen staande deel klemmen (enkele schootsteek)."
+ },
+ "İkinci voltayı at": {
+  "en": "Take the second turn",
+  "de": "Den zweiten Törn legen",
+  "fr": "Faire le second tour",
+  "es": "Dar la segunda vuelta",
+  "it": "Fare il secondo giro",
+  "pt": "Dar a segunda volta",
+  "nl": "De tweede slag leggen"
+ },
+ "Çımayla gözcüğün etrafına aynı yönde bir volta daha atıp yine kendi bedeninin altından geçirin.": {
+  "en": "With the working end, take one more turn round the bight in the same direction and again pass it under its own standing part.",
+  "de": "Mit dem losen Ende einen weiteren Törn in derselben Richtung um die Bucht legen und wieder unter der eigenen festen Part durchführen.",
+  "fr": "Avec le courant, faire un tour de plus autour de la ganse dans le même sens et le repasser sous son propre dormant.",
+  "es": "Con el chicote, dar una vuelta más alrededor del seno en el mismo sentido y volver a pasarlo bajo su propio firme.",
+  "it": "Con il corrente, fare un altro giro attorno al doppino nello stesso verso e ripassarlo sotto il proprio dormiente.",
+  "pt": "Com o chicote, dar mais uma volta em torno do seio no mesmo sentido e passá-lo de novo sob a sua própria parte firme.",
+  "nl": "Met het losse eind nog een slag in dezelfde richting om de bocht leggen en weer onder zijn eigen staande deel door steken."
+ },
+ "İnce halatın bedenini ve çımasını çekerek her iki voltayı da oturtup sıkın.": {
+  "en": "Pull on the standing part and the working end of the thinner rope so that both turns bed down and tighten.",
+  "de": "An fester Part und losem Ende des dünneren Taus ziehen, sodass beide Törns sich setzen und festziehen.",
+  "fr": "Tirer sur le dormant et le courant du cordage fin pour que les deux tours se mettent en place et se serrent.",
+  "es": "Tirar del firme y del chicote del cabo fino para que las dos vueltas se asienten y se aprieten.",
+  "it": "Tirare il dormiente e il corrente della cima sottile in modo che entrambi i giri si assestino e si stringano.",
+  "pt": "Puxar a parte firme e o chicote do cabo fino para que as duas voltas se assentem e apertem.",
+  "nl": "Aan het staande deel en het losse eind van de dunnere lijn trekken zodat beide slagen goed gaan liggen en vastzitten."
+ },
+ "Tek sancak bağında olduğu gibi iki çıma AYNI tarafta çıkmalıdır. Halatlar arasındaki çap farkı büyüdükçe veya halatlar ıslak/kayganken çifte volta şarttır.": {
+  "en": "As with the single sheet bend, both working ends must come out on the SAME side. The bigger the difference in size between the ropes, or when they are wet or slippery, the more the extra turn is essential.",
+  "de": "Wie beim einfachen Schotstek müssen beide losen Enden auf DERSELBEN Seite herauskommen. Je größer der Dickenunterschied der Taue ist oder wenn sie nass bzw. glatt sind, desto unverzichtbarer ist der zusätzliche Törn.",
+  "fr": "Comme pour le nœud d'écoute simple, les deux courants doivent sortir du MÊME côté. Plus l'écart de diamètre est grand, ou si les cordages sont mouillés ou glissants, plus le tour supplémentaire est indispensable.",
+  "es": "Igual que en la vuelta de escota sencilla, los dos chicotes deben salir por el MISMO lado. Cuanto mayor sea la diferencia de mena, o si los cabos están mojados o resbaladizos, más imprescindible es la vuelta adicional.",
+  "it": "Come nel nodo di scotta semplice, i due correnti devono uscire dallo STESSO lato. Più grande è la differenza di diametro, o se le cime sono bagnate o scivolose, più il giro in più è indispensabile.",
+  "pt": "Como no nó de escota simples, os dois chicotes devem sair do MESMO lado. Quanto maior a diferença de bitola, ou se os cabos estiverem molhados ou escorregadios, mais indispensável é a volta extra.",
+  "nl": "Net als bij de enkele schootsteek moeten beide losse einden aan DEZELFDE kant uitkomen. Hoe groter het verschil in dikte, of als de lijnen nat of glad zijn, des te onmisbaarder is de extra slag."
+ },
+ "Balıkçı Bağı": {
+  "en": "Fisherman's Knot",
+  "de": "Spierenstich",
+  "fr": "Nœud de pêcheur",
+  "es": "Nudo de pescador",
+  "it": "Nodo inglese (nodo del pescatore)",
+  "pt": "Nó de pescador",
+  "nl": "Vissersknoop"
+ },
+ "İki ince halatı, savloyu veya gırcalayı uç uca ekler. Her çıma diğer halatın bedeni üzerine bir adi düğüm atar; yük binince iki düğüm birbirine kenetlenir. Islak ve ince halatta güvenilirdir.": {
+  "en": "Joins two thin lines end to end. Each working end ties an overhand knot round the standing part of the other line; under load the two knots jam against each other. Reliable in wet, thin line.",
+  "de": "Verbindet zwei dünne Leinen Ende an Ende. Jedes lose Ende legt einen Überhandknoten um die feste Part der anderen Leine; unter Last legen sich die beiden Knoten gegeneinander. Zuverlässig bei nasser, dünner Leine.",
+  "fr": "Réunit bout à bout deux lignes fines. Chaque courant fait un nœud simple autour du dormant de l'autre ligne ; sous charge, les deux nœuds viennent se bloquer l'un contre l'autre. Fiable sur une ligne fine et mouillée.",
+  "es": "Une por sus extremos dos cabos finos. Cada chicote hace un nudo simple alrededor del firme del otro cabo; con carga, los dos nudos se traban entre sí. Fiable en cabo fino y mojado.",
+  "it": "Unisce testa a testa due cime sottili. Ogni corrente fa un nodo semplice attorno al dormiente dell'altra cima; sotto carico i due nodi si serrano l'uno contro l'altro. Affidabile su cima sottile e bagnata.",
+  "pt": "Une pelas pontas dois cabos finos. Cada chicote faz um nó simples em torno da parte firme do outro cabo; sob carga os dois nós se travam um contra o outro. Confiável em cabo fino e molhado.",
+  "nl": "Verbindt twee dunne lijnen eind aan eind. Elk los eind legt een overhand knot om het staande deel van de andere lijn; onder belasting schuiven de twee knopen tegen elkaar vast. Betrouwbaar bij natte, dunne lijn."
+ },
+ "Halatları yan yana koy": {
+  "en": "Lay the lines side by side",
+  "de": "Die Leinen nebeneinanderlegen",
+  "fr": "Placer les lignes côte à côte",
+  "es": "Colocar los cabos uno junto a otro",
+  "it": "Affiancare le cime",
+  "pt": "Colocar os cabos lado a lado",
+  "nl": "De lijnen naast elkaar leggen"
+ },
+ "İki halatın çımalarını birbirine bakacak şekilde yan yana serin.": {
+  "en": "Lay the two lines side by side with their working ends pointing towards each other.",
+  "de": "Die beiden Leinen nebeneinanderlegen, die losen Enden zueinander gerichtet.",
+  "fr": "Placer les deux lignes côte à côte, les courants pointés l'un vers l'autre.",
+  "es": "Colocar los dos cabos uno junto a otro, con los chicotes apuntando entre sí.",
+  "it": "Affiancare le due cime con i correnti rivolti l'uno verso l'altro.",
+  "pt": "Colocar os dois cabos lado a lado, com os chicotes apontando um para o outro.",
+  "nl": "De twee lijnen naast elkaar leggen, met de losse einden naar elkaar toe."
+ },
+ "Birinci adi düğüm": {
+  "en": "First overhand knot",
+  "de": "Erster Überhandknoten",
+  "fr": "Premier nœud simple",
+  "es": "Primer nudo simple",
+  "it": "Primo nodo semplice",
+  "pt": "Primeiro nó simples",
+  "nl": "Eerste overhand knot"
+ },
+ "Birinci halatın çımasıyla, ikinci halatın bedeni üzerine bir adi düğüm atın.": {
+  "en": "With the working end of the first line, tie an overhand knot round the standing part of the second line.",
+  "de": "Mit dem losen Ende der ersten Leine einen Überhandknoten um die feste Part der zweiten Leine legen.",
+  "fr": "Avec le courant de la première ligne, faire un nœud simple autour du dormant de la seconde.",
+  "es": "Con el chicote del primer cabo, hacer un nudo simple alrededor del firme del segundo.",
+  "it": "Con il corrente della prima cima, fare un nodo semplice attorno al dormiente della seconda.",
+  "pt": "Com o chicote do primeiro cabo, fazer um nó simples em torno da parte firme do segundo.",
+  "nl": "Met het losse eind van de eerste lijn een overhand knot om het staande deel van de tweede lijn leggen."
+ },
+ "İkinci adi düğüm": {
+  "en": "Second overhand knot",
+  "de": "Zweiter Überhandknoten",
+  "fr": "Second nœud simple",
+  "es": "Segundo nudo simple",
+  "it": "Secondo nodo semplice",
+  "pt": "Segundo nó simples",
+  "nl": "Tweede overhand knot"
+ },
+ "İkinci halatın çımasıyla, birinci halatın bedeni üzerine ters yönde bir adi düğüm atın.": {
+  "en": "With the working end of the second line, tie an overhand knot round the standing part of the first line, in the opposite direction.",
+  "de": "Mit dem losen Ende der zweiten Leine einen Überhandknoten in entgegengesetzter Richtung um die feste Part der ersten Leine legen.",
+  "fr": "Avec le courant de la seconde ligne, faire un nœud simple en sens inverse autour du dormant de la première.",
+  "es": "Con el chicote del segundo cabo, hacer un nudo simple en sentido contrario alrededor del firme del primero.",
+  "it": "Con il corrente della seconda cima, fare un nodo semplice in verso opposto attorno al dormiente della prima.",
+  "pt": "Com o chicote do segundo cabo, fazer um nó simples em sentido contrário em torno da parte firme do primeiro.",
+  "nl": "Met het losse eind van de tweede lijn een overhand knot in tegengestelde richting om het staande deel van de eerste lijn leggen."
+ },
+ "Bedenleri çekip kenetle": {
+  "en": "Pull the standing parts together",
+  "de": "Die festen Parten zusammenziehen",
+  "fr": "Rapprocher les dormants",
+  "es": "Juntar los firmes",
+  "it": "Avvicinare i dormienti",
+  "pt": "Juntar as partes firmes",
+  "nl": "De staande delen naar elkaar trekken"
+ },
+ "Her iki bedeni ters yönde çekin; iki düğüm kayarak birbirine yaslanır ve kilitlenir.": {
+  "en": "Pull both standing parts in opposite directions; the two knots slide together and lock against each other.",
+  "de": "An beiden festen Parten in entgegengesetzte Richtungen ziehen; die beiden Knoten gleiten zusammen und verriegeln sich gegenseitig.",
+  "fr": "Tirer les deux dormants en sens opposés ; les deux nœuds glissent l'un vers l'autre et se bloquent.",
+  "es": "Tirar de los dos firmes en sentidos opuestos; los dos nudos se deslizan uno hacia el otro y se traban.",
+  "it": "Tirare i due dormienti in direzioni opposte; i due nodi scorrono l'uno verso l'altro e si bloccano.",
+  "pt": "Puxar as duas partes firmes em sentidos opostos; os dois nós deslizam um em direção ao outro e se travam.",
+  "nl": "Aan beide staande delen in tegengestelde richting trekken; de twee knopen schuiven naar elkaar toe en zetten zich vast."
+ },
+ "İki düğüm birbirine tam oturmalı, aralarında boşluk kalmamalıdır. Çok kaygan halatta her adi düğüm yerine çifte düğüm atarak 'çifte balıkçı bağı' yapın.": {
+  "en": "The two knots must sit snugly against each other with no gap between them. In very slippery line, tie a double knot instead of each overhand knot to make a double fisherman's knot.",
+  "de": "Die beiden Knoten müssen eng aneinanderliegen, ohne Abstand dazwischen. Bei sehr glatter Leine statt der Überhandknoten jeweils einen doppelten Knoten legen: doppelter Spierenstich.",
+  "fr": "Les deux nœuds doivent être bien serrés l'un contre l'autre, sans espace entre eux. Sur une ligne très glissante, faire un nœud double à la place de chaque nœud simple : on obtient le nœud de pêcheur double.",
+  "es": "Los dos nudos deben quedar bien juntos, sin espacio entre ellos. En un cabo muy resbaladizo, haga un nudo doble en lugar de cada nudo simple: nudo de pescador doble.",
+  "it": "I due nodi devono combaciare bene, senza spazio tra loro. Su una cima molto scivolosa, al posto di ogni nodo semplice fare un nodo doppio: si ottiene il nodo inglese doppio.",
+  "pt": "Os dois nós devem ficar bem encostados, sem espaço entre eles. Em cabo muito escorregadio, faça um nó duplo no lugar de cada nó simples: nó de pescador duplo.",
+  "nl": "De twee knopen moeten strak tegen elkaar liggen, zonder ruimte ertussen. Leg bij zeer gladde lijn in plaats van elke overhand knot een dubbele knoop: de dubbele vissersknoop."
+ },
+ "Yoma Bağı": {
+  "en": "Carrick Bend",
+  "de": "Karrickstek",
+  "fr": "Nœud de carrick",
+  "es": "Carrick bend",
+  "it": "Carrick bend",
+  "pt": "Carrick bend",
+  "nl": "Carrick bend"
+ },
+ "Palamar, yedek halatı gibi iki kalın halatı (yomayı) uç uca ekler. Büyük yük altında sıkışsa bile çözülebilen ve ıslakken güvenilirliğini koruyan klasik gemici eklemesidir.": {
+  "en": "Joins two heavy ropes such as mooring lines or towlines end to end. A classic seaman's bend that can still be untied after a heavy load and stays reliable when wet.",
+  "de": "Verbindet zwei schwere Taue wie Festmacher- oder Schleppleinen Ende an Ende. Ein klassischer Seemannsknoten, der sich auch nach schwerer Last noch lösen lässt und nass zuverlässig bleibt.",
+  "fr": "Réunit bout à bout deux gros cordages comme des amarres ou des remorques. Un ajut marin classique qui se défait encore après une forte charge et reste fiable mouillé.",
+  "es": "Une por sus extremos dos cabos gruesos, como amarras o cabos de remolque. Un empalme marinero clásico que aún se puede deshacer después de una carga fuerte y sigue siendo fiable mojado.",
+  "it": "Unisce testa a testa due cime grosse come cavi d'ormeggio o di rimorchio. Un classico nodo di giunzione marinaresco che si scioglie ancora dopo un forte carico e resta affidabile da bagnato.",
+  "pt": "Une pelas pontas dois cabos grossos, como espias ou cabos de reboque. Uma emenda clássica de marinharia que ainda pode ser desfeita depois de uma carga pesada e continua confiável quando molhada.",
+  "nl": "Verbindt twee zware lijnen, zoals meertrossen of sleeptrossen, eind aan eind. Een klassieke zeemansknoop die ook na zware belasting nog los te maken is en nat betrouwbaar blijft."
+ },
+ "Birinci halatla kasa": {
+  "en": "Loop in the first rope",
+  "de": "Schlaufe im ersten Tau",
+  "fr": "Boucle dans le premier cordage",
+  "es": "Seno en el primer cabo",
+  "it": "Asola nella prima cima",
+  "pt": "Alça no primeiro cabo",
+  "nl": "Lus in de eerste lijn"
+ },
+ "Birinci halatın çımasıyla, çıma bedenin altında kalacak şekilde bir kasa oluşturun.": {
+  "en": "With the working end of the first rope, make a loop with the working end lying under the standing part.",
+  "de": "Mit dem losen Ende des ersten Taus eine Schlaufe legen, wobei das lose Ende unter der festen Part liegt.",
+  "fr": "Avec le courant du premier cordage, former une boucle, le courant passant sous le dormant.",
+  "es": "Con el chicote del primer cabo, formar un seno dejando el chicote por debajo del firme.",
+  "it": "Con il corrente della prima cima, formare un'asola lasciando il corrente sotto il dormiente.",
+  "pt": "Com o chicote do primeiro cabo, formar uma alça deixando o chicote por baixo da parte firme.",
+  "nl": "Met het losse eind van de eerste lijn een lus leggen, met het losse eind onder het staande deel."
+ },
+ "İkinci çımayı örgüye başlat": {
+  "en": "Start weaving the second end",
+  "de": "Das zweite Ende einflechten",
+  "fr": "Commencer le tressage du second bout",
+  "es": "Empezar a tejer el segundo chicote",
+  "it": "Iniziare a intrecciare il secondo corrente",
+  "pt": "Começar a tecer o segundo chicote",
+  "nl": "Het tweede eind beginnen te vlechten"
+ },
+ "İkinci halatın çımasını kasanın altından sokup birinci halatın bedeninin üzerinden, çımasının altından geçirin.": {
+  "en": "Push the working end of the second rope under the loop, then pass it over the standing part of the first rope and under its working end.",
+  "de": "Das lose Ende des zweiten Taus unter die Schlaufe schieben, dann über die feste Part des ersten Taus und unter dessen loses Ende führen.",
+  "fr": "Engager le courant du second cordage sous la boucle, puis le passer par-dessus le dormant du premier cordage et sous son courant.",
+  "es": "Meter el chicote del segundo cabo por debajo del seno, pasarlo por encima del firme del primer cabo y por debajo de su chicote.",
+  "it": "Infilare il corrente della seconda cima sotto l'asola, poi passarlo sopra il dormiente della prima cima e sotto il suo corrente.",
+  "pt": "Passar o chicote do segundo cabo por baixo da alça, depois por cima da parte firme do primeiro cabo e por baixo do seu chicote.",
+  "nl": "Het losse eind van de tweede lijn onder de lus door steken, dan over het staande deel van de eerste lijn en onder diens losse eind door voeren."
+ },
+ "Alt-üst geçişleri tamamla": {
+  "en": "Finish the over-and-under weave",
+  "de": "Das Über-unter-Muster vollenden",
+  "fr": "Terminer le tressage dessus-dessous",
+  "es": "Completar el tejido arriba y abajo",
+  "it": "Completare l'intreccio sopra-sotto",
+  "pt": "Completar o trançado por cima e por baixo",
+  "nl": "Het over-en-onder-vlechtwerk afmaken"
+ },
+ "Çımayı kasanın üzerinden, kendi bedeninin altından ve kasanın diğer kenarının üzerinden geçirerek örgü desenini tamamlayın.": {
+  "en": "Pass the working end over the loop, under its own standing part and over the other side of the loop to complete the woven pattern.",
+  "de": "Das lose Ende über die Schlaufe, unter seiner eigenen festen Part und über die andere Seite der Schlaufe führen, um das Flechtmuster zu vollenden.",
+  "fr": "Passer le courant par-dessus la boucle, sous son propre dormant puis par-dessus l'autre côté de la boucle pour terminer le motif tressé.",
+  "es": "Pasar el chicote por encima del seno, por debajo de su propio firme y por encima del otro lado del seno para completar el dibujo tejido.",
+  "it": "Passare il corrente sopra l'asola, sotto il proprio dormiente e sopra l'altro lato dell'asola per completare il disegno intrecciato.",
+  "pt": "Passar o chicote por cima da alça, por baixo da sua própria parte firme e por cima do outro lado da alça para completar o desenho trançado.",
+  "nl": "Het losse eind over de lus, onder zijn eigen staande deel en over de andere kant van de lus voeren om het vlechtpatroon af te maken."
+ },
+ "Çekip oturt": {
+  "en": "Pull to set the knot",
+  "de": "Zum Setzen ziehen",
+  "fr": "Tirer pour le mettre en place",
+  "es": "Tirar para asentarlo",
+  "it": "Tirare per assestarlo",
+  "pt": "Puxar para assentar",
+  "nl": "Aantrekken om te zetten"
+ },
+ "Her iki bedeni çekin; simetrik örgü deseni kendini toplayarak kilitlenir.": {
+  "en": "Pull on both standing parts; the symmetrical woven pattern draws together and locks.",
+  "de": "An beiden festen Parten ziehen; das symmetrische Flechtmuster zieht sich zusammen und verriegelt sich.",
+  "fr": "Tirer sur les deux dormants ; le motif tressé symétrique se resserre et se bloque.",
+  "es": "Tirar de los dos firmes; el dibujo tejido simétrico se recoge y se bloquea.",
+  "it": "Tirare i due dormienti; il disegno intrecciato simmetrico si raccoglie e si blocca.",
+  "pt": "Puxar as duas partes firmes; o desenho trançado simétrico se recolhe e trava.",
+  "nl": "Aan beide staande delen trekken; het symmetrische vlechtpatroon trekt samen en zet zich vast."
+ },
+ "Doğru yoma bağında iki çıma birbirine göre çapraz (zıt köşelerde) çıkar. Yük binince düğüm şekil değiştirip bambaşka görünür — bu normaldir, bağ böyle kilitlenir.": {
+  "en": "In a correct carrick bend the two working ends come out diagonally opposite each other. Under load the knot capsizes and looks quite different — this is normal; it is how the bend locks.",
+  "de": "Beim richtigen Karrickstek kommen die beiden losen Enden diagonal gegenüber heraus. Unter Last kippt der Knoten und sieht ganz anders aus — das ist normal, so verriegelt er sich.",
+  "fr": "Dans un nœud de carrick correct, les deux courants sortent en diagonale l'un de l'autre. Sous charge, le nœud chavire et prend une tout autre forme — c'est normal, c'est ainsi qu'il se bloque.",
+  "es": "En un carrick bend correcto, los dos chicotes salen en diagonal, en esquinas opuestas. Con carga el nudo se vuelca y cambia por completo de aspecto: es normal, así es como se bloquea.",
+  "it": "In un carrick bend corretto, i due correnti escono in diagonale, agli angoli opposti. Sotto carico il nodo si rovescia e cambia del tutto aspetto: è normale, è così che si blocca.",
+  "pt": "Num carrick bend correto, os dois chicotes saem na diagonal, em cantos opostos. Sob carga o nó vira e muda completamente de aspecto — isso é normal, é assim que ele trava.",
+  "nl": "Bij een juiste carrick bend komen de twee losse einden diagonaal tegenover elkaar uit. Onder belasting kantelt de knoop en ziet er heel anders uit — dat is normaal, zo zet hij zich vast."
+ },
+ "Margarita Bağı": {
+  "en": "Sheepshank",
+  "de": "Trompetenstek",
+  "fr": "Jambe de chien",
+  "es": "Margarita",
+  "it": "Nodo margherita",
+  "pt": "Catau",
+  "nl": "Trompetsteek"
+ },
+ "Uzun bir halatı kesmeden geçici olarak kısaltır veya halatın yıpranmış (çürük) kısmını yük taşımayan orta kata alarak devre dışı bırakır.": {
+  "en": "Temporarily shortens a long rope without cutting it, or takes a worn (weak) section out of use by placing it in the middle part, which carries no load.",
+  "de": "Verkürzt ein langes Tau vorübergehend, ohne es zu schneiden, oder nimmt eine beschädigte (schwache) Stelle aus dem Einsatz, indem sie in den mittleren, unbelasteten Teil gelegt wird.",
+  "fr": "Raccourcit provisoirement un long cordage sans le couper, ou met hors service une partie usée (fragile) en la plaçant dans la partie centrale, qui ne travaille pas.",
+  "es": "Acorta provisionalmente un cabo largo sin cortarlo, o deja fuera de servicio una parte desgastada (débil) colocándola en la parte central, que no trabaja.",
+  "it": "Accorcia temporaneamente una cima lunga senza tagliarla, oppure esclude una parte usurata (debole) mettendola nel tratto centrale, che non lavora.",
+  "pt": "Encurta temporariamente um cabo comprido sem cortá-lo, ou tira de serviço um trecho desgastado (fraco) colocando-o na parte central, que não trabalha.",
+  "nl": "Kort een lange lijn tijdelijk in zonder hem door te snijden, of haalt een versleten (zwak) stuk buiten gebruik door het in het middelste, onbelaste deel te leggen."
+ },
+ "Halatı üç kat katla": {
+  "en": "Fold the rope into three",
+  "de": "Das Tau dreifach legen",
+  "fr": "Plier le cordage en trois",
+  "es": "Doblar el cabo en tres",
+  "it": "Piegare la cima in tre",
+  "pt": "Dobrar o cabo em três",
+  "nl": "De lijn in drieën vouwen"
+ },
+ "Halatın kısaltılacak kısmını 'S/Z' şeklinde üç kat olacak biçimde katlayın; iki uçta birer gözcük oluşur.": {
+  "en": "Fold the part of the rope to be shortened into three, in an 'S/Z' shape; a bight forms at each end.",
+  "de": "Den zu verkürzenden Teil des Taus in S- bzw. Z-Form dreifach legen; an jedem Ende entsteht eine Bucht.",
+  "fr": "Plier en trois, en forme de « S/Z », la partie du cordage à raccourcir ; une ganse se forme à chaque extrémité.",
+  "es": "Doblar en tres, en forma de «S/Z», la parte del cabo que se quiere acortar; en cada extremo se forma un seno.",
+  "it": "Piegare in tre, a forma di «S/Z», la parte di cima da accorciare; a ciascuna estremità si forma un doppino.",
+  "pt": "Dobrar em três, em forma de «S/Z», o trecho do cabo a encurtar; em cada ponta forma-se um seio.",
+  "nl": "Het in te korten deel van de lijn in een ‘S/Z’-vorm in drieën vouwen; aan elk eind ontstaat een bocht."
+ },
+ "Birinci gözcüğe yarım anele": {
+  "en": "Half hitch over the first bight",
+  "de": "Halber Schlag über die erste Bucht",
+  "fr": "Demi-clé sur la première ganse",
+  "es": "Medio cote sobre el primer seno",
+  "it": "Mezzo collo sul primo doppino",
+  "pt": "Cote sobre o primeiro seio",
+  "nl": "Halve steek over de eerste bocht"
+ },
+ "Bedenin bir tarafıyla bir yarım anele atıp yakındaki gözcüğün üzerine geçirin ve sıkın.": {
+  "en": "With the standing part on one side, make a half hitch, slip it over the nearest bight and pull it tight.",
+  "de": "Mit der festen Part auf der einen Seite einen halben Schlag legen, über die nächste Bucht streifen und festziehen.",
+  "fr": "Avec le dormant d'un côté, faire une demi-clé, la passer sur la ganse la plus proche et souquer.",
+  "es": "Con el firme de un lado, hacer un medio cote, pasarlo sobre el seno más cercano y apretar.",
+  "it": "Con il dormiente da un lato, fare un mezzo collo, passarlo sul doppino più vicino e stringere.",
+  "pt": "Com a parte firme de um lado, fazer um cote, passá-lo sobre o seio mais próximo e apertar.",
+  "nl": "Met het staande deel aan de ene kant een halve steek leggen, over de dichtstbijzijnde bocht schuiven en aantrekken."
+ },
+ "İkinci gözcüğe yarım anele": {
+  "en": "Half hitch over the second bight",
+  "de": "Halber Schlag über die zweite Bucht",
+  "fr": "Demi-clé sur la seconde ganse",
+  "es": "Medio cote sobre el segundo seno",
+  "it": "Mezzo collo sul secondo doppino",
+  "pt": "Cote sobre o segundo seio",
+  "nl": "Halve steek over de tweede bocht"
+ },
+ "Diğer taraftaki bedenle de ikinci gözcüğün üzerine bir yarım anele atıp sıkın.": {
+  "en": "With the standing part on the other side, make a half hitch over the second bight and pull it tight.",
+  "de": "Mit der festen Part auf der anderen Seite einen halben Schlag über die zweite Bucht legen und festziehen.",
+  "fr": "Avec le dormant de l'autre côté, faire une demi-clé sur la seconde ganse et souquer.",
+  "es": "Con el firme del otro lado, hacer un medio cote sobre el segundo seno y apretar.",
+  "it": "Con il dormiente dall'altro lato, fare un mezzo collo sul secondo doppino e stringere.",
+  "pt": "Com a parte firme do outro lado, fazer um cote sobre o segundo seio e apertar.",
+  "nl": "Met het staande deel aan de andere kant een halve steek over de tweede bocht leggen en aantrekken."
+ },
+ "Gerginliği ver": {
+  "en": "Put it under tension",
+  "de": "Unter Spannung setzen",
+  "fr": "Mettre en tension",
+  "es": "Poner en tensión",
+  "it": "Mettere in tensione",
+  "pt": "Colocar sob tensão",
+  "nl": "Onder spanning zetten"
+ },
+ "Her iki bedeni çekerek bağı yük altına alın; katlar gerginken bağ formunu korur.": {
+  "en": "Pull on both standing parts to put the knot under load; it keeps its shape while the folds are taut.",
+  "de": "An beiden festen Parten ziehen, um den Knoten zu belasten; er behält seine Form, solange die Lagen straff sind.",
+  "fr": "Tirer sur les deux dormants pour mettre le nœud en charge ; il garde sa forme tant que les brins sont tendus.",
+  "es": "Tirar de los dos firmes para poner el nudo en carga; mantiene su forma mientras los ramales estén tensos.",
+  "it": "Tirare i due dormienti per mettere il nodo sotto carico; mantiene la sua forma finché i rami sono tesi.",
+  "pt": "Puxar as duas partes firmes para colocar o nó sob carga; ele mantém a forma enquanto os ramos estiverem tesos.",
+  "nl": "Aan beide staande delen trekken om de knoop te belasten; hij houdt zijn vorm zolang de delen strak staan."
+ },
+ "Margarita yalnızca SÜREKLİ gerginlik altında güvenlidir; yük boşalırsa dağılabilir. Çürük kısmı devre dışı bırakırken yıpranmış bölümün ortadaki (yüksüz) katta kalmasına dikkat edin.": {
+  "en": "A sheepshank is only safe under STEADY tension; if the load comes off, it can fall apart. When using it to take a worn section out of use, make sure the worn part lies in the middle (unloaded) fold.",
+  "de": "Ein Trompetenstek ist nur unter GLEICHMÄSSIGER Spannung sicher; lässt die Last nach, kann er auseinanderfallen. Wenn damit eine beschädigte Stelle aus dem Einsatz genommen wird, darauf achten, dass sie in der mittleren (unbelasteten) Lage liegt.",
+  "fr": "Une jambe de chien n'est sûre que sous une tension CONSTANTE ; si la charge disparaît, elle peut se défaire. Pour mettre hors service une partie usée, veiller à ce qu'elle se trouve dans le brin central (non chargé).",
+  "es": "La margarita solo es segura con tensión CONSTANTE; si desaparece la carga, puede deshacerse. Al usarla para dejar fuera de servicio una parte desgastada, asegúrese de que esa parte quede en el ramal central (sin carga).",
+  "it": "Il nodo margherita è sicuro solo sotto tensione COSTANTE; se il carico viene meno, può sciogliersi. Quando lo si usa per escludere una parte usurata, assicurarsi che questa resti nel ramo centrale (senza carico).",
+  "pt": "O catau só é seguro sob tensão CONSTANTE; se a carga sair, ele pode se desfazer. Ao usá-lo para tirar de serviço um trecho desgastado, verifique se esse trecho fica no ramo central (sem carga).",
+  "nl": "Een trompetsteek is alleen veilig onder CONSTANTE spanning; valt de last weg, dan kan hij uit elkaar vallen. Zorg er bij het buiten gebruik stellen van een versleten stuk voor dat dit in het middelste (onbelaste) deel ligt."
+ }
+}

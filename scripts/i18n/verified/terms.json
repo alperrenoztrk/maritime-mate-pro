@@ -1,0 +1,975 @@
+{
+ "İskele": {
+  "fill": true,
+  "en": "Port",
+  "de": "Backbord",
+  "fr": "Bâbord",
+  "es": "Babor",
+  "it": "Sinistra",
+  "pt": "Bombordo",
+  "nl": "Bakboord",
+  "ja": "左舷",
+  "zh-CN": "左舷",
+  "ko": "좌현",
+  "ru": "Левый борт",
+  "uk": "Лівий борт",
+  "pl": "Lewa burta",
+  "sv": "Babord",
+  "no": "Babord",
+  "da": "Bagbord",
+  "fi": "Paapuuri",
+  "ro": "Babord",
+  "bg": "Ляв борд"
+ },
+ "İskele (port)": {
+  "fill": true,
+  "en": "Port",
+  "de": "Backbord",
+  "fr": "Bâbord",
+  "es": "Babor",
+  "it": "Sinistra",
+  "pt": "Bombordo",
+  "nl": "Bakboord",
+  "ja": "左舷",
+  "zh-CN": "左舷",
+  "ko": "좌현",
+  "ru": "Левый борт",
+  "uk": "Лівий борт",
+  "pl": "Lewa burta",
+  "sv": "Babord",
+  "no": "Babord",
+  "da": "Bagbord",
+  "fi": "Paapuuri",
+  "ro": "Babord",
+  "bg": "Ляв борд"
+ },
+ "Sancak (starboard)": {
+  "fill": true,
+  "en": "Starboard",
+  "de": "Steuerbord",
+  "fr": "Tribord",
+  "es": "Estribor",
+  "it": "Dritta",
+  "pt": "Estibordo",
+  "nl": "Stuurboord",
+  "ja": "右舷",
+  "zh-CN": "右舷",
+  "ko": "우현",
+  "ru": "Правый борт",
+  "uk": "Правий борт",
+  "pl": "Prawa burta",
+  "sv": "Styrbord",
+  "no": "Styrbord",
+  "da": "Styrbord",
+  "fi": "Styyrpuuri",
+  "ro": "Tribord",
+  "bg": "Десен борд"
+ },
+ "Pruva beyaz (masthead)": {
+  "fill": true,
+  "en": "Masthead light",
+  "de": "Topplicht",
+  "fr": "Feu de tête de mât",
+  "es": "Luz de tope",
+  "it": "Fanale di testa d'albero",
+  "pt": "Luz de mastro",
+  "nl": "Toplicht"
+ },
+ "Kıç beyaz (stern)": {
+  "fill": true,
+  "en": "Sternlight",
+  "de": "Hecklicht",
+  "fr": "Feu de poupe",
+  "es": "Luz de alcance",
+  "it": "Fanale di poppa",
+  "nl": "Heklicht"
+ },
+ "Çıpa feneri (anchor)": {
+  "fill": false,
+  "en": "Anchor light",
+  "de": "Ankerlicht",
+  "fr": "Feu de mouillage",
+  "es": "Luz de fondeo",
+  "it": "Fanale di fonda",
+  "pt": "Luz de fundeio",
+  "nl": "Ankerlicht"
+ },
+ "İskelesinde diğer gemiyi gören": {
+  "fill": true,
+  "en": "The vessel that has the other on her port side",
+  "de": "Das Fahrzeug, das das andere an seiner Backbordseite hat",
+  "fr": "Le navire qui voit l'autre sur bâbord",
+  "es": "El buque que ve al otro por su banda de babor",
+  "it": "La nave che vede l'altra sulla propria sinistra",
+  "pt": "A embarcação que vê a outra pelo seu bordo de bombordo",
+  "nl": "Het schip dat het andere aan bakboord ziet"
+ },
+ "Sancağında diğer gemiyi gören": {
+  "fill": true,
+  "en": "The vessel that has the other on her starboard side",
+  "de": "Das Fahrzeug, das das andere an seiner Steuerbordseite hat",
+  "fr": "Le navire qui voit l'autre sur tribord",
+  "es": "El buque que ve al otro por su banda de estribor",
+  "it": "La nave che vede l'altra sulla propria dritta",
+  "pt": "A embarcação que vê a outra pelo seu bordo de estibordo",
+  "nl": "Het schip dat het andere aan stuurboord ziet"
+ },
+ "İskeleye": {
+  "fill": true,
+  "en": "To port",
+  "de": "Nach Backbord",
+  "fr": "Vers bâbord",
+  "es": "A babor",
+  "it": "A sinistra",
+  "pt": "Para bombordo",
+  "nl": "Naar bakboord"
+ },
+ "Sancağa": {
+  "fill": false,
+  "en": "To starboard",
+  "de": "Nach Steuerbord",
+  "fr": "Vers tribord",
+  "es": "A estribor",
+  "it": "A dritta",
+  "pt": "Para estibordo",
+  "nl": "Naar stuurboord"
+ },
+ "Kaçmaz": {
+  "fill": true,
+  "en": "It does not swing",
+  "de": "Es schwenkt nicht aus",
+  "fr": "Il ne s'écarte pas",
+  "es": "No se desvía",
+  "it": "Non si sposta",
+  "pt": "Não se desloca",
+  "nl": "Het zwaait niet uit"
+ },
+ "İskeleye kaçma": {
+  "fill": true,
+  "en": "Nothing to port"
+ },
+ "İskeleye sert dönmek": {
+  "fill": true,
+  "en": "Turning hard to port",
+  "de": "Hart nach Backbord drehen",
+  "fr": "Venir franchement sur bâbord",
+  "es": "Caer bruscamente a babor",
+  "it": "Accostare decisamente a sinistra",
+  "pt": "Guinar bruscamente para bombordo",
+  "nl": "Hard naar bakboord draaien"
+ },
+ "İskele kıç omuzluktan alarak": {
+  "fill": true,
+  "en": "Taking it on the port quarter",
+  "fr": "En le prenant par la hanche bâbord",
+  "es": "Tomándolo por la aleta de babor",
+  "it": "Prendendolo al giardinetto di sinistra",
+  "pt": "Recebendo-o pela alheta de bombordo"
+ },
+ "Sancak baş omuzluğuna alarak, en yüksek emniyetli hızla": {
+  "fill": true,
+  "en": "Keeping it on the starboard bow, at the highest safe speed",
+  "fr": "En le gardant par tribord avant, à la plus grande vitesse de sécurité",
+  "es": "Manteniéndolo por la amura de estribor, a la mayor velocidad segura",
+  "it": "Tenendolo al mascone di dritta, alla massima velocità sicura",
+  "pt": "Mantendo-o pela bochecha de estibordo, na maior velocidade segura"
+ },
+ "Tam kıçtan alarak": {
+  "fill": true,
+  "en": "Taking it right astern",
+  "fr": "En le prenant droit arrière",
+  "es": "Tomándolo de popa",
+  "it": "Prendendolo esattamente di poppa",
+  "pt": "Recebendo-o pela popa"
+ },
+ "Tam baştan alarak": {
+  "fill": true,
+  "en": "Taking it right ahead",
+  "fr": "En le prenant droit devant",
+  "es": "Tomándolo de proa",
+  "it": "Prendendolo esattamente di prua",
+  "pt": "Recebendo-o pela proa"
+ },
+ "Kıçımızdan geçecektir": {
+  "fill": true,
+  "en": "It will pass astern of us",
+  "de": "Es wird achteraus von uns passieren",
+  "fr": "Il passera sur notre arrière",
+  "es": "Pasará por nuestra popa",
+  "it": "Passerà di poppa a noi",
+  "pt": "Passará pela nossa popa",
+  "nl": "Het zal achter ons langs passeren"
+ },
+ "Pruvamızın önünden geçecektir": {
+  "fill": false,
+  "en": "It will pass ahead of us",
+  "de": "Es wird vor unserem Bug passieren",
+  "fr": "Il passera sur notre avant",
+  "es": "Pasará por nuestra proa",
+  "it": "Passerà di prua a noi",
+  "pt": "Passará pela nossa proa",
+  "nl": "Het zal voor ons langs passeren"
+ },
+ "Bizimle aynı rotadadır": {
+  "fill": false,
+  "en": "It is on the same course as us",
+  "de": "Es steuert denselben Kurs wie wir",
+  "fr": "Il fait la même route que nous",
+  "es": "Lleva el mismo rumbo que nosotros",
+  "it": "Ha la nostra stessa rotta",
+  "pt": "Está no mesmo rumo que nós",
+  "nl": "Het vaart dezelfde koers als wij"
+ },
+ "Uzaklaşmaktadır": {
+  "fill": false,
+  "en": "It is moving away",
+  "de": "Es entfernt sich",
+  "fr": "Il s'éloigne",
+  "es": "Se está alejando",
+  "it": "Si sta allontanando",
+  "pt": "Está se afastando",
+  "nl": "Het verwijdert zich"
+ },
+ "3 kısa: Tornistan (geri) çalışıyorum.": {
+  "fill": true,
+  "en": "3 short blasts: I am operating astern propulsion.",
+  "de": "3 kurze Töne: Meine Maschine geht rückwärts.",
+  "fr": "3 sons brefs : je bats en arrière.",
+  "es": "3 pitadas cortas: estoy dando atrás."
+ },
+ "Tornistan (geri) çalışıyorum": {
+  "fill": true,
+  "en": "I am operating astern propulsion",
+  "de": "Meine Maschine geht rückwärts",
+  "fr": "Je bats en arrière",
+  "es": "Estoy dando atrás"
+ },
+ "Tornistan yap": {
+  "fill": true,
+  "en": "Go astern"
+ },
+ "Tornistanda": {
+  "fill": true,
+  "en": "When going astern",
+  "de": "Bei Rückwärtsfahrt",
+  "fr": "En marche arrière",
+  "es": "Dando atrás",
+  "it": "Con macchina indietro",
+  "pt": "Dando atrás",
+  "nl": "Bij achteruitslaan"
+ },
+ "Tornistanın etkisiz olması": {
+  "fill": true,
+  "en": "Going astern having no effect",
+  "de": "Dass Rückwärtsfahrt wirkungslos ist",
+  "fr": "Que la marche arrière soit sans effet",
+  "es": "Que dar atrás no tenga efecto",
+  "it": "Che la macchina indietro non abbia effetto",
+  "pt": "Que dar atrás não tenha efeito",
+  "nl": "Dat achteruitslaan geen effect heeft"
+ },
+ "8(e): Gerekirse hız azaltılır veya makineyi durdurup/tornistanla tüm yol kesilir.": {
+  "fill": true,
+  "en": "8(e): If necessary, slacken speed or take all way off by stopping or reversing the engines.",
+  "de": "8(e): Falls nötig, die Fahrt vermindern oder durch Stoppen oder Rückwärtsgehen der Maschine jegliche Fahrt wegnehmen.",
+  "fr": "8(e) : si nécessaire, réduire sa vitesse ou casser son erre en stoppant ou en battant en arrière.",
+  "es": "8(e): si es necesario, reducir la velocidad o suprimir toda la arrancada parando o invirtiendo las máquinas.",
+  "it": "8(e): se necessario, ridurre la velocità o togliere ogni abbrivio fermando o invertendo le macchine.",
+  "pt": "8(e): se necessário, reduzir a velocidade ou tirar todo o seguimento parando ou invertendo as máquinas.",
+  "nl": "8(e): zo nodig vaart minderen of alle vaart uit het schip nemen door de machines te stoppen of achteruit te slaan."
+ },
+ "Görüş içinde: 1/2/3 kısa = sancak/iskele/tornistan; 5 kısa = şüphe.": {
+  "fill": true,
+  "en": "In sight of one another: 1/2/3 short blasts = altering course to starboard / altering course to port / operating astern propulsion; 5 short = doubt.",
+  "de": "In Sicht voneinander: 1/2/3 kurze Töne = Kursänderung nach Steuerbord / Kursänderung nach Backbord / Maschine geht rückwärts; 5 kurze = Zweifel.",
+  "fr": "En vue l'un de l'autre : 1/2/3 sons brefs = je viens sur tribord / je viens sur bâbord / je bats en arrière ; 5 sons brefs = doute.",
+  "es": "A la vista uno del otro: 1/2/3 pitadas cortas = caigo a estribor / caigo a babor / estoy dando atrás; 5 cortas = duda.",
+  "it": "In vista l'una dell'altra: 1/2/3 suoni brevi = accosto a dritta / accosto a sinistra / macchine indietro; 5 brevi = dubbio.",
+  "pt": "À vista uma da outra: 1/2/3 apitos curtos = guinando para estibordo / guinando para bombordo / máquinas dando atrás; 5 curtos = dúvida.",
+  "nl": "In zicht van elkaar: 1/2/3 korte stoten = koers naar stuurboord / koers naar bakboord / ik sla achteruit; 5 korte = twijfel."
+ },
+ "Hızı asgariye indiririm; gerekirse tüm yolu keser, tornista yaparım": {
+  "fill": true,
+  "en": "I reduce speed to the minimum; if necessary I take all way off and go astern",
+  "de": "Ich verringere die Fahrt auf das Mindestmaß; falls nötig nehme ich jegliche Fahrt weg und gehe zurück",
+  "fr": "Je réduis ma vitesse au minimum ; si nécessaire, je casse toute mon erre et je bats en arrière",
+  "es": "Reduzco la velocidad al mínimo; si es necesario, suprimo toda la arrancada y doy atrás",
+  "it": "Riduco la velocità al minimo; se necessario tolgo ogni abbrivio e do macchina indietro",
+  "pt": "Reduzo a velocidade ao mínimo; se necessário, tiro todo o seguimento e dou atrás",
+  "nl": "Ik verminder vaart tot het minimum; zo nodig neem ik alle vaart weg en sla achteruit"
+ },
+ "İlk refleks tam yol tornistan olmamalıdır.": {
+  "fill": true,
+  "en": "The first reflex should not be full astern.",
+  "de": "Der erste Reflex sollte nicht „voll zurück“ sein.",
+  "fr": "Le premier réflexe ne doit pas être « en arrière toute ».",
+  "es": "El primer reflejo no debe ser «toda atrás».",
+  "it": "Il primo riflesso non deve essere «indietro tutta».",
+  "pt": "O primeiro reflexo não deve ser «toda força a ré».",
+  "nl": "De eerste reflex moet niet ‘volle kracht achteruit’ zijn."
+ },
+ "Aşırı Kıça Trim'in Dezavantajları:": {
+  "fill": true,
+  "en": "Disadvantages of Excessive Trim by the Stern:",
+  "de": "Nachteile übermäßiger Hecklastigkeit:",
+  "fr": "Inconvénients d'une assiette excessive sur l'arrière :",
+  "es": "Desventajas de un asiento apopante excesivo:",
+  "it": "Svantaggi di un appoppamento eccessivo:",
+  "pt": "Desvantagens do trim excessivo pela popa:",
+  "nl": "Nadelen van overmatige stuurlast:"
+ },
+ "Ağırlık ortada yoğunlaşınca tekne ortadan sarkar: sagging. Baş-kıça yığılınca hogging olur.": {
+  "fill": true,
+  "en": "When weight is concentrated amidships, the hull sags in the middle: sagging. When it is concentrated at the bow and stern, the result is hogging.",
+  "de": "Ist das Gewicht mittschiffs konzentriert, biegt sich der Rumpf in der Mitte durch: Sagging. Ist es an Bug und Heck konzentriert, entsteht Hogging.",
+  "fr": "Quand le poids est concentré au milieu, la coque s'affaisse en son centre : c'est le contre-arc (sagging). Quand il est concentré à l'avant et à l'arrière, c'est l'arc (hogging).",
+  "es": "Cuando el peso se concentra en el centro, el casco cede por el medio: arrufo (sagging). Cuando se concentra en proa y popa, se produce quebranto (hogging).",
+  "it": "Quando il peso è concentrato al centro, lo scafo si flette verso il basso al centro: insellamento (sagging). Quando è concentrato a prua e a poppa, si ha inarcamento (hogging).",
+  "pt": "Quando o peso se concentra a meio navio, o casco cede no meio: tosamento (sagging). Quando se concentra na proa e na popa, ocorre alquebramento (hogging).",
+  "nl": "Is het gewicht midscheeps geconcentreerd, dan buigt de romp in het midden door: sagging. Is het op voor- en achterschip geconcentreerd, dan ontstaat hogging."
+ },
+ "Gemi dalga tepesi ortasındayken orta bölge yukarı desteklenip baş-kıç aşağı yüklenirse hogging; dalga çukuru ortasındayken sagging eğilimi oluşur. Yük ve buoyancy dağılımı shear force ve bending moment üretir. Loading computer limitleri yalnız final durumda değil her yükleme/boşaltma adımında kontrol edilmelidir.": {
+  "fill": false,
+  "en": "When a wave crest is amidships, the middle is supported and the bow and stern are loaded downwards: hogging; when a wave trough is amidships, the tendency is sagging. The distribution of weight and buoyancy produces shear forces and bending moments. Loading computer limits must be checked not only for the final condition but at every loading/discharging step.",
+  "de": "Liegt ein Wellenberg mittschiffs, wird die Mitte getragen und Bug und Heck werden nach unten belastet: Hogging; liegt ein Wellental mittschiffs, entsteht die Neigung zum Sagging. Die Verteilung von Gewicht und Auftrieb erzeugt Querkräfte und Biegemomente. Die Grenzwerte des Ladecomputers müssen nicht nur für den Endzustand, sondern bei jedem Lade-/Löschschritt geprüft werden.",
+  "fr": "Quand une crête de vague est au milieu, le centre est soutenu et l'avant et l'arrière sont chargés vers le bas : arc (hogging) ; quand un creux est au milieu, la tendance est au contre-arc (sagging). La répartition des poids et de la poussée produit des efforts tranchants et des moments fléchissants. Les limites de l'ordinateur de chargement doivent être vérifiées non seulement à l'état final mais à chaque étape de chargement/déchargement.",
+  "es": "Cuando una cresta de ola está en el centro, la parte media queda apoyada y la proa y la popa se cargan hacia abajo: quebranto (hogging); cuando el seno de la ola está en el centro, la tendencia es al arrufo (sagging). La distribución de pesos y empujes produce esfuerzos cortantes y momentos flectores. Los límites del ordenador de carga deben comprobarse no solo en la condición final, sino en cada paso de carga/descarga.",
+  "it": "Quando una cresta d'onda è al centro, la parte centrale è sostenuta e prua e poppa sono caricate verso il basso: inarcamento (hogging); quando al centro c'è un cavo d'onda, la tendenza è all'insellamento (sagging). La distribuzione di pesi e spinte produce sforzi di taglio e momenti flettenti. I limiti del computer di carico vanno controllati non solo nella condizione finale ma a ogni fase di caricazione/scaricazione.",
+  "pt": "Quando a crista de uma onda está a meio navio, o meio fica apoiado e a proa e a popa ficam carregadas para baixo: alquebramento (hogging); quando o cavado está a meio navio, a tendência é de tosamento (sagging). A distribuição de pesos e de empuxo produz forças cortantes e momentos fletores. Os limites do computador de carga devem ser verificados não só na condição final, mas em cada etapa de carga/descarga.",
+  "nl": "Ligt een golftop midscheeps, dan wordt het midden gedragen en worden voor- en achterschip omlaag belast: hogging; ligt een golfdal midscheeps, dan ontstaat neiging tot sagging. De verdeling van gewicht en opwaartse kracht veroorzaakt dwarskrachten en buigende momenten. De grenzen van de beladingscomputer moeten niet alleen voor de eindtoestand maar bij elke laad-/losstap worden gecontroleerd."
+ },
+ "Yalpa ve baş-kıç vurma dengeyi bozar; belirlenen eşiklerin üzerinde çalışma ertelenir.": {
+  "fill": true,
+  "en": "Rolling and pitching upset balance; above the set limits, the work is postponed.",
+  "de": "Rollen und Stampfen beeinträchtigen das Gleichgewicht; oberhalb der festgelegten Grenzwerte wird die Arbeit verschoben.",
+  "fr": "Le roulis et le tangage compromettent l'équilibre ; au-delà des seuils fixés, le travail est reporté.",
+  "es": "El balance y el cabeceo alteran el equilibrio; por encima de los límites fijados, el trabajo se aplaza.",
+  "it": "Rollio e beccheggio compromettono l'equilibrio; oltre le soglie stabilite il lavoro viene rinviato.",
+  "pt": "O balanço e a arfagem comprometem o equilíbrio; acima dos limites estabelecidos, o trabalho é adiado.",
+  "nl": "Rollen en stampen verstoren het evenwicht; boven de vastgestelde grenzen wordt het werk uitgesteld."
+ },
+ "Kural 19(d)(i): sadece radar izine dayanarak gemi baş omuzdan geliyorsa rota iskeleye alınmamalı": {
+  "fill": true,
+  "en": "Rule 19(d)(i): if a vessel detected by radar alone is forward of the beam, an alteration of course to port should be avoided",
+  "de": "Regel 19(d)(i): Wird ein Fahrzeug nur mit Radar vorlicher als querab geortet, ist eine Kursänderung nach Backbord zu vermeiden",
+  "fr": "Règle 19(d)(i) : si un navire détecté au radar seulement se trouve sur l'avant du travers, éviter de venir sur bâbord",
+  "es": "Regla 19(d)(i): si un buque detectado solo por radar está a proa del través, debe evitarse un cambio de rumbo a babor",
+  "it": "Regola 19(d)(i): se una nave rilevata solo con il radar si trova a proravia del traverso, va evitata un'accostata a sinistra",
+  "pt": "Regra 19(d)(i): se uma embarcação detectada apenas pelo radar estiver por ante a vante do través, deve-se evitar uma guinada para bombordo",
+  "nl": "Voorschrift 19(d)(i): wordt een schip alleen met radar voorlijker dan dwars waargenomen, dan moet een koerswijziging naar bakboord worden vermeden"
+ },
+ "Kavşak durumunda diğer gemiyi SANCAK tarafında gören gemi yol verme yükümlüsüdür (Kural 15); manevra Kural 8 uyarınca erken ve belirgin olmalıdır. Sadece hız kesip beklemek yükümlülüğü karşılamaz.": {
+  "fill": true,
+  "en": "In a crossing situation, the vessel that has the other on her STARBOARD side shall keep out of the way (Rule 15); under Rule 8 the action must be early and substantial. Merely slowing down and waiting does not meet the obligation.",
+  "de": "Beim Kreuzen der Kurse muss das Fahrzeug, das das andere an seiner STEUERBORDSEITE hat, ausweichen (Regel 15); nach Regel 8 muss das Manöver frühzeitig und durchgreifend sein. Nur die Fahrt zu verringern und abzuwarten erfüllt die Pflicht nicht.",
+  "fr": "En situation de croisement, le navire qui voit l'autre sur TRIBORD doit s'écarter de sa route (Règle 15) ; selon la Règle 8, la manœuvre doit être exécutée largement à temps et franchement. Se contenter de ralentir et d'attendre ne remplit pas l'obligation.",
+  "es": "En una situación de cruce, el buque que tiene al otro por su banda de ESTRIBOR debe maniobrar (Regla 15); según la Regla 8, la maniobra debe ser anticipada y franca. Limitarse a reducir la velocidad y esperar no cumple la obligación.",
+  "it": "In una situazione di incrocio, la nave che vede l'altra sulla propria DRITTA deve manovrare per lasciarle libera la rotta (Regola 15); secondo la Regola 8 la manovra deve essere tempestiva e decisa. Limitarsi a ridurre la velocità e attendere non soddisfa l'obbligo.",
+  "pt": "Numa situação de rumos cruzados, a embarcação que tem a outra pelo seu bordo de ESTIBORDO deve manobrar (Regra 15); pela Regra 8, a manobra deve ser antecipada e franca. Apenas reduzir a velocidade e esperar não cumpre a obrigação.",
+  "nl": "Bij kruisende koersen moet het schip dat het andere aan STUURBOORD ziet uitwijken (Voorschrift 15); volgens Voorschrift 8 moet de manoeuvre tijdig en duidelijk zijn. Alleen vaart minderen en afwachten voldoet niet aan de verplichting."
+ },
+ "Dümenin en son noktasına kadar çevrilmesi; 'iskele alabanda' veya 'sancak alabanda' şeklinde kullanılır.": {
+  "fill": true,
+  "en": "Turning the rudder to its maximum angle; given as the orders 'hard a-port' or 'hard a-starboard'.",
+  "de": "Das Ruder bis zum größten Ruderwinkel legen; als Kommando „Hart Backbord“ oder „Hart Steuerbord“ gegeben.",
+  "fr": "Mettre la barre à son angle maximal ; donné par les ordres « hard a-port » ou « hard a-starboard ».",
+  "es": "Meter el timón a su ángulo máximo; se da con las órdenes «hard a-port» o «hard a-starboard».",
+  "it": "Portare il timone al suo angolo massimo; dato con gli ordini «hard a-port» o «hard a-starboard».",
+  "pt": "Carregar o leme até o ângulo máximo; dado pelas ordens «hard a-port» ou «hard a-starboard».",
+  "nl": "Het roer naar de grootste uitslag leggen; gegeven met de commando's ‘hard a-port’ of ‘hard a-starboard’."
+ },
+ "Alabanda dümenle 180° dönüş sonunda geminin orijinal rotasından yanal uzaklığı.": {
+  "fill": true,
+  "en": "The distance the ship has moved sideways from her original track when she has turned through 180° with hard over rudder.",
+  "de": "Die Strecke, um die sich das Schiff bei einer 180°-Drehung mit Hartruderlage seitlich von seiner ursprünglichen Kurslinie entfernt hat.",
+  "fr": "La distance dont le navire s'est écarté latéralement de sa route initiale après avoir tourné de 180° avec toute la barre.",
+  "es": "La distancia que el buque se ha separado lateralmente de su derrota original cuando ha caído 180° con todo el timón metido.",
+  "it": "La distanza di cui la nave si è spostata lateralmente dalla rotta iniziale dopo aver accostato di 180° con tutta la barra.",
+  "pt": "A distância que o navio se afastou lateralmente da derrota inicial ao guinar 180° com todo o leme.",
+  "nl": "De afstand waarover het schip zijdelings van zijn oorspronkelijke koerslijn is verplaatst na een draai van 180° met volle roeruitslag."
+ },
+ "Geminin alabanda dümenle yaptığı tam dönüş dairesi; manevra kabiliyetinin ölçüsüdür.": {
+  "fill": true,
+  "en": "The circle the ship makes when turning with full (hard over) rudder; a measure of manoeuvrability.",
+  "de": "Der Kreis, den das Schiff bei einer Drehung mit Hartruderlage beschreibt; ein Maß für die Manövrierfähigkeit.",
+  "fr": "Le cercle que décrit le navire lorsqu'il tourne avec toute la barre ; une mesure de sa manœuvrabilité.",
+  "es": "El círculo que describe el buque al caer con todo el timón metido; una medida de su maniobrabilidad.",
+  "it": "Il cerchio descritto dalla nave quando accosta con tutta la barra; una misura della sua manovrabilità.",
+  "pt": "O círculo descrito pelo navio quando guina com todo o leme; uma medida da sua manobrabilidade.",
+  "nl": "De cirkel die het schip beschrijft bij een draai met volle roeruitslag; een maat voor de manoeuvreerbaarheid."
+ },
+ "Pruva üst güvertesinin yükseltilmiş kısmı; demir donanımı ve bağlama ekipmanları bulunur.": {
+  "fill": false,
+  "en": "The raised part of the deck at the bow; it carries the anchoring and mooring equipment.",
+  "de": "Der erhöhte Decksteil am Bug; dort stehen die Anker- und Festmacheeinrichtungen.",
+  "fr": "La partie surélevée du pont à l'avant ; elle porte les apparaux de mouillage et d'amarrage.",
+  "es": "La parte elevada de la cubierta a proa; lleva los equipos de fondeo y amarre.",
+  "it": "La parte rialzata del ponte a prua; porta gli apparecchi di ancoraggio e di ormeggio.",
+  "pt": "A parte elevada do convés na proa; nela ficam os equipamentos de fundeio e de amarração.",
+  "nl": "Het verhoogde deel van het dek bij de boeg; daar staan de anker- en meeruitrusting."
+ },
+ "Heel (yana yatma)": {
+  "fill": false,
+  "en": "Heel",
+  "de": "Krängung",
+  "fr": "Inclinaison transversale (heel)",
+  "es": "Escora (heel)",
+  "it": "Sbandamento (heel)",
+  "pt": "Adernamento (heel)",
+  "nl": "Helling (heel)"
+ },
+ "Apiko": {
+  "fill": true,
+  "en": "Up and down",
+  "de": "Auf und nieder",
+  "fr": "À pic (Up and down)",
+  "es": "A pique (Up and down)",
+  "it": "A picco (Up and down)",
+  "pt": "A pique (Up and down)",
+  "nl": "Up and down"
+ },
+ "Borda Feneri": {
+  "fill": false,
+  "en": "Sidelights",
+  "de": "Seitenlichter",
+  "fr": "Feux de côté",
+  "es": "Luces de costado",
+  "it": "Fanali laterali",
+  "pt": "Luzes de bordos",
+  "nl": "Boordlichten"
+ },
+ "'Steady' alabanda demektir": {
+  "fill": true,
+  "en": "'Steady' means hard over",
+  "de": "„Steady“ bedeutet Hartruder",
+  "fr": "« Steady » signifie toute la barre",
+  "es": "«Steady» significa todo el timón a una banda",
+  "it": "«Steady» significa tutta la barra",
+  "pt": "«Steady» significa todo o leme",
+  "nl": "‘Steady’ betekent roer hard over"
+ },
+ "'Steady as she goes' dümeni ortalamaktır": {
+  "fill": true,
+  "en": "'Steady as she goes' means putting the rudder amidships",
+  "de": "„Steady as she goes“ bedeutet, das Ruder mittschiffs zu legen",
+  "fr": "« Steady as she goes » signifie mettre la barre à zéro",
+  "es": "«Steady as she goes» significa poner el timón a la vía",
+  "it": "«Steady as she goes» significa mettere la barra al centro",
+  "pt": "«Steady as she goes» significa colocar o leme a meio",
+  "nl": "‘Steady as she goes’ betekent het roer midscheeps zetten"
+ },
+ "Güvertede çift sütun halinde bulunan, palamar halatlarının voltasının atıldığı bağlama elemanı.": {
+  "fill": true,
+  "en": "A mooring fitting on deck consisting of a pair of posts, on which mooring lines are made fast.",
+  "de": "Ein Festmachebeschlag an Deck aus zwei Pfosten, auf dem die Festmacherleinen belegt werden.",
+  "fr": "Ferrure d'amarrage du pont formée de deux fûts, sur laquelle on tourne les amarres.",
+  "es": "Herraje de amarre en cubierta formado por dos columnas, en el que se hacen firmes las amarras.",
+  "it": "Accessorio d'ormeggio in coperta formato da due colonne, su cui si danno volta i cavi d'ormeggio.",
+  "pt": "Ferragem de amarração no convés formada por duas colunas, na qual se dá volta às espias.",
+  "nl": "Een meerbeslag aan dek bestaande uit twee palen, waarop de meertrossen worden belegd."
+ },
+ "Halatı volta etme": {
+  "fill": true,
+  "en": "Making lines fast",
+  "de": "Leinen belegen",
+  "fr": "Tourner les amarres",
+  "es": "Hacer firmes los cabos",
+  "it": "Dare volta alle cime",
+  "pt": "Dar volta nos cabos",
+  "nl": "Lijnen beleggen"
+ },
+ "Vinç freni halat kopma yükünün altında tutar; halat babaya figure-of-eight ile volta edilir.": {
+  "fill": true,
+  "en": "The winch brake holds the line below its breaking load; the line is made fast on the bollard with figure-of-eight turns.",
+  "de": "Die Windenbremse hält die Leine unterhalb ihrer Bruchlast; die Leine wird mit Achterschlägen auf dem Poller belegt.",
+  "fr": "Le frein du treuil retient l'amarre en dessous de sa charge de rupture ; l'amarre est tournée sur la bitte en huit.",
+  "es": "El freno del chigre sujeta el cabo por debajo de su carga de rotura; el cabo se hace firme en el noray con vueltas en ocho.",
+  "it": "Il freno del verricello trattiene la cima al di sotto del suo carico di rottura; la cima si dà volta alla bitta con giri a otto.",
+  "pt": "O freio do guincho segura o cabo abaixo da sua carga de ruptura; o cabo recebe volta no cabeço com voltas em oito.",
+  "nl": "De lierrem houdt de lijn onder haar breekkracht; de lijn wordt met achtslagen op de bolder belegd."
+ },
+ "Birçok kaza, yetersiz veya gevşeyen lashing nedeniyle yükün kayması (cargo shift) ile başladı; gemi bir bordaya yattı, bazıları battı. Ders: lashing 'bir kez bağlanıp unutulan' değil, sefer boyu izlenen ve yeniden gerilen bir görevdir.": {
+  "fill": false,
+  "en": "Many accidents began with the cargo shifting because of insufficient or slackened lashing; the ship took a heavy list, and some sank. Lesson: lashing is not a job that is 'done once and forgotten' but one that is monitored and re-tightened throughout the voyage.",
+  "de": "Viele Unfälle begannen mit dem Übergehen der Ladung wegen unzureichender oder gelockerter Laschings; das Schiff bekam starke Schlagseite, einige sanken. Lehre: Laschen ist keine Arbeit, die „einmal gemacht und vergessen“ wird, sondern eine, die während der ganzen Reise überwacht und nachgespannt wird.",
+  "fr": "De nombreux accidents ont commencé par un ripage de la cargaison dû à un saisissage insuffisant ou relâché ; le navire a pris une forte gîte et certains ont coulé. Leçon : le saisissage n'est pas une tâche « faite une fois puis oubliée », mais une tâche surveillée et retendue pendant tout le voyage.",
+  "es": "Muchos accidentes empezaron con el corrimiento de la carga por un trincaje insuficiente o aflojado; el buque tomó una fuerte escora y algunos se hundieron. Lección: el trincaje no es una tarea que «se hace una vez y se olvida», sino una que se vigila y se vuelve a tensar durante todo el viaje.",
+  "it": "Molti incidenti sono iniziati con lo spostamento del carico dovuto a un rizzaggio insufficiente o allentato; la nave ha assunto un forte sbandamento e alcune sono affondate. Lezione: il rizzaggio non è un lavoro «fatto una volta e dimenticato», ma un compito da controllare e ritensionare per tutto il viaggio.",
+  "pt": "Muitos acidentes começaram com o deslocamento da carga por peação insuficiente ou afrouxada; o navio adquiriu forte banda e alguns afundaram. Lição: a peação não é uma tarefa «feita uma vez e esquecida», mas uma tarefa acompanhada e retesada durante toda a viagem.",
+  "nl": "Veel ongevallen begonnen met het verschuiven van de lading door onvoldoende of losgeraakte sjorringen; het schip kreeg zware slagzij en sommige zonken. Les: sjorren is geen klus die ‘één keer gedaan en vergeten’ wordt, maar een taak die de hele reis wordt gecontroleerd en opnieuw aangespannen."
+ },
+ "Yolcu gemilerinde stabilite; yolcu (genelde 75 kg/yolcu varsayımı), bagaj, kargo ve ballast dahil hesaplanır. Yolcuların bir borda toplanması (passenger crowding) heeling moment yaratır. Bu bölüm yolcu gemisi stabilitesini ele alır.": {
+  "fill": false,
+  "en": "The stability of passenger ships is calculated including passengers (usually assumed to be 75 kg per passenger), baggage, cargo and ballast. Passengers crowding to one side (passenger crowding) create a heeling moment. This section covers passenger ship stability.",
+  "de": "Die Stabilität von Fahrgastschiffen wird einschließlich Fahrgästen (meist mit 75 kg je Fahrgast angenommen), Gepäck, Ladung und Ballast berechnet. Wenn sich die Fahrgäste an einer Seite sammeln (passenger crowding), entsteht ein Krängungsmoment. Dieser Abschnitt behandelt die Stabilität von Fahrgastschiffen.",
+  "fr": "La stabilité des navires à passagers est calculée en incluant les passagers (75 kg par passager en général), les bagages, la cargaison et le ballast. Le rassemblement des passagers sur un bord (passenger crowding) crée un moment inclinant. Cette section traite de la stabilité des navires à passagers.",
+  "es": "La estabilidad de los buques de pasaje se calcula incluyendo a los pasajeros (normalmente se suponen 75 kg por pasajero), el equipaje, la carga y el lastre. La concentración de pasajeros en una banda (passenger crowding) crea un momento escorante. Esta sección trata la estabilidad de los buques de pasaje.",
+  "it": "La stabilità delle navi da passeggeri si calcola includendo i passeggeri (di solito si assumono 75 kg per passeggero), i bagagli, il carico e la zavorra. L'affollamento dei passeggeri su un lato (passenger crowding) crea un momento sbandante. Questa sezione tratta la stabilità delle navi da passeggeri.",
+  "pt": "A estabilidade dos navios de passageiros é calculada incluindo os passageiros (normalmente se supõem 75 kg por passageiro), a bagagem, a carga e o lastro. A aglomeração dos passageiros num bordo (passenger crowding) cria um momento inclinante. Esta seção trata da estabilidade de navios de passageiros.",
+  "nl": "De stabiliteit van passagiersschepen wordt berekend inclusief passagiers (meestal uitgaande van 75 kg per passagier), bagage, lading en ballast. Het samendrommen van passagiers aan één zijde (passenger crowding) veroorzaakt een hellend moment. Dit gedeelte behandelt de stabiliteit van passagiersschepen."
+ },
+ "Liman yaklaşımlarında ve kıyı yakını operasyonlarda swell etkisi özellikle kritiktir. Sığ sularda swell dik ve yüksek dalga oluşumuna (shoaling) neden olabilir. Bağlama/boşaltma sırasında uzun periyotlu swell geminin ve iskele bağlantılarının dinamik yüklerini artırır; palamar kopması riski yükselir. Açık denizde wind sea ve swell birlikte analiz edilmeden yapılan hava rotalama kararları eksik kalır. Deniz durum raporu hazırlanırken wind sea ve swell ayrı ayrı belirtilmeli; yön, yükseklik ve periyot bilgileri her biri için verilmelidir.": {
+  "fill": false,
+  "en": "The effect of swell is particularly critical in port approaches and inshore operations. In shallow water, swell can build into steep, high waves (shoaling). While moored, and during mooring and unmooring, long-period swell increases the dynamic loads on the ship and on her mooring connections at the berth; the risk of mooring lines parting rises. Weather routeing decisions made at sea without analysing wind sea and swell together are incomplete. When preparing a sea state report, wind sea and swell should be stated separately, with direction, height and period given for each.",
+  "de": "In Hafenansteuerungen und bei küstennahen Arbeiten ist der Einfluss der Dünung besonders kritisch. In flachem Wasser kann die Dünung steile, hohe Wellen bilden (Shoaling). Beim Festmachen und am Liegeplatz erhöht langperiodische Dünung die dynamischen Lasten auf das Schiff und seine Festmacherverbindungen; die Gefahr, dass Festmacherleinen brechen, steigt. Entscheidungen zur Wetterroutenberatung auf See ohne gemeinsame Analyse von Windsee und Dünung sind unvollständig. In einem Seegangsbericht sollen Windsee und Dünung getrennt angegeben werden, jeweils mit Richtung, Höhe und Periode.",
+  "fr": "L'effet de la houle est particulièrement critique dans les approches de port et les opérations près des côtes. En eau peu profonde, la houle peut former des vagues raides et hautes (levée de la houle). À quai, et pendant l'amarrage ou l'appareillage, une houle de longue période augmente les charges dynamiques sur le navire et sur ses amarres ; le risque de rupture d'amarres augmente. Les décisions de routage météorologique prises en mer sans analyser ensemble la mer du vent et la houle sont incomplètes. Dans un rapport d'état de la mer, la mer du vent et la houle doivent être indiquées séparément, avec la direction, la hauteur et la période de chacune.",
+  "es": "El efecto del mar de fondo es especialmente crítico en las aproximaciones a puerto y en las operaciones cerca de la costa. En aguas poco profundas, el mar de fondo puede formar olas empinadas y altas (asomeramiento). Atracado, y durante el atraque y el desatraque, el mar de fondo de periodo largo aumenta las cargas dinámicas sobre el buque y sus amarras; aumenta el riesgo de que falten las amarras. Las decisiones de derrota meteorológica tomadas en la mar sin analizar juntos el mar de viento y el mar de fondo son incompletas. Al preparar un informe del estado de la mar, el mar de viento y el mar de fondo deben indicarse por separado, con la dirección, la altura y el periodo de cada uno.",
+  "it": "L'effetto del mare lungo è particolarmente critico negli avvicinamenti ai porti e nelle operazioni sottocosta. In acque basse il mare lungo può formare onde ripide e alte (shoaling). All'ormeggio, e durante l'ormeggio e il disormeggio, il mare lungo di lungo periodo aumenta i carichi dinamici sulla nave e sui suoi cavi d'ormeggio; cresce il rischio di rottura dei cavi. Le decisioni di rotta meteorologica prese in mare senza analizzare insieme mare vivo e mare lungo sono incomplete. Nel preparare un rapporto sullo stato del mare, mare vivo e mare lungo vanno indicati separatamente, con direzione, altezza e periodo di ciascuno.",
+  "pt": "O efeito do swell é especialmente crítico nas aproximações de portos e nas operações perto da costa. Em águas rasas, o swell pode formar ondas íngremes e altas (empolamento). Atracado, e durante a atracação e a desatracação, o swell de período longo aumenta as cargas dinâmicas sobre o navio e suas espias; cresce o risco de as espias partirem. Decisões de roteamento meteorológico tomadas no mar sem analisar juntos o mar de vento e o swell ficam incompletas. Ao preparar um relatório de estado do mar, o mar de vento e o swell devem ser indicados separadamente, com direção, altura e período de cada um.",
+  "nl": "Het effect van deining is bijzonder kritiek bij het aanlopen van havens en bij werkzaamheden dicht onder de kust. In ondiep water kan deining steile, hoge golven vormen (shoaling). Aan de ligplaats, en tijdens het afmeren en ontmeren, verhoogt deining met een lange periode de dynamische belastingen op het schip en zijn meertrossen; het risico dat trossen breken neemt toe. Beslissingen over weersroutering op zee zonder windzee en deining samen te analyseren zijn onvolledig. In een zeegangsrapport moeten windzee en deining afzonderlijk worden vermeld, met richting, hoogte en periode van elk."
+ },
+ "Haritalarda fener bilgisi, kısa bir kısaltma dizisiyle verilir ve bu dizide her parça farklı bir gerçeği taşır. Fl çakarlı, Oc örtmeli, Iso eşit aralıklı, LFl uzun çakarlı, F sabit ışığı ifade eder. Q hızlı çakar, VQ çok hızlı çakar anlamına gelir; bunlar özellikle kardinal ve yaklaşım işaretlerinde gece ayırt etmenin bel kemiğidir. Al alternatif, Mo mors, Dir yönlü ışık gibi ifadeler de haritada görülebilir. Renkler W, R, G, Y harfleriyle yazılır ve çoğu kez karakterin yanında yer alır.": {
+  "fill": true,
+  "en": "On charts, light information is given as a short series of abbreviations, and each part of the series carries a different fact. Fl stands for flashing, Oc for occulting, Iso for isophase, LFl for long-flashing and F for a fixed light. Q means quick flashing and VQ very quick flashing; these are the backbone of identifying cardinal and approach marks at night. Abbreviations such as Al for alternating, Mo for Morse code and Dir for a directional light can also be seen on the chart. Colours are written with the letters W, R, G and Y and usually appear next to the character.",
+  "de": "In Seekarten wird die Feuerkennung als kurze Folge von Abkürzungen angegeben, und jeder Teil der Folge enthält eine andere Angabe. Fl steht für Blitz, Oc für unterbrochen, Iso für Gleichtakt, LFl für Blink und F für Festfeuer. Q bedeutet Funkel und VQ schnelles Funkel; sie sind das Rückgrat der nächtlichen Unterscheidung, besonders bei Kardinal- und Ansteuerungszeichen. Abkürzungen wie Al für Wechselfeuer, Mo für Morsekennung und Dir für Leitfeuer können ebenfalls in der Karte stehen. Die Farben werden mit den Buchstaben W, R, G und Y angegeben und stehen meist neben der Kennung.",
+  "fr": "Sur les cartes, les caractéristiques des feux sont données par une courte suite d'abréviations, chaque élément apportant une information différente. Fl signifie à éclats, Oc à occultations, Iso isophase, LFl à éclats longs et F fixe. Q signifie scintillant et VQ scintillant rapide ; ce sont la base de l'identification de nuit, en particulier des marques cardinales et d'atterrissage. On peut aussi voir sur la carte des abréviations comme Al (alternatif), Mo (morse) et Dir (feu de direction). Les couleurs sont indiquées par les lettres W, R, G et Y et figurent généralement à côté du caractère.",
+  "es": "En las cartas, la información de las luces se da con una breve serie de abreviaturas, y cada parte de la serie aporta un dato distinto. Fl significa de destellos, Oc de ocultaciones, Iso isofase, LFl de destellos largos y F fija. Q significa centelleante y VQ centelleante rápida; son la base para identificar de noche, sobre todo, las marcas cardinales y de recalada. En la carta también pueden verse abreviaturas como Al (alternativa), Mo (Morse) y Dir (luz de dirección). Los colores se escriben con las letras W, R, G e Y y suelen ir junto al carácter.",
+  "it": "Sulle carte le caratteristiche dei fanali sono indicate con una breve serie di abbreviazioni, e ogni parte della serie fornisce un'informazione diversa. Fl indica a lampi, Oc intermittente, Iso isofase, LFl a lampi lunghi e F fissa. Q significa scintillante e VQ scintillante rapida; sono la base del riconoscimento notturno, soprattutto dei segnali cardinali e di atterraggio. Sulla carta si possono vedere anche abbreviazioni come Al (alternata), Mo (Morse) e Dir (luce direzionale). I colori sono indicati con le lettere W, R, G e Y e di solito compaiono accanto alla caratteristica.",
+  "pt": "Nas cartas, a característica das luzes é dada por uma curta sequência de abreviaturas, e cada parte traz uma informação diferente. Fl significa de lampejos, Oc de ocultações, Iso isofásica, LFl de lampejos longos e F fixa. Q significa rápida e VQ muito rápida; são a base da identificação noturna, sobretudo das marcas cardinais e de aproximação. Também podem aparecer na carta abreviaturas como Al (alternada), Mo (Morse) e Dir (luz direcional). As cores são indicadas pelas letras W, R, G e Y e costumam aparecer ao lado da característica.",
+  "nl": "Op zeekaarten wordt de lichtinformatie gegeven als een korte reeks afkortingen, en elk deel van de reeks bevat een ander gegeven. Fl staat voor schitterlicht, Oc voor onderbroken licht, Iso voor isofase, LFl voor lang schitterlicht en F voor vast licht. Q betekent flikkerlicht en VQ snel flikkerlicht; ze vormen de basis voor de herkenning 's nachts, vooral van cardinale en aanloopmarkeringen. Ook afkortingen als Al (alternerend), Mo (morse) en Dir (richtlicht) kunnen op de kaart staan. De kleuren worden aangegeven met de letters W, R, G en Y en staan meestal naast het karakter."
+ },
+ "Gerginlik değiştikçe halatı kendiliğinden boşlar veya vira eder": {
+  "fill": true,
+  "en": "Automatically pays out or heaves in the line as the tension changes",
+  "de": "Gibt die Leine bei wechselnder Spannung selbsttätig nach oder holt sie ein",
+  "fr": "File ou vire automatiquement l'amarre quand la tension change",
+  "es": "Fila o vira automáticamente el cabo cuando cambia la tensión",
+  "it": "Molla o vira automaticamente la cima al variare della tensione",
+  "pt": "Solta ou recolhe automaticamente o cabo quando a tensão muda",
+  "nl": "Viert de lijn of haalt haar automatisch in wanneer de spanning verandert"
+ },
+ "Klas kuralları vira hızını ve fren tutma kapasitesini belirler; fren, zincirin kopma yükünün belirli oranını tutmalıdır.": {
+  "fill": true,
+  "en": "Class rules set the heaving speed and the brake holding capacity; the brake must hold a specified proportion of the chain's breaking load.",
+  "de": "Die Klassenvorschriften legen die Hievgeschwindigkeit und die Haltekraft der Bremse fest; die Bremse muss einen bestimmten Anteil der Bruchlast der Kette halten.",
+  "fr": "Les règles de classe fixent la vitesse de virage et la capacité de retenue du frein ; le frein doit retenir une proportion donnée de la charge de rupture de la chaîne.",
+  "es": "Las reglas de clase fijan la velocidad de virado y la capacidad de retención del freno; el freno debe sujetar una proporción determinada de la carga de rotura de la cadena.",
+  "it": "Le regole di classe stabiliscono la velocità di salpamento e la capacità di tenuta del freno; il freno deve trattenere una determinata percentuale del carico di rottura della catena.",
+  "pt": "As regras de classe definem a velocidade de içamento e a capacidade de retenção do freio; o freio deve segurar uma proporção definida da carga de ruptura da amarra.",
+  "nl": "De klassevoorschriften bepalen de hieuwsnelheid en het houdvermogen van de rem; de rem moet een vastgesteld deel van de breekkracht van de ketting kunnen houden."
+ },
+ "Fora / koy ver": {
+  "fill": true,
+  "en": "Let go / cast off"
+ },
+ "Halatlar fora, kangallar düzgün serili": {
+  "fill": true,
+  "en": "Lines clear for running, coils neatly flaked out"
+ },
+ "İstasyon temiz, halatlar fora, fairlead'ler dönüyor mu?": {
+  "fill": true,
+  "en": "Is the station clear, are the lines clear for running and do the fairleads turn freely?"
+ },
+ "Yelkenli gemilerde en üst yelkenin adı; direğin en tepesine donanır.": {
+  "fill": false,
+  "en": "On sailing ships, the name of the highest sail; it is set at the very top of the mast.",
+  "de": "Auf Segelschiffen der Name des obersten Segels; es wird ganz oben am Mast gesetzt.",
+  "fr": "Sur les voiliers, le nom de la voile la plus haute ; elle est établie tout en haut du mât.",
+  "es": "En los veleros, el nombre de la vela más alta; se larga en lo más alto del palo.",
+  "it": "Sui velieri, il nome della vela più alta; si issa in cima all'albero.",
+  "pt": "Nos veleiros, o nome da vela mais alta; é envergada no topo do mastro.",
+  "nl": "Op zeilschepen de naam van het hoogste zeil; het wordt helemaal boven in de mast gevoerd."
+ },
+ "Örtü kullanmak": {
+  "fill": false,
+  "en": "Using covers",
+  "de": "Abdeckungen verwenden",
+  "fr": "Utiliser des housses",
+  "es": "Usar fundas",
+  "it": "Usare coperture",
+  "pt": "Usar capas",
+  "nl": "Afdekkingen gebruiken"
+ },
+ "Asma ve dağıtım": {
+  "fill": true,
+  "en": "Posting and distribution",
+  "de": "Aushängen und Verteilen",
+  "fr": "Affichage et distribution",
+  "es": "Colocación y distribución",
+  "it": "Affissione e distribuzione",
+  "pt": "Afixação e distribuição",
+  "nl": "Ophangen en verspreiden"
+ },
+ "Makine üstü, tank top": {
+  "fill": true,
+  "en": "Above machinery, tank top",
+  "de": "Über Maschinen, Tankdecke",
+  "fr": "Au-dessus des machines, plafond de double fond",
+  "es": "Sobre la maquinaria, techo del doble fondo",
+  "it": "Sopra i macchinari, cielo del doppiofondo",
+  "pt": "Acima das máquinas, teto do duplo fundo",
+  "nl": "Boven machines, binnenbodem"
+ },
+ "Hold çevresi, tank top": {
+  "fill": true,
+  "en": "Around holds, tank top",
+  "de": "Um die Laderäume, Tankdecke",
+  "fr": "Autour des cales, plafond de double fond",
+  "es": "Alrededor de las bodegas, techo del doble fondo",
+  "it": "Intorno alle stive, cielo del doppiofondo",
+  "pt": "Em torno dos porões, teto do duplo fundo",
+  "nl": "Rond de ruimen, binnenbodem"
+ },
+ "Makineli, durmuş (no way)": {
+  "fill": true,
+  "en": "Power-driven, stopped (making no way)",
+  "de": "Maschinenfahrzeug, gestoppt (keine Fahrt durchs Wasser)",
+  "fr": "À propulsion mécanique, stoppé (sans erre)",
+  "es": "De propulsión mecánica, parado (sin arrancada)",
+  "it": "A propulsione meccanica, fermo (senza abbrivio)",
+  "pt": "De propulsão mecânica, parada (sem seguimento)",
+  "nl": "Werktuiglijk voortbewogen, gestopt (geen vaart)"
+ },
+ "Sıkıştırma segmanları gaz sızdırmazlığı, yağ segmanları liner üzerindeki yağ filmini kontrol eder. Ağız boşluğu (gap) aşırı artarsa blow-by olur.": {
+  "fill": true,
+  "en": "Compression rings provide gas tightness; oil control rings control the oil film on the liner. If the ring gap becomes too large, blow-by occurs.",
+  "de": "Verdichtungsringe sorgen für Gasdichtheit, Ölabstreifringe regeln den Ölfilm auf der Laufbuchse. Wird das Stoßspiel zu groß, kommt es zum Durchblasen (Blow-by).",
+  "fr": "Les segments de compression assurent l'étanchéité aux gaz ; les segments racleurs contrôlent le film d'huile sur la chemise. Si le jeu à la coupe devient trop grand, il se produit des fuites de gaz (blow-by)."
+ },
+ "Ağız boşluğu (butt clearance)": {
+  "fill": true,
+  "en": "Ring gap (butt clearance)",
+  "de": "Stoßspiel (butt clearance)",
+  "fr": "Jeu à la coupe (butt clearance)"
+ },
+ "Segman ağız boşluğu (butt clearance) düzenli olarak kontrol edilmelidir.": {
+  "fill": true,
+  "en": "The piston ring butt clearance must be checked regularly.",
+  "de": "Das Stoßspiel der Kolbenringe muss regelmäßig kontrolliert werden.",
+  "fr": "Le jeu à la coupe des segments doit être contrôlé régulièrement."
+ },
+ "Segman ağız boşluğu (butt gap) artarsa ne olur?": {
+  "fill": true,
+  "en": "What happens if the piston ring butt gap increases?",
+  "de": "Was passiert, wenn das Stoßspiel der Kolbenringe zunimmt?",
+  "fr": "Que se passe-t-il si le jeu à la coupe des segments augmente ?"
+ },
+ "Segman durumu, gömlek yağ filmi, kurum birikimi ve kaçak izlerine": {
+  "fill": true,
+  "en": "Piston ring condition, liner oil film, carbon deposits and traces of leakage",
+  "de": "Zustand der Kolbenringe, Ölfilm auf der Laufbuchse, Rußablagerungen und Leckspuren",
+  "fr": "État des segments, film d'huile sur la chemise, dépôts de calamine et traces de fuite",
+  "es": "Estado de los aros, película de aceite en la camisa, depósitos de carbonilla y rastros de fugas",
+  "it": "Stato delle fasce elastiche, film d'olio sulla camicia, depositi carboniosi e tracce di trafilamento",
+  "pt": "Estado dos anéis, película de óleo na camisa, depósitos de carvão e sinais de vazamento",
+  "nl": "Toestand van de zuigerveren, oliefilm op de cilindervoering, roetafzetting en lekkagesporen"
+ },
+ "Segman Kontrolü": {
+  "fill": true,
+  "en": "Piston Ring Inspection",
+  "de": "Kontrolle der Kolbenringe",
+  "fr": "Contrôle des segments",
+  "es": "Control de los aros del pistón",
+  "it": "Controllo delle fasce elastiche",
+  "pt": "Inspeção dos anéis do pistão",
+  "nl": "Controle van de zuigerveren"
+ },
+ "Segman Tipleri": {
+  "fill": true,
+  "en": "Piston Ring Types",
+  "de": "Arten von Kolbenringen",
+  "fr": "Types de segments",
+  "es": "Tipos de aros de pistón",
+  "it": "Tipi di fasce elastiche",
+  "pt": "Tipos de anéis de pistão",
+  "nl": "Soorten zuigerveren"
+ },
+ "Segman, crown kontrolü": {
+  "fill": true,
+  "en": "Piston ring and crown inspection",
+  "de": "Kontrolle von Kolbenringen und Kolbenboden",
+  "fr": "Contrôle des segments et de la tête de piston",
+  "es": "Control de los aros y de la cabeza del pistón",
+  "it": "Controllo delle fasce e del cielo del pistone",
+  "pt": "Inspeção dos anéis e da coroa do pistão",
+  "nl": "Controle van zuigerveren en zuigerkroon"
+ },
+ "Geminin iskeletinin sertifikası": {
+  "fill": false,
+  "en": "Certificate of the ship's structure",
+  "de": "Zeugnis über die Schiffsstruktur",
+  "fr": "Certificat de la structure du navire",
+  "es": "Certificado de la estructura del buque",
+  "it": "Certificato della struttura della nave",
+  "pt": "Certificado da estrutura do navio",
+  "nl": "Certificaat voor de scheepsconstructie"
+ },
+ "Yatay yumuşak demir kaynaklı kadran (quadrantal) sapmayı": {
+  "fill": true,
+  "en": "The quadrantal deviation caused by horizontal soft iron",
+  "de": "Die durch horizontales weiches Eisen verursachte quadrantale Deviation",
+  "fr": "La déviation quadrantale due au fer doux horizontal",
+  "es": "El desvío cuadrantal causado por el hierro dulce horizontal",
+  "it": "La deviazione quadrantale causata dal ferro dolce orizzontale",
+  "pt": "O desvio quadrantal causado pelo ferro doce horizontal",
+  "nl": "De quadrantale deviatie veroorzaakt door horizontaal week ijzer"
+ },
+ "Ağ, iskeleden düşme hâlinde su ile temas riskini azaltır; ayrıca ışıklı can simidi hazır bulundurulur.": {
+  "fill": true,
+  "en": "The net reduces the risk of falling into the water from the gangway; an illuminated lifebuoy is also kept ready.",
+  "de": "Das Netz verringert die Gefahr, von der Gangway ins Wasser zu fallen; außerdem wird ein Rettungsring mit Licht bereitgehalten.",
+  "fr": "Le filet réduit le risque de tomber à l'eau depuis la coupée ; une bouée de sauvetage lumineuse est aussi tenue prête.",
+  "es": "La red reduce el riesgo de caer al agua desde la plancha; además se tiene preparado un aro salvavidas con luz.",
+  "it": "La rete riduce il rischio di cadere in acqua dallo scalandrone; inoltre si tiene pronto un salvagente anulare con luce.",
+  "pt": "A rede reduz o risco de cair na água da prancha de embarque; também se mantém pronta uma boia salva-vidas com luz.",
+  "nl": "Het net verkleint het risico om vanaf de gangway in het water te vallen; daarnaast wordt een reddingsboei met licht gereedgehouden."
+ },
+ "Uzun periyotlu swell gemi ve iskele bağlantılarının dinamik yüklerini artırır; palamar kopması riski yükselir.": {
+  "fill": false,
+  "en": "Long-period swell increases the dynamic loads on the ship and on her mooring connections at the berth; the risk of mooring lines parting rises.",
+  "de": "Langperiodische Dünung erhöht die dynamischen Lasten auf das Schiff und seine Festmacherverbindungen am Liegeplatz; die Gefahr, dass Festmacherleinen brechen, steigt.",
+  "fr": "Une houle de longue période augmente les charges dynamiques sur le navire et sur ses amarres à quai ; le risque de rupture d'amarres augmente.",
+  "es": "El mar de fondo de periodo largo aumenta las cargas dinámicas sobre el buque y sus amarras en el atraque; aumenta el riesgo de que falten las amarras.",
+  "it": "Il mare lungo di lungo periodo aumenta i carichi dinamici sulla nave e sui suoi cavi d'ormeggio in banchina; cresce il rischio di rottura dei cavi.",
+  "pt": "O swell de período longo aumenta as cargas dinâmicas sobre o navio e suas espias no cais; cresce o risco de as espias partirem.",
+  "nl": "Deining met een lange periode verhoogt de dynamische belastingen op het schip en zijn meertrossen aan de ligplaats; het risico dat trossen breken neemt toe."
+ },
+ "Borda iskelesi trabzanı": {
+  "fill": false,
+  "en": "Gangway handrail",
+  "de": "Handlauf der Gangway",
+  "fr": "Main courante de la coupée",
+  "es": "Pasamanos de la plancha",
+  "it": "Corrimano dello scalandrone",
+  "pt": "Corrimão da prancha de embarque",
+  "nl": "Leuning van de gangway"
+ },
+ "Borda iskelesi ve erişim ekipmanlarının kurulumu": {
+  "fill": false,
+  "en": "Rigging the gangway and access equipment",
+  "de": "Aufbau der Gangway und der Zugangseinrichtungen",
+  "fr": "Mise en place de la coupée et des moyens d'accès",
+  "es": "Instalación de la plancha y de los medios de acceso",
+  "it": "Installazione dello scalandrone e dei mezzi di accesso",
+  "pt": "Instalação da prancha de embarque e dos meios de acesso",
+  "nl": "Opstellen van de gangway en de toegangsmiddelen"
+ },
+ "Borda iskelesi, merdiven ve erişim ekipmanlarının bakımı": {
+  "fill": false,
+  "en": "Maintenance of the gangway, ladders and access equipment",
+  "de": "Wartung von Gangway, Leitern und Zugangseinrichtungen",
+  "fr": "Entretien de la coupée, des échelles et des moyens d'accès",
+  "es": "Mantenimiento de la plancha, las escalas y los medios de acceso",
+  "it": "Manutenzione di scalandrone, scale e mezzi di accesso",
+  "pt": "Manutenção da prancha de embarque, das escadas e dos meios de acesso",
+  "nl": "Onderhoud van gangway, ladders en toegangsmiddelen"
+ },
+ "Dil engelini aşan standart işaret kodu (bayrak/mors/ses ile)": {
+  "fill": true,
+  "en": "Standard signalling code that overcomes the language barrier (by flags, Morse or sound)",
+  "de": "Standardisierter Signalcode, der die Sprachbarriere überwindet (mit Flaggen, Morse oder Schall)",
+  "fr": "Code de signaux normalisé qui surmonte la barrière de la langue (par pavillons, morse ou signaux sonores)",
+  "es": "Código de señales normalizado que supera la barrera del idioma (con banderas, Morse o sonido)",
+  "it": "Codice di segnali standard che supera la barriera linguistica (con bandiere, Morse o suono)",
+  "pt": "Código de sinais padronizado que supera a barreira do idioma (por bandeiras, Morse ou som)",
+  "nl": "Gestandaardiseerde seincode die de taalbarrière overbrugt (met vlaggen, morse of geluid)"
+ },
+ "Bay plan": {
+  "fill": true,
+  "en": "Bay plan"
+ },
+ "Bay Plan": {
+  "fill": true,
+  "en": "Bay plan"
+ },
+ "Bay Plan Optimizasyonu": {
+  "fill": true,
+  "en": "Bay Plan Optimization",
+  "de": "Bayplan-Optimierung",
+  "fr": "Optimisation du bay plan",
+  "es": "Optimización del bay plan",
+  "it": "Ottimizzazione del bay plan",
+  "pt": "Otimização do bay plan",
+  "nl": "Optimalisatie van het bayplan"
+ },
+ "OOG taşması nedeniyle bloke edilen slotlar bay planında işaretlenir.": {
+  "fill": true,
+  "en": "Slots blocked by OOG overhang are marked on the bay plan.",
+  "de": "Durch OOG-Überstand blockierte Stellplätze werden im Bayplan markiert.",
+  "fr": "Les emplacements bloqués par un débord OOG sont signalés sur le bay plan.",
+  "es": "Los huecos bloqueados por el exceso de dimensiones OOG se marcan en el bay plan.",
+  "it": "Gli slot bloccati dalla sporgenza OOG vengono segnati sul bay plan.",
+  "pt": "Os slots bloqueados pelo excesso de dimensões OOG são marcados no bay plan.",
+  "nl": "Door OOG-overstek geblokkeerde slots worden in het bayplan gemarkeerd."
+ },
+ "Bir direğe hızlı geçici bağ": {
+  "fill": false,
+  "en": "A quick temporary hitch to a post",
+  "de": "Schneller, vorübergehender Stek an einem Pfahl",
+  "fr": "Amarrage rapide et provisoire à un poteau",
+  "es": "Vuelta rápida y provisional a un poste",
+  "it": "Nodo rapido e temporaneo a un palo",
+  "pt": "Volta rápida e provisória num poste",
+  "nl": "Snelle tijdelijke steek om een paal"
+ },
+ "Direğe bağlamak": {
+  "fill": false,
+  "en": "Making fast to a post",
+  "de": "An einem Pfahl festmachen",
+  "fr": "Amarrer à un poteau",
+  "es": "Hacer firme a un poste",
+  "it": "Dare volta a un palo",
+  "pt": "Prender a um poste",
+  "nl": "Aan een paal vastmaken"
+ },
+ "Halat ucunu bir direğe veya babaya bağlamak için kullanılan kolay çözülebilir bağ.": {
+  "fill": false,
+  "en": "An easily released hitch used to make the end of a rope fast to a post or bollard.",
+  "de": "Ein leicht lösbarer Stek, mit dem das Ende eines Taus an einem Pfahl oder Poller festgemacht wird.",
+  "fr": "Nœud facile à larguer, utilisé pour amarrer l'extrémité d'un cordage à un poteau ou à un bollard.",
+  "es": "Vuelta fácil de soltar que se usa para hacer firme el chicote de un cabo a un poste o a un noray.",
+  "it": "Nodo facile da sciogliere usato per dare volta all'estremità di una cima a un palo o a una bitta.",
+  "pt": "Volta fácil de soltar usada para prender a ponta de um cabo a um poste ou cabeço.",
+  "nl": "Een gemakkelijk los te maken steek waarmee het eind van een lijn aan een paal of bolder wordt vastgemaakt."
+ },
+ "Halat veya direğe gerilim altında bağlanabilen sürtünme bağı; çekme yönünde tutunur.": {
+  "fill": false,
+  "en": "A friction hitch that can be tied to a rope or spar under tension; it holds against a pull along it.",
+  "de": "Ein Klemmstek, der unter Spannung an einem Tau oder einer Spiere angebracht werden kann; er hält gegen Zug in Längsrichtung.",
+  "fr": "Nœud de friction qui peut être fait sur un cordage ou un espar sous tension ; il tient contre une traction dans le sens de la longueur.",
+  "es": "Vuelta de fricción que puede darse sobre un cabo o una percha en tensión; aguanta el tiro en sentido longitudinal.",
+  "it": "Nodo d'attrito che si può fare su una cima o un'asta in tensione; tiene contro una trazione in senso longitudinale.",
+  "pt": "Volta de atrito que pode ser dada num cabo ou numa verga sob tensão; segura contra um esforço no sentido longitudinal.",
+  "nl": "Een klemsteek die onder spanning op een lijn of rondhout kan worden gelegd; hij houdt tegen trek in de lengterichting."
+ },
+ "Cargo Securing Manual'e göre bağlama düzeni planlanır.": {
+  "fill": false,
+  "en": "The cargo securing arrangement is planned according to the Cargo Securing Manual.",
+  "de": "Die Ladungssicherung wird nach dem Ladungssicherungshandbuch geplant.",
+  "fr": "Le dispositif d'assujettissement de la cargaison est planifié selon le Manuel d'assujettissement de la cargaison.",
+  "es": "La disposición del trincaje se planifica según el Manual de sujeción de la carga.",
+  "it": "Il sistema di rizzaggio del carico viene pianificato secondo il Cargo Securing Manual.",
+  "pt": "O arranjo de peação da carga é planejado de acordo com o Cargo Securing Manual.",
+  "nl": "Het vastzetten van de lading wordt gepland volgens het Cargo Securing Manual."
+ },
+ "Bağlama halatını kontrollü alıp vermek, uygun fren yüküyle geminin rıhtım konumunu korumak.": {
+  "fill": false,
+  "en": "Heaving in and paying out the mooring line under control and holding the ship's position at the berth with the correct brake load.",
+  "de": "Die Festmacherleine kontrolliert einholen und fieren und das Schiff mit der richtigen Bremslast in seiner Liegeplatzposition halten.",
+  "fr": "Virer et filer l'amarre de façon contrôlée et maintenir le navire à son poste avec la bonne charge de frein.",
+  "es": "Virar y filar la amarra de forma controlada y mantener la posición del buque en el atraque con la carga de freno adecuada.",
+  "it": "Virare e filare il cavo d'ormeggio in modo controllato e mantenere la nave in posizione in banchina con il giusto carico del freno.",
+  "pt": "Recolher e soltar a espia de forma controlada e manter a posição do navio no cais com a carga de freio adequada.",
+  "nl": "De meertros gecontroleerd inhalen en vieren en het schip met de juiste rembelasting op zijn ligplaats houden."
+ },
+ "Araç sensör/load-cell verisini DP'ye bağlamadan önce ölçek, yön ve failure mode'u doğrula": {
+  "fill": false,
+  "en": "Before connecting vehicle sensor/load-cell data to the DP, verify its scale, orientation and failure mode"
+ },
+ "Çelik tellerden örülerek yapılan yüksek mukavemetli halat; vinç, kreyn ve bağlama işlerinde kullanılır.": {
+  "fill": false,
+  "en": "High-strength rope made of steel wires; used for cranes, derricks and cargo securing.",
+  "de": "Hochfestes Seil aus Stahldrähten; für Kräne, Ladebäume und Ladungssicherung verwendet.",
+  "fr": "Câble à haute résistance fait de fils d'acier ; utilisé pour les grues, les mâts de charge et l'assujettissement de la cargaison.",
+  "es": "Cable de alta resistencia hecho de alambres de acero; se usa en grúas, puntales y trincaje de la carga.",
+  "it": "Cavo ad alta resistenza fatto di fili d'acciaio; usato per gru, picchi di carico e rizzaggio del carico.",
+  "pt": "Cabo de alta resistência feito de arames de aço; usado em guindastes, paus de carga e peação da carga.",
+  "nl": "Touw met hoge sterkte, gemaakt van staaldraden; gebruikt voor kranen, laadbomen en het sjorren van lading."
+ },
+ "Birkaç temel düğüm her gemicinin bilmesi gerekendir. İzbarço (bowline): halatın ucunda sabit, sıkışmayan bir göz oluşturur; can kurtarma ve bağlamada yaygındır. Camadan bağı (reef knot): iki eşit halatı geçici bağlar; yüke gelince sıkışıp çözülmesi gerektiğinde kullanılır (yük taşıyan kritik bağlantılarda güvenilmez). Kropi/sekiz bağı (figure-eight): halat ucunun blok/halkalardan kaçmasını önler. Volta ve kazık bağı (round turn and two half hitches, clove hitch): halatı bir babaya/direğe geçici bağlamak için kullanılır. Doğru düğüm, yük altında tutmalı ve gerektiğinde kolayca çözülebilmelidir.": {
+  "fill": true,
+  "en": "A few basic knots are what every seaman must know. Bowline: forms a fixed, non-jamming eye at the end of a rope; widely used in rescue and mooring. Reef knot: temporarily ties two ropes of equal size; used to tie things together (not reliable for critical load-bearing connections). Figure-of-eight knot: stops the end of a rope from running out through blocks or rings. Round turn and two half hitches, and clove hitch: used to make a rope temporarily fast to a bollard or post. The right knot must hold under load and be easy to untie when needed.",
+  "de": "Einige Grundknoten muss jeder Seemann kennen. Palstek: bildet am Tauende ein festes Auge, das sich nicht zuzieht; weit verbreitet bei der Rettung und beim Festmachen. Kreuzknoten: verbindet vorübergehend zwei gleich dicke Taue; für Bindearbeiten (für kritische, lasttragende Verbindungen nicht zuverlässig). Achtknoten: verhindert, dass das Tauende durch Blöcke oder Ringe ausrauscht. Rundtörn mit zwei halben Schlägen und Webeleinstek: zum vorübergehenden Festmachen eines Taus an einem Poller oder Pfahl. Der richtige Knoten muss unter Last halten und sich bei Bedarf leicht lösen lassen.",
+  "fr": "Quelques nœuds de base doivent être connus de tout marin. Nœud de chaise : forme au bout d'un cordage un œil fixe qui ne se serre pas ; très utilisé pour le sauvetage et l'amarrage. Nœud plat : relie provisoirement deux cordages de même diamètre ; utilisé pour lier (pas fiable pour les liaisons critiques qui travaillent). Nœud en huit : empêche le bout du cordage de filer dans les poulies ou les anneaux. Tour mort et deux demi-clés, et nœud de cabestan : pour amarrer provisoirement un cordage à un bollard ou un poteau. Le bon nœud doit tenir sous charge et se défaire facilement quand il le faut.",
+  "es": "Hay unos cuantos nudos básicos que todo marino debe conocer. As de guía: forma en el extremo de un cabo una gaza fija que no se cierra; muy usado en salvamento y amarre. Nudo llano: une provisionalmente dos cabos de la misma mena; se usa para atar (no es fiable en uniones críticas que soportan carga). Nudo de ocho: impide que el chicote se escape por motones o argollas. Vuelta redonda y dos medios cotes, y ballestrinque: para hacer firme provisionalmente un cabo a un noray o un poste. El nudo adecuado debe aguantar con carga y deshacerse con facilidad cuando sea necesario.",
+  "it": "Alcuni nodi fondamentali devono essere conosciuti da ogni marinaio. Gassa d'amante: forma all'estremità di una cima un occhio fisso che non si stringe; molto usata nel salvataggio e nell'ormeggio. Nodo piano: unisce temporaneamente due cime dello stesso diametro; si usa per legare (non è affidabile nei collegamenti critici sotto carico). Nodo Savoia: impedisce all'estremità della cima di sfilare da bozzelli o anelli. Volta tonda e due mezzi colli, e nodo parlato: per dar volta temporaneamente a una cima su una bitta o un palo. Il nodo giusto deve tenere sotto carico ed essere facile da sciogliere quando serve.",
+  "pt": "Alguns nós básicos todo marinheiro precisa conhecer. Lais de guia: forma na ponta de um cabo uma alça fixa que não aperta; muito usado no salvamento e na amarração. Nó direito: une provisoriamente dois cabos da mesma bitola; usado para amarrar (não é confiável em ligações críticas que suportam carga). Nó em oito: impede que a ponta do cabo escape por moitões ou argolas. Volta redonda e dois cotes, e volta de fiel: para prender provisoriamente um cabo a um cabeço ou poste. O nó certo deve segurar sob carga e ser fácil de desfazer quando necessário.",
+  "nl": "Een paar basisknopen moet iedere zeeman kennen. Paalsteek: vormt aan het eind van een lijn een vast oog dat niet dichttrekt; veel gebruikt bij redding en afmeren. Platte knoop: verbindt tijdelijk twee even dikke lijnen; gebruikt om te binden (niet betrouwbaar voor kritieke, belaste verbindingen). Achtknoop: voorkomt dat het eind van de lijn door blokken of ringen uitloopt. Rondtorn met twee halve steken, en mastworp: om een lijn tijdelijk aan een bolder of paal vast te maken. De juiste knoop moet onder belasting houden en zo nodig gemakkelijk los te maken zijn."
+ },
+ "Six draft marks are read: forward, aft and midships, on both sides.": {
+  "fill": true,
+  "en": "Six draft marks are read: forward, aft and midships, on both sides.",
+  "de": "Es werden sechs Tiefgangsmarken abgelesen: vorn, achtern und mittschiffs, jeweils an beiden Seiten.",
+  "fr": "On lit six marques de tirant d'eau : à l'avant, à l'arrière et au milieu, des deux bords.",
+  "es": "Se leen seis marcas de calado: a proa, a popa y en el centro, en ambas bandas.",
+  "it": "Si leggono sei marche di immersione: a prua, a poppa e al centro, su entrambi i lati.",
+  "pt": "São lidas seis marcas de calado: a vante, a ré e a meio navio, nos dois bordos.",
+  "nl": "Er worden zes diepgangsmerken afgelezen: voor, achter en midscheeps, aan beide zijden."
+ },
+ "Operasyonel değerlendirme: liman manevrası öncesinde hangi tarafın rüzgâra karşı olacağı belirlenir; rüzgâr etkisine göre römorkör pozisyonları ve güç gereksinimleri planlanır. İskele bağlama işlemlerinde rüzgâr durumu, baş ve kıç rıhtım halatlarının gergiliğini etkilediğinden uygun halatlar sabitlenmeli ve gevşetilmemelidir.": {
+  "fill": false,
+  "en": "Operational assessment: before a harbour manoeuvre, decide which side will be to windward, and plan tug positions and power requirements according to the effect of the wind. When mooring alongside, the wind affects the tension in the forward and aft mooring lines, so the appropriate lines must be made fast and must not be slackened."
+ },
+ "Usta Gemici (AB); direk (mast), baca (funnel), kargo vinçleri (cranes/derricks), ambar ağzı çerçevesi (hatch coaming) ve borda üstü (overside) gibi yüksek ve/veya denize açık alanlarda çalışır. Bu işler, denizcilikte ölümlü kazaların başında gelen düşme ve adam denize düşme (man overboard) risklerini taşır. Çalışma; Permit to Work'e bağlı yapılır, çift karabinalı (twin lanyard) emniyet kemeri doğru bağlanır, düşme durdurma (fall arrest) sistemi kullanılır, overside çalışmada can simidi + can halatı standby tutulur ve hava/deniz koşullarının uygunluğu zorunludur. Bu bölüm; yüksekte/overside çalışmanın risk değerlendirmesini, Permit to Work sistemini, fall arrest ve harness disiplinini, iskele/sandalye/bosun's chair ve overside donanımını, MOB hazırlığını ve tipik kaza derslerini AB perspektifinden adım adım açıklar.": {
+  "fill": false,
+  "en": "The Able Seaman (AB) works in high and/or exposed outboard areas such as masts, funnels, cargo cranes/derricks, hatch coamings and over the side. This work carries the risks of falls and man overboard (MOB), which are among the leading causes of fatal accidents at sea. The work is done under a Permit to Work: a twin-lanyard safety harness is correctly attached, a fall-arrest system is used, a lifebuoy and lifeline are kept standing by during overside work, and suitable weather and sea conditions are mandatory. This section explains, step by step and from the AB's perspective, the risk assessment for work at height and over the side, the Permit to Work system, fall-arrest and harness discipline, staging, bosun's chair and overside equipment, MOB preparedness and lessons from typical accidents."
+ },
+ "Kural 33: 12 m ve üzeri gemilerde düdük; 20 m ve üzeri gemilerde ayrıca çan; 100 m ve üzeri gemilerde ek olarak gong bulunur. Kural 36: başka bir gemiyi uyarmak için karıştırılmayacak ışık/ses işaretleri verilebilir. Kural 37 ve Ek IV: tehlike (distress) işaretleri — sürekli sis düdüğü, 1 dakika arayla top atışı, MAYDAY telsiz çağrısı, kırmızı paraşütlü işaret fişeği, SOS, NC kod bayrakları, kare bayrak + top, alev/duman, kollarını yavaşça indirip kaldırma vb.": {
+  "fill": true,
+  "en": "Rule 33: vessels of 12 m and over carry a whistle; vessels of 20 m and over also a bell; vessels of 100 m and over in addition a gong. Rule 36: a vessel may make light or sound signals that cannot be mistaken for any other signal to attract the attention of another vessel. Rule 37 and Annex IV: distress signals — continuous sounding of any fog-signalling apparatus, a gun fired at intervals of about a minute, a MAYDAY radiotelephone call, a red parachute rocket, SOS, the code flags NC, a square flag with a ball, flames, smoke, slowly and repeatedly raising and lowering outstretched arms, etc.",
+  "de": "Regel 33: Fahrzeuge von 12 m Länge und mehr führen eine Pfeife, solche von 20 m und mehr zusätzlich eine Glocke, solche von 100 m und mehr außerdem einen Gong. Regel 36: Ein Fahrzeug darf Licht- oder Schallsignale geben, die mit keinem anderen Signal verwechselt werden können, um die Aufmerksamkeit eines anderen Fahrzeugs zu erregen. Regel 37 und Anlage IV: Notzeichen — Dauerton mit einem Nebelsignalgerät, Kanonenschüsse in Abständen von etwa einer Minute, MAYDAY über Sprechfunk, rote Fallschirm-Leuchtrakete, SOS, Flaggensignal NC, viereckige Flagge mit einem Ball, Flammen, Rauch, langsames und wiederholtes Heben und Senken der seitlich ausgestreckten Arme usw.",
+  "fr": "Règle 33 : les navires de 12 m et plus ont un sifflet ; ceux de 20 m et plus aussi une cloche ; ceux de 100 m et plus en outre un gong. Règle 36 : un navire peut émettre des signaux lumineux ou sonores ne pouvant être confondus avec aucun autre signal pour attirer l'attention d'un autre navire. Règle 37 et Annexe IV : signaux de détresse — son continu de tout appareil de signalisation par temps de brume, coup de canon tiré à intervalles d'environ une minute, appel MAYDAY en radiotéléphonie, fusée à parachute rouge, SOS, pavillons NC, pavillon carré surmonté ou surmontant une boule, flammes, fumée, mouvements lents et répétés des bras tendus de haut en bas, etc.",
+  "es": "Regla 33: los buques de 12 m o más llevan pito; los de 20 m o más, además campana; los de 100 m o más, además gong. Regla 36: un buque puede hacer señales luminosas o acústicas que no puedan confundirse con ninguna otra para llamar la atención de otro buque. Regla 37 y Anexo IV: señales de socorro — sonido continuo de cualquier aparato de señales de niebla, disparo de cañón a intervalos de un minuto aproximadamente, llamada MAYDAY por radiotelefonía, cohete con paracaídas de luz roja, SOS, banderas NC, bandera cuadra con una bola, llamas, humo, subir y bajar lenta y repetidamente los brazos extendidos, etc.",
+  "it": "Regola 33: le navi di 12 m e oltre hanno un fischio; quelle di 20 m e oltre anche una campana; quelle di 100 m e oltre in più un gong. Regola 36: una nave può fare segnali luminosi o sonori che non possano essere confusi con nessun altro segnale per attirare l'attenzione di un'altra nave. Regola 37 e Allegato IV: segnali di pericolo — suono continuo di qualsiasi apparecchio per segnali da nebbia, colpo di cannone sparato a intervalli di circa un minuto, chiamata MAYDAY in radiotelefonia, razzo a paracadute a luce rossa, SOS, bandiere NC, bandiera quadra con una palla, fiamme, fumo, alzare e abbassare lentamente e ripetutamente le braccia tese, ecc.",
+  "pt": "Regra 33: embarcações de 12 m ou mais têm apito; as de 20 m ou mais também sino; as de 100 m ou mais, além disso, gongo. Regra 36: uma embarcação pode fazer sinais luminosos ou sonoros que não possam ser confundidos com nenhum outro sinal para chamar a atenção de outra embarcação. Regra 37 e Anexo IV: sinais de perigo — som contínuo de qualquer aparelho de sinais de cerração, disparo de canhão a intervalos de cerca de um minuto, chamada MAYDAY por radiotelefonia, foguete com paraquedas de luz vermelha, SOS, bandeiras NC, bandeira quadrada com uma bola, chamas, fumaça, levantar e baixar lenta e repetidamente os braços estendidos, etc.",
+  "nl": "Voorschrift 33: schepen van 12 m en meer voeren een fluit; schepen van 20 m en meer ook een klok; schepen van 100 m en meer daarnaast een gong. Voorschrift 36: een schip mag licht- of geluidseinen geven die niet met een ander sein te verwarren zijn om de aandacht van een ander schip te trekken. Voorschrift 37 en Bijlage IV: noodseinen — aanhoudend geluid met een mistseintoestel, een kanonschot met tussenpozen van ongeveer een minuut, een MAYDAY-oproep via radiotelefonie, een rode valschermvuurpijl, SOS, de seinvlaggen NC, een vierkante vlag met een bal, vlammen, rook, het langzaam en herhaaldelijk heffen en laten zakken van de zijwaarts gestrekte armen, enz."
+ },
+ "Pusula sapması, pusula etrafına yerleştirilen düzeltici mıknatıs ve yumuşak demir parçalarıyla azaltılır. Sapma matematiksel olarak katsayılarla (A, B, C, D, E) ifade edilir. B ve C katsayıları kalıcı mıknatıslarla, D katsayısı yanlardaki yumuşak demir küreler (quadrantal spheres) ile, dikey indüklenmiş manyetizma ise Flinders bar ile düzeltilir. Yalpa hatası için heeling mıknatısı kullanılır. Kalan sapma, gemi tüm yönlere döndürülerek (swinging ship) ölçülür ve deviation kartına işlenir.": {
+  "fill": true,
+  "en": "Compass deviation is reduced with corrector magnets and soft-iron correctors placed round the compass. Deviation is expressed mathematically by coefficients (A, B, C, D, E). Coefficients B and C are corrected with permanent magnets, coefficient D with the soft-iron spheres at the sides (quadrantal spheres), and vertical induced magnetism with the Flinders bar. The heeling magnet is used for heeling error. The remaining deviation is measured by swinging the ship through all headings and entered on the deviation card.",
+  "de": "Die Deviation des Kompasses wird mit Kompensationsmagneten und Weicheisenkorrektoren um den Kompass verringert. Die Deviation wird mathematisch durch Koeffizienten (A, B, C, D, E) ausgedrückt. Die Koeffizienten B und C werden mit Dauermagneten, der Koeffizient D mit den seitlichen Weicheisenkugeln (Quadrantalkugeln) und der senkrecht induzierte Magnetismus mit dem Flinderstab ausgeglichen. Für den Krängungsfehler wird der Krängungsmagnet verwendet. Die Restdeviation wird gemessen, indem das Schiff auf alle Kurse gedreht wird (Kompensieren), und in die Deviationstabelle eingetragen.",
+  "fr": "La déviation du compas est réduite par des aimants correcteurs et des correcteurs en fer doux placés autour du compas. La déviation s'exprime mathématiquement par des coefficients (A, B, C, D, E). Les coefficients B et C sont corrigés par des aimants permanents, le coefficient D par les sphères de fer doux latérales (sphères quadrantales) et le magnétisme induit vertical par la barre de Flinders. L'aimant de bande corrige l'erreur de gîte. La déviation résiduelle est mesurée en faisant tourner le navire sur tous les caps (régulation) et reportée sur la courbe de déviation.",
+  "es": "El desvío del compás se reduce con imanes compensadores y correctores de hierro dulce colocados alrededor del compás. El desvío se expresa matemáticamente mediante coeficientes (A, B, C, D, E). Los coeficientes B y C se corrigen con imanes permanentes, el coeficiente D con las esferas de hierro dulce laterales (esferas cuadrantales) y el magnetismo inducido vertical con la barra Flinders. Para el error de escora se usa el imán de escora. El desvío residual se mide haciendo girar el buque a todos los rumbos y se anota en la tablilla de desvíos.",
+  "it": "La deviazione della bussola si riduce con magneti compensatori e correttori di ferro dolce posti attorno alla bussola. La deviazione si esprime matematicamente con i coefficienti (A, B, C, D, E). I coefficienti B e C si correggono con magneti permanenti, il coefficiente D con le sfere di ferro dolce laterali (sfere quadrantali) e il magnetismo indotto verticale con la barra di Flinders. Per l'errore di sbandamento si usa il magnete di sbandamento. La deviazione residua si misura facendo girare la nave su tutte le prore e si riporta nella tabella delle deviazioni.",
+  "pt": "O desvio da agulha é reduzido com ímãs corretores e corretores de ferro doce colocados em volta da agulha. O desvio é expresso matematicamente por coeficientes (A, B, C, D, E). Os coeficientes B e C são corrigidos com ímãs permanentes, o coeficiente D com as esferas de ferro doce laterais (esferas quadrantais) e o magnetismo induzido vertical com a barra de Flinders. Para o erro de banda usa-se o ímã de banda. O desvio residual é medido girando o navio por todos os rumos e registrado na curva de desvios.",
+  "nl": "De deviatie van het kompas wordt verminderd met correctiemagneten en weekijzeren correctoren rond het kompas. De deviatie wordt wiskundig uitgedrukt in coëfficiënten (A, B, C, D, E). De coëfficiënten B en C worden met permanente magneten gecorrigeerd, coëfficiënt D met de weekijzeren bollen aan de zijkanten (quadrantale bollen) en het verticaal geïnduceerde magnetisme met de Flindersstaaf. Voor de hellingsfout wordt de hellingsmagneet gebruikt. De resterende deviatie wordt gemeten door het schip op alle koersen te draaien en in de deviatietabel genoteerd."
+ },
+ "Bağlama (mooring) vinçleri, gemiyi rıhtıma veya şamandıraya emniyetle bağlamak için halatları toplayan, gergin tutan ve salan güverte makineleridir. OCIMF MEG4, bağlama emniyetinin merkezine halat kopma yükü (MBL), vinç fren tutma kapasitesi (brake holding capacity) ve bağlama düzeninin (mooring pattern) doğru tasarımını koyar. Bu bölüm; vinç tiplerini (split drum, render-recover, otomatik gergi), fren tutma kapasitesi hesabını ve %60 MBL kuralını, snap-back tehlike bölgelerini, halat seçimini ve bağlama operasyonunun emniyet yönetimini derinlemesine işler.": {
+  "fill": false,
+  "en": "Mooring winches are deck machines that heave in, hold under tension and pay out lines to make the ship securely fast to a berth or buoy. OCIMF MEG4 puts the line's minimum breaking load (MBL), the winch brake holding capacity and the correct design of the mooring pattern at the centre of mooring safety. This section covers in depth the winch types (split drum, render-recover, self-tensioning), the brake holding capacity calculation and the 60% MBL rule, snap-back danger zones, line selection and the safety management of mooring operations."
+ },
+ "Bağlama, demir, yük operasyonları ve güverte bakım işlerine gözlem ve destek düzeyinde katılır. Halat kullanımı, vinç operasyonu ve güverte ekipmanlarının işleyişini pratik olarak öğrenir. Yüksek riskli işlerde mutlaka gözetim altında çalışır.": {
+  "fill": false,
+  "en": "Takes part in mooring, anchoring, cargo operations and deck maintenance at the observation and support level. Learns in practice how to handle lines, operate winches and run deck equipment. Always works under supervision on high-risk jobs."
+ },
+ "Güverte Stajyeri (Deck Cadet); bağlama, demir, yük operasyonları ve günlük güverte bakım işlerine gözlem ve destek düzeyinde katılarak pratik gemicilik (seamanship) becerilerini kazanır. Bu görev, halat ve tel kullanımı, vinç/ırgat operasyonu, güverte ekipmanlarının işleyişi ve yüksek riskli işlerin emniyetli yürütülmesi gibi temel yetkinlikleri kapsar. Stajyer bu işlere asla bağımsız sorumlu olarak değil, bir güverte zabiti veya deneyimli tayfanın doğrudan gözetiminde katılır. Bölüm; STCW Tablo A-II/1 operasyonel seviye gemicilik yetkinliklerini, snap-back zone ve enclosed space gibi kritik can güvenliği konularını ve TRB'ye işlenecek pratik kanıtları ayrıntılandırır.": {
+  "fill": false,
+  "en": "The Deck Cadet gains practical seamanship skills by taking part in mooring, anchoring, cargo operations and daily deck maintenance at the observation and support level. This role covers core competencies such as handling rope and wire, operating winches and windlasses, running deck equipment and carrying out high-risk work safely. The cadet never takes part in this work as an independently responsible person, but under the direct supervision of a deck officer or an experienced crew member. The section details the STCW Table A-II/1 operational-level seamanship competencies, critical life-safety topics such as snap-back zones and enclosed spaces, and the practical evidence to be recorded in the TRB."
+ },
+ "Usta Gemici (AB — Able Seaman) ve Gemiciler (OS — Ordinary Seaman), güverte departmanının iş gücünü oluşturur. Seyirde köprüüstü lookout ve dümen nöbeti, limanda bağlama operasyonları, güverte bakım işleri ve yük operasyonlarına destek birincil görevleridir. AB unvanı STCW kapsamında belirli deniz hizmeti süresini ve yetkinlik sınavını gerektirir; OS ise daha deneyimsiz tayfa kategorisidir.": {
+  "fill": false,
+  "en": "Able Seamen (AB) and Ordinary Seamen (OS) make up the workforce of the deck department. Their primary duties are lookout and helm watches on the bridge at sea, mooring operations in port, deck maintenance and support for cargo operations. The AB rating requires a set period of sea service and a proficiency examination under STCW; OS is the less experienced rating category."
+ },
+ "Halat işçiliği (marlinspike seamanship), gemiciliğin temelidir. Doğru halat seçimi, doğru düğüm (knot) ve dikiş (splice), hem operasyonel verimi hem can güvenliğini belirler. Halatın malzemesi, dayanımı ve bakımı; bağlama, yedekleme ve yük operasyonlarında kritik rol oynar.": {
+  "fill": false,
+  "en": "Ropework (marlinspike seamanship) is the foundation of seamanship. The right choice of rope, the right knot and the right splice determine both operational efficiency and the safety of life. The rope's material, strength and maintenance play a critical role in mooring, towing and cargo operations."
+ },
+ "Birinci Zabit, yanaşma, kalkma ve demir operasyonlarında baş üstü (forecastle) veya kıç (poop) istasyonunda güverte ekibini yöneten, Kaptan'ın manevra emirlerini sahada uygulayan kilit kişidir. Bu sorumluluk; mooring plan hazırlığı, halat/tel düzeninin doğru kurulması, snap-back zone'ların belirlenmesi ve personelin güvenli pozisyonlandırılmasını kapsar. Bağlama operasyonları, denizcilikteki en yüksek yaralanma/ölüm istatistiğine sahip işlerden biridir; bu bölüm Birinci Zabit'in manevra emniyetini sağlamak için izlemesi gereken metodolojiyi adım adım açıklar.": {
+  "fill": true,
+  "en": "During berthing, unberthing and anchoring, the Chief Officer is the key person who directs the deck crew at the forecastle or poop station and carries out the Master's manoeuvring orders on the spot. This responsibility includes preparing the mooring plan, rigging the rope and wire layout correctly, identifying snap-back zones and positioning personnel safely. Mooring operations have some of the highest injury and fatality rates in shipping; this section explains, step by step, the method the Chief Officer must follow to keep the manoeuvre safe.",
+  "de": "Beim An- und Ablegen sowie beim Ankern ist der Erste Offizier die Schlüsselperson, die die Decksmannschaft auf der Back oder auf der Poop-Station führt und die Manöverbefehle des Kapitäns vor Ort umsetzt. Zu dieser Verantwortung gehören die Vorbereitung des Festmacheplans, das richtige Ausbringen der Leinen und Drähte, das Festlegen der Snap-back-Zonen und die sichere Aufstellung des Personals. Festmachemanöver gehören zu den Arbeiten mit den höchsten Verletzungs- und Todesraten in der Seefahrt; dieser Abschnitt erklärt Schritt für Schritt die Vorgehensweise, die der Erste Offizier einhalten muss, um das Manöver sicher zu halten.",
+  "fr": "Lors de l'accostage, de l'appareillage et du mouillage, le second capitaine est la personne clé qui dirige l'équipe de pont sur le gaillard d'avant ou à la plage arrière et exécute sur place les ordres de manœuvre du capitaine. Cette responsabilité comprend la préparation du plan d'amarrage, la mise en place correcte des amarres et des câbles, la délimitation des zones de fouettement (snap-back) et le placement du personnel en sécurité. Les opérations d'amarrage figurent parmi les plus accidentogènes du transport maritime ; cette section explique pas à pas la méthode que le second capitaine doit suivre pour assurer la sécurité de la manœuvre.",
+  "es": "Durante el atraque, el desatraque y el fondeo, el Primer Oficial es la persona clave que dirige al personal de cubierta en el castillo de proa o en la estación de popa y ejecuta sobre el terreno las órdenes de maniobra del Capitán. Esta responsabilidad incluye preparar el plan de amarre, disponer correctamente los cabos y cables, delimitar las zonas de latigazo (snap-back) y situar al personal en posiciones seguras. Las maniobras de amarre están entre las tareas con mayores índices de lesiones y muertes en el transporte marítimo; esta sección explica paso a paso el método que debe seguir el Primer Oficial para que la maniobra sea segura.",
+  "it": "Durante l'ormeggio, il disormeggio e l'ancoraggio, il Primo Ufficiale è la persona chiave che dirige il personale di coperta sul castello di prua o sulla stazione di poppa ed esegue sul posto gli ordini di manovra del Comandante. Questa responsabilità comprende la preparazione del piano d'ormeggio, la corretta disposizione di cavi e cime, l'individuazione delle zone di snap-back e il posizionamento sicuro del personale. Le operazioni di ormeggio sono tra quelle con i più alti tassi di infortuni e morti nel trasporto marittimo; questa sezione spiega passo per passo il metodo che il Primo Ufficiale deve seguire per garantire la sicurezza della manovra.",
+  "pt": "Na atracação, na desatracação e no fundeio, o Imediato é a pessoa-chave que dirige a equipe de convés no castelo de proa ou na estação de popa e executa no local as ordens de manobra do Comandante. Essa responsabilidade inclui preparar o plano de amarração, passar corretamente os cabos e cabos de aço, definir as zonas de chicoteamento (snap-back) e posicionar o pessoal com segurança. As operações de amarração estão entre as de maior índice de lesões e mortes no transporte marítimo; esta seção explica passo a passo o método que o Imediato deve seguir para manter a manobra segura.",
+  "nl": "Bij het afmeren, ontmeren en ankeren is de eerste stuurman de sleutelpersoon die de dekbemanning op de bak of op het achterdek leidt en ter plaatse de manoeuvreerorders van de kapitein uitvoert. Deze verantwoordelijkheid omvat het opstellen van het meerplan, het juist uitbrengen van trossen en draden, het bepalen van de snap-backzones en het veilig opstellen van het personeel. Meermanoeuvres behoren tot het werk met de hoogste letsel- en sterftecijfers in de scheepvaart; dit gedeelte legt stap voor stap uit welke werkwijze de eerste stuurman moet volgen om de manoeuvre veilig te houden."
+ },
+ "Single Point Mooring (SPM) is a buoy mooring system used by tankers to load and discharge in the open sea.": {
+  "fill": true,
+  "en": "Single Point Mooring (SPM) is a buoy mooring system used by tankers to load and discharge in the open sea.",
+  "de": "Single Point Mooring (SPM) ist ein Bojen-Festmachesystem, über das Tanker auf offener See laden und löschen.",
+  "fr": "Le Single Point Mooring (SPM) est un système d'amarrage sur bouée qui permet aux pétroliers de charger et de décharger en pleine mer.",
+  "es": "El Single Point Mooring (SPM) es un sistema de amarre a boya que permite a los petroleros cargar y descargar en mar abierto.",
+  "it": "Il Single Point Mooring (SPM) è un sistema di ormeggio a boa che consente alle petroliere di caricare e scaricare in mare aperto.",
+  "pt": "O Single Point Mooring (SPM) é um sistema de amarração em boia que permite aos petroleiros carregar e descarregar em mar aberto.",
+  "nl": "Single Point Mooring (SPM) is een meersysteem met een boei waarmee tankers op open zee laden en lossen."
+ },
+ "On Ro-Ro ships, cargo is driven on and off the ship as wheeled vehicles; this requires special cargo securing and stability control.": {
+  "fill": true,
+  "en": "On Ro-Ro ships, cargo is driven on and off the ship as wheeled vehicles; this requires special cargo securing and stability control.",
+  "de": "Auf Ro-Ro-Schiffen wird die Ladung als rollende Fahrzeuge an und von Bord gebracht; das erfordert eine besondere Ladungssicherung und Stabilitätskontrolle.",
+  "fr": "Sur les navires rouliers, la cargaison embarque et débarque sous forme de véhicules roulants ; cela exige un saisissage particulier et un contrôle de la stabilité.",
+  "es": "En los buques ro-ro, la carga embarca y desembarca como vehículos rodados; esto exige un trincaje especial y un control de la estabilidad.",
+  "it": "Sulle navi ro-ro il carico viene imbarcato e sbarcato come veicoli su ruote; ciò richiede un rizzaggio particolare e il controllo della stabilità.",
+  "pt": "Nos navios ro-ro, a carga embarca e desembarca como veículos sobre rodas; isso exige peação especial e controle da estabilidade.",
+  "nl": "Op roroschepen wordt de lading als rijdende voertuigen aan en van boord gebracht; dat vereist bijzondere ladingzekering en stabiliteitscontrole."
+ },
+ "Ro-Ro Araç ve Trailer Bağlama": {
+  "fill": false,
+  "en": "Ro-Ro Vehicle and Trailer Securing"
+ },
+ "Yük operasyonları, demir atma ve bağlama işlemlerinde kullanılan güverte ekipmanları": {
+  "fill": false,
+  "en": "Deck equipment used in cargo operations, anchoring and mooring"
+ }
+}

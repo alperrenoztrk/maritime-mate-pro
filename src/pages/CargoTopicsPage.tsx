@@ -942,7 +942,7 @@ The draft survey is the most common method of establishing the commercial quanti
     bulletPoints: [
       "Draft survey is based on Archimedes principle",
       "Load = Final displacement − Initial displacement − Deductions",
-      "6 points are read: proof, pupa and middle.",
+      "Six draft marks are read: forward, aft and midships, on both sides.",
       "It is the standard quantity determination method in bulk cargo trade.",
     ],
     keyPoints: [
@@ -2530,7 +2530,7 @@ The size of the pens is determined by the species.`,
   },
   "ro-ro-cargo": {
     title: "Ro-Ro Cargo operations",
-    introduction: "On Ro-Ro ships, cargo is taken on and off the ship as wheeled vehicles; Requires specialcargo securing and stability control.",
+    introduction: "On Ro-Ro ships, cargo is driven on and off the ship as wheeled vehicles; this requires special cargo securing and stability control.",
     content: `RO-RO LOADING:
 Cargo is driven on board over a ramp on its own wheels or by a tug master.
 
