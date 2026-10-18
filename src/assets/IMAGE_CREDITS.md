@@ -101,6 +101,9 @@ gelmektedir. Yayın öncesi kullanım haklarının doğrulanması gerekir.
 | `navigation/real/loxodrome-orthodrome.svg` | [LoxodromeConstAngle.svg](https://commons.wikimedia.org/wiki/File:LoxodromeConstAngle.svg) | derivative work: McSush (talk) Loxodrome2.jpg: Roterraecher | CC BY-SA 2.5 |
 | `lessons/draft-marks-metric.jpg` | [733 how-deep.jpg](https://commons.wikimedia.org/wiki/File:733_how-deep.jpg) | Brinki | CC BY-SA 2.0 |
 | `lessons/ship-binnacle.jpg` | [Ship Binnacle.jpg](https://commons.wikimedia.org/wiki/File:Ship_Binnacle.jpg) | Worldwidewebb77 | CC BY 4.0 |
+| `clouds/stratus-layer.jpg` | [2019-11-30 12 58 05 Stratus clouds over a field along Old Ox Road in the Dulles section of Sterling, Loudoun County, Virginia.jpg](https://commons.wikimedia.org/wiki/File:2019-11-30_12_58_05_Stratus_clouds_over_a_field_along_Old_Ox_Road_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg) | Famartin | CC BY-SA 4.0 |
+| `navigation/real/compass-card-bowditch.png` | [Bowditch1916p15CompassRose.png](https://commons.wikimedia.org/wiki/File:Bowditch1916p15CompassRose.png) | United States Hydrographic Office (American Practical Navigator, 1916) | Public domain |
+| `clouds/fractus-pannus.jpg` | [Fractus und pannus unter dem Aufwind bzw. Inflowbereich eines Schwergewitters im Texas Panhandle, Zoom.jpg](https://commons.wikimedia.org/wiki/File:Fractus_und_pannus_unter_dem_Aufwind_bzw._Inflowbereich_eines_Schwergewitters_im_Texas_Panhandle%2C_Zoom.jpg) | GerritR | CC BY-SA 4.0 |
 
 Raster görseller uygulama boyutu için en uzun kenarı 1600 px olacak şekilde küçültülmüştür.
 `navigation/real/latitude-longitude-earth.svg` dosyasında yalnızca İngilizce etiketler bırakılmıştır.

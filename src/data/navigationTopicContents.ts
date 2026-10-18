@@ -24,6 +24,7 @@ import latitudeLinesImg from "@/assets/navigation/real/latitude-lines.svg";
 import magneticDeclinationImg from "@/assets/navigation/real/magnetic-declination.svg";
 import tssCrossingRule10 from "@/assets/navigation/real/tss-crossing-rule10.svg";
 import earthSeasonsOrbit from "@/assets/navigation/real/earth-seasons-orbit.svg";
+import compassCardBowditch from "@/assets/navigation/real/compass-card-bowditch.png";
 import ecdisRadarConsole from "@/assets/bridge/ecdis-radar-console.jpg";
 import earthLightingJuneSolstice from "@/assets/navigation/real/earth-lighting-june-solstice.png";
 import loxodromeOrthodrome from "@/assets/navigation/real/loxodrome-orthodrome.svg";
@@ -1104,6 +1105,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Pusula Gülü ve Yön Sistemi",
+        image: compassCardBowditch,
+        imageAlt: "The compass rose and the degree system",
         content: "Yön ölçümünün geometrik temeli dairesel sistemdir. Hakiki kuzey 0° kabul edilir, doğu 90°, güney 180° ve batı 270° olarak tanımlanır. Bu sistem sayesinde doğrultular sayısal hale getirilir ve vektörel hareket hesabı mümkün olur.",
         bulletPoints: [
           "Kuzey: 0° veya 360°",

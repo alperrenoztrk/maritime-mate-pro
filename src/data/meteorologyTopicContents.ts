@@ -30,6 +30,9 @@ import nimbostratusImage from "@/assets/clouds/nimbostratus-pannus.jpg";
 import stratocumulusImage from "@/assets/clouds/stratocumulus-layer.jpg";
 import cumulonimbusImage from "@/assets/clouds/cumulonimbus-incus.jpg";
 import mammatusImage from "@/assets/clouds/mammatus-pouches.jpg";
+import stratusImage from "@/assets/clouds/stratus-layer.jpg";
+import fractusImage from "@/assets/clouds/fractus-pannus.jpg";
+import airMassImage from "@/assets/meteorology/air-mass-source-regions.svg";
 
 // Diğer derslerden yeniden kullanılan görseller.
 
@@ -103,6 +106,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Hava Kütlesi Sınıflandırması",
+        image: airMassImage,
+        imageAlt: "Source regions of the main air masses",
         content:
           "Hava kütleleri iki temel eksende sınıflandırılır. İlk eksen kaynak bölgenin enlemidir: kutupsal (P) veya tropikal (T). İkinci eksen kaynak yüzeydir: denizel (m – maritime) veya karasal (c – continental). Böylece dört ana tip ortaya çıkar: karasal kutupsal (cP), denizel kutupsal (mP), karasal tropikal (cT) ve denizel tropikal (mT). Bunlara ek olarak Arktik (A) ve Ekvatoral (E) kütleler de tanımlanır. Her tipin karakteristik sıcaklık ve nem profili farklıdır: mT kütle sıcak ve nemli olup sis riski taşırken, cP kütle soğuk ve kuru olup ani soğuma ve güçlü rüzgâr üretebilir.",
       },
@@ -1037,6 +1042,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Stratus (St) — Düz Gri Tabaka",
+        image: stratusImage,
+        imageAlt: "Stratus as a low, featureless grey layer",
         content:
           "Stratus, gökyüzünü alçak, düz ve şekilsiz gri bir tabaka halinde kaplayan buluttur; tabanı çoğu zaman 500 metrenin altındadır ve yüzeye değdiğinde adı sise dönüşür — sis, yerdeki stratus'tan başka bir şey değildir. Deniz üzerinde en sık, sıcak ve nemli havanın soğuk deniz yüzeyi üzerine akmasıyla (adveksiyon) oluşur; bu nedenle adveksiyon sisi ile aynı koşulların ürünüdür. Yağış olarak yalnızca çise (drizzle) üretebilir. Denizci için kritik göstergedir: stratus tabanının alçalması sise geçişin habercisidir; görüş sürekli izlenmeli, sis işaretleri ve radar gözcülüğü hazır bulundurulmalıdır. Stabil hava kütlesinin (sıcak kütlenin soğuk deniz üzerinde soğuması) tipik bulutudur.",
       },
@@ -1049,6 +1056,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Stratus Fractus — Parçalanmış Kötü Hava Bulutları",
+        image: fractusImage,
+        imageAlt: "Ragged fractus (scud) fragments beneath a storm cloud base",
         content:
           "Fractus, stratus veya cumulus'un rüzgârla yırtılmış, düzensiz parçalar halindeki türüdür. Kötü hava sırasında Ns veya Cb tabanının altında hızla sürüklenen bu alçak parçalara denizcilikte 'scud' denir. Kendileri tehlike üretmez ama iki şeyi gösterir: alt katmanın neme doyduğunu ve yüzey rüzgârının kuvvetli olduğunu. Yağış bulutunun altında scud görülmesi, bulut tabanının pratikte daha da alçak olduğu ve görüşün aniden düşebileceği anlamına gelir. Fırtına sonrasında gökyüzünde kalan fractus parçaları ise sistemin geçtiğini ve havanın toparlanmakta olduğunu gösterir.",
       },

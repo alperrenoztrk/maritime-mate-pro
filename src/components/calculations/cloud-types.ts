@@ -11,6 +11,8 @@ import asperitasImage from '@/assets/clouds/asperitas.jpg';
 import pyrocumulusImage from '@/assets/clouds/pyrocumulus.jpg';
 import contrailsImage from '@/assets/clouds/contrails.jpg';
 import virgaImage from '@/assets/clouds/virga.jpg';
+import stratusImage from '@/assets/clouds/stratus-layer.jpg';
+import fractusImage from '@/assets/clouds/fractus-pannus.jpg';
 import kelvinHelmholtzImage from '@/assets/clouds/kelvin-helmholtz.jpg';
 import cirrostratusHaloImage from '@/assets/clouds/cirrostratus-halo.jpg';
 import nimbostratusImage from '@/assets/clouds/nimbostratus-pannus.jpg';
@@ -67,6 +69,7 @@ export const cloudTypes: CloudType[] = [
     wind: 'Hafif (< 10 knot)',
     precipitation: 'Drizzle or light snow',
     danger: 'high',
+    imageUrl: stratusImage,
     satelliteChannels: ['Ch1 (VIS0.6)', 'Ch9 (IR10.8)', 'Ch12 (HRV)'],
     bestDetectionChannel: 'Ch1 (VIS0.6) - Best channel for low low clouds'
   },
@@ -409,6 +412,7 @@ export const cloudTypes: CloudType[] = [
     wind: 'strong',
     precipitation: 'ongoing',
     danger: 'medium',
+    imageUrl: fractusImage,
     satelliteChannels: ['Ch1 (VIS0.6)', 'Ch9 (IR10.8)', 'Ch12 (HRV)'],
     bestDetectionChannel: 'Ch12 (HRV) - Fractured cloud fragments'
   },

@@ -3,5 +3,16 @@
     "vbL@0,-150",
     "vbL@0,198",
     "vbL@-178,14"
+  ],
+  "src/assets/meteorology/air-mass-source-regions.svg": [
+    "panel@293,184",
+    "panel@246,35",
+    "panel@283,35",
+    "panel@323,35",
+    "panel@366,37",
+    "panel@94,90",
+    "panel@402,37",
+    "panel@449,37",
+    "panel@24,223"
   ]
 }

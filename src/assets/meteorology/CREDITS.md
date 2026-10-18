@@ -26,6 +26,7 @@ NODE_USE_ENV_PROXY=1 node scripts/fetch-lesson-images.mjs
 | `buys-ballot-law.svg` | [BuysBallot en.svg](https://commons.wikimedia.org/wiki/File:BuysBallot_en.svg) | Mormegil | CC BY-SA 3.0 |
 | `advection-fog.jpg` | [Golden Gate Bridge fog. (51733986116).jpg](https://commons.wikimedia.org/wiki/File:Golden_Gate_Bridge_fog._(51733986116).jpg) | Bernard Spragg. NZ from Christchurch, New Zealand | Public domain |
 | `world-surface-currents.jpg` | [Admiralty Chart No 5310 The World General Surface Current Circulation, Published 1949.jpg](https://commons.wikimedia.org/wiki/File:Admiralty_Chart_No_5310_The_World_General_Surface_Current_Circulation%2C_Published_1949.jpg) | United Kingdom Hydrographic Office | Public domain |
+| `air-mass-source-regions.svg` | [Air masses.svg](https://commons.wikimedia.org/wiki/File:Air_masses.svg) | NASA | Public domain |
 
 ## Elle çizilen diyagramlar
 
