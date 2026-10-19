@@ -10881,5 +10881,44 @@
   },
   "Makineye artık ihtiyaç olmadığını bildiren telgraf emri; genellikle gemi bağlandıktan veya demirledikten sonra verilir.": {
     "en": "The telegraph order that the engine is no longer required; usually given after the ship has berthed or anchored."
+  },
+  ": Haritadaki yüksekliklerin referans seviyesi": {
+    "en": ": Reference level for heights shown on the chart"
+  },
+  ": Objenin o anki su seviyesinden yüksekliği": {
+    "en": ": Height of the object above the present water level"
+  },
+  "════════════════════ Effective Height = Haritadaki yükseklik + (MHWS − o anki gelgit yüksekliği) ════════════════════": {
+    "en": "════════════════════ Effective Height = Charted height + (MHWS − present height of tide) ════════════════════"
+  },
+  "Açı objenin tepesi ile tabanındaki su hattı arasında ölçülür; göz yüksekliği düşülmez": {
+    "en": "The angle is measured between the top of the object and the waterline at its base; the height of eye is not subtracted"
+  },
+  "Gelgit (MHWS) farkının eklenmemesi": {
+    "en": "Not adding the tidal (MHWS) difference"
+  },
+  "Haritadaki fener ve kule yükseklikleri MHWS üstündendir; su seviyesi daha alçaksa fark eklenir": {
+    "en": "Charted heights of lights and towers are above MHWS; if the water level is lower, the difference is added"
+  },
+  "Haritadaki obje yüksekliği H = 30 m (MHWS üstü)": {
+    "en": "Charted height of the object H = 30 m (above MHWS)"
+  },
+  "Haritadaki yükseklik + (MHWS − o anki gelgit yüksekliği)": {
+    "en": "Charted height + (MHWS − present height of tide)"
+  },
+  "Haritadaki yükseklikler MHWS üstündendir; su daha alçaksa fark eklenir. Açı tepe ile tabandaki su hattı arasında ölçüldüğü için göz yüksekliği düşülmez.": {
+    "en": "Charted heights are above MHWS; if the water is lower, the difference is added. Because the angle is measured between the top and the waterline at the base, the height of eye is not subtracted."
+  },
+  "MHWS = 4.0 m, o anki gelgit yüksekliği = 2.0 m": {
+    "en": "MHWS = 4.0 m, present height of tide = 2.0 m"
+  },
+  "Obje yüksekliği − göz yüksekliği": {
+    "en": "Height of object − height of eye"
+  },
+  "Objenin tabanının ufkun ötesinde kalması (taban görünmüyorsa bu formül geçersizdir)": {
+    "en": "The base of the object lying beyond the horizon (if the base cannot be seen, this formula does not apply)"
+  },
+  "Ölçülen düşey açı θ = 2°": {
+    "en": "Measured vertical angle θ = 2°"
   }
 }

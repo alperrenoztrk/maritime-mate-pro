@@ -4955,8 +4955,8 @@ Obj Yüksekliği / Mesafe
 * **H** : Objeye ait yükseklik (m)
 * **θ** : Düşey açı (°)
 * **D** : Yatay mesafe (m veya NM)
-* **HA** : Height of Eye (m)
-* **Effective Height** : Etkin yükseklik
+* **MHWS** : Haritadaki yüksekliklerin referans seviyesi
+* **Effective Height** : Objenin o anki su seviyesinden yüksekliği
 
 ---
 
@@ -4966,11 +4966,11 @@ Obj Yüksekliği / Mesafe
 
 ════════════════════
 Effective Height
-= Obj Yüksekliği − Height of Eye
+= Haritadaki yükseklik + (MHWS − o anki gelgit yüksekliği)
 ════════════════════
 
-* Göz yüksekliği, objenin tabanı deniz seviyesindeyse düşülür
-* Deniz fenerleri ve kulelerde standart uygulamadır
+* Haritadaki fener ve kule yükseklikleri MHWS üstündendir; su seviyesi daha alçaksa fark eklenir
+* Açı objenin tepesi ile tabanındaki su hattı arasında ölçülür; göz yüksekliği düşülmez
 
 ---
 
@@ -5005,9 +5005,9 @@ D = Effective Height / tan θ
 
 **Verilenler**
 
-* Obje yüksekliği (**H**) = **30 m**
-* Height of Eye (**HA**) = **5 m**
-* Ölçülen düşey açı (**θ**) = **2°**
+* Haritadaki obje yüksekliği H = 30 m (MHWS üstü)
+* MHWS = 4.0 m, o anki gelgit yüksekliği = 2.0 m
+* Ölçülen düşey açı θ = 2°
 
 ---
 
@@ -5016,8 +5016,8 @@ D = Effective Height / tan θ
 ⬛ **Etkin Yükseklik**
 
 ════════════════════
-Effective Height = 30 − 5
-Effective Height = 25 m
+Effective Height = 30 + (4.0 − 2.0)
+Effective Height = 32 m
 ════════════════════
 
 ---
@@ -5025,9 +5025,9 @@ Effective Height = 25 m
 ⬛ **Mesafe (metre)**
 
 ════════════════════
-D = 25 / tan 2°
+D = 32 / tan 2°
 tan 2° ≈ 0.0349
-D ≈ 716 m
+D ≈ 916 m
 ════════════════════
 
 ---
@@ -5035,8 +5035,8 @@ D ≈ 716 m
 ⬛ **Mesafe (NM)**
 
 ════════════════════
-D = 716 / 1852
-D ≈ 0.39 NM
+D = 916 / 1852
+D ≈ 0.49 NM
 ════════════════════
 
 ---
@@ -5082,7 +5082,8 @@ Kerteriz LOP
 ### Hata Kaynakları
 
 * Yanlış yükseklik bilgisi
-* Height of Eye’nin ihmal edilmesi
+* Gelgit (MHWS) farkının eklenmemesi
+* Objenin tabanının ufkun ötesinde kalması (taban görünmüyorsa bu formül geçersizdir)
 * Küçük açı ölçüm hataları
 * Dalgadan kaynaklı göz hizası değişimi
 

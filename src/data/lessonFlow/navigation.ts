@@ -3302,13 +3302,13 @@ export const navigationLessonFlows: LessonFlow[] = [
         category: NAV,
         question: "Etkin yükseklik (Effective Height) nasıl bulunur?",
         options: [
-          "Obje yüksekliği − Height of Eye (göz yüksekliği)",
-          "Obje yüksekliği + göz yüksekliği",
+          "Haritadaki yükseklik + (MHWS − o anki gelgit yüksekliği)",
+          "Obje yüksekliği − göz yüksekliği",
           "Obje yüksekliği × 2",
-          "Yalnızca obje yüksekliği",
+          "Obje yüksekliği + göz yüksekliği",
         ],
         correctAnswer: 0,
-        explanation: "Tabanı deniz seviyesindeki objelerde göz yüksekliği çıkarılır: Effective Height = H − HA.",
+        explanation: "Haritadaki yükseklikler MHWS üstündendir; su daha alçaksa fark eklenir. Açı tepe ile tabandaki su hattı arasında ölçüldüğü için göz yüksekliği düşülmez.",
       },
       {
         id: 3,
