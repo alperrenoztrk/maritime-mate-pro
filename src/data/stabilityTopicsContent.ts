@@ -216,7 +216,7 @@ Bu kazalar sonucunda:
 
 Kaldırma kuvveti, bir geminin su üzerinde kalabilmesini sağlayan temel fiziksel etkidir ve doğrudan sıvı mekaniğinin en temel prensiplerinden birine dayanır. Bir gemi suya girdiğinde, kendi hacmi kadar suyu yer değiştirir. Bu yer değiştiren suyun ağırlığı, gemiye yukarı yönde etki eden bir kuvvet oluşturur. Bu kuvvet, geminin ağırlığını dengelediği sürece gemi yüzme durumunu korur.
 
-Kaldırma kuvvetinin büyüklüğü, geminin şekline ya da malzemesine değil, yalnızca yer değiştirdiği su hacmine ve suyun yoğunluğuna bağlıdır. Bu ilişki **Arşimet prensibi** ile ifade edilir ve gemi stabilitesinin matematiksel temelini oluşturur. İlke şu şekilde tanımlanır:
+Kaldırma kuvvetinin büyüklüğü, geminin şekline ya da malzemesine değil, yalnızca yer değiştirdiği su hacmine ve suyun yoğunluğuna bağlıdır. Bu ilişki Arşimet prensibi ile ifade edilir ve gemi stabilitesinin matematiksel temelini oluşturur. İlke şu şekilde tanımlanır:
 
 ────────────
 Kaldırma Kuvveti = Yer Değiştirilen Su Ağırlığı
@@ -236,7 +236,7 @@ Burada
 
 Bu bağıntı, gemi yüzdüğü sürece kaldırma kuvvetinin gemi ağırlığına eşit olduğunu açıkça gösterir. Gemiye yük eklendiğinde ağırlık artar; buna karşılık gemi daha fazla batar, yer değiştiren su hacmi büyür ve kaldırma kuvveti yeni ağırlık değerine ulaşana kadar artar. Yüzerlik, bu sürekli denge arayışının sonucudur.
 
-Kaldırma kuvvetinin etkidiği nokta, **kaldırma merkezi** olarak adlandırılır. Bu nokta, su altında kalan hacmin geometrik merkezidir ve kaldırma kuvveti her zaman bu noktadan, düşey doğrultuda yukarı doğru etki eder. Geminin yatma veya trim yapma durumunda, su altı hacminin şekli değiştiğinden kaldırma merkezinin yeri de değişir. Bu hareket, gemi stabilitesinin temel mekanizmasını oluşturur.
+Kaldırma kuvvetinin etkidiği nokta, kaldırma merkezi olarak adlandırılır. Bu nokta, su altında kalan hacmin geometrik merkezidir ve kaldırma kuvveti her zaman bu noktadan, düşey doğrultuda yukarı doğru etki eder. Geminin yatma veya trim yapma durumunda, su altı hacminin şekli değiştiğinden kaldırma merkezinin yeri de değişir. Bu hareket, gemi stabilitesinin temel mekanizmasını oluşturur.
 
 Kaldırma kuvveti tek başına geminin stabil olup olmadığını belirlemez; ancak stabilite için vazgeçilmez bir ön koşuldur. Eğer kaldırma kuvveti gemi ağırlığından küçük olursa gemi batar, büyük olursa gemi yükselir. Dengede, bu iki kuvvet aynı doğrultu üzerinde ve eşit büyüklüktedir. Ancak doğrultuların konumsal ilişkisi —yani ağırlık merkezi ile kaldırma merkezinin göreli konumu— geminin denge karakterini belirler.
 
@@ -334,7 +334,7 @@ Sonuç olarak yüzerlik şartı, geminin su üzerindeki varlığının matematik
         title: "2.4. Denge Hâlleri (Equilibrium States)",
         content: `
 
-Yüzerlik şartını sağlayan bir gemi, kuvvetler açısından dengededir; ancak bu denge, geminin küçük bir dış etki altındaki davranışını tek başına açıklamaz. Gemi stabilitesinin özü, geminin denge konumundan uzaklaştırıldığında nasıl bir tepki verdiğiyle ilgilidir. Bu tepki, **denge hâlleri** kavramı ile tanımlanır ve üç temel sınıfta incelenir: kararlı (stable), kararsız (unstable) ve nötr (neutral) denge.
+Yüzerlik şartını sağlayan bir gemi, kuvvetler açısından dengededir; ancak bu denge, geminin küçük bir dış etki altındaki davranışını tek başına açıklamaz. Gemi stabilitesinin özü, geminin denge konumundan uzaklaştırıldığında nasıl bir tepki verdiğiyle ilgilidir. Bu tepki, denge hâlleri kavramı ile tanımlanır ve üç temel sınıfta incelenir: kararlı (stable), kararsız (unstable) ve nötr (neutral) denge.
 
 Denge hâlleri, ağırlık merkezi ile kaldırma merkezinin göreli konumları ve bu konumların küçük yatma açıları altında oluşturduğu momentler üzerinden değerlendirilir. Buradaki ana soru şudur: Gemi küçük bir açıyla yatırıldığında, onu eski dik konumuna döndürmeye çalışan bir moment mi oluşur, yoksa yatmayı artıran bir moment mi ortaya çıkar?
 
@@ -358,7 +358,7 @@ GZ < 0
 
 Bu ifade, oluşan momentin doğrultma değil, devirmeye yönelik olduğunu açıkça ortaya koyar.
 
-**Nötr denge** ise geminin küçük bir yatma sonrası yeni konumunda kalma eğilimi gösterdiği özel bir durumdur. Bu hâlde ne doğrultma ne de devirmeye çalışan bir moment oluşur. Gemi hangi açıda bırakılırsa o açıda kalır. Teorik olarak mümkündür; ancak pratik gemi işletmeciliğinde istenmeyen ve nadir rastlanan bir durumdur.
+Nötr denge ise geminin küçük bir yatma sonrası yeni konumunda kalma eğilimi gösterdiği özel bir durumdur. Bu hâlde ne doğrultma ne de devirmeye çalışan bir moment oluşur. Gemi hangi açıda bırakılırsa o açıda kalır. Teorik olarak mümkündür; ancak pratik gemi işletmeciliğinde istenmeyen ve nadir rastlanan bir durumdur.
 
 Nötr dengede doğrultma kolu sıfırdır:
 
@@ -1912,7 +1912,7 @@ Wall-sided formül şu durumlarda geçerlidir:
       },
       {
         title: "6.6. Deck Edge Immersion ve Downflooding Açısı",
-        content: `Büyük açılı stabilitede, **pozitif stabilite menzilini** belirleyen kritik sınır çoğu zaman **downflooding (su girişi) açısıdır**. Bu nedenle GZ eğrisi yalnızca geometrik sıfır noktasıyla değil, geminin su almaya başladığı açıyla birlikte değerlendirilmelidir.
+        content: `Büyük açılı stabilitede, pozitif stabilite menzilini belirleyen kritik sınır çoğu zaman downflooding (su girişi) açısıdır. Bu nedenle GZ eğrisi yalnızca geometrik sıfır noktasıyla değil, geminin su almaya başladığı açıyla birlikte değerlendirilmelidir.
 
 **Deck Edge Immersion (Güverte Kenar Batması)**
 - Güverte kenar çizgisinin suya değdiği açıdır.
@@ -1957,12 +1957,12 @@ GZ eğrisi teorik olarak pozitif kalsa bile, downflooding ile su girişi başlad
       },
       {
         title: "6.7. Pozitif Stabilite Menzili ve Stabilite Rezervi",
-        content: `GZ eğrisi, geminin **pozitif stabilite menzili** ve **stabilite rezervi** hakkında net bilgi sağlar. Bu iki kavram, özellikle büyük açılarda geminin devrilmeye karşı kalan güvenlik payını ifade eder.
+        content: `GZ eğrisi, geminin pozitif stabilite menzili ve stabilite rezervi hakkında net bilgi sağlar. Bu iki kavram, özellikle büyük açılarda geminin devrilmeye karşı kalan güvenlik payını ifade eder.
 
 **Pozitif Stabilite Menzili**
 - GZ'nin pozitif kaldığı açılar aralığıdır.
 - Başlangıç 0° kabul edilir.
-- Bitiş, **vanishing angle** veya **downflooding açısı**dır (hangisi daha küçükse).
+- Bitiş, vanishing angle veya downflooding açısıdır (hangisi daha küçükse).
 
 **Stabilite Rezervi (Reserve of Stability)**
 - GZ eğrisi altında kalan alan ile temsil edilir.
@@ -2093,11 +2093,11 @@ Serbest yüzey etkisi, tankın doluluk oranından bağımsızdır (yaklaşık ol
       },
       {
         title: "7.2. Serbest Yüzeyin GM'ye Etkisi",
-        content: `Serbest yüzey etkisinin en kritik sonucu, geminin **efektif GM** değerini düşürmesidir. Bu düşüş, geminin sanki ağırlık merkezi yükselmiş gibi davranmasına yol açar.
+        content: `Serbest yüzey etkisinin en kritik sonucu, geminin efektif GM değerini düşürmesidir. Bu düşüş, geminin sanki ağırlık merkezi yükselmiş gibi davranmasına yol açar.
 
 **Sanal KG Artışı (Virtual Rise of G)**
 - Serbest yüzey, G'nin gerçek konumunu değiştirmez.
-- Ancak stabilite hesabında G **GG₁ kadar yükselmiş** kabul edilir.
+- Ancak stabilite hesabında G GG₁ kadar yükselmiş kabul edilir.
 - GG₁ = ΣFSM / Δ
 
 **Efektif GM**
@@ -2238,7 +2238,7 @@ Genişlik (b) küp ile girdiği için:
       },
       {
         title: "7.5. Birden Fazla Tankın Etkisi",
-        content: `Bir gemide aynı anda birden fazla kısmen dolu tank varsa, toplam serbest yüzey etkisi **toplam FSM** ile hesaplanır.
+        content: `Bir gemide aynı anda birden fazla kısmen dolu tank varsa, toplam serbest yüzey etkisi toplam FSM ile hesaplanır.
 
 **Toplam FSM**
 ΣFSM = FSM₁ + FSM₂ + FSM₃ + ...
@@ -2498,7 +2498,7 @@ Trim, baş ve kıç draftları arasındaki farktır:
       },
       {
         title: "8.2. LCG – LCB İlişkisi ve Trim Momenti",
-        content: `Boyuna dengede temel belirleyici, **LCG (Boyuna Ağırlık Merkezi)** ile **LCB (Boyuna Kaldırma Merkezi)** arasındaki farktır.
+        content: `Boyuna dengede temel belirleyici, LCG (Boyuna Ağırlık Merkezi) ile LCB (Boyuna Kaldırma Merkezi) arasındaki farktır.
 
 **LCG ve LCB Nedir?**
 - **LCG (Longitudinal Center of Gravity):** Gemideki tüm ağırlıkların boyuna ağırlık merkezi.
@@ -2506,7 +2506,7 @@ Trim, baş ve kıç draftları arasındaki farktır:
 
 **Denge Prensibi**
 Even keel (düz omurga) için:
-- **LCG ≈ LCB** olmalıdır.
+- LCG ≈ LCB olmalıdır.
 - LCG ile LCB arasındaki fark trim momenti doğurur.
 
 **Trim Momenti (Trimming Moment)**
@@ -2514,8 +2514,8 @@ Trimming moment = Δ × (LCG - LCB)
 Bu moment, gemiyi başa veya kıça yatırır.
 
 **Trim Yönü**
-- **LCG LCB’nin önünde ise:** Gemi **başa trim** yapar.
-- **LCG LCB’nin gerisinde ise:** Gemi **kıça trim** yapar.
+- LCG LCB’nin önünde ise: Gemi başa trim yapar.
+- LCG LCB’nin gerisinde ise: Gemi kıça trim yapar.
 
 > Not: İşaret kuralı, gemi kitabı ve hidrostatik tabloların referansına göre değişebilir. Hesapta kullanılan eksen yönünü mutlaka kontrol edin.
 
@@ -2685,7 +2685,7 @@ Final TA = Initial TA + ΔDraftparalel + ΔTA
         examples: [
           {
             problem: "L=100m, LCF midship'ten 2m kıçta. MCT=150 t·m/cm, TPC=20 t/cm. 200 ton yük midship'ten 30m başa alınıyor. TF=6.0m, TA=7.0m idi. Yeni draftlar?",
-            solution: "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m (midship'ten -2m). ΔTF = 42.7 × 48/100 = 20.5 cm batma. ΔTA = 42.7 × 52/100 = 22.2 cm yükselme. Paralel = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.205 = 6.305 m. TA = 7.0 + 0.10 - 0.222 = 6.878 m"
+            solution: "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m, baştan 52m (midship'ten -2m). ΔTF = 42.7 × 52/100 = 22.2 cm batma. ΔTA = 42.7 × 48/100 = 20.5 cm yükselme. Paralel = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.222 = 6.322 m. TA = 7.0 + 0.10 - 0.205 = 6.895 m"
           }
         ],
         keyPoints: [
@@ -3743,13 +3743,13 @@ Standart yükleme durumları, geminin operasyonel yaşamı boyunca karşılaşac
 
 **Lightship (Boş Gemi) Durumu**, geminin hiçbir kargo, yakıt, tatlı su veya sarf malzemesi taşımadığı, yalnızca yapısal ağırlığıyla yüzdüğü durumu ifade eder. Lightship ağırlığı, gemi gövdesinin çelik yapısını, sabit makine ve ekipmanları, boyayı, izolasyon malzemelerini ve sabit balastı kapsar. Lightship deplasmanı ve KG değeri, eğim testi (inclining experiment) ile deneysel olarak belirlenir ve tüm sonraki stabilite hesaplarının referans noktasını oluşturur. Lightship değerleri, geminin yapısal modifikasyonlarına bağlı olarak değişebilir; bu nedenle önemli modifikasyonlar sonrasında eğim testinin yenilenmesi veya ağırlık hesabı yapılması gerekir.
 
-**Full Load Departure (Tam Yüklü Kalkış)** durumu, geminin maksimum kargo kapasitesinde, %100 yakıt ve tatlı su ile tüm sarf malzemeleri tam olarak yüklenmiş halde limandan ayrıldığı senaryodur. Bu durum, genellikle en yüksek deplasmana karşılık gelir ve VCG (düşey ağırlık merkezi) potansiyeli en yüksek olduğu için stabilite açısından kritik bir senaryo oluşturur. Full load departure durumunda draft ve trim değerleri, yükleme hattı (loadline) sınırlarını aşmamalı ve tüm IMO stabilite kriterleri sağlanmalıdır.
+Full Load Departure (Tam Yüklü Kalkış) durumu, geminin maksimum kargo kapasitesinde, %100 yakıt ve tatlı su ile tüm sarf malzemeleri tam olarak yüklenmiş halde limandan ayrıldığı senaryodur. Bu durum, genellikle en yüksek deplasmana karşılık gelir ve VCG (düşey ağırlık merkezi) potansiyeli en yüksek olduğu için stabilite açısından kritik bir senaryo oluşturur. Full load departure durumunda draft ve trim değerleri, yükleme hattı (loadline) sınırlarını aşmamalı ve tüm IMO stabilite kriterleri sağlanmalıdır.
 
-**Full Load Arrival (Tam Yüklü Varış)** durumu, aynı kargo miktarını taşıyan geminin seyir boyunca yakıt, tatlı su ve sarf malzemelerini tüketmesi sonrasında varış limanına ulaştığı senaryoyu temsil eder. Bu durumda yakıt tankları genellikle %10 rezerv seviyesine inmiştir. Yakıt tüketimi, geminin ağırlık merkezinin konumunu önemli ölçüde değiştirebilir; özellikle yakıt tanklarının konumuna bağlı olarak KG artabilir veya azalabilir. Bu nedenle arrival durumunun da bağımsız olarak stabilite kriterlerini sağlaması zorunludur.
+Full Load Arrival (Tam Yüklü Varış) durumu, aynı kargo miktarını taşıyan geminin seyir boyunca yakıt, tatlı su ve sarf malzemelerini tüketmesi sonrasında varış limanına ulaştığı senaryoyu temsil eder. Bu durumda yakıt tankları genellikle %10 rezerv seviyesine inmiştir. Yakıt tüketimi, geminin ağırlık merkezinin konumunu önemli ölçüde değiştirebilir; özellikle yakıt tanklarının konumuna bağlı olarak KG artabilir veya azalabilir. Bu nedenle arrival durumunun da bağımsız olarak stabilite kriterlerini sağlaması zorunludur.
 
-**Ballast Departure (Balast Kalkış)** durumu, geminin kargo olmaksızın yalnızca balast suyu ile seyir yaptığı senaryodur. Balast tanklarının dolu olması, pervanenin yeterli batmasını ve baş draftın kabul edilebilir seviyelerde kalmasını sağlar. Balast durumunda deplasman düşüktür ve geminin rüzgâr yüzey alanı geniştir; bu nedenle rüzgâr heeling momenti daha kritik hale gelir. KM değeri düşük deplasmanlarda farklılık gösterdiğinden, ballast durumları için ayrı stabilite değerlendirmesi zorunludur.
+Ballast Departure (Balast Kalkış) durumu, geminin kargo olmaksızın yalnızca balast suyu ile seyir yaptığı senaryodur. Balast tanklarının dolu olması, pervanenin yeterli batmasını ve baş draftın kabul edilebilir seviyelerde kalmasını sağlar. Balast durumunda deplasman düşüktür ve geminin rüzgâr yüzey alanı geniştir; bu nedenle rüzgâr heeling momenti daha kritik hale gelir. KM değeri düşük deplasmanlarda farklılık gösterdiğinden, ballast durumları için ayrı stabilite değerlendirmesi zorunludur.
 
-**Ballast Arrival (Balast Varış)** durumu, uzun bir balast seyiri sonrasında minimum yakıt ile varış limanına ulaşılan senaryodur. Bu durum, genellikle en düşük deplasman değerine karşılık gelir ve stabilite açısından en zayıf noktayı oluşturabilir. Minimum yakıt durumunda ağırlık merkezinin konumu değişir ve GM değeri kritik seviyelere yaklaşabilir.
+Ballast Arrival (Balast Varış) durumu, uzun bir balast seyiri sonrasında minimum yakıt ile varış limanına ulaşılan senaryodur. Bu durum, genellikle en düşük deplasman değerine karşılık gelir ve stabilite açısından en zayıf noktayı oluşturabilir. Minimum yakıt durumunda ağırlık merkezinin konumu değişir ve GM değeri kritik seviyelere yaklaşabilir.
 
 **Intermediate Conditions (Ara Durumlar)**, kalkış ve varış arasındaki geçiş dönemlerini kapsar. Yakıt tüketiminin %50 seviyesinde olması, kısmi boşaltma veya yükleme durumları ve balast transferleri sırasında oluşan geçici durumlar bu kategoriye girer. Ara durumlar, özellikle serbest yüzey etkisinin maksimum olduğu dönemlerde stabilite açısından kritik olabilir.
 
@@ -3889,7 +3889,7 @@ Tank sıralamasının temel prensibi, herhangi bir ara yükleme durumunda gemini
 
 **Yakıt Tankları İçin Tüketim Sıralaması**, geminin seyir boyunca stabilitesini doğrudan etkiler. Tipik bir tüketim sırası şu şekildedir: settling tank ve service tank günlük kullanım için sürekli devrededir; ardından üst yakıt tankları tüketilir (yüksek VCG'li ağırlıkların kaldırılması GM'i artırır); sonra çift dip yakıt tankları kullanılır ve en son derin tanklar tüketilir. Bu sıralama, seyir boyunca KG'nin kontrollü bir şekilde azalmasını ve GM'in korunmasını sağlar.
 
-**Balast Tank Sıralaması** ise trim ve stabilite kontrolü için aktif olarak yönetilen bir süreçtir. Balast alma sırasında önce çift dip tankları doldurulur (stabilite artışı için), ardından baş pik tankı (trim düzeltmesi için) ve son olarak yan tanklar (ince ayar için) doldurulur. Balast boşaltma sırasında önce üst tanklar boşaltılır (GM artışı), ardından yan tanklar (heel kontrolü) ve en son dip tankları (son aşama) boşaltılır.
+Balast Tank Sıralaması ise trim ve stabilite kontrolü için aktif olarak yönetilen bir süreçtir. Balast alma sırasında önce çift dip tankları doldurulur (stabilite artışı için), ardından baş pik tankı (trim düzeltmesi için) ve son olarak yan tanklar (ince ayar için) doldurulur. Balast boşaltma sırasında önce üst tanklar boşaltılır (GM artışı), ardından yan tanklar (heel kontrolü) ve en son dip tankları (son aşama) boşaltılır.
 
 ────────────
 FSCtoplam = Σ(ρᵢ × iᵢ) / Δ
@@ -3957,7 +3957,7 @@ Sıralı boşaltma, serbest yüzey etkisini dört kat azaltır ve stabilite marj
         title: "Dökme (Bulk) Kargolar",
         content: `Dökme kargo, ambalajsız olarak geminin ambarlarına doğrudan yüklenen kuru veya sıvı kargoları ifade eder. Bu kargolar, yapıları ve fiziksel özellikleri nedeniyle özel stabilite riskleri taşır ve her bir dökme kargo türü için ayrı emniyet prosedürleri uygulanır.
 
-**Kuru Dökme Kargolar** arasında tahıl (buğday, mısır, arpa, pirinç), maden cevherleri (demir cevheri, bakır konsantresi, boksit), kömür, çimento, şeker ve tuz gibi maddeler yer alır. Bu kargoların ortak özelliği, geminin yatma hareketine bağlı olarak kayma (shifting) potansiyeline sahip olmalarıdır. Bir dökme kargonun kayma açısı, malzemenin tanecik büyüklüğüne, nem içeriğine, yoğunluğuna ve istifleme yöntemine bağlıdır.
+Kuru Dökme Kargolar arasında tahıl (buğday, mısır, arpa, pirinç), maden cevherleri (demir cevheri, bakır konsantresi, boksit), kömür, çimento, şeker ve tuz gibi maddeler yer alır. Bu kargoların ortak özelliği, geminin yatma hareketine bağlı olarak kayma (shifting) potansiyeline sahip olmalarıdır. Bir dökme kargonun kayma açısı, malzemenin tanecik büyüklüğüne, nem içeriğine, yoğunluğuna ve istifleme yöntemine bağlıdır.
 
 **Tahıl Kargosu**, IMO Tahıl Kodu (International Code for the Safe Carriage of Grain in Bulk) kapsamında özel düzenlemelere tabidir. Tahıl, yükleme sonrasında zamanla yerleşir (settling) ve ambar içinde boşluklar oluşturur. Gemi yattığında tahıl bu boşluklara doğru kayar ve ağırlık merkezini yatılan tarafa kaydırır. Bu kayma, doğrultma kolunu azaltır ve geminin devrilme riskini artırır.
 
@@ -3979,7 +3979,7 @@ Burada VHM hacimsel heeling momentini, SF stowage factor'ü ve Δ deplasmanı if
 
 **Maden Cevheri Kargoları**, yüksek yoğunlukları nedeniyle özel zorluklar sunar. Demir cevheri gibi kargoların stowage factor'ü çok düşüktür; bu, aynı hacimde çok daha fazla ağırlık taşındığı anlamına gelir. Bu durum, alt ambarlarda yoğun yükleme oluştururken üst ambarlarda büyük boşluklar bırakır. Sonuç olarak KG düşer ve GM oldukça yüksek olur, gemi "sert" hale gelir.
 
-Maden cevherleri taşımacılığında en ciddi risk **sıvılaşma (liquefaction)** fenomenidir. Nem içeriği belirli bir eşiğin üzerinde olan granüler kargolar, geminin titreşimi ve salınımı etkisiyle sıvı gibi davranmaya başlayabilir. Bu durum aniden gerçekleşir ve kargoyu bir anda sıvı yük gibi akışkan hale getirir; serbest yüzey etkisi dramatik biçimde ortaya çıkar ve gemi dakikalar içinde devrilebilir. Bu nedenle IMO, Transportable Moisture Limit (TML) kavramını getirmiştir: kargonun nem içeriği, TML değerini aşmamalıdır.
+Maden cevherleri taşımacılığında en ciddi risk sıvılaşma (liquefaction) fenomenidir. Nem içeriği belirli bir eşiğin üzerinde olan granüler kargolar, geminin titreşimi ve salınımı etkisiyle sıvı gibi davranmaya başlayabilir. Bu durum aniden gerçekleşir ve kargoyu bir anda sıvı yük gibi akışkan hale getirir; serbest yüzey etkisi dramatik biçimde ortaya çıkar ve gemi dakikalar içinde devrilebilir. Bu nedenle IMO, Transportable Moisture Limit (TML) kavramını getirmiştir: kargonun nem içeriği, TML değerini aşmamalıdır.
 
 **Kömür Kargosu**, kendiliğinden tutuşma, metan gazı oluşumu ve nem absorpsiyonu gibi ek riskler taşır. Kömürün oksidasyonu ısı üretir ve havalandırma yetersiz ise sıcaklık tutuşma noktasına ulaşabilir. Ayrıca kömürden çıkan metan gazı, kapalı ambarlarda patlayıcı karışımlar oluşturabilir. Bu nedenle kömür ambarlarında düzenli sıcaklık ve gaz ölçümü yapılması zorunludur.`,
         formulas: [
@@ -4126,7 +4126,7 @@ VCGistif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)
 
 Burada her katmandaki (tier) konteynerlerin ağırlıkları ve düşey konumları ayrı ayrı hesaba katılır. Bay-Row-Tier sistemi, her konteynerin gemideki tam konumunu tanımlar ve stabilite yazılımları bu sistemi kullanarak detaylı hesaplamalar yapar.
 
-**VGM (Verified Gross Mass)** zorunluluğu, SOLAS VI/2 uyarınca 2016'dan itibaren uygulanmaktadır. Her konteynerin tartılmış veya hesaplanmış brüt ağırlığı, yükleme öncesinde belgelenmelidir. VGM bilgisi olmayan konteynerler gemiye yüklenmemelidir. Bu zorunluluk, daha önce yaşanan ve kötü beyan edilen ağırlıkların sebep olduğu stabilite kazalarını önlemek amacıyla getirilmiştir.
+VGM (Verified Gross Mass) zorunluluğu, SOLAS VI/2 uyarınca 2016'dan itibaren uygulanmaktadır. Her konteynerin tartılmış veya hesaplanmış brüt ağırlığı, yükleme öncesinde belgelenmelidir. VGM bilgisi olmayan konteynerler gemiye yüklenmemelidir. Bu zorunluluk, daha önce yaşanan ve kötü beyan edilen ağırlıkların sebep olduğu stabilite kazalarını önlemek amacıyla getirilmiştir.
 
 **Rüzgâr Momenti**, konteyner gemilerinde özellikle kritiktir. Güverte üstü konteyner yığınları, çok büyük yanal projeksiyon alanı oluşturur. Bu alan, rüzgâr basıncıyla birleşerek yüksek heeling momenti üretir. IMO Weather Criterion hesaplarında bu alan doğrudan kullanılır ve rüzgâr heeling arm değerini belirler. Güverte üstü istiflemenin her katmanı, rüzgâr alanını ve dolayısıyla heeling momentini artırır.
 
@@ -4174,13 +4174,13 @@ Burada her katmandaki (tier) konteynerlerin ağırlıkları ve düşey konumlar�
 
 SOLAS düzenlemeleri çerçevesinde yükleme bilgisayarı kullanımı, bulk carrier, tanker ve konteyner gemileri için zorunludur. 150 GRT ve üzeri diğer gemi tiplerinde de kuvvetle tavsiye edilir. Kullanılan yazılımın, klas kuruluşu tarafından onaylanmış (type approved) olması ve gemiye özel verilerin doğrulanmış olması şarttır.
 
-Yükleme bilgisayarının temel fonksiyonları dört ana başlık altında ele alınır. **Stabilite Hesabı** kapsamında yazılım; draft, trim ve heel değerlerini hesaplar, KG ve GM değerlerini belirler, GZ eğrisini oluşturur ve tüm IMO stabilite kriterlerini otomatik olarak kontrol eder. Herhangi bir kriterin sağlanmadığı durumda alarm veya uyarı üretir.
+Yükleme bilgisayarının temel fonksiyonları dört ana başlık altında ele alınır. Stabilite Hesabı kapsamında yazılım; draft, trim ve heel değerlerini hesaplar, KG ve GM değerlerini belirler, GZ eğrisini oluşturur ve tüm IMO stabilite kriterlerini otomatik olarak kontrol eder. Herhangi bir kriterin sağlanmadığı durumda alarm veya uyarı üretir.
 
 **Boyuna Mukavemet Hesabı**, geminin boyuna kesit boyunca kesme kuvveti (shear force) ve eğilme momenti (bending moment) diyagramlarını hesaplar. Bu değerler, klas kuruluşu tarafından belirlenen sınır değerlerle karşılaştırılır ve aşım durumunda uyarı verilir. Özellikle bulk carrier ve tanker gibi gemilerde, yükleme sıralamasının boyuna mukavemet limitlerini aşmaması kritik önem taşır.
 
-**Tank Yönetimi** fonksiyonu, tüm tankların kapasite tablolarını, sounding/ullage dönüşümlerini ve serbest yüzey momentlerini içerir. Tankların doluluk durumu girildikçe, yazılım otomatik olarak ağırlık, VCG, LCG ve FSM değerlerini hesaplar.
+Tank Yönetimi fonksiyonu, tüm tankların kapasite tablolarını, sounding/ullage dönüşümlerini ve serbest yüzey momentlerini içerir. Tankların doluluk durumu girildikçe, yazılım otomatik olarak ağırlık, VCG, LCG ve FSM değerlerini hesaplar.
 
-**Kargo Planlama** fonksiyonu, konteyner gemilerinde bay plan optimizasyonunu, genel kargo gemilerinde ambar yükleme planını ve tüm gemi tiplerinde ağırlık dağılımı analizini kapsar.
+Kargo Planlama fonksiyonu, konteyner gemilerinde bay plan optimizasyonunu, genel kargo gemilerinde ambar yükleme planını ve tüm gemi tiplerinde ağırlık dağılımı analizini kapsar.
 
 Piyasadaki yaygın ticari yazılımlar arasında NAPA Loading Computer, CargoMax, LoadMaster ve Autoload yer alır. Klas kuruluşlarının kendi yazılımları da mevcuttur: DNV LoadLine, Lloyd's ShipWeight ve BV HullManager bunlar arasında sayılabilir. Modern sistemler ECDIS entegrasyonu, VDR bağlantısı ve uzaktan izleme gibi gelişmiş özellikler de sunmaktadır.
 
@@ -4210,7 +4210,7 @@ Yükleme bilgisayarının doğruluğu, içindeki verilerin doğruluğuna bağlı
 
 **Veri girişi**, yükleme bilgisayarı kullanımının en kritik aşamasıdır. Tank verileri girişinde, her tankın sounding veya ullage değeri ölçülür ve yazılıma girilir. Sıvının yoğunluğu (API gravity veya doğrudan yoğunluk değeri) ve sıcaklığı da girilmelidir; çünkü sıcaklık düzeltmesi, özellikle yakıt tanklarında ağırlık hesabının doğruluğunu doğrudan etkiler. Kargo verileri girişinde, her bir kargo partisinin ağırlığı ve istifleme konumu (VCG, LCG koordinatları) belirtilir. Lightship verileri ve hidrostatik tablolar yazılımda yerleşik olarak bulunur ve kullanıcı tarafından değiştirilmez.
 
-**Hesaplama Adımları** şu sırayla gerçekleştirilir:
+Hesaplama Adımları şu sırayla gerçekleştirilir:
 
 Birinci adımda mevcut durum girilir: tüm tank soundingleri, kargo miktarları ve sarf malzemeleri yazılıma aktarılır. Yazılım, mevcut durumun draft, trim, heel, GM ve GZ eğrisi değerlerini hesaplar.
 
@@ -4220,7 +4220,7 @@ Birinci adımda mevcut durum girilir: tüm tank soundingleri, kargo miktarları 
 
 Dördüncü adımda karşılaştırma ve onay yapılır: mevcut ve planlanan durumlar karşılaştırılır, tüm kriterlerin her iki durumda da sağlandığı doğrulanır ve plan onaylanır veya revize edilir.
 
-**Yaygın Hatalar** ve bunlardan kaçınma yöntemleri aşağıda sıralanmıştır:
+Yaygın Hatalar ve bunlardan kaçınma yöntemleri aşağıda sıralanmıştır:
 
 Giriş hataları arasında yanlış tank numarası seçimi, yoğunluk değerinin yanlış girilmesi ve birim hataları (metrik ton ile uzun ton karışıklığı) yer alır. Bu hataları önlemek için veri girişi çift kontrol edilmeli ve önceki durumlarla karşılaştırma yapılmalıdır.
 
@@ -4228,7 +4228,7 @@ Yorumlama hataları arasında uyarıların göz ardı edilmesi, GM yerine GMflui
 
 Sistem hataları arasında güncel olmayan veri seti, kalibrasyon kayması ve yazılım hataları (bug) bulunur. Yazılımın periyodik olarak güncellenmesi ve kalibrasyonunun doğrulanması bu hataları minimize eder.
 
-**Kalite Kontrol Prosedürü** olarak, hesaplanan sonuçların mantıksal değerlendirmesi yapılmalıdır. Örneğin, 500 ton yük alındığında draftta yalnızca birkaç santimetrelik değişim hesaplanıyorsa, bu durum TPC değeriyle uyumlu mudur? GM değeri beklenenden çok farklıysa, bunun nedeni nedir? Bu tür basit mantıksal kontroller, büyük hataların tespit edilmesinde son derece etkilidir.`,
+Kalite Kontrol Prosedürü olarak, hesaplanan sonuçların mantıksal değerlendirmesi yapılmalıdır. Örneğin, 500 ton yük alındığında draftta yalnızca birkaç santimetrelik değişim hesaplanıyorsa, bu durum TPC değeriyle uyumlu mudur? GM değeri beklenenden çok farklıysa, bunun nedeni nedir? Bu tür basit mantıksal kontroller, büyük hataların tespit edilmesinde son derece etkilidir.`,
         formulas: [
           {
             formula: "Weight = Volume × ρ",
@@ -4267,7 +4267,7 @@ Onay süreci iki temel aşamadan oluşur. **Tip Onayı (Type Approval)**, yazıl
 
 Onay standartları, IACS Unified Requirements (özellikle UR S1 boyuna mukavemet ve UR L5 yükleme bilgisayarları), IMO MSC.1/Circ.1229 (onaylı yükleme yazılımları gereksinimleri) ve SOLAS II-1/5-1 (bilgisayar destekli stabilite) çerçevesinde belirlenir.
 
-**Periyodik Gereksinimler** kapsamında, yükleme bilgisayarının yıllık doğrulaması yapılır, 5 yıllık dönemlerde yeniden onay alınır ve herhangi bir gemi modifikasyonu sonrasında (ambar değişikliği, üst yapı eklenmesi, tank modifikasyonu vb.) yazılım güncellemesi ve yeniden onay zorunludur.
+Periyodik Gereksinimler kapsamında, yükleme bilgisayarının yıllık doğrulaması yapılır, 5 yıllık dönemlerde yeniden onay alınır ve herhangi bir gemi modifikasyonu sonrasında (ambar değişikliği, üst yapı eklenmesi, tank modifikasyonu vb.) yazılım güncellemesi ve yeniden onay zorunludur.
 
 PSC (Port State Control) denetimlerinde, yükleme bilgisayarının onay belgeleri, kalibrasyon tarihleri ve yazılım sürüm bilgileri kontrol edilir. Onay belgesinin bulunmaması veya süresi geçmiş olması, eksiklik raporu (deficiency) olarak kaydedilir ve geminin tutulmasına (detention) neden olabilir.`,
         formulas: [
@@ -4651,9 +4651,9 @@ Bu basitleştirilmiş örnekte sınırlar aşılmamıştır; ancak gerçek gemil
 
 **Veri Toplama Aşaması** (kalkıştan en az 2 saat önce tamamlanmalıdır), tüm stabilite hesaplarının hammaddesini oluşturur. Bu aşamada gemideki her tankın sounding veya ullage değeri ölçülür; kargo miktarları manifesto ve yükleme raporlarıyla doğrulanır; yakıt, tatlı su ve sarf malzemesi envanterleri güncellenir; yolcu ve mürettebat sayısı (varsa) kaydedilir. Veri toplama sırasında ölçüm hataları, tüm sonraki hesapları geçersiz kılacağından, kritik tanklarda çift ölçüm yapılması önerilir.
 
-**Yükleme Bilgisayarına Giriş** aşamasında, toplanan tüm veriler sistematik olarak yazılıma aktarılır. Tank verileri girilirken yoğunluk ve sıcaklık değerleri doğrulanır. Kargo ağırlıkları ve konumları belirtilir. Hem departure (kalkış) hem de arrival (varış) durumları için ayrı hesaplamalar yapılır; çünkü seyir boyunca yakıt tüketimi stabiliteyi önemli ölçüde değiştirebilir.
+Yükleme Bilgisayarına Giriş aşamasında, toplanan tüm veriler sistematik olarak yazılıma aktarılır. Tank verileri girilirken yoğunluk ve sıcaklık değerleri doğrulanır. Kargo ağırlıkları ve konumları belirtilir. Hem departure (kalkış) hem de arrival (varış) durumları için ayrı hesaplamalar yapılır; çünkü seyir boyunca yakıt tüketimi stabiliteyi önemli ölçüde değiştirebilir.
 
-**Sonuç Kontrolü** aşamasında, hesaplanan değerler IMO kriterleriyle ve geminin onaylı limit eğrileriyle karşılaştırılır. Kontrol edilmesi gereken parametreler şunlardır:
+Sonuç Kontrolü aşamasında, hesaplanan değerler IMO kriterleriyle ve geminin onaylı limit eğrileriyle karşılaştırılır. Kontrol edilmesi gereken parametreler şunlardır:
 
 — Draft ve trim değerlerinin makul olup olmadığı (gemideki fiili okumayla karşılaştırılır)
 — GMeff ≥ 0,15 m (IMO minimum) — tercihen ≥ 0,50 m
@@ -4662,9 +4662,9 @@ Bu basitleştirilmiş örnekte sınırlar aşılmamıştır; ancak gerçek gemil
 — Boyuna mukavemet limitlerinin aşılmamış olması
 — Yükleme bilgisayarından herhangi bir uyarı veya alarm olmaması
 
-**Operasyonel Değerlendirme** aşamasında, beklenen hava koşulları, yolculuk süresi ve rotadaki özel durumlar (dar su geçişi, sığ su) dikkate alınır. Ağır hava bekleniyorsa, GM marjının artırılması ve serbest yüzey etkisinin minimize edilmesi değerlendirilir.
+Operasyonel Değerlendirme aşamasında, beklenen hava koşulları, yolculuk süresi ve rotadaki özel durumlar (dar su geçişi, sığ su) dikkate alınır. Ağır hava bekleniyorsa, GM marjının artırılması ve serbest yüzey etkisinin minimize edilmesi değerlendirilir.
 
-**Onay ve Belgeleme** aşamasında, kaptan stabilite hesaplarını inceleyerek onaylar. Stabilite hesap kağıdı imzalanır ve dosyalanır. Yükleme planı kayıt altına alınır. Bu belgeler, PSC denetimleri ve olası kaza soruşturmaları için yasal geçerliliğe sahiptir.
+Onay ve Belgeleme aşamasında, kaptan stabilite hesaplarını inceleyerek onaylar. Stabilite hesap kağıdı imzalanır ve dosyalanır. Yükleme planı kayıt altına alınır. Bu belgeler, PSC denetimleri ve olası kaza soruşturmaları için yasal geçerliliğe sahiptir.
 
 ────────────────────────────────────────────
 Parametre         IMO Min.     Önerilen
@@ -4693,15 +4693,15 @@ Kriterlere tam sınırda kalmak, küçük bir ek etki veya hesaplama hatasının
         title: "Seyir Sırası İzleme",
         content: `Seyir sırasında stabilite izleme, kalkış öncesi yapılan hesaplamaların güncelliğini korumak ve değişen koşullara yanıt verebilmek için kritik öneme sahiptir. Gemi limandan ayrıldıktan sonra stabilite durumu, yakıt tüketimi, balast operasyonları ve çevresel koşullar nedeniyle sürekli değişir.
 
-**Vardiya Bazında İzleme** kapsamında, her vardiyada yakıt tüketimi takip edilir, tank seviye değişimleri kontrol edilir, geminin draft ve trim durumu gözlemlenir ve rolling karakteristiği değerlendirilir. Rolling periyodunun uzaması, GM'in düşmekte olduğunun önemli bir göstergesidir ve derhal araştırılmalıdır.
+Vardiya Bazında İzleme kapsamında, her vardiyada yakıt tüketimi takip edilir, tank seviye değişimleri kontrol edilir, geminin draft ve trim durumu gözlemlenir ve rolling karakteristiği değerlendirilir. Rolling periyodunun uzaması, GM'in düşmekte olduğunun önemli bir göstergesidir ve derhal araştırılmalıdır.
 
-**Günlük İzleme** kapsamında, 12 veya 24 saatlik aralıklarla tüm tankların soundingleri alınır, yakıt raporları güncellenir, yükleme bilgisayarında stabilite hesabı yenilenir ve noon report verileri hazırlanır. Günlük stabilite güncellemesi, seyir boyunca geminin emniyet durumunun sürekli izlenmesini sağlar.
+Günlük İzleme kapsamında, 12 veya 24 saatlik aralıklarla tüm tankların soundingleri alınır, yakıt raporları güncellenir, yükleme bilgisayarında stabilite hesabı yenilenir ve noon report verileri hazırlanır. Günlük stabilite güncellemesi, seyir boyunca geminin emniyet durumunun sürekli izlenmesini sağlar.
 
-**Kritik Olaylarda Acil Değerlendirme** gerekir. Hava durumunun bozulması (rüzgâr kuvveti artışı, dalga yüksekliği artışı), kargo kayması şüphesi (ani heel değişimi, asimetrik rolling), tank sızıntısı (beklenmeyen seviye değişimi, trim anomalisi) veya herhangi bir anormal davranış, derhal stabilite değerlendirmesini tetiklemelidir.
+Kritik Olaylarda Acil Değerlendirme gerekir. Hava durumunun bozulması (rüzgâr kuvveti artışı, dalga yüksekliği artışı), kargo kayması şüphesi (ani heel değişimi, asimetrik rolling), tank sızıntısı (beklenmeyen seviye değişimi, trim anomalisi) veya herhangi bir anormal davranış, derhal stabilite değerlendirmesini tetiklemelidir.
 
-**Transfer Operasyonları** seyir sırasında stabiliteyi doğrudan etkiler. Yakıt transferlerinde iskele-sancak simetrisi korunmalı, GM değişimi izlenmeli ve kısmen dolu tank sayısı minimize edilmelidir. Balast operasyonlarında trim optimizasyonu, GM düzeltmesi ve IMO Balast Su Yönetimi (BWM) gereksinimleri birlikte değerlendirilmelidir. Özellikle açık denizde balast değişimi (ballast exchange) sırasında, sequential yöntemde tanklar tek tek boşaltılıp yeniden doldurulduğundan, her ara durum için stabilite kontrolü yapılmalıdır.
+Transfer Operasyonları seyir sırasında stabiliteyi doğrudan etkiler. Yakıt transferlerinde iskele-sancak simetrisi korunmalı, GM değişimi izlenmeli ve kısmen dolu tank sayısı minimize edilmelidir. Balast operasyonlarında trim optimizasyonu, GM düzeltmesi ve IMO Balast Su Yönetimi (BWM) gereksinimleri birlikte değerlendirilmelidir. Özellikle açık denizde balast değişimi (ballast exchange) sırasında, sequential yöntemde tanklar tek tek boşaltılıp yeniden doldurulduğundan, her ara durum için stabilite kontrolü yapılmalıdır.
 
-**Stabilite Kaybı Belirtileri** ve bunlara karşı acil eylemler şu şekilde özetlenebilir:
+Stabilite Kaybı Belirtileri ve bunlara karşı acil eylemler şu şekilde özetlenebilir:
 
 Uzun rolling periyodu → düşük GM → alt tanklara balast alın
 Tek tarafa yatma eğilimi (loll) → GM ≈ 0 veya negatif → ACİL DURUM, dikkatli ve yavaş biçimde alt tanklara balast alın
@@ -4732,11 +4732,11 @@ Burada C deneysel katsayı (0,7–0,9), B geminin genişliği ve T ölçülen ro
         title: "Acil Durum Müdahalesi",
         content: `Stabilite kaybı acil bir durumdur ve doğru müdahale hayat kurtarabilir. Stabilite acil durumlarında panik en büyük düşmandır; sistematik değerlendirme ve kontrollü eylem, geminin ve mürettebatın kurtuluşunu sağlayan temel faktörlerdir.
 
-**Uyarı İşaretleri** aşamasında stabilite kaybının başladığını gösteren belirtiler tanınmalıdır. Rolling periyodunun belirgin şekilde uzaması, GM'in düştüğüne işaret eder. Geminin dik durumdan tek tarafa yatma eğilimi göstermesi (loll durumu), GM'in sıfıra yaklaştığını veya negatife geçtiğini gösterir. Sürekli artan heel açısı ve geminin kendiliğinden düzelememesi, kritik stabilite kaybının başladığını bildirir.
+Uyarı İşaretleri aşamasında stabilite kaybının başladığını gösteren belirtiler tanınmalıdır. Rolling periyodunun belirgin şekilde uzaması, GM'in düştüğüne işaret eder. Geminin dik durumdan tek tarafa yatma eğilimi göstermesi (loll durumu), GM'in sıfıra yaklaştığını veya negatife geçtiğini gösterir. Sürekli artan heel açısı ve geminin kendiliğinden düzelememesi, kritik stabilite kaybının başladığını bildirir.
 
-**Anında Müdahale (0–5 dakika)** aşamasında şu eylemler gerçekleştirilir: MAYDAY mesajı hazırlığı yapılır (henüz gönderilmez ama hazırlık başlar); makineye hız azaltma veya durma emri verilir; gemi mümkünse dalgalara en güvenli pozisyonda tutulur (yan dalga koşullarından kaçınılır); mürettebat uyarılır ve can kurtarma donanımları hazır hale getirilir. Bu aşamada hızlı karar vermek kritiktir; ancak panikle alınan yanlış kararlar durumu kötüleştirebilir.
+Anında Müdahale (0–5 dakika) aşamasında şu eylemler gerçekleştirilir: MAYDAY mesajı hazırlığı yapılır (henüz gönderilmez ama hazırlık başlar); makineye hız azaltma veya durma emri verilir; gemi mümkünse dalgalara en güvenli pozisyonda tutulur (yan dalga koşullarından kaçınılır); mürettebat uyarılır ve can kurtarma donanımları hazır hale getirilir. Bu aşamada hızlı karar vermek kritiktir; ancak panikle alınan yanlış kararlar durumu kötüleştirebilir.
 
-**Değerlendirme (5–15 dakika)** aşamasında, stabilite kaybının nedeni belirlenmeye çalışılır. Üç temel neden olasıdır: flooding (su girişi), kargo kayması veya aşırı serbest yüzey etkisi. Nedenin tespiti, uygulanacak düzeltici eylemi belirler.
+Değerlendirme (5–15 dakika) aşamasında, stabilite kaybının nedeni belirlenmeye çalışılır. Üç temel neden olasıdır: flooding (su girişi), kargo kayması veya aşırı serbest yüzey etkisi. Nedenin tespiti, uygulanacak düzeltici eylemi belirler.
 
 **Flooding Durumunda Müdahale:** Hasarlı bölme tespit edilir ve mümkünse izole edilir (bölme kapıları kapatılır, delikler tıkanır). Pompalama başlatılır. Asimetrik heel durumunda karşı taraftaki bölmelere kontrollü su alınır (counter-flooding); ancak bu işlem toplam su miktarını artırdığından, dikkatli hesaplama gerektirir ve stabiliteyi daha da düşürme riski taşır.
 
@@ -4746,7 +4746,7 @@ Burada C deneysel katsayı (0,7–0,9), B geminin genişliği ve T ölçülen ro
 
 **Jettison (Denize Atma) Kararı**, son çare olarak uygulanır ve ciddi hukuki ile mali sonuçları vardır. Yalnızca batma riskinin yüksek olduğu ve başka çarenin kalmadığı durumlarda kaptan tarafından verilir. Jettison kararı detaylı olarak belgelenmeli, en düşük değerli veya en tehlikeli kargolar önce atılmalı ve yük hattı üzerinden denize bırakılmalıdır.
 
-**Raporlama** kapsamında, şirket DPA (Designated Person Ashore) bilgilendirilir, klas kuruluşu ve bayrak devletine bildirim yapılır ve gerektiğinde SAR (Search and Rescue) koordinasyonu başlatılır. Tüm eylemler, zamanları ve sonuçlarıyla birlikte kayıt altına alınır.`,
+Raporlama kapsamında, şirket DPA (Designated Person Ashore) bilgilendirilir, klas kuruluşu ve bayrak devletine bildirim yapılır ve gerektiğinde SAR (Search and Rescue) koordinasyonu başlatılır. Tüm eylemler, zamanları ve sonuçlarıyla birlikte kayıt altına alınır.`,
         keyPoints: [
           "Erken müdahale kritiktir — belirtileri tanıyın ve hemen harekete geçin",
           "Nedenin tespiti doğru eylemi belirler: flooding, kargo kayması veya düşük GM",

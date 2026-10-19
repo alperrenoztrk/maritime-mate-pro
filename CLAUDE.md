@@ -93,5 +93,6 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   (`machineTopicDetailContent*.ts`, `shipSystemsData.ts`, `crewTasks/`) sözlükte
   yok, tamamen canlı çeviriye bağlı.
 - Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
-  çevrilir; bozuk bitişte kaynak cümledeki vurgu kaldırılıp cümle tek parça
-  çevrilir (Türkçe arayüz sunulmadığı için görünmez).
+  çevrilir ve bozuk İngilizce çıkar. `navigationTopicContents.ts` ve
+  `stabilityTopicsContent.ts`'de cümle ortası kalınlar kaldırıldı; yeni
+  içerikte cümle ortasında `**` kullanma (yalnızca "**Etiket:** cümle" olur).

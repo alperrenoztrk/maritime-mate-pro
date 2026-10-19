@@ -212,7 +212,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Örnek Hesap",
-        content: `Sextanttan okunan alet yüksekliği **Hs = 27° 18.4′** olsun. İndeks hatası **−1.6′**, göz yüksekliği **16 m** ve Güneş **alt kenar** gözlemi yapılmış olsun.
+        content: `Sextanttan okunan alet yüksekliği Hs = 27° 18.4′ olsun. İndeks hatası −1.6′, göz yüksekliği 16 m ve Güneş alt kenar gözlemi yapılmış olsun.
 
 Dip düzeltmesi:
 
@@ -282,7 +282,7 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Örnek uygulama (görsel mantıkla ölçüm süreci)",
         content:
-          "Güneş gözlemi yapılırken sextant dik tutulur. İndeks kolu hareket ettirilerek Güneş’in alt kenarı ufka temas ettirilir. Gemi dalga nedeniyle yukarı–aşağı hareket ederken temas anları birkaç kez gözlenir ve ortalama bir temas noktası seçilir. Ölçüm tamamlandığında sextanttan **Hs = 46° 12.4′** okunur ve aynı anda kronometreden gözlem zamanı kaydedilir. Bu değer henüz mevki tayini değildir; sextant kullanımı burada biter. Bundan sonra yapılan tüm işlemler bu ölçümün düzeltmeye ve yoruma tabi tutulmasıdır. Sextant doğru kullanılmadığında, hesaplar ne kadar düzgün yapılırsa yapılsın sonuç güvenilir olmaz."
+          "Güneş gözlemi yapılırken sextant dik tutulur. İndeks kolu hareket ettirilerek Güneş’in alt kenarı ufka temas ettirilir. Gemi dalga nedeniyle yukarı–aşağı hareket ederken temas anları birkaç kez gözlenir ve ortalama bir temas noktası seçilir. Ölçüm tamamlandığında sextanttan Hs = 46° 12.4′ okunur ve aynı anda kronometreden gözlem zamanı kaydedilir. Bu değer henüz mevki tayini değildir; sextant kullanımı burada biter. Bundan sonra yapılan tüm işlemler bu ölçümün düzeltmeye ve yoruma tabi tutulmasıdır. Sextant doğru kullanılmadığında, hesaplar ne kadar düzgün yapılırsa yapılsın sonuç güvenilir olmaz."
       }
     ],
     keyPoints: [
@@ -300,12 +300,12 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Aşama 1: Yerel öğle anının tespiti",
         content:
-          "Güneş’in yükselip alçaldığı yay izlenir; **yerel öğle**, yüksekliğin **en büyük** olduğu andır. Bu an, saat bilgisine göre değil, **yüksekliğin maksimuma ulaştığı nokta** olarak belirlenir. Boylam bu aşamada gerekli değildir."
+          "Güneş’in yükselip alçaldığı yay izlenir; yerel öğle, yüksekliğin en büyük olduğu andır. Bu an, saat bilgisine göre değil, yüksekliğin maksimuma ulaştığı nokta olarak belirlenir. Boylam bu aşamada gerekli değildir."
       },
       {
         title: "Aşama 2: En büyük yükseklikten Ho’nun elde edilmesi",
         content:
-          "Sextant ile ölçülen en büyük yükseklik, tüm düzeltmeler (IE, dip, refraksiyon, SD, paralaks) uygulanarak **Ho (düzeltilmiş yükseklik)** değerine çevrilir. Öğle mevkiinde Ho, Güneş’in meridyendeki gerçek yüksekliğini temsil eder."
+          "Sextant ile ölçülen en büyük yükseklik, tüm düzeltmeler (IE, dip, refraksiyon, SD, paralaks) uygulanarak Ho (düzeltilmiş yükseklik) değerine çevrilir. Öğle mevkiinde Ho, Güneş’in meridyendeki gerçek yüksekliğini temsil eder."
       },
       {
         title: "Aşama 3: Zenit uzaklığının (Z) kurulması",
@@ -319,7 +319,7 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Aşama 4: Enlemin belirlenmesi (kuzey/güney yorumu)",
         content:
-          "Güneş’in **deklinasyonu (δ)** ve zenit uzaklığı birlikte yorumlanır. Güneş gözlemcinin **kuzeyinde** veya **güneyinde** meridyenden geçer; bu durum işaret kuralını belirler ve enlem doğrudan elde edilir.",
+          "Güneş’in deklinasyonu (δ) ve zenit uzaklığı birlikte yorumlanır. Güneş gözlemcinin kuzeyinde veya güneyinde meridyenden geçer; bu durum işaret kuralını belirler ve enlem doğrudan elde edilir.",
         formula: {
           text: "φ = Z ± δ",
           description: "φ: enlem | Z: zenit uzaklığı | δ: deklinasyon."
@@ -340,17 +340,17 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       },
       {
         title: "Örnek Uygulama",
-        content: `Yerel öğle anında **Ho = 63° 20.0′** ölçülsün.
+        content: `Yerel öğle anında Ho = 63° 20.0′ ölçülsün.
 
 Z = 90° − 63° 20.0′ = **26° 40.0′**
 
-Astronomik tablodan Güneş deklinasyonu **δ = 18° 10.0′ N** olsun. Güneş meridyende **güneyde** geçiyorsa (kuzey yarımkürede klasik durum):
+Astronomik tablodan Güneş deklinasyonu δ = 18° 10.0′ N olsun. Güneş meridyende güneyde geçiyorsa (kuzey yarımkürede klasik durum):
 
 φ = Z − δ  
 φ = 26° 40.0′ − 18° 10.0′  
 φ = **08° 30.0′ N**
 
-Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulunduğunu gösterir. Öğle mevkii, açık denizde hızlı ve güvenilir bir enlem kontrolü sağlar; ancak bulutlu havada ve Güneş’in meridyene net çıkmadığı koşullarda operasyonel olarak zayıflar.`
+Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu gösterir. Öğle mevkii, açık denizde hızlı ve güvenilir bir enlem kontrolü sağlar; ancak bulutlu havada ve Güneş’in meridyene net çıkmadığı koşullarda operasyonel olarak zayıflar.`
       }
     ],
     keyPoints: [
@@ -803,7 +803,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
     sections: [
       {
         title: "Departure (Doğu–Batı Mesafesi) Genel Tanım",
-        content: `Departure değeri daima **deniz mili** cinsindendir ve işareti, geminin doğuya mı yoksa batıya mı hareket ettiğini gösterir. Bu yön bilgisi, kurs hesaplarında ve boylam değişimi ilişkilerinde doğrudan kullanılır.
+        content: `Departure değeri daima deniz mili cinsindendir ve işareti, geminin doğuya mı yoksa batıya mı hareket ettiğini gösterir. Bu yön bilgisi, kurs hesaplarında ve boylam değişimi ilişkilerinde doğrudan kullanılır.
 
 
 
@@ -819,8 +819,8 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
 
 `,
         bulletPoints: [
-          "Doğuya doğru seyirde departure **doğu** yönlü kabul edilir ve pozitif alınır.",
-          "Batıya doğru seyirde departure **batı** yönlü kabul edilir ve negatif alınır.",
+          "Doğuya doğru seyirde departure doğu yönlü kabul edilir ve pozitif alınır.",
+          "Batıya doğru seyirde departure batı yönlü kabul edilir ve negatif alınır.",
           "Yanlış işaret, sayısal olarak doğru görünen ama geometrik olarak hatalı sonuçlar üretir."
         ]
       },
@@ -914,7 +914,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
         title: "Boylam Dakikasının Fiziksel Gerçeği",
         content: `Enlem dakikası her yerde yaklaşık olarak 1 deniz milidir. Buna karşılık boylam dakikasının uzunluğu sabit değildir ve bulunduğu enleme bağlıdır. Boylam dakikasının gerçek uzunluğu, ilgili enlemin kosinüsü ile orantılıdır. Düzlem seyir, bu gerçeği yok sayar ve her boylam dakikasını ekvatordaki uzunlukta kabul eder. Bu nedenle doğu–batı yönlü mesafe arttıkça hata büyür.
 
-Bu fiziksel gerçek, düzlem seyirin **neden sınırlı bir yöntem** olduğunu açıklar ve orta enlem seyri yaklaşımının ortaya çıkış gerekçesini oluşturur.
+Bu fiziksel gerçek, düzlem seyirin neden sınırlı bir yöntem olduğunu açıklar ve orta enlem seyri yaklaşımının ortaya çıkış gerekçesini oluşturur.
 
 
 
@@ -924,7 +924,7 @@ Bu fiziksel gerçek, düzlem seyirin **neden sınırlı bir yöntem** olduğunu 
         title: "Hatanın Mesafeyle Artışı",
         content: `Düzlem seyirde oluşan hata, seyredilen mesafe ile doğrusal değildir; doğu–batı bileşeni arttıkça hızlanarak büyür. Kısa mesafelerde ihmal edilebilir olan fark, orta mesafelerde birkaç deniz miline ulaşabilir. Bu durum, özellikle kıyı seyri ve dar sularda kabul edilemez sonuçlar doğurur.
 
-Bu nedenle düzlem seyir, genellikle **yaklaşık 60 deniz miline kadar** olan seyirlerde tercih edilir. Mesafe büyüdüğünde, boylam değişiminin enleme bağlı olarak düzeltilmesi gerekir. Bu noktada orta enlem seyri devreye girer.
+Bu nedenle düzlem seyir, genellikle yaklaşık 60 deniz miline kadar olan seyirlerde tercih edilir. Mesafe büyüdüğünde, boylam değişiminin enleme bağlı olarak düzeltilmesi gerekir. Bu noktada orta enlem seyri devreye girer.
 
 
 
@@ -932,7 +932,7 @@ Bu nedenle düzlem seyir, genellikle **yaklaşık 60 deniz miline kadar** olan s
       },
       {
         title: "Düzlem Seyir ile Orta Enlem Seyri Arasındaki Geçiş Mantığı",
-        content: `Orta enlem seyri, düzlem seyirin geometrisini tamamen terk etmez; yalnızca boylam bileşenini **ortalama enlem** üzerinden düzeltir. Böylece kısa ve orta mesafelerde, karmaşık projeksiyonlara ihtiyaç duymadan daha doğru sonuç elde edilir.
+        content: `Orta enlem seyri, düzlem seyirin geometrisini tamamen terk etmez; yalnızca boylam bileşenini ortalama enlem üzerinden düzeltir. Böylece kısa ve orta mesafelerde, karmaşık projeksiyonlara ihtiyaç duymadan daha doğru sonuç elde edilir.
 
 Bu yaklaşım, düzlem seyirin pratikliğini korurken, onun en büyük zayıflığını hedef alır. Düzlem seyirden orta enlem seyrine geçiş, yöntem değişimi değil, **varsayımın rafine edilmesidir**.
 
@@ -944,7 +944,7 @@ Bu yaklaşım, düzlem seyirin pratikliğini korurken, onun en büyük zayıflı
         title: "Düzlem Seyirin Kullanılabileceği ve Kullanılmaması Gereken Durumlar",
         content: `Düzlem seyir, kısa rota bacaklarında, enlem değişiminin sınırlı olduğu durumlarda ve yaklaşık hesapların yeterli olduğu seyirlerde kullanılabilir. Uzun doğu–batı bacakları, yüksek enlemler ve hassas mevki tayini gerektiren durumlar ise bu yöntemin sınırlarının dışındadır.
 
-Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller kullanılsa bile **yanlış sonuç** üretir. Orta enlem seyri, bu sınırların farkında olarak geliştirilen bir ara yöntemdir.
+Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller kullanılsa bile yanlış sonuç üretir. Orta enlem seyri, bu sınırların farkında olarak geliştirilen bir ara yöntemdir.
 
 
 
@@ -966,7 +966,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
     sections: [
       {
         title: "Departure’ın Tanımı ve Boylam Değişimi",
-        content: `Departure, geminin doğu–batı doğrultusunda kat ettiği **gerçek mesafedir** ve deniz mili cinsindendir. Boylam değişimi ise derece ve dakika cinsinden ifade edilir. Bu iki büyüklük doğrudan eşit değildir; aralarındaki dönüşüm, ilgili enlemin kosinüsü ile kurulur.
+        content: `Departure, geminin doğu–batı doğrultusunda kat ettiği gerçek mesafedir ve deniz mili cinsindendir. Boylam değişimi ise derece ve dakika cinsinden ifade edilir. Bu iki büyüklük doğrudan eşit değildir; aralarındaki dönüşüm, ilgili enlemin kosinüsü ile kurulur.
 
 
 
@@ -988,7 +988,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
       },
       {
         title: "Orta Enlem Üzerinden Kurulan Bağıntı",
-        content: `Orta enlem seyrinde, seyir boyunca değişen enlem değeri tek bir temsilî değerle ifade edilir. Bu değer, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Boylam değişimi hesaplanırken, boylam dakikasının uzunluğu bu **ortalama enleme** göre değerlendirilir.
+        content: `Orta enlem seyrinde, seyir boyunca değişen enlem değeri tek bir temsilî değerle ifade edilir. Bu değer, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Boylam değişimi hesaplanırken, boylam dakikasının uzunluğu bu ortalama enleme göre değerlendirilir.
 
 
 
@@ -1069,7 +1069,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Aynı ve Farklı Yarımküre Mantığı",
         content:
-          "Başlangıç ve varış aynı yarımküredeyse fark alınır; farklı yarımkürelerdeyse mutlak değerler toplanır ve sonuç **varış yönüne** göre işaretlenir. Örnek: 12°N’den 5°S’ye gidiliyorsa DLat = 12° + 5° = 17° **Güney**. Aynı kural boylam için de geçerlidir: 20°E’den 10°W’ye geçişte DLong = 20° + 10° = 30° **Batı**."
+          "Başlangıç ve varış aynı yarımküredeyse fark alınır; farklı yarımkürelerdeyse mutlak değerler toplanır ve sonuç varış yönüne göre işaretlenir. Örnek: 12°N’den 5°S’ye gidiliyorsa DLat = 12° + 5° = 17° Güney. Aynı kural boylam için de geçerlidir: 20°E’den 10°W’ye geçişte DLong = 20° + 10° = 30° Batı."
       },
       {
         title: "Kurs–Mesafe İşaret Disiplini",
@@ -1569,7 +1569,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Harita Ölçeği ve Bilgi Düzeyi",
-        content: `Harita ölçeği, deniz haritasının neyi **ayrıntılı**, neyi **bilinçli olarak eksik** gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.
+        content: `Harita ölçeği, deniz haritasının neyi ayrıntılı, neyi bilinçli olarak eksik gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.
 
 
 
@@ -1587,7 +1587,7 @@ Harita ölçeği, harita üzerindeki bir uzunluğun yeryüzündeki gerçek uzunl
 
 Ölçek mantığını sayısal olarak kurmak, harita üzerinde yapılan her ölçümün sınırlarını bilmeyi sağlar. 1:50 000 ölçekli bir haritada harita üzerindeki 1 cm, gerçekte 50 000 cm’ye yani 500 metreye karşılık gelir. 1:25 000 ölçekli bir haritada aynı 1 cm, 250 metreyi temsil eder. Ölçek büyüdükçe, harita üzerindeki küçük çizgiler gerçek dünyada daha küçük mesafelere karşılık gelir ve hata toleransı azalır. Bu nedenle büyük ölçekli haritalar, dar sularda ve manevra safhasında zorunludur.
 
-Harita ölçeğinin en kritik etkisi, **genelleştirme** üzerindedir. Küçük ölçekli haritalar, geniş bir alanı gösterebilmek için ayrıntıyı bilinçli olarak sadeleştirir. Küçük kayalıklar, sığlık uzantıları, dar kanal sınırları veya ikincil seyir yardımcıları bu haritalarda hiç gösterilmeyebilir ya da sembolik olarak küçültülür. Bu durum haritanın eksikliği değil, ölçeğin doğrudan sonucudur. Büyük ölçekli haritalarda ise aynı alan çok daha dar bir çerçevede gösterildiği için izobatlar sıklaşır, derinlik değerleri artar, şamandıra dizileri ve yasak saha sınırları netleşir.
+Harita ölçeğinin en kritik etkisi, genelleştirme üzerindedir. Küçük ölçekli haritalar, geniş bir alanı gösterebilmek için ayrıntıyı bilinçli olarak sadeleştirir. Küçük kayalıklar, sığlık uzantıları, dar kanal sınırları veya ikincil seyir yardımcıları bu haritalarda hiç gösterilmeyebilir ya da sembolik olarak küçültülür. Bu durum haritanın eksikliği değil, ölçeğin doğrudan sonucudur. Büyük ölçekli haritalarda ise aynı alan çok daha dar bir çerçevede gösterildiği için izobatlar sıklaşır, derinlik değerleri artar, şamandıra dizileri ve yasak saha sınırları netleşir.
 
 
 
@@ -1604,7 +1604,7 @@ Harita ölçeği seçimi, seyir safhasına göre yapılır. Açık deniz seyri v
 Harita ölçeği, mesafe ölçümünün doğruluğunu da doğrudan etkiler. Ölçek küçüldükçe, harita üzerindeki milimetrelik bir ölçüm hatası gerçekte yüzlerce metreye karşılık gelebilir. Bu nedenle mesafe ölçümü, mevki işaretleme ve rota düzeltme işlemleri, mümkün olan en büyük ölçekli harita üzerinde yapılmalıdır. Aynı prensip rota ölçümü için de geçerlidir; küçük ölçekte önemsiz görünen birkaç derecelik hata, büyük ölçekte gemiyi kanal dışına taşıyabilir.
 
 
-Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Mariner's Book içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; **hangi safhada hangi harita ile karar verileceğini öğreten bir refleks** olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.`
+Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Mariner's Book içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; hangi safhada hangi harita ile karar verileceğini öğreten bir refleks olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.`
       },
       {
         title: "Harita Datum’u ve Elektronik Seyir",
@@ -1666,7 +1666,7 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
     sections: [
       {
         title: "Harita Ölçeği",
-        content: `Harita ölçeği, deniz haritasının neyi **ayrıntılı**, neyi **bilinçli olarak eksik** gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.
+        content: `Harita ölçeği, deniz haritasının neyi ayrıntılı, neyi bilinçli olarak eksik gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.
 
 
 
@@ -1684,7 +1684,7 @@ Harita ölçeği, harita üzerindeki bir uzunluğun yeryüzündeki gerçek uzunl
 
 Ölçek mantığını sayısal olarak kurmak, harita üzerinde yapılan her ölçümün sınırlarını bilmeyi sağlar. 1:50 000 ölçekli bir haritada harita üzerindeki 1 cm, gerçekte 50 000 cm’ye yani 500 metreye karşılık gelir. 1:25 000 ölçekli bir haritada aynı 1 cm, 250 metreyi temsil eder. Ölçek büyüdükçe, harita üzerindeki küçük çizgiler gerçek dünyada daha küçük mesafelere karşılık gelir ve hata toleransı azalır. Bu nedenle büyük ölçekli haritalar, dar sularda ve manevra safhasında zorunludur.
 
-Harita ölçeğinin en kritik etkisi, **genelleştirme** üzerindedir. Küçük ölçekli haritalar, geniş bir alanı gösterebilmek için ayrıntıyı bilinçli olarak sadeleştirir. Küçük kayalıklar, sığlık uzantıları, dar kanal sınırları veya ikincil seyir yardımcıları bu haritalarda hiç gösterilmeyebilir ya da sembolik olarak küçültülür. Bu durum haritanın eksikliği değil, ölçeğin doğrudan sonucudur. Büyük ölçekli haritalarda ise aynı alan çok daha dar bir çerçevede gösterildiği için izobatlar sıklaşır, derinlik değerleri artar, şamandıra dizileri ve yasak saha sınırları netleşir.
+Harita ölçeğinin en kritik etkisi, genelleştirme üzerindedir. Küçük ölçekli haritalar, geniş bir alanı gösterebilmek için ayrıntıyı bilinçli olarak sadeleştirir. Küçük kayalıklar, sığlık uzantıları, dar kanal sınırları veya ikincil seyir yardımcıları bu haritalarda hiç gösterilmeyebilir ya da sembolik olarak küçültülür. Bu durum haritanın eksikliği değil, ölçeğin doğrudan sonucudur. Büyük ölçekli haritalarda ise aynı alan çok daha dar bir çerçevede gösterildiği için izobatlar sıklaşır, derinlik değerleri artar, şamandıra dizileri ve yasak saha sınırları netleşir.
 
 
 
@@ -1701,14 +1701,14 @@ Harita ölçeği seçimi, seyir safhasına göre yapılır. Açık deniz seyri v
 Harita ölçeği, mesafe ölçümünün doğruluğunu da doğrudan etkiler. Ölçek küçüldükçe, harita üzerindeki milimetrelik bir ölçüm hatası gerçekte yüzlerce metreye karşılık gelebilir. Bu nedenle mesafe ölçümü, mevki işaretleme ve rota düzeltme işlemleri, mümkün olan en büyük ölçekli harita üzerinde yapılmalıdır. Aynı prensip rota ölçümü için de geçerlidir; küçük ölçekte önemsiz görünen birkaç derecelik hata, büyük ölçekte gemiyi kanal dışına taşıyabilir.
 
 
-Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Mariner's Book içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; **hangi safhada hangi harita ile karar verileceğini öğreten bir refleks** olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.`
+Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Mariner's Book içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; hangi safhada hangi harita ile karar verileceğini öğreten bir refleks olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.`
       }
     ]
   },
   "Büyük daire kavramı": {
     title: "Büyük Daire Kavramı",
     introduction:
-      "Büyük daire, küre şeklindeki Dünya üzerinde merkezden geçen bir düzlemin yüzeyi kestiği çemberdir. Bu çemberin düzlemi Dünya merkezinden geçtiği için elde edilen yaylar, küre üzerindeki iki nokta arasındaki **en kısa mesafeyi** temsil eder.",
+      "Büyük daire, küre şeklindeki Dünya üzerinde merkezden geçen bir düzlemin yüzeyi kestiği çemberdir. Bu çemberin düzlemi Dünya merkezinden geçtiği için elde edilen yaylar, küre üzerindeki iki nokta arasındaki en kısa mesafeyi temsil eder.",
     sections: [
       {
         title: "Tanım ve Temel Geometri",
@@ -1757,13 +1757,13 @@ Bu fark orta enlemlerde sınırlı, yüksek enlemlerde ise belirgin hâle gelir.
   "Büyük Daire ve Rhumb Line Seyri": {
     title: "Büyük Daire ve Rhumb Line Seyri",
     introduction:
-      "Büyük daire, küre üzerinde iki mevki arasındaki **en kısa yüzey mesafesini** verir; rhumb line (loxodrome) ise Mercator projeksiyonunda **düz çizgi** olarak görünen ve tüm rota boyunca **sabit kurs** ile ilerlenen hattır. Rhumb line yönetimi daha kolaydır; büyük daire ise çoğu durumda daha kısa mesafe sağlar. Pratik seyirde karar yalnızca mesafe değil; meteoroloji, trafik, emniyet ve operasyonel kısıtlarla birlikte verilir.",
+      "Büyük daire, küre üzerinde iki mevki arasındaki en kısa yüzey mesafesini verir; rhumb line (loxodrome) ise Mercator projeksiyonunda düz çizgi olarak görünen ve tüm rota boyunca sabit kurs ile ilerlenen hattır. Rhumb line yönetimi daha kolaydır; büyük daire ise çoğu durumda daha kısa mesafe sağlar. Pratik seyirde karar yalnızca mesafe değil; meteoroloji, trafik, emniyet ve operasyonel kısıtlarla birlikte verilir.",
     sections: [
       {
         title: "Kavramsal Karşılaştırma",
         image: loxodromeOrthodrome,
         imageAlt: "A great circle (orthodrome) and a rhumb line (loxodrome) between A and B; the rhumb line crosses every meridian at the same angle η",
-        content: `Büyük dairede kurs sürekli değişir; rhumb line’da kurs sabittir. Bu nedenle büyük daire “yakıt ve süre” avantajı, rhumb line ise “uygulama sadeliği” avantajı sunar. Modern ECDIS ve rota planlama sistemleri, büyük daireyi ara noktalara bölerek rhumb line segmentleri şeklinde uygular; böylece sahada **hibrit** bir yöntem ortaya çıkar.
+        content: `Büyük dairede kurs sürekli değişir; rhumb line’da kurs sabittir. Bu nedenle büyük daire “yakıt ve süre” avantajı, rhumb line ise “uygulama sadeliği” avantajı sunar. Modern ECDIS ve rota planlama sistemleri, büyük daireyi ara noktalara bölerek rhumb line segmentleri şeklinde uygular; böylece sahada hibrit bir yöntem ortaya çıkar.
 
 
 
@@ -1778,11 +1778,11 @@ Bu fark orta enlemlerde sınırlı, yüksek enlemlerde ise belirgin hâle gelir.
 ▭ **cos θ = sin φ₁ × sin φ₂ + cos φ₁ × cos φ₂ × cos Δλ**  
 ▭ **Büyük daire mesafesi = θ × 60 deniz mili**
 
-Bu ifade, büyük daire tarafının **referans mesafesini** verir.`
+Bu ifade, büyük daire tarafının referans mesafesini verir.`
       },
       {
         title: "Rhumb Line Kursu ve Mesafesi",
-        content: `Rhumb line (loxodrom), küre üzerindeki tüm meridyenleri **sabit bir açıyla** kesen ve seyir boyunca **sabit kurs** veren bir eğridir. Mercator projeksiyonunda düz bir doğru olarak görünmesi, pratik seyirde büyük kolaylık sağlar.
+        content: `Rhumb line (loxodrom), küre üzerindeki tüm meridyenleri sabit bir açıyla kesen ve seyir boyunca sabit kurs veren bir eğridir. Mercator projeksiyonunda düz bir doğru olarak görünmesi, pratik seyirde büyük kolaylık sağlar.
 
 
 
@@ -1800,7 +1800,7 @@ Mesafe = **büyük daireye göre daha uzun**
 **Rhumb line mesafesi ve kurs bağıntıları**
 
 ▭ **tan C = Δλ / Δψ**  
-Burada **Δλ** boylam farkı, **Δψ** izometrik enlem farkıdır. Mercator projeksiyonunda izometrik enlem:
+Burada Δλ boylam farkı, Δψ izometrik enlem farkıdır. Mercator projeksiyonunda izometrik enlem:
 
 ▭ **ψ = ln [ tan (45° + φ/2) ]**
 
@@ -1943,7 +1943,7 @@ Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapa
     sections: [
       {
         title: "Genel Mantık",
-        content: `Büyük daire seyrinde rota genellikle yüksek enlemlere doğru kavis yapar. Bu durum kış şartlarında, buz riski bulunan bölgelerde veya geminin operasyonel sınırlarının zorlandığı durumlarda pratik değildir. Composite rota, büyük daireye göre **daha güvenli ve öngörülebilir** bir alternatif üretir: büyük daireye girilir, sınırlayıcı enleme ulaşmadan önce rota terk edilir, sabit enlem boyunca ilerlenir ve uygun noktada tekrar büyük daireye bağlanılır.
+        content: `Büyük daire seyrinde rota genellikle yüksek enlemlere doğru kavis yapar. Bu durum kış şartlarında, buz riski bulunan bölgelerde veya geminin operasyonel sınırlarının zorlandığı durumlarda pratik değildir. Composite rota, büyük daireye göre daha güvenli ve öngörülebilir bir alternatif üretir: büyük daireye girilir, sınırlayıcı enleme ulaşmadan önce rota terk edilir, sabit enlem boyunca ilerlenir ve uygun noktada tekrar büyük daireye bağlanılır.
 
 
 
@@ -1988,11 +1988,11 @@ cos 35° ≈ 0.819
 sin φmax ≈ 0.707 × 0.819 ≈ 0.579  
 φmax ≈ arcsin 0.579 ≈ **35.4° Kuzey**
 
-Bu örnekte büyük daire rotası yüksek enlemlere çıkmamaktadır. Ancak φmax değeri örneğin **55° Kuzey** olsaydı ve operasyonel sınır **50° Kuzey** olarak belirlenseydi, **50° Kuzey** sınırlayıcı enlem alınarak composite rota uygulanacaktı.`
+Bu örnekte büyük daire rotası yüksek enlemlere çıkmamaktadır. Ancak φmax değeri örneğin 55° Kuzey olsaydı ve operasyonel sınır 50° Kuzey olarak belirlenseydi, 50° Kuzey sınırlayıcı enlem alınarak composite rota uygulanacaktı.`
       },
       {
         title: "Operasyonel Değerlendirme",
-        content: `Composite rota, büyük daireye göre biraz daha uzun mesafe doğurur; ancak **emniyet**, **rota takibi** ve **operasyonel öngörülebilirlik** açısından ticari denizcilikte dengeli bir çözümdür. Özellikle **Kuzey Atlantik** ve **Kuzey Pasifik** geçişlerinde standart uygulama niteliğindedir.`
+        content: `Composite rota, büyük daireye göre biraz daha uzun mesafe doğurur; ancak emniyet, rota takibi ve operasyonel öngörülebilirlik açısından ticari denizcilikte dengeli bir çözümdür. Özellikle Kuzey Atlantik ve Kuzey Pasifik geçişlerinde standart uygulama niteliğindedir.`
       }
     ],
     keyPoints: [
@@ -2005,13 +2005,13 @@ Bu örnekte büyük daire rotası yüksek enlemlere çıkmamaktadır. Ancak φma
   "Mercator – rhumb line ilişkisi": {
     title: "Mercator – Rhumb Line İlişkisi",
     introduction:
-      "Mercator projeksiyonu, küresel Dünya yüzeyinin silindirik bir yüzeye açılması esasına dayanır ve denizcilikte rhumb line (loxodrome) seyrinin temelini oluşturur. Meridyenler dikey ve birbirine paralel, paraleller ise yatay doğrular olarak gösterilir. Enlem arttıkça paraleller arası mesafe büyür ve kutuplara yaklaştıkça sonsuza gider. Bu bilinçli bozulma, **sabit kursla seyri** harita üzerinde düz çizgi hâline getirir.",
+      "Mercator projeksiyonu, küresel Dünya yüzeyinin silindirik bir yüzeye açılması esasına dayanır ve denizcilikte rhumb line (loxodrome) seyrinin temelini oluşturur. Meridyenler dikey ve birbirine paralel, paraleller ise yatay doğrular olarak gösterilir. Enlem arttıkça paraleller arası mesafe büyür ve kutuplara yaklaştıkça sonsuza gider. Bu bilinçli bozulma, sabit kursla seyri harita üzerinde düz çizgi hâline getirir.",
     sections: [
       {
         title: "Rhumb Line’ın Mercator’da Düz Görünmesi",
-        content: `Rhumb line, küre üzerinde meridyenleri **sabit açıyla kesen** bir eğridir. Mercator projeksiyonu açısal doğruluğu koruduğu için bu eğri harita üzerinde **tam olarak düz bir doğru** gibi görünür. Bu sayede denizci, sabit kursla seyir yapan geminin rotasını harita üzerinde cetvelle tek hamlede çizebilir.
+        content: `Rhumb line, küre üzerinde meridyenleri sabit açıyla kesen bir eğridir. Mercator projeksiyonu açısal doğruluğu koruduğu için bu eğri harita üzerinde tam olarak düz bir doğru gibi görünür. Bu sayede denizci, sabit kursla seyir yapan geminin rotasını harita üzerinde cetvelle tek hamlede çizebilir.
 
-Büyük daire ise küre üzerindeki **en kısa yol** olmasına rağmen Mercator haritasında eğri olarak görünür; yalnızca ekvator ve meridyenler düz çizgi hâlindedir.
+Büyük daire ise küre üzerindeki en kısa yol olmasına rağmen Mercator haritasında eğri olarak görünür; yalnızca ekvator ve meridyenler düz çizgi hâlindedir.
 
 
 
@@ -2027,17 +2027,17 @@ Rhumb line Mercator’da → **düz doğru**
 Büyük daire kürede → **en kısa yol**  
 Büyük daire Mercator’da → **eğri**
 
-Mercator projeksiyonunun bu avantajı, **alan ve mesafe bozulmalarının** enlemle hızla büyümesi karşılığında elde edilir. Bu nedenle Mercator haritada ölçülen mesafeler doğrudan gerçek mesafeyi vermez; yalnızca **enlem skalası** üzerinden okunmalıdır.`
+Mercator projeksiyonunun bu avantajı, alan ve mesafe bozulmalarının enlemle hızla büyümesi karşılığında elde edilir. Bu nedenle Mercator haritada ölçülen mesafeler doğrudan gerçek mesafeyi vermez; yalnızca enlem skalası üzerinden okunmalıdır.`
       },
       {
         title: "İzometrik Enlem (Mercator Enlemi)",
-        content: `Mercator projeksiyonunda enlemler arası açılma **izometrik enlem** ile ifade edilir. Rhumb line hesaplarının temel büyüklüğü bu dönüşümdür:
+        content: `Mercator projeksiyonunda enlemler arası açılma izometrik enlem ile ifade edilir. Rhumb line hesaplarının temel büyüklüğü bu dönüşümdür:
 
 ────────────  
 **ψ = ln [ tan (45° + φ / 2) ]**  
 ────────────
 
-Burada **ψ**, Mercator enlemi; **φ** ise küresel enlemdir. Bu dönüşüm, enlemlerin harita üzerindeki gerçek yerlerini temsil eder.`
+Burada ψ, Mercator enlemi; φ ise küresel enlemdir. Bu dönüşüm, enlemlerin harita üzerindeki gerçek yerlerini temsil eder.`
       },
       {
         title: "Tam Çözümlü Örnek (Rhumb Line Kursu)",
@@ -2066,7 +2066,7 @@ tan C = Δλ / Δψ
 tan C ≈ 0.5236 / 0.635 ≈ 0.825  
 **C ≈ 39.4°**
 
-Bu örnek, Mercator projeksiyonunda kurs hesaplarının **izometrik enlem** üzerinden yapıldığını ve **Δλ’nin radyan** alınması gerektiğini açıkça gösterir.`
+Bu örnek, Mercator projeksiyonunda kurs hesaplarının izometrik enlem üzerinden yapıldığını ve Δλ’nin radyan alınması gerektiğini açıkça gösterir.`
       }
     ],
     keyPoints: [
@@ -2078,7 +2078,7 @@ Bu örnek, Mercator projeksiyonunda kurs hesaplarının **izometrik enlem** üze
   },
   "Mercator projeksiyonu": {
     title: "Mercator Projeksiyon",
-    introduction: "Mercator projeksiyon, deniz haritalarında kullanılan ve seyir hesaplarının temelini oluşturan matematiksel harita projeksiyonudur. Bu projeksiyonun denizcilikte tercih edilmesinin nedeni estetik ya da coğrafi doğruluk değil, **seyirsel doğruluktur**. Mercator projeksiyon, yön ve doğrultu ilişkilerini korur; bu sayede denizcilikte kullanılan rota, kerteriz, mesafe ve mevki işlemleri harita üzerinde **doğrudan ve tutarlı** biçimde yapılabilir.",
+    introduction: "Mercator projeksiyon, deniz haritalarında kullanılan ve seyir hesaplarının temelini oluşturan matematiksel harita projeksiyonudur. Bu projeksiyonun denizcilikte tercih edilmesinin nedeni estetik ya da coğrafi doğruluk değil, seyirsel doğruluktur. Mercator projeksiyon, yön ve doğrultu ilişkilerini korur; bu sayede denizcilikte kullanılan rota, kerteriz, mesafe ve mevki işlemleri harita üzerinde doğrudan ve tutarlı biçimde yapılabilir.",
     sections: [
       {
         title: "Silindirik Yapı ve Haritaya Aktarım",
@@ -2092,12 +2092,12 @@ Bu örnek, Mercator projeksiyonunda kurs hesaplarının **izometrik enlem** üze
       },
       {
         title: "Mercator Projeksiyonun Temel Geometrisi",
-        content: `Mercator projeksiyonun en ayırt edici özelliği, **meridyenlerin paralel ve eşit aralıklı**, paralellerin ise enleme gidildikçe **açılarak** çizilmesidir. Ekvatora yakın bölgelerde paraleller birbirine yakındır; kutuplara yaklaştıkça paraleller arasındaki mesafe artar. Bu bilinçli bir bozulmadır ve projeksiyonun matematiksel sonucudur.
+        content: `Mercator projeksiyonun en ayırt edici özelliği, meridyenlerin paralel ve eşit aralıklı, paralellerin ise enleme gidildikçe açılarak çizilmesidir. Ekvatora yakın bölgelerde paraleller birbirine yakındır; kutuplara yaklaştıkça paraleller arasındaki mesafe artar. Bu bilinçli bir bozulmadır ve projeksiyonun matematiksel sonucudur.
 
 Bu yapı sayesinde iki kritik seyir özelliği sağlanır:
 
-Birincisi, **hakiki rota (loxodrome)** harita üzerinde düz çizgi olarak görünür.  
-İkincisi, **enlem skalası mesafeyle doğru orantılıdır**.
+Birincisi, hakiki rota (loxodrome) harita üzerinde düz çizgi olarak görünür.  
+İkincisi, enlem skalası mesafeyle doğru orantılıdır.
 
 Bu iki özellik, Mercator projeksiyonu denizcilik için vazgeçilmez kılar.
 
@@ -2107,7 +2107,7 @@ Bu iki özellik, Mercator projeksiyonu denizcilik için vazgeçilmez kılar.
       },
       {
         title: "Doğrultu Korunumu ve Loxodrome Mantığı",
-        content: `Mercator projeksiyonda sabit bir hakiki rota ile seyreden bir geminin izi, harita üzerinde **düz bir çizgi** olarak temsil edilir. Bu çizgiye loxodrome denir. Seyirde rota çizimi, rota ölçümü ve rota takibi bu nedenle Mercator haritalarda doğrudan yapılabilir.
+        content: `Mercator projeksiyonda sabit bir hakiki rota ile seyreden bir geminin izi, harita üzerinde düz bir çizgi olarak temsil edilir. Bu çizgiye loxodrome denir. Seyirde rota çizimi, rota ölçümü ve rota takibi bu nedenle Mercator haritalarda doğrudan yapılabilir.
 
 Bu özellik, seyir açısından kritiktir. Çünkü denizci köprüüstünde şu varsayımla çalışır:  
 “Harita üzerinde çizdiğim doğrultu, denizde tuttuğum doğrultuyla aynıdır.”
@@ -2120,7 +2120,7 @@ Bu varsayım yalnızca Mercator projeksiyonda geçerlidir. Açı korunumu sayesi
       },
       {
         title: "Mesafe Ölçümü ile Mercator Projeksiyon İlişkisi",
-        content: `Mercator projeksiyonda mesafe ölçümü, yalnızca **enlem skalası** üzerinden yapılır. Bunun matematiksel temeli, projeksiyonun enlem doğrultusunda ölçeği bilinçli olarak genişletmesidir. Bu genişleme, enlem skalasını mesafe için güvenilir referans hâline getirir.
+        content: `Mercator projeksiyonda mesafe ölçümü, yalnızca enlem skalası üzerinden yapılır. Bunun matematiksel temeli, projeksiyonun enlem doğrultusunda ölçeği bilinçli olarak genişletmesidir. Bu genişleme, enlem skalasını mesafe için güvenilir referans hâline getirir.
 
 Tanım gereği:
 
@@ -2136,7 +2136,7 @@ Bu nedenle harita üzerindeki iki nokta arasındaki mesafe, divider ile ölçül
         title: "Alan ve Şekil Bozulması",
         content: `Mercator projeksiyon, yön ve açıları korurken **alanları korumaz**. Enlemler büyüdükçe alanlar harita üzerinde gerçekte olduklarından çok daha büyük görünür. Kutuplara yaklaştıkça bu büyüme sonsuza gider; bu nedenle kutuplar Mercator haritalarda gösterilmez.
 
-Bu bozulma, seyir açısından bir hata değildir; çünkü denizcilikte alan karşılaştırması değil, **yön, mesafe ve doğrultu** esastır. Ancak bu özellik bilinmezse, yüksek enlemlerde harita yorumlanırken sezgisel hatalar yapılabilir.
+Bu bozulma, seyir açısından bir hata değildir; çünkü denizcilikte alan karşılaştırması değil, yön, mesafe ve doğrultu esastır. Ancak bu özellik bilinmezse, yüksek enlemlerde harita yorumlanırken sezgisel hatalar yapılabilir.
 
 
 
@@ -2171,7 +2171,7 @@ Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; se
     sections: [
       {
         title: "Büyük Daire ve Küresel Üçgen",
-        content: `Küresel üçgen, kenarları büyük daire yaylarından oluşan ve köşeleri küre yüzeyinde bulunan geometrik yapıdır. Denizcilikte kullanılan temel küresel üçgen, **Kuzey Kutbu – başlangıç mevkii – varış mevkii** köşeleriyle kurulur. Bu üçgende kenarlar enlemlerin tamamlayıcıları ve boylam farkı ile ifade edilir; açılar ise büyük daire başlangıç kursu ve bitiş kursu gibi seyirle doğrudan ilişkili büyüklüklerdir.
+        content: `Küresel üçgen, kenarları büyük daire yaylarından oluşan ve köşeleri küre yüzeyinde bulunan geometrik yapıdır. Denizcilikte kullanılan temel küresel üçgen, Kuzey Kutbu – başlangıç mevkii – varış mevkii köşeleriyle kurulur. Bu üçgende kenarlar enlemlerin tamamlayıcıları ve boylam farkı ile ifade edilir; açılar ise büyük daire başlangıç kursu ve bitiş kursu gibi seyirle doğrudan ilişkili büyüklüklerdir.
 
 
 
@@ -2184,7 +2184,7 @@ Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; se
         content: `Meridyen yayı = 90° − enlem  
 Boylam farkı = Δλ
 
-Merkez açı **d** derece cinsinden bulunduğunda, deniz mili karşılığı doğrudan hesaplanabilir:  
+Merkez açı d derece cinsinden bulunduğunda, deniz mili karşılığı doğrudan hesaplanabilir:  
 **Büyük daire mesafesi = d × 60 deniz mili**.`,
         formula: {
           text: "cos d = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ",
@@ -2248,11 +2248,11 @@ Bu hesaplama, büyük daire geometrisinin küresel üçgen esasına dayandığı
       },
       {
         title: "Temel Bağıntılar",
-        content: `Önce merkez açı **d** hesaplanır:
+        content: `Önce merkez açı d hesaplanır:
 
 cos d = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ
 
-Ardından başlangıç kursu **C₁** için:
+Ardından başlangıç kursu C₁ için:
 
 sin C₁ = (cos φ₂ · sin Δλ) / sin d  
 cos C₁ = (sin φ₂ − sin φ₁ · cos d) / (cos φ₁ · sin d)
@@ -2310,7 +2310,7 @@ Bu değerlere göre:
 
 **C₁ ≈ 39°**
 
-Başlangıç kursu yaklaşık **039° gerçek** kurstur. Seyir ilerledikçe bu kurs değişir, orta noktalarda maksimum sapmaya ulaşır ve varışa doğru farklı bir değere döner.`
+Başlangıç kursu yaklaşık 039° gerçek kurstur. Seyir ilerledikçe bu kurs değişir, orta noktalarda maksimum sapmaya ulaşır ve varışa doğru farklı bir değere döner.`
       }
     ],
     keyPoints: [
@@ -2326,7 +2326,7 @@ Başlangıç kursu yaklaşık **039° gerçek** kurstur. Seyir ilerledikçe bu k
     sections: [
       {
         title: "Büyük Daire Mesafesinin Geometrisi",
-        content: `Büyük daire mesafesi, küre üzerindeki iki mevkii birleştiren **en kısa yüzey yoludur**. Bu mesafe, Dünya merkezinde görülen **merkez açı** ile tanımlanır. Merkez açı büyüdükçe büyük daire yayı doğrusal olarak uzar.
+        content: `Büyük daire mesafesi, küre üzerindeki iki mevkii birleştiren en kısa yüzey yoludur. Bu mesafe, Dünya merkezinde görülen merkez açı ile tanımlanır. Merkez açı büyüdükçe büyük daire yayı doğrusal olarak uzar.
 
 
 
@@ -2334,7 +2334,7 @@ Başlangıç kursu yaklaşık **039° gerçek** kurstur. Seyir ilerledikçe bu k
       },
       {
         title: "Merkez Açı Formülü (Küresel Kosinüs)",
-        content: `Büyük daire mesafesi düzlem trigonometrisiyle hesaplanamaz. Enlem ve boylam farkları yalnızca **küresel trigonometrinin** içinde anlam kazanır. Bu nedenle ilk adım, iki mevki arasındaki merkez açıyı doğru bulmaktır. Küresel kosinüs teoremi, merkez açıyı doğrudan verir:
+        content: `Büyük daire mesafesi düzlem trigonometrisiyle hesaplanamaz. Enlem ve boylam farkları yalnızca küresel trigonometrinin içinde anlam kazanır. Bu nedenle ilk adım, iki mevki arasındaki merkez açıyı doğru bulmaktır. Küresel kosinüs teoremi, merkez açıyı doğrudan verir:
 
 `,
         formula: {
@@ -2379,7 +2379,7 @@ Merkez açı:
 Büyük daire mesafesi:  
 53.4 × 60 ≈ **3204 deniz mili**
 
-Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. Rhumb line seyirde mesafe daha uzun çıkar ve fark özellikle orta–yüksek enlemlerde belirginleşir.`
+Bu değer, iki mevki arasındaki teorik en kısa deniz yolunu temsil eder. Rhumb line seyirde mesafe daha uzun çıkar ve fark özellikle orta–yüksek enlemlerde belirginleşir.`
       }
     ],
     keyPoints: [
@@ -2501,11 +2501,11 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
   },
   "Harita düzeltmeleri (Notice to Mariners)": {
     title: "Harita Düzeltmeleri (Notice to Mariners)",
-    introduction: "Harita düzeltmeleri, basılı bir deniz haritasının yayımlandığı tarihten sonra deniz ortamında meydana gelen değişikliklerin, harita üzerine **manuel olarak işlenmesi** işlemidir. Bir deniz haritası basıldığı anda eskimeye başlar; çünkü denizcilik altyapısı sabit değildir. Şamandıralar yer değiştirir, fenerlerin ışık karakterleri güncellenir, yeni batıklar tespit edilir, derinlikler yeniden ölçülür ve bazı alanlar hukuki olarak kısıtlanır veya serbest bırakılır. Harita bu değişiklikleri kendi kendine yansıtmaz. Bu nedenle düzeltmesi yapılmamış bir harita, üzerinde doğru rota ve hesap yapılsa bile seyir açısından **geçerli kabul edilmez**.",
+    introduction: "Harita düzeltmeleri, basılı bir deniz haritasının yayımlandığı tarihten sonra deniz ortamında meydana gelen değişikliklerin, harita üzerine manuel olarak işlenmesi işlemidir. Bir deniz haritası basıldığı anda eskimeye başlar; çünkü denizcilik altyapısı sabit değildir. Şamandıralar yer değiştirir, fenerlerin ışık karakterleri güncellenir, yeni batıklar tespit edilir, derinlikler yeniden ölçülür ve bazı alanlar hukuki olarak kısıtlanır veya serbest bırakılır. Harita bu değişiklikleri kendi kendine yansıtmaz. Bu nedenle düzeltmesi yapılmamış bir harita, üzerinde doğru rota ve hesap yapılsa bile seyir açısından geçerli kabul edilmez.",
     sections: [
       {
         title: "Harita Düzeltmelerinin Kaynağı",
-        content: `Harita düzeltmeleri, resmî olarak yayımlanan **Notice to Mariners** bültenleri aracılığıyla yapılır. Bu bültenler, hangi haritanın etkilendiğini, değişikliğin türünü, coğrafi mevkiini ve harita üzerinde nasıl gösterileceğini açık şekilde belirtir. Her düzeltme numaralandırılmıştır ve tarih taşır. Bir haritanın geçerli sayılabilmesi için, yayımlanan en son Notice to Mariners’a kadar olan tüm düzeltmelerinin harita üzerine işlenmiş olması gerekir.
+        content: `Harita düzeltmeleri, resmî olarak yayımlanan Notice to Mariners bültenleri aracılığıyla yapılır. Bu bültenler, hangi haritanın etkilendiğini, değişikliğin türünü, coğrafi mevkiini ve harita üzerinde nasıl gösterileceğini açık şekilde belirtir. Her düzeltme numaralandırılmıştır ve tarih taşır. Bir haritanın geçerli sayılabilmesi için, yayımlanan en son Notice to Mariners’a kadar olan tüm düzeltmelerinin harita üzerine işlenmiş olması gerekir.
 
 
 
@@ -2515,7 +2515,7 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
         title: "Harita Düzeltme Türleri",
         content: `Harita düzeltmeleri üç ana grupta ele alınır ve her biri harita üzerinde farklı disiplinle işlenir.
 
-**Kalıcı düzeltmeler**, uzun süreli veya kalıcı değişiklikleri kapsar. Yeni bir şamandıranın eklenmesi, bir fenerin yerinin veya ışık karakterinin değiştirilmesi, yeni bir batığın haritaya eklenmesi bu gruba girer. Bu düzeltmeler harita üzerine **kalıcı olarak** işlenir ve silinmez.
+Kalıcı düzeltmeler, uzun süreli veya kalıcı değişiklikleri kapsar. Yeni bir şamandıranın eklenmesi, bir fenerin yerinin veya ışık karakterinin değiştirilmesi, yeni bir batığın haritaya eklenmesi bu gruba girer. Bu düzeltmeler harita üzerine kalıcı olarak işlenir ve silinmez.
 
 **Geçici düzeltmeler**, belirli bir süre için geçerli olan değişikliklerdir. Geçici olarak kaldırılan bir şamandıra, geçici çalışma alanı veya kısa süreli kısıtlamalar bu kapsamdadır. Harita üzerinde geçici olduğu açıkça anlaşılacak şekilde gösterilir ve süresi dolduğunda kaldırılır.
 
@@ -2537,7 +2537,7 @@ Düzeltme tamamlandıktan sonra, haritanın kenar boşluğuna ilgili Notice to M
       },
       {
         title: "Şamandıra Düzeltmeleri",
-        content: `Şamandıra düzeltmeleri, seyir güvenliğini en doğrudan etkileyen harita düzeltmeleridir. Bir şamandıranın mevkiinin değişmesi, kaldırılması veya yeniden yerleştirilmesi durumunda, harita üzerindeki sembol tamamen iptal edilir ve yeni konum doğru sembolle işlenir. Eğer şamandıranın ışık karakteri, rengi veya tipi değişmişse, yalnızca sembol değil, **ilgili tüm tanımlayıcı bilgiler birlikte** güncellenir.
+        content: `Şamandıra düzeltmeleri, seyir güvenliğini en doğrudan etkileyen harita düzeltmeleridir. Bir şamandıranın mevkiinin değişmesi, kaldırılması veya yeniden yerleştirilmesi durumunda, harita üzerindeki sembol tamamen iptal edilir ve yeni konum doğru sembolle işlenir. Eğer şamandıranın ışık karakteri, rengi veya tipi değişmişse, yalnızca sembol değil, ilgili tüm tanımlayıcı bilgiler birlikte güncellenir.
 
 
 
@@ -2551,7 +2551,7 @@ Düzeltme tamamlandıktan sonra, haritanın kenar boşluğuna ilgili Notice to M
       },
       {
         title: "Derinlik, Batık ve Tehlike Düzeltmeleri",
-        content: `Yeni yapılan taramalar sonucu derinlik değerleri değiştiğinde, eski değerler iptal edilir ve yenileri harita üzerine işlenir. Yeni tespit edilen batıklar ve kayalar, doğru sembol ve doğru konumla haritaya eklenir. Eğer batık için **least depth** bilgisi verilmişse, bu değer harita üzerinde açıkça gösterilir ve doğrudan draft hesaplarında kullanılır.
+        content: `Yeni yapılan taramalar sonucu derinlik değerleri değiştiğinde, eski değerler iptal edilir ve yenileri harita üzerine işlenir. Yeni tespit edilen batıklar ve kayalar, doğru sembol ve doğru konumla haritaya eklenir. Eğer batık için least depth bilgisi verilmişse, bu değer harita üzerinde açıkça gösterilir ve doğrudan draft hesaplarında kullanılır.
 
 
 
@@ -3231,7 +3231,7 @@ Varış boylamı:
 
 
 
-Ortalama enlem, başlangıç ve varış enlemlerinin **aritmetik ortalaması** olarak tanımlanır. Bu enlem, seyir boyunca geminin bulunduğu enlemi tek bir değerle temsil eder. Orta enlem seyri yaklaşımında, doğu–batı yönlü mesafeler bu enlemdeki boylam dakikasının uzunluğuna göre değerlendirilir.`
+Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalaması olarak tanımlanır. Bu enlem, seyir boyunca geminin bulunduğu enlemi tek bir değerle temsil eder. Orta enlem seyri yaklaşımında, doğu–batı yönlü mesafeler bu enlemdeki boylam dakikasının uzunluğuna göre değerlendirilir.`
       },
       {
         title: "Fiziksel Dayanak: Boylam Dakikasının Enleme Bağlılığı",
@@ -3241,7 +3241,7 @@ Ortalama enlem, başlangıç ve varış enlemlerinin **aritmetik ortalaması** o
 
 Dünya üzerinde enlem dakikası her yerde yaklaşık olarak 1 deniz milidir. Buna karşılık boylam dakikasının uzunluğu ekvatordan kutuplara doğru azalır. Bu azalma, ilgili enlemin kosinüsü ile ifade edilir. Ortalama enlem kavramı, seyir boyunca değişen bu uzunluğu tek bir sabit değerle temsil etmeyi hedefler.
 
-Bu yaklaşımda, seyir boyunca boylam dakikasının uzunluğu sabit kabul edilir; ancak bu sabit değer, ekvatora değil, **seyir hattının ortalama enlemine** bağlanır. Böylece düzlem seyirdeki temel hata kaynağı azaltılır.`
+Bu yaklaşımda, seyir boyunca boylam dakikasının uzunluğu sabit kabul edilir; ancak bu sabit değer, ekvatora değil, seyir hattının ortalama enlemine bağlanır. Böylece düzlem seyirdeki temel hata kaynağı azaltılır.`
       },
       {
         title: "Ortalama Enlemin Hesaplanması",
@@ -3531,8 +3531,8 @@ Bu üçgen, yalnızca bir çizim değil; yön ve büyüklük ilişkilerini aynı
 
 ### Temel Prensip
 
-* En az **iki sabit obje** seçilir
-* Objelerin **eş zamanlı kerterizleri** alınır
+* En az iki sabit obje seçilir
+* Objelerin eş zamanlı kerterizleri alınır
 * Kerterizler **LOP**’a çevrilir
 * LOP’ların kesişimi → **Fix**
 
@@ -3568,7 +3568,7 @@ alınan kerteriz
 • Radar kerterizi
 ════════════════════
 
-* Haritada kullanılacak kerteriz **True (T)** olmalıdır
+* Haritada kullanılacak kerteriz True (T) olmalıdır
 
 ---
 
@@ -3581,7 +3581,7 @@ LOP yönü
 = Kerteriz + 180°
 ════════════════════
 
-* Çünkü LOP, **objeden gemiye doğru** çizilir
+* Çünkü LOP, objeden gemiye doğru çizilir
 
 ---
 
@@ -3595,7 +3595,7 @@ iki farklı obje
 iki LOP
 ════════════════════
 
-* LOP’lar **mümkün olduğunca dik** kesişmelidir
+* LOP’lar mümkün olduğunca dik kesişmelidir
 
 ---
 
@@ -3670,7 +3670,7 @@ Bu nokta, kerterizlerin alındığı andaki **kesin gemi mevkii**dir.
 ════════════════════
 
 * İdeal durumda üç LOP **tek noktada kesişir**
-* Küçük bir üçgen oluşursa → **ortalama merkez Fix** alınır
+* Küçük bir üçgen oluşursa → ortalama merkez Fix alınır
 
 ---
 
@@ -3721,7 +3721,7 @@ Fix’tir
 * Eğitim ve sınav uygulamaları
 * Elektronik sistemlerin teyidi
 
-Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir mevki tayin yöntemidir ve diğer tüm fix tekniklerinin referans noktası olarak kabul edilir.`
+Fix by Cross Bearings, klasik seyrüseferde hızlı, güvenilir ve temel bir mevki tayin yöntemidir ve diğer tüm fix tekniklerinin referans noktası olarak kabul edilir.`
       }
     ]
   },
@@ -3742,10 +3742,10 @@ Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir
 
 ### Temel Prensip
 
-* Seyir **orta enlemlerde** yapılır
+* Seyir orta enlemlerde yapılır
 * Enlem değişimi **gerçek mesafeyi temsil eder**
-* Boylam değişimi, **Mean Latitude** ile düzeltilir
-* Seyir üçgeni hâlâ **dik üçgen** kabul edilir
+* Boylam değişimi, Mean Latitude ile düzeltilir
+* Seyir üçgeni hâlâ dik üçgen kabul edilir
 
 ⬛ **Ana İlke**
 
@@ -3804,7 +3804,7 @@ D.Long = Long₂ − Long₁
 Mean Lat = (Lat₁ + Lat₂) / 2
 ════════════════════
 
-* Enlemler **aynı isimde** olmalıdır
+* Enlemler aynı isimde olmalıdır
 * Orta enlem, boylam mesafesinin düzeltmesinde kullanılır
 
 ---
@@ -3842,7 +3842,7 @@ D = √[(D.Lat)² + (Dep)²]
 tan C = Dep / D.Lat
 ════════════════════
 
-* C, **meridyene göre** ölçülür
+* C, meridyene göre ölçülür
 * Quadrant, D.Lat ve Dep işaretlerine göre belirlenir
 
 ---
@@ -3857,7 +3857,7 @@ Dep → Paralel
 Distance → Hipotenüs
 ════════════════════
 
-* Üçgen hem **grafik**, hem **sayısal** çözülebilir
+* Üçgen hem grafik, hem sayısal çözülebilir
 
 ---
 
@@ -3981,14 +3981,14 @@ Yön: **N 51° E → 051°T**
 
 
 
-Running Fix yöntemi, **aynı sabit objeye farklı zamanlarda alınan kerterizlerin**, geminin **seyri ve hızı** kullanılarak **ilerletilmesi (advance)** ve bu kerterizlerden elde edilen **LOP’ların kesiştirilmesiyle** mevkiin bulunmasına dayanır. Özellikle **tek uygun obje bulunduğunda** kullanılır.
+Running Fix yöntemi, aynı sabit objeye farklı zamanlarda alınan kerterizlerin, geminin seyri ve hızı kullanılarak ilerletilmesi (advance) ve bu kerterizlerden elde edilen LOP’ların kesiştirilmesiyle mevkiin bulunmasına dayanır. Özellikle tek uygun obje bulunduğunda kullanılır.
 
 ---
 
 ### Temel Prensip
 
-* Aynı objeye **iki farklı zamanda** kerteriz alınır
-* Zamanlar arasında gemi **bilinen rota ve hızla** ilerler
+* Aynı objeye iki farklı zamanda kerteriz alınır
+* Zamanlar arasında gemi bilinen rota ve hızla ilerler
 * İlk kerteriz, **seyir mesafesi kadar ileri taşınır**
 * İkinci kerterizle kesişim → **Running Fix**
 
@@ -4040,7 +4040,7 @@ LOP yönü
 = Kerteriz + 180°
 ════════════════════
 
-* LOP, **objeden gemiye** doğru çizilir
+* LOP, objeden gemiye doğru çizilir
 
 ---
 
@@ -4055,7 +4055,7 @@ D kadar
 taşınır
 ════════════════════
 
-* Taşıma **paralel** yapılır
+* Taşıma paralel yapılır
 * Açı ve doğrultu korunur
 
 ---
@@ -4187,7 +4187,7 @@ Bu nokta, **t₂ anındaki gemi mevkii**dir.
 ### Temel Prensip
 
 * İki sabit obje seçilir
-* Objeler **aynı doğrultuda hizalandığında** transit oluşur
+* Objeler aynı doğrultuda hizalandığında transit oluşur
 * Bu doğrultu geminin bulunduğu **kesin LOP**’tur
 
 ⬛ **Ana İlke**
@@ -4502,7 +4502,7 @@ doğrudan Fix
 * Clearing line oluşturma
 * Elektronik sistemlerin görsel teyidi
 
-Transit (Leading Line), klasik seyirde **en güvenilir ve en basit** mevki tayin yöntemlerinden biridir ve özellikle **seyir emniyetinin kritik olduğu bölgelerde** vazgeçilmezdir.`
+Transit (Leading Line), klasik seyirde en güvenilir ve en basit mevki tayin yöntemlerinden biridir ve özellikle seyir emniyetinin kritik olduğu bölgelerde vazgeçilmezdir.`
       }
     ]
   },
@@ -4525,9 +4525,9 @@ Transit (Leading Line), klasik seyirde **en güvenilir ve en basit** mevki tayin
 
 ### Temel Prensip
 
-* Rota ve mesafe, bir **dik seyir üçgeni** oluşturur
-* Mesafe, **D.Lat** ve **Departure** bileşenlerine ayrılır
-* Boylam değişimi, **Mean Latitude** ile düzeltilir
+* Rota ve mesafe, bir dik seyir üçgeni oluşturur
+* Mesafe, D.Lat ve Departure bileşenlerine ayrılır
+* Boylam değişimi, Mean Latitude ile düzeltilir
 
 ⬛ **Ana İlke**
 
@@ -4564,7 +4564,7 @@ D.Lat = D × cos C
 Dep = D × sin C
 ════════════════════
 
-* C, **meridyene göre** ölçülür
+* C, meridyene göre ölçülür
 * İşaretler (N/S – E/W), rota quadrantına göre belirlenir
 
 ---
@@ -4578,7 +4578,7 @@ Mean Lat = (Lat₁ + Lat₂) / 2
 ════════════════════
 
 * İlk aşamada Lat₂ bilinmediğinden,
-  **yaklaşık Mean Lat** kullanılır
+  yaklaşık Mean Lat kullanılır
 * Hesap sonunda gerekiyorsa **düzeltme yapılır**
 
 ---
@@ -4739,9 +4739,9 @@ Long₂ = 023°21′ E
 ### Temel Prensip
 
 * Tehlike belirlenir
-* Tehlikeyi **emniyetle teğet geçen** bir doğrultu seçilir
-* Bu doğrultu **Clearing Line** olarak çizilir
-* Gemi bu hattın **güvenli tarafında** kalır
+* Tehlikeyi emniyetle teğet geçen bir doğrultu seçilir
+* Bu doğrultu Clearing Line olarak çizilir
+* Gemi bu hattın güvenli tarafında kalır
 
 ⬛ **Ana İlke**
 
@@ -4774,7 +4774,7 @@ Clearing Line
 tek yönlü LOP
 ════════════════════
 
-* Hat **aşılmaz**, sadece **taraf kontrolü** yapılır
+* Hat aşılmaz, sadece taraf kontrolü yapılır
 * Fix için başka bir LOP gerekir
 
 ---
@@ -4789,7 +4789,7 @@ emniyet mesafesiyle
 teğet doğrultu
 ════════════════════
 
-* Tehlike ile gemi arasında **minimum mesafe** bırakılır
+* Tehlike ile gemi arasında minimum mesafe bırakılır
 * Bu doğrultu haritadan **ölçülür**
 
 ---
@@ -4831,7 +4831,7 @@ kaya üzerinden
 045°T doğrultusunda
 ════════════════════
 
-* Gemi **045°T’nin güvenli tarafında** kaldığı sürece emniyettedir
+* Gemi 045°T’nin güvenli tarafında kaldığı sürece emniyettedir
 
 ---
 
@@ -4882,7 +4882,7 @@ Kerteriz / Mesafe / Transit
 ### Geometrik Özellikler
 
 * Clearing Line, genellikle **kıyıya paralel değildir**
-* Tehlikeye **teğet** geçer
+* Tehlikeye teğet geçer
 * Geniş açılı doğrultular tercih edilir
 
 ---
@@ -4912,7 +4912,7 @@ Kerteriz / Mesafe / Transit
 * Liman yaklaşmaları
 * Elektronik sistemlerin emniyet teyidi
 
-Clearing Line, klasik seyrüseferde **fix sağlamaz**, ancak geminin **tehlikeden uzak kaldığını kesin olarak garanti eden** en kritik emniyet araçlarından biridir.`
+Clearing Line, klasik seyrüseferde fix sağlamaz, ancak geminin tehlikeden uzak kaldığını kesin olarak garanti eden en kritik emniyet araçlarından biridir.`
       }
     ]
   },
@@ -4969,7 +4969,7 @@ Effective Height
 = Obj Yüksekliği − Height of Eye
 ════════════════════
 
-* Göz yüksekliği, objenin tabanı **deniz seviyesindeyse** düşülür
+* Göz yüksekliği, objenin tabanı deniz seviyesindeyse düşülür
 * Deniz fenerleri ve kulelerde standart uygulamadır
 
 ---
@@ -4995,7 +4995,7 @@ D = Effective Height / tan θ
 
 ### Grafik Yorum
 
-* Düşey açı **küçüldükçe** mesafe artar
+* Düşey açı küçüldükçe mesafe artar
 * Yakın mesafelerde yöntem **çok hassastır**
 * Uzak mesafede küçük açı hatası → **büyük mesafe hatası**
 
@@ -5073,7 +5073,7 @@ Kerteriz LOP
 
 ### Harita Çözümü
 
-* Obje merkezli **yarıçap = D** daire yayı
+* Obje merkezli yarıçap = D daire yayı
 * Objeden alınan kerteriz LOP’u
 * Kesişim noktası → **Fix**
 
@@ -5104,7 +5104,7 @@ Kerteriz LOP
 * Tek obje bulunan seyir sahaları
 * Elektronik mesafe ölçümünün teyidi
 
-Distance Off by Vertical Angle, klasik seyrüseferde **tek ölçümle güvenilir mesafe** sağlayan, özellikle **kıyı emniyetinde** kritik öneme sahip bir yöntemdir.`
+Distance Off by Vertical Angle, klasik seyrüseferde tek ölçümle güvenilir mesafe sağlayan, özellikle kıyı emniyetinde kritik öneme sahip bir yöntemdir.`
       }
     ]
   },
@@ -5188,8 +5188,8 @@ Akıntının 3 knot olduğu bir bölgede, GPS’e bakılarak yapılan yaklaşma 
 ### Temel Prensip
 
 * İki mevki arasındaki D.Lat ve D.Long bulunur
-* Boylam farkı, **Mean Latitude** ile düzeltilerek **Departure** elde edilir
-* Dik seyir üçgeninden **Course** ve **Distance** hesaplanır
+* Boylam farkı, Mean Latitude ile düzeltilerek Departure elde edilir
+* Dik seyir üçgeninden Course ve Distance hesaplanır
 
 ⬛ **Ana İlke**
 
@@ -5249,7 +5249,7 @@ D.Long = Long₂ − Long₁
 Mean Lat = (Lat₁ + Lat₂) / 2
 ════════════════════
 
-* Enlemler **aynı isimde** olmalıdır
+* Enlemler aynı isimde olmalıdır
 * Boylam mesafesinin düzeltilmesinde kullanılır
 
 ---
@@ -5288,7 +5288,7 @@ D = √[(D.Lat)² + (Dep)²]
 tan C = Dep / D.Lat
 ════════════════════
 
-* C, **meridyene göre** ölçülür
+* C, meridyene göre ölçülür
 * Quadrant, D.Lat ve Dep işaretlerine göre belirlenir
 
 ---
@@ -5423,8 +5423,8 @@ Distance = 278 NM
 ### Temel Prensip
 
 * İki sabit obje seçilir
-* Objeler arasındaki **yatay açı (Horizontal Angle)** ölçülür
-* Objelere olan mesafe, **üçgen geometrisi** ile hesaplanır
+* Objeler arasındaki yatay açı (Horizontal Angle) ölçülür
+* Objelere olan mesafe, üçgen geometrisi ile hesaplanır
 
 ⬛ **Ana İlke**
 
@@ -5452,7 +5452,7 @@ sin C / c
 ### Geometrik Yapı
 
 * Obj A ile Obj B arası mesafe **taban (d)**
-* Gemi, bu tabana karşı **θ açısını** görür
+* Gemi, bu tabana karşı θ açısını görür
 * Oluşan üçgen **düzlemsel üçgendir**
 
 ---
@@ -5558,7 +5558,7 @@ Kerteriz LOP’u
 ### Harita Çözümü
 
 * Obj A ve Obj B işaretlenir
-* Yatay açıya karşılık gelen **dairesel yay** çizilir
+* Yatay açıya karşılık gelen dairesel yay çizilir
 * İkinci LOP ile kesişim → **Fix**
 
 ---
@@ -5588,7 +5588,7 @@ Kerteriz LOP’u
 * İki belirgin obje bulunan bölgeler
 * Elektronik fix teyidi
 
-Distance Off by Horizontal Angle, klasik seyrüseferde **tek ölçümle mesafe tayini** sağlayan, özellikle **görsel şartların iyi olduğu kıyı sularında** etkili bir yöntemdir.`
+Distance Off by Horizontal Angle, klasik seyrüseferde tek ölçümle mesafe tayini sağlayan, özellikle görsel şartların iyi olduğu kıyı sularında etkili bir yöntemdir.`
       }
     ]
   },
@@ -5610,8 +5610,8 @@ Distance Off by Horizontal Angle, klasik seyrüseferde **tek ölçümle mesafe t
 ### Temel Prensip
 
 * Aynı objeden **farklı zamanlarda** LOP alınır
-* İlk LOP, geminin **seyri ve mesafesi** kadar ileri taşınır
-* Taşınan LOP ile ikinci LOP’un kesişimi **Fix** verir
+* İlk LOP, geminin seyri ve mesafesi kadar ileri taşınır
+* Taşınan LOP ile ikinci LOP’un kesişimi Fix verir
 
 ⬛ **Ana İlke**
 
@@ -5650,8 +5650,8 @@ Distance kadar
 LOP taşıma
 ════════════════════
 
-* Advance, **vektörel** bir işlemdir
-* Yön ve mesafe **mutlaka doğru** olmalıdır
+* Advance, vektörel bir işlemdir
+* Yön ve mesafe mutlaka doğru olmalıdır
 
 ---
 
@@ -5675,7 +5675,7 @@ Kerteriz
 ### Haritada Çözüm Adımları
 
 1. İlk LOP çizilir
-2. Geminin **Course** ve **Distance**’ı hesaplanır
+2. Geminin Course ve Distance’ı hesaplanır
 3. İlk LOP, bu değerlerle **ileri taşınır**
 4. İkinci LOP çizilir
 5. Kesişim noktası → **Running Fix**
@@ -5742,7 +5742,7 @@ LOP₂
 = Running Fix
 ════════════════════
 
-Bu nokta, **ikinci kerteriz anındaki** gemi mevkiidir.
+Bu nokta, ikinci kerteriz anındaki gemi mevkiidir.
 
 ---
 
@@ -5764,7 +5764,7 @@ Fix hatalıdır
 
 ### Geometrik Özellikler
 
-* LOP’lar **keskin açıyla** kesişmelidir
+* LOP’lar keskin açıyla kesişmelidir
 * Paralel LOP’lar → **zayıf Fix**
 * Uzun advance → hata büyür
 
@@ -5795,7 +5795,7 @@ Fix hatalıdır
 * Görüşün sınırlı olduğu seyirler
 * Elektronik mevki teyidi
 
-Running Fix, klasik seyrüseferde **zaman ve hareketi denkleme katan**, doğru uygulandığında **yüksek güvenilirlik** sağlayan temel mevki tayin yöntemlerinden biridir.`
+Running Fix, klasik seyrüseferde zaman ve hareketi denkleme katan, doğru uygulandığında yüksek güvenilirlik sağlayan temel mevki tayin yöntemlerinden biridir.`
       }
     ]
   },
@@ -5820,7 +5820,7 @@ Running Fix, klasik seyrüseferde **zaman ve hareketi denkleme katan**, doğru u
 
 * Paraleller **birbirine paralel kabul edilir**
 * Meridyenler **birbirine yaklaşmaz varsayılır**
-* Dünya yüzeyi, küçük alan için **düzlemsel** kabul edilir
+* Dünya yüzeyi, küçük alan için düzlemsel kabul edilir
 
 ⬛ **Ana Varsayım**
 
@@ -5836,7 +5836,7 @@ Düzlem yaklaşımı
 
 ### Mean Latitude Düzeltmesinin Anlamı
 
-Mean Latitude Sailing’de boylam farkı, **paralel üzerindeki gerçek mesafeye** dönüştürülür.
+Mean Latitude Sailing’de boylam farkı, paralel üzerindeki gerçek mesafeye dönüştürülür.
 
 ⬛ **Temel İlişki**
 
@@ -5844,7 +5844,7 @@ Mean Latitude Sailing’de boylam farkı, **paralel üzerindeki gerçek mesafeye
 Dep = D.Long × cos Mean Lat
 ════════════════════
 
-* cos Mean Lat, **paralelin kısalmasını** temsil eder
+* cos Mean Lat, paralelin kısalmasını temsil eder
 * Enlem arttıkça paralel **küçülür**
 
 ---
@@ -5926,7 +5926,7 @@ cos Lat
 değişkendir
 ════════════════════
 
-Bu fark, **uzun E–W seyirlerde** büyür.
+Bu fark, uzun E–W seyirlerde büyür.
 
 ---
 
@@ -6039,7 +6039,7 @@ Bu noktadan sonra:
 * Kısa–orta mesafe planlama
 * Elektronik sistem sonuçlarının yaklaşık kontrolü
 
-Mean Latitude Sailing, **basitliği ve hızı** sayesinde klasik seyrüseferin temel taşlarından biridir; ancak **geçerlilik sınırları bilinmeden kullanılması**, özellikle **yüksek enlem ve uzun mesafelerde**, ciddi rota hatalarına yol açabilir.`
+Mean Latitude Sailing, basitliği ve hızı sayesinde klasik seyrüseferin temel taşlarından biridir; ancak geçerlilik sınırları bilinmeden kullanılması, özellikle yüksek enlem ve uzun mesafelerde, ciddi rota hatalarına yol açabilir.`
       }
     ]
   },
@@ -6113,7 +6113,7 @@ D = S × t
 ### DR Mevkiinin Çizimi
 
 * Son Fix’ten başlanır
-* Course doğrultusunda **D kadar** ilerlenir
+* Course doğrultusunda D kadar ilerlenir
 * Ulaşılan nokta → **DR**
 
 ---
@@ -6134,7 +6134,7 @@ D₍c₎ = Drift × t
 ### EP Mevkiinin Çizimi
 
 * DR noktasından başlanır
-* Set yönünde **D₍c₎ kadar** gidilir
+* Set yönünde D₍c₎ kadar gidilir
 * Ulaşılan nokta → **EP**
 
 ---
@@ -6246,7 +6246,7 @@ DR güvenilmez
 * Seyir defteri (Log Book)
 * Tüm klasik mevki yöntemlerinin temeli
 
-Dead Reckoning ve Estimated Position, klasik seyrüseferde **her an kullanılan**, fix bulunamadığında dahi geminin **kontrolsüz kalmasını önleyen** temel mevki tayin yöntemleridir.`
+Dead Reckoning ve Estimated Position, klasik seyrüseferde her an kullanılan, fix bulunamadığında dahi geminin kontrolsüz kalmasını önleyen temel mevki tayin yöntemleridir.`
       }
     ]
   },
@@ -6267,8 +6267,8 @@ Dead Reckoning ve Estimated Position, klasik seyrüseferde **her an kullanılan*
 
 ### Temel Prensip
 
-* İstenen **CMG** ve gemi sürati bilinir
-* Akıntının **Set** ve **Drift**’i bilinir
+* İstenen CMG ve gemi sürati bilinir
+* Akıntının Set ve Drift’i bilinir
 * Akıntı telafi edilerek CTS bulunur
 
 ⬛ **Ana İlke**
@@ -6317,7 +6317,7 @@ V⃗ ground
 ### Grafik Çözüm (Harita Üzerinde)
 
 1. CMG doğrultusunda bir çizgi çizilir
-2. Bu çizgi üzerinde **zaman ölçeği** seçilir
+2. Bu çizgi üzerinde zaman ölçeği seçilir
 3. Akıntı vektörü (Set–Drift) eklenir
 4. Başlangıç noktası ile kapanış noktası birleştirilir
 5. Bulunan yön → **CTS**
@@ -6338,7 +6338,7 @@ D₍c₎ = Drift × t
 D₍s₎ = S × t
 ════════════════════
 
-Bu iki mesafe ile **vektör üçgeni** çözülür.
+Bu iki mesafe ile vektör üçgeni çözülür.
 
 ---
 
@@ -6378,8 +6378,8 @@ D₍s₎ = 10 NM
 
 ### Vektör Çözümü
 
-* CMG doğrultusunda **10 NM** çizilir
-* Akıntı, **180°T yönünde 3 NM** olarak eklenir
+* CMG doğrultusunda 10 NM çizilir
+* Akıntı, 180°T yönünde 3 NM olarak eklenir
 * Kapanış doğrultusu ölçülür
 
 ⬛ **Sonuç**
@@ -6388,7 +6388,7 @@ D₍s₎ = 10 NM
 CTS ≈ 073°T
 ════════════════════
 
-Bu rota dümenlenirse, gemi **090°T CMG** üzerinde ilerler.
+Bu rota dümenlenirse, gemi 090°T CMG üzerinde ilerler.
 
 ---
 
@@ -6434,7 +6434,7 @@ CTS₍final₎
 * Liman yaklaşmaları
 * Elektronik seyir teyidi
 
-Course to Steer, klasik seyrüseferde **akıntının fiilen telafi edildiği**, geminin **istenen rota üzerinde kalmasını sağlayan** temel rota tayin yöntemidir.`
+Course to Steer, klasik seyrüseferde akıntının fiilen telafi edildiği, geminin istenen rota üzerinde kalmasını sağlayan temel rota tayin yöntemidir.`
       }
     ]
   },
@@ -6457,8 +6457,8 @@ Course to Steer, klasik seyrüseferde **akıntının fiilen telafi edildiği**, 
 
 * Course ve Distance bilinir
 * Seyir üçgeninden D.Lat ve Departure bulunur
-* Departure kullanılarak **D.Long** hesaplanır
-* Başlangıç mevkiine eklenerek **varış mevkii** elde edilir
+* Departure kullanılarak D.Long hesaplanır
+* Başlangıç mevkiine eklenerek varış mevkii elde edilir
 
 ⬛ **Ana İlke**
 
@@ -6534,7 +6534,7 @@ Lat₂ = Lat₁ ± D.Lat
 Mean Lat = (Lat₁ + Lat₂) / 2
 ════════════════════
 
-* Enlemler **aynı isimde** alınır
+* Enlemler aynı isimde alınır
 * D.Long hesabında kullanılır
 
 ---
@@ -6671,7 +6671,7 @@ Long₂ = 020°48′ E
 * Klasik seyir hesapları
 * Elektronik mevki doğrulama
 
-Mean Latitude Sailing’in doğrudan problemi, **rota ve mesafeden yeni mevki üretme** açısından klasik seyrüseferin temel hesaplarından biridir ve özellikle **orta enlem seyirlerinde** pratik ve hızlı bir çözüm sunar.`
+Mean Latitude Sailing’in doğrudan problemi, rota ve mesafeden yeni mevki üretme açısından klasik seyrüseferin temel hesaplarından biridir ve özellikle orta enlem seyirlerinde pratik ve hızlı bir çözüm sunar.`
       }
     ]
   },
@@ -6694,9 +6694,9 @@ Mean Latitude Sailing’in doğrudan problemi, **rota ve mesafeden yeni mevki ü
 
 ### Temel Prensip
 
-* Rüzgâr, gemiyi **yanal olarak** sürükler
-* Gemi, pruvasını rüzgâra çevirse bile **yanal kaçma** oluşur
-* Bu kaçma **açı** olarak ifade edilir → **Leeway Açısı**
+* Rüzgâr, gemiyi yanal olarak sürükler
+* Gemi, pruvasını rüzgâra çevirse bile yanal kaçma oluşur
+* Bu kaçma açı olarak ifade edilir → Leeway Açısı
 
 ⬛ **Ana İlke**
 
@@ -6720,8 +6720,8 @@ Gerçek İlerleme
 
 ### Leeway’in Yönü
 
-* Rüzgâr **iskele** tarafından geliyorsa → gemi **sancağa** sürüklenir
-* Rüzgâr **sancak** tarafından geliyorsa → gemi **iskeleye** sürüklenir
+* Rüzgâr iskele tarafından geliyorsa → gemi sancağa sürüklenir
+* Rüzgâr sancak tarafından geliyorsa → gemi iskeleye sürüklenir
 
 ⬛ **Yön Kuralı**
 
@@ -6785,7 +6785,7 @@ Leeway
 
 ### Hesaplama
 
-Rüzgâr **iskele tarafından** geldiği için gemi **sancağa** sürüklenir.
+Rüzgâr iskele tarafından geldiği için gemi sancağa sürüklenir.
 
 ⬛ **CMG**
 
@@ -6813,13 +6813,13 @@ CTS = 090° + 5°
 CTS = 095°T
 ════════════════════
 
-Bu rota dümenlenirse, gemi **085°T**’ye değil, **090°T CMG** üzerine oturur.
+Bu rota dümenlenirse, gemi 085°T’ye değil, 090°T CMG üzerine oturur.
 
 ---
 
 ### Leeway ve Akıntı Birlikte
 
-Leeway ve akıntı **ayrı ayrı** değerlendirilir.
+Leeway ve akıntı ayrı ayrı değerlendirilir.
 
 ⬛ **Sıra Kuralı**
 
@@ -6850,7 +6850,7 @@ Akıntı (CTS)
 * Elektronik rota teyidi
 * Yelkenli ve düşük süratli gemiler
 
-Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uzun seyirlerde büyük mevki hatalarına** yol açabileceğinden, rota ve mevki hesaplarında **mutlaka dikkate alınmalıdır**.`
+Leeway, klasik seyrüseferde küçük açı gibi görünmesine rağmen, uzun seyirlerde büyük mevki hatalarına yol açabileceğinden, rota ve mevki hesaplarında mutlaka dikkate alınmalıdır.`
       }
     ]
   },
@@ -6870,7 +6870,7 @@ Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uz
 ### Temel Prensip
 
 * Aynı anda alınan kerterizler kullanılır
-* Her kerteriz bir **LOP (Line of Position)** üretir
+* Her kerteriz bir LOP (Line of Position) üretir
 * LOP’ların kesişimi → **Fix**
 
 ⬛ **Ana İlke**
@@ -6896,7 +6896,7 @@ LOP₂
 
 ### Kerterizden LOP Çizimi
 
-Kerteriz, **gemiden objeye doğru** ölçülür. Haritada LOP çizmek için:
+Kerteriz, gemiden objeye doğru ölçülür. Haritada LOP çizmek için:
 
 ⬛ **Geri Kerteriz**
 
@@ -6911,8 +6911,8 @@ BB = B ± 180°
 
 ### İki Kerterizle Fix
 
-* En az **iki sabit obje** gerekir
-* Kerterizler **aynı anda** alınmalıdır
+* En az iki sabit obje gerekir
+* Kerterizler aynı anda alınmalıdır
 * Kesişim açısı keskin olmalıdır
 
 ⬛ **Geometrik Kural**
@@ -6927,7 +6927,7 @@ Güçlü Fix
 
 ### Üç Kerterizle Fix
 
-* Üç LOP idealde **tek noktada** kesişir
+* Üç LOP idealde tek noktada kesişir
 * Küçük bir üçgen oluşursa → **Hata Üçgeni**
 
 ⬛ **Yorum**
@@ -6943,7 +6943,7 @@ Gerçek mevki
 ### Haritada Uygulama Adımları
 
 1. Objeler harita üzerinde işaretlenir
-2. Her kerteriz için **geri kerteriz** hesaplanır
+2. Her kerteriz için geri kerteriz hesaplanır
 3. Objeden geri kerteriz doğrultusunda LOP çizilir
 4. LOP’ların kesişimi → **Fix**
 
@@ -7032,7 +7032,7 @@ alınmalıdır
 * Elektronik mevki teyidi
 * DR/EP düzeltmesi
 
-Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** bir mevki tayini sağlar; doğru objeler ve eş zamanlı ölçümlerle uygulandığında **en yüksek doğruluklu terrestrial fix** yöntemlerinden biridir.`
+Cross Bearings ile Fix, klasik seyrüseferde hızlı, görsel ve güvenilir bir mevki tayini sağlar; doğru objeler ve eş zamanlı ölçümlerle uygulandığında en yüksek doğruluklu terrestrial fix yöntemlerinden biridir.`
       }
     ]
   },
@@ -7056,9 +7056,9 @@ Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** 
 ### Temel Prensip
 
 * Başlangıç ve varış mevkii bilinir
-* **D.Lat** ve **D.Long** hesaplanır
+* D.Lat ve D.Long hesaplanır
 * Ortalama enlem bulunur
-* **Departure** elde edilir
+* Departure elde edilir
 * Seyir üçgeninden Course ve Distance bulunur
 
 ⬛ **Ana İlke**
@@ -7124,7 +7124,7 @@ D.Long = Long₂ − Long₁
 Mean Lat = (Lat₁ + Lat₂) / 2
 ════════════════════
 
-* Enlemler **aynı isimde** alınır
+* Enlemler aynı isimde alınır
 * Departure hesabında kullanılır
 
 ---
@@ -7149,7 +7149,7 @@ Dep = D.Long × cos Mean Lat
 tan C = Dep / D.Lat
 ════════════════════
 
-* Açının yönü **D.Lat** ve **Dep** işaretlerine göre belirlenir
+* Açının yönü D.Lat ve Dep işaretlerine göre belirlenir
 
 ---
 
@@ -7268,7 +7268,7 @@ D ≈ 303 NM
 * Harita üzerinden mesafe ölçümü
 * Klasik seyir problemleri
 
-Inverse Problem of Mean Latitude Sailing, **bilinen iki mevkii arasında rota ve mesafe tayini** sağlayarak, orta enlem seyrinin **planlama aşamasındaki temel hesap yöntemlerinden biri** olarak kullanılır.`
+Inverse Problem of Mean Latitude Sailing, bilinen iki mevkii arasında rota ve mesafe tayini sağlayarak, orta enlem seyrinin planlama aşamasındaki temel hesap yöntemlerinden biri olarak kullanılır.`
       }
     ]
   },
@@ -7289,8 +7289,8 @@ Inverse Problem of Mean Latitude Sailing, **bilinen iki mevkii arasında rota ve
 
 ### Temel Prensip
 
-* Aynı objeden **en az iki kerteriz** alınır
-* Kerterizler **farklı zamanlarda** ölçülür
+* Aynı objeden en az iki kerteriz alınır
+* Kerterizler farklı zamanlarda ölçülür
 * İlk LOP, geminin ilerlediği mesafe kadar **taşınır**
 * Taşınan LOP ile ikinci LOP’un kesişimi → **Fix**
 
@@ -7333,7 +7333,7 @@ A = S × t
 
 ### Kerterizden LOP Çizimi
 
-Kerteriz gemiden objeye alınır; haritada LOP çizmek için **geri kerteriz** kullanılır.
+Kerteriz gemiden objeye alınır; haritada LOP çizmek için geri kerteriz kullanılır.
 
 ⬛ **Geri Kerteriz**
 
@@ -7346,10 +7346,10 @@ BB = B ± 180°
 ### Harita Üzerinde Uygulama Adımları
 
 1. Obje haritada işaretlenir
-2. İlk kerteriz için **BB₁** çizilir → **LOP₁**
-3. İki kerteriz arası **Advance** hesaplanır
-4. LOP₁, **Course** doğrultusunda **A kadar taşınır** → **Transferred LOP₁**
-5. İkinci kerteriz için **BB₂** çizilir → **LOP₂**
+2. İlk kerteriz için BB₁ çizilir → LOP₁
+3. İki kerteriz arası Advance hesaplanır
+4. LOP₁, Course doğrultusunda A kadar taşınır → Transferred LOP₁
+5. İkinci kerteriz için BB₂ çizilir → LOP₂
 6. Kesişim noktası → **Running Fix**
 
 ---
@@ -7416,9 +7416,9 @@ BB₂ = 270°T
 
 ### Fix’in Bulunması
 
-* Obje’den **225°T** doğrultusunda **LOP₁** çizilir
-* LOP₁, **090°T yönünde 6 NM** taşınır
-* Obje’den **270°T** doğrultusunda **LOP₂** çizilir
+* Obje’den 225°T doğrultusunda LOP₁ çizilir
+* LOP₁, 090°T yönünde 6 NM taşınır
+* Obje’den 270°T doğrultusunda LOP₂ çizilir
 * Taşınmış LOP₁ ile LOP₂’nin kesişimi → **Running Fix**
 
 ---
@@ -7464,7 +7464,7 @@ Kabul Edilebilir Fix
 * Elektronik mevki kaybı durumları
 * DR/EP teyidi
 
-Running Fix, klasik seyrüseferde **tek obje ile mevki tayinine imkân veren**, zaman ve hareketin doğru uygulanmasıyla **yüksek doğruluk sağlayan** temel terrestrial fix yöntemlerinden biridir.`
+Running Fix, klasik seyrüseferde tek obje ile mevki tayinine imkân veren, zaman ve hareketin doğru uygulanmasıyla yüksek doğruluk sağlayan temel terrestrial fix yöntemlerinden biridir.`
       }
     ]
   },
@@ -7485,9 +7485,9 @@ Running Fix, klasik seyrüseferde **tek obje ile mevki tayinine imkân veren**, 
 
 ### Temel Prensip
 
-* Objeler arası **yatay açı** ölçülür
-* Ölçülen açı, **gemi mevkiinden** görülür
-* Aynı açıyı gören noktaların geometrik yeri bir **yay (arc)** oluşturur
+* Objeler arası yatay açı ölçülür
+* Ölçülen açı, gemi mevkiinden görülür
+* Aynı açıyı gören noktaların geometrik yeri bir yay (arc) oluşturur
 * Yayların kesişimi → **Fix**
 
 ⬛ **Ana İlke**
@@ -7514,8 +7514,8 @@ Arc₂
 ### İki Objeyle Yatay Açı Fix’i
 
 * İki obje (A ve B) seçilir
-* A–B arasındaki yatay açı **θ** ölçülür
-* Bu açıya karşılık gelen **çember yayı** çizilir
+* A–B arasındaki yatay açı θ ölçülür
+* Bu açıya karşılık gelen çember yayı çizilir
 * Gemi, bu yay üzerinde bir noktadadır
 
 ⬛ **Geometrik Özellik**
@@ -7544,8 +7544,8 @@ sabit
 ### Harita Üzerinde Uygulama (2 Açı)
 
 1. Objeler A, B, C haritada işaretlenir
-2. A–B için **θ₁** açısına uygun yay çizilir
-3. B–C için **θ₂** açısına uygun yay çizilir
+2. A–B için θ₁ açısına uygun yay çizilir
+3. B–C için θ₂ açısına uygun yay çizilir
 4. Yayların kesişimi → **Fix**
 
 ---
@@ -7568,12 +7568,12 @@ sabit
 ⬛ **Adım 1 – A–B Yayı**
 
 * A ve B noktaları birleştirilir
-* A–B doğrusu üzerinde, **40° gören çember yayı** çizilir
+* A–B doğrusu üzerinde, 40° gören çember yayı çizilir
 
 ⬛ **Adım 2 – B–C Yayı**
 
 * B ve C noktaları birleştirilir
-* B–C doğrusu için **55° gören çember yayı** çizilir
+* B–C doğrusu için 55° gören çember yayı çizilir
 
 ⬛ **Sonuç**
 
@@ -7625,7 +7625,7 @@ geniş yayılım
 * Dar geçitler
 * Yüksek doğruluk gerektiren kıyı seyri
 
-Horizontal Angle Fix, klasik seyrüseferde **açı geometrisine dayalı**, doğru uygulandığında **çok hassas sonuç veren** bir mevki tayin yöntemidir ve özellikle **sekstant kullanımının aktif olduğu** terrestrial seyirlerde önemli bir yer tutar.`
+Horizontal Angle Fix, klasik seyrüseferde açı geometrisine dayalı, doğru uygulandığında çok hassas sonuç veren bir mevki tayin yöntemidir ve özellikle sekstant kullanımının aktif olduğu terrestrial seyirlerde önemli bir yer tutar.`
       }
     ]
   },
@@ -7651,8 +7651,8 @@ Horizontal Angle Fix, klasik seyrüseferde **açı geometrisine dayalı**, doğr
 Mean Latitude Sailing’de şu kabuller yapılır:
 
 * Meridyenler **paralel kabul edilir**
-* Paraleller arası mesafe **sabit** varsayılır
-* Küresel geometri yerine **düzlem geometri** kullanılır
+* Paraleller arası mesafe sabit varsayılır
+* Küresel geometri yerine düzlem geometri kullanılır
 
 ⬛ **Ana Kabul**
 
@@ -7662,13 +7662,13 @@ Dünya
 Düzlem
 ════════════════════
 
-Bu kabul, yalnızca **orta enlemlerde** yeterli doğruluğu sağlar.
+Bu kabul, yalnızca orta enlemlerde yeterli doğruluğu sağlar.
 
 ---
 
 ### Enleme Bağlı Hata Davranışı
 
-Enlem arttıkça meridyenler birbirine yaklaşır. Mean Latitude Sailing bu yakınlaşmayı **ortalama enlem** ile telafi etmeye çalışır.
+Enlem arttıkça meridyenler birbirine yaklaşır. Mean Latitude Sailing bu yakınlaşmayı ortalama enlem ile telafi etmeye çalışır.
 
 ⬛ **Kullanılan Yaklaşım**
 
@@ -7676,7 +7676,7 @@ Enlem arttıkça meridyenler birbirine yaklaşır. Mean Latitude Sailing bu yak�
 D.Long = Dep / cos Mean Lat
 ════════════════════
 
-Bu ifade, **küçük D.Lat** ve **orta enlem** şartlarında geçerlidir.
+Bu ifade, küçük D.Lat ve orta enlem şartlarında geçerlidir.
 
 ---
 
@@ -7698,7 +7698,7 @@ Kabul Edilebilir
 
 ### Mesafeye Bağlı Sınır
 
-Mean Latitude Sailing, **kısa ve orta mesafeler** için uygundur.
+Mean Latitude Sailing, kısa ve orta mesafeler için uygundur.
 
 ⬛ **Mesafe Kuralı**
 
@@ -7779,7 +7779,7 @@ D.Long = 600 / 0.5
 D.Long = 1200′
 ════════════════════
 
-➡ Aynı geometrik hareket, yüksek enlemde **iki kat boylam farkı** üretir.
+➡ Aynı geometrik hareket, yüksek enlemde iki kat boylam farkı üretir.
 
 ---
 
@@ -7819,7 +7819,7 @@ Kutuplara yakın seyir
 * DR / EP üretimi
 * Hızlı rota değerlendirmesi
 
-Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde önemli bir yere sahiptir; ancak **enlem ve mesafe sınırları bilinmeden kullanıldığında**, ciddi mevki hatalarına yol açabilir.`
+Mean Latitude Sailing, basitliği ve hızı nedeniyle klasik seyrüseferde önemli bir yere sahiptir; ancak enlem ve mesafe sınırları bilinmeden kullanıldığında, ciddi mevki hatalarına yol açabilir.`
       }
     ]
   },
@@ -7831,7 +7831,7 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
       {
         title: "Aşama 1: Varsayılan mevkinin (AP) kurulması",
         content:
-          "Varsayılan mevki (AP), DR mevkiine yakın bir noktadır ve Hc ile Zn’nin hesaplandığı referans noktadır. Amaç “doğru nokta” olmak değil, **gerçek mevkiye yeterince yakın** olmaktır. Intercept yöntemi bu yakınlık varsayımı üzerine çalışır."
+          "Varsayılan mevki (AP), DR mevkiine yakın bir noktadır ve Hc ile Zn’nin hesaplandığı referans noktadır. Amaç “doğru nokta” olmak değil, gerçek mevkiye yeterince yakın olmaktır. Intercept yöntemi bu yakınlık varsayımı üzerine çalışır."
       },
       {
         title: "Aşama 2: Gözlemsel ve teorik yüksekliklerin karşılaştırılması",
@@ -7841,12 +7841,12 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
       {
         title: "Aşama 3: Intercept mesafesinin elde edilmesi",
         content:
-          "Ho ile Hc farkı **doğrusal mesafeye** dönüştürülür. Dakika cinsinden bulunan fark, doğrudan deniz mili olarak yorumlanır. Bu aşamada yön bilgisi yoktur; yalnızca “ne kadar” sapma olduğu belirlenir."
+          "Ho ile Hc farkı doğrusal mesafeye dönüştürülür. Dakika cinsinden bulunan fark, doğrudan deniz mili olarak yorumlanır. Bu aşamada yön bilgisi yoktur; yalnızca “ne kadar” sapma olduğu belirlenir."
       },
       {
         title: "Aşama 4: Yönün belirlenmesi (toward / away)",
         content:
-          "Ho, Hc’den büyükse gözlemci varsayılan mevkiden **gök cismine daha yakındır** ve taşıma gök cismine doğru yapılır. Ho, Hc’den küçükse gözlemci gök cisminden daha uzaktadır ve taşıma gök cisminden uzağa yapılır."
+          "Ho, Hc’den büyükse gözlemci varsayılan mevkiden gök cismine daha yakındır ve taşıma gök cismine doğru yapılır. Ho, Hc’den küçükse gözlemci gök cisminden daha uzaktadır ve taşıma gök cisminden uzağa yapılır."
       },
       {
         title: "Formüller (Intercept yöntemi)",
@@ -7884,7 +7884,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
   "Azimut hesapları": {
     title: "Azimut hesapları (göksel seyir — trigonometrisiz, görsel mantık)",
     introduction:
-      "Azimut, gök cisminin **gerçek kuzeye göre doğrultusudur** ve Zn ile gösterilir. Göksel seyirde azimut, intercept mesafesinin hangi doğrultuda taşınacağını ve LOP’un hangi yönde çizileceğini belirleyen tek yön bilgisidir. Azimut **rota değildir**, seyir yönü değildir; yalnızca **gök cismine bakış doğrultusudur**.",
+      "Azimut, gök cisminin gerçek kuzeye göre doğrultusudur ve Zn ile gösterilir. Göksel seyirde azimut, intercept mesafesinin hangi doğrultuda taşınacağını ve LOP’un hangi yönde çizileceğini belirleyen tek yön bilgisidir. Azimut rota değildir, seyir yönü değildir; yalnızca gök cismine bakış doğrultusudur.",
     sections: [
       {
         title: "Aşama 1: Girdilerin hazırlanması (AP merkezli)",
@@ -8003,7 +8003,7 @@ Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan u
     sections: [
       {
         title: "Büyük Daire – Rhumb Line – Composite Karşılaştırması",
-        content: `**Büyük daire** teorik olarak iki mevki arasındaki en kısa küresel yolu verir. Ancak uzun okyanus seyrinde bu rota çoğu zaman yüksek enlemlere taşar. Yüksek enlemler; sert hava sistemleri, buz riski, dalga boyu artışı ve sıcaklık kaynaklı operasyonel kısıtlar nedeniyle ticari açıdan dezavantajlıdır. Bu yüzden saf büyük daire rotası nadiren uygulanır.
+        content: `Büyük daire teorik olarak iki mevki arasındaki en kısa küresel yolu verir. Ancak uzun okyanus seyrinde bu rota çoğu zaman yüksek enlemlere taşar. Yüksek enlemler; sert hava sistemleri, buz riski, dalga boyu artışı ve sıcaklık kaynaklı operasyonel kısıtlar nedeniyle ticari açıdan dezavantajlıdır. Bu yüzden saf büyük daire rotası nadiren uygulanır.
 
 **Rhumb line** (loxodrom) sabit kurs avantajı sağlar; ancak uzun mesafelerde mesafe kaybı belirgin hale gelir. Özellikle Atlantik ve Pasifik geçişlerinde rhumb line kullanımı yakıt tüketimini ve seyir süresini ölçülebilir şekilde artırır. Bu nedenle çoğunlukla kısa mesafe veya kıyıya yakın seyirlerde tercih edilir.
 
@@ -8017,12 +8017,12 @@ Yerel ve kısa seyir → **Rhumb line**`
       },
       {
         title: "Uygulamalı Örnek Senaryo",
-        content: `Bir konteyner gemisinin Avrupa’dan Kuzey Amerika’nın batı kıyısına sefer yaptığını varsayalım. Saf büyük daire rotası, gemiyi **55–60° Kuzey** enlemlerine çıkaracaktır. Kış aylarında bu bölge, yoğun alçak basınç sistemleri ve yüksek dalga karakteristiği ile bilinir. Bu durumda sınırlayıcı enlem **48° Kuzey** olarak belirlenir.
+        content: `Bir konteyner gemisinin Avrupa’dan Kuzey Amerika’nın batı kıyısına sefer yaptığını varsayalım. Saf büyük daire rotası, gemiyi 55–60° Kuzey enlemlerine çıkaracaktır. Kış aylarında bu bölge, yoğun alçak basınç sistemleri ve yüksek dalga karakteristiği ile bilinir. Bu durumda sınırlayıcı enlem 48° Kuzey olarak belirlenir.
 
 Planlama şu şekilde yapılır:
 
 * Başlangıçtan **48° Kuzey**’e kadar büyük daire seyri uygulanır.
-* **48° Kuzey** boyunca sabit enlem rhumb line segmenti ile ilerlenir.
+* 48° Kuzey boyunca sabit enlem rhumb line segmenti ile ilerlenir.
 * Uygun boylamda tekrar büyük daireye girilerek varış limanına yönelinir.
 
 Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu toplam mesafe, saf büyük daireden daha uzun; ancak saf rhumb line’dan daha kısa çıkar. Buna karşılık rota, operasyonel olarak daha emniyetli ve ticari açıdan daha öngörülebilir olur.`
@@ -8047,12 +8047,12 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Modelin Temel Referansları",
         content:
-          "Göksel kürede gözlemcinin bulunduğu nokta **merkez**, baş üstü noktası **zenit**, tam karşısı **nadir** olarak alınır. Gözlemciye teğet düzlemin küreyle kesişimi **ufuk dairesini** oluşturur. Dünya’nın dönme ekseninin küreyi kestiği noktalar **gök kutupları**, ekvator düzleminin küreyle kesişimi ise **gök ekvatoru**dur.",
+          "Göksel kürede gözlemcinin bulunduğu nokta merkez, baş üstü noktası zenit, tam karşısı nadir olarak alınır. Gözlemciye teğet düzlemin küreyle kesişimi ufuk dairesini oluşturur. Dünya’nın dönme ekseninin küreyi kestiği noktalar gök kutupları, ekvator düzleminin küreyle kesişimi ise gök ekvatorudur.",
       },
       {
         title: "Koordinat ve Açısal Tanımlar",
         content:
-          "Bir gök cisminin gök ekvatoruna göre açısal uzaklığı **deklinasyon (δ)**, yerel meridyene göre açısal konumu ise **saat açısı (LHA)** ile ifade edilir. Gözlemcinin enlemi **φ**, gözlenen cismin ufuk üzerindeki yüksekliği **h** olarak alınır. Bu büyüklükler, göksel küre üzerindeki küresel üçgenin kenarlarını ve açılarını belirler.",
+          "Bir gök cisminin gök ekvatoruna göre açısal uzaklığı deklinasyon (δ), yerel meridyene göre açısal konumu ise saat açısı (LHA) ile ifade edilir. Gözlemcinin enlemi φ, gözlenen cismin ufuk üzerindeki yüksekliği h olarak alınır. Bu büyüklükler, göksel küre üzerindeki küresel üçgenin kenarlarını ve açılarını belirler.",
       },
       {
         title: "Zenit Uzaklığı ve Saat Açısı İlişkileri",
@@ -8090,7 +8090,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
           "sin h = (0.588 × 0.174) + (0.809 × 0.985 × 0.766)\n\n" +
           "sin h = 0.102 + 0.611 = **0.713**\n\n" +
           "h = arcsin 0.713 ≈ **45.5°**\n\n" +
-          "Bu değer, cismin ufuk üzerinde yaklaşık **45.5°** yükseklikte görülmesi gerektiğini gösterir. Pratikte bu değer sextant ile ölçülen düzeltilmiş yükseklikle karşılaştırılır ve intercept yönteminde kullanılır."
+          "Bu değer, cismin ufuk üzerinde yaklaşık 45.5° yükseklikte görülmesi gerektiğini gösterir. Pratikte bu değer sextant ile ölçülen düzeltilmiş yükseklikle karşılaştırılır ve intercept yönteminde kullanılır."
       }
     ],
     keyPoints: [
@@ -8118,12 +8118,12 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Aşama 3: Greenwich meridyeni ve yerel meridyen",
         content:
-          "Greenwich meridyeni sabit referans kabul edilir. Gök cisimlerinin konumu **Greenwich Saat Açısı (GHA)** ile, gözlemcinin meridyenine göre konumu ise **Yerel Saat Açısı (LHA)** ile ifade edilir. İki meridyen arasındaki açısal fark boylamdır.",
+          "Greenwich meridyeni sabit referans kabul edilir. Gök cisimlerinin konumu Greenwich Saat Açısı (GHA) ile, gözlemcinin meridyenine göre konumu ise Yerel Saat Açısı (LHA) ile ifade edilir. İki meridyen arasındaki açısal fark boylamdır.",
       },
       {
         title: "Aşama 4: Zaman farkının boylam ve saat açısına dönüşmesi",
         content:
-          "Greenwich zamanı ile yerel zaman arasındaki fark, gök cisminin konumunu değiştirir. Bu fark, hem boylam tayininde hem de Hc ve azimut hesaplarının girişinde kullanılır. Böylece **zaman farkı → açısal fark → konum değişimi** zinciri açıkça kurulmuş olur.",
+          "Greenwich zamanı ile yerel zaman arasındaki fark, gök cisminin konumunu değiştirir. Bu fark, hem boylam tayininde hem de Hc ve azimut hesaplarının girişinde kullanılır. Böylece zaman farkı → açısal fark → konum değişimi zinciri açıkça kurulmuş olur.",
       },
       {
         title: "Formüller (ders uyumlu)",
@@ -8144,11 +8144,11 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Örnek uygulama (görsel mantıkla)",
         content:
-          "Kronometrede okunan Greenwich zamanı ile yerel gözlem zamanı arasında **2 saat 20 dakika** fark olsun.\n\n" +
+          "Kronometrede okunan Greenwich zamanı ile yerel gözlem zamanı arasında 2 saat 20 dakika fark olsun.\n\n" +
           "**Saat karşılığı:** 2 saat × 15° = **30°**\n\n" +
           "**Dakika karşılığı:** 20 dakika × 15′ = **300′ = 5°**\n\n" +
           "**Toplam açısal fark:** **35°**\n\n" +
-          "Bu değer, gözlemcinin Greenwich meridyenine göre **35° boylam farkında** olduğunu gösterir. Yerel zaman Greenwich’ten ilerideyse boylam doğu, gerideyse batı olarak yorumlanır.",
+          "Bu değer, gözlemcinin Greenwich meridyenine göre 35° boylam farkında olduğunu gösterir. Yerel zaman Greenwich’ten ilerideyse boylam doğu, gerideyse batı olarak yorumlanır.",
       }
     ],
     keyPoints: [
@@ -8161,7 +8161,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
   "Running fix (göksel)": {
     title: "Running fix (göksel)",
     introduction:
-      "Running fix, göksel seyirde **aynı anda elde edilemeyen mevki hatlarının (LOP)** geminin hareketi dikkate alınarak **aynı zamana taşınması** esasına dayanır. Farklı zamanlarda yapılan gözlemler tek zaman düzleminde birleştirilerek fix elde edilir. Gök cismi sayısının sınırlı olduğu veya hava koşulları nedeniyle eşzamanlı gözlemin mümkün olmadığı durumlarda pratik bir çözümdür.",
+      "Running fix, göksel seyirde aynı anda elde edilemeyen mevki hatlarının (LOP) geminin hareketi dikkate alınarak aynı zamana taşınması esasına dayanır. Farklı zamanlarda yapılan gözlemler tek zaman düzleminde birleştirilerek fix elde edilir. Gök cismi sayısının sınırlı olduğu veya hava koşulları nedeniyle eşzamanlı gözlemin mümkün olmadığı durumlarda pratik bir çözümdür.",
     sections: [
       {
         title: "Detaylı Anlatım",
@@ -8189,7 +8189,7 @@ t₁ ile ikinci gözlem zamanı t₂ arasındaki zaman farkı (Δt) ve geminin b
 
 ### Aşama 3: İlk LOP’un taşınması (transported LOP)
 
-t₁ anına ait LOP, geminin seyir doğrultusunda ve kat edilen mesafe kadar **paralel** olarak ötelenir. Bu işlem LOP’un yönünü değiştirmez; yalnızca konumunu t₂ zamanına taşır.
+t₁ anına ait LOP, geminin seyir doğrultusunda ve kat edilen mesafe kadar paralel olarak ötelenir. Bu işlem LOP’un yönünü değiştirmez; yalnızca konumunu t₂ zamanına taşır.
 
 ⬛ **Kullanılan ilişki**
 
@@ -8219,7 +8219,7 @@ t₂ anında elde edilen ikinci LOP çizilir. Bu LOP ile taşınmış ilk LOP’
 
 ⬛ **Taşınmış LOP ilkesi**
 
-Taşınan LOP, orijinal LOP’a **paralel** kalır.
+Taşınan LOP, orijinal LOP’a paralel kalır.
 
 ---
 
@@ -8240,13 +8240,13 @@ Birinci gök cismi gözlemi saat **08:20**’de yapılmış ve bir LOP elde edil
 Δs = 6 deniz mili
 ════════════════════
 
-Saat 08:20’de elde edilen LOP, geminin seyir doğrultusunda **6 deniz mili** paralel ötelenir. Saat 08:50’de elde edilen ikinci LOP ile kesişim noktası, geminin **08:50’deki running fix** mevkiidir.
+Saat 08:20’de elde edilen LOP, geminin seyir doğrultusunda 6 deniz mili paralel ötelenir. Saat 08:50’de elde edilen ikinci LOP ile kesişim noktası, geminin 08:50’deki running fix mevkiidir.
 
 ---
 
 ### Kullanım Notu
 
-Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değişimi varsa ya da DR disiplini zayıfsa sonuç güvenilir kabul edilmez. Bu nedenle yöntem, mümkün olduğunda eşzamanlı LOP’larla elde edilen fix’lerin yerine değil, **tamamlayıcı** olarak kullanılmalıdır.`
+Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değişimi varsa ya da DR disiplini zayıfsa sonuç güvenilir kabul edilmez. Bu nedenle yöntem, mümkün olduğunda eşzamanlı LOP’larla elde edilen fix’lerin yerine değil, tamamlayıcı olarak kullanılmalıdır.`
       }
     ]
   },
@@ -8286,9 +8286,9 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Örnek – Harita Üzerinde LOP Çizimi",
         content:
-          "Varsayılan mevki **36° 00′ N, 029° 00′ E** olsun. Hesaplanan azimut **Zn = 120°**, Ho − Hc farkı **+6.0′**.\n\n" +
+          "Varsayılan mevki 36° 00′ N, 029° 00′ E olsun. Hesaplanan azimut Zn = 120°, Ho − Hc farkı +6.0′.\n\n" +
           "Intercept mesafesi: **d = 6.0 deniz mili**\n\n" +
-          "Ho, Hc’den büyük olduğundan gök cismine doğru ilerlenir. Harita üzerinde varsayılan mevkiden **120°** doğrultusunda bir doğru çizilir ve bu doğru üzerinde **6 deniz mili** ilerlenir. Bu yeni noktadan, **120° doğrultusuna dik** olacak şekilde **030°–210°** doğrultusunda bir doğru çizilir. Çizilen bu doğru, gözlem anındaki mevki hattıdır."
+          "Ho, Hc’den büyük olduğundan gök cismine doğru ilerlenir. Harita üzerinde varsayılan mevkiden 120° doğrultusunda bir doğru çizilir ve bu doğru üzerinde 6 deniz mili ilerlenir. Bu yeni noktadan, 120° doğrultusuna dik olacak şekilde 030°–210° doğrultusunda bir doğru çizilir. Çizilen bu doğru, gözlem anındaki mevki hattıdır."
       },
       {
         title: "LOP Kesişimi ve Güvenilirlik",
@@ -8306,24 +8306,24 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
   "2 LOP ve 3 LOP fix": {
     title: "2 LOP ve 3 LOP Fix (Göksel Seyir)",
     introduction:
-      "Göksel seyirde tek bir mevki hattı (LOP), geminin yalnızca **olası konum doğrusu**nu verir. Kesin mevki, iki veya üç bağımsız LOP’un birlikte değerlendirilmesiyle geometrik olarak daraltılır. Bu yaklaşım, **tek bir hesap sonucu nokta** değil; **çoklu kısıtların ortak çözümü** olarak fix kavramını tanımlar.",
+      "Göksel seyirde tek bir mevki hattı (LOP), geminin yalnızca olası konum doğrusunu verir. Kesin mevki, iki veya üç bağımsız LOP’un birlikte değerlendirilmesiyle geometrik olarak daraltılır. Bu yaklaşım, tek bir hesap sonucu nokta değil; çoklu kısıtların ortak çözümü olarak fix kavramını tanımlar.",
     sections: [
       {
         title: "Aşama 1: Birinci LOP’un Kurulması",
         content:
-          "İlk gök cismi gözleminden elde edilen LOP, harita düzleminde bir doğru olarak çizilir. Bu çizgi, geminin **gözlem anında** bu doğru üzerinde bir yerde olduğunu ifade eder. Ancak tek bir LOP, tek başına kesin mevki vermez."
+          "İlk gök cismi gözleminden elde edilen LOP, harita düzleminde bir doğru olarak çizilir. Bu çizgi, geminin gözlem anında bu doğru üzerinde bir yerde olduğunu ifade eder. Ancak tek bir LOP, tek başına kesin mevki vermez."
       },
       {
         title: "Aşama 2: İkinci LOP’un Eklenmesi – 2 LOP Fix",
         content:
           "İkinci bir gök cismi gözlemi ile ikinci LOP çizilir. İki LOP’un **kesiştiği nokta**, her iki gözlemin aynı anda doğru olabildiği tek konumdur ve 2 LOP fix olarak kabul edilir.\n\n" +
-          "Kesişim açısı kritik önemdedir: Açının **dar** olması durumunda küçük ölçüm hataları mevkiyi ciddi şekilde kaydırır. Bu nedenle 2 LOP fix için **dik veya dikliğe yakın** kesişim tercih edilir."
+          "Kesişim açısı kritik önemdedir: Açının dar olması durumunda küçük ölçüm hataları mevkiyi ciddi şekilde kaydırır. Bu nedenle 2 LOP fix için dik veya dikliğe yakın kesişim tercih edilir."
       },
       {
         title: "Aşama 3: Üçüncü LOP’un Eklenmesi – 3 LOP Fix",
         content:
           "Üçüncü bir gök cisminden elde edilen LOP eklendiğinde, üç hat çoğu zaman tek noktada kesişmez. Bunun yerine küçük bir üçgen oluşur. Bu üçgen cocked hat olarak adlandırılır.\n\n" +
-          "Gemi mevkiinin bu üçgenin içinde olduğu kabul edilir. Üçgenin alanı, gözlemlerin tutarlılığını ve zaman bilgisinin doğruluğunu doğrudan gösterir: **küçük cocked hat** güvenilir fix, **büyük cocked hat** sistematik hata göstergesidir."
+          "Gemi mevkiinin bu üçgenin içinde olduğu kabul edilir. Üçgenin alanı, gözlemlerin tutarlılığını ve zaman bilgisinin doğruluğunu doğrudan gösterir: küçük cocked hat güvenilir fix, büyük cocked hat sistematik hata göstergesidir."
       },
       {
         title: "Aşama 4: Zaman Farkı Varsa LOP Taşıma (Running Fix Mantığı)",
@@ -8349,7 +8349,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Örnek Uygulama (Görsel Mantıkla)",
         content:
-          "Saat **09:30**’da birinci gök cisminden LOP çizilsin. Saat **09:35**’te ikinci gök cisminden ikinci LOP çizilsin. İki LOP harita üzerinde **yaklaşık dik** açıyla kesişiyorsa, bu kesişim noktası geminin **09:35 civarındaki 2 LOP fix’idir**.\n\n" +
+          "Saat 09:30’da birinci gök cisminden LOP çizilsin. Saat 09:35’te ikinci gök cisminden ikinci LOP çizilsin. İki LOP harita üzerinde yaklaşık dik açıyla kesişiyorsa, bu kesişim noktası geminin 09:35 civarındaki 2 LOP fix’idir.\n\n" +
           "Aynı zaman aralığında üçüncü gök cisminden bir LOP daha alındığında, üç hat küçük bir üçgen oluşturuyorsa bu **cocked hat**’tir. Üçgenin küçük olması gözlemlerin tutarlı olduğunu; büyük olması ise gözlemlerde veya zaman bilgisinde hata olabileceğini gösterir."
       }
     ],
@@ -8379,7 +8379,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Adım 1: Varsayılan Mevki (AP) Seçimi",
         content:
-          "AP seçimi, yöntemin başarısı için kritiktir. AP genellikle DR mevkiinin yakınında, hesaplamayı kolaylaştırmak için **tam derece enlem ve tam dakika boylam** olarak seçilir. Bunun nedeni, Sight Reduction Tablolarının (HO-249, HO-229) tam derece girişleri kabul etmesidir.",
+          "AP seçimi, yöntemin başarısı için kritiktir. AP genellikle DR mevkiinin yakınında, hesaplamayı kolaylaştırmak için tam derece enlem ve LHA'yı tam derece yapan bir boylam olarak seçilir. Bunun nedeni, Sight Reduction Tablolarının (HO-249, HO-229) tam derece girişleri kabul etmesidir.",
         bulletPoints: [
           "DR mevkii 35° 42.5′ N, 028° 17.3′ E ise → AP: 36° 00′ N, 028° 00′ E seçilebilir",
           "AP ile gerçek mevki arasındaki fark tipik olarak 30-60 NM'den az tutulmalıdır",

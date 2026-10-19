@@ -2751,9 +2751,6 @@
   "Gaz türbini egzozu 450-550°C seviyelerinde olduğundan, bu ısı HRSG üzerinden Rankine alt çevrimine verilerek COGAS/COGES sisteminde toplam verim anlamlı biçimde artırılır.": {
     "en": "Since gas turbine exhaust is at 450-550°C, passing this heat through an HRSG to a Rankine bottoming cycle raises the overall efficiency significantly in a COGAS/COGES system."
   },
-  "Gece dredger üzerinde kırmızı-kırmızı ve bir yanında iki kırmızı, diğer yanında iki yeşil all-round ışık görülür.": {
-    "en": "At night a dredger shows red-white-red all-round lights in a vertical line, with two all-round red lights on one side and two all-round green lights on the other."
-  },
   "Gece seyir ışık kontrolünü vardiya değişiminde yapılacak kontrol listesine ekle": {
     "en": "Add the night navigation light check to the watch handover checklist"
   },
@@ -5106,17 +5103,11 @@
   "MMSI ve EPIRB kayıt bilgisini gemi/bayrak değişiminde güncellememek": {
     "en": "Not updating the MMSI and EPIRB registration details when the ship or flag changes"
   },
-  "Mnemonic: 'Can Dead Men Vote Twice At Elections' — Compass + Dev = Magnetic, +Var = True, East is least (W çıkar), East adds when going to True.": {
-    "en": "Mnemonic: 'Can Dead Men Vote Twice At Elections' — Compass + Dev = Magnetic, +Var = True, East is least (subtract W), East adds when going to True."
-  },
   "MOB veya kurtarma manevrasında, hızı düşürmeden alınan AW gerçeği maskeler; durdurmadan önce TW'yi mutlaka hesapla.": {
     "en": "In a MOB or rescue manoeuvre, an AW reading taken without reducing speed hides the real situation; always calculate the TW before stopping."
   },
   "Modern ECDIS otomatik büyük daire çizer; ancak rota onayında vertex enlemini ve waypoint güvenliğini elle teyit edin.": {
     "en": "Modern ECDIS draws great circles automatically; but when approving the route, check the vertex latitude and the safety of the waypoints by hand."
-  },
-  "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m (midship'ten -2m). ΔTF = 42.7 × 48/100 = 20.5 cm batma. ΔTA = 42.7 × 52/100 = 22.2 cm yükselme. Paralel = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.205 = 6.305 m. TA = 7.0 + 0.10 - 0.222 = 6.878 m": {
-    "en": "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (by the head). ΔTrim = 6400/150 = 42.7 cm by the head. LCF is 48 m from aft (-2 m from midships). ΔTF = 42.7 × 48/100 = 20.5 cm increase. ΔTA = 42.7 × 52/100 = 22.2 cm decrease. Parallel sinkage = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.205 = 6.305 m. TA = 7.0 + 0.10 - 0.222 = 6.878 m"
   },
   "Moment = 300 × 15 = 4500 t·m. Trim değişimi = 4500 / 200 = 22.5 cm başa trim": {
     "en": "Moment = 300 × 15 = 4500 t·m. Change of trim = 4500 / 200 = 22.5 cm by the head"
@@ -10116,5 +10107,779 @@
   },
   "Yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanır; makine dairesi havalandırması yanma havası ihtiyacı için de gereklidir.": {
     "en": "A minimum of 30 m³/h of fresh air per person is supplied in accommodation spaces; engine room ventilation is also needed for combustion air."
+  },
+  "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m, baştan 52m (midship'ten -2m). ΔTF = 42.7 × 52/100 = 22.2 cm batma. ΔTA = 42.7 × 48/100 = 20.5 cm yükselme. Paralel = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.222 = 6.322 m. TA = 7.0 + 0.10 - 0.205 = 6.895 m": {
+    "en": "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (by the head). ΔTrim = 6400/150 = 42.7 cm by the head. LCF is 48 m from the aft perpendicular and 52 m from the forward perpendicular (-2 m from midships). ΔTF = 42.7 × 52/100 = 22.2 cm increase. ΔTA = 42.7 × 48/100 = 20.5 cm decrease. Parallel sinkage = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.222 = 6.322 m. TA = 7.0 + 0.10 - 0.205 = 6.895 m"
+  },
+  "Mnemonic: 'Can Dead Men Vote Twice At Elections' — Compass ± Dev = Magnetic, Magnetic ± Var = True; Compass'tan True'ya giderken East eklenir, West çıkarılır (Error East, compass least; Error West, compass best).": {
+    "en": "Mnemonic: 'Can Dead Men Vote Twice At Elections' — Compass ± Dev = Magnetic, Magnetic ± Var = True; going from Compass to True, add East and subtract West (Error East, compass least; Error West, compass best)."
+  },
+  "Gece dredger üzerinde dikey sırada kırmızı-beyaz-kırmızı ve bir yanında iki kırmızı, diğer yanında iki yeşil all-round ışık görülür.": {
+    "en": "At night a dredger shows red-white-red all-round lights in a vertical line, with two all-round red lights on one side and two all-round green lights on the other."
+  },
+  "➡ Aynı geometrik hareket, yüksek enlemde iki kat boylam farkı üretir.": {
+    "en": "➡ The same geometric movement produces twice the difference of longitude in high latitude."
+  },
+  "48° Kuzey boyunca sabit enlem rhumb line segmenti ile ilerlenir.": {
+    "en": "The ship proceeds along 48° North on a constant-latitude rhumb line segment."
+  },
+  "A–B arasındaki yatay açı θ ölçülür": {
+    "en": "The horizontal angle θ between A and B is measured"
+  },
+  "A–B doğrusu üzerinde, 40° gören çember yayı çizilir": {
+    "en": "On the line A–B, the arc of the circle on which A–B subtends 40° is drawn"
+  },
+  "A–B için θ₁ açısına uygun yay çizilir": {
+    "en": "For A–B, the arc corresponding to the angle θ₁ is drawn"
+  },
+  "Açının yönü D.Lat ve Dep işaretlerine göre belirlenir": {
+    "en": "The quadrant of the angle is decided by the signs of D.Lat and Dep"
+  },
+  "Advance, vektörel bir işlemdir": {
+    "en": "Advance is a vector operation"
+  },
+  "Akıntı, 180°T yönünde 3 NM olarak eklenir": {
+    "en": "The current is added as 3 NM in the direction 180°T"
+  },
+  "Akıntının Set ve Drift’i bilinir": {
+    "en": "The set and drift of the current are known"
+  },
+  "Ancak stabilite hesabında G GG₁ kadar yükselmiş kabul edilir.": {
+    "en": "In the stability calculation, however, G is taken to have risen by GG₁."
+  },
+  "Anında Müdahale (0–5 dakika) aşamasında şu eylemler gerçekleştirilir: MAYDAY mesajı hazırlığı yapılır (henüz gönderilmez ama hazırlık başlar); makineye hız azaltma veya durma emri verilir; gemi mümkünse dalgalara en güvenli pozisyonda tutulur (yan dalga koşullarından kaçınılır); mürettebat uyarılır ve can kurtarma donanımları hazır hale getirilir. Bu aşamada hızlı karar vermek kritiktir; ancak panikle alınan yanlış kararlar durumu kötüleştirebilir.": {
+    "en": "In the Immediate Response stage (0–5 minutes) the following actions are taken: the MAYDAY message is prepared (not yet sent, but preparation begins); the engine is ordered to reduce speed or stop; if possible the ship is kept in the safest heading to the seas (beam seas are avoided); the crew are alerted and the life-saving appliances are made ready. Quick decisions are critical at this stage, but wrong decisions taken in panic can make the situation worse."
+  },
+  "AP seçimi, yöntemin başarısı için kritiktir. AP genellikle DR mevkiinin yakınında, hesaplamayı kolaylaştırmak için tam derece enlem ve LHA'yı tam derece yapan bir boylam olarak seçilir. Bunun nedeni, Sight Reduction Tablolarının (HO-249, HO-229) tam derece girişleri kabul etmesidir.": {
+    "en": "The choice of AP is critical to the success of the method. The AP is usually chosen near the DR position, with a whole degree of latitude and a longitude that makes the LHA a whole degree, to simplify the calculation. This is because the Sight Reduction Tables (HO-249, HO-229) are entered with whole degrees."
+  },
+  "Ardından başlangıç kursu C₁ için:": {
+    "en": "Then, for the initial course C₁:"
+  },
+  "Astronomik tablodan Güneş deklinasyonu δ = 18° 10.0′ N olsun. Güneş meridyende güneyde geçiyorsa (kuzey yarımkürede klasik durum):": {
+    "en": "Let the Sun's declination from the Nautical Almanac be δ = 18° 10.0′ N. If the Sun crosses the meridian to the south (the classic case in the northern hemisphere):"
+  },
+  "Aynı açıyı gören noktaların geometrik yeri bir yay (arc) oluşturur": {
+    "en": "The locus of points at which the same angle is subtended forms an arc"
+  },
+  "Aynı objeden en az iki kerteriz alınır": {
+    "en": "At least two bearings of the same object are taken"
+  },
+  "Aynı objeye iki farklı zamanda kerteriz alınır": {
+    "en": "Bearings of the same object are taken at two different times"
+  },
+  "B–C doğrusu için 55° gören çember yayı çizilir": {
+    "en": "On the line B–C, the arc of the circle on which B–C subtends 55° is drawn"
+  },
+  "B–C için θ₂ açısına uygun yay çizilir": {
+    "en": "For B–C, the arc corresponding to the angle θ₂ is drawn"
+  },
+  "Balast Tank Sıralaması ise trim ve stabilite kontrolü için aktif olarak yönetilen bir süreçtir. Balast alma sırasında önce çift dip tankları doldurulur (stabilite artışı için), ardından baş pik tankı (trim düzeltmesi için) ve son olarak yan tanklar (ince ayar için) doldurulur. Balast boşaltma sırasında önce üst tanklar boşaltılır (GM artışı), ardından yan tanklar (heel kontrolü) ve en son dip tankları (son aşama) boşaltılır.": {
+    "en": "Ballast tank sequencing, on the other hand, is a process managed actively to control trim and stability. When ballasting, the double bottom tanks are filled first (to increase stability), then the fore peak tank (to correct the trim) and finally the side tanks (for fine adjustment). When deballasting, the upper tanks are emptied first (GM increases), then the side tanks (heel control) and the double bottom tanks last (final stage)."
+  },
+  "Ballast Arrival (Balast Varış) durumu, uzun bir balast seyiri sonrasında minimum yakıt ile varış limanına ulaşılan senaryodur. Bu durum, genellikle en düşük deplasman değerine karşılık gelir ve stabilite açısından en zayıf noktayı oluşturabilir. Minimum yakıt durumunda ağırlık merkezinin konumu değişir ve GM değeri kritik seviyelere yaklaşabilir.": {
+    "en": "The Ballast Arrival condition is the scenario in which the ship reaches the port of arrival with minimum fuel after a long ballast passage. It usually corresponds to the lowest displacement and can be the weakest point for stability. With minimum fuel the position of the centre of gravity changes and GM can approach critical values."
+  },
+  "Ballast Departure (Balast Kalkış) durumu, geminin kargo olmaksızın yalnızca balast suyu ile seyir yaptığı senaryodur. Balast tanklarının dolu olması, pervanenin yeterli batmasını ve baş draftın kabul edilebilir seviyelerde kalmasını sağlar. Balast durumunda deplasman düşüktür ve geminin rüzgâr yüzey alanı geniştir; bu nedenle rüzgâr heeling momenti daha kritik hale gelir. KM değeri düşük deplasmanlarda farklılık gösterdiğinden, ballast durumları için ayrı stabilite değerlendirmesi zorunludur.": {
+    "en": "The Ballast Departure condition is the scenario in which the ship sails with ballast water only and no cargo. Full ballast tanks keep the propeller sufficiently immersed and the forward draft at an acceptable level. In ballast the displacement is low and the ship's windage area is large, so the wind heeling moment becomes more critical. Because KM differs at low displacements, a separate stability assessment is required for ballast conditions."
+  },
+  "Başlangıç kursu yaklaşık 039° gerçek kurstur. Seyir ilerledikçe bu kurs değişir, orta noktalarda maksimum sapmaya ulaşır ve varışa doğru farklı bir değere döner.": {
+    "en": "The initial course is about 039° true. As the passage proceeds this course changes, reaching its greatest difference at the intermediate points and ending at a different value towards the arrival."
+  },
+  "Başlangıç mevkiine eklenerek varış mevkii elde edilir": {
+    "en": "Applying it to the departure position gives the arrival position"
+  },
+  "Başlangıç ve varış aynı yarımküredeyse fark alınır; farklı yarımkürelerdeyse mutlak değerler toplanır ve sonuç varış yönüne göre işaretlenir. Örnek: 12°N’den 5°S’ye gidiliyorsa DLat = 12° + 5° = 17° Güney. Aynı kural boylam için de geçerlidir: 20°E’den 10°W’ye geçişte DLong = 20° + 10° = 30° Batı.": {
+    "en": "If departure and arrival are in the same hemisphere, the difference is taken; if they are in different hemispheres, the absolute values are added and the result is named according to the direction of arrival. Example: going from 12°N to 5°S, DLat = 12° + 5° = 17° South. The same rule applies to longitude: going from 20°E to 10°W, DLong = 20° + 10° = 30° West."
+  },
+  "Bir gemide aynı anda birden fazla kısmen dolu tank varsa, toplam serbest yüzey etkisi toplam FSM ile hesaplanır.": {
+    "en": "If a ship has several slack tanks at the same time, the total free surface effect is calculated from the total FSM."
+  },
+  "Bir gök cisminin gök ekvatoruna göre açısal uzaklığı deklinasyon (δ), yerel meridyene göre açısal konumu ise saat açısı (LHA) ile ifade edilir. Gözlemcinin enlemi φ, gözlenen cismin ufuk üzerindeki yüksekliği h olarak alınır. Bu büyüklükler, göksel küre üzerindeki küresel üçgenin kenarlarını ve açılarını belirler.": {
+    "en": "The angular distance of a celestial body from the celestial equator is expressed by its declination (δ), and its angular position relative to the local meridian by the hour angle (LHA). The observer's latitude is φ, and the altitude of the observed body above the horizon is h. These quantities define the sides and angles of the spherical triangle on the celestial sphere."
+  },
+  "Bir konteyner gemisinin Avrupa’dan Kuzey Amerika’nın batı kıyısına sefer yaptığını varsayalım. Saf büyük daire rotası, gemiyi 55–60° Kuzey enlemlerine çıkaracaktır. Kış aylarında bu bölge, yoğun alçak basınç sistemleri ve yüksek dalga karakteristiği ile bilinir. Bu durumda sınırlayıcı enlem 48° Kuzey olarak belirlenir.": {
+    "en": "Assume that a container ship is sailing from Europe to the west coast of North America. The pure great circle route would take the ship up to latitudes of 55–60° North. In the winter months this area is known for deep low-pressure systems and high seas. In this case the limiting latitude is set at 48° North."
+  },
+  "Bitiş, vanishing angle veya downflooding açısıdır (hangisi daha küçükse).": {
+    "en": "The end is the angle of vanishing stability or the downflooding angle (whichever is smaller)."
+  },
+  "Boylam değişimi, Mean Latitude ile düzeltilir": {
+    "en": "The change of longitude is corrected using the Mean Latitude"
+  },
+  "Boylam farkı, Mean Latitude ile düzeltilerek Departure elde edilir": {
+    "en": "Departure is obtained by correcting the difference of longitude using the Mean Latitude"
+  },
+  "Boyuna dengede temel belirleyici, LCG (Boyuna Ağırlık Merkezi) ile LCB (Boyuna Kaldırma Merkezi) arasındaki farktır.": {
+    "en": "The main factor in longitudinal equilibrium is the difference between the LCG (longitudinal centre of gravity) and the LCB (longitudinal centre of buoyancy)."
+  },
+  "Bu açıya karşılık gelen çember yayı çizilir": {
+    "en": "The arc of the circle corresponding to this angle is drawn"
+  },
+  "Bu bozulma, seyir açısından bir hata değildir; çünkü denizcilikte alan karşılaştırması değil, yön, mesafe ve doğrultu esastır. Ancak bu özellik bilinmezse, yüksek enlemlerde harita yorumlanırken sezgisel hatalar yapılabilir.": {
+    "en": "This distortion is not an error for navigation, because at sea what matters is direction, distance and bearing, not the comparison of areas. However, if this property is not understood, intuitive errors can be made when reading the chart in high latitudes."
+  },
+  "Bu çizgi üzerinde zaman ölçeği seçilir": {
+    "en": "A time scale is chosen on this line"
+  },
+  "Bu değer, iki mevki arasındaki teorik en kısa deniz yolunu temsil eder. Rhumb line seyirde mesafe daha uzun çıkar ve fark özellikle orta–yüksek enlemlerde belirginleşir.": {
+    "en": "This value represents the theoretical shortest sea route between the two positions. The rhumb line distance is longer, and the difference becomes noticeable especially in middle and high latitudes."
+  },
+  "Bu doğrultu Clearing Line olarak çizilir": {
+    "en": "This line is drawn as the clearing line"
+  },
+  "Bu fark, uzun E–W seyirlerde büyür.": {
+    "en": "This difference grows on long east–west passages."
+  },
+  "Bu fiziksel gerçek, düzlem seyirin neden sınırlı bir yöntem olduğunu açıklar ve orta enlem seyri yaklaşımının ortaya çıkış gerekçesini oluşturur.": {
+    "en": "This physical fact explains why plane sailing is a limited method and is the reason why the mean latitude sailing approach was developed."
+  },
+  "Bu ifade, büyük daire tarafının referans mesafesini verir.": {
+    "en": "This expression gives the reference distance on the great circle side."
+  },
+  "Bu ifade, küçük D.Lat ve orta enlem şartlarında geçerlidir.": {
+    "en": "This expression is valid for a small D.Lat in middle latitudes."
+  },
+  "Bu iki mesafe ile vektör üçgeni çözülür.": {
+    "en": "The vector triangle is solved with these two distances."
+  },
+  "Bu kabul, yalnızca orta enlemlerde yeterli doğruluğu sağlar.": {
+    "en": "This assumption gives sufficient accuracy only in middle latitudes."
+  },
+  "Bu kaçma açı olarak ifade edilir → Leeway Açısı": {
+    "en": "This drift sideways is expressed as an angle → the leeway angle"
+  },
+  "Bu nedenle düzlem seyir, genellikle yaklaşık 60 deniz miline kadar olan seyirlerde tercih edilir. Mesafe büyüdüğünde, boylam değişiminin enleme bağlı olarak düzeltilmesi gerekir. Bu noktada orta enlem seyri devreye girer.": {
+    "en": "For this reason plane sailing is usually preferred for passages of up to about 60 nautical miles. As the distance increases, the change of longitude has to be corrected according to latitude. This is where mean latitude sailing comes in."
+  },
+  "Bu nokta, ikinci kerteriz anındaki gemi mevkiidir.": {
+    "en": "This point is the ship's position at the time of the second bearing."
+  },
+  "Bu örnek, Mercator projeksiyonunda kurs hesaplarının izometrik enlem üzerinden yapıldığını ve Δλ’nin radyan alınması gerektiğini açıkça gösterir.": {
+    "en": "This example clearly shows that on the Mercator projection course calculations are made using the isometric latitude and that Δλ must be taken in radians."
+  },
+  "Bu örnekte büyük daire rotası yüksek enlemlere çıkmamaktadır. Ancak φmax değeri örneğin 55° Kuzey olsaydı ve operasyonel sınır 50° Kuzey olarak belirlenseydi, 50° Kuzey sınırlayıcı enlem alınarak composite rota uygulanacaktı.": {
+    "en": "In this example the great circle route does not go into high latitudes. However, if φmax were, for example, 55° North and the operational limit were set at 50° North, a composite route would be used with 50° North as the limiting latitude."
+  },
+  "Bu rota dümenlenirse, gemi 085°T’ye değil, 090°T CMG üzerine oturur.": {
+    "en": "If this course is steered, the ship makes good 090°T CMG, not 085°T."
+  },
+  "Bu rota dümenlenirse, gemi 090°T CMG üzerinde ilerler.": {
+    "en": "If this course is steered, the ship proceeds on a CMG of 090°T."
+  },
+  "Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller kullanılsa bile yanlış sonuç üretir. Orta enlem seyri, bu sınırların farkında olarak geliştirilen bir ara yöntemdir.": {
+    "en": "Any plane sailing calculation made without knowing these limits gives a wrong result even if the correct formulas are used. Mean latitude sailing is an intermediate method developed with these limits in mind."
+  },
+  "Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu gösterir. Öğle mevkii, açık denizde hızlı ve güvenilir bir enlem kontrolü sağlar; ancak bulutlu havada ve Güneş’in meridyene net çıkmadığı koşullarda operasyonel olarak zayıflar.": {
+    "en": "This result shows that at local noon the ship is in latitude 8° 30.0′ North. The noon position gives a quick and reliable latitude check in the open sea; but it is operationally weak in cloudy weather and when the Sun is not clearly seen at the meridian."
+  },
+  "Bu yaklaşımda, seyir boyunca boylam dakikasının uzunluğu sabit kabul edilir; ancak bu sabit değer, ekvatora değil, seyir hattının ortalama enlemine bağlanır. Böylece düzlem seyirdeki temel hata kaynağı azaltılır.": {
+    "en": "In this approach the length of a minute of longitude is taken as constant over the passage; but this constant value is related to the mean latitude of the track rather than to the equator. This reduces the main source of error in plane sailing."
+  },
+  "Burada Δλ boylam farkı, Δψ izometrik enlem farkıdır. Mercator projeksiyonunda izometrik enlem:": {
+    "en": "Here Δλ is the difference of longitude and Δψ the difference of isometric latitude. On the Mercator projection the isometric latitude is:"
+  },
+  "Burada ψ, Mercator enlemi; φ ise küresel enlemdir. Bu dönüşüm, enlemlerin harita üzerindeki gerçek yerlerini temsil eder.": {
+    "en": "Here ψ is the Mercator latitude and φ the spherical latitude. This conversion represents the true positions of the parallels of latitude on the chart."
+  },
+  "Büyük açılı stabilitede, pozitif stabilite menzilini belirleyen kritik sınır çoğu zaman downflooding (su girişi) açısıdır. Bu nedenle GZ eğrisi yalnızca geometrik sıfır noktasıyla değil, geminin su almaya başladığı açıyla birlikte değerlendirilmelidir.": {
+    "en": "In large-angle stability, the critical limit that determines the range of positive stability is often the downflooding angle. The GZ curve should therefore be assessed not only with its geometric zero point but together with the angle at which the ship starts to take in water."
+  },
+  "Büyük daire ise küre üzerindeki en kısa yol olmasına rağmen Mercator haritasında eğri olarak görünür; yalnızca ekvator ve meridyenler düz çizgi hâlindedir.": {
+    "en": "Although the great circle is the shortest path on the sphere, it appears as a curve on a Mercator chart; only the equator and the meridians appear as straight lines."
+  },
+  "Büyük daire mesafesi düzlem trigonometrisiyle hesaplanamaz. Enlem ve boylam farkları yalnızca küresel trigonometrinin içinde anlam kazanır. Bu nedenle ilk adım, iki mevki arasındaki merkez açıyı doğru bulmaktır. Küresel kosinüs teoremi, merkez açıyı doğrudan verir:": {
+    "en": "Great circle distance cannot be calculated with plane trigonometry. Differences of latitude and longitude only have meaning within spherical trigonometry. The first step is therefore to find the central angle between the two positions correctly. The spherical cosine formula gives the central angle directly:"
+  },
+  "Büyük daire mesafesi, küre üzerindeki iki mevkii birleştiren en kısa yüzey yoludur. Bu mesafe, Dünya merkezinde görülen merkez açı ile tanımlanır. Merkez açı büyüdükçe büyük daire yayı doğrusal olarak uzar.": {
+    "en": "The great circle distance is the shortest surface path joining two positions on the sphere. It is defined by the central angle seen at the centre of the Earth. As the central angle increases, the great circle arc lengthens in direct proportion."
+  },
+  "Büyük daire seyrinde rota genellikle yüksek enlemlere doğru kavis yapar. Bu durum kış şartlarında, buz riski bulunan bölgelerde veya geminin operasyonel sınırlarının zorlandığı durumlarda pratik değildir. Composite rota, büyük daireye göre daha güvenli ve öngörülebilir bir alternatif üretir: büyük daireye girilir, sınırlayıcı enleme ulaşmadan önce rota terk edilir, sabit enlem boyunca ilerlenir ve uygun noktada tekrar büyük daireye bağlanılır.": {
+    "en": "In great circle sailing the route usually curves towards higher latitudes. This is not practical in winter conditions, in areas with an ice risk or where the ship's operational limits are stretched. A composite route gives a safer and more predictable alternative to the great circle: the ship joins the great circle, leaves it before reaching the limiting latitude, follows the parallel of that latitude, and rejoins a great circle at a suitable point."
+  },
+  "Büyük daire teorik olarak iki mevki arasındaki en kısa küresel yolu verir. Ancak uzun okyanus seyrinde bu rota çoğu zaman yüksek enlemlere taşar. Yüksek enlemler; sert hava sistemleri, buz riski, dalga boyu artışı ve sıcaklık kaynaklı operasyonel kısıtlar nedeniyle ticari açıdan dezavantajlıdır. Bu yüzden saf büyük daire rotası nadiren uygulanır.": {
+    "en": "In theory the great circle gives the shortest spherical path between two positions. On long ocean passages, however, this route often runs into high latitudes. High latitudes are commercially unattractive because of severe weather systems, ice risk, longer and higher seas and temperature-related operational limits. A pure great circle route is therefore rarely sailed."
+  },
+  "Büyük daire, küre üzerinde iki mevki arasındaki en kısa yüzey mesafesini verir; rhumb line (loxodrome) ise Mercator projeksiyonunda düz çizgi olarak görünen ve tüm rota boyunca sabit kurs ile ilerlenen hattır. Rhumb line yönetimi daha kolaydır; büyük daire ise çoğu durumda daha kısa mesafe sağlar. Pratik seyirde karar yalnızca mesafe değil; meteoroloji, trafik, emniyet ve operasyonel kısıtlarla birlikte verilir.": {
+    "en": "The great circle gives the shortest surface distance between two positions on the sphere; the rhumb line (loxodrome) is the track that appears as a straight line on the Mercator projection and is followed on a constant course throughout. A rhumb line is easier to manage; a great circle usually gives a shorter distance. In practice the decision is made not on distance alone but together with weather, traffic, safety and operational constraints."
+  },
+  "Büyük dairede kurs sürekli değişir; rhumb line’da kurs sabittir. Bu nedenle büyük daire “yakıt ve süre” avantajı, rhumb line ise “uygulama sadeliği” avantajı sunar. Modern ECDIS ve rota planlama sistemleri, büyük daireyi ara noktalara bölerek rhumb line segmentleri şeklinde uygular; böylece sahada hibrit bir yöntem ortaya çıkar.": {
+    "en": "On a great circle the course changes continuously; on a rhumb line the course is constant. The great circle therefore offers an advantage in fuel and time, the rhumb line one of simplicity. Modern ECDIS and route planning systems divide the great circle into waypoints and sail it as rhumb line legs, giving a hybrid method in practice."
+  },
+  "C, meridyene göre ölçülür": {
+    "en": "C is measured from the meridian"
+  },
+  "Clearing Line, klasik seyrüseferde fix sağlamaz, ancak geminin tehlikeden uzak kaldığını kesin olarak garanti eden en kritik emniyet araçlarından biridir.": {
+    "en": "In traditional navigation a clearing line does not give a fix, but it is one of the most important safety tools for guaranteeing that the ship stays clear of a danger."
+  },
+  "CMG doğrultusunda 10 NM çizilir": {
+    "en": "10 NM is laid off along the CMG"
+  },
+  "Composite rota, büyük daireye göre biraz daha uzun mesafe doğurur; ancak emniyet, rota takibi ve operasyonel öngörülebilirlik açısından ticari denizcilikte dengeli bir çözümdür. Özellikle Kuzey Atlantik ve Kuzey Pasifik geçişlerinde standart uygulama niteliğindedir.": {
+    "en": "A composite route is somewhat longer than the great circle, but in terms of safety, track keeping and operational predictability it is a balanced solution in commercial shipping. It is standard practice especially on North Atlantic and North Pacific crossings."
+  },
+  "cos Mean Lat, paralelin kısalmasını temsil eder": {
+    "en": "cos Mean Lat represents the shortening of the parallel"
+  },
+  "Course doğrultusunda D kadar ilerlenir": {
+    "en": "The distance D is laid off along the course"
+  },
+  "Course to Steer, klasik seyrüseferde akıntının fiilen telafi edildiği, geminin istenen rota üzerinde kalmasını sağlayan temel rota tayin yöntemidir.": {
+    "en": "In traditional navigation, the course to steer is the basic method of finding the course by which the current is actually allowed for, keeping the ship on the intended track."
+  },
+  "Cross Bearings ile Fix, klasik seyrüseferde hızlı, görsel ve güvenilir bir mevki tayini sağlar; doğru objeler ve eş zamanlı ölçümlerle uygulandığında en yüksek doğruluklu terrestrial fix yöntemlerinden biridir.": {
+    "en": "A fix by cross bearings gives a quick, visual and reliable position in traditional navigation; when used with suitable objects and simultaneous bearings it is one of the most accurate terrestrial fixing methods."
+  },
+  "Çünkü LOP, objeden gemiye doğru çizilir": {
+    "en": "Because the LOP is drawn from the object towards the ship"
+  },
+  "D.Lat ve D.Long hesaplanır": {
+    "en": "D.Lat and D.Long are calculated"
+  },
+  "Dead Reckoning ve Estimated Position, klasik seyrüseferde her an kullanılan, fix bulunamadığında dahi geminin kontrolsüz kalmasını önleyen temel mevki tayin yöntemleridir.": {
+    "en": "Dead reckoning and the estimated position are basic position-fixing methods used at all times in traditional navigation; they keep the ship from being without a position even when no fix can be obtained."
+  },
+  "Değerlendirme (5–15 dakika) aşamasında, stabilite kaybının nedeni belirlenmeye çalışılır. Üç temel neden olasıdır: flooding (su girişi), kargo kayması veya aşırı serbest yüzey etkisi. Nedenin tespiti, uygulanacak düzeltici eylemi belirler.": {
+    "en": "In the Assessment stage (5–15 minutes) the cause of the loss of stability is sought. There are three main possible causes: flooding, cargo shift or excessive free surface effect. Identifying the cause determines the corrective action to be taken."
+  },
+  "Departure değeri daima deniz mili cinsindendir ve işareti, geminin doğuya mı yoksa batıya mı hareket ettiğini gösterir. Bu yön bilgisi, kurs hesaplarında ve boylam değişimi ilişkilerinde doğrudan kullanılır.": {
+    "en": "Departure is always expressed in nautical miles, and its sign shows whether the ship is moving east or west. This directional information is used directly in course calculations and in the relationship with the change of longitude."
+  },
+  "Departure elde edilir": {
+    "en": "Departure is obtained"
+  },
+  "Departure kullanılarak D.Long hesaplanır": {
+    "en": "D.Long is calculated using the departure"
+  },
+  "Departure, geminin doğu–batı doğrultusunda kat ettiği gerçek mesafedir ve deniz mili cinsindendir. Boylam değişimi ise derece ve dakika cinsinden ifade edilir. Bu iki büyüklük doğrudan eşit değildir; aralarındaki dönüşüm, ilgili enlemin kosinüsü ile kurulur.": {
+    "en": "Departure is the actual distance the ship covers in the east–west direction and is expressed in nautical miles. The change of longitude, on the other hand, is expressed in degrees and minutes. The two quantities are not directly equal; the conversion between them is made with the cosine of the latitude concerned."
+  },
+  "Dik seyir üçgeninden Course ve Distance hesaplanır": {
+    "en": "Course and Distance are calculated from the right-angled sailing triangle"
+  },
+  "Distance Off by Horizontal Angle, klasik seyrüseferde tek ölçümle mesafe tayini sağlayan, özellikle görsel şartların iyi olduğu kıyı sularında etkili bir yöntemdir.": {
+    "en": "Distance off by horizontal angle gives a range from a single measurement in traditional navigation and is effective especially in coastal waters with good visibility."
+  },
+  "Distance Off by Vertical Angle, klasik seyrüseferde tek ölçümle güvenilir mesafe sağlayan, özellikle kıyı emniyetinde kritik öneme sahip bir yöntemdir.": {
+    "en": "Distance off by vertical angle gives a reliable range from a single measurement in traditional navigation and is especially important for coastal safety."
+  },
+  "Dünya yüzeyi, küçük alan için düzlemsel kabul edilir": {
+    "en": "The Earth's surface is treated as flat over a small area"
+  },
+  "Düşey açı küçüldükçe mesafe artar": {
+    "en": "The smaller the vertical angle, the greater the distance"
+  },
+  "En az iki sabit obje gerekir": {
+    "en": "At least two fixed objects are needed"
+  },
+  "En az iki sabit obje seçilir": {
+    "en": "At least two fixed objects are chosen"
+  },
+  "Enlem arttıkça meridyenler birbirine yaklaşır. Mean Latitude Sailing bu yakınlaşmayı ortalama enlem ile telafi etmeye çalışır.": {
+    "en": "As latitude increases the meridians converge. Mean latitude sailing tries to allow for this convergence by using the mean latitude."
+  },
+  "Enlemler aynı isimde alınır": {
+    "en": "The latitudes are taken with the same name"
+  },
+  "Enlemler aynı isimde olmalıdır": {
+    "en": "The latitudes must have the same name"
+  },
+  "Fix by Cross Bearings, klasik seyrüseferde hızlı, güvenilir ve temel bir mevki tayin yöntemidir ve diğer tüm fix tekniklerinin referans noktası olarak kabul edilir.": {
+    "en": "A fix by cross bearings is a quick, reliable and basic position-fixing method in traditional navigation and is regarded as the reference for all other fixing techniques."
+  },
+  "Full Load Arrival (Tam Yüklü Varış) durumu, aynı kargo miktarını taşıyan geminin seyir boyunca yakıt, tatlı su ve sarf malzemelerini tüketmesi sonrasında varış limanına ulaştığı senaryoyu temsil eder. Bu durumda yakıt tankları genellikle %10 rezerv seviyesine inmiştir. Yakıt tüketimi, geminin ağırlık merkezinin konumunu önemli ölçüde değiştirebilir; özellikle yakıt tanklarının konumuna bağlı olarak KG artabilir veya azalabilir. Bu nedenle arrival durumunun da bağımsız olarak stabilite kriterlerini sağlaması zorunludur.": {
+    "en": "The Full Load Arrival condition is the scenario in which the ship, carrying the same cargo, reaches the port of arrival after consuming fuel, fresh water and stores during the passage. In this condition the fuel tanks are usually down to the 10% reserve. Fuel consumption can change the position of the ship's centre of gravity considerably; depending on where the fuel tanks are, KG may rise or fall. The arrival condition must therefore meet the stability criteria in its own right."
+  },
+  "Full Load Departure (Tam Yüklü Kalkış) durumu, geminin maksimum kargo kapasitesinde, %100 yakıt ve tatlı su ile tüm sarf malzemeleri tam olarak yüklenmiş halde limandan ayrıldığı senaryodur. Bu durum, genellikle en yüksek deplasmana karşılık gelir ve VCG (düşey ağırlık merkezi) potansiyeli en yüksek olduğu için stabilite açısından kritik bir senaryo oluşturur. Full load departure durumunda draft ve trim değerleri, yükleme hattı (loadline) sınırlarını aşmamalı ve tüm IMO stabilite kriterleri sağlanmalıdır.": {
+    "en": "The Full Load Departure condition is the scenario in which the ship leaves port at maximum cargo capacity with 100% fuel and fresh water and all stores fully loaded. It usually corresponds to the highest displacement and, because the VCG (vertical centre of gravity) potential is highest, it is a critical scenario for stability. In the full load departure condition the draft and trim must not exceed the load line limits, and all IMO stability criteria must be met."
+  },
+  "Gemi 045°T’nin güvenli tarafında kaldığı sürece emniyettedir": {
+    "en": "The ship is safe as long as she stays on the safe side of 045°T"
+  },
+  "Gemi bu hattın güvenli tarafında kalır": {
+    "en": "The ship stays on the safe side of this line"
+  },
+  "Gemi, bu tabana karşı θ açısını görür": {
+    "en": "From the ship, this baseline subtends the angle θ"
+  },
+  "Gemi, pruvasını rüzgâra çevirse bile yanal kaçma oluşur": {
+    "en": "Leeway occurs even if the ship heads into the wind"
+  },
+  "Geminin Course ve Distance’ı hesaplanır": {
+    "en": "The ship's Course and Distance are calculated"
+  },
+  "Göksel kürede gözlemcinin bulunduğu nokta merkez, baş üstü noktası zenit, tam karşısı nadir olarak alınır. Gözlemciye teğet düzlemin küreyle kesişimi ufuk dairesini oluşturur. Dünya’nın dönme ekseninin küreyi kestiği noktalar gök kutupları, ekvator düzleminin küreyle kesişimi ise gök ekvatorudur.": {
+    "en": "On the celestial sphere the observer's position is taken as the centre, the point directly overhead as the zenith and the point opposite as the nadir. The intersection of the plane tangent at the observer with the sphere forms the horizon. The points where the Earth's axis of rotation meets the sphere are the celestial poles, and the intersection of the plane of the equator with the sphere is the celestial equator."
+  },
+  "Göz yüksekliği, objenin tabanı deniz seviyesindeyse düşülür": {
+    "en": "The height of eye is subtracted if the base of the object is at sea level"
+  },
+  "Greenwich meridyeni sabit referans kabul edilir. Gök cisimlerinin konumu Greenwich Saat Açısı (GHA) ile, gözlemcinin meridyenine göre konumu ise Yerel Saat Açısı (LHA) ile ifade edilir. İki meridyen arasındaki açısal fark boylamdır.": {
+    "en": "The Greenwich meridian is taken as the fixed reference. The position of a celestial body is expressed by its Greenwich Hour Angle (GHA), and its position relative to the observer's meridian by the Local Hour Angle (LHA). The angular difference between the two meridians is the longitude."
+  },
+  "Greenwich zamanı ile yerel zaman arasındaki fark, gök cisminin konumunu değiştirir. Bu fark, hem boylam tayininde hem de Hc ve azimut hesaplarının girişinde kullanılır. Böylece zaman farkı → açısal fark → konum değişimi zinciri açıkça kurulmuş olur.": {
+    "en": "The difference between Greenwich time and local time changes the position of the celestial body. This difference is used both in finding longitude and as an input to the Hc and azimuth calculations. In this way the chain time difference → angular difference → change of position is clearly established."
+  },
+  "Güneş gözlemi yapılırken sextant dik tutulur. İndeks kolu hareket ettirilerek Güneş’in alt kenarı ufka temas ettirilir. Gemi dalga nedeniyle yukarı–aşağı hareket ederken temas anları birkaç kez gözlenir ve ortalama bir temas noktası seçilir. Ölçüm tamamlandığında sextanttan Hs = 46° 12.4′ okunur ve aynı anda kronometreden gözlem zamanı kaydedilir. Bu değer henüz mevki tayini değildir; sextant kullanımı burada biter. Bundan sonra yapılan tüm işlemler bu ölçümün düzeltmeye ve yoruma tabi tutulmasıdır. Sextant doğru kullanılmadığında, hesaplar ne kadar düzgün yapılırsa yapılsın sonuç güvenilir olmaz.": {
+    "en": "When observing the Sun the sextant is held vertical. The index arm is moved until the Sun's lower limb touches the horizon. As the ship rises and falls in the swell, the moments of contact are watched several times and an average point of contact is chosen. When the measurement is complete, Hs = 46° 12.4′ is read from the sextant and the time of the observation is taken from the chronometer at the same moment. This value is not yet a position; the use of the sextant ends here. Everything done after this is the correction and interpretation of this measurement. If the sextant is not used correctly, the result will not be reliable however carefully the calculations are done."
+  },
+  "Güneş’in deklinasyonu (δ) ve zenit uzaklığı birlikte yorumlanır. Güneş gözlemcinin kuzeyinde veya güneyinde meridyenden geçer; bu durum işaret kuralını belirler ve enlem doğrudan elde edilir.": {
+    "en": "The Sun's declination (δ) and its zenith distance are interpreted together. The Sun crosses the meridian either north or south of the observer; this decides the sign rule, and the latitude is obtained directly."
+  },
+  "Güneş’in yükselip alçaldığı yay izlenir; yerel öğle, yüksekliğin en büyük olduğu andır. Bu an, saat bilgisine göre değil, yüksekliğin maksimuma ulaştığı nokta olarak belirlenir. Boylam bu aşamada gerekli değildir.": {
+    "en": "The arc along which the Sun rises and falls is watched; local noon is the moment of greatest altitude. This moment is found not from the clock but as the point at which the altitude reaches its maximum. Longitude is not needed at this stage."
+  },
+  "Günlük İzleme kapsamında, 12 veya 24 saatlik aralıklarla tüm tankların soundingleri alınır, yakıt raporları güncellenir, yükleme bilgisayarında stabilite hesabı yenilenir ve noon report verileri hazırlanır. Günlük stabilite güncellemesi, seyir boyunca geminin emniyet durumunun sürekli izlenmesini sağlar.": {
+    "en": "In daily monitoring, all tanks are sounded at 12- or 24-hour intervals, the fuel reports are updated, the stability calculation is renewed on the loading computer and the noon report data are prepared. A daily stability update allows the ship's safety condition to be monitored continuously throughout the passage."
+  },
+  "GZ eğrisi, geminin pozitif stabilite menzili ve stabilite rezervi hakkında net bilgi sağlar. Bu iki kavram, özellikle büyük açılarda geminin devrilmeye karşı kalan güvenlik payını ifade eder.": {
+    "en": "The GZ curve gives clear information about the ship's range of positive stability and its stability reserve. These two concepts express the safety margin the ship has left against capsizing, especially at large angles."
+  },
+  "Harita düzeltmeleri, basılı bir deniz haritasının yayımlandığı tarihten sonra deniz ortamında meydana gelen değişikliklerin, harita üzerine manuel olarak işlenmesi işlemidir. Bir deniz haritası basıldığı anda eskimeye başlar; çünkü denizcilik altyapısı sabit değildir. Şamandıralar yer değiştirir, fenerlerin ışık karakterleri güncellenir, yeni batıklar tespit edilir, derinlikler yeniden ölçülür ve bazı alanlar hukuki olarak kısıtlanır veya serbest bırakılır. Harita bu değişiklikleri kendi kendine yansıtmaz. Bu nedenle düzeltmesi yapılmamış bir harita, üzerinde doğru rota ve hesap yapılsa bile seyir açısından geçerli kabul edilmez.": {
+    "en": "Chart correction is the manual entry on a printed chart of changes in the marine environment that have occurred since the chart was published. A chart starts to become out of date the moment it is printed, because the maritime infrastructure is not fixed. Buoys are moved, the characters of lights are changed, new wrecks are found, depths are resurveyed and some areas are legally restricted or released. The chart does not reflect these changes by itself. An uncorrected chart is therefore not valid for navigation even if correct courses and calculations are laid off on it."
+  },
+  "Harita düzeltmeleri, resmî olarak yayımlanan Notice to Mariners bültenleri aracılığıyla yapılır. Bu bültenler, hangi haritanın etkilendiğini, değişikliğin türünü, coğrafi mevkiini ve harita üzerinde nasıl gösterileceğini açık şekilde belirtir. Her düzeltme numaralandırılmıştır ve tarih taşır. Bir haritanın geçerli sayılabilmesi için, yayımlanan en son Notice to Mariners’a kadar olan tüm düzeltmelerinin harita üzerine işlenmiş olması gerekir.": {
+    "en": "Charts are corrected using the officially published Notices to Mariners. These notices state clearly which chart is affected, the type of change, its geographical position and how it is to be shown on the chart. Every correction is numbered and dated. For a chart to be valid, all corrections up to the latest published Notice to Mariners must have been entered on it."
+  },
+  "Harita ölçeği, deniz haritasının neyi ayrıntılı, neyi bilinçli olarak eksik gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.": {
+    "en": "Chart scale is the basic structure that determines what a chart shows in detail and what it deliberately leaves out. In navigation, scale is not only a mathematical ratio; it is a practical filter that decides which information is sufficient for making decisions, which is deliberately left out, and which chart is to be used at which stage. The same route looks different on charts of different scales, because a chart reinterprets reality according to its scale. Scale therefore answers the question “which decision is this chart right for?” before the question “how accurate is this chart?”."
+  },
+  "Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Mariner's Book içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; hangi safhada hangi harita ile karar verileceğini öğreten bir refleks olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.": {
+    "en": "Chart scale alone does not make navigation safe, but choosing the wrong scale makes even correct calculations dangerous. If Mariner's Book dealt with this subject only by defining “large and small scale”, the user might try to manage a port approach with a coastal chart, or assume that a danger not shown on a small-scale chart does not exist. Scale should therefore be presented not as a definition but as a reflex that teaches which chart to make decisions with at which stage. Once this reflex is in place, the chart becomes an active navigation tool rather than a passive drawing."
+  },
+  "Harita ölçeğinin en kritik etkisi, genelleştirme üzerindedir. Küçük ölçekli haritalar, geniş bir alanı gösterebilmek için ayrıntıyı bilinçli olarak sadeleştirir. Küçük kayalıklar, sığlık uzantıları, dar kanal sınırları veya ikincil seyir yardımcıları bu haritalarda hiç gösterilmeyebilir ya da sembolik olarak küçültülür. Bu durum haritanın eksikliği değil, ölçeğin doğrudan sonucudur. Büyük ölçekli haritalarda ise aynı alan çok daha dar bir çerçevede gösterildiği için izobatlar sıklaşır, derinlik değerleri artar, şamandıra dizileri ve yasak saha sınırları netleşir.": {
+    "en": "The most critical effect of chart scale is on generalisation. Small-scale charts deliberately simplify detail so that they can show a large area. Small rocks, extensions of shoals, the limits of narrow channels or secondary aids to navigation may not be shown at all on these charts, or may be shown reduced to a symbol. This is not a deficiency of the chart but a direct result of its scale. On large-scale charts the same area is shown in a much smaller frame, so the depth contours are closer together, there are more soundings, and lines of buoys and the limits of prohibited areas become clear."
+  },
+  "Haritada kullanılacak kerteriz True (T) olmalıdır": {
+    "en": "The bearing used on the chart must be True (T)"
+  },
+  "Hat aşılmaz, sadece taraf kontrolü yapılır": {
+    "en": "The line is not crossed; only the side of it the ship is on is checked"
+  },
+  "Her kerteriz bir LOP (Line of Position) üretir": {
+    "en": "Each bearing gives an LOP (Line of Position)"
+  },
+  "Her kerteriz için geri kerteriz hesaplanır": {
+    "en": "The reciprocal bearing is worked out for each bearing"
+  },
+  "Hesaplama Adımları şu sırayla gerçekleştirilir:": {
+    "en": "The calculation steps are carried out in the following order:"
+  },
+  "Ho ile Hc farkı doğrusal mesafeye dönüştürülür. Dakika cinsinden bulunan fark, doğrudan deniz mili olarak yorumlanır. Bu aşamada yön bilgisi yoktur; yalnızca “ne kadar” sapma olduğu belirlenir.": {
+    "en": "The difference between Ho and Hc is converted into a linear distance. The difference found in minutes is read directly as nautical miles. At this stage there is no directional information; only “how much” the offset is has been determined."
+  },
+  "Ho, Hc’den büyükse gözlemci varsayılan mevkiden gök cismine daha yakındır ve taşıma gök cismine doğru yapılır. Ho, Hc’den küçükse gözlemci gök cisminden daha uzaktadır ve taşıma gök cisminden uzağa yapılır.": {
+    "en": "If Ho is greater than Hc, the observer is closer to the celestial body than the assumed position is, and the intercept is laid off towards the body. If Ho is less than Hc, the observer is farther from the body and the intercept is laid off away from it."
+  },
+  "Horizontal Angle Fix, klasik seyrüseferde açı geometrisine dayalı, doğru uygulandığında çok hassas sonuç veren bir mevki tayin yöntemidir ve özellikle sekstant kullanımının aktif olduğu terrestrial seyirlerde önemli bir yer tutar.": {
+    "en": "The horizontal angle fix is a position-fixing method based on angle geometry that gives very precise results when applied correctly, and it plays an important role in terrestrial navigation where the sextant is in active use."
+  },
+  "Inverse Problem of Mean Latitude Sailing, bilinen iki mevkii arasında rota ve mesafe tayini sağlayarak, orta enlem seyrinin planlama aşamasındaki temel hesap yöntemlerinden biri olarak kullanılır.": {
+    "en": "The inverse problem of mean latitude sailing gives the course and distance between two known positions and is one of the basic calculation methods of mean latitude sailing in the planning stage."
+  },
+  "İki kerteriz arası Advance hesaplanır": {
+    "en": "The advance between the two bearings is calculated"
+  },
+  "İkinci kerteriz için BB₂ çizilir → LOP₂": {
+    "en": "BB₂ is drawn for the second bearing → LOP₂"
+  },
+  "İlk gök cismi gözleminden elde edilen LOP, harita düzleminde bir doğru olarak çizilir. Bu çizgi, geminin gözlem anında bu doğru üzerinde bir yerde olduğunu ifade eder. Ancak tek bir LOP, tek başına kesin mevki vermez.": {
+    "en": "The LOP obtained from the first celestial observation is drawn as a straight line on the chart. This line means that at the time of the observation the ship was somewhere on it. A single LOP, however, does not give a position by itself."
+  },
+  "İlk kerteriz için BB₁ çizilir → LOP₁": {
+    "en": "BB₁ is drawn for the first bearing → LOP₁"
+  },
+  "İlk LOP, geminin seyri ve mesafesi kadar ileri taşınır": {
+    "en": "The first LOP is transferred by the ship's course and distance run"
+  },
+  "İstenen CMG ve gemi sürati bilinir": {
+    "en": "The required CMG and the ship's speed are known"
+  },
+  "Kaldırma kuvvetinin büyüklüğü, geminin şekline ya da malzemesine değil, yalnızca yer değiştirdiği su hacmine ve suyun yoğunluğuna bağlıdır. Bu ilişki Arşimet prensibi ile ifade edilir ve gemi stabilitesinin matematiksel temelini oluşturur. İlke şu şekilde tanımlanır:": {
+    "en": "The magnitude of the buoyant force does not depend on the shape or material of the ship but only on the volume of water displaced and the density of the water. This relationship is expressed by Archimedes' principle and forms the mathematical basis of ship stability. The principle is defined as follows:"
+  },
+  "Kaldırma kuvvetinin etkidiği nokta, kaldırma merkezi olarak adlandırılır. Bu nokta, su altında kalan hacmin geometrik merkezidir ve kaldırma kuvveti her zaman bu noktadan, düşey doğrultuda yukarı doğru etki eder. Geminin yatma veya trim yapma durumunda, su altı hacminin şekli değiştiğinden kaldırma merkezinin yeri de değişir. Bu hareket, gemi stabilitesinin temel mekanizmasını oluşturur.": {
+    "en": "The point at which the buoyant force acts is called the centre of buoyancy. It is the geometric centre of the underwater volume, and the buoyant force always acts vertically upwards through it. When the ship heels or trims, the shape of the underwater volume changes, so the position of the centre of buoyancy changes too. This movement is the basic mechanism of ship stability."
+  },
+  "Kalıcı düzeltmeler, uzun süreli veya kalıcı değişiklikleri kapsar. Yeni bir şamandıranın eklenmesi, bir fenerin yerinin veya ışık karakterinin değiştirilmesi, yeni bir batığın haritaya eklenmesi bu gruba girer. Bu düzeltmeler harita üzerine kalıcı olarak işlenir ve silinmez.": {
+    "en": "Permanent corrections cover long-term or permanent changes. Adding a new buoy, changing the position or character of a light, or adding a new wreck to the chart belong to this group. These corrections are entered permanently on the chart and are not erased."
+  },
+  "Kalite Kontrol Prosedürü olarak, hesaplanan sonuçların mantıksal değerlendirmesi yapılmalıdır. Örneğin, 500 ton yük alındığında draftta yalnızca birkaç santimetrelik değişim hesaplanıyorsa, bu durum TPC değeriyle uyumlu mudur? GM değeri beklenenden çok farklıysa, bunun nedeni nedir? Bu tür basit mantıksal kontroller, büyük hataların tespit edilmesinde son derece etkilidir.": {
+    "en": "As a quality control procedure, the calculated results must be checked for logic. For example, if loading 500 tonnes gives a change in draft of only a few centimetres, is this consistent with the TPC? If GM is very different from what was expected, what is the reason? Simple logical checks like these are very effective in catching large errors."
+  },
+  "Kargo Planlama fonksiyonu, konteyner gemilerinde bay plan optimizasyonunu, genel kargo gemilerinde ambar yükleme planını ve tüm gemi tiplerinde ağırlık dağılımı analizini kapsar.": {
+    "en": "The cargo planning function covers bay plan optimisation on container ships, the hold loading plan on general cargo ships and weight distribution analysis on all ship types."
+  },
+  "Kerteriz gemiden objeye alınır; haritada LOP çizmek için geri kerteriz kullanılır.": {
+    "en": "The bearing is taken from the ship to the object; the reciprocal bearing is used to draw the LOP on the chart."
+  },
+  "Kerteriz, gemiden objeye doğru ölçülür. Haritada LOP çizmek için:": {
+    "en": "The bearing is measured from the ship towards the object. To draw the LOP on the chart:"
+  },
+  "Kerterizler aynı anda alınmalıdır": {
+    "en": "The bearings must be taken at the same time"
+  },
+  "Kerterizler farklı zamanlarda ölçülür": {
+    "en": "The bearings are measured at different times"
+  },
+  "Kritik Olaylarda Acil Değerlendirme gerekir. Hava durumunun bozulması (rüzgâr kuvveti artışı, dalga yüksekliği artışı), kargo kayması şüphesi (ani heel değişimi, asimetrik rolling), tank sızıntısı (beklenmeyen seviye değişimi, trim anomalisi) veya herhangi bir anormal davranış, derhal stabilite değerlendirmesini tetiklemelidir.": {
+    "en": "Critical events call for an immediate assessment. Deteriorating weather (increasing wind force or wave height), a suspected cargo shift (a sudden change of heel, asymmetric rolling), tank leakage (an unexpected change of level, a trim anomaly) or any abnormal behaviour must trigger an immediate stability assessment."
+  },
+  "Kuru Dökme Kargolar arasında tahıl (buğday, mısır, arpa, pirinç), maden cevherleri (demir cevheri, bakır konsantresi, boksit), kömür, çimento, şeker ve tuz gibi maddeler yer alır. Bu kargoların ortak özelliği, geminin yatma hareketine bağlı olarak kayma (shifting) potansiyeline sahip olmalarıdır. Bir dökme kargonun kayma açısı, malzemenin tanecik büyüklüğüne, nem içeriğine, yoğunluğuna ve istifleme yöntemine bağlıdır.": {
+    "en": "Dry bulk cargoes include grain (wheat, maize, barley, rice), ores (iron ore, copper concentrate, bauxite), coal, cement, sugar and salt. What these cargoes have in common is that they can shift as the ship rolls. The angle at which a bulk cargo shifts depends on its particle size, moisture content, density and stowage method."
+  },
+  "Küçük bir üçgen oluşursa → ortalama merkez Fix alınır": {
+    "en": "If a small triangle (cocked hat) is formed → its centre is taken as the fix"
+  },
+  "Küresel geometri yerine düzlem geometri kullanılır": {
+    "en": "Plane geometry is used instead of spherical geometry"
+  },
+  "Küresel üçgen, kenarları büyük daire yaylarından oluşan ve köşeleri küre yüzeyinde bulunan geometrik yapıdır. Denizcilikte kullanılan temel küresel üçgen, Kuzey Kutbu – başlangıç mevkii – varış mevkii köşeleriyle kurulur. Bu üçgende kenarlar enlemlerin tamamlayıcıları ve boylam farkı ile ifade edilir; açılar ise büyük daire başlangıç kursu ve bitiş kursu gibi seyirle doğrudan ilişkili büyüklüklerdir.": {
+    "en": "A spherical triangle is a figure whose sides are arcs of great circles and whose corners lie on the surface of the sphere. The basic spherical triangle used in navigation is formed by the North Pole, the departure position and the arrival position. In this triangle the sides are expressed by the co-latitudes and the difference of longitude; the angles are quantities directly related to navigation, such as the initial and final great circle courses."
+  },
+  "LCG ≈ LCB olmalıdır.": {
+    "en": "LCG should be ≈ LCB."
+  },
+  "LCG LCB’nin gerisinde ise: Gemi kıça trim yapar.": {
+    "en": "If the LCG is abaft the LCB: the ship trims by the stern."
+  },
+  "LCG LCB’nin önünde ise: Gemi başa trim yapar.": {
+    "en": "If the LCG is forward of the LCB: the ship trims by the head."
+  },
+  "Leeway ve akıntı ayrı ayrı değerlendirilir.": {
+    "en": "Leeway and current are assessed separately."
+  },
+  "Leeway, klasik seyrüseferde küçük açı gibi görünmesine rağmen, uzun seyirlerde büyük mevki hatalarına yol açabileceğinden, rota ve mevki hesaplarında mutlaka dikkate alınmalıdır.": {
+    "en": "Although leeway may look like a small angle, it can lead to large position errors on long passages and must always be allowed for in course and position work."
+  },
+  "LOP, objeden gemiye doğru çizilir": {
+    "en": "The LOP is drawn from the object towards the ship"
+  },
+  "LOP’lar keskin açıyla kesişmelidir": {
+    "en": "The LOPs must cross at a well-defined angle, not a shallow one"
+  },
+  "LOP’lar mümkün olduğunca dik kesişmelidir": {
+    "en": "The LOPs should cross as nearly at right angles as possible"
+  },
+  "LOP₁, 090°T yönünde 6 NM taşınır": {
+    "en": "LOP₁ is transferred 6 NM in the direction 090°T"
+  },
+  "LOP₁, Course doğrultusunda A kadar taşınır → Transferred LOP₁": {
+    "en": "LOP₁ is transferred by A along the course → Transferred LOP₁"
+  },
+  "Maden cevherleri taşımacılığında en ciddi risk sıvılaşma (liquefaction) fenomenidir. Nem içeriği belirli bir eşiğin üzerinde olan granüler kargolar, geminin titreşimi ve salınımı etkisiyle sıvı gibi davranmaya başlayabilir. Bu durum aniden gerçekleşir ve kargoyu bir anda sıvı yük gibi akışkan hale getirir; serbest yüzey etkisi dramatik biçimde ortaya çıkar ve gemi dakikalar içinde devrilebilir. Bu nedenle IMO, Transportable Moisture Limit (TML) kavramını getirmiştir: kargonun nem içeriği, TML değerini aşmamalıdır.": {
+    "en": "The most serious risk in carrying ores is liquefaction. Granular cargoes whose moisture content is above a certain threshold can start to behave like a liquid under the ship's vibration and motion. This happens suddenly and turns the cargo into a flowing mass like a liquid cargo; a dramatic free surface effect appears and the ship can capsize within minutes. This is why the IMO introduced the Transportable Moisture Limit (TML): the moisture content of the cargo must not exceed the TML."
+  },
+  "Mean Latitude Sailing, basitliği ve hızı nedeniyle klasik seyrüseferde önemli bir yere sahiptir; ancak enlem ve mesafe sınırları bilinmeden kullanıldığında, ciddi mevki hatalarına yol açabilir.": {
+    "en": "Mean latitude sailing is widely used in traditional navigation because it is simple and quick; but if it is used without knowing its latitude and distance limits, it can lead to serious position errors."
+  },
+  "Mean Latitude Sailing, basitliği ve hızı sayesinde klasik seyrüseferin temel taşlarından biridir; ancak geçerlilik sınırları bilinmeden kullanılması, özellikle yüksek enlem ve uzun mesafelerde, ciddi rota hatalarına yol açabilir.": {
+    "en": "Thanks to its simplicity and speed, mean latitude sailing is one of the cornerstones of traditional navigation; but using it without knowing its limits of validity can lead to serious course errors, especially in high latitudes and over long distances."
+  },
+  "Mean Latitude Sailing, kısa ve orta mesafeler için uygundur.": {
+    "en": "Mean latitude sailing is suitable for short and medium distances."
+  },
+  "Mean Latitude Sailing’de boylam farkı, paralel üzerindeki gerçek mesafeye dönüştürülür.": {
+    "en": "In mean latitude sailing the difference of longitude is converted into the actual distance along the parallel."
+  },
+  "Mean Latitude Sailing’in doğrudan problemi, rota ve mesafeden yeni mevki üretme açısından klasik seyrüseferin temel hesaplarından biridir ve özellikle orta enlem seyirlerinde pratik ve hızlı bir çözüm sunar.": {
+    "en": "The direct problem of mean latitude sailing, finding a new position from course and distance, is one of the basic calculations of traditional navigation and gives a practical and quick solution, especially on passages in middle latitudes."
+  },
+  "Mercator projeksiyon, deniz haritalarında kullanılan ve seyir hesaplarının temelini oluşturan matematiksel harita projeksiyonudur. Bu projeksiyonun denizcilikte tercih edilmesinin nedeni estetik ya da coğrafi doğruluk değil, seyirsel doğruluktur. Mercator projeksiyon, yön ve doğrultu ilişkilerini korur; bu sayede denizcilikte kullanılan rota, kerteriz, mesafe ve mevki işlemleri harita üzerinde doğrudan ve tutarlı biçimde yapılabilir.": {
+    "en": "The Mercator projection is the mathematical projection used for nautical charts and forms the basis of navigational calculations. It is preferred at sea not for aesthetics or geographical accuracy but for navigational accuracy. The Mercator projection preserves direction and bearing relationships, so the course, bearing, distance and position work done at sea can be carried out directly and consistently on the chart."
+  },
+  "Mercator projeksiyonda mesafe ölçümü, yalnızca enlem skalası üzerinden yapılır. Bunun matematiksel temeli, projeksiyonun enlem doğrultusunda ölçeği bilinçli olarak genişletmesidir. Bu genişleme, enlem skalasını mesafe için güvenilir referans hâline getirir.": {
+    "en": "On the Mercator projection distance is measured only on the latitude scale. The mathematical reason is that the projection deliberately stretches the scale in the direction of latitude. This stretching makes the latitude scale a reliable reference for distance."
+  },
+  "Mercator projeksiyonda sabit bir hakiki rota ile seyreden bir geminin izi, harita üzerinde düz bir çizgi olarak temsil edilir. Bu çizgiye loxodrome denir. Seyirde rota çizimi, rota ölçümü ve rota takibi bu nedenle Mercator haritalarda doğrudan yapılabilir.": {
+    "en": "On the Mercator projection the track of a ship steering a constant true course is shown as a straight line on the chart. This line is called a loxodrome. This is why courses can be drawn, measured and followed directly on Mercator charts."
+  },
+  "Mercator projeksiyonun en ayırt edici özelliği, meridyenlerin paralel ve eşit aralıklı, paralellerin ise enleme gidildikçe açılarak çizilmesidir. Ekvatora yakın bölgelerde paraleller birbirine yakındır; kutuplara yaklaştıkça paraleller arasındaki mesafe artar. Bu bilinçli bir bozulmadır ve projeksiyonun matematiksel sonucudur.": {
+    "en": "The most distinctive feature of the Mercator projection is that the meridians are drawn parallel and equally spaced, while the parallels of latitude are drawn further apart as latitude increases. Near the equator the parallels are close together; towards the poles the distance between them increases. This is a deliberate distortion and the mathematical result of the projection."
+  },
+  "Mercator projeksiyonunda enlemler arası açılma izometrik enlem ile ifade edilir. Rhumb line hesaplarının temel büyüklüğü bu dönüşümdür:": {
+    "en": "On the Mercator projection the spreading of the parallels of latitude is expressed by the isometric latitude. This conversion is the basic quantity of rhumb line calculations:"
+  },
+  "Mercator projeksiyonunun bu avantajı, alan ve mesafe bozulmalarının enlemle hızla büyümesi karşılığında elde edilir. Bu nedenle Mercator haritada ölçülen mesafeler doğrudan gerçek mesafeyi vermez; yalnızca enlem skalası üzerinden okunmalıdır.": {
+    "en": "This advantage of the Mercator projection is gained at the cost of distortions of area and distance that grow rapidly with latitude. Distances measured on a Mercator chart therefore do not give the true distance directly; they must be read only from the latitude scale."
+  },
+  "Merkez açı d derece cinsinden bulunduğunda, deniz mili karşılığı doğrudan hesaplanabilir:": {
+    "en": "Once the central angle d has been found in degrees, its value in nautical miles can be calculated directly:"
+  },
+  "Mesafe, D.Lat ve Departure bileşenlerine ayrılır": {
+    "en": "The distance is resolved into D.Lat and Departure components"
+  },
+  "Nötr denge ise geminin küçük bir yatma sonrası yeni konumunda kalma eğilimi gösterdiği özel bir durumdur. Bu hâlde ne doğrultma ne de devirmeye çalışan bir moment oluşur. Gemi hangi açıda bırakılırsa o açıda kalır. Teorik olarak mümkündür; ancak pratik gemi işletmeciliğinde istenmeyen ve nadir rastlanan bir durumdur.": {
+    "en": "Neutral equilibrium is the special case in which the ship, after a small inclination, tends to stay in her new position. In this state there is neither a righting nor a capsizing moment. The ship stays at whatever angle she is left. It is possible in theory, but in practical ship operation it is undesirable and rarely met."
+  },
+  "Obje merkezli yarıçap = D daire yayı": {
+    "en": "Arc of a circle centred on the object with radius = D"
+  },
+  "Obje’den 225°T doğrultusunda LOP₁ çizilir": {
+    "en": "LOP₁ is drawn from the object in the direction 225°T"
+  },
+  "Obje’den 270°T doğrultusunda LOP₂ çizilir": {
+    "en": "LOP₂ is drawn from the object in the direction 270°T"
+  },
+  "Objeler arası yatay açı ölçülür": {
+    "en": "The horizontal angle between the objects is measured"
+  },
+  "Objeler arasındaki yatay açı (Horizontal Angle) ölçülür": {
+    "en": "The horizontal angle between the objects is measured"
+  },
+  "Objeler aynı doğrultuda hizalandığında transit oluşur": {
+    "en": "A transit is formed when the objects are in line"
+  },
+  "Objelere olan mesafe, üçgen geometrisi ile hesaplanır": {
+    "en": "The distances to the objects are calculated by triangle geometry"
+  },
+  "Objelerin eş zamanlı kerterizleri alınır": {
+    "en": "Simultaneous bearings of the objects are taken"
+  },
+  "Onay ve Belgeleme aşamasında, kaptan stabilite hesaplarını inceleyerek onaylar. Stabilite hesap kağıdı imzalanır ve dosyalanır. Yükleme planı kayıt altına alınır. Bu belgeler, PSC denetimleri ve olası kaza soruşturmaları için yasal geçerliliğe sahiptir.": {
+    "en": "In the Approval and Documentation stage, the master reviews and approves the stability calculations. The stability calculation sheet is signed and filed. The loading plan is recorded. These documents are legally valid for PSC inspections and any casualty investigation."
+  },
+  "Operasyonel Değerlendirme aşamasında, beklenen hava koşulları, yolculuk süresi ve rotadaki özel durumlar (dar su geçişi, sığ su) dikkate alınır. Ağır hava bekleniyorsa, GM marjının artırılması ve serbest yüzey etkisinin minimize edilmesi değerlendirilir.": {
+    "en": "In the Operational Assessment stage, the expected weather, the length of the voyage and particular conditions on the route (narrow waters, shallow water) are taken into account. If heavy weather is expected, increasing the GM margin and minimising the free surface effect are considered."
+  },
+  "Orta enlem seyri, düzlem seyirin geometrisini tamamen terk etmez; yalnızca boylam bileşenini ortalama enlem üzerinden düzeltir. Böylece kısa ve orta mesafelerde, karmaşık projeksiyonlara ihtiyaç duymadan daha doğru sonuç elde edilir.": {
+    "en": "Mean latitude sailing does not abandon the geometry of plane sailing completely; it only corrects the longitude component using the mean latitude. This gives a more accurate result over short and medium distances without the need for complex projections."
+  },
+  "Orta enlem seyrinde, seyir boyunca değişen enlem değeri tek bir temsilî değerle ifade edilir. Bu değer, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Boylam değişimi hesaplanırken, boylam dakikasının uzunluğu bu ortalama enleme göre değerlendirilir.": {
+    "en": "In mean latitude sailing the latitude, which changes during the passage, is represented by a single value. This value is the arithmetic mean of the departure and arrival latitudes. When the change of longitude is calculated, the length of a minute of longitude is taken for this mean latitude."
+  },
+  "Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalaması olarak tanımlanır. Bu enlem, seyir boyunca geminin bulunduğu enlemi tek bir değerle temsil eder. Orta enlem seyri yaklaşımında, doğu–batı yönlü mesafeler bu enlemdeki boylam dakikasının uzunluğuna göre değerlendirilir.": {
+    "en": "The mean latitude is defined as the arithmetic mean of the departure and arrival latitudes. It represents the latitude of the ship over the passage with a single value. In the mean latitude sailing approach, east–west distances are assessed according to the length of a minute of longitude in this latitude."
+  },
+  "Ölçülen açı, gemi mevkiinden görülür": {
+    "en": "The measured angle is seen from the ship's position"
+  },
+  "Önce merkez açı d hesaplanır:": {
+    "en": "First the central angle d is calculated:"
+  },
+  "Paraleller arası mesafe sabit varsayılır": {
+    "en": "The distance between the parallels is assumed to be constant"
+  },
+  "Periyodik Gereksinimler kapsamında, yükleme bilgisayarının yıllık doğrulaması yapılır, 5 yıllık dönemlerde yeniden onay alınır ve herhangi bir gemi modifikasyonu sonrasında (ambar değişikliği, üst yapı eklenmesi, tank modifikasyonu vb.) yazılım güncellemesi ve yeniden onay zorunludur.": {
+    "en": "As periodic requirements, the loading computer is verified annually, re-approved at 5-year intervals, and after any modification of the ship (change to a hold, added superstructure, tank modification etc.) a software update and re-approval are mandatory."
+  },
+  "Raporlama kapsamında, şirket DPA (Designated Person Ashore) bilgilendirilir, klas kuruluşu ve bayrak devletine bildirim yapılır ve gerektiğinde SAR (Search and Rescue) koordinasyonu başlatılır. Tüm eylemler, zamanları ve sonuçlarıyla birlikte kayıt altına alınır.": {
+    "en": "For reporting, the company DPA (Designated Person Ashore) is informed, the classification society and the flag State are notified and, if necessary, SAR (Search and Rescue) coordination is started. All actions are recorded with their times and results."
+  },
+  "Rhumb line (loxodrom), küre üzerindeki tüm meridyenleri sabit bir açıyla kesen ve seyir boyunca sabit kurs veren bir eğridir. Mercator projeksiyonunda düz bir doğru olarak görünmesi, pratik seyirde büyük kolaylık sağlar.": {
+    "en": "A rhumb line (loxodrome) is a curve that cuts all meridians on the sphere at a constant angle and gives a constant course throughout the passage. Its appearance as a straight line on the Mercator projection makes practical navigation much easier."
+  },
+  "Rhumb line, küre üzerinde meridyenleri sabit açıyla kesen bir eğridir. Mercator projeksiyonu açısal doğruluğu koruduğu için bu eğri harita üzerinde tam olarak düz bir doğru gibi görünür. Bu sayede denizci, sabit kursla seyir yapan geminin rotasını harita üzerinde cetvelle tek hamlede çizebilir.": {
+    "en": "A rhumb line is a curve that cuts the meridians on the sphere at a constant angle. Because the Mercator projection preserves angles, this curve appears on the chart exactly as a straight line. This lets the navigator draw the track of a ship steering a constant course on the chart with a ruler in one stroke."
+  },
+  "Rota ve mesafe, bir dik seyir üçgeni oluşturur": {
+    "en": "The course and distance form a right-angled sailing triangle"
+  },
+  "Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değişimi varsa ya da DR disiplini zayıfsa sonuç güvenilir kabul edilmez. Bu nedenle yöntem, mümkün olduğunda eşzamanlı LOP’larla elde edilen fix’lerin yerine değil, tamamlayıcı olarak kullanılmalıdır.": {
+    "en": "A running fix is practical and useful in the open sea; but if there is a change of course or speed, or if DR discipline is weak, the result is not considered reliable. The method should therefore be used, where possible, to supplement fixes from simultaneous LOPs, not to replace them."
+  },
+  "Running fix, göksel seyirde aynı anda elde edilemeyen mevki hatlarının (LOP) geminin hareketi dikkate alınarak aynı zamana taşınması esasına dayanır. Farklı zamanlarda yapılan gözlemler tek zaman düzleminde birleştirilerek fix elde edilir. Gök cismi sayısının sınırlı olduğu veya hava koşulları nedeniyle eşzamanlı gözlemin mümkün olmadığı durumlarda pratik bir çözümdür.": {
+    "en": "In celestial navigation a running fix is based on bringing position lines (LOPs) that cannot be obtained at the same time to a common time, allowing for the ship's movement. Observations made at different times are combined at a single time to obtain a fix. It is a practical solution when few celestial bodies are available or when the weather does not allow simultaneous observations."
+  },
+  "Running Fix, klasik seyrüseferde tek obje ile mevki tayinine imkân veren, zaman ve hareketin doğru uygulanmasıyla yüksek doğruluk sağlayan temel terrestrial fix yöntemlerinden biridir.": {
+    "en": "The running fix is one of the basic terrestrial fixing methods in traditional navigation; it allows a position to be found from a single object and gives high accuracy when time and the ship's movement are applied correctly."
+  },
+  "Running Fix, klasik seyrüseferde zaman ve hareketi denkleme katan, doğru uygulandığında yüksek güvenilirlik sağlayan temel mevki tayin yöntemlerinden biridir.": {
+    "en": "The running fix is one of the basic position-fixing methods in traditional navigation; it brings time and movement into the solution and is highly reliable when applied correctly."
+  },
+  "Rüzgâr iskele tarafından geldiği için gemi sancağa sürüklenir.": {
+    "en": "Because the wind is coming from the port side, the ship drifts to starboard."
+  },
+  "Rüzgâr iskele tarafından geliyorsa → gemi sancağa sürüklenir": {
+    "en": "If the wind comes from the port side → the ship drifts to starboard"
+  },
+  "Rüzgâr sancak tarafından geliyorsa → gemi iskeleye sürüklenir": {
+    "en": "If the wind comes from the starboard side → the ship drifts to port"
+  },
+  "Rüzgâr, gemiyi yanal olarak sürükler": {
+    "en": "The wind pushes the ship sideways"
+  },
+  "Saat 08:20’de elde edilen LOP, geminin seyir doğrultusunda 6 deniz mili paralel ötelenir. Saat 08:50’de elde edilen ikinci LOP ile kesişim noktası, geminin 08:50’deki running fix mevkiidir.": {
+    "en": "The LOP obtained at 08:20 is transferred parallel to itself 6 nautical miles in the direction of the ship's track. Its intersection with the second LOP, obtained at 08:50, is the ship's running fix at 08:50."
+  },
+  "Serbest yüzey etkisinin en kritik sonucu, geminin efektif GM değerini düşürmesidir. Bu düşüş, geminin sanki ağırlık merkezi yükselmiş gibi davranmasına yol açar.": {
+    "en": "The most critical result of the free surface effect is that it reduces the ship's effective GM. This reduction makes the ship behave as though her centre of gravity had risen."
+  },
+  "Set yönünde D₍c₎ kadar gidilir": {
+    "en": "D₍c₎ is laid off in the direction of the set"
+  },
+  "Sextant ile ölçülen en büyük yükseklik, tüm düzeltmeler (IE, dip, refraksiyon, SD, paralaks) uygulanarak Ho (düzeltilmiş yükseklik) değerine çevrilir. Öğle mevkiinde Ho, Güneş’in meridyendeki gerçek yüksekliğini temsil eder.": {
+    "en": "The greatest altitude measured with the sextant is converted to Ho (observed altitude) by applying all the corrections (IE, dip, refraction, SD, parallax). In the noon position Ho represents the true altitude of the Sun on the meridian."
+  },
+  "Sextanttan okunan alet yüksekliği Hs = 27° 18.4′ olsun. İndeks hatası −1.6′, göz yüksekliği 16 m ve Güneş alt kenar gözlemi yapılmış olsun.": {
+    "en": "Let the sextant altitude read from the sextant be Hs = 27° 18.4′, with an index error of −1.6′, a height of eye of 16 m and a lower-limb observation of the Sun."
+  },
+  "Seyir orta enlemlerde yapılır": {
+    "en": "The passage is made in middle latitudes"
+  },
+  "Seyir üçgeni hâlâ dik üçgen kabul edilir": {
+    "en": "The sailing triangle is still taken to be a right-angled triangle"
+  },
+  "Sonuç Kontrolü aşamasında, hesaplanan değerler IMO kriterleriyle ve geminin onaylı limit eğrileriyle karşılaştırılır. Kontrol edilmesi gereken parametreler şunlardır:": {
+    "en": "In the Results Check stage, the calculated values are compared with the IMO criteria and the ship's approved limiting curves. The parameters to be checked are:"
+  },
+  "Stabilite Kaybı Belirtileri ve bunlara karşı acil eylemler şu şekilde özetlenebilir:": {
+    "en": "The signs of loss of stability and the immediate actions against them can be summarised as follows:"
+  },
+  "Şamandıra düzeltmeleri, seyir güvenliğini en doğrudan etkileyen harita düzeltmeleridir. Bir şamandıranın mevkiinin değişmesi, kaldırılması veya yeniden yerleştirilmesi durumunda, harita üzerindeki sembol tamamen iptal edilir ve yeni konum doğru sembolle işlenir. Eğer şamandıranın ışık karakteri, rengi veya tipi değişmişse, yalnızca sembol değil, ilgili tüm tanımlayıcı bilgiler birlikte güncellenir.": {
+    "en": "Buoy corrections are the chart corrections that affect navigational safety most directly. If a buoy is moved, removed or re-established, the symbol on the chart is cancelled completely and the new position is entered with the correct symbol. If the light character, colour or type of the buoy has changed, all the related descriptive information is updated together with the symbol."
+  },
+  "t₁ anına ait LOP, geminin seyir doğrultusunda ve kat edilen mesafe kadar paralel olarak ötelenir. Bu işlem LOP’un yönünü değiştirmez; yalnızca konumunu t₂ zamanına taşır.": {
+    "en": "The LOP for time t₁ is transferred parallel to itself along the ship's track by the distance run. This does not change the direction of the LOP; it only moves its position to time t₂."
+  },
+  "Tank Yönetimi fonksiyonu, tüm tankların kapasite tablolarını, sounding/ullage dönüşümlerini ve serbest yüzey momentlerini içerir. Tankların doluluk durumu girildikçe, yazılım otomatik olarak ağırlık, VCG, LCG ve FSM değerlerini hesaplar.": {
+    "en": "The tank management function contains the capacity tables of all tanks, the sounding/ullage conversions and the free surface moments. As the contents of the tanks are entered, the software automatically calculates the weight, VCG, LCG and FSM values."
+  },
+  "Taşıma paralel yapılır": {
+    "en": "The transfer is made parallel"
+  },
+  "Taşınan LOP ile ikinci LOP’un kesişimi Fix verir": {
+    "en": "The intersection of the transferred LOP and the second LOP gives the fix"
+  },
+  "Taşınan LOP, orijinal LOP’a paralel kalır.": {
+    "en": "The transferred LOP stays parallel to the original LOP."
+  },
+  "Tehlike ile gemi arasında minimum mesafe bırakılır": {
+    "en": "A minimum distance is kept between the danger and the ship"
+  },
+  "Tehlikeye teğet geçer": {
+    "en": "It passes tangentially to the danger"
+  },
+  "Tehlikeyi emniyetle teğet geçen bir doğrultu seçilir": {
+    "en": "A line that passes the danger safely at a tangent is chosen"
+  },
+  "Transfer Operasyonları seyir sırasında stabiliteyi doğrudan etkiler. Yakıt transferlerinde iskele-sancak simetrisi korunmalı, GM değişimi izlenmeli ve kısmen dolu tank sayısı minimize edilmelidir. Balast operasyonlarında trim optimizasyonu, GM düzeltmesi ve IMO Balast Su Yönetimi (BWM) gereksinimleri birlikte değerlendirilmelidir. Özellikle açık denizde balast değişimi (ballast exchange) sırasında, sequential yöntemde tanklar tek tek boşaltılıp yeniden doldurulduğundan, her ara durum için stabilite kontrolü yapılmalıdır.": {
+    "en": "Transfer operations affect stability directly during the passage. When transferring fuel, port–starboard symmetry must be kept, the change in GM monitored and the number of slack tanks kept to a minimum. In ballast operations, trim optimisation, GM correction and the IMO Ballast Water Management (BWM) requirements must be assessed together. Especially during ballast exchange at sea, because the sequential method empties and refills the tanks one by one, the stability must be checked for every intermediate condition."
+  },
+  "Transit (Leading Line), klasik seyirde en güvenilir ve en basit mevki tayin yöntemlerinden biridir ve özellikle seyir emniyetinin kritik olduğu bölgelerde vazgeçilmezdir.": {
+    "en": "A transit (leading line) is one of the most reliable and simplest position-fixing methods in traditional navigation and is indispensable especially in areas where navigational safety is critical."
+  },
+  "Uyarı İşaretleri aşamasında stabilite kaybının başladığını gösteren belirtiler tanınmalıdır. Rolling periyodunun belirgin şekilde uzaması, GM'in düştüğüne işaret eder. Geminin dik durumdan tek tarafa yatma eğilimi göstermesi (loll durumu), GM'in sıfıra yaklaştığını veya negatife geçtiğini gösterir. Sürekli artan heel açısı ve geminin kendiliğinden düzelememesi, kritik stabilite kaybının başladığını bildirir.": {
+    "en": "In the Warning Signs stage, the signs that a loss of stability has started must be recognised. A marked lengthening of the rolling period indicates that GM has decreased. A tendency of the ship to lean to one side from upright (a loll) shows that GM is approaching zero or has become negative. A steadily increasing angle of heel, with the ship unable to return upright by herself, indicates that a critical loss of stability has begun."
+  },
+  "Üç LOP idealde tek noktada kesişir": {
+    "en": "Ideally three LOPs cross at a single point"
+  },
+  "Üçgen hem grafik, hem sayısal çözülebilir": {
+    "en": "The triangle can be solved both graphically and numerically"
+  },
+  "Vardiya Bazında İzleme kapsamında, her vardiyada yakıt tüketimi takip edilir, tank seviye değişimleri kontrol edilir, geminin draft ve trim durumu gözlemlenir ve rolling karakteristiği değerlendirilir. Rolling periyodunun uzaması, GM'in düşmekte olduğunun önemli bir göstergesidir ve derhal araştırılmalıdır.": {
+    "en": "In watch-by-watch monitoring, the fuel consumption is followed every watch, changes in tank levels are checked, the ship's draft and trim are observed and her rolling characteristics are assessed. A lengthening of the rolling period is an important sign that GM is decreasing and must be investigated at once."
+  },
+  "Varsayılan mevki (AP), DR mevkiine yakın bir noktadır ve Hc ile Zn’nin hesaplandığı referans noktadır. Amaç “doğru nokta” olmak değil, gerçek mevkiye yeterince yakın olmaktır. Intercept yöntemi bu yakınlık varsayımı üzerine çalışır.": {
+    "en": "The assumed position (AP) is a point close to the DR position and is the reference point for which Hc and Zn are calculated. The aim is not for it to be “the right point” but to be close enough to the true position. The intercept method works on this assumption of closeness."
+  },
+  "VGM (Verified Gross Mass) zorunluluğu, SOLAS VI/2 uyarınca 2016'dan itibaren uygulanmaktadır. Her konteynerin tartılmış veya hesaplanmış brüt ağırlığı, yükleme öncesinde belgelenmelidir. VGM bilgisi olmayan konteynerler gemiye yüklenmemelidir. Bu zorunluluk, daha önce yaşanan ve kötü beyan edilen ağırlıkların sebep olduğu stabilite kazalarını önlemek amacıyla getirilmiştir.": {
+    "en": "Under SOLAS VI/2, the VGM (Verified Gross Mass) requirement has applied since 2016. The weighed or calculated gross mass of every container must be documented before loading. Containers without VGM information must not be loaded on board. The requirement was introduced to prevent stability casualties like those caused in the past by misdeclared weights."
+  },
+  "yaklaşık Mean Lat kullanılır": {
+    "en": "the approximate Mean Lat is used"
+  },
+  "Yatay açıya karşılık gelen dairesel yay çizilir": {
+    "en": "The arc of the circle corresponding to the horizontal angle is drawn"
+  },
+  "Yaygın Hatalar ve bunlardan kaçınma yöntemleri aşağıda sıralanmıştır:": {
+    "en": "Common mistakes and ways of avoiding them are listed below:"
+  },
+  "Yeni yapılan taramalar sonucu derinlik değerleri değiştiğinde, eski değerler iptal edilir ve yenileri harita üzerine işlenir. Yeni tespit edilen batıklar ve kayalar, doğru sembol ve doğru konumla haritaya eklenir. Eğer batık için least depth bilgisi verilmişse, bu değer harita üzerinde açıkça gösterilir ve doğrudan draft hesaplarında kullanılır.": {
+    "en": "When depths change as a result of new surveys, the old values are cancelled and the new ones entered on the chart. Newly found wrecks and rocks are added to the chart with the correct symbol in the correct position. If a least depth is given for a wreck, this value is shown clearly on the chart and used directly in draft calculations."
+  },
+  "Yerel öğle anında Ho = 63° 20.0′ ölçülsün.": {
+    "en": "Let Ho = 63° 20.0′ be measured at local noon."
+  },
+  "Yön ve mesafe mutlaka doğru olmalıdır": {
+    "en": "Direction and distance must be correct"
+  },
+  "Yükleme Bilgisayarına Giriş aşamasında, toplanan tüm veriler sistematik olarak yazılıma aktarılır. Tank verileri girilirken yoğunluk ve sıcaklık değerleri doğrulanır. Kargo ağırlıkları ve konumları belirtilir. Hem departure (kalkış) hem de arrival (varış) durumları için ayrı hesaplamalar yapılır; çünkü seyir boyunca yakıt tüketimi stabiliteyi önemli ölçüde değiştirebilir.": {
+    "en": "In the Loading Computer Input stage, all the data collected are entered systematically into the software. When tank data are entered, the density and temperature values are checked. The weights and positions of the cargo are specified. Separate calculations are made for both the departure and the arrival conditions, because fuel consumption during the passage can change stability considerably."
+  },
+  "Yükleme bilgisayarının temel fonksiyonları dört ana başlık altında ele alınır. Stabilite Hesabı kapsamında yazılım; draft, trim ve heel değerlerini hesaplar, KG ve GM değerlerini belirler, GZ eğrisini oluşturur ve tüm IMO stabilite kriterlerini otomatik olarak kontrol eder. Herhangi bir kriterin sağlanmadığı durumda alarm veya uyarı üretir.": {
+    "en": "The basic functions of the loading computer fall under four main headings. Under stability calculation, the software calculates the draft, trim and heel, determines KG and GM, produces the GZ curve and checks all the IMO stability criteria automatically. If any criterion is not met, it gives an alarm or warning."
+  },
+  "Yüzerlik şartını sağlayan bir gemi, kuvvetler açısından dengededir; ancak bu denge, geminin küçük bir dış etki altındaki davranışını tek başına açıklamaz. Gemi stabilitesinin özü, geminin denge konumundan uzaklaştırıldığında nasıl bir tepki verdiğiyle ilgilidir. Bu tepki, denge hâlleri kavramı ile tanımlanır ve üç temel sınıfta incelenir: kararlı (stable), kararsız (unstable) ve nötr (neutral) denge.": {
+    "en": "A ship that satisfies the condition of flotation is in equilibrium as far as forces are concerned; but this equilibrium alone does not explain how the ship behaves under a small external disturbance. The essence of ship stability is how the ship responds when she is displaced from her position of equilibrium. This response is described by the states of equilibrium and is studied in three basic classes: stable, unstable and neutral equilibrium."
+  },
+  "Zamanlar arasında gemi bilinen rota ve hızla ilerler": {
+    "en": "Between the times, the ship proceeds on a known course and speed"
+  },
+  "Birincisi, hakiki rota (loxodrome) harita üzerinde düz çizgi olarak görünür.": {
+    "en": "First, a constant true course (loxodrome) appears as a straight line on the chart."
+  },
+  "İkincisi, enlem skalası mesafeyle doğru orantılıdır.": {
+    "en": "Second, the latitude scale gives distance directly (1′ of latitude = 1 nautical mile)."
+  },
+  "Birincisi, hakiki rota (loxodrome) harita üzerinde düz çizgi olarak görünür. İkincisi, enlem skalası mesafeyle doğru orantılıdır.": {
+    "en": "First, a constant true course (loxodrome) appears as a straight line on the chart. Second, the latitude scale gives distance directly (1′ of latitude = 1 nautical mile)."
+  },
+  "Gemi personelinin belirli zaman dilimlerinde nöbet tutması; genellikle 4 saat nöbet 8 saat dinlenme (4-8) veya 6-6 düzeniyle yürütülür.": {
+    "en": "The period of duty kept by the ship's personnel; usually organised as four hours on and eight hours off (4-8) or six on and six off (6-6)."
+  },
+  "Halatın serbest (çalışan) ucu; bağ atılırken veya halat verilirken hareket ettirilen kısım.": {
+    "en": "The free end of a line, the part that is moved when making a knot or when the line is passed."
+  },
+  "Sarı renkli Q bayrağı; 'Gemim sağlıklıdır, serbest pratika talep ediyorum' anlamına gelir. Limana gelen gemi pratika alana kadar çeker.": {
+    "en": "The yellow flag Q; it means 'My vessel is healthy and I request free pratique'. An arriving ship flies it until pratique is granted."
+  },
+  "Yelken alanını küçültmek için yelkenin bir bölümünün toplanıp bağlanması; bu iş için atılan düz bağa camadan bağı (reef knot) denir.": {
+    "en": "Reducing the area of a sail by gathering in part of it and tying it down; the flat knot used for this is the reef knot."
+  },
+  "Statik Stabilite Eğrisi (GZ Curve)": {
+    "en": "Curve of statical stability (GZ curve)"
+  },
+  "Separatör (Purifier)": {
+    "en": "Separator (purifier)"
+  },
+  "Paketlenmeden doğrudan ambara yüklenen tahıl, kömür, cevher gibi yükler.": {
+    "en": "Cargo such as grain, coal or ore loaded directly into the hold without packaging."
+  },
+  "Sığ suda gemi hızıyla artan batma ve trim değişimi; tam formlu gemilerde (yüksek Cb) daha çok başta, ince formlu gemilerde kıçta görülür.": {
+    "en": "The sinkage and change of trim of a ship moving in shallow water, increasing with speed; full-bodied ships (high Cb) squat more at the bow, fine-lined ships at the stern."
+  },
+  "Göksel cisimlerin ufuk ile arasındaki açıyı ölçen optik alet; göksel seyirde kullanılır.": {
+    "en": "An optical instrument that measures the angle between a celestial body and the horizon; used in celestial navigation."
+  },
+  "Yanmış gazların silindirden uzaklaştırılıp taze hava ile doldurulması işlemi.": {
+    "en": "Removing the burnt gases from the cylinder and filling it with fresh air."
+  },
+  "Yangın Güvenlik Sistemleri Kodu; yangın algılama ve söndürme sistemlerinin standartlarını düzenler.": {
+    "en": "The International Code for Fire Safety Systems; standards for fire detection and extinguishing systems."
+  },
+  "Sıcak nemli havanın soğuk deniz yüzeyi üzerinden geçmesiyle oluşan sis türü.": {
+    "en": "Fog that forms when warm, moist air moves over a colder sea surface."
+  },
+  "Dümen basıldıktan hemen sonra kıçın dönüşün dışına doğru savrulması; gemi kısa süre dönüş yönünün tersine yanal kayar.": {
+    "en": "Right after the rudder is put over, the stern swings away from the direction of the turn and the ship moves briefly sideways in the opposite direction."
+  },
+  "Panama Kanalı geçişi için zorunlu olan, borda kenarındaki kapalı halat kılavuzu; palamarlar buradan geçirilir.": {
+    "en": "A closed fairlead at the ship's side through which mooring lines are led; required for the Panama Canal transit."
+  },
+  "Halat veya zincirin kopmayacağı garanti edilen en düşük kuvvet; güvenlik katsayısı MBL / SWL oranıdır.": {
+    "en": "The smallest force at which a new rope or chain is guaranteed not to break; the safety factor is MBL divided by SWL."
+  },
+  "Pusula kabında veya radar ekranında geminin baş doğrultusunu gösteren sabit çizgi.": {
+    "en": "The fixed line on the compass bowl or radar display that marks the ship's head."
+  },
+  "Geminin dönme hızını derece/dakika cinsinden gösteren seyir cihazı; SOLAS'a göre 50.000 GT ve üzeri gemilerde zorunludur.": {
+    "en": "An instrument showing how fast the ship is turning, in degrees per minute; required by SOLAS on ships of 50,000 GT and above."
+  },
+  "Geminin dip ile borda birleşimindeki kavisli sacın eğrilik yarıçapı.": {
+    "en": "The radius of the curved plating where the ship's bottom turns into the side."
+  },
+  "Gövdenin su altı kısmında, ızgarayla kapatılmış deniz suyu alış bölmesi.": {
+    "en": "A recess in the underwater hull, covered by a grating, through which sea water is drawn in."
+  },
+  "Demir alırken zincirin kısaltılıp dik açıyla inmesi; apikodan (up and down) önceki aşamadır.": {
+    "en": "While heaving up, the anchor cable has been shortened and leads steeply down; the stage before 'up and down'."
+  },
+  "Baş üstünde demir zincirini kilitleyen ve zincirin yükünü ırgattan alan stoper.": {
+    "en": "The fitting on the forecastle that holds the anchor cable and takes its load off the windlass."
+  },
+  "Makineye artık ihtiyaç olmadığını bildiren telgraf emri; genellikle gemi bağlandıktan veya demirledikten sonra verilir.": {
+    "en": "The telegraph order that the engine is no longer required; usually given after the ship has berthed or anchored."
   }
 }

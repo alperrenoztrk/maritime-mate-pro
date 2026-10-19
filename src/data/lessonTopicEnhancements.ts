@@ -511,7 +511,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       "Sonuç 360°'yi aştığında −360°, negatif çıktığında +360° uygulamayı unutmak.",
     ],
     criticalNotes: [
-      "Mnemonic: 'Can Dead Men Vote Twice At Elections' — Compass + Dev = Magnetic, +Var = True, East is least (W çıkar), East adds when going to True.",
+      "Mnemonic: 'Can Dead Men Vote Twice At Elections' — Compass ± Dev = Magnetic, Magnetic ± Var = True; Compass'tan True'ya giderken East eklenir, West çıkarılır (Error East, compass least; Error West, compass best).",
       "Yıllık deviation swing/check zorunluluğu — kart eskidikçe hata büyür.",
       "Gyro pusula kullanılıyorsa gyro error tek bir düzeltme olarak uygulanır (E +, W −); CDMVT manyetik içindir.",
       "Demir yükü, ambardaki vinç pozisyonu veya elektrikli ekipman değişikliği deviation'ı geçici olarak değiştirebilir; uzun seyirde periyodik azimut kontrolü yapın.",

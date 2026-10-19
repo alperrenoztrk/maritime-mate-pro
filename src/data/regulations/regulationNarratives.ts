@@ -706,7 +706,7 @@ const colregNarrative: RegulationNarrativeChapter[] = [
         ["Tek bir ışığı görüp bütün gemi statüsünü kesinleştirmek", "RAM işaretini mutlak geçiş hakkı olarak yorumlamak"],
         scenario(
           "Dredger'ın geçiş tarafını yanlış okumak",
-          "Gece dredger üzerinde kırmızı-kırmızı ve bir yanında iki kırmızı, diğer yanında iki yeşil all-round ışık görülür.",
+          "Gece dredger üzerinde dikey sırada kırmızı-beyaz-kırmızı ve bir yanında iki kırmızı, diğer yanında iki yeşil all-round ışık görülür.",
           "Kırmızı çift obstruction tarafını, yeşil çift geçişin yapılabileceği tarafı gösterir; fakat su derinliği, izin ve trafik hâlâ doğrulanmalıdır.",
           "Işıkların gemiye göre hangi tarafta olduğu radar/görsel aspect ile doğrulanır, chart/VTS bilgisi kontrol edilir ve yeterli açıklıkla, Rule 8'e uygun geçiş yapılır.",
         ),
