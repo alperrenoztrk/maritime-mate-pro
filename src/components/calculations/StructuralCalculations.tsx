@@ -685,7 +685,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                       <li><strong>IMO CSR:</strong> Common Structural Rules for tankers</li>
                     </ul>
                     
-                    <h4>Security Factors:</h4>
+                    <h4>Safety Factors:</h4>
                     <ul>
                       <li><strong>Minimum:</strong> SF ≥ 1.5 (Ultimate limit state)</li>
                       <li><strong>Recommended:</strong> SF ≥ 2.0 (Working stress)</li>

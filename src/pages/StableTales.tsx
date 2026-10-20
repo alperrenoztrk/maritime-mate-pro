@@ -21,7 +21,7 @@ export default function StableTalesPage() {
             <TabsTrigger value="calculator">Main Calculation</TabsTrigger>
             <TabsTrigger value="pendulum">Pendulum Method</TabsTrigger>
             <TabsTrigger value="crane">Crane/Dumbar</TabsTrigger>
-            <TabsTrigger value="drydock">Pool Operation</TabsTrigger>
+            <TabsTrigger value="drydock">Dry-Docking</TabsTrigger>
             <TabsTrigger value="solas">SOLAS Criteria</TabsTrigger>
             <TabsTrigger value="report">Create Report</TabsTrigger>
           </TabsList>

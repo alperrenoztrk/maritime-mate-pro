@@ -288,7 +288,7 @@ function OperationSummary({
       )}
 
       {operation.safety && operation.safety.length > 0 && (
-        <ContentSection icon={ShieldAlert} title="Security and Risk">
+        <ContentSection icon={ShieldAlert} title="Safety and Risk">
           <ul className="space-y-2">
             {operation.safety.map((item) => (
               <li key={item} className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-3 text-sm leading-relaxed text-foreground/85">

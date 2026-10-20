@@ -62,7 +62,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Zorunlu sertifikaların kapsamı ve süreleri",
           paragraphs: [
-            `Tipik bir kuru yük gemisinde taşınması gereken ana sertifikalar; Cargo Ship Safety Construction (SafCon), Cargo Ship Safety Equipment (SafEquip), Cargo Ship Safety Radio (SafRadio), IOPP (MARPOL Annex I), IAPP (Annex VI), ISPP (Annex IV — sewage), IEEC (Energy Efficiency), ISSC (ISPS), SMC (ISM), MLC sertifikası, IBWMC (Ballast Water), Tonnage, Load Line, Minimum Safe Manning Document ve CLC/Bunker sigorta sertifikalarıdır. Çoğu 5 yıllık geçerliliğe sahiptir ama yıllık (annual), ara (intermediate) ve yenileme (renewal) sörveylerine ve windows'lara tabidir.`,
+            `Tipik bir kuru yük gemisinde taşınması gereken ana sertifikalar; Cargo Ship Safety Construction (SafCon), Cargo Ship Safety Equipment (SafEquip), Cargo Ship Safety Radio (SafRadio), IOPP (MARPOL Annex I), IAPP (Annex VI), ISPP (Annex IV — sewage), IEEC (Energy Efficiency), ISSC (ISPS), SMC (ISM), MLC sertifikası, IBWMC (Ballast Water), Tonnage, Load Line, Minimum Safe Manning Document ve Bunker Convention sigorta sertifikasıdır (petrol tankerlerinde ayrıca CLC sertifikası). Çoğu 5 yıllık geçerliliğe sahiptir ama yıllık (annual), ara (intermediate) ve yenileme (renewal) sörveylerine ve windows'lara tabidir.`,
             `Kaptanın kritik kavramı "survey window"dur: anniversary date'in 3 ay öncesi ve 3 ay sonrası bir pencere oluşturur (annual survey için ±3 ay). Renewal survey, geçerlilik bitiminden önceki 3 ay içinde tamamlanmalıdır. Window dışına çıkmak harmonised survey rejimini bozar ve sertifikanın "out of window" durumuna düşmesi, PSC'de doğrudan deficiency üretir. Kaptan, port rotasyonunu sörvey window'larını yakalayacak şekilde şirketle planlamalıdır.`,
           ],
           table: {
@@ -103,7 +103,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 New Inspection Regime (NIR) ve gemi risk profili",
           paragraphs: [
             `Paris MOU New Inspection Regime, her gemiye bir Ship Risk Profile (SRP) atar: Low Risk Ship (LRS), Standard Risk Ship (SRS) veya High Risk Ship (HRS). Profil; gemi tipi ve yaşı, bayrak performansı (black/grey/white list), klas/RO performansı, şirketin önceki deficiency ve detention geçmişi ve son denetimlerdeki bulgular üzerinden hesaplanır. LRS gemiler 24-36 ayda bir, HRS gemiler 5-6 ayda bir denetlenir.`,
-            `Kaptanın pratik çıkarımı şudur: geminin geçmiş deficiency'leri ve şirketin sicili, bugünkü denetim sıklığını doğrudan belirler. Tek bir detention, şirketi grey/black bandına itip filodaki tüm gemilerin hedeflenme olasılığını artırabilir. Bu yüzden kaptan, "kendi denetimimi geçtim" demekle yetinmez; her bulgunun şirket sicilini ve filo riskini etkilediğini bilir.`,
+            `Kaptanın pratik çıkarımı şudur: geminin geçmiş deficiency'leri ve şirketin sicili, bugünkü denetim sıklığını doğrudan belirler. Tek bir detention, şirketin performans derecesini (örn. high/medium'dan low/very low'a) düşürüp filodaki tüm gemilerin hedeflenme olasılığını artırabilir. Bu yüzden kaptan, "kendi denetimimi geçtim" demekle yetinmez; her bulgunun şirket sicilini ve filo riskini etkilediğini bilir.`,
           ],
           bullets: [
             `Gemi tipi ve yaş (tanker/bulk/yolcu daha yüksek risk)`,
@@ -144,8 +144,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Deficiency ve action code mantığı",
           paragraphs: [
-            `Her deficiency, bir konu koduna (örn. 07 fire safety, 11 safety of navigation, 01 certificates, 04 emergency systems, 18 ISM) ve bir veya birden çok action koduna bağlanır. Action kodu, denetçinin gemiden ne istediğini söyler: 16 = "rectify deficiency", 17 = "rectify at next port", 18 = "rectify within 14 days", 15 = "rectify before departure" ve en ağırı 30 = "detainable deficiency / ship detained".`,
-            `Kaptan, bir bulgunun action kodunu raporu imzalamadan önce mutlaka okumalıdır; çünkü "rectify before departure" (15) ile "detained" (30) arasındaki fark, gemiyi kalkıştan alıkoyan operasyonel ve ticari bir uçurumdur. Bir code 30, sadece o bulgunun değil, geminin emniyetli işletimine dair sistemik bir şüphenin işaretidir.`,
+            `Her deficiency, bir konu koduna (örn. 01 certificates, 04 emergency systems, 07 fire safety, 10 safety of navigation, 15 ISM) ve bir veya birden çok action koduna bağlanır. Action kodu, denetçinin gemiden ne istediğini söyler: 17 = "rectify before departure", 15 = "rectify at next port", 16 = "rectify within 14 days", 18 = "rectify within 3 months" ve en ağırı 30 = "grounds for detention / ship detained".`,
+            `Kaptan, bir bulgunun action kodunu raporu imzalamadan önce mutlaka okumalıdır; çünkü "rectify before departure" (17) ile "detained" (30) arasındaki fark, gemiyi kalkıştan alıkoyan operasyonel ve ticari bir uçurumdur. Bir code 30, sadece o bulgunun değil, geminin emniyetli işletimine dair sistemik bir şüphenin işaretidir.`,
           ],
           table: {
             caption: `Sık Kullanılan PSC Action Kodları`,
@@ -165,7 +165,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.2 Detention'a yol açan tipik bulgular",
           paragraphs: [
             `Detention'lar genellikle "emniyeti, çevreyi veya can güvenliğini doğrudan tehdit eden" bulgulardan doğar: çalışmayan can filikası indirme tertibatı veya davits, arızalı emergency fire pump, deniz tarafına akan oily water separator (15 ppm bypass), geçersiz/eksik ana sertifika, çalışmayan steering gear yedek sistemi, açık/tıkalı watertight bütünlük, ciddi rest hours ihlali ve mürettebatın temel acil durum görevlerini gösterememesi.`,
-            `Kaptanın hafife almaması gereken nokta, "tek bir büyük arıza" kadar "birden çok küçük bulgunun toplamının" da detention doğurabilmesidir. Denetçi, ayrı ayrı küçük olan ama hepsi birlikte SMS'in çökmüş olduğunu kanıtlayan bir tablo görürse, ISM altında (kod 18) gemiyi tutabilir. Yani gemi, "hiçbiri tek başına ölümcül değil ama hepsi birlikte sistem yokluğunu gösteriyor" gerekçesiyle alıkonabilir.`,
+            `Kaptanın hafife almaması gereken nokta, "tek bir büyük arıza" kadar "birden çok küçük bulgunun toplamının" da detention doğurabilmesidir. Denetçi, ayrı ayrı küçük olan ama hepsi birlikte SMS'in çökmüş olduğunu kanıtlayan bir tablo görürse, ISM altında (kod 15) gemiyi tutabilir. Yani gemi, "hiçbiri tek başına ölümcül değil ama hepsi birlikte sistem yokluğunu gösteriyor" gerekçesiyle alıkonabilir.`,
           ],
           callouts: [
             {
@@ -198,8 +198,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 RightShip (dökme yük) ve risk skoru",
           paragraphs: [
-            `RightShip, ağırlıklı olarak dökme yük (bulk, geleneksel olarak demir cevheri, kömür, tahıl) segmentinde charterer'ların gemi kabul kararını verdiği platformdur. Bir gemiye Safety Score (1-5 yıldız benzeri) ve ayrıca GHG Rating (A-G, EEXI/CII temelli karbon performansı) atar. Düşük safety skoru veya kötü GHG rating, geminin büyük maden ve enerji şirketlerinin nominasyon listesinden düşmesine yol açar.`,
-            `RightShip kabulü için RISQ (RightShip Inspection and Survey Questionnaire) temelli bir fiziksel denetim de yapılabilir. Kaptanın pratik görevi; RightShip platformundaki gemi verisinin (sörvey tarihleri, PSC geçmişi, kaza/incident kaydı) güncel ve doğru olmasını şirketle birlikte sağlamak, ve özellikle PSC detention'ların skoru aylarca aşağı çektiğini bilerek her bulguyu ciddiye almaktır.`,
+            `RightShip, ağırlıklı olarak dökme yük (bulk, geleneksel olarak demir cevheri, kömür, tahıl) segmentinde charterer'ların gemi kabul kararını verdiği platformdur. Bir gemiye Safety Score (1-5 yıldız benzeri) ve ayrıca GHG Rating (A-G, geminin karbon verimliliğini benzer gemilere göre derecelendiren) atar. Düşük safety skoru veya kötü GHG rating, geminin büyük maden ve enerji şirketlerinin nominasyon listesinden düşmesine yol açar.`,
+            `RightShip kabulü için RISQ (RightShip'in denetim soru listesi) temelli bir fiziksel denetim de yapılabilir. Kaptanın pratik görevi; RightShip platformundaki gemi verisinin (sörvey tarihleri, PSC geçmişi, kaza/incident kaydı) güncel ve doğru olmasını şirketle birlikte sağlamak, ve özellikle PSC detention'ların skoru aylarca aşağı çektiğini bilerek her bulguyu ciddiye almaktır.`,
           ],
         },
         {
@@ -233,7 +233,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 Mürettebatın hazırlanması ve görev provası",
           paragraphs: [
-            `Hazırlığın en kritik ve en çok ihmal edilen parçası, mürettebatın denetime hazırlanmasıdır. Her mürettebat üyesi kendi muster station'ını, yangın ve abandon ship görevini, EEBD ve immersion suit kullanımını gösterebilmelidir. Denetçi, rastgele seçtiği bir bahçıvanı (oiler, AB) durdurup "yangın alarmında ne yaparsın?" diye sorduğunda, tereddütsüz ve doğru cevap, sistemin işlediğinin en güçlü kanıtıdır.`,
+            `Hazırlığın en kritik ve en çok ihmal edilen parçası, mürettebatın denetime hazırlanmasıdır. Her mürettebat üyesi kendi muster station'ını, yangın ve abandon ship görevini, EEBD ve immersion suit kullanımını gösterebilmelidir. Denetçi, rastgele seçtiği bir tayfayı (oiler, AB) durdurup "yangın alarmında ne yaparsın?" diye sorduğunda, tereddütsüz ve doğru cevap, sistemin işlediğinin en güçlü kanıtıdır.`,
             `Kaptan, denetim öncesi bir "tatbikat brifingi" yapar: dil bariyeri olan mürettebatla anahtar cevapların İngilizce ifadesini tazeler, kritik ekipmanların yerini ve testini tekrar ettirir. Ancak bu, ezber dayatmak değil, gerçekten bilineni hatırlatmaktır; çünkü ezber edilmiş ama anlaşılmamış bir cevap, ilk takip sorusunda dağılır ve denetçide güvensizlik yaratır.`,
           ],
           callouts: [
@@ -261,7 +261,7 @@ const content: CrewTaskLongForm = {
           subheading: "7.2 Bulgu itirazı, kapanış toplantısı ve raporun imzası",
           paragraphs: [
             `Bir bulgu yanlış veya haksız görünüyorsa, kaptan bunu kapanış (closing meeting) sırasında saygılı, gerekçeli ve belgeye dayalı biçimde tartışabilir; tartışma kişiselleşmemeli, mevzuat ve kanıt üzerinden yürümelidir. Denetçi ikna olursa bulgu rapora girmeden düşebilir; olmazsa kaptan, raporu imzalamak zorundadır ancak imza "bulguyu kabul" değil, "raporu tebellüğ" anlamına gelir.`,
-            `PSC raporunda kaptan, deficiency'lerin action kodlarını, rectification süresini ve gemiye dair notları dikkatle okumalıdır. Bir code 30 (detention) durumunda kaptan derhal şirketi, DPA'yı, bayrak devletini, klası ve P&I/H&M tarafını bilgilendirir; detention'ın kaldırılması için gereken survey ve re-inspection sürecini koordine eder. Bayrağa, gerektiğinde 90 gün içinde resmi itiraz (appeal/review) hakkı vardır.`,
+            `PSC raporunda kaptan, deficiency'lerin action kodlarını, rectification süresini ve gemiye dair notları dikkatle okumalıdır. Bir code 30 (detention) durumunda kaptan derhal şirketi, DPA'yı, bayrak devletini, klası ve P&I/H&M tarafını bilgilendirir; detention'ın kaldırılması için gereken survey ve re-inspection sürecini koordine eder. Haklı gerekçe varsa, ulusal mevzuatın ve MOU'nun öngördüğü süreler içinde detention'a resmi itiraz (appeal/review) yoluna gidilebilir.`,
           ],
           callouts: [
             {
@@ -313,7 +313,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.2 Kayıt sahteciliğinin (falsification) sonuçları",
           paragraphs: [
-            `Kayıt sahteciliği — özellikle ORB'de "magic pipe" (yağlı suyun OWS'i bypass ederek denize verilmesinin gizlenmesi) — denizcilik hukukunun en ağır cezalandırdığı suçlardandır. ABD'de APPS (Act to Prevent Pollution from Ships) kapsamında, fiilen kirlilik ABD sularında olmasa bile sahte ORB ile ABD limanına girmek başlı başına suçtur; milyonlarca dolar ceza, kaptanın hapsi ve gemiye seyahat yasağı gündeme gelir.`,
+            `Kayıt sahteciliği — özellikle ORB'de "magic pipe" (yağlı suyun OWS'i bypass ederek denize verilmesinin gizlenmesi) — denizcilik hukukunun en ağır cezalandırdığı suçlardandır. ABD'de APPS (Act to Prevent Pollution from Ships) kapsamında, fiilen kirlilik ABD sularında olmasa bile sahte ORB ile ABD limanına girmek başlı başına suçtur; milyonlarca dolar ceza, kaptanın hapsi ve gemiye kalkış izninin verilmemesi gündeme gelir.`,
             `Kaptan için temel ilke şudur: bir bulgu, dürüstçe kaydedildiğinde yönetilebilir bir sorundur; gizlendiğinde ise kariyer ve özgürlük bitiren bir suça dönüşür. Denetime hazırlık, "kötü gerçeği güzel göstermek" değil, "gerçeği denetimden önce düzeltmek ve dürüstçe belgelemek" anlamına gelir. Sahtecilik, hiçbir deficiency'nin doğuramayacağı kadar büyük bir risktir.`,
           ],
           callouts: [

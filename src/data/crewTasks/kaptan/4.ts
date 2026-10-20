@@ -61,7 +61,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 15 ppm kuralı, OWS ve Oil Record Book",
           paragraphs: [
-            `Makine dairesi bilge suyu, ancak 15 ppm Oily Water Separator (OWS) üzerinden ve oil content meter ile izlenerek, gemi seyir halindeyken ve özel alan dışında deşarj edilebilir. Tüm transferler, deşarjlar, sludge işlemleri ORB Part I'e zaman, pozisyon ve miktar ile kaydedilir. Tankerlerde yük/balast işlemleri ORB Part II'ye işlenir.`,
+            `Makine dairesi bilge suyu, ancak 15 ppm Oily Water Separator (OWS) üzerinden ve oil content meter ile izlenerek, gemi seyir halindeyken deşarj edilebilir (özel alanlarda cihazın deşarjı otomatik durdurması da gerekir; Antarktika'da deşarj yasaktır). Tüm transferler, deşarjlar, sludge işlemleri ORB Part I'e zaman, pozisyon ve miktar ile kaydedilir. Tankerlerde yük/balast işlemleri ORB Part II'ye işlenir.`,
             `Kaptan, ORB kayıtlarını periyodik olarak imzalar ve her sayfanın doğruluğunu denetler. "Magic pipe" (OWS bypass) en ağır çevre suçudur; kaptanın görevi böyle bir sistemin gemide olmadığını ve kayıtların fiili operasyonla bire bir uyuştuğunu garanti etmektir.`,
           ],
           callouts: [
@@ -86,8 +86,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Kategoriler ve sıfır plastik deşarjı",
           paragraphs: [
-            `MEPC.295(71) ile güncellenen Annex V, çöpü kategorilere ayırır (plastik, gıda atığı, kül, operasyonel atık, hayvan leşi, balıkçılık ekipmanı, e-atık, cargo residue). Plastiğin denize deşarjı her koşulda yasaktır. Gıda atığı, öğütülmüş ise kıyıdan 3 NM ve özel alan dışında, öğütülmemiş ise 12 NM dışında deşarj edilebilir.`,
-            `Garbage Management Plan ve Garbage Record Book her gemide bulunur; 100 GT üzeri gemiler ve 15+ kişi taşıyanlar için zorunludur. Kaptan, GRB kayıtlarının her deşarj, yakma ve teslimi (alım tesisi makbuzu ile) eksiksiz yansıttığını denetler.`,
+            `Annex V (uygulama rehberi: MEPC.295(71)), çöpü kategorilere ayırır (plastik, gıda atığı, kül, operasyonel atık, hayvan leşi, balıkçılık ekipmanı, e-atık, cargo residue). Plastiğin denize deşarjı her koşulda yasaktır. Gıda atığı, öğütülmüş ise kıyıdan 3 NM ve özel alan dışında, öğütülmemiş ise 12 NM dışında deşarj edilebilir.`,
+            `Garbage Management Plan 100 GT ve üzeri gemilerde ve 15 veya daha fazla kişi taşımaya sertifikalı gemilerde, Garbage Record Book ise 400 GT ve üzeri gemilerde ve 15 veya daha fazla kişi taşımaya sertifikalı gemilerde zorunludur. Kaptan, GRB kayıtlarının her deşarj, yakma ve teslimi (alım tesisi makbuzu ile) eksiksiz yansıttığını denetler.`,
           ],
           table: {
             caption: `Annex V — Çöp Deşarj Mesafeleri (özet)`,
@@ -103,7 +103,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Özel alanlar (Special Areas) ve PSSA",
           paragraphs: [
-            `Akdeniz, Baltık, Karadeniz, Kızıldeniz ve Antarktika gibi özel alanlarda deşarj kuralları çok daha sıkıdır. Antarktika'da hiçbir çöp denize verilemez. Kaptan, geminin bulunduğu deniz alanının statüsünü (özel alan, ECA, PSSA) bilir ve mürettebata bunu brifingle aktarır.`,
+            `Akdeniz, Baltık, Karadeniz, Kızıldeniz ve Antarktika gibi özel alanlarda deşarj kuralları çok daha sıkıdır. En sıkı kurallar Antarktika bölgesindedir; örneğin burada hiçbir yağ veya yağlı karışım denize verilemez. Kaptan, geminin bulunduğu deniz alanının statüsünü (özel alan, ECA, PSSA) bilir ve mürettebata bunu brifingle aktarır.`,
           ],
         },
       ],
@@ -114,8 +114,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 SOx ve 2020 Sulphur Cap",
           paragraphs: [
-            `MARPOL VI Reg. 14, küresel yakıt sülfür sınırını 1 Ocak 2020'den itibaren %0.50'ye, ECA bölgelerinde (Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip) %0.10'a indirdi. Gemi ya uyumlu düşük sülfürlü yakıt (VLSFO/MGO) kullanır ya da scrubber (EGCS) ile eşdeğer uyum sağlar. Kaptan, Bunker Delivery Note (BDN) ve numune saklamasını (12 ay) denetler.`,
-            `2020 Carriage Ban uyarınca, scrubber'sız gemide %0.50 üzeri sülfürlü yakıt bulundurmak (yalnız taşımak bile) yasaktır. Kaptan ECA giriş/çıkışında fuel changeover'ın zamanında yapıldığını ve ORB Part I / yakıt değişim kaydının tutulduğunu garanti eder.`,
+            `MARPOL VI Reg. 14, küresel yakıt sülfür sınırını 1 Ocak 2020'den itibaren %0.50'ye, ECA bölgelerinde (Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip ve 1 Mayıs 2025'ten itibaren Akdeniz) %0.10'a indirdi. Gemi ya uyumlu düşük sülfürlü yakıt (VLSFO/MGO) kullanır ya da scrubber (EGCS) ile eşdeğer uyum sağlar. Kaptan, Bunker Delivery Note (BDN) ve numune saklamasını (12 ay) denetler.`,
+            `2020 Carriage Ban uyarınca, scrubber'sız gemide %0.50 üzeri sülfürlü yakıt bulundurmak (yalnız taşımak bile) yasaktır. Kaptan ECA giriş/çıkışında fuel changeover'ın zamanında yapıldığını ve değişimin bayrak devletinin öngördüğü jurnale kaydedildiğini garanti eder.`,
           ],
           callouts: [
             {
@@ -152,7 +152,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 Annex IV — Sewage",
           paragraphs: [
-            `Lağım suyu, onaylı sewage treatment plant ile işlenip kıyıdan belirli mesafede (öğütülmüş/dezenfekte ≥3 NM, işlenmiş ≥12 NM, gemi 4 knot üzerinde) deşarj edilebilir. Baltık gibi özel alanlarda yolcu gemileri için daha sıkı kurallar uygulanır. Kaptan, STP'nin çalışır durumda ve deşarj kayıtlarının düzgün tutulduğunu denetler.`,
+            `Lağım suyu şu koşullarla deşarj edilebilir: onaylı sistemle öğütülmüş ve dezenfekte edilmişse en yakın karadan 3 NM'den uzakta; işlenmemişse (tutma tankından) 12 NM'den uzakta, gemi en az 4 knot hızla seyir halindeyken ve ölçülü bir debiyle; onaylı sewage treatment plant çıkışı ise mesafe sınırı olmadan, görünür yüzen katı veya renk değişimi bırakmamak koşuluyla. Baltık gibi özel alanlarda yolcu gemileri için daha sıkı kurallar uygulanır. Kaptan, STP'nin çalışır durumda ve deşarj kayıtlarının düzgün tutulduğunu denetler.`,
           ],
         },
       ],
@@ -163,7 +163,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 D-1 / D-2 standartları ve BWMS",
           paragraphs: [
-            `BWM Convention, istilacı türlerin taşınmasını önlemek için D-1 (ballast water exchange) ve nihai D-2 (biological treatment) standartlarını getirir. Gemiler IMO type-approved BWMS (UV, electrochlorination, ozone) ile donatılır. Ballast Water Record Book her balast alma/verme/değiştirme işlemini kaydeder; Ballast Water Management Plan gemiye özeldir.`,
+            `BWM Convention, istilacı türlerin taşınmasını önlemek için D-1 (ballast water exchange) ve nihai D-2 (arıtma ile sağlanan ballast water performance standard) standartlarını getirir. Gemiler IMO type-approved BWMS (UV, electrochlorination, ozone) ile donatılır. Ballast Water Record Book her balast alma/verme/değiştirme işlemini kaydeder; Ballast Water Management Plan gemiye özeldir.`,
             `Kaptan, BWMS'in çalışır durumda olduğunu, D-2 uyumunun sağlandığını ve BWRB'nin doğru tutulduğunu denetler. ABD (USCG) kendi onay rejimine sahiptir; ABD sularına giren gemilerde ek uyum gerekir.`,
           ],
           callouts: [

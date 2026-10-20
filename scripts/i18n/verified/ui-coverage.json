@@ -1,0 +1,408 @@
+{
+ "• If GM < 0.15 m, the operation MUST BE STOPPED": {
+  "en": "• If GM < 0.15 m, the operation MUST BE STOPPED"
+ },
+ "• If GM < critical GM, dry-docking is PROHIBITED": {
+  "en": "• If GM < critical GM, dry-docking is PROHIBITED"
+ },
+ "<10 viable organisms/m³": {
+  "en": "<10 viable organisms/m³"
+ },
+ "<10 viable organisms/ml": {
+  "en": "<10 viable organisms/ml"
+ },
+ "≈ −0.027 m": {
+  "en": "≈ −0.027 m"
+ },
+ "≈ 49.1° N": {
+  "en": "≈ 49.1° N"
+ },
+ "A free-fall lifeboat on its launching ramp at the stern of a bulk carrier; on release it slides down the ramp and drops into the sea.": {
+  "en": "A free-fall lifeboat on its launching ramp at the stern of a bulk carrier; on release it slides down the ramp and drops into the sea."
+ },
+ "An error occurred during the dry-docking calculation!": {
+  "en": "An error occurred during the dry-docking calculation!"
+ },
+ "An orange totally enclosed lifeboat stowed in its davits on the boat deck of a cargo ship.": {
+  "en": "An orange totally enclosed lifeboat stowed in its davits on the boat deck of a cargo ship."
+ },
+ "Anchoring and Anchor Equipment": {
+  "en": "Anchoring and Anchor Equipment"
+ },
+ "Average Spacing:": {
+  "en": "Average Spacing:"
+ },
+ "Ballast water and trim effect": {
+  "en": "Ballast water and trim effect"
+ },
+ "Berthing and mooring procedure": {
+  "en": "Berthing and mooring procedure"
+ },
+ "Changeover": {
+  "en": "Changeover"
+ },
+ "Compare initial and final surveys": {
+  "en": "Compare initial and final surveys"
+ },
+ "Cooling": {
+  "en": "Cooling"
+ },
+ "DANGER: GM < 0.15 m — insufficient stability!": {
+  "en": "DANGER: GM < 0.15 m — insufficient stability!"
+ },
+ "Dictionary": {
+  "en": "Dictionary",
+  "de": "Wörterbuch",
+  "fr": "Dictionnaire",
+  "es": "Diccionario",
+  "it": "Dizionario",
+  "pt": "Dicionário",
+  "nl": "Woordenboek",
+  "ru": "Словарь",
+  "uk": "Словник",
+  "bg": "Речник",
+  "pl": "Słownik",
+  "cs": "Slovník",
+  "sv": "Ordbok",
+  "no": "Ordbok",
+  "da": "Ordbog",
+  "fi": "Sanakirja",
+  "hu": "Szótár",
+  "ro": "Dicționar",
+  "el": "Λεξικό",
+  "ar": "القاموس",
+  "hi": "शब्दकोश",
+  "ja": "辞書",
+  "ko": "사전",
+  "zh-CN": "词典"
+ },
+ "Displacement and cargo quantity from the drafts": {
+  "en": "Displacement and cargo quantity from the drafts"
+ },
+ "Dock Configuration": {
+  "en": "Dock Configuration"
+ },
+ "Dock Length (m)": {
+  "en": "Dock Length (m)"
+ },
+ "Dock Length:": {
+  "en": "Dock Length:"
+ },
+ "Dock Parameters": {
+  "en": "Dock Parameters"
+ },
+ "Dock water density effect": {
+  "en": "Dock water density effect"
+ },
+ "Draft Survey (Fast)": {
+  "en": "Draft Survey (Fast)"
+ },
+ "Dry-Docking": {
+  "en": "Dry-Docking"
+ },
+ "Dry-Docking Analysis Results": {
+  "en": "Dry-Docking Analysis Results"
+ },
+ "Dry-Docking Safety Protocol:": {
+  "en": "Dry-Docking Safety Protocol:"
+ },
+ "Europe, Africa, most of Asia, Australia — Türkiye is here": {
+  "en": "Europe, Africa, most of Asia, Australia — Türkiye is here"
+ },
+ "Final survey after discharge": {
+  "en": "Final survey after discharge"
+ },
+ "Fixed CO₂ System": {
+  "en": "Fixed CO₂ System"
+ },
+ "Free-fall lifeboat": {
+  "en": "Free-fall lifeboat"
+ },
+ "Fuel and stores on board": {
+  "en": "Fuel and stores on board"
+ },
+ "GM Ratio:": {
+  "en": "GM Ratio:"
+ },
+ "Heave Amplitude": {
+  "en": "Heave Amplitude"
+ },
+ "Image credits": {
+  "en": "Image credits"
+ },
+ "In the fourth stage a line is drawn through the intercept point at right angles to the Zn direction. This line is the LOP. It represents every point where the ship could have been at the moment of the sight; the ship is somewhere on this line.": {
+  "en": "In the fourth stage a line is drawn through the intercept point at right angles to the Zn direction. This line is the LOP. It represents every point where the ship could have been at the moment of the sight; the ship is somewhere on this line."
+ },
+ "In the second stage a single line is drawn from the AP. This line is Zn and represents the direction in which the celestial body is seen. Zn is not a course and not the direction the ship is heading; it only carries the information “the body lies in this direction”, measured from true north.": {
+  "en": "In the second stage a single line is drawn from the AP. This line is Zn and represents the direction in which the celestial body is seen. Zn is not a course and not the direction the ship is heading; it only carries the information “the body lies in this direction”, measured from true north."
+ },
+ "In the third stage the difference between Ho and Hc is treated purely as a distance, taking 1′ = 1 nautical mile. This distance is laid off along the Zn line: towards the body if Ho > Hc, away from the body if Ho < Hc. There is still no LOP at this stage; only how far and in which direction the position lies from the AP is established.": {
+  "en": "In the third stage the difference between Ho and Hc is treated purely as a distance, taking 1′ = 1 nautical mile. This distance is laid off along the Zn line: towards the body if Ho > Hc, away from the body if Ho < Hc. There is still no LOP at this stage; only how far and in which direction the position lies from the AP is established."
+ },
+ "Initial survey before cargo work starts": {
+  "en": "Initial survey before cargo work starts"
+ },
+ "Intermediate survey during loading or discharge": {
+  "en": "Intermediate survey during loading or discharge"
+ },
+ "ISM Code - Safety Management": {
+  "en": "ISM Code - Safety Management"
+ },
+ "Learn": {
+  "en": "Learn",
+  "ar": "تعلّم",
+  "bg": "Учене",
+  "cs": "Učení",
+  "da": "Lær",
+  "de": "Lernen",
+  "el": "Μάθηση",
+  "es": "Aprender",
+  "fi": "Opi",
+  "fr": "Apprendre",
+  "hi": "सीखें",
+  "hu": "Tanulás",
+  "it": "Impara",
+  "ja": "学ぶ",
+  "ko": "학습",
+  "nl": "Leren",
+  "no": "Lær",
+  "pl": "Nauka",
+  "pt": "Aprender",
+  "ro": "Învață",
+  "ru": "Учиться",
+  "sv": "Lär dig",
+  "uk": "Навчання",
+  "zh-CN": "学习"
+ },
+ "Library": {
+  "en": "Library",
+  "ar": "المكتبة",
+  "bg": "Библиотека",
+  "cs": "Knihovna",
+  "da": "Bibliotek",
+  "de": "Bibliothek",
+  "el": "Βιβλιοθήκη",
+  "es": "Biblioteca",
+  "fi": "Kirjasto",
+  "fr": "Bibliothèque",
+  "hi": "लाइब्रेरी",
+  "hu": "Könyvtár",
+  "it": "Biblioteca",
+  "ja": "ライブラリ",
+  "ko": "라이브러리",
+  "nl": "Bibliotheek",
+  "no": "Bibliotek",
+  "pl": "Biblioteka",
+  "pt": "Biblioteca",
+  "ro": "Bibliotecă",
+  "ru": "Библиотека",
+  "sv": "Bibliotek",
+  "uk": "Бібліотека",
+  "zh-CN": "资料库"
+ },
+ "Lower monthly AI quota": {
+  "en": "Lower monthly AI quota"
+ },
+ "Manage membership": {
+  "en": "Manage membership"
+ },
+ "Mariner’s Book Pro": {
+  "en": "Mariner’s Book Pro"
+ },
+ "Max Spacing:": {
+  "en": "Max Spacing:"
+ },
+ "Min GM Ratio:": {
+  "en": "Min GM Ratio:"
+ },
+ "Mooring fittings (bollards, fairleads)": {
+  "en": "Mooring fittings (bollards, fairleads)"
+ },
+ "Mooring Operations": {
+  "en": "Mooring Operations"
+ },
+ "MUSTER LIST": {
+  "en": "MUSTER LIST"
+ },
+ "New KG after Weight Removal": {
+  "en": "New KG after Weight Removal"
+ },
+ "No matching location found.": {
+  "en": "No matching location found."
+ },
+ "Organisms 10–50 μm:": {
+  "en": "Organisms 10–50 μm:"
+ },
+ "Panama Chock": {
+  "en": "Panama Chock"
+ },
+ "Password": {
+  "en": "Password",
+  "de": "Passwort",
+  "fr": "Mot de passe",
+  "es": "Contraseña",
+  "it": "Password",
+  "pt": "Senha",
+  "nl": "Wachtwoord",
+  "ru": "Пароль",
+  "uk": "Пароль",
+  "bg": "Парола",
+  "pl": "Hasło",
+  "cs": "Heslo",
+  "sv": "Lösenord",
+  "no": "Passord",
+  "da": "Adgangskode",
+  "fi": "Salasana",
+  "hu": "Jelszó",
+  "ro": "Parolă",
+  "el": "Κωδικός πρόσβασης",
+  "ar": "كلمة المرور",
+  "hi": "पासवर्ड",
+  "ja": "パスワード",
+  "ko": "비밀번호",
+  "zh-CN": "密码"
+ },
+ "Payments are taken from your Google Play account. Subscriptions renew automatically at the end of each period; you can cancel any time under Google Play > Subscriptions. The lifetime package is a one-off payment and comes with a lower monthly AI quota than the subscription.": {
+  "en": "Payments are taken from your Google Play account. Subscriptions renew automatically at the end of each period; you can cancel any time under Google Play > Subscriptions. The lifetime package is a one-off payment and comes with a lower monthly AI quota than the subscription."
+ },
+ "Perform Dry-Docking Stability Analysis": {
+  "en": "Perform Dry-Docking Stability Analysis"
+ },
+ "Pro": {
+  "en": "Pro"
+ },
+ "Radar Plot (Target Course/Speed)": {
+  "en": "Radar Plot (Target Course/Speed)"
+ },
+ "Region A: entering from seaward, keep RED marks to port and GREEN marks to starboard.": {
+  "en": "Region A: entering from seaward, keep RED marks to port and GREEN marks to starboard."
+ },
+ "Region B: entering from seaward, keep RED marks to starboard and GREEN marks to port (“red right returning”).": {
+  "en": "Region B: entering from seaward, keep RED marks to starboard and GREEN marks to port (“red right returning”)."
+ },
+ "Removing weight from high up improves stability": {
+  "en": "Removing weight from high up improves stability"
+ },
+ "Rules & Requirements": {
+  "en": "Rules & Requirements"
+ },
+ "Safety and Risk": {
+  "en": "Safety and Risk"
+ },
+ "Safety Calculations": {
+  "en": "Safety Calculations"
+ },
+ "Safety Factors:": {
+  "en": "Safety Factors:"
+ },
+ "Safety Focused": {
+  "en": "Safety Focused"
+ },
+ "Safety Guide": {
+  "en": "Safety Guide"
+ },
+ "Safety Note:": {
+  "en": "Safety Note:"
+ },
+ "Safety Protocol:": {
+  "en": "Safety Protocol:"
+ },
+ "Safety Recommendations": {
+  "en": "Safety Recommendations"
+ },
+ "Safety Status": {
+  "en": "Safety Status"
+ },
+ "Search buoyage marks": {
+  "en": "Search buoyage marks"
+ },
+ "Search marks (e.g. cardinal, wreck, safe water)…": {
+  "en": "Search marks (e.g. cardinal, wreck, safe water)…"
+ },
+ "See Pro plans": {
+  "en": "See Pro plans"
+ },
+ "See the plans and prices, or restore a purchase you made before.": {
+  "en": "See the plans and prices, or restore a purchase you made before."
+ },
+ "Shape:": {
+  "en": "Shape:"
+ },
+ "Ship": {
+  "en": "Ship"
+ },
+ "Side-rolling hatch covers on a bulk carrier": {
+  "en": "Side-rolling hatch covers on a bulk carrier"
+ },
+ "SOLAS Safety Equipment": {
+  "en": "SOLAS Safety Equipment"
+ },
+ "Stockless (Hall type) anchor": {
+  "en": "Stockless (Hall type) anchor"
+ },
+ "The first stage uses only an abstract latitude–longitude grid and the assumed position (AP). The AP is a reference point close to the DR position, chosen with whole-degree coordinates. It carries no meaning of a course, coastline or track; it is only the geometric centre for which the computed Hc and Zn are valid.": {
+  "en": "The first stage uses only an abstract latitude–longitude grid and the assumed position (AP). The AP is a reference point close to the DR position, chosen with whole-degree coordinates. It carries no meaning of a course, coastline or track; it is only the geometric centre for which the computed Hc and Zn are valid."
+ },
+ "The hatch cover panels are rolled to both sides on their rails, leaving the holds open; the coamings and the cross-deck between the holds are visible.": {
+  "en": "The hatch cover panels are rolled to both sides on their rails, leaving the holds open; the coamings and the cross-deck between the holds are visible."
+ },
+ "The photos and diagrams in the lessons come from Wikimedia Commons and are used under the licences listed below. Tap a title to open its source page.": {
+  "en": "The photos and diagrams in the lessons come from Wikimedia Commons and are used under the licences listed below. Tap a title to open its source page."
+ },
+ "The stockless anchor used on most merchant ships: the flukes pivot about the crown, so the anchor can be heaved right up into the hawse pipe.": {
+  "en": "The stockless anchor used on most merchant ships: the flukes pivot about the crown, so the anchor can be heaved right up into the hawse pipe."
+ },
+ "This module helps bridge teams carry out the task safely, methodically and in a way that can be documented. This summary is a quick orientation for newly joined officers and a reference guide for experienced watchkeepers preparing for drills and inspections.": {
+  "en": "This module helps bridge teams carry out the task safely, methodically and in a way that can be documented. This summary is a quick orientation for newly joined officers and a reference guide for experienced watchkeepers preparing for drills and inspections."
+ },
+ "Tools": {
+  "en": "Tools",
+  "ar": "الأدوات",
+  "bg": "Инструменти",
+  "cs": "Nástroje",
+  "da": "Værktøjer",
+  "de": "Werkzeuge",
+  "el": "Εργαλεία",
+  "es": "Herramientas",
+  "fi": "Työkalut",
+  "fr": "Outils",
+  "hi": "उपकरण",
+  "hu": "Eszközök",
+  "it": "Strumenti",
+  "ja": "ツール",
+  "ko": "도구",
+  "nl": "Hulpmiddelen",
+  "no": "Verktøy",
+  "pl": "Narzędzia",
+  "pt": "Ferramentas",
+  "ro": "Instrumente",
+  "ru": "Инструменты",
+  "sv": "Verktyg",
+  "uk": "Інструменти",
+  "zh-CN": "工具"
+ },
+ "Topic Summary": {
+  "en": "Topic Summary"
+ },
+ "Topmark:": {
+  "en": "Topmark:"
+ },
+ "Totally enclosed lifeboat in its davits": {
+  "en": "Totally enclosed lifeboat in its davits"
+ },
+ "Your Lifetime access is active.": {
+  "en": "Your Lifetime access is active."
+ },
+ "Your Pro access is now active. ⚓": {
+  "en": "Your Pro access is now active. ⚓"
+ },
+ "Your Pro subscription is active.": {
+  "en": "Your Pro subscription is active."
+ },
+ "════════════════════ Effective Height = 30 + (4.0 − 2.0) Effective Height = 32 m ════════════════════": {
+  "en": "════════════════════ Effective Height = 30 + (4.0 − 2.0) Effective Height = 32 m ════════════════════"
+ },
+ "MHWS": {
+  "en": "MHWS"
+ }
+}

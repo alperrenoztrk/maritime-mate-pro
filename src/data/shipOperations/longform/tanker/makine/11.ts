@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 15 ppm ve bölge kuralları",
           paragraphs: [
-            `OWS çıkışı OCM ile izlenir; 15 ppm aşılırsa otomatik 3-way valve sintineyi tanka geri yollar. Special area dışında ve kıyıdan uzakta (uygun mesafede) tahliye yapılır.`,
+            `OWS çıkışı OCM ile izlenir; 15 ppm aşılırsa otomatik 3-way valve sintineyi tanka geri yollar. Tahliye gemi seyir halindeyken ve MARPOL koşulları sağlanarak yapılır (Antarktika bölgesinde yasaktır).`,
           ],
           bullets: [
             `OCM auto izleme (15 ppm)`,

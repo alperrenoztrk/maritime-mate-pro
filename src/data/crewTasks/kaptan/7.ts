@@ -96,7 +96,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 Notice of Readiness (NOR)",
           paragraphs: [
             `NOR, geminin yükleme/boşaltma için her bakımdan hazır olduğunu charterer/alıcıya bildiren belgedir ve laytime (starya) sayacını başlatır. NOR'un geçerli olması için gemi fiilen ve hukuken hazır olmalı (free pratique alınmış, gümrük formaliteleri tamamlanmış, kargo erişimi açık). Erken veya geçersiz verilen NOR, laytime hesabını bozar ve demuraj/dispatch ihtilafına yol açar.`,
-            `Charter party'de "WIPON, WIBON, WIFPON, WICCON" (whether in port/berth/free pratique/customs cleared or not) klozları NOR'un ne zaman verilebileceğini belirler. Kaptan bu klozları bilmeli, NOR'u doğru zaman ve doğru muhataba (genellikle charterer ve acente) yazılı olarak tendere etmelidir. Tendere zamanı (tarih-saat) çok önemlidir.`,
+            `Charter party'de "WIPON, WIBON, WIFPON, WCCON" (whether in port/berth/free pratique/customs cleared or not) klozları NOR'un ne zaman verilebileceğini belirler. Kaptan bu klozları bilmeli, NOR'u doğru zaman ve doğru muhataba (genellikle charterer ve acente) yazılı olarak tendere etmelidir. Tendere zamanı (tarih-saat) çok önemlidir.`,
           ],
           callouts: [
             {
@@ -146,14 +146,14 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Oil Record Book (ORB) Part I ve II",
           paragraphs: [
-            `ORB Part I (machinery space operations) ve Part II (cargo/ballast — tankerlerde) MARPOL Annex I uyarınca her operasyondan hemen sonra, ilgili kodlu maddeyle (A'dan K'ya) doldurulur. Slop, bilge, sludge, oily water separator (15 ppm) deşarjları, internal transferler ve atık teslimleri kaydedilir. Her sayfa kaptan tarafından imzalanır.`,
+            `ORB Part I (machinery space operations) ve Part II (cargo/ballast — tankerlerde) MARPOL Annex I uyarınca her operasyondan hemen sonra, ilgili kodlu maddeyle (Part I'de A'dan I'ya) doldurulur. Slop, bilge, sludge, oily water separator (15 ppm) deşarjları, internal transferler ve atık teslimleri kaydedilir. Her sayfa kaptan tarafından imzalanır.`,
             `ORB tutarsızlığı (örn. sludge üretimi ile teslim/incineration dengesizliği) PSC ve ABD Sahil Güvenlik denetiminde derhal şüphe çeker. "Magic pipe" (yasadışı bypass) davalarının çoğu ORB ile fiili durum çelişkisinden açığa çıkmıştır.`,
           ],
         },
         {
           subheading: "5.2 Garbage Record Book ve Ballast Water Record Book",
           paragraphs: [
-            `Garbage Record Book, MARPOL Annex V kapsamında atık kategorilerine (A-J) göre deşarj, yakma ve liman tesisine teslim kayıtlarını tutar. Ballast Water Record Book ise BWM Convention uyarınca ballast alım/deşarj, treatment ve exchange operasyonlarını kaydeder. Her iki defter de denetime açıktır ve eksiklik bulgu (deficiency) sebebidir.`,
+            `Garbage Record Book, MARPOL Annex V kapsamında atık kategorilerine (A-K) göre deşarj, yakma ve liman tesisine teslim kayıtlarını tutar. Ballast Water Record Book ise BWM Convention uyarınca ballast alım/deşarj, treatment ve exchange operasyonlarını kaydeder. Her iki defter de denetime açıktır ve eksiklik bulgu (deficiency) sebebidir.`,
           ],
         },
       ],

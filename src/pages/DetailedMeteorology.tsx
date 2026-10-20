@@ -413,7 +413,7 @@ const DetailedMeteorology = () => {
               </Badge>
               <Badge variant="secondary">
                 <Shield className="h-3 w-3 mr-1" />
-                Security Focused
+                Safety Focused
               </Badge>
             </div>
           </div>
@@ -446,7 +446,7 @@ const DetailedMeteorology = () => {
             <TabsTrigger value="navtex">NAVTEX Warnings</TabsTrigger>
             <TabsTrigger value="drawing">Weather Chart</TabsTrigger>
             <TabsTrigger value="forecasting">Estimation Methods</TabsTrigger>
-            <TabsTrigger value="safety">Security Guide</TabsTrigger>
+            <TabsTrigger value="safety">Safety Guide</TabsTrigger>
           </TabsList>
 
           {/* Satellite Tab */}
@@ -634,7 +634,7 @@ const DetailedMeteorology = () => {
                           <div>
                             <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
                               <AlertTriangle className="h-4 w-4" />
-                              Security Recommendations
+                              Safety Recommendations
                             </h4>
                             <ul className="text-sm space-y-1">
                               {system.recommendations.map((rec, index) => (

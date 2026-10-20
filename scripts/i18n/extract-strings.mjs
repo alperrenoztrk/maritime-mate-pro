@@ -72,6 +72,27 @@ const addSegment = (value) => {
   if (isTranslatable(s)) strings.add(s);
 };
 
+// JSX text and JSX attribute strings may hold HTML character references
+// (`GM &lt; 0.15 m`, `Mariner&rsquo;s`). React renders the decoded character,
+// so the DOM text node — the runtime lookup key — never contains the entity.
+// Keys must be decoded the same way or the dictionary entry is never used.
+const NAMED_ENTITIES = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+  rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“',
+  ndash: '–', mdash: '—', hellip: '…', deg: '°',
+  middot: '·', times: '×', rarr: '→', larr: '←',
+  le: '≤', ge: '≥', plusmn: '±', micro: 'µ',
+};
+function decodeJsxEntities(value) {
+  return value.replace(/&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z]+);/g, (match, ref) => {
+    if (ref[0] === '#') {
+      const code = ref[1] === 'x' || ref[1] === 'X' ? parseInt(ref.slice(2), 16) : parseInt(ref.slice(1), 10);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : match;
+    }
+    return NAMED_ENTITIES[ref] ?? match;
+  });
+}
+
 // React applies special whitespace rules to JSX text: indentation/newlines are
 // collapsed before a DOM Text node is created. Dictionary keys must mirror that
 // rendered value, otherwise a multi-line paragraph is "covered" at build time
@@ -393,7 +414,7 @@ for (const file of files) {
         (attrName === 'placeholder' || attrName === 'title' || attrName === 'aria-label' || attrName === 'alt') &&
         node.initializer && ts.isStringLiteral(node.initializer)
       ) {
-        consider(node.initializer.text, 'text');
+        consider(decodeJsxEntities(node.initializer.text), 'text');
       }
     }
     // Every static JSX text child renders to a DOM text node at runtime, so we
@@ -402,7 +423,7 @@ for (const file of files) {
     if (ts.isJsxElement(node) || ts.isJsxFragment(node)) {
       for (const child of node.children) {
         if (ts.isJsxText(child)) {
-          consider(normalizeJsxText(child.text), 'text');
+          consider(decodeJsxEntities(normalizeJsxText(child.text)), 'text');
         } else if (ts.isJsxExpression(child) && child.expression) {
           collectFromVisibleExpression(child.expression);
         }

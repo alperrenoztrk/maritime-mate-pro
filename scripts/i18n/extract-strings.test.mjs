@@ -41,3 +41,13 @@ test('multiline JSX is normalized to the exact rendered DOM text', () => {
     false,
   );
 });
+
+test('JSX character references are decoded like React renders them', () => {
+  const sources = readSources();
+  assert.equal(
+    [...sources].some((source) => /&(?:lt|gt|amp|quot|apos|rsquo|#\d+);/.test(source)),
+    false,
+    'a dictionary key with an HTML entity never matches the rendered DOM text',
+  );
+  assert.equal(sources.has('SOLAS Certificates & Renewal Tracking'), true);
+});

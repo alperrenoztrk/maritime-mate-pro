@@ -665,12 +665,12 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                       <h4 className="font-semibold mb-3">Discharge Standards (D-2)</h4>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between p-2 bg-muted rounded">
-                          <span>Organisms ≥10-50 μm:</span>
-                          <span>&lt;10 organizma/m³</span>
+                          <span>Organisms ≥50 μm:</span>
+                          <span>&lt;10 viable organisms/m³</span>
                         </div>
                         <div className="flex justify-between p-2 bg-muted rounded">
-                          <span>Organisms ≥50 μm:</span>
-                          <span>&lt;10 organizma/ml</span>
+                          <span>Organisms 10–50 μm:</span>
+                          <span>&lt;10 viable organisms/ml</span>
                         </div>
                         <div className="flex justify-between p-2 bg-muted rounded">
                           <span>Vibrio cholerae:</span>

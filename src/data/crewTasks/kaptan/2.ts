@@ -38,7 +38,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.2 Kriz anında karar verme — durum farkındalığından eyleme",
           paragraphs: [
-            `Kriz kararları çoğu zaman eksik bilgi ve zaman baskısı altında alınır. Etkili bir yaklaşım, askeri kökenli OODA döngüsüdür (Observe-Orient-Decide-Act) veya denizcilikte yaygın "GRADE" mantığıdır: Gather (bilgi topla), Risk assess (riski değerlendir), Analyse (seçenekleri analiz et), Decide (karar ver), Evaluate (sonucu değerlendir). Kaptan, mükemmel bilgi beklerken donup kalmak yerine, "yeterince iyi" bir kararı erken alıp koşullar değiştikçe günceller; çünkü krizde en pahalı karar, hiç karar verilmemesidir.`,
+            `Kriz kararları çoğu zaman eksik bilgi ve zaman baskısı altında alınır. Etkili bir yaklaşım, askeri kökenli OODA döngüsüdür (Observe-Orient-Decide-Act) veya havacılıktan alınan "GRADE" modelidir: Gather (bilgi topla), Review (bilgiyi ve riskleri gözden geçir), Analyse (seçenekleri analiz et), Decide (karar ver), Evaluate (sonucu değerlendir). Kaptan, mükemmel bilgi beklerken donup kalmak yerine, "yeterince iyi" bir kararı erken alıp koşullar değiştikçe günceller; çünkü krizde en pahalı karar, hiç karar verilmemesidir.`,
             `Kaptan, bilişsel tuzaklara (tunnel vision, plan continuation bias, hatalı duruma kilitlenme) karşı uyanık olmalıdır. El Faro vakasında olduğu gibi, ilk planın artık geçerli olmadığı durumda ona yapışmak ölümcüldür. Köprüüstünde "challenge & response" kültürünü krizde de korumak, kaptanın kör noktalarını kapatan en güçlü güvenliktir; bir zabitin "kaptan, bunu yeniden düşünmemiz gerekmez mi?" diyebilmesi krizde hayat kurtarır.`,
           ],
           callouts: [
@@ -93,7 +93,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 İlk müdahale ve sınırlandırma (boundary cooling)",
           paragraphs: [
-            `Yangın alarmında kaptanın ilk kararları: yangının yeri ve sınıfı netleştirilir, genel alarm çalınır, müdahale ekibi (genelde Birinci Zabit liderliğinde) donanımla (SCBA, fireman's outfit, hortum) gönderilir, havalandırma ve yangın damperleri kontrol edilir, gemi manevrasıyla rüzgâr yangını körüklemeyecek konuma getirilir (yangın kıç tarafa düşecek şekilde). Boundary cooling (komşu bölmelerin dışından su ile soğutulması) yangının yayılmasını engellemenin temelidir.`,
+            `Yangın alarmında kaptanın ilk kararları: yangının yeri ve sınıfı netleştirilir, genel alarm çalınır, müdahale ekibi (genelde Birinci Zabit liderliğinde) donanımla (SCBA, fireman's outfit, hortum) gönderilir, havalandırma ve yangın damperleri kontrol edilir, gemi manevrasıyla rüzgâr yangını körüklemeyecek konuma getirilir (nispi rüzgâr azaltılır; duman ve alev yaşam mahallinden ve müdahale ekibinden uzak tutulur). Boundary cooling (komşu bölmelerin dışından su ile soğutulması) yangının yayılmasını engellemenin temelidir.`,
             `Yangın sınıfına göre söndürücü seçilir: A sınıfı (katı) su; B sınıfı (yağ/yakıt) köpük veya CO2; C sınıfı (gaz) kaynağı kesmek; elektrik yangınları CO2/temiz gaz (enerji kesilerek). Makine dairesi yangınında fixed CO2 veya su sisi sistemi son çare olarak kullanılır; ancak CO2 salımı öncesi mahallin tamamen tahliye edildiği ve sayımın yapıldığı mutlak şekilde teyit edilir. Kaptan bu "tüm personel dışarıda mı?" teyidini bizzat alır.`,
           ],
           callouts: [
@@ -108,7 +108,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.2 Yangın ekibi yönetimi ve risk dengesi",
           paragraphs: [
             `Kaptan, müdahale ekibinin güvenliğini yangının söndürülmesi kadar önemser. SCBA hava süresi takip edilir (hava kontrol sorumlusu — air control board), ekip çiftler halinde girer, geri çekilme sinyali ve yedek ekip hazır bulunur. Re-ignition (yeniden tutuşma) riskine karşı yangın söndükten sonra da bölge gözlenir ve sıcaklık izlenir. Tek bir kişinin kahramanlık yapması değil, disiplinli ve geri çekilebilir bir müdahale esastır.`,
-            `Konteyner gemilerinde güverte üstü yangınlar (özellikle mis-declared DG kaynaklı) çok zorludur; yığınlara erişim sınırlıdır, su yetersiz kalabilir ve yapısal risk vardır. Maersk Honam (2018) gibi vakalar, kaptanın bazen yangını tamamen söndüremeyeceğini, ekibi geri çekip dış yardım (salvage, refakat) beklemenin daha doğru olabileceğini gösterir. Kaptanın görevi, ekibi kaybetme pahasına yangını yenmek değil; insanı korumaktır.`,
+            `Konteyner gemilerinde güvertedeki ve ambarlardaki konteyner yangınları (özellikle mis-declared DG kaynaklı) çok zorludur; yığınlara erişim sınırlıdır, su yetersiz kalabilir ve yapısal risk vardır. Maersk Honam (2018) gibi vakalar, kaptanın bazen yangını tamamen söndüremeyeceğini, ekibi geri çekip dış yardım (salvage, refakat) beklemenin daha doğru olabileceğini gösterir. Kaptanın görevi, ekibi kaybetme pahasına yangını yenmek değil; insanı korumaktır.`,
           ],
         },
       ],

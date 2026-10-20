@@ -59,3 +59,18 @@ test('hyphenated compounds and a real pier are left alone', () => {
   assert.deepEqual(findSenseErrors('Kardinal ve atterraj işaretleri', 'bei Kardinal- und Ansteuerungszeichen', 'de'), []);
   assert.deepEqual(findSenseErrors('iskelede veya demirleme manevrasında', 'at the pier or during anchoring manoeuvres', 'en'), []);
 });
+
+test('dry dock (havuz) is not a swimming pool, but a real pool is', () => {
+  assert.deepEqual(findSenseErrors('Havuz dönemi', 'Schwimmbadzeit', 'de'), ['havuz-pool']);
+  assert.deepEqual(findSenseErrors('Gemi havuza girdiğinde', 'Lorsque le navire entre dans la piscine', 'fr'), ['havuz-pool']);
+  assert.deepEqual(findSenseErrors('Havuz dönemi', 'Dockzeit', 'de'), []);
+  assert.deepEqual(findSenseErrors('Yüzme havuzu pompası', 'Schwimmbadpumpe', 'de'), []);
+  assert.deepEqual(findSenseErrors('Filo havuzu: ortak stok', 'Flottenpool: gemeinsamer Bestand', 'de'), []);
+});
+
+test('class (classification society) is not a classroom', () => {
+  assert.deepEqual(findSenseErrors('Sınıf survey', 'Klasseværelsesundersøgelse', 'da'), ['sinif-classroom']);
+  assert.deepEqual(findSenseErrors('Malzeme sınıf kurallarına uymalıdır.', 'Materials must comply with classroom rules.', 'en'), ['sinif-classroom']);
+  assert.deepEqual(findSenseErrors('Malzeme sınıf kurallarına uymalıdır.', 'Materials must comply with class rules.', 'en'), []);
+  assert.deepEqual(findSenseErrors('Sınıf eğitimi', 'Classroom training', 'en'), []);
+});

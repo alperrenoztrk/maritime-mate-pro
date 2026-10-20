@@ -249,6 +249,21 @@ const rudderRepair = (source: string, translation: string): string => {
   return translation.replace(/\bsteering\s+wheel(?:\s+house)?\b/gi, (m) => matchCase(m, term));
 };
 
+// "sınıf"/"klas" is the classification society unless the text is about
+// training (a classroom, a course).
+const CLASS_SOCIETY_SOURCE_RE =
+  /^(?![\s\S]*(?:eğitim|ders(?:lik|hane)|öğrenci|öğretmen|eğitmen|kurs|training|simülatör))[\s\S]*(?:s[ıi]n[ıi]f|klas)/iu;
+// "havuz" is the dry dock, except for swimming pools on passenger ships and
+// pools in the sense of a shared group (fleet, charterer or P&I pool, FuelEU
+// pooling).
+const DRY_DOCK_SOURCE_RE =
+  /^(?![\s\S]*(?:yüzme|jakuzi|filo\s+havuz|kaynak\s+havuz|charterer\s+havuz|kiralama\s+havuz|ortak\s+havuz|üyelik|bölgesel\s+havuz|deney\s+havuz|güverte\/havuz|su\s+parkı|cruise|yolcu|deficit|surplus|fuel\s*eu|pooling))[\s\S]*havuz/iu;
+const dryDockReplacement: EnglishReplacement = (match: string) => {
+  if (/^(?:building|pooling)/i.test(match)) return matchCase(match, 'dry-docking');
+  if (/operations?$/i.test(match)) return matchCase(match, /s$/i.test(match) ? 'dry-docking operations' : 'dry-docking operation');
+  return matchCase(match, /s$/i.test(match) ? 'dry docks' : 'dry dock');
+};
+
 const ENGINE_SPEED_SOURCE_RE =
   /(?:aktif\s+uyarı[^.!?]{0,80}devirde|vardiya\s+devir|devirde\s+pusula|güç\s*\/\s*devir|devir\s+hatas|devire\s*\(basınç|(?:dört|iki|yarım|her\s*2)\s+devir|IACS\s+UR\s+M68|kritik\s+devir|L10|L₁₀|devir\s+bazlı|devir\s+kontrol|gerçek\s+devir\s+koşul|devir\s+kaçağı|yeterli\s+devir|orta\s+devir)/iu;
 
@@ -288,7 +303,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-014', label: 'LSA dalış elbisesi must be immersion suit', source: /dalış\s+elbises/iu, wrong: /\bdiving\s+suits?\b/giu, replacement: asPluralTerm('immersion suit', 'immersion suits') },
   { id: 'T-015', label: 'Yangın elbisesi must be firefighter outfit', source: /yangın\s+elbises/iu, wrong: /\bfire\s+suit\b/giu, replacement: asTerm("firefighter's outfit") },
   { id: 'T-016', label: 'Can kurtarma must use life-saving', source: /can\s+kurtarma/iu, wrong: /\blife\s+saving\b/giu, replacement: asTerm('life-saving') },
-  { id: 'T-017', label: 'shipboard tatbikat must be drill', source: /tatbikat/iu, wrong: /\b(?:exercise|practice)s?\b/giu, replacement: asPluralTerm('drill', 'drills') },
+  { id: 'T-017', label: 'shipboard tatbikat must be drill', source: /tatbikat/iu, wrong: /\b(?:exercise|practice)s?\b/giu, applies: (source) => !/ISPS|güvenlik\s+(?:drill|tatbikat)|exercise/iu.test(source), replacement: asPluralTerm('drill', 'drills') },
   { id: 'T-018', label: 'COLREG RAM phrase must be standard', source: /manevra\s+kabiliyeti\s+kısıtlı/iu, wrong: /\b(?:limited|restricted)\s+maneuverability\b/giu, replacement: asTerm('restricted in her ability to manoeuvre') },
   { id: 'T-019', label: 'Yangın dolabı must be fire-hose cabinet', source: /yangın\s+dolab/iu, wrong: /\bfire\s+cabinet\b/giu, replacement: asTerm('fire-hose cabinet') },
   { id: 'T-020', label: 'Denize atım must be discharge to sea', source: /denize\s+atım/iu, wrong: /\bmy\s+horse\s+to\s+the\s+sea\b/giu, replacement: asTerm('discharge to sea') },
@@ -313,7 +328,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-039', label: 'ship structural perde must be bulkhead', source: /(?:su\s+geçirmez|watertight|yangın|çarpışma|çatışma|tank|gemi|enine|boyuna|bölme|sınır)\s+perde|perde\s+(?:sacı|mukavemet|kapı)|kapak\s*\/\s*perde\s*\/\s*tank/iu, wrong: /\bcurtains?\b/giu, replacement: asPluralTerm('bulkhead', 'bulkheads') },
   { id: 'T-040', label: 'Matafora must be davit', source: /matafora/iu, wrong: /\bcrane(?:-like\s+mechanism)?s?\b/giu, replacement: asPluralTerm('davit', 'davits') },
   { id: 'T-041', label: 'Kenter kilidi must be joining shackle', source: /kenter\s+kilid/iu, wrong: /\bkenter\s+lock\b/giu, replacement: asTerm('Kenter joining shackle') },
-  { id: 'T-042', label: 'anchor-chain/lifting kilit must be shackle', source: /(?:demir|zincir|kenter|posa)[^.!?]{0,40}kil(?:it|id)|kil(?:it|id)[^.!?]{0,40}(?:demir|zincir|27[,.]5)|(?:bakla\s+boya|tel\s+sarımlar|kaç\s+kilit|yaklaşık\s+\d+\s+kilit)|(?:halat|makara)[^.!?]{0,30}kanca[^.!?]{0,30}kilit/iu, wrong: /\blocks?\b/giu, replacement: asPluralTerm('shackle', 'shackles') },
+  { id: 'T-042', label: 'anchor-chain/lifting kilit must be shackle', source: /(?:demir|zincir|kenter|posa)[^.!?]{0,40}kil(?:it|id)(?!l)|kil(?:it|id)(?!l)[^.!?]{0,40}(?:demir|zincir|27[,.]5)|(?:bakla\s+boya|tel\s+sarımlar|kaç\s+kilit|yaklaşık\s+\d+\s+kilit)|(?:halat|makara)[^.!?]{0,30}kanca[^.!?]{0,30}kilit/iu, wrong: /\blocks?\b/giu, replacement: asPluralTerm('shackle', 'shackles') },
   { id: 'T-043', label: 'Çıma must be rope end', source: /çıma/iu, wrong: /\bsticks?\b/giu, replacement: asPluralTerm('rope end', 'rope ends') },
   { id: 'T-044', label: 'Palamar/bağlama halatı must be mooring line', source: /(?:palamar|bağlama)\s+halat/iu, wrong: /\bmooring\s+ropes?\b/giu, replacement: asPluralTerm('mooring line', 'mooring lines') },
   { id: 'T-045', label: 'operational halat must be line', source: /(?:baş|kıç|spring|çekme|römork|tug|palamar)\s+halat|halat(?:ı|ın|lar)?\s+(?:ver|al|tut|boşla|bağla|çöz|ger|kop)/iu, wrong: /\brope(s)?\b/giu, replacement: (_m, plural) => plural ? 'lines' : 'line' },
@@ -333,7 +348,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-059', label: 'Bumba must be boom or derrick', source: /bumba/iu, wrong: /\bbombs?\b/giu, replacement: asPluralTerm('derrick', 'derricks') },
   { id: 'T-060', label: 'Çekmenin temel prensipleri must be towing', source: /çekmenin\s+temel\s+prensipleri/iu, wrong: /\bbasic\s+principles\s+of\s+drawing\b/giu, replacement: 'BASIC PRINCIPLES OF TOWING' },
   { id: 'T-061', label: 'Pruva pruvaya must be head-on', source: /pruva\s+pruvaya\s+karşılaşma/iu, wrong: /\bprow\s+to\s+bow\s+(?:encounter|meeting)\b/giu, replacement: asTerm('head-on situation') },
-  { id: 'T-062', label: 'IALA şamandıra must be buoy', source: /şamandıra/iu, wrong: /\bfloats?\b/giu, replacement: asPluralTerm('buoy', 'buoys') },
+  { id: 'T-062', label: 'IALA şamandıra must be buoy', source: /şamandıra/iu, wrong: /\bfloats?\b/giu, applies: (source) => !/\bfloat\b|seviye|valf|şalter/iu.test(source), replacement: asPluralTerm('buoy', 'buoys') },
   { id: 'T-063', label: 'anchor irgat must be windlass', source: /(?:demir|zincir|anchor)[^.!?]{0,50}ırgat|ırgat[^.!?]{0,50}(?:demir|zincir|anchor)/iu, wrong: /\bcapstans?\b/giu, replacement: asPluralTerm('windlass', 'windlasses') },
   { id: 'T-064', label: 'nautical harita must be chart', source: /harita/iu, wrong: /\bmaps?\b/giu, applies: (source) => !NON_NAUTICAL_MAP_SOURCE_RE.test(source), replacement: asPluralTerm('chart', 'charts') },
   { id: 'T-065', label: 'Kağıt harita must be paper chart', source: /kağıt\s+harita/iu, wrong: /\bpaper\s+maps?\b/giu, replacement: asPluralTerm('paper chart', 'paper charts') },
@@ -382,7 +397,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-108', label: 'Yük hattı must be load line', source: /yük\s+hatt/iu, wrong: /\bloading\s+line\b/giu, replacement: asTerm('load line') },
   { id: 'T-109', label: 'Tehlikeli yük must be dangerous goods', source: /tehlikeli\s+yük/iu, wrong: /\bdangerous\s+load\b/giu, replacement: asTerm('dangerous goods') },
   { id: 'T-110', label: 'Yük miktarı must be cargo quantity', source: /yük\s+miktar/iu, wrong: /\bload\s+amount\b/giu, replacement: asTerm('cargo quantity') },
-  { id: 'T-111', label: 'cargo istif must be stowage', source: /istif/iu, wrong: /\bstack(?:ing|ed)?\b/giu, applies: (source) => !/(?:konteyner|container)\s+(?:stack|yığın)/iu.test(source), replacement: (m) => matchCase(m, /ing$/i.test(m) ? 'stowing' : 'stowage') },
+  { id: 'T-111', label: 'cargo istif must be stowage', source: /istif/iu, wrong: /\bstack(?:ing|ed)?\b/giu, applies: (source) => !/konteyner|container|\bstack/iu.test(source), replacement: (m) => matchCase(m, /ing$/i.test(m) ? 'stowing' : /ed$/i.test(m) ? 'stowed' : 'stowage') },
   { id: 'T-112', label: 'Kaldırma merkezi must be center of buoyancy', source: /kaldırma\s+merkez/iu, wrong: /\blifting\s+cent(?:er|re)\b/giu, replacement: asTerm('center of buoyancy') },
   { id: 'T-113', label: 'Kaldırma kuvveti must be buoyant force', source: /kaldırma\s+kuvvet/iu, wrong: /\b(?:lift|lifting)\s+force\b/giu, replacement: asTerm('buoyant force') },
   { id: 'T-114', label: 'Yatırıcı moment must be heeling moment', source: /yatırıcı\s+moment/iu, wrong: /\btilting\s+moment\b/giu, replacement: asTerm('heeling moment') },
@@ -422,6 +437,11 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-145', label: 'IMO Res. (resolution) must not become a figure caption', source: /\bRes\.\s*(?:[A-Z]|\d|—|–)/u, wrong: /\b(?:Pic|Fig|Photo)\.(?=\s*(?:[A-Z]|\d|—|–))/gu, replacement: () => 'Res.' },
   { id: 'T-146', label: 'muster (list, station) must not become customer', source: /\bmuster/iu, wrong: /\bcustomers?\b/giu, replacement: asPluralTerm('muster', 'musters') },
   { id: 'T-147', label: 'Emniyet beside SÉCURITÉ is safety, not security', source: /^(?=[\s\S]*emniyet)(?=[\s\S]*S[ÉE]CURIT[ÉE])/iu, wrong: /\bsecurity\b/giu, replacement: asTerm('safety') },
+  { id: 'T-148', label: 'sınıf/klas (classification society) must be class, not classroom', source: CLASS_SOCIETY_SOURCE_RE, wrong: /\b(?:classrooms?|classy)\b/giu, replacement: asPluralTerm('class', 'classes') },
+  { id: 'T-149', label: 'havuz (dry dock) must not become a swimming pool', source: DRY_DOCK_SOURCE_RE, wrong: /\b(?:building\s+the\s+pool|pooling|pools?(?:\s+operations?)?)\b/giu, replacement: dryDockReplacement },
+  { id: 'T-150', label: 'model deney havuzu is a towing tank', source: /deney\s+havuz/iu, wrong: /\b(?:model\s+)?test\s+pool\b/giu, replacement: asTerm('towing tank') },
+  { id: 'T-151', label: 'kiralama (chartering) must not become leasing', source: /kiralama\s+süreç/iu, wrong: /\bleasing\s+processes\b/giu, replacement: asTerm('chartering processes') },
+  { id: 'T-152', label: 'izolasyon sınırları are isolation boundaries', source: /izolasyon\s+sınır/iu, wrong: /\binsulation\s+(?:limits|boundaries)\b/giu, replacement: asTerm('isolation boundaries') },
 ];
 
 // Technical/formula strings that were incorrectly classified as language-
@@ -570,6 +590,11 @@ export const EXACT_ENGLISH_OVERRIDES: Readonly<Record<string, string>> = {
   // ASCII-only Turkish fragments can bypass a Turkish-character residue scan.
   // Keep these source-exact because they mix formula notation with translatable
   // labels and must not be altered by broad token replacement.
+  // "havuz" here is the dry dock and "izolasyon" the LOTO energy isolation.
+  'Dry Dock (Havuz)': 'Dry Dock',
+  'Geminin bakım ve onarım amacıyla sudan çıkarılarak yerleştirildiği kapalı havuz.':
+    'A closed basin in which the ship is taken out of the water for maintenance and repair.',
+  'İzolasyon ve Havuz Emniyeti': 'Isolation and Dry-Dock Safety',
   '+2 ila +4°C': '+2°C to +4°C',
   '+8 ila +12°C': '+8°C to +12°C',
   '−18 ila −25°C': '−18°C to −25°C',

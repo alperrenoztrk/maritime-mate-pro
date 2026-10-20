@@ -118,12 +118,12 @@ export const DrydockStabilityCalc = () => {
       if (mevcut_gm >= kritik_gm) {
         toast.success(`Drydocking operation safe: GM = ${mevcut_gm.toFixed(3)}m`);
       } else {
-        toast.error(`Kritik GM yetersiz: ${kritik_gm.toFixed(3)}m gerekli!`);
+        toast.error(`GM insufficient: critical GM ${kritik_gm.toFixed(3)} m required!`);
       }
 
     } catch (error) {
       console.error("Drydock calculation error:", error);
-      toast.error("An error occurred during pool calculation!");
+      toast.error("An error occurred during the dry-docking calculation!");
     }
   };
 
@@ -188,12 +188,12 @@ export const DrydockStabilityCalc = () => {
       {/* Havuz ve Destek Noktaları */}
       <Card>
         <CardHeader>
-          <CardTitle>Pool Configuration</CardTitle>
+          <CardTitle>Dock Configuration</CardTitle>
           <Button onClick={addSupportPoint} size="sm">Add Support Point</Button>
         </CardHeader>
         <CardContent>
           <div className="mb-4">
-            <Label>Pool Length (m)</Label>
+            <Label>Dock Length (m)</Label>
             <Input
               type="number"
               value={drydockData.havuz_uzunlugu}
@@ -230,7 +230,7 @@ export const DrydockStabilityCalc = () => {
 
           <Button onClick={calculateDrydock} className="w-full mt-4">
             <Calculator className="mr-2 h-4 w-4" />
-            Perform Pool Stability Analysis
+            Perform Dry-Docking Stability Analysis
           </Button>
         </CardContent>
       </Card>
@@ -246,7 +246,7 @@ export const DrydockStabilityCalc = () => {
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />
                 )}
-                Pool Operation Analysis Results
+                Dry-Docking Analysis Results
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -267,7 +267,7 @@ export const DrydockStabilityCalc = () => {
                   <Badge variant={results.güvenlik_rengi === 'destructive' ? 'destructive' : results.güvenlik_rengi === 'secondary' ? 'secondary' : 'default'}>
                     {results.güvenlik_durumu}
                   </Badge>
-                  <p className="text-sm text-muted-foreground mt-1">Security Status</p>
+                  <p className="text-sm text-muted-foreground mt-1">Safety Status</p>
                 </div>
               </div>
 
@@ -275,20 +275,20 @@ export const DrydockStabilityCalc = () => {
                 <div className="p-3 border rounded-lg">
                   <h5 className="font-medium mb-2">Support Analysis</h5>
                   <p className="text-sm">Number of Supports: <strong>{results.destek_sayisi}</strong></p>
-                  <p className="text-sm">Average Range: <strong>{results.ortalama_aralik.toFixed(1)}m</strong></p>
-                  <p className="text-sm">Max Range: <strong>{results.maksimum_aralik.toFixed(1)}m</strong></p>
+                  <p className="text-sm">Average Spacing: <strong>{results.ortalama_aralik.toFixed(1)}m</strong></p>
+                  <p className="text-sm">Max Spacing: <strong>{results.maksimum_aralik.toFixed(1)}m</strong></p>
                 </div>
                 
                 <div className="p-3 border rounded-lg">
                   <h5 className="font-medium mb-2">Stability Values</h5>
-                  <p className="text-sm">GM Rate: <strong>{results.gm_orani.toFixed(2)}</strong></p>
-                  <p className="text-sm">Crane Moment: <strong>{results.kren_momenti.toFixed(0)} kN.m</strong></p>
-                  <p className="text-sm">Min GM Rate: <strong>1.00</strong></p>
+                  <p className="text-sm">GM Ratio: <strong>{results.gm_orani.toFixed(2)}</strong></p>
+                  <p className="text-sm">Heeling Moment: <strong>{results.kren_momenti.toFixed(0)} kN.m</strong></p>
+                  <p className="text-sm">Min GM Ratio: <strong>1.00</strong></p>
                 </div>
                 
                 <div className="p-3 border rounded-lg">
-                  <h5 className="font-medium mb-2">Pool Parameters</h5>
-                  <p className="text-sm">Pool Length: {drydockData.havuz_uzunlugu}m</p>
+                  <h5 className="font-medium mb-2">Dock Parameters</h5>
+                  <p className="text-sm">Dock Length: {drydockData.havuz_uzunlugu}m</p>
                   <p className="text-sm">Ship LOA: {vesselData.loa}m</p>
                   <p className="text-sm">BOA: {vesselData.boa}m</p>
                 </div>
@@ -319,10 +319,10 @@ export const DrydockStabilityCalc = () => {
 
               <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-lg">
                 <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">
-                  Pool Security Protocol:
+                  Dry-Docking Safety Protocol:
                 </h5>
                 <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                  <li>• GM &lt; Kritik GM ise havuz operasyonu YASAKLI</li>
+                  <li>• If GM &lt; critical GM, dry-docking is PROHIBITED</li>
                   <li>• Support points should be placed at equal intervals</li>
                   <li>• Water draining should be done carefully.</li>
                   <li>• Continuous Stability monitoring is a must</li>

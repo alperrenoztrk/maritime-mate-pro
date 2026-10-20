@@ -1,0 +1,34 @@
+{
+ ", konteyner gemilerinin en temel stabilite sorunudur. Modern konteyner gemileri, güverte üstünde 6 ila 10 katman konteyner istifleyebilir. Bu istifleme, VCG'yi önemli ölçüde yükseltir ve GM'i düşürür. İstif VCG hesabı şu şekilde yapılır:": {
+  "fill": false,
+  "en": "is the most basic stability problem of container ships. Modern container ships can stack 6 to 10 layers of containers above deck. This stowing significantly raises VCG and lowers GM. Stowage VCG calculation is done as follows:"
+ },
+ "Ağır yükler ambarın hangi bölgesine istiflenmelidir?": {
+  "fill": false,
+  "en": "In which area of the cargo hold should heavy loads be stowed?"
+ },
+ "Chain stopper zinciri mekanik olarak kilitler; windlass yük altında bırakılmaz.": {
+  "fill": false,
+  "en": "The chain stopper locks the chain mechanically; Windlass should not be left under load."
+ },
+ "Kaptan yükü kendi eliyle istiflemez; ancak yük kaynaklı her kazada birincil sorumlu olarak görülür. Bu bölüm gözetim sorumluluğunun sınırlarını çizer.": {
+  "fill": false,
+  "en": "The Master does not stow the cargo with his own hands; However, it is seen as the primary responsible for every load-related accident. This section outlines the limits of oversight responsibility."
+ },
+ "Lashing bridge, daha yüksekten bağlama imkânı vererek daha fazla sıra konteynerin emniyetle istiflenmesini sağlar.": {
+  "fill": false,
+  "en": "Lashing bridge allows more rows of containers to be stacked safely by allowing them to be tied from higher heights."
+ },
+ "Yüksek istifli konteyner gemisi": {
+  "fill": false,
+  "en": "Container ship with high stacks"
+ },
+ "Zinciri kilitler": {
+  "fill": false,
+  "en": "Locks the chain"
+ },
+ "Float (şamandıra)": {
+  "fill": false,
+  "en": "Float"
+ }
+}

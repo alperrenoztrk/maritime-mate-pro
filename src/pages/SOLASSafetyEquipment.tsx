@@ -65,7 +65,7 @@ const SOLASSafetyEquipmentPage = () => {
             <div>
               <p className="text-sm uppercase tracking-widest text-orange-600 dark:text-orange-300">Emergency</p>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 via-red-500 to-rose-500 bg-clip-text text-transparent">
-                SOLAS Security Equipment
+                SOLAS Safety Equipment
               </h1>
             </div>
           </div>

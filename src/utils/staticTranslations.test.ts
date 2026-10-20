@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+
+import { getStaticTranslation, isDictionaryComplete, loadStaticDictionary } from './staticTranslations';
+
+const responses: Record<string, unknown> = {
+  '/locales/de.json': { __version: 'x', Kaynak: 'Quelle' },
+  '/locales/fr.json': {},
+  '/locales/shared/lesson-paragraphs.en.json': {
+    'Gemi havuza girdiğinde ağırlık takozlara biner.': 'When the ship enters the dry dock, its weight comes onto the keel blocks.',
+    Kaynak: 'Source (English)',
+  },
+};
+
+globalThis.fetch = (async (input: RequestInfo | URL) => {
+  const url = new URL(String(input), 'http://localhost');
+  const body = responses[url.pathname];
+  if (body === undefined) return new Response('not found', { status: 404 });
+  return new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json' } });
+}) as typeof fetch;
+
+test('lesson paragraphs fall back to the shared checked English', async () => {
+  await loadStaticDictionary('de');
+  assert.equal(
+    getStaticTranslation('Gemi havuza girdiğinde ağırlık takozlara biner.', 'de'),
+    'When the ship enters the dry dock, its weight comes onto the keel blocks.',
+  );
+  // The language pack wins over the shared English.
+  assert.equal(getStaticTranslation('Kaynak', 'de'), 'Quelle');
+});
+
+test('an empty language pack stays empty so the live translator is still used', async () => {
+  await loadStaticDictionary('fr');
+  assert.equal(isDictionaryComplete('fr'), false);
+  assert.equal(getStaticTranslation('Gemi havuza girdiğinde ağırlık takozlara biner.', 'fr'), null);
+});

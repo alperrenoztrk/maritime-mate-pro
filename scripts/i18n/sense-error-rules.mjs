@@ -370,6 +370,43 @@ SENSE_ERROR_RULES.push(
   },
 
   {
+    // "Sınıf"/"klas" is the classification society (class rules, class
+    // survey, AIS Class A/B) unless the text is about training.
+    id: 'sinif-classroom',
+    label: 'class (classification society) rendered as a classroom',
+    src: /s[ıi]n[ıi]f|klas/iu,
+    skipSrc: /eğitim|ders(?:lik|hane)|öğrenci|öğretmen|eğitmen|kurs|training|simülatör|classroom/iu,
+    wrong: {
+      en: w('classrooms?'), de: s('klassenzimmer|klassenraum|schulklasse'), fr: s('salles? de classe'),
+      es: w('aulas?|salón de clases?'), it: w('aula|aule'), pt: s('salas? de aula'), nl: s('klaslokal'),
+      da: s('klasseværelse'), sv: s('klassrum'), no: s('klasserom'), fi: s('luokkahuone'),
+      pl: s('sala lekcyjn|sali lekcyjn|klasa szkoln|klasie szkoln'), cs: s('učebn'), hu: s('osztályterem|tanterem'),
+      ro: s('sala de clasă|sală de clasă|sălii de clasă'), el: s('αίθουσα διδασκαλίας'), ru: s('классн(?:ая|ой|ую) комнат'),
+      uk: s('класн(?:а|ій|у) кімнат'), bg: s('класна стая|класната стая'), ja: any('教室'), 'zh-CN': any('教室'),
+      ko: any('교실'), ar: any('الفصل الدراسي|فصل دراسي|الفصول الدراسية'),
+    },
+  },
+
+  {
+    // "Havuz" is the dry dock in the stability, survey and maintenance
+    // lessons. Swimming pools on passenger ships and pools in the sense of a
+    // shared group (fleet, charterer, P&I pool, FuelEU pooling) are skipped.
+    // "Havuzlama" (dry-docking) rendered as "pooling" is the same error.
+    id: 'havuz-pool',
+    label: 'dry dock (havuz) rendered as a swimming pool',
+    src: /havuz/iu,
+    skipSrc: /yüzme|jakuzi|filo\s+havuz|kaynak\s+havuz|charterer\s+havuz|kiralama\s+havuz|ortak\s+havuz|üyelik|bölgesel\s+havuz|deney\s+havuz|güverte\/havuz|su\s+parkı|cruise|yolcu|deficit|surplus|fuel\s*eu|pooling/iu,
+    wrong: {
+      en: w('pools?|pooling'), de: s('schwimmbad|schwimmbeck|pool'), fr: s('piscine|pooling|mise en commun'), es: s('piscina|alberca|pooling'),
+      it: s('piscin|pooling'), pt: s('piscina|pooling'), nl: s('zwembad|pooling'), ja: any('プール'), 'zh-CN': any('游泳池|泳池|水池'),
+      ko: any('수영장|풀장|풀링'), ru: s('бассейн'), uk: s('басейн'), bg: s('басейн'), pl: s('basen|pooling'), cs: s('bazén|pooling'),
+      sv: s('pool|simbassäng'), no: s('pool|svømmebasseng|basseng'), da: s('pool|svømmebassin|swimmingpool'),
+      fi: s('uima-al|allas|altaa|pooling'), hu: s('medence|uszoda|pooling'), ro: s('piscin|bazin|pooling'), el: s('πισίν'),
+      ar: any('مسبح|حمام السباحة|حمام سباحة|بركة'), hi: any('पूल|तरणताल|स्विमिंग'),
+    },
+  },
+
+  {
     id: 'special-area-private',
     label: 'MARPOL special area (özel alan) rendered as a private area',
     // "Özel alan" is a MARPOL Special Area in these lessons, except where the

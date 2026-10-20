@@ -12,7 +12,7 @@ const navigationItems: CalculationGridItem[] = [
   { id: "current", title: "Current Triangle (CTS)", icon: Waves, to: "/navigation/calc/current" },
   { id: "compass", title: "Compass Conversions", icon: NavigationIcon, to: "/navigation/calc/compass" },
   { id: "cpa", title: "CPA / TCPA", icon: Radar, to: "/navigation/calc/cpa" },
-  { id: "radar", title: "Radar Plot (Target Route/Speed)", icon: Radar, to: "/navigation/calc/radar" },
+  { id: "radar", title: "Radar Plot (Target Course/Speed)", icon: Radar, to: "/navigation/calc/radar" },
   { id: "colreg", title: "COLREG Situation & Maneuver", icon: Shield, to: "/navigation/calc/colreg" },
   { id: "sight", title: "Sight Reduction", icon: Globe2, to: "/navigation/calc/sight" },
   { id: "astro", title: "Astronomical Navigation (Almanac + LOP)", icon: Sun, to: "/navigation/calc/astro" },

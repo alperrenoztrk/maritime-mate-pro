@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 DPA ve ISM Code madde 4",
           paragraphs: [
             `ISM Code madde 4, her şirketin bir veya daha fazla Designated Person Ashore (DPA) atamasını zorunlu kılar. DPA'nın iki kritik özelliği vardır: en üst yönetime doğrudan erişimi ve geminin emniyet/kirlilik önleme operasyonlarını izleme görevi. DPA, kaptan ile şirketin en üst yönetimi arasında köprü kurar; ticari hattan (operasyon, chartering) bağımsız bir emniyet hattıdır. Bu bağımsızlık, ticari baskının emniyet kararını ezmesini önlemek için tasarlanmıştır.`,
-            `Kaptan, DPA'ya ulaşmak için hiçbir izne ihtiyaç duymaz; gece-gündüz 24/7 erişebilir. DPA'nın iletişim bilgileri (telefon, e-posta, uydu hattı) köprüüstünde ve SMS dokümantasyonunda görünür şekilde asılı olmalıdır. PSC denetçileri sıklıkla "DPA kim, numarası nerede?" diye sorar; mürettebatın bunu bilmemesi ISM major non-conformity sebebidir.`,
+            `Kaptan, DPA'ya ulaşmak için hiçbir izne ihtiyaç duymaz; gece-gündüz 24/7 erişebilir. DPA'nın iletişim bilgileri (telefon, e-posta, uydu hattı) köprüüstünde ve SMS dokümantasyonunda görünür şekilde asılı olmalıdır. PSC denetçileri sıklıkla "DPA kim, numarası nerede?" diye sorar; mürettebatın bunu bilmemesi ISM uygunsuzluğu (non-conformity) olarak yazılabilir.`,
           ],
           callouts: [
             {
@@ -239,7 +239,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 SSO, CSO ve security seviyeleri",
           paragraphs: [
-            `ISPS Code çerçevesinde gemide Ship Security Officer (SSO), kıyıda Company Security Officer (CSO) bulunur. Kaptan, security konularında SSO ve CSO ile koordine olur; ancak ISPS açıkça belirtir ki güvenlik gerekçesi bile kaptanın emniyet ve security önceliğini ezemez. Security Level (1/2/3) flag/coastal state tarafından belirlenir; seviye değişimi derhal gemiye iletilir ve uygun önlemler (erişim kontrolü, devriye, restricted area) artırılır.`,
+            `ISPS Code çerçevesinde gemide Ship Security Officer (SSO), kıyıda Company Security Officer (CSO) bulunur. Kaptan, security konularında SSO ve CSO ile koordine olur; ancak ISPS (ve SOLAS XI-2/8) açıkça belirtir ki hiç kimse kaptanın geminin emniyeti ve güvenliği için gerekli gördüğü kararları kısıtlayamaz. Security Level (1/2/3) flag/coastal state tarafından belirlenir; seviye değişimi derhal gemiye iletilir ve uygun önlemler (erişim kontrolü, devriye, restricted area) artırılır.`,
             `Ship Security Alert System (SSAS) tetiklendiğinde sinyal sessizce CSO ve flag state'e gider; köprüüstünde alarm çalmaz (korsanların fark etmemesi için). Kaptan, SSAS test ve aktivasyon prosedürünü, declaration of security (DoS) düzenleme koşullarını ve high risk area (HRA) geçiş raporlamasını (UKMTO, MSCHOA) bilir.`,
           ],
           callouts: [
@@ -253,7 +253,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.2 Korsanlık bölgesi koordinasyonu",
           paragraphs: [
-            `Yüksek riskli bölgelerde (Aden Körfezi, Gine Körfezi, Singapur Boğazı yaklaşmaları) kaptan, BMP (Best Management Practices, güncel BMP5/MSCHOA) çerçevesinde UKMTO'ya raporlama, hardening önlemleri (razor wire, citadel, water hoses), grup transit/convoy ve gerekirse silahlı güvenlik ekibi (PCASP) koordinasyonu yürütür. Tüm bu koordinasyon CSO ve şirket ile önceden planlanır.`,
+            `Yüksek riskli bölgelerde (Aden Körfezi, Gine Körfezi, Singapur Boğazı yaklaşmaları) kaptan, BMP (Best Management Practices) çerçevesinde UKMTO'ya raporlama, hardening önlemleri (razor wire, citadel, water hoses), grup transit/convoy ve gerekirse silahlı güvenlik ekibi (PCASP) koordinasyonu yürütür. Tüm bu koordinasyon CSO ve şirket ile önceden planlanır.`,
             `Korsan saldırısı anında iletişim sırası: UKMTO/MSCHOA, donanma, CSO/DPA, flag state. Kaptanın citadel'e çekilme kararı, mürettebatın hayatını korumanın en etkili yoludur; ancak citadel'in iletişim ve dayanıklılık kriterleri önceden test edilmelidir.`,
           ],
         },

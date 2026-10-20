@@ -27,6 +27,36 @@ const baseUrl = (import.meta as unknown as { env?: { BASE_URL?: string } }).env?
 const dictionaryUrl = (languageCode: string): string =>
   `${baseUrl.replace(/\/$/, '')}/locales/${languageCode}.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
 
+// Checked English for the long lesson paragraphs (`paragraphs` fields), shared
+// by every language (scripts/i18n/build-paragraph-pack.mjs). It is kept out of
+// the per-language packs so the same English is not shipped 24 times. A
+// paragraph with no checked text in the reader's language shows this English
+// instead of a live machine translation of the Turkish.
+const sharedEnglishUrl = (): string =>
+  `${baseUrl.replace(/\/$/, '')}/locales/shared/lesson-paragraphs.en.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
+let sharedEnglishLoad: Promise<StaticDictionary> | null = null;
+
+const loadSharedEnglish = (): Promise<StaticDictionary> => {
+  if (!sharedEnglishLoad) {
+    sharedEnglishLoad = (async (): Promise<StaticDictionary> => {
+      try {
+        const response = await fetch(sharedEnglishUrl(), { cache: 'force-cache' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const raw = (await response.json()) as Record<string, unknown>;
+        const shared: StaticDictionary = {};
+        for (const [key, value] of Object.entries(raw)) {
+          if (typeof value === 'string') shared[key] = value;
+        }
+        return shared;
+      } catch {
+        sharedEnglishLoad = null; // try again with the next dictionary load
+        return {};
+      }
+    })();
+  }
+  return sharedEnglishLoad;
+};
+
 /**
  * Lazily fetches and caches the static dictionary for a language. Only the
  * requested language is downloaded; the PWA runtime cache keeps it for offline
@@ -59,6 +89,14 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
       for (const [key, value] of Object.entries(raw)) {
         if (key.startsWith(META_PREFIX)) continue;
         if (typeof value === 'string') dict[key] = value;
+      }
+      // Only next to a real pack: an empty dictionary must stay empty so the
+      // runtime keeps using the live translator (see isDictionaryComplete).
+      if (Object.keys(dict).length > 0) {
+        const shared = await loadSharedEnglish();
+        for (const [key, value] of Object.entries(shared)) {
+          if (!(key in dict)) dict[key] = value;
+        }
       }
       loadedDictionaries[languageCode] = dict;
       return dict;

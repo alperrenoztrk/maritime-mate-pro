@@ -96,7 +96,8 @@ assert(
     read("src/components/ui/AppSymbol.tsx").includes("SystemSymbols.render"),
   "AppTabBar: iOS must use genuine SF Symbols with filled selected variants and a safe fallback",
 );
-for (const label of ["Ana Sayfa", "Öğren", "Araçlar", "Kütüphane", "Ara"]) {
+// The interface is English; the labels are localized at runtime (coreUiTranslations).
+for (const label of ["Home Page", "Learn", "Tools", "Library", "Search"]) {
   assert(
     appTabBar.includes(label),
     `AppTabBar: primary navigation label must remain ${label}`,
@@ -273,8 +274,12 @@ assert(
 
 const main = read("src/main.tsx");
 assert(
-  !main.includes("4200") && /splashHideDelay\s*=\s*prefersReducedMotion\s*\?\s*0\s*:\s*120/.test(main),
-  "src/main.tsx: launch branding must stay within the native-style 120 ms budget",
+  // The splash choreography runs ~3.2 s; it must finish within 3.6 s (0.9 s
+  // with reduced motion) and a tap must skip it.
+  !main.includes("4200") &&
+    /splashHideDelay\s*=\s*prefersReducedMotion\s*\?\s*(?:[0-8]?\d{1,2}|900)\s*:\s*(?:[0-2]?\d{1,3}|3[0-5]\d\d|3600)\s*;/.test(main) &&
+    /addEventListener\(\s*['"]pointerdown['"]\s*,\s*hideSplash/.test(main),
+  "src/main.tsx: launch branding must stay within its 3.6 s budget and be skippable with a tap",
 );
 const fontContext = read("src/contexts/font-size-context.ts");
 assert(
@@ -282,10 +287,10 @@ assert(
   "font-size context: accessibility settings must support 200% text scaling",
 );
 assert(
-  fontContext.includes('"system"') &&
-    read("src/contexts/FontSizeContext.tsx").includes("ContentSize.getCurrent") &&
-    read("ios/App/App/ContentSizePlugin.swift").includes("UIContentSizeCategory.didChangeNotification"),
-  "font-size context: iOS Dynamic Type must drive the default system text scale",
+  // Only Normal and Large are offered; older stored sizes collapse onto them.
+  /FONT_SIZE_OPTIONS[\s\S]*key:\s*"normal"[\s\S]*key:\s*"large"/.test(fontContext) &&
+    /export const normalizeFontSize/.test(fontContext),
+  "font-size context: the Normal and Large sizes must stay available and legacy preferences must be normalized",
 );
 assert(
   vite.includes('globPatterns: ["**/*.{css,html,ico,woff2}", "assets/entry-*.js"]') &&

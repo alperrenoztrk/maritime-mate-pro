@@ -39,7 +39,7 @@ const ruleCategories = [
     ],
   },
   {
-    title: "ISM Code - Security Management",
+    title: "ISM Code - Safety Management",
     icon: Shield,
     color: "text-blue-600",
     bgColor: "bg-blue-100 dark:bg-blue-900/20",

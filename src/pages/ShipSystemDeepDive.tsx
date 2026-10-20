@@ -301,7 +301,7 @@ function SystemSummary({
 }) {
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-xl font-bold text-foreground">Plot Summary</h2>
+      <h2 className="text-xl font-bold text-foreground">Topic Summary</h2>
 
       {longFormMissing && (
         <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-xs leading-relaxed text-muted-foreground">

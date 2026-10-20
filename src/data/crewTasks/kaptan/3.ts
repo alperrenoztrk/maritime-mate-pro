@@ -61,8 +61,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Pre-stowage plan'ın stabilite yazılımı ile doğrulanması",
           paragraphs: [
-            `Pre-stowage plan, stabilite/mukavemet yazılımına (LoadMaster, Cargomax, BluePrint) yüklenir. Kaptan; her loading kademesinde GM, draught FP/AP/Mid, list, bending moment, shear force ve container gemilerinde torsion değerlerinin sınır içinde olduğunu gözden geçirir. Limitin %85'ini aşan kademeler revize edilir.`,
-            `Bulk gemilerinde "alternate hold loading" yapılacaksa Loading Manual ve CSR (Cargo Securing Record) tarafından onaylanan kombinasyonlara sıkı sıkıya bağlı kalınır. MOL Comfort (2013) vakası, yanlış yük dağılımının gövde kırılmasıyla gemi kaybına yol açtığı klasik örnektir.`,
+            `Pre-stowage plan, stabilite/mukavemet yazılımına (örn. LoadMaster, CargoMax) yüklenir. Kaptan; her loading kademesinde GM, draught FP/AP/Mid, list, bending moment, shear force ve container gemilerinde torsion değerlerinin sınır içinde olduğunu gözden geçirir. Limitin %85'ini aşan kademeler revize edilir.`,
+            `Bulk gemilerinde "alternate hold loading" yapılacaksa klas onaylı Loading Manual'daki kombinasyonlara sıkı sıkıya bağlı kalınır. İkiye bölünen konteyner gemisi MOL Comfort (2013), gerçek kapasitesinin üzerinde yüklenen bir tekne kirişinin gemi kaybına nasıl yol açabileceğinin bilinen bir örneğidir.`,
           ],
           callouts: [
             {
@@ -153,7 +153,7 @@ const content: CrewTaskLongForm = {
           subheading: "5.2 IMSBC Code — Group A/B/C ve liquefaction",
           paragraphs: [
             `Group A yükler (nickel ore, iron ore fines, bauxite fines) sıvılaşabilir; TML (Transportable Moisture Limit) ve cargo declaration kritiktir. TML aşılırsa kaptan yüklemeyi reddeder; aksi halde gemi liquefaction nedeniyle alabora olabilir. Group B yükler (DRI, sulphur, coal) self-heating, off-gassing ve CO riski taşır; hold ventilasyonu ve gaz ölçümü gerekir. Group C düşük risklidir.`,
-            `Kaptan, gerektiğinde "can test" (kompleman test) yaptırır ve shipper'ın TML beyanına körü körüne güvenmez. Bulk Jupiter (2015) vakasında bauxite TML üzerinde yüklendi, gemi alabora oldu, 18 kişi öldü.`,
+            `Kaptan, gerektiğinde "can test" (IMSBC tamamlayıcı test) yaptırır ve shipper'ın TML beyanına körü körüne güvenmez. Bulk Jupiter (2015) vakasında nem içeriği fazla olan bauxite yükü stabilitesini kaybetti (sonradan "dynamic separation" olarak tanımlanan olay), gemi alabora oldu, 18 kişi öldü.`,
           ],
         },
       ],
@@ -230,7 +230,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.1 Bulk Jupiter (2015) ve MOL Comfort (2013)",
           paragraphs: [
-            `Bulk Jupiter, bauxite'in TML üzerinde yüklenmesiyle liquefaction sonucu alabora oldu (18 ölü). MOL Comfort, yük dağılımı ve mukavemet sorunlarıyla gövde kırılması yaşadı. İki ders: shipper beyanı sorgulanır; mukavemet limitleri ödün verilmez sınırdır.`,
+            `Bulk Jupiter, nem içeriği fazla olan bauxite yükünün stabilitesini kaybetmesiyle alabora oldu (18 ölü). Konteyner gemisi MOL Comfort, tekne mukavemeti sorunları nedeniyle ikiye bölündü. İki ders: shipper beyanı sorgulanır; mukavemet limitleri ödün verilmez sınırdır.`,
           ],
         },
         {

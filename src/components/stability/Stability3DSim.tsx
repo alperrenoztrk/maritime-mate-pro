@@ -228,7 +228,7 @@ export const Stability3DSim = () => {
           {stability.gm < 0.15 && (
             <div className="absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg bg-red-500/90 px-3 py-1.5 text-micro font-semibold text-white shadow-lg flex items-center gap-1.5">
               <AlertTriangle className="h-3.5 w-3.5" />
-              TEHLİKE: GM &lt; 0.15 m — Yetersiz stabilite!
+              DANGER: GM &lt; 0.15 m — insufficient stability!
             </div>
           )}
 

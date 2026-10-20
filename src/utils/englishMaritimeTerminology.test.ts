@@ -8,8 +8,8 @@ import {
   repairEnglishMaritimeTerminology,
 } from './englishMaritimeTerminology.ts';
 
-test('all 147 audited terminology families have a regression rule', () => {
-  const expected = Array.from({ length: 147 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
+test('all 152 audited terminology families have a regression rule', () => {
+  const expected = Array.from({ length: 152 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
   assert.deepEqual([...new Set(ENGLISH_TERMINOLOGY_RULES.map(({ id }) => id))].sort(), expected);
 });
 
@@ -69,6 +69,13 @@ test('high-risk maritime mistranslations are repaired source-aware', () => {
     ['4.2 Pilot ladder güvenliği — IMO Res. A.1045(27)', '4.2 Pilot ladder safety — IMO Fig. A.1045(27)', '4.2 Pilot ladder safety — IMO Res. A.1045(27)'],
     ['Muster listesi ve acil durum planında rollerin önceden tanımlanmasıyla', 'By pre-defining roles in the customer list and emergency plan', 'By pre-defining roles in the muster list and emergency plan'],
     ['Emniyet Haberleşmesi (SECURITE)', 'Security Communications (SECURITE)', 'Safety Communications (SECURITE)'],
+    ['Malzeme ve bağlantılar sınıf kurallarına uymalıdır.', 'Materials and connections must comply with classroom rules.', 'Materials and connections must comply with class rules.'],
+    ['Havuz dönemi', 'Pool period', 'Dry dock period'],
+    ['Ağır yükler ambarın alt kısmına istiflenir.', 'Heavy loads are stacked in the lower part of the hold.', 'Heavy loads are stowed in the lower part of the hold.'],
+    ['Havuzun pencere dışında yapılması klas askıya alınmasına yol açar.', 'Building the pool outside the window will result in classy suspension.', 'Dry-docking outside the window will result in class suspension.'],
+    ['Havuz operasyonlarında GM sıfıra düştüğünde kritik an oluşur', 'Critical moment occurs when GM drops to zero in pool operations', 'Critical moment occurs when GM drops to zero in dry-docking operations'],
+    ['Model deney havuzunda direnç ölçümü', 'Resistance measurement in the model test pool', 'Resistance measurement in the towing tank'],
+    ['Dry-dock hazırlığı; izolasyon sınırlarını yönetmek', 'Dry-dock preparation; managing insulation limits', 'Dry-dock preparation; managing isolation boundaries'],
     ['Halatın ucu (mooring) babaya bağlanır', 'The end of the line is made fast to the bollard in mooring', 'The end of the line is made fast to the bollard in mooring'],
     [
       'CO₂ boşaltma öncesi personel tahliyesi hayati önemdedir.',
@@ -87,6 +94,12 @@ test('polysemous terms keep their legitimate non-maritime sense', () => {
     ['AB Emisyon Ticaret Sistemi', 'EU Emissions Trading System'],
     ['5000+ GT; AB içi seferlerin %100\'ü, AB-dışı seferlerin %50\'si', '100% of intra-EU voyages, 50% of non-EU voyages'],
     ['Demir cevheri yükü', 'Iron ore cargo'],
+    ['Yüzme havuzu pompası', 'Swimming pool pump'],
+    ['Zincir stoppe zinciri mekanik olarak kilitleyerek yükü ırgattan alır.', 'The chain stopper locks the chain mechanically and takes the load off the windlass.'],
+    ['Otomatik seviye vericiler: radar, float/şamandıra (mekanik) tipleri vardır.', 'Automatic level transmitters are of the radar and float (mechanical) types.'],
+    ['İstif yüksekliği arttıkça üst konteynerlerin yükü artar.', 'As the stack height increases, the load on the upper containers increases.'],
+    ['Filo havuzu: Aynı tip gemilerde merkezi stok paylaşımı', 'Fleet pool: Central stock sharing of the same type of ships'],
+    ['Simülatör eğitimi sınıfta başlar', 'Simulator training starts in the classroom'],
     ['Dökme demir ve çelik', 'Cast iron and steel'],
     ['Demir (Fe) konsantrasyonu', 'Iron (Fe) concentration'],
     ['Manyetik sapma demir kütlesinden etkilenir', 'Magnetic deviation is affected by iron mass'],
@@ -151,5 +164,16 @@ test('course repair is limited to angular navigation phrases', () => {
       'A great-circle route with a vertex latitude of 62°N',
     ),
     'A great-circle route with a vertex latitude of 62°N',
+  );
+});
+
+test('havuzlama is dry-docking, but FuelEU pooling stays pooling', () => {
+  assert.equal(
+    repairEnglishMaritimeTerminology('ölçümler havuzlamada yapılır.', 'measurements are made during pooling.'),
+    'measurements are made during dry-docking.',
+  );
+  assert.equal(
+    repairEnglishMaritimeTerminology("Deficit'in maliyeti ve havuzlamanın ekonomik mantığı", 'The cost of the deficit and the economic logic of pooling'),
+    'The cost of the deficit and the economic logic of pooling',
   );
 });

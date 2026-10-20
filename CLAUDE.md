@@ -37,8 +37,17 @@ kontrol sonuçlarını ve commit hash'ini kısa bir Türkçe raporla ver.
   `npm run i18n:scan-senses`. `npm run i18n:fix` hatalı satırı İngilizceye
   çevirir (24 dilde ~40 dk, arka planda çalıştır).
 - İngilizce düzeltme kuralları:
-  `supabase/functions/_shared/englishMaritimeTerminology.ts` (T-001…T-147).
+  `supabase/functions/_shared/englishMaritimeTerminology.ts` (T-001…T-152).
 - Kaynak metin değişince: `npm run i18n:extract`, sonra `npm run i18n:fix`.
+  Çıkarıcı JSX karakter referanslarını (`&amp;`, `&rsquo;` …) React gibi çözer.
+- Ders paragrafları (`paragraphs` alanları): kontrol edilmiş İngilizce
+  `scripts/i18n/verified/paragraphs/<modül>.json` (`{türkçe: english}`) →
+  `npm run i18n:paragraphs` → `public/locales/shared/lesson-paragraphs.en.json`.
+  Bu paket her dilin statik sözlüğüne eksik anahtar olarak eklenir (o dilde
+  kontrol edilmiş çeviri yoksa İngilizce gösterilir). Derleme T-kurallarını,
+  anlam kurallarını ve Türkçe kalıntıyı denetler; kuraldan geçmeyen satır
+  pakete girmez. Türkçe kaynakta bilgi hatası düzeltilirse paketteki anahtar
+  da aynı metne çevrilmeli (yoksa "stale" sayılır ve atlanır).
 
 ## Commit öncesi kontroller
 ```
@@ -50,10 +59,11 @@ npm run i18n:audit-terms -- --lang=en --strict --max-errors=0
 npm run i18n:audit-terms -- --strict --max-errors=126
 npm run i18n:scan-senses -- --check
 npm run check:svg-text
+npm run check:ux-consistency
+npm run check:design-system
+npm run i18n:verify
 npm run build:native
 ```
-`check:ux-consistency` ve `check:design-system` zaten başarısız (Türkçe sekme
-etiketleri vb.). Bunları düzeltmek için İngilizce arayüzü geri alma.
 Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğrula
 (`.claude/skills/verify`).
 
@@ -82,20 +92,22 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   çakarları için "Schläge pro Minute").
 - 23 dilde ~750 satır şimdilik İngilizce; kontrol edilmiş çeviriyle
   `verified/` altına eklenerek geri açılabilir.
-- ~79 metnin (Pro ekranları, görsel altyazıları) hiçbir dilde sözlük karşılığı
-  yok; canlı çeviriye gidiyor.
+- Çıkarılan arayüz metinlerinin hepsinin 24 dilde sözlük karşılığı var
+  (`i18n:check -- --strict` %100); eksik kalanlar
+  `scripts/i18n/verified/ui-coverage.json` ile İngilizce dolduruldu.
 - Sözlükte olmayan metin canlı Google çevirisine (gtx) gider; servis 429
   verirse veya ağ yoksa ekranda Türkçe kalır. Çıkarıcının kaçırdığı
   ders/SOLAS/STCW/COLREG metinleri
   `scripts/i18n/verified/english-leftover-texts.json` paketinde (İngilizce, diğer
   dillere İngilizce dolgu). Yeni ekranda Türkçe kalırsa çözüm buraya eklemektir.
-- `paragraphs` alanı çıkarıcıda bilinçli olarak yok (~6.450 Türkçe paragraf:
-  `machineTopicDetailContent*.ts`, `shipSystemsData.ts`, `crewTasks/`,
-  `shipOperations/`). Kontrol edilmiş İngilizceleri
-  `scripts/i18n/verified/english-paragraphs.json` paketinde ve yalnız `en`'e
-  gider (`fill: false`; 23 dile dolgu ~75 MB ekler). Diğer dillerde bu
-  paragraflar hâlâ canlı çeviriye bağlı. Komut fiili içerenler ve kaynakta
-  olgu hatası bulunanlar pakete alınmadı.
+- Ders paragrafları (`paragraphs` alanları, 7.262 paragraf): 7.068'i kontrol
+  edilmiş İngilizcede, tek paket: `scripts/i18n/verified/paragraphs/*.json` →
+  `public/locales/shared/lesson-paragraphs.en.json` (~3,4 MB, tüm dillere
+  İngilizce yedek). Eski `verified/english-paragraphs.json` buraya taşındı
+  (`crew-tasks-roles.json`); paragrafları dil sözlüklerine (en.json) ekleme.
+  Kalan 194 paragraf (`crewTasks/` diğer roller: komut fiili içerenler,
+  belirsiz terimler, kaynakta olgu hatası olanlar) hâlâ canlı çeviriye bağlı;
+  önce Türkçe kaynak düzeltilir, sonra pakete eklenir.
 - Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
   çevrilir ve bozuk İngilizce çıkar. `navigationTopicContents.ts` ve
   `stabilityTopicsContent.ts`'de cümle ortası kalınlar kaldırıldı; yeni

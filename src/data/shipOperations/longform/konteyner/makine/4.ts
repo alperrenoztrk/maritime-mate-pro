@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 15 ppm ve kurallar",
           paragraphs: [
-            `OCM 15 ppm'i aşarsa 3-way valve sintineyi tanka geri yollar; tahliye special area dışında ve uygun mesafede yapılır. ORB I'a doğru kodla işlenir.`,
+            `OCM 15 ppm'i aşarsa 3-way valve sintineyi tanka geri yollar; tahliye gemi seyir halindeyken ve MARPOL koşulları sağlanarak yapılır (Antarktika bölgesinde yasaktır). ORB I'a doğru kodla işlenir.`,
           ],
           bullets: [`OCM auto (15 ppm)`, `3-way valve geri dönüş`, `ORB I — Code C, D, E`],
         },

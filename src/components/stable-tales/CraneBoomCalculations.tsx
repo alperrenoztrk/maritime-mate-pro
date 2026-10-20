@@ -287,10 +287,10 @@ export const CraneBoomCalculations = () => {
 
               <div className="p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg">
                 <h5 className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">
-                  Security Protocol:
+                  Safety Protocol:
                 </h5>
                 <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
-                  <li>• GM &lt; 0.15m ise operasyon DURDURULMALIDIR</li>
+                  <li>• If GM &lt; 0.15 m, the operation MUST BE STOPPED</li>
                   <li>• Ballast adjustment should be made before the operation.</li>
                   <li>• Weather conditions should be evaluated</li>
                   <li>• Continuous Stability monitoring is required</li>

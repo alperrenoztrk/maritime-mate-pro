@@ -239,7 +239,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 Disiplin: tutarlılık ve adalet",
           paragraphs: [
-            `Disiplin, ceza değil, paylaşılan standartların korunmasıdır. MLC 2006 ve şirket SMS'i, disiplin işlemleri için adil bir prosedür (uyarı, soruşturma, savunma hakkı, kayıt) öngörür; kaptan bu prosedürü tutarlı ve keyfilikten uzak biçimde uygular. Aynı ihlale farklı kişilere farklı tepki vermek, otoriteyi en hızlı çökerten şeydir.`,
+            `Disiplin, ceza değil, paylaşılan standartların korunmasıdır. Şirket SMS'i ve iş sözleşmeleri (SEA/CBA), disiplin işlemleri için adil bir prosedür (uyarı, soruşturma, savunma hakkı, kayıt) öngörür; kaptan bu prosedürü tutarlı ve keyfilikten uzak biçimde uygular. Aynı ihlale farklı kişilere farklı tepki vermek, otoriteyi en hızlı çökerten şeydir.`,
             `Disiplinin amacı, bir kişiyi cezalandırmaktan çok, ekibin tamamına standardın ciddiyetini hatırlatmaktır. Ağır vakalarda (şiddet, sarhoşluk, görevi terk, D&A pozitifi) kaptan derhal şirketle koordine olur; ancak çoğu gündelik mesele, erken, özel ve adil bir konuşmayla, formal işleme gerek kalmadan çözülür. İyi kaptan, formal disiplini son çare olarak kullanır.`,
           ],
         },

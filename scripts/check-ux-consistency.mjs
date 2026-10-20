@@ -113,12 +113,12 @@ assert(
 // Listeden kaldırılan özet bloklar kaybolmadı; anlatımın ilk sayfasında duruyor.
 const operationDeepDive = read("src/pages/ShipOperationDeepDive.tsx");
 assert(
-  operationDeepDive.includes("Operasyon Özeti"),
+  operationDeepDive.includes("Operation Summary"),
   "ShipOperationDeepDive: the operation summary moved from the list must remain",
 );
 const systemDeepDive = read("src/pages/ShipSystemDeepDive.tsx");
 assert(
-  systemDeepDive.includes("Konu Özeti"),
+  systemDeepDive.includes("Topic Summary"),
   "ShipSystemDeepDive: the topic summary moved from the list must remain",
 );
 

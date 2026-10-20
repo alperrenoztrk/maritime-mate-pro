@@ -278,7 +278,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         </Badge>
                       </div>
                       <div className="col-span-2">
-                        <span className="font-medium">Security Note:</span>
+                        <span className="font-medium">Safety Note:</span>
                         <p className="mt-1 text-muted-foreground">{tankerResult.safetyNote}</p>
                       </div>
                     </div>

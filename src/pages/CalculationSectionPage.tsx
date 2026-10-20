@@ -103,7 +103,7 @@ export default function CalculationSectionPage() {
             {fallback.rules && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Kurallar &amp; Gereklilikler</CardTitle>
+                  <CardTitle>Rules &amp; Requirements</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="list-disc text-sm text-muted-foreground pl-6 space-y-2">
