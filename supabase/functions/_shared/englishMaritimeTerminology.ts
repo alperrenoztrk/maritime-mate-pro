@@ -276,7 +276,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-002', label: 'crew AB must not become EU', source: /(?:^|[^\p{L}\p{N}])AB(?![\p{L}\p{N}])/u, wrong: CREW_AB_TARGET_RE, applies: isCrewAbSource, replacement: 'AB' },
   { id: 'T-003', label: 'Usta Gemici must be Able Seaman', source: /usta\s+gemici/iu, wrong: /\bmaster\s+sailor\b/giu, replacement: asTerm('Able Seaman') },
   { id: 'T-004', label: 'Birinci Zabit must be Chief Officer', source: /birinci\s+zabit/iu, wrong: /\bfirst\s+officer\b/giu, replacement: asTerm('Chief Officer') },
-  { id: 'T-005', label: 'ship rank Kaptan must be Master', source: /\bkaptan/iu, wrong: /\bcaptain\b/giu, applies: (source) => !/kaptan\s+(?:Cook|Phillips|Smith)\b/iu.test(source), replacement: asTerm('Master') },
+  { id: 'T-005', label: 'ship rank Kaptan must be Master', source: /\bkaptan/iu, wrong: /\bcaptain\b(?!\s+mode\b)/giu, applies: (source) => !/kaptan\s+(?:Cook|Phillips|Smith)\b/iu.test(source), replacement: asTerm('Master') },
   { id: 'T-006', label: 'Aşçı must be Cook', source: /\başçı/iu, wrong: /\b(?:ship\s+)?chef\b/giu, replacement: asTerm('Cook') },
   { id: 'T-007', label: 'Gözcü/gözcülük must use lookout', source: /gözc/iu, wrong: /\b(?:watcher|surveillance|observation)\b/giu, replacement: asTerm('lookout') },
   { id: 'T-008', label: 'shipboard vardiya must be watch', source: /vardiya/iu, wrong: /\bshifts?\b/giu, replacement: asPluralTerm('watch', 'watches') },

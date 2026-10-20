@@ -89,9 +89,13 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   ders/SOLAS/STCW/COLREG metinleri
   `scripts/i18n/verified/english-leftover-texts.json` paketinde (İngilizce, diğer
   dillere İngilizce dolgu). Yeni ekranda Türkçe kalırsa çözüm buraya eklemektir.
-- `paragraphs` alanı çıkarıcıda bilinçli olarak yok: ~6.700 Türkçe paragraf
-  (`machineTopicDetailContent*.ts`, `shipSystemsData.ts`, `crewTasks/`) sözlükte
-  yok, tamamen canlı çeviriye bağlı.
+- `paragraphs` alanı çıkarıcıda bilinçli olarak yok (~6.450 Türkçe paragraf:
+  `machineTopicDetailContent*.ts`, `shipSystemsData.ts`, `crewTasks/`,
+  `shipOperations/`). Kontrol edilmiş İngilizceleri
+  `scripts/i18n/verified/english-paragraphs.json` paketinde ve yalnız `en`'e
+  gider (`fill: false`; 23 dile dolgu ~75 MB ekler). Diğer dillerde bu
+  paragraflar hâlâ canlı çeviriye bağlı. Komut fiili içerenler ve kaynakta
+  olgu hatası bulunanlar pakete alınmadı.
 - Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
   çevrilir ve bozuk İngilizce çıkar. `navigationTopicContents.ts` ve
   `stabilityTopicsContent.ts`'de cümle ortası kalınlar kaldırıldı; yeni
