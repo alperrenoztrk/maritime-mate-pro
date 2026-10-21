@@ -12,6 +12,8 @@ type NavigationRule = {
 
 const navigationRules: NavigationRule[] = [
   // ── Lessons ────────────────────────────────────────────────
+  { pattern: /^\/lessons\/map$/, parent: () => "/lessons" },
+  { pattern: /^\/lessons\/([^/]+)\/reference$/, parent: (match) => `/lessons/${match[1]}/topics` },
   {
     pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
     parent: (match) => `/lessons/${match[1]}/topics`,

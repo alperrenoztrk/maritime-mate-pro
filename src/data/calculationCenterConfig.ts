@@ -239,7 +239,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "safety",
-    title: "Denizde Güvenlik",
+    title: "Shipboard Safety",
     subtitle: "Yangın, terk, kurtarma, iş emniyeti, tıbbi yardım, security ve hasar kontrolü",
     icon: Shield,
     accent: "from-rose-500 via-orange-500 to-amber-500",

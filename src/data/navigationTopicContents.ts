@@ -59,7 +59,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Dünya'nın Şekli",
-        content: "Dünya, mükemmel bir küre değildir. Kendi ekseni etrafındaki dönüşü nedeniyle ekvator bölgesinde şişkin, kutuplarda basık bir yapı gösterir. Bu şekle geoit veya matematiksel olarak basık küre (oblate spheroid) denir.",
+        content: "Dünya, mükemmel bir küre değildir. Kendi ekseni etrafındaki dönüşü nedeniyle ekvator bölgesinde şişkin, kutuplarda basık bir yapı gösterir. Basık dönel elipsoid, Dünya için kullanılan düzgün matematiksel bir referans yüzeyidir. Geoit ise yerçekimi alanına bağlı, ortalama deniz seviyesini temsil eden eşpotansiyel yüzey modelidir; elipsoid ile aynı yüzey değildir.",
         image: earthOblate,
         imageAlt: "The oblate spheroid shape of the Earth",
         bulletPoints: [
@@ -99,7 +99,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dünya'nın Güneş Etrafındaki Dönüşü (Revolüsyon)",
         image: earthSeasonsOrbit,
         imageAlt: "Earth's orbit around the Sun with the solstices, the equinoxes and the season in each hemisphere",
-        content: "Dünya, Güneş etrafında yaklaşık 365 gün 6 saatte bir tur atar. Bu hareket sırasında Dünya'nın dönme ekseni, yörünge düzlemine yaklaşık 23.5° eğiktir.",
+        content: "Dünya, Güneş etrafında yaklaşık 365 gün 6 saatte bir tur atar. Bu hareket sırasında Dünya'nın dönme ekseni, yörünge düzlemine dik doğrultuyla yaklaşık 23.5° açı yapar; eksenin yörünge düzlemiyle yaptığı açı yaklaşık 66.5°'dir.",
         bulletPoints: [
           "Mevsimler oluşur",
           "Güneş'in gökyüzündeki yüksekliği yıl boyunca değişir",

@@ -1,3 +1,4 @@
+import rulePlacements from "@/data/curriculumRulePlacement.json";
 import type { LucideIcon } from "lucide-react";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { getTopicContentsByCategory } from "@/data/topicContents";
@@ -103,14 +104,6 @@ const displaySectionTitle = (title: string) =>
 const makeSectionId = (topicId: string | undefined, index: number) =>
   topicId ? `${topicId}-section-${index + 1}` : undefined;
 
-type RuleTopicCandidate = {
-  id: string;
-  title: string;
-  sourceTitle: string;
-  moduleTitle: string;
-  moduleDescription: string;
-};
-
 export type RuleIntegrationAssignment = {
   categoryKey: string;
   group: RuleGroup;
@@ -118,295 +111,26 @@ export type RuleIntegrationAssignment = {
   topicTitle: string;
 };
 
-const normalizeRuleMatch = (value: string) =>
-  value
-    .toLocaleLowerCase("tr-TR")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/ı/g, "i")
-    .replace(/ğ/g, "g")
-    .replace(/ü/g, "u")
-    .replace(/ş/g, "s")
-    .replace(/ö/g, "o")
-    .replace(/ç/g, "c")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-
-const RULE_MATCH_STOP_WORDS = new Set([
-  "ve",
-  "veya",
-  "ile",
-  "icin",
-  "ilgili",
-  "temel",
-  "gemi",
-  "gemiler",
-  "gemilerde",
-  "deniz",
-  "denizcilik",
-  "kural",
-  "kurallar",
-  "gereklilik",
-  "gereklilikleri",
-  "standart",
-  "standartlari",
-  "sistem",
-  "sistemi",
-  "yonetim",
-  "yonetimi",
-  "operasyon",
-  "operasyonel",
-  "uygulama",
-  "uygulamasi",
-]);
-
-const ruleMatchTokens = (value: string) =>
-  Array.from(
-    new Set(
-      normalizeRuleMatch(value)
-        .split(" ")
-        .filter((token) => token.length > 2 && !RULE_MATCH_STOP_WORDS.has(token)),
-    ),
-  );
-
-/**
- * Alan bilgisi gerektiren veya yalnız sözcük benzerliğiyle yanlış konuya
- * düşebilecek gruplar için açık hedefler. Değerler konu başlığının tamamıdır;
- * id yerine başlık kullanılması içerik kaynakları yenilendiğinde bağlantıyı
- * korur. Diğer gruplar aşağıdaki ağırlıklı eşleştirme ile dağıtılır.
- */
-const RULE_TOPIC_OVERRIDES: Record<string, Record<string, string>> = {
-  stability: {
-    "2008 IS Code — Hasarsız (Intakt) Stabilite": "IMO Intact Stability Code (2008 IS Code)",
-    "International Grain Code — Tahıl Yükleri": "Tahıl Yükü Stabilitesi (Grain Stability)",
-    "SOLAS II‑1 — Olasılıksal Hasar Stabilitesi": "SOLAS Hasarlı Stabilite Gereksinimleri",
-    "Timber Deck Cargo Code — Güverte Tomruk": "Operasyonel Limitler ve Uygunluk Yönetimi",
-    "IBC/IGC — Kimyasal ve Gaz Tankerleri": "Kritik Yükleme Durumları",
-    "Polar Code — Kutup Suları Operasyonları": "Operasyonel Limitler ve Uygunluk Yönetimi",
-    "CSS Code (Annex 13) — CSM Bağlama Hesaplarına Esas Sayılar": "Ağır Yükler ve Proje Kargoları",
-    "Stockholm Agreement — Ro‑Ro Yolcu (Bölgesel Ek Şartlar)": "SOLAS Hasarlı Stabilite Gereksinimleri",
-    "Balıkçı Gemileri — Güvenlik Kodu (2005/2012) ve Cape Town Agreement": "Operasyonel Limitler ve Uygunluk Yönetimi",
-    "OSV / SPS — Offshore Supply ve Special Purpose Ships": "Operasyonel Limitler ve Uygunluk Yönetimi",
-    "HSC Code — Yüksek Hızlı Tekneler": "Operasyonel Limitler ve Uygunluk Yönetimi",
-    "MODU Code — Mobil Açık Deniz Üniteleri": "Operasyonel Limitler ve Uygunluk Yönetimi",
-    "Load Line (LL) — Yükleme Sınırı Sözleşmesi Bağlantıları": "Deck Edge Immersion ve Downflooding Açısı",
-  },
-  navigation: {
-    "COLREG — Denizde Çatışmayı Önleme Kuralları": "COLREG temel prensipleri",
-    "Seyir Fenerleri ve İşaretler": "Seyir fenerleri: yay ve menzil",
-    "IALA Deniz İşaretleri Sistemi": "Harita sembolleri ve kısaltmalar",
-    "Tehlike ve Emniyet Sinyalleri": "Ses ve işaret kuralları (Kural 32-37)",
-    "Seyir Planlama Kuralları": "Rota planlama",
-    "Pusula ve Mevki Kuralları": "Mevki koyma",
-  },
-  cargo: {
-    "IMSBC Kodu — Katı Dökme Yükler": "Katı Dökme Yükler ve IMSBC Code",
-    "International Grain Code — Tahıl Yükleri": "Tahıl Yükleri ve Tahıl Stabilitesi",
-    "IMDG Kodu — Tehlikeli Yükler": "Tehlikeli Yükler ve IMDG Code",
-    "Yük Emniyeti — CSS Code & CSM": "Yük Bağlama ve Sıkıştırma (CSS Code)",
-    "Tanker ve Terminal — ISGOTT": "Petrol Tankeri Yük Operasyonları",
-    "Yük Artıkları — MARPOL": "Cargo Care, Terleme ve Ambar Havalandırması",
-  },
-  meteorology: {
-    "SOLAS V — Seyir Planı ve Meteoroloji Servisleri": "SOLAS V tehlike mesajları ve hava raporlama",
-    "IMO Weather Routing Guidelines": "Rüzgar/deniz tahmini çıkarımı",
-    "STCW VIII/2 — Vardiya ve Hava Takibi": "SOLAS V tehlike mesajları ve hava raporlama",
-    "MSI — NAVTEX, SafetyNET ve Uyarılar": "SOLAS V tehlike mesajları ve hava raporlama",
-  },
-  seamanship: {
-    "COLREG Kısım B — Manevra Kuralları": "Manevra ve Gemi Hareketi",
-    "COLREG Kısım C/D — Fenerler, Şekiller, Sesli İşaretler": "Köprüüstü Vardiyası ve Gözcülük",
-    "Demirleme ve Bağlama — İyi Gemicilik": "Bağlama (Mooring) Operasyonları",
-    "ISM Kodu — Güvenli İşletim": "Köprüüstü Vardiyası ve Gözcülük",
-    "ISPS Kodu": "Köprüüstü Vardiyası ve Gözcülük",
-    "Liman, VTS ve Pilotaj": "Pilot Transferi ve Pilot Merdiveni",
-  },
-  communication: {
-    "GMDSS Deniz Alanları ve Taşıma Gereklilikleri": "GMDSS Mimarisi ve Deniz Alanları",
-    "Tehlike, İvedi ve Güvenlik Muhabereleri": "Tehlike, Aciliyet ve Emniyet Haberleşmesi",
-    "DSC, MSI ve NAVTEX": "NAVTEX, SafetyNET ve MSI",
-    "EPIRB / SART, Telsiz Jurnali ve Yanlış Alarm": "EPIRB, SART ve Arama Kurtarma Entegrasyonu",
-  },
-  safety: {
-    "SOLAS Bölüm II-2 — Yangın Güvenliği": "Yangın Önleme ve Yapısal Koruma",
-    "SOLAS III & LSA — Can Kurtarma": "Can Kurtarma Araçları (LSA)",
-    "ISM Kodu — Emniyetli İşletim": "SOLAS ve Emniyet Yönetimi (ISM)",
-    "ISPS Kodu — Güvenlik": "ISPS, Gemi Güvenliği ve Korsanlık",
-    "MLC 2006 — İş Sağlığı ve Güvenliği": "İş Sağlığı, Güvenliği ve KKD",
-  },
-  environment: {
-    "MARPOL Annex VI - Hava Kirliliği": "MARPOL Ek VI — Hava Kirliliği ve Enerji Verimliliği",
-    "BWM Convention - Balast Suyu": "Balast Suyu Yönetimi (BWM)",
-    "MARPOL Annex I - Petrol Kirliliği": "MARPOL Ek I — Petrol Kirliliği",
-    "MARPOL Annex V - Çöp": "MARPOL Ek V — Çöp (Garbage)",
-    "IMO DCS ve Bölgesel MRV": "MARPOL Ek VI — Hava Kirliliği ve Enerji Verimliliği",
-  },
-  economics: {
-    "Çarter Parti (Charter Party) Türleri": "Çarter Türleri ve Charter Party",
-    "Laytime, Demuraj ve Despatch": "Laytime, Demurrage ve Despatch",
-    "Notice of Readiness (NOR)": "Laytime, Demurrage ve Despatch",
-    "Konişmento (Bill of Lading) ve Hague-Visby": "Konşimento ve Taşıma Belgeleri",
-    "Incoterms 2020 Temelleri": "Konşimento ve Taşıma Belgeleri",
-    "BIMCO Standart Formları": "Çarter Türleri ve Charter Party",
-    "P&I ve H&M Sigortası Temelleri": "Deniz Sigortası ve Genel Avarya",
-  },
-  "machine-diesel-engines": {
-    "MARPOL Annex VI – Emisyon": "Performans izleme ve trend analizi",
-    "Üretici ve Klas Gereklilikleri": "Performans izleme ve trend analizi",
-    "Krank Karteri ve Emniyet Tertibatı": "Biyel kolu ve krank mili",
-  },
-  "machine-machine-elements": {
-    "Malzeme ve Yapı Standartları": "Denizcilik çelik standartları",
-    "Şaft, Yatak ve Pervane": "Pervane şaftı boyutlandırma (IACS UR M68)",
-    "Bağlantı Elemanları ve Muayene": "NDT (tahribatsız muayene) teknikleri",
-  },
-  "machine-ship-systems": {
-    "Yakıt Sistemi Kuralları": "Hava tankları ve emniyet düzenlemeleri",
-    "Yağlama ve Soğutma Sistemleri": "Stern tube yağlama ve sızdırmazlık",
-    "Dümen Donanımı": "Dümen testleri ve SOLAS gereklilikleri",
-  },
-  "machine-cooling-hvac": {
-    "Gıda Soğutma ve Hijyen": "Provizyon soğuk hane sistemi",
-    "Klima ve Havalandırma (HVAC)": "Taze hava ve egzoz havalandırma",
-  },
-  "machine-automation": {
-    "Otomasyon Standartları": "Gemi entegre otomasyon sistemi (IAS)",
-    "İzleme ve Kontrol Sistemleri": "Alarm ve izleme sistemi (AMS)",
-    "Siber Güvenlik (OT)": "Makine Otomasyonu ve OT Siber Güvenliği",
-  },
-  "machine-engine-room-ops": {
-    "Operasyon Kuralları": "Makine vardiyası devir-teslim",
-    "Çalışma ve Dinlenme Saatleri": "Makine vardiyası devir-teslim",
-    "Manevra ve Köprü-Makine Koordinasyonu": "Köprüüstü-makine dairesi iletişim",
-  },
-  "machine-engine-room-safety": {
-    "Makine Dairesi Güvenlik Kuralları": "Hızlı kapatma vanası (quick closing valve)",
-    "Kapalı Alana Giriş": "Kapalı alan tanımı ve tehlikeler",
-    "Sabit Söndürme Sistemleri (FSS)": "Makine dairesi sabit söndürme (CO₂, FM200)",
-  },
-  "machine-environment-machine": {
-    "MARPOL – Makine İlgili Hükümler": "MARPOL sözleşmesi tarihçesi",
-    "Enerji ve Emisyon İzleme": "CII (Karbon Yoğunluğu Göstergesi)",
-    "Atık ve Madde Yönetimi": "Çöp yönetim planı (Garbage Management Plan)",
-  },
-  "machine-erm": {
-    "ERM Kuralları ve Standartları": "STCW ERM gereklilikleri",
-    "Takım Çalışması ve İletişim": "Kapalı döngü iletişim (closed-loop)",
-    "Yorgunluk ve Karar Verme": "Stres ve yorgunluk etkisi",
-  },
-  "machine-energy-efficiency": {
-    "Enerji Verimliliği Düzenlemeleri": "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)",
-    "EEXI / CII Uygulaması": "CII derecelendirme sistemi (A–E)",
-    "Operasyonel Verimlilik": "Hız optimizasyonu (slow steaming)",
-  },
-};
-
 const ruleAssignmentCache = new Map<string, RuleIntegrationAssignment[]>();
 
-const getRuleTopicCandidates = (categoryKey: string): RuleTopicCandidate[] => {
-  const modules = getCurriculumModules(categoryKey);
-  const candidates = modules.flatMap((module) =>
-    module.topics.map((topic) => ({
-      id: topic.id,
-      title: topic.title,
-      sourceTitle: topic.sourceTitle,
-      moduleTitle: module.title,
-      moduleDescription: module.description,
-    })),
-  );
-
-  for (const topic of getCurriculumSupplementTopics(categoryKey)) {
-    const module = modules.find((item) => item.id === topic.moduleId);
-    candidates.push({
-      id: topic.id,
-      title: topic.title,
-      sourceTitle: topic.sourceTitle,
-      moduleTitle: module?.title ?? "Tamamlayıcı Konular",
-      moduleDescription: module?.description ?? "",
-    });
-  }
-
-  return candidates;
-};
-
-const scoreRuleCandidate = (group: RuleGroup, candidate: RuleTopicCandidate) => {
-  const title = normalizeRuleMatch(candidate.title);
-  const sourceTitle = normalizeRuleMatch(candidate.sourceTitle);
-  const moduleText = normalizeRuleMatch(
-    `${candidate.moduleTitle} ${candidate.moduleDescription}`,
-  );
-  const groupTitle = normalizeRuleMatch(group.title);
-  const groupTitleTokens = ruleMatchTokens(group.title);
-  const subtitleTokens = ruleMatchTokens(group.rules.map((rule) => rule.subtitle).join(" "));
-  const contentTokens = ruleMatchTokens(
-    [group.source?.code, group.source?.detail, ...group.rules.flatMap((rule) => rule.content)]
-      .filter(Boolean)
-      .join(" "),
-  );
-  let score = 0;
-
-  if (title === groupTitle || sourceTitle === groupTitle) score += 120;
-  if (title.includes(groupTitle) || groupTitle.includes(title)) score += 35;
-
-  for (const token of groupTitleTokens) {
-    if (title.includes(token) || sourceTitle.includes(token)) score += 12;
-    else if (moduleText.includes(token)) score += 4;
-  }
-  for (const token of subtitleTokens) {
-    if (title.includes(token) || sourceTitle.includes(token)) score += 6;
-    else if (moduleText.includes(token)) score += 2;
-  }
-  for (const token of contentTokens) {
-    if (title.includes(token) || sourceTitle.includes(token)) score += 2;
-  }
-
-  return score;
-};
-
-/**
- * Her kural grubunu tek bir kanonik konuya bağlar. Bu fonksiyon doğrulama
- * betiği tarafından da kullanılır; böylece görünmeyen veya iki kez eklenen
- * kural grubu kalmaz.
- */
-export function getRuleIntegrationAssignments(
-  categoryKey?: string,
-): RuleIntegrationAssignment[] {
+/** Authored ownership is independent of the display language. A translated
+ * rule heading must not change its lesson, and cross-course rules are attached
+ * to the course that actually teaches the relevant system or operation. */
+export function getRuleIntegrationAssignments(categoryKey?: string): RuleIntegrationAssignment[] {
   if (!categoryKey) return [];
   const cached = ruleAssignmentCache.get(categoryKey);
   if (cached) return cached;
-
-  const groups = getTopicRules(ruleRegistryKey(categoryKey));
-  const candidates = getRuleTopicCandidates(categoryKey);
-  if (groups.length === 0 || candidates.length === 0) {
-    ruleAssignmentCache.set(categoryKey, []);
-    return [];
+  const candidates = [
+    ...getCurriculumModules(categoryKey).flatMap((module) => module.topics),
+    ...getCurriculumSupplementTopics(categoryKey),
+  ];
+  const assignments: RuleIntegrationAssignment[] = [];
+  for (const placement of rulePlacements.filter((entry) => entry.targetCategory === categoryKey)) {
+    const group = getTopicRules(ruleRegistryKey(placement.sourceCategory)).find((entry) => entry.title === placement.ruleTitle);
+    const topic = candidates.find((entry) => entry.title === placement.targetTitle || entry.sourceTitle === placement.targetTitle);
+    if (!group || !topic) continue; // The curriculum check rejects a broken registry entry.
+    assignments.push({ categoryKey, group, topicId: topic.id, topicTitle: topic.title });
   }
-
-  const overrides = RULE_TOPIC_OVERRIDES[categoryKey] ?? {};
-  const assignments = groups.map((group) => {
-    const targetTitle = overrides[group.title];
-    const overridden = targetTitle
-      ? candidates.find(
-          (candidate) =>
-            normalizeRuleMatch(candidate.title) === normalizeRuleMatch(targetTitle) ||
-            normalizeRuleMatch(candidate.sourceTitle) === normalizeRuleMatch(targetTitle),
-        )
-      : undefined;
-    const topic =
-      overridden ??
-      [...candidates].sort(
-        (left, right) =>
-          scoreRuleCandidate(group, right) - scoreRuleCandidate(group, left),
-      )[0];
-
-    return {
-      categoryKey,
-      group,
-      topicId: topic.id,
-      topicTitle: topic.title,
-    };
-  });
-
   ruleAssignmentCache.set(categoryKey, assignments);
   return assignments;
 }

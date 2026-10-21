@@ -1,3 +1,5 @@
+import { machineWorkedApplications } from "./machineWorkedApplications";
+import ownership from "./machineContentOwnership.json";
 export interface MachineSubTopicSection {
   heading: string;
   paragraphs: string[];
@@ -1259,16 +1261,35 @@ import content11 from "./machineTopicDetailContent11";
 
 const allContentMaps = [content, content2, content3, content4, content5, content6, content7, content8, content9, content10, content11];
 
+// One explicit owner per topic. Later authored expansions are reachable, and
+// supplementary worked examples from earlier editions remain available.
+const resolvedContent = new Map<string, MachineSubTopicContent>();
 export function getMachineSubTopicContent(topicSlug: string, subTopicTitle: string): MachineSubTopicContent | null {
+  const key = `${topicSlug}|${subTopicTitle}`;
+  const cached = resolvedContent.get(key);
+  if (cached) return cached;
+  const owner = (ownership as Record<string, Record<string, number>>)[topicSlug]?.[subTopicTitle];
+  const canonical = owner === undefined ? undefined : allContentMaps[owner]?.[topicSlug]?.[subTopicTitle];
+  if (!canonical) return null;
+  const sections = [...canonical.sections];
+  const exampleKeys = new Set(sections.filter((section) => section.example).map((section) => section.example!.problem));
+  const formulaKeys = new Set(sections.filter((section) => section.formula).map((section) => section.formula!.expression));
   for (const map of allContentMaps) {
-    if (map[topicSlug]?.[subTopicTitle]) return map[topicSlug][subTopicTitle];
+    for (const section of map[topicSlug]?.[subTopicTitle]?.sections ?? []) {
+      const example = section.example && !exampleKeys.has(section.example.problem) ? section.example : undefined;
+      const formula = section.formula && !formulaKeys.has(section.formula.expression) ? section.formula : undefined;
+      if (!example && !formula) continue;
+      sections.push({ heading: section.heading, paragraphs: [], example, formula });
+      if (example) exampleKeys.add(example.problem);
+      if (formula) formulaKeys.add(formula.expression);
+    }
   }
-  return null;
+  sections.push(...(machineWorkedApplications[key] ?? []));
+  const result = { ...canonical, sections };
+  resolvedContent.set(key, result);
+  return result;
 }
 
 export function hasSubTopicContent(topicSlug: string, subTopicTitle: string): boolean {
-  for (const map of allContentMaps) {
-    if (map[topicSlug]?.[subTopicTitle]) return true;
-  }
-  return false;
+  return !!getMachineSubTopicContent(topicSlug, subTopicTitle);
 }

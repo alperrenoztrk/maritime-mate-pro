@@ -6,6 +6,7 @@ import { getStaticTranslation, isDictionaryComplete, loadStaticDictionary } from
 const responses: Record<string, unknown> = {
   '/locales/de.json': { __version: 'x', Kaynak: 'Quelle' },
   '/locales/fr.json': {},
+  '/locales/shared/learning-guide.en.json': { 'Learning map': 'Learning map' },
   '/locales/shared/lesson-paragraphs.en.json': {
     'Gemi havuza girdiğinde ağırlık takozlara biner.': 'When the ship enters the dry dock, its weight comes onto the keel blocks.',
     Kaynak: 'Source (English)',
@@ -33,4 +34,10 @@ test('an empty language pack stays empty so the live translator is still used', 
   await loadStaticDictionary('fr');
   assert.equal(isDictionaryComplete('fr'), false);
   assert.equal(getStaticTranslation('Gemi havuza girdiğinde ağırlık takozlara biner.', 'fr'), null);
+});
+
+
+test('new learning copy uses one shared offline pack', async () => {
+  await loadStaticDictionary('de');
+  assert.equal(getStaticTranslation('Learning map', 'de'), 'Learning map');
 });

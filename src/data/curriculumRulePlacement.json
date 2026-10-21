@@ -1,0 +1,626 @@
+[
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "2008 IS Code — Intact Stability",
+    "targetCategory": "stability",
+    "targetTitle": "IMO Intact Stability Code (2008 IS Code)"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "International Grain Code — Grain Cargoes",
+    "targetCategory": "stability",
+    "targetTitle": "Tahıl Yükü Stabilitesi (Grain Stability)"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "SOLAS II‑1 — Probabilistic Damage Stability",
+    "targetCategory": "stability",
+    "targetTitle": "SOLAS Hasarlı Stabilite Gereksinimleri"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "Timber Deck Cargo Code — Deck Timber",
+    "targetCategory": "stability",
+    "targetTitle": "Operasyonel Limitler ve Uygunluk Yönetimi"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "IBC/IGC — Chemical and Gas Tankers",
+    "targetCategory": "stability",
+    "targetTitle": "Kritik Yükleme Durumları"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "Polar Code — Polar Waters Operations",
+    "targetCategory": "stability",
+    "targetTitle": "Operasyonel Limitler ve Uygunluk Yönetimi"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "CSS Code (Annex 13) — Values Underlying CSM Lashing Calculations",
+    "targetCategory": "stability",
+    "targetTitle": "Ağır Yükler ve Proje Kargoları"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "Stockholm Agreement — Ro‑Ro Passenger Ships (Regional Additional Requirements)",
+    "targetCategory": "stability",
+    "targetTitle": "SOLAS Hasarlı Stabilite Gereksinimleri"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "Fishing Vessels — Safety Code (2005/2012) and the Cape Town Agreement",
+    "targetCategory": "stability",
+    "targetTitle": "Operasyonel Limitler ve Uygunluk Yönetimi"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "OSV / SPS — Offshore Supply and Special Purpose Ships",
+    "targetCategory": "stability",
+    "targetTitle": "Operasyonel Limitler ve Uygunluk Yönetimi"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "HSC Code — High Speed Craft",
+    "targetCategory": "stability",
+    "targetTitle": "Operasyonel Limitler ve Uygunluk Yönetimi"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "MODU Code — Mobile Offshore Drilling Units",
+    "targetCategory": "stability",
+    "targetTitle": "Operasyonel Limitler ve Uygunluk Yönetimi"
+  },
+  {
+    "sourceCategory": "stability",
+    "ruleTitle": "Load Line (LL) — Links to the Load Line Convention",
+    "targetCategory": "stability",
+    "targetTitle": "Deck Edge Immersion ve Downflooding Açısı"
+  },
+  {
+    "sourceCategory": "navigation",
+    "ruleTitle": "COLREG — International Regulations for Preventing Collisions at Sea",
+    "targetCategory": "navigation",
+    "targetTitle": "COLREG temel prensipleri"
+  },
+  {
+    "sourceCategory": "navigation",
+    "ruleTitle": "Navigation Lights and Shapes",
+    "targetCategory": "navigation",
+    "targetTitle": "Seyir fenerleri: yay ve menzil"
+  },
+  {
+    "sourceCategory": "navigation",
+    "ruleTitle": "IALA Maritime Buoyage System",
+    "targetCategory": "navigation",
+    "targetTitle": "Harita sembolleri ve kısaltmalar"
+  },
+  {
+    "sourceCategory": "navigation",
+    "ruleTitle": "Distress and Safety Signals",
+    "targetCategory": "navigation",
+    "targetTitle": "Ses ve işaret kuralları (Kural 32-37)"
+  },
+  {
+    "sourceCategory": "navigation",
+    "ruleTitle": "Passage Planning Rules",
+    "targetCategory": "navigation",
+    "targetTitle": "Rota planlama"
+  },
+  {
+    "sourceCategory": "navigation",
+    "ruleTitle": "Compass and Position Fixing Rules",
+    "targetCategory": "navigation",
+    "targetTitle": "Mevki koyma"
+  },
+  {
+    "sourceCategory": "cargo",
+    "ruleTitle": "IMSBC Code — Solid Bulk Cargoes",
+    "targetCategory": "cargo",
+    "targetTitle": "Katı Dökme Yükler ve IMSBC Code"
+  },
+  {
+    "sourceCategory": "cargo",
+    "ruleTitle": "International Grain Code — Grain Cargoes",
+    "targetCategory": "cargo",
+    "targetTitle": "Tahıl Yükleri ve Tahıl Stabilitesi"
+  },
+  {
+    "sourceCategory": "cargo",
+    "ruleTitle": "IMDG Code — Dangerous Goods",
+    "targetCategory": "cargo",
+    "targetTitle": "Tehlikeli Yükler ve IMDG Code"
+  },
+  {
+    "sourceCategory": "cargo",
+    "ruleTitle": "Cargo Securing — CSS Code and CSM",
+    "targetCategory": "cargo",
+    "targetTitle": "Yük Bağlama ve Sıkıştırma (CSS Code)"
+  },
+  {
+    "sourceCategory": "cargo",
+    "ruleTitle": "Tanker ve Terminal — ISGOTT",
+    "targetCategory": "cargo",
+    "targetTitle": "Petrol Tankeri Yük Operasyonları"
+  },
+  {
+    "sourceCategory": "cargo",
+    "ruleTitle": "Cargo Residues — MARPOL",
+    "targetCategory": "cargo",
+    "targetTitle": "Cargo Care, Terleme ve Ambar Havalandırması"
+  },
+  {
+    "sourceCategory": "meteorology",
+    "ruleTitle": "SOLAS V — Passage Planning and Meteorological Services",
+    "targetCategory": "meteorology",
+    "targetTitle": "SOLAS V tehlike mesajları ve hava raporlama"
+  },
+  {
+    "sourceCategory": "meteorology",
+    "ruleTitle": "IMO Weather Routing Guidelines",
+    "targetCategory": "meteorology",
+    "targetTitle": "Rüzgar/deniz tahmini çıkarımı"
+  },
+  {
+    "sourceCategory": "meteorology",
+    "ruleTitle": "STCW VIII/2 — Watchkeeping and Weather Monitoring",
+    "targetCategory": "meteorology",
+    "targetTitle": "SOLAS V tehlike mesajları ve hava raporlama"
+  },
+  {
+    "sourceCategory": "meteorology",
+    "ruleTitle": "MSI — NAVTEX, SafetyNET and Warnings",
+    "targetCategory": "meteorology",
+    "targetTitle": "SOLAS V tehlike mesajları ve hava raporlama"
+  },
+  {
+    "sourceCategory": "seamanship",
+    "ruleTitle": "COLREG Part B — Steering and Sailing Rules",
+    "targetCategory": "seamanship",
+    "targetTitle": "Manevra ve Gemi Hareketi"
+  },
+  {
+    "sourceCategory": "seamanship",
+    "ruleTitle": "COLREG Parts C/D — Lights, Shapes and Sound Signals",
+    "targetCategory": "seamanship",
+    "targetTitle": "Köprüüstü Vardiyası ve Gözcülük"
+  },
+  {
+    "sourceCategory": "seamanship",
+    "ruleTitle": "Anchoring and Mooring — Good Seamanship",
+    "targetCategory": "seamanship",
+    "targetTitle": "Bağlama (Mooring) Operasyonları"
+  },
+  {
+    "sourceCategory": "seamanship",
+    "ruleTitle": "ISM Code — Safe Operation",
+    "targetCategory": "seamanship",
+    "targetTitle": "Köprüüstü Vardiyası ve Gözcülük"
+  },
+  {
+    "sourceCategory": "seamanship",
+    "ruleTitle": "ISPS Code",
+    "targetCategory": "seamanship",
+    "targetTitle": "Köprüüstü Vardiyası ve Gözcülük"
+  },
+  {
+    "sourceCategory": "seamanship",
+    "ruleTitle": "Port, VTS and Pilotage",
+    "targetCategory": "seamanship",
+    "targetTitle": "Pilot Transferi ve Pilot Merdiveni"
+  },
+  {
+    "sourceCategory": "communication",
+    "ruleTitle": "GMDSS Sea Areas and Carriage Requirements",
+    "targetCategory": "communication",
+    "targetTitle": "GMDSS Mimarisi ve Deniz Alanları"
+  },
+  {
+    "sourceCategory": "communication",
+    "ruleTitle": "Distress, Urgency and Safety Communications",
+    "targetCategory": "communication",
+    "targetTitle": "Tehlike, Aciliyet ve Emniyet Haberleşmesi"
+  },
+  {
+    "sourceCategory": "communication",
+    "ruleTitle": "DSC, MSI ve NAVTEX",
+    "targetCategory": "communication",
+    "targetTitle": "NAVTEX, SafetyNET ve MSI"
+  },
+  {
+    "sourceCategory": "communication",
+    "ruleTitle": "EPIRB / SART, the Radio Log and False Alerts",
+    "targetCategory": "communication",
+    "targetTitle": "EPIRB, SART ve Arama Kurtarma Entegrasyonu"
+  },
+  {
+    "sourceCategory": "safety",
+    "ruleTitle": "SOLAS Chapter II-2 — Fire Safety",
+    "targetCategory": "safety",
+    "targetTitle": "Yangın Önleme ve Yapısal Koruma"
+  },
+  {
+    "sourceCategory": "safety",
+    "ruleTitle": "SOLAS III & LSA — Life Saving",
+    "targetCategory": "safety",
+    "targetTitle": "Can Kurtarma Araçları (LSA)"
+  },
+  {
+    "sourceCategory": "safety",
+    "ruleTitle": "ISM Code — Safe Operation",
+    "targetCategory": "safety",
+    "targetTitle": "SOLAS ve Emniyet Yönetimi (ISM)"
+  },
+  {
+    "sourceCategory": "safety",
+    "ruleTitle": "ISPS Code — Security",
+    "targetCategory": "safety",
+    "targetTitle": "ISPS, Gemi Güvenliği ve Korsanlık"
+  },
+  {
+    "sourceCategory": "safety",
+    "ruleTitle": "MLC 2006 — Occupational Health and Safety",
+    "targetCategory": "safety",
+    "targetTitle": "İş Sağlığı, Güvenliği ve KKD"
+  },
+  {
+    "sourceCategory": "environment",
+    "ruleTitle": "MARPOL Annex VI — Air Pollution",
+    "targetCategory": "environment",
+    "targetTitle": "MARPOL Ek VI — Hava Kirliliği ve Enerji Verimliliği"
+  },
+  {
+    "sourceCategory": "environment",
+    "ruleTitle": "BWM Convention — Ballast Water",
+    "targetCategory": "environment",
+    "targetTitle": "Balast Suyu Yönetimi (BWM)"
+  },
+  {
+    "sourceCategory": "environment",
+    "ruleTitle": "MARPOL Annex I — Oil Pollution",
+    "targetCategory": "environment",
+    "targetTitle": "MARPOL Ek I — Petrol Kirliliği"
+  },
+  {
+    "sourceCategory": "environment",
+    "ruleTitle": "MARPOL Annex V — Garbage",
+    "targetCategory": "environment",
+    "targetTitle": "MARPOL Ek V — Çöp (Garbage)"
+  },
+  {
+    "sourceCategory": "environment",
+    "ruleTitle": "IMO DCS and Regional MRV",
+    "targetCategory": "environment",
+    "targetTitle": "MARPOL Ek VI — Hava Kirliliği ve Enerji Verimliliği"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "Types of Charter Party",
+    "targetCategory": "economics",
+    "targetTitle": "Çarter Türleri ve Charter Party"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "Laytime, Demuraj ve Despatch",
+    "targetCategory": "economics",
+    "targetTitle": "Laytime, Demurrage ve Despatch"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "Notice of Readiness (NOR)",
+    "targetCategory": "economics",
+    "targetTitle": "Laytime, Demurrage ve Despatch"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "Bill of Lading and the Hague-Visby Rules",
+    "targetCategory": "economics",
+    "targetTitle": "Konşimento ve Taşıma Belgeleri"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "Incoterms 2020 Temelleri",
+    "targetCategory": "economics",
+    "targetTitle": "Konşimento ve Taşıma Belgeleri"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "BIMCO Standard Forms",
+    "targetCategory": "economics",
+    "targetTitle": "Çarter Türleri ve Charter Party"
+  },
+  {
+    "sourceCategory": "economics",
+    "ruleTitle": "Fundamentals of P&I and H&M Insurance",
+    "targetCategory": "economics",
+    "targetTitle": "Deniz Sigortası ve Genel Avarya"
+  },
+  {
+    "sourceCategory": "machine-thermodynamics",
+    "ruleTitle": "SOLAS – Engine Room Thermal Management",
+    "targetCategory": "machine-thermodynamics",
+    "targetTitle": "Fourier iletim yasası"
+  },
+  {
+    "sourceCategory": "machine-thermodynamics",
+    "ruleTitle": "Pressure Vessels and Steam Systems",
+    "targetCategory": "machine-auxiliary",
+    "targetTitle": "Kazan emniyet düzenleri"
+  },
+  {
+    "sourceCategory": "machine-thermodynamics",
+    "ruleTitle": "Exhaust and Waste Heat Recovery (WHRS)",
+    "targetCategory": "machine-thermodynamics",
+    "targetTitle": "Atık ısı geri kazanım sistemi (WHRS)"
+  },
+  {
+    "sourceCategory": "machine-fluid-mechanics",
+    "ruleTitle": "Pump and Pipe Standards",
+    "targetCategory": "machine-fluid-mechanics",
+    "targetTitle": "Sintine boru sistemi"
+  },
+  {
+    "sourceCategory": "machine-fluid-mechanics",
+    "ruleTitle": "Ballast and Pipe Circuits",
+    "targetCategory": "machine-fluid-mechanics",
+    "targetTitle": "Balast boru sistemi"
+  },
+  {
+    "sourceCategory": "machine-fluid-mechanics",
+    "ruleTitle": "Cavitation and Compressed Air",
+    "targetCategory": "machine-fluid-mechanics",
+    "targetTitle": "NPSH kavramı ve kavitasyon"
+  },
+  {
+    "sourceCategory": "machine-machine-elements",
+    "ruleTitle": "Material and Construction Standards",
+    "targetCategory": "machine-machine-elements",
+    "targetTitle": "Denizcilik çelik standartları"
+  },
+  {
+    "sourceCategory": "machine-machine-elements",
+    "ruleTitle": "Shaft, Bearing and Propeller",
+    "targetCategory": "machine-machine-elements",
+    "targetTitle": "Pervane şaftı boyutlandırma (IACS UR M68)"
+  },
+  {
+    "sourceCategory": "machine-machine-elements",
+    "ruleTitle": "Fasteners and Inspection",
+    "targetCategory": "machine-machine-elements",
+    "targetTitle": "NDT (tahribatsız muayene) teknikleri"
+  },
+  {
+    "sourceCategory": "machine-diesel-engines",
+    "ruleTitle": "MARPOL Annex VI – Emissions",
+    "targetCategory": "machine-diesel-engines",
+    "targetTitle": "Performans izleme ve trend analizi"
+  },
+  {
+    "sourceCategory": "machine-diesel-engines",
+    "ruleTitle": "Manufacturer and Class Requirements",
+    "targetCategory": "machine-diesel-engines",
+    "targetTitle": "Performans izleme ve trend analizi"
+  },
+  {
+    "sourceCategory": "machine-diesel-engines",
+    "ruleTitle": "Crankcase and Safety Device",
+    "targetCategory": "machine-diesel-engines",
+    "targetTitle": "Biyel kolu ve krank mili"
+  },
+  {
+    "sourceCategory": "machine-ship-systems",
+    "ruleTitle": "Fuel System Rules",
+    "targetCategory": "machine-fuel-technology",
+    "targetTitle": "Settling tank ve servis tank"
+  },
+  {
+    "sourceCategory": "machine-ship-systems",
+    "ruleTitle": "Lubrication and Cooling Systems",
+    "targetCategory": "machine-engine-room-ops",
+    "targetTitle": "Soğutma ve yağlama kontrolü"
+  },
+  {
+    "sourceCategory": "machine-ship-systems",
+    "ruleTitle": "Steering gear",
+    "targetCategory": "machine-ship-systems",
+    "targetTitle": "Dümen testleri ve SOLAS gereklilikleri"
+  },
+  {
+    "sourceCategory": "machine-auxiliary",
+    "ruleTitle": "Auxiliary Machinery Rules",
+    "targetCategory": "machine-auxiliary",
+    "targetTitle": "Acil jeneratör ve SOLAS gereklilikleri"
+  },
+  {
+    "sourceCategory": "machine-auxiliary",
+    "ruleTitle": "Separators and Air Compressors",
+    "targetCategory": "machine-auxiliary",
+    "targetTitle": "Kompresör bakım ve valf muayenesi"
+  },
+  {
+    "sourceCategory": "machine-auxiliary",
+    "ruleTitle": "Fresh Water and Hydrophore",
+    "targetCategory": "machine-auxiliary",
+    "targetTitle": "Su kalitesi standartları"
+  },
+  {
+    "sourceCategory": "machine-fuel-technology",
+    "ruleTitle": "Fuel Quality and Management Rules",
+    "targetCategory": "machine-fuel-technology",
+    "targetTitle": "MARPOL Annex VI kükürt uyumu"
+  },
+  {
+    "sourceCategory": "machine-fuel-technology",
+    "ruleTitle": "Operation Bunker",
+    "targetCategory": "machine-fuel-technology",
+    "targetTitle": "Bunker planlama ve sipariş"
+  },
+  {
+    "sourceCategory": "machine-fuel-technology",
+    "ruleTitle": "ISO 8217 Specification",
+    "targetCategory": "machine-fuel-technology",
+    "targetTitle": "ISO 8217 yakıt standartları"
+  },
+  {
+    "sourceCategory": "machine-cooling-hvac",
+    "ruleTitle": "Refrigerant Rules",
+    "targetCategory": "machine-cooling-hvac",
+    "targetTitle": "Montreal ve Kigali protokolleri"
+  },
+  {
+    "sourceCategory": "machine-cooling-hvac",
+    "ruleTitle": "Food Cooling and Hygiene",
+    "targetCategory": "machine-cooling-hvac",
+    "targetTitle": "Provizyon soğuk hane sistemi"
+  },
+  {
+    "sourceCategory": "machine-cooling-hvac",
+    "ruleTitle": "Air Conditioning and Ventilation (HVAC)",
+    "targetCategory": "machine-cooling-hvac",
+    "targetTitle": "Taze hava ve egzoz havalandırma"
+  },
+  {
+    "sourceCategory": "machine-electrical",
+    "ruleTitle": "IEC 60092 – Ship Electrical Standards",
+    "targetCategory": "machine-electrical",
+    "targetTitle": "Ana dağıtım panosu (MSB)"
+  },
+  {
+    "sourceCategory": "machine-electrical",
+    "ruleTitle": "Battery and Emergency Lighting",
+    "targetCategory": "machine-electrical",
+    "targetTitle": "Acil aydınlatma sistemi"
+  },
+  {
+    "sourceCategory": "machine-electrical",
+    "ruleTitle": "High Voltage (HV) Safety",
+    "targetCategory": "machine-electrical",
+    "targetTitle": "Yüksek Gerilim İzolasyonu ve Ark Parlaması Emniyeti"
+  },
+  {
+    "sourceCategory": "machine-automation",
+    "ruleTitle": "Automation Standards",
+    "targetCategory": "machine-automation",
+    "targetTitle": "Gemi entegre otomasyon sistemi (IAS)"
+  },
+  {
+    "sourceCategory": "machine-automation",
+    "ruleTitle": "Monitoring and Control Systems",
+    "targetCategory": "machine-automation",
+    "targetTitle": "Alarm ve izleme sistemi (AMS)"
+  },
+  {
+    "sourceCategory": "machine-automation",
+    "ruleTitle": "Cyber Security (OT)",
+    "targetCategory": "machine-automation",
+    "targetTitle": "Makine Otomasyonu ve OT Siber Güvenliği"
+  },
+  {
+    "sourceCategory": "machine-engine-room-ops",
+    "ruleTitle": "Operation Rules",
+    "targetCategory": "machine-engine-room-ops",
+    "targetTitle": "Makine vardiyası devir-teslim"
+  },
+  {
+    "sourceCategory": "machine-engine-room-ops",
+    "ruleTitle": "Working and Rest Hours",
+    "targetCategory": "machine-erm",
+    "targetTitle": "Stres ve yorgunluk etkisi"
+  },
+  {
+    "sourceCategory": "machine-engine-room-ops",
+    "ruleTitle": "Maneuvering and Bridge-Machine Coordination",
+    "targetCategory": "machine-engine-room-ops",
+    "targetTitle": "Köprüüstü-makine dairesi iletişim"
+  },
+  {
+    "sourceCategory": "machine-maintenance",
+    "ruleTitle": "Maintenance Rules",
+    "targetCategory": "machine-maintenance",
+    "targetTitle": "PMS yazılımı ve iş emri yönetimi"
+  },
+  {
+    "sourceCategory": "machine-maintenance",
+    "ruleTitle": "Survey Regime and Condition Monitoring",
+    "targetCategory": "machine-maintenance",
+    "targetTitle": "Klas gereklilikleri ve survey takvimi"
+  },
+  {
+    "sourceCategory": "machine-maintenance",
+    "ruleTitle": "Spare Parts and Critical Equipment",
+    "targetCategory": "machine-maintenance",
+    "targetTitle": "Kritik ekipman tanımlaması"
+  },
+  {
+    "sourceCategory": "machine-engine-room-safety",
+    "ruleTitle": "Engine Room Safety Rules",
+    "targetCategory": "machine-engine-room-safety",
+    "targetTitle": "İş izin sistemi (Permit to Work)"
+  },
+  {
+    "sourceCategory": "machine-engine-room-safety",
+    "ruleTitle": "Entry to Confined Space",
+    "targetCategory": "machine-engine-room-safety",
+    "targetTitle": "Kapalı alan tanımı ve tehlikeler"
+  },
+  {
+    "sourceCategory": "machine-engine-room-safety",
+    "ruleTitle": "Fixed Suppression Systems (FSS)",
+    "targetCategory": "machine-engine-room-safety",
+    "targetTitle": "Makine dairesi sabit söndürme (CO₂, FM200)"
+  },
+  {
+    "sourceCategory": "machine-environment-machine",
+    "ruleTitle": "MARPOL – Machinery Related Provisions",
+    "targetCategory": "machine-environment-machine",
+    "targetTitle": "Yağ-su ayırıcı (OWS) 15 ppm standardı"
+  },
+  {
+    "sourceCategory": "machine-environment-machine",
+    "ruleTitle": "Energy and Emissions Monitoring",
+    "targetCategory": "machine-environment-machine",
+    "targetTitle": "CII (Karbon Yoğunluğu Göstergesi)"
+  },
+  {
+    "sourceCategory": "machine-environment-machine",
+    "ruleTitle": "Waste and Substance Management",
+    "targetCategory": "machine-environment-machine",
+    "targetTitle": "Çöp yönetim planı (Garbage Management Plan)"
+  },
+  {
+    "sourceCategory": "machine-erm",
+    "ruleTitle": "ERM Rules and Standards",
+    "targetCategory": "machine-erm",
+    "targetTitle": "STCW ERM gereklilikleri"
+  },
+  {
+    "sourceCategory": "machine-erm",
+    "ruleTitle": "Teamwork and Communication",
+    "targetCategory": "machine-erm",
+    "targetTitle": "Kapalı döngü iletişim (closed-loop)"
+  },
+  {
+    "sourceCategory": "machine-erm",
+    "ruleTitle": "Fatigue and Decision Making",
+    "targetCategory": "machine-erm",
+    "targetTitle": "Stres ve yorgunluk etkisi"
+  },
+  {
+    "sourceCategory": "machine-energy-efficiency",
+    "ruleTitle": "Energy Efficiency Regulations",
+    "targetCategory": "machine-energy-efficiency",
+    "targetTitle": "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)"
+  },
+  {
+    "sourceCategory": "machine-energy-efficiency",
+    "ruleTitle": "EEXI/CII Application",
+    "targetCategory": "machine-energy-efficiency",
+    "targetTitle": "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)"
+  },
+  {
+    "sourceCategory": "machine-energy-efficiency",
+    "ruleTitle": "Operational Efficiency",
+    "targetCategory": "machine-energy-efficiency",
+    "targetTitle": "Hız optimizasyonu (slow steaming)"
+  }
+]

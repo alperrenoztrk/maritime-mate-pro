@@ -47,18 +47,17 @@ async function buildGlossaryItems(): Promise<SearchItem[]> {
 }
 
 async function buildLessonTopicItems(): Promise<SearchItem[]> {
-  const { topicContentsByCategory } = await import("./topicContents");
-  const items: SearchItem[] = [];
-  for (const [categoryId, contents] of Object.entries(topicContentsByCategory)) {
-    const category = LESSON_CATEGORY_LABELS[categoryId] ?? "Dersler";
-    for (const [title, content] of Object.entries(contents)) {
-      items.push({
-        title,
-        description: shortDescription(content.introduction),
-        path: `/lessons/${categoryId}/topics/${encodeURIComponent(title)}`,
-        category,
-        keywords: ["konu anlatımı", "ders", category],
-      });
+  const { getBetaCategories, getBetaModules, getBetaTopic } = await import("./betaLessons");
+  const { topicHref, courseHref } = await import("./learningGuide");
+  const items: SearchItem[] = [{ title: "Maritime learning map", description: "Explore disciplines, courses, modules and topics", path: "/lessons/map", category: "Learning", keywords: ["beginner", "learning path", "curriculum", "knowledge tree"] }];
+  for (const category of getBetaCategories()) {
+    items.push({ title: category.title, description: category.subtitle, path: courseHref(category.key), category: "Learning", keywords: [category.group, "course"] });
+    for (const module of getBetaModules(category.key)) {
+      items.push({ title: module.title, description: module.description, path: `${courseHref(category.key)}?module=${encodeURIComponent(module.id)}`, category: category.title, keywords: ["module", category.group] });
+      for (const topic of module.topics) {
+        const content = getBetaTopic(category.key, topic.id);
+        items.push({ title: topic.title, description: shortDescription(content?.introduction ?? module.description), path: topicHref(category.key, topic.id), category: category.title, keywords: [module.title, topic.sourceTitle, topic.level, "lesson"] });
+      }
     }
   }
   return items;

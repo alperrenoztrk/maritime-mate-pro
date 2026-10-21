@@ -34,24 +34,29 @@ const dictionaryUrl = (languageCode: string): string =>
 // instead of a live machine translation of the Turkish.
 const sharedEnglishUrl = (): string =>
   `${baseUrl.replace(/\/$/, '')}/locales/shared/lesson-paragraphs.en.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
+const sharedLearningUrl = (): string =>
+  `${baseUrl.replace(/\/$/, '')}/locales/shared/learning-guide.en.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
 let sharedEnglishLoad: Promise<StaticDictionary> | null = null;
 
 const loadSharedEnglish = (): Promise<StaticDictionary> => {
   if (!sharedEnglishLoad) {
     sharedEnglishLoad = (async (): Promise<StaticDictionary> => {
-      try {
-        const response = await fetch(sharedEnglishUrl(), { cache: 'force-cache' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const raw = (await response.json()) as Record<string, unknown>;
-        const shared: StaticDictionary = {};
-        for (const [key, value] of Object.entries(raw)) {
-          if (typeof value === 'string') shared[key] = value;
+      const packs = await Promise.all([sharedEnglishUrl(), sharedLearningUrl()].map(async (url) => {
+        try {
+          const response = await fetch(url, { cache: 'force-cache' });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const raw = (await response.json()) as Record<string, unknown>;
+          const shared: StaticDictionary = {};
+          for (const [key, value] of Object.entries(raw)) {
+            if (typeof value === 'string') shared[key] = value;
+          }
+          return shared;
+        } catch {
+          sharedEnglishLoad = null; // One missing pack must not discard the other.
+          return {};
         }
-        return shared;
-      } catch {
-        sharedEnglishLoad = null; // try again with the next dictionary load
-        return {};
-      }
+      }));
+      return Object.assign({}, ...packs);
     })();
   }
   return sharedEnglishLoad;

@@ -36,7 +36,7 @@ const OUT_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
 const ALLOWED_PROPS = new Set([
   'title', 'subtitle', 'description', 'content', 'introduction', 'keyPoints',
   'bulletPoints', 'question', 'options', 'explanation', 'label', 'desc', 'name',
-  'purpose', 'summary', 'text', 'caption', 'answer', 'hint', 'note', 'warning',
+  'purpose', 'outcomes', 'reason', 'summary', 'text', 'caption', 'answer', 'hint', 'note', 'warning',
   'tip', 'heading', 'subheading', 'intro', 'body', 'definition', 'term',
   'category', 'message', 'placeholder',
   'lead', 'bullets', 'headers', 'rows', 'sources',
@@ -222,6 +222,10 @@ const TRANSLATION_LOOKUP_METHODS = new Set([
   'getCoreUiTranslation',
 ]);
 
+// Authored course context uses guide(...) and small connection helpers. Their
+// string arguments are prose, while course IDs and routes stay excluded.
+const LEARNING_COPY_CALLS = new Set(['guide', 'system', 'operations', 'crew', 'rules']);
+
 function isUserVisibleMessageCall(expression) {
   if (ts.isIdentifier(expression)) {
     return expression.text === 'toast' || expression.text === 'alert' || expression.text === 'confirm';
@@ -397,7 +401,7 @@ for (const file of files) {
       const name = ts.isIdentifier(node.name)
         ? node.name.text
         : (ts.isStringLiteral(node.name) ? node.name.text : null);
-      if (name && ALLOWED_PROPS.has(name)) {
+      if (name && (ALLOWED_PROPS.has(name) || (name === "paragraphs" && file.endsWith("machineWorkedApplications.ts")))) {
         const init = node.initializer;
         const lit = stringLiteralText(init);
         if (lit !== null) consider(lit, name);
@@ -427,6 +431,13 @@ for (const file of files) {
         } else if (ts.isJsxExpression(child) && child.expression) {
           collectFromVisibleExpression(child.expression);
         }
+      }
+    }
+    if (file.endsWith('learningGuide.ts') && ts.isCallExpression(node) && ts.isIdentifier(node.expression) && LEARNING_COPY_CALLS.has(node.expression.text)) {
+      for (const argument of node.arguments) {
+        const text = stringLiteralText(argument);
+        if (text !== null) consider(text, 'text');
+        else if (ts.isArrayLiteralExpression(argument)) collectFromArray(argument, 'text');
       }
     }
     if (ts.isCallExpression(node) && isUserVisibleMessageCall(node.expression)) {

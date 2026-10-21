@@ -72,6 +72,10 @@ for (const file of files) {
     continue;
   }
   const dict = JSON.parse(raw);
+  if (lang === 'en') {
+    const sharedFile = path.join(OUT_DIR, 'shared/learning-guide.en.json');
+    if (fs.existsSync(sharedFile)) Object.assign(dict, JSON.parse(fs.readFileSync(sharedFile, 'utf8')));
+  }
 
   const tokenCounts = new Map();
   const senseCounts = new Map();

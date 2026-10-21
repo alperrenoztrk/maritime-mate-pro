@@ -14,6 +14,7 @@ const vite = await createServer({
 try {
   const lessons = await vite.ssrLoadModule("/src/data/betaLessons.ts");
   const rules = await vite.ssrLoadModule("/src/data/courseContent/rules/index.ts");
+  const allAssignments = lessons.getBetaCategories().flatMap((category) => lessons.getRuleIntegrationAssignments(category.key));
   let groupCount = 0;
   let sectionCount = 0;
   let itemCount = 0;
@@ -24,19 +25,12 @@ try {
         ? category.key.replace(/^machine-/, "")
         : category.key;
     const groups = rules.getTopicRules(registryKey);
-    const assignments = lessons.getRuleIntegrationAssignments(category.key);
-
-    assert(
-      assignments.length === groups.length,
-      `${category.key}: ${groups.length} kural grubundan ${assignments.length} tanesi konuya bağlandı`,
-    );
-    assert(
-      new Set(assignments.map((assignment) => assignment.group.title)).size === groups.length,
-      `${category.key}: aynı kural grubu birden fazla konuya bağlandı`,
-    );
+    const assignments = allAssignments.filter((assignment) => groups.includes(assignment.group));
+    assert(assignments.length === groups.length, `${category.key}: each rule group must have one authored destination`);
+    for (const group of groups) assert(assignments.filter((assignment) => assignment.group === group).length === 1, `${category.key}/${group.title}: missing or duplicate rule ownership`);
 
     for (const assignment of assignments) {
-      const topic = lessons.getBetaTopic(category.key, assignment.topicId);
+      const topic = lessons.getBetaTopic(assignment.categoryKey, assignment.topicId);
       assert(topic, `${category.key}: ${assignment.topicTitle} konusu çözülemedi`);
       const topicById = lessons.getBetaTopicById(assignment.topicId);
       assert(topicById, `${category.key}: ${assignment.topicTitle} kimlikten çözülemedi`);

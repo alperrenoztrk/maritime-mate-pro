@@ -75,6 +75,7 @@ export function LibraryPageShell({
 
 export function LibraryEntryCard({
   title,
+  description,
   icon: Icon,
   accent,
   to,
@@ -101,6 +102,7 @@ export function LibraryEntryCard({
       </span>
       <span className="library-entry-text min-w-0 flex-1">
         <span className="block whitespace-pre-line text-base font-semibold leading-snug text-foreground">{title}</span>
+        {description && <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{description}</span>}
       </span>
 
       {badge !== undefined && (

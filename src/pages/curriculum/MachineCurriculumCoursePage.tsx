@@ -1,3 +1,4 @@
+import { CourseLearningOverview } from "@/components/curriculum/CourseLearningOverview";
 import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
@@ -43,6 +44,8 @@ export default function MachineCurriculumCoursePage() {
 
           <CourseSectionTabs group="machine" courseKey={topicSlug} active="topics" />
         </header>
+
+        <CourseLearningOverview courseKey={categoryKey} />
 
         <CurriculumModuleAccordion
           modules={modules}

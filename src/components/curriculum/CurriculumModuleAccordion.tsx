@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useLearningProgress } from "@/hooks/useLearningProgress";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import type { BetaModule } from "@/data/betaLessons";
 
@@ -19,7 +20,11 @@ export function CurriculumModuleAccordion({
   modules,
   topicHref,
 }: CurriculumModuleAccordionProps) {
-  const [expandedModule, setExpandedModule] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const requestedModule = searchParams.get("module");
+  const [expandedModule, setExpandedModule] = useState<string | null>(requestedModule);
+  const progress = useLearningProgress();
+  useEffect(() => setExpandedModule(requestedModule), [requestedModule]);
 
   return (
     <section className="space-y-2">
@@ -35,11 +40,15 @@ export function CurriculumModuleAccordion({
               onClick={() => setExpandedModule(expanded ? null : module.id)}
               className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition hover:bg-muted/40"
               aria-expanded={expanded}
+              aria-controls={`module-${module.id}`}
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary">
                 {moduleIndex + 1}
               </span>
-              <span className="min-w-0 flex-1 font-semibold text-foreground">{module.title}</span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-semibold text-foreground">{module.title}</span>
+                <span className="mt-1 block text-xs font-normal leading-relaxed text-muted-foreground">{module.description}</span>
+              </span>
               <span className="text-xs font-medium text-muted-foreground">{module.topicCount}</span>
               <ChevronDown
                 className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
@@ -47,7 +56,7 @@ export function CurriculumModuleAccordion({
             </button>
 
             {expanded && (
-              <div className="grid gap-1 border-t border-border/40 bg-background/30 p-2 sm:grid-cols-2">
+              <div id={`module-${module.id}`} className="grid gap-1 border-t border-border/40 bg-background/30 p-2 sm:grid-cols-2">
                 {module.topics.map((topic) => (
                   <Link
                     key={topic.id}
@@ -57,6 +66,7 @@ export function CurriculumModuleAccordion({
                     <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-foreground">
                       {topic.title}
                     </span>
+                    {progress[topic.id]?.reviewedAt && <span className="text-xs text-muted-foreground">Reviewed</span>}
                     <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
                   </Link>
                 ))}

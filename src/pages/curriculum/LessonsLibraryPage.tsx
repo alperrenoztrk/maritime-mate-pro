@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
 import { BookOpenText, ClipboardCheck, GraduationCap, Ship, Wrench } from "lucide-react";
 import { SEO } from "@/components/SEO";
@@ -16,7 +16,7 @@ import {
 const LESSONS_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Course",
-  name: "Mariner's Book — Sailing Lessons",
+  name: "Mariner's Book — Maritime Lessons",
   description:
     "Structured operational maritime training consisting of deck and machinery libraries.",
   provider: {
@@ -90,7 +90,7 @@ export default function LessonsLibraryPage() {
       backLabel="Back to the lessons home screen"
     >
       <SEO
-        title="Mariner's Book — Sailing Lessons"
+        title="Mariner's Book — Maritime Lessons"
         description="Structured maritime lessons in the deck and engine libraries."
         path="/lessons"
         jsonLd={LESSONS_JSONLD}
@@ -98,6 +98,10 @@ export default function LessonsLibraryPage() {
 
       {!activeView ? (
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
+          <Link to="/lessons/map" className="rounded-2xl border border-primary/25 bg-primary/5 p-5">
+            <span className="block text-lg font-semibold text-primary">Maritime learning map</span>
+            <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">New to maritime learning? See how subjects branch out, choose a reading sequence and connect lessons to shipboard practice.</span>
+          </Link>
           <section className="space-y-3">
             <LibrarySectionHeading>Bookcases</LibrarySectionHeading>
             <InsetGroupedList columns={2}>
