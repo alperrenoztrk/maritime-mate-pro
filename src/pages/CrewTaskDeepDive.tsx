@@ -90,7 +90,7 @@ export default function CrewTaskDeepDive() {
                         : "bg-background/60 text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {i + 1}. {ch.heading.replace(/^\d+\.\s*/, "")}
+                    {`${i + 1}. ${ch.heading.replace(/^\d+\.\s*/, "")}`}
                   </button>
                 ))}
               </div>
