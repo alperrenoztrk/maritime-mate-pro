@@ -1,3 +1,4 @@
+import topicPlacement from "@/data/curriculumTopicPlacement.json";
 import { getTopicContentsByCategory } from "@/data/topicContents";
 import { stabilityTopicsData } from "@/data/stabilityTopicsContent";
 import { machineTopics } from "@/data/machineTopicData";
@@ -39,7 +40,6 @@ export interface CompetencyTrack {
 }
 
 type ModuleRule = Omit<CurriculumModule, "topics"> & {
-  keywords: string[];
   level?: CurriculumLevel;
 };
 
@@ -103,79 +103,81 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
         id: "navigation-foundations",
         title: "Seyrin Temelleri",
         description: "Koordinatlar, yönler, pusula, rota, hız, mesafe ve temel seyir geometrisi",
-        keywords: ["enlem", "boylam", "koordinat", "yön", "rota", "mesafe", "hız", "pusula", "variation", "deviation", "great circle", "rhumb", "mercator", "middle latitude", "plane sailing"],
+
         level: "foundation",
       },
       {
         id: "navigation-chartwork",
         title: "Harita ve Harita Çalışması",
         description: "Harita projeksiyonları, semboller, datum, yayınlar ve harita düzeltmeleri",
-        keywords: ["harita", "chart", "datum", "sembol", "notice", "yayın", "projection", "projeksiyon"],
+
         level: "foundation",
       },
+      { id: "navigation-sailing-calculations", title: "Sailing Methods and Calculations", description: "Plane and middle-latitude sailing, rhumb lines, great circles and their limits of application", level: "operational" },
       {
         id: "navigation-position-fixing",
         title: "Mevki Koyma ve Ölü Hesap",
         description: "LOP, kerteriz, fix, running fix, DR, EP, set, drift ve leeway",
-        keywords: ["mevki", "fix", "kerteriz", "bearing", "lop", "ölü hesap", "dead reckoning", "dr, ep", "set-drift", "horizontal angle", "vertical angle"],
+
         level: "operational",
       },
       {
         id: "navigation-tides-currents",
         title: "Gelgit, Akıntı ve UKC",
         description: "Gelgit yüksekliği, gelgit akıntıları, course to steer, squat ve dinamik UKC",
-        keywords: ["gelgit", "tide", "akıntı", "current", "ukc", "squat"],
+
         level: "operational",
       },
       {
         id: "navigation-radar",
         title: "Radar, ARPA ve Paralel İndeks",
         description: "Radar kullanımı, plotting, CPA/TCPA, ARPA, trial manoeuvre ve PI",
-        keywords: ["radar", "arpa", "cpa", "tcpa", "parallel index", "paralel indeks", "plotting"],
+
         level: "operational",
       },
       {
         id: "navigation-ecdis",
         title: "ECDIS ve Elektronik Seyir",
         description: "ENC/SENC, emniyet ayarları, rota kontrolü, alarmlar ve sensör bütünlüğü",
-        keywords: ["ecdis", "enc", "senc", "catzoc", "scamin", "elektronik seyir", "gnss", "ais"],
+
         level: "operational",
       },
       {
         id: "navigation-passage-planning",
         title: "Passage Planning ve Seyrin İzlenmesi",
         description: "Appraisal, planning, execution, monitoring, wheel-over, no-go ve contingency",
-        keywords: ["passage", "sefer plan", "seyir plan", "wheel-over", "wheel over", "no-go", "xte", "route monitoring", "rota izleme"],
+
         level: "operational",
       },
       {
         id: "navigation-colreg",
         title: "Çatışmayı Önleme Kuralları — COLREG",
         description: "Gözcülük, emniyetli hız, çatışma riski, manevra kuralları, fenerler ve işaretler",
-        keywords: ["colreg", "çatışma", "fener", "ışık ve şekil", "ses işaret", "dar kanal", "trafik ayırım", "kısıtlı görüş", "crossing", "overtaking", "head-on"],
+
         level: "operational",
       },
       {
         id: "navigation-watchkeeping-brm",
         title: "Köprüüstü Vardiyası ve BRM",
         description: "Vardiya devri, standing orders, kaptanı çağırma, BRM ve pilotaj vardiyası",
-        keywords: ["vardiya", "standing orders", "night orders", "kaptanı çağır", "brm", "master-pilot", "pilotaj"],
+
         level: "operational",
       },
       {
         id: "navigation-equipment-failures",
         title: "Cihaz Arızaları ve Yedek Seyir",
         description: "GNSS, gyro, radar, ECDIS, AIS ve dümen arızalarında emniyetli yedek düzen",
-        keywords: ["arıza", "yedek seyir", "spoofing", "jamming"],
+
         level: "advanced",
       },
       {
         id: "navigation-celestial",
         title: "Göksel Seyir",
         description: "Sextant, gök küresi, azimut, noon sight ve sight reduction",
-        keywords: ["göksel", "astronom", "sextant", "azimut", "noon", "güneş", "yıldız", "celestial"],
+
         level: "advanced",
       },
+      { id: "navigation-special-conditions", title: "Heavy Weather and Polar Navigation", description: "Wind, waves, ice and the decisions that change a safe passage plan", level: "advanced" },
     ],
   },
   {
@@ -183,12 +185,14 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
     title: "Meteoroloji",
     subtitle: "Atmosfer, hava sistemleri, deniz durumu, tahmin ve ağır hava kararları",
     modules: [
-      { id: "met-foundations", title: "Atmosfer ve Ölçüm Temelleri", description: "Basınç, sıcaklık, nem, kararlılık ve meteorolojik cihazlar", keywords: ["basınç", "izobar", "sıcaklık", "nem", "atmosfer", "barometre", "psikrometre"], level: "foundation" },
-      { id: "met-systems", title: "Hava Kütleleri, Cepheler ve Basınç Sistemleri", description: "Siklon, antisiklon, hava kütleleri, cepheler ve orta enlem sistemleri", keywords: ["hava kütle", "cephe", "siklon", "antisiklon", "alçak", "yüksek basınç", "depresyon"], level: "foundation" },
-      { id: "met-wind-waves", title: "Rüzgâr, Dalga ve Deniz Durumu", description: "Rüzgâr oluşumu, Beaufort, dalga sistemleri ve swell", keywords: ["rüzgâr", "beaufort", "dalga", "swell", "deniz durumu"], level: "operational" },
-      { id: "met-visibility-ice", title: "Görüş, Sis, Yağış ve Buz", description: "Sis oluşumu, görüş kısıtları, yağış, icing ve sea ice", keywords: ["sis", "görüş", "yağış", "buz", "icing", "ice"], level: "operational" },
-      { id: "met-tropical-heavy-weather", title: "Tropikal Sistemler ve Ağır Hava", description: "Tropikal siklonlar, kaçınma, ağır hava rotası ve gemi hazırlığı", keywords: ["tropikal", "tayfun", "kasırga", "hurricane", "cyclone", "ağır hava", "storm"], level: "advanced" },
-      { id: "met-forecast-routing", title: "Tahmin, Hava Haritaları ve Rota Kararı", description: "Synoptik harita, GRIB, weather routing ve operasyonel karar", keywords: ["tahmin", "synopt", "grib", "routing", "hava harita", "navtex"], level: "operational" },
+      { id: "met-foundations", title: "Atmosfer ve Ölçüm Temelleri", description: "Basınç, sıcaklık, nem, kararlılık ve meteorolojik cihazlar", level: "foundation" },
+      { id: "met-clouds", title: "Cloud Formation and Identification", description: "Cloud families, formation mechanisms and the weather changes they indicate", level: "foundation" },
+      { id: "met-systems", title: "Hava Kütleleri, Cepheler ve Basınç Sistemleri", description: "Siklon, antisiklon, hava kütleleri, cepheler ve orta enlem sistemleri", level: "foundation" },
+      { id: "met-wind-waves", title: "Rüzgâr, Dalga ve Deniz Durumu", description: "Rüzgâr oluşumu, Beaufort, dalga sistemleri ve swell", level: "operational" },
+      { id: "met-visibility-ice", title: "Görüş, Sis, Yağış ve Buz", description: "Sis oluşumu, görüş kısıtları, yağış, icing ve sea ice", level: "operational" },
+      { id: "met-tropical-heavy-weather", title: "Tropikal Sistemler ve Ağır Hava", description: "Tropikal siklonlar, kaçınma, ağır hava rotası ve gemi hazırlığı", level: "advanced" },
+      { id: "met-currents", title: "Ocean Currents and Their Operational Effects", description: "Current systems, seasonal changes, set and drift, arrival time and fuel use", level: "operational" },
+      { id: "met-forecast-routing", title: "Tahmin, Hava Haritaları ve Rota Kararı", description: "Synoptik harita, GRIB, weather routing ve operasyonel karar", level: "operational" },
     ],
   },
   {
@@ -196,12 +200,13 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
     title: "Denizde Haberleşme",
     subtitle: "Radyo haberleşmesi, distress prosedürleri, SMCP ve operasyonel Maritime English",
     modules: [
-      { id: "com-gmdss", title: "GMDSS Sistemi ve Deniz Alanları", description: "GMDSS mimarisi, A1–A4 deniz alanları ve taşıma gereklilikleri", keywords: ["gmdss", "deniz alan", "a1", "a2", "a3", "a4"], level: "foundation" },
-      { id: "com-radio-dsc", title: "VHF, MF/HF ve DSC", description: "Telsiz cihazları, DSC çağrıları, kanal ve frekans kullanımı", keywords: ["vhf", "mf", "hf", "dsc", "frekans", "kanal"], level: "operational" },
-      { id: "com-distress", title: "Distress, Urgency ve Safety Haberleşmesi", description: "MAYDAY, PAN-PAN, SÉCURITÉ, relay ve SAR koordinasyonu", keywords: ["distress", "mayday", "pan-pan", "securite", "urgency", "safety", "sar"], level: "operational" },
-      { id: "com-equipment", title: "EPIRB, SART, NAVTEX ve Uydu Sistemleri", description: "Arama-kurtarma cihazları, MSI ve uydu haberleşmesi", keywords: ["epirb", "sart", "navtex", "inmarsat", "uydu"], level: "operational" },
-      { id: "com-smcp", title: "SMCP ve Operasyonel Maritime English", description: "Köprüüstü, pilot, römorkör, VTS, terminal ve acil durum İngilizcesi", keywords: ["smcp", "maritime english", "operasyonel", "köprüüstü iletişim", "vts", "pilot ve römorkör", "acil durum ingilizcesi"], level: "operational" },
-      { id: "com-records", title: "Radyo Kayıtları ve Profesyonel Raporlama", description: "GMDSS log, logbook, statement, defect report ve denetim iletişimi", keywords: ["log", "statement", "rapor", "kayıt", "psc", "surveyor"], level: "advanced" },
+      { id: "com-gmdss", title: "GMDSS Sistemi ve Deniz Alanları", description: "GMDSS mimarisi, A1–A4 deniz alanları ve taşıma gereklilikleri", level: "foundation" },
+      { id: "com-radio-dsc", title: "VHF, MF/HF ve DSC", description: "Telsiz cihazları, DSC çağrıları, kanal ve frekans kullanımı", level: "operational" },
+      { id: "com-distress", title: "Distress, Urgency ve Safety Haberleşmesi", description: "MAYDAY, PAN-PAN, SÉCURITÉ, relay ve SAR koordinasyonu", level: "operational" },
+      { id: "com-equipment", title: "EPIRB, SART, NAVTEX ve Uydu Sistemleri", description: "Arama-kurtarma cihazları, MSI ve uydu haberleşmesi", level: "operational" },
+      { id: "com-smcp", title: "SMCP ve Operasyonel Maritime English", description: "Köprüüstü, pilot, römorkör, VTS, terminal ve acil durum İngilizcesi", level: "operational" },
+      { id: "com-visual", title: "Visual Signalling", description: "International Code of Signals flags and Morse signalling by light", level: "foundation" },
+      { id: "com-records", title: "Radyo Kayıtları ve Profesyonel Raporlama", description: "GMDSS log, logbook, statement, defect report ve denetim iletişimi", level: "advanced" },
     ],
   },
   {
@@ -215,26 +220,26 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
     title: "Cargo Handling and Stowage",
     subtitle: "Kuru yük, tanker, konteyner, özel yük, cargo-care ve liman belgeleri",
     modules: [
-      { id: "cargo-foundations", title: "Yük Planlamasının Temelleri", description: "Stowage factor, broken stowage, kapasite, dağılım, draft, trim ve stress", keywords: ["istif faktörü", "broken stowage", "yük planı", "ağırlık dağılım", "draft survey"], level: "foundation" },
-      { id: "cargo-bulk-grain", title: "Kuru Dökme Yük ve Tahıl", description: "IMSBC, liquefaction, kömür, konsantreler ve Grain Code", keywords: ["imsbc", "dökme", "bulk", "tahıl", "grain", "liquefaction", "kömür"], level: "operational" },
-      { id: "cargo-container-dangerous", title: "Konteyner, Bağlama ve Tehlikeli Yük", description: "Bay plan, CSS, IMDG, lashing, reefer ve segregasyon", keywords: ["konteyner", "container", "css", "imdg", "tehlikeli", "dangerous"], level: "operational" },
-      { id: "cargo-tanker", title: "Tanker Yük Operasyonları", description: "Petrol, kimyasal, LPG/LNG, inert gas, ESD ve tank cleaning", keywords: ["tankeri", "tanker", "lpg", "lng", "kimyasal", "petrol"], level: "advanced" },
-      { id: "cargo-care-special", title: "Cargo Care ve Özel Yükler", description: "Terleme, havalandırma, fumigation, steel, timber, heavy lift ve Ro-Ro", keywords: ["cargo care", "terleme", "havalandır", "çelik", "kereste", "ağır yük", "ro-ro", "fumigation"], level: "operational" },
-      { id: "cargo-documents", title: "Yük Belgeleri, Protesto ve Hasar Yönetimi", description: "Mate’s Receipt, B/L remarks, SOF, Letter of Protest, stevedore ve P&I", keywords: ["belge", "protesto", "hasar", "mate", "bill of lading", "statement of facts"], level: "advanced" },
+      { id: "cargo-foundations", title: "Yük Planlamasının Temelleri", description: "Stowage factor, broken stowage, kapasite, dağılım, draft, trim ve stress", level: "foundation" },
+      { id: "cargo-bulk-grain", title: "Kuru Dökme Yük ve Tahıl", description: "IMSBC, liquefaction, kömür, konsantreler ve Grain Code", level: "operational" },
+      { id: "cargo-container-dangerous", title: "Konteyner, Bağlama ve Tehlikeli Yük", description: "Bay plan, CSS, IMDG, lashing, reefer ve segregasyon", level: "operational" },
+      { id: "cargo-tanker", title: "Tanker Yük Operasyonları", description: "Petrol, kimyasal, LPG/LNG, inert gas, ESD ve tank cleaning", level: "advanced" },
+      { id: "cargo-care-special", title: "Cargo Care ve Özel Yükler", description: "Terleme, havalandırma, fumigation, steel, timber, heavy lift ve Ro-Ro", level: "operational" },
+      { id: "cargo-documents", title: "Yük Belgeleri, Protesto ve Hasar Yönetimi", description: "Mate’s Receipt, B/L remarks, SOF, Letter of Protest, stevedore ve P&I", level: "advanced" },
     ],
   },
   {
     key: "safety",
-    title: "Denizde Güvenlik",
+    title: "Shipboard Safety",
     subtitle: "Yangın, terk, kurtarma, iş emniyeti, tıbbi yardım, security ve hasar kontrolü",
     modules: [
-      { id: "safety-governance", title: "SOLAS, ISM, Sertifikalar ve Denetimler", description: "Emniyet mevzuatı, SMS, survey, sertifikalar, PSC ve raporlama", keywords: ["solas", "ism", "sertifika", "psc", "sörvey", "survey", "emniyet yönetimi"], level: "foundation" },
-      { id: "safety-lsa", title: "Can Kurtarma Araçları ve Gemiyi Terk", description: "LSA, kişisel donanım, filika, sal, rescue boat ve abandon ship", keywords: ["can kurtarma", "lsa", "filika", "can sal", "can yele", "immersion", "terk"], level: "operational" },
-      { id: "safety-fire", title: "Yangın Önleme ve Mücadele", description: "Yapısal koruma, algılama, sabit sistemler, söndürücüler, BA ve komuta", keywords: ["yangın", "fire", "co₂", "söndür", "scba", "eeBD"], level: "operational" },
-      { id: "safety-occupational", title: "İş Emniyeti ve Kapalı Mahaller", description: "Risk assessment, permit to work, PPE, enclosed space ve kurtarma", keywords: ["iş emniyeti", "kapalı mahal", "enclosed", "ppe", "kkd", "risk değerlend", "permit"], level: "operational" },
-      { id: "safety-medical", title: "Gemide Tıbbi İlk Yardım ve TMAS", description: "ABCDE, CPR/AED, travma, maruziyet, hipotermi, TMAS ve tahliye", keywords: ["tıbbi", "ilk yardım", "tmas", "medical", "cpr", "aed"], level: "operational" },
-      { id: "safety-security", title: "Gemi Güvenliği, ISPS ve Siber Riskler", description: "Security levels, erişim, SSAS, korsanlık, citadel ve siber olaylar", keywords: ["isps", "gemi güvenliği", "korsan", "citadel", "ssas", "siber"], level: "advanced" },
-      { id: "safety-emergency-damage", title: "Acil Durum ve Hasar Kontrolü", description: "Çatışma, karaya oturma, flooding, yara savunma, komuta ve delil", keywords: ["acil durum", "çatışma sonrası", "karaya oturma", "flooding", "hasar kontrol", "yara savunma", "delil"], level: "advanced" },
+      { id: "safety-governance", title: "SOLAS, ISM, Sertifikalar ve Denetimler", description: "Emniyet mevzuatı, SMS, survey, sertifikalar, PSC ve raporlama", level: "foundation" },
+      { id: "safety-lsa", title: "Can Kurtarma Araçları ve Gemiyi Terk", description: "LSA, kişisel donanım, filika, sal, rescue boat ve abandon ship", level: "operational" },
+      { id: "safety-fire", title: "Yangın Önleme ve Mücadele", description: "Yapısal koruma, algılama, sabit sistemler, söndürücüler, BA ve komuta", level: "operational" },
+      { id: "safety-occupational", title: "İş Emniyeti ve Kapalı Mahaller", description: "Risk assessment, permit to work, PPE, enclosed space ve kurtarma", level: "operational" },
+      { id: "safety-medical", title: "Gemide Tıbbi İlk Yardım ve TMAS", description: "ABCDE, CPR/AED, travma, maruziyet, hipotermi, TMAS ve tahliye", level: "operational" },
+      { id: "safety-security", title: "Gemi Güvenliği, ISPS ve Siber Riskler", description: "Security levels, erişim, SSAS, korsanlık, citadel ve siber olaylar", level: "advanced" },
+      { id: "safety-emergency-damage", title: "Acil Durum ve Hasar Kontrolü", description: "Çatışma, karaya oturma, flooding, yara savunma, komuta ve delil", level: "advanced" },
     ],
   },
   {
@@ -242,11 +247,11 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
     title: "Denizcilik ve Çevre Koruma",
     subtitle: "Kirliliğin önlenmesi, atık, emisyon, balast suyu ve çevre kayıtları",
     modules: [
-      { id: "env-framework", title: "MARPOL ve Çevre Uyum Sistemi", description: "MARPOL yapısı, sorumluluk, denetim ve kayıt ilkeleri", keywords: ["marpol", "çevre", "uyum"], level: "foundation" },
-      { id: "env-oil-chemicals", title: "Petrol ve Kimyasal Kirliliği", description: "Annex I–II, OWS/ODME, SOPEP/SMPEP ve NLS", keywords: ["annex i", "annex ii", "petrol", "yağ", "kimyasal", "odme", "ows", "sopep"], level: "operational" },
-      { id: "env-sewage-garbage", title: "Pis Su, Çöp ve Atık Yönetimi", description: "Annex IV–V, sewage, garbage, plastics ve kayıt kitapları", keywords: ["pis su", "sewage", "çöp", "garbage", "atık", "annex iv", "annex v"], level: "operational" },
-      { id: "env-air-efficiency", title: "Hava Kirliliği ve Enerji Verimliliği", description: "Annex VI, SOx/NOx, fuel sulphur, CII, EEXI ve SEEMP", keywords: ["annex vi", "emisyon", "sox", "nox", "cii", "eexi", "seemp", "hava kirliliği"], level: "advanced" },
-      { id: "env-bwm-biofouling", title: "Balast Suyu, AFS ve Biofouling", description: "BWM, ballast exchange/treatment, antifouling ve biyolojik taşınım", keywords: ["balast suyu", "bwm", "biofouling", "antifouling", "afs"], level: "operational" },
+      { id: "env-framework", title: "MARPOL ve Çevre Uyum Sistemi", description: "MARPOL yapısı, sorumluluk, denetim ve kayıt ilkeleri", level: "foundation" },
+      { id: "env-oil-chemicals", title: "Petrol ve Kimyasal Kirliliği", description: "Annex I–II, OWS/ODME, SOPEP/SMPEP ve NLS", level: "operational" },
+      { id: "env-sewage-garbage", title: "Pis Su, Çöp ve Atık Yönetimi", description: "Annex IV–V, sewage, garbage, plastics ve kayıt kitapları", level: "operational" },
+      { id: "env-air-efficiency", title: "Hava Kirliliği ve Enerji Verimliliği", description: "Annex VI, SOx/NOx, fuel sulphur, CII, EEXI ve SEEMP", level: "advanced" },
+      { id: "env-bwm-biofouling", title: "Balast Suyu, AFS ve Biofouling", description: "BWM, ballast exchange/treatment, antifouling ve biyolojik taşınım", level: "operational" },
     ],
   },
   {
@@ -254,13 +259,14 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
     title: "Gemicilik",
     subtitle: "Halatlar, demirleme, bağlama, römorkör, manevra, güverte bakımı ve gemi yapısı",
     modules: [
-      { id: "seamanship-ropes", title: "Halatlar, Düğümler ve Güverte Donanımı", description: "Halat yapısı, SWL, düğümler, sapanlar ve güvenli kullanım", keywords: ["halat", "düğüm", "rope", "wire", "sapan"], level: "foundation" },
-      { id: "seamanship-anchoring", title: "Demirleme ve Demir Vardiyası", description: "Demir donanımı, planlama, walk back/let go, swing, drag ve ağır hava", keywords: ["demir", "anchor"], level: "operational" },
-      { id: "seamanship-mooring", title: "Bağlama ve Mooring Line Management", description: "Mooring arrangement, winch/brake, SDMBL, halat yönetimi ve snap-back", keywords: ["mooring", "bağlama", "palamar", "snap-back", "sdmbl"], level: "operational" },
-      { id: "seamanship-towing-pilot", title: "Römorkör, Çekme ve Pilot Transferi", description: "Towing, tug assistance, pilot ladder, transfer ve gemi-kara koordinasyonu", keywords: ["römork", "towing", "pilot transfer", "pilot merdiv", "çarmıh"], level: "operational" },
-      { id: "seamanship-manoeuvring", title: "Gemi Manevrası ve Pervane Etkileri", description: "Pivot point, transverse thrust, yanaşma, sığ su, interaction ve MOB dönüşleri", keywords: ["manevra", "pervane", "pivot", "mob dönüş", "sığ su", "bank effect", "ship interaction"], level: "advanced" },
-      { id: "seamanship-deck-maintenance", title: "Güverte Bakımı ve Sızdırmazlık", description: "Korozyon, boya, hatch cover, kapılar, watertight/weathertight ve Load Line", keywords: ["bakım", "korozyon", "boya", "ambar kapa", "hatch", "sızdırmaz", "load line"], level: "operational" },
-      { id: "seamanship-construction", title: "Gemi Yapısı ve Tekne Mukavemeti", description: "Yapısal elemanlar, longitudinal strength, point load, çatlak ve survey", keywords: ["gemi yapısı", "tekne mukavemet", "hogging", "sagging", "point load", "yapısal"], level: "advanced" },
+      { id: "seamanship-ropes", title: "Halatlar, Düğümler ve Güverte Donanımı", description: "Halat yapısı, SWL, düğümler, sapanlar ve güvenli kullanım", level: "foundation" },
+      { id: "seamanship-anchoring", title: "Demirleme ve Demir Vardiyası", description: "Demir donanımı, planlama, walk back/let go, swing, drag ve ağır hava", level: "operational" },
+      { id: "seamanship-mooring", title: "Bağlama ve Mooring Line Management", description: "Mooring arrangement, winch/brake, SDMBL, halat yönetimi ve snap-back", level: "operational" },
+      { id: "seamanship-towing-pilot", title: "Römorkör, Çekme ve Pilot Transferi", description: "Towing, tug assistance, pilot ladder, transfer ve gemi-kara koordinasyonu", level: "operational" },
+      { id: "seamanship-manoeuvring", title: "Gemi Manevrası ve Pervane Etkileri", description: "Pivot point, transverse thrust, yanaşma, sığ su, interaction ve MOB dönüşleri", level: "advanced" },
+      { id: "seamanship-deck-maintenance", title: "Güverte Bakımı ve Sızdırmazlık", description: "Korozyon, boya, hatch cover, kapılar, watertight/weathertight ve Load Line", level: "operational" },
+      { id: "seamanship-watchkeeping", title: "Lookout and Deck Watchkeeping", description: "How deck watch duties connect seamanship with bridge watchkeeping", level: "operational" },
+      { id: "seamanship-construction", title: "Gemi Yapısı ve Tekne Mukavemeti", description: "Yapısal elemanlar, longitudinal strength, point load, çatlak ve survey", level: "advanced" },
     ],
   },
   {
@@ -268,11 +274,12 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
     title: "Deniz İşletmeciliğinde Ticari Operasyonlar",
     subtitle: "Charter party, navlun, laytime, sefer ekonomisi, sigorta ve ticari belgeler",
     modules: [
-      { id: "econ-chartering", title: "Charter Party ve Taşıma Sözleşmeleri", description: "Voyage/time/bareboat charter, taraflar ve temel sözleşme hükümleri", keywords: ["charter", "sözleşme", "kiralama"], level: "foundation" },
-      { id: "econ-freight-laytime", title: "Navlun, Laytime ve Demurrage", description: "Freight, NOR, laytime hesabı, demurrage/despatch ve SOF", keywords: ["navlun", "freight", "laytime", "demurrage", "despatch", "nor"], level: "operational" },
-      { id: "econ-voyage", title: "Sefer Ekonomisi ve TCE", description: "Voyage estimation, bunker, hız-tüketim, liman masrafları ve TCE", keywords: ["tce", "sefer", "bunker", "maliyet", "voyage"], level: "operational" },
-      { id: "econ-documents", title: "Konşimento ve Ticari Belgeler", description: "Bill of Lading, Mate’s Receipt, manifest, teslim ve belge zinciri", keywords: ["bill of lading", "konşimento", "mate", "belge", "manifest"], level: "operational" },
-      { id: "econ-insurance", title: "Deniz Sigortası, P&I ve General Average", description: "Hull and machinery, P&I, cargo claims, salvage ve müşterek avarya", keywords: ["sigorta", "insurance", "p&i", "general average", "avarya", "salvage"], level: "advanced" },
+      { id: "econ-chartering", title: "Charter Party ve Taşıma Sözleşmeleri", description: "Voyage/time/bareboat charter, taraflar ve temel sözleşme hükümleri", level: "foundation" },
+      { id: "econ-freight-laytime", title: "Navlun, Laytime ve Demurrage", description: "Freight, NOR, laytime hesabı, demurrage/despatch ve SOF", level: "operational" },
+      { id: "econ-voyage", title: "Sefer Ekonomisi ve TCE", description: "Voyage estimation, bunker, hız-tüketim, liman masrafları ve TCE", level: "operational" },
+      { id: "econ-documents", title: "Konşimento ve Ticari Belgeler", description: "Bill of Lading, Mate’s Receipt, manifest, teslim ve belge zinciri", level: "operational" },
+      { id: "econ-markets", title: "Shipping Markets and Commercial Risk", description: "Market cycles, freight exposure and their effects on commercial decisions", level: "advanced" },
+      { id: "econ-insurance", title: "Deniz Sigortası, P&I ve General Average", description: "Hull and machinery, P&I, cargo claims, salvage ve müşterek avarya", level: "advanced" },
     ],
   },
 ];
@@ -302,26 +309,31 @@ const buildDeckCourse = (definition: DeckCourseDefinition): CurriculumCourse => 
   const allTitles = Object.keys(getTopicContentsByCategory(definition.key)).filter(
     (title) => title !== RUNNING_FIX_DEPRECATED,
   );
-  const assigned = new Set<string>();
-  const modules = definition.modules.map((rule) => {
-    const matching = allTitles.filter((title) => {
-      if (assigned.has(title) || !includesKeyword(title, rule.keywords)) return false;
-      assigned.add(title);
-      return true;
-    });
-    return {
-      id: rule.id,
-      title: rule.title,
-      description: rule.description,
-      topics: matching.map((title) => makeTopicRef(definition.key, title, rule.level ?? "operational")),
-    };
-  });
-  const remaining = allTitles.filter((title) => !assigned.has(title));
+  const placements: Record<string, string> = topicPlacement[definition.key] ?? {};
+  // The registry is authored explicitly. Source insertion order and incidental
+  // substrings (e.g. AIS in "Appraisal") must never decide a learner's branch.
+  const orderedTitles = [
+    ...Object.keys(placements).filter((title) => allTitles.some((source) => canonicalDeckTitle(definition.key, source) === title)),
+    ...allTitles.map((title) => canonicalDeckTitle(definition.key, title)).filter((title) => !(title in placements)),
+  ];
+  const modules = definition.modules.map((rule) => ({
+    id: rule.id,
+    title: rule.title,
+    description: rule.description,
+    topics: orderedTitles
+      .filter((title) => placements[title] === rule.id)
+      .map((title) => makeTopicRef(
+        definition.key,
+        allTitles.find((source) => canonicalDeckTitle(definition.key, source) === title)!,
+        rule.level ?? "operational",
+      )),
+  }));
+  const remaining = allTitles.filter((title) => !placements[canonicalDeckTitle(definition.key, title)]);
   if (remaining.length) {
     modules.push({
       id: `${definition.key}-additional-topics`,
-      title: "Tamamlayıcı Konular",
-      description: "Ana modül sınıflandırmalarını tamamlayan uzmanlık ve referans konuları",
+      title: "Additional Reading",
+      description: "New material awaiting placement in the learning sequence",
       topics: remaining.map((title) => makeTopicRef(definition.key, title, "operational")),
     });
   }
@@ -333,6 +345,26 @@ const buildDeckCourse = (definition: DeckCourseDefinition): CurriculumCourse => 
     group: "deck",
     modules: modules.filter((module) => module.topics.length > 0),
   };
+};
+
+const stabilityModuleLevels: CurriculumLevel[] = ["foundation", "foundation", "foundation", "foundation", "operational", "operational", "operational", "operational", "advanced", "advanced", "operational", "advanced", "operational", "operational", "operational", "operational"];
+const machineModuleLevels: Record<string, CurriculumLevel[]> = {
+  thermodynamics: ["foundation", "foundation", "foundation", "operational", "operational", "operational", "advanced"],
+  "fluid-mechanics": ["foundation", "foundation", "operational", "operational", "operational"],
+  "machine-elements": ["foundation", "foundation", "operational", "operational", "advanced", "operational"],
+  "diesel-engines": ["foundation", "foundation", "operational", "operational", "operational", "advanced"],
+  "ship-systems": ["operational", "operational", "operational", "operational", "operational"],
+  auxiliary: ["operational", "operational", "operational", "operational", "operational"],
+  "fuel-technology": ["foundation", "foundation", "operational", "operational"],
+  "cooling-hvac": ["foundation", "foundation", "operational", "operational"],
+  electrical: ["foundation", "operational", "operational", "operational", "operational"],
+  automation: ["foundation", "foundation", "operational", "operational"],
+  "engine-room-ops": ["operational", "operational", "operational", "advanced"],
+  maintenance: ["foundation", "operational", "operational", "advanced"],
+  "engine-room-safety": ["foundation", "operational", "operational", "operational", "operational"],
+  "environment-machine": ["foundation", "operational", "operational", "operational", "operational"],
+  erm: ["foundation", "operational", "operational", "operational", "advanced"],
+  "energy-efficiency": ["foundation", "operational", "advanced", "operational"],
 };
 
 const buildStabilityCourse = (): CurriculumCourse => ({
@@ -350,7 +382,7 @@ const buildStabilityCourse = (): CurriculumCourse => ({
       title: topic.title.replace(/^\d+(?:\.\d+)*\.?\s*/, ""),
       sourceCategory: "stability",
       sourceTitle: topic.title,
-      level: moduleIndex < 2 ? "foundation" : moduleIndex < 6 ? "operational" : "advanced",
+      level: stabilityModuleLevels[moduleIndex],
     })),
   })),
 });
@@ -398,7 +430,7 @@ const buildMachineCourses = (): CurriculumCourse[] =>
           title: topic.title,
           sourceCategory: `machine-${machine.slug}`,
           sourceTitle: topic.title,
-          level: moduleIndex < 2 ? "foundation" : moduleIndex < 5 ? "operational" : "advanced",
+          level: machineModuleLevels[machine.slug][moduleIndex],
         })),
       })),
     };

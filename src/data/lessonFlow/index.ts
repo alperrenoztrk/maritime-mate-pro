@@ -1,3 +1,4 @@
+import { operationalLessonFlows } from "./operational";
 import type { LessonFlow } from "./types";
 import { navigationLessonFlows } from "./navigation";
 import { meteorologyLessonFlows } from "./meteorology";
@@ -14,6 +15,7 @@ export type { LessonFlow, LessonBlock, RecapQuestion } from "./types";
 
 /** Tüm rehberli akışlar (beta). Güverte (Seyir, Meteoroloji, Haberleşme, Stabilite, Yük, Emniyet, Çevre, Gemicilik, Ticari Operasyonlar) + Makine. */
 const ALL_FLOWS: LessonFlow[] = [
+  ...operationalLessonFlows,
   ...navigationLessonFlows,
   ...meteorologyLessonFlows,
   ...machineLessonFlows,

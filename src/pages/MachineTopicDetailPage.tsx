@@ -1,3 +1,4 @@
+import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { useState } from "react";
 import { Lightbulb } from "lucide-react";
 import { useParams } from "react-router-dom";
@@ -57,10 +58,12 @@ export default function MachineTopicDetailPage() {
                 ? "Basic"
                 : content.level === "operational"
                   ? "Operational"
-                  : "Next"}
+                  : "Advanced"}
             </span>
           )}
         </div>
+
+        <TopicLearningContext categoryKey={categoryKey} topic={content} />
 
         {content.introduction && (
           <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
@@ -69,7 +72,7 @@ export default function MachineTopicDetailPage() {
         )}
 
         {content.sections.map((section, index) => (
-          <section key={section.id ?? `${section.title}-${index}`} className="surface-2 space-y-4 rounded-2xl border p-5 shadow-elev-1">
+          <section id={section.id} key={section.id ?? `${section.title}-${index}`} className="surface-2 space-y-4 rounded-2xl border p-5 shadow-elev-1">
             <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
             <StructuredLessonText text={section.content} />
@@ -185,6 +188,7 @@ export default function MachineTopicDetailPage() {
             </ul>
           </section>
         )}
+        <TopicLearningContext categoryKey={categoryKey} topic={content} placement="after" />
       </div>
 
       <ImageViewerModal

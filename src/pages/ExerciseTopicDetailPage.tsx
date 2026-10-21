@@ -1,3 +1,4 @@
+import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { Link, useParams } from "react-router-dom";
 import { Lightbulb, Play } from "lucide-react";
 import { stripMarkdown } from "@/utils/cleanText";
@@ -5,10 +6,8 @@ import { getBetaTopic } from "@/data/betaLessons";
 import { getExerciseQuestionsForTopic } from "@/data/exerciseQuestionDistribution";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { getLessonFlow } from "@/data/lessonFlow";
-import type { QuizQuestion } from "@/types/quiz";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
-import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { LessonAITutor } from "@/components/lessons/LessonAITutor";
 import { TopicExerciseQuestionSet } from "@/components/lessons/TopicExerciseQuestionSet";
 import { MobileLayout } from "@/components/MobileLayout";
@@ -46,16 +45,6 @@ export default function ExerciseTopicDetailPage() {
     categoryId,
     content.id ?? decodedTitleOrId,
   );
-  const checkAfter = new Map<string, QuizQuestion>();
-  if (flow) {
-    for (const block of flow.blocks) {
-      const last = block.sectionTitles[block.sectionTitles.length - 1];
-      const question = flow.questions.find((item) =>
-        block.sectionTitles.includes(item.sectionRef),
-      );
-      if (last && question) checkAfter.set(last, question);
-    }
-  }
 
   const lessonText = [
     content.introduction ?? "",
@@ -77,6 +66,8 @@ export default function ExerciseTopicDetailPage() {
     <MobileLayout>
       <div className="mx-auto flex max-w-4xl flex-col gap-6 pb-24">
         <PageHeader title={content.title} icon={Play} />
+        <TopicLearningContext categoryKey={categoryId} topic={content} />
+
         {content.introduction && (
           <div className="surface-1 rounded-xl border border-primary/20 p-5">
             <p className="text-base leading-relaxed text-foreground/90">
@@ -96,15 +87,13 @@ export default function ExerciseTopicDetailPage() {
         {content.sections.map((section, index) => {
           const sourceSectionTitle = section.sourceTitle ?? section.title;
           return (
-            <div key={section.id ?? `${sourceSectionTitle}-${index}`} className="surface-2 space-y-6 rounded-2xl border p-5 shadow-elev-1">
+            <div id={section.id} key={section.id ?? `${sourceSectionTitle}-${index}`} className="surface-2 space-y-6 rounded-2xl border p-5 shadow-elev-1">
               <LessonTeachCard
                 section={section}
                 categoryId={categoryId}
                 topicTitle={content.title}
               />
-              {checkAfter.has(sourceSectionTitle) && (
-                <KnowledgeCheck question={checkAfter.get(sourceSectionTitle)!} />
-              )}
+
             </div>
           );
         })}
@@ -133,9 +122,10 @@ export default function ExerciseTopicDetailPage() {
           </section>
         )}
 
-        <TopicExerciseQuestionSet questions={topicQuestions} />
+        <TopicExerciseQuestionSet key={content.id} topicId={content.id} questions={topicQuestions} />
 
         <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
+        <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />
       </div>
     </MobileLayout>
   );

@@ -1,3 +1,4 @@
+import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { Lightbulb } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { stripMarkdown } from "@/utils/cleanText";
@@ -99,6 +100,8 @@ export default function LessonTopicDetailPage() {
       <div className="mx-auto flex max-w-4xl flex-col gap-5 pb-24">
         <PageHeader title={content.title} icon={CategoryIcon} />
 
+        <TopicLearningContext categoryKey={categoryId} topic={content} />
+
         {content.introduction && (
           <div className="surface-1 rounded-xl border border-primary/20 p-5">
             <p className="text-base leading-relaxed text-foreground/90">
@@ -109,6 +112,7 @@ export default function LessonTopicDetailPage() {
 
         {sections.map(({ section, hideImage, alreadyUsedImages }, index) => (
           <div
+            id={section.id}
             key={section.id ?? `${section.sourceTitle ?? section.title}-${index}`}
             className="surface-2 rounded-2xl border p-5 shadow-elev-1"
           >
@@ -145,6 +149,7 @@ export default function LessonTopicDetailPage() {
             </ul>
           </section>
         )}
+        <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />
       </div>
     </MobileLayout>
   );

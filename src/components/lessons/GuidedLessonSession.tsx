@@ -1,3 +1,6 @@
+import { shuffleAnswerOptions } from "@/utils/practiceQuestion";
+import { updateTopicProgress } from "@/utils/learningProgress";
+import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
@@ -7,7 +10,8 @@ import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { getLessonFlow } from "@/data/lessonFlow";
 import type { RecapQuestion } from "@/data/lessonFlow";
-import { getBetaTopic, type BetaSection } from "@/data/betaLessons";
+import { buildLessonSequence, type LessonSequenceItem } from "@/utils/lessonSequence";
+import { getBetaTopic } from "@/data/betaLessons";
 
 /** Fisher-Yates karıştırma. */
 function shuffle<T>(arr: T[]): T[] {
@@ -19,9 +23,7 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-type FlowItem =
-  | { kind: "teach"; section: BetaSection }
-  | { kind: "quiz"; question: RecapQuestion };
+type FlowItem = LessonSequenceItem;
 
 /**
  * "Exercises" — rehberli ders oturumu (güverte + makine, tüm konular).
@@ -32,45 +34,15 @@ type FlowItem =
 export default function GuidedLessonSession() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle): "";
-  const flow = getLessonFlow(categoryId, decodedTitle);
-  const content = getBetaTopic(categoryId, decodedTitle);
+  const content = useMemo(() => getBetaTopic(categoryId, decodedTitle), [categoryId, decodedTitle]);
+  const flow = getLessonFlow(categoryId, content?.sourceTitle ?? decodedTitle);
   const hasFlow = !!flow;
 
   // Session elements: teach block by block if flow exists → ask shuffle; Otherwise just teach.
-  const mainItems = useMemo<FlowItem[]>(() => {
-    if (!content) return [];
-    const items: FlowItem[] = [];
-    if (flow) {
-      const sectionByTitle = new Map(content.sections.map((s) => [s.title, s]));
-      const consumedSections = new Set<string>();
-      for (const block of flow.blocks) {
-        for (const title of block.sectionTitles) {
-          const section = sectionByTitle.get(title);
-          if (section) {
-            items.push({ kind: "teach", section });
-            consumedSections.add(section.id ?? section.title);
-          }
-        }
-        const blockQs = shuffle(
-          flow.questions.filter((q) => block.sectionTitles.includes(q.sectionRef)),
-        );
-        for (const question of blockQs) items.push({ kind: "quiz", question });
-      }
-
-      // Akış dosyaları yalnız ölçme adımlarını tanımlar. Sonradan konu
-      // anlatımına eklenen mevzuat bölümleri (ve akışta adı geçmeyen mevcut
-      // bölümler) de alıştırma oturumunda öğretilmeden atlanmamalıdır.
-      for (const section of content.sections) {
-        if (!consumedSections.has(section.id ?? section.title)) {
-          items.push({ kind: "teach", section });
-        }
-      }
-    } else {
-      for (const section of content.sections) items.push({ kind: "teach", section });
-    }
-    return items;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [decodedTitle, categoryId]);
+  const mainItems = useMemo<FlowItem[]>(
+    () => content ? buildLessonSequence(content, flow, (questions) => shuffle(questions).map((question) => shuffleAnswerOptions(question))) : [],
+    [content, flow],
+  );
 
   const [sessionKey, setSessionKey] = useState(0);
   const [pos, setPos] = useState(0);
@@ -82,6 +54,15 @@ export default function GuidedLessonSession() {
   const [answeredThisStep, setAnsweredThisStep] = useState(false);
 
   useEffect(() => setAnsweredThisStep(false), [pos, sessionKey]);
+
+  const [progressSaved, setProgressSaved] = useState(true);
+  useEffect(() => {
+    if (!finished || !content?.id) return;
+    setProgressSaved(updateTopicProgress(content.id, {
+      reviewedAt: new Date().toISOString(),
+      ...(hasFlow && answeredTotal > 0 ? { practice: { correct, total: answeredTotal, completedAt: new Date().toISOString(), weakSections: [...new Set(wrong.map((question) => question.sectionRef))] } } : {}),
+    }));
+  }, [finished, content?.id, hasFlow, correct, answeredTotal, wrong]);
 
   if (!content || content.sections.length === 0) {
     return (
@@ -160,11 +141,12 @@ export default function GuidedLessonSession() {
       </div>
 
       <div className="mx-auto max-w-2xl px-4 py-6 sm:py-8">
-        <p className="mb-4 text-center text-xs font-bold uppercase tracking-[0.2em] text-primary">
+        <h1 data-page-title className="mb-4 text-center text-xs font-bold uppercase tracking-[0.2em] text-primary">
           {content.title}
-        </p>
+        </h1>
 
         {finished ? (
+          <div className="space-y-4">
           <div className="surface-2 rounded-2xl border p-6 text-center shadow-elev-1">
             {hasFlow ? (
               <>
@@ -196,6 +178,7 @@ export default function GuidedLessonSession() {
               </>
             )}
 
+            {!progressSaved && <p role="status" className="mt-3 text-sm text-muted-foreground">Your browser could not save progress. You can continue reading.</p>}
             <div className="mt-6 flex flex-col gap-2">
               <Button onClick={restart} className="w-full">
                 <RotateCcw className="mr-2 h-4 w-4" /> Start Again
@@ -206,6 +189,8 @@ export default function GuidedLessonSession() {
                 </Link>
               </Button>
             </div>
+          </div>
+          <TopicLearningContext categoryKey={categoryId!} topic={content} placement="after" />
           </div>
         ) : (
           <div className="surface-2 rounded-2xl border p-5 shadow-elev-1 sm:p-6">

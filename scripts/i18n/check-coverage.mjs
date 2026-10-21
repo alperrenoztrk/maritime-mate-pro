@@ -27,6 +27,7 @@ if (!source?.strings?.length) {
   process.exit(1);
 }
 const total = source.strings.length;
+const learningFallback = readJson(path.join(OUT_DIR, "shared/learning-guide.en.json"), {});
 
 if (!fs.existsSync(OUT_DIR)) {
   console.log(`ℹ️  No locales generated yet (${path.relative(repoRoot, OUT_DIR)} missing).`);
@@ -46,7 +47,7 @@ for (const file of localeFiles.sort()) {
   const dict = readJson(path.join(OUT_DIR, file), {});
   let covered = 0;
   for (const s of source.strings) {
-    if (typeof dict[s] === 'string' && dict[s].trim().length > 0) covered++;
+    if ((typeof dict[s] === 'string' && dict[s].trim().length > 0) || (typeof learningFallback[s] === 'string' && learningFallback[s].trim().length > 0)) covered++;
   }
   const pct = ((covered / total) * 100).toFixed(1);
   if (covered < total) belowFull++;

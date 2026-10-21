@@ -1,3 +1,4 @@
+import { CourseLearningOverview } from "@/components/curriculum/CourseLearningOverview";
 import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { calculationCategories, type SectionId } from "@/data/calculationCenterConfig";
@@ -70,6 +71,8 @@ export default function DeckCurriculumCoursePage() {
             hrefs={tabHrefs}
           />
         </header>
+
+        <CourseLearningOverview courseKey={categoryId} />
 
         <CurriculumModuleAccordion
           modules={modules}

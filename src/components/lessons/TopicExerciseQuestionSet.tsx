@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { shuffleAnswerOptions } from "@/utils/practiceQuestion";
+import { updateTopicProgress } from "@/utils/learningProgress";
+import { useEffect, useState } from "react";
 import { CheckCircle, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
@@ -15,15 +17,23 @@ const shuffle = <T,>(items: T[]) => {
 
 export function TopicExerciseQuestionSet({
   questions,
+  topicId,
 }: {
   questions: QuizQuestion[];
+  topicId?: string;
 }) {
-  const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions));
+  const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions).map((question) => shuffleAnswerOptions(question)));
   const [current, setCurrent] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [finished, setFinished] = useState(false);
   const [run, setRun] = useState(0);
+
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    if (!finished || !topicId || order.length === 0) return;
+    setSaved(updateTopicProgress(topicId, { practice: { correct: correctCount, total: order.length, completedAt: new Date().toISOString(), weakSections: [] } }));
+  }, [finished, topicId, correctCount, order]);
 
   if (questions.length === 0) return null;
 
@@ -47,7 +57,7 @@ export function TopicExerciseQuestionSet({
   };
 
   const restart = () => {
-    setOrder(shuffle(questions));
+    setOrder(shuffle(questions).map((question) => shuffleAnswerOptions(question)));
     setCurrent(0);
     setAnswered(false);
     setCorrectCount(0);
@@ -79,6 +89,7 @@ export function TopicExerciseQuestionSet({
               {correctCount} / {questionCount} correct answer
             </p>
           </div>
+          {!saved && <p role="status" className="text-sm text-muted-foreground">Your browser could not save progress. You can continue reading.</p>}
           <Button onClick={restart} className="w-full sm:w-auto">
             <RotateCcw className="mr-2 h-4 w-4" />
             Solve the Questions Again

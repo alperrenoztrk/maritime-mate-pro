@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { CourseLearningOverview } from "@/components/curriculum/CourseLearningOverview";
+import { Link, useParams } from "react-router-dom";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { CurriculumModuleAccordion } from "@/components/curriculum/CurriculumModuleAccordion";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
@@ -38,6 +39,9 @@ export default function ExerciseTopicsPage() {
 
         <CourseSectionTabs group={category.group} courseKey={courseKey} active="quiz" />
 
+        <CourseLearningOverview courseKey={category.key} />
+        <Link to={category.group === "machine" ? `/machine/${courseKey}/quiz` : `/lessons/${courseKey}/quiz`} className="inline-flex min-h-11 items-center rounded-xl border bg-card px-4 py-3 text-sm font-semibold text-primary">Open the complete course question bank</Link>
+        <p className="text-sm text-muted-foreground">Topic questions follow the lesson they were written for. Use the course question bank for broader revision.</p>
         <CurriculumModuleAccordion
           modules={modules}
           topicHref={(topic) => detailLink(topic.id)}

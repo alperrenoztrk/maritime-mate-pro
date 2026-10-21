@@ -23,6 +23,7 @@ interface AppShortcut {
 }
 
 const APPS: AppShortcut[] = [
+  { label: "Learning map", to: "/lessons/map", icon: BookOpen },
   { label: "Dersler", to: "/lessons", icon: BookOpen },
   { label: "Exercises", to: "/exercises", icon: Sparkles },
   { label: "Personnel", to: "/crew", icon: Users },

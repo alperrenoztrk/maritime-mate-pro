@@ -14,6 +14,7 @@ const COLLAPSE_AT = 44;
 const KNOWN_TITLES: Array<[RegExp, string]> = [
   [/^\/$/, "Mariner's Book"],
   [/^\/lessons$/, "Learn"],
+  [/^\/lessons\/map$/, "Learning map"],
   [/^\/exercises$/, "Exercises"],
   [/^\/calculations$/, "Tools"],
   [/^\/library$/, "Library"],

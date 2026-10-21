@@ -37,6 +37,7 @@ import { hasHierarchicalBack } from "@/lib/appNavigation";
 // for the mobile preview / first paint. Each route only downloads its own chunk.
 const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
+const MaritimeLearningMapPage = lazy(() => import("./pages/curriculum/MaritimeLearningMapPage"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
 const LibraryHubPage = lazy(() => import("./pages/LibraryHubPage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
@@ -339,6 +340,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
+        <Route path="/lessons/map" element={<PageTransition><MaritimeLearningMapPage /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/library" element={<PageTransition><LibraryHubPage /></PageTransition>} />
         <Route path="/search" element={<PageTransition><SearchPage /></PageTransition>} />
@@ -351,12 +353,12 @@ const AnimatedRoutes = () => {
         <Route path="/beta/documents" element={<PageTransition><BetaDocumentTracker /></PageTransition>} />
 
 
-        <Route path="/lessons/stability/topics" element={<PageTransition><LibraryBookRoute bookKey="stability"><StabilityTopicsPage /></LibraryBookRoute></PageTransition>} />
-        <Route path="/lessons/cargo/topics" element={<PageTransition><LibraryBookRoute bookKey="cargo"><CargoTopicsPage /></LibraryBookRoute></PageTransition>} />
-        <Route path="/lessons/seamanship/topics" element={<PageTransition><LibraryBookRoute bookKey="seamanship"><SeamanshipTopicsPage /></LibraryBookRoute></PageTransition>} />
-        <Route path="/lessons/safety/topics" element={<PageTransition><LibraryBookRoute bookKey="safety"><SafetyTopicsPage /></LibraryBookRoute></PageTransition>} />
-        <Route path="/lessons/environment/topics" element={<PageTransition><LibraryBookRoute bookKey="environment"><EnvironmentTopicsPage /></LibraryBookRoute></PageTransition>} />
-        <Route path="/lessons/economics/topics" element={<PageTransition><LibraryBookRoute bookKey="economics"><EconomicsTopicsPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/stability/reference" element={<PageTransition><LibraryBookRoute bookKey="stability"><StabilityTopicsPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/cargo/reference" element={<PageTransition><LibraryBookRoute bookKey="cargo"><CargoTopicsPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/seamanship/reference" element={<PageTransition><LibraryBookRoute bookKey="seamanship"><SeamanshipTopicsPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/safety/reference" element={<PageTransition><LibraryBookRoute bookKey="safety"><SafetyTopicsPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/environment/reference" element={<PageTransition><LibraryBookRoute bookKey="environment"><EnvironmentTopicsPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/economics/reference" element={<PageTransition><LibraryBookRoute bookKey="economics"><EconomicsTopicsPage /></LibraryBookRoute></PageTransition>} />
         <Route path="/lessons/:topicKey/formulas" element={<PageTransition><CourseFormulasPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/calculations" element={<PageTransition><CourseCalculationsPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/rules" element={<Navigate to="../topics" relative="path" replace />} />
