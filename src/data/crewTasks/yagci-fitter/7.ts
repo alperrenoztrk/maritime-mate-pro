@@ -98,7 +98,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.2 Numune (sample) alımına yardım",
           paragraphs: [
             `Bunker sırasında, MARPOL Annex VI ve şirket prosedürü gereği temsil edici yakıt numunesi (genelde manifoldda continuous drip sampler ile) alınır. Bu mühürlü numune (MARPOL sample) saklanır ve gerekirse uyuşmazlıkta laboratuvar analizine gönderilir. Bunker Delivery Note (BDN) ile birlikte kayıt altına alınır.`,
-            `Yağcı, numune şişelerinin temiz olmasına, doğru etiketlenmesine ve mühürlenmesine yardım eder. Numune, yakıt kalitesinin (ISO 8217 uyumu, kükürt içeriği) ve teslim edilen miktarın kanıtıdır; off-spec yakıt iddiasında bu numune belirleyicidir.`,
+            `Yağcı, numune şişelerinin temiz olmasına, doğru etiketlenmesine ve mühürlenmesine yardım eder. Numune, yakıt kalitesinin (ISO 8217 uyumu, kükürt içeriği) kanıtıdır; off-spec yakıt iddiasında bu numune belirleyicidir.`,
           ],
           table: {
             caption: `Bunker Sırasında İzlenen Kritik Noktalar`,
@@ -196,7 +196,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Yangın ve gaz riski",
           paragraphs: [
-            `Yakıt operasyonlarında yanıcı buhar birikebilir; özellikle hafif distilatlarda (MGO/DO) parlama noktası düşüktür. Bunker boyunca açık alev/sigara yasağı uygulanır, sıcak çalışma yapılmaz, havalandırma sağlanır. Manifold çevresinde uygun yangın söndürücü hazır bulundurulur.`,
+            `Yakıt operasyonlarında yanıcı buhar birikebilir. Bunker boyunca açık alev/sigara yasağı uygulanır, sıcak çalışma yapılmaz, havalandırma sağlanır. Manifold çevresinde uygun yangın söndürücü hazır bulundurulur.`,
             `Yağcı, yakıt buharı kokusu veya gaz alarmı durumunda derhal haber verir. Pompa odası ve kapalı transfer alanlarında gaz birikimi tehlikelidir; bu alanlara giriş gaz testi ve havalandırma gerektirir.`,
           ],
           callouts: [

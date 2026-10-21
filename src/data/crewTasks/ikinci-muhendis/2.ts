@@ -119,7 +119,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Transfer planı ve valf dizilimi",
           paragraphs: [
             `Storage tanktan settling tanka, oradan service tanka yakıt aktarımı planlı ve gözetimli yapılır. İkinci Mühendis, transfer pompası, ısıtma ve valf dizilimini doğrular; yanlış açık valf bir tankı taşırabilir veya iki farklı kaliteyi istenmeden karıştırabilir (commingling). Transfer sırasında seviye izlenir, tamamlanınca valfler kapatılır ve durum log'a yazılır.`,
-            `FO ısıtma, viskozite ve pompalanabilirlik için gereklidir; ancak aşırı ısıtma (pour/flash point yakını) tehlikelidir. Service tank her zaman temiz, separe edilmiş yakıtla beslenir.`,
+            `FO ısıtma, viskozite ve pompalanabilirlik için gereklidir; ancak aşırı ısıtma (flash point yakını) tehlikelidir. Service tank her zaman temiz, separe edilmiş yakıtla beslenir.`,
           ],
         },
         {
@@ -160,7 +160,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 Bakım, arıza ve emniyet",
           paragraphs: [
-            `Separatör overhaul'da bowl, conta ve O-ring setleri yenilenir; bowl montaj sırası ve balans kritiktir (yanlış montaj titreşim ve kaza yaratır). Su seal kaybı (broken water seal) yakıtın denize/sludge'a kaçmasına; kötü ayrım ise ana makineye su/katı gitmesine yol açar. İkinci Mühendis, separatör titreşim ve sızıntısını günlük izler.`,
+            `Separatör overhaul'da bowl, conta ve O-ring setleri yenilenir; bowl montaj sırası ve balans kritiktir (yanlış montaj titreşim ve kaza yaratır). Su seal kaybı (broken water seal) yakıtın su çıkışından sludge'a kaçmasına; kötü ayrım ise ana makineye su/katı gitmesine yol açar. İkinci Mühendis, separatör titreşim ve sızıntısını günlük izler.`,
           ],
           callouts: [
             {

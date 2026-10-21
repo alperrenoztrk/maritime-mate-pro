@@ -27,7 +27,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "2.1 Weathertight",
           paragraphs: [
-            `Hasarlı conta veya compression bar su girişine yol açar; yağmur/dalga ile yük ıslanır (özellikle hijyenik/grain yükler ciddi hasar görür).`,
+            `Hasarlı conta veya compression bar su girişine yol açar; yağmur/dalga ile yük ıslanır (özellikle higroskopik/grain yükler ciddi hasar görür).`,
           ],
           callouts: [
             { type: "warning", title: "Su girişi", text: `Sızdıran hatch cover yük ıslanması ve ağır cargo claim yaratır; her açılış öncesi/kapanış sonrası kontrol edilir.` },

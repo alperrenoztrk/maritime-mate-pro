@@ -62,7 +62,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.1 Yoğunluğa göre doğru disc",
           paragraphs: [
             `Purifier modunda, su ile yakıt arasındaki ayrım çizgisinin (interface) doğru yerde tutulması, gravity disc (dam ring / regulating ring) çapına bağlıdır. Yakıtın yoğunluğu (density) arttıkça daha küçük çaplı gravity disc seçilir. Yanlış disc seçimi interface'in kayması, water seal'in bozulması ve ya yakıtın suya ya suyun yakıta karışmasıyla sonuçlanır.`,
-            `Yağcı, bunker yoğunluğuna göre üretici tablosundan (gravity disc selection chart) doğru disc'i seçer. Modern alkol/HFO yoğunlukları 991 kg/m³'e (15°C) yaklaştığında geleneksel purifier su ayrımı zorlaşır; bu yüzden yeni nesil separatörler (ALCAP / EHM gibi sistemler) gravity disc kullanmadan otomatik interface kontrolü yapar.`,
+            `Yağcı, bunker yoğunluğuna göre üretici tablosundan (gravity disc selection chart) doğru disc'i seçer. Modern HFO yoğunlukları 991 kg/m³'e (15°C) yaklaştığında geleneksel purifier su ayrımı zorlaşır; bu yüzden yeni nesil separatörler (ALCAP gibi sistemler) gravity disc kullanmadan otomatik interface kontrolü yapar.`,
           ],
           callouts: [
             {
@@ -125,7 +125,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Water seal (su contası) kontrolü",
           paragraphs: [
-            `Purifier modunda her desludge sonrası, ayrım başlamadan önce bowl'a belli miktarda sealing water verilerek water seal (su contası) kurulur. Bu su, yakıtın su çıkışından kaçmasını önleyen sınırdır. Seal düzgün kurulmazsa yakıt overboard (su tarafına) kaçar (broken seal / oil loss).`,
+            `Purifier modunda her desludge sonrası, ayrım başlamadan önce bowl'a belli miktarda sealing water verilerek water seal (su contası) kurulur. Bu su, yakıtın su çıkışından kaçmasını önleyen sınırdır. Seal düzgün kurulmazsa yakıt su çıkışı tarafına kaçar (broken seal / oil loss).`,
             `Yağcı, separatör start ve her desludge sonrası water seal'in kurulduğunu (su çıkışından temiz su gelmesi, yakıt kaçmaması) gözler. Yakıt çıkışında su veya su çıkışında yakıt görülmesi seal/gravity disc sorununu işaret eder ve raporlanır.`,
           ],
           callouts: [

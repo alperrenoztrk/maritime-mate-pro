@@ -194,7 +194,7 @@ const content: CrewTaskLongForm = {
           subheading: "7.1 HV switching ve yetkilendirme",
           paragraphs: [
             `6.6 kV ve üzeri HV sistemlerde her manevra, yazılı switching program ve Permit to Work ile yapılır. ETO, ilave HV eğitimi belgesine sahip olmalı ve yetkili kişi (authorized person) statüsünde çalışmalıdır. Switching sırası önceden yazılır, ikinci bir kişi tarafından kontrol edilir ve her adım imzalanarak uygulanır.`,
-            `İzolasyon, gerilimsizlik teyidi (HV voltage detector ile, prove-test-prove ile), earthing uygulaması ve fiziksel kilitleme zorunlu sekanstır. ETO, HV insulated PPE'yi (Class 2/3 yalıtımlı eldiven, arc flash suit, yalıtımlı paspas) kullanır ve eldivenlerin periyodik basınç testinden geçtiğini doğrular.`,
+            `İzolasyon, gerilimsizlik teyidi (HV voltage detector ile, prove-test-prove ile), earthing uygulaması ve fiziksel kilitleme zorunlu sekanstır. ETO, HV insulated PPE'yi (Class 2/3 yalıtımlı eldiven, arc flash suit, yalıtımlı paspas) kullanır ve eldivenlerin periyodik dielektrik (elektriksel) testten geçtiğini doğrular.`,
           ],
           callouts: [
             {

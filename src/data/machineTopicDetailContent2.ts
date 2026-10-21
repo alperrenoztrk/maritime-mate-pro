@@ -53,7 +53,7 @@ const content2: ContentMap = {
       title: "Yüzdürme Kuvveti (Arşimet Prensibi)",
       introduction: "Bir cisim akışkana batırıldığında, cismin yerinden ettiği akışkanın ağırlığına eşit büyüklükte yukarı yönlü bir kuvvet etkir.",
       sections: [
-        { heading: "Arşimet Prensibi", paragraphs: ["Yüzdürme kuvveti (buoyancy), cismin batık hacmi ile akışkan yoğunluğunun çarpımına eşittir."], formula: { expression: "Fb = ρfluid × g × Vsubmerged", variables: ["Fb: Yüzdürme kuvveti (N)", "Vbatık: Batık hacim (m³)"] } }
+        { heading: "Arşimet Prensibi", paragraphs: ["Yüzdürme kuvveti (buoyancy), cismin batık hacmi, akışkan yoğunluğu ve yerçekimi ivmesinin çarpımına (F = ρ·g·V) eşittir."], formula: { expression: "Fb = ρfluid × g × Vsubmerged", variables: ["Fb: Yüzdürme kuvveti (N)", "Vbatık: Batık hacim (m³)"] } }
       ],
       keyPoints: ["Geminin yüzmesi Arşimet prensibine dayanır.", "Deplasman = yerinden edilen su ağırlığı.", "Yoğunluğu sıvıdan küçük olan cisim yüzer."]
     },
@@ -209,7 +209,7 @@ const content2: ContentMap = {
       title: "Elektrik Ark Kaynağı (SMAW)",
       introduction: "SMAW (Shielded Metal Arc Welding), örtülü elektrot ile yapılan ve gemi onarım/bakımında en yaygın kullanılan kaynak yöntemidir.",
       sections: [
-        { heading: "Çalışma Prensibi", paragraphs: ["Elektrot ile iş parçası arasında oluşan elektrik arkı, metalleri eritir. Elektrot örtüsü gaz ve cüruf oluşturarak kaynak banyosunu atmosferden korur.", "AC veya DC kaynak makinesi kullanılabilir. DC düz kutupluluk (DCEN) derin nüfuziyet sağlar."] },
+        { heading: "Çalışma Prensibi", paragraphs: ["Elektrot ile iş parçası arasında oluşan elektrik arkı, metalleri eritir. Elektrot örtüsü gaz ve cüruf oluşturarak kaynak banyosunu atmosferden korur.", "AC veya DC kaynak makinesi kullanılabilir. DC ters kutupluluk (DCEP) daha derin nüfuziyet sağlar."] },
         { heading: "Gemi Uygulamaları", paragraphs: ["Gövde onarımı, boru kaynağı, yapısal parça birleştirme ve dolgu kaynağında yaygın kullanılır. Klas kuruluşları kaynakçı yeterliliğini sertifikalandırır."] }
       ],
       keyPoints: ["En esnek ve taşınabilir kaynak yöntemidir.", "Rüzgârlı ortamlarda bile uygulanabilir.", "Kaynak dikişi kalitesi kaynakçının becerisine bağlıdır."]
@@ -308,7 +308,7 @@ const content2: ContentMap = {
       title: "ISO 8217 Yakıt Standartları",
       introduction: "ISO 8217, deniz yakıtlarının kalite parametrelerini tanımlayan uluslararası standarttır. Bunker alımında referans doküman olarak kullanılır.",
       sections: [
-        { heading: "Sınıflandırma", paragraphs: ["Distile yakıtlar: DMA (MGO), DMB, DMC – düşük viskoziteli, temiz yakıtlar.", "Kalıntı yakıtlar: RMA, RMB, RMD, RME, RMG, RMK – viskoziteye göre sınıflandırılır.", "Her sınıf için viskozite, yoğunluk, kükürt, su, kül, CCAI, Al+Si limitleri belirlenmiştir."] }
+        { heading: "Sınıflandırma", paragraphs: ["Distile yakıtlar: DMX, DMA (MGO), DMZ, DMB – düşük viskoziteli, temiz yakıtlar.", "Kalıntı yakıtlar: RMA, RMB, RMD, RME, RMG, RMK – viskoziteye göre sınıflandırılır.", "Her sınıf için viskozite, yoğunluk, kükürt, su, kül, CCAI, Al+Si limitleri belirlenmiştir."] }
       ],
       keyPoints: ["BDN (Bunker Delivery Note) yakıtın ISO 8217 sınıfını belirtmelidir.", "Yakıt numunesi 12 ay saklanmalıdır.", "Off-spec yakıt raporu bayrak devletine ve IMO'ya bildirilir."]
     },
@@ -511,7 +511,7 @@ const content2: ContentMap = {
       title: "Silindir Kapağı Söküm ve Revizyon",
       introduction: "Silindir kapağı revizyonu, ana makine bakım programının en önemli işlerinden biridir. Genellikle 8000-16000 çalışma saatinde yapılır.",
       sections: [
-        { heading: "Söküm Prosedürü", paragraphs: ["1. İlgili silindiri izole et (yakıt, hava, soğutma suyu kapatma).", "2. İndikatör musluğunu aç, başlatma havası kapatma valfini kapat.", "3. Kapak cıvatalarını (stud) tork sırasıyla gevşet.", "4. Hidrolik jack ile kapağı kaldır.", "5. Enjektör, egzoz supabı ve güvenlik supabını sök.", "6. Soğutma suyu kanallarını ve oturma yüzeylerini temizle.", "7. Çatlak kontrolü (PT veya MPI) yap.", "8. Supap oturma yüzeyini taşla (lapping/grinding)."] }
+        { heading: "Söküm Prosedürü", paragraphs: ["1. İlgili silindiri izole et (yakıt, hava, soğutma suyu kapatma).", "2. İndikatör musluğunu aç, başlatma havası kapatma valfini kapat.", "3. Kapak cıvatalarını (stud) tork sırasıyla gevşet.", "4. Kapağı makine dairesi vinci ile kaldır.", "5. Enjektör, egzoz supabı ve güvenlik supabını sök.", "6. Soğutma suyu kanallarını ve oturma yüzeylerini temizle.", "7. Çatlak kontrolü (PT veya MPI) yap.", "8. Supap oturma yüzeyini taşla (lapping/grinding)."] }
       ],
       keyPoints: ["Kapak cıvataları belirtilen tork değerlerine uyularak sıkılmalıdır.", "Soğutma suyu kanallarındaki kabuk temizlenmezse aşırı ısınma oluşur.", "Supap oturma yüzeyinin durumu yanma kalitesini doğrudan etkiler."]
     },
@@ -519,7 +519,7 @@ const content2: ContentMap = {
       title: "Krank Mili Saptırma (Deflection) Ölçümü",
       introduction: "Deflection ölçümü, krank mili hizalamasının ve ana yatak durumunun en önemli göstergesidir. Düzenli aralıklarla yapılması zorunludur.",
       sections: [
-        { heading: "Ölçüm Yöntemi", paragraphs: ["Deflection gauge (dial indicator), her silindirin krank kolları arasına yerleştirilir. Krank mili turning gear ile 360° döndürülerek 4 veya 5 pozisyonda (ÜÖN, sancak, AÖN, iskele ve alt) okunur.", "Okunan değerlerden maksimum ve minimum fark hesaplanır. Bu fark üretici tarafından belirlenen limitlerin altında olmalıdır."] },
+        { heading: "Ölçüm Yöntemi", paragraphs: ["Deflection gauge (dial indicator), her silindirin krank kolları arasına yerleştirilir. Krank mili turning gear ile 360° döndürülerek 5 pozisyonda (AÖN'ün iki yanı, iskele, ÜÖN ve sancak) okunur; tam AÖN'de biyel kolu engel olduğundan okuma alınmaz.", "Okunan değerlerden maksimum ve minimum fark hesaplanır. Bu fark üretici tarafından belirlenen limitlerin altında olmalıdır."] },
         { heading: "Değerlendirme", paragraphs: ["Fark değeri limiti aşıyorsa yatak aşınması, bedplate deformasyonu veya şaft hizalaması bozukluğu düşünülmelidir. Motor çalıştırılmamalı ve klas kuruluşuna bildirilmelidir."] }
       ],
       keyPoints: ["Ölçüm soğuk ve sıcak motorla ayrı ayrı yapılır.", "Tüm silindirlerin değerleri karşılaştırmalı olarak değerlendirilir.", "Limit aşımı motor durdurma gerektiren ciddi bir durumdur."]
@@ -542,7 +542,7 @@ const content2: ContentMap = {
       title: "MARPOL Sözleşmesi Tarihçesi",
       introduction: "MARPOL (Maritime Pollution), deniz kirliliğinin önlenmesine yönelik en kapsamlı uluslararası sözleşmedir.",
       sections: [
-        { heading: "Tarihsel Gelişim", paragraphs: ["1973'te kabul edilmiş, 1978 protokolüyle birleştirilerek MARPOL 73/78 olarak yürürlüğe girmiştir. Altı ek (Annex I-VI) içerir ve her ek farklı kirlilik kaynağını düzenler.", "Sözleşme, büyük tanker kazalarının (Torrey Canyon 1967, Amoco Cadiz 1978) ardından güçlendirilmiştir."] }
+        { heading: "Tarihsel Gelişim", paragraphs: ["1973'te kabul edilmiş, 1978 protokolüyle birleştirilerek MARPOL 73/78 olarak yürürlüğe girmiştir. Altı ek (Annex I-VI) içerir ve her ek farklı kirlilik kaynağını düzenler.", "Sözleşme, büyük tanker kazalarının (Torrey Canyon 1967; 1976-77 dönemindeki kazalar) ardından güçlendirilmiştir."] }
       ],
       keyPoints: ["Annex I ve II zorunlu, Annex III-VI isteğe bağlı başlayıp sonra zorunlu olmuştur.", "IMO MEPC (Marine Environment Protection Committee) düzenlemeleri günceller.", "Bayrak devleti ve liman devleti kontrolleri uygulamayı denetler."]
     },
@@ -550,7 +550,7 @@ const content2: ContentMap = {
       title: "Yağ-Su Ayırıcı (OWS) – 15 ppm Standardı",
       introduction: "OWS, sintine suyundaki yağ içeriğini 15 ppm altına indirerek denize güvenli deşarj sağlayan zorunlu ekipmandır.",
       sections: [
-        { heading: "Çalışma Prensibi", paragraphs: ["Birinci aşamada kaba ayırma (yerçekimi ve koaleser), ikinci aşamada ince ayırma (membran veya absorbsiyon) yapılır. Çıkış ODMCS tarafından sürekli izlenir.", "15 ppm aşıldığında otomatik olarak gemi içi resirkülasyon devreye girer ve denize deşarj kesilir."] }
+        { heading: "Çalışma Prensibi", paragraphs: ["Birinci aşamada kaba ayırma (yerçekimi ve koaleser), ikinci aşamada ince ayırma (membran veya absorbsiyon) yapılır. Çıkış 15 ppm sintine alarmı (oil content meter) tarafından sürekli izlenir.", "15 ppm aşıldığında otomatik olarak gemi içi resirkülasyon devreye girer ve denize deşarj kesilir."] }
       ],
       keyPoints: ["OWS bypass edilmesi ciddi suç teşkil eder.", "Magic pipe kullanımı tespit edildiğinde gemi alıkonulur.", "ODMCS kaydı PSC tarafından kontrol edilir."]
     },
@@ -576,7 +576,7 @@ const content2: ContentMap = {
       title: "Balast Su Sözleşmesi (BWM Convention)",
       introduction: "Balast su yönetimi sözleşmesi, gemilerin balast suyuyla taşıdığı istilacı türlerin yayılmasını önlemeyi amaçlar.",
       sections: [
-        { heading: "D-1 ve D-2 Standartları", paragraphs: ["D-1 (Değişim standardı): Açık denizde (kıyıdan 200 deniz mili, derinlik > 200 m) balast suyu değişimi. En az %95 hacimsel değişim gerekir.", "D-2 (Performans standardı): Balast su arıtma sistemi ile belirli organizma limitleri sağlanmalıdır. Tüm gemiler kademeli olarak D-2'ye geçmektedir."] }
+        { heading: "D-1 ve D-2 Standartları", paragraphs: ["D-1 (Değişim standardı): Açık denizde (kıyıdan 200 deniz mili, derinlik > 200 m) balast suyu değişimi. En az %95 hacimsel değişim gerekir.", "D-2 (Performans standardı): Balast su arıtma sistemi ile belirli organizma limitleri sağlanmalıdır. 8 Eylül 2024'ten itibaren Sözleşme kapsamındaki tüm gemiler D-2'ye uymak zorundadır."] }
       ],
       keyPoints: ["BWTS (Ballast Water Treatment System) artık zorunludur.", "UV, elektroliz, filtrasyon+dezenfeksiyon teknolojileri kullanılır.", "Balast su kayıt defteri tutulması ve PSC denetimine sunulması zorunludur."]
     },
@@ -585,7 +585,7 @@ const content2: ContentMap = {
       introduction: "MARPOL Annex V, gemilerden çöp deşarjını düzenler. Her gemide onaylanmış çöp yönetim planı ve çöp kayıt defteri bulunmalıdır.",
       sections: [
         { heading: "Çöp Sınıflandırması", paragraphs: [], table: { headers: ["Kategori", "Denize Atım"], rows: [["Plastik", "Kesinlikle yasak"], ["Yiyecek atığı", "Kıyıdan > 12 mil (öğütülmüş > 3 mil)"], ["Kâğıt/bez", "Kıyıdan > 12 mil"], ["Cam/metal", "Kıyıdan > 12 mil"], ["Kül (incinerator)", "Kıyıdan > 12 mil"], ["Yemeklik yağ", "Kıyıdan > 12 mil"]] } },
-        { heading: "Özel Alanlar", paragraphs: ["Akdeniz, Baltık, Karadeniz gibi özel alanlarda yiyecek atığı dahil çoğu çöpün denize atımı yasaktır. Tüm atıklar liman alım tesislerine verilmelidir."] }
+        { heading: "Özel Alanlar", paragraphs: ["Akdeniz, Baltık, Karadeniz gibi özel alanlarda yiyecek atığı dışındaki çöplerin çoğunun denize atımı yasaktır; bu alanlarda yiyecek atığı ise yalnızca seyir halinde, öğütülmüş olarak ve en yakın karadan en az 12 deniz mili uzakta atılabilir. Denize atılamayan atıklar liman alım tesislerine verilmelidir."] }
       ],
       keyPoints: ["Plastik dahil hiçbir sentetik malzeme denize atılamaz.", "Çöp kayıt defteri 2 yıl boyunca gemide saklanır.", "Incinerator kapasitesi ve çöp depolama alanı yeterli olmalıdır."]
     }
@@ -656,7 +656,7 @@ const content2: ContentMap = {
       introduction: "CII, mevcut gemilerin yıllık operasyonel karbon yoğunluğunu ölçen ve A-E ölçeğinde derecelendiren göstergedir.",
       sections: [
         { heading: "CII Hesabı", paragraphs: ["CII = Yıllık CO₂ emisyonu / (DWT × Mesafe) olarak hesaplanır. Sonuç referans değerle karşılaştırılarak A (çok iyi) ile E (çok kötü) arasında derecelendirilir."], formula: { expression: "CII = Toplam CO₂ (g) / (Kapasite × Mesafe)  [g CO₂ / ton·mil]", variables: [] } },
-        { heading: "Derecelendirme ve Sonuçları", paragraphs: ["A ve B derecesi teşvik edilir; D derecesi düzeltici eylem planı gerektirir; art arda 3 yıl D veya 1 yıl E alınması durumunda güçlendirilmiş SEEMP hazırlanmalıdır.", "Referans değerler her yıl %2 sıkılaştırılır."] }
+        { heading: "Derecelendirme ve Sonuçları", paragraphs: ["A ve B derecesi teşvik edilir; art arda 3 yıl D veya 1 yıl E alınması durumunda düzeltici eylem planı içeren revize SEEMP hazırlanmalıdır.", "Gerekli CII değerleri, 2019 referans değerine göre 2023-2026 döneminde her yıl 2 puan sıkılaştırılır (2023'te %5, 2026'da %11)."] }
       ],
       keyPoints: ["CII 5000 GT üzeri tüm gemilere uygulanır.", "Slow steaming, trim optimizasyonu ve rota planlaması CII'yi iyileştirir.", "Liman bekleme süreleri CII'yi olumsuz etkiler."]
     },

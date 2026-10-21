@@ -30,7 +30,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "1.2 Köpük tipleri",
           paragraphs: [
-            `AFFF (aqueous film-forming foam) yakıt üstünde su filmi oluşturarak hızlı söndürür; protein/fluoroprotein köpük dayanıklı battaniye verir; alcohol-resistant (AR) köpük, polar çözücüler (alkol, aseton) için poliмerik tabaka oluşturur. Yakıt tipine uygun köpük seçilmelidir.`,
+            `AFFF (aqueous film-forming foam) yakıt üstünde su filmi oluşturarak hızlı söndürür; protein/fluoroprotein köpük dayanıklı battaniye verir; alcohol-resistant (AR) köpük, polar çözücüler (alkol, aseton) için polimerik tabaka oluşturur. Yakıt tipine uygun köpük seçilmelidir.`,
           ],
           table: {
             headers: ["Köpük", "Güçlü yön", "Kullanım"],

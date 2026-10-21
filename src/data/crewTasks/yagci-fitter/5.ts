@@ -119,7 +119,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Boundary cooling görevi",
           paragraphs: [
             `Yangın bir bölmede kontrol altına alınmaya çalışılırken, komşu bölmelerin sınır perdeleri (bulkhead) ve güverteleri ısınır; bu ısı yangının yayılmasına ve komşu alandaki yanıcı maddelerin tutuşmasına yol açabilir. Boundary cooling, yangının olduğu bölmeyi çevreleyen yüzeyleri su püskürterek soğutma görevidir.`,
-            `Yağcı, muster list'te boundary cooling görevindeyse, yangın bölmesine komşu güverte/perdeleri hortumla soğutur; buharlaşan su yüzeyin aşırı ısınmadığını gösterir. Su birikiminin (free surface) stabiliteyi bozmaması ve drenajın açık olması için aşırı su kullanımından kaçınılır.`,
+            `Yağcı, muster list'te boundary cooling görevindeyse, yangın bölmesine komşu güverte/perdeleri hortumla soğutur; buharlaşan su yüzeyin hâlâ aşırı ısındığını ve soğutmaya devam edilmesi gerektiğini gösterir. Su birikiminin (free surface) stabiliteyi bozmaması ve drenajın açık olması için aşırı su kullanımından kaçınılır.`,
           ],
           callouts: [
             {
@@ -252,7 +252,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.1 Düzenli drill ve gerçekçilik",
           paragraphs: [
-            `Acil durum becerileri ancak düzenli, gerçekçi tatbikatlarla canlı kalır. SOLAS III/19 gereği yangın ve abandon ship drill'leri ayda en az bir kez (III/19.3.2), kapalı alan giriş ve kurtarma drill'i ise en az iki ayda bir (III/19.3.3) yapılır. "Kâğıt üzerinde" yapılan, herkesin sırayla beklediği drill işe yaramaz; gerçek koşulları (duman makinesi, karartma, gerçek ekipman) taklit eden drill öğretir.`,
+            `Acil durum becerileri ancak düzenli, gerçekçi tatbikatlarla canlı kalır. SOLAS III/19 gereği yangın ve abandon ship drill'leri ayda en az bir kez (III/19.3.2), kapalı alan giriş ve kurtarma drill'i ise en az iki ayda bir yapılır. "Kâğıt üzerinde" yapılan, herkesin sırayla beklediği drill işe yaramaz; gerçek koşulları (duman makinesi, karartma, gerçek ekipman) taklit eden drill öğretir.`,
             `Yağcı, her drill'i kendi görevini gerçek bir acil durummuş gibi prova etme fırsatı olarak görür: ekipmanı bulma süresi, SCBA takma, valf kapatma, kaçış yolu. Drill sonrası debrief'te çıkan eksikler (ekipman arızası, görev belirsizliği) raporlanır ve düzeltilir.`,
           ],
           callouts: [

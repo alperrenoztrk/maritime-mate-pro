@@ -203,7 +203,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 Kirliliğin önlenmesi ve döküntü kontrolü",
           paragraphs: [
-            `Yük operasyonunda dökülen tahıl, toz, hidrolik yağı veya kimyasal hem güvenlik hem çevre riskidir. MARPOL kapsamında denize yük artığı/kimyasal döküntüsü yasaktır; güvertede biriken artık denize süpürülmez, toplanır. AB, scupper tıpalarını (scupper plug) yağlı operasyonlarda takar, döküntüyü emici ile temizler ve raporlar.`,
+            `Yük operasyonunda dökülen tahıl, toz, hidrolik yağı veya kimyasal hem güvenlik hem çevre riskidir. Limanda ve kıyıdan 12 NM içinde MARPOL kapsamında denize yük artığı/kimyasal döküntüsü verilmesi yasaktır; güvertede biriken artık denize süpürülmez, toplanır. AB, scupper tıpalarını (scupper plug) yağlı operasyonlarda takar, döküntüyü emici ile temizler ve raporlar.`,
           ],
           callouts: [
             {

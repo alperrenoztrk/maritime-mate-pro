@@ -172,7 +172,7 @@ const content9: ContentMap = {
         {
           heading: "Orifis Plakası",
           paragraphs: [
-            "Orifis plakası, boru içine yerleştirilen delikli bir disk olup akışkanı daraltarak basınç farkı yaratır. Bu fark debi ile orantılıdır. Ucuz ve basit yapılıdır; ancak kalıcı basınç kaybı oluşturur."
+            "Orifis plakası, boru içine yerleştirilen delikli bir disk olup akışkanı daraltarak basınç farkı yaratır. Bu fark debinin karesiyle orantılıdır. Ucuz ve basit yapılıdır; ancak kalıcı basınç kaybı oluşturur."
           ],
           formula: {
             expression: "Q = Cd × A₂ × √(2ΔP / ρ)",

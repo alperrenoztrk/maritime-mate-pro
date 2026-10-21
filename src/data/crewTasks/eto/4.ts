@@ -57,7 +57,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.1 Haftalık ve aylık test prosedürü",
           paragraphs: [
             `ETO, emergency generator'ı her hafta test eder. Standart test makinenin start güvenilirliğini ve yükte çalışma kabiliyetini doğrular. Aylık (veya sınıf gereği daha sık) testte ise blackout simülasyonu yapılır: ana bara enerjisi kesilir (veya sense kablosu aç), generator'ın 45 saniye içinde otomatik start ettiği ve emergency bara'yı beslediği kronometre ile ölçülür.`,
-            `Test sonuçları (start süresi, gerilim/frekans toparlanması, yük altında davranış) makine jurnaline ve PMS log'una kaydedilir. ETO, soğuk start kabiliyetini değerlendirmek için makineyi yağ ısıtıcısı (jacket heater) devrede ve devre dışı şartlarda da test eder; soğuk makinede start süresi uzayabilir.`,
+            `Test sonuçları (start süresi, gerilim/frekans toparlanması, yük altında davranış) makine jurnaline ve PMS log'una kaydedilir. ETO, soğuk start kabiliyetini değerlendirmek için makineyi ceket suyu ısıtıcısı (jacket heater) devrede ve devre dışı şartlarda da test eder; soğuk makinede start süresi uzayabilir.`,
           ],
           callouts: [
             {

@@ -225,7 +225,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.2 Monkey fist ve heaving line yaralanmaları",
           paragraphs: [
-            `İçine metal/somun konulmuş atış halatı uçları, rıhtımdaki personelin kafasına isabet ederek ölümcül yaralanmalar yaratmıştır. IMO ve şirket prosedürleri içine sadece halat/kum konmasını, ağırlığın sınırlı olmasını şart koşar. Reis, atış halatlarını periyodik denetler.`,
+            `İçine metal/somun konulmuş atış halatı uçları, rıhtımdaki personelin kafasına isabet ederek ölümcül yaralanmalar yaratmıştır. Şirket prosedürleri içine sadece halat/kum konmasını, ağırlığın sınırlı olmasını şart koşar. Reis, atış halatlarını periyodik denetler.`,
           ],
           callouts: [
             {

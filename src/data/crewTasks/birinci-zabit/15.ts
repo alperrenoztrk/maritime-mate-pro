@@ -21,7 +21,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 IMDG vs IMSBC",
           paragraphs: [
-            `IMDG Code paketli tehlikeli yükleri (konteyner, varil, IBC) düzenlerken, IMSBC Code katı dökme yükleri (cevher, kömür, tahıl) düzenler. Birinci Zabit her iki rejimi de bilir ve yük tipine göre doğru kuralları uygular. Yanlış sınıflandırma veya beyan, en ağır deniz kazalarının nedenidir.`,
+            `IMDG Code paketli tehlikeli yükleri (konteyner, varil, IBC) düzenlerken, IMSBC Code katı dökme yükleri (cevher, kömür) düzenler. Birinci Zabit her iki rejimi de bilir ve yük tipine göre doğru kuralları uygular. Yanlış sınıflandırma veya beyan, en ağır deniz kazalarının nedenleri arasındadır.`,
           ],
           callouts: [
             {
@@ -114,7 +114,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Self-heating ve off-gassing",
           paragraphs: [
-            `Kömür, DRI gibi Group B yükler kendiliğinden ısınabilir (self-heating), oksijen tüketebilir ve tehlikeli gaz (metan, CO) yayabilir. Birinci Zabit; hold sıcaklık izleme, oksijen/gaz ölçümü ve havalandırma planını uygular. Ölçüm değerleri kayıt altına alınır.`,
+            `Kömür, DRI gibi Group B yükler kendiliğinden ısınabilir (self-heating), oksijen tüketebilir ve tehlikeli gaz (kömürde metan/CO, DRI'da hidrojen) yayabilir. Birinci Zabit; hold sıcaklık izleme, oksijen/gaz ölçümü ve havalandırma planını uygular. Ölçüm değerleri kayıt altına alınır.`,
           ],
           table: {
             caption: "Self-heating yük izleme",

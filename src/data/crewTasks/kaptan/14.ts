@@ -222,7 +222,7 @@ const content: CrewTaskLongForm = {
           subheading: "7.2 Sea Protest ve Note of Protest",
           paragraphs: [
             `Sea Protest (Note of Protest), kaptanın olağandışı bir olay (ağır hava, oturma, kargo hasarı riski, çatışma) sonrası, kendisinin ve geminin kusursuz olduğunu ve hasarın dış etkenlerden kaynaklandığını resmen kayda geçirdiği bir beyandır. İlk uygun limanda noter veya konsolosluk huzurunda, genelde varıştan sonra makul bir süre içinde (sıkça 24 saat içinde) yapılır. Sea Protest, ileride doğacak kargo iddialarına ve GA süreçlerine karşı geminin pozisyonunu güçlendirir.`,
-            `Kaptan, Sea Protest'i "extended" (genişletilmiş) olarak da hazırlayabilir; bu, daha sonra ek delil sunma hakkını saklı tutar. Sea Protest tek başına sorumluluğu ortadan kaldırmaz; ancak resmî ve zamanında bir beyan olarak geminin iyi niyetini ve olguları kayda geçirir. Kaptan, protesto pratiğini şirket/P&I yönlendirmesiyle uygular.`,
+            `Kaptan, Sea Protest'i not ettirirken (noting protest) protestoyu daha sonra genişletme hakkını saklı tutar; ek deliller sonradan "extended" (genişletilmiş) protestoyla sunulur. Sea Protest tek başına sorumluluğu ortadan kaldırmaz; ancak resmî ve zamanında bir beyan olarak geminin iyi niyetini ve olguları kayda geçirir. Kaptan, protesto pratiğini şirket/P&I yönlendirmesiyle uygular.`,
           ],
         },
       ],

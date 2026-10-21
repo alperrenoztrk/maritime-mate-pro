@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Set-point ve sıcaklık",
           paragraphs: [
-            `Her reefer'ın set-point'i shipper talimatıyla doğrulanır; supply air sıcaklığı kontrol değişkenidir. Günlük (genelde 2x) reefer log tutulur; alarmlar derhal incelenir.`,
+            `Her reefer'ın set-point'i shipper talimatıyla doğrulanır; chilled yükte supply air, frozen yükte return air sıcaklığı kontrol değişkenidir. Günlük (genelde 2x) reefer log tutulur; alarmlar derhal incelenir.`,
           ],
           bullets: [`Set-point shipper talimatına uygun`, `Supply air sıcaklığı izleme`, `Günlük reefer log`, `Alarm müdahalesi`],
         },

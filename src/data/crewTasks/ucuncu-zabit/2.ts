@@ -76,7 +76,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 Motor çalıştırma",
           paragraphs: [
-            `Filika motoru haftalık olarak çalıştırılır; su soğutmalı motorlar denizden veya yardımcı su kaynağından soğutulmadan uzun süre çalıştırılmaz (hava soğutmalı değilse en az 3 dakika, soğutmalı ise üretici limitinde). Çalışma sırasında yağ basıncı, şarj, egzoz rengi ve kolay start gözlenir; battery şarj durumu doğrulanır.`,
+            `Filika motoru haftalık olarak toplam en az 3 dakika çalıştırılır (SOLAS III/20.6); su soğutmalı motorlar denizden veya yardımcı su kaynağından soğutulmadan üreticinin belirttiği süreden uzun çalıştırılmaz. Çalışma sırasında yağ basıncı, şarj, egzoz rengi ve kolay start gözlenir; battery şarj durumu doğrulanır.`,
             `Motorun ileri/geri kavramaları (eğer güvenli ise davit'te değil, denize indirildiğinde) ayrı test edilir. Çalıştırma süresi, gözlem ve battery durumu logbook'a yazılır.`,
           ],
         },
@@ -178,7 +178,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Haftalık/aylık radyo testleri",
           paragraphs: [
-            `GMDSS kapsamında EPIRB self-test (haftalık), SART self-test (haftalık), batarya ve şarj kontrolü, DSC test call ve radyo battery reserve testleri yapılır. Safety Officer bu testleri (gemi organizasyonuna göre) radyo zabitiyle koordine eder veya yürütür ve radio log'a işler.`,
+            `GMDSS kapsamında EPIRB self-test, SART self-test, batarya ve şarj kontrolü, DSC test call ve radyo battery reserve testleri yapılır. Safety Officer bu testleri (gemi organizasyonuna göre) radyo zabitiyle koordine eder veya yürütür ve radio log'a işler.`,
           ],
           callouts: [
             {

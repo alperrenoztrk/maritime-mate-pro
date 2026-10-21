@@ -144,7 +144,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Zorunlu tatbikatlar",
           paragraphs: [
-            `SOLAS, çeşitli tatbikatları zorunlu kılar: abandon ship ve fire drill (her ay; mürettebat değişiminde 24 saat içinde), enclosed space rescue (iki ayda bir), steering gear test, pollution/SOPEP drill. Safety Officer drill takvimini tutar, senaryoları çeşitlendirir ve gerçekçi kılar.`,
+            `SOLAS, çeşitli tatbikatları zorunlu kılar: abandon ship ve fire drill (her ay; mürettebatın %25'inden fazlası önceki ay o gemideki tatbikatlara katılmamışsa limandan ayrıldıktan sonra 24 saat içinde), enclosed space rescue (iki ayda bir), steering gear test; pollution/SOPEP drill ise SOPEP ve SMS gereğidir. Safety Officer drill takvimini tutar, senaryoları çeşitlendirir ve gerçekçi kılar.`,
             `Drill bir "kutu işaretleme" değildir; her tatbikat değerlendirilir, eksikler kayda geçer ve bir sonraki için ders çıkarılır. Senaryolar rutinleşmemeli; gece tatbikatı, farklı yangın noktası, "kayıp adam" varyasyonları gerçek hazırlığı test eder.`,
           ],
           table: {

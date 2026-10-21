@@ -67,7 +67,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "3.1 Leak/pressure test",
           paragraphs: [
-            `Bağlantı, transfere başlamadan önce çalışma basıncının üzerinde (tipik 1.1 × MAWP) test edilir ve tüm flanşlar sızıntı açısından gözlenir. Sızıntı varsa basınç boşaltılıp conta/bolt düzeltilir.`,
+            `Bağlantı, transfere başlamadan önce test edilir ve tüm flanşlar sızıntı açısından gözlenir. Sızıntı varsa basınç boşaltılıp conta/bolt düzeltilir.`,
           ],
         },
         {

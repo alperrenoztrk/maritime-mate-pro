@@ -86,7 +86,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 OMD prensibi ve crankcase explosion riski",
           paragraphs: [
-            `OMD, ana/yardımcı makine karterindeki yağ buharı (oil mist) yoğunluğunu izler. Aşırı yağ buharı, bir yatak/yüzeyin aşırı ısınarak yağı buharlaştırdığının işaretidir; bu buhar tutuşma sınırına ulaşırsa crankcase explosion (karter patlaması) olur. OMD, mist yoğunluğu eşik üstüne çıkınca slowdown/shutdown tetikler ve büyük felaketi önler (IACS UR M67 zorunluluğu).`,
+            `OMD, ana/yardımcı makine karterindeki yağ buharı (oil mist) yoğunluğunu izler. Aşırı yağ buharı, bir yatak/yüzeyin aşırı ısınarak yağı buharlaştırdığının işaretidir; bu buhar tutuşma sınırına ulaşırsa crankcase explosion (karter patlaması) olur. OMD, mist yoğunluğu eşik üstüne çıkınca slowdown/shutdown tetikler ve büyük felaketi önler.`,
             `Test, dahili test fonksiyonu (referans/dummy chamber, optik sinyal simülasyonu) ile yapılır; ölçüm odacıklarının (measuring head) ve örnekleme borularının temizliği doğrulanır. Kirli/tıkalı örnekleme yolu yanlış ölçüm verir. Alarm/slowdown sinyalinin köprüüstüne ulaştığı teyit edilir.`,
           ],
           table: {

@@ -268,7 +268,7 @@ const content5: ContentMap = {
       title: "Gravity Disc Seçimi",
       introduction: "Gravity disc (damper ring), purifier modunda çalışan separatörde yağ-su arayüzünün konumunu belirleyen kritik bileşendir.",
       sections: [
-        { heading: "Seçim Prensibi", paragraphs: ["Gravity disc çapı, arıtılacak akışkanın yoğunluğuna göre seçilir. Yoğunluk arttıkça daha büyük çaplı disc kullanılır.", "Yanlış seçim: Çok büyük disc → yağ su çıkışından akar (yağ kaybı). Çok küçük disc → su yağ çıkışına karışır (yetersiz ayırma)."], formula: { expression: "Selection criterion: manufacturer's table based on ρfuel / ρwater ratio", variables: ["ρyakıt: 15°C'de yakıt yoğunluğu (kg/m³)", "ρsu: 1000 kg/m³ (tatlı su)"] } },
+        { heading: "Seçim Prensibi", paragraphs: ["Gravity disc çapı, arıtılacak akışkanın yoğunluğuna göre seçilir. Yoğunluk arttıkça daha küçük delik çaplı disc kullanılır.", "Yanlış seçim: Çok büyük disc → yağ su çıkışından akar (yağ kaybı). Çok küçük disc → su yağ çıkışına karışır (yetersiz ayırma)."], formula: { expression: "Selection criterion: manufacturer's table based on ρfuel / ρwater ratio", variables: ["ρyakıt: 15°C'de yakıt yoğunluğu (kg/m³)", "ρsu: 1000 kg/m³ (tatlı su)"] } },
         { heading: "Pratik Uygulama", paragraphs: ["Yakıt bunker delivery note (BDN) üzerindeki yoğunluk değeri ve arıtma sıcaklığındaki yoğunluk kullanılarak üretici nomogramından uygun disc seçilir.", "Sıcaklık yoğunluğu etkiler: Sıcaklık arttıkça yoğunluk düşer."] }
       ],
       keyPoints: ["Her yeni yakıt partisinde gravity disc uygunluğu kontrol edilmelidir.", "ALCAP sistemlerde gravity disc değişimi gerekmez.", "Deneme çalıştırma ile su çıkışından yağ gelip gelmediği kontrol edilir."]
@@ -540,7 +540,7 @@ const content5: ContentMap = {
       title: "MARPOL Sözleşmesi Tarihçesi",
       introduction: "MARPOL 73/78 (Maritime Pollution), deniz ortamının gemilerden kaynaklanan kirlilikten korunması amacıyla IMO tarafından kabul edilen temel uluslararası sözleşmedir.",
       sections: [
-        { heading: "Tarihsel Gelişim", paragraphs: ["1973: MARPOL sözleşmesi kabul edildi ancak yeterli onay alınamadı.", "1978: Tanker kazaları (Torrey Canyon, 1967; Amoco Cadiz, 1978) sonrasında Protokol eklendi; MARPOL 73/78 olarak yürürlüğe girdi (1983).", "1997: Annex VI (hava kirliliği) eklendi (yürürlük 2005).", "2011: EEDI ve SEEMP zorunlu hale getirildi.", "2020: Global kükürt limiti %0.50'ye düşürüldü."] },
+        { heading: "Tarihsel Gelişim", paragraphs: ["1973: MARPOL sözleşmesi kabul edildi ancak yeterli onay alınamadı.", "1978: Tanker kazaları (1976-77) sonrasında Protokol eklendi; MARPOL 73/78 olarak yürürlüğe girdi (1983).", "1997: Annex VI (hava kirliliği) eklendi (yürürlük 2005).", "2011: EEDI ve SEEMP zorunlu hale getirildi.", "2020: Global kükürt limiti %0.50'ye düşürüldü."] },
         { heading: "MARPOL Ekleri", paragraphs: [], table: { headers: ["Ek", "Konu", "Yürürlük"], rows: [["Annex I", "Petrol kirliliği", "1983"], ["Annex II", "Zararlı sıvı maddeler (NLS)", "1983"], ["Annex III", "Ambalajlı zararlı maddeler", "1992"], ["Annex IV", "Pis su (sewage)", "2003"], ["Annex V", "Çöp (garbage)", "1988"], ["Annex VI", "Hava kirliliği", "2005"]] } }
       ],
       keyPoints: ["MARPOL tüm 500+ GT ticari gemiler için geçerlidir.", "Bayrak devleti ve liman devleti denetimi ile uygulanır.", "İhlaller para cezası, tutuklama ve hapis cezası ile sonuçlanabilir."]
@@ -602,7 +602,7 @@ const content5: ContentMap = {
       introduction: "OWS, sintine suyundaki yağ içeriğini 15 ppm'in altına düşürerek denize güvenli deşarj sağlayan zorunlu çevre koruma ekipmanıdır.",
       sections: [
         { heading: "Sistem Yapısı", paragraphs: ["Birinci aşama: Gravite separasyonu ile büyük yağ damlacıkları ayrılır.", "İkinci aşama: Koalesans filtre ile ince damlacıklar birleştirilerek ayrılır.", "15 ppm bilge alarm: Çıkıştaki yağ içeriğini sürekli ölçer. 15 ppm aşılırsa deşarj valfi otomatik kapanır ve akış gemi içi sirkülasyona yönlenir."] },
-        { heading: "ODMCS", paragraphs: ["Oil Discharge Monitoring and Control System (ODMCS) 10000 GT üzeri gemilerde zorunludur. Deşarj debisi, yağ içeriği, gemi hızı ve konumunu sürekli kaydeder."] }
+        { heading: "ODMCS", paragraphs: ["Oil Discharge Monitoring and Control System (ODMCS) 150 GT ve üzeri petrol tankerlerinde zorunludur. Deşarj debisi, yağ içeriği, gemi hızı ve konumunu sürekli kaydeder."] }
       ],
       keyPoints: ["OWS by-pass edilmesi veya manipülasyonu ciddi suç teşkil eder.", "15 ppm bilge alarm IMO MEPC.107(49) standardına uygun olmalıdır.", "OWS bakımı ve filtre değişimi düzenli yapılmalıdır."]
     },
@@ -620,7 +620,7 @@ const content5: ContentMap = {
       introduction: "IMO 2020 kuralıyla global kükürt limiti %3.50'den %0.50'ye düşürülmüştür. ECA bölgelerinde limit %0.10'dur.",
       sections: [
         { heading: "Uyum Yöntemleri", paragraphs: [], table: { headers: ["Yöntem", "Açıklama", "Avantaj/Dezavantaj"], rows: [["Düşük kükürtlü yakıt (VLSFO/MGO)", "Uyumlu yakıt kullanımı", "Basit; pahalı yakıt"], ["Scrubber", "Egzoz gazı yıkama", "HFO devam; yatırım maliyeti"], ["LNG yakıt", "Doğalgaz kullanımı", "Sıfıra yakın SOx; altyapı gerekli"], ["Metanol/Amonyak", "Alternatif yakıtlar", "Gelecek çözüm; sınırlı altyapı"]] } },
-        { heading: "ECA Bölgeleri", paragraphs: ["Baltık Denizi, Kuzey Denizi, Kuzey Amerika kıyıları (200 nm), ABD Karayip bölgesi SOx ECA olarak tanımlanmıştır."] }
+        { heading: "ECA Bölgeleri", paragraphs: ["Baltık Denizi, Kuzey Denizi, Kuzey Amerika kıyıları (200 nm), ABD Karayip bölgesi ve (1 Mayıs 2025'ten itibaren) Akdeniz SOx ECA olarak tanımlanmıştır."] }
       ],
       keyPoints: ["Yakıt değiştirme (fuel changeover) prosedürü ECA girişinden önce tamamlanmalıdır.", "BDN (Bunker Delivery Note) ve yakıt numunesi 3 yıl saklanmalıdır.", "FONAR (Fuel Oil Non-Availability Report) uyumlu yakıt bulunamadığında düzenlenir."]
     },
@@ -647,7 +647,7 @@ const content5: ContentMap = {
       introduction: "BWM Convention (2004), gemilerin balast suyu ile taşınan istilacı deniz organizmalarının yayılmasını önlemeyi amaçlar. 2017'de yürürlüğe girmiştir.",
       sections: [
         { heading: "Standartlar", paragraphs: [], table: { headers: ["Standart", "Gereklilik", "Uygulama"], rows: [["D-1 (Değişim)", "Okyanus ortasında (%95) balast değişimi", "Geçici (BWTS kurulana kadar)"], ["D-2 (Performans)", "BWTS ile arıtma", "Tüm gemiler (takvime göre)"]] } },
-        { heading: "BWTS Teknolojileri", paragraphs: ["UV arıtma: Ultraviolet ışınlarla organizmaları etkisizleştirir.", "Elektroliz (elektro-klorinasyon): Deniz suyundan aktif klorür üretir.", "Filtrasyon + UV: Ön filtre + UV kombinasyonu.", "Tüm sistemler IMO tip onayı (Type Approval) almalıdır."] }
+        { heading: "BWTS Teknolojileri", paragraphs: ["UV arıtma: Ultraviolet ışınlarla organizmaları etkisizleştirir.", "Elektroliz (elektro-klorinasyon): Deniz suyundan aktif klor (hipoklorit) üretir.", "Filtrasyon + UV: Ön filtre + UV kombinasyonu.", "Tüm sistemler, İdare (Administration) tarafından IMO kurallarına (G8 / BWMS Code) göre verilmiş tip onayına (Type Approval) sahip olmalıdır; aktif madde kullanan sistemler ayrıca IMO onayı gerektirir."] }
       ],
       keyPoints: ["IBWMC (International Ballast Water Management Certificate) gereklidir.", "Ballast Water Record Book tutulmalıdır.", "Mevcut gemiler survey takvimi ile D-2 standardına geçmelidir."]
     },
@@ -655,7 +655,7 @@ const content5: ContentMap = {
       title: "Çöp Yönetim Planı (Garbage Management Plan)",
       introduction: "Çöp yönetim planı, gemi üzerinde üretilen çöplerin toplanması, depolanması, işlenmesi ve bertaraf edilmesine ilişkin prosedürleri tanımlayan zorunlu belgedir.",
       sections: [
-        { heading: "Plan İçeriği", paragraphs: ["Çöp sınıflandırma kategorileri (A-I arası 9 kategori).", "Toplama ve ayrıştırma prosedürleri.", "Depolama yerleri ve kapasiteleri.", "İşleme ekipmanları (incinerator, compactor).", "Liman alım tesisine teslim prosedürü.", "Sorumlu personel görevlendirmesi."] },
+        { heading: "Plan İçeriği", paragraphs: ["Çöp sınıflandırma kategorileri (A-K arası 11 kategori).", "Toplama ve ayrıştırma prosedürleri.", "Depolama yerleri ve kapasiteleri.", "İşleme ekipmanları (incinerator, compactor).", "Liman alım tesisine teslim prosedürü.", "Sorumlu personel görevlendirmesi."] },
         { heading: "Çöp Kategorileri", paragraphs: [], table: { headers: ["Kategori", "İçerik"], rows: [["A", "Plastik"], ["B", "Yemek atığı"], ["C", "Ev atığı"], ["D", "Pişirme yağı"], ["E", "Küller (incinerator)"], ["F", "Operasyonel atık"], ["G", "Hayvan leşi"], ["H", "Balıkçılık atığı"], ["I", "E-atık"]] } }
       ],
       keyPoints: ["100+ GT veya 15+ kişi taşıyan gemilerde zorunludur.", "Mürettebat eğitimi planın parçasıdır.", "Liman alım makbuzu saklanmalıdır."]

@@ -68,7 +68,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "3.1 MSI: NAVTEX ve SafetyNET",
           paragraphs: [
-            `Denizcilik emniyet bilgisi (MSI) — seyir uyarıları, hava raporları, SAR bilgisi — otomatik alınır. NAVTEX (518 kHz) kıyıya yakın bölgede, Inmarsat SafetyNET ise açık denizde (A3/A4) MSI sağlar. Bu yayınlar sürekli ve otomatik kaydedilir.`,
+            `Denizcilik emniyet bilgisi (MSI) — seyir uyarıları, hava raporları, SAR bilgisi — otomatik alınır. NAVTEX (518 kHz) kıyıya yakın bölgede, Inmarsat SafetyNET ise açık denizde (A3) MSI sağlar. Bu yayınlar sürekli ve otomatik kaydedilir.`,
           ],
         },
         {

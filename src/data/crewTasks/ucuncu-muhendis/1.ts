@@ -131,7 +131,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Bowl açma, disc seti ve gravity disc",
           paragraphs: [
-            `Yakıt (FO) ve yağlama yağı (LO) purifierleri, yüksek devirli santrifüj separatörlerdir (örn. Alfa Laval, Westfalia/GEA) ve sudan/çamurdan arındırma için çalışır. Periyodik bakımda bowl sökülür, disc seti (disc stack) çamurdan temizlenir, ana sızdırmazlık (main seal ring) ve operating water valfleri kontrol edilir. Gravity disc seçimi yakıt yoğunluğuna göre yapılır; yanlış gravity disc su kesme hattını (water seal) bozar ve breaking water purifier'ı su basar.`,
+            `Yakıt (FO) ve yağlama yağı (LO) purifierleri, yüksek devirli santrifüj separatörlerdir (örn. Alfa Laval, Westfalia/GEA) ve sudan/çamurdan arındırma için çalışır. Periyodik bakımda bowl sökülür, disc seti (disc stack) çamurdan temizlenir, ana sızdırmazlık (main seal ring) ve operating water valfleri kontrol edilir. Gravity disc seçimi yakıt yoğunluğuna göre yapılır; yanlış gravity disc yağ-su ara yüzeyini (interface) kaydırır: delik çapı fazla büyük disk water seal'in kırılmasına ve yağın su çıkışından kaçmasına, fazla küçük disk ise ayrışmanın bozulup temiz yağa su karışmasına yol açar.`,
             `Bowl montajında işaret hizalaması (matchmark) ve sıkma torku üreticinin değerlerine birebir uyularak yapılır. Hatalı montaj, dengesizlik (vibrasyon), su kaçağı veya patlama riski yaratır. Yüksek devirli bu makinelerde dengesizlik son derece tehlikelidir.`,
           ],
           bullets: [
@@ -191,14 +191,14 @@ const content: CrewTaskLongForm = {
           subheading: "6.1 Globe, gate ve non-return valf bakımı",
           paragraphs: [
             `Yardımcı sistem hatlarındaki valfler (globe, gate, butterfly, NRV), sızdırmazlık ve fonksiyon için periyodik overhaul edilir. Globe valfte seat/disc taşlama (lapping/grinding) pastası ile yapılır; gland packing yenilenir, spindle düzgünlüğü kontrol edilir. NRV'lerin doğru yönde monte edildiği ve serbest hareket ettiği test edilir; ters monte NRV felaket sonuç doğurur.`,
-            `Sea valve / overboard valve gibi su altı valfleri "critical" sayılır; bunların açma-kapama testi ve sızdırmazlığı dik kunt kayıtlanır. İş, gemi su hattı altında ise dalış veya kuru havuz koşulu gerektirebilir.`,
+            `Sea valve / overboard valve gibi su altı valfleri "critical" sayılır; bunların açma-kapama testi ve sızdırmazlığı dikkatle kayıt altına alınır. İş, gemi su hattı altında ise dalış veya kuru havuz koşulu gerektirebilir.`,
           ],
         },
         {
           subheading: "6.2 Gasket seçimi ve flanş montajı",
           paragraphs: [
             `Gasket malzemesi akışkan, sıcaklık ve basınca göre seçilir: su/yağ için CNAF (fiber), buhar/yüksek sıcaklık için spiral-wound veya grafit, yakıt için yağa dayanıklı tip. Yanlış gasket malzemesi kaçak, yangın (yakıt/yağ) veya buhar yanığı riski yaratır.`,
-            `Flanş montajında cıvatalar çapraz (star pattern) ve kademeli torkla sıkılır; sıcak çalışan hatlarda servis sonrası re-torque yapılır. Asbestli gasket kullanımı yasaktır (MLC/IMO sağlık kuralları); asbest içeren eski conta çıkarılırken solunum koruması ve özel bertaraf uygulanır.`,
+            `Flanş montajında cıvatalar çapraz (star pattern) ve kademeli torkla sıkılır; sıcak çalışan hatlarda servis sonrası re-torque yapılır. Asbestli gasket kullanımı yasaktır (SOLAS II-1/3-5); asbest içeren eski conta çıkarılırken solunum koruması ve özel bertaraf uygulanır.`,
           ],
           table: {
             caption: `Akışkana göre gasket seçimi (kılavuz)`,

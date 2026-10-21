@@ -74,7 +74,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "3.1 Marş kapasitesi",
           paragraphs: [
-            `Klas, reversible ana makineler için hava şişelerinin yakıt almadan belirli sayıda (tipik 12) ardışık marşı karşılamasını ister. Genelde iki bağımsız kompresör ve iki hava şişesi bulunur; biri arızalansa diğeri marş kabiliyetini sürdürür.`,
+            `Klas, reversible ana makineler için hava şişelerinin yeniden doldurulmadan belirli sayıda (tipik 12) ardışık marşı karşılamasını ister. Genelde iki bağımsız kompresör ve iki hava şişesi bulunur; biri arızalansa diğeri marş kabiliyetini sürdürür.`,
           ],
           callouts: [
             {

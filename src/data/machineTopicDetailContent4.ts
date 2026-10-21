@@ -367,7 +367,7 @@ const content4: ContentMap = {
       title: "Plakalı Isı Eşanjörleri",
       introduction: "Plakalı ısı eşanjörleri, ince oluklu metal plakalar arasında oluşan kanallardan akışkanların geçmesiyle ısı transferi sağlayan kompakt cihazlardır.",
       sections: [
-        { heading: "Yapı ve Çalışma", paragraphs: ["İnce paslanmaz çelik plakalar (0.5-1.0 mm) titanyum veya EPDM contalarla sızdırmaz olarak birleştirilir. Sıcak ve soğuk akışkanlar alternatif kanallardan geçer.", "Oluklu (chevron/herringbone) desen türbülanslı akış yaratır ve ısı transfer katsayısını artırır. U değeri kabuk-boru eşanjörlerin 3-5 katı olabilir."] },
+        { heading: "Yapı ve Çalışma", paragraphs: ["İnce paslanmaz çelik veya titanyum plakalar (0.5-1.0 mm) NBR veya EPDM contalarla sızdırmaz olarak birleştirilir. Sıcak ve soğuk akışkanlar alternatif kanallardan geçer.", "Oluklu (chevron/herringbone) desen türbülanslı akış yaratır ve ısı transfer katsayısını artırır. U değeri kabuk-boru eşanjörlerin 3-5 katı olabilir."] },
         { heading: "Avantaj ve Dezavantajlar", paragraphs: [], table: { headers: ["Avantaj", "Dezavantaj"], rows: [["Yüksek U değeri (3000-7000 W/m²·K)", "Basınç limiti (~25 bar)"], ["Kompakt boyut", "Sıcaklık limiti (~150°C contalarla)"], ["Kolay söküm ve temizlik", "Conta bozulma riski"], ["Esnek kapasite (plaka ekleme)", "Yüksek viskoziteli akışkanlara sınırlı uygunluk"]] } }
       ],
       keyPoints: ["Gemi merkezi soğutma suyu eşanjörlerinde yaygındır.", "Kaynaklanmış plakalı eşanjörler daha yüksek basınç ve sıcaklığa dayanır.", "Periyodik contalar değişimi gerekir."]
@@ -480,7 +480,7 @@ const content4: ContentMap = {
       title: "Dört Zamanlı Motor Çalışma Prensibi",
       introduction: "Dört zamanlı dizel motor, krank milinin iki tam devrinde bir güç stroku üretir. Gemi yardımcı motorlarında ve bazı orta hızlı ana motorlarda kullanılır.",
       sections: [
-        { heading: "Dört Strok", paragraphs: ["1. Emme: Piston aşağı, emme supabı açık. Silindir taze hava ile dolar.", "2. Sıkıştırma: Piston yukarı, tüm supaplar kapalı. Hava sıkıştırılır (~35-40 bar, ~550-700°C).", "3. Yanma-Genleşme: ÜÖN civarında yakıt enjeksiyonu, yanma ve genleşme. İş üretilir.", "4. Egzoz: Piston yukarı, egzoz supabı açık. Yanmış gazlar dışarı atılır."] },
+        { heading: "Dört Strok", paragraphs: ["1. Emme: Piston aşağı, emme supabı açık. Silindir taze hava ile dolar.", "2. Sıkıştırma: Piston yukarı, tüm supaplar kapalı. Hava sıkıştırılır (~550-700°C).", "3. Yanma-Genleşme: ÜÖN civarında yakıt enjeksiyonu, yanma ve genleşme. İş üretilir.", "4. Egzoz: Piston yukarı, egzoz supabı açık. Yanmış gazlar dışarı atılır."] },
         { heading: "Supap Mekanizması", paragraphs: ["Dört zamanlı motorlarda emme ve egzoz supapları kam mili tarafından tahrik edilir. Kam mili krank milinin yarı hızında döner. Supap zamanlaması motor performansı için kritiktir."] }
       ],
       keyPoints: ["Dört zamanlı motor, iki zamanlıya göre daha kompakt ve hafiftir.", "Gemi jeneratörleri ve orta hızlı motorlar (MAN, Wärtsilä) bu tiptedir.", "Trunk piston tasarımı nedeniyle karter yağlama gerektirir."]
@@ -508,7 +508,7 @@ const content4: ContentMap = {
       introduction: "Silindir kapağı, yanma odasını üstten kapatan ve çeşitli bileşenleri barındıran kritik bir motor parçasıdır.",
       sections: [
         { heading: "Görevleri ve Bileşenleri", paragraphs: ["Silindir kapağı üzerinde egzoz valfi, yakıt enjektörü, emniyet valfi, indikatör vanası ve soğutma suyu kanalları bulunur.", "İki zamanlı motorlarda emme supabı yoktur (süpürme portları silindir gömleğinde). Dört zamanlı motorlarda hem emme hem egzoz supapları kapak üzerindedir."] },
-        { heading: "Malzeme ve Soğutma", paragraphs: ["Yüksek mekanik ve termal gerilmelere dayanmalıdır. Genellikle yüksek mukavemetli dökme demirden üretilir.", "Soğutma suyu kanalları özellikle egzoz valfi etrafında yoğundur. Yetersiz soğutma termal çatlaklara yol açar."] }
+        { heading: "Malzeme ve Soğutma", paragraphs: ["Yüksek mekanik ve termal gerilmelere dayanmalıdır. Dört zamanlı motorlarda genellikle yüksek mukavemetli dökme demirden, büyük iki zamanlı motorlarda ise dövme çelikten üretilir.", "Soğutma suyu kanalları özellikle egzoz valfi etrafında yoğundur. Yetersiz soğutma termal çatlaklara yol açar."] }
       ],
       keyPoints: ["Silindir kapağı revizyonu büyük bakım işlerinin başında gelir.", "Termal çatlak en yaygın arıza tipidir.", "Hidrolik germe (hydraulic jack) ile sıkılır."]
     },
@@ -526,7 +526,7 @@ const content4: ContentMap = {
       title: "Piston ve Segman Tasarımı",
       introduction: "Piston, yanma basıncını krank miline ileten ana bileşendir. Segmanlar gaz sızdırmazlığı ve yağ kontrolü sağlar.",
       sections: [
-        { heading: "Piston Yapısı", paragraphs: ["İki zamanlı crosshead motorlarda piston taç (crown) ve etek (skirt) olarak iki parçadır. Taç yüksek alaşımlı çelikten, etek dökme demirdendir.", "Piston tacı yoğun soğutma gerektirir. Soğutma ortamı: yağlama yağı veya su (eski motorlarda)."] },
+        { heading: "Piston Yapısı", paragraphs: ["İki zamanlı crosshead motorlarda piston taç (crown) ve etek (skirt) olarak iki parçadır. Taç ısıya dayanıklı alaşımlı çelikten, etek dökme demirdendir.", "Piston tacı yoğun soğutma gerektirir. Soğutma ortamı: yağlama yağı veya su (eski motorlarda)."] },
         { heading: "Segman Tipleri", paragraphs: [], table: { headers: ["Segman", "Görev", "Profil"], rows: [["Sıkıştırma segmanı", "Gaz sızdırmazlığı", "Dikdörtgen / CPR"], ["Kazıyıcı segman", "Yağ kontrolü", "Konik kenar"], ["Yağ segmanı", "Fazla yağı kazıma", "Çift dudaklı"]] } },
         { heading: "Aşınma Göstergeleri", paragraphs: ["Segman boşluk (gap) ölçümü: butt gap ve side clearance. Aşınmış segmanlar yağ tüketimi artışı, kompresyon kaybı ve egzoz dumanı artışına neden olur."] }
       ],
@@ -824,7 +824,7 @@ const content4: ContentMap = {
       introduction: "Paralel bağlama (synchronizing), çalışan bir jeneratöre ikinci bir jeneratörü bağlayarak güç kapasitesini artırma işlemidir.",
       sections: [
         { heading: "Senkronizasyon Koşulları", paragraphs: ["1. Gerilim eşitliği (±5%)", "2. Frekans eşitliği (±0.5 Hz)", "3. Faz sırası aynı olmalı", "4. Faz açısı sıfır olmalı (synchroscope tam 12 pozisyonunda)"] },
-        { heading: "Prosedür", paragraphs: ["1. Bağlanacak jeneratörü çalıştır ve nominal devire getir.", "2. AVR ile gerilimi baraya eşitle.", "3. Governor ile frekansı eşitle (synchroscope yavaş saat yönünde dönmeli).", "4. Synchroscope tam 12'de iken kesiciyi kapat.", "5. Yük paylaşımını kontrol et."] }
+        { heading: "Prosedür", paragraphs: ["1. Bağlanacak jeneratörü çalıştır ve nominal devire getir.", "2. AVR ile gerilimi baraya eşitle.", "3. Governor ile frekansı eşitle (synchroscope yavaş saat yönünde dönmeli).", "4. Synchroscope ibresi 12'ye gelmeden hemen önce kesiciyi kapat.", "5. Yük paylaşımını kontrol et."] }
       ],
       keyPoints: ["Yanlış senkronizasyon jeneratör ve barayı ciddi hasar verebilir.", "Otomatik senkronizasyon cihazı insan hatasını ortadan kaldırır.", "Faz sırası hatası kesinlikle yapılmamalıdır (kalıcı hasar)."]
     },
@@ -842,7 +842,7 @@ const content4: ContentMap = {
       introduction: "MSB (Main Switchboard), gemi elektrik sisteminin merkezi dağıtım noktasıdır. Jeneratörlerden gelen güç MSB üzerinden tüm tüketicilere dağıtılır.",
       sections: [
         { heading: "Yapı ve Bileşenler", paragraphs: ["MSB, hava kesiciler (ACB), bara sistemi, ölçü aletleri (voltmetre, ampermetre, wattmetre, frekans), synchroscope, koruma röleleri ve kontrol panellerinden oluşur.", "Bara sistemi bakır veya alüminyum iletkenlerden yapılır. Tek bara veya bölünmüş bara (split bus) düzeni kullanılır."] },
-        { heading: "SOLAS Gereklilikleri", paragraphs: ["MSB makine dairesi üst platformda konumlandırılır. Yangın ve su hasarından korunmalıdır.", "Ana yangın pompası MSB'den bağımsız beslenmelidir."] }
+        { heading: "SOLAS Gereklilikleri", paragraphs: ["MSB yangın ve su hasarından korunmalıdır.", "Acil yangın pompasının güç kaynağı, ana yangın pompalarının ve güç kaynaklarının bulunduğu bölmenin dışında olmalıdır."] }
       ],
       keyPoints: ["MSB önünde yalıtıcı paspas ve yangın söndürücü bulunmalıdır.", "Bara gerilimi sürekli izlenir.", "Toprak kaçağı izleme (insulation monitoring) MSB'ye entegredir."]
     },

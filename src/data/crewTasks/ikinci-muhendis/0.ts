@@ -96,7 +96,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Mekanik indicator ve elektronik PMI",
           paragraphs: [
-            `Indicator diagram (PV diyagramı), silindir basıncının krank açısına göre değişimini gösterir ve yanma kalitesinin en doğru kanıtıdır. Geleneksel mekanik indicator yerine günümüzde elektronik PMI (Pressure Measurement Indicator) veya kalıcı cylinder pressure sensörleri kullanılır. İkinci Mühendis bu ölçümleri belirli aralıklarla (genelde haftalık/iki haftalık veya port stay'de) alır.`,
+            `Indicator diagram (PV diyagramı), silindir basıncının silindir hacmine (piston konumuna) göre değişimini gösterir ve yanma kalitesinin en doğru kanıtıdır. Geleneksel mekanik indicator yerine günümüzde elektronik PMI (Pressure Measurement Indicator) veya kalıcı cylinder pressure sensörleri kullanılır. İkinci Mühendis bu ölçümleri belirli aralıklarla (genelde haftalık/iki haftalık) alır.`,
             `Diyagramdan Pmax, Pcomp, mean indicated pressure (Pi), indicated power ve yanma açısı (timing) çıkarılır. Pmax-Pcomp farkı yakıt enjeksiyon zamanlamasının göstergesidir; geç enjeksiyon Pmax'ı düşürür ve egzoz sıcaklığını yükseltir, erken enjeksiyon ise Pmax'ı tehlikeli biçimde yükselterek mekanik aşırı yüke yol açar.`,
           ],
         },
@@ -156,7 +156,7 @@ const content: CrewTaskLongForm = {
           subheading: "5.2 Scavenge fire riski ve önleme",
           paragraphs: [
             `Scavenge box içinde biriken yanmamış yakıt ve yağ, sıcak gaz blow-by ile tutuşarak scavenge fire çıkarabilir. Belirtiler; ilgili silindir egzoz/scavenge sıcaklık artışı, T/C surging, boya kabarması ve yük düşmesidir. İkinci Mühendis, düzenli scavenge drain temizliği ve under-piston bölge bakımıyla bu riski yönetir.`,
-            `Scavenge fire tespitinde yük derhal düşürülür, ilgili silindir yakıtı kesilir, scavenge drain kapatılır ve fixed smothering (CO2/steam) hazır tutulur. Crankcase ile bağlantı (relief valve) nedeniyle crankcase explosion'a sıçramaması için ek dikkat gerekir.`,
+            `Scavenge fire tespitinde yük derhal düşürülür, ilgili silindir yakıtı kesilir, scavenge drain kapatılır ve fixed smothering (CO2/steam) hazır tutulur. Crankcase ile bağlantı (piston rod stuffing box) nedeniyle crankcase explosion'a sıçramaması için ek dikkat gerekir.`,
           ],
           callouts: [
             {
@@ -193,7 +193,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Yakıt kalitesi, viskozite ve enjeksiyon",
           paragraphs: [
-            `Ana makine performansı doğrudan yakıt kalitesine bağlıdır. İkinci Mühendis, viscotherm/heater ile enjeksiyon viskozitesini (tipik 10-15 cSt) sabit tutar; düşük viskozite kötü atomizasyon ve pompa aşınması, yüksek viskozite zayıf enjeksiyon ve karbonlaşma yapar.`,
+            `Ana makine performansı doğrudan yakıt kalitesine bağlıdır. İkinci Mühendis, viscotherm/heater ile enjeksiyon viskozitesini (tipik 10-15 cSt) sabit tutar; düşük viskozite pompa aşınması, yüksek viskozite kötü atomizasyon, zayıf enjeksiyon ve karbonlaşma yapar.`,
             `Bunker analiz raporu (CCAI, density, sülfür, su, kül, kat. fines/Al+Si) değerlendirilir. Yüksek cat-fines (alüminyum+silikon) astar ve enjeksiyon ekipmanını aşındırır; settling/service tank ve purifier performansı bu yüzden kritiktir.`,
           ],
           callouts: [
@@ -246,7 +246,7 @@ const content: CrewTaskLongForm = {
           subheading: "9.1 Erken uyarı ve kök neden analizi",
           paragraphs: [
             `İkinci Mühendis, anormal bir parametreyi tek başına yorumlamaz; ilişkili parametrelerle (örn. yüksek egzoz + düşük Pmax + yüksek Fe) bir arada değerlendirir ve olası kök neden hipotezini test eder. Bu yaklaşım, parça değiştir-bak (parts swapping) gibi maliyetli ve riskli yöntemleri önler.`,
-            `Bulgular, derecelendirilmiş (bilgi / izle / acil müdahale) biçimde Baş Mühendise raporlanır. Acil durumlarda (LO basınç düşüşü, oil mist alarmı, scavenge fire) önce makine güvenli devreye alınır, köprü bilgilendirilir ve sonra teşhise geçilir.`,
+            `Bulgular, derecelendirilmiş (bilgi / izle / acil müdahale) biçimde Baş Mühendise raporlanır. Acil durumlarda (LO basınç düşüşü, oil mist alarmı, scavenge fire) önce makine güvenli duruma getirilir, köprü bilgilendirilir ve sonra teşhise geçilir.`,
           ],
         },
         {

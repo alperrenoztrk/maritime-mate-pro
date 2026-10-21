@@ -45,7 +45,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Buz verisi kaynakları",
           paragraphs: [
-            `İkinci Zabit; NAVTEX ice bulletin, ulusal buz servisleri (IceNet, BSH, AARI, Canadian Ice Service) ve uydu buz haritalarını izler. Sea ice concentration (egg code), buz tipi/kalınlığı, sıkışma alanları ve buzun hareket yönü değerlendirilir. Buz koşulu dinamiktir; veriler sefer boyunca güncellenir.`,
+            `İkinci Zabit; NAVTEX ice bulletin, ulusal buz servisleri (BSH, AARI, Canadian Ice Service) ve uydu buz haritalarını izler. Sea ice concentration (egg code), buz tipi/kalınlığı, sıkışma alanları ve buzun hareket yönü değerlendirilir. Buz koşulu dinamiktir; veriler sefer boyunca güncellenir.`,
           ],
           table: {
             caption: "Buz konsantrasyonu (genel kavram)",

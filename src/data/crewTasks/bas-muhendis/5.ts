@@ -30,7 +30,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.2 Zorunlu (mandatory) yedekler",
           paragraphs: [
-            `SOLAS ve klas kuralları, ana makine ve essential auxiliary için minimum yedek parça listesini zorunlu kılar (örn. yedek piston ring seti, exhaust valve, fuel injector, yatak yarımları). Single-engine gemilerde bu liste daha geniştir. MARPOL Annex I & VI ise OWS membranları, 15 ppm alarm yedek hücresi, scrubber kimyasalları gibi çevre ekipmanı yedeklerini gerektirir.`,
+            `Ana makine ve essential auxiliary için minimum yedek parça listesi tanımlanır (örn. yedek piston ring seti, exhaust valve, fuel injector, yatak yarımları). Single-engine gemilerde bu liste daha geniştir.`,
             `PSC ve klas surveyor, bu zorunlu yedeklerin fiziksel mevcudiyetini ve sertifika eşleşmesini denetler. Eksik bir mandatory spare, "deficiency" kaydı ve ağır durumda detention sebebidir. Baş Mühendis, bu listeyi inventory'de ayrı bir "do-not-use without replenishment" etiketiyle yönetir.`,
           ],
           callouts: [
@@ -188,7 +188,7 @@ const content: CrewTaskLongForm = {
           subheading: "7.1 Vetting ve TMSA beklentileri",
           paragraphs: [
             `Tanker vetting (OCIMF SIRE 2.0) ve TMSA denetiminde, kritik yedek parçaların mevcudiyeti, stok yönetim sisteminin işlerliği ve consumption kayıtlarının tutarlılığı sorgulanır. Inspector, rastgele bir kritik parçayı fiziksel olarak görmek isteyebilir; PMS kaydı ile fiili stok eşleşmemesi gözlem (observation) yaratır.`,
-            `TMSA Element 5 ve 6 (technical management ve maintenance) kapsamında, planlı satınalma, frame agreement kullanımı ve maliyet kontrolü kanıtlanmalıdır. Baş Mühendis, requisition geçmişi ve bütçe raporlarıyla bu yetkinliği belgeler.`,
+            `TMSA Element 4 (vessel reliability ve maintenance) kapsamında, planlı satınalma, frame agreement kullanımı ve maliyet kontrolü kanıtlanmalıdır. Baş Mühendis, requisition geçmişi ve bütçe raporlarıyla bu yetkinliği belgeler.`,
           ],
         },
         {

@@ -27,7 +27,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "2.1 Son kontrol",
           bullets: [`DCS verisi doğru mu?`, `CII rating hesaplandı mı?`, `SEEMP önlemleri uygulanıyor mu?`, `Statement hazır mı?`],
-          paragraphs: [`D/E rating düzeltici eylem planı gerektirir; verimlilik hem regülasyon hem maliyet konusudur.`],
+          paragraphs: [`Üç yıl üst üste D veya bir kez E rating, düzeltici eylem planı gerektirir; verimlilik hem regülasyon hem maliyet konusudur.`],
         },
       ],
     },

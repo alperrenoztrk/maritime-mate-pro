@@ -81,7 +81,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "3.2 PASS tekniği",
           paragraphs: [
-            `Kullanımda PASS yöntemi uygulanır: Pull (pimi çek), Aim (alevin tabanına yönelt), Squeeze (kolu sık), Sweep (süpürerek uygula). Operatör daima çıkışa sırtı dönük olmamalı, kaçış yolu açık tutulmalıdır.`,
+            `Kullanımda PASS yöntemi uygulanır: Pull (pimi çek), Aim (alevin tabanına yönelt), Squeeze (kolu sık), Sweep (süpürerek uygula). Operatör daima sırtı çıkışa dönük durmalı, kaçış yolu açık tutulmalıdır.`,
           ],
           bullets: [
             `Pull → pimi çek`,

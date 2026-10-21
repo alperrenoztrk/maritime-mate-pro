@@ -37,7 +37,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "2.2 Reception facility",
           paragraphs: [
-            `Geri kazanılamayan slop yalnız liman atık kabul tesisine (reception facility) verilir. Transfer ORB I'da uygun kod (Code J vb.) ile kayıt altına alınır ve makbuz saklanır.`,
+            `Geri kazanılamayan slop yalnız liman atık kabul tesisine (reception facility) verilir. Transfer ORB Part II'de uygun kod (Code J vb.) ile kayıt altına alınır ve makbuz saklanır.`,
           ],
           callouts: [
             {

@@ -38,7 +38,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Ekipman kullanımı",
           paragraphs: [
-            `Anchor windlass (ırgat), demiri kaldırıp indirir; chain stopper (devil's claw/guillotine), zinciri demir tutarken yükten kurtarır. Reis, bu ekipmanların doğru sırada ve güvenli kullanımını koordine eder. Windlass freni, brake holding ve clutch işlemleri kritik kontrol noktalarıdır.`,
+            `Anchor windlass (ırgat), demiri kaldırıp indirir; chain stopper (devil's claw/guillotine), demir tutarken zincir yükünü ırgattan alır. Reis, bu ekipmanların doğru sırada ve güvenli kullanımını koordine eder. Windlass freni, brake holding ve clutch işlemleri kritik kontrol noktalarıdır.`,
           ],
           bullets: [
             `Windlass fren ve clutch kontrolü`,
@@ -89,7 +89,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Sahadaki kritik kişi",
           paragraphs: [
-            `Demir tarama (dragging) veya acil demir tarama (emergency anchoring) durumunda Reis sahadaki en kritik kişidir; ekibi güvende tutarak hızlı ve doğru müdahaleyi koordine eder. Zincirde ani sarsıntı, beklenmedik yük veya kayma belirtisi derhal köprüüstüne bildirilir.`,
+            `Demir tarama (dragging) veya acil demirleme (emergency anchoring) durumunda Reis sahadaki en kritik kişidir; ekibi güvende tutarak hızlı ve doğru müdahaleyi koordine eder. Zincirde ani sarsıntı, beklenmedik yük veya kayma belirtisi derhal köprüüstüne bildirilir.`,
           ],
           callouts: [
             {

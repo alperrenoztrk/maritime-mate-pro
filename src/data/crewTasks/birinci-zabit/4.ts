@@ -93,7 +93,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Atmosfer testi ve havalandırma",
           paragraphs: [
-            `Kapalı alan girişi, ölümlerin en sık yaşandığı iş tipidir; kurbanların önemli kısmı kurtarmaya giren ikinci kişilerdir. Giriş öncesi kalibre çoklu gaz ölçer ile O2 (en az %19.5, en fazla %23.5), LEL/yanıcı gaz (%0 hedef), H2S ve CO ölçülür. Ölçüm, alanın farklı seviyelerinden (üst-orta-dip) yapılır çünkü gazlar yoğunluklarına göre tabakalanır.`,
+            `Kapalı alan girişi, ölümlerin en sık yaşandığı iş tipidir; kurbanların önemli kısmı kurtarmaya giren ikinci kişilerdir. Giriş öncesi kalibre çoklu gaz ölçer ile O2 (hacimce sabit %21), LEL/yanıcı gaz (%0 hedef), H2S ve CO ölçülür. Ölçüm, alanın farklı seviyelerinden (üst-orta-dip) yapılır çünkü gazlar yoğunluklarına göre tabakalanır.`,
             `Havalandırma sürekli çalışır; giriş boyunca atmosfer izlenir. Standby kişi giriş ağzında bekler, sürekli iletişim kurar ve asla pozisyonunu terk etmez. Rescue plan ve kurtarma ekipmanı (tripod, vinç, SCBA, resüsitasyon) hazır olmadan giriş yapılmaz.`,
           ],
           callouts: [
@@ -118,7 +118,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Designated vs non-designated alanlar",
           paragraphs: [
             `Hot work (kaynak, kesme, taşlama, açık alev), workshop gibi designated alanlarda standart kontrollerle yapılır. Designated olmayan alanda (özellikle tank, hold, akaryakıt bölgesi yakınında) çok daha sıkı izin gerekir; gas-free certificate, çevre tankların atmosfer kontrolü ve yangın nöbetçisi (fire watch) zorunludur.`,
-            `Tankerlerde hot work, hazardous zone dışında veya tamamen gas-free ve inert edilmiş koşullarda yapılır. Birinci Zabit, çalışma noktası çevresinde 30 m yarıçapta yanıcı kaynak olmadığını, kıvılcımın düşeceği alt güvertelerin korunduğunu ve yangın söndürme ekipmanının elde olduğunu doğrular.`,
+            `Tankerlerde hot work, hazardous zone dışında veya çalışma alanı tamamen gas-free, komşu kargo tankları ise inert ya da gas-free edilmiş koşullarda yapılır. Birinci Zabit, çalışma noktası çevresinde 30 m yarıçapta yanıcı kaynak olmadığını, kıvılcımın düşeceği alt güvertelerin korunduğunu ve yangın söndürme ekipmanının elde olduğunu doğrular.`,
           ],
           table: {
             caption: `Hot Work İzni — Zorunlu Kontroller`,

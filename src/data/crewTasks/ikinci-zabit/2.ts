@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 Dokuz haberleşme fonksiyonu",
           paragraphs: [
             `GMDSS, gemiyi tek bir cihaza değil dokuz temel haberleşme fonksiyonuna göre donatır: gemiden-sahile distress alerting, sahilden-gemiye distress alerting, gemiden-gemiye distress alerting, SAR koordinasyon haberleşmesi, on-scene haberleşme, locating sinyalleri (SART/RADAR transponder), Maritime Safety Information (MSI) yayını, genel haberleşme ve köprüüstü-köprüüstü haberleşme. İkinci Zabit, gemideki teçhizatın bu fonksiyonların tamamını sağladığını doğrular.`,
-            `Her fonksiyon için en az iki bağımsız yöntem (independent means) gerekir; tek bir cihazın arızası distress alerting kabiliyetini tümüyle ortadan kaldırmamalıdır. Bu redundancy ilkesi, GMDSS'in temel emniyet felsefesidir ve teçhizat envanterinin neden "fazlalıklı" göründüğünü açıklar.`,
+            `Gemiden karaya distress alert iletimi için en az iki ayrı ve bağımsız yöntem (independent means) gerekir; tek bir cihazın arızası distress alerting kabiliyetini tümüyle ortadan kaldırmamalıdır. Bu redundancy ilkesi, GMDSS'in temel emniyet felsefesidir ve teçhizat envanterinin neden "fazlalıklı" göründüğünü açıklar.`,
           ],
           callouts: [
             {
@@ -61,7 +61,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.1 MMSI, çağrı tipleri ve distress alert",
           paragraphs: [
             `DSC, her geminin benzersiz 9 haneli MMSI (Maritime Mobile Service Identity) numarasıyla kimliklendiği dijital çağrı sistemidir. Distress, urgency, safety ve routine çağrı tipleri vardır. Distress alert tek tuşla (korumalı kapaklı kırmızı distress butonu) gönderilir; gemi pozisyonu, MMSI ve mümkünse distress doğası (yangın, batma, çatışma vb.) otomatik iletilir.`,
-            `İkinci Zabit, MMSI'nin tüm DSC cihazlarına (VHF, MF/HF) ve EPIRB ile AIS-SART'a doğru programlandığını doğrular. Yanlış veya eksik MMSI, distress alert'in SAR otoritelerince doğru eşleştirilememesine yol açar.`,
+            `İkinci Zabit, MMSI'nin tüm DSC cihazlarına (VHF, MF/HF) ve MMSI ile kodlanmışsa EPIRB'e doğru programlandığını doğrular. Yanlış veya eksik MMSI, distress alert'in SAR otoritelerince doğru eşleştirilememesine yol açar.`,
           ],
           callouts: [
             {
@@ -93,7 +93,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Portable VHF (survival craft transceiver)",
           paragraphs: [
-            `SOLAS gemilerinde en az iki (1600 GT üzeri üç) adet su geçirmez taşınabilir VHF telsiz (survival craft two-way VHF) bulunur. Bunlar can filikasından on-scene haberleşme içindir. Birincil (primary) batarya mühürlü ve yalnız acil durum içindir; ayrı bir şarj edilebilir batarya rutin/test kullanımı içindir.`,
+            `SOLAS gemilerinde en az üç (300 GT ve üzeri, 500 GT altı yük gemilerinde en az iki) adet su geçirmez taşınabilir VHF telsiz (survival craft two-way VHF) bulunur. Bunlar can filikasından on-scene haberleşme içindir. Birincil (primary) batarya mühürlü ve yalnız acil durum içindir; ayrı bir şarj edilebilir batarya rutin/test kullanımı içindir.`,
             `İkinci Zabit, portable VHF'lerin aylık operasyonel testini yapar, primary batarya son kullanma tarihini izler ve cihazları boat station yakınında erişilebilir tutar.`,
           ],
           callouts: [
@@ -221,7 +221,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 Üç bağımsız güç kaynağı",
           paragraphs: [
-            `GMDSS teçhizatı; ana güç (ship's main), emergency power (emergency generator) ve reserve source of energy (battery) olmak üzere üç bağımsız kaynaktan beslenir. Reserve battery, jeneratör de durduğunda GMDSS'i belirli süre (gemi tipine göre 1 veya 6 saat) çalıştıracak kapasitede olmalıdır.`,
+            `GMDSS teçhizatı; ana güç (ship's main), emergency power (emergency generator) ve reserve source of energy (battery) olmak üzere üç bağımsız kaynaktan beslenir. Reserve battery, jeneratör de durduğunda GMDSS'i belirli süre (acil güç kaynağı telsiz tesisatını SOLAS II-1/42 veya 43'e tam uygun şekilde besliyorsa 1 saat, aksi hâlde 6 saat) çalıştıracak kapasitede olmalıdır.`,
             `İkinci Zabit, reserve battery'nin haftalık voltaj kontrolünü (hidrometre/voltmetre), aylık ölçümlerini ve yıllık kapasite (discharge) testini takip eder. Akü hücreleri korozyon, sıvı seviyesi (kurşun-asit ise) ve havalandırma açısından kontrol edilir.`,
           ],
           callouts: [

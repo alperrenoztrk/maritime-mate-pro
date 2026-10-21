@@ -145,7 +145,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 Emniyet cihazları ve drain disiplini",
           paragraphs: [
-            `Hava şişeleri ve kompresörler safety valve ile korunur; fusible plug (eriyen tapa) aşırı sıcaklıkta hava tahliyesi sağlar. Drain (su atma) düzenli yapılmazsa yoğuşan su korozyona ve yağ-su karışımı patlamasına neden olabilir. Stajyer drain rutininin önemini öğrenir.`,
+            `Hava şişeleri ve kompresörler safety valve ile korunur; fusible plug (eriyen tapa) aşırı sıcaklıkta hava tahliyesi sağlar. Drain (su atma) düzenli yapılmazsa yoğuşan su korozyona, biriken yağ ise hava hattında patlamaya neden olabilir. Stajyer drain rutininin önemini öğrenir.`,
           ],
           callouts: [
             {

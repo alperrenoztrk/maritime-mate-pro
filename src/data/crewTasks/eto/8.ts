@@ -200,7 +200,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 HVAC enerji verimliliği",
           paragraphs: [
-            `HVAC ve soğutma, gemi elektrik yükünün önemli bir kısmıdır. ETO; kompresör ve fanları VFD ile yük takipli çalıştırarak, kondenseri temiz tutarak (kötü ısı transferi enerjiyi artırır) ve set sıcaklıkları gereksiz düşük tutmayarak enerji tüketimini optimize eder. Bu, MARPOL Annex VI EEXI/CII verimlilik hedeflerine katkı sağlar.`,
+            `HVAC ve soğutma, gemi elektrik yükünün önemli bir kısmıdır. ETO; kompresör ve fanları VFD ile yük takipli çalıştırarak, kondenseri temiz tutarak (kötü ısı transferi enerjiyi artırır) ve set sıcaklıkları gereksiz düşük tutmayarak enerji tüketimini optimize eder. Bu, MARPOL Annex VI CII verimlilik hedeflerine katkı sağlar.`,
           ],
           callouts: [
             {

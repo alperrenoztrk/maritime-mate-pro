@@ -57,7 +57,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Halat tipleri ve seçimi",
           paragraphs: [
-            `Modern gemilerde HMPE (High Modulus Polyethylene — Dyneema/Spectra) ve karışık polyester/polyamid halatlar yaygındır. Steel wire + synthetic tail kombinasyonu özellikle tankerlerde kullanılır. Birinci Zabit, halatın MBL'sinin SDMBL'nin en az %100-105'i aralığında, tail'in ise ana line'dan zayıf (genelde MBL'nin %125-130'u) olmasını doğrular; böylece kopma kontrollü noktada gerçekleşir.`,
+            `Modern gemilerde HMPE (High Modulus Polyethylene — Dyneema/Spectra) ve karışık polyester/polyamid halatlar yaygındır. Steel wire + synthetic tail kombinasyonu özellikle tankerlerde kullanılır. Birinci Zabit, halatın MBL'sinin SDMBL'nin en az %100-105'i aralığında, tail'in ise ana line'dan güçlü (genelde SDMBL'nin %125-130'u) olmasını doğrular.`,
             `Halatlar düzenli olarak elden geçirilir: aşınma, çentik, glazing (ısı hasarı), iç lif kırılması ve UV degradasyonu kontrol edilir. MEG4 retirement kriterleri (residual strength %75 altına düşünce değişim) uygulanır. Yıpranmış halat snap-back riskini artırır.`,
           ],
           table: {

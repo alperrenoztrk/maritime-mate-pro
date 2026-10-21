@@ -39,7 +39,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.2 UMS / Attended Machinery Space farkı",
           paragraphs: [
             `Modern gemilerin çoğu UMS (Unattended Machinery Space) sertifikalıdır; makine dairesi gece dönemlerinde insansız kalabilir ve alarmlar köprüüstüne ve duty engineer'ın kabinine yönlendirilir. Stajyer, hem attended (insanlı) hem unattended dönemde makine dairesinin nasıl izlendiğini öğrenir.`,
-            `Attended dönemde fiziksel turlar ve sürekli gözlem esastır. UMS dönemde ise dead man alarm (engineer's call / personnel alarm) sistemi devreye girer; makine dairesine giren personel belirli aralıklarla butona basarak hayatta olduğunu bildirir. Stajyer bu sisteme aşina olmalı ve giriş-çıkış prosedürünü öğrenmelidir.`,
+            `Attended dönemde fiziksel turlar ve sürekli gözlem esastır. UMS dönemde ise dead man alarm (personnel alarm) sistemi devreye girer; makine dairesine giren personel belirli aralıklarla butona basarak hayatta olduğunu bildirir. Stajyer bu sisteme aşina olmalı ve giriş-çıkış prosedürünü öğrenmelidir.`,
           ],
           table: {
             caption: `Attended ve UMS Vardiya Modlarının Karşılaştırması`,
@@ -223,7 +223,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Tank seviyeleri ve sounding",
           paragraphs: [
-            `Stajyer; FO settling/service tank, DO tank, LO sump, fresh water, sea water expansion ve bilge holding tank seviyelerini hem uzaktan (remote level gauge) hem manuel (sounding pipe + tape) okumayı öğrenir. Manuel sounding, otomatik seviye göstergesi arızalandığında veya doğrulama gerektiğinde hayati öneme sahiptir.`,
+            `Stajyer; FO settling/service tank, DO tank, LO sump, fresh water, cooling water expansion ve bilge holding tank seviyelerini hem uzaktan (remote level gauge) hem manuel (sounding pipe + tape) okumayı öğrenir. Manuel sounding, otomatik seviye göstergesi arızalandığında veya doğrulama gerektiğinde hayati öneme sahiptir.`,
             `Tank seviyelerinin doğru takibi, makinenin yakıt/yağ beslemesinin kesintisiz olmasını ve overflow/spillage'ın önlenmesini sağlar. Stajyer, bir service tank seviyesinin neden belirli aralıkta tutulduğunu (settling süresi, water drain ihtiyacı) öğrenir.`,
           ],
         },
@@ -249,7 +249,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 Makine dairesinde kişisel emniyet",
           paragraphs: [
-            `Makine dairesi yüksek gürültü, sıcak yüzeyler, dönen ekipman ve kayma riski içeren bir ortamdır. Stajyer; emniyet ayakkabısı, baret, kulaklık (90 dB üstü zonlarda zorunlu), iş tulumu ve gerektiğinde göz/yüz koruması kullanır. Bol giysi, takı ve gevşek saç dönen parçalar için ölümcül risktir.`,
+            `Makine dairesi yüksek gürültü, sıcak yüzeyler, dönen ekipman ve kayma riski içeren bir ortamdır. Stajyer; emniyet ayakkabısı, baret, kulaklık (85 dB(A) üstü zonlarda zorunlu), iş tulumu ve gerektiğinde göz/yüz koruması kullanır. Bol giysi, takı ve gevşek saç dönen parçalar için ölümcül risktir.`,
             `Sıcak yüzeylere (egzoz manifoldu, buhar hattı) çıplak temas, dönen şaft/kaplin yakınında durma ve yağlı zeminde dikkatsiz hareket kaza nedenleridir. Stajyer "üç nokta teması" (three points of contact) ile merdiven kullanımı, doğru kaldırma tekniği ve acil durdurma butonlarının yerlerini öğrenir.`,
           ],
           bullets: [

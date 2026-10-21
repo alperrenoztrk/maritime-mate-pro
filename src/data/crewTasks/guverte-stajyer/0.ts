@@ -24,7 +24,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 Eğitim amaçlı katılımın çerçevesi",
           paragraphs: [
-            `Güverte stajyeri vardiya zabitinin gözetiminde köprüüstü nöbetine katılır; ancak bağımsız karar alma yetkisi yoktur. Stajyer, her durumda OOW'nin onayını alarak hareket eder. Bu hiyerarşi tesadüfi değildir: STCW VIII/2, vardiyadan sorumlu zabitin "geminin emniyetli seyrinden tek başına sorumlu olduğu" ilkesini koyar. Stajyer bu sorumluluğu paylaşamaz, ancak gözlem ve sınırlı pratik yoluyla bu sorumluluğa hazırlanır.`,
+            `Güverte stajyeri vardiya zabitinin gözetiminde köprüüstü nöbetine katılır; ancak bağımsız karar alma yetkisi yoktur. Stajyer, her durumda OOW'nin onayını alarak hareket eder. Bu hiyerarşi tesadüfi değildir: STCW VIII/2, vardiyadan sorumlu zabitin "geminin emniyetli seyrinden her zaman öncelikli olarak sorumlu olduğu" ilkesini koyar. Stajyer bu sorumluluğu paylaşamaz, ancak gözlem ve sınırlı pratik yoluyla bu sorumluluğa hazırlanır.`,
             `Stajyer köprüüstüne çıktığında ilk yapması gereken, OOW'ye katılım amacını bildirmek ve "extra lookout" olarak mı yoksa "training" amaçlı mı bulunduğunu netleştirmektir. Karanlık seyirde stajyer, OOW'nin gece görüşünü bozmamak için kırmızı aydınlatma kurallarına ve "lookout" disiplinine uyar. Görev devralma ve teslim (handover) süreçlerini baştan sona izlemek, stajyerin vardiya kültürünü öğrenmesinin temelidir.`,
           ],
           callouts: [
@@ -167,7 +167,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Sorumluluk durumları ve manevra kuralları",
           paragraphs: [
-            `Stajyer, COLREG'in en çok uygulanan kurallarını gerçek karşılaşmalarda gözlemler: head-on (Rule 14), crossing (Rule 15), overtaking (Rule 13) durumlarında hangi geminin "stand-on" (yol verecek olan değil, rotasını koruyacak olan) ve hangisinin "give-way" (yol veren) olduğunu öğrenir. Manevranın erken, belirgin ve yeterli olması (Rule 8) ilkesinin neden önemli olduğunu pratikte görür: küçük ve geç manevralar diğer gemi tarafından fark edilmeyebilir.`,
+            `Stajyer, COLREG'in en çok uygulanan kurallarını gerçek karşılaşmalarda gözlemler: head-on (Rule 14) durumunda her iki geminin de rotasını sancağa değiştirmesi gerektiğini; crossing (Rule 15) ve overtaking (Rule 13) durumlarında ise hangi geminin "stand-on" (yol verecek olan değil, rotasını koruyacak olan) ve hangisinin "give-way" (yol veren) olduğunu öğrenir. Manevranın erken, belirgin ve yeterli olması (Rule 8) ilkesinin neden önemli olduğunu pratikte görür: küçük ve geç manevralar diğer gemi tarafından fark edilmeyebilir.`,
             `Stajyer, "vessels in sight of one another" (Part B Section II) ile "restricted visibility" (Rule 19) kurallarının farklı olduğunu kavrar. Sınırlı görüşte stand-on/give-way ayrımı yoktur; her gemi güvenli hızla seyreder ve radar plotting'e göre çarpışmadan kaçınma manevrası yapar. Stajyer ayrıca dar kanal (Rule 9), trafik ayrım düzenleri (Rule 10) ve manevra kabiliyeti kısıtlı/komuta altında olmayan gemilerin önceliklerini (Rule 18) öğrenir.`,
           ],
           callouts: [
@@ -181,7 +181,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 Fenerler, şekiller ve ses işaretleri",
           paragraphs: [
-            `Stajyer, gece köprüüstü vardiyalarında diğer gemilerin fenerlerini (Part C) okuyarak gemi tipini, büyüklüğünü ve aspect'ini (geliş açısını) belirlemeyi öğrenir: yan fenerler (kırmızı iskele, yeşil sancak), pruva/kıç direk fenerleri, çekme/itme fenerleri, balıkçı, kılavuz ve manevra kısıtlı gemilerin özel fenerleri. Gündüz şekilleri (top, koni, silindir, bilye) ve sis/manevra ses işaretleri de pratik olarak tanınır.`,
+            `Stajyer, gece köprüüstü vardiyalarında diğer gemilerin fenerlerini (Part C) okuyarak gemi tipini, büyüklüğünü ve aspect'ini (geliş açısını) belirlemeyi öğrenir: yan fenerler (kırmızı iskele, yeşil sancak), pruva/kıç direk fenerleri, çekme/itme fenerleri, balıkçı, kılavuz ve manevra kısıtlı gemilerin özel fenerleri. Gündüz şekilleri (top, koni, silindir, baklava) ve sis/manevra ses işaretleri de pratik olarak tanınır.`,
           ],
         },
       ],

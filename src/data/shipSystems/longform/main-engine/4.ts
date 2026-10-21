@@ -19,7 +19,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "1.1 Dümen tipleri",
           paragraphs: [
-            `Dümen, dönme ekseni ile yüzey alanının dağılımına göre sınıflandırılır: dengeli (spade/balanced), yarı-dengeli (semi-balanced) ve dengesiz. Dengeli dümende eksen yüzeyi böler, böylece çevirme momenti (tork) azalır. Flap/Becker dümeni arka kanatçıkla yüksek yatma açısında ek kaldırma sağlar (yüksek manevra).`,
+            `Dümen, dönme ekseni ile yüzey alanının dağılımına göre sınıflandırılır: dengeli (spade/balanced), yarı-dengeli (semi-balanced) ve dengesiz. Dengeli dümende eksen yüzeyi böler, böylece çevirme momenti (tork) azalır. Flap/Becker dümeni arka kanatçıkla yüksek dümen açısında ek kaldırma sağlar (yüksek manevra).`,
           ],
           bullets: [
             `Spade (dengeli): düşük tork, yaygın`,

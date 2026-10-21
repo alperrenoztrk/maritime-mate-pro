@@ -62,7 +62,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.1 OWS çalışma prensibi ve 15 ppm alarm",
           paragraphs: [
             `OWS (genelde gravity coalescer + ikinci kademe filtre), bilge suyundan yağı ayırır. Çıkış suyu 15 ppm Oil Content Meter (OCM/oil monitor) ile sürekli ölçülür; 15 ppm aşıldığında three-way valve otomatik olarak suyu bilge tank'a geri yönlendirir (denize basamaz). Bu MEPC.107(49) standardının çekirdeğidir.`,
-            `Modern oil monitorlar tamper-proof (kayıt loglu, mühürlü) tasarlanmıştır; ne zaman, kaç ppm ile, ne kadar denize basıldığını kaydeder. Bu log, ORB ile çapraz kontrol edilir. Special area'larda (Akdeniz, Baltık, Karadeniz vb.) ve liman içinde denize basmak yasaktır.`,
+            `Modern oil monitorlar tamper-proof (kayıt loglu, mühürlü) tasarlanmıştır; ne zaman, kaç ppm ile, ne kadar denize basıldığını kaydeder. Bu log, ORB ile çapraz kontrol edilir. Special area'larda (Akdeniz, Baltık, Karadeniz vb.) yalnızca seyir halindeyken, 15 ppm alarmlı ve otomatik durdurmalı onaylı OWS ile ≤15 ppm deşarj yapılabilir; Antarktika bölgesinde ve liman içinde denize basmak yasaktır.`,
           ],
           callouts: [
             {

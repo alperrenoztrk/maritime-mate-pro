@@ -43,7 +43,7 @@ const content7: ContentMap = {
       title: "Dümen ve Güverte Makineleri Testi",
       introduction: "Seyir öncesi dümen makinesi ve güverte makinelerinin testi, SOLAS tarafından zorunlu kılınan güvenlik prosedürüdür.",
       sections: [
-        { heading: "Dümen Testi (SOLAS Reg. V/26)", paragraphs: ["1. Ana dümen makinesini çalıştır ve tam açıdan tam açıya (35° iskele → 35° sancak) 28 saniye içinde dönüş kontrolü yap.", "2. Yedek dümen makinesi testi: Çalıştırma ve dümen hareketi doğrulama.", "3. Uzaktan kontrol sistemi (köprüüstü ve acil dümen) testi.", "4. Dümen açı göstergesi senkronizasyon kontrolü.", "5. Telemotor sistemi seviye ve basınç kontrolü."] },
+        { heading: "Dümen Testi (SOLAS Reg. V/26)", paragraphs: ["1. Ana dümen makinesini çalıştır ve tam açıdan tam açıya (35° iskele → 35° sancak) dönüş kontrolü yap; 35° bir taraftan diğer tarafta 30°'ye dönüş 28 saniyeyi aşmamalıdır.", "2. Yedek dümen makinesi testi: Çalıştırma ve dümen hareketi doğrulama.", "3. Uzaktan kontrol sistemi (köprüüstü ve acil dümen) testi.", "4. Dümen açı göstergesi senkronizasyon kontrolü.", "5. Telemotor sistemi seviye ve basınç kontrolü."] },
         { heading: "Güverte Makineleri", paragraphs: ["Demir ırgadı: Fren testi, kavrama kontrolü.", "Mooring vinçleri: Çalıştırma ve fren testi.", "Kapak mekanizmaları: Açma/kapama ve sızdırmazlık kontrolü."] }
       ],
       keyPoints: ["Dümen testi her kalkış öncesinde yapılmalıdır.", "Test sonuçları köprüüstü seyir jurnalına kayıt edilir.", "Dümen arızası seyir güvenliğini doğrudan etkiler."]
@@ -71,7 +71,7 @@ const content7: ContentMap = {
       introduction: "Ana motor performansının sürekli izlenmesi, verim düşüşünün erken tespiti ve bakım planlaması için gereklidir.",
       sections: [
         { heading: "İzlenen Parametreler", paragraphs: [], table: { headers: ["Parametre", "Gösterge", "Sapma Anlamı"], rows: [["Egzoz sıcaklığı", "Yanma kalitesi", "Enjektör arızası, aşırı yük"], ["Scavenge basıncı", "Turboşarj verimi", "Filtre tıkanması, turbo fouling"], ["SFOC", "Yakıt verimi", "Yanma bozukluğu, ring aşınması"], ["Pmax / Pcomp", "Yanma basıncı", "Enjeksiyon zamanlaması"], ["Turboşarj devri", "Hava besleme", "Fouling, yatak aşınması"], ["Soğutma suyu ΔT", "Isı transferi", "Fouling, su sızıntısı"]] } },
-        { heading: "Trend Analizi", paragraphs: ["Performans parametreleri günlük olarak kaydedilir ve referans değerlerle karşılaştırılır. Kademeli sapma fouling veya aşınmayı, ani sapma ise arızayı gösterir.", "Modern motorlarda elektronik performans izleme sistemi (PMI – Pressure Mean Indication) otomatik analiz sunar."] }
+        { heading: "Trend Analizi", paragraphs: ["Performans parametreleri günlük olarak kaydedilir ve referans değerlerle karşılaştırılır. Kademeli sapma fouling veya aşınmayı, ani sapma ise arızayı gösterir.", "Modern motorlarda elektronik performans izleme sistemi (PMI) otomatik analiz sunar."] }
       ],
       keyPoints: ["Performans izleme yakıt maliyetini optimize eder.", "Silindir bazında karşılaştırma dengesizliği tespit eder.", "ISO düzeltmesi referans koşullarda karşılaştırma sağlar."]
     },
@@ -350,7 +350,7 @@ const content7: ContentMap = {
       title: "Takım Oluşturma ve Rol Dağılımı",
       introduction: "Etkili takım çalışması, her üyenin rolünün net olması ve takımın ortak hedefe yönelmesini gerektirir.",
       sections: [
-        { heading: "Takım Aşamaları (Tuckman)", paragraphs: ["Forming (oluşum): Tanışma, keşif. Grounding (çatışma): Rol çakışmaları. Norming (normalleşme): Uzlaşma, kurallar. Performing (performans): Verimli çalışma."] },
+        { heading: "Takım Aşamaları (Tuckman)", paragraphs: ["Forming (oluşum): Tanışma, keşif. Storming (çatışma): Rol çakışmaları. Norming (normalleşme): Uzlaşma, kurallar. Performing (performans): Verimli çalışma."] },
         { heading: "Makine Dairesi Rol Dağılımı", paragraphs: [], table: { headers: ["Rol", "Sorumluluk"], rows: [["Baş mühendis", "Genel sorumluluk, planlama, klas ilişkileri"], ["2. mühendis", "Ana motor bakımı, günlük operasyon"], ["3. mühendis", "Yardımcı motorlar, jeneratör, elektrik"], ["4. mühendis", "Purifier, kompresör, kazan, evaporatör"], ["Vardiya zabiti", "Nöbet, izleme, alarm müdahale"], ["Usta/Motorman", "Bakım işçiliği, operasyonel destek"]] } }
       ],
       keyPoints: ["Net rol tanımları sorumluluk karışıklığını önler.", "Yeni mürettebat için oryantasyon programı uygulanmalıdır.", "Küçük ekiplerde çoklu görev (multi-tasking) stres yaratabilir."]
@@ -405,7 +405,7 @@ const content7: ContentMap = {
       introduction: "Blackout olayları, geminin tamamen elektriksiz kalmasına neden olan ve seyir güvenliğini ciddi şekilde tehlikeye atan durumlardır.",
       sections: [
         { heading: "Yaygın Kök Nedenler", paragraphs: [], table: { headers: ["Senaryo", "Kök Neden", "Önlem"], rows: [["Aşırı yük", "Büyük motorun ani yol alması", "PMS yük sıralaması"], ["Yakıt kesintisi", "Yakıt filtre tıkanması, hava girişi", "Filtre bakımı, tank tahliyesi"], ["Governor arızası", "Hız kontrolü kaybı, overspeed", "Periyodik governor testi"], ["Soğutma arızası", "HT sıcaklık aşımı → shutdown", "Soğutma sistemi bakımı"], ["Kısa devre", "Kablo hasarı, nem", "İnsülasyon izleme"]] } },
-        { heading: "Blackout Kurtarma", paragraphs: ["Prosedür: Acil jeneratör → neden tespiti → bir jeneratörü başlat → kritik yükleri sırayla al → ana makineyi başlat.", "Blackout tatbikatı SOLAS gereği düzenli olarak yapılmalıdır."] }
+        { heading: "Blackout Kurtarma", paragraphs: ["Prosedür: Acil jeneratör → neden tespiti → bir jeneratörü başlat → kritik yükleri sırayla al → ana makineyi başlat.", "Blackout tatbikatı ISM Code (SMS) gereği düzenli olarak yapılmalıdır."] }
       ],
       keyPoints: ["Preferential trip sistemi büyük yükleri keserek blackout'u önler.", "Blackout kurtarma süresi minimum tutulmalıdır.", "Her blackout olayı detaylı rapor ve analiz gerektirir."]
     },
@@ -716,7 +716,7 @@ const content7: ContentMap = {
       title: "IMO DCS (Veri Toplama Sistemi)",
       introduction: "IMO Data Collection System (DCS), 5000 GT ve üzeri gemilerin yakıt tüketimi verilerini yıllık olarak raporlamasını zorunlu kılan sistemdir.",
       sections: [
-        { heading: "Gereklilikler", paragraphs: ["MARPOL Annex VI Reg. 22A kapsamında 2019'dan itibaren yürürlüktedir. Gemiler yıllık yakıt tüketimini, seyir mesafesini ve denizde geçirilen saatleri raporlar.", "Veriler bayrak devletine sunulur ve IMO GISIS veritabanında anonimleştirilerek yayınlanır."] },
+        { heading: "Gereklilikler", paragraphs: ["MARPOL Annex VI Reg. 27 (eski Reg. 22A) kapsamında 2019'dan itibaren uygulanmaktadır. Gemiler yıllık yakıt tüketimini, seyir mesafesini ve denizde geçirilen saatleri raporlar.", "Veriler bayrak devletine sunulur ve IMO GISIS veritabanında anonimleştirilerek yayınlanır."] },
         { heading: "Raporlama Süreci", paragraphs: ["1. SEEMP Part II'de veri toplama yöntemi tanımlanır.", "2. Yıl boyunca yakıt tüketimi ve seyir verileri toplanır.", "3. Yıl sonunda rapor bayrak devletine sunulur.", "4. Doğrulama sonrası SoC (Statement of Compliance) düzenlenir."] }
       ],
       keyPoints: ["DCS verileri CII hesaplamasının temelini oluşturur.", "Veri doğruluğu denetim ve ceza riski açısından kritiktir.", "BDN ve flowmetre verileri DCS raporlamasında kullanılır."]
@@ -726,7 +726,7 @@ const content7: ContentMap = {
       introduction: "EU MRV (Monitoring, Reporting and Verification), AB limanlarına uğrayan 5000 GT üzeri gemilerin CO₂ emisyonlarını izleme ve raporlama yükümlülüğüdür.",
       sections: [
         { heading: "Kapsam", paragraphs: ["AB limanları arasındaki seferlerde ve AB limanına gelen/giden seferlerin AB liman payında (%50) emisyon raporlaması yapılır.", "IMO DCS'den farklı olarak AB limanlı seferler bazında detaylı raporlama gerektirir."] },
-        { heading: "Raporlama", paragraphs: ["Yıllık emisyon raporu akredite doğrulayıcı (verifier) tarafından doğrulanır. Uyumsuzluk durumunda gemi AB limanlarından alıkonulabilir."] }
+        { heading: "Raporlama", paragraphs: ["Yıllık emisyon raporu akredite doğrulayıcı (verifier) tarafından doğrulanır. Uyumsuzluk durumunda yaptırım uygulanır; art arda iki veya daha fazla raporlama döneminde yükümlülüklerini yerine getirmeyen gemiye giriş yasağı (expulsion order) verilebilir ve bayrak devleti dışındaki AB üye devletleri gemiyi limanlarına kabul etmez."] }
       ],
       keyPoints: ["EU MRV ve IMO DCS paralel olarak uygulanır.", "2024'ten itibaren EU ETS ile entegre edilmiştir.", "Rapor doğrulaması bağımsız ve akredite kuruluş tarafından yapılır."]
     },
@@ -735,7 +735,7 @@ const content7: ContentMap = {
       introduction: "AB Emisyon Ticaret Sistemi, 2024'ten itibaren denizcilik sektörünü kapsayan ve CO₂ emisyonları için karbon fiyatı uygulayan piyasa mekanizmasıdır.",
       sections: [
         { heading: "Uygulama", paragraphs: ["5000 GT üzeri gemiler, AB limanları arasındaki seferlerin %100'ü ve AB-dışı seferlerin %50'si için emisyon hakkı (allowance) satın almak zorundadır.", "Kademeli geçiş: 2024'te %40, 2025'te %70, 2026'da %100 emisyon karşılığı ödeme."] },
-        { heading: "Maliyet Etkisi", paragraphs: ["Karbon fiyatı dalgalanır; 2024 başı itibarıyla yaklaşık 60-90 €/ton CO₂ aralığındadır. Bu fiyat yakıt maliyetine ton başına 180-280 $/ton ek yük getirir (HFO bazında)."], example: { problem: "Yılda 10000 ton HFO tüketen bir gemi, AB seferlerinden 25000 ton CO₂ emisyonu üretiyorsa ve karbon fiyatı 80 €/ton ise yıllık ek maliyeti hesaplayınız (2025, %70 oran).", steps: ["Karşılanacak emisyon = 25000 × 0.70 = 17500 ton CO₂", "Ek maliyet = 17500 × 80 = 1 400 000 €"], result: "Annual additional carbon cost is 1.4 million Euro." } }
+        { heading: "Maliyet Etkisi", paragraphs: ["Karbon fiyatı dalgalanır; 2024 başı itibarıyla yaklaşık 60-90 €/ton CO₂ aralığındadır. Bu fiyat yakıt maliyetine ton başına 187-280 €/ton ek yük getirir (HFO bazında, emisyonların %100'ü kapsamdaysa)."], example: { problem: "Yılda 10000 ton HFO tüketen bir gemi, AB seferlerinden 25000 ton CO₂ emisyonu üretiyorsa ve karbon fiyatı 80 €/ton ise yıllık ek maliyeti hesaplayınız (2025, %70 oran).", steps: ["Karşılanacak emisyon = 25000 × 0.70 = 17500 ton CO₂", "Ek maliyet = 17500 × 80 = 1 400 000 €"], result: "Annual additional carbon cost is 1.4 million Euro." } }
       ],
       keyPoints: ["EU ETS denizcilik maliyetlerini önemli ölçüde artırmaktadır.", "Verimlilik önlemleri karbon maliyetini doğrudan azaltır.", "Alternatif yakıtlar (LNG, metanol, amonyak) karbon maliyetini düşürebilir."]
     },
@@ -743,7 +743,7 @@ const content7: ContentMap = {
       title: "Yakıt Tüketimi Veri Doğrulama",
       introduction: "Raporlanan yakıt tüketimi verilerinin doğruluğu, CII derecelendirmesi, EU ETS maliyeti ve düzenleyici uyum açısından kritik önemdedir.",
       sections: [
-        { heading: "Doğrulama Yöntemleri", paragraphs: ["BDN doğrulaması: Bunker Delivery Note miktarları ile tank ölçümleri karşılaştırılır.", "Flowmetre kalibrasyonu: Periyodik kalibrasyon sertifikaları kontrol edilir.", "Kütle dengesi: Alınan yakıt − ROB − tüketim = sıfır olmalıdır (tolerans dahilinde).", "Cross-check: SFOC × güç × süre hesabı ile ölçülen tüketim karşılaştırılır."] },
+        { heading: "Doğrulama Yöntemleri", paragraphs: ["BDN doğrulaması: Bunker Delivery Note miktarları ile tank ölçümleri karşılaştırılır.", "Flowmetre kalibrasyonu: Periyodik kalibrasyon sertifikaları kontrol edilir.", "Kütle dengesi: ROB (başlangıç) + alınan yakıt − tüketim − ROB (son) = sıfır olmalıdır (tolerans dahilinde).", "Cross-check: SFOC × güç × süre hesabı ile ölçülen tüketim karşılaştırılır."] },
         { heading: "Denetim", paragraphs: ["Bayrak devleti veya akredite doğrulayıcı, DCS ve MRV raporlarını denetler. Uyumsuzluk: eksik veri, tutarsız rakamlar veya belge eksikliği durumunda gemi SoC alamaz."] }
       ],
       keyPoints: ["Veri bütünlüğü güvenilir CII değerlendirmesinin ön koşuludur.", "Dijital veri toplama insan hatasını azaltır.", "Flowmetre arızası durumunda yedek hesap yöntemi belgelenmiş olmalıdır."]

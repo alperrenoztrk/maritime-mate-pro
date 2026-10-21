@@ -190,7 +190,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Atmosfer testi ve giriş izni",
           paragraphs: [
-            `Sintine kuyusu, çift dip tank, kofferdam, sludge tank, boiler ve benzeri kapalı alanlar; oksijen eksikliği, zehirli gaz (H₂S, CO) ve yanıcı gaz biriktirebilir. Bu alanlara giriş, yalnızca kalibre cihazla atmosfer testi yapılıp giriş izni (entry permit) düzenlendikten sonra yapılır: O₂ %20.9 normal/min %19.5, LEL %0, toksik gazlar sınır altı.`,
+            `Sintine kuyusu, çift dip tank, kofferdam, sludge tank, boiler ve benzeri kapalı alanlar; oksijen eksikliği, zehirli gaz (H₂S, CO) ve yanıcı gaz biriktirebilir. Bu alanlara giriş, yalnızca kalibre cihazla atmosfer testi yapılıp giriş izni (entry permit) düzenlendikten sonra yapılır.`,
             `Yağcı, "sadece bir bakayım" diyerek izinsiz kapalı alana asla girmez. Tarihteki çok sayıda ölüm, izinsiz giren bir kişiyi kurtarmaya koşan ikinci/üçüncü kişinin de aynı atmosferde boğulmasıyla yaşanmıştır. Havalandırma sürekli çalıştırılır ve ölçüm giriş boyunca tekrarlanır.`,
           ],
           callouts: [
@@ -205,7 +205,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.2 Standby kişi, rescue plan ve iletişim",
           paragraphs: [
             `Her kapalı alan girişinde dışarıda bir standby kişi bulunur; içeridekiyle sürekli iletişim kurar, lifeline tutar ve acil durumda alarm verip kurtarmayı başlatır. Rescue plan önceden hazırlanır: kurtarma ekipmanı (tripod, vinç, harness, SCBA) hazır, kurtarma yolu açık tutulur.`,
-            `Yağcı, kapalı alanda çalışırken zaman sınırını, kaçış yolunu ve iletişim sinyallerini bilir. Gaz alarmı çaldığında veya kendini kötü hissettiğinde derhal çıkar; tereddüt etmez. SOLAS III/19.3.3 kapsamında en az iki ayda bir yapılan kapalı alan giriş ve kurtarma tatbikatı bu becerileri canlı tutar.`,
+            `Yağcı, kapalı alanda çalışırken zaman sınırını, kaçış yolunu ve iletişim sinyallerini bilir. Gaz alarmı çaldığında veya kendini kötü hissettiğinde derhal çıkar; tereddüt etmez. SOLAS III/19 kapsamında en az iki ayda bir yapılan kapalı alan giriş ve kurtarma tatbikatı bu becerileri canlı tutar.`,
           ],
           callouts: [
             {
@@ -249,7 +249,7 @@ const content: CrewTaskLongForm = {
           subheading: "8.1 Yorgunluk ve dinlenme",
           paragraphs: [
             `Yorgunluk, dikkat ve refleksi düşürerek kaza riskini artırır. STCW A-VIII/1 ve MLC 2006, asgari dinlenme saatlerini (24 saatte en az 10 saat, 7 günde en az 77 saat) zorunlu kılar. Yağcı, yorgun olduğunda kritik/yüksek riskli işe başlamaz ve durumu mühendise bildirir.`,
-            `Uzun bakım vardiyaları, gece çalışmaları ve liman yoğunluğu yorgunluğu artırır. İnsan faktörü kazalarının büyük kısmı "acele, dikkatsizlik, alışkanlık körlüğü ve yorgunluk" üçgeninden çıkar. Güvenlik kültürü, "hızlı bitirme" baskısına karşı "doğru ve güvenli yapma" disiplinidir.`,
+            `Uzun bakım vardiyaları, gece çalışmaları ve liman yoğunluğu yorgunluğu artırır. İnsan faktörü kazalarının büyük kısmı "acele, dikkatsizlik, alışkanlık körlüğü ve yorgunluk" dörtlüsünden çıkar. Güvenlik kültürü, "hızlı bitirme" baskısına karşı "doğru ve güvenli yapma" disiplinidir.`,
           ],
         },
         {

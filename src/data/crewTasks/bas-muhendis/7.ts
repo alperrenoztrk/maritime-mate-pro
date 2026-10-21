@@ -193,7 +193,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 TMSA element 8 ve 9",
           paragraphs: [
-            `TMSA Element 8 (Engine Room and Cargo Control Room Operations) ve Element 9 (General Environmental Management) makine departmanını doğrudan ilgilendirir. Baş Mühendis, bu elementlerin KPI ve best practice gerekliliklerini gemi düzeyinde karşılar.`,
+            `TMSA'nın engine room operations ve environmental management ile ilgili elementleri makine departmanını doğrudan ilgilendirir. Baş Mühendis, bu elementlerin KPI ve best practice gerekliliklerini gemi düzeyinde karşılar.`,
             `Energy management, emisyon takibi (EEXI/CII), kritik ekipman güvenilirliği ve sürekli iyileştirme bu elementlerin temel beklentileridir ve dökümante edilmelidir.`,
           ],
         },

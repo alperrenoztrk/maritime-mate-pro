@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Karşılıklı doğrulama",
           paragraphs: [
-            `SSSCL, "ben doldurdum" değil "birlikte doğruladık" mantığıyla çalışır. Her madde fiziksel olarak kontrol edilir; A (anlaşma), P (kontrol edildi), R (tekrarlanan) kodlarıyla işaretlenir.`,
+            `SSSCL, "ben doldurdum" değil "birlikte doğruladık" mantığıyla çalışır. Her madde fiziksel olarak kontrol edilir; A (anlaşma), P (izin), R (tekrar kontrol) kodlarıyla işaretlenir.`,
           ],
           bullets: [
             `Her madde fiziksel doğrulama`,

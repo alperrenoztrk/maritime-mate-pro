@@ -154,7 +154,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.1 Yüzey hazırlığı ve boya rejimi",
           paragraphs: [
             `Korozyon yönetimi, güverte bakımının en büyük iş kalemidir. Doğru sıra; mekanik raspa/needle gun → wire brush → solvent temizliği → primer → ara kat → son kat. Boya üreticisinin data sheet'indeki nem, yüzey sıcaklığı (dew point + en az 3°C üzeri) ve film kalınlığı (DFT) şartlarına uyulur; aksi halde boya tutmaz.`,
-            `Ballast tank ve void space'lerde PSPC (Performance Standard for Protective Coatings, SOLAS II-1/3-2) uygulanır; coating condition GOOD/FAIR/POOR olarak değerlendirilir ve survey'de kayıt istenir.`,
+            `Dedicated seawater ballast tank'larda (ve 150 m ve üzeri bulk carrier'ların double-side skin space'lerinde) PSPC (Performance Standard for Protective Coatings, SOLAS II-1/3-2) uygulanır; coating condition GOOD/FAIR/POOR olarak değerlendirilir ve survey'de kayıt istenir.`,
           ],
           table: {
             caption: `Boya Uygulama Çevresel Limitleri (Tipik)`,

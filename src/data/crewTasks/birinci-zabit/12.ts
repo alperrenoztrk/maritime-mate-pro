@@ -24,7 +24,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 CSM'in zorunluluğu ve içeriği",
           paragraphs: [
-            `SOLAS VI/5.6 ve VII, standart konteyner dışındaki tüm yüklerin gemiye özgü, idare/klas onaylı bir Cargo Securing Manual'e göre istiflenip bağlanmasını zorunlu kılar. CSM; geminin lashing ekipmanı envanterini, her ekipmanın MSL (Maximum Securing Load) değerini, onaylı lashing pattern'leri, securing device yerleşim planlarını ve hesap yöntemlerini içerir. MSC.1/Circ.1353 hazırlık kılavuzudur.`,
+            `SOLAS VI/5.6 ve VII, konteynerler dahil tüm yük birimlerinin (cargo units) gemiye özgü, idare/klas onaylı bir Cargo Securing Manual'e göre istiflenip bağlanmasını zorunlu kılar. CSM; geminin lashing ekipmanı envanterini, her ekipmanın MSL (Maximum Securing Load) değerini, onaylı lashing pattern'leri, securing device yerleşim planlarını ve hesap yöntemlerini içerir. MSC.1/Circ.1353 hazırlık kılavuzudur.`,
             `CSM gemiye özeldir; başka geminin manuali kullanılamaz. Birinci Zabit, CSM'in güncel, onaylı ve gemide bulunduğundan emin olur; ekipman değişikliği olursa manuel revize edilir. CSM'e uyulmaması hem PSC bulgusu hem de kaza durumunda hukuki sorumluluk doğurur.`,
           ],
           callouts: [
@@ -190,7 +190,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Lashing tightness ve sefer içi kontrol",
           paragraphs: [
-            `Lashing zamanla gevşeyebilir (settling, vibrasyon, sıcaklık değişimi). Birinci Zabit, güvenli koşullarda lashing tightness kontrolü ve yeniden sıkma yapılmasını planlar. Ağır hava öncesi lashing yeniden değerlendirilir ve sıkılır; deniz tutması başladıktan sonra güvertede çalışmak tehlikelidir, bu yüzden kontroller önceden tamamlanır.`,
+            `Lashing zamanla gevşeyebilir (settling, vibrasyon, sıcaklık değişimi). Birinci Zabit, güvenli koşullarda lashing tightness kontrolü ve yeniden sıkma yapılmasını planlar. Ağır hava öncesi lashing yeniden değerlendirilir ve sıkılır; ağır deniz başladıktan sonra güvertede çalışmak tehlikelidir, bu yüzden kontroller önceden tamamlanır.`,
           ],
         },
         {

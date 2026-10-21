@@ -98,7 +98,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.2 Sintine temizliği ve emniyetli çalışma",
           paragraphs: [
             `Periyodik sintine temizliği planlanır; sıyrılan yağ uygun sludge/bilge holding tankına aktarılır. Sintine altı çalışmaları çoğu zaman kapalı/dar alan riski (düşük O2, hidrokarbon buharı) taşır; gaz ölçümü, havalandırma ve gerektiğinde permit uygulanır.`,
-            `Temizlik sonrası sintine kuru ve yüzey çıplak metal olarak tutulur; böylece yeni bir sızıntı anında görünür hâle gelir. Boyalı/temiz bir sintine, denetçiye olduğu kadar mürettebata da erken uyarı verir.`,
+            `Temizlik sonrası sintine kuru tutulur; böylece yeni bir sızıntı anında görünür hâle gelir. Boyalı/temiz bir sintine, denetçiye olduğu kadar mürettebata da erken uyarı verir.`,
           ],
         },
       ],

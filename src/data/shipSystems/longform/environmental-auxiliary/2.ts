@@ -49,7 +49,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "2.1 Deşarj ve mesafe",
           paragraphs: [
-            `Arıtılmış atık su, onaylı STP ile ve gemi belirli hızdayken (en route) kriterlere uygun deşarj edilebilir. Öğütülmüş/dezenfekte atık kıyıdan ≥3 deniz mili, öğütülmemiş atık ≥12 deniz mili uzakta verilir. Liman/özel alanda deşarj genelde yasak; atık tanklanır veya kıyı tesisine verilir.`,
+            `Arıtılmış atık su, onaylı STP ile kriterlere uygun deşarj edilebilir; bunun için mesafe veya hız şartı yoktur. Öğütülmüş/dezenfekte atık kıyıdan >3 deniz mili, öğütülmemiş atık >12 deniz mili uzakta verilir; tanktan deşarj gemi en az 4 knot hızla seyirdeyken (en route) ve ölçülü debiyle yapılır. Limanda ve özel alanda (Baltık; yolcu gemileri) deşarj kısıtlıdır; atık tanklanır veya kıyı tesisine verilir.`,
           ],
           table: {
             headers: ["Atık durumu", "Mesafe"],

@@ -99,7 +99,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "4.2 Silindir yağlaması ve emisyon",
           paragraphs: [
-            `Silindir yağı, gömleğe ölçülü dozlarla (cylinder lubricators / Alpha lubrication) verilir; yakıt kükürdünü nötralize etmek için yağın baz sayısı (BN) yakıt kükürdüne göre seçilir. MARPOL Annex VI Tier III bölgelerinde NOx için EGR veya SCR; SOx için düşük kükürtlü yakıt veya scrubber kullanılır.`,
+            `Silindir yağı, gömleğe ölçülü dozlarla (cylinder lubricators / Alpha lubrication) verilir; yakıt kükürdünü nötralize etmek için yağın baz sayısı (BN) yakıt kükürdüne göre seçilir. MARPOL Annex VI kapsamında Tier III'ün uygulandığı NOx ECA'larda NOx için EGR veya SCR; SOx sınırları (küresel %0,50, SECA'da %0,10) için ise düşük kükürtlü yakıt veya scrubber kullanılır.`,
           ],
           bullets: [
             `Düşük kükürtlü yakıtta düşük BN yağ (aşırı baz birikimini önle)`,

@@ -69,7 +69,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 Eğilim (trend) izleme ve erken uyarı",
           paragraphs: [
-            `Tek bir okuma değil, zaman içindeki eğilim önemlidir. Bir silindirin exhaust sıcaklığının diğerlerine göre yavaşça yükselmesi yakıt valfi/injektör sorununa; jacket cooling water sıcaklığının kademeli artışı tıkalı kı’ler veya termostat sorununa; LO basıncının yavaş düşüşü filtre tıkanmasına veya pompa aşınmasına işaret eder.`,
+            `Tek bir okuma değil, zaman içindeki eğilim önemlidir. Bir silindirin exhaust sıcaklığının diğerlerine göre yavaşça yükselmesi yakıt valfi/injektör sorununa; jacket cooling water sıcaklığının kademeli artışı kirlenmiş/tıkalı soğutucu (cooler) veya termostat sorununa; LO basıncının yavaş düşüşü filtre tıkanmasına veya pompa aşınmasına işaret eder.`,
             `Üçüncü/Dördüncü Mühendis bu eğilimleri logbook'taki ardışık kayıtlardan ve alarm/monitoring sistemi trend ekranlarından takip eder. Eğilim limitlere yaklaşırken erken müdahale, ani trip ve büyük arızadan korur.`,
           ],
           callouts: [
@@ -88,7 +88,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Silindir bazlı performans",
           paragraphs: [
-            `Her silindir için exhaust gas temperature, peak pressure (Pmax) ve compression pressure izlenir. Silindirler arası exhaust sıcaklık farkının normalde ±%5 (yaklaşık 30-50°C) bandını aşmaması beklenir. Aşırı yüksek bir silindir aşırı yakıt/geç yanma, düşük silindir ise injektör arızası veya yakıt valfi sıkışmasına işaret edebilir.`,
+            `Her silindir için exhaust gas temperature, peak pressure (Pmax) ve compression pressure izlenir. Silindirler arası exhaust sıcaklık farkının normalde üreticinin belirttiği sınırı aşmaması beklenir. Aşırı yüksek bir silindir aşırı yakıt/geç yanma, düşük silindir ise injektör arızası veya yakıt valfi sıkışmasına işaret edebilir.`,
             `Scavenge air pressure, turbocharger rpm ve scavenge sıcaklığı turboşarjer ve hava sisteminin sağlığını gösterir. Scavenge box sıcaklığında ani yükseliş, scavenge fire (yağ birikimi tutuşması) habercisidir ve derhal müdahale gerektirir.`,
           ],
           table: {
@@ -210,7 +210,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Alarm önceliklendirme",
           paragraphs: [
-            `Alarm çaldığında mühendis önce alarmı tanır (acknowledge), sebebini araştırır, ardından gerekirse müdahale eder — kör bir şekilde reset etmez. Kritik alarmlar (LO low pressure, jacket water high temp, oil mist high, bilge high level) ana makine slowdown/shutdown tetikleyebilir; bu durumda köprüüstü derhal bilgilendirilir.`,
+            `Alarm çaldığında mühendis önce alarmı tanır (acknowledge), sebebini araştırır, ardından gerekirse müdahale eder — kör bir şekilde reset etmez. Kritik alarmlar (LO low pressure, jacket water high temp, oil mist high) ana makine slowdown/shutdown tetikleyebilir; bu durumda köprüüstü derhal bilgilendirilir.`,
             `Birden çok alarm aynı anda çalarsa kök neden aranır; örneğin blackout sonrası onlarca alarm tek bir elektrik kaybından kaynaklanabilir. Mühendis paniğe değil, sistematik teşhise yönelir.`,
           ],
         },

@@ -20,7 +20,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 Görünmez tehlike",
           paragraphs: [
-            `Kapalı mekânlardaki tehlike görünmez ve kokusuzdur: oksijen yetersizliği, zehirli gaz (H2S, CO) veya yanıcı gaz birikimi. İnsan, düşük oksijende uyarı almadan saniyeler içinde bilincini kaybeder. Bu yüzden "iyi görünen" bir tank bile ölümcül olabilir; giriş yalnızca test ve izinle yapılır.`,
+            `Kapalı mekânlardaki tehlike görünmezdir ve koku ile her zaman fark edilemez: oksijen yetersizliği, zehirli gaz (H2S, CO) veya yanıcı gaz birikimi. İnsan, düşük oksijende uyarı almadan saniyeler içinde bilincini kaybedebilir. Bu yüzden "iyi görünen" bir tank bile ölümcül olabilir; giriş yalnızca test ve izinle yapılır.`,
           ],
           callouts: [
             {
@@ -107,7 +107,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Enclosed space rescue drill",
           paragraphs: [
-            `SOLAS III/19.3.3, giriş veya kurtarma görevi bulunan personel için en az iki ayda bir enclosed space entry ve rescue drill zorunlu kılar. Reis, ekibin gerçekçi kurtarma senaryosunu tatbik etmesini sağlar; çünkü gerçek bir olayda doğru ve hızlı kurtarma ancak tatbik edilmiş bir refleksle mümkündür.`,
+            `SOLAS III/19, giriş veya kurtarma görevi bulunan personel için en az iki ayda bir enclosed space entry ve rescue drill zorunlu kılar. Reis, ekibin gerçekçi kurtarma senaryosunu tatbik etmesini sağlar; çünkü gerçek bir olayda doğru ve hızlı kurtarma ancak tatbik edilmiş bir refleksle mümkündür.`,
           ],
         },
       ],

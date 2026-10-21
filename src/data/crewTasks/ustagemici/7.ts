@@ -74,7 +74,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 Atmosfer testi ve sürekli izleme",
           paragraphs: [
-            `Giriş öncesi ve giriş süresince atmosfer; oksijen (%20.9 normal, %19.5 altı tehlikeli, %5'ten düşük O₂ ölümcül), yanıcı gaz (LEL — Lower Explosive Limit, genelde %1 LEL'in altı hedef), zehirli gaz (H₂S, CO ppm) açısından kalibreli çok-gazlı dedektörle ölçülür. Test farklı seviyelerden (üst-orta-alt) yapılır çünkü bazı gazlar tabanda, bazıları tavanda birikir.`,
+            `Giriş öncesi ve giriş süresince atmosfer; oksijen (giriş için normal havadaki seviye, yani hacmen yaklaşık %21 [cihazda %20.9] olmalı; daha düşük oksijen uyarısız bilinç kaybına ve ölüme yol açabilir), yanıcı gaz (LEL — Lower Explosive Limit, genelde %1 LEL'in altı hedef), zehirli gaz (H₂S, CO ppm) açısından kalibreli çok-gazlı dedektörle ölçülür. Test farklı seviyelerden (üst-orta-alt) yapılır çünkü bazı gazlar tabanda, bazıları tavanda birikir.`,
             `AB, atmosfer ölçüm cihazını (multi-gas detector / personal monitor) kullanmayı, kalibrasyon ve bump-test mantığını ve alarm anlamlarını bilmelidir. Giren personel kişisel monitör taşır; alarm çalarsa derhal çıkar. Standby AB, atmosfer değerlerini izler ve bozulma belirtisinde girişi durdurur. Atmosfer "bir kez ölçülüp unutulan" değil, sürekli izlenen bir parametredir.`,
           ],
           table: {

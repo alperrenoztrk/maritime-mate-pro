@@ -131,7 +131,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Abort point ve point of no return",
           paragraphs: [
             `Abort point; geminin kanaldan/yanaşmadan vazgeçip güvenli su veya açık denize dönebileceği son fiziksel noktadır. Bu noktadan sonra dönüş alanı veya derinlik yetersiz kalır. İkinci Zabit, abort point'i manevra karakteristikleri ve kanal genişliğine göre belirler ve plana açıkça işaretler.`,
-            `Point of no return (PNR), yakıt/zaman açısından geri dönüşün mümkün olmadığı noktadır; özellikle uzun okyanus geçişlerinde ve ice navigation'da kritiktir. Abort point fiziksel, PNR ise lojistik/operasyonel bir karardır.`,
+            `Point of no return (PNR), yakıt/zaman açısından geri dönüşün mümkün olmadığı noktadır; özellikle uzun okyanus geçişlerinde ve ice navigation'da kritiktir.`,
           ],
         },
         {

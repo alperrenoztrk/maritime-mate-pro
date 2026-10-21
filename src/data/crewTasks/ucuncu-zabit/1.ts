@@ -49,7 +49,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Tüp tipleri ve yerleşimi",
           paragraphs: [
-            `Gemide su, köpük (foam), kuru kimyevi toz (dry powder) ve CO2 tipli portatif tüpler bulunur; yangın sınıfına göre (A-katı, B-sıvı, C-elektrik, D-metal, F-yağ) uygun tüp belirli istasyonlara yerleştirilir. Makine dairesinde köpük + CO2, mutfakta foam/wet chemical, akomodasyonda su/CO2 tipik dağılımdır. Res. A.951(23) yerleşim ve sayı rehberidir.`,
+            `Gemide su, köpük (foam), kuru kimyevi toz (dry powder) ve CO2 tipli portatif tüpler bulunur; yangın sınıfına göre (A-katı, B-sıvı, C-gaz, D-metal, F-pişirme yağı) uygun tüp belirli istasyonlara yerleştirilir. Makine dairesinde köpük + CO2, mutfakta foam/wet chemical, akomodasyonda su tipik dağılımdır (CO2 tüpü yaşam mahallerine konmaz). Res. A.951(23) yerleşim ve sayı rehberidir.`,
             `Safety Officer, her tüpün dolu (tartı/manometre), mühürlü (safety pin + tamper seal), erişilebilir, doğru sınıf ve son kullanma/servis tarihinin geçerli olduğunu kontrol eder. Tüp bracket'i sağlam, içerik basıncı yeşil bantta olmalıdır.`,
           ],
           table: {
@@ -84,7 +84,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Fire main, hydrant ve hortum",
           paragraphs: [
-            `Fire main hattı, ana ve emergency fire pump ile basınçlandırılır; her hydrant'tan en az iki jet su sağlanabilmelidir. Safety Officer; hydrant valf gland'larının sızdırmazlığını, hortumların (coupling, lining, çatlak) durumunu, nozzle'ların (jet/spray dual-purpose) fonksiyonunu ve hose box erişilebilirliğini periyodik kontrol eder.`,
+            `Fire main hattı, ana ve emergency fire pump ile basınçlandırılır; geminin normalde erişilen her noktasına, aynı hydrant'tan çıkmayan en az iki jet su ulaşabilmelidir. Safety Officer; hydrant valf gland'larının sızdırmazlığını, hortumların (coupling, lining, çatlak) durumunu, nozzle'ların (jet/spray dual-purpose) fonksiyonunu ve hose box erişilebilirliğini periyodik kontrol eder.`,
             `Emergency fire pump, ana pompadan bağımsız bir mahalde, ayrı güç kaynağıyla çalışır; haftalık/aylık çalıştırma testi yapılır ve basınç doğrulanır. İnternational shore connection (gemiden gemiye/limana su bağlantısı) köprüüstü yakınında erişilebilir tutulur.`,
           ],
           bullets: [

@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 Kontaminasyonun kaynakları ve sonuçları",
           paragraphs: [
             `Yakıt ve yağ sistemlerine kontaminasyon üç yoldan girer: dışarıdan (bunker sırasında alınan katı/su, hava emişi), içeriden (aşınma metali, conta artığı, pas) ve kimyasal bozunmadan (oksidasyon, termal degradasyon). Bu partiküller filtreyle yakalanmazsa enjektör nozzle aşınması, yatak çizilmesi, pompa çark erozyonu ve valf yapışması gibi pahalı arızalara yol açar.`,
-            `Modern dizel makinelerde yatak boşlukları mikron mertebesindedir; 10-20 mikronluk bir partikül bile yağ filmini delip metal-metal temasına neden olabilir. Bu yüzden filtre mesh boyutu (örn. ME LO için 25-40 mikron, enjeksiyon hattı için daha ince) üretici spesifikasyonuna birebir uyularak seçilir.`,
+            `Modern dizel makinelerde yataklardaki minimum yağ filmi kalınlığı mikron mertebesindedir; 10-20 mikronluk bir partikül bile yağ filmini delip metal-metal temasına neden olabilir. Bu yüzden filtre mesh boyutu (örn. ME LO için 25-40 mikron, enjeksiyon hattı için daha ince) üretici spesifikasyonuna birebir uyularak seçilir.`,
           ],
           callouts: [
             {
@@ -109,8 +109,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Marin gazyağı (MGO/DO) ve ECA geçişi",
           paragraphs: [
-            `Emisyon Kontrol Alanlarına (ECA) girişte düşük kükürtlü yakıta (MGO veya VLSFO) geçilir. MGO daha temiz ve düşük viskoziteli olduğundan filtre yükü azalır; ancak yağlama özelliği düşüktür ve pompa/enjektör için lubricity katkısı gerekebilir. Yakıt geçişi (changeover) sırasında sıcaklık şoku ve viskozite düşüşü pompa sıkışmasına yol açabilir.`,
-            `Yağcı, ECA geçişinde filtre DP'sini ve yakıt sıcaklığını yakından izler; ani viskozite değişimi conta sızıntısı veya pompa kavitasyonu yaratabilir. Geçiş kademeli yapılır (saatte birkaç derece), zaman ve pozisyon ORB/yakıt değişim defterine kaydedilir.`,
+            `Emisyon Kontrol Alanlarına (ECA) girişte düşük kükürtlü yakıta (MGO veya ULSFO; kükürt en fazla %0,10) geçilir. MGO daha temiz ve düşük viskoziteli olduğundan filtre yükü azalır; ancak yağlama özelliği düşüktür ve pompa/enjektör için lubricity katkısı gerekebilir. Yakıt geçişi (changeover) sırasında sıcaklık şoku ve viskozite düşüşü pompa sıkışmasına yol açabilir.`,
+            `Yağcı, ECA geçişinde filtre DP'sini ve yakıt sıcaklığını yakından izler; ani viskozite değişimi conta sızıntısı veya pompa kavitasyonu yaratabilir. Geçiş kademeli yapılır, zaman ve pozisyon yakıt değişim defterine kaydedilir.`,
           ],
         },
       ],
@@ -209,7 +209,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 Su seal ve discharge gözlemi",
           paragraphs: [
-            `Separatörde water seal (su contası) doğru kurulmamışsa yakıt/yağ overboard tarafına kaçar (oil loss) veya su yakıt tarafına geçer. Yağcı, sludge discharge'ın doğru renkte (koyu çamur) olduğunu, temiz yakıt/yağ kaybı olmadığını gözlemler ve sapmayı mühendise raporlar.`,
+            `Separatörde water seal (su contası) doğru kurulmamışsa yakıt/yağ su çıkışı (water outlet) tarafına kaçar (oil loss) veya su yakıt tarafına geçer. Yağcı, sludge discharge'ın doğru renkte (koyu çamur) olduğunu, temiz yakıt/yağ kaybı olmadığını gözlemler ve sapmayı mühendise raporlar.`,
           ],
         },
       ],

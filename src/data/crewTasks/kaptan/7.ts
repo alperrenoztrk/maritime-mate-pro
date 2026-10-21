@@ -62,7 +62,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Official Log Book — bayrak devleti resmi defteri",
           paragraphs: [
-            `Official Log Book (ÖLB), bayrak devletinin formatında tutulan resmi bir defterdir. İçeriği bayrağa göre değişmekle birlikte tipik olarak: mürettebat katılma/ayrılma kayıtları, doğum/ölüm, disiplin olayları, draft survey, müsteşarlık talimatları, drill (talim) kayıtları, official inspection sonuçları ve önemli olaylar yer alır. Her kayıt tarih-saatli ve ilgili zabit/kaptan imzalı olmalıdır.`,
+            `Official Log Book (ÖLB), bayrak devletinin formatında tutulan resmi bir defterdir. İçeriği bayrağa göre değişmekle birlikte tipik olarak: mürettebat katılma/ayrılma kayıtları, doğum/ölüm, disiplin olayları, bayrak idaresi talimatları, drill (talim) kayıtları, official inspection sonuçları ve önemli olaylar yer alır. Her kayıt tarih-saatli ve ilgili zabit/kaptan imzalı olmalıdır.`,
             `Ölüm, ciddi yaralanma, doğum, kaybolma (man overboard) gibi olaylar ÖLB'ye derhal işlenir ve genellikle bir tanık imzası gerektirir. Bu kayıtlar konsolosluk, sigorta ve adli süreçlerde birincil delildir. Geri tarihli (back-dated) kayıt, hukuken delil değerini yok eder ve kaptanı şahsi sorumluluk altına sokar.`,
           ],
           callouts: [
@@ -165,7 +165,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.1 Crew List ve SEA (Seafarers' Employment Agreement)",
           paragraphs: [
             `Crew List, gemideki tüm mürettebatın kimlik, rütbe, milliyet ve sertifika bilgilerini içeren resmi belgedir; liman girişlerinde immigration ve port authority tarafından istenir. MLC 2006 Standard A2.1 uyarınca her gemiadamının imzalı SEA'sı gemide bulunmalıdır; kaptan SEA'ların eksiksiz ve güncel olduğunu denetler.`,
-            `Wages account, allotment kayıtları ve rest hour records de MLC kapsamında tutulur. PSC'de en sık MLC bulguları SEA eksikliği, hesap kayıtlarındaki tutarsızlık ve rest hour ihlalleridir.`,
+            `Wages account, allotment kayıtları ve rest hour records de MLC kapsamında tutulur. PSC'de sık görülen MLC bulguları arasında SEA eksikliği, hesap kayıtlarındaki tutarsızlık ve rest hour ihlalleri vardır.`,
           ],
           callouts: [
             {

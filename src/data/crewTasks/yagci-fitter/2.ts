@@ -90,7 +90,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Tank top ve double bottom erişimi",
           paragraphs: [
-            `Tank top seviyesi ve sintine alanları dar ve sıcak olabilir; bu alanlarda çalışırken kapalı/dar alan (enclosed space) kuralları gözden geçirilir. Düzenli temizlik, bu bölgelerin korozyonunu da yavaşlatır; biriken tuzlu su ve yağ çeliği aşındırır. Silici, erişilen her noktayı temiz ve kuru bırakmaya çalışır.`,
+            `Tank top seviyesi ve sintine alanları dar ve sıcak olabilir; bu alanlarda çalışırken kapalı/dar alan (enclosed space) kuralları gözden geçirilir. Düzenli temizlik, bu bölgelerin korozyonunu da yavaşlatır; biriken tuzlu su çeliği aşındırır. Silici, erişilen her noktayı temiz ve kuru bırakmaya çalışır.`,
           ],
         },
       ],
@@ -119,7 +119,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Emici malzeme (absorbent) kullanımı",
           paragraphs: [
-            `Ani dökülmelerde emici ped, granül veya bez (rags) kullanılır; yağ emildikten sonra bu malzemeler özel atık olarak toplanır ve uygun şekilde bertaraf edilir (yağlı bez kendi kendine tutuşabilir — havalandırmalı metal kapta saklanır). Silici, SOPEP/SMPEP emici malzeme stoğunun hazır olduğunu da kontrol eder.`,
+            `Ani dökülmelerde emici ped, granül veya bez (rags) kullanılır; yağ emildikten sonra bu malzemeler özel atık olarak toplanır ve uygun şekilde bertaraf edilir (yağlı bez kendi kendine tutuşabilir — kapaklı metal kapta saklanır). Silici, SOPEP/SMPEP emici malzeme stoğunun hazır olduğunu da kontrol eder.`,
           ],
           callouts: [
             {

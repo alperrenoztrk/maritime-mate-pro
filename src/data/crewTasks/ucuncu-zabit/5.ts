@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 SOLAS III/19 ve periyotlar",
           paragraphs: [
             `SOLAS III/19, her mürettebat üyesinin ayda en az bir abandon ship drill ve bir fire drill'e katılmasını şart koşar. Mürettebatın %25'inden fazlası bir önceki ayda gemideki drill'lere katılmamışsa, gemi limandan ayrıldıktan sonraki 24 saat içinde abandon ship ve fire drill yapılmalıdır. Bu kural, personel devri yüksek gemilerde Safety Officer'ın drill planını sefer takvimine göre kurmasını zorunlu kılar.`,
-            `Her abandon ship drill'de muster, can yeleğinin doğru giyilmesi, filika/sal istasyonlarında toplanma, embarkation prosedürünün anlatılması ve en az bir filikanın indirilmesi yer alır. Filikalar 3 ayda bir suya indirilip manevra yaptırılır (free-fall filikalarda serbest düşüş veya simulated launch). Rescue boat ise mümkün olduğu ölçüde her ay, her hâlükârda en az 3 ayda bir suya indirilip manevra yaptırılır (SOLAS III/19.3.4.4).`,
+            `Her abandon ship drill'de muster, can yeleğinin doğru giyilmesi, filika/sal istasyonlarında toplanma, embarkation prosedürünün anlatılması ve en az bir filikanın indirilmesi yer alır. Filikalar 3 ayda bir suya indirilip manevra yaptırılır (free-fall filikalarda 3 ayda bir serbest düşüşle veya ikincil indirme düzeneğiyle; ayrıca en geç 6 ayda bir serbest düşüş veya simulated launch). Rescue boat ise mümkün olduğu ölçüde her ay, her hâlükârda en az 3 ayda bir suya indirilip manevra yaptırılır (SOLAS III/19).`,
           ],
           callouts: [
             {
@@ -63,7 +63,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.1 Muster list'in hazırlanması",
           paragraphs: [
             `Muster list (toplanma cetveli), her mürettebat üyesinin acil durumda nereye gideceğini ve hangi görevi üstleneceğini gösterir. SOLAS III/8 gereği köprüüstü, makine kontrol odası ve mürettebat yaşam alanlarında görünür yerlerde asılı olmalıdır. Genel alarm sinyali, abandon ship sinyali, her kişinin görevi ve yedek görevlisi muster list'te yer alır.`,
-            `Safety Officer, personel değişiminde muster list'i derhal günceller; ayrılan kişinin görevi atanmadan boşta kalmamalıdır. Yeni binen her mürettebat üyesi, gemiye katılmadan önce (ideal olarak kalkıştan önce, en geç 2 hafta içinde) familiarization ile muster station'ını, can yeleği konumunu ve kaçış yolunu öğrenir.`,
+            `Safety Officer, personel değişiminde muster list'i derhal günceller; ayrılan kişinin görevi atanmadan boşta kalmamalıdır. Yeni binen her mürettebat üyesi, gemide görev verilmeden önce familiarization ile muster station'ını, can yeleği konumunu ve kaçış yolunu öğrenir; gemideki can kurtarma ve yangınla mücadele donanımı eğitimi ise en geç 2 hafta içinde verilir.`,
           ],
           callouts: [
             {
@@ -77,7 +77,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.2 Sembol ve dil gereklilikleri",
           paragraphs: [
             `Muster list ve emergency instruction'lar, mürettebatın anladığı çalışma dilinde olmalıdır; çok uluslu ekiplerde IMO standard symbol'leri (Res. A.760(18) / A.1116(30)) ile desteklenir. Her kabinde lifejacket donning talimatı ve muster station yönlendirmesi bulunmalıdır.`,
-            `Safety Officer, yolcu gemilerinde yolculara yönelik muster prosedürünü (kalkıştan önce 24 saat içinde passenger muster) de koordine eder. Ticaret gemisinde ise odak crew familiarization'dır; checklist imzalatılır ve familiarization record olarak saklanır.`,
+            `Safety Officer, yolcu gemilerinde yolculara yönelik muster prosedürünü (yolcuların 24 saatten fazla gemide kalacağı seferlerde, yeni binen yolcular için kalkıştan önce veya kalkışta hemen passenger muster) de koordine eder. Yük gemisinde ise odak crew familiarization'dır; checklist imzalatılır ve familiarization record olarak saklanır.`,
           ],
         },
       ],

@@ -27,7 +27,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "2.1 Ağırlık çıkarımları",
           paragraphs: [
-            `Net yük = (final displacement − ballast − yakıt − tatlı su − constant). Tüm tanklar dikkatle sounding edilir; constant değeri önceki survey'lerle tutarlı olmalıdır. Density düzeltmesi yapılır.`,
+            `Net yük = (final displacement − light ship − ballast − yakıt − tatlı su − constant). Tüm tanklar dikkatle sounding edilir; constant değeri önceki survey'lerle tutarlı olmalıdır. Density düzeltmesi yapılır.`,
           ],
           callouts: [
             { type: "warning", title: "Küçük hata, büyük fark", text: `1-2 cm draft hatası büyük gemilerde yüzlerce ton fark yaratır; okuma ve sounding titiz olmalı.` },

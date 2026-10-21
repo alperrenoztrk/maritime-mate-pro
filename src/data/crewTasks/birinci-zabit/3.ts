@@ -74,7 +74,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Liferaft ve hydrostatic release unit",
           paragraphs: [
-            `Can salları yıllık olarak (bazı tiplerde uzatılmış aralıkla) onaylı servis istasyonunda açılır, muayene edilir ve yeniden paketlenir. HRU (hydrostatic release), 2 metre derinlikte otomatik serbest bırakma sağlar; HRU'nun expiry tarihi (genellikle 2 yıl) takip edilir ve lashing/weak link doğru bağlanır.`,
+            `Can salları yıllık olarak (bazı tiplerde uzatılmış aralıkla) onaylı servis istasyonunda açılır, muayene edilir ve yeniden paketlenir. HRU (hydrostatic release), en fazla 4 metre derinlikte otomatik serbest bırakma sağlar; HRU'nun expiry tarihi (genellikle 2 yıl) takip edilir ve lashing/weak link doğru bağlanır.`,
             `Birinci Zabit, sal pozisyonlarının float-free çalışacak şekilde bağlandığını, painter line'ın senlamaya doğru kelepçelendiğini ve manifest'teki sal kapasitesinin mevcut mürettebatı karşıladığını doğrular.`,
           ],
           callouts: [
@@ -88,7 +88,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Can yeleği, immersion suit, lifebuoy",
           paragraphs: [
-            `Can yelekleri (yetişkin/çocuk/ekstra), immersion suit'ler (kuru/sıcak su rotasına göre sayı), lifebuoy'lar (ışıklı, self-igniting, smoke signal, line-throwing) envanterde sayılır ve durumu kontrol edilir. Light ve battery expiry tarihleri, retro-reflective tape ve whistle varlığı denetlenir.`,
+            `Can yelekleri (yetişkin/çocuk/ekstra), immersion suit'ler (yük gemilerinde gemideki her kişi için bir adet), lifebuoy'lar (ışıklı, self-igniting, smoke signal, buoyant lifeline) envanterde sayılır ve durumu kontrol edilir. Light ve battery expiry tarihleri, retro-reflective tape ve whistle varlığı denetlenir.`,
           ],
           table: {
             caption: `Bireysel LSA — Tipik Kontrol Kalemleri`,
@@ -111,7 +111,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 İşaret fişekleri (pyrotechnics)",
           paragraphs: [
-            `Rocket parachute flare, hand flare ve buoyant smoke signal'lerin expiry tarihleri (genellikle imalattan 3-3.5 yıl) titizlikle izlenir. Süresi dolanlar uygun şekilde imha/teslim edilir, sefere expired pyrotechnic ile çıkılmaz. GMDSS/distress ekipmanları içinde sayılır.`,
+            `Rocket parachute flare, hand flare ve buoyant smoke signal'lerin expiry tarihleri (genellikle imalattan 3-3.5 yıl) titizlikle izlenir. Süresi dolanlar uygun şekilde imha/teslim edilir, sefere expired pyrotechnic ile çıkılmaz. LSA (SOLAS III, LSA Code) kapsamında görsel distress sinyali olarak sayılır.`,
           ],
         },
         {

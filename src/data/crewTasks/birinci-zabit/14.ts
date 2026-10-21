@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 Annex V kapsamı ve temel prensip",
           paragraphs: [
             `MARPOL Annex V, gemilerden kaynaklanan tüm çöpün (garbage) yönetimini düzenler. Temel prensip, plastiğin denize atılmasının tamamen yasak olması ve diğer atıkların yalnızca belirli koşullarda (mesafe, hız, kategori) denize verilebilmesidir. Annex V'in 2013 revizyonu kuralları sıkılaştırmış ve "deşarj genel olarak yasak, istisnalar tanımlı" yaklaşımına geçmiştir.`,
-            `100 GT üzeri, 15+ kişi taşıyan gemiler ve sabit/yüzer platformlar Garbage Management Plan ve Garbage Record Book bulundurmak zorundadır. Birinci Zabit, planın uygulanmasından ve kayıtların doğruluğundan birinci derecede sorumludur.`,
+            `100 GT ve üzeri, 15+ kişi taşıyan gemiler ve sabit/yüzer platformlar Garbage Management Plan bulundurmak zorundadır; Garbage Record Book ise 400 GT ve üzeri gemiler, uluslararası seferde 15+ kişi taşıyan gemiler ve sabit/yüzer platformlar için zorunludur. Birinci Zabit, planın uygulanmasından ve kayıtların doğruluğundan birinci derecede sorumludur.`,
           ],
           callouts: [
             {
@@ -49,7 +49,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Kategori sınıflandırması",
           paragraphs: [
-            `Annex V çöpü kategorilere ayırır: A (plastik), B (gıda atığı), C (domestic waste — kâğıt, bez, cam, metal, şişe), D (pişirme yağı), E (incinerator külü), F (operasyonel atık), G (hayvansal leş), H (kargo kalıntısı — HME ve non-HME), I (balıkçılık ekipmanı), J (e-waste). Her kategorinin kendi deşarj/saklama kuralı vardır. Birinci Zabit, ekibin doğru kategorilendirme yapmasını sağlar.`,
+            `Annex V çöpü kategorilere ayırır: A (plastik), B (gıda atığı), C (domestic waste — kâğıt, bez, cam, metal, şişe), D (pişirme yağı), E (incinerator külü), F (operasyonel atık), G (hayvansal leş), H (balıkçılık ekipmanı), I (e-waste), J (kargo kalıntısı — non-HME), K (kargo kalıntısı — HME). Her kategorinin kendi deşarj/saklama kuralı vardır. Birinci Zabit, ekibin doğru kategorilendirme yapmasını sağlar.`,
             `Genel kural: plastik, pişirme yağı, incinerator külü, operasyonel atık ve e-waste denize atılamaz; saklanıp teslim edilir. Gıda atığı ve non-HME kargo kalıntısı, mesafe/koşul şartıyla deşarj edilebilir.`,
           ],
           table: {
@@ -68,7 +68,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 HME (Harmful to Marine Environment) kargo kalıntısı",
           paragraphs: [
-            `Dökme yük kalıntısı, IMSBC kriterlerine göre HME (deniz çevresine zararlı) ise denize verilemez; yıkama suyu dahil saklanıp reception facility'ye teslim edilir. Shipper, kargonun HME olup olmadığını beyan eder; Birinci Zabit bu beyanı kontrol eder ve hold yıkama suyu deşarj kararını buna göre verir. HME tespitinde tereddüt varsa zararlı kabul edilir.`,
+            `Dökme yük kalıntısı, MARPOL Annex V Appendix I kriterlerine göre HME (deniz çevresine zararlı) ise denize verilemez; yıkama suyu dahil saklanıp reception facility'ye teslim edilir. Shipper, kargonun HME olup olmadığını beyan eder; Birinci Zabit bu beyanı kontrol eder ve hold yıkama suyu deşarj kararını buna göre verir. HME tespitinde tereddüt varsa zararlı kabul edilir.`,
           ],
           callouts: [
             {
@@ -100,7 +100,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Atık azaltma ve işleme ekipmanı",
           paragraphs: [
-            `Çöp miktarını azaltmak için compactor (sıkıştırıcı), comminuter (gıda öğütücü) ve incinerator (yakıcı) kullanılabilir. Comminuted gıda atığı 25 mm altına öğütülürse 3 nm sonrası deşarj edilebilir. Incinerator kullanımı Annex V ve VI'ya tabidir; plastik, kargo kalıntısı gibi maddelerin yakılması yasaktır ve liman/Special Area'da kısıtlanabilir. Birinci Zabit bu ekipmanların doğru ve kayıtlı kullanımını sağlar.`,
+            `Çöp miktarını azaltmak için compactor (sıkıştırıcı), comminuter (gıda öğütücü) ve incinerator (yakıcı) kullanılabilir. Comminuted gıda atığı 25 mm altına öğütülürse 3 nm sonrası deşarj edilebilir. Incinerator kullanımı Annex V ve VI'ya tabidir; Annex I/II/III kargo kalıntıları ve (type-approved incinerator dışında) PVC gibi maddelerin yakılması yasaktır ve liman/Special Area'da kısıtlanabilir. Birinci Zabit bu ekipmanların doğru ve kayıtlı kullanımını sağlar.`,
           ],
           callouts: [
             {

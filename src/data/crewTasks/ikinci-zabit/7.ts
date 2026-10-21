@@ -60,7 +60,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Type-specific eğitim zorunluluğu ve familiarizasyon kapsamı",
           paragraphs: [
-            `STCW Manila değişiklikleri, ECDIS'i primary means of navigation olarak kullanan gemilerde zabitlerin generic ECDIS eğitimine (IMO Model Course 1.27) ek olarak, gemideki spesifik ECDIS modeline ait type-specific eğitimden geçmiş olmasını şart koşar. İkinci Zabit, gemiye yeni katılan zabitin bu iki eğitimi de tamamladığını doğrular ve type-specific familiarizasyonu bizzat yürütür.`,
+            `STCW Manila değişiklikleri, ECDIS'i primary means of navigation olarak kullanan gemilerde zabitlerin generic ECDIS eğitimini (IMO Model Course 1.27) almış olmasını şart koşar; ISM Code 6.3 ve STCW Reg. I/14 ise buna ek olarak gemideki spesifik ECDIS modeline ait type-specific familiarizasyonu gerektirir. İkinci Zabit, gemiye yeni katılan zabitin bu iki eğitimi de tamamladığını doğrular ve type-specific familiarizasyonu bizzat yürütür.`,
             `Familiarizasyon; safety settings (safety contour, safety depth, shallow/deep contour), display modlarının (base/standard/all) ayarlanması, alarm yönetimi, route planning ve route check fonksiyonu, manuel update layer'ı, S-52 sembolojisi ve S-57/S-63 ENC yükleme-güncelleme süreçlerini kapsar. Her marka bu fonksiyonları farklı menü mantığıyla sunar; körü körüne menü ezberi değil, fonksiyonun mantığı öğretilmelidir.`,
             `ECDIS'in en kritik ayarı safety contour'dur. İkinci Zabit, zabite safety contour'un anti-grounding fonksiyonunu, ENC'de istenen değer mevcut değilse sistemin bir sonraki daha derin contour'a yuvarladığını ve bu yüzden gerçek değerin doğrulanması gerektiğini öğretmelidir.`,
           ],
@@ -134,7 +134,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Senaryo tabanlı COLREG eğitimi",
           paragraphs: [
             `COLREG kurallarını ezbere bilmek yetmez; gerçek köprüüstünde hızlı ve doğru karar verme becerisi gerekir. İkinci Zabit, radar/ECDIS simülasyonu veya gerçek trafik durumları üzerinden senaryolar kurar: head-on (Kural 14), crossing (Kural 15), overtaking (Kural 13) ve restricted visibility (Kural 19) durumları ayrı ayrı çalışılır. Her senaryoda "stand-on mu give-way mı, hangi manevra, ne zaman, COLREG'in hangi kuralı" sorgulanır.`,
-            `Restricted visibility (Kural 19) özel olarak vurgulanır; bu durumda stand-on/give-way ayrımı yoktur, her gemi radar plotting'e göre erken ve belirgin manevra yapar. İkinci Zabit, sislerde sancağa dönmenin yasak olduğu istisnayı (önden/önden-sancaktan gelen hedef hariç) ve hızın güvenli seviyeye düşürülmesini açıkça öğretir.`,
+            `Restricted visibility (Kural 19) özel olarak vurgulanır; bu durumda stand-on/give-way ayrımı yoktur, her gemi radar plotting'e göre erken ve belirgin manevra yapar. İkinci Zabit, sislerde travanın önündeki bir gemi için (geçilen gemi hariç) iskeleye dönmekten ve travadaki veya travanın gerisindeki bir gemiye doğru dönmekten kaçınılması gerektiğini ve hızın güvenli seviyeye düşürülmesini açıkça öğretir.`,
           ],
           table: {
             caption: `Temel COLREG Çatışma Senaryoları ve Beklenen Aksiyon`,
@@ -152,7 +152,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.2 Erken ve belirgin manevra, küçük düzeltme tuzağı",
           paragraphs: [
             `COLREG Kural 8, çatışmadan kaçınma manevrasının erken (in ample time), belirgin (substantial / readily apparent) ve gerekirse hız değişimini içerecek şekilde yapılmasını ister. İkinci Zabit, junior zabite en sık yapılan hatayı öğretir: küçük, tedrici rota düzeltmeleri (örn. 2-3 derece) karşı geminin radarında fark edilmez ve niyeti belirsiz bırakır. Bunun yerine en az 20-30 derecelik belirgin bir dönüş yapılır.`,
-            `Eğitimde "son dakika manevrası" tuzağı da işlenir: stand-on gemi, give-way gemi aksiyon almazsa Kural 17 gereği önce kendi başına manevra hakkı (17b), sonra zorunluluğu doğar. Bu geçişin zamanlamasını doğru okumak, sadece tecrübe ve senaryo tekrarı ile kazanılır.`,
+            `Eğitimde "son dakika manevrası" tuzağı da işlenir: stand-on gemi, give-way gemi aksiyon almazsa Kural 17 gereği önce kendi başına manevra hakkı (17(a)(ii)), sonra zorunluluğu (17(b)) doğar. Bu geçişin zamanlamasını doğru okumak, sadece tecrübe ve senaryo tekrarı ile kazanılır.`,
           ],
           callouts: [
             {

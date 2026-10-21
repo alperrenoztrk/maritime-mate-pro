@@ -74,7 +74,7 @@ const content3: ContentMap = {
       introduction: "Doğal soğutucu akışkanlar, çevresel etkileri minimumdur ve sentetik alternatiflere göre termodinamik açıdan avantajlıdır.",
       sections: [
         { heading: "CO₂ (R-744)", paragraphs: ["Transkritik çevrimde çalışır (kritik sıcaklık 31°C, kritik basınç 73.8 bar). Yüksek çalışma basıncı (80-130 bar) nedeniyle özel ekipman gerektirir.", "Gemi soğutma sistemlerinde özellikle balıkçı gemileri ve konteyner gemisi reefer sistemlerinde yaygınlaşmaktadır. Toksik ve yanıcı değildir."] },
-        { heading: "Amonyak (R-717)", paragraphs: ["Mükemmel termodinamik özelliklere sahiptir; COP değeri yüksektir. Büyük kapasiteli endüstriyel ve gemi soğutma tesislerinde kullanılır.", "Toksik ve yanıcı olması nedeniyle özel güvenlik önlemleri gerektirir. SOLAS Reg. II-2 kapsamında makine dairesi dışında konumlandırılmalıdır."], table: { headers: ["Özellik", "CO₂ (R-744)", "NH₃ (R-717)"], rows: [["ODP / GWP", "0 / 1", "0 / 0"], ["Toksik", "Hayır (yüksek konsantrasyonda boğucu)", "Evet"], ["Yanıcı", "Hayır", "Evet (hafif)"], ["Çalışma basıncı", "Çok yüksek", "Orta"], ["COP", "İyi", "Çok iyi"], ["Gemi kullanımı", "Artan (reefer)", "Sınırlı (büyük balıkçı)"]] } }
+        { heading: "Amonyak (R-717)", paragraphs: ["Mükemmel termodinamik özelliklere sahiptir; COP değeri yüksektir. Büyük kapasiteli endüstriyel ve gemi soğutma tesislerinde kullanılır.", "Toksik ve yanıcı olması nedeniyle özel güvenlik önlemleri gerektirir. Klas kuralları gereği makine dairesinden ayrı, gaz sızdırmaz bir bölmede konumlandırılmalıdır."], table: { headers: ["Özellik", "CO₂ (R-744)", "NH₃ (R-717)"], rows: [["ODP / GWP", "0 / 1", "0 / 0"], ["Toksik", "Hayır (yüksek konsantrasyonda boğucu)", "Evet"], ["Yanıcı", "Hayır", "Evet (hafif)"], ["Çalışma basıncı", "Çok yüksek", "Orta"], ["COP", "İyi", "Çok iyi"], ["Gemi kullanımı", "Artan (reefer)", "Sınırlı (büyük balıkçı)"]] } }
       ],
       keyPoints: ["CO₂ transkritik çevrimde gaz soğutucusu (gas cooler) kullanılır, kondenser değil.", "Amonyak kaçağı algılama sistemi zorunludur.", "Propan (R-290) küçük kapasiteli sistemlerde alternatiftir ancak yanıcıdır."]
     },
@@ -91,8 +91,8 @@ const content3: ContentMap = {
       title: "Montreal ve Kigali Protokolleri",
       introduction: "Montreal Protokolü ozon tabakasını koruyan, Kigali Değişikliği ise küresel ısınmayı azaltmayı hedefleyen uluslararası anlaşmalardır.",
       sections: [
-        { heading: "Montreal Protokolü (1987)", paragraphs: ["CFC'lerin 1996'da, HCFC'lerin 2030'a kadar (gelişmiş ülkelerde 2020) kademeli olarak yasaklanmasını öngörür.", "Denizcilik sektöründe R-12 ve R-22 içeren sistemlerin dönüştürülmesi veya değiştirilmesi zorunludur."] },
-        { heading: "Kigali Değişikliği (2016)", paragraphs: ["HFC'lerin küresel ısınma etkisini azaltmak amacıyla üretim ve tüketiminin kademeli azaltımını öngörür.", "Gelişmiş ülkeler 2036'ya kadar %85, gelişmekte olan ülkeler 2045-2047'ye kadar %80 azaltım hedefindedir."] }
+        { heading: "Montreal Protokolü (1987)", paragraphs: ["CFC'lerin 1996'da, HCFC'lerin 2030'a kadar (gelişmiş ülkelerde 2020) kademeli olarak yasaklanmasını öngörür.", "Denizcilik sektöründe MARPOL Annex VI Reg. 12 gereği R-12 içeren yeni tesisatlar 19 Mayıs 2005'ten, R-22 içeren yeni tesisatlar ise 1 Ocak 2020'den itibaren yasaktır."] },
+        { heading: "Kigali Değişikliği (2016)", paragraphs: ["HFC'lerin küresel ısınma etkisini azaltmak amacıyla üretim ve tüketiminin kademeli azaltımını öngörür.", "Gelişmiş ülkeler 2036'ya kadar %85, gelişmekte olan ülkeler ise gruplarına göre 2045'e kadar %80 veya 2047'ye kadar %85 azaltım hedefindedir."] }
       ],
       keyPoints: ["Montreal Protokolü çevre tarihinin en başarılı anlaşmasıdır.", "Gemi soğutucu gaz envanterleri bayrak devleti tarafından denetlenir.", "ODS Record Book gemide bulundurulması zorunlu dokümandır."]
     },
@@ -154,7 +154,7 @@ const content3: ContentMap = {
       title: "Klima Sistemi Bileşenleri",
       introduction: "Gemi klima sistemi, yaşam ve çalışma alanlarında konforlu sıcaklık ve nem koşulları sağlayan iklimlendirme sistemidir.",
       sections: [
-        { heading: "Ana Bileşenler", paragraphs: ["Soğutma ünitesi: Chiller veya DX sistem. Soğutulmuş su (chilled water) veya doğrudan soğutucu akışkan kullanır.", "Hava işleme ünitesi (AHU): Hava filtreleme, soğutma/ısıtma ve nemlendirme/nem alma işlemlerini yapar.", "Kanal sistemi: İşlenmiş havayı kompartımanlara dağıtır.", "Termostat ve kontrol: Her bölgedeki sıcaklık bireysel veya merkezi olarak kontrol edilir.", "Taze hava girişi: IMO/SOLAS kurallarına göre minimum taze hava miktarı sağlanır."] }
+        { heading: "Ana Bileşenler", paragraphs: ["Soğutma ünitesi: Chiller veya DX sistem. Soğutulmuş su (chilled water) veya doğrudan soğutucu akışkan kullanır.", "Hava işleme ünitesi (AHU): Hava filtreleme, soğutma/ısıtma ve nemlendirme/nem alma işlemlerini yapar.", "Kanal sistemi: İşlenmiş havayı kompartımanlara dağıtır.", "Termostat ve kontrol: Her bölgedeki sıcaklık bireysel veya merkezi olarak kontrol edilir.", "Taze hava girişi: Minimum taze hava miktarı sağlanır."] }
       ],
       keyPoints: ["SOLAS gereği köprüüstü ve makine kontrol odası iklimlendirme zorunludur.", "Taze hava oranı kişi başına minimum 30 m³/h olmalıdır.", "Klima sistemi yangın damperleri ile entegre çalışır."]
     },
@@ -373,7 +373,7 @@ const content3: ContentMap = {
       title: "BRM'den ERM'ye Geçiş",
       introduction: "BRM (Bridge Resource Management) 1990'larda köprüüstü operasyonları için geliştirilmiş, ERM ise bu kavramın makine dairesi operasyonlarına uyarlanmış halidir.",
       sections: [
-        { heading: "Tarihsel Gelişim", paragraphs: ["Havacılıktaki CRM (Crew Resource Management) konsepti 1980'lerde denizcilik sektörüne BRM olarak uyarlandı. STCW 2010 Manila Değişiklikleri ile ERM makine zabitlerinin zorunlu eğitim müfredatına eklendi.", "ERM, makine dairesinin kendine özgü zorlukları göz önünde bulundurur: yüksek gürültü, sınırlı görüş, karmaşık ekipman, aşırı sıcaklık ve fiziksel yorgunluk."] },
+        { heading: "Tarihsel Gelişim", paragraphs: ["Havacılıktaki CRM (Crew Resource Management) konsepti denizcilik sektörüne BRM olarak uyarlandı. STCW 2010 Manila Değişiklikleri ile ERM makine zabitlerinin zorunlu eğitim müfredatına eklendi.", "ERM, makine dairesinin kendine özgü zorlukları göz önünde bulundurur: yüksek gürültü, sınırlı görüş, karmaşık ekipman, aşırı sıcaklık ve fiziksel yorgunluk."] },
         { heading: "BRM ve ERM Karşılaştırması", paragraphs: [], table: { headers: ["Özellik", "BRM", "ERM"], rows: [["Odak", "Köprüüstü operasyonları", "Makine dairesi operasyonları"], ["Ortam", "Nispeten sakin", "Gürültülü, sıcak, tehlikeli"], ["İletişim", "VHF, radar, AIS", "Sesli, işaret, interkom"], ["Ekip", "2-4 kişi", "1-6 kişi (değişken)"], ["STCW", "A-II/1, II/2", "A-III/1, III/2"]] } }
       ],
       keyPoints: ["ERM eğitimi simülatör ortamında senaryo bazlı yapılır.", "STCW gereği tüm makine zabitlerinin ERM yeterliliği olmalıdır.", "ERM prensipleri günlük operasyonlara entegre edilmelidir."]
@@ -515,7 +515,7 @@ const content3: ContentMap = {
       title: "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)",
       introduction: "EEXI, mevcut gemilerin teknik enerji verimliliğini değerlendiren ve 1 Ocak 2023'ten itibaren zorunlu olan indekstir.",
       sections: [
-        { heading: "EEXI Hesaplaması", paragraphs: ["EEXI hesaplaması EEDI formülüne benzer ancak mevcut geminin gerçek motor gücü ve performans verileri kullanılır.", "Hesaplanan EEXI değeri, referans çizgisinin altında olmalıdır. Aksi halde teknik düzeltme yapılmalıdır."] },
+        { heading: "EEXI Hesaplaması", paragraphs: ["EEXI hesaplaması EEDI formülüne benzer ancak mevcut geminin gerçek motor gücü ve performans verileri kullanılır.", "Hesaplanan EEXI değeri, gerekli EEXI değerine (gemi tipine göre indirim faktörü uygulanmış referans çizgisi değeri) eşit veya altında olmalıdır. Aksi halde teknik düzeltme yapılmalıdır."] },
         { heading: "Uyum Yöntemleri", paragraphs: [], table: { headers: ["Yöntem", "Açıklama", "Maliyet"], rows: [["Engine Power Limitation (EPL)", "Motor gücünü sınırlandırma", "Düşük"], ["ShaPoLi", "Shaft power limitation", "Düşük"], ["WHRS kurulumu", "Atık ısı geri kazanımı", "Yüksek"], ["Enerji tasarrufu cihazı", "Pervane boss cap fin, duct", "Orta"], ["Yakıt değişikliği", "LNG'ye dönüşüm", "Çok yüksek"]] } }
       ],
       keyPoints: ["EPL/ShaPoLi en yaygın ve ucuz uyum yöntemidir.", "EPL sonrası geminin maksimum hızı düşer.", "EEXI sertifikası klas kuruluşu tarafından düzenlenir."]
@@ -532,7 +532,7 @@ const content3: ContentMap = {
       title: "SEEMP",
       introduction: "SEEMP (Ship Energy Efficiency Management Plan), gemilerin enerji verimliliğini sistematik olarak yönetmek için hazırlanan zorunlu operasyonel plandır.",
       sections: [
-        { heading: "SEEMP İçeriği", paragraphs: ["Bölüm I: Enerji verimliliği iyileştirme önlemleri (hız optimizasyonu, trim optimizasyonu, bakım planlaması vb.).", "Bölüm II: Yakıt tüketimi veri toplama ve raporlama planı.", "Bölüm III: CII hedefi ve iyileştirme planı (D veya E dereceli gemiler için zorunlu düzeltici eylem planı)."] },
+        { heading: "SEEMP İçeriği", paragraphs: ["Bölüm I: Enerji verimliliği iyileştirme önlemleri (hız optimizasyonu, trim optimizasyonu, bakım planlaması vb.).", "Bölüm II: Yakıt tüketimi veri toplama ve raporlama planı.", "Bölüm III: CII hedefi ve iyileştirme planı (art arda 3 yıl D veya bir yıl E dereceli gemiler için zorunlu düzeltici eylem planı)."] },
         { heading: "Uygulama Döngüsü", paragraphs: ["Plan-Do-Check-Act (PDCA) döngüsü izlenir: hedef belirleme, uygulama, izleme/ölçüm ve iyileştirme."] }
       ],
       keyPoints: ["SEEMP gemide bulundurulması zorunlu dokümandır.", "Bölüm III CII düzeltici eylem planı 2023'ten itibaren zorunludur.", "SEEMP şirket ve gemi mürettebatı tarafından birlikte uygulanır."]

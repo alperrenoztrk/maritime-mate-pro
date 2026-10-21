@@ -31,7 +31,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "2.1 Karbon yoğunluğu",
           paragraphs: [
-            `CII rating (A-E) yıllık hesaplanır; SEEMP Part III iyileştirme planı izlenir. D/E rating düzeltici plan gerektirir.`,
+            `CII rating (A-E) yıllık hesaplanır; SEEMP Part III iyileştirme planı izlenir. Üç yıl üst üste D veya bir kez E rating, düzeltici plan gerektirir.`,
           ],
           callouts: [
             {

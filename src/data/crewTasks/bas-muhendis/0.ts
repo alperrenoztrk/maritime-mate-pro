@@ -21,7 +21,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 Sistem mimarisi",
           paragraphs: [
-            `Modern bir tanker veya bulk carrier'in ana makinesi tipik olarak MAN B&W ME-C, WinGD X ya da Wärtsilä RT-flex serisinden bir 2-stroke crosshead motorudur. Cylinder bore 500-1080 mm arası, stroke 2400-3500 mm, MCR (Maximum Continuous Rating) 5-90 MW arası değişir. Bu motorlar HFO (Heavy Fuel Oil), MGO (Marine Gas Oil) veya VLSFO (Very Low Sulphur Fuel Oil) kullanır; LNG dual-fuel ve methanol seçenekleri 2020 sonrası yaygınlaşmıştır.`,
+            `Modern bir tanker veya bulk carrier'in ana makinesi tipik olarak MAN B&W ME-C, WinGD X ya da Wärtsilä RT-flex serisinden bir 2-stroke crosshead motorudur. Bu motorlar HFO (Heavy Fuel Oil), MGO (Marine Gas Oil) veya VLSFO (Very Low Sulphur Fuel Oil) kullanır; LNG dual-fuel ve methanol seçenekleri 2020 sonrası yaygınlaşmıştır.`,
             `Sistemin ana bileşenleri: yakıt sistemi (booster, viscotherm, common rail / camshaft), yağlama sistemi (cylinder lube oil + system oil), soğutma sistemi (jacket water + piston cooling + LT/HT FW), turboşarj grubu (T/C + air cooler + scavenge air receiver), exhaust sistemi (uniflow scavenging port + exhaust valve), krank/şaft hattı ve pervane.`,
           ],
         },
@@ -51,7 +51,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Indicator diagram (Mechanical / Electronic)",
           paragraphs: [
-            `Klasik mekanik indicator card (PVT cihazı) ya da modern elektronik PMI (Pressure Measurement Indicator) ile her silindirin Pmax, Pcomp, Pexp, MIP (Mean Indicated Pressure) ve IHP değerleri ölçülür. Sefer başına en az iki kez (loaded ve ballast) ölçüm önerilir; klas survey hazırlığında zorunludur.`,
+            `Klasik mekanik indicator card (PVT cihazı) ya da modern elektronik PMI (Pressure Measurement Indicator) ile her silindirin Pmax, Pcomp, Pexp, MIP (Mean Indicated Pressure) ve IHP değerleri ölçülür. Sefer başına en az iki kez (loaded ve ballast) ölçüm önerilir.`,
             `Pmax dengesizliği; injector arızası, fuel cam timing kayması, exhaust valve seat sızdırması, T/C dengesizliği veya ring blow-by gibi nedenlere işaret eder. Baş Mühendis, dengesiz silindiri öncelikli olarak inspect eder ve PMS work order açar.`,
           ],
         },
@@ -77,14 +77,14 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 Bunker süreci ve numune alma",
           paragraphs: [
             `Bunker operasyonunda Baş Mühendis bizzat süreci denetler: BDN (Bunker Delivery Note), continuous drip sample alımı (4-way sampler), pre-bunker checklist (SOLAS + MARPOL Annex VI), barjla iletişim, vapour line (varsa), gemi tank seviyeleri ve ROB (Remaining On Board) kayıtları.`,
-            `Sample 4 şişeye paylaştırılır: gemide saklanan, FOBAS/VPS gibi laboratuvara gönderilen, supplier kopyası ve liman otoritesi kopyası. Lab raporu (CCAI, density, viscosity, water content, sulfur, vanadium, alüminyum + silikon, sediment, CCAI > 870 ise tutuşma riski) gelene kadar yakıt kullanılmaz; aciliyet varsa kalite şüphesiyle riskli kullanım kayıt altına alınır.`,
+            `Sample 4 şişeye paylaştırılır: gemide saklanan, FOBAS/VPS gibi laboratuvara gönderilen, supplier kopyası ve MARPOL numunesi (PSC için en az 12 ay gemide saklanır). Lab raporu (CCAI, density, viscosity, water content, sulfur, vanadium, alüminyum + silikon, sediment, CCAI > 870 ise tutuşma riski) gelene kadar yakıt kullanılmaz; aciliyet varsa kalite şüphesiyle riskli kullanım kayıt altına alınır.`,
           ],
         },
         {
           subheading: "3.2 MARPOL Annex VI uyumluluğu — sülfür rejimi",
           paragraphs: [
-            `2020 IMO global sulphur cap, %0.50 m/m (global) ve %0.10 m/m (ECA — Baltık, Kuzey Denizi, ABD/Kanada kıyıları) zorunlu kılar. ECA giriş öncesi changeover sequence başlatılır; 1 saatten az sürede MGO'ya geçiş yapılır ve ChangeOver Calculator ile kayıt tutulur. Yüksek sülfürlü yakıt sadece scrubber ile çalışan gemilerde kullanılabilir.`,
-            `2024'ten itibaren EU ETS (Emission Trading System) gemileri kapsadı; CO2 emisyonları için allowance satın alınması gerekir. CII (Carbon Intensity Indicator) yıllık olarak hesaplanır; üst üste D veya E sınıfı alan gemiler corrective action plan zorunludur. Baş Mühendis, EEXI/CII performans takibinden doğrudan sorumludur.`,
+            `2020 IMO global sulphur cap, %0.50 m/m (global) limitini zorunlu kılar; ECA'larda (örn. Baltık, Kuzey Denizi, ABD/Kanada kıyıları) ise 2015'ten beri %0.10 m/m uygulanır. ECA giriş öncesi changeover sequence, ChangeOver Calculator ile hesaplanan süre kadar önce başlatılır; MGO'ya geçiş ECA sınırından önce tamamlanır ve tarih, saat, mevki ile tanklardaki düşük sülfürlü yakıt miktarı log'a kaydedilir. Yüksek sülfürlü yakıt sadece scrubber ile çalışan gemilerde kullanılabilir.`,
+            `2024'ten itibaren EU ETS (Emission Trading System) gemileri kapsadı; CO2 emisyonları için allowance satın alınması gerekir. CII (Carbon Intensity Indicator) yıllık olarak hesaplanır; üç yıl üst üste D veya bir yıl E sınıfı alan gemiler için corrective action plan zorunludur. Baş Mühendis, EEXI/CII performans takibinden doğrudan sorumludur.`,
           ],
           callouts: [
             {
@@ -109,7 +109,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Cylinder lube oil ve TBN seçimi",
           paragraphs: [
             `Cylinder oil, yakıt sülfür içeriğine göre seçilir. Yüksek sülfürlü HFO için 70-100 TBN (Base Number) yağlar; düşük sülfürlü VLSFO/MGO için 25-40 TBN yağlar uygundur. Yanlış TBN seçimi cold corrosion veya deposit problemlerine yol açar.`,
-            `Modern Alpha lubricator veya MEGI tipi feed rate yönetimi, motor yüküne ve yakıt sülfürüne göre dozajı otomatik ayarlar. Drain oil analizi (Fe, Sn, Pb, Cu metal trendleri, BN reserve) aylık olarak yapılır; trend yükselişi liner/ring/piston aşınmasına işaret eder.`,
+            `Modern Alpha lubricator feed rate yönetimi, motor yüküne ve yakıt sülfürüne göre dozajı otomatik ayarlar. Drain oil analizi (Fe, Sn, Pb, Cu metal trendleri, BN reserve) aylık olarak yapılır; trend yükselişi liner/ring/piston aşınmasına işaret eder.`,
           ],
         },
         {
@@ -126,7 +126,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 T/C performans denetimi",
           paragraphs: [
-            `T/C devri, scavenge air pressure ve egzoz back pressure günlük log'a yazılır. Compressor side fouling (oily air filter, oil deposit) ve turbine side fouling (carbon deposit) zaman içinde verim kaybına yol açar. Periyodik su yıkama (compressor side dry/wet wash, turbine side soft cleaner) prosedürü uygulanır.`,
+            `T/C devri, scavenge air pressure ve egzoz back pressure günlük log'a yazılır. Compressor side fouling (oily air filter, oil deposit) ve turbine side fouling (carbon deposit) zaman içinde verim kaybına yol açar. Periyodik yıkama (compressor side wet wash, turbine side dry (granül) veya wet wash) prosedürü uygulanır.`,
             `Surging (compressor durağan akım kaybı) çok ciddi bir uyarıdır; T/C şaft yataklarına büyük zarar verir. Surge alarmı gelirse motor yükü düşürülür, sebep aranır (exhaust valve sızdırması, scav air leak vb.).`,
           ],
         },
@@ -216,7 +216,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.2 PSC ve vetting (TMSA, OCIMF SIRE)",
           paragraphs: [
-            `PSC denetiminde sıkça sorulanlar: ORB doğru tutuluyor mu, OWS 15 ppm alarm test, sewage system MARPOL Annex IV uyumlu mu, garbage management plan, emergency generator weekly test, bilge alarm test. Vetting (özellikle tankerlerde) TMSA element 8 (engine room operations) ve element 9 (energy management) sorgular.`,
+            `PSC denetiminde sıkça sorulanlar: ORB doğru tutuluyor mu, OWS 15 ppm alarm test, sewage system MARPOL Annex IV uyumlu mu, garbage management plan, emergency generator weekly test, bilge alarm test. Vetting (özellikle tankerlerde) TMSA'nın engine room operations ve energy management ile ilgili elementlerini sorgular.`,
           ],
         },
       ],

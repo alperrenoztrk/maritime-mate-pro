@@ -40,7 +40,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.2 UMS ve manned vardiya farkı",
           paragraphs: [
             `Modern gemilerin çoğu UMS (Unmanned Machinery Space) sertifikalıdır; gece makine dairesi insansız bırakılır, alarmlar köprüüstüne ve nöbetçi mühendisin kamarasına yönlendirilir. Ancak manevra, liman operasyonu, dar su yolu geçişi ve kritik bakım sırasında makine dairesi "manned" hale getirilir ve Yağcı sürekli sahada bulunur.`,
-            `UMS modunda dahi günde en az bir kez (genelde sabah) detaylı tur (engine room round) yapılır. Dead Man Alarm (Engineer's Alarm) sistemi, makine dairesinde yalnız çalışan personelin belirli aralıklarla resetlemediği takdirde alarm verir; bu, baygınlık/kaza durumunda hayat kurtarır.`,
+            `UMS modunda dahi günde en az bir kez (genelde sabah) detaylı tur (engine room round) yapılır. Dead Man Alarm sistemi, makine dairesinde yalnız çalışan personelin belirli aralıklarla resetlemediği takdirde alarm verir; bu, baygınlık/kaza durumunda hayat kurtarır.`,
           ],
           bullets: [
             `UMS modu: gece insansız, alarm köprüüstüne yönlenir`,
@@ -101,7 +101,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Yardımcı sistemler ve soğutma devreleri",
           paragraphs: [
-            `Merkezi soğutma sistemi (central cooling) ile çalışan gemilerde sea water cooling (düşük sıcaklık devresi) ve fresh water cooling (yüksek/düşük sıcaklık devreleri) ayrı izlenir. Plate cooler giriş-çıkış sıcaklık farkı, ısı transfer verimini gösterir; fark düşüyorsa cooler tıkanıyor veya kirleniyor demektir.`,
+            `Merkezi soğutma sistemi (central cooling) ile çalışan gemilerde sea water cooling ve fresh water cooling (yüksek/düşük sıcaklık devreleri) ayrı izlenir. Plate cooler giriş-çıkış sıcaklık farkı, ısı transfer verimini gösterir; fark düşüyorsa cooler tıkanıyor veya kirleniyor demektir.`,
             `Tropik sularda deniz suyu sıcaklığı 32°C'yi aştığında soğutma marjı daralır; bu koşullarda Yağcı soğutma çıkış sıcaklıklarını daha sık kontrol eder. Sea chest filtre tıkanması (özellikle deniz canlısı/yosun yoğun bölgelerde) ani sıcaklık artışına yol açar ve high-low sea chest geçişi gerektirir.`,
           ],
           callouts: [

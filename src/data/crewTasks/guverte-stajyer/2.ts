@@ -202,7 +202,7 @@ const content: CrewTaskLongForm = {
           subheading: "7.1 Kapalı mahal giriş prosedürü",
           paragraphs: [
             `Kapalı/kapalı mahaller (ambarlar, balast tankları, kofferdamlar, zincirlik, boş tanklar) denizcilikteki en ölümcül kaza nedenlerinden biridir; oksijen eksikliği, zehirli veya parlayıcı gaz ölümle sonuçlanabilir. Stajyer, kapalı mahalle ASLA izinsiz, gaz ölçümü yapılmadan ve gözcü olmadan girilmediğini öğrenir. Giriş öncesi havalandırma, gaz ölçümü (oksijen %20.9, toksik ve patlayıcı gaz sınırları) ve PTW zorunludur.`,
-            `Stajyer, IMO Resolution A.1050(27) çerçevesinde giriş izni, sürekli haberleşme, kurtarma teçhizatı (resüsitatör, EEBD, vinç/üçayak) ve gözcünün rolünü öğrenir. En tehlikeli senaryolardan biri, içeri düşen arkadaşını kurtarmaya tedbirsizce giren ikinci kişinin de ölmesidir; bu yüzden kurtarma planı önceden hazırdır.`,
+            `Stajyer, giriş izni, sürekli haberleşme, kurtarma teçhizatı (resüsitatör, EEBD, vinç/üçayak) ve gözcünün rolünü öğrenir. En tehlikeli senaryolardan biri, içeri düşen arkadaşını kurtarmaya tedbirsizce giren ikinci kişinin de ölmesidir; bu yüzden kurtarma planı önceden hazırdır.`,
           ],
           callouts: [
             {

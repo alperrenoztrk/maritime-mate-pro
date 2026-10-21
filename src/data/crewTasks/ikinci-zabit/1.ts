@@ -219,7 +219,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.2 Yayın envanteri güncelliği ve yıllık ürünler",
           paragraphs: [
             `Sailing Directions (Pilot Books), List of Lights, List of Radio Signals gibi yayınlar haftalık NtM'in "Updates to Admiralty Sailing Directions / Lists" bölümleriyle güncellenir. Bu güncellemeler yayının ilgili sayfalarına işlenir veya ekli sayfa (supplement) olarak saklanır.`,
-            `Tide Tables (ATT) ve Tidal Stream Atlases yıllık ürünlerdir; geçerli yılın baskısı bulundurulmalıdır çünkü gelgit tahminleri yıla özgüdür. The Mariner's Handbook (NP100), Annual Summary of Admiralty Notices to Mariners ve ilgili Catalogue of Admiralty Charts (NP131) de güncel tutulur.`,
+            `Tide Tables (ATT) yıllık bir üründür; geçerli yılın baskısı bulundurulmalıdır çünkü gelgit tahminleri yıla özgüdür. Tidal Stream Atlases, The Mariner's Handbook (NP100), Annual Summary of Admiralty Notices to Mariners ve ilgili Catalogue of Admiralty Charts (NP131) de güncel tutulur.`,
             `İkinci Zabit, yayın envanterini bir kayıt defterinde (publication record) izler: her yayının numarası, baskı yılı, son düzeltme NtM'i ve geçerlilik durumu listelenir. Süresi dolan ya da yeni baskısı çıkan yayınlar için temin talebi açılır.`,
           ],
           callouts: [

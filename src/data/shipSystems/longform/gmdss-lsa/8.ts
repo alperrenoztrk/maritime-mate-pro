@@ -19,7 +19,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "1.1 Filika tipleri",
           paragraphs: [
-            `Modern gemilerde tamamen kapalı (totally enclosed) filikalar standarttır; alev/su geçirmez, kendinden dengeli (self-righting) ve motorludur. Serbest düşüşlü (free-fall) filikalar kıçtan rampa ile denize bırakılır; hızlı tahliye sağlar, dökme yük/tankerlerde yaygındır. Tankerlerde yangına dayanıklı (fire-protected) filika gerekebilir.`,
+            `Modern gemilerde tamamen kapalı (totally enclosed) filikalar standarttır; su geçirmez, kendinden dengeli (self-righting) ve motorludur. Serbest düşüşlü (free-fall) filikalar kıçtan rampa ile denize bırakılır; hızlı tahliye sağlar, dökme yük/tankerlerde yaygındır. Parlama noktası 60 °C'yi aşmayan kargo taşıyan tankerlerde yangına dayanıklı (fire-protected) filika zorunludur.`,
           ],
           bullets: [
             `Totally enclosed: kapalı, self-righting`,

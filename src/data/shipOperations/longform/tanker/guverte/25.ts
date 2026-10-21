@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Scupper ve drip tray",
           paragraphs: [
-            `Transfer öncesi scupper'lar tıkanır (plug) ve drip tray'ler yerleştirilir; güvertedeki herhangi bir dökülmenin denize ulaşması engellenir. Plug çıkarılmadan transfer yapılmaz.`,
+            `Transfer öncesi scupper'lar tıkanır (plug) ve drip tray'ler yerleştirilir; güvertedeki herhangi bir dökülmenin denize ulaşması engellenir. Plug takılmadan transfer yapılmaz.`,
           ],
           bullets: [
             `Scupper plug takılı`,

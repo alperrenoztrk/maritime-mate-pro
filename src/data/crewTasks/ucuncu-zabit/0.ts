@@ -58,7 +58,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Haftalık ve aylık filika kontrolleri",
           paragraphs: [
-            `SOLAS III/20.6 ve MSC.402(96) gereği filikalar haftalık görsel kontrol, aylık detaylı kontrol ve aylık motor çalıştırmaya tabidir. Haftalık kontrolde filika ve launching appliance gözle muayene edilir, motor su soğutmalı değilse 3 dakika çalıştırılır. Aylık kontrolde envanter tamlığı, motorun en az 3 dakika çalışması, davit ve halat durumu denetlenir.`,
+            `SOLAS III/20.6 ve III/20.7 gereği filikalar haftalık görsel kontrol ve motor çalıştırmaya, aylık detaylı kontrole tabidir. Haftalık kontrolde filika ve launching appliance gözle muayene edilir, motor toplam en az 3 dakika çalıştırılır. Aylık kontrolde envanter tamlığı, motorun en az 3 dakika çalışması, davit ve halat durumu denetlenir.`,
             `Safety Officer; filika içi inventory'i (sea anchor, paddle, baltacık, first-aid kit, ration, su, fishing kit, signaling mirror, whistle, bailer) MSC/Circ.1047 listesine göre kontrol eder. Eksik veya expired kalem (örn. su tableti, ration) listeye işlenir ve ikmal talebi açılır.`,
           ],
           bullets: [
@@ -79,8 +79,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 Yıllık ve 5-yıllık servisler",
           paragraphs: [
-            `Filika launching appliance ve on-load release gear yıllık thorough examination ve operational test'e tabidir; 5 yılda bir dinamik yük testi (winch brake'in 1.1x yükle test edilmesi, release gear'ın overload test'i) yetkili servis tarafından yapılır. Davit falls 5 yılda bir end-for-end çevrilir veya yenilenir.`,
-            `Safety Officer, bu servislerin geçerlilik tarihlerini izler ve survey window'una uygun planlar. Servis raporu (certificate) gemide saklanır; PSC ve class survey bu sertifikaları sorar. Free-fall filikalarda yıllık serbest düşüş testi veya simulated launch alternatifi (MSC.1/Circ.1206) uygulanır.`,
+            `Filika launching appliance ve on-load release gear yıllık thorough examination ve operational test'e tabidir; 5 yılda bir dinamik yük testi (winch brake'in 1.1x yükle test edilmesi, release gear'ın overload test'i) yetkili servis tarafından yapılır. Davit falls en geç 30 ayda bir end-for-end çevrilir; bozulma nedeniyle gerektiğinde veya en geç 5 yılda bir (hangisi önce gelirse) yenilenir.`,
+            `Safety Officer, bu servislerin geçerlilik tarihlerini izler ve survey window'una uygun planlar. Servis raporu (certificate) gemide saklanır; PSC ve class survey bu sertifikaları sorar. Free-fall filikalarda en geç 6 ayda bir serbest düşüş veya simulated launch alternatifi (MSC.1/Circ.1206) uygulanır.`,
           ],
           table: {
             caption: `Filika Kontrol Periyotları (LSA / MSC.402(96))`,
@@ -102,7 +102,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Liferaft servis ve yerleşim kontrolü",
           paragraphs: [
-            `Can salları yılda bir kez (bazı tiplerde extended 30 ay onayı ile) IMO onaylı bir servis istasyonunda açılıp kontrol edilir. Safety Officer, gemideki her salın servis due date'ini izler; geçmiş tarihli sal kullanılamaz ve doğrudan deficiency'dir. Sal cradle'a güvenli yerleştirilmeli, painter (bağlama halatı) sabit noktaya bağlı olmalıdır.`,
+            `Can salları yılda bir kez (bazı tiplerde extended 30 ay onayı ile) idarece (Administration) onaylı bir servis istasyonunda açılıp kontrol edilir. Safety Officer, gemideki her salın servis due date'ini izler; geçmiş tarihli sal kullanılamaz ve doğrudan deficiency'dir. Sal cradle'a güvenli yerleştirilmeli, painter (bağlama halatı) sabit noktaya bağlı olmalıdır.`,
             `Safety Officer ayrıca salın throw-over edilebileceği boş bir manevra alanı olduğunu, lashings'in serbest açılabildiğini ve hydrostatic release unit (HRU) bağlantısının doğru kurulduğunu denetler. Boyalı lashing veya pasla sıkışmış raf, gerçek acilde salın serbest kalmasını engeller — bu sık görülen, ölümcül bir kusurdur.`,
           ],
           callouts: [
@@ -116,7 +116,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Hydrostatic Release Unit (HRU)",
           paragraphs: [
-            `HRU, gemi battığında yaklaşık 1.5–4 m derinlikte su basıncıyla weak link'i keserek can salının serbest yüzmesini sağlayan basınç-aktif düzenektir. Çoğu HRU (örn. Hammar H20) disposable tiptir ve 2 yılda bir değiştirilir; üzerinde basılı expiry tarihi vardır. Safety Officer her HRU'nun expiry date'ini envantere kaydeder.`,
+            `HRU, gemi battığında yaklaşık 1.5–4 m derinlikte su basıncıyla can salını yerinde tutan lashing'i keserek can salının serbest yüzmesini sağlayan basınç-aktif düzenektir. Çoğu HRU (örn. Hammar H20) disposable tiptir ve 2 yılda bir değiştirilir; üzerinde basılı expiry tarihi vardır. Safety Officer her HRU'nun expiry date'ini envantere kaydeder.`,
             `HRU değişimi, sal servisine denk getirilebilir ama bağımsız olarak da takip edilmelidir. Yanlış kurulum (weak link ile strong point'in karışması, painter'ın HRU'ya yanlış bağlanması) salın ya hiç açılmamasına ya da batan gemiyle birlikte sürüklenmesine yol açar.`,
           ],
         },
@@ -129,7 +129,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Can yeleği ve immersion suit",
           paragraphs: [
             `Her mürettebat üyesi için bir adet can yeleği (kabinde + muster station yedeği + bridge/engine room watch yedeği) bulunmalıdır. Safety Officer; light (otomatik/manuel), whistle, retro-reflective tape, beden bandı ve kapsül durumunu kontrol eder. Şişme tipli (inflatable) yelekler periyodik servise tabidir.`,
-            `Immersion suit (mağdur su geçirmez kurtarma elbisesi), soğuk sularda hipotermiyi geciktirir. Yıllık olarak seam (dikiş) air pressure test ve görsel kontrole tabidir; fermuar parafinlenir, neopren çatlakları aranır. SOLAS, belirli bölgelerde her kişi için immersion suit zorunlu kılar.`,
+            `Immersion suit (su geçirmez kurtarma elbisesi), soğuk sularda hipotermiyi geciktirir. En geç 3 yılda bir (10 yaşından büyük elbiselerde daha sık) seam (dikiş) air pressure test'e ve düzenli görsel kontrole tabidir; fermuar parafinlenir, neopren çatlakları aranır. SOLAS, yük gemilerinde kural olarak gemideki her kişi için immersion suit zorunlu kılar.`,
           ],
           bullets: [
             `Lifejacket light battery expiry kontrolü`,

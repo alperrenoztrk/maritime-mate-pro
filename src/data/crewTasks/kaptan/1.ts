@@ -39,7 +39,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.2 DOC ve SMC: İki sertifikanın ayrımı",
           paragraphs: [
             `Document of Compliance (DOC) şirkete verilir ve şirketin işlettiği gemi tiplerini (bulk, oil tanker, chemical tanker, gas carrier, container, passenger vb.) kapsar. Safety Management Certificate (SMC) ise gemiye verilir ve geminin şirket SMS'ine uygun işletildiğini gösterir. Geminin DOC'un kopyasını taşıması zorunludur; çünkü SMC ancak geçerli bir DOC'a dayanır. Kaptan, DOC üzerinde geminin tipinin listelenmiş olduğunu mutlaka doğrular; aksi halde SMC geçersiz sayılabilir.`,
-            `DOC 5 yıl geçerlidir ve yıllık doğrulamaya (annual verification, ±3 ay penceresi) tabidir. SMC de 5 yıl geçerlidir ancak ara doğrulama (intermediate verification) DOC'taki 2. ve 3. yıldönümleri arasında yapılır. Kaptan bu pencereleri takip eder; sertifika doğrulama gecikmesi PSC (Port State Control) denetiminde detention sebebidir. Geçici sertifikalar (Interim DOC/SMC) yeni gemi teslimi veya şirket değişimi gibi durumlarda 6 ay (uzatmayla 12 ay) süreyle verilir.`,
+            `DOC 5 yıl geçerlidir ve yıllık doğrulamaya (annual verification, ±3 ay penceresi) tabidir. SMC de 5 yıl geçerlidir ancak ara doğrulama (intermediate verification) SMC'nin 2. ve 3. yıldönümleri arasında yapılır. Kaptan bu pencereleri takip eder; sertifika doğrulama gecikmesi PSC (Port State Control) denetiminde detention sebebidir. Geçici sertifikalar (Interim DOC/SMC) yeni gemi teslimi veya şirket değişimi gibi durumlarda verilir; Interim DOC en fazla 12 ay, Interim SMC 6 ay (özel durumlarda 6 ay daha uzatılabilir) geçerlidir.`,
           ],
           table: {
             caption: `ISM Sertifikaları — Geçerlilik ve Doğrulama Takvimi`,
@@ -150,14 +150,14 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Acil durum senaryoları ve müdahale planları",
           paragraphs: [
-            `ISM madde 8, şirketin olası acil durumları (yangın, çatışma, karaya oturma, su alma, kirlilik, adam denize düşme, terkleştirme, grav arıza, güvenlik olayı vb.) tanımlamasını ve her biri için müdahale planı hazırlamasını şart koşar. Bu planlar gemide Emergency Response / Contingency Manual olarak bulunur ve kaptanın günlük olarak erişebileceği, ezbere bildiği belgelerdir. Her planda komuta yapısı, roller, iletişim akışı ve ilk müdahale adımları net olmalıdır.`,
+            `ISM madde 8, şirketin olası acil durumları (yangın, çatışma, karaya oturma, su alma, kirlilik, adam denize düşme, gemiyi terk, güvenlik olayı vb.) tanımlamasını ve her biri için müdahale planı hazırlamasını şart koşar. Bu planlar gemide Emergency Response / Contingency Manual olarak bulunur ve kaptanın günlük olarak erişebileceği, ezbere bildiği belgelerdir. Her planda komuta yapısı, roller, iletişim akışı ve ilk müdahale adımları net olmalıdır.`,
             `Kaptan, müster listesinin (muster list — SOLAS III/8) güncel olduğunu, her mürettebat üyesinin acil durumdaki görevini (yangın ekibi, kurtarma ekibi, ilk yardım, can salı hazırlığı) bildiğini ve ekipman atamalarının (telsiz, EEBD, hortum) doğru olduğunu teyit eder. Mürettebat değiştiğinde müster listesi derhal güncellenir.`,
           ],
         },
         {
           subheading: "4.2 Drill ve eğitim frekansları",
           paragraphs: [
-            `SOLAS, belirli drill'leri zorunlu frekanslarda yapmayı emreder: abandon ship ve fire drill her ay (SOLAS III/19.3.2); yolcu gemilerinde her hafta (SOLAS III/30.2). Gemiye katılan personele can kurtarma ve yangın donanımı eğitimi en geç iki hafta içinde verilir (SOLAS III/19.4.1). Enclosed space entry/rescue drill en az 2 ayda bir (III/19.3.3), can filikası suya indirme + manevra en az 3 ayda bir (III/19.3.4.3), kurtarma botu (rescue boat) suya indirme mümkün olduğu ölçüde aylık ve her hâlükârda en az 3 ayda bir (III/19.3.4.4) yapılır. Kaptan bu takvimi planlar ve drill'lerin "kağıt üzerinde" değil gerçekçi yapılmasını sağlar.`,
+            `SOLAS, belirli drill'leri zorunlu frekanslarda yapmayı emreder: abandon ship ve fire drill her ay (SOLAS III/19.3.2); yolcu gemilerinde her hafta (SOLAS III/30.2). Gemiye katılan personele can kurtarma ve yangın donanımı eğitimi en geç iki hafta içinde verilir (SOLAS III/19.4.1). Enclosed space entry/rescue drill en az 2 ayda bir, can filikası suya indirme + manevra en az 3 ayda bir, kurtarma botu (rescue boat) suya indirme mümkün olduğu ölçüde aylık ve her hâlükârda en az 3 ayda bir yapılır (SOLAS III/19.3). Kaptan bu takvimi planlar ve drill'lerin "kağıt üzerinde" değil gerçekçi yapılmasını sağlar.`,
             `Drill kalitesi, kaptanın imzasını taşır. Etkili bir drill; gerçekçi senaryo, beklenmedik komplikasyon (örn. "bu can salı arızalı, alternatif kullan"), sürelerin ölçülmesi ve sonrasında debrief (değerlendirme) içerir. Drill kayıtlarına "what went well / what to improve" yazılır ve eksiklikler düzeltici aksiyona dönüştürülür. PSC denetçisi, kaydı görmenin ötesinde "şunu göster" diyerek gerçek yetkinlik test edebilir.`,
           ],
           table: {
@@ -257,7 +257,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 Korsanlık ve BMP — yüksek riskli bölge geçişleri",
           paragraphs: [
-            `Korsanlık/armed robbery riski olan bölgelerde (Aden Körfezi, Gine Körfezi, Singapur Boğazı yaklaşmaları vb.) BMP (Best Management Practices, güncel sürüm BMP5) uygulanır. Hazırlık; UKMTO ve MSCHOA'ya kayıt/raporlama, hız ve freeboard'un maksimuma çıkarılması, fiziksel sertleştirme (dikenli tel, su perdeleri, erişim kapatma), gelişmiş gözcü düzeni ve bir citadel (sığınak) hazırlığını kapsar. Kaptan, bölgeye girmeden önce risk değerlendirmesini günceller ve ekibi brifler.`,
+            `Korsanlık/armed robbery riski olan bölgelerde (Aden Körfezi, Gine Körfezi, Singapur Boğazı yaklaşmaları vb.) BMP (Best Management Practices) uygulanır. Hazırlık; UKMTO ve MSCHOA'ya kayıt/raporlama, hız ve freeboard'un maksimuma çıkarılması, fiziksel sertleştirme (dikenli tel, su perdeleri, erişim kapatma), gelişmiş gözcü düzeni ve bir citadel (sığınak) hazırlığını kapsar. Kaptan, bölgeye girmeden önce risk değerlendirmesini günceller ve ekibi brifler.`,
             `Citadel, mürettebatın saldırı anında çekildiği, dışarıdan girilemeyen, haberleşme imkânı olan korunaklı bir bölgedir. Citadel prensibi şudur: tüm mürettebat sayım yapılarak içeride olmadan ve dışarıyla güvenli haberleşme kurulmadan askeri kurtarma başlatılamaz. Silahlı özel güvenlik (PCASP) bulundurulması bayrak ve liman devleti iznine, şirket politikasına ve sıkı kullanım kurallarına (rules for the use of force) tabidir; kaptan bu çerçevenin gemideki uygulayıcısıdır.`,
           ],
         },
@@ -276,7 +276,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 Tek bir yönetim sistemi olarak entegrasyon",
           paragraphs: [
-            `ISM (safety) ve ISPS (security) farklı sözleşmelerden doğsa da gemide tek bir bütünleşik yönetim sistemi olarak işletilmelidir. Risk değerlendirme metodolojisi, doküman kontrolü, denetim mantığı, düzeltici aksiyon döngüsü ve kayıt disiplini her ikisinde de aynıdır. Birçok şirket bu iki sistemi (bazen MLC ve çevre yönetimi ISO 14001 ile birlikte) tek bir entegre yönetim el kitabı altında toplar. Kaptan, bu sistemlerin ayrı silolar değil tek bir disiplin olarak çalışmasını sağlar.`,
+            `ISM (safety) ve ISPS (security) SOLAS'ın farklı bölümlerinden (Chapter IX ve XI-2) doğsa da gemide tek bir bütünleşik yönetim sistemi olarak işletilmelidir. Risk değerlendirme metodolojisi, doküman kontrolü, denetim mantığı, düzeltici aksiyon döngüsü ve kayıt disiplini her ikisinde de aynıdır. Birçok şirket bu iki sistemi (bazen MLC ve çevre yönetimi ISO 14001 ile birlikte) tek bir entegre yönetim el kitabı altında toplar. Kaptan, bu sistemlerin ayrı silolar değil tek bir disiplin olarak çalışmasını sağlar.`,
             `Pratikte bir olay hem emniyet hem güvenlik boyutu taşıyabilir: örneğin yetkisiz bir kişinin makine dairesine girmesi hem güvenlik ihlali hem de emniyet riskidir. Kaptan, raporlama akışını ve müdahaleyi her iki açıdan da yönetir. Yıllık yönetim gözden geçirmesi (management review), her iki sistemin performans göstergelerini (KPI: NC sayısı, drill kalitesi, near-miss oranı, güvenlik olayı sayısı) birlikte değerlendirir.`,
           ],
         },

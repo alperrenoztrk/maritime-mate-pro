@@ -23,8 +23,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 SOLAS Chapter V/34 — Safe Navigation",
           paragraphs: [
-            `SOLAS V/34, geminin sefere çıkmadan önce kaptanın "passage plan"ı kontrol etmesi ve onaylaması gerektiğini açıkça söyler. Plan; berth-to-berth mantığıyla hazırlanmalı; rota seçimi, derinlik yeterliliği, tahmini hava ve akıntı, trafik yoğunluğu, demir yerleri, abort points ve contingency anchorage'lar bu planın ayrılmaz parçaları olarak yer almalıdır. Kaptanın bu planı sadece "imzalaması" yeterli değildir; planın gemi tipi, sefer karakteri ve mürettebat yetkinliğine uygun olduğunu fiilen gözden geçirmesi beklenir.`,
-            `V/34-1 maddesi ise kaptanın seyir emniyetine ilişkin kararlarının "professional judgement"a dayandığını ve hiçbir şirket, charterer ya da üçüncü tarafın bu kararı engelleyici biçimde davranamayacağını açıkça düzenler. Pratikte bu hüküm, "overriding authority" olarak anılır ve ISM Code madde 5.2'de de aynen tekrarlanır. ISM iç denetimleri, şirketin kaptana bu yetkiyi engellemediğine dair somut kanıt arar.`,
+            `SOLAS V/34, geminin sefere çıkmadan önce kaptanın seferin uygun harita ve seyir yayınlarıyla planlanmış olmasını (passage plan) sağlaması gerektiğini açıkça söyler. Plan; berth-to-berth mantığıyla hazırlanmalı; rota seçimi, derinlik yeterliliği, tahmini hava ve akıntı, trafik yoğunluğu, demir yerleri, abort points ve contingency anchorage'lar bu planın ayrılmaz parçaları olarak yer almalıdır. Kaptanın bu planı sadece "imzalaması" yeterli değildir; planın gemi tipi, sefer karakteri ve mürettebat yetkinliğine uygun olduğunu fiilen gözden geçirmesi beklenir.`,
+            `V/34-1 maddesi ise kaptanın seyir emniyetine ilişkin kararlarının "professional judgement"a dayandığını ve hiçbir şirket, charterer ya da üçüncü tarafın bu kararı engelleyici biçimde davranamayacağını açıkça düzenler. Pratikte bu hüküm, "overriding authority" olarak anılır ve ISM Code madde 5.2'de de benzer şekilde vurgulanır. ISM iç denetimleri, şirketin kaptana bu yetkiyi engellemediğine dair somut kanıt arar.`,
           ],
           callouts: [
             {
@@ -129,7 +129,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Sınırlı görüş, gece seyir ve ağır hava",
           paragraphs: [
-            `Sınırlı görüş (görüş < 2 mil) anında COLREG Rule 19 kapsamında özel önlemler devreye girer: emniyetli hız, sis düdüğü, makine hazır, ekstra lookout. Kaptan derhal köprüüstüne çağrılır. Radar ARPA çalıştırma, hedef takip kalitesi (true vs relative motion), sea clutter ve rain clutter ayarları kaptanın kontrolü altında olmalıdır.`,
+            `Sınırlı görüş anında COLREG Rule 5, 19 ve 35 kapsamında özel önlemler devreye girer: emniyetli hız, sis düdüğü, makine hazır, ekstra lookout. Kaptan derhal köprüüstüne çağrılır. Radar ARPA çalıştırma, hedef takip kalitesi (true vs relative motion), sea clutter ve rain clutter ayarları kaptanın kontrolü altında olmalıdır.`,
             `Ağır havada (Beaufort 8 ve üzeri) gemi yönetimi taktikleri değişir: heave-to, scudding, riding it out, shelter arama. Kaptan; rolling period, parametric rolling riski ve synchronous rolling riskini değerlendirir. GM değeri ve dalga periyoduna göre rota ve hız değişikliği yapar.`,
           ],
           callouts: [
@@ -143,7 +143,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.3 Trafik yoğun bölgeler ve TSS geçişleri",
           paragraphs: [
-            `Traffic Separation Schemes (TSS), COLREG Rule 10 kapsamında düzenlenir. Geminin ana akıntı yönünde olması, lane içinde mümkün olduğunca uzakta crossing yapmaması ve kıyıyla TSS arasındaki inshore traffic zone'a yalnızca <20 m gemiler veya yerel trafiğin girmesi temel kuraldır. Dover, Ouessant ve Bosporus gibi yoğun TSS'lerde kaptan bizzat komuta alır.`,
+            `Traffic Separation Schemes (TSS), COLREG Rule 10 kapsamında düzenlenir. Geminin trafik akışının genel yönünde seyretmesi, lane'leri mümkün olduğunca kesmemesi (kesmek zorundaysa trafik akışına mümkün olduğunca dik bir pruvayla kesmesi) ve kıyıyla TSS arasındaki inshore traffic zone'u, bitişik lane'i emniyetle kullanabiliyorsa kullanmaması (<20 m gemiler, yelkenliler, balıkçı gemileri, bu bölgedeki bir yere gidip gelen gemiler ve ani tehlikeden kaçınma durumu hariç) temel kuraldır. Dover, Ouessant ve Bosporus gibi yoğun TSS'lerde kaptan bizzat komuta alır.`,
           ],
         },
       ],
@@ -231,7 +231,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 Yazılı kayıt ve şirkete bildirim",
           paragraphs: [
-            `Karar alındığında: log book'a tam metin olarak yazılır, e-posta ile şirketin DPA'sına ve operasyon yöneticisine bildirilir, charterer'a NOR/SOF üzerinden bildirim yapılır. Bu üçlü kayıt, ileride doğacak hukuki ihtilaflarda kaptanı ve şirketi koruyan en güçlü kanıttır.`,
+            `Karar alındığında: log book'a tam metin olarak yazılır, e-posta ile şirketin DPA'sına ve operasyon yöneticisine bildirilir, charterer'a bildirim yapılır. Bu üçlü kayıt, ileride doğacak hukuki ihtilaflarda kaptanı ve şirketi koruyan en güçlü kanıttır.`,
           ],
         },
       ],
@@ -242,14 +242,14 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 Costa Concordia (2012)",
           paragraphs: [
-            `Kaptan, Giglio Adası'na yakın "salute" manevrası yaparken karaya oturdu. 32 ölü. Soruşturma; passage plan'da bu manevranın olmaması, kıyıdan emniyetsiz mesafe, BRM eksikliği ve kaptan-pilot ilişkisinin kaotik yönetimini ortaya koydu.`,
+            `Kaptan, Giglio Adası'na yakın "salute" manevrası yaparken karaya oturdu. 32 ölü. Soruşturma; kıyıdan emniyetsiz mesafe ve BRM eksikliğini ortaya koydu.`,
             `Ders: planlanmamış manevra yapılmaz. Yapılacaksa risk değerlendirmesi yazılı olarak hazırlanır ve şirkete onaylatılır.`,
           ],
         },
         {
           subheading: "8.2 El Faro (2015)",
           paragraphs: [
-            `Kasırga rotasında ısrar, 33 ölü. Ders: weather routing servisinin tavsiyesi göz ardı edilemez; junior zabitin "challenge"ı bastırılamaz.`,
+            `Kasırga rotasında ısrar, 33 ölü. Ders: en güncel hava bilgisi ve resmî kasırga uyarıları göz ardı edilemez; junior zabitin "challenge"ı bastırılamaz.`,
           ],
         },
         {

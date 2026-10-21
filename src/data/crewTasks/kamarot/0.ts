@@ -99,7 +99,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Günlük kamara servisi sırası",
           paragraphs: [
-            `Kamara temizliği "yukarıdan aşağıya, kuru işten ıslak işe" prensibiyle yapılır. Önce havalandırma için kapı/iletişim açılır (mürettebatın gizliliğine saygı esastır; kişisel eşyaya dokunulmaz). Sonra tozalma yüksek yüzeylerden (dolap üstü, raf, aydınlatma) başlar, masalar ve sık dokunulan yüzeyler (kapı kolu, anahtar, telefon) dezenfekte edilir, en son zemin süpürülüp paspaslanır.`,
+            `Kamara temizliği "yukarıdan aşağıya, kuru işten ıslak işe" prensibiyle yapılır. Önce havalandırma için kapı açılır (mürettebatın gizliliğine saygı esastır; kişisel eşyaya dokunulmaz). Sonra tozalma yüksek yüzeylerden (dolap üstü, raf, aydınlatma) başlar, masalar ve sık dokunulan yüzeyler (kapı kolu, anahtar, telefon) dezenfekte edilir, en son zemin süpürülüp paspaslanır.`,
             `Sık dokunulan yüzeyler (high-touch surfaces) hijyenin kritik noktasıdır: kapı kolları, lavabo bataryası, klozet kapağı, ışık anahtarları. Bu yüzeyler sadece silinmez, dezenfekte edilir. Salgın dönemlerinde bu noktaların sıklığı artırılır.`,
           ],
           bullets: [

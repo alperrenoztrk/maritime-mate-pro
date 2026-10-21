@@ -222,7 +222,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 Liman ve drydock organizasyonu",
           paragraphs: [
-            `Limanda bunker, store alımı, survey ve tamirat aynı anda yürür. Baş Mühendis görev çakışmalarını önler; her işe sorumlu atar ve emniyet önceliğini korur. Riser işleri (hot work, enclosed space) için ayrı permit ve gözetim planlanır.`,
+            `Limanda bunker, store alımı, survey ve tamirat aynı anda yürür. Baş Mühendis görev çakışmalarını önler; her işe sorumlu atar ve emniyet önceliğini korur. Riskli işler (hot work, enclosed space) için ayrı permit ve gözetim planlanır.`,
             `Drydock döneminde iş yükü zirve yapar; Baş Mühendis bir master plan ile kritik path işleri (shaft survey, tail-shaft draw, main engine overhaul) önceliklendirir ve tersane ekibiyle koordinasyonu yönetir.`,
           ],
         },

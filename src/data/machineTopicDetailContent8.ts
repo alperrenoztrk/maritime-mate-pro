@@ -16,7 +16,7 @@ const content8: ContentMap = {
           heading: "Çalışma Prensibi",
           paragraphs: [
             "Senkron jeneratörde rotor, DC uyarma akımı ile manyetik alan oluşturur. Rotor döndüğünde bu manyetik alan stator sargılarını keser ve Faraday'ın elektromanyetik indüksiyon yasasına göre EMK (elektromotor kuvvet) indüklenir.",
-            "Üç fazlı sistemde stator sargıları birbirinden 120° mekanik açı ile yerleştirilmiştir. Bu düzen, birbirine göre 120° faz farkına sahip üç sinüsoidal gerilim üretir."
+            "Üç fazlı sistemde stator sargıları birbirinden 120° elektriksel açı ile yerleştirilmiştir. Bu düzen, birbirine göre 120° faz farkına sahip üç sinüsoidal gerilim üretir."
           ]
         },
         {
@@ -193,7 +193,7 @@ const content8: ContentMap = {
         {
           heading: "Yük Kabulü ve Reddi",
           paragraphs: [
-            "Büyük yüklerin ani bağlanması (yük kabulü) veya kopması (yük reddi) frekansı önemli ölçüde etkiler. IMO MSC.235(82) standardına göre, jeneratör %100 yük reddinde frekansın %10'dan fazla artmaması ve 5 saniye içinde %1 banda dönmesi gerekir."
+            "Büyük yüklerin ani bağlanması (yük kabulü) veya kopması (yük reddi) frekansı önemli ölçüde etkiler. IACS UR M3 klas kuralına göre, en büyük ani yük bağlanması veya kopmasında frekans değişimi anma frekansının ±%10'unu aşmamalı ve 5 saniye içinde %1 banda dönmelidir; %100 yük reddinde %10'u aşan geçici değişim, overspeed cihazını devreye sokmuyorsa kabul edilebilir."
           ]
         }
       ],
@@ -340,7 +340,7 @@ const content8: ContentMap = {
           heading: "MSB Yapısı",
           paragraphs: [
             "MSB; jeneratör panelleri, bara sistemi, dağıtım panelleri, ölçü aletleri, koruma rölesi ve kontrol devrelerinden oluşur. Ana bara genellikle bakır veya alüminyum iletkenlerden yapılır ve jeneratörler ile yük devre kesiciler bu baraya bağlanır.",
-            "SOLAS kurallarına göre MSB su geçirmez kapalı alanda, makine dairesinin üst platformunda konumlandırılır. Ön ve arka taraftan erişim mesafesi en az 0,6 m olmalıdır."
+            "MSB genellikle makine kontrol odasında (ECR) konumlandırılır. Ön ve arka taraftan güvenli erişim sağlanmalıdır."
           ]
         },
         {
@@ -373,7 +373,7 @@ const content8: ContentMap = {
         {
           heading: "SOLAS Gereklilikleri",
           paragraphs: [
-            "SOLAS Bölüm II-1 Kural 42-44'e göre 500 GT üstü yolcu ve yük gemileri acil güç kaynağı bulundurmalıdır. Acil jeneratör, ana güç kaybından sonra 45 saniye içinde otomatik devreye girmelidir.",
+            "SOLAS Bölüm II-1 Kural 42-44'e göre tüm yolcu gemileri ve 500 GT ve üzeri yük gemileri acil güç kaynağı bulundurmalıdır. Acil jeneratör, ana güç kaybından sonra 45 saniye içinde otomatik devreye girmelidir.",
             "ESB, makine dairesinin üzerinde, en üst sürekli güvertede veya navigasyon güvertesinde konumlandırılır."
           ]
         },

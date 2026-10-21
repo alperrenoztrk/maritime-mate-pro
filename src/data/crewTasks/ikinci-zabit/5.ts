@@ -193,7 +193,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.2 SART ve RACON",
           paragraphs: [
             `SART (Search and Rescue Transponder), can salı/sandalda bulunan ve 9 GHz radarda tetiklenince ekranda 12 noktalık bir hat üreten bir cihazdır. İkinci Zabit, SART'ın batarya son kullanım tarihini ve gerekiyorsa periyodik test (radar karşısında) kaydını tutar.`,
-            `RACON, seyir işaretlerine (fener, şamandıra) yerleştirilen ve radarda Morse kodu üreten bir transponderdir; gözlemi radar doğrulama için faydalıdır. AIS-SART ve EPIRB ile birlikte GMDSS emniyet zincirinin parçasıdırlar.`,
+            `RACON, seyir işaretlerine (fener, şamandıra) yerleştirilen ve radarda Morse kodu üreten bir transponderdir; gözlemi radar doğrulama için faydalıdır.`,
           ],
           callouts: [
             {

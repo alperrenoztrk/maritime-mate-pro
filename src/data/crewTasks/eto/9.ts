@@ -165,7 +165,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Yedek bağlantı geçiş prosedürleri",
           paragraphs: [
-            `VSAT kesildiğinde, gemi alternatif bağlantıya geçer: Inmarsat FleetBroadband/Fleet Xpress (L-band, yağmura dayanıklı ama düşük hız), limanlarda GSM/4G ve acil durumda MF/HF. ETO, otomatik failover (least-cost/least-priority routing) yapılandırmasını yönetir ve manuel geçiş prosedürünü bilir; kritik operasyonel trafiğin kesintisiz devamı önceliktir.`,
+            `VSAT kesildiğinde, gemi alternatif bağlantıya geçer: Inmarsat FleetBroadband (L-band, yağmura dayanıklı ama düşük hız), limanlarda GSM/4G ve acil durumda MF/HF. ETO, otomatik failover (least-cost routing) yapılandırmasını yönetir ve manuel geçiş prosedürünü bilir; kritik operasyonel trafiğin kesintisiz devamı önceliktir.`,
           ],
         },
         {

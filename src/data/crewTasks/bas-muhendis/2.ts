@@ -73,7 +73,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 Numune alımı ve BDN",
           paragraphs: [
-            `MARPOL Annex VI Reg. 18, manifold'da continuous drip sample (4-way sampler) alınmasını zorunlu kılar. Numune 4 şişeye bölünür: gemi sakladığı (MARPOL bottle, mühürlü, min 12 ay saklanır), supplier kopyası, lab gönderilen ve liman otoritesi kopyası. Her şişe mühür numarası BDN'ye ve barj kopyasına yazılır; her iki taraf imzalar.`,
+            `MARPOL Annex VI Reg. 18, manifold'da continuous drip sample (4-way sampler) alınmasını zorunlu kılar. Numune 4 şişeye bölünür: gemi sakladığı (MARPOL bottle, mühürlü, min 12 ay saklanır), supplier kopyası, lab gönderilen ve geminin kendi ticari numunesi (ship's sample). Her şişe mühür numarası BDN'ye ve barj kopyasına yazılır; her iki taraf imzalar.`,
             `BDN (Bunker Delivery Note) MARPOL Annex VI Reg. 18.5 gereği en az 3 yıl gemide saklanmalıdır ve şunları içermelidir: gemi adı/IMO no, liman, teslim tarihi, supplier bilgisi, ürün adı, miktar (MT), density@15°C, sülfür içeriği (% m/m) ve supplier'ın MARPOL uyum beyanı.`,
           ],
         },
@@ -98,7 +98,7 @@ const content: CrewTaskLongForm = {
             ],
           },
           paragraphs: [
-            `Lab raporu gelene kadar yeni alınan yakıt mümkünse kullanılmaz (settling tank'ta bekletilir). Acil kullanım gerekiyorsa karar Baş Mühendis tarafından kayıt altına alınır. FOBAS/VPS gibi laboratuvarlar 48-72 saat içinde sonuç verir; "off-spec" durumunda supplier'a hemen Letter of Protest gönderilir.`,
+            `Lab raporu gelene kadar yeni alınan yakıt mümkünse kullanılmaz. Acil kullanım gerekiyorsa karar Baş Mühendis tarafından kayıt altına alınır. FOBAS/VPS gibi laboratuvarlar 48-72 saat içinde sonuç verir; "off-spec" durumunda supplier'a hemen Letter of Protest gönderilir.`,
           ],
         },
         {
@@ -130,7 +130,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Tank ısıtma ve transfer disiplini",
           paragraphs: [
-            `Settling ve service tank'lar yakıt pour point'inin 10-15°C üzerinde tutulur. Storage tank ısıtması, transfer öncesi pompalanabilir viskoziteyi sağlamak içindir. Aşırı ısıtma (>condensation/flashpoint riski) ve tank içinde lokal overheating (coil leak ile su girişi) önlenir.`,
+            `Storage tank ısıtması, transfer öncesi pompalanabilir viskoziteyi sağlamak içindir. Aşırı ısıtma (>condensation/flashpoint riski) ve tank içinde lokal overheating (coil leak ile su girişi) önlenir.`,
             `Tank sounding/ullage günlük yapılır; ROB tutarlılığı izlenir. Free water (tabanda biriken su) düzenli drain edilir. Tank atmosfer/flashpoint güvenliği için flashpoint ≥60°C kuralı (SOLAS) gözetilir; düşük flashpoint yakıt (örn. yanlışlıkla MGO/HFO comingling sonrası) ciddi yangın riskidir.`,
           ],
         },
@@ -142,8 +142,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Global cap ve ECA limitleri",
           paragraphs: [
-            `2020 IMO global sulphur cap %0.50 m/m'dir. ECA bölgelerinde (Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip) limit %0.10 m/m'dir. Scrubber (EGCS — Exhaust Gas Cleaning System) ile çalışan gemiler HSFO kullanabilir ancak scrubber washwater MARPOL ve liman kurallarına uygun olmalıdır (bazı limanlar open-loop scrubber yasaklamıştır).`,
-            `Carriage ban (Reg. 14.3.5) gereği, scrubber'sız gemiler %0.50 üstü yakıtı gemide bulunduramaz bile. PSC, ana makine ve service tank'tan numune alır (in-use ve onboard sample), MARPOL bottle ile karşılaştırır.`,
+            `2020 IMO global sulphur cap %0.50 m/m'dir. ECA bölgelerinde (Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip ve 1 Mayıs 2025'ten itibaren Akdeniz) limit %0.10 m/m'dir. Scrubber (EGCS — Exhaust Gas Cleaning System) ile çalışan gemiler HSFO kullanabilir ancak scrubber washwater MARPOL ve liman kurallarına uygun olmalıdır (bazı limanlar open-loop scrubber yasaklamıştır).`,
+            `Carriage ban (Reg. 14.1) gereği, scrubber'sız gemiler %0.50 üstü yakıtı gemide bulunduramaz bile. PSC, ana makine ve service tank'tan numune alır (in-use ve onboard sample), MARPOL bottle ile karşılaştırır.`,
           ],
           callouts: [
             {
@@ -156,7 +156,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 EEXI ve CII performans takibi",
           paragraphs: [
-            `EEXI (Energy Efficiency Existing Ship Index) bir kerelik teknik bir indekstir; geminin tasarım verimliliğini ölçer ve EPL (Engine Power Limitation) gibi önlemlerle uyum sağlanır. CII (Carbon Intensity Indicator) ise operasyonel ve yıllıktır; geminin taşıdığı yük başına emisyonunu (gCO2/dwt·nm) ölçer ve A-E arası rating verir.`,
+            `EEXI (Energy Efficiency Existing Ship Index) bir kerelik teknik bir indekstir; geminin tasarım verimliliğini ölçer ve EPL (Engine Power Limitation) gibi önlemlerle uyum sağlanır. CII (Carbon Intensity Indicator) ise operasyonel ve yıllıktır; geminin taşıma kapasitesi ve kat ettiği mesafe başına emisyonunu (gCO2/dwt·nm) ölçer ve A-E arası rating verir.`,
             `Baş Mühendis, yakıt tüketim verilerini (IMO DCS — Data Collection System) doğru raporlamaktan sorumludur. D rating üst üste 3 yıl veya E rating tek yıl alınırsa SEEMP Part III kapsamında corrective action plan zorunludur. Yakıt seçimi, hız profili ve hull/propeller performansı CII'yi doğrudan etkiler.`,
           ],
         },
@@ -248,7 +248,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.1 Off-spec yakıt ve uyumsuzluk olayları",
           paragraphs: [
-            `2018 Houston ve Singapur'da geniş çaplı kontamine VLSFO partileri (yüksek phenolic/styrene bileşikleri) onlarca gemide fuel pump ve injector seizure'a yol açtı. Standart ISO 8217 testleri bu kontaminasyonu yakalamadı; GC-MS özel analiz gerekti. Ders: kalite şüphesinde standart testin ötesinde forensic analiz istenir.`,
+            `2018 Houston ve Singapur'da geniş çaplı kontamine HSFO partileri (yüksek phenolic/styrene bileşikleri) onlarca gemide fuel pump ve injector seizure'a yol açtı. Standart ISO 8217 testleri bu kontaminasyonu yakalamadı; GC-MS özel analiz gerekti. Ders: kalite şüphesinde standart testin ötesinde forensic analiz istenir.`,
             `Incompatible yakıt comingling, asphaltene flocculation ile yoğun sludge oluşturur; purifier ve filtreyi tıkar, fuel starvation ile blackout yapar. Compatibility spot test ve yeni partileri ayrı tankta tutma temel korunmadır.`,
           ],
         },

@@ -24,7 +24,7 @@ const content: ShipOpLongForm = {
       sections: [
         {
           subheading: "2.1 CO2 lockout",
-          paragraphs: [`CO2 boğulma riski taşır; release yalnız tahliye ve sayım sonrası, lockout devredeyken yapılır.`],
+          paragraphs: [`CO2 boğulma riski taşır; release yalnız tahliye ve sayım sonrası yapılır.`],
           callouts: [
             { type: "warning", title: "CO2 = boğulma", text: `Deşarjdan önce personel tahliye edilip sayılmalıdır.` },
           ],

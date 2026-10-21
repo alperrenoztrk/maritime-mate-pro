@@ -42,7 +42,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Windlass Tipleri",
             paragraphs: [
-              "Dikey tip (vertical shaft) windlass, zincir dişlisi (wildcat/gypsy) güverte altında, tahrik mekanizması güverte altı bölmesinde bulunur. Baş kasara alanından tasarruf sağlar ve büyük ticari gemilerde tercih edilir.",
+              "Dikey tip (vertical shaft) windlass, zincir dişlisi (wildcat/gypsy) güverte üstünde, tahrik mekanizması güverte altı bölmesinde bulunur. Baş kasara alanından tasarruf sağlar.",
               "Yatay tip (horizontal shaft) windlass, tüm bileşenleri güverte üzerindedir. Bakım kolaylığı sağlar; orta boy gemilerde yaygındır.",
               "Kombine windlass/mooring winch, hem zincir hem halat tamburu aynı şaft üzerinde bulunur. Alan ve maliyet tasarrufu sağlar."
             ],
@@ -67,7 +67,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Kapasite ve Hesaplama",
             paragraphs: [
-              "Windlass kapasitesi Equipment Number (EN) ile belirlenir. EN değeri geminin deplasmanı, baş yüksekliği ve yanal alanına bağlıdır."
+              "Windlass kapasitesi Equipment Number (EN) ile belirlenir. EN değeri geminin deplasmanı, genişliği, yaz yükleme su hattından en üst güverte binasının üstüne kadar olan etkin yüksekliği ve yanal (profil) alanına bağlıdır."
             ],
             formula: {
               expression: "EN = Δ^(2/3) + 2·B·H + A/10",
@@ -132,7 +132,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Vinç Tipleri",
             paragraphs: [
-              "Tek bumbalı jib vinç: En yaygın gemi vinci tipidir. Elektro-hidrolik veya tam elektrik tahrikli olabilir. Kaldırma, devirme (luffing), bocurgat (slewing) hareketleri vardır.",
+              "Tek bumbalı jib vinç: En yaygın gemi vinci tipidir. Elektro-hidrolik veya tam elektrik tahrikli olabilir. Kaldırma, devirme (luffing), dönme (slewing) hareketleri vardır.",
               "Çift bumbalı vinç: İki bumba ile daha geniş çalışma alanı sağlar.",
               "Gantry crane (portal vinç): Konteyner gemilerinde ambar kapağı üzerinde hareket eden vinç. Yüksek hız ve hassas konumlandırma sağlar.",
               "Derrick (çubuk bumba): Eski tip gemilerde görülen, çubuk bumba ve halatlarla çalışan kaldırma düzeni. Union purchase yöntemi ile iki derrick eşzamanlı çalıştırılarak hızlı operasyon sağlanabilir."
@@ -221,14 +221,14 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               "Head line: Baş taraftan rıhtıma ileriye doğru uzanan halat. Gemiyi rıhtıma çeker.",
               "Stern line: Kıç taraftan rıhtıma geriye doğru uzanan halat.",
               "Breast line: Gemiden rıhtıma dik olarak uzanan halat. Gemiyi rıhtıma yakın tutar.",
-              "Spring line: Gemiden rıhtıma boylamasına uzanan halat. Fore spring geminin geriye kaymasını, aft spring ileri kaymasını önler.",
+              "Spring line: Gemiden rıhtıma boylamasına uzanan halat. Fore spring (baştan kıça doğru uzanır) geminin ileri kaymasını, aft spring (kıçtan başa doğru uzanır) geriye kaymasını önler.",
               "Halat türleri: Polipropilen (PP), poliamid (nylon), poliester, HMPE (Dyneema), tel halat. Farklı türlerin esneme ve kopma özellikleri farklıdır; karışık kullanım tehlikelidir."
             ]
           },
           {
             heading: "Snap-Back Tehlikesi",
             paragraphs: [
-              "Gergin halat koptuğunda depolanan enerji serbest kalır ve halat geri seker (snap-back). OCIMF tavsiyelerine göre güvertede snap-back zone'lar işaretlenir.",
+              "Gergin halat koptuğunda depolanan enerji serbest kalır ve halat geri seker (snap-back). OCIMF MEG4'e göre güverteye boyanan snap-back zone'lar yanlış güven duygusu verebileceğinden, tüm bağlama alanı potansiyel snap-back zone kabul edilir.",
               "Sentetik halatlar tel halatlardan çok daha fazla enerji depolar; kopma anında çok daha tehlikelidir. Mooring operasyonlarında en çok ölüm nedeni snap-back'tir."
             ]
           },
@@ -519,7 +519,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             paragraphs: [
               "Performance monitor/BITE sonucu, sea return ve bilinen radar-conspicuous objelerin görünümü günlük operasyonel performans kanıtıdır. Magnetronlu sistemlerde warm-up/tuning davranışı; solid-state sistemlerde self-test ve module status üretici kitabına göre izlenir.",
               "Heading/speed input kaybında radar ekosu bulunabilir fakat stabilization ve ARPA true data güvenilirliği bozulur. Kullanıcı arızalı katmanı ayırır, relative ölçüm ve manuel plotting/diğer radar-görsel yöntemlere döner, Kaptanı bilgilendirir ve arızayı kaydeder.",
-              "Radar arızasında hedefi 'onarım yaparak' değil, önce safe speed, ek gözcü, alternatif radar/seyir sensörü ve gerekirse rota/alan değişikliği ile operasyonel olarak emniyete almak vardiya zabitinin ilk görevidir."
+              "Radar arızasında gemiyi 'onarım yaparak' değil, önce safe speed, ek gözcü, alternatif radar/seyir sensörü ve gerekirse rota/alan değişikliği ile operasyonel olarak emniyete almak vardiya zabitinin ilk görevidir."
             ]
           }
         ],
@@ -1115,10 +1115,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Şaft Hattı Bileşenleri",
             paragraphs: [
-              "Krank mili → Ara şaft (intermediate shaft) → İtme yatağı (thrust bearing) → Pervane şaftı → Pervane.",
+              "Krank mili → İtme yatağı (thrust bearing) → Ara şaft (intermediate shaft) → Pervane şaftı → Pervane.",
               "İtme yatağı (Michell tipi): Tilting pad yatak tasarımıyla pervane itme kuvvetini gemi yapısına aktarır. Yağ filmi üzerinde çalışır.",
               "Stern tube: Pervane şaftının gemi gövdesinden çıktığı noktada yatak ve sızdırmazlık sağlar.",
-              "Flanşlı kaplin: Şaft segmentlerini birbirine bağlar; kalibrasyon ayarlanabilir."
+              "Flanşlı kaplin: Şaft segmentlerini birbirine bağlar."
             ]
           },
           {
@@ -1332,7 +1332,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Jeneratör Sistemi",
             paragraphs: [
-              "Yardımcı dizel motor genellikle dört zamanlı, orta devirli tiptir. 720 veya 900 rpm'de çalışarak 50 Hz veya 60 Hz elektrik üretir.",
+              "Yardımcı dizel motor genellikle dört zamanlı, orta devirli tiptir. 60 Hz için 720 veya 900 rpm'de, 50 Hz için 750 veya 1000 rpm'de çalışarak elektrik üretir.",
               "Alternatör, 3 fazlı AC gerilim üretir. Gemi ana bara gerilimi genellikle 440 V veya 6.6 kV'tur."
             ],
             formula: {
@@ -2748,7 +2748,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Yangın Hattı Donanımı",
             paragraphs: [
               "Ana yangın pompaları makine dairesinde, acil yangın pompası ise makine dairesi dışında ayrı bir bölmede yer alır.",
-              "Yangın hattı (fire main) hidrantlar, ISC (international shore connection) ve sabit söndürme sistemlerini besler.",
+              "Yangın hattı (fire main) hidrantları ve sabit söndürme sistemlerini besler; ISC (international shore connection) ile yangın hattına karadan veya başka bir gemiden su verilebilir.",
               "Hat üzerinde basıncı koruyan jokey pompa (jockey/pressure maintenance pump) ve hidrofor tankı bulunabilir."
             ],
             table: {
@@ -3367,8 +3367,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Tipleri",
             paragraphs: [
               "Folding (katlanır) tip: hidrolik silindirlerle kapak panelleri açılarak ambar başına katlanır.",
-              "Side-rolling tip: panel raylar üzerinde yana doğru kayar; kapasiteler büyük, container gemilerinde yaygın.",
-              "Pontoon tip: tek parça paneller vinçle kaldırılır; küçük gemilerde tercih edilir.",
+              "Side-rolling tip: panel raylar üzerinde yana doğru kayar; kapasiteler büyük, dökme yük gemilerinde yaygın.",
+              "Pontoon tip: tek parça paneller vinçle kaldırılır; konteyner gemilerinde yaygındır.",
               "Piggyback: iki panel arka arkaya kayar, üstüste biner."
             ],
             table: {
@@ -4051,8 +4051,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               "Ana hava kompresörü (main air compressor): 2 kademeli, 30 bar; ana receiver tankını şarj eder.",
               "Start-air receiver toplam kapasitesi, reversible ana makinede kompresör takviyesi olmadan en az 12 ardışık start; non-reversible düzende en az 6 start kriteri ve onaylı piping/izolasyon düzeniyle değerlendirilir.",
               "Reducing valve: 30 bar → 7 bar control/working air için.",
-              "Air dryer: refrigerant veya desiccant tipi; çiğ noktası -20 ila -40 °C.",
-              "Acil kompresör (emergency air compressor): elektrik kesintisinde dizel veya emergency switchboard'dan beslenen küçük kompresör; ana makine ilk start için."
+              "Air dryer: refrigerant (çiğ noktası yaklaşık +3 °C) veya desiccant (çiğ noktası -20 ila -40 °C) tipi.",
+              "Acil kompresör (emergency air compressor): elektrik kesintisinde dizel veya emergency switchboard'dan beslenen küçük kompresör; dead ship durumunda yardımcı jeneratör motorlarının ilk start'ı için."
             ],
             table: {
               headers: ["Sistem", "Basınç", "Kullanım"],
@@ -4638,7 +4638,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Yapı ve İçerik",
             paragraphs: [
-              "Sert plastik konteyner (canister) içinde valise: CO₂/N₂ tüpü, tube + canopy, painter line.",
+              "Sert plastik konteyner (canister) veya yumuşak valise içinde: CO₂/N₂ tüpü, tube + canopy, painter line.",
               "SOLAS A Pack, LSA Code'daki tam emergency equipment setidir; item/adet listesi service certificate ve pack marking'den doğrulanır.",
               "SOLAS B Pack yalnız Administration'ın izin verdiği short international voyage düzeninde azaltılmış pack'tir; keyfî '24 saat' sınırıyla seçilmez.",
               "Painter line: konteyner içindeki ipin ucu gemiye bağlı; gemi battığında gergin olur, raft şişer."

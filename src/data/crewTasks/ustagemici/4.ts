@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 Muster List'in okunması ve kişisel görev",
           paragraphs: [
             `Muster List, SOLAS III/8 gereği gemide görünür yerlere (köprüüstü, makine, koridor, kamaralar) asılır ve her acil durum tipi için (genel acil, yangın, gemiyi terk, denize adam düşme, kirlilik) kimin ne yapacağını gösterir. AB, kendi kamara kapısındaki ve muster station'daki kartından görevini, ekibini ve toplanma yerini öğrenir.`,
-            `Görev kartı; toplanma yeri (muster station), filika/sal numarası, ekip rolü (örn. yangın partisi, boundary cooling, ilk yardım, haberleşme) ve taşıyacağı ekipmanı belirtir. Mürettebat değişiminde her yeni gelen AB'ye gemiye katıldığı ilk 24 saat içinde familiarisation (tanıtım) ve görev kartı verilir; bu yasal bir gerekliliktir.`,
+            `Görev kartı; toplanma yeri (muster station), filika/sal numarası, ekip rolü (örn. yangın partisi, boundary cooling, ilk yardım, haberleşme) ve taşıyacağı ekipmanı belirtir. Mürettebat değişiminde her yeni gelen AB'ye gemide görev verilmeden önce familiarisation (tanıtım) yapılır ve görev kartı verilir; bu yasal bir gerekliliktir.`,
           ],
           bullets: [
             `Muster List görünür yerlere asılır (SOLAS III/8)`,

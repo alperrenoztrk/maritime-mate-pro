@@ -35,7 +35,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "2.1 Yakılabilir ve yakılamaz atık",
           paragraphs: [
-            `MARPOL bazı atıkların gemide yakılmasını yasaklar: PCB içerenler, ağır metal içeren atıklar, halojenli plastikler ve kargo kalıntıları gibi. Genel çöp (kağıt, gıda atığı kalıntısı), sludge ve atık yağ yakılabilir. Yakma kaydı Garbage Record Book / Oil Record Book'a işlenir.`,
+            `MARPOL bazı atıkların gemide yakılmasını yasaklar: PCB içerenler, ağır metal içeren atıklar, halojen bileşikli rafine petrol ürünleri ve Annex I, II veya III kargo kalıntıları gibi. PVC yalnız IMO tip onaylı insineratörde yakılabilir. Genel çöp (kağıt, gıda atığı kalıntısı), sludge ve atık yağ yakılabilir. Yakma kaydı Garbage Record Book / Oil Record Book'a işlenir.`,
           ],
           table: {
             headers: ["Atık", "Yakma"],

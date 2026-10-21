@@ -23,7 +23,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 Global cap ve ECA limitleri",
           paragraphs: [
-            `IMO 2020 global sülfür cap'i, gemi yakıtında sülfür içeriğini %0.50 m/m ile sınırlar. ECA bölgelerinde (Baltık, Kuzey Denizi, Kuzey Amerika ve ABD Karayip ECA) limit çok daha katıdır: %0.10 m/m. Bu limitleri karşılamanın iki yolu vardır: uyumlu düşük sülfürlü yakıt kullanmak ya da onaylı bir scrubber (EGCS) ile yüksek sülfürlü yakıt kullanmak.`,
+            `IMO 2020 global sülfür cap'i, gemi yakıtında sülfür içeriğini %0.50 m/m ile sınırlar. ECA bölgelerinde (Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip ve 1 Mayıs 2025'ten itibaren Akdeniz ECA) limit çok daha katıdır: %0.10 m/m. Bu limitleri karşılamanın iki yolu vardır: uyumlu düşük sülfürlü yakıt kullanmak ya da onaylı bir scrubber (EGCS) ile yüksek sülfürlü yakıt kullanmak.`,
             `Scrubber'sız gemiler ECA'ya girmeden önce %0.10 uyumlu yakıta (LSMGO/MGO veya çok düşük sülfürlü distilat) geçiş yapmak zorundadır. Baş Mühendis, geminin uyum stratejisine (changeover veya scrubber) göre prosedürü tasarlar.`,
           ],
           table: {
@@ -207,7 +207,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 AB özel kuralları (at-berth ve ETS)",
           paragraphs: [
-            `AB limanlarında 2 saatten uzun yanaşık kalan gemiler %0.10 yakıt kullanmak zorundadır (alternatif: onaysız shore power/scrubber durumuna göre). Ayrıca AB ETS, emisyon maliyeti getirdiğinden yakıt seçimi finansal boyut da kazanır.`,
+            `AB limanlarında 2 saatten uzun yanaşık kalan gemiler %0.10 yakıt kullanmak zorundadır (alternatif: tüm makineleri durdurup shore power kullanmak veya onaylı scrubber). Ayrıca AB ETS, emisyon maliyeti getirdiğinden yakıt seçimi finansal boyut da kazanır.`,
             `Baş Mühendis, AB sularındaki bu ek gereklilikleri changeover planına entegre eder ve liman kalış süresine göre yakıt yönetimini ayarlar.`,
           ],
         },

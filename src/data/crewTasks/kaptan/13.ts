@@ -38,7 +38,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.2 STCW fitness-for-duty ve alkol limiti",
           paragraphs: [
-            `STCW 2010 Manila değişiklikleri, vardiya tutan personelin "fit for duty" olmasını açıkça düzenler. Section B-VIII/1, idarelere ve şirketlere bir alkol limiti belirlemelerini tavsiye eder ve bu sınırı kandaki alkol konsantrasyonu (BAC) için 0.05% (0.5 g/L) veya nefesteki alkol için 0.25 mg/L olarak önerir; bazı görevler için daha düşük bir limit beklenir. Birçok ticari işletici bunu daha da sıkılaştırarak 0.04% (OCIMF üst sınırı) ya da gemi içinde 0.00% uygular.`,
+            `STCW 2010 Manila değişiklikleri, vardiya tutan personelin "fit for duty" olmasını açıkça düzenler. Section A-VIII/1, idarelerin bir alkol limiti belirlemesini zorunlu kılar; bu limit kandaki alkol konsantrasyonu (BAC) için en fazla 0.05% (0.5 g/L) veya nefesteki alkol için en fazla 0.25 mg/L'dir. Birçok ticari işletici bunu daha da sıkılaştırarak 0.04% (OCIMF üst sınırı) ya da gemi içinde 0.00% uygular.`,
             `STCW ayrıca alkol ve uyuşturucu kötüye kullanımının önlenmesini "fatigue" yönetimiyle birlikte fitness-for-duty başlığı altında değerlendirir. Vardiyaya çıkmadan önce alkol tüketimi için tipik bir kural, vardiya başından geriye doğru en az 4 saatlik bir abstinence (içki içmeme) penceresidir; ancak dry ship politikalarında bu tartışma konusu bile olmaz çünkü gemide alkol bulundurmak yasaktır.`,
           ],
           table: {

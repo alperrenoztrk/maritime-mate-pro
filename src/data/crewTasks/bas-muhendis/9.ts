@@ -50,7 +50,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.1 Black-out anatomisi ve emergency generator",
           paragraphs: [
             `Black-out, tüm ana jeneratörlerin elektrik kaybıdır; ana makine, dümen, soğutma ve aydınlatma durur. SOLAS gereği emergency generator otomatik devreye girer ve 45 saniye içinde temel servisleri (acil aydınlatma, haberleşme, emergency steering, navigation) besler.`,
-            `Baş Mühendis için ilk adımlar: emergency generator'ın devrede olduğunu teyit, ana jeneratör start sebebini belirleme (yakıt, kontaminasyon, soğutma, governor, breaker trip), preferential trip durumunu kontrol ve ana baranın yeniden enerjilendirilmesidir.`,
+            `Baş Mühendis için ilk adımlar: emergency generator'ın devrede olduğunu teyit, ana jeneratör stop sebebini belirleme (yakıt, kontaminasyon, soğutma, governor, breaker trip), preferential trip durumunu kontrol ve ana baranın yeniden enerjilendirilmesidir.`,
           ],
           bullets: [
             "Emergency generator devrede mi, temel servisler besleniyor mu?",

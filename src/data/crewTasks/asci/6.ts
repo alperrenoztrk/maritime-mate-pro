@@ -201,7 +201,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Special area ve hassas bölgeler",
           paragraphs: [
-            `MARPOL, bazı denizleri (örn. Akdeniz, Baltık, Kuzey Denizi, Kutup bölgeleri gibi belirlenmiş "special area"lar) hassas kabul eder ve buralarda atık kuralları çok daha katıdır; gıda atığı denize atımı için mesafe ve koşullar daha sıkıdır, bazı durumlarda fiilen teslim tek seçenektir. Aşçı, geminin bulunduğu bölgenin kurallarını sorumlu zabitten teyit eder ve buna göre depolama/teslim planlar.`,
+            `MARPOL, bazı denizleri (örn. Akdeniz, Baltık, Kuzey Denizi, Antarktika bölgesi gibi belirlenmiş "special area"lar) hassas kabul eder ve buralarda atık kuralları çok daha katıdır; gıda atığı denize atımı için mesafe ve koşullar daha sıkıdır, bazı durumlarda fiilen teslim tek seçenektir. Aşçı, geminin bulunduğu bölgenin kurallarını sorumlu zabitten teyit eder ve buna göre depolama/teslim planlar.`,
           ],
           callouts: [
             {

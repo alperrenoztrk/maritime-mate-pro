@@ -190,7 +190,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 NAVTEX, EPIRB ve SART",
           paragraphs: [
-            `NAVTEX (518 kHz) seyir uyarılarını alır; ETO alıcı ve anten sağlığını kontrol eder. EPIRB (406 MHz COSPAS-SARSAT) ve SART (Search and Rescue Transponder), test fonksiyonu (battery/GPS self-test), batarya son kullanma tarihi ve hydrostatic release unit (HRU) kontrolü gerektirir. EPIRB yıllık kara testi ve 5 yılda batarya/HRU değişimi yapılır.`,
+            `NAVTEX (518 kHz) seyir uyarılarını alır; ETO alıcı ve anten sağlığını kontrol eder. EPIRB (406 MHz COSPAS-SARSAT) ve SART (Search and Rescue Transponder), test fonksiyonu (battery/GPS self-test), batarya son kullanma tarihi ve hydrostatic release unit (HRU) kontrolü gerektirir. EPIRB yılda bir test edilir ve en fazla 5 yıllık aralıklarla onaylı bir kara servisinde bakımdan (shore-based maintenance) geçer; batarya ve HRU son kullanma tarihlerinde değiştirilir.`,
           ],
           callouts: [
             {

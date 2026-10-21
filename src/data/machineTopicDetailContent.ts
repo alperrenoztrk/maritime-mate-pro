@@ -245,7 +245,7 @@ const content: ContentMap = {
           heading: "Uygulamadaki Önemi",
           paragraphs: [
             "Sıfırıncı yasa, termometre kullanılarak sıcaklık ölçümünün fiziksel dayanağını sağlar. Bir termometre (C cismi), ölçülmek istenen sistemle (A cismi) termal dengeye ulaştığında termometrenin gösterdiği değer, sistemin sıcaklığıdır.",
-            "Gemi makine dairesinde kullanılan tüm sıcaklık sensörleri (termokupllar, RTD'ler, kızılötesi termometreler) bu ilkeye dayanarak çalışır."
+            "Gemi makine dairesinde kullanılan temaslı sıcaklık sensörleri (termokupllar, RTD'ler) bu ilkeye dayanarak çalışır."
           ]
         }
       ],
@@ -842,7 +842,7 @@ const content: ContentMap = {
       title: "Kristal Yapılar ve Faz Diyagramları",
       introduction: "Metallerin mekanik özellikleri büyük ölçüde atomların kristal kafes içindeki düzenlenme biçimine bağlıdır. Faz diyagramları ise alaşımların sıcaklık ve bileşime göre hangi fazda bulunacağını gösterir.",
       sections: [
-        { heading: "Temel Kristal Yapılar", paragraphs: ["Metallerde üç temel kristal yapı gözlemlenir: Hacim Merkezli Kübik (HMK/BCC), Yüzey Merkezli Kübik (YMK/FCC) ve Sıkı Paket Hekzagonal (SPH/HCP).", "HMK yapı: α-demir (ferrit), krom, molibden. Sert ve kırılgan. YMK yapı: γ-demir (östenit), bakır, alüminyum, nikel. Sünek ve iyi şekillendirilebilir. SPH yapı: çinko, magnezyum. Sınırlı sürtünme."] },
+        { heading: "Temel Kristal Yapılar", paragraphs: ["Metallerde üç temel kristal yapı gözlemlenir: Hacim Merkezli Kübik (HMK/BCC), Yüzey Merkezli Kübik (YMK/FCC) ve Sıkı Paket Hekzagonal (SPH/HCP).", "HMK yapı: α-demir (ferrit), krom, molibden. Düşük sıcaklıkta kırılganlaşabilir. YMK yapı: γ-demir (östenit), bakır, alüminyum, nikel. Sünek ve iyi şekillendirilebilir. SPH yapı: çinko, magnezyum. Sınırlı süneklik."] },
         { heading: "Demir-Karbon Faz Diyagramı", paragraphs: ["Çelik ve dökme demir metalurjisinin temelini oluşturur. Yatay eksen karbon yüzdesi (%0-6.67), düşey eksen sıcaklıktır.", "Önemli fazlar: Ferrit (α-demir, yumuşak), Östenit (γ-demir, yüksek sıcaklık fazı), Sementit (Fe₃C, sert ve kırılgan), Perlit (ferrit + sementit karışımı)."], table: { headers: ["Faz", "Yapı", "Özellik"], rows: [["Ferrit", "HMK", "Yumuşak, manyetik, max %0.025 C"], ["Östenit", "YMK", "Sünek, amanyetik, max %2.06 C"], ["Sementit", "Ortorombik", "Çok sert, kırılgan, %6.67 C"], ["Perlit", "Lameller", "Ferrit + Sementit, %0.8 C"]] } },
         { heading: "Kritik Sıcaklıklar", paragraphs: ["A₁ (723°C): Ötektoid dönüşüm sıcaklığı. Perlit ↔ östenit dönüşümü. A₃: Hipoötektoid çeliklerde ferrit → östenit tamamlanma sıcaklığı. Acm: Hiperötektoid çeliklerde sementit çözünme sıcaklığı.", "Isıl işlem (tavlama, sertleştirme, menevişleme) bu kritik sıcaklıklara göre planlanır."] }
       ],
@@ -862,7 +862,7 @@ const content: ContentMap = {
       title: "Demir Dışı Metaller",
       introduction: "Gemi yapım ve makine imalatında demir dışı metaller korozyon direnci, hafiflik veya özel fiziksel özellikler gerektiren yerlerde kullanılır.",
       sections: [
-        { heading: "Bakır ve Alaşımları", paragraphs: ["Saf bakır: Yüksek elektrik ve ısıl iletkenlik. Elektrik kabloları, ısı eşanjör boruları.", "Pirinç (Cu-Zn): Korozyon direnci, işlenebilirlik. Valf gövdeleri, boru bağlantıları.", "Bronz (Cu-Sn): Yüksek aşınma direnci. Pervane, yatak burçları.", "Cupronickel (Cu-Ni 90/10, 70/30): Mükemmel deniz suyu direnci. Kondenser boruları, boru hatları."] },
+        { heading: "Bakır ve Alaşımları", paragraphs: ["Saf bakır: Yüksek elektrik ve ısıl iletkenlik. Elektrik kabloları, ısı eşanjör boruları.", "Pirinç (Cu-Zn): Korozyon direnci, işlenebilirlik. Valf gövdeleri, boru bağlantıları.", "Bronz (Cu-Sn): Yüksek aşınma direnci. Yatak burçları.", "Cupronickel (Cu-Ni 90/10, 70/30): Mükemmel deniz suyu direnci. Kondenser boruları, boru hatları."] },
         { heading: "Alüminyum ve Alaşımları", paragraphs: ["Denizcilik alüminyum alaşımları: 5083, 5086 (Mg alaşımlı) korozyon direnci yüksektir.", "Kullanım: Üst yapılar, sürat tekneleri, helikopter güvertesi.", "Avantajları: Hafiflik (çeliğin 1/3'ü), korozyon direnci. Dezavantajları: Düşük erime noktası (660°C), yangın riski, galvanik korozyon."] }
       ],
       keyPoints: ["Cupronickel 90/10 deniz suyu borularında standarttır.", "Alüminyum-çelik birleşiminde galvanik korozyon önlemi şarttır.", "Bronz pervaneler kavitasyon erozyonuna karşı dayanıklıdır."]
@@ -1009,7 +1009,7 @@ const content: ContentMap = {
       title: "ISO 8217 Yakıt Standartları",
       introduction: "ISO 8217, deniz yakıtlarının kalite parametrelerini tanımlayan uluslararası standarttır.",
       sections: [
-        { heading: "Yakıt Sınıflandırması", paragraphs: ["Distilat yakıtlar DMA, DMB, DMC olarak; artık yakıtlar RMA, RMB, RMD, RME, RMG, RMK olarak sınıflandırılır.", "Her sınıf için viskozite, yoğunluk, flash point, su, kükürt, Al+Si, vanadyum gibi parametrelerin limit değerleri belirlenir."] },
+        { heading: "Yakıt Sınıflandırması", paragraphs: ["Distilat yakıtlar başlıca DMX, DMA, DMZ, DMB olarak; artık yakıtlar RMA, RMB, RMD, RME, RMG, RMK olarak sınıflandırılır.", "Her sınıf için viskozite, yoğunluk, flash point, su, kükürt, Al+Si, vanadyum gibi parametrelerin limit değerleri belirlenir."] },
         { heading: "Temel Parametre Limitleri (RMG 380)", paragraphs: [], table: { headers: ["Parametre", "Limit"], rows: [["Viskozite (50°C)", "Max 380 cSt"], ["Yoğunluk (15°C)", "Max 991.0 kg/m³"], ["Flash point", "Min 60°C"], ["Pour point (kış/yaz)", "Max 30°C"], ["Su", "Max 0.50% v/v"], ["Al+Si", "Max 60 mg/kg"], ["Vanadyum", "Max 350 mg/kg"], ["Toplam sediment", "Max 0.10% m/m"]] } }
       ],
       keyPoints: ["Bunker alımında ISO 8217 referans alınır.", "BDN (Bunker Delivery Note) yakıtın ISO sınıfını belirtmelidir.", "Uyumsuz yakıt motor hasarına neden olabilir; analiz raporu beklenmeden kullanım risklidir."]

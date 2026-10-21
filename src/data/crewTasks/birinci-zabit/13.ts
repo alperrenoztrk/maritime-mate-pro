@@ -49,7 +49,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Permit'in amacı ve Birinci Zabit'in rolü",
           paragraphs: [
-            `Enclosed Space Entry Permit, girişin tüm güvenlik koşullarının sağlandığını belgeleyen ve girişe izin veren resmi bir kontrol aracıdır. A.1050(27) ve şirket SMS'i, bu permit'in yetkili kişi (genelde Birinci Zabit) tarafından imzalanmasını şart koşar. Permit, hangi alana, ne süreyle, hangi kişilerce ve hangi koşullarda girileceğini tanımlar.`,
+            `Enclosed Space Entry Permit, girişin tüm güvenlik koşullarının sağlandığını belgeleyen ve girişe izin veren resmi bir kontrol aracıdır. A.1203(33) ve şirket SMS'i, bu permit'in yetkili kişi (genelde Birinci Zabit) tarafından imzalanmasını şart koşar. Permit, hangi alana, ne süreyle, hangi kişilerce ve hangi koşullarda girileceğini tanımlar.`,
             `Birinci Zabit, permit imzalamadan önce atmosfer testi sonuçlarını, havalandırmayı, rescue düzenini, haberleşmeyi ve PPE'yi bizzat doğrular. Permit, belirli bir süre için geçerlidir ve koşullar değişirse (vardiya, atmosfer) yenilenir. İmza, sorumluluğu üstlenmek demektir; rutin bir formalite değildir.`,
           ],
           bullets: [
@@ -82,7 +82,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Ölçüm sırası ve eşik değerler",
           paragraphs: [
-            `Atmosfer testi belirli sırayla yapılır: önce oksijen (%19.5-23.5 aralığında olmalı), sonra yanıcı gaz (LEL <%1, hidrokarbon), sonra toksik gazlar (H₂S, CO). Ölçüm, kalibre ve sertifikalı çoklu-gaz dedektörü ile yapılır. Test, alana girmeden önce, farklı seviyelerden (üst, orta, dip — gazlar yoğunluğa göre tabakalanır) ve uzaktan (remote probe) alınır.`,
+            `Atmosfer testi belirli sırayla yapılır: önce oksijen (hacimce sabit %21 olmalı), sonra yanıcı gaz (LEL <%1, hidrokarbon), sonra toksik gazlar (H₂S, CO). Ölçüm, kalibre ve sertifikalı çoklu-gaz dedektörü ile yapılır. Test, alana girmeden önce, farklı seviyelerden (üst, orta, dip — gazlar yoğunluğa göre tabakalanır) ve uzaktan (remote probe) alınır.`,
             `Birinci Zabit, ölçüm sonuçlarını permit'e kaydeder. Değerler güvenli aralıkta değilse giriş yasaktır; havalandırma sürdürülür ve yeniden ölçülür. Giriş sonrası, içeride sürekli izleme (personal monitor) yapılır çünkü atmosfer değişebilir.`,
           ],
           table: {
@@ -168,7 +168,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Tanker pump room ve kargo tankları",
           paragraphs: [
-            `Tanker pump room ve kargo tankları, hidrokarbon buharı ve oksijen eksikliği açısından yüksek risklidir. Inert gas ile doldurulmuş tank tamamen oksijensizdir; gas-free certificate alınmadan giriş yasaktır. ISGOTT, tanker kapalı alan girişinde ek prosedürler (gas-freeing, sürekli izleme) tanımlar. Birinci Zabit, kargo officer ile koordineli bu koşulları sağlar.`,
+            `Tanker pump room ve kargo tankları, hidrokarbon buharı ve oksijen eksikliği açısından yüksek risklidir. Inert gas ile doldurulmuş tankta oksijen hacimce %8'i geçmez ve atmosfer solunamaz; gas-free certificate alınmadan giriş yasaktır. ISGOTT, tanker kapalı alan girişinde ek prosedürler (gas-freeing, sürekli izleme) tanımlar. Birinci Zabit, kargo officer ile koordineli bu koşulları sağlar.`,
           ],
         },
         {

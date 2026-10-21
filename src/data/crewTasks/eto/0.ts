@@ -57,7 +57,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 AVR ve excitation sistemi",
           paragraphs: [
-            `AVR (Automatic Voltage Regulator), alternatörün uç gerilimini yük değişimine rağmen sabit (±%2.5 SOLAS toleransı içinde, geçici %±3.5) tutar. Çalışma prensibi; çıkış gerilimini örnekler, referansla karşılaştırır ve excitation (uyartım) akımını brushless exciter veya statik uyartım üzerinden ayarlar. ETO, AVR'nin droop/quadrature droop ayarını paralel çalışan generator'lar arasındaki reaktif yük paylaşımını dengeleyecek şekilde kalibre eder.`,
+            `AVR (Automatic Voltage Regulator), alternatörün uç gerilimini yük değişimine rağmen sabit (klas/IEC toleransı: sürekli rejimde ±%2.5, emergency generator'da ±%3.5) tutar. Çalışma prensibi; çıkış gerilimini örnekler, referansla karşılaştırır ve excitation (uyartım) akımını brushless exciter veya statik uyartım üzerinden ayarlar. ETO, AVR'nin droop/quadrature droop ayarını paralel çalışan generator'lar arasındaki reaktif yük paylaşımını dengeleyecek şekilde kalibre eder.`,
             `Brushless alternatörlerde rotating diode (döner diyot) köprüsü kritik bir bileşendir; bir diyotun açık devre veya kısa devre olması gerilim dalgalanmasına ve excitation kaybına yol açar. ETO, periyodik olarak diyotları RDFM (Rotating Diode Failure Monitor) ile veya offline ölçümle test eder. AVR'nin sensing kablolarının ve voltage build-up için gereken residual magnetism'in varlığı da kontrol edilir; gerekirse "field flashing" ile alternatör yeniden uyartılır.`,
           ],
           callouts: [
@@ -192,7 +192,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Gerilim, frekans ve güç faktörü",
           paragraphs: [
-            `ETO, şebeke güç kalitesini sürekli izler: gerilim toleransı sürekli ±%2.5 / geçici ±%3.5 (SOLAS), frekans toleransı ±%5 sürekli / ±%10 geçici. Düşük güç faktörü (cosφ < 0.8) reaktif yükün fazlalığını gösterir; alternatör akımını gereksiz yükler ve ısınma yaratır. ETO, kapasitör bankaları veya reaktif yük yönetimi ile güç faktörünü düzeltir.`,
+            `ETO, şebeke güç kalitesini sürekli izler: gerilim toleransı sürekli +%6/-%10 / geçici ±%20, frekans toleransı ±%5 sürekli / ±%10 geçici (IACS UR E5). Düşük güç faktörü (cosφ < 0.8) reaktif yükün fazlalığını gösterir; alternatör akımını gereksiz yükler ve ısınma yaratır. ETO, kapasitör bankaları veya reaktif yük yönetimi ile güç faktörünü düzeltir.`,
           ],
           table: {
             caption: `Gemi Şebekesi Kabul Edilebilir Sınırlar`,

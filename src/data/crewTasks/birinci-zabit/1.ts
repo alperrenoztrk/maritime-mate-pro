@@ -39,7 +39,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.2 GZ eğrisi ve IS Code kriterleri",
           paragraphs: [
             `Intact stabilite, GZ (righting arm) eğrisinin IS Code 2008 kriterlerini sağlamasıyla doğrulanır: 30°'de GZ ≥ 0.20 m, maksimum GZ açısı ≥ 25° (tercihen 30°), 0-30° arası alan ≥ 0.055 m·rad, 0-40° arası alan ≥ 0.090 m·rad ve initial GM ≥ 0.15 m. Weather criterion (severe wind and rolling) ise rüzgâr ve yalpa altında geminin devrilmeye karşı direncini ölçer.`,
-            `Birinci Zabit, free surface correction (FSC) sonrası "fluid GM" değeriyle çalışır; nominal GM değil. Kısmen dolu tanklar GM'yi sanal olarak düşürür ve bu etki büyük tanklarda metrelerce GZ kaybına yol açabilir.`,
+            `Birinci Zabit, free surface correction (FSC) sonrası "fluid GM" değeriyle çalışır; nominal GM değil. Kısmen dolu tanklar GM'yi sanal olarak düşürür ve bu etki büyük tanklarda önemli GZ kaybına yol açabilir.`,
           ],
           table: {
             caption: `IS Code 2008 — Genel Intact Stabilite Kriterleri`,
@@ -164,7 +164,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Ballast planı ve mukavemet",
           paragraphs: [
-            `Ballast operasyonu, yük operasyonuyla senkronize planlanır: yük geldikçe ballast basılır, yük gittikçe ballast alınır; böylece draft, trim, GM ve strength sürekli limitler içinde kalır. Birinci Zabit, ballast pompalama hızını yükleme hızıyla eşleştirir ve her kademede draftı doğrular.`,
+            `Ballast operasyonu, yük operasyonuyla senkronize planlanır: yük geldikçe ballast denize basılır (deballast), yük gittikçe ballast alınır; böylece draft, trim, GM ve strength sürekli limitler içinde kalır. Birinci Zabit, ballast pompalama hızını yükleme hızıyla eşleştirir ve her kademede draftı doğrular.`,
             `Yanlış ballast yönetimi; aşırı shear force, hold flooding görünümü veya tehlikeli list yaratabilir. Bu nedenle ballast planı yazılı olarak hazırlanır ve duty officer'la paylaşılır.`,
           ],
         },

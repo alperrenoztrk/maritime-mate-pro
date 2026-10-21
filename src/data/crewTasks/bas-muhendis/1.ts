@@ -23,7 +23,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.1 ISM Code Element 10 yükümlülüğü",
           paragraphs: [
-            `ISM Code'un 10. maddesi, şirketten geminin ve ekipmanlarının üreticinin gereklilikleri ile şirketin belirlediği standartlara uygun olarak bakımını yapacak prosedürler kurmasını ister. PMS, bu maddenin sahadaki uygulamasıdır. SMS (Safety Management System) içinde, hangi ekipmanın hangi periyotta, hangi prosedürle ve kim tarafından bakılacağı tanımlanır.`,
+            `ISM Code'un 10. maddesi, şirketten geminin ve ekipmanlarının ilgili kural ve düzenlemeler ile şirketin belirlediği ek gerekliliklere uygun olarak bakımını yapacak prosedürler kurmasını ister. PMS, bu maddenin sahadaki uygulamasıdır. SMS (Safety Management System) içinde, hangi ekipmanın hangi periyotta, hangi prosedürle ve kim tarafından bakılacağı tanımlanır.`,
             `Element 10.3 ayrıca "kritik ekipman" (critical equipment) kavramını getirir; ani arızası tehlikeli duruma yol açabilecek ekipmanlar için ek koruyucu önlemler, yedeklilik (redundancy) ve fonksiyon testleri zorunludur. Baş Mühendis, makine dairesindeki kritik ekipman listesini güncel tutar ve bu ekipmanların testlerini ayrı bir takvimde izler.`,
           ],
           callouts: [
@@ -189,7 +189,7 @@ const content: CrewTaskLongForm = {
           subheading: "7.1 Min/Max stok ve otomatik talep",
           paragraphs: [
             `PMS, spare parça modülüyle entegredir. Her kritik parça için minimum ve maksimum stok seviyeleri tanımlıdır; ROB minimuma düştüğünde sistem otomatik talep (requisition) önerir. Baş Mühendis, gelecek 3-6 ayda due olan job'ların yedek ihtiyacını "forward planning" ile öne çeker ve tek seferde toplu sipariş ile lojistik maliyeti düşürür.`,
-            `MARPOL ve klas tarafından zorunlu kılınan minimum yedekler (örn. ana makine için bir takım fuel injection ekipmanı, exhaust valve spindle) her zaman bulundurulmalıdır. Bu kalemlerin stok-out olması doğrudan uygunsuzluktur.`,
+            `Zorunlu minimum yedekler (örn. ana makine için bir takım fuel injection ekipmanı, exhaust valve spindle) her zaman bulundurulmalıdır. Bu kalemlerin stok-out olması doğrudan uygunsuzluktur.`,
           ],
         },
       ],

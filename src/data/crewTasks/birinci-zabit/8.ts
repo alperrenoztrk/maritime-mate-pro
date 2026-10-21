@@ -25,7 +25,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 MARPOL ek yapısı ve kapsam",
           paragraphs: [
             `MARPOL 73/78, deniz kirliliğini altı ek altında düzenler: Annex I (yağ), Annex II (zararlı sıvı madde), Annex III (paketli zararlı madde), Annex IV (pis su/sewage), Annex V (çöp/garbage) ve Annex VI (hava kirliliği). Birinci Zabit özellikle Annex I (güverte yağ operasyonları, bunkering), Annex V (garbage) ve Annex IV ile doğrudan ilgilenir; sintine/sludge transfer ise makine ile koordineli yürür.`,
-            `Her ek belirli kayıt defterleri zorunlu kılar: Oil Record Book (ORB Part I/II), Garbage Record Book (Part I/II), Sewage kayıtları. Bu defterler PSC denetimlerinde en sık incelenen belgelerdir ve hata "deficiency" hatta gemi tutulması doğurur.`,
+            `Eklerin çoğu belirli kayıt defterleri zorunlu kılar: Oil Record Book (ORB Part I/II), Garbage Record Book (Part I/II). Bu defterler PSC denetimlerinde en sık incelenen belgelerdir ve hata "deficiency" hatta gemi tutulması doğurur.`,
           ],
           callouts: [
             {
@@ -50,7 +50,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Çöp kategorileri ve ayrıştırma",
           paragraphs: [
-            `MARPOL Annex V, çöpü kategorilere ayırır: plastik (A), gıda atığı (B), domestic waste (C), pişirme yağı (D), incinerator külü (E), operasyonel atık (F), kargo kalıntısı (G), hayvan leşi (H), balıkçılık ekipmanı (I) ve e-waste (J). Birinci Zabit, etiketli ve renk kodlu garbage bin'lerin güvertede uygun konumlandırılmasını ve ekibin doğru ayrıştırma yapmasını sağlar.`,
+            `MARPOL Annex V, çöpü kategorilere ayırır: plastik (A), gıda atığı (B), domestic waste (C), pişirme yağı (D), incinerator külü (E), operasyonel atık (F), hayvan leşi (G), balıkçılık ekipmanı (H), e-waste (I) ve kargo kalıntısı (J: non-HME, K: HME). Birinci Zabit, etiketli ve renk kodlu garbage bin'lerin güvertede uygun konumlandırılmasını ve ekibin doğru ayrıştırma yapmasını sağlar.`,
             `Plastik HER ZAMAN denize atılması yasaktır ve gemide saklanıp shore reception facility'ye teslim edilir. Gıda atığı, kara mesafesi ve öğütülmüş/öğütülmemiş durumuna göre belirli mesafelerde deşarj edilebilir (Special Area dışında genelde >12 nm, comminuted >3 nm). Birinci Zabit deşarj kararını mevzuata göre verir.`,
           ],
           table: {
@@ -70,7 +70,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.2 Garbage Record Book ve teslim makbuzları",
           paragraphs: [
             `Garbage Record Book (GRB) Part I (gemi atığı) ve Part II (kargo kalıntısı), her deşarj/yakma/teslim işlemini tarih, pozisyon, miktar (m³) ve kategori ile kayıt altına alır. Birinci Zabit kayıtların doğru ve eksiksiz tutulmasından sorumludur. Shore reception facility'ye teslimde alınan makbuz (garbage disposal receipt) saklanır ve GRB ile çapraz kontrol edilir.`,
-            `400 GT üzeri ve 15+ kişi taşıyan gemiler Garbage Management Plan ve GRB bulundurmak zorundadır. PSC, GRB kayıtları ile fiili çöp miktarı ve teslim makbuzları arasında tutarsızlık ararsa ciddi bulgu açar.`,
+            `100 GT ve üzeri ve 15+ kişi taşıyan gemiler Garbage Management Plan, 400 GT ve üzeri ve uluslararası seferde 15+ kişi taşıyan gemiler ise GRB bulundurmak zorundadır. PSC, GRB kayıtları ile fiili çöp miktarı ve teslim makbuzları arasında tutarsızlık bulursa ciddi bulgu açar.`,
           ],
           callouts: [
             {
@@ -115,7 +115,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 SOPEP'in yapısı ve hazırlığı",
           paragraphs: [
             `400 GT üzeri her gemi (tankerlerde 150 GT) SOPEP bulundurmak zorundadır. Plan; kim kimi arayacak (reporting), nasıl müdahale edilecek (mitigation) ve hangi ekipman kullanılacak bilgisini içerir. Birinci Zabit, SOPEP locker'ın (absorbent, boom, sorbent pad, scoop, eldiven, dispersant izinli ise) tam ve erişilebilir olduğunu düzenli kontrol eder.`,
-            `SOPEP, sahil otoritesi irtibat listesini (coastal state contacts) ve şirket emergency contact'larını içerir; bu liste güncel tutulmalıdır. Tankerlerde SOPEP yerine genişletilmiş SMPEP (Annex I + II'yi kapsayan) bulunur.`,
+            `SOPEP, sahil otoritesi irtibat listesini (coastal state contacts) ve şirket emergency contact'larını içerir; bu liste güncel tutulmalıdır. NLS taşımaya sertifikalı tankerlerde (chemical tanker) SOPEP yerine birleşik SMPEP (Annex I + II'yi kapsayan) bulunabilir.`,
           ],
           callouts: [
             {

@@ -108,7 +108,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 Temel dümen komutları ve repeat-back disiplini",
           paragraphs: [
             `Komut verildiğinde dümenci komutu birebir tekrarlar (örn. OOW: "Starboard ten" — Helmsman: "Starboard ten"), dümeni uygular ve dümen istenen açıya geldiğinde bildirir ("Ten of starboard wheel on"). Rota tutturulduğunda OOW yeni rota verir ("Steady on one-two-zero"), dümenci pusulada rotayı yakaladığında "Steady on one-two-zero" diye teyit eder. Bu disiplin, gürültü/aksan/yorgunluk kaynaklı yanlış anlamayı önler.`,
-            `"Midships" dümeni tam ortaya alır. "Steady" / "Steady as she goes" o anki başı koru anlamındadır; dümenci pusuladaki anlık başı okuyup OOW'a bildirir ve o başta tutar. "Hard a-starboard / Hard a-port" dümeni o yöne tam basar (acil manevra). "Ease to five" verilen büyük açıyı 5°'ye azalt demektir.`,
+            `"Midships" dümeni tam ortaya alır. "Steady" dönüşü mümkün olduğunca çabuk durdur, "Steady as she goes" ise emrin verildiği andaki pusula başını tut anlamındadır; dümenci pusuladaki anlık başı okuyup OOW'a bildirir ve o başta tutar. "Hard a-starboard / Hard a-port" dümeni o yöne tam basar (acil manevra). "Ease to five" verilen büyük açıyı 5°'ye azalt demektir.`,
           ],
           table: {
             caption: `Standart Dümen Komutları (Helm Orders — SMCP)`,
@@ -127,8 +127,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Rota tutma, yalpa ve akıntı telafisi",
           paragraphs: [
-            `Dümenci, pusula başını (compass heading) referans alır ama dümeni sürekli oynatmaz; gemi yalpalarken (yaw) "meeting the swing" tekniğiyle başın salınımını küçük, zamanında dümen hareketleriyle karşılar. Aşırı dümen (over-steering) gemiyi yorgun, hatlı seyir yaptırır ve yakıt kaybettirir; yetersiz dümen ise rotadan sapmaya yol açar. İyi dümenci minimum dümenle stabil rota tutar.`,
-            `Rüzgâr ve akıntı (leeway/set) gemiyi rotadan saptırır; dümenci başı pusulada tutsa da gemi yana kayabilir. Pilotaj ve dar sularda OOW/pilot ürün hattı (transit/leading lines) ve dümen komutlarıyla bunu telafi eder; dümenci verilen komutları harfiyen uygular ve fark ettiği sürekli sapmayı (örn. "she's carrying port helm") raporlar.`,
+            `Dümenci, pusula başını (compass heading) referans alır ama dümeni sürekli oynatmaz; geminin başı savrulurken (yaw) "meeting the swing" tekniğiyle başın salınımını küçük, zamanında dümen hareketleriyle karşılar. Aşırı dümen (over-steering) gemiyi yorgun, hatlı seyir yaptırır ve yakıt kaybettirir; yetersiz dümen ise rotadan sapmaya yol açar. İyi dümenci minimum dümenle stabil rota tutar.`,
+            `Rüzgâr ve akıntı (leeway/set) gemiyi rotadan saptırır; dümenci başı pusulada tutsa da gemi yana kayabilir. Pilotaj ve dar sularda OOW/pilot yön hatları (transit/leading lines) ve dümen komutlarıyla bunu telafi eder; dümenci verilen komutları harfiyen uygular ve fark ettiği sürekli sapmayı (örn. "she's carrying port helm") raporlar.`,
           ],
           callouts: [
             {
@@ -178,7 +178,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Lookout ile risk değerlendirmesinin desteklenmesi",
           paragraphs: [
-            `COLREG Rule 7 (çatışma riski) ve Rule 8 (önleyici manevra) kararları OOW'a ait olsa da, AB'nin sağladığı doğru ve zamanında lookout bilgisi bu kararların temelidir. Sabit kerteriz, fenerin yaklaşması, yeni bir hedefin belirmesi gibi gözlemler anında raporlanırsa OOW erken ve küçük manevrayla riski giderebilir.`,
+            `COLREG Rule 7 (çatışma riski) ve Rule 8 (önleyici manevra) kararları OOW'a ait olsa da, AB'nin sağladığı doğru ve zamanında lookout bilgisi bu kararların temelidir. Sabit kerteriz, fenerin yaklaşması, yeni bir hedefin belirmesi gibi gözlemler anında raporlanırsa OOW erken ve belirgin (açıkça fark edilecek kadar büyük) manevrayla riski giderebilir.`,
             `AB, "ben gördüm ama önemli değildir" diye filtreleme yapmaz; küçük tekneler, yelkenliler, fenersiz balıkçı tekneleri ve şamandıralar dahil her cismi raporlar. Birçok çarpışmada lookout bir hedefi görmüş ama "zabit zaten görmüştür" varsayımıyla raporlamamıştır.`,
           ],
           callouts: [
@@ -216,7 +216,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.2 Kayıt ve raporlama yükümlülüğü",
           paragraphs: [
-            `El dümenine geçiş/çıkış zamanları, steering gear testleri ve dümenci değişimleri köprüüstü jurnaline (bridge logbook) kaydedilir; bu kayıtların doğruluğuna AB de katkı sağlar. Steering gear, limana giriş/çıkış öncesi SOLAS V/26 gereği test edilir; AB bu testte dümeni komutlara göre hareket ettirerek katkı verir.`,
+            `El dümenine geçiş/çıkış zamanları, steering gear testleri ve dümenci değişimleri köprüüstü jurnaline (bridge logbook) kaydedilir; bu kayıtların doğruluğuna AB de katkı sağlar. Steering gear, SOLAS V/26 gereği kalkıştan önceki 12 saat içinde test edilir; AB bu testte dümeni komutlara göre hareket ettirerek katkı verir.`,
           ],
         },
       ],

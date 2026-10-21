@@ -31,7 +31,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "2.1 Oil mist detector",
           paragraphs: [
-            `Aşırı ısınan yatak yağ buharı (oil mist) üretir; oil mist detector ve crankcase relief valve patlamaya karşı korur. Sıcak yataktan sonra crankcase açılması scavenge/explosion riski taşır.`,
+            `Aşırı ısınan yatak yağ buharı (oil mist) üretir; oil mist detector ve crankcase relief valve patlamaya karşı korur. Sıcak yataktan sonra crankcase'in yeterli soğuma beklenmeden açılması explosion riski taşır.`,
           ],
           callouts: [
             {

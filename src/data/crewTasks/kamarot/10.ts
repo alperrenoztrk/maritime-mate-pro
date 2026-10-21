@@ -65,7 +65,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Lint ve filtre",
           paragraphs: [
-            `Kurutucu ve çamaşır makinesinde biriken lint (kumaş tüyü), tutuşabilir bir malzemedir ve filtre tıkanması ısı birikimine ve yangına yol açar. Kamarot, lint filtrelerini haftalık (gerekirse daha sık) temizler. Bu basit bakım, çamaşırhane yangınlarının en yaygın nedenini ortadan kaldırır.`,
+            `Kurutucu ve çamaşır makinesinde biriken lint (kumaş tüyü), tutuşabilir bir malzemedir ve filtre tıkanması ısı birikimine ve yangına yol açar. Kamarot, lint filtrelerini her kurutma döngüsünden sonra temizler. Bu basit bakım, çamaşırhane yangınlarının en yaygın nedenini ortadan kaldırır.`,
           ],
           callouts: [
             {

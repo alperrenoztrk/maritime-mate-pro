@@ -24,7 +24,7 @@ const content: CrewTaskLongForm = {
           subheading: "1.1 Pre-stowage plan'ın değerlendirilmesi",
           paragraphs: [
             `Yükleme öncesinde charterer veya terminal operatörü tarafından gönderilen pre-stowage plan, Birinci Zabit'in ilk kontrol noktasıdır. Konteyner gemilerinde bay-row-tier formatında, dökme yük gemilerinde hold-by-hold tonnage olarak, tankerlerde ise tank-by-tank parsel dağılımı şeklinde gelir. Plan, gemi tipine özgü stabilite/trim/strength yazılımına (örn. LoadMaster, BluePrint, Cargomax) yüklenir; bending moment, shear force, torsion (containerlar için), draught at FP/AP/Mid, GM ve liste değerleri kontrol edilir.`,
-            `Bu aşamada Birinci Zabit, yükleme sırasının ve kademelerinin (loading sequence) gemi mukavemet limitlerine uygun olduğunu doğrular. Bulk gemilerinde "alternate hold loading" yapılacaksa CSR (Cargo Securing Manual) ve Loading Manual'in onayladığı şartlar mutlaka kontrol edilir. Aksi halde gemi mukavemet sınırlarının dışına çıkabilir; bu, MOL Comfort 2013 vakasında olduğu gibi gemi kaybına yol açabilir.`,
+            `Bu aşamada Birinci Zabit, yükleme sırasının ve kademelerinin (loading sequence) gemi mukavemet limitlerine uygun olduğunu doğrular. Bulk gemilerinde "alternate hold loading" yapılacaksa geminin klas notasyonu (örn. CSR kapsamında BC-A) ve Loading Manual'in onayladığı şartlar mutlaka kontrol edilir. Aksi halde gemi mukavemet sınırlarının dışına çıkabilir; bu, MOL Comfort 2013 vakasında olduğu gibi gemi kaybına yol açabilir.`,
           ],
           bullets: [
             `Kargo türü, miktarı, density (stowage factor)`,
@@ -103,8 +103,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Tanker tank hazırlığı (COW, inert gas, gas-free)",
           paragraphs: [
-            `Crude oil tankerlerde COW (Crude Oil Washing) MARPOL Annex I gereği zorunludur; %20 ham petrol ile yıkama yağ kalıntısını minimize eder. Inert Gas System (IGS) sürekli çalışır; tank atmosferi O2 < %8 tutulur. Tank temizliği sonrası gas-free certificate alınmadan kapalı alana giriş yasaktır.`,
-            `Product tankerlerde "compatibility table" kontrolü yapılır; yağ kalitesini bozacak previous cargo varsa wall-wash test yapılır (kerosene+UV ışık altında saflık testi). MARPOL Annex II (NLS) için P&A (Procedures and Arrangements) Manual rehberdir.`,
+            `20.000 DWT ve üzeri crude oil tankerlerde COW (Crude Oil Washing) MARPOL Annex I gereği zorunludur; kargonun kendisi (ham petrol) ile yıkama yağ kalıntısını minimize eder. Inert Gas System (IGS) ile tank atmosferi sürekli O2 < %8 tutulur. Tank temizliği sonrası gas-free certificate alınmadan kapalı alana giriş yasaktır.`,
+            `Product tankerlerde "compatibility table" kontrolü yapılır; yağ kalitesini bozacak previous cargo varsa wall-wash test yapılır. MARPOL Annex II (NLS) için P&A (Procedures and Arrangements) Manual rehberdir.`,
           ],
           callouts: [
             {
@@ -209,7 +209,7 @@ const content: CrewTaskLongForm = {
           subheading: "8.1 Mate's Receipt, Bill of Lading, Manifest",
           paragraphs: [
             `Mate's Receipt, yükün gemiye fiilen alındığını ve kondisyonunu (apparent order and condition) belgeleyen dahili kayıttır. Üzerinden Bill of Lading hazırlanır. Yükte hasar veya eksiklik varsa "clausing" yapılır; aksi halde clean B/L imzalanır ve gemi/şirket o kondisyondan sorumlu olur.`,
-            `Cargo manifest, custom ve liman otoriteleri için gerekli resmi belgedir. Birinci Zabit, manifest ile gerçek yük arasındaki uyumu denetler. NOR (Notice of Readiness), gemi yüke hazır olduğunda charterer'e verilir; laytime sayacı bu andan itibaren çalışır.`,
+            `Cargo manifest, custom ve liman otoriteleri için gerekli resmi belgedir. Birinci Zabit, manifest ile gerçek yük arasındaki uyumu denetler. NOR (Notice of Readiness), gemi yüke hazır olduğunda charterer'e verilir; laytime ise C/P'de belirtilen notice time dolduktan sonra (örn. NOR'dan 6 saat sonra) başlar.`,
           ],
         },
         {

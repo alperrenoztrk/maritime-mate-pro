@@ -147,7 +147,7 @@ const content6: ContentMap = {
       introduction: "MARPOL Annex VI gereği her bunker operasyonunda temsili numune alınmalı ve en az 12 ay saklanmalıdır.",
       sections: [
         { heading: "Numune Alma", paragraphs: ["Numune, yakıt manifoldu veya transfer hattındaki numune valfinden sürekli damlatma (drip sampling) veya otomatik numune alıcı ile alınır. Tek noktadan alınan grab sample yetersiz kabul edilir.", "En az üç numune şişesi doldurulur: biri gemi, biri barge/tedarikçi, biri bağımsız laboratuvar analizi için. Her şişe etiketlenir ve mühürlenir."] },
-        { heading: "Analiz Parametreleri", paragraphs: ["Laboratuvar analizi: viskozite, yoğunluk, kükürt, su, sediment, ash, Al+Si (cat fines), vanadyum, CCAI, flash point, pour point.", "Sonuçlar BDN ve ISO 8217 limitleriyle karşılaştırılır. Off-spec sonuç durumunda bayrak devletine bildirilir."] }
+        { heading: "Analiz Parametreleri", paragraphs: ["Laboratuvar analizi: viskozite, yoğunluk, kükürt, su, sediment, ash, Al+Si (cat fines), vanadyum, CCAI, flash point, pour point.", "Sonuçlar BDN ve ISO 8217 limitleriyle karşılaştırılır. Sonuç MARPOL limitlerini (ör. kükürt) aşıyorsa bayrak devletine bildirilir; diğer off-spec sonuçlar tedarikçiyle ticari talep olarak ele alınır."] }
       ],
       keyPoints: ["Numune mühürü bozulmamış olarak saklanmalıdır.", "MARPOL numune noktası manifold bağlantı flanşından önce olmalıdır.", "Analiz sonuçları separatör ve motor ayarları için referanstır."]
     },
@@ -311,7 +311,7 @@ const content6: ContentMap = {
       title: "İşitme Koruması ve Gürültü Maruziyeti",
       introduction: "Makine dairesi, gemideki en gürültülü çalışma alanıdır. Uzun süreli gürültü maruziyeti kalıcı işitme kaybına neden olur.",
       sections: [
-        { heading: "Gürültü Seviyeleri", paragraphs: ["Makine dairesinde gürültü seviyesi tipik olarak 90-110 dB(A) arasındadır. IMO Resolution A.468(XII) gürültü sınırlarını belirler: makine dairesi sürekli çalışma alanları max 110 dB(A), kontrol odası max 75 dB(A)."], table: { headers: ["Alan", "Maks. Gürültü", "Maruziyet Süresi"], rows: [["Makine dairesi (genel)", "110 dB(A)", "Kısa süreli"], ["Kontrol odası", "75 dB(A)", "Sürekli"], ["85 dB(A) üzeri", "—", "İşitme koruması zorunlu"], ["90 dB(A) üzeri", "—", "Maks. 2 saat/gün"]] } },
+        { heading: "Gürültü Seviyeleri", paragraphs: ["Makine dairesinde gürültü seviyesi tipik olarak 90-110 dB(A) arasındadır. IMO Gürültü Kodu (MSC.337(91); eski A.468(XII)) gürültü sınırlarını belirler: makine daireleri max 110 dB(A), kontrol odası max 75 dB(A)."], table: { headers: ["Alan", "Maks. Gürültü", "Maruziyet Süresi"], rows: [["Makine dairesi (genel)", "110 dB(A)", "Kısa süreli"], ["Kontrol odası", "75 dB(A)", "Sürekli"], ["85 dB(A) üzeri", "—", "İşitme koruması zorunlu"], ["90 dB(A) üzeri", "—", "Maks. 2 saat/gün"]] } },
         { heading: "Koruma Yöntemleri", paragraphs: [], bulletPoints: ["Kulak tıkacı (foam ear plug): 15-30 dB azaltma.", "Kulaklık (ear muff): 20-35 dB azaltma.", "Elektronik aktif gürültü önleyici: Değişken gürültü ortamlarında.", "Mühendislik önlemleri: Titreşim yalıtımı, ses yalıtım panelleri, susturucular."] }
       ],
       keyPoints: ["85 dB(A) üzerinde işitme koruması kullanımı zorunludur.", "Gürültü ölçümü periyodik olarak yapılmalı ve kayıt altına alınmalıdır.", "Kalıcı işitme kaybı geri dönüşümsüzdür."]
@@ -356,7 +356,7 @@ const content6: ContentMap = {
       title: "Makine Dairesi Sabit Söndürme Sistemi",
       introduction: "Makine dairesinde kontrol altına alınamayan yangınlarda sabit söndürme sistemi devreye alınır. CO₂ ve FM200 (HFC-227ea) en yaygın ajanlardır.",
       sections: [
-        { heading: "CO₂ Sistemi", paragraphs: ["CO₂, havadaki oksijen konsantrasyonunu %21'den %15'in altına düşürerek yangını boğar. Makine dairesi hacminin %40'ı kadar CO₂ gerekir.", "Tehlikeleri: CO₂ insan için öldürücüdür (%5 konsantrasyonda bilinç kaybı). Boşaltma öncesi tüm personelin tahliye edildiği doğrulanmalıdır.", "İki aşamalı boşaltma: Önce alarm (sesli + görsel), 60 saniye gecikme, ardından CO₂ boşaltma."] },
+        { heading: "CO₂ Sistemi", paragraphs: ["CO₂, havadaki oksijen konsantrasyonunu %21'den %15'in altına düşürerek yangını boğar. Makine dairesi hacminin %40'ı kadar CO₂ gerekir.", "Tehlikeleri: CO₂ insan için öldürücüdür. Boşaltma öncesi tüm personelin tahliye edildiği doğrulanmalıdır.", "İki aşamalı boşaltma: Önce alarm (sesli + görsel), 60 saniye gecikme, ardından CO₂ boşaltma."] },
         { heading: "FM200 Sistemi", paragraphs: ["FM200 (HFC-227ea), kimyasal zincir reaksiyonunu keserek söndürür. CO₂'ye göre daha az konsantrasyonda etkilidir (%7-9). İnsan üzerindeki toksik etkisi düşüktür.", "Dezavantajı: GWP değeri yüksektir (3220); Kigali Protokolü ile kademeli olarak kısıtlanmaktadır."] }
       ],
       keyPoints: ["CO₂ boşaltma öncesi personel tahliyesi hayati önemdedir.", "Sabit söndürme sistemi altı ayda bir kontrol, yıllık bakım gerektirir.", "Boşaltma sonrası makine dairesine girilmeden havalandırma yapılmalıdır."]

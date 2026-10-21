@@ -75,7 +75,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 Loose ekipmanın bağlanması",
           paragraphs: [
             `Güverte üzerindeki tüm hareketli/gevşek ekipman ağır havada ölümcül mermilere dönüşür. Birinci Zabit; pilot ladder, gangway, hortumlar, drum'lar, kaynak ekipmanı, store kapakları ve tüm loose item'ların lashing'ini denetler. Hiçbir şey "kendi ağırlığıyla durur" varsayılmaz; her şey sabitlenir.`,
-            `Pilot/accommodation ladder ve gangway içeri alınır ve bağlanır; aksi halde dalga ile parçalanır ve gemi gövdesine zarar verir. Vinç (crane) kancaları parlatılır, jib güvenli pozisyona alınır ve sabitlenir.`,
+            `Pilot/accommodation ladder ve gangway içeri alınır ve bağlanır; aksi halde dalga ile parçalanır ve gemi gövdesine zarar verir. Vinç (crane) jib'i güvenli pozisyona alınır ve sabitlenir.`,
           ],
           bullets: [
             `Pilot ladder, gangway içeri alınıp lashing edildi mi?`,
@@ -88,7 +88,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Yük lashing'inin yeniden değerlendirilmesi",
           paragraphs: [
-            `Container, ro-ro, project cargo ve deck cargo lashing'i, öngörülen ağır hava ivmelerine göre CSM/CSS Code hesaplarıyla yeniden değerlendirilir. Gerekirse ek lashing eklenir ve mevcut lashing tightness (gerginlik) kontrol edilir; gevşeyen turnbuckle'lar sıkılır. Deniz tutması başladıktan sonra lashing kontrolü için güverteye çıkmak son derece tehlikelidir, bu yüzden hazırlık önceden tam yapılır.`,
+            `Container, ro-ro, project cargo ve deck cargo lashing'i, öngörülen ağır hava ivmelerine göre CSM/CSS Code hesaplarıyla yeniden değerlendirilir. Gerekirse ek lashing eklenir ve mevcut lashing tightness (gerginlik) kontrol edilir; gevşeyen turnbuckle'lar sıkılır. Ağır deniz başladıktan sonra lashing kontrolü için güverteye çıkmak son derece tehlikelidir, bu yüzden hazırlık önceden tam yapılır.`,
             `Container gemilerinde parametric rolling riski varsa, lashing kuvvetleri çok artar; bu durumda hız/rota değişimi tek güvenli çözümdür. ONE Apus (2020) ve Maersk Essen (2021) gibi büyük container kayıpları, ağır hava + yetersiz lashing/securing kombinasyonundan kaynaklandı.`,
           ],
           callouts: [

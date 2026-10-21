@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Kod kullanımı",
           paragraphs: [
-            `Kargo/balast operasyonları ilgili kodlarla (Code A-K) zamanında ve eksiksiz işlenir. Her sayfa sorumlu zabit ve Master tarafından imzalanır; kayıtlar gemide en az üç yıl saklanır.`,
+            `Kargo/balast operasyonları ORB Part II'ye ilgili kodlarla zamanında ve eksiksiz işlenir. Her tamamlanan işlem sorumlu zabit, her tamamlanan sayfa Master tarafından imzalanır; kayıtlar gemide en az üç yıl saklanır.`,
           ],
           bullets: [
             `Doğru kod (A-K) seçimi`,

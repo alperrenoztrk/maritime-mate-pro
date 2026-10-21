@@ -80,7 +80,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 Servis düzeni ve nezaket",
           paragraphs: [
             `Servis akışı düzenli ve nazik olmalıdır. Buffet (self-servis) düzeninde yemekler mantıklı sırayla dizilir: tabaklar → ana yemek → garnitür → salata → ekmek → tatlı → içecek. Personel sıkışmadan ilerleyebilmelidir. Masaya servis (table service) yapılan messlerde (genellikle officers' mess) servis sol/sağ kuralına ve sessiz profesyonelliğe dikkat edilir.`,
-            `Kamarot servis sırasında nazik, temiz ve düzenli bir görünüm sergiler: temiz üniforma, takılmış önlük, gerektiğinde eldiven/saç filesi. Saçma görünüş ve dağınıklık gıda hijyeni endişesi yaratır. Servis sırasında öksürme/hapşırmada yemekten uzaklaşılır ve hijyen korunur.`,
+            `Kamarot servis sırasında nazik, temiz ve düzenli bir görünüm sergiler: temiz üniforma, takılmış önlük, gerektiğinde eldiven/saç filesi. Dağınıklık gıda hijyeni endişesi yaratır. Servis sırasında öksürme/hapşırmada yemekten uzaklaşılır ve hijyen korunur.`,
           ],
           callouts: [
             {

@@ -91,7 +91,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Time sheet ve laytime hesabı",
           paragraphs: [
-            `SoF'tan türetilen time sheet, laytime'ın nasıl tükendiğini gösterir: hangi süreler laytime'a sayıldı, hangileri istisna (excepted period — örn. hava, ekipman arızası) olarak hariç tutuldu. Birinci Zabit, laytime'a sayılmaması gereken duraklamaların (charterer/terminal kaynaklı) doğru kaydedildiğinden emin olur; bu, demurrage gelirini korur.`,
+            `SoF'tan türetilen time sheet, laytime'ın nasıl tükendiğini gösterir: hangi süreler laytime'a sayıldı, hangileri istisna (excepted period — örn. hava, ekipman arızası) olarak hariç tutuldu. Birinci Zabit, laytime'a sayılması gereken duraklamaların (charterer/terminal kaynaklı) doğru kaydedildiğinden emin olur; bu, demurrage gelirini korur.`,
           ],
           callouts: [
             {

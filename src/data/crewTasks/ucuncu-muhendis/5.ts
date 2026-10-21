@@ -140,7 +140,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 ROB, tüketim ve bunker",
           paragraphs: [
-            `Yakıt/yağ ROB değerleri, günlük tüketim ve bunker alımları düzenli kaydedilir. MARPOL Annex VI kapsamında Bunker Delivery Note (BDN) ve numune saklanır; CII/EEXI raporlaması için tüketim verisinin doğruluğu giderek daha kritik hale gelmiştir.`,
+            `Yakıt/yağ ROB değerleri, günlük tüketim ve bunker alımları düzenli kaydedilir. MARPOL Annex VI kapsamında Bunker Delivery Note (BDN) ve numune saklanır; IMO DCS/CII raporlaması için tüketim verisinin doğruluğu giderek daha kritik hale gelmiştir.`,
           ],
         },
       ],

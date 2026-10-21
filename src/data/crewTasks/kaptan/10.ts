@@ -95,7 +95,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Çalışma ve dinlenme saatleri (rest hours)",
           paragraphs: [
-            `MLC ve STCW A-VIII/1, dinlenme saatleri için iki alternatif limit sunar. En az dinlenme: herhangi bir 24 saatlik dönemde minimum 10 saat, herhangi bir 7 günlük dönemde minimum 77 saat dinlenme. Dinlenme en fazla iki parçaya bölünebilir; parçalardan biri en az 6 saat kesintisiz olmalı ve ardışık dinlenme parçaları arası en fazla 14 saat olmalıdır. Alternatif olarak ILO 180 maks. çalışma limiti (24 saatte maks. 14, 7 günde maks. 72) uygulanabilir; bayrak devleti hangisini seçtiğini DMLC'de belirtir.`,
+            `MLC (Standard A2.3), çalışma ve dinlenme saatleri için iki alternatif limit sunar; STCW A-VIII/1 ise yalnızca asgari dinlenme saatlerini düzenler. En az dinlenme: herhangi bir 24 saatlik dönemde minimum 10 saat, herhangi bir 7 günlük dönemde minimum 77 saat dinlenme. Dinlenme en fazla iki parçaya bölünebilir; parçalardan biri en az 6 saat kesintisiz olmalı ve ardışık dinlenme parçaları arası en fazla 14 saat olmalıdır. Alternatif olarak ILO 180 maks. çalışma limiti (24 saatte maks. 14, 7 günde maks. 72) uygulanabilir; bayrak devleti hangisini seçtiğini DMLC'de belirtir.`,
             `Kaptan, vardiya planını (watch system) bu limitler ışığında kurar ve rest hours kayıtlarını günlük tutturur. Liman operasyonu, drill, PSC/vetting ve acil durumların rest hours'ı bozma riski yüksektir. Yorgunluk (fatigue), MAIB raporlarında kaza sebeplerinin başında gelir; kaptan, "kâğıt üzerinde uyumlu ama gerçekte yorgun" bir mürettebat yaratmamak için planlamayı dürüst yapar.`,
           ],
           table: {
@@ -172,7 +172,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 Yiyecek, içme suyu ve catering",
           paragraphs: [
-            `MLC, denizcilere ücretsiz, yeterli miktarda, besleyici ve kültürel/dini çeşitliliği gözeten yiyecek ve içme suyu sağlanmasını güvence altına alır. Catering personeli (aşçı) eğitimli ve 18 yaş üstü olmalı; 10'dan fazla mürettebatı olan gemide kalifiye gemi aşçısı (certified ship's cook) bulunması istenir. Kaptan, mönü çeşitliliğini, porsiyon yeterliliğini, gıda stoğunu, soğuk zincir ve depolama hijyenini denetler.`,
+            `MLC, denizcilere ücretsiz, yeterli miktarda, besleyici ve kültürel/dini çeşitliliği gözeten yiyecek ve içme suyu sağlanmasını güvence altına alır. Catering personeli (aşçı) eğitimli ve en az 18 yaşında olmalı; asgari donatımı (prescribed manning) 10 veya daha fazla olan gemide kalifiye gemi aşçısı (certified ship's cook) bulunması istenir. Kaptan, mönü çeşitliliğini, porsiyon yeterliliğini, gıda stoğunu, soğuk zincir ve depolama hijyenini denetler.`,
             `İçme suyu kalitesi (potability) sağlık açısından kritiktir; tank kloru, periyodik su testi ve hidrofor sistemi temizliği takip edilir. Mutfak hijyeni HACCP prensipleriyle yönetilir: çapraz bulaşma önleme, sıcaklık kontrolü (soğutucu < 4°C, dondurucu < -18°C), tarih takibi ve personel hijyeni. Gıda kaynaklı toplu hastalık (gastroenteritis) bir gemide operasyonu felç edebilir.`,
           ],
           callouts: [
@@ -191,14 +191,14 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 Gemide tıbbi bakım ve ilaç dolabı",
           paragraphs: [
-            `MLC, denizcilere karadakine eşdeğer, mümkün olduğunca ücretsiz tıbbi bakım sağlamayı amaçlar. Gemide medical chest (ilaç dolabı), tıbbi rehber (WHO International Medical Guide for Ships veya muadili) ve telsiz/uydu üzerinden tıbbi tavsiye (TMAS — Telemedical Maritime Assistance Service) erişimi bulunur. 100+ kişilik veya 3+ gün uluslararası sefer yapan yolcu gemilerinde doktor bulundurulur; diğer gemilerde tıbbi bakımdan sorumlu zabit (genelde kaptan veya 2. Zabit, STCW medical care eğitimli) görevlidir.`,
+            `MLC, denizcilere karadakine eşdeğer, mümkün olduğunca ücretsiz tıbbi bakım sağlamayı amaçlar. Gemide medical chest (ilaç dolabı), tıbbi rehber (WHO International Medical Guide for Ships veya muadili) ve telsiz/uydu üzerinden tıbbi tavsiye (TMAS — Telemedical Maritime Assistance Service) erişimi bulunur. 100 veya daha fazla kişi taşıyan ve normalde 3 günden uzun uluslararası seferlerde çalışan gemilerde doktor bulundurulur; diğer gemilerde tıbbi bakımdan sorumlu zabit (genelde kaptan veya 2. Zabit, STCW medical care eğitimli) görevlidir.`,
             `Kaptan, ilaç dolabının envanterini, son kullanma tarihlerini ve narkotik kayıtlarını denetler; eksik/dolmuş ilaçlar limanda yenilenir. Ciddi vakada TMAS ile konsültasyon yapılır ve gerekirse MEDEVAC (helikopter veya sapma ile en yakın limana yönelme) düzenlenir; bu karar kaptanın overriding authority alanındadır ve ticari kayba rağmen alınır.`,
           ],
         },
         {
           subheading: "6.2 Refah (welfare), sosyal güvenlik ve internet erişimi",
           paragraphs: [
-            `Title 4, denizcilerin karada ve gemide refah olanaklarına (seamen's clubs, recreation, iletişim) erişimini destekler; armatör ve liman devletleri welfare facility sağlamaya teşvik edilir. Modern dönemde gemide internet/iletişim erişimi (aileyle bağ) zihinsel sağlığın temel bileşeni haline geldi; 2022 sonrası bazı bayraklar ve CBA'lar makul internet erişimini standart olarak ekledi. Kaptan, shore leave (kıyı izni) hakkının makul biçimde kullanılmasını destekler; ISPS/operasyonel kısıtlar dışında kıyı izninin engellenmesi refah ihlalidir.`,
+            `Title 4, denizcilerin karadaki refah olanaklarına (seamen's clubs, recreation, iletişim) erişimini destekler; armatör ve liman devletleri welfare facility sağlamaya teşvik edilir. Modern dönemde gemide internet/iletişim erişimi (aileyle bağ) zihinsel sağlığın temel bileşeni haline geldi. Kaptan, shore leave (kıyı izni) hakkının makul biçimde kullanılmasını destekler; ISPS/operasyonel kısıtlar dışında kıyı izninin engellenmesi refah ihlalidir.`,
             `Zihinsel sağlık ve denizci intiharı, sektörün ciddi gündemidir; izolasyon, yorgunluk ve aileyle iletişim eksikliği başlıca risklerdir. Kaptan, mürettebatın psikolojik durumunu gözlemler, açık bir iletişim ortamı kurar ve gerekirse şirketin EAP (Employee Assistance Program) / kriz hattını devreye sokar. Sosyal güvenlik (sağlık, malullük, yaşlılık) koruması da MLC kapsamındadır ve genelde bayrak/menşe devleti üzerinden yürür.`,
           ],
         },
@@ -244,7 +244,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "8.1 PSC'nin MLC kontrol başlıkları",
           paragraphs: [
-            `PSC denetçisi MLC açısından 14 başlığı kontrol eder: asgari yaş, medikal sertifika, denizcilerin yeterliği, SEA, lisanslı recruitment, çalışma/dinlenme saatleri, manning, barınma, eğlence tesisleri, yiyecek/catering, sağlık-emniyet ve kaza önleme, gemide tıbbi bakım, gemi-içi şikâyet prosedürü, ücret ödemesi. "Clear grounds" (denizci şikâyeti, görünür ihlal, geçersiz belge) varsa detaylı denetim yapılır. Rest hours kayıt tutarsızlığı, ödenmemiş maaş ve geçersiz SEA en sık tespit edilen ihlallerdir.`,
+            `PSC denetçisi MLC açısından 16 başlığı kontrol eder: asgari yaş, medikal sertifika, denizcilerin yeterliği, SEA, lisanslı recruitment, çalışma/dinlenme saatleri, manning, barınma, eğlence tesisleri, yiyecek/catering, sağlık-emniyet ve kaza önleme, gemide tıbbi bakım, gemi-içi şikâyet prosedürü, ücret ödemesi, repatriation için mali teminat ve armatör sorumluluğu için mali teminat. "Clear grounds" (denizci şikâyeti, görünür ihlal, geçersiz belge) varsa detaylı denetim yapılır.`,
             `Kaptan, denetim öncesi kendi MLC dosyasını (sertifika, DMLC I/II, SEA örnekleri, rest hours kayıtları, payroll, accommodation inspection kayıtları, şikâyet prosedürü) hazır tutar. Tutarlı ve dürüst kayıt, denetimi hızlandırır; çelişkili veya eksik kayıt detention riski yaratır. Düzeltilebilir bulgular limanda kapatılır; ciddi/tekrarlayan ihlal gemiyi tutturur.`,
           ],
           table: {

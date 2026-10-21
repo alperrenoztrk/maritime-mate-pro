@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Yakıt/scrubber ve ECA",
           paragraphs: [
-            `SOx uyumu BDN kükürt içeriği veya scrubber wash water verisiyle gösterilir; NOx için motorlar Technical File'a uygun ayarlanır. ECA bölgelerinde sıkı limitlere geçilir.`,
+            `SOx uyumu BDN kükürt içeriği veya scrubber egzoz SO₂/CO₂ oranı izleme verisiyle gösterilir; NOx için motorlar Technical File'a uygun ayarlanır. ECA bölgelerinde sıkı limitlere geçilir.`,
           ],
           bullets: [`BDN/scrubber verisi`, `NOx Technical File uyumu`, `ECA geçiş kayıtları`],
         },

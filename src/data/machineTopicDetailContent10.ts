@@ -61,7 +61,7 @@ const content10: ContentMap = {
         {
           heading: "Planlı Bakım Prensibi",
           paragraphs: [
-            "Preventive bakım, ekipman üreticisinin önerdiği bakım aralıklarına (çalışma saati, takvim süresi) göre yapılır. Yağ değişimi, filtre değişimi, contık değişimi, ayar kontrolü gibi işlemleri kapsar.",
+            "Preventive bakım, ekipman üreticisinin önerdiği bakım aralıklarına (çalışma saati, takvim süresi) göre yapılır. Yağ değişimi, filtre değişimi, conta değişimi, ayar kontrolü gibi işlemleri kapsar.",
             "SOLAS ve klas kuruluşları gemilerde PMS (Planned Maintenance System) uygulamasını zorunlu kılar."
           ]
         },

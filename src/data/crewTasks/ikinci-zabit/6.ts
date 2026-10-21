@@ -72,7 +72,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 UTC kaynakları",
           paragraphs: [
-            `UTC; GNSS alıcılarından, radyo zaman sinyallerinden (ALRS Vol. 5'te listeli) ve internet zaman servislerinden elde edilir. İkinci Zabit, birincil kaynak GPS olsa da yedek bir kaynakla çapraz kontrol alışkanlığını korur; tek kaynağa bağımlılık, o kaynak arızalandığında zaman bütünlüğünü riske atar.`,
+            `UTC; GNSS alıcılarından, radyo zaman sinyallerinden (ALRS Vol. 2'de listeli) ve internet zaman servislerinden elde edilir. İkinci Zabit, birincil kaynak GPS olsa da yedek bir kaynakla çapraz kontrol alışkanlığını korur; tek kaynağa bağımlılık, o kaynak arızalandığında zaman bütünlüğünü riske atar.`,
           ],
         },
       ],
@@ -102,7 +102,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Tarih değiştirme çizgisi (IDL)",
           paragraphs: [
-            `180° meridyeni civarındaki Uluslararası Tarih Çizgisi geçişinde takvim günü atlanır (batı→doğu) veya tekrarlanır (doğu→batı). Bu, ETA hesapları, vardiya çizelgeleri ve kayıtlarda dikkatle yönetilir; aksi halde bir günlük kayıt boşluğu veya tekrarı oluşur.`,
+            `180° meridyeni civarındaki Uluslararası Tarih Çizgisi geçişinde takvim günü atlanır (doğu→batı yönünde seyirde) veya tekrarlanır (batı→doğu yönünde seyirde). Bu, ETA hesapları, vardiya çizelgeleri ve kayıtlarda dikkatle yönetilir; aksi halde bir günlük kayıt boşluğu veya tekrarı oluşur.`,
           ],
         },
       ],

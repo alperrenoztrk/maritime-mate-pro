@@ -87,7 +87,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "4.1 Gas-freeing emniyeti",
           paragraphs: [
-            `Tank içine giriş öncesi gas-freeing (havalandırma) ile hidrokarbon ve toksik gaz seviyesi güvenli, oksijen ~%21 yapılır; enclosed space entry prosedürü, gaz ölçümü ve izin (permit) uygulanır. Inert tanktan doğrudan hava almaya geçiş (purging) statik riski yönetilerek yapılır.`,
+            `Tank içine giriş öncesi gas-freeing (havalandırma) ile hidrokarbon ve toksik gaz seviyesi güvenli, oksijen ~%21 yapılır; enclosed space entry prosedürü, gaz ölçümü ve izin (permit) uygulanır. Inert tankta hava ile gas-freeing'e geçmeden önce tank inert gazla purge edilerek hidrokarbon hacimce %2'nin altına indirilir; böylece tank atmosferi yanıcı aralıktan geçmez.`,
           ],
           callouts: [
             {

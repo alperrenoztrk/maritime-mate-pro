@@ -39,7 +39,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.2 Sole lookout ve tek kişilik vardiya kısıtları",
           paragraphs: [
-            `STCW A-VIII/2, gündüz ve uygun koşullarda zabitin tek başına gözcü (sole lookout) olarak vardiya tutmasına izin verebilir; ancak bu, ancak durum tam değerlendirildikten sonra ve geri çekilemez biçimde uygulanır. Görüş azaldığında, gece yaklaşırken, yoğun trafikte veya herhangi bir şüphe doğduğunda zabit derhal ek gözcü (lookout) talep etmelidir.`,
+            `STCW A-VIII/2, gündüz ve uygun koşullarda zabitin tek başına gözcü (sole lookout) olarak vardiya tutmasına izin verebilir; ancak bu, ancak durum tam değerlendirildikten sonra ve gerektiğinde yardım derhal köprüüstüne çağrılabilecek durumdaysa uygulanır. Görüş azaldığında, gece yaklaşırken, yoğun trafikte veya herhangi bir şüphe doğduğunda zabit derhal ek gözcü (lookout) talep etmelidir.`,
             `04-08 vardiyası şafağı, 16-20 vardiyası alacakaranlığı kapsadığından, bu vardiyalarda sole lookout düzeni ışık koşulu değiştikçe yeniden değerlendirilmelidir. Karanlığa geçişte zabitin tek başına hem dümeni izleyip hem gözcülük yapması yetersiz kalabilir; bu nedenle gece başlamadan gözcü çağrılması iyi denizcilik uygulamasıdır.`,
           ],
           callouts: [
@@ -158,7 +158,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.1 Sistematik radar plotting ve ARPA",
           paragraphs: [
-            `Radar plotting, hedefin gerçek rotasını ve hızını, CPA (Closest Point of Approach) ve TCPA (Time to CPA) değerlerini belirlemek için yapılır. Manuel plotting'de OPRA üçgeni (Own ship, relative motion, Aspect) ile hedefin gerçek hareketi çözülür; ARPA bunu otomatik yapar ancak zabit ARPA verisinin doğruluğunu (tracking stability, target swap riski) sorgulamalıdır.`,
+            `Radar plotting, hedefin gerçek rotasını ve hızını, CPA (Closest Point of Approach) ve TCPA (Time to CPA) değerlerini belirlemek için yapılır. Manuel plotting'de OAW üçgeni (WO: own ship, OA: relative motion, WA: true motion) ile hedefin gerçek hareketi çözülür; ARPA bunu otomatik yapar ancak zabit ARPA verisinin doğruluğunu (tracking stability, target swap riski) sorgulamalıdır.`,
             `ARPA hedefleri en az üç dakika izlendikten sonra güvenilir vektör verir; bu süreden önce vektörlere tam güvenilmez. Zabit, true vector ve relative vector modlarının her birinin ne anlattığını bilmelidir: relative vector CPA'yı gösterir, true vector hedefin gerçek rotasını gösterir. Önleme manevrası sonrası vektörlerin nasıl değiştiği teyit edilir.`,
             `Şirket veya kaptan talimatıyla belirlenmiş minimum CPA değeri (örn. açık denizde 2 mil, kısıtlı suda daha az) ihlal edilecek görünüyorsa zabit erken aksiyon alır. CPA marjı yalnızca sayısal değil, geminin manevra kabiliyeti ve trafik yoğunluğuyla birlikte değerlendirilir.`,
           ],
@@ -218,7 +218,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Karşıdan karşıya, kesişme ve geçme durumları",
           paragraphs: [
-            `Kural 13 (overtaking / geçme), bir geminin diğerinin kıç tarafından 22.5 dereceden fazla bir açıyla yaklaşmasını tanımlar; geçen gemi (overtaking vessel) her zaman geçilen gemiden uzak durmakla yükümlüdür ve durum kesişmeye dönüşse bile bu yükümlülük değişmez. Kural 14 (head-on / karşıdan karşıya), iki gücünü makineden alan geminin birbirine yaklaşık karşı rotalarda karşılaşmasında her ikisinin de sancağa dönmesini (alter to starboard) şart koşar.`,
+            `Kural 13 (overtaking / geçme), bir geminin diğerine, onun travasının 22.5 dereceden daha gerisindeki bir yönden yaklaşmasını tanımlar; geçen gemi (overtaking vessel) her zaman geçilen gemiden uzak durmakla yükümlüdür ve sonradan kerteriz değişse bile durum kesişmeye dönüşmez ve bu yükümlülük değişmez. Kural 14 (head-on / karşıdan karşıya), iki gücünü makineden alan geminin birbirine yaklaşık karşı rotalarda karşılaşmasında her ikisinin de sancağa dönmesini (alter to starboard) şart koşar.`,
             `Kural 15 (crossing / kesişme), iki makine gücüyle hareket eden gemi kesişirken diğerini sancak tarafında bulunduran geminin yol veren (give-way) gemi olduğunu ve mümkünse karşı geminin baş tarafından geçmekten kaçınmasını belirtir. Yol veren gemi erken ve belirgin manevra yapar; yol hakkı olan gemi (stand-on vessel) Kural 17 gereği rota ve hızını korur.`,
           ],
           table: {
@@ -235,7 +235,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 Kural 17 — yol hakkı gemisinin sorumluluğu ve Kural 18 hiyerarşisi",
           paragraphs: [
-            `Kural 17, yol hakkı olan (stand-on) geminin rota ve hızını koruması gerektiğini, ancak yol veren gemi gerekli aksiyonu almıyorsa stand-on geminin de manevra yapabileceğini (Kural 17(a)(ii)) ve çatışma kaçınılmaz hale geldiğinde manevra yapmak zorunda olduğunu (17(b)) belirtir. Stand-on gemi, kesişme durumunda mümkünse kendi sancağına dönmemelidir (yani diğer gemiyi sol tarafında tutan gemiye karşı sancağa dönmez).`,
+            `Kural 17, yol hakkı olan (stand-on) geminin rota ve hızını koruması gerektiğini, ancak yol veren gemi gerekli aksiyonu almıyorsa stand-on geminin de manevra yapabileceğini (Kural 17(a)(ii)) ve çatışma yalnızca yol veren geminin manevrasıyla önlenemeyecek hale geldiğinde manevra yapmak zorunda olduğunu (17(b)) belirtir. Gücünü makineden alan stand-on gemi, kesişme durumunda mümkünse kendi iskele tarafındaki bir gemi için iskeleye dönmemelidir (17(c)).`,
             `Kural 18, gemiler arası öncelik hiyerarşisini tanımlar: gücünü makineden alan gemi (power-driven), yelkenli, balıkçı, manevra kabiliyeti kısıtlı (RAM), kumanda altında olmayan (NUC) ve draught'ı nedeniyle kısıtlı (CBD) gemiler arasında kimin kime yol vereceğini belirler. Zabit, karşı geminin fenerlerinden/şekillerinden tipini doğru tanıyarak Kural 18 önceliğini uygular.`,
           ],
           callouts: [
@@ -255,7 +255,7 @@ const content: CrewTaskLongForm = {
           subheading: "8.1 Kısıtlı görüş prosedürü",
           paragraphs: [
             `COLREG Kural 19, kısıtlı görüş (restricted visibility) içinde veya yakınında seyreden gemilere uygulanır; bu durumda geminin emniyetli hızda seyretmesi, makinesini manevraya hazır tutması (engines ready for immediate manoeuvre) ve radar varsa sistematik gözlem yapması gerekir. Kural 19 koşullarında "stand-on / give-way" ayrımı yoktur; her gemi kendi manevra sorumluluğunu taşır.`,
-            `Bir gemi yalnızca radarla başka bir geminin varlığını tespit ederse, çatışma riskinin gelişip gelişmediğini belirler. Risk varsa Kural 19(d), bazı manevralardan kaçınmayı şart koşar: önündeki gemiye sancağa dönerek karşılık vermek (geçme hariç) ve travasındaki/kıçındaki bir gemiye doğru dönmekten kaçınılır. Aksiyon erken ve belirgin yapılır.`,
+            `Bir gemi yalnızca radarla başka bir geminin varlığını tespit ederse, çatışma riskinin gelişip gelişmediğini belirler. Risk varsa Kural 19(d), bazı manevralardan kaçınmayı şart koşar: travasının önündeki bir gemi için iskeleye dönmekten (geçilen gemi hariç) ve travasındaki veya travasının gerisindeki bir gemiye doğru dönmekten kaçınılır. Aksiyon erken ve belirgin yapılır.`,
           ],
           callouts: [
             {
@@ -290,8 +290,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.1 Fener ve şekil tanıma (Kural 20-31)",
           paragraphs: [
-            `COLREG Kural 20-31, gemilerin gece gösterdiği seyir fenerlerini (navigation lights) ve gündüz gösterdiği şekilleri (shapes) tanımlar. Vardiya zabiti, karşı geminin fenerlerinden tipini, boyutunu, aspect'ini (baş/kıç/travadan görünüm) ve niyetini okuyabilmelidir: yeşil-kırmızı borda fenerleri + direk fenerleri kombinasyonu geminin yönelimini, kırmızı-kırmızı-kırmızı dikey üç fener NUC'u, kırmızı-beyaz-kırmızı RAM'i gösterir.`,
-            `Gündüz, bir top/küre (ball) demirli veya NUC, iki koni RAM, silindir CBD ve bir baklava (diamond) çekme yapan gemiyi işaret eder. Zabit, bu şekilleri ve fenerleri tereddütsüz okuyarak Kural 18 önceliğini ve geminin durumunu doğru değerlendirir. Fener menzilleri (range of visibility) Kural 22'de gemi boyuna göre tanımlanır.`,
+            `COLREG Kural 20-31, gemilerin gece gösterdiği seyir fenerlerini (navigation lights) ve gündüz gösterdiği şekilleri (shapes) tanımlar. Vardiya zabiti, karşı geminin fenerlerinden tipini, boyutunu, aspect'ini (baş/kıç/travadan görünüm) ve niyetini okuyabilmelidir: yeşil-kırmızı borda fenerleri + direk fenerleri kombinasyonu geminin yönelimini, kırmızı-kırmızı dikey iki fener NUC'u, kırmızı-beyaz-kırmızı RAM'i gösterir.`,
+            `Gündüz, bir top/küre (ball) demirli, dikey iki top NUC, top-baklava-top RAM, silindir CBD ve bir baklava (diamond) çekme yapan gemiyi işaret eder. Zabit, bu şekilleri ve fenerleri tereddütsüz okuyarak Kural 18 önceliğini ve geminin durumunu doğru değerlendirir. Fener menzilleri (range of visibility) Kural 22'de gemi boyuna göre tanımlanır.`,
           ],
           callouts: [
             {

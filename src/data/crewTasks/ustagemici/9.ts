@@ -61,7 +61,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 İnert gazın amacı ve oksijen sınırı",
           paragraphs: [
-            `İnert gaz sistemi (IGS), baca gazını işleyerek (veya inert gaz jeneratörü ile) düşük oksijenli gaz üretir ve yük tanklarına basar; amaç tank atmosferindeki oksijeni yanmayı desteklemeyecek seviyeye düşürmektir. SOLAS ve ISGOTT, yük tankı atmosferindeki oksijenin hacmen %8'in altında tutulmasını gerektirir; COW yapılacaksa oksijen genelde daha düşük (örn. ≤%5) hedeflenir ki yıkama statik riskine rağmen güvenli kalsın.`,
+            `İnert gaz sistemi (IGS), baca gazını işleyerek (veya inert gaz jeneratörü ile) düşük oksijenli gaz üretir ve yük tanklarına basar; amaç tank atmosferindeki oksijeni yanmayı desteklemeyecek seviyeye düşürmektir. IGS, oksijeni hacmen %5'i geçmeyen inert gaz verebilmelidir; SOLAS ve ISGOTT, yük tankı atmosferindeki oksijenin hacmen %8'i aşmamasını gerektirir ve bu sınır COW sırasında da geçerlidir.`,
             `AB, tankın "inert", "gas-free" veya "non-inert" durumunu karıştırmamalıdır; bu durumlar farklı önlemler gerektirir. İnert tank oksijensiz olduğundan girilmez; gas-free (havalandırılmış ve test edilmiş) tank ise giriş için uygun hale gelebilir. Atmosfer durumu sürekli izlenir ve kaydedilir.`,
           ],
           table: {
@@ -99,7 +99,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 COW prensibi ve ön koşullar",
           paragraphs: [
             `COW'da sabit veya taşınabilir yıkama makineleri, basınçlı ham petrolü tank yüzeyine püskürterek tortuyu (clingage) çözer ve pompalanabilir hale getirir; bu hem boşaltma verimini artırır hem de slop (atık) miktarını azaltır (MARPOL Annex I gereği). COW yalnızca tank inert (düşük oksijenli) iken ve IGS düzgün çalışırken yapılır.`,
-            `Ön koşullar: oksijen sınırının (ör. ≤%5) doğrulanması, IGS'nin tam çalışması, yıkama hattının ve makinelerin test edilmesi, hidrokarbon kaçağı kontrolü ve görev brifingi. AB, makinelerin doğru sırada devreye alınmasına, hortum/hat bağlantılarına ve sızdırmazlık kontrolüne destek verir. Onaylı COW manuelindeki program (program of washing) takip edilir.`,
+            `Ön koşullar: tank oksijeninin hacmen ≤%8 olduğunun doğrulanması, IGS'nin tam çalışması, yıkama hattının ve makinelerin test edilmesi, hidrokarbon kaçağı kontrolü ve görev brifingi. AB, makinelerin doğru sırada devreye alınmasına, hortum/hat bağlantılarına ve sızdırmazlık kontrolüne destek verir. Onaylı COW manuelindeki program (program of washing) takip edilir.`,
           ],
           bullets: [
             `COW ham petrolü yıkama sıvısı olarak kullanır`,
@@ -130,7 +130,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Statik yükün oluşumu ve riski",
           paragraphs: [
-            `Akan sıvı, su jeti, buhar/mist ve hareket eden parçacıklar statik elektrik yükü biriktirir; bu yük boşalırken (kıvılcım) yanıcı atmosferi tutuşturabilir. Özellikle su ile yıkama (butterworth) statik açısından ham petrolden daha risklidir, çünkü su damlacıkları/mist yüksek yük taşır. Bu yüzden su yıkaması inert tank dışında veya kontrolsüz yapılmaz.`,
+            `Akan sıvı, su jeti, buhar/mist ve hareket eden parçacıklar statik elektrik yükü biriktirir; bu yük boşalırken (kıvılcım) yanıcı atmosferi tutuşturabilir. Özellikle su ile yıkama (butterworth) statik açısından ham petrolden daha risklidir, çünkü su damlacıkları/mist yüksek yük taşır. Bu yüzden inert edilmemiş tankta su yıkaması yalnızca ISGOTT'ta tanımlanan kontrollü koşullarda yapılır.`,
             `AB, statik riskini azaltmak için: tüm iletken ekipmanı (yıkama makinesi, hortum nozülü, ölçüm cihazı) gemi yapısına topraklar (bonding), sounding/ölçüm sırasında bekleme süresine (relaxation/settling time) uyar ve serbest düşen jet/sıçramayı önler. Anti-statik (iletken) PPE ve ekipman kullanılır; sentetik, yük tutan giysi/araç kullanılmaz.`,
           ],
           table: {
@@ -198,7 +198,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "6.1 MARPOL ve slop/atık yönetimi",
           paragraphs: [
-            `Tank yıkama suyu ve tortu (slop), petrol içerdiğinden denize boşaltılamaz; MARPOL Annex I, COW ile slop azaltımını, slop tankında toplamayı, yağ-su ayrımını ve uygun tahliye/teslim kurallarını belirler. Yağ Kayıt Defteri (Oil Record Book) tüm yıkama, slop transferi ve tahliye işlemlerinin kaydedildiği yasal belgedir. AB, bu operasyonların fiziksel işlerine destek verir ve döküntü/kaçağı önler.`,
+            `Tank yıkama suyu ve tortu (slop), petrol içerdiğinden MARPOL Annex I Reg. 34 koşulları sağlanmadan denize boşaltılamaz; MARPOL Annex I, COW ile slop azaltımını, slop tankında toplamayı, yağ-su ayrımını ve uygun tahliye/teslim kurallarını belirler. Yağ Kayıt Defteri (Oil Record Book) tüm yıkama, slop transferi ve tahliye işlemlerinin kaydedildiği yasal belgedir. AB, bu operasyonların fiziksel işlerine destek verir ve döküntü/kaçağı önler.`,
             `Güvertede scupper tıpaları (scupper plug) takılı tutulur ki olası döküntü denize gitmesin; döküntü emici ile toplanır. Deniz/hava kirliliği (VOC emisyonu dahil) önlenir; liman/terminal kurallarına uyulur. Çevre ihlali ağır ceza ve gemi tutulması sebebidir.`,
           ],
         },
