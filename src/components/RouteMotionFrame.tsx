@@ -38,14 +38,14 @@ export const RouteMotionFrame = ({ children, pathname, direction, navbar }: Rout
       data-route-exiting={!present || undefined}
       data-route-moving={moving || !present || undefined}
       aria-hidden={!present || undefined}
-      custom={{ direction, reduced }}
+      custom={{ direction: activeDirection, reduced }}
       initial="initial"
       animate="animate"
       exit="exit"
       variants={variants}
       style={{ zIndex: activeDirection === "backward" ? (present ? 1 : 2) : (present ? 2 : 1) }}
       transition={{
-        duration: reduced ? 0 : direction === "tab" ? MOTION_SECONDS.control : MOTION_SECONDS.page,
+        duration: reduced ? 0 : activeDirection === "tab" ? MOTION_SECONDS.control : MOTION_SECONDS.page,
         ease: MOTION_EASE_OUT,
       }}
       onAnimationStart={() => setMoving(true)}
