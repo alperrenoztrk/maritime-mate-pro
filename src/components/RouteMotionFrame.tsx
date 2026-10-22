@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { motion, useIsPresent } from "framer-motion";
+import { motion, useIsPresent, usePresenceData } from "framer-motion";
 import { MOTION_EASE_OUT, MOTION_SECONDS, useReducedMotion } from "@/hooks/useAppMotion";
 import type { NavDirection } from "@/lib/navigationDirection";
 
@@ -25,6 +25,8 @@ const variants = {
 /** Layout and stacking are discrete; only transform and opacity are animated. */
 export const RouteMotionFrame = ({ children, pathname, direction, navbar }: RouteMotionFrameProps) => {
   const present = useIsPresent();
+  const presenceData = usePresenceData() as { direction: NavDirection; reduced: boolean } | undefined;
+  const activeDirection = present ? direction : presenceData?.direction ?? direction;
   const reduced = useReducedMotion();
   const [moving, setMoving] = useState(true);
 
@@ -41,7 +43,7 @@ export const RouteMotionFrame = ({ children, pathname, direction, navbar }: Rout
       animate="animate"
       exit="exit"
       variants={variants}
-      style={{ zIndex: direction === "backward" ? (present ? 1 : 2) : (present ? 2 : 1) }}
+      style={{ zIndex: activeDirection === "backward" ? (present ? 1 : 2) : (present ? 2 : 1) }}
       transition={{
         duration: reduced ? 0 : direction === "tab" ? MOTION_SECONDS.control : MOTION_SECONDS.page,
         ease: MOTION_EASE_OUT,
