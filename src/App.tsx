@@ -15,7 +15,8 @@ import { EntitlementProvider } from "@/contexts/EntitlementContext";
 import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
 import { FontSizeProvider } from "@/contexts/FontSizeContext";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import { RouteMotionFrame } from "@/components/RouteMotionFrame";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -28,7 +29,7 @@ import { GlobalSearch } from "@/components/GlobalSearch";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { ProRoute, LibraryBookRoute } from "@/components/pro/ProRoute";
 import { AdsController } from "@/components/ads/AdsController";
-import { MOTION_EASE_OUT, MOTION_SECONDS, prefersReducedMotion } from "@/hooks/useAppMotion";
+import { prefersReducedMotion } from "@/hooks/useAppMotion";
 import { isAppChromeHidden } from "@/lib/appChrome";
 import { captureRoutePreview } from "@/lib/navigationPreview";
 import { hasHierarchicalBack } from "@/lib/appNavigation";
@@ -205,58 +206,6 @@ const queryClient = new QueryClient();
 // with a ring in the middle.
 const RouteFallback = () => <RouteSkeleton />;
 
-const routeFrameVariants = {
-  initial: () => {
-    if (prefersReducedMotion()) return { opacity: 0, x: 0, zIndex: 1 };
-    const direction = getNavigationDirection();
-    if (direction === "tab") {
-      return { opacity: 0, x: 0, zIndex: 1, position: "relative" as const };
-    }
-    const forward = direction === "forward";
-    return {
-      opacity: 1,
-      x: forward ? "100%" : "-28%",
-      zIndex: forward ? 2 : 0,
-      position: "relative" as const,
-    };
-  },
-  animate: {
-    opacity: 1,
-    x: 0,
-    zIndex: 1,
-    position: "relative" as const,
-  },
-  exit: () => {
-    if (prefersReducedMotion()) {
-      return {
-        opacity: 0,
-        x: 0,
-        zIndex: 0,
-        position: "absolute" as const,
-        inset: 0,
-      };
-    }
-    const direction = getNavigationDirection();
-    if (direction === "tab") {
-      return {
-        opacity: 0,
-        x: 0,
-        zIndex: 0,
-        position: "absolute" as const,
-        inset: 0,
-      };
-    }
-    const forward = direction === "forward";
-    return {
-      opacity: 1,
-      x: forward ? "-28%" : "100%",
-      zIndex: forward ? 0 : 2,
-      position: "absolute" as const,
-      inset: 0,
-    };
-  },
-};
-
 const AnimatedRoutes = () => {
   const location = useLocation();
 
@@ -313,24 +262,12 @@ const AnimatedRoutes = () => {
         The viewport wrapper clips the off-screen frame so the slide never
         produces horizontal overflow mid-animation. */}
     <div className="route-presence-viewport">
-    <AnimatePresence mode="sync" initial={false}>
-      <motion.div
+    <AnimatePresence mode="sync" initial={false} custom={{ direction: getNavigationDirection(), reduced: prefersReducedMotion() }}>
+      <RouteMotionFrame
         key={location.pathname}
-        className="route-presence-frame min-h-[100svh] w-full"
-        data-route-path={location.pathname}
-        data-app-navbar={hasHierarchicalBack(location.pathname) && !isAppChromeHidden(location.pathname)}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={routeFrameVariants}
-        transition={
-          prefersReducedMotion()
-            ? { duration: MOTION_SECONDS.press, ease: "linear" }
-            : {
-                duration: getNavigationDirection() === "tab" ? MOTION_SECONDS.control : MOTION_SECONDS.page,
-                ease: MOTION_EASE_OUT,
-              }
-        }
+        pathname={location.pathname}
+        direction={getNavigationDirection()}
+        navbar={hasHierarchicalBack(location.pathname) && !isAppChromeHidden(location.pathname)}
       >
 
         <div className="interactive-page-surface min-h-[100svh] w-full">
@@ -519,7 +456,7 @@ const AnimatedRoutes = () => {
         </Routes>
         </Suspense>
         </div>
-      </motion.div>
+      </RouteMotionFrame>
       </AnimatePresence>
     </div>
     </>

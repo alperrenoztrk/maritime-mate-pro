@@ -308,13 +308,22 @@ html[data-native-platform="android"] body::after { bottom: 0; height: var(--safe
   overflow-x: clip;
 }
 
-/* Keep both frames on the compositor for the whole transition: no per-frame
-   layout, no text re-rasterisation. */
+/* An opaque content plane prevents text from both pages showing through.
+   Layout/stacking change once, never as interpolated animation values. */
 .route-presence-frame {
-  transform: translateZ(0);
+  position: relative;
+  background: var(--maritime-shell-background);
   backface-visibility: hidden;
-  will-change: transform;
-  contain: paint;
+}
+
+.route-presence-frame[data-route-moving="true"] {
+  will-change: transform, opacity;
+}
+
+.route-presence-frame[data-route-exiting="true"] {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .interactive-page-surface {
