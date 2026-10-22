@@ -68,14 +68,23 @@ assert(
 
 // ── 3. Route transitions ─────────────────────────────────────────────
 // AnimatePresence only tracks its DIRECT children by key. The direct child is
-// now a motion frame, and sync mode is deliberate: outgoing and incoming
-// screens must move together rather than adding two serial 300ms waits.
+// now a motion frame (RouteMotionFrame, which renders a motion.div), and sync
+// mode is deliberate: outgoing and incoming screens must move together rather
+// than adding two serial 300ms waits.
 const app = read("src/App.tsx");
-const presence = app.match(/<AnimatePresence[^>]*mode=["']sync["'][^>]*>\s*<motion\.div([^>]*)>/);
+const presence = app.match(
+  /<AnimatePresence[^>]*mode=["']sync["'][^>]*>\s*<(motion\.div|RouteMotionFrame)\b([^>]*)>/,
+);
 assert(
-  presence && /\bkey=/.test(presence[1]),
+  presence && /\bkey=/.test(presence[2]),
   "src/App.tsx: sync AnimatePresence's direct motion child must carry the route key, otherwise the simultaneous push/pop breaks",
 );
+if (presence?.[1] === "RouteMotionFrame") {
+  assert(
+    /<motion\.div\b/.test(read("src/components/RouteMotionFrame.tsx")),
+    "src/components/RouteMotionFrame.tsx: must render a motion.div so AnimatePresence can run the exit animation",
+  );
+}
 assert(
   app.includes("<AppTabBar />") && app.includes('path="/library"') && app.includes('path="/search"'),
   "src/App.tsx: the persistent tab bar and its discoverable /library + /search destinations must remain mounted",

@@ -7,7 +7,7 @@ import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { NewsPanel } from "@/components/home/NewsPanel";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { hapticSelection } from "@/lib/haptics";
-import { prefersReducedMotion } from "@/hooks/useAppMotion";
+import { MOTION_EASE_OUT, MOTION_SECONDS, useReducedMotion } from "@/hooks/useAppMotion";
 
 const VIEWS = [
   { id: "overview", label: "Summary" },
@@ -19,7 +19,7 @@ type ViewId = (typeof VIEWS)[number]["id"];
 
 const Index = () => {
   const [activeView, setActiveView] = useState<ViewId>("overview");
-  const reduceMotion = prefersReducedMotion();
+  const reduceMotion = useReducedMotion();
   const navigate = useNavigate();
   const { hasProAccess, loading: entitlementLoading } = useEntitlement();
 
@@ -86,22 +86,24 @@ const Index = () => {
           })}
         </div>
 
-        <AnimatePresence mode="wait" initial={false}>
+        <div className="grid items-start">
+        <AnimatePresence mode="sync" initial={false}>
           <motion.section
             key={activeView}
             id={`home-panel-${activeView}`}
             role="tabpanel"
-            initial={{ opacity: 0, y: reduceMotion ? 0 : 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: reduceMotion ? 0 : -4 }}
-            transition={{ duration: reduceMotion ? 0.01 : 0.18, ease: [0.32, 0.72, 0, 1] }}
-            className="py-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : MOTION_SECONDS.control, ease: MOTION_EASE_OUT }}
+            className="col-start-1 row-start-1 py-5"
           >
             {activeView === "overview" && <AppIconGrid />}
             {activeView === "news" && <NewsPanel />}
             {activeView === "widgets" && <HomeWidgetGrid />}
           </motion.section>
         </AnimatePresence>
+        </div>
       </div>
     </main>
   );
