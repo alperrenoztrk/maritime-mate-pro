@@ -1,6 +1,19 @@
-# Gemi Enine Stabilite Hesaplama Sistemi
+# Mariner's Book
 
-Bu proje, gemi enine stabilitesi ile ilgili tüm hesaplamaları yapabilen kapsamlı bir Python uygulamasıdır. SOLAS ve IMO kriterlerine uygun hesaplamalar yapar ve detaylı raporlama sağlar.
+Mariner's Book; denizcilik derslerini, operasyonel referansları, hesaplama araçlarını ve gerçekçi etkileşimli kitapları tek mobil uygulamada birleştiren React, TypeScript, Vite ve Capacitor tabanlı bir projedir.
+
+## Mobil uygulama arayüzü
+
+- iOS tarzı kalıcı sekme navigasyonu ve iPad yan menüsü
+- Büyük başlıktan satır içi başlığa dönüşen navigasyon
+- Etkileşimli kenardan geri kaydırma ve eşzamanlı sayfa geçişleri
+- Sistem, açık ve koyu görünüm desteği
+- Güvenli alanlar, 44 px dokunma hedefleri ve azaltılmış hareket seçenekleri
+- Çevrimdışı PWA desteği ve yerel iOS/Android uygulama varlıkları
+
+## Gemi enine stabilite hesaplama sistemi
+
+Stabilite modülü, gemi enine stabilitesiyle ilgili kapsamlı hesaplamalar yapar. SOLAS ve IMO kriterlerine uygun kontroller ve detaylı raporlama sağlar.
 
 ## 🚢 Özellikler
 
