@@ -4,8 +4,9 @@ import test from 'node:test';
 import { getStaticTranslation, isDictionaryComplete, loadStaticDictionary } from './staticTranslations';
 
 const responses: Record<string, unknown> = {
-  '/locales/de.json': { __version: 'x', Kaynak: 'Quelle' },
+  '/locales/de.json': { __version: 'x', Kaynak: 'Quelle', 'Baş kontrolü': 'Kopfkontrolle' },
   '/locales/fr.json': {},
+  '/locales/shared/terminology-overrides.json': { de: { 'Baş kontrolü': 'Heading control' } },
   '/locales/shared/learning-guide.en.json': { 'Learning map': 'Learning map' },
   '/locales/shared/lesson-paragraphs.en.json': {
     'Gemi havuza girdiğinde ağırlık takozlara biner.': 'When the ship enters the dry dock, its weight comes onto the keel blocks.',
@@ -40,4 +41,10 @@ test('an empty language pack stays empty so the live translator is still used', 
 test('new learning copy uses one shared offline pack', async () => {
   await loadStaticDictionary('de');
   assert.equal(getStaticTranslation('Learning map', 'de'), 'Learning map');
+});
+
+test('reviewed terminology overrides a known bad locale entry without replacing unrelated translations', async () => {
+  await loadStaticDictionary('de');
+  assert.equal(getStaticTranslation('Baş kontrolü', 'de'), 'Heading control');
+  assert.equal(getStaticTranslation('Kaynak', 'de'), 'Quelle');
 });

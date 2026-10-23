@@ -432,7 +432,7 @@ export const imoConventions: RegulationItem[] = [
       {
         heading: "İstihdam, ücret ve çalışma süreleri",
         body:
-          "Title 1 ve 2, istihdam ilişkisinin temelini düzenler. Her gemi adamı, görev ve ücret koşullarını net biçimde belirten yazılı bir Deniz İş Sözleşmesine (SEA) sahip olmalıdır; ücret düzenli (genellikle aylık) ödenmeli ve gemi adamına ayrıntılı hesap belgesi verilmelidir. Asgari yaş 16'dır ve gece çalışması ile tehlikeli işlerde daha sıkı sınırlar uygulanır. Çalışma/dinlenme saatleri ya azami çalışma (24 saatte 14, haftada 72 saat) ya da asgari dinlenme (24 saatte 10 saat) sınırıyla yönetilir. Bu sınırlar STCW'nin yorgunluk hükümleriyle uyumludur ve aynı kayıtlarla denetlenir.",
+          "MLC Titles 1 and 2 cover minimum requirements for work on ships and employment conditions. A seafarer's employment agreement (SEA) records agreed pay and duties. Check the SEA, collective agreement and flag implementation. Rest requirements also interact with STCW provisions for watchkeeping personnel.",
       },
       {
         heading: "Yaşam koşulları, sağlık ve geri dönüş hakkı",

@@ -1125,7 +1125,7 @@ const content8: ContentMap = {
         {
           heading: "Low-Location Lighting (LLL)",
           paragraphs: [
-            "IMO MSC.Res.A.752 standardına göre, yolcu gemilerinde kaçış yollarında yerden 30 cm yükseklikte fotolüminesan (fosforlu) veya elektrikli düşük seviye aydınlatma şeritleri bulunmalıdır. Bu şeritler duman altındaki koridorlarda tahliye yönünü gösterir."
+            "Low-location lighting marks approved escape routes near deck level when higher signs are obscured. Applicable SOLAS requirements, FSS Code chapter 11 and IMO resolution A.752(18) govern the arrangement. Check the approved plan, condition, visibility and power or photoluminescent performance; ordinary decorative lighting is not a substitute."
           ]
         }
       ],

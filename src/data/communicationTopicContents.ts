@@ -12,7 +12,7 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
   "GMDSS Mimarisi ve Deniz Alanları": {
     title: "GMDSS Mimarisi ve Deniz Alanları",
     introduction:
-      "GMDSS (Global Maritime Distress and Safety System), denizde tehlike ve emniyet haberleşmesini küresel ölçekte standartlaştıran, 1999'dan bu yana tamamen yürürlükte olan uluslararası bir sistemdir. GMDSS; tehlike alarmı verme ve alma, arama-kurtarma koordinasyonu, seyir ve meteorolojik emniyet bilgisi yayınlama, gemiler arası ve gemi-kıyı arası genel haberleşme fonksiyonlarını kapsar. Sistemin temelinde deniz alanı sınıflandırması yatar ve bu sınıflandırma, gemide taşınacak haberleşme ekipmanını doğrudan belirler.",
+      "GMDSS (Global Maritime Distress and Safety System) supports distress alerting, search-and-rescue coordination, maritime safety information and other required communications. GMDSS equipment requirements depend on the sea areas, approved satellite-service coverage and applicable SOLAS requirements.",
     sections: [
       {
         title: "Deniz Alanları (Sea Area) Sınıflandırması",

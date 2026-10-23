@@ -429,7 +429,7 @@ const content4: ContentMap = {
       title: "Buhar Jeneratörü ve Türbin Entegrasyonu",
       introduction: "Gemi enerji sistemlerinde buhar jeneratörü (kazan) ile türbin entegrasyonu, atık ısı geri kazanımı ve yüksek verimli enerji üretimi sağlar.",
       sections: [
-        { heading: "Buhar Türbin Tahrik", paragraphs: ["LNG taşıyıcılarında buhar türbin tahrik sistemi, kaynamış LNG'yi (BOG) yakıt olarak kullanır. Kazan-türbin-kondenser-pompa döngüsü Rankine çevrimini oluşturur.", "Modern LNG gemilerinde DFDE (Dual Fuel Diesel Electric) veya ME-GI/X-DF motorlar buhar türbin sisteminin yerini almaktadır."] },
+        { heading: "Buhar Türbin Tahrik", paragraphs: ["On a steam-turbine LNG carrier, boil-off gas (BOG) from the LNG cargo can supply the boilers. The boiler, turbine, condenser and feed pump form the basic Rankine-cycle loop. Other LNG carriers use different propulsion arrangements; identify the actual installation before applying operating instructions.", "Modern LNG gemilerinde DFDE (Dual Fuel Diesel Electric) veya ME-GI/X-DF motorlar buhar türbin sisteminin yerini almaktadır."] },
         { heading: "Kojenerasyon", paragraphs: ["Egzoz gazı ekonomizerinden üretilen buhar, hem ısıtma hem de türbin tahrikli jeneratörde elektrik üretimi için kullanılır. Bu çift amaçlı kullanım kojenerasyon olarak adlandırılır."] }
       ],
       keyPoints: ["Buhar türbin verimi düşüktür (%30-35) ancak düşük kaliteli yakıt kullanabilir.", "Modern gemilerde buhar türbin tahrik sistemi azalmaktadır.", "WHRS kapsamında buhar türbin-jeneratör yaygınlaşmaktadır."]

@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Senaryolar",
           paragraphs: [
-            `Yangın, MOB ve abandon ship senaryoları belirlenen sıklıkta yapılır; can filikası/davit, immersion suit ve muster prosedürleri çalışılır. Debrief ile eksikler giderilir.`,
+            "Fire, man-overboard (MOB) and abandon-ship exercises practise assigned duties, muster, communications and correct use of survival equipment. Operate equipment and conduct launches under the applicable safe procedures. Record the debrief and follow up deficiencies.",
           ],
           bullets: [`Fire/MOB/abandon ship`, `Filika/davit kullanımı`, `Muster + debrief`],
         },

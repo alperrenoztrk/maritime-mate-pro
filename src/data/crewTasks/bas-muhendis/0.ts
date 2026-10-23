@@ -115,7 +115,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 System oil (crankcase) yönetimi",
           paragraphs: [
-            `System oil, krank yatakları, kreyshed, yatay yataklar ve T/C için kullanılır. ISO VG 100 / SAE 30 tipik viskozite. Su girişi (jacket leak), yakıt girişi (injector failure, fuel pump leak) ve metal partikül artışı kritik göstergelerdir. Quarterly analiz (Spectro, FT-IR, TBN, viscosity) ile durum izlenir.`,
+            "System lubricating oil serves the consumers specified for the engine. Crosshead engines may have separate cylinder lubrication, and a turbocharger may have a separate or common supply. Use the maker-approved oil grade and sampling programme. Investigate water, fuel dilution, abnormal viscosity and wear-metal trends against operating conditions and maker limits.",
           ],
         },
       ],

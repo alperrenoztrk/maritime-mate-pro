@@ -1,123 +1,71 @@
-import { shuffleAnswerOptions } from "@/utils/practiceQuestion";
-import { updateTopicProgress } from "@/utils/learningProgress";
 import { useEffect, useState } from "react";
 import { CheckCircle, ListChecks, RotateCcw, Trophy } from "lucide-react";
+import { shuffleAnswerOptions } from "@/utils/practiceQuestion";
+import { updateTopicProgress } from "@/utils/learningProgress";
+import { getReviewSections } from "@/utils/lessonSequence";
 import { Button } from "@/components/ui/button";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
+import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
+import type { BetaTopic } from "@/data/betaLessons";
 import type { QuizQuestion } from "@/types/quiz";
-
-const shuffle = <T,>(items: T[]) => {
-  const result = [...items];
-  for (let index = result.length - 1; index > 0; index -= 1) {
+const prepare = (questions: QuizQuestion[]) => {
+  const result = questions.map((question) => shuffleAnswerOptions(question));
+  for (let index = result.length - 1; index > 0; index--) {
     const target = Math.floor(Math.random() * (index + 1));
     [result[index], result[target]] = [result[target], result[index]];
   }
   return result;
 };
-
-export function TopicExerciseQuestionSet({
-  questions,
-  topicId,
-}: {
-  questions: QuizQuestion[];
-  topicId?: string;
-}) {
-  const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions).map((question) => shuffleAnswerOptions(question)));
+export function TopicExerciseQuestionSet({ questions, topicId, topic, categoryId }: { questions: QuizQuestion[]; topicId?: string; topic: BetaTopic; categoryId: string }) {
+  const [order, setOrder] = useState(() => prepare(questions));
   const [current, setCurrent] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [reviewRound, setReviewRound] = useState(false);
+  const [missed, setMissed] = useState<QuizQuestion[]>([]);
+  const [remaining, setRemaining] = useState<QuizQuestion[]>([]);
+  const [showReview, setShowReview] = useState(false);
   const [run, setRun] = useState(0);
-
   const [saved, setSaved] = useState(true);
   useEffect(() => {
-    if (!finished || !topicId || order.length === 0) return;
-    setSaved(updateTopicProgress(topicId, { practice: { correct: correctCount, total: order.length, completedAt: new Date().toISOString(), weakSections: [] } }));
-  }, [finished, topicId, correctCount, order]);
-
-  if (questions.length === 0) return null;
-
-  const question = order[current] ?? questions[0];
-  const questionCount = order.length || questions.length;
-  const percentage = Math.round((correctCount / questionCount) * 100);
-
+    if (!finished || !topicId || questions.length === 0) return;
+    setSaved(updateTopicProgress(topicId, { practice: { correct: correctCount, total: questions.length, completedAt: new Date().toISOString(), weakSections: [...new Set(remaining.map((question) => question.sectionRef ?? topic.sections[0]?.id ?? topicId))] } }));
+  }, [finished, topicId, correctCount, questions.length, remaining, topic]);
+  if (!questions.length) return null;
+  const question = order[current];
   const handleAnswered = (correct: boolean) => {
     if (answered) return;
     setAnswered(true);
-    if (correct) setCorrectCount((value) => value + 1);
+    if (!reviewRound) {
+      if (correct) setCorrectCount((value) => value + 1);
+      else { setMissed((value) => [...value, question]); setRemaining((value) => [...value, question]); }
+    } else if (correct) setRemaining((value) => value.filter((item) => item.id !== question.id || item.sectionRef !== question.sectionRef));
   };
-
   const next = () => {
-    if (current >= questionCount - 1) {
-      setFinished(true);
-      return;
-    }
-    setCurrent((value) => value + 1);
-    setAnswered(false);
+    if (current === order.length - 1) { setFinished(true); return; }
+    setCurrent((value) => value + 1); setAnswered(false); setShowReview(reviewRound);
   };
-
-  const restart = () => {
-    setOrder(shuffle(questions).map((question) => shuffleAnswerOptions(question)));
-    setCurrent(0);
-    setAnswered(false);
-    setCorrectCount(0);
-    setFinished(false);
-    setRun((value) => value + 1);
+  const start = (review: boolean) => {
+    setOrder(prepare(review ? remaining : questions)); setCurrent(0); setAnswered(false);
+    setFinished(false); setReviewRound(review); setShowReview(review); setRun((value) => value + 1);
+    if (!review) { setCorrectCount(0); setMissed([]); setRemaining([]); }
   };
-
-  return (
-    <section
-      id="topic-questions"
-      className="scroll-mt-24 rounded-2xl border border-violet-500/25 bg-violet-500/5 p-4 sm:p-6"
-    >
-      <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow">
-          <ListChecks className="h-5 w-5" />
-        </div>
-        <h2 className="min-w-0 flex-1 font-bold text-foreground">Topic Exercises</h2>
-        <span className="rounded-full bg-violet-500/15 px-2.5 py-1 text-xs font-semibold text-violet-700 dark:text-violet-300">
-          {questions.length} questions
-        </span>
-      </div>
-
-      {finished ? (
-        <div className="space-y-5 rounded-2xl border border-border/50 bg-card/80 p-5 text-center">
-          <Trophy className="mx-auto h-14 w-14 text-amber-500" />
-          <div>
-            <p className="text-3xl font-bold text-primary">%{percentage}</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {correctCount} / {questionCount} correct answer
-            </p>
-          </div>
-          {!saved && <p role="status" className="text-sm text-muted-foreground">Your browser could not save progress. You can continue reading.</p>}
-          <Button onClick={restart} className="w-full sm:w-auto">
-            <RotateCcw className="mr-2 h-4 w-4" />
-            Solve the Questions Again
-          </Button>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>
-              Question {current + 1} / {questionCount}
-            </span>
-            <span>{question.category}</span>
-          </div>
-
-          <KnowledgeCheck
-            key={`${run}-${current}-${question.id}`}
-            question={question}
-            onAnswered={handleAnswered}
-          />
-
-          {answered && (
-            <Button onClick={next} className="w-full">
-              {current < questionCount - 1 ? "Next Question" : "See Result"}
-              <CheckCircle className="ml-2 h-4 w-4" />
-            </Button>
-          )}
-        </div>
-      )}
-    </section>
-  );
+  return <section id="topic-questions" className="scroll-mt-24 rounded-2xl border border-violet-500/25 bg-violet-500/5 p-4 sm:p-6">
+    <div className="mb-5 flex items-center gap-3"><ListChecks className="h-5 w-5 text-primary" /><h2 className="flex-1 font-bold">Topic Exercises</h2><span className="text-xs">{questions.length} questions</span></div>
+    {finished ? <div className="space-y-4 rounded-2xl border bg-card/80 p-5 text-center">
+      <Trophy className="mx-auto h-14 w-14 text-amber-500" />
+      <p className="text-3xl font-bold text-primary">{Math.round(correctCount / questions.length * 100)}%</p>
+      <p className="text-sm">{correctCount} / {questions.length} correct on the first attempt</p>
+      {missed.length > 0 && <p className="text-sm text-muted-foreground">{missed.length - remaining.length} / {missed.length} missed questions corrected. Review answers do not change the first-attempt score.</p>}
+      {remaining.length > 0 && <Button onClick={() => start(true)} className="w-full"><RotateCcw className="mr-2 h-4 w-4" />Review missed questions ({remaining.length})</Button>}
+      <Button variant="outline" onClick={() => start(false)} className="w-full">Start a new attempt</Button>
+      {!saved && <p role="status" className="text-sm text-muted-foreground">Your browser could not save progress. You can continue reading.</p>}
+    </div> : <div className="space-y-4">
+      <p className="text-xs text-muted-foreground">{reviewRound ? "Review round" : "First attempt"} · Question {current + 1} / {order.length}</p>
+      {showReview && <div aria-label="Related teaching" className="space-y-4 rounded-xl border p-4">{getReviewSections(topic, question.sectionRef).map((section, index) => <LessonTeachCard key={section.id ?? index} section={section} categoryId={categoryId} topicTitle={topic.title} />)}</div>}
+      <KnowledgeCheck key={`${run}-${current}`} question={question} onAnswered={handleAnswered} onReview={() => setShowReview((value) => !value)} />
+      {answered && <Button onClick={next} className="w-full">{current < order.length - 1 ? "Next Question" : "See Result"}<CheckCircle className="ml-2 h-4 w-4" /></Button>}
+    </div>}
+  </section>;
 }

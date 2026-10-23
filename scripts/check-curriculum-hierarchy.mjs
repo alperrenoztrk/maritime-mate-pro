@@ -81,7 +81,7 @@ try {
   assert(getMachineSubTopicContent("electrical", "Motor yol verme yöntemleri (DOL, Y-Δ, VFD)").sections.some((section) => section.heading === "Y-Δ Yol Verme"), "Expanded motor lesson is shadowed");
   assert.deepEqual(parseLearningProgress("broken"), {});
   assert.deepEqual(parseLearningProgress("[]"), {});
-  assert.deepEqual(parseLearningProgress(JSON.stringify({ sample: { practice: { correct: 5, total: 2, completedAt: "2026-10-21", weakSections: [] } } })).sample.practice, undefined);
+  assert.deepEqual(parseLearningProgress(JSON.stringify({ sample: { practice: { correct: 5, total: 2, completedAt: "2026-10-21", weakSections: [] } } })).sample?.practice, undefined);
   // Reject circular recommended prerequisites.
   const visit = (key, chain = []) => {
     assert(!chain.includes(key), `Prerequisite cycle: ${[...chain, key].join(" -> ")}`);

@@ -1,0 +1,626 @@
+[
+  {
+    "topicId": "machine-thermodynamics-termodinamigin-temel-kavramlari-termodinamik-sistem-ve-siniflandirmasi-1",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Termodinamik sistem ve sınıflandırması",
+    "section": {
+      "id": "machine-thermodynamics-termodinamigin-temel-kavramlari-termodinamik-sistem-ve-siniflandirmasi-1-worked-case",
+      "title": "Worked case: choosing the energy boundary",
+      "content": "Choose the system boundary before writing an energy balance. A closed system exchanges energy but not mass. With heat into the system positive and work done by the system positive, the first law is ΔU = Q − W when kinetic and potential energy changes are negligible. A compressor with mass flowing through it instead requires a control-volume balance. State the convention: the sign of work changes when work is done on the system.",
+      "example": {
+        "problem": "A closed system receives 90 kJ of heat and does 35 kJ of work. Neglect changes in kinetic and potential energy.",
+        "steps": [
+          "Identify a closed system: no mass crosses its boundary.",
+          "Use Q = +90 kJ and W = +35 kJ under the stated convention.",
+          "Calculate ΔU = 90 − 35 = 55 kJ."
+        ],
+        "result": "Internal energy increases by 55 kJ. This result follows from the stated boundary and signs."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-thermodynamics-termodinamigin-temel-kavramlari-termodinamik-sistem-ve-siniflandirmasi-1-worked-case",
+      "category": "Termodinamik sistem ve sınıflandırması",
+      "question": "If the same system receives 90 kJ of heat and 35 kJ of work is done ON it, what is ΔU?",
+      "options": [
+        "55 kJ",
+        "125 kJ",
+        "−125 kJ",
+        "35 kJ"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "This subtracts work input as though the system did the work.",
+        "Correct: work by the system is −35 kJ, so 90 − (−35) = 125 kJ.",
+        "Both heat and work enter; neither gives a negative energy change here.",
+        "This counts work input but omits the heat input."
+      ],
+      "explanation": "Under this sign convention, work input is negative W. Both transfers increase internal energy: ΔU = 90 − (−35) = 125 kJ."
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-statigi-hidrostatik-basinc-denklemleri-2",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Hidrostatik basınç denklemleri",
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-statigi-hidrostatik-basinc-denklemleri-2-worked-case",
+      "title": "Worked case: gauge pressure below the surface",
+      "content": "For a stationary liquid of approximately uniform density, pressure increases with vertical depth according to Δp = ρgh. Use the vertical distance below the free surface, not the sloping length of a pipe. An open tank has atmospheric pressure at its surface, so ρgh gives gauge pressure there. Absolute pressure also includes the surface atmospheric pressure. Density, depth and the chosen pressure reference must be stated before comparing measurements.",
+      "example": {
+        "problem": "Find the gauge pressure 4.0 m below an open seawater surface. Use ρ = 1025 kg/m³ and g = 9.81 m/s².",
+        "steps": [
+          "Write Δp = ρgh.",
+          "Calculate 1025 × 9.81 × 4.0 = 40,221 Pa.",
+          "Convert pascals to kilopascals: 40,221 / 1000 = 40.2 kPa."
+        ],
+        "result": "The gauge pressure is about 40.2 kPa; absolute pressure would include atmospheric pressure."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-fluid-mechanics-akiskan-statigi-hidrostatik-basinc-denklemleri-2-worked-case",
+      "category": "Hidrostatik basınç denklemleri",
+      "question": "With density unchanged, what happens to gauge pressure when the depth increases from 4 m to 8 m?",
+      "options": [
+        "It stays at 40.2 kPa.",
+        "It halves.",
+        "It doubles to about 80.4 kPa.",
+        "It becomes 8 kPa."
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Hydrostatic gauge pressure depends on depth.",
+        "Increasing depth increases, rather than decreases, pressure.",
+        "Correct: ρ and g are unchanged, so doubling h doubles ρgh.",
+        "Metres of depth are not numerically equal to kilopascals."
+      ],
+      "explanation": "The linear relation applies to the stated stationary, approximately constant-density liquid. It does not include dynamic losses or pump effects."
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-malzeme-bilgisi-celik-turleri-ve-alasim-elementleri-2",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Çelik türleri ve alaşım elementleri",
+    "section": {
+      "id": "machine-machine-elements-malzeme-bilgisi-celik-turleri-ve-alasim-elementleri-2-worked-case",
+      "title": "Worked case: a stronger bolt is not automatically suitable",
+      "content": "A replacement fastener must match the approved material, dimensions and service requirements. Strength is only one property: temperature capability, toughness, corrosion resistance, coatings, thread fit and compatibility also matter. A higher strength grade can have different failure behaviour and tightening requirements. Traceability connects the supplied part to its specification; a similar appearance does not establish equivalence. Use the maker-approved replacement process when the required identity or certification is uncertain.",
+      "example": {
+        "problem": "A flange bolt has the correct diameter, but its heat treatment and material certificate are unknown. A supplier describes it as stronger than the original.",
+        "steps": [
+          "Identify the approved bolt specification and service conditions.",
+          "Compare the proposed part and its traceable documentation with that specification.",
+          "Resolve the missing evidence through the authorised technical process before installation."
+        ],
+        "result": "The unsupported claim of greater strength does not establish suitability."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-machine-elements-malzeme-bilgisi-celik-turleri-ve-alasim-elementleri-2-worked-case",
+      "category": "Çelik türleri ve alaşım elementleri",
+      "question": "Which evidence best supports acceptance of a replacement bolt?",
+      "options": [
+        "The same painted colour.",
+        "A claim that it is the strongest available.",
+        "The same diameter alone.",
+        "Verified compliance with the approved specification and required traceability."
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "Colour does not establish the material or service rating.",
+        "Maximum strength alone does not establish compatibility or fitness.",
+        "Geometry is necessary but does not prove material suitability.",
+        "Correct: specification and traceability connect the part to the actual service requirements."
+      ],
+      "explanation": "Acceptance must address the whole approved specification, rather than one attractive property."
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-dizel-motor-temelleri-dort-zamanli-motor-calisma-prensibi-3",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Dört zamanlı motor çalışma prensibi",
+    "section": {
+      "id": "machine-diesel-engines-dizel-motor-temelleri-dort-zamanli-motor-calisma-prensibi-3-worked-case",
+      "title": "Worked case: power strokes and shaft speed",
+      "content": "A four-stroke cylinder completes intake, compression, expansion and exhaust in two crankshaft revolutions. It therefore produces one power stroke per two revolutions, assuming normal firing. Do not confuse shaft revolutions with firing events or the number of cylinders. This simple timing relation describes event frequency; it does not determine power output without the work per cycle and the other relevant engine conditions.",
+      "example": {
+        "problem": "A four-stroke engine runs at 600 rpm. Find power strokes per minute for one cylinder.",
+        "steps": [
+          "A complete four-stroke cycle requires two revolutions.",
+          "Divide 600 revolutions/minute by 2 revolutions/cycle.",
+          "Obtain 300 power strokes per minute for one cylinder."
+        ],
+        "result": "Each cylinder has 300 power strokes per minute, equivalent to 5 per second."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-diesel-engines-dizel-motor-temelleri-dort-zamanli-motor-calisma-prensibi-3-worked-case",
+      "category": "Dört zamanlı motor çalışma prensibi",
+      "question": "At 720 rpm, how many power strokes per second does ONE four-stroke cylinder produce?",
+      "options": [
+        "6",
+        "12",
+        "360",
+        "24"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: 720 / 2 / 60 = 6 power strokes per second.",
+        "This uses one power stroke per revolution, as for an idealised two-stroke cycle.",
+        "This is the number per minute, not per second.",
+        "This has no basis without changing the stated cycle or counting multiple cylinders."
+      ],
+      "explanation": "Divide the crankshaft speed by two for the cycle and by sixty for seconds: 720 / 2 / 60 = 6."
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-dumen-donanimi-dumen-kuvveti-ve-tork-hesabi-2",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Dümen kuvveti ve tork hesabı",
+    "section": {
+      "id": "machine-ship-systems-dumen-donanimi-dumen-kuvveti-ve-tork-hesabi-2-worked-case",
+      "title": "Worked case: steering force and lever arm",
+      "content": "For a simplified moment calculation, rudder torque equals the force multiplied by its perpendicular distance from the stock axis. Keep force and distance units consistent. The real pressure distribution, centre of pressure, speed and rudder angle vary, so a single static calculation is not an equipment rating or a safe operating limit. Steering gear selection and operation depend on approved design data, protective arrangements and the ship-specific procedures.",
+      "example": {
+        "problem": "A resultant rudder force of 80 kN acts at a perpendicular distance of 0.40 m from the stock axis.",
+        "steps": [
+          "Use torque = force × perpendicular lever arm.",
+          "Calculate 80 kN × 0.40 m.",
+          "Obtain 32 kN·m for the stated simplified load."
+        ],
+        "result": "The calculated moment is 32 kN·m; it is not a universal steering-gear capacity."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-ship-systems-dumen-donanimi-dumen-kuvveti-ve-tork-hesabi-2-worked-case",
+      "category": "Dümen kuvveti ve tork hesabı",
+      "question": "If the same 80 kN force acts at 0.20 m, what is the moment?",
+      "options": [
+        "64 kN·m",
+        "16 kN·m",
+        "32 kN·m",
+        "400 kN·m"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Halving the lever arm halves, rather than doubles, the moment.",
+        "Correct: 80 × 0.20 = 16 kN·m.",
+        "This keeps the old lever arm despite the changed condition.",
+        "This divides by distance instead of multiplying by it."
+      ],
+      "explanation": "The calculation uses the perpendicular lever arm. Real operating loads require the actual geometry and hydrodynamic assessment."
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-dizel-jeneratorler-paralel-baglama-synchronizing-3",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Paralel bağlama (synchronizing)",
+    "section": {
+      "id": "machine-auxiliary-dizel-jeneratorler-paralel-baglama-synchronizing-3-worked-case",
+      "title": "Worked case: what synchronisation actually requires",
+      "content": "Before an alternator is connected to a live bus, the required voltage, frequency, phase sequence and phase-angle conditions must be established using the approved synchronising arrangements. Equal meter readings alone do not prove readiness. After connection, active and reactive load sharing are distinct controls. This case explains the decision criteria; actual switching is restricted to competent personnel following the installation-specific procedure and protection requirements.",
+      "example": {
+        "problem": "Two generators show matching voltage and frequency, but the incoming generator has the wrong phase sequence.",
+        "steps": [
+          "Identify the missing synchronisation condition: phase sequence.",
+          "Recognise that voltage and frequency readings do not establish phase sequence.",
+          "Keep the breaker open and resolve the discrepancy under the approved procedure."
+        ],
+        "result": "The generator is not ready to parallel despite the matching meter readings."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-auxiliary-dizel-jeneratorler-paralel-baglama-synchronizing-3-worked-case",
+      "category": "Paralel bağlama (synchronizing)",
+      "question": "Which conclusion is justified by equal voltage and frequency readings alone?",
+      "options": [
+        "All synchronising conditions are proven.",
+        "The breaker may be closed without further checks.",
+        "Phase sequence and phase angle still need the required verification.",
+        "Reverse-power protection is no longer needed."
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Other required conditions remain unproven.",
+        "Closing without the required conditions can create severe electrical and mechanical stress.",
+        "Correct: matching these two readings is only part of the synchronisation assessment.",
+        "Protection remains necessary and is not replaced by meter agreement."
+      ],
+      "explanation": "Synchronisation is a set of conditions, not a single matched reading. Use the approved system and authorised procedure."
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-deniz-yakit-turleri-vlsfo-very-low-sulphur-fuel-oil-2",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "VLSFO (Very Low Sulphur Fuel Oil)",
+    "section": {
+      "id": "machine-fuel-technology-deniz-yakit-turleri-vlsfo-very-low-sulphur-fuel-oil-2-worked-case",
+      "title": "Worked case: compliance does not prove compatibility",
+      "content": "Fuel sulphur compliance and compatibility answer different questions. Two individually compliant VLSFO batches may behave poorly when mixed, including instability and sediment formation. Preserve batch identity and use the ship’s fuel-management plan, available analysis and maker guidance to assess handling. Temperature, viscosity and treatment requirements also depend on the actual fuel. A shared product label is not evidence that two batches can be mixed without evaluation.",
+      "example": {
+        "problem": "A new VLSFO delivery meets the applicable sulphur requirement. Some fuel from an earlier delivery remains in the planned receiving tank.",
+        "steps": [
+          "Confirm the identity and documentation of both batches.",
+          "Assess compatibility and the intended segregation or mixing plan.",
+          "Use the approved fuel-management decision before transfer or changeover."
+        ],
+        "result": "Sulphur compliance alone does not justify mixing the batches."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-fuel-technology-deniz-yakit-turleri-vlsfo-very-low-sulphur-fuel-oil-2-worked-case",
+      "category": "VLSFO (Very Low Sulphur Fuel Oil)",
+      "question": "What does a compliant sulphur result establish about compatibility with the remaining fuel?",
+      "options": [
+        "Every VLSFO batch is interchangeable.",
+        "It proves that no sediment can form.",
+        "It removes the need for fuel analysis.",
+        "It does not establish compatibility; the batches need a separate assessment."
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "The product label does not prove batch compatibility.",
+        "Sulphur content alone does not predict stability of a mixture.",
+        "Analysis and approved fuel handling remain relevant.",
+        "Correct: environmental compliance and mixture behaviour are separate questions."
+      ],
+      "explanation": "Check the actual fuels and handling plan. Avoid treating one compliant property as proof of every other operational requirement."
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutma-cevrimi-temelleri-sogutma-cevrimi-bilesenleri-1",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Soğutma çevrimi bileşenleri",
+    "section": {
+      "id": "machine-cooling-hvac-sogutma-cevrimi-temelleri-sogutma-cevrimi-bilesenleri-1-worked-case",
+      "title": "Worked case: refrigeration heat balance",
+      "content": "A steady refrigeration cycle removes heat at the evaporator and rejects heat at the condenser. With other heat losses neglected, the condenser rejects both the evaporator load and the compressor work input: Qcond = Qevap + W. The refrigeration coefficient of performance is COP = Qevap / W. COP compares useful heat removal with work input; it is not a motor efficiency and can exceed one without violating energy conservation.",
+      "example": {
+        "problem": "The evaporator removes 60 kW and the compressor requires 20 kW. Neglect other heat transfers.",
+        "steps": [
+          "Calculate condenser heat rejection: 60 + 20 = 80 kW.",
+          "Calculate refrigeration COP: 60 / 20 = 3.",
+          "Distinguish the 60 kW cooling duty from the 80 kW rejection duty."
+        ],
+        "result": "The condenser rejects 80 kW and the refrigeration COP is 3."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-cooling-hvac-sogutma-cevrimi-temelleri-sogutma-cevrimi-bilesenleri-1-worked-case",
+      "category": "Soğutma çevrimi bileşenleri",
+      "question": "What does a refrigeration COP of 3 mean in this case?",
+      "options": [
+        "Three units of heat are removed per unit of work supplied.",
+        "The motor is 300% efficient.",
+        "The condenser rejects only the compressor work.",
+        "Energy is created inside the evaporator."
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: COP compares the cooling duty with work input.",
+        "COP and motor efficiency are different ratios.",
+        "The condenser must also reject the heat removed from the cooled space.",
+        "The balance includes heat transferred from the cooled space; no energy is created."
+      ],
+      "explanation": "The cycle moves heat using work. Its COP can exceed one because heat removal includes energy transferred from the cooled space."
+    }
+  },
+  {
+    "topicId": "machine-electrical-elektrik-uretim-sistemi-frekans-ve-yuk-kontrolu-3",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Frekans ve yük kontrolü",
+    "section": {
+      "id": "machine-electrical-elektrik-uretim-sistemi-frekans-ve-yuk-kontrolu-3-worked-case",
+      "title": "Worked case: frequency and generator speed",
+      "content": "For a synchronous alternator, electrical frequency is f = Pn/120, where P is the number of poles and n is shaft speed in revolutions per minute. A four-pole alternator at 1800 rpm produces 60 Hz. When generators operate in parallel, governor and excitation controls have different roles in active and reactive load sharing. Frequency and voltage must not be treated as interchangeable quantities or corrected with an arbitrary control change.",
+      "example": {
+        "problem": "Find the speed required for a four-pole synchronous alternator to produce 50 Hz.",
+        "steps": [
+          "Rearrange the relation: n = 120f / P.",
+          "Substitute n = 120 × 50 / 4.",
+          "Obtain n = 1500 rpm."
+        ],
+        "result": "The required synchronous speed is 1500 rpm."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-electrical-elektrik-uretim-sistemi-frekans-ve-yuk-kontrolu-3-worked-case",
+      "category": "Frekans ve yük kontrolü",
+      "question": "Which control is principally associated with active-power sharing between paralleled generators?",
+      "options": [
+        "The AVR alone.",
+        "The prime-mover governor or active-load controller.",
+        "The room lighting switch.",
+        "The insulation resistance meter."
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Excitation mainly governs reactive power and the associated voltage behaviour.",
+        "Correct: active load sharing is associated with prime-mover input and governor/load control.",
+        "Lighting control does not allocate generator load.",
+        "An insulation tester measures insulation condition and is not a load-sharing controller."
+      ],
+      "explanation": "Keep the roles distinct: prime-mover input governs active power, while excitation governs reactive power within the installation’s control arrangement."
+    }
+  },
+  {
+    "topicId": "machine-automation-olcme-ve-enstrumantasyon-sicaklik-olcum-sensorleri-termokuple-rtd-1",
+    "topicKey": "machine-automation",
+    "topicTitle": "Sıcaklık ölçüm sensörleri (termokuple, RTD)",
+    "section": {
+      "id": "machine-automation-olcme-ve-enstrumantasyon-sicaklik-olcum-sensorleri-termokuple-rtd-1-worked-case",
+      "title": "Worked case: scaling a live-zero transmitter",
+      "content": "A 4–20 mA transmitter has a live zero: the lower engineering value corresponds to 4 mA, not 0 mA. For linear scaling, the fraction of range is (I − 4)/16. Apply that fraction to the engineering span and then add the lower engineering value. This is a scaling calculation, not a diagnosis of the sensor; installation faults and out-of-range currents require the maker’s specified interpretation.",
+      "example": {
+        "problem": "A linear transmitter represents 0–200 °C with 4–20 mA. What temperature corresponds to 12 mA?",
+        "steps": [
+          "Subtract the live zero: 12 − 4 = 8 mA.",
+          "Divide by the current span: 8 / 16 = 0.5.",
+          "Apply the engineering span: 0 + 0.5 × 200 = 100 °C."
+        ],
+        "result": "The indicated temperature is 100 °C under the stated linear scaling."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-automation-olcme-ve-enstrumantasyon-sicaklik-olcum-sensorleri-termokuple-rtd-1-worked-case",
+      "category": "Sıcaklık ölçüm sensörleri (termokuple, RTD)",
+      "question": "Why is 12/20 × 200 = 120 °C incorrect?",
+      "options": [
+        "It uses too many significant figures.",
+        "All transmitters are nonlinear.",
+        "It ignores the 4 mA live zero and the 16 mA measurement span.",
+        "The temperature span must always be 100 °C."
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Rounding is not the source of this error.",
+        "The question explicitly states a linear transmitter.",
+        "Correct: subtract the lower current and use the actual span.",
+        "The engineering span comes from the configured range, here 200 °C."
+      ],
+      "explanation": "The correct fraction is (12 − 4)/(20 − 4), not 12/20. Always state both endpoints of the configured range."
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-seyir-hazirligi-ana-makine-seyir-hazirlik-proseduru-1",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Ana makine seyir hazırlık prosedürü",
+    "section": {
+      "id": "machine-engine-room-ops-seyir-hazirligi-ana-makine-seyir-hazirlik-proseduru-1-worked-case",
+      "title": "Worked case: readiness is demonstrated, not assumed",
+      "content": "Engine readiness combines equipment condition, required tests, communication and any operating restrictions. A local function test does not prove that remote control, alarms or protective functions work correctly. An intermittent fault is still a defect and must be reported and assessed. The bridge and engine team need the same understanding of capability before departure or manoeuvring; a completed checklist is evidence only when its underlying checks were actually performed.",
+      "example": {
+        "problem": "The main engine responds locally, but an intermittent remote-control fault remains before departure.",
+        "steps": [
+          "Record and report the observed fault and the tests already performed.",
+          "Assess the required control modes, protective functions and operating limitations with the responsible personnel.",
+          "Communicate the authorised readiness decision and contingency arrangements to the bridge."
+        ],
+        "result": "Local response alone does not establish unrestricted readiness for manoeuvring."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-engine-room-ops-seyir-hazirligi-ana-makine-seyir-hazirlik-proseduru-1-worked-case",
+      "category": "Ana makine seyir hazırlık prosedürü",
+      "question": "Which statement best describes the status?",
+      "options": [
+        "Ready without restrictions because local control works.",
+        "Ready because the checklist has a signature.",
+        "The bridge need not know about intermittent defects.",
+        "Readiness requires assessment and an agreed, communicated decision about the unresolved fault."
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "This leaves the remote-control defect unassessed.",
+        "A signature does not replace functioning equipment and verified checks.",
+        "The bridge needs accurate capability and limitations for its plan.",
+        "Correct: the decision must reflect actual condition, required capability and communication."
+      ],
+      "explanation": "Communicate defects and limits before the operation; do not allow a checklist label to conceal an unresolved control problem."
+    }
+  },
+  {
+    "topicId": "machine-maintenance-bakim-stratejileri-durum-bazli-bakim-condition-based-3",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Durum bazlı bakım (condition-based)",
+    "section": {
+      "id": "machine-maintenance-bakim-stratejileri-durum-bazli-bakim-condition-based-3-worked-case",
+      "title": "Worked case: comparing like with like",
+      "content": "Condition-based maintenance uses evidence of equipment condition to support action. A trend is meaningful only when measurements are sufficiently comparable: load, speed, sensor position, instrument settings and operating state can alter vibration readings. An increase may justify investigation, but it does not identify a failed component by itself. Combine reliable trends with operating history, other symptoms and the maker’s limits before deciding on intervention.",
+      "example": {
+        "problem": "A new vibration reading is higher than last month’s, but it was taken at a different load and sensor location.",
+        "steps": [
+          "Record the differences in measurement and operating conditions.",
+          "Obtain comparable readings where safe and appropriate under the monitoring procedure.",
+          "Assess the trend with other condition evidence and applicable limits."
+        ],
+        "result": "The readings trigger investigation but do not by themselves prove deterioration."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-maintenance-bakim-stratejileri-durum-bazli-bakim-condition-based-3-worked-case",
+      "category": "Durum bazlı bakım (condition-based)",
+      "question": "What is the strongest next analytical step?",
+      "options": [
+        "Establish comparable measurements and assess supporting evidence.",
+        "Declare a bearing failure from the two numbers alone.",
+        "Ignore every increase unless the machine stops.",
+        "Change the historical readings to match the new result."
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: comparability and corroboration make the trend useful.",
+        "The difference may arise from the changed conditions.",
+        "Waiting for failure defeats condition monitoring and may ignore a real defect.",
+        "Altering records destroys the evidence needed for maintenance decisions."
+      ],
+      "explanation": "Condition monitoring requires consistent measurement practice and interpretation, not automatic conclusions from an isolated change."
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kisisel-koruma-kisisel-koruyucu-donanim-kkd-turleri-1",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Kişisel koruyucu donanım (KKD) türleri",
+    "section": {
+      "id": "machine-engine-room-safety-kisisel-koruma-kisisel-koruyucu-donanim-kkd-turleri-1-worked-case",
+      "title": "Worked case: matching protection to the actual hazard",
+      "content": "Personal protective equipment must fit both the person and the task. Heat, chemicals, mechanical hazards and electrical exposure require different protective properties, and one item may not cover them all. First identify and control the hazard through the approved work process, including isolation where required. Then select compatible, correctly rated PPE and check its condition. PPE is one layer of protection and does not make an uncontrolled task safe.",
+      "example": {
+        "problem": "A task involves a hot surface and a cleaning chemical. The available gloves have no documented chemical compatibility.",
+        "steps": [
+          "Identify the thermal and chemical exposures using the work assessment and product information.",
+          "Check the glove rating, compatibility, condition and fit against both hazards.",
+          "Obtain suitable protection and required controls before proceeding."
+        ],
+        "result": "A general-purpose glove cannot be assumed suitable for both hazards."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-engine-room-safety-kisisel-koruma-kisisel-koruyucu-donanim-kkd-turleri-1-worked-case",
+      "category": "Kişisel koruyucu donanım (KKD) türleri",
+      "question": "What is the correct basis for selecting the gloves?",
+      "options": [
+        "The thickest-looking pair alone.",
+        "Verified suitability for the assessed hazards, with the other required controls in place.",
+        "The colour used by a previous crew.",
+        "Any glove if the task is brief."
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Appearance does not establish the protection rating.",
+        "Correct: the selection follows the actual hazards and approved controls.",
+        "Colour is not evidence of compatibility or performance.",
+        "Short exposure can still cause injury and does not establish suitability."
+      ],
+      "explanation": "PPE selection is a technical match to the hazard, supported by the work assessment and equipment information."
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-ek-i-petrol-kirliligi-onleme-2",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Ek I – Petrol kirliliği önleme",
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-ek-i-petrol-kirliligi-onleme-2-worked-case",
+      "title": "Worked case: one acceptable reading is not discharge permission",
+      "content": "An oily-water monitor reading is only one part of the applicable discharge conditions. Equipment approval, proper operation, required protective arrangements, location and other regulatory conditions must also be satisfied. A malfunctioning required automatic stopping arrangement cannot be ignored because one displayed reading is low. Follow the ship’s approved handling and retention procedures, report defects and establish the applicable requirements before considering any discharge.",
+      "example": {
+        "problem": "The monitor shows a low oil-content reading, but the required automatic stopping arrangement has failed its test.",
+        "steps": [
+          "Identify the failed protective function and report the defect.",
+          "Do not infer permission to discharge from the displayed reading alone.",
+          "Use the approved retention and repair arrangements and verify compliance before further operation."
+        ],
+        "result": "The low reading does not compensate for the failed required protective function."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-environment-machine-marpol-genel-yapisi-ek-i-petrol-kirliligi-onleme-2-worked-case",
+      "category": "Ek I – Petrol kirliliği önleme",
+      "question": "Which conclusion follows?",
+      "options": [
+        "A low reading overrides every other discharge requirement.",
+        "The alarm can be bypassed if the water looks clear.",
+        "The complete applicable discharge conditions and required equipment must be satisfied.",
+        "Only the operator’s visual estimate matters."
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Discharge conditions are cumulative, not interchangeable.",
+        "Appearance and bypassing are not substitutes for compliant equipment.",
+        "Correct: the whole set of applicable conditions must be met.",
+        "Visual appearance cannot demonstrate oil content or regulatory compliance."
+      ],
+      "explanation": "The case tests compliance reasoning, not a universal permission to discharge. Verify the actual ship, area and equipment requirements."
+    }
+  },
+  {
+    "topicId": "machine-erm-erm-temelleri-erm-nedir-ve-neden-gereklidir-1",
+    "topicKey": "machine-erm",
+    "topicTitle": "ERM nedir ve neden gereklidir",
+    "section": {
+      "id": "machine-erm-erm-temelleri-erm-nedir-ve-neden-gereklidir-1-worked-case",
+      "title": "Worked case: closing the communication loop",
+      "content": "Engine-room resource management makes responsibilities and information explicit. A message can be heard without being understood or acted upon. Assign a task to a named person, confirm the instruction and obtain a completion report. Keep the team’s shared picture current when conditions change. Clear authority and respectful challenge work together: team members should raise uncertainty, while the responsible officer coordinates the resulting decision and action.",
+      "example": {
+        "problem": "Two engineers each assume that the other has told the bridge about a machinery limitation. Neither has made the call.",
+        "steps": [
+          "Identify the communication gap rather than assuming that silence means completion.",
+          "Assign a named person to report the verified limitation through the agreed channel.",
+          "Confirm receipt and report completion to the responsible officer."
+        ],
+        "result": "Named ownership and a completion report close the gap between intention and action."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-erm-erm-temelleri-erm-nedir-ve-neden-gereklidir-1-worked-case",
+      "category": "ERM nedir ve neden gereklidir",
+      "question": "What would most directly prevent this failure?",
+      "options": [
+        "A general announcement that someone should call.",
+        "Assuming the most senior person already knows.",
+        "Waiting for the bridge to notice the limitation.",
+        "Assigning a named person and confirming completion and receipt."
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "An unassigned request leaves responsibility ambiguous.",
+        "Rank does not prove that information was transmitted.",
+        "The bridge needs the information before making decisions that depend on it.",
+        "Correct: ownership, acknowledgement and completion make the communication verifiable."
+      ],
+      "explanation": "Closed-loop communication turns a vague intention into an assigned, confirmed action and an updated shared understanding."
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-enerji-verimliligi-cercevesi-eexi-mevcut-gemi-enerji-verimliligi-indeksi-3",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)",
+    "section": {
+      "id": "machine-energy-efficiency-enerji-verimliligi-cercevesi-eexi-mevcut-gemi-enerji-verimliligi-indeksi-3-worked-case",
+      "title": "Worked case: technical efficiency and annual performance",
+      "content": "EEXI addresses the technical energy-efficiency performance of an existing ship within the applicable MARPOL Annex VI framework. CII assesses annual operational carbon intensity for ships to which it applies. They answer different questions and have different verification and documentation arrangements. The International Energy Efficiency Certificate is the relevant energy-efficiency certificate; the International Air Pollution Prevention Certificate serves separate Annex VI requirements. A technical compliance result does not predict every future annual operational rating.",
+      "example": {
+        "problem": "A ship has completed its applicable EEXI verification. A trainee assumes that this guarantees a good annual CII rating.",
+        "steps": [
+          "Distinguish the technical EEXI assessment from annual operational CII.",
+          "Identify the relevant energy-efficiency documentation, including the IEE Certificate where applicable.",
+          "Recognise that operational performance still depends on annual activity and the applicable CII methodology."
+        ],
+        "result": "EEXI compliance and annual CII performance must be understood separately."
+      }
+    },
+    "question": {
+      "id": 9001,
+      "sectionRef": "machine-energy-efficiency-enerji-verimliligi-cercevesi-eexi-mevcut-gemi-enerji-verimliligi-indeksi-3-worked-case",
+      "category": "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)",
+      "question": "Which statement is correct?",
+      "options": [
+        "EEXI is a technical assessment; CII evaluates annual operational carbon intensity where applicable.",
+        "EEXI and CII are two names for the same annual number.",
+        "An IAPP Certificate replaces all energy-efficiency documentation.",
+        "A compliant EEXI guarantees an A rating every year."
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: they address different aspects of energy efficiency under Annex VI.",
+        "They differ in purpose, calculation and verification.",
+        "The IAPP and IEE Certificates have different roles.",
+        "Annual operational performance is not guaranteed by a technical assessment."
+      ],
+      "explanation": "Connect each indicator to its purpose and documentation. Avoid treating technical compliance as proof of future operational performance."
+    }
+  }
+]

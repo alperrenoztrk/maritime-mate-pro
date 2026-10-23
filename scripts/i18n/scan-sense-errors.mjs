@@ -10,6 +10,7 @@
  *   node scripts/i18n/scan-sense-errors.mjs --check         # exit 1 on any hit
  */
 import fs from 'node:fs';
+import { effectiveDictionary } from './effective-dictionary.mjs';
 import path from 'node:path';
 import { SENSE_ERROR_RULES, findTranslationDefects } from './sense-error-rules.mjs';
 
@@ -27,9 +28,9 @@ const langs = fs
 
 let total = 0;
 const perRule = new Map([...SENSE_ERROR_RULES.map((r) => [r.id, 0]), ['turkish-leftover', 0]]);
-const en = JSON.parse(fs.readFileSync(path.join(OUT_DIR, 'en.json'), 'utf8'));
+const en = effectiveDictionary('en', JSON.parse(fs.readFileSync(path.join(OUT_DIR, 'en.json'), 'utf8')));
 for (const lang of langs) {
-  const dict = JSON.parse(fs.readFileSync(path.join(OUT_DIR, `${lang}.json`), 'utf8'));
+  const dict = effectiveDictionary(lang, JSON.parse(fs.readFileSync(path.join(OUT_DIR, `${lang}.json`), 'utf8')));
   const counts = new Map();
   const shown = new Map();
   for (const [key, value] of Object.entries(dict)) {

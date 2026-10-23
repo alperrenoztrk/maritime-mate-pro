@@ -3,7 +3,7 @@ import type { RegulationItem } from "./types";
 export const environmentalRegulations: RegulationItem[] = [
   {
     slug: "eexi",
-    label: "EEXI – Enerji Verimliliği Tasarım İndeksi",
+    label: "EEXI – Energy Efficiency Existing Ship Index",
     category: "Environmental Regulations",
     overview: "Mevcut gemilerin enerji verimliliğini değerlendiren teknik indeks; 2023'ten itibaren zorunlu, geminin CO₂ emisyon performansını ölçer.",
     history: "EEDI (Energy Efficiency Design Index) 2013'te yeni gemiler için zorunlu hale getirilmiştir. EEXI ise EEDI'nin mevcut gemilere uyarlanmış versiyonu olarak MEPC 76'da (2021) kabul edilmiş ve 1 Ocak 2023'te yürürlüğe girmiştir. EEDI Phase 0'dan Phase 3'e kadar kademeli sıkılaştırma uygulanmış olup, Phase 3 (2025) en sıkı gereklilikleri içerir. EEXI ise mevcut gemilerin tek seferde karşılaması gereken sabit bir eşik değeridir.",
@@ -21,14 +21,14 @@ export const environmentalRegulations: RegulationItem[] = [
       "Teknik iyileştirme seçenekleri: EPL (Engine Power Limitation), SHAPOLI (Shaft Power Limitation), enerji tasarrufu cihazları (ESD – ducts, fins, bulbs)",
       "EEXI Technical File hazırlama ve bayrak devleti/RO onayı",
       "EPL uygulanan gemilerde minimum propulsion power (adverse conditions): geminin emniyetli seyir kapasitesinin korunması zorunlu",
-      "İlk survey sonrası sertifikasyon – IAPP sertifikasına EEXI onayı eklenir",
+      "EEXI verification is recorded through the IEE Certificate and EEXI Technical File; its survey timing must not be confused with IAPP certification.",
     ],
     actions: [
       "EEXI hesaplamasını klas/bayrak ile doğrula ve attained EEXI değerini belirle",
       "Required EEXI'yi karşılamıyorsa EPL (Engine Power Limitation) veya SHAPOLI uygula",
       "EPL uygulanacaksa minimum propulsion power değerlendirmesini yap (adverse conditions)",
       "EEXI Technical File'ı hazırla ve gemide bulundur",
-      "IAPP sertifikasına EEXI onayını eklet (renewal veya intermediate survey'de)",
+      "Arrange the applicable EEXI verification and IEE Certificate documentation with the Administration or recognised organisation.",
       "EPL/SHAPOLI override koşullarını (emergency, maneuvering) prosedürlere yaz ve mürettebatı eğit",
       "Enerji tasarrufu cihazlarını (propeller boss cap fins, Mewis duct vb.) değerlendir",
     ],
@@ -40,12 +40,12 @@ export const environmentalRegulations: RegulationItem[] = [
     ],
     keyArticles: [
       { id: "MARPOL Ek VI Kural 23", title: "EEXI Zorunluluğu", summary: "Mevcut gemilerin attained EEXI değerinin required EEXI'yi aşmaması zorunluluğunu belirler." },
-      { id: "MARPOL Ek VI Kural 21", title: "Required EEDI/EEXI", summary: "Gemi tipi ve büyüklüğüne göre required EEDI/EEXI referans çizgisi ve azaltma faktörlerini tanımlar." },
+      { id: "MARPOL Annex VI Regulation 25", title: "Required EEXI", summary: "Required EEXI and the applicable reduction factors are specified by ship type and capacity under regulation 25." },
       { id: "MEPC.350(78)", title: "EEXI Hesaplama Kılavuzu", summary: "EEXI hesaplama metodolojisi, düzeltme faktörleri ve doğrulama prosedürlerini detaylandırır." },
-      { id: "MEPC.351(78)", title: "EPL/SHAPOLI Kılavuzu", summary: "Motor güç kısıtlama ve şaft güç kısıtlama uygulamasına ilişkin teknik kılavuz." },
+      { id: "MEPC.335(76), as amended", title: "EPL/SHAPOLI guidance", summary: "Motor güç kısıtlama ve şaft güç kısıtlama uygulamasına ilişkin teknik kılavuz." },
     ],
     penalties: [
-      "EEXI uyumsuzluğunda IAPP sertifikası düzenlenmez veya yenilenmez",
+      "EEXI non-compliance requires corrective action and resolution of the applicable energy-efficiency certification with the Administration or recognised organisation.",
       "Sertifikasız geminin uluslararası sefer yapması yasaktır",
       "PSC denetimlerinde EEXI uyumsuzluğu tespitinde alıkoyma riski",
       "Bayrak devleti tarafından geminin seferden men edilmesi",
@@ -64,12 +64,12 @@ export const environmentalRegulations: RegulationItem[] = [
       {
         heading: "Belgelendirme ve denetim",
         body:
-          "EEXI uyumu, hesapları ve uygulanan kısıtlamaları içeren bir EEXI Technical File ile belgelenir ve gemide bulundurulur. Uyum onayı, ilk yıllık/ara/yenileme sörveyinde IAPP sertifikasına işlenir. EPL veya SHAPOLI uygulandıysa, acil durum ve manevra gibi durumlarda güç sınırının geçici aşılmasına izin veren override koşulları prosedürlere yazılır ve mürettebat bu konuda eğitilir. EEXI uyumu sağlanmazsa IAPP sertifikası yenilenmez ve sertifikasız gemi uluslararası sefer yapamaz; PSC denetiminde uyumsuzluk alıkoyma riski doğurur. EEXI, operasyonel performansı ölçen CII ile birlikte MARPOL Ek VI'nın karbon verimliliği rejiminin iki ayağından biridir.",
+          "EEXI compliance under MARPOL Annex VI is documented by the approved EEXI Technical File and the International Energy Efficiency (IEE) Certificate. The initial verification was linked to a specified IAPP periodical survey, but IAPP covers air-pollution certification. Approved EPL or SHAPOLI arrangements govern power reserve, reporting and records. EEXI non-compliance requires action with the Administration or RO and may attract PSC action. EEXI measures technical efficiency; CII addresses annual operational carbon intensity.",
       },
       {
         heading: "EEXI hesaplamasının derinlemesine mantığı",
         body:
-          "EEXI'nin temelinde, geminin teorik karbon verimliliğini ölçen bir formül yatar: payda, ana ve yardımcı makinelerin gücüne, bunların özgül yakıt tüketimine ve yakıtın karbon faktörüne dayanan toplam CO₂ emisyonunu; payda ise geminin taşıma kapasitesi (DWT veya GT) ile referans hızının (Vref) çarpımını temsil eder. Sonuç gCO₂/ton·mil cinsinden 'ulaşılan EEXI'dir ve gemi tipi ile büyüklüğüne göre belirlenmiş 'gerekli EEXI' referans çizgisini aşmamalıdır; bu referans çizgisi EEDI fazlarındaki azaltma faktörlerine dayanır. Hesaba çeşitli düzeltme faktörleri girer: kapasite düzeltmesi (fi), kübik kapasite düzeltmesi (fc) ve buz sınıfı/hava koşulu gibi faktörler. EEXI, geminin gerçek seyir verisini değil, tasarımının teorik verimliliğini değerlendiren tek seferlik sabit bir eşiktir.",
+          "In the simplified EEXI relationship, the numerator represents the calculated CO₂ emission rate from the relevant power, fuel-consumption and carbon-conversion terms. The denominator represents capacity multiplied by reference speed, with applicable correction factors. Use the full current IMO methodology for the ship type. EEXI is a technical index, not a measurement of actual annual fuel consumption.",
       },
       {
         heading: "Uyum yöntemleri: EPL, SHAPOLI ve enerji tasarrufu cihazları",
@@ -79,7 +79,7 @@ export const environmentalRegulations: RegulationItem[] = [
       {
         heading: "Belgelendirme ve EEDI ile ilişki",
         body:
-          "EEXI uyumu, hesapları ve uygulanan güç kısıtlamalarını içeren bir EEXI Technical File ile belgelenir ve gemide bulundurulur; uyum onayı ilk yıllık/ara/yenileme sörveyinde IAPP sertifikasına işlenir. EEXI, yeni gemiler için zorunlu olan EEDI'nin mevcut filoya uyarlanmış kardeşidir: EEDI gemi tasarlanırken bir kez hesaplanırken, EEXI hâlihazırda denizde olan gemilere tek seferlik bir eşik olarak uygulanır. İkisi de tasarım (teknik) verimliliğini ölçtüğü için, geminin yıllık operasyonel performansını ölçen CII ile birlikte düşünülmelidir: EEXI 'gemi ne kadar verimli tasarlanmış', CII ise 'gemi gerçekte ne kadar verimli işletiliyor' sorusuna yanıt verir. Uyum sağlanmazsa IAPP sertifikası yenilenmez ve gemi uluslararası sefer yapamaz.",
+          "The approved EEXI Technical File supports verification of technical energy efficiency and the IEE Certificate. The initial EEXI verification was linked to a specified IAPP survey, which does not make EEXI an IAPP endorsement. EEDI concerns new-ship technical efficiency; EEXI addresses the applicable existing-ship requirements. CII evaluates annual operational carbon intensity separately.",
       },
     ],
     relatedSlugs: ["cii", "marpol", "iapp-cert", "imo-dcs"],

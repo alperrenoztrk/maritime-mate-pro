@@ -7,5 +7,5 @@ export function shuffleAnswerOptions<T extends QuizQuestion>(question: T, random
     const target = Math.floor(random() * (index + 1));
     [indices[index], indices[target]] = [indices[target], indices[index]];
   }
-  return { ...question, options: indices.map((index) => question.options[index]), correctAnswer: indices.indexOf(question.correctAnswer) };
+  return { ...question, options: indices.map((index) => question.options[index]), correctAnswer: indices.indexOf(question.correctAnswer), ...(question.optionExplanations ? { optionExplanations: indices.map((index) => question.optionExplanations![index]) } : {}) };
 }

@@ -145,7 +145,7 @@ const content: CrewTaskLongForm = {
           ],
         },
         {
-          subheading: "5.2 Fiziksel erişim ve hesap yönetimi",
+          subheading: "5.2 Physical access and user-account management",
           paragraphs: [
             `Siber güvenlik fiziksel güvenlikle bütünleşir: kontrol panellerine, sunucu dolaplarına ve ağ ekipmanına fiziksel erişim yetkili kişilerle sınırlandırılır. ETO, ayrılan personelin hesaplarını derhal devre dışı bırakır ve periyodik hesap gözden geçirmesi yapar; aktif olmayan veya gereksiz hesaplar kapatılır.`,
           ],

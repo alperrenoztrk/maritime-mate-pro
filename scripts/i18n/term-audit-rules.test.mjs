@@ -13,3 +13,9 @@ test('explicit calculation copy still rejects the banking sense', () => {
     true,
   );
 });
+
+test('account management and accountability are not maritime calculations', () => {
+  assert.deepEqual(findTermIssues('Kullanıcı hesap yönetimi', 'User account management', 'en'), []);
+  assert.deepEqual(findTermIssues('Hesap verebilirlik', 'Accountability', 'en'), []);
+  assert(findTermIssues('Yakıt hesabı', 'Fuel account', 'en').some(issue => issue.severity === 'error'));
+});
