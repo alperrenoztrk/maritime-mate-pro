@@ -245,7 +245,7 @@ const content: CrewTaskLongForm = {
           subheading: "8.1 Passage plan formu ve eklenecek bilgiler",
           paragraphs: [
             `Tamamlanan passage plan, gemi formatına uygun bir forma işlenir: waypoint listesi, leg parametreleri, no-go area'lar, raporlama noktaları (VTS/coast guard), pilot boarding pozisyonu, demir yeri, UKC kritik noktaları, abort point ve contingency (alternatif) planlar. Stajyer, planın "berth to berth" eksiksiz olmasını ve hiçbir aşamanın boş bırakılmamasını öğrenir.`,
-            `Stajyer, plana eklenmesi gereken contingency unsurlarını öğrenir: abort point (geri dönülemez noktaya gelmeden önce manevradan vazgeçilebilecek son nokta), emergency anchorage (acil demir yeri), no-go area'lara karşı emniyet hatları ve makine arızası/seyir kaybı durumunda izlenecek prosedür. Bu unsurlar, planın yalnızca "ideal durum" için değil, sorunlu durumlar için de hazırlandığını gösterir.`,
+            "The cadet learns how a passage plan provides contingency options: abort points before committing to a critical manoeuvre, suitable emergency anchoring areas, boundaries around hazards and responses to propulsion or navigation-system failure. Confirm that the options remain feasible as traffic, weather, tide and equipment status change.",
           ],
         },
         {

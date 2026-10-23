@@ -48,7 +48,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "2.2 Hızlı indirme/geri alma",
           paragraphs: [
-            `FRB davit'i, botu kötü havada bile hızlı indirip — kritik olarak — gemi seyrederken/dalgada hızla geri alabilmelidir. Constant tension/şok yutan winch sistemi, geri almada bot ile gemi arasındaki ani yük farkını sönümler. Geri alma, MOB müdahalesinin en zor ve tehlikeli kısmıdır.`,
+            "A fast rescue boat (FRB) and its launching appliance have approved operating limits. Assess weather, ship movement, boat condition and crew readiness before launch or recovery. Constant-tension or shock-absorbing arrangements reduce some recovery loads but do not make every sea state safe. Recovery is a critical part of the man-overboard (MOB) plan; follow the installation instructions and trained procedure.",
           ],
           callouts: [
             {
@@ -66,7 +66,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "3.1 Man overboard prosedürü",
           paragraphs: [
-            `MOB durumunda: alarm + can simidi/duman atma, manevra (Williamson/Anderson turn) ile dönüş, gözcü ataması, rescue boat hazırlığı ve indirme, kişiyi alma ve gemiye geri dönme adımları uygulanır. Su sıcaklığı düşükse hipotermi nedeniyle zaman kritiktir; hızlı müdahale hayat kurtarır.`,
+            "A man-overboard (MOB) response combines an immediate alarm, suitable flotation and marking aids, continuous lookout, position marking and a coordinated recovery plan. Use the rescue boat only when appropriate within its approved launch and recovery limits. Assess other available recovery means. Cold-water exposure makes delay dangerous, but an unsafe launch can create further casualties.",
           ],
           bullets: [
             `Alarm + işaret (can simidi/duman)`,

@@ -101,7 +101,7 @@ const content: CrewTaskLongForm = {
           subheading: "4.1 Mooring rope (sentetik) bakımı",
           paragraphs: [
             `Modern gemilerde yüksek mukavemetli HMPE (Dyneema) ve polyester karışımı halatlar yaygındır. Halatın her sefer sonrası gözlem ile kontrolü yapılır: chafe, glazing (sıcaklık hasarı), kink, broken yarn, UV solgunlaşma. OCIMF MEG4 kapsamında halatlar; LDBF (Line Design Break Force), MBL ve "tail" kullanımı bakımından kayıt altında tutulur.`,
-            `Halatın "retirement criteria" şirket tarafından belirlenir; tipik kriter: dış lif hasarı %10'u geçince, iç inceleme dönüşümlü çekirdek hasarı görüldüğünde. Reis, eski halatları tag'leyip Birinci Zabit'e raporlar.`,
+            "Apply the rope maker’s retirement criteria and the ship’s mooring-line management plan. Consider construction, abrasion, cuts, internal damage, heat, chemicals and service history. Do not use a universal percentage of damaged fibres for every rope. Identify and segregate suspect lines and report them to the Chief Officer.",
           ],
         },
         {

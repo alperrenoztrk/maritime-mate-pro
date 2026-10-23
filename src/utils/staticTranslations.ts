@@ -20,7 +20,7 @@ const inFlightLoads: Record<string, Promise<StaticDictionary>> = {};
 const DICTIONARY_FETCH_TIMEOUT_MS = 8_000;
 // Query-versioning bypasses both the browser HTTP cache and an older service
 // worker's StaleWhileRevalidate entry on the first load after a locale rebuild.
-export const STATIC_DICTIONARY_CACHE_VERSION = 'v3';
+export const STATIC_DICTIONARY_CACHE_VERSION = 'v4';
 
 const baseUrl = (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/';
 
@@ -37,6 +37,26 @@ const sharedEnglishUrl = (): string =>
 const sharedLearningUrl = (): string =>
   `${baseUrl.replace(/\/$/, '')}/locales/shared/learning-guide.en.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
 let sharedEnglishLoad: Promise<StaticDictionary> | null = null;
+
+let terminologyLoad: Promise<Record<string, StaticDictionary>> | null = null;
+const loadTerminologyOverrides = (): Promise<Record<string, StaticDictionary>> => {
+  if (!terminologyLoad) terminologyLoad = (async () => {
+    const controller = new AbortController();
+    const timeout = globalThis.setTimeout(() => controller.abort(), DICTIONARY_FETCH_TIMEOUT_MS);
+    try {
+      const response = await fetch(`${baseUrl.replace(/\/$/, '')}/locales/shared/terminology-overrides.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`, { cache: 'force-cache', signal: controller.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const raw: unknown = await response.json();
+      const result: Record<string, StaticDictionary> = {};
+      if (raw && typeof raw === 'object' && !Array.isArray(raw)) for (const [lang, entries] of Object.entries(raw)) {
+        if (entries && typeof entries === 'object' && !Array.isArray(entries)) result[lang] = Object.fromEntries(Object.entries(entries).filter((entry): entry is [string, string] => typeof entry[1] === 'string'));
+      }
+      return result;
+    } catch { terminologyLoad = null; return {}; }
+    finally { globalThis.clearTimeout(timeout); }
+  })();
+  return terminologyLoad;
+};
 
 const loadSharedEnglish = (): Promise<StaticDictionary> => {
   if (!sharedEnglishLoad) {
@@ -98,10 +118,11 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
       // Only next to a real pack: an empty dictionary must stay empty so the
       // runtime keeps using the live translator (see isDictionaryComplete).
       if (Object.keys(dict).length > 0) {
-        const shared = await loadSharedEnglish();
+        const [shared, overrides] = await Promise.all([loadSharedEnglish(), loadTerminologyOverrides()]);
         for (const [key, value] of Object.entries(shared)) {
           if (!(key in dict)) dict[key] = value;
         }
+        Object.assign(dict, overrides[languageCode] ?? {});
       }
       loadedDictionaries[languageCode] = dict;
       return dict;

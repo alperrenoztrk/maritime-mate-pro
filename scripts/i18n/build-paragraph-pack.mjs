@@ -89,6 +89,8 @@ for (const [m, row] of [...coverage].sort()) {
 }
 console.log(`Lesson paragraphs with checked English: ${done} / ${total}` + (stale ? ` (${stale} stale entries skipped)` : ''));
 
+if (done !== total) problems.push(`${total - done} lesson paragraphs lack checked English`);
+
 if (problems.length) {
   console.error(`❌ ${problems.length} problem(s):`);
   for (const p of problems.slice(0, 50)) console.error('  ' + p);

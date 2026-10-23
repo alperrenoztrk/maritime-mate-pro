@@ -128,7 +128,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Halat bakımı ve muayenesi",
           paragraphs: [
-            `Sentetik ve doğal halatlar (mooring, kılavuz, emniyet halatları) düzenli muayene edilir: aşınma, kesik, iç lif kopması, ısı/sürtünme hasarı, kimyasal/UV bozulması aranır. Hasarlı bölge tespit edilirse halat işaretlenir, gerekirse hizmetten alınır. Halatlar temiz, kuru ve düzenli istif edilir; keskin kenar ve yağdan korunur.`,
+            "Inspect ropes for abrasion, cuts, internal damage, heat or friction damage, chemical exposure and deterioration. Assess findings against the maker’s criteria and service history; identify and withdraw suspect equipment as required. Store ropes clean and protected from damaging surfaces, contamination and unsuitable environmental conditions.",
             `Halatın doğru sarılması ve istifi de bakımın parçasıdır; karışmış (kinked) halat hem hızlı yıpranır hem operasyonda tehlike yaratır. AB, halatları figür-of-eight veya uygun coil ile düzenli toplar ve havalandırmalı şekilde saklar.`,
           ],
         },

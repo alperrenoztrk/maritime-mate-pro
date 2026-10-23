@@ -9,7 +9,7 @@ const content: ShipOpLongForm = {
   intro: `Tanker yük planı (cargo plan), charter party ve cargo nomination'da tanımlanan parsellerin hangi tanklara, hangi sırayla ve hangi rate ile yükleneceğini/boşaltılacağını gösteren ana operasyon dokümanıdır. İyi hazırlanmış bir plan; gemi mukavemet ve stabilite limitlerini her ara aşamada korur, kargo ayrımını (segregation) garanti eder, terminal rate limitlerine uyar ve slack tank sayısını minimumda tutar. Bu bölüm planın hazırlığını, loadicator ile doğrulanmasını, terminal/Master ile mutabakatını ve operasyon boyunca revizyonunu adım adım ele alır.`,
   sources: [
     "ISGOTT 6th edition — Ch. 11 (Cargo Operations)",
-    "MARPOL Annex I Reg. 26 — SOPEP",
+    "MARPOL Annex I Reg. 37 — SOPEP",
     "IS Code 2008 — Intact Stability",
     "OCIMF Mooring Equipment Guidelines (MEG4)",
     "P&A Manual (kimyasal tankerler için)",

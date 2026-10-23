@@ -965,7 +965,7 @@ const content10: ContentMap = {
         {
           heading: "Silindir Yağı Analizi (Motor)",
           paragraphs: [
-            "Silindir yağı feed rate ayarı TBN seviyesine göre yapılır. TBN düşükse (kükürtlü yakıtla asit nötralizasyonu yetersiz) feed rate artırılır. TBN çok yüksekse feed rate azaltılarak tasarruf sağlanır. Hedef TBN genellikle 20-30 mg KOH/g arasında tutulur."
+            "Cylinder-oil feed rate and oil selection must follow the engine maker’s guidance for the fuel, engine condition and load. Interpret scrape-down oil base number (BN or TBN) with iron results, sampling consistency and inspection findings. Low residual alkalinity and high wear require investigation; high BN alone does not justify reducing feed rate. Use trends and maker action limits, not a universal BN target."
           ]
         }
       ],

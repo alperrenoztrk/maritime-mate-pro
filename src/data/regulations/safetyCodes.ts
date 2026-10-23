@@ -71,7 +71,7 @@ export const safetyCodes: RegulationItem[] = [
       {
         heading: "Sürekli iyileştirme döngüsü",
         body:
-          "SMS statik bir el kitabı değil, bir öğrenme makinesidir. Uygunsuzluklar (non-conformity), kazalar ve ramak kala (near-miss) olayları raporlanır, analiz edilir ve düzeltici aksiyonlarla kapatılır. İç denetimler sistemin kâğıt üstünde değil gerçekte işlediğini doğrular; yönetim gözden geçirmesi (management review) bulguları stratejik kararlara dönüştürür. Planlı Bakım Sistemi (PMS) ekipman güvenilirliğini, doküman kontrolü ise herkesin güncel prosedürle çalışmasını sağlar. 2021 sonrası siber güvenlik risk yönetimi de SMS'e entegre edilmiş, böylece dijital tehditler de emniyet yönetiminin parçası olmuştur.",
+          "The SMS includes continuous improvement. Report non-conformities, accidents and near misses, investigate causes and verify corrective actions. Internal audits and management review assess whether procedures work. The planned maintenance system (PMS) supports equipment reliability. Document control and maritime cyber-risk management also form part of the SMS.",
       },
       {
         heading: "Belgelendirme ve denetim sonuçları",
@@ -96,7 +96,7 @@ export const safetyCodes: RegulationItem[] = [
       {
         heading: "Madde 9-10: raporlama, analiz ve bakım",
         body:
-          "Madde 9, ISM'i bir öğrenme sistemine dönüştüren maddedir: uygunsuzluklar (non-conformity), kazalar ve tehlikeli durumlar (ramak kala – near miss) raporlanır, kök neden analizine tabi tutulur ve düzeltici aksiyonlarla kapatılır. Bu kültür, suçlama yerine öğrenmeye dayanır; near-miss raporlamasının teşvik edilmesi, küçük işaretlerin büyük kazalara dönüşmeden yakalanmasını sağlar. Madde 10, gemi ve teçhizatın bakımını düzenler: bir Planlı Bakım Sistemi (PMS) kurulur, kurallara uygunluk düzenli denetimlerle sağlanır ve özellikle aniden arızalanması tehlikeli sonuç doğurabilecek 'kritik ekipman' belirlenip bu ekipmanın güvenilirliğini artıracak özel önlemler (test, yedeklilik) alınır. Böylece bakım, reaktif bir tamir faaliyeti olmaktan çıkıp önleyici bir emniyet aracına dönüşür.",
+          "ISM Code section 9 requires reporting and analysis of non-conformities, accidents and hazardous occurrences and corrective actions to prevent recurrence. Investigate causes, assign responsibility and verify effectiveness. Closing a report alone does not prove the risk is controlled.",
       },
       {
         heading: "Madde 11-13: dokümantasyon, denetim ve sertifikasyon",

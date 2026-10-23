@@ -382,6 +382,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      merge_learning_progress: {
+        Args: { incoming: Json }
+        Returns: Json
+      }
       acceptable_aal_levels: { Args: never; Returns: string[] }
       consume_ai_credit: {
         Args: { p_limit: number; p_period: string; p_user_id: string }

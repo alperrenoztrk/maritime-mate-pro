@@ -141,6 +141,7 @@ const ACCOUNT_TO_CALCULATION: Record<string, [RegExp, string]> = {
 // the unambiguous "Hesaplama" label. These keep the banking sense.
 const ACCOUNT_SOURCE_RE = new RegExp(
   [
+    String.raw`hesap\s+(?:yönetimi|verebilir)`,
     String.raw`^\s*hesap\s*$`,
     // The account keyword leads: "banka hesabı", "kullanıcı hesabı".
     String.raw`\b(banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab`,

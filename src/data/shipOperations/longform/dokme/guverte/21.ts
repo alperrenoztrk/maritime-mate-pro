@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Senaryolar",
           paragraphs: [
-            `Yangın/MOB/abandon ship ve enclosed space entry & rescue tatbikatları yapılır; muster list güncel tutulur. Debrief ile eksikler giderilir.`,
+            "Keep the muster list current and practise assigned fire, man-overboard (MOB), abandon-ship and enclosed-space rescue duties. Demonstrate rescue arrangements without exposing unprotected crew to a hazardous atmosphere. Record lessons and verify corrective actions.",
           ],
           bullets: [`Fire/MOB/abandon ship`, `Enclosed space entry & rescue`, `Muster list güncelliği`, `Debrief`],
         },

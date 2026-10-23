@@ -26,7 +26,18 @@ page.on("pageerror", (error) => pageErrors.push(error.message));
 await page.addInitScript(({ user, token, exp }) => {
   localStorage.setItem("sb-example-auth-token", JSON.stringify({ access_token: token, refresh_token: "local-test", token_type: "bearer", expires_in: 3600, expires_at: exp, user }));
 }, { user, token, exp });
-await page.route("https://example.supabase.co/**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(route.request().url().includes("/auth/v1/user") ? user : []) }));
+let cloudProgress = {};
+let rejectSync = false;
+await page.route("https://example.supabase.co/**", async (route) => {
+  const url = route.request().url();
+  if (url.includes("/rpc/merge_learning_progress")) {
+    if (rejectSync) return route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ message: "Synthetic offline service" }) });
+    const incoming = route.request().postDataJSON()?.incoming ?? {};
+    cloudProgress = { ...cloudProgress, ...incoming };
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(cloudProgress) });
+  }
+  return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(url.includes("/auth/v1/user") ? user : []) });
+});
 await page.route("https://api.open-meteo.com/**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ current: { temperature_2m: 18, wind_speed_10m: 5, wind_direction_10m: 90, weather_code: 0 }, daily: { sunrise: ["2026-10-21T07:00"], sunset: ["2026-10-21T18:00"] } }) }));
 await page.route("https://api.bigdatacloud.net/**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ city: "Test port", countryName: "Test" }) }));
 const goto = async (route) => {
@@ -67,12 +78,20 @@ try {
   assert(!((await page.locator('body').innerText()).toLowerCase().includes("short blast")), "Unrelated whistle question assigned to Appraisal");
   await goto("/exercises/navigation/topics/navigation-appraisal/learn");
   let answers = 0;
+  let firstAnswers = 0, firstCorrect = 0, taughtInReview = false;
   for (let step = 0; step < 40; step++) {
     if (await page.getByText("Session Completed!", { exact: true }).isVisible()) break;
     const options = page.locator('button').filter({ has: page.locator('span.text-sm.text-foreground') });
+    const review = await page.getByText("Review round", { exact: true }).isVisible();
+    if (review && !await options.count()) taughtInReview = true;
     if (await options.count()) {
       await options.first().click();
+      await page.locator('div[role="status"][aria-live="polite"]').waitFor({ state: "visible" });
       answers++;
+      if (!review) {
+        firstAnswers++;
+        if ((await options.first().getAttribute("class"))?.includes("border-emerald-500")) firstCorrect++;
+      }
     }
     const advance = page.getByRole("button", { name: /^(Got it, continue\.|Continue|Finish|See Result)$/ }).last();
     await advance.click();
@@ -80,14 +99,65 @@ try {
   }
   assert(answers > 0, "Guided session did not ask questions");
   assert(await page.getByText("Session Completed!", { exact: true }).isVisible(), "Guided session did not finish");
-  const stored = await page.evaluate(() => JSON.parse(localStorage.getItem("mariners-book.learning-progress.v1") ?? "{}"));
-  assert(stored["navigation-appraisal"]?.practice?.total > 0, "Practice result was not saved");
+  const key = `mariners-book.learning-progress.v2:${user.id}`;
+  const stored = await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "{}"), key);
+  assert.equal(stored["navigation-appraisal"]?.practice?.total, firstAnswers, "Review inflated the attempt count");
+  assert.equal(stored["navigation-appraisal"]?.practice?.correct, firstCorrect, "Review inflated the score");
+  if (answers > firstAnswers) assert(taughtInReview, "Review skipped the explanation");
+  await page.screenshot({ path: path.join(output, "guided-result-mobile.png"), fullPage: true });
+
+  // A deterministic real worked case: wrong first answers, correct retry answers.
+  const cases = JSON.parse(fs.readFileSync("src/data/learningCaseStudies.json", "utf8"));
+  const workedCase = cases.find(entry => entry.topicKey === "machine-thermodynamics");
+  const { getLessonFlow } = await server.ssrLoadModule("/src/data/lessonFlow/index.ts");
+  // The test resolves authored source text using the same shipped dictionaries.
+  const dictionary = { ...JSON.parse(fs.readFileSync("public/locales/shared/learning-guide.en.json", "utf8")), ...JSON.parse(fs.readFileSync("public/locales/en.json", "utf8")), ...(JSON.parse(fs.readFileSync("public/locales/shared/terminology-overrides.json", "utf8")).en ?? {}) };
+  const visible = value => dictionary[value] ?? value;
+  const authored = getLessonFlow(workedCase.topicKey, workedCase.topicTitle).questions;
+  const matchQuestion = async (exercise) => {
+    // RouteTranslationGate updates question text asynchronously after each step.
+    for (let attempt = 0; attempt < 50; attempt++) {
+      for (const question of authored) if (await exercise.getByText(visible(question.question), { exact: true }).isVisible()) return question;
+      await page.waitForTimeout(100);
+    }
+    throw new Error(`Question translation did not settle: ${await exercise.innerText()}`);
+  };
+  await goto(`/exercises/${workedCase.topicKey}/topics/${workedCase.topicId}`);
+  assert((await page.locator(`[id="${workedCase.section.id}"]`).innerText()).includes(workedCase.section.example.result), "Worked example result is missing");
+  const exercise = page.locator("#topic-questions");
+  await exercise.scrollIntoViewIfNeeded();
+  for (let step = 0; step < authored.length; step++) {
+    const match = await matchQuestion(exercise);
+    const wrong = match.options.find((_, index) => index !== match.correctAnswer);
+    await exercise.getByRole("button", { name: visible(wrong), exact: true }).click();
+    await exercise.getByRole("button", { name: step === authored.length - 1 ? "See Result" : "Next Question", exact: true }).click();
+  }
+  await exercise.getByRole("button", { name: `Review missed questions (${authored.length})`, exact: true }).click();
+  for (let step = 0; step < authored.length; step++) {
+    await exercise.locator('[aria-label="Related teaching"]').waitFor({ state: "visible" });
+    const match = await matchQuestion(exercise);
+    await exercise.getByRole("button", { name: visible(match.options[match.correctAnswer]), exact: true }).click();
+    await exercise.getByRole("button", { name: step === authored.length - 1 ? "See Result" : "Next Question", exact: true }).click();
+  }
+  await exercise.getByText(`0 / ${authored.length} correct on the first attempt`, { exact: true }).waitFor({ state: "visible" });
+  assert.equal(await exercise.getByRole("button", { name: /^Review missed questions/ }).count(), 0, "Corrected answers remained in the retry queue");
+  const result = await page.evaluate(({ key, id }) => JSON.parse(localStorage.getItem(key))[id].practice, { key, id: workedCase.topicId });
+  assert.equal(result.correct, 0); assert.equal(result.total, authored.length); assert.deepEqual(result.weakSections, []);
+  await noOverflow();
+  await exercise.screenshot({ path: path.join(output, "practice-result-mobile.png") });
+  rejectSync = true;
+  await page.evaluate(() => window.dispatchEvent(new Event("mariners-book:learning-progress")));
   await goto("/lessons/map");
+  await page.getByText("Progress is saved on this device. Account sync is pending; it will retry when available.", { exact: true }).waitFor();
+  rejectSync = false;
+  await page.getByRole("button", { name: "Retry sync", exact: true }).click();
+  await page.getByText("Progress is synced with your account.", { exact: true }).waitFor();
+  assert(cloudProgress[workedCase.topicId]?.practice, "Practice did not reach the synthetic account transport");
   await page.setViewportSize({ width: 1280, height: 900 });
   await noOverflow();
   await page.screenshot({ path: path.join(output, "learning-map-desktop.png"), fullPage: true });
   assert.deepEqual(pageErrors, [], "Browser runtime errors");
-  console.log("Learning UI OK: mobile/desktop map, reading paths, search, correct hierarchy, persistent review, module deep links, legacy reference and completed guided practice.");
+  console.log("Learning UI OK: mobile/desktop map, reading paths, search, correct hierarchy, persistent review, module deep links, legacy reference first-attempt scoring, taught retries, worked examples, account sync and offline recovery.");
 } catch (error) {
   await page.screenshot({ path: path.join(output, "failure.png"), fullPage: true });
   console.error((await page.locator("body").innerText()).slice(0,3500));

@@ -48,7 +48,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.1 Manevra öncesi hazırlık",
           paragraphs: [
-            `Köprüüstü "stations by for mooring/unmooring" emri verdiğinde Reis ekibi istasyona toplar. Halatlar ranzadan çıkarılır, fairlead ve roller'lar üzerinden geçirilir, heaving line (atış halatı) hazırlanır. Winch'ler test edilir, frenler kontrol edilir, deck ışıkları (gece) yakılır. PPE eksiksiz takılır.`,
+            "On the order to stand by for mooring or unmooring, the Bosun briefs the station team and prepares the planned lines and leads. Inspect fairleads, rollers and equipment, test winches under the approved procedure, confirm communication and lighting, and wear the required protective equipment. Keep personnel clear of bights and potential line recoil paths.",
             `Reis, güvertede kayma/takılma riski yaratan ne varsa (yağ, halat yığını, alet) temizletir. Snap-back zone'lar gözden geçirilir, telsiz/iletişim test edilir. Tüm ekip ne yapacağını bilir; "stations ready forward/aft" raporu köprüüstüne verilir.`,
           ],
           bullets: [
@@ -83,7 +83,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 Heaving line ve halat verme",
           paragraphs: [
-            `Atış halatı (heaving line) iskele/rıhtımdaki bağlama personeline atılır; ucundaki monkey fist içine metal koymak yasaktır (ölümcül kafa yaralanmaları olmuştur — IMO içine kum/halat doldurulmuş, max ~0.5 kg ağırlık şart koşar). Bağlama personeli halatı çeker, bittini babaya (bollard) takar. Reis, halatın fairlead'de doğru oturduğunu denetler.`,
+            "Pass a suitable heaving line to the shore team only when the receiving area is clear. A monkey’s fist must contain rope only: do not add metal, sand or other weights. Use any alternative throwing aid only if approved. After the mooring line is received and secured as ordered, check its lead and report the line status.",
             `Halat winch drum'a sarılırken "turn"ların düzgün, üst üste binmeden yatması gerekir; riding turn (üst üste binme) winch kilitlenmesine ve kontrol kaybına yol açar. Reis, drum'a yeterli turn (genelde 3-4) sarıldığını ve render etmeye uygun olduğunu kontrol eder.`,
           ],
           callouts: [
@@ -109,7 +109,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Winch kullanımı ve fren yönetimi",
           paragraphs: [
-            `Mooring winch'ler heave (vira), slack (fıra) ve brake (fren) fonksiyonlarına sahiptir. Operatör, köprüüstü komutuna göre halatı toplar veya boşaltır. Auto-tension modu bazı winch'lerde vardır ama MEG4, gel-git/yük değişiminde dinamik aşırı yüklenme riski nedeniyle dikkatli kullanımı önerir.`,
+            "Mooring winch controls permit heaving, paying out and braking. Operate only on an understood command identifying the line and action. Automatic-tension operation can move a line unexpectedly and alter load sharing; use it only under the approved mooring arrangement and operating instructions.",
             `Winch freni, halatın MBL'sinin altında (genelde %60 SDBF civarı) render edecek (kayarak yük boşaltacak) şekilde ayarlanmalıdır; böylece halat kopmadan fren kayar ve enerji kontrollü boşalır. Brake holding capacity periyodik test edilir. Reis bu ayarın doğru olduğunu bilir ve frenin sıkılığını gözetir.`,
           ],
           callouts: [

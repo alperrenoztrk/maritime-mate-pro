@@ -38,7 +38,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "1.2 İstasyon iletişimi ve standart komutlar",
           paragraphs: [
-            `Baş ve kıç istasyonları köprüüstüyle telsizle (VHF/UHF portable) bağlantılıdır. Standart komutlar tek anlamlıdır: "Send the head line ashore" (baş halatını karaya gönder), "Heave on the spring" (spring'i vira et / sık), "Slack away the breast" (apikoyu boşalt/laçka et), "Make fast" (volta et / bağla), "Hold on" (tut, kaçırma), "Let go" (koy ver / fora). AB komutu duyduğunda doğru halat üzerinde doğru aksiyonu alır.`,
+            "Forward and aft stations maintain clear radio communication with the bridge. Commands such as Send the head line ashore, Heave on the spring, Slack away the breast, Make fast and Let go must identify the intended line and action. Repeat back, act only when understood and report completion. A breast line is not the anchoring report up and down.",
             `Mesafe ve durum köprüüstüne sürekli raporlanır: "Two shackles to go", "All gone forward" (baştaki tüm halatlar çözüldü), "Made fast forward" (baş bağlandı). Bu geri bildirim olmadan köprüüstü manevrayı kör yürütür; AB'nin net ve zamanında raporlaması manevranın gözüdür.`,
           ],
           callouts: [
@@ -94,7 +94,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.1 İstasyon hazırlığı ve risk değerlendirmesi",
           paragraphs: [
-            `Manevra öncesi AB, istasyonunu hazırlar: halatlar fora edilir, kangallar düzgün serilir, fairlead'ler temizlenir, atma halatı (heaving line) hazır tutulur, winch test edilir ve fren durumu kontrol edilir. Güverte; yağ, su, pas ve engellerden arındırılır çünkü mooring sırasında hızlı hareket gerekir.`,
+            "Before the manoeuvre, prepare the station according to the mooring plan: arrange lines safely, check leads and equipment, prepare the heaving line and confirm communication. Remove slip and trip hazards and plan safe standing positions. Preparation does not authorise releasing a loaded line without an order.",
             `İşe başlamadan toolbox talk / risk assessment yapılır: hangi halatların hangi sırada gideceği, snap-back bölgeleri, rüzgâr/akıntı durumu ve görev dağılımı konuşulur. AB, kendi rolünü ve "dur" sinyalini net bilir; belirsizlik varsa sorar.`,
           ],
           bullets: [
@@ -127,7 +127,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Vira, laçka ve fren kullanımı",
           paragraphs: [
-            `Winch ile halat virası (heaving) yaparken AB, tambura yeterli tur (genelde 3-4 tur) sarar ve kuyruk ucundan kontrollü gerginlik uygular. Aşırı tur veya gevşek besleme "riding turn" (turların üst üste binmesi) yaratır; bu, halatın tamburda kilitlenmesine ve kontrol kaybına yol açar. Riding turn oluşursa halat gerginken müdahale edilmez; gerilim alınana kadar beklenir.`,
+            "When using a warping drum, follow the manufacturer’s instructions for the rope, number of turns and tail handling. There is no universal three-or-four-turn rule. Keep hands and clothing clear, avoid riding turns and never reach into a loaded or moving line. Stop and make the equipment and line safe before clearing a problem.",
             `Brake (fren) ayarı kritiktir: MEG4'e göre winch freni, halatın MBL'sinin (Minimum Breaking Load) belirli bir yüzdesinde "render" edecek (kayarak gerilimi boşaltacak) şekilde ayarlanır; böylece aşırı gerilimde halat kopmadan fren kayar. AB, fren tutturma (rendering) testi ve doğru fren basıncını reisin talimatıyla uygular.`,
           ],
           callouts: [
@@ -141,7 +141,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Self-tensioning winch ve riskleri",
           paragraphs: [
-            `Bazı gemilerde otomatik gerginlik ayarlı (self-tensioning / auto-tension) winch'ler vardır; gemi hareket ettikçe halatı otomatik vira/laçka ederek sabit gerilim tutar. Ancak bu mod, ani yük artışında halatı aşırı zorlayabilir veya beklenmedik vira yaparak güvertede halatı hareketlendirebilir. Yanaşmada genelde auto-tension kapatılır, manuel kontrol tercih edilir.`,
+            "An automatic-tension winch can heave or pay out as its control responds to load. This can cause unexpected line movement and change the mooring arrangement. Select the permitted operating mode under the approved instructions, brief the team and keep personnel clear of the line and equipment.",
             `AB, winch panelindeki mod (manuel/auto), tambur (drum) ile warp end (kabestan başı) seçimi ve acil durdurma butonunu bilir. Tambura sarılı halatla aynı anda warp end'de iş yapılmaz; mekanik karışıklık tehlikelidir.`,
           ],
         },
@@ -167,7 +167,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "5.2 Bollard'a volta etme ve figure-of-eight",
           paragraphs: [
-            `Halat bollard'a (bitt) sabitlenirken "figure-of-eight" (sekiz çizerek) turlar atılır; bu, gerilimi dağıtır ve gerektiğinde halatı kontrollü laçka etme imkânı verir. Son tur olarak güvenli "locking turn" atılabilir ama auto-tension veya sık ayar gereken halatlarda kilitleme yapılmaz; çünkü hızlı gevşetme gerekebilir.`,
+            "Secure a mooring line on the designated bitts using the approved arrangement for that line and fitting. Confirm the lead, load and required ability to release or adjust it. Do not add an improvised locking turn that prevents controlled release. Keep clear of loaded turns and follow the station leader’s instructions.",
             `AB, "make fast" komutunda halatı doğru gerginlikte volta eder; "single up" komutunda ise kalkış öncesi fazla halatları teker teker çözerek minimuma indirir. Çözme sırasında hangi halatın gerilimde olduğu sürekli izlenir; gergin halat asla elle çözülmeye çalışılmaz, önce winch ile gerilim alınır.`,
           ],
           table: {
@@ -217,8 +217,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.1 Demir atma ve vira",
           paragraphs: [
-            `Demir atmada AB, baş istasyonunda windlass (demir ırgatı) operasyonuna ve kilit (shackle) sayımına destek verir. Köprüüstü "let go" dediğinde demir bırakılır, zincir kilitleri (her kilit ~27.5 m) sayılarak verilen kilit kadar zincir laçka edilir ve istasyon "two shackles in the water" gibi rapor verir. Brake ve bow stopper (zincir tutucu) kullanımı, AB'nin bildiği temel windlass becerileridir.`,
-            `Vira (heave anchor) sırasında zincirin gerginliği, yönü ("up and down" — dik geldi, "anchor aweigh" — demir dipten ayrıldı) ve çamur durumu raporlanır. Zincir aşırı gergin veya windlass zorlanıyorsa derhal bildirilir; köprüüstü gemiyi zincir üstüne sürerek yükü azaltabilir.`,
+            "The able seafarer assists with windlass operation and cable-length reporting under the station leader. Confirm the anchor, method and cable length before letting go or walking back. Read the ship’s markings rather than assuming a nominal shackle length. Use the brake and chain stopper according to the installation’s approved procedure.",
+            "When weighing anchor, report cable direction and load, up and down when the cable is vertical, and anchor aweigh when it is clear of the bottom. Report excessive strain or windlass difficulty immediately. The bridge coordinates vessel movement; the station must not improvise a response that overloads the gear.",
           ],
           table: {
             caption: `Demir İstasyonu Standart Raporları`,
@@ -286,7 +286,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "9.2 İletişim ve sıra hataları",
           paragraphs: [
-            `Komut beklemeden halat verme/çözme, yanlış halatı vira etme veya raporlamayı geciktirme manevrayı bozar. "Single up" sırasında hangi halatın hâlâ yük taşıdığını bilmeden çözmeye kalkmak tehlikelidir. AB, her zaman komutu duyduğunu teyit eder ve yaptığını raporlar; sessizlik köprüüstünü kör bırakır.`,
+            "Do not release, pay out or heave a mooring line without an understood instruction, except for the agreed immediate stop response to danger. During single-up, identify which lines remain loaded before changing the arrangement. Repeat back orders and report completion so the bridge can coordinate the manoeuvre.",
           ],
         },
       ],

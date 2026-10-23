@@ -1,16 +1,17 @@
+import { withGuidedEnhancements } from "@/utils/guidedEnhancements";
 import { shuffleAnswerOptions } from "@/utils/practiceQuestion";
 import { updateTopicProgress } from "@/utils/learningProgress";
 import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
+import { ArrowRight, CheckCircle2, RotateCcw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { getLessonFlow } from "@/data/lessonFlow";
 import type { RecapQuestion } from "@/data/lessonFlow";
-import { buildLessonSequence, type LessonSequenceItem } from "@/utils/lessonSequence";
+import { buildLessonSequence, buildReviewSequence, getReviewSections, type LessonSequenceItem } from "@/utils/lessonSequence";
 import { getBetaTopic } from "@/data/betaLessons";
 
 /** Fisher-Yates karıştırma. */
@@ -32,37 +33,45 @@ type FlowItem = LessonSequenceItem;
  * bölümler sırayla öğretilir (içerik mevcut anlatımdan, read-only).
  */
 export default function GuidedLessonSession() {
+  const { categoryId, topicTitle } = useParams();
+  return <GuidedSession key={`${categoryId}-${topicTitle}`} />;
+}
+
+function GuidedSession() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle): "";
-  const content = useMemo(() => getBetaTopic(categoryId, decodedTitle), [categoryId, decodedTitle]);
+  const content = useMemo(() => {
+    const topic = getBetaTopic(categoryId, decodedTitle);
+    return topic ? withGuidedEnhancements(categoryId, topic) : null;
+  }, [categoryId, decodedTitle]);
   const flow = getLessonFlow(categoryId, content?.sourceTitle ?? decodedTitle);
   const hasFlow = !!flow;
 
   // Session elements: teach block by block if flow exists → ask shuffle; Otherwise just teach.
-  const mainItems = useMemo<FlowItem[]>(
-    () => content ? buildLessonSequence(content, flow, (questions) => shuffle(questions).map((question) => shuffleAnswerOptions(question))) : [],
-    [content, flow],
-  );
+  const prepareSession = () => content ? buildLessonSequence(content, flow, (questions) => shuffle(questions).map((question) => shuffleAnswerOptions(question))) : [];
+  const [mainItems, setMainItems] = useState<FlowItem[]>(prepareSession);
 
   const [sessionKey, setSessionKey] = useState(0);
   const [pos, setPos] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [answeredTotal, setAnsweredTotal] = useState(0);
   const [wrong, setWrong] = useState<RecapQuestion[]>([]);
+  const [remainingWrong, setRemainingWrong] = useState<RecapQuestion[]>([]);
+  const [showReview, setShowReview] = useState(false);
   const [repeatItems, setRepeatItems] = useState<FlowItem[] | null>(null);
   const [finished, setFinished] = useState(false);
   const [answeredThisStep, setAnsweredThisStep] = useState(false);
 
-  useEffect(() => setAnsweredThisStep(false), [pos, sessionKey]);
+  useEffect(() => { setAnsweredThisStep(false); setShowReview(false); }, [pos, sessionKey]);
 
   const [progressSaved, setProgressSaved] = useState(true);
   useEffect(() => {
     if (!finished || !content?.id) return;
     setProgressSaved(updateTopicProgress(content.id, {
       reviewedAt: new Date().toISOString(),
-      ...(hasFlow && answeredTotal > 0 ? { practice: { correct, total: answeredTotal, completedAt: new Date().toISOString(), weakSections: [...new Set(wrong.map((question) => question.sectionRef))] } } : {}),
+      ...(hasFlow && answeredTotal > 0 ? { practice: { correct, total: answeredTotal, completedAt: new Date().toISOString(), weakSections: [...new Set(remainingWrong.map((question) => question.sectionRef))] } } : {}),
     }));
-  }, [finished, content?.id, hasFlow, correct, answeredTotal, wrong]);
+  }, [finished, content?.id, hasFlow, correct, answeredTotal, remainingWrong]);
 
   if (!content || content.sections.length === 0) {
     return (
@@ -82,15 +91,16 @@ export default function GuidedLessonSession() {
   const current = allItems[pos];
   const inRepeatPhase = pos >= mainItems.length;
   const progress = allItems.length > 0 ? Math.round(((pos + (answeredThisStep ? 1 : 0)) / allItems.length) * 100) : 0;
-  const hearts = Math.max(0, 5 - wrong.length);
 
   const handleAnswered = (isCorrect: boolean, question: RecapQuestion) => {
+    if (answeredThisStep) return;
     setAnsweredThisStep(true);
-    setAnsweredTotal((n) => n + 1);
-    if (isCorrect) {
-      setCorrect((n) => n + 1);
-    } else {
-      setWrong((w) => (w.some((q) => q.id === question.id && q.sectionRef === question.sectionRef) ? w : [...w, question]));
+    if (!inRepeatPhase) {
+      setAnsweredTotal((n) => n + 1);
+      if (isCorrect) setCorrect((n) => n + 1);
+      else { setWrong((items) => [...items, question]); setRemainingWrong((items) => [...items, question]); }
+    } else if (isCorrect) {
+      setRemainingWrong((items) => items.filter((item) => item.id !== question.id || item.sectionRef !== question.sectionRef));
     }
   };
 
@@ -100,7 +110,7 @@ export default function GuidedLessonSession() {
       return;
     }
     if (repeatItems === null && wrong.length > 0) {
-      setRepeatItems(shuffle(wrong).map((question) => ({ kind: "quiz", question })));
+      setRepeatItems(buildReviewSequence(content, shuffle(wrong).map((question) => shuffleAnswerOptions(question))));
       setPos(mainItems.length);
     } else {
       setFinished(true);
@@ -108,10 +118,13 @@ export default function GuidedLessonSession() {
   };
 
   const restart = () => {
+    setMainItems(prepareSession());
     setPos(0);
     setCorrect(0);
     setAnsweredTotal(0);
     setWrong([]);
+    setRemainingWrong([]);
+    setShowReview(false);
     setRepeatItems(null);
     setFinished(false);
     setAnsweredThisStep(false);
@@ -119,7 +132,7 @@ export default function GuidedLessonSession() {
   };
 
   const percent = answeredTotal > 0 ? Math.round((correct / answeredTotal) * 100) : 0;
-  const weakSections = Array.from(new Set(wrong.map((q) => q.sectionRef)));
+  const weakSections = Array.from(new Set(remainingWrong.map((q) => q.sectionRef)));
   const isTeachStep = current?.kind === "teach";
   const lastStep = pos === allItems.length - 1 && (repeatItems !== null || wrong.length === 0);
 
@@ -131,9 +144,7 @@ export default function GuidedLessonSession() {
 
           <Progress value={finished ? 100 : progress} className="h-3 flex-1" />
           {hasFlow ? (
-            <span className="flex items-center gap-1 text-sm font-semibold text-rose-500">
-              <Heart className="h-4 w-4 fill-rose-500" /> {hearts}
-            </span>
+            <span className="text-xs font-medium text-muted-foreground">{inRepeatPhase ? "Review round" : "Learn and practise"}</span>
           ) : (
             <span className="text-xs font-medium text-muted-foreground">Guided Reading</span>
           )}
@@ -152,22 +163,23 @@ export default function GuidedLessonSession() {
               <>
                 <Trophy className="mx-auto h-16 w-16 text-amber-500" />
                 <h2 className="mt-4 text-2xl font-bold text-foreground">Session Completed!</h2>
-                <div className="mt-3 text-5xl font-bold text-primary">%{percent}</div>
-                <p className="mt-2 text-sm text-muted-foreground">{correct} / {answeredTotal} true</p>
+                <div className="mt-3 text-5xl font-bold text-primary">{percent}%</div>
+                <p className="mt-2 text-sm text-muted-foreground">{correct} / {answeredTotal} correct on the first attempt</p>
+                {wrong.length > 0 && <p className="mt-2 text-sm text-muted-foreground">{wrong.length - remainingWrong.length} / {wrong.length} missed questions corrected in the review round. Review answers do not change the first-attempt score.</p>}
                 {weakSections.length > 0 ? (
                   <div className="mt-5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-left">
                     <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
-                      You better repeat
+                      Sections to revisit
                     </p>
                     <ul className="mt-2 space-y-1">
                       {weakSections.map((s) => (
-                        <li key={s} className="text-sm text-foreground/85">• {s}</li>
+                        <li key={s} className="text-sm text-foreground/85"><Link className="underline" to={`/exercises/${categoryId}/topics/${content.id}#${getReviewSections(content, s)[0]?.id ?? ""}`}>{getReviewSections(content, s)[0]?.title ?? s}</Link></li>
                       ))}
                     </ul>
                   </div>
                 ) : (
                   <p className="mt-4 text-sm text-emerald-600 dark:text-emerald-400">
-                    Great! You got all the questions correct.
+                    No unresolved questions remain in this session.
                   </p>
                 )}
               </>
@@ -197,7 +209,7 @@ export default function GuidedLessonSession() {
             {inRepeatPhase && (
               <div className="mb-4 flex items-center justify-center gap-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-center text-xs font-semibold text-amber-700 dark:text-amber-300">
                 <RotateCcw className="h-3.5 w-3.5" aria-hidden />
-                Tour of reinforcing mistakes
+                Review the explanation, then try the missed questions again.
               </div>
             )}
 
@@ -215,14 +227,16 @@ export default function GuidedLessonSession() {
             ) : current?.kind === "quiz" ? (
               <>
                 <p className="mb-3 text-micro font-bold uppercase tracking-[0.2em] text-primary">
-                  Mixed Question
+                  Knowledge check
                 </p>
                 <KnowledgeCheck
                   key={`${sessionKey}-${pos}`}
                   question={current.question}
                   compact
                   onAnswered={(c) => handleAnswered(c, current.question)}
+                  onReview={() => setShowReview((value) => !value)}
                 />
+                {showReview && <div className="mt-5 space-y-4">{getReviewSections(content, current.question.sectionRef).map((section, index) => <LessonTeachCard key={section.id ?? index} section={section} categoryId={categoryId!} topicTitle={content.title} />)}</div>}
                 {answeredThisStep && (
                   <Button onClick={advance} className="mt-5 w-full">
                     {lastStep ? "See Result" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />

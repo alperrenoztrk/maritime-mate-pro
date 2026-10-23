@@ -5,5 +5,8 @@ export interface QuizQuestion {
   correctAnswer: number;
   explanation: string;
   category: string;
+  sectionRef?: string;
+  /** Feedback aligned with the authored options. */
+  optionExplanations?: string[];
 }
 

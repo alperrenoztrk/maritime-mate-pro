@@ -1,27 +1,204 @@
 {
+  "12": {
+    "en": "12"
+  },
+  "125 kJ": {
+    "en": "125 kJ"
+  },
+  "16 kN·m": {
+    "en": "16 kN·m"
+  },
+  "24": {
+    "en": "24"
+  },
+  "3. Assess the loading condition:": {
+    "en": "3. Assess the loading condition:"
+  },
+  "32 kN·m": {
+    "en": "32 kN·m"
+  },
+  "35 kJ": {
+    "en": "35 kJ"
+  },
+  "360": {
+    "en": "360"
+  },
+  "400 kN·m": {
+    "en": "400 kN·m"
+  },
+  "5.2 Physical access and user-account management": {
+    "en": "5.2 Physical access and user-account management"
+  },
+  "55 kJ": {
+    "en": "55 kJ"
+  },
+  "6": {
+    "en": "6"
+  },
+  "64 kN·m": {
+    "en": "64 kN·m"
+  },
+  "A 4–20 mA transmitter has a live zero: the lower engineering value corresponds to 4 mA, not 0 mA. For linear scaling, the fraction of range is (I − 4)/16. Apply that fraction to the engineering span and then add the lower engineering value. This is a scaling calculation, not a diagnosis of the sensor; installation faults and out-of-range currents require the maker’s specified interpretation.": {
+    "en": "A 4–20 mA transmitter has a live zero: the lower engineering value corresponds to 4 mA, not 0 mA. For linear scaling, the fraction of range is (I − 4)/16. Apply that fraction to the engineering span and then add the lower engineering value. This is a scaling calculation, not a diagnosis of the sensor; installation faults and out-of-range currents require the maker’s specified interpretation."
+  },
+  "A badge alone does not establish authority to board. Check the visit and required permissions, apply the current security arrangements and escalate uncertainty while maintaining access control; avoid improvising exceptions for apparent urgency or status.": {
+    "en": "A badge alone does not establish authority to board. Check the visit and required permissions, apply the current security arrangements and escalate uncertainty while maintaining access control; avoid improvising exceptions for apparent urgency or status."
+  },
+  "A ballast change must be checked for its effect on effective GM, free surfaces, trim and structural limits.": {
+    "en": "A ballast change must be checked for its effect on effective GM, free surfaces, trim and structural limits."
+  },
+  "A battery affected by thermal runaway has cooled externally. Can monitoring stop immediately?": {
+    "en": "A battery affected by thermal runaway has cooled externally. Can monitoring stop immediately?"
+  },
   "A centrifugal pump supplies a head that changes with flow. The connected piping system requires a head that includes the static difference and the losses in pipes, valves and fittings. The operating point is where supplied head equals required head. Reading a flow from the pump curve without considering the system curve leaves half of the problem unspecified.": {
     "en": "A centrifugal pump supplies a head that changes with flow. The connected piping system requires a head that includes the static difference and the losses in pipes, valves and fittings. The operating point is where supplied head equals required head. Reading a flow from the pump curve without considering the system curve leaves half of the problem unspecified."
+  },
+  "A change in rolling behaviour, an unexpected list or an inability to remain upright requires prompt assessment and reporting. Possible causes include changed loading, free surfaces, cargo movement, flooding and wave excitation. Observations alone do not establish the cause. Use available measurements, the loading instrument and approved stability or damage-control information, with qualified assistance where required.": {
+    "en": "A change in rolling behaviour, an unexpected list or an inability to remain upright requires prompt assessment and reporting. Possible causes include changed loading, free surfaces, cargo movement, flooding and wave excitation. Observations alone do not establish the cause. Use available measurements, the loading instrument and approved stability or damage-control information, with qualified assistance where required."
+  },
+  "A chemical product name is similar to a cargo carried previously. What must be established before accepting it?": {
+    "en": "A chemical product name is similar to a cargo carried previously. What must be established before accepting it?"
+  },
+  "A claim that it is the strongest available.": {
+    "en": "A claim that it is the strongest available."
   },
   "A closed hatch guarantees all connected spaces are dry.": {
     "en": "A closed hatch guarantees all connected spaces are dry."
   },
+  "A closed system receives 90 kJ of heat and does 35 kJ of work. Neglect changes in kinetic and potential energy.": {
+    "en": "A closed system receives 90 kJ of heat and does 35 kJ of work. Neglect changes in kinetic and potential energy."
+  },
+  "A complete four-stroke cycle requires two revolutions.": {
+    "en": "A complete four-stroke cycle requires two revolutions."
+  },
+  "A complete investigation before alerting anyone.": {
+    "en": "A complete investigation before alerting anyone."
+  },
+  "A compliant EEXI guarantees an A rating every year.": {
+    "en": "A compliant EEXI guarantees an A rating every year."
+  },
+  "A contractor wants to connect a laptop to the machinery control network. What must happen first?": {
+    "en": "A contractor wants to connect a laptop to the machinery control network. What must happen first?"
+  },
+  "A copy of the first report without later changes.": {
+    "en": "A copy of the first report without later changes."
+  },
+  "A crew member fears retaliation after reporting harassment. What response supports a safe reporting process?": {
+    "en": "A crew member fears retaliation after reporting harassment. What response supports a safe reporting process?"
+  },
+  "A crew member reports only 'water coming in'. What information would make the report operationally useful?": {
+    "en": "A crew member reports only 'water coming in'. What information would make the report operationally useful?"
+  },
   "A department is an organisation of people": {
     "en": "A department is an organisation of people"
+  },
+  "A diagnosis invented to make the report sound complete.": {
+    "en": "A diagnosis invented to make the report sound complete."
   },
   "A discipline is a branch of knowledge. Deck and engine are departments; ship types describe different applications. Expand a branch, a course and a module to see where each topic belongs.": {
     "en": "A discipline is a branch of knowledge. Deck and engine are departments; ship types describe different applications. Expand a branch, a course and a module to see where each topic belongs."
   },
+  "A display indicates a reported state, not a complete electrical safety condition. Stored energy, backfeeds and indication faults remain possible. High-voltage work requires competent authorised personnel and the full isolation and verification arrangements for that installation.": {
+    "en": "A display indicates a reported state, not a complete electrical safety condition. Stored energy, backfeeds and indication faults remain possible. High-voltage work requires competent authorised personnel and the full isolation and verification arrangements for that installation."
+  },
   "A familiar USB device is always safe.": {
     "en": "A familiar USB device is always safe."
+  },
+  "A fixed search circle that never changes.": {
+    "en": "A fixed search circle that never changes."
+  },
+  "A flange bolt has the correct diameter, but its heat treatment and material certificate are unknown. A supplier describes it as stronger than the original.": {
+    "en": "A flange bolt has the correct diameter, but its heat treatment and material certificate are unknown. A supplier describes it as stronger than the original."
+  },
+  "A four-stroke cylinder completes intake, compression, expansion and exhaust in two crankshaft revolutions. It therefore produces one power stroke per two revolutions, assuming normal firing. Do not confuse shaft revolutions with firing events or the number of cylinders. This simple timing relation describes event frequency; it does not determine power output without the work per cycle and the other relevant engine conditions.": {
+    "en": "A four-stroke cylinder completes intake, compression, expansion and exhaust in two crankshaft revolutions. It therefore produces one power stroke per two revolutions, assuming normal firing. Do not confuse shaft revolutions with firing events or the number of cylinders. This simple timing relation describes event frequency; it does not determine power output without the work per cycle and the other relevant engine conditions."
+  },
+  "A four-stroke engine runs at 600 rpm. Find power strokes per minute for one cylinder.": {
+    "en": "A four-stroke engine runs at 600 rpm. Find power strokes per minute for one cylinder."
+  },
+  "A general announcement that someone should call.": {
+    "en": "A general announcement that someone should call."
+  },
+  "A general-purpose glove cannot be assumed suitable for both hazards.": {
+    "en": "A general-purpose glove cannot be assumed suitable for both hazards."
+  },
+  "A grounded ship will soon have more water at high tide. Is immediate refloating automatically safe?": {
+    "en": "A grounded ship will soon have more water at high tide. Is immediate refloating automatically safe?"
+  },
+  "A heavy item is suspended from the ship's crane. Where is its weight treated as acting for the stability assessment?": {
+    "en": "A heavy item is suspended from the ship's crane. Where is its weight treated as acting for the stability assessment?"
+  },
+  "A helm order is repeated back incorrectly. What should the officer do?": {
+    "en": "A helm order is repeated back incorrectly. What should the officer do?"
+  },
+  "A high GM alone does not establish safety; accelerations and securing loads also matter.": {
+    "en": "A high GM alone does not establish safety; accelerations and securing loads also matter."
+  },
+  "A high-voltage breaker is shown as open on a control screen. Does that prove the equipment is safe to touch?": {
+    "en": "A high-voltage breaker is shown as open on a control screen. Does that prove the equipment is safe to touch?"
+  },
+  "A junior engineer questions a planned action. How should the responsible engineer respond?": {
+    "en": "A junior engineer questions a planned action. How should the responsible engineer respond?"
+  },
+  "A last known position is an observation at a stated time, not necessarily the present search location. Drift and uncertainty grow with time; pass updates to the coordinating authority and revise the search plan as reliable information arrives.": {
+    "en": "A last known position is an observation at a stated time, not necessarily the present search location. Drift and uncertainty grow with time; pass updates to the coordinating authority and revise the search plan as reliable information arrives."
+  },
+  "A linear transmitter represents 0–200 °C with 4–20 mA. What temperature corresponds to 12 mA?": {
+    "en": "A linear transmitter represents 0–200 °C with 4–20 mA. What temperature corresponds to 12 mA?"
+  },
+  "A longer observed rolling period requires assessment; it is not an automatic instruction to ballast. Suspected loll requires the approved emergency response and competent stability assessment before tank changes. An unexpected list can indicate cargo movement or flooding. Assess the actual condition and select course or speed changes using the ship-specific guidance and surrounding hazards.": {
+    "en": "A longer observed rolling period requires assessment; it is not an automatic instruction to ballast. Suspected loll requires the approved emergency response and competent stability assessment before tank changes. An unexpected list can indicate cargo movement or flooding. Assess the actual condition and select course or speed changes using the ship-specific guidance and surrounding hazards."
   },
   "A low carbon content removes all handling hazards.": {
     "en": "A low carbon content removes all handling hazards."
   },
+  "A low reading overrides every other discharge requirement.": {
+    "en": "A low reading overrides every other discharge requirement."
+  },
+  "A lower level in one space may reflect transfer rather than successful removal from the vessel. Compare timed observations, compartment connections and boundary status, then reassess the damage-control plan and stability with the responsible command team.": {
+    "en": "A lower level in one space may reflect transfer rather than successful removal from the vessel. Compare timed observations, compartment connections and boundary status, then reassess the damage-control plan and stability with the responsible command team."
+  },
+  "A navigation workstation behaves abnormally after an unknown USB device was used. What is the best first approach?": {
+    "en": "A navigation workstation behaves abnormally after an unknown USB device was used. What is the best first approach?"
+  },
+  "A navigational danger report loses value if delayed for nonessential detail. Provide the known position, time and nature of the hazard, clearly mark estimates and unknowns, and update the relevant authorities through the required reporting channels.": {
+    "en": "A navigational danger report loses value if delayed for nonessential detail. Provide the known position, time and nature of the hazard, clearly mark estimates and unknowns, and update the relevant authorities through the required reporting channels."
+  },
+  "A new VLSFO delivery meets the applicable sulphur requirement. Some fuel from an earlier delivery remains in the planned receiving tank.": {
+    "en": "A new VLSFO delivery meets the applicable sulphur requirement. Some fuel from an earlier delivery remains in the planned receiving tank."
+  },
+  "A new vibration reading is higher than last month’s, but it was taken at a different load and sensor location.": {
+    "en": "A new vibration reading is higher than last month’s, but it was taken at a different load and sensor location."
+  },
+  "A pilot's proposed alteration appears to conflict with the agreed passage plan. What is the bridge team's best response?": {
+    "en": "A pilot's proposed alteration appears to conflict with the agreed passage plan. What is the bridge team's best response?"
+  },
+  "A planned tug becomes unavailable immediately before berthing. What should the bridge team do?": {
+    "en": "A planned tug becomes unavailable immediately before berthing. What should the bridge team do?"
+  },
   "A precise casualty count even when it is unknown.": {
     "en": "A precise casualty count even when it is unknown."
   },
+  "A repaired component passed its workshop test. What is still required before the shipboard system is returned to service?": {
+    "en": "A repaired component passed its workshop test. What is still required before the shipboard system is returned to service?"
+  },
+  "A replacement fastener must match the approved material, dimensions and service requirements. Strength is only one property: temperature capability, toughness, corrosion resistance, coatings, thread fit and compatibility also matter. A higher strength grade can have different failure behaviour and tightening requirements. Traceability connects the supplied part to its specification; a similar appearance does not establish equivalence. Use the maker-approved replacement process when the required identity or certification is uncertain.": {
+    "en": "A replacement fastener must match the approved material, dimensions and service requirements. Strength is only one property: temperature capability, toughness, corrosion resistance, coatings, thread fit and compatibility also matter. A higher strength grade can have different failure behaviour and tightening requirements. Traceability connects the supplied part to its specification; a similar appearance does not establish equivalence. Use the maker-approved replacement process when the required identity or certification is uncertain."
+  },
+  "A resultant rudder force of 80 kN acts at a perpendicular distance of 0.40 m from the stock axis.": {
+    "en": "A resultant rudder force of 80 kN acts at a perpendicular distance of 0.40 m from the stock axis."
+  },
   "A safe speaking-up culture helps detect threats and misunderstandings early while preserving clear responsibilities and escalation routes.": {
     "en": "A safe speaking-up culture helps detect threats and misunderstandings early while preserving clear responsibilities and escalation routes."
+  },
+  "A search starts from a position reported several hours earlier. What must be considered when establishing the search datum?": {
+    "en": "A search starts from a position reported several hours earlier. What must be considered when establishing the search datum?"
+  },
+  "A ship has completed its applicable EEXI verification. A trainee assumes that this guarantees a good annual CII rating.": {
+    "en": "A ship has completed its applicable EEXI verification. A trainee assumes that this guarantees a good annual CII rating."
+  },
+  "A signature does not replace functioning equipment and verified checks.": {
+    "en": "A signature does not replace functioning equipment and verified checks."
   },
   "A single alarm proves the exact source.": {
     "en": "A single alarm proves the exact source."
@@ -29,11 +206,35 @@
   "A software update may always be installed without operational review.": {
     "en": "A software update may always be installed without operational review."
   },
+  "A stability quick reference should direct the watchkeeper to the ship’s approved information and emergency organisation. It cannot classify every vessel as safe from a single GM value or a fixed rolling-period band.": {
+    "en": "A stability quick reference should direct the watchkeeper to the ship’s approved information and emergency organisation. It cannot classify every vessel as safe from a single GM value or a fixed rolling-period band."
+  },
+  "A steady refrigeration cycle removes heat at the evaporator and rejects heat at the condenser. With other heat losses neglected, the condenser rejects both the evaporator load and the compressor work input: Qcond = Qevap + W. The refrigeration coefficient of performance is COP = Qevap / W. COP compares useful heat removal with work input; it is not a motor efficiency and can exceed one without violating energy conservation.": {
+    "en": "A steady refrigeration cycle removes heat at the evaporator and rejects heat at the condenser. With other heat losses neglected, the condenser rejects both the evaporator load and the compressor work input: Qcond = Qevap + W. The refrigeration coefficient of performance is COP = Qevap / W. COP compares useful heat removal with work input; it is not a motor efficiency and can exceed one without violating energy conservation."
+  },
   "A subject explains why; a system shows how": {
     "en": "A subject explains why; a system shows how"
   },
+  "A successful communication check does not prove emergency shutdown performance. Treat the failed protective function as a readiness defect, coordinate with the terminal and verify the required arrangements under the approved procedure before starting transfer.": {
+    "en": "A successful communication check does not prove emergency shutdown performance. Treat the failed protective function as a readiness defect, coordinate with the terminal and verify the required arrangements under the approved procedure before starting transfer."
+  },
+  "A surveyor asks an officer to demonstrate an unfamiliar equipment test. What is the appropriate response?": {
+    "en": "A surveyor asks an officer to demonstrate an unfamiliar equipment test. What is the appropriate response?"
+  },
+  "A suspended weight acts at its suspension point for stability purposes and may raise the effective centre of gravity. Assess the most demanding intermediate condition, heel, outreach, crane capacity and local loading before relying on the final stowed condition.": {
+    "en": "A suspended weight acts at its suspension point for stability purposes and may raise the effective centre of gravity. Assess the most demanding intermediate condition, heel, outreach, crane capacity and local loading before relying on the final stowed condition."
+  },
   "A tanker, bulk carrier, container ship, passenger ship or offshore vessel uses many shared principles. Cargo properties, equipment, work organisation and operating limits change the application. Use ship-type operations to compare them.": {
     "en": "A tanker, bulk carrier, container ship, passenger ship or offshore vessel uses many shared principles. Cargo properties, equipment, work organisation and operating limits change the application. Use ship-type operations to compare them."
+  },
+  "A task involves a hot surface and a cleaning chemical. The available gloves have no documented chemical compatibility.": {
+    "en": "A task involves a hot surface and a cleaning chemical. The available gloves have no documented chemical compatibility."
+  },
+  "A vessel coming up from a direction more than 22.5° abaft the beam of the vessel being overtaken.": {
+    "en": "A vessel coming up from a direction more than 22.5° abaft the beam of the vessel being overtaken."
+  },
+  "A workshop test may cover the component but not its installed connections, settings or interaction with other equipment. Recommission under the approved procedure, confirm the required functional and protective tests and document the return to service.": {
+    "en": "A workshop test may cover the component but not its installed connections, settings or interaction with other equipment. Recommission under the approved procedure, confirm the required functional and protective tests and document the return to service."
   },
   "A zero present error does not necessarily imply a zero integral contribution.": {
     "en": "A zero present error does not necessarily imply a zero integral contribution."
@@ -41,35 +242,119 @@
   "Accept the watch solely from a verbal statement.": {
     "en": "Accept the watch solely from a verbal statement."
   },
+  "Acceptance must address the whole approved specification, rather than one attractive property.": {
+    "en": "Acceptance must address the whole approved specification, rather than one attractive property."
+  },
+  "Accurate communication includes acknowledging uncertainty. Use the responsible person and approved instructions, understand the operational consequences and agree a safe demonstration; invented evidence or an improvised test can create both safety and compliance failures.": {
+    "en": "Accurate communication includes acknowledging uncertainty. Use the responsible person and approved instructions, understand the operational consequences and agree a safe demonstration; invented evidence or an improvised test can create both safety and compliance failures."
+  },
+  "Activate the incident process, preserve evidence and assess safe containment and operational continuity.": {
+    "en": "Activate the incident process, preserve evidence and assess safe containment and operational continuity."
+  },
   "Additional Reading": {
     "en": "Additional Reading"
   },
   "Advanced": {
     "en": "Advanced"
   },
+  "After a collision, no external oil or water leakage is visible. What conclusion is justified?": {
+    "en": "After a collision, no external oil or water leakage is visible. What conclusion is justified?"
+  },
+  "After one hour, a reliable fix is 2 nautical miles east of the DR position. What current estimate follows if other errors are negligible?": {
+    "en": "After one hour, a reliable fix is 2 nautical miles east of the DR position. What current estimate follows if other errors are negligible?"
+  },
+  "Air temperature alone does not show how much moisture air may deposit on a cold surface. Compare the relevant dew points and surface conditions and apply the cargo's instructions; indiscriminate ventilation can introduce moisture and worsen condensation.": {
+    "en": "Air temperature alone does not show how much moisture air may deposit on a cold surface. Compare the relevant dew points and surface conditions and apply the cargo's instructions; indiscriminate ventilation can introduce moisture and worsen condensation."
+  },
   "All gas cargo tanks have identical limits.": {
     "en": "All gas cargo tanks have identical limits."
+  },
+  "All synchronising conditions are proven.": {
+    "en": "All synchronising conditions are proven."
+  },
+  "All transmitters are nonlinear.": {
+    "en": "All transmitters are nonlinear."
+  },
+  "Allow entry because the badge looks professional.": {
+    "en": "Allow entry because the badge looks professional."
+  },
+  "Altering records destroys the evidence needed for maintenance decisions.": {
+    "en": "Altering records destroys the evidence needed for maintenance decisions."
+  },
+  "Always alter exactly 40° to starboard.": {
+    "en": "Always alter exactly 40° to starboard."
+  },
+  "Always at its original position on the quay.": {
+    "en": "Always at its original position on the quay."
+  },
+  "An IAPP Certificate replaces all energy-efficiency documentation.": {
+    "en": "An IAPP Certificate replaces all energy-efficiency documentation."
+  },
+  "An alarm is a prompt to investigate, not a diagnosis to dismiss or accept blindly. Compare position, bearings, environmental conditions and anchor behaviour; report promptly and prepare the actions required by the ship's anchor-watch plan.": {
+    "en": "An alarm is a prompt to investigate, not a diagnosis to dismiss or accept blindly. Compare position, bearings, environmental conditions and anchor behaviour; report promptly and prepare the actions required by the ship's anchor-watch plan."
+  },
+  "An assumed cause stated as a certainty.": {
+    "en": "An assumed cause stated as a certainty."
   },
   "An electronic position suddenly jumps and disagrees with radar observations. What is the appropriate interpretation?": {
     "en": "An electronic position suddenly jumps and disagrees with radar observations. What is the appropriate interpretation?"
   },
+  "An incident recorder is approaching its overwrite period. What should the team do?": {
+    "en": "An incident recorder is approaching its overwrite period. What should the team do?"
+  },
   "An initial report gives the coordination authority the best available facts, identifies uncertainty and is updated when new information is confirmed.": {
     "en": "An initial report gives the coordination authority the best available facts, identifies uncertainty and is updated when new information is confirmed."
+  },
+  "An insulation tester measures insulation condition and is not a load-sharing controller.": {
+    "en": "An insulation tester measures insulation condition and is not a load-sharing controller."
   },
   "An office backup alone restores every machinery control function.": {
     "en": "An office backup alone restores every machinery control function."
   },
+  "An officer records damage that another crew member reported but the officer did not see. How should the entry be written?": {
+    "en": "An officer records damage that another crew member reported but the officer did not see. How should the entry be written?"
+  },
+  "An oily-water monitor reading is only one part of the applicable discharge conditions. Equipment approval, proper operation, required protective arrangements, location and other regulatory conditions must also be satisfied. A malfunctioning required automatic stopping arrangement cannot be ignored because one displayed reading is low. Follow the ship’s approved handling and retention procedures, report defects and establish the applicable requirements before considering any discharge.": {
+    "en": "An oily-water monitor reading is only one part of the applicable discharge conditions. Equipment approval, proper operation, required protective arrangements, location and other regulatory conditions must also be satisfied. A malfunctioning required automatic stopping arrangement cannot be ignored because one displayed reading is low. Follow the ship’s approved handling and retention procedures, report defects and establish the applicable requirements before considering any discharge."
+  },
+  "An overtaking vessel approaches from more than 22.5° abaft the beam of the vessel being overtaken and must keep clear until finally past and clear.": {
+    "en": "An overtaking vessel approaches from more than 22.5° abaft the beam of the vessel being overtaken and must keep clear until finally past and clear."
+  },
+  "An unassigned request leaves responsibility ambiguous.": {
+    "en": "An unassigned request leaves responsibility ambiguous."
+  },
+  "An unexpected visitor presents a convincing contractor badge. What should the gangway watch do?": {
+    "en": "An unexpected visitor presents a convincing contractor badge. What should the gangway watch do?"
+  },
   "An unrestricted loading rate for the whole operation.": {
     "en": "An unrestricted loading rate for the whole operation."
+  },
+  "Analysis and approved fuel handling remain relevant.": {
+    "en": "Analysis and approved fuel handling remain relevant."
+  },
+  "Annual operational performance is not guaranteed by a technical assessment.": {
+    "en": "Annual operational performance is not guaranteed by a technical assessment."
   },
   "Any disagreement, regardless of its nature.": {
     "en": "Any disagreement, regardless of its nature."
   },
+  "Any glove if the task is brief.": {
+    "en": "Any glove if the task is brief."
+  },
   "Any rise of tide guarantees a safe refloating.": {
     "en": "Any rise of tide guarantees a safe refloating."
   },
+  "Appearance and bypassing are not substitutes for compliant equipment.": {
+    "en": "Appearance and bypassing are not substitutes for compliant equipment."
+  },
+  "Appearance does not establish the protection rating.": {
+    "en": "Appearance does not establish the protection rating."
+  },
   "Apply energy balances and identify the assumptions of ideal cycles.": {
     "en": "Apply energy balances and identify the assumptions of ideal cycles."
+  },
+  "Apply the engineering span: 0 + 0.5 × 200 = 100 °C.": {
+    "en": "Apply the engineering span: 0 + 0.5 × 200 = 100 °C."
   },
   "Apply the forecast to cargo, deck work and heavy-weather preparations.": {
     "en": "Apply the forecast to cargo, deck work and heavy-weather preparations."
@@ -77,11 +362,44 @@
   "Applying a generic sequence from another ship.": {
     "en": "Applying a generic sequence from another ship."
   },
+  "Approved onboard recommissioning, including interfaces and required protective functions.": {
+    "en": "Approved onboard recommissioning, including interfaces and required protective functions."
+  },
+  "Assess compatibility and the intended segregation or mixing plan.": {
+    "en": "Assess compatibility and the intended segregation or mixing plan."
+  },
+  "Assess every tank change": {
+    "en": "Assess every tank change"
+  },
+  "Assess the encounter conditions and use ship-specific guidance to select a safe course or speed change.": {
+    "en": "Assess the encounter conditions and use ship-specific guidance to select a safe course or speed change."
+  },
+  "Assess the required control modes, protective functions and operating limitations with the responsible personnel.": {
+    "en": "Assess the required control modes, protective functions and operating limitations with the responsible personnel."
+  },
   "Assess the scene for danger to the casualty and the rescuer, and call for appropriate assistance.": {
     "en": "Assess the scene for danger to the casualty and the rescuer, and call for appropriate assistance."
   },
+  "Assess the trend with other condition evidence and applicable limits.": {
+    "en": "Assess the trend with other condition evidence and applicable limits."
+  },
+  "Assign a named person to report the verified limitation through the agreed channel.": {
+    "en": "Assign a named person to report the verified limitation through the agreed channel."
+  },
+  "Assigning a named person and confirming completion and receipt.": {
+    "en": "Assigning a named person and confirming completion and receipt."
+  },
   "Assume a certificate proves every item is ready.": {
     "en": "Assume a certificate proves every item is ready."
+  },
+  "Assume a familiar company logo is sufficient.": {
+    "en": "Assume a familiar company logo is sufficient."
+  },
+  "Assume antivirus software makes an incident impossible.": {
+    "en": "Assume antivirus software makes an incident impossible."
+  },
+  "Assume any movement is normal swinging.": {
+    "en": "Assume any movement is normal swinging."
   },
   "Assume damage is confined to the visible contact point.": {
     "en": "Assume damage is confined to the visible contact point."
@@ -89,11 +407,35 @@
   "Assume the electronic position must be correct.": {
     "en": "Assume the electronic position must be correct."
   },
+  "Assume the helmsman intended the right order.": {
+    "en": "Assume the helmsman intended the right order."
+  },
   "Assume the remaining lashings are intact.": {
     "en": "Assume the remaining lashings are intact."
   },
   "Assuming a remote indication alone proves isolation.": {
     "en": "Assuming a remote indication alone proves isolation."
+  },
+  "Assuming the most senior person already knows.": {
+    "en": "Assuming the most senior person already knows."
+  },
+  "At 720 rpm, how many power strokes per second does ONE four-stroke cylinder produce?": {
+    "en": "At 720 rpm, how many power strokes per second does ONE four-stroke cylinder produce?"
+  },
+  "At its eventual stowage position before landing.": {
+    "en": "At its eventual stowage position before landing."
+  },
+  "At night you approach a slower vessel from more than 22.5° abaft its beam and see its sternlight but neither sidelight. What is the situation?": {
+    "en": "At night you approach a slower vessel from more than 22.5° abaft its beam and see its sternlight but neither sidelight. What is the situation?"
+  },
+  "At the point of suspension, with the lifting stages and approved limits assessed.": {
+    "en": "At the point of suspension, with the lifting stages and approved limits assessed."
+  },
+  "At the ship's keel throughout the lift.": {
+    "en": "At the ship's keel throughout the lift."
+  },
+  "Authorise the access and apply the ship's OT security and change-control process.": {
+    "en": "Authorise the access and apply the ship's OT security and change-control process."
   },
   "Authorised personnel and an approved switching and isolation plan for the actual installation.": {
     "en": "Authorised personnel and an approved switching and isolation plan for the actual installation."
@@ -110,11 +452,20 @@
   "Backfill an uncertain time as if it were exact.": {
     "en": "Backfill an uncertain time as if it were exact."
   },
+  "Ballasting changes displacement, centre of gravity, trim, free surfaces and structural loading. A final favourable condition does not prove that intermediate stages are safe. Do not prescribe an upper tank, lower tank or side solely from a list or rolling symptom. Counter-flooding and recovery from loll require the approved plan and competent assessment; an improvised transfer can worsen the emergency.": {
+    "en": "Ballasting changes displacement, centre of gravity, trim, free surfaces and structural loading. A final favourable condition does not prove that intermediate stages are safe. Do not prescribe an upper tank, lower tank or side solely from a list or rolling symptom. Counter-flooding and recovery from loll require the approved plan and competent assessment; an improvised transfer can worsen the emergency."
+  },
+  "Before an alternator is connected to a live bus, the required voltage, frequency, phase sequence and phase-angle conditions must be established using the approved synchronising arrangements. Equal meter readings alone do not prove readiness. After connection, active and reactive load sharing are distinct controls. This case explains the decision criteria; actual switching is restricted to competent personnel following the installation-specific procedure and protection requirements.": {
+    "en": "Before an alternator is connected to a live bus, the required voltage, frequency, phase sequence and phase-angle conditions must be established using the approved synchronising arrangements. Equal meter readings alone do not prove readiness. After connection, active and reactive load sharing are distinct controls. This case explains the decision criteria; actual switching is restricted to competent personnel following the installation-specific procedure and protection requirements."
+  },
   "Begin shipboard safety": {
     "en": "Begin shipboard safety"
   },
   "Bollard pull alone guarantees the same force at every speed and angle.": {
     "en": "Bollard pull alone guarantees the same force at every speed and angle."
+  },
+  "Both heat and work enter; neither gives a negative energy change here.": {
+    "en": "Both heat and work enter; neither gives a negative energy change here."
   },
   "Both methods require uncontrolled free fall.": {
     "en": "Both methods require uncontrolled free fall."
@@ -128,8 +479,50 @@
   "Build the vocabulary and the picture of the ship before moving to calculations and operating procedures.": {
     "en": "Build the vocabulary and the picture of the ship before moving to calculations and operating procedures."
   },
+  "Bypass the link without an agreed assessment.": {
+    "en": "Bypass the link without an agreed assessment."
+  },
+  "COP and motor efficiency are different ratios.": {
+    "en": "COP and motor efficiency are different ratios."
+  },
+  "Calculate 1025 × 9.81 × 4.0 = 40,221 Pa.": {
+    "en": "Calculate 1025 × 9.81 × 4.0 = 40,221 Pa."
+  },
+  "Calculate 80 kN × 0.40 m.": {
+    "en": "Calculate 80 kN × 0.40 m."
+  },
+  "Calculate condenser heat rejection: 60 + 20 = 80 kW.": {
+    "en": "Calculate condenser heat rejection: 60 + 20 = 80 kW."
+  },
+  "Calculate refrigeration COP: 60 / 20 = 3.": {
+    "en": "Calculate refrigeration COP: 60 / 20 = 3."
+  },
+  "Calculate ΔU = 90 − 35 = 55 kJ.": {
+    "en": "Calculate ΔU = 90 − 35 = 55 kJ."
+  },
+  "Call only at the next scheduled position fix.": {
+    "en": "Call only at the next scheduled position fix."
+  },
+  "Call the Master as required by standing orders and whenever the officer of the watch is in doubt: reduced visibility, collision risk or CPA/TCPA concerns, uncertain position, passage-plan difficulties, unexpected depth, steering or propulsion failure, worsening weather, suspected anchor dragging, doubtful pilot or VTS instructions, or distress messages. Calling the Master does not remove the duty to take immediate safety action.": {
+    "en": "Call the Master as required by standing orders and whenever the officer of the watch is in doubt: reduced visibility, collision risk or CPA/TCPA concerns, uncertain position, passage-plan difficulties, unexpected depth, steering or propulsion failure, worsening weather, suspected anchor dragging, doubtful pilot or VTS instructions, or distress messages. Calling the Master does not remove the duty to take immediate safety action."
+  },
+  "Call the master promptly and take the immediate safe actions required by the situation.": {
+    "en": "Call the master promptly and take the immediate safe actions required by the situation."
+  },
+  "Calling the master does not suspend the OOW's responsibility. Apply appropriate lookout, safe speed, navigation and collision-avoidance measures while giving a concise report and maintaining the watch until properly relieved.": {
+    "en": "Calling the master does not suspend the OOW's responsibility. Apply appropriate lookout, safe speed, navigation and collision-avoidance measures while giving a concise report and maintaining the watch until properly relieved."
+  },
+  "Can an LNG emergency response be copied unchanged for a methanol fuel installation?": {
+    "en": "Can an LNG emergency response be copied unchanged for a methanol fuel installation?"
+  },
+  "Cargo documents must reflect the observed condition within the signer's responsibility. Record appropriate remarks, notify the responsible parties and preserve evidence; neither commercial pressure nor uncertainty justifies knowingly making a false statement.": {
+    "en": "Cargo documents must reflect the observed condition within the signer's responsibility. Record appropriate remarks, notify the responsible parties and preserve evidence; neither commercial pressure nor uncertainty justifies knowingly making a false statement."
+  },
   "Cargo handling connects the properties of the cargo to a safe loading plan, securing, care during passage and discharge.": {
     "en": "Cargo handling connects the properties of the cargo to a safe loading plan, securing, care during passage and discharge."
+  },
+  "Cargo is visibly damaged but a clean receipt is requested. What should the officer do?": {
+    "en": "Cargo is visibly damaged but a clean receipt is requested. What should the officer do?"
   },
   "Cargo sweat forms on the cargo; ship sweat forms on the ship structure and may drip onto cargo.": {
     "en": "Cargo sweat forms on the cargo; ship sweat forms on the ship structure and may drip onto cargo."
@@ -137,14 +530,29 @@
   "Cargo sweat forms only on the hull exterior.": {
     "en": "Cargo sweat forms only on the hull exterior."
   },
+  "Challenge and clarify the instruction, involve the master and monitor the resulting manoeuvre.": {
+    "en": "Challenge and clarify the instruction, involve the master and monitor the resulting manoeuvre."
+  },
+  "Change the historical readings to match the new result.": {
+    "en": "Change the historical readings to match the new result."
+  },
   "Changes affecting control systems need an assessment of process consequences, authorisation and a suitable recovery arrangement.": {
     "en": "Changes affecting control systems need an assessment of process consequences, authorisation and a suitable recovery arrangement."
   },
   "Check applicability and current requirements rather than assuming one rule fits every ship.": {
     "en": "Check applicability and current requirements rather than assuming one rule fits every ship."
   },
+  "Check the Administration’s applicable requirements and approved ship-specific guidance; do not assume a future mandatory date.": {
+    "en": "Check the Administration’s applicable requirements and approved ship-specific guidance; do not assume a future mandatory date."
+  },
+  "Check the actual fuels and handling plan. Avoid treating one compliant property as proof of every other operational requirement.": {
+    "en": "Check the actual fuels and handling plan. Avoid treating one compliant property as proof of every other operational requirement."
+  },
   "Check the applicable emissions and efficiency reporting framework.": {
     "en": "Check the applicable emissions and efficiency reporting framework."
+  },
+  "Check the glove rating, compatibility, condition and fit against both hazards.": {
+    "en": "Check the glove rating, compatibility, condition and fit against both hazards."
   },
   "Chemical segregation considers all possible contact paths, alongside product information, the tank coating and the ship-specific approved arrangements.": {
     "en": "Chemical segregation considers all possible contact paths, alongside product information, the tank coating and the ship-specific approved arrangements."
@@ -155,8 +563,23 @@
   "Choose a sailing method and check its assumptions, units and limitations.": {
     "en": "Choose a sailing method and check its assumptions, units and limitations."
   },
+  "Choose the system boundary before writing an energy balance. A closed system exchanges energy but not mass. With heat into the system positive and work done by the system positive, the first law is ΔU = Q − W when kinetic and potential energy changes are negligible. A compressor with mass flowing through it instead requires a control-volume balance. State the convention: the sign of work changes when work is done on the system.": {
+    "en": "Choose the system boundary before writing an energy balance. A closed system exchanges energy but not mass. With heat into the system positive and work done by the system positive, the first law is ΔU = Q − W when kinetic and potential energy changes are negligible. A compressor with mass flowing through it instead requires a control-volume balance. State the convention: the sign of work changes when work is done on the system."
+  },
+  "Claim that the test was completed earlier.": {
+    "en": "Claim that the test was completed earlier."
+  },
   "Closed-loop communication checks both reception and shared understanding, especially for headings, speeds, distances and manoeuvring orders.": {
     "en": "Closed-loop communication checks both reception and shared understanding, especially for headings, speeds, distances and manoeuvring orders."
+  },
+  "Closed-loop communication checks the message before action. Correct the specific error using clear standard wording, confirm the repeat-back and then monitor execution; acknowledgement alone is not evidence that the intended manoeuvre occurred.": {
+    "en": "Closed-loop communication checks the message before action. Correct the specific error using clear standard wording, confirm the repeat-back and then monitor execution; acknowledgement alone is not evidence that the intended manoeuvre occurred."
+  },
+  "Closed-loop communication turns a vague intention into an assigned, confirmed action and an updated shared understanding.": {
+    "en": "Closed-loop communication turns a vague intention into an assigned, confirmed action and an updated shared understanding."
+  },
+  "Closing without the required conditions can create severe electrical and mechanical stress.": {
+    "en": "Closing without the required conditions can create severe electrical and mechanical stress."
   },
   "Cloud Formation and Identification": {
     "en": "Cloud Formation and Identification"
@@ -170,11 +593,26 @@
   "Coils require a suitable supporting and securing arrangement, with attention to point loads, geometry, movement and cargo condition records.": {
     "en": "Coils require a suitable supporting and securing arrangement, with attention to point loads, geometry, movement and cargo condition records."
   },
+  "Colour does not establish the material or service rating.": {
+    "en": "Colour does not establish the material or service rating."
+  },
+  "Colour is not evidence of compatibility or performance.": {
+    "en": "Colour is not evidence of compatibility or performance."
+  },
   "Command coordination depends on roles, communication, verified facts and updates, with uncertainty clearly stated.": {
     "en": "Command coordination depends on roles, communication, verified facts and updates, with uncertainty clearly stated."
   },
   "Commercial operations explain how a voyage earns revenue, incurs costs and creates contractual and documentary obligations.": {
     "en": "Commercial operations explain how a voyage earns revenue, incurs costs and creates contractual and documentary obligations."
+  },
+  "Communicate defects and limits before the operation; do not allow a checklist label to conceal an unresolved control problem.": {
+    "en": "Communicate defects and limits before the operation; do not allow a checklist label to conceal an unresolved control problem."
+  },
+  "Communicate the authorised readiness decision and contingency arrangements to the bridge.": {
+    "en": "Communicate the authorised readiness decision and contingency arrangements to the bridge."
+  },
+  "Communicate with the terminal, take the agreed safe stopping action and verify the line-up and cause.": {
+    "en": "Communicate with the terminal, take the agreed safe stopping action and verify the line-up and cause."
   },
   "Compare cargo workflows on different ship types.": {
     "en": "Compare cargo workflows on different ship types."
@@ -200,8 +638,32 @@
   "Compare the machines through their flow paths and service connections.": {
     "en": "Compare the machines through their flow paths and service connections."
   },
+  "Compare the proposed part and its traceable documentation with that specification.": {
+    "en": "Compare the proposed part and its traceable documentation with that specification."
+  },
+  "Compass deviation results from the ship's magnetic influences and varies with heading and condition. Use the applicable deviation information and verify compass errors as required.": {
+    "en": "Compass deviation results from the ship's magnetic influences and varies with heading and condition. Use the applicable deviation information and verify compass errors as required."
+  },
+  "Compensate with an arbitrary increase in approach speed.": {
+    "en": "Compensate with an arbitrary increase in approach speed."
+  },
+  "Conceal the damage until sailing.": {
+    "en": "Conceal the damage until sailing."
+  },
   "Condensation depends on surface temperature and the dew point of the contacting air. Ventilation must be assessed for the cargo and conditions.": {
     "en": "Condensation depends on surface temperature and the dew point of the contacting air. Ventilation must be assessed for the cargo and conditions."
+  },
+  "Condition monitoring requires consistent measurement practice and interpretation, not automatic conclusions from an isolated change.": {
+    "en": "Condition monitoring requires consistent measurement practice and interpretation, not automatic conclusions from an isolated change."
+  },
+  "Condition-based maintenance uses evidence of equipment condition to support action. A trend is meaningful only when measurements are sufficiently comparable: load, speed, sensor position, instrument settings and operating state can alter vibration readings. An increase may justify investigation, but it does not identify a failed component by itself. Combine reliable trends with operating history, other symptoms and the maker’s limits before deciding on intervention.": {
+    "en": "Condition-based maintenance uses evidence of equipment condition to support action. A trend is meaningful only when measurements are sufficiently comparable: load, speed, sensor position, instrument settings and operating state can alter vibration readings. An increase may justify investigation, but it does not identify a failed component by itself. Combine reliable trends with operating history, other symptoms and the maker’s limits before deciding on intervention."
+  },
+  "Confirm receipt and report completion to the responsible officer.": {
+    "en": "Confirm receipt and report completion to the responsible officer."
+  },
+  "Confirm the identity and documentation of both batches.": {
+    "en": "Confirm the identity and documentation of both batches."
   },
   "Connect PMS work orders, critical equipment and survey preparation.": {
     "en": "Connect PMS work orders, critical equipment and survey preparation."
@@ -212,6 +674,9 @@
   "Connect each control loop to the physical process it regulates.": {
     "en": "Connect each control loop to the physical process it regulates."
   },
+  "Connect each indicator to its purpose and documentation. Avoid treating technical compliance as proof of future operational performance.": {
+    "en": "Connect each indicator to its purpose and documentation. Avoid treating technical compliance as proof of future operational performance."
+  },
   "Connect fatigue, vibration, corrosion and inspection findings.": {
     "en": "Connect fatigue, vibration, corrosion and inspection findings."
   },
@@ -220,6 +685,9 @@
   },
   "Connect heat-transfer mechanisms to actual shipboard equipment.": {
     "en": "Connect heat-transfer mechanisms to actual shipboard equipment."
+  },
+  "Connect it because the contractor is familiar with the equipment.": {
+    "en": "Connect it because the contractor is familiar with the equipment."
   },
   "Connect loading and tank sequences to the ship's condition.": {
     "en": "Connect loading and tank sequences to the ship's condition."
@@ -263,17 +731,92 @@
   "Consider a temperature-control loop. The controller compares the set point with the measured process value, so the error is e = set point − process value. Proportional action responds to the error now, integral action responds to its accumulated history, and derivative action responds to its rate of change. A controller that sees only the present error cannot distinguish a steady offset from a fast-changing disturbance.": {
     "en": "Consider a temperature-control loop. The controller compares the set point with the measured process value, so the error is e = set point − process value. Proportional action responds to the error now, integral action responds to its accumulated history, and derivative action responds to its rate of change. A controller that sees only the present error cannot distinguish a steady offset from a fast-changing disturbance."
   },
+  "Containers are lost overboard but their exact number is still being checked. What is the best reporting approach?": {
+    "en": "Containers are lost overboard but their exact number is still being checked. What is the best reporting approach?"
+  },
   "Containment affects only the paint colour.": {
     "en": "Containment affects only the paint colour."
   },
   "Continue learning": {
     "en": "Continue learning"
   },
+  "Continue unchanged until another vessel appears.": {
+    "en": "Continue unchanged until another vessel appears."
+  },
   "Continue unchanged until the next port.": {
     "en": "Continue unchanged until the next port."
   },
+  "Convert pascals to kilopascals: 40,221 / 1000 = 40.2 kPa.": {
+    "en": "Convert pascals to kilopascals: 40,221 / 1000 = 40.2 kPa."
+  },
+  "Correct": {
+    "en": "Correct"
+  },
+  "Correct the misunderstanding and obtain an accurate repeat-back before execution.": {
+    "en": "Correct the misunderstanding and obtain an accurate repeat-back before execution."
+  },
+  "Correct: 720 / 2 / 60 = 6 power strokes per second.": {
+    "en": "Correct: 720 / 2 / 60 = 6 power strokes per second."
+  },
+  "Correct: 80 × 0.20 = 16 kN·m.": {
+    "en": "Correct: 80 × 0.20 = 16 kN·m."
+  },
+  "Correct: COP compares the cooling duty with work input.": {
+    "en": "Correct: COP compares the cooling duty with work input."
+  },
+  "Correct: active load sharing is associated with prime-mover input and governor/load control.": {
+    "en": "Correct: active load sharing is associated with prime-mover input and governor/load control."
+  },
+  "Correct: comparability and corroboration make the trend useful.": {
+    "en": "Correct: comparability and corroboration make the trend useful."
+  },
+  "Correct: environmental compliance and mixture behaviour are separate questions.": {
+    "en": "Correct: environmental compliance and mixture behaviour are separate questions."
+  },
+  "Correct: matching these two readings is only part of the synchronisation assessment.": {
+    "en": "Correct: matching these two readings is only part of the synchronisation assessment."
+  },
+  "Correct: ownership, acknowledgement and completion make the communication verifiable.": {
+    "en": "Correct: ownership, acknowledgement and completion make the communication verifiable."
+  },
+  "Correct: specification and traceability connect the part to the actual service requirements.": {
+    "en": "Correct: specification and traceability connect the part to the actual service requirements."
+  },
+  "Correct: subtract the lower current and use the actual span.": {
+    "en": "Correct: subtract the lower current and use the actual span."
+  },
+  "Correct: the decision must reflect actual condition, required capability and communication.": {
+    "en": "Correct: the decision must reflect actual condition, required capability and communication."
+  },
+  "Correct: the selection follows the actual hazards and approved controls.": {
+    "en": "Correct: the selection follows the actual hazards and approved controls."
+  },
+  "Correct: the whole set of applicable conditions must be met.": {
+    "en": "Correct: the whole set of applicable conditions must be met."
+  },
+  "Correct: they address different aspects of energy efficiency under Annex VI.": {
+    "en": "Correct: they address different aspects of energy efficiency under Annex VI."
+  },
+  "Correct: work by the system is −35 kJ, so 90 − (−35) = 125 kJ.": {
+    "en": "Correct: work by the system is −35 kJ, so 90 − (−35) = 125 kJ."
+  },
+  "Correct: ρ and g are unchanged, so doubling h doubles ρgh.": {
+    "en": "Correct: ρ and g are unchanged, so doubling h doubles ρgh."
+  },
+  "Corrective action must follow the assessed cause and approved emergency arrangements. Evaluate flooding boundaries and pumping, cargo movement and manoeuvring risks, and any proposed tank changes, including intermediate states. Record the decisions and actions and reassess their effects.": {
+    "en": "Corrective action must follow the assessed cause and approved emergency arrangements. Evaluate flooding boundaries and pumping, cargo movement and manoeuvring risks, and any proposed tank changes, including intermediate states. Record the decisions and actions and reassess their effects."
+  },
+  "Current GHG Rating methodology: A–E peer-group comparisons using applicable EEDI, EEXI or EVDI inputs.": {
+    "en": "Current GHG Rating methodology: A–E peer-group comparisons using applicable EEDI, EEXI or EVDI inputs."
+  },
   "Current systems, seasonal changes, set and drift, arrival time and fuel use": {
     "en": "Current systems, seasonal changes, set and drift, arrival time and fuel use"
+  },
+  "Cyber containment must consider the safety of ship operations. Report the event, avoid spreading the suspect media, preserve relevant evidence and use the approved incident plan to decide isolation and continuity measures with the responsible personnel.": {
+    "en": "Cyber containment must consider the safety of ship operations. Report the event, avoid spreading the suspect media, preserve relevant evidence and use the approved incident plan to decide isolation and continuity measures with the responsible personnel."
+  },
+  "DLat (′) ≈ Dist (nm) × cos C. Enter distance in nautical miles and interpret the result as minutes of latitude using the navigational approximation 1′ of latitude ≈ 1 nm. The international nautical mile is defined as 1852 m.": {
+    "en": "DLat (′) ≈ Dist (nm) × cos C. Enter distance in nautical miles and interpret the result as minutes of latitude using the navigational approximation 1′ of latitude ≈ 1 nm. The international nautical mile is defined as 1852 m."
   },
   "DR advances the last position using course, speed through the water and time. EP adds estimated external effects; neither is a substitute for an independently verified fix.": {
     "en": "DR advances the last position using course, speed through the water and time. EP adds estimated external effects; neither is a substitute for an independently verified fix."
@@ -287,14 +830,44 @@
   "Damage, stability, hull loads, tide and pollution risks can make an unplanned attempt worsen the casualty.": {
     "en": "Damage, stability, hull loads, tide and pollution risks can make an unplanned attempt worsen the casualty."
   },
+  "Dangerous rolling depends on wave encounter, stability, loading and ship characteristics. Course and speed changes require an assessment of surrounding hazards; ballast changes require approved stability and strength checks, including intermediate states and free-surface effects.": {
+    "en": "Dangerous rolling depends on wave encounter, stability, loading and ship characteristics. Course and speed changes require an assessment of surrounding hazards; ballast changes require approved stability and strength checks, including intermediate states and free-surface effects."
+  },
+  "Dead reckoning (DR) advances a previous position using course steered and distance through the water. An estimated position (EP) also allows for estimated current and leeway. Neither replaces an independently established fix.": {
+    "en": "Dead reckoning (DR) advances a previous position using course steered and distance through the water. An estimated position (EP) also allows for estimated current and leeway. Neither replaces an independently established fix."
+  },
   "Deck learning sequence": {
     "en": "Deck learning sequence"
   },
   "Deck personnel work on navigation, cargo and deck operations. Engine personnel work on machinery, power and technical services. Catering and other service roles support life on board. The Master commands the ship; the crew pages explain individual responsibilities.": {
     "en": "Deck personnel work on navigation, cargo and deck operations. Engine personnel work on machinery, power and technical services. Catering and other service roles support life on board. The Master commands the ship; the crew pages explain individual responsibilities."
   },
+  "Declare a bearing failure from the two numbers alone.": {
+    "en": "Declare a bearing failure from the two numbers alone."
+  },
   "Delay calling for help until treatment is finished.": {
     "en": "Delay calling for help until treatment is finished."
+  },
+  "Describe the damage as personally observed.": {
+    "en": "Describe the damage as personally observed."
+  },
+  "Different fuels have different flammability, toxicity, temperature and detection characteristics. Training and response arrangements must match the actual fuel and installation; familiar procedures provide a starting point for questions, not proof of equivalence.": {
+    "en": "Different fuels have different flammability, toxicity, temperature and detection characteristics. Training and response arrangements must match the actual fuel and installation; familiar procedures provide a starting point for questions, not proof of equivalence."
+  },
+  "Disable all logging to improve connection speed.": {
+    "en": "Disable all logging to improve connection speed."
+  },
+  "Disable the protective system so the test will pass.": {
+    "en": "Disable the protective system so the test will pass."
+  },
+  "Disabling alarms during the next voyage.": {
+    "en": "Disabling alarms during the next voyage."
+  },
+  "Discharge conditions are cumulative, not interchangeable.": {
+    "en": "Discharge conditions are cumulative, not interchangeable."
+  },
+  "Displays may repeat data from one receiver or share the same failure. Check sensor integrity and use appropriate independent observations, such as radar or visual fixes, while assessing position uncertainty and the safety of the passage.": {
+    "en": "Displays may repeat data from one receiver or share the same failure. Check sensor integrity and use appropriate independent observations, such as radar or visual fixes, while assessing position uncertainty and the safety of the passage."
   },
   "Distinguish GMDSS sea areas, radio equipment and maritime safety information.": {
     "en": "Distinguish GMDSS sea areas, radio equipment and maritime safety information."
@@ -350,17 +923,41 @@
   "Distinguish refrigeration faults from ventilation and air-conditioning problems.": {
     "en": "Distinguish refrigeration faults from ventilation and air-conditioning problems."
   },
+  "Distinguish the 60 kW cooling duty from the 80 kW rejection duty.": {
+    "en": "Distinguish the 60 kW cooling duty from the 80 kW rejection duty."
+  },
   "Distinguish the pollution categories covered by the MARPOL annexes.": {
     "en": "Distinguish the pollution categories covered by the MARPOL annexes."
+  },
+  "Distinguish the technical EEXI assessment from annual operational CII.": {
+    "en": "Distinguish the technical EEXI assessment from annual operational CII."
   },
   "Distinguish wind sea, swell, visibility restrictions and tropical hazards.": {
     "en": "Distinguish wind sea, swell, visibility restrictions and tropical hazards."
   },
+  "Divide 600 revolutions/minute by 2 revolutions/cycle.": {
+    "en": "Divide 600 revolutions/minute by 2 revolutions/cycle."
+  },
+  "Divide by the current span: 8 / 16 = 0.5.": {
+    "en": "Divide by the current span: 8 / 16 = 0.5."
+  },
+  "Divide the crankshaft speed by two for the cycle and by sixty for seconds: 720 / 2 / 60 = 6.": {
+    "en": "Divide the crankshaft speed by two for the cycle and by sixty for seconds: 720 / 2 / 60 = 6."
+  },
   "Do not confuse the control error with the measured temperature itself.": {
     "en": "Do not confuse the control error with the measured temperature itself."
   },
+  "Do not infer permission to discharge from the displayed reading alone.": {
+    "en": "Do not infer permission to discharge from the displayed reading alone."
+  },
+  "Do not prescribe a ballast transfer solely from the observed rolling behaviour.": {
+    "en": "Do not prescribe a ballast transfer solely from the observed rolling behaviour."
+  },
   "Dunnage removes all structural limits.": {
     "en": "Dunnage removes all structural limits."
+  },
+  "During evaluation, confirm the applicable approved effective-GM and GZ criteria for the vessel and loading condition. Check shear force, bending moment, draught and trim limits. Investigate loading-instrument warnings and verify the entered data; an absence of alarms alone does not establish compliance.": {
+    "en": "During evaluation, confirm the applicable approved effective-GM and GZ criteria for the vessel and loading condition. Check shear force, bending moment, draught and trim limits. Investigate loading-instrument warnings and verify the entered data; an absence of alarms alone does not establish compliance."
   },
   "Dünya, Güneş etrafında yaklaşık 365 gün 6 saatte bir tur atar. Bu hareket sırasında Dünya'nın dönme ekseni, yörünge düzlemine dik doğrultuyla yaklaşık 23.5° açı yapar; eksenin yörünge düzlemiyle yaptığı açı yaklaşık 66.5°'dir.": {
     "en": "Earth completes an orbit around the Sun in approximately 365 days and 6 hours. Its rotation axis is tilted about 23.5° from the direction perpendicular to the orbital plane; the angle between the axis and the plane is therefore about 66.5°."
@@ -368,11 +965,47 @@
   "Dünya, mükemmel bir küre değildir. Kendi ekseni etrafındaki dönüşü nedeniyle ekvator bölgesinde şişkin, kutuplarda basık bir yapı gösterir. Basık dönel elipsoid, Dünya için kullanılan düzgün matematiksel bir referans yüzeyidir. Geoit ise yerçekimi alanına bağlı, ortalama deniz seviyesini temsil eden eşpotansiyel yüzey modelidir; elipsoid ile aynı yüzey değildir.": {
     "en": "Earth is not a perfect sphere: rotation produces an equatorial bulge and polar flattening. An oblate ellipsoid is a smooth mathematical reference surface. The geoid is an equipotential surface associated with Earth's gravity field that represents mean sea level; it differs from the ellipsoid."
   },
+  "EEXI addresses the technical energy-efficiency performance of an existing ship within the applicable MARPOL Annex VI framework. CII assesses annual operational carbon intensity for ships to which it applies. They answer different questions and have different verification and documentation arrangements. The International Energy Efficiency Certificate is the relevant energy-efficiency certificate; the International Air Pollution Prevention Certificate serves separate Annex VI requirements. A technical compliance result does not predict every future annual operational rating.": {
+    "en": "EEXI addresses the technical energy-efficiency performance of an existing ship within the applicable MARPOL Annex VI framework. CII assesses annual operational carbon intensity for ships to which it applies. They answer different questions and have different verification and documentation arrangements. The International Energy Efficiency Certificate is the relevant energy-efficiency certificate; the International Air Pollution Prevention Certificate serves separate Annex VI requirements. A technical compliance result does not predict every future annual operational rating."
+  },
+  "EEXI and CII are two names for the same annual number.": {
+    "en": "EEXI and CII are two names for the same annual number."
+  },
+  "EEXI and CII requirements became applicable under the Annex VI energy-efficiency framework; they are not an extension of the IAPP Certificate.": {
+    "en": "EEXI and CII requirements became applicable under the Annex VI energy-efficiency framework; they are not an extension of the IAPP Certificate."
+  },
+  "EEXI compliance and annual CII performance must be understood separately.": {
+    "en": "EEXI compliance and annual CII performance must be understood separately."
+  },
+  "EEXI compliance under MARPOL Annex VI is documented by the approved EEXI Technical File and the International Energy Efficiency (IEE) Certificate. The initial verification was linked to a specified IAPP periodical survey, but IAPP covers air-pollution certification. Approved EPL or SHAPOLI arrangements govern power reserve, reporting and records. EEXI non-compliance requires action with the Administration or RO and may attract PSC action. EEXI measures technical efficiency; CII addresses annual operational carbon intensity.": {
+    "en": "EEXI compliance under MARPOL Annex VI is documented by the approved EEXI Technical File and the International Energy Efficiency (IEE) Certificate. The initial verification was linked to a specified IAPP periodical survey, but IAPP covers air-pollution certification. Approved EPL or SHAPOLI arrangements govern power reserve, reporting and records. EEXI non-compliance requires action with the Administration or RO and may attract PSC action. EEXI measures technical efficiency; CII addresses annual operational carbon intensity."
+  },
+  "EEXI is a technical assessment; CII evaluates annual operational carbon intensity where applicable.": {
+    "en": "EEXI is a technical assessment; CII evaluates annual operational carbon intensity where applicable."
+  },
+  "EEXI – Energy Efficiency Existing Ship Index": {
+    "en": "EEXI – Energy Efficiency Existing Ship Index"
+  },
   "EP includes estimated external effects such as current and leeway.": {
     "en": "EP includes estimated external effects such as current and leeway."
   },
   "EP is always a satellite fix.": {
     "en": "EP is always a satellite fix."
+  },
+  "EPL/SHAPOLI guidance": {
+    "en": "EPL/SHAPOLI guidance"
+  },
+  "Each cylinder has 300 power strokes per minute, equivalent to 5 per second.": {
+    "en": "Each cylinder has 300 power strokes per minute, equivalent to 5 per second."
+  },
+  "Earlier device progress is separate from your account. Import it only if it belongs to you; newer account results will be kept.": {
+    "en": "Earlier device progress is separate from your account. Import it only if it belongs to you; newer account results will be kept."
+  },
+  "Edit the original recording to remove irrelevant sections.": {
+    "en": "Edit the original recording to remove irrelevant sections."
+  },
+  "Elapsed time, estimated drift and uncertainty in the reported position and motion.": {
+    "en": "Elapsed time, estimated drift and uncertainty in the reported position and motion."
   },
   "Electrical power and automation": {
     "en": "Electrical power and automation"
@@ -386,8 +1019,14 @@
   "Energy efficiency connects ship resistance and machinery performance with fuel use, emissions and operating decisions.": {
     "en": "Energy efficiency connects ship resistance and machinery performance with fuel use, emissions and operating decisions."
   },
+  "Energy is created inside the evaporator.": {
+    "en": "Energy is created inside the evaporator."
+  },
   "Engine learning sequence": {
     "en": "Engine learning sequence"
+  },
+  "Engine readiness combines equipment condition, required tests, communication and any operating restrictions. A local function test does not prove that remote control, alarms or protective functions work correctly. An intermittent fault is still a defect and must be reported and assessed. The bridge and engine team need the same understanding of capability before departure or manoeuvring; a completed checklist is evidence only when its underlying checks were actually performed.": {
+    "en": "Engine readiness combines equipment condition, required tests, communication and any operating restrictions. A local function test does not prove that remote control, alarms or protective functions work correctly. An intermittent fault is still a defect and must be reported and assessed. The bridge and engine team need the same understanding of capability before departure or manoeuvring; a completed checklist is evidence only when its underlying checks were actually performed."
   },
   "Engine-room environmental compliance connects machinery, waste streams and records with pollution prevention.": {
     "en": "Engine-room environmental compliance connects machinery, waste streams and records with pollution prevention."
@@ -397,6 +1036,9 @@
   },
   "Engine-room resource management explains how people share information, workload and decisions under changing conditions.": {
     "en": "Engine-room resource management explains how people share information, workload and decisions under changing conditions."
+  },
+  "Engine-room resource management makes responsibilities and information explicit. A message can be heard without being understood or acted upon. Assign a task to a named person, confirm the instruction and obtain a completion report. Keep the team’s shared picture current when conditions change. Clear authority and respectful challenge work together: team members should raise uncertainty, while the responsible officer coordinates the resulting decision and action.": {
+    "en": "Engine-room resource management makes responsibilities and information explicit. A message can be heard without being understood or acted upon. Assign a task to a named person, confirm the instruction and obtain a completion report. Keep the team’s shared picture current when conditions change. Clear authority and respectful challenge work together: team members should raise uncertainty, while the responsible officer coordinates the resulting decision and action."
   },
   "Engine-room safety addresses hazardous energy, hot surfaces, fire, confined spaces and the controls needed before work starts.": {
     "en": "Engine-room safety addresses hazardous energy, hot surfaces, fire, confined spaces and the controls needed before work starts."
@@ -413,11 +1055,29 @@
   "Erase an event because it may be inconvenient.": {
     "en": "Erase an event because it may be inconvenient."
   },
+  "Establish comparable measurements and assess supporting evidence.": {
+    "en": "Establish comparable measurements and assess supporting evidence."
+  },
+  "Establish the cause and use the approved stability and emergency procedures. Assess each proposed corrective action, including intermediate loading states, free surfaces and structural limits; do not infer a safe ballast sequence from GM alone.": {
+    "en": "Establish the cause and use the approved stability and emergency procedures. Assess each proposed corrective action, including intermediate loading states, free surfaces and structural limits; do not infer a safe ballast sequence from GM alone."
+  },
+  "Every VLSFO batch is interchangeable.": {
+    "en": "Every VLSFO batch is interchangeable."
+  },
   "Every alternative fuel has the same hazards as conventional fuel oil.": {
     "en": "Every alternative fuel has the same hazards as conventional fuel oil."
   },
   "Every tug has identical handling characteristics.": {
     "en": "Every tug has identical handling characteristics."
+  },
+  "Evidence can be lost through routine system operation. Preserve relevant recordings, logs and timelines promptly without altering the original evidence, document handling and follow the ship's reporting and access arrangements.": {
+    "en": "Evidence can be lost through routine system operation. Preserve relevant recordings, logs and timelines promptly without altering the original evidence, document handling and follow the ship's reporting and access arrangements."
+  },
+  "Excitation mainly governs reactive power and the associated voltage behaviour.": {
+    "en": "Excitation mainly governs reactive power and the associated voltage behaviour."
+  },
+  "Execute it without question because the pilot has local knowledge.": {
+    "en": "Execute it without question because the pilot has local knowledge."
   },
   "Explain closed-loop communication, assertiveness and shared situational awareness.": {
     "en": "Explain closed-loop communication, assertiveness and shared situational awareness."
@@ -454,6 +1114,9 @@
   },
   "Explain the effects and limitations of speed, trim and maintenance changes.": {
     "en": "Explain the effects and limitations of speed, trim and maintenance changes."
+  },
+  "Explain the limit of personal knowledge and obtain the approved procedure and responsible officer.": {
+    "en": "Explain the limit of personal knowledge and obtain the approved procedure and responsible officer."
   },
   "Explain the path from a command to mechanical action.": {
     "en": "Explain the path from a command to mechanical action."
@@ -494,11 +1157,23 @@
   "Extended course reference": {
     "en": "Extended course reference"
   },
+  "External appearance cannot establish the condition of internal compartments or boundaries. Follow the emergency organisation to assess damage, personnel, flooding, stability and pollution risk, using safe inspections and repeated measurements where conditions permit.": {
+    "en": "External appearance cannot establish the condition of internal compartments or boundaries. Follow the emergency organisation to assess damage, personnel, flooding, stability and pollution risk, using safe inspections and repeated measurements where conditions permit."
+  },
   "Find a course or topic…": {
     "en": "Find a course or topic…"
   },
+  "Find the gauge pressure 4.0 m below an open seawater surface. Use ρ = 1025 kg/m³ and g = 9.81 m/s².": {
+    "en": "Find the gauge pressure 4.0 m below an open seawater surface. Use ρ = 1025 kg/m³ and g = 9.81 m/s²."
+  },
+  "Find the speed required for a four-pole synchronous alternator to produce 50 Hz.": {
+    "en": "Find the speed required for a four-pole synchronous alternator to produce 50 Hz."
+  },
   "First aid starts with scene safety and assistance. The subsequent structured assessment does not remove the need to protect the rescuer.": {
     "en": "First aid starts with scene safety and assistance. The subsequent structured assessment does not remove the need to protect the rescuer."
+  },
+  "First attempt": {
+    "en": "First attempt"
   },
   "Flammability, toxicity, cryogenic conditions and other hazards differ between fuels.": {
     "en": "Flammability, toxicity, cryogenic conditions and other hazards differ between fuels."
@@ -533,6 +1208,21 @@
   "For a fixed-speed teaching example, represent the pump by H = 40 − 0.002Q² and the system by H = 10 + 0.001Q². H is in metres of the pumped liquid and Q is in cubic metres per hour; the numerical coefficients therefore carry the corresponding units. These simplified curves describe the example only. An actual assessment also checks efficiency, suction conditions, power and the manufacturer's permitted operating range.": {
     "en": "For a fixed-speed teaching example, represent the pump by H = 40 − 0.002Q² and the system by H = 10 + 0.001Q². H is in metres of the pumped liquid and Q is in cubic metres per hour; the numerical coefficients therefore carry the corresponding units. These simplified curves describe the example only. An actual assessment also checks efficiency, suction conditions, power and the manufacturer's permitted operating range."
   },
+  "For a simplified moment calculation, rudder torque equals the force multiplied by its perpendicular distance from the stock axis. Keep force and distance units consistent. The real pressure distribution, centre of pressure, speed and rudder angle vary, so a single static calculation is not an equipment rating or a safe operating limit. Steering gear selection and operation depend on approved design data, protective arrangements and the ship-specific procedures.": {
+    "en": "For a simplified moment calculation, rudder torque equals the force multiplied by its perpendicular distance from the stock axis. Keep force and distance units consistent. The real pressure distribution, centre of pressure, speed and rudder angle vary, so a single static calculation is not an equipment rating or a safe operating limit. Steering gear selection and operation depend on approved design data, protective arrangements and the ship-specific procedures."
+  },
+  "For a stationary liquid of approximately uniform density, pressure increases with vertical depth according to Δp = ρgh. Use the vertical distance below the free surface, not the sloping length of a pipe. An open tank has atmospheric pressure at its surface, so ρgh gives gauge pressure there. Absolute pressure also includes the surface atmospheric pressure. Density, depth and the chosen pressure reference must be stated before comparing measurements.": {
+    "en": "For a stationary liquid of approximately uniform density, pressure increases with vertical depth according to Δp = ρgh. Use the vertical distance below the free surface, not the sloping length of a pipe. An open tank has atmospheric pressure at its surface, so ρgh gives gauge pressure there. Absolute pressure also includes the surface atmospheric pressure. Density, depth and the chosen pressure reference must be stated before comparing measurements."
+  },
+  "For a synchronous alternator, electrical frequency is f = Pn/120, where P is the number of poles and n is shaft speed in revolutions per minute. A four-pole alternator at 1800 rpm produces 60 Hz. When generators operate in parallel, governor and excitation controls have different roles in active and reactive load sharing. Frequency and voltage must not be treated as interchangeable quantities or corrected with an arbitrary control change.": {
+    "en": "For a synchronous alternator, electrical frequency is f = Pn/120, where P is the number of poles and n is shaft speed in revolutions per minute. A four-pole alternator at 1800 rpm produces 60 Hz. When generators operate in parallel, governor and excitation controls have different roles in active and reactive load sharing. Frequency and voltage must not be treated as interchangeable quantities or corrected with an arbitrary control change."
+  },
+  "For the Northern Hemisphere dangerous semicircle: wind on the starboard bow, interpreted with the forecast, sea room and ship limitations.": {
+    "en": "For the Northern Hemisphere dangerous semicircle: wind on the starboard bow, interpreted with the forecast, sea room and ship limitations."
+  },
+  "For the Northern Hemisphere navigable semicircle: wind on the starboard quarter while increasing separation safely.": {
+    "en": "For the Northern Hemisphere navigable semicircle: wind on the starboard quarter while increasing separation safely."
+  },
   "For the parallel-form teaching model, the three contributions are added. The gains have units that convert their respective input quantities to controller-output units. Real installations also require the correct action direction, output limits, integral anti-windup, derivative filtering and a suitable sample time. The numbers below are an arithmetic illustration, not tuning settings for a shipboard controller.": {
     "en": "For the parallel-form teaching model, the three contributions are added. The gains have units that convert their respective input quantities to controller-output units. Real installations also require the correct action direction, output limits, integral anti-windup, derivative filtering and a suitable sample time. The numbers below are an arithmetic illustration, not tuning settings for a shipboard controller."
   },
@@ -542,14 +1232,32 @@
   "Fuel management connects fuel properties and compatibility with storage, treatment, supply and bunkering.": {
     "en": "Fuel management connects fuel properties and compatibility with storage, treatment, supply and bunkering."
   },
+  "Fuel sulphur compliance and compatibility answer different questions. Two individually compliant VLSFO batches may behave poorly when mixed, including instability and sediment formation. Preserve batch identity and use the ship’s fuel-management plan, available analysis and maker guidance to assess handling. Temperature, viscosity and treatment requirements also depend on the actual fuel. A shared product label is not evidence that two batches can be mixed without evaluation.": {
+    "en": "Fuel sulphur compliance and compatibility answer different questions. Two individually compliant VLSFO batches may behave poorly when mixed, including instability and sediment formation. Preserve batch identity and use the ship’s fuel-management plan, available analysis and maker guidance to assess handling. Temperature, viscosity and treatment requirements also depend on the actual fuel. A shared product label is not evidence that two batches can be mixed without evaluation."
+  },
   "Fuel-specific hazards determine competence, detection, ventilation, isolation and emergency arrangements; the fuel name alone is not an operating procedure.": {
     "en": "Fuel-specific hazards determine competence, detection, ventilation, isolation and emergency arrangements; the fuel name alone is not an operating procedure."
   },
   "Full astern is always the first action.": {
     "en": "Full astern is always the first action."
   },
+  "GM describes initial stability. The complete assessment also considers the GZ curve, downflooding, applicable criteria, structural limits and the actual loading condition. A large positive GM does not prove safety: rapid rolling can increase accelerations and cargo-securing loads. A small or negative effective GM may be critical, but the response must follow the assessed condition and ship-specific instructions. Do not use universal bands such as “0.5–1.5 m is normal” or “above 1.5 m is safe”.": {
+    "en": "GM describes initial stability. The complete assessment also considers the GZ curve, downflooding, applicable criteria, structural limits and the actual loading condition. A large positive GM does not prove safety: rapid rolling can increase accelerations and cargo-securing loads. A small or negative effective GM may be critical, but the response must follow the assessed condition and ship-specific instructions. Do not use universal bands such as “0.5–1.5 m is normal” or “above 1.5 m is safe”."
+  },
+  "GMDSS (Global Maritime Distress and Safety System) supports distress alerting, search-and-rescue coordination, maritime safety information and other required communications. GMDSS equipment requirements depend on the sea areas, approved satellite-service coverage and applicable SOLAS requirements.": {
+    "en": "GMDSS (Global Maritime Distress and Safety System) supports distress alerting, search-and-rescue coordination, maritime safety information and other required communications. GMDSS equipment requirements depend on the sea areas, approved satellite-service coverage and applicable SOLAS requirements."
+  },
+  "General cargo, project cargo, steel products and containers need securing against forces from ship motions. Apply the approved Cargo Securing Manual and applicable IMO CSS Code or cargo-specific requirements. Geometry, rated capacity, friction and securing-point condition affect the arrangement; adding restraints alone does not establish safety.": {
+    "en": "General cargo, project cargo, steel products and containers need securing against forces from ship motions. Apply the approved Cargo Securing Manual and applicable IMO CSS Code or cargo-specific requirements. Geometry, rated capacity, friction and securing-point condition affect the arrangement; adding restraints alone does not establish safety."
+  },
+  "Geometry is necessary but does not prove material suitability.": {
+    "en": "Geometry is necessary but does not prove material suitability."
+  },
   "Guarantee that thermal runaway is impossible.": {
     "en": "Guarantee that thermal runaway is impossible."
+  },
+  "Halving the lever arm halves, rather than doubles, the moment.": {
+    "en": "Halving the lever arm halves, rather than doubles, the moment."
   },
   "Head is energy per unit weight; it is not the same quantity as flow rate.": {
     "en": "Head is energy per unit weight; it is not the same quantity as flow rate."
@@ -562,6 +1270,9 @@
   },
   "Hide the discrepancy by changing the chart datum.": {
     "en": "Hide the discrepancy by changing the chart datum."
+  },
+  "High speed in head seas can increase slamming, pounding and green-water loading. Assess course and speed using ship-specific guidance, sea room and observed response. Following and quartering seas can create surf-riding and broaching risks; no single wave angle is safest for every ship and loading condition.": {
+    "en": "High speed in head seas can increase slamming, pounding and green-water loading. Assess course and speed using ship-specific guidance, sea room and observed response. Following and quartering seas can create surf-riding and broaching risks; no single wave angle is safest for every ship and loading condition."
   },
   "High-voltage work requires installation-specific authorisation, switching, isolation, verification and control of arc-flash exposure.": {
     "en": "High-voltage work requires installation-specific authorisation, switching, isolation, verification and control of arc-flash exposure."
@@ -590,14 +1301,32 @@
   "How the hull carries weight, resists loads and responds to loading, heeling or flooding.": {
     "en": "How the hull carries weight, resists loads and responds to loading, heeling or flooding."
   },
+  "Hydrostatic gauge pressure depends on depth.": {
+    "en": "Hydrostatic gauge pressure depends on depth."
+  },
+  "ISM Code section 9 requires reporting and analysis of non-conformities, accidents and hazardous occurrences and corrective actions to prevent recurrence. Investigate causes, assign responsibility and verify effectiveness. Closing a report alone does not prove the risk is controlled.": {
+    "en": "ISM Code section 9 requires reporting and analysis of non-conformities, accidents and hazardous occurrences and corrective actions to prevent recurrence. Investigate causes, assign responsibility and verify effectiveness. Closing a report alone does not prove the risk is controlled."
+  },
+  "Identify a closed system: no mass crosses its boundary.": {
+    "en": "Identify a closed system: no mass crosses its boundary."
+  },
+  "Identify the approved bolt specification and service conditions.": {
+    "en": "Identify the approved bolt specification and service conditions."
+  },
   "Identify the command and communication chain.": {
     "en": "Identify the command and communication chain."
+  },
+  "Identify the communication gap rather than assuming that silence means completion.": {
+    "en": "Identify the communication gap rather than assuming that silence means completion."
   },
   "Identify the effects of failures, redundancy and local control.": {
     "en": "Identify the effects of failures, redundancy and local control."
   },
   "Identify the equipment and its power sources.": {
     "en": "Identify the equipment and its power sources."
+  },
+  "Identify the failed protective function and report the defect.": {
+    "en": "Identify the failed protective function and report the defect."
   },
   "Identify the functions and limitations of ropes, fittings and deck equipment.": {
     "en": "Identify the functions and limitations of ropes, fittings and deck equipment."
@@ -608,20 +1337,74 @@
   "Identify the hazard before selecting personal protective equipment.": {
     "en": "Identify the hazard before selecting personal protective equipment."
   },
+  "Identify the missing synchronisation condition: phase sequence.": {
+    "en": "Identify the missing synchronisation condition: phase sequence."
+  },
+  "Identify the relevant energy-efficiency documentation, including the IEE Certificate where applicable.": {
+    "en": "Identify the relevant energy-efficiency documentation, including the IEE Certificate where applicable."
+  },
+  "Identify the source and distinguish the report from personal observations.": {
+    "en": "Identify the source and distinguish the report from personal observations."
+  },
   "Identify the system's stored energy and protective arrangements.": {
     "en": "Identify the system's stored energy and protective arrangements."
+  },
+  "Identify the thermal and chemical exposures using the work assessment and product information.": {
+    "en": "Identify the thermal and chemical exposures using the work assessment and product information."
+  },
+  "If the same 80 kN force acts at 0.20 m, what is the moment?": {
+    "en": "If the same 80 kN force acts at 0.20 m, what is the moment?"
+  },
+  "If the same system receives 90 kJ of heat and 35 kJ of work is done ON it, what is ΔU?": {
+    "en": "If the same system receives 90 kJ of heat and 35 kJ of work is done ON it, what is ΔU?"
+  },
+  "Ignore every increase unless the machine stops.": {
+    "en": "Ignore every increase unless the machine stops."
+  },
+  "Ignore the concern unless an alarm has already sounded.": {
+    "en": "Ignore the concern unless an alarm has already sounded."
+  },
+  "Ignore the rise if the average rate remains normal.": {
+    "en": "Ignore the rise if the average rate remains normal."
   },
   "Immediate response establishes command and the state of people and ship, then supports containment, assistance and reporting.": {
     "en": "Immediate response establishes command and the state of people and ship, then supports containment, assistance and reporting."
   },
+  "Immediately erase every device on the network.": {
+    "en": "Immediately erase every device on the network."
+  },
+  "Immediately fill every ballast tank.": {
+    "en": "Immediately fill every ballast tank."
+  },
+  "Import my earlier device progress": {
+    "en": "Import my earlier device progress"
+  },
+  "Improvise the test to avoid appearing uncertain.": {
+    "en": "Improvise the test to avoid appearing uncertain."
+  },
   "In tanks, shared cargo lines, vents, slop arrangements and cleaning systems.": {
     "en": "In tanks, shared cargo lines, vents, slop arrangements and cleaning systems."
+  },
+  "In the Northern Hemisphere navigable semicircle, traditional guidance places the wind on the starboard quarter while moving safely away from the cyclone track. Use current forecasts, storm movement, sea room and ship limitations; do not follow a fixed heading rule blindly.": {
+    "en": "In the Northern Hemisphere navigable semicircle, traditional guidance places the wind on the starboard quarter while moving safely away from the cyclone track. Use current forecasts, storm movement, sea room and ship limitations; do not follow a fixed heading rule blindly."
+  },
+  "In the simplified EEXI relationship, the numerator represents the calculated CO₂ emission rate from the relevant power, fuel-consumption and carbon-conversion terms. The denominator represents capacity multiplied by reference speed, with applicable correction factors. Use the full current IMO methodology for the ship type. EEXI is a technical index, not a measurement of actual annual fuel consumption.": {
+    "en": "In the simplified EEXI relationship, the numerator represents the calculated CO₂ emission rate from the relevant power, fuel-consumption and carbon-conversion terms. The denominator represents capacity multiplied by reference speed, with applicable correction factors. Use the full current IMO methodology for the ship type. EEXI is a technical index, not a measurement of actual annual fuel consumption."
   },
   "Increase speed without reviewing wave conditions.": {
     "en": "Increase speed without reviewing wave conditions."
   },
+  "Increase the pump speed to overcome the pressure.": {
+    "en": "Increase the pump speed to overcome the pressure."
+  },
+  "Increasing depth increases, rather than decreases, pressure.": {
+    "en": "Increasing depth increases, rather than decreases, pressure."
+  },
   "Inform the Master and assess further loss, ship damage, personnel exposure and dangerous-cargo risks.": {
     "en": "Inform the Master and assess further loss, ship damage, personnel exposure and dangerous-cargo risks."
+  },
+  "Initial reports should be prompt and specific. Location, observations, changes and actions help the command team assess the emergency. Separate verified facts from estimates and update the report rather than delaying the first warning for perfect information.": {
+    "en": "Initial reports should be prompt and specific. Location, observations, changes and actions help the command team assess the emergency. Separate verified facts from estimates and update the report rather than delaying the first warning for perfect information."
   },
   "Inside this lesson": {
     "en": "Inside this lesson"
@@ -629,8 +1412,35 @@
   "Inspect the complete system, including its boundary and protective devices.": {
     "en": "Inspect the complete system, including its boundary and protective devices."
   },
+  "Internal damage and progressive flooding still require assessment.": {
+    "en": "Internal damage and progressive flooding still require assessment."
+  },
+  "Internal energy increases by 55 kJ. This result follows from the stated boundary and signs.": {
+    "en": "Internal energy increases by 55 kJ. This result follows from the stated boundary and signs."
+  },
   "International Code of Signals flags and Morse signalling by light": {
     "en": "International Code of Signals flags and Morse signalling by light"
+  },
+  "Interpret GM in context": {
+    "en": "Interpret GM in context"
+  },
+  "Invent a quantity of damage to ensure a claim succeeds.": {
+    "en": "Invent a quantity of damage to ensure a claim succeeds."
+  },
+  "Invite a clear statement of the concern, verify it and communicate the decision.": {
+    "en": "Invite a clear statement of the concern, verify it and communicate the decision."
+  },
+  "Issue several additional orders rapidly.": {
+    "en": "Issue several additional orders rapidly."
+  },
+  "It becomes 8 kPa.": {
+    "en": "It becomes 8 kPa."
+  },
+  "It does not establish compatibility; the batches need a separate assessment.": {
+    "en": "It does not establish compatibility; the batches need a separate assessment."
+  },
+  "It doubles to about 80.4 kPa.": {
+    "en": "It doubles to about 80.4 kPa."
   },
   "It eliminates the need for rudder or tug assessment.": {
     "en": "It eliminates the need for rudder or tug assessment."
@@ -640,6 +1450,12 @@
   },
   "It guarantees that no mistakes occur.": {
     "en": "It guarantees that no mistakes occur."
+  },
+  "It halves.": {
+    "en": "It halves."
+  },
+  "It ignores the 4 mA live zero and the 16 mA measurement span.": {
+    "en": "It ignores the 4 mA live zero and the 16 mA measurement span."
   },
   "It is the same as current drift.": {
     "en": "It is the same as current drift."
@@ -653,8 +1469,14 @@
   "It means technical concerns should stay unreported.": {
     "en": "It means technical concerns should stay unreported."
   },
+  "It proves that no sediment can form.": {
+    "en": "It proves that no sediment can form."
+  },
   "It removes the need for command responsibility.": {
     "en": "It removes the need for command responsibility."
+  },
+  "It removes the need for fuel analysis.": {
+    "en": "It removes the need for fuel analysis."
   },
   "It replaces the need to assign responsibilities.": {
     "en": "It replaces the need to assign responsibilities."
@@ -662,11 +1484,29 @@
   "It requires uncertain information to be reported as confirmed.": {
     "en": "It requires uncertain information to be reported as confirmed."
   },
+  "It stays at 40.2 kPa.": {
+    "en": "It stays at 40.2 kPa."
+  },
+  "It uses too many significant figures.": {
+    "en": "It uses too many significant figures."
+  },
   "Its design pressure, temperature and material limits determine the operating envelope.": {
     "en": "Its design pressure, temperature and material limits determine the operating envelope."
   },
+  "Keep the breaker open and resolve the discrepancy under the approved procedure.": {
+    "en": "Keep the breaker open and resolve the discrepancy under the approved procedure."
+  },
+  "Keep the roles distinct: prime-mover input governs active power, while excitation governs reactive power within the installation’s control arrangement.": {
+    "en": "Keep the roles distinct: prime-mover input governs active power, while excitation governs reactive power within the installation’s control arrangement."
+  },
+  "Knowledge check": {
+    "en": "Knowledge check"
+  },
   "Last practice:": {
     "en": "Last practice:"
+  },
+  "Learn and practise": {
+    "en": "Learn and practise"
   },
   "Learning": {
     "en": "Learning"
@@ -677,8 +1517,23 @@
   "Learning map": {
     "en": "Learning map"
   },
+  "Learning progress": {
+    "en": "Learning progress"
+  },
+  "Leave the access point unattended to locate a colleague.": {
+    "en": "Leave the access point unattended to locate a colleague."
+  },
+  "Lighting control does not allocate generator load.": {
+    "en": "Lighting control does not allocate generator load."
+  },
   "Line properties do not affect winch or fitting loads.": {
     "en": "Line properties do not affect winch or fitting loads."
+  },
+  "Local deck loading and the approved load distribution and securing arrangements.": {
+    "en": "Local deck loading and the approved load distribution and securing arrangements."
+  },
+  "Local response alone does not establish unrestricted readiness for manoeuvring.": {
+    "en": "Local response alone does not establish unrestricted readiness for manoeuvring."
   },
   "Locate responsibilities in the emergency and work organisation.": {
     "en": "Locate responsibilities in the emergency and work organisation."
@@ -691,6 +1546,21 @@
   },
   "Lookout and Deck Watchkeeping": {
     "en": "Lookout and Deck Watchkeeping"
+  },
+  "Low effective GM:": {
+    "en": "Low effective GM:"
+  },
+  "MLC Titles 1 and 2 cover minimum requirements for work on ships and employment conditions. A seafarer's employment agreement (SEA) records agreed pay and duties. Check the SEA, collective agreement and flag implementation. Rest requirements also interact with STCW provisions for watchkeeping personnel.": {
+    "en": "MLC Titles 1 and 2 cover minimum requirements for work on ships and employment conditions. A seafarer's employment agreement (SEA) records agreed pay and duties. Check the SEA, collective agreement and flag implementation. Rest requirements also interact with STCW provisions for watchkeeping personnel."
+  },
+  "MSC.1/Circ.1627 contains interim, non-mandatory guidelines.": {
+    "en": "MSC.1/Circ.1627 contains interim, non-mandatory guidelines."
+  },
+  "Maintain speed because faster ships cannot roll dangerously.": {
+    "en": "Maintain speed because faster ships cannot roll dangerously."
+  },
+  "Maintenance access can introduce malware, configuration changes or availability failures. Verify the purpose, equipment and permissions, control the connection and plan recovery and operational coordination before making changes to a safety-relevant system.": {
+    "en": "Maintenance access can introduce malware, configuration changes or availability failures. Verify the purpose, equipment and permissions, control the connection and plan recovery and operational coordination before making changes to a safety-relevant system."
   },
   "Maintenance connects failure mechanisms and condition evidence to planned work, inspection and verification.": {
     "en": "Maintenance connects failure mechanisms and condition evidence to planned work, inspection and verification."
@@ -725,6 +1595,21 @@
   "Materials and machine elements connect loads to the strength, wear and life of mechanical components.": {
     "en": "Materials and machine elements connect loads to the strength, wear and life of mechanical components."
   },
+  "Maximum strength alone does not establish compatibility or fitness.": {
+    "en": "Maximum strength alone does not establish compatibility or fitness."
+  },
+  "Medical advice depends on reliable updates. Report observed signs and their times, response to treatment and practical limitations; distinguish facts from assumptions and follow the medical advice and shipboard emergency procedures within the crew's competence.": {
+    "en": "Medical advice depends on reliable updates. Report observed signs and their times, response to treatment and practical limitations; distinguish facts from assumptions and follow the medical advice and shipboard emergency procedures within the crew's competence."
+  },
+  "Metres of depth are not numerically equal to kilopascals.": {
+    "en": "Metres of depth are not numerically equal to kilopascals."
+  },
+  "Moment equals force multiplied by the perpendicular lever arm. In actual manoeuvring the effective pivot point and hydrodynamic forces change with motion and conditions, so the simplified comparison supports reasoning rather than a universal berthing rule.": {
+    "en": "Moment equals force multiplied by the perpendicular lever arm. In actual manoeuvring the effective pivot point and hydrodynamic forces change with motion and conditions, so the simplified comparison supports reasoning rather than a universal berthing rule."
+  },
+  "Monitor RPM, exhaust temperature, LO pressure, jacket-cooling temperature and scavenge-air temperature against the operating condition and maker's limits.": {
+    "en": "Monitor RPM, exhaust temperature, LO pressure, jacket-cooling temperature and scavenge-air temperature against the operating condition and maker's limits."
+  },
   "Monitor battery condition and support protective actions within the approved battery installation.": {
     "en": "Monitor battery condition and support protective actions within the approved battery installation."
   },
@@ -736,6 +1621,9 @@
   },
   "Move from the ship and deck work to navigation, the marine environment, cargo and commercial operation.": {
     "en": "Move from the ship and deck work to navigation, the marine environment, cargo and commercial operation."
+  },
+  "Named ownership and a completion report close the gap between intention and action.": {
+    "en": "Named ownership and a completion report close the gap between intention and action."
   },
   "Navigation and the marine environment": {
     "en": "Navigation and the marine environment"
@@ -752,8 +1640,50 @@
   "New to maritime learning? See how subjects branch out, choose a reading sequence and connect lessons to shipboard practice.": {
     "en": "New to maritime learning? See how subjects branch out, choose a reading sequence and connect lessons to shipboard practice."
   },
+  "No cargo should ever be ventilated at sea.": {
+    "en": "No cargo should ever be ventilated at sea."
+  },
+  "No check is needed below maximum deadweight.": {
+    "en": "No check is needed below maximum deadweight."
+  },
+  "No emergency plan is needed for alternative fuels.": {
+    "en": "No emergency plan is needed for alternative fuels."
+  },
   "No matching topics found. Try another term or explore a branch.": {
     "en": "No matching topics found. Try another term or explore a branch."
+  },
+  "No unresolved questions remain in this session.": {
+    "en": "No unresolved questions remain in this session."
+  },
+  "No; assess condensation risk and the cargo-specific ventilation criteria.": {
+    "en": "No; assess condensation risk and the cargo-specific ventilation criteria."
+  },
+  "No; assess continuing gas, propagation and reignition hazards under the emergency plan.": {
+    "en": "No; assess continuing gas, propagation and reignition hazards under the emergency plan."
+  },
+  "No; assess damage, ground reaction, stability, strength and pollution risks before the plan is authorised.": {
+    "en": "No; assess damage, ground reaction, stability, strength and pollution risks before the plan is authorised."
+  },
+  "No; authorised isolation, verification and required earthing must follow the approved procedure.": {
+    "en": "No; authorised isolation, verification and required earthing must follow the approved procedure."
+  },
+  "No; check their sensor sources and obtain a genuinely independent position check.": {
+    "en": "No; check their sensor sources and obtain a genuinely independent position check."
+  },
+  "No; identify the fuel-specific hazards, installation and approved response arrangements.": {
+    "en": "No; identify the fuel-specific hazards, installation and approved response arrangements."
+  },
+  "No; load sharing depends on stiffness, geometry and the complete mooring arrangement.": {
+    "en": "No; load sharing depends on stiffness, geometry and the complete mooring arrangement."
+  },
+  "Northern Hemisphere cyclone guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Interpret this with the forecast track, storm movement, sea room and vessel response. The Southern Hemisphere reverses the side convention.": {
+    "en": "Northern Hemisphere cyclone guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Interpret this with the forecast track, storm movement, sea room and vessel response. The Southern Hemisphere reverses the side convention."
+  },
+  "Nothing; a workshop certificate proves the entire installed system works.": {
+    "en": "Nothing; a workshop certificate proves the entire installed system works."
+  },
+  "Notify only the ship's insurer.": {
+    "en": "Notify only the ship's insurer."
   },
   "OT protection must consider the safety and availability of physical processes as well as information.": {
     "en": "OT protection must consider the safety and availability of physical processes as well as information."
@@ -761,8 +1691,26 @@
   "OT systems do not use data or access controls.": {
     "en": "OT systems do not use data or access controls."
   },
+  "Obtain 300 power strokes per minute for one cylinder.": {
+    "en": "Obtain 300 power strokes per minute for one cylinder."
+  },
+  "Obtain 32 kN·m for the stated simplified load.": {
+    "en": "Obtain 32 kN·m for the stated simplified load."
+  },
+  "Obtain comparable readings where safe and appropriate under the monitoring procedure.": {
+    "en": "Obtain comparable readings where safe and appropriate under the monitoring procedure."
+  },
+  "Obtain n = 1500 rpm.": {
+    "en": "Obtain n = 1500 rpm."
+  },
+  "Obtain suitable protection and required controls before proceeding.": {
+    "en": "Obtain suitable protection and required controls before proceeding."
+  },
   "Ocean Currents and Their Operational Effects": {
     "en": "Ocean Currents and Their Operational Effects"
+  },
+  "Omit the event because it was reported orally.": {
+    "en": "Omit the event because it was reported orally."
   },
   "One generic gas detector is suitable for every fuel.": {
     "en": "One generic gas detector is suitable for every fuel."
@@ -776,6 +1724,9 @@
   "Only behaviour reported by a senior officer.": {
     "en": "Only behaviour reported by a senior officer."
   },
+  "Only cosmetic damage is possible.": {
+    "en": "Only cosmetic damage is possible."
+  },
   "Only email systems require access control.": {
     "en": "Only email systems require access control."
   },
@@ -788,14 +1739,26 @@
   "Only physical injuries after they occur.": {
     "en": "Only physical injuries after they occur."
   },
+  "Only repainting the component.": {
+    "en": "Only repainting the component."
+  },
   "Only routine cargo information may be updated.": {
     "en": "Only routine cargo information may be updated."
+  },
+  "Only the accuracy of the first sounding.": {
+    "en": "Only the accuracy of the first sounding."
   },
   "Only the cargo manifest.": {
     "en": "Only the cargo manifest."
   },
+  "Only the colour of the deck coating.": {
+    "en": "Only the colour of the deck coating."
+  },
   "Only the colour of the rope needs to match.": {
     "en": "Only the colour of the rope needs to match."
+  },
+  "Only the crew member's opinion of the weather.": {
+    "en": "Only the crew member's opinion of the weather."
   },
   "Only the date the ship enters the dock.": {
     "en": "Only the date the ship enters the dock."
@@ -805,6 +1768,9 @@
   },
   "Only the final cargo quantity.": {
     "en": "Only the final cargo quantity."
+  },
+  "Only the larger display can be trusted.": {
+    "en": "Only the larger display can be trusted."
   },
   "Only the last charted depth.": {
     "en": "Only the last charted depth."
@@ -818,17 +1784,44 @@
   "Only the number of contractors.": {
     "en": "Only the number of contractors."
   },
+  "Only the operator’s visual estimate matters.": {
+    "en": "Only the operator’s visual estimate matters."
+  },
+  "Only the original reported coordinates.": {
+    "en": "Only the original reported coordinates."
+  },
   "Only the outer shell carries any load.": {
     "en": "Only the outer shell carries any load."
   },
   "Only the paint colour.": {
     "en": "Only the paint colour."
   },
+  "Only the patient's job title.": {
+    "en": "Only the patient's job title."
+  },
   "Only the reporting ship’s destination.": {
     "en": "Only the reporting ship’s destination."
   },
+  "Only the screen colour matters.": {
+    "en": "Only the screen colour matters."
+  },
+  "Only the state-of-charge display needs checking.": {
+    "en": "Only the state-of-charge display needs checking."
+  },
+  "Only the tide height matters.": {
+    "en": "Only the tide height matters."
+  },
+  "Only the total cargo mass.": {
+    "en": "Only the total cargo mass."
+  },
+  "Only their purchase dates affect load sharing.": {
+    "en": "Only their purchase dates affect load sharing."
+  },
   "Open all weather doors for ventilation.": {
     "en": "Open all weather doors for ventilation."
+  },
+  "Open an unverified spare valve immediately.": {
+    "en": "Open an unverified spare valve immediately."
   },
   "Open course": {
     "en": "Open course"
@@ -839,8 +1832,23 @@
   "Operate unfamiliar controls without authorisation.": {
     "en": "Operate unfamiliar controls without authorisation."
   },
+  "Operational checklists support the consistent application of routine and critical stability procedures. They help reduce missed steps under stress or during repetitive work, but do not eliminate error or replace competent assessment.": {
+    "en": "Operational checklists support the consistent application of routine and critical stability procedures. They help reduce missed steps under stress or during repetitive work, but do not eliminate error or replace competent assessment."
+  },
   "Operational technology and bridge systems can also be affected through connections, media, access or compromised data.": {
     "en": "Operational technology and bridge systems can also be affected through connections, media, access or compromised data."
+  },
+  "Other required conditions remain unproven.": {
+    "en": "Other required conditions remain unproven."
+  },
+  "Outside air has a higher dew point than the air in a loaded hold. Is ventilation automatically beneficial because outside air is cooler?": {
+    "en": "Outside air has a higher dew point than the air in a loaded hold. Is ventilation automatically beneficial because outside air is cooler?"
+  },
+  "Overall displacement compliance does not demonstrate local structural adequacy. Check allowable deck or tank-top loads, bearing area, supporting structure and the approved distribution and securing plan, including the relevant loading and transport stages.": {
+    "en": "Overall displacement compliance does not demonstrate local structural adequacy. Check allowable deck or tank-top loads, bearing area, supporting structure and the approved distribution and securing plan, including the relevant loading and transport stages."
+  },
+  "PPE selection is a technical match to the hazard, supported by the work assessment and equipment information.": {
+    "en": "PPE selection is a technical match to the hazard, supported by the work assessment and equipment information."
   },
   "People, safety and responsible operation": {
     "en": "People, safety and responsible operation"
@@ -848,14 +1856,23 @@
   "Permit operation outside the maker’s limits.": {
     "en": "Permit operation outside the maker’s limits."
   },
+  "Personal protective equipment must fit both the person and the task. Heat, chemicals, mechanical hazards and electrical exposure require different protective properties, and one item may not cover them all. First identify and control the hazard through the approved work process, including isolation where required. Then select compatible, correctly rated PPE and check its condition. PPE is one layer of protection and does not make an uncontrolled task safe.": {
+    "en": "Personal protective equipment must fit both the person and the task. Heat, chemicals, mechanical hazards and electrical exposure require different protective properties, and one item may not cover them all. First identify and control the hazard through the approved work process, including isolation where required. Then select compatible, correctly rated PPE and check its condition. PPE is one layer of protection and does not make an uncontrolled task safe."
+  },
   "Personally verify the position, traffic, equipment state, passage plan and standing orders.": {
     "en": "Personally verify the position, traffic, equipment state, passage plan and standing orders."
   },
   "Personnel and responsibilities": {
     "en": "Personnel and responsibilities"
   },
+  "Phase sequence and phase angle still need the required verification.": {
+    "en": "Phase sequence and phase angle still need the required verification."
+  },
   "Pilot card, manoeuvring information, drafts, UKC assessment and equipment limitations.": {
     "en": "Pilot card, manoeuvring information, drafts, UKC assessment and equipment limitations."
+  },
+  "Pilotage relies on a shared plan and active monitoring. A doubtful instruction should be clarified promptly through the command structure; the pilot's presence does not remove the bridge team's responsibility to identify and manage developing danger.": {
+    "en": "Pilotage relies on a shared plan and active monitoring. A doubtful instruction should be clarified promptly through the command structure; the pilot's presence does not remove the bridge team's responsibility to identify and manage developing danger."
   },
   "Plane and middle-latitude sailing, rhumb lines, great circles and their limits of application": {
     "en": "Plane and middle-latitude sailing, rhumb lines, great circles and their limits of application"
@@ -863,20 +1880,62 @@
   "Planning brings survey requirements and condition evidence into an agreed work scope with isolation, responsibilities and completion criteria.": {
     "en": "Planning brings survey requirements and condition evidence into an agreed work scope with isolation, responsibilities and completion criteria."
   },
+  "Possible progressive flooding through connected spaces or failed boundaries.": {
+    "en": "Possible progressive flooding through connected spaces or failed boundaries."
+  },
   "Practise this topic": {
     "en": "Practise this topic"
   },
   "Previous in this reading sequence:": {
     "en": "Previous in this reading sequence:"
   },
+  "Proceed unchanged because the berth is already booked.": {
+    "en": "Proceed unchanged because the berth is already booked."
+  },
+  "Professional records distinguish observations, reports and interpretations. Identify who supplied the information and the relevant times, preserve the original record and follow the ship's correction procedure if later evidence changes the account.": {
+    "en": "Professional records distinguish observations, reports and interpretations. Identify who supplied the information and the relevant times, preserve the original record and follow the ship's correction procedure if later evidence changes the account."
+  },
   "Professional records preserve chronology, sources and uncertainty. Statements should describe facts the writer can support.": {
     "en": "Professional records preserve chronology, sources and uncertainty. Statements should describe facts the writer can support."
+  },
+  "Progress is saved on this device.": {
+    "en": "Progress is saved on this device."
+  },
+  "Progress is saved on this device. Account sync is pending; it will retry when available.": {
+    "en": "Progress is saved on this device. Account sync is pending; it will retry when available."
+  },
+  "Progress is synced with your account.": {
+    "en": "Progress is synced with your account."
+  },
+  "Promise absolute secrecy that the process cannot guarantee.": {
+    "en": "Promise absolute secrecy that the process cannot guarantee."
+  },
+  "Promptly preserve the relevant records using the approved procedure and maintain their integrity.": {
+    "en": "Promptly preserve the relevant records using the approved procedure and maintain their integrity."
+  },
+  "Proof that the original damage has repaired itself.": {
+    "en": "Proof that the original damage has repaired itself."
   },
   "Propeller action can produce a sideways tendency that changes with the propulsion arrangement and operating condition.": {
     "en": "Propeller action can produce a sideways tendency that changes with the propulsion arrangement and operating condition."
   },
+  "Protection remains necessary and is not replaced by meter agreement.": {
+    "en": "Protection remains necessary and is not replaced by meter agreement."
+  },
+  "Psychological safety helps teams expose assumptions and detect threats early. Respectful challenge works with clear authority: listen, establish the facts and explain the decision or escalation so that the team shares an accurate understanding.": {
+    "en": "Psychological safety helps teams expose assumptions and detect threats early. Respectful challenge works with clear authority: listen, establish the facts and explain the decision or escalation so that the team shares an accurate understanding."
+  },
+  "Publish the complaint to the whole crew.": {
+    "en": "Publish the complaint to the whole crew."
+  },
   "Raise the alarm, notify the Master and assess injuries, flooding, fire and the ship’s condition.": {
     "en": "Raise the alarm, notify the Master and assess injuries, flooding, fire and the ship’s condition."
+  },
+  "Raising the centre of gravity can reduce GM but must not be prescribed without an approved stability and strength assessment.": {
+    "en": "Raising the centre of gravity can reduce GM but must not be prescribed without an approved stability and strength assessment."
+  },
+  "Rank does not prove that information was transmitted.": {
+    "en": "Rank does not prove that information was transmitted."
   },
   "Read applicability, exceptions and current requirements with the approved shipboard procedures.": {
     "en": "Read applicability, exceptions and current requirements with the approved shipboard procedures."
@@ -890,14 +1949,53 @@
   "Read, explain, apply and check": {
     "en": "Read, explain, apply and check"
   },
+  "Readiness requires assessment and an agreed, communicated decision about the unresolved fault.": {
+    "en": "Readiness requires assessment and an agreed, communicated decision about the unresolved fault."
+  },
   "Reading sequence": {
     "en": "Reading sequence"
+  },
+  "Ready because the checklist has a signature.": {
+    "en": "Ready because the checklist has a signature."
+  },
+  "Ready without restrictions because local control works.": {
+    "en": "Ready without restrictions because local control works."
+  },
+  "Rearrange the relation: n = 120f / P.": {
+    "en": "Rearrange the relation: n = 120f / P."
+  },
+  "Reassess the manoeuvre, remaining assistance and abort criteria before proceeding.": {
+    "en": "Reassess the manoeuvre, remaining assistance and abort criteria before proceeding."
   },
   "Recite a generic answer without knowing the equipment.": {
     "en": "Recite a generic answer without knowing the equipment."
   },
+  "Recognise a change and establish the cause": {
+    "en": "Recognise a change and establish the cause"
+  },
+  "Recognise that operational performance still depends on annual activity and the applicable CII methodology.": {
+    "en": "Recognise that operational performance still depends on annual activity and the applicable CII methodology."
+  },
+  "Recognise that voltage and frequency readings do not establish phase sequence.": {
+    "en": "Recognise that voltage and frequency readings do not establish phase sequence."
+  },
+  "Reconnect the USB to other computers for comparison.": {
+    "en": "Reconnect the USB to other computers for comparison."
+  },
+  "Record accurate observations and preserve evidence through the approved documentation process.": {
+    "en": "Record accurate observations and preserve evidence through the approved documentation process."
+  },
+  "Record and report the observed fault and the tests already performed.": {
+    "en": "Record and report the observed fault and the tests already performed."
+  },
+  "Record engine RPM, exhaust temperature, LO pressure, jacket-cooling temperature, turbocharger RPM and fuel pressure with the operating condition needed to interpret them.": {
+    "en": "Record engine RPM, exhaust temperature, LO pressure, jacket-cooling temperature, turbocharger RPM and fuel pressure with the operating condition needed to interpret them."
+  },
   "Record events, times and observations factually and distinguish what was observed from an interpretation.": {
     "en": "Record events, times and observations factually and distinguish what was observed from an interpretation."
+  },
+  "Record the differences in measurement and operating conditions.": {
+    "en": "Record the differences in measurement and operating conditions."
   },
   "Refrigeration and HVAC move heat to preserve cargo or provisions and maintain suitable accommodation conditions.": {
     "en": "Refrigeration and HVAC move heat to preserve cargo or provisions and maintain suitable accommodation conditions."
@@ -941,20 +2039,95 @@
   "Relate workload, fatigue and authority gradients to error pathways.": {
     "en": "Relate workload, fatigue and authority gradients to error pathways."
   },
+  "Related teaching": {
+    "en": "Related teaching"
+  },
   "Remarks should be specific, factual and supported by observations. Pressure to remove justified remarks is escalated through the Master and company.": {
     "en": "Remarks should be specific, factual and supported by observations. Pressure to remove justified remarks is escalated through the Master and company."
+  },
+  "Remove the abort point from the plan.": {
+    "en": "Remove the abort point from the plan."
   },
   "Replace every ventilation and emergency arrangement.": {
     "en": "Replace every ventilation and emergency arrangement."
   },
+  "Report an invented exact count.": {
+    "en": "Report an invented exact count."
+  },
+  "Reporting arrangements should protect people from retaliation and explain how information will be handled. Use the designated support and investigation channels, limit disclosure appropriately and address immediate safety needs without prejudging the facts.": {
+    "en": "Reporting arrangements should protect people from retaliation and explain how information will be handled. Use the designated support and investigation channels, limit disclosure appropriately and address immediate safety needs without prejudging the facts."
+  },
+  "Require the person to confront the alleged harasser alone.": {
+    "en": "Require the person to confront the alleged harasser alone."
+  },
+  "Required EEXI": {
+    "en": "Required EEXI"
+  },
+  "Required EEXI and the applicable reduction factors are specified by ship type and capacity under regulation 25.": {
+    "en": "Required EEXI and the applicable reduction factors are specified by ship type and capacity under regulation 25."
+  },
   "Reset all alarms to their default settings.": {
     "en": "Reset all alarms to their default settings."
+  },
+  "Reset the alarm to include the new position.": {
+    "en": "Reset the alarm to include the new position."
+  },
+  "Resolve the failure and demonstrate the required protective arrangements before transfer.": {
+    "en": "Resolve the failure and demonstrate the required protective arrangements before transfer."
+  },
+  "Resolve the missing evidence through the authorised technical process before installation.": {
+    "en": "Resolve the missing evidence through the authorised technical process before installation."
   },
   "Resume the voyage before assessing damage.": {
     "en": "Resume the voyage before assessing damage."
   },
+  "Retry sync": {
+    "en": "Retry sync"
+  },
+  "Reverse-power protection is no longer needed.": {
+    "en": "Reverse-power protection is no longer needed."
+  },
+  "Review missed questions (": {
+    "en": "Review missed questions ("
+  },
+  "Review round": {
+    "en": "Review round"
+  },
+  "Review the explanation": {
+    "en": "Review the explanation"
+  },
+  "Review the explanation, then try the missed questions again.": {
+    "en": "Review the explanation, then try the missed questions again."
+  },
+  "Review this answer": {
+    "en": "Review this answer"
+  },
   "Reviewed": {
     "en": "Reviewed"
+  },
+  "Rewrite earlier entries to make the timeline appear consistent.": {
+    "en": "Rewrite earlier entries to make the timeline appear consistent."
+  },
+  "RightShip provides separate safety-risk and GHG assessments. Its current GHG Rating compares the design-related efficiency of similar vessels on an A–E scale. The methodology uses EEDI, EEXI or EVDI as applicable; an accepted EEXI can supersede EVDI. The commercial rating and IMO annual operational CII serve different purposes. Consult the current methodology and the charterer’s actual acceptance criteria.": {
+    "en": "RightShip provides separate safety-risk and GHG assessments. Its current GHG Rating compares the design-related efficiency of similar vessels on an A–E scale. The methodology uses EEDI, EEXI or EVDI as applicable; an accepted EEXI can supersede EVDI. The commercial rating and IMO annual operational CII serve different purposes. Consult the current methodology and the charterer’s actual acceptance criteria."
+  },
+  "RightShip's GHG Rating is a commercial comparison of the design-related efficiency of similar vessels. Its methodology uses EEDI, EEXI or EVDI inputs as applicable; an accepted EEXI can supersede EVDI for an existing ship. EEXI is an IMO technical-efficiency requirement under MARPOL Annex VI. The current GHG Rating uses an A–E scale. Neither statutory EEXI compliance nor the GHG Rating guarantees the other. Check the current RightShip methodology and the vessel's verified EVDI, EEXI and GHG data.": {
+    "en": "RightShip's GHG Rating is a commercial comparison of the design-related efficiency of similar vessels. Its methodology uses EEDI, EEXI or EVDI inputs as applicable; an accepted EEXI can supersede EVDI for an existing ship. EEXI is an IMO technical-efficiency requirement under MARPOL Annex VI. The current GHG Rating uses an A–E scale. Neither statutory EEXI compliance nor the GHG Rating guarantees the other. Check the current RightShip methodology and the vessel's verified EVDI, EEXI and GHG data."
+  },
+  "Rolling increases rapidly in heavy weather. Which response best follows sound operational assessment?": {
+    "en": "Rolling increases rapidly in heavy weather. Which response best follows sound operational assessment?"
+  },
+  "Rounding is not the source of this error.": {
+    "en": "Rounding is not the source of this error."
+  },
+  "Rule 13(b) defines overtaking by an approach more than 22.5° abaft the beam. If in doubt whether overtaking, assume that you are overtaking and act accordingly under Rule 13(c).": {
+    "en": "Rule 13(b) defines overtaking by an approach more than 22.5° abaft the beam. If in doubt whether overtaking, assume that you are overtaking and act accordingly under Rule 13(c)."
+  },
+  "SEEMP supports energy-efficiency management. Its applicable parts address management measures, fuel-consumption data collection and operational carbon-intensity management. These arrangements must not be described as EEXI or CII endorsements on the IAPP Certificate. Keep the IAPP air-pollution documentation, IEE technical-efficiency documentation and the applicable operational verification records distinct and current.": {
+    "en": "SEEMP supports energy-efficiency management. Its applicable parts address management measures, fuel-consumption data collection and operational carbon-intensity management. These arrangements must not be described as EEXI or CII endorsements on the IAPP Certificate. Keep the IAPP air-pollution documentation, IEE technical-efficiency documentation and the applicable operational verification records distinct and current."
+  },
+  "SOLAS Ch. II-1 Reg. 26–28 — machinery, propulsion and means of going astern": {
+    "en": "SOLAS Ch. II-1 Reg. 26–28 — machinery, propulsion and means of going astern"
   },
   "Safety and security address different threats": {
     "en": "Safety and security address different threats"
@@ -968,17 +2141,38 @@
   "Seamanship explains how the ship, its deck equipment and its crew work together during routine deck work and manoeuvres.": {
     "en": "Seamanship explains how the ship, its deck equipment and its crew work together during routine deck work and manoeuvres."
   },
+  "Sections to revisit": {
+    "en": "Sections to revisit"
+  },
   "Secure openings and loose equipment, assess tank conditions and coordinate with the Master and engine room.": {
     "en": "Secure openings and loose equipment, assess tank conditions and coordinate with the Master and engine room."
   },
   "Security levels relate to deliberate threats and the measures implemented under the ship’s security plan and command arrangements.": {
     "en": "Security levels relate to deliberate threats and the measures implemented under the ship’s security plan and command arrangements."
   },
+  "Select course and speed changes using ship-specific heavy-weather guidance and the surrounding navigational hazards.": {
+    "en": "Select course and speed changes using ship-specific heavy-weather guidance and the surrounding navigational hazards."
+  },
   "Send an unprotected person into a flooding space.": {
     "en": "Send an unprotected person into a flooding space."
   },
   "Send personnel onto a damaged stack without a risk assessment.": {
     "en": "Send personnel onto a damaged stack without a risk assessment."
+  },
+  "Send the essential verified danger information promptly and follow with corrections or updates.": {
+    "en": "Send the essential verified danger information promptly and follow with corrections or updates."
+  },
+  "Set 090°, drift 0.5 knots.": {
+    "en": "Set 090°, drift 0.5 knots."
+  },
+  "Set 090°, drift 2 knots.": {
+    "en": "Set 090°, drift 2 knots."
+  },
+  "Set 270°, drift 2 knots.": {
+    "en": "Set 270°, drift 2 knots."
+  },
+  "Share unverified extracts publicly.": {
+    "en": "Share unverified extracts publicly."
   },
   "Ship machinery systems transmit power and control to steering, propulsion and deck machinery.": {
     "en": "Ship machinery systems transmit power and control to steering, propulsion and deck machinery."
@@ -1004,6 +2198,21 @@
   "Shipping Markets and Commercial Risk": {
     "en": "Shipping Markets and Commercial Risk"
   },
+  "Short exposure can still cause injury and does not establish suitability.": {
+    "en": "Short exposure can still cause injury and does not establish suitability."
+  },
+  "Sign cleanly because a protest can always erase the receipt later.": {
+    "en": "Sign cleanly because a protest can always erase the receipt later."
+  },
+  "Silence the concern because rank settles technical facts.": {
+    "en": "Silence the concern because rank settles technical facts."
+  },
+  "Silently substitute a different order.": {
+    "en": "Silently substitute a different order."
+  },
+  "Small differences in product identity can change toxicity, reactivity and carriage conditions. Confirm the declared product and documentation against the ship's approved capability and the applicable cargo instructions before deciding on tanks, segregation or handling arrangements.": {
+    "en": "Small differences in product identity can change toxicity, reactivity and carriage conditions. Confirm the declared product and documentation against the ship's approved capability and the applicable cargo instructions before deciding on tanks, segregation or handling arrangements."
+  },
   "Soundings, bilge alarms, tank or space status, draft and list changes, and safe reports from the affected area.": {
     "en": "Soundings, bilge alarms, tank or space status, draft and list changes, and safe reports from the affected area."
   },
@@ -1012,6 +2221,12 @@
   },
   "Standard-form and parallel-form controller parameters cannot be copied between forms without conversion.": {
     "en": "Standard-form and parallel-form controller parameters cannot be copied between forms without conversion."
+  },
+  "Start a new attempt": {
+    "en": "Start a new attempt"
+  },
+  "Start at full rate because the test itself is optional.": {
+    "en": "Start at full rate because the test itself is optional."
   },
   "Start here: how maritime knowledge fits together": {
     "en": "Start here: how maritime knowledge fits together"
@@ -1022,26 +2237,110 @@
   "Start with the foundation topics. Explain the idea in your own words, work through its example and answer the linked questions. Use the module description and related courses to connect the lesson to the rest of the ship. Progress records your reading and practice on this device.": {
     "en": "Start with the foundation topics. Explain the idea in your own words, work through its example and answer the linked questions. Use the module description and related courses to connect the lesson to the rest of the ship. Progress records your reading and practice on this device."
   },
+  "Status and application:": {
+    "en": "Status and application:"
+  },
+  "Stop monitoring because the pilot has the con.": {
+    "en": "Stop monitoring because the pilot has the con."
+  },
   "Structural members exist only to support paint.": {
     "en": "Structural members exist only to support paint."
+  },
+  "Substitute n = 120 × 50 / 4.": {
+    "en": "Substitute n = 120 × 50 / 4."
+  },
+  "Subtract the live zero: 12 − 4 = 8 mA.": {
+    "en": "Subtract the live zero: 12 − 4 = 8 mA."
+  },
+  "Sulphur compliance alone does not justify mixing the batches.": {
+    "en": "Sulphur compliance alone does not justify mixing the batches."
+  },
+  "Sulphur content alone does not predict stability of a mixture.": {
+    "en": "Sulphur content alone does not predict stability of a mixture."
+  },
+  "Surface temperature alone cannot establish internal cell condition or eliminate delayed hazards. Maintain the monitoring, exclusion and response arrangements required by the battery installation and emergency plan, with specialist support where appropriate.": {
+    "en": "Surface temperature alone cannot establish internal cell condition or eliminate delayed hazards. Maintain the monitoring, exclusion and response arrangements required by the battery installation and emergency plan, with specialist support where appropriate."
   },
   "Suspend all bridge observations.": {
     "en": "Suspend all bridge observations."
   },
+  "Swell of about 14 s period approaches from the quarter (approximately 135° relative). Roll amplitudes increase and the natural roll period approaches the wave encounter period. What is the principal risk?": {
+    "en": "Swell of about 14 s period approaches from the quarter (approximately 135° relative). Roll amplitudes increase and the natural roll period approaches the wave encounter period. What is the principal risk?"
+  },
+  "Synchronisation is a set of conditions, not a single matched reading. Use the approved system and authorised procedure.": {
+    "en": "Synchronisation is a set of conditions, not a single matched reading. Use the approved system and authorised procedure."
+  },
+  "Syncing your learning progress…": {
+    "en": "Syncing your learning progress…"
+  },
   "Team members can raise concerns and uncertainty early without humiliation or retaliation.": {
     "en": "Team members can raise concerns and uncertainty early without humiliation or retaliation."
+  },
+  "That any stainless-steel tank is suitable.": {
+    "en": "That any stainless-steel tank is suitable."
   },
   "That remote valve indications never need checking.": {
     "en": "That remote valve indications never need checking."
   },
+  "That similar spelling means identical hazards.": {
+    "en": "That similar spelling means identical hazards."
+  },
+  "That the previous cargo certificate covers every chemical.": {
+    "en": "That the previous cargo certificate covers every chemical."
+  },
+  "The AVR alone.": {
+    "en": "The AVR alone."
+  },
   "The BMS monitors conditions such as cell voltage and temperature, but protection also depends on the system design and approved procedures.": {
     "en": "The BMS monitors conditions such as cell voltage and temperature, but protection also depends on the system design and approved procedures."
+  },
+  "The IAPP Certificate and its supplement document applicable air-pollution prevention requirements under MARPOL Annex VI. These include the relevant NOx, SOx, ODS and VOC arrangements. Survey and validity conditions follow the applicable provisions. The IEE Certificate addresses energy-efficiency certification separately; the IAPP supplement does not replace an EEXI Technical File or the required CII and SEEMP documentation.": {
+    "en": "The IAPP Certificate and its supplement document applicable air-pollution prevention requirements under MARPOL Annex VI. These include the relevant NOx, SOx, ODS and VOC arrangements. Survey and validity conditions follow the applicable provisions. The IEE Certificate addresses energy-efficiency certification separately; the IAPP supplement does not replace an EEXI Technical File or the required CII and SEEMP documentation."
+  },
+  "The IAPP and IEE Certificates have different roles.": {
+    "en": "The IAPP and IEE Certificates have different roles."
+  },
+  "The SMS includes continuous improvement. Report non-conformities, accidents and near misses, investigate causes and verify corrective actions. Internal audits and management review assess whether procedures work. The planned maintenance system (PMS) supports equipment reliability. Document control and maritime cyber-risk management also form part of the SMS.": {
+    "en": "The SMS includes continuous improvement. Report non-conformities, accidents and near misses, investigate causes and verify corrective actions. Internal audits and management review assess whether procedures work. The planned maintenance system (PMS) supports equipment reliability. Document control and maritime cyber-risk management also form part of the SMS."
   },
   "The absence of visible water proves the hull is intact.": {
     "en": "The absence of visible water proves the hull is intact."
   },
+  "The alarm can be bypassed if the water looks clear.": {
+    "en": "The alarm can be bypassed if the water looks clear."
+  },
+  "The approved EEXI Technical File supports verification of technical energy efficiency and the IEE Certificate. The initial EEXI verification was linked to a specified IAPP survey, which does not make EEXI an IAPP endorsement. EEDI concerns new-ship technical efficiency; EEXI addresses the applicable existing-ship requirements. CII evaluates annual operational carbon intensity separately.": {
+    "en": "The approved EEXI Technical File supports verification of technical energy efficiency and the IEE Certificate. The initial EEXI verification was linked to a specified IAPP survey, which does not make EEXI an IAPP endorsement. EEDI concerns new-ship technical efficiency; EEXI addresses the applicable existing-ship requirements. CII evaluates annual operational carbon intensity separately."
+  },
+  "The approximate relation GM ≈ (C × B / T)² needs a suitable ship-specific coefficient and valid measurement conditions. Loading, mass distribution, damping and wave forcing affect observed motion. A period in seconds cannot be classified without the vessel context, and the estimate does not replace approved stability calculations.": {
+    "en": "The approximate relation GM ≈ (C × B / T)² needs a suitable ship-specific coefficient and valid measurement conditions. Loading, mass distribution, damping and wave forcing affect observed motion. A period in seconds cannot be classified without the vessel context, and the estimate does not replace approved stability calculations."
+  },
+  "The balance includes heat transferred from the cooled space; no energy is created.": {
+    "en": "The balance includes heat transferred from the cooled space; no energy is created."
+  },
+  "The breaker may be closed without further checks.": {
+    "en": "The breaker may be closed without further checks."
+  },
+  "The bridge need not know about intermittent defects.": {
+    "en": "The bridge need not know about intermittent defects."
+  },
+  "The bridge needs accurate capability and limitations for its plan.": {
+    "en": "The bridge needs accurate capability and limitations for its plan."
+  },
+  "The bridge needs the information before making decisions that depend on it.": {
+    "en": "The bridge needs the information before making decisions that depend on it."
+  },
   "The bridge team prepares the ship information and divides monitoring, communications and recording duties before the pilot arrives.": {
     "en": "The bridge team prepares the ship information and divides monitoring, communications and recording duties before the pilot arrives."
+  },
+  "The calculated GM is 2.23 m. Comparing it with 0.15 m alone does not establish compliance with all applicable stability criteria. A relatively high GM can produce faster rolling and greater accelerations; evaluate the full approved stability criteria, loading condition and securing implications.": {
+    "en": "The calculated GM is 2.23 m. Comparing it with 0.15 m alone does not establish compliance with all applicable stability criteria. A relatively high GM can produce faster rolling and greater accelerations; evaluate the full approved stability criteria, loading condition and securing implications."
+  },
+  "The calculated moment is 32 kN·m; it is not a universal steering-gear capacity.": {
+    "en": "The calculated moment is 32 kN·m; it is not a universal steering-gear capacity."
+  },
+  "The calculation uses the perpendicular lever arm. Real operating loads require the actual geometry and hydrodynamic assessment.": {
+    "en": "The calculation uses the perpendicular lever arm. Real operating loads require the actual geometry and hydrodynamic assessment."
   },
   "The cargo name alone determines every limit.": {
     "en": "The cargo name alone determines every limit."
@@ -1049,20 +2348,80 @@
   "The cargo plan, communication method, transfer limits and emergency-stop arrangements.": {
     "en": "The cargo plan, communication method, transfer limits and emergency-stop arrangements."
   },
+  "The case tests compliance reasoning, not a universal permission to discharge. Verify the actual ship, area and equipment requirements.": {
+    "en": "The case tests compliance reasoning, not a universal permission to discharge. Verify the actual ship, area and equipment requirements."
+  },
+  "The colour used by a previous crew.": {
+    "en": "The colour used by a previous crew."
+  },
+  "The compartment, observed level or rate, boundary condition and actions already taken.": {
+    "en": "The compartment, observed level or rate, boundary condition and actions already taken."
+  },
+  "The complete applicable discharge conditions and required equipment must be satisfied.": {
+    "en": "The complete applicable discharge conditions and required equipment must be satisfied."
+  },
   "The concentrated contact loads can exceed local structural capacity.": {
     "en": "The concentrated contact loads can exceed local structural capacity."
+  },
+  "The condenser must also reject the heat removed from the cooled space.": {
+    "en": "The condenser must also reject the heat removed from the cooled space."
+  },
+  "The condenser rejects 80 kW and the refrigeration COP is 3.": {
+    "en": "The condenser rejects 80 kW and the refrigeration COP is 3."
+  },
+  "The condenser rejects only the compressor work.": {
+    "en": "The condenser rejects only the compressor work."
   },
   "The condition, position, assistance required or number of persons at risk may have changed.": {
     "en": "The condition, position, assistance required or number of persons at risk may have changed."
   },
+  "The correct fraction is (12 − 4)/(20 − 4), not 12/20. Always state both endpoints of the configured range.": {
+    "en": "The correct fraction is (12 − 4)/(20 − 4), not 12/20. Always state both endpoints of the configured range."
+  },
+  "The cycle moves heat using work. Its COP can exceed one because heat removal includes energy transferred from the cooled space.": {
+    "en": "The cycle moves heat using work. Its COP can exceed one because heat removal includes energy transferred from the cooled space."
+  },
+  "The difference may arise from the changed conditions.": {
+    "en": "The difference may arise from the changed conditions."
+  },
+  "The difference proves a compass error.": {
+    "en": "The difference proves a compass error."
+  },
+  "The displacement runs from DR to the fix: 2 nautical miles east in one hour gives an easterly set of 090° and drift of 2 knots. Check steering, speed, time and fix uncertainty before attributing the whole difference to current.": {
+    "en": "The displacement runs from DR to the fix: 2 nautical miles east in one hour gives an easterly set of 090° and drift of 2 knots. Check steering, speed, time and fix uncertainty before attributing the whole difference to current."
+  },
+  "The engineering span comes from the configured range, here 200 °C.": {
+    "en": "The engineering span comes from the configured range, here 200 °C."
+  },
+  "The evaporator removes 60 kW and the compressor requires 20 kW. Neglect other heat transfers.": {
+    "en": "The evaporator removes 60 kW and the compressor requires 20 kW. Neglect other heat transfers."
+  },
+  "The exact product identity, compatibility and applicable carriage requirements.": {
+    "en": "The exact product identity, compatibility and applicable carriage requirements."
+  },
   "The first message prevents any further communication.": {
     "en": "The first message prevents any further communication."
+  },
+  "The gauge pressure is about 40.2 kPa; absolute pressure would include atmospheric pressure.": {
+    "en": "The gauge pressure is about 40.2 kPa; absolute pressure would include atmospheric pressure."
+  },
+  "The generator is not ready to parallel despite the matching meter readings.": {
+    "en": "The generator is not ready to parallel despite the matching meter readings."
+  },
+  "The ground may support or mask damage, and refloating can open leakage paths or change stability and stresses. A controlled plan considers the vessel's condition, assistance, environmental conditions and contingencies; propulsion alone is not a substitute for assessment.": {
+    "en": "The ground may support or mask damage, and refloating can open leakage paths or change stability and stresses. A controlled plan considers the vessel's condition, assistance, environmental conditions and contingencies; propulsion alone is not a substitute for assessment."
   },
   "The highest flow on a plotted curve is not automatically an acceptable operating point.": {
     "en": "The highest flow on a plotted curve is not automatically an acceptable operating point."
   },
   "The hull provides flotation and structural strength. Machinery provides power and services. The bridge team navigates. The whole crew shares safety and environmental responsibilities. Their interaction keeps the ship operating.": {
     "en": "The hull provides flotation and structural strength. Machinery provides power and services. The bridge team navigates. The whole crew shares safety and environmental responsibilities. Their interaction keeps the ship operating."
+  },
+  "The indicated temperature is 100 °C under the stated linear scaling.": {
+    "en": "The indicated temperature is 100 °C under the stated linear scaling."
+  },
+  "The insulation resistance meter.": {
+    "en": "The insulation resistance meter."
   },
   "The lesson connects the actual equipment with its operating procedure, condition, records and the crew member’s responsibilities.": {
     "en": "The lesson connects the actual equipment with its operating procedure, condition, records and the crew member’s responsibilities."
@@ -1088,6 +2447,15 @@
   "The line system must remain compatible with the ship’s designed mooring arrangement and equipment limits.": {
     "en": "The line system must remain compatible with the ship’s designed mooring arrangement and equipment limits."
   },
+  "The linear relation applies to the stated stationary, approximately constant-density liquid. It does not include dynamic losses or pump effects.": {
+    "en": "The linear relation applies to the stated stationary, approximately constant-density liquid. It does not include dynamic losses or pump effects."
+  },
+  "The low reading does not compensate for the failed required protective function.": {
+    "en": "The low reading does not compensate for the failed required protective function."
+  },
+  "The main engine responds locally, but an intermittent remote-control fault remains before departure.": {
+    "en": "The main engine responds locally, but an intermittent remote-control fault remains before departure."
+  },
   "The message is transmitted once without acknowledgement.": {
     "en": "The message is transmitted once without acknowledgement."
   },
@@ -1097,14 +2465,47 @@
   "The methods are interchangeable without considering depth or equipment.": {
     "en": "The methods are interchangeable without considering depth or equipment."
   },
+  "The moment decreases solely because distance increases.": {
+    "en": "The moment decreases solely because distance increases."
+  },
+  "The moment increases with the perpendicular lever arm.": {
+    "en": "The moment increases with the perpendicular lever arm."
+  },
+  "The moment remains unchanged for every force location.": {
+    "en": "The moment remains unchanged for every force location."
+  },
+  "The monitor shows a low oil-content reading, but the required automatic stopping arrangement has failed its test.": {
+    "en": "The monitor shows a low oil-content reading, but the required automatic stopping arrangement has failed its test."
+  },
+  "The motor is 300% efficient.": {
+    "en": "The motor is 300% efficient."
+  },
+  "The nearest port's position.": {
+    "en": "The nearest port's position."
+  },
   "The opening section connects cargo properties, containment design, pressure and temperature limits, thermal effects and boil-off behaviour.": {
     "en": "The opening section connects cargo properties, containment design, pressure and temperature limits, thermal effects and boil-off behaviour."
   },
   "The opening section treats handover as a verified assessment of the ship and situation, not just a transfer of responsibility by the clock.": {
     "en": "The opening section treats handover as a verified assessment of the ship and situation, not just a transfer of responsibility by the clock."
   },
+  "The plan depended on a stated level of assistance. A change requires a new assessment of environmental forces, ship capability, communication and escape options with the relevant parties; schedule pressure does not restore the missing capability.": {
+    "en": "The plan depended on a stated level of assistance. A change requires a new assessment of environmental forces, ship capability, communication and escape options with the relevant parties; schedule pressure does not restore the missing capability."
+  },
   "The plan must consider tug capability, connection, force direction, ship movement and an agreed communication and release arrangement.": {
     "en": "The plan must consider tug capability, connection, force direction, ship movement and an agreed communication and release arrangement."
+  },
+  "The prime-mover governor or active-load controller.": {
+    "en": "The prime-mover governor or active-load controller."
+  },
+  "The product label does not prove batch compatibility.": {
+    "en": "The product label does not prove batch compatibility."
+  },
+  "The question explicitly states a linear transmitter.": {
+    "en": "The question explicitly states a linear transmitter."
+  },
+  "The readings trigger investigation but do not by themselves prove deterioration.": {
+    "en": "The readings trigger investigation but do not by themselves prove deterioration."
   },
   "The receiver repeats the instruction, and the sender confirms or corrects the repeat-back.": {
     "en": "The receiver repeats the instruction, and the sender confirms or corrects the repeat-back."
@@ -1115,11 +2516,38 @@
   "The required inspections, equipment condition, repair work, resources and verification plan.": {
     "en": "The required inspections, equipment condition, repair work, resources and verification plan."
   },
+  "The required synchronous speed is 1500 rpm.": {
+    "en": "The required synchronous speed is 1500 rpm."
+  },
+  "The room lighting switch.": {
+    "en": "The room lighting switch."
+  },
+  "The same diameter alone.": {
+    "en": "The same diameter alone."
+  },
+  "The same painted colour.": {
+    "en": "The same painted colour."
+  },
+  "The same transverse force acts farther from the ship's effective pivot point. What happens to its turning moment in this simplified comparison?": {
+    "en": "The same transverse force acts farther from the ship's effective pivot point. What happens to its turning moment in this simplified comparison?"
+  },
   "The sender speaks louder without waiting.": {
     "en": "The sender speaks louder without waiting."
   },
+  "The ship is within total deadweight limits but a heavy item is concentrated on a small deck area. What additional check is essential?": {
+    "en": "The ship is within total deadweight limits but a heavy item is concentrated on a small deck area. What additional check is essential?"
+  },
+  "The ship's pivot point is permanently fixed at midships.": {
+    "en": "The ship's pivot point is permanently fixed at midships."
+  },
+  "The ship's position appears outside the expected anchor swinging area. What should the watch do?": {
+    "en": "The ship's position appears outside the expected anchor swinging area. What should the watch do?"
+  },
   "The ship, flotation and cargo": {
     "en": "The ship, flotation and cargo"
+  },
+  "The ship-shore ESD link fails its agreed pre-transfer test. What should happen next?": {
+    "en": "The ship-shore ESD link fails its agreed pre-transfer test. What should happen next?"
   },
   "The ship/shore meeting and checklist establish an agreed plan and critical limits before valves are lined up and transfer begins.": {
     "en": "The ship/shore meeting and checklist establish an agreed plan and critical limits before valves are lined up and transfer begins."
@@ -1127,14 +2555,32 @@
   "The strongest available line is always the correct choice.": {
     "en": "The strongest available line is always the correct choice."
   },
+  "The temperature span must always be 100 °C.": {
+    "en": "The temperature span must always be 100 °C."
+  },
+  "The thickest-looking pair alone.": {
+    "en": "The thickest-looking pair alone."
+  },
   "The total cargo weight alone describes every local load.": {
     "en": "The total cargo weight alone describes every local load."
+  },
+  "The unsupported claim of greater strength does not establish suitability.": {
+    "en": "The unsupported claim of greater strength does not establish suitability."
+  },
+  "The vessel may resume normal speed without checks.": {
+    "en": "The vessel may resume normal speed without checks."
   },
   "The watch officer may ignore a raised level without consultation.": {
     "en": "The watch officer may ignore a raised level without consultation."
   },
+  "The water level falls in one compartment but rises in another. What should the team investigate?": {
+    "en": "The water level falls in one compartment but rises in another. What should the team investigate?"
+  },
   "Their arrangement has no effect on local or global strength.": {
     "en": "Their arrangement has no effect on local or global strength."
+  },
+  "There can be no hull damage.": {
+    "en": "There can be no hull damage."
   },
   "Thermodynamics provides the energy balance behind engines, boilers, heat exchangers and refrigeration.": {
     "en": "Thermodynamics provides the energy balance behind engines, boilers, heat exchangers and refrigeration."
@@ -1148,11 +2594,44 @@
   "They describe cargo loading rates.": {
     "en": "They describe cargo loading rates."
   },
+  "They differ in purpose, calculation and verification.": {
+    "en": "They differ in purpose, calculation and verification."
+  },
   "They indicate different security conditions and associated measures under the approved security arrangements.": {
     "en": "They indicate different security conditions and associated measures under the approved security arrangements."
   },
+  "This counts work input but omits the heat input.": {
+    "en": "This counts work input but omits the heat input."
+  },
+  "This divides by distance instead of multiplying by it.": {
+    "en": "This divides by distance instead of multiplying by it."
+  },
+  "This has no basis without changing the stated cycle or counting multiple cylinders.": {
+    "en": "This has no basis without changing the stated cycle or counting multiple cylinders."
+  },
+  "This is the number per minute, not per second.": {
+    "en": "This is the number per minute, not per second."
+  },
+  "This keeps the old lever arm despite the changed condition.": {
+    "en": "This keeps the old lever arm despite the changed condition."
+  },
+  "This leaves the remote-control defect unassessed.": {
+    "en": "This leaves the remote-control defect unassessed."
+  },
+  "This subtracts work input as though the system did the work.": {
+    "en": "This subtracts work input as though the system did the work."
+  },
+  "This uses one power stroke per revolution, as for an idealised two-stroke cycle.": {
+    "en": "This uses one power stroke per revolution, as for an idealised two-stroke cycle."
+  },
   "Threats, humiliation, harassment or repeated bullying, including behaviour presented as a joke.": {
     "en": "Threats, humiliation, harassment or repeated bullying, including behaviour presented as a joke."
+  },
+  "Three units of heat are removed per unit of work supplied.": {
+    "en": "Three units of heat are removed per unit of work supplied."
+  },
+  "Timed observations, changes in condition and the treatment actually given.": {
+    "en": "Timed observations, changes in condition and the treatment actually given."
   },
   "To erase visible defects before a clean bill is issued.": {
     "en": "To erase visible defects before a clean bill is issued."
@@ -1168,6 +2647,9 @@
   },
   "Topic questions follow the lesson they were written for. Use the course question bank for broader revision.": {
     "en": "Topic questions follow the lesson they were written for. Use the course question bank for broader revision."
+  },
+  "Topics reviewed:": {
+    "en": "Topics reviewed:"
   },
   "Trace a signal from sensor through controller to actuator.": {
     "en": "Trace a signal from sensor through controller to actuator."
@@ -1202,11 +2684,41 @@
   "Trace where heat enters, leaves or is recovered in a ship system.": {
     "en": "Trace where heat enters, leaves or is recovered in a ship system."
   },
+  "Traditional Northern Hemisphere cyclone guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Reverse the side convention for the Southern Hemisphere. Actual decisions require current forecasts, storm movement, sea room and ship-specific heavy-weather limits.": {
+    "en": "Traditional Northern Hemisphere cyclone guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Reverse the side convention for the Southern Hemisphere. Actual decisions require current forecasts, storm movement, sea room and ship-specific heavy-weather limits."
+  },
+  "Traditional Northern Hemisphere guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Consider hemisphere, cyclone track, sea room and vessel response; this is not a universal manoeuvring instruction.": {
+    "en": "Traditional Northern Hemisphere guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Consider hemisphere, cyclone track, sea room and vessel response; this is not a universal manoeuvring instruction."
+  },
+  "Transfer command without discussing the concern.": {
+    "en": "Transfer command without discussing the concern."
+  },
+  "Transfer pressure rises unexpectedly during a tanker cargo operation. What is the sound response?": {
+    "en": "Transfer pressure rises unexpectedly during a tanker cargo operation. What is the sound response?"
+  },
+  "Treat the control network exactly like a public guest network.": {
+    "en": "Treat the control network exactly like a public guest network."
+  },
   "Treat the position as suspect, cross-check independently and inform the Master.": {
     "en": "Treat the position as suspect, cross-check independently and inform the Master."
   },
   "Tug position is irrelevant once a line is connected.": {
     "en": "Tug position is irrelevant once a line is connected."
+  },
+  "Two engineers each assume that the other has told the bridge about a machinery limitation. Neither has made the call.": {
+    "en": "Two engineers each assume that the other has told the bridge about a machinery limitation. Neither has made the call."
+  },
+  "Two generators show matching voltage and frequency, but the incoming generator has the wrong phase sequence.": {
+    "en": "Two generators show matching voltage and frequency, but the incoming generator has the wrong phase sequence."
+  },
+  "Two mooring lines have different stiffness. Can their loads be assumed equal because their lengths look similar?": {
+    "en": "Two mooring lines have different stiffness. Can their loads be assumed equal because their lengths look similar?"
+  },
+  "Two navigation displays show the same position after a GNSS warning. Does their agreement independently confirm the fix?": {
+    "en": "Two navigation displays show the same position after a GNSS warning. Does their agreement independently confirm the fix?"
+  },
+  "Under this sign convention, work input is negative W. Both transfers increase internal energy: ΔU = 90 − (−35) = 125 kJ.": {
+    "en": "Under this sign convention, work input is negative W. Both transfers increase internal energy: ΔU = 90 − (−35) = 125 kJ."
   },
   "Understand the whole ship, find a subject and follow its branches from a first principle to shipboard practice.": {
     "en": "Understand the whole ship, find a subject and follow its branches from a first principle to shipboard practice."
@@ -1217,8 +2729,23 @@
   "Understanding the load path helps relate floors, frames, longitudinals, decks and bulkheads to stress, damage and inspection.": {
     "en": "Understanding the load path helps relate floors, frames, longitudinals, decks and bulkheads to stress, damage and inspection."
   },
+  "Unequal stiffness and geometry can concentrate loads in particular lines. Use the approved mooring arrangement, compatible equipment and controlled tending; visual similarity is not a basis for assuming equal tension or safe reserve capacity.": {
+    "en": "Unequal stiffness and geometry can concentrate loads in particular lines. Use the approved mooring arrangement, compatible equipment and controlled tending; visual similarity is not a basis for assuming equal tension or safe reserve capacity."
+  },
+  "Unexpected pressure may indicate a restriction, a valve error or another unsafe condition. Use the agreed ship-shore communication and stopping arrangements, avoiding uncoordinated actions that may worsen a pressure surge, and establish the cause before restarting.": {
+    "en": "Unexpected pressure may indicate a restriction, a valve error or another unsafe condition. Use the agreed ship-shore communication and stopping arrangements, avoiding uncoordinated actions that may worsen a pressure surge, and establish the cause before restarting."
+  },
   "Updates should replace facts with guesses.": {
     "en": "Updates should replace facts with guesses."
+  },
+  "Use Q = +90 kJ and W = +35 kJ under the stated convention.": {
+    "en": "Use Q = +90 kJ and W = +35 kJ under the stated convention."
+  },
+  "Use a radio check as automatic proof that the ESD system works.": {
+    "en": "Use a radio check as automatic proof that the ESD system works."
+  },
+  "Use approved stability information, including free surfaces and intermediate tank states.": {
+    "en": "Use approved stability information, including free surfaces and intermediate tank states."
   },
   "Use case studies to distinguish immediate causes from organisational contributors.": {
     "en": "Use case studies to distinguish immediate causes from organisational contributors."
@@ -1226,23 +2753,86 @@
   "Use performance trends to distinguish symptoms from likely causes.": {
     "en": "Use performance trends to distinguish symptoms from likely causes."
   },
+  "Use rolling period only within its assumptions": {
+    "en": "Use rolling period only within its assumptions"
+  },
+  "Use the approved fuel-management decision before transfer or changeover.": {
+    "en": "Use the approved fuel-management decision before transfer or changeover."
+  },
+  "Use the approved retention and repair arrangements and verify compliance before further operation.": {
+    "en": "Use the approved retention and repair arrangements and verify compliance before further operation."
+  },
+  "Use the designated confidential process, provide protection and follow up appropriately.": {
+    "en": "Use the designated confidential process, provide protection and follow up appropriately."
+  },
   "Use the lesson examples to recognise SMCP, radio discipline and record keeping.": {
     "en": "Use the lesson examples to recognise SMCP, radio discipline and record keeping."
+  },
+  "Use the ship’s approved stability limits and interpret rolling observations in context.": {
+    "en": "Use the ship’s approved stability limits and interpret rolling observations in context."
+  },
+  "Use the ship’s reporting, emergency and damage-control arrangements promptly, maintain a shared picture of the developing condition and record observations and decisions.": {
+    "en": "Use the ship’s reporting, emergency and damage-control arrangements promptly, maintain a shared picture of the developing condition and record observations and decisions."
+  },
+  "Use torque = force × perpendicular lever arm.": {
+    "en": "Use torque = force × perpendicular lever arm."
   },
   "Useful background": {
     "en": "Useful background"
   },
+  "Verified compliance with the approved specification and required traceability.": {
+    "en": "Verified compliance with the approved specification and required traceability."
+  },
+  "Verified suitability for the assessed hazards, with the other required controls in place.": {
+    "en": "Verified suitability for the assessed hazards, with the other required controls in place."
+  },
+  "Verify identity and authorisation under the ship's access-control procedure.": {
+    "en": "Verify identity and authorisation under the ship's access-control procedure."
+  },
+  "Verify the position with independent information, assess dragging and alert the master as required.": {
+    "en": "Verify the position with independent information, assess dragging and alert the master as required."
+  },
+  "Visibility falls below the limit in the master's standing orders. What should the OOW do?": {
+    "en": "Visibility falls below the limit in the master's standing orders. What should the OOW do?"
+  },
   "Visual Signalling": {
     "en": "Visual Signalling"
   },
+  "Visual appearance cannot demonstrate oil content or regulatory compliance.": {
+    "en": "Visual appearance cannot demonstrate oil content or regulatory compliance."
+  },
+  "Wait for a complete commercial claim file.": {
+    "en": "Wait for a complete commercial claim file."
+  },
+  "Wait for the master before taking any safety action.": {
+    "en": "Wait for the master before taking any safety action."
+  },
+  "Wait until a formal claim is received.": {
+    "en": "Wait until a formal claim is received."
+  },
   "Wait until after a critical manoeuvre to ask about the plan.": {
     "en": "Wait until after a critical manoeuvre to ask about the plan."
+  },
+  "Wait until the cable is visibly vertical.": {
+    "en": "Wait until the cable is visibly vertical."
+  },
+  "Wait until the ship's heading changes.": {
+    "en": "Wait until the ship's heading changes."
+  },
+  "Waiting for failure defeats condition monitoring and may ignore a real defect.": {
+    "en": "Waiting for failure defeats condition monitoring and may ignore a real defect."
+  },
+  "Waiting for the bridge to notice the limitation.": {
+    "en": "Waiting for the bridge to notice the limitation."
   },
   "Walking back controls the anchor’s descent with the windlass; letting go involves controlled release using the brake.": {
     "en": "Walking back controls the anchor’s descent with the windlass; letting go involves controlled release using the brake."
   },
   "Walking back means moving the ship astern without using the anchor.": {
     "en": "Walking back means moving the ship astern without using the anchor."
+  },
+  "What belongs in a follow-up report to TMAS after initial advice?": {
+    "en": "What belongs in a follow-up report to TMAS after initial advice?"
   },
   "What comes before approaching a casualty to provide first aid?": {
     "en": "What comes before approaching a casualty to provide first aid?"
@@ -1256,6 +2846,12 @@
   "What distinguishes an estimated position (EP) from a dead-reckoning position (DR)?": {
     "en": "What distinguishes an estimated position (EP) from a dead-reckoning position (DR)?"
   },
+  "What does a compliant sulphur result establish about compatibility with the remaining fuel?": {
+    "en": "What does a compliant sulphur result establish about compatibility with the remaining fuel?"
+  },
+  "What does a refrigeration COP of 3 mean in this case?": {
+    "en": "What does a refrigeration COP of 3 mean in this case?"
+  },
   "What information helps locate and assess flooding?": {
     "en": "What information helps locate and assess flooding?"
   },
@@ -1265,6 +2861,9 @@
   "What is essential before high-voltage switching work?": {
     "en": "What is essential before high-voltage switching work?"
   },
+  "What is the correct basis for selecting the gloves?": {
+    "en": "What is the correct basis for selecting the gloves?"
+  },
   "What is the difference between cargo sweat and ship sweat?": {
     "en": "What is the difference between cargo sweat and ship sweat?"
   },
@@ -1273,6 +2872,9 @@
   },
   "What is the role of a battery management system (BMS)?": {
     "en": "What is the role of a battery management system (BMS)?"
+  },
+  "What is the strongest next analytical step?": {
+    "en": "What is the strongest next analytical step?"
   },
   "What should a dry-docking and technical-survey work scope connect?": {
     "en": "What should a dry-docking and technical-survey work scope connect?"
@@ -1289,6 +2891,9 @@
   "What should the relieving watch officer do before accepting the watch?": {
     "en": "What should the relieving watch officer do before accepting the watch?"
   },
+  "What would most directly prevent this failure?": {
+    "en": "What would most directly prevent this failure?"
+  },
   "What you will learn": {
     "en": "What you will learn"
   },
@@ -1301,8 +2906,23 @@
   "Where the ship is, where it is going, the conditions around it and how the bridge team communicates.": {
     "en": "Where the ship is, where it is going, the conditions around it and how the bridge team communicates."
   },
+  "Whether all damage-control efforts can stop.": {
+    "en": "Whether all damage-control efforts can stop."
+  },
   "Which approach supports a reliable deck logbook entry?": {
     "en": "Which approach supports a reliable deck logbook entry?"
+  },
+  "Which conclusion follows?": {
+    "en": "Which conclusion follows?"
+  },
+  "Which conclusion is justified by equal voltage and frequency readings alone?": {
+    "en": "Which conclusion is justified by equal voltage and frequency readings alone?"
+  },
+  "Which control is principally associated with active-power sharing between paralleled generators?": {
+    "en": "Which control is principally associated with active-power sharing between paralleled generators?"
+  },
+  "Which evidence best supports acceptance of a replacement bolt?": {
+    "en": "Which evidence best supports acceptance of a replacement bolt?"
   },
   "Which information should be ready before the pilot boards?": {
     "en": "Which information should be ready before the pilot boards?"
@@ -1312,6 +2932,12 @@
   },
   "Which situation should be recognised as a workplace safety concern?": {
     "en": "Which situation should be recognised as a workplace safety concern?"
+  },
+  "Which statement best describes the status?": {
+    "en": "Which statement best describes the status?"
+  },
+  "Which statement is correct?": {
+    "en": "Which statement is correct?"
   },
   "Who is in distress, where and when, the nature of the emergency and the assistance needed.": {
     "en": "Who is in distress, where and when, the nature of the emergency and the assistance needed."
@@ -1324,6 +2950,9 @@
   },
   "Why establish a common situation picture during an emergency?": {
     "en": "Why establish a common situation picture during an emergency?"
+  },
+  "Why is 12/20 × 200 = 120 °C incorrect?": {
+    "en": "Why is 12/20 × 200 = 120 °C incorrect?"
   },
   "Why is Ship Design MBL relevant when selecting mooring lines?": {
     "en": "Why is Ship Design MBL relevant when selecting mooring lines?"
@@ -1352,8 +2981,14 @@
   "Why the Pump Curve Alone Does Not Set the Flow": {
     "en": "Why the Pump Curve Alone Does Not Set the Flow"
   },
+  "Why:": {
+    "en": "Why:"
+  },
   "Wind, waves, ice and the decisions that change a safe passage plan": {
     "en": "Wind, waves, ice and the decisions that change a safe passage plan"
+  },
+  "With density unchanged, what happens to gauge pressure when the depth increases from 4 m to 8 m?": {
+    "en": "With density unchanged, what happens to gauge pressure when the depth increases from 4 m to 8 m?"
   },
   "Work through energy balance, pipe losses and pump operating points.": {
     "en": "Work through energy balance, pipe losses and pump operating points."
@@ -1364,16 +2999,127 @@
   "Work through the relationship between notices, time records and laytime.": {
     "en": "Work through the relationship between notices, time records and laytime."
   },
+  "Worked case: a stronger bolt is not automatically suitable": {
+    "en": "Worked case: a stronger bolt is not automatically suitable"
+  },
+  "Worked case: choosing the energy boundary": {
+    "en": "Worked case: choosing the energy boundary"
+  },
+  "Worked case: closing the communication loop": {
+    "en": "Worked case: closing the communication loop"
+  },
+  "Worked case: comparing like with like": {
+    "en": "Worked case: comparing like with like"
+  },
+  "Worked case: compliance does not prove compatibility": {
+    "en": "Worked case: compliance does not prove compatibility"
+  },
+  "Worked case: frequency and generator speed": {
+    "en": "Worked case: frequency and generator speed"
+  },
+  "Worked case: gauge pressure below the surface": {
+    "en": "Worked case: gauge pressure below the surface"
+  },
+  "Worked case: matching protection to the actual hazard": {
+    "en": "Worked case: matching protection to the actual hazard"
+  },
+  "Worked case: one acceptable reading is not discharge permission": {
+    "en": "Worked case: one acceptable reading is not discharge permission"
+  },
+  "Worked case: power strokes and shaft speed": {
+    "en": "Worked case: power strokes and shaft speed"
+  },
+  "Worked case: readiness is demonstrated, not assumed": {
+    "en": "Worked case: readiness is demonstrated, not assumed"
+  },
+  "Worked case: refrigeration heat balance": {
+    "en": "Worked case: refrigeration heat balance"
+  },
+  "Worked case: scaling a live-zero transmitter": {
+    "en": "Worked case: scaling a live-zero transmitter"
+  },
+  "Worked case: steering force and lever arm": {
+    "en": "Worked case: steering force and lever arm"
+  },
+  "Worked case: technical efficiency and annual performance": {
+    "en": "Worked case: technical efficiency and annual performance"
+  },
+  "Worked case: what synchronisation actually requires": {
+    "en": "Worked case: what synchronisation actually requires"
+  },
   "Working without a defined communication arrangement.": {
     "en": "Working without a defined communication arrangement."
   },
   "Write unsupported blame as an established fact.": {
     "en": "Write unsupported blame as an established fact."
   },
+  "Write Δp = ρgh.": {
+    "en": "Write Δp = ρgh."
+  },
+  "Yes, if both show many decimal places.": {
+    "en": "Yes, if both show many decimal places."
+  },
+  "Yes, if full astern power is available.": {
+    "en": "Yes, if full astern power is available."
+  },
+  "Yes, if their colours match.": {
+    "en": "Yes, if their colours match."
+  },
+  "Yes; a cool casing proves all cells are safe.": {
+    "en": "Yes; a cool casing proves all cells are safe."
+  },
+  "Yes; all low-carbon fuels have identical hazards.": {
+    "en": "Yes; all low-carbon fuels have identical hazards."
+  },
+  "Yes; an open symbol proves absence of voltage everywhere.": {
+    "en": "Yes; an open symbol proves absence of voltage everywhere."
+  },
+  "Yes; cooler outside air always dries cargo.": {
+    "en": "Yes; cooler outside air always dries cargo."
+  },
+  "Yes; dew point has no relevance to cargo sweat.": {
+    "en": "Yes; dew point has no relevance to cargo sweat."
+  },
+  "Yes; every line at a berth carries identical tension.": {
+    "en": "Yes; every line at a berth carries identical tension."
+  },
+  "Yes; increased water depth removes all grounding risks.": {
+    "en": "Yes; increased water depth removes all grounding risks."
+  },
+  "Yes; insulated gloves replace isolation.": {
+    "en": "Yes; insulated gloves replace isolation."
+  },
+  "Yes; only the fuel price changes.": {
+    "en": "Yes; only the fuel price changes."
+  },
+  "Yes; remove all ventilation without assessment.": {
+    "en": "Yes; remove all ventilation without assessment."
+  },
+  "Yes; two screens always mean two independent fixes.": {
+    "en": "Yes; two screens always mean two independent fixes."
+  },
+  "Your browser could not save progress. Please try again.": {
+    "en": "Your browser could not save progress. Please try again."
+  },
   "Your browser could not save progress. You can continue reading.": {
     "en": "Your browser could not save progress. You can continue reading."
   },
   "correct answers": {
     "en": "correct answers"
+  },
+  "correct on the first attempt": {
+    "en": "correct on the first attempt"
+  },
+  "missed questions corrected in the review round. Review answers do not change the first-attempt score.": {
+    "en": "missed questions corrected in the review round. Review answers do not change the first-attempt score."
+  },
+  "missed questions corrected. Review answers do not change the first-attempt score.": {
+    "en": "missed questions corrected. Review answers do not change the first-attempt score."
+  },
+  "topics reviewed": {
+    "en": "topics reviewed"
+  },
+  "−125 kJ": {
+    "en": "−125 kJ"
   }
 }

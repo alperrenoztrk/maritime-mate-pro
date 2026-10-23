@@ -127,7 +127,7 @@ const PSC_DETENTION_SOURCE_RE =
 const NON_COLLISION_CONFLICT_SOURCE_RE =
   /(?:ekip\s+içinde|kültürel|çıkar\s+çatışması|uyum\s+çatışması|rol\s+belirsizliği|talimatı\s+çatışması|çözülmemiş\s+çatışma|fiziksel\s+çatışma|çatışma\s+yönetimi|çatışma\s+çözümü|çatışma\s+bölge|korsanlık|cinsel|davranış)/iu;
 const ACCOUNT_SOURCE_RE =
-  /^\s*hesap\s*$|\b(?:banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab|hesab[^.!?]{0,40}\b(?:google|apple|e-?posta|şifre|parola|oturum)\b|hesab[ıi]m|hesab[ıi]n[ıi]z|hesap\s+(?:ve\s+veri\s+)?silme|hesab[ıi]\s*(?:kalıcı olarak\s*)?sil/iu;
+  /hesap\s+(?:yönetimi|verebilir)|^\s*hesap\s*$|\b(?:banka|kullanıcı|üye|oturum|e-posta|google|apple)\s+hesab|hesab[^.!?]{0,40}\b(?:google|apple|e-?posta|şifre|parola|oturum)\b|hesab[ıi]m|hesab[ıi]n[ıi]z|hesap\s+(?:ve\s+veri\s+)?silme|hesab[ıi]\s*(?:kalıcı olarak\s*)?sil/iu;
 const CARGO_SECURING_SOURCE_RE =
   /(?:(?:yük|kargo|araç|Ro-Ro|CSS\s+Code|CTU|lashing)[^.!?]{0,120}bağlama|bağlama[^.!?]{0,120}(?:yük|kargo|araç|Ro-Ro|CSS\s+Code|CTU|lashing))/iu;
 const MACHINERY_STACK_SOURCE_RE =

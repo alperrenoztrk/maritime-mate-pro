@@ -1,3 +1,4 @@
+import { LearningProgressStatus } from "@/components/curriculum/LearningProgressStatus";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getStaticTranslation } from "@/utils/staticTranslations";
 import { useState } from "react";
@@ -37,6 +38,7 @@ export default function MaritimeLearningMapPage() {
   return (
     <LibraryPageShell title="Maritime learning map" icon={Compass} maxWidth="max-w-5xl">
       <p className="max-w-3xl text-base leading-relaxed text-muted-foreground">Understand the whole ship, find a subject and follow its branches from a first principle to shipboard practice.</p>
+      <LearningProgressStatus />
       <details className="rounded-2xl border bg-card p-4">
         <summary className="min-h-11 cursor-pointer text-lg font-semibold">Start here: how maritime knowledge fits together</summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">

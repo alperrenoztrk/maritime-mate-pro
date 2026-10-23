@@ -2039,7 +2039,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
       { step: 2, title: "Turning gear çıkarma", description: "Turning gear disengage edilir ve interlock kontrol edilir." },
       { step: 3, title: "Stand-by", description: "Stand-by engine komutu ile makine hazır hale getirilir. Hava basıncı yeterli." },
       { step: 4, title: "Çalıştırma", description: "Köprüüstü komutuyla veya lokal kontrolle makine başlatılır." },
-      { step: 5, title: "Parametre izleme", description: "RPM, exhaust temp, LO basınç, jacket cooling temp, scavenging temp sürekli izlenir." },
+      { step: 5, title: "Parametre izleme", description: "Monitor RPM, exhaust temperature, LO pressure, jacket-cooling temperature and scavenge-air temperature against the operating condition and maker's limits." },
       { step: 6, title: "Durdurma", description: "Yavaşlama → soğutma süresi → durdurma → turning gear takma prosedürü uygulanır." },
     ],
     responsibilities: [
@@ -2545,7 +2545,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
     definition: "Engine Log Book'un düzenli ve doğru tutulmasıdır. Ana makine ve yardımcı makine parametreleri, operasyonlar ve olaylar kayıt altına alınır.",
     importance: "Engine Log Book, makine performansının tarihçesidir. PSC denetimlerinde, arıza analizinde ve yasal uyuşmazlıklarda kritik bir belgedir.",
     procedures: [
-      { step: 1, title: "Saatlik kayıtlar", description: "RPM, exhaust temp, LO basınç, jacket cooling temp, turbocharger RPM, yakıt basıncı kaydedilir." },
+      { step: 1, title: "Saatlik kayıtlar", description: "Record engine RPM, exhaust temperature, LO pressure, jacket-cooling temperature, turbocharger RPM and fuel pressure with the operating condition needed to interpret them." },
       { step: 2, title: "Olay kayıtları", description: "Stand-by, finished with engine, makine arızası, alarm olayları kaydedilir." },
       { step: 3, title: "Yakıt/yağ kayıtları", description: "Günlük yakıt tüketimi, ROB (remaining on board) ve transfer kayıtları tutulur." },
       { step: 4, title: "İmza", description: "Her vardiya sonunda vardiya mühendisi imzalar. C/E günlük kontrol eder." },

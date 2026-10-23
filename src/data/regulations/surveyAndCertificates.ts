@@ -368,7 +368,7 @@ export const surveyRegulations: RegulationItem[] = [
     essentials: [
       "Safety Score (Qi): 0.5 – 5.0 arası (5.0 en iyi) – geminin emniyet risk puanı",
       "Safety Score parametreleri: kaza/olay geçmişi, yaş, bayrak performansı, klas performansı, PSC denetim sonuçları, şirket performansı, gemi tipi",
-      "GHG Rating: A-G arası emisyon performansı – EVDI (Existing Vessel Design Index) bazlı",
+      "GHG Rating compares design-related efficiency on the current A–E scale using the applicable EEDI, EEXI or EVDI inputs.",
       "EVDI hesaplaması: geminin tasarım parametrelerine dayalı tahmini CO₂ emisyon yoğunluğu (gCO₂/ton·mil)",
       "RightShip Dry Bulk Inspection: fiziksel denetim programı – kritik gemi tipleri için",
       "Charterer kabul eşikleri: her şirketin minimum Safety Score ve GHG Rating gerekliliği farklı (genellikle ≥2.5 Safety Score)",
@@ -390,7 +390,7 @@ export const surveyRegulations: RegulationItem[] = [
     ],
     keyArticles: [
       { id: "Safety Score Methodology", title: "Emniyet Puanlama", summary: "Qi hesaplama parametreleri, ağırlıklandırma ve güncelleme döngüsü." },
-      { id: "GHG Rating Framework", title: "Emisyon Değerlendirme", summary: "EVDI hesaplama metodolojisi ve A-G rating sınıfları." },
+      { id: "GHG Rating Framework", title: "Emisyon Değerlendirme", summary: "Current GHG Rating methodology: A–E peer-group comparisons using applicable EEDI, EEXI or EVDI inputs." },
       { id: "Inspection Protocol", title: "Denetim Protokolü", summary: "RightShip fiziksel denetim kapsamı, prosedürleri ve raporlama." },
     ],
     penalties: [
@@ -408,7 +408,7 @@ export const surveyRegulations: RegulationItem[] = [
       {
         heading: "Safety Score ve GHG Rating",
         body:
-          "RightShip iki ana metrik üretir. Safety Score (Qi), 0,5 ile 5,0 arasında bir emniyet risk puanıdır; geminin kaza/olay geçmişi, yaşı, bayrak ve klas performansı, PSC sonuçları ve işletmeci performansı gibi faktörleri ağırlıklandırarak hesaplanır. Yüksek puan düşük risk demektir ve çoğu kiracı bir alt eşik (örneğin 2,5) belirler. İkinci metrik GHG Rating'dir: geminin tasarım parametrelerinden türetilen EVDI'ye dayanarak A'dan G'ye bir emisyon verimliliği notu verir. Böylece RightShip, hem emniyet hem çevre boyutunu tek bir ticari karar arayüzünde birleştirir; GHG Rating, IMO'nun CII rejimiyle paralel bir ticari baskı yaratır.",
+          "RightShip provides separate safety-risk and GHG assessments. Its current GHG Rating compares the design-related efficiency of similar vessels on an A–E scale. The methodology uses EEDI, EEXI or EVDI as applicable; an accepted EEXI can supersede EVDI. The commercial rating and IMO annual operational CII serve different purposes. Consult the current methodology and the charterer’s actual acceptance criteria.",
       },
       {
         heading: "Safety Score'un ticari kapı olarak işleyişi",
@@ -418,7 +418,7 @@ export const surveyRegulations: RegulationItem[] = [
       {
         heading: "EVDI ve EEXI: benzer ölçüm, farklı işlev",
         body:
-          "GHG Rating'in temelindeki EVDI (Existing Vessel Design Index), tıpkı IMO'nun EEXI'si gibi geminin tasarım parametrelerinden (ana makine gücü, kapasite, hız) yola çıkarak tahmini bir CO₂ yoğunluğu hesaplar ve ikisi kavramsal olarak akrabadır. Ancak işlevleri ayrılır: EEXI, MARPOL Ek VI kapsamında bir uyum eşiğidir, gemi bu eşiği geçmezse teknik olarak sefer edemez hale gelebilir ve bu bir statüter zorunluluktur. EVDI ise bir uyum eşiği değil, sıralayıcı bir ticari nottur (A'dan G'ye) ve herhangi bir yasal yaptırımı yoktur. Bunun pratik önemi zamanlamadır: bir charterer, bir gemiyi kiralama kararını verirken EEXI'nin resmi olarak denetlenip denetlenmediğini beklemeden, RightShip'in halihazırda yayınladığı GHG Rating'ine bakarak ön eleme yapabilir. Yani EVDI, EEXI'nin resmi doğrulama sürecinden önce devreye giren bir ticari erken uyarı sistemidir; bir gemi EEXI'yi teknik olarak karşılasa da GHG Rating'i düşükse, bazı çevre bilincine sahip charterer'lar için hâlâ istenmeyen bir seçenek olabilir.",
+          "RightShip's GHG Rating is a commercial comparison of the design-related efficiency of similar vessels. Its methodology uses EEDI, EEXI or EVDI inputs as applicable; an accepted EEXI can supersede EVDI for an existing ship. EEXI is an IMO technical-efficiency requirement under MARPOL Annex VI. The current GHG Rating uses an A–E scale. Neither statutory EEXI compliance nor the GHG Rating guarantees the other. Check the current RightShip methodology and the vessel's verified EVDI, EEXI and GHG data.",
       },
       {
         heading: "RightShip'in vetting ve PSC'den ayrışan rolü",
@@ -1163,8 +1163,8 @@ export const certificateRegulations: RegulationItem[] = [
     slug: "iapp-cert",
     label: "IAPP Certificate – Hava Kirliliği Önleme Belgesi",
     category: "Ship Certificates",
-    overview: "MARPOL Ek VI kapsamında geminin hava emisyonları, yakıt kalitesi ve enerji verimliliği gerekliliklerine uyumunu belgelendirir.",
-    history: "IAPP Certificate (International Air Pollution Prevention Certificate), MARPOL Ek VI'nın 2005'te yürürlüğe girmesiyle zorunlu hale gelmiştir. 400 GT ve üzeri gemiler ile tüm sabit ve yüzer sondaj platformları için düzenlenir. NOx (azot oksitler), SOx (kükürt oksitler), ODS (ozon tabakasını incelten maddeler), VOC (uçucu organik bileşikler) ve enerji verimliliği (EEXI/CII) gerekliliklerini kapsar.",
+    overview: "The IAPP Certificate documents applicable air-pollution prevention requirements under MARPOL Annex VI. Energy-efficiency certification is addressed separately through the IEE Certificate.",
+    history: "The IAPP Certificate addresses applicable MARPOL Annex VI air-pollution requirements, including NOx, SOx, ODS and VOC provisions. Determine applicability and survey requirements from the current Annex and Administration requirements. EEXI verification and the IEE Certificate belong to the separate energy-efficiency framework; CII and SEEMP have their own applicable verification and documentation requirements.",
     applicability: [
       "400 GT ve üzeri uluslararası sefer yapan tüm gemiler",
       "Sabit ve yüzer sondaj platformları (MODU)",
@@ -1172,12 +1172,12 @@ export const certificateRegulations: RegulationItem[] = [
     ],
     essentials: [
       "Sertifika süresi: 5 yıl geçerlilik + yıllık survey + ara survey (intermediate)",
-      "Supplement to IAPP: motor, yakıt, EGCS, ODS ve enerji verimliliği detayları",
+      "The IAPP supplement records the relevant air-pollution prevention equipment and arrangements, including engines, fuel, EGCS and ODS details as applicable.",
       "NOx Teknik Dosyası: her dizel motorun (130 kW üzeri) emisyon sertifikasyonu – Tier I (2000), Tier II (2011), Tier III (NECA bölgelerinde 2016/2021)",
       "NOx Tier III gereklilikleri: NECA (NOx Emission Control Areas) bölgelerinde: Kuzey Amerika, ABD Karayip, Baltık ve Kuzey Denizi (2021)",
       "SOx uyumu: yakıt kükürt limiti (%0.50 küresel, %0.10 SECA) veya EGCS (scrubber) onayı",
       "SEEMP (Ship Energy Efficiency Management Plan): Part I (genel), Part II (DCS), Part III (CII) – gemide bulundurma zorunlu",
-      "EEXI doğrulaması: 2023'ten itibaren IAPP sertifikasına EEXI onayı eklenir",
+      "EEXI verification is documented through the EEXI Technical File and IEE Certificate, separately from IAPP certification.",
       "ODS (Ozone Depleting Substances) kayıt gereklilikleri: halon, CFC, HCFC kullanımının kaydı ve raporlanması",
       "VOC Management Plan: ham petrol tankerleri için zorunlu (belirli limanlar/terminallerde)",
       "Shipboard incinerator: 2000 sonrası kurulan yakıcılar MEPC.244(66) onaylı olmalı",
@@ -1197,7 +1197,7 @@ export const certificateRegulations: RegulationItem[] = [
       { year: "2016", description: "NOx Tier III – Kuzey Amerika NECA'da zorunlu" },
       { year: "2020", description: "Küresel kükürt limiti %0.50 – IAPP survey'de SOx uyumu kontrol altında" },
       { year: "2021", description: "NOx Tier III – Baltık ve Kuzey Denizi NECA'larda zorunlu" },
-      { year: "2023", description: "EEXI ve CII – IAPP sertifikasına enerji verimliliği doğrulaması eklendi" },
+      { year: "2023", description: "EEXI and CII requirements became applicable under the Annex VI energy-efficiency framework; they are not an extension of the IAPP Certificate." },
     ],
     keyArticles: [
       { id: "MARPOL Ek VI Kural 6", title: "IAPP Survey ve Sertifikasyon", summary: "IAPP Certificate düzenleme, survey aralıkları ve geçerlilik koşulları." },
@@ -1216,7 +1216,7 @@ export const certificateRegulations: RegulationItem[] = [
       {
         heading: "Hava emisyonlarının tek sertifikası",
         body:
-          "IAPP Certificate (International Air Pollution Prevention Certificate), MARPOL Ek VI'nın gemideki belgesidir ve geminin havaya verdiği tüm emisyon türlerini tek çatı altında toplar: azot oksitler (NOx), kükürt oksitler (SOx), ozon tabakasını incelten maddeler (ODS), uçucu organik bileşikler (VOC) ve giderek artan biçimde enerji verimliliği (EEXI/CII). 400 GT ve üzeri gemiler için zorunludur. Sertifikanın eki (supplement), gemideki motorları, yakıt sistemini, varsa scrubber'ı ve enerji verimliliği parametrelerini ayrıntılandırır. Beş yıl geçerlidir ve yıllık/ara sörveylerle güncel tutulur.",
+          "The IAPP Certificate and its supplement document applicable air-pollution prevention requirements under MARPOL Annex VI. These include the relevant NOx, SOx, ODS and VOC arrangements. Survey and validity conditions follow the applicable provisions. The IEE Certificate addresses energy-efficiency certification separately; the IAPP supplement does not replace an EEXI Technical File or the required CII and SEEMP documentation.",
       },
       {
         heading: "NOx, SOx ve genişleyen kapsam",
@@ -1226,7 +1226,7 @@ export const certificateRegulations: RegulationItem[] = [
       {
         heading: "SEEMP ve enerji verimliliği bağı",
         body:
-          "IAPP, klasik kirlilik kontrolünden iklim düzenlemesine uzanan köprüdür. Gemide bulundurulması zorunlu olan SEEMP (Ship Energy Efficiency Management Plan) üç bölümlüdür: genel verimlilik yönetimi (Part I), IMO DCS veri toplama planı (Part II) ve CII yönetim planı (Part III). Böylece IAPP sertifikası altında hem geminin tasarım verimliliği (EEXI) hem operasyonel karbon performansı (CII) izlenir hale gelmiştir. NOx Teknik Dosyasının güncel olmaması, SOx uyumsuzluğu veya SEEMP eksikliği PSC'de eksiklik ve olası alıkoymaya yol açar; sertifika olmadan ise gemi uluslararası sefer yapamaz.",
+          "SEEMP supports energy-efficiency management. Its applicable parts address management measures, fuel-consumption data collection and operational carbon-intensity management. These arrangements must not be described as EEXI or CII endorsements on the IAPP Certificate. Keep the IAPP air-pollution documentation, IEE technical-efficiency documentation and the applicable operational verification records distinct and current.",
       },
       {
         heading: "NOx Teknik Dosyası ve motor yönetimi",
@@ -1236,7 +1236,7 @@ export const certificateRegulations: RegulationItem[] = [
       {
         heading: "SEEMP, enerji verimliliği ve genişleyen kapsam",
         body:
-          "IAPP, klasik kirlilik kontrolünden iklim düzenlemesine uzanan köprüdür. Gemide bulundurulması zorunlu olan SEEMP (Ship Energy Efficiency Management Plan) üç bölümlüdür: genel verimlilik yönetimi (Part I), IMO DCS veri toplama planı (Part II) ve CII yönetim planı (Part III). Böylece IAPP sertifikası altında hem geminin tasarım verimliliği (EEXI) hem operasyonel karbon performansı (CII) izlenir. Sertifikanın kapsamı zamanla genişlemiştir: kükürt (SOx) uyumu için yakıt veya scrubber doğrulaması, ozon tabakasını incelten maddelerin (ODS – halon, CFC) kaydı, ham petrol tankerleri için VOC yönetim planı ve onaylı gemi yakıcıları (incinerator) da bu sertifika altında değerlendirilir. NOx dosyasının eksikliği, SOx uyumsuzluğu veya SEEMP eksikliği PSC'de eksiklik ve olası alıkoymaya yol açar; sertifika olmadan gemi uluslararası sefer yapamaz.",
+          "SEEMP supports energy-efficiency management. Its applicable parts address management measures, fuel-consumption data collection and operational carbon-intensity management. These arrangements must not be described as EEXI or CII endorsements on the IAPP Certificate. Keep the IAPP air-pollution documentation, IEE technical-efficiency documentation and the applicable operational verification records distinct and current.",
       },
     ],
     relatedSlugs: ["marpol", "eexi", "imo-2020"],

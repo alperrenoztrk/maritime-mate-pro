@@ -160,7 +160,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 VHF, sis düdüğü ve sinyal donanımı kullanımı",
           paragraphs: [
-            `AB, OOW komutuyla sis düdüğünü (manuel veya otomatik), gündüz işaretleri (shapes — küre, koni, silindir) ve gerektiğinde projektör/Aldis lamba ile ışık sinyallerini hazırlar. Demir atma/vira, manevra ve kısıtlı görüş sinyalleri OOW kontrolünde verilir; dümenci/lookout bu donanımın yerini ve çalışmasını bilir.`,
+            "The able seafarer prepares the whistle, day shapes and signalling equipment as directed by the officer of the watch. Give the appropriate manoeuvring, restricted-visibility or anchoring signals under that officer’s control and the applicable rules. Know the equipment location and operation; signal selection is not inferred from an informal deck command.",
           ],
           callouts: [
             {

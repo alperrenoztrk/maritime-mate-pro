@@ -1018,7 +1018,7 @@ GM değerinin büyüklüğü geminin davranışını etkiler:
           "Her yüklemede GM'i kontrol edin",
           "Minimum GM kriterlerini daima sağlayın",
           "Sert gemi şikayetlerinde balast düzenlemesi yapın",
-          "Yumuşak gemi durumunda alt tanklara balast alın"
+          "Investigate changed rolling and use the approved loading assessment before choosing ballast changes."
         ]
       },
       {
@@ -1170,12 +1170,12 @@ Sert gemilerde GM büyüktür (tipik olarak > 1.5 m):
 - Alt tanklara alınan ağır balast`,
         keyPoints: [
           "Büyük GM = Sert gemi = Kısa rulo periyodu",
-          "Güvenli ama konfor açısından sorunlu olabilir",
+          "A high GM alone does not establish safety; accelerations and securing loads also matter.",
           "Yük hasarı ve yapısal yükler artabilir",
-          "Üst tanklara balast alarak yumuşatılabilir"
+          "Raising the centre of gravity can reduce GM but must not be prescribed without an approved stability and strength assessment."
         ],
         practicalTips: [
-          "Sert gemi şikayetlerinde üst tanklara balast alın",
+          "Assess accelerations, securing and approved stability limits before considering any loading change.",
           "Yükleri mümkünse biraz daha yükseğe yerleştirin",
           "Hassas kargolar için ek bağlama önlemleri alın",
           "Mürettebat için anti-deniz tutması önlemleri düşünün"
@@ -1228,10 +1228,10 @@ Yumuşak gemilerde GM küçüktür (tipik olarak < 0.5 m):
           "Küçük GM = Yumuşak gemi = Uzun rulo periyodu",
           "Konforlu ama güvenlik açısından riskli olabilir",
           "Minimum GM değerleri mutlaka sağlanmalı",
-          "Alt tanklara balast alarak sertleştirilebilir"
+          "A ballast change must be checked for its effect on effective GM, free surfaces, trim and structural limits."
         ],
         practicalTips: [
-          "Yumuşak gemi durumunda alt tanklara balast alın",
+          "Investigate changed rolling and use the approved loading assessment before choosing ballast changes.",
           "Yükleri mümkünse daha aşağıya yerleştirin",
           "Serbest yüzey etkisini minimize edin",
           "Ağır havada ekstra dikkatli olun"
@@ -1365,12 +1365,11 @@ Te ≈ Tr / 2  veya  Te ≈ Tr
 
 **2. Rota Değişikliği:**
 - Dalgalara açı verin (baştan veya kıçtan kaçının)
-- Baş açısını 30-50° yapın
+- Select course and speed changes using ship-specific heavy-weather guidance and the surrounding navigational hazards.
 
-**3. GM Artırma:**
-- Alt tanklara ballast alın
-- Üst tankları boşaltın
-- Ağırlık merkezini düşürün
+**3. Assess the loading condition:**
+- Use approved stability information, including free surfaces and intermediate tank states.
+- Do not prescribe a ballast transfer solely from the observed rolling behaviour.
 
 **4. Aktif Stabilizasyon:**
 - Fin stabilizatörleri
@@ -3620,10 +3619,9 @@ SGISC, beş temel dinamik başarısızlık modunu ele alır:
 - Gönüllü uygulama
 - 2020 yayınlandı
 
-**Beklenen Zorunluluk:**
-- Kademeli geçiş
-- Yeni inşa gemiler öncelikli
-- Mevcut gemiler için muafiyetler
+**Status and application:**
+- MSC.1/Circ.1627 contains interim, non-mandatory guidelines.
+- Check the Administration’s applicable requirements and approved ship-specific guidance; do not assume a future mandatory date.
 
 **Pratik Etkileri**
 
@@ -3657,7 +3655,7 @@ SGISC, beş temel dinamik başarısızlık modunu ele alır:
           "Büyük modern gemiler için özellikle önemli"
         ],
         warnings: [
-          "SGISC henüz zorunlu değil ama olacak",
+          "SGISC interim guidelines are non-mandatory; verify the applicable Administration requirements.",
           "Bazı gemiler mevcut tasarımla kriterleri sağlayamayabilir",
           "Operasyonel kısıtlamalar gerekebilir",
           "Erken hazırlık avantaj sağlar"
@@ -4325,7 +4323,7 @@ KG = Toplam Moment / Toplam Ağırlık = 94 000 / 15 000 = 6,27 m
 Adım 2 — GM hesabı:
 GM = KM − KG = 8,50 − 6,27 = 2,23 m
 
-Sonuç: GM = 2,23 m. Bu değer, IMO minimum kriteri olan 0,15 m'nin çok üzerindedir ve yeterli stabiliteyi gösterir. Ancak GM'in büyük olması, geminin "sert" davranış gösterebileceğine işaret eder; rulo periyodu kısa olabilir.
+The calculated GM is 2.23 m. Comparing it with 0.15 m alone does not establish compliance with all applicable stability criteria. A relatively high GM can produce faster rolling and greater accelerations; evaluate the full approved stability criteria, loading condition and securing implications.
 
 **Örnek 2 — Serbest Yüzey Düzeltmeli GM Hesabı**
 
@@ -4703,10 +4701,7 @@ Transfer Operasyonları seyir sırasında stabiliteyi doğrudan etkiler. Yakıt 
 
 Stabilite Kaybı Belirtileri ve bunlara karşı acil eylemler şu şekilde özetlenebilir:
 
-Uzun rolling periyodu → düşük GM → alt tanklara balast alın
-Tek tarafa yatma eğilimi (loll) → GM ≈ 0 veya negatif → ACİL DURUM, dikkatli ve yavaş biçimde alt tanklara balast alın
-Ani heel → kargo kayması veya flooding → hız azaltın, dalgalara karşı pozisyon alın, durumu değerlendirin
-Aşırı hızlı rolling → dalga rezonansı → rota veya hız değiştirerek karşılaşma periyodunu kaydırın
+A longer observed rolling period requires assessment; it is not an automatic instruction to ballast. Suspected loll requires the approved emergency response and competent stability assessment before tank changes. An unexpected list can indicate cargo movement or flooding. Assess the actual condition and select course or speed changes using the ship-specific guidance and surrounding hazards.
 
 Rolling periyodundan GM tahmini yapmak için pratik formül kullanılabilir:
 
@@ -4742,7 +4737,7 @@ Değerlendirme (5–15 dakika) aşamasında, stabilite kaybının nedeni belirle
 
 **Kargo Kayması Durumunda Müdahale:** Gemi açık denize yönlendirilir ve keskin manevralardan kaçınılır. Aşırı hız ve ani dönüşler, kargo kaymasını artırabilir. Limana dönüş değerlendirilir; ancak durumun kötüleşmesi halinde MAYDAY çağrısı yapılır.
 
-**Düşük GM Durumunda Müdahale:** Alt tanklara balast alınır (GM artırımı). Üst tanklar boşaltılır. Son çare olarak güverte yükünün denize atılması (jettison) değerlendirilir.
+**Low effective GM:** Establish the cause and use the approved stability and emergency procedures. Assess each proposed corrective action, including intermediate loading states, free surfaces and structural limits; do not infer a safe ballast sequence from GM alone.
 
 **Jettison (Denize Atma) Kararı**, son çare olarak uygulanır ve ciddi hukuki ile mali sonuçları vardır. Yalnızca batma riskinin yüksek olduğu ve başka çarenin kalmadığı durumlarda kaptan tarafından verilir. Jettison kararı detaylı olarak belgelenmeli, en düşük değerli veya en tehlikeli kargolar önce atılmalı ve yük hattı üzerinden denize bırakılmalıdır.
 
@@ -4936,59 +4931,31 @@ Artık alan                  ≥ 0,075 m·rad
       {
         id: "quick-reference",
         title: "Hızlı Referans Kartları",
-        content: `Hızlı referans kartları, köprüüstünde veya yükleme operasyonları sırasında acil karar verme gereken anlarda kullanılmak üzere tasarlanmış pratik bilgi özetleridir.
+        content: `A stability quick reference should direct the watchkeeper to the ship’s approved information and emergency organisation. It cannot classify every vessel as safe from a single GM value or a fixed rolling-period band.
 
-**Stabilite Uyarı İşaretleri ve Aksiyonlar**
+**Recognise a change and establish the cause**
+A change in rolling behaviour, an unexpected list or an inability to remain upright requires prompt assessment and reporting. Possible causes include changed loading, free surfaces, cargo movement, flooding and wave excitation. Observations alone do not establish the cause. Use available measurements, the loading instrument and approved stability or damage-control information, with qualified assistance where required.
 
-Uzun rolling periyodu gözlemlendiğinde, bunun anlamı düşük GM'dir. Acil aksiyon olarak alt tanklara balast alınmalıdır. Ani heel (tek tarafa yatma) gözlemlendiğinde, bunun anlamı kargo kayması veya flooding olabilir. Manevra yapılmalı, durum değerlendirilmelidir. Loll durumu (gemi tek tarafta kalmaya eğilimli, her iki tarafa da yatıyor ancak dik duramıyor) gözlemlendiğinde, GM sıfıra yakın veya negatiftir. Bu ACİL DURUM'dur — sakin olun ve dikkatli biçimde alt tanklara balast alın. Çok hızlı dönüş (stiff ship) gözlemlendiğinde, GM yüksektir. Normal durumdur ancak mürettebat konforu ve yük emniyeti açısından dikkat edilmelidir.
+**Interpret GM in context**
+GM describes initial stability. The complete assessment also considers the GZ curve, downflooding, applicable criteria, structural limits and the actual loading condition. A large positive GM does not prove safety: rapid rolling can increase accelerations and cargo-securing loads. A small or negative effective GM may be critical, but the response must follow the assessed condition and ship-specific instructions. Do not use universal bands such as “0.5–1.5 m is normal” or “above 1.5 m is safe”.
 
-**GM Değerlendirme Tablosu**
+**Use rolling period only within its assumptions**
+The approximate relation GM ≈ (C × B / T)² needs a suitable ship-specific coefficient and valid measurement conditions. Loading, mass distribution, damping and wave forcing affect observed motion. A period in seconds cannot be classified without the vessel context, and the estimate does not replace approved stability calculations.
 
-GM < 0 → TEHLİKELİ: Gemi stabil değil, acil müdahale gerekli
-GM = 0 – 0,15 m → KRİTİK: IMO minimumunun altında, derhal düzeltilmeli
-GM = 0,15 – 0,50 m → DİKKAT: Minimum sağlanıyor ancak marj düşük, iyileştirme önerilir
-GM = 0,50 – 1,50 m → İYİ: Normal operasyon aralığı
-GM > 1,50 m → SERT: Güvenli ancak konfor azalır, yük ivmeleri artar
+**Assess every tank change**
+Ballasting changes displacement, centre of gravity, trim, free surfaces and structural loading. A final favourable condition does not prove that intermediate stages are safe. Do not prescribe an upper tank, lower tank or side solely from a list or rolling symptom. Counter-flooding and recovery from loll require the approved plan and competent assessment; an improvised transfer can worsen the emergency.
 
-**Rolling Periyodu ve GM Tahmin Tablosu**
-
-T < 8 saniye → Yüksek GM → Sert gemi (stiff)
-T = 8 – 12 saniye → Orta GM → Normal davranış
-T = 12 – 16 saniye → Düşük GM → Yumuşak gemi (tender)
-T > 16 saniye → Çok düşük GM → TEHLİKELİ — acil değerlendirme gerekli
-
-Periyottan hızlı GM tahmini:
-
-────────────
-GM ≈ (C × B / T)²
-────────────
-
-Tipik C değerleri: yük gemileri 0,73–0,78; tankerler 0,74–0,82; konteyner gemileri 0,70–0,76.
-
-**Tank Yönetimi Hızlı Rehberi**
-
-Stabilite iyileştirmek için: alt tankları doldurun, üst tankları boşaltın, merkez tankları kullanın.
-Trim düzeltmek için: başa trim azaltmak istiyorsanız kıç tanklara alın; kıça trim azaltmak istiyorsanız baş tanklara alın.
-Serbest yüzeyi azaltmak için: tankları tam dolu veya tam boş tutun, kısmen dolu tank sayısını minimize edin.
-
-**Acil Durum Hızlı Aksiyon Tablosu**
-
-Düşük GM → 1. Alt tanklara balast al → 2. Üst tankları boşalt
-Kargo kayması → 1. Açık denize yönel → 2. Yavaşla, keskin manevra yapma
-Flooding → 1. Hasarlı bölmeyi izole et → 2. Dikkatli counter-flooding
-Loll durumu → 1. SAKİN OL → 2. Dikkatli ve yavaş biçimde düşük tarafa balast al
-
-Loll durumunda önemli uyarı: Yüksek tarafa hızlı balast almak, geminin karşı tarafa devrilmesine neden olabilir. Balast, yatan tarafa yavaş ve kontrollü biçimde alınmalıdır.`,
+Use the ship’s reporting, emergency and damage-control arrangements promptly, maintain a shared picture of the developing condition and record observations and decisions.`,
         keyPoints: [
           "Hızlı referans kartlarını köprüüstünde hazır bulundurun",
-          "Kritik GM ve periyot değerlerini ezberleyin",
+          "Use the ship’s approved stability limits and interpret rolling observations in context.",
           "Acil durum aksiyonlarını önceden bilin ve tatbikat edin"
         ]
       },
       {
         id: "operational-checklists",
         title: "Operasyonel Kontrol Listeleri",
-        content: `Operasyonel kontrol listeleri, rutin ve kritik stabilite prosedürlerinin eksiksiz uygulanmasını sağlayan sistematik araçlardır. Bu listeler, deneyimli denizcilerin bile stres altında veya rutin monotonluğunda adım atlama riskini ortadan kaldırır.
+        content: `Operational checklists support the consistent application of routine and critical stability procedures. They help reduce missed steps under stress or during repetitive work, but do not eliminate error or replace competent assessment.
 
 **KONTROL LİSTESİ 1 — Kalkış Öncesi Stabilite Kontrolü**
 
@@ -4996,7 +4963,7 @@ Veri Toplama aşamasında: tüm tank soundingleri alınmış olmalı; kargo mikt
 
 Hesaplama aşamasında: yükleme bilgisayarına tüm veriler girilmiş olmalı; departure durumu hesaplanmış olmalı; arrival durumu hesaplanmış olmalı; kritik ara durumlar kontrol edilmeli.
 
-Değerlendirme aşamasında: GMeff ≥ 0,15 m tüm durumlarda sağlanmalı; tüm IMO GZ eğrisi alan kriterleri karşılanmalı; kesme kuvveti ve eğilme momenti limitlerin altında olmalı; draft ve trim değerleri uygun olmalı; yükleme bilgisayarından uyarı veya alarm olmamalı.
+During evaluation, confirm the applicable approved effective-GM and GZ criteria for the vessel and loading condition. Check shear force, bending moment, draught and trim limits. Investigate loading-instrument warnings and verify the entered data; an absence of alarms alone does not establish compliance.
 
 Onay aşamasında: kaptan stabilite hesaplarını inceleyip onaylamış olmalı; hesap belgesi imzalanmış olmalı; belgeler dosyalanmış olmalı.
 
@@ -5022,7 +4989,7 @@ Tamamlama aşamasında: final soundingleri alınmalı; final stabilite hesabı y
 
 Değerlendirme (5–15 dakika): nedenin belirlenmesi (flooding / kargo kayması / düşük GM); mevcut stabilite durumunun tespiti; acil eylem planının oluşturulması; gerekirse MAYDAY hazırlığı.
 
-Düzeltici eylem: flooding ise izolasyon ve pompalama; kargo kayması ise rota ve hız ayarı; düşük GM ise balast operasyonu; tüm eylemlerin kayıt altına alınması.
+Corrective action must follow the assessed cause and approved emergency arrangements. Evaluate flooding boundaries and pumping, cargo movement and manoeuvring risks, and any proposed tank changes, including intermediate states. Record the decisions and actions and reassess their effects.
 
 İletişim: şirket DPA'ya bildirim; klas kuruluşu ve bayrak devletine bildirim; gerektiğinde SAR koordinasyonu; durum raporlarının düzenli güncellenmesi.
 

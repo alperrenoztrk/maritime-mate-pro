@@ -343,6 +343,10 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: "assets/entry-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
         manualChunks(id) {
+          // These two large course narratives otherwise join all machinery
+          // lessons in one shared chunk and exceed the native parse-size budget.
+          if (id.endsWith("/src/data/navigationTopicContents.ts")) return "learning-navigation";
+          if (id.endsWith("/src/data/stabilityTopicsContent.ts")) return "learning-stability";
           if (!id.includes("node_modules")) return undefined;
           if (id.includes("/three/examples/")) return "vendor-three-extras";
           if (id.includes("@react-three/drei")) return "vendor-three-drei";

@@ -106,7 +106,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.2 Güvenli pozisyonlandırma ve haberleşme",
           paragraphs: [
             `Birinci Zabit, ekibi line ile mümkün olduğunca dik açıda ve kaçış yolu açık konumlara yerleştirir. Heaving line atan personel, line yük altına girmeden önce güvenli alana çekilir. Köprüüstü ile "slack away", "heave up", "hold on", "make fast" gibi standart komutlar net telsiz teyidiyle iletilir; belirsizlik kazaya davetiyedir.`,
-            `Aynı anda birden fazla winch operasyonu yapılırken Birinci Zabit operasyonu koordine eder, line'ların aynı anda aşırı yüklenmesini önler. Acil durumda "vira/avara dur" (stop) komutu derhal verilir ve tüm hareket durdurulur.`,
+            "When mooring winches operate together, the Chief Officer coordinates the stations and avoids conflicting movements and excessive line loads. Commands identify the line and action, are repeated back and are followed by completion reports. In danger, give the agreed stop command, stop the equipment safely and re-establish communication before restarting.",
           ],
           bullets: [
             `Line hattında ve bight içinde durma yasağı`,
@@ -124,8 +124,8 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.1 Demir atma prosedürü",
           paragraphs: [
-            `Birinci Zabit baş üstünde demirleme istasyonunu yönetir. Su derinliği, dip yapısı (holding ground), akıntı ve gemi tonajına göre kullanılacak kilit sayısı (shackle/shot) Kaptan ile belirlenir; pratik kural olarak kilit sayısı ≈ derinlik(m)/3 + ek pay olarak hesaplanır, ama dip tutuş ve hava şartına göre artırılır. "Let go" mi yoksa "walk back" mi yapılacağı derinliğe bağlıdır; derin sularda (>50 m) windlass ile yavaşça mayna edilir.`,
-            `Demir mayna edilirken Birinci Zabit, zincirin yönünü (lead direction), gerginliğini (light/moderate/heavy strain) ve dräggin olup olmadığını köprüüstüne sürekli raporlar. "Brought up" raporu, demirin tuttuğunu ve geminin zincir üzerinde sallandığını teyit eder.`,
+            "The Chief Officer leads the forward anchoring station. The Master assesses water depth including tide, hawse-pipe height, available cable, holding ground, weather, current, swinging room and equipment limits. There is no universal formula converting depth directly into a safe number of shackles. Walking back or letting go depends on the approved procedure and windlass capability, not one universal depth threshold.",
+            "While cable is paid out, report its length, direction and observed load to the bridge. Brought up means the vessel has come to rest on its cable; it does not guarantee continued holding. The bridge verifies position and movement and maintains a watch for dragging using independent observations.",
           ],
           callouts: [
             {
@@ -138,7 +138,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "4.2 Demir nöbeti ve dragging kontrolü",
           paragraphs: [
-            `Demirde kalındığında anchor watch tutulur. Birinci Zabit, vardiya zabitinin GPS anchor position, transit bearing ve radar range ile dragging kontrolü yapmasını sağlar. Dragging tespit edilirse ana makine hazır bekletilir, ikinci demir veya windlass müdahalesi planlanır. Ağır hava beklenirse Kaptan'a derhal raporlanır; çoğu zaman demir vira edip açık denize çıkmak en güvenli seçimdir.`,
+            "At anchor, maintain the planned watch using suitable independent position and movement checks. Compare observations with the expected swinging area and conditions. Report suspected dragging and worsening weather promptly to the Master. Prepare propulsion and assess available responses under the ship-specific anchoring and emergency procedures.",
           ],
         },
       ],

@@ -50,7 +50,7 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
       },
     ],
     keyPoints: [
-      "DR dış etkisiz hesap mevkidir; EP dış etkiler uygulanmış tahmini mevkidir.",
+      "Dead reckoning (DR) advances a previous position using course steered and distance through the water. An estimated position (EP) also allows for estimated current and leeway. Neither replaces an independently established fix.",
       "Aynı zamandaki DR–fix farkı set ve drifti verir.",
       "Elektronik mevki varken de DR zinciri emniyet çapraz kontrolüdür.",
       "GNSS şüphesinde hız, rota ve kaptanı çağırma kararı erken verilir.",
@@ -76,7 +76,7 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
       {
         title: "Kaptanı Derhâl Çağırma Kriterleri",
         content:
-          "Kaptanın gemiye özel talimatları her zaman önceliklidir. Genel olarak görüş kötüleştiğinde, trafik veya CPA/TCPA emniyet sınırına yaklaştığında, mevki şüpheli olduğunda, rota planı sürdürülemediğinde, beklenmeyen sığlık/derinlik görüldüğünde, dümen-makine-seyir cihazı arızasında, hava hızla kötüleştiğinde, demir taramasında, pilot/VTS talimatı şüpheli olduğunda, tehlike mesajı alındığında veya zabit herhangi bir nedenle emin olmadığında kaptan çağrılır.",
+          "Call the Master as required by standing orders and whenever the officer of the watch is in doubt: reduced visibility, collision risk or CPA/TCPA concerns, uncertain position, passage-plan difficulties, unexpected depth, steering or propulsion failure, worsening weather, suspected anchor dragging, doubtful pilot or VTS instructions, or distress messages. Calling the Master does not remove the duty to take immediate safety action.",
         bulletPoints: [
           "Kısıtlı görüş veya görüşte hızlı düşüş.",
           "Beklenmeyen trafik, yakın geçiş veya COLREG kararında belirsizlik.",
@@ -198,7 +198,7 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
       {
         title: "Rota ve Hız Seçimi",
         content:
-          "Baş dalgada yüksek hız slamming, pounding ve green water riskini artırır; hız düşürülür ve gerekirse dalga omuzluktan alınır. Kıçtan gelen dalgada surf-riding, broaching ve dümen kaybı riski değerlendirilir. Bordadan dalga synchronous rolling yaratabilir. En güvenli rota, gemi tipine ve yük durumuna göre değişir; sabit bir 'ideal açı' yoktur. Değişiklikler yeterli deniz alanı bırakılarak erken yapılır.",
+          "High speed in head seas can increase slamming, pounding and green-water loading. Assess course and speed using ship-specific guidance, sea room and observed response. Following and quartering seas can create surf-riding and broaching risks; no single wave angle is safest for every ship and loading condition.",
       },
       {
         title: "Parametric ve Synchronous Rolling",

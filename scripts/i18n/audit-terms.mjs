@@ -24,6 +24,7 @@
  *   node scripts/i18n/audit-terms.mjs --samples=5   # examples per finding
  */
 import fs from 'node:fs';
+import { effectiveDictionary } from './effective-dictionary.mjs';
 import path from 'node:path';
 import { findTermIssues } from './term-audit-rules.mjs';
 
@@ -71,11 +72,8 @@ for (const file of files) {
     report.push({ lang, empty: true, tokens: 0, senses: 0, findings: [] });
     continue;
   }
-  const dict = JSON.parse(raw);
-  if (lang === 'en') {
-    const sharedFile = path.join(OUT_DIR, 'shared/learning-guide.en.json');
-    if (fs.existsSync(sharedFile)) Object.assign(dict, JSON.parse(fs.readFileSync(sharedFile, 'utf8')));
-  }
+  const dict = effectiveDictionary(lang, JSON.parse(raw));
+
 
   const tokenCounts = new Map();
   const senseCounts = new Map();

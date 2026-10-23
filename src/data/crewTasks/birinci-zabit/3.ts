@@ -75,7 +75,7 @@ const content: CrewTaskLongForm = {
           subheading: "3.1 Liferaft ve hydrostatic release unit",
           paragraphs: [
             `Can salları yıllık olarak (bazı tiplerde uzatılmış aralıkla) onaylı servis istasyonunda açılır, muayene edilir ve yeniden paketlenir. HRU (hydrostatic release), en fazla 4 metre derinlikte otomatik serbest bırakma sağlar; HRU'nun expiry tarihi (genellikle 2 yıl) takip edilir ve lashing/weak link doğru bağlanır.`,
-            `Birinci Zabit, sal pozisyonlarının float-free çalışacak şekilde bağlandığını, painter line'ın senlamaya doğru kelepçelendiğini ve manifest'teki sal kapasitesinin mevcut mürettebatı karşıladığını doğrular.`,
+            "The Chief Officer checks each liferaft float-free arrangement against the approved raft and hydrostatic release unit instructions. Connect the painter through the specified weak link to the correct strong point. Do not confuse the retaining lashing with the painter or add lashings that prevent release. Check capacity and distribution against the approved life-saving appliance plan and persons on board.",
           ],
           callouts: [
             {

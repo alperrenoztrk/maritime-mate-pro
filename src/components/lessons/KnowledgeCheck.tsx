@@ -14,10 +14,12 @@ export function KnowledgeCheck({
   question,
   onAnswered,
   compact = false,
+  onReview,
 }: {
   question: QuizQuestion;
   onAnswered?: (correct: boolean) => void;
   compact?: boolean;
+  onReview?: () => void;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const answered = selected !== null;
@@ -42,7 +44,7 @@ export function KnowledgeCheck({
     >
       {!compact && (
         <p className="text-micro font-bold uppercase tracking-[0.2em] text-primary">
-          Information Control
+          Knowledge check
         </p>
       )}
       <p className="text-base font-medium text-foreground">{question.question}</p>
@@ -82,10 +84,14 @@ export function KnowledgeCheck({
       </div>
 
       {answered && (
-        <div className="rounded-xl border border-blue-200 bg-blue-50 p-3.5 dark:border-blue-800 dark:bg-blue-900/20">
+        <div role="status" aria-live="polite" className="space-y-2 rounded-xl border border-blue-200 bg-blue-50 p-3.5 dark:border-blue-800 dark:bg-blue-900/20">
+          <p className="font-semibold text-foreground">{selected === question.correctAnswer ? "Correct" : "Review this answer"}</p>
+          {selected !== question.correctAnswer && <p className="text-sm text-foreground">Correct answer: {question.options[question.correctAnswer]}</p>}
+          {question.optionExplanations?.[selected] && <p className="text-sm text-foreground">{question.optionExplanations[selected]}</p>}
           <p className="text-sm text-blue-700 dark:text-blue-300">
-            <strong>Description:</strong> {question.explanation}
+            <strong>Why:</strong> {question.explanation}
           </p>
+          {onReview && <button type="button" onClick={onReview} className="min-h-11 text-sm font-semibold text-primary underline">Review the explanation</button>}
         </div>
       )}
     </div>

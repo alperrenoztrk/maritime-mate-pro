@@ -60,7 +60,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
   // ──────────────────────────────────────────────────────────────────────
   "navigation|Düzlem seyir": {
     deepDive:
-      "Düzlem seyir (plane sailing), kısa mesafelerde Dünya yüzeyinin düz kabul edilebileceği varsayımına dayanan en temel seyir hesaplama yöntemidir. Bu yaklaşımda meridyenler birbirine paralel, boylam dakikaları sabit uzunlukta kabul edilir ve seyir; dik kenarları DLat (enlem farkı, kuzey–güney bileşeni) ve Dep (departure, doğu–batı bileşeni), hipotenüsü ise toplam mesafe (Dist) olan bir dik üçgen olarak çözülür. Düzlem seyir, yalnızca ~600 dm'e (yaklaşık 600 nm'lik bacaklarda dahi enlem farkı 4–5°'yi aşmadıkça) ve orta enlemlerde kullanılır; uzun doğu–batı bacaklarında veya yüksek enlemlerde Mercator/orta enlem seyrine geçilmelidir.",
+      "Plane sailing uses a local plane approximation. Its accuracy depends on latitude, track length and direction; a universal 600 nm limit does not establish suitability. Resolve distance into change of latitude and departure, then use the appropriate latitude-dependent method for longitude. Use a more suitable sailing method when the required positional accuracy is not met.",
     coreFormula: {
       text: "DLat = Dist · cos C    |    Dep = Dist · sin C    |    DLong = Dep / cos(Lm)",
       description:
@@ -75,7 +75,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       {
         title: "2. DLat'ı dakika cinsinden hesapla",
         description:
-          "DLat (′) = Dist (nm) × cos C. Dist'i deniz mili ver, sonuç doğrudan enlem dakikası çıkar (çünkü 1′ enlem = 1 nm).",
+          "DLat (′) ≈ Dist (nm) × cos C. Enter distance in nautical miles and interpret the result as minutes of latitude using the navigational approximation 1′ of latitude ≈ 1 nm. The international nautical mile is defined as 1852 m.",
       },
       {
         title: "3. Departure'ı hesapla",
