@@ -30,6 +30,7 @@ import earthLightingJuneSolstice from "@/assets/navigation/real/earth-lighting-j
 import loxodromeOrthodrome from "@/assets/navigation/real/loxodrome-orthodrome.svg";
 import shipBinnacleImg from "@/assets/lessons/ship-binnacle.jpg";
 import lateralMarksRegionA from "@/assets/navigation/real/lateral-marks-region-a.jpg";
+import type { LessonFigureId } from "@/data/lessonFigures";
 
 
 export interface TopicSection {
@@ -42,6 +43,10 @@ export interface TopicSection {
     text: string;
     description: string;
   };
+  table?: { headers: string[]; rows: string[][] };
+  example?: { problem: string; steps?: string[]; solution?: string; result?: string };
+  /** Code-drawn figure shown after the section text. */
+  figure?: LessonFigureId;
 }
 
 export interface TopicDetailContent {
@@ -2497,6 +2502,220 @@ Bu değer, iki mevki arasındaki teorik en kısa deniz yolunu temsil eder. Rhumb
       "Lateral ve kardinal işaretlerin ışık ritimleri gece tanımada belirleyicidir",
       "Emniyetli su ve izole tehlike işaretleri, mevki doğrulamada kritik rol oynar",
       "Semboller, derinlik değerleri ve geminin draft’ı birlikte değerlendirilmelidir"
+    ]
+  },
+  "Deniz fenerleri ve ışık karakteristikleri": {
+    title: "Deniz Fenerleri ve Işık Karakteristikleri",
+    introduction: "Deniz fenerleri (lighthouses) ve diğer ışıklı seyir yardımcıları, gece seyrinde kıyıyı, liman girişlerini, tehlikeleri ve emniyetli geçişleri tanımayı sağlar. Bir seyir zabiti için en önemli gerçek şudur: her ışığın kendine özgü bir karakteristiği vardır ve gördüğün ışığın hangi fenere ait olduğunu bu karakteristiği haritayla karşılaştırarak bulursun. Denizde aynı anda 5 saniyede bir beyaz çakan, 10 saniyede iki kez kırmızı çakan ve sürekli yeşil yanan üç ışık görüyorsan, üçünü rengi, çakma düzeni ve periyodu birbirinden ayırır.",
+    sections: [
+      {
+        title: "Fenerler ne işe yarar?",
+        content: "Kıyıdaki büyük fenerler ile şamandıralardaki ve sabit işaretlerdeki ışıklar aynı dili kullanır; köprüüstünde dört ayrı iş görürler.",
+        bulletPoints: [
+          "Kıyı ve mevki tanıma (landfall): Uzun bir açık deniz seyrinden sonra belirli bir fenerin görülmesi, geminin bulunduğu bölgeyi doğrular; fenerden alınan kerteriz bir mevki hattıdır.",
+          "Tehlike işaretleme: Işık, sığlık, kayalık veya batığın yerini ya da hangi taraftan emniyetle geçileceğini gösterir.",
+          "Liman ve kanal girişi: Işıklar kanal sınırlarını, mendirek başlarını ve yaklaşma kanallarını belirler.",
+          "Hat gösterme: İki ışığın aynı doğrultuya getirilmesi (leading lights) veya bir sektör ışığının izlenmesiyle gemi belirli bir hat üzerinde tutulur."
+        ]
+      },
+      {
+        title: "Işık karakteristiği nedir?",
+        content: "Işık karakteristiği (light characteristic), bir ışığın zaman içinde nasıl yandığını, söndüğünü veya renk değiştirdiğini anlatan imzasıdır. Dört unsurdan oluşur; ışığın yüksekliği ve menzili tanımı tamamlar.",
+        table: {
+          headers: ["Unsur", "Haritada", "Anlamı"],
+          rows: [
+            ["Ritim", "F, Fl, LFl, Oc, Iso, Q, VQ, Mo", "Işığın sabit mi yandığı, çakar mı yoksa örtmeli mi olduğu"],
+            ["Renk", "W, R, G, Y, Bu", "Beyaz, kırmızı, yeşil, sarı, mavi"],
+            ["Grup", "Fl(3), Oc(2), Fl(2+1)", "Her periyotta kaç çakar veya kaç örtme olduğu"],
+            ["Periyot", "10s", "Işık dizisinin bütününün kaç saniyede bir tekrarlandığı"]
+          ]
+        }
+      },
+      {
+        title: "Haritadaki fener kaydı nasıl okunur?",
+        content: `Haritada ve fener listesinde bir ışık, sırası sabit kısaltmalarla yazılır: karakter ve grup, renk, periyot, yükseklik ve menzil. Aşağıdaki kayıt temsilidir, gerçek bir fenere ait değildir.
+
+Fl(3) W 10s 18m 15M şu anlama gelir: beyaz bir ışık her 10 saniyelik periyotta üç kez çakar; ışık, haritanın yükseklik referansının (Admiralty haritalarında genellikle MHWS) 18 metre üzerindedir ve nominal menzili 15 deniz milidir.
+
+En çok karıştırılan kavram periyottur. 10s, her çakarın 10 saniye sürdüğü ya da çakarlar arasında 10 saniye olduğu anlamına gelmez: üç çakar ve aralarındaki ve sonlarındaki karanlıklar birlikte 10 saniyede tamamlanır, sonra dizi aynen tekrarlanır. Periyodu ölçerken bir grubun ilk çakarından bir sonraki grubun ilk çakarına kadar geçen süreyi alırsın.
+
+Bu yazım IHO INT 1 (Chart 1) P bölümü ve Admiralty List of Lights and Fog Signals ile uyumludur.`,
+        figure: "light-notation"
+      },
+      {
+        title: "Temel ışık ritimleri",
+        content: "Gece vardiyasında gördüğün ışığı tanımanın anahtarı ritimdir. Aşağıdaki şemalarda parlak bloklar ışığın yandığı, koyu bloklar söndüğü süreleri gösterir; oynatma düğmesiyle her ışığı gerçek hızında izleyebilirsin. Periyot içindeki süreler temsilidir.",
+        figure: "light-rhythms-basic",
+        table: {
+          headers: ["Kısaltma", "Adı", "Tanım"],
+          rows: [
+            ["F", "Sabit (Fixed)", "Kesintisiz ve sabit şiddette yanar."],
+            ["Fl", "Çakar (Flashing)", "Her periyotta ışıklı süre karanlıktan kısadır; çakarlar eşit uzunluktadır."],
+            ["LFl", "Uzun çakar (Long-flashing)", "Tek çakarın süresi en az 2 saniyedir."],
+            ["Oc", "Örtmeli (Occulting)", "Işıklı süre karanlıktan uzundur; ışık kısa aralıklarla söner."],
+            ["Oc(2)", "Grup örtmeli (Group occulting)", "Her periyotta iki örtme bir grup oluşturur."],
+            ["Iso", "Eşit aralıklı (Isophase)", "Işıklı ve karanlık süreler eşittir."],
+            ["Fl(2)", "Grup çakar (Group flashing)", "İki çakar arka arkaya gelir, ardından daha uzun bir karanlık gelir."],
+            ["Fl(2+1)", "Bileşik grup çakar (Composite group flashing)", "Önce iki çakar, sonra ayrı bir tek çakar."],
+            ["Mo(A)", "Mors (Morse code)", "Işık bir mors harfini verir; A harfi bir kısa ve bir uzun ışıktır."],
+            ["Al", "Dönüşümlü (Alternating)", "Işık renk değiştirerek yanar; ör. Al Fl WR, dönüşümlü beyaz ve kırmızı çakar."],
+            ["FFl", "Sabit ve çakar (Fixed and flashing)", "Sabit bir ışığın üzerine daha parlak çakarlar eklenir."],
+            ["IQ", "Kesintili hızlı (Interrupted quick)", "Hızlı çakar dizisi düzenli aralıklarla uzun bir karanlıkla kesilir."]
+          ]
+        }
+      },
+      {
+        title: "Hızlı çakarlar: Q, VQ, UQ",
+        content: `Hızlı çakar ışıklarda çakar sayısı dakika başına tanımlanır. Bu sınıflandırma IHO INT 1'de yer alır.
+
+Q veya VQ, ışığın mutlaka kesintisiz çakacağı anlamına gelmez. Q(3) veya VQ(9) gibi belirli sayıda hızlı çakardan bir grup da oluşturabilir; kardinal işaretler tam olarak bu grupları kullanır.`,
+        figure: "light-rhythms-quick",
+        table: {
+          headers: ["Kısaltma", "Adı", "Dakikadaki çakar"],
+          rows: [
+            ["Q", "Hızlı (Quick)", "50–79; genellikle 50 veya 60"],
+            ["VQ", "Çok hızlı (Very quick)", "80–159; genellikle 100 veya 120"],
+            ["UQ", "Ultra hızlı (Ultra quick)", "160 veya daha fazla; genellikle 240–300"]
+          ]
+        }
+      },
+      {
+        title: "IALA Bölge A'da ışıklı işaretler",
+        image: lateralMarksRegionA,
+        imageAlt: "IALA Region A: a red port hand mark with a can topmark (left) and a green starboard hand mark with a cone topmark (right)",
+        content: `Kıyıdaki büyük fenerlerin karakteristiği çoğunlukla hangi feneri gördüğünü bulmaya yarar. Şamandıra ve sabit işaret ışıkları ise ayrıca emniyetli geçiş tarafını veya tehlikenin yerini söyler. Türkiye IALA Bölge A'dadır.
+
+Lateral renk kuralını gemi borda fenerleriyle karıştırma: COLREG'e göre geminin iskele borda feneri kırmızı, sancak borda feneri yeşildir; IALA lateral işaretlerinin anlamı ise konvansiyonel şamandıralama yönüne bağlıdır ve Bölge A'da denizden limana girerken kırmızı işaretler iskelede bırakılır.`,
+        figure: "light-rhythms-marks",
+        table: {
+          headers: ["İşaret türü", "Görünüşü", "Işık"],
+          rows: [
+            ["İskele işareti", "Kırmızı, silindirik (can)", "Kırmızı; Fl(2+1) dışında herhangi bir ritim"],
+            ["Sancak işareti", "Yeşil, konik", "Yeşil; Fl(2+1) dışında herhangi bir ritim"],
+            ["Tercihli kanal sancakta", "Kırmızı, ortasında geniş yeşil bant", "Kırmızı, Fl(2+1) R"],
+            ["Tercihli kanal iskelede", "Yeşil, ortasında geniş kırmızı bant", "Yeşil, Fl(2+1) G"],
+            ["İzole tehlike", "Siyah, bir veya daha fazla geniş kırmızı yatay bant; tepede iki siyah küre", "Beyaz, Fl(2)"],
+            ["Emniyetli su", "Kırmızı-beyaz düşey şeritler; tepede tek kırmızı küre", "Beyaz; Iso, Oc, LFl 10s veya Mo(A)"],
+            ["Özel işaret", "Sarı; tepede sarı X", "Sarı; diğer işaretlerin ritimleriyle karışmayan bir ritim"],
+            ["Acil batık işareti", "Eşit sayıda mavi ve sarı düşey şerit; tepede dik sarı haç", "Dönüşümlü mavi ve sarı: 1 s mavi, 0,5 s karanlık, 1 s sarı, 0,5 s karanlık"]
+          ]
+        }
+      },
+      {
+        title: "Kardinal ışıklar",
+        image: cardinalMarksDiagram,
+        imageAlt: "IALA cardinal marks placed around a danger, with their colours, topmarks and light characters",
+        content: `Kardinal işaretler bir tehlikenin hangi tarafından emniyetle geçileceğini gösterir: kuzey kardinalinde tehlikenin kuzeyinden, doğu kardinalinde doğusundan, güney kardinalinde güneyinden, batı kardinalinde batısından geçilir. Işıklıysa bütün kardinal ışıklar beyazdır.
+
+Çakar sayısını saat kadranıyla eşleştir: saat 3 doğu (3 çakar), saat 6 güney (6 çakar ve bir uzun çakar), saat 9 batı (9 çakar); kuzey ise kesintisiz çakar. Güneydeki uzun çakar, altılı grubun üçlü veya dokuzlu grupla karıştırılmaması için eklenmiştir.`,
+        figure: "light-rhythms-cardinal",
+        table: {
+          headers: ["Kardinal", "Q tipi", "VQ tipi", "Emniyetli taraf"],
+          rows: [
+            ["Kuzey", "Q", "VQ", "Tehlikenin kuzeyi"],
+            ["Doğu", "Q(3) 10s", "VQ(3) 5s", "Tehlikenin doğusu"],
+            ["Güney", "Q(6)+LFl 15s", "VQ(6)+LFl 10s", "Tehlikenin güneyi"],
+            ["Batı", "Q(9) 15s", "VQ(9) 10s", "Tehlikenin batısı"]
+          ]
+        }
+      },
+      {
+        title: "Sektör ışıkları",
+        content: `Sektör ışığı, farklı doğrultulardan bakıldığında farklı renk veya karakteristik gösteren ışıktır. Sık rastlanan düzende beyaz sektör emniyetli yaklaşmayı, kırmızı ve yeşil sektörler ise iki yandaki sınırları veya tehlike tarafını gösterir. Bu bir alışkanlıktır, kural değildir: beyazın her zaman emniyetli, kırmızı ya da yeşilin her zaman tehlikeli olduğunu varsayamazsın; sektörlerin anlamını harita ve fener listesinden okursun.
+
+Sektör sınırları, aksi belirtilmedikçe, denizden ışığa doğru alınan hakiki kerterizlerle verilir. Haritada beyaz sektör 085°–095° diye yazılıysa ışığı 085° ile 095° arasındaki bir kerterizde gören gemi beyaz sektördedir; gemi ışığın batısındadır.`,
+        figure: "light-sectors",
+        bulletPoints: [
+          "Sektör sınırları optik olarak keskin değildir; renk değişimini kesin bir mevki hattı gibi kullanma.",
+          "Sektör değişimini kerteriz, radar mesafesi veya başka bir mevki yöntemiyle doğrula."
+        ]
+      },
+      {
+        title: "Leading lights",
+        content: `Leading lights, aynı hat üzerinde bulunan iki ışıktan oluşur. Öndeki ışık daha alçakta ve gemiye daha yakın, arkadaki ışık daha yüksekte ve uzaktadır. İki ışık aynı düşey doğrultuya geldiğinde gemi haritada çizilen hattın (leading line) üzerindedir.
+
+Gemi hattın dışına çıktığında uzaktaki arka ışık, yakındaki ön ışıktan daha az kayar. Bu yüzden ışıklara bakarken arka ışık ön ışığın solunda görünüyorsa gemi hattın iskele tarafındadır ve hatta dönmek için rota sancağa değiştirilir; sağında görünüyorsa gemi hattın sancak tarafındadır ve rota iskeleye değiştirilir.`,
+        figure: "leading-lights",
+        bulletPoints: [
+          "Hattın hangi bölümünün kullanılacağı haritada gösterilir; o bölümün dışında hat emniyetli suyu garanti etmez.",
+          "Bu yöntem GNSS olmadan da hattın üzerinde olup olmadığını gözle doğrulatır, ama derinlik, trafik ve diğer emniyet kontrollerinin yerini tutmaz."
+        ]
+      },
+      {
+        title: "Üç menzil kavramı",
+        content: "Bir ışığı ne kadar uzaktan görebileceğini değerlendirirken üç ayrı menzil kavramını ayırmalısın.",
+        bulletPoints: [
+          "Görebileceğin en uzak mesafe, coğrafi menzil ile o geceki ışıklı menzilden küçük olanıdır.",
+          "Bazı ulusal haritalar nominal yerine ışıklı veya coğrafi menzil verebilir; hangisinin verildiğini harita notundan kontrol et."
+        ],
+        table: {
+          headers: ["Kavram", "Tanım"],
+          rows: [
+            ["Nominal menzil (nominal range)", "Meteorolojik görüşün 10 deniz mili olduğu standart koşullarda, yalnızca ışık şiddetine bağlı menzil. Admiralty yayınlarında verilen menzil budur."],
+            ["Işıklı menzil (luminous range)", "Işık şiddeti ve o anki meteorolojik görüşle belirlenen menzil; fener listesindeki luminous range diyagramından bulunur."],
+            ["Coğrafi menzil (geographic range)", "Dünyanın eğriliği, ışığın yüksekliği ve gözlemcinin göz yüksekliğiyle belirlenen geometrik menzil."]
+          ]
+        }
+      },
+      {
+        title: "Coğrafi menzil hesabı",
+        content: "Coğrafi menzil, ışığın ve gözün ufuk mesafelerinin toplamıdır. Standart atmosferik kırılmayla yaklaşık bağıntı D = 2,08 × (√H + √h) şeklindedir; D deniz mili, H ışığın yüksekliği ve h göz yüksekliği metre cinsindendir. Hesaplayıcıda kendi değerlerini deneyebilirsin.",
+        figure: "light-range-calculator",
+        bulletPoints: [
+          "Işık ufukta ilk belirdiğinde (rising) veya kaybolduğunda (dipping) gemiye olan mesafesi yaklaşık coğrafi menzile eşittir; bu, ışığın kerterizi ile birlikte bir mevki verir."
+        ],
+        example: {
+          problem: "Işığın yüksekliği 30 m, köprüüstünde göz yüksekliği 15 m ve ışığın nominal menzili 12 deniz milidir.",
+          steps: [
+            "Işığın ufuk mesafesi: 2,08 × √30 = 11,39 deniz mili",
+            "Gözün ufuk mesafesi: 2,08 × √15 = 8,06 deniz mili",
+            "Coğrafi menzil: 11,39 + 8,06 = 19,45 deniz mili"
+          ],
+          result: "Coğrafi menzil yaklaşık 19,45 deniz milidir. Nominal menzil 12 deniz mili olduğundan açık havada bile ışığı 19 milden göreceğini varsayamazsın; o geceki ışıklı menzili fener listesindeki diyagramdan bul ve iki menzilden küçük olanı esas al."
+        }
+      },
+      {
+        title: "Köprüüstünde fener teşhisi",
+        content: "Gece vardiyasında ufukta bir ışık görüyorsun. ENC'de yakın çevrede iki aday fener var: A, Fl W 5s; B, Fl(2) W 10s. İkisi de beyaz olduğu için renk tek başına yetmez.",
+        example: {
+          problem: "Gördüğün ışık A mı, B mi?",
+          steps: [
+            "Rengi belirle: beyaz mı, kırmızı mı, yeşil mi, sarı mı? Kıyıdaki arka plan ışıklarıyla karışıyor mu?",
+            "Çakarları say: tek mi, ikili ya da üçlü grup mu? Uzun bir çakar var mı?",
+            "Periyodu saniyeleri sayarak veya bir saniye ölçerle ölç: bir grubun ilk çakarından sonraki grubun ilk çakarına kadar geçen süreyi birkaç tur boyunca ölç.",
+            "Kerterizi haritayla karşılaştır: pusula kerterizini düzeltmelerle hakiki kerterize çevir; aday fenerlerin konumunu, menzilini, sektörünü ve karakteristiğini kontrol et.",
+            "Bağımsız bilgiyle doğrula: başka bir fener, radar mesafesi veya kıyı şekliyle çapraz kontrol yap; tek bir fener gözleminden kesin mevki kabul etme."
+          ],
+          result: "İki beyaz çakar sayıp grubun 10 saniyede tekrarlandığını doğruladıysan ışık B'nin karakteristiğine uyar; yine de kerteriz ve mevkiyle doğrula."
+        }
+      },
+      {
+        title: "Operasyonel uyarılar",
+        content: "Fenerlerle çalışırken sık yapılan hatalar şunlardır.",
+        bulletPoints: [
+          "Işık karakteristiği tehlikenin kendisi değildir: Fl(2) gördüğünde bunun mutlaka izole tehlike işareti olduğunu söyleyemezsin; aynı ritim başka bir seyir yardımcısında da bulunabilir. Haritadaki sembolü ve mevkiyi incele.",
+          "Görünmeyen fener arızalı olmayabilir: ışık coğrafi ufkun altında, başka bir sektörde, yağış veya sisin arkasında olabilir ya da kıyı ışıkları onu maskeleyebilir.",
+          "Işığın yüksekliği kulenin yüksekliği değildir: haritadaki değer, ışık kaynağının yükseklik referansı üzerindeki yüksekliğidir; yapının tabanından tepesine olan ölçü değildir.",
+          "Yayınları güncel tut: ENC ile birlikte Admiralty List of Lights and Fog Signals, Notices to Mariners ve seyir uyarılarını kontrol et; bir ışığın karakteristiği, sektörleri veya çalışma durumu değişebilir."
+        ]
+      },
+      {
+        title: "Başvuru kaynakları",
+        content: "Bu dersteki tanımlar aşağıdaki yayınlara dayanır.",
+        bulletPoints: [
+          "IALA R1001, The IALA Maritime Buoyage System",
+          "IHO INT 1 (Admiralty Chart 5011), bölüm P: Işıklar",
+          "Admiralty List of Lights and Fog Signals (NP 74–84)",
+          "COLREG Kural 21: borda fenerlerinin renkleri ve yayları"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Işık ritmi feneri teşhis etmeye, renk ve işaret türü ne anlama geldiğini yorumlamaya, harita ve kerteriz ise gördüğün ışığı doğru yere oturtmaya yarar.",
+      "Periyot, çakarlar ve karanlıklar dahil bütün dizinin süresidir.",
+      "Kardinal çakar sayıları saat kadranını izler: 3 doğu, 6 ve uzun çakar güney, 9 batı, kesintisiz kuzey.",
+      "Sektör sınırları denizden ışığa doğru alınan hakiki kerterizlerdir.",
+      "Bir ışığı en fazla, coğrafi menzil ile ışıklı menzilden küçük olanında görmeyi bekleyebilirsin."
     ]
   },
   "Harita düzeltmeleri (Notice to Mariners)": {

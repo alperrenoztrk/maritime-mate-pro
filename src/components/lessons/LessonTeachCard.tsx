@@ -3,6 +3,7 @@ import type { BetaSection } from "@/data/betaLessons";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
 import { LessonImage } from "@/components/ui/LessonImage";
+import { LessonFigure } from "@/components/lessons/figures/LessonFigure";
 
 /**
  * Tek bir normalize ders bölümünün (BetaSection) anlatım kartı.
@@ -84,6 +85,8 @@ export function LessonTeachCard({
         </ReactMarkdown>
       )}
 
+      {section.figure && <LessonFigure id={section.figure} />}
+
       {section.bulletPoints && section.bulletPoints.length > 0 && (
         <ul className="space-y-2 pl-1">
           {section.bulletPoints.map((point, pointIndex) => (
@@ -115,7 +118,7 @@ export function LessonTeachCard({
             <thead className="bg-muted/50">
               <tr>
                 {section.table.headers.map((h, i) => (
-                  <th key={i} className="px-3 py-2 font-semibold text-foreground">{h}</th>
+                  <th key={i} className="break-normal px-3 py-2 font-semibold text-foreground">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -123,7 +126,7 @@ export function LessonTeachCard({
               {section.table.rows.map((row, ri) => (
                 <tr key={ri} className="border-t border-border/40">
                   {row.map((cell, ci) => (
-                    <td key={ci} className="px-3 py-2 text-foreground/80">{cell}</td>
+                    <td key={ci} className="break-normal px-3 py-2 text-foreground/80">{cell}</td>
                   ))}
                 </tr>
               ))}

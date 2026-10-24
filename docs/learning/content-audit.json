@@ -2,7 +2,7 @@
   "methodology": "Counts visible teaching text, examples, formulas and tables, including existing guided enhancements. Excludes identifiers, headings and integrated rule appendices. Fewer than 150 words is an editorial triage flag, not a quality score. Checks verify wiring and answer metadata, not independent professional certification of the complete corpus.",
   "totals": {
     "courses": 25,
-    "topics": 806,
+    "topics": 807,
     "authoredChecks": 2110,
     "newWorkedCases": 16,
     "shortTeachingTopics": 331
@@ -194,8 +194,18 @@
       "module": "navigation-chartwork",
       "title": "Harita sembolleri ve kısaltmalar",
       "teachingWords": 1753,
-      "authoredChecks": 4,
+      "authoredChecks": 2,
       "workedExamples": 0,
+      "shortTeaching": false
+    },
+    {
+      "id": "navigation-deniz-fenerleri-ve-isik-karakteristikleri",
+      "course": "navigation",
+      "module": "navigation-chartwork",
+      "title": "Deniz fenerleri ve ışık karakteristikleri",
+      "teachingWords": 1790,
+      "authoredChecks": 2,
+      "workedExamples": 2,
       "shortTeaching": false
     },
     {
