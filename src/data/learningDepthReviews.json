@@ -1,0 +1,2202 @@
+[
+  {
+    "topicId": "machine-diesel-engines-dizel-motor-temelleri-dizel-cevrimi-ve-sikistirma-ile-atesleme-1",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Dizel çevrimi ve sıkıştırma ile ateşleme",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 132,
+    "section": {
+      "id": "machine-diesel-engines-dizel-motor-temelleri-dizel-cevrimi-ve-sikistirma-ile-atesleme-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A compression-ignition engine heats air through compression before injecting fuel. The ideal Diesel cycle represents heat addition at constant pressure, but real combustion takes finite time and pressure varies. Compression quality, fuel ignition behavior and injection timing interact.",
+      "example": {
+        "problem": "An engine cranks normally but will not fire despite fuel reaching the supply line.",
+        "steps": [
+          "Separate fuel delivery to the injector from actual injection and ignition.",
+          "Check the approved starting conditions, compression-related evidence and fuel condition instead of assuming supply pressure proves combustion readiness."
+        ],
+        "result": "Use the maker's diagnostic sequence. The ideal cycle explains the required air heating but does not establish the actual cylinder temperature during a failed start."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-dizel-motor-temelleri-iki-zamanli-motor-calisma-prensibi-2",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "İki zamanlı motor çalışma prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 143,
+    "section": {
+      "id": "machine-diesel-engines-dizel-motor-temelleri-iki-zamanli-motor-calisma-prensibi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A two-stroke engine completes its cycle in one crankshaft revolution. Exhaust removal and fresh-air admission overlap around the lower part of the stroke, so effective scavenging is essential. A power stroke every revolution does not imply twice the power of every four-stroke engine of similar dimensions.",
+      "example": {
+        "problem": "A low-speed engine has poor combustion and low scavenge pressure at low load.",
+        "steps": [
+          "Compare auxiliary blower operation, air-path restrictions and the approved low-load arrangement.",
+          "Check cylinder and exhaust trends before treating the symptom as fuel deficiency alone."
+        ],
+        "result": "Combustion depends on air exchange as well as injection. Avoid increasing fuel delivery to compensate for an unresolved air-supply problem."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-dizel-motor-temelleri-dusuk-orta-ve-yuksek-devirli-motorlar-4",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Düşük, orta ve yüksek devirli motorlar",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-diesel-engines-dizel-motor-temelleri-dusuk-orta-ve-yuksek-devirli-motorlar-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Engine speed affects installation choices through piston speed, power density and coupling to the propeller or generator. Rotational speed alone does not determine efficiency or fuel suitability. A reduction gearbox can match a faster engine to a slower propeller, with additional losses and maintenance needs.",
+      "example": {
+        "problem": "A 600 rpm engine is proposed to drive a propeller intended for 120 rpm.",
+        "steps": [
+          "The nominal reduction ratio is 600/120 = 5:1.",
+          "Evaluate torque, gearbox efficiency, torsional behavior and propeller matching at the design duty."
+        ],
+        "result": "A matching ratio is only the kinematic requirement. Confirm the complete propulsion design rather than selecting machinery solely from speed labels."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-dizel-motor-temelleri-crosshead-ve-trunk-piston-motor-farklari-5",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Crosshead ve trunk piston motor farkları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 143,
+    "section": {
+      "id": "machine-diesel-engines-dizel-motor-temelleri-crosshead-ve-trunk-piston-motor-farklari-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A crosshead separates piston motion from the connecting rod's angular movement and transfers side forces through guides. A trunk-piston engine transmits side thrust through the piston skirt to the liner. Lubrication arrangements differ, particularly between cylinder and crankcase duties.",
+      "example": {
+        "problem": "Cylinder lubricant consumption is being compared between a crosshead propulsion engine and a trunk-piston generator.",
+        "steps": [
+          "Identify which oil circuit and consumption measure each figure represents.",
+          "Check the maker's lubrication scheme and fuel-dependent requirements before comparing rates."
+        ],
+        "result": "The numbers may describe different functions. Do not apply one engine type's cylinder-oil setting or lubricant specification directly to the other."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-dizel-motor-temelleri-ana-motor-ve-yardimci-motor-ayrimi-6",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Ana motor ve yardımcı motor ayrımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 78,
+    "section": {
+      "id": "machine-diesel-engines-dizel-motor-temelleri-ana-motor-ve-yardimci-motor-ayrimi-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The main engine supplies propulsion in a conventional arrangement; auxiliary engines commonly drive generators. Electrical propulsion changes that architecture, so function should be traced through the power path rather than inferred from engine size. A generator engine also needs stable speed to maintain frequency.",
+      "example": {
+        "problem": "A diesel-electric ship has several engines driving a common electrical bus. Which one is the main propulsion engine?",
+        "steps": [
+          "Trace energy from each engine through generators, switchboards, converters and propulsion motors.",
+          "Identify the plant's documented operating roles instead of assigning a conventional shaft-driven label."
+        ],
+        "result": "Understand the installation architecture before using a checklist. Propulsion availability may depend on several generating sets and their shared auxiliaries."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-silindir-kapagi-cylinder-head-1",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Silindir kapağı (cylinder head)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-silindir-kapagi-cylinder-head-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A cylinder head closes the combustion chamber and carries openings for injection, gas exchange and cooling according to engine design. Uneven temperature and clamping loads can damage sealing surfaces. A coolant loss near the head is evidence to investigate, not proof of one particular gasket failure.",
+      "example": {
+        "problem": "One cylinder shows coolant loss and abnormal exhaust behavior after overhaul.",
+        "steps": [
+          "Compare cooling-system tests, combustion indications and assembly records.",
+          "Verify the approved tightening sequence and component condition through a controlled inspection."
+        ],
+        "result": "Do not retighten hot fasteners or open pressurized coolant connections improvisationally. Follow the maker's shutdown, cooling and inspection procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-silindir-gomlegi-liner-ve-asinma-2",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Silindir gömleği (liner) ve aşınma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 137,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-silindir-gomlegi-liner-ve-asinma-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Liner wear changes sealing, lubrication and piston guidance. Measurements at several heights and directions distinguish general wear, taper and ovality. A single diameter reading can miss localized damage, while temperature and instrument calibration affect the result.",
+      "example": {
+        "problem": "One liner measures differently fore-and-aft and athwartships at the same height.",
+        "steps": [
+          "Record both directions at the specified measuring levels and temperature condition.",
+          "Compare taper, ovality and diameter with the maker's limits rather than averaging away the difference."
+        ],
+        "result": "The measurement pattern helps locate the wear mechanism. Use the approved criteria to decide continued service, honing or replacement."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-piston-ve-segman-tasarimi-3",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Piston ve segman tasarımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-piston-ve-segman-tasarimi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Piston rings seal combustion gases, control lubricant and transfer heat to the liner according to their design. Ring end gap, groove clearance and orientation affect operation. A replacement ring that fits cold can still bind or lose sealing under operating conditions.",
+      "example": {
+        "problem": "New rings are installed but blow-by remains high after the prescribed running-in period.",
+        "steps": [
+          "Check liner condition, ring freedom, groove wear and the maker's assembly requirements.",
+          "Compare compression and combustion evidence before blaming fuel quality alone."
+        ],
+        "result": "Rings and liner form a working pair. Replacing rings does not restore a worn or distorted liner automatically."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-biyel-kolu-ve-krank-mili-4",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Biyel kolu ve krank mili",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 94,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-biyel-kolu-ve-krank-mili-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The connecting rod transmits piston force to the crankshaft, while crank geometry converts reciprocation into rotation. Gas loads and inertia loads vary through the cycle. Fastener condition and bearing clearances are therefore critical even when average engine output is modest.",
+      "example": {
+        "problem": "A connecting-rod bolt is reused after its service history cannot be established.",
+        "steps": [
+          "Check the maker's reuse criteria, elongation or inspection requirements and tightening method.",
+          "Treat cyclic loading and traceability as part of the assessment."
+        ],
+        "result": "Do not accept a critical fastener merely because its threads look intact. Follow the engine-specific replacement and tightening requirements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-yatak-bearing-tipleri-ve-olcum-5",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Yatak (bearing) tipleri ve ölçüm",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-yatak-bearing-tipleri-ve-olcum-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Plain-bearing clearance affects oil-film formation and flow, while rolling bearings have different geometry and assessment methods. A hot bearing may reflect lubrication failure, misalignment or overload. Measuring the right clearance requires the maker's specified method and assembly condition.",
+      "example": {
+        "problem": "A bearing clearance appears acceptable using one method, but temperature rises under load.",
+        "steps": [
+          "Verify the measurement setup, lubricant supply and actual load distribution.",
+          "Compare inspection evidence and trends rather than treating one clearance value as proof of health."
+        ],
+        "result": "Protect the machinery according to its alarms and limits. Clearance is one diagnostic input, not a complete assessment of the bearing's operating film."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-supap-mekanizmasi-ve-zamanlamasi-6",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Supap mekanizması ve zamanlaması",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 131,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-supap-mekanizmasi-ve-zamanlamasi-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Valve timing controls when gas passages open relative to piston position. Clearance changes can alter effective timing and seating, while incorrect assembly can create mechanical interference. Timing marks and procedures are engine-specific.",
+      "example": {
+        "problem": "An engine develops poor compression after valve-gear work.",
+        "steps": [
+          "Check the prescribed timing and valve-clearance conditions, including temperature and crank position.",
+          "Confirm that valves seat fully before investigating unrelated fuel adjustments."
+        ],
+        "result": "A mechanically held-open valve can imitate a combustion problem. Restore the approved setup and verify operation without guessing from another engine model's values."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-bilesenleri-bedplate-ve-frame-yapisi-7",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Bedplate ve frame yapısı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-diesel-engines-motor-bilesenleri-bedplate-ve-frame-yapisi-7-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The bedplate and frame carry combustion and inertia loads into the foundation. Structural stiffness and fastening maintain alignment between crankshaft bearings and cylinders. Hull movement, loose fasteners or poor chocking can alter load distribution without an obvious external crack.",
+      "example": {
+        "problem": "Bearing temperatures change after foundation work although oil conditions remain similar.",
+        "steps": [
+          "Review chock condition, fastening and alignment records.",
+          "Check the specified crankshaft-deflection or bearing-load evidence at comparable draft and temperature."
+        ],
+        "result": "Investigate the structural load path. Replacing a bearing alone may leave the underlying support problem unchanged."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-mekanik-yakit-enjeksiyon-sistemi-1",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Mekanik yakıt enjeksiyon sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-mekanik-yakit-enjeksiyon-sistemi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A mechanical injection system generates high pressure through a timed pumping action. Delivery quantity and timing depend on its mechanism and condition. Supply fuel reaching the pump does not prove the injector receives the correct pressure waveform or spray.",
+      "example": {
+        "problem": "One cylinder loses power while its fuel supply pressure remains normal.",
+        "steps": [
+          "Compare cylinder performance and approved injection-system tests.",
+          "Consider pump delivery, timing and injector condition as separate stages."
+        ],
+        "result": "Use approved test equipment and isolation; high-pressure fuel can penetrate skin. Do not diagnose the system by loosening injection pipes on a running engine."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-common-rail-enjeksiyon-sistemi-2",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Common rail enjeksiyon sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-common-rail-enjeksiyon-sistemi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Common rail separates high-pressure generation from electronically controlled injection events. Rail pressure, injector command and actual injected quantity are distinct signals. Stored pressure can remain after shutdown, making depressurization and isolation essential before maintenance.",
+      "example": {
+        "problem": "Rail pressure is normal but one cylinder contributes little power.",
+        "steps": [
+          "Check the controller's recorded faults and cylinder-specific evidence.",
+          "Compare electrical command and approved injector tests without assuming pressure proves injection occurred."
+        ],
+        "result": "A healthy common rail does not clear an individual injector or control circuit. Follow the maker's stored-pressure precautions before touching the high-pressure system."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-enjektor-nozzle-tipleri-ve-puskurtme-3",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Enjektör (nozzle) tipleri ve püskürtme",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-enjektor-nozzle-tipleri-ve-puskurtme-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Nozzle hole condition and injection pressure affect atomization and spray distribution. Poor spray can create local rich zones, incomplete combustion and deposits. Visual exhaust symptoms alone cannot identify whether the nozzle, timing, compression or air supply is responsible.",
+      "example": {
+        "problem": "A cylinder shows smoke and elevated exhaust temperature after an injector change.",
+        "steps": [
+          "Check the replacement's specification, installation and approved bench-test evidence.",
+          "Compare timing, compression and air conditions before changing fuel quantity."
+        ],
+        "result": "An injector with the wrong spray pattern can harm combustion even if it passes a simple opening-pressure check. Verify the complete approved injector configuration."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-yanma-asamalari-ve-gecikme-suresi-4",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Yanma aşamaları ve gecikme süresi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-yanma-asamalari-ve-gecikme-suresi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ignition delay is the interval between injection beginning and combustion beginning. Fuel accumulating during a long delay can burn rapidly when ignition starts, increasing pressure-rise rate. Delay depends on both fuel characteristics and the cylinder's air conditions.",
+      "example": {
+        "problem": "Hard combustion appears during cold operation but reduces as conditions stabilize.",
+        "steps": [
+          "Compare approved temperature conditions, injection timing and fuel suitability.",
+          "Distinguish a delay-related rapid pressure rise from mechanical noise using the maker's diagnostic evidence."
+        ],
+        "result": "Do not cure knocking by arbitrary timing changes. Restore specified operating conditions and investigate persistent abnormal combustion."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-anormal-yanma-knocking-ve-misfiring-5",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Anormal yanma: knocking ve misfiring",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-anormal-yanma-knocking-ve-misfiring-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Knocking describes abnormal rapid pressure rise or related combustion noise; misfiring is absent or incomplete combustion in a cycle. Both can arise from several faults. Fuel, compression, timing and air supply must be separated systematically rather than inferred from sound alone.",
+      "example": {
+        "problem": "One cylinder has low exhaust temperature and irregular firing while others remain stable.",
+        "steps": [
+          "Compare its contribution, compression and injection evidence with the healthy cylinders.",
+          "Check for instrument error before using temperature as a definitive diagnosis."
+        ],
+        "result": "A cold cylinder can indicate misfire, but temperature alone does not identify the cause. Follow the approved load reduction and fault-isolation procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-indikator-diyagrami-ve-p-v-analizi-6",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "İndikatör diyagramı ve P-V analizi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 115,
+    "section": {
+      "id": "machine-diesel-engines-yakit-enjeksiyonu-ve-yanma-indikator-diyagrami-ve-p-v-analizi-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An indicator diagram relates cylinder pressure to volume or crank angle. Its area reflects indicated work, while peak pressure and compression shape provide different diagnostic clues. Incorrect sensor referencing or timing can make a plausible-looking diagram misleading.",
+      "example": {
+        "problem": "Two cylinders have similar peak pressure but different enclosed P–V areas.",
+        "steps": [
+          "The larger area represents more indicated work per cycle.",
+          "Check diagram calibration and phasing before concluding that fuel delivery is unbalanced."
+        ],
+        "result": "Peak pressure alone does not establish equal power. Compare the complete trace with the maker's limits and other cylinder measurements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-supersarj-ve-hava-besleme-turbosarjer-calisma-prensibi-1",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Turboşarjer çalışma prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 114,
+    "section": {
+      "id": "machine-diesel-engines-supersarj-ve-hava-besleme-turbosarjer-calisma-prensibi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A turbocharger couples an exhaust-driven turbine to an air compressor. Exhaust energy, compressor flow and engine air demand interact. Fouling or restrictions on either side can reduce air supply, but turbocharger speed alone cannot describe delivered air mass.",
+      "example": {
+        "problem": "Boost pressure falls at comparable engine load while exhaust temperatures rise.",
+        "steps": [
+          "Check inlet filters, cooler pressure drop, exhaust restrictions and turbocharger trends.",
+          "Compare conditions with a clean baseline instead of assuming the compressor itself must be damaged."
+        ],
+        "result": "Protect the engine against inadequate air supply and investigate the full gas path. Increasing fuel can worsen smoke and thermal loading."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-supersarj-ve-hava-besleme-turbin-ve-kompresor-karakteristikleri-2",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Türbin ve kompresör karakteristikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 89,
+    "section": {
+      "id": "machine-diesel-engines-supersarj-ve-hava-besleme-turbin-ve-kompresor-karakteristikleri-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Compressor maps relate flow, pressure ratio and efficiency at different speeds. The surge boundary marks unstable operation, while choke limits flow at the other end. A pressure ratio without corrected flow and operating conditions cannot locate the operating point reliably.",
+      "example": {
+        "problem": "A compressor reaches the expected pressure ratio but produces oscillating flow and noise.",
+        "steps": [
+          "Compare the operating point and transient conditions with the approved map and control arrangement.",
+          "Check restrictions and sudden demand changes before changing control settings."
+        ],
+        "result": "Nominal pressure ratio does not prove stable operation. Follow the maker's response to instability and investigate the interacting system."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-supersarj-ve-hava-besleme-supurme-scavenging-tipleri-uniflow-loop-3",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Süpürme (scavenging) tipleri: uniflow, loop",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 121,
+    "section": {
+      "id": "machine-diesel-engines-supersarj-ve-hava-besleme-supurme-scavenging-tipleri-uniflow-loop-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Scavenging replaces exhaust gas with fresh air. Uniflow and loop arrangements guide that flow differently; effectiveness depends on port or valve timing and pressure conditions. Fresh air passing through the cylinder without useful retention is not equivalent to good cylinder charging.",
+      "example": {
+        "problem": "An engine has adequate blower delivery but poor combustion in a cylinder with restricted ports.",
+        "steps": [
+          "Investigate local port condition and gas-exchange timing.",
+          "Distinguish total air supplied from the air actually retained for combustion."
+        ],
+        "result": "A healthy common air supply can coexist with poor local scavenging. Inspect and clean only under the engine's approved isolation and access procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-supersarj-ve-hava-besleme-sarj-havasi-sogutucusu-4",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Şarj havası soğutucusu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-diesel-engines-supersarj-ve-hava-besleme-sarj-havasi-sogutucusu-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cooling charge air increases its density at a given pressure, but excessive moisture carryover can harm the engine. Cooler restriction, heat-transfer performance and drains therefore need separate checks. A low air outlet temperature is not the only performance objective.",
+      "example": {
+        "problem": "Charge-air temperature rises and air-side pressure drop increases at similar load.",
+        "steps": [
+          "Compare cooling-water conditions and cooler cleanliness.",
+          "Check approved condensate drainage and moisture separation as well as thermal performance."
+        ],
+        "result": "Both reduced air mass and poor drainage matter. Restore the specified operating condition rather than maximizing cooling without regard to condensation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-supersarj-ve-hava-besleme-turbosarj-yardimci-ufleyici-auxiliary-blower-5",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Turboşarj yardımcı üfleyici (auxiliary blower)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 73,
+    "section": {
+      "id": "machine-diesel-engines-supersarj-ve-hava-besleme-turbosarj-yardimci-ufleyici-auxiliary-blower-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Auxiliary blowers supply scavenge air when exhaust energy is insufficient for the turbocharger, commonly at low load in relevant engine designs. Automatic start and stop logic depends on the installation. Failure can cause inadequate air even when the engine's fuel system is healthy.",
+      "example": {
+        "problem": "A low-load engine becomes smoky and its standby blower fails to start automatically.",
+        "steps": [
+          "Check the alarm, control demand and available blower according to the approved procedure.",
+          "Confirm actual scavenge pressure and protect the engine's load condition."
+        ],
+        "result": "The automatic command is not proof of airflow. Investigate electrical, mechanical and control causes without bypassing protective interlocks."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-supersarj-ve-hava-besleme-vit-variable-injection-timing-6",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "VIT (Variable Injection Timing)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-diesel-engines-supersarj-ve-hava-besleme-vit-variable-injection-timing-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Variable injection timing changes the timing schedule to influence combustion across operating conditions. Its effect must be assessed with cylinder pressure and thermal limits, not fuel economy alone. A maker-approved schedule accounts for the engine's design and configuration.",
+      "example": {
+        "problem": "A proposed timing adjustment reduces fuel consumption in a trial but raises peak cylinder pressure.",
+        "steps": [
+          "Compare both performance and pressure against the approved limits.",
+          "Check whether the trial conditions and measurement accuracy support the claimed saving."
+        ],
+        "result": "An efficiency improvement does not justify exceeding pressure or emissions constraints. Use the authorized calibration rather than optimizing one indicator independently."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-performansi-fren-gucu-brake-power-ve-mekanik-verim-2",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Fren gücü (brake power) ve mekanik verim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-diesel-engines-motor-performansi-fren-gucu-brake-power-ve-mekanik-verim-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Brake power is useful shaft output; indicated power represents work developed in the cylinders. Their difference includes mechanical losses. Mechanical efficiency compares these quantities at the same operating condition and should not be confused with fuel-to-shaft thermal efficiency.",
+      "example": {
+        "problem": "An engine develops 1000 kW indicated power and 900 kW brake power.",
+        "steps": [
+          "Mechanical efficiency is 900/1000 = 90%.",
+          "The difference is 100 kW of mechanical loss under the stated boundary."
+        ],
+        "result": "This result does not mean only 10% of fuel energy is lost. Fuel thermal efficiency requires fuel mass flow and heating value as additional inputs."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-performansi-ortalama-efektif-basinc-mep-3",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Ortalama efektif basınç (MEP)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 137,
+    "section": {
+      "id": "machine-diesel-engines-motor-performansi-ortalama-efektif-basinc-mep-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Mean effective pressure is the hypothetical constant pressure that would produce the same work over the swept volume. It helps compare engines without treating peak cylinder pressure as average work. Indicated and brake MEP use different power measures.",
+      "example": {
+        "problem": "A cylinder produces 30 kJ of indicated work per cycle and has a swept volume of 0.020 m³.",
+        "steps": [
+          "IMEP = work/volume = 30000/0.020 = 1.5 MPa.",
+          "To calculate power, also use cycle frequency and the correct two-stroke or four-stroke relationship."
+        ],
+        "result": "The result is 15 bar indicated MEP. It is not the cylinder's peak pressure and cannot by itself establish allowable mechanical loading."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-performansi-performans-izleme-ve-trend-analizi-5",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Performans izleme ve trend analizi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-diesel-engines-motor-performansi-performans-izleme-ve-trend-analizi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A useful performance trend compares equivalent operating conditions. Load, seawater temperature, fuel properties and instrument calibration can move readings even without deterioration. Several related measurements provide stronger evidence than one isolated alarm-free value.",
+      "example": {
+        "problem": "Fuel consumption rises by 5% while the vessel's speed and weather conditions also change.",
+        "steps": [
+          "Normalize the comparison to an appropriate load and operating condition.",
+          "Cross-check fuel measurement, shaft power and environmental effects before attributing the change to engine wear."
+        ],
+        "result": "Record context with each trend point. A raw percentage change is a prompt for investigation, not a diagnosis of reduced engine efficiency."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-performansi-yuk-dengeleme-load-balancing-6",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Yük dengeleme (load balancing)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 83,
+    "section": {
+      "id": "machine-diesel-engines-motor-performansi-yuk-dengeleme-load-balancing-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Load balancing seeks appropriate cylinder contribution within the engine's limits. Equal exhaust temperatures do not necessarily mean equal power because timing, airflow and heat losses also influence temperature. Adjustments require the maker's authorized method and suitable measurements.",
+      "example": {
+        "problem": "One cylinder is hotter but its indicated power matches the others.",
+        "steps": [
+          "Compare compression, combustion timing, injector condition and temperature-sensor accuracy.",
+          "Avoid increasing or reducing fuel solely to make all exhaust temperatures identical."
+        ],
+        "result": "Balance the engine using the specified performance criteria. A temperature difference can reveal a fault that fuel adjustment would merely conceal."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-ariza-teshisi-silindir-performans-dengesizligi-1",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Silindir performans dengesizliği",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-diesel-engines-motor-ariza-teshisi-silindir-performans-dengesizligi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cylinder imbalance is established by comparing contribution and operating evidence, not one symptom. A weak cylinder can increase the load carried by others at the same total demand. Independent measurements help distinguish poor combustion from an inaccurate sensor.",
+      "example": {
+        "problem": "One cylinder shows low indicated work but a normal exhaust temperature.",
+        "steps": [
+          "Verify pressure-trace calibration and compare compression and injection evidence.",
+          "Assess the remaining cylinders' loads before continuing at the same total demand."
+        ],
+        "result": "Normal temperature does not rule out low contribution. Follow the approved operating restriction and investigate the specific cause."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-ariza-teshisi-liner-ve-piston-asinmasi-2",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Liner ve piston aşınması",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 126,
+    "section": {
+      "id": "machine-diesel-engines-motor-ariza-teshisi-liner-ve-piston-asinmasi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Wear assessment combines dimensional readings, surface appearance and lubricant or drain-oil evidence. Abrasive wear, scuffing and corrosion can require different remedies. Trend rates matter: a component inside its dimensional limit may still be deteriorating unusually quickly.",
+      "example": {
+        "problem": "Liner diameter remains within limits, but wear rate doubles between inspections.",
+        "steps": [
+          "Check measurement consistency and operating history, including fuel, lubrication and temperatures.",
+          "Inspect the surface and related piston-ring condition to identify the mechanism."
+        ],
+        "result": "Do not wait for a dimensional limit alone if deterioration accelerates. Use the maker's criteria and corrective guidance to prevent progression."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-ariza-teshisi-egzoz-sicaklik-sapmalari-3",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Egzoz sıcaklık sapmaları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 92,
+    "section": {
+      "id": "machine-diesel-engines-motor-ariza-teshisi-egzoz-sicaklik-sapmalari-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Exhaust temperature reflects combustion and heat transfer but also sensor location and condition. Both high and low deviations can be significant. Compare cylinders at stable, equivalent conditions and use pressure, fuel and air evidence to narrow the cause.",
+      "example": {
+        "problem": "A single thermocouple suddenly reads 70°C higher without corresponding changes in other parameters.",
+        "steps": [
+          "Check the sensor circuit and corroborating measurements under an approved diagnostic procedure.",
+          "Treat a confirmed real rise differently from an instrument fault."
+        ],
+        "result": "Do not dismiss the indication merely because other readings look normal, and do not adjust fuel before establishing whether the measurement is credible."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-ariza-teshisi-turbosarj-surging-4",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Turboşarj surging",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 97,
+    "section": {
+      "id": "machine-diesel-engines-motor-ariza-teshisi-turbosarj-surging-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Surge is an unstable compressor-flow condition involving pressure and flow oscillations. It can be triggered by restrictions, fouling or rapid operating changes. The whole air and exhaust system influences the operating point, so changing the turbocharger alone may not resolve it.",
+      "example": {
+        "problem": "Surging begins after a charge-air cooler becomes heavily fouled.",
+        "steps": [
+          "Compare air-path pressure losses and engine operating conditions.",
+          "Follow the maker's immediate load and protection response while arranging the approved investigation."
+        ],
+        "result": "Restore the underlying flow conditions. Repeated operation through surge can damage machinery; do not treat the noise as a normal low-load characteristic."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-ariza-teshisi-yatak-arizalari-ve-sicaklik-kontrolu-5",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Yatak arızaları ve sıcaklık kontrolü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 119,
+    "section": {
+      "id": "machine-diesel-engines-motor-ariza-teshisi-yatak-arizalari-ve-sicaklik-kontrolu-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Bearing temperature is a lagging indication of frictional heating and heat removal. Oil supply, contamination, alignment and load affect it. A rapid change can be important even before a fixed alarm limit is reached, especially when accompanied by vibration or debris.",
+      "example": {
+        "problem": "A bearing temperature climbs rapidly while lube-oil header pressure remains normal.",
+        "steps": [
+          "Compare local lubrication, load and vibration evidence.",
+          "Apply the machinery's protective response and investigate the affected bearing rather than assuming header pressure guarantees its oil film."
+        ],
+        "result": "Preserve trend and inspection evidence. A local obstruction or load problem can coexist with normal system pressure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-diesel-engines-motor-ariza-teshisi-silindir-yaglama-sistemi-sorunlari-6",
+    "topicKey": "machine-diesel-engines",
+    "topicTitle": "Silindir yağlama sistemi sorunları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 125,
+    "section": {
+      "id": "machine-diesel-engines-motor-ariza-teshisi-silindir-yaglama-sistemi-sorunlari-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cylinder lubrication must provide an appropriate film and chemical protection for the engine and fuel. Too little oil can promote wear; excessive or unsuitable oil can create deposits and other problems. Feed rate and alkalinity are engine-specific decisions supported by condition monitoring.",
+      "example": {
+        "problem": "Drain-oil results and liner inspection show deterioration after a fuel change.",
+        "steps": [
+          "Compare fuel properties, lubricant specification, feed settings and the maker's guidance.",
+          "Use consistent sampling and inspect rings and liner surfaces before changing settings."
+        ],
+        "result": "Do not apply a universal feed-rate increase or alkalinity rule. Adjust through the approved condition-based procedure and verify the response with subsequent evidence."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-statigi-mutlak-ve-manometrik-basinc-3",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Mutlak ve manometrik basınç",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 59,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-statigi-mutlak-ve-manometrik-basinc-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Gauge pressure is measured relative to local atmospheric pressure; absolute pressure is measured from vacuum. A negative gauge value can still be a positive absolute pressure. Vapor-pressure and gas-law calculations require the absolute value, so confusing the two can reverse a cavitation or compression assessment.",
+      "example": {
+        "problem": "A suction gauge reads −0.30 bar while local atmospheric pressure is 1.00 bar. Find absolute pressure.",
+        "steps": [
+          "Use pabs = pgauge + patmosphere = −0.30 + 1.00 = 0.70 bar.",
+          "Compare 0.70 bar absolute, not −0.30 bar, with the liquid's vapor pressure at its measured temperature."
+        ],
+        "result": "The pump inlet is below atmospheric pressure but not at zero pressure. Include suction losses and elevation when converting this reading into available suction head."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-statigi-pascal-prensibi-4",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Pascal prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 128,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-statigi-pascal-prensibi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A pressure change applied to a confined static liquid is transmitted through it. Force changes with piston area, but energy is not multiplied: the larger piston moves a shorter distance. Real hydraulic circuits also include friction, leakage and pressure losses.",
+      "example": {
+        "problem": "A small piston of 2 cm² drives a large piston of 20 cm². Apply 100 N to the small piston, neglecting losses.",
+        "steps": [
+          "Pressure is 100/(2 × 10⁻⁴) = 500000 Pa.",
+          "Output force is 500000 × 20 × 10⁻⁴ = 1000 N; a 10 mm input stroke gives a 1 mm output stroke."
+        ],
+        "result": "The ideal force multiplication is ten, with equal work on both sides. Check effective piston area and load direction before applying this relation to a real cylinder."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-statigi-duz-ve-egri-yuzeylere-etkiyen-basinc-kuvveti-5",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Düz ve eğri yüzeylere etkiyen basınç kuvveti",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 126,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-statigi-duz-ve-egri-yuzeylere-etkiyen-basinc-kuvveti-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Hydrostatic pressure increases with depth. On a vertical rectangular plate whose top is at the free surface, pressure forms a triangular distribution. The resultant acts below the centroid, so using the average pressure without its correct line of action can underestimate hinge or support loads.",
+      "example": {
+        "problem": "Fresh water acts on a vertical plate 1 m wide and 2 m deep, with its upper edge at the surface.",
+        "steps": [
+          "Mean pressure is 1000 × 9.81 × 1 = 9810 Pa; area is 2 m².",
+          "Resultant force is 19.62 kN and acts 2h/3 = 1.33 m below the surface."
+        ],
+        "result": "The force and its moment must both be considered. For inclined, curved or partly submerged surfaces, use the appropriate geometry instead of this special rectangular-plate result."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-statigi-yuzdurme-kuvveti-arsimet-6",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Yüzdürme kuvveti (Arşimet)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 61,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-statigi-yuzdurme-kuvveti-arsimet-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Buoyancy equals the weight of displaced fluid. A floating object settles until this upward force balances its weight; a fully submerged object's displaced volume is fixed. Changing water density therefore changes flotation draft even though the object's mass remains constant.",
+      "example": {
+        "problem": "A sealed object of volume 0.50 m³ is fully submerged in seawater of density 1025 kg/m³. Calculate buoyancy.",
+        "steps": [
+          "Displaced fluid mass is 1025 × 0.50 = 512.5 kg.",
+          "Upward force is 512.5 × 9.81 = 5028 N, approximately 5.03 kN."
+        ],
+        "result": "Compare buoyancy with the object's weight to determine its tendency to rise or sink. Stability and orientation require a separate assessment of the centres of gravity and buoyancy."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-akim-cizgileri-ve-akis-tipleri-1",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Akım çizgileri ve akış tipleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 87,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-akim-cizgileri-ve-akis-tipleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A streamline is tangent to the instantaneous velocity field. In steady flow, the path followed by a fluid particle coincides with a streamline; in unsteady flow it need not. Closely spaced lines can illustrate higher velocity only when the diagram's construction and flow assumptions justify that interpretation.",
+      "example": {
+        "problem": "A pump starts and a dye streak changes shape over time. Can a single photographed streak be treated as a permanent streamline map?",
+        "steps": [
+          "The startup flow is unsteady, so particle history and instantaneous direction differ.",
+          "Compare observations after conditions stabilize and identify whether the diagram represents paths, streaks or streamlines."
+        ],
+        "result": "Use the correct visual model before inferring flow direction or recirculation. A changing dye pattern is not itself proof of a permanent obstruction."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-laminer-ve-turbulansli-akis-2",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Laminer ve türbülanslı akış",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 79,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-laminer-ve-turbulansli-akis-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Laminar flow has organized layers dominated by viscous effects, while turbulent flow contains fluctuations and mixing. Pipe-flow transition depends on Reynolds number and disturbances. Turbulence usually increases mixing and pressure loss, but it is not equivalent to cavitation or necessarily an equipment fault.",
+      "example": {
+        "problem": "The same pipe carries warm water and then much more viscous oil at equal mean velocity. Should the same friction model be used automatically?",
+        "steps": [
+          "Higher viscosity lowers Reynolds number at the same diameter and speed.",
+          "Determine the regime and relative roughness before selecting a friction correlation."
+        ],
+        "result": "A regime change can make a water-based pressure-loss estimate unsuitable for oil. Keep fluid temperature with viscosity data, because cooling may alter the regime substantially."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-reynolds-sayisi-3",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Reynolds sayısı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-reynolds-sayisi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Reynolds number compares inertia with viscous effects. For internal flow it uses the pipe's inside diameter, mean velocity and fluid viscosity at operating temperature. A regime classification helps choose a model; it does not by itself give the pressure drop or indicate whether a pump will cavitate.",
+      "example": {
+        "problem": "Oil flows at 0.5 m/s in a 0.04 m bore with kinematic viscosity 100 cSt.",
+        "steps": [
+          "Convert viscosity: 100 cSt = 1.0 × 10⁻⁴ m²/s.",
+          "Re = VD/ν = 0.5 × 0.04 / 0.0001 = 200, indicating laminar pipe flow."
+        ],
+        "result": "For fully developed laminar flow in a circular pipe, Darcy friction factor is 64/Re = 0.32. Do not use this relation for turbulent flow or confuse Darcy and Fanning factors."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-sureklilik-denklemi-4",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Süreklilik denklemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-fluid-mechanics-akiskan-kinematigi-ve-dinamigi-sureklilik-denklemi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Continuity conserves mass, not necessarily volume. For steady incompressible flow without branches or leaks, AV remains constant. Gas compression or density changes require the mass-flow form ρAV. A smaller bore therefore raises liquid velocity and can increase local losses.",
+      "example": {
+        "problem": "Water flows at 1 m/s in a 100 mm bore before entering a 50 mm bore. Ignore leakage and density change.",
+        "steps": [
+          "The area ratio is (100/50)² = 4.",
+          "The smaller pipe velocity is 4 m/s; volumetric flow remains approximately 0.00785 m³/s."
+        ],
+        "result": "Halving diameter quadruples velocity, rather than doubling it. Check the resulting pressure loss and erosion limits before reducing a shipboard pipe size."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-darcy-weisbach-denklemi-1",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Darcy–Weisbach denklemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 136,
+    "section": {
+      "id": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-darcy-weisbach-denklemi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Darcy–Weisbach expresses straight-pipe head loss as f(L/D)V²/(2g). Use the Darcy friction factor and internal diameter. The velocity-squared term explains why an apparently small flow increase can sharply increase pump demand, although the friction factor may also change with Reynolds number.",
+      "example": {
+        "problem": "Take f = 0.02, L = 50 m, D = 0.10 m and V = 2 m/s.",
+        "steps": [
+          "Head loss is 0.02 × 500 × 4/(2 × 9.81) = 2.04 m.",
+          "At 4 m/s, keeping f fixed for comparison, loss becomes 8.15 m."
+        ],
+        "result": "The fourfold increase is an approximation at constant friction factor. Add fittings, elevation and terminal pressure requirements to obtain total system head."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-moody-diyagrami-ve-surtunme-katsayisi-2",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Moody diyagramı ve sürtünme katsayısı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 130,
+    "section": {
+      "id": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-moody-diyagrami-ve-surtunme-katsayisi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The Moody diagram relates Darcy friction factor to Reynolds number and relative roughness ε/D. Absolute roughness alone is insufficient: the same roughness has a larger relative effect in a smaller pipe. Transitional flow also makes a precise single-factor estimate uncertain.",
+      "example": {
+        "problem": "Two pipes have roughness 0.05 mm and bores 50 mm and 100 mm. Compare relative roughness.",
+        "steps": [
+          "Calculate ε/D = 0.05/50 = 0.001 and 0.05/100 = 0.0005.",
+          "Locate each ratio with its own Reynolds number before reading a friction factor."
+        ],
+        "result": "The smaller pipe has twice the relative roughness. Do not copy the same factor from a chart without checking flow regime, units and whether the chart uses Darcy or Fanning convention."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-lokal-kayiplar-dirsek-vana-daralma-4",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Lokal kayıplar (dirsek, vana, daralma)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-lokal-kayiplar-dirsek-vana-daralma-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Bends, valves and changes of section create local losses that can be represented by K V²/(2g). The reference velocity must match the coefficient's definition. A partly closed valve can dominate a system's loss even when the straight pipe is short.",
+      "example": {
+        "problem": "A set of fittings has total K = 6, referenced to a pipe velocity of 3 m/s.",
+        "steps": [
+          "Local head loss is 6 × 9/(2 × 9.81) = 2.75 m.",
+          "Add this to straight-pipe friction and other system requirements using a consistent head datum."
+        ],
+        "result": "Fittings are not negligible merely because their physical length is small. A coefficient for a fully open valve does not describe its throttled condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-seri-ve-paralel-boru-sistemleri-5",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Seri ve paralel boru sistemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 81,
+    "section": {
+      "id": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-seri-ve-paralel-boru-sistemleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Pipes in series carry the same flow and their head losses add. Parallel branches share the same pressure difference between junctions while their flows add. Unequal branch resistance produces unequal flow, so equal pipe connection points do not imply equal cooling to every consumer.",
+      "example": {
+        "problem": "Two parallel cooler branches connect the same supply and return. One branch develops a blocked strainer.",
+        "steps": [
+          "At the shared pressure difference, the restricted branch carries less flow.",
+          "Total system flow may remain plausible because the other branch takes more; measure each branch's temperature and flow evidence."
+        ],
+        "result": "A normal header reading can hide local starvation. Restore the restriction and balance the branches using the approved arrangement rather than increasing pump pressure indiscriminately."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-boru-hatti-tasarim-prensipleri-6",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Boru hattı tasarım prensipleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 94,
+    "section": {
+      "id": "machine-fluid-mechanics-boru-akisi-ve-kayiplar-boru-hatti-tasarim-prensipleri-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Pipe sizing balances allowable velocity, pressure loss, material compatibility and the pump's operating range. Choosing the smallest pipe that passes the required volume can create excessive friction and poor suction conditions. Inside diameter, not nominal outside size, determines flow area.",
+      "example": {
+        "problem": "A proposed seawater line must carry 0.020 m³/s at a design velocity of 2 m/s.",
+        "steps": [
+          "Required area is Q/V = 0.010 m².",
+          "Equivalent circular bore is sqrt(4A/π) = 0.113 m, before selecting an available pipe size and wall thickness."
+        ],
+        "result": "This first estimate is about 113 mm inside diameter. Verify complete head loss, class requirements, corrosion allowance and suction margins before accepting a specification."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-pompa-sistemleri-santrifuj-pompa-calisma-prensibi-1",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Santrifüj pompa çalışma prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 126,
+    "section": {
+      "id": "machine-fluid-mechanics-pompa-sistemleri-santrifuj-pompa-calisma-prensibi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A centrifugal pump adds energy through a rotating impeller and converts part of velocity into pressure in the casing. Its delivered flow depends on the connected system, not solely on rotational speed. Air in the casing can prevent effective pumping because the impeller cannot develop the expected liquid head.",
+      "example": {
+        "problem": "The motor runs at normal speed but discharge pressure and flow remain low after maintenance.",
+        "steps": [
+          "Check that the casing is filled and vented, suction is available and rotation matches the approved direction.",
+          "Compare suction and discharge readings before blaming impeller wear."
+        ],
+        "result": "A spinning motor does not prove liquid circulation. Follow the priming procedure and avoid prolonged dry running, which can damage seals and bearings."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-pompa-sistemleri-pompa-karakteristik-egrileri-h-q-2",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Pompa karakteristik eğrileri (H-Q)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 103,
+    "section": {
+      "id": "machine-fluid-mechanics-pompa-sistemleri-pompa-karakteristik-egrileri-h-q-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The operating point is the intersection of the pump head curve and the system curve. Closing a discharge valve raises system resistance and moves the operating point; it does not increase pump capacity. Operation far from the preferred range may increase vibration, heating and internal recirculation.",
+      "example": {
+        "problem": "A centrifugal pump previously supplied 40 m³/h. After a valve adjustment, flow falls while discharge pressure rises.",
+        "steps": [
+          "Plot or compare the new system resistance with the pump curve.",
+          "Confirm valve lineup and differential head at comparable speed before assuming the pump has gained performance."
+        ],
+        "result": "Higher discharge pressure with lower flow can indicate throttling. Evaluate the operating point and maker's permitted flow range rather than using pressure alone as a success measure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-pompa-sistemleri-npsh-kavrami-ve-kavitasyon-4",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "NPSH kavramı ve kavitasyon",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 147,
+    "section": {
+      "id": "machine-fluid-mechanics-pompa-sistemleri-npsh-kavrami-ve-kavitasyon-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "NPSH available represents the inlet liquid's absolute head above its vapor-pressure head after accounting for the installation. NPSH required comes from the pump's test criterion; merely matching it does not guarantee zero cavitation. Temperature, suction losses and tank level can reduce the available margin.",
+      "example": {
+        "problem": "Available NPSH is 5 m and the pump requires 3 m at the chosen flow. A dirty suction strainer adds 2 m loss.",
+        "steps": [
+          "The initial numerical margin is 2 m.",
+          "After the restriction, available NPSH falls to 3 m, removing that margin at the same assumed flow."
+        ],
+        "result": "Investigate and restore suction conditions; do not assume equality is an acceptable operating target. Use the manufacturer's required margin and consider hot-fluid vapor pressure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-pompa-sistemleri-pozitif-deplasanli-pompalar-disli-vidali-5",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Pozitif deplasanlı pompalar (dişli, vidalı)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 107,
+    "section": {
+      "id": "machine-fluid-mechanics-pompa-sistemleri-pozitif-deplasanli-pompalar-disli-vidali-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A positive-displacement pump moves a nearly fixed volume each cycle. Outlet pressure is imposed by system resistance, so a blocked discharge can rapidly overload the pump or piping. A correctly arranged relief path is essential; it must not be defeated to force more delivery.",
+      "example": {
+        "problem": "A gear pump discharges against a closed valve. Why is waiting for the motor to stall unsafe?",
+        "steps": [
+          "The displaced liquid has nowhere to go, causing a rapid pressure rise.",
+          "The relief device should limit pressure by routing flow to its designed destination, but prolonged recirculation can heat the liquid."
+        ],
+        "result": "Stop and correct the lineup using the approved procedure. A relief valve is protection against abnormal pressure, not a normal method for controlling continuous pump output."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-pompa-sistemleri-pompa-secimi-ve-boyutlandirma-6",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Pompa seçimi ve boyutlandırma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-fluid-mechanics-pompa-sistemleri-pompa-secimi-ve-boyutlandirma-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Select a pump for the required duty point and operating range, not maximum advertised flow. Include static lift, pressure at the destination, piping losses, fluid properties and suction margin. Efficiency at the intended duty affects both energy use and heat generation.",
+      "example": {
+        "problem": "A system needs 25 m³/h with 8 m static lift and 12 m friction and fitting loss.",
+        "steps": [
+          "Required head at that flow is 20 m, plus any separate terminal pressure requirement.",
+          "Compare suitable pump curves, efficiency, NPSH and minimum-flow restrictions at 25 m³/h."
+        ],
+        "result": "A pump rated for 25 m³/h at zero head may not meet this duty. Verify the complete curve and installation conditions before selection."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-pompa-sistemleri-seri-ve-paralel-pompa-calistirma-7",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Seri ve paralel pompa çalıştırma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 84,
+    "section": {
+      "id": "machine-fluid-mechanics-pompa-sistemleri-seri-ve-paralel-pompa-calistirma-7-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "In series, pumps add head at the same flow. In parallel, pumps add flow at the same head. The actual change depends on the system curve; two identical parallel pumps seldom double the original flow in a friction-dominated system. Check valves prevent unintended reverse flow.",
+      "example": {
+        "problem": "A single pump's duty is 30 m³/h. A second identical pump is started in parallel but total flow becomes only 45 m³/h.",
+        "steps": [
+          "Higher total flow increases system resistance, moving both pumps to a new shared head.",
+          "Compare the combined curve with the system curve and verify both pumps contribute forward flow."
+        ],
+        "result": "The result can be normal, not proof of a faulty second pump. Check each unit's permitted range and the consequences of stopping one unit."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-gemi-boru-sistemleri-balast-boru-sistemi-1",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Balast boru sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 97,
+    "section": {
+      "id": "machine-fluid-mechanics-gemi-boru-sistemleri-balast-boru-sistemi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A ballast system changes tank contents and therefore draft, trim, heel and hull loading. Valve routing is part of ship stability management, not merely pump operation. The approved ballast-water management arrangement also determines how transferred or discharged water is treated and recorded.",
+      "example": {
+        "problem": "During a planned transfer, the receiving tank level rises but another tank unexpectedly falls.",
+        "steps": [
+          "Compare the actual valve lineup and tank-level trends with the transfer plan.",
+          "Pause the operation safely and establish whether a cross-connection or leaking valve has created an unintended flow path."
+        ],
+        "result": "Do not continue solely because the receiving tank is filling. Confirm stability, structural limits and the authorized treatment route before resuming the corrected sequence."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-gemi-boru-sistemleri-sintine-boru-sistemi-2",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Sintine boru sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-fluid-mechanics-gemi-boru-sistemleri-sintine-boru-sistemi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Bilge systems collect leakage but also provide clues about its source. A rising bilge can indicate a continuing leak even if the pump keeps pace. Machinery-space oily water must follow the approved retention and treatment route; pump availability does not authorize discharge.",
+      "example": {
+        "problem": "A bilge pump now cycles every five minutes instead of hourly after seawater-system work.",
+        "steps": [
+          "Compare the volume and interval with the earlier baseline and inspect the worked-on system.",
+          "Identify and isolate the ingress under the emergency or maintenance procedure while monitoring bilge levels."
+        ],
+        "result": "Treat increased cycling as a fault signal, not successful automatic control. Keep oily water contained and record the incident and corrective action appropriately."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-gemi-boru-sistemleri-sogutma-suyu-sistemleri-3",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Soğutma suyu sistemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 133,
+    "section": {
+      "id": "machine-fluid-mechanics-gemi-boru-sistemleri-sogutma-suyu-sistemleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cooling performance depends on both temperature difference and flow. A small temperature rise can mean healthy high flow, but it can also occur when little heat reaches the circuit. Conversely, a large rise may reflect inadequate flow at the same load. Use an energy balance with equipment load.",
+      "example": {
+        "problem": "Freshwater flow is 2 kg/s and temperature rises by 8 K through an engine cooler circuit. Use cp = 4.2 kJ/(kg·K).",
+        "steps": [
+          "Heat carried is 2 × 4.2 × 8 = 67.2 kW.",
+          "At the same heat load, halving flow would approximately double the temperature rise if other conditions remain comparable."
+        ],
+        "result": "Trend flow, inlet temperature and load together. A single outlet temperature cannot establish that every cooled component receives sufficient circulation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-gemi-boru-sistemleri-yakit-transfer-ve-servis-hatlari-4",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Yakıt transfer ve servis hatları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 107,
+    "section": {
+      "id": "machine-fluid-mechanics-gemi-boru-sistemleri-yakit-transfer-ve-servis-hatlari-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fuel transfer moves inventory between tanks; the service system supplies fuel at the engine's required pressure, temperature and cleanliness. Mixing these functions in a fault diagnosis can miss a healthy transfer pump feeding a defective booster or filter arrangement. Tank overflow and return routing must be considered.",
+      "example": {
+        "problem": "A service tank level is adequate, but engine inlet pressure falls as load increases.",
+        "steps": [
+          "Trace the service route from the tank through valves, strainers, pumps and filters.",
+          "Compare pressure before and after restrictions at the same demand; verify the return arrangement."
+        ],
+        "result": "Adequate stored fuel does not prove adequate delivery. Follow the approved response to low fuel pressure rather than changing unrelated transfer-pump settings."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-gemi-boru-sistemleri-valf-tipleri-ve-secim-kriterleri-5",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Valf tipleri ve seçim kriterleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-fluid-mechanics-gemi-boru-sistemleri-valf-tipleri-ve-secim-kriterleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Valve selection depends on whether the duty is isolation, throttling, non-return or pressure protection. A valve can be mechanically open yet unsuitable for sustained control at a small opening. Directional markings and fail positions matter when tracing a circuit.",
+      "example": {
+        "problem": "A check valve is proposed as the only isolation before opening a pump for maintenance.",
+        "steps": [
+          "A check valve responds to differential pressure and can leak or reopen; it is not a positively secured maintenance boundary.",
+          "Identify the specified isolation points, lock them and verify absence of pressure and stored energy."
+        ],
+        "result": "Use the approved isolation arrangement. Never treat a non-return function as proof that an opened line cannot be pressurized from another connection."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fluid-mechanics-gemi-boru-sistemleri-boru-malzemeleri-ve-standartlar-6",
+    "topicKey": "machine-fluid-mechanics",
+    "topicTitle": "Boru malzemeleri ve standartlar",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 120,
+    "section": {
+      "id": "machine-fluid-mechanics-gemi-boru-sistemleri-boru-malzemeleri-ve-standartlar-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Material choice must address the fluid, temperature, pressure, corrosion mechanism and joining method. Dissimilar metals in an electrolyte can form a galvanic couple. Replacing a short pipe section with a stronger-looking material may move corrosion to an adjacent component.",
+      "example": {
+        "problem": "A seawater repair joins a new noble-metal fitting directly to a less noble pipe. What additional risk needs review?",
+        "steps": [
+          "The seawater provides an electrical path for galvanic corrosion.",
+          "Assess material compatibility, area ratio and approved isolation measures along with pressure rating."
+        ],
+        "result": "Strength alone does not establish suitability. Use the vessel's approved piping specification and class requirements rather than selecting replacements only by thread size or nominal pressure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-malzeme-bilgisi-kristal-yapilar-ve-faz-diyagramlari-1",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kristal yapılar ve faz diyagramları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-machine-elements-malzeme-bilgisi-kristal-yapilar-ve-faz-diyagramlari-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A metal's properties depend on its microstructure as well as chemical composition. A phase diagram describes equilibrium phases; a real heat-treatment cycle also depends on cooling rate and section thickness. Two parts of the same nominal composition can therefore behave differently under load.",
+      "example": {
+        "problem": "A replacement steel pin has the right chemical grade but no heat-treatment record. Is composition sufficient evidence of suitability?",
+        "steps": [
+          "Check the required strength, toughness and hardness condition against the material certificate.",
+          "A composition match does not establish the delivered microstructure or mechanical properties."
+        ],
+        "result": "Accept the part against its complete approved specification, including processing and testing. Do not infer service strength solely from an alloy name."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-malzeme-bilgisi-demir-disi-metaller-bakir-aluminyum-3",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Demir dışı metaller (bakır, alüminyum)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-machine-elements-malzeme-bilgisi-demir-disi-metaller-bakir-aluminyum-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Copper alloys and aluminium alloys offer different combinations of corrosion resistance, conductivity, weight and strength. A useful property in one environment does not make an alloy universally suitable. Temper, seawater exposure and contact with other metals can dominate service behavior.",
+      "example": {
+        "problem": "An aluminium bracket is proposed beside a copper-alloy fitting in a wet compartment.",
+        "steps": [
+          "Assess the load and certified alloy condition, then examine the galvanic contact and wet exposure.",
+          "Confirm an approved method of separating incompatible materials where required."
+        ],
+        "result": "A lighter replacement may introduce corrosion or fatigue problems. Evaluate the entire connection and environment rather than assuming all nonferrous metals resist seawater equally."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-malzeme-bilgisi-korozyon-direnci-ve-korozyon-tipleri-4",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Korozyon direnci ve korozyon tipleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 130,
+    "section": {
+      "id": "machine-machine-elements-malzeme-bilgisi-korozyon-direnci-ve-korozyon-tipleri-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Uniform corrosion reduces general thickness; pitting concentrates penetration into small areas. Galvanic corrosion requires an electrical connection and an electrolyte. Average wall thickness can look acceptable while a deep pit creates a local leak or stress concentration.",
+      "example": {
+        "problem": "A pipe's average thickness loss is small, but isolated pits are visible near a support.",
+        "steps": [
+          "Map local minimum thickness and inspect the hidden support interface.",
+          "Identify the likely corrosion mechanism before selecting coating, drainage or material changes."
+        ],
+        "result": "Use the applicable acceptance criteria for local damage. An acceptable average reading does not automatically clear the deepest defect or its effect on remaining life."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-malzeme-bilgisi-isil-islemler-tavlama-sertlestirme-5",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Isıl işlemler (tavlama, sertleştirme)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-machine-elements-malzeme-bilgisi-isil-islemler-tavlama-sertlestirme-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Heat treatment changes microstructure through controlled heating, holding and cooling. Hardening may improve wear resistance while reducing toughness; tempering adjusts that balance. Uncontrolled flame heating during repair can alter a carefully treated part beyond the visibly heated area.",
+      "example": {
+        "problem": "A hardened shaft is locally heated to free a seized coupling. Why should its condition be reassessed afterward?",
+        "steps": [
+          "The temperature history may change hardness and residual stresses.",
+          "Review the repair method, affected area and required inspection with the maker or competent authority."
+        ],
+        "result": "Appearance alone cannot confirm restored properties. Use an approved repair and verification process instead of assuming that cooling the shaft returns its original condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-malzeme-bilgisi-denizcilik-celik-standartlari-6",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Denizcilik çelik standartları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 126,
+    "section": {
+      "id": "machine-machine-elements-malzeme-bilgisi-denizcilik-celik-standartlari-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Marine steel grades specify more than yield strength. Toughness at a stated test temperature, weldability, thickness and traceability may be essential to the application. A numerically stronger grade can still be unsuitable for a cold environment or an existing welding procedure.",
+      "example": {
+        "problem": "A repair plate has higher yield strength than specified but lacks impact-test certification.",
+        "steps": [
+          "Compare the full approved material requirements, including toughness, thickness and delivery condition.",
+          "Check the welding procedure and traceability before accepting a substitution."
+        ],
+        "result": "Higher strength does not automatically mean safer replacement. Obtain approval for a material substitution against the component's actual service conditions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mukavemet-temelleri-kayma-gerilmesi-2",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kayma gerilmesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 83,
+    "section": {
+      "id": "machine-machine-elements-mukavemet-temelleri-kayma-gerilmesi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Average direct shear stress is force divided by the sheared area. A pin in double shear has two resisting planes, but unequal load distribution, bending and bearing stress can limit the real joint. The simple calculation is a first check rather than a complete connection design.",
+      "example": {
+        "problem": "A 10 mm pin carries 10 kN in ideal double shear.",
+        "steps": [
+          "One area is πd²/4 = 78.5 mm²; total shear area is 157 mm².",
+          "Average stress is 10000/157 = 63.7 MPa."
+        ],
+        "result": "Compare with the specified allowable shear stress, then check bearing, bending, fit and edge distances. Do not use tensile allowable stress directly without the relevant design criterion."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mukavemet-temelleri-egilme-gerilmesi-ve-moment-hesabi-4",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Eğilme gerilmesi ve moment hesabı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 124,
+    "section": {
+      "id": "machine-machine-elements-mukavemet-temelleri-egilme-gerilmesi-ve-moment-hesabi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Bending stress varies across a section and reaches its maximum at the outer fibres. The second moment of area strongly affects resistance; depth is especially influential for a rectangular section. A load's position matters because it determines bending moment.",
+      "example": {
+        "problem": "A simply supported 2 m beam carries a 4 kN central load. Find the maximum bending moment.",
+        "steps": [
+          "Support reactions are 2 kN each.",
+          "At the centre, Mmax = PL/4 = 4 × 2/4 = 2 kN·m."
+        ],
+        "result": "Use this moment with the actual section's I and outer-fibre distance in σ = My/I. Check deflection and support conditions as well as stress before judging a real lifting beam."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mukavemet-temelleri-burulma-gerilmesi-5",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Burulma gerilmesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-machine-elements-mukavemet-temelleri-burulma-gerilmesi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A circular shaft under torque develops shear stress that increases toward the surface. For a solid shaft, τmax = 16T/(πd³). The diameter-cubed relationship makes small diameter reductions significant; keyways and corrosion can introduce additional local stress concentration.",
+      "example": {
+        "problem": "A solid 50 mm shaft transmits 500 N·m. Estimate maximum nominal torsional shear stress.",
+        "steps": [
+          "Convert torque to 500000 N·mm.",
+          "Calculate 16 × 500000/(π × 50³) = 20.4 MPa."
+        ],
+        "result": "This is the nominal static value for an ideal solid section. Include bending, cyclic loads, stress concentrations and the applicable shaft design rules for service assessment."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mukavemet-temelleri-bilesik-gerilme-ve-von-mises-kriteri-6",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Bileşik gerilme ve Von Mises kriteri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 81,
+    "section": {
+      "id": "machine-machine-elements-mukavemet-temelleri-bilesik-gerilme-ve-von-mises-kriteri-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Von Mises stress combines components for a common ductile-material yield assessment. It does not by itself assess fatigue, brittle fracture or buckling. Use compatible stress components at the same point rather than combining unrelated maximum values from different locations.",
+      "example": {
+        "problem": "At one shaft location, normal stress is 80 MPa and shear stress is 30 MPa. Assume the simplified combined-loading case.",
+        "steps": [
+          "Equivalent stress is sqrt(σ² + 3τ²) = sqrt(80² + 3 × 30²).",
+          "The result is approximately 95.4 MPa."
+        ],
+        "result": "Compare with the chosen allowable criterion, then assess fatigue and local features separately. Passing a static equivalent-stress check does not establish unlimited cyclic life."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mukavemet-temelleri-guvenlik-katsayisi-ve-emniyet-gerilmesi-7",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Güvenlik katsayısı ve emniyet gerilmesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 69,
+    "section": {
+      "id": "machine-machine-elements-mukavemet-temelleri-guvenlik-katsayisi-ve-emniyet-gerilmesi-7-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A safety factor relates a selected failure limit to a design demand or allowable stress. The relevant limit may be yield, ultimate strength, buckling or fatigue, so quoting a factor without its basis is ambiguous. Uncertainty and consequences influence the required value.",
+      "example": {
+        "problem": "A component has a specified yield strength of 240 MPa and nominal working stress of 80 MPa.",
+        "steps": [
+          "The simple yield-based factor is 240/80 = 3.",
+          "Check whether stress concentration, dynamic loading and the governing code are already included in the design demand."
+        ],
+        "result": "The value three describes this particular static comparison. It does not automatically cover corrosion, fatigue or an unverified material condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mil-ve-yatak-tasarimi-pervane-safti-boyutlandirma-iacs-ur-m68-2",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Pervane şaftı boyutlandırma (IACS UR M68)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 119,
+    "section": {
+      "id": "machine-machine-elements-mil-ve-yatak-tasarimi-pervane-safti-boyutlandirma-iacs-ur-m68-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Propulsion-shaft rules account for torque, material and geometric features within a defined scope. A simple torsion equation is useful for understanding trends but cannot replace the applicable class calculation, torsional-vibration assessment or approved drawings. Use the current rule edition for a real design.",
+      "example": {
+        "problem": "A shaft's transmitted torque increases by 33%, with all other assumptions unchanged. What diameter trend does the simple torsion model suggest?",
+        "steps": [
+          "For equal nominal stress in a solid shaft, d is proportional to the cube root of torque.",
+          "The factor is 1.33^(1/3) ≈ 1.10, suggesting about 10% greater diameter."
+        ],
+        "result": "This is a teaching estimate only. Confirm the applicable IACS/class method, material limits, keyway allowances and vibration requirements before specifying a shaft."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mil-ve-yatak-tasarimi-ara-saft-ve-kic-boru-safti-3",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Ara şaft ve kıç boru şaftı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 90,
+    "section": {
+      "id": "machine-machine-elements-mil-ve-yatak-tasarimi-ara-saft-ve-kic-boru-safti-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Intermediate shafts transmit torque through the shaft line; the propeller shaft additionally operates near stern-tube bearings and seals in a demanding environment. Bearing reactions and alignment connect the components mechanically, so a local change can redistribute loads elsewhere.",
+      "example": {
+        "problem": "An intermediate bearing is raised during alignment work. Can the nearby bearing loads be assumed unchanged?",
+        "steps": [
+          "Changing one support position redistributes shaft deflection and reactions.",
+          "Compare the approved alignment model and measured bearing loads at the specified vessel condition."
+        ],
+        "result": "Check the entire affected shaft line. A locally improved clearance can overload another bearing, especially when draft or machinery temperature changes."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mil-ve-yatak-tasarimi-kaymali-yatak-stern-tube-bearing-4",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kaymalı yatak (stern tube bearing)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 95,
+    "section": {
+      "id": "machine-machine-elements-mil-ve-yatak-tasarimi-kaymali-yatak-stern-tube-bearing-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A hydrodynamic plain bearing relies on relative motion, geometry and lubricant to develop a supporting film. Oil pressure at the supply does not directly prove adequate film thickness at the loaded contact. Low speed, misalignment or contaminated lubricant can reduce separation.",
+      "example": {
+        "problem": "Stern-tube oil supply pressure is normal but bearing temperature and vibration rise.",
+        "steps": [
+          "Compare load, speed, lubricant condition and recent alignment or operating changes.",
+          "Treat the combination as evidence requiring the maker's protective response, not as harmless because supply pressure is normal."
+        ],
+        "result": "A pressure indication describes one part of the lubrication system. Protect the bearing and investigate film formation and load distribution before continuing unrestricted operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mil-ve-yatak-tasarimi-rulman-secimi-ve-omur-hesabi-5",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Rulman seçimi ve ömür hesabı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 78,
+    "section": {
+      "id": "machine-machine-elements-mil-ve-yatak-tasarimi-rulman-secimi-ve-omur-hesabi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Basic rolling-bearing rating life is a statistical fatigue measure under stated load assumptions. It is not a guaranteed replacement interval for each bearing. Lubrication, contamination, installation and misalignment can cause earlier failure even when the calculated rating life is large.",
+      "example": {
+        "problem": "For a ball bearing, the equivalent load doubles while dynamic rating stays fixed. How does the basic rating life change?",
+        "steps": [
+          "Using L10 proportional to (C/P)³, doubling P divides calculated life by 2³.",
+          "The new basic life is one eighth of the original value under the model assumptions."
+        ],
+        "result": "Load estimation strongly affects the result. Use the correct exponent for the bearing type and assess lubrication and contamination separately."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-mil-ve-yatak-tasarimi-saft-hizalama-alignment-6",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Şaft hizalama (alignment)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 79,
+    "section": {
+      "id": "machine-machine-elements-mil-ve-yatak-tasarimi-saft-hizalama-alignment-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Alignment establishes acceptable relationships among shafts, couplings and bearing loads. Cold geometric alignment is only one condition; thermal growth and hull deflection alter it. Coupling readings should be interpreted using the specified setup and temperature condition.",
+      "example": {
+        "problem": "A machine aligns well when cold but develops coupling vibration after warming up.",
+        "steps": [
+          "Compare predicted thermal growth and the manufacturer's cold-offset targets.",
+          "Check soft foot, supports and hot-condition evidence before changing shims."
+        ],
+        "result": "Do not chase a zero cold offset if the approved target intentionally compensates for operating growth. Record measurements and verify the full alignment method."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-disli-ve-aktarma-elemanlari-duz-disli-hesaplari-1",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Düz dişli hesapları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 124,
+    "section": {
+      "id": "machine-machine-elements-disli-ve-aktarma-elemanlari-duz-disli-hesaplari-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A spur-gear pair trades rotational speed for torque through its tooth-count ratio. Ideal power is unchanged; real efficiency reduces output. Tooth loading, backlash and lubrication must still be suitable for the transmitted duty.",
+      "example": {
+        "problem": "A 20-tooth pinion at 1200 rpm drives a 60-tooth gear. Input torque is 100 N·m and efficiency is 95%.",
+        "steps": [
+          "Output speed is 1200 × 20/60 = 400 rpm.",
+          "Output torque is 100 × 3 × 0.95 = 285 N·m."
+        ],
+        "result": "The reduction increases torque while lowering speed. Verify the gear's rated load and contact condition; the ratio alone says nothing about tooth fatigue capacity."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-disli-ve-aktarma-elemanlari-helisel-disli-ve-pervane-reduktoru-2",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Helisel dişli ve pervane redüktörü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 98,
+    "section": {
+      "id": "machine-machine-elements-disli-ve-aktarma-elemanlari-helisel-disli-ve-pervane-reduktoru-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Helical gears provide progressive tooth engagement but produce axial thrust as well as tangential force. Thrust bearings and shaft location are therefore part of the gear design. Smooth running does not mean axial loading is absent.",
+      "example": {
+        "problem": "A reduction gearbox develops abnormal thrust-bearing temperature after a load increase.",
+        "steps": [
+          "Check gear load, lubricant supply and axial positioning against the maker's limits.",
+          "Review the direction and magnitude of thrust rather than treating the bearing as a purely radial support."
+        ],
+        "result": "Investigate the coupled gear-and-bearing system. Changing oil viscosity alone may not correct an excessive axial load or alignment problem."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-disli-ve-aktarma-elemanlari-kayis-ve-zincir-tahrik-sistemleri-3",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kayış ve zincir tahrik sistemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 65,
+    "section": {
+      "id": "machine-machine-elements-disli-ve-aktarma-elemanlari-kayis-ve-zincir-tahrik-sistemleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Belt drives depend on friction and tension; chain drives transmit through positive engagement but require correct pitch, alignment and lubrication. Over-tension can overload bearings, while insufficient tension can cause slip or impact. A tight-looking drive is not necessarily correctly adjusted.",
+      "example": {
+        "problem": "A belt slips under load after replacement. Should tension simply be increased until slipping stops?",
+        "steps": [
+          "Check belt type, pulley condition, alignment and the specified tension method.",
+          "Contamination or a worn groove may cause slip even at excessive tension."
+        ],
+        "result": "Adjust to the maker's measured specification. Over-tightening can exchange a slipping problem for premature shaft or bearing failure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-disli-ve-aktarma-elemanlari-kaplin-tipleri-esnek-rijit-4",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kaplin tipleri (esnek, rijit)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 86,
+    "section": {
+      "id": "machine-machine-elements-disli-ve-aktarma-elemanlari-kaplin-tipleri-esnek-rijit-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A flexible coupling accommodates specified small relative movements and can modify vibration transmission. It does not eliminate the need for alignment. A rigid coupling transfers misalignment forces more directly, while flexible elements can deteriorate through heat, oil exposure or cyclic stress.",
+      "example": {
+        "problem": "A flexible coupling element repeatedly cracks after replacement.",
+        "steps": [
+          "Check alignment, torque transients and element compatibility rather than assuming each replacement is defective.",
+          "Inspect the connected supports and permitted angular and axial movement."
+        ],
+        "result": "Recurring element failure can be evidence of a system problem. Correct the cause and use the specified element; do not fit a stiffer substitute without engineering approval."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-disli-ve-aktarma-elemanlari-kavrama-clutch-mekanizmalari-5",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kavrama (clutch) mekanizmaları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 76,
+    "section": {
+      "id": "machine-machine-elements-disli-ve-aktarma-elemanlari-kavrama-clutch-mekanizmalari-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A friction clutch transmits torque through contact force and friction. During engagement, slip converts mechanical energy into heat; excessive or prolonged slip can damage surfaces. A hydraulic pressure indication does not alone prove that the full intended clamping force reaches the plates.",
+      "example": {
+        "problem": "A clutch engages slowly and its housing temperature rises during repeated manoeuvres.",
+        "steps": [
+          "Compare engagement pressure, timing and slip indications with the approved sequence.",
+          "Check oil condition and actuator performance before increasing pressure settings."
+        ],
+        "result": "Limit operation according to the maker's response and diagnose the cause. Changing a pressure setting without approval can overload the mechanism while leaving damaged friction surfaces unresolved."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-yorulma-ve-titresim-yorulma-omru-ve-s-n-egrisi-1",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Yorulma ömrü ve S-N eğrisi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 82,
+    "section": {
+      "id": "machine-machine-elements-yorulma-ve-titresim-yorulma-omru-ve-s-n-egrisi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An S–N curve relates cyclic stress amplitude to fatigue life under specified test conditions. Mean stress, surface finish, corrosion and notches can change service behavior. Repeated stress below static yield can still initiate and grow a crack.",
+      "example": {
+        "problem": "A shaft never exceeds yield stress but has millions of alternating bending cycles and a surface notch.",
+        "steps": [
+          "Evaluate cyclic stress at the notch and the relevant fatigue data.",
+          "Inspect for crack initiation using an appropriate method rather than relying on the static safety factor."
+        ],
+        "result": "Static strength and fatigue resistance answer different questions. Consider the load history and stress concentration when deciding inspection or replacement needs."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-yorulma-ve-titresim-yorulma-siniri-ve-gerilme-yogunlasmasi-2",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Yorulma sınırı ve gerilme yoğunlaşması",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-machine-elements-yorulma-ve-titresim-yorulma-siniri-ve-gerilme-yogunlasmasi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A geometric discontinuity concentrates stress locally. A sharp shoulder, keyway or corrosion pit can raise fatigue demand above the nominal stress calculated from the gross section. Improving the transition radius can reduce concentration, but dimensions must remain within the approved design.",
+      "example": {
+        "problem": "A nominal alternating stress is 40 MPa and a simplified fatigue concentration factor is 2.",
+        "steps": [
+          "The local fatigue stress estimate is 2 × 40 = 80 MPa.",
+          "Compare with the applicable fatigue criterion, accounting for mean stress, surface and environment."
+        ],
+        "result": "The nominal section value can conceal the critical location. Do not remove material or alter a fillet without checking the approved geometry and remaining strength."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-yorulma-ve-titresim-torsiyonel-titresim-ve-barred-speed-range-3",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Torsiyonel titreşim ve barred speed range",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 82,
+    "section": {
+      "id": "machine-machine-elements-yorulma-ve-titresim-torsiyonel-titresim-ve-barred-speed-range-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Torsional vibration is oscillation in shaft twist superimposed on mean rotation. Excitation can coincide with a natural mode at certain speeds, producing large alternating torque. An approved barred range defines operating restrictions for a specific installation, not a universal speed rule.",
+      "example": {
+        "problem": "The bridge requests prolonged operation inside a documented barred speed range.",
+        "steps": [
+          "Identify the approved restriction and communicate the unavailable operating range.",
+          "Follow the vessel's specified passage and manoeuvring instructions rather than improvising a new rpm limit."
+        ],
+        "result": "Average shaft torque can appear normal while alternating stress is excessive. Use the approved vibration assessment and report changes in engine firing or shaft-line configuration."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-yorulma-ve-titresim-aksiyel-titresim-4",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Aksiyel titreşim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 72,
+    "section": {
+      "id": "machine-machine-elements-yorulma-ve-titresim-aksiyel-titresim-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Axial vibration is motion along the shaft axis. Thrust variations, coupling behavior and structural response can excite it. A radial vibration reading alone may miss the dominant motion, so measurement direction and location are part of a valid diagnosis.",
+      "example": {
+        "problem": "A thrust bearing shows a strong axial vibration peak while radial measurements remain modest.",
+        "steps": [
+          "Verify the sensor direction and compare the peak with shaft speed and known excitation orders.",
+          "Check thrust-bearing condition and the approved damping arrangement."
+        ],
+        "result": "Low radial vibration does not clear an axial problem. Trend the correct measurements and investigate the load path before modifying bearings or dampers."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-yorulma-ve-titresim-lateral-titresim-ve-kritik-hiz-5",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Lateral titreşim ve kritik hız",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 85,
+    "section": {
+      "id": "machine-machine-elements-yorulma-ve-titresim-lateral-titresim-ve-kritik-hiz-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Lateral critical speed occurs when rotational excitation interacts strongly with a shaft's bending mode. Supports, mass distribution and stiffness affect the mode. Imbalance can increase response near resonance, but not every vibration peak proves a critical-speed problem.",
+      "example": {
+        "problem": "A shaft vibrates strongly over a narrow speed band and less strongly above it.",
+        "steps": [
+          "Compare amplitude and phase over a controlled, approved speed assessment.",
+          "Check balance, bearing condition and support stiffness against the machinery's permitted operating range."
+        ],
+        "result": "Use an engineering diagnosis before changing operating limits. Do not dwell in a suspected resonance band to gather informal measurements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-elektrik-ark-kaynagi-smaw-1",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Elektrik ark kaynağı (SMAW)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 85,
+    "section": {
+      "id": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-elektrik-ark-kaynagi-smaw-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Shielded metal arc welding uses a consumable coated electrode; the coating contributes shielding and slag formation. Electrode storage, preparation and technique affect weld integrity. A neat surface does not establish penetration or freedom from internal defects.",
+      "example": {
+        "problem": "A structural repair is welded with electrodes of uncertain storage history.",
+        "steps": [
+          "Verify the approved welding procedure, electrode classification and handling requirements.",
+          "Inspect preparation and apply the specified examination and acceptance criteria after welding."
+        ],
+        "result": "Do not accept the repair by appearance alone. Hydrogen-related cracking and lack of fusion may require controls and inspection beyond a visual check."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-gazalti-kaynagi-mig-mag-tig-2",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Gazaltı kaynağı (MIG/MAG, TIG)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 98,
+    "section": {
+      "id": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-gazalti-kaynagi-mig-mag-tig-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "MIG/MAG uses a continuously fed consumable wire, while TIG uses a non-consumable tungsten electrode with separate filler when needed. Shielding gas and process parameters must suit the material. Wind or contamination can disrupt shielding even with a stable-looking arc.",
+      "example": {
+        "problem": "A deck repair develops porosity using a gas-shielded process in a breeze.",
+        "steps": [
+          "Check shielding coverage, gas supply, surface cleanliness and the approved procedure.",
+          "Provide suitable environmental protection before repeating the weld."
+        ],
+        "result": "Increasing gas flow indiscriminately can create turbulence rather than solve shielding loss. Correct the cause and inspect the repaired weld to its specified acceptance standard."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-kaynak-dikisi-hesaplari-3",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kaynak dikişi hesapları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 86,
+    "section": {
+      "id": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-kaynak-dikisi-hesaplari-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A fillet weld's effective throat, rather than its visible leg size alone, determines the simplified resisting area. Load direction, eccentricity and weld-group geometry influence stress. A calculation for direct shear does not cover every bending or fatigue effect.",
+      "example": {
+        "problem": "Two 100 mm fillet welds have 6 mm equal legs and carry a centred 20 kN shear load.",
+        "steps": [
+          "For the ideal 45-degree fillet, throat is 0.707 × 6 = 4.24 mm.",
+          "Total throat area is 2 × 100 × 4.24 = 848 mm²; average shear is 23.6 MPa."
+        ],
+        "result": "Compare with the applicable allowable stress and inspect weld quality. Eccentric load or fatigue requires additional assessment beyond this centred-load example."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-kaynak-hatalari-ve-muayene-yontemleri-4",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Kaynak hataları ve muayene yöntemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 130,
+    "section": {
+      "id": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-kaynak-hatalari-ve-muayene-yontemleri-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Weld defects differ in origin and detectability. Porosity, lack of fusion, undercut and cracking do not have interchangeable significance. Inspection method and acceptance criteria must match the material, geometry and service; a successful test only addresses the defect types it can reveal.",
+      "example": {
+        "problem": "A weld passes surface penetrant testing. Can internal lack of fusion be ruled out?",
+        "steps": [
+          "Penetrant testing detects surface-breaking indications on suitable nonporous surfaces.",
+          "Use the specified volumetric method where internal integrity must be assessed."
+        ],
+        "result": "A clean penetrant result does not prove complete internal soundness. Combine examination methods according to the approved inspection plan rather than treating one test as universal."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-ndt-tahribatsiz-muayene-teknikleri-5",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "NDT (tahribatsız muayene) teknikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 93,
+    "section": {
+      "id": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-ndt-tahribatsiz-muayene-teknikleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Nondestructive examination reveals indications without intentionally destroying the component, but each method has physical limitations. Magnetic particle testing requires ferromagnetic material; penetrant needs surface access; ultrasonic and radiographic methods depend on geometry and technique. Qualified interpretation distinguishes an indication from an unacceptable defect.",
+      "example": {
+        "problem": "A stainless component is proposed for magnetic particle inspection without checking its alloy structure.",
+        "steps": [
+          "Determine whether the material is ferromagnetic and whether the suspected defect is surface or internal.",
+          "Select an appropriate qualified method and acceptance criteria."
+        ],
+        "result": "A method unsuitable for the material can return a misleading clean result. Document technique, coverage and limitations along with findings."
+      }
+    }
+  },
+  {
+    "topicId": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-civata-ve-percin-baglantilari-6",
+    "topicKey": "machine-machine-elements",
+    "topicTitle": "Cıvata ve perçin bağlantıları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-machine-elements-kaynak-ve-baglanti-teknolojisi-civata-ve-percin-baglantilari-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A bolted joint depends on controlled preload, joint stiffness and the load path. Applied torque is only an indirect estimate of preload and is sensitive to friction and lubrication. Reusing an assumed torque on a differently lubricated fastener can change clamping force substantially.",
+      "example": {
+        "problem": "The same tightening torque is used first on dry bolts and then on lubricated bolts.",
+        "steps": [
+          "Lower friction can produce greater preload at the same torque.",
+          "Check the specified fastener condition, lubricant and tightening procedure before comparing results."
+        ],
+        "result": "Use the approved torque or tensioning method for that exact joint. Higher preload is not automatically safer because bolt yielding or joint damage may result."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-termodinamigin-temel-kavramlari-termodinamigin-sifirinci-yasasi-5",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Termodinamiğin sıfırıncı yasası",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 136,
+    "section": {
+      "id": "machine-thermodynamics-termodinamigin-temel-kavramlari-termodinamigin-sifirinci-yasasi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A contact sensor needs time and a sound thermal path to approach the measured body's temperature. The zeroth law justifies comparing equilibrium temperatures; it does not remove response lag, calibration error or temperature gradients. A sensor touching an insulated pipe surface may therefore disagree with an immersed sensor even when both work correctly.",
+      "example": {
+        "problem": "An immersed thermometer stabilizes at 80°C, while a recently attached surface probe reads 65°C. Does this prove a failed probe?",
+        "steps": [
+          "Check elapsed settling time and thermal contact before comparing readings.",
+          "Compare both instruments against the same stable reference and examine whether they actually measure the same location."
+        ],
+        "result": "The difference alone cannot diagnose failure. Separate thermal lag and installation effects from calibration error, and never defeat a temperature protection device on this observation alone."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-termodinamik-yasalar-tersinir-ve-tersinmez-surecler-5",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Tersinir ve tersinmez süreçler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 139,
+    "section": {
+      "id": "machine-thermodynamics-termodinamik-yasalar-tersinir-ve-tersinmez-surecler-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A reversible process is an ideal limiting path with no entropy generation. Real friction, mixing and heat transfer across a finite temperature difference make processes irreversible. Energy is conserved in both cases, but the amount available for useful work decreases when irreversibility generates entropy.",
+      "example": {
+        "problem": "Hot water cools through a pipe to the engine room. Would insulating the pipe make an already completed heat transfer reversible?",
+        "steps": [
+          "Heat crossing a finite temperature difference generates entropy.",
+          "Insulation reduces future heat loss; it cannot return the surroundings and water to their earlier states without additional effects."
+        ],
+        "result": "Reversibility is not simply the ability to run equipment backwards. Use ideal processes as comparison limits, then identify the physical sources of loss in the real installation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-termodinamik-yasalar-exerji-ve-anergy-kavramlari-6",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Exerji ve anergy kavramları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 145,
+    "section": {
+      "id": "machine-thermodynamics-termodinamik-yasalar-exerji-ve-anergy-kavramlari-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Exergy measures the maximum useful work obtainable as a system approaches equilibrium with a specified environment. Anergy is the energy portion unavailable for that conversion under those conditions. Heat quantity alone does not describe its usefulness: low-temperature heat has less work potential than the same energy supplied at a high temperature.",
+      "example": {
+        "problem": "Compare 100 kJ of heat from reservoirs at 400 K and 600 K with surroundings at 300 K.",
+        "steps": [
+          "For ideal reversible conversion, heat exergy is Q(1 − T₀/T).",
+          "The two upper bounds are 25 kJ and 50 kJ respectively."
+        ],
+        "result": "Equal heat quantities have different work potential. These reservoir calculations are ideal bounds; real exhaust recovery must also account for changing temperatures, heat exchanger losses and auxiliary power."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-termodinamik-cevrimler-carnot-cevrimi-ve-teorik-verim-1",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Carnot çevrimi ve teorik verim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 147,
+    "section": {
+      "id": "machine-thermodynamics-termodinamik-cevrimler-carnot-cevrimi-ve-teorik-verim-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Carnot efficiency is an upper bound for a heat engine operating between two constant-temperature reservoirs. Temperatures must be absolute. It does not predict the actual efficiency of a diesel engine, whose heat addition, gas temperatures and losses differ from the ideal cycle.",
+      "example": {
+        "problem": "A hypothetical engine receives heat at 600 K and rejects it at 300 K. Find the maximum efficiency and work from 200 kJ of supplied heat.",
+        "steps": [
+          "Calculate η = 1 − 300/600 = 0.50.",
+          "Maximum work is 0.50 × 200 = 100 kJ; at least 100 kJ is rejected in this ideal case."
+        ],
+        "result": "A claimed 60% efficiency between these reservoirs is impossible. A real engine should fall below the 50% limit; replacing kelvin with Celsius would invalidate the comparison."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-transferi-cok-katmanli-duvar-ve-silindirik-iletim-2",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Çok katmanlı duvar ve silindirik iletim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 118,
+    "section": {
+      "id": "machine-thermodynamics-isi-transferi-cok-katmanli-duvar-ve-silindirik-iletim-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Thermal resistances in successive layers add. In a flat wall, each conductive resistance is L/(kA); cylindrical resistance instead involves the logarithm of the radius ratio. The area changes through a cylinder, so applying one flat-wall area to thick pipe insulation can produce a misleading result.",
+      "example": {
+        "problem": "A flat panel has two layers with resistances 0.10 and 0.20 K/W. Its boundary temperatures differ by 60 K. Ignore contact and surface resistances.",
+        "steps": [
+          "Total resistance is 0.30 K/W, giving heat flow 60/0.30 = 200 W.",
+          "Temperature drops are 200 × 0.10 = 20 K and 200 × 0.20 = 40 K."
+        ],
+        "result": "The more resistive layer carries the larger temperature drop, not a different steady heat flow. Include convection and contact resistances before applying this method to an actual insulated pipe."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-transferi-newton-soguma-yasasi-tasinim-3",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Newton soğuma yasası (taşınım)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 142,
+    "section": {
+      "id": "machine-thermodynamics-isi-transferi-newton-soguma-yasasi-tasinim-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Newton's cooling relation describes convection as Q̇ = hA(Tsurface − Tfluid). The coefficient h depends on the fluid, geometry and flow regime; it is not a material constant. Increasing fluid velocity may raise heat transfer while also increasing pumping power and erosion risk.",
+      "example": {
+        "problem": "A 2 m² surface is 30 K warmer than the fluid. Estimate heat transfer for h = 50 W/(m²·K).",
+        "steps": [
+          "Multiply h, area and temperature difference: 50 × 2 × 30 = 3000 W.",
+          "If fouling or poor flow halves the effective coefficient, the same temperature difference transfers only 1500 W."
+        ],
+        "result": "A warmer outlet alone does not prove better cooling. Evaluate flow and heat duty together, and use an appropriate coefficient for the actual operating condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-transferi-dogal-ve-zorlanmis-tasinim-4",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Doğal ve zorlanmış taşınım",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-thermodynamics-isi-transferi-dogal-ve-zorlanmis-tasinim-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Natural convection is driven by density differences in a gravitational field; forced convection uses a fan or pump. Losing forced flow does not guarantee enough natural circulation remains. Pipe elevation, restrictions and heat load determine whether buoyancy can sustain meaningful cooling.",
+      "example": {
+        "problem": "A cooling pump trips but the outlet temperature initially remains normal. Is natural convection now proven adequate?",
+        "steps": [
+          "Stored coolant and metal delay the measured temperature rise.",
+          "Check verified circulation and the equipment's approved protection response rather than waiting for temperature to increase."
+        ],
+        "result": "The initial temperature is a lagging indicator. Protect the heat source and restore the approved cooling arrangement; do not infer safe continuous operation from a short period of thermal inertia."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-transferi-toplam-isi-gecis-katsayisi-u-6",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Toplam ısı geçiş katsayısı (U)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 149,
+    "section": {
+      "id": "machine-thermodynamics-isi-transferi-toplam-isi-gecis-katsayisi-u-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The overall heat transfer coefficient combines hot-side convection, wall conduction, cold-side convection and fouling. A thin clean metal wall may contribute little resistance compared with the fluid films. Improving the already least-resistive part can have little effect on total duty.",
+      "example": {
+        "problem": "An exchanger has U = 500 W/(m²·K), area 10 m² and mean temperature difference 20 K. What duty does the simplified model predict?",
+        "steps": [
+          "Calculate Q̇ = UAΔT = 500 × 10 × 20 = 100 kW.",
+          "If fouling lowers U to 350 under the same conditions, duty falls to 70 kW."
+        ],
+        "result": "The loss is 30 kW, but measured temperature and flow changes must be considered before attributing a real duty reduction entirely to fouling."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-esanjorleri-paralel-akis-ve-ters-akis-duzenlemeleri-1",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Paralel akış ve ters akış düzenlemeleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 100,
+    "section": {
+      "id": "machine-thermodynamics-isi-esanjorleri-paralel-akis-ve-ters-akis-duzenlemeleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Counterflow keeps a useful temperature difference along more of the exchanger and can allow the cold outlet to exceed the hot outlet temperature. Parallel flow brings the outlets toward a common temperature. Neither arrangement can transfer heat across a temperature difference that contradicts the assumed local heat-flow direction.",
+      "example": {
+        "problem": "A proposed exchanger cools hot water from 90°C to 50°C while heating cold water from 20°C to 60°C. Which arrangement is compatible?",
+        "steps": [
+          "Counterflow terminal differences are 90 − 60 = 30 K and 50 − 20 = 30 K.",
+          "Parallel-flow outlet difference would be 50 − 60 = −10 K, inconsistent with the proposed temperature profiles."
+        ],
+        "result": "The proposed temperatures are compatible with counterflow, subject to matching energy balances and adequate area. Outlet temperatures alone do not establish the required exchanger size."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-esanjorleri-plakali-isi-esanjorleri-3",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Plakalı ısı eşanjörleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 115,
+    "section": {
+      "id": "machine-thermodynamics-isi-esanjorleri-plakali-isi-esanjorleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Plate exchangers create narrow alternating passages with high heat transfer area per volume. Deposits can reduce both flow area and heat transfer, while damaged plates or gaskets can permit leakage between fluids. Tightening beyond the specified pack dimension can damage the assembly.",
+      "example": {
+        "problem": "A freshwater cooler shows increasing seawater-side pressure drop and worsening cooling at comparable load. What evidence distinguishes restriction from a sensor fault?",
+        "steps": [
+          "Compare inlet and outlet pressures using verified instruments and record both flows and temperatures.",
+          "A persistent higher differential pressure supports restriction; a fluid contamination test addresses a different failure mode, cross-leakage."
+        ],
+        "result": "Plan inspection and cleaning using the maker's isolation, plate sequence and tightening instructions. Do not assume every temperature rise requires a new plate pack."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-esanjorleri-kabuk-boru-shell-tube-esanjorler-4",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Kabuk–boru (shell & tube) eşanjörler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 93,
+    "section": {
+      "id": "machine-thermodynamics-isi-esanjorleri-kabuk-boru-shell-tube-esanjorler-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "In a shell-and-tube exchanger, one fluid flows through tubes and the other around them. Baffles guide shell-side flow, but also affect pressure drop. Tube leakage can mix fluids in the direction set by their local pressure difference, which may change when pumps stop.",
+      "example": {
+        "problem": "Cooling water contamination appears after shutdown although normal running samples are clean. How could a tube leak explain this?",
+        "steps": [
+          "Compare pressures during running and shutdown; their ordering may reverse.",
+          "An isolated pressure or leak test can identify a damaged boundary without assuming the normal running flow direction persists."
+        ],
+        "result": "A leak path and a pressure difference together determine contamination direction. Follow an approved test pressure and isolation procedure; excessive test pressure can damage sound tubes."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-esanjorleri-fouling-ve-temizlik-etkileri-5",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Fouling ve temizlik etkileri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 93,
+    "section": {
+      "id": "machine-thermodynamics-isi-esanjorleri-fouling-ve-temizlik-etkileri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fouling adds thermal resistance, but its symptoms overlap with low flow, air binding and changed seawater temperature. Compare an exchanger against a clean baseline at similar duty and flow before deciding that cleaning is the remedy. A single outlet temperature is insufficient evidence.",
+      "example": {
+        "problem": "At the same flow and inlet temperatures, a cooler transfers 80 kW instead of its previous 100 kW, and water-side pressure drop has increased.",
+        "steps": [
+          "Estimate heat duty from mass flow, heat capacity and measured temperature change.",
+          "The combined thermal and hydraulic changes strengthen the restriction hypothesis; verify instrument accuracy and strainers before opening the exchanger."
+        ],
+        "result": "Record performance again after cleaning. Recovery toward the baseline demonstrates the effect of the intervention; lack of recovery directs investigation toward another cause."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-isi-esanjorleri-esanjor-verim-hesaplari-6",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Eşanjör verim hesapları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 97,
+    "section": {
+      "id": "machine-thermodynamics-isi-esanjorleri-esanjor-verim-hesaplari-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Heat exchanger effectiveness compares actual heat transfer with the maximum possible for the inlet temperatures and smaller heat-capacity rate. It differs from thermal efficiency of an engine. The smaller capacity rate sets the maximum because that stream would otherwise cross the opposite inlet temperature.",
+      "example": {
+        "problem": "Hot and cold capacity rates are 4 and 2 kW/K. Inlet temperatures are 80°C and 20°C; measured duty is 90 kW.",
+        "steps": [
+          "Maximum duty is Cmin(Th,in − Tc,in) = 2 × 60 = 120 kW.",
+          "Effectiveness is 90/120 = 0.75. Cold outlet temperature is 20 + 90/2 = 65°C."
+        ],
+        "result": "The effectiveness is 75%, with hot outlet 57.5°C. This temperature pattern requires a compatible flow arrangement; energy balance should agree on both sides within measurement uncertainty."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-gemi-enerji-sistemleri-egzoz-gazi-ekonomizeri-1",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Egzoz gazı ekonomizeri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-thermodynamics-gemi-enerji-sistemleri-egzoz-gazi-ekonomizeri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An exhaust economizer transfers exhaust heat into water or steam. Soot deposits both resist heat transfer and can become combustible. A declining steam output is therefore a performance clue, while abnormal gas temperatures or fire indications demand the vessel's emergency response rather than routine cleaning.",
+      "example": {
+        "problem": "Steam production drops at the same engine load while gas-side pressure drop rises. What should the engineer investigate?",
+        "steps": [
+          "Compare exhaust inlet conditions, feedwater flow and instrumentation with the clean baseline.",
+          "Examine approved soot-cleaning history and restrictions without treating a possible soot fire as an ordinary fouling problem."
+        ],
+        "result": "Assess cleaning under the maker's procedure and safe operating conditions. Never improvise water application to a hot economizer; distinguish preventive cleaning from the specific fire response."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-gemi-enerji-sistemleri-atik-isi-geri-kazanim-sistemi-whrs-2",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Atık ısı geri kazanım sistemi (WHRS)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-thermodynamics-gemi-enerji-sistemleri-atik-isi-geri-kazanim-sistemi-whrs-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Waste heat recovery converts part of otherwise rejected energy into useful heating or power. Gross recovered output can overstate the benefit if additional pumps, fans or exhaust backpressure increase fuel use. The useful comparison is the net change at an equivalent ship operating condition.",
+      "example": {
+        "problem": "A recovery unit generates 180 kW while its new auxiliaries consume 25 kW. What benefit can be claimed from these figures alone?",
+        "steps": [
+          "Subtract auxiliary consumption: preliminary net electrical output is 155 kW.",
+          "Check any added engine fuel consumption or propulsion penalty before converting this into a voyage fuel saving."
+        ],
+        "result": "155 kW is a subsystem result, not yet a complete ship saving. Include availability, low-load performance and whether recovered heat replaces a real demand."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-gemi-enerji-sistemleri-buhar-jeneratoru-ve-turbin-entegrasyonu-3",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Buhar jeneratörü ve türbin entegrasyonu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 124,
+    "section": {
+      "id": "machine-thermodynamics-gemi-enerji-sistemleri-buhar-jeneratoru-ve-turbin-entegrasyonu-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A steam turbine converts an enthalpy drop into shaft work. Available power depends on steam mass flow, inlet state, exhaust pressure and actual turbine efficiency. Supplying a turbine must not compromise essential steam consumers or boiler water level control.",
+      "example": {
+        "problem": "Steam flow is 0.5 kg/s and the ideal available enthalpy drop is 400 kJ/kg. Assume turbine efficiency 70% and neglect generator losses.",
+        "steps": [
+          "Ideal shaft power is 0.5 × 400 = 200 kW.",
+          "Actual shaft power is approximately 0.70 × 200 = 140 kW under these assumptions."
+        ],
+        "result": "Electrical output will be lower after generator and auxiliary losses. Verify steam quality and operating limits; a calculated power figure does not establish safe turbine admission conditions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-gemi-enerji-sistemleri-kojenerasyon-uygulamalari-4",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Kojenerasyon uygulamaları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 85,
+    "section": {
+      "id": "machine-thermodynamics-gemi-enerji-sistemleri-kojenerasyon-uygulamalari-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cogeneration produces useful heat and power from the same fuel input. Its reported total efficiency depends on counting heat that is actually used. Dumping excess hot water overboard does not create an energy-saving credit, even if the recovery equipment is available.",
+      "example": {
+        "problem": "A plant consumes 1000 kW of fuel energy, produces 350 kW electricity and supplies 400 kW of useful heating.",
+        "steps": [
+          "Electrical efficiency is 35%; useful combined efficiency is (350 + 400)/1000 = 75%.",
+          "If heating demand falls to 100 kW, useful combined efficiency becomes 45%, although electrical output is unchanged."
+        ],
+        "result": "Compare operation over the real demand profile. Match recovery capacity to consumers and avoid presenting installed heat-recovery capacity as continuous useful output."
+      }
+    }
+  },
+  {
+    "topicId": "machine-thermodynamics-gemi-enerji-sistemleri-enerji-donusum-verimi-ve-kayip-analizi-5",
+    "topicKey": "machine-thermodynamics",
+    "topicTitle": "Enerji dönüşüm verimi ve kayıp analizi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-thermodynamics-gemi-enerji-sistemleri-enerji-donusum-verimi-ve-kayip-analizi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An energy balance follows energy into useful output, rejected heat and other losses. Successive conversion efficiencies multiply rather than add. Define the system boundary first so that auxiliaries or electrical losses are not counted twice or silently omitted.",
+      "example": {
+        "problem": "An engine converts 40% of fuel energy to shaft work and its generator converts 95% of shaft work to electricity. Fuel input is 1000 kW.",
+        "steps": [
+          "Shaft output is 400 kW; generator output is 400 × 0.95 = 380 kW.",
+          "Overall conversion efficiency is 0.40 × 0.95 = 38%, before external auxiliaries."
+        ],
+        "result": "The remaining 620 kW leaves through heat and other losses. A useful loss analysis assigns each stream to the same boundary and operating condition before selecting an improvement."
+      }
+    }
+  },
+  {
+    "topicId": "navigation-heading-cog-iliskisi",
+    "topicKey": "navigation",
+    "topicTitle": "Heading – COG ilişkisi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 131,
+    "section": {
+      "id": "navigation-heading-cog-iliskisi-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Heading describes the bow direction; course over ground describes displacement over the seabed. Leeway can also separate heading from the through-water velocity, so a current triangle that ignores wind is a simplified model. Compare instruments using the same true or magnetic reference and time interval.",
+      "example": {
+        "problem": "A vessel makes 10 kn north through the water while a 2 kn current sets east. Assume no leeway. Find the ground track.",
+        "steps": [
+          "Resolve north and east components: 10 kn north and 2 kn east.",
+          "The angle east of north is arctan(2/10) = 11.3 degrees; ground speed is sqrt(104) = 10.20 kn."
+        ],
+        "result": "Heading 000°T produces COG approximately 011°T. To maintain a northward track, steer into the current and recompute the triangle; do not simply substitute COG for heading."
+      }
+    }
+  },
+  {
+    "topicId": "navigation-stw-sog-iliskisi",
+    "topicKey": "navigation",
+    "topicTitle": "STW – SOG ilişkisi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 146,
+    "section": {
+      "id": "navigation-stw-sog-iliskisi-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Speed through water measures motion relative to the surrounding water; speed over ground measures motion relative to the seabed. They are vector magnitudes. Subtracting the two scalar readings gives current speed only when the velocities lie on the same line. A cross-current can increase SOG while also creating an unwanted track offset.",
+      "example": {
+        "problem": "The ship maintains 12 kn through water on an eastward heading. Compare a 3 kn following current with a 3 kn current setting north.",
+        "steps": [
+          "With the following current, eastward ground speed is 12 + 3 = 15 kn.",
+          "With the cross-current, SOG is sqrt(12² + 3²) = 12.37 kn and COG turns 14.0 degrees north of east."
+        ],
+        "result": "The same current speed gives different SOG and track. Use SOG for distance-over-ground estimates, but retain STW and current direction when evaluating propulsion performance or predicting the vessel's path."
+      }
+    }
+  }
+]

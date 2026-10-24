@@ -1,3 +1,4 @@
+import learningDepthReviews from "./learningDepthReviews.json";
 import learningCaseStudies from "./learningCaseStudies.json";
 import rulePlacements from "@/data/curriculumRulePlacement.json";
 import type { LucideIcon } from "lucide-react";
@@ -167,12 +168,13 @@ const mergeRulesIntoTopic = (categoryKey: string, topic: BetaTopic): BetaTopic =
   const assignments = getRuleIntegrationAssignments(categoryKey).filter(
     (assignment) => assignment.topicId === topic.id,
   );
+  const depthReview = learningDepthReviews.find((entry) => entry.topicId === topic.id);
   const workedCase = learningCaseStudies.find((entry) => entry.topicId === topic.id);
-  if (assignments.length === 0 && !workedCase) return topic;
+  if (assignments.length === 0 && !workedCase && !depthReview) return topic;
 
   return {
     ...topic,
-    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...integratedRuleSections(topic.id, assignments)],
+    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...(depthReview ? [depthReview.section] : []), ...integratedRuleSections(topic.id, assignments)],
   };
 };
 
