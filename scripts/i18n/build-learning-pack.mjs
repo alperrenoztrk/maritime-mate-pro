@@ -9,6 +9,9 @@ const depthReviews = JSON.parse(fs.readFileSync('src/data/learningDepthReviews.j
 for (const { section } of depthReviews) {
   for (const copy of [section.title, section.content, section.example.problem, ...section.example.steps, section.example.result]) pack[copy] = copy;
 }
+const sources = JSON.parse(fs.readFileSync('src/data/learningDepthSources.json', 'utf8'));
+for (const references of Object.values(sources)) for (const { title } of references) pack[title] = title;
+pack['Further reading'] = 'Further reading';
 const text = JSON.stringify(pack) + '\n';
 if (process.argv.includes('--check')) {
   if (fs.readFileSync(output, 'utf8') !== text) throw new Error('Learning language pack is stale. Run npm run i18n:learning.');

@@ -1,0 +1,19 @@
+{
+  "navigation": [{"title":"NGA: The American Practical Navigator","url":"https://msi.nga.mil/Publications/APN"}],
+  "machine-thermodynamics": [{"title":"DOE: Thermodynamics fundamentals","url":"https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1012-92_VOL1.pdf"}],
+  "machine-fluid-mechanics": [{"title":"DOE: Fluid flow fundamentals","url":"https://www.energy.gov/documents/doe-hdbk-1012-92vol3"}],
+  "machine-machine-elements": [{"title":"DOE: Material science fundamentals","url":"https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1017-93_VOL1.pdf"}],
+  "machine-diesel-engines": [{"title":"DOE: Mechanical science handbook overview","url":"https://www.energy.gov/documents/doe-hdbk-1018-93vol2"}],
+  "machine-ship-systems": [{"title":"MCA: Code of Safe Working Practices, 2026 edition","url":"https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"}],
+  "machine-auxiliary": [{"title":"DOE: Mechanical science handbook overview","url":"https://www.energy.gov/documents/doe-hdbk-1018-93vol2"}],
+  "machine-fuel-technology": [{"title":"IMO: MARPOL Annex VI guidance and instruments","url":"https://www.imo.org/en/ourwork/environment/pages/index-of-mepc-resolutions-and-guidelines-related-to-marpol-annex-vi.aspx"}],
+  "machine-cooling-hvac": [{"title":"DOE: Mechanical science handbook overview","url":"https://www.energy.gov/documents/doe-hdbk-1018-93vol2"}],
+  "machine-electrical": [{"title":"DOE: Electrical science fundamentals","url":"https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1011-92_VOL3.pdf"}],
+  "machine-automation": [{"title":"DOE: Instrumentation and control fundamentals","url":"https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1013-92-VOL2.pdf"}],
+  "machine-engine-room-ops": [{"title":"MCA: Code of Safe Working Practices, 2026 edition","url":"https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"}],
+  "machine-maintenance": [{"title":"MCA: Code of Safe Working Practices, 2026 edition","url":"https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"}],
+  "machine-engine-room-safety": [{"title":"MCA: Code of Safe Working Practices, 2026 edition","url":"https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"}],
+  "machine-environment-machine": [{"title":"IMO: MARPOL convention and annexes","url":"https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"},{"title":"IMO: Implementing the Ballast Water Management Convention","url":"https://www.imo.org/en/mediacentre/hottopics/pages/implementing-the-bwm-convention.aspx"}],
+  "machine-erm": [{"title":"IMO: STCW convention and competence framework","url":"https://www.imo.org/en/ourwork/humanelement/pages/stcw-convention.aspx"},{"title":"MCA: Code of Safe Working Practices, 2026 edition","url":"https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"}],
+  "machine-energy-efficiency": [{"title":"IMO: EEXI and CII explained","url":"https://www.imo.org/en/mediacentre/hottopics/pages/eexi-cii-faq.aspx"},{"title":"European Commission: Maritime EU ETS questions and answers","url":"https://climate.ec.europa.eu/areas-action/transport-decarbonisation/reducing-emissions-shipping-sector/faq-maritime-transport-eu-emissions-trading-system-ets_en"}]
+}

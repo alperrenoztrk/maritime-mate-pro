@@ -2308,7 +2308,7 @@
     "section": {
       "id": "machine-ship-systems-pervane-ve-saft-hatti-sabit-hatveli-pervane-fpp-1-applied-reasoning",
       "title": "Apply the principle",
-      "content": "Fixed pitch describes blade geometry, not constant thrust. Thrust and shaft load depend on rpm, inflow, vessel condition and sea state. Reversal uses the installation's reversing arrangement.",
+      "content": "Fixed pitch describes blade geometry, not constant thrust. Thrust and shaft load depend on rpm, inflow, vessel condition and sea state. Reversal uses the installation's reversing arrangement. Geometric pitch describes theoretical advance per revolution without slip. Actual advance depends on the water flow and operating condition, so pitch multiplied by rpm is not a reliable measured ship speed.",
       "example": {
         "problem": "Usual shaft rpm produces less ship speed in heavier weather.",
         "steps": [
@@ -3168,7 +3168,7 @@
     "section": {
       "id": "machine-fuel-technology-deniz-yakit-turleri-iso-8217-yakit-standartlari-4-applied-reasoning",
       "title": "Apply the principle",
-      "content": "A fuel specification applies to an identified grade and edition. Compliance does not guarantee compatibility with another batch or suitability for every engine and treatment plant.",
+      "content": "A fuel specification applies to an identified grade and edition. Compliance does not guarantee compatibility with another batch or suitability for every engine and treatment plant. Engine-inlet limits may require onboard treatment beyond the delivered-fuel specification; compare requirements at the correct sampling location.",
       "example": {
         "problem": "The supplier cites ISO 8217 without a grade or edition.",
         "steps": [
@@ -3388,7 +3388,7 @@
     "section": {
       "id": "machine-fuel-technology-bunker-operasyonlari-bunker-delivery-note-bdn-3-applied-reasoning",
       "title": "Apply the principle",
-      "content": "The BDN documents a delivery but does not replace quantity checks or representative samples. Compare its identity and declared properties with the order and actual fuel.",
+      "content": "The BDN documents a delivery but does not replace quantity checks or representative samples. Compare its identity and declared properties with the order and actual fuel. Keep the document linked to the delivery and its identified retained samples so later quality findings can be traced to the correct batch.",
       "example": {
         "problem": "The BDN grade differs from the purchase specification.",
         "steps": [
@@ -3836,6 +3836,2786 @@
           "Verify dampers, intake condition and the designed pressure relationship."
         ],
         "result": "Thermal comfort is not proof of adequate ventilation. Restore the approved air exchange and investigate contamination sources."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-elektrik-uretim-sistemi-guc-yonetim-sistemi-pms-5",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Güç yönetim sistemi (PMS)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 149,
+    "section": {
+      "id": "machine-electrical-elektrik-uretim-sistemi-guc-yonetim-sistemi-pms-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A power management system coordinates generating capacity and consumer demand. A start command does not prove that a standby set has synchronized and connected. Reserve must be assessed against the next load step, not only present load.",
+      "example": {
+        "problem": "A large consumer requests start while the standby set is still accelerating.",
+        "steps": [
+          "Check available online capacity and the approved start permissive.",
+          "Confirm breaker connection and stable load sharing before admitting the load."
+        ],
+        "result": "Do not bypass a capacity interlock because another engine is running. Electrical contribution begins only when the complete generating path is ready."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-elektrik-dagitim-sistemi-ana-dagitim-panosu-msb-1",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Ana dağıtım panosu (MSB)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 131,
+    "section": {
+      "id": "machine-electrical-elektrik-dagitim-sistemi-ana-dagitim-panosu-msb-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The main switchboard distributes power and provides protection and isolation. Voltage on one bus section does not prove all sections or consumers are healthy. Bus ties and interlocks affect both fault containment and restoration.",
+      "example": {
+        "problem": "One bus section is dead while another remains energized.",
+        "steps": [
+          "Identify the affected section and protection indications.",
+          "Use the approved fault-isolation and restoration sequence before operating a bus tie."
+        ],
+        "result": "Closing onto an uncleared fault can spread the outage. Trace supply, protection and consumer status rather than assuming a tie closure is always the next action."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-elektrik-dagitim-sistemi-acil-dagitim-panosu-esb-2",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Acil dağıtım panosu (ESB)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 145,
+    "section": {
+      "id": "machine-electrical-elektrik-dagitim-sistemi-acil-dagitim-panosu-esb-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The emergency switchboard supplies designated essential services through its approved sources. Automatic transfer includes sensing, starting, breaker operation and consumer connection. Lighting alone may not demonstrate that every required service is supplied.",
+      "example": {
+        "problem": "Emergency lights operate but an essential pump has no supply.",
+        "steps": [
+          "Check the pump's actual feeder and designated source.",
+          "Verify transfer and consumer status using the approved test sequence."
+        ],
+        "result": "A partially energized emergency system is not full readiness. Record the failed function and restore its complete supply path."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-koruma-sistemleri-ters-guc-koruma-reverse-power-3",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Ters güç koruma (reverse power)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 133,
+    "section": {
+      "id": "machine-electrical-koruma-sistemleri-ters-guc-koruma-reverse-power-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Reverse-power protection detects a generator importing real power and driving its prime mover as a motor. It is distinct from reverse phase sequence or a reactive-power imbalance. Setpoints and delays are installation-specific.",
+      "example": {
+        "problem": "A paralleled set loses fuel input while its breaker remains closed.",
+        "steps": [
+          "Real power can reverse as the bus drives the machine.",
+          "Follow the protection and prime-mover fault response, checking the event record."
+        ],
+        "result": "Do not adjust excitation to correct loss of mechanical input. Investigate the cause and test protection using the approved procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-koruma-sistemleri-tercihli-acma-preferential-trip-4",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Tercihli açma (preferential trip)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 138,
+    "section": {
+      "id": "machine-electrical-koruma-sistemleri-tercihli-acma-preferential-trip-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Preferential tripping sheds selected nonessential loads to preserve essential supply during overload. It cannot guarantee recovery if remaining demand exceeds capacity or a fault remains connected.",
+      "example": {
+        "problem": "One generator trips and automatic shedding operates, but frequency continues falling.",
+        "steps": [
+          "Compare remaining essential demand with actual online capacity.",
+          "Follow the approved staged restoration and standby-generation procedure."
+        ],
+        "result": "Do not immediately reconnect shed consumers. Establish a stable supply and adequate reserve before restoring loads in the specified order."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-aydinlatma-ve-aku-sistemleri-seyir-fenerleri-navigation-lights-1",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Seyir fenerleri (navigation lights)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 138,
+    "section": {
+      "id": "machine-electrical-aydinlatma-ve-aku-sistemleri-seyir-fenerleri-navigation-lights-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Navigation-light readiness includes correct lights, supply, monitoring and actual visibility. A panel indication may confirm current flow without proving the correct lantern, sector or unobstructed output.",
+      "example": {
+        "problem": "A light panel reports normal operation after lantern maintenance.",
+        "steps": [
+          "Verify the installed light and actual operation under the approved test.",
+          "Check monitoring response and physical condition as required."
+        ],
+        "result": "Electrical indication alone is insufficient. Confirm the intended navigation signal and report defects before relying on the lights operationally."
+      }
+    }
+  },
+  {
+    "topicId": "machine-electrical-aydinlatma-ve-aku-sistemleri-acil-aydinlatma-sistemi-2",
+    "topicKey": "machine-electrical",
+    "topicTitle": "Acil aydınlatma sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 147,
+    "section": {
+      "id": "machine-electrical-aydinlatma-ve-aku-sistemleri-acil-aydinlatma-sistemi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Emergency lighting must provide illumination where and when required, including on loss of normal supply. Charger status, battery condition and lamp operation are different checks. A brief test does not establish endurance.",
+      "example": {
+        "problem": "Lamps illuminate for one minute during a test, but battery capacity is unknown.",
+        "steps": [
+          "Review the approved duration-test and maintenance requirements.",
+          "Check charger, battery and lighting evidence without assuming a short start proves endurance."
+        ],
+        "result": "Record the scope of the test honestly. Verify the required sustained performance through the prescribed method and repair deficient units."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-olcme-ve-enstrumantasyon-devir-ve-hiz-olcumu-5",
+    "topicKey": "machine-automation",
+    "topicTitle": "Devir ve hız ölçümü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 138,
+    "section": {
+      "id": "machine-automation-olcme-ve-enstrumantasyon-devir-ve-hiz-olcumu-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Speed measurement depends on sensor pulses, mechanical geometry and time. Pulse frequency is not automatically shaft rpm; tooth count or pulses per revolution must be known. A damaged target or gap can create false readings.",
+      "example": {
+        "problem": "A pickup reports 600 pulses per second from a 60-tooth wheel.",
+        "steps": [
+          "Rotational frequency is 600/60 = 10 revolutions per second.",
+          "Multiply by 60 to obtain 600 rpm."
+        ],
+        "result": "Verify the configured pulse count before diagnosing overspeed. Compare with an independent approved measurement and inspect sensing conditions safely."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-plc-ve-otomasyon-sistemleri-ladder-diyagram-programlama-2",
+    "topicKey": "machine-automation",
+    "topicTitle": "Ladder diyagram programlama",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 136,
+    "section": {
+      "id": "machine-automation-plc-ve-otomasyon-sistemleri-ladder-diyagram-programlama-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ladder instructions evaluate logical states, which are not always identical to a physical contact's resting condition. Series logic requires all conditions; parallel branches permit alternatives. Safety functions must not be reduced to informal software bypasses.",
+      "example": {
+        "problem": "A pump start rung requires both a start demand and a healthy overload input. The overload input is false.",
+        "steps": [
+          "The series condition is false, so the output should not energize.",
+          "Check the actual fault and input circuit rather than forcing the output."
+        ],
+        "result": "Restore the intended permissive. A ladder contact symbol describes a test of a bit; confirm physical wiring and fail behavior separately."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-plc-ve-otomasyon-sistemleri-dagitik-kontrol-sistemi-dcs-4",
+    "topicKey": "machine-automation",
+    "topicTitle": "Dağıtık kontrol sistemi (DCS)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 119,
+    "section": {
+      "id": "machine-automation-plc-ve-otomasyon-sistemleri-dagitik-kontrol-sistemi-dcs-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A distributed control system separates controllers and operator interfaces, but shared networks and power can remain common dependencies. Losing a display does not necessarily mean local control has stopped.",
+      "example": {
+        "problem": "An operator station goes blank while field controllers remain active.",
+        "steps": [
+          "Use the approved alternative interface and verify process state independently.",
+          "Identify whether the failure concerns display, communication or controller execution."
+        ],
+        "result": "Do not restart healthy controllers merely to restore a screen. Maintain safe process control while diagnosing the failed layer."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-plc-ve-otomasyon-sistemleri-gemi-entegre-otomasyon-sistemi-ias-5",
+    "topicKey": "machine-automation",
+    "topicTitle": "Gemi entegre otomasyon sistemi (IAS)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 128,
+    "section": {
+      "id": "machine-automation-plc-ve-otomasyon-sistemleri-gemi-entegre-otomasyon-sistemi-ias-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An integrated automation system combines monitoring and control information from many subsystems. Integration improves visibility but does not make all signals equally reliable or all controls independent.",
+      "example": {
+        "problem": "Several unrelated alarms appear with identical timestamps after a network interruption.",
+        "steps": [
+          "Check communication quality and source timestamps.",
+          "Verify critical process conditions locally before interpreting every message as a simultaneous physical failure."
+        ],
+        "result": "Distinguish loss of data from an actual process excursion. Follow the approved fallback and alarm-response arrangements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-plc-ve-otomasyon-sistemleri-uzaktan-izleme-ve-tani-6",
+    "topicKey": "machine-automation",
+    "topicTitle": "Uzaktan izleme ve tanı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 137,
+    "section": {
+      "id": "machine-automation-plc-ve-otomasyon-sistemleri-uzaktan-izleme-ve-tani-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Remote diagnostics depends on trustworthy sensor data, time alignment and operating context. A remote trend can support investigation but cannot directly verify every local mechanical condition. Access and control authority must remain defined.",
+      "example": {
+        "problem": "A remote adviser identifies a suspected pump fault from vibration data alone.",
+        "steps": [
+          "Compare sensor condition, load and local observations.",
+          "Confirm who is authorized to act and what evidence supports the recommendation."
+        ],
+        "result": "Use remote advice as part of the diagnosis. Do not treat a trend classification as automatic permission to alter machinery or bypass safeguards."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-guc-elektronigi-diyot-ve-thyristor-scr-1",
+    "topicKey": "machine-automation",
+    "topicTitle": "Diyot ve thyristor (SCR)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 149,
+    "section": {
+      "id": "machine-automation-guc-elektronigi-diyot-ve-thyristor-scr-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A diode conducts mainly in one direction; an SCR can be triggered into conduction and remains conducting until current falls below its holding condition. Switching behavior depends on circuit arrangement and device ratings.",
+      "example": {
+        "problem": "An SCR remains on after its gate signal is removed in a conducting DC circuit.",
+        "steps": [
+          "Removing the gate does not necessarily interrupt established current.",
+          "Check the designed commutation or current-interruption arrangement."
+        ],
+        "result": "Do not assume gate removal provides electrical isolation. De-energize and verify stored-energy discharge using the approved electrical safety procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-guc-elektronigi-invertor-ve-frekans-donusturucu-3",
+    "topicKey": "machine-automation",
+    "topicTitle": "İnvertör ve frekans dönüştürücü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 133,
+    "section": {
+      "id": "machine-automation-guc-elektronigi-invertor-ve-frekans-donusturucu-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A variable-frequency drive controls motor supply frequency and voltage through power electronics. Its DC link can retain hazardous energy after input isolation. Speed commands and actual motor speed also differ under load and control conditions.",
+      "example": {
+        "problem": "A drive is switched off before maintenance, but its DC-link indicator remains active.",
+        "steps": [
+          "Apply the prescribed isolation and waiting period.",
+          "Verify absence of voltage with appropriate equipment before access."
+        ],
+        "result": "A stopped motor or dark display is not proof of a discharged drive. Follow the equipment-specific electrical isolation procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-automation-guc-elektronigi-yumusak-yol-verici-soft-starter-4",
+    "topicKey": "machine-automation",
+    "topicTitle": "Yumuşak yol verici (soft starter)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 110,
+    "section": {
+      "id": "machine-automation-guc-elektronigi-yumusak-yol-verici-soft-starter-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A soft starter reduces starting voltage to limit acceleration stress and current. It normally does not provide continuous variable-speed control like a VFD. Reduced voltage also reduces available starting torque.",
+      "example": {
+        "problem": "A heavily loaded motor fails to accelerate on a conservative soft-start setting.",
+        "steps": [
+          "Compare required load torque with available starting torque.",
+          "Check the approved ramp, current limit and motor duty."
+        ],
+        "result": "Do not extend starting indefinitely or raise limits blindly. Excessive starting time can overheat the motor even when peak current is reduced."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-seyir-hazirligi-yardimci-makine-kontrolu-2",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Yardımcı makine kontrolü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-engine-room-ops-seyir-hazirligi-yardimci-makine-kontrolu-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Auxiliary readiness concerns available capacity, correct lineup and actual output, not simply running motors. Standby equipment can share the same vulnerable suction, supply or control path.",
+      "example": {
+        "problem": "A standby cooling pump starts but provides no additional circulation.",
+        "steps": [
+          "Check actual pressure and flow evidence and common valve paths.",
+          "Verify the approved duty/standby arrangement."
+        ],
+        "result": "A successful start indication is incomplete proof of readiness. Confirm useful delivery and investigate shared restrictions or control faults."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-seyir-hazirligi-yakit-sistemi-hazirligi-3",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Yakıt sistemi hazırlığı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-engine-room-ops-seyir-hazirligi-yakit-sistemi-hazirligi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fuel preparation verifies quantity, treatment, supply conditions and routing for the expected operation. A full tank does not establish correct injection viscosity or filter condition.",
+      "example": {
+        "problem": "Before manoeuvring, the service tank is full but filter differential pressure is increasing.",
+        "steps": [
+          "Check treatment and service-system condition against the approved limits.",
+          "Prepare the authorized standby arrangement before demand rises."
+        ],
+        "result": "Readiness includes delivery quality and capacity. Resolve or escalate the restriction rather than relying on inventory alone."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-seyir-hazirligi-dumen-ve-guverte-makineleri-testi-5",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Dümen ve güverte makineleri testi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-engine-room-ops-seyir-hazirligi-dumen-ve-guverte-makineleri-testi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Tests before operation should demonstrate the actual machinery functions and communications required. Indications must be compared with physical response, and defects must reach the officers responsible for the operation.",
+      "example": {
+        "problem": "A deck-machine test shows normal motor current but no useful movement.",
+        "steps": [
+          "Check actuator response and the control and mechanical paths.",
+          "Report the failed function and follow the approved readiness process."
+        ],
+        "result": "Do not mark the test complete based on electrical load alone. Confirm the intended operation under controlled conditions before declaring readiness."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-seyir-hazirligi-engine-room-check-list-6",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Engine room check list",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 110,
+    "section": {
+      "id": "machine-engine-room-ops-seyir-hazirligi-engine-room-check-list-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A checklist is a structured verification record, not a substitute for observation. Each item needs a clear condition or result, especially where equipment status has changed since the last watch.",
+      "example": {
+        "problem": "A previous checklist is copied despite a pump being isolated for maintenance.",
+        "steps": [
+          "Reconcile the checklist with current isolation and defect records.",
+          "Verify the affected functions and communicate restrictions."
+        ],
+        "result": "Record the actual condition and outstanding actions. Reusing an old completion mark can conceal an unavailable safety or operational function."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-makine-vardiyasi-makine-vardiyasi-devir-teslim-1",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Makine vardiyası devir-teslim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 71,
+    "section": {
+      "id": "machine-engine-room-ops-makine-vardiyasi-makine-vardiyasi-devir-teslim-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Watch handover transfers an operational mental model: running equipment, abnormal trends, isolations and pending actions. Readings alone omit why machinery is configured that way. Confirm who has accepted responsibility and which outstanding actions have specific owners; information transfer and transfer of the watch are connected tasks.",
+      "example": {
+        "problem": "A relief engineer receives normal readings but is not told a standby generator is unavailable.",
+        "steps": [
+          "Review defects, permits, expected operations and contingency capacity.",
+          "Confirm understanding through questions and read-back of critical restrictions."
+        ],
+        "result": "A complete handover includes limitations and priorities. Do not assume a quiet alarm panel means normal redundancy."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-makine-vardiyasi-periyodik-kontrol-turlari-round-2",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Periyodik kontrol turları (round)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-engine-room-ops-makine-vardiyasi-periyodik-kontrol-turlari-round-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Rounds combine sight, sound, smell and instrument trends while respecting machinery hazards. Changes from baseline often matter before alarms occur. Observations should lead to a recorded action or escalation.",
+      "example": {
+        "problem": "A normally dry seal area develops fresh leakage during a round.",
+        "steps": [
+          "Identify and report the location, rate and associated conditions.",
+          "Assess immediate consequences and use the approved response."
+        ],
+        "result": "Do not normalize a new leak because a pump still runs. Trend and investigate it while maintaining safe distance from rotating, hot or pressurized equipment."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-makine-vardiyasi-performans-parametreleri-izleme-3",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Performans parametreleri izleme",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-engine-room-ops-makine-vardiyasi-performans-parametreleri-izleme-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Performance readings need comparable load and environmental context. A shift in temperature or consumption can reflect changed demand rather than deterioration, while multiple related changes strengthen a fault hypothesis.",
+      "example": {
+        "problem": "Cooling outlet temperature rises when engine load rises.",
+        "steps": [
+          "Compare inlet temperature, flow and heat load with the prior condition.",
+          "Check limits and trends before attributing the rise to fouling."
+        ],
+        "result": "Use related parameters to distinguish expected response from a fault. Record operating context alongside readings so later comparisons remain meaningful."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-makine-vardiyasi-gunluk-kayit-engine-log-book-4",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Günlük kayıt (Engine Log Book)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-engine-room-ops-makine-vardiyasi-gunluk-kayit-engine-log-book-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The engine log provides a traceable record of operation and significant events. Entries should distinguish observed facts, actions and unresolved issues; retrospective estimates must not be presented as measured readings.",
+      "example": {
+        "problem": "A missed hourly reading is noticed later.",
+        "steps": [
+          "Follow the vessel's correction procedure and identify what is actually known.",
+          "Record the omission or supported information without inventing a value."
+        ],
+        "result": "Preserve the record's integrity. A plausible number is not a substitute for an observation, particularly when investigating a later event."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-makine-vardiyasi-alarm-yonetimi-ve-mudahale-5",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Alarm yönetimi ve müdahale",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-engine-room-ops-makine-vardiyasi-alarm-yonetimi-ve-mudahale-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Alarm management requires identifying the initiating event and maintaining awareness of consequences. Acknowledgment records awareness; it does not remove the abnormal condition. Repeated nuisance alarms can mask important changes.",
+      "example": {
+        "problem": "Many low-pressure and temperature alarms follow one cooling-pump trip.",
+        "steps": [
+          "Identify the first event and verify affected services.",
+          "Apply the approved response and monitor recovery rather than clearing messages indiscriminately."
+        ],
+        "result": "Prioritize the cause and essential functions. Keep outstanding abnormalities visible and record recurring or unreliable alarms for correction."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-makine-vardiyasi-ums-unmanned-machinery-space-operasyonu-6",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "UMS (Unmanned Machinery Space) operasyonu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 73,
+    "section": {
+      "id": "machine-engine-room-ops-makine-vardiyasi-ums-unmanned-machinery-space-operasyonu-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "UMS operation relies on verified alarms, standby functions and call-out arrangements. The absence of personnel does not reduce watchkeeping responsibility. A defective alarm path can invalidate the intended unattended condition.",
+      "example": {
+        "problem": "An engineer's call alarm fails during the pre-UMS test.",
+        "steps": [
+          "Report the defect and apply the vessel's manning or operating restriction.",
+          "Restore and test the full call path before unattended operation."
+        ],
+        "result": "Do not enter UMS merely because machinery readings are normal. Readiness includes reliable detection and response to a future fault."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-manevra-operasyonlari-manevra-modu-gecis-proseduru-1",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Manevra modu geçiş prosedürü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 77,
+    "section": {
+      "id": "machine-engine-room-ops-manevra-operasyonlari-manevra-modu-gecis-proseduru-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Manoeuvring changes propulsion demand rapidly and may require additional generation, air, cooling and staffing. Transition readiness includes bridge communication and agreed control location. Starting-air reserve and repeated-start capability deserve particular attention where the propulsion arrangement uses air for manoeuvring starts.",
+      "example": {
+        "problem": "The bridge requests manoeuvring while a required standby auxiliary is isolated.",
+        "steps": [
+          "Communicate the limitation and assess the approved alternative.",
+          "Confirm plant readiness and control arrangements before accepting the demand."
+        ],
+        "result": "Do not hide reduced redundancy behind normal steady readings. Make operational restrictions explicit to the bridge and responsible engineer."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-manevra-operasyonlari-yakit-degistirme-fuel-changeover-2",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Yakıt değiştirme (fuel changeover)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-engine-room-ops-manevra-operasyonlari-yakit-degistirme-fuel-changeover-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fuel changeover in operation must control thermal and viscosity transients while replacing fuel throughout the service circuit. The procedure depends on the engine and fuels.",
+      "example": {
+        "problem": "Fuel temperature changes rapidly after tank selection.",
+        "steps": [
+          "Monitor actual inlet conditions and follow the approved rate and sequence.",
+          "Check return routing and retained system volume."
+        ],
+        "result": "Avoid abrupt changes or improvised universal rates. Completion means verified consumer conditions, not merely a new tank selected on the panel."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-manevra-operasyonlari-ana-makine-hiz-kontrolu-3",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Ana makine hız kontrolü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 127,
+    "section": {
+      "id": "machine-engine-room-ops-manevra-operasyonlari-ana-makine-hiz-kontrolu-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Engine speed control responds to demand within torque, thermal and mechanical constraints. A governor cannot overcome inadequate fuel, air or propeller matching without consequences.",
+      "example": {
+        "problem": "Requested rpm rises but actual rpm stalls while load indications increase.",
+        "steps": [
+          "Compare the command with torque and engine limits.",
+          "Investigate load and supply conditions rather than repeatedly increasing demand."
+        ],
+        "result": "Protect the machinery and communicate the limitation. A larger command is not a remedy for an unresolved overload or capacity problem."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-manevra-operasyonlari-acil-durma-ve-geri-yol-4",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Acil durma ve geri yol",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 124,
+    "section": {
+      "id": "machine-engine-room-ops-manevra-operasyonlari-acil-durma-ve-geri-yol-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Emergency stopping and astern response depend on propulsion design and stored momentum. A stopped engine does not instantly stop the ship; bridge and machinery actions must remain coordinated.",
+      "example": {
+        "problem": "The bridge orders emergency astern but the plant is not ready to reverse.",
+        "steps": [
+          "Repeat and acknowledge the command and communicate actual capability immediately.",
+          "Apply the installation's approved emergency sequence."
+        ],
+        "result": "Do not imply thrust is available before it is achieved. Accurate status communication helps the bridge manage the vessel's remaining motion and hazards."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-manevra-operasyonlari-kopruustu-makine-dairesi-iletisim-5",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Köprüüstü-makine dairesi iletişim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-engine-room-ops-manevra-operasyonlari-kopruustu-makine-dairesi-iletisim-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Closed-loop bridge–engine communication confirms command, understanding, action and result. Repeating words alone does not prove that the requested machinery state was achieved.",
+      "example": {
+        "problem": "The bridge requests an available standby generator and receives only “understood.”",
+        "steps": [
+          "State the action taken and report whether the set connected and carries load.",
+          "Communicate any delay or limitation explicitly."
+        ],
+        "result": "Close the loop with actual status. The bridge needs verified capability, not only acknowledgment of the request."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-acil-durum-prosedurleri-makine-dairesi-yangini-1",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Makine dairesi yangını",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 125,
+    "section": {
+      "id": "machine-engine-room-ops-acil-durum-prosedurleri-makine-dairesi-yangini-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An engine-room fire threatens personnel, propulsion and electrical supply together. Fuel, ventilation and machinery isolation must follow the vessel's coordinated emergency plan. Fixed gas release requires the prescribed evacuation and accountability safeguards.",
+      "example": {
+        "problem": "Smoke is reported near a fuel leak while machinery remains operating.",
+        "steps": [
+          "Raise the alarm and report location and observed conditions.",
+          "Follow assigned emergency duties and the approved isolation and firefighting plan."
+        ],
+        "result": "Do not improvise fixed-system release or enter a hazardous space without the required arrangements. Prioritize coordinated control and personnel accountability."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-acil-durum-prosedurleri-blackout-ve-guc-geri-kazanimi-2",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Blackout ve güç geri kazanımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-engine-room-ops-acil-durum-prosedurleri-blackout-ve-guc-geri-kazanimi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Blackout recovery should identify and isolate the cause before rebuilding load. Restoring everything simultaneously can overload the recovered supply or reconnect a fault.",
+      "example": {
+        "problem": "A generator starts after blackout but trips as many consumers restart.",
+        "steps": [
+          "Check restoration sequencing and available capacity.",
+          "Follow the approved staged recovery of essential services."
+        ],
+        "result": "A running generator is only the first step. Verify stable power, essential auxiliaries and controlled load addition before returning to normal operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-acil-durum-prosedurleri-ana-makine-arizasi-ile-seyir-3",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Ana makine arızası ile seyir",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 110,
+    "section": {
+      "id": "machine-engine-room-ops-acil-durum-prosedurleri-ana-makine-arizasi-ile-seyir-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Propulsion failure requires rapid, accurate communication of available capability and expected limitations. Machinery diagnosis and navigational risk management must proceed together.",
+      "example": {
+        "problem": "Main propulsion is lost near traffic while repair time is uncertain.",
+        "steps": [
+          "Inform the bridge immediately of actual status and uncertainty.",
+          "Apply the approved machinery response and provide updates as evidence changes."
+        ],
+        "result": "Do not promise a restart time without a basis. The bridge must plan using verified capability, including any reliable alternatives."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-acil-durum-prosedurleri-deniz-suyu-sizintisi-4",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Deniz suyu sızıntısı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 108,
+    "section": {
+      "id": "machine-engine-room-ops-acil-durum-prosedurleri-deniz-suyu-sizintisi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Seawater ingress can exceed pumping capacity and affect stability or essential systems. Bilge pumping treats accumulation but does not remove the leak source. Isolation must consider connected cooling demands.",
+      "example": {
+        "problem": "Bilge level rises after a seawater pipe failure.",
+        "steps": [
+          "Raise the alarm, locate the ingress safely and follow the approved isolation plan.",
+          "Monitor flooding and the effect of isolation on essential machinery."
+        ],
+        "result": "Coordinate damage control and machinery protection. Do not assume a running bilge pump makes continued ingress acceptable."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-acil-durum-prosedurleri-yuksek-sicaklik-ve-basinc-alarmlari-5",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Yüksek sıcaklık ve basınç alarmları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 119,
+    "section": {
+      "id": "machine-engine-room-ops-acil-durum-prosedurleri-yuksek-sicaklik-ve-basinc-alarmlari-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "High temperature or pressure can result from a genuine process fault or inaccurate sensing. Protection must remain effective while evidence is checked; repeated resets do not resolve the cause.",
+      "example": {
+        "problem": "A high-temperature alarm recurs after acknowledgment.",
+        "steps": [
+          "Check corroborating measurements and the relevant cooling or load conditions.",
+          "Follow the maker's limit and protective response."
+        ],
+        "result": "Do not wait for a second instrument to fail before taking a credible alarm seriously. Verify the cause under safe conditions and document the correction."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-ops-acil-durum-prosedurleri-acil-jenerator-devreye-alma-6",
+    "topicKey": "machine-engine-room-ops",
+    "topicTitle": "Acil jeneratör devreye alma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 119,
+    "section": {
+      "id": "machine-engine-room-ops-acil-durum-prosedurleri-acil-jenerator-devreye-alma-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Emergency-generator readiness includes starting energy, fuel, controls, breaker connection and designated loads. Local starting proves only part of the automatic emergency sequence.",
+      "example": {
+        "problem": "The set starts manually but fails during a normal-supply-loss test.",
+        "steps": [
+          "Compare the automatic sensing and start path with local operation.",
+          "Verify transfer and emergency consumer supply under the approved test."
+        ],
+        "result": "Repair and retest the failed automatic function. Manual success alone does not establish the required emergency readiness."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-bakim-stratejileri-kestirimci-bakim-predictive-4",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Kestirimci bakım (predictive)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 140,
+    "section": {
+      "id": "machine-maintenance-bakim-stratejileri-kestirimci-bakim-predictive-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Predictive maintenance uses condition evidence to anticipate deterioration. A prediction depends on measurement quality, baseline and operating context; it does not remove mandatory inspections or justify unlimited operation.",
+      "example": {
+        "problem": "Bearing vibration rises steadily but remains below a fixed alarm.",
+        "steps": [
+          "Compare equivalent speed and load, sensor mounting and other indicators.",
+          "Review the trend with the approved maintenance criteria."
+        ],
+        "result": "A rising trend can justify action before an alarm. Record the decision and reassess after intervention rather than treating the threshold as a guaranteed safe-life boundary."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-planli-bakim-sistemi-pms-pms-yazilimi-ve-is-emri-yonetimi-1",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "PMS yazılımı ve iş emri yönetimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 131,
+    "section": {
+      "id": "machine-maintenance-planli-bakim-sistemi-pms-pms-yazilimi-ve-is-emri-yonetimi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A maintenance work order should connect the task, isolation, required competence, findings and completion evidence. Closing it records verified work, not simply elapsed scheduled time.",
+      "example": {
+        "problem": "A job is marked complete although a required measurement was omitted.",
+        "steps": [
+          "Reopen or correct the record under the approved process.",
+          "Obtain the missing evidence and document defects and follow-up actions."
+        ],
+        "result": "A software status is not proof of maintenance quality. Keep the task's actual completion and outstanding risks visible to the next watch."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-planli-bakim-sistemi-pms-klas-gereklilikleri-ve-survey-takvimi-3",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Klas gereklilikleri ve survey takvimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 139,
+    "section": {
+      "id": "machine-maintenance-planli-bakim-sistemi-pms-klas-gereklilikleri-ve-survey-takvimi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Survey schedules depend on the applicable class and statutory scheme, vessel status and approved arrangements. Routine maintenance evidence supports examination but does not automatically replace a survey.",
+      "example": {
+        "problem": "A component was recently overhauled, but its survey item remains due.",
+        "steps": [
+          "Check the actual survey requirement and acceptance arrangements with the responsible authority.",
+          "Retain overhaul and test records for review."
+        ],
+        "result": "Do not assume a maintenance entry closes a class condition. Verify formal acceptance and record the resulting status and next due requirement."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-planli-bakim-sistemi-pms-kritik-ekipman-tanimlamasi-4",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Kritik ekipman tanımlaması",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-maintenance-planli-bakim-sistemi-pms-kritik-ekipman-tanimlamasi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Critical equipment is identified by the consequences of failure and available safeguards, not purchase price. A standby unit may also be critical if its failure removes the only recovery path.",
+      "example": {
+        "problem": "A low-cost control relay can disable both duty and standby pumps.",
+        "steps": [
+          "Trace the common dependency and failure consequences.",
+          "Review testing, spares and contingency arrangements within the safety management system."
+        ],
+        "result": "Assess system function and redundancy. A cheap component can deserve high maintenance priority when it creates a common failure point."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-motor-bakim-isleri-piston-ve-segman-degisimi-2",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Piston ve segman değişimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 148,
+    "section": {
+      "id": "machine-maintenance-motor-bakim-isleri-piston-ve-segman-degisimi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Piston and ring replacement requires compatible parts, measured clearances and suitable liner condition. New components cannot compensate automatically for worn grooves or a damaged bore.",
+      "example": {
+        "problem": "New rings are fitted into a piston with excessive groove wear.",
+        "steps": [
+          "Compare measured groove and ring clearances with maker limits.",
+          "Assess the piston and liner as a working assembly."
+        ],
+        "result": "Do not accept the repair because the rings are new. Follow the approved assembly, running-in and verification procedure for the complete cylinder condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-motor-bakim-isleri-enjektor-test-ve-bakim-5",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Enjektör test ve bakım",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 134,
+    "section": {
+      "id": "machine-maintenance-motor-bakim-isleri-enjektor-test-ve-bakim-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Injector testing examines specified behavior such as opening, leakage and spray quality using suitable guarded equipment. Passing one measurement does not establish the entire injector's serviceability.",
+      "example": {
+        "problem": "Opening pressure is correct but the nozzle dribbles after closing.",
+        "steps": [
+          "Compare leakage and spray behavior with the approved acceptance criteria.",
+          "Repair or replace through the specified procedure."
+        ],
+        "result": "A correct opening value cannot excuse defective shutoff. Avoid exposure to high-pressure spray and verify all required functions before returning the injector to service."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-muayene-ve-test-yontemleri-gorsel-muayene-prosedurleri-1",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Görsel muayene prosedürleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 117,
+    "section": {
+      "id": "machine-maintenance-muayene-ve-test-yontemleri-gorsel-muayene-prosedurleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Visual examination is a planned inspection with suitable access, lighting, cleaning and acceptance criteria. It can reveal leakage, damage and loose parts but cannot prove absence of hidden defects.",
+      "example": {
+        "problem": "A painted weld appears sound from a distant walkway.",
+        "steps": [
+          "Check whether the required surface and geometry are actually visible.",
+          "Use the specified preparation and additional examination where necessary."
+        ],
+        "result": "Record coverage and limitations. A distant glance or intact paint is not equivalent to a documented inspection of the component itself."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-muayene-ve-test-yontemleri-manyetik-parcacik-muayenesi-mt-3",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Manyetik parçacık muayenesi (MT)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 139,
+    "section": {
+      "id": "machine-maintenance-muayene-ve-test-yontemleri-manyetik-parcacik-muayenesi-mt-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Magnetic particle testing reveals suitable surface and near-surface discontinuities in ferromagnetic material. Detection depends on field direction relative to the defect and on a qualified technique.",
+      "example": {
+        "problem": "A suspected crack lies nearly parallel to the applied magnetic field.",
+        "steps": [
+          "Use the approved magnetization directions to obtain suitable coverage.",
+          "Confirm material suitability and interpret indications against the specified criteria."
+        ],
+        "result": "A clean result from one unfavorable direction can miss a defect. Document technique and coverage rather than declaring universal crack freedom."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-muayene-ve-test-yontemleri-sivi-penetrant-muayenesi-pt-4",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Sıvı penetrant muayenesi (PT)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-maintenance-muayene-ve-test-yontemleri-sivi-penetrant-muayenesi-pt-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Penetrant testing detects surface-breaking indications on suitable nonporous material. Cleaning, dwell, removal and developer conditions affect sensitivity. It does not establish internal soundness.",
+      "example": {
+        "problem": "A penetrant test is performed over oil-contaminated metal.",
+        "steps": [
+          "Clean and prepare the surface using the qualified procedure.",
+          "Repeat the examination under the specified conditions."
+        ],
+        "result": "Contamination can block entry into a defect. A negative result on an inadequately prepared surface is not reliable evidence that no surface crack exists."
+      }
+    }
+  },
+  {
+    "topicId": "machine-maintenance-muayene-ve-test-yontemleri-titresim-analizi-5",
+    "topicKey": "machine-maintenance",
+    "topicTitle": "Titreşim analizi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 143,
+    "section": {
+      "id": "machine-maintenance-muayene-ve-test-yontemleri-titresim-analizi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Vibration analysis considers frequency, amplitude, phase and operating condition. A single overall value can hide a growing component, while poor sensor mounting can create misleading trends.",
+      "example": {
+        "problem": "Overall vibration is similar but a bearing-related frequency component increases.",
+        "steps": [
+          "Verify measurement setup and compare equivalent operating conditions.",
+          "Correlate with temperature, lubrication and inspection evidence."
+        ],
+        "result": "Investigate the pattern rather than relying only on overall amplitude. Use the machinery-specific criteria and competent analysis before assigning a fault or changing operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kisisel-koruma-isitme-korumasi-gurultu-maruziyeti-2",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "İşitme koruması (gürültü maruziyeti)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 136,
+    "section": {
+      "id": "machine-engine-room-safety-kisisel-koruma-isitme-korumasi-gurultu-maruziyeti-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Noise risk depends on exposure level and duration, not whether a sound feels tolerable. Hearing protection is one control alongside source reduction and exposure management; fit affects its actual performance.",
+      "example": {
+        "problem": "An engineer removes ear protection for a short conversation in a noisy space.",
+        "steps": [
+          "Move communication to a suitable location or use the approved communication arrangement.",
+          "Maintain required protection and review noise exposure controls."
+        ],
+        "result": "Repeated short unprotected periods can undermine protection. Do not use perceived loudness as the sole measure of safe exposure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kisisel-koruma-goz-ve-yuz-korumasi-3",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Göz ve yüz koruması",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 110,
+    "section": {
+      "id": "machine-engine-room-safety-kisisel-koruma-goz-ve-yuz-korumasi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Eye and face protection must match impact, splash, radiation or chemical hazards. A face shield and safety spectacles can serve complementary functions; one item is not universally adequate.",
+      "example": {
+        "problem": "Grinding is planned with only an ordinary face shield available.",
+        "steps": [
+          "Check the task risk assessment and specified eye and face protection.",
+          "Inspect fit, condition and compatibility before starting."
+        ],
+        "result": "Use the required combination for the hazard. A visor's presence does not prove suitable protection against every particle or splash path."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kisisel-koruma-koruyucu-giysi-ve-eldiven-4",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Koruyucu giysi ve eldiven",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 114,
+    "section": {
+      "id": "machine-engine-room-safety-kisisel-koruma-koruyucu-giysi-ve-eldiven-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Protective clothing and gloves must match the task. Chemical resistance, heat protection and dexterity differ, and gloves near rotating machinery can create entanglement hazards.",
+      "example": {
+        "problem": "A worker proposes using loose gloves beside an exposed rotating shaft.",
+        "steps": [
+          "Remove the exposure through guarding and isolation for the task.",
+          "Select protection through the approved risk assessment rather than treating gloves as universally protective."
+        ],
+        "result": "PPE can introduce a different hazard when misapplied. Control the machinery and task before relying on a generic clothing choice."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kisisel-koruma-guvenlik-ayakkabisi-standartlari-5",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Güvenlik ayakkabısı standartları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 92,
+    "section": {
+      "id": "machine-engine-room-safety-kisisel-koruma-guvenlik-ayakkabisi-standartlari-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Safety footwear combines specified protections such as impact, penetration and slip resistance. Toe protection alone does not establish suitability for an oily deck or a chemical task. Condition and fit affect performance.",
+      "example": {
+        "problem": "Boots have intact toe caps but worn, oil-contaminated soles.",
+        "steps": [
+          "Check the required footwear characteristics and actual condition.",
+          "Clean or replace according to the manufacturer's guidance and task requirements."
+        ],
+        "result": "Assess the whole boot, not only its toe cap. A certified label does not preserve protection after significant wear or damage."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-yangin-guvenligi-yangin-ucgeni-ve-yangin-siniflari-1",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Yangın üçgeni ve yangın sınıfları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 125,
+    "section": {
+      "id": "machine-engine-room-safety-yangin-guvenligi-yangin-ucgeni-ve-yangin-siniflari-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fire requires fuel, oxygen and heat, but safe extinguishing also depends on the burning material and nearby hazards. Fire-class terminology can differ between standards; use the equipment's labels and vessel training.",
+      "example": {
+        "problem": "A portable extinguisher is selected only because its color looks familiar.",
+        "steps": [
+          "Identify the material and relevant electrical or chemical hazards.",
+          "Check the extinguisher's marked suitability and the vessel's procedure."
+        ],
+        "result": "Do not infer suitability from color alone. Raise the alarm and act within training, escape conditions and the approved emergency plan."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-yangin-guvenligi-makine-dairesi-sabit-sondurme-co-fm200-2",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Makine dairesi sabit söndürme (CO₂, FM200)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 114,
+    "section": {
+      "id": "machine-engine-room-safety-yangin-guvenligi-makine-dairesi-sabit-sondurme-co-fm200-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fixed gas systems can create a lethal atmosphere and require coordinated release safeguards. Detection, evacuation, accountability, shutdown and space sealing are parts of the vessel-specific procedure.",
+      "example": {
+        "problem": "A fire alarm occurs while personnel may still be inside the protected space.",
+        "steps": [
+          "Raise the emergency response and establish personnel status.",
+          "Follow the prescribed release authority and evacuation safeguards."
+        ],
+        "result": "Never improvise gas release or re-entry. The presence of a fixed system does not remove the need for accountability and controlled atmosphere assessment."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-yangin-guvenligi-portatif-sondurucu-tipleri-3",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Portatif söndürücü tipleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 79,
+    "section": {
+      "id": "machine-engine-room-safety-yangin-guvenligi-portatif-sondurucu-tipleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Portable extinguishers have different agents, ratings and limitations. Their use requires a suitable escape route and training; some agents create visibility, breathing or electrical hazards.",
+      "example": {
+        "problem": "A small fire is near energized equipment and the available extinguisher's suitability is uncertain.",
+        "steps": [
+          "Raise the alarm and check the marked rating and approved response.",
+          "Do not approach beyond a safe escape position or personal competence."
+        ],
+        "result": "An extinguisher is useful only when appropriate to the actual hazard. Escalate rather than applying an uncertain agent or allowing the escape route to be lost."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-yangin-guvenligi-yangin-algilama-sistemi-4",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Yangın algılama sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-engine-room-safety-yangin-guvenligi-yangin-algilama-sistemi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fire detection gives warning from selected phenomena such as smoke or heat. Detector type, contamination and placement affect response. An alarm fault or isolated zone can remove coverage even when the panel is otherwise normal.",
+      "example": {
+        "problem": "A detector is isolated after repeated unwanted alarms.",
+        "steps": [
+          "Record and communicate the lost coverage and apply approved compensating measures.",
+          "Investigate and restore the detector through the maintenance process."
+        ],
+        "result": "Do not leave an isolation hidden in the panel. A nuisance alarm requires correction, not indefinite removal of protection."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-yangin-guvenligi-hizli-kapatma-vanasi-quick-closing-valve-5",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Hızlı kapatma vanası (quick closing valve)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 107,
+    "section": {
+      "id": "machine-engine-room-safety-yangin-guvenligi-hizli-kapatma-vanasi-quick-closing-valve-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Quick-closing fuel valves limit fuel supply to a fire, but their actual closure and affected systems must be understood. Remote activation, local position and valve integrity are distinct checks.",
+      "example": {
+        "problem": "The remote control operates but local closure is not confirmed.",
+        "steps": [
+          "Verify the valve response using the approved safe test.",
+          "Check linkage or actuation and record any failed function."
+        ],
+        "result": "A moving remote handle does not prove fuel isolation. Restore the complete function and ensure emergency duties identify the correct valves."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-yangin-guvenligi-yangin-tatbikati-ve-muster-6",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Yangın tatbikatı ve muster",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-engine-room-safety-yangin-guvenligi-yangin-tatbikati-ve-muster-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A drill tests communication, accountability, equipment and decisions under a planned scenario. Speed alone is not success if personnel or safeguards are missed. Defects should lead to corrective action.",
+      "example": {
+        "problem": "A rapid muster leaves one contractor unaccounted for.",
+        "steps": [
+          "Identify the accountability gap and stop unsafe assumptions.",
+          "Debrief roles, visitor information and communication, then retest the corrected arrangement."
+        ],
+        "result": "A fast response with incomplete accountability is not a satisfactory drill outcome. Include all people who may be aboard, not only the regular crew list."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kapali-alan-guvenligi-kapali-alan-tanimi-ve-tehlikeler-1",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Kapalı alan tanımı ve tehlikeler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 108,
+    "section": {
+      "id": "machine-engine-room-safety-kapali-alan-guvenligi-kapali-alan-tanimi-ve-tehlikeler-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An enclosed space can contain oxygen deficiency, toxic or flammable atmospheres despite an open entrance. Previous safe entry does not establish current conditions, and connected spaces can introduce hazards.",
+      "example": {
+        "problem": "A familiar tank has been open overnight and appears harmless.",
+        "steps": [
+          "Apply the current risk assessment, isolation, ventilation and testing requirements.",
+          "Use the approved entry permit and rescue arrangements."
+        ],
+        "result": "An open hatch and familiarity are not evidence of a safe atmosphere. Do not enter on appearance or smell alone."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kapali-alan-guvenligi-atmosfer-testi-o-lel-h-s-2",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Atmosfer testi (O₂, LEL, H₂S)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-engine-room-safety-kapali-alan-guvenligi-atmosfer-testi-o-lel-h-s-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Atmosphere tests must use suitable, checked instruments and representative sampling. Oxygen, flammability and toxic-gas readings answer different questions; one normal value does not clear the others.",
+      "example": {
+        "problem": "Oxygen reads normal but no toxic-gas assessment has been made.",
+        "steps": [
+          "Identify expected contaminants and test with the appropriate instruments and method.",
+          "Sample required locations and maintain monitoring as prescribed."
+        ],
+        "result": "Normal oxygen alone cannot authorize entry. Follow the vessel's entry criteria, equipment limitations and competent assessment."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kapali-alan-guvenligi-giris-izin-sistemi-ptw-3",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Giriş izin sistemi (PTW)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-engine-room-safety-kapali-alan-guvenligi-giris-izin-sistemi-ptw-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An entry permit records verified conditions, responsibilities and limits for a specific task and period. It is invalid as practical protection if conditions change or required controls disappear.",
+      "example": {
+        "problem": "Ventilation stops after an enclosed-space permit was issued.",
+        "steps": [
+          "Suspend the entry operation and apply the approved withdrawal and reassessment procedure.",
+          "Restore controls and revalidate conditions before re-entry."
+        ],
+        "result": "A signature does not preserve earlier atmospheric conditions. Treat changed ventilation, isolation or personnel arrangements as a reason to reassess authorization."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kapali-alan-guvenligi-havalandirma-gereklilikleri-4",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Havalandırma gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-engine-room-safety-kapali-alan-guvenligi-havalandirma-gereklilikleri-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ventilation must reach the relevant space and remove contaminants without introducing new hazards. Airflow at an entrance does not prove effective circulation in recesses or connected compartments.",
+      "example": {
+        "problem": "A fan runs at a tank entrance, but remote atmosphere readings remain abnormal.",
+        "steps": [
+          "Check duct placement, air path and representative measurements.",
+          "Continue exclusion until the approved conditions and controls are established."
+        ],
+        "result": "Fan operation is not proof of a safe space. Do not use oxygen enrichment or improvised ventilation as a substitute for the approved entry process."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-kapali-alan-guvenligi-kurtarma-proseduru-ve-ekipman-5",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Kurtarma prosedürü ve ekipman",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 117,
+    "section": {
+      "id": "machine-engine-room-safety-kapali-alan-guvenligi-kurtarma-proseduru-ve-ekipman-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Enclosed-space rescue requires a prepared, trained response with suitable equipment and atmosphere protection. An impulsive unprotected entry can create additional casualties.",
+      "example": {
+        "problem": "A person collapses inside a tank.",
+        "steps": [
+          "Raise the alarm and activate the established rescue plan.",
+          "Keep unprotected personnel out and provide accurate location and hazard information to the trained team."
+        ],
+        "result": "Do not attempt an unplanned entry. Rescue readiness must exist before work begins, including communication and appropriate retrieval arrangements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-tehlikeli-maddeler-msds-guvenlik-bilgi-formu-okuma-1",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "MSDS (Güvenlik Bilgi Formu) okuma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-engine-room-safety-tehlikeli-maddeler-msds-guvenlik-bilgi-formu-okuma-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A safety data sheet identifies substance-specific hazards, controls and emergency information. Product identity and current formulation matter; a sheet for a similarly named chemical may be unsuitable.",
+      "example": {
+        "problem": "A cleaner is transferred into an unlabeled container.",
+        "steps": [
+          "Stop use until identity and handling requirements are established.",
+          "Restore labeling and consult the correct safety data sheet."
+        ],
+        "result": "Do not infer contents from color or smell. The relevant PPE, storage and first-aid response depend on confirmed substance identity."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-tehlikeli-maddeler-asbest-ve-yasakli-malzemeler-2",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Asbest ve yasaklı malzemeler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 126,
+    "section": {
+      "id": "machine-engine-room-safety-tehlikeli-maddeler-asbest-ve-yasakli-malzemeler-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Asbestos risk arises when fibres can be released from affected materials. Appearance alone cannot establish whether insulation contains asbestos. Disturbance should be controlled through competent assessment and the vessel's procedures.",
+      "example": {
+        "problem": "Old insulation must be removed but its material identity is uncertain.",
+        "steps": [
+          "Stop disturbance and check inventories and records.",
+          "Arrange the approved identification and specialist handling process."
+        ],
+        "result": "Do not cut or brush unknown insulation to inspect it informally. Preserve the area and use appropriate authorized assessment before work resumes."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-tehlikeli-maddeler-kimyasal-depolama-kurallari-3",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Kimyasal depolama kuralları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-engine-room-safety-tehlikeli-maddeler-kimyasal-depolama-kurallari-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Chemical storage must account for incompatibility, containment, ventilation and identification. Alphabetical arrangement or available shelf space is not a compatibility plan.",
+      "example": {
+        "problem": "An oxidizer is stored beside a flammable liquid because both containers are small.",
+        "steps": [
+          "Check their safety data and the approved segregation arrangement.",
+          "Move or secure them through the authorized handling process."
+        ],
+        "result": "Quantity alone does not remove incompatibility. Maintain clear labels and secondary containment suited to the substances and storage location."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-tehlikeli-maddeler-basincli-gaz-tupu-guvenligi-4",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Basınçlı gaz tüpü güvenliği",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 114,
+    "section": {
+      "id": "machine-engine-room-safety-tehlikeli-maddeler-basincli-gaz-tupu-guvenligi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Gas cylinders contain stored pressure and may introduce flammable, oxidizing or toxic hazards. Identification, restraint, valve protection and compatible regulators are separate controls.",
+      "example": {
+        "problem": "A cylinder is secured but its regulator does not match the identified gas.",
+        "steps": [
+          "Do not connect an improvised adaptor.",
+          "Use the approved regulator and handling procedure for that gas."
+        ],
+        "result": "Physical restraint does not establish a safe connection. Keep cylinders identified and protected, and assess ventilation and segregation requirements for their contents."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-tehlikeli-maddeler-biyolojik-tehlikeler-ve-onlemler-5",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Biyolojik tehlikeler ve önlemler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 119,
+    "section": {
+      "id": "machine-engine-room-safety-tehlikeli-maddeler-biyolojik-tehlikeler-ve-onlemler-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Biological hazards can arise from sewage, stagnant water, contaminated surfaces and food systems. Exposure routes differ, so task-specific hygiene and protective measures are needed.",
+      "example": {
+        "problem": "Sewage maintenance leaves contaminated tools in a general work area.",
+        "steps": [
+          "Control access and apply the approved cleaning, disinfection and waste process.",
+          "Prevent transfer to food, drinking-water or living spaces."
+        ],
+        "result": "Manage both direct exposure and secondary contamination. Ordinary visual cleanliness does not prove that equipment is hygienically safe."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-is-guvenligi-yonetimi-ism-code-gereklilikleri-1",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "ISM Code gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 107,
+    "section": {
+      "id": "machine-engine-room-safety-is-guvenligi-yonetimi-ism-code-gereklilikleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The ISM framework requires an implemented safety management system with responsibilities, procedures and improvement processes. A manual alone does not demonstrate effective practice.",
+      "example": {
+        "problem": "A recurring equipment defect is documented but corrective actions are never checked.",
+        "steps": [
+          "Assign responsibility and a completion criterion through the management process.",
+          "Verify effectiveness and escalate unresolved risk."
+        ],
+        "result": "Close the loop between reporting, action and verification. Repeated paperwork without a working correction leaves the underlying safety problem in place."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-is-guvenligi-yonetimi-risk-degerlendirme-risk-assessment-2",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Risk değerlendirme (Risk Assessment)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-engine-room-safety-is-guvenligi-yonetimi-risk-degerlendirme-risk-assessment-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Risk assessment connects hazards, exposure, consequences and effective controls. A low score is not meaningful if a major hazard or failed control is omitted. Reassess when the task or conditions change.",
+      "example": {
+        "problem": "A lifting task moves to a congested area after its assessment was completed.",
+        "steps": [
+          "Review the new people, access and suspended-load exposures.",
+          "Update controls and brief the team before continuing."
+        ],
+        "result": "Do not reuse the old assessment unchanged. The relevant risk is the actual task in its current conditions, not the original plan."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-is-guvenligi-yonetimi-is-izin-sistemi-permit-to-work-3",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "İş izin sistemi (Permit to Work)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-engine-room-safety-is-guvenligi-yonetimi-is-izin-sistemi-permit-to-work-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A permit coordinates authorization and verified controls for hazardous work. Isolation, atmosphere testing and simultaneous operations may involve different responsible people. One permit cannot silently authorize a changed task.",
+      "example": {
+        "problem": "Hot work is extended into a nearby compartment not covered by the permit.",
+        "steps": [
+          "Stop the extension and reassess hazards and boundaries.",
+          "Obtain the required revised authorization and controls."
+        ],
+        "result": "Keep the permit's scope explicit. Nearby location or the same work team does not establish equivalent fire, atmosphere or isolation conditions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-is-guvenligi-yonetimi-kaza-raporlama-ve-kok-neden-analizi-4",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Kaza raporlama ve kök neden analizi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-engine-room-safety-is-guvenligi-yonetimi-kaza-raporlama-ve-kok-neden-analizi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Incident investigation should separate observed facts, contributing conditions and assumptions. Stopping at “operator error” can miss equipment, workload or procedure weaknesses that make recurrence likely.",
+      "example": {
+        "problem": "A valve was operated incorrectly during a rushed handover.",
+        "steps": [
+          "Reconstruct the sequence and examine labeling, communication and workload.",
+          "Identify practical controls and verify their effectiveness."
+        ],
+        "result": "Avoid assigning a cause before evidence is assessed. A useful investigation changes conditions that enabled the error, rather than merely repeating an instruction to be careful."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-is-guvenligi-yonetimi-toolbox-meeting-ve-guvenlik-brifingi-5",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Toolbox meeting ve güvenlik brifingi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 93,
+    "section": {
+      "id": "machine-engine-room-safety-is-guvenligi-yonetimi-toolbox-meeting-ve-guvenlik-brifingi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A toolbox briefing translates the task plan into shared roles, hazards, controls and stop conditions. Attendance alone does not prove understanding, especially across language or experience differences.",
+      "example": {
+        "problem": "A worker cannot explain the isolation boundary after the briefing.",
+        "steps": [
+          "Clarify the boundary with an appropriate demonstration or read-back.",
+          "Confirm responsibilities and the point at which work must stop."
+        ],
+        "result": "Resolve uncertainty before starting. A brief meeting is valuable when the team understands the actual task and can recognize a changed or unsafe condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-engine-room-safety-is-guvenligi-yonetimi-near-miss-raporlama-6",
+    "topicKey": "machine-engine-room-safety",
+    "topicTitle": "Near-miss raporlama",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 94,
+    "section": {
+      "id": "machine-engine-room-safety-is-guvenligi-yonetimi-near-miss-raporlama-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A near miss reveals that a hazard existed even though injury or damage did not occur. Reporting should preserve the sequence and conditions without exaggeration or blame.",
+      "example": {
+        "problem": "A falling tool narrowly misses someone below.",
+        "steps": [
+          "Secure the immediate hazard and report the factual circumstances.",
+          "Review tool control, exclusion zones and supervision, then verify corrective measures."
+        ],
+        "result": "No injury does not mean no learning is needed. Use the event to strengthen the failed barriers before another exposure occurs."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-marpol-sozlesmesi-tarihcesi-1",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "MARPOL sözleşmesi tarihçesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 126,
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-marpol-sozlesmesi-tarihcesi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "MARPOL organizes pollution prevention by the substance or emission involved. The six annexes are related but have different scopes, equipment and operational conditions. Knowing one discharge rule does not authorize another waste stream.",
+      "example": {
+        "problem": "A crew member proposes applying an oily-water rule to sewage.",
+        "steps": [
+          "Identify the actual waste stream and applicable annex.",
+          "Check the vessel's approved equipment, area and operational requirements."
+        ],
+        "result": "Classify the pollution source before selecting a rule. Similar-looking overboard piping does not imply equivalent legal or technical conditions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-ek-ii-zararli-sivi-maddeler-3",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Ek II – Zararlı sıvı maddeler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 66,
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-ek-ii-zararli-sivi-maddeler-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Annex II concerns noxious liquid substances carried in bulk. Cargo classification, tank cleaning, residue handling and approved procedures determine the required controls. It is different from packaged dangerous-goods carriage. A commercial cargo name alone may not establish the regulatory classification; match identity to the approved cargo documentation.",
+      "example": {
+        "problem": "A chemical tanker changes cargo and must manage washings.",
+        "steps": [
+          "Identify the actual cargo classification and approved procedures and arrangements manual requirements.",
+          "Confirm required prewash, reception or other applicable handling before acting."
+        ],
+        "result": "Do not apply a generic oily-bilge procedure. The cargo's identity and the specific operation determine how residues and washings must be managed."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-ek-iii-ambalajli-zararli-maddeler-4",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Ek III – Ambalajlı zararlı maddeler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 58,
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-ek-iii-ambalajli-zararli-maddeler-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Annex III addresses harmful substances carried in packaged form, with related identification, packing, marking, documentation and stowage controls. Package integrity and correct identity matter even for small quantities. Marine-pollutant identification and other dangerous-goods hazards can coexist. Check the applicable IMDG documentation and emergency information rather than assuming an environmental marking describes every handling hazard.",
+      "example": {
+        "problem": "A damaged package contains a declared marine pollutant.",
+        "steps": [
+          "Identify it from the transport documentation and markings.",
+          "Apply the ship's dangerous-goods and spill response arrangements and inform responsible officers."
+        ],
+        "result": "Do not treat packaged leakage as routine garbage. Use the substance-specific emergency information and preserve identification for response and reporting."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-ek-iv-pis-su-sewage-5",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Ek IV – Pis su (sewage)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 97,
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-ek-iv-pis-su-sewage-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Sewage controls depend on applicable equipment, operating conditions and location. Treatment status and a clear-looking discharge are not interchangeable evidence. Local restrictions may add requirements.",
+      "example": {
+        "problem": "A sewage plant has an unresolved alarm while overboard discharge is proposed.",
+        "steps": [
+          "Check actual plant condition and applicable discharge permissions.",
+          "Use approved retention or reception arrangements if compliance cannot be established."
+        ],
+        "result": "Do not discharge solely because the liquid appears clear. Verify the relevant treatment and operational conditions and record defects and actions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-ek-v-cop-garbage-6",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Ek V – Çöp (garbage)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-ek-v-cop-garbage-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Garbage rules distinguish categories and restrict disposal differently. Plastics must not be treated as food waste, and mixing can change the handling required for the entire waste stream.",
+      "example": {
+        "problem": "Food scraps are collected in a plastic bag for disposal.",
+        "steps": [
+          "Separate the waste categories and follow the garbage management plan.",
+          "Do not discharge the plastic packaging with the food waste."
+        ],
+        "result": "Category identification comes before any disposal decision. Check applicable location and operational restrictions even when a particular food-waste route may otherwise be permitted."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-marpol-genel-yapisi-ek-vi-hava-kirliligi-ve-emisyonlar-7",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Ek VI – Hava kirliliği ve emisyonlar",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-environment-machine-marpol-genel-yapisi-ek-vi-hava-kirliligi-ve-emisyonlar-7-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Air-pollution compliance includes different controls for sulphur, nitrogen oxides, ozone-depleting substances and energy efficiency. Passing one requirement does not establish compliance with all of Annex VI.",
+      "example": {
+        "problem": "A ship uses low-sulphur fuel and assumes its NOx documentation is unnecessary.",
+        "steps": [
+          "Separate fuel-sulphur requirements from engine NOx certification and operating controls.",
+          "Check each applicable requirement and approved arrangement."
+        ],
+        "result": "A single compliant fuel property cannot replace engine documentation or other emission obligations. Build the compliance check by pollutant and equipment scope."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-su-ayirici-ows-15-ppm-standardi-1",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Yağ-su ayırıcı (OWS) 15 ppm standardı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 108,
+    "section": {
+      "id": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-su-ayirici-ows-15-ppm-standardi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An oily-water monitor's concentration reading is one condition within an approved discharge arrangement. Sampling, alarm and stopping or diversion functions must work correctly; a low displayed ppm value alone is not permission to discharge.",
+      "example": {
+        "problem": "The monitor reads below 15 ppm but its sample flow is obstructed.",
+        "steps": [
+          "Stop relying on the reading and follow the approved fault response.",
+          "Restore and test representative sampling and protective functions."
+        ],
+        "result": "Never dilute or bypass the monitoring arrangement to obtain a favorable reading. Verify all applicable discharge conditions, including area and equipment requirements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-desarj-izleme-sistemi-odmcs-2",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Yağ deşarj izleme sistemi (ODMCS)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-desarj-izleme-sistemi-odmcs-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An oil discharge monitoring and control system for relevant tanker operations uses concentration, flow and voyage-related inputs to control discharge. It is not interchangeable with a machinery-space bilge monitor.",
+      "example": {
+        "problem": "A tanker monitoring system has a valid concentration signal but unreliable flow input.",
+        "steps": [
+          "Treat the incomplete measurement chain as a system fault.",
+          "Follow the approved retention and repair arrangements."
+        ],
+        "result": "One working sensor does not establish monitored compliance. Verify all required inputs and control functions before any authorized discharge operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-kayit-defteri-oil-record-book-3",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Yağ kayıt defteri (Oil Record Book)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-kayit-defteri-oil-record-book-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The Oil Record Book links operations to times, quantities, locations and handling routes as required. Entries should reflect actual operations and remain traceable to supporting evidence.",
+      "example": {
+        "problem": "Tank soundings and a recorded transfer quantity do not reconcile.",
+        "steps": [
+          "Check measurement assumptions and contemporaneous records.",
+          "Correct errors through the approved record procedure without obscuring the original entry."
+        ],
+        "result": "Do not invent a balancing figure. Investigate and document the discrepancy so the record accurately represents what is known."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-yag-kirliligi-onleme-annex-i-slop-tank-yonetimi-4",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Slop tank yönetimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 80,
+    "section": {
+      "id": "machine-environment-machine-yag-kirliligi-onleme-annex-i-slop-tank-yonetimi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Slop tanks retain mixtures and residues with changing composition and quantity. Capacity, segregation, transfer routes and reception planning must be managed together. Available volume does not authorize mixing incompatible substances.",
+      "example": {
+        "problem": "A planned cleaning operation may exceed remaining slop capacity.",
+        "steps": [
+          "Calculate expected washings and verify actual available capacity.",
+          "Arrange the approved retention, sequencing or reception alternative before starting."
+        ],
+        "result": "Do not begin on the assumption that overboard disposal will later be available. Maintain traceable quantities and compatible handling throughout the operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-yag-kirliligi-onleme-annex-i-ozel-deniz-alanlari-ve-desarj-kurallari-5",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Özel deniz alanları ve deşarj kuralları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 86,
+    "section": {
+      "id": "machine-environment-machine-yag-kirliligi-onleme-annex-i-ozel-deniz-alanlari-ve-desarj-kurallari-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A MARPOL special area's restrictions depend on the relevant annex and effective provisions. Boundaries and operational requirements are not identical across every pollution category. Local rules may also apply.",
+      "example": {
+        "problem": "A position lies inside an Annex V special area but the crew checks only an oil-discharge checklist.",
+        "steps": [
+          "Identify the waste category, applicable annex and current area provisions.",
+          "Use the approved route-specific disposal plan."
+        ],
+        "result": "Do not transfer one annex's permissions to another. Retain waste when the required conditions cannot be established."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-kukurt-limitleri-global-0-50-eca-0-10-1",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Kükürt limitleri (global 0.50%, ECA 0.10%)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-kukurt-limitleri-global-0-50-eca-0-10-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The global sulphur limit and the stricter limit in applicable SOx emission control areas concern different operating locations and effective dates. Approved equivalents must be operated and documented as such.",
+      "example": {
+        "problem": "Fuel suitable for the global limit is in use before entering an applicable SOx ECA.",
+        "steps": [
+          "Verify the area and effective requirements for the voyage.",
+          "Complete the approved compliant-fuel changeover or equivalent arrangement for all relevant consumers."
+        ],
+        "result": "A globally compliant batch is not automatically ECA compliant. Plan and document actual consumer conditions, not merely tank inventory."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-egzoz-gazi-yikama-scrubber-sistemi-2",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Egzoz gazı yıkama (scrubber) sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 104,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-egzoz-gazi-yikama-scrubber-sistemi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An exhaust-gas cleaning system is an approved equivalent arrangement only when operated within its requirements. Exhaust performance, washwater controls and local discharge restrictions are separate considerations.",
+      "example": {
+        "problem": "Exhaust indicators are satisfactory but washwater monitoring fails.",
+        "steps": [
+          "Follow the approved fault and compliance procedure.",
+          "Check permitted operating mode and local restrictions before continuing."
+        ],
+        "result": "A favorable exhaust reading alone does not establish the entire system's compliance. Use the authorized alternative where needed and retain the required records."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-nox-tier-i-ii-iii-standartlari-3",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "NOx Tier I, II, III standartları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 143,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-nox-tier-i-ii-iii-standartlari-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "NOx tier applicability depends on engine and ship characteristics, dates, operating area and the relevant rules. Tier III is not a universal setting for every engine everywhere. Approved engine configuration and documentation matter.",
+      "example": {
+        "problem": "A replacement engine is proposed based only on its rated power.",
+        "steps": [
+          "Check applicable NOx requirements, certification and approved technical file.",
+          "Assess the installation and operational controls rather than assuming the old engine's status transfers."
+        ],
+        "result": "Use the actual applicability criteria. A power match alone cannot establish emissions compliance or an acceptable replacement configuration."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-scr-secici-katalitik-indirgeme-4",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "SCR (seçici katalitik indirgeme)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 81,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-scr-secici-katalitik-indirgeme-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Selective catalytic reduction uses a reagent and catalyst under suitable operating conditions. Temperature, dosing, catalyst condition and exhaust composition influence performance. A running dosing pump does not prove effective NOx reduction.",
+      "example": {
+        "problem": "Reagent consumption appears normal while measured performance worsens.",
+        "steps": [
+          "Check exhaust temperature, dosing quality and catalyst condition through the approved diagnostic procedure.",
+          "Verify monitoring accuracy and any bypass status."
+        ],
+        "result": "Do not increase reagent indiscriminately. Restore the approved operating window and confirm performance, accounting for deposits or reagent slip risks."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-egr-egzoz-gazi-resirkulasyonu-5",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "EGR (egzoz gazı resirkülasyonu)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 103,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-egr-egzoz-gazi-resirkulasyonu-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Exhaust-gas recirculation changes combustion conditions to reduce NOx formation in an approved system. It also interacts with air supply, cooling, cleaning and engine performance. EGR operation is not equivalent to simply admitting more untreated exhaust.",
+      "example": {
+        "problem": "An EGR system develops abnormal pressure drop and reduced flow.",
+        "steps": [
+          "Check the approved cleaning, cooling and flow-control arrangement.",
+          "Assess engine condition and emissions controls together."
+        ],
+        "result": "Do not bypass treatment or alter flow settings informally. Follow the maker's fault response and verify the complete system after repair."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-eedi-ve-eexi-gereklilikleri-6",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "EEDI ve EEXI gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 134,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-eedi-ve-eexi-gereklilikleri-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "EEDI and EEXI are technical efficiency measures with different applicability, while CII evaluates annual operational carbon intensity for applicable ships. A technical index is not the same as a voyage fuel-use result.",
+      "example": {
+        "problem": "A ship meets its required EEXI but has poor annual CII performance.",
+        "steps": [
+          "Separate the approved technical assessment from actual annual operation.",
+          "Review fuel use, distance and applicable CII methodology."
+        ],
+        "result": "Technical compliance does not guarantee a good operational rating. Use each metric for its intended purpose and verify its own documentation and scope."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-emisyon-kontrolu-annex-vi-cii-karbon-yogunlugu-gostergesi-7",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "CII (Karbon Yoğunluğu Göstergesi)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 92,
+    "section": {
+      "id": "machine-environment-machine-emisyon-kontrolu-annex-vi-cii-karbon-yogunlugu-gostergesi-7-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "CII relates annual emissions to a defined capacity-and-distance measure under the applicable method. It differs from total annual emissions and from a single voyage's efficiency. Corrections and exclusions must follow the rules.",
+      "example": {
+        "problem": "Fuel emissions fall by 5%, but the relevant distance falls by 10% with capacity unchanged.",
+        "steps": [
+          "In a simplified uncorrected comparison, intensity changes by 0.95/0.90 = 1.056.",
+          "That is about a 5.6% increase despite lower total emissions."
+        ],
+        "result": "Less total fuel does not automatically improve intensity. Use the applicable full calculation and verified annual data before assigning a rating."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-balast-su-yonetimi-balast-su-sozlesmesi-bwm-convention-1",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Balast su sözleşmesi (BWM Convention)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-environment-machine-balast-su-yonetimi-balast-su-sozlesmesi-bwm-convention-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ballast-water management aims to reduce transfer of harmful aquatic organisms through approved practices and equipment. A ship's plan, certificate, system limitations and records must work together.",
+      "example": {
+        "problem": "A treatment system is unavailable before a planned discharge.",
+        "steps": [
+          "Follow the approved contingency process and consult the relevant authorities as required.",
+          "Assess authorized alternatives rather than assuming untreated discharge is acceptable."
+        ],
+        "result": "Equipment failure does not create automatic permission to bypass management. Record the event and use the vessel's approved arrangements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-balast-su-yonetimi-d-1-ve-d-2-standartlari-2",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "D-1 ve D-2 standartları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-environment-machine-balast-su-yonetimi-d-1-ve-d-2-standartlari-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "D-1 describes ballast-water exchange; D-2 limits organisms in discharged water. They are different standards, and exchange is not an automatic substitute where D-2 compliance is required.",
+      "example": {
+        "problem": "A D-2 ship's treatment system fails and the crew proposes exchange as a self-authorized replacement.",
+        "steps": [
+          "Check the ship's applicable requirements and approved contingency process.",
+          "Obtain the necessary authority agreement for any alternative arrangement."
+        ],
+        "result": "Do not infer compliance from completing exchange alone. The required standard, system status and authorized contingency determine the acceptable operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-balast-su-yonetimi-balast-su-aritma-sistemleri-bwts-3",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Balast su arıtma sistemleri (BWTS)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-environment-machine-balast-su-yonetimi-balast-su-aritma-sistemleri-bwts-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A type-approved ballast treatment system has operating limitations and required controls. Approval does not guarantee acceptable treatment under every water condition or with failed sensors.",
+      "example": {
+        "problem": "Treatment starts in water outside the system's stated operating limits.",
+        "steps": [
+          "Identify the relevant limit and approved response.",
+          "Follow the ballast management plan and contingency arrangements."
+        ],
+        "result": "Do not dismiss a limitation because the system is type approved. Verify the actual treatment conditions and required records before discharge decisions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-balast-su-yonetimi-uv-elektroliz-ve-filtrasyon-yontemleri-4",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "UV, elektroliz ve filtrasyon yöntemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 82,
+    "section": {
+      "id": "machine-environment-machine-balast-su-yonetimi-uv-elektroliz-ve-filtrasyon-yontemleri-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Filtration removes certain organisms and particles; UV and electrochemical processes act through different mechanisms. Water quality, dose and system conditions affect performance, and the approved process sequence matters.",
+      "example": {
+        "problem": "A UV system reports inadequate treatment under poor water-transmission conditions.",
+        "steps": [
+          "Check the approved flow and treatment response and sensor condition.",
+          "Use the documented contingency if adequate treatment cannot be established."
+        ],
+        "result": "A lit lamp is not proof of sufficient treatment. Do not bypass filters or increase flow beyond the approved operating envelope."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-balast-su-yonetimi-balast-su-degisim-bolgeleri-5",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Balast su değişim bölgeleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-environment-machine-balast-su-yonetimi-balast-su-degisim-bolgeleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ballast exchange planning considers applicable location requirements and vessel safety, including stability, strength and weather. Meeting a geographical condition alone does not make an exchange safe or authorized.",
+      "example": {
+        "problem": "A planned exchange location meets distance criteria but conditions threaten vessel safety.",
+        "steps": [
+          "Assess the approved plan, stability and structural constraints with responsible officers.",
+          "Follow the required reporting and contingency process if exchange cannot safely proceed."
+        ],
+        "result": "Do not sacrifice vessel safety to satisfy a single location condition. Record the decision and use authorized alternatives."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-balast-su-yonetimi-balast-su-kayit-defteri-6",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Balast su kayıt defteri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 84,
+    "section": {
+      "id": "machine-environment-machine-balast-su-yonetimi-balast-su-kayit-defteri-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ballast records should identify actual operations and relevant treatment or contingency events. Automated system logs can support the record but do not replace accurate reconciliation and required entries.",
+      "example": {
+        "problem": "System timestamps and the manual record disagree about a treatment interruption.",
+        "steps": [
+          "Check clock settings and contemporaneous operational evidence.",
+          "Correct the record through the approved procedure while preserving traceability."
+        ],
+        "result": "Do not silently rewrite times to make documents agree. Explain the verified event and any uncertainty so subsequent review can reconstruct the operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-atik-yonetimi-cop-yonetim-plani-garbage-management-plan-1",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Çöp yönetim planı (Garbage Management Plan)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-environment-machine-atik-yonetimi-cop-yonetim-plani-garbage-management-plan-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A garbage management plan assigns collection, segregation, storage, treatment and disposal responsibilities. It must work in the ship's actual spaces, not only exist as a document.",
+      "example": {
+        "problem": "Crew know disposal rules but bins are unmarked and waste is mixed.",
+        "steps": [
+          "Improve practical labeling and collection arrangements under the plan.",
+          "Brief users and verify segregation at the point of disposal."
+        ],
+        "result": "Operational design supports compliance. A written rule cannot compensate for a collection system that routinely mixes incompatible waste categories."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-atik-yonetimi-cop-siniflandirma-ve-kayit-2",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Çöp sınıflandırma ve kayıt",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-environment-machine-atik-yonetimi-cop-siniflandirma-ve-kayit-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Garbage categories determine handling and record requirements. Mixed waste should not be assigned the least restrictive category simply because most of its volume belongs there.",
+      "example": {
+        "problem": "Food waste contains plastic packaging and cleaning residues.",
+        "steps": [
+          "Identify the mixed components and use the applicable stricter handling route.",
+          "Correct segregation at the source and record disposal accurately."
+        ],
+        "result": "Do not relabel a mixed stream to fit a convenient discharge rule. Preserve category identity through storage and delivery to reception facilities."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-atik-yonetimi-incinerator-operasyonu-3",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Incinerator operasyonu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 82,
+    "section": {
+      "id": "machine-environment-machine-atik-yonetimi-incinerator-operasyonu-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Incinerator operation is limited by approved equipment, permitted feed and operating conditions. Some wastes must not be burned onboard, and local restrictions can apply. A hot chamber alone does not establish compliant operation.",
+      "example": {
+        "problem": "An unidentified chemical container is offered for incineration.",
+        "steps": [
+          "Confirm waste identity and the approved permitted-feed list.",
+          "Use an authorized alternative for prohibited or uncertain material."
+        ],
+        "result": "Do not burn unknown waste to free storage space. Verify equipment condition and applicable operational restrictions before accepting each feed stream."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-atik-yonetimi-pis-su-aritma-tesisi-stp-4",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Pis su arıtma tesisi (STP)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 90,
+    "section": {
+      "id": "machine-environment-machine-atik-yonetimi-pis-su-aritma-tesisi-stp-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A sewage treatment plant depends on the approved process conditions, loading and maintenance. Clear effluent does not establish treatment performance; disinfectant or biological stages can fail without obvious appearance changes.",
+      "example": {
+        "problem": "The outlet looks clear while a treatment alarm remains active.",
+        "steps": [
+          "Check the failed process and monitoring evidence.",
+          "Use the approved retention, repair or reception arrangement until discharge conditions are established."
+        ],
+        "result": "Do not use appearance as a compliance test. Restore the complete treatment process and document the defect and corrective action."
+      }
+    }
+  },
+  {
+    "topicId": "machine-environment-machine-atik-yonetimi-liman-atik-alim-tesisi-kullanimi-5",
+    "topicKey": "machine-environment-machine",
+    "topicTitle": "Liman atık alım tesisi kullanımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-environment-machine-atik-yonetimi-liman-atik-alim-tesisi-kullanimi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Port reception planning links waste type, quantity, facility capability and delivery documentation. A facility that accepts one waste stream may not accept another or an unidentified mixture.",
+      "example": {
+        "problem": "A reception service offers to collect all waste in one unmarked container.",
+        "steps": [
+          "Confirm accepted categories and the approved segregation and documentation arrangements.",
+          "Retain delivery evidence identifying what was actually transferred."
+        ],
+        "result": "Do not lose waste identity at handover. Reconcile retained quantities and records after delivery and report reception difficulties through the required process."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-erm-temelleri-brm-den-erm-ye-gecis-2",
+    "topicKey": "machine-erm",
+    "topicTitle": "BRM'den ERM'ye geçiş",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-erm-erm-temelleri-brm-den-erm-ye-gecis-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "BRM and ERM share resource-management principles, but apply them to different operational contexts. Engineering decisions affect propulsion, power and safety, so coordination with the bridge remains central.",
+      "example": {
+        "problem": "The bridge expects full manoeuvring capability while engineering has isolated a standby system.",
+        "steps": [
+          "Communicate the actual limitation and agree the operational implications.",
+          "Confirm roles and contingency actions before the next manoeuvre."
+        ],
+        "result": "Resource management connects departments through a shared understanding of capability. Do not assume each team independently knows the other's constraints."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-erm-temelleri-insan-faktoru-ve-hata-yonetimi-3",
+    "topicKey": "machine-erm",
+    "topicTitle": "İnsan faktörü ve hata yönetimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-erm-erm-temelleri-insan-faktoru-ve-hata-yonetimi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Human error is influenced by workload, interfaces, supervision and task design. Effective error management combines prevention, detection and recovery rather than expecting perfect attention.",
+      "example": {
+        "problem": "Two similar valves are repeatedly confused.",
+        "steps": [
+          "Improve identification and the checking process through the approved system.",
+          "Review access, lighting and workload as contributing conditions."
+        ],
+        "result": "A reminder alone may be weak protection. Design barriers that help people identify and recover from a mistake before it causes harm."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-erm-temelleri-situational-awareness-durumsal-farkindalik-4",
+    "topicKey": "machine-erm",
+    "topicTitle": "Situational awareness (durumsal farkındalık)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 118,
+    "section": {
+      "id": "machine-erm-erm-temelleri-situational-awareness-durumsal-farkindalik-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Situational awareness combines perception, interpretation and anticipation. Accurate individual readings are insufficient if their relationship or likely development is misunderstood.",
+      "example": {
+        "problem": "Bilge level rises while a cooling pump's discharge pressure falls.",
+        "steps": [
+          "Connect the observations and investigate possible leakage or supply loss.",
+          "Anticipate effects on flooding and cooling while following the response plan."
+        ],
+        "result": "Avoid treating each indication as an unrelated problem. Update the shared picture as evidence changes and communicate the likely consequences."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-erm-temelleri-stcw-erm-gereklilikleri-5",
+    "topicKey": "machine-erm",
+    "topicTitle": "STCW ERM gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-erm-erm-temelleri-stcw-erm-gereklilikleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "STCW competence includes practical management of people, communication and resources alongside technical knowledge. Completing an online lesson does not establish the required assessed onboard competence.",
+      "example": {
+        "problem": "A trainee recalls ERM definitions but cannot allocate roles in a simulated blackout.",
+        "steps": [
+          "Use supervised exercises and feedback to practice the required behaviors.",
+          "Assess performance against the relevant training standard and role."
+        ],
+        "result": "Knowledge recall supports learning but is not certification. Link study to approved training, demonstration and assessment rather than equating a quiz score with professional qualification."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-liderlik-ve-iletisim-liderlik-tarzlari-ve-durumsal-liderlik-1",
+    "topicKey": "machine-erm",
+    "topicTitle": "Liderlik tarzları ve durumsal liderlik",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 103,
+    "section": {
+      "id": "machine-erm-liderlik-ve-iletisim-liderlik-tarzlari-ve-durumsal-liderlik-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Leadership should provide clear authority while encouraging relevant information and challenge. Time pressure may require concise direction, but roles and confirmation remain important.",
+      "example": {
+        "problem": "An emergency task has several volunteers but no assigned leader or communications role.",
+        "steps": [
+          "Assign clear responsibilities and reporting points.",
+          "Confirm understanding and adapt workload as the situation develops."
+        ],
+        "result": "Uncoordinated initiative can duplicate tasks and leave gaps. Make leadership and priorities explicit while keeping channels open for new safety information."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-liderlik-ve-iletisim-etkili-iletisim-teknikleri-2",
+    "topicKey": "machine-erm",
+    "topicTitle": "Etkili iletişim teknikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-erm-liderlik-ve-iletisim-etkili-iletisim-teknikleri-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Effective communication identifies the equipment, requested action and expected result in language the receiver understands. Ambiguous pronouns and assumptions are risky around similar systems.",
+      "example": {
+        "problem": "An instruction says “open that valve” near several valves.",
+        "steps": [
+          "Identify the valve unambiguously and state the required action.",
+          "Obtain confirmation before execution and report the result."
+        ],
+        "result": "Specific language reduces wrong-equipment operation. Do not rely on pointing or familiarity when identity and consequences need verification."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-liderlik-ve-iletisim-kapali-dongu-iletisim-closed-loop-3",
+    "topicKey": "machine-erm",
+    "topicTitle": "Kapalı döngü iletişim (closed-loop)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 75,
+    "section": {
+      "id": "machine-erm-liderlik-ve-iletisim-kapali-dongu-iletisim-closed-loop-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Closed-loop communication includes a clear instruction, receiver confirmation and reported completion or inability. Acknowledgment is not the final step. For example, distinguish “start command sent” from “pump running with delivery confirmed.” Reporting these as different states prevents a control signal from being mistaken for achieved service.",
+      "example": {
+        "problem": "An engineer orders a standby pump started and receives “okay.”",
+        "steps": [
+          "Confirm which pump and required action were understood.",
+          "Report actual running and delivery status, or explain the failure."
+        ],
+        "result": "Close the loop with verified outcome. This prevents the sender from assuming a useful service exists merely because the command was heard."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-liderlik-ve-iletisim-kulturler-arasi-iletisim-4",
+    "topicKey": "machine-erm",
+    "topicTitle": "Kültürler arası iletişim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 107,
+    "section": {
+      "id": "machine-erm-liderlik-ve-iletisim-kulturler-arasi-iletisim-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cross-cultural communication benefits from standard terms, explicit confirmation and respectful clarification. Silence or a polite response may not establish agreement or comprehension.",
+      "example": {
+        "problem": "A team member nods but cannot repeat a critical isolation instruction.",
+        "steps": [
+          "Rephrase using agreed terminology and verify understanding.",
+          "Demonstrate the boundary safely where appropriate before work begins."
+        ],
+        "result": "Do not interpret politeness as competence or consent to risk. Create a practical opportunity to ask questions without embarrassment."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-liderlik-ve-iletisim-asertif-davranis-ve-otorite-gradyani-5",
+    "topicKey": "machine-erm",
+    "topicTitle": "Asertif davranış ve otorite gradyanı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-erm-liderlik-ve-iletisim-asertif-davranis-ve-otorite-gradyani-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Assertiveness communicates a safety concern clearly while preserving useful teamwork. Authority should not prevent relevant evidence from reaching the decision-maker. Escalation procedures support action when a concern remains unresolved.",
+      "example": {
+        "problem": "A junior engineer sees a valve lineup inconsistent with the isolation plan.",
+        "steps": [
+          "State the specific discrepancy and consequence.",
+          "Request a pause and use the approved escalation or stop-work process if unresolved."
+        ],
+        "result": "Challenge the unsafe condition with evidence. A rank difference does not make the observation irrelevant or justify proceeding without verification."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-karar-verme-ve-problem-cozme-decide-modeli-1",
+    "topicKey": "machine-erm",
+    "topicTitle": "DECIDE modeli",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 142,
+    "section": {
+      "id": "machine-erm-karar-verme-ve-problem-cozme-decide-modeli-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A decision model structures the move from detecting a problem to evaluating an action. It supports judgment but cannot replace urgent protective actions or the vessel's emergency procedure.",
+      "example": {
+        "problem": "Cooling pressure falls and several possible causes are considered.",
+        "steps": [
+          "Define the problem and immediate safe state, compare feasible options and assign action.",
+          "Evaluate whether the selected action actually restores the required condition."
+        ],
+        "result": "A decision is incomplete without checking its effect. Reassess when evidence contradicts the original explanation rather than defending the first choice."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-karar-verme-ve-problem-cozme-risk-tabanli-karar-verme-2",
+    "topicKey": "machine-erm",
+    "topicTitle": "Risk tabanlı karar verme",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 103,
+    "section": {
+      "id": "machine-erm-karar-verme-ve-problem-cozme-risk-tabanli-karar-verme-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Risk-based decisions consider likelihood, consequences, uncertainty and available controls. A low-frequency failure may still demand attention when its consequence is loss of an essential function.",
+      "example": {
+        "problem": "A rarely failing relay supplies both duty and standby equipment.",
+        "steps": [
+          "Assess common-failure consequences and recovery options.",
+          "Choose controls and maintenance priority through the safety management process."
+        ],
+        "result": "Do not rank risk by frequency alone. Independence and consequence can make an inexpensive, rarely failing component operationally critical."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-karar-verme-ve-problem-cozme-stres-ve-yorgunluk-etkisi-5",
+    "topicKey": "machine-erm",
+    "topicTitle": "Stres ve yorgunluk etkisi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 114,
+    "section": {
+      "id": "machine-erm-karar-verme-ve-problem-cozme-stres-ve-yorgunluk-etkisi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fatigue can reduce vigilance, communication and judgment even when a person feels capable. Workload planning and rest arrangements are system controls; caffeine does not replace adequate rest.",
+      "example": {
+        "problem": "A fatigued engineer is assigned a complex isolation after repeated call-outs.",
+        "steps": [
+          "Report the limitation and seek the approved staffing or scheduling adjustment.",
+          "Use independent verification and appropriate supervision for critical steps."
+        ],
+        "result": "Do not rely on determination alone. Manage fatigue before it degrades a safety-critical task and record relevant operational constraints."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-takim-calismasi-takim-olusturma-ve-rol-dagilimi-1",
+    "topicKey": "machine-erm",
+    "topicTitle": "Takım oluşturma ve rol dağılımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 89,
+    "section": {
+      "id": "machine-erm-takim-calismasi-takim-olusturma-ve-rol-dagilimi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Role allocation should cover command, technical action, communication and monitoring without overloading one person. Expertise and availability matter more than simply distributing equal numbers of tasks.",
+      "example": {
+        "problem": "During a blackout, one engineer is simultaneously troubleshooting, communicating and monitoring recovery.",
+        "steps": [
+          "Reassign clearly bounded tasks to competent team members.",
+          "Confirm reporting lines and preserve overall coordination."
+        ],
+        "result": "A balanced team reduces missed information. Verify that every essential function has an owner and that no critical task is assumed to belong to someone else."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-takim-calismasi-brifing-ve-debrifing-teknikleri-2",
+    "topicKey": "machine-erm",
+    "topicTitle": "Brifing ve debrifing teknikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-erm-takim-calismasi-brifing-ve-debrifing-teknikleri-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A briefing establishes the plan, roles, hazards and contingencies; a debrief compares actual events with expectations and identifies improvements. Neither is useful if it only repeats a checklist without discussion.",
+      "example": {
+        "problem": "A drill ends with “all satisfactory” despite a communication delay.",
+        "steps": [
+          "Reconstruct the delay and its effect.",
+          "Assign a corrective action and a way to verify improvement in the next exercise."
+        ],
+        "result": "Capture specific lessons and ownership. A debrief should produce a testable change, not only a general request to communicate better."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-takim-calismasi-yuk-paylasimi-workload-management-3",
+    "topicKey": "machine-erm",
+    "topicTitle": "Yük paylaşımı (workload management)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 90,
+    "section": {
+      "id": "machine-erm-takim-calismasi-yuk-paylasimi-workload-management-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Workload management prioritizes essential actions and transfers tasks without losing accountability. Deferring a lower-priority task should be explicit so it is not forgotten after the immediate event.",
+      "example": {
+        "problem": "An alarm investigation interrupts a maintenance task in progress.",
+        "steps": [
+          "Secure the maintenance state and communicate what is paused.",
+          "Assign the urgent response and record the required follow-up."
+        ],
+        "result": "Avoid leaving partially completed work ambiguous. Handover and task tracking protect both the emergency response and later safe resumption."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-takim-calismasi-capraz-kontrol-ve-karsilikli-izleme-4",
+    "topicKey": "machine-erm",
+    "topicTitle": "Çapraz kontrol ve karşılıklı izleme",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-erm-takim-calismasi-capraz-kontrol-ve-karsilikli-izleme-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Independent cross-checking works when the checker uses the source information and actual condition rather than merely agreeing with the first person. Shared assumptions can otherwise produce the same mistake twice.",
+      "example": {
+        "problem": "Two people confirm a valve number by reading the same incorrect handwritten note.",
+        "steps": [
+          "Check against the approved isolation plan and physical identification.",
+          "Resolve discrepancies before the action."
+        ],
+        "result": "Two signatures are not necessarily two independent checks. Use a method capable of detecting the original error, not reproducing it."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-takim-calismasi-geri-bildirim-kulturu-5",
+    "topicKey": "machine-erm",
+    "topicTitle": "Geri bildirim kültürü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 85,
+    "section": {
+      "id": "machine-erm-takim-calismasi-geri-bildirim-kulturu-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Useful feedback describes observed behavior, its consequence and a practical improvement. Personal blame can suppress reporting, while vague praise can hide a defect.",
+      "example": {
+        "problem": "A colleague repeatedly omits completion reports after critical commands.",
+        "steps": [
+          "Describe a specific example and explain the resulting uncertainty.",
+          "Agree a clear completion-report practice and observe whether it improves."
+        ],
+        "result": "Make feedback actionable and verify change. The aim is reliable team behavior, not a judgment about someone's character."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-kaza-analizi-ve-dersler-makine-dairesi-yangin-kaza-ornekleri-1",
+    "topicKey": "machine-erm",
+    "topicTitle": "Makine dairesi yangın kaza örnekleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 130,
+    "section": {
+      "id": "machine-erm-kaza-analizi-ve-dersler-makine-dairesi-yangin-kaza-ornekleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A fire scenario should connect initiating conditions, failed barriers and response effectiveness. Avoid inventing details from real casualties; clearly identified training scenarios can still test decisions.",
+      "example": {
+        "problem": "In a training scenario, fuel leaks onto a hot surface and initial reports omit the location.",
+        "steps": [
+          "Review leak prevention, hot-surface protection and clear alarm reporting.",
+          "Assign corrective measures and test the response in a supervised exercise."
+        ],
+        "result": "Learn from both prevention and response. Do not reduce the scenario to choosing an extinguisher while ignoring the barriers that should have prevented ignition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-kaza-analizi-ve-dersler-blackout-senaryolari-ve-kok-nedenler-2",
+    "topicKey": "machine-erm",
+    "topicTitle": "Blackout senaryoları ve kök nedenler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-erm-kaza-analizi-ve-dersler-blackout-senaryolari-ve-kok-nedenler-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Blackout scenarios should distinguish initiating failure, common dependencies and restoration errors. A restart can restore power while leaving the original vulnerability unchanged.",
+      "example": {
+        "problem": "A simulated generator trip is followed by simultaneous automatic consumer restart and a second trip.",
+        "steps": [
+          "Examine reserve, load-shedding and restoration sequencing.",
+          "Test the approved staged recovery and verify stable essential supply."
+        ],
+        "result": "Recovery is more than restarting an engine. Address the common conditions that could repeat the outage, and document evidence from the exercise."
+      }
+    }
+  },
+  {
+    "topicId": "machine-erm-kaza-analizi-ve-dersler-derslerin-operasyona-yansitilmasi-5",
+    "topicKey": "machine-erm",
+    "topicTitle": "Derslerin operasyona yansıtılması",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-erm-kaza-analizi-ve-dersler-derslerin-operasyona-yansitilmasi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A lesson becomes operational improvement when it changes a procedure, equipment condition, training or verification method. Circulating an incident summary alone does not demonstrate implementation.",
+      "example": {
+        "problem": "A near-miss report recommends better labeling, but no owner or deadline is assigned.",
+        "steps": [
+          "Assign the action through the management process and define acceptance evidence.",
+          "Verify the completed labels and whether the task becomes clearer."
+        ],
+        "result": "Close the improvement loop. Track effectiveness as well as completion so the same weakness does not return under routine pressure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-enerji-verimliligi-cercevesi-imo-ghg-stratejisi-ve-hedefler-1",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "IMO GHG stratejisi ve hedefler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 97,
+    "section": {
+      "id": "machine-energy-efficiency-enerji-verimliligi-cercevesi-imo-ghg-stratejisi-ve-hedefler-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A long-term emissions strategy sets direction, while binding technical and operational requirements define current ship obligations. An ambition, adopted regulation and measure under development are different statuses.",
+      "example": {
+        "problem": "A presentation treats a strategic target as a mandatory equipment retrofit date.",
+        "steps": [
+          "Check the current IMO instrument and its legal status.",
+          "Separate existing obligations from planning assumptions and proposals."
+        ],
+        "result": "Use strategy for investment direction without inventing a compliance deadline. Verify the applicable regulation, ship scope and effective date before prescribing action."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-enerji-verimliligi-cercevesi-cii-derecelendirme-sistemi-a-e-5",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "CII derecelendirme sistemi (A–E)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-energy-efficiency-enerji-verimliligi-cercevesi-cii-derecelendirme-sistemi-a-e-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "CII ratings compare attained operational intensity with the applicable required value and rating boundaries. The rating is annual, and corrective planning requirements depend on the actual result and history.",
+      "example": {
+        "problem": "Fuel consumption falls but the ship's annual rating worsens.",
+        "steps": [
+          "Check distance, capacity basis, corrections and required-value changes.",
+          "Reconcile verified data before selecting corrective measures."
+        ],
+        "result": "A lower fuel total does not guarantee a better rating. Identify the drivers in the applicable calculation and address them through the approved management process."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-enerji-verimliligi-cercevesi-seemp-gemi-enerji-verimliligi-yonetim-plani-6",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 95,
+    "section": {
+      "id": "machine-energy-efficiency-enerji-verimliligi-cercevesi-seemp-gemi-enerji-verimliligi-yonetim-plani-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "SEEMP connects planning, implementation, monitoring and review. The applicable parts and verification requirements depend on the ship. A list of possible savings is weaker than a measurable action with ownership.",
+      "example": {
+        "problem": "A plan recommends reducing auxiliary consumption without a baseline or responsible person.",
+        "steps": [
+          "Define the relevant operating baseline and measurable action.",
+          "Assign responsibility and compare results at equivalent conditions."
+        ],
+        "result": "A useful plan supports verified improvement. Record whether the measure worked and revise ineffective actions rather than repeating them annually."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-operasyonel-verimlilik-trim-optimizasyonu-2",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Trim optimizasyonu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 135,
+    "section": {
+      "id": "machine-energy-efficiency-operasyonel-verimlilik-trim-optimizasyonu-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Optimal trim depends on hull form, draft, speed and conditions. A trim that reduces resistance in one condition can be unsuitable in another. Stability, strength, visibility and operational limits remain constraints.",
+      "example": {
+        "problem": "A trial suggests a favorable trim at one draft and calm-water speed.",
+        "steps": [
+          "Check the validity range of the trial or approved model.",
+          "Evaluate the proposed condition against stability and operational limits before implementation."
+        ],
+        "result": "Do not apply one optimum across all voyages. Measure performance at comparable conditions and preserve the approved safety constraints."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-operasyonel-verimlilik-rota-optimizasyonu-weather-routing-3",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Rota optimizasyonu (weather routing)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 100,
+    "section": {
+      "id": "machine-energy-efficiency-operasyonel-verimlilik-rota-optimizasyonu-weather-routing-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Weather routing balances fuel, arrival requirements and safety using forecast uncertainty and vessel limits. A shorter route is not always more efficient, and a fuel estimate is not a guarantee.",
+      "example": {
+        "problem": "A shorter route encounters severe head seas while a longer alternative has milder conditions.",
+        "steps": [
+          "Compare predicted time, power demand and safety constraints.",
+          "Review forecast uncertainty and update the decision during the voyage."
+        ],
+        "result": "Optimize the whole voyage rather than distance alone. Keep the master's operational judgment and approved weather limits central to the plan."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-operasyonel-verimlilik-fouling-etkisi-ve-tekne-temizligi-4",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Fouling etkisi ve tekne temizliği",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 107,
+    "section": {
+      "id": "machine-energy-efficiency-operasyonel-verimlilik-fouling-etkisi-ve-tekne-temizligi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Hull fouling increases resistance, but its apparent effect can be confused with weather, draft or speed changes. Cleaning decisions should use comparable performance evidence and appropriate environmental and coating controls.",
+      "example": {
+        "problem": "Fuel use rises after several months alongside.",
+        "steps": [
+          "Compare normalized speed–power data and inspect hull condition where appropriate.",
+          "Assess an approved cleaning option and expected benefit."
+        ],
+        "result": "Do not attribute every fuel increase to fouling. Verify the cause and consider coating condition, biofouling management and local cleaning restrictions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-operasyonel-verimlilik-pervane-parlatma-ve-kavitasyon-kontrolu-5",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Pervane parlatma ve kavitasyon kontrolü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 108,
+    "section": {
+      "id": "machine-energy-efficiency-operasyonel-verimlilik-pervane-parlatma-ve-kavitasyon-kontrolu-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Propeller surface condition affects losses and cavitation behavior. Polishing may improve performance, but damage, geometry or shaft issues require different remedies. Before-and-after comparisons need equivalent conditions.",
+      "example": {
+        "problem": "Vibration and fuel demand rise while the propeller is visibly rough.",
+        "steps": [
+          "Assess surface condition and possible damage through approved inspection.",
+          "Compare performance after authorized maintenance at similar load and conditions."
+        ],
+        "result": "Polishing is not a universal cure for vibration. Investigate geometry, cavitation and mechanical causes if the symptoms persist."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-operasyonel-verimlilik-yakit-tuketimi-izleme-ve-raporlama-6",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Yakıt tüketimi izleme ve raporlama",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 104,
+    "section": {
+      "id": "machine-energy-efficiency-operasyonel-verimlilik-yakit-tuketimi-izleme-ve-raporlama-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fuel monitoring needs a defined boundary, calibrated measurements and consistent treatment of transfers and returns. Daily totals can be misleading when tank movements or reference conditions differ.",
+      "example": {
+        "problem": "A meter total and tank-consumption estimate disagree.",
+        "steps": [
+          "Reconcile transfers, return flows, temperature corrections and timing.",
+          "Check instrument calibration and document the chosen accounting method."
+        ],
+        "result": "Investigate discrepancies before claiming savings. A change in measurement method can look like an efficiency improvement without reducing actual consumption."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-teknik-verimlilik-cozumleri-hava-yaglama-air-lubrication-sistemi-2",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Hava yağlama (air lubrication) sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 94,
+    "section": {
+      "id": "machine-energy-efficiency-teknik-verimlilik-cozumleri-hava-yaglama-air-lubrication-sistemi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Air lubrication aims to reduce hull friction using supplied air, but compressors consume power and effectiveness depends on hull and operating conditions. Gross propulsion reduction is not the net saving.",
+      "example": {
+        "problem": "Propulsion demand falls by 200 kW while air-system auxiliaries consume 80 kW.",
+        "steps": [
+          "Preliminary net reduction is 200 − 80 = 120 kW.",
+          "Compare equivalent speed, draft and weather and include other system effects."
+        ],
+        "result": "Claim savings only for the verified net result and operating range. Installed equipment does not guarantee the same benefit on every voyage."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-teknik-verimlilik-cozumleri-ruzgar-destekli-itme-rotor-sail-wing-sail-3",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Rüzgâr destekli itme (rotor sail, wing sail)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 134,
+    "section": {
+      "id": "machine-energy-efficiency-teknik-verimlilik-cozumleri-ruzgar-destekli-itme-rotor-sail-wing-sail-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Wind assistance converts available wind into useful thrust but interacts with apparent wind, course, stability and ship operations. Auxiliary power and restrictions affect the net benefit.",
+      "example": {
+        "problem": "A rotor system saves propulsion power on one route but offers little benefit on another.",
+        "steps": [
+          "Compare apparent-wind conditions and operating constraints.",
+          "Include system power and time in service when calculating net savings."
+        ],
+        "result": "Avoid extrapolating a favorable trial to all voyages. Assess route-specific performance while maintaining the vessel's approved stability and operational limits."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-teknik-verimlilik-cozumleri-degisken-frekansli-tahrik-vfd-kullanimi-4",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Değişken frekanslı tahrik (VFD) kullanımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-energy-efficiency-teknik-verimlilik-cozumleri-degisken-frekansli-tahrik-vfd-kullanimi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "For an ideal centrifugal pump in a comparable system, affinity laws relate flow to speed, head to speed squared and power to speed cubed. Static head and efficiency changes limit simple predictions.",
+      "example": {
+        "problem": "Speed is reduced to 80% and the ideal cube-law approximation is applicable.",
+        "steps": [
+          "Power ratio is 0.8³ = 0.512.",
+          "The ideal estimate is about 49% less power, before actual system and efficiency effects."
+        ],
+        "result": "Verify required flow and pressure are still achieved. Do not apply the cube-law saving uncritically to every load or to systems dominated by static head."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-teknik-verimlilik-cozumleri-led-aydinlatma-donusumu-5",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "LED aydınlatma dönüşümü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 100,
+    "section": {
+      "id": "machine-energy-efficiency-teknik-verimlilik-cozumleri-led-aydinlatma-donusumu-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Lighting energy depends on actual power and operating hours. Replacement also needs suitable illumination, environment rating and compatibility with emergency arrangements. Nameplate savings alone do not establish a safe installation.",
+      "example": {
+        "problem": "Twenty 60 W fittings are replaced with suitable 20 W units operating 10 hours daily.",
+        "steps": [
+          "Power reduction is 20 × 40 W = 800 W.",
+          "Daily energy reduction is 0.8 kW × 10 h = 8 kWh."
+        ],
+        "result": "Verify illumination and approved electrical suitability. Use actual operating hours and measured demand when estimating the annual benefit."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-teknik-verimlilik-cozumleri-pervane-enerji-tasarrufu-cihazlari-6",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Pervane enerji tasarrufu cihazları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-energy-efficiency-teknik-verimlilik-cozumleri-pervane-enerji-tasarrufu-cihazlari-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Propeller energy-saving devices alter local flow and must match the hull–propeller system. A device beneficial on one installation can be ineffective or harmful on another. Structural and cavitation effects need evaluation.",
+      "example": {
+        "problem": "A supplier quotes a saving from a different ship type.",
+        "steps": [
+          "Check applicability through suitable design evidence and comparable trials.",
+          "Include added resistance, maintenance and operating-range effects."
+        ],
+        "result": "Do not adopt the quoted percentage as a guaranteed saving. Assess the complete propulsion system and verify the net result after an approved installation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-veri-toplama-ve-raporlama-imo-dcs-veri-toplama-sistemi-1",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "IMO DCS (veri toplama sistemi)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-energy-efficiency-veri-toplama-ve-raporlama-imo-dcs-veri-toplama-sistemi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "IMO DCS uses defined fuel-consumption reporting and verification arrangements for applicable ships. Data boundaries and methods must remain consistent. A summary total needs traceable source records and reconciliation.",
+      "example": {
+        "problem": "Annual fuel totals do not match the underlying monthly records.",
+        "steps": [
+          "Reconcile transfers, corrections, reporting boundaries and missing periods.",
+          "Document justified corrections through the approved method."
+        ],
+        "result": "Do not adjust totals merely to make them agree. Preserve an audit trail that allows the verifier to reconstruct the reported consumption."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-veri-toplama-ve-raporlama-eu-mrv-regulasyonu-2",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "EU MRV regülasyonu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 110,
+    "section": {
+      "id": "machine-energy-efficiency-veri-toplama-ve-raporlama-eu-mrv-regulasyonu-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "EU MRV and IMO DCS are related reporting frameworks but have different scopes and data requirements. Reusing data is useful only when the required boundaries and definitions are reconciled.",
+      "example": {
+        "problem": "A company proposes submitting its DCS total unchanged as an MRV report.",
+        "steps": [
+          "Check ship, voyage, gas and reporting-year scope under the applicable requirements.",
+          "Map each required value to verified source records."
+        ],
+        "result": "A shared fuel database does not make the reports interchangeable. Apply the approved monitoring plan and current framework-specific rules."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-veri-toplama-ve-raporlama-eu-ets-emisyon-ticaret-sistemi-3",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "EU ETS (emisyon ticaret sistemi)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 148,
+    "section": {
+      "id": "machine-energy-efficiency-veri-toplama-ve-raporlama-eu-ets-emisyon-ticaret-sistemi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "EU ETS obligations distinguish the emissions year from the later allowance-surrender year. Scope and phase-in depend on the applicable rules; confusing the two years can produce a material planning error.",
+      "example": {
+        "problem": "A budget labels all 2026 surrender obligations as 100% of 2025 emissions.",
+        "steps": [
+          "Check the Commission's current schedule: the 2026 surrender relates to 70% of covered 2025 emissions.",
+          "The 100% phase applies to covered 2026 emissions, surrendered in 2027, subject to applicable scope and adjustments."
+        ],
+        "result": "Use both years explicitly in calculations and verify the current rules. Do not confuse a reporting phase with the calendar date of surrender."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-veri-toplama-ve-raporlama-yakit-tuketimi-veri-dogrulama-4",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Yakıt tüketimi veri doğrulama",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 98,
+    "section": {
+      "id": "machine-energy-efficiency-veri-toplama-ve-raporlama-yakit-tuketimi-veri-dogrulama-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Verification tests completeness, consistency and traceability, not merely arithmetic. Independent reconciliation can reveal missing consumers, unit errors or unexplained inventory movements.",
+      "example": {
+        "problem": "A spreadsheet total is mathematically correct but excludes boiler consumption.",
+        "steps": [
+          "Trace the reporting boundary to every required consumer and source record.",
+          "Reconcile inventory and meter data and document corrections."
+        ],
+        "result": "Correct arithmetic cannot repair incomplete scope. Verify what the numbers represent before accepting the final fuel or emissions total."
+      }
+    }
+  },
+  {
+    "topicId": "machine-energy-efficiency-veri-toplama-ve-raporlama-yillik-verimlilik-raporu-hazirlama-5",
+    "topicKey": "machine-energy-efficiency",
+    "topicTitle": "Yıllık verimlilik raporu hazırlama",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-energy-efficiency-veri-toplama-ve-raporlama-yillik-verimlilik-raporu-hazirlama-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An annual efficiency report should distinguish absolute consumption, normalized performance and operational changes. Improvements need a consistent comparison basis and stated uncertainty. One favorable voyage is not a reliable annual result.",
+      "example": {
+        "problem": "Annual fuel use falls while distance and days at sea also fall.",
+        "steps": [
+          "Report activity changes alongside consumption.",
+          "Compare appropriate intensity and performance measures and explain data limitations."
+        ],
+        "result": "Do not label the entire reduction an efficiency gain. Show which part is supported by equivalent-condition evidence and what remains attributable to changed activity."
       }
     }
   }

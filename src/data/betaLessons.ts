@@ -1,3 +1,4 @@
+import learningDepthSources from "./learningDepthSources.json";
 import learningDepthReviews from "./learningDepthReviews.json";
 import learningCaseStudies from "./learningCaseStudies.json";
 import rulePlacements from "@/data/curriculumRulePlacement.json";
@@ -43,6 +44,7 @@ export interface BetaSection {
   imageAlt?: string;
   example?: { problem: string; steps?: string[]; solution?: string; result?: string };
   table?: { headers: string[]; rows: string[][] };
+  references?: Array<{ title: string; url: string }>;
 }
 
 export interface BetaTopic {
@@ -174,7 +176,7 @@ const mergeRulesIntoTopic = (categoryKey: string, topic: BetaTopic): BetaTopic =
 
   return {
     ...topic,
-    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...(depthReview ? [depthReview.section] : []), ...integratedRuleSections(topic.id, assignments)],
+    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...(depthReview ? [{ ...depthReview.section, references: learningDepthSources[categoryKey as keyof typeof learningDepthSources] }] : []), ...integratedRuleSections(topic.id, assignments)],
   };
 };
 
