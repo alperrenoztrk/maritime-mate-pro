@@ -71,6 +71,21 @@ export type Database = {
         }
         Relationships: []
       }
+      learning_progress: {
+        Row: {
+          progress: Json
+          user_id: string
+        }
+        Insert: {
+          progress?: Json
+          user_id: string
+        }
+        Update: {
+          progress?: Json
+          user_id?: string
+        }
+        Relationships: []
+      }
       maritime_documents: {
         Row: {
           analysis_version: string
@@ -382,10 +397,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      merge_learning_progress: {
-        Args: { incoming: Json }
-        Returns: Json
-      }
       acceptable_aal_levels: { Args: never; Returns: string[] }
       consume_ai_credit: {
         Args: { p_limit: number; p_period: string; p_user_id: string }
@@ -401,6 +412,7 @@ export type Database = {
           retry_after_sec: number
         }[]
       }
+      merge_learning_progress: { Args: { incoming: Json }; Returns: Json }
       prune_rate_limits: { Args: { p_older_than?: string }; Returns: number }
     }
     Enums: {

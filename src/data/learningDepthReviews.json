@@ -2198,5 +2198,1645 @@
         "result": "The same current speed gives different SOG and track. Use SOG for distance-over-ground estimates, but retain STW and current direction when evaluating propulsion performance or predicting the vessel's path."
       }
     }
+  },
+  {
+    "topicId": "machine-ship-systems-dumen-donanimi-dumen-tipleri-balanced-semi-balanced-unbalanced-1",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Dümen tipleri (balanced, semi-balanced, unbalanced)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-ship-systems-dumen-donanimi-dumen-tipleri-balanced-semi-balanced-unbalanced-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Rudder balance describes blade area relative to the stock axis. Area ahead of the stock can reduce actuator torque, but forces still depend on speed, angle and inflow.",
+      "example": {
+        "problem": "Two rudders have equal area but different stock positions. Is their required torque equal?",
+        "steps": [
+          "Compare the force's lever arm about each stock.",
+          "Include actual blade geometry and operating condition rather than area alone."
+        ],
+        "result": "The same force can create different torque. A balanced rudder is not force-free; use the approved steering-gear limits."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-dumen-donanimi-elektro-hidrolik-dumen-makinesi-3",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Elektro-hidrolik dümen makinesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 115,
+    "section": {
+      "id": "machine-ship-systems-dumen-donanimi-elektro-hidrolik-dumen-makinesi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Electrical power drives hydraulic flow, which develops rudder torque. Pump operation, pressure and actual movement are separate observations; a running motor does not prove steering response.",
+      "example": {
+        "problem": "The helm command changes but rudder feedback does not, although a pump runs.",
+        "steps": [
+          "Compare commanded angle, independent local indication and actual response.",
+          "Follow the steering-failure communication and changeover procedure."
+        ],
+        "result": "Investigate the control and hydraulic paths. Do not interpret normal motor current as proof that the rudder is under control."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-dumen-donanimi-telemotor-sistemi-4",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Telemotor sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-ship-systems-dumen-donanimi-telemotor-sistemi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The telemotor transmits commands; the steering power unit supplies the force. Transmission may be hydraulic or electrical depending on design. Fault isolation separates missing commands from failed execution.",
+      "example": {
+        "problem": "Bridge control fails but approved local control moves the rudder.",
+        "steps": [
+          "Check the remote command and feedback paths.",
+          "Maintain bridge-to-local communication and use the documented changeover arrangement."
+        ],
+        "result": "Local movement narrows the fault but does not clear the complete steering system. Test the restored command chain before normal operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-dumen-donanimi-dumen-testleri-ve-solas-gereklilikleri-5",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Dümen testleri ve SOLAS gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-ship-systems-dumen-donanimi-dumen-testleri-ve-solas-gereklilikleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A steering test verifies actual functions, indications, communication and alternatives. A checklist signature or moving display alone cannot establish correct mechanical response.",
+      "example": {
+        "problem": "The bridge indicator moves, but nobody verifies local rudder position.",
+        "steps": [
+          "Compare command, bridge feedback and independent local evidence.",
+          "Test the required alarms and alternative arrangements using the vessel's approved procedure."
+        ],
+        "result": "Record observed performance and defects. A feedback or linkage fault can remain hidden if the test checks only the display."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-dumen-donanimi-yedek-dumen-sistemi-6",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Yedek dümen sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-ship-systems-dumen-donanimi-yedek-dumen-sistemi-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Backup steering depends on available power, controls and an understood changeover method. Shared components can disable two nominally separate systems, so counting pumps does not prove independence.",
+      "example": {
+        "problem": "Both pumps rely on one failed control-power component.",
+        "steps": [
+          "Trace the common dependency and identify the approved alternative control mode.",
+          "Establish communication before transferring control."
+        ],
+        "result": "Use the vessel's steering emergency procedure. Include common power and control failures in drills and maintenance reviews, rather than testing only individual pump starts."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pervane-ve-saft-hatti-sabit-hatveli-pervane-fpp-1",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Sabit hatveli pervane (FPP)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 57,
+    "section": {
+      "id": "machine-ship-systems-pervane-ve-saft-hatti-sabit-hatveli-pervane-fpp-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fixed pitch describes blade geometry, not constant thrust. Thrust and shaft load depend on rpm, inflow, vessel condition and sea state. Reversal uses the installation's reversing arrangement.",
+      "example": {
+        "problem": "Usual shaft rpm produces less ship speed in heavier weather.",
+        "steps": [
+          "Compare draft, environmental conditions and shaft power.",
+          "Assess engine loading rather than assuming constant rpm means constant demand."
+        ],
+        "result": "The engine may carry more load at the same speed. Use power and operating limits alongside vessel speed when evaluating propulsion performance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pervane-ve-saft-hatti-degisken-hatveli-pervane-cpp-2",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Değişken hatveli pervane (CPP)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 82,
+    "section": {
+      "id": "machine-ship-systems-pervane-ve-saft-hatti-degisken-hatveli-pervane-cpp-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Controllable pitch changes blade angle while the shaft may keep rotating in one direction. Commanded pitch, feedback and actual blade position are distinct; zero indication need not prove zero thrust.",
+      "example": {
+        "problem": "Pitch is commanded to zero but thrust remains.",
+        "steps": [
+          "Check feedback and the approved calibration and control arrangement.",
+          "Communicate the discrepancy and follow the propulsion-control response."
+        ],
+        "result": "Do not rely on the command alone for manoeuvring or personnel safety. Verify actual behavior through the installation's approved test procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pervane-ve-saft-hatti-pervane-verimi-ve-kavitasyon-3",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Pervane verimi ve kavitasyon",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 124,
+    "section": {
+      "id": "machine-ship-systems-pervane-ve-saft-hatti-pervane-verimi-ve-kavitasyon-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Propeller efficiency relates thrust power to shaft power. Cavitation begins when local pressure becomes low enough for vapor cavities to form; collapse can produce noise, vibration and erosion.",
+      "example": {
+        "problem": "Vibration increases at one combination of rpm and loading.",
+        "steps": [
+          "Compare operating conditions, hull state and inspection evidence.",
+          "Distinguish possible cavitation from imbalance and bearing faults."
+        ],
+        "result": "Use the approved response and investigate the cause. Increasing rpm to recover speed can worsen an unfavorable cavitation condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pervane-ve-saft-hatti-stern-tube-yaglama-ve-sizdirmazlik-5",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Stern tube yağlama ve sızdırmazlık",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 117,
+    "section": {
+      "id": "machine-ship-systems-pervane-ve-saft-hatti-stern-tube-yaglama-ve-sizdirmazlik-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Stern-tube seals control fluid exchange while bearings support the shaft. Pressure relationships, including effects of draft, influence leakage direction. An oil-level rise can indicate water entering rather than extra oil.",
+      "example": {
+        "problem": "Oil level rises and a sample contains water.",
+        "steps": [
+          "Verify the reading and sample, then compare seal pressures and draft.",
+          "Assess bearing lubrication and follow the maker's contamination response."
+        ],
+        "result": "Investigate ingress and protect the bearings. Normal oil-supply pressure alone does not establish that the lubricant remains suitable."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pervane-ve-saft-hatti-ara-yatak-ve-trust-yatak-6",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Ara yatak ve trust yatak",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 103,
+    "section": {
+      "id": "machine-ship-systems-pervane-ve-saft-hatti-ara-yatak-ve-trust-yatak-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Intermediate bearings mainly support radial loads; the thrust bearing transfers axial propeller force into the hull. Monitoring only radial vibration can miss an axial problem.",
+      "example": {
+        "problem": "Thrust-bearing temperature rises while intermediate bearings remain stable.",
+        "steps": [
+          "Compare axial load, lubrication and relevant operating changes.",
+          "Inspect the thrust load path and its instruments separately."
+        ],
+        "result": "Healthy intermediate bearings do not clear the thrust bearing. Apply its specific protection limits and investigate the affected component before unrestricted operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-guverte-makineleri-demir-irgadi-windlass-1",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Demir ırgadı (windlass)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 121,
+    "section": {
+      "id": "machine-ship-systems-guverte-makineleri-demir-irgadi-windlass-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The windlass handles anchor and cable through its wildcat, drive and brake. Environmental loads must be managed through the approved anchoring arrangement; motor torque is not a substitute for a sound brake.",
+      "example": {
+        "problem": "The drive continuously holds a heavily loaded cable while brake condition is uncertain.",
+        "steps": [
+          "Assess the operation with the responsible officers.",
+          "Verify the designed load-holding arrangement and keep personnel clear."
+        ],
+        "result": "Use the approved anchoring procedure and vessel handling to control the situation. Do not improvise a load-holding method around defective equipment."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-guverte-makineleri-yuk-vincleri-ve-kaldirma-kapasitesi-2",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Yük vinçleri ve kaldırma kapasitesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-ship-systems-guverte-makineleri-yuk-vincleri-ve-kaldirma-kapasitesi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A crane's allowable load changes with radius and configuration. Vessel motion, heel and lifting accessories also matter. The least-rated component can govern the lift.",
+      "example": {
+        "problem": "A crane rated for 10 t at short radius must lift at greater outreach.",
+        "steps": [
+          "Read the chart at the actual radius and configuration.",
+          "Include rigging mass and the vessel's approved operating conditions."
+        ],
+        "result": "Do not carry short-radius capacity to full outreach. Confirm the full lift plan, equipment limits and communication before moving the load."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-guverte-makineleri-mooring-vincleri-ve-otomatik-gerilim-3",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Mooring vinçleri ve otomatik gerilim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-ship-systems-guverte-makineleri-mooring-vincleri-ve-otomatik-gerilim-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Automatic-tension winches respond to line load but can redistribute forces across the mooring arrangement. Their use must suit the vessel, berth and line plan; automatic mode is not universally preferable.",
+      "example": {
+        "problem": "One winch pays out while adjacent lines take greater load.",
+        "steps": [
+          "Assess the operating mode and berth procedure.",
+          "Monitor the whole mooring arrangement and exclude personnel from loaded-line danger zones."
+        ],
+        "result": "Use the approved mooring plan. Consider how each winch action affects other lines, rather than optimizing one line in isolation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-guverte-makineleri-kapak-hatch-cover-mekanizmalari-4",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Kapak (hatch cover) mekanizmaları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-ship-systems-guverte-makineleri-kapak-hatch-cover-mekanizmalari-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Weathertight hatch closure depends on seals, compression, drains and securing. A closed-position switch confirms only one part of that boundary; debris or misalignment can still create a leak path.",
+      "example": {
+        "problem": "A hatch indicates closed but leaks during an approved test.",
+        "steps": [
+          "Inspect sealing interfaces, drainage and securing points.",
+          "Distinguish damaged rubber from inadequate compression or structural misalignment."
+        ],
+        "result": "Repair the actual cause and repeat verification. Replacing a seal alone may not correct a closure or alignment defect."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-guverte-makineleri-ramp-ve-asansor-sistemleri-5",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Ramp ve asansör sistemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 82,
+    "section": {
+      "id": "machine-ship-systems-guverte-makineleri-ramp-ve-asansor-sistemleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ramps and lifts contain moving loads and stored hydraulic energy. Hydraulic pressure alone is not a safe support for maintenance beneath a raised structure.",
+      "example": {
+        "problem": "An underside inspection is requested while a ramp is raised.",
+        "steps": [
+          "Use its designed mechanical supports and approved isolation procedure.",
+          "Verify stored-energy control and exclusion zones before access."
+        ],
+        "result": "Never rely solely on a valve or gauge to hold the structure. A hose or valve failure can permit sudden movement even after the pump stops."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-hidrolik-sistemler-hidrolik-pompa-tipleri-1",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hidrolik pompa tipleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-ship-systems-hidrolik-sistemler-hidrolik-pompa-tipleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Hydraulic pumps supply flow; resistance creates pressure. A variable-displacement pump may reduce delivery at its pressure setting, so high pressure does not necessarily indicate useful actuator work.",
+      "example": {
+        "problem": "Pressure reaches its setting but the actuator moves slowly.",
+        "steps": [
+          "Compare delivered flow, command, leakage and load.",
+          "Check whether normal destroking or an unintended flow path explains the behavior."
+        ],
+        "result": "Pressure and flow answer different diagnostic questions. Do not raise the pressure setting before establishing why the required movement is missing."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-hidrolik-sistemler-hidrolik-silindir-ve-motor-2",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hidrolik silindir ve motor",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-ship-systems-hidrolik-sistemler-hidrolik-silindir-ve-motor-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cylinder force depends on pressure and effective piston area. The rod reduces one side's area, so equal pressure produces different extension and retraction forces. Friction reduces ideal values.",
+      "example": {
+        "problem": "Piston area is 50 cm², rod area 10 cm² and pressure 100 bar.",
+        "steps": [
+          "Extension force is 10 MPa × 0.005 m² = 50 kN.",
+          "Retraction uses 40 cm², giving 40 kN."
+        ],
+        "result": "Use the correct working area and load direction. Equal pressure does not mean equal force or equal speed in both directions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-hidrolik-sistemler-yon-kontrol-ve-basinc-kontrol-valfleri-3",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Yön kontrol ve basınç kontrol valfleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-ship-systems-hidrolik-sistemler-yon-kontrol-ve-basinc-kontrol-valfleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Directional valves route flow; pressure-control valves regulate or limit pressure. A relief valve is not a positive mechanical lock for a suspended load.",
+      "example": {
+        "problem": "A loaded cylinder creeps downward although supply pressure is normal.",
+        "steps": [
+          "Trace load-holding valves and leakage paths.",
+          "Secure the load with the approved arrangement before adjustment or disassembly."
+        ],
+        "result": "A correct relief setting does not establish safe load holding. Isolate stored energy and verify the intended protective components before maintenance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-hidrolik-sistemler-hidrolik-devre-okuma-4",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hidrolik devre okuma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 88,
+    "section": {
+      "id": "machine-ship-systems-hidrolik-sistemler-hidrolik-devre-okuma-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Trace a hydraulic circuit from supply through controls and actuators to return, identifying stored energy. Symbols show a defined valve state that may differ from the actual energized state.",
+      "example": {
+        "problem": "An actuator moves after its pump is isolated.",
+        "steps": [
+          "Identify accumulators, elevated loads and trapped-pressure sections.",
+          "Apply the specified isolation, discharge and verification steps to each energy source."
+        ],
+        "result": "Stopping the pump is incomplete isolation. Confirm actual valve states and absence of hazardous stored energy before opening a connection."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-hidrolik-sistemler-hidrolik-yag-bakimi-ve-filtrasyon-5",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hidrolik yağ bakımı ve filtrasyon",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 81,
+    "section": {
+      "id": "machine-ship-systems-hidrolik-sistemler-hidrolik-yag-bakimi-ve-filtrasyon-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Hydraulic cleanliness affects pump clearances and valve motion. Filter efficiency, particle size, water and fluid compatibility all matter; a nominal filter rating alone is insufficient.",
+      "example": {
+        "problem": "A servo valve sticks repeatedly after filter replacement.",
+        "steps": [
+          "Check element specification, bypass condition and contamination sources.",
+          "Review water, particle, temperature and air-entrainment evidence."
+        ],
+        "result": "A new filter cannot correct every fluid problem or prevent continuing contamination. Restore the source conditions and verify the equipment's specified cleanliness target."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pnomatik-sistemler-hava-kompresorleri-pistonlu-vidali-1",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hava kompresörleri (pistonlu, vidalı)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 117,
+    "section": {
+      "id": "machine-ship-systems-pnomatik-sistemler-hava-kompresorleri-pistonlu-vidali-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Reciprocating and screw compressors use different compression and unloading mechanisms. Motor rotation and discharge pressure do not establish useful delivered flow.",
+      "example": {
+        "problem": "A compressor stays unloaded despite rising air demand.",
+        "steps": [
+          "Check the load command, pressure sensing and model-specific unloading mechanism.",
+          "Compare actual delivery and receiver pressure trend."
+        ],
+        "result": "Use the correct compressor procedure. A running machine can consume power while supplying little useful air, so investigate the full control and delivery path."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pnomatik-sistemler-hava-tanklari-ve-emniyet-duzenlemeleri-2",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hava tankları ve emniyet düzenlemeleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-ship-systems-pnomatik-sistemler-hava-tanklari-ve-emniyet-duzenlemeleri-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Receivers store compressed energy and collect condensate. Relief devices, drains and inspection address different hazards. External paint condition cannot establish internal wall integrity.",
+      "example": {
+        "problem": "A receiver repeatedly collects water and lacks recent inspection evidence.",
+        "steps": [
+          "Review drain performance, separator condition and required examination records.",
+          "Prepare competent inspection under full isolation and depressurization."
+        ],
+        "result": "Never remove fittings under pressure. Correct both retained water and its source; routine draining does not replace a required pressure-vessel examination."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pnomatik-sistemler-hava-kurutucu-ve-filtre-uniteleri-3",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Hava kurutucu ve filtre üniteleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 74,
+    "section": {
+      "id": "machine-ship-systems-pnomatik-sistemler-hava-kurutucu-ve-filtre-uniteleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Dryers remove moisture while filters remove specified particles or aerosols. Cooling downstream can condense water even when hot outlet air appears dry, making pressure dew point a useful service measure.",
+      "example": {
+        "problem": "Remote pneumatic controls malfunction after air cools in the line.",
+        "steps": [
+          "Check dryer pressure dew point, bypass state and drains.",
+          "Investigate oil and particle contamination separately."
+        ],
+        "result": "A filter is not a substitute for a dryer. Verify air quality at the required operating condition, including the coldest relevant downstream section."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pnomatik-sistemler-starting-air-sistemi-4",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Starting air sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-ship-systems-pnomatik-sistemler-starting-air-sistemi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Starting air turns the engine and must be protected against reverse flow and abnormal combustion entry. Distribution, cylinder valves and protective devices form one system.",
+      "example": {
+        "problem": "A starting-air branch becomes unusually hot during engine operation.",
+        "steps": [
+          "Follow the maker's immediate protective response.",
+          "Investigate the associated starting valve and protection after safe shutdown and depressurization."
+        ],
+        "result": "Do not repeatedly start the engine to reproduce the symptom. Abnormal heating requires prompt, controlled investigation under the approved procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-ship-systems-pnomatik-sistemler-kontrol-havasi-ve-servis-havasi-5",
+    "topicKey": "machine-ship-systems",
+    "topicTitle": "Kontrol havası ve servis havası",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 89,
+    "section": {
+      "id": "machine-ship-systems-pnomatik-sistemler-kontrol-havasi-ve-servis-havasi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Control-air reliability depends on pressure and cleanliness. Service-air tools can create large demand changes; shared equipment needs an arrangement that preserves essential controls.",
+      "example": {
+        "problem": "Several pneumatic tools cause control-air pressure to fall.",
+        "steps": [
+          "Trace shared supply, regulators and priority provisions.",
+          "Reduce nonessential demand and restore specified control-air conditions."
+        ],
+        "result": "A common compressor does not imply equal consumer priority. Verify that controls retain their required supply during peak service demand and investigate inadequate separation or capacity."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-dizel-jeneratorler-yardimci-dizel-motor-ozellikleri-1",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Yardımcı dizel motor özellikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 92,
+    "section": {
+      "id": "machine-auxiliary-dizel-jeneratorler-yardimci-dizel-motor-ozellikleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A generator diesel must respond to changing electrical demand while maintaining suitable speed. Frequency and voltage involve different control functions, so recovery of one does not prove the other is satisfactory.",
+      "example": {
+        "problem": "A large motor starts and generator frequency dips sharply.",
+        "steps": [
+          "Compare the load step with reserve capacity and governor response.",
+          "Check the approved motor-start sequence and plant load management."
+        ],
+        "result": "Assess both prime-mover and electrical behavior. Avoid repeating a heavy load step before understanding an excessive frequency disturbance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-dizel-jeneratorler-alternator-ac-jenerator-prensibi-2",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Alternatör (AC jeneratör) prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 73,
+    "section": {
+      "id": "machine-auxiliary-dizel-jeneratorler-alternator-ac-jenerator-prensibi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Alternator frequency depends on rotational speed and pole count. Excitation primarily affects voltage and reactive-power behavior; prime-mover input governs real power in a properly controlled parallel plant.",
+      "example": {
+        "problem": "A four-pole alternator runs at 1500 rpm.",
+        "steps": [
+          "Calculate f = poles × rpm/120 = 4 × 1500/120 = 50 Hz.",
+          "Recognize that changing excitation does not change this speed relationship."
+        ],
+        "result": "Diagnose real and reactive load sharing separately. Use the approved synchronization and control procedure rather than adjusting excitation to correct a real-power imbalance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-dizel-jeneratorler-acil-jenerator-ve-solas-gereklilikleri-5",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Acil jeneratör ve SOLAS gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 118,
+    "section": {
+      "id": "machine-auxiliary-dizel-jeneratorler-acil-jenerator-ve-solas-gereklilikleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Emergency generation must remain available after normal supply fails. Independence includes starting energy, fuel and control arrangements as applicable. An unloaded start alone does not prove supply to emergency consumers.",
+      "example": {
+        "problem": "The engine starts but its breaker fails to connect the emergency bus.",
+        "steps": [
+          "Check bus condition, permissives and the approved automatic sequence.",
+          "Verify actual essential-consumer supply, not only engine running."
+        ],
+        "result": "Record the failed connection function and restore it. Readiness concerns the complete power path and the vessel's applicable statutory requirements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-buhar-kazanlari-kompozit-kazan-tasarimi-2",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Kompozit kazan tasarımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 118,
+    "section": {
+      "id": "machine-auxiliary-buhar-kazanlari-kompozit-kazan-tasarimi-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A composite boiler uses exhaust heat and an oil-fired section. Available exhaust energy changes with engine operation, while steam consumers may continue demanding the same output.",
+      "example": {
+        "problem": "Steam pressure falls as the main engine slows and the burner remains off.",
+        "steps": [
+          "Identify the reduced exhaust heat input.",
+          "Check steam demand and approved burner mode and permissives."
+        ],
+        "result": "A heat-source transition can explain the pressure change. Investigate the control response while preserving water-level and combustion safeguards, rather than immediately assuming a steam leak."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-buhar-kazanlari-kazan-su-kimyasi-ve-islem-4",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Kazan su kimyası ve işlem",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 136,
+    "section": {
+      "id": "machine-auxiliary-buhar-kazanlari-kazan-su-kimyasi-ve-islem-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Water treatment controls deposits, corrosion and carryover through different measures. A single chemical dose cannot correct every abnormal result; representative sampling and the specified treatment program matter.",
+      "example": {
+        "problem": "Conductivity rises after feedwater conditions change.",
+        "steps": [
+          "Verify the sample and investigate contamination and concentration.",
+          "Apply the approved blowdown and treatment guidance."
+        ],
+        "result": "Correct the source and repeat testing. Adding chemicals solely to chase one reading can conceal contamination or create a second problem."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-buhar-kazanlari-kazan-emniyet-duzenleri-5",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Kazan emniyet düzenleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 132,
+    "section": {
+      "id": "machine-auxiliary-buhar-kazanlari-kazan-emniyet-duzenleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Low-water protection, flame safeguards and pressure relief address different boiler hazards. Normal pressure does not establish that heated surfaces remain safely covered by water.",
+      "example": {
+        "problem": "Water-level indication becomes unreliable while firing continues.",
+        "steps": [
+          "Follow the approved response to uncertain level and verify independent indications where provided.",
+          "Do not bypass the trip or add water blindly to a potentially overheated boiler."
+        ],
+        "result": "Establish a safe condition before diagnosis. Evaluate water level, flame and pressure through the specific boiler procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-buhar-kazanlari-kazan-bakim-ve-muayene-6",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Kazan bakım ve muayene",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-auxiliary-buhar-kazanlari-kazan-bakim-ve-muayene-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Boiler inspection requires isolation from pressure, heat, fuel, electricity and connected systems. Shutdown is only the beginning of preparation; temperature, atmosphere and access conditions must also be verified.",
+      "example": {
+        "problem": "Internal inspection is planned immediately after shutdown.",
+        "steps": [
+          "Confirm depressurization, cooling, isolation and entry requirements.",
+          "Arrange competent examination and document deposits, corrosion and damage."
+        ],
+        "result": "Use the approved permit and inspection process. Retain measurements and repair evidence so future surveys can assess deterioration rather than only current appearance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-tatli-su-uretimi-vakumlu-evaporator-calisma-prensibi-1",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Vakumlu evaporatör çalışma prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-auxiliary-tatli-su-uretimi-vakumlu-evaporator-calisma-prensibi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Vacuum lowers seawater's boiling temperature, allowing relatively low-grade heat to drive evaporation. Heating, vacuum generation and condensation interact; output rate and distillate purity remain separate measures.",
+      "example": {
+        "problem": "Production falls as vacuum deteriorates at similar heating-water temperature.",
+        "steps": [
+          "Check air ingress, ejector or vacuum equipment and condenser performance.",
+          "Compare absolute pressure with the relevant saturation temperature."
+        ],
+        "result": "Restore the approved flow and pressure conditions. Increasing heat indiscriminately may mask the fault; verify product quality before accepting the output."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-tatli-su-uretimi-su-kalitesi-standartlari-3",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Su kalitesi standartları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-auxiliary-tatli-su-uretimi-su-kalitesi-standartlari-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Water quality requirements depend on use. Boiler feed, cooling water and drinking water have different criteria. Low salinity shows little dissolved salt but does not establish microbiological safety.",
+      "example": {
+        "problem": "Distillate passes a salinity check. Is that enough for potable service?",
+        "steps": [
+          "Verify the approved treatment, disinfection and monitoring process.",
+          "Assess storage and distribution hygiene as well as the generator."
+        ],
+        "result": "Salinity is one indicator, not a complete drinking-water assessment. Follow the vessel's potable-water management and testing requirements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-tatli-su-uretimi-mineral-dozaji-ve-dezenfeksiyon-4",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Mineral dozajı ve dezenfeksiyon",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 112,
+    "section": {
+      "id": "machine-auxiliary-tatli-su-uretimi-mineral-dozaji-ve-dezenfeksiyon-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Remineralization and disinfection serve different functions. Effective disinfection depends on delivered dose, contact conditions and monitoring, not simply a running pump.",
+      "example": {
+        "problem": "A downstream residual result is below target although the dosing pump operates.",
+        "steps": [
+          "Check reagent condition, actual delivery, water flow, contact time and test method.",
+          "Investigate unusual demand or equipment failure before changing settings."
+        ],
+        "result": "Restore the approved treatment conditions and verify water quality. Pump motion alone does not establish effective dosing, and excessive dosage is not automatically safer."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-tatli-su-uretimi-uretim-kapasitesi-ve-verim-5",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Üretim kapasitesi ve verim",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 117,
+    "section": {
+      "id": "machine-auxiliary-tatli-su-uretimi-uretim-kapasitesi-ve-verim-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Freshwater-generator capacity is rated for stated heat and cooling conditions. Lower production can result from reduced heat input, poor vacuum or fouling; hourly output alone cannot distinguish them.",
+      "example": {
+        "problem": "Output falls after the main engine load decreases.",
+        "steps": [
+          "Compare heating-water flow and temperatures with rated conditions.",
+          "Check vacuum and condenser behavior before ordering cleaning."
+        ],
+        "result": "Normalize the comparison before judging deterioration. Reduced available heat can explain lower output without a new fault; product-quality monitoring remains necessary at every production rate."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-separator-ve-purifier-santrifuj-ayirma-prensibi-1",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Santrifüj ayırma prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-auxiliary-separator-ve-purifier-santrifuj-ayirma-prensibi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Centrifugal separation depends on density difference, droplet size, viscosity and residence time. Excessive throughput or unsuitable temperature can reduce removal even at normal bowl speed.",
+      "example": {
+        "problem": "Outlet water contamination rises after feed rate is increased.",
+        "steps": [
+          "Compare throughput and temperature with the unit's approved range.",
+          "Check bowl and water-discharge performance."
+        ],
+        "result": "Return to a verified operating condition and investigate outlet quality. Continuous running does not prove that the separator is achieving the required separation efficiency."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-separator-ve-purifier-purifier-ve-clarifier-farki-2",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Purifier ve clarifier farkı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 95,
+    "section": {
+      "id": "machine-auxiliary-separator-ve-purifier-purifier-ve-clarifier-farki-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A purifier separates two liquid phases and solids in its intended arrangement; a clarifier primarily removes solids. Modern phase-control designs vary, so internal configuration must follow the specific machine.",
+      "example": {
+        "problem": "A clarification setup receives oil containing substantial free water.",
+        "steps": [
+          "Check whether the configuration can remove that water safely.",
+          "Use the approved mode and internal arrangement for the actual feed."
+        ],
+        "result": "Do not assume equivalent water removal from the two labels. Monitor outlet quality after configuration changes and use the maker's instructions."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-separator-ve-purifier-gravity-disc-secimi-3",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Gravity disc seçimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-auxiliary-separator-ve-purifier-gravity-disc-secimi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "In machines using a gravity disc, its selection helps position the oil-water interface. Fuel density at operating conditions, temperature and throughput influence the correct choice; other designs use different controls.",
+      "example": {
+        "problem": "A purifier loses its water seal after a fuel change.",
+        "steps": [
+          "Confirm density and temperature against the maker's selection guidance.",
+          "Check assembly and throughput before replacing the disc."
+        ],
+        "result": "An incorrect interface can impair separation or lose oil through the water outlet. Use the unit-specific chart and verify the corrected condition."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-separator-ve-purifier-otomatik-desludge-ve-kontrol-4",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Otomatik desludge ve kontrol",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-auxiliary-separator-ve-purifier-otomatik-desludge-ve-kontrol-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Automatic desludging relies on operating water, timing and mechanical bowl response. A commanded discharge does not prove solids were released or the bowl resealed correctly.",
+      "example": {
+        "problem": "The discharge command appears normal but expected discharge evidence is absent.",
+        "steps": [
+          "Check operating-water supply and sequence indications.",
+          "Investigate bowl operation after the required isolation and shutdown."
+        ],
+        "result": "Do not repeatedly force cycles without diagnosis. Verify both sludge removal and resealing before returning the separator to continuous service."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-separator-ve-purifier-yakit-aritma-sirasi-ve-sicaklik-5",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Yakıt arıtma sırası ve sıcaklık",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-auxiliary-separator-ve-purifier-yakit-aritma-sirasi-ve-sicaklik-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Heating lowers viscosity and supports separation, but appropriate temperature depends on the fuel and equipment. Settling, separation and filtration perform different functions and cannot automatically substitute for one another.",
+      "example": {
+        "problem": "A new fuel uses the previous batch's temperature setting.",
+        "steps": [
+          "Compare its properties with the approved separation range.",
+          "Check actual temperature, throughput and outlet quality together."
+        ],
+        "result": "Set treatment for the actual fuel. A universal temperature or a clean downstream filter does not prove that every separable contaminant has been removed."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-separator-ve-purifier-yag-aritma-ve-su-ayrimi-6",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Yağ arıtma ve su ayrımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 130,
+    "section": {
+      "id": "machine-auxiliary-separator-ve-purifier-yag-aritma-ve-su-ayrimi-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Purification can remove certain water and solids, but cannot restore every depleted additive or reverse chemical degradation. Appearance, viscosity and chemical condition answer different questions.",
+      "example": {
+        "problem": "Water content improves after purification but viscosity remains abnormal.",
+        "steps": [
+          "Compare the complete oil analysis with supplier and maker limits.",
+          "Investigate contamination or degradation sources and assess renewal needs."
+        ],
+        "result": "Do not declare oil restored solely because water fell. Treatment has limits; continuing degradation requires correction at its source and verification of lubricant suitability."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-hava-kompresorleri-cok-kademeli-kompresor-prensibi-1",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Çok kademeli kompresör prensibi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 97,
+    "section": {
+      "id": "machine-auxiliary-hava-kompresorleri-cok-kademeli-kompresor-prensibi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Multistage compression with intercooling can reduce work and discharge temperature. Unequal stage behavior may indicate valve, cooling or pressure-distribution problems.",
+      "example": {
+        "problem": "First-stage discharge temperature becomes unusually high.",
+        "steps": [
+          "Compare interstage pressure, cooler performance and valve condition with the baseline.",
+          "Check whether pressure ratios remain appropriate for the design."
+        ],
+        "result": "Investigate the interacting stages instead of adjusting only the final pressure switch. Protect the compressor according to its specific temperature and pressure limits."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-hava-kompresorleri-ara-sogutma-ve-son-sogutma-2",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Ara soğutma ve son soğutma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 102,
+    "section": {
+      "id": "machine-auxiliary-hava-kompresorleri-ara-sogutma-ve-son-sogutma-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Intercoolers cool air between stages; aftercoolers cool final delivery. Cooling condenses moisture, which must then be separated and drained. Good heat removal alone does not establish dry air.",
+      "example": {
+        "problem": "Aftercooler air is cool but the receiver collects excessive water.",
+        "steps": [
+          "Inspect separator and drain performance.",
+          "Compare air flow and ambient moisture when evaluating condensate quantity."
+        ],
+        "result": "Cooling can increase collected liquid. Verify its removal; otherwise the system may deliver water to receivers and controls despite a satisfactory outlet temperature."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-hava-kompresorleri-otomatik-bosaltma-auto-drain-3",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Otomatik boşaltma (auto-drain)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 86,
+    "section": {
+      "id": "machine-auxiliary-hava-kompresorleri-otomatik-bosaltma-auto-drain-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Automatic drains must remove condensate without continuous air loss. A stuck-closed drain permits carryover; a stuck-open drain wastes air and can lower pressure.",
+      "example": {
+        "problem": "The compressor cycles frequently and a drain continuously passes air.",
+        "steps": [
+          "Check the drain's commanded and actual state using its approved test.",
+          "Investigate contamination or valve damage preventing closure."
+        ],
+        "result": "Repair and verify normal operation. Permanently shutting the drain's isolation valve merely exchanges air loss for an unresolved moisture-removal problem."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-hava-kompresorleri-kompresor-bakim-ve-valf-muayenesi-4",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Kompresör bakım ve valf muayenesi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 101,
+    "section": {
+      "id": "machine-auxiliary-hava-kompresorleri-kompresor-bakim-ve-valf-muayenesi-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Compressor valve leakage can reduce capacity and increase temperature. Deposits, damage and incorrect assembly may produce similar symptoms, so performance trends guide inspection but do not identify one cause conclusively.",
+      "example": {
+        "problem": "Receiver filling takes longer and one stage runs hotter.",
+        "steps": [
+          "Compare stage pressures, temperatures and approved capacity-test results.",
+          "Inspect valves and cooling after isolation and depressurization."
+        ],
+        "result": "Verify repair with a controlled performance comparison. Longer filling time establishes reduced delivery, not automatically a defective valve."
+      }
+    }
+  },
+  {
+    "topicId": "machine-auxiliary-hava-kompresorleri-hava-sisesi-muayene-gereklilikleri-5",
+    "topicKey": "machine-auxiliary",
+    "topicTitle": "Hava şişesi muayene gereklilikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 109,
+    "section": {
+      "id": "machine-auxiliary-hava-kompresorleri-hava-sisesi-muayene-gereklilikleri-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Receiver inspection addresses pressure integrity, corrosion and protective fittings under the applicable statutory and class regime. Draining and external checks support care but do not replace required competent examination.",
+      "example": {
+        "problem": "An externally sound receiver repeatedly retains water and has an overdue inspection.",
+        "steps": [
+          "Review records and arrange the required examination.",
+          "Prepare full isolation, depressurization and safe access."
+        ],
+        "result": "Paint condition cannot prove internal integrity. Correct the drainage problem and retain examination evidence for future condition comparisons."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-deniz-yakit-turleri-hfo-heavy-fuel-oil-ozellikleri-1",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "HFO (Heavy Fuel Oil) özellikleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 113,
+    "section": {
+      "id": "machine-fuel-technology-deniz-yakit-turleri-hfo-heavy-fuel-oil-ozellikleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Residual-fuel behavior depends on viscosity, density, stability and contaminants. Heating supports handling but does not remove every harmful component. Two acceptable batches are not necessarily compatible when mixed.",
+      "example": {
+        "problem": "Filters block after two residual fuels are mixed.",
+        "steps": [
+          "Review compatibility evidence and mixing history.",
+          "Check for precipitated material while protecting the fuel supply."
+        ],
+        "result": "Individual specification compliance does not prove mixture compatibility. Segregation and suitable testing can prevent a problem that heating alone may not resolve."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-deniz-yakit-turleri-iso-8217-yakit-standartlari-4",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "ISO 8217 yakıt standartları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 72,
+    "section": {
+      "id": "machine-fuel-technology-deniz-yakit-turleri-iso-8217-yakit-standartlari-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A fuel specification applies to an identified grade and edition. Compliance does not guarantee compatibility with another batch or suitability for every engine and treatment plant.",
+      "example": {
+        "problem": "The supplier cites ISO 8217 without a grade or edition.",
+        "steps": [
+          "Obtain the exact contracted specification and test evidence.",
+          "Compare it with maker-approved fuels and treatment capability."
+        ],
+        "result": "The standard's name alone is incomplete. Do not substitute assumed limits for the actual grade, edition and contractual requirements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-kalite-parametreleri-viskozite-ve-sicaklik-iliskisi-1",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Viskozite ve sıcaklık ilişkisi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 89,
+    "section": {
+      "id": "machine-fuel-technology-yakit-kalite-parametreleri-viskozite-ve-sicaklik-iliskisi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fuel viscosity generally falls with increasing temperature, but the curve differs among fuels. Reference-temperature viscosity does not directly establish engine-inlet viscosity.",
+      "example": {
+        "problem": "Two nominally similar fuels require different heater temperatures for the same injection viscosity.",
+        "steps": [
+          "Compare their actual viscosity-temperature characteristics.",
+          "Verify the viscometer and engine-inlet conditions."
+        ],
+        "result": "Control the required fuel condition rather than copying a temperature setting. Excessive heating can cause other handling and leakage problems, particularly with low-viscosity fuels."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-kalite-parametreleri-pour-point-ve-cloud-point-3",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Pour point ve cloud point",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 142,
+    "section": {
+      "id": "machine-fuel-technology-yakit-kalite-parametreleri-pour-point-ve-cloud-point-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cloud point concerns wax appearance; pour point concerns low-temperature flow under its test conditions. Filters may block before the fuel ceases to pour.",
+      "example": {
+        "problem": "Fuel still pours but cold filters block.",
+        "steps": [
+          "Check cold-flow information and actual fuel temperature.",
+          "Investigate wax formation and use approved heating and handling guidance."
+        ],
+        "result": "Pour point alone does not establish filterability. Include the coldest relevant pipes and components when planning temperature control."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-kalite-parametreleri-su-ve-sediment-orani-7",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Su ve sediment oranı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 120,
+    "section": {
+      "id": "machine-fuel-technology-yakit-kalite-parametreleri-su-ve-sediment-orani-7-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Water and sediment can overload treatment and harm injection equipment. Sample location and timing affect representativeness; a clear upper sample may miss bottom contamination.",
+      "example": {
+        "problem": "A top sample looks clean while tank drains release water and sludge.",
+        "steps": [
+          "Compare representative samples with drain evidence.",
+          "Investigate ingress, settling and treatment performance."
+        ],
+        "result": "Do not use appearance at one location to clear an entire tank. Follow the approved sampling and draining method and verify correction of the contamination source."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-isleme-sistemi-settling-tank-ve-servis-tank-1",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Settling tank ve servis tank",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 89,
+    "section": {
+      "id": "machine-fuel-technology-yakit-isleme-sistemi-settling-tank-ve-servis-tank-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Settling provides residence time for some water and solids to separate; service storage supplies treated fuel. Actual routing determines whether fuel received the intended treatment.",
+      "example": {
+        "problem": "The service tank fills while the separator is bypassed.",
+        "steps": [
+          "Trace the valve route and identify possible untreated fuel entry.",
+          "Protect engine supply and follow the approved contamination response."
+        ],
+        "result": "Tank names do not guarantee content quality. Verify fuel condition and restore the correct process route before normal use."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-isleme-sistemi-yakit-isitma-ve-viskozite-kontrolu-2",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Yakıt ısıtma ve viskozite kontrolü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 118,
+    "section": {
+      "id": "machine-fuel-technology-yakit-isleme-sistemi-yakit-isitma-ve-viskozite-kontrolu-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A viscosity controller adjusts heating according to its measurement. Sensor error or poor circulation can make a stable displayed target misleading.",
+      "example": {
+        "problem": "The controller shows target viscosity but an independent check suggests fuel is too thin.",
+        "steps": [
+          "Verify calibration, sample conditions and heater-valve response.",
+          "Compare actual inlet temperature and viscosity."
+        ],
+        "result": "Investigate the discrepancy before changing the target. A functioning feedback loop can regulate accurately around an inaccurate measurement and still supply unsuitable fuel."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-isleme-sistemi-purifier-ile-aritma-3",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Purifier ile arıtma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 134,
+    "section": {
+      "id": "machine-fuel-technology-yakit-isleme-sistemi-purifier-ile-aritma-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Purification removes separable contaminants under appropriate flow, temperature and bowl conditions. Continuous running does not guarantee removal of fine abrasive particles.",
+      "example": {
+        "problem": "Outlet analysis shows poor contaminant removal.",
+        "steps": [
+          "Check throughput, temperature, configuration and sludge-discharge performance.",
+          "Verify that inlet and outlet samples are comparable."
+        ],
+        "result": "Correct the treatment condition and repeat quality checks. Running hours alone do not demonstrate that the separator is protecting the engine."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-isleme-sistemi-otojen-filtrasyon-ve-oto-filter-4",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Otojen filtrasyon ve oto-filter",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 90,
+    "section": {
+      "id": "machine-fuel-technology-yakit-isleme-sistemi-otojen-filtrasyon-ve-oto-filter-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Automatic filters backflush retained particles. Frequent cycles may indicate contamination, unsuitable viscosity or element problems; a bypass can preserve flow while exposing downstream machinery.",
+      "example": {
+        "problem": "Backflushing suddenly becomes frequent after bunkering.",
+        "steps": [
+          "Compare differential pressure, fuel condition and separator performance.",
+          "Check the maker's permitted response and element condition."
+        ],
+        "result": "Investigate the warning rather than lengthening the interval to hide it. Restore filtration and avoid an unapproved continuous bypass."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-isleme-sistemi-homojenizerler-5",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Homojenizerler",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 111,
+    "section": {
+      "id": "machine-fuel-technology-yakit-isleme-sistemi-homojenizerler-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Homogenization disperses material into smaller particles or droplets; it does not remove every contaminant. Its role must be assessed within the approved treatment system.",
+      "example": {
+        "problem": "A homogenizer is proposed instead of separation.",
+        "steps": [
+          "Compare what each process removes or merely disperses.",
+          "Check engine requirements and maker-approved treatment arrangements."
+        ],
+        "result": "Uniform appearance is not proof of purification. Smaller dispersed contaminants may remain in the fuel and continue downstream."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-yakit-isleme-sistemi-yakit-degistirme-fuel-changeover-proseduru-6",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Yakıt değiştirme (fuel changeover) prosedürü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 134,
+    "section": {
+      "id": "machine-fuel-technology-yakit-isleme-sistemi-yakit-degistirme-fuel-changeover-proseduru-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Changeover involves compatibility, temperature, viscosity and the retained volume of the complete system. Switching tanks does not instantly replace fuel in heaters, filters, returns and injectors.",
+      "example": {
+        "problem": "Low-sulphur fuel is selected just before entering a regulated area.",
+        "steps": [
+          "Use the approved changeover calculation and procedure.",
+          "Monitor inlet conditions and record verified completion."
+        ],
+        "result": "The selector position alone does not prove compliant fuel has reached each consumer. Plan sufficient time for the actual system and operating demand."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-bunker-operasyonlari-bunker-miktari-olcum-yontemleri-2",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Bunker miktarı ölçüm yöntemleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 99,
+    "section": {
+      "id": "machine-fuel-technology-bunker-operasyonlari-bunker-miktari-olcum-yontemleri-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Bunker mass estimation requires compatible volume and density reference conditions. Soundings also need the vessel's trim and list corrections; meters and tank calculations should be reconciled.",
+      "example": {
+        "problem": "Corrected volume is 100 m³ and density at the same reference condition is 0.96 t/m³.",
+        "steps": [
+          "Mass is 100 × 0.96 = 96 t.",
+          "Check temperature corrections before multiplying observed hot volume by reference density."
+        ],
+        "result": "Retain calibration, readings and assumptions. A numerical agreement without matching reference conditions can conceal a quantity error."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-bunker-operasyonlari-bunker-delivery-note-bdn-3",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Bunker Delivery Note (BDN)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 79,
+    "section": {
+      "id": "machine-fuel-technology-bunker-operasyonlari-bunker-delivery-note-bdn-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The BDN documents a delivery but does not replace quantity checks or representative samples. Compare its identity and declared properties with the order and actual fuel.",
+      "example": {
+        "problem": "The BDN grade differs from the purchase specification.",
+        "steps": [
+          "Check delivery records and sample identity with the responsible parties.",
+          "Document the discrepancy through the approved process."
+        ],
+        "result": "Do not silently alter the record or assume equivalence. Preserve traceability while suitability and contractual questions are resolved."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-bunker-operasyonlari-marpol-annex-vi-kukurt-uyumu-4",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "MARPOL Annex VI kükürt uyumu",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 138,
+    "section": {
+      "id": "machine-fuel-technology-bunker-operasyonlari-marpol-annex-vi-kukurt-uyumu-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Sulphur compliance concerns the fuel actually used in the applicable area, or an approved equivalent arrangement. Carrying compliant fuel does not prove every consumer receives it.",
+      "example": {
+        "problem": "One auxiliary remains connected to a higher-sulphur service system before ECA entry.",
+        "steps": [
+          "Trace each relevant consumer's actual supply.",
+          "Complete and verify the approved changeover or equivalent arrangement."
+        ],
+        "result": "Check applicable area and date requirements and retain the required records. Inventory alone is insufficient evidence of operational compliance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-bunker-operasyonlari-yakit-numunesi-alma-proseduru-5",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Yakıt numunesi alma prosedürü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 127,
+    "section": {
+      "id": "machine-fuel-technology-bunker-operasyonlari-yakit-numunesi-alma-proseduru-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A representative sample needs an appropriate sampling method, identity, seal and chain of custody. Laboratory accuracy cannot compensate for an untraceable bottle.",
+      "example": {
+        "problem": "A disputed delivery has an unsealed sample with no recorded point or time.",
+        "steps": [
+          "Identify the limitations of that sample.",
+          "Preserve properly identified retained samples and follow the agreed dispute process."
+        ],
+        "result": "Do not treat the untraceable result as conclusive evidence of the delivery. Representativeness and sample identity are part of the technical evidence."
+      }
+    }
+  },
+  {
+    "topicId": "machine-fuel-technology-bunker-operasyonlari-bunker-uyusmazlik-yonetimi-6",
+    "topicKey": "machine-fuel-technology",
+    "topicTitle": "Bunker uyuşmazlık yönetimi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 120,
+    "section": {
+      "id": "machine-fuel-technology-bunker-operasyonlari-bunker-uyusmazlik-yonetimi-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Bunker disputes require factual, contemporaneous records. Measurement assumptions and sample identity matter; protecting machinery should remain separate from assigning responsibility.",
+      "example": {
+        "problem": "Ship and supplier quantity figures differ by 3 t.",
+        "steps": [
+          "Reconcile temperature, density, remaining quantities, tank corrections and meter records.",
+          "Record the discrepancy and notify responsible parties through the approved process."
+        ],
+        "result": "A difference warrants investigation, not an automatic accusation. Preserve evidence while managing any suspected unsuitable fuel safely."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutma-cevrimi-temelleri-kompresor-tipleri-pistonlu-vidali-2",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Kompresör tipleri (pistonlu, vidalı)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 135,
+    "section": {
+      "id": "machine-cooling-hvac-sogutma-cevrimi-temelleri-kompresor-tipleri-pistonlu-vidali-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Refrigeration compressors move vapor and raise its pressure. Liquid entering a compressor can damage components; oil return and suction conditions therefore matter alongside discharge pressure.",
+      "example": {
+        "problem": "A compressor becomes noisy after a sudden load change.",
+        "steps": [
+          "Check approved suction, superheat and oil indications.",
+          "Investigate possible liquid return without repeatedly restarting a distressed machine."
+        ],
+        "result": "Do not diagnose solely by sound. Protect the compressor and use its specific operating limits and investigation procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutma-cevrimi-temelleri-kondenser-ve-evaporator-3",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Kondenser ve evaporatör",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 129,
+    "section": {
+      "id": "machine-cooling-hvac-sogutma-cevrimi-temelleri-kondenser-ve-evaporator-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "The evaporator absorbs heat while refrigerant evaporates; the condenser rejects absorbed heat plus compressor work. Poor condenser heat rejection can raise discharge pressure even when the evaporator load is unchanged.",
+      "example": {
+        "problem": "Condensing pressure rises after seawater flow falls.",
+        "steps": [
+          "Check seawater supply, strainers and condenser condition.",
+          "Compare heat-rejection conditions before changing the refrigerant charge."
+        ],
+        "result": "A high-pressure symptom does not automatically mean overcharge. Restore verified cooling conditions and evaluate the whole cycle."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutma-cevrimi-temelleri-genlesme-valfi-txv-eev-4",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Genleşme valfi (TXV, EEV)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 117,
+    "section": {
+      "id": "machine-cooling-hvac-sogutma-cevrimi-temelleri-genlesme-valfi-txv-eev-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An expansion valve controls refrigerant admission; a thermostatic or electronic valve uses feedback according to its design. Incorrect sensing can cause starvation or liquid return even when the valve itself moves.",
+      "example": {
+        "problem": "Superheat fluctuates after a sensing bulb is relocated.",
+        "steps": [
+          "Check mounting, thermal contact and insulation against the maker's instructions.",
+          "Compare actual suction conditions with the control signal."
+        ],
+        "result": "Do not adjust the valve to compensate for incorrect sensing. Restore the installation and verify stable operation at representative loads."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutucu-akiskanlar-cfc-hcfc-ve-hfc-sogutucu-gazlar-1",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "CFC, HCFC ve HFC soğutucu gazlar",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 116,
+    "section": {
+      "id": "machine-cooling-hvac-sogutucu-akiskanlar-cfc-hcfc-ve-hfc-sogutucu-gazlar-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Refrigerant families differ in environmental impact, pressure behavior and material compatibility. A similar name or cooling capacity does not establish that one is a drop-in replacement.",
+      "example": {
+        "problem": "A refrigerant substitute is proposed for an older system.",
+        "steps": [
+          "Check approved refrigerant, lubricant, seals, pressure ratings and control settings.",
+          "Confirm legal handling and technician requirements."
+        ],
+        "result": "Use an engineered, authorized conversion where appropriate. Do not mix refrigerants or infer compatibility solely from a supplier's performance claim."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutucu-akiskanlar-dogal-sogutucu-akiskanlar-co-nh-2",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Doğal soğutucu akışkanlar (CO₂, NH₃)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 145,
+    "section": {
+      "id": "machine-cooling-hvac-sogutucu-akiskanlar-dogal-sogutucu-akiskanlar-co-nh-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "CO₂ and ammonia have different hazards despite being termed natural refrigerants. CO₂ systems can involve high pressures; ammonia presents toxicity and compatibility concerns. System design and emergency response must match the substance.",
+      "example": {
+        "problem": "Two refrigerant cylinders carry different natural refrigerants. Can the same charging arrangement be used?",
+        "steps": [
+          "Verify substance identity, rated equipment and approved connections.",
+          "Check the relevant safety data and system procedure."
+        ],
+        "result": "The natural label does not mean interchangeable or harmless. Use refrigerant-specific equipment, training and emergency arrangements."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutucu-akiskanlar-odp-ve-gwp-kavramlari-3",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "ODP ve GWP kavramları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 104,
+    "section": {
+      "id": "machine-cooling-hvac-sogutucu-akiskanlar-odp-ve-gwp-kavramlari-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "ODP describes ozone-depletion potential; GWP compares climate impact over a specified time horizon. These indicators address different environmental effects and do not describe toxicity or pressure hazards.",
+      "example": {
+        "problem": "A refrigerant has zero ODP but substantial GWP.",
+        "steps": [
+          "Separate ozone and climate effects.",
+          "Assess leakage, energy use, safety and applicable restrictions in addition to either index."
+        ],
+        "result": "Zero ozone-depletion potential is not a complete environmental or safety assessment. Compare alternatives using the relevant full set of criteria."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutucu-akiskanlar-montreal-ve-kigali-protokolleri-4",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Montreal ve Kigali protokolleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 105,
+    "section": {
+      "id": "machine-cooling-hvac-sogutucu-akiskanlar-montreal-ve-kigali-protokolleri-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Ozone-depleting substances and HFC phasedown obligations involve different instruments and schedules. Applicable restrictions depend on substance, jurisdiction and date; environmental policy is not a universal replacement procedure.",
+      "example": {
+        "problem": "An existing system needs refrigerant during maintenance.",
+        "steps": [
+          "Identify the exact substance and applicable current handling and supply rules.",
+          "Check approved recovery and service arrangements before obtaining a substitute."
+        ],
+        "result": "Do not infer a global blanket ban or retrofit deadline from a protocol name. Confirm the actual requirement and equipment compatibility."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-sogutucu-akiskanlar-sogutucu-akiskan-sarj-ve-geri-kazanim-5",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Soğutucu akışkan şarj ve geri kazanım",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 100,
+    "section": {
+      "id": "machine-cooling-hvac-sogutucu-akiskanlar-sogutucu-akiskan-sarj-ve-geri-kazanim-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Charging and recovery require known refrigerant identity, suitable cylinders and measured quantities. Pressure alone is not a reliable charge indicator across changing loads and temperatures.",
+      "example": {
+        "problem": "A technician proposes adding refrigerant until suction pressure looks normal.",
+        "steps": [
+          "Check for leaks and establish the maker's charging method.",
+          "Use specified measurements and recovery equipment, preserving refrigerant identity."
+        ],
+        "result": "Do not mask a flow or heat-transfer fault by adding charge. Record recovered and added quantities and verify operation after the actual fault is corrected."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-gemi-sogutma-sistemleri-provizyon-soguk-hane-sistemi-1",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Provizyon soğuk hane sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 108,
+    "section": {
+      "id": "machine-cooling-hvac-gemi-sogutma-sistemleri-provizyon-soguk-hane-sistemi-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A cold room's air temperature and product temperature respond at different rates. Door opening, loading, defrost and airflow affect performance. One sensor near the evaporator may not represent the stored provisions.",
+      "example": {
+        "problem": "Air temperature recovers quickly after loading, but products remain warm.",
+        "steps": [
+          "Check product loading, airflow and representative temperature measurements.",
+          "Review defrost and door conditions without obstructing circulation."
+        ],
+        "result": "Air recovery alone does not establish safe product storage. Apply the vessel's food-storage limits and monitoring procedure to the actual goods."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-gemi-sogutma-sistemleri-konteyner-reefer-sogutma-2",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Konteyner (reefer) soğutma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 122,
+    "section": {
+      "id": "machine-cooling-hvac-gemi-sogutma-sistemleri-konteyner-reefer-sogutma-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "A reefer controls its cargo environment according to the commodity and instructions. Supply-air and return-air readings mean different things, and ventilation settings can be as important as temperature.",
+      "example": {
+        "problem": "A reefer shows correct supply temperature but abnormal return temperature.",
+        "steps": [
+          "Compare cargo instructions, airflow and loading arrangement.",
+          "Check alarm history and probe function before changing the setpoint."
+        ],
+        "result": "A correct setpoint is not proof of correct cargo condition. Follow the carrier's reefer procedure and escalate unexplained deviations."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-gemi-sogutma-sistemleri-merkezi-sogutma-suyu-sistemi-3",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Merkezi soğutma suyu sistemi",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 114,
+    "section": {
+      "id": "machine-cooling-hvac-gemi-sogutma-sistemleri-merkezi-sogutma-suyu-sistemi-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Central cooling separates seawater heat rejection from freshwater distribution. A header temperature can remain acceptable while one branch receives inadequate flow. Pump and valve behavior must be assessed across both sides.",
+      "example": {
+        "problem": "One consumer overheats while the central cooler outlet remains normal.",
+        "steps": [
+          "Check branch flow, valve position and local restrictions.",
+          "Compare the affected consumer's inlet and outlet conditions."
+        ],
+        "result": "A healthy common cooler does not prove adequate local circulation. Investigate the branch before changing the whole plant's temperature setting."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-gemi-sogutma-sistemleri-ana-makine-ve-yardimci-sogutma-4",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Ana makine ve yardımcı soğutma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 103,
+    "section": {
+      "id": "machine-cooling-hvac-gemi-sogutma-sistemleri-ana-makine-ve-yardimci-sogutma-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Different machinery circuits may require different temperature levels and flow. High- and low-temperature systems must be traced according to the actual installation rather than treated as interchangeable cooling supplies.",
+      "example": {
+        "problem": "A cooler works but cylinder-jacket temperature remains abnormal.",
+        "steps": [
+          "Identify the relevant circuit, thermostat or mixing valve and consumer flow.",
+          "Check whether the fault lies in heat rejection or temperature regulation."
+        ],
+        "result": "Changing seawater flow may not correct a freshwater-control problem. Use the documented circuit and engine-specific operating limits."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-gemi-sogutma-sistemleri-sogutma-sistemi-alarm-ve-korumalari-5",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Soğutma sistemi alarm ve korumaları",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 118,
+    "section": {
+      "id": "machine-cooling-hvac-gemi-sogutma-sistemleri-sogutma-sistemi-alarm-ve-korumalari-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Alarms identify abnormal measurements; protective trips limit consequences. Sensor accuracy, setpoint suitability and actual process condition are separate questions. Repeated reset does not remove the cause.",
+      "example": {
+        "problem": "A refrigeration high-pressure trip recurs after reset.",
+        "steps": [
+          "Check condenser cooling and verified pressure indications.",
+          "Follow the maker's restart criteria and investigate the initiating fault."
+        ],
+        "result": "Do not defeat the protection to maintain cooling. Restore a verified safe operating condition before restarting and record the recurring fault."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-klima-sistemi-klima-sistemi-bilesenleri-1",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Klima sistemi bileşenleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 96,
+    "section": {
+      "id": "machine-cooling-hvac-klima-sistemi-klima-sistemi-bilesenleri-1-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Air conditioning combines heat removal, moisture control, filtration and air distribution. A cold coil does not ensure that occupied spaces receive adequate conditioned air or ventilation.",
+      "example": {
+        "problem": "The cooling coil is cold but a cabin remains warm.",
+        "steps": [
+          "Check fan operation, filters, dampers and duct flow.",
+          "Compare supply and room conditions before increasing refrigeration output."
+        ],
+        "result": "Trace heat and air paths separately. A distribution fault can leave a room uncomfortable while the refrigeration cycle operates normally."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-klima-sistemi-hava-isleme-unitesi-ahu-2",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Hava işleme ünitesi (AHU)",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 106,
+    "section": {
+      "id": "machine-cooling-hvac-klima-sistemi-hava-isleme-unitesi-ahu-2-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "An AHU's filters, coils, fans and dampers work together. Filter loading raises resistance and may reduce flow; bypassing filters can contaminate coils and ducts rather than solve the maintenance issue.",
+      "example": {
+        "problem": "Supply airflow falls as filter differential pressure rises.",
+        "steps": [
+          "Compare the reading with the specified service criterion.",
+          "Inspect and replace or clean the approved element as required."
+        ],
+        "result": "Verify restored flow afterward. Do not permanently bypass the filter or infer adequate ventilation merely from fan operation."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-klima-sistemi-sogutma-ve-isitma-serpantinleri-3",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Soğutma ve ısıtma serpantinleri",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 98,
+    "section": {
+      "id": "machine-cooling-hvac-klima-sistemi-sogutma-ve-isitma-serpantinleri-3-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Cooling coils remove sensible heat and may condense moisture; heating coils add heat. Fouling reduces performance and condensate drainage affects hygiene and water carryover.",
+      "example": {
+        "problem": "Water appears downstream of a cooling coil.",
+        "steps": [
+          "Inspect drain pan, trap and drainage condition.",
+          "Check airflow and coil cleanliness against the approved arrangement."
+        ],
+        "result": "Treat drainage and air velocity as part of the diagnosis. Lowering the temperature setting alone can increase condensation and worsen the symptom."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-klima-sistemi-nemlilik-kontrolu-4",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Nemlilik kontrolü",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 92,
+    "section": {
+      "id": "machine-cooling-hvac-klima-sistemi-nemlilik-kontrolu-4-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Relative humidity depends on temperature as well as water-vapor content. Cooling without moisture removal can raise relative humidity; cooling below dew point can remove water through condensation.",
+      "example": {
+        "problem": "Air is sensibly cooled while its moisture content stays unchanged.",
+        "steps": [
+          "Recognize that saturation capacity falls as temperature falls.",
+          "Relative humidity rises until condensation conditions are reached."
+        ],
+        "result": "Do not equate cooler air with drier air. Use humidity, temperature and dew-point evidence when evaluating dehumidification performance."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-klima-sistemi-kanal-sistemi-tasarimi-5",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Kanal sistemi tasarımı",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 92,
+    "section": {
+      "id": "machine-cooling-hvac-klima-sistemi-kanal-sistemi-tasarimi-5-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Duct design balances air delivery against pressure loss and noise. Restrictions and poorly balanced branches can starve distant spaces even when total fan flow seems adequate.",
+      "example": {
+        "problem": "A nearby cabin has strong airflow while a distant cabin has little.",
+        "steps": [
+          "Check branch resistance, dampers and filter condition.",
+          "Measure or verify distribution before increasing fan speed."
+        ],
+        "result": "Higher speed can increase noise and power without correcting an imbalance. Restore the intended distribution using the approved balancing procedure."
+      }
+    }
+  },
+  {
+    "topicId": "machine-cooling-hvac-klima-sistemi-taze-hava-ve-egzoz-havalandirma-6",
+    "topicKey": "machine-cooling-hvac",
+    "topicTitle": "Taze hava ve egzoz havalandırma",
+    "reviewedAt": "2026-10-24",
+    "originalTeachingWords": 91,
+    "section": {
+      "id": "machine-cooling-hvac-klima-sistemi-taze-hava-ve-egzoz-havalandirma-6-applied-reasoning",
+      "title": "Apply the principle",
+      "content": "Fresh air supports ventilation while exhaust removes contaminated or moisture-laden air. Recirculation can control temperature without providing enough outside air. Intake location and pressure relationships affect contamination movement.",
+      "example": {
+        "problem": "A space stays cool but odors and moisture persist.",
+        "steps": [
+          "Check actual outside-air and exhaust flow, not just recirculation.",
+          "Verify dampers, intake condition and the designed pressure relationship."
+        ],
+        "result": "Thermal comfort is not proof of adequate ventilation. Restore the approved air exchange and investigate contamination sources."
+      }
+    }
   }
 ]
