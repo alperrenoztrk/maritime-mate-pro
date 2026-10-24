@@ -50,7 +50,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "2.2 Komutların uygulanması",
           paragraphs: [
-            `Köprüüstünden gelen komutlar (kaç kilit/shackle, vira=heave, fıra=walk back/let go) sahada doğru uygulanır. Reis, zincir markalarını (shackle marking) okuyarak verilen kilit sayısını doğrular ve köprüüstüne raporlar (örn. "two shackles in the water").`,
+            "At the anchoring station, repeat back the required operation and cable length. Read the actual shackle markings and report cable direction, load and length accurately, for example two shackles in the water. Distinguish heaving, walking back and letting go; do not substitute an ambiguous command.",
           ],
           table: {
             caption: "Temel demir komutları",

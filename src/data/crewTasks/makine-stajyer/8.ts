@@ -101,7 +101,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Test ve priming gözlemi",
           paragraphs: [
-            `Emergency fire pump testi; pompanın çalıştırılması, priming (yabancı pompalarda emiş hattının doldurulması), yangın hattına basınç sağlama ve uzak yangın muslukla­rında basınç doğrulamasını içerir. Self-priming özelliği veya priming sisteminin çalışması, pompanın su emebilmesi için kritiktir; priming başarısızlığı pompayı işe yaramaz kılar.`,
+            "The emergency fire-pump test follows the approved procedure: start the pump, establish suction through its priming arrangement where required, pressurise the fire main and verify the specified delivery at the designated hydrants. Priming removes air or establishes the required suction condition; it is not determined by a pump being foreign-made. Record and report any failure.",
             `Stajyer, testte pompanın ne kadar sürede basınç sağladığını ve uzaktan başlatma (remote start) mekanizmasını gözlemler. Çoğu gemide pompa, makine dairesi dışından uzaktan başlatılabilir; bu, yangında makine dairesine girmeden müdahaleyi mümkün kılar. Stajyer bu remote start noktasının yerini öğrenir.`,
           ],
           bullets: [

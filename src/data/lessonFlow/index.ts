@@ -1,3 +1,4 @@
+import learningCaseStudies from "../learningCaseStudies.json";
 import { operationalLessonFlows } from "./operational";
 import type { LessonFlow } from "./types";
 import { navigationLessonFlows } from "./navigation";
@@ -26,7 +27,10 @@ const ALL_FLOWS: LessonFlow[] = [
   ...environmentLessonFlows,
   ...seamanshipLessonFlows,
   ...economicsLessonFlows,
-];
+].map((flow) => {
+  const workedCase = learningCaseStudies.find((entry) => entry.topicKey === flow.topicKey && entry.topicTitle === flow.topicTitle);
+  return workedCase ? { ...flow, blocks: [...flow.blocks, { sectionTitles: [workedCase.section.id] }], questions: [...flow.questions, workedCase.question] } : flow;
+});
 
 /** Bir kategoriye (topicKey) ait tüm rehberli akışları döndürür. */
 export const getLessonFlowsByTopic = (topicKey?: string): LessonFlow[] =>

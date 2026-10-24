@@ -217,7 +217,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
   "Yük Bağlama ve Sıkıştırma (CSS Code)": {
     title: "Yük Bağlama ve Sıkıştırma (CSS Code)",
     introduction:
-      "Genel yük, proje yükü, çelik ve konteyner gibi üniteler, seyir sırasında geminin hareketleriyle (yalpa, baş-kıç vurma, dikine ivme) yer değiştirmeye karşı bağlanır ve sıkıştırılır (securing & lashing). Uygulama, IMO CSS Code (Code of Safe Practice for Cargo Stowage and Securing) ve gemiye özel onaylı Cargo Securing Manual (CSM) ile düzenlenir. Yanlış bağlama; yük kaybı, hasar, list ve can güvenliği riskidir.",
+      "General cargo, project cargo, steel products and containers need securing against forces from ship motions. Apply the approved Cargo Securing Manual and applicable IMO CSS Code or cargo-specific requirements. Geometry, rated capacity, friction and securing-point condition affect the arrangement; adding restraints alone does not establish safety.",
     sections: [
       {
         title: "Yükü Etkileyen Kuvvetler",

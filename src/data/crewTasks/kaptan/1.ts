@@ -89,7 +89,7 @@ const content: CrewTaskLongForm = {
           subheading: "2.3 Permit-to-Work ve kritik operasyonlar",
           paragraphs: [
             `Permit-to-Work (PTW) sistemi; enclosed space entry, hot work (kaynak/taşlama), aloft work (yüksekte çalışma), overboard work, elektrik izolasyonu (LOTO — lock out tag out) gibi yüksek riskli işlerde zorunludur. İzin, işi yetkilendiren (genelde kaptan veya görevlendirdiği zabit), işi yapan ve doğrulayan kişilerin imzasını taşır; geçerlilik süresi sınırlıdır ve iş bitince kapatılır.`,
-            `Enclosed space entry, denizcilikteki ölümcül kazaların başında gelir. SOLAS III/19.3.3, giriş veya kurtarma görevi bulunan personel için en az iki ayda bir enclosed space entry ve rescue drill'i zorunlu kılar. PTW öncesi atmosfer ölçümü (O2 %20.9, LEL %0, H2S/CO toleranslarda) yapılır, sürekli havalandırma sağlanır, standby personel ve resüsitasyon ekipmanı hazır tutulur. Kaptan, "test edilmeden hiçbir kapalı alana girilmez" kuralını taviz vermeden uygular.`,
+            "Enclosed-space entry requires risk assessment, isolation, ventilation, representative atmospheric testing and an authorised permit to work (PTW). A safe oxygen reading alone does not exclude toxic or flammable gases. Use suitable calibrated instruments and the approved acceptance limits, maintain communications and an attendant, and have a practised rescue plan. Never enter impulsively to rescue a casualty. SOLAS III/19.3.3 requires crew with entry or rescue duties to participate in entry and rescue drills at least every two months.",
           ],
           callouts: [
             {

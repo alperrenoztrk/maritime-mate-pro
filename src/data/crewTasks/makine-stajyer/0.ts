@@ -205,7 +205,7 @@ const content: CrewTaskLongForm = {
           subheading: "6.2 Köprüüstü-makine koordinasyonu",
           paragraphs: [
             `Manevra durumlarında (liman giriş-çıkış, dar su yolu) makine dairesi standby moduna geçer: ekstra jeneratör paralelde, ana makine UMS'den manuel kontrole alınır, EOOW kontrol odasında hazır bekler. Telegraph emirleri, bridge'den gelen hız talepleri ve "stand by engines / finished with engines" komutları arasındaki koordinasyonu stajyer gözlemler.`,
-            `Stajyer, makine ile köprü arasındaki kritik bağı (engine telegraph, engineer's call, talkback sistemi) öğrenir. Manevra sırasında ani bir tam tornistan (crash astern) talebi geldiğinde makinenin nasıl yanıt verdiğini ve ekibin nasıl hazırlandığını gözlemlemek değerli bir eğitim fırsatıdır.`,
+            "The engine cadet learns bridge–engine communication through the telegraph, engineer call and talkback systems. Observe how the team receives and acknowledges a crash-astern demand and applies the installation-specific response. Such a demand is an operational event, not an exercise to initiate without authority.",
           ],
           callouts: [
             {

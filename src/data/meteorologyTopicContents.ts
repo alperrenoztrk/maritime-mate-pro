@@ -436,7 +436,7 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Kaçınma Stratejisi",
         content:
-          "Tehlikeli yarım dairede bulunan gemi, rüzgârı sancak baş omuzluğuna alarak siklondan uzaklaşmalıdır. Seyir yapılabilir yarım dairede ise rüzgâr kıç omuzluktan alınarak siklonun gerisine geçilmeye çalışılır. Siklonun doğrudan yolunda (path) bulunan gemi ise mümkün olan en yüksek hızla yolun sağına (Kuzey Yarım Küre) geçmeyi hedeflemelidir. Bu manevraların etkinliği zamana bağlıdır; erken karar alan gemi, manevra alanını geniş tutabilir. Kaçınma manevrası planlanırken siklonun öngörülen hızı ve yönü sürekli güncellenmelidir.",
+          "Northern Hemisphere cyclone guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Interpret this with the forecast track, storm movement, sea room and vessel response. The Southern Hemisphere reverses the side convention.",
       },
     ],
     keyPoints: [
@@ -491,7 +491,7 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Yarım Daireye Göre Manevra",
         content:
-          "Tehlikeli yarım dairede bulunan gemi, rüzgârı sancak baş omuzluğuna alarak mümkün olan en yüksek emniyetli hızla siklondan uzaklaşır. Seyir yapılabilir yarım dairede ise rüzgâr kıç omuzluktan alınarak siklonun gerisine geçilir. Siklonun doğrudan yolunda (path) bulunan gemi, hızla yolun dışına çıkmayı hedefler. Tüm bu manevralarda deniz durumu, yük emniyeti ve makine kapasitesi sınırlamalarını göz önünde bulundurmak gerekir; aşırı hızla seyir, slamming ve yapısal hasara yol açabilir.",
+          "Traditional Northern Hemisphere cyclone guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Reverse the side convention for the Southern Hemisphere. Actual decisions require current forecasts, storm movement, sea room and ship-specific heavy-weather limits.",
       },
       {
         title: "BRM ve Ekip Koordinasyonu",

@@ -7129,7 +7129,7 @@ export const navigationLessonFlows: LessonFlow[] = [
           "İkisi de sabittir",
         ],
         correctAnswer: 0,
-        explanation: "Deviation geminin demir kütlesinden kaynaklanır ve baş yönüyle değişir; her gemi için deviation kartı çıkarılır.",
+        explanation: "Compass deviation results from the ship's magnetic influences and varies with heading and condition. Use the applicable deviation information and verify compass errors as required.",
       },
       {
         id: 2,

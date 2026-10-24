@@ -879,7 +879,7 @@ export const meteorologyLessonFlows: LessonFlow[] = [
           "İskele kıç omuzluktan alarak",
         ],
         correctAnswer: 0,
-        explanation: "Tehlikeli yarım dairede rüzgâr sancak baş omuzluğuna alınır; seyir yapılabilir yarımda kıç omuzluktan alınıp geriye geçilir.",
+        explanation: "Traditional Northern Hemisphere guidance uses the starboard bow in the dangerous semicircle and the starboard quarter in the navigable semicircle. Consider hemisphere, cyclone track, sea room and vessel response; this is not a universal manoeuvring instruction.",
       },
       {
         id: 3,

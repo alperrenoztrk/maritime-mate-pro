@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Senaryolar ve sıklık",
           paragraphs: [
-            `Yangın (cargo deck dahil), SOPEP/spill ve MOB tatbikatları belirlenen sıklıkta yapılır; senaryolar gerçekçi ve gemiye özel kurgulanır. Her tatbikat sonrası debrief ve iyileştirme notları kaydedilir.`,
+            "Plan realistic ship-specific fire, SOPEP spill-response and man-overboard (MOB) exercises under the applicable drill schedule. Include communication and equipment checks. Debrief each exercise, assign corrective actions and verify that weaknesses have been addressed.",
           ],
           bullets: [
             `Cargo deck fire drill`,

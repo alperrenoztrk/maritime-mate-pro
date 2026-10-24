@@ -15,7 +15,7 @@ const content: ShipOpLongForm = {
         {
           subheading: "1.1 Dönüş manevrası ve rescue boat",
           paragraphs: [
-            `MOB alarmında pozisyon işaretlenir; Williamson/Anderson/Scharnov turn uygulanır ve rescue boat hazırlanır. Lookout ve haberleşme koordine edilir.`,
+            "On a man-overboard (MOB) alarm, raise the alarm, mark the position and maintain visual contact with dedicated lookouts. The bridge selects a recovery manoeuvre appropriate to when the casualty was seen, sea room, traffic and ship response. Prepare the approved recovery equipment and coordinate communications; a named turn is not automatically suitable for every situation.",
           ],
           bullets: [`MOB pozisyon işaretleme (MOB butonu)`, `Dönüş manevrası`, `Rescue boat`, `Lookout/haberleşme`],
         },

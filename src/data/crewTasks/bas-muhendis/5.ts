@@ -8,7 +8,7 @@ const content: CrewTaskLongForm = {
   intro: `Baş Mühendis, geminin makine departmanı için kritik yedek parça (spare parts) ve sarf malzemesinin (consumables) kesintisiz tedarikinden, doğru stok seviyesinden ve bütçe disiplininden sorumludur. Bu sorumluluk; MARPOL ve klas tarafından zorunlu kılınan minimum yedeklerin bulundurulması, kritiklik bazlı önceliklendirme, requisition (talep) hazırlığı, tedarik zinciri yönetimi ve servis sertifikalarının takibini kapsar. Bu bölüm, modern bir gemide yedek parça yönetiminin tüm döngüsünü — ihtiyaç tespitinden teslim alıma, stok kontrolünden bütçe raporlamasına kadar — detaylı olarak ele alır.`,
   sources: [
     "IACS UR Z (Unified Requirements — Survey & Certification)",
-    "SOLAS Ch. II-1 Reg. 26-28 (machinery spares)",
+    "SOLAS Ch. II-1 Reg. 26–28 — machinery, propulsion and means of going astern",
     "MARPOL Annex I & VI (mandatory spares & equipment)",
     "IMO MSC/Circ. — Minimum spare parts requirements",
     "TMSA (Tanker Management & Self Assessment) Element 5 & 6",

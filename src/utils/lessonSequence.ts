@@ -55,3 +55,20 @@ export function buildLessonSequence(
   }
   return items;
 }
+
+/** A legacy reference that no longer resolves gets the whole topic, never a guessed section. */
+export function getReviewSections(topic: Pick<BetaTopic, "sections">, reference?: string): BetaSection[] {
+  const matches = reference ? topic.sections.filter((section) => sectionMatches(section, reference)) : [];
+  return matches.length ? matches : topic.sections;
+}
+export function buildReviewSequence(topic: BetaTopic, questions: RecapQuestion[]): LessonSequenceItem[] {
+  const items: LessonSequenceItem[] = [];
+  const taught = new Set<BetaSection>();
+  for (const question of questions) {
+    for (const section of getReviewSections(topic, question.sectionRef)) {
+      if (!taught.has(section)) { items.push({ kind: "teach", section }); taught.add(section); }
+    }
+    items.push({ kind: "quiz", question });
+  }
+  return items;
+}

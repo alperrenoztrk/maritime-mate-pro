@@ -1,3 +1,5 @@
+import { setLearningProgressAccount } from "@/utils/learningProgress";
+import { LearningProgressSync } from "@/components/curriculum/LearningProgressSync";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { toast } from "sonner";
@@ -26,11 +28,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     // Register listener FIRST, then fetch session
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setLearningProgressAccount(newSession?.user.id ?? null);
       setSession(newSession);
       setUser(newSession?.user ?? null);
     });
 
     supabase.auth.getSession().then(({ data: { session: existing } }) => {
+      setLearningProgressAccount(existing?.user.id ?? null);
       setSession(existing);
       setUser(existing?.user ?? null);
       setLoading(false);
@@ -145,6 +149,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         signOut,
       }}
     >
+      <LearningProgressSync />
       {children}
     </AuthContext.Provider>
   );

@@ -122,7 +122,7 @@ export default function ExerciseTopicDetailPage() {
           </section>
         )}
 
-        <TopicExerciseQuestionSet key={content.id} topicId={content.id} questions={topicQuestions} />
+        <TopicExerciseQuestionSet key={content.id} topicId={content.id} topic={content} categoryId={categoryId} questions={topicQuestions} />
 
         <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
         <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />

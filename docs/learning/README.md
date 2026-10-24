@@ -10,10 +10,10 @@ The lessons library now explains the whole ship before asking a newcomer to choo
 - The six specialised legacy course screens remain available at `/lessons/<course>/reference`. The primary topic routes now use the shared curriculum instead of shadowing it.
 - `machineContentOwnership.json` chooses the canonical authored version of each machinery topic. Earlier worked examples and formulas are retained without repeating identical examples/formulas. Expanded narratives previously hidden behind the first match are reachable. Two original worked applications explain PID contributions and a pump/system operating point.
 - All 104 rule groups have an explicit destination in `curriculumRulePlacement.json`, including cross-course destinations where a machinery rule originally lived under an unrelated subject. There are 193 integrated rule sections and 570 rule items.
-- Topic practice uses questions authored for that topic and section. The complete 4,353-question course banks remain independently accessible; questions are not forced into unrelated lessons to fill an empty row. The 36 operational/supplementary topics previously lacking a check now have one, bringing the authored lesson checks to 2,058.
+- Topic practice uses questions authored for that topic and section. The complete 4,353-question course banks remain independently accessible; questions are not forced into unrelated lessons to fill an empty row. The 36 operational/supplementary topics previously lacking a check now have two. Sixteen machinery worked cases add another check each, bringing the authored lesson checks to 2,110.
 - Guided sessions resolve source identities as well as display titles. If an expanded narrative replaced an old subsection, the complete narrative precedes its questions. Every explanation and question is retained. Answer positions vary without changing grading.
-- Reading and practice records live on the device under a versioned key. They record review and attempts, not mastery. Storage failures leave reading available and produce an explicit message.
-- The checked English for new learning copy is generated into one shared offline pack rather than duplicating the same prose across 24 language files. Existing checked language-specific translations take precedence.
+- Reading and practice records are scoped to the signed-in account, retained locally and synced through an owner-only, MFA-aware RPC. Legacy shared-device progress requires explicit import. Offline work is retried and old-account responses are ignored. Scores retain the first attempt while remediation tracks corrected errors separately. See [deployment and conflict behaviour](completion-review.md).
+- The checked English for new learning copy is generated into one shared offline pack rather than duplicating the same prose across 24 language files. Existing checked language-specific translations take precedence, except for explicitly reviewed corrections in the terminology override pack.
 - The navigation introduction now distinguishes geoid and ellipsoid and states axial tilt relative to the normal to the orbital plane.
 
 ## Content standard for future additions
@@ -24,7 +24,7 @@ Add or revise canonical content ownership and placement deliberately when introd
 
 ## Verification
 
-- `npm run check:curriculum-hierarchy`: 25 courses, 154 modules, 806 topics, 2,058 lesson checks, 4,353 preserved general-bank questions; each question follows its teaching, and all existing explanation sections remain in its session.
+- `npm run check:curriculum-hierarchy`: 25 courses, 154 modules, 806 topics, 2,110 lesson checks, 4,353 preserved general-bank questions; each question follows its teaching, and all existing explanation sections remain in its session.
 - `npm run check:rule-integration`: every rule group has exactly one authored destination and all rule items reach the lesson reader.
 - `npm run check:learning-ui`: Playwright checks discovery, reading-path switching, tree search, correct Appraisal placement, persistence across reload, module deep links, retained references, completed guided practice, saved results and mobile/desktop overflow. Backend/account fixtures are synthetic and confined to a local test server. Install Playwright Chromium normally, or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to a local compatible binary.
 - Typecheck, lint, terminology/translation verification, native build and the existing design, library and UX guards accompany these checks.
@@ -38,4 +38,12 @@ Screenshots: [mobile map](screenshots/learning-map-mobile.png), [desktop map](sc
 - [MathWorks: parallel PID controller form](https://www.mathworks.com/help/control/ref/pid.html)
 - [KSB: pump operating point](https://www.ksb.com/en-global/centrifugal-pump-lexicon/article/operating-point-1117036)
 
-The numerical examples are original teaching models and are not installation-specific operating settings. No deployment, application version bump, database migration or authentication-policy change is included.
+The numerical examples are original teaching models and are not installation-specific operating settings. No deployment or application version bump is included. The new progress migration must be deployed separately through the normal review process; its RLS includes the existing MFA requirement.
+
+## Completion checks
+
+- `npm run test:learning-progress`: account isolation, field merge, unread tombstones, offline retry, concurrent local edits, storage failure, actual PostgreSQL RPC/RLS, MFA and deletion cascade.
+- `npm run check:learning-content`: current inventory, at least two checks per topic, review teaching, worked-case visibility and feedback/answer alignment.
+- `npm run i18n:verify`: complete extracted coverage, zero terminology/sense findings and complete checked paragraph coverage.
+
+See [the completion review](completion-review.md) for deployment requirements, source corrections and remaining editorial work.

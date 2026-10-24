@@ -56,7 +56,7 @@ npm run typecheck
 npm run test:i18n-terms
 npm run i18n:repair-en -- --check
 npm run i18n:audit-terms -- --lang=en --strict --max-errors=0
-npm run i18n:audit-terms -- --strict --max-errors=126
+npm run i18n:audit-terms -- --strict --max-errors=0
 npm run i18n:scan-senses -- --check
 npm run check:svg-text
 npm run check:ux-consistency
@@ -100,15 +100,14 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   ders/SOLAS/STCW/COLREG metinleri
   `scripts/i18n/verified/english-leftover-texts.json` paketinde (İngilizce, diğer
   dillere İngilizce dolgu). Yeni ekranda Türkçe kalırsa çözüm buraya eklemektir.
-- Ders paragrafları (`paragraphs` alanları, 7.261 paragraf): 7.237'si kontrol
+- Ders paragrafları (`paragraphs` alanları, 7.265 paragraf): tamamı kontrol
   edilmiş İngilizcede, tek paket: `scripts/i18n/verified/paragraphs/*.json` →
-  `public/locales/shared/lesson-paragraphs.en.json` (tüm dillere İngilizce
-  yedek). Eski `verified/english-paragraphs.json` buraya taşındı
-  (`crew-tasks-roles.json`); paragrafları dil sözlüklerine (en.json) ekleme.
-  Kaynakta olgu hatası bulunan ~330 paragraf Türkçede düzeltildi
-  (`content-fixes.json`). Kalan 24 paragraf (`crewTasks/` reis, usta gemici,
-  birinci zabit vb.: 16'sı komut fiili içeriyor, diğerlerinde belirsiz terim
-  var) GLOSSARY.md onayı bekliyor, hâlâ canlı çeviriye bağlı.
+  `public/locales/shared/lesson-paragraphs.en.json`. Paragrafları dil sözlüklerine
+  tekrar ekleme. Eksik paragraf varsa build artık hata verir.
+- Önceki 24 eksik paragraf kaynak düzeltmesi ve kontrol edilmiş İngilizceyle
+  tamamlandı. Seçilmiş terim düzeltmeleri `terminology-completion.json` →
+  `shared/terminology-overrides.json` paketinde; yalnız açıkça belirtilen
+  anahtarları dil sözlüğünün üstüne uygular. Terim denetimi eşiği sıfırdır.
 - Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
   çevrilir ve bozuk İngilizce çıkar. `navigationTopicContents.ts` ve
   `stabilityTopicsContent.ts`'de cümle ortası kalınlar kaldırıldı; yeni
