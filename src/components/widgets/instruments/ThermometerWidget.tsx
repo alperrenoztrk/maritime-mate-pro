@@ -21,6 +21,7 @@ export function ThermometerWidget({ temperatureC, conditionText }: ThermometerWi
     <InstrumentFrame
       photo={THERMOMETER}
       size="small"
+      label="Temperature"
       readout={
         <>
           <span className="iw-digital notranslate" translate="no">

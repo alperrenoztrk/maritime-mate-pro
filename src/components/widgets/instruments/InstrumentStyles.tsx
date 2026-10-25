@@ -362,6 +362,120 @@ export function InstrumentStyles() {
         mix-blend-mode: screen;
         filter: blur(6px);
       }
+      /* Text sits outside the calibrated photo region. */
+      .home-instruments .iw-device {
+        min-width: 0;
+        border-radius: 8px;
+        border: 1px solid var(--instrument-line);
+        background: var(--instrument-surface);
+        color: var(--instrument-text);
+        box-shadow: none;
+      }
+      .home-instruments .iw-visual {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: var(--instrument-visual);
+      }
+      .home-instruments .iw-top {
+        position: relative;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 12px;
+        background: var(--instrument-surface);
+        border-bottom: 1px solid var(--instrument-line);
+      }
+      .home-instruments .iw-plate {
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: left;
+        color: var(--instrument-muted);
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        text-shadow: none;
+      }
+      .home-instruments .iw-grade {
+        background: none;
+      }
+      .home-instruments .iw-readout {
+        position: relative;
+        min-height: 66px;
+        justify-content: center;
+        gap: 5px;
+        padding: 12px 8px;
+        border-top: 1px solid var(--instrument-line);
+        background: var(--instrument-surface);
+      }
+      .home-instruments .iw-readout::before { display: none; }
+      .home-instruments .iw-digital {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: var(--instrument-text);
+        text-shadow: none;
+      }
+      .home-instruments .iw-sub {
+        font-family: inherit;
+        font-size: 11px;
+        letter-spacing: 0;
+        line-height: 1.4;
+        color: var(--instrument-muted);
+        text-shadow: none;
+      }
+      .home-instruments .iw-readout-cell { gap: 5px; }
+      .iw-position-action { color: var(--instrument-muted); }
+      .iw-position-body { padding: 16px; }
+      .iw-position-place {
+        margin-bottom: 14px;
+        color: var(--instrument-muted);
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+      .iw-position-coords {
+        display: grid;
+        gap: 8px;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 18px;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.5;
+        letter-spacing: 0;
+      }
+      .iw-position-decimal {
+        margin-top: 8px;
+        color: var(--instrument-muted);
+        font-size: 11px;
+        overflow-wrap: anywhere;
+      }
+      .iw-position-details {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        padding: 12px 16px;
+        border-top: 1px solid var(--instrument-line);
+        margin: 0;
+      }
+      .iw-position-details dt {
+        font-size: 11px;
+        color: var(--instrument-muted);
+      }
+      .iw-position-details dd {
+        margin: 4px 0 0;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        overflow-wrap: anywhere;
+      }
+      .iw-position-source { color: var(--instrument-accent); }
+      .iw-position-source--approximate { color: var(--instrument-warning); }
+      @media (max-width: 359px) {
+        .iw-position-coords { font-size: 16px; }
+      }
     `}</style>
   );
 }
