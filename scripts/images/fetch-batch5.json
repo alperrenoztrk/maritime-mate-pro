@@ -1,0 +1,235 @@
+[
+ {
+  "commons": "Knot-overhand-ABoK 514-USCG.jpg",
+  "dest": "knots/overhand-knot.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Figure 8 Bend - ABoK 420 - USCG.jpg",
+  "dest": "knots/figure-eight.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Knot-square-ABoK 1204-USCG.jpg",
+  "dest": "knots/reef-knot.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Knot-bowline-ABoK 1010-USCG.jpg",
+  "dest": "knots/bowline.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Clove Hitch - ABoK 11 - USCG.jpg",
+  "dest": "knots/clove-hitch.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Hitch-two half-ABoK 1710-USCG.jpg",
+  "dest": "knots/two-half-hitches.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Hitch-round turn two half-ABoK 1720-USCG.jpg",
+  "dest": "knots/round-turn-two-half-hitches.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Hitch-rolling-ABoK 1681-USCG.jpg",
+  "dest": "knots/rolling-hitch.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Sheet Bend - ABoK 1431 - USCG.jpg",
+  "dest": "knots/sheet-bend.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Double Sheet Bend - ABoK 1434 - USCG.jpg",
+  "dest": "knots/double-sheet-bend.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Knot-fishermans-ABoK 293-USCG.jpg",
+  "dest": "knots/fishermans-knot.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Knot-sheepshank-ABoK 1152-USCG.jpg",
+  "dest": "knots/sheepshank.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Překřížený úvaz, Techmania, Plzeň 01.jpg",
+  "dest": "knots/cleat-hitch.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Carrick-bend-decorative-ABOK-1428.jpg",
+  "dest": "knots/carrick-bend.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Barb. 01 Trossenstek.jpg",
+  "dest": "knots/alt/carrick-bend-barb.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "KandilisaVeDülgerBaglari.JPG",
+  "dest": "knots/alt/timber-hitch-kandilisa.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Rule of twelfths.svg",
+  "dest": "navigation/real/rule-of-twelfths.svg"
+ },
+ {
+  "commons": "Good gdop screen.svg",
+  "dest": "navigation/real/gdop-good.svg"
+ },
+ {
+  "commons": "Bad gdop screen.svg",
+  "dest": "navigation/real/gdop-bad.svg"
+ },
+ {
+  "commons": "Greenwich Hour Angle.svg",
+  "dest": "navigation/real/greenwich-hour-angle.svg"
+ },
+ {
+  "commons": "Azimuth-Altitude schematic.svg",
+  "dest": "navigation/real/azimuth-altitude.svg"
+ },
+ {
+  "commons": "Great circle, axis, and poles.svg",
+  "dest": "navigation/real/great-circle-axis-poles.svg"
+ },
+ {
+  "commons": "Illustration of great-circle distance.svg",
+  "dest": "navigation/real/great-circle-distance.svg"
+ },
+ {
+  "commons": "Rhumb line vs great-circle arc.png",
+  "dest": "navigation/real/rhumb-line-vs-great-circle.png",
+  "width": 1316
+ },
+ {
+  "commons": "Mercator projection SW.jpg",
+  "dest": "navigation/real/mercator-projection.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Marine sextant.svg",
+  "dest": "navigation/real/marine-sextant.svg"
+ },
+ {
+  "commons": "Tide schematic.svg",
+  "dest": "navigation/real/spring-neap-tides.svg"
+ },
+ {
+  "commons": "Tide overview rotation.svg",
+  "dest": "navigation/real/tidal-bulges.svg"
+ },
+ {
+  "commons": "Berne range lights 4082.jpg",
+  "dest": "navigation/real/range-lights.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Margaree Harbour Range Lights.jpg",
+  "dest": "navigation/real/alt/range-lights-margaree.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "CYA Coastal Navigation With Dead Reckoning.JPG",
+  "dest": "navigation/real/chart-work-dead-reckoning.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "US Navy 060216-N-4374S-011 Quartermaster 3rd Class Carlos Rodriguez, assigned to the amphibious dock landing ship USS Carter Hall (LSD 50), plots the ship's current position on a chart.jpg",
+  "dest": "navigation/real/alt/plotting-position.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Squat hydrodynamic phenomena-tag.svg",
+  "dest": "navigation/real/squat.svg"
+ },
+ {
+  "commons": "Epave urgence.svg",
+  "dest": "navigation/real/emergency-wreck-marking-buoy.svg"
+ },
+ {
+  "commons": "Geuzenveer Ferry Buoys on Brielse Meer - 2020-09-12.JPG",
+  "dest": "navigation/real/special-marks-ferry-route.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Amarrage.svg",
+  "dest": "seamanship/mooring-lines.svg"
+ },
+ {
+  "commons": "Fire triangle 2.svg",
+  "dest": "seamanship/fire-triangle.svg"
+ },
+ {
+  "commons": "CaballoDeTrabajo2020p1.jpg",
+  "dest": "seamanship/vessel-aground.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "Marine Debris on Midway Atoll (33882304895).jpg",
+  "dest": "lessons/marine-debris.jpg",
+  "width": 1600
+ },
+ {
+  "commons": "International Code of Signals.svg",
+  "dest": "lessons/international-code-of-signals.svg"
+ },
+ {
+  "commons": "Diagram Systems Text.svg",
+  "dest": "machine/thermodynamic-systems.svg"
+ },
+ {
+  "commons": "Carnot cycle p-V diagram.svg",
+  "dest": "machine/carnot-cycle-pv.svg"
+ },
+ {
+  "commons": "T cycle Seiliger.svg",
+  "dest": "machine/dual-cycle-pv.svg"
+ },
+ {
+  "commons": "T cycle Brayton.svg",
+  "dest": "machine/brayton-cycle-pv.svg"
+ },
+ {
+  "commons": "Temperature-entropy chart of a superheated Rankine cycle.svg",
+  "dest": "machine/rankine-cycle-ts.svg"
+ },
+ {
+  "commons": "Temperature-entropy chart of a basic Rankine cycle.svg",
+  "dest": "machine/alt/rankine-cycle-basic-ts.svg"
+ },
+ {
+  "commons": "MetacentricHeight.svg",
+  "dest": "stability/metacentric-height.svg"
+ },
+ {
+  "commons": "Stability curve NT.svg",
+  "dest": "stability/gz-curve.svg"
+ },
+ {
+  "commons": "Plimsoll line.svg",
+  "dest": "stability/load-line-mark.svg"
+ },
+ {
+  "commons": "Brosen plimsoll line en.svg",
+  "dest": "stability/alt/load-line-mark-brosen.svg"
+ },
+ {
+  "commons": "Trochoidal wave.svg",
+  "dest": "meteorology/trochoidal-wave.svg"
+ },
+ {
+  "commons": "ApparentWind.svg",
+  "dest": "meteorology/alt/apparent-wind.svg"
+ }
+]
