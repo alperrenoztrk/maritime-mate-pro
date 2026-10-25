@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.marinersbook.app.LearningBootTest" tests="2" failures="0" errors="0" skipped="0" time="17.095" timestamp="2026-10-25T09:44:27" hostname="localhost">
+  <properties>
+    <property name="device" value="emulator-5554 - 15" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="nativeBootAuthAndStorageSurviveRecreation" classname="com.marinersbook.app.LearningBootTest" time="15.558" />
+  <testcase name="checkedLearningCopyIsPackaged" classname="com.marinersbook.app.LearningBootTest" time="0.039" />
+</testsuite>

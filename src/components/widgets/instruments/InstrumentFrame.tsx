@@ -64,8 +64,14 @@ export function InstrumentFrame({
         (size === "medium" ? " iw-medium" : " iw-small") +
         (failed ? " iw-device--fallback" : "")
       }
-      style={{ aspectRatio: String(photo.aspect) }}
     >
+      {label || action ? (
+        <div className="iw-top">
+          {label ? <div className="iw-plate">{label}</div> : <span />}
+          {action}
+        </div>
+      ) : null}
+      <div className="iw-visual" style={{ aspectRatio: String(photo.aspect) }}>
       {failed ? null : (
         <img
           className="iw-photo"
@@ -83,17 +89,7 @@ export function InstrumentFrame({
 
       {/* Canlı katman — fotoğrafın okuma yüzeyinin üstüne oturur. */}
       {children}
-
-      {/* Üst şerit yalnız taşıyacak bir şey varsa çizilir; boş bir künye
-          bandı fotoğrafın üstüne sebepsiz bir gölge sererdi. Plaka yokken
-          boş bir aralık konuyor ki eylem düğmesi sağda kalsın. */}
-      {label || action ? (
-        <div className="iw-top">
-          {label ? <div className="iw-plate">{label}</div> : <span />}
-          {action}
-        </div>
-      ) : null}
-
+      </div>
       {readout ? <div className="iw-readout">{readout}</div> : null}
     </div>
   );

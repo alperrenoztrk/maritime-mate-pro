@@ -2,7 +2,7 @@
 
 All 331 topics flagged in the previous inventory now have an additional authored application: a mechanism or distinction, a concrete problem, at least two reasoning steps, and a conclusion with relevant limits. The original concepts, formulas, IDs, routes and 2,110 checks remain available. The additions contain approximately 28,600 English words; numerical examples are original teaching models, not installation-specific settings.
 
-The immutable triage baseline is `1818fa67293606cf82b59c16afe848137253f538`; `depth-review-targets.json` preserves its exact 331 IDs. The audit checks equality with that set, unique scenarios, correct course/title mapping, reader visibility, exactly-once guided teaching, reference links and offline English copy. All 806 topics now exceed the original 150-word triage threshold. Word count remains an editorial indicator, not a competence score or independent expert certification.
+The immutable triage baseline is `1818fa67293606cf82b59c16afe848137253f538`; `depth-review-targets.json` preserves its exact 331 IDs. The audit checks equality with that set, unique scenarios, correct course/title mapping, reader visibility, exactly-once guided teaching, reference links and offline English copy. All 807 topics now exceed the original 150-word triage threshold. Word count remains an editorial indicator, not a competence score or independent expert certification.
 
 | Course | Added applications |
 | --- | ---: |
@@ -44,3 +44,9 @@ The Android test replaces the template's incorrect package assertion with checks
 - Training: [IMO STCW framework](https://www.imo.org/en/ourwork/humanelement/pages/stcw-convention.aspx). Application quizzes and reading completion are not professional certification.
 
 No application version change or application deployment is included. The new npm lockfile change only aligns the existing main-branch DOMPurify requirement with reproducible npm installation.
+
+## Validation — 25 October 2026
+
+The latest lighthouse lesson is preserved from main. Local checks passed for content and hierarchy (25 courses, 154 modules, 807 topics, 2,110 checks), operational coverage, rule integration, question banks, SVG, UX, design and library consistency. Seven progress unit tests and PostgreSQL isolation/MFA/merge tests passed, as did secure-storage and native-boot regressions. Playwright passed the mobile/desktop learning paths, applied examples, primary links and synthetic account/offline flows.
+
+The native build passed its budget: 827 JavaScript files, 17.87 MiB total and 1466.4 KiB maximum chunk. The API 35 emulator application JUnit report from run `40181361047` records two tests, zero failures, zero errors and zero skips (17.095 seconds). A subsequent unrelated plugin test failed; the workflow is now explicitly scoped to the application. Physical-device and real-account two-device checks remain pending.

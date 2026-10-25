@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { ChevronRight, Newspaper } from "lucide-react";
-import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
+import { fetchHomeNews, readCachedNews, HOME_NEWS_QUERY_KEY, type MaritimeNewsItem } from "@/services/maritimeNews";
 import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
 
 function formatRelative(iso?: string): string {
@@ -29,8 +29,10 @@ export function NewsPanel() {
   const [selected, setSelected] = useState<MaritimeNewsItem | null>(null);
   const [open, setOpen] = useState(false);
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["maritime-news", "home-panel"],
-    queryFn: () => fetchMaritimeNews(),
+    queryKey: HOME_NEWS_QUERY_KEY,
+    queryFn: fetchHomeNews,
+    initialData: () => readCachedNews()?.data,
+    initialDataUpdatedAt: () => readCachedNews()?.savedAt,
     staleTime: 5 * 60 * 1000,
     gcTime: 15 * 60 * 1000,
   });

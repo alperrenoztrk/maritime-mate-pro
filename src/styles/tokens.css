@@ -738,3 +738,15 @@ html[data-font-size="large"] :where(h1, h2, h3, [data-page-title]) {
   overflow-wrap: anywhere;
   hyphens: auto;
 }
+
+/* Instrument surfaces stay dark independently of the surrounding shell. */
+.home-instruments {
+  --instrument-surface: hsl(225 8% 11%);
+  --instrument-visual: hsl(225 8% 8%);
+  --instrument-text: hsl(240 5% 96%);
+  --instrument-muted: hsl(220 8% 68%);
+  --instrument-line: hsl(220 8% 24%);
+  --instrument-accent: hsl(158 54% 67%);
+  --instrument-warning: hsl(38 82% 67%);
+  padding-bottom: calc(var(--app-tabbar-height) + var(--safe-bottom) + 1rem);
+}

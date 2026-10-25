@@ -1,6 +1,6 @@
 # Maritime learning structure
 
-The lessons library now explains the whole ship before asking a newcomer to choose a department or subject. `/lessons/map` connects five knowledge branches to the 25 existing courses, their modules and all 806 lesson topics. It is linked from both Home and Lessons. Beginner, deck and engine reading sequences are recommendations; they do not restrict access or certify competence.
+The lessons library now explains the whole ship before asking a newcomer to choose a department or subject. `/lessons/map` connects five knowledge branches to the 25 existing courses, their modules and all 807 lesson topics. It is linked from both Home and Lessons. Beginner, deck and engine reading sequences are recommendations; they do not restrict access or certify competence.
 
 ## Behaviour and preservation
 
@@ -24,7 +24,7 @@ Add or revise canonical content ownership and placement deliberately when introd
 
 ## Verification
 
-- `npm run check:curriculum-hierarchy`: 25 courses, 154 modules, 806 topics, 2,110 lesson checks, 4,353 preserved general-bank questions; each question follows its teaching, and all existing explanation sections remain in its session.
+- `npm run check:curriculum-hierarchy`: 25 courses, 154 modules, 807 topics, 2,110 lesson checks, 4,353 preserved general-bank questions; each question follows its teaching, and all existing explanation sections remain in its session.
 - `npm run check:rule-integration`: every rule group has exactly one authored destination and all rule items reach the lesson reader.
 - `npm run check:learning-ui`: Playwright checks discovery, reading-path switching, tree search, correct Appraisal placement, persistence across reload, module deep links, retained references, completed guided practice, saved results and mobile/desktop overflow. Backend/account fixtures are synthetic and confined to a local test server. Install Playwright Chromium normally, or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to a local compatible binary.
 - Typecheck, lint, terminology/translation verification, native build and the existing design, library and UX guards accompany these checks.
