@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import {
   BookA,
   BookOpen,
+  Bookmark,
   ChevronRight,
   ClipboardList,
   FlaskConical,
@@ -24,7 +25,8 @@ interface AppShortcut {
 
 const APPS: AppShortcut[] = [
   { label: "Learning map", to: "/lessons/map", icon: BookOpen },
-  { label: "Dersler", to: "/lessons", icon: BookOpen },
+  { label: "Lessons", to: "/lessons", icon: BookOpen },
+  { label: "Saved", to: "/saved", icon: Bookmark },
   { label: "Exercises", to: "/exercises", icon: Sparkles },
   { label: "Personnel", to: "/crew", icon: Users },
   { label: "Ship Systems", to: "/ship-systems", icon: Ship },

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { Bookmark, ChevronLeft } from "lucide-react";
+import { isSaved, recordVisit, studyKindFor, toggleSaved } from "@/lib/studyActivity";
 import { motion, useReducedMotion } from "framer-motion";
 import { AppSymbol } from "@/components/ui/AppSymbol";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
@@ -27,6 +28,7 @@ const KNOWN_TITLES: Array<[RegExp, string]> = [
   [/^\/glossary$/, "Dictionary"],
   [/^\/regulations$/, "Legislation"],
   [/^\/settings$/, "Settings"],
+  [/^\/saved$/, "Saved"],
 ];
 
 const knownTitle = (pathname: string) =>
@@ -63,6 +65,8 @@ export function AppNavBar() {
   const [collapsed, setCollapsed] = useState(false);
   const [title, setTitle] = useState(() => localizedKnownTitle(pathname, currentLanguage));
   const reduceMotion = useReducedMotion();
+  const studyKind = studyKindFor(pathname);
+  const [saved, setSaved] = useState(() => isSaved(pathname));
   const localizedBack = useMemo(
     () => getCoreUiTranslation("Back", currentLanguage) ?? "Back",
     [currentLanguage],
@@ -134,6 +138,17 @@ export function AppNavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  useEffect(() => {
+    setSaved(isSaved(pathname));
+  }, [pathname]);
+
+  // Record study pages for "Continue" once the real page heading is known.
+  useEffect(() => {
+    if (!studyKind || !title) return;
+    const timer = window.setTimeout(() => recordVisit({ path: pathname, title, kind: studyKind }), 600);
+    return () => window.clearTimeout(timer);
+  }, [pathname, studyKind, title]);
+
   if (!canGoBack || isAppChromeHidden(pathname)) return null;
 
   return (
@@ -177,6 +192,18 @@ export function AppNavBar() {
             {title}
           </span>
         </motion.div>
+
+        {studyKind && (
+          <button
+            type="button"
+            onClick={() => setSaved(toggleSaved({ path: pathname, title: title || "Untitled", kind: studyKind }))}
+            aria-label={saved ? "Remove bookmark" : "Bookmark"}
+            aria-pressed={saved}
+            className="pointer-events-auto relative z-10 ml-auto inline-flex h-11 w-11 items-center justify-center rounded-xl text-primary transition-colors duration-control hover:bg-primary/10 active:bg-primary/15"
+          >
+            <Bookmark className="h-5 w-5" fill={saved ? "currentColor" : "none"} />
+          </button>
+        )}
       </div>
     </header>
   );
