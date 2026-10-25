@@ -292,3 +292,36 @@ export async function fetchMaritimeNews(
     errors: errors.map((e, i) => ({ source: `Endpoint ${i + 1}`, error: e })),
   };
 }
+
+// ---- Home news cache + prefetch ----
+const NEWS_CACHE_KEY = "mb.news.home.v1";
+const NEWS_CACHE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+export const HOME_NEWS_QUERY_KEY = ["maritime-news", "home-panel"] as const;
+
+export function readCachedNews(): { data: MaritimeNewsResponse; savedAt: number } | undefined {
+  try {
+    const raw = localStorage.getItem(NEWS_CACHE_KEY);
+    if (!raw) return undefined;
+    const parsed = JSON.parse(raw) as { data?: MaritimeNewsResponse; savedAt?: number };
+    if (!parsed?.data?.items?.length || typeof parsed.savedAt !== "number") return undefined;
+    if (Date.now() - parsed.savedAt > NEWS_CACHE_MAX_AGE_MS) return undefined;
+    return { data: parsed.data, savedAt: parsed.savedAt };
+  } catch {
+    return undefined;
+  }
+}
+
+export function saveCachedNews(data: MaritimeNewsResponse): void {
+  try {
+    if (!data?.items?.length || data.errors?.length) return;
+    localStorage.setItem(NEWS_CACHE_KEY, JSON.stringify({ data, savedAt: Date.now() }));
+  } catch {
+    /* storage full or unavailable */
+  }
+}
+
+export async function fetchHomeNews(): Promise<MaritimeNewsResponse> {
+  const data = await fetchMaritimeNews();
+  saveCachedNews(data);
+  return data;
+}
