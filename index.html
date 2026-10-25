@@ -218,8 +218,8 @@
         .ship-track{position:absolute;inset:0;animation:ship-sail 1.15s cubic-bezier(.5,.05,.85,.4) 3.05s forwards;will-change:transform;}
         .ship-lift{position:absolute;inset:0;transform-origin:50% 62%;animation:ship-pop .55s cubic-bezier(.34,1.45,.45,1) 2.6s forwards;will-change:transform;}
         .ship-bob{position:absolute;inset:0;transform-origin:50% 74%;animation:ship-bob 2.3s ease-in-out 2.6s infinite alternate;}
-        .ship-flat{position:absolute;inset:0;width:100%;height:100%;opacity:.92;animation:flat-out .22s ease-out 2.6s forwards;}
-        .ship-solid{position:absolute;inset:0;opacity:0;transform:perspective(900px) rotateY(-55deg) rotateX(9deg) scale(.94);animation:solid-in .55s cubic-bezier(.3,1.3,.5,1) 2.6s forwards;filter:drop-shadow(0 12px 16px rgba(2,10,22,.5));}
+        .ship-flat{position:absolute;inset:0;width:100%;height:100%;opacity:.92;animation:flat-out .14s ease-in 2.6s forwards;}
+        .ship-solid{position:absolute;inset:0;opacity:0;transform:perspective(900px) rotateY(-55deg) rotateX(9deg) scale(.94);animation:solid-in .5s cubic-bezier(.3,1.3,.5,1) 2.72s forwards;filter:drop-shadow(0 12px 16px rgba(2,10,22,.5));}
         .ship-solid svg{display:block;width:100%;height:100%;}
         .ship-wake{position:absolute;left:-4%;right:38%;bottom:16%;height:6%;border-radius:99px;opacity:0;background:linear-gradient(90deg,rgba(214,235,255,0),rgba(214,235,255,.5) 55%,rgba(255,255,255,.9));filter:blur(1px);transform-origin:right center;animation:wake-in .4s ease 3.15s forwards,wake-pulse 1s ease-in-out 3.15s infinite alternate;}
         .ship-wake::before{content:"";position:absolute;right:8%;top:-130%;width:55%;height:85%;border-radius:99px;background:linear-gradient(90deg,rgba(214,235,255,0),rgba(255,255,255,.65));}
@@ -248,7 +248,7 @@
         @keyframes ship-in{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);}}
         @keyframes ship-pop{to{transform:scale(2.3) translate(-24%,-6%);}}
         @keyframes flat-out{to{opacity:0;}}
-        @keyframes solid-in{to{opacity:1;transform:perspective(900px) rotateY(-14deg) rotateX(4deg) scale(1);}}
+        @keyframes solid-in{20%{opacity:1;}to{opacity:1;transform:perspective(900px) rotateY(-14deg) rotateX(4deg) scale(1);}}
         @keyframes ship-sail{to{transform:translateX(92vw);}}
         @keyframes ship-bob{from{transform:rotate(-1.4deg) translateY(1.2%);}to{transform:rotate(1.8deg) translateY(-1.4%);}}
         @keyframes wake-in{to{opacity:.85;}}
