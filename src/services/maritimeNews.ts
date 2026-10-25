@@ -313,7 +313,7 @@ export function readCachedNews(): { data: MaritimeNewsResponse; savedAt: number 
 
 export function saveCachedNews(data: MaritimeNewsResponse): void {
   try {
-    if (!data?.items?.length || data.errors?.length) return;
+    if (!data?.items?.length || data.errors?.some((e) => e.source.startsWith("Endpoint "))) return;
     localStorage.setItem(NEWS_CACHE_KEY, JSON.stringify({ data, savedAt: Date.now() }));
   } catch {
     /* storage full or unavailable */
