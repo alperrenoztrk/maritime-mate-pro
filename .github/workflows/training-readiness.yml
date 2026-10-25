@@ -1,0 +1,49 @@
+name: Training readiness checks
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/check-learning-ui.mjs'
+      - 'package.json'
+      - '.github/workflows/training-readiness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: training-readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  curriculum-and-inspections:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Typecheck, lint and domain unit tests
+        run: |
+          npm run typecheck
+          npm run lint
+          npm run test:study-guides
+          npm run test:library
+          npm run test:navigation-ui
+          npm run test:study-activity
+          npm run check:library-interface
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium
+      - name: Browser regression
+        run: npm run check:learning-ui
+      - name: Native web bundle
+        env:
+          VITE_SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: public-test-key
+          VITE_PRO_GATING_ENABLED: 'false'
+          VITE_ADS_ENABLED: 'false'
+        run: npm run build:native && npm run check:native-build
