@@ -1,0 +1,90 @@
+import {
+  Anchor,
+  BookA,
+  ClipboardCheck,
+  ClipboardList,
+  Compass,
+  GraduationCap,
+  RadioTower,
+  ScrollText,
+  Ship,
+  Sparkles,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+import { getBetaCategories } from "@/data/betaLessons";
+
+export interface LibraryResource {
+  title: string;
+  to: string;
+  icon: LucideIcon;
+  accent: string;
+}
+
+export interface LibrarySection {
+  id: string;
+  title: string;
+  items: LibraryResource[];
+}
+
+/** Route for a lesson library category (deck lessons vs machine topics). */
+export const categoryHref = (key: string) =>
+  key.startsWith("machine-") ? `/machine/${key.slice("machine-".length)}/topics` : `/lessons/${key}/topics`;
+
+const STATIC_SECTIONS: LibrarySection[] = [
+  {
+    id: "practice",
+    title: "Practice",
+    items: [
+      { title: "Exercises", to: "/exercises", icon: Sparkles, accent: "accent-teal" },
+      { title: "Exam Preparation", to: "/exam-preparation", icon: GraduationCap, accent: "accent-deep" },
+    ],
+  },
+  {
+    id: "inspections",
+    title: "Inspections",
+    items: [{ title: "PSC / SIRE Checklist", to: "/beta/psc-checklist", icon: ClipboardList, accent: "accent-amber" }],
+  },
+  {
+    id: "skills",
+    title: "Seamanship Skills",
+    items: [{ title: "Knot Tutorials", to: "/seamanship/knots", icon: Anchor, accent: "accent-ocean" }],
+  },
+  {
+    id: "reference",
+    title: "Quick Reference",
+    items: [
+      { title: "Maritime Dictionary", to: "/glossary", icon: BookA, accent: "accent-ocean" },
+      { title: "Legislation", to: "/regulations", icon: ScrollText, accent: "accent-deep" },
+      { title: "Signal Flags", to: "/communication/flags", icon: RadioTower, accent: "accent-amber" },
+      { title: "Passage Plan", to: "/passage-plan", icon: Compass, accent: "accent-ocean" },
+    ],
+  },
+  {
+    id: "ship",
+    title: "Ship & Crew",
+    items: [
+      { title: "Personnel and Duties", to: "/crew", icon: Users, accent: "accent-deep" },
+      { title: "Bridge Devices", to: "/bridge", icon: Compass, accent: "accent-ocean" },
+      { title: "Ship Systems", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
+      { title: "Ship Missions", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
+      { title: "Ship Operations", to: "/ship-operations", icon: Anchor, accent: "accent-ocean" },
+    ],
+  },
+];
+
+/** Every resource in the app, grouped for the Library hub. Single source of truth. */
+export function getLibrarySections(): LibrarySection[] {
+  const categories = getBetaCategories().filter((c) => c.enabled !== false);
+  const toItem = (accent: string) => (c: (typeof categories)[number]): LibraryResource => ({
+    title: c.title,
+    to: categoryHref(c.key),
+    icon: c.icon,
+    accent,
+  });
+  return [
+    { id: "deck", title: "Deck Library", items: categories.filter((c) => c.group === "deck").map(toItem("accent-ocean")) },
+    { id: "engine", title: "Engine Library", items: categories.filter((c) => c.group === "machine").map(toItem("accent-slate")) },
+    ...STATIC_SECTIONS,
+  ].filter((s) => s.items.length > 0);
+}

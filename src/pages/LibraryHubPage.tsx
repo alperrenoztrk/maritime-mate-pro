@@ -1,13 +1,6 @@
-import {
-  Anchor,
-  BookA,
-  ClipboardCheck,
-  Compass,
-  RadioTower,
-  ScrollText,
-  Ship,
-  Users,
-} from "lucide-react";
+import { useMemo } from "react";
+import { Link } from "react-router-dom";
+import { BookA, Search } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import {
@@ -15,52 +8,42 @@ import {
   LibraryPageShell,
   LibrarySectionHeading,
 } from "@/components/library/LibraryInterface";
-
-const operationalReferences = [
-  { title: "Personnel and Duties", to: "/crew", icon: Users, accent: "accent-deep" },
-  { title: "Bridge Devices", to: "/bridge", icon: Compass, accent: "accent-ocean" },
-  { title: "Ship Systems", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
-  { title: "Ship Missions", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
-  { title: "Ship Operations", to: "/ship-operations", icon: Anchor, accent: "accent-ocean" },
-];
-
-const quickReferences = [
-  { title: "Maritime Dictionary", to: "/glossary", icon: BookA, accent: "accent-ocean" },
-  { title: "Legislation", to: "/regulations", icon: ScrollText, accent: "accent-deep" },
-  { title: "Transition Plan", to: "/passage-plan", icon: Compass, accent: "accent-ocean" },
-  { title: "Signal and Communication", to: "/communication/flags", icon: RadioTower, accent: "accent-amber" },
-];
+import { StudyShortcuts } from "@/components/home/StudyShortcuts";
+import { getLibrarySections } from "@/data/libraryResources";
 
 export default function LibraryHubPage() {
+  const sections = useMemo(() => getLibrarySections(), []);
+
   return (
-    <LibraryPageShell title="bookshelf" icon={BookA} maxWidth="max-w-4xl">
+    <LibraryPageShell title="Library" icon={BookA} maxWidth="max-w-4xl">
       <SEO
-        title="Bookcase — Mariner's Book"
-        description="Reach operations, ship systems, crew and maritime references from a single place."
+        title="Library — Mariner's Book"
+        description="Deck and engine lessons, exercises, PSC/SIRE checklist, knots and maritime references in one place."
         path="/library"
       />
 
-      <section className="space-y-3" aria-labelledby="operational-library-heading">
-        <LibrarySectionHeading>
-          <span id="operational-library-heading">Operational Resources</span>
-        </LibrarySectionHeading>
-        <InsetGroupedList columns={2}>
-          {operationalReferences.map((item) => (
-            <LibraryCompactCard key={item.to} {...item} />
-          ))}
-        </InsetGroupedList>
-      </section>
+      <Link
+        to="/search"
+        className="surface-2 flex min-h-12 items-center gap-3 rounded-2xl border px-4 text-sm text-muted-foreground transition-colors duration-control hover:border-primary/20"
+      >
+        <Search className="h-4 w-4" />
+        Search all resources
+      </Link>
 
-      <section className="space-y-3" aria-labelledby="quick-reference-heading">
-        <LibrarySectionHeading>
-          <span id="quick-reference-heading">Quick Reference</span>
-        </LibrarySectionHeading>
-        <InsetGroupedList columns={2}>
-          {quickReferences.map((item) => (
-            <LibraryCompactCard key={item.to} {...item} />
-          ))}
-        </InsetGroupedList>
-      </section>
+      <StudyShortcuts />
+
+      {sections.map((section) => (
+        <section key={section.id} className="space-y-3" aria-labelledby={`lib-${section.id}`}>
+          <LibrarySectionHeading>
+            <span id={`lib-${section.id}`}>{section.title}</span>
+          </LibrarySectionHeading>
+          <InsetGroupedList columns={2}>
+            {section.items.map((item) => (
+              <LibraryCompactCard key={item.to} {...item} />
+            ))}
+          </InsetGroupedList>
+        </section>
+      ))}
     </LibraryPageShell>
   );
 }
