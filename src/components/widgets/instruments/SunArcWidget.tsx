@@ -39,6 +39,7 @@ export function SunArcWidget({ sunrise, sunset, progress, cloudCoverPct }: SunAr
     <InstrumentFrame
       photo={PORTHOLE}
       size="medium"
+      label="Daylight"
       readout={
         <div className="iw-split">
           <span className="iw-readout-cell">
