@@ -18,7 +18,7 @@ describe("library resources", () => {
   });
   it("includes the resources testers used", () => {
     const paths = items.map((i) => i.to);
-    for (const p of ["/exercises", "/glossary", "/beta/psc-checklist", "/seamanship/knots", "/lessons/stability/topics"]) assert.ok(paths.includes(p), p);
+    for (const p of ["/exercises", "/glossary", "/beta/psc-checklist", "/inspections/sire-readiness", "/stcw-study-paths", "/seamanship/knots", "/lessons/stability/topics"]) assert.ok(paths.includes(p), p);
     assert.ok(paths.some((p) => p.startsWith("/machine/")), "engine library");
   });
 });

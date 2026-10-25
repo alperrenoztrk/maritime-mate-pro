@@ -18,7 +18,7 @@ export default function LibraryHubPage() {
     <LibraryPageShell title="Library" icon={BookA} maxWidth="max-w-4xl">
       <SEO
         title="Library — Mariner's Book"
-        description="Deck and engine lessons, exercises, PSC/SIRE checklist, knots and maritime references in one place."
+        description="Deck and engine lessons, STCW study pathways, exercises, separate PSC and SIRE 2.0 preparation guides, knots and maritime references."
         path="/library"
       />
 

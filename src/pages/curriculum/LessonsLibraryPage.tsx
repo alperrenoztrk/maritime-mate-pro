@@ -102,6 +102,10 @@ export default function LessonsLibraryPage() {
             <span className="block text-lg font-semibold text-primary">Maritime learning map</span>
             <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">New to maritime learning? See how subjects branch out, choose a reading sequence and connect lessons to shipboard practice.</span>
           </Link>
+          <Link to="/stcw-study-paths" className="rounded-2xl border border-border/70 bg-card/70 p-5">
+            <span className="block text-lg font-semibold text-foreground">STCW study pathways</span>
+            <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">Follow a suggested deck or engine study sequence aligned with selected STCW competence areas. Not an accredited course.</span>
+          </Link>
           <section className="space-y-3">
             <LibrarySectionHeading>Bookcases</LibrarySectionHeading>
             <InsetGroupedList columns={2}>

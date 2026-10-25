@@ -48,6 +48,24 @@ const goto = async (route) => {
 };
 const noOverflow = async () => assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Horizontal overflow: ${page.url()}`);
 try {
+  await goto("/stcw-study-paths");
+  assert(await page.locator('a[href="/lessons/navigation/topics"]').count() > 0, "Deck STCW route is broken");
+  assert(await page.locator('a[href="/machine/engine-room-ops/topics"]').count() > 0, "Engine STCW route is broken");
+  await noOverflow();
+
+  await goto("/inspections/sire-readiness");
+  assert(await page.getByText("0 of 10 reviewed", { exact: true }).isVisible(), "SIRE has no initial progress");
+  await page.getByRole("button", { name: "Needs follow-up" }).first().click();
+  await page.reload();
+  await page.getByText("1 of 10 reviewed", { exact: true }).waitFor();
+  await page.getByText("1 follow-up items. Status is stored only on this device.", { exact: true }).waitFor();
+  await noOverflow();
+
+  await goto("/beta/psc-checklist");
+  assert(await page.getByText("A.1206(34), Procedures for PSC, 2025", { exact: true }).isVisible(), "PSC source is missing");
+  await goto("/exam-preparation");
+  assert(await page.getByText("Practice questions support revision.", { exact: false }).isVisible(), "Unofficial exam notice is missing");
+
   await goto("/lessons");
   assert(await page.locator('a[href="/lessons/map"]').count() > 0, "Learning map is not discoverable from lessons");
   await page.locator('a[href="/lessons/map"]').click();
@@ -168,7 +186,7 @@ try {
   await noOverflow();
   await page.screenshot({ path: path.join(output, "learning-map-desktop.png"), fullPage: true });
   assert.deepEqual(pageErrors, [], "Browser runtime errors");
-  console.log("Learning UI OK: mobile/desktop map, reading paths, search, correct hierarchy, persistent review, module deep links, legacy reference first-attempt scoring, taught retries, worked examples, account sync and offline recovery.");
+  console.log("Learning UI OK: STCW routes, SIRE persistence, PSC references, unofficial exam notice, mobile/desktop map, reading paths, search, correct hierarchy, persistent review, module deep links, legacy reference first-attempt scoring, taught retries, worked examples, account sync and offline recovery.");
 } catch (error) {
   await page.screenshot({ path: path.join(output, "failure.png"), fullPage: true });
   console.error((await page.locator("body").innerText()).slice(0,3500));

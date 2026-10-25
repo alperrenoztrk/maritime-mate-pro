@@ -39,6 +39,7 @@ import { hasHierarchicalBack } from "@/lib/appNavigation";
 const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
 const MaritimeLearningMapPage = lazy(() => import("./pages/curriculum/MaritimeLearningMapPage"));
+const StcwStudyPathsPage = lazy(() => import("./pages/StcwStudyPathsPage"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
 const LibraryHubPage = lazy(() => import("./pages/LibraryHubPage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
@@ -199,6 +200,7 @@ const EnvironmentTopicsPage = lazy(() => import("./pages/EnvironmentTopicsPage")
 const EconomicsTopicsPage = lazy(() => import("./pages/EconomicsTopicsPage"));
 const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
 const BetaPscChecklist = lazy(() => import("./pages/BetaPscChecklist"));
+const SireReadinessPage = lazy(() => import("./pages/SireReadinessPage"));
 const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
 const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
 const queryClient = new QueryClient();
@@ -279,6 +281,7 @@ const AnimatedRoutes = () => {
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons/map" element={<PageTransition><MaritimeLearningMapPage /></PageTransition>} />
+        <Route path="/stcw-study-paths" element={<PageTransition><StcwStudyPathsPage /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/library" element={<PageTransition><LibraryHubPage /></PageTransition>} />
         <Route path="/search" element={<PageTransition><SearchPage /></PageTransition>} />
@@ -288,6 +291,7 @@ const AnimatedRoutes = () => {
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
         <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
+        <Route path="/inspections/sire-readiness" element={<PageTransition><SireReadinessPage /></PageTransition>} />
         <Route path="/beta/ship-simulator" element={<PageTransition><ProRoute feature="The 3D ship simulator"><BetaShipSimulator /></ProRoute></PageTransition>} />
         <Route path="/beta/documents" element={<PageTransition><BetaDocumentTracker /></PageTransition>} />
 

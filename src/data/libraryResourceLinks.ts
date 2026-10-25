@@ -37,17 +37,21 @@ export const STATIC_SECTIONS: LibrarySection[] = [
     items: [
       { title: "Exercises", to: "/exercises", icon: Sparkles, accent: "accent-teal" },
       { title: "Exam Preparation", to: "/exam-preparation", icon: GraduationCap, accent: "accent-deep" },
+      { title: "STCW Study Pathways", to: "/stcw-study-paths", icon: GraduationCap, accent: "accent-deep" },
     ],
   },
   {
     id: "inspections",
     title: "Inspections",
-    items: [{ title: "PSC / SIRE Checklist", to: "/beta/psc-checklist", icon: ClipboardList, accent: "accent-amber" }],
+    items: [
+      { title: "PSC Preparation Checklist", to: "/beta/psc-checklist", icon: ClipboardList, accent: "accent-amber" },
+      { title: "SIRE 2.0 Preparation (Tanker)", to: "/inspections/sire-readiness", icon: ClipboardCheck, accent: "accent-amber" },
+    ],
   },
   {
     id: "skills",
     title: "Seamanship Skills",
-    items: [{ title: "Knot Tutorials", to: "/seamanship/knots", icon: Anchor, accent: "accent-ocean" }],
+    items: [{ title: "Knot Video Tutorials", to: "/seamanship/knots", icon: Anchor, accent: "accent-ocean" }],
   },
   {
     id: "reference",

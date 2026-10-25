@@ -117,10 +117,16 @@ export default function BetaPscChecklist() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">
-                PSC inspection Preparation List
+                Port State Control (PSC) preparation
               </h1>
             </div>
           </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            General preparation prompts only. The current IMO PSC procedures are
+            <a className="ml-1 font-medium text-primary underline-offset-4 hover:underline" href="https://www.imo.org/en/ourwork/iiis/pages/port%20state%20control.aspx" target="_blank" rel="noopener noreferrer">A.1206(34), Procedures for PSC, 2025</a>.
+            The list is not a complete or official inspection protocol.
+          </p>
+          <Link className="inline-block text-sm font-medium text-primary underline-offset-4 hover:underline" to="/inspections/sire-readiness">Tanker vetting: separate SIRE 2.0 preparation</Link>
         </header>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/90 p-5">

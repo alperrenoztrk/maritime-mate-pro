@@ -17,7 +17,8 @@ export interface ChecklistCategory {
 
 /**
  * Port State Control (Liman Devleti Kontrolü) hazırlık kontrol listesi.
- * Maddeler Paris/Tokyo MoU denetim alanlarına göre gruplanmıştır.
+ * Genel PSC hazırlık konuları; resmî Paris/Tokyo MoU ya da IMO denetim formu değildir.
+ * IMO Procedures for PSC, 2025: A.1206(34).
  */
 export const PSC_CHECKLIST: ChecklistCategory[] = [
   {

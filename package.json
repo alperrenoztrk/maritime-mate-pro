@@ -69,6 +69,7 @@
     "test:navigation-ui": "node --import tsx --test src/lib/appNavigation.test.ts",
     "test:study-activity": "node --import tsx --test src/lib/studyActivity.test.ts",
     "test:library": "node --import tsx --test src/data/libraryResourceLinks.test.ts",
+    "test:study-guides": "node --import tsx --test src/data/stcwStudyPaths.test.ts",
     "test:search-ui": "node --import tsx --test src/lib/appSearch.test.ts",
     "i18n:all": "npm run i18n:extract && npm run i18n:generate && npm run i18n:check -- --strict",
     "i18n:verify": "npm run test:i18n-extractor && npm run test:i18n-terms && npm run test:i18n-barrier && npm run i18n:check -- --strict && npm run i18n:audit-terms -- --lang=en --strict --max-errors=0 && npm run i18n:audit-terms -- --strict --max-errors=0 && npm run i18n:repair-en -- --check && npm run i18n:scan-senses -- --check && node scripts/i18n/extract-paragraphs.mjs && node --import tsx scripts/i18n/build-paragraph-pack.mjs --check && node scripts/i18n/build-learning-pack.mjs --check && node scripts/i18n/build-terminology-overrides.mjs --check",

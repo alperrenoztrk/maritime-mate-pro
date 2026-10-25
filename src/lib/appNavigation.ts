@@ -12,6 +12,7 @@ const LEARN_ROUTES = [
   /^\/lessons(?:\/|$)/,
   /^\/exercises(?:\/|$)/,
   /^\/exam-preparation(?:\/|$)/,
+  /^\/stcw-study-paths$/,
   /^\/machine\/[^/]+\/topics(?:\/|$)/,
 ];
 
@@ -28,6 +29,7 @@ const LIBRARY_ROUTES = [
   /^\/library$/,
   /^\/(?:crew|bridge|ship-systems|ship-tasks|ship-operations|glossary|regulations|passage-plan)(?:\/|$)/,
   /^\/communication(?:\/|$)/,
+  /^\/inspections\/sire-readiness$/,
 ];
 
 export const appTabForPath = (pathname: string): AppTabId => {

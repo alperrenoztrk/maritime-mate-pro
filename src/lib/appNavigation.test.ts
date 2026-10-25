@@ -11,6 +11,8 @@ test("maps every top-level stack and its children to the correct tab", () => {
   assert.equal(appTabForPath("/"), "home");
   assert.equal(appTabForPath("/lessons/navigation/topics"), "learn");
   assert.equal(appTabForPath("/exam-preparation"), "learn");
+  assert.equal(appTabForPath("/stcw-study-paths"), "learn");
+  assert.equal(appTabForPath("/inspections/sire-readiness"), "library");
   assert.equal(appTabForPath("/stability/calculations"), "tools");
   assert.equal(appTabForPath("/machine/diesel-engines/calculations"), "tools");
   assert.equal(appTabForPath("/ship-systems/nav-systems"), "library");

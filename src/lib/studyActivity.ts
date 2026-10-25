@@ -18,6 +18,8 @@ export const STUDY_EVENT = "mb:study-activity";
 
 const RULES: Array<[RegExp, StudyKind]> = [
   [/^\/exercises\/[^/]+\/topics\/[^/]+/, "Exercise"],
+  [/^\/stcw-study-paths$/, "Reference"],
+  [/^\/inspections\/sire-readiness$/, "Reference"],
   [/^\/lessons\/[^/]+\/topics\/[^/]+/, "Lesson"],
   [/^\/lessons\/[^/]+\/reference$/, "Reference"],
   [/^\/lessons\/[^/]+\/formulas$/, "Formulas"],
