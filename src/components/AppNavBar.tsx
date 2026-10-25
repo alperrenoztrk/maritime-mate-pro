@@ -2,6 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Bookmark, ChevronLeft } from "lucide-react";
 import { isSaved, recordVisit, studyKindFor, toggleSaved } from "@/lib/studyActivity";
+
+/** Mirrored nav title, or the last mounted page's main heading. */
+const pageName = (title: string) => {
+  if (title) return title;
+  const headings = Array.from(document.querySelectorAll<HTMLElement>("main h1, h1")).filter(
+    (h) => !h.classList.contains("sr-only"),
+  );
+  return headings.at(-1)?.textContent?.replace(/\s+/g, " ").trim().slice(0, 80) ?? "";
+};
 import { motion, useReducedMotion } from "framer-motion";
 import { AppSymbol } from "@/components/ui/AppSymbol";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
@@ -144,8 +153,11 @@ export function AppNavBar() {
 
   // Record study pages for "Continue" once the real page heading is known.
   useEffect(() => {
-    if (!studyKind || !title) return;
-    const timer = window.setTimeout(() => recordVisit({ path: pathname, title, kind: studyKind }), 600);
+    if (!studyKind) return;
+    const timer = window.setTimeout(() => {
+      const name = pageName(title);
+      if (name) recordVisit({ path: pathname, title: name, kind: studyKind });
+    }, 1200);
     return () => window.clearTimeout(timer);
   }, [pathname, studyKind, title]);
 
@@ -196,7 +208,7 @@ export function AppNavBar() {
         {studyKind && (
           <button
             type="button"
-            onClick={() => setSaved(toggleSaved({ path: pathname, title: title || "Untitled", kind: studyKind }))}
+            onClick={() => setSaved(toggleSaved({ path: pathname, title: pageName(title) || "Untitled", kind: studyKind }))}
             aria-label={saved ? "Remove bookmark" : "Bookmark"}
             aria-pressed={saved}
             className="pointer-events-auto relative z-10 ml-auto inline-flex h-11 w-11 items-center justify-center rounded-xl text-primary transition-colors duration-control hover:bg-primary/10 active:bg-primary/15"
