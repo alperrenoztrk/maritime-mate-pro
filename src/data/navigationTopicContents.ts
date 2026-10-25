@@ -3590,7 +3590,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
   "Heading – COG ilişkisi": {
     title: "Heading – COG İlişkisi",
     introduction:
-      "Heading, geminin pruvasının baktığı hakiki yönü ifade eder. COG ise geminin yer üzerinde izlediği gerçek rota doğrultusudur. Akıntısız durumda heading ile COG aynı kabul edilebilir; akıntı varlığında ise heading ile COG arasına bir sapma girer.",
+      "Heading is the direction of the bow; course over ground (COG) is the direction of movement over the seabed. Current and wind-induced leeway can make them differ. Compare values using the same true or magnetic reference; equality requires negligible current and leeway.",
     sections: [
       {
         title: "Heading ile COG Arasındaki Sapma",
@@ -3617,7 +3617,7 @@ Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sü
   "STW – SOG ilişkisi": {
     title: "STW – SOG İlişkisi",
     introduction:
-      "STW, geminin suya göre hızıdır; SOG ise geminin yere göre hızıdır. Akıntısız durumda STW ile SOG aynı kabul edilir; akıntılı durumda farklıdır.",
+      "Speed through water (STW) measures motion relative to the water; speed over ground (SOG) measures motion relative to the seabed. Current may make them differ. Add velocity vectors to find the ground motion; scalar addition or subtraction applies only when the vectors are collinear.",
     sections: [
       {
         title: "STW ve SOG Farkı",

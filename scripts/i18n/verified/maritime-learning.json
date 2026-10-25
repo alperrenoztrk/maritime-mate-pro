@@ -3121,5 +3121,17 @@
   },
   "−125 kJ": {
     "en": "−125 kJ"
+  },
+  "Heading is the direction of the bow; course over ground (COG) is the direction of movement over the seabed. Current and wind-induced leeway can make them differ. Compare values using the same true or magnetic reference; equality requires negligible current and leeway.": {
+    "en": "Heading is the direction of the bow; course over ground (COG) is the direction of movement over the seabed. Current and wind-induced leeway can make them differ. Compare values using the same true or magnetic reference; equality requires negligible current and leeway."
+  },
+  "Speed through water (STW) measures motion relative to the water; speed over ground (SOG) measures motion relative to the seabed. Current may make them differ. Add velocity vectors to find the ground motion; scalar addition or subtraction applies only when the vectors are collinear.": {
+    "en": "Speed through water (STW) measures motion relative to the water; speed over ground (SOG) measures motion relative to the seabed. Current may make them differ. Add velocity vectors to find the ground motion; scalar addition or subtraction applies only when the vectors are collinear."
+  },
+  "Thermal equilibrium concerns temperature; equal pressure or equal mass does not establish equal temperature.": {
+    "en": "Thermal equilibrium concerns temperature; equal pressure or equal mass does not establish equal temperature."
+  },
+  "A contact thermometer indicates the system temperature after reaching thermal equilibrium. Check calibration, thermal contact and response time before interpreting a changing reading.": {
+    "en": "A contact thermometer indicates the system temperature after reaching thermal equilibrium. Check calibration, thermal contact and response time before interpreting a changing reading."
   }
 }

@@ -11,7 +11,7 @@ create policy "Read own learning progress" on public.learning_progress for selec
 create policy "Create own learning progress" on public.learning_progress for insert to authenticated with check ((select auth.uid()) = user_id);
 create policy "Update own learning progress" on public.learning_progress for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 create policy "Require MFA when enrolled" on public.learning_progress as restrictive to authenticated
-  using ((select public.has_sufficient_aal())) with check ((select public.has_sufficient_aal()));
+  using ((select private.has_sufficient_aal())) with check ((select private.has_sufficient_aal()));
 
 -- One owner row lock serialises device merges; each timestamped field merges independently.
 create function public.merge_learning_progress(incoming jsonb)

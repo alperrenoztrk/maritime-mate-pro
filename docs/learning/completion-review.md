@@ -1,5 +1,7 @@
 # Learning completion review — 23 October 2026
 
+> Follow-up, 25 October 2026: the 331 depth reviews and live progress migration below have been completed. See [current completion evidence](depth-completion.md) and [live sync verification](live-sync-verification.md). Physical-device and real signed-in two-device acceptance remain pending. The rest of this document records the earlier PR scope.
+
 This change completes the practice/remediation and account-progress follow-up to the learning-map work. It also improves selected technical explanations. It is not an independent professional review of every statement in the application.
 
 ## Learner behaviour

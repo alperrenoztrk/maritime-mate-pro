@@ -4,13 +4,17 @@ import { PGlite } from '@electric-sql/pglite';
 const db = new PGlite();
 const a = '00000000-0000-4000-8000-000000000001', b = '00000000-0000-4000-8000-000000000002';
 try {
-  await db.exec(`create role anon; create role authenticated; create schema auth;
+  await db.exec(`create role anon; create role authenticated; create role service_role; create schema auth;
     create table auth.users(id uuid primary key); create table auth.mfa_factors(user_id uuid, status text);
     insert into auth.users values ('${a}'), ('${b}');
     create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
     create function auth.jwt() returns jsonb language sql stable as $$ select jsonb_build_object('aal', coalesce(nullif(current_setting('request.jwt.claim.aal',true),''),'aal1')) $$;
     grant usage on schema public, auth to authenticated, anon; grant execute on function auth.uid(), auth.jwt() to authenticated, anon;`);
   await db.exec(fs.readFileSync('supabase/migrations/20260807150000_require_aal2_for_mfa_users.sql','utf8').split('-- Kullanıcı verisi tutan her tabloya')[0]);
+  // Replay the real schema move: production keeps the MFA helper private.
+  await db.exec(fs.readFileSync('supabase/migrations/20260810105303_d1a19a1a-e550-4c31-a2d8-aaf42e0b690d.sql', 'utf8').split('REVOKE ALL ON FUNCTION public.acceptable_aal_levels()')[0]);
+  await db.exec(fs.readFileSync('supabase/migrations/20260810113522_c8e948ee-c79a-4e95-83d2-c330dc2f558b.sql', 'utf8'));
+  assert.equal((await db.query("select to_regprocedure('public.has_sufficient_aal()') as helper")).rows[0].helper, null);
   const migration = fs.readdirSync('supabase/migrations').find((name) => name.endsWith('_learning_progress_sync.sql'));
   await db.exec(fs.readFileSync(`supabase/migrations/${migration}`, 'utf8'));
   const login = async (id, aal = 'aal1') => { await db.exec('reset role; set role authenticated'); await db.query("select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claim.aal',$2,false)",[id,aal]); };

@@ -38,7 +38,7 @@ Screenshots: [mobile map](screenshots/learning-map-mobile.png), [desktop map](sc
 - [MathWorks: parallel PID controller form](https://www.mathworks.com/help/control/ref/pid.html)
 - [KSB: pump operating point](https://www.ksb.com/en-global/centrifugal-pump-lexicon/article/operating-point-1117036)
 
-The numerical examples are original teaching models and are not installation-specific operating settings. No deployment or application version bump is included. The new progress migration must be deployed separately through the normal review process; its RLS includes the existing MFA requirement.
+The numerical examples are original teaching models and are not installation-specific operating settings. The progress migration was applied to the existing live database on 24 October 2026; see [deployment verification](live-sync-verification.md). No application version bump or application deployment is included.
 
 ## Completion checks
 
@@ -47,3 +47,7 @@ The numerical examples are original teaching models and are not installation-spe
 - `npm run i18n:verify`: complete extracted coverage, zero terminology/sense findings and complete checked paragraph coverage.
 
 See [the completion review](completion-review.md) for deployment requirements, source corrections and remaining editorial work.
+
+## Applied teaching follow-up
+
+All 331 previously flagged short topics now include a distinct application with reasoning and limits, available in both reading and guided modes. Primary further-reading links and checked offline English accompany the additions. See [scope, evidence and limits](depth-completion.md). The updated inventory has zero topics below the original 150-word triage threshold.

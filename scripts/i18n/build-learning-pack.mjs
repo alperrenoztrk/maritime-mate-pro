@@ -3,6 +3,15 @@ const input = 'scripts/i18n/verified/maritime-learning.json';
 const output = 'public/locales/shared/learning-guide.en.json';
 const entries = JSON.parse(fs.readFileSync(input, 'utf8'));
 const pack = Object.fromEntries(Object.entries(entries).map(([key, entry]) => [key, entry.en]));
+// Authored English cases are shared offline fallbacks in every language.
+// Select display fields explicitly: never translate stable IDs or metadata.
+const depthReviews = JSON.parse(fs.readFileSync('src/data/learningDepthReviews.json', 'utf8'));
+for (const { section } of depthReviews) {
+  for (const copy of [section.title, section.content, section.example.problem, ...section.example.steps, section.example.result]) pack[copy] = copy;
+}
+const sources = JSON.parse(fs.readFileSync('src/data/learningDepthSources.json', 'utf8'));
+for (const references of Object.values(sources)) for (const { title } of references) pack[title] = title;
+pack['Further reading'] = 'Further reading';
 const text = JSON.stringify(pack) + '\n';
 if (process.argv.includes('--check')) {
   if (fs.readFileSync(output, 'utf8') !== text) throw new Error('Learning language pack is stale. Run npm run i18n:learning.');

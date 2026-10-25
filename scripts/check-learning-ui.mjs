@@ -74,6 +74,17 @@ try {
   await goto("/lessons/stability/topics");
   assert(await page.locator('a[href="/lessons/stability/reference"]').isVisible(), "Legacy reference was removed");
   assert(await page.locator('a[href="/lessons/map"]').isVisible(), "Stability still bypasses the shared curriculum");
+  const depthReviews = JSON.parse(fs.readFileSync("src/data/learningDepthReviews.json", "utf8"));
+  for (const key of ["navigation", "machine-automation", "machine-environment-machine"]) {
+    const review = depthReviews.find(entry => entry.topicKey === key);
+    await goto(`/lessons/${key}/topics/${review.topicId}`);
+    const application = page.locator("section").filter({ has: page.getByRole("heading", { name: "Apply the principle", exact: true }) }).last();
+    await application.getByText(review.section.example.problem, { exact: true }).waitFor();
+    assert(await application.getByText(review.section.example.steps[0], { exact: false }).isVisible());
+    assert(await application.locator('aside[aria-label="Further reading"] a[href^="https://"]').count() > 0, "Applied teaching has no reference link");
+    await noOverflow();
+    if (key === "navigation") await page.screenshot({ path: path.join(output, "applied-reasoning-mobile.png"), fullPage: true });
+  }
   await goto("/exercises/navigation/topics/navigation-appraisal");
   assert(!((await page.locator('body').innerText()).toLowerCase().includes("short blast")), "Unrelated whistle question assigned to Appraisal");
   await goto("/exercises/navigation/topics/navigation-appraisal/learn");

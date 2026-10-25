@@ -164,6 +164,20 @@ export function LessonTeachCard({
           </div>
         </div>
       )}
+      {section.references && section.references.length > 0 && (
+        <aside aria-label="Further reading" className="space-y-2 border-t border-border/40 pt-4">
+          <p className="text-sm font-semibold text-foreground">Further reading</p>
+          <ul className="space-y-2">
+            {section.references.map((reference) => (
+              <li key={reference.url}>
+                <a href={reference.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4">
+                  {reference.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </section>
   );
 }
