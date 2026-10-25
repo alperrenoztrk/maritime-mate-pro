@@ -28,7 +28,7 @@ The immutable triage baseline is `1818fa67293606cf82b59c16afe848137253f538`; `de
 
 `learningDepthReviews.json` contains the applications. The common lesson model exposes them in the reader and guided sessions. `learningDepthSources.json` provides course-level primary further reading; these links support continued study and are not a claim that every existing assertion has been independently certified. Fundamental engineering references are not substitutes for current class rules, flag requirements or the installed equipment's approved manual.
 
-Checked English is included once in the shared offline language pack. Other languages retain this reviewed English when a reviewed translation is unavailable. Cache version 5 prevents an older pack from hiding the additions. The pure content module has its own native chunk to preserve the bundle-size limit.
+Checked English is included once in the shared offline language pack. Other languages retain this reviewed English when a reviewed translation is unavailable. Cache version 6 prevents an older pack from hiding the additions. The pure content module has its own native chunk to preserve the bundle-size limit.
 
 The progress migration is now live on the app's existing database. See [deployment evidence](live-sync-verification.md). Its MFA helper reference and local test fixture were corrected to reflect the existing `private` schema. The separate similarly named Supabase project was not changed.
 

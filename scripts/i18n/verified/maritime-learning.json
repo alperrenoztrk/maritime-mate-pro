@@ -3133,5 +3133,17 @@
   },
   "A contact thermometer indicates the system temperature after reaching thermal equilibrium. Check calibration, thermal contact and response time before interpreting a changing reading.": {
     "en": "A contact thermometer indicates the system temperature after reaching thermal equilibrium. Check calibration, thermal contact and response time before interpreting a changing reading."
+  },
+  "Fix time": {
+    "en": "Fix time"
+  },
+  "Loading article…": {
+    "en": "Loading article…"
+  },
+  "The article cannot be loaded right now. Try again later.": {
+    "en": "The article cannot be loaded right now. Try again later."
+  },
+  "The full article could not be loaded; showing the summary.": {
+    "en": "The full article could not be loaded; showing the summary."
   }
 }
