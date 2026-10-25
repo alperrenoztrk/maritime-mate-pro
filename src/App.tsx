@@ -82,6 +82,7 @@ const Formulas = lazy(() => import("./pages/Formulas"));
 const Regulations = lazy(() => import("./pages/Regulations"));
 const StabilityFormulasPage = lazy(() => import("./pages/StabilityFormulas"));
 const Glossary = lazy(() => import("./pages/Glossary"));
+const SavedPage = lazy(() => import("./pages/SavedPage"));
 
 const StabilityFormulaDetailPage = lazy(() => import("./pages/StabilityFormulaDetail"));
 const NavigationFormulasPage = lazy(() => import("./pages/NavigationFormulas"));
@@ -282,6 +283,7 @@ const AnimatedRoutes = () => {
         <Route path="/library" element={<PageTransition><LibraryHubPage /></PageTransition>} />
         <Route path="/search" element={<PageTransition><SearchPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
+        <Route path="/saved" element={<PageTransition><SavedPage /></PageTransition>} />
         <Route path="/notes" element={<PageTransition><NotesPage /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />

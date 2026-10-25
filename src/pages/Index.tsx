@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Crown } from "lucide-react";
 import { useEntitlement } from "@/contexts/useEntitlement";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
+import { StudyShortcuts } from "@/components/home/StudyShortcuts";
 import { NewsPanel } from "@/components/home/NewsPanel";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { hapticSelection } from "@/lib/haptics";
@@ -120,7 +121,12 @@ const Index = () => {
             transition={{ duration: reduceMotion ? 0 : MOTION_SECONDS.control, ease: MOTION_EASE_OUT }}
             className="col-start-1 row-start-1 py-5"
           >
-            {activeView === "overview" && <AppIconGrid />}
+            {activeView === "overview" && (
+              <div className="space-y-6">
+                <StudyShortcuts />
+                <AppIconGrid />
+              </div>
+            )}
             {activeView === "news" && <NewsPanel />}
             {activeView === "widgets" && <HomeWidgetGrid />}
           </motion.section>
