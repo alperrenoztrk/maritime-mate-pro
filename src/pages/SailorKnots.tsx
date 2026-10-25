@@ -62,7 +62,9 @@ export default function SailorKnotsPage() {
           <h1 className="text-3xl font-bold md:text-4xl">Seamanship knots</h1>
         </div>
 
-        {/* Search */}
+        <p className="mb-4 text-sm leading-relaxed text-muted-foreground">Written tying steps remain available without a connection. The demonstration videos are hosted by external YouTube channels and require internet access.</p>
+
+        {/* Search */
         <div className="relative mb-3">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input

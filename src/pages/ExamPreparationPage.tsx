@@ -169,42 +169,38 @@ const examPresets = [
 const deckOfficerExams = [
   {
     id: "3rd-officer",
-    title: "3rd Officer Exam",
-    description: "Officer of the Watch qualification",
+    title: "3rd Officer / OOW Practice",
+    description: "Deck watchkeeping study mix",
     modules: ["navigation", "stability", "safety", "seamanship", "meteorology"],
     questionDistribution: { navigation: 30, stability: 25, safety: 20, seamanship: 15, meteorology: 10 },
     totalQuestions: 50,
-    passingScore: 60,
     icon: Star
   },
   {
     id: "2nd-officer",
-    title: "2nd Officer Exam",
-    description: "Chief Watchkeeping Officer qualification",
+    title: "Second Officer Practice",
+    description: "Deck watchkeeping revision",
     modules: ["navigation", "stability", "safety", "cargo", "seamanship"],
     questionDistribution: { navigation: 25, stability: 25, safety: 20, cargo: 20, seamanship: 10 },
     totalQuestions: 50,
-    passingScore: 65,
     icon: Star
   },
   {
     id: "chief-officer",
-    title: "1st Officer Exam",
-    description: "Chief Officer qualification",
+    title: "Chief Officer Practice",
+    description: "Deck management-level revision",
     modules: ["navigation", "stability", "safety", "cargo", "seamanship"],
     questionDistribution: { navigation: 20, stability: 30, safety: 15, cargo: 25, seamanship: 10 },
     totalQuestions: 60,
-    passingScore: 70,
     icon: Flame
   },
   {
     id: "master",
-    title: "Master Exam",
-    description: "Ship Master qualification",
+    title: "Master Practice",
+    description: "Command-level knowledge revision",
     modules: ["navigation", "stability", "safety", "cargo", "seamanship", "meteorology"],
     questionDistribution: { navigation: 20, stability: 25, safety: 15, cargo: 20, seamanship: 10, meteorology: 10 },
     totalQuestions: 75,
-    passingScore: 75,
     icon: Trophy
   }
 ];
@@ -420,6 +416,7 @@ export default function ExamPreparationPage() {
       </div>
 
       <div className="max-w-6xl mx-auto p-4 space-y-6">
+        <p className="text-sm leading-relaxed text-muted-foreground">Practice questions support revision. Results are personal study scores, not STCW certificates or official national examination results.</p>
         {/* Last score display */}
         {lastScore && (
           <motion.div
@@ -459,7 +456,7 @@ export default function ExamPreparationPage() {
             </TabsTrigger>
             <TabsTrigger value="officer" className="gap-2">
               <Award className="h-4 w-4" />
-              Officer Exams
+              Officer Practice
             </TabsTrigger>
             <TabsTrigger value="stats" className="gap-2">
               <BarChart3 className="h-4 w-4" />
@@ -654,14 +651,14 @@ export default function ExamPreparationPage() {
                                 </span>
                                 <span className="flex items-center gap-1">
                                   <Award className="h-4 w-4" />
-                                  Pass: %{exam.passingScore}
+                                  Unofficial study mix
                                 </span>
                               </div>
                               <Button 
                                 className="gap-2"
                                 onClick={() => startOfficerExam(exam.id)}
                               >
-                                Start Exam
+                                Start Practice
                                 <ChevronRight className="h-4 w-4" />
                               </Button>
                             </div>
@@ -680,9 +677,9 @@ export default function ExamPreparationPage() {
                 <div className="flex items-start gap-3">
                   <GraduationCap className="h-5 w-5 text-primary mt-0.5" />
                   <div className="text-sm text-muted-foreground space-y-1">
-                    <p><strong>Note:</strong> These exams simulate real STCW exams.</p>
-                    <p>Question distributions have been prepared based on IMO qualification tables.</p>
-                    <p>Real exams also include oral and practical assessments.</p>
+                    <p><strong>Independent practice only.</strong> These quizzes are not official STCW exams, certification assessments or evidence of competence.</p>
+                    <p>Question weights are editorial study selections, not an IMO or national exam blueprint. No pass mark is claimed.</p>
+                    <p>Qualification and assessment requirements depend on the relevant maritime administration and approved training provider.</p>
                   </div>
                 </div>
               </CardContent>
