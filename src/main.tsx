@@ -184,6 +184,7 @@ const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     splash.classList.add('splash-hide');
+    window.dispatchEvent(new Event('splash:hidden'));
     // The native-style fade is .16s — remove only after it has finished.
     setTimeout(() => splash.remove(), 180);
   }
