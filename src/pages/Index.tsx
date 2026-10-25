@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { fetchHomeNews, readCachedNews, HOME_NEWS_QUERY_KEY } from "@/services/maritimeNews";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Crown } from "lucide-react";
@@ -22,6 +24,26 @@ const Index = () => {
   const reduceMotion = useReducedMotion();
   const navigate = useNavigate();
   const { hasProAccess, loading: entitlementLoading } = useEntitlement();
+  const queryClient = useQueryClient();
+
+  // Warm the news page as soon as home is shown so it opens instantly.
+  useEffect(() => {
+    const cached = readCachedNews();
+    if (cached && !queryClient.getQueryData(HOME_NEWS_QUERY_KEY)) {
+      queryClient.setQueryData(HOME_NEWS_QUERY_KEY, cached.data, { updatedAt: cached.savedAt });
+    }
+    void queryClient
+      .prefetchQuery({ queryKey: HOME_NEWS_QUERY_KEY, queryFn: fetchHomeNews, staleTime: 5 * 60 * 1000 })
+      .then(() => {
+        const items = queryClient.getQueryData<{ items?: { imageUrl?: string }[] }>(HOME_NEWS_QUERY_KEY)?.items ?? [];
+        items.slice(0, 8).forEach((item) => {
+          if (!item.imageUrl) return;
+          const src = item.imageUrl.startsWith("//") ? `https:${item.imageUrl}` : item.imageUrl;
+          const img = new Image();
+          img.src = `https://images.weserv.nl/?url=${encodeURIComponent(src.replace(/^https?:\/\//, ""))}&w=240&h=160&fit=cover&output=webp&q=72`;
+        });
+      });
+  }, [queryClient]);
 
   return (
     <main className="relative min-h-[100svh] px-[max(1rem,var(--safe-left))] pt-[calc(var(--safe-top)+1.5rem)] text-foreground sm:px-[max(1.25rem,var(--safe-left))]">
