@@ -23,6 +23,7 @@ import {
 } from "@/data/curriculumHierarchy";
 import { getTopicRules } from "@/data/courseContent/rules";
 import type { RuleGroup } from "@/data/courseContent/types";
+import type { LessonFigureId } from "@/data/lessonFigures";
 
 /**
  * "Dersler Beta" birleşik içerik katmanı.
@@ -45,6 +46,7 @@ export interface BetaSection {
   example?: { problem: string; steps?: string[]; solution?: string; result?: string };
   table?: { headers: string[]; rows: string[][] };
   references?: Array<{ title: string; url: string }>;
+  figure?: LessonFigureId;
 }
 
 export interface BetaTopic {
@@ -383,6 +385,9 @@ function mapDeckTopic(
         : undefined,
       image: section.image,
       imageAlt: section.imageAlt,
+      table: section.table,
+      example: section.example,
+      figure: section.figure,
     })),
     keyPoints: topic.keyPoints,
   };

@@ -2445,11 +2445,26 @@ export const navigationLessonFlows: LessonFlow[] = [
         correctAnswer: 0,
         explanation: "Kardinal işaret yönseldir: kuzey kardinali tehlikenin kuzeyinden geç der; ışık ritmi yön bilgisi taşır.",
       },
+    ],
+  },
+  {
+    topicKey: "navigation",
+    topicTitle: "Deniz fenerleri ve ışık karakteristikleri",
+    blocks: [
+      { sectionTitles: ["Fenerler ne işe yarar?", "Işık karakteristiği nedir?", "Haritadaki fener kaydı nasıl okunur?"] },
+      { sectionTitles: ["Temel ışık ritimleri", "Hızlı çakarlar: Q, VQ, UQ"] },
+      { sectionTitles: ["IALA Bölge A'da ışıklı işaretler", "Kardinal ışıklar"] },
+      { sectionTitles: ["Sektör ışıkları", "Leading lights"] },
+      { sectionTitles: ["Üç menzil kavramı", "Coğrafi menzil hesabı"] },
+      { sectionTitles: ["Köprüüstünde fener teşhisi", "Operasyonel uyarılar", "Başvuru kaynakları"] },
+    ],
+    // Moved from "Harita sembolleri ve kısaltmalar"; this lesson now teaches both in depth.
+    questions: [
       {
-        id: 3,
-        sectionRef: "Kardinal ışık imzaları",
+        id: 1,
+        sectionRef: "Kardinal ışıklar",
         category: NAV,
-        question: "'VQ(6)+LFl 15s' ışık imzası hangi kardinal işareti gösterir?",
+        question: "'VQ(6)+LFl 10s' ışık imzası hangi kardinal işareti gösterir?",
         options: [
           "Güney kardinal",
           "Kuzey kardinal",
@@ -2460,8 +2475,8 @@ export const navigationLessonFlows: LessonFlow[] = [
         explanation: "Altılı grup + uzun çakar güney kardinaldir; tehlikenin güneyinden emniyetli geçiş yapılır.",
       },
       {
-        id: 4,
-        sectionRef: "Görünme mesafesi ve ufuk mesafesi",
+        id: 2,
+        sectionRef: "Üç menzil kavramı",
         category: NAV,
         question: "Bir ışığın görünmesinde iki sınır (parlaklık ve ufuk) varsa hangisi geçerlidir?",
         options: [
@@ -2471,7 +2486,7 @@ export const navigationLessonFlows: LessonFlow[] = [
           "Yalnızca nominal range",
         ],
         correctAnswer: 0,
-        explanation: "Nominal (parlaklık) ve geometrik (ufuk, D=2.08(√h1+√h2)) sınırlardan küçük olanı belirleyicidir.",
+        explanation: "Parlaklığa bağlı ışıklı menzil ile ufka bağlı coğrafi menzilden (D = 2,08 × (√H + √h)) küçük olanı belirleyicidir.",
       },
     ],
   },

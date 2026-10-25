@@ -2168,12 +2168,13 @@
     "section": {
       "id": "navigation-heading-cog-iliskisi-applied-reasoning",
       "title": "Apply the principle",
-      "content": "Heading describes the bow direction; course over ground describes displacement over the seabed. Leeway can also separate heading from the through-water velocity, so a current triangle that ignores wind is a simplified model. Compare instruments using the same true or magnetic reference and time interval.",
+      "content": "Heading describes the bow direction; course over ground describes displacement over the seabed. Leeway can also separate heading from the through-water velocity, so a current triangle that ignores wind is a simplified model. Compare instruments using the same true or magnetic reference and time interval. Wrap angular differences across north: heading 359°T versus desired course 001°T is 2 degrees to port, not a 358-degree correction.",
       "example": {
         "problem": "A vessel makes 10 kn north through the water while a 2 kn current sets east. Assume no leeway. Find the ground track.",
         "steps": [
           "Resolve north and east components: 10 kn north and 2 kn east.",
-          "The angle east of north is arctan(2/10) = 11.3 degrees; ground speed is sqrt(104) = 10.20 kn."
+          "The angle east of north is arctan(2/10) = 11.3 degrees; ground speed is sqrt(104) = 10.20 kn.",
+          "To make good north at 10 kn through the water, cancel the 2 kn east current with a 2 kn westward component: heading = 360° - arcsin(2/10) = 348.46°T; northward SOG = sqrt(100 - 4) = 9.80 kn."
         ],
         "result": "Heading 000°T produces COG approximately 011°T. To maintain a northward track, steer into the current and recompute the triangle; do not simply substitute COG for heading."
       }
