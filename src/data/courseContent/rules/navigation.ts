@@ -4,7 +4,7 @@ import type { RuleGroup } from "@/data/courseContent/types";
  * Navigation rules.
  *
  * The content is taken verbatim from the real, cited regulations on the
- * src/pages/NavigationRules.tsx page:
+ * former NavigationRules page:
  *  - COLREG 1972 (International Regulations for Preventing Collisions at Sea)
  *  - IALA Maritime Buoyage System
  *  - SOLAS Chapters IV / V, GMDSS
