@@ -4,8 +4,8 @@ export type SearchScopeId = "all" | "learn" | "tools" | "reference" | "operation
 
 export const SEARCH_SCOPES: ReadonlyArray<{ id: SearchScopeId; label: string }> = [
   { id: "all", label: "All" },
-  { id: "learn", label: "Dersler" },
-  { id: "tools", label: "tools" },
+  { id: "learn", label: "Lessons" },
+  { id: "tools", label: "Tools" },
   { id: "reference", label: "Resources" },
   { id: "operations", label: "Operations" },
 ];
