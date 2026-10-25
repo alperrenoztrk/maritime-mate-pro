@@ -19,6 +19,8 @@ describe("studyActivity", () => {
   it("classifies study routes", () => {
     assert.equal(studyKindFor("/exercises/stability/topics/GM"), "Exercise");
     assert.equal(studyKindFor("/lessons/navigation/topics/Lights"), "Lesson");
+    assert.equal(studyKindFor("/stcw-study-paths"), "Reference");
+    assert.equal(studyKindFor("/inspections/sire-readiness"), "Reference");
     assert.equal(studyKindFor("/settings"), null);
   });
 
