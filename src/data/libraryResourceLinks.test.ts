@@ -8,7 +8,7 @@ const matches = (to: string) =>
   routes.some((r) => new RegExp(`^${r.replace(/:[^/]+/g, "[^/]+").replace("*", ".*")}$`).test(to));
 
 describe("library resources", () => {
-  const deckKeys = [...readFileSync(new URL("./betaLessons.ts", import.meta.url), "utf8").matchAll(/^  "([a-z-]+)",$/gm)].map((m) => m[1]);
+  const deckKeys = [...readFileSync(new URL("./betaLessons.ts", import.meta.url), "utf8").matchAll(/^ {2}"([a-z-]+)",$/gm)].map((m) => m[1]);
   const items = [
     ...STATIC_SECTIONS.flatMap((s) => s.items),
     ...[...deckKeys, "machine-engine-room-safety"].map((k) => ({ title: k, to: categoryHref(k) })),
