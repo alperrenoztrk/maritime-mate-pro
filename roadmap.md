@@ -1,7 +1,7 @@
 # Roadmap (closed-test feedback plan)
 
 - [x] 1a. Continue card + Saved bookmarks (device-local)
-- [ ] 1b. Global search across lessons/exercises/glossary/PSC/knots
+- [x] 1b. Library hub gathers all resources (deck, engine, exercises, PSC/SIRE, knots, references)
 - [ ] 2. Cranes & lifting calculators (SWL/WLL, sling angle) — needs verified source tables
 - [ ] 2. Stability step-by-step worked examples with heel animation
 - [ ] 3. Exercises: mistake notebook, per-topic progress, timed exam mode
