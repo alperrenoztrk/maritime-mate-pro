@@ -35,10 +35,10 @@ const Index = () => {
     void queryClient
       .prefetchQuery({ queryKey: HOME_NEWS_QUERY_KEY, queryFn: fetchHomeNews, staleTime: 5 * 60 * 1000 })
       .then(() => {
-        const items = queryClient.getQueryData<{ items?: { image?: string }[] }>(HOME_NEWS_QUERY_KEY)?.items ?? [];
+        const items = queryClient.getQueryData<{ items?: { imageUrl?: string }[] }>(HOME_NEWS_QUERY_KEY)?.items ?? [];
         items.slice(0, 8).forEach((item) => {
-          if (!item.image) return;
-          const src = item.image.startsWith("//") ? `https:${item.image}` : item.image;
+          if (!item.imageUrl) return;
+          const src = item.imageUrl.startsWith("//") ? `https:${item.imageUrl}` : item.imageUrl;
           const img = new Image();
           img.src = `https://images.weserv.nl/?url=${encodeURIComponent(src.replace(/^https?:\/\//, ""))}&w=240&h=160&fit=cover&output=webp&q=72`;
         });
