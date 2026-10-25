@@ -4,7 +4,7 @@ import type { RuleGroup } from "@/data/courseContent/types";
  * Environmental rules.
  *
  * The content is taken from the real, cited regulations on the
- * src/pages/EmissionRules.tsx page. The nested sub-sections of that page have
+ * former EmissionRules page. The nested sub-sections of that page have
  * been preserved, each as a separate RuleSection:
  *  - MARPOL Annex VI (air pollution — SOx, NOx, energy efficiency)
  *  - BWM Convention (Balast Suyu)
