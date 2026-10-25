@@ -4,13 +4,11 @@ import {
   BookOpen,
   Bookmark,
   ChevronRight,
-  ClipboardList,
   FlaskConical,
+  Library,
   Settings,
-  Ship,
   Sparkles,
   StickyNote,
-  Users,
   type LucideIcon,
 } from "lucide-react";
 import { hapticImpact } from "@/lib/haptics";
@@ -24,13 +22,11 @@ interface AppShortcut {
 }
 
 const APPS: AppShortcut[] = [
+  { label: "All resources", to: "/library", icon: Library },
   { label: "Learning map", to: "/lessons/map", icon: BookOpen },
   { label: "Lessons", to: "/lessons", icon: BookOpen },
   { label: "Saved", to: "/saved", icon: Bookmark },
   { label: "Exercises", to: "/exercises", icon: Sparkles },
-  { label: "Personnel", to: "/crew", icon: Users },
-  { label: "Ship Systems", to: "/ship-systems", icon: Ship },
-  { label: "Operations", to: "/ship-operations", icon: ClipboardList },
   { label: "Dictionary", to: "/glossary", icon: BookA },
   { label: "Beta", to: "/beta", icon: FlaskConical },
   { label: "Notes", to: "/notes", icon: StickyNote },
