@@ -49,10 +49,10 @@ jobs:
           script: |
             adb shell svc wifi disable
             adb shell svc data disable
-            ./android/gradlew -p android installDebug --stacktrace
+            ./android/gradlew -p android :app:installDebug --stacktrace
             adb shell pm grant com.marinersbook.app android.permission.ACCESS_COARSE_LOCATION
             adb shell pm grant com.marinersbook.app android.permission.ACCESS_FINE_LOCATION
-            ./android/gradlew -p android connectedDebugAndroidTest --stacktrace
+            ./android/gradlew -p android :app:connectedDebugAndroidTest --stacktrace
       - name: Preserve device test evidence
         if: always()
         uses: actions/upload-artifact@v4
