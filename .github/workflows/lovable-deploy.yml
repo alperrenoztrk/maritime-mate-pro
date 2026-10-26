@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Check page imports and chunk recovery
+        run: npm run test:page-loading
+
       - name: Run validation tests
         run: npm run test:validation
 
