@@ -329,6 +329,12 @@
  "Cardinal Marks": {
   "en": "Cardinal Marks"
  },
+ "Cardinal lights are white: North Q or VQ (uninterrupted); East Q(3) 10s or VQ(3) 5s; South Q(6)+LFl 15s or VQ(6)+LFl 10s; West Q(9) 15s or VQ(9) 10s.": {
+  "en": "Cardinal lights are white: North Q or VQ (uninterrupted); East Q(3) 10s or VQ(3) 5s; South Q(6)+LFl 15s or VQ(6)+LFl 10s; West Q(9) 15s or VQ(9) 10s."
+ },
+ "Cardinal marks: black and yellow, with a topmark of two black cones. A cardinal mark is named after the quadrant (N, E, S, W) around the danger in which it is placed, and is passed on its named side.": {
+  "en": "Cardinal marks: black and yellow, with a topmark of two black cones. A cardinal mark is named after the quadrant (N, E, S, W) around the danger in which it is placed, and is passed on its named side."
+ },
  "Cardinal marks: black and yellow; the topmark consists of two black cones. The direction of the cones shows which side to pass.": {
   "en": "Cardinal marks: black and yellow; the topmark consists of two black cones. The direction of the cones shows which side to pass."
  },
@@ -643,6 +649,12 @@
  },
  "Intermediate values are kept at full precision in the calculation engine; the rounding shown is not carried into the next step. Verify the results against the ship-specific approved documentation and instrument output.": {
   "en": "Intermediate values are kept at full precision in the calculation engine; the rounding shown is not carried into the next step. Verify the results against the ship-specific approved documentation and instrument output."
+ },
+ "Isolated Danger, Safe Water and Special Marks": {
+  "en": "Isolated Danger, Safe Water and Special Marks"
+ },
+ "Isolated danger mark: black with one or more broad red horizontal bands; topmark of two black spheres; white light Fl(2).": {
+  "en": "Isolated danger mark: black with one or more broad red horizontal bands; topmark of two black spheres; white light Fl(2)."
  },
  "It arises from the difference between the LCF (the longitudinal position of the centre of flotation) and midships.": {
   "en": "It arises from the difference between the LCF (the longitudinal position of the centre of flotation) and midships."
