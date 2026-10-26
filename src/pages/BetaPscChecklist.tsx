@@ -104,10 +104,6 @@ export default function BetaPscChecklist() {
     <div
       className="relative min-h-screen overflow-hidden px-4 pb-24 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))]"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-amber-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-orange-500/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-6">
         <header className="space-y-3">

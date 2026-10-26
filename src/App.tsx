@@ -71,7 +71,6 @@ const BuoyagePage = lazy(() => import("./pages/Buoyage"));
 const SoundSignalsPage = lazy(() => import("./pages/SoundSignals"));
 const StabilityAnalysisPage = lazy(() => import("./pages/StabilityAnalysis"));
 const StableTalesPage = lazy(() => import("./pages/StableTales"));
-const EmptyPage = lazy(() => import("./pages/EmptyPage"));
 const ConverterPage = lazy(() => import("./pages/Converter"));
 const PassagePlanPage = lazy(() => import("./pages/PassagePlanPage"));
 const MoonPhases = lazy(() => import("./pages/MoonPhases"));
@@ -435,7 +434,7 @@ const AnimatedRoutes = () => {
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
         <Route path="/economics/assistant" element={<PageTransition><EconomicsAssistantPage /></PageTransition>} />
         <Route path="/economics/quiz" element={<PageTransition><ProRoute feature="The quiz section"><EconomicsQuizPage /></ProRoute></PageTransition>} />
-        <Route path="/empty-page" element={<PageTransition><EmptyPage /></PageTransition>} />
+        <Route path="/empty-page" element={<Navigate to="/" replace />} />
         <Route path="/moon-phases" element={<PageTransition><MoonPhases /></PageTransition>} />
         <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
         <Route path="/image-credits" element={<PageTransition><ImageCreditsPage /></PageTransition>} />

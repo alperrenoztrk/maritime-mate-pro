@@ -81,7 +81,10 @@
     "check:learning-ui": "node scripts/check-learning-ui.mjs",
     "test:learning-progress": "node --import tsx --test src/utils/learningProgress.test.ts && node scripts/check-learning-progress-db.mjs",
     "check:learning-content": "node scripts/audit-learning-content.mjs --check",
-    "i18n:overrides": "node scripts/i18n/build-terminology-overrides.mjs"
+    "i18n:overrides": "node scripts/i18n/build-terminology-overrides.mjs",
+    "check:launch-ui": "node scripts/check-launch-ui.mjs",
+    "check:legacy-pages": "node scripts/check-legacy-pages.mjs",
+    "test:splash": "node --test scripts/splash-regression.test.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",

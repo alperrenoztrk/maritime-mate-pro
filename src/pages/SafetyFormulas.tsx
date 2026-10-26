@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sigma, Flame, Droplets, Wind } from "lucide-react";
@@ -85,11 +86,7 @@ export default function SafetyFormulasPage() {
           </div>
         </div>
 
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 bg-clip-text text-transparent">
-            Safety Formulas
-          </h1>
-        </div>
+        <PageHeader className="mb-5" title="Safety Formulas" />
 
         <div className="grid gap-6">
           {safetyFormulas.map((formula, index) => (

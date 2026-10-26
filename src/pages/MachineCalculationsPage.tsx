@@ -3,7 +3,7 @@ import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Wrench } from "lucide-react";
 import { EngineCalculations } from "@/components/calculations/EngineCalculations";
 import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -123,8 +123,7 @@ export default function MachineCalculationsPage() {
 
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Engine"
+      <CalculationPage
         title="Machine Calculations"
       >
         <Card className="border-border/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
@@ -183,7 +182,7 @@ export default function MachineCalculationsPage() {
             <EngineCalculations />
           </CardContent>
         </Card>
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 }

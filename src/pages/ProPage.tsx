@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Crown, Check, RefreshCw, ExternalLink, WifiOff, Infinity as InfinityIcon, LogIn, Lock } from "lucide-react";
@@ -151,13 +152,8 @@ const ProPage = () => {
       <div className="min-h-screen p-4">
         <div className="max-w-4xl mx-auto space-y-6">
 
-          <div className="text-center space-y-3">
-            <div className="flex items-center justify-center gap-3">
-              <Crown className="h-10 w-10 text-amber-400" />
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-                <span data-translatable>Mariner's Book Pro</span>
-              </h1>
-            </div>
+          <div className="space-y-3">
+            <PageHeader title="Mariner's Book Pro" />
             <p className="text-muted-foreground text-sm">
               <span data-translatable>
                 With all the books, advanced calculations, and an AI assistant, your marine savant is always with you — even offline on board.

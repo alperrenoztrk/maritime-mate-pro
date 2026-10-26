@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calculator, Fuel, Thermometer, Gauge, Zap, Droplets } from "lucide-react";
@@ -201,18 +202,10 @@ const formulaCategories = [
 export default function MachineFormulas() {
   return (
     <div className="min-h-screen">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -left-32 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl" />
-      </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-12">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 py-3">
 
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold bg-gradient-to-r from-slate-600 via-zinc-600 to-slate-800 bg-clip-text text-transparent mb-3">
-            Machine Formulas
-          </h1>
-        </div>
+        <PageHeader className="mb-5" title="Machine Formulas" />
 
         <div className="space-y-8">
           {formulaCategories.map((category) => (

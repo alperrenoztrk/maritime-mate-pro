@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import type { ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -584,21 +585,14 @@ export default function RegulationDetailPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden px-4 py-8 sm:py-10">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-20 left-1/3 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <header className="mb-6 rounded-2xl border border-border/50 bg-card/65 p-4 shadow-sm sm:p-6">
+        <header className="mb-5">
           <div className="flex flex-col gap-4">
             <div className="flex items-start gap-3">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-blue-500 text-white shadow-lg">
-                <ShieldCheck className="h-6 w-6" />
-              </span>
               <div className="min-w-0">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">{regulation.category}</p>
-                <h1 className="mt-1 text-2xl font-black leading-tight text-foreground sm:text-4xl">{regulation.label}</h1>
+                <p className="text-sm text-muted-foreground">{regulation.category}</p>
+                <PageHeader title={regulation.label} />
               </div>
             </div>
             <div className="flex flex-wrap gap-2 text-micro font-semibold text-muted-foreground">

@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sigma, Wind, Waves, Thermometer, CloudRain } from "lucide-react";
 
@@ -94,11 +95,7 @@ export default function MeteorologyFormulasPage() {
           </div>
         </div>
 
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-            Meteorology Formulas
-          </h1>
-        </div>
+        <PageHeader className="mb-5" title="Meteorology Formulas" />
 
         <div className="grid gap-6">
           {meteorologyFormulas.map((formula, index) => (

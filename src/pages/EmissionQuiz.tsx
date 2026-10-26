@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -179,21 +180,10 @@ export default function EmissionQuiz() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -left-32 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
-      </div>
 
-      <div className="relative z-10 max-w-2xl mx-auto px-6 py-12">
+      <div className="relative z-10 max-w-2xl mx-auto px-4 py-3">
 
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-flex items-center justify-center p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl mb-4">
-            <Leaf className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
-          </div>
-          <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
-            Environment Quiz
-          </h1>
-        </div>
+        <PageHeader className="mb-5" title="Environment Quiz" />
 
         {!showResult ? (
           <Card className="border-border/60 bg-card/85 animate-fade-in">
