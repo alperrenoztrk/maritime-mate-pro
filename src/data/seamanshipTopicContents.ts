@@ -17,7 +17,7 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
   "Halatlar, Knot ve Bağlama Teknikleri": {
     title: "Halatlar, Knot ve Bağlama Teknikleri",
     introduction:
-      "Halat işçiliği (marlinspike seamanship), gemiciliğin temelidir. Doğru halat seçimi, doğru düğüm (knot) ve dikiş (splice), hem operasyonel verimi hem can güvenliğini belirler. Halatın malzemesi, dayanımı ve bakımı; bağlama, yedekleme ve yük operasyonlarında kritik rol oynar.",
+      "Halat işçiliği, gemiciliğin temelidir. Doğru halat seçimi, doğru düğüm (knot) ve dikiş (splice), hem operasyonel verimi hem can güvenliğini belirler. Halatın malzemesi, dayanımı ve bakımı; bağlama, yedekleme ve yük operasyonlarında kritik rol oynar.",
     sections: [
       {
         title: "Halat Türleri ve Özellikleri",
