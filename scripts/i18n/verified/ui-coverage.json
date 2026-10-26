@@ -404,5 +404,56 @@
  },
  "MHWS": {
   "en": "MHWS"
+ },
+ "All resources": {
+  "en": "All resources"
+ },
+ "Engine Library": {
+  "en": "Engine Library"
+ },
+ "Fix time": {
+  "en": "Fix time"
+ },
+ "Inspections": {
+  "en": "Inspections"
+ },
+ "Knot Tutorials": {
+  "en": "Knot Tutorials"
+ },
+ "Lessons": {
+  "en": "Lessons"
+ },
+ "Library — Mariner's Book": {
+  "en": "Library — Mariner's Book"
+ },
+ "Loading article…": {
+  "en": "Loading article…"
+ },
+ "Practice": {
+  "en": "Practice"
+ },
+ "PSC / SIRE Checklist": {
+  "en": "PSC / SIRE Checklist"
+ },
+ "Saved": {
+  "en": "Saved"
+ },
+ "Seamanship Skills": {
+  "en": "Seamanship Skills"
+ },
+ "Search all resources": {
+  "en": "Search all resources"
+ },
+ "Ship & Crew": {
+  "en": "Ship & Crew"
+ },
+ "Tap the bookmark at the top of any lesson or exercise to keep it here.": {
+  "en": "Tap the bookmark at the top of any lesson or exercise to keep it here."
+ },
+ "The article cannot be loaded right now. Try again later.": {
+  "en": "The article cannot be loaded right now. Try again later."
+ },
+ "The full article could not be loaded; showing the summary.": {
+  "en": "The full article could not be loaded; showing the summary."
  }
 }

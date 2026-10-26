@@ -64,8 +64,14 @@ npm run check:design-system
 npm run i18n:verify
 npm run build:native
 ```
+`i18n:check` için önce `npm run i18n:extract` çalışmalı
+(`source-strings.json` repoda tutulmuyor). Hepsini sırayla `/precommit`
+skill'i çalıştırır ve commit mesajı taslağını self-check listesiyle hazırlar.
+Çeviri/ders metni değişikliğinden sonra `terminology-reviewer` subagent'ı
+(`.claude/agents/`, yalnız okur) terimleri GLOSSARY.md'ye göre denetler.
 Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğrula
-(`.claude/skills/verify`).
+(`.claude/skills/verify`). `.env` ve keystore dosyaları
+`.claude/settings.json`'daki `permissions.deny` ile okunamaz/düzenlenemez.
 
 ## Görsel iş akışı
 - Wikimedia Commons'a sadece GitHub Actions üzerinden erişilir:
@@ -82,7 +88,9 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
 
 ## Yayın
 - `main`'e her push `android-release.yml`'i çalıştırır ve imzalı AAB üretir
-  (artifact: `marine-expert-pro-release-aab`).
+  (artifact: `marine-expert-pro-release-aab`). Build'den önce `i18n:extract`,
+  `i18n:verify` ve svg/ux/tasarım kontrolleri çalışır; biri kalırsa AAB
+  üretilmez.
 - Production build'den önce repo değişkeni `PRO_GATING_ENABLED=true` olmalı
   (`src/config/proGating.ts`). Kapalı testte kapalı kalır.
 
