@@ -472,32 +472,32 @@ export const SafetyCalculations = () => {
       setResult(calculatedResult);
       setCalcSteps({
         anchoring: [
-          { step: 1, title: "wind force", formula: "Wind = 0.5 × ρair × Cd × A × V²", result: `Wind = ${anchoring.windForce.toFixed(2)} ton` },
-          { step: 2, title: "current force", formula: "Fact = 0.5 × ρsu × Cd × A × V²", result: `Fact = ${anchoring.currentForce.toFixed(2)} ton` },
-          { step: 3, title: "Total circumferential force", formula: "Ftotal = (Wind + Current) × Wave factor", result: `Ftoplam = ${anchoring.totalForce.toFixed(2)} ton` },
-          { step: 4, title: "chain length", formula: "L = Kapsam × Efektif Derinlik", result: `Recommended = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
-          { step: 5, title: "holding power", formula: "HP = (Anchor Weight / 1000) × Ground Factor", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} tons, Safety Factor = ${anchoring.safetyFactor.toFixed(2)}` },
+          { step: 1, title: "wind force", formula: "Wind = 0.5 × ρair × Cd × A × V²", result: `Wind = ${anchoring.windForce.toFixed(2)} t` },
+          { step: 2, title: "current force", formula: "Fcurrent = 0.5 × ρwater × Cd × A × V²", result: `Fcurrent = ${anchoring.currentForce.toFixed(2)} t` },
+          { step: 3, title: "Total environmental force", formula: "Ftotal = (Wind + Current) × Wave factor", result: `Ftotal = ${anchoring.totalForce.toFixed(2)} t` },
+          { step: 4, title: "chain length", formula: "L = Scope × Effective depth", result: `Recommended = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
+          { step: 5, title: "holding power", formula: "HP = (Anchor Weight / 1000) × Ground Factor", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} t, Safety Factor = ${anchoring.safetyFactor.toFixed(2)}` },
         ],
         mooring: [
-          { step: 1, title: "load per line", formula: "Load = Total Force / Number of Lines", result: `Load = ${mooring.mooringLineLoad.toFixed(2)} ton/hat` },
+          { step: 1, title: "load per line", formula: "Load = Total Force / Number of Lines", result: `Load = ${mooring.mooringLineLoad.toFixed(2)} t/line` },
           { step: 2, title: "Safety factor", formula: "SF = Breaking Load / (Line Load × Number of Lines)", result: `SF = ${mooring.mooringLineSafety.toFixed(2)}` },
         ],
         fireFighting: [
-          { step: 1, title: "Fire water flow rate", formula: "Q = Pompa Kapasitesi × Verimlilik", result: `Q = ${fireFighting.fireWaterFlow.toFixed(1)} m³/hour` },
-          { step: 2, title: "Hose access", formula: "Reach = √(2 × P × g) × factor", result: `Access = ${fireFighting.fireReach.toFixed(1)} m` },
+          { step: 1, title: "Fire water flow rate", formula: "Q = Pump capacity × Efficiency", result: `Q = ${fireFighting.fireWaterFlow.toFixed(1)} m³/hour` },
+          { step: 2, title: "Hose reach", formula: "Reach = √(2 × P × g) × factor", result: `Reach = ${fireFighting.fireReach.toFixed(1)} m` },
         ],
         lsa: [
-          { step: 1, title: "Total lifesaving capacity", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Toplam = ${lsa.totalLifeSavingCapacity} person (On board: ${data.totalPersonsOnBoard})` },
-          { step: 2, title: "SOLAS compliance", formula: "Capacity ≥ Number of People on Board", result: lsa.lsaCompliance ? "UYGUN" : "NOT SUITABLE" },
+          { step: 1, title: "Total life-saving capacity", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Total = ${lsa.totalLifeSavingCapacity} persons (on board: ${data.totalPersonsOnBoard})` },
+          { step: 2, title: "SOLAS compliance", formula: "Capacity ≥ Number of People on Board", result: lsa.lsaCompliance ? "COMPLIANT" : "NOT COMPLIANT" },
         ],
         freeboard: [
-          { step: 1, title: "freeboard account", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Real = ${freeboard.actualFreeboard.toFixed(2)} m` },
-          { step: 2, title: "Eligibility", formula: "Actual Freeboard ≥ Minimum Freeboard", result: freeboard.freeboardCompliance ? "UYGUN" : "NOT SUITABLE" },
+          { step: 1, title: "Freeboard calculation", formula: "Freeboard = Depth - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Actual = ${freeboard.actualFreeboard.toFixed(2)} m` },
+          { step: 2, title: "Freeboard compliance", formula: "Actual Freeboard ≥ Minimum Freeboard", result: freeboard.freeboardCompliance ? "COMPLIANT" : "NOT COMPLIANT" },
         ],
       });
       toast({
         title: "Calculation Completed",
-        description: "Deck and security calculations have been completed successfully.",
+        description: "Deck and safety calculations have been completed successfully.",
       });
     } catch (error) {
       toast({

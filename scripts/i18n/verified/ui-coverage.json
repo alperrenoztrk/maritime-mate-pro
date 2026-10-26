@@ -455,5 +455,44 @@
  },
  "The full article could not be loaded; showing the summary.": {
   "en": "The full article could not be loaded; showing the summary."
+ },
+ "Completing sign-in…": {
+  "en": "Completing sign-in…"
+ },
+ "Google blocks sign-in inside in-app browsers. Open this page in Chrome or Safari, or sign in with your email below.": {
+  "en": "Google blocks sign-in inside in-app browsers. Open this page in Chrome or Safari, or sign in with your email below."
+ },
+ "Google sign-in cannot run inside this preview. It opens in a new browser tab.": {
+  "en": "Google sign-in cannot run inside this preview. It opens in a new browser tab."
+ },
+ "Number of tubes": {
+  "en": "Number of tubes"
+ },
+ "The login link has been sent to your email. Open it on this device and you will be signed in automatically.": {
+  "en": "The login link has been sent to your email. Open it on this device and you will be signed in automatically."
+ },
+ "Where: W = load weight, h_hook = hook height, h_load = load height, Δ = displacement": {
+  "en": "Where: W = load weight, h_hook = hook height, h_load = load height, Δ = displacement"
+ },
+ "Rule of Twelfths:\nHour 1: 1/12 · TR\nHour 2: 2/12 · TR\nHour 3: 3/12 · TR\nHour 4: 3/12 · TR\nHour 5: 2/12 · TR\nHour 6: 1/12 · TR\n\nHeight of Tide:\nH = Low + (Rule_of_Twelfths × TidalRange)\nUKC = ChartedDepth + H − Draft − Squat\n\nHarmonic Analysis:\nh(t) = M + Σ[Aᵢ · cos(ωᵢt + φᵢ)]\n\nSecondary Port:\nH₂ = H₁ + Diff\nT₂ = T₁ + TimeDiff\n\nSources: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.": {
+  "en": "Rule of Twelfths:\nHour 1: 1/12 · TR\nHour 2: 2/12 · TR\nHour 3: 3/12 · TR\nHour 4: 3/12 · TR\nHour 5: 2/12 · TR\nHour 6: 1/12 · TR\n\nHeight of Tide:\nH = Low + (Rule_of_Twelfths × TidalRange)\nUKC = ChartedDepth + H − Draft − Squat\n\nHarmonic Analysis:\nh(t) = M + Σ[Aᵢ · cos(ωᵢt + φᵢ)]\n\nSecondary Port:\nH₂ = H₁ + Diff\nT₂ = T₁ + TimeDiff\n\nSources: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve."
+ },
+ "Deck and safety calculations have been completed successfully.": {
+  "en": "Deck and safety calculations have been completed successfully."
+ },
+ "Freeboard calculation": {
+  "en": "Freeboard calculation"
+ },
+ "Freeboard compliance": {
+  "en": "Freeboard compliance"
+ },
+ "Hose reach": {
+  "en": "Hose reach"
+ },
+ "Total environmental force": {
+  "en": "Total environmental force"
+ },
+ "Total life-saving capacity": {
+  "en": "Total life-saving capacity"
  }
 }

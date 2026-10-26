@@ -355,7 +355,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const trimChange = totalMoment / mct;
     setTrimChangeResult(trimChange);
     setCalcSteps(prev => ({ ...prev, trimChange: [
-      { step: 1, title: "Formula", formula: "ΔTrim = Toplam Moment / MCT", explanation: "Trim change is found in cm by dividing the total trim moment by the MCT value" },
+      { step: 1, title: "Formula", formula: "ΔTrim = Total trimming moment / MCT", explanation: "Trim change is found in cm by dividing the total trim moment by the MCT value" },
       { step: 2, title: "Placement of values", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}` },
       { step: 3, title: "Result", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}`, result: `ΔTrim = ${trimChange.toFixed(2)} cm` }
     ] }));
@@ -566,7 +566,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     
     const angle = (57.3 * ghm) / (displacement * gm);
     setGrainHeelResult(angle);
-    const status = angle <= 12 ? "SOLAS Uygun" : "SOLAS Not Compliant";
+    const status = angle <= 12 ? "SOLAS compliant" : "SOLAS not compliant";
     setCalcSteps(prev => ({ ...prev, grainHeel: [
       { step: 1, title: "Formula", formula: "θ = (57.3 × GHM) / (Δ × GM)", explanation: "Grain clustering angle is found from the ratio of grain heeling moment (GHM) to the product of displacement and GM. 57.3 = 180/π" },
       { step: 2, title: "share account", formula: `57.3 × GHM = 57.3 × ${ghm.toFixed(2)} = ${(57.3*ghm).toFixed(2)}` },

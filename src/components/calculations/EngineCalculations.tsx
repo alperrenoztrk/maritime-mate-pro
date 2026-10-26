@@ -436,11 +436,11 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         ],
         cooling: [
           { step: 1, title: "Heat rejection rate", formula: "Q = Power × 0.4 (typical 40% heat rejection)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
-          { step: 2, title: "Required cooling", formula: "Qgerekli = Q × 1.2 (%20 emniyet)", substitution: `Qgerekli = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qgerekli = ${coolingCapacityRequired.toFixed(0)} kW` },
+          { step: 2, title: "Required cooling", formula: "Qreq = Q × 1.2 (20% margin)", substitution: `Qreq = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qreq = ${coolingCapacityRequired.toFixed(0)} kW` },
         ],
         heatExchanger: [
           { step: 1, title: "Heat exchanger area", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (Ueff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
-          { step: 2, title: "Number of pipes", formula: "n = A / (π × d × Lboru)", result: `n = ${heatExchanger.tubes} adet` },
+          { step: 2, title: "Number of tubes", formula: "n = A / (π × d × Ltube)", result: `n = ${heatExchanger.tubes} tubes` },
         ],
         tanks: [
           { step: 1, title: "waste water tank", formula: "V = L × B × H", substitution: `V = ${data.bilgeTankLength} × ${data.bilgeTankWidth} × ${data.bilgeTankHeight}`, result: `V = ${tanks.bilgeCapacity.toFixed(1)} m³` },

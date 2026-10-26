@@ -141,12 +141,12 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
      const imo = analysis.imoCriteria;
      const ok = imo?.compliance;
      const lines = [
-       `Uygunluk: ${ok? 'Suitable' : 'not suitable'}`,
-       `Alan(0–30°): ${imo.area0to30.toFixed(3)} mrad (≥0.055)`,
-       `Alan(0–40°): ${imo.area0to40.toFixed(3)} mrad (≥0.09)`,
+       `IMO criteria: ${ok ? 'met' : 'not met'}`,
+       `Area(0–30°): ${imo.area0to30.toFixed(3)} m·rad (≥0.055)`,
+       `Area(0–40°): ${imo.area0to40.toFixed(3)} m·rad (≥0.090)`,
        `Max GZ: ${imo.maxGz.toFixed(3)} m (≥0.20)`,
-       `Starting GM: ${imo.initialGM.toFixed(3)} m (≥0.15)`,
-       `Weather criterion: ${imo.weatherCriterion? 'Provided' : 'Not provided'}`
+       `Initial GM: ${imo.initialGM.toFixed(3)} m (≥0.15)`,
+       `Weather criterion: ${imo.weatherCriterion ? 'met' : 'not met'}`
      ];
      appendAssistant(lines.join('\n'));
    };

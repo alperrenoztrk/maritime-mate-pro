@@ -309,7 +309,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         console.log("📍 Konum servisi kontrol ediliyor...");
         if (!("geolocation" in navigator)) {
           console.error("❌ Konum servisi desteklenmiyor");
-          reject(new Error("Konum servisi desteklenmiyor"));
+          reject(new Error("Location services are not supported"));
           return;
         }
         console.log("📍 Konum bilgisi isteniyor...");

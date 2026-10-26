@@ -361,7 +361,7 @@ CONTRACT: A voyage charter party (C/P) form is used. Common forms: GENCON (gener
     examples: [
       {
         problem: "55,000 tonnes of coal, South Africa to Rotterdam, freight rate $14.50/tonne. Calculate the total freight.",
-        solution: "Toplam Navlun = 55.000 × $14,50 = $797.500",
+        solution: "Total freight = 55,000 × $14.50 = $797,500",
       },
     ],
     bulletPoints: [
@@ -650,7 +650,7 @@ The flat rates are updated every year on 1 January. The update reflects changes 
     examples: [
       {
         problem: "Flat rate $22.50/tonne, market rate WS 72. 80,000 tonnes of crude oil. Calculate the total freight.",
-        solution: "Birim navlun = 72/100 × $22,50 = $16,20/ton. Toplam navlun = 80.000 × $16,20 = $1.296.000.",
+        solution: "Unit freight = 72/100 × $22.50 = $16.20/t. Total freight = 80,000 × $16.20 = $1,296,000.",
       },
     ],
     bulletPoints: [

@@ -661,7 +661,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (v) => {
         const ir = v.vtest / v.ileak; // kΩ → MΩ
-        const status = ir >= 1000 ? "Compliant (≥1 MΩ)" : ir >= 100 ? "Caution (100 kΩ–1 MΩ)" : "Tehlikeli (<100kΩ)";
+        const status = ir >= 1000 ? "Compliant (≥1 MΩ)" : ir >= 100 ? "Caution (100 kΩ–1 MΩ)" : "Dangerous (<100 kΩ)";
         return [
           { label: "Insulation Resistance", value: `${(ir / 1000).toFixed(2)} MΩ` },
           { label: "Status", value: status },

@@ -51,11 +51,11 @@ const STAGE_LABELS: Record<JobState, string> = {
   queued: "Queued",
   preparing: "Preparing photograph",
   checking: "Re-checking",
-  analyzing: "Yapay zekâ belgeyi okuyor",
+  analyzing: "AI is reading the document",
   uploading: "Uploading to secure archive",
-  saving: "Tarihler kaydediliyor",
+  saving: "Saving the dates",
   done: "added",
-  error: "Eklenemedi",
+  error: "Could not be added",
 };
 
 const STATUS_STYLE: Record<

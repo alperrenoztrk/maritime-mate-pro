@@ -116,6 +116,16 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   tamamlandı. Seçilmiş terim düzeltmeleri `terminology-completion.json` →
   `shared/terminology-overrides.json` paketinde; yalnız açıkça belirtilen
   anahtarları dil sözlüğünün üstüne uygular. Terim denetimi eşiği sıfırdır.
+- Türkçe kalıntı (27 Eki 2026 taraması): `paragraphs` dışındaki veri dosyalarında
+  sözlükte karşılığı olmayan ~9 bin Türkçe metin var (çıkarıcı yalnız
+  `ALLOWED_PROPS` alanlarını alıyor). En yoğun: `musterList.ts`,
+  `shipSystemsData.ts`, `shipTaskDetailData.ts`, `crewRoleDetails.ts`,
+  `regulations/*`, `bridgeDevices.ts`. Bunlar çevrimdışında Türkçe kalır.
+  İşaret bayrakları ve stabilite bölüm başlıkları kontrol edildi
+  (`verified/signal-flags.json`, `verified/stability-chapter-titles.json`).
+- Google girişi Lovable editör önizlemesinde (iframe) ve uygulama içi
+  tarayıcılarda çalışmaz (Google engeller); giriş ekranı bunu algılayıp yeni
+  sekmede açar / uyarı gösterir. Gerçek test: nauticalleap.com veya Android.
 - Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
   çevrilir ve bozuk İngilizce çıkar. `navigationTopicContents.ts` ve
   `stabilityTopicsContent.ts`'de cümle ortası kalınlar kaldırıldı; yeni

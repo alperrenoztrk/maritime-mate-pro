@@ -906,7 +906,7 @@ ANCHORING, STEP BY STEP:
 7. The anchor watch is set`,
     formula: {
       name: "Chain Length (General Rule)",
-      expression: "Zincir boyu = Derinlik × (5 ~ 7)",
+      expression: "Chain length = Depth × (5 ~ 7)",
       description: "Normal conditions: 5-7 times, storm: 8-10 times, shallow water: minimum 4 times depth",
     },
     examples: [
@@ -922,8 +922,8 @@ ANCHORING, STEP BY STEP:
       "Anchor position is recorded via GPS/radar",
     ],
     warnings: [
-      "Yetersiz zincir boyu = yetersiz catenary = tarama riski",
-      "Sert zeminde (kaya) demirleme risklidir; demir tutmayabilir",
+      "Insufficient chain length = insufficient catenary = risk of dragging",
+      "Anchoring on hard (rocky) ground is risky; the anchor may not hold",
     ],
   },
   "anchor-watch": {

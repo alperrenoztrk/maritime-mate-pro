@@ -114,7 +114,7 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
           new Date("2026-08-01T00:00:00.000Z"),
         );
         const recordText = calculationRecordToText(record);
-        for (const marker of ["GİRDİLER", "FORMÜL:", "SONUÇLAR", "İŞLEM İZİ", "KAYNAK:"]) {
+        for (const marker of ["INPUTS", "FORMULA:", "RESULTS", "WORKING", "SOURCE:"]) {
           if (!recordText.includes(marker)) fail(where, `hesap dökümünde "${marker}" eksik`);
         }
         if (record.checks.some((check) => check.status === "error")) {

@@ -367,14 +367,14 @@ export class HydrostaticUtils {
   } {
     const errors: string[] = [];
 
-    if (geometry.length <= 0) errors.push('Uzunluk pozitif olmalıdır');
-    if (geometry.breadth <= 0) errors.push('Genişlik pozitif olmalıdır');
-    if (geometry.depth <= 0) errors.push('Derinlik pozitif olmalıdır');
-    if (geometry.draft <= 0) errors.push('Draft pozitif olmalıdır');
-    if (geometry.draft > geometry.depth) errors.push('Draft derinlikten büyük olamaz');
-    if (geometry.blockCoefficient <= 0 || geometry.blockCoefficient > 1) errors.push('Blok katsayısı 0-1 arasında olmalıdır');
-    if (geometry.waterplaneCoefficient <= 0 || geometry.waterplaneCoefficient > 1) errors.push('Su hattı katsayısı 0-1 arasında olmalıdır');
-    if (geometry.midshipCoefficient <= 0 || geometry.midshipCoefficient > 1) errors.push('Orta kesit katsayısı 0-1 arasında olmalıdır');
+    if (geometry.length <= 0) errors.push('Length must be greater than 0');
+    if (geometry.breadth <= 0) errors.push('Breadth must be greater than 0');
+    if (geometry.depth <= 0) errors.push('Depth must be greater than 0');
+    if (geometry.draft <= 0) errors.push('Draft must be greater than 0');
+    if (geometry.draft > geometry.depth) errors.push('Draft cannot be greater than depth');
+    if (geometry.blockCoefficient <= 0 || geometry.blockCoefficient > 1) errors.push('Block coefficient must be between 0 and 1');
+    if (geometry.waterplaneCoefficient <= 0 || geometry.waterplaneCoefficient > 1) errors.push('Waterplane coefficient must be between 0 and 1');
+    if (geometry.midshipCoefficient <= 0 || geometry.midshipCoefficient > 1) errors.push('Midship section coefficient must be between 0 and 1');
 
     return {
       isValid: errors.length === 0,
@@ -392,12 +392,12 @@ export class HydrostaticUtils {
     const errors: string[] = [];
 
     if (weightDistribution.length === 0) {
-      errors.push('En az bir ağırlık öğesi olmalıdır');
+      errors.push('Add at least one weight item');
     }
 
     weightDistribution.forEach((item, index) => {
-      if (item.weight <= 0) errors.push(`${index + 1}. öğe ağırlığı pozitif olmalıdır`);
-      if (item.item.trim() === '') errors.push(`${index + 1}. öğe adı boş olamaz`);
+      if (item.weight <= 0) errors.push(`Item ${index + 1}: weight must be greater than 0`);
+      if (item.item.trim() === '') errors.push(`Item ${index + 1}: name cannot be empty`);
     });
 
     return {
@@ -416,11 +416,11 @@ export class HydrostaticUtils {
     const errors: string[] = [];
 
     tanks.forEach((tank, index) => {
-      if (tank.capacity <= 0) errors.push(`${index + 1}. tank kapasitesi pozitif olmalıdır`);
-      if (tank.currentVolume < 0) errors.push(`${index + 1}. tank hacmi negatif olamaz`);
-      if (tank.currentVolume > tank.capacity) errors.push(`${index + 1}. tank hacmi kapasitesini aşamaz`);
-      if (tank.fluidDensity <= 0) errors.push(`${index + 1}. tank sıvı yoğunluğu pozitif olmalıdır`);
-      if (tank.name.trim() === '') errors.push(`${index + 1}. tank adı boş olamaz`);
+      if (tank.capacity <= 0) errors.push(`Tank ${index + 1}: capacity must be greater than 0`);
+      if (tank.currentVolume < 0) errors.push(`Tank ${index + 1}: volume cannot be negative`);
+      if (tank.currentVolume > tank.capacity) errors.push(`Tank ${index + 1}: volume cannot exceed capacity`);
+      if (tank.fluidDensity <= 0) errors.push(`Tank ${index + 1}: liquid density must be greater than 0`);
+      if (tank.name.trim() === '') errors.push(`Tank ${index + 1}: name cannot be empty`);
     });
 
     return {

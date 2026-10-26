@@ -648,25 +648,25 @@ CTS = TR + arcsin((c/V) · sin(set − TR))`}</pre>
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rule of Twelfths:
-1. saat: 1/12 · TR
-2. saat: 2/12 · TR
-3. saat: 3/12 · TR
-4. saat: 3/12 · TR
-5. saat: 2/12 · TR
-6. saat: 1/12 · TR
+Hour 1: 1/12 · TR
+Hour 2: 2/12 · TR
+Hour 3: 3/12 · TR
+Hour 4: 3/12 · TR
+Hour 5: 2/12 · TR
+Hour 6: 1/12 · TR
 
 Height of Tide:
 H = Low + (Rule_of_Twelfths × TidalRange)
 UKC = ChartedDepth + H − Draft − Squat
 
-Harmonik Analiz:
+Harmonic Analysis:
 h(t) = M + Σ[Aᵢ · cos(ωᵢt + φᵢ)]
 
 Secondary Port:
 H₂ = H₁ + Diff
 T₂ = T₁ + TimeDiff
 
-Kaynaklar: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.`}</pre>
+Sources: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.`}</pre>
               </div>
             </CardContent>
             )}

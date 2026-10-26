@@ -177,9 +177,9 @@ export const EconomicCalculations = () => {
     });
     setCalcSteps(prev => ({ ...prev, voyage: [
       { step: 1, title: "gross revenue account", formula: "Gross Revenue = Cargo Amount × Freight Rate", substitution: `Gross Revenue = ${quantity.toLocaleString()} × $${rate}`, result: `Gross Revenue = $${grossRevenue.toLocaleString()}` },
-      { step: 2, title: "Total cost", formula: "Total Cost = Fuel + Port Expenses", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
-      { step: 3, title: "Net profit", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
-      { step: 4, title: "profit margin", formula: "Profit Margin = (Net Profit / Gross Revenue) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = %${profitMargin.toFixed(1)}` },
+      { step: 2, title: "Total cost", formula: "Total Cost = Fuel + Port Expenses", substitution: `Total = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Total Cost = $${totalCosts.toLocaleString()}` },
+      { step: 3, title: "Net profit", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Profit = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Profit = $${netProfit.toLocaleString()}` },
+      { step: 4, title: "profit margin", formula: "Profit Margin = (Net Profit / Gross Revenue) × 100", substitution: `Margin = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = ${profitMargin.toFixed(1)}%` },
     ] }));
   };
 

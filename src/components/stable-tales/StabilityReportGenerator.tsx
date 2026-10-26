@@ -76,7 +76,7 @@ GM                : ${results.gm.toFixed(3)} m
 
 STABILITY ANALYSIS
 ------------------
-Initial Stability : ${results.gm >= 0.15 ? 'UYGUN' : 'NOT SUITABLE'} (GM = ${results.gm.toFixed(3)} m)
+Initial Stability : ${results.gm >= 0.15 ? 'SUITABLE' : 'NOT SUITABLE'} (GM = ${results.gm.toFixed(3)} m)
 Free Surface Effect  : ${results.fsm.toFixed(3)} m
 Corrected GM      : ${(results.gm - results.fsm).toFixed(3)} m
 GZ (15°)          : ${results.gz.toFixed(3)} m
@@ -103,7 +103,7 @@ ${results.gm >= 1.0 ?
   results.gm >= 0.5 ? 
   '• Good stability condition - suitable for normal operations' :
   results.gm >= 0.15 ?
-  '• Kabul edilebilir stabilite - Dikkatli seyir gerekli' :
+  '• Acceptable stability - proceed with caution' :
   '• DANGEROUS CONDITION - adjust ballast immediately!'
 }
 

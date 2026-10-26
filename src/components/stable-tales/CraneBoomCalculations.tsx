@@ -96,7 +96,7 @@ export const CraneBoomCalculations = () => {
       if (yeni_gm > 0.15) {
         toast.success(`Crane operation safe: GM = ${yeni_gm.toFixed(3)}m`);
       } else {
-        toast.error(`Tehlikeli GM: ${yeni_gm.toFixed(3)}m - Operasyonu durdurun!`);
+        toast.error(`Dangerous GM: ${yeni_gm.toFixed(3)} m — stop the operation!`);
       }
 
     } catch (error) {
@@ -281,7 +281,7 @@ export const CraneBoomCalculations = () => {
                   ΔGM = -W × (h_hook - h_load)² / (Δ + W)
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Where: W = load weight, h_kanca = hook height, h_yük = load height, Δ = displacement
+                  Where: W = load weight, h_hook = hook height, h_load = load height, Δ = displacement
                 </p>
               </div>
 

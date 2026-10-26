@@ -616,7 +616,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       return;
     }
     setGmResult(gm);
-    toast({ title: "Calculation Completed", description: `GM: ${gm.toFixed(3)} m - Uygun` });
+    toast({ title: "Calculation Completed", description: `GM: ${gm.toFixed(3)} m` });
   };
 
   const calculateGZ = () => {
@@ -635,7 +635,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       return;
     }
     setGzResult(gz);
-    toast({ title: "Calculation Completed", description: `GZ: ${gz.toFixed(4)} m - Uygun` });
+    toast({ title: "Calculation Completed", description: `GZ: ${gz.toFixed(4)} m` });
   };
 
   const calculateTrim = () => {
@@ -1325,7 +1325,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     {
       title: "Hydrostatic",
       items: [
-        "Hacim V (m³)",
+        "Volume V (m³)",
         "Water density ρsw (t/m³)",
         "Waterline area Awp (m²)",
         "Draft T (m)",
@@ -1344,7 +1344,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
         "Angle φ (°)",
         "Displacement Δ (t)",
         "Weight w(t)",
-        "Mesafe d/y (m)",
+        "Distance d/y (m)",
         "Hook/Load height h (m)",
         "MCT 1cm (t·m/cm)",
         "Trim (cm)",
@@ -1355,7 +1355,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       title: "Trim/List",
       items: [
         "Ta/Tf (m)",
-        "Uzunluk L (m)",
+        "Length L (m)",
         "GM for List (m)",
         "Δ(t) for List",
         "KM/KG (m) for Loll"
@@ -1365,7 +1365,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
       title: "Transverse Stability Details",
       items: [
         "KMT (m)",
-        "Toplam moment (t·m)",
+        "Total moment (t·m)",
         "Total weight (t)",
         "Vertical shift h (m)",
         "Tank length/width (m)",
@@ -2263,7 +2263,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="weight-moment">Toplam Moment [t·m]</Label>
+                <Label htmlFor="weight-moment">Total Moment [t·m]</Label>
                 <Input
                   id="weight-moment"
                   type="number"
@@ -2723,7 +2723,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">Longitudinal Quick Calculations</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
-                <Label>Toplam Moment (t·m)</Label>
+                <Label>Total Moment (t·m)</Label>
                 <Input value={trimMomentInputs.totalMoment} onChange={(e)=> setTrimMomentInputs(p=>({...p, totalMoment: e.target.value}))} />
               </div>
               <div>

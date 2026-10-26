@@ -227,17 +227,17 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 2,
         title: "Resource tank new level",
-        formula: "Seviyeyeni = Seviyeeski - (Vtransfer / Kapasite × 100)",
-        substitution: `Seviyeyeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
-        result: `Seviyeyeni = ${newFromLevel.toFixed(1)}%`,
+        formula: "Level(new) = Level(old) - (Vtransfer / Capacity × 100)",
+        substitution: `Level(new) = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
+        result: `Level(new) = ${newFromLevel.toFixed(1)}%`,
         explanation: `${fromTank.name} tank level after transfer`
       },
       {
         step: 3,
         title: "Target tank new level",
-        formula: "Seviyeyeni = Seviyeeski + (Vtransfer / Kapasite × 100)",
-        substitution: `Seviyeyeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
-        result: `Seviyeyeni = ${newToLevel.toFixed(1)}%`,
+        formula: "Level(new) = Level(old) + (Vtransfer / Capacity × 100)",
+        substitution: `Level(new) = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
+        result: `Level(new) = ${newToLevel.toFixed(1)}%`,
         explanation: `${toTank.name} tank level after transfer`
       },
       {

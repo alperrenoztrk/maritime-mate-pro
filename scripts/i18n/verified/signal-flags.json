@@ -1,0 +1,497 @@
+{
+ "0-9 arası rakamlar. Mevki, saat, kanal, mesafe ve kod grubu numaralarını iletmek için kullanılır; harf bayraklarıyla aynı hoist içinde birleştirilebilir.": {
+  "en": "Numerals 0–9. Used to signal positions, times, channels, distances and code-group numbers; they can be combined with alphabetical flags in the same hoist."
+ },
+ "1. İkame": {
+  "en": "First Substitute"
+ },
+ "1., 2. ve 3. ikame flaması — üçgen biçimli; yalnız kendi sınıfındaki bayrağı tekrarlar.": {
+  "en": "First, second and third substitutes — triangular; each repeats only a flag of its own class."
+ },
+ "16 kareli mavi-beyaz dama; üst-mandar köşe mavidir.": {
+  "en": "Blue and white chequered in 16 squares; the upper-hoist square is blue."
+ },
+ "2. İkame": {
+  "en": "Second Substitute"
+ },
+ "26 harf bayrağı. Her biri tek başına çekildiğinde emniyetle ilgili tek bir anlam taşır; iki ve üç harfli gruplar hâlinde çekildiğinde kodlanmış mesaj iletir.": {
+  "en": "26 alphabetical flags. Hoisted singly, each flag has one safety-related meaning; hoisted in two- and three-letter groups, the flags convey coded messages."
+ },
+ "26 harfin tek harfli anlamı ezbere bilinmelidir; G, P ve Z'nin balıkçı teknelerine özel ikinci anlamı vardır.": {
+  "en": "The single-letter meanings of all 26 letters should be known by heart; G, P and Z have a second meaning when made by fishing vessels."
+ },
+ "3. İkame": {
+  "en": "Third Substitute"
+ },
+ "A (Alfa): Dalgıcım var; yavaş hızla ve benden uzak durarak geçin.": {
+  "en": "A (Alfa): I have a diver down; keep well clear at slow speed."
+ },
+ "AC: Gemimi terk ediyorum. — AE: Gemimi terk etmek zorundayım.": {
+  "en": "AC: I am abandoning my vessel. — AE: I must abandon my vessel."
+ },
+ "AN: Doktora ihtiyacım var. — CB: Acil yardıma ihtiyacım var.": {
+  "en": "AN: I need a doctor. — CB: I require immediate assistance."
+ },
+ "Acil yardıma ihtiyacım var.": {
+  "en": "I require immediate assistance."
+ },
+ "Altı dikey şerit: sarı ve mavi dönüşümlü, mandardan sarı başlar.": {
+  "en": "Six vertical stripes, alternately yellow and blue, starting with yellow at the hoist."
+ },
+ "Altı rakamı.": {
+  "en": "Numeral 6."
+ },
+ "Av sahasına yakın balıkçı teknesi için: 'Ağlarımı atıyorum.'": {
+  "en": "By fishing vessels operating in close proximity on the fishing grounds: 'I am shooting nets.'"
+ },
+ "Av sahasına yakın balıkçı teknesi için: 'Ağlarımı topluyorum.'": {
+  "en": "By fishing vessels operating in close proximity on the fishing grounds: 'I am hauling nets.'"
+ },
+ "Aynı hoist içinde tekrar eden bir bayrağı, ikinci bir takım taşımadan gösterebilmeyi sağlar. Üç ikame flaması sayesinde tek takım bayrakla dört karakterlik her kombinasyon çekilebilir.": {
+  "en": "A substitute repeats a flag within the same hoist, so no second set of flags is needed. With the three substitutes, every four-character combination can be hoisted with a single set of flags."
+ },
+ "Aynı hoist içinde, kendi sınıfındaki (harf veya rakam) BİRİNCİ bayrağı tekrarlar.": {
+  "en": "Repeats the FIRST flag of its own class (alphabetical flags or numeral pennants) in the same hoist."
+ },
+ "Aynı hoist içinde, kendi sınıfındaki ÜÇÜNCÜ bayrağı tekrarlar.": {
+  "en": "Repeats the THIRD flag of its own class in the same hoist."
+ },
+ "Aynı hoist içinde, kendi sınıfındaki İKİNCİ bayrağı tekrarlar.": {
+  "en": "Repeats the SECOND flag of its own class in the same hoist."
+ },
+ "B (Bravo): Tehlikeli yük alıyorum, boşaltıyorum veya taşıyorum.": {
+  "en": "B (Bravo): I am taking in, or discharging, or carrying dangerous goods."
+ },
+ "Batıyorum.": {
+  "en": "I am sinking."
+ },
+ "Benden iyice uzak durun.": {
+  "en": "Keep well clear of me."
+ },
+ "Benden uzak durun; güçlükle manevra yapıyorum.": {
+  "en": "Keep clear of me; I am manoeuvring with difficulty."
+ },
+ "Benden uzak durun; ikili (pair) trol avcılığı yapıyorum.": {
+  "en": "Keep clear of me; I am engaged in pair trawling."
+ },
+ "Beyaz zemin üzerinde kırmızı çapraz haç (saltire).": {
+  "en": "White with a red diagonal cross (saltire)."
+ },
+ "Beyaz zemin üzerinde mavi Yunan haçı.": {
+  "en": "White with a blue Greek cross."
+ },
+ "Beyaz zemin üzerinde ortalanmış mavi kare.": {
+  "en": "White with a blue square in the centre."
+ },
+ "Beyaz zemin üzerinde, kenar ortalarına değen kırmızı baklava.": {
+  "en": "White with a red diamond touching the middle of each edge."
+ },
+ "Beş rakamı.": {
+  "en": "Numeral 5."
+ },
+ "Beş yatay bant: mavi, beyaz, kırmızı, beyaz, mavi.": {
+  "en": "Five horizontal bands: blue, white, red, white, blue."
+ },
+ "Bir rakamı.": {
+  "en": "Numeral 1."
+ },
+ "C (Charlie): Olumlu — 'Evet'.": {
+  "en": "C (Charlie): Affirmative — 'Yes'."
+ },
+ "Cevap Flaması": {
+  "en": "Answering Pennant"
+ },
+ "Cevap flaması rakam grupları arasında ondalık ayracı olarak da kullanılır.": {
+  "en": "The answering pennant is also used as a decimal point in numeral groups."
+ },
+ "Cevap flaması tam çekili: 'Anladım.' Son hoist'ten sonra gönderen istasyonun cevap flamasını tek başına çekmesi işaretin tamamlandığını bildirir.": {
+  "en": "Answering pennant close up: 'Understood.' After the last hoist, the transmitting station hoists the answering pennant singly to indicate that the signal is complete."
+ },
+ "Cevap flaması yarıya çekili: 'İşaretinizi gördüm, henüz çözemedim.'": {
+  "en": "Answering pennant at the dip: 'I have seen your signal but have not yet understood it.'"
+ },
+ "D (Delta): Benden uzak durun; güçlükle manevra yapıyorum.": {
+  "en": "D (Delta): Keep clear of me; I am manoeuvring with difficulty."
+ },
+ "DX: Batıyorum. — GW: Denize adam düştü; almak için harekete geçin.": {
+  "en": "DX: I am sinking. — GW: Man overboard. Please take action to pick him up."
+ },
+ "Dalgıcım var; yavaş hızla ve benden uzak durarak geçin.": {
+  "en": "I have a diver down; keep well clear at slow speed."
+ },
+ "Demirim tarıyor.": {
+  "en": "I am dragging my anchor."
+ },
+ "Denizde balıkçı teknesi için: 'Ağlarım bir engele takıldı.'": {
+  "en": "At sea, by fishing vessels: 'My nets have come fast upon an obstruction.'"
+ },
+ "Denize adam düştü.": {
+  "en": "Man overboard."
+ },
+ "Denize adam düştü; almak için harekete geçin.": {
+  "en": "Man overboard. Please take action to pick him up."
+ },
+ "Doktora ihtiyacım var.": {
+  "en": "I need a doctor."
+ },
+ "Dokuz rakamı.": {
+  "en": "Numeral 9."
+ },
+ "Dörde bölünmüş: kırmızı üst-mandar ve alt-fly, beyaz üst-fly ve alt-mandar.": {
+  "en": "Quartered: red in the upper hoist and lower fly, white in the upper fly and lower hoist."
+ },
+ "Dörde bölünmüş: sarı üst-mandar ve alt-fly, siyah üst-fly ve alt-mandar.": {
+  "en": "Quartered: yellow in the upper hoist and lower fly, black in the upper fly and lower hoist."
+ },
+ "Dört rakamı.": {
+  "en": "Numeral 4."
+ },
+ "E (Echo): Rotamı sancağa değiştiriyorum.": {
+  "en": "E (Echo): I am altering my course to starboard."
+ },
+ "F (Foxtrot): Kumandadan acizim; benimle haberleşin.": {
+  "en": "F (Foxtrot): I am disabled; communicate with me."
+ },
+ "G (Golf): Kılavuz istiyorum. (Balıkçı: 'Ağlarımı topluyorum.')": {
+  "en": "G (Golf): I require a pilot. (Fishing vessels: 'I am hauling nets.')"
+ },
+ "G, P ve Z'nin balıkçı tekneleri için ayrı anlamı vardır; Z için 'ağlarımı atıyorum'.": {
+  "en": "G, P and Z have a separate meaning when made by fishing vessels; for Z it is 'I am shooting nets'."
+ },
+ "Gemim durdu; suya göre yol almıyor.": {
+  "en": "My vessel is stopped and making no way through the water."
+ },
+ "Gemim sağlıklı; serbest pratika talep ediyorum.": {
+  "en": "My vessel is 'healthy' and I request free pratique."
+ },
+ "Gemimde kılavuz var.": {
+  "en": "I have a pilot on board."
+ },
+ "Gemimi terk ediyorum.": {
+  "en": "I am abandoning my vessel."
+ },
+ "Gemimi terk etmek zorundayım.": {
+  "en": "I must abandon my vessel."
+ },
+ "Geminizi derhal durdurun.": {
+  "en": "You should stop your vessel instantly."
+ },
+ "Görsel İşaretleşme: Bayraklar ve Mors Lambası": {
+  "en": "Visual Signalling: Flags and Signalling Lamp"
+ },
+ "H (Hotel): Gemimde kılavuz var.": {
+  "en": "H (Hotel): I have a pilot on board."
+ },
+ "Haberleşmenin akışını yöneten flama. Yarıya çekilmesi, tam çekilmesi ve tek başına çekilmesi ayrı anlamlar taşır; rakam gruplarında ondalık ayracı olarak da kullanılır.": {
+  "en": "The pennant that controls the flow of a flag exchange. At the dip, close up and hoisted singly it has different meanings; it is also used as a decimal point in numeral groups."
+ },
+ "Harf Bayrakları": {
+  "en": "Alphabetical Flags"
+ },
+ "Harf bayraklarının yanında üç grup yardımcı flama vardır. Rakam flamaları (0-9) mevki, saat, kanal ve kod grubu numaralarını taşır. İkame flamaları, aynı hoist içinde tekrar eden bir bayrağı ikinci bir takım taşımadan göstermeyi sağlar: bir ikame flaması YALNIZCA kendi sınıfındaki (harf ya da rakam) bayrağı tekrarlar. Örneğin 'ANNA' hoist'ı A-N-(2. ikame)-(1. ikame) olarak çekilir; 2. ikame kendi sınıfındaki ikinci bayrağı (N), 1. ikame ise birinciyi (A) tekrarlar. Üç ikame flaması sayesinde tek takım bayrakla dört karakterlik her kombinasyon çekilebilir. Cevap flaması ise haberleşmenin akışını yönetir.": {
+  "en": "Besides the alphabetical flags there are three groups of auxiliary pennants. Numeral pennants (0–9) carry positions, times, channels and code-group numbers. Substitutes repeat a flag within the same hoist so that no second set is needed: a substitute repeats ONLY a flag of its own class (alphabetical or numeral). For example, 'ANNA' is hoisted as A-N-(second substitute)-(first substitute); the second substitute repeats the second flag of its class (N) and the first substitute repeats the first (A). With three substitutes, every four-character combination can be hoisted with a single set of flags. The answering pennant controls the flow of the exchange."
+ },
+ "I (India): Rotamı iskeleye değiştiriyorum.": {
+  "en": "I (India): I am altering my course to port."
+ },
+ "International Code of Signals (ICS), dil engelini aşmak için tasarlanmış, özellikle emniyet ve seyir konularını kapsayan standart bir koddur. 26 harf bayrağı, 10 rakam flaması ve yardımcı flamalar ile tek harfli, iki harfli ve üç harfli kodlanmış anlamlar iletilir. Mesajlar bayrakla (flag hoist), mors lambasıyla veya sesle iletilebilir.": {
+  "en": "The International Code of Signals (ICS) is a standard code designed to overcome language barriers, covering safety and navigation above all. With 26 alphabetical flags, 10 numeral pennants and the auxiliary pennants it conveys single-letter, two-letter and three-letter coded meanings. Messages can be sent by flag hoist, signalling lamp or sound."
+ },
+ "International Code of Signals dil engelini aşan standart işaret kodudur.": {
+  "en": "The International Code of Signals is the standard signal code that overcomes language barriers."
+ },
+ "J (Juliett): Yangınım var ve tehlikeli yük taşıyorum; iyice uzak durun.": {
+  "en": "J (Juliett): I am on fire and have dangerous cargo on board; keep well clear of me."
+ },
+ "JL: Karaya oturma riski altındasınız. — PD: Seyir fenerleriniz görünmüyor.": {
+  "en": "JL: You are running the risk of going aground. — PD: Your navigation lights are not visible."
+ },
+ "K (Kilo): Sizinle haberleşmek istiyorum.": {
+  "en": "K (Kilo): I wish to communicate with you."
+ },
+ "Karaya oturma riski altındasınız.": {
+  "en": "You are running the risk of going aground."
+ },
+ "Kumandadan acizim; benimle haberleşin.": {
+  "en": "I am disabled; communicate with me."
+ },
+ "Köşegen bölünme: üst-fly üçgeni kırmızı, alt-mandar üçgeni sarı.": {
+  "en": "Divided diagonally: red triangle in the upper fly, yellow triangle in the lower hoist."
+ },
+ "Kılavuz istiyorum.": {
+  "en": "I require a pilot."
+ },
+ "Kırlangıç kuyruklu, tamamı kırmızı.": {
+  "en": "Swallow-tailed, all red."
+ },
+ "Kırlangıç kuyruklu. Mandar tarafı beyaz, fly tarafı mavi.": {
+  "en": "Swallow-tailed. White at the hoist, blue at the fly."
+ },
+ "Kırmızı zemin üzerinde sarı Yunan haçı.": {
+  "en": "Red with a yellow Greek cross."
+ },
+ "L (Lima): Geminizi derhal durdurun.": {
+  "en": "L (Lima): You should stop your vessel instantly."
+ },
+ "Liman trafiğe kapalıdır.": {
+  "en": "The harbour is closed to traffic."
+ },
+ "Limana giriş izni acilen talep ediliyor; acil durumum var.": {
+  "en": "Permission to enter harbour is urgently requested. I have an emergency case."
+ },
+ "Limanda: 'Gemi denize çıkmak üzere, herkes gemiye dönsün.' (Blue Peter)": {
+  "en": "In harbour: 'All persons should report on board as the vessel is about to proceed to sea.' (Blue Peter)"
+ },
+ "M (Mike): Gemim durdu; suya göre yol almıyor.": {
+  "en": "M (Mike): My vessel is stopped and making no way through the water."
+ },
+ "Makinelerim tornistan çalışıyor.": {
+  "en": "I am operating astern propulsion."
+ },
+ "Mandar tarafı beyaz, fly tarafı kırmızı iki dikey bant.": {
+  "en": "Two vertical bands: white at the hoist, red at the fly."
+ },
+ "Mandar tarafı sarı, fly tarafı mavi iki dikey bant.": {
+  "en": "Two vertical bands: yellow at the hoist, blue at the fly."
+ },
+ "Mavi zemin üzerinde beyaz çapraz haç (saltire).": {
+  "en": "Blue with a white diagonal cross (saltire)."
+ },
+ "Mavi zemin üzerinde ortalanmış beyaz kare.": {
+  "en": "Blue with a white square in the centre."
+ },
+ "Merkezde birleşen dört üçgen: üstte sarı, mandarda siyah, altta kırmızı, fly'da mavi.": {
+  "en": "Four triangles meeting in the centre: yellow at the top, black at the hoist, red at the bottom, blue at the fly."
+ },
+ "N (November): Olumsuz — 'Hayır'.": {
+  "en": "N (November): Negative — 'No'."
+ },
+ "NC: Tehlike altındayım ve acil yardıma ihtiyacım var.": {
+  "en": "NC: I am in distress and require immediate assistance."
+ },
+ "Niyetinizden vazgeçin ve işaretlerimi gözleyin.": {
+  "en": "Stop carrying out your intentions and watch for my signals."
+ },
+ "O (Oscar): Denize adam düştü.": {
+  "en": "O (Oscar): Man overboard."
+ },
+ "Olumlu — 'Evet' / önceki grubun anlamı olumlu okunmalıdır.": {
+  "en": "Affirmative — 'Yes' / the significance of the previous group should be read in the affirmative."
+ },
+ "Olumsuz — 'Hayır' / önceki grubun anlamı olumsuz okunmalıdır.": {
+  "en": "Negative — 'No' / the significance of the previous group should be read in the negative."
+ },
+ "P (Papa): Limanda 'Blue Peter' — gemi denize çıkmak üzere, herkes gemiye.": {
+  "en": "P (Papa): In harbour, the 'Blue Peter' — the vessel is about to proceed to sea; all persons report on board."
+ },
+ "Q (Quebec): Gemim sağlıklı; serbest pratika talep ediyorum.": {
+  "en": "Q (Quebec): My vessel is 'healthy' and I request free pratique."
+ },
+ "QQ: Sağlık kontrolü (free pratique) talep ediyorum. — UM: Liman trafiğe kapalıdır.": {
+  "en": "QQ: I require health clearance (free pratique). — UM: The harbour is closed to traffic."
+ },
+ "R (Romeo): Yürürlükteki ICS'te tek harfli anlamı yoktur.": {
+  "en": "R (Romeo): No single-letter meaning in the current ICS."
+ },
+ "Rakam Flamaları": {
+  "en": "Numeral Pennants"
+ },
+ "Rakam Flamaları, İkame Flamaları ve Cevap Flaması": {
+  "en": "Numeral Pennants, Substitutes and the Answering Pennant"
+ },
+ "Rakam flamaları: 0-9, sivri (tapered) biçimlidir.": {
+  "en": "Numeral pennants: 0–9, tapered in shape."
+ },
+ "Rotamı iskeleye değiştiriyorum.": {
+  "en": "I am altering my course to port."
+ },
+ "Rotamı sancağa değiştiriyorum.": {
+  "en": "I am altering my course to starboard."
+ },
+ "Römorkör istiyorum.": {
+  "en": "I require a tug."
+ },
+ "S (Sierra): Makinelerim tornistan çalışıyor.": {
+  "en": "S (Sierra): I am operating astern propulsion."
+ },
+ "Sarı ve kırmızı çapraz (diyagonal) şeritler.": {
+  "en": "Yellow and red diagonal stripes."
+ },
+ "Sarı zemin üzerinde geniş mavi yatay bant (sarı-mavi-sarı).": {
+  "en": "Yellow with a broad horizontal blue band (yellow-blue-yellow)."
+ },
+ "Sarı zemin üzerinde ortalanmış siyah daire.": {
+  "en": "Yellow with a black disc in the centre."
+ },
+ "Sağlık kontrolü (free pratique) talep ediyorum.": {
+  "en": "I require health clearance (free pratique)."
+ },
+ "Sekiz rakamı.": {
+  "en": "Numeral 8."
+ },
+ "Seyir fenerleriniz görünmüyor.": {
+  "en": "Your navigation lights are not visible."
+ },
+ "Sivri flama; beyaz zemin üzerinde kırmızı haç.": {
+  "en": "Tapered pennant; white with a red cross."
+ },
+ "Sivri flama; beyaz zemin, mandara yakın kırmızı daire.": {
+  "en": "Tapered pennant; white with a red disc near the hoist."
+ },
+ "Sivri flama; beş dikey şerit — kırmızı, beyaz, kırmızı, beyaz, kırmızı.": {
+  "en": "Tapered pennant; five vertical stripes — red, white, red, white, red."
+ },
+ "Sivri flama; dörde bölünmüş: beyaz üst-mandar, siyah üst-fly, kırmızı alt-mandar, sarı alt-fly.": {
+  "en": "Tapered pennant; quartered: white upper hoist, black upper fly, red lower hoist, yellow lower fly."
+ },
+ "Sivri flama; kırmızı zemin üzerinde beyaz haç.": {
+  "en": "Tapered pennant; red with a white cross."
+ },
+ "Sivri flama; kırmızı-beyaz-mavi dikey üçlü bölünme.": {
+  "en": "Tapered pennant; three vertical sections: red, white, blue."
+ },
+ "Sivri flama; mandar yarısı sarı, fly yarısı mavi.": {
+  "en": "Tapered pennant; yellow at the hoist half, blue at the fly half."
+ },
+ "Sivri flama; mavi zemin, mandara yakın beyaz daire.": {
+  "en": "Tapered pennant; blue with a white disc near the hoist."
+ },
+ "Sivri flama; sarı-kırmızı-sarı dikey üçlü bölünme.": {
+  "en": "Tapered pennant; three vertical sections: yellow, red, yellow."
+ },
+ "Sivri flama; üst yarısı sarı, alt yarısı kırmızı.": {
+  "en": "Tapered pennant; upper half yellow, lower half red."
+ },
+ "Sivri flama; üst yarısı siyah, alt yarısı beyaz.": {
+  "en": "Tapered pennant; upper half black, lower half white."
+ },
+ "Sizinle Uluslararası İşaret Kodu ile haberleşeceğim.": {
+  "en": "I am going to communicate with your station by means of the International Code of Signals."
+ },
+ "Sizinle haberleşmek istiyorum.": {
+  "en": "I wish to communicate with you."
+ },
+ "Sıfır rakamı.": {
+  "en": "Numeral 0."
+ },
+ "T (Tango): Benden uzak durun; ikili (pair) trol avcılığı yapıyorum.": {
+  "en": "T (Tango): Keep clear of me; I am engaged in pair trawling."
+ },
+ "Tamamı sarı.": {
+  "en": "All yellow."
+ },
+ "Tehlike altındayım ve acil yardıma ihtiyacım var.": {
+  "en": "I am in distress and require immediate assistance."
+ },
+ "Tehlike mevkiini tekrarlayın.": {
+  "en": "Repeat the distress position."
+ },
+ "Tehlikeli yük alıyorum, boşaltıyorum veya taşıyorum.": {
+  "en": "I am taking in, or discharging, or carrying dangerous goods."
+ },
+ "Tehlikeye doğru gidiyorsunuz.": {
+  "en": "You are running into danger."
+ },
+ "Tek Harfli İşaretlerin Tamamı (A-Z)": {
+  "en": "All Single-Letter Signals (A–Z)"
+ },
+ "Tek harfli işaretler, ICS'in en acil ve en sık kullanılan bölümüdür; tamamı ezbere bilinmelidir. Aşağıda 26 harfin tümü verilmiştir. Bazı harflerin, av sahasına yakın balıkçı tekneleri için ayrı bir anlamı vardır (G, P, Z) — sınavda ve sahada en çok karıştırılan ayrım budur.": {
+  "en": "Single-letter signals are the most urgent and most frequently used part of the ICS, and every one of them should be known by heart. All 26 letters are given below. Some letters have a separate meaning when made by fishing vessels (G, P, Z) — the distinction most often confused in examinations and at sea."
+ },
+ "Tek harfli işaretlerin ötesinde, emniyet ve acil durum mesajlarının çoğu iki harfli gruplarla iletilir. Bunlar dil bilgisinden bağımsız olarak, ICS kitabındaki karşılığıyla okunur.": {
+  "en": "Beyond the single-letter signals, most safety and emergency messages are sent as two-letter groups. Whatever language the stations speak, the groups are read by their meaning in the ICS book."
+ },
+ "Telsiz haberleşmesinin yanı sıra denizciler, telsiz sessizliği veya arıza durumunda da iletişim kurabilmek için görsel işaretleşme yöntemlerini bilmek zorundadır. Uluslararası İşaret Kodu (International Code of Signals) bayraklar, mors lambası ve ses ile mesaj iletimini standartlaştırır.": {
+  "en": "Besides radio communication, seafarers must know visual signalling methods so that they can still communicate during radio silence or a radio failure. The International Code of Signals standardises messages sent by flags, signalling lamp and sound."
+ },
+ "Tornistan veriyorum.": {
+  "en": "I am going astern."
+ },
+ "Tıbbi yardıma ihtiyacım var.": {
+  "en": "I require medical assistance."
+ },
+ "U (Uniform): Tehlikeye doğru gidiyorsunuz.": {
+  "en": "U (Uniform): You are running into danger."
+ },
+ "Uluslararası İşaret Kodu (ICS)": {
+  "en": "International Code of Signals (ICS)"
+ },
+ "V (Victor): Yardıma ihtiyacım var.": {
+  "en": "V (Victor): I require assistance."
+ },
+ "W (Whiskey): Tıbbi yardıma ihtiyacım var.": {
+  "en": "W (Whiskey): I require medical assistance."
+ },
+ "X (X-ray): Niyetinizden vazgeçin ve işaretlerimi gözleyin.": {
+  "en": "X (X-ray): Stop carrying out your intentions and watch for my signals."
+ },
+ "Y (Yankee): Demirim tarıyor.": {
+  "en": "Y (Yankee): I am dragging my anchor."
+ },
+ "Yangınım var ve tehlikeli yük taşıyorum; benden iyice uzak durun.": {
+  "en": "I am on fire and have dangerous cargo on board; keep well clear of me."
+ },
+ "Yardıma ihtiyacım var.": {
+  "en": "I require assistance."
+ },
+ "Yarıya çekili (at the dip) = gördüm, çözemedim. Tam çekili (close up) = anladım. Son hoist'ten sonra gönderen istasyonun tek başına çektiği cevap flaması işaretin tamamlandığını bildirir.": {
+  "en": "At the dip = seen but not yet understood. Close up = understood. After the last hoist, the answering pennant hoisted singly by the transmitting station indicates that the signal is complete."
+ },
+ "Yarıya çekili (at the dip): 'İşaretinizi gördüm, henüz çözemedim.' Tam çekili (close up): 'Anladım.' Son hoist'ten sonra gönderen istasyon cevap flamasını tek başına çekerek işaretin tamamlandığını bildirir. Rakam gruplarında ondalık ayracı olarak da kullanılır.": {
+  "en": "At the dip: 'I have seen your signal but have not yet understood it.' Close up: 'Understood.' After the last hoist, the transmitting station hoists the answering pennant singly to indicate that the signal is complete. It is also used as a decimal point in numeral groups."
+ },
+ "Yedi rakamı.": {
+  "en": "Numeral 7."
+ },
+ "Yürürlükteki ICS'te tek harfli anlamı yoktur. Prosedürde 'Aldım' (received) karşılığı olarak kullanılır.": {
+  "en": "Has no single-letter meaning in the current ICS. In signalling procedure it is used to mean 'Received'."
+ },
+ "Z (Zulu): Römorkör istiyorum. (Balıkçı: 'Ağlarımı atıyorum.')": {
+  "en": "Z (Zulu): I require a tug. (Fishing vessels: 'I am shooting nets.')"
+ },
+ "ZL: İşaretiniz alındı ancak anlaşılmadı.": {
+  "en": "ZL: Your signal has been received but not understood."
+ },
+ "Üstte mavi, altta kırmızı iki eşit yatay bant.": {
+  "en": "Two equal horizontal bands: blue above, red below."
+ },
+ "Üç dikey şerit: kırmızı, beyaz, mavi.": {
+  "en": "Three vertical stripes: red, white, blue."
+ },
+ "Üç rakamı.": {
+  "en": "Numeral 3."
+ },
+ "Üç yatay bant: mavi, beyaz, mavi.": {
+  "en": "Three horizontal bands: blue, white, blue."
+ },
+ "Üçgen flama; beyaz zemin üzerinde yatay siyah bant.": {
+  "en": "Triangular pennant; white with a horizontal black band."
+ },
+ "Üçgen flama; mandar tarafı mavi, fly tarafı beyaz.": {
+  "en": "Triangular pennant; blue at the hoist, white at the fly."
+ },
+ "Üçgen flama; mavi zemin üzerinde, uca değmeyen sarı iç üçgen.": {
+  "en": "Triangular pennant; blue with a yellow inner triangle that does not reach the point."
+ },
+ "İkame Flamaları": {
+  "en": "Substitutes"
+ },
+ "İkame flaması yalnız kendi sınıfındaki (harf/rakam) bayrağı tekrarlar; üç ikame ile tek takım yeter.": {
+  "en": "A substitute repeats only a flag of its own class (alphabetical or numeral); with three substitutes, a single set of flags is enough."
+ },
+ "İki Harfli Kod Grupları": {
+  "en": "Two-Letter Code Groups"
+ },
+ "İki rakamı.": {
+  "en": "Numeral 2."
+ },
+ "İleri yol veriyorum.": {
+  "en": "I am going ahead."
+ },
+ "İç içe üç dikdörtgen: dışta mavi, ortada beyaz, merkezde kırmızı.": {
+  "en": "Three nested rectangles: blue outside, white in the middle, red in the centre."
+ },
+ "İşaretiniz alındı ancak anlaşılmadı.": {
+  "en": "Your signal has been received but not understood."
+ }
+}
