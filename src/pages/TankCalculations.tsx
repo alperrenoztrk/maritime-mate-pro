@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 
 interface TankData {
   tankArea: number;
@@ -55,8 +55,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
 
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Tank"
+      <CalculationPage
         title="Tank Calculations"
       >
         <Card className="bg-card border-border shadow-lg">
@@ -215,7 +214,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
             </Tabs>
           </CardContent>
         </Card>
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 };

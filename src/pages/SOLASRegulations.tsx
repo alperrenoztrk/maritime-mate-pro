@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -62,17 +63,7 @@ const SOLASRegulationsPage = () => {
           <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
-        <div className="text-center space-y-3">
-          <div className="flex items-center justify-center gap-3">
-            <FileText className="h-12 w-12 text-blue-600 dark:text-blue-400" />
-            <div>
-              <p className="text-sm uppercase tracking-widest text-blue-600 dark:text-blue-300">SOLAS</p>
-              <h1 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Section Summary and Audit Checklist
-              </h1>
-            </div>
-          </div>
-        </div>
+        <PageHeader title="Section Summary and Audit Checklist" />
 
         {/* Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Link, useParams } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 import { LessonImage } from "@/components/ui/LessonImage";
@@ -32,27 +33,12 @@ export default function BridgeDeviceDetailPage() {
     );
   }
 
-  const DeviceIcon = device.icon;
 
   return (
     <div className="relative min-h-screen overflow-hidden px-4 py-10">
-      <div className="pointer-events-none absolute inset-0">
-        <div className={`absolute -top-20 left-1/3 h-56 w-56 rounded-full bg-gradient-to-br ${device.accent} opacity-20 blur-3xl`} />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <span className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${device.accent} text-white shadow-lg`}>
-              <DeviceIcon className="h-6 w-6" />
-            </span>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">Bridge Device</p>
-              <h1 className="text-3xl font-black text-foreground sm:text-4xl">{device.name}</h1>
-            </div>
-          </div>
-        </div>
+        <PageHeader title={device.name} />
 
         <div className="grid gap-3 sm:grid-cols-2">
           <SectionList title="Duties and areas of use" items={device.duties} />

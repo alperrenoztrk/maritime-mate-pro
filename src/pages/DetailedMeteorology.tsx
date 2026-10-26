@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -392,13 +393,8 @@ const DetailedMeteorology = () => {
           
 
           {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-3">
-              <Cloud className="h-12 w-12 text-blue-600 dark:text-blue-400 animate-pulse" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                Meteorology Subject Explanation
-              </h1>
-            </div>
+          <div className="space-y-3">
+            <PageHeader title="Meteorology Subject Explanation" />
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Comprehensive meteorology guide compiled from USCG and SeaVision sources
             </p>

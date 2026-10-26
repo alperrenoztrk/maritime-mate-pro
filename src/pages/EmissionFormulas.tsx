@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Leaf, Sigma } from "lucide-react";
@@ -124,20 +125,9 @@ const formulas = [
 export default function EmissionFormulas() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -left-32 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
-      </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
-        <div className="text-center mb-12 animate-fade-in">
-          <div className="inline-flex items-center justify-center p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl mb-4">
-            <Sigma className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
-          </div>
-          <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
-            Environmental Formulas
-          </h1>
-        </div>
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-3">
+        <PageHeader className="mb-5" title="Environmental Formulas" />
 
         <div className="space-y-8">
           {formulas.map((category, cIndex) => (

@@ -1,10 +1,10 @@
 import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationGrid, CalculationGridScreen, type CalculationGridItem } from "@/components/ui/calculation-grid";
+import { CalculationList, CalculationPage, type CalculationListItem } from "@/components/ui/calculation-list";
 import { Button } from "@/components/ui/button";
 import { Compass, Globe2, Map, Navigation as NavigationIcon, Radar, Route, Sigma, Waves, Wind, MapPinned, Shield, Sun, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const navigationItems: CalculationGridItem[] = [
+const navigationItems: CalculationListItem[] = [
   { id: "gc", title: "Great Circle", icon: Globe2, to: "/navigation/calc/gc" },
   { id: "rhumb", title: "Rhumb Line (Mercator)", icon: Map, to: "/navigation/calc/rhumb" },
   { id: "plane", title: "Plane Sailing", icon: Route, to: "/navigation/calc/plane" },
@@ -35,27 +35,21 @@ const navigationItems: CalculationGridItem[] = [
 const Navigation = () => {
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Navigation"
+      <CalculationPage
         title="Navigation Calculations"
-      >
-        <div className="space-y-6">
-          <div className="flex justify-end">
-            <Link to="/navigation/formulas">
-              <Button variant="secondary" size="sm" className="gap-2">
+        actions={
+          <Button asChild variant="secondary" size="sm" className="gap-2">
+              <Link to="/navigation/formulas">
                 <Sigma className="h-4 w-4" />
                 Formulas
-              </Button>
-            </Link>
-          </div>
-
-          <CalculationGrid items={navigationItems} className="sm:grid-cols-2" />
-
-          <p className="text-center text-sm text-slate-300">
-            Each calculation opens on a separate page of the book
-          </p>
+              </Link>
+          </Button>
+        }
+      >
+        <div className="space-y-6">
+          <CalculationList items={navigationItems} />
         </div>
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 };

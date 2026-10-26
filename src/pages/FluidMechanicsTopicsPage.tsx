@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -144,27 +145,11 @@ export default function FluidMechanicsTopicsPage() {
     <div
       className="relative min-h-screen overflow-hidden"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10">
-        <div className="relative z-40 border-b border-border bg-background/95">
-          <div className="px-4 py-4">
-            <div className="mx-auto flex max-w-4xl items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
-                <Waves className="h-6 w-6" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-foreground">Fluid Mechanics</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="mx-auto max-w-4xl px-4 py-3"><PageHeader title="Fluid Mechanics" /></div>
 
-        <ScrollArea className="h-[calc(100vh-80px)]">
+        <div data-reference-topics>
           <div className="mx-auto max-w-4xl space-y-4 p-4 pb-20">
             <Accordion type="single" collapsible className="space-y-2">
               {fluidMechanicsTopics.map((topic) => {
@@ -245,7 +230,7 @@ export default function FluidMechanicsTopicsPage() {
               </Link>
             </div>
           </div>
-        </ScrollArea>
+        </div>
       </div>
 
       <BodyPortal>

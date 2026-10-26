@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -59,17 +60,7 @@ const SOLASSafetyEquipmentPage = () => {
           <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
-        <div className="text-center space-y-3">
-          <div className="flex items-center justify-center gap-3">
-            <LifeBuoy className="h-12 w-12 text-orange-600 dark:text-orange-400" />
-            <div>
-              <p className="text-sm uppercase tracking-widest text-orange-600 dark:text-orange-300">Emergency</p>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 via-red-500 to-rose-500 bg-clip-text text-transparent">
-                SOLAS Safety Equipment
-              </h1>
-            </div>
-          </div>
-        </div>
+        <PageHeader title="SOLAS Safety Equipment" />
 
         {/* Equipment Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

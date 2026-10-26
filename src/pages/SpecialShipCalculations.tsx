@@ -1,16 +1,15 @@
 import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 import { SpecialShipCalculations } from "@/components/calculations/SpecialShipCalculations";
 
 const SpecialShipCalculationsPage = () => {
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Special Ships"
+      <CalculationPage
         title="Special Ship Calculations"
       >
         <SpecialShipCalculations />
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 };

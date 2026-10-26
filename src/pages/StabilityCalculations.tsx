@@ -1,14 +1,13 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { StabilityCalculations } from "@/components/calculations/StabilityCalculations";
 import { InteractiveStabilityTools } from "@/components/stability/InteractiveStabilityTools";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 import { Calculator } from "lucide-react";
 
 export default function StabilityCalculationsPage() {
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Stability"
+      <CalculationPage
         title="Stability Calculations"
       >
         <div className="space-y-8">
@@ -23,7 +22,7 @@ export default function StabilityCalculationsPage() {
             </div>
           </section>
         </div>
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 }

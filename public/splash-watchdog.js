@@ -31,6 +31,13 @@
   function removeSplash() {
     var splash = document.getElementById("splash-root");
     if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+    document.documentElement.removeAttribute("data-launch-pending");
+    var root = document.getElementById("root");
+    if (root) {
+      root.removeAttribute("inert");
+      root.removeAttribute("aria-hidden");
+    }
+    window.dispatchEvent(new Event("splash:hidden"));
   }
 
   function button(label, onClick) {
@@ -169,5 +176,6 @@
 
   setTimeout(function () {
     if (!appMounted()) showRecovery();
+    else removeSplash();
   }, BOOT_TIMEOUT_MS);
 })();

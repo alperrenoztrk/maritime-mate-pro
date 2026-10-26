@@ -3,13 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalculationGrid, CalculationGridScreen, type CalculationGridItem } from "@/components/ui/calculation-grid";
+import { CalculationList, CalculationPage, type CalculationListItem } from "@/components/ui/calculation-list";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Anchor, Navigation2, Ship, Sigma, Wind, Link2 } from "lucide-react";
 
-const seamanshipItems: CalculationGridItem[] = [
+const seamanshipItems: CalculationListItem[] = [
   { id: "overview", title: "Seamanship Panel", icon: Navigation2, to: "/seamanship/calculations" },
   { id: "mooring", title: "Mooring Working Load", icon: Anchor, to: "/seamanship/calculations/mooring" },
   { id: "wind", title: "Wind Force", icon: Wind, to: "/seamanship/calculations/wind" },
@@ -334,12 +334,11 @@ export function SeamanshipCalculationDetailPage() {
 
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Seamanship"
+      <CalculationPage
         title={activeTitle}
       >
         <SeamanshipCalculationContent initialSection={initialSection} />
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 }
@@ -347,8 +346,7 @@ export function SeamanshipCalculationDetailPage() {
 const SeamanshipCalculationsPage = () => {
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Seamanship"
+      <CalculationPage
         title="Seamanship Calculations"
       >
         <div className="space-y-6">
@@ -361,13 +359,9 @@ const SeamanshipCalculationsPage = () => {
             </Link>
           </div>
 
-          <CalculationGrid items={seamanshipItems} className="sm:grid-cols-2" />
-
-          <p className="text-center text-sm text-slate-300">
-            Each calculation opens on a separate page
-          </p>
+          <CalculationList items={seamanshipItems} />
         </div>
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 };

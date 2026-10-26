@@ -1,9 +1,9 @@
-import { CalculationGrid, type CalculationGridItem } from "@/components/ui/calculation-grid";
+import { CalculationList, type CalculationListItem } from "@/components/ui/calculation-list";
 import { Anchor, Waves, Wind, Shield, AlertTriangle, Activity } from "lucide-react";
 import React from "react";
 
 export const StabilityCalculations = () => {
-  const calculationMenuItems: CalculationGridItem[] = [
+  const calculationMenuItems: CalculationListItem[] = [
     { id: "grain", title: "Grain Account", icon: Anchor, to: "/stability/grain-calculation" },
     { id: "gz-curve", title: "GZ Curve and Stability Arm", icon: Activity, to: "/stability/gz-curve" },
     { id: "free-surface", title: "Free Surface Effect", icon: Waves, to: "/stability/free-surface" },
@@ -13,6 +13,6 @@ export const StabilityCalculations = () => {
   ];
 
   return (
-    <CalculationGrid items={calculationMenuItems} />
+    <CalculationList items={calculationMenuItems} />
   );
 };

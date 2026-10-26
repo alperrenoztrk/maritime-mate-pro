@@ -1,16 +1,15 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { StructuralCalculations } from "@/components/calculations/StructuralCalculations";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 
 export default function StabilityShearingBendingPage() {
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Stability"
+      <CalculationPage
         title="Shear Force & Bending Moment"
       >
         <StructuralCalculations initialTab="diagrams" />
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 }

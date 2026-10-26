@@ -1,16 +1,15 @@
 import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 import { SafetyCalculations } from "@/components/calculations/SafetyCalculations";
 
 const SafetyCalculationsPage = () => {
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Safety"
+      <CalculationPage
         title="Safety Calculations"
       >
         <SafetyCalculations />
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 };

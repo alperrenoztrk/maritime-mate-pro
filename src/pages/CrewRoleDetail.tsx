@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Link, useParams } from "react-router-dom";
 import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
@@ -28,18 +29,14 @@ export default function CrewRoleDetailPage() {
 
   return (
     <div className="relative min-h-screen px-4 pb-24 py-10">
-      <div className="pointer-events-none absolute inset-0 opacity-60">
-        <div className="absolute left-10 top-10 h-36 w-36 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-20 right-16 h-44 w-44 rounded-full bg-indigo-500/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
         {/* Header Card */}
-        <div className="rounded-2xl border border-border/60 bg-card/80 p-6 shadow-xl dark:border-border/40 dark:bg-slate-900/70">
+        <div className="space-y-3">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Role Detail</p>
-              <h1 className="text-3xl font-black leading-tight text-foreground">{role.rank}</h1>
+              <p className="text-sm text-muted-foreground">Role Detail</p>
+              <PageHeader title={role.rank} />
             </div>
             <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-4 py-3 text-primary">
               <ShieldCheck className="h-5 w-5" />

@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -55,17 +56,7 @@ const SOLASShipRequirementsPage = () => {
           <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
-        <div className="text-center space-y-3">
-          <div className="flex items-center justify-center gap-3">
-            <Anchor className="h-12 w-12 text-indigo-600 dark:text-indigo-400" />
-            <div>
-              <p className="text-sm uppercase tracking-wider text-indigo-600 dark:text-indigo-300">Technical Requirements</p>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                SOLAS Ship Requirements
-              </h1>
-            </div>
-          </div>
-        </div>
+        <PageHeader title="SOLAS Ship Requirements" />
 
         {/* Requirement Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
