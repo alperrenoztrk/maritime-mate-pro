@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun, Crown, Infinity as InfinityIcon, Images } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun, Crown, Infinity as InfinityIcon } from "lucide-react";
 import { hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/font-size-context";
 import { useFontSize } from "@/contexts/useFontSize";
 import { useLanguage } from "@/contexts/useLanguage";
@@ -261,15 +261,6 @@ const Settings = () => {
                     <span data-translatable>Terms of Use</span>
                     <ExternalLink className="w-3 h-3 opacity-70" />
                   </a>
-
-                  <Link
-                    to="/image-credits"
-                    data-tap-target="true"
-                    className="flex items-center gap-2 rounded-lg px-2 text-sm text-primary hover:bg-primary/10"
-                  >
-                    <Images className="w-4 h-4" />
-                    <span data-translatable>Image credits</span>
-                  </Link>
 
                   <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 space-y-2">
                     <p className="text-xs text-muted-foreground">
