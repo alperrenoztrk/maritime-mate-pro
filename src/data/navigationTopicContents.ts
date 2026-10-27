@@ -409,7 +409,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "Harita ölçeği ve mesafe hesabı için kullanılır"
         ],
         formula: {
-          text: "1° enlem = 60 deniz mili | 1′ enlem = 1 deniz mili",
+          text: "1° of latitude = 60 nautical miles | 1′ of latitude = 1 nautical mile",
           description: "Bu nedenle harita üzerinde enlem çizgileri doğrudan mesafe ölçeği olarak kullanılır"
         }
       },
@@ -529,7 +529,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "Boylam ölçeği mesafe için güvenilir değildir"
         ],
         formula: {
-          text: "1° = 60′ (dakika) = 3600″ (saniye)",
+          text: "1° = 60′ (minutes) = 3600″ (seconds)",
           description: "Bu ilişki, düzlem seyirde mesafe hesaplarının ve hız–zaman ilişkilerinin temelidir"
         }
       },
@@ -553,7 +553,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "Düzlem seyirde temel hesaplama formülüdür"
         ],
         formula: {
-          text: "DLat = Mesafe × cos(Kurs)",
+          text: "DLat = Distance × cos(Course)",
           description: "Örnek: 120 NM mesafe, 030° kurs → DLat = 120 × cos(30°) ≈ 103.9′"
         }
       },
@@ -837,7 +837,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
 
 `,
         formula: {
-          text: "Departure = Mesafe × sin Kurs",
+          text: "Departure = Distance × sin Course",
           description: "Kurs hakiki rota olarak alınır; sonuç deniz mili cinsindendir."
         }
       },
@@ -865,7 +865,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
 
 `,
         formula: {
-          text: "tan Kurs = Departure ÷ DLat",
+          text: "tan Course = Departure ÷ DLat",
           description: "DLat ve departure bilindiğinde hakiki rota (kurs) bulunur."
         }
       },
@@ -987,7 +987,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 `,
         formula: {
-          text: "1′ boylam = cos Enlem deniz mili",
+          text: "1′ of longitude = cos(Latitude) nautical miles",
           description: "Boylam dakikasının uzunluğu enleme bağlıdır; enlem arttıkça cos değerinin azalması nedeniyle boylam dakikası kısalır."
         }
       },
@@ -999,7 +999,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 `,
         formula: {
-          text: "Departure = DLong × cos Ortalama Enlem",
+          text: "Departure = DLong × cos(Mean Latitude)",
           description: "Departure deniz mili, DLong dakika cinsindedir. Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır."
         }
       },
@@ -1011,7 +1011,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 `,
         formula: {
-          text: "DLong = Departure ÷ cos Ortalama Enlem",
+          text: "DLong = Departure ÷ cos(Mean Latitude)",
           description: "Departure deniz mili cinsindedir; sonuç dakika cinsinden boylam değişimidir (Doğu/Batı işareti ayrıca verilir)."
         }
       },
@@ -1144,7 +1144,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Hakiki Rota, Hakiki Kerteriz ve Nispi Kerteriz İlişkisi",
         content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Bu üç kavram arasındaki ilişki, göreli bir yönün mutlak sisteme dönüştürülmesi mantığına dayanır.",
         formula: {
-          text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+          text: "True Bearing = True Heading + Relative Bearing",
           description: "Hesaplama sonucunda elde edilen değer 360°'yi aşarsa, 360° çıkarılarak sonuç dairesel sistem içine alınır"
         }
       },
@@ -1424,7 +1424,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Hakiki Kerteriz Hesap Bağıntısı",
         content: "Hakiki kerteriz, nispi gözlemin hakiki sisteme taşınmasıyla elde edilir. Nispi kerteriz sancak yönünde ölçülmüşse pozitif, iskele yönünde ölçülmüşse negatif kabul edilir. Sonuç 360°’yi aşarsa 360° çıkarılır, 0°’nin altına düşerse 360° eklenir.",
         formula: {
-          text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+          text: "True Bearing = True Heading + Relative Bearing",
           description: "Nispi kerteriz, gemi eksenine göre ölçülen açının hakiki kuzeye taşınmasını sağlar."
         }
       },
@@ -1490,7 +1490,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Hakiki–Manyetik Dönüşüm",
         content: "Hakiki ve manyetik sistemler arasındaki ilişki doğrusal bir açı dönüşümüne dayanır. Dönüşüm, bilinen variation kadar açı ekleme veya çıkarma işlemidir.",
         formula: {
-          text: "Hakiki Rota = Manyetik Rota + Variation",
+          text: "True Course = Magnetic Course + Variation",
           description: "Variation doğu ise pozitif, batı ise negatif kabul edilir."
         }
       },
@@ -1519,7 +1519,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Manyetik Kerteriz Bağıntısı",
         content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır.",
         formula: {
-          text: "Manyetik Kerteriz = Manyetik Rota + Nispi Kerteriz",
+          text: "Magnetic Bearing = Magnetic Heading + Relative Bearing",
           description: "Sonuç 360°'yi aşarsa 360° çıkarılır, 0°'nin altına düşerse 360° eklenir."
         }
       },
@@ -3225,7 +3225,7 @@ DLong = 030° 05.0′ − 029° 20.0′ = 45.0′ Doğu`
 
 Departure, doğu–batı doğrultusunda kat edilen gerçek mesafedir ve deniz mili cinsindendir. DLong ise boylam dakikasıdır. Boylam dakikasının gerçek uzunluğu enleme bağlıdır. Düzlem seyirde bu bağıntı orta enlem üzerinden kurulur.`,
         formula: {
-          text: "Departure = DLong × cos(Orta Enlem)",
+          text: "Departure = DLong × cos(Mean Latitude)",
           description: "DLong dakika cinsinden alınır; sonuç deniz mili çıkar."
         }
       },
@@ -3249,7 +3249,7 @@ Orta enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Orta
 
 Bazı problemlerde departure bilinir, DLong istenir. Bu durumda bağıntı ters çevrilir.`,
         formula: {
-          text: "DLong = Departure ÷ cos(Orta Enlem)",
+          text: "DLong = Departure ÷ cos(Mean Latitude)",
           description: "Departure deniz mili, cos orta enlem boyutsuz, sonuç dakika cinsinden DLong’dur."
         }
       },
@@ -3668,7 +3668,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
         content:
           "Birinci tipte çözüm, vektörlerin toplanmasıdır. Suya göre vektör ve akıntı vektörü bileşenlere ayrılır, bileşenler toplanır.",
         formula: {
-          text: "Ntoplam = STW × cos(Heading) + Drift × cos(Set) | Etoplam = STW × sin(Heading) + Drift × sin(Set)",
+          text: "Ntotal = STW × cos(Heading) + Drift × cos(Set) | Etotal = STW × sin(Heading) + Drift × sin(Set)",
           description: "Ntoplam ve Etoplam, yer vektörünün bileşenleridir."
         }
       },
@@ -3677,7 +3677,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
         content:
           "Toplam bileşenlerden COG ve SOG geri hesaplanır. Yön, bileşenlerin işaretine göre belirlenir.",
         formula: {
-          text: "SOG = √(Ntoplam² + Etoplam²) | tan(COG) = Etoplam ÷ Ntoplam",
+          text: "SOG = √(Ntotal² + Etotal²) | tan(COG) = Etotal ÷ Ntotal",
           description: "Bileşenlerden büyüklük ve yön geri hesaplanır."
         }
       },
@@ -8728,7 +8728,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
         content:
           "Kronometredeki zaman hatası, boylam hesabını doğrudan etkiler. Dünya dakikada 15′ açı döndüğünden, zaman hatası geometrik olarak boylam hatasına dönüşür. Bu ilişki, göksel seyirdeki en kritik hata kaynaklarından biridir.",
         formula: {
-          text: "Δλ = Δt × 15′/dakika",
+          text: "Δλ = Δt × 15′/minute",
           description: "4 saniye zaman hatası ≈ 1′ boylam hatası ≈ 1 NM (ekvatorda)"
         },
         bulletPoints: [
@@ -8986,7 +8986,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
         content:
           "Düzlem seyirde DLat, seyredilen mesafe ve kursun kosinüsü çarpımı ile hesaplanır. Bu, seyir üçgeninin dikey bileşenidir.",
         formula: {
-          text: "DLat = Mesafe × cos(Kurs)",
+          text: "DLat = Distance × cos(Course)",
           description: "Mesafe deniz mili, kurs hakiki rota (°T) cinsindendir. Sonuç dakika olarak DLat'i verir."
         }
       },
@@ -9123,7 +9123,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
         content:
           "Manyetik kerteriz, bir hedefin manyetik kuzeye göre ölçülen açısal yönüdür. Manyetik pusula ile alınan ham okumalar manyetik sistemdedir. Hakiki kerterize dönüşüm için variation düzeltmesi gerekir.",
         formula: {
-          text: "Hakiki Kerteriz = Manyetik Kerteriz + Variation",
+          text: "True Bearing = Magnetic Bearing + Variation",
           description: "Variation doğu (+), batı (−) olarak uygulanır."
         },
         bulletPoints: [
@@ -9138,7 +9138,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
         content:
           "Pusula kerterizi, gemideki manyetik pusuladan doğrudan okunan değerdir. Bu değer hem variation hem de deviation (gemi manyetik sapması) içerir. Hakiki kerterize dönüşüm için her iki düzeltme de uygulanmalıdır.",
         formula: {
-          text: "Hakiki Kerteriz = Pusula Kerterizi + Variation + Deviation",
+          text: "True Bearing = Compass Bearing + Variation + Deviation",
           description: "Deviation, geminin rotasına göre değişen tablolardan okunur."
         }
       },
@@ -9340,7 +9340,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Bir deniz mili, meridyen üzerinde 1′ (bir açı dakikası) yayın uzunluğu olarak tanımlanır (1 NM = 1852 m). Mercator projeksiyonunda enlem skalası enleme bağlı olarak gerilir; bu nedenle mesafe, ölçülecek bölgenin BULUNDUĞU enlemdeki skala parçasından okunmalıdır. Boylam skalası ise enlemle daralıp genişlediğinden mesafe için uygun değildir.",
         formula: {
-          text: "1′ enlem ≈ 1 deniz mili = 1852 m",
+          text: "1′ of latitude ≈ 1 nautical mile = 1852 m",
           description: "Mesafe daima yan kenardaki enlem skalasından, ölçülen bölgenin enleminde okunur."
         }
       },
@@ -9382,7 +9382,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Departure (doğu–batı kat edilen mesafe, deniz mili) ile boylam değişimi (DLong, açı dakikası) arasındaki bağıntı, ortalama enlemin kosinüsü üzerinden kurulur. Ekvatorda (enlem 0°) departure = DLong; enlem büyüdükçe aynı DLong için kat edilen departure küçülür.",
         formula: {
-          text: "Departure = DLong × cos(enlem)   →   DLong = Departure / cos(enlem_ort)",
+          text: "Departure = DLong × cos(lat)   →   DLong = Departure / cos(lat_mean)",
           description: "Departure deniz mili, DLong açı dakikası; orta enlem seyrinde ortalama enlem kullanılır."
         }
       },
@@ -9424,7 +9424,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Enlem farkı (DLat) ve boylam farkı (DLong) açı dakikası olarak bulunur. DLong, ortalama enlemde departure'a çevrilir. Kurs ve mesafe, DLat ile departure'dan dik üçgen bağıntılarıyla hesaplanır.",
         formula: {
-          text: "Departure = DLong × cos(Latort);  tan(Kurs) = Departure / DLat;  Mesafe = DLat / cos(Kurs)",
+          text: "Departure = DLong × cos(Latmean);  tan(Course) = Departure / DLat;  Distance = DLat / cos(Course)",
           description: "DLat ve DLong dakika; departure ve mesafe deniz mili."
         }
       },
@@ -9703,7 +9703,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "GPS’te trilaterasyon uygulaması şöyle işler: her uydu kendi konumunu ve sinyal gönderim zamanını içeren bir mesaj yayımlar. Alıcı bu sinyali aldığında, sinyal gecikmesini (Δt) ışık hızıyla (c) çarparak uyduya olan sözde mesafeyi (pseudo-range) hesaplar. Bu sözde mesafe, küre yüzeyini tanımlar ve alıcının bu küre üzerinde bir yerde bulunduğunu gösterir. 3 uyduyla elde edilen 3 kürenin kesişimi teorik olarak iki nokta verir; yeryüzü dışındaki nokta otomatik elenir ve 3D konum elde edilir.\n\nAncak gerçekte 4 uydu zorunludur. Bunun nedeni alıcı saatinin uydu atomik saatleri kadar hassas olmayışıdır. Alıcı saat hatası (dtr), her ölçüme eşit miktarda hata katar. Dördüncü uyduyla 4 denklemden oluşan bir sistem kurulur ve hem 3D konum (x, y, z) hem de saat hatası (dtr) bilinmeyeni birlikte çözülür.",
         formula: {
-          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 uydu",
+          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 satellites",
           description: "Her uydu için bir denklem; 4 denklem 4 bilinmeyeni (x, y, z, dtr) çözer"
         }
       },
@@ -10401,7 +10401,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Seyir hesaplarında set ve drift, gemi hız vektörüne (STW ve heading) eklenerek gerçek zemin hareketi (COG ve SOG) elde edilir. Bu vektör toplamı, üç farklı bileşeni kapsar: gemi hız vektörü (heading ve STW), akıntı vektörü (set ve drift), ve sonuç vektörü (COG ve SOG).\n\nÖrnek: Gemi heading 270° (gerçek), STW 12 knot. Akıntı set 180° (güneye gidiyor), drift 2 knot. Vektörel toplam: batıya giden gemi aynı zamanda 2 knot güneye sürükleniyor; COG yaklaşık 264° ve SOG yaklaşık 12.2 knot olur. Bu hesap grafiksel olarak vektör üçgeni çizilerek ya da trigonometrik bileşen yöntemiyle analitik olarak yapılabilir.",
         formula: {
-          text: "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG trigonometrik hesap",
+          text: "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG by trigonometry",
           description: "Vektör toplamı: gemi hız vektörü + akıntı vektörü = COG/SOG vektörü"
         }
       },

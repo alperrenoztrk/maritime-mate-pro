@@ -2137,5 +2137,59 @@
  },
  "The righting arm GZ is the KN value (cross curves) minus KG × sin θ": {
   "en": "The righting arm GZ is the KN value (cross curves) minus KG × sin θ"
+ },
+ "1′ of latitude ≈ 1 nautical mile = 1852 m": {
+  "en": "1′ of latitude ≈ 1 nautical mile = 1852 m"
+ },
+ "1′ of longitude = cos(Latitude) nautical miles": {
+  "en": "1′ of longitude = cos(Latitude) nautical miles"
+ },
+ "1° of latitude = 60 nautical miles | 1′ of latitude = 1 nautical mile": {
+  "en": "1° of latitude = 60 nautical miles | 1′ of latitude = 1 nautical mile"
+ },
+ "Departure = Distance × sin Course": {
+  "en": "Departure = Distance × sin Course"
+ },
+ "Departure = DLong × cos(lat)   →   DLong = Departure / cos(lat_mean)": {
+  "en": "Departure = DLong × cos(lat)   →   DLong = Departure / cos(lat_mean)"
+ },
+ "Departure = DLong × cos(Latmean);  tan(Course) = Departure / DLat;  Distance = DLat / cos(Course)": {
+  "en": "Departure = DLong × cos(Latmean);  tan(Course) = Departure / DLat;  Distance = DLat / cos(Course)"
+ },
+ "Departure = DLong × cos(Mean Latitude)": {
+  "en": "Departure = DLong × cos(Mean Latitude)"
+ },
+ "DLat = Distance × cos(Course)": {
+  "en": "DLat = Distance × cos(Course)"
+ },
+ "DLong = Departure ÷ cos(Mean Latitude)": {
+  "en": "DLong = Departure ÷ cos(Mean Latitude)"
+ },
+ "Magnetic Bearing = Magnetic Heading + Relative Bearing": {
+  "en": "Magnetic Bearing = Magnetic Heading + Relative Bearing"
+ },
+ "Ntotal = STW × cos(Heading) + Drift × cos(Set) | Etotal = STW × sin(Heading) + Drift × sin(Set)": {
+  "en": "Ntotal = STW × cos(Heading) + Drift × cos(Set) | Etotal = STW × sin(Heading) + Drift × sin(Set)"
+ },
+ "SOG = √(Ntotal² + Etotal²) | tan(COG) = Etotal ÷ Ntotal": {
+  "en": "SOG = √(Ntotal² + Etotal²) | tan(COG) = Etotal ÷ Ntotal"
+ },
+ "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG by trigonometry": {
+  "en": "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG by trigonometry"
+ },
+ "tan Course = Departure ÷ DLat": {
+  "en": "tan Course = Departure ÷ DLat"
+ },
+ "True Bearing = Compass Bearing + Variation + Deviation": {
+  "en": "True Bearing = Compass Bearing + Variation + Deviation"
+ },
+ "True Bearing = Magnetic Bearing + Variation": {
+  "en": "True Bearing = Magnetic Bearing + Variation"
+ },
+ "True Bearing = True Heading + Relative Bearing": {
+  "en": "True Bearing = True Heading + Relative Bearing"
+ },
+ "True Course = Magnetic Course + Variation": {
+  "en": "True Course = Magnetic Course + Variation"
  }
 }

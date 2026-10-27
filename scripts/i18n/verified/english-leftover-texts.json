@@ -11112,5 +11112,434 @@
   },
   "LO/FO analizleri": {
     "en": "LO/FO analyses"
+  },
+  "Anchor watch: pozisyon/kerteriz izleyerek demir taramasını ve trafik/havayı kontrol etmek.": {
+    "en": "Anchor watch: monitoring the position/bearings to detect anchor dragging and keeping a check on traffic and weather."
+  },
+  "Bir kilit 15 kulaç, yani yaklaşık 27.5 m'dir; kaloma hesapları kilit cinsinden yapılır.": {
+    "en": "One shackle is 15 fathoms, about 27.5 m; scope is calculated in shackles."
+  },
+  "Cb veya squall hattı yaklaşırken tedbirler yağış değil rüzgâr eksenlidir; çünkü ilk darbe gust front ile gelir. Radar, yağış hücrelerinin tespiti ve hareket vektörünün çıkarılması için etkin kullanılır (hücreler radarda parlak, yüksek yoğunluklu eko verir). Güvertedeki personel içeri alınır, bumbalar/kreynler emniyete alınır, açık ambar kapakları kapatılır. Rüzgârın aniden yön değiştirip şiddetleneceği varsayılarak geminin rüzgâr üstü/altı durumu değerlendirilir; demirde ise demir taraması riski için makine hazır bulundurulur. Yıldırım riski nedeniyle açık güvertede anten ve yüksek nokta çalışmaları durdurulur. Küçük hücreler görsel ve radar takibiyle rotadan taviz vermeden atlatılabilir; organize squall hattı ise hattın zayıf noktasından, mümkünse dik açıyla geçilir.": {
+    "en": "When a Cb or squall line approaches, the precautions are driven by the wind, not the rain, because the first blow arrives with the gust front. Radar is used actively to detect the precipitation cells and to work out their movement vector (the cells give bright, high-intensity echoes). Personnel on deck are brought inside, derricks/cranes are secured and open hatch covers are closed. Assuming the wind will suddenly shift and strengthen, the ship's position relative to the wind is assessed; at anchor, the engine is kept ready because of the risk of dragging the anchor. Because of the lightning risk, work on antennas and other high points on the open deck is stopped. Small cells can be avoided with visual and radar tracking without departing from the route; an organised squall line is crossed at its weakest point, at right angles if possible."
+  },
+  "Demirde köprüüstü nöbeti sürdürülür; mevki, salınım dairesi, hava durumu ve diğer gemiler izlenir. Tarama riskinde makine hazır (stand-by) tutulur. Yeterli kaloma, uygun dip yapısı (tutma için kum/çamur iyidir; kaya zayıftır) ve sağlam nöbet güvenli demirlemenin temelidir.": {
+    "en": "A bridge watch is maintained at anchor; the position, the swinging circle, the weather and other ships are monitored. If there is a risk of dragging, the engine is kept on stand-by. Adequate scope, a suitable bottom (sand/mud holds well; rock holds poorly) and a sound watch are the basis of safe anchoring."
+  },
+  "Demirin tutması büyük ölçüde zincirin deniz dibine YATAY bir çekme uygulamasına bağlıdır. Bu nedenle verilen zincir uzunluğu (kaloma), su derinliğinin birkaç katı olmalıdır. İyi havada tipik kural su derinliğinin yaklaşık 5-6 katı zincir; kötü havada daha fazla (7+ kat) verilir. Zincirin ağırlığı (catenary) çekmeyi yatay tutar ve tutma gücünü artırır.": {
+    "en": "The holding of the anchor depends largely on the chain applying a HORIZONTAL pull along the seabed. The length of chain paid out (scope) must therefore be several times the depth of water. In good weather the usual rule is chain of about 5–6 times the depth; more (7+ times) is paid out in bad weather. The weight of the chain (catenary) keeps the pull horizontal and increases the holding power."
+  },
+  "Demirin tutmayıp sürüklenmesi (dragging) şu yöntemlerle izlenir: sabit bir nesneye/kara hedefine kerteriz alıp değişimi izlemek (transit/clearing bearing), GPS demir nöbeti (anchor watch) alarmı, echo sounder ile derinlik değişimi ve zincirin ani gerilip titremesi (vibration). Tarama tespitinde daha fazla kaloma verilir veya makine/yeniden demirleme ile müdahale edilir.": {
+    "en": "Dragging of the anchor is monitored by: taking a bearing of a fixed object/landmark and watching for change (transit/clearing bearing), the GPS anchor watch alarm, depth changes on the echo sounder, and sudden tension and vibration in the chain. If dragging is detected, more scope is paid out or action is taken with the engine or by re-anchoring."
+  },
+  "Demirleme (anchoring), gemiyi belirli bir mevkide güvenle tutmak için demir ve zincirin deniz dibine yük aktarmasıdır. Doğru yer seçimi, yeterli kaloma (zincir boyu) ve zeminin tutuş kalitesi, geminin sürüklenmeden (dragging) durmasını sağlar. Demir donanımının bakımı ve manevra disiplini hem emniyet hem operasyonel güvenilirlik için kritiktir.": {
+    "en": "Anchoring transfers the load of the ship to the seabed through the anchor and chain to hold her safely in a given position. The right choice of position, adequate scope (chain paid out) and good holding ground keep the ship from dragging. Maintenance of the anchoring equipment and manoeuvring discipline are critical for both safety and operational reliability."
+  },
+  "Demirleme ve Demir Tarama Hesapları": {
+    "en": "Anchoring and Anchor Dragging Calculations"
+  },
+  "Demirleme yerinde su derinliği 40 m ise iyi hava koşullarında verilecek kaloma yaklaşık ne kadar olmalıdır?": {
+    "en": "If the depth of water at the anchorage is 40 m, approximately how much scope should be paid out in good weather?"
+  },
+  "Demirli gemi sürekli izlenir; tarama tespitinde makine hazır edilir, kaloma artırılır.": {
+    "en": "The anchored ship is monitored continuously; if dragging is detected the engine is made ready and the scope is increased."
+  },
+  "Demirli gemi sürekli izlenir: GPS demirleme alarmı, kerteriz/mesafe (transit, radar range) ve görsel referanslarla geminin mevkisi kontrol edilir. Sürüklenme belirtileri: zincirin sürekli gergin/titreşimli olması, geminin referanslara göre kayması, demir alarmının çalması. Tarama tespit edilirse makine hazır edilir, gerekirse kaloma artırılır, ikinci demir atılır veya yeniden demirleme/seyir yapılır. Ağır hava beklendiğinde önceden kaloma artırılır ve makine 'stand-by' tutulur.": {
+    "en": "The anchored ship is monitored continuously: her position is checked with the GPS anchor alarm, bearings/ranges (transits, radar ranges) and visual references. Signs of dragging: the chain constantly taut or vibrating, the ship moving relative to her references, the anchor alarm sounding. If dragging is detected the engine is made ready and, if necessary, the scope is increased, the second anchor is let go, or the ship re-anchors or gets under way. When heavy weather is expected, the scope is increased in advance and the engine is kept on stand-by."
+  },
+  "Geminin demir taraması": {
+    "en": "The ship dragging her anchor"
+  },
+  "İstenen kalomaya ulaşınca band freni sıkılır ve stoppe takılır": {
+    "en": "When the required scope is reached, the band brake is applied and the stopper is put on"
+  },
+  "İyi havada kaloma genellikle derinliğin 5–6 katıdır: 40 × 6 = 240 m (yaklaşık 9 kilit).": {
+    "en": "In good weather the scope is usually 5–6 times the depth: 40 × 6 = 240 m (about 9 shackles)."
+  },
+  "İyi havada tipik kaloma (verilen zincir) ne kadardır?": {
+    "en": "What is a typical scope (chain paid out) in good weather?"
+  },
+  "Kaloma ≈ 5-6 × su derinliği (iyi hava), 7+ × (kötü hava)": {
+    "en": "Scope ≈ 5–6 × depth of water (good weather), 7+ × (bad weather)"
+  },
+  "Kaloma ≈ 5–6 × derinlik (normal), 8–10 × derinlik (ağır hava)": {
+    "en": "Scope ≈ 5–6 × depth (normal), 8–10 × depth (heavy weather)"
+  },
+  "Kaloma ≈ 5–6× derinlik (normal), 8–10× (ağır hava); yetersiz kaloma dragging riskidir.": {
+    "en": "Scope ≈ 5–6 × depth (normal), 8–10 × (heavy weather); insufficient scope is a dragging risk."
+  },
+  "Kaloma artırırım; tutmazsa makineyle destekler, gerekirse yeniden demirler veya seyre çıkarım": {
+    "en": "I increase the scope; if she still does not hold, I support with the engine and, if necessary, re-anchor or proceed to sea"
+  },
+  "Kaloma önemsizdir": {
+    "en": "Scope is unimportant"
+  },
+  "Kaloma su derinliğinin ~5-6 katı (iyi hava), kötü havada daha fazla.": {
+    "en": "Scope is ~5–6 times the depth of water (good weather), more in bad weather."
+  },
+  "Kalomayı artırmak, makineyi hazır tutmak ve gerekirse demir alıp açığa çıkmak": {
+    "en": "Increasing the scope, keeping the engine ready and, if necessary, heaving up and proceeding to open water"
+  },
+  "Makine hazır edilir; kaloma artırılır, ikinci demir atılır veya yeniden demirlenir": {
+    "en": "The engine is made ready; the scope is increased, the second anchor is let go or the ship re-anchors"
+  },
+  "Normal ~5–6×, ağır havada 8–10× derinlik; yetersiz kaloma dragging riskini artırır.": {
+    "en": "Normal ~5–6×, heavy weather 8–10× the depth; insufficient scope increases the risk of dragging."
+  },
+  "Normal koşullarda tipik kaloma (zincir/derinlik) oranı nedir?": {
+    "en": "What is the typical scope (chain/depth) ratio in normal conditions?"
+  },
+  "Önce kaloma artırılır; yetmezse makineyle baş tutulur, gerekirse yeniden demirleme veya emniyetli suya çıkma değerlendirilir. İkinci demir kontrollü verilir; yüksek hızda bırakmak zinciri ve ırgatı zorlar.": {
+    "en": "First the scope is increased; if that is not enough, the engine is used to hold the heading and, if necessary, re-anchoring or moving to safe water is considered. The second anchor is let go under control; letting it go at high speed overloads the chain and the windlass."
+  },
+  "Salınım dairesi = yatay zincir mesafesi + LOA; içine tehlike girmemeli.": {
+    "en": "Swinging circle = horizontal chain distance + LOA; no danger may lie inside it."
+  },
+  "Suya verilen kaloma miktarının anında okunabilmesi için": {
+    "en": "So that the scope paid out can be read off immediately"
+  },
+  "Tarama belirtisinde önce makine hazır edilir ve kaptan çağrılır; gemi her an manevraya hazır olmalıdır. Beklemek oturma/çatma riskini büyütür, hazırlıksız demir almak karanlıkta ve trafikte risklidir.": {
+    "en": "At the first sign of dragging the engine is made ready and the Master is called; the ship must be ready to manoeuvre at any moment. Waiting increases the risk of grounding or collision, and heaving up unprepared is risky in darkness and in traffic."
+  },
+  "Tarama tespitinde daha fazla kaloma verilir veya makine/yeniden demirleme ile müdahale edilir.": {
+    "en": "If dragging is detected, more scope is paid out or action is taken with the engine or by re-anchoring."
+  },
+  "Tarama, kerteriz/GPS anchor watch/derinlik ile erken tespit edilir.": {
+    "en": "Dragging is detected early by bearings, the GPS anchor watch and the depth."
+  },
+  "Verilen kaloma ile gemi boyunun toplamına": {
+    "en": "To the sum of the scope paid out and the ship's length"
+  },
+  "Vinçle kontrollü kaloma verir, freni doğru ayarlı tutarım": {
+    "en": "I pay out the scope under control with the windlass and keep the brake correctly adjusted"
+  },
+  "Yeterli kaloma zincirin dipte yatay uzanmasını sağlar; çekme açısı büyürse demir dipten sıyrılır (taramaya başlar).": {
+    "en": "Adequate scope lets the chain lie horizontally on the bottom; if the angle of pull increases, the anchor is broken out of the bottom (starts to drag)."
+  },
+  "Zincirde ritmik sarsıntı, kerteriz değişimi ve konum kayması taramanın işaretidir; makine hazır edilip kaloma artırılır veya yer değiştirilir.": {
+    "en": "Rhythmic jerking of the chain, a change of bearing and a shift in position are signs of dragging; the engine is made ready and the scope is increased or the ship shifts berth."
+  },
+  "V: gereken hacim (m³), W: yük ağırlığı (t), SF: istif faktörü (m³/t)": {
+    "en": "V: required volume (m³), W: cargo weight (t), SF: stowage factor (m³/t)"
+  },
+  "Vnet: net istiflenebilir hacim, Vambar: ambar net hacmi, BS: broken stowage oranı (ondalık)": {
+    "en": "Vnet: net stowable volume, Vambar: net volume of the hold, BS: broken stowage ratio (decimal)"
+  },
+  "Δ: ilgili draftta okunan deplasman (ton); fark yüklenen/boşaltılan yük miktarıdır": {
+    "en": "Δ: displacement (t) read at the relevant draft; the difference is the quantity of cargo loaded/discharged"
+  },
+  "ρliman: hidrometre ile ölçülen liman suyu yoğunluğu (t/m³)": {
+    "en": "ρport: density of the dock water measured with a hydrometer (t/m³)"
+  },
+  "FMP: Flow Moisture Point (akış nem noktası); yük nemi TML'nin altında olmalıdır": {
+    "en": "FMP: Flow Moisture Point; the moisture content of the cargo must be below the TML"
+  },
+  "Bağlamaların etkin direnci, atalet kuvvetinden sürtünme direnci çıkarılan değeri karşılamalı": {
+    "en": "The effective holding capacity of the lashings must cover the inertia force minus the friction resistance"
+  },
+  "Güvenlik katsayısı ekipman tipine ve kullanıma göre değişir (tipik 4–6)": {
+    "en": "The safety factor depends on the type of equipment and its use (typically 4–6)"
+  },
+  "Ton başına navlun yük miktarına bağlıdır; lumpsum miktardan bağımsız sabittir": {
+    "en": "Freight per tonne depends on the cargo quantity; a lump sum is fixed regardless of the quantity"
+  },
+  "Seyir süresi; toplam sefer süresi için liman/bekleme/kanal süreleri eklenir": {
+    "en": "Sea passage time; port, waiting and canal times are added for the total voyage duration"
+  },
+  "Seferin günlük net getirisi; time charter hire ile doğrudan karşılaştırılabilir": {
+    "en": "The daily net earnings of the voyage; directly comparable with time charter hire"
+  },
+  "Tüketim = günlük sarfiyat × gün; ECA içi/dışı ve yakıt tipine göre ayrı hesaplanır": {
+    "en": "Consumption = daily consumption × days; calculated separately for inside/outside ECA and for each fuel type"
+  },
+  "MARPOL Ek IV pis su tahliye mesafeleri (onaylı tesis çıkışı için daha gevşek)": {
+    "en": "MARPOL Annex IV sewage discharge distances (less strict for discharge from an approved treatment plant)"
+  },
+  "MARPOL Ek VI yakıt kükürt limitleri (kütlece); scrubber eşdeğer önlem sayılır": {
+    "en": "MARPOL Annex VI fuel sulphur limits (by mass); an exhaust gas cleaning system (scrubber) is accepted as an equivalent method"
+  },
+  "Bu ilişki, zaman–boylam hesaplarının temel formülüdür": {
+    "en": "This relationship is the basic formula for time–longitude calculations"
+  },
+  "h: göz yüksekliği (metre). Sonuç dakikadır ve çıkarma işaretiyle uygulanır.": {
+    "en": "h: height of eye (metres). The result is in minutes of arc and is always subtracted."
+  },
+  "R dakikadır, h gözlenen yükseklik açısıdır. Düşük yüksekliklerde hata büyür.": {
+    "en": "R is in minutes of arc; h is the observed altitude. The error grows at low altitudes."
+  },
+  "HP yatay paralakstır; h gözlenen yüksekliktir.": {
+    "en": "HP is the horizontal parallax; h is the observed altitude."
+  },
+  "Ho: düzeltilmiş gözlemsel yükseklik, Hs: sextant ölçümü.": {
+    "en": "Ho: observed (corrected) altitude, Hs: sextant altitude."
+  },
+  "Düzeltilmiş yükseklik bağıntısı. Hs sextanttan okunan değerdir.": {
+    "en": "Altitude correction formula. Hs is the value read from the sextant."
+  },
+  "Z: zenit uzaklığı, Ho: düzeltilmiş gözlemsel yükseklik.": {
+    "en": "Z: zenith distance, Ho: observed (corrected) altitude."
+  },
+  "Bu nedenle harita üzerinde enlem çizgileri doğrudan mesafe ölçeği olarak kullanılır": {
+    "en": "This is why the latitude scale of the chart is used directly as the distance scale"
+  },
+  "Bu formül düzlem seyirde departure kavramını ve orta enlem seyirde boylam hesaplarını temel alır": {
+    "en": "This formula is the basis of departure in plane sailing and of longitude calculations in mid-latitude sailing"
+  },
+  "Bu ilişki, düzlem seyirde mesafe hesaplarının ve hız–zaman ilişkilerinin temelidir": {
+    "en": "This relationship is the basis of distance and speed–time calculations in plane sailing"
+  },
+  "Bu ilişki düzlem seyirde, orta enlem seyirde ve akıntılı seyir hesaplarında kullanılır": {
+    "en": "This relationship is used in plane sailing, mid-latitude sailing and current calculations"
+  },
+  "Zaman farkı doğrudan boylam farkına çevrilir.": {
+    "en": "The time difference converts directly into the difference of longitude."
+  },
+  "Kurs hakiki rota olarak alınır; sonuç deniz mili cinsindendir.": {
+    "en": "The course is the true course; the result is in nautical miles."
+  },
+  "DLat ve departure bilindiğinde hakiki rota (kurs) bulunur.": {
+    "en": "When DLat and departure are known, the true course is found."
+  },
+  "Boylam dakikasının uzunluğu enleme bağlıdır; enlem arttıkça cos değerinin azalması nedeniyle boylam dakikası kısalır.": {
+    "en": "The length of a minute of longitude depends on latitude: as latitude increases, its cosine decreases and the minute of longitude becomes shorter."
+  },
+  "Departure deniz mili, DLong dakika cinsindedir. Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır.": {
+    "en": "Departure is in nautical miles, DLong in minutes. The mean latitude is the arithmetic mean of the initial and final latitudes."
+  },
+  "Hesaplama sonucunda elde edilen değer 360°'yi aşarsa, 360° çıkarılarak sonuç dairesel sistem içine alınır": {
+    "en": "If the result exceeds 360°, 360° is subtracted to bring it back within 000°–360°."
+  },
+  "Hakiki rota 180°’den küçükse 180° eklenir, 180°’den büyükse 180° çıkarılır.": {
+    "en": "If the true course is less than 180°, 180° is added; if it is greater than 180°, 180° is subtracted."
+  },
+  "Nispi kerteriz, gemi eksenine göre ölçülen açının hakiki kuzeye taşınmasını sağlar.": {
+    "en": "The relative bearing is measured from the ship's head; adding the true heading converts it to a bearing from true north."
+  },
+  "Doğu (+), batı (−). Anımsatıcı: 'Hata doğu, pusula düşük; hata batı, pusula yüksek' (Error East, compass least).": {
+    "en": "East (+), west (−). Mnemonic: 'Error east, compass least; error west, compass best'."
+  },
+  "d merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır.": {
+    "en": "d is the central angle, φ₁ and φ₂ are the latitudes, Δλ is the difference of longitude."
+  },
+  "C₁ başlangıç kursudur.": {
+    "en": "C₁ is the initial course."
+  },
+  "C₁ başlangıç kursu, d merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır.": {
+    "en": "C₁ is the initial course, d the central angle, φ₁ and φ₂ the latitudes, Δλ the difference of longitude."
+  },
+  "θ merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır.": {
+    "en": "θ is the central angle, φ₁ and φ₂ are the latitudes, Δλ is the difference of longitude."
+  },
+  "D deniz mili cinsinden ufuk mesafesidir. h1 fener yüksekliğini, h2 göz yüksekliğini metre cinsinden temsil eder. h1=20 m ve h2=9 m alınırsa D ≈ 15,54 M olur; nominal range 12M ise sınırlayıcı parlaklıktır, 18M ise geometrik sınır 15,5 M’de devreye girer.": {
+    "en": "D is the geographical range in nautical miles; h1 is the height of the light and h2 the height of eye, in metres. With h1 = 20 m and h2 = 9 m, D ≈ 15.54 M: if the nominal range is 12 M, the light's intensity is the limit; if it is 18 M, the geographical limit applies at 15.5 M."
+  },
+  "Kuzeye gidiliyorsa DLat (+) kuzey; güneye gidiliyorsa DLat (−) güney kabul edilir.": {
+    "en": "When steaming north, DLat is positive (N); when steaming south, it is negative (S)."
+  },
+  "DLong doğu yönlü (E) veya batı yönlü (W) olarak işaretlenir.": {
+    "en": "DLong is marked easterly (E) or westerly (W)."
+  },
+  "DLong dakika cinsinden alınır; sonuç deniz mili çıkar.": {
+    "en": "DLong is taken in minutes; the result is in nautical miles."
+  },
+  "Orta enlem derece cinsinden alınır; cos değeri bu enlemden hesaplanır.": {
+    "en": "The mean latitude is taken in degrees; the cosine is calculated for this latitude."
+  },
+  "Departure deniz mili, cos orta enlem boyutsuz, sonuç dakika cinsinden DLong’dur.": {
+    "en": "Departure is in nautical miles and cos(mean latitude) is dimensionless; the result is DLong in minutes."
+  },
+  "Set yön, drift ise hız bilgisidir.": {
+    "en": "Set is the direction and drift is the speed of the current."
+  },
+  "COG/SOG, suya göre vektör ile akıntı vektörünün toplamıdır.": {
+    "en": "COG/SOG is the sum of the water vector (heading/STW) and the current vector."
+  },
+  "Düzeltme yönü akıntı setine göre belirlenir.": {
+    "en": "The direction of the correction depends on the set of the current."
+  },
+  "N ve E toplam vektörün kuzey ve doğu bileşenleridir.": {
+    "en": "N and E are the north and east components of the resultant vector."
+  },
+  "Ntoplam ve Etoplam, yer vektörünün bileşenleridir.": {
+    "en": "Ntotal and Etotal are the components of the ground vector."
+  },
+  "Bileşenlerden büyüklük ve yön geri hesaplanır.": {
+    "en": "The magnitude and direction are recovered from the components."
+  },
+  "İstenen yer vektöründen akıntı vektörü çıkarılır.": {
+    "en": "The current vector is subtracted from the required ground vector."
+  },
+  "Yer vektörü, suya göre vektör ile akıntı vektörünün toplamıdır.": {
+    "en": "The ground vector is the sum of the water vector and the current vector."
+  },
+  "a: intercept (nm), Ho: düzeltilmiş gözlemsel yükseklik, Hc: hesaplanan teorik yükseklik.": {
+    "en": "a: intercept (nm), Ho: observed altitude, Hc: calculated altitude."
+  },
+  "Z: zenit uzaklığı, h: gök cisminin ölçülen yüksekliği": {
+    "en": "Z: zenith distance, h: observed altitude of the celestial body"
+  },
+  "λ: boylam (Doğu çıkarılır, Batı eklenir)": {
+    "en": "λ: longitude (east is added, west is subtracted)"
+  },
+  "h: yükseklik | φ: gözlemci enlemi | δ: deklinasyon | LHA: yerel saat açısı": {
+    "en": "h: altitude | φ: observer's latitude | δ: declination | LHA: local hour angle"
+  },
+  "Zaman–açı dönüşümleri ve saat açısı ilişkisi": {
+    "en": "Time–arc conversions and the hour angle relationship"
+  },
+  "Zn: gök cisminin azimut doğrultusu.": {
+    "en": "Zn: true azimuth of the celestial body."
+  },
+  "İki LOP’un kesişimi, 2 LOP fix’i verir.": {
+    "en": "The intersection of two LOPs gives a two-LOP fix."
+  },
+  "Δs: taşınan mesafe (NM) | V: hız (knot) | Δt: zaman farkı (saat)": {
+    "en": "Δs: distance run (NM) | V: speed (kn) | Δt: time interval (h)"
+  },
+  "Doğu boylamda (+), Batı boylamda (−). Sonuç 0°–360° arasına normalize edilir.": {
+    "en": "East longitude (+), west longitude (−). The result is normalised to 0°–360°."
+  },
+  "a: intercept (dakika cinsinden, 1′ = 1 NM). Pozitif ise toward, negatif ise away.": {
+    "en": "a: intercept (in minutes, 1′ = 1 NM). Positive: towards; negative: away."
+  },
+  "4 saniye zaman hatası ≈ 1′ boylam hatası ≈ 1 NM (ekvatorda)": {
+    "en": "A 4-second time error ≈ 1′ longitude error ≈ 1 NM (at the equator)"
+  },
+  "Yükseklik ile mevki arasında doğrudan ilişki vardır.": {
+    "en": "Altitude and position are directly related."
+  },
+  "30° kesişimde hata yaklaşık 2 kat, 15° kesişimde hata yaklaşık 4 kat büyür.": {
+    "en": "With a 30° cut the error roughly doubles; with a 15° cut it roughly quadruples."
+  },
+  "D: seyredilen mesafe (NM), C: hakiki rota, DLat ve Departure dakika/NM cinsinden.": {
+    "en": "D: distance run (NM), C: true course, DLat and Departure in minutes/NM."
+  },
+  "Sonuç dakika (') veya derece-dakika formatında ifade edilir.": {
+    "en": "The result is expressed in minutes (′) or in degrees and minutes."
+  },
+  "Mesafe deniz mili, kurs hakiki rota (°T) cinsindendir. Sonuç dakika olarak DLat'i verir.": {
+    "en": "Distance is in nautical miles and the course is the true course (°T). The result is DLat in minutes."
+  },
+  "Bu üç formül akıntısız DR hesabının temelini oluşturur.": {
+    "en": "These three formulas are the basis of DR without current."
+  },
+  "Deviation, geminin rotasına göre değişen tablolardan okunur.": {
+    "en": "Deviation is read from the deviation card; it changes with the ship's heading."
+  },
+  "D: ilerletme mesafesi (NM), V: hız (kn), Δt: zaman farkı (saat).": {
+    "en": "D: distance the LOP is advanced (NM), V: speed (kn), Δt: time interval (h)."
+  },
+  "d₁: alınan mesafe, d₂: hedefe mesafe": {
+    "en": "d₁: distance run between the two bearings, d₂: distance off the object at the second bearing"
+  },
+  "Mesafe daima yan kenardaki enlem skalasından, ölçülen bölgenin enleminde okunur.": {
+    "en": "Distance is always measured on the latitude scale at the side of the chart, at the latitude of the area being measured."
+  },
+  "Departure deniz mili, DLong açı dakikası; orta enlem seyrinde ortalama enlem kullanılır.": {
+    "en": "Departure in nautical miles, DLong in minutes of arc; mid-latitude sailing uses the mean latitude."
+  },
+  "DLat ve DLong dakika; departure ve mesafe deniz mili.": {
+    "en": "DLat and DLong in minutes; departure and distance in nautical miles."
+  },
+  "Çizimden önce tüm kerterizler hakiki değere çevrilir.": {
+    "en": "All bearings are converted to true before plotting."
+  },
+  "Bilinen yükseklikteki bir nesneye düşey sekstant açısından yaklaşık mesafe.": {
+    "en": "Approximate distance off an object of known height from its vertical sextant angle."
+  },
+  "Loxodrom mesafesi, orta enlem yöntemiyle veya Mercator sailing formülleriyle hesaplanır": {
+    "en": "The rhumb line distance is calculated by the mid-latitude method or with the Mercator sailing formulae"
+  },
+  "c = ışık hızı (≈ 3×10⁸ m/s), Δt = sinyal gecikmesi. Dördüncü uydu saat hatasını eliminate eder.": {
+    "en": "c = speed of light (≈ 3×10⁸ m/s), Δt = signal travel time. The fourth satellite removes the receiver clock error."
+  },
+  "GDOP tüm bileşenleri kapsar (konum + zaman). Deniz seyirinde HDOP/PDOP öncelikli izlenir.": {
+    "en": "GDOP covers all components (position + time). At sea, HDOP/PDOP are monitored first."
+  },
+  "Mesafe, sinyalin hedefe gidip-gelme süresinin yarısı ve ışık hızının çarpımıdır": {
+    "en": "The range is the speed of light multiplied by half the two-way travel time of the signal"
+  },
+  "ETD = kalkış zamanı, D = toplam mesafe, SOG = ortalama zemin hızı. Tampon süreler eklenmeli.": {
+    "en": "ETD = time of departure, D = total distance, SOG = average speed over ground. Time margins should be added."
+  },
+  "Wheel-over point, waypoint'ten önceki başlık değişikliği noktasıdır; advance mesafesi kadar öne alınır": {
+    "en": "The wheel-over point is where the turn is started before reaching the waypoint; it is placed before the waypoint by the advance distance"
+  },
+  "Standart ATT yöntemine göre; bazı tablolarda interpolasyon gerekebilir": {
+    "en": "According to the standard ATT method; some tables require interpolation"
+  },
+  "Birikimli oranlar: LW’den itibaren hesaplama yapılıyorsa bu oranlar eklenerek height of tide bulunur": {
+    "en": "Cumulative fractions: when working from LW, the height of tide is found by applying these fractions of the range"
+  },
+  "Height of tide = LW yüksekliği + (Kümülatif oran × Range)": {
+    "en": "Height of tide = LW height + (cumulative fraction × range)"
+  },
+  "Lineer interpolasyon formülü: x₁,y₁ ve x₂,y₂ bilinen noktalar; x istenen değer; y bulunan sonuç": {
+    "en": "Linear interpolation: (x₁, y₁) and (x₂, y₂) are known points, x is the given value, y is the result"
+  },
+  "Vektör toplamı: gemi hız vektörü + akıntı vektörü = COG/SOG vektörü": {
+    "en": "Vector sum: ship's water vector + current vector = COG/SOG vector"
+  },
+  "Tüm değerler metre cinsinden; sonuç ≥ minimum UKC politikası olmalıdır": {
+    "en": "All values in metres; the result must be at least the minimum UKC required by the UKC policy"
+  },
+  "MHoT = tidal window’u açan minimum gelgit yüksekliği": {
+    "en": "MHoT = minimum height of tide that opens the tidal window"
+  },
+  "Pozitif fark: sancak leeway (sancağa kayma); negatif fark: iskele tarafı leeway": {
+    "en": "Positive difference: leeway to starboard; negative difference: leeway to port"
+  },
+  "Tehdit: dış risk faktörleri (hava, trafik, ekipman arızası) | Hata: insan davranışı sapması | Sonuç: emniyetsiz durumun önlenmesi": {
+    "en": "Threat: external risk factors (weather, traffic, equipment failure) | Error: deviation in human performance | Outcome: preventing an undesired (unsafe) state"
+  },
+  "Paris MOU concentrated inspection kampanyaları belirli ekipman veya prosedür konusuna odaklanır; güncel kampanya konusu başlık sefer öncesinde araştırılmalıdır": {
+    "en": "Paris MoU concentrated inspection campaigns focus on a specific item of equipment or procedure; the current campaign topic should be checked before the voyage"
+  },
+  "Bearing = pusula yönü (°); CPA → 0'a yaklaşırsa risk kritik; TCPA = süre (dk); erken manevra için TCPA > 15–20 dk iken harekete geçmek standart uygulamadır": {
+    "en": "Bearing = compass bearing of the target (°); if CPA approaches 0 the risk is critical; TCPA = time (min); taking early action while TCPA is still above 15–20 min is standard practice"
+  },
+  "Give-way gemisi: diğerini sancağında gören | Stand-on gemisi: diğerini iskele tarafında gören — Kural 17 kapsamında rota/hız korur": {
+    "en": "Give-way vessel: has the other vessel on her own starboard side | Stand-on vessel: has the other vessel on her port side — keeps her course and speed under Rule 17"
+  },
+  "22.5° kıç-omuz hattı, yan fenerlerin (her biri 112.5°) bittiği ve yalnızca kıç fenerinin (135°) görüldüğü sınırdır; bu hattın gerisinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir": {
+    "en": "The line 22.5° abaft the beam is where the sidelights (112.5° each) end and only the sternlight (135°) is visible; a vessel approaching from abaft this line is overtaking and must always keep out of the way"
+  },
+  "Rradar = kullanılan radar menzili (nm); Tstop = tam durdurma süresi (dk); geminin tam durdurma mesafesi radar menzilin yarısını geçmemeli kuralı pratikte kullanılır": {
+    "en": "Rradar = radar range in use (nm); Tstop = time to stop (min); in practice the ship's stopping distance should not exceed half the radar range in use"
+  },
+  "Reason'ın İsviçre Peyniri Modeli: her savunma katmanı (prosedür, ekipman, eğitim, denetim) deliklere sahiptir; delikler hizalandığında kaza meydana gelir": {
+    "en": "Reason's Swiss cheese model: every layer of defence (procedures, equipment, training, supervision) has holes; an accident happens when the holes line up"
+  },
+  "Her ihlal için: kural maddesi — yükümlülüğün içeriği — ihlal biçimi — katkıda bulunan faktörler; çoklu ihlal katmanları analiz edilir": {
+    "en": "For each breach: rule reference — content of the obligation — how it was breached — contributing factors; multiple layers of breaches are analysed"
+  },
+  "E (doğu) hatalar +, W (batı) hatalar − alınır. True = Compass ± Compass Error.": {
+    "en": "Easterly (E) errors are +, westerly (W) errors −. True = Compass ± compass error."
+  },
+  "Süre gidiş-dönüş olduğu için ikiye bölünür. Deniz suyunda ses hızı ~1500 m/s.": {
+    "en": "The time is for the round trip, so it is halved. The speed of sound in seawater is about 1500 m/s."
+  },
+  "Zincirin dibe yatay çekme uygulaması tutmayı sağlar; sığ açıda tutma artar.": {
+    "en": "Holding comes from the chain lying on the bottom so that the pull on the anchor is horizontal; the smaller the angle, the better the holding."
+  },
+  "Daire içine sığlık, diğer gemiler ve engeller girmemelidir.": {
+    "en": "No shoal, other ship or obstruction may lie within the swinging circle."
+  },
+  "Yağmur, deniz spreyi, sis ve fumigation şartları ayrıca kontrol edilir.": {
+    "en": "Rain, sea spray, fog and fumigation conditions are checked separately."
+  },
+  "Vektör yalnızca aynı zaman damgasına ait DR ve fix noktaları arasında çizilir.": {
+    "en": "The vector is drawn only between a DR position and a fix for the same time."
+  },
+  "Gerçek risk değerlendirmesi gelgit, catenary ve komşu gemi geometrisini de içerir.": {
+    "en": "A real risk assessment also takes into account the tide, the chain catenary and the geometry of neighbouring ships."
+  },
+  "Salınan zincir boyunun su derinliğine tipik oranı (zemin/koşula göre değişir)": {
+    "en": "Typical ratio of the length of chain paid out to the depth of water (varies with the holding ground and conditions)"
+  },
+  "STCW asgari dinlenme süresi; en fazla 2 bölüm, biri ≥6 saat kesintisiz": {
+    "en": "STCW minimum hours of rest; in no more than 2 periods, one of them at least 6 hours uninterrupted"
+  },
+  "Sığ suda gemi draftındaki artış hızın karesiyle büyür; hız azaltmak squat'ı düşürür": {
+    "en": "In shallow water the increase in draft (squat) grows with the square of the speed; reducing speed reduces squat"
   }
 }

@@ -229,7 +229,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Yükün kaymaya karşı ilk direnci, taban ile yük arasındaki sürtünmedir: Fsürtünme = μ × m × g. Sürtünme katsayısı (μ) yüzey çiftine bağlıdır (çelik-çelik ~0.1, kereste-çelik ~0.3, kauçuk paspas/anti-slip mat ~0.6). Sürtünme yetersiz kaldığında bağlama elemanları (zincir, çelik halat, web lashing) devreye girer. Her bağlama elemanının izin verilen güvenli yükü vardır: MSL (Maximum Securing Load), genellikle kopma yükünün belirli bir oranıdır (örn. çelik halat için kopma yükünün %80'i, zincir için %50'si). Toplam bağlama kapasitesi, atalet kuvvetinden sürtünme direnci düşülen değeri karşılamalıdır.",
         formula: {
-          text: "Σ(MSL etkin) ≥ Fatalet − μ × m × g",
+          text: "Σ(MSL effective) ≥ Finertia − μ × m × g",
           description: "Bağlamaların etkin direnci, atalet kuvvetinden sürtünme direnci çıkarılan değeri karşılamalı",
         },
       },
