@@ -52,7 +52,7 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Navlun iki temel biçimde belirlenir. Ton başına navlunda toplam gelir, taşınan yük miktarı ile birim navlun oranının çarpımıdır: Navlun = Yük (ton) × Oran ($/ton). Lumpsum (götürü) navlunda ise, taşınan miktardan bağımsız olarak geminin tamamı veya belirli bir kapasite için sabit bir tutar ödenir; bu, yük miktarının belirsiz olduğu veya geminin tam kapasite kullanılamadığı durumlarda armatörü korur. Sözleşme, hangi miktarın (yüklenen mi, boşaltılan mı) esas alınacağını ve toleransları belirtir.",
         formula: {
-          text: "Navlun = Yük (ton) × Oran ($/ton)  ·  veya  Lumpsum (sabit tutar)",
+          text: "Freight = Cargo (t) × Rate ($/t)  ·  or  Lump sum (fixed amount)",
           description: "Ton başına navlun yük miktarına bağlıdır; lumpsum miktardan bağımsız sabittir",
         },
       },
@@ -100,7 +100,7 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Laytime aşılırsa, aşan süre için kiracı armatöre demurrage öder; bu, sözleşmede günlük (örn. $/gün) olarak belirlenen bir orandır. Demurrage, geminin atıl kalmasından doğan armatör kaybının önceden kararlaştırılmış tazminatıdır. 'Once on demurrage, always on demurrage' ilkesi gereği, demurrage başladıktan sonra çoğu laytime istisnası (tatil, hava) artık süreyi durdurmaz — meğer ki sözleşme açıkça aksini öngörsün. Demurrage hesabı: aşan süre × günlük oran.",
         formula: {
-          text: "Demurrage = (Kullanılan süre − Laytime) × Günlük oran",
+          text: "Demurrage = (Time used − Laytime) × Daily rate",
           description: "Laytime'ı aşan süre için günlük orandan ödenen tazminat (aşım pozitifse)",
         },
       },
@@ -128,7 +128,7 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Sefer ekonomisinin temeli, sefer süresinin doğru tahminidir. Seyir süresi, mesafenin hıza bölünmesiyle bulunur: Süre (gün) = Mesafe (nm) / (Hız (kn) × 24). Buna yükleme, boşaltma, bekleme, kanal geçişi ve hava payları eklenerek toplam sefer süresi elde edilir. Hız seçimi kritiktir: yüksek hız süreyi kısaltır ama yakıt tüketimini (yaklaşık hızın küpüyle) artırır; bu 'speed-fuel' dengesi, optimum ekonomik hızı (ve 'slow steaming' kararlarını) belirler.",
         formula: {
-          text: "Süre (gün) = Mesafe (nm) / (Hız (kn) × 24)",
+          text: "Time (days) = Distance (nm) / (Speed (kn) × 24)",
           description: "Seyir süresi; toplam sefer süresi için liman/bekleme/kanal süreleri eklenir",
         },
       },
@@ -142,7 +142,7 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         content:
           "TCE, sefer net gelirinin (navlun − sefer maliyetleri) toplam sefer gün sayısına bölünmesiyle bulunur: TCE = (Navlun geliri − Sefer maliyetleri) / Sefer günü. Sonuç, geminin o seferden günde ne kadar net kazandığını gösterir ve doğrudan bir time charter hire oranıyla karşılaştırılabilir. Örneğin TCE $18.000/gün ise ve piyasada time charter $15.000/gün ise, voyage charter ticari olarak daha cazip görünür. TCE, gemi ve sefer karşılaştırmasının standart ölçüsüdür.",
         formula: {
-          text: "TCE = (Navlun − Sefer maliyetleri) / Toplam sefer günü",
+          text: "TCE = (Freight − Voyage costs) / Total voyage days",
           description: "Seferin günlük net getirisi; time charter hire ile doğrudan karşılaştırılabilir",
         },
       },
@@ -204,7 +204,7 @@ export const economicsTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Bir seferin bunker maliyeti, tüketilen yakıt miktarı ile birim fiyatın çarpımıdır: Bunker maliyeti = Tüketim (ton) × Fiyat ($/ton). Tüketim, geminin günlük sarfiyatı (seyirde ve limanda farklı) ile süreden hesaplanır. Modern gemilerde farklı yakıt tipleri (VLSFO, MGO) ve farklı bölgelerde (ECA içi/dışı) farklı tüketim ve fiyatlar dikkate alınır. Yakıt fiyatları büyük ölçüde dalgalandığından, sefer öncesi maliyet tahmini güncel bunker fiyatlarıyla yapılır.",
         formula: {
-          text: "Bunker maliyeti = Tüketim (ton) × Fiyat ($/ton)",
+          text: "Bunker cost = Consumption (t) × Price ($/t)",
           description: "Tüketim = günlük sarfiyat × gün; ECA içi/dışı ve yakıt tipine göre ayrı hesaplanır",
         },
       },

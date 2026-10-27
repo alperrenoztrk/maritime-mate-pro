@@ -54,7 +54,7 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Makine dairesinde biriken yağlı sintine suyu, denize verilmeden önce yağlı su ayırıcısından (Oil/Water Separator, OWS) geçirilir. Tahliye için temel koşullar: gemi rota üzerindeyken (en route), petrol içeriği 15 ppm'i (milyonda parça) aşmamalı ve sistem 15 ppm alarmlı bir izleme cihazıyla (oil content monitor) donatılmış olmalıdır. Konsantrasyon 15 ppm'i aşarsa otomatik durdurma valfi tahliyeyi keser ve suyu sintineye/slop tankına geri gönderir. Özel alanlarda kurallar daha katıdır.",
         formula: {
-          text: "Tahliye: ≤ 15 ppm + en route + 15 ppm alarmlı OWS/monitor",
+          text: "Discharge: ≤ 15 ppm + en route + OWS/monitor with 15 ppm alarm",
           description: "Makine dairesi sintine suyu için MARPOL Ek I asgari tahliye koşulları",
         },
       },
@@ -97,7 +97,7 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         content:
           "İzin verilen tahliye için tipik koşullar: gemi en route ve en az 7 knot hızda (kendinden tahrikli) olmalı, su hattının altındaki onaylı tahliye ağzından yapılmalı, kıyıdan en az 12 deniz mili uzakta ve su derinliği en az 25 metre olmalıdır. Tank dibinde kalan tortunun (residue) belirli sınırların altına indirilmesi için onaylı pompalama (stripping) ve gerektiğinde prewash uygulanır. Antarktika ve bazı bölgeler özel alan kapsamındadır ve daha katıdır.",
         formula: {
-          text: "Tahliye: en route ≥7 kn + >12 nm + derinlik ≥25 m + su altı ağzı",
+          text: "Discharge: en route ≥7 kn + >12 nm + depth ≥25 m + below-waterline outlet",
           description: "Kategori Y/Z artıkları için MARPOL Ek II tipik tahliye koşulları",
         },
       },
@@ -169,7 +169,7 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Arıtılmamış pis su, kıyıdan en az 12 deniz mili uzakta, gemi en route ve en az 4 knot hızdayken, makul bir oranda (tank dibinde biriktirilmemiş, seyrelmiş şekilde) tahliye edilebilir. Parçalanıp dezenfekte edilmiş pis su kıyıdan en az 3 deniz mili uzakta tahliye edilebilir. Onaylı bir arıtma tesisinden geçen ve standartları sağlayan çıkış suyu için mesafe kısıtı daha gevşektir. Yolcu gemilerinde özel alanlarda daha katı standartlar uygulanır.",
         formula: {
-          text: "Arıtılmamış >12 nm (≥4 kn, en route) · parçalanmış+dezenfekte >3 nm",
+          text: "Untreated >12 nm (≥4 kn, en route) · comminuted + disinfected >3 nm",
           description: "MARPOL Ek IV pis su tahliye mesafeleri (onaylı tesis çıkışı için daha gevşek)",
         },
       },
@@ -207,7 +207,7 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Çok sınırlı durumlarda, gemi en route ve kıyıdan yeterince uzaktayken bazı çöpler denize verilebilir: öğütülmüş gıda atıkları (parçacık boyutu ≤25 mm) kıyıdan en az 3 deniz mili, öğütülmemiş gıda atıkları en az 12 deniz mili uzakta atılabilir. Yük artığı (cargo residue) ve tank yıkama suları belirli koşullarda ve maddenin deniz çevresine zararlı olmaması hâlinde tahliye edilebilir. Özel alanlarda bu mesafeler ve koşullar çok daha katıdır; çoğu çöp tipi tamamen yasaktır.",
         formula: {
-          text: "Öğütülmüş gıda (≤25 mm) >3 nm · öğütülmemiş gıda >12 nm · plastik HER ZAMAN yasak",
+          text: "Comminuted food (≤25 mm) >3 nm · uncomminuted food >12 nm · plastics ALWAYS prohibited",
           description: "MARPOL Ek V gıda atığı tahliye mesafeleri (özel alanlarda daha katı)",
         },
       },
@@ -240,7 +240,7 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Yakıttaki kükürt oranı SOx emisyonunu doğrudan belirler. 2020'den itibaren küresel kükürt sınırı kütlece %0.50'dir (önceki %3.50'den düşürülmüştür). Emisyon Kontrol Alanlarında (ECA — örn. Baltık, Kuzey Denizi, Kuzey Amerika) sınır %0.10'dur. Uyum, düşük kükürtlü yakıt (VLSFO/MGO) kullanarak veya eşdeğer bir önlemle (egzoz gazı temizleme sistemi — 'scrubber') sağlanır. Yakıt değişimleri (fuel changeover) ve scrubber çalışması kayıt altına alınır; Bunker Delivery Note yakıt kükürt oranını belgeler.",
         formula: {
-          text: "Küresel kükürt sınırı %0.50 · ECA içinde %0.10",
+          text: "Global sulphur limit 0.50% · inside ECA 0.10%",
           description: "MARPOL Ek VI yakıt kükürt limitleri (kütlece); scrubber eşdeğer önlem sayılır",
         },
       },
@@ -283,7 +283,7 @@ export const environmentTopicContents: Record<string, TopicDetailContent> = {
         content:
           "İki temel standart vardır. D-1 (balast suyu değişimi): açık denizde, kıyıdan en az 200 deniz mili ve derinliği en az 200 metre olan bölgede balastın en az %95 hacimsel değişimi (mümkün değilse en az 50 nm / 200 m derinlik). D-2 (performans/arıtma standardı): balast suyu yönetim sistemiyle (BWMS) arıtılarak deşarj edilen sudaki canlı organizma sayısının belirli sınırların altına indirilmesi (örn. ≥50 µm organizmalar < 10 adet/m³, 10–50 µm organizmalar < 10 adet/mL ve gösterge mikroplar için limitler). Geçiş tamamlandıkça tüm gemiler D-2'yi sağlayan onaylı bir BWMS bulundurmak zorundadır.",
         formula: {
-          text: "D-1: ≥%95 değişim (>200 nm, >200 m) · D-2: arıtma ile organizma limitleri",
+          text: "D-1: ≥95% exchange (>200 nm, >200 m depth) · D-2: organism limits by treatment",
           description: "BWM Convention balast suyu değişim (D-1) ve arıtma performans (D-2) standartları",
         },
       },
