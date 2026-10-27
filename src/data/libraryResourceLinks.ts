@@ -42,7 +42,7 @@ export const STATIC_SECTIONS: LibrarySection[] = [
   {
     id: "inspections",
     title: "Inspections",
-    items: [{ title: "PSC / SIRE Checklist", to: "/beta/psc-checklist", icon: ClipboardList, accent: "accent-amber" }],
+    items: [{ title: "Inspection Checklists", to: "/beta/psc-checklist", icon: ClipboardList, accent: "accent-amber" }],
   },
   {
     id: "skills",
