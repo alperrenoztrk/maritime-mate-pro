@@ -31596,5 +31596,1631 @@
   },
   "CIALA sisteminde alıkoyma kayıtlarının paylaşılması": {
     "en": "Sharing of detention records in the CIALA system"
+  },
+  "Ticari Operasyonlar": {
+    "en": "Commercial Operations"
+  },
+  "Navlun × 2": {
+    "en": "Freight × 2"
+  },
+  "ΔU = 0 (daima)": {
+    "en": "ΔU = 0 (always)"
+  },
+  "ns = 120×60/4 = 1800 rpm (senkron devir).": {
+    "en": "ns = 120×60/4 = 1800 rpm (synchronous speed)."
+  },
+  "e(t) = sabit": {
+    "en": "e(t) = constant"
+  },
+  "P/ρg + V²/2g + z = sabit": {
+    "en": "P/ρg + V²/2g + z = constant"
+  },
+  "ε = ΔL / L₀ (boyutsuz)": {
+    "en": "ε = ΔL / L₀ (dimensionless)"
+  },
+  "Risk = sabit": {
+    "en": "Risk = constant"
+  },
+  "PV^γ = sabit": {
+    "en": "PV^γ = constant"
+  },
+  "PV = sabit": {
+    "en": "PV = constant"
+  },
+  "P/V = sabit": {
+    "en": "P/V = constant"
+  },
+  "P + V = sabit": {
+    "en": "P + V = constant"
+  },
+  "σvm = σakma": {
+    "en": "σvm = σyield"
+  },
+  "Akma × SF": {
+    "en": "Yield × SF"
+  },
+  "Pabs: Mutlak basınç (bar)": {
+    "en": "Pabs: Absolute pressure (bar)"
+  },
+  "Pgauge: Manometrik basınç (bar)": {
+    "en": "Pgauge: Gauge pressure (bar)"
+  },
+  "Patm: Atmosfer basıncı ≈ 1.01325 bar": {
+    "en": "Patm: Atmospheric pressure ≈ 1.01325 bar"
+  },
+  "v: Özgül hacim (m³/kg)": {
+    "en": "v: Specific volume (m³/kg)"
+  },
+  "V: Toplam hacim (m³)": {
+    "en": "V: Total volume (m³)"
+  },
+  "m: Kütle (kg)": {
+    "en": "m: Mass (kg)"
+  },
+  "ρ: Yoğunluk (kg/m³)": {
+    "en": "ρ: Density (kg/m³)"
+  },
+  "ΔU: İç enerji değişimi (kJ)": {
+    "en": "ΔU: Change in internal energy (kJ)"
+  },
+  "cv: Sabit hacimde özgül ısı (kJ/kg·K)": {
+    "en": "cv: Specific heat at constant volume (kJ/kg·K)"
+  },
+  "ΔT: Sıcaklık değişimi (K)": {
+    "en": "ΔT: Temperature change (K)"
+  },
+  "ΔH: Entalpi değişimi (kJ)": {
+    "en": "ΔH: Change in enthalpy (kJ)"
+  },
+  "cp: Sabit basınçta özgül ısı (kJ/kg·K)": {
+    "en": "cp: Specific heat at constant pressure (kJ/kg·K)"
+  },
+  "R: Özgül gaz sabiti (kJ/kg·K)": {
+    "en": "R: Specific gas constant (kJ/kg·K)"
+  },
+  "γ (kappa): Özgül ısı oranı (hava için γ ≈ 1.4)": {
+    "en": "γ (kappa): Ratio of specific heats (γ ≈ 1.4 for air)"
+  },
+  "Q: Sisteme verilen ısı (kJ), pozitif": {
+    "en": "Q: Heat supplied to the system (kJ), positive"
+  },
+  "W: Sistemin yaptığı iş (kJ), pozitif": {
+    "en": "W: Work done by the system (kJ), positive"
+  },
+  "q: Birim kütleye verilen ısı (kJ/kg)": {
+    "en": "q: Heat supplied per unit mass (kJ/kg)"
+  },
+  "w: Birim kütlenin yaptığı iş (kJ/kg)": {
+    "en": "w: Work done per unit mass (kJ/kg)"
+  },
+  "h: Özgül entalpi (kJ/kg)": {
+    "en": "h: Specific enthalpy (kJ/kg)"
+  },
+  "C: Akışkan hızı (m/s)": {
+    "en": "C: Fluid velocity (m/s)"
+  },
+  "z: Yükseklik (m)": {
+    "en": "z: Height (m)"
+  },
+  "dS: Entropi değişimi (kJ/K)": {
+    "en": "dS: Change in entropy (kJ/K)"
+  },
+  "δQrev: Tersinir ısı transferi (kJ)": {
+    "en": "δQrev: Reversible heat transfer (kJ)"
+  },
+  "T: Mutlak sıcaklık (K)": {
+    "en": "T: Absolute temperature (K)"
+  },
+  "Δs = cv · ln(T₂/T₁) + R · ln(v₂/v₁)  veya  Δs = cp · ln(T₂/T₁) − R · ln(P₂/P₁)": {
+    "en": "Δs = cv · ln(T₂/T₁) + R · ln(v₂/v₁)  or  Δs = cp · ln(T₂/T₁) − R · ln(P₂/P₁)"
+  },
+  "Ex: Akış exerjisi (kJ)": {
+    "en": "Ex: Flow exergy (kJ)"
+  },
+  "H, S: Sistemin entalpi ve entropisi": {
+    "en": "H, S: Enthalpy and entropy of the system"
+  },
+  "H₀, S₀: Çevre koşullarındaki değerler": {
+    "en": "H₀, S₀: Values at ambient conditions"
+  },
+  "T₀: Çevre sıcaklığı (K)": {
+    "en": "T₀: Ambient temperature (K)"
+  },
+  "P: Mutlak basınç (kPa)": {
+    "en": "P: Absolute pressure (kPa)"
+  },
+  "V: Hacim (m³)": {
+    "en": "V: Volume (m³)"
+  },
+  "R: Özgül gaz sabiti (hava için 0.287 kJ/kg·K)": {
+    "en": "R: Specific gas constant (0.287 kJ/kg·K for air)"
+  },
+  "30 bar mutlak basınçta, 500°C sıcaklıkta 0.5 m³ hacimli bir hava tankındaki hava kütlesini bulunuz.": {
+    "en": "Find the mass of air in an air receiver of 0.5 m³ volume at 30 bar absolute pressure and 500°C."
+  },
+  "ηCarnot: Carnot verimi": {
+    "en": "ηCarnot: Carnot efficiency"
+  },
+  "TL: Düşük sıcaklık kaynağı (K)": {
+    "en": "TL: Low-temperature reservoir (K)"
+  },
+  "TH: Yüksek sıcaklık kaynağı (K)": {
+    "en": "TH: High-temperature reservoir (K)"
+  },
+  "r: Sıkıştırma oranı = V₁/V₂": {
+    "en": "r: Compression ratio = V₁/V₂"
+  },
+  "ρ: Kesme oranı (cut-off ratio) = V₃/V₂": {
+    "en": "ρ: Cut-off ratio = V₃/V₂"
+  },
+  "γ: Özgül ısı oranı (≈ 1.4)": {
+    "en": "γ: Ratio of specific heats (≈ 1.4)"
+  },
+  "Sıkıştırma oranı r = 18, kesme oranı ρ = 2.5, γ = 1.4 olan bir diesel çevrimin termik verimini hesaplayınız.": {
+    "en": "Calculate the thermal efficiency of a diesel cycle with a compression ratio r = 18, cut-off ratio ρ = 2.5 and γ = 1.4."
+  },
+  "Termik verim %60.9'dur.": {
+    "en": "The thermal efficiency is 60.9%."
+  },
+  "Q̇: Isı transfer hızı (W)": {
+    "en": "Q̇: Rate of heat transfer (W)"
+  },
+  "k: Isıl iletkenlik katsayısı (W/m·K)": {
+    "en": "k: Thermal conductivity (W/m·K)"
+  },
+  "A: İletim alanı (m²)": {
+    "en": "A: Conduction area (m²)"
+  },
+  "dT/dx: Sıcaklık gradyanı (K/m)": {
+    "en": "dT/dx: Temperature gradient (K/m)"
+  },
+  "Bir çelik silindir duvarı 25 mm kalınlığında, iç yüzey 400°C, dış yüzey 150°C'dir. Duvar alanı 0.5 m², k = 45 W/m·K ise ısı transfer hızını bulunuz.": {
+    "en": "A steel cylinder wall is 25 mm thick, with an inner surface at 400°C and an outer surface at 150°C. If the wall area is 0.5 m² and k = 45 W/m·K, find the rate of heat transfer."
+  },
+  "ΔT₁: Eşanjör bir ucundaki sıcaklık farkı": {
+    "en": "ΔT₁: Temperature difference at one end of the heat exchanger"
+  },
+  "ΔT₂: Eşanjör diğer ucundaki sıcaklık farkı": {
+    "en": "ΔT₂: Temperature difference at the other end of the heat exchanger"
+  },
+  "Ters akışlı bir yağ soğutucusunda: yağ girişi 75°C, çıkışı 45°C; soğutma suyu girişi 30°C, çıkışı 40°C. LMTD'yi hesaplayınız.": {
+    "en": "In a counter-flow oil cooler: oil inlet 75°C, outlet 45°C; cooling water inlet 30°C, outlet 40°C. Calculate the LMTD."
+  },
+  "Ters akışta: ΔT₁ = Tyağ,giriş − Tsu,çıkış = 75 − 40 = 35°C": {
+    "en": "In counter-flow: ΔT₁ = Toil,in − Twater,out = 75 − 40 = 35°C"
+  },
+  "ΔT₂ = Tyağ,çıkış − Tsu,giriş = 45 − 30 = 15°C": {
+    "en": "ΔT₂ = Toil,out − Twater,in = 45 − 30 = 15°C"
+  },
+  "U: Toplam ısı geçiş katsayısı (W/m²·K)": {
+    "en": "U: Overall heat transfer coefficient (W/m²·K)"
+  },
+  "A: Isı transfer alanı (m²)": {
+    "en": "A: Heat transfer area (m²)"
+  },
+  "W: Yapılan iş (kJ)": {
+    "en": "W: Work done (kJ)"
+  },
+  "P₁V₁: Başlangıç basınç-hacim çarpımı": {
+    "en": "P₁V₁: Initial pressure-volume product"
+  },
+  "1 kg hava 300 K'de izotermik olarak 1 bar'dan 5 bar'a sıkıştırılıyor. Yapılan işi bulunuz.": {
+    "en": "1 kg of air at 300 K is compressed isothermally from 1 bar to 5 bar. Find the work done."
+  },
+  "Sabit hacimli bir kapta 0.5 kg hava 300 K'den 900 K'ye ısıtılıyor. cv = 0.718 kJ/kg·K ise gerekli ısıyı bulunuz.": {
+    "en": "0.5 kg of air in a rigid vessel is heated from 300 K to 900 K. If cv = 0.718 kJ/kg·K, find the heat required."
+  },
+  "h: Taşınım katsayısı (W/m²·K)": {
+    "en": "h: Convection coefficient (W/m²·K)"
+  },
+  "A: Yüzey alanı (m²)": {
+    "en": "A: Surface area (m²)"
+  },
+  "Silindir gömleği dış yüzeyi 180°C, soğutma suyu 80°C, h = 5000 W/m²·K, A = 0.3 m² ise ısı transferini bulunuz.": {
+    "en": "If the outer surface of the cylinder liner is at 180°C, the cooling water at 80°C, h = 5000 W/m²·K and A = 0.3 m², find the heat transfer."
+  },
+  "r₁, r₂: İç ve dış yarıçap (m)": {
+    "en": "r₁, r₂: Inner and outer radius (m)"
+  },
+  "L: Boru uzunluğu (m)": {
+    "en": "L: Pipe length (m)"
+  },
+  "ε: Yayma katsayısı (0-1)": {
+    "en": "ε: Emissivity (0-1)"
+  },
+  "σ: Stefan–Boltzmann sabiti = 5.67 × 10⁻⁸ W/m²·K⁴": {
+    "en": "σ: Stefan–Boltzmann constant = 5.67 × 10⁻⁸ W/m²·K⁴"
+  },
+  "h₁, h₂: İç ve dış taşınım katsayıları": {
+    "en": "h₁, h₂: Inner and outer convection coefficients"
+  },
+  "Rf: Fouling direnci (m²·K/W)": {
+    "en": "Rf: Fouling resistance (m²·K/W)"
+  },
+  "Pi: İndike güç (kW)": {
+    "en": "Pi: Indicated power (kW)"
+  },
+  "MIP: Ortalama indike basınç (kPa)": {
+    "en": "MIP: Mean indicated pressure (kPa)"
+  },
+  "L: Strok (m)": {
+    "en": "L: Stroke (m)"
+  },
+  "N: Devir (rpm)": {
+    "en": "N: Speed (rpm)"
+  },
+  "k: 1 (2 zamanlı), 2 (4 zamanlı)": {
+    "en": "k: 1 (2-stroke), 2 (4-stroke)"
+  },
+  "ns = 120f/P    ve    kayma (s) = (ns − nr) / ns": {
+    "en": "ns = 120f/P    and    slip (s) = (ns − nr) / ns"
+  },
+  "ns: Senkron devir (rpm)": {
+    "en": "ns: Synchronous speed (rpm)"
+  },
+  "nr: Rotor devri (rpm)": {
+    "en": "nr: Rotor speed (rpm)"
+  },
+  "Kp: Oransal kazanç": {
+    "en": "Kp: Proportional gain"
+  },
+  "Ki: İntegral kazanç": {
+    "en": "Ki: Integral gain"
+  },
+  "Kd: Türev kazanç": {
+    "en": "Kd: Derivative gain"
+  },
+  "e(t): Hata = Set point − Ölçüm değeri": {
+    "en": "e(t): Error = Set point − Measured value"
+  },
+  "CII = (Σ(CFj × FCj)) / (Kapasite × D)": {
+    "en": "CII = (Σ(CFj × FCj)) / (Capacity × D)"
+  },
+  "CFj: j yakıtının karbon dönüşüm faktörü (t CO₂/t yakıt)": {
+    "en": "CFj: Carbon conversion factor of fuel j (t CO₂/t fuel)"
+  },
+  "FCj: j yakıtının yıllık tüketimi (ton)": {
+    "en": "FCj: Annual consumption of fuel j (tonnes)"
+  },
+  "Kapasite: DWT (veya GT)": {
+    "en": "Capacity: DWT (or GT)"
+  },
+  "D: Yıllık kat edilen mesafe (deniz mili)": {
+    "en": "D: Distance travelled in the year (nautical miles)"
+  },
+  "P: Statik basınç (Pa)": {
+    "en": "P: Static pressure (Pa)"
+  },
+  "V: Akış hızı (m/s)": {
+    "en": "V: Flow velocity (m/s)"
+  },
+  "Bir boru hattında 1. noktada basınç 3 bar, hız 2 m/s, yükseklik 5 m; 2. noktada yükseklik 10 m, hız 4 m/s ise 2. noktadaki basıncı bulunuz (ρ = 1000 kg/m³).": {
+    "en": "In a pipeline, at point 1 the pressure is 3 bar, the velocity 2 m/s and the height 5 m; at point 2 the height is 10 m and the velocity 4 m/s. Find the pressure at point 2 (ρ = 1000 kg/m³)."
+  },
+  "V: Ortalama akış hızı (m/s)": {
+    "en": "V: Mean flow velocity (m/s)"
+  },
+  "D: Boru çapı (m)": {
+    "en": "D: Pipe diameter (m)"
+  },
+  "μ: Dinamik viskozite (Pa·s)": {
+    "en": "μ: Dynamic viscosity (Pa·s)"
+  },
+  "ν: Kinematik viskozite (m²/s)": {
+    "en": "ν: Kinematic viscosity (m²/s)"
+  },
+  "Pbuhar: Sıvının buhar basıncı (Pa)": {
+    "en": "Pvapour: Vapour pressure of the liquid (Pa)"
+  },
+  "hstatik: Sıvı seviyesi (m)": {
+    "en": "hstatic: Liquid level (m)"
+  },
+  "hkayıp: Emme hattı sürtünme kaybı (m)": {
+    "en": "hloss: Friction loss in the suction line (m)"
+  },
+  "h₁: Kompresör girişi (evaporatör çıkışı) entalpisi": {
+    "en": "h₁: Enthalpy at the compressor inlet (evaporator outlet)"
+  },
+  "h₂: Kompresör çıkışı entalpisi": {
+    "en": "h₂: Enthalpy at the compressor outlet"
+  },
+  "h₄: Genleşme valfi çıkışı entalpisi": {
+    "en": "h₄: Enthalpy at the expansion valve outlet"
+  },
+  "σ: Normal gerilme (MPa = N/mm²)": {
+    "en": "σ: Normal stress (MPa = N/mm²)"
+  },
+  "F: Eksenel kuvvet (N)": {
+    "en": "F: Axial force (N)"
+  },
+  "A: Kesit alanı (mm²)": {
+    "en": "A: Cross-sectional area (mm²)"
+  },
+  "E: Elastiklik modülü (Young modülü) (GPa)": {
+    "en": "E: Modulus of elasticity (Young's modulus) (GPa)"
+  },
+  "Çelik için E ≈ 200-210 GPa": {
+    "en": "For steel E ≈ 200-210 GPa"
+  },
+  "Alüminyum için E ≈ 70 GPa": {
+    "en": "For aluminium E ≈ 70 GPa"
+  },
+  "Bakır için E ≈ 120 GPa": {
+    "en": "For copper E ≈ 120 GPa"
+  },
+  "2 m boyundaki çelik bir çubuk 100 MPa gerilme altında ne kadar uzar? (E = 210 GPa)": {
+    "en": "How much does a 2 m long steel bar extend under a stress of 100 MPa? (E = 210 GPa)"
+  },
+  "M: Eğilme momenti (N·mm)": {
+    "en": "M: Bending moment (N·mm)"
+  },
+  "y: Nötr eksenden uzaklık (mm)": {
+    "en": "y: Distance from the neutral axis (mm)"
+  },
+  "I: Atalet momenti (mm⁴)": {
+    "en": "I: Moment of inertia (mm⁴)"
+  },
+  "τ: Kayma gerilmesi (MPa)": {
+    "en": "τ: Shear stress (MPa)"
+  },
+  "T: Tork (N·mm)": {
+    "en": "T: Torque (N·mm)"
+  },
+  "r: Yarıçap (mm)": {
+    "en": "r: Radius (mm)"
+  },
+  "J: Polar atalet momenti (mm⁴)": {
+    "en": "J: Polar moment of inertia (mm⁴)"
+  },
+  "İçi dolu mil: J = πd⁴/32": {
+    "en": "Solid shaft: J = πd⁴/32"
+  },
+  "d: Mil çapı (mm)": {
+    "en": "d: Shaft diameter (mm)"
+  },
+  "τizin: İzin verilen kayma gerilmesi (MPa)": {
+    "en": "τallow: Allowable shear stress (MPa)"
+  },
+  "Ft: Teğetsel kuvvet (N)": {
+    "en": "Ft: Tangential force (N)"
+  },
+  "b: Diş genişliği (mm)": {
+    "en": "b: Face width (mm)"
+  },
+  "m: Modül (mm)": {
+    "en": "m: Module (mm)"
+  },
+  "Y: Lewis form faktörü": {
+    "en": "Y: Lewis form factor"
+  },
+  "Dölçülen = mevcut iç çap (mm)": {
+    "en": "Dmeasured = current bore (mm)"
+  },
+  "Dnominal = orijinal iç çap (mm)": {
+    "en": "Dnominal = original bore (mm)"
+  },
+  "Çalışma saati = liner toplam çalışma süresi": {
+    "en": "Running hours = total running time of the liner"
+  },
+  "Nominal çapı 500,00 mm olan liner'da 20.000 saat sonra TDC bölgesinde 500,80 mm ölçüldü. Aşınma hızını hesaplayınız.": {
+    "en": "In a liner with a nominal bore of 500.00 mm, 500.80 mm was measured in the TDC area after 20,000 hours. Calculate the wear rate."
+  },
+  "Aşınma = 500,80 − 500,00 = 0,80 mm": {
+    "en": "Wear = 500.80 − 500.00 = 0.80 mm"
+  },
+  "Aşınma hızı = 0,80 / 20.000 × 1000": {
+    "en": "Wear rate = 0.80 / 20,000 × 1000"
+  },
+  "Pozitif değer: Krank açılıyor (yatak çökmüş)": {
+    "en": "Positive value: the crank webs open"
+  },
+  "Negatif değer: Krank kapanıyor (yatak yükselmiş)": {
+    "en": "Negative value: the crank webs close"
+  },
+  "Sınır: Üretici spesifikasyonuna göre (tipik ±1/10.000 × stroke)": {
+    "en": "Limit: according to the maker's specification (typically ±1/10,000 × stroke)"
+  },
+  "1200 mm stroklu motorda TDC okuması +0,08 mm ve BDC okuması -0,04 mm ise defleksiyonu değerlendiriniz.": {
+    "en": "In an engine with a 1200 mm stroke, the TDC reading is +0.08 mm and the BDC reading −0.04 mm. Evaluate the deflection."
+  },
+  "Defleksiyon = TDC − BDC = (+0,08) − (−0,04) = +0,12 mm": {
+    "en": "Deflection = TDC − BDC = (+0.08) − (−0.04) = +0.12 mm"
+  },
+  "Sınır = 1200 / 10.000 = 0,12 mm": {
+    "en": "Limit = 1200 / 10,000 = 0.12 mm"
+  },
+  "d = malzeme kalınlığı (mm)": {
+    "en": "d = material thickness (mm)"
+  },
+  "v = ses hızı (m/s); çelik ≈ 5920 m/s": {
+    "en": "v = speed of sound (m/s); steel ≈ 5920 m/s"
+  },
+  "t = gidiş-dönüş süresi (s)": {
+    "en": "t = round-trip time (s)"
+  },
+  "p: basınç": {
+    "en": "p: pressure"
+  },
+  "v: hız": {
+    "en": "v: velocity"
+  },
+  "z: yükseklik": {
+    "en": "z: height"
+  },
+  "hp: pompa yükü": {
+    "en": "hp: pump head"
+  },
+  "hf: sürtünme kaybı": {
+    "en": "hf: friction loss"
+  },
+  "ṁ: kütlesel debi": {
+    "en": "ṁ: mass flow rate"
+  },
+  "Q: hacimsel debi": {
+    "en": "Q: volumetric flow rate"
+  },
+  "v: hız vektörü": {
+    "en": "v: velocity vector"
+  },
+  "hf = f · (L/D) · v²/(2g) ;  laminer: f = 64/Re": {
+    "en": "hf = f · (L/D) · v²/(2g) ;  laminar: f = 64/Re"
+  },
+  "f: Darcy sürtünme katsayısı": {
+    "en": "f: Darcy friction factor"
+  },
+  "L: boru boyu": {
+    "en": "L: pipe length"
+  },
+  "D: iç çap": {
+    "en": "D: internal diameter"
+  },
+  "Q: debi (m³/s)": {
+    "en": "Q: flow rate (m³/s)"
+  },
+  "A: kesit alanı": {
+    "en": "A: cross-sectional area"
+  },
+  "v: ortalama hız": {
+    "en": "v: mean velocity"
+  },
+  "K: kayıp katsayısı (dirsek ~0,3-0,9; küresel vana açık ~0,05; globe vana ~10)": {
+    "en": "K: loss coefficient (elbow ~0.3-0.9; ball valve open ~0.05; globe valve ~10)"
+  },
+  "Seri: Q=sabit, hftop=Σhfᵢ ;  Paralel: Δh=sabit, Qtop=ΣQᵢ": {
+    "en": "Series: Q = constant, hftotal = Σhfᵢ ;  Parallel: Δh = constant, Qtotal = ΣQᵢ"
+  },
+  "Hstatik: yükseklik/basınç farkı": {
+    "en": "Hstatic: height/pressure difference"
+  },
+  "k·Q²: sürtünme + yerel kayıplar": {
+    "en": "k·Q²: friction + local losses"
+  },
+  "P: güç (W)": {
+    "en": "P: power (W)"
+  },
+  "Q: debi": {
+    "en": "Q: flow rate"
+  },
+  "H: basma yükü": {
+    "en": "H: delivery head"
+  },
+  "η: verim": {
+    "en": "η: efficiency"
+  },
+  "Paralel: Qtop = ΣQ (H ortak) ;  Seri: Htop = ΣH (Q ortak)": {
+    "en": "Parallel: Qtotal = ΣQ (common H) ;  Series: Htotal = ΣH (common Q)"
+  },
+  "τ = F/A ;  burulma: τ = T·r / J  (J = πd⁴/32)": {
+    "en": "τ = F/A ;  torsion: τ = T·r / J  (J = πd⁴/32)"
+  },
+  "τ: kayma gerilmesi": {
+    "en": "τ: shear stress"
+  },
+  "T: tork": {
+    "en": "T: torque"
+  },
+  "r: yarıçap": {
+    "en": "r: radius"
+  },
+  "J: polar atalet momenti": {
+    "en": "J: polar moment of inertia"
+  },
+  "σ: normal gerilme": {
+    "en": "σ: normal stress"
+  },
+  "σvm: eşdeğer gerilme": {
+    "en": "σvm: equivalent stress"
+  },
+  "P: güç (kW)": {
+    "en": "P: power (kW)"
+  },
+  "n: devir (rpm)": {
+    "en": "n: speed (rpm)"
+  },
+  "Rm: malzeme çekme dayanımı": {
+    "en": "Rm: tensile strength of the material"
+  },
+  "F,k: kural/şaft tipi faktörleri": {
+    "en": "F,k: rule/shaft type factors"
+  },
+  "C: dinamik yük kapasitesi": {
+    "en": "C: dynamic load rating"
+  },
+  "P: eşdeğer yük": {
+    "en": "P: equivalent load"
+  },
+  "p: üs": {
+    "en": "p: exponent"
+  },
+  "i: redüksiyon oranı": {
+    "en": "i: reduction ratio"
+  },
+  "z: diş sayısı": {
+    "en": "z: number of teeth"
+  },
+  "n: devir": {
+    "en": "n: speed"
+  },
+  "Kt: gerilme yoğunlaşma faktörü": {
+    "en": "Kt: stress concentration factor"
+  },
+  "σnominal: ortalama kesit gerilmesi": {
+    "en": "σnominal: average stress over the section"
+  },
+  "k: şaft/yatak rijitliği": {
+    "en": "k: shaft/bearing stiffness"
+  },
+  "m: kütle": {
+    "en": "m: mass"
+  },
+  "a: boğaz kalınlığı": {
+    "en": "a: throat thickness"
+  },
+  "z: bacak boyu": {
+    "en": "z: leg length"
+  },
+  "L: dikiş uzunluğu": {
+    "en": "L: weld length"
+  },
+  "F: yük": {
+    "en": "F: load"
+  },
+  "T: sıkma torku": {
+    "en": "T: tightening torque"
+  },
+  "F: ön gerilme": {
+    "en": "F: preload"
+  },
+  "d: cıvata çapı": {
+    "en": "d: bolt diameter"
+  },
+  "K: tork katsayısı (~0,2)": {
+    "en": "K: torque coefficient (~0.2)"
+  },
+  "F: silindir kuvveti": {
+    "en": "F: cylinder force"
+  },
+  "A: piston alanı": {
+    "en": "A: piston area"
+  },
+  "T: motor torku": {
+    "en": "T: motor torque"
+  },
+  "Vd: devir başına hacim": {
+    "en": "Vd: displacement per revolution"
+  },
+  "P: Basınç (Pa veya bar)": {
+    "en": "P: Pressure (Pa or bar)"
+  },
+  "A: Alan (m²)": {
+    "en": "A: Area (m²)"
+  },
+  "P₀: Yüzey basıncı (Pa)": {
+    "en": "P₀: Surface pressure (Pa)"
+  },
+  "ρ: Akışkan yoğunluğu (kg/m³)": {
+    "en": "ρ: Fluid density (kg/m³)"
+  },
+  "h: Derinlik (m)": {
+    "en": "h: Depth (m)"
+  },
+  "Pmutlak = Pmanometrik + Patm\nPvakum = Patm − Pmutlak": {
+    "en": "Pabsolute = Pgauge + Patm\nPvacuum = Patm − Pabsolute"
+  },
+  "F₁: Küçük pistona uygulanan kuvvet": {
+    "en": "F₁: Force applied to the small piston"
+  },
+  "A₁, A₂: Piston alanları": {
+    "en": "A₁, A₂: Piston areas"
+  },
+  "hc: Yüzey ağırlık merkezinin sıvı yüzeyinden derinliği (m)": {
+    "en": "hc: Depth of the centroid of the surface below the liquid surface (m)"
+  },
+  "Fb: Yüzdürme kuvveti (N)": {
+    "en": "Fb: Buoyant force (N)"
+  },
+  "Vbatık: Batık hacim (m³)": {
+    "en": "Vsubmerged: Submerged volume (m³)"
+  },
+  "V: Akışkan hızı (m/s)": {
+    "en": "V: Fluid velocity (m/s)"
+  },
+  "İç çapı 100 mm olan bir boruda 2 m/s hızla deniz suyu (ν = 1.19 × 10⁻⁶ m²/s) akıyorsa Reynolds sayısını ve akış rejimini belirleyiniz.": {
+    "en": "If seawater (ν = 1.19 × 10⁻⁶ m²/s) flows at 2 m/s in a pipe with an internal diameter of 100 mm, determine the Reynolds number and the flow regime."
+  },
+  "A: Kesit alanı (m²)": {
+    "en": "A: Cross-sectional area (m²)"
+  },
+  "V: Ortalama hız (m/s)": {
+    "en": "V: Mean velocity (m/s)"
+  },
+  "Q: Hacimsel debi (m³/s)": {
+    "en": "Q: Volumetric flow rate (m³/s)"
+  },
+  "P/ρg: Basınç yüksekliği (m)": {
+    "en": "P/ρg: Pressure head (m)"
+  },
+  "V²/2g: Hız yüksekliği (m)": {
+    "en": "V²/2g: Velocity head (m)"
+  },
+  "z: Konumsal yükseklik (m)": {
+    "en": "z: Elevation head (m)"
+  },
+  "Bir boru hattında dar kesitte hız 6 m/s, geniş kesitte 1.5 m/s'dir. Geniş kesitteki basınç 3 bar ise dar kesitteki basıncı bulunuz (yükseklik farkı ihmal).": {
+    "en": "In a pipeline the velocity is 6 m/s in the narrow section and 1.5 m/s in the wide section. If the pressure in the wide section is 3 bar, find the pressure in the narrow section (neglect the height difference)."
+  },
+  "hf: Sürtünme kayıp yüksekliği (m)": {
+    "en": "hf: Friction head loss (m)"
+  },
+  "f: Darcy sürtünme katsayısı (Moody diyagramından)": {
+    "en": "f: Darcy friction factor (from the Moody diagram)"
+  },
+  "D: Boru iç çapı (m)": {
+    "en": "D: Internal pipe diameter (m)"
+  },
+  "NPSHa = (Patm − Pbuhar) / ρg + hstatic − hfriction": {
+    "en": "NPSHa = (Patm − Pvapour) / ρg + hstatic − hfriction"
+  },
+  "Pbuhar: Akışkanın buharlaşma basıncı": {
+    "en": "Pvapour: Vapour pressure of the fluid"
+  },
+  "hstatik: Emme statik yüksekliği (pozitif: pompa altında)": {
+    "en": "hstatic: Static suction head (positive: pump below the liquid level)"
+  },
+  "hsürtünme: Emme hattı sürtünme kaybı": {
+    "en": "hfriction: Friction loss in the suction line"
+  },
+  "σ: Normal gerilme (Pa veya MPa)": {
+    "en": "σ: Normal stress (Pa or MPa)"
+  },
+  "ε: Birim uzama (boyutsuz)": {
+    "en": "ε: Strain (dimensionless)"
+  },
+  "Çapı 25 mm olan bir çelik çubuk 50 kN çekme kuvvetine maruz kalıyorsa gerilmeyi hesaplayınız.": {
+    "en": "Calculate the stress in a steel bar of 25 mm diameter subjected to a tensile force of 50 kN."
+  },
+  "E: Elastiklik modülü (GPa)": {
+    "en": "E: Modulus of elasticity (GPa)"
+  },
+  "200 GPa elastiklik modülüne sahip çelik çubuğun uzunluğu 2 m, gerilmesi 150 MPa ise uzama miktarını bulunuz.": {
+    "en": "A steel bar with a modulus of elasticity of 200 GPa is 2 m long and stressed to 150 MPa. Find the extension."
+  },
+  "τ: Kayma gerilmesi (Pa)": {
+    "en": "τ: Shear stress (Pa)"
+  },
+  "T: Tork (Nm)": {
+    "en": "T: Torque (Nm)"
+  },
+  "d: Mil çapı (m)": {
+    "en": "d: Shaft diameter (m)"
+  },
+  "J: Polar atalet momenti = πd⁴/32": {
+    "en": "J: Polar moment of inertia = πd⁴/32"
+  },
+  "Bir ara şaft 500 kNm tork iletmektedir. İzin verilen kayma gerilmesi 60 MPa ise minimum mil çapını bulunuz.": {
+    "en": "An intermediate shaft transmits a torque of 500 kNm. If the allowable shear stress is 60 MPa, find the minimum shaft diameter."
+  },
+  "h₁: Evaporatör çıkışı entalpisi": {
+    "en": "h₁: Enthalpy at the evaporator outlet"
+  },
+  "Bir soğutma sisteminde h₁ = 400 kJ/kg, h₂ = 450 kJ/kg, h₃ = h₄ = 250 kJ/kg ise COP'u bulunuz.": {
+    "en": "In a refrigeration system h₁ = 400 kJ/kg, h₂ = 450 kJ/kg and h₃ = h₄ = 250 kJ/kg. Find the COP."
+  },
+  "u(t): Kontrol çıkışı": {
+    "en": "u(t): Controller output"
+  },
+  "e(t): Hata (set point − ölçülen)": {
+    "en": "e(t): Error (set point − measured value)"
+  },
+  "Kp, Ki, Kd: Kontrol parametreleri": {
+    "en": "Kp, Ki, Kd: Controller parameters"
+  },
+  "P: Motor gücü (kW)": {
+    "en": "P: Engine power (kW)"
+  },
+  "SFC: Özgül yakıt tüketimi (g/kWh)": {
+    "en": "SFC: Specific fuel consumption (g/kWh)"
+  },
+  "CF: Yakıt karbon faktörü": {
+    "en": "CF: Fuel carbon factor"
+  },
+  "Vref: Referans hız (knot)": {
+    "en": "Vref: Reference speed (knots)"
+  },
+  "CII = Toplam CO₂ (g) / (Kapasite × Mesafe)  [g CO₂ / ton·mil]": {
+    "en": "CII = Total CO₂ (g) / (Capacity × Distance)  [g CO₂ / tonne·mile]"
+  },
+  "V: Gemi hızı (knot)": {
+    "en": "V: Ship speed (knots)"
+  },
+  "FC: Yakıt tüketimi": {
+    "en": "FC: Fuel consumption"
+  },
+  "Bir gemi 14 knot'ta günde 45 ton yakıt tüketiyorsa, 12 knot'ta tahmini tüketimi nedir?": {
+    "en": "If a ship consumes 45 tonnes of fuel a day at 14 knots, what is the estimated consumption at 12 knots?"
+  },
+  "FC₂ = 45 × (0.857)³ = 45 × 0.630 = 28.3 ton/gün": {
+    "en": "FC₂ = 45 × (0.857)³ = 45 × 0.630 = 28.3 tonnes/day"
+  },
+  "h₃ = h₄: Kondenser çıkışı entalpisi": {
+    "en": "h₃ = h₄: Enthalpy at the condenser outlet"
+  },
+  "Qevap: Soğutma kapasitesi (kW)": {
+    "en": "Qevap: Refrigerating capacity (kW)"
+  },
+  "Wkomp: Kompresör gücü (kW)": {
+    "en": "Wcomp: Compressor power (kW)"
+  },
+  "Bir gemi provizyon soğutma sisteminde evaporatörde 50 kW ısı alınıyor ve kompresör 18 kW güç tüketiyor. COP değerini hesaplayınız.": {
+    "en": "In a ship's provision refrigeration system, 50 kW of heat is absorbed in the evaporator and the compressor consumes 18 kW. Calculate the COP."
+  },
+  "FN: Normal kuvvet (N)": {
+    "en": "FN: Normal force (N)"
+  },
+  "K: Katsayı (≈ 580 N·s²/m⁴ tuzlu su için)": {
+    "en": "K: Coefficient (≈ 580 N·s²/m⁴ for seawater)"
+  },
+  "d: Kuvvet merkezi ile dümen ekseni arası mesafe (m)": {
+    "en": "d: Distance between the centre of pressure and the rudder stock axis (m)"
+  },
+  "Dengeli dümen: d = Aön × cön − Aarka × carka formüyle azaltılır": {
+    "en": "Balanced rudder: d is reduced according to d = Afwd × cfwd − Aaft × caft"
+  },
+  "η₀: Açık su verimi (pervane tek başına)": {
+    "en": "η₀: Open water efficiency (propeller alone)"
+  },
+  "ηH: Gövde verimi = (1-t)/(1-w)": {
+    "en": "ηH: Hull efficiency = (1-t)/(1-w)"
+  },
+  "ηR: Nispi dönme verimi (≈ 1.0-1.05)": {
+    "en": "ηR: Relative rotative efficiency (≈ 1.0-1.05)"
+  },
+  "t: İtme azaltma faktörü, w: iz faktörü": {
+    "en": "t: Thrust deduction factor, w: wake fraction"
+  },
+  "CFj: Yakıt tipi j karbon dönüşüm faktörü (g CO₂/g yakıt)": {
+    "en": "CFj: Carbon conversion factor of fuel type j (g CO₂/g fuel)"
+  },
+  "SFCj: Özgül yakıt tüketimi (g/kWh)": {
+    "en": "SFCj: Specific fuel consumption (g/kWh)"
+  },
+  "Pj: Motor gücü (kW)": {
+    "en": "Pj: Engine power (kW)"
+  },
+  "fw: Deniz koşulları düzeltme faktörü": {
+    "en": "fw: Sea conditions correction factor"
+  },
+  "DWT: Yük kapasitesi (ton)": {
+    "en": "DWT: Cargo capacity (tonnes)"
+  },
+  "P: Güç (kW)": {
+    "en": "P: Power (kW)"
+  },
+  "Soğutma suyu pompası 30 kW gücünde tam devirde çalışmaktadır. VFD ile %75 hıza düşürülürse güç tüketimi ne olur?": {
+    "en": "A cooling water pump of 30 kW runs at full speed. If its speed is reduced to 75% with a VFD, what will the power consumption be?"
+  },
+  "P₁V₁ = P₂V₂ = sabit": {
+    "en": "P₁V₁ = P₂V₂ = constant"
+  },
+  "P: Basınç (Pa)": {
+    "en": "P: Pressure (Pa)"
+  },
+  "W: Yapılan iş (J)": {
+    "en": "W: Work done (J)"
+  },
+  "R: Gaz sabiti (J/kg·K)": {
+    "en": "R: Gas constant (J/kg·K)"
+  },
+  "0.5 kg hava 300 K'de 1 bar'dan 5 bar'a izotermik olarak sıkıştırılıyor. Yapılan işi bulunuz. (Rhava = 287 J/kg·K)": {
+    "en": "0.5 kg of air at 300 K is compressed isothermally from 1 bar to 5 bar. Find the work done. (Rair = 287 J/kg·K)"
+  },
+  "V₁/T₁ = V₂/T₂  (P = sabit)": {
+    "en": "V₁/T₁ = V₂/T₂  (P = constant)"
+  },
+  "cp: Sabit basınçtaki özgül ısı (J/kg·K)": {
+    "en": "cp: Specific heat at constant pressure (J/kg·K)"
+  },
+  "2 kg hava sabit basınçta 300 K'den 600 K'e ısıtılıyor. cp = 1005 J/kg·K, R = 287 J/kg·K. Isı ve iş miktarını bulunuz.": {
+    "en": "2 kg of air is heated at constant pressure from 300 K to 600 K. cp = 1005 J/kg·K, R = 287 J/kg·K. Find the heat and the work."
+  },
+  "Q = m·cv·(T₂ − T₁) = ΔU\nP₁/T₁ = P₂/T₂  (V = sabit)": {
+    "en": "Q = m·cv·(T₂ − T₁) = ΔU\nP₁/T₁ = P₂/T₂  (V = constant)"
+  },
+  "cv: Sabit hacimdeki özgül ısı (J/kg·K)": {
+    "en": "cv: Specific heat at constant volume (J/kg·K)"
+  },
+  "Kapalı bir tanktaki 3 kg hava 400 K'den 700 K'e ısıtılıyor. cv = 718 J/kg·K. Gereken ısıyı bulunuz.": {
+    "en": "3 kg of air in a closed tank is heated from 400 K to 700 K. cv = 718 J/kg·K. Find the heat required."
+  },
+  "γ = cp/cv (ısı kapasiteleri oranı)": {
+    "en": "γ = cp/cv (ratio of heat capacities)"
+  },
+  "Hava için γ ≈ 1.4": {
+    "en": "For air γ ≈ 1.4"
+  },
+  "Bir dizel motorda hava 1 bar, 300 K'den sıkıştırma oranı 18:1 ile adyabatik olarak sıkıştırılıyor. Sıkıştırma sonu sıcaklığını bulunuz. (γ = 1.4)": {
+    "en": "In a diesel engine, air at 1 bar and 300 K is compressed adiabatically with a compression ratio of 18:1. Find the temperature at the end of compression. (γ = 1.4)"
+  },
+  "n: Politropik üs": {
+    "en": "n: Polytropic index"
+  },
+  "n = 1 → izotermik, n = γ → izentropik": {
+    "en": "n = 1 → isothermal, n = γ → isentropic"
+  },
+  "w: Birim kütle başına iş (kJ/kg)": {
+    "en": "w: Work per unit mass (kJ/kg)"
+  },
+  "R: Gaz sabiti (kJ/kg·K)": {
+    "en": "R: Gas constant (kJ/kg·K)"
+  },
+  "r: Sıkıştırma oranı (V₁/V₂)": {
+    "en": "r: Compression ratio (V₁/V₂)"
+  },
+  "γ: Özgül ısı oranı": {
+    "en": "γ: Ratio of specific heats"
+  },
+  "r: Sıkıştırma oranı": {
+    "en": "r: Compression ratio"
+  },
+  "α: Basınç artış oranı (P₃/P₂)": {
+    "en": "α: Pressure rise ratio (P₃/P₂)"
+  },
+  "ρ: Kesme oranı (V₄/V₃)": {
+    "en": "ρ: Cut-off ratio (V₄/V₃)"
+  },
+  "wt: Türbin özgül işi": {
+    "en": "wt: Specific turbine work"
+  },
+  "wp: Pompa özgül işi": {
+    "en": "wp: Specific pump work"
+  },
+  "Bir Rankine çevriminde h₃=3230 kJ/kg, h₄=2550 kJ/kg, h₂=220 kJ/kg, h₁=200 kJ/kg değerleri ölçülüyor. Çevrim verimini bulunuz.": {
+    "en": "In a Rankine cycle the values h₃ = 3230 kJ/kg, h₄ = 2550 kJ/kg, h₂ = 220 kJ/kg and h₁ = 200 kJ/kg are measured. Find the cycle efficiency."
+  },
+  "rp: Kompresör basınç oranı": {
+    "en": "rp: Compressor pressure ratio"
+  },
+  "wc: Kompresör işi": {
+    "en": "wc: Compressor work"
+  },
+  "wt: Türbin işi": {
+    "en": "wt: Turbine work"
+  },
+  "QL: Düşük sıcaklık tarafında çekilen ısı": {
+    "en": "QL: Heat absorbed on the low-temperature side"
+  },
+  "QH: Yüksek sıcaklık tarafına verilen ısı": {
+    "en": "QH: Heat rejected to the high-temperature side"
+  },
+  "Wnet: Kompresör net işi": {
+    "en": "Wnet: Net compressor work"
+  },
+  "Evaporatörden 50 kW ısı çeken bir soğutma sisteminde kompresör gücü 15 kW ise soğutma ve ısı pompası COP değerlerini bulunuz.": {
+    "en": "In a refrigeration system absorbing 50 kW of heat in the evaporator, the compressor power is 15 kW. Find the refrigeration and heat pump COP values."
+  },
+  "COPsoğutma = QL / W = 50 / 15 = 3.33": {
+    "en": "COPrefrigeration = QL / W = 50 / 15 = 3.33"
+  },
+  "COPısı pompası = QH / W = 65 / 15 = 4.33": {
+    "en": "COPheat pump = QH / W = 65 / 15 = 4.33"
+  },
+  "Q̇: Isı akısı (W)": {
+    "en": "Q̇: Heat flow rate (W)"
+  },
+  "L: Duvar kalınlığı (m)": {
+    "en": "L: Wall thickness (m)"
+  },
+  "Bir çelik kazan duvarı 25 mm kalınlığında, iç yüzey sıcaklığı 300°C, dış yüzey sıcaklığı 280°C ve alan 2 m²'dir. kçelik = 50 W/m·K. Isı akısını bulunuz.": {
+    "en": "A steel boiler wall is 25 mm thick, with an inner surface temperature of 300°C, an outer surface temperature of 280°C and an area of 2 m². ksteel = 50 W/m·K. Find the heat flow rate."
+  },
+  "Lᵢ: i. katman kalınlığı": {
+    "en": "Lᵢ: Thickness of layer i"
+  },
+  "kᵢ: i. katman iletkenlik katsayısı": {
+    "en": "kᵢ: Conductivity of layer i"
+  },
+  "r₁, r₂: İç ve dış yarıçap": {
+    "en": "r₁, r₂: Inner and outer radius"
+  },
+  "L: Silindir uzunluğu": {
+    "en": "L: Cylinder length"
+  },
+  "h: Taşınım ısı transfer katsayısı (W/m²·K)": {
+    "en": "h: Convection heat transfer coefficient (W/m²·K)"
+  },
+  "Ts: Yüzey sıcaklığı": {
+    "en": "Ts: Surface temperature"
+  },
+  "T_∞: Akışkan sıcaklığı": {
+    "en": "T_∞: Fluid temperature"
+  },
+  "A: Isı transfer alanı": {
+    "en": "A: Heat transfer area"
+  },
+  "ε: Yüzey yayma katsayısı (0-1)": {
+    "en": "ε: Surface emissivity (0-1)"
+  },
+  "σ: Stefan-Boltzmann sabiti = 5.67×10⁻⁸ W/m²·K⁴": {
+    "en": "σ: Stefan-Boltzmann constant = 5.67×10⁻⁸ W/m²·K⁴"
+  },
+  "Bir egzoz borusunun dış yüzey sıcaklığı 350°C, çevre sıcaklığı 40°C, ε = 0.8, yüzey alanı 3 m². Işınım ısı kaybını bulunuz.": {
+    "en": "The outer surface temperature of an exhaust pipe is 350°C, the ambient temperature 40°C, ε = 0.8 and the surface area 3 m². Find the radiant heat loss."
+  },
+  "Ts = 350 + 273 = 623 K, Tçevre = 40 + 273 = 313 K": {
+    "en": "Ts = 350 + 273 = 623 K, Tambient = 40 + 273 = 313 K"
+  },
+  "L/k: İletim direnci": {
+    "en": "L/k: Conduction resistance"
+  },
+  "Bir ısı eşanjörünün çelik boru duvarı: hiç = 5000 W/m²·K, hdış = 3000 W/m²·K, L = 3 mm, k = 50 W/m·K. U değerini bulunuz.": {
+    "en": "Steel tube wall of a heat exchanger: hin = 5000 W/m²·K, hout = 3000 W/m²·K, L = 3 mm, k = 50 W/m·K. Find the U value."
+  },
+  "ΔT₁: Bir uçtaki sıcaklık farkı": {
+    "en": "ΔT₁: Temperature difference at one end"
+  },
+  "ΔT₂: Diğer uçtaki sıcaklık farkı": {
+    "en": "ΔT₂: Temperature difference at the other end"
+  },
+  "Bir yağ soğutucusunda (ters akış): Yağ 80→60°C, soğutma suyu 35→50°C. LMTD'yi bulunuz.": {
+    "en": "In an oil cooler (counter-flow): oil 80→60°C, cooling water 35→50°C. Find the LMTD."
+  },
+  "ΔT₁ = 80 − 50 = 30°C (sıcak giriş − soğuk çıkış)": {
+    "en": "ΔT₁ = 80 − 50 = 30°C (hot inlet − cold outlet)"
+  },
+  "ΔT₂ = 60 − 35 = 25°C (sıcak çıkış − soğuk giriş)": {
+    "en": "ΔT₂ = 60 − 35 = 25°C (hot outlet − cold inlet)"
+  },
+  "1/Ukirli = 1/Utemiz + Rf": {
+    "en": "1/Ufouled = 1/Uclean + Rf"
+  },
+  "Tipik değerler: 0.0001-0.001 m²·K/W": {
+    "en": "Typical values: 0.0001-0.001 m²·K/W"
+  },
+  "Cmin: Minimum ısı kapasitesi akışı (W/K)": {
+    "en": "Cmin: Minimum heat capacity rate (W/K)"
+  },
+  "ρ: Kesme oranı (V₃/V₂)": {
+    "en": "ρ: Cut-off ratio (V₃/V₂)"
+  },
+  "Pᵢ: İndike güç (W)": {
+    "en": "Pᵢ: Indicated power (W)"
+  },
+  "Pm: Ortalama indike basınç — MEP (Pa)": {
+    "en": "Pm: Mean indicated pressure — MEP (Pa)"
+  },
+  "n: Devir sayısı (rpm)": {
+    "en": "n: Speed (rpm)"
+  },
+  "k: İki zamanlı için 1, dört zamanlı için 1/2": {
+    "en": "k: 1 for two-stroke, 1/2 for four-stroke"
+  },
+  "Bir 6 silindirli dört zamanlı motor: bore = 400 mm, strok = 540 mm, MEP = 20 bar, n = 600 rpm. Toplam indike gücü bulunuz.": {
+    "en": "A 6-cylinder four-stroke engine: bore = 400 mm, stroke = 540 mm, MEP = 20 bar, n = 600 rpm. Find the total indicated power."
+  },
+  "Bir silindir: Pᵢ = (20×10⁵ × 0.1257 × 0.54 × 600 × 0.5) / 60": {
+    "en": "One cylinder: Pᵢ = (20×10⁵ × 0.1257 × 0.54 × 600 × 0.5) / 60"
+  },
+  "Pᵢ = 680 000 W = 680 kW (bir silindir)": {
+    "en": "Pᵢ = 680 000 W = 680 kW (one cylinder)"
+  },
+  "Toplam = 6 × 680 = 4080 kW": {
+    "en": "Total = 6 × 680 = 4080 kW"
+  },
+  "Pb: Fren gücü (W)": {
+    "en": "Pb: Brake power (W)"
+  },
+  "n: Devir (rpm)": {
+    "en": "n: Speed (rpm)"
+  },
+  "T: Tork (N·m)": {
+    "en": "T: Torque (N·m)"
+  },
+  "ηmek: Mekanik verim (0.85-0.95)": {
+    "en": "ηmech: Mechanical efficiency (0.85-0.95)"
+  },
+  "ṁyakıt: Yakıt tüketimi (ton/saat veya kg/s)": {
+    "en": "ṁfuel: Fuel consumption (tonnes/hour or kg/s)"
+  },
+  "Pb: Fren gücü (kW)": {
+    "en": "Pb: Brake power (kW)"
+  },
+  "Bir motor 12500 kW güç üretirken saatte 2.5 ton HFO tüketiyor. SFOC'u bulunuz.": {
+    "en": "An engine consumes 2.5 tonnes of HFO per hour while producing 12500 kW. Find the SFOC."
+  },
+  "ṁyakıt = 2500 kg/h": {
+    "en": "ṁfuel = 2500 kg/h"
+  },
+  "ṁhava: Hava kütlesel debisi (kg/s)": {
+    "en": "ṁair: Air mass flow rate (kg/s)"
+  },
+  "P₂/P₁: Basınç oranı (tipik 2.5-4.5)": {
+    "en": "P₂/P₁: Pressure ratio (typically 2.5-4.5)"
+  },
+  "MEP = W / Vstrok\nMEP = (P × 60) / (Vstrok × n × k)": {
+    "en": "MEP = W / Vswept\nMEP = (P × 60) / (Vswept × n × k)"
+  },
+  "W: Bir çevrimde yapılan iş (J)": {
+    "en": "W: Work done in one cycle (J)"
+  },
+  "Vstrok: Piston süpürme hacmi (m³)": {
+    "en": "Vswept: Piston swept volume (m³)"
+  },
+  "P: Güç (W)": {
+    "en": "P: Power (W)"
+  },
+  "k: 1 (iki zamanlı) veya 0.5 (dört zamanlı)": {
+    "en": "k: 1 (two-stroke) or 0.5 (four-stroke)"
+  },
+  "p: Kutup çifti sayısı": {
+    "en": "p: Number of pole pairs"
+  },
+  "4 kutuplu (p=2) bir jeneratör 60 Hz üretmek için kaç rpm'de dönmelidir?": {
+    "en": "At what rpm must a 4-pole (p=2) generator run to produce 60 Hz?"
+  },
+  "ns: Senkron hız (rpm)": {
+    "en": "ns: Synchronous speed (rpm)"
+  },
+  "nr: Rotor hızı": {
+    "en": "nr: Rotor speed"
+  },
+  "s: Kayma (tipik %2-5)": {
+    "en": "s: Slip (typically 2-5%)"
+  },
+  "2-4 × In (ayarlanabilir)": {
+    "en": "2-4 × In (adjustable)"
+  },
+  "Rmin = (Un / 1000) + 1  [MΩ]  (genel kural)": {
+    "en": "Rmin = (Un / 1000) + 1  [MΩ]  (rule of thumb)"
+  },
+  "Un: Nominal gerilim (V)": {
+    "en": "Un: Rated voltage (V)"
+  },
+  "Eşit droop → eşit yük paylaşımı": {
+    "en": "Equal droop → equal load sharing"
+  },
+  "Q: Ekonomizerde geri kazanılan ısı (kW)": {
+    "en": "Q: Heat recovered in the economiser (kW)"
+  },
+  "ṁ_gaz: Egzoz gazı debisi (kg/s)": {
+    "en": "ṁ_gas: Exhaust gas flow rate (kg/s)"
+  },
+  "cp,gaz: Egzoz gazı özgül ısısı (kJ/kg·K)": {
+    "en": "cp,gas: Specific heat of the exhaust gas (kJ/kg·K)"
+  },
+  "Tgiriş, Tçıkış: Ekonomizer giriş/çıkış egzoz sıcaklığı (°C)": {
+    "en": "Tin, Tout: Exhaust temperature at the economiser inlet/outlet (°C)"
+  },
+  "ṁbuhar: Yaklaşık buhar üretimi (kg/s)": {
+    "en": "ṁsteam: Approximate steam generation (kg/s)"
+  },
+  "hfg: Buharlaşma gizli ısısı (kJ/kg)": {
+    "en": "hfg: Latent heat of evaporation (kJ/kg)"
+  },
+  "ηkazan: Yardımcı kazan verimi": {
+    "en": "ηboiler: Auxiliary boiler efficiency"
+  },
+  "LHV: Yakıt alt ısıl değeri": {
+    "en": "LHV: Lower calorific value of the fuel"
+  },
+  "ṁbuhar ≈ 2592 / 2100 = 1.234 kg/s": {
+    "en": "ṁsteam ≈ 2592 / 2100 = 1.234 kg/s"
+  },
+  "ρyakıt: 15°C'de yakıt yoğunluğu (kg/m³)": {
+    "en": "ρfuel: Fuel density at 15°C (kg/m³)"
+  },
+  "ρsu: 1000 kg/m³ (tatlı su)": {
+    "en": "ρwater: 1000 kg/m³ (fresh water)"
+  },
+  "P₁: Emme basıncı": {
+    "en": "P₁: Suction pressure"
+  },
+  "P₂: Son basınç": {
+    "en": "P₂: Final pressure"
+  },
+  "CF: Yakıt karbon dönüşüm faktörü": {
+    "en": "CF: Fuel carbon conversion factor"
+  },
+  "CO₂ = Yakıt tüketimi × CF": {
+    "en": "CO₂ = Fuel consumption × CF"
+  },
+  "Mesafe: Yıllık toplam seyir mesafesi": {
+    "en": "Distance: Total distance sailed in the year"
+  },
+  "ρ₁₅: 15°C'deki yoğunluk (kg/m³)": {
+    "en": "ρ₁₅: Density at 15°C (kg/m³)"
+  },
+  "k: Sıcaklık düzeltme katsayısı (ASTM tabloları)": {
+    "en": "k: Temperature correction coefficient (ASTM tables)"
+  },
+  "t: Ölçüm sıcaklığı (°C)": {
+    "en": "t: Measurement temperature (°C)"
+  },
+  "ν₅₀: 50°C'deki kinematik viskozite (cSt)": {
+    "en": "ν₅₀: Kinematic viscosity at 50°C (cSt)"
+  },
+  "Yoğunluğu 975 kg/m³, 50°C viskozitesi 350 cSt olan bir HFO'nun CCAI değerini hesaplayınız.": {
+    "en": "Calculate the CCAI of an HFO with a density of 975 kg/m³ and a viscosity of 350 cSt at 50°C."
+  },
+  "Attained EEDI = (Toplam CO₂ emisyon terimleri) / (Capacity × Vref)": {
+    "en": "Attained EEDI = (Total CO₂ emission terms) / (Capacity × Vref)"
+  },
+  "Capacity: DWT/GT (gemi tipine göre)": {
+    "en": "Capacity: DWT/GT (according to ship type)"
+  },
+  "Vref: referans hız": {
+    "en": "Vref: reference speed"
+  },
+  "CO₂ emisyon terimleri: ana/yardımcı makine ve düzeltme katsayıları": {
+    "en": "CO₂ emission terms: main/auxiliary engines and correction factors"
+  },
+  "Attained EEXI: geminin mevcut teknik konfigürasyonuyla hesaplanan değer": {
+    "en": "Attained EEXI: the value calculated with the ship's current technical configuration"
+  },
+  "Required EEXI: IMO referans eğrisi ve indirgeme faktörüyle belirlenen sınır": {
+    "en": "Required EEXI: the limit set by the IMO reference line and reduction factor"
+  },
+  "Annual CO₂: yakıt tüketimi × emisyon faktörü": {
+    "en": "Annual CO₂: fuel consumption × emission factor"
+  },
+  "Distance: yıllık toplam kat edilen mesafe": {
+    "en": "Distance: total distance travelled in the year"
+  },
+  "CO₂: Yıllık yakıt tüketiminden hesaplanan emisyon": {
+    "en": "CO₂: Emissions calculated from the annual fuel consumption"
+  },
+  "DWT: Geminin taşıma kapasitesi": {
+    "en": "DWT: The ship's carrying capacity"
+  },
+  "Distance: Yıllık toplam seyir mesafesi": {
+    "en": "Distance: Total distance sailed in the year"
+  },
+  "V: Hız (knot)": {
+    "en": "V: Speed (knots)"
+  },
+  "15 knot'ta 12000 kW güç gerektiren bir geminin 12 knot'ta ihtiyaç duyacağı gücü hesaplayınız.": {
+    "en": "Calculate the power a ship that needs 12000 kW at 15 knots will need at 12 knots."
+  },
+  "Yılda 10000 ton HFO tüketen bir gemi, AB seferlerinden 25000 ton CO₂ emisyonu üretiyorsa ve karbon fiyatı 80 €/ton ise yıllık ek maliyeti hesaplayınız (2025, %70 oran).": {
+    "en": "A ship consuming 10000 tonnes of HFO a year produces 25000 tonnes of CO₂ emissions from EU voyages. If the carbon price is 80 €/tonne, calculate the additional annual cost (2025, 70% share)."
+  },
+  "Karşılanacak emisyon = 25000 × 0.70 = 17500 ton CO₂": {
+    "en": "Emissions to be covered = 25000 × 0.70 = 17500 tonnes of CO₂"
+  },
+  "Ek maliyet = 17500 × 80 = 1 400 000 €": {
+    "en": "Additional cost = 17500 × 80 = 1 400 000 €"
+  },
+  "f = frekans (Hz)": {
+    "en": "f = frequency (Hz)"
+  },
+  "n = devir hızı (d/d)": {
+    "en": "n = speed (rpm)"
+  },
+  "P = kutup sayısı": {
+    "en": "P = number of poles"
+  },
+  "4 kutuplu bir jeneratör 60 Hz frekansında çalışacaksa devir hızı kaç olmalıdır?": {
+    "en": "If a 4-pole generator is to run at a frequency of 60 Hz, what must its speed be?"
+  },
+  "E = indüklenen EMK (V)": {
+    "en": "E = induced EMF (V)"
+  },
+  "N = sarım sayısı": {
+    "en": "N = number of turns"
+  },
+  "Φ = manyetik akı (Wb)": {
+    "en": "Φ = magnetic flux (Wb)"
+  },
+  "kw = sargı faktörü (≈ 0,9-0,96)": {
+    "en": "kw = winding factor (≈ 0.9-0.96)"
+  },
+  "η = verim (%)": {
+    "en": "η = efficiency (%)"
+  },
+  "Pçıkış = elektrik çıkış gücü (kW)": {
+    "en": "Pout = electrical output power (kW)"
+  },
+  "Pgiriş = mekanik giriş gücü (kW)": {
+    "en": "Pin = mechanical input power (kW)"
+  },
+  "Pkayıp = toplam kayıplar (kW)": {
+    "en": "Ploss = total losses (kW)"
+  },
+  "1000 kW çıkış gücü olan bir jeneratörde toplam kayıp 80 kW ise verimi hesaplayınız.": {
+    "en": "Calculate the efficiency of a generator with an output of 1000 kW and total losses of 80 kW."
+  },
+  "η = Pçıkış / (Pçıkış + Pkayıp) × 100": {
+    "en": "η = Pout / (Pout + Ploss) × 100"
+  },
+  "VR% = gerilim regülasyonu (%)": {
+    "en": "VR% = voltage regulation (%)"
+  },
+  "Vboşta = boşta çalışma gerilimi (V)": {
+    "en": "Vno-load = no-load voltage (V)"
+  },
+  "V_tam_yük = tam yükteki gerilim (V)": {
+    "en": "V_full_load = voltage at full load (V)"
+  },
+  "Bir jeneratörün boşta gerilimi 462 V, tam yükte 440 V ise gerilim regülasyonunu hesaplayınız.": {
+    "en": "If a generator's no-load voltage is 462 V and its full-load voltage 440 V, calculate the voltage regulation."
+  },
+  "Droop% = frekans düşümü yüzdesi": {
+    "en": "Droop% = frequency droop percentage"
+  },
+  "fboşta = boşta frekans (Hz)": {
+    "en": "fno-load = no-load frequency (Hz)"
+  },
+  "f_tam_yük = tam yükte frekans (Hz)": {
+    "en": "f_full_load = frequency at full load (Hz)"
+  },
+  "fnominal = nominal frekans (Hz)": {
+    "en": "fnominal = rated frequency (Hz)"
+  },
+  "Boşta 61,5 Hz ve tam yükte 60 Hz çalışan bir jeneratörün droop yüzdesini hesaplayınız.": {
+    "en": "Calculate the droop percentage of a generator running at 61.5 Hz at no load and 60 Hz at full load."
+  },
+  "A = iletken kesiti (mm²)": {
+    "en": "A = conductor cross-section (mm²)"
+  },
+  "I = nominal akım (A)": {
+    "en": "I = rated current (A)"
+  },
+  "L = kablo uzunluğu (m)": {
+    "en": "L = cable length (m)"
+  },
+  "cosφ = güç faktörü": {
+    "en": "cosφ = power factor"
+  },
+  "ρ = özdirenç (Ω·mm²/m)": {
+    "en": "ρ = resistivity (Ω·mm²/m)"
+  },
+  "ΔV = izin verilen gerilim düşümü (V)": {
+    "en": "ΔV = permitted voltage drop (V)"
+  },
+  "440V, 50A, cosφ=0.8, 80m uzunluğunda bakır kablo için gerilim düşümü %6 kabul edilirse minimum kablo kesitini hesaplayınız.": {
+    "en": "For a copper cable of 80 m length at 440 V, 50 A and cosφ = 0.8, calculate the minimum cable cross-section if a voltage drop of 6% is accepted."
+  },
+  "ρ (bakır) = 0,0175 Ω·mm²/m": {
+    "en": "ρ (copper) = 0.0175 Ω·mm²/m"
+  },
+  "I = hat akımı (A)": {
+    "en": "I = line current (A)"
+  },
+  "P = güç (W)": {
+    "en": "P = power (W)"
+  },
+  "V = hat gerilimi (V)": {
+    "en": "V = line voltage (V)"
+  },
+  "5000 kW güç, cosφ = 0,85 durumunda 440V ve 6600V için hat akımlarını karşılaştırınız.": {
+    "en": "For a power of 5000 kW at cosφ = 0.85, compare the line currents at 440 V and 6600 V."
+  },
+  "Ikd = kısa devre akımı (A)": {
+    "en": "Isc = short-circuit current (A)"
+  },
+  "Ztoplam = arıza noktasına kadar toplam empedans (Ω)": {
+    "en": "Ztotal = total impedance up to the fault point (Ω)"
+  },
+  "440V sistemde jeneratör subtransient reaktansı X''d = %12 ve jeneratör gücü 800 kVA ise olası kısa devre akımını hesaplayınız.": {
+    "en": "In a 440 V system, if the generator subtransient reactance X''d = 12% and the generator rating is 800 kVA, calculate the prospective short-circuit current."
+  },
+  "Pters = ters güç (kW)": {
+    "en": "Preverse = reverse power (kW)"
+  },
+  "V = gerilim (V)": {
+    "en": "V = voltage (V)"
+  },
+  "I = akım (A)": {
+    "en": "I = current (A)"
+  },
+  "s = kayma (%)": {
+    "en": "s = slip (%)"
+  },
+  "ns = senkron hız (d/d) = 120f/P": {
+    "en": "ns = synchronous speed (rpm) = 120f/P"
+  },
+  "nr = rotor hızı (d/d)": {
+    "en": "nr = rotor speed (rpm)"
+  },
+  "4 kutuplu, 60 Hz motor 1740 d/d'da dönüyorsa kaymayı hesaplayınız.": {
+    "en": "If a 4-pole, 60 Hz motor runs at 1740 rpm, calculate the slip."
+  },
+  "n = devir hızı": {
+    "en": "n = speed"
+  },
+  "V = armatür gerilimi": {
+    "en": "V = armature voltage"
+  },
+  "Ia = armatür akımı": {
+    "en": "Ia = armature current"
+  },
+  "Ra = armatür direnci": {
+    "en": "Ra = armature resistance"
+  },
+  "k = motor sabiti": {
+    "en": "k = motor constant"
+  },
+  "Φ = manyetik akı": {
+    "en": "Φ = magnetic flux"
+  },
+  "C = akü kapasitesi (Ah)": {
+    "en": "C = battery capacity (Ah)"
+  },
+  "P = toplam yük (W)": {
+    "en": "P = total load (W)"
+  },
+  "t = istenen süre (saat)": {
+    "en": "t = required duration (hours)"
+  },
+  "V = akü gerilimi (V)": {
+    "en": "V = battery voltage (V)"
+  },
+  "η = invertör verimi (≈0,85-0,95)": {
+    "en": "η = inverter efficiency (≈0.85-0.95)"
+  },
+  "PF = güç faktörü": {
+    "en": "PF = power factor"
+  },
+  "2000W yük, 24V akü, 2 saat süre, verim %90, PF=0,8 için gereken akü kapasitesini hesaplayınız.": {
+    "en": "Calculate the battery capacity required for a 2000 W load, 24 V battery, 2-hour duration, 90% efficiency and PF = 0.8."
+  },
+  "Rt = T sıcaklığındaki direnç (Ω)": {
+    "en": "Rt = resistance at temperature T (Ω)"
+  },
+  "R0 = 0°C'deki direnç (100 Ω, Pt100 için)": {
+    "en": "R0 = resistance at 0°C (100 Ω for a Pt100)"
+  },
+  "α = sıcaklık katsayısı (0,00385 Ω/Ω/°C, Pt için)": {
+    "en": "α = temperature coefficient (0.00385 Ω/Ω/°C for Pt)"
+  },
+  "ΔT = sıcaklık değişimi (°C)": {
+    "en": "ΔT = temperature change (°C)"
+  },
+  "Pt100 sensörde ölçülen direnç 138,5 Ω ise sıcaklığı hesaplayınız.": {
+    "en": "If the resistance measured on a Pt100 sensor is 138.5 Ω, calculate the temperature."
+  },
+  "Hacim = tank içindeki sıvı hacmi": {
+    "en": "Volume = volume of liquid in the tank"
+  },
+  "Tank kalibrasyon tabloları (sounding table) seviyeden hacme dönüşüm sağlar": {
+    "en": "Tank calibration tables (sounding tables) convert level to volume"
+  },
+  "Q = debi (m³/s)": {
+    "en": "Q = flow rate (m³/s)"
+  },
+  "Cd = deşarj katsayısı (≈0,6-0,65)": {
+    "en": "Cd = discharge coefficient (≈0.6-0.65)"
+  },
+  "A₂ = orifis alanı (m²)": {
+    "en": "A₂ = orifice area (m²)"
+  },
+  "ΔP = basınç farkı (Pa)": {
+    "en": "ΔP = pressure difference (Pa)"
+  },
+  "ρ = akışkan yoğunluğu (kg/m³)": {
+    "en": "ρ = fluid density (kg/m³)"
+  },
+  "T = tork (Nm)": {
+    "en": "T = torque (Nm)"
+  },
+  "720 d/d'da dönen bir motorun tork ölçümü 12.500 Nm ise gücü hesaplayınız.": {
+    "en": "If the measured torque of an engine running at 720 rpm is 12,500 Nm, calculate the power."
+  },
+  "I = çıkış akımı (mA)": {
+    "en": "I = output current (mA)"
+  },
+  "X = ölçülen değer": {
+    "en": "X = measured value"
+  },
+  "Xmin = ölçüm alt sınırı": {
+    "en": "Xmin = lower limit of the measuring range"
+  },
+  "Xmax = ölçüm üst sınırı": {
+    "en": "Xmax = upper limit of the measuring range"
+  },
+  "0-10 bar basınç transmitterında 6 bar basınçta çıkış akımını hesaplayınız.": {
+    "en": "Calculate the output current of a 0-10 bar pressure transmitter at a pressure of 6 bar."
+  },
+  "u(t) = kontrolör çıkışı": {
+    "en": "u(t) = controller output"
+  },
+  "e(t) = hata sinyali (SP − PV)": {
+    "en": "e(t) = error signal (SP − PV)"
+  },
+  "Kp = orantısal kazanç": {
+    "en": "Kp = proportional gain"
+  },
+  "Ki = integral kazancı": {
+    "en": "Ki = integral gain"
+  },
+  "Kd = türev kazancı": {
+    "en": "Kd = derivative gain"
+  },
+  "Vdc = ortalama DC çıkış gerilimi": {
+    "en": "Vdc = mean DC output voltage"
+  },
+  "Vmax = AC tepe gerilimi": {
+    "en": "Vmax = AC peak voltage"
+  },
+  "α = tetikleme (ateşleme) açısı (derece)": {
+    "en": "α = firing angle (degrees)"
+  },
+  "12 diyot (2×trafo)": {
+    "en": "12 diodes (2× transformer)"
+  },
+  "VLL = AC hat-hat (line-to-line) gerilimi": {
+    "en": "VLL = AC line-to-line voltage"
+  },
+  "440V AC üç fazlı sisteme bağlı 6 darbeli doğrultucunun DC çıkışını hesaplayınız.": {
+    "en": "Calculate the DC output of a 6-pulse rectifier connected to a 440 V AC three-phase system."
+  },
+  "In = n. harmonik akım bileşeni": {
+    "en": "In = nth harmonic current component"
+  },
+  "I1 = temel frekans akım bileşeni": {
+    "en": "I1 = fundamental frequency current component"
+  },
+  "Kabul edilebilir sınır: THD < %5 (IEEE 519)": {
+    "en": "Acceptable limit: THD < 5% (IEEE 519)"
+  },
+  "Synoptik harita sembolleri": {
+    "en": "Synoptic chart symbols"
+  },
+  "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)": {
+    "en": "Middle-level clouds (Altocumulus, Altostratus, Nimbostratus)"
+  },
+  "Sancak pozitiftir: 120° + 035° = 155°.": {
+    "en": "Starboard is positive: 120° + 035° = 155°."
+  },
+  "Manyetik kuzey": {
+    "en": "Magnetic north"
+  },
+  "Mercator projeksiyonu": {
+    "en": "Mercator projection"
+  },
+  "cos Lat = sabit 1": {
+    "en": "cos Lat = constant 1"
+  },
+  "Harita datum": {
+    "en": "Chart datum"
+  },
+  "Mesafe + kerteriz fix": {
+    "en": "Range and bearing fix"
+  },
+  "Paralel indeks": {
+    "en": "Parallel indexing"
+  },
+  "Radar prensibi": {
+    "en": "Radar principle"
+  },
+  "Tidal table okuma": {
+    "en": "Reading the tide tables"
+  },
+  "y = (y₁ + y₂)/2 daima": {
+    "en": "y = (y₁ + y₂)/2 always"
+  },
+  "Echo sounder (iskandil)": {
+    "en": "Echo sounder"
+  },
+  "Dip = 1.76 × h, eklenir": {
+    "en": "Dip = 1.76 × h, added"
+  },
+  "Dip = √h, eklenir": {
+    "en": "Dip = √h, added"
+  },
+  "GM = KG − KM; pozitifse instabil": {
+    "en": "GM = KG − KM; unstable if positive"
+  },
+  "Formül 1": {
+    "en": "Formula 1"
+  },
+  "Formül 2": {
+    "en": "Formula 2"
+  },
+  "Formül 3": {
+    "en": "Formula 3"
+  },
+  "Çözümlü Örnek 1": {
+    "en": "Worked Example 1"
+  },
+  "Çözümlü Örnek 2": {
+    "en": "Worked Example 2"
+  },
+  "KM = KB + BM = 4.2 + 5.8 = 10.0 m; GM = KM − KG = 10.0 − 7.5 = 2.5 m (iyi stabilite).": {
+    "en": "KM = KB + BM = 4.2 + 5.8 = 10.0 m; GM = KM − KG = 10.0 − 7.5 = 2.5 m (good stability)."
+  },
+  "Formül 4": {
+    "en": "Formula 4"
+  },
+  "Çözümlü Örnek": {
+    "en": "Worked Example"
+  },
+  "GZ = 2.5 − 7.5×sin30° = 2.5 − 3.75 = −1.25 m (negatif → instabil).": {
+    "en": "GZ = 2.5 − 7.5×sin30° = 2.5 − 3.75 = −1.25 m (negative → unstable)."
+  },
+  "n=2 → n²=4; FSMyeni = 2000/4 = 500 t·m (4 kat azalma).": {
+    "en": "n=2 → n²=4; FSMnew = 2000/4 = 500 t·m (4-fold reduction)."
+  },
+  "FSMtoplam = FSMorijinal / n²": {
+    "en": "FSMtotal = FSMoriginal / n²"
+  },
+  "FSMtoplam = FSMorijinal / n": {
+    "en": "FSMtotal = FSMoriginal / n"
+  },
+  "FSMtoplam = FSMorijinal × n": {
+    "en": "FSMtotal = FSMoriginal × n"
+  },
+  "FSMtoplam = FSMorijinal × n²": {
+    "en": "FSMtotal = FSMoriginal × n²"
+  },
+  "ΔDraftparalel = Σw / TPC": {
+    "en": "ΔDraftparallel = Σw / TPC"
+  },
+  "ΔDraftparalel = Σw × MCT": {
+    "en": "ΔDraftparallel = Σw × MCT"
+  },
+  "ΔDraftparalel = Σw / LCF": {
+    "en": "ΔDraftparallel = Σw / LCF"
+  },
+  "ΔDraftparalel = Σw × LBP": {
+    "en": "ΔDraftparallel = Σw × LBP"
+  },
+  "KGlim = KM − GMgerekli": {
+    "en": "KGlim = KM − GMrequired"
+  },
+  "KGlim = KM + GMgerekli": {
+    "en": "KGlim = KM + GMrequired"
+  },
+  "KGlim = GMgerekli − KM": {
+    "en": "KGlim = GMrequired − KM"
+  },
+  "KGlim = KM × GMgerekli": {
+    "en": "KGlim = KM × GMrequired"
+  },
+  "GMgerekli = GMmin − FSM/Δ": {
+    "en": "GMrequired = GMmin − FSM/Δ"
+  },
+  "GMgerekli = GMmin × FSM": {
+    "en": "GMrequired = GMmin × FSM"
+  },
+  "GMgerekli = FSM/Δ − GMmin": {
+    "en": "GMrequired = FSM/Δ − GMmin"
+  },
+  "VCGmax = KM − GMgerekli": {
+    "en": "VCGmax = KM − GMrequired"
+  },
+  "VCGmax = KM + GMgerekli": {
+    "en": "VCGmax = KM + GMrequired"
+  },
+  "VCGmax = GMgerekli − KM": {
+    "en": "VCGmax = GMrequired − KM"
+  },
+  "VCGmax = KM × GMgerekli": {
+    "en": "VCGmax = KM × GMrequired"
+  },
+  "SF / σakma": {
+    "en": "SF / σyield"
+  },
+  "σvm > σakma": {
+    "en": "σvm > σyield"
   }
 }
