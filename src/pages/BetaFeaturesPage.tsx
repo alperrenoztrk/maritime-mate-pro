@@ -9,7 +9,7 @@ const FEATURES = [
   },
   {
     to: "/beta/psc-checklist",
-    title: "PSC inspection Preparation List",
+    title: "Inspection Checklists",
     accent: "from-rose-500 via-orange-600 to-amber-700",
   },
   {
