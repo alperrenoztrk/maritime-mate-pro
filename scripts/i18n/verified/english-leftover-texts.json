@@ -33222,5 +33222,44 @@
   },
   "σvm > σakma": {
     "en": "σvm > σyield"
+  },
+  "Türkçedeki Ğ, İ ve Ş harflerinin uluslararası mors karşılığı var mıdır?": {
+    "en": "Do the Turkish letters Ğ, İ and Ş have an international Morse equivalent?"
+  },
+  "ITU-R M.1677 yalnız belirli aksanlı harfleri tanımlar (ç, ö, ü, ñ, ä, é vb.); Ğ/İ/Ş için karşılık yoktur.": {
+    "en": "ITU-R M.1677 defines only certain accented letters (ç, ö, ü, ñ, ä, é, etc.); there is no equivalent for Ğ/İ/Ş."
+  },
+  "Navlun = 35,000 × 24 = 840,000 USD.": {
+    "en": "Freight = 35,000 × 24 = 840,000 USD."
+  },
+  "Prim = 24,000,000 × 0.0035 = 84,000 USD.": {
+    "en": "Premium = 24,000,000 × 0.0035 = 84,000 USD."
+  },
+  "Bedel = 9,500 × 480 = 4,560,000 USD.": {
+    "en": "Cost = 9,500 × 480 = 4,560,000 USD."
+  },
+  "Maliyet = 336 × 610 = 204,960 USD.": {
+    "en": "Cost = 336 × 610 = 204,960 USD."
+  },
+  "N = 120·f/p = 120 · 60/6 = 1,200 dev/dak.": {
+    "en": "N = 120·f/p = 120 · 60/6 = 1,200 rpm."
+  },
+  "Ns = 120·f/p = 120 · 50/4 = 1,500 dev/dak.": {
+    "en": "Ns = 120·f/p = 120 · 50/4 = 1,500 rpm."
+  },
+  "N2 = 1,200/3 = 400 dev/dak.": {
+    "en": "N2 = 1,200/3 = 400 rpm."
+  },
+  "Radar ufku = 2.21·√25 = 2.21·5 ≈ 11 NM.": {
+    "en": "Radar horizon = 2.21·√25 = 2.21·5 ≈ 11 NM."
+  },
+  "KG = 0 kabul edilerek": {
+    "en": "Assuming KG = 0"
+  },
+  "KG = KM kabul edilerek": {
+    "en": "Assuming KG = KM"
+  },
+  "GM = 1 m kabul edilerek": {
+    "en": "Assuming GM = 1 m"
   }
 }
