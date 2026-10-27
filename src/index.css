@@ -492,6 +492,16 @@ All colors MUST be HSL.
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    /* No rubber-band drag or pull-to-refresh on the app shell. */
+    overscroll-behavior: none;
+  }
+
+  /* Inner scroll areas stop at their edges instead of dragging the page. */
+  [role="dialog"],
+  .overflow-y-auto,
+  .overflow-auto,
+  .overflow-y-scroll {
+    overscroll-behavior: contain;
   }
 
   body {
