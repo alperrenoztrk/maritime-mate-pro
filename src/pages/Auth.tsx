@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuthContext";
-import { sanitizeReturnPath } from "@/lib/authFlow";
+import { detectGoogleSignInBlocker, isNativePlatform, openLoginInNewTab, sanitizeReturnPath } from "@/lib/authFlow";
 import { MfaChallengeForm } from "@/components/auth/MfaChallengeForm";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
@@ -45,6 +45,17 @@ const Auth = () => {
   }, [magicCooldown]);
 
   const nextPath = useMemo(() => sanitizeReturnPath(searchParams.get("next")), [searchParams]);
+  const googleBlocker = useMemo(() => detectGoogleSignInBlocker(), []);
+
+  // Coming back from Google with the browser's Back button restores this page
+  // from the back/forward cache with the button still locked.
+  useEffect(() => {
+    const unlock = (e: PageTransitionEvent) => {
+      if (e.persisted) setBusy(false);
+    };
+    window.addEventListener("pageshow", unlock);
+    return () => window.removeEventListener("pageshow", unlock);
+  }, []);
 
   // 2FA açık bir hesapta şifre doğru olsa bile oturum `aal1`dir; kod adımı
   // bitmeden yönlendirme yapılmaz, kart içinde kod ekranı gösterilir.
@@ -148,16 +159,28 @@ const Auth = () => {
   // the one registered for the Supabase project. The browser comes back to
   // /auth/callback, where AuthCallback turns the payload into a session.
   const handleGoogle = async () => {
+    if (busy) return;
+    if (googleBlocker === "frame") {
+      openLoginInNewTab(nextPath);
+      return;
+    }
     setBusy(true);
+    let leavingPage = false;
     try {
       const { error } = await signInWithGoogle(nextPath);
       if (error) {
         toast.error(error.message || "Login with Google failed");
+      } else {
+        // On the web the browser is already navigating to Google. Keeping the
+        // button locked stops a second tap from starting a second OAuth flow,
+        // which would replace the first flow's PKCE key on this device.
+        leavingPage = !isNativePlatform();
       }
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Login with Google failed");
     } finally {
-      setBusy(false);
+      if (leavingPage) window.setTimeout(() => setBusy(false), 8000);
+      else setBusy(false);
     }
   };
 
@@ -184,7 +207,19 @@ const Auth = () => {
               >
                 <GoogleIcon />
                 Continue with Google
+                {googleBlocker === "frame" && <ExternalLink className="h-3.5 w-3.5 opacity-70" />}
               </Button>
+              {googleBlocker === "frame" && (
+                <p className="text-xs text-center text-muted-foreground">
+                  Google sign-in cannot run inside this preview. It opens in a new browser tab.
+                </p>
+              )}
+              {googleBlocker === "in-app" && (
+                <p className="text-xs text-center text-muted-foreground">
+                  Google blocks sign-in inside in-app browsers. Open this page in Chrome or
+                  Safari, or sign in with your email below.
+                </p>
+              )}
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t border-border/60" />
@@ -221,13 +256,13 @@ const Auth = () => {
                     >
                       <Sparkles className="h-4 w-4" />
                       {magicCooldown > 0
-                        ? `Send again (${magicCooldown} sn)`
+                        ? `Send again (${magicCooldown} s)`
                         : "Send login link without password"}
                     </Button>
                     {magicSent && (
                       <p className="text-xs text-center text-muted-foreground">
-                        The login link has been sent to your email. Connect from this device
-                        click; The session opens automatically.
+                        The login link has been sent to your email. Open it on this device
+                        and you will be signed in automatically.
                       </p>
                     )}
                     <div className="text-center">
@@ -290,7 +325,7 @@ const Auth = () => {
                 className="text-primary underline underline-offset-4"
               >
                 Privacy Policy
-              </a>{" "}
+              </a>
               . You can permanently delete your account and all of your data at
               any time from Settings → Delete my account.
             </p>

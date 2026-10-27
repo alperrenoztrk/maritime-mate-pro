@@ -354,7 +354,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       }
       
       if (noxCalc.rate > selectedNoxLimit) {
-        warnings.push(`NOx emisyonu MARPOL Tier ${data.requiredNoxTier} exceeds the limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
+        warnings.push(`NOx emission exceeds the MARPOL Tier ${data.requiredNoxTier} limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
       }
       
       if (!ecaCompliance) {
@@ -416,31 +416,31 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         fuel: [
           { step: 1, title: "SFOC account", formula: "SFOC calculated by interpolation (based on % load)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Load: %${data.currentLoad})` },
           { step: 2, title: "power output", formula: "P = MCR × Load / 100", substitution: `P = ${data.mcrPower} × ${data.currentLoad} / 100`, result: `P = ${powerOutput.toFixed(0)} kW` },
-          { step: 3, title: "Hourly consumption", formula: "FCsaat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/hour` },
+          { step: 3, title: "Hourly consumption", formula: "FChour = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/hour` },
           { step: 4, title: "daily consumption", formula: "FCday = (FChour × Working Hour) / 1000", substitution: `FCday = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FCday = ${dailyConsumption.toFixed(1)} tons/day` },
         ],
         power: [
           { step: 1, title: "brake power", formula: "BP = Indicated Power × Mechanical Efficiency / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
           { step: 2, title: "electric power", formula: "EP = BP × Generator Efficiency / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
           { step: 3, title: "Indicated thermal efficiency", formula: "ηi = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `ηi = ${indicatedThermalEfficiency.toFixed(1)}%` },
-          { step: 4, title: "Total yield", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
+          { step: 4, title: "Overall efficiency", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
         ],
         emissions: [
-          { step: 1, title: "NOx emission", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
+          { step: 1, title: "NOx emission", formula: `MARPOL Tier ${data.requiredNoxTier} limit (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
           { step: 2, title: "SOx emission", formula: "SOx = 2 × S% × FC", explanation: `Sulphur content: ${data.fuelSulfurContent}%`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
           { step: 3, title: "CO₂ emissions", formula: "CO₂ = FC × Emission Factor", explanation: `${data.fuelType} emission factor used`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} tons/day` },
         ],
         changeover: [
-          { step: 1, title: "Transition time", formula: "Time = Preheat + (Pipe Volume / Flow Rate)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} min` },
-          { step: 2, title: "waste fuel", formula: "Waste = Pipe Volume × 1.1 (10% safety)", substitution: `Waste = ${data.pipelineVolume} × 1.1`, result: `Waste = ${fuelWasteVolume.toFixed(0)} L` },
+          { step: 1, title: "Changeover time", formula: "Time = Preheat + (Pipe Volume / Flow Rate)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} min` },
+          { step: 2, title: "Fuel lost in changeover", formula: "Waste = Pipe Volume × 1.1 (10% safety)", substitution: `Waste = ${data.pipelineVolume} × 1.1`, result: `Waste = ${fuelWasteVolume.toFixed(0)} L` },
         ],
         cooling: [
           { step: 1, title: "Heat rejection rate", formula: "Q = Power × 0.4 (typical 40% heat rejection)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
-          { step: 2, title: "Required cooling", formula: "Qrequired = Q × 1.2 (20% safety margin)", substitution: `Qrequired = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qrequired = ${coolingCapacityRequired.toFixed(0)} kW` },
+          { step: 2, title: "Required cooling", formula: "Qreq = Q × 1.2 (20% margin)", substitution: `Qreq = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qreq = ${coolingCapacityRequired.toFixed(0)} kW` },
         ],
         heatExchanger: [
           { step: 1, title: "Heat exchanger area", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (Ueff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
-          { step: 2, title: "Number of pipes", formula: "n = A / (π × d × Ltube)", result: `n = ${heatExchanger.tubes} tubes` },
+          { step: 2, title: "Number of tubes", formula: "n = A / (π × d × Ltube)", result: `n = ${heatExchanger.tubes} tubes` },
         ],
         tanks: [
           { step: 1, title: "waste water tank", formula: "V = L × B × H", substitution: `V = ${data.bilgeTankLength} × ${data.bilgeTankWidth} × ${data.bilgeTankHeight}`, result: `V = ${tanks.bilgeCapacity.toFixed(1)} m³` },
@@ -982,7 +982,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <Label className="text-sm font-medium">Total Transition Time</Label>
-                  <p className="text-lg font-semibold">{result.changeoverTime.toFixed(0)} dakika</p>
+                  <p className="text-lg font-semibold">{result.changeoverTime.toFixed(0)} min</p>
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Waste Fuel Volume</Label>

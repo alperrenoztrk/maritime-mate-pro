@@ -49,6 +49,7 @@ const paintDiagnostic = (
   ].join('\n');
 
   const render = () => {
+    document.documentElement.removeAttribute('data-launch-pending');
     document.documentElement.style.background = '#000';
     document.body.textContent = '';
     Object.assign(document.body.style, {
@@ -180,13 +181,26 @@ console.log('[Main] Starting Maritime Calculator App v2...');
     return;
   }
 
+const releaseLaunchContent = () => {
+  document.documentElement.removeAttribute('data-launch-pending');
+  container.removeAttribute('inert');
+  container.removeAttribute('aria-hidden');
+  window.dispatchEvent(new Event('splash:hidden'));
+};
+
 const hideSplash = () => {
   const splash = document.getElementById('splash-root');
-  if (splash && !splash.classList.contains('splash-hide')) {
-    splash.classList.add('splash-hide');
-    // The native-style fade is .16s — remove only after it has finished.
-    setTimeout(() => splash.remove(), 180);
+  if (!splash) {
+    releaseLaunchContent();
+    return;
   }
+  if (splash.classList.contains('splash-hide')) return;
+  splash.classList.add('splash-hide');
+  // Keep chrome hidden and inert through the fade, including the safe area.
+  setTimeout(() => {
+    splash.remove();
+    releaseLaunchContent();
+  }, 180);
 };
 
 const prefersReducedMotion =

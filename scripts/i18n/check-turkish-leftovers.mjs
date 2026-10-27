@@ -58,6 +58,25 @@ for (const file of fs.readdirSync(path.join(root, 'scripts/i18n/verified')).filt
   addKeys(readJson(`scripts/i18n/verified/${file}`));
 }
 
+// hasTurkishText() keys on Turkish letters and a word list tuned for the
+// runtime. ASCII-only Turkish ("BNWAS aktif.", "Sensor kalibre.", "FSCtoplam")
+// slips past it, so the guard adds unambiguous Turkish words and the Turkish
+// subscripts used in formulas.
+const GUARD_TURKISH_WORDS = new RegExp(`\\b(${[
+  'ile', 'icin', 'olarak', 'veya', 'gibi', 'sefer', 'riski', 'aktif', 'takip', 'takibi', 'izleme',
+  'kalibre', 'kalibrasyon', 'kalibrasyonu', 'revize', 'tarihi', 'tarihli', 'doldur', 'indir', 'teslim',
+  'etiketli', 'emniyetli', 'yasal', 'sorun', 'sebebi', 'patlama', 'birikimi', 'refakat', 'uyum',
+  'imza', 'butonu', 'tercih', 'yoklama', 'brifing', 'senaryo', 'sahte', 'kritik', 'varsa', 'talep',
+  'aktar', 'sabit', 'toplam', 'gerekli', 'istif', 'ihmal', 'radyan', 'pruvadan', 'uygula',
+  'mesafesi', 'girin', 'kapasitesi', 'doluluk', 'tahmini', 'lineer', 'ekvatorda', 'dedveyt',
+  'emisyonlar', 'dinlenme', 'hesapla', 'ticari', 'puslu', 'basit', 'kondenser', 'izentropik',
+  'momenti', 'yanal', 'payda', 'orijinal', 'efektif', 'konsantrasyon', 'yedeklilik', 'yolcu',
+  'engelli', 'eksik', 'bildirim', 'sertifika', 'vardiya', 'bitiminde', 'seviyesi', 'tutukluk',
+  'hidrolik', 'analiz', 'enjeksiyon', 'manometre', 'vakum', 'senkronizasyon', 'kaptan', 'batma',
+  'okuma', 'devir', 'frekans', 'iletken', 'kesiti', 'diyot', 'trafo', 'ayarlanabilir', 'atalet',
+].join('|')})\\b|[A-Za-zΔ](?:toplam|gerekli|istif|yeni|eski|hedef|kaynak|sintine|balast|pompa|hacim|statik|sistem|egzoz|elektrik|mekanik|silindir|verici|kirli|temiz|yanma|saat)\\b`, 'i');
+const looksTurkish = (text) => hasTurkishText(text) || GUARD_TURKISH_WORDS.test(text);
+
 const covered = (value) => {
   const text = value.trim();
   if (!text) return true;
@@ -177,10 +196,10 @@ for (const file of listFiles(path.join(root, 'src'))) {
   const sourceFile = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   const record = (node, value, prop) => {
     const trimmed = value.trim();
-    if (!trimmed || !/\p{L}/u.test(trimmed) || !hasTurkishText(trimmed)) return;
+    if (!trimmed || !/\p{L}/u.test(trimmed) || !looksTurkish(trimmed)) return;
     if (isNonDisplayProp(prop)) return;
     const markdown = (prop === 'content' || prop === 'body') && /[\n*#`_]/.test(trimmed);
-    const parts = markdown ? markdownSegments(trimmed).filter((part) => hasTurkishText(part)) : [trimmed];
+    const parts = markdown ? markdownSegments(trimmed).filter((part) => looksTurkish(part)) : [trimmed];
     for (const part of parts) {
       if (covered(part)) continue;
       const line = sourceFile.getLineAndCharacterOfPosition(node.getStart()).line + 1;

@@ -64,8 +64,14 @@ npm run check:design-system
 npm run i18n:verify
 npm run build:native
 ```
+`i18n:check` için önce `npm run i18n:extract` çalışmalı
+(`source-strings.json` repoda tutulmuyor). Hepsini sırayla `/precommit`
+skill'i çalıştırır ve commit mesajı taslağını self-check listesiyle hazırlar.
+Çeviri/ders metni değişikliğinden sonra `terminology-reviewer` subagent'ı
+(`.claude/agents/`, yalnız okur) terimleri GLOSSARY.md'ye göre denetler.
 Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğrula
-(`.claude/skills/verify`).
+(`.claude/skills/verify`). `.env` ve keystore dosyaları
+`.claude/settings.json`'daki `permissions.deny` ile okunamaz/düzenlenemez.
 
 ## Görsel iş akışı
 - Wikimedia Commons'a sadece GitHub Actions üzerinden erişilir:
@@ -82,7 +88,9 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
 
 ## Yayın
 - `main`'e her push `android-release.yml`'i çalıştırır ve imzalı AAB üretir
-  (artifact: `marine-expert-pro-release-aab`).
+  (artifact: `marine-expert-pro-release-aab`). Build'den önce `i18n:extract`,
+  `i18n:verify` ve svg/ux/tasarım kontrolleri çalışır; biri kalırsa AAB
+  üretilmez.
 - Production build'den önce repo değişkeni `PRO_GATING_ENABLED=true` olmalı
   (`src/config/proGating.ts`). Kapalı testte kapalı kalır.
 
@@ -112,6 +120,16 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   tamamlandı. Seçilmiş terim düzeltmeleri `terminology-completion.json` →
   `shared/terminology-overrides.json` paketinde; yalnız açıkça belirtilen
   anahtarları dil sözlüğünün üstüne uygular. Terim denetimi eşiği sıfırdır.
+- Türkçe kalıntı (27 Eki 2026 taraması): `paragraphs` dışındaki veri dosyalarında
+  sözlükte karşılığı olmayan ~9 bin Türkçe metin var (çıkarıcı yalnız
+  `ALLOWED_PROPS` alanlarını alıyor). En yoğun: `musterList.ts`,
+  `shipSystemsData.ts`, `shipTaskDetailData.ts`, `crewRoleDetails.ts`,
+  `regulations/*`, `bridgeDevices.ts`. Bunlar çevrimdışında Türkçe kalır.
+  İşaret bayrakları ve stabilite bölüm başlıkları kontrol edildi
+  (`verified/signal-flags.json`, `verified/stability-chapter-titles.json`).
+- Google girişi Lovable editör önizlemesinde (iframe) ve uygulama içi
+  tarayıcılarda çalışmaz (Google engeller); giriş ekranı bunu algılayıp yeni
+  sekmede açar / uyarı gösterir. Gerçek test: nauticalleap.com veya Android.
 - Kalın (`**…**`) parçalarla bölünmüş markdown cümleleri ayrı düğümlere
   çevrilir ve bozuk İngilizce çıkar. `navigationTopicContents.ts` ve
   `stabilityTopicsContent.ts`'de cümle ortası kalınlar kaldırıldı; yeni

@@ -4,7 +4,7 @@ import type { RuleGroup } from "@/data/courseContent/types";
  * Navigation rules.
  *
  * The content is taken verbatim from the real, cited regulations on the
- * src/pages/NavigationRules.tsx page:
+ * former NavigationRules page:
  *  - COLREG 1972 (International Regulations for Preventing Collisions at Sea)
  *  - IALA Maritime Buoyage System
  *  - SOLAS Chapters IV / V, GMDSS
@@ -84,17 +84,18 @@ export const navigationRules: RuleGroup[] = [
       {
         subtitle: "Cardinal Marks",
         content: [
-          "Cardinal marks: black and yellow colouring and topmarks according to the quadrant (N-E-S-W) in which the danger lies.",
+          "Cardinal marks: black and yellow, with a topmark of two black cones. A cardinal mark is named after the quadrant (N, E, S, W) around the danger in which it is placed, and is passed on its named side.",
           "North cardinal: black above yellow; two cones pointing up. Pass to the north of the danger.",
           "South cardinal: yellow above black; two cones pointing down. Pass to the south of the danger.",
           "East cardinal: black-yellow-black; two cones base to base. Pass to the east.",
           "West cardinal: yellow-black-yellow; two cones point to point. Pass to the west.",
+          "Cardinal lights are white: North Q or VQ (uninterrupted); East Q(3) 10s or VQ(3) 5s; South Q(6)+LFl 15s or VQ(6)+LFl 10s; West Q(9) 15s or VQ(9) 10s.",
         ],
       },
       {
-        subtitle: "Special Marks",
+        subtitle: "Isolated Danger, Safe Water and Special Marks",
         content: [
-          "Isolated danger mark: black with a red horizontal band; topmark of two black spheres.",
+          "Isolated danger mark: black with one or more broad red horizontal bands; topmark of two black spheres; white light Fl(2).",
           "Safe water mark: red and white vertical stripes; topmark of a single red sphere. Mid-channel / landfall.",
           "Special marks: yellow with a yellow 'X' topmark. Military exercise areas, pipelines, cables etc.",
         ],

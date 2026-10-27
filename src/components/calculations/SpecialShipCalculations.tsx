@@ -161,12 +161,12 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
               safetyFactor >= 1.2 ? 'caution' : 'dangerous',
       recommendation: safetyFactor < 1.2 ? 'Reduce stack height' :
                      safetyFactor < 1.5 ? 'Load with caution' :
-                     'Within safe loading limits'
+                     'Within safe stack limits'
     });
     setCalcSteps(prev => ({ ...prev, container: [
       { step: 1, title: "Total stack weight", formula: "Total = Container Weight × Stack Height", substitution: `Total = ${weight} × ${height}`, result: `Total = ${totalStackWeight} t` },
       { step: 2, title: "Safety factor", formula: "SF = Deck Capacity / Total Stack Weight", substitution: `SF = ${capacity} / ${totalStackWeight}`, result: `SF = ${safetyFactor.toFixed(2)}` },
-      { step: 3, title: "Max. safe stack", formula: "Max = ⌊Deck Capacity / Container Weight⌋", substitution: `Max = ⌊${capacity} / ${weight}⌋`, result: `Max Safe Stack = ${maxSafeHeight} tiers` },
+      { step: 3, title: "Max. safe stack", formula: "Max = ⌊Deck Capacity / Container Weight⌋", substitution: `Max = ⌊${capacity} / ${weight}⌋`, result: `Max safe stack = ${maxSafeHeight} containers` },
     ] }));
   };
 
@@ -195,7 +195,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
     });
     setCalcSteps(prev => ({ ...prev, roro: [
       { step: 1, title: "Axle load calculation", formula: "Axle Load = Vehicle Weight / Number of Axles", substitution: `Axle Load = ${weight} / ${axles}`, result: `Axle Load = ${axleLoad.toFixed(2)} ton/axle` },
-      { step: 2, title: "margin of safety", formula: "Margin = ((Limit - Axle Load) / Limit) × 100", substitution: `Marj = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Safety Margin = ${safetyMargin.toFixed(1)}%` },
+      { step: 2, title: "margin of safety", formula: "Margin = ((Limit - Axle Load) / Limit) × 100", substitution: `Margin = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Safety Margin = ${safetyMargin.toFixed(1)}%` },
       { step: 3, title: "Result", formula: "Axle Load ≤ Limit → Safe", result: axleLoad <= limit ? `${axleLoad.toFixed(2)} ≤ ${limit} → SECURE` : `${axleLoad.toFixed(2)} > ${limit} → OVERLOAD` },
     ] }));
   };
@@ -431,7 +431,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                       </div>
                       <div>
                         <span className="font-medium">Max. Safe Stack:</span>
-                        <span className="ml-2">{containerResult.maxSafeHeight} tiers</span>
+                        <span className="ml-2">{containerResult.maxSafeHeight} containers</span>
                       </div>
                       <div>
                         <span className="font-medium">Status:</span>

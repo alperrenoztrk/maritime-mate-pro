@@ -30,6 +30,7 @@ import earthLightingJuneSolstice from "@/assets/navigation/real/earth-lighting-j
 import loxodromeOrthodrome from "@/assets/navigation/real/loxodrome-orthodrome.svg";
 import shipBinnacleImg from "@/assets/lessons/ship-binnacle.jpg";
 import lateralMarksRegionA from "@/assets/navigation/real/lateral-marks-region-a.jpg";
+import type { LessonFigureId } from "@/data/lessonFigures";
 
 
 export interface TopicSection {
@@ -42,6 +43,10 @@ export interface TopicSection {
     text: string;
     description: string;
   };
+  table?: { headers: string[]; rows: string[][] };
+  example?: { problem: string; steps?: string[]; solution?: string; result?: string };
+  /** Code-drawn figure shown after the section text. */
+  figure?: LessonFigureId;
 }
 
 export interface TopicDetailContent {
@@ -91,7 +96,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
           "Boylam hesapları mümkün olur"
         ],
         formula: {
-          text: "Dünya 24 saatte 360° döner → 1 saatte 15° → 1 dakikada 15′ → 1 saniyede 15″",
+          text: "Earth turns 360° in 24 h → 15° in 1 h → 15′ in 1 min → 15″ in 1 s",
           description: "Bu ilişki, göksel seyirde boylam bulmanın temelidir"
         }
       },
@@ -127,7 +132,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
           "Batıya gidildikçe saat geri alınır"
         ],
         formula: {
-          text: "15° boylam farkı = 1 saat | 1° boylam farkı = 4 dakika",
+          text: "15° of longitude = 1 hour | 1° of longitude = 4 minutes",
           description: "Bu ilişki, zaman–boylam hesaplarının temel formülüdür"
         }
       },
@@ -404,7 +409,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "Harita ölçeği ve mesafe hesabı için kullanılır"
         ],
         formula: {
-          text: "1° enlem = 60 deniz mili | 1′ enlem = 1 deniz mili",
+          text: "1° of latitude = 60 nautical miles | 1′ of latitude = 1 nautical mile",
           description: "Bu nedenle harita üzerinde enlem çizgileri doğrudan mesafe ölçeği olarak kullanılır"
         }
       },
@@ -435,7 +440,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "1′ boylam farkı = 4 saniye"
         ],
         formula: {
-          text: "Boylam (°) × 4 = Zaman farkı (dakika)",
+          text: "Longitude (°) × 4 = Time difference (minutes)",
           description: "Kronometre zamanı ile yerel zaman karşılaştırılarak boylam bulunur"
         }
       },
@@ -524,7 +529,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "Boylam ölçeği mesafe için güvenilir değildir"
         ],
         formula: {
-          text: "1° = 60′ (dakika) = 3600″ (saniye)",
+          text: "1° = 60′ (minutes) = 3600″ (seconds)",
           description: "Bu ilişki, düzlem seyirde mesafe hesaplarının ve hız–zaman ilişkilerinin temelidir"
         }
       },
@@ -548,7 +553,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "Düzlem seyirde temel hesaplama formülüdür"
         ],
         formula: {
-          text: "DLat = Mesafe × cos(Kurs)",
+          text: "DLat = Distance × cos(Course)",
           description: "Örnek: 120 NM mesafe, 030° kurs → DLat = 120 × cos(30°) ≈ 103.9′"
         }
       },
@@ -631,7 +636,7 @@ Bu sonuç, geminin yerel öğle anında 8° 30.0′ Kuzey enleminde bulunduğunu
           "1′ boylam = 4 saniye"
         ],
         formula: {
-          text: "Boylam (°) × 4 = Zaman farkı (dakika)",
+          text: "Longitude (°) × 4 = Time difference (minutes)",
           description: "Zamandaki her hata, doğrudan boylam hatasına dönüşür"
         }
       },
@@ -784,7 +789,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
           "λ = 2.333 × 15° ≈ 35.0° Doğu"
         ],
         formula: {
-          text: "1 saat = 15° | 1 dakika = 15′ | 1 saniye = 15″",
+          text: "1 hour = 15° | 1 minute = 15′ | 1 second = 15″",
           description: "Zaman farkı doğrudan boylam farkına çevrilir."
         }
       }
@@ -832,7 +837,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
 
 `,
         formula: {
-          text: "Departure = Mesafe × sin Kurs",
+          text: "Departure = Distance × sin Course",
           description: "Kurs hakiki rota olarak alınır; sonuç deniz mili cinsindendir."
         }
       },
@@ -860,7 +865,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
 
 `,
         formula: {
-          text: "tan Kurs = Departure ÷ DLat",
+          text: "tan Course = Departure ÷ DLat",
           description: "DLat ve departure bilindiğinde hakiki rota (kurs) bulunur."
         }
       },
@@ -982,7 +987,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 `,
         formula: {
-          text: "1′ boylam = cos Enlem deniz mili",
+          text: "1′ of longitude = cos(Latitude) nautical miles",
           description: "Boylam dakikasının uzunluğu enleme bağlıdır; enlem arttıkça cos değerinin azalması nedeniyle boylam dakikası kısalır."
         }
       },
@@ -994,7 +999,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 `,
         formula: {
-          text: "Departure = DLong × cos Ortalama Enlem",
+          text: "Departure = DLong × cos(Mean Latitude)",
           description: "Departure deniz mili, DLong dakika cinsindedir. Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır."
         }
       },
@@ -1006,7 +1011,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 `,
         formula: {
-          text: "DLong = Departure ÷ cos Ortalama Enlem",
+          text: "DLong = Departure ÷ cos(Mean Latitude)",
           description: "Departure deniz mili cinsindedir; sonuç dakika cinsinden boylam değişimidir (Doğu/Batı işareti ayrıca verilir)."
         }
       },
@@ -1139,7 +1144,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Hakiki Rota, Hakiki Kerteriz ve Nispi Kerteriz İlişkisi",
         content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Bu üç kavram arasındaki ilişki, göreli bir yönün mutlak sisteme dönüştürülmesi mantığına dayanır.",
         formula: {
-          text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+          text: "True Bearing = True Heading + Relative Bearing",
           description: "Hesaplama sonucunda elde edilen değer 360°'yi aşarsa, 360° çıkarılarak sonuç dairesel sistem içine alınır"
         }
       },
@@ -1211,7 +1216,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Temel Bağıntı",
         content: "Mesafe, hız ile geçen zamanın çarpımıdır. Aynı bağıntı bilinmeyen büyüklüğe göre düzenlenerek hız veya zaman hesabında da kullanılır.",
         formula: {
-          text: "Mesafe = Hız × Zaman",
+          text: "Distance = Speed × Time",
           description: "Hız = Mesafe ÷ Zaman | Zaman = Mesafe ÷ Hız"
         }
       },
@@ -1296,7 +1301,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Bağıntının Formülleri",
         content: "Bağıntı üç eşdeğer formülle ifade edilir. Hız, birim zamanda alınan yol olduğundan mesafe, hız ile zamanın çarpımıdır. Bilinmeyen büyüklüğe göre formül düzenlenir. Bu üç formül, ETA hesaplarının temel dayanağıdır.",
         formula: {
-          text: "Mesafe = Hız × Zaman",
+          text: "Distance = Speed × Time",
           description: "Hız = Mesafe ÷ Zaman | Zaman = Mesafe ÷ Hız"
         }
       },
@@ -1366,7 +1371,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Karşı Rota",
         content: "Rota ölçümü ile birlikte sıkça kullanılan kavramlardan biri de karşı rotadır. Bir rotanın karşı rotası, aynı hattın ters yönde izlenmesi anlamına gelir ve hakiki rota değerine 180° eklenerek veya çıkarılarak bulunur.",
         formula: {
-          text: "Karşı Rota = Hakiki Rota ± 180°",
+          text: "Reciprocal Course = True Course ± 180°",
           description: "Hakiki rota 180°’den küçükse 180° eklenir, 180°’den büyükse 180° çıkarılır."
         }
       },
@@ -1419,7 +1424,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Hakiki Kerteriz Hesap Bağıntısı",
         content: "Hakiki kerteriz, nispi gözlemin hakiki sisteme taşınmasıyla elde edilir. Nispi kerteriz sancak yönünde ölçülmüşse pozitif, iskele yönünde ölçülmüşse negatif kabul edilir. Sonuç 360°’yi aşarsa 360° çıkarılır, 0°’nin altına düşerse 360° eklenir.",
         formula: {
-          text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+          text: "True Bearing = True Heading + Relative Bearing",
           description: "Nispi kerteriz, gemi eksenine göre ölçülen açının hakiki kuzeye taşınmasını sağlar."
         }
       },
@@ -1485,7 +1490,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Hakiki–Manyetik Dönüşüm",
         content: "Hakiki ve manyetik sistemler arasındaki ilişki doğrusal bir açı dönüşümüne dayanır. Dönüşüm, bilinen variation kadar açı ekleme veya çıkarma işlemidir.",
         formula: {
-          text: "Hakiki Rota = Manyetik Rota + Variation",
+          text: "True Course = Magnetic Course + Variation",
           description: "Variation doğu ise pozitif, batı ise negatif kabul edilir."
         }
       },
@@ -1501,7 +1506,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Deviation (Pusula Sapması) ve Tam Pusula Düzeltmesi",
         content: "Pusula kuzeyi ile manyetik kuzey arasındaki açıya deviation (pusula sapması) denir. Deviation, geminin kendi çeliği ve elektrikli ekipmanının yarattığı yerel manyetik alandan kaynaklanır; bu nedenle gemiye özgüdür ve geminin pruva yönüne (heading) göre değişir. Her gemi için her pruvada ölçülen deviation değerleri bir deviasyon kartında (deviation card/table) tutulur. Tam dönüşüm zinciri şöyledir: Pusula Rotası → (deviation uygulanır) → Manyetik Rota → (variation uygulanır) → Hakiki Rota. Variation ile deviation'ın cebirsel toplamı toplam pusula hatasını (compass error) verir. İşaret kuralı: doğu (E) değerler pozitif, batı (W) değerler negatiftir.",
         formula: {
-          text: "Hakiki Rota = Pusula Rotası + Deviation + Variation | Pusula Hatası = Deviation + Variation",
+          text: "True Course = Compass Course + Deviation + Variation | Compass Error = Deviation + Variation",
           description: "Doğu (+), batı (−). Anımsatıcı: 'Hata doğu, pusula düşük; hata batı, pusula yüksek' (Error East, compass least)."
         },
         bulletPoints: [
@@ -1514,7 +1519,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         title: "Manyetik Kerteriz Bağıntısı",
         content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır.",
         formula: {
-          text: "Manyetik Kerteriz = Manyetik Rota + Nispi Kerteriz",
+          text: "Magnetic Bearing = Magnetic Heading + Relative Bearing",
           description: "Sonuç 360°'yi aşarsa 360° çıkarılır, 0°'nin altına düşerse 360° eklenir."
         }
       },
@@ -2346,7 +2351,7 @@ Başlangıç kursu yaklaşık 039° gerçek kurstur. Seyir ilerledikçe bu kurs 
         title: "Merkez Açıdan Mesafeye Geçiş",
         content: "Merkez açı hesaplandıktan sonra mesafe doğrudan yay uzunluğuna çevrilir. Denizcilikte standart kabul: **1° büyük daire yayı = 60 deniz mili**. Böylece bulunan merkez açı, büyük daire mesafesinin doğrudan karşılığıdır.",
         formula: {
-          text: "Büyük daire mesafesi (nm) = θ × 60",
+          text: "Great circle distance (nm) = θ × 60",
           description: "θ derece cinsinden merkez açıdır."
         }
       },
@@ -2497,6 +2502,220 @@ Bu değer, iki mevki arasındaki teorik en kısa deniz yolunu temsil eder. Rhumb
       "Lateral ve kardinal işaretlerin ışık ritimleri gece tanımada belirleyicidir",
       "Emniyetli su ve izole tehlike işaretleri, mevki doğrulamada kritik rol oynar",
       "Semboller, derinlik değerleri ve geminin draft’ı birlikte değerlendirilmelidir"
+    ]
+  },
+  "Lighthouses and light characteristics": {
+    title: "Lighthouses and Light Characteristics",
+    introduction: "Lighthouses and other lighted aids to navigation let you recognize the coast, harbor entrances, dangers and safe passages at night. The most important fact for a navigating officer is this: every light has its own characteristic, and you find out which light you are looking at by comparing that characteristic with the chart. If you see three lights at the same time, one flashing white every 5 seconds, one flashing red twice every 10 seconds and one showing a steady green, their color, rhythm and period tell them apart.",
+    sections: [
+      {
+        title: "What lights are for",
+        content: "Major lights on the coast and the lights on buoys and beacons use the same language; on the bridge they do four different jobs.",
+        bulletPoints: [
+          "Landfall and position: sighting a particular light after a long ocean passage confirms where the ship is, and a bearing of the light is a position line.",
+          "Marking dangers: a light shows where a shoal, rock or wreck lies, or on which side it can be passed safely.",
+          "Harbor and channel entrances: lights mark the limits of channels, the heads of breakwaters and the approach channels.",
+          "Showing a track: bringing two lights into line (leading lights) or following a sector light keeps the ship on a given track."
+        ]
+      },
+      {
+        title: "What a light characteristic is",
+        content: "A light characteristic is the signature that describes how a light comes on, goes off or changes color over time. It has four elements; the elevation and the range of the light complete the description.",
+        table: {
+          headers: ["Element", "On the chart", "Meaning"],
+          rows: [
+            ["Rhythm", "F, Fl, LFl, Oc, Iso, Q, VQ, Mo", "Whether the light is fixed, flashing, occulting and so on"],
+            ["Color", "W, R, G, Y, Bu", "White, red, green, yellow, blue"],
+            ["Group", "Fl(3), Oc(2), Fl(2+1)", "How many flashes or eclipses each period contains"],
+            ["Period", "10s", "How many seconds the whole sequence takes before it repeats"]
+          ]
+        }
+      },
+      {
+        title: "How to read a light on the chart",
+        content: `On the chart and in the List of Lights, a light is written as abbreviations in a fixed order: character and group, color, period, elevation and range. The entry below is representative and does not belong to a real light.
+
+Fl(3) W 10s 18m 15M means: a white light gives three flashes in every 10-second period; the light is 18 meters above the chart's height datum (usually MHWS on Admiralty charts) and its nominal range is 15 nautical miles.
+
+The period is the most often misread element. 10s does not mean that each flash lasts 10 seconds or that there are 10 seconds between flashes: the three flashes and the eclipses between and after them take 10 seconds together, and then the sequence repeats exactly. To time the period, measure from the first flash of one group to the first flash of the next.
+
+This notation follows section P of IHO INT 1 (Chart 1) and the Admiralty List of Lights and Fog Signals.`,
+        figure: "light-notation"
+      },
+      {
+        title: "The basic light rhythms",
+        content: "Rhythm is the key to recognizing a light on a night watch. In the diagrams below, bright blocks show when the light is on and dark blocks when it is off; use the play button to watch each light at its real speed. Durations inside a period are illustrative.",
+        figure: "light-rhythms-basic",
+        table: {
+          headers: ["Abbreviation", "Name", "Definition"],
+          rows: [
+            ["F", "Fixed", "Shows continuously with a steady intensity."],
+            ["Fl", "Flashing", "In each period the light is on for less time than it is off; all flashes are of equal length."],
+            ["LFl", "Long-flashing", "A single flash lasts at least 2 seconds."],
+            ["Oc", "Occulting", "The light is on for longer than it is off; it is eclipsed briefly at regular intervals."],
+            ["Oc(2)", "Group occulting", "Two eclipses form a group in each period."],
+            ["Iso", "Isophase", "Light and darkness are of equal duration."],
+            ["Fl(2)", "Group flashing", "Two flashes follow each other, then comes a longer eclipse."],
+            ["Fl(2+1)", "Composite group flashing", "Two flashes, then a separate single flash."],
+            ["Mo(A)", "Morse code", "The light shows a Morse letter; A is one short and one long appearance of light."],
+            ["Al", "Alternating", "The light changes color; for example, Al Fl WR flashes white and red alternately."],
+            ["FFl", "Fixed and flashing", "A steady light with brighter flashes added to it."],
+            ["IQ", "Interrupted quick", "A sequence of quick flashes is interrupted at regular intervals by a long eclipse."]
+          ]
+        }
+      },
+      {
+        title: "Quick flashes: Q, VQ, UQ",
+        content: `For quick lights the number of flashes is defined per minute. This classification is given in IHO INT 1.
+
+Q or VQ does not mean that the light must flash without a break. It can also form a group of a set number of quick flashes, such as Q(3) or VQ(9); cardinal marks use exactly these groups.`,
+        figure: "light-rhythms-quick",
+        table: {
+          headers: ["Abbreviation", "Name", "Flashes per minute"],
+          rows: [
+            ["Q", "Quick", "50–79; usually 50 or 60"],
+            ["VQ", "Very quick", "80–159; usually 100 or 120"],
+            ["UQ", "Ultra quick", "160 or more; usually 240–300"]
+          ]
+        }
+      },
+      {
+        title: "Lighted marks in IALA Region A",
+        image: lateralMarksRegionA,
+        imageAlt: "IALA Region A: a red port hand mark with a can topmark (left) and a green starboard hand mark with a cone topmark (right)",
+        content: `The characteristic of a major coastal light mostly tells you which light you are looking at. The lights of buoys and beacons also tell you the safe side to pass or where a danger lies. Turkish waters are in IALA Region A.
+
+Do not confuse the lateral color rule with a ship's sidelights: under COLREG a ship's port sidelight is red and its starboard sidelight green, whereas the meaning of IALA lateral marks depends on the conventional direction of buoyage; in Region A, entering harbor from seaward, red marks are kept to port.`,
+        figure: "light-rhythms-marks",
+        table: {
+          headers: ["Mark", "Appearance", "Light"],
+          rows: [
+            ["Port-hand mark", "Red, can-shaped", "Red; any rhythm other than Fl(2+1)"],
+            ["Starboard-hand mark", "Green, conical", "Green; any rhythm other than Fl(2+1)"],
+            ["Preferred channel to starboard", "Red with one broad green band", "Red, Fl(2+1) R"],
+            ["Preferred channel to port", "Green with one broad red band", "Green, Fl(2+1) G"],
+            ["Isolated danger", "Black with one or more broad red horizontal bands; two black spheres as topmark", "White, Fl(2)"],
+            ["Safe water", "Red and white vertical stripes; a single red sphere as topmark", "White; Iso, Oc, LFl 10s or Mo(A)"],
+            ["Special mark", "Yellow; a yellow X as topmark", "Yellow; a rhythm that cannot be confused with the other marks"],
+            ["Emergency wreck marking buoy", "Equal numbers of blue and yellow vertical stripes; an upright yellow cross as topmark", "Alternating blue and yellow: 1 s blue, 0.5 s dark, 1 s yellow, 0.5 s dark"]
+          ]
+        }
+      },
+      {
+        title: "Cardinal lights",
+        image: cardinalMarksDiagram,
+        imageAlt: "IALA cardinal marks placed around a danger, with their colours, topmarks and light characters",
+        content: `Cardinal marks show on which side of a danger it is safe to pass: pass north of a north cardinal, east of an east cardinal, south of a south cardinal and west of a west cardinal. When lit, every cardinal light is white.
+
+Match the number of flashes to a clock face: 3 o'clock is east (3 flashes), 6 o'clock is south (6 flashes and one long flash) and 9 o'clock is west (9 flashes); north flashes without a break. The long flash of the south mark is added so that its group of six cannot be mistaken for a group of three or nine.`,
+        figure: "light-rhythms-cardinal",
+        table: {
+          headers: ["Cardinal", "Quick type", "Very quick type", "Safe side"],
+          rows: [
+            ["North", "Q", "VQ", "North of the danger"],
+            ["East", "Q(3) 10s", "VQ(3) 5s", "East of the danger"],
+            ["South", "Q(6)+LFl 15s", "VQ(6)+LFl 10s", "South of the danger"],
+            ["West", "Q(9) 15s", "VQ(9) 10s", "West of the danger"]
+          ]
+        }
+      },
+      {
+        title: "Sector lights",
+        content: `A sector light shows a different color or characteristic depending on the direction from which it is seen. In a common arrangement the white sector marks the safe approach and the red and green sectors mark the limits on either side or the side of a danger. This is a habit, not a rule: you cannot assume that white is always safe or that red or green is always dangerous; read the meaning of the sectors from the chart and the List of Lights.
+
+Unless stated otherwise, sector limits are given as true bearings of the light from seaward. If the chart gives the white sector as 085°–095°, a ship that sees the light bearing between 085° and 095° is in the white sector; the ship is west of the light.`,
+        figure: "light-sectors",
+        bulletPoints: [
+          "Sector limits are not optically sharp; do not use the change of color as an exact position line.",
+          "Confirm a sector change with a bearing, a radar range or another method of fixing."
+        ]
+      },
+      {
+        title: "Leading lights",
+        content: `Leading lights are two lights on the same line. The front light is lower and nearer the ship, the rear light higher and farther away. When the two lights are vertically in line, the ship is on the leading line drawn on the chart.
+
+When the ship moves off the line, the distant rear light shifts less than the nearer front light. So, looking towards the lights, if the rear light appears to the left of the front light, the ship is to port of the line and alters course to starboard to regain it; if it appears to the right, the ship is to starboard of the line and alters course to port.`,
+        figure: "leading-lights",
+        bulletPoints: [
+          "The chart shows which part of the line is to be used; outside that part the line does not guarantee safe water.",
+          "This method lets you check by eye that you are on the line even without GNSS, but it does not replace checks of depth, traffic and other safety factors."
+        ]
+      },
+      {
+        title: "Three kinds of range",
+        content: "When you judge how far away a light can be seen, keep three different kinds of range apart.",
+        bulletPoints: [
+          "The farthest you can expect to see a light is the smaller of the geographic range and that night's luminous range.",
+          "Some national charts give the luminous or geographic range instead of the nominal range; check the chart's notes to see which one is given."
+        ],
+        table: {
+          headers: ["Concept", "Definition"],
+          rows: [
+            ["Nominal range", "The range set by the intensity of the light alone, in standard conditions with a meteorological visibility of 10 nautical miles. This is the range given in Admiralty publications."],
+            ["Luminous range", "The range set by the intensity of the light and the meteorological visibility at the time; it is read from the luminous range diagram in the List of Lights."],
+            ["Geographic range", "The geometric range set by the curvature of the Earth, the elevation of the light and the observer's height of eye."]
+          ]
+        }
+      },
+      {
+        title: "Calculating the geographic range",
+        content: "The geographic range is the sum of the horizon distances of the light and of the eye. With standard atmospheric refraction the approximate relation is D = 2.08 × (√H + √h), where D is in nautical miles and H, the elevation of the light, and h, the height of eye, are in meters. Try your own values in the calculator.",
+        figure: "light-range-calculator",
+        bulletPoints: [
+          "When a light first rises above the horizon or dips below it, its distance from the ship is about the geographic range; together with the bearing of the light this gives a position."
+        ],
+        example: {
+          problem: "The elevation of the light is 30 m, the height of eye on the bridge is 15 m and the nominal range of the light is 12 nautical miles.",
+          steps: [
+            "Horizon distance of the light: 2.08 × √30 = 11.39 nautical miles",
+            "Horizon distance of the eye: 2.08 × √15 = 8.06 nautical miles",
+            "Geographic range: 11.39 + 8.06 = 19.45 nautical miles"
+          ],
+          result: "The geographic range is about 19.45 nautical miles. With a nominal range of 12 nautical miles, you cannot assume you will see the light from 19 miles even on a clear night; find that night's luminous range from the diagram in the List of Lights and use the smaller of the two ranges."
+        }
+      },
+      {
+        title: "Identifying a light from the bridge",
+        content: "On a night watch you see a light on the horizon. The ENC shows two candidate lights nearby: A, Fl W 5s, and B, Fl(2) W 10s. Both are white, so color alone is not enough.",
+        example: {
+          problem: "Is the light you see A or B?",
+          steps: [
+            "Identify the color: white, red, green or yellow? Is it confused with background lights ashore?",
+            "Count the flashes: single, or a group of two or three? Is there a long flash?",
+            "Time the period by counting seconds or with a stopwatch: measure from the first flash of one group to the first flash of the next, over several cycles.",
+            "Compare the bearing with the chart: convert the compass bearing to a true bearing with the corrections, then check each candidate's position, range, sectors and characteristic.",
+            "Confirm with independent information: cross-check with another light, a radar range or the shape of the coast; do not accept a firm position from a single light observation."
+          ],
+          result: "If you count two white flashes and confirm that the group repeats every 10 seconds, the light matches B's characteristic; still confirm it with the bearing and the position."
+        }
+      },
+      {
+        title: "Operational cautions",
+        content: "These are the common mistakes when working with lights.",
+        bulletPoints: [
+          "A characteristic is not the danger itself: seeing Fl(2) does not prove that the light is an isolated danger mark, because another aid to navigation may use the same rhythm. Check the symbol and the position on the chart.",
+          "A light you cannot see is not necessarily out of order: it may be below the geographic horizon, in another sector or behind rain or fog, or lights ashore may mask it.",
+          "The elevation of a light is not the height of its tower: the charted value is the height of the light source above the height datum, not the height of the structure from base to top.",
+          "Keep publications up to date: check the Admiralty List of Lights and Fog Signals, Notices to Mariners and navigational warnings as well as the ENC; a light's characteristic, sectors or operating status can change."
+        ]
+      },
+      {
+        title: "References",
+        content: "The definitions in this lesson are based on the following publications.",
+        bulletPoints: [
+          "IALA R1001, The IALA Maritime Buoyage System",
+          "IHO INT 1 (Admiralty Chart 5011), section P: Lights",
+          "Admiralty List of Lights and Fog Signals (NP 74–84)",
+          "COLREG Rule 21: colors and arcs of the sidelights"
+        ]
+      }
+    ],
+    keyPoints: [
+      "The rhythm identifies the light, the color and the type of mark tell you what it means, and the chart and the bearing put the light you see in the right place.",
+      "The period is the duration of the whole sequence, flashes and eclipses included.",
+      "Cardinal flash counts follow a clock face: 3 east, 6 plus a long flash south, 9 west, continuous north.",
+      "Sector limits are true bearings of the light from seaward.",
+      "At most, you can expect to see a light at the smaller of its geographic range and its luminous range."
     ]
   },
   "Harita düzeltmeleri (Notice to Mariners)": {
@@ -2877,7 +3096,7 @@ Enlem değişimi ve boylam değişimi, düzlem seyirde hareketi iki bileşene ay
 
 DLat, varış enlemi ile başlangıç enlemi arasındaki farktır ve dakika cinsinden alınır. Kuzeye gidiliyorsa DLat kuzey yönlü, güneye gidiliyorsa DLat güney yönlü kabul edilir. Derece farkı varsa dakikaya çevrilir; çünkü düzlem seyirde 1 dakika enlem = 1 deniz mili eşleştirmesi doğrudan kullanılır.`,
         formula: {
-          text: "DLat = Varış Enlemi − Başlangıç Enlemi",
+          text: "DLat = Arrival Latitude − Departure Latitude",
           description: "Kuzeye gidiliyorsa DLat (+) kuzey; güneye gidiliyorsa DLat (−) güney kabul edilir."
         }
       },
@@ -2896,7 +3115,7 @@ DLat = 36° 34.0′ − 36° 10.0′ = 24.0′ Kuzey`
 
 DLong, varış boylamı ile başlangıç boylamı arasındaki farktır ve dakika cinsinden alınır. Doğuya gidiliyorsa DLong doğu yönlü, batıya gidiliyorsa DLong batı yönlü kabul edilir. Boylam dakika farkı, enlem dakikası gibi sabit bir deniz mili değeri değildir; bu nedenle DLong tek başına “kaç mil gidildi” sorusunu cevaplamaz.`,
         formula: {
-          text: "DLong = Varış Boylamı − Başlangıç Boylamı",
+          text: "DLong = Arrival Longitude − Departure Longitude",
           description: "DLong doğu yönlü (E) veya batı yönlü (W) olarak işaretlenir."
         }
       },
@@ -3006,7 +3225,7 @@ DLong = 030° 05.0′ − 029° 20.0′ = 45.0′ Doğu`
 
 Departure, doğu–batı doğrultusunda kat edilen gerçek mesafedir ve deniz mili cinsindendir. DLong ise boylam dakikasıdır. Boylam dakikasının gerçek uzunluğu enleme bağlıdır. Düzlem seyirde bu bağıntı orta enlem üzerinden kurulur.`,
         formula: {
-          text: "Departure = DLong × cos(Orta Enlem)",
+          text: "Departure = DLong × cos(Mean Latitude)",
           description: "DLong dakika cinsinden alınır; sonuç deniz mili çıkar."
         }
       },
@@ -3018,7 +3237,7 @@ Departure, doğu–batı doğrultusunda kat edilen gerçek mesafedir ve deniz mi
 
 Orta enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Orta enlem, DLong’un gerçek yatay mesafeye dönüştürülmesinde kullanılan pratik referanstır.`,
         formula: {
-          text: "Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2",
+          text: "Mean Latitude = (Departure Latitude + Arrival Latitude) ÷ 2",
           description: "Orta enlem derece cinsinden alınır; cos değeri bu enlemden hesaplanır."
         }
       },
@@ -3030,7 +3249,7 @@ Orta enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Orta
 
 Bazı problemlerde departure bilinir, DLong istenir. Bu durumda bağıntı ters çevrilir.`,
         formula: {
-          text: "DLong = Departure ÷ cos(Orta Enlem)",
+          text: "DLong = Departure ÷ cos(Mean Latitude)",
           description: "Departure deniz mili, cos orta enlem boyutsuz, sonuç dakika cinsinden DLong’dur."
         }
       },
@@ -3310,7 +3529,7 @@ Set ve drift birlikte akıntı vektörünü oluşturur. Bu vektör, geminin suya
         content:
           "Bu tanım, akıntının vektörel çözümlerde hangi iki bilgiyle temsil edildiğini sabitler ve tüm hesapların başlangıç noktasını oluşturur.",
         formula: {
-          text: "Akıntı Vektörü = (Set, Drift)",
+          text: "Current Vector = (Set, Drift)",
           description: "Set yön, drift ise hız bilgisidir."
         }
       }
@@ -3339,7 +3558,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
         content:
           "Bu eşitlikte büyüklükler ve yönler birlikte taşındığı için çözüm, ölçekli vektör çizimiyle veya sayısal olarak bileşenlere ayırarak yapılır.",
         formula: {
-          text: "Yer Hız Vektörü = Suya Göre Hız Vektörü + Akıntı Vektörü",
+          text: "Ground Velocity Vector = Water Velocity Vector + Current Vector",
           description: "COG/SOG, suya göre vektör ile akıntı vektörünün toplamıdır."
         }
       },
@@ -3348,7 +3567,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
         content:
           "Sayısal çözümde her vektör kuzey–güney ve doğu–batı bileşenlerine ayrılır. Hakiki kuzey referansı kullanıldığında bir vektörün bileşenleri trigonometrik olarak bulunur.",
         formula: {
-          text: "Kuzey Bileşeni = Hız × cos Yön | Doğu Bileşeni = Hız × sin Yön",
+          text: "North Component = Speed × cos Direction | East Component = Speed × sin Direction",
           description: "Her vektör için N ve E bileşenleri ayrı ayrı hesaplanır."
         }
       },
@@ -3371,7 +3590,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
   "Heading – COG ilişkisi": {
     title: "Heading – COG İlişkisi",
     introduction:
-      "Heading, geminin pruvasının baktığı hakiki yönü ifade eder. COG ise geminin yer üzerinde izlediği gerçek rota doğrultusudur. Akıntısız durumda heading ile COG aynı kabul edilebilir; akıntı varlığında ise heading ile COG arasına bir sapma girer.",
+      "Heading is the direction of the bow; course over ground (COG) is the direction of movement over the seabed. Current and wind-induced leeway can make them differ. Compare values using the same true or magnetic reference; equality requires negligible current and leeway.",
     sections: [
       {
         title: "Heading ile COG Arasındaki Sapma",
@@ -3384,7 +3603,7 @@ Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sü
         content:
           "Bu ifade, işaretlendirme yapılmadan kullanılmaz; çünkü hangi tarafa düzeltme verileceği akıntı setine bağlıdır. Akıntı gemiyi istenen rotanın sağına itiyorsa, heading istenen COG’nin soluna alınır; gemiyi soluna itiyorsa, heading sağa alınır. Bu ilişki vektör üçgeniyle netleşir.",
         formula: {
-          text: "Düzeltme Açısı = Heading − İstenen COG",
+          text: "Correction Angle = Heading − Desired COG",
           description: "Düzeltme yönü akıntı setine göre belirlenir."
         }
       }
@@ -3398,7 +3617,7 @@ Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sü
   "STW – SOG ilişkisi": {
     title: "STW – SOG İlişkisi",
     introduction:
-      "STW, geminin suya göre hızıdır; SOG ise geminin yere göre hızıdır. Akıntısız durumda STW ile SOG aynı kabul edilir; akıntılı durumda farklıdır.",
+      "Speed through water (STW) measures motion relative to the water; speed over ground (SOG) measures motion relative to the seabed. Current may make them differ. Add velocity vectors to find the ground motion; scalar addition or subtraction applies only when the vectors are collinear.",
     sections: [
       {
         title: "STW ve SOG Farkı",
@@ -3411,7 +3630,7 @@ Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyo
         content:
           "STW ile SOG arasındaki ilişki vektöreldir; bu nedenle basit çıkarma her durumda geçerli değildir. Yalnızca akıntı seti geminin suya göre rotasıyla aynı doğrultudaysa bir boyutlu yaklaşım kullanılabilir.",
         formula: {
-          text: "SOG = | Suya Göre Hız Vektörü + Akıntı Vektörü |",
+          text: "SOG = | Water Velocity Vector + Current Vector |",
           description: "SOG, bileşke vektörün büyüklüğüdür."
         }
       },
@@ -3449,7 +3668,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
         content:
           "Birinci tipte çözüm, vektörlerin toplanmasıdır. Suya göre vektör ve akıntı vektörü bileşenlere ayrılır, bileşenler toplanır.",
         formula: {
-          text: "Ntoplam = STW × cos(Heading) + Drift × cos(Set) | Etoplam = STW × sin(Heading) + Drift × sin(Set)",
+          text: "Ntotal = STW × cos(Heading) + Drift × cos(Set) | Etotal = STW × sin(Heading) + Drift × sin(Set)",
           description: "Ntoplam ve Etoplam, yer vektörünün bileşenleridir."
         }
       },
@@ -3458,7 +3677,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
         content:
           "Toplam bileşenlerden COG ve SOG geri hesaplanır. Yön, bileşenlerin işaretine göre belirlenir.",
         formula: {
-          text: "SOG = √(Ntoplam² + Etoplam²) | tan(COG) = Etoplam ÷ Ntoplam",
+          text: "SOG = √(Ntotal² + Etotal²) | tan(COG) = Etotal ÷ Ntotal",
           description: "Bileşenlerden büyüklük ve yön geri hesaplanır."
         }
       },
@@ -3467,7 +3686,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
         content:
           "İkinci tipte hedef COG doğrultusunda yer vektörü bilinmek istenir; ancak yer vektörünün büyüklüğü başlangıçta bilinmeyebilir. Grafik yöntemde, istenen COG doğrultusu çizilir ve akıntı vektörü buna göre çıkarılarak geminin suya göre vektörü bulunur. Sayısal yöntemde aynı mantık bileşenler üzerinden yürütülür.",
         formula: {
-          text: "Suya Göre Hız Vektörü = Yer Hız Vektörü − Akıntı Vektörü",
+          text: "Water Velocity Vector = Ground Velocity Vector − Current Vector",
           description: "İstenen yer vektöründen akıntı vektörü çıkarılır."
         }
       }
@@ -3501,7 +3720,7 @@ Bu üçgen, yalnızca bir çizim değil; yön ve büyüklük ilişkilerini aynı
         content:
           "Bu kimlik, akıntılı seyirde rota tutmanın özünü tek cümlede ifade eder: geminin suya göre hareketi, akıntının etkisiyle yer üzerinde başka bir harekete dönüşür; istenen yer hareketi için suya göre hareket, akıntıyı dengeleyecek şekilde seçilir.",
         formula: {
-          text: "COG/SOG kenarı = Heading/STW kenarı + Set/Drift kenarı",
+          text: "COG/SOG side = Heading/STW side + Set/Drift side",
           description: "Yer vektörü, suya göre vektör ile akıntı vektörünün toplamıdır."
         }
       }
@@ -7907,7 +8126,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
         content:
           "Zn doğrultusu çizilir; bunun LOP’un kendisi olmadığı özellikle vurgulanır. LOP, Zn’ye dik çizilir. Böylece azimutun görevi tamamlanır: Zn yalnızca yön referansı sağlar.",
         formula: {
-          text: "LOP doğrultusu = Zn ± 90°",
+          text: "LOP direction = Zn ± 90°",
           description: "LOP, azimut doğrultusuna dik çizilir."
         }
       },
@@ -8138,7 +8357,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
           "- **LHA = GHA ± λ**\n\n" +
           "Doğu boylamları eklenir, batı boylamları çıkarılır.",
         formula: {
-          text: "360° = 24 saat → 1 saat = 15° → 1 dakika = 15′ → 1 saniye = 15″ | LHA = GHA ± λ",
+          text: "360° = 24 h → 1 h = 15° → 1 min = 15′ → 1 s = 15″ | LHA = GHA ± λ",
           description: "Zaman–açı dönüşümleri ve saat açısı ilişkisi"
         }
       },
@@ -8280,7 +8499,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
         content:
           "In the fourth stage a line is drawn through the intercept point at right angles to the Zn direction. This line is the LOP. It represents every point where the ship could have been at the moment of the sight; the ship is somewhere on this line.",
         formula: {
-          text: "LOP doğrultusu = Zn ± 90°",
+          text: "LOP direction = Zn ± 90°",
           description: "Zn: gök cisminin azimut doğrultusu."
         }
       },
@@ -8430,7 +8649,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
         content:
           "Harita üzerinde AP işaretlenir. Zn doğrultusunda intercept mesafesi kadar ilerlenir (toward ise gök cismine doğru, away ise uzağa). Ulaşılan noktadan Zn'ye dik bir doğru çizilir. Bu doğru LOP'tur.",
         formula: {
-          text: "LOP doğrultusu = Zn ± 90°",
+          text: "LOP direction = Zn ± 90°",
           description: "LOP her zaman azimut doğrultusuna diktir."
         }
       },
@@ -8509,7 +8728,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
         content:
           "Kronometredeki zaman hatası, boylam hesabını doğrudan etkiler. Dünya dakikada 15′ açı döndüğünden, zaman hatası geometrik olarak boylam hatasına dönüşür. Bu ilişki, göksel seyirdeki en kritik hata kaynaklarından biridir.",
         formula: {
-          text: "Δλ = Δt × 15′/dakika",
+          text: "Δλ = Δt × 15′/minute",
           description: "4 saniye zaman hatası ≈ 1′ boylam hatası ≈ 1 NM (ekvatorda)"
         },
         bulletPoints: [
@@ -8541,7 +8760,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
           "**Paralaks**: Özellikle Ay gözlemlerinde ihmal edilemez"
         ],
         formula: {
-          text: "1′ yükseklik hatası ≈ 1 NM mevki hatası",
+          text: "1′ altitude error ≈ 1 NM position error",
           description: "Yükseklik ile mevki arasında doğrudan ilişki vardır."
         }
       },
@@ -8556,7 +8775,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
           "**Paralel LOP'lar**: Kesişim noktası belirsiz, pratik değeri yoktur"
         ],
         formula: {
-          text: "Dar açılı kesişim → Hata büyür | Dik açılı kesişim → Hata minimize",
+          text: "Narrow-angle cut → error grows | Right-angle cut → error minimised",
           description: "30° kesişimde hata yaklaşık 2 kat, 15° kesişimde hata yaklaşık 4 kat büyür."
         }
       },
@@ -8758,7 +8977,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
         content:
           "DLat, varış noktasının enlemi ile kalkış noktasının enlemi arasındaki farktır. Kuzeye gidildiğinde DLat pozitif (N), güneye gidildiğinde negatif (S) kabul edilir.",
         formula: {
-          text: "DLat = Varış Enlemi − Kalkış Enlemi",
+          text: "DLat = Arrival Latitude − Departure Latitude",
           description: "Sonuç dakika (') veya derece-dakika formatında ifade edilir."
         }
       },
@@ -8767,7 +8986,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
         content:
           "Düzlem seyirde DLat, seyredilen mesafe ve kursun kosinüsü çarpımı ile hesaplanır. Bu, seyir üçgeninin dikey bileşenidir.",
         formula: {
-          text: "DLat = Mesafe × cos(Kurs)",
+          text: "DLat = Distance × cos(Course)",
           description: "Mesafe deniz mili, kurs hakiki rota (°T) cinsindendir. Sonuç dakika olarak DLat'i verir."
         }
       },
@@ -8832,7 +9051,7 @@ DLat = 69.6' N (≈ 1° 09.6' N)
         content:
           "Akıntısız koşullarda ölü hesap, en basit formunda uygulanır. Son bilinen mevkiden itibaren rota ve hız kullanılarak belirli bir süre sonundaki mevki hesaplanır.",
         formula: {
-          text: "Mesafe = Hız × Zaman | DLat = D × cos(C) | Dep = D × sin(C)",
+          text: "Distance = Speed × Time | DLat = D × cos(C) | Dep = D × sin(C)",
           description: "Bu üç formül akıntısız DR hesabının temelini oluşturur."
         }
       },
@@ -8904,7 +9123,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
         content:
           "Manyetik kerteriz, bir hedefin manyetik kuzeye göre ölçülen açısal yönüdür. Manyetik pusula ile alınan ham okumalar manyetik sistemdedir. Hakiki kerterize dönüşüm için variation düzeltmesi gerekir.",
         formula: {
-          text: "Hakiki Kerteriz = Manyetik Kerteriz + Variation",
+          text: "True Bearing = Magnetic Bearing + Variation",
           description: "Variation doğu (+), batı (−) olarak uygulanır."
         },
         bulletPoints: [
@@ -8919,7 +9138,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
         content:
           "Pusula kerterizi, gemideki manyetik pusuladan doğrudan okunan değerdir. Bu değer hem variation hem de deviation (gemi manyetik sapması) içerir. Hakiki kerterize dönüşüm için her iki düzeltme de uygulanmalıdır.",
         formula: {
-          text: "Hakiki Kerteriz = Pusula Kerterizi + Variation + Deviation",
+          text: "True Bearing = Compass Bearing + Variation + Deviation",
           description: "Deviation, geminin rotasına göre değişen tablolardan okunur."
         }
       },
@@ -8928,7 +9147,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
         content:
           "Nispi kerteriz, bir hedefin geminin baş doğrultusuna (heading) göre ölçülen açısal konumudur. Saat yönünde 000° (tam baş) ile 360° arasında ifade edilir. Radar ve görsel gözlemlerde yaygın kullanılır.",
         formula: {
-          text: "Hakiki Kerteriz = Geminin Hakiki Rotası + Nispi Kerteriz",
+          text: "True Bearing = Ship's True Heading + Relative Bearing",
           description: "Sonuç 360°'yi aşarsa 360° çıkarılır."
         },
         bulletPoints: [
@@ -9048,7 +9267,7 @@ Kesişim noktası = Running Fix (10:30)
           "Four Point Fix: a=45°, 2a=90° özel durumu"
         ],
         formula: {
-          text: "Açı ikiye katlandığında: d₁ = d₂ (ikizkenar üçgen)",
+          text: "When the angle is doubled: d₁ = d₂ (isosceles triangle)",
           description: "d₁: alınan mesafe, d₂: hedefe mesafe"
         }
       },
@@ -9121,7 +9340,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Bir deniz mili, meridyen üzerinde 1′ (bir açı dakikası) yayın uzunluğu olarak tanımlanır (1 NM = 1852 m). Mercator projeksiyonunda enlem skalası enleme bağlı olarak gerilir; bu nedenle mesafe, ölçülecek bölgenin BULUNDUĞU enlemdeki skala parçasından okunmalıdır. Boylam skalası ise enlemle daralıp genişlediğinden mesafe için uygun değildir.",
         formula: {
-          text: "1′ enlem ≈ 1 deniz mili = 1852 m",
+          text: "1′ of latitude ≈ 1 nautical mile = 1852 m",
           description: "Mesafe daima yan kenardaki enlem skalasından, ölçülen bölgenin enleminde okunur."
         }
       },
@@ -9163,7 +9382,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Departure (doğu–batı kat edilen mesafe, deniz mili) ile boylam değişimi (DLong, açı dakikası) arasındaki bağıntı, ortalama enlemin kosinüsü üzerinden kurulur. Ekvatorda (enlem 0°) departure = DLong; enlem büyüdükçe aynı DLong için kat edilen departure küçülür.",
         formula: {
-          text: "Departure = DLong × cos(enlem)   →   DLong = Departure / cos(enlem_ort)",
+          text: "Departure = DLong × cos(lat)   →   DLong = Departure / cos(lat_mean)",
           description: "Departure deniz mili, DLong açı dakikası; orta enlem seyrinde ortalama enlem kullanılır."
         }
       },
@@ -9205,7 +9424,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Enlem farkı (DLat) ve boylam farkı (DLong) açı dakikası olarak bulunur. DLong, ortalama enlemde departure'a çevrilir. Kurs ve mesafe, DLat ile departure'dan dik üçgen bağıntılarıyla hesaplanır.",
         formula: {
-          text: "Departure = DLong × cos(Latort);  tan(Kurs) = Departure / DLat;  Mesafe = DLat / cos(Kurs)",
+          text: "Departure = DLong × cos(Latmean);  tan(Course) = Departure / DLat;  Distance = DLat / cos(Course)",
           description: "DLat ve DLong dakika; departure ve mesafe deniz mili."
         }
       },
@@ -9247,7 +9466,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Pusula ile alınan kerterizler, pusula hatası (variation + deviation) düzeltilerek HAKİKİ kerterize çevrilir; ardından haritada ilgili nirengiden çizilir. En az iki kerterizin kesişimi gemi mevkisini verir. Cayro pusula kullanılıyorsa cayro hatası düzeltilir.",
         formula: {
-          text: "Hakiki kerteriz = Pusula kerterizi + pusula hatası (E +, W −)",
+          text: "True bearing = Compass bearing + compass error (E +, W −)",
           description: "Çizimden önce tüm kerterizler hakiki değere çevrilir."
         }
       },
@@ -9300,7 +9519,7 @@ Kesişim noktası = Running Fix (10:30)
           "Fener belirme/kaybolma (dipping) mesafesi"
         ],
         formula: {
-          text: "Mesafe (NM) ≈ 1,856 × Yükseklik(m) / Düşey açı(dakika)",
+          text: "Distance (NM) ≈ 1.856 × Height (m) / Vertical angle (minutes)",
           description: "Bilinen yükseklikteki bir nesneye düşey sekstant açısından yaklaşık mesafe."
         }
       },
@@ -9404,7 +9623,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Bir loxodrom, küre üzerinde meridyenleri sabit açıyla kesen eğridir. Kutuplara yaklaştıkça spiralleşir ve eğer kutba ulaşmazsa kutup noktasını sonsuz kez dönerek sarar. Bu nedenle loxodrom, kutuplar dışında tam anlamıyla kapanmaz.\n\nMercator haritasında loxodromun düz çizgi olarak görünmesi, Mercator projeksiyonunun özellikle bu konformal (açı koruyan) özelliği için tasarlanmış olmasının sonucudur. Meridyenler Mercator haritasında dikey paralel çizgilerdir; dolayısıyla tüm meridyenlerle sabit açı yapan loxodrom, haritada bu dikey çizgilerle sabit açı yapan düz bir çizgiye dönüşür.",
         formula: {
-          text: "Dlox = Δλ · cos φm (yaklaşık, orta enlemde) | Gerçek hesap: Mercator sailing formülleri ile",
+          text: "Dep = Δλ · cos φm (approx., at mean latitude) | Exact: Mercator sailing formulae",
           description: "Loxodrom mesafesi, orta enlem yöntemiyle veya Mercator sailing formülleriyle hesaplanır"
         }
       },
@@ -9448,7 +9667,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "GPS alıcısı, her uydunun göndermekte olduğu sinyal ile alıcının kendi ürettiği kopya sinyal arasındaki zaman farkını ölçer. Bu zaman farkı, ışık hızıyla çarpılarak uyduya olan mesafe (pseudo-range) hesaplanır. 'Pseudo' (sözde) ifadesi, alıcı saatindeki hatanın mesafeye hata kattığına işaret eder.\n\nSaati tam senkronize olan bir alıcı, teorik olarak 3 uyduyla konumunu belirleyebilir (3 boyutlu trilateration). Ancak alıcı saati uydu atomik saatlerine göre hatalı olduğundan dördüncü bir uydu, saat hatasını matematiksel olarak ortadan kaldırmak için kullanılır. Böylece 4 uyduyla hem 3D konum (enlem, boylam, yükseklik) hem de kesin zaman elde edilir.",
         formula: {
-          text: "Pseudo-range = c × Δt | Gerçek mesafe = Pseudo-range − (saat hatası × c)",
+          text: "Pseudo-range = c × Δt | True range = Pseudo-range − (clock error × c)",
           description: "c = ışık hızı (≈ 3×10⁸ m/s), Δt = sinyal gecikmesi. Dördüncü uydu saat hatasını eliminate eder."
         }
       },
@@ -9484,7 +9703,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "GPS’te trilaterasyon uygulaması şöyle işler: her uydu kendi konumunu ve sinyal gönderim zamanını içeren bir mesaj yayımlar. Alıcı bu sinyali aldığında, sinyal gecikmesini (Δt) ışık hızıyla (c) çarparak uyduya olan sözde mesafeyi (pseudo-range) hesaplar. Bu sözde mesafe, küre yüzeyini tanımlar ve alıcının bu küre üzerinde bir yerde bulunduğunu gösterir. 3 uyduyla elde edilen 3 kürenin kesişimi teorik olarak iki nokta verir; yeryüzü dışındaki nokta otomatik elenir ve 3D konum elde edilir.\n\nAncak gerçekte 4 uydu zorunludur. Bunun nedeni alıcı saatinin uydu atomik saatleri kadar hassas olmayışıdır. Alıcı saat hatası (dtr), her ölçüme eşit miktarda hata katar. Dördüncü uyduyla 4 denklemden oluşan bir sistem kurulur ve hem 3D konum (x, y, z) hem de saat hatası (dtr) bilinmeyeni birlikte çözülür.",
         formula: {
-          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 uydu",
+          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 satellites",
           description: "Her uydu için bir denklem; 4 denklem 4 bilinmeyeni (x, y, z, dtr) çözer"
         }
       },
@@ -9518,7 +9737,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "HDOP değeri, görünen uydular için kurulan tasarım matrisi (H matrisi) aracılığıyla hesaplanır. Matematiksel detaylar yerine fiziksel yorumu şöyle özetlenebilir: uydular yatay düzlemde gökyüzüne homojen biçimde dağılmışsa ve birbirlerine göre geniş açılar yapıyorsa, her ölçüm farklı bir yönden 'kısıt' getirir ve yatay konum güçlü şekilde belirlenir. Uydular bir grupta kümelenmişse, birbiriyle benzer yönlerden gelen bilgi tekrar eder ve yatay konum belirsizleşir.\n\nÖrneğin, dört uydudan biri tam tepede (zenit), diğerleri kuzey, doğu ve batı ufkuna yakın dağılmışsa HDOP mükemele yakın olacaktır. Öte yandan tüm uydular güney ufku yakınında kümelenmişse HDOP çok yüksek olacak ve yatay konum büyük hata içerecektir.",
         formula: {
-          text: "σyatay = HDOP × σölçüm",
+          text: "σhorizontal = HDOP × σmeasurement",
           description: "σyatay = yatay konum standart sapması; σölçüm = pseudorange ölçüm standart sapması"
         }
       },
@@ -9588,7 +9807,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Radar anteni kısa süreli güçlü elektromanyetik darbeler (pulse) gönderir ve ardından kısa bir süre dinleme (reception) moduna geçer. Bu gönderme–dinleme döngüsü saniyede yüzlerce kez tekrarlanır. Gönderilen darbenin bir hedefe çarpıp geri dönmesi için geçen süre (two-way travel time, t) ölçülerek hedefe olan mesafe hesaplanır.\n\nElektromanyetik dalgalar ışık hızıyla (c ≈ 3×10⁸ m/s) yayıldığından, mesafe R = c × t / 2 formülüyle doğrudan hesaplanır. Bölü 2 ifadesi, darbeın hedefe gidip gelmesi gereken toplam yolu ikiye böler. Anten aynı anda hem gönderici hem alıcı olamayacağından, gönderme sonrasında çok kısa bir süre var olan 'kör bölge' (minimum range), anten yakınındaki hedeflerin tespitini engeller.",
         formula: {
-          text: "R = c × t / 2 | c = 3×10⁸ m/s, t = iki yönlü sinyal süresi",
+          text: "R = c × t / 2 | c = 3×10⁸ m/s, t = two-way signal time",
           description: "Mesafe, sinyalin hedefe gidip-gelme süresinin yarısı ve ışık hızının çarpımıdır"
         }
       },
@@ -9808,7 +10027,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "ETA hesabının temeli basittir: ETA = Kalkış Zamanı + (Kalan Mesafe / Ortalama SOG). Ancak pratikte bu hesap birçok düzeltme gerektirir. Tailwind ve favourable current SOG’u artırırken, headwind ve adverse current azaltır. Yüksek dalga ve ağır hava hız düşüşü ve dolayısıyla ETA gecikmesi yaratır.\n\nLiman yaklaşma süreci: kılavuz bekleme süresi, bölge geçiş hız kısıtlamaları, TSS içindeki rota uzaması ve demirde bekleme ihtimali ETA’ya eklenmesi gereken tampon süreleri oluşturur. Tidal window bazı limanlarda giriş için belirli gelgit zamanı gerektirir; bu pencere ETA’nın en kritik kısıtı olabilir.",
         formula: {
-          text: "ETA = ETD + (D / SOGort) + Kılavuz bekleme + TSS gecikmesi",
+          text: "ETA = ETD + (D / SOGavg) + Pilot waiting + TSS delay",
           description: "ETD = kalkış zamanı, D = toplam mesafe, SOG = ortalama zemin hızı. Tampon süreler eklenmeli."
         }
       },
@@ -9843,7 +10062,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Bir geminin dönüş davranışı birkaç temel parametreyle tanımlanır. Advance (ilerleme): dönüş emri verildiği andan, geminin yeni başlıktan 90° dönmesine kadar geçen sürede orijinal rota yönünde kat edilen mesafe. Transfer: aynı aşamada orijinal rota çizgisinin enine geçilen mesafe. Tactical Diameter: 180° dönüş tamamlandığında orijinal rota çizgisinden enine uzaklık – bu değer genellikle dönüş için kritik meydan gereksinimini belirler.\n\nWaypoint alternatifi olan Steady Turning Radius (sabit dönüş yarıçapı): gemi tam dönüş tamamlandığında izlediği dairesel yayın yarıçapı. Tactical diameter, genellikle steady turning radius'un iki katına yakındır. Gemi manevralar kitapçığında (ship's manoeuvring booklet) bu değerler farklı hız ve dümen açısı için tablo olarak verilir.",
         formula: {
-          text: "Wheel-over point mesafesi ≈ Advance | Güvenli mesafe = Turn Radius + emniyet payı",
+          text: "Wheel-over point distance ≈ Advance | Safe distance = Turn Radius + safety margin",
           description: "Wheel-over point, waypoint'ten önceki başlık değişikliği noktasıdır; advance mesafesi kadar öne alınır"
         }
       },
@@ -9981,7 +10200,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Harita üzerindeki derinlik değerleri (sounding), daima seçilen datuma göre ölçülmüştür. Gerçek anlık su derinliği hesabı şu formülle yapılır:\n\nGerçek Derinlik = Chart sounding (harita derinliği) + Height of Tide (gelgit yüksekliği)\n\nGelgit yüksekliği (height of tide), ilgili andaki su seviyesinin datumun kaç metre üzerinde olduğunu ifade eder. LAT datum kullanılıyorsa, gelgit yüksekliği daima pozitiftir veya sıfırdır (çünkü LAT en düşük düzeydir). Eğer gerçek su seviyesi LAT’ın altına düşmüş olsaydı, gelgit yüksekliği negatif olurdu; bu olağandışı bir durumdur.",
         formula: {
-          text: "Gerçek derinlik = Harita derinliği (sounding) + Gelgit yüksekliği (height of tide)",
+          text: "Actual depth = Charted depth (sounding) + Height of tide",
           description: "UKC hesabı: Gerçek derinlik − Gemi drafı − Squat − Hava kabarması payı = UKC"
         },
         bulletPoints: [
@@ -10016,7 +10235,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Çoğu küçük liman, tidal table yayınlarında doğrudan yer almaz; bunun yerine bir standart referans limana bağlı ikincil liman olarak listelenir. İkincil liman bölümünde şu düzeltmeler verilir: Zaman farkı (Time Differences): HW ve LW için standart limana göre +/− dakika farkı. Yükseklik faktörü (Height Differences veya Factors): bazı yayınlarda fark olarak (metre), bazılarında çarpan olarak (oran) verilir.\n\nUygulama: Standart limanın tablosundan HW zamanı ve yüksekliğini oku → Zaman farkını ekle/çıkar → Yükseklik düzeltmesini uygula → İkincil liman için HW zamanı ve yüksekliğini bul. Aynı işlem LW için tekrar edilir.",
         formula: {
-          text: "İkincil HW zamanı = Standart HW zamanı + Zaman farkı (HW) | İkincil HW yüksekliği = Standart HW yüksekliği × Faktör (veya + Fark)",
+          text: "Secondary HW time = Standard HW time + Time difference (HW) | Secondary HW height = Standard HW height × Factor (or + Difference)",
           description: "Standart ATT yöntemine göre; bazı tablolarda interpolasyon gerekebilir"
         },
         bulletPoints: [
@@ -10046,7 +10265,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "12’ler kuralı, altı saatlik standart gelgit döngüsü boyunca su yüksekliğinin nasıl değiştiğini oran olarak yaklaşık biçimde ifade eder. Gelgit, ilk saatte Range’in 1/12’si kadar değişir; ikinci saatte 2/12; üçüncü saatte 3/12; dördüncü saatte 3/12; beşinci saatte 2/12; altıncı saatte 1/12. Toplam 12/12 = tam range, yani HW’den LW’ye veya LW’den HW’ye geçiş tamamlanmış olur.\n\nUygulama: Tablo → LW yüksekliği 0.8 m, HW yüksekliği 5.6 m, Range = 4.8 m. LW zamanından 2 saat sonraki height of tide = LW + (1/12 + 2/12) × Range = 0.8 + (3/12 × 4.8) = 0.8 + 1.2 = 2.0 m.",
         formula: {
-          text: "Birikimli değişim: 1st hr 1/12 | 2nd hr 3/12 | 3rd hr 6/12 | 4th hr 9/12 | 5th hr 11/12 | 6th hr 12/12",
+          text: "Cumulative change: 1st hr 1/12 | 2nd hr 3/12 | 3rd hr 6/12 | 4th hr 9/12 | 5th hr 11/12 | 6th hr 12/12",
           description: "Birikimli oranlar: LW’den itibaren hesaplama yapılıyorsa bu oranlar eklenerek height of tide bulunur"
         }
       },
@@ -10081,7 +10300,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Adım 1: Tablondan LW ve HW zamanları ile yüksekliklerini oku. Adım 2: Range = HW − LW hesapla. Adım 3: Range’i 12’ye böl → 1 birim değeri bul. Adım 4: Hedef zamanın LW (veya HW) üzerinden kaçıncı saat olduğunu belirle. Adım 5: Birikimli oranı uygula: 1. saat +1/12; 2. saat kümülatif +3/12; 3. saat kümülatif +6/12; 4. saat kümülatif +9/12; 5. saat kümülatif +11/12; 6. saat kümülatif +12/12.\n\nÖrnek: LW = 0.6 m, HW = 5.4 m, Range = 4.8 m. LW’den 3 saat sonraki height of tide = 0.6 + (6/12 × 4.8) = 0.6 + 2.4 = 3.0 m. LW’den 4 saat sonraki height of tide = 0.6 + (9/12 × 4.8) = 0.6 + 3.6 = 4.2 m.",
         formula: {
-          text: "Kümülatif: 1h → 1/12 | 2h → 3/12 | 3h → 6/12 | 4h → 9/12 | 5h → 11/12 | 6h → 12/12",
+          text: "Cumulative: 1h → 1/12 | 2h → 3/12 | 3h → 6/12 | 4h → 9/12 | 5h → 11/12 | 6h → 12/12",
           description: "Height of tide = LW yüksekliği + (Kümülatif oran × Range)"
         }
       },
@@ -10182,7 +10401,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Seyir hesaplarında set ve drift, gemi hız vektörüne (STW ve heading) eklenerek gerçek zemin hareketi (COG ve SOG) elde edilir. Bu vektör toplamı, üç farklı bileşeni kapsar: gemi hız vektörü (heading ve STW), akıntı vektörü (set ve drift), ve sonuç vektörü (COG ve SOG).\n\nÖrnek: Gemi heading 270° (gerçek), STW 12 knot. Akıntı set 180° (güneye gidiyor), drift 2 knot. Vektörel toplam: batıya giden gemi aynı zamanda 2 knot güneye sürükleniyor; COG yaklaşık 264° ve SOG yaklaşık 12.2 knot olur. Bu hesap grafiksel olarak vektör üçgeni çizilerek ya da trigonometrik bileşen yöntemiyle analitik olarak yapılabilir.",
         formula: {
-          text: "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG trigonometrik hesap",
+          text: "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG by trigonometry",
           description: "Vektör toplamı: gemi hız vektörü + akıntı vektörü = COG/SOG vektörü"
         }
       },
@@ -10217,7 +10436,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Bir UKC hesabının tam doğruluğu için şu bileşenler göz önüne alınmalıdır:\n\n(1) Harita derinliği (chart sounding): datum’a göre haritadaki değer.\n(2) Gelgit yüksekliği (height of tide): hesaplama anında suyun datumdan yüksekliği.\n(3) Gemi draftı: genellikle orta kesitteki maksimum; trim düzeltmesi gerekebilir.\n(4) Squat: hızdan kaynaklanan dinamik batma – ilerleyen bölümde ayrıntılı ele alınır.\n(5) Hava kabarması (wave allowance veya swell allowance): özellikle açık denizde swell etkisiyle gemi hareket eder; bu hareket anlık draftı artırır.\n(6) Balast ve akıntı değişkeni: transit sırasında balast veya yakıt tüketimi draftı değiştirebilir.",
         formula: {
-          text: "UKC = (Harita derinliği + Gelgit yüksekliği) − (Draft + Squat + Hava kabarması payı)",
+          text: "UKC = (Charted depth + Height of tide) − (Draft + Squat + Swell allowance)",
           description: "Tüm değerler metre cinsinden; sonuç ≥ minimum UKC politikası olmalıdır"
         }
       },
@@ -10252,7 +10471,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Adım 1: Minimum su derinliği (MSD) hesapla. MSD = Draft + Squat + Hava payı + Min. UKC. Adım 2: Gereken minimum gelgit yüksekliği (MHoT) bul. MHoT = MSD − Chart derinliği. Adım 3: Tidal table’dan o gün için HW/LW zamanları ve yüksekliklerini oku. Adım 4: 12’ler kuralı veya tidal curve kullanarak MHoT’nin kaçıncı saatte aşıldığını ve kaçıncı saatte yeniden bu değerin altına düştüğünü hesapla. Bu iki zaman arasındaki süre tidal window’dur.\n\nÖrnek: Kanal sounding 8.0 m, Draft 7.5 m, Squat 0.2 m, Min. UKC 0.5 m, Hava payı 0.2 m. MSD = 8.4 m. MHoT = 8.4 − 8.0 = 0.4 m. Bugün LW = 0.2 m, HW = 5.2 m, gelgit period ≈ 6 saat. LW’den başlayarak 12’ler kuralıyla MHoT = 0.4 m ne zaman aşılıyor? LW + 0.4 m = 1. saatin hemen başında. HW’den sonra aynı değere ne zaman dönüyor? Simetriden ≈ LW+5 saat. Tidal window ≈ 5 saatlik bir aralıktır.",
         formula: {
-          text: "MHoT = MSD − Chart sounding = (Draft + Squat + Hava payı + Min.UKC) − Chart sounding",
+          text: "MHoT = MSD − Chart sounding = (Draft + Squat + Swell allowance + Min. UKC) − Chart sounding",
           description: "MHoT = tidal window’u açan minimum gelgit yüksekliği"
         }
       },
@@ -10349,7 +10568,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Pratik denizcilik uygulamalarında leeway açısı şu yollarla tahmin edilir:\n\n(1) Gemi manevralar belgesi veya deneysel tablo: bazı gemilerin manevralar kitapçığında veya safety management sisteminde belirli rüzgâr hızları ve yükleme durumları için leeway açısı değerleri bulunabilir. Bu değerler gemi özgüdür.\n\n(2) GPS COG ve gyro heading karşılaştırması: En pratik ve gerçek zamanlı yöntem. Gemi sabit bir heading'de ve sabit hızda yol alırken GPS COG ile gyro heading arasındaki fark, akıntı ve rüzgâr toplamının etkisini verir. Akıntı biliniyorsa leeway bileşeni ayrıştırılabilir.\n\n(3) Beaufort skalası tabanlı tahmin: bazı pratik rehberlerde rüzgâr kuvvetine ve gemi tipine göre yaklaşık leeway açıları verilir; örneğin 10°–15° beam wind ile tam ballast bir büyük tanker için 5°–8° leeway.",
         formula: {
-          text: "Leeway açısı ≈ COG − Heading (akıntı etkisi sıfır veya biliniyorsa düzeltilmiş)",
+          text: "Leeway angle ≈ COG − Heading (no current, or corrected for known current)",
           description: "Pozitif fark: sancak leeway (sancağa kayma); negatif fark: iskele tarafı leeway"
         }
       },
@@ -10663,7 +10882,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Squat hesabı için birçok ampirik formül geliştirilmiştir. Barras formülü, denizcilik sektöründe en yaygın kullanılan yöntemdir:\n\nS = Cb × V² / 100\n\nBurada S = squat (metre), Cb = block katsayısı (geminin doluluk oranı; tipik olarak bulk carrier ve tanker için 0.75–0.85, konteyner gemisi için 0.60–0.70), V = geminin hızı (knot cinsinden). Bu formül, açık sular için geçerlidir; kanallarda düzeltme faktörü uygulanır.\n\nÖrnek: Cb = 0.80, V = 8 knot → S = 0.80 × 64 / 100 = 0.51 metre. Gemi hızını 10 knot'a çıkarırsa squat = 0.80 × 100 / 100 = 0.80 metre. Hız %25 arttığında squat %57 artar – hızın karesel etkisi çok belirgindir.",
         formula: {
-          text: "S = Cb × V² / 100 (Barras formülü, açık su) | Kanal içi: Skanal = S × (1 + As/Ac)",
+          text: "S = Cb × V² / 100 (Barrass formula, open water) | In channel: Schannel = S × (1 + As/Ac)",
           description: "Cb = block katsayısı; V = hız (knot); As = gemi kesit alanı; Ac = kanal kesit alanı"
         }
       },
@@ -10722,7 +10941,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "BRM’de karar alma, tek kişinin sezgisine değil yapılandırılmış süreçlere dayanır. Özellikle manevra kararlarında FORDEC modeli (Facts, Options, Risks/benefits, Decision, Execution, Check) veya benzer yapılı çerçeveler kullanılır. Ekip üyelerinin ‘soru sormaktan çekinmeme’ kültürü, hataların erken yakalanmasını sağlar. Hata yönetiminde ‘tuzak-hata-sonuç’ modeli (Threat and Error Management, TEM) benimsenir: önce tehdit tespit edilir, hata oluşmadan önlenmez ise hatanın sonucu yönetilir. BRM eğitimlerinde simülatör senaryoları kullanılarak ekiplerin baskı altında iletişim kalitesi ve karar süreçleri değerlendirilir. STCW’nin A-VIII bölümü, köprüüstü vardiya tutma standartlarını, navigasyon donanımının kullanımını ve emniyetli gemi yönetimini yasal çerçevede tanımlar.",
         formula: {
-          text: "TEM Modeli: Tehdit → Hata → Sonuç yönetimi",
+          text: "TEM Model: Threat → Error → Undesired-state management",
           description: "Tehdit: dış risk faktörleri (hava, trafik, ekipman arızası) | Hata: insan davranışı sapması | Sonuç: emniyetsiz durumun önlenmesi"
         }
       },
@@ -10782,7 +11001,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "PSC denetiminde köprüüstü prosedürleri; vardiya tutma standartları, seyir donanımı kullanım talimatları ve acil durum prosedürlerini kapsar. STCW Bölüm VIII/2 kapsamında güvenli vardiya tutma ilkeleri, söz konusu seyrin özelliklerine göre uyarlanmış köprüüstü prosedürlerine yansıtılmış olmalıdır. Müfettiş köprüüstü log defterini, radar ve ARPA kayıtlarını ve GMDSS log defterini inceleyebilir. Bridge Procedures Guide (ICS, 5. Baskı) referans alınarak hazırlanan Ship Specific Operations Manual, müfettişe prosedürlerin sistematik şekilde belgelendiğini gösterir. Ayrıca SOLAS Bölüm II-1/49 kapsamında köprüüstünden iletişim sistemi testi — bridge-to-emergency generator communication — ile SOLAS V/26 kapsamında pilot transfer düzenlemelerinin hazırlığı da kontrol edilebilir.",
         formula: {
-          text: "PSC Risk Skoru = f(Bayrak, Sınıflandırma, Önceki Detention, Yaş, Tip)",
+          text: "PSC Risk Score = f(Flag, Class, Previous detentions, Age, Type)",
           description: "Paris MOU concentrated inspection kampanyaları belirli ekipman veya prosedür konusuna odaklanır; güncel kampanya konusu başlık sefer öncesinde araştırılmalıdır"
         }
       },
@@ -10842,7 +11061,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Kural 2, COLREG'in 'istisnai koşullara kapı açan' maddesidir: sözleşmenin diğer hiçbir hükmünün ihmalden doğan sonuçları ortadan kaldırmadığını ve olağandışı tehlikeyi önlemek için kurallardan sapmanın gerekebileceğini açıkça kabul eder. Bu madde aynı zamanda kurallara körü körüne uymak yerine durumu bütünüyle değerlendiren, yargılayan bir kaptan profilini öngörür. COLREG kuralları belirli durumlar için (crossing, head-on, overtaking) net talimatlar verse de açık denizde bütün senaryoları öngörmek mümkün değildir; Kural 2 bu boşluğu kapatır. Uygulamada 'iyi denizcilik uygulamaları' kavramı mahkeme kararlarında yaygın biçimde kullanılır: makul bir kaptan bu koşullarda ne yapardı? Bu standardın içselleştirilmesi, kuralları ezberlemekten çok daha kalıcı bir mesleki yetkinlik sağlar.",
         formula: {
-          text: "Risk Değerlendirmesi: ΔBearing ≈ 0 + ΔRange azalıyor → Çatışma riski VAR",
+          text: "Risk assessment: ΔBearing ≈ 0 + range decreasing → risk of collision EXISTS",
           description: "Bearing = pusula yönü (°); CPA → 0'a yaklaşırsa risk kritik; TCPA = süre (dk); erken manevra için TCPA > 15–20 dk iken harekete geçmek standart uygulamadır"
         }
       },
@@ -10977,7 +11196,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Stand-on gemisi Kural 17(a)(i) kapsamında rota ve hızını korumalıdır. Kural 17(a)(ii), stand-on gemisinin kendi manevrası sonucunda çatışmayı önleyemeyeceği anlaşılırsa harekete geçebileceğini söyler. Kural 17(b) ise çatışma kaçınılmaz hale geldiğinde stand-on gemisine en etkili manevrayı yapma zorunluluğu getirir. Bu hiyerarşik yapı kritiktir: stand-on gemisi erkenden müdahale ederek give-way gemisinin manevralarını karıştırmamalı; ancak son an geldiğinde çatışmayı önlemek için harekete geçmelidir. Mahkemeler, her iki geminin de kusurlu bulunduğu pek çok çatışma davasında stand-on gemisinin Kural 17 kapsamındaki gecikmiş eylemsizliğini de sorumluluk faktörü olarak değerlendirmiştir.",
         formula: {
-          text: "Crossing Riski: Sabit Bearing (°) + Azalan Range (nm) + Sancak Tarafı → Give-way gemisi belirlenir",
+          text: "Crossing risk: Steady bearing (°) + Decreasing range (nm) + on own starboard side → give-way vessel identified",
           description: "Give-way gemisi: diğerini sancağında gören | Stand-on gemisi: diğerini iskele tarafında gören — Kural 17 kapsamında rota/hız korur"
         }
       }
@@ -11025,7 +11244,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Pratikte head-on ile crossing arasındaki sınır her zaman net değildir. Kural 14(c)'nin 'şüphe halinde head-on varsay' ilkesi bu gri alanı yönetmek içindir. ARPA'da iki geminin birbirine 170–180° üzerinde yaklaştığı görülüyorsa head-on; 90–135° üzerinde yaklaşıyorsa crossing; arası için dikkatli analiz gerekir. Sınır senaryolarında her iki kuralın uygulanması — head-on kapsamında her ikisi sancağa, crossing kapsamında give-way sancağa — farklı manevralar doğuracak ve iki gemi aynı yönde dönerse crossing manevrası oluşacaktır. Bu belirsizlik, ARPA kullanımı ve erken sabit bearing takibini zorunlu kılar.",
         formula: {
-          text: "Head-on Koşulu: Relative Bearing ≈ 180° ± ~10° → Her iki gemi sancağa döner",
+          text: "Head-on situation: reciprocal or nearly reciprocal courses → each vessel alters course to starboard",
           description: "Relative bearing = karşı geminin pusula yönü; 180°'ye yakın ise head-on, 90–135° arası ise crossing senaryosu; şüphe halinde head-on varsayılır (Kural 14c)"
         }
       }
@@ -11073,7 +11292,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Kural 9 (Dar Kanallar), overtaking senaryosunu kısıtlayan ek düzenlemeler içerir. Dar kanallarda geçme manevrası yalnızca güvenli ve pratik olduğunda yapılabilir; geçilen geminin de manevra için yeterli alan açması gerekmektedir. Bu durum, overtaking gemisinin Kural 9(e)(i) uyarınca ses sinyali vermesini — 2 uzun 1 kısa — ve geçilen geminin onay vermesini — 2 uzun 2 kısa — zorunlu kılar. Geçilen gemi itiraz edebilir: 5 kısa hızlı düdük tehlike veya şüphe sinyali olarak kullanılır. Pilot alınan sularda pilot, overtaking kararını limancı otoritesi kuralları ve kanal trafik düzenlemeleri çerçevesinde verir; ancak sorumluluk yasal olarak hâlâ kaptana aittir.",
         formula: {
-          text: "Overtaking Tanımı: Kemere hattının 22.5°’den daha gerisinden (kıç fenerinin 135° yayı içinden) yaklaşma → Overtaking durumu",
+          text: "Overtaking: approaching from more than 22.5° abaft the beam (within the 135° sternlight arc) → overtaking vessel",
           description: "22.5° kıç-omuz hattı, yan fenerlerin (her biri 112.5°) bittiği ve yalnızca kıç fenerinin (135°) görüldüğü sınırdır; bu hattın gerisinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir"
         }
       }
@@ -11121,7 +11340,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Kısıtlı görüşte ARPA, çatışma riskini belirlemenin birincil aracıdır. Her hedefin CPA ve TCPA değerleri izlenmeli; hedefler arasında öncelik sıralaması yapılmalıdır. Kural 19(d)(i)'nin 'iskele tarafına dönme' kısıtlaması, ARPA'da hangi yönden yaklaştığı belli olduğunda uygulanır: baş omuzdan gelen hedef için sancağa ya da hız azaltma tercih edilmelidir. 'Seçici manevra' (selective avoidance) prensibi: ARPA'da birden fazla hedef olduğunda, en yakın ve en tehlikeli hedefe yönelik manevra diğerlerine zarar vermemelidir. Simülatör eğitimlerinde sıklıkla sis senaryoları uygulanır; öğrencilerden çoklu hedeflerde doğru CPA/TCPA analizi ve Kural 19'a uygun manevra kararı beklenir.",
         formula: {
-          text: "Sis Güvenli Hızı: Vsis ≤ (Rradar × 60) / T_stop_dk",
+          text: "Safe speed in fog: Vfog ≤ (Rradar × 60) / T_stop_min",
           description: "Rradar = kullanılan radar menzili (nm); Tstop = tam durdurma süresi (dk); geminin tam durdurma mesafesi radar menzilin yarısını geçmemeli kuralı pratikte kullanılır"
         }
       },
@@ -11463,7 +11682,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Düzinelerce deniz kazası soruşturma raporu incelendiğinde şu ortak faktörler öne çıkmaktadır: (1) Kural 5 ihlali — yetersiz veya dikkatssiz gözcülük; (2) geç ve yetersiz manevra — Kural 8'in erken ve belirgin manevra ilkesinin uygulanmaması; (3) VHF bağımlılığı — COLREG kuralları uygulanmadan önce VHF üzerinden anlaşmaya çalışılması; (4) otorite gradyanı — ast personelin uyarılarını bildirememesi; (5) aşırı güven — teknoloji (ARPA, AIS) insan gözcülüğünün yerini tutamaz. EMSA ve MAIB istatistikleri, tüm deniz kazalarının %80'inden fazlasında insan hatasının birincil veya katkıda bulunan faktör olduğunu tutarlı biçimde göstermektedir.",
         formula: {
-          text: "Kaza Zinciri: Latent Failure → Active Failure → Savunma Katmanı Çöküşü → Kaza",
+          text: "Accident chain: Latent Failure → Active Failure → Defence layer breach → Accident",
           description: "Reason'ın İsviçre Peyniri Modeli: her savunma katmanı (prosedür, ekipman, eğitim, denetim) deliklere sahiptir; delikler hizalandığında kaza meydana gelir"
         }
       }
@@ -11511,7 +11730,7 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "İhlal analizi, kazaya katkıda bulunan her aktörün hangi yasal veya prosedürel yükümlülüğü yerine getirmediğini belirler. COLREG ihlalleri — Kural 5, 6, 7, 8, 13, 14, 15 veya 19 — en sık karşılaşılan kategorilerdir. SOLAS ihlalleri; yetersiz yaşam kurtarma ekipmanı, donanım bakım yetersizliği. STCW ihlalleri; niteliksiz personel, dinlenme süreleri ihlali. ISM ihlalleri; SMS prosedürlerine uyumsuzluk, risk değerlendirmesinin yapılmaması. İhlal analizi aynı zamanda 'contributing factors' (katkıda bulunan faktörler) kavramını kapsar: doğrudan ihlal eden kişinin ötesinde sistemi zayıflatan faktörler nelerdir?",
         formula: {
-          text: "İhlal Kategorileri: COLREG Kural X + SOLAS Bölüm Y + STCW Kural Z + ISM Non-Conformity",
+          text: "Breach categories: COLREG Rule X + SOLAS Chapter Y + STCW Regulation Z + ISM Non-Conformity",
           description: "Her ihlal için: kural maddesi — yükümlülüğün içeriği — ihlal biçimi — katkıda bulunan faktörler; çoklu ihlal katmanları analiz edilir"
         }
       },
@@ -11621,7 +11840,7 @@ Kesişim noktası = Running Fix (10:30)
         imageAlt: "Echo sounder display showing the depth beneath the keel",
         content: "Gemi dibindeki bir transdüser (transducer) kısa bir akustik darbe gönderir; ses dalgası deniz dibinden yansıyarak geri döner. Cihaz, gidiş-dönüş süresini ölçer ve deniz suyundaki ses hızını (yaklaşık 1500 m/s) kullanarak derinliği hesaplar.",
         formula: {
-          text: "Derinlik = (Ses hızı × Geçen süre) / 2",
+          text: "Depth = (Speed of sound × Elapsed time) / 2",
           description: "Süre gidiş-dönüş olduğu için ikiye bölünür. Deniz suyunda ses hızı ~1500 m/s.",
         },
       },
@@ -11728,7 +11947,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "Kaloma (Scope) ve Tutma",
         content: "Demirin tutması büyük ölçüde zincirin deniz dibine YATAY bir çekme uygulamasına bağlıdır. Bu nedenle verilen zincir uzunluğu (kaloma), su derinliğinin birkaç katı olmalıdır. İyi havada tipik kural su derinliğinin yaklaşık 5-6 katı zincir; kötü havada daha fazla (7+ kat) verilir. Zincirin ağırlığı (catenary) çekmeyi yatay tutar ve tutma gücünü artırır.",
         formula: {
-          text: "Kaloma ≈ 5-6 × su derinliği (iyi hava), 7+ × (kötü hava)",
+          text: "Scope ≈ 5–6 × water depth (good weather), 7+ × (bad weather)",
           description: "Zincirin dibe yatay çekme uygulaması tutmayı sağlar; sığ açıda tutma artar.",
         },
       },
@@ -11736,7 +11955,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "Salınım Dairesi (Swinging Circle)",
         content: "Demirli gemi, rüzgâr ve akıntıyla demir etrafında döner. Salınım dairesinin yarıçapı, demirin konumundan gemi kıçına kadar olan mesafedir: yaklaşık verilen zincir uzunluğunun yatay izdüşümü artı geminin boyu (LOA). Demir yeri seçilirken bu daire içinde sığlık, başka gemi veya tehlike bulunmamalıdır.",
         formula: {
-          text: "Salınım yarıçapı ≈ (yatay zincir mesafesi) + LOA",
+          text: "Swinging radius ≈ (horizontal chain distance) + LOA",
           description: "Daire içine sığlık, diğer gemiler ve engeller girmemelidir.",
         },
       },

@@ -405,17 +405,95 @@
  "MHWS": {
   "en": "MHWS"
  },
- "C (roll coefficient)": {
-  "en": "C (roll coefficient)"
+ "All resources": {
+  "en": "All resources"
  },
- "Damaged Area (m²)": {
-  "en": "Damaged Area (m²)"
+ "Engine Library": {
+  "en": "Engine Library"
  },
- "Damaged Stability": {
-  "en": "Damaged Stability"
+ "Fix time": {
+  "en": "Fix time"
  },
- "Despatch calculation": {
-  "en": "Despatch calculation"
+ "Inspections": {
+  "en": "Inspections"
+ },
+ "Knot Tutorials": {
+  "en": "Knot Tutorials"
+ },
+ "Lessons": {
+  "en": "Lessons"
+ },
+ "Library — Mariner's Book": {
+  "en": "Library — Mariner's Book"
+ },
+ "Loading article…": {
+  "en": "Loading article…"
+ },
+ "Practice": {
+  "en": "Practice"
+ },
+ "PSC / SIRE Checklist": {
+  "en": "PSC / SIRE Checklist"
+ },
+ "Saved": {
+  "en": "Saved"
+ },
+ "Seamanship Skills": {
+  "en": "Seamanship Skills"
+ },
+ "Search all resources": {
+  "en": "Search all resources"
+ },
+ "Ship & Crew": {
+  "en": "Ship & Crew"
+ },
+ "Tap the bookmark at the top of any lesson or exercise to keep it here.": {
+  "en": "Tap the bookmark at the top of any lesson or exercise to keep it here."
+ },
+ "The article cannot be loaded right now. Try again later.": {
+  "en": "The article cannot be loaded right now. Try again later."
+ },
+ "The full article could not be loaded; showing the summary.": {
+  "en": "The full article could not be loaded; showing the summary."
+ },
+ "Completing sign-in…": {
+  "en": "Completing sign-in…"
+ },
+ "Google blocks sign-in inside in-app browsers. Open this page in Chrome or Safari, or sign in with your email below.": {
+  "en": "Google blocks sign-in inside in-app browsers. Open this page in Chrome or Safari, or sign in with your email below."
+ },
+ "Google sign-in cannot run inside this preview. It opens in a new browser tab.": {
+  "en": "Google sign-in cannot run inside this preview. It opens in a new browser tab."
+ },
+ "Number of tubes": {
+  "en": "Number of tubes"
+ },
+ "The login link has been sent to your email. Open it on this device and you will be signed in automatically.": {
+  "en": "The login link has been sent to your email. Open it on this device and you will be signed in automatically."
+ },
+ "Where: W = load weight, h_hook = hook height, h_load = load height, Δ = displacement": {
+  "en": "Where: W = load weight, h_hook = hook height, h_load = load height, Δ = displacement"
+ },
+ "Rule of Twelfths:\nHour 1: 1/12 · TR\nHour 2: 2/12 · TR\nHour 3: 3/12 · TR\nHour 4: 3/12 · TR\nHour 5: 2/12 · TR\nHour 6: 1/12 · TR\n\nHeight of Tide:\nH = Low + (Rule_of_Twelfths × TidalRange)\nUKC = ChartedDepth + H − Draft − Squat\n\nHarmonic Analysis:\nh(t) = M + Σ[Aᵢ · cos(ωᵢt + φᵢ)]\n\nSecondary Port:\nH₂ = H₁ + Diff\nT₂ = T₁ + TimeDiff\n\nSources: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.": {
+  "en": "Rule of Twelfths:\nHour 1: 1/12 · TR\nHour 2: 2/12 · TR\nHour 3: 3/12 · TR\nHour 4: 3/12 · TR\nHour 5: 2/12 · TR\nHour 6: 1/12 · TR\n\nHeight of Tide:\nH = Low + (Rule_of_Twelfths × TidalRange)\nUKC = ChartedDepth + H − Draft − Squat\n\nHarmonic Analysis:\nh(t) = M + Σ[Aᵢ · cos(ωᵢt + φᵢ)]\n\nSecondary Port:\nH₂ = H₁ + Diff\nT₂ = T₁ + TimeDiff\n\nSources: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve."
+ },
+ "Deck and safety calculations have been completed successfully.": {
+  "en": "Deck and safety calculations have been completed successfully."
+ },
+ "Freeboard calculation": {
+  "en": "Freeboard calculation"
+ },
+ "Freeboard compliance": {
+  "en": "Freeboard compliance"
+ },
+ "Hose reach": {
+  "en": "Hose reach"
+ },
+ "Total environmental force": {
+  "en": "Total environmental force"
+ },
+ "Total life-saving capacity": {
+  "en": "Total life-saving capacity"
  },
  "Draft increase in the damaged condition depends on effective area and density": {
   "en": "Draft increase in the damaged condition depends on effective area and density"
@@ -423,20 +501,11 @@
  "Duties": {
   "en": "Duties"
  },
- "Effective area": {
-  "en": "Effective area"
- },
- "Enter valid w, L, B, damaged area and ρ": {
-  "en": "Enter valid w, L, B, damaged area and ρ"
- },
  "Enter valid w, L, B, L damaged": {
   "en": "Enter valid w, L, B, L damaged"
  },
  "Forward Draft": {
   "en": "Forward Draft"
- },
- "Forward Draft (dF) - m": {
-  "en": "Forward Draft (dF) - m"
  },
  "Forward Draft (m)": {
   "en": "Forward Draft (m)"
@@ -459,12 +528,6 @@
  "Mean of Means formula calculates average by giving 6x weight to the midship draft": {
   "en": "Mean of Means formula calculates average by giving 6x weight to the midship draft"
  },
- "Midship draft": {
-  "en": "Midship draft"
- },
- "Midship Draft (dM) - m": {
-  "en": "Midship Draft (dM) - m"
- },
  "Midship Port": {
   "en": "Midship Port"
  },
@@ -480,9 +543,6 @@
  "No longitudinal deflection": {
   "en": "No longitudinal deflection"
  },
- "Numerator": {
-  "en": "Numerator"
- },
  "Performed by": {
   "en": "Performed by"
  },
@@ -492,17 +552,8 @@
  "Roll coefficient (≈0.7–0.8)": {
   "en": "Roll coefficient (≈0.7–0.8)"
  },
- "Roll Period Calculated": {
-  "en": "Roll Period Calculated"
- },
- "Seakeeping Index": {
-  "en": "Seakeeping Index"
- },
  "Task": {
   "en": "Task"
- },
- "Tf - Forward Draft (m)": {
-  "en": "Tf - Forward Draft (m)"
  },
  "The change in draft in the damaged condition is calculated by dividing the weight by the effective waterplane area.": {
   "en": "The change in draft in the damaged condition is calculated by dividing the weight by the effective waterplane area."
@@ -524,5 +575,20 @@
  },
  "Enlarge photograph": {
   "en": "Enlarge photograph"
+ },
+ "Further reading": {
+  "en": "Further reading"
+ },
+ "Waterspout danger! Keep well clear at once": {
+  "en": "Waterspout danger! Keep well clear at once"
+ },
+ "rotating": {
+  "en": "rotating"
+ },
+ "tornado precursor": {
+  "en": "tornado precursor"
+ },
+ "Foggy": {
+  "en": "Foggy"
  }
 }

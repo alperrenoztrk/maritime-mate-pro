@@ -254,7 +254,7 @@ const content: ContentMap = {
       keyPoints: [
         "Sıfırıncı yasa sıcaklık ölçümünün temelini oluşturur.",
         "Termal denge, net ısı akışının sıfır olduğu durumdur.",
-        "Birinci ve ikinci yasadan önce ifade edilmiş olmasına rağmen daha sonra formüle edildiği için 'sıfırıncı' adını almıştır."
+        "Thermal equilibrium concerns temperature; equal pressure or equal mass does not establish equal temperature."
       ]
     },
     "Birinci yasa: enerji korunumu": {

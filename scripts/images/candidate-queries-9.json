@@ -1,0 +1,16 @@
+[
+ {"id": "uscg-series", "search": "\"USCG PTC Developer\"", "max": 100, "limit": 200},
+ {"id": "uscg-abok", "search": "ABoK USCG filetype:bitmap", "max": 100, "limit": 200},
+ {"id": "cobanyastigi", "search": "Cobanyastigi", "max": 120, "limit": 200},
+ {"id": "timber-hitch-2", "search": "\"timber hitch\" filetype:bitmap", "max": 24, "limit": 80},
+ {"id": "anchor-bend-2", "search": "\"anchor bend\" filetype:bitmap", "max": 24, "limit": 80},
+ {"id": "anchor-bend-3", "search": "\"fisherman's bend\" filetype:bitmap", "max": 16, "limit": 60},
+ {"id": "cleat-hitch-2", "search": "\"cleat hitch\" filetype:bitmap", "max": 24, "limit": 80},
+ {"id": "carrick-2", "search": "\"carrick bend\" filetype:bitmap", "max": 24, "limit": 80},
+ {"id": "figure-eight-2", "search": "\"figure eight\" knot filetype:bitmap", "max": 24, "limit": 80},
+ {"id": "tr-dulger", "search": "dülger bağı", "max": 12},
+ {"id": "tr-demir", "search": "demir bağı", "max": 12},
+ {"id": "tr-kocboynuzu", "search": "koç boynuzu", "max": 12},
+ {"id": "tr-yoma", "search": "yoma bağı", "max": 12},
+ {"id": "tr-kropi", "search": "kropi bağı", "max": 12}
+]

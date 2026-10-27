@@ -26,7 +26,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
         { name: "Carnot Efficiency", formula: "ηCarnot = 1 − (TL / TH)", variables: "TL: low temperature reservoir (K), TH: high temperature reservoir (K)" },
         { name: "Entropy Change", formula: "ΔS = Qrev / T", variables: "Qrev: reversible heat (kJ), T: absolute temperature (K)" },
         { name: "Ideal Gas Equation", formula: "PV = nRT", variables: "P: pressure (Pa), V: volume (m³), n: number of moles, R: 8.314 J/(mol·K), T: temperature (K)" },
-        { name: "Polytropic Process", formula: "P₁V₁ⁿ = P₂V₂ⁿ", variables: "n: politropik indeks (izotermik n=1, adyabatik n=γ)" },
+        { name: "Polytropic Process", formula: "P₁V₁ⁿ = P₂V₂ⁿ", variables: "n: polytropic index (isothermal n=1, adiabatic n=γ)" },
         { name: "Otto Cycle Efficiency", formula: "ηOtto = 1 − (1 / r^(γ−1))", variables: "r: compression ratio, γ: specific heat ratio (cp/cv)" },
       ],
     },
@@ -94,7 +94,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Combustion and Injection",
       formulas: [
         { name: "Excess Air Ratio", formula: "λ = m_air,actual / m_air,stoichiometric", variables: "λ > 1: lean mixture (typical diesel λ = 1.5–2.5)" },
-        { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Tipik: 300–1.000 bar (mekanik), 1.500–2.500 bar (common rail)" },
+        { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Typical: 300–1,000 bar (mechanical), 1,500–2,500 bar (common rail)" },
         { name: "Thermal Efficiency", formula: "ηth = BHP / (ṁ_fuel × Hu)", variables: "ṁ_fuel: fuel flow rate (kg/s), Hu: lower calorific value (kJ/kg)" },
       ],
     },
@@ -118,7 +118,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Cooling System",
       formulas: [
         { name: "Heat rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
-        { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Tipik ΔT: HT devresi 5–8°C, LT devresi 10–15°C" },
+        { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Typical ΔT: HT circuit 5–8°C, LT circuit 10–15°C" },
       ],
     },
   ],
@@ -128,14 +128,14 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: line voltage (V), I: line current (A), cos(φ): power factor" },
         { name: "Frequency-Speed Relationship", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
-        { name: "Generator Efficiency", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
+        { name: "Generator Efficiency", formula: "η = Pelectrical / Pmechanical", variables: "Typical: 92–96%" },
       ],
     },
     {
       title: "Boiler Calculations",
       formulas: [
         { name: "Boiler Efficiency", formula: "η = (ṁ_steam × Δh) / (ṁ_fuel × Hu)", variables: "Δh: enthalpy difference (kJ/kg), Hu: lower calorific value of the fuel" },
-        { name: "Steam Production", formula: "ṁbuhar = Q̇ / Δh", variables: "Q̇: heat input to the boiler (kW), Δh: enthalpy of evaporation" },
+        { name: "Steam Production", formula: "ṁsteam = Q̇ / Δh", variables: "Q̇: heat input to the boiler (kW), Δh: enthalpy of evaporation" },
       ],
     },
     {
@@ -194,7 +194,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Protection and Cabling",
       formulas: [
-        { name: "Short Circuit Current", formula: "Isc = V / Ztoplam", variables: "Z: empedans (primer+trafo+kablo)" },
+        { name: "Short Circuit Current", formula: "Isc = V / Ztotal", variables: "Z: impedance (supply + transformer + cable)" },
         { name: "Voltage Drop", formula: "ΔV = I × (R·cos(φ) + X·sin(φ)) × L × 2", variables: "R: resistance per unit length (Ω/m), X: reactance per unit length, L: cable length" },
         { name: "Insulation Resistance", formula: "Riz ≥ (Vnominal + 1000) / 1000 MΩ", variables: "Minimum: 1 MΩ (SOLAS/IEC 60092)" },
       ],
@@ -275,7 +275,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "CO₂ Emission", formula: "ECO₂ = FC × Cf", variables: "FC: fuel consumption (tonnes), Cf: carbon factor (HFO: 3.114, MDO: 3.206 t CO₂/t fuel)" },
         { name: "SOx Emission", formula: "ESOx ∝ S_fuel × FC", variables: "S_fuel: fuel sulphur content (%, m/m)" },
-        { name: "NOx Emission", formula: "ENOx = f(Tyanma, λ, tyanma)", variables: "Proportional to the combustion temperature, the excess air and the combustion duration" },
+        { name: "NOx Emission", formula: "ENOx = f(Tcomb, λ, tcomb)", variables: "Proportional to the combustion temperature, the excess air and the combustion duration" },
       ],
     },
     {
@@ -315,7 +315,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Waste Heat Recovery",
       formulas: [
-        { name: "WHR Power", formula: "PWHR = ṁegzoz × cp × ΔT × η", variables: "ṁ_exhaust: exhaust flow rate, ΔT: temperature drop, η: WHR efficiency" },
+        { name: "WHR Power", formula: "PWHR = ṁexh × cp × ΔT × η", variables: "ṁ_exhaust: exhaust flow rate, ΔT: temperature drop, η: WHR efficiency" },
         { name: "SEEMP Saving", formula: "Saving (%) = (FC_before − FC_after) / FC_before × 100", variables: "SEEMP: Ship Energy Efficiency Management Plan" },
       ],
     },

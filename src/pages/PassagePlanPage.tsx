@@ -255,7 +255,7 @@ export default function PassagePlanPage() {
                 <p className="text-xs text-primary mb-2 font-medium">Page {page} / 44</p>
                 <img 
                   src={`/passage-plan/page_${page}.jpg`} 
-                  alt={`Passage Plan Page ${page}`}
+                  alt={`Passage Plan page ${page}`}
                   className={`w-full rounded-lg ${page === 1 ? 'rotate-180' : ''}`}
                   loading="lazy"
                 />

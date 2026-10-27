@@ -17,7 +17,7 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
   "Halatlar, Knot ve Bağlama Teknikleri": {
     title: "Halatlar, Knot ve Bağlama Teknikleri",
     introduction:
-      "Halat işçiliği (marlinspike seamanship), gemiciliğin temelidir. Doğru halat seçimi, doğru düğüm (knot) ve dikiş (splice), hem operasyonel verimi hem can güvenliğini belirler. Halatın malzemesi, dayanımı ve bakımı; bağlama, yedekleme ve yük operasyonlarında kritik rol oynar.",
+      "Halat işçiliği, gemiciliğin temelidir. Doğru halat seçimi, doğru düğüm (knot) ve dikiş (splice), hem operasyonel verimi hem can güvenliğini belirler. Halatın malzemesi, dayanımı ve bakımı; bağlama, yedekleme ve yük operasyonlarında kritik rol oynar.",
     sections: [
       {
         title: "Halat Türleri ve Özellikleri",
@@ -65,7 +65,7 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Demirin tutması, yeterli kaloma (salınan zincir boyu / su derinliği oranı) ile sağlanır. Zincirin önemli bir bölümünün dipte yatay yatması, demir tırnaklarına yukarı değil yatay çekme uygulayarak tutuşu artırır. Genel pratik kural, normal koşullarda derinliğin yaklaşık 5–6 katı, ağır havada 8–10 katı veya daha fazla zincir salınmasıdır. Yetersiz kaloma demirin tarama (dragging) riskini artırır. Zemin türü de önemlidir: çamur/kil iyi tutar, kaya ve sert kum zayıf tutabilir veya demiri takabilir.",
         formula: {
-          text: "Kaloma ≈ 5–6 × derinlik (normal), 8–10 × derinlik (ağır hava)",
+          text: "Scope ≈ 5–6 × depth (normal), 8–10 × depth (heavy weather)",
           description: "Salınan zincir boyunun su derinliğine tipik oranı (zemin/koşula göre değişir)",
         },
       },
@@ -284,7 +284,7 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Yorgunluk, insan hatasının ve seyir kazalarının başlıca nedenlerindendir. STCW, asgari dinlenme sürelerini belirler: herhangi bir 24 saatlik dilimde en az 10 saat, herhangi bir 7 günlük dilimde en az 77 saat dinlenme; dinlenme en fazla iki bölüme ayrılabilir ve bir bölüm en az 6 saat kesintisiz olmalıdır. Bu süreler, vardiya tutan personelin uyanık kalmasını güvence altına alır. Dinlenme kayıtları tutulur ve PSC tarafından denetlenebilir.",
         formula: {
-          text: "Dinlenme: ≥10 saat/24 saat ve ≥77 saat/7 gün",
+          text: "Rest: ≥10 h in 24 h and ≥77 h in 7 days",
           description: "STCW asgari dinlenme süresi; en fazla 2 bölüm, biri ≥6 saat kesintisiz",
         },
       },
@@ -322,7 +322,7 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Sığ suda, geminin altından geçen suyun hızlanması basıncı düşürür ve gemi suya gömülerek draftı artar; bu olaya 'squat' denir. Squat, hızın karesiyle hızla artar; bu nedenle sığ suda hız azaltmak squat'ı önemli ölçüde düşürür. Aşırı squat, geminin tabana değmesine (grounding) veya manevra kabiliyetinin bozulmasına yol açar. Yeterli altta su payı (Under Keel Clearance, UKC) planlanır ve sığ/dar sularda hız düşürülür.",
         formula: {
-          text: "Squat ∝ V² (hızla orantılı artar)",
+          text: "Squat ∝ V² (increases with the square of speed)",
           description: "Sığ suda gemi draftındaki artış hızın karesiyle büyür; hız azaltmak squat'ı düşürür",
         },
       },

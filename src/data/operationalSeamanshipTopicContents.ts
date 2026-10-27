@@ -107,7 +107,7 @@ export const operationalSeamanshipTopicContents: Record<string, TopicDetailConte
         content:
           "ECDIS/GPS anten mevkii ile baştaki demirin gerçek mevkii aynı değildir. Anchor drop position planlanırken anten-demir ofseti uygulanır. Swinging circle; salınan zincir, gemi boyu, su derinliği/gelgit ve emniyet payını kapsar. Komşu gemilerin kendi dönüş merkezleri ve farklı zincir boyları hesaba katılır.",
         formula: {
-          text: "Yaklaşık swing radius = chain paid out + distance hawse-to-stern + emniyet payı",
+          text: "Approx. swing radius = chain paid out + distance hawse-to-stern + safety margin",
           description: "Gerçek risk değerlendirmesi gelgit, catenary ve komşu gemi geometrisini de içerir.",
         },
       },

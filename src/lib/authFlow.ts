@@ -56,6 +56,46 @@ export const isNativePlatform = () => {
   }
 };
 
+/**
+ * Where Google's sign-in page cannot run, so the web round trip never comes
+ * back to Supabase (the flow is left unfinished):
+ * - "frame": the page is inside an iframe, e.g. the Lovable editor preview.
+ *   accounts.google.com refuses to render in a frame.
+ * - "in-app": an in-app browser or a bare Android WebView (Instagram,
+ *   Facebook, LinkedIn, TikTok …). Google blocks these with
+ *   "403 disallowed_useragent".
+ * The native shells never use this: they open the system browser instead.
+ */
+export type GoogleSignInBlocker = "frame" | "in-app" | null;
+
+const IN_APP_BROWSER_UA =
+  /; wv\)|FBAN|FBAV|FB_IAB|Instagram|LinkedInApp|Snapchat|TikTok|musical_ly|BytedanceWebview|MicroMessenger|\bLine\//i;
+
+export const detectGoogleSignInBlocker = (): GoogleSignInBlocker => {
+  if (isNativePlatform() || typeof window === "undefined") return null;
+  try {
+    if (window.self !== window.top) return "frame";
+  } catch {
+    // Cross-origin parent: reading window.top throws, so we are framed.
+    return "frame";
+  }
+  if (typeof navigator !== "undefined" && IN_APP_BROWSER_UA.test(navigator.userAgent)) return "in-app";
+  return null;
+};
+
+/**
+ * Opens the login screen as a normal browser tab, where the Google round trip
+ * can run. The new tab starts its own flow, so no PKCE state has to cross
+ * between the frame and the tab (browsers partition framed storage).
+ */
+export const openLoginInNewTab = (nextPath = "/") => {
+  const url = new URL("/auth", window.location.origin);
+  const safeNext = sanitizeReturnPath(nextPath);
+  if (safeNext !== "/") url.searchParams.set("next", safeNext);
+  // "noopener" makes window.open return null, so there is nothing to check.
+  window.open(url.toString(), "_blank", "noopener");
+};
+
 export const rememberReturnPath = (nextPath: string) => {
   try {
     sessionStorage.setItem(RETURN_PATH_KEY, sanitizeReturnPath(nextPath));

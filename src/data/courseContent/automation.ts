@@ -75,7 +75,7 @@ export const automation: CourseTopic = {
         { symbol: "α", label: "Temperature coefficient", unit: "1/°C" },
         { symbol: "T", label: "Temperature", unit: "°C" },
       ],
-      source: { code: "RTD/Pt100 resistance-temperature relation (IEC 60751)", detail: "α = 0,00385 1/°C (standart Pt100)" },
+      source: { code: "RTD/Pt100 resistance-temperature relation (IEC 60751)", detail: "α = 0.00385 1/°C (standard Pt100)" },
       inputs: [
         { key: "rt", label: "Measured Resistance (Rt)", unit: "Ω", placeholder: "138.5" },
         { key: "r0", label: "R₀ (0°C direnci)", unit: "Ω", placeholder: "100" },

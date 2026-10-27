@@ -590,7 +590,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "phi = RAOroll x atan(GM / kxx) x 180/pi",
           substitution: `phi = RAO x atan(${data.metacentricHeight} / ${data.radiusOfGyration}) x 180/pi`,
           result: `phi = ${motions.rollAmplitude.toFixed(2)}°`,
-          explanation: "Roll amplitude refers to the amount of transverse rolling of the ship under wave conditions."
+          explanation: "The roll amplitude is the angular motion of the ship about its longitudinal axis in waves."
         },
         {
           step: 7,
@@ -598,7 +598,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           formula: "theta = Hw x k x L / 4 x 180/pi",
           substitution: `theta = ${data.waveHeight} x ${kWave.toFixed(6)} x ${data.shipLength} / 4 x 180/pi`,
           result: `theta = ${motions.pitchAmplitude.toFixed(2)}°`,
-          explanation: "Pitch amplitude is the angle through which the ship rotates about her transverse axis in waves."
+          explanation: "The pitch amplitude is the angular motion of the ship about its transverse axis in waves."
         },
         {
           step: 8,

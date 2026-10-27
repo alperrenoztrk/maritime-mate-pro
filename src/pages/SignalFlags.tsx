@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Flag, Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useLanguage } from "@/contexts/useLanguage";
+import { getStaticTranslation } from "@/utils/staticTranslations";
 import SignalTonePlayer from "@/components/audio/SignalTonePlayer";
 import { morsePattern } from "@/components/audio/signalTones";
 import {
@@ -27,7 +29,10 @@ const norm = (s: string) =>
   s
     .toLocaleLowerCase("tr")
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    .replace(/[\u0300-\u036f]/g, "")
+    // Turkish lower-casing turns an English capital I into dotless ı
+    // ("India" → "ındia"); fold both so either spelling matches.
+    .replace(/ı/g, "i");
 
 function FlagCard({ flag }: { flag: SignalFlag }) {
   return (
@@ -83,6 +88,7 @@ export default function SignalFlagsPage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [filter, setFilter] = useState<Filter>("all");
+  const { currentLanguage } = useLanguage();
 
   const q = norm(query.trim());
 
@@ -90,10 +96,11 @@ export default function SignalFlagsPage() {
     const matches = SIGNAL_FLAGS.filter((flag) => {
       if (filter !== "all" && flag.kind !== filter) return false;
       if (!q) return true;
+      // The data is written in Turkish but shown translated: search both
+      // the source and the text on screen, so "pilot" finds G and H.
+      const fields = [flag.label, flag.phonetic ?? "", flag.meaning, flag.fishingMeaning ?? "", flag.design];
       const haystack = norm(
-        [flag.label, flag.phonetic ?? "", flag.meaning, flag.fishingMeaning ?? "", flag.design].join(
-          " ",
-        ),
+        fields.flatMap((field) => [field, (field && getStaticTranslation(field, currentLanguage)) || ""]).join(" "),
       );
       return haystack.includes(q);
     });
@@ -103,7 +110,7 @@ export default function SignalFlagsPage() {
       label: SIGNAL_FLAG_KIND_LABELS[kind],
       flags: matches.filter((flag) => flag.kind === kind),
     })).filter((section) => section.flags.length > 0);
-  }, [filter, q]);
+  }, [filter, q, currentLanguage]);
 
   const totalMatches = grouped.reduce((n, section) => n + section.flags.length, 0);
 
@@ -176,7 +183,7 @@ export default function SignalFlagsPage() {
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
                     <span className="shrink-0 text-micro text-muted-foreground">
-                      {flags.length} flags
+                      {flags.length} {flags.length === 1 ? "flag" : "flags"}
                     </span>
                   </div>
                 </div>

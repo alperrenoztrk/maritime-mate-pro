@@ -1,0 +1,889 @@
+{
+  "0 s": {
+    "en": "0 s"
+  },
+  "10 s": {
+    "en": "10 s"
+  },
+  "10s": {
+    "en": "10s"
+  },
+  "160 or more; usually 240–300": {
+    "en": "160 or more; usually 240–300"
+  },
+  "50–79; usually 50 or 60": {
+    "en": "50–79; usually 50 or 60"
+  },
+  "80–159; usually 100 or 120": {
+    "en": "80–159; usually 100 or 120"
+  },
+  "A characteristic is not the danger itself: seeing Fl(2) does not prove that the light is an isolated danger mark, because another aid to navigation may use the same rhythm. Check the symbol and the position on the chart.": {
+    "en": "A characteristic is not the danger itself: seeing Fl(2) does not prove that the light is an isolated danger mark, because another aid to navigation may use the same rhythm. Check the symbol and the position on the chart."
+  },
+  "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.": {
+    "en": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger."
+  },
+  "A light characteristic is the signature that describes how a light comes on, goes off or changes color over time. It has four elements; the elevation and the range of the light complete the description.": {
+    "en": "A light characteristic is the signature that describes how a light comes on, goes off or changes color over time. It has four elements; the elevation and the range of the light complete the description."
+  },
+  "A light you cannot see is not necessarily out of order: it may be below the geographic horizon, in another sector or behind rain or fog, or lights ashore may mask it.": {
+    "en": "A light you cannot see is not necessarily out of order: it may be below the geographic horizon, in another sector or behind rain or fog, or lights ashore may mask it."
+  },
+  "A light's visibility has two limits, brightness and the horizon. Which one applies?": {
+    "en": "A light's visibility has two limits, brightness and the horizon. Which one applies?"
+  },
+  "A sector light shows a different color or characteristic depending on the direction from which it is seen. In a common arrangement the white sector marks the safe approach and the red and green sectors mark the limits on either side or the side of a danger. This is a habit, not a rule: you cannot assume that white is always safe or that red or green is always dangerous; read the meaning of the sectors from the chart and the List of Lights.": {
+    "en": "A sector light shows a different color or characteristic depending on the direction from which it is seen. In a common arrangement the white sector marks the safe approach and the red and green sectors mark the limits on either side or the side of a danger. This is a habit, not a rule: you cannot assume that white is always safe or that red or green is always dangerous; read the meaning of the sectors from the chart and the List of Lights."
+  },
+  "A sequence of quick flashes is interrupted at regular intervals by a long eclipse.": {
+    "en": "A sequence of quick flashes is interrupted at regular intervals by a long eclipse."
+  },
+  "A single flash lasts at least 2 seconds.": {
+    "en": "A single flash lasts at least 2 seconds."
+  },
+  "A steady light with brighter flashes added to it.": {
+    "en": "A steady light with brighter flashes added to it."
+  },
+  "Abbreviation": {
+    "en": "Abbreviation"
+  },
+  "Acil Batık İşareti (EWMB) ve haritayla ilişkisi": {
+    "fill": false,
+    "en": "Emergency wreck marking buoy (EWMB) and the chart"
+  },
+  "Admiralty List of Lights and Fog Signals (NP 74–84)": {
+    "en": "Admiralty List of Lights and Fog Signals (NP 74–84)"
+  },
+  "Al": {
+    "en": "Al"
+  },
+  "Alternating": {
+    "en": "Alternating"
+  },
+  "Alternating blue and yellow: 1 s blue, 0.5 s dark, 1 s yellow, 0.5 s dark": {
+    "en": "Alternating blue and yellow: 1 s blue, 0.5 s dark, 1 s yellow, 0.5 s dark"
+  },
+  "Alternating flashing": {
+    "en": "Alternating flashing"
+  },
+  "Altılı grup + uzun çakar güney kardinaldir; tehlikenin güneyinden emniyetli geçiş yapılır.": {
+    "fill": false,
+    "en": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "bg": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "cs": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "da": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "de": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "es": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "fi": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "fr": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "hu": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "it": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "ja": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "ko": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "nl": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "no": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "pl": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "pt": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "ro": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "ru": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "sv": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "uk": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger.",
+    "zh-CN": "A group of six flashes plus a long flash is the south cardinal; pass south of the danger."
+  },
+  "At most, you can expect to see a light at the smaller of its geographic range and its luminous range.": {
+    "en": "At most, you can expect to see a light at the smaller of its geographic range and its luminous range."
+  },
+  "Batı kardinal": {
+    "fill": false,
+    "en": "West cardinal",
+    "bg": "West cardinal",
+    "cs": "West cardinal",
+    "da": "West cardinal",
+    "de": "West cardinal",
+    "es": "West cardinal",
+    "fi": "West cardinal",
+    "fr": "West cardinal",
+    "hu": "West cardinal",
+    "it": "West cardinal",
+    "ja": "West cardinal",
+    "ko": "West cardinal",
+    "nl": "West cardinal",
+    "no": "West cardinal",
+    "pl": "West cardinal",
+    "pt": "West cardinal",
+    "ru": "West cardinal",
+    "sv": "West cardinal",
+    "uk": "West cardinal",
+    "zh-CN": "West cardinal"
+  },
+  "Black with one or more broad red horizontal bands; two black spheres as topmark": {
+    "en": "Black with one or more broad red horizontal bands; two black spheres as topmark"
+  },
+  "Bright blocks show the light on, dark blocks the eclipses. The bracket above a track marks one period. Timings inside a period are illustrative; take the real characteristic from the chart and the List of Lights.": {
+    "en": "Bright blocks show the light on, dark blocks the eclipses. The bracket above a track marks one period. Timings inside a period are illustrative; take the real characteristic from the chart and the List of Lights."
+  },
+  "COLREG Rule 21: colors and arcs of the sidelights": {
+    "en": "COLREG Rule 21: colors and arcs of the sidelights"
+  },
+  "Calculating the geographic range": {
+    "en": "Calculating the geographic range"
+  },
+  "Cardinal": {
+    "en": "Cardinal"
+  },
+  "Cardinal flash counts follow a clock face: 3 east, 6 plus a long flash south, 9 west, continuous north.": {
+    "en": "Cardinal flash counts follow a clock face: 3 east, 6 plus a long flash south, 9 west, continuous north."
+  },
+  "Cardinal lights": {
+    "en": "Cardinal lights"
+  },
+  "Cardinal marks show on which side of a danger it is safe to pass: pass north of a north cardinal, east of an east cardinal, south of a south cardinal and west of a west cardinal. When lit, every cardinal light is white.": {
+    "en": "Cardinal marks show on which side of a danger it is safe to pass: pass north of a north cardinal, east of an east cardinal, south of a south cardinal and west of a west cardinal. When lit, every cardinal light is white."
+  },
+  "Character": {
+    "en": "Character"
+  },
+  "Color": {
+    "en": "Color"
+  },
+  "Compare the bearing with the chart: convert the compass bearing to a true bearing with the corrections, then check each candidate's position, range, sectors and characteristic.": {
+    "en": "Compare the bearing with the chart: convert the compass bearing to a true bearing with the corrections, then check each candidate's position, range, sectors and characteristic."
+  },
+  "Composite group flashing": {
+    "en": "Composite group flashing"
+  },
+  "Concept": {
+    "en": "Concept"
+  },
+  "Confirm a sector change with a bearing, a radar range or another method of fixing.": {
+    "en": "Confirm a sector change with a bearing, a radar range or another method of fixing."
+  },
+  "Confirm with independent information: cross-check with another light, a radar range or the shape of the coast; do not accept a firm position from a single light observation.": {
+    "en": "Confirm with independent information: cross-check with another light, a radar range or the shape of the coast; do not accept a firm position from a single light observation."
+  },
+  "Count the flashes: single, or a group of two or three? Is there a long flash?": {
+    "en": "Count the flashes: single, or a group of two or three? Is there a long flash?"
+  },
+  "Definition": {
+    "en": "Definition"
+  },
+  "Do not confuse the lateral color rule with a ship's sidelights: under COLREG a ship's port sidelight is red and its starboard sidelight green, whereas the meaning of IALA lateral marks depends on the conventional direction of buoyage; in Region A, entering harbor from seaward, red marks are kept to port.": {
+    "en": "Do not confuse the lateral color rule with a ship's sidelights: under COLREG a ship's port sidelight is red and its starboard sidelight green, whereas the meaning of IALA lateral marks depends on the conventional direction of buoyage; in Region A, entering harbor from seaward, red marks are kept to port."
+  },
+  "Doğu kardinal": {
+    "fill": false,
+    "en": "East cardinal",
+    "bg": "East cardinal",
+    "cs": "East cardinal",
+    "da": "East cardinal",
+    "de": "East cardinal",
+    "es": "East cardinal",
+    "fi": "East cardinal",
+    "fr": "East cardinal",
+    "hu": "East cardinal",
+    "it": "East cardinal",
+    "ja": "East cardinal",
+    "ko": "East cardinal",
+    "nl": "East cardinal",
+    "no": "East cardinal",
+    "pl": "East cardinal",
+    "pt": "East cardinal",
+    "ru": "East cardinal",
+    "sv": "East cardinal",
+    "uk": "East cardinal",
+    "zh-CN": "East cardinal"
+  },
+  "East": {
+    "en": "East"
+  },
+  "East cardinal": {
+    "en": "East cardinal"
+  },
+  "East of the danger": {
+    "en": "East of the danger"
+  },
+  "Elevation": {
+    "en": "Elevation"
+  },
+  "Elevation of the light (m)": {
+    "en": "Elevation of the light (m)"
+  },
+  "Emergency wreck marking buoy": {
+    "en": "Emergency wreck marking buoy"
+  },
+  "Emniyetli su işareti örneği": {
+    "fill": false,
+    "en": "Safe water mark example"
+  },
+  "Enter the elevation of the light (0–1000 m) and the height of eye (0–100 m).": {
+    "en": "Enter the elevation of the light (0–1000 m) and the height of eye (0–100 m)."
+  },
+  "Equal numbers of blue and yellow vertical stripes; an upright yellow cross as topmark": {
+    "en": "Equal numbers of blue and yellow vertical stripes; an upright yellow cross as topmark"
+  },
+  "F": {
+    "en": "F"
+  },
+  "F, Fl, LFl, Oc, Iso, Q, VQ, Mo": {
+    "en": "F, Fl, LFl, Oc, Iso, Q, VQ, Mo"
+  },
+  "FFl": {
+    "en": "FFl"
+  },
+  "Fenerler ve ışık kısaltmaları": {
+    "fill": false,
+    "en": "Lights and light abbreviations"
+  },
+  "First sighting can be expected at about": {
+    "en": "First sighting can be expected at about"
+  },
+  "Fixed": {
+    "en": "Fixed"
+  },
+  "Fixed and flashing": {
+    "en": "Fixed and flashing"
+  },
+  "Fl": {
+    "en": "Fl"
+  },
+  "Fl(2)": {
+    "en": "Fl(2)"
+  },
+  "Fl(2+1)": {
+    "en": "Fl(2+1)"
+  },
+  "Fl(3) W 10s 18m 15M": {
+    "en": "Fl(3) W 10s 18m 15M"
+  },
+  "Fl(3) W 10s 18m 15M means: a white light gives three flashes in every 10-second period; the light is 18 meters above the chart's height datum (usually MHWS on Admiralty charts) and its nominal range is 15 nautical miles.": {
+    "en": "Fl(3) W 10s 18m 15M means: a white light gives three flashes in every 10-second period; the light is 18 meters above the chart's height datum (usually MHWS on Admiralty charts) and its nominal range is 15 nautical miles."
+  },
+  "Fl(3), Oc(2), Fl(2+1)": {
+    "en": "Fl(3), Oc(2), Fl(2+1)"
+  },
+  "Flashes per minute": {
+    "en": "Flashes per minute"
+  },
+  "Flashing": {
+    "en": "Flashing"
+  },
+  "For quick lights the number of flashes is defined per minute. This classification is given in IHO INT 1.": {
+    "en": "For quick lights the number of flashes is defined per minute. This classification is given in IHO INT 1."
+  },
+  "G 095°–110°": {
+    "en": "G 095°–110°"
+  },
+  "Geographic range": {
+    "en": "Geographic range"
+  },
+  "Geographic range: 11.39 + 8.06 = 19.45 nautical miles": {
+    "en": "Geographic range: 11.39 + 8.06 = 19.45 nautical miles"
+  },
+  "Green with one broad red band": {
+    "en": "Green with one broad red band"
+  },
+  "Green, Fl(2+1) G": {
+    "en": "Green, Fl(2+1) G"
+  },
+  "Green, conical": {
+    "en": "Green, conical"
+  },
+  "Green; any rhythm other than Fl(2+1)": {
+    "en": "Green; any rhythm other than Fl(2+1)"
+  },
+  "Group": {
+    "en": "Group"
+  },
+  "Group flashing": {
+    "en": "Group flashing"
+  },
+  "Group flashing: three flashes in each period": {
+    "en": "Group flashing: three flashes in each period"
+  },
+  "Group occulting": {
+    "en": "Group occulting"
+  },
+  "Group quick": {
+    "en": "Group quick"
+  },
+  "Group very quick": {
+    "en": "Group very quick"
+  },
+  "Güney kardinal": {
+    "fill": false,
+    "en": "South cardinal",
+    "bg": "South cardinal",
+    "cs": "South cardinal",
+    "da": "South cardinal",
+    "de": "South cardinal",
+    "es": "South cardinal",
+    "fi": "South cardinal",
+    "fr": "South cardinal",
+    "hu": "South cardinal",
+    "it": "South cardinal",
+    "ja": "South cardinal",
+    "ko": "South cardinal",
+    "nl": "South cardinal",
+    "no": "South cardinal",
+    "pl": "South cardinal",
+    "pt": "South cardinal",
+    "ro": "South cardinal",
+    "ru": "South cardinal",
+    "sv": "South cardinal",
+    "uk": "South cardinal",
+    "zh-CN": "South cardinal"
+  },
+  "Harbor and channel entrances: lights mark the limits of channels, the heads of breakwaters and the approach channels.": {
+    "en": "Harbor and channel entrances: lights mark the limits of channels, the heads of breakwaters and the approach channels."
+  },
+  "Height of the light above the chart's height datum, usually MHWS": {
+    "en": "Height of the light above the chart's height datum, usually MHWS"
+  },
+  "Horizon distance of the eye: 2.08 × √15 = 8.06 nautical miles": {
+    "en": "Horizon distance of the eye: 2.08 × √15 = 8.06 nautical miles"
+  },
+  "Horizon distance of the light: 2.08 × √30 = 11.39 nautical miles": {
+    "en": "Horizon distance of the light: 2.08 × √30 = 11.39 nautical miles"
+  },
+  "How many flashes or eclipses each period contains": {
+    "en": "How many flashes or eclipses each period contains"
+  },
+  "How many seconds the whole sequence takes before it repeats": {
+    "en": "How many seconds the whole sequence takes before it repeats"
+  },
+  "How to read a light on the chart": {
+    "en": "How to read a light on the chart"
+  },
+  "IALA R1001, The IALA Maritime Buoyage System": {
+    "en": "IALA R1001, The IALA Maritime Buoyage System"
+  },
+  "IALA Region A: a red port hand mark with a can topmark (left) and a green starboard hand mark with a cone topmark (right)": {
+    "en": "IALA Region A: a red port hand mark with a can topmark (left) and a green starboard hand mark with a cone topmark (right)"
+  },
+  "IALA cardinal marks placed around a danger, with their colours, topmarks and light characters": {
+    "en": "IALA cardinal marks placed around a danger, with their colours, topmarks and light characters"
+  },
+  "IHO INT 1 (Admiralty Chart 5011), section P: Lights": {
+    "en": "IHO INT 1 (Admiralty Chart 5011), section P: Lights"
+  },
+  "IQ": {
+    "en": "IQ"
+  },
+  "Identify the color: white, red, green or yellow? Is it confused with background lights ashore?": {
+    "en": "Identify the color: white, red, green or yellow? Is it confused with background lights ashore?"
+  },
+  "Identifying a light from the bridge": {
+    "en": "Identifying a light from the bridge"
+  },
+  "If you count two white flashes and confirm that the group repeats every 10 seconds, the light matches B's characteristic; still confirm it with the bearing and the position.": {
+    "en": "If you count two white flashes and confirm that the group repeats every 10 seconds, the light matches B's characteristic; still confirm it with the bearing and the position."
+  },
+  "In each period the light is on for less time than it is off; all flashes are of equal length.": {
+    "en": "In each period the light is on for less time than it is off; all flashes are of equal length."
+  },
+  "Interrupted quick": {
+    "en": "Interrupted quick"
+  },
+  "Is the light you see A or B?": {
+    "en": "Is the light you see A or B?"
+  },
+  "Iso": {
+    "en": "Iso"
+  },
+  "Isolated danger": {
+    "en": "Isolated danger"
+  },
+  "Isolated danger mark": {
+    "en": "Isolated danger mark"
+  },
+  "Isophase": {
+    "en": "Isophase"
+  },
+  "Işık periyodu ve doğrulama mantığı": {
+    "fill": false,
+    "en": "Light period and how to check it"
+  },
+  "Kardinal işaretler ve emniyetli su yönü": {
+    "fill": false,
+    "en": "Cardinal marks and the direction of safe water",
+    "fi": "Cardinal marks and the direction of safe water",
+    "ja": "Cardinal marks and the direction of safe water",
+    "ko": "Cardinal marks and the direction of safe water",
+    "pt": "Cardinal marks and the direction of safe water"
+  },
+  "Keep publications up to date: check the Admiralty List of Lights and Fog Signals, Notices to Mariners and navigational warnings as well as the ENC; a light's characteristic, sectors or operating status can change.": {
+    "en": "Keep publications up to date: check the Admiralty List of Lights and Fog Signals, Notices to Mariners and navigational warnings as well as the ENC; a light's characteristic, sectors or operating status can change."
+  },
+  "Kuzey kardinal": {
+    "fill": false,
+    "en": "North cardinal",
+    "bg": "North cardinal",
+    "cs": "North cardinal",
+    "da": "North cardinal",
+    "de": "North cardinal",
+    "es": "North cardinal",
+    "fi": "North cardinal",
+    "fr": "North cardinal",
+    "hu": "North cardinal",
+    "it": "North cardinal",
+    "ja": "North cardinal",
+    "ko": "North cardinal",
+    "nl": "North cardinal",
+    "no": "North cardinal",
+    "pl": "North cardinal",
+    "pt": "North cardinal",
+    "ro": "North cardinal",
+    "ru": "North cardinal",
+    "sv": "North cardinal",
+    "uk": "North cardinal",
+    "zh-CN": "North cardinal"
+  },
+  "LFl": {
+    "en": "LFl"
+  },
+  "Landfall and position: sighting a particular light after a long ocean passage confirms where the ship is, and a bearing of the light is a position line.": {
+    "en": "Landfall and position: sighting a particular light after a long ocean passage confirms where the ship is, and a bearing of the light is a position line."
+  },
+  "Lateral işaretler ve haritadaki gösterimi": {
+    "fill": false,
+    "en": "Lateral marks and how the chart shows them"
+  },
+  "Leading lights": {
+    "en": "Leading lights"
+  },
+  "Leading lights are two lights on the same line. The front light is lower and nearer the ship, the rear light higher and farther away. When the two lights are vertically in line, the ship is on the leading line drawn on the chart.": {
+    "en": "Leading lights are two lights on the same line. The front light is lower and nearer the ship, the rear light higher and farther away. When the two lights are vertically in line, the ship is on the leading line drawn on the chart."
+  },
+  "Light and darkness are of equal duration.": {
+    "en": "Light and darkness are of equal duration."
+  },
+  "Light range calculator": {
+    "en": "Light range calculator"
+  },
+  "Light rhythms": {
+    "en": "Light rhythms"
+  },
+  "Lighted marks in IALA Region A": {
+    "en": "Lighted marks in IALA Region A"
+  },
+  "Lighthouses and Light Characteristics": {
+    "en": "Lighthouses and Light Characteristics"
+  },
+  "Lighthouses and light characteristics": {
+    "en": "Lighthouses and light characteristics"
+  },
+  "Lighthouses and other lighted aids to navigation let you recognize the coast, harbor entrances, dangers and safe passages at night. The most important fact for a navigating officer is this: every light has its own characteristic, and you find out which light you are looking at by comparing that characteristic with the chart. If you see three lights at the same time, one flashing white every 5 seconds, one flashing red twice every 10 seconds and one showing a steady green, their color, rhythm and period tell them apart.": {
+    "en": "Lighthouses and other lighted aids to navigation let you recognize the coast, harbor entrances, dangers and safe passages at night. The most important fact for a navigating officer is this: every light has its own characteristic, and you find out which light you are looking at by comparing that characteristic with the chart. If you see three lights at the same time, one flashing white every 5 seconds, one flashing red twice every 10 seconds and one showing a steady green, their color, rhythm and period tell them apart."
+  },
+  "Lights in line": {
+    "en": "Lights in line"
+  },
+  "Limited by the geographic range.": {
+    "en": "Limited by the geographic range."
+  },
+  "Limited by the luminous range.": {
+    "en": "Limited by the luminous range."
+  },
+  "Long-flashing": {
+    "en": "Long-flashing"
+  },
+  "Looking towards the lights: the front light is lower and nearer, the rear light higher and farther. The dashed line marks the direction of the leading line.": {
+    "en": "Looking towards the lights: the front light is lower and nearer, the rear light higher and farther. The dashed line marks the direction of the leading line."
+  },
+  "Luminous range": {
+    "en": "Luminous range"
+  },
+  "Luminous range from the List of Lights (NM, optional)": {
+    "en": "Luminous range from the List of Lights (NM, optional)"
+  },
+  "Major lights on the coast and the lights on buoys and beacons use the same language; on the bridge they do four different jobs.": {
+    "en": "Major lights on the coast and the lights on buoys and beacons use the same language; on the bridge they do four different jobs."
+  },
+  "Mark": {
+    "en": "Mark"
+  },
+  "Marking dangers: a light shows where a shoal, rock or wreck lies, or on which side it can be passed safely.": {
+    "en": "Marking dangers: a light shows where a shoal, rock or wreck lies, or on which side it can be passed safely."
+  },
+  "Match the number of flashes to a clock face: 3 o'clock is east (3 flashes), 6 o'clock is south (6 flashes and one long flash) and 9 o'clock is west (9 flashes); north flashes without a break. The long flash of the south mark is added so that its group of six cannot be mistaken for a group of three or nine.": {
+    "en": "Match the number of flashes to a clock face: 3 o'clock is east (3 flashes), 6 o'clock is south (6 flashes and one long flash) and 9 o'clock is west (9 flashes); north flashes without a break. The long flash of the south mark is added so that its group of six cannot be mistaken for a group of three or nine."
+  },
+  "Mo(A)": {
+    "en": "Mo(A)"
+  },
+  "Morse code": {
+    "en": "Morse code"
+  },
+  "Morse code A": {
+    "en": "Morse code A"
+  },
+  "Name": {
+    "en": "Name"
+  },
+  "Nominal range": {
+    "en": "Nominal range"
+  },
+  "Nominal range in nautical miles": {
+    "en": "Nominal range in nautical miles"
+  },
+  "Nominal range only": {
+    "en": "Nominal range only"
+  },
+  "North": {
+    "en": "North"
+  },
+  "North cardinal": {
+    "en": "North cardinal"
+  },
+  "North of the danger": {
+    "en": "North of the danger"
+  },
+  "Oc": {
+    "en": "Oc"
+  },
+  "Oc(2)": {
+    "en": "Oc(2)"
+  },
+  "Occulting": {
+    "en": "Occulting"
+  },
+  "On a night watch you see a light on the horizon. The ENC shows two candidate lights nearby: A, Fl W 5s, and B, Fl(2) W 10s. Both are white, so color alone is not enough.": {
+    "en": "On a night watch you see a light on the horizon. The ENC shows two candidate lights nearby: A, Fl W 5s, and B, Fl(2) W 10s. Both are white, so color alone is not enough."
+  },
+  "On the chart": {
+    "en": "On the chart"
+  },
+  "On the chart and in the List of Lights, a light is written as abbreviations in a fixed order: character and group, color, period, elevation and range. The entry below is representative and does not belong to a real light.": {
+    "en": "On the chart and in the List of Lights, a light is written as abbreviations in a fixed order: character and group, color, period, elevation and range. The entry below is representative and does not belong to a real light."
+  },
+  "Operational cautions": {
+    "en": "Operational cautions"
+  },
+  "Pause": {
+    "en": "Pause"
+  },
+  "Play the rhythms": {
+    "en": "Play the rhythms"
+  },
+  "Port-hand mark": {
+    "en": "Port-hand mark"
+  },
+  "Port-hand mark (Region A)": {
+    "en": "Port-hand mark (Region A)"
+  },
+  "Preferred channel to port": {
+    "en": "Preferred channel to port"
+  },
+  "Preferred channel to starboard": {
+    "en": "Preferred channel to starboard"
+  },
+  "Preferred channel to starboard (Region A)": {
+    "en": "Preferred channel to starboard (Region A)"
+  },
+  "Q": {
+    "en": "Q"
+  },
+  "Q or VQ does not mean that the light must flash without a break. It can also form a group of a set number of quick flashes, such as Q(3) or VQ(9); cardinal marks use exactly these groups.": {
+    "en": "Q or VQ does not mean that the light must flash without a break. It can also form a group of a set number of quick flashes, such as Q(3) or VQ(9); cardinal marks use exactly these groups."
+  },
+  "Q(3) 10s": {
+    "en": "Q(3) 10s"
+  },
+  "Q(6)+LFl 15s": {
+    "en": "Q(6)+LFl 15s"
+  },
+  "Q(9) 15s": {
+    "en": "Q(9) 15s"
+  },
+  "Quick": {
+    "en": "Quick"
+  },
+  "Quick flashes: Q, VQ, UQ": {
+    "en": "Quick flashes: Q, VQ, UQ"
+  },
+  "Quick type": {
+    "en": "Quick type"
+  },
+  "R 070°–085°": {
+    "en": "R 070°–085°"
+  },
+  "Rear light to the left": {
+    "en": "Rear light to the left"
+  },
+  "Rear light to the right": {
+    "en": "Rear light to the right"
+  },
+  "Red and white vertical stripes; a single red sphere as topmark": {
+    "en": "Red and white vertical stripes; a single red sphere as topmark"
+  },
+  "Red with one broad green band": {
+    "en": "Red with one broad green band"
+  },
+  "Red, Fl(2+1) R": {
+    "en": "Red, Fl(2+1) R"
+  },
+  "Red, can-shaped": {
+    "en": "Red, can-shaped"
+  },
+  "Red; any rhythm other than Fl(2+1)": {
+    "en": "Red; any rhythm other than Fl(2+1)"
+  },
+  "References": {
+    "en": "References"
+  },
+  "Rhythm": {
+    "en": "Rhythm"
+  },
+  "Rhythm is the key to recognizing a light on a night watch. In the diagrams below, bright blocks show when the light is on and dark blocks when it is off; use the play button to watch each light at its real speed. Durations inside a period are illustrative.": {
+    "en": "Rhythm is the key to recognizing a light on a night watch. In the diagrams below, bright blocks show when the light is on and dark blocks when it is off; use the play button to watch each light at its real speed. Durations inside a period are illustrative."
+  },
+  "Safe side": {
+    "en": "Safe side"
+  },
+  "Safe water": {
+    "en": "Safe water"
+  },
+  "Safe water mark": {
+    "en": "Safe water mark"
+  },
+  "Sector lights": {
+    "en": "Sector lights"
+  },
+  "Sector limits are not optically sharp; do not use the change of color as an exact position line.": {
+    "en": "Sector limits are not optically sharp; do not use the change of color as an exact position line."
+  },
+  "Sector limits are true bearings of the light from seaward.": {
+    "en": "Sector limits are true bearings of the light from seaward."
+  },
+  "Sector limits are true bearings of the light seen from seaward. The ship on the left sees the light bearing 090°, inside the white sector 085°–095°. If it drifts south it enters the red sector, if it drifts north the green one. Illustrative values; take the real limits and their meaning from the chart and the List of Lights.": {
+    "en": "Sector limits are true bearings of the light seen from seaward. The ship on the left sees the light bearing 090°, inside the white sector 085°–095°. If it drifts south it enters the red sector, if it drifts north the green one. Illustrative values; take the real limits and their meaning from the chart and the List of Lights."
+  },
+  "Showing a track: bringing two lights into line (leading lights) or following a sector light keeps the ship on a given track.": {
+    "en": "Showing a track: bringing two lights into line (leading lights) or following a sector light keeps the ship on a given track."
+  },
+  "Shows continuously with a steady intensity.": {
+    "en": "Shows continuously with a steady intensity."
+  },
+  "Some national charts give the luminous or geographic range instead of the nominal range; check the chart's notes to see which one is given.": {
+    "en": "Some national charts give the luminous or geographic range instead of the nominal range; check the chart's notes to see which one is given."
+  },
+  "South": {
+    "en": "South"
+  },
+  "South cardinal": {
+    "en": "South cardinal"
+  },
+  "South of the danger": {
+    "en": "South of the danger"
+  },
+  "Special mark": {
+    "en": "Special mark"
+  },
+  "Standard atmospheric refraction is assumed. The result says nothing about fog, rain, background lighting or the intensity of the light; those decide the luminous range.": {
+    "en": "Standard atmospheric refraction is assumed. The result says nothing about fog, rain, background lighting or the intensity of the light; those decide the luminous range."
+  },
+  "Starboard-hand mark": {
+    "en": "Starboard-hand mark"
+  },
+  "Starboard-hand mark (Region A)": {
+    "en": "Starboard-hand mark (Region A)"
+  },
+  "The average of the two": {
+    "en": "The average of the two"
+  },
+  "The basic light rhythms": {
+    "en": "The basic light rhythms"
+  },
+  "The bracket is one period: three flashes and the eclipses between and after them take 10 seconds together. A representative entry, not a real light.": {
+    "en": "The bracket is one period: three flashes and the eclipses between and after them take 10 seconds together. A representative entry, not a real light."
+  },
+  "The characteristic of a major coastal light mostly tells you which light you are looking at. The lights of buoys and beacons also tell you the safe side to pass or where a danger lies. Turkish waters are in IALA Region A.": {
+    "en": "The characteristic of a major coastal light mostly tells you which light you are looking at. The lights of buoys and beacons also tell you the safe side to pass or where a danger lies. Turkish waters are in IALA Region A."
+  },
+  "The chart shows which part of the line is to be used; outside that part the line does not guarantee safe water.": {
+    "en": "The chart shows which part of the line is to be used; outside that part the line does not guarantee safe water."
+  },
+  "The definitions in this lesson are based on the following publications.": {
+    "en": "The definitions in this lesson are based on the following publications."
+  },
+  "The elevation of a light is not the height of its tower: the charted value is the height of the light source above the height datum, not the height of the structure from base to top.": {
+    "en": "The elevation of a light is not the height of its tower: the charted value is the height of the light source above the height datum, not the height of the structure from base to top."
+  },
+  "The elevation of the light is 30 m, the height of eye on the bridge is 15 m and the nominal range of the light is 12 nautical miles.": {
+    "en": "The elevation of the light is 30 m, the height of eye on the bridge is 15 m and the nominal range of the light is 12 nautical miles."
+  },
+  "The farthest you can expect to see a light is the smaller of the geographic range and that night's luminous range.": {
+    "en": "The farthest you can expect to see a light is the smaller of the geographic range and that night's luminous range."
+  },
+  "The geographic range is about 19.45 nautical miles. With a nominal range of 12 nautical miles, you cannot assume you will see the light from 19 miles even on a clear night; find that night's luminous range from the diagram in the List of Lights and use the smaller of the two ranges.": {
+    "en": "The geographic range is about 19.45 nautical miles. With a nominal range of 12 nautical miles, you cannot assume you will see the light from 19 miles even on a clear night; find that night's luminous range from the diagram in the List of Lights and use the smaller of the two ranges."
+  },
+  "The geographic range is the sum of the horizon distances of the light and of the eye. With standard atmospheric refraction the approximate relation is D = 2.08 × (√H + √h), where D is in nautical miles and H, the elevation of the light, and h, the height of eye, are in meters. Try your own values in the calculator.": {
+    "en": "The geographic range is the sum of the horizon distances of the light and of the eye. With standard atmospheric refraction the approximate relation is D = 2.08 × (√H + √h), where D is in nautical miles and H, the elevation of the light, and h, the height of eye, are in meters. Try your own values in the calculator."
+  },
+  "The geometric range set by the curvature of the Earth, the elevation of the light and the observer's height of eye.": {
+    "en": "The geometric range set by the curvature of the Earth, the elevation of the light and the observer's height of eye."
+  },
+  "The larger limit applies": {
+    "en": "The larger limit applies"
+  },
+  "The light changes color; for example, Al Fl WR flashes white and red alternately.": {
+    "en": "The light changes color; for example, Al Fl WR flashes white and red alternately."
+  },
+  "The light is on for longer than it is off; it is eclipsed briefly at regular intervals.": {
+    "en": "The light is on for longer than it is off; it is eclipsed briefly at regular intervals."
+  },
+  "The light shows a Morse letter; A is one short and one long appearance of light.": {
+    "en": "The light shows a Morse letter; A is one short and one long appearance of light."
+  },
+  "The period is the duration of the whole sequence, flashes and eclipses included.": {
+    "en": "The period is the duration of the whole sequence, flashes and eclipses included."
+  },
+  "The period is the most often misread element. 10s does not mean that each flash lasts 10 seconds or that there are 10 seconds between flashes: the three flashes and the eclipses between and after them take 10 seconds together, and then the sequence repeats exactly. To time the period, measure from the first flash of one group to the first flash of the next.": {
+    "en": "The period is the most often misread element. 10s does not mean that each flash lasts 10 seconds or that there are 10 seconds between flashes: the three flashes and the eclipses between and after them take 10 seconds together, and then the sequence repeats exactly. To time the period, measure from the first flash of one group to the first flash of the next."
+  },
+  "The range set by the intensity of the light alone, in standard conditions with a meteorological visibility of 10 nautical miles. This is the range given in Admiralty publications.": {
+    "en": "The range set by the intensity of the light alone, in standard conditions with a meteorological visibility of 10 nautical miles. This is the range given in Admiralty publications."
+  },
+  "The range set by the intensity of the light and the meteorological visibility at the time; it is read from the luminous range diagram in the List of Lights.": {
+    "en": "The range set by the intensity of the light and the meteorological visibility at the time; it is read from the luminous range diagram in the List of Lights."
+  },
+  "The rhythm identifies the light, the color and the type of mark tell you what it means, and the chart and the bearing put the light you see in the right place.": {
+    "en": "The rhythm identifies the light, the color and the type of mark tell you what it means, and the chart and the bearing put the light you see in the right place."
+  },
+  "The smaller limit applies": {
+    "en": "The smaller limit applies"
+  },
+  "The smaller of the luminous range, set by brightness, and the geographic range, set by the horizon (D = 2.08 × (√H + √h)), decides.": {
+    "en": "The smaller of the luminous range, set by brightness, and the geographic range, set by the horizon (D = 2.08 × (√H + √h)), decides."
+  },
+  "The whole group, flashes and eclipses together, repeats every 10 seconds": {
+    "en": "The whole group, flashes and eclipses together, repeats every 10 seconds"
+  },
+  "These are the common mistakes when working with lights.": {
+    "en": "These are the common mistakes when working with lights."
+  },
+  "This method lets you check by eye that you are on the line even without GNSS, but it does not replace checks of depth, traffic and other safety factors.": {
+    "en": "This method lets you check by eye that you are on the line even without GNSS, but it does not replace checks of depth, traffic and other safety factors."
+  },
+  "This notation follows section P of IHO INT 1 (Chart 1) and the Admiralty List of Lights and Fog Signals.": {
+    "en": "This notation follows section P of IHO INT 1 (Chart 1) and the Admiralty List of Lights and Fog Signals."
+  },
+  "Three kinds of range": {
+    "en": "Three kinds of range"
+  },
+  "Time the period by counting seconds or with a stopwatch: measure from the first flash of one group to the first flash of the next, over several cycles.": {
+    "en": "Time the period by counting seconds or with a stopwatch: measure from the first flash of one group to the first flash of the next, over several cycles."
+  },
+  "Two eclipses form a group in each period.": {
+    "en": "Two eclipses form a group in each period."
+  },
+  "Two flashes follow each other, then comes a longer eclipse.": {
+    "en": "Two flashes follow each other, then comes a longer eclipse."
+  },
+  "Two flashes, then a separate single flash.": {
+    "en": "Two flashes, then a separate single flash."
+  },
+  "UQ": {
+    "en": "UQ"
+  },
+  "Ultra quick": {
+    "en": "Ultra quick"
+  },
+  "Unless stated otherwise, sector limits are given as true bearings of the light from seaward. If the chart gives the white sector as 085°–095°, a ship that sees the light bearing between 085° and 095° is in the white sector; the ship is west of the light.": {
+    "en": "Unless stated otherwise, sector limits are given as true bearings of the light from seaward. If the chart gives the white sector as 085°–095°, a ship that sees the light bearing between 085° and 095° is in the white sector; the ship is west of the light."
+  },
+  "VQ": {
+    "en": "VQ"
+  },
+  "VQ(3) 5s": {
+    "en": "VQ(3) 5s"
+  },
+  "VQ(6)+LFl 10s": {
+    "en": "VQ(6)+LFl 10s"
+  },
+  "VQ(9) 10s": {
+    "en": "VQ(9) 10s"
+  },
+  "Very quick": {
+    "en": "Very quick"
+  },
+  "Very quick type": {
+    "en": "Very quick type"
+  },
+  "W 085°–095°": {
+    "en": "W 085°–095°"
+  },
+  "W, R, G, Y, Bu": {
+    "en": "W, R, G, Y, Bu"
+  },
+  "West": {
+    "en": "West"
+  },
+  "West cardinal": {
+    "en": "West cardinal"
+  },
+  "West of the danger": {
+    "en": "West of the danger"
+  },
+  "What a light characteristic is": {
+    "en": "What a light characteristic is"
+  },
+  "What lights are for": {
+    "en": "What lights are for"
+  },
+  "When a light first rises above the horizon or dips below it, its distance from the ship is about the geographic range; together with the bearing of the light this gives a position.": {
+    "en": "When a light first rises above the horizon or dips below it, its distance from the ship is about the geographic range; together with the bearing of the light this gives a position."
+  },
+  "When the ship moves off the line, the distant rear light shifts less than the nearer front light. So, looking towards the lights, if the rear light appears to the left of the front light, the ship is to port of the line and alters course to starboard to regain it; if it appears to the right, the ship is to starboard of the line and alters course to port.": {
+    "en": "When the ship moves off the line, the distant rear light shifts less than the nearer front light. So, looking towards the lights, if the rear light appears to the left of the front light, the ship is to port of the line and alters course to starboard to regain it; if it appears to the right, the ship is to starboard of the line and alters course to port."
+  },
+  "When you judge how far away a light can be seen, keep three different kinds of range apart.": {
+    "en": "When you judge how far away a light can be seen, keep three different kinds of range apart."
+  },
+  "Whether the light is fixed, flashing, occulting and so on": {
+    "en": "Whether the light is fixed, flashing, occulting and so on"
+  },
+  "Which cardinal mark shows the light character 'VQ(6)+LFl 10s'?": {
+    "en": "Which cardinal mark shows the light character 'VQ(6)+LFl 10s'?"
+  },
+  "White": {
+    "en": "White"
+  },
+  "White, Fl(2)": {
+    "en": "White, Fl(2)"
+  },
+  "White, red, green, yellow, blue": {
+    "en": "White, red, green, yellow, blue"
+  },
+  "White; Iso, Oc, LFl 10s or Mo(A)": {
+    "en": "White; Iso, Oc, LFl 10s or Mo(A)"
+  },
+  "Yellow; a rhythm that cannot be confused with the other marks": {
+    "en": "Yellow; a rhythm that cannot be confused with the other marks"
+  },
+  "Yellow; a yellow X as topmark": {
+    "en": "Yellow; a yellow X as topmark"
+  },
+  "You are on the leading line.": {
+    "en": "You are on the leading line."
+  },
+  "You are to port of the line. Alter to starboard to regain it.": {
+    "en": "You are to port of the line. Alter to starboard to regain it."
+  },
+  "You are to starboard of the line. Alter to port to regain it.": {
+    "en": "You are to starboard of the line. Alter to port to regain it."
+  },
+  "Özel işaret": {
+    "fill": false,
+    "en": "Special mark"
+  },
+  "Özel işaretler ve kullanım mantığı": {
+    "fill": false,
+    "en": "Special marks and how they are used"
+  },
+  "İzole tehlike, emniyetli su ve özel işaretler": {
+    "fill": false,
+    "en": "Isolated danger, safe water and special marks"
+  }
+}

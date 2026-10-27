@@ -11,6 +11,12 @@ import {
 } from "@/utils/routeTranslation";
 import { MOTION_SECONDS, useReducedMotion } from "@/hooks/useAppMotion";
 
+function isSplashVisible(): boolean {
+  if (typeof document === "undefined") return false;
+  const splash = document.getElementById("splash-root");
+  return !!splash && !splash.classList.contains("splash-hide");
+}
+
 export const RouteTranslationGate = () => {
   const reducedMotion = useReducedMotion();
   const location = useLocation();
@@ -24,6 +30,20 @@ export const RouteTranslationGate = () => {
   const [hardReleased, setHardReleased] = useState(false);
   const [gateOpenedAt, setGateOpenedAt] = useState<number | null>(null);
   const warnedRef = useRef(false);
+  // The launch splash already covers this wait; never paint the gate over it.
+  const [splashVisible, setSplashVisible] = useState(() => isSplashVisible());
+  useEffect(() => {
+    if (!splashVisible) return;
+    const onHidden = () => setSplashVisible(false);
+    window.addEventListener("splash:hidden", onHidden);
+    const poll = window.setInterval(() => {
+      if (!isSplashVisible()) onHidden();
+    }, 250);
+    return () => {
+      window.removeEventListener("splash:hidden", onHidden);
+      window.clearInterval(poll);
+    };
+  }, [splashVisible]);
   const routeToken = createRouteTranslationToken(
     currentLanguage,
     location.key,
@@ -36,7 +56,7 @@ export const RouteTranslationGate = () => {
     routeToken,
     readyRouteTranslation,
   );
-  const showGate = translating && !hardReleased && releasedToken !== routeToken;
+  const showGate = !splashVisible && translating && !hardReleased && releasedToken !== routeToken;
 
   // Independent safety net: this component mounts before a lazy page does. If
   // a route chunk, auth boundary or translation request stalls, release the

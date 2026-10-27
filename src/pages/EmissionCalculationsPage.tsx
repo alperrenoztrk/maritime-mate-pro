@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calculator, Ship, TrendingDown, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationGridScreen } from "@/components/ui/calculation-grid";
+import { CalculationPage } from "@/components/ui/calculation-list";
 
 const carbonFactors: Record<string, number> = {
   "HFO": 3.114,
@@ -110,8 +110,7 @@ export default function EmissionCalculationsPage() {
 
   return (
     <MobileLayout>
-      <CalculationGridScreen
-        eyebrow="Emission"
+      <CalculationPage
         title="CO₂, CII & EEXI Calculations"
       >
         <Card className="bg-card border-border shadow-lg">
@@ -327,7 +326,7 @@ export default function EmissionCalculationsPage() {
             </Tabs>
           </CardContent>
         </Card>
-      </CalculationGridScreen>
+      </CalculationPage>
     </MobileLayout>
   );
 }

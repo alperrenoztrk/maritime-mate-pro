@@ -467,7 +467,7 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Tek Harfli İşaretlerin Tamamı (A-Z)",
         content:
-          "Tek harfli işaretler, ICS'in en acil ve en sık kullanılan bölümüdür; tamamı ezbere bilinmelidir. Aşağıda 26 harfin tümü verilmiştir. Bazı harflerin, av sahasına yakın balıkçı tekneleri için ayrı bir anlamı vardır (G, L, P, Z) — sınavda ve sahada en çok karıştırılan ayrım budur.",
+          "Tek harfli işaretler, ICS'in en acil ve en sık kullanılan bölümüdür; tamamı ezbere bilinmelidir. Aşağıda 26 harfin tümü verilmiştir. Bazı harflerin, av sahasına yakın balıkçı tekneleri için ayrı bir anlamı vardır (G, P, Z) — sınavda ve sahada en çok karıştırılan ayrım budur.",
         bulletPoints: [
           "A (Alfa): Dalgıcım var; yavaş hızla ve benden uzak durarak geçin.",
           "B (Bravo): Tehlikeli yük alıyorum, boşaltıyorum veya taşıyorum.",
@@ -480,7 +480,7 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
           "I (India): Rotamı iskeleye değiştiriyorum.",
           "J (Juliett): Yangınım var ve tehlikeli yük taşıyorum; iyice uzak durun.",
           "K (Kilo): Sizinle haberleşmek istiyorum.",
-          "L (Lima): Geminizi derhal durdurun. (Balıkçı: 'Ağlarım engele takıldı.')",
+          "L (Lima): Geminizi derhal durdurun.",
           "M (Mike): Gemim durdu; suya göre yol almıyor.",
           "N (November): Olumsuz — 'Hayır'.",
           "O (Oscar): Denize adam düştü.",
@@ -505,7 +505,7 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
           "Rakam flamaları: 0-9, sivri (tapered) biçimlidir.",
           "1., 2. ve 3. ikame flaması — üçgen biçimli; yalnız kendi sınıfındaki bayrağı tekrarlar.",
           "Cevap flaması yarıya çekili: 'İşaretinizi gördüm, henüz çözemedim.'",
-          "Cevap flaması tam çekili: 'Anladım.' İndirilmesi haberleşmenin bittiğini bildirir.",
+          "Cevap flaması tam çekili: 'Anladım.' Son hoist'ten sonra gönderen istasyonun cevap flamasını tek başına çekmesi işaretin tamamlandığını bildirir.",
           "Cevap flaması rakam grupları arasında ondalık ayracı olarak da kullanılır.",
         ],
       },
@@ -550,7 +550,7 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
     ],
     keyPoints: [
       "International Code of Signals dil engelini aşan standart işaret kodudur.",
-      "26 harfin tek harfli anlamı ezbere bilinmelidir; G, L, P ve Z'nin balıkçı teknesine özel ikinci anlamı vardır.",
+      "26 harfin tek harfli anlamı ezbere bilinmelidir; G, P ve Z'nin balıkçı teknelerine özel ikinci anlamı vardır.",
       "İkame flaması yalnız kendi sınıfındaki (harf/rakam) bayrağı tekrarlar; üç ikame ile tek takım yeter.",
       "Mors zamanlaması oransaldır: nokta 1, çizgi 3, harf arası 3, kelime arası 7 birim.",
       "Mors lambası telsiz arızasında ve karartmada çalışan tek görsel yöntemdir.",

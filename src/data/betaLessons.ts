@@ -1,3 +1,5 @@
+import learningDepthSources from "./learningDepthSources.json";
+import learningDepthReviews from "./learningDepthReviews.json";
 import learningCaseStudies from "./learningCaseStudies.json";
 import rulePlacements from "@/data/curriculumRulePlacement.json";
 import type { LucideIcon } from "lucide-react";
@@ -21,6 +23,7 @@ import {
 } from "@/data/curriculumHierarchy";
 import { getTopicRules } from "@/data/courseContent/rules";
 import type { RuleGroup } from "@/data/courseContent/types";
+import type { LessonFigureId } from "@/data/lessonFigures";
 
 /**
  * "Dersler Beta" birleşik içerik katmanı.
@@ -42,6 +45,8 @@ export interface BetaSection {
   imageAlt?: string;
   example?: { problem: string; steps?: string[]; solution?: string; result?: string };
   table?: { headers: string[]; rows: string[][] };
+  references?: Array<{ title: string; url: string }>;
+  figure?: LessonFigureId;
 }
 
 export interface BetaTopic {
@@ -167,12 +172,13 @@ const mergeRulesIntoTopic = (categoryKey: string, topic: BetaTopic): BetaTopic =
   const assignments = getRuleIntegrationAssignments(categoryKey).filter(
     (assignment) => assignment.topicId === topic.id,
   );
+  const depthReview = learningDepthReviews.find((entry) => entry.topicId === topic.id);
   const workedCase = learningCaseStudies.find((entry) => entry.topicId === topic.id);
-  if (assignments.length === 0 && !workedCase) return topic;
+  if (assignments.length === 0 && !workedCase && !depthReview) return topic;
 
   return {
     ...topic,
-    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...integratedRuleSections(topic.id, assignments)],
+    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...(depthReview ? [{ ...depthReview.section, references: learningDepthSources[categoryKey as keyof typeof learningDepthSources] }] : []), ...integratedRuleSections(topic.id, assignments)],
   };
 };
 
@@ -379,6 +385,9 @@ function mapDeckTopic(
         : undefined,
       image: section.image,
       imageAlt: section.imageAlt,
+      table: section.table,
+      example: section.example,
+      figure: section.figure,
     })),
     keyPoints: topic.keyPoints,
   };

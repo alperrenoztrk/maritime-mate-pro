@@ -57,21 +57,21 @@ export function validateCalculationInputs(
   inputs.forEach((input) => {
     const raw = rawValues[input.key]?.trim() ?? "";
     if (raw === "") {
-      if (isRequired(input)) errors[input.key] = "Bu alan zorunludur.";
+      if (isRequired(input)) errors[input.key] = "This field is required.";
       return;
     }
 
     const value = Number(raw.replace(",", "."));
     if (!Number.isFinite(value)) {
-      errors[input.key] = "Geçerli bir sayı girin.";
+      errors[input.key] = "Enter a valid number.";
       return;
     }
     if (input.min !== undefined && value < input.min) {
-      errors[input.key] = `Minimum value ${input.min}${input.unit ? ` ${input.unit}` : ""}.`;
+      errors[input.key] = `The minimum value is ${input.min}${input.unit ? ` ${input.unit}` : ""}.`;
       return;
     }
     if (input.max !== undefined && value > input.max) {
-      errors[input.key] = `Maximum value ${input.max}${input.unit ? ` ${input.unit}` : ""}.`;
+      errors[input.key] = `The maximum value is ${input.max}${input.unit ? ` ${input.unit}` : ""}.`;
       return;
     }
 
@@ -107,26 +107,26 @@ export function buildCalculationRecord(
 
   const checks: CalculationCheck[] = [
     {
-      label: "Girdi bütünlüğü",
+      label: "Input completeness",
       status: inputs.length >= (entry.inputs ?? []).filter(isRequired).length ? "pass" : "warning",
-      detail: `${inputs.length}/${(entry.inputs ?? []).length} fields processed as numbers.`,
+      detail: `${inputs.length}/${(entry.inputs ?? []).length} fields read as numbers.`,
     },
     {
-      label: "formula trace",
+      label: "Formula trace",
       status: entry.formula.trim() ? "pass" : "error",
-      detail: entry.formula.trim() ? "Kullanılan bağıntı kayda eklendi." : "Formül metni eksik.",
+      detail: entry.formula.trim() ? "The formula used is included in the record." : "The formula text is missing.",
     },
     {
-      label: "Kaynak izi",
+      label: "Source reference",
       status: entry.source?.code ? "pass" : "warning",
-      detail: entry.source?.code ?? "Bu hesap için kaynak referansı belirtilmemiş.",
+      detail: entry.source?.code ?? "No source reference is given for this calculation.",
     },
     {
-      label: "Sayısal çıktı",
+      label: "Numerical output",
       status: hasCalculationError(results) ? "error" : "pass",
       detail: hasCalculationError(results)
-        ? "Hesap motoru hata veya sonlu olmayan çıktı bildirdi."
-        : `${results.length} result rows produced.`,
+        ? "The calculation engine reported an error or a non-finite result."
+        : `${results.length} result line(s) produced.`,
     },
   ];
 
@@ -165,7 +165,7 @@ export function calculationRecordToText(record: CalculationRecord): string {
     "RESULTS",
     ...record.results.map((result) => `${result.label}: ${result.value}`),
     "",
-    "CALCULATION TRACE",
+    "WORKING",
     ...record.steps.flatMap((step, index) => [
       `${index + 1}. ${step.title}`,
       step.expression ? `   ${step.expression}` : "",

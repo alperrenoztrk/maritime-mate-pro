@@ -2998,7 +2998,7 @@ IMO hasarlı stabilite kriterlerini kontrol et`,
             description: "Kaybedilen kaldırma hacmi"
           },
           {
-            formula: "KGyeni = (Δeski × KGeski + wsu × kgsu) / Δyeni",
+            formula: "KGnew = (Δold × KGold + wwater × kgwater) / Δnew",
             description: "Yeni KG hesabı (eklenen ağırlık yöntemi)"
           },
           {
@@ -3232,7 +3232,7 @@ Burada:
             description: "Su geçiş debisi (m³/s)"
           },
           {
-            formula: "Heelazalma = (w × d) / (Δ × GM)",
+            formula: "Heelreduction = (w × d) / (Δ × GM)",
             description: "Cross-flooding ile heel düzeltmesi"
           }
         ],
@@ -3695,11 +3695,11 @@ Stabilite kitapçığında verilen limitler, geminin güvenli çalışması içi
 - Downflooding açısı düşükse emniyet rezervi azalır`,
         formulas: [
           {
-            formula: "KGlim = KM - GMgerekli",
+            formula: "KGlim = KM - GMreq",
             description: "Limit KG hesabının temel ilişkisi"
           },
           {
-            formula: "GMgerekli = GMmin + FSM/Δ",
+            formula: "GMreq = GMmin + FSM/Δ",
             description: "Serbest yüzey düzeltmesi ile gerekli GM"
           }
         ],
@@ -3845,7 +3845,7 @@ IMO minimum GM₀ ≥ 0,15 m kriterini sağlıyor; ancak güvenlik marjı çok d
             description: "Kritik GM hesabı"
           },
           {
-            formula: "VCGmax = KM - GMgerekli",
+            formula: "VCGmax = KM - GMreq",
             description: "Maksimum izin verilen VCG"
           },
           {
@@ -3912,7 +3912,7 @@ GMeff = 1,40 − 0,045 = 1,355 m
 Sıralı boşaltma, serbest yüzey etkisini dört kat azaltır ve stabilite marjını önemli ölçüde korur.`,
         formulas: [
           {
-            formula: "FSCtoplam = Σ(ρᵢ × iᵢ) / Δ",
+            formula: "FSCtotal = Σ(ρᵢ × iᵢ) / Δ",
             description: "Toplam serbest yüzey düzeltmesi"
           },
           {
@@ -4133,7 +4133,7 @@ VGM (Verified Gross Mass) zorunluluğu, SOLAS VI/2 uyarınca 2016'dan itibaren u
 **Bay Plan Optimizasyonu**, konteyner gemilerinde stabilite yönetiminin pratik aracıdır. Temel prensipler şunlardır: ağır konteynerler mümkün olduğunca alt katmanlara yerleştirilir (VCG düşürülür); reefer konteynerler enerji kaynaklarına yakın konumlandırılır; tehlikeli madde içeren konteynerler IMDG ayrıştırma kurallarına uygun biçimde istiflenir ve boşaltma limanı sırasına göre erişilebilirlik planlanır.`,
         formulas: [
           {
-            formula: "VCGistif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)",
+            formula: "VCGstack = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)",
             description: "İstif VCG hesabı"
           },
           {
@@ -4522,7 +4522,7 @@ GM₀ ≈ 0,180 / sin(10°) = 0,180 / 0,1736 = 1,04 m → 1,04 ≥ 0,15 ✓ KAR�
 Bu geminin iyi bir stabilite profili vardır. GZmax değeri yeterince büyük (0,520 m), maksimum GZ açısı uygun (30°) ve GZ eğrisi altındaki alanlar IMO kriterlerini rahat aşmaktadır. GM₀ = 1,04 m, güvenli ve konforlu seyir aralığındadır.`,
         formulas: [
           {
-            formula: "Alan = Σ [(GZ₁ + GZ₂) / 2 × Δθrad]",
+            formula: "Area = Σ [(GZ₁ + GZ₂) / 2 × Δθrad]",
             description: "Trapez kuralı ile GZ eğrisi altı alan (m·rad)"
           },
           {

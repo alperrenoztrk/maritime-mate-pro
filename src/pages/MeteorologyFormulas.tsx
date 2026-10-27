@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sigma, Wind, Waves, Thermometer, CloudRain } from "lucide-react";
 
@@ -30,9 +31,9 @@ const meteorologyFormulas = [
     icon: Waves,
     formula: "L = (g · T²) / (2π)",
     variables: [
-      "L: Dalgaboyu (m)",
+      "L: wavelength (m)",
       "g: gravitational acceleration = 9.81 m/s²",
-      "T: Dalga periyodu (s)",
+      "T: wave period (s)",
       "π ≈ 3.14159"
     ],
     note: "Deep water: Depth > L/2"
@@ -43,10 +44,10 @@ const meteorologyFormulas = [
     formula: "C = L / T = (g · T) / (2π) ≈ 1.56 · T",
     variables: [
       "C: wave speed (m/s)",
-      "L: Dalgaboyu (m)",
-      "T: Dalga periyodu (s)"
+      "L: wavelength (m)",
+      "T: wave period (s)"
     ],
-    note: "Knot cinsinden: C (kn) ≈ 3.03 · T"
+    note: "In knots: C (kn) ≈ 3.03 · T"
   },
   {
     title: "Beaufort Wind Speed",
@@ -94,11 +95,7 @@ export default function MeteorologyFormulasPage() {
           </div>
         </div>
 
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-            Meteorology Formulas
-          </h1>
-        </div>
+        <PageHeader className="mb-5" title="Meteorology Formulas" />
 
         <div className="grid gap-6">
           {meteorologyFormulas.map((formula, index) => (

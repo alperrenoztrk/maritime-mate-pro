@@ -22,7 +22,7 @@ export const engineRoomOps: CourseTopic = {
       group: "Operating Parameters",
       formula: "FCrate = FCtotal / Voyage time",
       variables: [
-        { symbol: "FCtoplam", label: "Total fuel consumption", unit: "tonnes" },
+        { symbol: "FCtotal", label: "Total fuel consumption", unit: "tonnes" },
         { symbol: "Voyage time", label: "Elapsed time", unit: "days or hours" },
         { symbol: "FCrate", label: "Consumption rate", unit: "tonnes/day or tonnes/hour" },
       ],

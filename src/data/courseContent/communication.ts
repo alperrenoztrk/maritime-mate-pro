@@ -118,8 +118,8 @@ export const communication: CourseTopic = {
       group: "Signal Level",
       formula: "EIRP (dBW) = P_tx + G_antenna − L_loss",
       variables: [
-        { symbol: "Pverici", label: "Transmitter power", unit: "dBW" },
-        { symbol: "Ganten", label: "Antenna gain", unit: "dBi" },
+        { symbol: "Ptx", label: "Transmitter power", unit: "dBW" },
+        { symbol: "Gant", label: "Antenna gain", unit: "dBi" },
         { symbol: "L_loss", label: "Line/connector loss", unit: "dB" },
       ],
       source: { code: "EIRP definition (antenna link budget)" },

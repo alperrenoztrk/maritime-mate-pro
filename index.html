@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-launch-pending>
   <head>
     <meta charset="UTF-8" />
     <!-- viewport-fit=cover is REQUIRED for env(safe-area-inset-*) to report real
@@ -184,7 +184,9 @@
       <div class="splash-tag" translate="no" lang="en">
 </div>
       <style>
-        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:-apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif;transition:opacity .16s cubic-bezier(.32,.72,0,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
+        html[data-launch-pending] #root{visibility:hidden;pointer-events:none;}
+        html[data-launch-pending]{overflow:hidden;background:#020a14;}
+        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2147483000;overflow:hidden;width:100%;height:100%;min-height:100dvh;background:#020a14;isolation:isolate;font-family:-apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif;transition:opacity .16s cubic-bezier(.32,.72,0,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
         .splash-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #0a2a55 0%, #041530 55%, #020a14 100%);}
         .splash-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(218,165,32,0.10), transparent 62%);opacity:0;animation:splash-glow 1.4s cubic-bezier(.4,0,.2,1) .5s forwards;}
         .splash-sea{position:absolute;left:0;right:0;bottom:0;height:47%;opacity:0;background:linear-gradient(180deg, rgba(9,38,74,0) 0%, rgba(18,64,118,.38) 30%, rgba(15,56,105,.55) 55%, rgba(5,22,46,.85) 100%);animation:sea-in .7s ease 2.5s forwards;}
@@ -218,8 +220,8 @@
         .ship-track{position:absolute;inset:0;animation:ship-sail 1.15s cubic-bezier(.5,.05,.85,.4) 3.05s forwards;will-change:transform;}
         .ship-lift{position:absolute;inset:0;transform-origin:50% 62%;animation:ship-pop .55s cubic-bezier(.34,1.45,.45,1) 2.6s forwards;will-change:transform;}
         .ship-bob{position:absolute;inset:0;transform-origin:50% 74%;animation:ship-bob 2.3s ease-in-out 2.6s infinite alternate;}
-        .ship-flat{position:absolute;inset:0;width:100%;height:100%;opacity:.92;animation:flat-out .22s ease-out 2.6s forwards;}
-        .ship-solid{position:absolute;inset:0;opacity:0;transform:perspective(900px) rotateY(-55deg) rotateX(9deg) scale(.94);animation:solid-in .55s cubic-bezier(.3,1.3,.5,1) 2.6s forwards;filter:drop-shadow(0 12px 16px rgba(2,10,22,.5));}
+        .ship-flat{position:absolute;inset:0;width:100%;height:100%;opacity:.92;animation:flat-out .14s ease-in 2.6s forwards;}
+        .ship-solid{position:absolute;inset:0;opacity:0;transform:perspective(900px) rotateY(-55deg) rotateX(9deg) scale(.94);animation:solid-in .5s cubic-bezier(.3,1.3,.5,1) 2.72s forwards;filter:drop-shadow(0 12px 16px rgba(2,10,22,.5));}
         .ship-solid svg{display:block;width:100%;height:100%;}
         .ship-wake{position:absolute;left:-4%;right:38%;bottom:16%;height:6%;border-radius:99px;opacity:0;background:linear-gradient(90deg,rgba(214,235,255,0),rgba(214,235,255,.5) 55%,rgba(255,255,255,.9));filter:blur(1px);transform-origin:right center;animation:wake-in .4s ease 3.15s forwards,wake-pulse 1s ease-in-out 3.15s infinite alternate;}
         .ship-wake::before{content:"";position:absolute;right:8%;top:-130%;width:55%;height:85%;border-radius:99px;background:linear-gradient(90deg,rgba(214,235,255,0),rgba(255,255,255,.65));}
@@ -248,7 +250,7 @@
         @keyframes ship-in{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);}}
         @keyframes ship-pop{to{transform:scale(2.3) translate(-24%,-6%);}}
         @keyframes flat-out{to{opacity:0;}}
-        @keyframes solid-in{to{opacity:1;transform:perspective(900px) rotateY(-14deg) rotateX(4deg) scale(1);}}
+        @keyframes solid-in{20%{opacity:1;}to{opacity:1;transform:perspective(900px) rotateY(-14deg) rotateX(4deg) scale(1);}}
         @keyframes ship-sail{to{transform:translateX(92vw);}}
         @keyframes ship-bob{from{transform:rotate(-1.4deg) translateY(1.2%);}to{transform:rotate(1.8deg) translateY(-1.4%);}}
         @keyframes wake-in{to{opacity:.85;}}
@@ -276,7 +278,7 @@
       </style>
     </div>
 
-    <div id="root"></div>
+    <div id="root" inert aria-hidden="true"></div>
     <!-- Splash watchdog: it keeps a user from being stranded on the splash
          screen when the app bundle fails to open. A classic script in its own
          file, so an error that kills the module bundle cannot affect it and the

@@ -115,3 +115,16 @@ Uygulamadaki otomatik kontroller: `scripts/i18n/sense-error-rules.mjs`
 | Türkçe | Önerilen | Durum |
 |---|---|---|
 | Zamanla boylam | Longitude from Time | [?? TERİM: Zamanla boylam] — kullanıcı onayı bekliyor |
+| Mandar (bayrak) | Hoist (fly: uç taraf) | ICS bayrak tarifleri — kullanıcı onayı bekliyor |
+| Flama / Rakam flaması | Pennant / Numeral pennant | ICS — kullanıcı onayı bekliyor |
+| İkame flaması (1./2./3.) | First / Second / Third substitute | ICS — kullanıcı onayı bekliyor |
+| Cevap flaması | Answering pennant | ICS — kullanıcı onayı bekliyor |
+| Kılavuz (kaptan) | Pilot | ICS G/H — kullanıcı onayı bekliyor |
+| Römorkör | Tug | ICS Z — kullanıcı onayı bekliyor |
+| Demir tarıyor | I am dragging my anchor / dragging anchor | ICS Y — kullanıcı onayı bekliyor |
+| Kumandadan aciz | ICS F: "I am disabled"; COLREG: not under command | Bağlama göre — kullanıcı onayı bekliyor |
+| Mors lambası | Signalling lamp (Aldis lamp) | kullanıcı onayı bekliyor |
+| Sert gemi / Yumuşak gemi | Stiff ship / Tender ship | kullanıcı onayı bekliyor |
+| Rulo (yalpa) periyodu | Rolling period | kullanıcı onayı bekliyor |
+| Çevresel kuvvet (demirleme) | Environmental force | kullanıcı onayı bekliyor |
+| Hortum erişimi | Hose reach | kullanıcı onayı bekliyor |

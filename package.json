@@ -60,6 +60,7 @@
     "i18n:audit": "node --import tsx scripts/i18n/audit-rendered.mjs",
     "i18n:audit-terms": "node --import tsx scripts/i18n/audit-terms.mjs",
     "i18n:scan-senses": "node scripts/i18n/scan-sense-errors.mjs",
+    "i18n:scan-turkish": "node --import tsx scripts/i18n/scan-turkish-leftovers.mjs",
     "i18n:paragraphs": "node scripts/i18n/extract-paragraphs.mjs && node --import tsx scripts/i18n/build-paragraph-pack.mjs",
     "i18n:repair": "node --import tsx scripts/i18n/repair-terms.mjs",
     "i18n:repair-en": "node scripts/i18n/repair-english-terminology.mjs",
@@ -68,6 +69,10 @@
     "test:i18n-barrier": "node --import tsx --test src/utils/routeTranslation.test.ts src/utils/staticTranslations.test.ts",
     "test:ui-copy": "node --import tsx --test src/i18n/coreUiTranslations.test.ts",
     "test:navigation-ui": "node --import tsx --test src/lib/appNavigation.test.ts",
+    "test:seakeeping": "node --import tsx --test src/lib/seakeeping.test.ts",
+    "test:study-activity": "node --import tsx --test src/lib/studyActivity.test.ts",
+    "test:page-loading": "node --import tsx --test src/lib/lazyWithReload.test.ts",
+    "test:library": "node --import tsx --test src/data/libraryResourceLinks.test.ts",
     "test:search-ui": "node --import tsx --test src/lib/appSearch.test.ts",
     "i18n:all": "npm run i18n:extract && npm run i18n:generate && npm run i18n:check -- --strict",
     "i18n:verify": "npm run test:i18n-extractor && npm run test:i18n-terms && npm run test:i18n-barrier && npm run i18n:check -- --strict && npm run i18n:audit-terms -- --lang=en --strict --max-errors=0 && npm run i18n:audit-terms -- --strict --max-errors=0 && npm run i18n:repair-en -- --check && npm run i18n:scan-senses -- --check && node scripts/i18n/extract-paragraphs.mjs && node --import tsx scripts/i18n/build-paragraph-pack.mjs --check && node scripts/i18n/build-learning-pack.mjs --check && node scripts/i18n/build-terminology-overrides.mjs --check && npm run i18n:leftovers -- --check",
@@ -80,7 +85,10 @@
     "check:learning-ui": "node scripts/check-learning-ui.mjs",
     "test:learning-progress": "node --import tsx --test src/utils/learningProgress.test.ts && node scripts/check-learning-progress-db.mjs",
     "check:learning-content": "node scripts/audit-learning-content.mjs --check",
-    "i18n:overrides": "node scripts/i18n/build-terminology-overrides.mjs"
+    "i18n:overrides": "node scripts/i18n/build-terminology-overrides.mjs",
+    "check:launch-ui": "node scripts/check-launch-ui.mjs",
+    "check:legacy-pages": "node scripts/check-legacy-pages.mjs",
+    "test:splash": "node --test scripts/splash-regression.test.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",

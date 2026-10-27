@@ -177,10 +177,10 @@ export const AdvancedSOLASChecker = () => {
 
   const getCriterionName = (key: string) => {
     const names: { [key: string]: string } = {
-      gm: 'Home GM',
-      area_0_30: 'Alan 0-30°',
-      area_0_40: 'Alan 0-40°',
-      area_30_40: 'Alan 30-40°',
+      gm: 'Initial GM',
+      area_0_30: 'Area 0-30°',
+      area_0_40: 'Area 0-40°',
+      area_30_40: 'Area 30-40°',
       max_gz: 'Maximum GZ',
       gz_angle: 'Max GZ Angle'
     };
@@ -439,7 +439,7 @@ export const AdvancedSOLASChecker = () => {
                         <AreaChart data={gzCurve.filter(p => p.aci <= 60)}>
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="aci" label={{ value: 'Angle (°)', position: 'insideBottom', offset: -10 }} />
-                          <YAxis label={{ value: 'Alan (m.rad)', angle: -90, position: 'insideLeft' }} />
+                          <YAxis label={{ value: 'Area (m·rad)', angle: -90, position: 'insideLeft' }} />
                           <Tooltip
                             content={({ active, payload, label }) => {
                               if (!active || !payload?.length) return null;

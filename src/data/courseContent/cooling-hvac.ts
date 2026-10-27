@@ -159,7 +159,7 @@ export const coolingHvac: CourseTopic = {
         { symbol: "U", label: "Heat transfer coefficient", unit: "W/m²·K" },
         { symbol: "A", label: "Wall area", unit: "m²" },
         { symbol: "ΔT", label: "Temperature difference", unit: "K" },
-        { symbol: "Qhava", label: "Fresh air load", unit: "kW" },
+        { symbol: "Qair", label: "Fresh air load", unit: "kW" },
         { symbol: "Q_internal", label: "Internal heat sources", unit: "kW" },
       ],
       source: { code: "Cooling load calculation (conduction + safety margin)" },

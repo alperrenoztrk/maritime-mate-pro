@@ -684,7 +684,7 @@ export const communicationLessonFlows: LessonFlow[] = [
         ],
         correctAnswer: 0,
         explanation:
-          "Yarıya çekili (at the dip) = gördüm, çözemedim. Tam çekili (close up) = anladım. İndirilmesi haberleşmenin bittiğini bildirir.",
+          "Yarıya çekili (at the dip) = gördüm, çözemedim. Tam çekili (close up) = anladım. Son hoist'ten sonra gönderen istasyonun tek başına çektiği cevap flaması işaretin tamamlandığını bildirir.",
       },
       {
         id: 6,

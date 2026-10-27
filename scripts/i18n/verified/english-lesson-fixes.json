@@ -143,10 +143,6 @@
   "fill": false,
   "en": "Greenwich Hour Angle (GHA)"
  },
- "h: yükseklik | φ: gözlemci enlemi | δ: deklinasyon | LHA: yerel saat açısı": {
-  "fill": false,
-  "en": "h: altitude | φ: observer's latitude | δ: declination | LHA: local hour angle"
- },
  "yerel saat açısı (LHA)": {
   "fill": false,
   "en": "local hour angle (LHA)"
@@ -158,25 +154,5 @@
  "Görev": {
   "fill": false,
   "en": "Duty"
- },
- "Bölüm 2 – Temel Kavramlar ve Tanımlar": {
-  "fill": false,
-  "en": "Chapter 2 – Basic Concepts and Definitions"
- },
- "Bölüm 3 – Arşimet Prensibi ve Deplasman": {
-  "fill": false,
-  "en": "Chapter 3 – Archimedes' Principle and Displacement"
- },
- "Bölüm 4 – Küçük Açılı Enine Stabilite": {
-  "fill": false,
-  "en": "Chapter 4 – Transverse Stability at Small Angles"
- },
- "Bölüm 5 – Sert ve Yumuşak Gemi, Rulo Periyodu": {
-  "fill": false,
-  "en": "Chapter 5 – Stiff and Tender Ships, Rolling Period"
- },
- "Bölüm 6 – GZ Eğrileri ve Büyük Açılı Stabilite": {
-  "fill": false,
-  "en": "Chapter 6 – GZ Curves and Stability at Large Angles"
  }
 }

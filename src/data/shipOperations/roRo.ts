@@ -424,7 +424,7 @@ export const roRo: ShipType = {
             "Fume birikimini önlemek için belirlenmiş air change rate (ACH) sağlanması.",
           procedure: [
             "Kapalı araç güvertesinde araçlar varken en az 10 ACH (36'dan fazla yolculu gemiler; diğer gemilerde en az 6 ACH).",
-            "Sefer boyunca min 5 ACH.",
+            "Seferde araçlar güvertedeyken aynı ACH korunur; azaltma yalnız onaylı hava kalitesi kontrol sistemiyle yapılır (SOLAS II-2/20.3.1.2).",
             "Fan motor ve damper testi.",
             "CO + LEL gaz sensörü kalibrasyonu.",
           ],
@@ -699,7 +699,7 @@ export const roRo: ShipType = {
             "Closed Ro-Ro space'lerde min ACH'in fan motor + damper kontrolü.",
           procedure: [
             "Kapalı araç güvertesinde gemi tipine göre 10 veya 6 ACH.",
-            "Sefer boyunca 5 ACH.",
+            "Seferde araçlar güvertedeyken aynı ACH korunur; azaltma yalnız onaylı hava kalitesi kontrol sistemiyle yapılır (SOLAS II-2/20.3.1.2).",
             "CO + LEL sensör kalibre.",
           ],
           regulations: [

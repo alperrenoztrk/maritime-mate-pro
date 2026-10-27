@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import {
@@ -9,8 +10,6 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
-import { NewspaperStyles } from "@/components/news/NewspaperStyles";
-import { softHyphenate } from "@/components/news/hyphenate";
 import { useLanguage } from "@/contexts/useLanguage";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
@@ -37,14 +36,14 @@ function estimateReadingTime(text: string): string {
   if (!text) return "";
   const wordCount = text.split(/\s+/).filter(Boolean).length;
   const minutes = Math.max(1, Math.ceil(wordCount / 200));
-  return `${minutes} dk okuma`;
+  return `${minutes} min read`;
 }
 
 /**
  * Gerçek gazetede iç sayfaların numarası vardır. Bağlantıdan türetilen sabit bir
  * sayı kullanılıyor: aynı haber her açılışta aynı sayfada çıkar.
  */
-function innerPageNo(link?: string): number {
+export function innerPageNo(link?: string): number {
   if (!link) return 2;
   let hash = 0;
   for (let i = 0; i < link.length; i++) hash = (hash * 31 + link.charCodeAt(i)) | 0;
@@ -134,47 +133,33 @@ async function fetchArticleContent(url: string): Promise<{
   throw new Error(lastError || "The article could not be retrieved.");
 }
 
-function ArticleRenderer({ content }: { content: string }) {
-  // The content may come from the Jina Reader fallback as raw markdown:
-  // drop images and unwrap [text](url) links before rendering.
+function ArticleRenderer({ content, title }: { content: string; title?: string }) {
+  // Jina Reader markdown: drop images, unwrap links, strip escaped heading marks.
   const cleaned = content
     .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1");
-  const paragraphs = cleaned.split("\n\n").filter((p) => p.trim());
-  let dropCapUsed = false;
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\\#/g, "#");
+  const norm = (t: string) => t.replace(/[^a-z0-9]/gi, "").toLowerCase();
+  const titleKey = title ? norm(title) : "";
+  const paragraphs = cleaned
+    .split("\n\n")
+    .map((p) => p.trim())
+    .filter((p) => p && !(titleKey && norm(p.replace(/^#{1,6}\s*/, "")) === titleKey));
 
   return (
-    /* Gerçek gazete dizgisi: geniş ekranda çift sütun, saç teli sütun cetveliyle.
-       Tek geniş sütun "not a newspaper" hissinin en büyük nedeniydi. */
-    <div
-      className="gz-cols gz-cols--wide text-[12.5px] leading-[1.62]"
-      style={{ color: "var(--gz-ink-soft)" }}
-    >
-      {paragraphs.map((para, i) => {
-        const trimmed = para.trim();
-        const headingMatch = trimmed.match(/^#{1,6} +(.*)$/);
+    <div className="space-y-4 text-[15px] leading-[1.7] text-foreground/85">
+      {paragraphs.map((trimmed, i) => {
+        const headingMatch = trimmed.match(/^#{1,6}\s*(.*)$/);
         if (headingMatch) {
           return (
-            <h3
-              key={i}
-              className="mb-1.5 mt-5 border-b pb-1 text-sm font-bold uppercase tracking-[.12em]"
-              style={{
-                color: "var(--gz-ink)",
-                borderColor: "var(--gz-rule)",
-                fontFamily: "var(--gz-face-display)",
-              }}
-            >
+            <h3 key={i} className="pt-2 text-lg font-semibold tracking-tight text-foreground">
               {headingMatch[1]}
             </h3>
           );
         }
         if (trimmed.startsWith("> ")) {
           return (
-            <blockquote
-              key={i}
-              className="mb-3 pl-3 italic"
-              style={{ borderLeft: "3px double var(--gz-rule)" }}
-            >
+            <blockquote key={i} className="border-l-2 border-primary pl-4 italic text-foreground/75">
               {trimmed.replace(/^> /, "")}
             </blockquote>
           );
@@ -183,28 +168,20 @@ function ArticleRenderer({ content }: { content: string }) {
         if (bulletRe.test(trimmed)) {
           const items = trimmed.split("\n").filter((l) => bulletRe.test(l.trim()));
           return (
-            <ul key={i} className="mb-3 list-inside list-[square] space-y-1">
+            <ul key={i} className="list-disc space-y-1 pl-5 marker:text-primary">
               {items.map((item, j) => (
                 <li key={j}>{item.trim().replace(bulletRe, "")}</li>
               ))}
             </ul>
           );
         }
-        const formatted = softHyphenate(trimmed)
+        const formatted = trimmed
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
-          .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold">$1</strong>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
           .replace(/_([^_]+)_/g, "<em>$1</em>");
-        const isFirstParagraph = !dropCapUsed;
-        dropCapUsed = true;
-        return (
-          <p
-            key={i}
-            className={"gz-just mb-3" + (isFirstParagraph ? " gz-dropcap" : "")}
-            dangerouslySetInnerHTML={{ __html: formatted }}
-          />
-        );
+        return <p key={i} dangerouslySetInnerHTML={{ __html: formatted }} />;
       })}
     </div>
   );
@@ -216,9 +193,30 @@ export interface NewsReaderDialogProps {
   item: MaritimeNewsItem | null;
 }
 
+function HeroImage({ url, alt }: { url?: string; alt: string }) {
+  const proxied = toProxyImageUrl(url);
+  const direct = normalizeImageUrl(url);
+  const [stage, setStage] = useState(0);
+  useEffect(() => setStage(0), [url]);
+  const src = stage === 0 ? proxied ?? direct : stage === 1 ? direct : undefined;
+  if (!src) return null;
+  return (
+    <figure className="mt-5 overflow-hidden rounded-2xl bg-muted">
+      <img
+        src={src}
+        alt={alt}
+        className="aspect-[16/9] w-full object-cover"
+        loading="eager"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onError={() => setStage((s) => (s === 0 && proxied && direct && proxied !== direct ? 1 : 2))}
+      />
+    </figure>
+  );
+}
+
 export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogProps) {
   const { currentLanguage } = useLanguage();
-  // Back tuşu açık bir haberi asla kapatmaz; okuyucu "return to newspaper" ile çıkar.
   useArticleBackGuard(open);
   const articleQuery = useQuery({
     queryKey: ["article-content", item?.link],
@@ -228,170 +226,73 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
     retry: 1,
   });
 
-  const summary = softHyphenate(stripHtml(item?.summary));
-  const heroImage = toProxyImageUrl(item?.imageUrl) ?? normalizeImageUrl(item?.imageUrl);
-  const pageDate = new Date().toLocaleDateString(currentLanguage || "tr", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  const summary = stripHtml(item?.summary);
+  const summaryBlock = summary ? (
+    <p className="text-[15px] leading-[1.7] text-foreground/85">{summary}</p>
+  ) : null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl w-[calc(100vw-1.25rem)] max-h-[94svh] overflow-hidden border-0 bg-transparent p-0 shadow-none text-[#241d10]">
-        <NewspaperStyles />
-        {/* Gazete iç sayfası — makale kağıdın üzerine basılı */}
-        <article className="gz-sheet overflow-hidden">
-          <div className="gz-showthrough" aria-hidden="true" />
-          <div className="gz-grain" aria-hidden="true" />
-          <ScrollArea className="max-h-[94svh]">
-            <div className="px-5 pb-8 pt-4 sm:px-9 sm:pt-5">
-              {/* İç sayfanın üst şeridi (running head): sayfa no — logo — tarih */}
-              <div className="gz-rule-thin" aria-hidden="true" />
-              {/* Sağdaki boşluk, Dialog'un kendi kapatma çarpısının tarihin
-                  üstüne binmemesi için. */}
-              <div
-                className="mt-1.5 flex items-baseline justify-between gap-3 pr-10 text-[8.5px]"
-                style={{ fontVariant: "small-caps", letterSpacing: ".13em", color: "var(--gz-ink-soft)" }}
-              >
-                <span>Page {innerPageNo(item?.link)}</span>
-                <span
-                  className="notranslate text-lg leading-none"
-                  translate="no"
-                  lang="en"
-                  style={{ color: "var(--gz-ink)", fontFamily: "var(--gz-face-mast)" }}
-                >
-                  Mariner&rsquo;s Post
+      <DialogContent className="mx-auto max-w-2xl w-[calc(100vw-1.25rem)] max-h-[94svh] overflow-hidden rounded-3xl border border-border/60 bg-card p-0 text-foreground">
+        <ScrollArea className="max-h-[94svh]">
+          <article className="px-5 pb-8 pt-6 sm:px-8">
+            <DialogHeader className="space-y-3 pr-8 text-left">
+              {item?.source ? (
+                <span className="text-xs font-semibold uppercase tracking-[.14em] text-primary">
+                  {item.source}
                 </span>
-                <span className="notranslate" translate="no">{pageDate}</span>
-              </div>
-              <div className="gz-rule-double mt-1.5" aria-hidden="true" />
-
-              <DialogHeader className="mt-3 space-y-2 text-left">
-                <DialogTitle className="gz-headline text-[clamp(1.35rem,5.6vw,1.9rem)] leading-[1.12]">
-                  {item?.title ?? "News"}
-                </DialogTitle>
-                <DialogDescription className="sr-only">News detail</DialogDescription>
-                {/* Byline satırı */}
-                <div
-                  className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-y py-1.5 text-micro"
-                  style={{
-                    fontVariant: "small-caps",
-                    letterSpacing: ".12em",
-                    color: "var(--gz-ink-faint)",
-                    borderColor: "var(--gz-rule)",
-                  }}
-                >
-                  {item?.source ? (
-                    <span className="font-bold" style={{ color: "var(--gz-ink-soft)" }}>
-                      {item.source}
-                    </span>
-                  ) : null}
-                  {item?.publishedAt ? (
-                    <>
-                      <span aria-hidden="true">·</span>
-                      <span className="notranslate" translate="no">{formatDate(item.publishedAt, currentLanguage)}</span>
-                    </>
-                  ) : null}
-                  {articleQuery.data?.author ? (
-                    <>
-                      <span aria-hidden="true">·</span>
-                      <span>{articleQuery.data.author}</span>
-                    </>
-                  ) : null}
-                  {articleQuery.data?.content ? (
-                    <>
-                      <span aria-hidden="true">·</span>
-                      <span>{estimateReadingTime(articleQuery.data.content)}</span>
-                    </>
-                  ) : null}
-                </div>
-              </DialogHeader>
-
-              {/* Basılı fotoğraf + altyazı */}
-              {heroImage ? (
-                <figure className="mt-3">
-                  <span className="gz-photo-wrap block aspect-[16/9] w-full">
-                    <img
-                      src={heroImage}
-                      alt={item?.title ?? "News"}
-                      className="gz-photo"
-                      loading="eager"
-                      decoding="async"
-                      referrerPolicy="no-referrer"
-                    />
-                  </span>
-                  <figcaption className="gz-caption">
-                    {item?.source ? `Photo: ${item.source}` : "archive photo"}
-                  </figcaption>
-                </figure>
               ) : null}
-
-              <div className="mt-4">
-                {articleQuery.isLoading ? (
-                  <div
-                    className="flex flex-col items-center gap-3 py-14"
-                    style={{ color: "var(--gz-ink-faint)" }}
-                  >
-                    <Loader2 className="h-6 w-6 animate-spin" />
-                    <span className="text-sm italic">The typesetting is being prepared…</span>
-                  </div>
-                ) : articleQuery.isError ? (
-                  summary ? (
-                    <div className="space-y-3">
-                      <p
-                        className="gz-cols gz-cols--wide gz-just gz-dropcap text-[12.5px] leading-[1.62]"
-                        style={{ color: "var(--gz-ink-soft)" }}
-                      >
-                        {summary}
-                      </p>
-                      <div className="gz-notice">
-                        <p>The full text did not arrive in time for printing; Showing summary string.</p>
-                        {articleQuery.error instanceof Error && articleQuery.error.message ? (
-                          <p className="mt-1 break-words text-micro opacity-75">{articleQuery.error.message}</p>
-                        ) : null}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="gz-notice">The content cannot be sorted at this time. Try again later.</div>
-                  )
-                ) : articleQuery.data?.content ? (
-                  <div className="space-y-4">
-                    {articleQuery.data.warning && <div className="gz-notice">{articleQuery.data.warning}</div>}
-                    <ArticleRenderer content={articleQuery.data.content} />
-                  </div>
-                ) : summary ? (
-                  <p
-                    className="gz-cols gz-cols--wide gz-just gz-dropcap text-[12.5px] leading-[1.62]"
-                    style={{ color: "var(--gz-ink-soft)" }}
-                  >
-                    {summary}
-                  </p>
+              <DialogTitle className="text-[clamp(1.4rem,5.8vw,2rem)] font-bold leading-[1.15] tracking-tight">
+                {item?.title ?? "News"}
+              </DialogTitle>
+              <DialogDescription className="sr-only">News detail</DialogDescription>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+                {item?.publishedAt ? (
+                  <span className="notranslate" translate="no">{formatDate(item.publishedAt, currentLanguage)}</span>
+                ) : null}
+                {articleQuery.data?.author ? (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>{articleQuery.data.author}</span>
+                  </>
+                ) : null}
+                {articleQuery.data?.content ? (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>{estimateReadingTime(articleQuery.data.content)}</span>
+                  </>
                 ) : null}
               </div>
+            </DialogHeader>
 
-              <div className="gz-end mt-7 notranslate" translate="no">
-                SON
-              </div>
+            <HeroImage url={item?.imageUrl} alt={item?.title ?? "News"} />
 
-              {/* Modern düğme yerine dizgiye ait tipografik satır */}
-              <div className="mt-6 flex items-center justify-center">
-                <button
-                  type="button"
-                  className="border-y px-5 py-1.5 text-micro uppercase tracking-[.2em] active:bg-[rgba(35,28,15,.07)]"
-                  style={{
-                    borderColor: "var(--gz-rule)",
-                    color: "var(--gz-ink-soft)",
-                    fontVariant: "small-caps",
-                  }}
-                  onClick={() => onOpenChange(false)}
-                >
-                  ‹ Return to newspaper
-                </button>
-              </div>
+            <div className="mt-6">
+              {articleQuery.isLoading ? (
+                <div className="flex flex-col items-center gap-3 py-14 text-muted-foreground">
+                  <Loader2 className="h-6 w-6 animate-spin" />
+                  <span className="text-sm">Loading article…</span>
+                </div>
+              ) : articleQuery.isError ? (
+                <div className="space-y-4">
+                  {summaryBlock}
+                  <div className="rounded-xl bg-muted/60 p-3 text-sm text-muted-foreground">
+                    {summary ? "The full article could not be loaded; showing the summary." : "The article cannot be loaded right now. Try again later."}
+                  </div>
+                </div>
+              ) : articleQuery.data?.content ? (
+                <div className="space-y-4">
+                  {articleQuery.data.warning && (
+                    <div className="rounded-xl bg-muted/60 p-3 text-sm text-muted-foreground">{articleQuery.data.warning}</div>
+                  )}
+                  <ArticleRenderer content={articleQuery.data.content} title={item?.title} />
+                </div>
+              ) : (
+                summaryBlock
+              )}
             </div>
-          </ScrollArea>
-        </article>
+          </article>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );

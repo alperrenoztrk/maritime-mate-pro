@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -360,7 +361,7 @@ CONTRACT: A voyage charter party (C/P) form is used. Common forms: GENCON (gener
     examples: [
       {
         problem: "55,000 tonnes of coal, South Africa to Rotterdam, freight rate $14.50/tonne. Calculate the total freight.",
-        solution: "Toplam Navlun = 55.000 × $14,50 = $797.500",
+        solution: "Total freight = 55,000 × $14.50 = $797,500",
       },
     ],
     bulletPoints: [
@@ -649,7 +650,7 @@ The flat rates are updated every year on 1 January. The update reflects changes 
     examples: [
       {
         problem: "Flat rate $22.50/tonne, market rate WS 72. 80,000 tonnes of crude oil. Calculate the total freight.",
-        solution: "Birim navlun = 72/100 × $22,50 = $16,20/ton. Toplam navlun = 80.000 × $16,20 = $1.296.000.",
+        solution: "Unit freight = 72/100 × $22.50 = $16.20/t. Total freight = 80,000 × $16.20 = $1,296,000.",
       },
     ],
     bulletPoints: [
@@ -1542,27 +1543,11 @@ export default function EconomicsTopicsPage() {
     <div
       className="relative min-h-screen overflow-hidden"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-violet-400/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10">
-        <div className="relative z-40 bg-background/95 border-b border-border">
-          <div className="px-4 py-4">
-            <div className="flex items-center gap-3 max-w-4xl mx-auto">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg">
-                <TrendingUp className="h-6 w-6" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-foreground">Maritime Management</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="mx-auto max-w-4xl px-4 py-3"><PageHeader title="Maritime Management" /></div>
 
-        <ScrollArea className="h-[calc(100vh-80px)]">
+        <div data-reference-topics>
           <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
             <Accordion type="single" collapsible className="space-y-2">
               {econTopics.map((topic) => {
@@ -1574,7 +1559,7 @@ export default function EconomicsTopicsPage() {
                   >
                     <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
                       <div className="flex items-center gap-3 text-left">
-                        <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold">
+                        <span className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground font-bold">
                           {topic.number}
                         </span>
                         <span className="font-semibold text-foreground text-sm leading-tight">
@@ -1634,7 +1619,7 @@ export default function EconomicsTopicsPage() {
               </div>
             </section>
           </div>
-        </ScrollArea>
+        </div>
       </div>
 
       <BodyPortal>

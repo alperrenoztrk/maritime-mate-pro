@@ -317,7 +317,6 @@ const rootGradientOwners = sourceFiles
   .sort();
 assert(
   JSON.stringify(rootGradientOwners) === JSON.stringify([
-    "src/pages/BetaShipSimulator.tsx",
     "src/pages/MoonPhases.tsx",
   ]),
   `full-screen gradients are reserved for documented immersive routes (found: ${rootGradientOwners.join(", ") || "none"})`,

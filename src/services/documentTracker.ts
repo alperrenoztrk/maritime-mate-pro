@@ -240,7 +240,7 @@ export async function createDocumentFromPhoto(
     if (saveError?.code === "23505") {
       throw new DocumentTrackerError("DUPLICATE", "This photo was added before.");
     }
-    throw new DocumentTrackerError("SAVE_FAILED", "Belge bilgileri kaydedilemedi.");
+    throw new DocumentTrackerError("SAVE_FAILED", "The document details could not be saved.");
   }
 
   return saved as MaritimeDocumentRecord;

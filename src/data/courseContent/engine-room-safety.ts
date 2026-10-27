@@ -49,9 +49,9 @@ export const engineRoomSafety: CourseTopic = {
       id: "co2-quantity",
       name: "CO₂ Quantity (by Volume)",
       group: "Fire Safety",
-      formula: "mCO₂ = (Vhacim × %40) / 0,56 m³/kg",
+      formula: "mCO₂ = (Vspace × 40%) / 0.56 m³/kg",
       variables: [
-        { symbol: "Vhacim", label: "Protected volume", unit: "m³" },
+        { symbol: "Vspace", label: "Protected volume", unit: "m³" },
         { symbol: "%40", label: "Minimum free CO₂ volume ratio", unit: "—" },
         { symbol: "0,56", label: "CO₂ specific volume", unit: "m³/kg" },
         { symbol: "mCO₂", label: "Required CO₂ mass", unit: "kg" },
@@ -103,7 +103,7 @@ export const engineRoomSafety: CourseTopic = {
       formula: "Q̇_air = P_engine × 2.5 ; Air changes = Q̇_air / V_space",
       variables: [
         { symbol: "Pmotor", label: "Total engine power", unit: "kW" },
-        { symbol: "Vhacim", label: "Machinery space volume", unit: "m³" },
+        { symbol: "Vspace", label: "Machinery space volume", unit: "m³" },
         { symbol: "Q̇_air", label: "Combustion air requirement", unit: "m³/h" },
       ],
       source: { code: "Engine room ventilation — combustion air requirement", detail: "Approximately ~2.5 m³/kW·hour of air required" },
@@ -126,7 +126,7 @@ export const engineRoomSafety: CourseTopic = {
       id: "lel-uel",
       name: "LEL / UEL (Explosive Range)",
       group: "Explosion Risk",
-      formula: "LEL < konsantrasyon < UEL",
+      formula: "LEL < concentration < UEL",
       variables: [
         { symbol: "LEL", label: "Lower explosive limit (fuel vapour ~1%)", unit: "% by volume" },
         { symbol: "UEL", label: "Upper explosive limit (fuel vapour ~6%)", unit: "% by volume" },

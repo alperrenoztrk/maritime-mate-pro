@@ -30,7 +30,7 @@ export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean =
       return;
     }
     if (typeof navigator === "undefined" || !("geolocation" in navigator)) {
-      setError("Konum servisi desteklenmiyor");
+      setError("Location services are not supported");
       return;
     }
 

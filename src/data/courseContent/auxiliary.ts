@@ -66,10 +66,10 @@ export const auxiliary: CourseTopic = {
       id: "generator-efficiency",
       name: "Generator Efficiency",
       group: "Generator Calculations",
-      formula: "η = Pelektrik / Pmekanik",
+      formula: "η = Pelec / Pmech",
       variables: [
-        { symbol: "Pelektrik", label: "Electrical output power", unit: "kW" },
-        { symbol: "Pmekanik", label: "Mechanical input power", unit: "kW" },
+        { symbol: "Pelec", label: "Electrical output power", unit: "kW" },
+        { symbol: "Pmech", label: "Mechanical input power", unit: "kW" },
       ],
       source: { code: "Electrical machine efficiency definition (typically 92–96%)" },
       note: "Enter the electrical output and mechanical input power (kW); the efficiency and the loss are calculated.",

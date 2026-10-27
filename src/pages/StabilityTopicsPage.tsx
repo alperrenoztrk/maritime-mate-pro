@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -1219,10 +1220,10 @@ This point of balance is called the angle of equilibrium.
 
 If the heeling moment exceeds the righting moment the ship capsizes. The sources of heeling moment must therefore be calculated in advance and limited.`,
     bulletPoints: [
-      "HM is the exogenous reclining effect",
+      "HM is the external heeling effect",
       "Wind, wave, weight shift create HM",
-      "Denge: HM = RM",
-      "If HM > RMmax, there is a risk of tipping over",
+      "Equilibrium: HM = RM",
+      "If HM > RMmax, there is a risk of capsizing",
     ],
     formula: {
       name: "Heeling Moment (Wind)",
@@ -2787,8 +2788,8 @@ This criterion is particularly critical for ships with a large superstructure.`,
     ],
     formula: {
       name: "Weather Criterion",
-      expression: "b ≥ a; P = 504 N/m² (standart)",
-      description: "a: Wind tilt area, b: Straightening reserve area",
+      expression: "b ≥ a; P = 504 N/m² (standard)",
+      description: "a: area of the wind heeling energy, b: reserve area under the righting arm (GZ) curve",
     },
     keyPoints: [
       "Weather Criterion is mandatory for all ships",
@@ -3256,29 +3257,13 @@ export default function StabilityTopicsPage() {
       className="relative min-h-screen overflow-hidden"
     >
       {/* Background effects */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10">
         {/* Header */}
-        <div className="relative z-40 bg-background/95 border-b border-border">
-          <div className="px-4 py-4">
-            <div className="flex items-center gap-3 max-w-4xl mx-auto">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
-                <Anchor className="h-6 w-6" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-foreground">Ship Stability</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="mx-auto max-w-4xl px-4 py-3"><PageHeader title="Ship Stability" /></div>
 
         {/* Topics Accordion */}
-        <ScrollArea className="h-[calc(100vh-80px)]">
+        <div data-reference-topics>
           <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
             <Accordion type="single" collapsible className="space-y-2">
               {stabilityTopics.map((topic) => {
@@ -3290,7 +3275,7 @@ export default function StabilityTopicsPage() {
                   >
                     <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
                       <div className="flex items-center gap-3 text-left">
-                        <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold">
+                        <span className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground font-bold">
                           {topic.number}
                         </span>
                         <span className="font-semibold text-foreground text-sm leading-tight">
@@ -3350,7 +3335,7 @@ export default function StabilityTopicsPage() {
               </div>
             </section>
           </div>
-        </ScrollArea>
+        </div>
       </div>
 
       {/* Full Screen Content Modal */}

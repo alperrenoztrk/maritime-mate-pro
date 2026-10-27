@@ -169,7 +169,7 @@ export const dieselEngines: CourseTopic = {
       formula: "λ = m_air,actual / m_air,stoichiometric",
       variables: [
         { symbol: "m_air,actual", label: "Actual air/fuel ratio", unit: "kg/kg" },
-        { symbol: "mhava,stok", label: "Stoichiometric air/fuel ratio", unit: "kg/kg" },
+        { symbol: "mair,stoich", label: "Stoichiometric air/fuel ratio", unit: "kg/kg" },
       ],
       source: { code: "Combustion theory — excess air ratio (diesel λ ≈ 1.5–2.5)" },
       inputs: [
@@ -191,9 +191,9 @@ export const dieselEngines: CourseTopic = {
       group: "Yanma ve Enjeksiyon",
       formula: "Pinj = F_spring / A_needle + P_cylinder",
       variables: [
-        { symbol: "Fyay", label: "Spring force", unit: "N" },
+        { symbol: "Fspring", label: "Spring force", unit: "N" },
         { symbol: "A_needle", label: "Needle cross-sectional area", unit: "m²" },
-        { symbol: "Psilindir", label: "Cylinder pressure", unit: "Pa" },
+        { symbol: "Pcyl", label: "Cylinder pressure", unit: "Pa" },
       ],
       source: { code: "Fuel injection system (300–1000 bar mechanical, 1500–2500 bar common rail)" },
       note: "The spring force is entered in N, the needle area in mm² and the cylinder pressure in bar; the opening pressure is given in bar.",

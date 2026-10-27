@@ -82,7 +82,7 @@ export const energyEfficiency: CourseTopic = {
       variables: [
         { symbol: "CO₂_total", label: "Total annual CO₂ emissions", unit: "tonnes" },
         { symbol: "DWT", label: "Deadweight (capacity)", unit: "tonnes" },
-        { symbol: "Dtoplam", label: "Total annual distance sailed", unit: "NM" },
+        { symbol: "Dtotal", label: "Total annual distance sailed", unit: "NM" },
       ],
       source: { code: "CII/AER — MEPC.328(76) (annual rating A–E)" },
       note: "The total CO₂ is entered in tonnes and converted to g by 10⁶; the result is in g CO₂/(DWT·NM). The AER is the indicator used in the CII calculation.",
@@ -151,9 +151,9 @@ export const energyEfficiency: CourseTopic = {
       id: "whr-power",
       name: "Waste Heat Recovery (WHRS)",
       group: "Waste Heat Recovery",
-      formula: "PWHR = ṁegzoz × cp × ΔT × η",
+      formula: "PWHR = ṁexh × cp × ΔT × η",
       variables: [
-        { symbol: "ṁegzoz", label: "Exhaust gas flow rate", unit: "kg/s" },
+        { symbol: "ṁexh", label: "Exhaust gas flow rate", unit: "kg/s" },
         { symbol: "cp", label: "Specific heat", unit: "kJ/kg·K" },
         { symbol: "ΔT", label: "Exhaust temperature drop", unit: "K" },
         { symbol: "η", label: "WHR system efficiency" },

@@ -72,7 +72,7 @@ const AuthCallback = () => {
         const { handled, error: oauthError } = await finishOAuthFromUrl(window.location.href);
         if (oauthError) {
           if (hasOAuthCode && !hadCodeVerifier) {
-            fail("The Google return code arrived, but the session key was not found on this device. The browser/WebView may have lost the old session; Start a new flow with Try again.");
+            fail("Google sent the sign-in code back, but this browser no longer has the key that started the sign-in. This happens when sign-in starts in one tab, app or browser and returns to another. Tap Try again to start over.");
             return;
           }
           fail(`Google login could not be verified: ${oauthError.message}`);
@@ -107,7 +107,7 @@ const AuthCallback = () => {
     // Safety fallback: if nothing happens in 10s, show a visible failure
     // instead of silently returning home as if login had succeeded.
     const timeout = window.setTimeout(() => {
-      fail("Google return completed but failed to establish app session. Please try again.");
+      fail("Google sign-in finished, but the app session could not be created. Please try again.");
     }, 10000);
 
     return () => {
@@ -139,7 +139,7 @@ const AuthCallback = () => {
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
       <div className="flex flex-col items-center gap-3">
         <Loader2 className="w-6 h-6 animate-spin text-primary" />
-        <p className="text-sm text-muted-foreground">The session is completed…</p>
+        <p className="text-sm text-muted-foreground">Completing sign-in…</p>
       </div>
     </div>
   );

@@ -198,7 +198,7 @@ export const stability: CourseTopic = {
       id: "parallel-sinkage",
       name: "Parallel Sinkage/Rise",
       group: "Longitudinal Equilibrium",
-      formula: "Batma (cm) = w / TPC",
+      formula: "Sinkage (cm) = w / TPC",
       variables: [
         { symbol: "w", label: "Weight loaded/discharged", unit: "t" },
         { symbol: "TPC", label: "Tonnes per centimetre", unit: "t/cm" },

@@ -302,7 +302,7 @@ const MaritimeNews = () => {
                 </h1>
               </div>
               <div className="gz-ear">
-                Establishment
+                Established
                 <br />
                 {FOUNDED_YEAR}
               </div>
@@ -312,7 +312,7 @@ const MaritimeNews = () => {
             <div className="gz-dateline">
               <span>{dateline}</span>
               <span className="hidden sm:inline">
-                Skin {volume} — Number {issueNo}
+                Vol. {volume} — No. {issueNo}
               </span>
               <span>Price 25 Kurus</span>
             </div>
@@ -322,7 +322,7 @@ const MaritimeNews = () => {
               {pressTime ? (
                 <>
                   <span aria-hidden="true">·</span>
-                  <span>Submission to print {pressTime}</span>
+                  <span>Went to press {pressTime}</span>
                 </>
               ) : null}
             </div>
@@ -524,7 +524,7 @@ const MaritimeNews = () => {
                   <span aria-hidden="true">·</span>
                   <span>Page 1</span>
                   <span aria-hidden="true">·</span>
-                  <span>Number {issueNo}</span>
+                  <span>No. {issueNo}</span>
                 </div>
               </>
             )}

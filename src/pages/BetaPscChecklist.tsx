@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { INSPECTIONS, getInspection } from "@/data/inspections";
 import {
   ClipboardCheck,
   Download,
@@ -13,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import {
-  PSC_CHECKLIST,
   loadState,
   saveState,
   clearState,
@@ -46,19 +46,28 @@ const STATUS_OPTIONS: {
 ];
 
 export default function BetaPscChecklist() {
+  const [params, setParams] = useSearchParams();
+  const inspection = getInspection(params.get("type"));
+  return <ChecklistView key={inspection.id} inspectionId={inspection.id} onSelect={(id) => setParams({ type: id }, { replace: true })} />;
+}
+
+function ChecklistView({ inspectionId, onSelect }: { inspectionId: string; onSelect: (id: string) => void }) {
+  const inspection = getInspection(inspectionId);
+  const PSC_CHECKLIST = inspection.categories;
+  const key = inspection.storageKey;
   // Kayıtlı işaretlemeler ilk render'da okunur. Bir efektle yüklenseydi
   // aşağıdaki kaydetme efekti aynı turda boş nesneyi diske yazar ve kayıtlar
   // bir an için silinirdi.
-  const [state, setState] = useState<ChecklistState>(loadState);
+  const [state, setState] = useState<ChecklistState>(() => loadState(key));
   const [vesselName, setVesselName] = useState("");
   const [inspectionDate, setInspectionDate] = useState("");
   const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
-    saveState(state);
-  }, [state]);
+    saveState(key, state);
+  }, [key, state]);
 
-  const summary = useMemo(() => summarize(state), [state]);
+  const summary = useMemo(() => summarize(PSC_CHECKLIST, state), [PSC_CHECKLIST, state]);
 
   const setStatus = (id: string, status: ItemStatus) => {
     setState((prev) => {
@@ -78,7 +87,7 @@ export default function BetaPscChecklist() {
 
   const handleReset = () => {
     if (!window.confirm("Delete all markups?")) return;
-    clearState();
+    clearState(key);
     setState({});
     toast.success("The checklist has been reset.");
   };
@@ -86,9 +95,9 @@ export default function BetaPscChecklist() {
   const handleExport = async () => {
     setExporting(true);
     try {
-      const blob = await buildPscReport(state, vesselName, inspectionDate);
+      const blob = await buildPscReport(PSC_CHECKLIST, inspection.title, state, vesselName, inspectionDate);
       const safe = (vesselName || "vessel").replace(/[^\p{L}\p{N}_-]+/gu, "_");
-      downloadBlob(blob, `PSC_hazirlik_${safe}.xlsx`);
+      downloadBlob(blob, `${inspection.id.toUpperCase()}_checklist_${safe}.xlsx`);
       toast.success("The report has been downloaded.");
     } catch (e) {
       console.error(e);
@@ -104,10 +113,6 @@ export default function BetaPscChecklist() {
     <div
       className="relative min-h-screen overflow-hidden px-4 pb-24 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))]"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-amber-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-orange-500/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-6">
         <header className="space-y-3">
@@ -117,11 +122,28 @@ export default function BetaPscChecklist() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">
-                PSC inspection Preparation List
+                Inspection Checklists
               </h1>
+              <p className="text-sm text-muted-foreground">{inspection.title}: {inspection.scope}</p>
             </div>
           </div>
         </header>
+
+        <nav aria-label="Inspection type" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
+          {INSPECTIONS.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => onSelect(t.id)}
+              aria-pressed={t.id === inspection.id}
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                t.id === inspection.id ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/70"
+              }`}
+            >
+              {t.title}
+            </button>
+          ))}
+        </nav>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/90 p-5">
           <div className="grid gap-3 sm:grid-cols-2">
@@ -193,7 +215,7 @@ export default function BetaPscChecklist() {
 
         {summary.deficiency > 0 && (
           <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-4 text-xs text-red-700 dark:text-red-300">
-            <strong className="font-semibold">{summary.deficiency} eksiklik</strong>{" "}
+            <strong className="font-semibold">{summary.deficiency} deficiencies</strong>{" "}
             marked. Plan corrective action before the inspection.
           </div>
         )}

@@ -31,14 +31,20 @@ const WAVES: [number, number, number, number][] = [
 
 const gerstnerChunk = /* glsl */ `
 uniform float uOceanTime;
+uniform float uOceanG;
+uniform vec2 uOceanDrift;
+uniform float uHullCalm;
+uniform vec4 uWave0;
+uniform vec4 uWave1;
+uniform vec4 uWave2;
 
 vec3 gerstnerWave(vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal, float damp) {
   float steepness = wave.z * damp;
   float wavelength = wave.w;
   float k = 6.28318530718 / wavelength;
-  float c = sqrt(9.8 / k);
+  float c = sqrt(uOceanG / k);
   vec2 d = normalize(wave.xy);
-  float f = k * (dot(d, p.xy) - c * uOceanTime);
+  float f = k * (dot(d, p.xy + uOceanDrift) - c * uOceanTime);
   float a = steepness / k;
 
   tangent += vec3(
@@ -61,15 +67,15 @@ vec3 gerstnerWave(vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal, fl
 const gerstnerVertex = /* glsl */ `
   float oceanDist = length(position.xy);
   float hullDist = length(vec2(position.x / 3.4, position.y / 1.35));
-  float nearHullMotion = mix(0.3, 1.0, smoothstep(0.95, 2.1, hullDist));
+  float nearHullMotion = mix(uHullCalm, 1.0, smoothstep(0.95, 2.1, hullDist));
   float horizonFlatten = 1.0 - smoothstep(16.0, 28.0, oceanDist);
   float oceanDamp = nearHullMotion * horizonFlatten;
   vec3 oceanTangent = vec3(1.0, 0.0, 0.0);
   vec3 oceanBinormal = vec3(0.0, 1.0, 0.0);
   vec3 oceanOffset = vec3(0.0);
-  oceanOffset += gerstnerWave(vec4(${WAVES[0].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
-  oceanOffset += gerstnerWave(vec4(${WAVES[1].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
-  oceanOffset += gerstnerWave(vec4(${WAVES[2].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
+  oceanOffset += gerstnerWave(uWave0, position, oceanTangent, oceanBinormal, oceanDamp);
+  oceanOffset += gerstnerWave(uWave1, position, oceanTangent, oceanBinormal, oceanDamp);
+  oceanOffset += gerstnerWave(uWave2, position, oceanTangent, oceanBinormal, oceanDamp);
 `;
 
 function makeWakeTexture(): THREE.CanvasTexture {
@@ -189,10 +195,27 @@ function buildHullFoamRibbon(side: 1 | -1): THREE.BufferGeometry {
 interface OceanSurface3DProps {
   /** Live heel angle (radians) — contact foam/wake track the heeled waterline. */
   heelRef?: React.MutableRefObject<number>;
+  /** Gerstner components in scene units; defaults to the gentle stability-page sea. */
+  waves?: [number, number, number, number][];
+  /** Scene gravity used for wave celerity (keep in sync with the ship sampler). */
+  gravity?: number;
+  /** Distance (scene units) the ship has advanced; water streams astern. */
+  driftRef?: React.MutableRefObject<number>;
+  /** Fraction of wave motion kept at the plating (0.3 calm-looking, 1 = full sea). */
+  hullCalm?: number;
+  /** Hide bow wave / stern wake overlays when the ship is stopped. */
+  showWake?: boolean;
 }
 
-export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
+export function OceanSurface3D({ heelRef, waves = WAVES, gravity = 9.8, driftRef, hullCalm = 0.3, showWake = true }: OceanSurface3DProps) {
   const timeUniform = useRef<{ value: number }>({ value: 0 });
+  const gUniform = useRef({ value: gravity });
+  const driftUniform = useRef({ value: new THREE.Vector2() });
+  const calmUniform = useRef({ value: hullCalm });
+  const waveUniforms = useRef(WAVES.map((w) => ({ value: new THREE.Vector4(...w) })));
+  gUniform.current.value = gravity;
+  calmUniform.current.value = hullCalm;
+  waves.slice(0, 3).forEach((w, i) => waveUniforms.current[i].value.set(w[0], w[1], w[2], w[3]));
   const interactionGroup = useRef<THREE.Group>(null);
 
   const normalTex = useMemo(() => {
@@ -222,6 +245,12 @@ export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
     if (USE_GPU_WAVES) {
       mat.onBeforeCompile = (shader) => {
         shader.uniforms.uOceanTime = timeUniform.current;
+        shader.uniforms.uOceanG = gUniform.current;
+        shader.uniforms.uOceanDrift = driftUniform.current;
+        shader.uniforms.uHullCalm = calmUniform.current;
+        waveUniforms.current.forEach((u, i) => {
+          shader.uniforms[`uWave${i}`] = u;
+        });
         shader.vertexShader = shader.vertexShader
           .replace("#include <common>", `#include <common>\n${gerstnerChunk}`)
           .replace(
@@ -234,7 +263,7 @@ export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
           )
           .replace("#include <begin_vertex>", "vec3 transformed = vec3(position) + oceanOffset;");
       };
-      mat.customProgramCacheKey = () => "ocean-gerstner-v3";
+      mat.customProgramCacheKey = () => "ocean-gerstner-v4";
     }
     return mat;
   }, [normalTex]);
@@ -284,6 +313,7 @@ export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
 
   useFrame(({ clock }, delta) => {
     timeUniform.current.value = clock.getElapsedTime();
+    driftUniform.current.value.set(driftRef?.current ?? 0, 0);
     // Independent motion rates prevent the normal detail and foam from locking
     // into the same obvious texture loop.
     normalTex.offset.x += delta * 0.012;
@@ -341,6 +371,7 @@ export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
 
         {/* Bow pressure wave and a restrained V-shaped stern wake. Both are flat,
             transparent overlays, so the GPU cost stays negligible on mobile. */}
+        {showWake && (<>
         <mesh
           rotation={[-Math.PI / 2, 0, 0]}
           position={[3.1, 0.026, 0]}
@@ -355,6 +386,7 @@ export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
           material={wakeMaterial}
           renderOrder={2}
         />
+        </>)}
       </group>
     </group>
   );

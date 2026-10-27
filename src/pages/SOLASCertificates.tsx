@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -43,17 +44,7 @@ const SOLASCertificatesPage = () => {
           <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
-        <div className="text-center space-y-3">
-          <div className="flex items-center justify-center gap-3">
-            <ShieldCheck className="h-12 w-12 text-emerald-600 dark:text-emerald-400" />
-            <div>
-              <p className="text-sm uppercase tracking-wider text-emerald-600 dark:text-emerald-300">Compatibility</p>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-                SOLAS Certificates &amp; Renewal Tracking
-              </h1>
-            </div>
-          </div>
-        </div>
+        <PageHeader title="SOLAS Certificates & Renewal Tracking" />
 
         {/* Certificates */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

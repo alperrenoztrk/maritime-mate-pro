@@ -18,7 +18,6 @@ const pageFiles = [
   "src/pages/MachineTopicFormulasPage.tsx",
   "src/pages/CourseFormulasPage.tsx",
   "src/pages/CourseCalculationsPage.tsx",
-  "src/pages/CourseRulesPage.tsx",
   "src/pages/MachineTopicRulesPage.tsx",
   "src/pages/MachineTopicLessonsPage.tsx",
   "src/pages/MachineTopicDetailPage.tsx",
@@ -54,7 +53,6 @@ for (const file of pageFiles) {
 
 const collapsedOnEntry = [
   ["src/components/curriculum/CurriculumModuleAccordion.tsx", "useState<string | null>(requestedModule)", "curriculum modules (closed unless explicitly deep-linked)"],
-  ["src/pages/NavigationRules.tsx", "useState<number | null>(null)", "navigation rules"],
   ["src/pages/library/ShipTasksLibraryPage.tsx", "useState<string | null>(null)", "ship-task categories"],
   ["src/components/ui/calculation-steps.tsx", "useState(false)", "calculation steps"],
 ];

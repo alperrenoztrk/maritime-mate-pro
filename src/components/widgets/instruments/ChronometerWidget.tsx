@@ -30,6 +30,7 @@ export function ChronometerWidget({ hours, minutes, seconds, digital, subLabel, 
     <InstrumentFrame
       photo={SEIKO_CLOCK}
       size="small"
+      label={isGmt ? "UTC" : "Local time"}
       photoFilter={isGmt ? "saturate(.5) brightness(.78)" : undefined}
       readout={
         <>

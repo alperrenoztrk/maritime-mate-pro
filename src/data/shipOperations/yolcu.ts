@@ -30,7 +30,7 @@ export const yolcu: ShipType = {
           "SOLAS III/19 + sefer öncesi 'safety briefing' (kabin TV + amfi video).",
           ["Çoklu dilde video.", "Gönüllü kabin uyarısı.", "Demonstration ekipmanı."],
           ["SOLAS III/19.2", "Costa Concordia sonrası MSC.1/Circ.1446"],
-          ["Briefing'siz sefer kriminal sorumluluk."],
+          ["Briefing yapılmadan sefere çıkmak SOLAS ihlalidir ve ciddi hukuki sorumluluk doğurur."],
           ["Briefing record per voyage"]),
         op("Muster drill (toplanma tatbikatı) organizasyonu",
           "Yeni binen yolcuların muster'ı kalkıştan önce veya kalkışta derhal yapılır (SOLAS III/19.2.2; eski '24 saat içinde' kuralı 2015'te değişti).",

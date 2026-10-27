@@ -102,7 +102,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Yüzen bir gemi, batan hacmi kadar suyun ağırlığına eşit bir kaldırma kuvvetiyle desteklenir. Dolayısıyla geminin toplam ağırlığı (deplasman, Δ), o draftta yer değiştirdiği su ağırlığına eşittir. Draft survey, yükleme öncesi ve sonrası deplasman farkından yük ağırlığını bulur: Yük = Δsonra − Δönce. Deplasman, geminin hidrostatik tablolarından (ya da deplasman ölçeğinden) ortalama drafta karşılık gelen değer okunarak elde edilir.",
         formula: {
-          text: "Yük = Δsonra − Δönce",
+          text: "Cargo = Δafter − Δbefore",
           description: "Δ: ilgili draftta okunan deplasman (ton); fark yüklenen/boşaltılan yük miktarıdır",
         },
       },
@@ -116,7 +116,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Hidrostatik tablolar standart deniz suyu yoğunluğuna (genelde 1.025 t/m³) göredir. Liman suyu yoğunluğu hidrometre ile ölçülür ve deplasman, gerçek yoğunluğa oranlanarak düzeltilir: Δgerçek = Δtablo × (ρgerçek / 1.025). Ayrıca trim için 'first ve second trim correction' uygulanır (LCF'in orta kesitten sapması nedeniyle). Bu düzeltmeler ihmal edilirse birkaç yüz tonluk hata oluşabilir.",
         formula: {
-          text: "Δgerçek = Δtablo × (ρliman / 1.025)",
+          text: "Δactual = Δtable × (ρport / 1.025)",
           description: "ρliman: hidrometre ile ölçülen liman suyu yoğunluğu (t/m³)",
         },
       },
@@ -229,7 +229,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Yükün kaymaya karşı ilk direnci, taban ile yük arasındaki sürtünmedir: Fsürtünme = μ × m × g. Sürtünme katsayısı (μ) yüzey çiftine bağlıdır (çelik-çelik ~0.1, kereste-çelik ~0.3, kauçuk paspas/anti-slip mat ~0.6). Sürtünme yetersiz kaldığında bağlama elemanları (zincir, çelik halat, web lashing) devreye girer. Her bağlama elemanının izin verilen güvenli yükü vardır: MSL (Maximum Securing Load), genellikle kopma yükünün belirli bir oranıdır (örn. çelik halat için kopma yükünün %80'i, zincir için %50'si). Toplam bağlama kapasitesi, atalet kuvvetinden sürtünme direnci düşülen değeri karşılamalıdır.",
         formula: {
-          text: "Σ(MSL etkin) ≥ Fatalet − μ × m × g",
+          text: "Σ(MSL effective) ≥ Finertia − μ × m × g",
           description: "Bağlamaların etkin direnci, atalet kuvvetinden sürtünme direnci çıkarılan değeri karşılamalı",
         },
       },
@@ -334,7 +334,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         image: deckCraneImage,
         imageAlt: "Deck crane used for cargo handling",
         formula: {
-          text: "SWL = Kopma Yükü / Güvenlik Katsayısı",
+          text: "SWL = Breaking Load / Safety Factor",
           description: "Güvenlik katsayısı ekipman tipine ve kullanıma göre değişir (tipik 4–6)",
         },
       },

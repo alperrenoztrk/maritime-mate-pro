@@ -9,7 +9,7 @@ export type ValidationResult = {
 export function validateNumberInput(rawValue: string, constraint: InputConstraint): ValidationResult {
   if (!rawValue || rawValue.trim().length === 0) {
     return constraint.required
-      ? { value: null, error: `${constraint.label} (${constraint.unit}) zorunludur.` }
+      ? { value: null, error: `${constraint.label} (${constraint.unit}) is required.` }
       : { value: null };
   }
   const unitError = validateUnit(rawValue, {
@@ -22,7 +22,7 @@ export function validateNumberInput(rawValue: string, constraint: InputConstrain
   }
   const numeric = Number(rawValue);
   if (Number.isNaN(numeric)) {
-    return { value: null, error: `${constraint.label} must be numeric.` };
+    return { value: null, error: `${constraint.label} must be a number.` };
   }
   const rangeError = validateRange(numeric, {
     label: constraint.label,

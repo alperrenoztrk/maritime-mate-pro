@@ -82,8 +82,8 @@ export const EconomicCalculations = () => {
       profitability: tce > 15000 ? 'Excellent' : tce > 10000 ? 'Good' : tce > 5000 ? 'Fair' : 'Poor'
     });
     setCalcSteps(prev => ({ ...prev, tce: [
-      { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "Time Equivalent Rental (TCE) calculates daily earnings" },
-      { step: 2, title: "Net freight calculation", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
+      { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "The Time Charter Equivalent (TCE) gives the daily earnings of the voyage" },
+      { step: 2, title: "Net freight calculation", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Freight = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Freight = $${netFreight.toLocaleString()}` },
       { step: 3, title: "TCE calculation", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
     ] }));
   };

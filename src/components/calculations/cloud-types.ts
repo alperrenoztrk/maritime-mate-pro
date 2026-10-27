@@ -430,10 +430,10 @@ export const cloudTypes: CloudType[] = [
     characteristics: [
       'funnel shaped',
       'Cb hangs from its base',
-      'Doner',
-      'tornado pioneer'
+      'rotating',
+      'tornado precursor'
     ],
-    maritimeImportance: 'Water hose danger! Get away immediately',
+    maritimeImportance: 'Waterspout danger! Keep well clear at once',
     visibility: 'very bad',
     wind: 'Swivels, very violent',
     precipitation: 'severe',

@@ -1,7 +1,7 @@
 import {
   LAST_POSITION_MAX_AGE_MS,
+  getGeoPermissionState,
   readCachedPosition,
-  shouldRequestLocation,
   writeCachedPosition,
 } from "@/lib/geolocationPermission";
 type WeatherResponse = {
@@ -105,16 +105,19 @@ class WeatherPreloader {
       let isFallbackLocation = false;
       
       try {
-        // İzin reddedilmişse hiç sorma: kullanıcı her açılışta izin diyaloğu
-        // görmesin (bkz. src/lib/geolocationPermission.ts).
-        if (!(await shouldRequestLocation())) {
-          throw new Error("Location permission not granted");
+        // Açılışta izin diyaloğu açılmaz: bu ön yükleme splash ve giriş
+        // ekranının arkasında çalışır, kullanıcı henüz uygulamayı görmeden
+        // konum sorulmasın. Konum yalnızca izin zaten verilmişse sessizce
+        // alınır; ilk izin isteğini girişten sonra ana sayfadaki hava durumu
+        // kartı yapar (useCurrentWeather). Bkz. src/lib/geolocationPermission.ts.
+        if ((await getGeoPermissionState()) !== "granted") {
+          throw new Error("Location permission not granted yet");
         }
         const position = await new Promise<GeolocationPosition>((resolve, reject) => {
           console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
           if (!("geolocation" in navigator)) {
             console.warn("⚠️ [Preloader] Location service not supported, fallback will be used");
-            reject(new Error("Konum servisi desteklenmiyor"));
+            reject(new Error("Location services are not supported"));
             return;
           }
           

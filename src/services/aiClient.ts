@@ -225,7 +225,7 @@ export async function callMaritimeRegulationsAssistant(messages: AIMessage[], la
     }
     
     return [
-      '📚 Maritime Regulations Assistant - Mark',
+      '📚 Maritime Regulations Assistant',
       'What are you looking for information on?',
       '• Navigation (ALRS, NP, List of Lights)',
       '• Safety (SOLAS, LSA Code, FSS Code)', 
@@ -252,8 +252,8 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('eta') || last.includes('varış') || last.includes('zaman')) {
       return [
         '⏱️ ETA Calculations:',
-        '• Basic: T = Distance(nm) ÷ Speed(kn) per hour',
-        '• Flowing: SOG = √(V² + C² + 2VC cos α)',
+        '• Basic: T (h) = Distance (nm) ÷ Speed (kn)',
+        '• With current: SOG = √(V² + C² + 2VC cos α)',
         '• Weather factor: Pro 0.90-0.95, Con 1.10-1.25',
         'Ex: 240nm, 12kn → 20 hours; ETD 08:00 → ETA 04:00+1d'
       ].join('\n');
@@ -262,7 +262,7 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('büyük daire') || last.includes('great circle') || last.includes('gc')) {
       return [
         '🧭 Great Circle:',
-        '• Distance: d = arccos(sin φ₁ sin φ₂ + cos φ₁ cos φ₂ cos Δλ) × 3437.747nm',
+        '• Distance: d = arccos(sin φ₁ sin φ₂ + cos φ₁ cos φ₂ cos Δλ) × 3437.747 nm',
         '• First Course: C₁ = arctan2(sin Δλ cos φ₂, cos φ₁ sin φ₂ - sin φ₁ cos φ₂ cos Δλ)',
         '• Shortest distance but variable course'
       ].join('\n');
@@ -331,9 +331,9 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
 
     if (last.includes('gelgit') || last.includes('tide') || last.includes('tidal')) {
       return [
-        '🌊 Tide - Rule of Twelfths (cumulative):',
-        '• 1st hour: R/12, 2nd hour: 3R/12, 3rd hour: 6R/12',
-        '• 4th hour: 9R/12, 5th hour: 11R/12, 6th hour: 12R/12',
+        '🌊 Tide - Rule of Twelfths:',
+        '• Cumulative rise: 1st hour R/12, 2nd hour 3R/12, 3rd hour 6R/12',
+        '• 4th hour 9R/12, 5th hour 11R/12, 6th hour 12R/12',
         '• Height: h = Range/2 × [1 - cos(π×t/6)]',
         '• Spring tide: New Moon/Full Moon, Neap: First/Last quarter'
       ].join('\n');

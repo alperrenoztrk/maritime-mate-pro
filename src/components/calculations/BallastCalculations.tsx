@@ -227,23 +227,23 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 2,
         title: "Resource tank new level",
-        formula: "Seviyeyeni = Seviyeeski - (Vtransfer / Kapasite × 100)",
-        substitution: `Seviyeyeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
-        result: `Seviyeyeni = ${newFromLevel.toFixed(1)}%`,
+        formula: "Level(new) = Level(old) - (Vtransfer / Capacity × 100)",
+        substitution: `Level(new) = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
+        result: `Level(new) = ${newFromLevel.toFixed(1)}%`,
         explanation: `${fromTank.name} tank level after transfer`
       },
       {
         step: 3,
         title: "Target tank new level",
-        formula: "Seviyeyeni = Seviyeeski + (Vtransfer / Kapasite × 100)",
-        substitution: `Seviyeyeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
-        result: `Seviyeyeni = ${newToLevel.toFixed(1)}%`,
+        formula: "Level(new) = Level(old) + (Vtransfer / Capacity × 100)",
+        substitution: `Level(new) = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
+        result: `Level(new) = ${newToLevel.toFixed(1)}%`,
         explanation: `${toTank.name} tank level after transfer`
       },
       {
         step: 4,
         title: "Longitudinal moment change (Trim moment)",
-        formula: "MLCG = Wtransfer × (LCGhedef - LCGkaynak)",
+        formula: "MLCG = Wtransfer × (LCGtarget - LCGsource)",
         substitution: `MLCG = ${transferWeight.toFixed(3)} × (${toTank.LCG} - ${fromTank.LCG})`,
         result: `MLCG = ${momentLCG.toFixed(3)} t·m`,
         explanation: "Moment due to longitudinal center of gravity difference"
@@ -251,7 +251,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 5,
         title: "Transverse moment change (List moment)",
-        formula: "MTCG = Wtransfer × (TCGhedef - TCGkaynak)",
+        formula: "MTCG = Wtransfer × (TCGtarget - TCGsource)",
         substitution: `MTCG = ${transferWeight.toFixed(3)} × (${toTank.TCG} - ${fromTank.TCG})`,
         result: `MTCG = ${momentTCG.toFixed(3)} t·m`,
         explanation: "Moment due to transverse center of gravity difference"
@@ -275,7 +275,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 8,
         title: "Pumping time calculation",
-        formula: "t = V / min(Qkaynak, Qhedef)",
+        formula: "t = V / min(Qsource, Qtarget)",
         substitution: `t = ${operation.volume} / min(${fromTank.pumpRate}, ${toTank.pumpRate})`,
         result: `t = ${pumpingTime.toFixed(2)} clock`,
         explanation: "Based on the lower of the pump capacity of the two tanks"

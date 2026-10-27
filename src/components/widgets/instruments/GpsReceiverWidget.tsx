@@ -1,7 +1,5 @@
 import { Pencil } from "lucide-react";
-import { InstrumentFrame } from "./InstrumentFrame";
-import { GPS, GPS_SCREEN } from "./instrumentPhotos";
-import { screenStyle } from "./overlayGeometry";
+import { Button } from "@/components/ui/button";
 
 interface GpsReceiverWidgetProps {
   label: string | null;
@@ -16,88 +14,45 @@ interface GpsReceiverWidgetProps {
   onEdit: () => void;
 }
 
-/**
- * Gerçek bir SGN-500 alıcısının fotoğrafı; cihazın renkli LCD'si canlı
- * pozisyonla yeniden yazılır. Fotoğraftaki ekran 2011 tarihli sabit bir fix
- * gösterdiği için ekran alanı tamamen örtülür.
- *
- * Sayfa düzeni cihazın kendi düzenini izler: üstte sarı başlık şeridi, altında
- * üç küçük alan (mod / doğruluk / fix saati), ortada iki satır büyük mevki,
- * altta yine üç alan. Cihazda COG/SOG olan yerde bizde ondalık derece var —
- * uygulamanın elinde hız/rota verisi yok.
- */
 export function GpsReceiverWidget({
-  label,
-  latDMS,
-  lonDMS,
-  latDec,
-  lonDec,
-  sourceKind,
-  sourceLabel,
-  accuracyLabel,
-  fixedAt,
-  onEdit,
+  label, latDMS, lonDMS, latDec, lonDec,
+  sourceKind, sourceLabel, accuracyLabel, fixedAt, onEdit,
 }: GpsReceiverWidgetProps) {
   return (
-    <InstrumentFrame
-      photo={GPS}
-      size="medium"
-      action={
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onEdit();
-          }}
-          className="iw-btn"
+    <div className="iw-device iw-medium">
+      <div className="iw-top">
+        <span className="iw-plate">Position</span>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="iw-position-action"
           aria-label="Enter location manually"
+          title="Enter location manually"
+          onClick={onEdit}
         >
-          <Pencil className="h-3 w-3" />
-        </button>
-      }
-    >
-      <div className="iw-screen notranslate" style={screenStyle(GPS_SCREEN)} translate="no">
-        <div className="iw-lcd-bar">
-          <span>GNSS</span>
-          <span className="iw-lcd-place">{label ?? "—"}</span>
+          <Pencil aria-hidden="true" />
+        </Button>
+      </div>
+      <div className="iw-position-body">
+        <div className="iw-position-place">{label ?? "—"}</div>
+        <div className="iw-position-coords notranslate" translate="no">
+          <span>{latDMS}</span>
+          <span>{lonDMS}</span>
         </div>
-
-        <div className="iw-lcd-cells">
-          <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">MODE</span>
-            <span className={"iw-lcd-val" + (sourceKind === "ip" ? " iw-lcd-warn" : "")}>{sourceLabel}</span>
-          </div>
-          <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">ACC</span>
-            <span className="iw-lcd-val">{accuracyLabel}</span>
-          </div>
-          <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">FIX</span>
-            <span className="iw-lcd-val">{fixedAt}</span>
-          </div>
-        </div>
-
-        <div className="iw-lcd-fix">
-          <span className="iw-lcd-coord">{latDMS}</span>
-          <span className="iw-lcd-coord">{lonDMS}</span>
-        </div>
-
-        <div className="iw-lcd-cells">
-          <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">LAT</span>
-            <span className="iw-lcd-val iw-lcd-small">{latDec || "—"}</span>
-          </div>
-          <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">LON</span>
-            <span className="iw-lcd-val iw-lcd-small">{lonDec || "—"}</span>
-          </div>
-          <div className="iw-lcd-cell">
-            <span className="iw-lcd-key">DATUM</span>
-            <span className="iw-lcd-val iw-lcd-small">WGS84</span>
-          </div>
+        <div className="iw-position-decimal notranslate" translate="no">
+          {latDec || "—"} / {lonDec || "—"} · WGS84
         </div>
       </div>
-    </InstrumentFrame>
+      <dl className="iw-position-details">
+        <div>
+          <dt>Source</dt>
+          <dd className={sourceKind === "ip" ? "iw-position-source--approximate" : "iw-position-source"}>
+            {sourceLabel}
+          </dd>
+        </div>
+        <div><dt>Accuracy</dt><dd className="notranslate" translate="no">{accuracyLabel}</dd></div>
+        <div><dt>Fix time</dt><dd className="notranslate" translate="no">{fixedAt}</dd></div>
+      </dl>
+    </div>
   );
 }

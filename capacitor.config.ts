@@ -36,6 +36,11 @@ const config: CapacitorConfig = {
       releaseType: 'AAB',
       signingType: 'apksigner'
     }
+  },
+  ios: {
+    // Disable WebView rubber-band bounce.
+    scrollEnabled: true,
+    contentInset: 'never'
   }
 };
 

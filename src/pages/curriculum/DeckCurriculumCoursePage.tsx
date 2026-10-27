@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/PageHeader";
 import { CourseLearningOverview } from "@/components/curriculum/CourseLearningOverview";
 import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
@@ -24,7 +25,6 @@ export default function DeckCurriculumCoursePage() {
     );
   }
 
-  const CategoryIcon = category.icon;
   const topicLink = (topicId: string) =>
     `/lessons/${categoryId}/topics/${encodeURIComponent(topicId)}`;
   const unifiedSections = hasCourseTopic(categoryId);
@@ -45,24 +45,13 @@ export default function DeckCurriculumCoursePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden px-4 py-8 pb-24">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute right-10 top-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-      </div>
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-4">
           {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
 
 
-          <div className="flex items-center gap-3">
-            <div
-              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}
-            >
-              <CategoryIcon className="h-6 w-6" />
-            </div>
-            <h1 className="text-2xl font-bold leading-tight text-foreground">{category.title}</h1>
-          </div>
+          <PageHeader title={category.title} />
 
           <CourseSectionTabs
             group="deck"

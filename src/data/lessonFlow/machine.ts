@@ -283,7 +283,7 @@ export const machineLessonFlows: LessonFlow[] = [
           "Entropiyi hesaplar",
         ],
         correctAnswer: 0,
-        explanation: "Termometre, ölçülen sistemle termal dengeye ulaşınca sistemin sıcaklığını gösterir; tüm sıcaklık sensörleri bu ilkeye dayanır.",
+        explanation: "A contact thermometer indicates the system temperature after reaching thermal equilibrium. Check calibration, thermal contact and response time before interpreting a changing reading.",
       },
     ],
   },

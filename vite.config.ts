@@ -345,6 +345,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks(id) {
           // These two large course narratives otherwise join all machinery
           // lessons in one shared chunk and exceed the native parse-size budget.
+          if (id.endsWith("/src/data/learningDepthReviews.json")) return "learning-depth";
           if (id.endsWith("/src/data/navigationTopicContents.ts")) return "learning-navigation";
           if (id.endsWith("/src/data/stabilityTopicsContent.ts")) return "learning-stability";
           if (!id.includes("node_modules")) return undefined;

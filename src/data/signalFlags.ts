@@ -52,7 +52,7 @@ export const SIGNAL_FLAG_KIND_LABELS: Record<FlagKind, { title: string; descript
   answering: {
     title: "Cevap Flaması",
     description:
-      "Haberleşmenin akışını yöneten flama. Yarıya çekilmesi, tam çekilmesi ve indirilmesi ayrı anlamlar taşır; rakam gruplarında ondalık ayracı olarak da kullanılır.",
+      "Haberleşmenin akışını yöneten flama. Yarıya çekilmesi, tam çekilmesi ve tek başına çekilmesi ayrı anlamlar taşır; rakam gruplarında ondalık ayracı olarak da kullanılır.",
   },
 };
 
@@ -423,7 +423,7 @@ export const SIGNAL_FLAGS: SignalFlag[] = [
     label: "Cevap Flaması",
     kind: "answering",
     meaning:
-      "Yarıya çekili (at the dip): 'İşaretinizi gördüm, henüz çözemedim.' Tam çekili (close up): 'Anladım.' İndirilmesi: haberleşmenin bittiğini bildirir. Rakam grupları arasında ondalık ayracı olarak da kullanılır.",
+      "Yarıya çekili (at the dip): 'İşaretinizi gördüm, henüz çözemedim.' Tam çekili (close up): 'Anladım.' Son hoist'ten sonra gönderen istasyon cevap flamasını tek başına çekerek işaretin tamamlandığını bildirir. Rakam gruplarında ondalık ayracı olarak da kullanılır.",
     design: "Sivri flama; beş dikey şerit — kırmızı, beyaz, kırmızı, beyaz, kırmızı.",
   },
 ];
