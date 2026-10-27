@@ -169,11 +169,11 @@ export default function MachineTopicAssistantPage() {
 
   return (
     <AssistantInterface
-      title={`${topic.title} Assistant`}
+      title={`${topic.titleEn} Assistant`}
       badge={topic.title}
       quickPrompts={config.quickPrompts}
       systemPrompt={config.systemPrompt}
-      placeholder={`${topic.title} — write your question here...`}
+      placeholder={`${topic.titleEn} — write your question here...`}
       icon={topic.icon}
       accentGradient={topic.accent}
       iconColor="text-white"

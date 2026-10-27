@@ -1132,55 +1132,57 @@ const marpolNarrative: RegulationNarrativeChapter[] = [
   ),
 ];
 
+// Her alan tam ve bağımsız bir cümledir: çalışma anında başka metinle
+// birleştirilmez, böylece sözlükte tek parça olarak bulunur ve çevrilir.
 const categoryContext: Record<
   RegulationCategory,
   { purpose: string; implementation: string; evidence: string; failure: string }
 > = {
   "IMO Conventions": {
-    purpose: "uluslararası asgari standardı bayrak devleti uygulaması, gemi sertifikasyonu ve liman devleti kontrolü üzerinden ortaklaştırır",
-    implementation: "kuralı gemi tipi, tonaj, inşa tarihi ve sefer durumuna göre onaylı plan, ekipman, prosedür ve yetkin personele dönüştürmektir",
-    evidence: "sertifika ve supplement, onaylı plan/manual, operasyon logu, test-bakım kaydı ve mürettebatın uygulamalı açıklaması",
-    failure: "geçerli belgenin gemideki gerçek konfigürasyon veya personel uygulamasıyla uyuşmaması",
+    purpose: "Düzenleme, uluslararası asgari standardı bayrak devleti uygulaması, gemi sertifikasyonu ve liman devleti kontrolü üzerinden ortaklaştırır.",
+    implementation: "Gemide uygulama, kuralı gemi tipi, tonaj, inşa tarihi ve sefer durumuna göre onaylı plan, ekipman, prosedür ve yetkin personele dönüştürmektir.",
+    evidence: "Objektif kanıt: sertifika ve supplement, onaylı plan/manual, operasyon logu, test-bakım kaydı ve mürettebatın uygulamalı açıklaması.",
+    failure: "Temel kırmızı bayrak: geçerli belgenin gemideki gerçek konfigürasyon veya personel uygulamasıyla uyuşmaması.",
   },
   "Safety Codes": {
-    purpose: "yüksek riskli gemi, yük veya operasyon için ana sözleşmedeki hedefi ayrıntılı teknik ve operasyonel bariyerlere dönüştürür",
-    implementation: "code hükmünü gemiye özgü risk değerlendirmesi, limit, checklist, bakım standardı ve acil durum adımıyla işletmektir",
-    evidence: "uygunluk belgesi, onaylı operasyon manualı, risk değerlendirmesi, izin/checklist, cihaz trendi ve tatbikat kaydı",
-    failure: "genel checklist tamamlanmış görünürken code'a özgü limit veya tehlikenin sahada yönetilmemesi",
+    purpose: "Kod, yüksek riskli gemi, yük veya operasyon için ana sözleşmedeki hedefi ayrıntılı teknik ve operasyonel bariyerlere dönüştürür.",
+    implementation: "Gemide uygulama, kod hükmünü gemiye özgü risk değerlendirmesi, limit, checklist, bakım standardı ve acil durum adımıyla işletmektir.",
+    evidence: "Objektif kanıt: uygunluk belgesi, onaylı operasyon manualı, risk değerlendirmesi, izin/checklist, cihaz trendi ve tatbikat kaydı.",
+    failure: "Temel kırmızı bayrak: genel checklist tamamlanmış görünürken koda özgü limit veya tehlikenin sahada yönetilmemesi.",
   },
   "Environmental Regulations": {
-    purpose: "kirletici veya istilacı etkinin kaynağını, gemideki işlem yolunu, deşarj/emisyon şartını ve kayıt zincirini kontrol eder",
-    implementation: "madde/atık akışını kaynaktan tanka, arıtma ekipmanına, nihai bertarafa ve record book kaydına kadar izlemektir",
-    evidence: "sertifika, plan, record book, tank/ölçüm verisi, alarm-ekipman kaydı, numune ve reception facility belgesi",
-    failure: "kayıtlı miktar ve yöntemin tank bakiyesi, cihaz trendi veya teslim fişiyle fiziksel olarak uzlaşmaması",
+    purpose: "Düzenleme, kirletici veya istilacı etkinin kaynağını, gemideki işlem yolunu, deşarj/emisyon şartını ve kayıt zincirini kontrol eder.",
+    implementation: "Gemide uygulama, madde/atık akışını kaynaktan tanka, arıtma ekipmanına, nihai bertarafa ve record book kaydına kadar izlemektir.",
+    evidence: "Objektif kanıt: sertifika, plan, record book, tank/ölçüm verisi, alarm-ekipman kaydı, numune ve reception facility belgesi.",
+    failure: "Temel kırmızı bayrak: kayıtlı miktar ve yöntemin tank bakiyesi, cihaz trendi veya teslim fişiyle fiziksel olarak uzlaşmaması.",
   },
   "Inspection & Survey": {
-    purpose: "gemi, şirket, bayrak, klas ve liman devleti arasındaki bağımsız doğrulama ve bulgu kapatma sistemini tanımlar",
-    implementation: "sörvey kapsamını doğru planlamak, gerçek kondisyonu göstermek, bulguyu riskine göre yönetmek ve kalıcı kapanışı kanıtlamaktır",
-    evidence: "survey/inspection report, status, condition/recommendation listesi, defect kaydı, düzeltici faaliyet ve etkinlik kontrolü",
-    failure: "bulgunun kâğıt üzerinde kapanmış görünmesine rağmen aynı fiziksel veya sistemik eksikliğin sürmesi",
+    purpose: "Düzenleme, gemi, şirket, bayrak, klas ve liman devleti arasındaki bağımsız doğrulama ve bulgu kapatma sistemini tanımlar.",
+    implementation: "Gemide uygulama, sörvey kapsamını doğru planlamak, gerçek kondisyonu göstermek, bulguyu riskine göre yönetmek ve kalıcı kapanışı kanıtlamaktır.",
+    evidence: "Objektif kanıt: survey/inspection report, status, condition/recommendation listesi, defect kaydı, düzeltici faaliyet ve etkinlik kontrolü.",
+    failure: "Temel kırmızı bayrak: bulgunun kâğıt üzerinde kapanmış görünmesine rağmen aynı fiziksel veya sistemik eksikliğin sürmesi.",
   },
   "Ship Certificates": {
-    purpose: "belirli bir tasarım, ekipman, yönetim veya operasyon standardının yetkili sörveyle doğrulandığını görünür kılar",
-    implementation: "sertifikanın kapsam, ek, endorsement ve koşullarını gemideki gerçek ekipman/operasyonla sürekli aynı tutmaktır",
-    evidence: "sertifika aslı, supplement/record of equipment, survey status, onay yazısı ve sertifikayı destekleyen saha kaydı",
-    failure: "ana sertifika tarihi geçerliyken eki, onayı, sörvey penceresi veya gerçek gemi durumunun farklı olması",
+    purpose: "Sertifika, belirli bir tasarım, ekipman, yönetim veya operasyon standardının yetkili sörveyle doğrulandığını görünür kılar.",
+    implementation: "Gemide uygulama, sertifikanın kapsam, ek, endorsement ve koşullarını gemideki gerçek ekipman/operasyonla sürekli aynı tutmaktır.",
+    evidence: "Objektif kanıt: sertifika aslı, supplement/record of equipment, survey status, onay yazısı ve sertifikayı destekleyen saha kaydı.",
+    failure: "Temel kırmızı bayrak: ana sertifika tarihi geçerliyken eki, onayı, sörvey penceresi veya gerçek gemi durumunun farklı olması.",
   },
   "Regional Regulations": {
-    purpose: "belirli kıyı devleti, liman veya deniz alanının trafik, çevre, emniyet ve bildirim risklerine ek kontrol getirir",
-    implementation: "güncel yerel kuralı passage/pre-arrival planına, gemi operasyonuna, acente iletişimine ve zamanında bildirime çevirmektir",
-    evidence: "güncel circular/port information, pre-arrival form, voyage logu, izin/onay, acente-otorite yazışması ve operasyon kaydı",
-    failure: "eski liman bilgisinin kullanılması veya acenteye gönderilen bildirimin gemideki gerçek operasyonla uyuşmaması",
+    purpose: "Düzenleme, belirli kıyı devleti, liman veya deniz alanının trafik, çevre, emniyet ve bildirim risklerine ek kontrol getirir.",
+    implementation: "Gemide uygulama, güncel yerel kuralı passage/pre-arrival planına, gemi operasyonuna, acente iletişimine ve zamanında bildirime çevirmektir.",
+    evidence: "Objektif kanıt: güncel circular/port information, pre-arrival form, voyage logu, izin/onay, acente-otorite yazışması ve operasyon kaydı.",
+    failure: "Temel kırmızı bayrak: eski liman bilgisinin kullanılması veya acenteye gönderilen bildirimin gemideki gerçek operasyonla uyuşmaması.",
   },
 };
 
 const unique = (values: (string | undefined)[]) =>
   [...new Set(values.filter((value): value is string => Boolean(value?.trim())).map((value) => value.trim()))];
 
-const joinForNarrative = (values: string[], emptyText: string) => {
+// Her öğe ayrı paragraf olur; öğeler birleştirilmez (sözlükte tek tek bulunur).
+const listForNarrative = (values: string[], emptyText: string) => {
   const cleaned = unique(values);
-  if (cleaned.length === 0) return emptyText;
-  return cleaned.map((value, index) => `${index + 1}) ${value}`).join(" ");
+  return cleaned.length === 0 ? [emptyText] : cleaned;
 };
 
 const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapter[] => {
@@ -1197,16 +1199,21 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
     const action = item.actions[index % Math.max(item.actions.length, 1)];
 
     return section(
-      `${article.id} · ${article.title}`,
-      [
-        `${article.summary} Bu hüküm, ${item.label} düzenlemesinin ${context.purpose} şeklindeki genel amacı içinde okunur. Madde başlığı tek başına sonuç değildir; tanımlar, kapsam, istisnalar ve atıf yapılan zorunlu metinler aynı anda kontrol edilmelidir.`,
-        supportingSection
-          ? `${supportingSection.heading}: ${supportingSection.body} Bu açıklamanın gemideki karşılığı, genel metni geminin onaylı düzeni ve gerçek operasyon sınırlarıyla eşleştirmektir.`
-          : `Gemideki karşılık ${operationalFocus || "uygulanabilir teknik ve operasyonel bariyerin kurulması"} odağıyla değerlendirilir. Sorumlu kişi yalnız kuralı söylemek yerine kimin, hangi ekipman/prosedürle, hangi anda ve hangi limit içinde hareket ettiğini gösterebilmelidir.`,
-        `${action || "Uygulanabilir işlem gemiye özgü prosedüre göre yürütülür."} Yapılan işlem; ${context.evidence} ile doğrulanır. Arıza veya sapmada güvenli durum, bildirim yetkisi, geçici tedbir ve kalıcı kapanış birbirinden ayrılır.`,
-      ],
-      unique([`${article.id} – ${article.title}`, ...sources]),
-      `${operationalFocus || context.implementation} Gereklilik; vardiya, bakım, familiarization ve değişiklik yönetimine ayrı ayrı aktarılmalıdır.`,
+      article.title,
+      unique([
+        article.summary,
+        "Bu hüküm, düzenlemenin genel amacı içinde okunur. Madde başlığı tek başına sonuç değildir; tanımlar, kapsam, istisnalar ve atıf yapılan zorunlu metinler aynı anda kontrol edilmelidir.",
+        ...(supportingSection
+          ? [supportingSection.body, "Bu açıklamanın gemideki karşılığı, genel metni geminin onaylı düzeni ve gerçek operasyon sınırlarıyla eşleştirmektir."]
+          : operationalFocus
+            ? [operationalFocus, "Gemideki karşılık bu odakla değerlendirilir. Sorumlu kişi yalnız kuralı söylemek yerine kimin, hangi ekipman/prosedürle, hangi anda ve hangi limit içinde hareket ettiğini gösterebilmelidir."]
+            : ["Gemideki karşılık, uygulanabilir teknik ve operasyonel bariyerin kurulmasıdır. Sorumlu kişi yalnız kuralı söylemek yerine kimin, hangi ekipman/prosedürle, hangi anda ve hangi limit içinde hareket ettiğini gösterebilmelidir."]),
+        action || "Uygulanabilir işlem gemiye özgü prosedüre göre yürütülür.",
+        context.evidence,
+        "Arıza veya sapmada güvenli durum, bildirim yetkisi, geçici tedbir ve kalıcı kapanış birbirinden ayrılır.",
+      ]),
+      unique([article.id, article.title, ...sources]),
+      operationalFocus || context.implementation,
       unique([
         context.failure,
         item.penalties?.[index % Math.max(item.penalties?.length || 0, 1)],
@@ -1222,8 +1229,10 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         entry.heading,
         [
           entry.body,
-          `Bu konu ${item.label} kapsamında yalnız teorik bilgi olarak kalmamalıdır. ${context.implementation} Gemide ilgili ekipman, alan veya kayıt üzerinde yapılan walk-through; prosedür metniyle gerçek iş akışının ayrıştığı noktaları ortaya çıkarır.`,
-          `${item.actions[index % Math.max(item.actions.length, 1)] || "İşlem planlanır, uygulanır ve bağımsız olarak doğrulanır."} Sonuç ${context.evidence} kullanılarak çapraz kontrol edilir.`,
+          "Bu konu yalnız teorik bilgi olarak kalmamalıdır. Gemide ilgili ekipman, alan veya kayıt üzerinde yapılan walk-through; prosedür metniyle gerçek iş akışının ayrıştığı noktaları ortaya çıkarır.",
+          context.implementation,
+          item.actions[index % Math.max(item.actions.length, 1)] || "İşlem planlanır, uygulanır ve bağımsız olarak doğrulanır.",
+          context.evidence,
         ],
         sources,
         item.essentials[index % Math.max(item.essentials.length, 1)] || context.implementation,
@@ -1237,9 +1246,11 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
       section(
         "Temel yükümlülüklerin birlikte okunması",
         [
-          joinForNarrative(item.essentials, `${item.label} için gemiye uygulanabilir yükümlülükler resmî metinden belirlenir.`),
-          `Bu gereklilikler bağımsız maddeler değil, ortak bir risk kontrol zinciridir. ${context.implementation} Bir bariyerin devre dışı kalması halinde kalan bariyerlerin yeterliliği ve sefer/operasyonun sürdürülüp sürdürülemeyeceği yetkili kişilerce yeniden değerlendirilir.`,
-          `Gemi ekibi, yükümlülüğün hukukî dayanağını, emniyet/çevre gerekçesini, sorumlu rolünü ve ${context.evidence} üzerinden nasıl ispatlandığını açıklayabilmelidir.`,
+          ...listForNarrative(item.essentials, "Gemiye uygulanabilir yükümlülükler resmî metinden belirlenir."),
+          "Bu gereklilikler bağımsız maddeler değil, ortak bir risk kontrol zinciridir. Bir bariyerin devre dışı kalması halinde kalan bariyerlerin yeterliliği ve sefer/operasyonun sürdürülüp sürdürülemeyeceği yetkili kişilerce yeniden değerlendirilir.",
+          context.implementation,
+          "Gemi ekibi, yükümlülüğün hukukî dayanağını, emniyet/çevre gerekçesini, sorumlu rolünü ve objektif kanıtla nasıl ispatlandığını açıklayabilmelidir.",
+          context.evidence,
         ],
         sources,
         context.implementation,
@@ -1251,15 +1262,16 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
   return [
     chapter(
       `${item.slug}-amac-kapsam`,
-      `1. Amaç, hukukî yapı ve ${item.label} kapsamı`,
-      `${item.label}, ${context.purpose}. Bu bölüm düzenlemenin ortaya çıkardığı yükümlülüğü değil, önce çözdüğü riski ve gemiye neden uygulandığını kurar.`,
+      "1. Amaç, hukukî yapı ve kapsam",
+      "Bu bölüm düzenlemenin ortaya çıkardığı yükümlülüğü değil, önce çözdüğü riski ve gemiye neden uygulandığını kurar.",
       [
         section(
           "Düzenlemenin çözdüğü problem ve sistem içindeki yeri",
           [
             item.overview,
-            item.history || `${item.label}, ilgili uluslararası ve ulusal uygulama zinciri içinde teknik gereklilikleri gemi işletmesine bağlar. Tarihçe okunurken ilk kabul tarihi kadar bugün yürürlükte olan konsolide metin ve geçiş hükümleri esas alınır.`,
-            `Düzenlemenin temel mantığı ${context.purpose}. Bu nedenle uygunluk yalnız bir belge edinmek değil; tasarım, ekipman, prosedür, insan yeterliği, kayıt ve bağımsız doğrulamanın aynı sonucu vermesidir.`,
+            item.history || "Düzenleme, ilgili uluslararası ve ulusal uygulama zinciri içinde teknik gereklilikleri gemi işletmesine bağlar. Tarihçe okunurken ilk kabul tarihi kadar bugün yürürlükte olan konsolide metin ve geçiş hükümleri esas alınır.",
+            context.purpose,
+            "Uygunluk yalnız bir belge edinmek değil; tasarım, ekipman, prosedür, insan yeterliği, kayıt ve bağımsız doğrulamanın aynı sonucu vermesidir.",
           ],
           sources,
           `Kaptan ve departman amirleri, düzenlemenin koruduğu ana tehlikeyi ve bu gemideki birincil bariyerleri ortak bir risk resmi içinde anlatabilmelidir.`,
@@ -1268,7 +1280,7 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         section(
           "Uygulanabilirlik bir evet/hayır kutusu değil, kanıtlanan karardır",
           [
-            joinForNarrative(applicability, `Uygulanabilirlik; gemi tipi, tonaj, inşa/dönüşüm tarihi, bayrak, sefer alanı ve yapılan operasyona göre resmî metinden belirlenir.`),
+            ...listForNarrative(applicability, "Uygulanabilirlik; gemi tipi, tonaj, inşa/dönüşüm tarihi, bayrak, sefer alanı ve yapılan operasyona göre resmî metinden belirlenir."),
             `Her kapsam cümlesi geminin certificate particulars, planı, equipment arrangement'ı ve operasyonuyla doğrulanır. Muafiyet, eşdeğerlik veya grandfathering varsa yazılı yetki, koşul ve süre gösterilir; şirket alışkanlığı kapsam istisnası oluşturmaz.`,
             `Gemi veya operasyon değiştiğinde uygulanabilirlik yeniden açılır. Yeni yük, rota, ekipman, bayrak, yönetici şirket veya major conversion; sertifika, eğitim, prosedür ve survey gereğini birlikte değiştirebilir.`,
           ],
@@ -1282,7 +1294,7 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
     chapter(
       `${item.slug}-kural-haritasi`,
       "2. Madde ve gereklilik haritası",
-      `Bu bölüm ${item.label} içindeki maddeleri yüzeysel başlıklar olarak değil; gerekçe, gemi uygulaması, kanıt ve arıza sonucu üzerinden okur.`,
+      "Bu bölüm düzenlemedeki maddeleri yüzeysel başlıklar olarak değil; gerekçe, gemi uygulaması, kanıt ve arıza sonucu üzerinden okur.",
       requirementsChapterSections,
       ["Madde, tanım ve atıf yaptığı teknik metinle birlikte okunur.", "Her gerekliliğin gemide görünür bir sahibi ve kanıtı olmalıdır.", "Arıza halinde kalan bariyerler yeniden değerlendirilir."],
     ),
@@ -1294,8 +1306,9 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         section(
           "Operasyon öncesi hazırlık ve kontrol noktaları",
           [
-            joinForNarrative(item.essentials, `${item.label} için kritik emniyet/uyum odakları gemiye özgü risk değerlendirmesinde belirlenir.`),
-            `Bu odaklar operasyon öncesinde scope, sorumlu, equipment readiness, limit, communication ve stop-work kriterine dönüştürülür. ${context.implementation} Toolbox talk/checklist, ekip düşünmeden işaretlesin diye değil; riskteki değişikliği görünür kılsın diye kullanılır.`,
+            ...listForNarrative(item.essentials, "Kritik emniyet/uyum odakları gemiye özgü risk değerlendirmesinde belirlenir."),
+            "Bu odaklar operasyon öncesinde scope, sorumlu, equipment readiness, limit, communication ve stop-work kriterine dönüştürülür. Toolbox talk/checklist, ekip düşünmeden işaretlesin diye değil; riskteki değişikliği görünür kılsın diye kullanılır.",
+            context.implementation,
             `İş başlamadan sertifika/manual revizyonu, açık defect, maintenance isolation, hava/deniz/liman koşulu ve yetkin personel kontrol edilir. Bir şart sağlanmıyorsa erteleme, alternatif yöntem veya yetkili onaylı geçici tedbir seçilir.`,
           ],
           sources,
@@ -1305,16 +1318,17 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         section(
           "Uygulama, vardiya devri ve sapma yönetimi",
           [
-            joinForNarrative(item.actions, "Operasyon adımları onaylı gemi prosedürü ve sorumlu zabitin gözetimiyle yürütülür."),
+            ...listForNarrative(item.actions, "Operasyon adımları onaylı gemi prosedürü ve sorumlu zabitin gözetimiyle yürütülür."),
             "Vardiya devri yalnız 'iş devam ediyor' cümlesi değildir; mevcut aşama, son ölçüm, aktif alarm/isolation, yaklaşan limit, kıyı iletişimi ve sapmada yapılacak hareket aktarılır. Kritik kararlar tarih-saat ve sorumlu kişiyle kaydedilir.",
-            `Sapma görülünce önce güvenli durum kurulur, sonra bildirim ve teknik inceleme yapılır. ${context.failure} temel kırmızı bayraktır. Temporary measure'ın yetkisi, süresi, risk kontrolü ve kalıcı kapanış tarihi açık olmalıdır.`,
+            "Sapma görülünce önce güvenli durum kurulur, sonra bildirim ve teknik inceleme yapılır. Temporary measure'ın yetkisi, süresi, risk kontrolü ve kalıcı kapanış tarihi açık olmalıdır.",
+            context.failure,
           ],
           sources,
           `Sorumlu amir, yapılan adımı gerçek ekipman veya kayıt üzerinde gösterebilmeli; devralan vardiya kalan riski kendi cümlesiyle tekrar edebilmelidir.`,
           [context.failure, "Arızayı loglamadan resetleyip normal operasyona devam etmek"],
           scenario(
             "Kayıt tamam, fiziksel durum farklı",
-            `${item.label} checklist'i eksiksiz imzalanmıştır; vardiya turunda kritik bir ekipman/işaret/valf prosedürdeki konumdan farklı bulunur.`,
+            "İlgili checklist eksiksiz imzalanmıştır; vardiya turunda kritik bir ekipman/işaret/valf prosedürdeki konumdan farklı bulunur.",
             "İmza, kontrolün gerçekten ve doğru kapsamda yapıldığını tek başına kanıtlamaz. Fark, operasyonel riskin yanında safety culture ve kayıt güvenilirliği sorunudur.",
             "İş güvenli duruma alınır, farkın etkisi ve süresi belirlenir, ilgili kayıtlar korunur. Checklist tasarımı, görev yükü, eğitim ve gözetim kök nedenleri incelenip etkinliği sahada doğrulanan düzeltici faaliyet uygulanır.",
           ),
@@ -1322,7 +1336,8 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         section(
           "Objektif kanıtı çapraz doğrulama",
           [
-            `Bir denetçi için güçlü kanıt zinciri ${context.evidence} öğelerinin aynı olayı göstermesidir. Tarih, saat, konum, miktar, ekipman kimliği, sorumlu imza ve ölçüm sonucu arasında tutarlılık aranır.`,
+            "Bir denetçi için güçlü kanıt zinciri, farklı kayıtların aynı olayı göstermesidir. Tarih, saat, konum, miktar, ekipman kimliği, sorumlu imza ve ölçüm sonucu arasında tutarlılık aranır.",
+            context.evidence,
             "Rastgele örnekleme, hazırlıklı dosya yerine gerçek sistem performansını gösterir. Bir kayıt seçilir; sahadaki ekipman, alarm/event history, PMS, certificate supplement ve ilgili personel açıklamasıyla geriye ve ileriye izlenir.",
             "Tutarsızlık bulunduğunda kaydı sessizce düzeltmek yerine factual review yapılır. Immediate correction, extent-of-condition, root cause, corrective action ve effectiveness check ayrı adımlar olarak belgelenir.",
           ],
@@ -1341,10 +1356,8 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         section(
           "Değişikliklerin yürürlüğe alınması",
           [
-            joinForNarrative(
-              amendments.map((entry) => `${entry.year}: ${entry.description}`),
-              `${item.label} değişiklikleri resmî yayımlar, bayrak/klas circularları ve şirket mevzuat takip süreci üzerinden izlenir.`,
-            ),
+            ...unique(amendments.map((entry) => entry.description)),
+            "Değişiklikler resmî yayımlar, bayrak/klas circularları ve şirket mevzuat takip süreci üzerinden izlenir.",
             "Adoption, entry into force ve ship-specific application date aynı kavram değildir. Değişiklikte gemi tipi, construction date, existing/new ship ayrımı ve geçiş hükmü okunur; yalnız takvim tarihiyle karar verilmez.",
             "Gap analysis; sertifika/plan, fiziksel modifikasyon, yazılım, spare, PMS, procedure/checklist, crew training ve shore support etkilerini ayrı sorumlulara atar. Uygulama sonunda belge güncellemesi ile saha testi aynı kapanış paketinde doğrulanır.",
           ],
@@ -1355,16 +1368,17 @@ const buildFallbackNarrative = (item: RegulationItem): RegulationNarrativeChapte
         section(
           "Denetçi sorusunu vaka çözümüne dönüştürme",
           [
-            `Denetçi '${item.label} bu gemide nasıl uygulanıyor?' diye sorduğunda iyi cevap beş parçalıdır: uygulanabilir hüküm ve gerekçesi; gemiye özgü ekipman/prosedür; sorumlu rol; son gerçek işlem ve ${context.evidence}; arıza/uygunsuzluk halinde güvenli yol.`,
+            "Denetçi 'Bu düzenleme bu gemide nasıl uygulanıyor?' diye sorduğunda iyi cevap beş parçalıdır: uygulanabilir hüküm ve gerekçesi; gemiye özgü ekipman/prosedür; sorumlu rol; son gerçek işlem ve kanıtı; arıza/uygunsuzluk halinde güvenli yol.",
             "Cevap ekipman başında gösterilebilir olmalı, ezberlenmiş genel tanımdan ibaret kalmamalıdır. Personelin seviyesine uygun kendi görevi sorulur; herkesin bütün sözleşmeyi bilmesi değil, kendi eylemi ve escalation yolunu doğru uygulaması beklenir.",
-            `Kırmızı bayrak ${context.failure}. Bu durumda denetim kapsamı genellikle genişler; benzer ekipman/kayıt, SMS uygulaması, bakım ve yönetim gözetimi incelenebilir. Açık, yetkili ve risk kontrollü defect yönetimi saklanmış bir tutarsızlıktan daha güçlüdür.`,
+            context.failure,
+            "Bu durumda denetim kapsamı genellikle genişler; benzer ekipman/kayıt, SMS uygulaması, bakım ve yönetim gözetimi incelenebilir. Açık, yetkili ve risk kontrollü defect yönetimi saklanmış bir tutarsızlıktan daha güçlüdür.",
           ],
           sources,
           "Tatbikat/sözlü hazırlıkta her cevap bir belge ve bir fiziksel gösterimle doğrulanmalıdır.",
           ["Kural numarasını söylemeyi yeterli cevap sanmak", "Açık arızayı denetimden önce kayıttan çıkarmak"],
           scenario(
             "Sörvey öncesi kritik uygunsuzluk",
-            `${item.label} kapsamında kritik bir eksiklik sörveyden bir gün önce bulunur; ekip, denetimde görünmemesi için kaydı sonraya bırakmayı önerir.`,
+            "Kritik bir eksiklik sörveyden bir gün önce bulunur; ekip, denetimde görünmemesi için kaydı sonraya bırakmayı önerir.",
             "Kayıt dışı bırakmak fiziksel riski azaltmaz ve ISM/kayıt güvenilirliğini ayrıca ihlal eder. Yetkisiz gizleme, eksikliğin kendisinden daha geniş kontrol tetikleyebilir.",
             "Eksiklik derhal güvenli duruma alınır, defect/non-conformity açılır, şirket ve gerekli bayrak/RO/liman kanalı bilgilendirilir; yetkili temporary measure ve kalıcı onarım planı denetçiye şeffaf sunulur.",
           ),

@@ -53,7 +53,9 @@ const question = (
   expectedAnswer: string,
   evidence: string[],
   redFlags: string[],
+  reference?: RegulationInspectionQuestion["reference"],
 ): RegulationInspectionQuestion => ({
+  ...(reference ? { reference } : {}),
   question: prompt,
   expectedAnswer,
   evidence,
@@ -1013,7 +1015,7 @@ const buildComplianceStages = (item: RegulationItem): RegulationComplianceStage[
     stage: "5 · Değişikliği yönet",
     objective: "Yeni değişiklik, sirküler, kaza dersi veya denetim bulgusunu sisteme kalıcı olarak işlemek.",
     activities: uniqueStrings([
-      ...(item.amendments || []).slice(-2).map((amendment) => `${amendment.year}: ${amendment.description}`),
+      ...(item.amendments || []).slice(-2).map((amendment) => amendment.description),
       "Bayrak, klas, IMO/ILO ve şirket circularlarını periyodik gözden geçir.",
     ]),
     outputs: ["Revizyon ve familiarization kaydı", "Güncellenmiş prosedür/PMS/checklist", "Etkinlik kontrolü"],
@@ -1031,10 +1033,10 @@ const buildFallbackProfile = (item: RegulationItem): RegulationEnhancement => {
     const article = articles[index % Math.max(articles.length, 1)];
     const action = actions[index % Math.max(actions.length, 1)];
     return requirement(
-      article?.title || `Operasyonel gereklilik ${index + 1}`,
+      article?.title || "Operasyonel gereklilik",
       article?.id || item.label,
       essential,
-      article?.summary || `${item.label} kapsamındaki bu yükümlülük, kuralın gemide ölçülebilir ve sürdürülebilir biçimde uygulanmasını sağlar.`,
+      article?.summary || "Bu yükümlülük, kuralın gemide ölçülebilir ve sürdürülebilir biçimde uygulanmasını sağlar.",
       evidence,
       roles,
       uniqueStrings([
@@ -1047,26 +1049,27 @@ const buildFallbackProfile = (item: RegulationItem): RegulationEnhancement => {
     );
   });
 
-  const inspectionQuestions = (articles.length > 0 ? articles.slice(0, 4) : essentials.slice(0, 4).map((title, index) => ({
-    id: item.label,
-    title: `Gereklilik ${index + 1}`,
-    summary: title,
-  }))).map((article, index) =>
+  const questionReferences: NonNullable<RegulationInspectionQuestion["reference"]>[] = articles.length > 0
+    ? articles.slice(0, 4).map((article) => ({ id: article.id, title: article.title, summary: article.summary }))
+    : essentials.slice(0, 4).map((summary) => ({ summary }));
+
+  const inspectionQuestions = questionReferences.map((reference, index) =>
     question(
-      `${article.id} – ${article.title} gerekliliğini bu gemide nasıl uyguluyor ve doğruluyorsunuz?`,
-      `${article.summary} Cevap; gemiye uygulanabilir hükmü, sorumlu kişiyi, yapılan işlemi, tutulan kaydı ve arıza/uygunsuzluk halinde izlenecek yolu birlikte açıklamalıdır.`,
+      "Bu gerekliliği bu gemide nasıl uyguluyor ve doğruluyorsunuz?",
+      "Cevap; gemiye uygulanabilir hükmü, sorumlu kişiyi, yapılan işlemi, tutulan kaydı ve arıza/uygunsuzluk halinde izlenecek yolu birlikte açıklamalıdır.",
       evidence,
       uniqueStrings([
         actions[index],
         "Belge ile fiziksel durumun uyuşmaması",
         "Personelin yalnız ezberlenmiş genel cevap vermesi",
       ]),
+      reference,
     ),
   );
 
   return {
     learningObjectives: [
-      `${item.label} düzenlemesinin kapsamını ve bu gemiye uygulanabilirliğini belirlemek`,
+      "Düzenlemenin kapsamını ve bu gemiye uygulanabilirliğini belirlemek",
       "Temel yükümlülükleri gemideki prosedür, ekipman, sorumlu ve kayda dönüştürmek",
       "Sörvey/PSC sırasında objektif kanıt zincirini göstermek",
       "Uygunsuzluk halinde emniyetli geçici tedbir, bildirim ve kalıcı düzeltme sürecini yönetmek",

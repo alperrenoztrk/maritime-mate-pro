@@ -14,6 +14,8 @@ export type ShipSystemCallout = {
   type: "warning" | "reference" | "tip" | "example" | "regulation";
   title?: string;
   text: string;
+  /** Ayrı satırlar (her biri ayrı paragraf olarak çizilir ve ayrı çevrilir) */
+  lines?: string[];
 };
 
 export type ShipSystemSection = {

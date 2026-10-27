@@ -87,7 +87,7 @@ export const solasDrills: readonly SolasDrill[] = [
     applicability: "Donanıma ve onaylı muafiyetlere göre",
     frequency:
       "Can filikası atanmış işletme ekibiyle en az üç ayda bir; ayrı kurtarma botu mümkünse aylık, her hâlükârda en az üç ayda bir suya indirilip manevra yaptırılır.",
-    reference: "SOLAS III/19.3.4.3 ve III/19.3.4.4",
+    reference: "SOLAS III/19.3.4.3 ve III/19.3.4.6",
     isStandalone: false,
   },
 ] as const;

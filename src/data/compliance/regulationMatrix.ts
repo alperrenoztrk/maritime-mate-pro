@@ -161,7 +161,7 @@ export const REGULATION_REFS: Record<string, RegulationRef> = {
     source: "SOLAS",
     summary: "Fire fighting — fixed gas (CO₂) and foam systems for machinery spaces.",
     inForce: "Consolidated 2020",
-    value: "CO₂ design: 40% gross volume of largest machinery space; mass = V × 0.56 kg/m³",
+    value: "CO₂ design: 40% of the gross volume of the largest machinery space (35% if the casing is included); mass = 0.40 × V / 0.56 kg (FSS Code Ch. 5)",
   },
   "SOLAS/III/19": {
     citation: "SOLAS III Reg. 19",

@@ -331,7 +331,7 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                       <div>
                         <p className="font-medium text-sm">{result.exam_name}</p>
                         <p className="text-xs text-muted-foreground">
-                          {new Date(result.completed_at).toLocaleDateString('tr-TR', {
+                          {new Date(result.completed_at).toLocaleDateString('en-GB', {
                             day: 'numeric',
                             month: 'short',
                             hour: '2-digit',

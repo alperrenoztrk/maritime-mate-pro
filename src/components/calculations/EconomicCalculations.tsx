@@ -136,14 +136,14 @@ export const EconomicCalculations = () => {
     setDemurrageResult(result);
     const demSteps: CalculationStep[] = [
       { step: 1, title: "Formula", formula: "Time Difference = Actual Time - Lay Time", explanation: "Positive difference means demurrage, negative difference means despatch" },
-      { step: 2, title: "Time difference calculation", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} clock` },
+      { step: 2, title: "Time difference calculation", formula: `Difference = ${actualHours} - ${layTimeHours}`, result: `Difference = ${timeDifference} hours` },
     ];
     if (timeDifference > 0) {
-      demSteps.push({ step: 3, title: "Demurrage calculation", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Demurrage calculation", formula: "Demurrage = Difference × Rate", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
     } else if (timeDifference < 0) {
-      demSteps.push({ step: 3, title: "Despatch account", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Despatch calculation", formula: "Despatch = |Difference| × Rate × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
     } else {
-      demSteps.push({ step: 3, title: "Result", formula: "Fark = 0", result: "Completed on time, no payment" });
+      demSteps.push({ step: 3, title: "Result", formula: "Difference = 0", result: "Completed within laytime, no demurrage or despatch" });
     }
     setCalcSteps(prev => ({ ...prev, demurrage: demSteps }));
   };
@@ -176,10 +176,10 @@ export const EconomicCalculations = () => {
                      profitMargin > 0 ? 'Poor' : 'Loss'
     });
     setCalcSteps(prev => ({ ...prev, voyage: [
-      { step: 1, title: "gross revenue account", formula: "Gross Revenue = Cargo Amount × Freight Rate", substitution: `Gross Revenue = ${quantity.toLocaleString()} × $${rate}`, result: `Gross Revenue = $${grossRevenue.toLocaleString()}` },
-      { step: 2, title: "Total cost", formula: "Total Cost = Fuel + Port Expenses", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
-      { step: 3, title: "Net profit", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
-      { step: 4, title: "profit margin", formula: "Profit Margin = (Net Profit / Gross Revenue) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = %${profitMargin.toFixed(1)}` },
+      { step: 1, title: "Gross revenue", formula: "Gross Revenue = Cargo Amount × Freight Rate", substitution: `Gross Revenue = ${quantity.toLocaleString()} × $${rate}`, result: `Gross Revenue = $${grossRevenue.toLocaleString()}` },
+      { step: 2, title: "Total cost", formula: "Total Cost = Fuel + Port Expenses", substitution: `Total = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Total Cost = $${totalCosts.toLocaleString()}` },
+      { step: 3, title: "Net profit", formula: "Net Profit = Gross Revenue - Total Cost", substitution: `Net Profit = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Profit = $${netProfit.toLocaleString()}` },
+      { step: 4, title: "Profit margin", formula: "Profit Margin = (Net Profit / Gross Revenue) × 100", substitution: `Margin = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Profit Margin = ${profitMargin.toFixed(1)}%` },
     ] }));
   };
 

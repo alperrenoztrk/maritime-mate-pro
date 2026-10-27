@@ -166,7 +166,6 @@ export const SIGNAL_FLAGS: SignalFlag[] = [
     phonetic: "Lima",
     morse: ".-..",
     meaning: "Geminizi derhal durdurun.",
-    fishingMeaning: "Av sahasına yakın balıkçı teknesi için: 'Ağlarım bir engele takıldı.'",
     design: "Dörde bölünmüş: sarı üst-mandar ve alt-fly, siyah üst-fly ve alt-mandar.",
   },
   {

@@ -182,7 +182,7 @@ export default function BetaDocumentTracker() {
     const selected = files.slice(0, MAX_DOCUMENT_FILES);
     if (!selected.length) return;
     if (files.length > MAX_DOCUMENT_FILES) {
-      toast.warning(`Bir seferde en fazla ${MAX_DOCUMENT_FILES} photographs are processed.`);
+      toast.warning(`At most ${MAX_DOCUMENT_FILES} photographs are processed at a time.`);
     }
 
     const pending = selected.map((file) => ({
@@ -525,7 +525,7 @@ export default function BetaDocumentTracker() {
                         onClick={() => void handleDelete(document)}
                         translate="no"
                         data-no-translate
-                        aria-label={`${document.title} belgesini sil`}
+                        aria-label={`Delete ${document.title}`}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

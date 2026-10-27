@@ -155,9 +155,9 @@ export const imoConventions: RegulationItem[] = [
       "Ek I: 150 GT üzeri tankerler ve 400 GT üzeri diğer gemiler",
       "Ek II: Zararlı sıvı madde taşıyan tüm gemiler",
       "Ek III: Ambalajlı zararlı madde taşıyan gemiler",
-      "Ek IV: 400 GT üzeri gemiler veya 15'ten fazla yolcu taşıyan gemiler",
+      "Ek IV: 400 GT ve üzeri gemiler ile 15'ten fazla kişi taşımaya sertifikalı daha küçük gemiler",
       "Ek V: Tüm gemiler",
-      "Ek VI: 400 GT üzeri gemiler (EEXI/CII: 5000 GT üzeri)",
+      "Ek VI: 400 GT ve üzeri gemiler (CII: 5000 GT ve üzeri)",
     ],
     essentials: [
       "Ek I: Petrol kirliliği – IOPP sertifikası, ORB, OWS (15 ppm), SOPEP, çift cidarlı tanker gerekliliği",
@@ -171,7 +171,7 @@ export const imoConventions: RegulationItem[] = [
     actions: [
       "ORB Part I ve II, Cargo Record Book ve Garbage Record Book kayıtlarını eksiksiz tut",
       "IOPP ve IAPP sertifikalarını güncel tut",
-      "Yakıt numuneleri ve BDN'leri minimum 3 yıl sakla",
+      "BDN'leri en az 3 yıl, MARPOL yakıt numunelerini en az 12 ay sakla",
       "SEEMP'i uygula ve CII performansını aylık izle",
       "OWS, bilge alarm, ODM ve EGCS sistemlerini periyodik test et",
       "Özel alan (Special Area) kurallarını rota planlamasına entegre et",
@@ -378,7 +378,7 @@ export const imoConventions: RegulationItem[] = [
     overview:
       "ILO tarafından kabul edilen ve 'denizcilerin haklar bildirgesi' olarak anılan sözleşme; gemi adamlarının çalışma ve yaşam koşullarını, sözleşme hakları, ücret, çalışma saatleri, konaklama, sağlık ve sosyal güvenlik standartlarını kapsar.",
     history:
-      "MLC 2006, ILO'nun 68 denizcilik sözleşmesini ve tavsiyesini tek bir çatı altında birleştirmek amacıyla 2006'da kabul edilmiştir. 2013'te yürürlüğe giren sözleşme, 'denizcilerin dördüncü sütunu' olarak SOLAS, MARPOL ve STCW ile birlikte denizcilik hukukunun temel taşlarından biri kabul edilir. 2014 ve 2016 değişiklikleri ile finansal güvence ve terk edilme koruması eklenmiştir.",
+      "MLC 2006, ILO'nun 68 denizcilik sözleşmesini ve tavsiyesini tek bir çatı altında birleştirmek amacıyla 2006'da kabul edilmiştir. 2013'te yürürlüğe giren sözleşme, 'denizcilerin dördüncü sütunu' olarak SOLAS, MARPOL ve STCW ile birlikte denizcilik hukukunun temel taşlarından biri kabul edilir. 2014 değişiklikleri (2017'de yürürlük) ile terk edilme ve armatör sorumluluğu için finansal güvence eklenmiştir.",
     applicability: [
       "500 GT ve üzeri uluslararası sefer yapan tüm ticari gemiler",
       "Bayrak devleti tarafından belirlenen koşullarda daha küçük gemiler",
@@ -387,7 +387,7 @@ export const imoConventions: RegulationItem[] = [
     ],
     essentials: [
       "Çalışma sözleşmesi (SEA) ve ücret ödeme gereklilikleri – aylık ödeme, detaylı hesap belgesi",
-      "Çalışma ve dinlenme saatleri (max. 14 saat/gün, 72 saat/hafta veya min. 10 saat dinlenme/gün)",
+      "Çalışma ve dinlenme saatleri (en fazla 14 saat/gün ve 72 saat/hafta çalışma veya en az 10 saat/gün ve 77 saat/hafta dinlenme)",
       "Konaklama, yemek ve rekreasyon standartları – kabin boyutu, havalandırma, aydınlatma",
       "Sağlık koruması, tıbbi bakım ve gemi içi hastane gereklilikleri",
       "Repatriation (geri dönüş) hakları ve finansal güvence",
@@ -918,7 +918,7 @@ export const imoConventions: RegulationItem[] = [
     label: "FAL – Deniz Trafiğinin Kolaylaştırılması",
     category: "IMO Conventions",
     overview: "Gemilerin limanlara giriş/çıkışında gereken belge ve prosedürleri basitleştirerek uluslararası deniz ticaretini kolaylaştırır.",
-    history: "1965'te kabul edilen FAL Sözleşmesi, limanlarla ilgili bürokratik işlemleri en aza indirmek amacıyla oluşturulmuştur. 2019 değişiklikleri ile Maritime Single Window (elektronik belge sistemi) zorunluluğu getirilmiştir. En son FAL 14 (2024) güncellemesi ile dijital sertifika değişim standartları kabul edilmiştir.",
+    history: "1965'te kabul edilen FAL Sözleşmesi, limanlarla ilgili bürokratik işlemleri en aza indirmek amacıyla oluşturulmuştur. 8 Nisan 2019'dan itibaren elektronik bilgi değişimi zorunlu hale gelmiş; 2022'de kabul edilen değişikliklerle (FAL.14(46)) 1 Ocak 2024'ten itibaren Maritime Single Window kullanımı zorunlu olmuştur.",
     applicability: [
       "Uluslararası sefer yapan tüm gemiler",
       "Liman otoriteleri, gümrük ve sınır kontrol idareleri",

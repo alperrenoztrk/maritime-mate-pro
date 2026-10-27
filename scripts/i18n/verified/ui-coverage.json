@@ -404,5 +404,125 @@
  },
  "MHWS": {
   "en": "MHWS"
+ },
+ "C (roll coefficient)": {
+  "en": "C (roll coefficient)"
+ },
+ "Damaged Area (m²)": {
+  "en": "Damaged Area (m²)"
+ },
+ "Damaged Stability": {
+  "en": "Damaged Stability"
+ },
+ "Despatch calculation": {
+  "en": "Despatch calculation"
+ },
+ "Draft increase in the damaged condition depends on effective area and density": {
+  "en": "Draft increase in the damaged condition depends on effective area and density"
+ },
+ "Duties": {
+  "en": "Duties"
+ },
+ "Effective area": {
+  "en": "Effective area"
+ },
+ "Enter valid w, L, B, damaged area and ρ": {
+  "en": "Enter valid w, L, B, damaged area and ρ"
+ },
+ "Enter valid w, L, B, L damaged": {
+  "en": "Enter valid w, L, B, L damaged"
+ },
+ "Forward Draft": {
+  "en": "Forward Draft"
+ },
+ "Forward Draft (dF) - m": {
+  "en": "Forward Draft (dF) - m"
+ },
+ "Forward Draft (m)": {
+  "en": "Forward Draft (m)"
+ },
+ "Grain Heeling Angle =": {
+  "en": "Grain Heeling Angle ="
+ },
+ "Gross revenue": {
+  "en": "Gross revenue"
+ },
+ "IMO – Fire protection (SOLAS II-2, FSS Code)": {
+  "en": "IMO – Fire protection (SOLAS II-2, FSS Code)"
+ },
+ "In dry dock the keel-block reaction P causes a virtual loss of GM equal to P × KM / Δ; the initial GM must be greater than this critical value": {
+  "en": "In dry dock the keel-block reaction P causes a virtual loss of GM equal to P × KM / Δ; the initial GM must be greater than this critical value"
+ },
+ "Max. Safe Stack:": {
+  "en": "Max. Safe Stack:"
+ },
+ "Mean of Means formula calculates average by giving 6x weight to the midship draft": {
+  "en": "Mean of Means formula calculates average by giving 6x weight to the midship draft"
+ },
+ "Midship draft": {
+  "en": "Midship draft"
+ },
+ "Midship Draft (dM) - m": {
+  "en": "Midship Draft (dM) - m"
+ },
+ "Midship Port": {
+  "en": "Midship Port"
+ },
+ "Midship Starboard": {
+  "en": "Midship Starboard"
+ },
+ "Midships lowered relative to the ends": {
+  "en": "Midships lowered relative to the ends"
+ },
+ "Midships raised relative to the ends": {
+  "en": "Midships raised relative to the ends"
+ },
+ "No longitudinal deflection": {
+  "en": "No longitudinal deflection"
+ },
+ "Numerator": {
+  "en": "Numerator"
+ },
+ "Performed by": {
+  "en": "Performed by"
+ },
+ "Profit margin": {
+  "en": "Profit margin"
+ },
+ "Roll coefficient (≈0.7–0.8)": {
+  "en": "Roll coefficient (≈0.7–0.8)"
+ },
+ "Roll Period Calculated": {
+  "en": "Roll Period Calculated"
+ },
+ "Seakeeping Index": {
+  "en": "Seakeeping Index"
+ },
+ "Task": {
+  "en": "Task"
+ },
+ "Tf - Forward Draft (m)": {
+  "en": "Tf - Forward Draft (m)"
+ },
+ "The change in draft in the damaged condition is calculated by dividing the weight by the effective waterplane area.": {
+  "en": "The change in draft in the damaged condition is calculated by dividing the weight by the effective waterplane area."
+ },
+ "The grain heeling angle is found from the ratio of grain heeling moment (GHM) to the product of displacement and GM. 57.3 = 180/π": {
+  "en": "The grain heeling angle is found from the ratio of grain heeling moment (GHM) to the product of displacement and GM. 57.3 = 180/π"
+ },
+ "The roll period is found by multiplying the roll coefficient (C, typically about 0.7–0.8) by the breadth and dividing by the square root of GM.": {
+  "en": "The roll period is found by multiplying the roll coefficient (C, typically about 0.7–0.8) by the breadth and dividing by the square root of GM."
+ },
+ "The seakeeping index scores overall seakeeping performance on a scale of 0-10.": {
+  "en": "The seakeeping index scores overall seakeeping performance on a scale of 0-10."
+ },
+ "Δd = w / [(Length × Breadth − Damaged Area) × ρ]": {
+  "en": "Δd = w / [(Length × Breadth − Damaged Area) × ρ]"
+ },
+ "ρnew = ρold - [(Tnew - Told) × Coefficient]": {
+  "en": "ρnew = ρold - [(Tnew - Told) × Coefficient]"
+ },
+ "Enlarge photograph": {
+  "en": "Enlarge photograph"
  }
 }

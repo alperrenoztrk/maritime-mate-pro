@@ -559,7 +559,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
       { role: "Master", duties: "AIS'in kapatılma kararı sadece master'ın yetkisindedir (güvenlik gerekçesiyle)." },
     ],
     regulations: [
-      "SOLAS Bölüm V, Kural 19.2.1.7 – BNWAS",
+      "SOLAS Bölüm V, Kural 19.2.2.3 – BNWAS",
       "SOLAS Bölüm V, Kural 19.2.4 – AIS",
       "IMO MSC.128(75) – BNWAS performans standartları",
     ],
@@ -591,8 +591,8 @@ export const shipTaskDetails: ShipTaskDetail[] = [
     ],
     regulations: [
       "SOLAS Bölüm V, Kural 19 – Seyir cihazları gereklilikleri",
-      "SOLAS Bölüm V, Kural 25 – Cihazların bakımı",
-      "IMO Res. A.694(17) – Seyir cihazları test prosedürleri",
+      "SOLAS Bölüm V, Kural 16 – Cihazların bakımı",
+      "IMO Res. A.694(17) – Gemi telsiz ve elektronik seyir cihazları için genel gereklilikler",
     ],
     checklist: [
       { item: "Tüm seyir cihazları çalışır durumda", responsible: "2/O" },
@@ -697,7 +697,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
       { role: "Surveyor", duties: "Bağımsız doğrulama (gönderen/alıcı adına)." },
     ],
     regulations: [
-      "IMO MSC/Circ.1228 – Draft survey prosedürleri",
+      "UN/ECE Draught Survey Code (1992) – Draft survey prosedürleri",
       "UN ECE Draft Survey Code of Uniform Practice",
     ],
     checklist: [
@@ -950,7 +950,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
     procedures: [
       { step: 1, title: "Haftalık kontroller", description: "Lifeboat/rescue boat motorları çalıştırılır. Davit'ler ve vinçler kontrol edilir." },
       { step: 2, title: "Aylık kontroller", description: "Lifeboat ve rescue boat indirme/kaldırma testi. Life jacket ve immersion suit kontrolü." },
-      { step: 3, title: "Üç aylık testler", description: "Her can filikası atanmış işletme ekibiyle suya indirilip suda manevra ettirilir (SOLAS III/19.3.4.3); kurtarma botu en geç bu aralıkta indirilir (III/19.3.4.4). Abandon ship drill'in kendisi aylıktır." },
+      { step: 3, title: "Üç aylık testler", description: "Her can filikası atanmış işletme ekibiyle suya indirilip suda manevra ettirilir (SOLAS III/19.3.4.3); kurtarma botu en geç bu aralıkta indirilir (III/19.3.4.6). Abandon ship drill'in kendisi aylıktır." },
       { step: 4, title: "Yıllık servis", description: "Life raft yıllık servis (onaylı servis istasyonunda). Lifeboat kapsamlı bakım. HRU (Hydrostatic Release Unit) kontrolü." },
       { step: 5, title: "5 yıllık overhaul", description: "Lifeboat davit ve vinç yükleme testi. Life raft 5 yıllık tam servis." },
     ],
@@ -1026,7 +1026,7 @@ export const shipTaskDetails: ShipTaskDetail[] = [
       { role: "C/E", duties: "Makine ekip performansını denetler." },
     ],
     regulations: [
-      "SOLAS III/19 – Drill ve eğitim gereklilikleri (19.3.2 aylık, 19.3.3 kapalı mahal, 19.3.4.3/19.3.4.4 filika ve kurtarma botu indirme)",
+      "SOLAS III/19 – Drill ve eğitim gereklilikleri (19.3.2 aylık, 19.3.3 kapalı mahal, 19.3.4.3/19.3.4.6 filika ve kurtarma botu indirme)",
       "SOLAS III/30.2 – Yolcu gemilerinde haftalık tatbikat",
       "ISPS Code A/13.4 – Güvenlik drilleri (en az üç ayda bir)",
       "ISM Code 8 / şirket SMS'i – Oil spill (SOPEP), MOB, blackout gibi ek senaryolar",

@@ -168,7 +168,7 @@ const content: CrewTaskLongForm = {
               ["Fire drill", "Her ay", "SOLAS III/19.3.2"],
               ["Enclosed space entry & rescue", "En az 2 ayda bir", "SOLAS III/19.3.3"],
               ["Filika suya indirme + manevra", "En az 3 ayda bir", "SOLAS III/19.3.4.3"],
-              ["Rescue boat launch", "Mümkünse aylık, en az 3 ayda bir", "SOLAS III/19.3.4.4"],
+              ["Rescue boat launch", "Mümkünse aylık, en az 3 ayda bir", "SOLAS III/19.3.4.6"],
               ["Yeni personele LSA/FFE eğitimi", "Katıldıktan en geç 2 hafta içinde", "SOLAS III/19.4.1"],
             ],
           },

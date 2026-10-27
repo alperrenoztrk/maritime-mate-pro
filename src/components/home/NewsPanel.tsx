@@ -16,7 +16,7 @@ function formatRelative(iso?: string): string {
   if (hours < 24) return `${hours} hr ago`;
   const days = Math.round(hours / 24);
   if (days < 7) return `${days} days ago`;
-  return date.toLocaleDateString("tr-TR", { day: "2-digit", month: "short" });
+  return date.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
 }
 
 function proxyImage(url?: string): string | undefined {

@@ -26,7 +26,7 @@ export const roRo: ShipType = {
           regulations: [
             "SOLAS II-1 Part B-2 — Watertight integrity",
             "SOLAS II-1 Reg. 17 — Closures in bulkheads",
-            "MSC.1/Circ.1564 — Bow door checks (Estonia kazasından sonra revize)",
+            "IACS UR S8 — Bow door ve iç kapı gereklilikleri (Estonia kazasından sonra revize)",
           ],
           safety: [
             "Bow/visor door tarihsel olarak (Estonia 1994) Ro-Ro tipinin en kritik failure noktası — açık kalırsa hızlı kapsizing.",
@@ -67,7 +67,7 @@ export const roRo: ShipType = {
           procedure: [
             "Booking listesini araç tipi, ağırlık, length ile sırala.",
             "Heavy units low + center / light high & wing prensibi.",
-            "DG araçları (UN 3528 vb.) on-deck veya özel ventilated bölümlere koy.",
+            "DG kapsamındaki araçları (UN 3166, UN 3171 vb.) on-deck veya özel ventilated bölümlere koy.",
             "Discharge port sıralı yerleştirme (LIFO).",
             "Tally count terminal ile karşılaştırılır.",
           ],
@@ -138,7 +138,7 @@ export const roRo: ShipType = {
           ],
           regulations: [
             "SOLAS II-1 Reg. 17",
-            "MSC.1/Circ.1564",
+            "IACS UR S8",
           ],
           safety: [
             "Su girişi araç güvertesinde free surface yapar — kapsizing en hızlı sebebi.",
@@ -423,7 +423,7 @@ export const roRo: ShipType = {
           purpose:
             "Fume birikimini önlemek için belirlenmiş air change rate (ACH) sağlanması.",
           procedure: [
-            "Yükleme sırasında min 10 ACH (closed deck).",
+            "Kapalı araç güvertesinde araçlar varken en az 10 ACH (36'dan fazla yolculu gemiler; diğer gemilerde en az 6 ACH).",
             "Sefer boyunca min 5 ACH.",
             "Fan motor ve damper testi.",
             "CO + LEL gaz sensörü kalibrasyonu.",
@@ -551,7 +551,7 @@ export const roRo: ShipType = {
             "Hidrolik yağ seviyesi ve cleanliness ISO 4406 kodu.",
             "Cylinder seal'leri sızıntı kontrolü.",
             "Limit switch ve emergency lowering pump test.",
-            "Yıllık load test SWL %110.",
+            "Fren/fonksiyon testi yıllık; SWL üzeri yük testi Class gerekliliğine göre (genellikle 5 yılda bir).",
           ],
           regulations: [
             "Class Rules — Lifting appliances",
@@ -597,7 +597,7 @@ export const roRo: ShipType = {
             "Telegraph standby + bell book.",
           ],
           regulations: [
-            "SOLAS II-1 Reg. 29.3",
+            "SOLAS V/24.4",
           ],
           safety: [
             "Fuel switch ramping ile.",
@@ -635,7 +635,7 @@ export const roRo: ShipType = {
             "ER sintine suyunun OWS ile 15 ppm altında işlenip overboard veya holding tank'a alınması.",
           procedure: [
             "OCM ve 3-way valve auto modda.",
-            "Special area dışı + > 12 NM şartı.",
+            "Special area dışı + en route + ≤ 15 ppm şartı.",
             "Filter/coalescer aşınma.",
             "ORB I — Code C, D, E.",
           ],
@@ -698,7 +698,7 @@ export const roRo: ShipType = {
           purpose:
             "Closed Ro-Ro space'lerde min ACH'in fan motor + damper kontrolü.",
           procedure: [
-            "Yükleme sırasında 10 ACH.",
+            "Kapalı araç güvertesinde gemi tipine göre 10 veya 6 ACH.",
             "Sefer boyunca 5 ACH.",
             "CO + LEL sensör kalibre.",
           ],
@@ -798,7 +798,7 @@ export const roRo: ShipType = {
             "SOLAS V/26 + class rules ile main + emergency steering testi.",
           procedure: [
             "Departure öncesi 12 saat içinde test.",
-            "Emergency steering yıllık.",
+            "Emergency steering drill en az 3 ayda bir.",
             "Hidrolik cleanliness ISO 4406.",
           ],
           regulations: [
@@ -921,7 +921,7 @@ export const roRo: ShipType = {
             "MARPOL Annex VI Reg. 26-28",
           ],
           safety: [
-            "D/E rating 3 yıl üst üste plan zorunlu.",
+            "3 yıl üst üste D veya 1 yıl E rating'de plan zorunlu.",
           ],
           records: [
             "SEEMP Part I/II/III",

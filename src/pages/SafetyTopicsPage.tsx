@@ -666,7 +666,7 @@ THE MANDATORY DRILL SCHEDULE (SOLAS III/19.3; III/30.2 on passenger ships):
 - Abandon ship drill: at least once a month on cargo ships; weekly on passenger ships.
 - Fire drill: at least once a month on cargo ships; weekly on passenger ships.
 - Every lifeboat must be launched and manoeuvred in the water: at least once every 3 months (III/19.3.4.3).
-- The rescue boat must be launched and manoeuvred: monthly where practicable, and in any case at least once every 3 months (III/19.3.4.4).
+- The rescue boat must be launched and manoeuvred: monthly where practicable, and in any case at least once every 3 months (III/19.3.4.6).
 - Free-fall lifeboat: an actual or simulated launching drill at least once every 6 months.
 - Enclosed space entry and rescue drill: at least once every 2 months (SOLAS III/19.3.3).
 - Every crew member must take part in an abandon ship drill within one month.

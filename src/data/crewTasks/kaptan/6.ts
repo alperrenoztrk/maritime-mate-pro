@@ -162,7 +162,7 @@ const content: CrewTaskLongForm = {
               ["Abandon ship", "Aylık", "SOLAS III/19.3.2"],
               ["Fire drill", "Aylık", "SOLAS III/19.3.2"],
               ["Enclosed space entry & rescue", "En az 2 ayda bir", "SOLAS III/19.3.3"],
-              ["Rescue boat suya indirme", "Mümkünse aylık, en az 3 ayda bir", "SOLAS III/19.3.4.4"],
+              ["Rescue boat suya indirme", "Mümkünse aylık, en az 3 ayda bir", "SOLAS III/19.3.4.6"],
               ["Man overboard", "Şirket SMS'ine göre", "ISM / SMS"],
               ["Acil dümen tatbikatı", "En az 3 ayda bir", "SOLAS V/26.4"],
               ["Security (ISPS)", "Periyodik", "ISPS / SOLAS XI-2"],

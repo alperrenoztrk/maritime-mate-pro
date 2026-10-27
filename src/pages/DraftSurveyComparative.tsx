@@ -180,7 +180,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey1-forward">Head Draft (m)</Label>
+              <Label htmlFor="survey1-forward">Forward Draft (m)</Label>
               <Input
                 id="survey1-forward"
                 type="number"
@@ -245,7 +245,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey2-forward">Head Draft (m)</Label>
+              <Label htmlFor="survey2-forward">Forward Draft (m)</Label>
               <Input
                 id="survey2-forward"
                 type="number"
@@ -310,7 +310,7 @@ export default function DraftSurveyComparative() {
               />
             </div>
             <div>
-              <Label htmlFor="survey3-forward">Head Draft (m)</Label>
+              <Label htmlFor="survey3-forward">Forward Draft (m)</Label>
               <Input
                 id="survey3-forward"
                 type="number"

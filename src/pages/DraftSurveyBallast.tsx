@@ -147,7 +147,7 @@ export default function DraftSurveyBallast() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="before-forward">Head Draft</Label>
+              <Label htmlFor="before-forward">Forward Draft</Label>
               <Input
                 id="before-forward"
                 type="number"
@@ -197,7 +197,7 @@ export default function DraftSurveyBallast() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="after-forward">Head Draft</Label>
+              <Label htmlFor="after-forward">Forward Draft</Label>
               <Input
                 id="after-forward"
                 type="number"

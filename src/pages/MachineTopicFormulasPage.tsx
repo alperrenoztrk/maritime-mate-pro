@@ -54,8 +54,8 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Pump Calculations",
       formulas: [
         { name: "Pump Power", formula: "P = ρ·g·Q·H / η", variables: "Q: flow rate (m³/s), H: total head (m), η: efficiency" },
-        { name: "NPSH (Net Positive Suction Head)", formula: "NPSHa = (Patm − Pvap) / (ρ·g) + zs − hf", variables: "Patm: atmospheric pressure, Pvap: vapour pressure, zs: suction lift" },
-        { name: "Affinity Laws (Flow Rate)", formula: "Q₂/Q₁ = n₂/n₁", variables: "Q: debi, n: devir" },
+        { name: "NPSH (Net Positive Suction Head)", formula: "NPSHa = (Patm − Pvap) / (ρ·g) + zs − hf", variables: "Patm: atmospheric pressure, Pvap: vapour pressure, zs: static suction head (+ liquid above the pump, − suction lift)" },
+        { name: "Affinity Laws (Flow Rate)", formula: "Q₂/Q₁ = n₂/n₁", variables: "Q: flow rate, n: speed" },
         { name: "Affinity Laws (Power)", formula: "P₂/P₁ = (n₂/n₁)³", variables: "P: power, n: speed" },
       ],
     },
@@ -73,7 +73,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Shaft and Bearing",
       formulas: [
-        { name: "Shaft Diameter (Torsion)", formula: "d = ∛(16T / π·τizin)", variables: "T: tork (N·m), τizin: izin verilen kayma gerilmesi (Pa)" },
+        { name: "Shaft Diameter (Torsion)", formula: "d = ∛(16T / π·τallow)", variables: "T: torque (N·m), τallow: allowable shear stress (Pa)" },
         { name: "Critical Speed", formula: "ncr = (60/2π)·√(g/δst)", variables: "δst: static deflection (m), g: gravity" },
         { name: "Bearing Life (L₁₀)", formula: "L₁₀ = (C/P)^p × 10⁶ revolutions", variables: "C: dynamic load rating, P: equivalent load, p: 3 (ball) or 10/3 (roller)" },
       ],
@@ -84,7 +84,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Engine Performance",
       formulas: [
         { name: "Indicated Power (IHP)", formula: "IHP = (Pmi × L × A × n × k) / 60000", variables: "Pmi: mean indicated pressure (bar), L: stroke (m), A: piston area (m²), n: speed (rpm), k: number of cylinders" },
-        { name: "Brake Power (BHP)", formula: "BHP = IHP × ηmech", variables: "ηmech: mekanik verim (0,85–0,92)" },
+        { name: "Brake Power (BHP)", formula: "BHP = IHP × ηmech", variables: "ηmech: mechanical efficiency (0.85–0.92)" },
         { name: "SFOC", formula: "SFOC = Fuel consumption (g/h) / BHP (kW)", variables: "Result: g/kW·h — a lower value is more efficient" },
         { name: "Mean Effective Pressure", formula: "MEP = (Wnet) / Vd", variables: "Wnet: net work per cycle, Vd: swept volume" },
         { name: "Compression Ratio", formula: "r = Vmax / Vmin", variables: "Vmax: volume at bottom dead centre, Vmin: volume at top dead centre" },
@@ -188,7 +188,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
         { name: "Ohm's Law", formula: "V = I × R", variables: "V: voltage (V), I: current (A), R: resistance (Ω)" },
         { name: "Three Phase Power", formula: "P = √3 × VL × IL × cos(φ)", variables: "VL: line voltage, IL: line current, cos(φ): power factor" },
         { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Unit: VAR (Volt-Ampere Reactive)" },
-        { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Birim: VA (Volt-Amper)" },
+        { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Unit: VA (volt-ampere)" },
       ],
     },
     {
@@ -223,7 +223,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Fuel Consumption Rate", formula: "FCrate = FCtotal / Voyage time", variables: "Unit: tonnes/day or tonnes/hour" },
         { name: "Remaining Fuel Estimate", formula: "Endurance (hours) = Fuel stock / FCrate", variables: "FCrate: hourly consumption (tonnes/hour)" },
-        { name: "Lubricating Oil Consumption", formula: "SLOC = Oil consumption (g/h) / BHP (kW)", variables: "Birim: g/kW·h, normal: 0,6–1,2 g/kW·h" },
+        { name: "Lubricating Oil Consumption", formula: "SLOC = Oil consumption (g/h) / BHP (kW)", variables: "Unit: g/kW·h, typical: 0.6–1.2 g/kW·h" },
       ],
     },
     {
@@ -257,7 +257,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Fire Safety",
       formulas: [
         { name: "Fire Triangle", formula: "Fuel + Oxygen + Heat = Fire", variables: "Removing one element extinguishes the fire" },
-        { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)", variables: "V: korunan hacim (m³), SOLAS II-2/Reg.10" },
+        { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = 0.40 × V / 0.56 (kg)", variables: "V: gross volume of the largest machinery space (m³); 0.56 m³/kg = free CO₂ volume; 40% excluding the casing (35% if the casing is included) — FSS Code Ch. 5" },
         { name: "Foam quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
       ],
     },

@@ -328,10 +328,10 @@ Example questions:
                             if (navigator.share) {
                               navigator.share({
                                 title: 'Maritime Calculator — AI Response',
-                                text: `Soru: ${question}\n\nCevap: ${aiResponse}`
+                                text: `Question: ${question}\n\nAnswer: ${aiResponse}`
                               }).catch(() => {});
                             } else {
-                              navigator.clipboard.writeText(`Soru: ${question}\n\nCevap: ${aiResponse}`);
+                              navigator.clipboard.writeText(`Question: ${question}\n\nAnswer: ${aiResponse}`);
                               toast.success("The shared text has been copied.");
                             }
                           }}

@@ -253,7 +253,7 @@ Ask a detailed question and I will provide you with calculations and explanation
         if (wolframQuery) {
           const wolframCalc = await performWolframCalculation(wolframQuery);
           if (wolframCalc) {
-            wolframResult = `\n\n**Hesaplama Sonucu:** ${wolframCalc}`;
+            wolframResult = `\n\n**Calculation Result:** ${wolframCalc}`;
           }
         }
       }

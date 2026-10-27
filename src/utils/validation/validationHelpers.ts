@@ -30,20 +30,20 @@ export const validateUnit = (rawValue: string, options: UnitValidationOptions): 
     return null;
   }
   if (NON_NUMERIC_PATTERN.test(rawValue)) {
-    return `${options.label} için yalnızca sayısal değer girin. Birim etiketi ayrı gösterilir. Doğru kullanım: ${options.example} ${options.unit}.`;
+    return `Enter only a numerical value for ${options.label}. The unit is shown separately. Correct use: ${options.example} ${options.unit}.`;
   }
   return null;
 };
 
 export const validateRange = (value: number, options: RangeValidationOptions): string | null => {
   if (value < options.min || value > options.max) {
-    return `${options.label} değeri ${options.min}–${options.max} ${options.unit} aralığında olmalıdır. Doğru kullanım: ${options.example} ${options.unit}.`;
+    return `${options.label} must be between ${options.min} and ${options.max} ${options.unit}. Correct use: ${options.example} ${options.unit}.`;
   }
   return null;
 };
 
 export const validateConsistency = (checks: ConsistencyCheck[]): string[] =>
-  checks.filter((check) => !check.ok).map((check) => `${check.message} Örnek: ${check.example}.`);
+  checks.filter((check) => !check.ok).map((check) => `${check.message} Example: ${check.example}.`);
 
 export const validateStabilityLogic = (input: StabilityLogicInput): string[] => {
   const errors: string[] = [];

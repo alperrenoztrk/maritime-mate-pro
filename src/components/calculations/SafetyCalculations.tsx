@@ -487,8 +487,8 @@ export const SafetyCalculations = () => {
           { step: 2, title: "Hose access", formula: "Reach = √(2 × P × g) × factor", result: `Access = ${fireFighting.fireReach.toFixed(1)} m` },
         ],
         lsa: [
-          { step: 1, title: "Total lifesaving capacity", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Toplam = ${lsa.totalLifeSavingCapacity} person (On board: ${data.totalPersonsOnBoard})` },
-          { step: 2, title: "SOLAS compliance", formula: "Capacity ≥ Number of People on Board", result: lsa.lsaCompliance ? "UYGUN" : "NOT SUITABLE" },
+          { step: 1, title: "Total lifesaving capacity", formula: "Capacity = (Number of Boats × Capacity) + (Number of Rafts × Capacity)", result: `Total = ${lsa.totalLifeSavingCapacity} persons (on board: ${data.totalPersonsOnBoard})` },
+          { step: 2, title: "SOLAS compliance", formula: "Capacity ≥ Number of People on Board", result: lsa.lsaCompliance ? "COMPLIANT" : "NOT COMPLIANT" },
         ],
         freeboard: [
           { step: 1, title: "freeboard account", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Real = ${freeboard.actualFreeboard.toFixed(2)} m` },

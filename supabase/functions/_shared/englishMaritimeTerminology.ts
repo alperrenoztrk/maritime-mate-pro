@@ -303,7 +303,7 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-014', label: 'LSA dalış elbisesi must be immersion suit', source: /dalış\s+elbises/iu, wrong: /\bdiving\s+suits?\b/giu, replacement: asPluralTerm('immersion suit', 'immersion suits') },
   { id: 'T-015', label: 'Yangın elbisesi must be firefighter outfit', source: /yangın\s+elbises/iu, wrong: /\bfire\s+suit\b/giu, replacement: asTerm("firefighter's outfit") },
   { id: 'T-016', label: 'Can kurtarma must use life-saving', source: /can\s+kurtarma/iu, wrong: /\blife\s+saving\b/giu, replacement: asTerm('life-saving') },
-  { id: 'T-017', label: 'shipboard tatbikat must be drill', source: /tatbikat/iu, wrong: /\b(?:exercise|practice)s?\b/giu, applies: (source) => !/ISPS|güvenlik\s+(?:drill|tatbikat)|exercise/iu.test(source), replacement: asPluralTerm('drill', 'drills') },
+  { id: 'T-017', label: 'shipboard tatbikat must be drill', source: /tatbikat/iu, wrong: /\b(?:exercise|practice)s?\b/giu, applies: (source) => !/ISPS|güvenlik\s+(?:drill|tatbikat)|exercise|askeri\s+tatbikat/iu.test(source), replacement: asPluralTerm('drill', 'drills') },
   { id: 'T-018', label: 'COLREG RAM phrase must be standard', source: /manevra\s+kabiliyeti\s+kısıtlı/iu, wrong: /\b(?:limited|restricted)\s+maneuverability\b/giu, replacement: asTerm('restricted in her ability to manoeuvre') },
   { id: 'T-019', label: 'Yangın dolabı must be fire-hose cabinet', source: /yangın\s+dolab/iu, wrong: /\bfire\s+cabinet\b/giu, replacement: asTerm('fire-hose cabinet') },
   { id: 'T-020', label: 'Denize atım must be discharge to sea', source: /denize\s+atım/iu, wrong: /\bmy\s+horse\s+to\s+the\s+sea\b/giu, replacement: asTerm('discharge to sea') },

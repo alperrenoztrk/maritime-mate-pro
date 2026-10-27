@@ -17,7 +17,7 @@ export const surveyRegulations: RegulationItem[] = [
       "Denetim türleri: Initial inspection (sertifika ve genel durum), more detailed inspection (teçhizat ve operasyonel kontrol), expanded inspection (HRS, yolcu, tanker için zorunlu)",
       "Denetim kapsamı: sertifika geçerliliği, teçhizat durumu ve bakımı, mürettebat yeterliliği ve dokümanları, operasyonel prosedürler (ISM, ISPS, MARPOL), yapısal bütünlük",
       "Eksiklik kodları: 17 ana kategori – sertifikalar, yapısal, yangın güvenliği, can kurtarma, seyir güvenliği, MARPOL, ISM, ISPS, MLC, BWM vb.",
-      "Eksiklik aksiyonları: kod 10 (düzeltilmiş), kod 15 (sonraki limanda düzeltme), kod 16 (14 gün içinde), kod 17 (bayrak devletine bildirim), kod 30 (alıkoyma), kod 45 (RO bildirim)",
+      "Eksiklik aksiyonları: kod 10 (düzeltildi), kod 15 (sonraki limanda düzelt), kod 16 (14 gün içinde düzelt), kod 17 (kalkıştan önce düzelt), kod 30 (alıkoyma gerekçesi), kod 50 (bayrak devletine bildirim), kod 70 (klas kuruluşuna bildirim)",
       "Alıkoyma (detention) kriterleri: ciddi eksiklik veya birden fazla alanda yetersizlik – gemi seyir yapamaz duruma gelinceye kadar",
       "Risk profili: HRS (High Risk Ship), SRS (Standard Risk), LRS (Low Risk) – bölgesel MoU'ya göre hesaplama",
       "CIC (Concentrated Inspection Campaign): yılda 1-2 kez belirli konulara (BWM, STCW, SOLAS yangın, ISM) odaklanan kampanyalar",
@@ -78,7 +78,7 @@ export const surveyRegulations: RegulationItem[] = [
       {
         heading: "Eksiklik kodları ve aksiyonlar",
         body:
-          "Denetimde bulunan her eksiklik, standartlaştırılmış bir kodla kayda geçer ve ona bir düzeltme aksiyonu atanır. Bazı eksiklikler yerinde düzeltilir (kod 10), bazıları sonraki limanda (kod 15) veya belirli bir süre içinde (kod 16, örneğin 14 gün) giderilmek üzere ertelenir, bazıları bayrak devletine veya klas kuruluşuna bildirilir (kod 17/45). En ağır aksiyon alıkoymadır (kod 30): gemi, ciddi eksiklikler giderilip emniyetli hale gelene kadar limandan ayrılamaz. Eksiklikler 17 ana kategoride toplanır (sertifikalar, yapısal güvenlik, yangın güvenliği, can kurtarma, seyir güvenliği, MARPOL, ISM, ISPS, MLC, BWM vb.) ve yüzlerce alt kod içerir. Bu standartlaşma, dünyanın her limanındaki denetçinin aynı dili konuşmasını ve sonuçların bölgesel veritabanlarında (THETIS, APCIS) tutarlı biçimde paylaşılmasını sağlar.",
+          "Denetimde bulunan her eksiklik, standartlaştırılmış bir kodla kayda geçer ve ona bir düzeltme aksiyonu atanır. Bazı eksiklikler yerinde düzeltilir (kod 10), bazıları sonraki limanda (kod 15) veya belirli bir süre içinde (kod 16, örneğin 14 gün) giderilmek üzere ertelenir, bazılarının kalkıştan önce giderilmesi istenir (kod 17); bayrak devletine veya klas kuruluşuna yapılan bildirimler ayrı kodlarla kaydedilir (kod 50/70). En ağır aksiyon alıkoymadır (kod 30): gemi, ciddi eksiklikler giderilip emniyetli hale gelene kadar limandan ayrılamaz. Eksiklikler 17 ana kategoride toplanır (sertifikalar, yapısal güvenlik, yangın güvenliği, can kurtarma, seyir güvenliği, MARPOL, ISM, ISPS, MLC, BWM vb.) ve yüzlerce alt kod içerir. Bu standartlaşma, dünyanın her limanındaki denetçinin aynı dili konuşmasını ve sonuçların bölgesel veritabanlarında (THETIS, APCIS) tutarlı biçimde paylaşılmasını sağlar.",
       },
       {
         heading: "CIC kampanyaları ve hazırlık stratejisi",
@@ -111,8 +111,8 @@ export const surveyRegulations: RegulationItem[] = [
     essentials: [
       "Bayrak devleti yetkilendirmesi: gemilerin kayıt, sertifikasyon ve denetim sorumluluğu",
       "RO görevlendirmesi: klas kuruluşlarının RO Code uyumlu yetkilendirilmesi ve performans izleme",
-      "Zorunlu survey döngüsü: Initial (ilk), Annual (yıllık), Intermediate (ara – 2.5-3 yıl), Renewal (yenileme – 5 yıl), Additional/Special (ek/özel)",
-      "Sertifika düzenleme ve geçerlilik kontrolleri – pencere (window) sistemi: yıllık ±3 ay, ara 2-3 yıl, yenileme 5 yıl (3 ay öncesi – sonrası)",
+      "Zorunlu survey döngüsü: Initial (ilk), Annual (yıllık), Intermediate (ara – 2. veya 3. yıl dönümü), Renewal (yenileme – 5 yıl), Additional/Special (ek/özel)",
+      "Sertifika düzenleme ve geçerlilik kontrolleri – pencere (window) sistemi: yıllık ±3 ay, ara 2-3 yıl, yenileme 5 yıl (sona ermeden önceki 3 ay içinde)",
       "Harmonized Survey System (HSS): farklı sözleşme survey'lerinin koordineli planlanması",
       "IMO III Code – Bayrak devleti denetim şeması (IMSAS): bayrak devletlerinin IMO tarafından denetlenmesi",
       "Casualty investigation yükümlülüğü: Casualty Investigation Code kapsamında ciddi kaza soruşturma",
@@ -185,11 +185,11 @@ export const surveyRegulations: RegulationItem[] = [
     label: "Class Survey – Klas Denetimi",
     category: "Inspection & Survey",
     overview: "Klas kuruluşunun geminin yapısal ve mekanik bütünlüğünü değerlendirmesi; klas notasyonu ve sertifikasyonu için gereklidir.",
-    history: "Denizcilik klas kuruluşları 1760'ta Lloyd's Coffee House'da başlayan gemi değerlendirmesiyle ortaya çıkmıştır. Lloyd's Register (1764) dünyanın ilk klas kuruluşudur. Günümüzde IACS (International Association of Classification Societies) üyesi 11 büyük klas kuruluşu dünya ticaret filosunun %90'ından fazlasını sınıflandırır. Klas kuruluşları hem bağımsız klas denetimi yapar hem de bayrak devleti adına RO olarak sertifikasyon hizmeti verir.",
+    history: "Denizcilik klas kuruluşları 1760'ta Lloyd's Coffee House'da başlayan gemi değerlendirmesiyle ortaya çıkmıştır. Lloyd's Register (1764) dünyanın ilk klas kuruluşudur. Günümüzde IACS (International Association of Classification Societies) üyesi 12 klas kuruluşu dünya ticaret filosunun %90'ından fazlasını sınıflandırır. Klas kuruluşları hem bağımsız klas denetimi yapar hem de bayrak devleti adına RO olarak sertifikasyon hizmeti verir.",
     applicability: [
       "Sigorta, charterer ve bayrak devleti gerekliliklerini karşılamak isteyen tüm gemiler",
       "Ticari sefer yapan hemen tüm gemiler fiilen klas kuruluşu denetimine tabidir",
-      "IACS üyeleri: LR (Lloyd's Register), DNV, BV (Bureau Veritas), ABS, ClassNK, KR (Korean Register), CCS (China Classification Society), RINA, IRS (Indian Register), CRS (Croatian Register), PRS (Polish Register)",
+      "IACS üyeleri: LR (Lloyd's Register), DNV, BV (Bureau Veritas), ABS, ClassNK, KR (Korean Register), CCS (China Classification Society), RINA, IRS (Indian Register), CRS (Croatian Register), PRS (Polish Register), TL (Türk Loydu)",
     ],
     essentials: [
       "Survey döngüsü: 5 yıllık class renewal (special survey) + yıllık (annual) + ara (intermediate) denetimler",
@@ -272,20 +272,20 @@ export const surveyRegulations: RegulationItem[] = [
     label: "Vetting Inspection – Kiralayan Denetimi",
     category: "Inspection & Survey",
     overview: "Petrol şirketleri ve charterer'ların gemileri SIRE, CDI, OVID gibi standartlara göre denetlemesi; ticari kabul için kritik öneme sahiptir.",
-    history: "SIRE (Ship Inspection Report Programme) 1993'te OCIMF (Oil Companies International Marine Forum) tarafından tanker emniyetini değerlendirmek amacıyla başlatılmıştır. 2023'te köklü bir güncellemeyle SIRE 2.0'a geçilmiş; tablet tabanlı, algoritma destekli ve CAQ (Computer Assisted Questioning) formatına sahip daha kapsamlı bir denetim sistemi uygulanmaya başlanmıştır. CDI (Chemical Distribution Institute) 1994'te kimyasal tankerler için başlatılmıştır.",
+    history: "SIRE (Ship Inspection Report Programme) 1993'te OCIMF (Oil Companies International Marine Forum) tarafından tanker emniyetini değerlendirmek amacıyla başlatılmıştır. 2 Eylül 2024'te köklü bir güncellemeyle SIRE 2.0'a geçilmiş; tablet tabanlı ve her gemi için derlenen soru setine (Compiled VIQ) dayanan daha kapsamlı bir denetim sistemi uygulanmaya başlanmıştır. CDI (Chemical Distribution Institute) 1994'te kimyasal tankerler için başlatılmıştır.",
     applicability: [
       "Petrol tankerleri: SIRE / SIRE 2.0 kapsamında",
       "Kimyasal tankerler: CDI denetim programı kapsamında",
       "Gaz tankerleri: SIRE kapsamında",
-      "Offshore destek gemileri: OVID (OCIMF Vessel Inspection Database) kapsamında",
+      "Offshore destek gemileri: OVID (Offshore Vessel Inspection Database) kapsamında",
       "Dökme yük gemileri: RightShip değerlendirmesi (ayrı slug)",
       "Charterer ve terminal kabul kriterleri kapsamındaki tüm tankerler",
     ],
     essentials: [
-      "SIRE 2.0: tablet tabanlı denetim, CAQ (Computer Assisted Questioning) sistemi – soruların gemi tipine ve operasyona göre dinamik belirlenmesi",
-      "SIRE 2.0 kapsamı: 13 bölüm – General, Certification, Crew Management, Navigation, Safety, Pollution Prevention, Structural, Mooring, Cargo/Ballast, Engine, vb.",
+      "SIRE 2.0: tablet tabanlı denetim, Compiled VIQ – soruların gemi tipine ve operasyona göre belirlenmesi",
+      "SIRE 2.0 kapsamı: General, Certification, Crew Management, Navigation, Safety, Pollution Prevention, Structural, Mooring, Cargo/Ballast, Engine vb. bölümler",
       "CDI (Chemical Distribution Institute): kimyasal tanker denetim programı – SIRE'ye benzer format ama kimyasal taşıma odaklı",
-      "OVID (OCIMF Vessel Inspection Database): offshore destek gemileri için vetting denetimi",
+      "OVID (Offshore Vessel Inspection Database): offshore destek gemileri için vetting denetimi",
       "VIQ (Vessel Inspection Questionnaire) – SIRE 2.0'da HVPQ (Harmonised Vessel Particulars Questionnaire) ile desteklenir",
       "Denetim sıklığı: genellikle 6-12 ay (charterer/terminal talebi), SIRE raporları 12 ay geçerli",
       "Observation sınıflandırması: negative observation (düzeltme gerekli), positive observation (iyi uygulama)",
@@ -294,7 +294,7 @@ export const surveyRegulations: RegulationItem[] = [
     actions: [
       "Vetting denetimi öncesi iç denetim yap (pre-vetting checklist – SIRE 2.0 formatına uygun)",
       "Tüm dokümantasyonu güncel, düzenli ve erişilebilir tut (ISM, ISPS, MARPOL kayıtları)",
-      "Mürettebatı SIRE 2.0 CAQ formatı konusunda eğit: sorulara doğru ve güvenle yanıt verme",
+      "Mürettebatı SIRE 2.0 denetim formatı konusunda eğit: sorulara doğru ve güvenle yanıt verme",
       "Gözlemleri (negative observations) hızlı kapat ve kanıtları sisteme yükle (OCIMF platformu)",
       "Geçmiş denetim raporlarını analiz ederek tekrar eden bulguları (recurring observations) gider",
       "Key personnel (Master, Chief Officer, Chief Engineer) bilgi ve yetkinliğini değerlendir",
@@ -304,10 +304,10 @@ export const surveyRegulations: RegulationItem[] = [
       { year: "1993", description: "SIRE programı OCIMF tarafından başlatıldı" },
       { year: "1994", description: "CDI programı başlatıldı" },
       { year: "2020", description: "SIRE 2.0 pilot programı başladı" },
-      { year: "2023", description: "SIRE 2.0 tam uygulamaya geçti – eski SIRE aşamalı olarak sonlandırılıyor" },
+      { year: "2024", description: "SIRE 2.0 tam uygulamaya geçti (2 Eylül 2024) – VIQ7 denetimleri sona erdi" },
     ],
     keyArticles: [
-      { id: "SIRE 2.0 Framework", title: "Denetim Çerçevesi", summary: "CAQ tabanlı denetim metodolojisi, soru akışı ve değerlendirme kriterleri." },
+      { id: "SIRE 2.0 Framework", title: "Denetim Çerçevesi", summary: "Compiled VIQ tabanlı denetim metodolojisi, soru akışı ve değerlendirme kriterleri." },
       { id: "HVPQ", title: "Harmonised Vessel Particulars", summary: "Gemi özellikleri ve operasyonel bilgilerin standart formatında toplanması." },
       { id: "TMSA 3", title: "Tanker Management Self Assessment", summary: "Tanker yönetim şirketlerinin kendi performansını değerlendirme çerçevesi." },
     ],
@@ -327,12 +327,12 @@ export const surveyRegulations: RegulationItem[] = [
       {
         heading: "SIRE 2.0 ve dinamik denetim",
         body:
-          "OCIMF'in SIRE programı 2023'te köklü biçimde yenilenerek SIRE 2.0'a geçti. Eski sabit soru listesinin yerini, tablet tabanlı ve algoritma destekli, geminin tipine ve o günkü operasyonuna göre soruları dinamik belirleyen bir sistem (CAQ – Computer Assisted Questioning) aldı. Denetim; sertifikasyondan mürettebat yönetimine, seyirden kargo/balast operasyonlarına ve makine dairesine kadar onlarca bölümü kapsar ve insan faktörünü (mürettebatın bilgisi, davranışı) öncekinden çok daha fazla ölçer. HVPQ (gemi özellikleri anketi) ve şirket düzeyindeki TMSA öz değerlendirmesi bu çerçeveyi tamamlar.",
+          "OCIMF'in SIRE programı 2 Eylül 2024'te köklü biçimde yenilenerek SIRE 2.0'a geçti. Eski sabit soru listesinin (VIQ7) yerini, tablet tabanlı ve her gemi için tipine ve operasyonuna göre derlenen bir soru seti (Compiled VIQ) aldı. Denetim; sertifikasyondan mürettebat yönetimine, seyirden kargo/balast operasyonlarına ve makine dairesine kadar onlarca bölümü kapsar ve insan faktörünü (mürettebatın bilgisi, davranışı) öncekinden çok daha fazla ölçer. HVPQ (gemi özellikleri anketi) ve şirket düzeyindeki TMSA öz değerlendirmesi bu çerçeveyi tamamlar.",
       },
       {
         heading: "Sonuçların ticari ağırlığı",
         body:
-          "Vetting denetiminin çıktısı, üye şirketlerle paylaşılan bir rapordur; yani tek bir denetimdeki olumsuz gözlemleri (negative observation) potansiyel tüm kiracılar görebilir. Kapatılmayan gözlemler geminin yeni iş almasını engeller, düşük performans sigorta primlerini artırır ve terminaller gemiyi kabul etmeyebilir. Şirketin TMSA puanının düşmesi ise sorunu tek gemiden tüm filoya yayar. Bu yüzden gemiler vetting öncesi titiz bir iç denetim (pre-vetting) yapar, dokümantasyonu kusursuz tutar ve özellikle kilit personeli (kaptan, başmühendis) CAQ formatındaki sorulara hazırlar. Vetting, modern tanker işletmeciliğinde regülatif uyum kadar belirleyici bir ticari kapıdır.",
+          "Vetting denetiminin çıktısı, üye şirketlerle paylaşılan bir rapordur; yani tek bir denetimdeki olumsuz gözlemleri (negative observation) potansiyel tüm kiracılar görebilir. Kapatılmayan gözlemler geminin yeni iş almasını engeller, düşük performans sigorta primlerini artırır ve terminaller gemiyi kabul etmeyebilir. Şirketin TMSA puanının düşmesi ise sorunu tek gemiden tüm filoya yayar. Bu yüzden gemiler vetting öncesi titiz bir iç denetim (pre-vetting) yapar, dokümantasyonu kusursuz tutar ve özellikle kilit personeli (kaptan, başmühendis) SIRE 2.0 formatındaki sorulara hazırlar. Vetting, modern tanker işletmeciliğinde regülatif uyum kadar belirleyici bir ticari kapıdır.",
       },
       {
         heading: "Neden statüter uyum yetmez: oil major'ların ticari mantığı",
@@ -347,7 +347,7 @@ export const surveyRegulations: RegulationItem[] = [
       {
         heading: "SIRE 2.0 ve insan faktörüne kayış",
         body:
-          "Eski SIRE formatı büyük ölçüde ekipman ve dokümantasyon odaklıydı: bir yangın pompası çalışıyor mu, bir sertifika güncel mi türünden statik kontrollerdi. SIRE 2.0, bu mirası korurken ağırlığı belirgin biçimde insan faktörüne kaydırdı; CAQ (Computer Assisted Questioning) sistemi, denetçinin gözlemlerine göre dinamik olarak açılan takip sorularıyla mürettebatın bir prosedürü neden o şekilde uyguladığını, bir riski nasıl değerlendirdiğini ve baskı altında nasıl karar verdiğini anlamaya çalışır. Bu değişim, sektörün kaza istatistiklerinden çıkardığı bir dersi yansıtır: gemi kazalarının büyük çoğunluğu ekipman arızasından değil, insan faktöründen (yorgunluk, iletişim kopukluğu, prosedürün yanlış anlaşılması, hiyerarşik baskı) kaynaklanır. Dolayısıyla bir gemi teknik olarak kusursuz olsa da, mürettebatın karar alma kültürü zayıfsa SIRE 2.0'da olumsuz gözlem alabilir. Bu, vetting'in artık sadece 'donanım var mı' sorusundan 'bu ekip bir kriz anında doğru karar verir mi' sorusuna evrildiğini gösterir ve modern emniyet yönetiminin (ISM'in de vurguladığı) insan merkezli yaklaşımıyla örtüşür.",
+          "Eski SIRE formatı büyük ölçüde ekipman ve dokümantasyon odaklıydı: bir yangın pompası çalışıyor mu, bir sertifika güncel mi türünden statik kontrollerdi. SIRE 2.0, bu mirası korurken ağırlığı belirgin biçimde insan faktörüne kaydırdı; sorular insan, süreç ve donanım boyutlarıyla değerlendirilir ve denetçi bu sorularla mürettebatın bir prosedürü neden o şekilde uyguladığını, bir riski nasıl değerlendirdiğini ve baskı altında nasıl karar verdiğini anlamaya çalışır. Bu değişim, sektörün kaza istatistiklerinden çıkardığı bir dersi yansıtır: gemi kazalarının büyük çoğunluğu ekipman arızasından değil, insan faktöründen (yorgunluk, iletişim kopukluğu, prosedürün yanlış anlaşılması, hiyerarşik baskı) kaynaklanır. Dolayısıyla bir gemi teknik olarak kusursuz olsa da, mürettebatın karar alma kültürü zayıfsa SIRE 2.0'da olumsuz gözlem alabilir. Bu, vetting'in artık sadece 'donanım var mı' sorusundan 'bu ekip bir kriz anında doğru karar verir mi' sorusuna evrildiğini gösterir ve modern emniyet yönetiminin (ISM'in de vurguladığı) insan merkezli yaklaşımıyla örtüşür.",
       },
     ],
     relatedSlugs: ["ism-code", "isps-code", "rightship"],
@@ -358,7 +358,7 @@ export const surveyRegulations: RegulationItem[] = [
     label: "RightShip – Gemi Değerlendirme",
     category: "Inspection & Survey",
     overview: "Dökme yük gemilerinin emniyet ve çevre performansını değerlendiren bağımsız platform; charterer kabulü için yaygın kullanılır.",
-    history: "RightShip 2001'de BHP Billiton, Rio Tinto ve Cargill tarafından dökme yük gemilerinin emniyet değerlendirmesi amacıyla kurulmuştur. Başlangıçta emniyet odaklı olan platform, 2020'de GHG Rating ekleyerek çevresel performansı da değerlendirmeye başlamıştır. Günümüzde dökme yük, genel kargo ve konteyner gemileri için standart ticari kabul aracıdır. 2023'te Safety Score sistemi güncellenerek daha detaylı risk değerlendirmesi yapılmaya başlanmıştır.",
+    history: "RightShip 2001'de BHP Billiton, Rio Tinto ve Cargill tarafından dökme yük gemilerinin emniyet değerlendirmesi amacıyla kurulmuştur. Başlangıçta emniyet odaklı olan platform, 2012'de GHG Rating ekleyerek çevresel performansı da değerlendirmeye başlamıştır. Günümüzde dökme yük, genel kargo ve konteyner gemileri için standart ticari kabul aracıdır. Şubat 2021'de eski risk derecelendirmesinin yerini Safety Score almıştır.",
     applicability: [
       "Dökme yük gemileri (dry bulk carriers) – birincil hedef grup",
       "Genel kargo gemileri, konteyner gemileri – kapsam genişletildi",
@@ -366,12 +366,12 @@ export const surveyRegulations: RegulationItem[] = [
       "Zorunlu değil ancak ticari olarak fiilen zorunlu – büyük charterer'lar RightShip onayı ister",
     ],
     essentials: [
-      "Safety Score (Qi): 0.5 – 5.0 arası (5.0 en iyi) – geminin emniyet risk puanı",
+      "Safety Score: 1 – 5 arası (5 en iyi) – geminin emniyet puanı",
       "Safety Score parametreleri: kaza/olay geçmişi, yaş, bayrak performansı, klas performansı, PSC denetim sonuçları, şirket performansı, gemi tipi",
       "GHG Rating compares design-related efficiency on the current A–E scale using the applicable EEDI, EEXI or EVDI inputs.",
       "EVDI hesaplaması: geminin tasarım parametrelerine dayalı tahmini CO₂ emisyon yoğunluğu (gCO₂/ton·mil)",
       "RightShip Dry Bulk Inspection: fiziksel denetim programı – kritik gemi tipleri için",
-      "Charterer kabul eşikleri: her şirketin minimum Safety Score ve GHG Rating gerekliliği farklı (genellikle ≥2.5 Safety Score)",
+      "Charterer kabul eşikleri: her şirketin minimum Safety Score ve GHG Rating gerekliliği farklıdır",
       "Veri kaynakları: PSC veritabanları, klas kayıtları, IHS/Lloyd's List verileri, kaza raporları",
     ],
     actions: [
@@ -384,12 +384,11 @@ export const surveyRegulations: RegulationItem[] = [
     ],
     amendments: [
       { year: "2001", description: "RightShip kuruldu (BHP Billiton, Rio Tinto, Cargill)" },
-      { year: "2014", description: "Star Rating sisteminden Safety Score (Qi) sistemine geçiş" },
-      { year: "2020", description: "GHG Rating (EVDI bazlı A-G) eklendi" },
-      { year: "2023", description: "Safety Score metodolojisi güncellendi, veri kaynakları genişletildi" },
+      { year: "2012", description: "GHG Rating (EVDI bazlı, A-G) yayımlandı" },
+      { year: "2021", description: "Safety Score ve yeni RightShip platformu kullanıma girdi; Qi platformundaki risk derecelendirmesi sona erdi" },
     ],
     keyArticles: [
-      { id: "Safety Score Methodology", title: "Emniyet Puanlama", summary: "Qi hesaplama parametreleri, ağırlıklandırma ve güncelleme döngüsü." },
+      { id: "Safety Score Methodology", title: "Emniyet Puanlama", summary: "Safety Score hesaplama parametreleri, ağırlıklandırma ve güncelleme döngüsü." },
       { id: "GHG Rating Framework", title: "Emisyon Değerlendirme", summary: "Current GHG Rating methodology: A–E peer-group comparisons using applicable EEDI, EEXI or EVDI inputs." },
       { id: "Inspection Protocol", title: "Denetim Protokolü", summary: "RightShip fiziksel denetim kapsamı, prosedürleri ve raporlama." },
     ],
@@ -413,7 +412,7 @@ export const surveyRegulations: RegulationItem[] = [
       {
         heading: "Safety Score'un ticari kapı olarak işleyişi",
         body:
-          "RightShip'in gerçek gücü, puanın kendisinde değil, bu puanın büyük yük sahiplerinin kiralama süreçlerine nasıl gömüldüğündedir. Büyük tahıl ve maden tüccarları, madencilik şirketleri ve petrol şirketleri, kendi kurumsal politikalarında bir asgari Qi eşiği (sıklıkla 4 ve üzeri, bazı hassas kargolarda daha yüksek) belirler ve kiralama sistemlerine bu eşiği sert bir filtre olarak yerleştirir. Bunun sonucu mekaniktir: eşiğin altındaki bir gemi, o şirketin broker'ına teklif olarak bile sunulamaz, çünkü sistem otomatik olarak elenir. Bu, PSC alıkoymasından farklı bir dışlanma biçimidir; gemi hiçbir kuralı ihlal etmemiş olabilir, ama ticari erişimi bir yazılım eşiğiyle kapanmıştır. Bu yapı, RightShip'i düzenleyici bir kurumdan çok, kiralama havuzunun görünmez bir ön kapısı haline getirir ve armatörleri, bir PSC alıkoymasının veya kaza kaydının uzun süre puan üzerinde iz bırakacağını bilerek risk yönetimi yapmaya zorlar.",
+          "RightShip'in gerçek gücü, puanın kendisinde değil, bu puanın büyük yük sahiplerinin kiralama süreçlerine nasıl gömüldüğündedir. Büyük tahıl ve maden tüccarları, madencilik şirketleri ve petrol şirketleri, kendi kurumsal politikalarında bir asgari Safety Score eşiği belirler ve kiralama sistemlerine bu eşiği sert bir filtre olarak yerleştirir. Bunun sonucu mekaniktir: eşiğin altındaki bir gemi, o şirketin broker'ına teklif olarak bile sunulamaz, çünkü sistem otomatik olarak elenir. Bu, PSC alıkoymasından farklı bir dışlanma biçimidir; gemi hiçbir kuralı ihlal etmemiş olabilir, ama ticari erişimi bir yazılım eşiğiyle kapanmıştır. Bu yapı, RightShip'i düzenleyici bir kurumdan çok, kiralama havuzunun görünmez bir ön kapısı haline getirir ve armatörleri, bir PSC alıkoymasının veya kaza kaydının uzun süre puan üzerinde iz bırakacağını bilerek risk yönetimi yapmaya zorlar.",
       },
       {
         heading: "EVDI ve EEXI: benzer ölçüm, farklı işlev",
@@ -603,7 +602,7 @@ export const certificateRegulations: RegulationItem[] = [
     label: "SMC – Emniyet Yönetim Sertifikası",
     category: "Ship Certificates",
     overview: "ISM Code kapsamında geminin emniyet yönetim sistemini uyguladığını belgeleyen sertifika; DOC ile birlikte zorunludur.",
-    history: "SMC (Safety Management Certificate), ISM Code'un uygulanmasıyla 1998'den itibaren tüm yolcu gemileri ve 500 GT üzeri kargo gemileri için zorunlu hale gelmiştir. ISM Code, Herald of Free Enterprise (1987) ve Scandinavian Star (1990) felaketlerinin ardından geliştirilen emniyet yönetim sistemi standardıdır. SMC her bir gemi için ayrı ayrı düzenlenirken, DOC (Document of Compliance) şirketi kapsar.",
+    history: "SMC (Safety Management Certificate), ISM Code'un uygulanmasıyla 1 Temmuz 1998'den itibaren yolcu gemileri ile 500 GT ve üzeri tankerler, dökme yük gemileri ve yüksek hızlı araçlar, 1 Temmuz 2002'den itibaren de diğer 500 GT ve üzeri kargo gemileri için zorunlu hale gelmiştir. ISM Code, Herald of Free Enterprise (1987) ve Scandinavian Star (1990) felaketlerinin ardından geliştirilen emniyet yönetim sistemi standardıdır. SMC her bir gemi için ayrı ayrı düzenlenirken, DOC (Document of Compliance) şirketi kapsar.",
     applicability: [
       "Tüm yolcu gemileri (boyut sınırı yok)",
       "500 GT ve üzeri uluslararası sefer yapan kargo gemileri",
@@ -780,7 +779,7 @@ export const certificateRegulations: RegulationItem[] = [
       "MLC Certificate (Maritime Labour Certificate): bayrak devleti veya yetkili RO tarafından düzenlenir",
       "Sertifika süresi: 5 yıl geçerlilik + ara denetim (intermediate inspection: 2. ve 3. yıl arasında)",
       "DMLC (Declaration of Maritime Labour Compliance): Part I (bayrak devleti) + Part II (şirket) – sertifika eki",
-      "14 MLC denetim alanı: asgari yaş, sağlık sertifikası, denizci eğitimi, SEA (Seafarers' Employment Agreement), çalışma/dinlenme saatleri, ücret, tatil, geri dönüş hakkı (repatriation), konaklama, yemek ve ikram, sağlık hizmetleri, gemideki tıbbi bakım, şikâyet mekanizması, mali güvence (P&I)",
+      "16 MLC denetim alanı (Ek A5-I): asgari yaş, sağlık sertifikası, denizci nitelikleri, SEA (Seafarers' Employment Agreement), özel işe alma ve yerleştirme hizmetlerinin kullanımı, çalışma/dinlenme saatleri, manning seviyesi, konaklama, gemideki dinlenme ve eğlence olanakları, yemek ve ikram, iş sağlığı ve güvenliği ile kaza önleme, gemide tıbbi bakım, gemide şikâyet prosedürleri, ücret ödemesi, geri dönüş için mali güvence, armatör sorumluluğu için mali güvence",
       "Çalışma/dinlenme saatleri: minimum 10 saat dinlenme/24 saat, 77 saat dinlenme/7 gün (ikiye bölünebilir)",
       "SEA gereklilikleri: yazılı sözleşme, belirli asgari içerik, denizciye kopya verilmesi",
       "Şikâyet mekanizması (onboard complaint procedures): gemi içi ve kıyı organizasyonu seviyesinde",
@@ -818,12 +817,12 @@ export const certificateRegulations: RegulationItem[] = [
       {
         heading: "Denizci haklarının belgelenmesi",
         body:
-          "MLC Certificate (Maritime Labour Certificate), bir geminin MLC 2006 kapsamındaki çalışma ve yaşam koşulu standartlarını sağladığını belgeleyen sertifikadır. SOLAS sertifikaları gemiyi, STCW mürettebatın yeterliliğini belgelerken MLC Certificate doğrudan denizcinin insani çalışma koşullarını güvence altına alır. 500 GT ve üzeri uluslararası sefer gemileri için zorunludur; bayrak devleti veya yetkili klas kuruluşu tarafından, 14 MLC denetim alanındaki uyum doğrulandıktan sonra düzenlenir. Beş yıl geçerlidir ve dönem ortasında bir ara denetimden geçer.",
+          "MLC Certificate (Maritime Labour Certificate), bir geminin MLC 2006 kapsamındaki çalışma ve yaşam koşulu standartlarını sağladığını belgeleyen sertifikadır. SOLAS sertifikaları gemiyi, STCW mürettebatın yeterliliğini belgelerken MLC Certificate doğrudan denizcinin insani çalışma koşullarını güvence altına alır. 500 GT ve üzeri uluslararası sefer gemileri için zorunludur; bayrak devleti veya yetkili klas kuruluşu tarafından, 16 MLC denetim alanındaki uyum doğrulandıktan sonra düzenlenir. Beş yıl geçerlidir ve dönem ortasında bir ara denetimden geçer.",
       },
       {
         heading: "On dört denetim alanı ve DMLC ile bağ",
         body:
-          "Sertifikanın kapsadığı 14 alan, bir denizcinin gemideki yaşamının neredeyse tamamını kapsar: asgari yaş, sağlık sertifikası, iş sözleşmesi (SEA), çalışma/dinlenme saatleri, ücret, izin, geri dönüş hakkı, konaklama, yemek, sağlık hizmetleri, şikâyet mekanizması ve mali güvence. Bu alanların nasıl karşılandığı, sertifikanın ayrılmaz eki olan DMLC ile belgelenir: Part I bayrak devletinin ulusal gerekliliklerini, Part II ise şirketin bu gerekliliklere nasıl uyduğunu gösterir. Çalışma/dinlenme saatleri (24 saatte en az 10, 7 günde en az 77 saat dinlenme) STCW ile aynı kurallara dayanır ve titizlikle kaydedilir.",
+          "Sertifikanın kapsadığı 16 alan (2014 değişiklikleriyle eklenen iki mali güvence alanı dahil), bir denizcinin gemideki yaşamının neredeyse tamamını kapsar: asgari yaş, sağlık sertifikası, nitelikler, iş sözleşmesi (SEA), işe alma hizmetleri, çalışma/dinlenme saatleri, manning, konaklama, dinlenme olanakları, yemek, iş sağlığı ve güvenliği, tıbbi bakım, şikâyet prosedürleri, ücret ödemesi ile geri dönüş ve armatör sorumluluğu için mali güvence. Bu alanların nasıl karşılandığı, sertifikanın ayrılmaz eki olan DMLC ile belgelenir: Part I bayrak devletinin ulusal gerekliliklerini, Part II ise şirketin bu gerekliliklere nasıl uyduğunu gösterir. Çalışma/dinlenme saatleri (24 saatte en az 10, 7 günde en az 77 saat dinlenme) STCW ile aynı kurallara dayanır ve titizlikle kaydedilir.",
       },
       {
         heading: "Denetimde MLC'nin ağırlığı",
@@ -849,7 +848,7 @@ export const certificateRegulations: RegulationItem[] = [
     label: "IOPP Certificate – Petrol Kirliliği Önleme Belgesi",
     category: "Ship Certificates",
     overview: "MARPOL Ek I kapsamında geminin petrol kirliliği önleme ekipmanı ve prosedürlerini belgeleyen sertifika.",
-    history: "IOPP Certificate (International Oil Pollution Prevention Certificate), MARPOL 73/78 Ek I kapsamında düzenlenmektedir. 400 GT ve üzeri tüm gemiler ve tüm petrol tankerleri için zorunludur. Sertifika, geminin petrol kirliliği önleme ekipmanlarının MARPOL Ek I'e uygunluğunu belgeler. Supplement (Form A – tanker olmayan, Form B – tankerler) sertifikanın ayrılmaz parçasıdır.",
+    history: "IOPP Certificate (International Oil Pollution Prevention Certificate), MARPOL 73/78 Ek I kapsamında düzenlenmektedir. 150 GT ve üzeri petrol tankerleri ile 400 GT ve üzeri diğer gemiler için zorunludur. Sertifika, geminin petrol kirliliği önleme ekipmanlarının MARPOL Ek I'e uygunluğunu belgeler. Supplement (Form A – tanker olmayan, Form B – tankerler) sertifikanın ayrılmaz parçasıdır.",
     applicability: [
       "400 GT ve üzeri tüm gemiler (tanker olmayan)",
       "150 GT ve üzeri tüm petrol tankerleri",
@@ -858,7 +857,7 @@ export const certificateRegulations: RegulationItem[] = [
     essentials: [
       "Sertifika süresi: 5 yıl geçerlilik + yıllık survey + ara survey (intermediate)",
       "Supplement to IOPP: Form A (tanker olmayan gemiler) veya Form B (tankerler) – ekipman detay listesi",
-      "ODM (Oil Discharge Monitoring): 15 ppm'den fazla deşarjda otomatik kapama (tankerler)",
+      "ODME (Oil Discharge Monitoring Equipment): kargo alanından yapılan deşarjda anlık deşarj oranı 30 litre/deniz milini aşınca deşarjı otomatik durdurur (tankerler)",
       "OWS (Oil Water Separator): sintine suyundaki yağ içeriğini 15 ppm altına düşüren sistem + 15 ppm alarm ve otomatik kapama",
       "SOPEP (Shipboard Oil Pollution Emergency Plan): petrol kirliliği acil müdahale planı",
       "ORB (Oil Record Book): Part I (makine dairesi operasyonları) ve Part II (kargo/balast operasyonları – tankerler) – tüm yağ operasyonlarının kaydı",
@@ -945,7 +944,7 @@ export const certificateRegulations: RegulationItem[] = [
       "Teçhizat envanterini sertifika ekleriyle (Form E) eşleştir ve tutarsızlık olmamasını sağla",
       "Servis süresi dolan teçhizatı (can salı, söndürücü, EPIRB bataryası, pyrotechnics) survey öncesi yenile",
       "Yıllık survey tarihini bakım planına entegre et",
-      "Teçhizat bakım ve test kayıtlarını düzenli tut (yangın pompası, waterlight doors, fire dampers)",
+      "Teçhizat bakım ve test kayıtlarını düzenli tut (yangın pompası, watertight doors, fire dampers)",
       "GMDSS teçhizatı fonksiyon testlerini haftalık yap ve kaydet",
     ],
     amendments: [
@@ -1017,7 +1016,7 @@ export const certificateRegulations: RegulationItem[] = [
       "Zorunlu GMDSS ekipmanları: VHF DSC, MF/HF DSC, Inmarsat-C, EPIRB (406 MHz – COSPAS-SARSAT), SART/AIS-SART, NAVTEX, EGC (SafetyNET)",
       "Yedekleme seçenekleri: shore-based maintenance (SBM), at-sea maintenance (ASM), duplication of equipment",
       "Fonksiyon test gereklilikleri: haftalık VHF/MF/HF test, aylık EPIRB/SART test, yıllık tam fonksiyon testi",
-      "Batarya gereklilikleri: GMDSS batarya kapasitesi – minimum 1 saat (6 saat önerilir) reserve power",
+      "Batarya gereklilikleri: GMDSS yedek enerji kaynağı – en az 1 saat (acil durum güç kaynağı telsiz tesisatını beslemiyorsa 6 saat)",
       "Radio log: telsiz kayıt tutma zorunluluğu – tehlike ve güvenlik haberleşmeleri",
     ],
     actions: [
@@ -1179,8 +1178,8 @@ export const certificateRegulations: RegulationItem[] = [
       "SEEMP (Ship Energy Efficiency Management Plan): Part I (genel), Part II (DCS), Part III (CII) – gemide bulundurma zorunlu",
       "EEXI verification is documented through the EEXI Technical File and IEE Certificate, separately from IAPP certification.",
       "ODS (Ozone Depleting Substances) kayıt gereklilikleri: halon, CFC, HCFC kullanımının kaydı ve raporlanması",
-      "VOC Management Plan: ham petrol tankerleri için zorunlu (belirli limanlar/terminallerde)",
-      "Shipboard incinerator: 2000 sonrası kurulan yakıcılar MEPC.244(66) onaylı olmalı",
+      "VOC Management Plan: ham petrol taşıyan tankerler için zorunlu (buhar toplama sistemi gerekliliği ise yalnız belirlenen liman/terminallerde)",
+      "Shipboard incinerator: 1 Ocak 2000 – 1 Ocak 2015 arasında kurulanlar MEPC.76(40) veya MEPC.244(66), 1 Ocak 2015 ve sonrasında kurulanlar MEPC.244(66) onaylı olmalı",
     ],
     actions: [
       "NOx Teknik Dosyasını motor bakımlarıyla (injector, turbocharger, timing) güncel tut",
@@ -1203,7 +1202,7 @@ export const certificateRegulations: RegulationItem[] = [
       { id: "MARPOL Ek VI Kural 6", title: "IAPP Survey ve Sertifikasyon", summary: "IAPP Certificate düzenleme, survey aralıkları ve geçerlilik koşulları." },
       { id: "Kural 13", title: "NOx Emisyonları", summary: "Dizel motor NOx emisyon limitleri (Tier I, II, III) ve NOx Teknik Dosyası gereklilikleri." },
       { id: "Kural 14", title: "SOx Emisyonları", summary: "Yakıt kükürt limitleri (küresel ve SECA) ve EGCS alternatifi." },
-      { id: "Kural 22", title: "SEEMP", summary: "Ship Energy Efficiency Management Plan gereklilikleri ve içeriği." },
+      { id: "Kural 26 (eski 22)", title: "SEEMP", summary: "Ship Energy Efficiency Management Plan gereklilikleri ve içeriği." },
     ],
     penalties: [
       "IAPP Certificate olmadan uluslararası sefer yapılamaz",
@@ -1322,15 +1321,15 @@ export const certificateRegulations: RegulationItem[] = [
     label: "DMLC – Denizcilik Çalışma Beyanı",
     category: "Ship Certificates",
     overview: "MLC 2006 kapsamında bayrak devleti gerekliliklerini (Bölüm I) ve şirket uyum önlemlerini (Bölüm II) belgeleyen iki parçalı deklarasyon.",
-    history: "DMLC (Declaration of Maritime Labour Compliance), MLC 2006'nın sertifikasyon mekanizmasının temel parçasıdır. MLC Certificate'ın eki olarak gemide bulundurulması zorunludur. Part I bayrak devleti tarafından, Part II şirket tarafından hazırlanır. 14 MLC denetim alanında hem ulusal gereklilikleri hem de şirket uyum planlarını bir arada belgeleyen benzersiz bir iki parçalı sistemdir.",
+    history: "DMLC (Declaration of Maritime Labour Compliance), MLC 2006'nın sertifikasyon mekanizmasının temel parçasıdır. MLC Certificate'ın eki olarak gemide bulundurulması zorunludur. Part I bayrak devleti tarafından, Part II şirket tarafından hazırlanır. 16 MLC denetim alanında hem ulusal gereklilikleri hem de şirket uyum planlarını bir arada belgeleyen benzersiz bir iki parçalı sistemdir.",
     applicability: [
       "500 GT ve üzeri uluslararası sefer yapan tüm gemiler (MLC Certificate ile birlikte)",
       "MLC 2006'ya taraf devletlerin bayraklarını taşıyan gemiler",
     ],
     essentials: [
-      "DMLC Part I: bayrak devleti tarafından düzenlenir – 14 MLC alanındaki ulusal mevzuat gereklilikleri, ulusal farklılıklar (substantial equivalences)",
-      "DMLC Part II: şirket (armatör) tarafından hazırlanır – her 14 alan için şirketin nasıl uyum sağladığını gösteren uygulama planı",
-      "14 MLC denetim alanı: (1) Asgari yaş, (2) Sağlık sertifikası, (3) Denizci nitelikleri, (4) SEA, (5) Özel istihdam kuruluşları, (6) Çalışma/dinlenme saatleri, (7) Manning seviyesi, (8) Konaklama, (9) Rekreasyon, (10) Yemek/ikram, (11) Sağlık/tıbbi bakım, (12) Gemideki şikâyet mekanizması, (13) Ücret ödemesi, (14) Mali güvence",
+      "DMLC Part I: bayrak devleti tarafından düzenlenir – 16 MLC alanındaki ulusal mevzuat gereklilikleri, ulusal farklılıklar (substantial equivalences)",
+      "DMLC Part II: şirket (armatör) tarafından hazırlanır – 16 alanın her biri için şirketin nasıl uyum sağladığını gösteren uygulama planı",
+      "16 MLC denetim alanı: (1) Asgari yaş, (2) Sağlık sertifikası, (3) Denizci nitelikleri, (4) SEA, (5) Özel işe alma ve yerleştirme hizmetleri, (6) Çalışma/dinlenme saatleri, (7) Manning seviyesi, (8) Konaklama, (9) Gemideki dinlenme ve eğlence olanakları, (10) Yemek/ikram, (11) İş sağlığı ve güvenliği ile kaza önleme, (12) Gemide tıbbi bakım, (13) Gemide şikâyet prosedürleri, (14) Ücret ödemesi, (15) Geri dönüş için mali güvence, (16) Armatör sorumluluğu için mali güvence",
       "MLC Certificate olmadan DMLC'nin anlamı yok – ikisi birlikte gemide bulundurulmalı",
       "PSC denetimlerinde DMLC en çok kontrol edilen belgelerden biri",
       "Part II'nin gemi değişikliğinde (personel politikası, prosedür değişimi) güncellenmesi gerekir",
@@ -1339,7 +1338,7 @@ export const certificateRegulations: RegulationItem[] = [
       "DMLC Part II'yi şirket prosedür değişikliklerinde güncelle ve bayrak devletine/RO'ya bildir",
       "Bayrak devleti gereklilik değişikliklerini Part I'de izle ve güncelleme olup olmadığını kontrol et",
       "PSC denetimlerinde DMLC ve MLC sertifikasını birlikte sunmaya hazır ol",
-      "14 alanın her biri için uyum kanıtlarını (kayıtlar, prosedürler, sertifikalar) hazır tut",
+      "16 alanın her biri için uyum kanıtlarını (kayıtlar, prosedürler, sertifikalar) hazır tut",
       "Yeni mürettebat üyelerini DMLC kapsamındaki hakları ve prosedürleri konusunda bilgilendir",
     ],
     amendments: [
@@ -1361,22 +1360,22 @@ export const certificateRegulations: RegulationItem[] = [
       {
         heading: "İki parçalı uyum beyanı",
         body:
-          "DMLC (Declaration of Maritime Labour Compliance), MLC 2006 sertifikasyon sisteminin özgün ve pratik kalbidir. MLC Certificate uyumu 'onaylar' ama nasıl sağlandığını anlatmaz; DMLC bu boşluğu doldurur ve sertifikanın ayrılmaz eki olarak gemide bulundurulur. İki parçalıdır: Part I'i bayrak devleti hazırlar ve 14 MLC alanında ulusal mevzuatın ne gerektirdiğini (varsa ulusal eşdeğer farklılıklarıyla) açıklar; Part II'yi ise şirket hazırlar ve her bir alanda bu gereklilikleri fiilen nasıl karşıladığını gösteren uygulama planını ortaya koyar. Böylece beyan, hem 'kural ne diyor' hem 'biz bunu nasıl uyguluyoruz' sorularını tek belgede yanıtlar.",
+          "DMLC (Declaration of Maritime Labour Compliance), MLC 2006 sertifikasyon sisteminin özgün ve pratik kalbidir. MLC Certificate uyumu 'onaylar' ama nasıl sağlandığını anlatmaz; DMLC bu boşluğu doldurur ve sertifikanın ayrılmaz eki olarak gemide bulundurulur. İki parçalıdır: Part I'i bayrak devleti hazırlar ve 16 MLC alanında ulusal mevzuatın ne gerektirdiğini (varsa ulusal eşdeğer farklılıklarıyla) açıklar; Part II'yi ise şirket hazırlar ve her bir alanda bu gereklilikleri fiilen nasıl karşıladığını gösteren uygulama planını ortaya koyar. Böylece beyan, hem 'kural ne diyor' hem 'biz bunu nasıl uyguluyoruz' sorularını tek belgede yanıtlar.",
       },
       {
         heading: "Denetimde söz ile uygulamanın örtüşmesi",
         body:
-          "DMLC, PSC denetiminde en çok incelenen belgelerden biridir, çünkü denetçi için doğal bir kontrol listesidir: Part II'de yazılı her prosedürün gemide gerçekten uygulanıp uygulanmadığı kıyaslanır. En kritik risk, beyan ile gerçek arasındaki tutarsızlıktır; örneğin Part II çalışma saati kaydı tutulduğunu söylüyorsa ama kayıtlar eksikse, bu ciddi bir uygunsuzluk ve olası alıkoyma sebebidir. Bu yüzden Part II, şirketin personel politikası veya prosedürleri değiştiğinde güncellenmeli, Part I'deki ulusal gereklilik değişiklikleri izlenmeli ve 14 alanın her biri için somut uyum kanıtları (kayıtlar, sözleşmeler, sertifikalar) gemide hazır tutulmalıdır. MLC Certificate geçersizse DMLC de geçersiz hale gelir.",
+          "DMLC, PSC denetiminde en çok incelenen belgelerden biridir, çünkü denetçi için doğal bir kontrol listesidir: Part II'de yazılı her prosedürün gemide gerçekten uygulanıp uygulanmadığı kıyaslanır. En kritik risk, beyan ile gerçek arasındaki tutarsızlıktır; örneğin Part II çalışma saati kaydı tutulduğunu söylüyorsa ama kayıtlar eksikse, bu ciddi bir uygunsuzluk ve olası alıkoyma sebebidir. Bu yüzden Part II, şirketin personel politikası veya prosedürleri değiştiğinde güncellenmeli, Part I'deki ulusal gereklilik değişiklikleri izlenmeli ve 16 alanın her biri için somut uyum kanıtları (kayıtlar, sözleşmeler, sertifikalar) gemide hazır tutulmalıdır. MLC Certificate geçersizse DMLC de geçersiz hale gelir.",
       },
       {
         heading: "On dört denetim alanının iki parçalı belgelenmesi",
         body:
-          "DMLC, MLC'nin 14 denetim alanını hem ulusal gereklilik hem şirket uygulaması düzeyinde belgeler. Bu alanlar bir denizcinin gemideki yaşamının neredeyse tamamını kapsar: asgari yaş, sağlık sertifikası, denizci nitelikleri, iş sözleşmesi (SEA), işe alma hizmetleri, çalışma/dinlenme saatleri, manning seviyesi, konaklama, rekreasyon, yemek/ikram, sağlık ve tıbbi bakım, gemideki şikâyet mekanizması, ücret ödemesi ve mali güvence. Part I, bayrak devletinin her alanda ne gerektirdiğini (ve varsa ulusal eşdeğer farklılıkları) açıklar; Part II ise şirketin bu gereklilikleri fiilen nasıl karşıladığını gösteren uygulama planını ortaya koyar. Böylece DMLC, 'kural ne diyor' ve 'biz bunu nasıl uyguluyoruz' sorularını tek belgede yanıtlar ve denetçi için doğal bir kontrol listesi işlevi görür.",
+          "DMLC, MLC'nin 16 denetim alanını hem ulusal gereklilik hem şirket uygulaması düzeyinde belgeler. Bu alanlar bir denizcinin gemideki yaşamının neredeyse tamamını kapsar: asgari yaş, sağlık sertifikası, denizci nitelikleri, iş sözleşmesi (SEA), işe alma hizmetleri, çalışma/dinlenme saatleri, manning seviyesi, konaklama, dinlenme olanakları, yemek/ikram, iş sağlığı ve güvenliği, tıbbi bakım, gemideki şikâyet prosedürleri, ücret ödemesi ile geri dönüş ve armatör sorumluluğu için mali güvence. Part I, bayrak devletinin her alanda ne gerektirdiğini (ve varsa ulusal eşdeğer farklılıkları) açıklar; Part II ise şirketin bu gereklilikleri fiilen nasıl karşıladığını gösteren uygulama planını ortaya koyar. Böylece DMLC, 'kural ne diyor' ve 'biz bunu nasıl uyguluyoruz' sorularını tek belgede yanıtlar ve denetçi için doğal bir kontrol listesi işlevi görür.",
       },
       {
         heading: "Söz ile uygulamanın örtüşmesi ve güncel tutma",
         body:
-          "DMLC denetiminin en kritik yönü, Part II'de yazılı her prosedürün gemide gerçekten uygulanıp uygulanmadığının kıyaslanmasıdır. En ciddi risk, beyan ile gerçek arasındaki tutarsızlıktır: örneğin Part II çalışma saati kaydı tutulduğunu söylüyorsa ama kayıtlar eksikse, veya şikâyet mekanizması tanımlanmış ama mürettebat bundan habersizse, bu büyük bir uyumsuzluk ve olası alıkoyma sebebidir. Bu yüzden Part II, şirketin personel politikası veya prosedürleri değiştiğinde güncellenmeli ve bayrak devletine/RO'ya bildirilmeli; Part I'deki ulusal gereklilik değişiklikleri izlenmeli; 14 alanın her biri için somut uyum kanıtları (kayıtlar, sözleşmeler, sertifikalar) gemide hazır tutulmalıdır. DMLC, MLC Certificate ile birlikte anlamlıdır; sertifika geçersiz olursa DMLC de geçersiz hale gelir ve gemi uluslararası sefer yapamaz.",
+          "DMLC denetiminin en kritik yönü, Part II'de yazılı her prosedürün gemide gerçekten uygulanıp uygulanmadığının kıyaslanmasıdır. En ciddi risk, beyan ile gerçek arasındaki tutarsızlıktır: örneğin Part II çalışma saati kaydı tutulduğunu söylüyorsa ama kayıtlar eksikse, veya şikâyet mekanizması tanımlanmış ama mürettebat bundan habersizse, bu büyük bir uyumsuzluk ve olası alıkoyma sebebidir. Bu yüzden Part II, şirketin personel politikası veya prosedürleri değiştiğinde güncellenmeli ve bayrak devletine/RO'ya bildirilmeli; Part I'deki ulusal gereklilik değişiklikleri izlenmeli; 16 alanın her biri için somut uyum kanıtları (kayıtlar, sözleşmeler, sertifikalar) gemide hazır tutulmalıdır. DMLC, MLC Certificate ile birlikte anlamlıdır; sertifika geçersiz olursa DMLC de geçersiz hale gelir ve gemi uluslararası sefer yapamaz.",
       },
       {
         heading: "Part I'de 'esdeğer uygulama' esnekliği",

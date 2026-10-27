@@ -229,9 +229,9 @@ export default function PassagePlanPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border/50 text-left">
-                  <th className="py-2 pr-4 font-semibold text-foreground">Quest</th>
+                  <th className="py-2 pr-4 font-semibold text-foreground">Task</th>
                   <th className="py-2 pr-4 font-semibold text-primary">Responsible</th>
-                  <th className="py-2 font-semibold text-muted-foreground">Actual Doer</th>
+                  <th className="py-2 font-semibold text-muted-foreground">Performed by</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
@@ -255,7 +255,7 @@ export default function PassagePlanPage() {
                 <p className="text-xs text-primary mb-2 font-medium">Page {page} / 44</p>
                 <img 
                   src={`/passage-plan/page_${page}.jpg`} 
-                  alt={`Passage Plan Sayfa ${page}`}
+                  alt={`Passage Plan Page ${page}`}
                   className={`w-full rounded-lg ${page === 1 ? 'rotate-180' : ''}`}
                   loading="lazy"
                 />

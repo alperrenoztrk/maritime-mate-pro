@@ -211,7 +211,7 @@ export async function buildPscReport(
   ];
 
   ws.getRow(1).font = { bold: true };
-  ws.spliceRows(1, 0, [`Gemi: ${vesselName || "-"}`], [`Tarih: ${inspectionDate || "-"}`], []);
+  ws.spliceRows(1, 0, [`Ship: ${vesselName || "-"}`], [`Date: ${inspectionDate || "-"}`], []);
 
   for (const cat of PSC_CHECKLIST) {
     for (const item of cat.items) {

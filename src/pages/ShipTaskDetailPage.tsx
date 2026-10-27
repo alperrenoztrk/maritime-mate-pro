@@ -84,7 +84,7 @@ export default function ShipTaskDetailPage() {
               <thead>
                 <tr className="border-b border-border/50 text-left">
                   <th className="py-2 pr-4 font-semibold text-foreground">Position</th>
-                  <th className="py-2 font-semibold text-primary">Quests</th>
+                  <th className="py-2 font-semibold text-primary">Duties</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">

@@ -156,7 +156,7 @@ const integratedRuleSections = (
         id: `${topicId}-integrated-standard-${groupIndex + 1}-${sectionIndex + 1}`,
         title: `${group.title} — ${rule.subtitle}`,
         sourceTitle: rule.subtitle,
-        content: sectionIndex === 0 && source ? `Kaynak: ${source}` : "",
+        content: sectionIndex === 0 && source ? `Source: ${source}` : "",
         bulletPoints: rule.content.map((item) => item.trim()).filter(Boolean),
       };
     }),
@@ -317,8 +317,8 @@ function mapStabilityTopic(
     formulas.forEach((formula, index) =>
       sections.push({
         id: makeSectionId(metadata?.id, sections.length),
-        title: formulas.length > 1 ? `${baseTitle} — Formül ${index + 1}` : `${baseTitle} — Formül`,
-        sourceTitle: formulas.length > 1 ? `Formül ${index + 1}` : "Formül",
+        title: formulas.length > 1 ? `${baseTitle} — Formula ${index + 1}` : `${baseTitle} — Formula`,
+        sourceTitle: formulas.length > 1 ? `Formula ${index + 1}` : "Formula",
         content: "",
         formula: { text: formula.formula, description: formula.description },
       }),
@@ -329,9 +329,9 @@ function mapStabilityTopic(
         id: makeSectionId(metadata?.id, sections.length),
         title:
           examples.length > 1
-            ? `${baseTitle} — Çözümlü Örnek ${index + 1}`
-            : `${baseTitle} — Çözümlü Örnek`,
-        sourceTitle: examples.length > 1 ? `Çözümlü Örnek ${index + 1}` : "Çözümlü Örnek",
+            ? `${baseTitle} — Worked Example ${index + 1}`
+            : `${baseTitle} — Worked Example`,
+        sourceTitle: examples.length > 1 ? `Worked Example ${index + 1}` : "Worked Example",
         content: "",
         example: { problem: example.problem, solution: example.solution },
       }),

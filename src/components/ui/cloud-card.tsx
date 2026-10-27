@@ -109,7 +109,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
             <>
               <img
                 src={cloud.imageUrl}
-                alt={`${cloud.name} - ${cloud.descriptionTr}`}
+                alt={cloud.name}
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"

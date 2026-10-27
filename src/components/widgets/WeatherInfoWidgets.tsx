@@ -230,7 +230,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                       <WeatherIcon code={day.weatherCode} ranged className="h-8 w-8" />
                       <div>
                         <div className="font-semibold">
-                          {new Date(day.date).toLocaleDateString('tr-TR', { 
+                          {new Date(day.date).toLocaleDateString('en-GB', { 
                             weekday: 'short', 
                             day: 'numeric', 
                             month: 'short' 
@@ -273,12 +273,12 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
-              {selectedDate && `${new Date(selectedDate).toLocaleDateString('tr-TR', { 
+              {selectedDate && `${new Date(selectedDate).toLocaleDateString('en-GB', { 
                 weekday: 'long', 
                 day: 'numeric', 
                 month: 'long',
                 year: 'numeric' 
-              })} - Saatlik Hava Durumu`}
+              })} - Hourly Weather`}
             </DialogTitle>
           </DialogHeader>
           

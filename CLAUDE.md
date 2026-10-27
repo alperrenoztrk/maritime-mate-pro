@@ -100,6 +100,10 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
   ders/SOLAS/STCW/COLREG metinleri
   `scripts/i18n/verified/english-leftover-texts.json` paketinde (İngilizce, diğer
   dillere İngilizce dolgu). Yeni ekranda Türkçe kalırsa çözüm buraya eklemektir.
+  `npm run i18n:leftovers -- --check` (i18n:verify içinde) sözlükte karşılığı
+  olmayan yeni Türkçe metni ve `${…}` çevresinde Türkçe kelime birleştiren
+  şablonları yakalar; çalışma anında Türkçe parça birleştirme, her parçayı
+  ayrı metin olarak göster.
 - Ders paragrafları (`paragraphs` alanları, 7.265 paragraf): tamamı kontrol
   edilmiş İngilizcede, tek paket: `scripts/i18n/verified/paragraphs/*.json` →
   `public/locales/shared/lesson-paragraphs.en.json`. Paragrafları dil sözlüklerine

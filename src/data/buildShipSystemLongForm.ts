@@ -28,14 +28,16 @@ export function buildGeneratedShipSystemLongForm(
       callouts.push({
         type: "reference",
         title: "Formül ve değişkenler",
-        text: `${section.formula.expression}. ${section.formula.variables.join("; ")}`,
+        text: section.formula.expression,
+        lines: section.formula.variables,
       });
     }
     if (section.example) {
       callouts.push({
         type: "example",
         title: "Uygulama örneği",
-        text: `${section.example.problem} ${section.example.steps.join(" ")} Sonuç: ${section.example.result}`,
+        text: section.example.problem,
+        lines: [...section.example.steps, section.example.result],
       });
     }
     return {
@@ -85,7 +87,7 @@ export function buildGeneratedShipSystemLongForm(
           "Çalışma prensibi",
           topic.workingPrinciple?.length
             ? topic.workingPrinciple
-            : guide.flow.map((stage) => `${stage.label}: ${stage.detail}`),
+            : guide.flow.map((stage) => stage.detail),
           ["Bileşenler tek başına değil, sensör/enerji kaynağı, kontrol mantığı ve emniyet geri beslemesiyle birlikte değerlendirilir."],
         ),
       ],
@@ -176,9 +178,9 @@ export function buildGeneratedShipSystemLongForm(
     title: topic.title,
     sectionId,
     topicIndex,
-    intro: `${guide.purpose} Bu ders, sistemin mimarisini, normal işletmesini, sınırlarını, çapraz doğrulamasını ve arıza halinde emniyetli ilk hareketi tek akışta ele alır.`,
+    intro: guide.purpose,
     estimatedPages,
     chapters,
-    sources: guide.references.map((reference) => `${reference.code} — ${reference.scope}`),
+    sources: guide.references.map((reference) => reference.code),
   };
 }

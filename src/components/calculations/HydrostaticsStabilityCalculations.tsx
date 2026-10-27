@@ -578,7 +578,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     
     const meanDraft = (dF + dA) / 2;
     const difference = dM - meanDraft;
-    const type = difference > 0 ? "Hogging" : "Sagging";
+    const type = difference > 0 ? "Sagging" : difference < 0 ? "Hogging" : "No hog or sag";
     
     setHoggingSaggingResult({ type, difference: Math.abs(difference) });
     toast({ title: "Calculation Completed", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
@@ -596,7 +596,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     
     const newKG = totalMoment / totalWeight;
     setNewKGResult(newKG);
-    toast({ title: "Calculation Completed", description: `New QA: ${newKG.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `New KG: ${newKG.toFixed(3)} m` });
   };
 
   const calculateGM = () => {
@@ -924,7 +924,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const T = 2 * Math.PI * k / Math.sqrt(9.81 * gmCorr); // T = 2π * k / √(g*GM_corr)
 
     setRollPeriodResults({ period: T });
-    toast({ title: "Yaw Period Calculated", description: `T: ${T.toFixed(2)} saniye` });
+    toast({ title: "Roll Period Calculated", description: `T: ${T.toFixed(2)} s` });
   };
 
   // 9. Angle of Loll
@@ -2077,7 +2077,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="tf">Tf - Head Draft (m)</Label>
+                <Label htmlFor="tf">Tf - Forward Draft (m)</Label>
                 <Input
                   id="tf"
                   type="number"
@@ -2661,7 +2661,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             {rollPeriodResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-teal-500">
                 <div className="text-sm">
-                  <div><strong>Roll Period:</strong> {rollPeriodResults.period.toFixed(2)} saniye</div>
+                  <div><strong>Roll Period:</strong> {rollPeriodResults.period.toFixed(2)} s</div>
                   <div className="text-xs mt-1 text-teal-600 dark:text-teal-400">
                     T = 2π·k/√(g·GMcorr)
                   </div>

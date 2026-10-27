@@ -900,7 +900,7 @@ export function getProfessionalSystemGuide(
   const topic = resolveSeed(key);
 
   if (!profile || !topic) {
-    throw new Error(`Eksik profesyonel gemi sistemi rehberi: ${key} (${topicTitle})`);
+    throw new Error(`Missing professional ship system guide: ${key} (${topicTitle})`);
   }
 
   return {

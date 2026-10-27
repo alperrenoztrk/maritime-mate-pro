@@ -41,6 +41,8 @@ export type RegulationComplianceStage = {
 };
 
 export type RegulationInspectionQuestion = {
+  /** Sorunun dayandığı madde; ayrı öğeler olarak çizilir (birleştirilmez). */
+  reference?: { id?: string; title?: string; summary?: string };
   question: string;
   expectedAnswer: string;
   evidence: string[];

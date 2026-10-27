@@ -237,7 +237,7 @@ function BasicContent({ role }: { role: typeof crewRoleMap[string] }) {
           <ShieldCheck className="h-5 w-5" />
         </div>
         <div>
-          <h2 className="text-base font-semibold text-foreground">Quests</h2>
+          <h2 className="text-base font-semibold text-foreground">Duties</h2>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2">

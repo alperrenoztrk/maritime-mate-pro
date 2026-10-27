@@ -74,5 +74,109 @@
  "Yerel zaman, gök cisminin yerel meridyenden geçişine (yerel öğle) veya belirli bir saat açısına göre belirlenir. Greenwich zamanı ise kronometre ile okunur. İki zaman arasındaki fark doğrudan boylamı verir; işaret, doğu veya batı yönünü belirler.": {
   "fill": false,
   "en": "Local time is determined by the passage of a celestial body over the local meridian (local noon) or a certain hour angle. Greenwich time is read with the chronometer. The difference between two times directly gives longitude; The sign determines the east or west direction."
+ },
+ "Termodinamik ve Isı Tekniği": {
+  "fill": false,
+  "en": "Thermodynamics and Heat Engineering"
+ },
+ "Akışkanlar Mekaniği": {
+  "fill": false,
+  "en": "Fluid Mechanics"
+ },
+ "Makine Elemanları ve Malzeme Bilgisi": {
+  "fill": false,
+  "en": "Machine Elements and Materials"
+ },
+ "Deniz Dizel Makineleri": {
+  "fill": false,
+  "en": "Marine Diesel Engines"
+ },
+ "Gemi Makine Sistemleri": {
+  "fill": false,
+  "en": "Marine Engineering Systems"
+ },
+ "Yardımcı Makineler": {
+  "fill": false,
+  "en": "Auxiliary Machinery"
+ },
+ "Yakıt Teknolojisi ve Yönetimi": {
+  "fill": false,
+  "en": "Fuel Technology and Management"
+ },
+ "Soğutma ve Klima Sistemleri": {
+  "fill": false,
+  "en": "Refrigeration and Air Conditioning"
+ },
+ "Gemi Elektrik Sistemleri": {
+  "fill": false,
+  "en": "Marine Electrical Systems"
+ },
+ "Elektronik, Ölçme ve Otomasyon": {
+  "fill": false,
+  "en": "Electronics, Instrumentation and Automation"
+ },
+ "Makine Dairesi Operasyonları": {
+  "fill": false,
+  "en": "Engine Room Operations"
+ },
+ "Bakım, Arıza Teşhisi ve Güvenilirlik": {
+  "fill": false,
+  "en": "Maintenance, Fault Diagnosis and Reliability"
+ },
+ "Makine Dairesi Güvenliği": {
+  "fill": false,
+  "en": "Engine Room Safety"
+ },
+ "Makine Dairesinde MARPOL ve Çevre Uyum": {
+  "fill": false,
+  "en": "MARPOL and Environmental Compliance in the Engine Room"
+ },
+ "Makine Dairesi Kaynak Yönetimi — ERM": {
+  "fill": false,
+  "en": "Engine Room Resource Management — ERM"
+ },
+ "Enerji Verimliliği": {
+  "fill": false,
+  "en": "Energy Efficiency"
+ },
+ "Greenwich Saat Açısı (GHA)": {
+  "fill": false,
+  "en": "Greenwich Hour Angle (GHA)"
+ },
+ "h: yükseklik | φ: gözlemci enlemi | δ: deklinasyon | LHA: yerel saat açısı": {
+  "fill": false,
+  "en": "h: altitude | φ: observer's latitude | δ: declination | LHA: local hour angle"
+ },
+ "yerel saat açısı (LHA)": {
+  "fill": false,
+  "en": "local hour angle (LHA)"
+ },
+ "Yerel Saat Açısı (LHA)": {
+  "fill": false,
+  "en": "Local Hour Angle (LHA)"
+ },
+ "Görev": {
+  "fill": false,
+  "en": "Duty"
+ },
+ "Bölüm 2 – Temel Kavramlar ve Tanımlar": {
+  "fill": false,
+  "en": "Chapter 2 – Basic Concepts and Definitions"
+ },
+ "Bölüm 3 – Arşimet Prensibi ve Deplasman": {
+  "fill": false,
+  "en": "Chapter 3 – Archimedes' Principle and Displacement"
+ },
+ "Bölüm 4 – Küçük Açılı Enine Stabilite": {
+  "fill": false,
+  "en": "Chapter 4 – Transverse Stability at Small Angles"
+ },
+ "Bölüm 5 – Sert ve Yumuşak Gemi, Rulo Periyodu": {
+  "fill": false,
+  "en": "Chapter 5 – Stiff and Tender Ships, Rolling Period"
+ },
+ "Bölüm 6 – GZ Eğrileri ve Büyük Açılı Stabilite": {
+  "fill": false,
+  "en": "Chapter 6 – GZ Curves and Stability at Large Angles"
  }
 }

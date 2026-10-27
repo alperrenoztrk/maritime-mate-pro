@@ -5,6 +5,17 @@ import { shipTypeMap, type DepartmentId } from "@/data/shipOperationsData";
 import { LibraryPageShell } from "@/components/library/LibraryInterface";
 import { accentGradient } from "@/components/library/libraryAccent";
 
+// Sayfa başlığı tek parça İngilizce metin olarak kurulur; Türkçe gemi tipi
+// adı İngilizce kelimeyle birleştirilmez (sözlükte karşılığı olmaz).
+const shipOperationsTitles: Record<string, string> = {
+  dokme: "Bulk Carrier Operations",
+  konteyner: "Container Ship Operations",
+  offshore: "Offshore / DP Operations",
+  "ro-ro": "Ro-Ro Operations",
+  tanker: "Tanker Operations",
+  yolcu: "Passenger Ship Operations",
+};
+
 export default function ShipOperationsDetail() {
   const { shipType } = useParams<{ shipType: string }>();
   const ship = shipType ? shipTypeMap[shipType] : undefined;
@@ -22,7 +33,7 @@ export default function ShipOperationsDetail() {
 
   return (
     <LibraryPageShell
-      title={`${ship.label} Operations`}
+      title={shipOperationsTitles[ship.id] ?? ship.label}
       icon={ClipboardList}
       backHref="/ship-operations"
       backLabel="Back to the ship operations library"

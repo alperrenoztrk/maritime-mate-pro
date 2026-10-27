@@ -61,26 +61,26 @@ BOA               : ${vesselData.boa} m
 OPERATIONAL DETAILS
 -------------------
 Master            : ${reportData.kaptan_adi}
-Liman             : ${reportData.liman}
-Tarih             : ${reportData.tarih}
-Sefer No          : ${reportData.voyage_no}
-Rapor Tipi        : ${reportData.rapor_tipi === 'departure' ? 'Before Movement' : reportData.rapor_tipi === 'arrival' ? 'Post Arrival' : 'Operational'}
+Port              : ${reportData.liman}
+Date              : ${reportData.tarih}
+Voyage No         : ${reportData.voyage_no}
+Report Type       : ${reportData.rapor_tipi === 'departure' ? 'Departure' : reportData.rapor_tipi === 'arrival' ? 'Arrival' : 'Operational'}
 
 LOADING CONDITION
 -----------------
 Displacement      : ${vesselData.deplasman.toLocaleString()} ton
-Ortalama Draft    : ${vesselData.draft} m
+Mean Draft        : ${vesselData.draft} m
 KM                : ${vesselData.km.toFixed(3)} m
 KG                : ${vesselData.kg.toFixed(3)} m
 GM                : ${results.gm.toFixed(3)} m
 
 STABILITY ANALYSIS
 ------------------
-Initial Stability : ${results.gm >= 0.15 ? 'UYGUN' : 'NOT SUITABLE'} (GM = ${results.gm.toFixed(3)} m)
+Initial Stability : ${results.gm >= 0.15 ? 'MEETS MINIMUM GM' : 'BELOW MINIMUM GM'} (GM = ${results.gm.toFixed(3)} m)
 Free Surface Effect  : ${results.fsm.toFixed(3)} m
 Corrected GM      : ${(results.gm - results.fsm).toFixed(3)} m
 GZ (15°)          : ${results.gz.toFixed(3)} m
-Yalpa Periyodu    : ${results.yalpa_periyodu.toFixed(1)} seconds
+Roll Period       : ${results.yalpa_periyodu.toFixed(1)} seconds
 
 SOLAS CRITERIA CHECK
 --------------------
@@ -90,7 +90,7 @@ Area 30-40°       : ${results.solas_uygunluk.alan_30_40.deger.toFixed(4)} m.rad
 Max GZ            : ${results.solas_uygunluk.max_gz.deger.toFixed(3)} m (Min: ${results.solas_uygunluk.max_gz.kriter.toFixed(3)}) ${results.solas_uygunluk.max_gz.uygun ? '✓' : '✗'}
 Initial GM        : ${results.solas_uygunluk.gm.deger.toFixed(3)} m (Min: ${results.solas_uygunluk.gm.kriter.toFixed(3)}) ${results.solas_uygunluk.gm.uygun ? '✓' : '✗'}
 
-GENEL UYGUNLUK    : ${results.solas_uygunluk.genel_uygunluk ? 'COMPLIANT - ALL CRITERIA MET' : 'NOT COMPLIANT - CRITERIA FAILED'}
+OVERALL COMPLIANCE: ${results.solas_uygunluk.genel_uygunluk ? 'COMPLIANT - ALL CRITERIA MET' : 'NOT COMPLIANT - CRITERIA FAILED'}
 
 DYNAMIC STABILITY
 -----------------
@@ -99,30 +99,30 @@ Dynamic Stability Area  : ${results.dinamik_stabilite.toFixed(4)} m.rad
 SAFETY ASSESSMENT
 -----------------
 ${results.gm >= 1.0 ? 
-  '• Excellent stability condition - safe in all sea conditions' :
+  '• High initial stability - beware of a stiff ship (short, violent rolling)' :
   results.gm >= 0.5 ? 
   '• Good stability condition - suitable for normal operations' :
   results.gm >= 0.15 ?
-  '• Kabul edilebilir stabilite - Dikkatli seyir gerekli' :
+  '• Acceptable stability - navigate with care' :
   '• DANGEROUS CONDITION - adjust ballast immediately!'
 }
 
 ${!results.solas_uygunluk.genel_uygunluk ? 
   '• WARNING: SOLAS criteria not met - Port State Control risk' : 
-  '• SOLAS kriterleri tam uygunluk'
+  '• Full compliance with the SOLAS criteria'
 }
 
-EK NOTLAR
----------
+ADDITIONAL NOTES
+----------------
 ${reportData.ek_notlar || 'No additional notes.'}
 
-SORUMLU PERSONEL
----------------
-Kaptan            : ${reportData.kaptan_adi}
+RESPONSIBLE PERSONNEL
+---------------------
+Master            : ${reportData.kaptan_adi}
 Chief Engineer    : [No name entered]
 Deck Officer      : [No name entered]
 
-This report was generated automatically by the Stable Tales Stability Analysis System on ${new Date().toLocaleString('tr-TR')}.
+This report was generated automatically by the Stable Tales Stability Analysis System on ${new Date().toLocaleString('en-GB')}.
 
 SIGNATURE AND APPROVAL
 ----------------------

@@ -371,7 +371,7 @@ export const konteyner: ShipType = {
             "Yük kaldırma ve mooring ekipmanlarının class survey periyotlarına uygun şekilde greslenmesi, fonksiyon testi ve aşınma kontrolü.",
           procedure: [
             "PMS job order'a göre yağ seviyesi, gres noktaları ve kablo yumakları kontrol et.",
-            "Brake test ve overload test (SWL %110) yıllık olarak Class gözetiminde yapılır.",
+            "Fren testi yıllık yapılır; SWL üzerindeki yük testi (proof load test) Class/bayrak gerekliliklerine göre genellikle 5 yılda bir, Class gözetiminde yapılır.",
             "Wire rope için DNV/ABS aşınma kriterleri (broken wire, kink, corrosion) uygula.",
             "Windlass band brake gap'ini ölç ve gerekirse ayarla.",
             "Capstan motor akımını rated value ile karşılaştır.",
@@ -401,7 +401,7 @@ export const konteyner: ShipType = {
             "Class survey öncesi PMS raporu hazırla.",
           ],
           regulations: [
-            "Class PMS approval (örn. DNV-CG-0289)",
+            "Class PMS approval (klas kuruluşunun PMS kuralları)",
             "ISM Code Element 10",
           ],
           safety: [
@@ -608,13 +608,13 @@ export const konteyner: ShipType = {
           procedure: [
             "ETA hesabını NAVTEX, weather routing ve current ile güncelle.",
             "Agent'a NOA-96, NOA-72, NOA-24 gönder.",
-            "ISPS pre-arrival security info-3 (Form B) hazırla.",
+            "ISPS pre-arrival security information formunu hazırla.",
             "Pre-arrival checklist'i (engine, mooring, anchors, navigation) tamamla.",
             "Pilot booking saatini revize et.",
           ],
           regulations: [
             "ISPS Code Part A/B",
-            "USCG NVIC (US için 96-hour NOA)",
+            "USCG 33 CFR 160 Subpart C (ABD için 96 saatlik NOA)",
             "EU Reporting Formalities Directive 2010/65",
           ],
           safety: [
@@ -710,7 +710,7 @@ export const konteyner: ShipType = {
             "Standby telegraph'a geçilince bell book'u başlat.",
           ],
           regulations: [
-            "SOLAS II-1 Reg. 29.3 — Steering gear (manevra için 2 power unit)",
+            "SOLAS V/24.4 — Özel dikkat gerektiren sularda birden fazla dümen güç ünitesi çalıştırılır",
             "MARPOL Annex VI — ECA fuel switching",
           ],
           safety: [
@@ -803,7 +803,7 @@ export const konteyner: ShipType = {
           procedure: [
             "Bilge holding tank'tan OWS feed pompası başlat.",
             "15 ppm OCM (Oil Content Meter) calibrated ve 3-way valve auto modda.",
-            "Discharge sadece special area dışı + en route + > 12 NM from land şartında yapılır.",
+            "Discharge sadece special area dışında, gemi seyir halindeyken (en route) ve yağ içeriği 15 ppm'i aşmadığında yapılır.",
             "Filter cartridge ve coalescer aşınma takibi.",
             "Operasyon sonu ORB I kayıtları: Code C, D, E.",
           ],
@@ -916,7 +916,7 @@ export const konteyner: ShipType = {
             "Plug panel insulation resistance ölçümü.",
             "Loose connection ve overheat tracking.",
             "Refrigerant leak detection (electronic sniffer).",
-            "F-gas (R134a, R404A) kayıtları MARPOL Annex VI Reg. 12 uyumlu.",
+            "Soğutucu gaz kayıtlarını tut: ODS'ler (ör. R22) MARPOL Annex VI Reg. 12'ye, HFC'ler (R134a, R404A) AB F-gas tüzüğü gibi bölgesel kurallara tabidir.",
           ],
           regulations: [
             "MARPOL Annex VI Reg. 12 — Ozone-depleting substances",
@@ -1053,7 +1053,7 @@ export const konteyner: ShipType = {
             "MEPC.339(76)",
           ],
           safety: [
-            "D/E rating 3 yıl üst üste corrective action plan zorunlu.",
+            "3 yıl üst üste D veya 1 yıl E rating alan gemi için corrective action plan zorunlu.",
           ],
           records: [
             "SEEMP Part I/II/III",
@@ -1089,7 +1089,7 @@ export const konteyner: ShipType = {
             "SOLAS V/26 gereği limandan ayrılış öncesi 12 saat içinde steering gear testlerinin yapılması.",
           procedure: [
             "Main + auxiliary power unit, rudder angle göstergeleri, communication, alarm test.",
-            "Emergency steering yıllık 1 kez gerçek koşulda test.",
+            "Emergency steering drill en az 3 ayda bir yapılır (SOLAS V/26.4).",
             "Hydraulic oil cleanliness ISO 4406 kodu.",
             "Hunting (oscillation) varsa pump cam ayarı revize.",
           ],

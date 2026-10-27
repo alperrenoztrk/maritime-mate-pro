@@ -49,7 +49,7 @@ const content: CrewTaskLongForm = {
               ["Fire drill", "Aylık", "SOLAS III/19.3.2", "Official log + drill record"],
               ["Filika suya indirme + manevra", "3 aylık", "SOLAS III/19.3.4.3", "PMS + logbook"],
               ["Enclosed space entry & rescue", "2 aylık", "SOLAS III/19.3.3", "Drill record"],
-              ["Rescue boat suya indirme", "Aylık (mümkünse), en az 3 aylık", "SOLAS III/19.3.4.4", "Logbook"],
+              ["Rescue boat suya indirme", "Aylık (mümkünse), en az 3 aylık", "SOLAS III/19.3.4.6", "Logbook"],
               ["Damage control / steering gear", "SMS'e göre", "Company SMS", "Drill record"],
             ],
           },

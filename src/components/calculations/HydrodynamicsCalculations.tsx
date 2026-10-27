@@ -589,16 +589,16 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
           title: "Roll Amplitude",
           formula: "phi = RAOroll x atan(GM / kxx) x 180/pi",
           substitution: `phi = RAO x atan(${data.metacentricHeight} / ${data.radiusOfGyration}) x 180/pi`,
-          result: `phi = ${motions.rollAmplitude.toFixed(2)} derece`,
+          result: `phi = ${motions.rollAmplitude.toFixed(2)}°`,
           explanation: "Roll amplitude refers to the amount of transverse rolling of the ship under wave conditions."
         },
         {
           step: 7,
-          title: "Pitch Width",
+          title: "Pitch Amplitude",
           formula: "theta = Hw x k x L / 4 x 180/pi",
           substitution: `theta = ${data.waveHeight} x ${kWave.toFixed(6)} x ${data.shipLength} / 4 x 180/pi`,
-          result: `theta = ${motions.pitchAmplitude.toFixed(2)} derece`,
-          explanation: "Pitch amplitude refers to the amount of sway of the ship around the longitudinal axis."
+          result: `theta = ${motions.pitchAmplitude.toFixed(2)}°`,
+          explanation: "Pitch amplitude is the angle through which the ship rotates about her transverse axis in waves."
         },
         {
           step: 8,
@@ -672,11 +672,11 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         },
         {
           step: 6,
-          title: "Maritime Index",
-          formula: "SI = 10 - cezalar (yalpa, ivme, slamming, hiz kaybi)",
-          substitution: `SI = 10 - (yalpa>${motions.rollAmplitude.toFixed(1)}>20? -2) - (ivme -2) - (slam -3) - (hiz kaybi -2)`,
+          title: "Seakeeping Index",
+          formula: "SI = 10 - penalties (roll, acceleration, slamming, speed loss)",
+          substitution: `SI = 10 - (roll ${motions.rollAmplitude.toFixed(1)}° > 20° ? 2) - (acceleration 2) - (slamming 3) - (speed loss 2)`,
           result: `SI = ${seakeepingIndex.toFixed(1)} / 10`,
-          explanation: "The maritime index scores overall maritime performance on a scale of 0-10."
+          explanation: "The seakeeping index scores overall seakeeping performance on a scale of 0-10."
         },
         {
           step: 7,

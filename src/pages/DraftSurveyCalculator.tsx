@@ -157,7 +157,7 @@ const DraftSurveyCalculator = () => {
             <TabsContent value="trim" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="forward-draft">Head Draft (m)</Label>
+                  <Label htmlFor="forward-draft">Forward Draft (m)</Label>
                   <Input
                     id="forward-draft"
                     type="number"

@@ -96,7 +96,7 @@ export const CraneBoomCalculations = () => {
       if (yeni_gm > 0.15) {
         toast.success(`Crane operation safe: GM = ${yeni_gm.toFixed(3)}m`);
       } else {
-        toast.error(`Tehlikeli GM: ${yeni_gm.toFixed(3)}m - Operasyonu durdurun!`);
+        toast.error(`Dangerous GM: ${yeni_gm.toFixed(3)}m - Stop the operation!`);
       }
 
     } catch (error) {

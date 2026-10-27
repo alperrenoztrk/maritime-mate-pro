@@ -3259,7 +3259,7 @@ Height: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of 
                 steps={[
                   "Time for each leg = Distance / SOG (hours).",
                   "ETA = leg start + duration.",
-                  `Toplam mesafe = ΣLeg mesafe = ${passageResults.totalDistanceNm.toFixed(2)} NM`,
+                  `Total distance = Σ leg distances = ${passageResults.totalDistanceNm.toFixed(2)} NM`,
                 ]}
               />
             </div>

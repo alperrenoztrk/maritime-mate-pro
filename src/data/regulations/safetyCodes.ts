@@ -35,21 +35,21 @@ export const safetyCodes: RegulationItem[] = [
     ],
     amendments: [
       { year: "2002", description: "Revize ISM Code – doküman kontrolü ve yönetim gözden geçirmesi güçlendirildi" },
-      { year: "2010", description: "Siber güvenlik risk yönetiminin SMS'e entegrasyonu tartışmaları başladı" },
-      { year: "2021", description: "MSC.428(98) – siber güvenliğin SMS'e dahil edilmesi zorunluluğu (ilk yenileme denetiminde)" },
+      { year: "2010", description: "MSC.273(85) yürürlüğe girdi – şirketin gemileri, personeli ve çevre için belirlenmiş tüm riskleri değerlendirip uygun önlemleri alması (Bölüm 1.2.2.2)" },
+      { year: "2021", description: "MSC.428(98) – siber risklerin SMS'te ele alınması; 1 Ocak 2021'den sonraki ilk yıllık DOC doğrulamasına kadar" },
     ],
     keyArticles: [
-      { id: "Madde 1", title: "Genel", summary: "ISM Code'un amacı: denizde emniyeti sağlamak, insan yaralanmasını ve can kaybını önlemek, çevreyi korumak." },
-      { id: "Madde 2", title: "Tanımlar", summary: "Şirket, DPA, SMS ve ilgili terimlerin tanımları." },
-      { id: "Madde 3-4", title: "DPA ve Sorumluluklar", summary: "Designated Person Ashore, şirket ve kaptan sorumlulukları." },
-      { id: "Madde 5", title: "Kaptan Yetkisi", summary: "Kaptanın emniyet ve çevre koruma konusundaki bağımsız karar yetkisi." },
-      { id: "Madde 6", title: "Kaynaklar ve Personel", summary: "Mürettebat yetkinliği, eğitim ve kaynak tahsisi gereklilikleri." },
-      { id: "Madde 7", title: "Gemi İçi Operasyon Planları", summary: "Kritik gemici operasyonları için prosedür, plan ve talimatlar." },
-      { id: "Madde 8", title: "Acil Durum Hazırlığı", summary: "Acil durum tanımlama, müdahale planları ve tatbikatlar." },
-      { id: "Madde 9", title: "Raporlama ve Analiz", summary: "Uygunsuzluk, kaza ve tehlikeli durumların raporlanması ve analizi." },
-      { id: "Madde 10", title: "Bakım", summary: "Gemi ve teçhizat bakım sistemi (PMS) gereklilikleri." },
-      { id: "Madde 11-12", title: "Dokümantasyon ve Denetim", summary: "Doküman kontrolü, iç denetim ve yönetim gözden geçirmesi." },
-      { id: "Madde 13", title: "Sertifikasyon", summary: "DOC (şirket) ve SMC (gemi) sertifika düzenleme, doğrulama ve geçerlilik kuralları." },
+      { id: "Bölüm 1", title: "Genel", summary: "Tanımlar (şirket, SMS, DOC, SMC vb.) ve ISM Code'un amacı: denizde emniyeti sağlamak, insan yaralanmasını ve can kaybını önlemek, çevreyi korumak." },
+      { id: "Bölüm 2", title: "Emniyet ve Çevre Koruma Politikası", summary: "Şirketin emniyet ve çevre koruma politikasını belirlemesi; politikanın gemide ve kıyıda bütün kademelerde uygulanması ve sürdürülmesi." },
+      { id: "Bölüm 3-4", title: "DPA ve Sorumluluklar", summary: "Designated Person Ashore, şirket ve kaptan sorumlulukları." },
+      { id: "Bölüm 5", title: "Kaptan Yetkisi", summary: "Kaptanın emniyet ve çevre koruma konusundaki bağımsız karar yetkisi." },
+      { id: "Bölüm 6", title: "Kaynaklar ve Personel", summary: "Mürettebat yetkinliği, eğitim ve kaynak tahsisi gereklilikleri." },
+      { id: "Bölüm 7", title: "Gemi İçi Operasyon Planları", summary: "Kritik gemici operasyonları için prosedür, plan ve talimatlar." },
+      { id: "Bölüm 8", title: "Acil Durum Hazırlığı", summary: "Acil durum tanımlama, müdahale planları ve tatbikatlar." },
+      { id: "Bölüm 9", title: "Raporlama ve Analiz", summary: "Uygunsuzluk, kaza ve tehlikeli durumların raporlanması ve analizi." },
+      { id: "Bölüm 10", title: "Bakım", summary: "Gemi ve teçhizat bakım sistemi (PMS) gereklilikleri." },
+      { id: "Bölüm 11-12", title: "Dokümantasyon ve Denetim", summary: "Doküman kontrolü, iç denetim ve yönetim gözden geçirmesi." },
+      { id: "Bölüm 13", title: "Sertifikasyon", summary: "DOC (şirket) ve SMC (gemi) sertifika düzenleme, doğrulama ve geçerlilik kuralları." },
     ],
     penalties: [
       "DOC veya SMC sertifikası eksikliğinde geminin seferden alıkonması",
@@ -218,7 +218,7 @@ export const safetyCodes: RegulationItem[] = [
       "Trimming gereklilikleri ve istif faktörü",
       "Özel önlemler: havalandırma, gaz ölçümü, yangın riski, reaktivite",
       "Yük bilgi formu (cargo declaration) zorunluluğu",
-      "Section 4: laboratuvar test prosedürleri (Proctor/Fagerberg, flow table)",
+      "Appendix 2: laboratuvar test prosedürleri (flow table, penetration test, Proctor/Fagerberg)",
       "Section 5: trimming prosedürleri ve stabilite etkileri",
     ],
     actions: [
@@ -383,18 +383,18 @@ export const safetyCodes: RegulationItem[] = [
   },
   {
     slug: "igs-code",
-    label: "IGS Code – Inert Gaz Sistemleri",
+    label: "Inert Gaz Sistemleri – SOLAS II-2 / FSS Code Ch. 15",
     category: "Safety Codes",
     overview: "Tanker gemilerinde kargo tanklarının inert gaz ile korunması için sistem tasarımı, işletme ve bakım standartlarını belirler.",
-    history: "1970'lerdeki büyük tanker patlamalarından (Mactra 1969, Marpessa 1969, Kong Haakon VII 1978) sonra geliştirilmiş olan inert gaz sistemi gereklilikleri, SOLAS Chapter II-2'ye entegre edilmiştir. IGS Code bu sistemlerin tasarım ve işletme detaylarını düzenler.",
+    history: "1969'daki büyük tanker patlamalarından (Marpessa, Mactra ve Kong Haakon VII) sonra geliştirilmiş olan inert gaz sistemi gereklilikleri, SOLAS Chapter II-2'ye entegre edilmiştir. Bu sistemlerin tasarım ve işletme ayrıntıları FSS Code Chapter 15'te düzenlenir.",
     applicability: [
-      "20.000 DWT ve üzeri ham petrol tankerleri (tüm kargo tankları)",
-      "8.000 DWT ve üzeri ürün tankerleri (COW yapanlar zorunlu, diğerleri bayrak devletine bağlı)",
+      "1 Ocak 2016 öncesi inşa edilen 20.000 DWT ve üzeri petrol tankerleri (tüm kargo tankları)",
+      "1 Ocak 2016 ve sonrası inşa edilen 8.000 DWT ve üzeri petrol ve kimyasal tankerleri (düşük parlama noktalı yük taşırken); ham petrolle yıkama (COW) yapan tüm tankerler",
       "Kimyasal tankerlerde IBC Code referanslı uygulamalar",
       "Kombine taşıyıcılar (OBO) petrol yükü taşırken",
     ],
     essentials: [
-      "Oksijen seviyesi: max. %8 (IG supply), %5 (yükleme/boşaltma başlamadan önce)",
+      "Oksijen seviyesi: basılan inert gazda en fazla %5, kargo tanklarında en fazla %8 (hacimce)",
       "IG üretimi: flue gas sistemi (kazan veya bağımsız yakıcı) veya azot jeneratörü",
       "Sistem bileşenleri: scrubber (gaz yıkama), blower (fan), deck seal (wet/dry/semi-dry)",
       "İzleme ve alarm sistemleri: O₂ analizörü, basınç sensörleri, yüksek/düşük basınç alarmı",
@@ -462,14 +462,14 @@ export const safetyCodes: RegulationItem[] = [
       },
     ],
     relatedSlugs: ["solas", "ics-code"],
-    resources: [{ label: "IMO IGS Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/IGS-Code.aspx" }],
+    resources: [{ label: "IMO – Fire protection (SOLAS II-2, FSS Code)", href: "https://www.imo.org/en/OurWork/Safety/Pages/FireProtection-Default.aspx" }],
   },
   {
     slug: "igf-code",
     label: "IGF Code – Gaz Yakıtlı Gemiler",
     category: "Safety Codes",
     overview: "LNG ve diğer düşük parlama noktalı gazlarla çalışan gemilerin tasarım, inşa ve işletme güvenliği için risk tabanlı yaklaşım ve teknik standartlar sağlar.",
-    history: "Gemilerde alternatif yakıt kullanımının artmasıyla 2015'te kabul edilen IGF Code, 2017'de yürürlüğe girmiştir. Şu anda öncelikle LNG yakıtını kapsar; metanol ve diğer yakıtlar için geçici kılavuzlar (MSC.1/Circ.1621) mevcuttur. Amonyak yakıt kılavuzları hazırlanmaktadır.",
+    history: "Gemilerde alternatif yakıt kullanımının artmasıyla 2015'te kabul edilen IGF Code, 2017'de yürürlüğe girmiştir. Şu anda öncelikle LNG yakıtını kapsar; metanol ve diğer yakıtlar için geçici kılavuzlar (MSC.1/Circ.1621) mevcuttur. Amonyak yakıtlı gemiler için geçici kılavuz (MSC.1/Circ.1687) Şubat 2025'te yayımlanmıştır.",
     applicability: [
       "Düşük parlama noktalı gaz yakıt kullanan tüm gemiler (500 GT üzeri, uluslararası sefer)",
       "LNG-fuelled gemiler (birincil kapsam)",
@@ -552,10 +552,10 @@ export const safetyCodes: RegulationItem[] = [
   },
   {
     slug: "bc-code",
-    label: "BC Code – Dökme Yük Gemileri Güvenliği",
+    label: "SOLAS Chapter XII ve BLU Code – Dökme Yük Gemileri Güvenliği",
     category: "Safety Codes",
     overview: "Dökme yük gemilerinin yapısal güvenliği, yükleme/boşaltma prosedürleri ve stabilite için ek gereklilikler belirler.",
-    history: "1990'lardaki dökme yük gemisi kayıpları (Derbyshire 1980, MV Flare 1998) SOLAS Chapter XII'nin 1997'de eklenmesini ve BC Code'un güçlendirilmesini sağlamıştır. 2011'de IMSBC Code yürürlüğe girince BC Code dökme yük gemisi yapısal gerekliliklerine odaklanmıştır.",
+    history: "1980'ler ve 1990'lardaki dökme yük gemisi kayıpları (ör. Derbyshire, 1980) 1997'de SOLAS Chapter XII'nin kabul edilmesini sağlamış; aynı yıl yükleme ve boşaltma emniyeti için BLU Code yayımlanmıştır. Dökme katı yüklerin taşınmasına ilişkin eski BC Code ise 2011'de yerini zorunlu IMSBC Code'a bırakmıştır.",
     applicability: [
       "150 metre ve üzeri dökme yük gemileri (SOLAS Chapter XII)",
       "Tüm dökme yük gemileri (genel SOLAS gereklilikleri)",
@@ -807,7 +807,7 @@ export const safetyCodes: RegulationItem[] = [
     essentials: [
       "Can filikası tipleri: totally enclosed (TELB), partially enclosed, freefall, fire-protected (FPLB)",
       "Can salı: SOLAS pack A ve B, throw-overboard ve davit-launched",
-      "Kişisel teçhizat: can yeleği (275N, 150N, 100N, 50N), can simidi, dalma elbisesi (immersion suit), termal koruyucu (TPA)",
+      "Kişisel teçhizat: can yeleği (yetişkin, çocuk ve bebek tipleri), can simidi, dalma elbisesi (immersion suit), termal koruyucu (TPA)",
       "İndirme/kurtarma (davit) düzenekleri: gravity, stored energy, hydraulic; ve bakım/test aralıkları",
       "MES (Marine Evacuation System) gereklilikleri (yolcu gemileri)",
       "MOB (Man Overboard) kurtarma düzenekleri ve prosedürleri",
@@ -881,7 +881,7 @@ export const safetyCodes: RegulationItem[] = [
     label: "FSS Code – Yangın Güvenlik Sistemleri",
     category: "Safety Codes",
     overview: "Sabit yangın söndürme, algılama ve alarm sistemlerinin tasarım, kurulum, test ve bakım standartlarını düzenler.",
-    history: "FSS Code (Fire Safety Systems Code), SOLAS Chapter II-2'nin teknik detaylarını içerir. 2001'de kabul edilmiş ve çeşitli MSC kararları ile güncellenmiştir. Yangın güvenlik sistemlerinin tasarım ve performans standardı olarak tüm gemi tiplerinde referans alınır.",
+    history: "FSS Code (Fire Safety Systems Code), SOLAS Chapter II-2'nin teknik detaylarını içerir. 2000'de kabul edilmiş, 2002'de yürürlüğe girmiş ve çeşitli MSC kararları ile güncellenmiştir. Yangın güvenlik sistemlerinin tasarım ve performans standardı olarak tüm gemi tiplerinde referans alınır.",
     applicability: [
       "SOLAS kapsamındaki tüm gemiler",
       "Yangın güvenlik sistemi tasarımcıları ve üreticileri",
@@ -1140,7 +1140,7 @@ export const safetyCodes: RegulationItem[] = [
       "Cilt III: Mobil Vasıtalar – gemi kaptanı sorumlulukları, arama ve kurtarma prosedürleri",
       "Arama şekilleri: expanding square, sector search, parallel track, creeping line ahead",
       "OSC (On-Scene Coordinator) görev ve sorumlulukları",
-      "MERSAR tablosu: sinyal ve haberleşme kodları",
+      "Haberleşme: SAR haberleşme formatları ve görsel işaretler",
       "MOB manevraları: Williamson turn, Anderson turn, Scharnow turn",
       "Datum hesaplama: akıntı ve rüzgar etkisiyle olası konum tahmini",
     ],
@@ -1205,7 +1205,7 @@ export const safetyCodes: RegulationItem[] = [
     overview:
       "Petrol ve ürün tankerleri ile bunlara hizmet veren terminallerde güvenli operasyonun endüstri standardı kabul edilen rehberi; gemi-sahil arayüzü, statik elektrik, gaz tehlikeleri, kargo/bunker operasyonları ve yangın önlemeyi kapsar.",
     history:
-      "ISGOTT (International Safety Guide for Oil Tankers and Terminals), OCIMF (Oil Companies International Marine Forum), ICS (International Chamber of Shipping) ve IAPH (International Association of Ports and Harbors) tarafından ortaklaşa yayımlanır. Kökeni 1970'lerdeki Tanker Safety Guide ve terminal güvenlik kılavuzlarının birleştirilmesine dayanır. Zorunlu bir IMO sözleşmesi değil, fakat fiilen küresel standart kabul edilen bir endüstri rehberidir; SOLAS, MARPOL ve IGS Code gibi düzenlemeleri pratik operasyona çevirir. En güncel baskı, 2020'de yayımlanan 6. Edisyon'dur (ISGOTT 6); insan faktörü, gemi-sahil iletişimi ve güncellenmiş Ship-Shore Safety Checklist (SSSCL) yaklaşımıyla öne çıkar.",
+      "ISGOTT (International Safety Guide for Oil Tankers and Terminals), OCIMF (Oil Companies International Marine Forum), ICS (International Chamber of Shipping) ve IAPH (International Association of Ports and Harbors) tarafından ortaklaşa yayımlanır. Kökeni 1970'lerdeki Tanker Safety Guide ve terminal güvenlik kılavuzlarının birleştirilmesine dayanır. Zorunlu bir IMO sözleşmesi değil, fakat fiilen küresel standart kabul edilen bir endüstri rehberidir; SOLAS, MARPOL ve FSS Code gibi düzenlemeleri pratik operasyona çevirir. En güncel baskı, 2020'de yayımlanan 6. Edisyon'dur (ISGOTT 6); insan faktörü, gemi-sahil iletişimi ve güncellenmiş Ship-Shore Safety Checklist (SSSCL) yaklaşımıyla öne çıkar.",
     applicability: [
       "Ham petrol ve petrol ürünleri taşıyan tüm tankerler",
       "Tankerlere hizmet veren petrol terminalleri ve iskeleler",
@@ -1257,7 +1257,7 @@ export const safetyCodes: RegulationItem[] = [
       {
         heading: "Neden ISGOTT: regülasyonu operasyona çeviren rehber",
         body:
-          "ISGOTT, zorunlu bir sözleşme değil, ama petrol tankeri ve terminal dünyasında fiilen uyulması beklenen 'altın standart'tır. SOLAS, MARPOL ve IGS Code gibi düzenlemeler ne yapılması gerektiğini söyler; ISGOTT ise bunu sahada nasıl güvenle yapacağını adım adım anlatır. Tankerlerde tehlike eşsiz biçimde yüksektir: yük hem yanıcı hem zehirli hem çevreye zararlıdır, operasyonun büyük kısmı gemi ile sahilin (veya başka bir geminin) ortak sorumluluğunda yürür ve tek bir hata felakete dönüşebilir. ISGOTT bu ortak sorumluluğu standartlaştırır; OCIMF, ICS ve IAPH'ın birlikte yayımlaması, hem gemi hem terminal tarafının aynı dili konuşmasını sağlar. Bu yüzden vetting denetimlerinde ISGOTT uygulamaları fiili referans olarak aranır.",
+          "ISGOTT, zorunlu bir sözleşme değil, ama petrol tankeri ve terminal dünyasında fiilen uyulması beklenen 'altın standart'tır. SOLAS, MARPOL ve FSS Code gibi düzenlemeler ne yapılması gerektiğini söyler; ISGOTT ise bunu sahada nasıl güvenle yapacağını adım adım anlatır. Tankerlerde tehlike eşsiz biçimde yüksektir: yük hem yanıcı hem zehirli hem çevreye zararlıdır, operasyonun büyük kısmı gemi ile sahilin (veya başka bir geminin) ortak sorumluluğunda yürür ve tek bir hata felakete dönüşebilir. ISGOTT bu ortak sorumluluğu standartlaştırır; OCIMF, ICS ve IAPH'ın birlikte yayımlaması, hem gemi hem terminal tarafının aynı dili konuşmasını sağlar. Bu yüzden vetting denetimlerinde ISGOTT uygulamaları fiili referans olarak aranır.",
       },
       {
         heading: "Gemi-sahil arayüzü ve Ship-Shore Safety Checklist",

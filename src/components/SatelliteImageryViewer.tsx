@@ -280,7 +280,7 @@ export const SatelliteImageryViewer = () => {
                 <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <img
                     src={getEumetsatImageUrl(channel.id)}
-                    alt={`${channel.nameTr} satellite image`}
+                    alt={`${channel.name} satellite image`}
                     className="w-full h-auto"
                     onError={(e) => {
                       // Fallback if image fails to load

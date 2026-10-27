@@ -22,7 +22,7 @@ export function validateNumberInput(rawValue: string, constraint: InputConstrain
   }
   const numeric = Number(rawValue);
   if (Number.isNaN(numeric)) {
-    return { value: null, error: `${constraint.label} sayısal olmalıdır.` };
+    return { value: null, error: `${constraint.label} must be numeric.` };
   }
   const rangeError = validateRange(numeric, {
     label: constraint.label,

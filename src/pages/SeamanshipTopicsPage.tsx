@@ -1918,12 +1918,12 @@ In a man overboard situation the rescue boat is the fastest means of response. W
 
 DRILLS:
 
-The rescue boat is launched and manoeuvred with its assigned crew monthly as far as practicable, and in any case at least once every 3 months (SOLAS III/19.3.4.4). The rescue boat crew must be specially trained.`,
+The rescue boat is launched and manoeuvred with its assigned crew monthly as far as practicable, and in any case at least once every 3 months (SOLAS III/19.3.4.6). The rescue boat crew must be specially trained.`,
     bulletPoints: [
       "Minimum capacity of 6 people, 6 knots speed",
       "Download time ≤ 5 minutes",
       "Primary response vehicle in case of MOB",
-      "Launched monthly where practicable, and in any case at least once every 3 months (SOLAS III/19.3.4.4)",
+      "Launched monthly where practicable, and in any case at least once every 3 months (SOLAS III/19.3.4.6)",
     ],
     keyPoints: [
       "Williamson turn: 60° turn + counter rudder → return to original line",

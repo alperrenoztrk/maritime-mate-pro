@@ -228,7 +228,7 @@ export default function BetaPscChecklist() {
                     >
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-foreground">
+                          <p id={`psc-item-${item.id}`} className="text-sm font-medium text-foreground">
                             {item.title}
                           </p>
                           <p className="mt-0.5 text-micro uppercase tracking-wide text-muted-foreground">
@@ -245,7 +245,8 @@ export default function BetaPscChecklist() {
                                 type="button"
                                 onClick={() => setStatus(item.id, opt.value)}
                                 aria-pressed={isActive}
-                                aria-label={`${item.title}: ${opt.label}`}
+                                aria-label={opt.label}
+                                aria-describedby={`psc-item-${item.id}`}
                                 className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition ${
                                   isActive
                                     ? opt.active

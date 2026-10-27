@@ -35,7 +35,7 @@ function FlagCard({ flag }: { flag: SignalFlag }) {
       <div className="flex w-24 shrink-0 flex-col items-center gap-1.5">
         <img
           src={`/flags/${flag.id}.svg`}
-          alt={`${flag.label} — ${flag.design}`}
+          alt={flag.label}
           loading="lazy"
           className="h-14 w-24 rounded-md object-contain"
         />
@@ -176,7 +176,7 @@ export default function SignalFlagsPage() {
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
                     <span className="shrink-0 text-micro text-muted-foreground">
-                      {flags.length} adet
+                      {flags.length} flags
                     </span>
                   </div>
                 </div>

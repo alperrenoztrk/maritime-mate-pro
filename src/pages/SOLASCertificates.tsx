@@ -72,7 +72,9 @@ const SOLASCertificatesPage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  {certificate.focus.join(" · ")}
+                  {certificate.focus.map((focus, focusIndex) => (
+                    <span key={focus}>{focusIndex > 0 ? " · " : ""}{focus}</span>
+                  ))}
                 </p>
                 <Separator />
                 <ul className="text-sm text-muted-foreground space-y-1">

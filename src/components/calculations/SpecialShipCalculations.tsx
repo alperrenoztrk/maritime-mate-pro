@@ -132,8 +132,8 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
     setCalcSteps(prev => ({ ...prev, lng: [
       { step: 1, title: "Formula", formula: "Total Loss = (Daily Boil-off% / 100) × Capacity × Day", explanation: "LNG evaporation loss calculation" },
       { step: 2, title: "Placement of values", formula: `Loss = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Total Loss = ${totalBoilOff.toFixed(1)} m³` },
-      { step: 3, title: "Remaining cargo", formula: "Remaining = Capacity - Total Loss", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
-      { step: 4, title: "Loss percentage", formula: "Loss% = (Total Loss/Capacity) × 100", substitution: `Loss% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Loss = %${lossPercentage.toFixed(2)}` },
+      { step: 3, title: "Remaining cargo", formula: "Remaining = Capacity - Total Loss", substitution: `Remaining = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Remaining Cargo = ${remainingCargo.toFixed(1)} m³` },
+      { step: 4, title: "Loss percentage", formula: "Loss% = (Total Loss/Capacity) × 100", substitution: `Loss% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Loss = ${lossPercentage.toFixed(2)}%` },
     ] }));
   };
 
@@ -160,13 +160,13 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       status: safetyFactor >= 1.5 ? 'safe' :
               safetyFactor >= 1.2 ? 'caution' : 'dangerous',
       recommendation: safetyFactor < 1.2 ? 'Reduce stack height' :
-                     safetyFactor < 1.5 ? 'Install with caution' :
-                     'Safe upload limits'
+                     safetyFactor < 1.5 ? 'Load with caution' :
+                     'Within safe loading limits'
     });
     setCalcSteps(prev => ({ ...prev, container: [
-      { step: 1, title: "Total stack weight", formula: "Total = Container Weight × Stack Height", substitution: `Toplam = ${weight} × ${height}`, result: `Toplam = ${totalStackWeight} ton` },
+      { step: 1, title: "Total stack weight", formula: "Total = Container Weight × Stack Height", substitution: `Total = ${weight} × ${height}`, result: `Total = ${totalStackWeight} t` },
       { step: 2, title: "Safety factor", formula: "SF = Deck Capacity / Total Stack Weight", substitution: `SF = ${capacity} / ${totalStackWeight}`, result: `SF = ${safetyFactor.toFixed(2)}` },
-      { step: 3, title: "Max. safe stack", formula: "Max = ⌊Deck Capacity / Container Weight⌋", substitution: `Maks = ⌊${capacity} / ${weight}⌋`, result: `Max Secure Stack = ${maxSafeHeight} adet` },
+      { step: 3, title: "Max. safe stack", formula: "Max = ⌊Deck Capacity / Container Weight⌋", substitution: `Max = ⌊${capacity} / ${weight}⌋`, result: `Max Safe Stack = ${maxSafeHeight} tiers` },
     ] }));
   };
 
@@ -430,8 +430,8 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                         <span className="ml-2">{containerResult.safetyFactor.toFixed(2)}</span>
                       </div>
                       <div>
-                        <span className="font-medium">Max. Secure Stack:</span>
-                        <span className="ml-2">{containerResult.maxSafeHeight} adet</span>
+                        <span className="font-medium">Max. Safe Stack:</span>
+                        <span className="ml-2">{containerResult.maxSafeHeight} tiers</span>
                       </div>
                       <div>
                         <span className="font-medium">Status:</span>

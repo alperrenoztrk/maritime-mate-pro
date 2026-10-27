@@ -98,8 +98,8 @@ export const environmentalRegulations: RegulationItem[] = [
     ],
     essentials: [
       "Yıllık CII hesaplaması: AER (Annual Efficiency Ratio) = toplam CO₂ emisyonu / (kapasite × toplam mesafe) → gCO₂/(dwt·mil)",
-      "Alternatif CII metrikleri: cgDIST (yolcu gemileri için), EEPI (yolcu gemileri), clDIST",
-      "Rating sistemi: A (çok iyi – superior), B (iyi – minor superior), C (orta – moderate), D (kötü – inferior), E (çok kötü – significant inferior)",
+      "Alternatif metrikler: cgDIST (kruvaziyer yolcu, ro-ro yolcu ve araç taşıyıcı gemiler için); deneme amaçlı EEPI, cbDIST, clDIST ve EEOI",
+      "Rating sistemi: A (major superior), B (minor superior), C (moderate), D (minor inferior), E (inferior)",
       "Yıllık sıkılaşan referans çizgileri: her yıl required CII %2 düşer (2023-2026)",
       "3 yıl üst üste D veya herhangi bir yılda E rating alan gemi için düzeltici eylem planı (corrective action plan) zorunlu",
       "SEEMP Part III: CII yönetim planı, iyileştirme hedefleri ve doğrulama",
@@ -180,8 +180,8 @@ export const environmentalRegulations: RegulationItem[] = [
       "5000 GT ve üzeri yük ve yolcu gemileri",
       "AB limanları arasındaki seferlerin (intra-EU) emisyonlarının %100'ü kapsanır",
       "AB ile AB dışı liman arasındaki seferlerin (extra-EU) emisyonlarının %50'si kapsanır",
-      "AB limanında demirde iken (at berth) emisyonların %100'ü kapsanır",
-      "Offshore gemiler, 5000 GT altı gemiler ve savaş gemileri kapsam dışı",
+      "AB limanında rıhtımdayken (at berth) emisyonların %100'ü kapsanır",
+      "5000 GT altı gemiler ve savaş gemileri kapsam dışı; 5000 GT ve üzeri offshore gemiler 2027'den itibaren ETS'ye dahil (MRV raporlaması 2025'ten beri)",
       "Buz sınıfı gemiler için geçici muafiyet/indirim uygulanır",
     ],
     essentials: [
@@ -274,7 +274,7 @@ export const environmentalRegulations: RegulationItem[] = [
     essentials: [
       "GHG yoğunluğu limitleri (gCO₂eq/MJ): 2025 referans değerinden %2, 2030'da %6, 2035'te %14.5, 2040'da %31, 2045'te %62, 2050'de %80 azalma",
       "Well-to-Wake yaklaşımı: yakıtın üretiminden (Well) yanmasına (Wake) kadar tüm yaşam döngüsü emisyonları",
-      "WtW faktörleri: her yakıt türü için IMO kılavuzlarına dayalı varsayılan GHG yoğunluğu değerleri",
+      "WtW faktörleri: her yakıt türü için FuelEU Maritime Ek II'deki varsayılan GHG yoğunluğu değerleri",
       "Alternatif yakıt kullanımı teşviki: RFNBO (Renewable Fuels of Non-Biological Origin) kullanımına çarpan bonusu",
       "Wind-assist bonus: rüzgâr itme sistemleri kullanan gemilere GHG yoğunluğu hesaplamasında avantaj",
       "OPS zorunluluğu: 2030'dan itibaren konteyner ve yolcu gemileri AB limanlarında limanda liman elektriği kullanacak",
@@ -299,8 +299,8 @@ export const environmentalRegulations: RegulationItem[] = [
     ],
     keyArticles: [
       { id: "Tüzük 2023/1805 Madde 4", title: "GHG Yoğunluğu Limiti", summary: "Gemilerin kullandığı yakıtların yıllık ortalama GHG yoğunluğu sınırını ve kademeli azaltma hedeflerini belirler." },
-      { id: "Madde 5", title: "OPS Zorunluluğu", summary: "Konteyner ve yolcu gemilerinin AB limanlarında liman elektriği kullanma zorunluluğunu düzenler." },
-      { id: "Madde 20", title: "Compliance ve Pooling", summary: "Compliance balance mekanizması ve gemiler arası pooling kurallarını belirler." },
+      { id: "Madde 6", title: "OPS Zorunluluğu", summary: "Konteyner ve yolcu gemilerinin AB limanlarında liman elektriği kullanma zorunluluğunu düzenler." },
+      { id: "Madde 20-21", title: "Compliance ve Pooling", summary: "Compliance surplus banking/borrowing (Madde 20) ve gemiler arası pooling (Madde 21) kurallarını belirler." },
       { id: "Ek II", title: "WtW Emisyon Faktörleri", summary: "Yakıt türlerine göre Well-to-Wake GHG yoğunluğu varsayılan değerlerini tanımlar." },
     ],
     penalties: [
@@ -381,7 +381,7 @@ export const environmentalRegulations: RegulationItem[] = [
       { year: "2022", description: "MEPC 78 – DCS verilerinin CII hesaplamasında kullanımının kesinleşmesi" },
     ],
     keyArticles: [
-      { id: "MARPOL Ek VI Kural 22A", title: "Veri Toplama", summary: "5000 GT üzeri gemilerin yakıt tüketimi ve operasyonel verilerinin toplanması zorunluluğunu belirler." },
+      { id: "MARPOL Ek VI Kural 27 (eski 22A)", title: "Veri Toplama", summary: "5000 GT üzeri gemilerin yakıt tüketimi ve operasyonel verilerinin toplanması zorunluluğunu belirler." },
       { id: "MEPC.278(70)", title: "DCS Değişiklikleri", summary: "MARPOL Ek VI'ya DCS ile ilgili eklenen kuralları içerir." },
       { id: "MEPC.282(70)", title: "DCS Kılavuzu", summary: "Veri toplama ve raporlama prosedürlerinin detaylarını belirler." },
     ],
@@ -429,9 +429,9 @@ export const environmentalRegulations: RegulationItem[] = [
     history: "MARPOL Ek VI Kural 14 kapsamındaki küresel kükürt limiti, kademeli olarak düşürülmüştür: %4.50 → %3.50 (2012) → %0.50 (1 Ocak 2020). ECA bölgelerinde: %1.50 → %1.00 (2010) → %0.10 (2015). 2020 değişikliği denizcilik yakıt piyasasını temelden dönüştürmüş, HSFO'dan VLSFO/LSFO'ya geçişi zorunlu kılmıştır. 1 Mart 2020'den itibaren scrubber'sız gemilerde uyumsuz yakıtın bulundurulması da (carriage ban) yasaklanmıştır.",
     applicability: [
       "Tüm gemiler (boyut ve tip sınırı yok – dünya genelinde geçerli)",
-      "ECA bölgeleri: Baltık Denizi, Kuzey Denizi, Kuzey Amerika ECA (ABD + Kanada 200 mil), ABD Karayip ECA",
-      "Akdeniz ECA: MEPC 82'de (2025) belirlendi, 1 Mayıs 2028'de yürürlüğe girecek",
-      "Planlanan Norveç Fiord ECA: NOx ve SOx sınırlı bölge",
+      "ECA bölgeleri: Baltık Denizi, Kuzey Denizi, Kuzey Amerika ECA (ABD + Kanada 200 mil), ABD Karayip ECA, Akdeniz (SOx, 1 Mayıs 2025'ten itibaren)",
+      "Akdeniz SOx ECA: MEPC 79'da (Aralık 2022) kabul edildi; %0.10 sınırı 1 Mayıs 2025'ten itibaren uygulanıyor",
+      "Kanada Arktik ve Norveç Denizi ECA'ları: MEPC 82'de (Ekim 2024) kabul edildi, 1 Mart 2026'da yürürlüğe girdi; %0.10 kükürt sınırı 1 Mart 2027'den itibaren",
     ],
     essentials: [
       "Küresel limit: %0.50 m/m SOx (1 Ocak 2020'den itibaren)",
@@ -446,7 +446,7 @@ export const environmentalRegulations: RegulationItem[] = [
     ],
     actions: [
       "Yakıt kükürt içeriğini BDN ile doğrula ve uyumlu yakıt kullandığını belgele",
-      "ECA giriş/çıkışında yakıt değişimini (fuel changeover) prosedüre uygun yap ve ORB'ye kaydet",
+      "ECA giriş/çıkışında yakıt değişimini (fuel changeover) prosedüre uygun yap ve bayrak devletinin öngördüğü kayıt defterine işle",
       "EGCS kullanımında emisyon verilerini sürekli izle ve washwater kalitesini kontrol et",
       "Yakıt numunelerini mühürlü şekilde 12 ay sakla (MARPOL representative sample)",
       "BDN'leri 3 yıl boyunca gemide sakla ve denetim sırasında ibraz et",
@@ -459,7 +459,7 @@ export const environmentalRegulations: RegulationItem[] = [
       { year: "2012", description: "Küresel limit %4.50'den %3.50'ye düşürüldü" },
       { year: "2015", description: "ECA bölgelerinde %0.10 limiti yürürlüğe girdi" },
       { year: "2020", description: "1 Ocak 2020 – küresel %0.50 limiti yürürlük + 1 Mart carriage ban" },
-      { year: "2025", description: "MEPC 82 – Akdeniz SOx ECA bölgesi kabul edildi (yürürlük: 2028)" },
+      { year: "2025", description: "Akdeniz SOx ECA'sında %0.10 sınırı 1 Mayıs 2025'te uygulanmaya başladı (MEPC 79, 2022)" },
     ],
     keyArticles: [
       { id: "MARPOL Ek VI Kural 14", title: "SOx ve Partikül Madde", summary: "Küresel ve ECA bölgelerindeki yakıt kükürt limitleri ile EGCS alternatifini düzenler." },
@@ -514,7 +514,7 @@ export const environmentalRegulations: RegulationItem[] = [
     label: "Polar Code – Kutup Suları Kuralları",
     category: "Environmental Regulations",
     overview: "Kutup sularında seyreden gemiler için ek emniyet ve çevre koruma gerekliliklerini belirler; buz sınıfı, ekipman ve operasyon planlamasını kapsar.",
-    history: "Kutup sularında artan deniz trafiği (Kuzey Deniz Yolu ve Kuzeybatı Geçidi) nedeniyle IMO, kapsamlı bir kutup kodu geliştirmiştir. 2014'te MSC 94 ve MEPC 68'de kabul edilen Polar Code, 1 Ocak 2017'de yürürlüğe girmiştir. SOLAS Chapter XIV (emniyet bölümü) ve MARPOL Ek I, II, IV, V (çevre bölümü) kapsamında zorunlu kılınmıştır. Antarktik bölgede ayrıca Antarctic Treaty System ve IAATO kuralları da geçerlidir.",
+    history: "Kutup sularında artan deniz trafiği (Kuzey Deniz Yolu ve Kuzeybatı Geçidi) nedeniyle IMO, kapsamlı bir kutup kodu geliştirmiştir. 2014'te MSC 94'te (emniyet bölümü) ve 2015'te MEPC 68'de (çevre bölümü) kabul edilen Polar Code, 1 Ocak 2017'de yürürlüğe girmiştir. SOLAS Chapter XIV (emniyet bölümü) ve MARPOL Ek I, II, IV, V (çevre bölümü) kapsamında zorunlu kılınmıştır. Antarktik bölgede ayrıca Antarctic Treaty System ve IAATO kuralları da geçerlidir.",
     applicability: [
       "Arktik sularda seyreden tüm SOLAS gemileri (belirli alanlar – IMO tarafından tanımlanmış)",
       "Antarktik sularda (60°S'nin güneyindeki tüm sular) seyreden tüm SOLAS gemileri",
@@ -526,9 +526,9 @@ export const environmentalRegulations: RegulationItem[] = [
       "Polar Class (PC1-PC7): IACS UR standardına göre buz sınıfı – yapısal güçlendirme düzeyi",
       "Operasyonel değerlendirme: buz koşullarında güvenli hız, manevra kabiliyeti, kaçış rotası planlaması",
       "Çevresel koruma: HFO (ağır yakıt) yasağı – Arktik'te 1 Temmuz 2024'ten itibaren (muafiyetlerle), Antarktik'te 2011'den beri yasak",
-      "Sıfır deşarj bölgeleri: Antarktik'te pişmemiş çöp ve gıda atığı dışında tüm deşarjlar yasak",
+      "Deşarj yasakları: kutup sularında petrol ve yağlı karışım deşarjı yasak; Antarktik'te öğütülmüş gıda atığı (kara ve buz şelfinden en az 12 mil uzakta) dışında çöp deşarjı yasak",
       "Ekipman gereklilikleri: buz seyir radarı, düşük sıcaklık dayanımlı can kurtarma teçhizatı, kış hayatta kalma kitleri, group survival equipment",
-      "Mürettebat eğitimi: STCW Manila değişiklikleri kapsamında Polar Code endorsement (Basic ve Advanced)",
+      "Mürettebat eğitimi: STCW Kural V/4 (2016 değişiklikleri, 2018'de yürürlük) kapsamında Polar Code eğitimi ve sertifikası (Basic ve Advanced)",
       "Seyir planlaması: buz raporları, SAR kapsamı, iletişim kısıtlamaları, karanlık dönemler",
     ],
     actions: [
@@ -609,7 +609,7 @@ export const environmentalRegulations: RegulationItem[] = [
       "Ara hedefler: 2030'da %20-30, 2040'da %70-80 azalma (2008 baz yılı, taşıma başına değil toplam)",
       "Kısa vadeli önlemler (uygulamada): EEXI, CII, SEEMP güçlendirmesi",
       "Orta vadeli önlemler (geliştirme aşamasında): IMO GHG Fuel Standard (yakıt bazlı GHG yoğunluğu limiti), Market-Based Measures (MBM)",
-      "MBM seçenekleri: (1) GHG levy (sabit ücret/ton CO₂), (2) Feebate (ücret-iade sistemi), (3) Emisyon ticaret sistemi – MEPC 83'te karar hedefleniyor",
+      "MBM seçenekleri: (1) GHG levy (sabit ücret/ton CO₂), (2) Feebate (ücret-iade sistemi), (3) Emisyon ticaret sistemi – MEPC 83'te (Nisan 2025) yakıt standardı ve GHG fiyatlandırmasını birleştiren IMO Net-Zero Framework taslağı onaylandı; Ekim 2025'teki olağanüstü oturumda kabul kararı bir yıl ertelendi",
       "Alternatif yakıtlar: yeşil amonyak, yeşil metanol, e-LNG, biyoyakıt, hidrojen – her birinin WtW emisyonu ve uygulanabilirliği farklı",
       "Teknoloji yol haritası: karbon yakalama ve depolama (CCS), rüzgâr itme sistemleri (Flettner rotor, kite, sail), pil-hibrit sistemler",
       "IMO GHG Study: sektör emisyonlarının kapsamlı analizi (4. çalışma 2020'de yayımlandı, 5. çalışma hazırlanıyor)",
@@ -770,7 +770,7 @@ export const environmentalRegulations: RegulationItem[] = [
     ],
     essentials: [
       "TBT (tributyltin) bileşiklerinin anti-fouling boyalarda kullanımının tamamen yasaklanması",
-      "Cybutryne yasağı: 1 Ocak 2023'ten itibaren uygulanmaz, 1 Ocak 2026'ya kadar mevcut boyalarda sealant uygulanması veya sökülmesi",
+      "Cybutryne yasağı: 1 Ocak 2023'ten itibaren uygulanamaz; mevcut boyasında cybutryne bulunan gemi, bir sonraki planlı boya yenilemesinde (son uygulamadan en geç 60 ay içinde) boyayı söker veya bariyer kat (sealer) uygular",
       "AFS Certificate (International Anti-fouling System Certificate): 400 GT üzeri gemiler için zorunlu",
       "AFS Declaration: 24-400 GT arası gemiler için",
       "Survey gerekliliği: ilk sertifikasyon survey'i + gemi su altı boyası değiştirildiğinde veya yenilendiğinde",
@@ -781,7 +781,7 @@ export const environmentalRegulations: RegulationItem[] = [
       "AFS Certificate/Declaration'ı gemide güncel tut",
       "Boya değişikliğinde veya havuz döneminde survey planla ve sertifikayı güncelle",
       "Anti-fouling sistem bilgilerini (boya tipi, uygulama tarihi, marka) kayıt altında tut",
-      "Cybutryne geçiş süresinde sealant uygulamasını veya boya sökümünü planla (2026'ya kadar)",
+      "Cybutryne içeren boyanın sökümünü veya bariyer kat uygulamasını planla (son uygulamadan en geç 60 ay içinde)",
     ],
     amendments: [
       { year: "2001", description: "AFS Sözleşmesi kabul edildi" },
@@ -841,16 +841,16 @@ export const environmentalRegulations: RegulationItem[] = [
     label: "BWM Convention – Balast Suyu Yönetimi",
     category: "Environmental Regulations",
     overview: "Gemilerin balast suyu ile taşınan istilacı deniz organizmalarının önlenmesi için balast suyu yönetim standartları ve arıtma gerekliliklerini belirler.",
-    history: "Balast suyu ile taşınan istilacı türlerin küresel deniz ekosistemlerine verdiği zararın (karides, midye, kolera bakterisi vb.) fark edilmesiyle IMO, BWM Sözleşmesi'ni 2004'te kabul etmiştir. Uzun onay süreci sonrasında 8 Eylül 2017'de yürürlüğe girmiştir. Sözleşme iki temel standart belirler: D-1 (balast suyu değişimi) ve D-2 (arıtma – BWMS). 2024'e kadar tüm gemilerin D-2 standardına geçmesi hedeflenmişken, geçiş süresi gemi yaşı ve sertifika döngüsüne göre uzatılmıştır.",
+    history: "Balast suyu ile taşınan istilacı türlerin küresel deniz ekosistemlerine verdiği zararın (karides, midye, kolera bakterisi vb.) fark edilmesiyle IMO, BWM Sözleşmesi'ni 2004'te kabul etmiştir. Uzun onay süreci sonrasında 8 Eylül 2017'de yürürlüğe girmiştir. Sözleşme iki temel standart belirler: D-1 (balast suyu değişimi) ve D-2 (arıtma – BWMS). Mevcut gemiler, IOPP yenileme survey'ine bağlı takvimle en geç 8 Eylül 2024'e kadar D-2 standardına geçmek zorundaydı.",
     applicability: [
       "Balast suyu taşıyan tüm uluslararası sefer yapan gemiler",
       "Yeni gemiler (2017 sonrası keel laying): D-2 standardı zorunlu",
-      "Mevcut gemiler: IOPP renewal survey tarihine göre kademeli geçiş (2024 sonrasına kadar)",
+      "Mevcut gemiler: IOPP renewal survey tarihine göre kademeli geçiş (en geç 8 Eylül 2024)",
       "Bazı bölgelerde yerel düzenlemeler ek gereklilikler içerir (örn. ABD – USCG BWM kuralları)",
     ],
     essentials: [
       "D-1 Standardı (Balast suyu değişimi): açık denizde en az %95 volumetrik değişim veya 3 kez ardışık pompalama – kıyıdan en az 200 mil, derinlik 200 m",
-      "D-2 Standardı (Arıtma – BWMS): organizma yoğunluğu limitleri – ≤10 organizma/m³ (≥50μm), ≤10 organizma/ml (10-50μm), koliform ve enterococci limitleri",
+      "D-2 Standardı (Arıtma – BWMS): organizma yoğunluğu limitleri – ≤10 organizma/m³ (≥50μm), ≤10 organizma/ml (10-50μm), Vibrio cholerae, E. coli ve enterococci limitleri",
       "BWMS (Ballast Water Management System) onayı: G8/MEPC.174(58) kılavuzuna göre tip onayı → 2020'den itibaren BWMS Code (zorunlu) uygulanıyor",
       "BWMS teknolojileri: UV, elektroklorinasyon, ozonlama, filtrasyon + dezenfeksiyon kombinasyonları",
       "BWM Plan: gemiye özel balast suyu yönetim planı – gemide bulundurma zorunlu",

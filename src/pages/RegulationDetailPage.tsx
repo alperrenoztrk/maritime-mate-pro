@@ -381,7 +381,11 @@ const ComplianceCycle = ({ stages }: { stages: RegulationComplianceStage[] }) =>
             <p className="mb-1 text-micro font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
               Output
             </p>
-            <p className="text-xs leading-relaxed text-muted-foreground">{stage.outputs.join(" · ")}</p>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              {stage.outputs.map((output, outputIndex) => (
+                <span key={output}>{outputIndex > 0 ? " · " : ""}{output}</span>
+              ))}
+            </p>
           </div>
         </article>
       ))}
@@ -399,18 +403,29 @@ const InspectionQuestions = ({ questions }: { questions: RegulationInspectionQue
     />
     <div className="space-y-3">
       {questions.map((entry, index) => (
-        <details key={entry.question} className="group rounded-xl border border-border/60 bg-card/70 shadow-sm open:border-primary/30">
+        <details key={`${index}-${entry.question}`} className="group rounded-xl border border-border/60 bg-card/70 shadow-sm open:border-primary/30">
           <summary className="flex cursor-pointer list-none items-start gap-3 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-xs font-black text-primary">
               {index + 1}
             </span>
-            <span className="min-w-0 flex-1 text-sm font-bold leading-relaxed text-foreground sm:text-base">{entry.question}</span>
+            <span className="min-w-0 flex-1">
+              {(entry.reference?.id || entry.reference?.title) && (
+                <span className="mb-1 flex flex-wrap gap-x-2 text-xs font-semibold text-primary">
+                  {entry.reference.id && <span>{entry.reference.id}</span>}
+                  {entry.reference.title && <span>{entry.reference.title}</span>}
+                </span>
+              )}
+              <span className="block text-sm font-bold leading-relaxed text-foreground sm:text-base">{entry.question}</span>
+            </span>
             <ChevronDown className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition group-open:rotate-180" />
           </summary>
           <div className="grid gap-4 border-t border-border/50 p-4 md:grid-cols-2">
             <div className="space-y-4">
               <div>
                 <p className="mb-1 text-xs font-black uppercase tracking-wide text-primary">Expected response frame</p>
+                {entry.reference?.summary && (
+                  <p className="mb-2 text-sm leading-relaxed text-muted-foreground">{entry.reference.summary}</p>
+                )}
                 <p className="text-sm leading-relaxed text-muted-foreground">{entry.expectedAnswer}</p>
               </div>
               <div>

@@ -361,9 +361,9 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 12,
         title: "Situation assessment",
-        formula: "SF >= 2.0 -> Secure | 1.5 <= SF < 2.0 -> Border | SF < 1.5 -> Unsafe",
-        result: `Durum: ${status === 'safe' ? 'SAFE' : status === 'marginal' ? 'SINIR DURUMDA' : 'UNSAFE'}`,
-        explanation: `Kritik kesit AP'den ${criticalPoint.position.toFixed(1)} m distance. Permissible deflection = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, hesaplanan sehim = ${deflection.toFixed(1)} mm.`
+        formula: "SF >= 2.0 -> Safe | 1.5 <= SF < 2.0 -> Marginal | SF < 1.5 -> Unsafe",
+        result: `Status: ${status === 'safe' ? 'SAFE' : status === 'marginal' ? 'MARGINAL' : 'UNSAFE'}`,
+        explanation: `Critical section ${criticalPoint.position.toFixed(1)} m from the AP. Permissible deflection = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, calculated deflection = ${deflection.toFixed(1)} mm.`
       }
     ];
 

@@ -8067,10 +8067,10 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Greenwich Saat Açısından Yerel Saat Açısına",
         content:
-          "Astronomik tablolarda verilen Greenwich Saat Açısı (GHA), gözlemcinin boylamıyla birleştirilerek Yerel Saat Açısı (LHA) bulunur. Doğu boylamları çıkarma, batı boylamları ekleme işaretiyle alınır.",
+          "Astronomik tablolarda verilen Greenwich Saat Açısı (GHA), gözlemcinin boylamıyla birleştirilerek Yerel Saat Açısı (LHA) bulunur. Doğu boylamları eklenir, batı boylamları çıkarılır.",
         formula: {
           text: "LHA = GHA ± λ",
-          description: "λ: boylam (Doğu çıkarılır, Batı eklenir)"
+          description: "λ: boylam (Doğu eklenir, Batı çıkarılır)"
         },
       },
       {
@@ -8136,7 +8136,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
           "- **1 saniye zaman = 15″**\n\n" +
           "Saat açısı ilişkisi:\n" +
           "- **LHA = GHA ± λ**\n\n" +
-          "Doğu boylamları çıkarma, batı boylamları ekleme işaretiyle alınır.",
+          "Doğu boylamları eklenir, batı boylamları çıkarılır.",
         formula: {
           text: "360° = 24 saat → 1 saat = 15° → 1 dakika = 15′ → 1 saniye = 15″ | LHA = GHA ± λ",
           description: "Zaman–açı dönüşümleri ve saat açısı ilişkisi"

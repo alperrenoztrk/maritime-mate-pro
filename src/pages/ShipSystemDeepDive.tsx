@@ -215,6 +215,9 @@ export default function ShipSystemDeepDive() {
                                 {co.title ?? meta.label}
                               </div>
                               <p className="text-sm leading-relaxed">{co.text}</p>
+                              {co.lines?.map((line, li) => (
+                                <p key={li} className="mt-1 text-sm leading-relaxed">{line}</p>
+                              ))}
                             </div>
                           );
                         })}
@@ -339,11 +342,11 @@ function SystemSummary({
                 type="button"
                 className="block w-full cursor-zoom-in overflow-hidden text-left group"
                 onClick={() => onOpenImage(topicImage, topic.title)}
-                aria-label={`${topic.title} photograph`}
+                aria-label="Enlarge photograph"
               >
                 <img
                   src={topicImage}
-                  alt={`${topic.title} real-world shipboard installation example`}
+                  alt={topic.title}
                   className="h-48 w-full object-cover transition-transform duration-page group-hover:scale-[1.02]"
                   loading="lazy"
                 />

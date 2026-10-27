@@ -102,6 +102,16 @@ context-dependent Turkish gets mistranslated ("Demir" → "iron" instead of
   `i18n:fix` replaces such an entry with the English text; report with
   `npm run i18n:scan-senses` (`-- --samples=5` for examples, `-- --check` to
   fail on any hit).
+- `check-turkish-leftovers.mjs` — Turkish display text in `src/` with no
+  dictionary entry at all, including template literals that glue Turkish
+  words around `${…}` (the composed sentence can never match a key). Such text
+  stays Turkish on screen when live translation is unavailable. Fix it with
+  checked English in `verified/english-leftover-texts.json`, or rewrite the
+  template so each runtime value is rendered as a separate string. Accepted
+  exceptions (ids, search keywords, native names) are listed in
+  `turkish-leftovers-baseline.json`. `npm run i18n:leftovers` reports,
+  `-- --check` fails on new leftovers (part of `i18n:verify`), `-- --update`
+  rewrites the baseline, `-- --all` lists everything.
 
 ## Notes
 
