@@ -233,7 +233,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl w-[calc(100vw-1.25rem)] max-h-[94svh] overflow-hidden rounded-3xl border border-border/60 bg-card p-0 text-foreground">
+      <DialogContent className="mx-auto max-w-2xl w-[calc(100vw-1.25rem)] max-h-[94svh] overflow-hidden rounded-3xl border border-border/60 bg-card p-0 text-foreground">
         <ScrollArea className="max-h-[94svh]">
           <article className="px-5 pb-8 pt-6 sm:px-8">
             <DialogHeader className="space-y-3 pr-8 text-left">
